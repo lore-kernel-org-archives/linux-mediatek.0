@@ -4,68 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C321AC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 10:34:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B03E9C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 10:39:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=goU4JUePhKKy1ZW2ZCF6huPdl3iP7A5Cik3lwHbnwvc=; b=159BF9MMUFka3DPUmgWXQ9nGWi
-	MKxi4Dh/KJ2CdUGkI6yVscK/leBZ1R609BQjQTfV4caNRNtAQhrSwR0KfMV+2qS+FRpt0OoiK5lBS
-	FKeP7p5O7f21XjB/5Abb+/Np7ri2a8/Tv9rVYVlTTxaNT3MkmLbAEq6GbYRnubl2CrlLlFt1LDG6A
-	vEmol184VlXaLxQ0mTz/ieO8/GX9u2NV4eGy4uYfBteZqxX0/4xHAFtteqd/cb7/3wxaWB5u/aO6i
-	16da4/1OIAt2cYRswBMkGIC0LbsSvEHnCZ1YHwcQqtSgAeMhuQHbG+GpxiYsrVCQ4gUeJRuKy9Djw
-	Avj4CjQQ==;
+	bh=WQpEKW0vlfzqI5cDIUoQ0zKRhm/QITCtnmzIzOsRhcU=; b=GZAVcg6G/bpdBma0+AwWG+5zPB
+	ym2gWuPVhsikQKUJvkPCgFPPcbjCkTkCfG4NUkGzkhyda4MXYz3oN25dbQBJwNkZQHQtrd+hshZVl
+	E2Kb1Y5zXtytAI1HLaX2bmrIo1AsXdEj13FmTXVe1uYcPRE7mvYF81xpezej4SbjhRK9bDFD1EmDz
+	VM7ZElm734tMsSX1uPZFDbuQMUYXmO/A+VTlbr+aGpwX3K5EqBWqzhf89rywd1whG5Dv0+dqGmKGF
+	4ZZ4wJPyRnY+5E0ViX564MLcnaR2OIWAlmX6G3b51dY5u+/g2y1wr8WbELAe3M+pvoC1GM/4UTTD0
+	QA53GFkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDj39-00HUAb-2J;
-	Thu, 14 Dec 2023 10:34:39 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rDj85-00HVTD-2B;
+	Thu, 14 Dec 2023 10:39:45 +0000
+Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDj36-00HU9J-0I;
-	Thu, 14 Dec 2023 10:34:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1702550074;
-	bh=nltRWsAk/z5jbHqdz583haqpjD3b8mytV4HvccmjS1M=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=U6qXFrpKKN6G8mLVuSK8cGP+mUp5gDU+9MBNmXkzA+7Ct+9rrLNDU055ecalOWEwt
-	 5uOGZSLOvpAqSMdPJKiTlMLj9/reAicbtItg7erQk1kPTeEDeBC2f6N6HY65qwRqZv
-	 +t1IN2KhCQFrB8xVxIhKncDnWzo3hwHAWccj/s20jA7rEN5AQHN1gZDwpsVQ74J4yx
-	 2++E0YOVOxvNUnyhi1vElo64Q8xRTdbV35WWS++TDVgTOO2ooI6Zh/a1L/5R8pVvHK
-	 10Uypqvbx4KofIxU2IBQ6x7jaBMs0bWGy1p+esHRsOCb10DNtncyJm7aVWNwywkytx
-	 yuVAR5FlFHXCA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1BB07378000B;
-	Thu, 14 Dec 2023 10:34:34 +0000 (UTC)
-Message-ID: <8d855e5e-4938-4d4f-a79f-bbf89e30f6ca@collabora.com>
-Date: Thu, 14 Dec 2023 11:34:33 +0100
+	id 1rDj83-00HVSK-1x
+	for linux-mediatek@lists.infradead.org;
+	Thu, 14 Dec 2023 10:39:44 +0000
+Received: by mail-ua1-x92a.google.com with SMTP id a1e0cc1a2514c-7c500dcdd7dso1271170241.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 14 Dec 2023 02:39:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1702550380; x=1703155180; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=WQpEKW0vlfzqI5cDIUoQ0zKRhm/QITCtnmzIzOsRhcU=;
+        b=mD6N+zt2Q2pnijxi5w0keM6sT3BzXOuSBcciTqI/atukf2ONR1NKern6+3c0NcFGX7
+         m2xWfZwahh0KP98ZrxN8vqx7nbVtwLWVyFlR+xGYFQ8zm5yNls3zSoLGtBENTHN2LL12
+         jQksqs3yy5Ee/8tOKA2Y60jXRm7aJn36JK6uQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702550380; x=1703155180;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=WQpEKW0vlfzqI5cDIUoQ0zKRhm/QITCtnmzIzOsRhcU=;
+        b=ZX5mBVy9HnNKE7HjocSaJ7JyD3xtFoJ3aDY4K8j2piCKnCExe3zcIrIsj0KcmHQQ+8
+         dO6aCm20vZkuI8bGouc5oBYiiZ5a5noROa0qHUQkgLpJZGpODfKG4g2ZwRv5r2bG7rim
+         k4HE8nXI/xCTRcUDn42x2DOgyHkwj6tpnH+Fa01b/pTmc0xolFD2aQNGTpYwnAZlfazq
+         b80kwn+9yMxlxvLJ2GtVBVgvH8u2El+51RdhSfVWgnVPIQ6WI/ZAJDsZGB8/gr6ex6fK
+         COcBxHUgcgBAXSwZi6gNxTxIn3rLStBYToANqSr3n9bCqZkmSYhxXEYhfS9WMcIh6h2z
+         QvsA==
+X-Gm-Message-State: AOJu0Ywk/eSzdYZvtmJB/yW/kJOvhmej5uMibBuePQBsNfmEd0rI3GAp
+	4wsVRG8bQdGI5o/XvFdTu4TonIWKZneTzknOdzw=
+X-Google-Smtp-Source: AGHT+IEoNBgPRwvTcdsWJvjFoL0dBPxBguls67qWwhfGgZt6P2LaBomlFAfFYMmeP3VdsvZpmlSLyQ==
+X-Received: by 2002:a05:6122:4894:b0:4b2:f0bf:2794 with SMTP id eg20-20020a056122489400b004b2f0bf2794mr3374741vkb.32.1702550379615;
+        Thu, 14 Dec 2023 02:39:39 -0800 (PST)
+Received: from mail-ua1-f53.google.com (mail-ua1-f53.google.com. [209.85.222.53])
+        by smtp.gmail.com with ESMTPSA id ez20-20020a0561224a1400b004b2d650c65csm1310537vkb.15.2023.12.14.02.39.38
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 14 Dec 2023 02:39:39 -0800 (PST)
+Received: by mail-ua1-f53.google.com with SMTP id a1e0cc1a2514c-7c461a8cb0dso1273327241.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 14 Dec 2023 02:39:38 -0800 (PST)
+X-Received: by 2002:a67:c010:0:b0:465:fc90:2cce with SMTP id
+ v16-20020a67c010000000b00465fc902ccemr2107147vsi.29.1702550378388; Thu, 14
+ Dec 2023 02:39:38 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 7/9] arm64: dts: mediatek: Introduce MT8186 Steelix
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Eugen Hristev <eugen.hristev@collabora.com>,
- Conor Dooley <conor.dooley@microchip.com>
-References: <20231213150435.4134390-1-wenst@chromium.org>
- <20231213150435.4134390-8-wenst@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231213150435.4134390-8-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20231213150435.4134390-1-wenst@chromium.org> <20231213150435.4134390-7-wenst@chromium.org>
+In-Reply-To: <20231213150435.4134390-7-wenst@chromium.org>
+From: Fei Shao <fshao@chromium.org>
+Date: Thu, 14 Dec 2023 18:39:01 +0800
+X-Gmail-Original-Message-ID: <CAC=S1niMvoD-EzGWqo-5fEBJLWAVk3FnxW3jq5rSj9fQ_H37gA@mail.gmail.com>
+Message-ID: <CAC=S1niMvoD-EzGWqo-5fEBJLWAVk3FnxW3jq5rSj9fQ_H37gA@mail.gmail.com>
+Subject: Re: [PATCH v4 6/9] arm64: dts: mediatek: Add MT8186 Krabby platform
+ based Tentacruel / Tentacool
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231214_023436_262352_7B96104F 
-X-CRM114-Status: GOOD (  21.13  )
+X-CRM114-CacheID: sfid-20231214_023943_639810_AAF01D8E 
+X-CRM114-Status: GOOD (  14.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,312 +96,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/12/23 16:04, Chen-Yu Tsai ha scritto:
-> The MT8186 Steelix, also known as the Lenovo 300e Yoga Chromebook Gen 4,
-> is a convertible device based on a common design of the same name. The
-> device comes in different variants. Of them, whether a world facing
-> camera is integrated is the only differentiating factor between the
-> two device trees added. The different SKU IDs describe this alone.
-> 
-> The other device difference is the touchpad component used. This is
-> simply handled by having both possible components described in the
-> device tree, and letting the implementation figure out which one is
-> actually available. The system bootloader / firmware does not
-> differentiate this in that they share the same SKU IDs.
-> 
+On Wed, Dec 13, 2023 at 11:05=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> =
+wrote:
+>
+> Tentacruel and Tentacool are MT8186 based Chromebooks based on the
+> Krabby design.
+>
+> Tentacruel, also known as the ASUS Chromebook CM14 Flip CM1402F, is a
+> convertible device with touchscreen and stylus.
+>
+> Tentacool, also known as the ASUS Chromebook CM14 CM1402C, is a laptop
+> device. It does not have a touchscreen or stylus.
+>
+> The two devices both have two variants. The difference is a second
+> source touchpad controller that shares the same address as the original,
+One nit since you need to resend this anyway...
+s/touchpad/trackpad/g
+
+Regards,
+Fei
+
+> but is incompatible.
+>
+> The extra SKU IDs for the Tentacruel devices map to different sensor
+> components attached to the Embedded Controller. These are not visible
+> to the main processor.
+>
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 > Acked-by: Conor Dooley <conor.dooley@microchip.com>
-> ---
-> Changes since v2:
-> - Picked up Conor's ack
-> 
-> Changes since v1:
-> - Removed trackpad_pins reference (moved to i2c2 in corsola dtsi)
-> - Fixed copyright year
-> - Renamed touchpad to trackpad
-> ---
->   arch/arm64/boot/dts/mediatek/Makefile         |   2 +
->   .../mt8186-corsola-steelix-sku131072.dts      |  18 ++
->   .../mt8186-corsola-steelix-sku131073.dts      |  18 ++
->   .../dts/mediatek/mt8186-corsola-steelix.dtsi  | 195 ++++++++++++++++++
->   4 files changed, 233 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131072.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131073.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index 442af61b1305..7bd9471b89f9 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -43,6 +43,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku32.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-steelix-sku131072.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-steelix-sku131073.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-tentacool-sku327681.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-tentacool-sku327683.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-tentacruel-sku262144.dtb
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131072.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131072.dts
-> new file mode 100644
-> index 000000000000..eae17bca8585
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131072.dts
-> @@ -0,0 +1,18 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright 2022 Google LLC
-> + */
-> +
-> +/dts-v1/;
-> +#include "mt8186-corsola-steelix.dtsi"
-> +
-> +/ {
-> +	model = "Google Steelix board";
-> +	compatible = "google,steelix-sku131072", "google,steelix",
-> +		     "mediatek,mt8186";
-> +	chassis-type = "convertible";
-> +};
-> +
-> +&mt6366codec {
-> +	mediatek,dmic-mode = <0>; /* two-wire */
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131073.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131073.dts
-> new file mode 100644
-> index 000000000000..a55375b95d0d
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131073.dts
-> @@ -0,0 +1,18 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright 2022 Google LLC
-> + */
-> +
-> +/dts-v1/;
-> +#include "mt8186-corsola-steelix.dtsi"
-> +
-> +/ {
-> +	model = "Google Steelix board";
-> +	compatible = "google,steelix-sku131073", "google,steelix",
-> +		     "mediatek,mt8186";
-> +	chassis-type = "convertible";
-> +};
-> +
-> +&mt6366codec {
-> +	mediatek,dmic-mode = <1>; /* one-wire */
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
-> new file mode 100644
-> index 000000000000..47262bc499ad
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
-> @@ -0,0 +1,195 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright 2022 Google LLC
-> + */
-> +
-> +/dts-v1/;
-> +#include "mt8186-corsola.dtsi"
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include <dt-bindings/input/input.h>
-> +
-> +/{
-> +	pp1000_edpbrdg: regulator-pp1000-edpbrdg {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "pp1000_edpbrdg";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&en_pp1000_edpbrdg>;
-> +		enable-active-high;
-> +		regulator-boot-on;
-> +		gpio = <&pio 29 GPIO_ACTIVE_HIGH>;
-> +		vin-supply = <&pp3300_z2>;
-> +	};
-> +
-> +	pp1800_edpbrdg_dx: regulator-pp1800-edpbrdg-dx {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "pp1800_edpbrdg_dx";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&en_pp1800_edpbrdg>;
-> +		enable-active-high;
-> +		regulator-boot-on;
-> +		gpio = <&pio 30 GPIO_ACTIVE_HIGH>;
-> +		vin-supply = <&mt6366_vio18_reg>;
-> +	};
-> +
-> +	pp3300_edp_dx: regulator-pp3300-edp-dx {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "pp3300_edp_dx";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&en_pp3300_edpbrdg>;
-> +		enable-active-high;
-> +		regulator-boot-on;
-> +		gpio = <&pio 31 GPIO_ACTIVE_HIGH>;
-> +		vin-supply = <&pp3300_z2>;
-> +	};
-> +};
-> +
-> +&dsi_out {
-> +	remote-endpoint = <&anx7625_in>;
-> +};
-> +
-> +&i2c0 {
-> +	clock-frequency = <400000>;
-> +
-> +	anx_bridge: anx7625@58 {
-> +		compatible = "analogix,anx7625";
-> +		reg = <0x58>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&anx7625_pins>;
-> +		enable-gpios = <&pio 96 GPIO_ACTIVE_HIGH>;
-> +		reset-gpios = <&pio 98 GPIO_ACTIVE_HIGH>;
-> +		vdd10-supply = <&pp1000_edpbrdg>;
-> +		vdd18-supply = <&pp1800_edpbrdg_dx>;
-> +		vdd33-supply = <&pp3300_edp_dx>;
-> +		analogix,lane0-swing = /bits/ 8 <0x70 0x30>;
-> +		analogix,lane1-swing = /bits/ 8 <0x70 0x30>;
-> +
-> +		ports {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			port@0 {
-> +				reg = <0>;
-> +
-> +				anx7625_in: endpoint {
-> +					remote-endpoint = <&dsi_out>;
-> +					data-lanes = <0 1 2 3>;
-> +				};
-> +			};
-> +
-> +			port@1 {
-> +				reg = <1>;
-> +
-> +				anx7625_out: endpoint {
-> +					remote-endpoint = <&panel_in>;
-> +				};
-> +			};
-> +		};
-> +
-> +		aux-bus {
-> +			panel: panel {
-> +				compatible = "edp-panel";
-> +				power-supply = <&pp3300_disp_x>;
-> +				backlight = <&backlight_lcd0>;
-> +
-> +				port {
-> +					panel_in: endpoint {
-> +						remote-endpoint = <&anx7625_out>;
-> +					};
-> +				};
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&i2c1 {
-> +	touchscreen: touchscreen@5d {
-> +		compatible = "goodix,gt7375p";
-> +		reg = <0x5d>;
-> +		interrupts-extended = <&pio 12 IRQ_TYPE_EDGE_FALLING>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&touchscreen_pins>;
-> +		reset-gpios = <&pio 60 GPIO_ACTIVE_LOW>;
-> +		vdd-supply = <&pp3300_s3>;
-> +		goodix,no-reset-during-suspend;
-> +	};
-> +};
-> +
-> +&i2c2 {
-> +	i2c-scl-internal-delay-ns = <22000>;
-> +
-> +	/* second source component */
-> +	trackpad@2c {
-> +		compatible = "hid-over-i2c";
-> +		reg = <0x2c>;
-> +		hid-descr-addr = <0x20>;
-> +		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-> +		vdd-supply = <&pp3300_s3>;
-> +		wakeup-source;
-> +	};
-> +};
-> +
-> +&keyboard_controller {
-> +	function-row-physmap = <
-> +		MATRIX_KEY(0x00, 0x02, 0)	/* T1 */
-> +		MATRIX_KEY(0x03, 0x02, 0)	/* T2 */
-> +		MATRIX_KEY(0x02, 0x02, 0)	/* T3 */
-> +		MATRIX_KEY(0x01, 0x02, 0)	/* T4 */
-> +		MATRIX_KEY(0x03, 0x04, 0)	/* T5 */
-> +		MATRIX_KEY(0x02, 0x04, 0)	/* T6 */
-> +		MATRIX_KEY(0x01, 0x04, 0)	/* T7 */
-> +		MATRIX_KEY(0x02, 0x09, 0)	/* T8 */
-> +		MATRIX_KEY(0x01, 0x09, 0)	/* T9 */
-> +		MATRIX_KEY(0x00, 0x04, 0)	/* T10 */
-> +	>;
-> +
-> +	linux,keymap = <
-> +		MATRIX_KEY(0x00, 0x02, KEY_BACK)
-> +		MATRIX_KEY(0x03, 0x02, KEY_REFRESH)
-> +		MATRIX_KEY(0x02, 0x02, KEY_ZOOM)
-> +		MATRIX_KEY(0x01, 0x02, KEY_SCALE)
-> +		MATRIX_KEY(0x03, 0x04, KEY_BRIGHTNESSDOWN)
-> +		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSUP)
-> +		MATRIX_KEY(0x01, 0x04, KEY_MICMUTE)
-> +		MATRIX_KEY(0x02, 0x09, KEY_MUTE)
-> +		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)
-> +		MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)
-> +		CROS_STD_MAIN_KEYMAP
-> +	>;
-> +};
-> +
-> +&pio {
-> +	anx7625_pins: anx7625-pins {
-> +		pins1 {
-
-pins-en-rst
-
-> +			pinmux = <PINMUX_GPIO96__FUNC_GPIO96>,
-> +				 <PINMUX_GPIO98__FUNC_GPIO98>;
-> +			output-low;
-> +		};
-> +
-> +		pins2 {
-
-pins-is-this-an-interrupt? :-)
-
-> +			pinmux = <PINMUX_GPIO9__FUNC_GPIO9>;
-> +			input-enable;
-> +			bias-disable;
-> +		};
-> +	};
-> +
-> +	en_pp1000_edpbrdg: pp1000-edpbrdg-en-pins {
-> +		pins {
-
-pins-vreg-en like in corsola.dtsi
-
-> +			pinmux = <PINMUX_GPIO29__FUNC_GPIO29>;
-> +			output-low;
-> +		};
-> +	};
-> +
-> +	en_pp1800_edpbrdg: pp1800-edpbrdg-en-pins {
-> +		pins {
-
-same
-
-> +			pinmux = <PINMUX_GPIO30__FUNC_GPIO30>;
-> +			output-low;
-> +		};
-> +	};
-> +
-> +	en_pp3300_edpbrdg: pp3300-edpbrdg-en-pins {
-> +		pins {
-
-ditto
-
-Cheers,
-Angelo
-
 
