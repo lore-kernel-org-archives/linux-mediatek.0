@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECCB5C10F13
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 05:59:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 122D3C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Dec 2023 05:59:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e3ahd3M0XcppL08N+KpDhIH1BYr1qRQbibyyNReplTw=; b=zUsx6FkNtgV9uUMNC0E53AXLzj
-	S6R2k9iXdRGgd884gza8XOeBZYjB/Gu1Zc1yT9OmX5Omqth/yG8ma3uyoLO0nX0hPJMyJQE9wWIXt
-	xjceKhpDeypDZsCvfzeC12o+ZSNY2JLA7reurml1/m9tzCGSg9KaAI8bP6Zo3vxt5fCK7HKpcfmsC
-	xtlWgrD4yWBT6TyyFPkzVPafn2YDpm88W54TP/84rbFaheDC8Lb2elsDxXCyYuccMipVx5greKJKj
-	sx1oFSlKP9wDtzwKosI4VPlOEFoMiT5hFT3C/+c6MtY17i5tk+E+LM2vSQoFrgpGRmr/zCtA5aC3P
-	AqJ2j9Vw==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EnSvj2tYZP4NI1G6ATpw31JLDKJW7cSSRiBu7nXACMM=; b=CUEx/fe52SsDh/sguUFte7D61T
+	teWGRKpS8AA6lnEyFCN3pHRgl3QjGZqBAUyvLuVuAzH3XWUArrXvd+8QjM3n3VliKhaBsIJ6PXtTc
+	hvEbDVoeUoy1JCjOu0v8fMCq5YilZiB2/YePLkKDwLwKlIiZDy8IoQpJ2Zk8Dfy+znuc+zh8DTnut
+	19m8X0htFPs/gd9BKFsxL32jnMjGooFshIOy58bvBW+VcjDu+9+MU8hMf64h89KFQHRtN5eFNFkLD
+	lEFe0lC8wTaVq7du3IS0tuMxbdYgCgRD0UtMfYBmhqWLC0cNdI6ZMNXkuJqyObZQyjGMDL49lEDCj
+	zRXJWlzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDekd-00Grzh-1r;
-	Thu, 14 Dec 2023 05:59:15 +0000
+	id 1rDekf-00Gs2M-2y;
+	Thu, 14 Dec 2023 05:59:17 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDekP-00GrnO-11;
-	Thu, 14 Dec 2023 05:59:04 +0000
-X-UUID: db965afe9a4511ee958cff29c719f35b-20231213
+	id 1rDekP-00Gro0-11;
+	Thu, 14 Dec 2023 05:59:05 +0000
+X-UUID: dae18fa29a4511ee958cff29c719f35b-20231213
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=e3ahd3M0XcppL08N+KpDhIH1BYr1qRQbibyyNReplTw=;
-	b=b4pka2Zi3CQmJIEkpNplFwGq52b4el0nV5PGepSXm1FZ42F+T+hHCPIUpwME4JvTFb2qsP8LClcI1+D/hJThICWjMynpFndGo9S9FEqMy7Li2l+vjGq+t6m5aAmbap4RmHzwNbeX8wAwKijKKvxO2Y8TkblJNxzUoA7SgSX0STg=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=EnSvj2tYZP4NI1G6ATpw31JLDKJW7cSSRiBu7nXACMM=;
+	b=gxgxSkFViOAvE73nLU7jo14ni4wASj4BO5NDacSKDkqqLHSodEsyWPfcRuwgKGxg32CUUvhY/oDMUu4GOKkuHGIMHMHIz2I91UzomfUOktXTLVrFQbHItn+A3SRijhw/uJ2BwCeibuIGlh82wCek5u/KKH4wKWH8uFjk9YgNX2I=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:502d6de0-e1a4-428d-995a-a78f63a7bfb7,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:993c29bd-2ac7-4da2-9f94-677a477649d9,B
+X-CID-O-INFO: VERSION:1.1.35,REQID:6239bdc7-333c-4496-8c82-5455dffa77b2,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:5d391d7,CLOUDID:cbfc2e61-c89d-4129-91cb-8ebfae4653fc,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: db965afe9a4511ee958cff29c719f35b-20231213
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: dae18fa29a4511ee958cff29c719f35b-20231213
 Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1931809670; Wed, 13 Dec 2023 22:58:52 -0700
+	with ESMTP id 1432968987; Wed, 13 Dec 2023 22:58:51 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 14 Dec 2023 13:58:49 +0800
+ 15.2.1118.26; Thu, 14 Dec 2023 13:58:48 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 14 Dec 2023 13:58:48 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 14 Dec 2023 13:58:47 +0800
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK
  Hu <ck.hu@mediatek.com>
@@ -69,19 +69,16 @@ CC: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
 	xinlei lee <xinlei.lee@mediatek.com>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
-Subject: [PATCH v12 06/23] dt-bindings: reset: mt8188: Add VDOSYS reset control bits
-Date: Thu, 14 Dec 2023 13:58:30 +0800
-Message-ID: <20231214055847.4936-7-shawn.sung@mediatek.com>
+Subject: [PATCH v12 00/23] Add display driver for MT8188 VDOSYS1
+Date: Thu, 14 Dec 2023 13:58:24 +0800
+Message-ID: <20231214055847.4936-1-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231214055847.4936-1-shawn.sung@mediatek.com>
-References: <20231214055847.4936-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_215901_386856_CA474D2D 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231213_215901_394796_B1DAD0A9 
+X-CRM114-Status: GOOD (  18.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,100 +93,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 VDOSYS0 and VDOSYS1 reset control bits.
+This series is based on mediatek-drm-next branch of
+kernel/git/chunkuang.hu/linux.git
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
----
- include/dt-bindings/reset/mt8188-resets.h | 75 +++++++++++++++++++++++
- 1 file changed, 75 insertions(+)
+Changes in v12:
+- Rebase on mediatek-drm-next branch of kernel/git/chunkuang.hu/linux.git
 
-diff --git a/include/dt-bindings/reset/mt8188-resets.h b/include/dt-bindings/reset/mt8188-resets.h
-index ba9a5e9b8899..5a58c54e7d20 100644
---- a/include/dt-bindings/reset/mt8188-resets.h
-+++ b/include/dt-bindings/reset/mt8188-resets.h
-@@ -38,4 +38,79 @@
- #define MT8188_INFRA_RST1_THERMAL_CTRL_RST         1
- #define MT8188_INFRA_RST3_PTP_CTRL_RST             2
- 
-+#define MT8188_VDO0_RST_DISP_OVL0		0
-+#define MT8188_VDO0_RST_FAKE_ENG0		1
-+#define MT8188_VDO0_RST_DISP_CCORR0		2
-+#define MT8188_VDO0_RST_DISP_MUTEX0		3
-+#define MT8188_VDO0_RST_DISP_GAMMA0		4
-+#define MT8188_VDO0_RST_DISP_DITHER0		5
-+#define MT8188_VDO0_RST_DISP_WDMA0		6
-+#define MT8188_VDO0_RST_DISP_RDMA0		7
-+#define MT8188_VDO0_RST_DSI0			8
-+#define MT8188_VDO0_RST_DSI1			9
-+#define MT8188_VDO0_RST_DSC_WRAP0		10
-+#define MT8188_VDO0_RST_VPP_MERGE0		11
-+#define MT8188_VDO0_RST_DP_INTF0		12
-+#define MT8188_VDO0_RST_DISP_AAL0		13
-+#define MT8188_VDO0_RST_INLINEROT0		14
-+#define MT8188_VDO0_RST_APB_BUS			15
-+#define MT8188_VDO0_RST_DISP_COLOR0		16
-+#define MT8188_VDO0_RST_MDP_WROT0		17
-+#define MT8188_VDO0_RST_DISP_RSZ0		18
-+
-+#define MT8188_VDO1_RST_SMI_LARB2		0
-+#define MT8188_VDO1_RST_SMI_LARB3		1
-+#define MT8188_VDO1_RST_GALS			2
-+#define MT8188_VDO1_RST_FAKE_ENG0		3
-+#define MT8188_VDO1_RST_FAKE_ENG1		4
-+#define MT8188_VDO1_RST_MDP_RDMA0		5
-+#define MT8188_VDO1_RST_MDP_RDMA1		6
-+#define MT8188_VDO1_RST_MDP_RDMA2		7
-+#define MT8188_VDO1_RST_MDP_RDMA3		8
-+#define MT8188_VDO1_RST_VPP_MERGE0		9
-+#define MT8188_VDO1_RST_VPP_MERGE1		10
-+#define MT8188_VDO1_RST_VPP_MERGE2		11
-+#define MT8188_VDO1_RST_VPP_MERGE3		12
-+#define MT8188_VDO1_RST_VPP_MERGE4		13
-+#define MT8188_VDO1_RST_VPP2_TO_VDO1_DL_ASYNC	14
-+#define MT8188_VDO1_RST_VPP3_TO_VDO1_DL_ASYNC	15
-+#define MT8188_VDO1_RST_DISP_MUTEX		16
-+#define MT8188_VDO1_RST_MDP_RDMA4		17
-+#define MT8188_VDO1_RST_MDP_RDMA5		18
-+#define MT8188_VDO1_RST_MDP_RDMA6		19
-+#define MT8188_VDO1_RST_MDP_RDMA7		20
-+#define MT8188_VDO1_RST_DP_INTF1_MMCK		21
-+#define MT8188_VDO1_RST_DPI0_MM_CK		22
-+#define MT8188_VDO1_RST_DPI1_MM_CK		23
-+#define MT8188_VDO1_RST_MERGE0_DL_ASYNC		24
-+#define MT8188_VDO1_RST_MERGE1_DL_ASYNC		25
-+#define MT8188_VDO1_RST_MERGE2_DL_ASYNC		26
-+#define MT8188_VDO1_RST_MERGE3_DL_ASYNC		27
-+#define MT8188_VDO1_RST_MERGE4_DL_ASYNC		28
-+#define MT8188_VDO1_RST_VDO0_DSC_TO_VDO1_DL_ASYNC	29
-+#define MT8188_VDO1_RST_VDO0_MERGE_TO_VDO1_DL_ASYNC	30
-+#define MT8188_VDO1_RST_PADDING0		31
-+#define MT8188_VDO1_RST_PADDING1		32
-+#define MT8188_VDO1_RST_PADDING2		33
-+#define MT8188_VDO1_RST_PADDING3		34
-+#define MT8188_VDO1_RST_PADDING4		35
-+#define MT8188_VDO1_RST_PADDING5		36
-+#define MT8188_VDO1_RST_PADDING6		37
-+#define MT8188_VDO1_RST_PADDING7		38
-+#define MT8188_VDO1_RST_DISP_RSZ0		39
-+#define MT8188_VDO1_RST_DISP_RSZ1		40
-+#define MT8188_VDO1_RST_DISP_RSZ2		41
-+#define MT8188_VDO1_RST_DISP_RSZ3		42
-+#define MT8188_VDO1_RST_HDR_VDO_FE0		43
-+#define MT8188_VDO1_RST_HDR_GFX_FE0		44
-+#define MT8188_VDO1_RST_HDR_VDO_BE		45
-+#define MT8188_VDO1_RST_HDR_VDO_FE1		46
-+#define MT8188_VDO1_RST_HDR_GFX_FE1		47
-+#define MT8188_VDO1_RST_DISP_MIXER		48
-+#define MT8188_VDO1_RST_HDR_VDO_FE0_DL_ASYNC	49
-+#define MT8188_VDO1_RST_HDR_VDO_FE1_DL_ASYNC	50
-+#define MT8188_VDO1_RST_HDR_GFX_FE0_DL_ASYNC	51
-+#define MT8188_VDO1_RST_HDR_GFX_FE1_DL_ASYNC	52
-+#define MT8188_VDO1_RST_HDR_VDO_BE_DL_ASYNC	53
-+
- #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8188 */
--- 
+Changes in v11:
+- Change "mtk-padding" to "mtk-disp-padding" for consistency
+- Remove patch "drm/mediatek: Remove ineffectual power management codes
+  for backward compatibility
+
+Changes in v10:
+- Remove "Reviewed-by" tags from the following commits:
+    - drm/mediatek: Power on/off devices with function pointers
+    - drm/mediatek: Manage component's clock with function pointers
+- Separate the commit into smaller ones
+    - (new) drm/mediatek: Remove ineffectual power management codes
+
+Changes in v9:
+- Add a static inline function to power off the device
+- Change driver name to "mediatek-disp-padding"
+- Fix typo and kernel doc format error
+
+Changes in v8:
+- Power on/off the components with .power_on() and .power_off()
+- Remove mtk_padding_config()
+- Remove "Reviewed-by" tags from "drm/mediatek: Add Padding to OVL adaptor"
+
+Changes in v7:
+- Start/Stop the components in OVL Adaptor with function pointers
+- Refine Padding driver
+- Fix underrun when the layer is switching off
+
+Changes in v6:
+- Separate the commits into smaller ones
+- Add DPI input mode setting
+- Fix VDOSYS1 power-on issues
+
+Changes in v5:
+- Reuse .clk_enable/.clk_disable in struct mtk_ddp_comp_funcs
+  in mtk_disp_ovl_adaptor.c
+- Adjust commits order
+
+Changes in v4:
+- Add new functions in mtk_disp_ovl_adaptor.c to enable/disable
+  components and reuse them when clock enable/disable
+- Rename components in mtk_disp_ovl_adaptor.c and sort them in
+  alphabetical order
+
+Changes in v3:
+- Define macro MMSYS_RST_NR in mtk-mmsys.h and update reset table
+- Fix typos (ETDHR -> ETHDR, VSNYC -> VSYNC)
+- Rebase dt-bindings on linux-next
+- Refine description of Padding
+- Squash reset bit map commits for VDO0 and VDO1 into one
+
+Changes in v2:
+- Remove redundant compatibles of MT8188 because it shares the same
+  configuration with MT8195
+- Separate dt-bindings by modules
+- Support reset bit mapping in mmsys driver
+
+Hsiao Chien Sung (23):
+  dt-bindings: display: mediatek: ethdr: Add compatible for MT8188
+  dt-bindings: display: mediatek: mdp-rdma: Add compatible for MT8188
+  dt-bindings: display: mediatek: merge: Add compatible for MT8188
+  dt-bindings: display: mediatek: padding: Add MT8188
+  dt-bindings: arm: mediatek: Add compatible for MT8188
+  dt-bindings: reset: mt8188: Add VDOSYS reset control bits
+  soc: mediatek: Support MT8188 VDOSYS1 in mtk-mmsys
+  soc: mediatek: Support MT8188 VDOSYS1 Padding in mtk-mmsys
+  soc: mediatek: Support reset bit mapping in mmsys driver
+  soc: mediatek: Add MT8188 VDOSYS reset bit map
+  drm/mediatek: Rename OVL_ADAPTOR_TYPE_RDMA
+  drm/mediatek: Add component ID to component match structure
+  drm/mediatek: Manage component's clock with function pointers
+  drm/mediatek: Power on/off devices with function pointers
+  drm/mediatek: Start/Stop components with function pointers
+  drm/mediatek: Sort OVL adaptor components
+  drm/mediatek: Refine device table of OVL adaptor
+  drm/mediatek: Support MT8188 Padding in display driver
+  drm/mediatek: Add Padding to OVL adaptor
+  drm/mediatek: Return error if MDP RDMA failed to enable the clock
+  drm/mediatek: Remove the redundant driver data for DPI
+  drm/mediatek: Fix underrun in VDO1 when switches off the layer
+  drm/mediatek: Support MT8188 VDOSYS1 in display driver
+
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml |   1 +
+ .../display/mediatek/mediatek,ethdr.yaml      |   6 +-
+ .../display/mediatek/mediatek,mdp-rdma.yaml   |   6 +-
+ .../display/mediatek/mediatek,merge.yaml      |   3 +
+ .../display/mediatek/mediatek,padding.yaml    |  81 ++++++
+ drivers/gpu/drm/mediatek/Makefile             |   3 +-
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   8 +
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c     |   2 +-
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 274 +++++++++++-------
+ drivers/gpu/drm/mediatek/mtk_dpi.c            |  16 +-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c       |  10 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |   2 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |  20 ++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |   5 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   2 +-
+ drivers/gpu/drm/mediatek/mtk_mdp_rdma.c       |  19 +-
+ drivers/gpu/drm/mediatek/mtk_padding.c        | 160 ++++++++++
+ drivers/soc/mediatek/mt8188-mmsys.h           | 210 ++++++++++++++
+ drivers/soc/mediatek/mtk-mmsys.c              |  27 ++
+ drivers/soc/mediatek/mtk-mmsys.h              |  32 ++
+ drivers/soc/mediatek/mtk-mutex.c              |  51 ++++
+ include/dt-bindings/reset/mt8188-resets.h     |  75 +++++
+ include/linux/soc/mediatek/mtk-mmsys.h        |   8 +
+ 23 files changed, 890 insertions(+), 131 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_padding.c
+
+--
 2.18.0
 
 
