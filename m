@@ -4,91 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55324C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 07:33:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80381C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 07:34:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wuqy1hMTeZu6Bp6O+Yhh2t/FfLhJ7df12NX9Rgk+tQ8=; b=G3iQr3TM/yFZAwtcLr7kRPf0vC
-	7/uH+UmZUUW1p2fPKSXbJSv7M40oUf8rIgGOFO3Sisk4Vd4TTlLI7fGlcrw+z8DdDlJ1YvhfPV76I
-	35y4ygRq3ifp1ZJ2ADRyHShEn/WpEyIkwoDhCDa4i1G6Dl8W03kx8/fEEyDFL//v0dczM5XyAWHQA
-	X9yhLq66DRlmt4nEfAyTfZQgKQryxrjnRekYDHcm7FT59FypF5BjAZdyzCTsQjdfp0K93bpQFBB19
-	8FO1JqczEYTgFdXYjdR1bUsLUuQQZGkJasHwPGMdVXy1ObtvZNrBuI9yZWMwkS1/u4mO2Yu0lE+k9
-	S+nyhQvA==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rh34HaxwqhnqSh3yO1//KI1zi9juMeGNPD8VKP0Ffbc=; b=2nDhPGcRK6OuOQuYVtJg8y6ovj
+	oGS91rqcZJq0T4oeBLSpNZB6BqoK23py/Tnd8vTosWuS5s3hhh10Uu7kHlBX8jvtp5g1zY3hXY87m
+	5hNJ8Av8QZ2vYNtWseuCzwDlF+miF3cs0dn3fdedkhHNiJa4LnPA/4W7UP46YNp7LbkUudwGojiYd
+	vj1WQMO565uhISKY3lDpwggDNglsUWjnWqYIlFiY5f+BurLbesDSJM0Ot6yp+/p0BSOpjazHreHnr
+	BcI1g9y0kziMUuvEiZATjZ35PQd2HzKQmjWx6VItCVo+BG7642FybdvIF96aRjmvkI1k8wD7FPofd
+	TI/J9fmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE2hj-002Isp-1o;
-	Fri, 15 Dec 2023 07:33:51 +0000
+	id 1rE2ib-002J0Q-1L;
+	Fri, 15 Dec 2023 07:34:45 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE2hg-002Ire-26;
-	Fri, 15 Dec 2023 07:33:50 +0000
-X-UUID: 441c659c9b1c11ee958cff29c719f35b-20231215
+	id 1rE2iZ-002IzE-0H;
+	Fri, 15 Dec 2023 07:34:44 +0000
+X-UUID: 6668e62a9b1c11ee958cff29c719f35b-20231215
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=wuqy1hMTeZu6Bp6O+Yhh2t/FfLhJ7df12NX9Rgk+tQ8=;
-	b=t/PtFAc9i8U9RTUdwsU0natjryglq3g9UUtwekhx2DI/RSvWcI3jzbpac+M2pcBBo06U4kDOdiF2UzJBTgDS6YbAA+zQR7QASN8EkqGkdz3hk4w3RaTpba+fq/qKKAhAxNb2djS1Tj1rnJ1qoprPhoaCWqMXVQpryH/QOlx6+4E=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=rh34HaxwqhnqSh3yO1//KI1zi9juMeGNPD8VKP0Ffbc=;
+	b=PgErFIkyldoy+BXiVDzlTWvO/C7hn2qyf+ltd2mFLUw21+sCMGkce2nrgdi+DNB14U2kymclsg220izYd2SBbH74oEjQYRlGwKS8iDKviBGvR0TJ6meiLVZFALXjxQfUEmCT6VGUstnb0D1EGQNLdMfM+vJvrcvH9qdVU3Gqj0k=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:8470c393-d350-441d-a8a6-478bd7f41be2,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:5efa35bd-2ac7-4da2-9f94-677a477649d9,B
+X-CID-O-INFO: VERSION:1.1.35,REQID:5c54b8c1-836d-4265-91f0-8b8470bdb3e1,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:5d391d7,CLOUDID:2886b4fd-4a48-46e2-b946-12f04f20af8c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 441c659c9b1c11ee958cff29c719f35b-20231215
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: 6668e62a9b1c11ee958cff29c719f35b-20231215
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <chunfeng.yun@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 80676395; Fri, 15 Dec 2023 00:33:39 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+	with ESMTP id 1911141183; Fri, 15 Dec 2023 00:34:37 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 15 Dec 2023 15:33:05 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 15 Dec 2023 15:33:05 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Ben Lok <ben.lok@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>, MediaTek Chromebook Upstream
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
-	<wenst@chromium.org>
-Subject: [PATCH] arm64: dts: mediatek: mt8395-genio-1200-evk: add interrupt-parent for mt6360
-Date: Fri, 15 Dec 2023 15:32:52 +0800
-Message-ID: <20231215073252.21586-1-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ 15.2.1118.26; Fri, 15 Dec 2023 15:34:34 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 15 Dec 2023 15:34:33 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Conor Dooley
+	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mathias
+ Nyman <mathias.nyman@intel.com>, <linux-usb@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Macpaul Lin
+	<macpaul.lin@mediatek.com>, Eddie Hung <eddie.hung@mediatek.com>
+Subject: [PATCH v2 2/3] usb: xhci-mtk: fix a short packet issue of gen1 isoc-in transfer
+Date: Fri, 15 Dec 2023 15:34:30 +0800
+Message-ID: <20231215073431.8512-2-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20231215073431.8512-1-chunfeng.yun@mediatek.com>
+References: <20231215073431.8512-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--3.356500-8.000000
-X-TMASE-MatchedRID: 1uypKmLkdmc6xeGwKgJtJov2/i8VNqeOh+w9Wz/xXDqdwU/qXYxHvE/3
-	ZkXeY1OAsdosXJJWMVzBxVNeNzsv2R9J5bZqJbIJhK8o4aoss8oj3JVwc0NTtub59Kr2OlMmo8W
-	MkQWv6iXBcIE78YqRWo6HM5rqDwqtEfvfpBK/uQoV1xzfrGKVLSvrrpz74+KsntWQqRKRLQ2l1b
-	bYDEPZgxQSOnu3diL+lNiqWPzXo3LY9EVSutGyk/MY2/Am1+M74sOrsb4iT/K/bbEolHIgZUOc7
-	GjOamnWv5a9cmIodEszD8HZ4XvJ2ZRMZUCEHkRt
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--3.356500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 8D9319EFF555C22B70A702C8A5D19EAFDCBF723E3B96DD491DB3AED319B88BDB2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231214_233348_701646_A93B9EA3 
-X-CRM114-Status: UNSURE (   9.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231214_233443_126608_A47DB1FA 
+X-CRM114-Status: GOOD (  18.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,33 +91,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch fix the warning introduced by mt6360 node in
-mt8395-genio-1200-evk.dts.
+For Gen1 isoc-in transfer, host still send out unexpected ACK after device
+finish the burst with a short packet, this will cause an exception on the
+connected device, such as, a usb 4k camera.
+It can be fixed by setting rxfifo depth less than 3, prefer to use 2 here,
+the side-effect is that may cause performance drop about 10%, including
+bulk transfer.
 
-arch/arm64/boot/dts/mediatek/mt8195.dtsi:464.4-27: Warning (interrupts_property): /soc/i2c@11d01000/pmic@34:#interrupt-cells: size is (8), expected multiple of 16
-
-Add a missing 'interrupt-parent' to fix this warning.
-
-Fixes: f2b543a191b6 ("arm64: dts: mediatek: add device-tree for Genio 1200 EVK board")
-Reported-by: Arnd Bergmann <arnd@arndb.de>
-Link: https://lore.kernel.org/linux-devicetree/20231212214737.230115-1-arnd@kernel.org/
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Fixes: 926d60ae64a6 ("usb: xhci-mtk: modify the SOF/ITP interval for mt8195")
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts | 1 +
- 1 file changed, 1 insertion(+)
+v2:
+use 'rx-fifo-depth' property;
+add header file 'linux/bitfield.h' to avoid building error on some ARCH;
+---
+ drivers/usb/host/xhci-mtk.c | 38 +++++++++++++++++++++++++++++++++++--
+ drivers/usb/host/xhci-mtk.h |  2 ++
+ 2 files changed, 38 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-index 70b465f7c6a7..00ac59a873e8 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-@@ -238,6 +238,7 @@
- 	mt6360: pmic@34 {
- 		compatible = "mediatek,mt6360";
- 		reg = <0x34>;
-+		interrupt-parent = <&pio>;
- 		interrupts = <128 IRQ_TYPE_EDGE_FALLING>;
- 		interrupt-names = "IRQB";
- 		interrupt-controller;
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index bbdf1b0b7be1..dad6c9873d79 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -7,6 +7,7 @@
+  *  Chunfeng Yun <chunfeng.yun@mediatek.com>
+  */
+ 
++#include <linux/bitfield.h>
+ #include <linux/dma-mapping.h>
+ #include <linux/iopoll.h>
+ #include <linux/kernel.h>
+@@ -73,6 +74,9 @@
+ #define FRMCNT_LEV1_RANG	(0x12b << 8)
+ #define FRMCNT_LEV1_RANG_MASK	GENMASK(19, 8)
+ 
++#define HSCH_CFG1		0x960
++#define SCH3_RXFIFO_DEPTH_MASK	GENMASK(21, 20)
++
+ #define SS_GEN2_EOF_CFG		0x990
+ #define SSG2EOF_OFFSET		0x3c
+ 
+@@ -165,6 +169,34 @@ static void xhci_mtk_set_frame_interval(struct xhci_hcd_mtk *mtk)
+ 	writel(value, hcd->regs + SS_GEN2_EOF_CFG);
+ }
+ 
++/*
++ * workaround: usb3.2 gen1 isoc rx hw issue
++ * host send out unexpected ACK afer device fininsh a burst transfer with
++ * a short packet.
++ */
++static void xhci_mtk_rxfifo_depth_set(struct xhci_hcd_mtk *mtk)
++{
++	struct usb_hcd *hcd = mtk->hcd;
++	u32 value;
++
++	if (mtk->rxfifo_depth < 0)
++		return;
++
++	value = readl(hcd->regs + HSCH_CFG1);
++	value &= ~SCH3_RXFIFO_DEPTH_MASK;
++	value |= FIELD_PREP(SCH3_RXFIFO_DEPTH_MASK, mtk->rxfifo_depth);
++	writel(value, hcd->regs + HSCH_CFG1);
++}
++
++static void xhci_mtk_init_quirk(struct xhci_hcd_mtk *mtk)
++{
++	/* workaround only for mt8195 */
++	xhci_mtk_set_frame_interval(mtk);
++
++	/* workaround for SoCs using SSUSB about before IPM v1.6.0 */
++	xhci_mtk_rxfifo_depth_set(mtk);
++}
++
+ static int xhci_mtk_host_enable(struct xhci_hcd_mtk *mtk)
+ {
+ 	struct mu3c_ippc_regs __iomem *ippc = mtk->ippc_regs;
+@@ -448,8 +480,7 @@ static int xhci_mtk_setup(struct usb_hcd *hcd)
+ 		if (ret)
+ 			return ret;
+ 
+-		/* workaround only for mt8195 */
+-		xhci_mtk_set_frame_interval(mtk);
++		xhci_mtk_init_quirk(mtk);
+ 	}
+ 
+ 	ret = xhci_gen_setup(hcd, xhci_mtk_quirks);
+@@ -527,6 +558,9 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 	of_property_read_u32(node, "mediatek,u2p-dis-msk",
+ 			     &mtk->u2p_dis_msk);
+ 
++	mtk->rxfifo_depth = -1;
++	of_property_read_u32(node, "rx-fifo-depth", &mtk->rxfifo_depth);
++
+ 	ret = usb_wakeup_of_property_parse(mtk, node);
+ 	if (ret) {
+ 		dev_err(dev, "failed to parse uwk property\n");
+diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
+index 39f7ae7d3087..2d27bb0d3ecb 100644
+--- a/drivers/usb/host/xhci-mtk.h
++++ b/drivers/usb/host/xhci-mtk.h
+@@ -171,6 +171,8 @@ struct xhci_hcd_mtk {
+ 	struct regmap *uwk;
+ 	u32 uwk_reg_base;
+ 	u32 uwk_vers;
++
++	int rxfifo_depth;
+ };
+ 
+ static inline struct xhci_hcd_mtk *hcd_to_mtk(struct usb_hcd *hcd)
 -- 
 2.18.0
 
