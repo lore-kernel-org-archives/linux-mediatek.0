@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 041C2C35274
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 13:36:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ABC1C35274
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 13:51:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qmULj2wuWMyxKOnASA3YgXyVd67CHaYz3SXTcpzEcRQ=; b=2WfqQq7wwibY0vD1aAtPodKWxe
-	lrq37y4ZOMdY4p0tDy3Q3kgoLqjP7RXKczXFXY6x0scHMcizYEwCw5ewPEqfC7AzazN5GxIgg62Kr
-	crHFpSC5dDtRj8WzzPAAFdYDqysmPayRUGyCj8r0y7YwzWgNMxMkXZsnU8YAa2Lrb5TDrw9niM/cg
-	A6VbDR67TYeRuChu1BdGByLgi6PIrkH+rIkFQCwAEQCp61aMmJb+6czUrrWt+u1Erz1ODSCfByn8L
-	MBHkhCqe9T+4Dk/klFAbnMbaK87AAEFJTJm+IW/oYN/FF5YNufUZgD+lLESVnos/WYtsjAEU2XvcK
-	3RLOxTfw==;
+	bh=q9Y/nbNol1kgEuyvoCpWrou90kEOyVfn6jrqaskxJSA=; b=o+dFR9y8C+OnO/ZTHb1vUEUBSZ
+	QL+fJTBOm6mkbsXn8s91HZeEmiBDNQ3vt23ekTOOK71nWrk1OAoII/0Ftfh91kuaN4MEk6hkxIy5n
+	G07pEfMgGTox7jAh2eaSPDYyTRMYdWP5r6I5mdTbQtYB99EFZLVorwoSlqg9VWNtzm4OqKFIKx3Z3
+	3cCHz5AtXforHA+C1V3khegKhVXQEqg2cnUrsB52/ouP8nWYN2vdSqm/83mNwhMTvTTGNCSwM6lHo
+	vSOwe/Pb2SZfT05wSv3DU7KWb6oSr2LQxF3PdW3C+IbGhPdgztEpHkd39YO36FmMiqBjKkSWT4H+V
+	M697t04g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE8Mt-003OYI-3C;
-	Fri, 15 Dec 2023 13:36:43 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1rE8b2-003Quv-03;
+	Fri, 15 Dec 2023 13:51:20 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE8Mq-003OXO-0f;
-	Fri, 15 Dec 2023 13:36:41 +0000
+	id 1rE8ay-003QtH-14;
+	Fri, 15 Dec 2023 13:51:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 33B77B82919;
-	Fri, 15 Dec 2023 13:36:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04C1FC433C8;
-	Fri, 15 Dec 2023 13:36:37 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id F017AB82839;
+	Fri, 15 Dec 2023 13:51:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40FD5C433C8;
+	Fri, 15 Dec 2023 13:51:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1702647397;
-	bh=subHRTKMwmMr0u+Qf2RNzCSmCaDcHEzfdzarxtD8z/U=;
+	s=k20201202; t=1702648274;
+	bh=fGVG2zzj6pzT9iK1XgpYVOHwKem4iYVgV0aQbGa3PGQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Tud6o92I0jvVdrQ08FGKjdwhC80aUmMEmOH08YZYA7JMT2nqm5k4KKn6vBcUbxJjP
-	 VmpYMMCDc/VLLrETSfv2FpWhSRRti1nAMypE+MNbCK/UR8mamGdHErStfqAZXkgaKC
-	 qBv5XaksNxAOX6jipIaq1IbmkhKayDCxE6KAcyXAv3QSDdh51sfDh1IcgQiy2tAttY
-	 WXgcpMVNiCj3RxJHmQEXR/hTQbtqjFGwwlG5b3BHtjTFBOyuVjwGH1S6sM6UqultwY
-	 zXpxq3Nw1vqu3UFHQsvlUnunnipIRRlxvKbgttSUVa1ufg21iJkPpOgtx6sbhdvg9A
-	 kjq2BdKV10YQg==
+	b=QrD3v8UqIFJxXc8j8eX/CL6QTSLzOHhDiSwHp1PPIg0IgjFyfhPvDkpxkaU+/RBt9
+	 pbPQJxIF1XT6/JEDiB62ZRM44tdT/NAo6XoxYMsQBRdnFli6zltKudD0JztCu2hTpl
+	 R4OpNg1SM+eZ8POSKlPEF+hWE59by9BSJV/a0STDPDpuWWUreHwOKPdzGiX4MlAYxQ
+	 DB+SiNrVDI2Eg8PoHglS7AnpTVSToUu5NywltYb11B+w8qTk71L9A88NbRCy3TE75l
+	 uYQo4VY/TjtulP/w6nGpMkKMabcwEvSQd/7QSd4gI5gC1z63tyVogjQ/MHq3cakhKn
+	 O65yCtrhcFQpA==
 Received: from johan by xi.lan with local (Exim 4.96.2)
 	(envelope-from <johan@kernel.org>)
-	id 1rE8Mh-0008LA-2Z;
-	Fri, 15 Dec 2023 14:36:31 +0100
-Date: Fri, 15 Dec 2023 14:36:31 +0100
+	id 1rE8ar-0008Sk-1T;
+	Fri, 15 Dec 2023 14:51:09 +0100
+Date: Fri, 15 Dec 2023 14:51:09 +0100
 From: Johan Hovold <johan@kernel.org>
 To: Francesco Dolcini <francesco@dolcini.it>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
@@ -69,15 +69,15 @@ Cc: Jiri Slaby <jirislaby@kernel.org>, linux-bluetooth@vger.kernel.org,
 	Tzung-Bi Shih <tzungbi@kernel.org>, Rob Herring <robh@kernel.org>
 Subject: Re: [PATCH v1] treewide, serdev: change receive_buf() return type to
  size_t
-Message-ID: <ZXxWX-Fw1InID2ax@hovoldconsulting.com>
+Message-ID: <ZXxZzd1iBOCmnczH@hovoldconsulting.com>
 References: <20231214170146.641783-1-francesco@dolcini.it>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20231214170146.641783-1-francesco@dolcini.it>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231215_053640_414670_9347CA94 
-X-CRM114-Status: GOOD (  15.94  )
+X-CRM114-CacheID: sfid-20231215_055116_637522_6CB8FB20 
+X-CRM114-Status: GOOD (  28.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,33 +103,90 @@ On Thu, Dec 14, 2023 at 06:01:46PM +0100, Francesco Dolcini wrote:
 > Link: https://lore.kernel.org/all/087be419-ec6b-47ad-851a-5e1e3ea5cfcc@kernel.org/
 > Signed-off-by: Francesco Dolcini <francesco.dolcini@toradex.com>
 > ---
->  drivers/gnss/core.c                        |  6 +++---
->  drivers/gnss/serial.c                      |  4 ++--
->  drivers/gnss/sirf.c                        |  6 +++---
+> hello,
+> patch is based on current linux next.
+> 
+> It has an obvious problem, it touches files from multiple subsystem in a single
+> patch that is complicated to review and eventually merge, just splitting this
+> would however not work, it will break bisectability and the build.
+> 
+> I am looking for advise on the best way to move forward.
+> 
+> I see the following options:
+>  - keep it as it is
+>  - break it down with a patch with each subsystem, and squash before applying
+>    from a single (tty?) subsystem
+>  - go for a multi stage approach, defining a new callback, move to it and in
+>    the end remove the original one, likewise it was done for i2c lately
+> 
+> ---
+>  drivers/bluetooth/btmtkuart.c              |  4 ++--
+>  drivers/bluetooth/btnxpuart.c              |  4 ++--
 
-> diff --git a/drivers/gnss/core.c b/drivers/gnss/core.c
-> index 48f2ee0f78c4..9b8a0605ec76 100644
-> --- a/drivers/gnss/core.c
-> +++ b/drivers/gnss/core.c
-> @@ -317,10 +317,10 @@ EXPORT_SYMBOL_GPL(gnss_deregister_device);
->   *
->   * Must not be called for a closed device.
->   */
-> -int gnss_insert_raw(struct gnss_device *gdev, const unsigned char *buf,
-> -				size_t count)
-> +size_t gnss_insert_raw(struct gnss_device *gdev, const unsigned char *buf,
-> +		       size_t count)
+> diff --git a/drivers/bluetooth/btmtkuart.c b/drivers/bluetooth/btmtkuart.c
+> index 3c84fcbda01a..e6bc4a73c9fc 100644
+> --- a/drivers/bluetooth/btmtkuart.c
+> +++ b/drivers/bluetooth/btmtkuart.c
+> @@ -383,8 +383,8 @@ static void btmtkuart_recv(struct hci_dev *hdev, const u8 *data, size_t count)
+>  	}
+>  }
+>  
+> -static ssize_t btmtkuart_receive_buf(struct serdev_device *serdev,
+> -				     const u8 *data, size_t count)
+> +static size_t btmtkuart_receive_buf(struct serdev_device *serdev,
+> +				    const u8 *data, size_t count)
 >  {
+>  	struct btmtkuart_dev *bdev = serdev_device_get_drvdata(serdev);
+>  
+> diff --git a/drivers/bluetooth/btnxpuart.c b/drivers/bluetooth/btnxpuart.c
+> index 1d592ac413d1..056bef5b2919 100644
+> --- a/drivers/bluetooth/btnxpuart.c
+> +++ b/drivers/bluetooth/btnxpuart.c
+> @@ -1264,8 +1264,8 @@ static const struct h4_recv_pkt nxp_recv_pkts[] = {
+>  	{ NXP_RECV_FW_REQ_V3,   .recv = nxp_recv_fw_req_v3 },
+>  };
+>  
+> -static ssize_t btnxpuart_receive_buf(struct serdev_device *serdev,
+> -				     const u8 *data, size_t count)
+> +static size_t btnxpuart_receive_buf(struct serdev_device *serdev,
+> +				    const u8 *data, size_t count)
+>  {
+>  	struct btnxpuart_dev *nxpdev = serdev_device_get_drvdata(serdev);
+
+A quick check of just the first two functions here shows that they can
+return negative values.
+
+> diff --git a/drivers/tty/serdev/serdev-ttyport.c b/drivers/tty/serdev/serdev-ttyport.c
+> index e94e090cf0a1..3d7ae7fa5018 100644
+> --- a/drivers/tty/serdev/serdev-ttyport.c
+> +++ b/drivers/tty/serdev/serdev-ttyport.c
+> @@ -27,19 +27,17 @@ static size_t ttyport_receive_buf(struct tty_port *port, const u8 *cp,
+>  {
+>  	struct serdev_controller *ctrl = port->client_data;
+>  	struct serport *serport = serdev_controller_get_drvdata(ctrl);
 > -	int ret;
 > +	size_t ret;
 >  
->  	ret = kfifo_in(&gdev->read_fifo, buf, count);
+>  	if (!test_bit(SERPORT_ACTIVE, &serport->flags))
+>  		return 0;
 >  
+>  	ret = serdev_controller_receive_buf(ctrl, cp, count);
+>  
+> -	dev_WARN_ONCE(&ctrl->dev, ret < 0 || ret > count,
+> -				"receive_buf returns %d (count = %zu)\n",
+> +	dev_WARN_ONCE(&ctrl->dev, ret > count,
+> +				"receive_buf returns %zu (count = %zu)\n",
+>  				ret, count);
+> -	if (ret < 0)
+> -		return 0;
+> -	else if (ret > count)
+> +	if (ret > count)
+>  		return count;
+>  
+>  	return ret;
 
-Why are you changing this function? This is part of the GNSS interface
-and has nothing to do with the rest of this patch.
-
-Greg, please drop this one again until this has been resolved.
+So please do not apply this patch until the various implementations have
+been fixed.
 
 Johan
 
