@@ -4,74 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8D3AC35274
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 13:26:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 438D7C35274
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 13:29:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3Zjm1E8KT2bo3QvUPaqEY3WUWOCnZ6CMxur5aILLxzU=; b=SbMJN/mcSERq+IEoSqcR59ubGL
-	fMFD0xf00MIGl7o6YZ5RBlK3pMoo6F3fiD7nkUycVnxluxcJxal+kLr9OYdZyi0Gn4msvf6OvimTD
-	js8pCFPhmOVhnMct9kr+++Mw84iAqZgPhgaizM7/R3FKgrxj2AycrC+K+sYrQq0yfR5piUTR5IIzd
-	BSEqo7q7mvKhsz9GvmusI7DAMtKD/+lZQaxsU+B/+YKgw3C3Xf6tESD2u4uOamFJIP7eNDKYVzrJ8
-	+8vqoU7v8JIHnhmTd8LFvctJLPUbLpZFq+nZIP5yJabu4NCUU/BvxzN98A3g7kmPKoUOyu8ES2voR
-	Y1sp7+ZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-ID:Cc:To:
+	References:In-Reply-To:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KncFRUpaOfY4ZyVFYisto1+yJSIGRF5jXKHz5t+icNI=; b=wPtNny5cG5iIcxPFMr2wLR/P8Y
+	z8HDuNDUeUolmHh5oniwe9jg+tP7yHgu1cgHssUFKnalYvSxQA3WvkDmBW9uz+fYZkfglX9WS/ekm
+	fLzWaI32Hxd9bPW0Lu1THVZtopM8/TuyuF4dtZObcizR/MKMSHP+EZW1OXVm9poBXWPTD9icMEMic
+	vgDl9AFt5/lU5jBdZFJW0vkzgKNnNFb9N8Q10sOv/lhn0r62QTslyUeCKFOL1CIbyWssMyVOyh+q6
+	4YPAloGGwDnSMC+GvEBYLM+NoJO2cQmWE3mRuoWFZS6n9dVY8rPONVDy5DV36cq4i77dk7ShMicst
+	DlMbtIiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE8DQ-003MvQ-0O;
-	Fri, 15 Dec 2023 13:26:56 +0000
+	id 1rE8GB-003NNG-0h;
+	Fri, 15 Dec 2023 13:29:47 +0000
 Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE8DN-003Mtz-0J;
-	Fri, 15 Dec 2023 13:26:54 +0000
+	id 1rE8G6-003NKz-2h;
+	Fri, 15 Dec 2023 13:29:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 5D22BB827D8;
-	Fri, 15 Dec 2023 13:26:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 36AADC433C7;
-	Fri, 15 Dec 2023 13:26:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1702646810;
-	bh=00ZkD0cu7HBjZVGkRek2lsYzXAxF35Yjjr+hicSHu5Y=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=1Yo+W8ptX+67SOYAVONFRcrHI+q2aCFD7vEjWVSvPiznqrNEBN0RX7AuxQA8Fq9o3
-	 JJ3FNRJdXfsJ1lSkc+ATqb8/6/Ogg1HVpfhKJNCDv8PhCin6QqABrwy3PGC7WSyanW
-	 q3/sJsi8ph1KA5HU1TJgqgS1QPZxq8wiwlyCJz+Q=
-Date: Fri, 15 Dec 2023 14:26:48 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Francesco Dolcini <francesco@dolcini.it>
-Cc: Jiri Slaby <jirislaby@kernel.org>, linux-bluetooth@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, greybus-dev@lists.linaro.org,
-	linux-iio@vger.kernel.org, netdev@vger.kernel.org,
-	chrome-platform@lists.linux.dev,
-	platform-driver-x86@vger.kernel.org, linux-serial@vger.kernel.org,
-	linux-sound@vger.kernel.org,
-	Francesco Dolcini <francesco.dolcini@toradex.com>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
-	Jonathan Cameron <jic23@kernel.org>, Lee Jones <lee@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Hans de Goede <hdegoede@redhat.com>,
-	Ilpo =?iso-8859-1?Q?J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v1] treewide, serdev: change receive_buf() return type to
- size_t
-Message-ID: <2023121535-coveting-destruct-f567@gregkh>
-References: <20231214170146.641783-1-francesco@dolcini.it>
- <ZXs94Mf1eOMCmGpT@francesco-nb.int.toradex.com>
+	by ams.source.kernel.org (Postfix) with ESMTP id 83F2CB82910;
+	Fri, 15 Dec 2023 13:29:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0408EC433C7;
+	Fri, 15 Dec 2023 13:29:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1702646980;
+	bh=rpyS4v8W+CuN4+EjjXEahB1+6g1qTTqMvB9+ugujzJg=;
+	h=Subject:From:In-Reply-To:References:To:Cc:Date:From;
+	b=JXsLTunKMBBISI4ECLjoovakgd/auY72meweT5jEaGxWUmWWMPpUZ0/zdNwREoc2g
+	 2aS2ZNCm1VcCgKfG9UUbi1WD7ytS5cCUCgEypqXTrz2rzw7bDJr566wVPY4/Pny+JZ
+	 9e+Ey7VpBE4EOB0iIPpVVjiFfWnmnA44lv/DdIN36uMLpGqTXCll4jaanDarSgmOP2
+	 ZKcszw82ho2s3UYGfr7Wgo8tVp1rJ/hNwk1umGZv2WpM+73haNqFR0Rz01Xs04Y/af
+	 xJEUIKZhkdybjvF/4OYAtLELSFBU4uAHRvGWHL0FUfH+95hDrJL/ICpWFM3DS5YP2S
+	 sCWwwaOTG5JxQ==
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZXs94Mf1eOMCmGpT@francesco-nb.int.toradex.com>
+Content-Transfer-Encoding: 7bit
+Subject: Re: [PATCH v2][wireless-next/for-next] wifi: mt76: mt7996: Use
+ DECLARE_FLEX_ARRAY() and fix -Warray-bounds warnings
+From: Kalle Valo <kvalo@kernel.org>
+In-Reply-To: <ZXiU9ayVCslt3qiI@work>
+References: <ZXiU9ayVCslt3qiI@work>
+To: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ linux-hardening@vger.kernel.org
+User-Agent: pwcli/0.1.1-git (https://github.com/kvalo/pwcli/) Python/3.11.2
+Message-ID: <170264697580.1759617.6397953788753678096.kvalo@kernel.org>
+Date: Fri, 15 Dec 2023 13:29:37 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231215_052653_275995_3822EAEE 
-X-CRM114-Status: GOOD (  24.10  )
+X-CRM114-CacheID: sfid-20231215_052943_136860_9A94B6B9 
+X-CRM114-Status: UNSURE (   5.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,41 +80,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 14, 2023 at 06:39:44PM +0100, Francesco Dolcini wrote:
-> On Thu, Dec 14, 2023 at 06:01:46PM +0100, Francesco Dolcini wrote:
-> > From: Francesco Dolcini <francesco.dolcini@toradex.com>
-> > 
-> > receive_buf() is called from ttyport_receive_buf() that expects values
-> > ">= 0" from serdev_controller_receive_buf(), change its return type from
-> > ssize_t to size_t.
-> > 
-> > Suggested-by: Jiri Slaby <jirislaby@kernel.org>
-> > Link: https://lore.kernel.org/all/087be419-ec6b-47ad-851a-5e1e3ea5cfcc@kernel.org/
-> > Signed-off-by: Francesco Dolcini <francesco.dolcini@toradex.com>
-> > ---
-> > hello,
-> > patch is based on current linux next.
-> > 
-> > It has an obvious problem, it touches files from multiple subsystem in a single
-> > patch that is complicated to review and eventually merge, just splitting this
-> > would however not work, it will break bisectability and the build.
-> > 
-> > I am looking for advise on the best way to move forward.
-> > 
-> > I see the following options:
-> >  - keep it as it is
-> >  - break it down with a patch with each subsystem, and squash before applying
-> >    from a single (tty?) subsystem
-> >  - go for a multi stage approach, defining a new callback, move to it and in
-> >    the end remove the original one, likewise it was done for i2c lately
-> 
-> whoops. I just noticed Greg applied commit 475fc6e2de6f ("tty: serdev:
-> convert to u8 and size_t") that touch the exact same files without much
-> of an issue.
-> 
-> Probably the "keep it as it is" is just the way to go.
+"Gustavo A. R. Silva" <gustavoars@kernel.org> wrote:
 
-Yeah, looks good to me, now queued up, thanks!
+> Transform zero-length arrays `rate`, `adm_stat` and `msdu_cnt` into
+> proper flexible-array members in anonymous union in `struct
+> mt7996_mcu_all_sta_info_event` via the DECLARE_FLEX_ARRAY()
+> helper; and fix multiple -Warray-bounds warnings:
+> 
+> drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:544:61: warning: array subscript <unknown> is outside array bounds of 'struct <anonymous>[0]' [-Warray-bounds=]
+> drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:551:58: warning: array subscript <unknown> is outside array bounds of 'struct <anonymous>[0]' [-Warray-bounds=]
+> drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:553:58: warning: array subscript <unknown> is outside array bounds of 'struct <anonymous>[0]' [-Warray-bounds=]
+> drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:530:61: warning: array subscript <unknown> is outside array bounds of 'struct <anonymous>[0]' [-Warray-bounds=]
+> drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:538:66: warning: array subscript <unknown> is outside array bounds of 'struct <anonymous>[0]' [-Warray-bounds=]
+> drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:540:66: warning: array subscript <unknown> is outside array bounds of 'struct <anonymous>[0]' [-Warray-bounds=]
+> drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:520:57: warning: array subscript <unknown> is outside array bounds of 'struct all_sta_trx_rate[0]' [-Warray-bounds=]
+> drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:526:76: warning: array subscript <unknown> is outside array bounds of 'struct all_sta_trx_rate[0]' [-Warray-bounds=]
+> drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:526:76: warning: array subscript <unknown> is outside array bounds of 'struct all_sta_trx_rate[0]' [-Warray-bounds=]
+> drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:526:76: warning: array subscript <unknown> is outside array bounds of 'struct all_sta_trx_rate[0]' [-Warray-bounds=]
+> drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:526:76: warning: array subscript <unknown> is outside array bounds of 'struct all_sta_trx_rate[0]' [-Warray-bounds=]
+> 
+> This results in no differences in binary output, helps with the ongoing
+> efforts to globally enable -Warray-bounds.
+> 
+> Reviewed-by: Kees Cook <keescook@chromium.org>
+> Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
 
-greg k-h
+I'll take this directly wireless-next, ok?
+
+-- 
+https://patchwork.kernel.org/project/linux-wireless/patch/ZXiU9ayVCslt3qiI@work/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+
 
