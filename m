@@ -4,68 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8DD4C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 17:07:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B6E3C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 17:10:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v0uzB2tSOvyjjeg6f76hQq+qaT0eB3kXVI5fZEewRTY=; b=QW7glW/IDvLfsNhne6ItaO9duE
-	EIyQ/+inwm7jK/CzP5+mTDwNBbHb4O2rDwsHILWs3G/jSYjkVA2Hna3aJsh/qrHydv6vqay6qyJcp
-	qgKyTypdhfC5a+CJ37LQqZzSNZwZox9+e8VtN2AVa9pYW7r+mB4zYWPBssMwfgb9caanw1MKbt7mp
-	6YDuT1Q0LrAHgCA+WjJrFWV0Ci0DQR6aShaNAbga6kXeX4SrmxHFSFK0eBwFuzWGGUTnQU6fhwkGQ
-	AU0XpQNZIdXXFcvJVZO9wjAjCPbSeIcdgcXGrjGnbmF5949hztdmKzU7QvJRWKDLPXaG5nwytJ8tg
-	gT/uLTKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zae3m1cO9fSJoSwUDjCnhvMwaD0Cp7wkXYtacLoccYI=; b=UmMFW3aRnbadHGZxQDA0++/p5U
+	QCdXUUX+dCncN5dPzNT48dwsFR7Tac/k08AWJh77LFX26jwCJuZ5NqsAlXMlfZq6+2zGtWf1RxyhY
+	HT5t3wTB4q46R4O3bShbyfnR3StaA4f0seKI5VekOcNZzBeHX0hKSLA0QZ8RT5AocGb7AKJz8th36
+	K8Z8ON747jFPVfYyxcGUBpVEYciFZoadikOked1uqSd9a3uiWEYtRKnJVFdy8ebybOrWGowbSGwZx
+	DoKx+A7f8yfFQ7yyzV/G9VP96ac1PX6NFiqJuFef4Z4QuBidZxh7KhLiseQKgq6AbqCdmZdGjo/rV
+	NeQJRlzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEBfA-003yfo-2u;
-	Fri, 15 Dec 2023 17:07:48 +0000
-Received: from mail11.truemail.it ([2001:4b7e:0:8::81])
+	id 1rEBi1-003zfm-0g;
+	Fri, 15 Dec 2023 17:10:45 +0000
+Received: from galois.linutronix.de ([193.142.43.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEBf7-003ycJ-2c;
-	Fri, 15 Dec 2023 17:07:47 +0000
-Received: from francesco-nb.int.toradex.com (93-49-2-63.ip317.fastwebnet.it [93.49.2.63])
-	by mail11.truemail.it (Postfix) with ESMTPA id ADB5C20640;
-	Fri, 15 Dec 2023 18:07:37 +0100 (CET)
-Date: Fri, 15 Dec 2023 18:07:33 +0100
-From: Francesco Dolcini <francesco@dolcini.it>
-To: Johan Hovold <johan@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Francesco Dolcini <francesco@dolcini.it>,
-	Jiri Slaby <jirislaby@kernel.org>, linux-bluetooth@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, greybus-dev@lists.linaro.org,
-	linux-iio@vger.kernel.org, netdev@vger.kernel.org,
-	chrome-platform@lists.linux.dev,
-	platform-driver-x86@vger.kernel.org, linux-serial@vger.kernel.org,
-	linux-sound@vger.kernel.org,
-	Francesco Dolcini <francesco.dolcini@toradex.com>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Alex Elder <elder@kernel.org>, Jonathan Cameron <jic23@kernel.org>,
-	Lee Jones <lee@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>, Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Hans de Goede <hdegoede@redhat.com>,
-	Ilpo =?iso-8859-1?Q?J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v1] treewide, serdev: change receive_buf() return type to
- size_t
-Message-ID: <ZXyH1Zv3Pxd6S3ag@francesco-nb.int.toradex.com>
-References: <20231214170146.641783-1-francesco@dolcini.it>
- <ZXxWX-Fw1InID2ax@hovoldconsulting.com>
- <ZXxa7yzKzG6048vw@francesco-nb.int.toradex.com>
- <ZXx8bCVyxJ9Ddvqm@hovoldconsulting.com>
+	id 1rEBhy-003zbw-1H
+	for linux-mediatek@lists.infradead.org;
+	Fri, 15 Dec 2023 17:10:44 +0000
+From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1702660241;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=zae3m1cO9fSJoSwUDjCnhvMwaD0Cp7wkXYtacLoccYI=;
+	b=JtWcWrlRr/Yw4kQ1UWySiE1WnFklIBcg9wCnilSSfcJDNnaXHknsfFQ2hm3Wg/ONikWDB+
+	WRxCE/Tc1oj8/5Vra+uDd80anJKj5JKArhylRiQWeqOiu9dGS2spg5Z1FiJFb7PYir9ZLl
+	YgPOBKKzrgsCa96PnNswic05kIQ/rUSbCdeqFC5thljdEb55zV5ywwfj1sceBkMTCRU0p4
+	y7xHwZ+cy0+IUt7MuLeHRIi5cN42VqdLlD8SLMT0QybC5HYV7wrPuUzJG43qDI9Xt9mesD
+	1NDCCGSXDR+g3yntLA8aFfivSR8gLveMOz0FQOgX4TMdKDdRnyy3zgJi+xJuvw==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1702660241;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=zae3m1cO9fSJoSwUDjCnhvMwaD0Cp7wkXYtacLoccYI=;
+	b=NzCo4hAyNx+4VtNSo05p7oXiKzL7azy7XiXo4Ljk4IPRdRDvvQB9bLy3+o8Xz+b/cRIMks
+	tfLo+tJk/hEPGUCQ==
+To: linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Boqun Feng <boqun.feng@gmail.com>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Frederic Weisbecker <frederic@kernel.org>,
+	Ingo Molnar <mingo@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Peter Zijlstra <peterz@infradead.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Waiman Long <longman@redhat.com>,
+	Will Deacon <will@kernel.org>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	"K. Y. Srinivasan" <kys@microsoft.com>,
+	Alexei Starovoitov <ast@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Dexuan Cui <decui@microsoft.com>,
+	Dimitris Michailidis <dmichail@fungible.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Haiyang Zhang <haiyangz@microsoft.com>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Jeroen de Borst <jeroendb@google.com>,
+	Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Crispin <john@phrozen.org>,
+	John Fastabend <john.fastabend@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Praveen Kaligineedi <pkaligineedi@google.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Shailend Chand <shailend@google.com>,
+	UNGLinuxDriver@microchip.com,
+	Wei Liu <wei.liu@kernel.org>,
+	bpf@vger.kernel.org,
+	linux-hyperv@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next 19/24] net: fungible, gve, mtk, microchip, mana: Use nested-BH locking for XDP redirect.
+Date: Fri, 15 Dec 2023 18:07:38 +0100
+Message-ID: <20231215171020.687342-20-bigeasy@linutronix.de>
+In-Reply-To: <20231215171020.687342-1-bigeasy@linutronix.de>
+References: <20231215171020.687342-1-bigeasy@linutronix.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZXx8bCVyxJ9Ddvqm@hovoldconsulting.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231215_090746_042886_1A6B6D29 
-X-CRM114-Status: GOOD (  22.19  )
+X-CRM114-CacheID: sfid-20231215_091042_712155_36A4B73C 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,49 +112,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Johan, Greg
+The per-CPU variables used during bpf_prog_run_xdp() invocation and
+later during xdp_do_redirect() rely on disabled BH for their protection.
+Without locking in local_bh_disable() on PREEMPT_RT these data structure
+require explicit locking.
 
-On Fri, Dec 15, 2023 at 05:18:52PM +0100, Johan Hovold wrote:
-> On Fri, Dec 15, 2023 at 02:55:59PM +0100, Francesco Dolcini wrote:
-> > To me the change is correct, with that said probably this should have
-> > been explicitly mentioned in the commit message or a separate
-> > preparation patch.
-> 
-> It's a separate change and should not be hidden away in a tree-wide
-> change that goes through a different maintainer.
-> 
-> Please drop this change from this patch and resubmit it separately to me
-> if you want and I'll review when I have the time.
+This is a follow-up on the previous change which introduced
+bpf_run_lock.redirect_lock and uses it now within drivers.
 
-Fine, I agree.
+The simple way is to acquire the lock before bpf_prog_run_xdp() is
+invoked and hold it until the end of function.
+This does not always work because some drivers (cpsw, atlantic) invoke
+xdp_do_flush() in the same context.
+Acquiring the lock in bpf_prog_run_xdp() and dropping in
+xdp_do_redirect() (without touching drivers) does not work because not
+all driver, which use bpf_prog_run_xdp(), do support XDP_REDIRECT (and
+invoke xdp_do_redirect()).
 
-I see those options (let me know if you see other options I have not
-mentioned):
+Ideally the minimal locking scope would be bpf_prog_run_xdp() +
+xdp_do_redirect() and everything else (error recovery, DMA unmapping,
+free/ alloc of memory, =E2=80=A6) would happen outside of the locked sectio=
+n.
 
-1. I add this change (taking into account also intel ice) as a separate
-   patch in this series and you may just ack it and Greg could merge
-   together with the serdev one.
-2. I prepare an independent patch for the GNSS change and only once this
-   is merged I'll send a rebased v2 of this one.
-3. I update this patch without this GNSS API change, that mean I will
-   have to cast away the signed type from a few GNSS drivers.
+Cc: "K. Y. Srinivasan" <kys@microsoft.com>
+Cc: Alexei Starovoitov <ast@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Dexuan Cui <decui@microsoft.com>
+Cc: Dimitris Michailidis <dmichail@fungible.com>
+Cc: Felix Fietkau <nbd@nbd.name>
+Cc: Haiyang Zhang <haiyangz@microsoft.com>
+Cc: Horatiu Vultur <horatiu.vultur@microchip.com>
+Cc: Jeroen de Borst <jeroendb@google.com>
+Cc: Jesper Dangaard Brouer <hawk@kernel.org>
+Cc: John Crispin <john@phrozen.org>
+Cc: John Fastabend <john.fastabend@gmail.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Mark Lee <Mark-MC.Lee@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Praveen Kaligineedi <pkaligineedi@google.com>
+Cc: Sean Wang <sean.wang@mediatek.com>
+Cc: Shailend Chand <shailend@google.com>
+Cc: UNGLinuxDriver@microchip.com
+Cc: Wei Liu <wei.liu@kernel.org>
+Cc: bpf@vger.kernel.org
+Cc: linux-hyperv@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org
+Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+---
+ drivers/net/ethernet/fungible/funeth/funeth_rx.c     |  1 +
+ drivers/net/ethernet/google/gve/gve_rx.c             | 12 +++++++-----
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c          |  1 +
+ drivers/net/ethernet/microchip/lan966x/lan966x_xdp.c |  1 +
+ drivers/net/ethernet/microsoft/mana/mana_bpf.c       |  1 +
+ 5 files changed, 11 insertions(+), 5 deletions(-)
 
-1 is my preferred option, 2 is fine, but it seems a little bit of overdoing,
-3 I would avoid, we are doing this cleanup to be a little bit more
-strongly typed and to prevent the kind of bugs that is the original trigger
-for this patch.
-
-What would you Greg and Johan prefer?
-
-
-> And when doing tree-wide changes, please try to follow the style of the
-> driver you are changing (e.g. do not introduce inconsistencies by
-> changing to open parenthesis alignment of continuation lines in code
-> that do not use it).
-
-ack, sorry about that, looking back at the archive is seems a recent
-pain point, also Jiri fell in this trap.
-
-Francesco
+diff --git a/drivers/net/ethernet/fungible/funeth/funeth_rx.c b/drivers/net=
+/ethernet/fungible/funeth/funeth_rx.c
+index 7e2584895de39..e7b1382545908 100644
+--- a/drivers/net/ethernet/fungible/funeth/funeth_rx.c
++++ b/drivers/net/ethernet/fungible/funeth/funeth_rx.c
+@@ -152,6 +152,7 @@ static void *fun_run_xdp(struct funeth_rxq *q, skb_frag=
+_t *frags, void *buf_va,
+ 	xdp_prepare_buff(&xdp, buf_va, FUN_XDP_HEADROOM, skb_frag_size(frags) -
+ 			 (FUN_RX_TAILROOM + FUN_XDP_HEADROOM), false);
+=20
++	guard(local_lock_nested_bh)(&bpf_run_lock.redirect_lock);
+ 	xdp_prog =3D READ_ONCE(q->xdp_prog);
+ 	act =3D bpf_prog_run_xdp(xdp_prog, &xdp);
+=20
+diff --git a/drivers/net/ethernet/google/gve/gve_rx.c b/drivers/net/etherne=
+t/google/gve/gve_rx.c
+index 73655347902d2..504c8ef761a33 100644
+--- a/drivers/net/ethernet/google/gve/gve_rx.c
++++ b/drivers/net/ethernet/google/gve/gve_rx.c
+@@ -779,11 +779,13 @@ static void gve_rx(struct gve_rx_ring *rx, netdev_fea=
+tures_t feat,
+ 				 page_info->page_offset, GVE_RX_PAD,
+ 				 len, false);
+ 		old_data =3D xdp.data;
+-		xdp_act =3D bpf_prog_run_xdp(xprog, &xdp);
+-		if (xdp_act !=3D XDP_PASS) {
+-			gve_xdp_done(priv, rx, &xdp, xprog, xdp_act);
+-			ctx->total_size +=3D frag_size;
+-			goto finish_ok_pkt;
++		scoped_guard(local_lock_nested_bh, &bpf_run_lock.redirect_lock) {
++			xdp_act =3D bpf_prog_run_xdp(xprog, &xdp);
++			if (xdp_act !=3D XDP_PASS) {
++				gve_xdp_done(priv, rx, &xdp, xprog, xdp_act);
++				ctx->total_size +=3D frag_size;
++				goto finish_ok_pkt;
++			}
+ 		}
+=20
+ 		page_info->pad +=3D xdp.data - old_data;
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethe=
+rnet/mediatek/mtk_eth_soc.c
+index 3cf6589cfdacf..477a74ee18c0a 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -1946,6 +1946,7 @@ static u32 mtk_xdp_run(struct mtk_eth *eth, struct mt=
+k_rx_ring *ring,
+ 	if (!prog)
+ 		goto out;
+=20
++	guard(local_lock_nested_bh)(&bpf_run_lock.redirect_lock);
+ 	act =3D bpf_prog_run_xdp(prog, xdp);
+ 	switch (act) {
+ 	case XDP_PASS:
+diff --git a/drivers/net/ethernet/microchip/lan966x/lan966x_xdp.c b/drivers=
+/net/ethernet/microchip/lan966x/lan966x_xdp.c
+index 9ee61db8690b4..026311af07f9e 100644
+--- a/drivers/net/ethernet/microchip/lan966x/lan966x_xdp.c
++++ b/drivers/net/ethernet/microchip/lan966x/lan966x_xdp.c
+@@ -84,6 +84,7 @@ int lan966x_xdp_run(struct lan966x_port *port, struct pag=
+e *page, u32 data_len)
+ 	xdp_prepare_buff(&xdp, page_address(page),
+ 			 IFH_LEN_BYTES + XDP_PACKET_HEADROOM,
+ 			 data_len - IFH_LEN_BYTES, false);
++	guard(local_lock_nested_bh)(&bpf_run_lock.redirect_lock);
+ 	act =3D bpf_prog_run_xdp(xdp_prog, &xdp);
+ 	switch (act) {
+ 	case XDP_PASS:
+diff --git a/drivers/net/ethernet/microsoft/mana/mana_bpf.c b/drivers/net/e=
+thernet/microsoft/mana/mana_bpf.c
+index 23b1521c0df96..d465b1dd9fca0 100644
+--- a/drivers/net/ethernet/microsoft/mana/mana_bpf.c
++++ b/drivers/net/ethernet/microsoft/mana/mana_bpf.c
+@@ -93,6 +93,7 @@ u32 mana_run_xdp(struct net_device *ndev, struct mana_rxq=
+ *rxq,
+ 	xdp_init_buff(xdp, PAGE_SIZE, &rxq->xdp_rxq);
+ 	xdp_prepare_buff(xdp, buf_va, XDP_PACKET_HEADROOM, pkt_len, false);
+=20
++	guard(local_lock_nested_bh)(&bpf_run_lock.redirect_lock);
+ 	act =3D bpf_prog_run_xdp(prog, xdp);
+=20
+ 	rx_stats =3D &rxq->stats;
+--=20
+2.43.0
 
 
