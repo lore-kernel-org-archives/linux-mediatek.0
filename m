@@ -4,188 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A3E1C4332F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1BFBC4167D
 	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 07:00:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y5JJBjAWAyfY3QIjQH9ebAJ3kKGYpn46ngYGJ2lyEF4=; b=spi+eZirTaDQZfM5guNL8YpPKB
-	FWrfWfMvcXqU3zNb3IeteD09szKpWPEkjfrDNPUdmkgK77aC9tUC/fag4gdKlS8yZpJGTKdS6lUko
-	7uQoFLi3ZEzXNTZkcdAvrN/F3M4vNSE+u3DMEPP0vJmFvlPQ1Jl3mgfkaPsPjROpCQ9Wn9tvaTQDO
-	3yJknIRW2UGFcdZaL330QfxPjfkcLU4brzunQeEb96wBoBRb985tB78atkcUcKJsmSKJcbha4gCUP
-	0L+LtHtnKrRKgwMvudhGENJY/q6Srpo9jPmNuQcha531iGbqvxUdv9izDrRBFwf5hFFf7y9C81kjb
-	LZ7fzxXg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BTCqKfdwdR9v46nV62z59E3sFP0odYPdEQLNmh4+llU=; b=mktH2AKofs/zfA+JJ0pARburA5
+	KAjiy0//ewv8xbo6AfqYw+KuYsbcOl8EgUNXG2PIsVO6DUN7FJudm6BAuaG4kdrEHAhS5FwWCvaOK
+	CvrgkbhuKqjSsfSY0g9j7AE1zj1jHgnmu/E82RH8x6vazeUryvYgGLy6vCpZJfEq+uAj9Iot8YaDA
+	giEx/rwZ1TTw3SCO1tjqFS3s2JScO7s+tczhy7vadlGK5qXkdi462ePHDzmKBIH78givBM39dxgXH
+	QVGGrU+vTus1EDN4P8KaTEcxU1IhPFe1UwwLHPHl5O3ZFk6a7sjW2snHuM89/3PR0OlzwQdWcwVto
+	Ar3xLOIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE2Ba-002FRy-1L;
+	id 1rE2Ba-002FSA-2T;
 	Fri, 15 Dec 2023 07:00:38 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE2BW-002FQJ-2g;
-	Fri, 15 Dec 2023 07:00:36 +0000
-X-UUID: 96d4d6029b1711ee958cff29c719f35b-20231215
+	id 1rE2BX-002FPk-1h
+	for linux-mediatek@lists.infradead.org;
+	Fri, 15 Dec 2023 07:00:37 +0000
+X-UUID: 927067a29b1711ee958cff29c719f35b-20231215
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=Y5JJBjAWAyfY3QIjQH9ebAJ3kKGYpn46ngYGJ2lyEF4=;
-	b=qffuRMvzU4YxqC/TBDfJkH9SysCY68ZFFC+CbtIVwq2VHSG0bYMxJSn/1Csu/vuRrPnLTSg7/S9UhVEFCKjxlTs6cHcH0R0M+EXRAYnatPoNxGS+JPWFyvgMOuXKHrcwfOu1lsiql+KIi9gIxD74f2vJjaweWYlRn7y0QLIeZLE=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=BTCqKfdwdR9v46nV62z59E3sFP0odYPdEQLNmh4+llU=;
+	b=cEqYxVbKs3VPo4AxOjw3XAhJSwoby8Xb4LO9qNx3TRORAGykptMjEOTR/puo2KmVKPuz3xJLInxtvADBMrjeJ4kpdTNAmczVbLphMph+chaV9uJfrdUSsG3jllR/Y2S82ioHy6YcgGYGOr51RrFVWn0fXWYBKd4aA7SKpH2+UIU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:a7294299-7b6b-49b5-8a9d-2090602a1051,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:79b4d273-1bd3-4f48-b671-ada88705968c,B
+X-CID-O-INFO: VERSION:1.1.35,REQID:2d5e4280-8939-483c-8205-969b1eb6beaa,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:5d391d7,CLOUDID:f71cb4fd-4a48-46e2-b946-12f04f20af8c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 96d4d6029b1711ee958cff29c719f35b-20231215
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 927067a29b1711ee958cff29c719f35b-20231215
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <hao.qin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 925758291; Fri, 15 Dec 2023 00:00:11 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+	with ESMTP id 937768198; Fri, 15 Dec 2023 00:00:03 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 15 Dec 2023 14:59:35 +0800
-Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 15 Dec 2023 14:59:35 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MuLDbHJNr7yCAXCV/3FOJPkbYrt5DGC+jdLxuqLjIB2fzC3UcSJSEqHwaqRl1A2ahS8lcCMyBfFmMu7Fme9j6Dfr8urhwxuIIqwcMtZSNhhyUspf6G7L7uW2XV1txVcxhRBjbLTPzHEC6NwELINCiCpycOylrc4i5H4SlQuC/AFs/wh8KkSEjJ7SSG9zJw9GlYcGemsPGShd97KvcIZYFjzRaF0HE748Fid9zrEAr1xwz0hG9L18+cPw8a5F8KEYyspy9DjYEyVgizGmlz9i1L+NZsPMtr3baB/dZ1Y+wrFma9SvFOce74FDpNL85zWyrsjfSjw3m3P82fcSvxTBjA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Y5JJBjAWAyfY3QIjQH9ebAJ3kKGYpn46ngYGJ2lyEF4=;
- b=cmXIwCHj7Syj3d4BTCvjVjNtiJ0RuI6QyryizVdDU77rZxj7qwwRAOw75l9Qdl9SHvPHLedl8at54gx0LhBajajQ2BEJKOXzk6ERLyRhIrPinttLpKz04YuaUwGT8C+cBwza3bc/QbVa9rWkUwyzXXECLzvMXp5ZVjgizpSbdUfV7kLHRA0S1Z6NdBTpch9Y1wxbtVDFn9ZbiFd5N+4FxrtjzermJHztTYAKSQTSu2FpdRmQPVnqga5T1W/1aKzjdyqEYDVZNw3Q4PeUhDJTJUQSU1f2RWcCmG+sQHq3oTZOMYIWAek+F4Sxof8nm0Yw+X8SwWYHzjSYSUCAa5b54w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Y5JJBjAWAyfY3QIjQH9ebAJ3kKGYpn46ngYGJ2lyEF4=;
- b=uDWm1wGL+JS0XDueXC05veoaZJofOMcP38lttZ5NyBh7Xqb6ojdrg8lgN6rnFhhA5iaHwNPoCGCgYq9IJVWfuZflzRqW4DO6Tqtt8pFHbI//+iyePK1GHE6JwJPHiKqVQNNtK4MFPO32kldc1rBhliI6KIL7pH+mehIM+vIJiGs=
-Received: from PSAPR03MB5605.apcprd03.prod.outlook.com (2603:1096:301:66::6)
- by JH0PR03MB8951.apcprd03.prod.outlook.com (2603:1096:990:7a::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7091.28; Fri, 15 Dec
- 2023 06:59:32 +0000
-Received: from PSAPR03MB5605.apcprd03.prod.outlook.com
- ([fe80::4cdf:58fb:79dd:4b7f]) by PSAPR03MB5605.apcprd03.prod.outlook.com
- ([fe80::4cdf:58fb:79dd:4b7f%4]) with mapi id 15.20.7091.028; Fri, 15 Dec 2023
- 06:59:31 +0000
-From: =?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
-To: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "jejb@linux.ibm.com"
-	<jejb@linux.ibm.com>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "quic_mnaresh@quicinc.com"
-	<quic_mnaresh@quicinc.com>, "martin.petersen@oracle.com"
-	<martin.petersen@oracle.com>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"quic_nguyenb@quicinc.com" <quic_nguyenb@quicinc.com>, "avri.altman@wdc.com"
-	<avri.altman@wdc.com>, "bvanassche@acm.org" <bvanassche@acm.org>,
-	"linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
-	"alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "chu.stanley@gmail.com"
-	<chu.stanley@gmail.com>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "quic_cang@quicinc.com"
-	<quic_cang@quicinc.com>
-Subject: Re: [PATCH V5 2/2] ufs: ufs-mediatek: Migrate to UFSHCD generic CPU
- latency PM QoS support
-Thread-Topic: [PATCH V5 2/2] ufs: ufs-mediatek: Migrate to UFSHCD generic CPU
- latency PM QoS support
-Thread-Index: AQHaLcIyClbhbxWrEEOr0C6WzGnymLCp7PsA
-Date: Fri, 15 Dec 2023 06:59:31 +0000
-Message-ID: <f9085437f5ac76ef796f212e377b53da337d4213.camel@mediatek.com>
-References: <20231213124353.16407-1-quic_mnaresh@quicinc.com>
-	 <20231213124353.16407-3-quic_mnaresh@quicinc.com>
-In-Reply-To: <20231213124353.16407-3-quic_mnaresh@quicinc.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PSAPR03MB5605:EE_|JH0PR03MB8951:EE_
-x-ms-office365-filtering-correlation-id: 44074096-cdfe-4f92-d488-08dbfd3b6380
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: VHBhkRdV8biPP9tXk6gfKeRO00e65dPYLP52y7xXW5wRmsXNTVrjurpP8rmseFsGuyuDbXgp/TQ5+99C3F0MmEO5aSGyMMS4x22YqqLM5H0Bhvhgd8suD+wXERpGAAkLCUWzmTHPgNtE62FWEMp0XOAubr7qJQ4iDKlXwatQIFVAaw3bnuUWYyRjfNCuPQveY/5gdk0PkYKMEt0656lOsVZWJ3X9zKLt+ydJXPKUNJJUJqy/3j5+8NiMW+nU2NIWlrE6m1HZqOZBTMLBVwTMeLH1AGHK5Lc7RGZngr+l9UpnHdJJHxl6z6qmUYycMFgWl+Wd7TIDd6Dv4UtXZCRpFtiS4crI8EnSWoWoa8MvJz2QVpd9ghUdE7DCou4zspG86Xvyq6J1+kQ0e6XJRzgtje7QHLubRYbxtIvRkHHV5w9/DxqEP3+nKQJYe9VSFdLbsrxDC6eDT3Amvc1MuomEySROZprE+8WyPLQZmE6vN6sYRZBZFMlW8RavnbTduFhHW/GFCB1f4pYMIouUy5AETbIFTm7lxSD93BMtc2eUx3q2XwK4WAWlruGvfyxkVT+4sZNIKqxCpvnp0L/aKG3RaZRxMu+nbYWT9xrCzZ7YKOu2HvuQ12oH36RD8/LiC5NkNbjwO5YJ6s6s/rwf4J+5HjGInHLshmlNWSoy3ap8e3iHQQ5Q/lVcR/mPUOthMqlyh9d9EFHMSvTjam9zBU5mzNcNVF8T+4A1VQxdQ3lS+ebXNG0T0YFPHwg0ddRqGb7/
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PSAPR03MB5605.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376002)(346002)(366004)(396003)(39860400002)(136003)(230922051799003)(230273577357003)(230173577357003)(186009)(1800799012)(451199024)(64100799003)(38100700002)(4326008)(8936002)(122000001)(2906002)(4001150100001)(110136005)(83380400001)(316002)(36756003)(8676002)(85182001)(5660300002)(7416002)(38070700009)(26005)(41300700001)(478600001)(6512007)(71200400001)(2616005)(4744005)(6486002)(6506007)(54906003)(91956017)(64756008)(66476007)(66556008)(66446008)(66946007)(76116006)(86362001)(41533002)(99106002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?cW9BcFVOTEVVZWtQd2trd0pSMjZlM21CdU1adFNsM0lKVHFBbS9XWXFidTc0?=
- =?utf-8?B?M3o5aGtiQlhacGNUYkVsYzA5K2RhYXNXR2RNc3NOV2poMlFLOVdDYy9ENU1L?=
- =?utf-8?B?bUU3TE9tbVF0ZlVGeUpPY2ExdmlsQzRPaEJwTzh5L1VyL2xJSWw3MDE1SHUx?=
- =?utf-8?B?b1hkVElOSE5PejQwNkVlalluc0VaOFV2M0dsRElqdUVuTzRZYTYrcHphdW9V?=
- =?utf-8?B?SndGbFh3Y2Z1NGJDQ0FuMUZmbHR6d2FNczRqQVYxcDRkUmk2emlabHBJSGEr?=
- =?utf-8?B?ek85Y2tEYmNQVisxM2ZFd1Y0bFRBMC9VRjdUbENOdm9TVWNLb1hlVDBadlk0?=
- =?utf-8?B?ekhaTGdYTTJ5NSszamxYdVh3YXhzZDV2eWpoWTJlRXI5ckRFb1FEelFEWXZQ?=
- =?utf-8?B?c3RFc3lqRUV3cHZFWXpRYzkyMWsrNmMzODF2S0RaUXhoOFpEa09LbVJsbFVN?=
- =?utf-8?B?L1Y1YzJrdGo0TXJpVVBWM1IwcE8xQVM2YnU1SW1VQ3lQZXF0am4wN1hoSFJL?=
- =?utf-8?B?VTg0YVhRSDNNa2JBL3dVR3pxelJGUEYxUVNhOVd3bFNQZ2RvUDRjK0lPRDA4?=
- =?utf-8?B?azBnYVY5aVIrN2ttaXdxL1ppanM0aElNWStueVdUcC9iNHg3eWtsSGZZRHdV?=
- =?utf-8?B?ZGJLbURRemYwYTU0bFBTMVRBR2o2TjNRMGxaeGRSQUovLy92R1R0SUxjUFhK?=
- =?utf-8?B?Z0pCSE80Z1NGYmJyVHdPSlJYMDVSYUptOS91eHJhOEI3M3JCRGl5VG1tU1oy?=
- =?utf-8?B?ZVJSK2FxR05CY1VNVUpzbFJwZ0JwTTJrbGJnN0JiY3BMT2MxVWVnWHlQWk5Q?=
- =?utf-8?B?SENqeVQwR0RQc1Z0QUlxZHhoZUVyTE1UdlRwTDQ3MjA4dm9TOWVhci9jbkNJ?=
- =?utf-8?B?U2tyN1NUV1hRbEU2Q3VveG5Uc2tyTkNITXR0ZlRlNGpwVU9KRHRuYzVaVEdQ?=
- =?utf-8?B?WUZ4UUd1Sk4wNWNCUzNzUytZUXpkTVVoQ1lyQ055UERkTHBMSHpOYjFkbWE1?=
- =?utf-8?B?dVhpbHBoRStXS3lDalcxdzBsbE9HZ2hqNmxucnprRDhLdGlyczh1MXhXbGYx?=
- =?utf-8?B?VU5GWVUzRGtMUkx0Y2JOeHhTSDMwTVVIc1BUcGw3Q0dqajlyYjNlNWhTRDlt?=
- =?utf-8?B?SUhnZExQeFNWVWtjcGZXOG9BWkdpUE5YYk54ZnFQYVRja1lERUQ3OEhZYWpD?=
- =?utf-8?B?ajdPUUQzVXZ2RHlQRlVXT0lBcG84RXZYa3hwVkNqbGp2UWIxcGNHc3VqRERM?=
- =?utf-8?B?eDVJL2xsS1c5SVFSS0dWeW56cFhhYnBNWFFmdnhZSkVWRE9WeG1LNmpOK1kw?=
- =?utf-8?B?R0k0L1hmVDBkOW91Mm81aGZtWVpLajdCT2NNa0Z6S2dUakxoVEZ6ZHJJUXpJ?=
- =?utf-8?B?UFZNRkdiZ0s2K0VXckVJbXluOFcrN2dXWmVCZnA5bzVEVHgxVmlTMU95bjZE?=
- =?utf-8?B?WkIwTjBaSWdJNmlHd29pbWdKdmNVN2VtalZIWnZPb3NUUG5RTklidVljWDNl?=
- =?utf-8?B?MVA0NzAwaEtxYThyeGkvQm44UTZ2N05DZ0d3Ynh4TXk0VFBOVVhob3d5cU9U?=
- =?utf-8?B?KzVXaEFwbllLMmxETXFqdGI0bmxNN0RLcmZSTy84clFhaU5QemEwanBhMGhQ?=
- =?utf-8?B?MjBnNnEzQ1NDbzJuSWtpYUs2d1JkZHFlK3B2R2RXZHo2OEFlUUhtOFhsU24z?=
- =?utf-8?B?dDVHZldYWFM0Y1pUYTRuVWRFMVljS1Fpc1RscWUxSFlTbFpqL29xT3poa2w5?=
- =?utf-8?B?Q2haWkg5eXJ6N3NtSk5jdmoyWUdUNEhmelVvU1I4WlVKQys0R0JxL0xxOVlp?=
- =?utf-8?B?clEwTEhXTjFwbVUwekp1czFnOXZjMVdhRzhaZ0ZkWUE1cUdCM3FXT3lFZkVB?=
- =?utf-8?B?L1E5TGpveWNhS3h0L0lubmtPQlloYXQ0MkxaUE9URTVyTkl3K2ZSYWJOWGxM?=
- =?utf-8?B?KzJKYUthTXc5cHgrbkttSzFQWlllU3JjREJLaDZ3NDk0d01FWHEvWXRRcm9v?=
- =?utf-8?B?UUFzcDV3SklqNzd3VHJFaXJ0T0pQaG5JQzY0cTJlYUJkQU5GOXgvQi9malpw?=
- =?utf-8?B?NUw3WHJGQlZDUkNhLzM4bmUyajgrclc0WlcyZ1hFczdnU0ZNSTlYSkZRbXY1?=
- =?utf-8?B?ZmZtMkR4Z3pOQUtRQjd2QW1YWm5RM1d5MWt2TWJ5cCtTUGU1S2ZYdlV5ZDBN?=
- =?utf-8?B?R2c9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <E28411104D04254B9AA3179CD7E1C502@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ 15.2.1118.26; Fri, 15 Dec 2023 14:40:00 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 15 Dec 2023 14:39:59 +0800
+From: Hao Qin <hao.qin@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.Wu@mediatek.com>,
+	Aaron Hou <aaron.hou@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, Steve
+ Lee <steve.lee@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, hao.qin <hao.qin@mediatek.com>
+Subject: [PATCH 1/1] Bluetooth: btusb: mediatek: add a recovery method for MT7922
+Date: Fri, 15 Dec 2023 14:37:14 +0800
+Message-ID: <20231215063714.7684-1-hao.qin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PSAPR03MB5605.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 44074096-cdfe-4f92-d488-08dbfd3b6380
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Dec 2023 06:59:31.7116
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: yVd8tV9IGN30ZvHsDAAmMKYFB0UGR+1IUOFu6ypwdyrsvFEGxdcaiM5qF71jFNICnr+s0QrI0xA+AsOa5RzhOQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR03MB8951
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.908500-8.000000
-X-TMASE-MatchedRID: h20DFeLkM8/UL3YCMmnG4mpvRxhlGy+njLOy13Cgb4/n0eNPmPPe5KWz
-	WoIRiV9DM/Se/q/gEyf5MiS7M8c1eGmXMi7Ntyo2hCecAVGCOf1MjQ19j30wyZDZNsgKQU52M1e
-	p6kdhO8J55MrUBR+0shvmHdgIY5hMlwV2iaAfSWfSBVVc2BozSlQshXUqyD333ZzbDar2Qzzakj
-	6FuUTADwtuKBGekqUpbGVEmIfjf3uJEQG/YtIOYlTXVlThgP0q7lYqB9ofMmok3MKCXh+iF0B81
-	AUqavHP
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.908500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: AE1C0613A942B27D74A3386900B1340A8E51742AA8AAFDDCE6261FA80CB0F7602000:8
-X-MTK: N
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231214_230034_879097_A6D97993 
-X-CRM114-Status: UNSURE (   8.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231214_230035_570424_39EAD589 
+X-CRM114-Status: GOOD (  11.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -200,12 +86,135 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyMDIzLTEyLTEzIGF0IDE4OjEzICswNTMwLCBNYXJhbWFpbmEgTmFyZXNoIHdyb3Rl
-Og0KPiAgCSANCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtzIG9y
-IG9wZW4gYXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVyaWZpZWQgdGhlIHNlbmRlciBv
-ciB0aGUgY29udGVudC4NCj4gIFRoZSBQTSBRb1MgZmVhdHVyZSBmb3VuZCBpbiB0aGUgTWVkaWFU
-ZWsgVUZTIGRyaXZlciB3YXMgbW92ZWQgdG8gdGhlDQo+IFVGU0hDRA0KPiBjb3JlLiBIZW5jZSBy
-ZW1vdmUgaXQgZnJvbSBNZWRpYVRlayBVRlMgZHJpdmVyIGFzIGl0IGlzIHJlZHVuZGFudA0KPiBu
-b3cuDQo+IA0KPiANCg0KUmV2aWV3ZWQtYnk6IFBldGVyIFdhbmcgPHBldGVyLndhbmdAbWVkaWF0
-ZWsuY29tPg0KDQo=
+From: "hao.qin" <hao.qin@mediatek.com>
+
+For MT7922, perform a reset before patch download to avoid
+unexpected problems caused by inconsistency between upper layer
+status and dongle status. Add USB reset retry to recover from
+unexpected patch download failure.
+
+Signed-off-by: hao.qin <hao.qin@mediatek.com>
+---
+ drivers/bluetooth/btusb.c | 66 +++++++++++++++++++++++++++------------
+ 1 file changed, 46 insertions(+), 20 deletions(-)
+
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 0926e4451802..778e1a0d9cae 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -2812,7 +2812,7 @@ static int btusb_mtk_hci_wmt_sync(struct hci_dev *hdev,
+ 	 * WMT command.
+ 	 */
+ 	err = wait_on_bit_timeout(&data->flags, BTUSB_TX_WAIT_VND_EVT,
+-				  TASK_INTERRUPTIBLE, HCI_INIT_TIMEOUT);
++				  TASK_INTERRUPTIBLE, HCI_CMD_TIMEOUT);
+ 	if (err == -EINTR) {
+ 		bt_dev_err(hdev, "Execution of wmt command interrupted");
+ 		clear_bit(BTUSB_TX_WAIT_VND_EVT, &data->flags);
+@@ -2994,28 +2994,22 @@ static u32 btusb_mtk_reset_done(struct hci_dev *hdev)
+ 	return val & MTK_BT_RST_DONE;
+ }
+ 
+-static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
++static int btusb_mtk_subsys_reset(struct hci_dev *hdev, u32 dev_id)
+ {
+ 	struct btusb_data *data = hci_get_drvdata(hdev);
+-	struct btmediatek_data *mediatek;
+ 	u32 val;
+ 	int err;
+ 
+-	/* It's MediaTek specific bluetooth reset mechanism via USB */
+-	if (test_and_set_bit(BTUSB_HW_RESET_ACTIVE, &data->flags)) {
+-		bt_dev_err(hdev, "last reset failed? Not resetting again");
+-		return -EBUSY;
+-	}
+-
+-	err = usb_autopm_get_interface(data->intf);
+-	if (err < 0)
+-		return err;
+-
+-	btusb_stop_traffic(data);
+-	usb_kill_anchored_urbs(&data->tx_anchor);
+-	mediatek = hci_get_priv(hdev);
+-
+-	if (mediatek->dev_id == 0x7925) {
++	if (dev_id == 0x7922) {
++		btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
++		val |= 0x00002020;
++		btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
++		btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, 0x00010001);
++		btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
++		val |= (1 << 0);
++		btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
++		msleep(100);
++	} else if (dev_id == 0x7925) {
+ 		btusb_mtk_uhw_reg_read(data, MTK_BT_RESET_REG_CONNV3, &val);
+ 		val |= (1 << 5);
+ 		btusb_mtk_uhw_reg_write(data, MTK_BT_RESET_REG_CONNV3, val);
+@@ -3053,14 +3047,41 @@ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
+ 	err = readx_poll_timeout(btusb_mtk_reset_done, hdev, val,
+ 				 val & MTK_BT_RST_DONE, 20000, 1000000);
+ 	if (err < 0)
+-		bt_dev_err(hdev, "Reset timeout");
++		bt_dev_err(hdev, "Subsys reset timeout");
++
++	if (dev_id == 0x7922)
++		btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT, 0x000000FF);
+ 
+ 	btusb_mtk_id_get(data, 0x70010200, &val);
+ 	if (!val)
+ 		bt_dev_err(hdev, "Can't get device id, subsys reset fail.");
+ 
+-	usb_queue_reset_device(data->intf);
++	return err;
++}
++
++static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
++{
++	struct btusb_data *data = hci_get_drvdata(hdev);
++	struct btmediatek_data *mediatek;
++	int err;
++
++	/* It's MediaTek specific bluetooth reset mechanism via USB */
++	if (test_and_set_bit(BTUSB_HW_RESET_ACTIVE, &data->flags)) {
++		bt_dev_err(hdev, "last reset failed? Not resetting again");
++		return -EBUSY;
++	}
++
++	err = usb_autopm_get_interface(data->intf);
++	if (err < 0)
++		return err;
++
++	btusb_stop_traffic(data);
++	usb_kill_anchored_urbs(&data->tx_anchor);
++	mediatek = hci_get_priv(hdev);
+ 
++	err = btusb_mtk_subsys_reset(hdev, mediatek->dev_id);
++
++	usb_queue_reset_device(data->intf);
+ 	clear_bit(BTUSB_HW_RESET_ACTIVE, &data->flags);
+ 
+ 	return err;
+@@ -3119,6 +3140,8 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
+ 		fwname = FIRMWARE_MT7668;
+ 		break;
+ 	case 0x7922:
++		btusb_mtk_subsys_reset(hdev, dev_id);
++		fallthrough;
+ 	case 0x7961:
+ 	case 0x7925:
+ 		if (dev_id == 0x7925)
+@@ -3134,6 +3157,9 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
+ 						btusb_mtk_hci_wmt_sync);
+ 		if (err < 0) {
+ 			bt_dev_err(hdev, "Failed to set up firmware (%d)", err);
++			btusb_stop_traffic(data);
++			usb_kill_anchored_urbs(&data->tx_anchor);
++			usb_queue_reset_device(data->intf);
+ 			return err;
+ 		}
+ 
+-- 
+2.18.0
+
 
