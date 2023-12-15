@@ -4,74 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1BFBC4167D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 07:00:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55324C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 07:33:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=BTCqKfdwdR9v46nV62z59E3sFP0odYPdEQLNmh4+llU=; b=mktH2AKofs/zfA+JJ0pARburA5
-	KAjiy0//ewv8xbo6AfqYw+KuYsbcOl8EgUNXG2PIsVO6DUN7FJudm6BAuaG4kdrEHAhS5FwWCvaOK
-	CvrgkbhuKqjSsfSY0g9j7AE1zj1jHgnmu/E82RH8x6vazeUryvYgGLy6vCpZJfEq+uAj9Iot8YaDA
-	giEx/rwZ1TTw3SCO1tjqFS3s2JScO7s+tczhy7vadlGK5qXkdi462ePHDzmKBIH78givBM39dxgXH
-	QVGGrU+vTus1EDN4P8KaTEcxU1IhPFe1UwwLHPHl5O3ZFk6a7sjW2snHuM89/3PR0OlzwQdWcwVto
-	Ar3xLOIA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wuqy1hMTeZu6Bp6O+Yhh2t/FfLhJ7df12NX9Rgk+tQ8=; b=G3iQr3TM/yFZAwtcLr7kRPf0vC
+	7/uH+UmZUUW1p2fPKSXbJSv7M40oUf8rIgGOFO3Sisk4Vd4TTlLI7fGlcrw+z8DdDlJ1YvhfPV76I
+	35y4ygRq3ifp1ZJ2ADRyHShEn/WpEyIkwoDhCDa4i1G6Dl8W03kx8/fEEyDFL//v0dczM5XyAWHQA
+	X9yhLq66DRlmt4nEfAyTfZQgKQryxrjnRekYDHcm7FT59FypF5BjAZdyzCTsQjdfp0K93bpQFBB19
+	8FO1JqczEYTgFdXYjdR1bUsLUuQQZGkJasHwPGMdVXy1ObtvZNrBuI9yZWMwkS1/u4mO2Yu0lE+k9
+	S+nyhQvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE2Ba-002FSA-2T;
-	Fri, 15 Dec 2023 07:00:38 +0000
+	id 1rE2hj-002Isp-1o;
+	Fri, 15 Dec 2023 07:33:51 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE2BX-002FPk-1h
-	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Dec 2023 07:00:37 +0000
-X-UUID: 927067a29b1711ee958cff29c719f35b-20231215
+	id 1rE2hg-002Ire-26;
+	Fri, 15 Dec 2023 07:33:50 +0000
+X-UUID: 441c659c9b1c11ee958cff29c719f35b-20231215
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=BTCqKfdwdR9v46nV62z59E3sFP0odYPdEQLNmh4+llU=;
-	b=cEqYxVbKs3VPo4AxOjw3XAhJSwoby8Xb4LO9qNx3TRORAGykptMjEOTR/puo2KmVKPuz3xJLInxtvADBMrjeJ4kpdTNAmczVbLphMph+chaV9uJfrdUSsG3jllR/Y2S82ioHy6YcgGYGOr51RrFVWn0fXWYBKd4aA7SKpH2+UIU=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=wuqy1hMTeZu6Bp6O+Yhh2t/FfLhJ7df12NX9Rgk+tQ8=;
+	b=t/PtFAc9i8U9RTUdwsU0natjryglq3g9UUtwekhx2DI/RSvWcI3jzbpac+M2pcBBo06U4kDOdiF2UzJBTgDS6YbAA+zQR7QASN8EkqGkdz3hk4w3RaTpba+fq/qKKAhAxNb2djS1Tj1rnJ1qoprPhoaCWqMXVQpryH/QOlx6+4E=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:2d5e4280-8939-483c-8205-969b1eb6beaa,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:5d391d7,CLOUDID:f71cb4fd-4a48-46e2-b946-12f04f20af8c,B
+X-CID-O-INFO: VERSION:1.1.35,REQID:8470c393-d350-441d-a8a6-478bd7f41be2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5d391d7,CLOUDID:5efa35bd-2ac7-4da2-9f94-677a477649d9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 927067a29b1711ee958cff29c719f35b-20231215
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <hao.qin@mediatek.com>)
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 441c659c9b1c11ee958cff29c719f35b-20231215
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 937768198; Fri, 15 Dec 2023 00:00:03 -0700
+	with ESMTP id 80676395; Fri, 15 Dec 2023 00:33:39 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 15 Dec 2023 14:40:00 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ 15.2.1118.26; Fri, 15 Dec 2023 15:33:05 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 15 Dec 2023 14:39:59 +0800
-From: Hao Qin <hao.qin@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.Wu@mediatek.com>,
-	Aaron Hou <aaron.hou@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, Steve
- Lee <steve.lee@mediatek.com>, linux-bluetooth
-	<linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, hao.qin <hao.qin@mediatek.com>
-Subject: [PATCH 1/1] Bluetooth: btusb: mediatek: add a recovery method for MT7922
-Date: Fri, 15 Dec 2023 14:37:14 +0800
-Message-ID: <20231215063714.7684-1-hao.qin@mediatek.com>
+ 15.2.1118.26 via Frontend Transport; Fri, 15 Dec 2023 15:33:05 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Ben Lok <ben.lok@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, MediaTek Chromebook Upstream
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
+	<wenst@chromium.org>
+Subject: [PATCH] arm64: dts: mediatek: mt8395-genio-1200-evk: add interrupt-parent for mt6360
+Date: Fri, 15 Dec 2023 15:32:52 +0800
+Message-ID: <20231215073252.21586-1-macpaul.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--3.356500-8.000000
+X-TMASE-MatchedRID: 1uypKmLkdmc6xeGwKgJtJov2/i8VNqeOh+w9Wz/xXDqdwU/qXYxHvE/3
+	ZkXeY1OAsdosXJJWMVzBxVNeNzsv2R9J5bZqJbIJhK8o4aoss8oj3JVwc0NTtub59Kr2OlMmo8W
+	MkQWv6iXBcIE78YqRWo6HM5rqDwqtEfvfpBK/uQoV1xzfrGKVLSvrrpz74+KsntWQqRKRLQ2l1b
+	bYDEPZgxQSOnu3diL+lNiqWPzXo3LY9EVSutGyk/MY2/Am1+M74sOrsb4iT/K/bbEolHIgZUOc7
+	GjOamnWv5a9cmIodEszD8HZ4XvJ2ZRMZUCEHkRt
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--3.356500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 8D9319EFF555C22B70A702C8A5D19EAFDCBF723E3B96DD491DB3AED319B88BDB2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231214_230035_570424_39EAD589 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20231214_233348_701646_A93B9EA3 
+X-CRM114-Status: UNSURE (   9.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,134 +103,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "hao.qin" <hao.qin@mediatek.com>
+This patch fix the warning introduced by mt6360 node in
+mt8395-genio-1200-evk.dts.
 
-For MT7922, perform a reset before patch download to avoid
-unexpected problems caused by inconsistency between upper layer
-status and dongle status. Add USB reset retry to recover from
-unexpected patch download failure.
+arch/arm64/boot/dts/mediatek/mt8195.dtsi:464.4-27: Warning (interrupts_property): /soc/i2c@11d01000/pmic@34:#interrupt-cells: size is (8), expected multiple of 16
 
-Signed-off-by: hao.qin <hao.qin@mediatek.com>
+Add a missing 'interrupt-parent' to fix this warning.
+
+Fixes: f2b543a191b6 ("arm64: dts: mediatek: add device-tree for Genio 1200 EVK board")
+Reported-by: Arnd Bergmann <arnd@arndb.de>
+Link: https://lore.kernel.org/linux-devicetree/20231212214737.230115-1-arnd@kernel.org/
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 ---
- drivers/bluetooth/btusb.c | 66 +++++++++++++++++++++++++++------------
- 1 file changed, 46 insertions(+), 20 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 0926e4451802..778e1a0d9cae 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -2812,7 +2812,7 @@ static int btusb_mtk_hci_wmt_sync(struct hci_dev *hdev,
- 	 * WMT command.
- 	 */
- 	err = wait_on_bit_timeout(&data->flags, BTUSB_TX_WAIT_VND_EVT,
--				  TASK_INTERRUPTIBLE, HCI_INIT_TIMEOUT);
-+				  TASK_INTERRUPTIBLE, HCI_CMD_TIMEOUT);
- 	if (err == -EINTR) {
- 		bt_dev_err(hdev, "Execution of wmt command interrupted");
- 		clear_bit(BTUSB_TX_WAIT_VND_EVT, &data->flags);
-@@ -2994,28 +2994,22 @@ static u32 btusb_mtk_reset_done(struct hci_dev *hdev)
- 	return val & MTK_BT_RST_DONE;
- }
- 
--static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
-+static int btusb_mtk_subsys_reset(struct hci_dev *hdev, u32 dev_id)
- {
- 	struct btusb_data *data = hci_get_drvdata(hdev);
--	struct btmediatek_data *mediatek;
- 	u32 val;
- 	int err;
- 
--	/* It's MediaTek specific bluetooth reset mechanism via USB */
--	if (test_and_set_bit(BTUSB_HW_RESET_ACTIVE, &data->flags)) {
--		bt_dev_err(hdev, "last reset failed? Not resetting again");
--		return -EBUSY;
--	}
--
--	err = usb_autopm_get_interface(data->intf);
--	if (err < 0)
--		return err;
--
--	btusb_stop_traffic(data);
--	usb_kill_anchored_urbs(&data->tx_anchor);
--	mediatek = hci_get_priv(hdev);
--
--	if (mediatek->dev_id == 0x7925) {
-+	if (dev_id == 0x7922) {
-+		btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
-+		val |= 0x00002020;
-+		btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
-+		btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, 0x00010001);
-+		btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
-+		val |= (1 << 0);
-+		btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
-+		msleep(100);
-+	} else if (dev_id == 0x7925) {
- 		btusb_mtk_uhw_reg_read(data, MTK_BT_RESET_REG_CONNV3, &val);
- 		val |= (1 << 5);
- 		btusb_mtk_uhw_reg_write(data, MTK_BT_RESET_REG_CONNV3, val);
-@@ -3053,14 +3047,41 @@ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
- 	err = readx_poll_timeout(btusb_mtk_reset_done, hdev, val,
- 				 val & MTK_BT_RST_DONE, 20000, 1000000);
- 	if (err < 0)
--		bt_dev_err(hdev, "Reset timeout");
-+		bt_dev_err(hdev, "Subsys reset timeout");
-+
-+	if (dev_id == 0x7922)
-+		btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT, 0x000000FF);
- 
- 	btusb_mtk_id_get(data, 0x70010200, &val);
- 	if (!val)
- 		bt_dev_err(hdev, "Can't get device id, subsys reset fail.");
- 
--	usb_queue_reset_device(data->intf);
-+	return err;
-+}
-+
-+static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
-+{
-+	struct btusb_data *data = hci_get_drvdata(hdev);
-+	struct btmediatek_data *mediatek;
-+	int err;
-+
-+	/* It's MediaTek specific bluetooth reset mechanism via USB */
-+	if (test_and_set_bit(BTUSB_HW_RESET_ACTIVE, &data->flags)) {
-+		bt_dev_err(hdev, "last reset failed? Not resetting again");
-+		return -EBUSY;
-+	}
-+
-+	err = usb_autopm_get_interface(data->intf);
-+	if (err < 0)
-+		return err;
-+
-+	btusb_stop_traffic(data);
-+	usb_kill_anchored_urbs(&data->tx_anchor);
-+	mediatek = hci_get_priv(hdev);
- 
-+	err = btusb_mtk_subsys_reset(hdev, mediatek->dev_id);
-+
-+	usb_queue_reset_device(data->intf);
- 	clear_bit(BTUSB_HW_RESET_ACTIVE, &data->flags);
- 
- 	return err;
-@@ -3119,6 +3140,8 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 		fwname = FIRMWARE_MT7668;
- 		break;
- 	case 0x7922:
-+		btusb_mtk_subsys_reset(hdev, dev_id);
-+		fallthrough;
- 	case 0x7961:
- 	case 0x7925:
- 		if (dev_id == 0x7925)
-@@ -3134,6 +3157,9 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 						btusb_mtk_hci_wmt_sync);
- 		if (err < 0) {
- 			bt_dev_err(hdev, "Failed to set up firmware (%d)", err);
-+			btusb_stop_traffic(data);
-+			usb_kill_anchored_urbs(&data->tx_anchor);
-+			usb_queue_reset_device(data->intf);
- 			return err;
- 		}
- 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+index 70b465f7c6a7..00ac59a873e8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+@@ -238,6 +238,7 @@
+ 	mt6360: pmic@34 {
+ 		compatible = "mediatek,mt6360";
+ 		reg = <0x34>;
++		interrupt-parent = <&pio>;
+ 		interrupts = <128 IRQ_TYPE_EDGE_FALLING>;
+ 		interrupt-names = "IRQB";
+ 		interrupt-controller;
 -- 
 2.18.0
 
