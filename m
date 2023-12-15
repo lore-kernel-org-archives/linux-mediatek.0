@@ -4,89 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C137C4167D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 02:36:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8595C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 02:39:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PCgeOvRb6HG52ZNdXQ5z0L9bAUM2zdPsnkmdDHpnW5w=; b=QjHJyyHrRNnCRKWcJ4fUEh3+zN
-	chDoI5YnvjPlPFCDHEb3QVAvoU55MqqgwXPV3YgS39GkFIm8lXgouYF3n1pQ4Dj6TOGDiA4pr1nfv
-	xWrFz/k7Urf6JPS+HkuRulGOgMSF/71iRUmgjMbJkbqEp+jJL3JiyCIOh0d0pvj9qmjARoukE4j3u
-	tWnQwcLuC/BEj8PTKb1vodaQghDPKTY/eHKjA/QnBYfIqAAbQfo1T6XwDdXLIcBiAWYSUvGm5ETHl
-	S6Ta0pqVjDFR6AnNu0i91tpEREEtKY+/ar/e5PhG6jwNKzITgOmn3o1d8lyfSAKTwNL7bIgHjPuW0
-	FSloZjIA==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3lY7FhYW8bydCyV35uXnsb7aKIt29uMlfMFuMzxU/KU=; b=qPAcHrB+D9EyWZ4b6MtwsnDgUa
+	9QShTUENCYRiOKHOBn+NsU2x601WgVn1HEBROd2PspMCLnCiiF+P/sDYFwxMV+CyKnfd1N2t2f5jB
+	TipAWyqrrDq+Q8HV4U21HBn+KirKQByU/fIcrd72o4mB3n35/zVE7O9TgZFXMjn43idHl5yjCQ/dc
+	EE+oQOqrV62lLjkXYUPwQuS8Pyd0jk7lNgdzA2LVcBbrTXKM/IGVB32/HyFJcMuHYirVHVj50IZwk
+	dbB82cLlVVqB8kwp1THRdohWFYU0MNGDtBhnIMehaakCLdf6nTNiISJieDkQb41UfEg2U4C0NCXbk
+	i+ZRZKkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDy43-001oDC-0c;
-	Fri, 15 Dec 2023 02:36:35 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rDy6b-001ooh-2t;
+	Fri, 15 Dec 2023 02:39:13 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDy3z-001oBy-0n;
-	Fri, 15 Dec 2023 02:36:34 +0000
-X-UUID: bde2fbea9af211ee958cff29c719f35b-20231214
+	id 1rDy6Z-001onu-29
+	for linux-mediatek@lists.infradead.org;
+	Fri, 15 Dec 2023 02:39:13 +0000
+X-UUID: 1f6ec15a9af311ee9b09ad09c76753c8-20231214
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=PCgeOvRb6HG52ZNdXQ5z0L9bAUM2zdPsnkmdDHpnW5w=;
-	b=I20kg2ntpE6m/CRJX+J8wOPWd7YvJihRXcz/bKlt6QRm8vFoNK4HZSnEkoYvYH7R+s/s1zdRjn7/DBEC45AZdDfFKsHEaRlYyIZIZzmrXtCegXKbXTpuUeO+P9N73mX2FHMjhc13Frn5vauzQfkbc1SUBOhn7J095uuuqqvUXZg=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=3lY7FhYW8bydCyV35uXnsb7aKIt29uMlfMFuMzxU/KU=;
+	b=Z4tU6NHlAbGCVf6ZBrTkok8pS2mLub+sy97qOkgRNJxmpEKNHsiSuSbv71DtwSq7cjt6T6WLu8J1TK8gMbYNqUD+Dy623ZoUz+TdAqqtu/NdkR6XLzyXRAO0YUBcmi8PpBFLoB1h8erSGQrdKqfGAdgmDOm/RMNm2prMsrX1yo8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:18182426-06ed-4650-91e4-6a8d51016231,IP:0,U
-	RL:0,TC:0,Content:38,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:38
-X-CID-META: VersionHash:5d391d7,CLOUDID:a3d0cf73-1bd3-4f48-b671-ada88705968c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:3,EDM:-3,IP:nil,U
+X-CID-O-INFO: VERSION:1.1.35,REQID:8be1454b-3308-47f4-a842-f5ddcc741045,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:5d391d7,CLOUDID:0cbb32bd-2ac7-4da2-9f94-677a477649d9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: bde2fbea9af211ee958cff29c719f35b-20231214
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
+X-UUID: 1f6ec15a9af311ee9b09ad09c76753c8-20231214
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <chui-hao.chiu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1947168875; Thu, 14 Dec 2023 19:36:25 -0700
+	with ESMTP id 1248332382; Thu, 14 Dec 2023 19:39:09 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 15 Dec 2023 10:35:48 +0800
+ 15.2.1118.26; Fri, 15 Dec 2023 10:38:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 15 Dec 2023 10:35:48 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jeffrey Kardatzke
-	<jkardatzke@google.com>, Jason-ch Chen <jason-ch.chen@mediatek.com>, "Johnson
- Wang" <johnson.wang@mediatek.com>, "Jason-JH . Lin"
-	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, "Nancy
- Lin" <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>
-Subject: [PATCH 1/2] mailbox: mtk-cmdq: Sort cmdq platform data by compatible name
-Date: Fri, 15 Dec 2023 10:35:45 +0800
-Message-ID: <20231215023546.6594-2-jason-jh.lin@mediatek.com>
+ 15.2.1118.26 via Frontend Transport; Fri, 15 Dec 2023 10:38:34 +0800
+From: Peter Chiu <chui-hao.chiu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Rob Herring <robh+dt@kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
+	<ryder.Lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Sam Shih <sam.shih@mediatek.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, Peter Chiu <chui-hao.chiu@mediatek.com>
+Subject: [PATCH v3] dt-bindings: net: wireless: mt76: add interrupts description for MT7986
+Date: Fri, 15 Dec 2023 10:38:33 +0800
+Message-ID: <20231215023833.8881-1-chui-hao.chiu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231215023546.6594-1-jason-jh.lin@mediatek.com>
-References: <20231215023546.6594-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--1.584800-8.000000
-X-TMASE-MatchedRID: L2v4vcuOsZVZu9hLABfNkAPZZctd3P4B7f6JAS2hKPgWSEXGM06qpaPF
-	jJEFr+olwXCBO/GKkVr3FLeZXNZS4IzHo47z5Aa+lgSG+spk3w9Q+JIYiI4PYNtL0IhTgIOeOq+
-	kkO0fZhEwklhWf+km1PLnEo5QIi8g59aBrH1Sfe9t7R3YkHuq5gxtAkJv798AeZUpm6wun3ba/0
-	6NhYDa4wyzCDjlUx89p2y3mIB+it9WXGvUUmKP2w==
+X-TM-AS-Result: No-10--8.915200-8.000000
+X-TMASE-MatchedRID: w/VW/btTjlN2W20gLTzAqYei/mZCYVwuONP4Z3dggBYY0A95tjAn+/pZ
+	jWQiqBlhCqcYnzgqPbuQgj4GwqRgEGYcIRLN0eUlD9eI/GwXvmabKpAlY2y6SXJOfTLfZoT/o8W
+	MkQWv6iUoTQl7wNH8PuTCMddcL/gjymsk/wUE4hou6Qpk47HQBHyiiLj01f1g2O88rCZjUyM4D/
+	FQUsFVY46jMlFISqvqwL6SxPpr1/I=
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--1.584800-8.000000
+X-TMASE-Result: 10--8.915200-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: A80F0F3F31302333987C850B4A5C5C48C984EFA17D0BD0E07EA5E1F345BDBD5C2000:8
+X-TM-SNTS-SMTP: 1B0291CB557CA8917F3562BB33DC795A87AF8765363D6618AD047A22F62B8F2A2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231214_183631_285503_28EAE471 
-X-CRM114-Status: UNSURE (   9.60  )
+X-CRM114-CacheID: sfid-20231214_183911_706804_29AF709C 
+X-CRM114-Status: UNSURE (   9.20  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,30 +97,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Sort cmdq platform data according to the number sequence of
-compatible names.
+The mt7986 can support four interrupts to distribute the interrupts
+to different CPUs.
 
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
 ---
- drivers/mailbox/mtk-cmdq-mailbox.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+v2: Change to use description instead of using items.
+v3: Change to use items and set different minItems for mediatek,mt7986-wmac
+---
+ .../bindings/net/wireless/mediatek,mt76.yaml  | 28 +++++++++++++++++--
+ 1 file changed, 26 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index de862e9137d5..76e5f762628c 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -750,10 +750,10 @@ static const struct gce_plat gce_plat_v7 = {
- };
+diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+index 252207adbc54..58bbddabd388 100644
+--- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
++++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+@@ -38,7 +38,12 @@ properties:
+       MT7986 should contain 3 regions consys, dcm, and sku, in this order.
  
- static const struct of_device_id cmdq_of_ids[] = {
-+	{.compatible = "mediatek,mt6779-gce", .data = (void *)&gce_plat_v4},
- 	{.compatible = "mediatek,mt8173-gce", .data = (void *)&gce_plat_v2},
- 	{.compatible = "mediatek,mt8183-gce", .data = (void *)&gce_plat_v3},
- 	{.compatible = "mediatek,mt8186-gce", .data = (void *)&gce_plat_v7},
--	{.compatible = "mediatek,mt6779-gce", .data = (void *)&gce_plat_v4},
- 	{.compatible = "mediatek,mt8192-gce", .data = (void *)&gce_plat_v5},
- 	{.compatible = "mediatek,mt8195-gce", .data = (void *)&gce_plat_v6},
- 	{}
+   interrupts:
+-    maxItems: 1
++    minItems: 1
++    items:
++      - description: major interrupt for rings
++      - description: additional interrupt for ring 19
++      - description: additional interrupt for ring 4
++      - description: additional interrupt for ring 5
+ 
+   power-domains:
+     maxItems: 1
+@@ -213,6 +218,22 @@ properties:
+                     description:
+                       Half-dBm power delta for different numbers of antennas
+ 
++if:
++  properties:
++    compatible:
++      contains:
++        enum:
++          - mediatek,mt7986-wmac
++then:
++  properties:
++    interrupts:
++      minItems: 4
++else:
++  properties:
++    interrupts:
++      maxItems: 1
++
++
+ required:
+   - compatible
+   - reg
+@@ -293,7 +314,10 @@ examples:
+         reg = <0x18000000 0x1000000>,
+               <0x10003000 0x1000>,
+               <0x11d10000 0x1000>;
+-        interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>;
++        interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>,
++                     <GIC_SPI 214 IRQ_TYPE_LEVEL_HIGH>,
++                     <GIC_SPI 215 IRQ_TYPE_LEVEL_HIGH>,
++                     <GIC_SPI 216 IRQ_TYPE_LEVEL_HIGH>;
+         clocks = <&topckgen 50>,
+                  <&topckgen 62>;
+         clock-names = "mcu", "ap2conn";
 -- 
 2.18.0
 
