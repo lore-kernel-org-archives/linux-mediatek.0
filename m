@@ -4,71 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC587C46CC5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 10:46:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25A49C35274
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 12:39:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kIdDAaKUkxqdu19pWDFh3PJFKl/yfMhwsN3WS1z18wY=; b=SQmo79UUJiig2Z3fAKrNwCZd2/
-	uKOY62FoeuRkROe7DF/zU8fl6injijuR42FxaaUMO3ngjkMiHj01NE7znqdVX8lEq2v9kKKL2GOiw
-	s6zaBvTBkmU0HajAEjNMVJsyPwsOrU0DQtsQZmgZCGK4EuQEzN2SCrRSCszaQHOXHYl4Gr/tiSqVM
-	0bXgn14wtmjZoFuoJ8fZ04twcx8t/1LN/aqPzQkZSlaJTAKkW4DpEkwISQM8v5Dh6RtriwIQC3xlg
-	eY3hpb4oSC+QxKhcKLvXTMj+VbZHDgtxmqmVmTXx3nrutiXSvJBX+EU4TVm2zYojCUdr7KiG2L1VC
-	pQ5bMo5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=w4K8442QxOmFogpNlxqkaIbX9yD3X0i5cwQZ1OMszqQ=; b=378idNHO5bC19xvz8xKXHjNwKZ
+	hbhnZl8RFi20o/IzpiZx3ezuofqmGoX2WQme+EnsZi4d9IhZVVkxiPvpq7eTJmnV0GmewfGFEMMrL
+	1qCFbbuhojIZjkJKweKjIrrhDPEX+2MOb5Fk8iazcoWkE/M9fp7M2DTKGyIo230NZRlIbLv1DwPaw
+	/PJlLB4raKef1TpvXHogBhYE/ynUxTmTeucG6Bo0npB/nU8h2HnLsRNPptIrNf1hJqIqtHWpyPjbh
+	+Dm9LLJTdP2BpaMZ1NeCRfFkL2YWOI+47s5Jg+6amuwpzfbobn+UQn35O3OXhir/xcA/pMO9rurAH
+	QsgoQSSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE5i3-002om3-2k;
-	Fri, 15 Dec 2023 10:46:23 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rE7Ty-003GSg-0R;
+	Fri, 15 Dec 2023 12:39:58 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE5hr-002odw-38;
-	Fri, 15 Dec 2023 10:46:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1702637170;
-	bh=UNr7RTkECrw2TxwP67coHpk8jV76hI6PEfp00kugbrA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GtEIaGzILk5FFGMwWx9fvBPAp9iHXtyDK3mpOnzpcpO2uO5vXIaA2CnnSR2WZzpEw
-	 SCqkcJl54LvKv4+duzvjeGYo5YkC63Tmao2CuC77YoOIUb6qEtLBr7v31ZYK+d+JDT
-	 0Rp0aem4p3JExjssdjU9TE9ySkkITrkpL2Anti4Hm7dt/5G4RmXbeGMCyEycG4mhVT
-	 H5Umqz2GAdodHVnArWDJWU5YbM17PlWNfhku56sQwfR0Kzz6ScQ1Xl/IGIOZRh8jaM
-	 pJGin0TH9qyVJei87hjzUl0bnJZpdTzgaqH6Wnwqpa0kTeRfxHXL2Z1jK/7Yrd4/6T
-	 46aNNJU4jwLdQ==
-Received: from eugen-station.. (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: ehristev)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C10383781FDB;
-	Fri, 15 Dec 2023 10:46:09 +0000 (UTC)
-From: Eugen Hristev <eugen.hristev@collabora.com>
-To: linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org,
+	id 1rE7Tu-003GRb-1M;
+	Fri, 15 Dec 2023 12:39:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 98339625D5;
+	Fri, 15 Dec 2023 12:39:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C36F3C433C8;
+	Fri, 15 Dec 2023 12:39:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1702643993;
+	bh=WCwkUfGneDdEsgyaN5oZ8zIYVst2kezCHOcj9c+nyWM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=igWRNlssctqmH8PVEui0+PkNrsBgWdT/exRLQ46Y2ZU2ZjyFLs5y9uwS1ypy4VWrg
+	 NJxbo9lxe6K1OVORMMLuyAHXS4YEzYGm88ZkVHtlgtCBi4qZJlyHwDxQkB190GnRbM
+	 auv0ZUSODWdB3arfVDUg3sEgkUoaq2MBIyP4MAuA=
+Date: Fri, 15 Dec 2023 13:39:51 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	matthias.bgg@gmail.com,
-	linux-media@vger.kernel.org,
-	tiffany.lin@mediatek.com,
-	andrew-ct.chen@mediatek.com,
-	Kyrie Wu <kyrie.wu@mediatek.com>,
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	Eugen Hristev <eugen.hristev@collabora.com>
-Subject: [PATCH v2 7/7] arm64: dts: mediatek: mt8186: Add venc node
-Date: Fri, 15 Dec 2023 12:45:51 +0200
-Message-Id: <20231215104551.233679-7-eugen.hristev@collabora.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231215104551.233679-1-eugen.hristev@collabora.com>
-References: <20231215104551.233679-1-eugen.hristev@collabora.com>
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Eddie Hung <eddie.hung@mediatek.com>
+Subject: Re: [PATCH v2 2/3] usb: xhci-mtk: fix a short packet issue of gen1
+ isoc-in transfer
+Message-ID: <2023121539-dowry-ambiance-51e3@gregkh>
+References: <20231215073431.8512-1-chunfeng.yun@mediatek.com>
+ <20231215073431.8512-2-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231215073431.8512-2-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231215_024612_160399_E9C4F5EE 
-X-CRM114-Status: UNSURE (   9.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231215_043954_502780_29EF9D6F 
+X-CRM114-Status: GOOD (  19.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,62 +78,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Kyrie Wu <kyrie.wu@mediatek.com>
+On Fri, Dec 15, 2023 at 03:34:30PM +0800, Chunfeng Yun wrote:
+> For Gen1 isoc-in transfer, host still send out unexpected ACK after device
+> finish the burst with a short packet, this will cause an exception on the
+> connected device, such as, a usb 4k camera.
+> It can be fixed by setting rxfifo depth less than 3, prefer to use 2 here,
+> the side-effect is that may cause performance drop about 10%, including
+> bulk transfer.
+> 
+> Fixes: 926d60ae64a6 ("usb: xhci-mtk: modify the SOF/ITP interval for mt8195")
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v2:
+> use 'rx-fifo-depth' property;
+> add header file 'linux/bitfield.h' to avoid building error on some ARCH;
+> ---
 
-Add video encoder node.
 
-Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Reviewed-by: Hsin-Yi Wang <hsinyi@chromium.org>
-[eugen.hristev@collabora.com: minor cleanup]
-Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
----
-Changes in v2:
-- change node name
-- change compatible to include 8186
-- change props order
-- change clock name to cope with binding
+Hi,
 
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
 
- arch/arm64/boot/dts/mediatek/mt8186.dtsi | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+You are receiving this message because of the following common error(s)
+as indicated below:
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-index 66ead3f23336..ebd07bf3d9d2 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-@@ -1993,6 +1993,30 @@ larb7: smi@17010000 {
- 			power-domains = <&spm MT8186_POWER_DOMAIN_VENC>;
- 		};
- 
-+		venc: video-encoder@17020000 {
-+			compatible = "mediatek,mt8186-vcodec-enc", "mediatek,mt8183-vcodec-enc";
-+			reg = <0 0x17020000 0 0x2000>;
-+			#address-cells = <2>;
-+			#size-cells = <2>;
-+			interrupts = <GIC_SPI 243 IRQ_TYPE_LEVEL_HIGH 0>;
-+			iommus = <&iommu_mm IOMMU_PORT_L7_VENC_RCPU>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_REC>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_BSDMA>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_SV_COMV>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_RD_COMV>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_CUR_LUMA>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_CUR_CHROMA>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_REF_LUMA>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_REF_CHROMA>;
-+			dma-ranges = <0x1 0x0 0x1 0x0 0x1 0x0>;
-+			clocks = <&vencsys CLK_VENC_CKE1_VENC>;
-+			clock-names = "venc_sel";
-+			assigned-clocks = <&topckgen CLK_TOP_VENC>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D3>;
-+			power-domains = <&spm MT8186_POWER_DOMAIN_VENC>;
-+			mediatek,scp = <&scp>;
-+		};
-+
- 		camsys: clock-controller@1a000000 {
- 			compatible = "mediatek,mt8186-camsys";
- 			reg = <0 0x1a000000 0 0x1000>;
--- 
-2.34.1
+- You have marked a patch with a "Fixes:" tag for a commit that is in an
+  older released kernel, yet you do not have a cc: stable line in the
+  signed-off-by area at all, which means that the patch will not be
+  applied to any older kernel releases.  To properly fix this, please
+  follow the documented rules in the
+  Documentation/process/stable-kernel-rules.rst file for how to resolve
+  this.
 
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
 
