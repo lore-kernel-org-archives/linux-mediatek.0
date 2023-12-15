@@ -4,51 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52669C35274
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 16:32:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8DD4C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 17:07:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z8TRshG8UwggIbNm6dhAJ2F/S2TwLsw2ZFfTLMLVJoM=; b=qOCNVZpJJw78bYhw97Eb/Sa9fh
-	vsY0yhLeaBYgQARk6DWh67Ly06GWqa7Mu13iOBFXlcF059rRpa9bQr8weRjDrS8I6QHW6Sn3i4Puc
-	1KQqO8OOsH/vrPw8Ssizep4PJ0/gvLZ4yz5EwJFwMzo6rA9/PYgbiGqiq4s4sYLPbeQ39XLn4qrBF
-	6mJ+SDcYvCkPhmDo+YcT+n+iQCKcSQR/K8jybWzwzsrTc6aXhd9Fgi1iL8HbRq3yTsG7fLXKuc6J1
-	niYXJ4yPCEx9hpeAg5nqxH7hE0g2UAHllJEbzXQkoeq2hIvIrfTfch9YRi0vob7HX03cPI/0ytIIN
-	Ib7WdpfQ==;
+	bh=v0uzB2tSOvyjjeg6f76hQq+qaT0eB3kXVI5fZEewRTY=; b=QW7glW/IDvLfsNhne6ItaO9duE
+	EIyQ/+inwm7jK/CzP5+mTDwNBbHb4O2rDwsHILWs3G/jSYjkVA2Hna3aJsh/qrHydv6vqay6qyJcp
+	qgKyTypdhfC5a+CJ37LQqZzSNZwZox9+e8VtN2AVa9pYW7r+mB4zYWPBssMwfgb9caanw1MKbt7mp
+	6YDuT1Q0LrAHgCA+WjJrFWV0Ci0DQR6aShaNAbga6kXeX4SrmxHFSFK0eBwFuzWGGUTnQU6fhwkGQ
+	AU0XpQNZIdXXFcvJVZO9wjAjCPbSeIcdgcXGrjGnbmF5949hztdmKzU7QvJRWKDLPXaG5nwytJ8tg
+	gT/uLTKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEB78-003sbP-0p;
-	Fri, 15 Dec 2023 16:32:38 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rEBfA-003yfo-2u;
+	Fri, 15 Dec 2023 17:07:48 +0000
+Received: from mail11.truemail.it ([2001:4b7e:0:8::81])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEB73-003sZZ-3C;
-	Fri, 15 Dec 2023 16:32:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 59655626B9;
-	Fri, 15 Dec 2023 16:32:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECD69C433C8;
-	Fri, 15 Dec 2023 16:32:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1702657953;
-	bh=5xSZ6gC57XpMcrBYmJ5djtgBGtNosockr7ypfWQ/UoA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=u23WidcobeXI8hJTBO02gH39xAVyMZg3S/gk8R3+oMsy1a46PrrJRqER62yDtrdtf
-	 1sP9G3jW6bt0TkUH+FVWaUXb2WUMuoifq5UkKLSL9Vihbw/4tLEgQtVy3f2vCcs/Dv
-	 wXTrDDgayoevbU8NQT5CXG0gCcWFBHIOSHMEoJhbkn1WLbj/H/Eu2Fuq4FA4d679tr
-	 0edO8rQox64QgmVeY5DX9u/1v/sBmf4kwA7Zaxt4jUW2eY9C5xbVFoGtvPd+mKK3Eo
-	 sfxBmvoKrJU1x51n4fbHg8VooER+eL425YDkyzu8lDJ1d7HJ/0OT8IaPHRNo28jX8y
-	 dWVhTFyyt4wKA==
-Received: from johan by xi.lan with local (Exim 4.96.2)
-	(envelope-from <johan@kernel.org>)
-	id 1rEB6x-0000ZV-31;
-	Fri, 15 Dec 2023 17:32:28 +0100
-Date: Fri, 15 Dec 2023 17:32:27 +0100
-From: Johan Hovold <johan@kernel.org>
-To: Francesco Dolcini <francesco@dolcini.it>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	id 1rEBf7-003ycJ-2c;
+	Fri, 15 Dec 2023 17:07:47 +0000
+Received: from francesco-nb.int.toradex.com (93-49-2-63.ip317.fastwebnet.it [93.49.2.63])
+	by mail11.truemail.it (Postfix) with ESMTPA id ADB5C20640;
+	Fri, 15 Dec 2023 18:07:37 +0100 (CET)
+Date: Fri, 15 Dec 2023 18:07:33 +0100
+From: Francesco Dolcini <francesco@dolcini.it>
+To: Johan Hovold <johan@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Francesco Dolcini <francesco@dolcini.it>,
 	Jiri Slaby <jirislaby@kernel.org>, linux-bluetooth@vger.kernel.org,
 	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org, greybus-dev@lists.linaro.org,
@@ -64,22 +49,23 @@ Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	"David S. Miller" <davem@davemloft.net>,
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
 	Hans de Goede <hdegoede@redhat.com>,
-	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>,
+	Ilpo =?iso-8859-1?Q?J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>,
 	Benson Leung <bleung@chromium.org>,
 	Tzung-Bi Shih <tzungbi@kernel.org>, Rob Herring <robh@kernel.org>
 Subject: Re: [PATCH v1] treewide, serdev: change receive_buf() return type to
  size_t
-Message-ID: <ZXx_m1R0x7omubxE@hovoldconsulting.com>
+Message-ID: <ZXyH1Zv3Pxd6S3ag@francesco-nb.int.toradex.com>
 References: <20231214170146.641783-1-francesco@dolcini.it>
- <ZXxZzd1iBOCmnczH@hovoldconsulting.com>
- <ZXxbx+laQk35W56U@francesco-nb.int.toradex.com>
+ <ZXxWX-Fw1InID2ax@hovoldconsulting.com>
+ <ZXxa7yzKzG6048vw@francesco-nb.int.toradex.com>
+ <ZXx8bCVyxJ9Ddvqm@hovoldconsulting.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZXxbx+laQk35W56U@francesco-nb.int.toradex.com>
+In-Reply-To: <ZXx8bCVyxJ9Ddvqm@hovoldconsulting.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231215_083234_117143_73283E55 
-X-CRM114-Status: GOOD (  20.41  )
+X-CRM114-CacheID: sfid-20231215_090746_042886_1A6B6D29 
+X-CRM114-Status: GOOD (  22.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,43 +80,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 15, 2023 at 02:59:35PM +0100, Francesco Dolcini wrote:
-> On Fri, Dec 15, 2023 at 02:51:09PM +0100, Johan Hovold wrote:
-> > On Thu, Dec 14, 2023 at 06:01:46PM +0100, Francesco Dolcini wrote:
-> > > From: Francesco Dolcini <francesco.dolcini@toradex.com>
-> > > 
-> > > receive_buf() is called from ttyport_receive_buf() that expects values
-> > > ">= 0" from serdev_controller_receive_buf(), change its return type from
-> > > ssize_t to size_t.
+Hello Johan, Greg
 
-> > >  drivers/bluetooth/btmtkuart.c              |  4 ++--
-> > >  drivers/bluetooth/btnxpuart.c              |  4 ++--
-
-> > > -static ssize_t btnxpuart_receive_buf(struct serdev_device *serdev,
-> > > -				     const u8 *data, size_t count)
-> > > +static size_t btnxpuart_receive_buf(struct serdev_device *serdev,
-> > > +				    const u8 *data, size_t count)
-> > >  {
-> > >  	struct btnxpuart_dev *nxpdev = serdev_device_get_drvdata(serdev);
-> > 
-> > A quick check of just the first two functions here shows that they can
-> > return negative values.
+On Fri, Dec 15, 2023 at 05:18:52PM +0100, Johan Hovold wrote:
+> On Fri, Dec 15, 2023 at 02:55:59PM +0100, Francesco Dolcini wrote:
+> > To me the change is correct, with that said probably this should have
+> > been explicitly mentioned in the commit message or a separate
+> > preparation patch.
 > 
-> This is already fixed. Patches are in next.
+> It's a separate change and should not be hidden away in a tree-wide
+> change that goes through a different maintainer.
 > 
-> There were 3 buggy user of this API.
->  - 1 patch was merged a few days ago in mainline
->  - 2 patches are in next, the maintainer decided to wait for the next merge window
-> 
-> commit 687d2de93b11 ("Bluetooth: btmtkuart: fix recv_buf() return value")
-> commit 7954bbcdd7ea ("Bluetooth: btnxpuart: fix recv_buf() return value")
-> commit c8820c92caf0 ("platform/surface: aggregator: fix recv_buf() return value")
+> Please drop this change from this patch and resubmit it separately to me
+> if you want and I'll review when I have the time.
 
-Then why was that not mentioned in the patch (e.g. below the --- line)?
+Fine, I agree.
 
-You are certainly not making it easy for reviewers, but good to see that
-you thought about this, and I see now when reviewing the mail archives
-that those bugs were the reason for this patch in the first place.
+I see those options (let me know if you see other options I have not
+mentioned):
 
-Johan
+1. I add this change (taking into account also intel ice) as a separate
+   patch in this series and you may just ack it and Greg could merge
+   together with the serdev one.
+2. I prepare an independent patch for the GNSS change and only once this
+   is merged I'll send a rebased v2 of this one.
+3. I update this patch without this GNSS API change, that mean I will
+   have to cast away the signed type from a few GNSS drivers.
+
+1 is my preferred option, 2 is fine, but it seems a little bit of overdoing,
+3 I would avoid, we are doing this cleanup to be a little bit more
+strongly typed and to prevent the kind of bugs that is the original trigger
+for this patch.
+
+What would you Greg and Johan prefer?
+
+
+> And when doing tree-wide changes, please try to follow the style of the
+> driver you are changing (e.g. do not introduce inconsistencies by
+> changing to open parenthesis alignment of continuation lines in code
+> that do not use it).
+
+ack, sorry about that, looking back at the archive is seems a recent
+pain point, also Jiri fell in this trap.
+
+Francesco
+
 
