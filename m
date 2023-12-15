@@ -4,100 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B6E3C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 17:10:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08D0DC35274
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 17:49:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zae3m1cO9fSJoSwUDjCnhvMwaD0Cp7wkXYtacLoccYI=; b=UmMFW3aRnbadHGZxQDA0++/p5U
-	QCdXUUX+dCncN5dPzNT48dwsFR7Tac/k08AWJh77LFX26jwCJuZ5NqsAlXMlfZq6+2zGtWf1RxyhY
-	HT5t3wTB4q46R4O3bShbyfnR3StaA4f0seKI5VekOcNZzBeHX0hKSLA0QZ8RT5AocGb7AKJz8th36
-	K8Z8ON747jFPVfYyxcGUBpVEYciFZoadikOked1uqSd9a3uiWEYtRKnJVFdy8ebybOrWGowbSGwZx
-	DoKx+A7f8yfFQ7yyzV/G9VP96ac1PX6NFiqJuFef4Z4QuBidZxh7KhLiseQKgq6AbqCdmZdGjo/rV
-	NeQJRlzQ==;
+	bh=C0tnBmLizhtV85bV989C1Q4/ieQl62idw3Pu9c+Cx9M=; b=AKdYr0OXdu7Dlkr8ORgne75mUJ
+	3hdFELuhzvJQpVmNUdv+xyZDC9tt9lzEFnBOY+bZkp35MaMDfyrMZLuoFc68mFRPh03mI++l1KkJ/
+	ZJjhlyF/w0pjcLCEV/N7kyE5MdBJWy+MLX9zOBzj8gwmZ6J6p6KpD/sLCyrTBiGSX2KhekpCxiHSK
+	AADPM7zzrX0h9OOqDasYuLBLTC0V798s/0EfZSWaBBxR9m7EPuV5anTI1BOJC1K/uRkhos3RFamNS
+	IGVFOPWptk7SfBm7eefonCMBS+C1zaTs8R8hcfO3O3ezM7wm9g5xxAtqxWyK7BtEqOM6Dy8ygP3d1
+	cWZgTI0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEBi1-003zfm-0g;
-	Fri, 15 Dec 2023 17:10:45 +0000
-Received: from galois.linutronix.de ([193.142.43.55])
+	id 1rECJY-0049OK-2C;
+	Fri, 15 Dec 2023 17:49:32 +0000
+Received: from omta038.useast.a.cloudfilter.net ([44.202.169.37])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEBhy-003zbw-1H
+	id 1rECJV-0049IQ-19
 	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Dec 2023 17:10:44 +0000
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1702660241;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=zae3m1cO9fSJoSwUDjCnhvMwaD0Cp7wkXYtacLoccYI=;
-	b=JtWcWrlRr/Yw4kQ1UWySiE1WnFklIBcg9wCnilSSfcJDNnaXHknsfFQ2hm3Wg/ONikWDB+
-	WRxCE/Tc1oj8/5Vra+uDd80anJKj5JKArhylRiQWeqOiu9dGS2spg5Z1FiJFb7PYir9ZLl
-	YgPOBKKzrgsCa96PnNswic05kIQ/rUSbCdeqFC5thljdEb55zV5ywwfj1sceBkMTCRU0p4
-	y7xHwZ+cy0+IUt7MuLeHRIi5cN42VqdLlD8SLMT0QybC5HYV7wrPuUzJG43qDI9Xt9mesD
-	1NDCCGSXDR+g3yntLA8aFfivSR8gLveMOz0FQOgX4TMdKDdRnyy3zgJi+xJuvw==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1702660241;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=zae3m1cO9fSJoSwUDjCnhvMwaD0Cp7wkXYtacLoccYI=;
-	b=NzCo4hAyNx+4VtNSo05p7oXiKzL7azy7XiXo4Ljk4IPRdRDvvQB9bLy3+o8Xz+b/cRIMks
-	tfLo+tJk/hEPGUCQ==
-To: linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org
-Cc: "David S. Miller" <davem@davemloft.net>,
-	Boqun Feng <boqun.feng@gmail.com>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Frederic Weisbecker <frederic@kernel.org>,
-	Ingo Molnar <mingo@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Peter Zijlstra <peterz@infradead.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Waiman Long <longman@redhat.com>,
-	Will Deacon <will@kernel.org>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	"K. Y. Srinivasan" <kys@microsoft.com>,
-	Alexei Starovoitov <ast@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Dexuan Cui <decui@microsoft.com>,
-	Dimitris Michailidis <dmichail@fungible.com>,
-	Felix Fietkau <nbd@nbd.name>,
-	Haiyang Zhang <haiyangz@microsoft.com>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	Jeroen de Borst <jeroendb@google.com>,
-	Jesper Dangaard Brouer <hawk@kernel.org>,
-	John Crispin <john@phrozen.org>,
-	John Fastabend <john.fastabend@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Praveen Kaligineedi <pkaligineedi@google.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Shailend Chand <shailend@google.com>,
-	UNGLinuxDriver@microchip.com,
-	Wei Liu <wei.liu@kernel.org>,
-	bpf@vger.kernel.org,
-	linux-hyperv@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next 19/24] net: fungible, gve, mtk, microchip, mana: Use nested-BH locking for XDP redirect.
-Date: Fri, 15 Dec 2023 18:07:38 +0100
-Message-ID: <20231215171020.687342-20-bigeasy@linutronix.de>
-In-Reply-To: <20231215171020.687342-1-bigeasy@linutronix.de>
-References: <20231215171020.687342-1-bigeasy@linutronix.de>
+	Fri, 15 Dec 2023 17:49:30 +0000
+Received: from eig-obgw-6009a.ext.cloudfilter.net ([10.0.30.184])
+	by cmsmtp with ESMTPS
+	id E8GSrrXWBWcCIECJIrEUc7; Fri, 15 Dec 2023 17:49:17 +0000
+Received: from gator4166.hostgator.com ([108.167.133.22])
+	by cmsmtp with ESMTPS
+	id ECJHr6JrfBOccECJIrCtVO; Fri, 15 Dec 2023 17:49:16 +0000
+X-Authority-Analysis: v=2.4 cv=J+25USrS c=1 sm=1 tr=0 ts=657c919c
+ a=1YbLdUo/zbTtOZ3uB5T3HA==:117 a=WzbPXH4gqzPVN0x6HrNMNA==:17
+ a=OWjo9vPv0XrRhIrVQ50Ab3nP57M=:19 a=dLZJa+xiwSxG16/P+YVxDGlgEgI=:19
+ a=IkcTkHD0fZMA:10 a=e2cXIFwxEfEA:10 a=wYkD_t78qR0A:10 a=VwQbUJbxAAAA:8
+ a=cm27Pg_UAAAA:8 a=P7lGutExLh3arObF5LoA:9 a=QEXdDO2ut3YA:10
+ a=AjGcO6oz07-iQ99wixmX:22 a=xmb-EsYY8bH0VWELuYED:22
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=C0tnBmLizhtV85bV989C1Q4/ieQl62idw3Pu9c+Cx9M=; b=crtf2yisBKNPe9TrXtivlGknCo
+	WiKn9uFrv56/hhXNlXfmZMjUyURv+tU5kiJfMn7gYFcFc7PrIA6ud/a3ORBClxFgxjQfZows+bUqp
+	/J5t73FuvX4LTNzvLjTBuQaQDW0F2iqJ6uUIpnkbbzQwmZ7rw39BmoPi/isuBO0uUPzt01qVKfpTW
+	neWZTSmtucr4UAF7+hBnjhgqNo5BLuTDViHw+jtg6GsdtAHjYrvK5Za/S2DEBDuGa89nKEzqu3pZ3
+	kSq/SxXdHo+aC14hNQ5fJBPwcMJgtrphR7ic+ezCO4b8/APQQdiv7nbwNklAGCAAR1PHnNRgEuWKj
+	BTgQfK1Q==;
+Received: from 187-162-21-192.static.axtel.net ([187.162.21.192]:45694 helo=[192.168.15.10])
+	by gator4166.hostgator.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96.2)
+	(envelope-from <gustavo@embeddedor.com>)
+	id 1rECJF-004Kas-26;
+	Fri, 15 Dec 2023 11:49:13 -0600
+Message-ID: <6681b643-464d-44d9-b01a-420e543d19d6@embeddedor.com>
+Date: Fri, 15 Dec 2023 11:49:07 -0600
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2][wireless-next/for-next] wifi: mt76: mt7996: Use
+ DECLARE_FLEX_ARRAY() and fix -Warray-bounds warnings
+To: Kalle Valo <kvalo@kernel.org>, "Gustavo A. R. Silva"
+ <gustavoars@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-hardening@vger.kernel.org
+References: <ZXiU9ayVCslt3qiI@work>
+ <170264697580.1759617.6397953788753678096.kvalo@kernel.org>
+Content-Language: en-US
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+In-Reply-To: <170264697580.1759617.6397953788753678096.kvalo@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - embeddedor.com
+X-BWhitelist: no
+X-Source-IP: 187.162.21.192
+X-Source-L: No
+X-Exim-ID: 1rECJF-004Kas-26
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: 187-162-21-192.static.axtel.net ([192.168.15.10]) [187.162.21.192]:45694
+X-Source-Auth: gustavo@embeddedor.com
+X-Email-Count: 2
+X-Org: HG=hgshared;ORG=hostgator;
+X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
+X-Local-Domain: yes
+X-CMAE-Envelope: MS4xfFsFkqk+2iXk2UPNBr/WzDppZEF0tnAmw+iek7j5k8IqztyzBH4qMaDCAY/2U1KyNfHn4pY6TvqsA6f3z5VNQMRRIbwd8LW2zK6QD4Pjwmm4UDF1/o3C
+ qzRf+cAd8O3XKMcLt1JVQGa7bBeDPofnkkyE1JnYh0a0OWSKHXPnWXewtaDf4jsCl6WiaufapNq5qgGZGvt5D1rErWedtO6AlZrkv2NZ2N6iv2PeXZyiLo3d
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231215_091042_712155_36A4B73C 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20231215_094929_453812_F7D466C7 
+X-CRM114-Status: UNSURE (   0.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,142 +118,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The per-CPU variables used during bpf_prog_run_xdp() invocation and
-later during xdp_do_redirect() rely on disabled BH for their protection.
-Without locking in local_bh_disable() on PREEMPT_RT these data structure
-require explicit locking.
 
-This is a follow-up on the previous change which introduced
-bpf_run_lock.redirect_lock and uses it now within drivers.
 
-The simple way is to acquire the lock before bpf_prog_run_xdp() is
-invoked and hold it until the end of function.
-This does not always work because some drivers (cpsw, atlantic) invoke
-xdp_do_flush() in the same context.
-Acquiring the lock in bpf_prog_run_xdp() and dropping in
-xdp_do_redirect() (without touching drivers) does not work because not
-all driver, which use bpf_prog_run_xdp(), do support XDP_REDIRECT (and
-invoke xdp_do_redirect()).
+On 12/15/23 07:29, Kalle Valo wrote:
+> "Gustavo A. R. Silva" <gustavoars@kernel.org> wrote:
+> 
+>> Transform zero-length arrays `rate`, `adm_stat` and `msdu_cnt` into
+>> proper flexible-array members in anonymous union in `struct
+>> mt7996_mcu_all_sta_info_event` via the DECLARE_FLEX_ARRAY()
+>> helper; and fix multiple -Warray-bounds warnings:
 
-Ideally the minimal locking scope would be bpf_prog_run_xdp() +
-xdp_do_redirect() and everything else (error recovery, DMA unmapping,
-free/ alloc of memory, =E2=80=A6) would happen outside of the locked sectio=
-n.
+[..]
 
-Cc: "K. Y. Srinivasan" <kys@microsoft.com>
-Cc: Alexei Starovoitov <ast@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Dexuan Cui <decui@microsoft.com>
-Cc: Dimitris Michailidis <dmichail@fungible.com>
-Cc: Felix Fietkau <nbd@nbd.name>
-Cc: Haiyang Zhang <haiyangz@microsoft.com>
-Cc: Horatiu Vultur <horatiu.vultur@microchip.com>
-Cc: Jeroen de Borst <jeroendb@google.com>
-Cc: Jesper Dangaard Brouer <hawk@kernel.org>
-Cc: John Crispin <john@phrozen.org>
-Cc: John Fastabend <john.fastabend@gmail.com>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Mark Lee <Mark-MC.Lee@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Praveen Kaligineedi <pkaligineedi@google.com>
-Cc: Sean Wang <sean.wang@mediatek.com>
-Cc: Shailend Chand <shailend@google.com>
-Cc: UNGLinuxDriver@microchip.com
-Cc: Wei Liu <wei.liu@kernel.org>
-Cc: bpf@vger.kernel.org
-Cc: linux-hyperv@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org
-Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
----
- drivers/net/ethernet/fungible/funeth/funeth_rx.c     |  1 +
- drivers/net/ethernet/google/gve/gve_rx.c             | 12 +++++++-----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c          |  1 +
- drivers/net/ethernet/microchip/lan966x/lan966x_xdp.c |  1 +
- drivers/net/ethernet/microsoft/mana/mana_bpf.c       |  1 +
- 5 files changed, 11 insertions(+), 5 deletions(-)
+>>
+>> This results in no differences in binary output, helps with the ongoing
+>> efforts to globally enable -Warray-bounds.
+>>
+>> Reviewed-by: Kees Cook <keescook@chromium.org>
+>> Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+> 
+> I'll take this directly wireless-next, ok?
+> 
 
-diff --git a/drivers/net/ethernet/fungible/funeth/funeth_rx.c b/drivers/net=
-/ethernet/fungible/funeth/funeth_rx.c
-index 7e2584895de39..e7b1382545908 100644
---- a/drivers/net/ethernet/fungible/funeth/funeth_rx.c
-+++ b/drivers/net/ethernet/fungible/funeth/funeth_rx.c
-@@ -152,6 +152,7 @@ static void *fun_run_xdp(struct funeth_rxq *q, skb_frag=
-_t *frags, void *buf_va,
- 	xdp_prepare_buff(&xdp, buf_va, FUN_XDP_HEADROOM, skb_frag_size(frags) -
- 			 (FUN_RX_TAILROOM + FUN_XDP_HEADROOM), false);
-=20
-+	guard(local_lock_nested_bh)(&bpf_run_lock.redirect_lock);
- 	xdp_prog =3D READ_ONCE(q->xdp_prog);
- 	act =3D bpf_prog_run_xdp(xdp_prog, &xdp);
-=20
-diff --git a/drivers/net/ethernet/google/gve/gve_rx.c b/drivers/net/etherne=
-t/google/gve/gve_rx.c
-index 73655347902d2..504c8ef761a33 100644
---- a/drivers/net/ethernet/google/gve/gve_rx.c
-+++ b/drivers/net/ethernet/google/gve/gve_rx.c
-@@ -779,11 +779,13 @@ static void gve_rx(struct gve_rx_ring *rx, netdev_fea=
-tures_t feat,
- 				 page_info->page_offset, GVE_RX_PAD,
- 				 len, false);
- 		old_data =3D xdp.data;
--		xdp_act =3D bpf_prog_run_xdp(xprog, &xdp);
--		if (xdp_act !=3D XDP_PASS) {
--			gve_xdp_done(priv, rx, &xdp, xprog, xdp_act);
--			ctx->total_size +=3D frag_size;
--			goto finish_ok_pkt;
-+		scoped_guard(local_lock_nested_bh, &bpf_run_lock.redirect_lock) {
-+			xdp_act =3D bpf_prog_run_xdp(xprog, &xdp);
-+			if (xdp_act !=3D XDP_PASS) {
-+				gve_xdp_done(priv, rx, &xdp, xprog, xdp_act);
-+				ctx->total_size +=3D frag_size;
-+				goto finish_ok_pkt;
-+			}
- 		}
-=20
- 		page_info->pad +=3D xdp.data - old_data;
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethe=
-rnet/mediatek/mtk_eth_soc.c
-index 3cf6589cfdacf..477a74ee18c0a 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1946,6 +1946,7 @@ static u32 mtk_xdp_run(struct mtk_eth *eth, struct mt=
-k_rx_ring *ring,
- 	if (!prog)
- 		goto out;
-=20
-+	guard(local_lock_nested_bh)(&bpf_run_lock.redirect_lock);
- 	act =3D bpf_prog_run_xdp(prog, xdp);
- 	switch (act) {
- 	case XDP_PASS:
-diff --git a/drivers/net/ethernet/microchip/lan966x/lan966x_xdp.c b/drivers=
-/net/ethernet/microchip/lan966x/lan966x_xdp.c
-index 9ee61db8690b4..026311af07f9e 100644
---- a/drivers/net/ethernet/microchip/lan966x/lan966x_xdp.c
-+++ b/drivers/net/ethernet/microchip/lan966x/lan966x_xdp.c
-@@ -84,6 +84,7 @@ int lan966x_xdp_run(struct lan966x_port *port, struct pag=
-e *page, u32 data_len)
- 	xdp_prepare_buff(&xdp, page_address(page),
- 			 IFH_LEN_BYTES + XDP_PACKET_HEADROOM,
- 			 data_len - IFH_LEN_BYTES, false);
-+	guard(local_lock_nested_bh)(&bpf_run_lock.redirect_lock);
- 	act =3D bpf_prog_run_xdp(xdp_prog, &xdp);
- 	switch (act) {
- 	case XDP_PASS:
-diff --git a/drivers/net/ethernet/microsoft/mana/mana_bpf.c b/drivers/net/e=
-thernet/microsoft/mana/mana_bpf.c
-index 23b1521c0df96..d465b1dd9fca0 100644
---- a/drivers/net/ethernet/microsoft/mana/mana_bpf.c
-+++ b/drivers/net/ethernet/microsoft/mana/mana_bpf.c
-@@ -93,6 +93,7 @@ u32 mana_run_xdp(struct net_device *ndev, struct mana_rxq=
- *rxq,
- 	xdp_init_buff(xdp, PAGE_SIZE, &rxq->xdp_rxq);
- 	xdp_prepare_buff(xdp, buf_va, XDP_PACKET_HEADROOM, pkt_len, false);
-=20
-+	guard(local_lock_nested_bh)(&bpf_run_lock.redirect_lock);
- 	act =3D bpf_prog_run_xdp(prog, xdp);
-=20
- 	rx_stats =3D &rxq->stats;
---=20
-2.43.0
+Yep, sounds good.
 
+Thanks!
+--
+Gustavo
 
