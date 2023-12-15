@@ -4,134 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A77CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 07:36:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBD28C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Dec 2023 07:42:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:CC:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=frPzA9xTLGKz92/1qTzuW4BZr6aA4/SEQGAGAcHMDq0=; b=WJAhqirS6pVgP7mxTsiWCIlbZw
-	oS/yz8gMTOLaNancAMRRfh0jVWZBFnWB0+Om/F+/4bWXD549m7fCPXlim/YGO22iB4zWyrlsapJNW
-	A/BanCj6h7xNKWD8VIS3F5HNKpUkDPS2JYlLdCeNMSnN2HnXZgcca8dheJmsSFt9GRU8yR88FuZwh
-	KK8iluXMFEqRkV80myGPgPGWar4PG+76gV4U78pDU9ZdjSou53yE09FpvS8gCd6VEnlCktpvIVqnR
-	Vv0Zopka4T5a0yDh10FHxYEV1uHrcUWnweqCWSrMQm25q+8tUSf6VeQSp0okGq3BkylzqAYDrBLME
-	gfduq/bA==;
+	bh=2wAqJO6ow5pbhLNgeXDGDdT6gSCu+5ZCYT020dCWPOM=; b=JxrbElsk9ggnsMll3Lb83OOdWx
+	S7THpd8+NeBT4ig+B9a1yy7f+XNWQS8ygNPwqEDO51/I77+MIkUb1YOFCpEEmiGO4W2uKY7YYGJCA
+	ZE6YQK7phSmCNQwG2ZmvRH2dZZrYHKzZSKRB1+QwtbuxgXaYHq4kI2cqB48JNDLVmt4aMpO+WdZuy
+	/6BqROzopYA+2PNvw14wlgcN+AprvXIwKd0Lq6BG9yJO+aQjcxxs+Bt9nAW1c7ZH6GkMW7YPBxByK
+	8FHuUb47/0P9iYyTH0CR9jLP4yrgU9VGmySPCl79yssi9kPFU/nZgIvGIQ6q241u9eZ/gBSak+NQe
+	uVBSVB9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE2kf-002Je3-1c;
-	Fri, 15 Dec 2023 07:36:53 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1rE2q1-002KnK-1u;
+	Fri, 15 Dec 2023 07:42:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE2kc-002Jch-2P
-	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Dec 2023 07:36:52 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-551e6b99490so341946a12.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 Dec 2023 23:36:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702625807; x=1703230607; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=frPzA9xTLGKz92/1qTzuW4BZr6aA4/SEQGAGAcHMDq0=;
-        b=SJToC5dDbC7k2Ia1sVktk4SqBoXPwVcfpOGh2gy6yIXkEZB0l9LBAdrNEnsuc5pvTg
-         yRgd/Nvf3IbYqOcszwBZeSWFifQ+uSJPoF4OVKmjBVNRS7ChmbhkXKrKssxg1U4Nd4Hg
-         TB92FER2+MTbW9DE5O7mN01j9aWZilozq6BJcAIdIEn8mX5a5ONzMc9eFVQZs6cKs8w4
-         6ZfcNAAEOWe6MnnRQfs9GgCLe8DzjCV8NCAj6r9QiaE9gv9d/CYdVgE4WAQewqhfCQuj
-         yQcA1tv7AG1RKND0LYcLUr4dYbySD1I0eR1H8odAID7IKO7AiWIVfTo0HeWK2o7WUmGk
-         XSCw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702625807; x=1703230607;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=frPzA9xTLGKz92/1qTzuW4BZr6aA4/SEQGAGAcHMDq0=;
-        b=ibghv152UY7qg+XGQ7iicU9RHWx0kuNAg+BgqQLqr0jJU6VABD6wilXSwXd9fdPH+7
-         YBuGRuD/JHgQ1wmYaXY7IqdD7U0wMIzIR1VBGSPNTJAlneM7woRHxwricQs8HZwFISrc
-         2px36o6AMO6Mye+yInUMdFxdAvsAlvVY9ubO+ggHHdwu61ohSiknsNKjV40BX9sJVbuX
-         pofXg16s+RrISw4Cd13gDuj+jMEj5VGQqsAwtnc8Pcun3mTbiM5C53PslC9RQgsRtXPH
-         qRG5a5ViHErR64BSZw70l0VHUbfFUPlCIdSMCWliER/XaDOYWN2XXnj6UbShGpzmo0Rw
-         dBTA==
-X-Gm-Message-State: AOJu0Yye1sPwnkr9FSrj9vl9GsndX6M4H/ejr/LQ1auj+TY3wHJ6CiHq
-	PzLC81jl1H6FYWZNgrWnohAuCw==
-X-Google-Smtp-Source: AGHT+IFLu3IzW1GdoPuPzsqFBHKs+amYl6Tq/sMls8BhuNAw7AcNrl2M6sFfog+h0EvGqQIUKi0+Og==
-X-Received: by 2002:a50:bb69:0:b0:54c:4fec:ce with SMTP id y96-20020a50bb69000000b0054c4fec00cemr3275311ede.93.1702625807016;
-        Thu, 14 Dec 2023 23:36:47 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.218.27])
-        by smtp.gmail.com with ESMTPSA id et14-20020a056402378e00b005527cfaa2dfsm1217270edb.49.2023.12.14.23.36.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 14 Dec 2023 23:36:46 -0800 (PST)
-Message-ID: <d50abf1a-1ee7-4f84-9f53-69dfe9aad103@linaro.org>
-Date: Fri, 15 Dec 2023 08:36:45 +0100
+	id 1rE2px-002KlB-29;
+	Fri, 15 Dec 2023 07:42:23 +0000
+X-UUID: 778b9a8c9b1d11ee9b09ad09c76753c8-20231215
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:References:CC:To:From:Subject:MIME-Version:Date:Message-ID; bh=2wAqJO6ow5pbhLNgeXDGDdT6gSCu+5ZCYT020dCWPOM=;
+	b=E1IqYSR/4K/sjc1swu8RYVPjxo6eBcVRUShSdKJi5tlB5Cooayf22p9PJn/cGjfBmJ/zPCapa+FPNkYqfnHSLgqPCGolodPU8gBH+GG4XGy/PZihUe/x5YsVY+WM+fynCiZqXV6nV0wVofBuHJtzocrLmvqLaLqvR7w9XJA4QdU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35,REQID:f6a605fb-647a-4874-bed7-3e468f08ea7c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5d391d7,CLOUDID:b41236bd-2ac7-4da2-9f94-677a477649d9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
+X-UUID: 778b9a8c9b1d11ee9b09ad09c76753c8-20231215
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2139926486; Fri, 15 Dec 2023 00:42:15 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 15 Dec 2023 15:42:11 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Fri, 15 Dec 2023 15:42:09 +0800
+Message-ID: <6a0bc9c2-a9c6-5842-b66a-f9f020bf3aa3@mediatek.com>
+Date: Fri, 15 Dec 2023 15:42:08 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] dt-bindings: usb: mtk-xhci: add a property for
- Gen1 isoc-in transfer issue
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH] arm64: mediatek: remove broken pmic interrupt property
 Content-Language: en-US
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Macpaul Lin <macpaul.lin@mediatek.com>, Eddie Hung <eddie.hung@mediatek.com>
-References: <20231215073431.8512-1-chunfeng.yun@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231215073431.8512-1-chunfeng.yun@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Arnd Bergmann" <arnd@kernel.org>, <soc@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Ben Lok <ben.lok@mediatek.com>
+CC: Arnd Bergmann <arnd@arndb.de>, Rob Herring <robh+dt@kernel.org>,
+	"Krzysztof Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+	<conor+dt@kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <bear.wang@mediatek.com>,
+	<pablo.sun@mediatek.com>, <wenst@chromium.org>
+References: <20231212214737.230115-1-arnd@kernel.org>
+ <bc5dafe4-5487-4794-97f1-f4e4d967a665@collabora.com>
+ <1ce43346-3f60-b614-cdcc-7d9db8dec758@mediatek.com>
+In-Reply-To: <1ce43346-3f60-b614-cdcc-7d9db8dec758@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--17.802600-8.000000
+X-TMASE-MatchedRID: eVEkOcJu0F4OwH4pD14DsPHkpkyUphL9Wot5Z16+u77Bs8kDsMW7wymC
+	jjsTccFFUYtkiBoupX8uAovee89QpC1Wsi+5O6Jc6ivQ8oO6nUIxXH/dlhvLv4KwF4K/wIz9x62
+	K9vpeVDElpVclvjJJDAdoZ0oEtSg00YEzPS5rM625kfgtJfb41UMYMp0ANFh5jU67CM+uPQRDvi
+	ZnrU/ym8l1PwlhNC8gii+rjsN9t6AdWKRD1iYss521GZGE81yGIR1rLBJm/M54TmuAv2jjeS2Yu
+	hoO5axHdFVDrCqWLfIQbi0n2beMrBElELPcdUQnkX71Hy/ufOYwCmrLlx+SdWjliw+xvItd+876
+	KLWQRT2+uHCFBcDhnx2NwlAFp+i1v1l2Uvx6idpWdFebWIc3VsRB0bsfrpPIfiAqrjYtFiS/RvL
+	zr5xet56fdmHAkNDU7melNaZ+qBmhqzYP1yklcn7cGd19dSFd
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--17.802600-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 026B01DCDDCE9116B9D54BB5E5B875CC4A12E046A3197EEE1A7B5B1A873AD7872000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231214_233650_783232_C5D3CE4F 
-X-CRM114-Status: GOOD (  16.96  )
+X-CRM114-CacheID: sfid-20231214_234221_714095_90021D65 
+X-CRM114-Status: GOOD (  24.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,48 +107,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 15/12/2023 08:34, Chunfeng Yun wrote:
-> For Gen1 isoc-in endpoint on controller before about SSUSB IPM v1.6.0, it
-> still send out unexpected ACK after receiving a short packet in burst
-> transfer, this will cause an exception on connected device, specially for
-> a 4k camera.
-> Add a quirk property "rx-fifo-depth" to work around this hardware issue,
-> prefer to use 2;
-> The side-effect is that may cause performance drop about 10%, including
-> bulk transfer.
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> v2: change 'mediatek,rxfifo-depth' to 'rx-fifo-depth'
-> ---
->  .../devicetree/bindings/usb/mediatek,mtk-xhci.yaml   | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> index e9644e333d78..e44a71acb5c0 100644
-> --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> @@ -124,6 +124,18 @@ properties:
->        defined in the xHCI spec on MTK's controller.
->      default: 5000
->  
-> +  rx-fifo-depth:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      It is a quirk used to work around Gen1 isoc-in endpoint transfer issue
-> +      that still send out unexpected ACK after device finish the burst transfer
-> +      with a short packet and cause an exception, specially on a 4K camera
-> +      device, it happens on controller before about IPM v1.6.0; the side-effect
-> +      is that may cause performance drop about 10%, include bulk transfer,
-> +      prefer to use 2 here.
+On 12/15/23 01:54, Macpaul Lin wrote:
+> On 12/13/23 19:09, AngeloGioacchino Del Regno wrote:
+>
+>> Il 12/12/23 22:47, Arnd Bergmann ha scritto:
+>>> From: Arnd Bergmann <arnd@arndb.de>
+>>>
+>>> The pmic is connected to the GIC, which uses four-cell interrupt 
+>>> properties,
+>>> but its interrupt is specified as two-cell that would only make 
+>>> sense for
+>>> the GPIO irqchip:
+>>>
+>>> arch/arm64/boot/dts/mediatek/mt8195.dtsi:464.4-27: Warning 
+>>> (interrupts_property): /soc/i2c@11d01000/pmic@34:#interrupt-cells: 
+>>> size is (8), expected multiple of 16
+>>>
+>>> Remove the interrupt for now to shut up the warning. When someone 
+>>> figures out
+>>> what the correct interrupt and parent are, we can add it back.
+>>>
+>>
+>> Please, can anyone from MediaTek comment on that?
+>
+> Sorry for late response, I've just stuck in other tasks and didn't 
+> notice this
+>
+> patch is for genio-1200-evk. I've tested 6.7-rc1 but I thought it 
+> might be an issue
+>
+> in origin mt8195.dtsi and not be related to board dts.
+>
+>> I see a mt6360_pins on PIO:
+>>             pinmux = <PINMUX_GPIO17__FUNC_GPIO17>,
+>>                  <PINMUX_GPIO128__FUNC_GPIO128>;
+>>
+>> ...and that's GPIO128, which may effectively be the IRQ pin for MT6360.
+>>
+>> Still, I'm not sure whether the interrupt is on GIC or PIO, please 
+>> clarify,
+>> otherwise we will have to get this commit upstream.
+>>
+> I think it could be solved by adding
+>
+> 'interrupt-parent = <&pio>;' to mt6360 node.
+>
+> But currently I have no much time to verify it.
+>
+> I'll try to find some time to find out the solution tomorrow.
+>
+>> Thanks,
+>> Angelo
+>>
+>>> Fixes: f2b543a191b6 ("arm64: dts: mediatek: add device-tree for 
+>>> Genio 1200 EVK board")
+>>> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+>>> ---
+>>>   arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts | 2 --
+>>>   1 file changed, 2 deletions(-)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts 
+>>> b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+>>> index 70b465f7c6a7..a409ef998746 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+>>> @@ -238,8 +238,6 @@ &i2c6 {
+>>>       mt6360: pmic@34 {
+>>>           compatible = "mediatek,mt6360";
+>>>           reg = <0x34>;
+>>> -        interrupts = <128 IRQ_TYPE_EDGE_FALLING>;
+>>> -        interrupt-names = "IRQB";
+>>>           interrupt-controller;
+>>>           #interrupt-cells = <1>;
+>>>           pinctrl-0 = <&mt6360_pins>;
+>>
+>
+> Thanks for pointing out the issue! Let's see if it could be solved by 
+> adding 'interrupt-parents'.
+>
+> Macpaul Lin
 
-What is the meaning of 0-3? bytes? words?
+I've send a patch to add 'interrupt-parent' for mt6360 and tested with 
+my local kernel-6.7-rc1.
 
-> +    minimum: 0
-> +    maximum: 3
+Link: 
+https://lore.kernel.org/linux-devicetree/20231215073252.21586-1-macpaul.lin@mediatek.com/
 
+Thanks for Angelo , Arnd, and Chen-yu's reminding.
 
 Best regards,
-Krzysztof
+
+Macpaul Lin
 
 
