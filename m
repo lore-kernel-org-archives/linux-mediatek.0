@@ -4,61 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D122C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Dec 2023 12:42:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9F5FC46CD3
+	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Dec 2023 14:30:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=53VdKDpJcL+9oYwjSNytfeRiAIyPbKa7FVqLsuZATU8=; b=DS7bRjfkQxuYA0
-	PRqdDnlJo0t0nxucXnvwJpYHEzHl6uwZ1dX5OcI1hFcVeNHsM4/8eSo3Gyu98U3zOgrzY5wzQAcJE
-	HxQzatCnZSNMqQxCA4oeXN5hlPKodgnQpasd5OvCHAWTxw/1Z3iYOblGRGSzHtlGqZvFhC3EDnY4m
-	cc+X9ye6R6ZmoZ313Du7eS0qxX708GjknuzK2inW2RyLcksEju1Vek1Xzg85GEx8Bl9njXic/cxm1
-	pQtOgVHZFTqj4Sw2DQl2+RUiflKmusLGjfFeyHse/kN0TcUTKnLODbVoN0g16JCn3BPuLGKEhgwib
-	7jqZggrE/aT1X7C3r1fQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zexQrPRY2pegCafFa/wmTU1bBUVX5N00Vi67wRiCGYs=; b=rOUHElmxQtQ4jyQx5CZQzd5CS/
+	FweSXjJ9Fa+zgVqmyFbxwVFe/3K5EFpozI4duMD+DCgZPFQUaakLTqRiLJGvWIZy0g1V8eLGh9yq7
+	V9IeXbiIH/bNDehSSG8JrXGzKmU4ibhoePlpIkI7Plgq0DKaBNnr5uok78utOdD4bmz8ThRM4ez4Y
+	vnF3bVywMh0GeSAdaqkVsYNkGBET2PRTxPem7gWrwjQNXcQ1TWMGQpcp4p2iwo+o87eNWKwoevhQK
+	vfAS6HvWVeFf4nsrCVR+68+W/fuIkWoTgTAfJUfOIQJSKGnb1vmzN07kV35UKJOyjJy891aQmNwq/
+	iBNzQVLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEqTv-007oH8-1X;
-	Sun, 17 Dec 2023 12:42:55 +0000
-Received: from relay8-d.mail.gandi.net ([2001:4b98:dc4:8::228])
+	id 1rEs9t-007x93-0I;
+	Sun, 17 Dec 2023 14:30:21 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEqTr-007oG4-06;
-	Sun, 17 Dec 2023 12:42:53 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 97A3F1BF205;
-	Sun, 17 Dec 2023 12:42:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1702816962;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=53VdKDpJcL+9oYwjSNytfeRiAIyPbKa7FVqLsuZATU8=;
-	b=b9wK5mg0uUyb2cQPYJNlayYJcOEtfwb7WbqhgIe1HbMH7LeT6fvWNpOxUlGJafWs5WBVzP
-	jMVU/V4yxtxr0mfbAHDE+iuPKfshri1J1SEXaq2O0QOYtzTmpJT0F/Kntq8d1XCvUFpIbd
-	reBH+mlTqOqPc+Iq0dogGtnEEssPAB7UDZUFkD3ob8G6xeBuI8oV9OuV6D+NAKDdm5xGDO
-	Wy6UUwAxVQnp6akeFmO11Gjv73DM39HVAOuu3+QC+YcJncxOVJ1/hmBxBRBre4dPD4nr4D
-	L8HRuTGci9PwaO4rZljAxu8vQDITXI4FwRQL17inlZcz0chhVUAOcI21JMavlQ==
-Message-ID: <a01fa1eb-be77-4da1-bfa5-3e3c20bc08a7@arinc9.com>
-Date: Sun, 17 Dec 2023 15:42:34 +0300
+	id 1rEs9m-007x3j-2q
+	for linux-mediatek@lists.infradead.org;
+	Sun, 17 Dec 2023 14:30:16 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rEs9f-0006VJ-OC; Sun, 17 Dec 2023 15:30:07 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rEs9b-00GUh4-VU; Sun, 17 Dec 2023 15:30:03 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rEs9b-004hyq-J9; Sun, 17 Dec 2023 15:30:03 +0100
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: kernel@pengutronix.de,
+	Markus Mayer <mmayer@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Santosh Shilimkar <ssantosh@kernel.org>,
+	Paul Cercueil <paul@crapouillou.net>,
+	linux-mips@vger.kernel.org,
+	Yong Wu <yong.wu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org,
+	Roger Quadros <rogerq@kernel.org>,
+	Tony Lindgren <tony@atomide.com>,
+	linux-omap@vger.kernel.org,
+	Lukasz Luba <lukasz.luba@arm.com>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	linux-pm@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Sumit Gupta <sumitg@nvidia.com>,
+	Nick Alcock <nick.alcock@oracle.com>,
+	linux-tegra@vger.kernel.org,
+	Rob Herring <robh@kernel.org>
+Subject: [PATCH 00/15] memory: Convert to platform remove callback returning void
+Date: Sun, 17 Dec 2023 15:29:26 +0100
+Message-ID: <cover.1702822744.git.u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 06/15] net: dsa: mt7530: do not set
- priv->p5_interface on mt7530_setup_port5()
-Content-Language: en-US
-To: Vladimir Oltean <olteanv@gmail.com>
-References: <20231118123205.266819-1-arinc.unal@arinc9.com>
- <20231118123205.266819-7-arinc.unal@arinc9.com>
- <20231207181858.ojbgt5pwyqq3tzjk@skbuf>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20231207181858.ojbgt5pwyqq3tzjk@skbuf>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2631; i=u.kleine-koenig@pengutronix.de; h=from:subject:message-id; bh=FyuyHaIj5jd4bPxOXQjJ+ozo7s7sihGMLWkkNmVGnME=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlfwXFp0yrTZyYp2KFK2fwTyu80UmXy69MORJAs wm48iAIgimJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZX8FxQAKCRCPgPtYfRL+ TgNJB/9eFZpgOAoyZMQMzWGucpEqIvWX6W0eNcnXBmurNkaFQmk9v1UHmj1xyNFW24mvDrwXPRz PaBLdyRO1QyT7ZOOWdkxvvYU+/g6yBUmpw+P5lihn0tefw+vl6Ej1suMnbs2tMdJ0FTQYQZRyQL ZnZyl3AYPprWtaCsKyu9b4pRwdQGJ4KG1NnvRkE562N+Wg7eXkwU5ah9EQWW4t+Jcs6SgvZHMhp 1quJkD1SA//uBFFZXLUV5UysntvLZwazuV3zLV81y6r02+H5X8Y3mcj7mX2qPf8Ubh9GWDrcybC h8kJTYL4+I5P2Hh+7xPkiTW8Rt32gZGaprL2X8zZ8V/x9QkC
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231217_044251_379016_E383B233 
-X-CRM114-Status: GOOD (  25.33  )
+X-CRM114-CacheID: sfid-20231217_063014_931888_0C86E5E4 
+X-CRM114-Status: UNSURE (   7.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,76 +99,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, Russell King <linux@armlinux.org.uk>, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, mithat.guner@xeront.com, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7.12.2023 21:18, Vladimir Oltean wrote:
-> On Sat, Nov 18, 2023 at 03:31:56PM +0300, Arınç ÜNAL wrote:
->> Do not set priv->p5_interface on mt7530_setup_port5(). There isn't a case
->> where mt753x_phylink_mac_config() runs after mt7530_setup_port5() which
->> setting priv->p5_interface would prevent mt7530_setup_port5() from running
->> more than once.
->>
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->> ---
->>   drivers/net/dsa/mt7530.c | 2 --
->>   1 file changed, 2 deletions(-)
->>
->> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
->> index 069b3dfca6fa..fc87ec817672 100644
->> --- a/drivers/net/dsa/mt7530.c
->> +++ b/drivers/net/dsa/mt7530.c
->> @@ -978,8 +978,6 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
->>   	dev_dbg(ds->dev, "Setup P5, HWTRAP=0x%x, intf_sel=%s, phy-mode=%s\n",
->>   		val, p5_intf_modes(priv->p5_intf_sel), phy_modes(interface));
->>   
->> -	priv->p5_interface = interface;
->> -
->>   unlock_exit:
->>   	mutex_unlock(&priv->reg_mutex);
->>   }
->> -- 
->> 2.40.1
->>
-> 
-> Purely as a matter of theory, mt753x_phylink_mac_config() itself could
-> be called more than once, at any time there is a phylink_major_config() -
-> first during initial one, then upon any change of the phy_interface_t.
-> With the port being fixed and internal, maybe that is unlikely.
-> 
-> Destroying and re-creating the phylink instance could also make the
-> driver see more than 1 mt753x_phylink_mac_config() call. During periods
-> of -EPROBE_DEFER, maybe this could even happen.
-> 
-> I think what we need to see is a description of what the priv->p5_interface
-> test is really protecting against, because it certainly is uncommon in other
-> drivers to have this much logic to avoid mt753x_mac_config() being
-> called twice.
-> 
-> If there's nothing wrong with calling it twice and it's just an optimization,
-> I think that's enough of a justification for removing that extra protection.
-> At the same time, the optimization (and simplification) that we should
-> pursue is that we should remove the overlap between phylink and the
-> initial port setup made by the driver.
+Hello,
 
-priv->p5_interface and priv->p6_interface were actually intended to apply
-only for MT7531. It prevents the CPU ports to be configured again. CPU
-ports are unnecessarily configured before phylink. I intend to address that
-with the patch below. I'll submit it after the current patches here go
-through. There's a lot to clean up in this driver.
+this series converts the platform drivers below drivers/memory to make
+use of .remove_new. See commit 5c5a7680e67b ("platform: Provide a remove
+callback that returns no value") for an extended explanation and the
+eventual goal. The TL;DR; is to make it harder for driver authors to
+leak resources without noticing.
 
-https://github.com/arinc9/linux/commit/80efcb1870530ef5526d7feda625374b8f308369
+This is merge window material. All patches are pairwise independent of
+each other so they can be applied individually. Still it would be great
+to let them go in all together.
 
-If you can recall, this is where me and Russell mostly left off on my 30
-patch series. I was supposed to run some debug info prints to make sure
-that the MT7531 CPU ports are still configured as they were with
-priv->info->cpu_port_config().
+Best regards
+Uwe
 
-https://lore.kernel.org/netdev/ZHy2jQLesdYFMQtO@shell.armlinux.org.uk/
+Uwe Kleine-König (15):
+  memory: brcmstb_dpfe: Convert to platform remove callback returning void
+  memory: brcmstb_memc: Convert to platform remove callback returning void
+  memory: emif: Convert to platform remove callback returning void
+  memory: fsl-corenet-cf: Convert to platform remove callback returning void
+  memory: fsl_ifc: Convert to platform remove callback returning void
+  memory: jz4780-nemc: Convert to platform remove callback returning void
+  memory: mtk-smi: Convert to platform remove callback returning void
+  memory: omap-gpmc: Convert to platform remove callback returning void
+  memory: renesas-rpc-if: Convert to platform remove callback returning void
+  memory: exynos5422-dmc: Convert to platform remove callback returning void
+  memory: stm32-fmc2-ebi: Convert to platform remove callback returning void
+  memory: tegra186-emc: Convert to platform remove callback returning void
+  memory: tegra210-emc: Convert to platform remove callback returning void
+  memory: ti-aemif: Convert to platform remove callback returning void
+  memory: ti-emif-pm: Convert to platform remove callback returning void
 
-For this patch, I can change the patch log to state that priv->p5_interface
-and priv->p6_interface are intended for use on the MT7531 switch.
+ drivers/memory/brcmstb_dpfe.c            |  6 ++----
+ drivers/memory/brcmstb_memc.c            |  6 ++----
+ drivers/memory/emif.c                    |  6 ++----
+ drivers/memory/fsl-corenet-cf.c          |  6 ++----
+ drivers/memory/fsl_ifc.c                 |  6 ++----
+ drivers/memory/jz4780-nemc.c             |  5 ++---
+ drivers/memory/mtk-smi.c                 | 10 ++++------
+ drivers/memory/omap-gpmc.c               |  6 ++----
+ drivers/memory/renesas-rpc-if.c          |  6 ++----
+ drivers/memory/samsung/exynos5422-dmc.c  |  6 ++----
+ drivers/memory/stm32-fmc2-ebi.c          |  6 ++----
+ drivers/memory/tegra/tegra186-emc.c      |  6 ++----
+ drivers/memory/tegra/tegra210-emc-core.c |  6 ++----
+ drivers/memory/ti-aemif.c                |  5 ++---
+ drivers/memory/ti-emif-pm.c              |  6 ++----
+ 15 files changed, 32 insertions(+), 60 deletions(-)
 
-Arınç
+base-commit: 17cb8a20bde66a520a2ca7aad1063e1ce7382240
+-- 
+2.42.0
 
