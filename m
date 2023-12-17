@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4035C46CA2
-	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Dec 2023 21:50:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 605DDC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Dec 2023 21:50:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uJjljrK50aItY68t0UCu+rNV85O9cq6wMG5e/iEHFAQ=; b=GZijLUXnGF2BlFzncq/uXySvCh
-	2qYMBmYmi6hlIzLh5NVdAyIkvTOqn7eZvj/xV4C2lS2NT+0V83SZIJMZAgn8o+P+v7fa0J8jgghU1
-	36cgAVIS4mzOlMaGcf91uX2E7fBmh9lSYICRYJom7IbsaTvBuIXG9SbJVBT8c2JAgtvZQu5l6FETw
-	1gajHXY3wygKgZaepkeT7Pe0Cme0+cKU60zA3m1e5rnM0Xk5V9GF6UzQNpYW9kX/QDs0I4EO7M1nh
-	1KCUmHOZX4U3nFli7kFcucDwOXzdIWF0f6IWYOhxC7iVLgrQNQ9elO8/IhfFp/AB/5K8wHiVuTJFL
-	SzPdWkMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O8M4AlCcUCu98+bba/c5c0kYDKLWaRFqglPWEvqKGaQ=; b=0+7M1DGwlqxebwGCDSPAF0JzOa
+	M+B4bp80pXGBN3wsHXWyctKlXT7VxTWexgglTDRNiUT0mG/pl856zQJ0QKYnXcY82ORWnH77pnIgY
+	+XqDyUmd3nvQanC9aORULsVipVdYqEBSdUgbn2gCspPRMzyA6di/qqw1hn39yXDjn8XoRFp4aEvl0
+	yEcaNyxymgD2gTUJiKPwLKJX3GAuRvGf2p4I6y8hLS3vve1KcCgxUMP/YN2+TvGGVhufYRxyjCHAi
+	Dt1j6SdvlXba5+B+8GPbcBLA3wLiir4pJ5UeRnznCAAH6OFZAuIlTDyiSyBF+HKDPtFZJlFEid2ng
+	33MBqkVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEz1W-008Wp3-1q;
-	Sun, 17 Dec 2023 21:50:10 +0000
+	id 1rEz1e-008WsI-0D;
+	Sun, 17 Dec 2023 21:50:18 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEz1R-008WnE-1A;
-	Sun, 17 Dec 2023 21:50:07 +0000
+	id 1rEz1Y-008WpJ-0L;
+	Sun, 17 Dec 2023 21:50:14 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96.2)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1rEz0z-0001Qm-1s;
-	Sun, 17 Dec 2023 21:49:38 +0000
-Date: Sun, 17 Dec 2023 21:49:33 +0000
+	id 1rEz1K-0001RW-1A;
+	Sun, 17 Dec 2023 21:49:59 +0000
+Date: Sun, 17 Dec 2023 21:49:55 +0000
 From: Daniel Golle <daniel@makrotopia.org>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -56,14 +56,17 @@ To: Rob Herring <robh+dt@kernel.org>,
 	linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: [PATCH v7 1/5] dt-bindings: clock: mediatek: add MT7988 clock IDs
-Message-ID: <27f99db432e9ccc804cc5b6501d7d17d72cae879.1702849494.git.daniel@makrotopia.org>
+Subject: [PATCH v7 3/5] dt-bindings: clock: mediatek: add clock controllers
+ of MT7988
+Message-ID: <07e76a544ce4392bcb88e34d5480e99bb7994618.1702849494.git.daniel@makrotopia.org>
+References: <27f99db432e9ccc804cc5b6501d7d17d72cae879.1702849494.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <27f99db432e9ccc804cc5b6501d7d17d72cae879.1702849494.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231217_135005_567066_0687E813 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20231217_135012_290587_C522DDEE 
+X-CRM114-Status: GOOD (  15.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,313 +81,302 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sam Shih <sam.shih@mediatek.com>
+Add various clock controllers found in the MT7988 SoC to existing
+bindings (if applicable) and add files for the new ethwarp, mcusys
+and xfi-pll clock controllers not previously present in any SoC.
 
-Add MT7988 clock dt-bindings for topckgen, apmixedsys, infracfg,
-ethernet and xfipll subsystem clocks.
-
-Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
-v7: no changes
-v6: no changes
-v5: no changes
-v4: no changes
-v3: no changes
-v2: fix indentation
+v7:
+ * fix wrong path in $id of mediatek,mt7988-xfi-pll.yaml and
+   mediatek,mt7988-ethwarp.yaml
 
- .../dt-bindings/clock/mediatek,mt7988-clk.h   | 280 ++++++++++++++++++
- 1 file changed, 280 insertions(+)
- create mode 100644 include/dt-bindings/clock/mediatek,mt7988-clk.h
+v6:
+ * remove invalid '_' from compatible string
+ * drop minItems where uneeded due to listed clock-names
+ * fix condition regarding presence of the 'pcs' subnode
 
-diff --git a/include/dt-bindings/clock/mediatek,mt7988-clk.h b/include/dt-bindings/clock/mediatek,mt7988-clk.h
+v5:
+ * drop use of ti,syscon-reset and hence also syscon and simple-mfd
+   compatibles from mt7988-ethwarp clock controller which now got the
+   clock controller provide the reset(s).
+
+v4:
+ * add subnodes for controllers acting as MFD
+
+v3:
+ * move clock bindings to clock folder
+ * drop ti,syscon-reset from bindings and example
+ * merge mcusys with topckgen bindings
+
+v2:
+ * dropped unused labels
+ * add 'type: object' declaration for reset-controller found in new
+   ethwarp controller and represented as ti,syscon-reset
+ * rebase on top of
+   "dt-bindings: arm: mediatek: move ethsys controller & convert to DT schema"
+
+ .../arm/mediatek/mediatek,infracfg.yaml       |  1 +
+ .../bindings/clock/mediatek,apmixedsys.yaml   |  1 +
+ .../bindings/clock/mediatek,ethsys.yaml       |  1 +
+ .../clock/mediatek,mt7988-ethwarp.yaml        | 52 +++++++++++++++
+ .../clock/mediatek,mt7988-xfi-pll.yaml        | 48 ++++++++++++++
+ .../bindings/clock/mediatek,topckgen.yaml     |  2 +
+ .../bindings/net/pcs/mediatek,sgmiisys.yaml   | 65 ++++++++++++++++---
+ 7 files changed, 161 insertions(+), 9 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml
+
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
+index ea98043c6ba3d..230b5188a88db 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
+@@ -30,6 +30,7 @@ properties:
+               - mediatek,mt7629-infracfg
+               - mediatek,mt7981-infracfg
+               - mediatek,mt7986-infracfg
++              - mediatek,mt7988-infracfg
+               - mediatek,mt8135-infracfg
+               - mediatek,mt8167-infracfg
+               - mediatek,mt8173-infracfg
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+index 372c1d744bc27..685535846cbb7 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+@@ -22,6 +22,7 @@ properties:
+           - mediatek,mt7622-apmixedsys
+           - mediatek,mt7981-apmixedsys
+           - mediatek,mt7986-apmixedsys
++          - mediatek,mt7988-apmixedsys
+           - mediatek,mt8135-apmixedsys
+           - mediatek,mt8173-apmixedsys
+           - mediatek,mt8516-apmixedsys
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml
+index 94d42c8647777..f9cddacc2eae1 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,ethsys.yaml
+@@ -22,6 +22,7 @@ properties:
+               - mediatek,mt7629-ethsys
+               - mediatek,mt7981-ethsys
+               - mediatek,mt7986-ethsys
++              - mediatek,mt7988-ethsys
+           - const: syscon
+       - items:
+           - const: mediatek,mt7623-ethsys
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml
 new file mode 100644
-index 0000000000000..63376e40f14d2
+index 0000000000000..e32a0251ff6ac
 --- /dev/null
-+++ b/include/dt-bindings/clock/mediatek,mt7988-clk.h
-@@ -0,0 +1,280 @@
-+/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-+/*
-+ * Copyright (c) 2023 MediaTek Inc.
-+ * Author: Sam Shih <sam.shih@mediatek.com>
-+ * Author: Xiufeng Li <Xiufeng.Li@mediatek.com>
-+ */
++++ b/Documentation/devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml
+@@ -0,0 +1,52 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/clock/mediatek,mt7988-ethwarp.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+#ifndef _DT_BINDINGS_CLK_MT7988_H
-+#define _DT_BINDINGS_CLK_MT7988_H
++title: MediaTek MT7988 ethwarp Controller
 +
-+/* APMIXEDSYS */
++maintainers:
++  - Daniel Golle <daniel@makrotopia.org>
 +
-+#define CLK_APMIXED_NETSYSPLL			0
-+#define CLK_APMIXED_MPLL			1
-+#define CLK_APMIXED_MMPLL			2
-+#define CLK_APMIXED_APLL2			3
-+#define CLK_APMIXED_NET1PLL			4
-+#define CLK_APMIXED_NET2PLL			5
-+#define CLK_APMIXED_WEDMCUPLL			6
-+#define CLK_APMIXED_SGMPLL			7
-+#define CLK_APMIXED_ARM_B			8
-+#define CLK_APMIXED_CCIPLL2_B			9
-+#define CLK_APMIXED_USXGMIIPLL			10
-+#define CLK_APMIXED_MSDCPLL			11
++description:
++  The Mediatek MT7988 ethwarp controller provides clocks and resets for the
++  Ethernet related subsystems found the MT7988 SoC.
++  The clock values can be found in <dt-bindings/clock/mt*-clk.h>.
 +
-+/* TOPCKGEN */
++properties:
++  compatible:
++    items:
++      - const: mediatek,mt7988-ethwarp
 +
-+#define CLK_TOP_XTAL				0
-+#define CLK_TOP_XTAL_D2				1
-+#define CLK_TOP_RTC_32K				2
-+#define CLK_TOP_RTC_32P7K			3
-+#define CLK_TOP_MPLL_D2				4
-+#define CLK_TOP_MPLL_D3_D2			5
-+#define CLK_TOP_MPLL_D4				6
-+#define CLK_TOP_MPLL_D8				7
-+#define CLK_TOP_MPLL_D8_D2			8
-+#define CLK_TOP_MMPLL_D2			9
-+#define CLK_TOP_MMPLL_D3_D5			10
-+#define CLK_TOP_MMPLL_D4			11
-+#define CLK_TOP_MMPLL_D6_D2			12
-+#define CLK_TOP_MMPLL_D8			13
-+#define CLK_TOP_APLL2_D4			14
-+#define CLK_TOP_NET1PLL_D4			15
-+#define CLK_TOP_NET1PLL_D5			16
-+#define CLK_TOP_NET1PLL_D5_D2			17
-+#define CLK_TOP_NET1PLL_D5_D4			18
-+#define CLK_TOP_NET1PLL_D8			19
-+#define CLK_TOP_NET1PLL_D8_D2			20
-+#define CLK_TOP_NET1PLL_D8_D4			21
-+#define CLK_TOP_NET1PLL_D8_D8			22
-+#define CLK_TOP_NET1PLL_D8_D16			23
-+#define CLK_TOP_NET2PLL_D2			24
-+#define CLK_TOP_NET2PLL_D4			25
-+#define CLK_TOP_NET2PLL_D4_D4			26
-+#define CLK_TOP_NET2PLL_D4_D8			27
-+#define CLK_TOP_NET2PLL_D6			28
-+#define CLK_TOP_NET2PLL_D8			29
-+#define CLK_TOP_NETSYS_SEL			30
-+#define CLK_TOP_NETSYS_500M_SEL			31
-+#define CLK_TOP_NETSYS_2X_SEL			32
-+#define CLK_TOP_NETSYS_GSW_SEL			33
-+#define CLK_TOP_ETH_GMII_SEL			34
-+#define CLK_TOP_NETSYS_MCU_SEL			35
-+#define CLK_TOP_NETSYS_PAO_2X_SEL		36
-+#define CLK_TOP_EIP197_SEL			37
-+#define CLK_TOP_AXI_INFRA_SEL			38
-+#define CLK_TOP_UART_SEL			39
-+#define CLK_TOP_EMMC_250M_SEL			40
-+#define CLK_TOP_EMMC_400M_SEL			41
-+#define CLK_TOP_SPI_SEL				42
-+#define CLK_TOP_SPIM_MST_SEL			43
-+#define CLK_TOP_NFI1X_SEL			44
-+#define CLK_TOP_SPINFI_SEL			45
-+#define CLK_TOP_PWM_SEL				46
-+#define CLK_TOP_I2C_SEL				47
-+#define CLK_TOP_PCIE_MBIST_250M_SEL		48
-+#define CLK_TOP_PEXTP_TL_SEL			49
-+#define CLK_TOP_PEXTP_TL_P1_SEL			50
-+#define CLK_TOP_PEXTP_TL_P2_SEL			51
-+#define CLK_TOP_PEXTP_TL_P3_SEL			52
-+#define CLK_TOP_USB_SYS_SEL			53
-+#define CLK_TOP_USB_SYS_P1_SEL			54
-+#define CLK_TOP_USB_XHCI_SEL			55
-+#define CLK_TOP_USB_XHCI_P1_SEL			56
-+#define CLK_TOP_USB_FRMCNT_SEL			57
-+#define CLK_TOP_USB_FRMCNT_P1_SEL		58
-+#define CLK_TOP_AUD_SEL				59
-+#define CLK_TOP_A1SYS_SEL			60
-+#define CLK_TOP_AUD_L_SEL			61
-+#define CLK_TOP_A_TUNER_SEL			62
-+#define CLK_TOP_SSPXTP_SEL			63
-+#define CLK_TOP_USB_PHY_SEL			64
-+#define CLK_TOP_USXGMII_SBUS_0_SEL		65
-+#define CLK_TOP_USXGMII_SBUS_1_SEL		66
-+#define CLK_TOP_SGM_0_SEL			67
-+#define CLK_TOP_SGM_SBUS_0_SEL			68
-+#define CLK_TOP_SGM_1_SEL			69
-+#define CLK_TOP_SGM_SBUS_1_SEL			70
-+#define CLK_TOP_XFI_PHY_0_XTAL_SEL		71
-+#define CLK_TOP_XFI_PHY_1_XTAL_SEL		72
-+#define CLK_TOP_SYSAXI_SEL			73
-+#define CLK_TOP_SYSAPB_SEL			74
-+#define CLK_TOP_ETH_REFCK_50M_SEL		75
-+#define CLK_TOP_ETH_SYS_200M_SEL		76
-+#define CLK_TOP_ETH_SYS_SEL			77
-+#define CLK_TOP_ETH_XGMII_SEL			78
-+#define CLK_TOP_BUS_TOPS_SEL			79
-+#define CLK_TOP_NPU_TOPS_SEL			80
-+#define CLK_TOP_DRAMC_SEL			81
-+#define CLK_TOP_DRAMC_MD32_SEL			82
-+#define CLK_TOP_INFRA_F26M_SEL			83
-+#define CLK_TOP_PEXTP_P0_SEL			84
-+#define CLK_TOP_PEXTP_P1_SEL			85
-+#define CLK_TOP_PEXTP_P2_SEL			86
-+#define CLK_TOP_PEXTP_P3_SEL			87
-+#define CLK_TOP_DA_XTP_GLB_P0_SEL		88
-+#define CLK_TOP_DA_XTP_GLB_P1_SEL		89
-+#define CLK_TOP_DA_XTP_GLB_P2_SEL		90
-+#define CLK_TOP_DA_XTP_GLB_P3_SEL		91
-+#define CLK_TOP_CKM_SEL				92
-+#define CLK_TOP_DA_SEL				93
-+#define CLK_TOP_PEXTP_SEL			94
-+#define CLK_TOP_TOPS_P2_26M_SEL			95
-+#define CLK_TOP_MCUSYS_BACKUP_625M_SEL		96
-+#define CLK_TOP_NETSYS_SYNC_250M_SEL		97
-+#define CLK_TOP_MACSEC_SEL			98
-+#define CLK_TOP_NETSYS_TOPS_400M_SEL		99
-+#define CLK_TOP_NETSYS_PPEFB_250M_SEL		100
-+#define CLK_TOP_NETSYS_WARP_SEL			101
-+#define CLK_TOP_ETH_MII_SEL			102
-+#define CLK_TOP_NPU_SEL				103
-+#define CLK_TOP_AUD_I2S_M			104
++  reg:
++    maxItems: 1
 +
-+/* MCUSYS */
++  '#clock-cells':
++    const: 1
 +
-+#define CLK_MCU_BUS_DIV_SEL			0
-+#define CLK_MCU_ARM_DIV_SEL			1
++  '#reset-cells':
++    const: 1
 +
-+/* INFRACFG_AO */
++required:
++  - compatible
++  - reg
++  - '#clock-cells'
++  - '#reset-cells'
 +
-+#define CLK_INFRA_MUX_UART0_SEL			0
-+#define CLK_INFRA_MUX_UART1_SEL			1
-+#define CLK_INFRA_MUX_UART2_SEL			2
-+#define CLK_INFRA_MUX_SPI0_SEL			3
-+#define CLK_INFRA_MUX_SPI1_SEL			4
-+#define CLK_INFRA_MUX_SPI2_SEL			5
-+#define CLK_INFRA_PWM_SEL			6
-+#define CLK_INFRA_PWM_CK1_SEL			7
-+#define CLK_INFRA_PWM_CK2_SEL			8
-+#define CLK_INFRA_PWM_CK3_SEL			9
-+#define CLK_INFRA_PWM_CK4_SEL			10
-+#define CLK_INFRA_PWM_CK5_SEL			11
-+#define CLK_INFRA_PWM_CK6_SEL			12
-+#define CLK_INFRA_PWM_CK7_SEL			13
-+#define CLK_INFRA_PWM_CK8_SEL			14
-+#define CLK_INFRA_PCIE_GFMUX_TL_O_P0_SEL	15
-+#define CLK_INFRA_PCIE_GFMUX_TL_O_P1_SEL	16
-+#define CLK_INFRA_PCIE_GFMUX_TL_O_P2_SEL	17
-+#define CLK_INFRA_PCIE_GFMUX_TL_O_P3_SEL	18
++additionalProperties: false
 +
-+/* INFRACFG */
++examples:
++  - |
++    #include <dt-bindings/reset/ti-syscon.h>
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
 +
-+#define CLK_INFRA_PCIE_PERI_26M_CK_P0		19
-+#define CLK_INFRA_PCIE_PERI_26M_CK_P1		20
-+#define CLK_INFRA_PCIE_PERI_26M_CK_P2		21
-+#define CLK_INFRA_PCIE_PERI_26M_CK_P3		22
-+#define CLK_INFRA_66M_GPT_BCK			23
-+#define CLK_INFRA_66M_PWM_HCK			24
-+#define CLK_INFRA_66M_PWM_BCK			25
-+#define CLK_INFRA_66M_PWM_CK1			26
-+#define CLK_INFRA_66M_PWM_CK2			27
-+#define CLK_INFRA_66M_PWM_CK3			28
-+#define CLK_INFRA_66M_PWM_CK4			29
-+#define CLK_INFRA_66M_PWM_CK5			30
-+#define CLK_INFRA_66M_PWM_CK6			31
-+#define CLK_INFRA_66M_PWM_CK7			32
-+#define CLK_INFRA_66M_PWM_CK8			33
-+#define CLK_INFRA_133M_CQDMA_BCK		34
-+#define CLK_INFRA_66M_AUD_SLV_BCK		35
-+#define CLK_INFRA_AUD_26M			36
-+#define CLK_INFRA_AUD_L				37
-+#define CLK_INFRA_AUD_AUD			38
-+#define CLK_INFRA_AUD_EG2			39
-+#define CLK_INFRA_DRAMC_F26M			40
-+#define CLK_INFRA_133M_DBG_ACKM			41
-+#define CLK_INFRA_66M_AP_DMA_BCK		42
-+#define CLK_INFRA_66M_SEJ_BCK			43
-+#define CLK_INFRA_PRE_CK_SEJ_F13M		44
-+#define CLK_INFRA_26M_THERM_SYSTEM		45
-+#define CLK_INFRA_I2C_BCK			46
-+#define CLK_INFRA_52M_UART0_CK			47
-+#define CLK_INFRA_52M_UART1_CK			48
-+#define CLK_INFRA_52M_UART2_CK			49
-+#define CLK_INFRA_NFI				50
-+#define CLK_INFRA_SPINFI			51
-+#define CLK_INFRA_66M_NFI_HCK			52
-+#define CLK_INFRA_104M_SPI0			53
-+#define CLK_INFRA_104M_SPI1			54
-+#define CLK_INFRA_104M_SPI2_BCK			55
-+#define CLK_INFRA_66M_SPI0_HCK			56
-+#define CLK_INFRA_66M_SPI1_HCK			57
-+#define CLK_INFRA_66M_SPI2_HCK			58
-+#define CLK_INFRA_66M_FLASHIF_AXI		59
-+#define CLK_INFRA_RTC				60
-+#define CLK_INFRA_26M_ADC_BCK			61
-+#define CLK_INFRA_RC_ADC			62
-+#define CLK_INFRA_MSDC400			63
-+#define CLK_INFRA_MSDC2_HCK			64
-+#define CLK_INFRA_133M_MSDC_0_HCK		65
-+#define CLK_INFRA_66M_MSDC_0_HCK		66
-+#define CLK_INFRA_133M_CPUM_BCK			67
-+#define CLK_INFRA_BIST2FPC			68
-+#define CLK_INFRA_I2C_X16W_MCK_CK_P1		69
-+#define CLK_INFRA_I2C_X16W_PCK_CK_P1		70
-+#define CLK_INFRA_133M_USB_HCK			71
-+#define CLK_INFRA_133M_USB_HCK_CK_P1		72
-+#define CLK_INFRA_66M_USB_HCK			73
-+#define CLK_INFRA_66M_USB_HCK_CK_P1		74
-+#define CLK_INFRA_USB_SYS			75
-+#define CLK_INFRA_USB_SYS_CK_P1			76
-+#define CLK_INFRA_USB_REF			77
-+#define CLK_INFRA_USB_CK_P1			78
-+#define CLK_INFRA_USB_FRMCNT			79
-+#define CLK_INFRA_USB_FRMCNT_CK_P1		80
-+#define CLK_INFRA_USB_PIPE			81
-+#define CLK_INFRA_USB_PIPE_CK_P1		82
-+#define CLK_INFRA_USB_UTMI			83
-+#define CLK_INFRA_USB_UTMI_CK_P1		84
-+#define CLK_INFRA_USB_XHCI			85
-+#define CLK_INFRA_USB_XHCI_CK_P1		86
-+#define CLK_INFRA_PCIE_GFMUX_TL_P0		87
-+#define CLK_INFRA_PCIE_GFMUX_TL_P1		88
-+#define CLK_INFRA_PCIE_GFMUX_TL_P2		89
-+#define CLK_INFRA_PCIE_GFMUX_TL_P3		90
-+#define CLK_INFRA_PCIE_PIPE_P0			91
-+#define CLK_INFRA_PCIE_PIPE_P1			92
-+#define CLK_INFRA_PCIE_PIPE_P2			93
-+#define CLK_INFRA_PCIE_PIPE_P3			94
-+#define CLK_INFRA_133M_PCIE_CK_P0		95
-+#define CLK_INFRA_133M_PCIE_CK_P1		96
-+#define CLK_INFRA_133M_PCIE_CK_P2		97
-+#define CLK_INFRA_133M_PCIE_CK_P3		98
++        clock-controller@15031000 {
++            compatible = "mediatek,mt7988-ethwarp";
++            reg = <0 0x15031000 0 0x1000>;
++            #clock-cells = <1>;
++            #reset-cells = <1>;
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml
+new file mode 100644
+index 0000000000000..192f1451f0afc
+--- /dev/null
++++ b/Documentation/devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml
+@@ -0,0 +1,48 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/clock/mediatek,mt7988-xfi-pll.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+/* ETHDMA */
++title: MediaTek MT7988 XFI PLL Clock Controller
 +
-+#define CLK_ETHDMA_XGP1_EN			0
-+#define CLK_ETHDMA_XGP2_EN			1
-+#define CLK_ETHDMA_XGP3_EN			2
-+#define CLK_ETHDMA_FE_EN			3
-+#define CLK_ETHDMA_GP2_EN			4
-+#define CLK_ETHDMA_GP1_EN			5
-+#define CLK_ETHDMA_GP3_EN			6
-+#define CLK_ETHDMA_ESW_EN			7
-+#define CLK_ETHDMA_CRYPT0_EN			8
-+#define CLK_ETHDMA_NR_CLK			9
++maintainers:
++  - Daniel Golle <daniel@makrotopia.org>
 +
-+/* SGMIISYS_0 */
++description:
++  The MediaTek XFI PLL controller provides the 156.25MHz clock for the
++  Ethernet SerDes PHY from the 40MHz top_xtal clock.
 +
-+#define CLK_SGM0_TX_EN				0
-+#define CLK_SGM0_RX_EN				1
-+#define CLK_SGMII0_NR_CLK			2
++properties:
++  compatible:
++    const: mediatek,mt7988-xfi-pll
 +
-+/* SGMIISYS_1 */
++  reg:
++    maxItems: 1
 +
-+#define CLK_SGM1_TX_EN				0
-+#define CLK_SGM1_RX_EN				1
-+#define CLK_SGMII1_NR_CLK			2
++  resets:
++    maxItems: 1
 +
-+/* ETHWARP */
++  '#clock-cells':
++    const: 1
 +
-+#define CLK_ETHWARP_WOCPU2_EN			0
-+#define CLK_ETHWARP_WOCPU1_EN			1
-+#define CLK_ETHWARP_WOCPU0_EN			2
-+#define CLK_ETHWARP_NR_CLK			3
++required:
++  - compatible
++  - reg
++  - resets
++  - '#clock-cells'
 +
-+/* XFIPLL */
-+#define CLK_XFIPLL_PLL				0
-+#define CLK_XFIPLL_PLL_EN			1
++additionalProperties: false
 +
-+#endif /* _DT_BINDINGS_CLK_MT7988_H */
++examples:
++  - |
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++        clock-controller@11f40000 {
++            compatible = "mediatek,mt7988-xfi-pll";
++            reg = <0 0x11f40000 0 0x1000>;
++            resets = <&watchdog 16>;
++            #clock-cells = <1>;
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
+index 6d087ded7437a..bdf3b55bd56fd 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
+@@ -37,6 +37,8 @@ properties:
+               - mediatek,mt7629-topckgen
+               - mediatek,mt7981-topckgen
+               - mediatek,mt7986-topckgen
++              - mediatek,mt7988-mcusys
++              - mediatek,mt7988-topckgen
+               - mediatek,mt8167-topckgen
+               - mediatek,mt8183-topckgen
+           - const: syscon
+diff --git a/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml b/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
+index 66a95191bd776..1bacc0eeff757 100644
+--- a/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
++++ b/Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
+@@ -15,15 +15,22 @@ description:
+ 
+ properties:
+   compatible:
+-    items:
+-      - enum:
+-          - mediatek,mt7622-sgmiisys
+-          - mediatek,mt7629-sgmiisys
+-          - mediatek,mt7981-sgmiisys_0
+-          - mediatek,mt7981-sgmiisys_1
+-          - mediatek,mt7986-sgmiisys_0
+-          - mediatek,mt7986-sgmiisys_1
+-      - const: syscon
++    oneOf:
++      - items:
++          - enum:
++              - mediatek,mt7622-sgmiisys
++              - mediatek,mt7629-sgmiisys
++              - mediatek,mt7981-sgmiisys_0
++              - mediatek,mt7981-sgmiisys_1
++              - mediatek,mt7986-sgmiisys_0
++              - mediatek,mt7986-sgmiisys_1
++          - const: syscon
++      - items:
++          - enum:
++              - mediatek,mt7988-sgmiisys0
++              - mediatek,mt7988-sgmiisys1
++          - const: simple-mfd
++          - const: syscon
+ 
+   reg:
+     maxItems: 1
+@@ -35,11 +42,51 @@ properties:
+     description: Invert polarity of the SGMII data lanes
+     type: boolean
+ 
++  pcs:
++    type: object
++    description: MediaTek LynxI HSGMII PCS
++    properties:
++      compatible:
++        const: mediatek,mt7988-sgmii
++
++      clocks:
++        maxItems: 3
++
++      clock-names:
++        items:
++          - const: sgmii_sel
++          - const: sgmii_tx
++          - const: sgmii_rx
++
++    required:
++      - compatible
++      - clocks
++      - clock-names
++
++    additionalProperties: false
++
+ required:
+   - compatible
+   - reg
+   - '#clock-cells'
+ 
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt7988-sgmiisys0
++              - mediatek,mt7988-sgmiisys1
++
++    then:
++      required:
++        - pcs
++
++    else:
++      properties:
++        pcs: false
++
+ additionalProperties: false
+ 
+ examples:
 -- 
 2.43.0
 
