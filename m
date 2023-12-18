@@ -4,142 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A550C35274
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Dec 2023 07:49:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C967C35274
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Dec 2023 08:35:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NqTCkFMsMgR8QnA3IJw5oIx3MCAU6l6YcH6Ao6GT0Gw=; b=S8KM+qWZlbY7kO9QH8jk+uGdGq
-	z0Y9Z9T7B2+LT9Uv+9BIQYV3aTHZFsi5GbZgh5QYQF7JG6RVl7+4s6M7KEF3biVoR/ZpvK5wQc+Vq
-	PiLjj77BMF4s/zn32fe4n7yE6uE/AvI4MujgAPLL8Rpl6TFWYZn2VSy9wcUlECZVYoLN4mxKiOQic
-	ZsToALun7/2pBr9gxj6Lhm+H/gRH1IOYyK4hR1sW9T6F1OwzAbaMm98ryUIhLG+5DxasJQqBsrj1L
-	2rS+JndOmErqmk50yZnN4/zb3p+dU/gdIFh1+5f8f/6FtDDpsXeJWtzaP+udP23z/qWODgqx/ZWtY
-	u+4V42rg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Izk5zjpnriwAUn4ds/tG1CAt/sIraYvsUIe1YtlC/eo=; b=aBOX3Pia6/b0Sb0SYgvSFPxwue
+	3OXp5PhpMXnn8m3Unit8/iNSn1MN6OQv860YZgErcV/EjRhpvInsDoMQ6kLhyNLsfcDXYPF2fZZmN
+	KMd2v+fZgtZF/VOB51BiwB50tclRSNqUaAhb8FEy/wNS8cUJr8lxcW/rH7kHOC2QDju0N6WJGeZe3
+	xu7wdSFPY++mU6xAaN5cZXGwxFeigJABAPCMkCn3Il/qHZtmh5vuuSUDUfbufofHBc6cknKLY0iLu
+	NiSmXNjuRNHJsP4ErIladMYwj/+UcZmmowJb+CGExN0u6WOlWUlUOQbjhueYgYcA20WvdR+v2PMLM
+	Kgx/Kx5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rF8N7-009Olt-1R;
-	Mon, 18 Dec 2023 07:49:05 +0000
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+	id 1rF95m-009UE9-2J;
+	Mon, 18 Dec 2023 08:35:14 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rF8N4-009Okw-0N
-	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Dec 2023 07:49:03 +0000
-Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-2cc6b5a8364so8597351fa.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 17 Dec 2023 23:49:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702885739; x=1703490539; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=NqTCkFMsMgR8QnA3IJw5oIx3MCAU6l6YcH6Ao6GT0Gw=;
-        b=X0KBMe+OakU3yMhZaHWnnOgm0jtn6Pl1OWVUrOdpdN0qk3vKeB6Ab7imkHESILIRhF
-         0eUiG5Eo4OW8XEqZPZ1dVeqhvDshLZgrPBCx2yncReoBDNjgup3uwtQW5WoLqSKSwYBV
-         kty0n2rExEkRAToOYCT2pKbCRw0T2Y7iHn2hq++uAY0i6ItXPBYdDGZPCDZ0ZaKRcxZv
-         e+mnXzvIgbMCD4PN1AY/gyyl0FfU7iV+dKkWWfh/dMcSXYniDkoKHxSZR9vP4vRg0ClO
-         RnRD0uvzrHa3y16kDXlepyZtu95f0lPr+RHZXQqvwLSYIkydmIBfiC27kK5L4Ls7BW+V
-         i+OQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702885739; x=1703490539;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=NqTCkFMsMgR8QnA3IJw5oIx3MCAU6l6YcH6Ao6GT0Gw=;
-        b=urZmnQdSSxYoV4Rum72KPJt7nIAvfEKFt+nXnNT00DTnYVCt0HoXTF8nLq0skhhLH4
-         LmrO48MgMesKbwl3TMcxt2WuyBSw+T3NxJNxO2Xz90q6iFyoDLkmtXEwKhoOE6Yp1vvs
-         wdlQIUxu+TOecwZFnH1dWd4H0K78UNVJrig3auNs7v3IAcV7LgL76yppxvkkSpromlts
-         iN8/O7Np2/OZvBt+th9pj2ncwEZcmD34pV0ga9WHu85+FYFtWhX5BvNg+mp2fM699Ugp
-         MC+VIwrpDbq4M3qAUzpVJkeHfmwuZgSbxFHt1fCmEyVKBpwq8AyOkaPWhhpBZETGtbTc
-         bhLQ==
-X-Gm-Message-State: AOJu0Yxf9fMRGj1R4EIbFpcjjyYCdw3l7zX3dvPsFBP1Ul73HGb8/36/
-	irV8m0s24Bvmefh2pvHOaGfw8Q==
-X-Google-Smtp-Source: AGHT+IGhGwPrG8mhzLJQAWuXHXzB7PI44dF9QaGJfxwob73oBj+c1J1/3NYxKsLcYzYHNAb97ODF/g==
-X-Received: by 2002:a2e:9403:0:b0:2c9:ea79:ac4d with SMTP id i3-20020a2e9403000000b002c9ea79ac4dmr6630596ljh.76.1702885738799;
-        Sun, 17 Dec 2023 23:48:58 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.218.27])
-        by smtp.gmail.com with ESMTPSA id n2-20020a05640205c200b0055122551f98sm7775846edx.6.2023.12.17.23.48.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 17 Dec 2023 23:48:57 -0800 (PST)
-Message-ID: <8dbb703f-f40c-49b6-8a8c-094ce1ac7ccb@linaro.org>
-Date: Mon, 18 Dec 2023 08:48:54 +0100
+	id 1rF95j-009UDE-0V;
+	Mon, 18 Dec 2023 08:35:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id B954AB80DED;
+	Mon, 18 Dec 2023 08:35:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 14FCAC433C8;
+	Mon, 18 Dec 2023 08:35:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1702888506;
+	bh=PvieyW9kHU+3JjdvRizTuAsBF+M7+DN21zt8QD6huP8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=cqKR6jTwpmCKyTFqiDsud8Ud91Y2vl0XnJ70WkUUWsejg3N21krgNOC2hGTW6Sr//
+	 PkugwCVTKDJbZBbTAjn2pZOtgeXLfIt4KhVQdagYFnoBeWEVHdgSDchIq1/IEoOYgz
+	 UPhMPfMZofuUfwXr9yS3PhKhC0IHJypA2VlCOfPMF5X3opuQwu7Tnyq59gPlfhE2L7
+	 BMOT1Z09reyctvlBiTybBEDPjQ60FLqs31RXDW6RG7gr4O0un4ilMkg7Cgrs/fszps
+	 ppFsjdnc33uZ69wLfbVJFyRfIMVBseNo/FtnnrcNqwp53jB9iKEBeFsADcFruxnW5a
+	 /8S2G6GLNLRGw==
+Received: from johan by xi.lan with local (Exim 4.96.2)
+	(envelope-from <johan@kernel.org>)
+	id 1rF95c-0003FH-0v;
+	Mon, 18 Dec 2023 09:35:05 +0100
+Date: Mon, 18 Dec 2023 09:35:04 +0100
+From: Johan Hovold <johan@kernel.org>
+To: Francesco Dolcini <francesco@dolcini.it>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>, linux-bluetooth@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, greybus-dev@lists.linaro.org,
+	linux-iio@vger.kernel.org, netdev@vger.kernel.org,
+	chrome-platform@lists.linux.dev,
+	platform-driver-x86@vger.kernel.org, linux-serial@vger.kernel.org,
+	linux-sound@vger.kernel.org,
+	Francesco Dolcini <francesco.dolcini@toradex.com>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Alex Elder <elder@kernel.org>, Jonathan Cameron <jic23@kernel.org>,
+	Lee Jones <lee@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>, Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Hans de Goede <hdegoede@redhat.com>,
+	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>,
+	Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>, Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v1] treewide, serdev: change receive_buf() return type to
+ size_t
+Message-ID: <ZYAEOCMwZGMNvpNX@hovoldconsulting.com>
+References: <20231214170146.641783-1-francesco@dolcini.it>
+ <ZXxWX-Fw1InID2ax@hovoldconsulting.com>
+ <ZXxa7yzKzG6048vw@francesco-nb.int.toradex.com>
+ <ZXx8bCVyxJ9Ddvqm@hovoldconsulting.com>
+ <ZXyH1Zv3Pxd6S3ag@francesco-nb.int.toradex.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 3/5] dt-bindings: clock: mediatek: add clock
- controllers of MT7988
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Sabrina Dubroca
- <sd@queasysnail.net>, Chen-Yu Tsai <wenst@chromium.org>,
- "Garmin.Chang" <Garmin.Chang@mediatek.com>, Sam Shih
- <sam.shih@mediatek.com>, Frank Wunderlich <frank-w@public-files.de>,
- Dan Carpenter <dan.carpenter@linaro.org>,
- James Liao <jamesjj.liao@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
-References: <27f99db432e9ccc804cc5b6501d7d17d72cae879.1702849494.git.daniel@makrotopia.org>
- <07e76a544ce4392bcb88e34d5480e99bb7994618.1702849494.git.daniel@makrotopia.org>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <07e76a544ce4392bcb88e34d5480e99bb7994618.1702849494.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZXyH1Zv3Pxd6S3ag@francesco-nb.int.toradex.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231217_234902_166427_75979B0C 
-X-CRM114-Status: UNSURE (   7.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231218_003511_492972_F198707F 
+X-CRM114-Status: GOOD (  29.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,19 +96,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/12/2023 22:49, Daniel Golle wrote:
-> Add various clock controllers found in the MT7988 SoC to existing
-> bindings (if applicable) and add files for the new ethwarp, mcusys
-> and xfi-pll clock controllers not previously present in any SoC.
+On Fri, Dec 15, 2023 at 06:07:33PM +0100, Francesco Dolcini wrote:
+
+> On Fri, Dec 15, 2023 at 05:18:52PM +0100, Johan Hovold wrote:
+> > On Fri, Dec 15, 2023 at 02:55:59PM +0100, Francesco Dolcini wrote:
+> > > To me the change is correct, with that said probably this should have
+> > > been explicitly mentioned in the commit message or a separate
+> > > preparation patch.
+> > 
+> > It's a separate change and should not be hidden away in a tree-wide
+> > change that goes through a different maintainer.
+> > 
+> > Please drop this change from this patch and resubmit it separately to me
+> > if you want and I'll review when I have the time.
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
-> v7:
+> Fine, I agree.
+> 
+> I see those options (let me know if you see other options I have not
+> mentioned):
+> 
+> 1. I add this change (taking into account also intel ice) as a separate
+>    patch in this series and you may just ack it and Greg could merge
+>    together with the serdev one.
+> 2. I prepare an independent patch for the GNSS change and only once this
+>    is merged I'll send a rebased v2 of this one.
+> 3. I update this patch without this GNSS API change, that mean I will
+>    have to cast away the signed type from a few GNSS drivers.
+> 
+> 1 is my preferred option, 2 is fine, but it seems a little bit of overdoing,
+> 3 I would avoid, we are doing this cleanup to be a little bit more
+> strongly typed and to prevent the kind of bugs that is the original trigger
+> for this patch.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Changing the return type of gnss_insert_raw() is going to be a bit more
+involved and should be done in a separate patch (e.g. you need to look
+at gnss_usb_rx_complete() and ice_gnss_read() to avoid introducing new
+warnings there).
 
-Best regards,
-Krzysztof
+And both option 2 and 3 will introduce conversion warnings (W=3, which
+we have plenty of anyway) unless you add casts.
 
+I suggest you go with 3, unless you insist on 2.
+
+Johan
 
