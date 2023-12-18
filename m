@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D0C6C35274
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Dec 2023 22:48:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE8C1C35274
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Dec 2023 23:06:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=v9sJxu+peZKEvGLvTmMpiV6Tv/puBAp7n/rM5sIpeRQ=; b=elUc8p1zZbaLbHxt6YW4ZQqxlr
-	IElU85T8svFJV9MqIMQ9BKEp6MzTVJaXGo0qsKpZ0FxHwHKQ0/SW1tXUlFr/ooMMM7YZ9M/ALFH3y
-	3T26cNiDc88bM3p2YixPWzVn+vWN9gd6ZQ/SlnX0LmnXba/fo7fPS/D4WOztej2/52VOd2h7lUkJn
-	T5e9SkDeSpCe2G5hGAKTIVw91CrWqiTvITwbfdaBebdQVJmqwoQsdJ7E+/ItLbSmXuRBMuGL281j9
-	9H/xSnj4grHHGBtD/FGKrmFnVTTI0DKuXyahtDUQgSkF0CaMjJAClvaMzyhRrIN3UjvSsZsVMKuDY
-	Kt9tnRvA==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=v9sJxu+peZKEvGLvTmMpiV6Tv/puBAp7n/rM5sIpeRQ=; b=WfwVIuVF+hfRKIHG/T2nSmbvN+
+	kDIEVO5iRtfVkV+Jl6MHOObjOvVgXm6WURkCqv2MNQxfH6n/ghop00agHoizRBKZWbaKr4qRWepyj
+	w98vRLJIqkdAVx+AniTEwyGClGIXd53OEWZc48ztxq50U/xWDOkvwhuT3AD8X8Pfj1a/Tr1qtHk4q
+	Iyjlpb9UfocVgPNrj1E+d9eoX2MCqQIOd5l94DKTeqkvZf1URcWCKJNpt11TMmIaCg8plrioo/qXk
+	ein8TmfuPHZgSIqwTqcoiDpoh4niNyOXP0l2eVcGECrjmJS9ah04Zl6ckfxuSNtTOSdoj4lMTHk6m
+	We+zRDFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFMPk-00CGBz-1d;
-	Mon, 18 Dec 2023 22:48:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rFMgm-00CIB8-1Z;
+	Mon, 18 Dec 2023 23:06:20 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFMPh-00CGBB-1S;
-	Mon, 18 Dec 2023 22:48:42 +0000
-X-UUID: 9478e2629df711ee958cff29c719f35b-20231218
+	id 1rFMgi-00CIAO-2y;
+	Mon, 18 Dec 2023 23:06:18 +0000
+X-UUID: 09bb7ace9dfa11ee9b09ad09c76753c8-20231218
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=v9sJxu+peZKEvGLvTmMpiV6Tv/puBAp7n/rM5sIpeRQ=;
-	b=jTTi9TD/+OYGwTr2VSkioUKhzVzO53F35oZSmEVGyHCruJpgvdqxbCgCXjW4EVgPQiSUXnF1WZO3a1Fyk3IffQevYfuq8ERgQtBovhOzYU/58MFVPQgQHj/evMD5VXfD2DipAzqts3Xm2Y827PRehXu/rN77Rcw48CdaLAB8n4U=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=v9sJxu+peZKEvGLvTmMpiV6Tv/puBAp7n/rM5sIpeRQ=;
+	b=Ri+wefoJkTLb2OxPhBxPR4szvHZ6zGawmGO+kyQcPof40+uD26P2cz0MFfpwxKI0y9NH7S5AWHmY6lXLRB594B4zraB4If1M//DWvL170Pk1dbR+XZCx6hzhZqrSoPo2+R4JyFulfaQ5+JopT01I1BD4VlsgLdW0ixSO+NCBmjQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:7eb98434-3291-4bc7-a0a4-5bd35abc1c63,IP:0,U
+X-CID-O-INFO: VERSION:1.1.35,REQID:81a86677-4ba6-453e-9229-e168855fbf80,IP:0,U
 	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:-5
-X-CID-META: VersionHash:5d391d7,CLOUDID:4faad0fd-4a48-46e2-b946-12f04f20af8c,B
+X-CID-META: VersionHash:5d391d7,CLOUDID:162252bd-2ac7-4da2-9f94-677a477649d9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
 	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 9478e2629df711ee958cff29c719f35b-20231218
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+X-UUID: 09bb7ace9dfa11ee9b09ad09c76753c8-20231218
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
 	(envelope-from <bo.ye@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2040635828; Mon, 18 Dec 2023 15:48:36 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+	with ESMTP id 1749456323; Mon, 18 Dec 2023 16:06:12 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 19 Dec 2023 06:48:33 +0800
+ 15.2.1118.26; Tue, 19 Dec 2023 07:05:38 +0800
 Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 19 Dec 2023 06:48:33 +0800
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 19 Dec 2023 07:05:36 +0800
 From: Bo Ye <bo.ye@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
+To: <avri.altman@wdc.com>, <dominique.martinet@atmark-techno.com>,
+	<rafael.beims@toradex.com>, <vincent.whitchurch@axis.com>, Ulf Hansson
+	<ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 CC: <yongdong.zhang@mediatek.com>, lin.gui <lin.gui@mediatek.com>, Bo Ye
 	<bo.ye@mediatek.com>, <linux-mmc@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>
 Subject: [PATCH v2] mmc: add wp_grp_size node
-Date: Tue, 19 Dec 2023 06:48:29 +0800
-Message-ID: <20231218224832.81347-1-bo.ye@mediatek.com>
+Date: Tue, 19 Dec 2023 07:05:32 +0800
+Message-ID: <20231218230532.82427-1-bo.ye@mediatek.com>
 X-Mailer: git-send-email 2.17.0
+In-Reply-To: <20231218224832.81347-1-bo.ye@mediatek.com>
+References: <20231218224832.81347-1-bo.ye@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
@@ -80,11 +83,11 @@ X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
 X-TMASE-Result: 10--8.793700-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 4E964EB1473B3EB755A3FB3DD72D6712BE60E1BDEBE85B41496191B6C6DC46B52000:8
+X-TM-SNTS-SMTP: 5727A99A606388E051883DC4B6203A1CA60EBC100F0EC10313FF828558596EF02000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231218_144841_543458_A20A97E2 
-X-CRM114-Status: GOOD (  16.15  )
+X-CRM114-CacheID: sfid-20231218_150616_962972_75578F01 
+X-CRM114-Status: GOOD (  16.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
