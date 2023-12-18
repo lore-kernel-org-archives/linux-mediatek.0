@@ -4,53 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EC36C35274
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Dec 2023 08:52:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6FD2C46CA2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Dec 2023 11:05:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=V4qwQGqC7KpJoyielzRpnopuINFIOvKXsSgJ3ZENIXU=; b=3a5MJbSOKj7nYQrKz8YtpAzKE7
-	sYbact7Osw44WnIgG3/T8Wu8YJ/oNqe0EG9jHhlZutQSpBvECmqcqjJObK5arjd5XYQEWjsqbwQ57
-	OJe0lmzFa1yTwh6JsgSEnarhMsUXMdFasEsL/hLwODeC8kc2T6WvmuHwbVzEAcyL6Y6gLGApkAs6S
-	DXRLmrjgytFnR8NHyEozT0BTjOso6f0asNOzisej5DoTtbKZAv6+BR/8Exwm6MAa/tP2zJNyEyJMP
-	L4toYESsS+V01k24Q5YjFGUQEUcfYY/x12fIIvWT8QmOk0bDtOO97+lXTL7e0sBht0f2NT+3IpL5t
-	MvbnYx6w==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L6otPWcn4WphyLS7c49TmSQMP1sKwTOQK++4AokGNNo=; b=cz+WKmkkbUBeZIwCOnyDhUo3z7
+	i3yIdH5EY+gy24G9a2KCESxtV1xG+U8XcjJwAc8ykihSUEl5GpNvhQzr4tLVaxDJebnFh8z+PKtdK
+	0v/O1fitEhbYR/d6DjA2E4ZzVuwxP/Sz4DvcfKs4e6f2rS0vZ8DoYDth4fMzWebdwnN9w/KHHspL1
+	DTBRDIWnbH1atS2P2PmsYUyl23c759yZWnvhnhbjYQj8de/ZGNZuJ6hwIyerFYyeUZ5q7bTpX0Osd
+	3ppzGOjK0kDDTdY+8jTcDuKCykmV4rGV/H0gOB5Te+GK8r8JX7IgPaEnBtl9pYhbnV2lO4YVW+rlf
+	Uq2MjDmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rF9Mo-009Xhp-1E;
-	Mon, 18 Dec 2023 08:52:50 +0000
-Received: from mail.quirkbyte.pl ([94.177.238.152])
+	id 1rFBRF-009y9m-06;
+	Mon, 18 Dec 2023 11:05:33 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rF9Mm-009Xh9-0Y
-	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Dec 2023 08:52:49 +0000
-Received: by mail.quirkbyte.pl (Postfix, from userid 1002)
-	id E566783C33; Mon, 18 Dec 2023 09:41:06 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=quirkbyte.pl; s=mail;
-	t=1702888978; bh=V4qwQGqC7KpJoyielzRpnopuINFIOvKXsSgJ3ZENIXU=;
-	h=Date:From:To:Subject:From;
-	b=AMOp33jkvhj4d7ctaV541t6Ysuu9per2d3DOalcrZTY9tocNvHAWFbZtlQaABP83p
-	 i9wAW22NNZzKBDE2BgZUeEJnF0w1eD1l6nj2X0u+7VjRP0THCuwHvauUw7ltGD81qX
-	 YpM7wHhHm05cB8QZEZYMiqt8GNqjYEgl2OJ7N5++ch+ljHvqTrPCzI0FFj7vJyVaZE
-	 tKQmRJE1Ssk8L3oun5r4x1VjpdhJ4ICONHdsEDzukSGB9VBJkggWqea41GvcXOGhkG
-	 bSSn9h6ge96vs70An7l6a5gQPhaASlTh89APVa/Ug+fC9RpiTzSMqMMBTqDDV7ooGZ
-	 f3+j3HThe2WcA==
-Received: by mail.quirkbyte.pl for <linux-mediatek@lists.infradead.org>; Mon, 18 Dec 2023 08:40:14 GMT
-Message-ID: <20231218084500-0.1.8.1mc7.0.a08m7jchv7@quirkbyte.pl>
-Date: Mon, 18 Dec 2023 08:40:14 GMT
-From: "Norbert Karecki" <norbert.karecki@quirkbyte.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: Fotowoltaika - propozycja instalacji
-X-Mailer: mail.quirkbyte.pl
+	id 1rFBRB-009y88-1K;
+	Mon, 18 Dec 2023 11:05:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1702897526;
+	bh=VwWFVs1q6UKep98KZVV2dDt5BoOvo25qOrLbP5Vj6KY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=GMOUuh8vMBtOs55pxBrvpJ5TcsJqxOkiw+ktasismeYhm7mZ6QeaR8cWLgKsi7VJm
+	 BjIUHl6fanMx+OQJMi3j1+y5Yw4uJIjMgtdHiEkUc974V3BK5Pqm1JsPH/oivt+HPi
+	 Z8RIydWD9hWDYrZ0QMlT5g+TOene1fu58onsBhsM/jYZA+YYfw3zlGYdTgdbFotWvu
+	 ME0XADT1jOeJwgQB8FGO7bCsYBwRLGEre6oSbMlkmDhvfB/HJy9FlKzKysF14ip2ip
+	 WACHHolZe5Q+3XhZi1uvfxpbbsDDWZhX9TV6pLFPI1Egb2c4k4PJrZdYsv8eKXq+BC
+	 duFAKoew7jD0A==
+Received: from [IPV6:fd00::2a:39ce] (cola.collaboradmins.com [IPv6:2a01:4f8:1c1c:5717::1])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 791A23780C35;
+	Mon, 18 Dec 2023 11:05:25 +0000 (UTC)
+Message-ID: <2e16d209-8b19-4f6b-8406-bbe93ab05124@collabora.com>
+Date: Mon, 18 Dec 2023 12:05:24 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/3] mailbox: mtk-cmdq: Add CMDQ driver support for
+ mt8188
+Content-Language: en-US
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Jeffrey Kardatzke <jkardatzke@google.com>,
+ Jason-ch Chen <jason-ch.chen@mediatek.com>,
+ Johnson Wang <johnson.wang@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Shawn Sung <shawn.sung@mediatek.com>
+References: <20231215070026.2507-1-jason-jh.lin@mediatek.com>
+ <20231215070026.2507-4-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231215070026.2507-4-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231218_005248_347497_B85E4DF6 
-X-CRM114-Status: UNSURE (   1.42  )
+X-CRM114-CacheID: sfid-20231218_030529_595004_4711794E 
+X-CRM114-Status: UNSURE (   6.86  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,24 +85,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
-=20
-Czy rozwa=C5=BCali Pa=C5=84stwo monta=C5=BC systemu fotowoltaicznego?
-=20
-Instalacja fotowoltaiczna jest najlepszym sposobem na obni=C5=BCenie wyso=
-ko=C5=9Bci rachunk=C3=B3w za pr=C4=85d (pozostaj=C4=85 tylko op=C5=82aty =
-sta=C5=82e) i zabezpieczenie si=C4=99 przed rosn=C4=85cymi cenami energii=
- elektrycznej. Jest to w pe=C5=82ni odnawialne i bezemisyjne =C5=BAr=C3=B3=
-d=C5=82o energii, dzi=C4=99ki czemu przyczyniamy si=C4=99 do ochrony =C5=9B=
-rodowiska naturalnego.
-=20
-Dzia=C5=82amy od wielu lat na rynku energetycznym. Przygotujemy projekt, =
-wycen=C4=99 oraz kompleksowo wykonamy i zg=C5=82osimy realizacj=C4=99 do =
-zak=C5=82adu energetycznego.=20
-=20
-Czy chc=C4=85 Pa=C5=84stwo pozna=C4=87 nasz=C4=85 propozycj=C4=99? =20
+Il 15/12/23 08:00, Jason-JH.Lin ha scritto:
+> Add CMDQ driver support for mt8188 by adding its compatible and
+> driver data in CMDQ driver.
+> 
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Pozdrawiam
-Norbert Karecki
 
