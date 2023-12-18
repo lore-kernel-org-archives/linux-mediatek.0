@@ -4,92 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA57CC35274
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Dec 2023 08:44:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EC36C35274
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Dec 2023 08:52:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y7Yj6Y66nkJxIiUbHpJeS3QldM2ExHIW+dsu2Qi/ECo=; b=iUVdR4vNIL0Np5umLUoT5ueqYT
-	arVpGgN7BxJvKevw9OEvmbchffAuiZSnRr+B2mUq75tfPq/Wrkg6JVmE25bkU7QF7i0ycajTlrR9u
-	Q0+jIWPPsoYTL5NrJv5QLuTwmYODvJWFUqDc2xOTaEvW1b8El2nRloaXWXmHRc/PcL+j/SYCHegTG
-	OZbAJ3YjmJhm8N+fG6Zy+BqUw0Sr7a7+VEUHYrKdywVOc8s8GNzLOJiFOyGpKtLpKMtRy2MoAGlbO
-	ouMZpw6JVXOXafZhXZOAGKyYyfJLbRP1YiS/HXv97va4J2nqslDQl8yIIVjSKnntpZJ5aVwKJcLZd
-	wfG4t3oQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=V4qwQGqC7KpJoyielzRpnopuINFIOvKXsSgJ3ZENIXU=; b=3a5MJbSOKj7nYQrKz8YtpAzKE7
+	sYbact7Osw44WnIgG3/T8Wu8YJ/oNqe0EG9jHhlZutQSpBvECmqcqjJObK5arjd5XYQEWjsqbwQ57
+	OJe0lmzFa1yTwh6JsgSEnarhMsUXMdFasEsL/hLwODeC8kc2T6WvmuHwbVzEAcyL6Y6gLGApkAs6S
+	DXRLmrjgytFnR8NHyEozT0BTjOso6f0asNOzisej5DoTtbKZAv6+BR/8Exwm6MAa/tP2zJNyEyJMP
+	L4toYESsS+V01k24Q5YjFGUQEUcfYY/x12fIIvWT8QmOk0bDtOO97+lXTL7e0sBht0f2NT+3IpL5t
+	MvbnYx6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rF9F7-009WIA-2y;
-	Mon, 18 Dec 2023 08:44:53 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rF9Mo-009Xhp-1E;
+	Mon, 18 Dec 2023 08:52:50 +0000
+Received: from mail.quirkbyte.pl ([94.177.238.152])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rF9F5-009WGo-0v;
-	Mon, 18 Dec 2023 08:44:52 +0000
-X-UUID: b211150e9d8111ee958cff29c719f35b-20231218
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=y7Yj6Y66nkJxIiUbHpJeS3QldM2ExHIW+dsu2Qi/ECo=;
-	b=Lo5lZUYDFf7JJu0qgMrkKQk8IeLGBn7vZ+0LuZQQAq81oWe+nmyK9c/U4vfu+cXUDoljwxDBtzDGI0oPddgz6QAtzTRwZnz4Kr4vDF8OaAUq+6HMieCfBKePpIRPi0OrW6RkWdsVEXSBu0vZTEqF4UYxpF+TURMt+bvpaNxVxBw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:e0251ec0-3cba-487d-ac79-0f4ba43abc37,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:f5064dbd-2ac7-4da2-9f94-677a477649d9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: b211150e9d8111ee958cff29c719f35b-20231218
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 409379223; Mon, 18 Dec 2023 01:44:45 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 18 Dec 2023 16:36:35 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 18 Dec 2023 16:36:35 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>
-CC: Conor Dooley <conor+dt@kernel.org>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, <linux-kernel@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-media@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Jason-ch Chen <jason-ch.chen@mediatek.com>, Johnson Wang
-	<johnson.wang@mediatek.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
-	Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
-	Shawn Sung <shawn.sung@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 3/3] dt-bindings: soc: mediatek: Change the description of gce-events
-Date: Mon, 18 Dec 2023 16:36:04 +0800
-Message-ID: <20231218083604.7327-4-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231218083604.7327-1-jason-jh.lin@mediatek.com>
-References: <20231218083604.7327-1-jason-jh.lin@mediatek.com>
+	id 1rF9Mm-009Xh9-0Y
+	for linux-mediatek@lists.infradead.org;
+	Mon, 18 Dec 2023 08:52:49 +0000
+Received: by mail.quirkbyte.pl (Postfix, from userid 1002)
+	id E566783C33; Mon, 18 Dec 2023 09:41:06 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=quirkbyte.pl; s=mail;
+	t=1702888978; bh=V4qwQGqC7KpJoyielzRpnopuINFIOvKXsSgJ3ZENIXU=;
+	h=Date:From:To:Subject:From;
+	b=AMOp33jkvhj4d7ctaV541t6Ysuu9per2d3DOalcrZTY9tocNvHAWFbZtlQaABP83p
+	 i9wAW22NNZzKBDE2BgZUeEJnF0w1eD1l6nj2X0u+7VjRP0THCuwHvauUw7ltGD81qX
+	 YpM7wHhHm05cB8QZEZYMiqt8GNqjYEgl2OJ7N5++ch+ljHvqTrPCzI0FFj7vJyVaZE
+	 tKQmRJE1Ssk8L3oun5r4x1VjpdhJ4ICONHdsEDzukSGB9VBJkggWqea41GvcXOGhkG
+	 bSSn9h6ge96vs70An7l6a5gQPhaASlTh89APVa/Ug+fC9RpiTzSMqMMBTqDDV7ooGZ
+	 f3+j3HThe2WcA==
+Received: by mail.quirkbyte.pl for <linux-mediatek@lists.infradead.org>; Mon, 18 Dec 2023 08:40:14 GMT
+Message-ID: <20231218084500-0.1.8.1mc7.0.a08m7jchv7@quirkbyte.pl>
+Date: Mon, 18 Dec 2023 08:40:14 GMT
+From: "Norbert Karecki" <norbert.karecki@quirkbyte.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: Fotowoltaika - propozycja instalacji
+X-Mailer: mail.quirkbyte.pl
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--6.786100-8.000000
-X-TMASE-MatchedRID: qT9V7Qri98/C5N8cNUn/XmwbuvhCHs3cTJDl9FKHbrk1LB46LFAAkpdA
-	ax/AUFGFQv/RxZk9D1GOj381tmO8MtCjuUhsbmmkngIgpj8eDcAZ1CdBJOsoY8RB0bsfrpPIx1F
-	PlNAAmcCPpBngdcMN7xlRDFVipn3MNVv/DcAEyrgk9IZxEaEaYZ6oP1a0mRIj
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--6.786100-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: C670A22497E49DC940E1AA3C07A75162FEF88A0B79553D7D7A658F692AF271BE2000:8
-X-MTK: N
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231218_004451_335429_9989063E 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20231218_005248_347497_B85E4DF6 
+X-CRM114-Status: UNSURE (   1.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,65 +66,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change the description of mediatek,gce-events property to reference
-mediatek,gce-mailbox yaml.
+Dzie=C5=84 dobry,
+=20
+Czy rozwa=C5=BCali Pa=C5=84stwo monta=C5=BC systemu fotowoltaicznego?
+=20
+Instalacja fotowoltaiczna jest najlepszym sposobem na obni=C5=BCenie wyso=
+ko=C5=9Bci rachunk=C3=B3w za pr=C4=85d (pozostaj=C4=85 tylko op=C5=82aty =
+sta=C5=82e) i zabezpieczenie si=C4=99 przed rosn=C4=85cymi cenami energii=
+ elektrycznej. Jest to w pe=C5=82ni odnawialne i bezemisyjne =C5=BAr=C3=B3=
+d=C5=82o energii, dzi=C4=99ki czemu przyczyniamy si=C4=99 do ochrony =C5=9B=
+rodowiska naturalnego.
+=20
+Dzia=C5=82amy od wielu lat na rynku energetycznym. Przygotujemy projekt, =
+wycen=C4=99 oraz kompleksowo wykonamy i zg=C5=82osimy realizacj=C4=99 do =
+zak=C5=82adu energetycznego.=20
+=20
+Czy chc=C4=85 Pa=C5=84stwo pozna=C4=87 nasz=C4=85 propozycj=C4=99? =20
 
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
----
- .../devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml     | 5 +----
- .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml     | 5 +----
- .../devicetree/bindings/soc/mediatek/mediatek,wdma.yaml      | 5 +----
- 3 files changed, 3 insertions(+), 12 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
-index 4380b98b0dfe..64c0f99fcbce 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
-@@ -36,10 +36,7 @@ properties:
- 
-   mediatek,gce-events:
-     description:
--      The event id which is mapping to the specific hardware event signal
--      to gce. The event id is defined in the gce header
--      include/dt-bindings/gce/<chip>-gce.h of each chips.
--    $ref: /schemas/types.yaml#/definitions/uint32-array
-+      Reference to Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml.
- 
-   clocks:
-     minItems: 1
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-index ba2014a8725c..34b313154534 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-@@ -55,10 +55,7 @@ properties:
- 
-   mediatek,gce-events:
-     description:
--      The event id which is mapping to the specific hardware event signal
--      to gce. The event id is defined in the gce header
--      include/dt-bindings/gce/<chip>-gce.h of each chips.
--    $ref: /schemas/types.yaml#/definitions/uint32-array
-+      Reference to Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml.
- 
-   mediatek,gce-client-reg:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
-index 69afb329e5f4..ff515cf8394b 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
-@@ -37,10 +37,7 @@ properties:
- 
-   mediatek,gce-events:
-     description:
--      The event id which is mapping to the specific hardware event signal
--      to gce. The event id is defined in the gce header
--      include/dt-bindings/gce/<chip>-gce.h of each chips.
--    $ref: /schemas/types.yaml#/definitions/uint32-array
-+      Reference to Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml.
- 
-   power-domains:
-     maxItems: 1
--- 
-2.18.0
-
+Pozdrawiam
+Norbert Karecki
 
