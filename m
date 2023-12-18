@@ -4,84 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C967C35274
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Dec 2023 08:35:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96CBDC35274
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Dec 2023 08:37:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Izk5zjpnriwAUn4ds/tG1CAt/sIraYvsUIe1YtlC/eo=; b=aBOX3Pia6/b0Sb0SYgvSFPxwue
-	3OXp5PhpMXnn8m3Unit8/iNSn1MN6OQv860YZgErcV/EjRhpvInsDoMQ6kLhyNLsfcDXYPF2fZZmN
-	KMd2v+fZgtZF/VOB51BiwB50tclRSNqUaAhb8FEy/wNS8cUJr8lxcW/rH7kHOC2QDju0N6WJGeZe3
-	xu7wdSFPY++mU6xAaN5cZXGwxFeigJABAPCMkCn3Il/qHZtmh5vuuSUDUfbufofHBc6cknKLY0iLu
-	NiSmXNjuRNHJsP4ErIladMYwj/+UcZmmowJb+CGExN0u6WOlWUlUOQbjhueYgYcA20WvdR+v2PMLM
-	Kgx/Kx5w==;
+	bh=3xGMjqCnU4DOn/f9DXOXBpSzk3yufxfmuca8NVriI3g=; b=s/z+2H7aCYwIHuq5ogFDWrMpGo
+	ESFpOT0RfGMNIOliS6fmn6Ess95WEtd9UbDF5rmTGLpSxfhhi4fKGic7+QGz3qM2sAB4a3DVfH6wU
+	6tUEFYngy00jSRtM5775N/0IYzuhPSi1hVVTWehp6LSzHGSNciatBeG0ylegXnQe+6oiaZX1A4Ayn
+	9XveKdUysvSSy+kkEyoutzGWB/6dHfIJBccTSPWwLTdpRJK7fieKrLu1YtmIy+K7BiKCANoPxDcEh
+	1FxQSJYKmKlLC6N3iQONeHDwwVWa61iuwKQ1eHwPDBx0jm/VqO9SIms00QqiYvxOlIZsAwJXXUNXX
+	4pDfoaEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rF95m-009UE9-2J;
-	Mon, 18 Dec 2023 08:35:14 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1rF97Z-009UTp-1y;
+	Mon, 18 Dec 2023 08:37:05 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rF95j-009UDE-0V;
-	Mon, 18 Dec 2023 08:35:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id B954AB80DED;
-	Mon, 18 Dec 2023 08:35:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 14FCAC433C8;
-	Mon, 18 Dec 2023 08:35:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1702888506;
-	bh=PvieyW9kHU+3JjdvRizTuAsBF+M7+DN21zt8QD6huP8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cqKR6jTwpmCKyTFqiDsud8Ud91Y2vl0XnJ70WkUUWsejg3N21krgNOC2hGTW6Sr//
-	 PkugwCVTKDJbZBbTAjn2pZOtgeXLfIt4KhVQdagYFnoBeWEVHdgSDchIq1/IEoOYgz
-	 UPhMPfMZofuUfwXr9yS3PhKhC0IHJypA2VlCOfPMF5X3opuQwu7Tnyq59gPlfhE2L7
-	 BMOT1Z09reyctvlBiTybBEDPjQ60FLqs31RXDW6RG7gr4O0un4ilMkg7Cgrs/fszps
-	 ppFsjdnc33uZ69wLfbVJFyRfIMVBseNo/FtnnrcNqwp53jB9iKEBeFsADcFruxnW5a
-	 /8S2G6GLNLRGw==
-Received: from johan by xi.lan with local (Exim 4.96.2)
-	(envelope-from <johan@kernel.org>)
-	id 1rF95c-0003FH-0v;
-	Mon, 18 Dec 2023 09:35:05 +0100
-Date: Mon, 18 Dec 2023 09:35:04 +0100
-From: Johan Hovold <johan@kernel.org>
-To: Francesco Dolcini <francesco@dolcini.it>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>, linux-bluetooth@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, greybus-dev@lists.linaro.org,
-	linux-iio@vger.kernel.org, netdev@vger.kernel.org,
-	chrome-platform@lists.linux.dev,
-	platform-driver-x86@vger.kernel.org, linux-serial@vger.kernel.org,
-	linux-sound@vger.kernel.org,
-	Francesco Dolcini <francesco.dolcini@toradex.com>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Alex Elder <elder@kernel.org>, Jonathan Cameron <jic23@kernel.org>,
-	Lee Jones <lee@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>, Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Hans de Goede <hdegoede@redhat.com>,
-	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v1] treewide, serdev: change receive_buf() return type to
- size_t
-Message-ID: <ZYAEOCMwZGMNvpNX@hovoldconsulting.com>
-References: <20231214170146.641783-1-francesco@dolcini.it>
- <ZXxWX-Fw1InID2ax@hovoldconsulting.com>
- <ZXxa7yzKzG6048vw@francesco-nb.int.toradex.com>
- <ZXx8bCVyxJ9Ddvqm@hovoldconsulting.com>
- <ZXyH1Zv3Pxd6S3ag@francesco-nb.int.toradex.com>
+	id 1rF97W-009US8-23;
+	Mon, 18 Dec 2023 08:37:03 +0000
+X-UUID: 9b04244c9d8011ee958cff29c719f35b-20231218
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3xGMjqCnU4DOn/f9DXOXBpSzk3yufxfmuca8NVriI3g=;
+	b=NvERfp11Qk8qFK40I2xgTd0xfqR2PdT6/3oZYSU9dbb8WVmXQzV95ZanSyoHsxvOuPTlY3bPbYQVjh2PZ9e3pheKszsrtRBwXPep+xMZUZ5yz1JHWJRtLBTSEjWv6nty4tRTgtS2YLZR/QBDA7wBk6Jbp5LrbXPGau5ysIsU36Y=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35,REQID:ddcf5d06-2b6c-4cf7-adef-20fad27345c5,IP:0,U
+	RL:0,TC:0,Content:46,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:46
+X-CID-META: VersionHash:5d391d7,CLOUDID:0011ea73-1bd3-4f48-b671-ada88705968c,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:3,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 9b04244c9d8011ee958cff29c719f35b-20231218
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1413639720; Mon, 18 Dec 2023 01:36:57 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 18 Dec 2023 16:36:34 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 18 Dec 2023 16:36:34 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>
+CC: Conor Dooley <conor+dt@kernel.org>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-media@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Jason-ch Chen <jason-ch.chen@mediatek.com>, Johnson Wang
+	<johnson.wang@mediatek.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+	Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+	Shawn Sung <shawn.sung@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH 1/3] dt-bindings: mailbox: mediatek,gce-mailbox: Add mediatek,gce-events definition
+Date: Mon, 18 Dec 2023 16:36:02 +0800
+Message-ID: <20231218083604.7327-2-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20231218083604.7327-1-jason-jh.lin@mediatek.com>
+References: <20231218083604.7327-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZXyH1Zv3Pxd6S3ag@francesco-nb.int.toradex.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231218_003511_492972_F198707F 
-X-CRM114-Status: GOOD (  29.11  )
+X-CRM114-CacheID: sfid-20231218_003702_678909_7509F652 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,47 +94,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 15, 2023 at 06:07:33PM +0100, Francesco Dolcini wrote:
+Since mediatek,gce-events property is a HW event signal from GCE,
+it should be defined in mediatek,gce-mailbox.yaml and change the
+description of mediatek,gce-events property in other bindings to
+reference mediatek,gce-mailbox.yaml.
 
-> On Fri, Dec 15, 2023 at 05:18:52PM +0100, Johan Hovold wrote:
-> > On Fri, Dec 15, 2023 at 02:55:59PM +0100, Francesco Dolcini wrote:
-> > > To me the change is correct, with that said probably this should have
-> > > been explicitly mentioned in the commit message or a separate
-> > > preparation patch.
-> > 
-> > It's a separate change and should not be hidden away in a tree-wide
-> > change that goes through a different maintainer.
-> > 
-> > Please drop this change from this patch and resubmit it separately to me
-> > if you want and I'll review when I have the time.
-> 
-> Fine, I agree.
-> 
-> I see those options (let me know if you see other options I have not
-> mentioned):
-> 
-> 1. I add this change (taking into account also intel ice) as a separate
->    patch in this series and you may just ack it and Greg could merge
->    together with the serdev one.
-> 2. I prepare an independent patch for the GNSS change and only once this
->    is merged I'll send a rebased v2 of this one.
-> 3. I update this patch without this GNSS API change, that mean I will
->    have to cast away the signed type from a few GNSS drivers.
-> 
-> 1 is my preferred option, 2 is fine, but it seems a little bit of overdoing,
-> 3 I would avoid, we are doing this cleanup to be a little bit more
-> strongly typed and to prevent the kind of bugs that is the original trigger
-> for this patch.
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+---
+ .../devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml  | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Changing the return type of gnss_insert_raw() is going to be a bit more
-involved and should be done in a separate patch (e.g. you need to look
-at gnss_usb_rx_complete() and ice_gnss_read() to avoid introducing new
-warnings there).
+diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+index cef9d7601398..e4da0a58c943 100644
+--- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
++++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+@@ -49,6 +49,13 @@ properties:
+     items:
+       - const: gce
+ 
++  mediatek,gce-events:
++    description:
++      The event id which is mapping to the specific hardware event signal
++      to gce. The event id is defined in the gce header
++      include/dt-bindings/gce/<chip>-gce.h of each chips.
++    $ref: /schemas/types.yaml#/definitions/uint32-array
++
+ required:
+   - compatible
+   - "#mbox-cells"
+-- 
+2.18.0
 
-And both option 2 and 3 will introduce conversion warnings (W=3, which
-we have plenty of anyway) unless you add casts.
-
-I suggest you go with 3, unless you insist on 2.
-
-Johan
 
