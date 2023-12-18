@@ -4,75 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4CD6C35274
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Dec 2023 16:34:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BD25C35274
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Dec 2023 21:56:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SpahB+QWv3E3W0OgdhIm0v0VxPS8OkkXBvK7FJGwRD4=; b=LeOmJLxplitkEqtLbmRLh+eIl/
-	g8KtO44FhYU902Jgu63J8TixZpLL1WbksrN6CDPDE8VQdhOLclJTIbsZt6nIT+lmLx5s+HEvamZS7
-	SYo/ec7MqNmIKMnPzdGh1ILJ5ejkdA/4WJCMdt2FEPpUT3aTpKwhHhuqbTu1moFnarHPlunR4vQZ0
-	sVvT+zk2/VqHvqv5UtxhZO6Kpd3UrA9F5iCMECerLvjWNz8bezt68h8Rn7UR/cP0dzCvOHd6kK3i3
-	i2mbKNky86dBDXTkTjV6dW02z9H7wYxE17Fz5b2bgfKayGo0GjkgqV0TEL3a7txdtg2q4vkfNN8Ea
-	OTI8337w==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eIl3+miZ0G9Vwo7dKjzcYHAwvEgr2VOComYZIqzlsP0=; b=XvkVYvic9cOyewNow/aXVMKCT+
+	pdjIBnuiwIG5S38Lqlj1sly2PqTZcBSNyJTK7ZAfwqnXUmQsVw+YlAIBlLwK1DzvfNOHM6jlnF/JS
+	bre904K529WKbeJVo9uUlqt3DDlnk2bLUuX9gKT5D9sms1lNnNLD/NYZ79kq45m/wQ9dGa9wt+dnW
+	UKOhmFGF0SjmexksZ8ss/a3qVprzB/hQ7ImTAxWvcObTTQ26JMxu84VJknS2+bvOmARhobcz3T6yH
+	Vs5SkHYdtLZvso8ap8aAqZXizKxAXCNEKjAJAVLplhVp5u6pTS/loh5VqcgYzRv/fPc2X1kDNRDm2
+	DYXBDjgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFGZE-00BSzW-29;
-	Mon, 18 Dec 2023 16:34:08 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rFLak-00CBgf-1M;
+	Mon, 18 Dec 2023 21:56:02 +0000
+Received: from mail-io1-f41.google.com ([209.85.166.41])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFGZC-00BSyl-1H;
-	Mon, 18 Dec 2023 16:34:07 +0000
-X-UUID: 402ba8409dc311ee958cff29c719f35b-20231218
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=SpahB+QWv3E3W0OgdhIm0v0VxPS8OkkXBvK7FJGwRD4=;
-	b=jqtVQLtSsl7OjXepjLBzCgbpl3zDsIE156MGPYRiX44pWi7nmdg+FlIQzW1Pp6lyzp3j/dn1iLpZaeIaDFTZISWD/5zcGSdxX3EUHrz9l7pxTOdPrmF43X0PuYnaPziVU5cJv5DQ1Qa96/6PgnahRzR8gNwvkveNNhLEVEKoKh4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:d7dde37e-e7ba-4a21-909b-c5fcdc9391e4,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:0c83ed73-1bd3-4f48-b671-ada88705968c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 402ba8409dc311ee958cff29c719f35b-20231218
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <bo.ye@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1017857978; Mon, 18 Dec 2023 09:34:01 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 19 Dec 2023 00:23:58 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 19 Dec 2023 00:23:57 +0800
-From: Bo Ye <bo.ye@mediatek.com>
-To: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano
-	<daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba
-	<lukasz.luba@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <yongdong.zhang@mediatek.com>, yugang.wang <yugang.wang@mediatek.com>, Bo
- Ye <bo.ye@mediatek.com>, <linux-pm@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH] thermal: fix race condition in suspend/resume
-Date: Tue, 19 Dec 2023 00:23:46 +0800
-Message-ID: <20231218162348.69101-1-bo.ye@mediatek.com>
-X-Mailer: git-send-email 2.17.0
+	id 1rFLah-00CBfk-0c;
+	Mon, 18 Dec 2023 21:56:00 +0000
+Received: by mail-io1-f41.google.com with SMTP id ca18e2360f4ac-7b712c0fddeso147627739f.3;
+        Mon, 18 Dec 2023 13:55:57 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702936556; x=1703541356;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=eIl3+miZ0G9Vwo7dKjzcYHAwvEgr2VOComYZIqzlsP0=;
+        b=Gdf3OeZJ604CCgm0ANKgy3i0c6qhh/dDoWJ5USt979yLJoNI2wh9WUW8VJs14sm2Sf
+         a+Vo2GA/jlfjnmMPzFxnwBwhZY/Tth1bD7P186EgvWpA8R3xNtX3kYyiAME9iePXA4Hh
+         I+q0KhPR1D006JUB846laky5Zq+xMWVSyMxDUyR0lZe3aTzQrm10XDwnSJOGgE7zarwd
+         4RoZGouqEZNEkKpc7xN75yizYOoLJINywisPm0TJrVGGiLmyKX26eJUNOlcYOCX841wH
+         xxNA/VZfJ5RfsYx7dAn3tjQtk7ggdS1HFMrjRCzVogslYqMw7VA1vSwLnnMyAUoojCRy
+         lUIA==
+X-Gm-Message-State: AOJu0YwhEwMa6NhxaTOZ7isbQa+UxM9Vy9HDyNd0qURB36KDQGSEPJU2
+	BPMvfNUsHbf8wA2A7D9uM/94llx4dYA=
+X-Google-Smtp-Source: AGHT+IHEewjCipB4PIrKNw9vqIIP/VSnGW9Uiv52Wv48DEo+dTLjJlbTKJ/7N8EqP5QpL2LNEbx/jA==
+X-Received: by 2002:a92:c90b:0:b0:35d:59a2:92a6 with SMTP id t11-20020a92c90b000000b0035d59a292a6mr15410019ilp.58.1702936556465;
+        Mon, 18 Dec 2023 13:55:56 -0800 (PST)
+Received: from ?IPV6:2620:0:1000:8411:e67:7ba6:36a9:8cd5? ([2620:0:1000:8411:e67:7ba6:36a9:8cd5])
+        by smtp.gmail.com with ESMTPSA id s7-20020a634507000000b005cd8bf50c13sm3114268pga.58.2023.12.18.13.55.53
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 18 Dec 2023 13:55:55 -0800 (PST)
+Message-ID: <9861ce52-8163-40aa-b156-dd656143a73d@acm.org>
+Date: Mon, 18 Dec 2023 13:55:51 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V5 1/2] ufs: core: Add CPU latency QoS support for ufs
+ driver
+Content-Language: en-US
+To: Maramaina Naresh <quic_mnaresh@quicinc.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Peter Wang <peter.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ Stanley Jhu <chu.stanley@gmail.com>, linux-scsi@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, quic_cang@quicinc.com,
+ quic_nguyenb@quicinc.com
+References: <20231213124353.16407-1-quic_mnaresh@quicinc.com>
+ <20231213124353.16407-2-quic_mnaresh@quicinc.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20231213124353.16407-2-quic_mnaresh@quicinc.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231218_083406_448620_309F76A1 
-X-CRM114-Status: GOOD (  15.01  )
+X-CRM114-CacheID: sfid-20231218_135559_229940_6A43555E 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,102 +90,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "yugang.wang" <yugang.wang@mediatek.com>
+On 12/13/23 04:43, Maramaina Naresh wrote:
+> +static ssize_t ufshcd_pm_qos_enable_store(struct device *dev,
+> +		struct device_attribute *attr, const char *buf, size_t count)
+> +{
+> +	struct ufs_hba *hba = dev_get_drvdata(dev);
+> +	u32 value;
+> +
+> +	if (kstrtou32(buf, 0, &value))
+> +		return -EINVAL;
+> +
+> +	value = !!value;
+> +	if (value)
+> +		ufshcd_pm_qos_init(hba);
+> +	else
+> +		ufshcd_pm_qos_exit(hba);
+> +
+> +	return count;
+> +}
 
-  Firstly, it needs to be clarified that this issue occurs in a real-
-world environment. By analyzing the logs, we inferred that the
-issue occurred just as the system was entering suspend mode, and the user
-was switching the thermal policy (this action causes all thermal zones
-to unregister/register). In addition, we conducted degradation tests
-and also reproduced this issue. The specific method is to first switch
-the thermal policy through a command, and then immediately put the
-system into suspend state through another command. This method can also
-reproduce the issue.
+Please use kstrtobool() instead of kstrtou32().
 
-Body:
-  This patch fixes a race condition during system resume. It occurs
-  if the system is exiting a suspend state and a user is trying to
-  register/unregister a thermal zone concurrently. The root cause is
-  that both actions access the `thermal_tz_list`.
+> +static void ufshcd_init_pm_qos_sysfs(struct ufs_hba *hba)
+> +{
+> +	hba->pm_qos_enable_attr.show = ufshcd_pm_qos_enable_show;
+> +	hba->pm_qos_enable_attr.store = ufshcd_pm_qos_enable_store;
+> +	sysfs_attr_init(&hba->pm_qos_enable_attr.attr);
+> +	hba->pm_qos_enable_attr.attr.name = "pm_qos_enable";
+> +	hba->pm_qos_enable_attr.attr.mode = 0644;
+> +	if (device_create_file(hba->dev, &hba->pm_qos_enable_attr))
+> +		dev_err(hba->dev, "Failed to create sysfs for pm_qos_enable\n");
+> +}
 
-In detail:
+Calling device_create_file() and device_remove_file() is not acceptable because of
+the race conditions these calls introduce for udev rules. Please add this attribute
+into an existing group and update the is_visible callback function of that group.
+See also ufs_sysfs_groups[].
 
-  1. At PM_POST_SUSPEND during the resume, the system reads all
-  thermal
-     zones in `thermal_tz_list`, then resets and updates their
-     temperatures.
-  2. When registering/unregistering a thermal zone, the
-     `thermal_tz_list` gets manipulated.
+Thanks,
 
-  These two actions might occur concurrently, causing a race condition.
-  To solve this issue, we introduce a mutex lock to protect
-  `thermal_tz_list` from being modified while it's being read and
-  updated during the resume from suspend.
-
-  Kernel oops excerpt related to this fix:
-
-  [ 5201.869845] [T316822] pc: [0xffffffeb7d4876f0]
-  mutex_lock+0x34/0x170
-  [ 5201.869856] [T316822] lr: [0xffffffeb7ca98a84]
-  thermal_pm_notify+0xd4/0x26c
-  [... cut for brevity ...]
-  [ 5201.871061] [T316822]  suspend_prepare+0x150/0x470
-  [ 5201.871067] [T316822]  enter_state+0x84/0x6f4
-  [ 5201.871076] [T316822]  state_store+0x15c/0x1e8
-
-  3.Enable thermal policy operation will unregister/register all thermal zones
-     10-21 06:13:59.280   854   922 I libMtcLoader: enable thermal policy thermal_policy_09.
-
-  4.System suspend entry time is 2023-10-20 22:13:59.242
-     [ 4106.364175][T609387] binder:534_2: [name:spm&][SPM] PM: suspend entry 2023-10-20 22:13:59.242898243 UTC
-     [ 4106.366185][T609387] binder:534_2: PM: [name:wakeup&]PM: Pending Wakeup Sources: NETLINK
-
-  5. It can be proven that the absence of a switch strategy will perform
-     unregister/register operations on thermal zones (android time is 2023-10-20 22:13:59.282)，
-     Because the logs for other thermal zones switching are not enabled by
-     default, we cannot see the logs related to other thermal zones.
-     [ 4106.404167][T600922] mtkPowerMsgHdl:[name:thermal_monitor&][Thermal/TZ/CPU]tscpu_unbind unbinding OK
-     [ 4106.404215][T600922] mtkPowerMsgHdl:[name:thermal_monitor&][Thermal/TZ/CPU]tscpu_unbind unbinding OK
-     [ 4106.404225][T600922] mtkPowerMsgHdl:[name:thermal_monitor&][Thermal/TZ/CPU]tscpu_unbind unbinding OK
-     [ 4106.404504][T600922] mtkPowerMsgHdl:[name:thermal_monitor&][Thermal/TZ/CPU]tscpu_bind binding OK, 0
-     [ 4106.404545][T600922] mtkPowerMsgHdl:[name:thermal_monitor&][Thermal/TZ/CPU]tscpu_bind binding OK, 2
-     [ 4106.404566][T600922] mtkPowerMsgHdl:[name:thermal_monitor&][Thermal/TZ/CPU]tscpu_bind binding OK, 1
-
-  6. thermal_pm_notify trigger KE(android time:  2023-10-20 22:13:59.315894)
-     [ 4106.437171][T209387] binder:534_2: [name:mrdump&]Kernel Offset:0x289cc80000 from 0xffffffc008000000
-     [ 4106.437182][T209387] binder:534_2: [name:mrdump&]PHYS_OFFSET:0x40000000
-     [ 4106.437191][T209387] binder:534_2: [name:mrdump&]pstate: 80400005(Nzcv daif +PAN -UAO)
-     [ 4106.437204][T209387] binder:534_2: [name:mrdump&]pc :[0xffffffe8a6688200] mutex_lock+0x34/0x184
-     [ 4106.437214][T209387] binder:534_2: [name:mrdump&]lr :[0xffffffe8a5ce66bc] thermal_pm_notify+0xd4/0x26c
-     [ 4106.437220][T209387] binder:534_2: [name:mrdump&]sp :ffffffc01bab3ae0
-     [ 4106.437226][T209387] binder:534_2: [name:mrdump&]x29:ffffffc01bab3af0 x28: 0000000000000001
-
-Signed-off-by: Yugang Wang <yugang.wang@mediatek.com>
-Signed-off-by: Bo Ye <bo.ye@mediatek.com>
----
- drivers/thermal/thermal_core.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
-index 9c17d35ccbbd..73d6b820c8b5 100644
---- a/drivers/thermal/thermal_core.c
-+++ b/drivers/thermal/thermal_core.c
-@@ -1520,12 +1520,14 @@ static int thermal_pm_notify(struct notifier_block *nb,
- 	case PM_POST_HIBERNATION:
- 	case PM_POST_RESTORE:
- 	case PM_POST_SUSPEND:
-+		mutex_lock(&thermal_list_lock);
- 		atomic_set(&in_suspend, 0);
- 		list_for_each_entry(tz, &thermal_tz_list, node) {
- 			thermal_zone_device_init(tz);
- 			thermal_zone_device_update(tz,
- 						   THERMAL_EVENT_UNSPECIFIED);
- 		}
-+		mutex_unlock(&thermal_list_lock);
- 		break;
- 	default:
- 		break;
--- 
-2.17.0
-
+Bart.
 
