@@ -4,79 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50DB8C41535
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Dec 2023 17:00:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66EB5C41535
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Dec 2023 18:06:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LgJX2iXSXNpamsAV8ozi86d6tRWgjGnRgb3PlM33YpU=; b=21DHz0D3pebvRRNjUKiWtCXaU4
-	MRn0jUIx/krtgbe1Eu2w0SCwdS7IZ5DJGzOhylKczWDCfGYrHOM6DiJlYjOuN/K7C1CFUfDm7Swab
-	ymE0RJZ5J9v+rZEvR0s6VZJxFPeLxdEqBz+6trbRFVc2STLur9l/tvDsXZgC8BMT0ZXRyDjuX0wIN
-	6X19KTGh8JpTxk7trMEdFN/EMOvJN8j+qT46JwGqXeB6fMIz/+xJvslRvzCEJ62PysGaVVKft+Z89
-	q4u2S4oX/BkXWEbMnuiwSSRPPF5ZqOBwUd9RLYu+jRZ0ekBTaHgUBKy/tjSuIZxvIC9IxcmxG6v8Y
-	jrKPIzzw==;
+	bh=V8wv/km71HdTjaO3khmzFcJIWbPKQ7OTyxIEqDEyH0k=; b=n0AYfl+aVAfe8CcUm1NHUMF7lc
+	fVVN5WUYJ9kff3oce3RkZ7RqDbysWqW6l4icga2hl48UuDfjmXrWh8iP2taTfekfbeBt7VjXRt49A
+	J/5c+sAWsAMjbhBsTwxHPsfs/ZxPZT2H6mR65/zNIYNRgmj78bTAMK8GIiaW6mAHmVMxPSeJwWl1j
+	3TO/OFalloFOxyom+JCkDnbj9RzSk/J7bhyapaRfJrmzm4PuJZbZFI7H37sxe6vqRHzgLiBk+T8mZ
+	wGSJKyV2bKe0uP9d0AESbhMxWIHJy55m6+mz8/GBStKsri+fBP/ZTGv+7WB0tqjmm2I/jB1dWsnxB
+	sXCZPm8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFdSe-00Enqq-1F;
-	Tue, 19 Dec 2023 17:00:52 +0000
-Received: from mail-io1-f52.google.com ([209.85.166.52])
+	id 1rFeUL-00F7xS-1L;
+	Tue, 19 Dec 2023 18:06:41 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFdSb-00Enpf-1W;
-	Tue, 19 Dec 2023 17:00:50 +0000
-Received: by mail-io1-f52.google.com with SMTP id ca18e2360f4ac-7b712c0fddeso182397539f.3;
-        Tue, 19 Dec 2023 09:00:48 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703005248; x=1703610048;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=LgJX2iXSXNpamsAV8ozi86d6tRWgjGnRgb3PlM33YpU=;
-        b=vBT/Hq6t9ApsKGIR2iG4eIwEEFdfhZOnm1aCCZDoT7zzyONwJFBjUnpP8rEOg5PfGF
-         Buu9JxRHr2UyyNjaa+n9bS/xJbH33cyNnXY+jJmVsGsfFPvRD3ZBAWjfRk/+IPq+8InH
-         fJq8N30xXvuXqXgk+k+6M6db6719ADVin4cfCk0xcBDxNqwFGGO25GQ1pY/m6hmKc0IV
-         MRW/01ff2ZdvGwSi2OfbSsbTLeI2tBcbRgw8ylRvlrEhXnXr+ZswRqQ+RH8cvbWC4akX
-         rIb1119kZxvAodJVSTbcvHW7sbgjkNWVqrI3PVfkT4AkvduJ3GGjMs8XD3nxAm8c9BkD
-         u3Ag==
-X-Gm-Message-State: AOJu0YxVEZqf7ekD3u3t3ZBfIbVTzWR/wTn3DAAR5ZUbJOezb4N4Dj0U
-	ZWPNcxTs0N/PLZ6KxWoikds=
-X-Google-Smtp-Source: AGHT+IE/pXRsxDbNpnav7+8+DbpUu0omybNbu8s/xeK7S/bDGQfZgSlrOcqQHPwT4Qt848RSe0jwWA==
-X-Received: by 2002:a05:6e02:1c8a:b0:35c:e8ee:f7d7 with SMTP id w10-20020a056e021c8a00b0035ce8eef7d7mr23488887ill.8.1703005247984;
-        Tue, 19 Dec 2023 09:00:47 -0800 (PST)
-Received: from ?IPV6:2620:0:1000:8411:2c02:6167:94c9:999b? ([2620:0:1000:8411:2c02:6167:94c9:999b])
-        by smtp.gmail.com with ESMTPSA id o14-20020a63e34e000000b005c67bb1585csm19711949pgj.68.2023.12.19.09.00.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 19 Dec 2023 09:00:47 -0800 (PST)
-Message-ID: <04a6f477-2666-4873-8612-a4fc643a462f@acm.org>
-Date: Tue, 19 Dec 2023 09:00:45 -0800
+	id 1rFeUH-00F7w8-3D
+	for linux-mediatek@lists.infradead.org;
+	Tue, 19 Dec 2023 18:06:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 72A6CB81A3D;
+	Tue, 19 Dec 2023 18:06:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2B84C433CA;
+	Tue, 19 Dec 2023 18:06:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1703009195;
+	bh=xvU367qZzfAoUntmQ4FrQOKLmlPS6l1Zf0ye+sR90NY=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=bOZ4n/7Yy02VN94mVPXxQrbcKQJ1jFJwhu9dfm7uR4YYUiT7bqEjJKcEa+IBOvsSo
+	 xTkyEYL9EWNR//tuTiPZiGRUPelGSdr+oy0jV0nsSEGk0+suARviknuZB+fkrZdpp+
+	 jxOuHHzAcXq9RjdBvzStgiRcQpQafVKf4CvKrGQEf5Urg3smNlm0QM51pqrSbDB64e
+	 JrntcwRK+JjCAFKt3KmKiMpCMtVaVEEcpavlN9x/X83xAe0n02UfMpxb1ZVIWRF6Vy
+	 eU69NG9xnFtu9SJN3vuEuo24f7D+QDsFxa0WahtAVNj6dNw8T9T8ReS8Fv/xrJ3P3u
+	 wPdEbGqXIZzQg==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, robh+dt@kernel.org, 
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, 
+ angelogioacchino.delregno@collabora.com, perex@perex.cz, 
+ allen-kh.cheng@mediatek.com, kuninori.morimoto.gx@renesas.com, 
+ Rui Zhou <zhourui@huaqin.corp-partner.google.com>
+Cc: linux-sound@vger.kernel.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20231116093512.4180240-1-zhourui@huaqin.corp-partner.google.com>
+References: <20231116093512.4180240-1-zhourui@huaqin.corp-partner.google.com>
+Subject: Re: [PATCH v7 0/4] add es8326 dt-bindings, commonize headset codec
+ API, es8326 support and Enable dual amp for rt5682s
+Message-Id: <170300919336.125466.4717213995056504777.b4-ty@kernel.org>
+Date: Tue, 19 Dec 2023 18:06:33 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V6 2/2] ufs: ufs-mediatek: Migrate to UFSHCD generic CPU
- latency PM QoS support
-Content-Language: en-US
-To: Maramaina Naresh <quic_mnaresh@quicinc.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Peter Wang <peter.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
- Stanley Jhu <chu.stanley@gmail.com>, linux-scsi@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, quic_cang@quicinc.com,
- quic_nguyenb@quicinc.com
-References: <20231219123706.6463-1-quic_mnaresh@quicinc.com>
- <20231219123706.6463-3-quic_mnaresh@quicinc.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20231219123706.6463-3-quic_mnaresh@quicinc.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-5c066
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231219_090049_508665_DBCEA612 
-X-CRM114-Status: UNSURE (   7.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231219_100638_180918_FE8CC734 
+X-CRM114-Status: GOOD (  11.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,9 +76,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/19/23 04:37, Maramaina Naresh wrote:
-> The PM QoS feature found in the MediaTek UFS driver was moved to the UFSHCD
-> core. Hence remove it from MediaTek UFS driver as it is redundant now.
+On Thu, 16 Nov 2023 17:35:08 +0800, Rui Zhou wrote:
+> Add dt-bindings for es8326 and codec es8326 support.
+> Remove duplicate code, commonize headset codec init/exit API.
+> At the same time, Enable dual amp max98390 for rt5682s.
+> 
+> Changes in v7:
+> - PATCH 3/4: Completion "}"
+> - Link to v6: https://lore.kernel.org/all/20231116073106.3757618-1-zhourui@huaqin.corp-partner.google.com/
+> 
+> [...]
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/4] ASoC: dt-bindings: mt8188-mt6359: add es8326 support
+      commit: ea244b35a4da60a92d0e3be528f82ebcbcf10753
+[2/4] ASoC: mediatek: mt8188-mt6359: commonize headset codec init/exit api
+      commit: 1a268000b03a162bd5feb7fce1c130f1b31602b5
+[3/4] ASoC: mediatek: mt8188-mt6359: add es8326 support
+      commit: e794a894427b1d64f2ebff24f003c60373d68c2c
+[4/4] ASoC: mediatek: mt8188-mt6359: Enable dual amp for mt8188-rt5682s
+      commit: 3423c3db22e9213acd279ff3800bb1e91aa2ac89
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
