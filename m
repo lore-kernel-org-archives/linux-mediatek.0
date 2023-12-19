@@ -4,69 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E998AC41535
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Dec 2023 16:30:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C3F9C46CA2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Dec 2023 16:54:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O+nXGZ4WeIHnK2XE30unq/qDzfMFlqizs0CUMRrlF3c=; b=MuBe9iWMCe4lJcn5JnRIYQaIEl
-	f4ukp/+JRDqC2poK6Mr5T+HC3vvi+Es1A+6az9NOlvK+ExjEqtrKQ3C3J8P/wDMr2B5vapdAv/cK1
-	ciVo784EwMDPKYRSilnljoUPiJMKxYnbufEW7cd+remyDiVm4yq7x04wPk0nXH9boHBKUOiaDPwBU
-	JysjNmd8kiwvxrIul+PqONnTfObVNgvPDtHNe5I0m5ULJdspYiiLEEQWcooumpHfpCVBJK34BJO7/
-	GkHLdSiQ9SBknuQBEhKTDf0zvdti2+kpAwfNqLCkc1mTTNFOKiL5+RGFmclLJR/sDAEzltq/u9Jeh
-	gweO4K+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hMMTJJLnbJZI7eeaAsFFenoqHPm3dmFrvvkbbNL6DWg=; b=K8WWozmQzPffnif4XZws+rp7+M
+	iB6WzgxALzkShspRFtsoMnJIH2CXc2avVIuJ87kDGzcQs87jOOmWsA6I7Cgxms0lQkz9EZb3dtdJf
+	JCpy+/Y4nqw7bLrL7RhMXVND73htcuvSbNYA6/tK6FpYXyaNDBTQ0WqyC6Jd9D/8AE4TepFO4YkvW
+	r6xnfN02JriCwFVU9z3MDkRKzIMJSqfC8zZusWMH6qiLGgZ/aPiQN3ximBqC0rwRQQtJF0iG774yR
+	D3p2Y+OPu6RQzbHAky+zAyCBaQBKiExBEhnWO+ncmWR4S4I2cR/crU2JDRqM02t+xpMt3mRBBYFof
+	YTtZVlPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFcz2-00EhTp-2y;
-	Tue, 19 Dec 2023 16:30:16 +0000
-Received: from mail-oo1-f48.google.com ([209.85.161.48])
+	id 1rFdMg-00Emd9-0V;
+	Tue, 19 Dec 2023 16:54:42 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFcyz-00EhRM-2i;
-	Tue, 19 Dec 2023 16:30:15 +0000
-Received: by mail-oo1-f48.google.com with SMTP id 006d021491bc7-593f182f263so98881eaf.0;
-        Tue, 19 Dec 2023 08:30:12 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703003412; x=1703608212;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=O+nXGZ4WeIHnK2XE30unq/qDzfMFlqizs0CUMRrlF3c=;
-        b=F9Ab7g8LzO3HSaR8CYz+YSJ4seqaCjqIuVk0+4OCxTb+ivkgwLSTiNhJUwHWAxVRUQ
-         PxFLRqUSP3G2Kf2YM8TGCffXaOdTosj3i4JL1Qjg6bLILBnObgDRuqjaxpISXJ16ceQU
-         gZjhNNZEEAMcssgJAXrOT1S0JA4Pis45d8eUOTNpyyf2HZxBuPgB+EvABzYN5VgSyda2
-         QprKuaaODJkxqmGW/mCF5i6WuVqM9o56FVRGv4qXvcc3GNwcviqgL2fdM4XtjBEL9h46
-         MzFHKU22XZeN/kghJvsOg+Ugzn8s9OJoORb6nSMCQUnAPVxaWOpkJ/aA8az3JCgVGiS6
-         nTAQ==
-X-Gm-Message-State: AOJu0YxyeqScXxYy3qz6toIXXAdiBzcVtti6ec0hehbTtQEya1VG25KL
-	l2LTh8Cl1sxDsn9+8dzEfq31NBKMH+g+dCiF6lc=
-X-Google-Smtp-Source: AGHT+IGCcu1hyxmj8XnSccAScP5oqN5dUluYAX9W1tGMGB9589pmbO/sXkRTIM1WwxoBb7YqVBoVmBJ+Pid3j1wUZQ4=
-X-Received: by 2002:a05:6820:2d44:b0:58d:be0d:6f7b with SMTP id
- dz4-20020a0568202d4400b0058dbe0d6f7bmr29168905oob.1.1703003412038; Tue, 19
- Dec 2023 08:30:12 -0800 (PST)
+	id 1rFdMc-00Embg-1f;
+	Tue, 19 Dec 2023 16:54:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id A2045CE1287;
+	Tue, 19 Dec 2023 16:54:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F30B4C433C8;
+	Tue, 19 Dec 2023 16:54:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1703004875;
+	bh=hMMTJJLnbJZI7eeaAsFFenoqHPm3dmFrvvkbbNL6DWg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=l4xd/pGNfaBEvLKT+79F5NQd9tEbwzcz0ewGVgKRdSHdwGZ5O1PQSaej6Si+HFsqU
+	 KKRvkWmKXWFs6ANpQ5FMt3sS4xIsYOgV6hU1Pg0QPIlz7X/bPvNwANTRLKIaOMG3Mz
+	 yg4w6V+WUgtHV6w+2Cns1GaBroyBlZQPv23qJzZfXW/8VSUDs8GQCgtNYC3ddfOhkj
+	 rlSOW8wKefUA1dLy/TVCd/XpelGq8fbRUT83KO2aWmj2rhZ9z6qdfIYSApaajecN2Y
+	 vt2n5KpcQ/b6r1Et4TODcsSNtPQMxgtLRRXNzKOorq6MxZh8jBiqEVMVrcVE62px3d
+	 5qaLCw6gOSt7g==
+Date: Tue, 19 Dec 2023 16:54:29 +0000
+From: Conor Dooley <conor@kernel.org>
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Jason-ch Chen <jason-ch.chen@mediatek.com>,
+	Johnson Wang <johnson.wang@mediatek.com>,
+	Singo Chang <singo.chang@mediatek.com>,
+	Nancy Lin <nancy.lin@mediatek.com>,
+	Shawn Sung <shawn.sung@mediatek.com>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
+Subject: Re: [PATCH 0/3] Add mediatek,gce-events definition to
+ mediatek,gce-mailbox bindings
+Message-ID: <20231219-joyous-tarmac-aaf601623859@spud>
+References: <20231218083604.7327-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-References: <20231219031444.91752-1-bo.ye@mediatek.com> <e807b180b074419ba4f1d1ff8a4c1a80@AcuMS.aculab.com>
-In-Reply-To: <e807b180b074419ba4f1d1ff8a4c1a80@AcuMS.aculab.com>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Tue, 19 Dec 2023 17:30:00 +0100
-Message-ID: <CAJZ5v0gLDZtfGhowxSM+nwBCM80y6sDR56fYZrHNGaRFK1oGyw@mail.gmail.com>
-Subject: Re: [PATCH v2] fix overflow in idle exit_latency
-To: David Laight <David.Laight@aculab.com>
-Cc: Bo Ye <bo.ye@mediatek.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Daniel Lezcano <daniel.lezcano@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"yongdong.zhang@mediatek.com" <yongdong.zhang@mediatek.com>, C Cheng <C.Cheng@mediatek.com>, 
-	"linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="i+MCw2cELYYzOA1i"
+Content-Disposition: inline
+In-Reply-To: <20231218083604.7327-1-jason-jh.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231219_083013_882094_C75DB9A3 
-X-CRM114-Status: GOOD (  26.26  )
+X-CRM114-CacheID: sfid-20231219_085438_729029_3552C216 
+X-CRM114-Status: GOOD (  16.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,81 +87,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 19, 2023 at 5:24=E2=80=AFPM David Laight <David.Laight@aculab.c=
-om> wrote:
->
-> From: Bo Ye
-> > Sent: 19 December 2023 03:15
-> >
-> > From: C Cheng <C.Cheng@mediatek.com>
-> >
-> > In detail:
-> >
-> > In C language, when you perform a multiplication operation, if
-> > both operands are of int type, the multiplication operation is
-> > performed on the int type, and then the result is converted to
-> > the target type. This means that if the product of int type
-> > multiplication exceeds the range that int type can represent,
-> >  an overflow will occur even if you store the result in a
-> > variable of int64_t type.
-> >
-> > For a multiplication of two int values, it is better to use
-> > mul_u32_u32() rather than s->exit_latency_ns =3D s->exit_latency *
-> > NSEC_PER_USEC to avoid potential overflow happenning.
-> >
-> > Signed-off-by: C Cheng <C.Cheng@mediatek.com>
-> > Signed-off-by: Bo Ye <bo.ye@mediatek.com>
-> > ---
-> > Change in v2:
-> > -remove Change-ID
-> > -correct patch author name
-> > -replace multiplication of two int values with mul_u32_u32
-> > -refine commit message
-> > ---
-> >  drivers/cpuidle/driver.c | 3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/cpuidle/driver.c b/drivers/cpuidle/driver.c
-> > index d9cda7f6ccb9..cf5873cc45dc 100644
-> > --- a/drivers/cpuidle/driver.c
-> > +++ b/drivers/cpuidle/driver.c
-> > @@ -16,6 +16,7 @@
-> >  #include <linux/cpumask.h>
-> >  #include <linux/tick.h>
-> >  #include <linux/cpu.h>
-> > +#include <linux/math64.h>
-> >
-> >  #include "cpuidle.h"
-> >
-> > @@ -187,7 +188,7 @@ static void __cpuidle_driver_init(struct cpuidle_dr=
-iver *drv)
-> >                       s->target_residency =3D div_u64(s->target_residen=
-cy_ns, NSEC_PER_USEC);
-> >
-> >               if (s->exit_latency > 0)
-> > -                     s->exit_latency_ns =3D s->exit_latency * NSEC_PER=
-_USEC;
-> > +                     s->exit_latency_ns =3D mul_u32_u32(s->exit_latenc=
-y, NSEC_PER_USEC);
->
-> Just force either side of the multiply to a 64bit unsigned type.
-> The compiler will then DTRT which is likely to be better code than
-> whatever mul_u32_u32() generates.
 
-So why is it there?
+--i+MCw2cELYYzOA1i
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-The default implementation of mul_u32_u32() is to cast its first
-argument to u64 before the multiplication AFAICS.
+On Mon, Dec 18, 2023 at 04:36:01PM +0800, Jason-JH.Lin wrote:
+> From: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
+>=20
+> Since mediatek,gce-events property is a HW event signal from GCE,
+> it should be defined in mediatek,gce-mailbox.yaml.
+>=20
+> Change the description of mediatek,gce-events property existed in
+> other bindings to reference mediatek,gce-mailbox.yaml.
 
-> In any case is the 'exit_latency' ever going to be greater than 4 seconds=
-?
-> In which case the 32bit multiply will never overflow.
+I don't understand this series. I would understand it if the property
+should be related to the mailbox provider and it is moved there from the
+mailbox consumer, but this series does not do that. Instead the series
+now documents this property for both consumers and providers.
 
-So this is more of a theoretical thing found by some static analysis
-tool or similar.
+Secondly it removes the typedef from the consumers, which makes no sense
+if this is a valid property there.
 
-> >               else if (s->exit_latency_ns < 0)
-> >                       s->exit_latency_ns =3D  0;
-> >               else
-> > --
+Is your intention to document a property that should be common across
+all consumers in a single place? If that is your goal, then something
+like spi-peripheral-props.yaml is what you need here.
+
+Confused,
+Conor.
+
+--i+MCw2cELYYzOA1i
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZYHKxQAKCRB4tDGHoIJi
+0oiDAQCnS/e4ChdhTrIMgLXWQjCO4EzlP4LIjirHyIs1A+qTtAD/b4JZtsykUGPz
+pLSkPCj6WxQKyOcdkpUxoanC2mDwUAE=
+=MQP9
+-----END PGP SIGNATURE-----
+
+--i+MCw2cELYYzOA1i--
 
