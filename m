@@ -4,90 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE8C1C35274
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Dec 2023 23:06:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE157C35274
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Dec 2023 00:30:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v9sJxu+peZKEvGLvTmMpiV6Tv/puBAp7n/rM5sIpeRQ=; b=WfwVIuVF+hfRKIHG/T2nSmbvN+
-	kDIEVO5iRtfVkV+Jl6MHOObjOvVgXm6WURkCqv2MNQxfH6n/ghop00agHoizRBKZWbaKr4qRWepyj
-	w98vRLJIqkdAVx+AniTEwyGClGIXd53OEWZc48ztxq50U/xWDOkvwhuT3AD8X8Pfj1a/Tr1qtHk4q
-	Iyjlpb9UfocVgPNrj1E+d9eoX2MCqQIOd5l94DKTeqkvZf1URcWCKJNpt11TMmIaCg8plrioo/qXk
-	ein8TmfuPHZgSIqwTqcoiDpoh4niNyOXP0l2eVcGECrjmJS9ah04Zl6ckfxuSNtTOSdoj4lMTHk6m
-	We+zRDFw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O9qg9WcYvdr4wru6IqqwEj11ePgpxG1ae082lArFfG0=; b=PnNomF6VFZAX5fkxAf+jgclk5S
+	lby0lvm18wvan/iIUQFdPbD8f4OBmnuSgXByMe9XdFVGNOB73sEF4SPOessN7mjkQo/dWGvtR+xk6
+	yNAtDuXLa6PGa3/Yn6TYhydoRTErzBJ9wqdLBBN8D44P3KWpnD3tQu+bJaQH4uh/nPSkJ72pRIrRg
+	PbN14mhifUK5AN+ZpbkF/d5L9hixjBlRN2D8rdRohuk3DyhFDuryuMS4la/QrmJBAq9kOwJCM0N6d
+	C++UOSTzihQ7KvuFf40b+/voW0d/7Kmw+x5GLGKSblCf++UMC/XoBv2V8AeYItAa2v3MYy74MMvos
+	XC8tH7+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFMgm-00CIB8-1Z;
-	Mon, 18 Dec 2023 23:06:20 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rFNzw-00CQDt-0q;
+	Tue, 19 Dec 2023 00:30:12 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFMgi-00CIAO-2y;
-	Mon, 18 Dec 2023 23:06:18 +0000
-X-UUID: 09bb7ace9dfa11ee9b09ad09c76753c8-20231218
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=v9sJxu+peZKEvGLvTmMpiV6Tv/puBAp7n/rM5sIpeRQ=;
-	b=Ri+wefoJkTLb2OxPhBxPR4szvHZ6zGawmGO+kyQcPof40+uD26P2cz0MFfpwxKI0y9NH7S5AWHmY6lXLRB594B4zraB4If1M//DWvL170Pk1dbR+XZCx6hzhZqrSoPo2+R4JyFulfaQ5+JopT01I1BD4VlsgLdW0ixSO+NCBmjQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:81a86677-4ba6-453e-9229-e168855fbf80,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:5d391d7,CLOUDID:162252bd-2ac7-4da2-9f94-677a477649d9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 09bb7ace9dfa11ee9b09ad09c76753c8-20231218
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <bo.ye@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1749456323; Mon, 18 Dec 2023 16:06:12 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 19 Dec 2023 07:05:38 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 19 Dec 2023 07:05:36 +0800
-From: Bo Ye <bo.ye@mediatek.com>
-To: <avri.altman@wdc.com>, <dominique.martinet@atmark-techno.com>,
-	<rafael.beims@toradex.com>, <vincent.whitchurch@axis.com>, Ulf Hansson
-	<ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <yongdong.zhang@mediatek.com>, lin.gui <lin.gui@mediatek.com>, Bo Ye
-	<bo.ye@mediatek.com>, <linux-mmc@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2] mmc: add wp_grp_size node
-Date: Tue, 19 Dec 2023 07:05:32 +0800
-Message-ID: <20231218230532.82427-1-bo.ye@mediatek.com>
-X-Mailer: git-send-email 2.17.0
-In-Reply-To: <20231218224832.81347-1-bo.ye@mediatek.com>
-References: <20231218224832.81347-1-bo.ye@mediatek.com>
+	id 1rFNzq-00CQD9-0R
+	for linux-mediatek@lists.infradead.org;
+	Tue, 19 Dec 2023 00:30:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C5CCA611BE
+	for <linux-mediatek@lists.infradead.org>; Tue, 19 Dec 2023 00:30:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 649C6C433CB
+	for <linux-mediatek@lists.infradead.org>; Tue, 19 Dec 2023 00:30:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1702945804;
+	bh=dw3k5aL/+6q2ocOCHy31//nhjrvy16fo24znW4qvxy0=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=UqQed9MujdbM2y2QI6n6x1UOSn5io0ur9S0LEQaA5dV9T1nl4BL08O2LwaFX/mSb1
+	 DV8vAEBU5zmeelUVdkYrF459xs4/ctuN165RYzo8Df44Wur8wldRRYDbgd13InHw2y
+	 YlzBCbu1IEcI8S9ZvyyHiiZrRLMdWLpYsY39fLefa5a4ZfY+wDW1ODGWW1J8x+LZOu
+	 nG/NjW52sJA/K52ZWIfMwbcm3aopP6CLVpT/ctgwspvukJbHBg/U0rut1iW4ZIriTU
+	 8r7KQGFx0kQECZcT2yPJqmPM7sV8UR/M2iOsPTw+XpikDECz3+B0+G3mJsw5+Vv9TS
+	 seECCCXdIfrcQ==
+Received: by mail-lf1-f42.google.com with SMTP id 2adb3069b0e04-50bcf41379bso907462e87.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 18 Dec 2023 16:30:04 -0800 (PST)
+X-Gm-Message-State: AOJu0YxpRRz+ZifTKlHx9EQmbPB3rL5T9OYISVvkWejItVNuFEeqGa3X
+	kI1NqM4ods9kZ9qg1/+vZp00Ds2QoJOmKloVTe4=
+X-Google-Smtp-Source: AGHT+IFInPMQlA+Ca8x14vA0j4gu69kLAYi40K1ird4Pq+zJBgicUUnX0qhOg0GlzoKLjwX4/8r8hXyMjuGpJVtIDH0=
+X-Received: by 2002:a19:9141:0:b0:50e:48c4:ba7d with SMTP id
+ y1-20020a199141000000b0050e48c4ba7dmr43425lfj.2.1702945802370; Mon, 18 Dec
+ 2023 16:30:02 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.793700-8.000000
-X-TMASE-MatchedRID: HI0v3Fgc2rNGlhjnipkGEAwfhKwa9GwD+lX/RcQoG2FX4H/AHZTAKiQH
-	YX2qyjfSlB6IdnaWhV1I7JPsZpNRgcL2WgOVZLNHhDqIQb7sQecK3n1SHen81VeilmPI7oJlf8S
-	IQrqULYwLYtJsevMdjZZLxtyQINIcxzvHgMQjo/aEryjhqiyzyitovaaHxlUrXFNHTRKzg/r5WK
-	Feqf3EsSNfw7OZ1vFwDx215gVwcojLJhhr8sBh+jNdJzhXekT2r4ukWaaTegDdPCHlFNPO/7K3o
-	/jvHhd/z0if0vMXZ3Thyvjhw0nKvqtL0wBaA/G+syw+ZJnFumTeDOoY8z6DT8gYL9oUjHj+EPrQ
-	9ei0HsbGhcwVapF2+oAy6p60ZV62fJ5/bZ6npdg7AFczfjr/7DBO8LavgWJ5Hm17+SOHjgqwxZ+
-	f6eSsGVBAmUDF4FZTXrw8q3AM+fg=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.793700-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 5727A99A606388E051883DC4B6203A1CA60EBC100F0EC10313FF828558596EF02000:8
-X-MTK: N
+References: <20231215063714.7684-1-hao.qin@mediatek.com>
+In-Reply-To: <20231215063714.7684-1-hao.qin@mediatek.com>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Mon, 18 Dec 2023 18:29:52 -0600
+X-Gmail-Original-Message-ID: <CAGp9LzrFWRo-DF7de4EC49ezUHjcw6SsWXMhMAxe1a=8YM7sVQ@mail.gmail.com>
+Message-ID: <CAGp9LzrFWRo-DF7de4EC49ezUHjcw6SsWXMhMAxe1a=8YM7sVQ@mail.gmail.com>
+Subject: Re: [PATCH 1/1] Bluetooth: btusb: mediatek: add a recovery method for MT7922
+To: Hao Qin <hao.qin@mediatek.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
+	Luiz Von Dentz <luiz.dentz@gmail.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Deren Wu <deren.Wu@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>, 
+	Chris Lu <chris.lu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>, 
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231218_150616_962972_75578F01 
-X-CRM114-Status: GOOD (  16.18  )
+X-CRM114-CacheID: sfid-20231218_163006_289564_78F58D2B 
+X-CRM114-Status: GOOD (  31.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,111 +85,191 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "lin.gui" <lin.gui@mediatek.com>
+Hi Hao,
 
-Detail:
-Add node "wp_grp_size", corresponding to WP_GRP_SIZE
-(write protect group size) of eMMC's CSD register.
+On Fri, Dec 15, 2023 at 12:40=E2=80=AFAM Hao Qin <hao.qin@mediatek.com> wro=
+te:
+>
+> From: "hao.qin" <hao.qin@mediatek.com>
+>
+> For MT7922, perform a reset before patch download to avoid
+> unexpected problems caused by inconsistency between upper layer
+> status and dongle status. Add USB reset retry to recover from
+> unexpected patch download failure.
 
-Scenario:
-The eMMC card can be set into write-protected mode to
-prevent data from being accidentally modified or deleted.
-Wp_grp_size (Write Protect Group Size) refers to an
-attribute of the eMMC card, used to manage write protection,
-and is the CSD register  [36:32] of the eMMC device.
-Wp_grp_size (Write Protect Group Size) indicates how many
-eMMC blocks are contained in each write protection group on the eMMC card.
+After looking through the patch, I guess the patch providing the reset
+mechanism for
+1) the core layer to call when cmd is timeout
+2) resetting the device before the patch download
+3) handling situations where something goes wrong during the patch
+download phase
+right ? if so, the description should be revised to make the patch
+close to what it does
 
-Final rendered file:
-"/sys/class/mmc_host/mmc0/mmc0:0001/wp_grp_size"
+>
+> Signed-off-by: hao.qin <hao.qin@mediatek.com>
+> ---
+>  drivers/bluetooth/btusb.c | 66 +++++++++++++++++++++++++++------------
+>  1 file changed, 46 insertions(+), 20 deletions(-)
+>
+> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> index 0926e4451802..778e1a0d9cae 100644
+> --- a/drivers/bluetooth/btusb.c
+> +++ b/drivers/bluetooth/btusb.c
+> @@ -2812,7 +2812,7 @@ static int btusb_mtk_hci_wmt_sync(struct hci_dev *h=
+dev,
+>          * WMT command.
+>          */
+>         err =3D wait_on_bit_timeout(&data->flags, BTUSB_TX_WAIT_VND_EVT,
+> -                                 TASK_INTERRUPTIBLE, HCI_INIT_TIMEOUT);
+> +                                 TASK_INTERRUPTIBLE, HCI_CMD_TIMEOUT);
 
-Signed-off-by: Lin Gui <lin.gui@mediatek.com>
-Signed-off-by: Bo Ye <bo.ye@mediatek.com>
----
-Change in v2: 
--remove Change-Id
--replace space with tabulation
----
- drivers/mmc/core/mmc.c   | 16 +++++++++++++++-
- include/linux/mmc/card.h |  2 ++
- 2 files changed, 17 insertions(+), 1 deletion(-)
+The changes are not specific to MT7922 and do not align with the
+commit description. Kindly consider moving them to another patch and
+provide clear reasons why they are necessary for MT7922 or any other
+chipsets.
 
-diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-index 705942edacc6..e0d72378ac77 100644
---- a/drivers/mmc/core/mmc.c
-+++ b/drivers/mmc/core/mmc.c
-@@ -136,6 +136,17 @@ static void mmc_set_erase_size(struct mmc_card *card)
- 	mmc_init_erase(card);
- }
- 
-+
-+static void mmc_set_wp_grp_size(struct mmc_card *card)
-+{
-+	if (card->ext_csd.erase_group_def & 1)
-+		card->wp_grp_size = card->ext_csd.hc_erase_size *
-+			card->ext_csd.raw_hc_erase_gap_size;
-+	else
-+		card->wp_grp_size = card->csd.erase_size *
-+			(card->csd.wp_grp_size + 1);
-+}
-+
- /*
-  * Given a 128-bit response, decode to our card CSD structure.
-  */
-@@ -186,6 +197,7 @@ static int mmc_decode_csd(struct mmc_card *card)
- 		b = UNSTUFF_BITS(resp, 37, 5);
- 		csd->erase_size = (a + 1) * (b + 1);
- 		csd->erase_size <<= csd->write_blkbits - 9;
-+		csd->wp_grp_size = UNSTUFF_BITS(resp, 32, 5);
- 	}
- 
- 	return 0;
-@@ -790,6 +802,7 @@ MMC_DEV_ATTR(csd, "%08x%08x%08x%08x\n", card->raw_csd[0], card->raw_csd[1],
- MMC_DEV_ATTR(date, "%02d/%04d\n", card->cid.month, card->cid.year);
- MMC_DEV_ATTR(erase_size, "%u\n", card->erase_size << 9);
- MMC_DEV_ATTR(preferred_erase_size, "%u\n", card->pref_erase << 9);
-+MMC_DEV_ATTR(wp_grp_size, "%u\n", card->wp_grp_size << 9);
- MMC_DEV_ATTR(ffu_capable, "%d\n", card->ext_csd.ffu_capable);
- MMC_DEV_ATTR(hwrev, "0x%x\n", card->cid.hwrev);
- MMC_DEV_ATTR(manfid, "0x%06x\n", card->cid.manfid);
-@@ -850,6 +863,7 @@ static struct attribute *mmc_std_attrs[] = {
- 	&dev_attr_date.attr,
- 	&dev_attr_erase_size.attr,
- 	&dev_attr_preferred_erase_size.attr,
-+	&dev_attr_wp_grp_size.attr,
- 	&dev_attr_fwrev.attr,
- 	&dev_attr_ffu_capable.attr,
- 	&dev_attr_hwrev.attr,
-@@ -1764,7 +1778,7 @@ static int mmc_init_card(struct mmc_host *host, u32 ocr,
- 			mmc_set_erase_size(card);
- 		}
- 	}
--
-+	mmc_set_wp_grp_size(card);
- 	/*
- 	 * Ensure eMMC user default partition is enabled
- 	 */
-diff --git a/include/linux/mmc/card.h b/include/linux/mmc/card.h
-index 7b12eebc5586..b9c3c6303a22 100644
---- a/include/linux/mmc/card.h
-+++ b/include/linux/mmc/card.h
-@@ -32,6 +32,7 @@ struct mmc_csd {
- 	unsigned int		r2w_factor;
- 	unsigned int		max_dtr;
- 	unsigned int		erase_size;		/* In sectors */
-+	unsigned int		wp_grp_size;
- 	unsigned int		read_blkbits;
- 	unsigned int		write_blkbits;
- 	unsigned int		capacity;
-@@ -306,6 +307,7 @@ struct mmc_card {
- 	unsigned int		eg_boundary;	/* don't cross erase-group boundaries */
- 	unsigned int		erase_arg;	/* erase / trim / discard */
-  	u8			erased_byte;	/* value of erased bytes */
-+	unsigned int		wp_grp_size;	/* write group size in sectors */
- 
- 	u32			raw_cid[4];	/* raw card CID */
- 	u32			raw_csd[4];	/* raw card CSD */
--- 
-2.18.0
+>         if (err =3D=3D -EINTR) {
+>                 bt_dev_err(hdev, "Execution of wmt command interrupted");
+>                 clear_bit(BTUSB_TX_WAIT_VND_EVT, &data->flags);
+> @@ -2994,28 +2994,22 @@ static u32 btusb_mtk_reset_done(struct hci_dev *h=
+dev)
+>         return val & MTK_BT_RST_DONE;
+>  }
+>
+> -static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
+> +static int btusb_mtk_subsys_reset(struct hci_dev *hdev, u32 dev_id)
+>  {
+>         struct btusb_data *data =3D hci_get_drvdata(hdev);
+> -       struct btmediatek_data *mediatek;
+>         u32 val;
+>         int err;
+>
+> -       /* It's MediaTek specific bluetooth reset mechanism via USB */
+> -       if (test_and_set_bit(BTUSB_HW_RESET_ACTIVE, &data->flags)) {
+> -               bt_dev_err(hdev, "last reset failed? Not resetting again"=
+);
+> -               return -EBUSY;
+> -       }
+> -
+> -       err =3D usb_autopm_get_interface(data->intf);
+> -       if (err < 0)
+> -               return err;
+> -
+> -       btusb_stop_traffic(data);
+> -       usb_kill_anchored_urbs(&data->tx_anchor);
+> -       mediatek =3D hci_get_priv(hdev);
+> -
 
+It seems that you refactored the existing btusb_mtk_reset in the
+patch. Could you please create another patch specifically for the
+refactoring without introducing any functional changes of MT7922 prior
+to adding the patch? This way would be good for ease of review and
+tracking in the future. Additionally, it ensures that those working on
+MT7921 are aware of the patch and its modifications.
+
+> -       if (mediatek->dev_id =3D=3D 0x7925) {
+> +       if (dev_id =3D=3D 0x7922) {
+> +               btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
+> +               val |=3D 0x00002020;
+> +               btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
+> +               btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, 0x00010001)=
+;
+> +               btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
+> +               val |=3D (1 << 0);
+
+We can utilize BIT(0) instead of 1 << 0
+
+> +               btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
+> +               msleep(100);
+> +       } else if (dev_id =3D=3D 0x7925) {
+>                 btusb_mtk_uhw_reg_read(data, MTK_BT_RESET_REG_CONNV3, &va=
+l);
+>                 val |=3D (1 << 5);
+
+We can utilize BIT(5) instead of 1 << 5
+
+>                 btusb_mtk_uhw_reg_write(data, MTK_BT_RESET_REG_CONNV3, va=
+l);
+> @@ -3053,14 +3047,41 @@ static int btusb_mtk_reset(struct hci_dev *hdev, =
+void *rst_data)
+>         err =3D readx_poll_timeout(btusb_mtk_reset_done, hdev, val,
+>                                  val & MTK_BT_RST_DONE, 20000, 1000000);
+>         if (err < 0)
+> -               bt_dev_err(hdev, "Reset timeout");
+> +               bt_dev_err(hdev, "Subsys reset timeout");
+
+I guess it would be better to avoid the unnecessary change unrelated
+to the patch.
+
+> +
+> +       if (dev_id =3D=3D 0x7922)
+> +               btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT, 0x0000=
+00FF);
+>
+>         btusb_mtk_id_get(data, 0x70010200, &val);
+>         if (!val)
+>                 bt_dev_err(hdev, "Can't get device id, subsys reset fail.=
+");
+>
+> -       usb_queue_reset_device(data->intf);
+> +       return err;
+> +}
+> +
+> +static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
+> +{
+> +       struct btusb_data *data =3D hci_get_drvdata(hdev);
+> +       struct btmediatek_data *mediatek;
+> +       int err;
+> +
+> +       /* It's MediaTek specific bluetooth reset mechanism via USB */
+> +       if (test_and_set_bit(BTUSB_HW_RESET_ACTIVE, &data->flags)) {
+> +               bt_dev_err(hdev, "last reset failed? Not resetting again"=
+);
+> +               return -EBUSY;
+> +       }
+> +
+> +       err =3D usb_autopm_get_interface(data->intf);
+> +       if (err < 0)
+> +               return err;
+> +
+> +       btusb_stop_traffic(data);
+> +       usb_kill_anchored_urbs(&data->tx_anchor);
+> +       mediatek =3D hci_get_priv(hdev);
+>
+> +       err =3D btusb_mtk_subsys_reset(hdev, mediatek->dev_id);
+> +
+> +       usb_queue_reset_device(data->intf);
+>         clear_bit(BTUSB_HW_RESET_ACTIVE, &data->flags);
+>
+>         return err;
+> @@ -3119,6 +3140,8 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
+>                 fwname =3D FIRMWARE_MT7668;
+>                 break;
+>         case 0x7922:
+> +               btusb_mtk_subsys_reset(hdev, dev_id);
+> +               fallthrough;
+>         case 0x7961:
+>         case 0x7925:
+>                 if (dev_id =3D=3D 0x7925)
+> @@ -3134,6 +3157,9 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
+>                                                 btusb_mtk_hci_wmt_sync);
+>                 if (err < 0) {
+>                         bt_dev_err(hdev, "Failed to set up firmware (%d)"=
+, err);
+> +                       btusb_stop_traffic(data);
+> +                       usb_kill_anchored_urbs(&data->tx_anchor);
+> +                       usb_queue_reset_device(data->intf);
+
+The change doesn't appear to be specific to MT7922, as the commit
+description suggests. Please consider splitting it into another patch
+to address any existing chipset issues, if necessary.
+
+>                         return err;
+>                 }
+>
+> --
+> 2.18.0
+>
+>
 
