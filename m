@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66EB5C41535
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Dec 2023 18:06:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F1F9C41535
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Dec 2023 18:06:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V8wv/km71HdTjaO3khmzFcJIWbPKQ7OTyxIEqDEyH0k=; b=n0AYfl+aVAfe8CcUm1NHUMF7lc
-	fVVN5WUYJ9kff3oce3RkZ7RqDbysWqW6l4icga2hl48UuDfjmXrWh8iP2taTfekfbeBt7VjXRt49A
-	J/5c+sAWsAMjbhBsTwxHPsfs/ZxPZT2H6mR65/zNIYNRgmj78bTAMK8GIiaW6mAHmVMxPSeJwWl1j
-	3TO/OFalloFOxyom+JCkDnbj9RzSk/J7bhyapaRfJrmzm4PuJZbZFI7H37sxe6vqRHzgLiBk+T8mZ
-	wGSJKyV2bKe0uP9d0AESbhMxWIHJy55m6+mz8/GBStKsri+fBP/ZTGv+7WB0tqjmm2I/jB1dWsnxB
-	sXCZPm8A==;
+	bh=b/W7/aZxha7m2nzXiZyiT6emNWaz+AV5it5qsyI5mzM=; b=NnzVb5XNSftzXdEjrIUVE4NAaP
+	ocmkk61dy/Uq3xDDuAzHJQ7IpWhjJ1TYT44ApRyfWns+8PeR5syRnVyGgwKExjDE/L26gnvcw3Q0C
+	tmIW86W34jQcyjL8UkRws+ElE6QbWMmdqZPHd7HE5RtuFEl2w9W2tHH/6DnqgRJdQ0hsbSgSGUOPN
+	7C6dCRWCFujVTkh0C5vFpmdnVnYqaebuLNJESUOMGyAx05KDshhbE6Uln9wFjb7Co/EqdtYOz3oPm
+	BqUCWgHDIZhsqBib8jVb+7o5ojBNimi9nKPWak1u4ygX98poN/zHq+Fpm5rVIvnjxE7SpL81mHgSb
+	xLPrYSeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFeUL-00F7xS-1L;
-	Tue, 19 Dec 2023 18:06:41 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1rFeUW-00F81v-39;
+	Tue, 19 Dec 2023 18:06:52 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFeUH-00F7w8-3D
-	for linux-mediatek@lists.infradead.org;
-	Tue, 19 Dec 2023 18:06:39 +0000
+	id 1rFeUT-00F80B-2Y;
+	Tue, 19 Dec 2023 18:06:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 72A6CB81A3D;
-	Tue, 19 Dec 2023 18:06:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2B84C433CA;
-	Tue, 19 Dec 2023 18:06:33 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id A80E9CE1AB7;
+	Tue, 19 Dec 2023 18:06:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 43950C433C7;
+	Tue, 19 Dec 2023 18:06:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1703009195;
-	bh=xvU367qZzfAoUntmQ4FrQOKLmlPS6l1Zf0ye+sR90NY=;
+	s=k20201202; t=1703009207;
+	bh=IWT2Spi6n0YyBL0I+YwiyQRgCtOdqTF4PJPYvAzCjzY=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=bOZ4n/7Yy02VN94mVPXxQrbcKQJ1jFJwhu9dfm7uR4YYUiT7bqEjJKcEa+IBOvsSo
-	 xTkyEYL9EWNR//tuTiPZiGRUPelGSdr+oy0jV0nsSEGk0+suARviknuZB+fkrZdpp+
-	 jxOuHHzAcXq9RjdBvzStgiRcQpQafVKf4CvKrGQEf5Urg3smNlm0QM51pqrSbDB64e
-	 JrntcwRK+JjCAFKt3KmKiMpCMtVaVEEcpavlN9x/X83xAe0n02UfMpxb1ZVIWRF6Vy
-	 eU69NG9xnFtu9SJN3vuEuo24f7D+QDsFxa0WahtAVNj6dNw8T9T8ReS8Fv/xrJ3P3u
-	 wPdEbGqXIZzQg==
+	b=R9CH5/2NspkbtdqFagwiq5zBc5sVYhM42iB3WpampU9sH7ckPux2kVwx236hn98e1
+	 74Xx/Oem6yQi+an/Rx/rmNxigMcM73wA889coHTybKA7z28ovoJS6FiADhu5q+tLSc
+	 olJ8QRrOOHuHYohzLBQEXx42+Dtmij7U2GlVEvJrcxu0Ew4vSdJG38lpIxxi/XrOu6
+	 jLgtru4XMquwVV//KL8WNVxNWphIIUxKO1j1vW1P3Kkynx1Cxui9DNnTpMbistCujw
+	 yw1C8n7D59VUplKbTbv+jbyxDxXamF2GNszgVcJzudVL1Vv5eIfNHV3SJW7Holopbw
+	 fQ5s+Ftcd9L0w==
 From: Mark Brown <broonie@kernel.org>
 To: lgirdwood@gmail.com, robh+dt@kernel.org, 
  krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, 
- angelogioacchino.delregno@collabora.com, perex@perex.cz, 
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+ perex@perex.cz, tiwai@suse.com, trevor.wu@mediatek.com, 
  allen-kh.cheng@mediatek.com, kuninori.morimoto.gx@renesas.com, 
  Rui Zhou <zhourui@huaqin.corp-partner.google.com>
-Cc: linux-sound@vger.kernel.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20231116093512.4180240-1-zhourui@huaqin.corp-partner.google.com>
-References: <20231116093512.4180240-1-zhourui@huaqin.corp-partner.google.com>
-Subject: Re: [PATCH v7 0/4] add es8326 dt-bindings, commonize headset codec
- API, es8326 support and Enable dual amp for rt5682s
-Message-Id: <170300919336.125466.4717213995056504777.b4-ty@kernel.org>
-Date: Tue, 19 Dec 2023 18:06:33 +0000
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20231212123050.4080083-1-zhourui@huaqin.corp-partner.google.com>
+References: <20231212123050.4080083-1-zhourui@huaqin.corp-partner.google.com>
+Subject: Re: [v9 0/4] add es8326 dt-bindings, commonize headset codec API,
+ es8326 support and Enable dual amp for rt5682s
+Message-Id: <170300920399.125466.9978354781339951707.b4-ty@kernel.org>
+Date: Tue, 19 Dec 2023 18:06:43 +0000
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.13-dev-5c066
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231219_100638_180918_FE8CC734 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20231219_100650_054320_7F6E21F7 
+X-CRM114-Status: GOOD (  12.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,14 +77,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 16 Nov 2023 17:35:08 +0800, Rui Zhou wrote:
+On Tue, 12 Dec 2023 20:30:46 +0800, Rui Zhou wrote:
 > Add dt-bindings for es8326 and codec es8326 support.
 > Remove duplicate code, commonize headset codec init/exit API.
 > At the same time, Enable dual amp max98390 for rt5682s.
 > 
-> Changes in v7:
-> - PATCH 3/4: Completion "}"
-> - Link to v6: https://lore.kernel.org/all/20231116073106.3757618-1-zhourui@huaqin.corp-partner.google.com/
+> Changes in v9:
+> - PATCH 3/4: Add comment for MAX98390_TWO_AMP.
+> - Link to v8: https://lore.kernel.org/all/20231208070933.720324-1-zhourui@huaqin.corp-partner.google.com/
 > 
 > [...]
 
