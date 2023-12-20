@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 721ADC3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Dec 2023 10:10:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6766DC46CCD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Dec 2023 10:10:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5QjcwvzrebWfLqJww9KhwNbe3Z1/pLAvIef2nvvVTbQ=; b=GRPzVNxYA0uKTmUey7igOEqmQZ
-	WIb9TMBvNAN/12TflsK4kvN8L0IyBZCtum9Q7RJLOPpqsyZD/KILklczs59OwREjaruqBmDdwT8tX
-	IvjPzi74rlPtfEq3B9WxMeHcwnbBz7DWuymxSwj7znMtpzTdh4KmfIelxDRcCPFPbXjFcRhvK4cn3
-	VJoqjMZAhxuHrCX4gym/1fkBJZ6b+InPeEgaonJ7BNZvG97YWwT4lL1B9jRo9ohYaUUUc3Btqvvvu
-	WcrYEnLM/pSlf/klfBxYfEk1CI69OB3ziDmEOT5DX5BmAEEuFBFsyCflIl6dks8lBvlRYibwK0OXg
-	RUWAiOXw==;
+	bh=Ma17REYBRtjPcEsPfc2uYW9/mewROjVPdPZMaWhYQoA=; b=yy2YXUODdXKsQm25hYpEg2IyZj
+	DOhSXnEPa6VUdtlQhC9utLRj2BBV578kJZJy5Q5SCMhe1FY1qQOuIxpzV3S10Ii7Lf16T8tPNDMN6
+	snL9Ul6GtPt4+FJqvV0muJjs/BRg9YYjcO5pumxPLpUjrMDMs3mOkWaZ9Yc/V1j0+rifBY034oQ3e
+	Vr6JK5/lhMgqTmHrMqVcYQbDV9K2arbqR2GRdtkbzVUgXaU8aswIxLVGoLFdobzUlDWTBSJf1i5G9
+	Zt1V5yWTklSdNLASgPgkFiizXpW+nf/W2LypXX2WYnPkD8LyjWqgZOXJR7foERC5ZjMSOAyvFvgzu
+	T44ltdvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFtWz-00Gr4C-14;
+	id 1rFtWz-00Gr4S-2C;
 	Wed, 20 Dec 2023 10:10:25 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFtWH-00GqSl-0C;
-	Wed, 20 Dec 2023 10:09:42 +0000
-X-UUID: e024bd2a9f1f11ee958cff29c719f35b-20231220
+	id 1rFtWH-00GqQt-1c;
+	Wed, 20 Dec 2023 10:09:43 +0000
+X-UUID: e0c312869f1f11ee958cff29c719f35b-20231220
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=5QjcwvzrebWfLqJww9KhwNbe3Z1/pLAvIef2nvvVTbQ=;
-	b=qkSlkt3MtEjWc7Ki2wH8SrK6Yo2WXqgFPwz5Ntn5F4Oq6oD5ktUwSp7P0l/N9ak6na+FudaSlIVnufEy8iPgxGrYsZX5Oe0WDz2NMsSpH2pvRf2pOBwUnlDubyLsr2kPEk7SFsGRe9veFOyxK2KBZZ/5XdvJVqyGZNWMja3uu94=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Ma17REYBRtjPcEsPfc2uYW9/mewROjVPdPZMaWhYQoA=;
+	b=Pxlq2Zl8TmNl7WTPi9hZ2wDfzLTdLf0R2BBgkNTHEJ/lPK1tK9wuslM0VYaIrNjLboG3+/7jYTzLCitGTehHsjhIOIGhiCMqpSzKfaC4qRjbL+7HZ2qum2UR1NuPCP7a8JeYGeuWeHqN7RYICB7otS/1x/xCDN9S2OW/eszZKTA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:d7c7d046-3682-4a43-9eed-546e2352bd4b,IP:0,U
+X-CID-O-INFO: VERSION:1.1.35,REQID:54952a34-c85f-483e-80dd-2a549899f439,IP:0,U
 	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:25
-X-CID-META: VersionHash:5d391d7,CLOUDID:00557a7e-4f93-4875-95e7-8c66ea833d57,B
+X-CID-META: VersionHash:5d391d7,CLOUDID:ff547a7e-4f93-4875-95e7-8c66ea833d57,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
 	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: e024bd2a9f1f11ee958cff29c719f35b-20231220
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: e0c312869f1f11ee958cff29c719f35b-20231220
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 502994718; Wed, 20 Dec 2023 03:09:34 -0700
+	with ESMTP id 438449999; Wed, 20 Dec 2023 03:09:35 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -68,30 +68,30 @@ CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, "Moudy
  Ho" <moudy.ho@mediatek.com>
-Subject: [PATCH v10 09/16] dt-bindings: media: mediatek: mdp3: add component TCC for MT8195
-Date: Wed, 20 Dec 2023 18:08:46 +0800
-Message-ID: <20231220100853.20616-10-moudy.ho@mediatek.com>
+Subject: [PATCH v10 10/16] dt-bindings: media: mediatek: mdp3: add component TDSHP for MT8195
+Date: Wed, 20 Dec 2023 18:08:47 +0800
+Message-ID: <20231220100853.20616-11-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231220100853.20616-1-moudy.ho@mediatek.com>
 References: <20231220100853.20616-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--7.626500-8.000000
-X-TMASE-MatchedRID: mSPDr4jZDFHoRPKKjGHPUxcqpH7D1rtQ6SXuwUgGH0j3dSKTMI31W4pb
-	wG9fIuITLSHDQi/tZU+OEmLXxEuoAga1NXbjqus0tw+xHnsmQjNr9+Kgn2XgeNzOQo7mTgA+apc
-	xcfGIwwyygic1mDySMHMPxAree1voSBiSH4+du3/J1E/nrJFED4EcpMn6x9cZWltirZ/iPP78/L
-	2o6LnOl6Q3zY1NMblWzA1TpsftrAZAXbiRmn1bD54CIKY/Hg3Am4n49vyf9XEvM/mydp5vVCq2r
-	l3dzGQ1ropAi/FV10zL1e8sURC8p7/zMsx+tBCWzRJ7qMxdWrq5TR54AAUwADflzkGcoK72
+X-TM-AS-Result: No-10--6.393800-8.000000
+X-TMASE-MatchedRID: WbOLpgv9C7boRPKKjGHPUxcqpH7D1rtQ6SXuwUgGH0j3dSKTMI31W4pb
+	wG9fIuITLSHDQi/tZU+OEmLXxEuoAga1NXbjqus0tw+xHnsmQjNr9+Kgn2XgeNzOQo7mTgA+Suc
+	qLHu3mZN3IL9RTZjcZXNjxEfTH8yUnuh7s4XRTZbBVprK8rvWX3+vzHfC29pfzsQ8iRVyD45ZoZ
+	UwtnkREuLzNWBegCW2U9w4XVXDWCYLbigRnpKlKTpcQTtiHDgWYMtEQ3cbds7Ei+qbBd9QrMmH1
+	/XL/GC7MpyARfAv4kgvNzC4CXWKgUMMprcbiest
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--7.626500-8.000000
+X-TMASE-Result: 10--6.393800-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 7C91E7E3977F679A768A5E78CC02B31B3EC1C9BBB412000CA196C164DECA461A2000:8
+X-TM-SNTS-SMTP: B55B01B7F8A6687577BF07219B6DD270A6B3F6B7A00ED7E37F6FCB0E0375745D2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231220_020941_112769_DF86D330 
-X-CRM114-Status: GOOD (  14.94  )
+X-CRM114-CacheID: sfid-20231220_020941_658172_B9DFD1FD 
+X-CRM114-Status: GOOD (  13.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,44 +106,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the fundamental hardware configuration of component TCC,
+Add the fundamental hardware configuration of component TDSHP,
 which is controlled by MDP3 on MT8195.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../bindings/media/mediatek,mdp3-tcc.yaml     | 62 +++++++++++++++++++
- 1 file changed, 62 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
+ .../bindings/media/mediatek,mdp3-tdshp.yaml   | 61 +++++++++++++++++++
+ 1 file changed, 61 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
 new file mode 100644
-index 000000000000..14ea556d4f82
+index 000000000000..8ab7f2d8e148
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
-@@ -0,0 +1,62 @@
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
+@@ -0,0 +1,61 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-tcc.yaml#
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-tdshp.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: MediaTek Media Data Path 3 Tone Curve Conversion
++title: MediaTek Media Data Path 3 Two-Dimensional Sharpness
 +
 +maintainers:
 +  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Moudy Ho <moudy.ho@mediatek.com>
 +
 +description:
-+  Tone Curve Conversion (TCC) is one of Media Profile Path 3 (MDP3) components.
-+  It is used to handle the tone mapping of various gamma curves in order to
-+  achieve HDR10 effects. This helps adapt the content to the color and
-+  brightness range that standard display devices typically support.
++  Two-Dimensional Sharpness (TDSHP) is a Media Profile Path 3 (MDP3) component
++  used to perform image edge sharpening and enhance vividness and contrast.
 +
 +properties:
 +  compatible:
 +    enum:
-+      - mediatek,mt8195-mdp3-tcc
++      - mediatek,mt8195-mdp3-tdshp
 +
 +  reg:
 +    maxItems: 1
@@ -179,11 +178,11 @@ index 000000000000..14ea556d4f82
 +    #include <dt-bindings/clock/mt8195-clk.h>
 +    #include <dt-bindings/gce/mt8195-gce.h>
 +
-+    display@1400b000 {
-+        compatible = "mediatek,mt8195-mdp3-tcc";
-+        reg = <0x1400b000 0x1000>;
-+        mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xb000 0x1000>;
-+        clocks = <&vppsys0 CLK_VPP0_MDP_TCC>;
++    display@14007000 {
++        compatible = "mediatek,mt8195-mdp3-tdshp";
++        reg = <0x14007000 0x1000>;
++        mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x7000 0x1000>;
++        clocks = <&vppsys0 CLK_VPP0_MDP_TDSHP>;
 +    };
 -- 
 2.18.0
