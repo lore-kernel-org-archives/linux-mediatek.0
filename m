@@ -4,71 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A13D3C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Dec 2023 14:34:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96F97C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Dec 2023 17:36:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TlYfIEwj43ovPaKj1Dqv2FA/0OB32NB/8xoiGE3pC34=; b=dlCl7wK4665OSRXQ1odGJGrC4m
-	HyqYZ5QUkz5gu99F/uXGk9HKtHohlU6/X6PIyVW3Vanm5edqHpNUMwREUhSqeTmVlb3OD8jdW/oQF
-	L4s7/cXaOmdqbeK46aUSksjyh9uxtURWBT47F5PrXYbmBibmP0d4JgxVx1p3ke//KrfZYRReP6og3
-	lf2bjZ9jDJ8gGEXZW55bj7t34CR98nK+jxkoNyu4jdbb8Kii1ONaowOSHj0LU+or/8oS5BT/YcYnx
-	soS2taRwEzOUg9ZbHfn/TbX7zoL+gS37NA/zjuq+Bsw+IiYNXefmI0nP3yJ/AWuv1ExSWhkQ/9cK8
-	Ib5AdXBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fV1sJxMriyTh60SAIXi7liP9zt+2ygBCARx0JGK9+4U=; b=ssQUEFHZUeYCofhnOrJvpcf9D3
+	L8Mda9W3RCS7XcA4tlg/olOzsmIl/YfCmy6fiR0UJHt0m27CczTaCu+mt+UeMKVCxmBSlzJohYkQc
+	Zi3/2vnB8Gsz7vRaOVbER/VCFTvD9oBrHaKqDQt4YpLSnKVtoXb8WAdvIdZGeoLgskZeAbNQA/Wa+
+	L8JNNfLemXicAxKwFcb7ro9Wpww+qBZoRNayXUCWXHuJ3pCO6bX6OMxin/LXtO8Icspz+0giFRKn6
+	lGRWxyFCGfhhDW4k8CosaQF3bvJrrBay3wOxbZB4tKk594e/F0QDMBKEWJBsNz63SFJ04irh7aQsc
+	wEmjwI/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFxeo-0006GR-1b;
-	Wed, 20 Dec 2023 14:34:46 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rG0UO-000bVm-1T;
+	Wed, 20 Dec 2023 17:36:12 +0000
+Received: from relay6-d.mail.gandi.net ([217.70.183.198])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFxek-0006EE-2p;
-	Wed, 20 Dec 2023 14:34:44 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B74F961652;
-	Wed, 20 Dec 2023 14:34:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87BEEC433CA;
-	Wed, 20 Dec 2023 14:34:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1703082881;
-	bh=iNsI8JfwO+C25hEOmVx+Z0q3QIW2jx9qavk1Utsxgy4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ax/u038BkU+2lQkEoNO6vULvumIx9BczrUQfu3Zkcpac03PvdKfZ7yn54XvC4IqG4
-	 rYyIej/075WZvwXH/UO3s2WJ9vHe4rnVF2g3AnWgwHd/ZCjfDcpALbkr0ZyoGZIjL+
-	 jhiYqau5FIXhITuc8XTbZvP5Vxt6nVp3jtIseZPB4j8HQLA8ZHVV6lVYD6ybhRheUJ
-	 HHpkSashYQQxYjxU/kt743PGBPTlpuM/n/+kVJPuYyu/bhOjq79NAHH27vq/+2USbV
-	 raw1KMS0sErTjbcDqKFkk24v43FMiM3XoNSDDDSfiVd/WQWUeMjHPOEiSB7XqP4+XR
-	 BG+OeSv71QGBQ==
-Date: Wed, 20 Dec 2023 20:04:22 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Chanwoo Lee <cw9316.lee@samsung.com>
-Cc: alim.akhtar@samsung.com, avri.altman@wdc.com, bvanassche@acm.org,
-	jejb@linux.ibm.com, martin.petersen@oracle.com,
-	peter.wang@mediatek.com, chu.stanley@gmail.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	stanley.chu@mediatek.com, quic_cang@quicinc.com,
-	quic_asutoshd@quicinc.com, powen.kao@mediatek.com,
-	quic_nguyenb@quicinc.com, yang.lee@linux.alibaba.com,
-	beanhuo@micron.com, Arthur.Simchaev@wdc.com, ebiggers@google.com,
-	linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, grant.jung@samsung.com,
-	jt77.jang@samsung.com, dh0421.hwang@samsung.com,
-	sh043.lee@samsung.com
-Subject: Re: [PATCH] ufs: mcq: Adding a function for MCQ enable
-Message-ID: <20231220143422.GF3544@thinkpad>
-References: <CGME20231220052749epcas1p3b90f6c03110ff5f63ffc547ef0f35907@epcas1p3.samsung.com>
- <20231220052737.19857-1-cw9316.lee@samsung.com>
+	id 1rG0UJ-000bTT-15;
+	Wed, 20 Dec 2023 17:36:10 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 40F9AC0007;
+	Wed, 20 Dec 2023 17:35:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1703093760;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=fV1sJxMriyTh60SAIXi7liP9zt+2ygBCARx0JGK9+4U=;
+	b=ps1VYKiciDXKUfDbjiWkSBN34+Qb+mbhQCYjPSZwOO0HdhCHI0u82ZTsWuNqBZctmkSGA7
+	70DC5cbNk4MxJq9m7kjenJaSCEAZvr3xt55QZMiROIc2q0RRi9mZTjZXIsXsUOrRkUU9Lx
+	3sAbnZqT78jUdW0ocXKc9zhczeGneQGerojtBts+AyOuR0xwEy370/nNwcGFltGXlf7Eql
+	dfntEUE1DzM6lizsRGe0Jkg+9oQEs4q7TCWA35k8Qk2pD3ph0WiJVFwfMoqPDkgNVPLbKx
+	g4so2m+oUR9EwiipDsthT3jSnQ3DAPrjE4BbFBgLAsn8oX+yGtb9SlGQbDRY8Q==
+From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: David Bauer <mail@david-bauer.net>,
+	mithat.guner@xeront.com,
+	erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next] net: dsa: mt7530: register OF node for internal MDIO bus
+Date: Wed, 20 Dec 2023 19:35:39 +0200
+Message-Id: <20231220173539.59071-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231220052737.19857-1-cw9316.lee@samsung.com>
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231220_063443_004630_C3B51F89 
-X-CRM114-Status: GOOD (  20.16  )
+X-CRM114-CacheID: sfid-20231220_093607_623888_E449B5F2 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,126 +86,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 20, 2023 at 02:27:37PM +0900, Chanwoo Lee wrote:
-> From: ChanWoo Lee <cw9316.lee@samsung.com>
-> 
-> The REG_UFS_MEM_CFG register is too general(broad)
-> and it is difficult to know the meaning of only values of 0x1 and 0x2.
-> So far, comments were required.
-> 
-> Therefore, I have added new functions and defines
-> to improve code readability/reusability.
-> 
-> Signed-off-by: ChanWoo Lee <cw9316.lee@samsung.com>
-> ---
->  drivers/ufs/core/ufs-mcq.c      | 10 +++++++++-
->  drivers/ufs/core/ufshcd.c       |  5 +----
->  drivers/ufs/host/ufs-mediatek.c |  4 +---
->  include/ufs/ufshcd.h            |  1 +
->  include/ufs/ufshci.h            |  4 ++++
->  5 files changed, 16 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-> index 0787456c2b89..a34ef3aac540 100644
-> --- a/drivers/ufs/core/ufs-mcq.c
-> +++ b/drivers/ufs/core/ufs-mcq.c
-> @@ -394,11 +394,19 @@ EXPORT_SYMBOL_GPL(ufshcd_mcq_make_queues_operational);
->  
->  void ufshcd_mcq_enable_esi(struct ufs_hba *hba)
->  {
-> -	ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | 0x2,
-> +	ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | ESI_ENABLE,
->  		      REG_UFS_MEM_CFG);
+From: David Bauer <mail@david-bauer.net>
 
-This change should be a separate patch.
+The MT753x switches provide a switch-internal MDIO bus for the embedded
+PHYs.
 
->  }
->  EXPORT_SYMBOL_GPL(ufshcd_mcq_enable_esi);
->  
-> +void ufshcd_mcq_enable(struct ufs_hba *hba)
-> +{
-> +	ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | MCQ_MODE_SELECT,
-> +		      REG_UFS_MEM_CFG);
+Register a OF sub-node on the switch OF-node for this internal MDIO bus.
+This allows to configure the embedded PHYs using device-tree.
 
-Use ufshcd_rmwl().
+Signed-off-by: David Bauer <mail@david-bauer.net>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+ drivers/net/dsa/mt7530.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-> +	hba->mcq_enabled = true;
-> +}
-> +EXPORT_SYMBOL_GPL(ufshcd_mcq_enable);
-> +
->  void ufshcd_mcq_config_esi(struct ufs_hba *hba, struct msi_msg *msg)
->  {
->  	ufshcd_writel(hba, msg->address_lo, REG_UFS_ESILBA);
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index ae9936fc6ffb..8195e01e7a3f 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -8723,10 +8723,7 @@ static void ufshcd_config_mcq(struct ufs_hba *hba)
->  	hba->host->can_queue = hba->nutrs - UFSHCD_NUM_RESERVED;
->  	hba->reserved_slot = hba->nutrs - UFSHCD_NUM_RESERVED;
->  
-> -	/* Select MCQ mode */
-> -	ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | 0x1,
-> -		      REG_UFS_MEM_CFG);
-> -	hba->mcq_enabled = true;
-> +	ufshcd_mcq_enable(hba);
->  
->  	dev_info(hba->dev, "MCQ configured, nr_queues=%d, io_queues=%d, read_queue=%d, poll_queues=%d, queue_depth=%d\n",
->  		 hba->nr_hw_queues, hba->nr_queues[HCTX_TYPE_DEFAULT],
-> diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-> index fc61790d289b..1048add66419 100644
-> --- a/drivers/ufs/host/ufs-mediatek.c
-> +++ b/drivers/ufs/host/ufs-mediatek.c
-> @@ -1219,9 +1219,7 @@ static int ufs_mtk_link_set_hpm(struct ufs_hba *hba)
->  		ufs_mtk_config_mcq(hba, false);
->  		ufshcd_mcq_make_queues_operational(hba);
->  		ufshcd_mcq_config_mac(hba, hba->nutrs);
-> -		/* Enable MCQ mode */
-> -		ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | 0x1,
-> -			      REG_UFS_MEM_CFG);
-> +		ufshcd_mcq_enable(hba);
-
-hba->mcq_enabled flag will be set now which is not done previously.
-
->  	}
->  
->  	if (err)
-> diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-> index d862c8ddce03..a96c45fa4b4b 100644
-> --- a/include/ufs/ufshcd.h
-> +++ b/include/ufs/ufshcd.h
-> @@ -1257,6 +1257,7 @@ unsigned long ufshcd_mcq_poll_cqe_lock(struct ufs_hba *hba,
->  					 struct ufs_hw_queue *hwq);
->  void ufshcd_mcq_make_queues_operational(struct ufs_hba *hba);
->  void ufshcd_mcq_enable_esi(struct ufs_hba *hba);
-> +void ufshcd_mcq_enable(struct ufs_hba *hba);
->  void ufshcd_mcq_config_esi(struct ufs_hba *hba, struct msi_msg *msg);
->  
->  int ufshcd_opp_config_clks(struct device *dev, struct opp_table *opp_table,
-> diff --git a/include/ufs/ufshci.h b/include/ufs/ufshci.h
-> index d5accacae6bc..e669fad11fd4 100644
-> --- a/include/ufs/ufshci.h
-> +++ b/include/ufs/ufshci.h
-> @@ -282,6 +282,10 @@ enum {
->  /* UTMRLRSR - UTP Task Management Request Run-Stop Register 80h */
->  #define UTP_TASK_REQ_LIST_RUN_STOP_BIT		0x1
->  
-> +/* REG_UFS_MEM_CFG - Global Config Registers 300h */
-> +#define MCQ_MODE_SELECT 	0x1
-> +#define ESI_ENABLE		0x2
-
-Use BIT() macros.
-
-- Mani
-
-> +
->  /* CQISy - CQ y Interrupt Status Register  */
->  #define UFSHCD_MCQ_CQIS_TAIL_ENT_PUSH_STS	0x1
->  
-> -- 
-> 2.29.0
-> 
-
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 391c4dbdff42..f8ecc354630b 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2155,10 +2155,13 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
+ {
+ 	struct dsa_switch *ds = priv->ds;
+ 	struct device *dev = priv->dev;
++	struct device_node *np, *mnp;
+ 	struct mii_bus *bus;
+ 	static int idx;
+ 	int ret;
+ 
++	np = priv->dev->of_node;
++
+ 	bus = devm_mdiobus_alloc(dev);
+ 	if (!bus)
+ 		return -ENOMEM;
+@@ -2177,7 +2180,9 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
+ 	if (priv->irq)
+ 		mt7530_setup_mdio_irq(priv);
+ 
+-	ret = devm_mdiobus_register(dev, bus);
++	mnp = of_get_child_by_name(np, "mdio");
++	ret = devm_of_mdiobus_register(dev, bus, mnp);
++	of_node_put(mnp);
+ 	if (ret) {
+ 		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
+ 		if (priv->irq)
 -- 
-மணிவண்ணன் சதாசிவம்
+2.40.1
+
 
