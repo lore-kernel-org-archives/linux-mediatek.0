@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DE1DC3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Dec 2023 10:19:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A026C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Dec 2023 10:19:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wt12n/p6TazhhALWyB2VuTX3xiZYoFtS2hrFDa38ilk=; b=XA6QUCkFA/Sc9hzrNpbT2pp4M5
-	s8Ac9FANxecCnW24XEmMzLHvhzgh4xqfuMMVHEekoYX7CkIzUsoH08EWPhlcWhrQo0fqZrtpjoRBN
-	2RoWhHO+pdH5iaErrBxRQ6rvOplhUAmLQ6Rq2sMZicYkpaqqWe5qavJ5dvl6atf/ks8GdzElmnP9W
-	Fv55TDKqU5VP7XYr7KBVkpgjsZilUZdRsqF6G9vbtwI/T9v5pUnFOhBAMHwCSuzF6yyMlRBfWCrTV
-	XuoAo8ZAWFf4jc+x5piJ1KT1eY1qv0N1wQ77rrvT67JlrifAvg7RO+ybJY75YIzoM04ddnes4KJmy
-	2r5L24fQ==;
+	bh=6Xw93SJZqwpcvsEq+crui13qYLI2pKWup24/U893Prc=; b=BEVd1KJAzWiNnD68FhzJ6iebl8
+	eIJMJhLATdPBzY6Vi1tzxj8oC4HjqKgHAxQLqbwZjl4SNC5nRqzxTz0aDLV9qQF/ztVp5P4IEm+2K
+	E1lmjK6ptmzaCk0S8WLF4Jtbd4ZLaLO916Af5FvU0sM/amRg8bp42OiwItopKxgg9MmDRA3xC7yGP
+	NwecWglIrDcHumVd1HreKiwNv8inknHle2fZd+XrwbSoM5u6ZJCgHlRBMUIdZFIwtF/p9OBlRhPDq
+	qh8mW1kN4PxGIvL6L/DvOmyQfd5Kl+bGy4xOZ8po2zXTPf6Ko4nz1Ih6Z/c5x5b3qSv07G+88thac
+	pE6+E0tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFtfx-00GtEh-1S;
-	Wed, 20 Dec 2023 10:19:41 +0000
+	id 1rFtg6-00GtLh-0N;
+	Wed, 20 Dec 2023 10:19:50 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFtfe-00Gt4i-1x;
-	Wed, 20 Dec 2023 10:19:26 +0000
-X-UUID: 3b884ee29f2111ee9b09ad09c76753c8-20231220
+	id 1rFtff-00Gt5V-1O;
+	Wed, 20 Dec 2023 10:19:28 +0000
+X-UUID: 3c7586629f2111ee9b09ad09c76753c8-20231220
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Wt12n/p6TazhhALWyB2VuTX3xiZYoFtS2hrFDa38ilk=;
-	b=JPa2TRhz5QRpJlQfLQ+YrfGUnMAwWd35FoYri4fLBNlM+aLjTQoxQ0WKyrebTWnnfS8iMlMTzqvcrnGYINTx6NvyOTX8wf50zcQb0aFSHJZlr8Y/Asd/cI1ktAcvPJAvoRwpMwt/AigYYZSGd9xs2rLwu/w+nWjU3elBr+8tpfY=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=6Xw93SJZqwpcvsEq+crui13qYLI2pKWup24/U893Prc=;
+	b=NlJl7D44HmYL7ozOoNRCgq/TjbmQcbtB2lNkC1nAJDOOaLEpSAyT830BcacuG7QtbEhSCsPr8Is8L/64h/BorpTCCh0Tt0TAuenn72rubSohK1U9VCNiVgx1ShCJ0z4gPxFQTw//VZ+zR0b3lWjYz9vi4Hnm8LhHgLUZrffXTgU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:c82bee6b-d202-4f91-9701-bf235295f882,IP:0,U
+X-CID-O-INFO: VERSION:1.1.35,REQID:baf18cf7-07b4-47f6-b9d8-f6dea3347bfe,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:a0687a7e-4f93-4875-95e7-8c66ea833d57,B
+X-CID-META: VersionHash:5d391d7,CLOUDID:4ddb4b2e-1ab8-4133-9780-81938111c800,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 3b884ee29f2111ee9b09ad09c76753c8-20231220
+X-UUID: 3c7586629f2111ee9b09ad09c76753c8-20231220
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2041259795; Wed, 20 Dec 2023 03:19:17 -0700
+	with ESMTP id 348333969; Wed, 20 Dec 2023 03:19:19 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 20 Dec 2023 18:18:39 +0800
+ 15.2.1118.26; Wed, 20 Dec 2023 18:18:40 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 20 Dec 2023 18:18:39 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 20 Dec 2023 18:18:40 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
@@ -60,31 +60,31 @@ To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
 CC: <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	Moudy Ho <moudy.ho@mediatek.com>
-Subject: [PATCH v9 04/12] media: platform: mtk-mdp3: introduce more MDP3 components
-Date: Wed, 20 Dec 2023 18:18:30 +0800
-Message-ID: <20231220101838.21510-5-moudy.ho@mediatek.com>
+Subject: [PATCH v9 09/12] media: platform: mtk-mdp3: add mt8195 platform configuration
+Date: Wed, 20 Dec 2023 18:18:35 +0800
+Message-ID: <20231220101838.21510-10-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231220101838.21510-1-moudy.ho@mediatek.com>
 References: <20231220101838.21510-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.442300-8.000000
-X-TMASE-MatchedRID: iEpXmf/25Q0s6cxI7W6yCGNW0DAjL5p++OI6XsK3BWHfUZT83lbkEH3q
-	33AN90RFqlMyex6rdQlDkFqK5u4Dd6o77AcuQhw7uIwLnB3Aqp2WHGENdT+VP8SiwizsgluQa2r
-	VL+hQbq7qUsdAyq21W29HdIY9j4IIdPbgWSDbLa4HtOpEBhWiFlg3VqSTJ7So+5+93dPb6/cM6X
-	BtKTGUp6ruib+oAEoqvN07RWVDbwH4OiVTWoD8RPPA28sXrr0yFk73i4rVVIFh7WbOnt2TB+pQB
-	fxI8G3CjDVGmIXGRKA+v1uiXBkw6lxxDx5qbkR9FEUknJ/kEl7dB/CxWTRRu9bFCwAgdKkSEEnJ
-	n2dNeWAAoKWkfD7VZDIMREml/SEFWe4oCiEpyu9tOTO0U3fpy5RMZUCEHkRt
+X-TM-AS-Result: No-10--9.478000-8.000000
+X-TMASE-MatchedRID: DsFl2sNdNIss6cxI7W6yCG3NvezwBrVm6SXuwUgGH0j3dSKTMI31W2b6
+	PphVtfZg6pizmvbqzYgSnnEBkyExwynPugGsN3p5rDFtme53KvuuiRuR9mCaur/A+0D1to6PMfG
+	c6CCGjvfWyrFkZMcWP1IlPImyJmzuEEBjOlnEA/xtqNUBzYMqpuYQsENyzR2d63RWgrXHe9eU62
+	zvc1Dlo978LCf5PSaOFfnemUOegIu4c6uEFrThdqIBnfMCFBiCi/ymJ2FVg5Tfc2Xd6VJ+yhFxR
+	5JQAS6OdfwrmnTJ55PjZYLx9+Z7tR8TzIzimOwPC24oEZ6SpSk6XEE7Yhw4Frp3G3FiGcc6Pbcp
+	nCezGJrWc5pmhLiiJ4NX05/nU791P83vAjhIceg=
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.442300-8.000000
+X-TMASE-Result: 10--9.478000-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 334B2591586EF155A93688245655AFD25F0B338FA1E51992A1FC605BA38ECC452000:8
+X-TM-SNTS-SMTP: DAF228793A232D2BC6B11F6EAC0933EB7A5F84436809FCE6A2325F038BB36C802000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231220_021922_657669_3F717952 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20231220_021923_514328_196C89B6 
+X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,508 +99,868 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add configuration of more components in MT8195 MDP3.
+Add MT8195 MDP3 basic configuration in file "mdp_cfg_data.c"
+and corresponding driver data.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../platform/mediatek/mdp3/mdp_reg_aal.h      | 25 ++++++
- .../platform/mediatek/mdp3/mdp_reg_color.h    | 31 +++++++
- .../media/platform/mediatek/mdp3/mdp_reg_fg.h | 23 +++++
- .../platform/mediatek/mdp3/mdp_reg_hdr.h      | 31 +++++++
- .../platform/mediatek/mdp3/mdp_reg_merge.h    | 25 ++++++
- .../platform/mediatek/mdp3/mdp_reg_ovl.h      | 25 ++++++
- .../platform/mediatek/mdp3/mdp_reg_pad.h      | 21 +++++
- .../platform/mediatek/mdp3/mdp_reg_rdma.h     | 24 ++++++
- .../platform/mediatek/mdp3/mdp_reg_rsz.h      |  2 +
- .../platform/mediatek/mdp3/mdp_reg_tdshp.h    | 34 ++++++++
- .../platform/mediatek/mdp3/mdp_reg_wrot.h     |  8 ++
- .../platform/mediatek/mdp3/mtk-mdp3-comp.h    | 85 +++++++++++++++----
- 12 files changed, 318 insertions(+), 16 deletions(-)
- create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_aal.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_color.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_fg.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_hdr.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_merge.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_ovl.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_pad.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_tdshp.h
+ .../platform/mediatek/mdp3/mdp_cfg_data.c     | 666 ++++++++++++++++++
+ .../platform/mediatek/mdp3/mtk-img-ipi.h      |   1 +
+ .../platform/mediatek/mdp3/mtk-mdp3-cfg.h     |   1 +
+ .../platform/mediatek/mdp3/mtk-mdp3-comp.c    |  36 +
+ .../platform/mediatek/mdp3/mtk-mdp3-core.c    |   6 +
+ .../platform/mediatek/mdp3/mtk-mdp3-core.h    |   6 +
+ 6 files changed, 716 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_reg_aal.h b/drivers/media/platform/mediatek/mdp3/mdp_reg_aal.h
-new file mode 100644
-index 000000000000..4b9513e54543
---- /dev/null
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_reg_aal.h
-@@ -0,0 +1,25 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+ */
-+
-+#ifndef __MDP_REG_AAL_H__
-+#define __MDP_REG_AAL_H__
-+
-+#define MDP_AAL_EN			(0x000)
-+#define MDP_AAL_CFG			(0x020)
-+#define MDP_AAL_SIZE			(0x030)
-+#define MDP_AAL_OUTPUT_SIZE		(0x034)
-+#define MDP_AAL_OUTPUT_OFFSET		(0x038)
-+#define MDP_AAL_CFG_MAIN		(0x200)
-+
-+/* MASK */
-+#define MDP_AAL_EN_MASK			(0x01)
-+#define MDP_AAL_CFG_MASK		(0x70FF00B3)
-+#define MDP_AAL_SIZE_MASK		(0x1FFF1FFF)
-+#define MDP_AAL_OUTPUT_SIZE_MASK	(0x1FFF1FFF)
-+#define MDP_AAL_OUTPUT_OFFSET_MASK	(0x0FF00FF)
-+#define MDP_AAL_CFG_MAIN_MASK		(0x0FE)
-+
-+#endif  // __MDP_REG_AAL_H__
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_reg_color.h b/drivers/media/platform/mediatek/mdp3/mdp_reg_color.h
-new file mode 100644
-index 000000000000..f72503975b24
---- /dev/null
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_reg_color.h
-@@ -0,0 +1,31 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+ */
-+
-+#ifndef __MDP_REG_COLOR_H__
-+#define __MDP_REG_COLOR_H__
-+
-+#define MDP_COLOR_WIN_X_MAIN			(0x40C)
-+#define MDP_COLOR_WIN_Y_MAIN			(0x410)
-+#define MDP_COLOR_START				(0xC00)
-+#define MDP_COLOR_INTEN				(0xC04)
-+#define MDP_COLOR_OUT_SEL			(0xC0C)
-+#define MDP_COLOR_INTERNAL_IP_WIDTH		(0xC50)
-+#define MDP_COLOR_INTERNAL_IP_HEIGHT		(0xC54)
-+#define MDP_COLOR_CM1_EN			(0xC60)
-+#define MDP_COLOR_CM2_EN			(0xCA0)
-+
-+/* MASK */
-+#define MDP_COLOR_WIN_X_MAIN_MASK		(0xFFFFFFFF)
-+#define MDP_COLOR_WIN_Y_MAIN_MASK		(0xFFFFFFFF)
-+#define MDP_COLOR_START_MASK			(0x0FF013F)
-+#define MDP_COLOR_INTEN_MASK			(0x07)
-+#define MDP_COLOR_OUT_SEL_MASK			(0x0777)
-+#define MDP_COLOR_INTERNAL_IP_WIDTH_MASK	(0x03FFF)
-+#define MDP_COLOR_INTERNAL_IP_HEIGHT_MASK	(0x03FFF)
-+#define MDP_COLOR_CM1_EN_MASK			(0x03)
-+#define MDP_COLOR_CM2_EN_MASK			(0x017)
-+
-+#endif  // __MDP_REG_COLOR_H__
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_reg_fg.h b/drivers/media/platform/mediatek/mdp3/mdp_reg_fg.h
-new file mode 100644
-index 000000000000..d90bcad33a59
---- /dev/null
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_reg_fg.h
-@@ -0,0 +1,23 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+ */
-+
-+#ifndef __MDP_REG_FG_H__
-+#define __MDP_REG_FG_H__
-+
-+#define MDP_FG_TRIGGER			(0x0)
-+#define MDP_FG_FG_CTRL_0		(0x20)
-+#define MDP_FG_FG_CK_EN			(0x24)
-+#define MDP_FG_TILE_INFO_0		(0x418)
-+#define MDP_FG_TILE_INFO_1		(0x41c)
-+
-+/* MASK */
-+#define MDP_FG_TRIGGER_MASK		(0x00000007)
-+#define MDP_FG_FG_CTRL_0_MASK		(0x00000033)
-+#define MDP_FG_FG_CK_EN_MASK		(0x0000000F)
-+#define MDP_FG_TILE_INFO_0_MASK		(0xFFFFFFFF)
-+#define MDP_FG_TILE_INFO_1_MASK		(0xFFFFFFFF)
-+
-+#endif  //__MDP_REG_FG_H__
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_reg_hdr.h b/drivers/media/platform/mediatek/mdp3/mdp_reg_hdr.h
-new file mode 100644
-index 000000000000..c19fbba39fc0
---- /dev/null
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_reg_hdr.h
-@@ -0,0 +1,31 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+ */
-+
-+#ifndef __MDP_REG_HDR_H__
-+#define __MDP_REG_HDR_H__
-+
-+#define MDP_HDR_TOP			(0x000)
-+#define MDP_HDR_RELAY			(0x004)
-+#define MDP_HDR_SIZE_0			(0x014)
-+#define MDP_HDR_SIZE_1			(0x018)
-+#define MDP_HDR_SIZE_2			(0x01C)
-+#define MDP_HDR_HIST_CTRL_0		(0x020)
-+#define MDP_HDR_HIST_CTRL_1		(0x024)
-+#define MDP_HDR_HIST_ADDR		(0x0DC)
-+#define MDP_HDR_TILE_POS		(0x118)
-+
-+/* MASK */
-+#define MDP_HDR_RELAY_MASK		(0x01)
-+#define MDP_HDR_TOP_MASK		(0xFF0FEB6D)
-+#define MDP_HDR_SIZE_0_MASK		(0x1FFF1FFF)
-+#define MDP_HDR_SIZE_1_MASK		(0x1FFF1FFF)
-+#define MDP_HDR_SIZE_2_MASK		(0x1FFF1FFF)
-+#define MDP_HDR_HIST_CTRL_0_MASK	(0x1FFF1FFF)
-+#define MDP_HDR_HIST_CTRL_1_MASK	(0x1FFF1FFF)
-+#define MDP_HDR_HIST_ADDR_MASK		(0xBF3F2F3F)
-+#define MDP_HDR_TILE_POS_MASK		(0x1FFF1FFF)
-+
-+#endif // __MDP_REG_HDR_H__
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_reg_merge.h b/drivers/media/platform/mediatek/mdp3/mdp_reg_merge.h
-new file mode 100644
-index 000000000000..46be27e2a656
---- /dev/null
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_reg_merge.h
-@@ -0,0 +1,25 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+ */
-+
-+#ifndef __MDP_REG_MERGE_H__
-+#define __MDP_REG_MERGE_H__
-+
-+#define MDP_MERGE_ENABLE	(0x000)
-+#define MDP_MERGE_CFG_0		(0x010)
-+#define MDP_MERGE_CFG_4		(0x020)
-+#define MDP_MERGE_CFG_12	(0x040)
-+#define MDP_MERGE_CFG_24	(0x070)
-+#define MDP_MERGE_CFG_25	(0x074)
-+
-+/* MASK */
-+#define MDP_MERGE_ENABLE_MASK	(0xFFFFFFFF)
-+#define MDP_MERGE_CFG_0_MASK	(0xFFFFFFFF)
-+#define MDP_MERGE_CFG_4_MASK	(0xFFFFFFFF)
-+#define MDP_MERGE_CFG_12_MASK	(0xFFFFFFFF)
-+#define MDP_MERGE_CFG_24_MASK	(0xFFFFFFFF)
-+#define MDP_MERGE_CFG_25_MASK	(0xFFFFFFFF)
-+
-+#endif //__MDP_REG_MERGE_H__
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_reg_ovl.h b/drivers/media/platform/mediatek/mdp3/mdp_reg_ovl.h
-new file mode 100644
-index 000000000000..21d2d0323293
---- /dev/null
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_reg_ovl.h
-@@ -0,0 +1,25 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+ */
-+
-+#ifndef __MDP_REG_OVL_H__
-+#define __MDP_REG_OVL_H__
-+
-+#define MDP_OVL_EN			(0x00c)
-+#define MDP_OVL_ROI_SIZE		(0x020)
-+#define MDP_OVL_DP_CON			(0x024)
-+#define MDP_OVL_SRC_CON			(0x02c)
-+#define MDP_OVL_L0_CON			(0x030)
-+#define MDP_OVL_L0_SRC_SIZE		(0x038)
-+
-+/* MASK */
-+#define MDP_OVL_DP_CON_MASK		(0x0FFFFFFF)
-+#define MDP_OVL_EN_MASK			(0xB07D07B1)
-+#define MDP_OVL_L0_CON_MASK		(0xFFFFFFFF)
-+#define MDP_OVL_L0_SRC_SIZE_MASK	(0x1FFF1FFF)
-+#define MDP_OVL_ROI_SIZE_MASK		(0x1FFF1FFF)
-+#define MDP_OVL_SRC_CON_MASK		(0x0000031F)
-+
-+#endif  //__MDP_REG_OVL_H__
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_reg_pad.h b/drivers/media/platform/mediatek/mdp3/mdp_reg_pad.h
-new file mode 100644
-index 000000000000..0e89f1db19ed
---- /dev/null
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_reg_pad.h
-@@ -0,0 +1,21 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+ */
-+
-+#ifndef __MDP_REG_PAD_H__
-+#define __MDP_REG_PAD_H__
-+
-+#define MDP_PAD_CON			(0x000)
-+#define MDP_PAD_PIC_SIZE		(0x004)
-+#define MDP_PAD_W_SIZE			(0x008)
-+#define MDP_PAD_H_SIZE			(0x00c)
-+
-+/* MASK */
-+#define MDP_PAD_CON_MASK		(0x00000007)
-+#define MDP_PAD_PIC_SIZE_MASK		(0xFFFFFFFF)
-+#define MDP_PAD_W_SIZE_MASK		(0x1FFF1FFF)
-+#define MDP_PAD_H_SIZE_MASK		(0x1FFF1FFF)
-+
-+#endif  // __MDP_REG_PAD_H__
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_reg_rdma.h b/drivers/media/platform/mediatek/mdp3/mdp_reg_rdma.h
-index be4065e252d3..0affb2a3b958 100644
---- a/drivers/media/platform/mediatek/mdp3/mdp_reg_rdma.h
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_reg_rdma.h
-@@ -26,6 +26,18 @@
- #define MDP_RDMA_SRC_OFFSET_2           0x128
- #define MDP_RDMA_SRC_OFFSET_0_P         0x148
- #define MDP_RDMA_TRANSFORM_0            0x200
-+#define MDP_RDMA_DMABUF_CON_0           0x240
-+#define MDP_RDMA_ULTRA_TH_HIGH_CON_0    0x248
-+#define MDP_RDMA_ULTRA_TH_LOW_CON_0     0x250
-+#define MDP_RDMA_DMABUF_CON_1           0x258
-+#define MDP_RDMA_ULTRA_TH_HIGH_CON_1    0x260
-+#define MDP_RDMA_ULTRA_TH_LOW_CON_1     0x268
-+#define MDP_RDMA_DMABUF_CON_2           0x270
-+#define MDP_RDMA_ULTRA_TH_HIGH_CON_2    0x278
-+#define MDP_RDMA_ULTRA_TH_LOW_CON_2     0x280
-+#define MDP_RDMA_DMABUF_CON_3           0x288
-+#define MDP_RDMA_ULTRA_TH_HIGH_CON_3    0x290
-+#define MDP_RDMA_ULTRA_TH_LOW_CON_3     0x298
- #define MDP_RDMA_RESV_DUMMY_0           0x2a0
- #define MDP_RDMA_MON_STA_1              0x408
- #define MDP_RDMA_SRC_BASE_0             0xf00
-@@ -54,6 +66,18 @@
- #define MDP_RDMA_SRC_OFFSET_2_MASK          0xffffffff
- #define MDP_RDMA_SRC_OFFSET_0_P_MASK        0xffffffff
- #define MDP_RDMA_TRANSFORM_0_MASK           0xff110777
-+#define MDP_RDMA_DMABUF_CON_0_MASK          0x0fff00ff
-+#define MDP_RDMA_ULTRA_TH_HIGH_CON_0_MASK   0x3fffffff
-+#define MDP_RDMA_ULTRA_TH_LOW_CON_0_MASK    0x3fffffff
-+#define MDP_RDMA_DMABUF_CON_1_MASK          0x0f7f007f
-+#define MDP_RDMA_ULTRA_TH_HIGH_CON_1_MASK   0x3fffffff
-+#define MDP_RDMA_ULTRA_TH_LOW_CON_1_MASK    0x3fffffff
-+#define MDP_RDMA_DMABUF_CON_2_MASK          0x0f3f003f
-+#define MDP_RDMA_ULTRA_TH_HIGH_CON_2_MASK   0x3fffffff
-+#define MDP_RDMA_ULTRA_TH_LOW_CON_2_MASK    0x3fffffff
-+#define MDP_RDMA_DMABUF_CON_3_MASK          0x0f3f003f
-+#define MDP_RDMA_ULTRA_TH_HIGH_CON_3_MASK   0x3fffffff
-+#define MDP_RDMA_ULTRA_TH_LOW_CON_3_MASK    0x3fffffff
- #define MDP_RDMA_RESV_DUMMY_0_MASK          0xffffffff
- #define MDP_RDMA_MON_STA_1_MASK             0xffffffff
- #define MDP_RDMA_SRC_BASE_0_MASK            0xffffffff
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_reg_rsz.h b/drivers/media/platform/mediatek/mdp3/mdp_reg_rsz.h
-index 484f6d60641f..187531db8e3b 100644
---- a/drivers/media/platform/mediatek/mdp3/mdp_reg_rsz.h
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_reg_rsz.h
-@@ -20,6 +20,7 @@
- #define PRZ_LUMA_VERTICAL_SUBPIXEL_OFFSET                 0x02c
- #define PRZ_CHROMA_HORIZONTAL_INTEGER_OFFSET              0x030
- #define PRZ_CHROMA_HORIZONTAL_SUBPIXEL_OFFSET             0x034
-+#define RSZ_ETC_CONTROL                                   0x22c
- 
- /* MASK */
- #define PRZ_ENABLE_MASK                                   0x00010001
-@@ -35,5 +36,6 @@
- #define PRZ_LUMA_VERTICAL_SUBPIXEL_OFFSET_MASK            0x001fffff
- #define PRZ_CHROMA_HORIZONTAL_INTEGER_OFFSET_MASK         0x0000ffff
- #define PRZ_CHROMA_HORIZONTAL_SUBPIXEL_OFFSET_MASK        0x001fffff
-+#define RSZ_ETC_CONTROL_MASK                              0xff770000
- 
- #endif // __MDP_REG_RSZ_H__
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_reg_tdshp.h b/drivers/media/platform/mediatek/mdp3/mdp_reg_tdshp.h
-new file mode 100644
-index 000000000000..83b5f9b432d8
---- /dev/null
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_reg_tdshp.h
-@@ -0,0 +1,34 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+ */
-+
-+#ifndef __MDP_REG_TDSHP_H__
-+#define __MDP_REG_TDSHP_H__
-+
-+#define MDP_HIST_CFG_00				(0x064)
-+#define MDP_HIST_CFG_01				(0x068)
-+#define MDP_TDSHP_CTRL				(0x100)
-+#define MDP_TDSHP_CFG				(0x110)
-+#define MDP_TDSHP_INPUT_SIZE			(0x120)
-+#define MDP_TDSHP_OUTPUT_OFFSET			(0x124)
-+#define MDP_TDSHP_OUTPUT_SIZE			(0x128)
-+#define MDP_LUMA_HIST_INIT			(0x200)
-+#define MDP_DC_TWO_D_W1_RESULT_INIT		(0x260)
-+#define MDP_CONTOUR_HIST_INIT			(0x398)
-+
-+/* MASK */
-+#define MDP_HIST_CFG_00_MASK			(0xFFFFFFFF)
-+#define MDP_HIST_CFG_01_MASK			(0xFFFFFFFF)
-+#define MDP_LUMA_HIST_MASK			(0xFFFFFFFF)
-+#define MDP_TDSHP_CTRL_MASK			(0x07)
-+#define MDP_TDSHP_CFG_MASK			(0x03F7)
-+#define MDP_TDSHP_INPUT_SIZE_MASK		(0x1FFF1FFF)
-+#define MDP_TDSHP_OUTPUT_OFFSET_MASK		(0x0FF00FF)
-+#define MDP_TDSHP_OUTPUT_SIZE_MASK		(0x1FFF1FFF)
-+#define MDP_LUMA_HIST_INIT_MASK			(0xFFFFFFFF)
-+#define MDP_DC_TWO_D_W1_RESULT_INIT_MASK	(0x007FFFFF)
-+#define MDP_CONTOUR_HIST_INIT_MASK		(0xFFFFFFFF)
-+
-+#endif  // __MDP_REG_TDSHP_H__
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_reg_wrot.h b/drivers/media/platform/mediatek/mdp3/mdp_reg_wrot.h
-index 6d3ff0e2b672..b6f016d2c29d 100644
---- a/drivers/media/platform/mediatek/mdp3/mdp_reg_wrot.h
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_reg_wrot.h
-@@ -17,14 +17,18 @@
- #define VIDO_STRIDE                 0x030
- #define VIDO_OFST_ADDR_C            0x038
- #define VIDO_STRIDE_C               0x03c
-+#define VIDO_CTRL_2                 0x048
- #define VIDO_DITHER                 0x054
- #define VIDO_STRIDE_V               0x06c
- #define VIDO_OFST_ADDR_V            0x068
- #define VIDO_RSV_1                  0x070
-+#define VIDO_DMA_PREULTRA           0x074
- #define VIDO_IN_SIZE                0x078
- #define VIDO_ROT_EN                 0x07c
- #define VIDO_FIFO_TEST              0x080
- #define VIDO_MAT_CTRL               0x084
-+#define VIDO_SCAN_10BIT             0x0dc
-+#define VIDO_PENDING_ZERO           0x0e0
- #define VIDO_BASE_ADDR              0xf00
- #define VIDO_BASE_ADDR_C            0xf04
- #define VIDO_BASE_ADDR_V            0xf08
-@@ -40,14 +44,18 @@
- #define VIDO_STRIDE_MASK                0x0000ffff
- #define VIDO_OFST_ADDR_C_MASK           0x0fffffff
- #define VIDO_STRIDE_C_MASK              0x0000ffff
-+#define VIDO_CTRL_2_MASK                0x0000000f
- #define VIDO_DITHER_MASK                0xff000001
- #define VIDO_STRIDE_V_MASK              0x0000ffff
- #define VIDO_OFST_ADDR_V_MASK           0x0fffffff
- #define VIDO_RSV_1_MASK                 0xffffffff
-+#define VIDO_DMA_PREULTRA_MASK		0x00ffffff
- #define VIDO_IN_SIZE_MASK               0x1fff1fff
- #define VIDO_ROT_EN_MASK                0x00000001
- #define VIDO_FIFO_TEST_MASK             0x00000fff
- #define VIDO_MAT_CTRL_MASK              0x000000f3
-+#define VIDO_SCAN_10BIT_MASK            0x0000000f
-+#define VIDO_PENDING_ZERO_MASK          0x07ffffff
- #define VIDO_BASE_ADDR_MASK             0xffffffff
- #define VIDO_BASE_ADDR_C_MASK           0xffffffff
- #define VIDO_BASE_ADDR_V_MASK           0xffffffff
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.h
-index e89c51e1edb7..e6cbc6ab6bae 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.h
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.h
-@@ -84,22 +84,66 @@ enum mtk_mdp_comp_id {
- 	MDP_COMP_CAMIN,		/* 9 */
- 	MDP_COMP_CAMIN2,	/* 10 */
- 	MDP_COMP_RDMA0,		/* 11 */
--	MDP_COMP_AAL0,		/* 12 */
--	MDP_COMP_CCORR0,	/* 13 */
--	MDP_COMP_RSZ0,		/* 14 */
--	MDP_COMP_RSZ1,		/* 15 */
--	MDP_COMP_TDSHP0,	/* 16 */
--	MDP_COMP_COLOR0,	/* 17 */
--	MDP_COMP_PATH0_SOUT,	/* 18 */
--	MDP_COMP_PATH1_SOUT,	/* 19 */
--	MDP_COMP_WROT0,		/* 20 */
--	MDP_COMP_WDMA,		/* 21 */
--
--	/* Dummy Engine */
--	MDP_COMP_RDMA1,		/* 22 */
--	MDP_COMP_RSZ2,		/* 23 */
--	MDP_COMP_TDSHP1,	/* 24 */
--	MDP_COMP_WROT1,		/* 25 */
-+	MDP_COMP_RDMA1,		/* 12 */
-+	MDP_COMP_RDMA2,		/* 13 */
-+	MDP_COMP_RDMA3,		/* 14 */
-+	MDP_COMP_AAL0,		/* 15 */
-+	MDP_COMP_AAL1,		/* 16 */
-+	MDP_COMP_AAL2,		/* 17 */
-+	MDP_COMP_AAL3,		/* 18 */
-+	MDP_COMP_CCORR0,	/* 19 */
-+	MDP_COMP_RSZ0,		/* 20 */
-+	MDP_COMP_RSZ1,		/* 21 */
-+	MDP_COMP_RSZ2,		/* 22 */
-+	MDP_COMP_RSZ3,		/* 23 */
-+	MDP_COMP_TDSHP0,	/* 24 */
-+	MDP_COMP_TDSHP1,	/* 25 */
-+	MDP_COMP_TDSHP2,	/* 26 */
-+	MDP_COMP_TDSHP3,	/* 27 */
-+	MDP_COMP_COLOR0,	/* 28 */
-+	MDP_COMP_COLOR1,	/* 29 */
-+	MDP_COMP_COLOR2,	/* 30 */
-+	MDP_COMP_COLOR3,	/* 31 */
-+	MDP_COMP_PATH0_SOUT,	/* 32 */
-+	MDP_COMP_PATH1_SOUT,	/* 33 */
-+	MDP_COMP_WROT0,		/* 34 */
-+	MDP_COMP_WROT1,		/* 35 */
-+	MDP_COMP_WROT2,		/* 36 */
-+	MDP_COMP_WROT3,		/* 37 */
-+	MDP_COMP_WDMA,		/* 38 */
-+	MDP_COMP_SPLIT,		/* 39 */
-+	MDP_COMP_SPLIT2,	/* 40 */
-+	MDP_COMP_STITCH,	/* 41 */
-+	MDP_COMP_FG0,		/* 42 */
-+	MDP_COMP_FG1,		/* 43 */
-+	MDP_COMP_FG2,		/* 44 */
-+	MDP_COMP_FG3,		/* 45 */
-+	MDP_COMP_TO_SVPP2MOUT,	/* 46 */
-+	MDP_COMP_TO_SVPP3MOUT,	/* 47 */
-+	MDP_COMP_TO_WARP0MOUT,	/* 48 */
-+	MDP_COMP_TO_WARP1MOUT,	/* 49 */
-+	MDP_COMP_VPP0_SOUT,	/* 50 */
-+	MDP_COMP_VPP1_SOUT,	/* 51 */
-+	MDP_COMP_PQ0_SOUT,	/* 52 */
-+	MDP_COMP_PQ1_SOUT,	/* 53 */
-+	MDP_COMP_HDR0,		/* 54 */
-+	MDP_COMP_HDR1,		/* 55 */
-+	MDP_COMP_HDR2,		/* 56 */
-+	MDP_COMP_HDR3,		/* 57 */
-+	MDP_COMP_OVL0,		/* 58 */
-+	MDP_COMP_OVL1,		/* 59 */
-+	MDP_COMP_PAD0,		/* 60 */
-+	MDP_COMP_PAD1,		/* 61 */
-+	MDP_COMP_PAD2,		/* 62 */
-+	MDP_COMP_PAD3,		/* 63 */
-+	MDP_COMP_TCC0,		/* 64 */
-+	MDP_COMP_TCC1,		/* 65 */
-+	MDP_COMP_MERGE2,	/* 66 */
-+	MDP_COMP_MERGE3,	/* 67 */
-+	MDP_COMP_VDO0DL0,	/* 68 */
-+	MDP_COMP_VDO1DL0,	/* 69 */
-+	MDP_COMP_VDO0DL1,	/* 70 */
-+	MDP_COMP_VDO1DL1,	/* 71 */
- 
- 	MDP_MAX_COMP_COUNT	/* ALWAYS keep at the end */
+diff --git a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
+index 3834efe54e17..9ee3931d31e3 100644
+--- a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
++++ b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
+@@ -46,12 +46,91 @@ enum mt8183_mdp_comp_id {
+ 	MT8183_MDP_COMP_WROT1,          /* 25 */
  };
-@@ -117,12 +161,21 @@ enum mdp_comp_type {
- 	MDP_COMP_TYPE_COLOR,
- 	MDP_COMP_TYPE_DRE,
- 	MDP_COMP_TYPE_CCORR,
-+	MDP_COMP_TYPE_AAL,
-+	MDP_COMP_TYPE_TCC,
- 	MDP_COMP_TYPE_HDR,
-+	MDP_COMP_TYPE_SPLIT,
-+	MDP_COMP_TYPE_STITCH,
-+	MDP_COMP_TYPE_FG,
-+	MDP_COMP_TYPE_OVL,
-+	MDP_COMP_TYPE_PAD,
-+	MDP_COMP_TYPE_MERGE,
  
- 	MDP_COMP_TYPE_IMGI,
- 	MDP_COMP_TYPE_WPEI,
- 	MDP_COMP_TYPE_EXTO,	/* External path */
- 	MDP_COMP_TYPE_DL_PATH,	/* Direct-link path */
-+	MDP_COMP_TYPE_DUMMY,
- 
- 	MDP_COMP_TYPE_COUNT	/* ALWAYS keep at the end */
++enum mt8195_mdp_comp_id {
++	/* MT8195 Comp id */
++	/* ISP */
++	MT8195_MDP_COMP_WPEI = 0,
++	MT8195_MDP_COMP_WPEO,           /* 1 */
++	MT8195_MDP_COMP_WPEI2,          /* 2 */
++	MT8195_MDP_COMP_WPEO2,          /* 3 */
++
++	/* MDP */
++	MT8195_MDP_COMP_CAMIN,          /* 4 */
++	MT8195_MDP_COMP_CAMIN2,         /* 5 */
++	MT8195_MDP_COMP_SPLIT,          /* 6 */
++	MT8195_MDP_COMP_SPLIT2,         /* 7 */
++	MT8195_MDP_COMP_RDMA0,          /* 8 */
++	MT8195_MDP_COMP_RDMA1,          /* 9 */
++	MT8195_MDP_COMP_RDMA2,          /* 10 */
++	MT8195_MDP_COMP_RDMA3,          /* 11 */
++	MT8195_MDP_COMP_STITCH,         /* 12 */
++	MT8195_MDP_COMP_FG0,            /* 13 */
++	MT8195_MDP_COMP_FG1,            /* 14 */
++	MT8195_MDP_COMP_FG2,            /* 15 */
++	MT8195_MDP_COMP_FG3,            /* 16 */
++	MT8195_MDP_COMP_TO_SVPP2MOUT,   /* 17 */
++	MT8195_MDP_COMP_TO_SVPP3MOUT,   /* 18 */
++	MT8195_MDP_COMP_TO_WARP0MOUT,   /* 19 */
++	MT8195_MDP_COMP_TO_WARP1MOUT,   /* 20 */
++	MT8195_MDP_COMP_VPP0_SOUT,      /* 21 */
++	MT8195_MDP_COMP_VPP1_SOUT,      /* 22 */
++	MT8195_MDP_COMP_PQ0_SOUT,       /* 23 */
++	MT8195_MDP_COMP_PQ1_SOUT,       /* 24 */
++	MT8195_MDP_COMP_HDR0,           /* 25 */
++	MT8195_MDP_COMP_HDR1,           /* 26 */
++	MT8195_MDP_COMP_HDR2,           /* 27 */
++	MT8195_MDP_COMP_HDR3,           /* 28 */
++	MT8195_MDP_COMP_AAL0,           /* 29 */
++	MT8195_MDP_COMP_AAL1,           /* 30 */
++	MT8195_MDP_COMP_AAL2,           /* 31 */
++	MT8195_MDP_COMP_AAL3,           /* 32 */
++	MT8195_MDP_COMP_RSZ0,           /* 33 */
++	MT8195_MDP_COMP_RSZ1,           /* 34 */
++	MT8195_MDP_COMP_RSZ2,           /* 35 */
++	MT8195_MDP_COMP_RSZ3,           /* 36 */
++	MT8195_MDP_COMP_TDSHP0,         /* 37 */
++	MT8195_MDP_COMP_TDSHP1,         /* 38 */
++	MT8195_MDP_COMP_TDSHP2,         /* 39 */
++	MT8195_MDP_COMP_TDSHP3,         /* 40 */
++	MT8195_MDP_COMP_COLOR0,         /* 41 */
++	MT8195_MDP_COMP_COLOR1,         /* 42 */
++	MT8195_MDP_COMP_COLOR2,         /* 43 */
++	MT8195_MDP_COMP_COLOR3,         /* 44 */
++	MT8195_MDP_COMP_OVL0,           /* 45 */
++	MT8195_MDP_COMP_OVL1,           /* 46 */
++	MT8195_MDP_COMP_PAD0,           /* 47 */
++	MT8195_MDP_COMP_PAD1,           /* 48 */
++	MT8195_MDP_COMP_PAD2,           /* 49 */
++	MT8195_MDP_COMP_PAD3,           /* 50 */
++	MT8195_MDP_COMP_TCC0,           /* 51 */
++	MT8195_MDP_COMP_TCC1,           /* 52 */
++	MT8195_MDP_COMP_WROT0,          /* 53 */
++	MT8195_MDP_COMP_WROT1,          /* 54 */
++	MT8195_MDP_COMP_WROT2,          /* 55 */
++	MT8195_MDP_COMP_WROT3,          /* 56 */
++	MT8195_MDP_COMP_MERGE2,         /* 57 */
++	MT8195_MDP_COMP_MERGE3,         /* 58 */
++
++	MT8195_MDP_COMP_VDO0DL0,        /* 59 */
++	MT8195_MDP_COMP_VDO1DL0,        /* 60 */
++	MT8195_MDP_COMP_VDO0DL1,        /* 61 */
++	MT8195_MDP_COMP_VDO1DL1,        /* 62 */
++};
++
+ static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
+ 	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8183-mmsys" },
+ 	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8183-disp-mutex" },
+ 	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8183-scp" }
  };
+ 
++static const struct of_device_id mt8195_mdp_probe_infra[MDP_INFRA_MAX] = {
++	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8195-vppsys0" },
++	[MDP_INFRA_MMSYS2] = { .compatible = "mediatek,mt8195-vppsys1" },
++	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8195-vpp-mutex" },
++	[MDP_INFRA_MUTEX2] = { .compatible = "mediatek,mt8195-vpp-mutex" },
++	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8195-scp" }
++};
++
+ static const struct mdp_platform_config mt8183_plat_cfg = {
+ 	.rdma_support_10bit		= true,
+ 	.rdma_rsz1_sram_sharing		= true,
+@@ -62,6 +141,21 @@ static const struct mdp_platform_config mt8183_plat_cfg = {
+ 	.wrot_event_num			= 1,
+ };
+ 
++static const struct mdp_platform_config mt8195_plat_cfg = {
++	.rdma_support_10bit             = true,
++	.rdma_rsz1_sram_sharing         = false,
++	.rdma_upsample_repeat_only      = false,
++	.rdma_esl_setting		= true,
++	.rdma_event_num			= 4,
++	.rsz_disable_dcm_small_sample   = false,
++	.rsz_etc_control		= true,
++	.wrot_filter_constraint		= false,
++	.wrot_event_num			= 4,
++	.tdshp_hist_num			= 17,
++	.tdshp_constrain		= true,
++	.tdshp_contour			= true,
++};
++
+ static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
+ 	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
+ 	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
+@@ -73,6 +167,52 @@ static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
+ 	[MDP_COMP_CCORR0] = MUTEX_MOD_IDX_MDP_CCORR0,
+ };
+ 
++static const u32 mt8195_mutex_idx[MDP_MAX_COMP_COUNT] = {
++	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
++	[MDP_COMP_RDMA1] = MUTEX_MOD_IDX_MDP_RDMA1,
++	[MDP_COMP_RDMA2] = MUTEX_MOD_IDX_MDP_RDMA2,
++	[MDP_COMP_RDMA3] = MUTEX_MOD_IDX_MDP_RDMA3,
++	[MDP_COMP_STITCH] = MUTEX_MOD_IDX_MDP_STITCH0,
++	[MDP_COMP_FG0] = MUTEX_MOD_IDX_MDP_FG0,
++	[MDP_COMP_FG1] = MUTEX_MOD_IDX_MDP_FG1,
++	[MDP_COMP_FG2] = MUTEX_MOD_IDX_MDP_FG2,
++	[MDP_COMP_FG3] = MUTEX_MOD_IDX_MDP_FG3,
++	[MDP_COMP_HDR0] = MUTEX_MOD_IDX_MDP_HDR0,
++	[MDP_COMP_HDR1] = MUTEX_MOD_IDX_MDP_HDR1,
++	[MDP_COMP_HDR2] = MUTEX_MOD_IDX_MDP_HDR2,
++	[MDP_COMP_HDR3] = MUTEX_MOD_IDX_MDP_HDR3,
++	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
++	[MDP_COMP_AAL1] = MUTEX_MOD_IDX_MDP_AAL1,
++	[MDP_COMP_AAL2] = MUTEX_MOD_IDX_MDP_AAL2,
++	[MDP_COMP_AAL3] = MUTEX_MOD_IDX_MDP_AAL3,
++	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
++	[MDP_COMP_RSZ1] = MUTEX_MOD_IDX_MDP_RSZ1,
++	[MDP_COMP_RSZ2] = MUTEX_MOD_IDX_MDP_RSZ2,
++	[MDP_COMP_RSZ3] = MUTEX_MOD_IDX_MDP_RSZ3,
++	[MDP_COMP_MERGE2] = MUTEX_MOD_IDX_MDP_MERGE2,
++	[MDP_COMP_MERGE3] = MUTEX_MOD_IDX_MDP_MERGE3,
++	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
++	[MDP_COMP_TDSHP1] = MUTEX_MOD_IDX_MDP_TDSHP1,
++	[MDP_COMP_TDSHP2] = MUTEX_MOD_IDX_MDP_TDSHP2,
++	[MDP_COMP_TDSHP3] = MUTEX_MOD_IDX_MDP_TDSHP3,
++	[MDP_COMP_COLOR0] = MUTEX_MOD_IDX_MDP_COLOR0,
++	[MDP_COMP_COLOR1] = MUTEX_MOD_IDX_MDP_COLOR1,
++	[MDP_COMP_COLOR2] = MUTEX_MOD_IDX_MDP_COLOR2,
++	[MDP_COMP_COLOR3] = MUTEX_MOD_IDX_MDP_COLOR3,
++	[MDP_COMP_OVL0] = MUTEX_MOD_IDX_MDP_OVL0,
++	[MDP_COMP_OVL1] = MUTEX_MOD_IDX_MDP_OVL1,
++	[MDP_COMP_PAD0] = MUTEX_MOD_IDX_MDP_PAD0,
++	[MDP_COMP_PAD1] = MUTEX_MOD_IDX_MDP_PAD1,
++	[MDP_COMP_PAD2] = MUTEX_MOD_IDX_MDP_PAD2,
++	[MDP_COMP_PAD3] = MUTEX_MOD_IDX_MDP_PAD3,
++	[MDP_COMP_TCC0] = MUTEX_MOD_IDX_MDP_TCC0,
++	[MDP_COMP_TCC1] = MUTEX_MOD_IDX_MDP_TCC1,
++	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
++	[MDP_COMP_WROT1] = MUTEX_MOD_IDX_MDP_WROT1,
++	[MDP_COMP_WROT2] = MUTEX_MOD_IDX_MDP_WROT2,
++	[MDP_COMP_WROT3] = MUTEX_MOD_IDX_MDP_WROT3,
++};
++
+ static const struct mdp_comp_data mt8183_mdp_comp_data[MDP_MAX_COMP_COUNT] = {
+ 	[MDP_COMP_WPEI] = {
+ 		{MDP_COMP_TYPE_WPEI, 0, MT8183_MDP_COMP_WPEI, MDP_MM_SUBSYS_0},
+@@ -148,6 +288,263 @@ static const struct mdp_comp_data mt8183_mdp_comp_data[MDP_MAX_COMP_COUNT] = {
+ 	},
+ };
+ 
++static const struct mdp_comp_data mt8195_mdp_comp_data[MDP_MAX_COMP_COUNT] = {
++	[MDP_COMP_WPEI] = {
++		{MDP_COMP_TYPE_WPEI, 0, MT8195_MDP_COMP_WPEI, MDP_MM_SUBSYS_0},
++		{0, 0, 0}
++	},
++	[MDP_COMP_WPEO] = {
++		{MDP_COMP_TYPE_EXTO, 2, MT8195_MDP_COMP_WPEO, MDP_MM_SUBSYS_0},
++		{0, 0, 0}
++	},
++	[MDP_COMP_WPEI2] = {
++		{MDP_COMP_TYPE_WPEI, 1, MT8195_MDP_COMP_WPEI2, MDP_MM_SUBSYS_0},
++		{0, 0, 0}
++	},
++	[MDP_COMP_WPEO2] = {
++		{MDP_COMP_TYPE_EXTO, 3, MT8195_MDP_COMP_WPEO2, MDP_MM_SUBSYS_0},
++		{0, 0, 0}
++	},
++	[MDP_COMP_CAMIN] = {
++		{MDP_COMP_TYPE_DL_PATH, 0, MT8195_MDP_COMP_CAMIN, MDP_MM_SUBSYS_0},
++		{3, 3, 0}
++	},
++	[MDP_COMP_CAMIN2] = {
++		{MDP_COMP_TYPE_DL_PATH, 1, MT8195_MDP_COMP_CAMIN2, MDP_MM_SUBSYS_0},
++		{3, 6, 0}
++	},
++	[MDP_COMP_SPLIT] = {
++		{MDP_COMP_TYPE_SPLIT, 0, MT8195_MDP_COMP_SPLIT, MDP_MM_SUBSYS_1},
++		{7, 0, 0}
++	},
++	[MDP_COMP_SPLIT2] = {
++		{MDP_COMP_TYPE_SPLIT, 1, MT8195_MDP_COMP_SPLIT2, MDP_MM_SUBSYS_1},
++		{7, 0, 0}
++	},
++	[MDP_COMP_RDMA0] = {
++		{MDP_COMP_TYPE_RDMA, 0, MT8195_MDP_COMP_RDMA0, MDP_MM_SUBSYS_0},
++		{3, 0, 0}
++	},
++	[MDP_COMP_RDMA1] = {
++		{MDP_COMP_TYPE_RDMA, 1, MT8195_MDP_COMP_RDMA1, MDP_MM_SUBSYS_1},
++		{3, 0, 0}
++	},
++	[MDP_COMP_RDMA2] = {
++		{MDP_COMP_TYPE_RDMA, 2, MT8195_MDP_COMP_RDMA2, MDP_MM_SUBSYS_1},
++		{3, 0, 0}
++	},
++	[MDP_COMP_RDMA3] = {
++		{MDP_COMP_TYPE_RDMA, 3, MT8195_MDP_COMP_RDMA3, MDP_MM_SUBSYS_1},
++		{3, 0, 0}
++	},
++	[MDP_COMP_STITCH] = {
++		{MDP_COMP_TYPE_STITCH, 0, MT8195_MDP_COMP_STITCH, MDP_MM_SUBSYS_0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_FG0] = {
++		{MDP_COMP_TYPE_FG, 0, MT8195_MDP_COMP_FG0, MDP_MM_SUBSYS_0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_FG1] = {
++		{MDP_COMP_TYPE_FG, 1, MT8195_MDP_COMP_FG1, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_FG2] = {
++		{MDP_COMP_TYPE_FG, 2, MT8195_MDP_COMP_FG2, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_FG3] = {
++		{MDP_COMP_TYPE_FG, 3, MT8195_MDP_COMP_FG3, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_HDR0] = {
++		{MDP_COMP_TYPE_HDR, 0, MT8195_MDP_COMP_HDR0, MDP_MM_SUBSYS_0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_HDR1] = {
++		{MDP_COMP_TYPE_HDR, 1, MT8195_MDP_COMP_HDR1, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_HDR2] = {
++		{MDP_COMP_TYPE_HDR, 2, MT8195_MDP_COMP_HDR2, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_HDR3] = {
++		{MDP_COMP_TYPE_HDR, 3, MT8195_MDP_COMP_HDR3, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_AAL0] = {
++		{MDP_COMP_TYPE_AAL, 0, MT8195_MDP_COMP_AAL0, MDP_MM_SUBSYS_0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_AAL1] = {
++		{MDP_COMP_TYPE_AAL, 1, MT8195_MDP_COMP_AAL1, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_AAL2] = {
++		{MDP_COMP_TYPE_AAL, 2, MT8195_MDP_COMP_AAL2, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_AAL3] = {
++		{MDP_COMP_TYPE_AAL, 3, MT8195_MDP_COMP_AAL3, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_RSZ0] = {
++		{MDP_COMP_TYPE_RSZ, 0, MT8195_MDP_COMP_RSZ0, MDP_MM_SUBSYS_0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_RSZ1] = {
++		{MDP_COMP_TYPE_RSZ, 1, MT8195_MDP_COMP_RSZ1, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_RSZ2] = {
++		{MDP_COMP_TYPE_RSZ, 2, MT8195_MDP_COMP_RSZ2, MDP_MM_SUBSYS_1},
++		{2, 0, 0},
++		{MDP_COMP_MERGE2, true, true}
++	},
++	[MDP_COMP_RSZ3] = {
++		{MDP_COMP_TYPE_RSZ, 3, MT8195_MDP_COMP_RSZ3, MDP_MM_SUBSYS_1},
++		{2, 0, 0},
++		{MDP_COMP_MERGE3, true, true}
++	},
++	[MDP_COMP_TDSHP0] = {
++		{MDP_COMP_TYPE_TDSHP, 0, MT8195_MDP_COMP_TDSHP0, MDP_MM_SUBSYS_0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_TDSHP1] = {
++		{MDP_COMP_TYPE_TDSHP, 1, MT8195_MDP_COMP_TDSHP1, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_TDSHP2] = {
++		{MDP_COMP_TYPE_TDSHP, 2, MT8195_MDP_COMP_TDSHP2, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_TDSHP3] = {
++		{MDP_COMP_TYPE_TDSHP, 3, MT8195_MDP_COMP_TDSHP3, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_COLOR0] = {
++		{MDP_COMP_TYPE_COLOR, 0, MT8195_MDP_COMP_COLOR0, MDP_MM_SUBSYS_0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_COLOR1] = {
++		{MDP_COMP_TYPE_COLOR, 1, MT8195_MDP_COMP_COLOR1, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_COLOR2] = {
++		{MDP_COMP_TYPE_COLOR, 2, MT8195_MDP_COMP_COLOR2, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_COLOR3] = {
++		{MDP_COMP_TYPE_COLOR, 3, MT8195_MDP_COMP_COLOR3, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_OVL0] = {
++		{MDP_COMP_TYPE_OVL, 0, MT8195_MDP_COMP_OVL0, MDP_MM_SUBSYS_0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_OVL1] = {
++		{MDP_COMP_TYPE_OVL, 1, MT8195_MDP_COMP_OVL1, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_PAD0] = {
++		{MDP_COMP_TYPE_PAD, 0, MT8195_MDP_COMP_PAD0, MDP_MM_SUBSYS_0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_PAD1] = {
++		{MDP_COMP_TYPE_PAD, 1, MT8195_MDP_COMP_PAD1, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_PAD2] = {
++		{MDP_COMP_TYPE_PAD, 2, MT8195_MDP_COMP_PAD2, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_PAD3] = {
++		{MDP_COMP_TYPE_PAD, 3, MT8195_MDP_COMP_PAD3, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_TCC0] = {
++		{MDP_COMP_TYPE_TCC, 0, MT8195_MDP_COMP_TCC0, MDP_MM_SUBSYS_0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_TCC1] = {
++		{MDP_COMP_TYPE_TCC, 1, MT8195_MDP_COMP_TCC1, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_WROT0] = {
++		{MDP_COMP_TYPE_WROT, 0, MT8195_MDP_COMP_WROT0, MDP_MM_SUBSYS_0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_WROT1] = {
++		{MDP_COMP_TYPE_WROT, 1, MT8195_MDP_COMP_WROT1, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_WROT2] = {
++		{MDP_COMP_TYPE_WROT, 2, MT8195_MDP_COMP_WROT2, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_WROT3] = {
++		{MDP_COMP_TYPE_WROT, 3, MT8195_MDP_COMP_WROT3, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_MERGE2] = {
++		{MDP_COMP_TYPE_MERGE, 0, MT8195_MDP_COMP_MERGE2, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_MERGE3] = {
++		{MDP_COMP_TYPE_MERGE, 1, MT8195_MDP_COMP_MERGE3, MDP_MM_SUBSYS_1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_PQ0_SOUT] = {
++		{MDP_COMP_TYPE_DUMMY, 0, MT8195_MDP_COMP_PQ0_SOUT, MDP_MM_SUBSYS_0},
++		{0, 0, 0}
++	},
++	[MDP_COMP_PQ1_SOUT] = {
++		{MDP_COMP_TYPE_DUMMY, 1, MT8195_MDP_COMP_PQ1_SOUT, MDP_MM_SUBSYS_1},
++		{0, 0, 0}
++	},
++	[MDP_COMP_TO_WARP0MOUT] = {
++		{MDP_COMP_TYPE_DUMMY, 2, MT8195_MDP_COMP_TO_WARP0MOUT, MDP_MM_SUBSYS_0},
++		{0, 0, 0}
++	},
++	[MDP_COMP_TO_WARP1MOUT] = {
++		{MDP_COMP_TYPE_DUMMY, 3, MT8195_MDP_COMP_TO_WARP1MOUT, MDP_MM_SUBSYS_0},
++		{0, 0, 0}
++	},
++	[MDP_COMP_TO_SVPP2MOUT] = {
++		{MDP_COMP_TYPE_DUMMY, 4, MT8195_MDP_COMP_TO_SVPP2MOUT, MDP_MM_SUBSYS_1},
++		{0, 0, 0}
++	},
++	[MDP_COMP_TO_SVPP3MOUT] = {
++		{MDP_COMP_TYPE_DUMMY, 5, MT8195_MDP_COMP_TO_SVPP3MOUT, MDP_MM_SUBSYS_1},
++		{0, 0, 0}
++	},
++	[MDP_COMP_VPP0_SOUT] = {
++		{MDP_COMP_TYPE_PATH, 0, MT8195_MDP_COMP_VPP0_SOUT, MDP_MM_SUBSYS_1},
++		{4, 9, 0}
++	},
++	[MDP_COMP_VPP1_SOUT] = {
++		{MDP_COMP_TYPE_PATH, 1, MT8195_MDP_COMP_VPP1_SOUT, MDP_MM_SUBSYS_0},
++		{2, 13, 0}
++	},
++	[MDP_COMP_VDO0DL0] = {
++		{MDP_COMP_TYPE_DL_PATH, 0, MT8195_MDP_COMP_VDO0DL0, MDP_MM_SUBSYS_1},
++		{1, 15, 0}
++	},
++	[MDP_COMP_VDO1DL0] = {
++		{MDP_COMP_TYPE_DL_PATH, 0, MT8195_MDP_COMP_VDO1DL0, MDP_MM_SUBSYS_1},
++		{1, 17, 0}
++	},
++	[MDP_COMP_VDO0DL1] = {
++		{MDP_COMP_TYPE_DL_PATH, 0, MT8195_MDP_COMP_VDO0DL1, MDP_MM_SUBSYS_1},
++		{1, 18, 0}
++	},
++	[MDP_COMP_VDO1DL1] = {
++		{MDP_COMP_TYPE_DL_PATH, 0, MT8195_MDP_COMP_VDO1DL1, MDP_MM_SUBSYS_1},
++		{1, 16, 0}
++	},
++};
++
+ static const struct of_device_id mt8183_sub_comp_dt_ids[] = {
+ 	{
+ 		.compatible = "mediatek,mt8183-mdp3-wdma",
+@@ -159,6 +556,10 @@ static const struct of_device_id mt8183_sub_comp_dt_ids[] = {
+ 	{}
+ };
+ 
++static const struct of_device_id mt8195_sub_comp_dt_ids[] = {
++	{}
++};
++
+ /*
+  * All 10-bit related formats are not added in the basic format list,
+  * please add the corresponding format settings before use.
+@@ -384,6 +785,222 @@ static const struct mdp_format mt8183_formats[] = {
+ 	}
+ };
+ 
++static const struct mdp_format mt8195_formats[] = {
++	{
++		.pixelformat	= V4L2_PIX_FMT_GREY,
++		.mdp_color	= MDP_COLOR_GREY,
++		.depth		= { 8 },
++		.row_depth	= { 8 },
++		.num_planes	= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_RGB565X,
++		.mdp_color	= MDP_COLOR_BGR565,
++		.depth		= { 16 },
++		.row_depth	= { 16 },
++		.num_planes	= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_RGB565,
++		.mdp_color	= MDP_COLOR_RGB565,
++		.depth		= { 16 },
++		.row_depth	= { 16 },
++		.num_planes	= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_RGB24,
++		.mdp_color	= MDP_COLOR_RGB888,
++		.depth		= { 24 },
++		.row_depth	= { 24 },
++		.num_planes	= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_BGR24,
++		.mdp_color	= MDP_COLOR_BGR888,
++		.depth		= { 24 },
++		.row_depth	= { 24 },
++		.num_planes	= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_ABGR32,
++		.mdp_color	= MDP_COLOR_BGRA8888,
++		.depth		= { 32 },
++		.row_depth	= { 32 },
++		.num_planes	= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_ARGB32,
++		.mdp_color	= MDP_COLOR_ARGB8888,
++		.depth		= { 32 },
++		.row_depth	= { 32 },
++		.num_planes	= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_UYVY,
++		.mdp_color	= MDP_COLOR_UYVY,
++		.depth		= { 16 },
++		.row_depth	= { 16 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_VYUY,
++		.mdp_color	= MDP_COLOR_VYUY,
++		.depth		= { 16 },
++		.row_depth	= { 16 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YUYV,
++		.mdp_color	= MDP_COLOR_YUYV,
++		.depth		= { 16 },
++		.row_depth	= { 16 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YVYU,
++		.mdp_color	= MDP_COLOR_YVYU,
++		.depth		= { 16 },
++		.row_depth	= { 16 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YUV420,
++		.mdp_color	= MDP_COLOR_I420,
++		.depth		= { 12 },
++		.row_depth	= { 8 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YVU420,
++		.mdp_color	= MDP_COLOR_YV12,
++		.depth		= { 12 },
++		.row_depth	= { 8 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV12,
++		.mdp_color	= MDP_COLOR_NV12,
++		.depth		= { 12 },
++		.row_depth	= { 8 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV21,
++		.mdp_color	= MDP_COLOR_NV21,
++		.depth		= { 12 },
++		.row_depth	= { 8 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV16,
++		.mdp_color	= MDP_COLOR_NV16,
++		.depth		= { 16 },
++		.row_depth	= { 8 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV61,
++		.mdp_color	= MDP_COLOR_NV61,
++		.depth		= { 16 },
++		.row_depth	= { 8 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV12M,
++		.mdp_color	= MDP_COLOR_NV12,
++		.depth		= { 8, 4 },
++		.row_depth	= { 8, 8 },
++		.num_planes	= 2,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_MM21,
++		.mdp_color	= MDP_COLOR_420_BLK,
++		.depth		= { 8, 4 },
++		.row_depth	= { 8, 8 },
++		.num_planes	= 2,
++		.walign		= 6,
++		.halign		= 6,
++		.flags		= MDP_FMT_FLAG_OUTPUT,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV21M,
++		.mdp_color	= MDP_COLOR_NV21,
++		.depth		= { 8, 4 },
++		.row_depth	= { 8, 8 },
++		.num_planes	= 2,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV16M,
++		.mdp_color	= MDP_COLOR_NV16,
++		.depth		= { 8, 8 },
++		.row_depth	= { 8, 8 },
++		.num_planes	= 2,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV61M,
++		.mdp_color	= MDP_COLOR_NV61,
++		.depth		= { 8, 8 },
++		.row_depth	= { 8, 8 },
++		.num_planes	= 2,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YUV420M,
++		.mdp_color	= MDP_COLOR_I420,
++		.depth		= { 8, 2, 2 },
++		.row_depth	= { 8, 4, 4 },
++		.num_planes	= 3,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YVU420M,
++		.mdp_color	= MDP_COLOR_YV12,
++		.depth		= { 8, 2, 2 },
++		.row_depth	= { 8, 4, 4 },
++		.num_planes	= 3,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YUV422M,
++		.mdp_color	= MDP_COLOR_I422,
++		.depth		= { 8, 4, 4 },
++		.row_depth	= { 8, 4, 4 },
++		.num_planes	= 3,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YVU422M,
++		.mdp_color	= MDP_COLOR_YV16,
++		.depth		= { 8, 4, 4 },
++		.row_depth	= { 8, 4, 4 },
++		.num_planes	= 3,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}
++};
++
+ static const struct mdp_limit mt8183_mdp_def_limit = {
+ 	.out_limit = {
+ 		.wmin	= 16,
+@@ -403,6 +1020,25 @@ static const struct mdp_limit mt8183_mdp_def_limit = {
+ 	.v_scale_down_max = 128,
+ };
+ 
++static const struct mdp_limit mt8195_mdp_def_limit = {
++	.out_limit = {
++		.wmin	= 64,
++		.hmin	= 64,
++		.wmax	= 8192,
++		.hmax	= 8192,
++	},
++	.cap_limit = {
++		.wmin	= 64,
++		.hmin	= 64,
++		.wmax	= 8192,
++		.hmax	= 8192,
++	},
++	.h_scale_up_max = 64,
++	.v_scale_up_max = 64,
++	.h_scale_down_max = 128,
++	.v_scale_down_max = 128,
++};
++
+ static const struct mdp_pipe_info mt8183_pipe_info[] = {
+ 	[MDP_PIPE_WPEI] = {MDP_PIPE_WPEI, MDP_MM_SUBSYS_0, 0},
+ 	[MDP_PIPE_WPEI2] = {MDP_PIPE_WPEI2, MDP_MM_SUBSYS_0, 1},
+@@ -410,6 +1046,20 @@ static const struct mdp_pipe_info mt8183_pipe_info[] = {
+ 	[MDP_PIPE_RDMA0] = {MDP_PIPE_RDMA0, MDP_MM_SUBSYS_0, 3}
+ };
+ 
++static const struct mdp_pipe_info mt8195_pipe_info[] = {
++	[MDP_PIPE_WPEI] = {MDP_PIPE_WPEI, MDP_MM_SUBSYS_0, 0},
++	[MDP_PIPE_WPEI2] = {MDP_PIPE_WPEI2, MDP_MM_SUBSYS_0, 1},
++	[MDP_PIPE_IMGI] = {MDP_PIPE_IMGI, MDP_MM_SUBSYS_0, 2},
++	[MDP_PIPE_RDMA0] = {MDP_PIPE_RDMA0, MDP_MM_SUBSYS_0, 3},
++	[MDP_PIPE_RDMA1] = {MDP_PIPE_RDMA1, MDP_MM_SUBSYS_1, 0},
++	[MDP_PIPE_RDMA2] = {MDP_PIPE_RDMA2, MDP_MM_SUBSYS_1, 1},
++	[MDP_PIPE_RDMA3] = {MDP_PIPE_RDMA3, MDP_MM_SUBSYS_1, 2},
++	[MDP_PIPE_SPLIT] = {MDP_PIPE_SPLIT, MDP_MM_SUBSYS_1, 3},
++	[MDP_PIPE_SPLIT2] = {MDP_PIPE_SPLIT2, MDP_MM_SUBSYS_1, 4},
++	[MDP_PIPE_VPP1_SOUT] = {MDP_PIPE_VPP1_SOUT, MDP_MM_SUBSYS_0, 4},
++	[MDP_PIPE_VPP0_SOUT] = {MDP_PIPE_VPP0_SOUT, MDP_MM_SUBSYS_1, 5},
++};
++
+ const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
+ 	.mdp_plat_id = MT8183,
+ 	.mdp_con_res = 0x14001000,
+@@ -426,6 +1076,22 @@ const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
+ 	.pipe_info_len = ARRAY_SIZE(mt8183_pipe_info),
+ };
+ 
++const struct mtk_mdp_driver_data mt8195_mdp_driver_data = {
++	.mdp_plat_id = MT8195,
++	.mdp_con_res = 0x14001000,
++	.mdp_probe_infra = mt8195_mdp_probe_infra,
++	.mdp_sub_comp_dt_ids = mt8195_sub_comp_dt_ids,
++	.mdp_cfg = &mt8195_plat_cfg,
++	.mdp_mutex_table_idx = mt8195_mutex_idx,
++	.comp_data = mt8195_mdp_comp_data,
++	.comp_data_len = ARRAY_SIZE(mt8195_mdp_comp_data),
++	.format = mt8195_formats,
++	.format_len = ARRAY_SIZE(mt8195_formats),
++	.def_limit = &mt8195_mdp_def_limit,
++	.pipe_info = mt8195_pipe_info,
++	.pipe_info_len = ARRAY_SIZE(mt8195_pipe_info),
++};
++
+ s32 mdp_cfg_get_id_inner(struct mdp_dev *mdp_dev, enum mtk_mdp_comp_id id)
+ {
+ 	if (!mdp_dev)
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h b/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
+index 22b8b9a10ef7..08fb0853bcd5 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
++++ b/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
+@@ -115,6 +115,7 @@ struct img_frameparam {
+ 
+ /* Platform config indicator */
+ #define MT8183 8183
++#define MT8195 8195
+ 
+ #define CFG_CHECK(plat, p_id) ((plat) == (p_id))
+ 
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
+index dfffc72868e4..49cdf45f6e59 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
+@@ -10,6 +10,7 @@
+ #include <linux/types.h>
+ 
+ extern const struct mtk_mdp_driver_data mt8183_mdp_driver_data;
++extern const struct mtk_mdp_driver_data mt8195_mdp_driver_data;
+ 
+ struct mdp_dev;
+ enum mtk_mdp_comp_id;
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+index e97630b7867c..600fec7d2f7f 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+@@ -773,6 +773,42 @@ static const struct of_device_id mdp_comp_dt_ids[] __maybe_unused = {
+ 	}, {
+ 		.compatible = "mediatek,mt8183-mdp3-wdma",
+ 		.data = (void *)MDP_COMP_TYPE_WDMA,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-rdma",
++		.data = (void *)MDP_COMP_TYPE_RDMA,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-split",
++		.data = (void *)MDP_COMP_TYPE_SPLIT,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-stitch",
++		.data = (void *)MDP_COMP_TYPE_STITCH,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-fg",
++		.data = (void *)MDP_COMP_TYPE_FG,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-hdr",
++		.data = (void *)MDP_COMP_TYPE_HDR,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-aal",
++		.data = (void *)MDP_COMP_TYPE_AAL,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-merge",
++		.data = (void *)MDP_COMP_TYPE_MERGE,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-tdshp",
++		.data = (void *)MDP_COMP_TYPE_TDSHP,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-color",
++		.data = (void *)MDP_COMP_TYPE_COLOR,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-ovl",
++		.data = (void *)MDP_COMP_TYPE_OVL,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-padding",
++		.data = (void *)MDP_COMP_TYPE_PAD,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-tcc",
++		.data = (void *)MDP_COMP_TYPE_TCC,
+ 	},
+ 	{}
+ };
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+index 6ddb5e075f5d..a6c71fd9e5bf 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+@@ -21,6 +21,12 @@ static const struct of_device_id mdp_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8183-mdp3-rdma",
+ 	  .data = &mt8183_mdp_driver_data,
+ 	},
++	{ .compatible = "mediatek,mt8195-mdp3-rdma",
++	  .data = &mt8195_mdp_driver_data,
++	},
++	{ .compatible = "mediatek,mt8195-mdp3-wrot",
++	  .data = &mt8195_mdp_driver_data,
++	},
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mdp_of_ids);
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+index e57c415a1c78..d6484d17b09f 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+@@ -49,10 +49,16 @@ struct mdp_platform_config {
+ 	bool	rdma_support_10bit;
+ 	bool	rdma_rsz1_sram_sharing;
+ 	bool	rdma_upsample_repeat_only;
++	bool	rdma_esl_setting;
+ 	u32	rdma_event_num;
+ 	bool	rsz_disable_dcm_small_sample;
++	bool	rsz_etc_control;
+ 	bool	wrot_filter_constraint;
++	bool	wrot_support_10bit;
+ 	u32	wrot_event_num;
++	u32	tdshp_hist_num;
++	bool	tdshp_constrain;
++	bool	tdshp_contour;
+ };
+ 
+ /* indicate which mutex is used by each pipepline */
 -- 
 2.18.0
 
