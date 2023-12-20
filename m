@@ -4,133 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12BD2C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Dec 2023 11:34:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B63AC46CD3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Dec 2023 12:11:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IFboNxAk82XtaVTWM02c+nDiWxbn4us0s/m/m5y9Mjs=; b=cew5WjLEga2PT95qgPTobnTPwz
-	7c6Lbx8BwDAOFxupFlUie2/5yudZWbVRr12APk4X/qizfNotf4D2cEWLeWY3OOhWuxfc/g8FSO6tH
-	yeqI1hsgZRuXfbjiiBEcPi4KZw9KO9vcPwwtbydl4ZtSt/lGgpjNmqR7m2Mt18ItsSJ8qhasT7wbR
-	e3jWbDQCavZ2pi3fXGNrOU7xYsJ+wF522Kq8ibW4EMmX0amI4LsuSJ7ePrTTtI6PB758MRE4dkwWo
-	r/FszLdLeGHMeYNphCh+/pdOAUVS36Cxg0lHiDjwLeo974ZY1zYtYT47lI7Rhh6WzfSAfxqIXrpxc
-	rlrvI2Dg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3NTsLxd0KE7Y0lJ7wSzWNGCAn00AzxNfH6qzzFKce40=; b=jA3/N6LV0P4DWICXh0mBoMmdUt
+	NEkL92LTEhNiHpQi8qzNyk+vDYkpZeFh9omEZ3Njp7QdlJS1jTB7cwKDU3aKpU4uWKxRPTJNgpmAN
+	Acw+F1SKOW2ypEimOCv6daapEc2Lx8UOysImfX1aCC4v2SyBoAVdEz6J18D9uXBgAXbnj0Gds6Li1
+	AnLJi6C8kRhAOBPexD/TSZ8JqVyGyAlzC7+xaUr/Kqr7rIxXZPGnKGNvZIiTYfjcok2qDHlTEmmWv
+	rNszmGvTdX3C+L3vs57YL2dkqLyjyiBpyK2eNFZ61J4o3A9YMVwdw8f61l2dLOWxHr4zB9U9Fsirw
+	rQRs53Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFuq3-00H6Cd-0H;
-	Wed, 20 Dec 2023 11:34:11 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1rFvQJ-00HJ8n-17;
+	Wed, 20 Dec 2023 12:11:39 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFupz-00H68n-2j
-	for linux-mediatek@lists.infradead.org;
-	Wed, 20 Dec 2023 11:34:09 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-40d3a2703c9so484205e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 20 Dec 2023 03:34:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1703072043; x=1703676843; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=IFboNxAk82XtaVTWM02c+nDiWxbn4us0s/m/m5y9Mjs=;
-        b=krD7KGyV62eFlrMG6AQrVUzL0nP7mJX17cN3+sYiFrK3eD/kgHgBPeTIR0lzpqKh3X
-         wTTvYbg7rIz+MgZxuKyhJd71Yn+YTGTo8xXhk0RVOpAs4bAWevLRMPpv26DxivAbOOlL
-         ajS3MdBfYRG8icgJWmI3pvBH5d1WmrrT84dyguhLKCmFkGCDnRjcrNd5ldY73yqOAT+O
-         v5pdGRbe/JTA1uh4FCqxm93QxTc/Axv8DWZ9FXw6yCf3DQuBgmZbKBL+K1aOAXxr5d7e
-         CxtytTBfOEop7NsR1K5sAY8giD+6+7rJXYsJeiiRkFGIiQHmx34A9Tpt+3ET5DsctzsU
-         xldQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703072043; x=1703676843;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=IFboNxAk82XtaVTWM02c+nDiWxbn4us0s/m/m5y9Mjs=;
-        b=aeXqi7nDjkurfUODWXD1WM6lPRsi3UH9RcynaAub6qB88U/deSzLk64L8sEu6+hZdU
-         TOatAGj2X5fWBdQuMdr391VunEPr0XixxLJa4M/E/zZjPRJcv9k3ocmel8KxBL16q0SJ
-         OmESG4k8uFd/Y1oRHSTYgBRMQNxicPSGxo+1wv30P8FunGLjaHVAVHWKHYqR4MScrpqe
-         g5Re0jtzmyeEN6Jc1PhsklJwH6da6R13qLR/2kp3hAduEucILnCt6Vab3MAxEANytdNx
-         AP2ptSO9ApH5pAkrJtk2WHUr+xGIMKb7sJ5fryM074nmutqDoDCsn9six5I84dgTv+69
-         OQvQ==
-X-Gm-Message-State: AOJu0Yw13OsAMo0KuJeFKZY/t5asmVNqzYvFMmJNz8PAwxM5tp2AaJ4O
-	bSLu5a22QZEnL4tzSaWPsUAMQw==
-X-Google-Smtp-Source: AGHT+IGVl68eT4N+5Q4z8yzPhMX3yvcsl33WwL5LMW/8Kjvff1d7DaJHftB+5n2GaDpY3excu8F5eA==
-X-Received: by 2002:a05:600c:3d18:b0:40d:35a5:b9dd with SMTP id bh24-20020a05600c3d1800b0040d35a5b9ddmr425625wmb.22.1703072043114;
-        Wed, 20 Dec 2023 03:34:03 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.218.27])
-        by smtp.gmail.com with ESMTPSA id o30-20020a05600c511e00b0040b43da0bbasm6948988wms.30.2023.12.20.03.34.01
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 20 Dec 2023 03:34:02 -0800 (PST)
-Message-ID: <97d54894-7c71-49d8-a456-869c398636ec@linaro.org>
-Date: Wed, 20 Dec 2023 12:34:00 +0100
+	id 1rFvQF-00HJ7X-2k;
+	Wed, 20 Dec 2023 12:11:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1703074290;
+	bh=+josEhuJGZUwIjK128hAQWpYf0mrcfPybBEAagNclmI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=EvcVbVMWlwNXOErBeYWIsdzjdB0YsnlTkWIZtpas9p0ovFLiljNyZm3NajqSCFMJC
+	 s9wqXrwikzH/T6hCko36Eu9zOSz3L1/Nz2AVc5T2QU61m8vC5ClXzH3Gukuzt6cngC
+	 x6CRvSxmuuyX6adJldss3c+LYk4LpPZI3X8UBKtlBMUWNQCtlsBb8kq9QWK4x3vXpb
+	 NnvOblR/NYoCj2WH8a2si0v/lWxwvx71/NMw8uAMJt9juUPfCbgFF/F0Sc9ExWGUwn
+	 ivohO2NPXyasfd6NhyFXRE+FXACvF1vXLdht3tzJfVQ3Ay8oCPqB7XHFJseVgUwV2m
+	 NxUPfopUNpNMg==
+Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C35443781FD5;
+	Wed, 20 Dec 2023 12:11:25 +0000 (UTC)
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: helen.koike@collabora.com,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	daniels@collabora.com
+Cc: david.heidelberg@collabora.com,
+	guilherme.gallo@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	emma@anholt.net,
+	robdclark@gmail.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v1 0/8] drm/ci: Add support for GPU and display testing
+Date: Wed, 20 Dec 2023 17:41:02 +0530
+Message-Id: <20231220121110.1441160-1-vignesh.raman@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/3] soc: mediatek: mtk-socinfo: Add driver for getting
- chip information
-Content-Language: en-US
-To: William-tw Lin <william-tw.lin@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20231220103901.22180-1-william-tw.lin@mediatek.com>
- <20231220103901.22180-3-william-tw.lin@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231220103901.22180-3-william-tw.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231220_033407_906260_0036E2C1 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20231220_041136_066076_CE586A82 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,28 +81,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/12/2023 11:39, William-tw Lin wrote:
-> Add driver for socinfo retrieval. This patch includes the following:
-> 1. mtk-socinfo driver for chip info retrieval
-> 2. Related changes to Makefile and Kconfig
-> 
-> Signed-off-by: William-tw Lin <william-tw.lin@mediatek.com>
+Some ARM SOCs have a separate display controller and GPU, each with
+different drivers. For mediatek mt8173, the GPU driver is powervr,
+and the display driver is mediatek. In the case of mediatek mt8183,
+the GPU driver is panfrost, and the display driver is mediatek.
+With rockchip rk3288/rk3399, the GPU driver is panfrost, while the
+display driver is rockchip. For amlogic meson, the GPU driver is
+panfrost, and the display driver is meson.
 
-...
+IGT tests run various tests with different xfails and can test both
+GPU devices and KMS/display devices. Currently, in drm-ci for MediaTek,
+Rockchip, and Amlogic Meson platforms, only the GPU driver is tested.
+This leads to incomplete coverage since the display is never tested on
+these platforms. This commit series adds support in drm-ci to run tests
+for both GPU and display drivers for MediaTek, Rockchip, and Amlogic
+Meson platforms.
 
-> +static struct platform_driver mtk_socinfo = {
-> +	.probe = mtk_socinfo_probe,
-> +	.remove_new = mtk_socinfo_remove,
-> +	.driver = {
-> +		.name = "mtk-socinfo",
-> +	},
-> +};
-> +builtin_platform_driver(mtk_socinfo);
+This series depends on,
+https://lore.kernel.org/dri-devel/e747581b-d5e0-4622-827b-48fb51fa9711@collabora.com/T/#t
 
-module platform driver, because this is tristate and because this should
-be a module.
+Vignesh Raman (8):
+  drm/ci: arm64.config: Enable CONFIG_DRM_ANALOGIX_ANX7625
+  drm/ci: mediatek: Test both GPU and display drivers
+  drm/ci: rockchip: Test both GPU and display drivers
+  drm/ci: meson: Test both GPU and display drivers
+  drm/ci: Do not set IGT_FORCE_DRIVER based on driver name
+  MAINTAINERS: drm/ci: xfails: add entry for panfrost
+  drm/ci: Rename xfails file
+  drm/ci: Update xfails
 
-Best regards,
-Krzysztof
+ MAINTAINERS                                   |   1 +
+ drivers/gpu/drm/ci/arm64.config               |   1 +
+ drivers/gpu/drm/ci/igt_runner.sh              |  10 --
+ drivers/gpu/drm/ci/test.yml                   | 107 ++++++++++++++----
+ ....txt => mediatek-mt8173-display-fails.txt} |   0
+ .../xfails/mediatek-mt8173-display-flakes.txt |  13 +++
+ .../xfails/mediatek-mt8183-display-fails.txt  |   7 ++
+ .../xfails/mediatek-mt8183-display-flakes.txt |   8 ++
+ .../ci/xfails/meson-g12b-display-fails.txt    |  13 +++
+ ...-fails.txt => panfrost-g12b-gpu-fails.txt} |   0
+ ...ails.txt => panfrost-mt8183-gpu-fails.txt} |   0
+ ...ails.txt => panfrost-rk3288-gpu-fails.txt} |   0
+ ...kips.txt => panfrost-rk3288-gpu-skips.txt} |   0
+ ...ails.txt => panfrost-rk3399-gpu-fails.txt} |   0
+ ...kes.txt => panfrost-rk3399-gpu-flakes.txt} |   0
+ ...kips.txt => panfrost-rk3399-gpu-skips.txt} |   0
+ .../xfails/rockchip-rk3288-display-fails.txt  |  15 +++
+ .../xfails/rockchip-rk3288-display-flakes.txt |  13 +++
+ .../xfails/rockchip-rk3288-display-skips.txt  |   8 ++
+ .../xfails/rockchip-rk3399-display-fails.txt  |  69 +++++++++++
+ .../xfails/rockchip-rk3399-display-flakes.txt |  20 ++++
+ .../xfails/rockchip-rk3399-display-skips.txt  |   6 +
+ 22 files changed, 261 insertions(+), 30 deletions(-)
+ rename drivers/gpu/drm/ci/xfails/{mediatek-mt8173-fails.txt => mediatek-mt8173-display-fails.txt} (100%)
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-display-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-display-fails.txt
+ rename drivers/gpu/drm/ci/xfails/{meson-g12b-fails.txt => panfrost-g12b-gpu-fails.txt} (100%)
+ rename drivers/gpu/drm/ci/xfails/{mediatek-mt8183-fails.txt => panfrost-mt8183-gpu-fails.txt} (100%)
+ rename drivers/gpu/drm/ci/xfails/{rockchip-rk3288-fails.txt => panfrost-rk3288-gpu-fails.txt} (100%)
+ rename drivers/gpu/drm/ci/xfails/{rockchip-rk3288-skips.txt => panfrost-rk3288-gpu-skips.txt} (100%)
+ rename drivers/gpu/drm/ci/xfails/{rockchip-rk3399-fails.txt => panfrost-rk3399-gpu-fails.txt} (100%)
+ rename drivers/gpu/drm/ci/xfails/{rockchip-rk3399-flakes.txt => panfrost-rk3399-gpu-flakes.txt} (100%)
+ rename drivers/gpu/drm/ci/xfails/{rockchip-rk3399-skips.txt => panfrost-rk3399-gpu-skips.txt} (100%)
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-skips.txt
+
+-- 
+2.40.1
 
 
