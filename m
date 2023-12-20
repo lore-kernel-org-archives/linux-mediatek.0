@@ -4,133 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B497C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Dec 2023 05:28:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEDC7C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Dec 2023 05:58:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
-	bh=Qr6Y/n44TAh60hRyqSdn6ykroR+doAVKJrBLaV/BU3U=; b=JzC/rlIpY+jQL2XqRGjptNLVNW
-	wHQTuiv0xWRG4O45/64A7uPeZ+76gtTj++E0e8wV3KPhnnadx6AK/WKhCIDMLiQZF1SLcpnH6jouh
-	v7XpKz3vQaO1DyHFAJMIf/7sTaVTA1diLhvr/RXE70ryUmgi1kdlyXCzvu2SpWd1sHGwxDwh8WAQr
-	D055kNQgUUizGg5PeS4Q41qgDC2skgUPC2NTx3yFXdyH0rExsS3jC52yNjqUpnpQrQxRyoyJwOhpP
-	ShGdpW+ByXm4C+V0AnDmCackLduC2G1yHWfbAbah1NSuEAmRSbSWX+v63eLEGe7nLjG7lXmBpT+OE
-	nbK8hoxg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zMT3LfPqvkRqCY9P471/Bhca6DIlUkfXhiUewhPRrOg=; b=EwuzAn78yLtisDP7zr+cCTsIgE
+	6StisiXDk+gM7G2e1adDSaYfs3TBt6yrwwyzUvYKakEEln4PfeUkShErfZzzQJ9SUdJxJ2uO/p1XC
+	dT44ZfIGbRSs//sKBKiIati/Qn30YmDGjrzAVPrKcKcFb+Teb/R4spA4Tomnu5bnIkgBVJGLmqvqd
+	W0XnOofZRHe/MlNNWujgROBKVOddl+QQPcEZaADRi1dJKPjQiYQaoIc9yMgj8ZDRWP/bQC2bBAcEl
+	mso91nj/NGw25GxcJatRoGUqT09wKR7fA0ywGWVpbUAT0Jk6adyYUzTkQugsvzakEYO6KgDE6lFdp
+	fBe7Qeag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFp7m-00GCA6-0S;
-	Wed, 20 Dec 2023 05:28:06 +0000
-Received: from mailout4.samsung.com ([203.254.224.34])
+	id 1rFpak-00GEWL-2d;
+	Wed, 20 Dec 2023 05:58:02 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFp7h-00GC8u-38
-	for linux-mediatek@lists.infradead.org;
-	Wed, 20 Dec 2023 05:28:04 +0000
-Received: from epcas1p3.samsung.com (unknown [182.195.41.47])
-	by mailout4.samsung.com (KnoxPortal) with ESMTP id 20231220052752epoutp04fa923047c98e22f05b55a47e35acbd2b~icwRxRhj82080220802epoutp04L
-	for <linux-mediatek@lists.infradead.org>; Wed, 20 Dec 2023 05:27:52 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com 20231220052752epoutp04fa923047c98e22f05b55a47e35acbd2b~icwRxRhj82080220802epoutp04L
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1703050072;
-	bh=Qr6Y/n44TAh60hRyqSdn6ykroR+doAVKJrBLaV/BU3U=;
-	h=From:To:Cc:Subject:Date:References:From;
-	b=TKo4XbMyF3thDWxQ+ID9i8Db9tS7E8S2649tuzV8bdGF00XgFoK9jViCjEMg8h/V6
-	 OxZJm1F+f7FnHtCfTw1QnBvdx37MvAF0Qo+9asugI7+q+oYWZb21zTcSYpivJuC4Pd
-	 1YMTonVdOS/wFQv/PWm3DQ3OM0PP+gZ9LxQzafso=
-Received: from epsnrtp1.localdomain (unknown [182.195.42.162]) by
-	epcas1p4.samsung.com (KnoxPortal) with ESMTP id
-	20231220052750epcas1p43b047fc01a36edbbd76ad192775eea22~icwQrp6SM1444814448epcas1p4J;
-	Wed, 20 Dec 2023 05:27:50 +0000 (GMT)
-Received: from epsmges1p3.samsung.com (unknown [182.195.38.248]) by
-	epsnrtp1.localdomain (Postfix) with ESMTP id 4Sw2Bt0vvVz4x9Pr; Wed, 20 Dec
-	2023 05:27:50 +0000 (GMT)
-Received: from epcas1p1.samsung.com ( [182.195.41.45]) by
-	epsmges1p3.samsung.com (Symantec Messaging Gateway) with SMTP id
-	A7.EC.09739.55B72856; Wed, 20 Dec 2023 14:27:49 +0900 (KST)
-Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
-	epcas1p3.samsung.com (KnoxPortal) with ESMTPA id
-	20231220052749epcas1p3b90f6c03110ff5f63ffc547ef0f35907~icwPb-Im92245822458epcas1p3a;
-	Wed, 20 Dec 2023 05:27:49 +0000 (GMT)
-Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
-	epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
-	20231220052749epsmtrp2b953272c91a3b32041de0feadc2c5924~icwPaqkOk1019310193epsmtrp2M;
-	Wed, 20 Dec 2023 05:27:49 +0000 (GMT)
-X-AuditID: b6c32a37-e67fa7000000260b-84-65827b551e19
-Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
-	epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
-	57.E7.08755.55B72856; Wed, 20 Dec 2023 14:27:49 +0900 (KST)
-Received: from localhost.localdomain (unknown [10.253.100.232]) by
-	epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20231220052749epsmtip1758180bb7a83894c81a23ec2d805d5ff~icwPHDQ5W0564405644epsmtip1u;
-	Wed, 20 Dec 2023 05:27:49 +0000 (GMT)
-From: Chanwoo Lee <cw9316.lee@samsung.com>
-To: alim.akhtar@samsung.com, avri.altman@wdc.com, bvanassche@acm.org,
-	jejb@linux.ibm.com, martin.petersen@oracle.com, peter.wang@mediatek.com,
-	chu.stanley@gmail.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, stanley.chu@mediatek.com,
-	quic_cang@quicinc.com, mani@kernel.org, quic_asutoshd@quicinc.com,
-	powen.kao@mediatek.com, quic_nguyenb@quicinc.com,
-	yang.lee@linux.alibaba.com, beanhuo@micron.com, Arthur.Simchaev@wdc.com,
-	ebiggers@google.com, linux-scsi@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: grant.jung@samsung.com, jt77.jang@samsung.com, dh0421.hwang@samsung.com,
-	sh043.lee@samsung.com, ChanWoo Lee <cw9316.lee@samsung.com>
-Subject: [PATCH] ufs: mcq: Adding a function for MCQ enable
-Date: Wed, 20 Dec 2023 14:27:37 +0900
-Message-Id: <20231220052737.19857-1-cw9316.lee@samsung.com>
-X-Mailer: git-send-email 2.29.0
+	id 1rFpah-00GEUs-0b;
+	Wed, 20 Dec 2023 05:58:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id AB3ADB81AE1;
+	Wed, 20 Dec 2023 05:57:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84096C433C7;
+	Wed, 20 Dec 2023 05:57:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1703051877;
+	bh=n0ckWVr2p5ZoAOLCgKU6Bdxii8DiBrVLcshx8Gs1Gv8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bPdecnAxw7khdyUI/WPAvwDX+64JC81cBxPIJZKCTcx1rFPLt/MPfyi6gBs9UhpxT
+	 vuV6PuhPcLbQvgtBBSe3BMNSvM3/NvD5V86aQfgarfmfC7BuD8+eN4uxTzcsnYg92n
+	 f9hAvwW/2HahH0NUxgo5zde7eshHtu+qkEvKp8Xc=
+Date: Wed, 20 Dec 2023 06:57:54 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, Eddie Hung <eddie.hung@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, stable@vger.kernel.org
+Subject: Re: [PATCH v3 2/3] usb: xhci-mtk: fix a short packet issue of gen1
+ isoc-in transfer
+Message-ID: <2023122033-footprint-impose-9989@gregkh>
+References: <20231220025842.7082-1-chunfeng.yun@mediatek.com>
+ <20231220025842.7082-2-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Brightmail-Tracker: H4sIAAAAAAAAA01Te0yTVxzN7dd+LczCZ5F5h4isQaMkPMrzFmSaScyXYAjGPclcrfQbJZS2
-	6YM4NOIorxZ0YHgogkPGQ8CAA4GC41USeYyQAcLYoNsAmY7J0yIBFdZS2Pzv3JNzfifnd/Nj
-	YRwt04kVI1VRCqlQwsVt6Y1dRzw8Pr6YRHlffchHf95uxNFQJUTa7HIG+nttBEedk1o6yltc
-	w5BpsB1DN/pSGahttJeJBquTGWj9TS0TlYw10pD+aT8T1U2PMtBwSyGOhjWDAGX8osdRx2IV
-	QBXdGzSUlOyLGpZfMdCccZOO7qQX0dH10fs4yn3WzURJr9voqKzhV4Dmv+kCx53J4cdhpN5Y
-	CsjmAiOTLK5Tk3VVWpxsnuSTWSUdgKwvTSSTe9vp5GptOk4uzfxGJ7N/vExee1AFyBd1LmRa
-	RwYtwj4y9qiYEooohSsljZKJYqTRIdywM4ITAv8Ab54Hj48Cua5SYRwVwg09FeFxMkZiXg3X
-	NV4oUZupCKFSyfX64KhCplZRrmKZUhXCpeQiiTxA7qkUxinV0mhPKaUK4nl7+/ibhedixSua
-	VZrc6HKhqecv+hWw8Z4O2LAg4QeNsyM0HbBlcQg9gGVaE7A+lgGsbC3HLSoO8RLA2wXSHcdC
-	Td+2qBXA1aJCzCoyAZhSa68DLBZOuMPxR2EWzR7iGR3OlN/disAIHYDrnTq6xeBABMM37d/T
-	LJhOHIQr3WlbmG3m89sXMGvaAfj6j0zMyu+GvTefbHkxM69puIVZhkKiwgbqUidoVkMoTGtL
-	3sYOcLb7AdOKneCL+VbcatAAeOd597Y7C0DT0jhuVR2DmhQNbumAEUdgbYuXNc0Ozq9kMiw0
-	JNgwPZVjVbvBQt0AvjN/aWyaYcUk7E3NZ1q3chZW5yYxs4BLwVsdCt7qUPB/WDHAqsC7lFwZ
-	F00peXLf/74yShZXB7Zuwj1QD/LmFj0NgMYCBgBZGHcPO7QkkeKwRcKvEyiFTKBQSyilAfib
-	t5qNOTlGycxHJVUJeH58b78AHz/ky/cN4O5l9z+OpzhEtFBFxVKUnFLs+GgsG6crtN6OfXlS
-	588HDk9Wls+m/tz1w8ajcLef5ocP9Y063Z087hDS8tWpd+YCdZpXE6LIJ8XVWTdHk8+Fzl7m
-	q3js+bCpfMfY4Pozh9ci46f8gkob7vffy28W1QuCOEP7Bec/C9s1tfvbrvSmrvfTEk0TIzfG
-	v1jYZTfgbNx8mZLyD/LhiR2DDySUDfTHfxm+uXcsRzBjb79cBOMCqi8lKBhuGTPO9ySH5In7
-	DOsLgs3TXsqi3KHN5wdbFcK8E+ebppNsn/pfMnUGaXOu3ioC+opr4/iFD5kfRdmdzBYbstiT
-	hkw+/G784um8/TU9nxxLqSGWHg6e7SlT9pRU5I/xNJpPfw/PwdRculIs5LljCqXwX4Nj8KOc
-	BAAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Ra0hTcRiH+Z/bjpJ6nJbHmZaTqIzMUcFfFM2IPN2jiCAEm3rykm5rx+Uq
-	1FLJnGVT0kzLbGqXdWU1LxlOZ7gcQpm3UizNS0lp3paUl3JJ0LeH5/nB++ElUb4RE5AxkgRW
-	LhHHCQlbrKJB6LH+0JlU1vd23lLYW1xBwLf3aJiZcxuHwz/bCVjfl4nB/LGfKJxqMaCwwHwe
-	h7UdTTzYcj8dh7/mHvOg5l0FAqs+N/Ogrr8Dh63PrxOwNa0FwKzOKgLWjWkBvGOaR2Bq+kao
-	n5jB4UjPbwzeunADg7kdTwiY98XEg6mztRgs178HcPRcA9iynGlt28VU9ZQBprqwh8eU6BSM
-	TptJMNV9foxaUweYp2UpTHqTAWOmH18gmPHBLozJeZHMZD/TAmZS58Fk1GUh+x2O2AZEsnEx
-	J1n5hsCjttGWtGlE1uOhrHw1hJ0F864qYEPS1Cb6+yMzUAFbkk/VALrvygBYDAK6xvCaUAFy
-	gZ3ohgZucTMB6IyhXNzqCcqb7m7cZZ07U6k4na5aad2glBrQpW0jqDU4Uf70nKEUsTJGraIt
-	poy/bLfgrxq+o4u3VtCzHy+ii96Rbro2gFkZXfBp+iJUDewL/0uF/6USgGiBKyvj4qPiOZFM
-	JGETfThxPKeQRPlESON14O+bvddWgUrtmI8RICQwAppEhc522zQpLN8uUnzqNCuXhskVcSxn
-	BG4kJnSxc/lyKZJPRYkT2OMsK2Pl/ypC2gjOIrWHHKXuSVd+rPWv0AJvweiyvOADumzn2Jo9
-	uEtQvvvhp/NZ4+ssBbxXjdMnZr6+S1w2+GHYMOpVKRjLPna36LyR/Zw1rg6wfAoLDGvb9+Zy
-	zEC5WXytN+5gpq/UNDW4ekv7w91BV9t3Lxk/KjOvjyi4lZA84Rj9e2Oox8CJlpydaYaQ016a
-	+871ZTcpy8u5fvscSdGm0NySdlOXllSGrHnhOVyvDA0O1+/106v8bfghOPJxxmG7ot9pZPOq
-	i90mh9kniFn6zXcuqXLdiKdIwxSfynf1e7B1h050vC5stWdjcPhBt8mZ5s7kWOU+pWJqMkUV
-	q552cy+u/1Auc6/W53JCjIsWi7xROSf+A+8PLCFVAwAA
-X-CMS-MailID: 20231220052749epcas1p3b90f6c03110ff5f63ffc547ef0f35907
-X-Msg-Generator: CA
-Content-Type: text/plain; charset="utf-8"
-CMS-TYPE: 101P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20231220052749epcas1p3b90f6c03110ff5f63ffc547ef0f35907
-References: <CGME20231220052749epcas1p3b90f6c03110ff5f63ffc547ef0f35907@epcas1p3.samsung.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231220025842.7082-2-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231219_212802_365097_7F4F19F0 
-X-CRM114-Status: GOOD (  17.34  )
+X-CRM114-CacheID: sfid-20231219_215759_350899_1E09273B 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,108 +77,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChanWoo Lee <cw9316.lee@samsung.com>
+On Wed, Dec 20, 2023 at 10:58:41AM +0800, Chunfeng Yun wrote:
+> For Gen1 isoc-in transfer, host still send out unexpected ACK after device
+> finish the burst with a short packet, this will cause an exception on the
+> connected device, such as, a usb 4k camera.
+> It can be fixed by setting rxfifo depth less than 4k bytes, prefer to use
+> 3k here, the side-effect is that may cause performance drop about 10%,
+> including bulk transfer.
+> 
+> Fixes: 926d60ae64a6 ("usb: xhci-mtk: modify the SOF/ITP interval for mt8195")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v3:
+> add Cc stable
 
-The REG_UFS_MEM_CFG register is too general(broad)
-and it is difficult to know the meaning of only values of 0x1 and 0x2.
-So far, comments were required.
+Why is a patch that you are marking for stable inclusion (and I am
+guessing inclusion in 6.7-final) in the middle of other patches that are
+not marked as such?
 
-Therefore, I have added new functions and defines
-to improve code readability/reusability.
+Always split out bugfixes from other things so that they can go through
+the two different branches, one for this current release, and one for
+the next one.
 
-Signed-off-by: ChanWoo Lee <cw9316.lee@samsung.com>
----
- drivers/ufs/core/ufs-mcq.c      | 10 +++++++++-
- drivers/ufs/core/ufshcd.c       |  5 +----
- drivers/ufs/host/ufs-mediatek.c |  4 +---
- include/ufs/ufshcd.h            |  1 +
- include/ufs/ufshci.h            |  4 ++++
- 5 files changed, 16 insertions(+), 8 deletions(-)
+Otherwise you will have to wait until 6.8-rc1 for this bugfix to land,
+which I doubt you intend to have happen.
 
-diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-index 0787456c2b89..a34ef3aac540 100644
---- a/drivers/ufs/core/ufs-mcq.c
-+++ b/drivers/ufs/core/ufs-mcq.c
-@@ -394,11 +394,19 @@ EXPORT_SYMBOL_GPL(ufshcd_mcq_make_queues_operational);
- 
- void ufshcd_mcq_enable_esi(struct ufs_hba *hba)
- {
--	ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | 0x2,
-+	ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | ESI_ENABLE,
- 		      REG_UFS_MEM_CFG);
- }
- EXPORT_SYMBOL_GPL(ufshcd_mcq_enable_esi);
- 
-+void ufshcd_mcq_enable(struct ufs_hba *hba)
-+{
-+	ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | MCQ_MODE_SELECT,
-+		      REG_UFS_MEM_CFG);
-+	hba->mcq_enabled = true;
-+}
-+EXPORT_SYMBOL_GPL(ufshcd_mcq_enable);
-+
- void ufshcd_mcq_config_esi(struct ufs_hba *hba, struct msi_msg *msg)
- {
- 	ufshcd_writel(hba, msg->address_lo, REG_UFS_ESILBA);
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index ae9936fc6ffb..8195e01e7a3f 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -8723,10 +8723,7 @@ static void ufshcd_config_mcq(struct ufs_hba *hba)
- 	hba->host->can_queue = hba->nutrs - UFSHCD_NUM_RESERVED;
- 	hba->reserved_slot = hba->nutrs - UFSHCD_NUM_RESERVED;
- 
--	/* Select MCQ mode */
--	ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | 0x1,
--		      REG_UFS_MEM_CFG);
--	hba->mcq_enabled = true;
-+	ufshcd_mcq_enable(hba);
- 
- 	dev_info(hba->dev, "MCQ configured, nr_queues=%d, io_queues=%d, read_queue=%d, poll_queues=%d, queue_depth=%d\n",
- 		 hba->nr_hw_queues, hba->nr_queues[HCTX_TYPE_DEFAULT],
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index fc61790d289b..1048add66419 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1219,9 +1219,7 @@ static int ufs_mtk_link_set_hpm(struct ufs_hba *hba)
- 		ufs_mtk_config_mcq(hba, false);
- 		ufshcd_mcq_make_queues_operational(hba);
- 		ufshcd_mcq_config_mac(hba, hba->nutrs);
--		/* Enable MCQ mode */
--		ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | 0x1,
--			      REG_UFS_MEM_CFG);
-+		ufshcd_mcq_enable(hba);
- 	}
- 
- 	if (err)
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index d862c8ddce03..a96c45fa4b4b 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -1257,6 +1257,7 @@ unsigned long ufshcd_mcq_poll_cqe_lock(struct ufs_hba *hba,
- 					 struct ufs_hw_queue *hwq);
- void ufshcd_mcq_make_queues_operational(struct ufs_hba *hba);
- void ufshcd_mcq_enable_esi(struct ufs_hba *hba);
-+void ufshcd_mcq_enable(struct ufs_hba *hba);
- void ufshcd_mcq_config_esi(struct ufs_hba *hba, struct msi_msg *msg);
- 
- int ufshcd_opp_config_clks(struct device *dev, struct opp_table *opp_table,
-diff --git a/include/ufs/ufshci.h b/include/ufs/ufshci.h
-index d5accacae6bc..e669fad11fd4 100644
---- a/include/ufs/ufshci.h
-+++ b/include/ufs/ufshci.h
-@@ -282,6 +282,10 @@ enum {
- /* UTMRLRSR - UTP Task Management Request Run-Stop Register 80h */
- #define UTP_TASK_REQ_LIST_RUN_STOP_BIT		0x1
- 
-+/* REG_UFS_MEM_CFG - Global Config Registers 300h */
-+#define MCQ_MODE_SELECT 	0x1
-+#define ESI_ENABLE		0x2
-+
- /* CQISy - CQ y Interrupt Status Register  */
- #define UFSHCD_MCQ_CQIS_TAIL_ENT_PUSH_STS	0x1
- 
--- 
-2.29.0
+Please fix up and resend 2 different patch series.
 
+thanks,
+
+greg k-h
 
