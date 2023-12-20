@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96F97C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Dec 2023 17:36:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A614CC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Dec 2023 22:11:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fV1sJxMriyTh60SAIXi7liP9zt+2ygBCARx0JGK9+4U=; b=ssQUEFHZUeYCofhnOrJvpcf9D3
-	L8Mda9W3RCS7XcA4tlg/olOzsmIl/YfCmy6fiR0UJHt0m27CczTaCu+mt+UeMKVCxmBSlzJohYkQc
-	Zi3/2vnB8Gsz7vRaOVbER/VCFTvD9oBrHaKqDQt4YpLSnKVtoXb8WAdvIdZGeoLgskZeAbNQA/Wa+
-	L8JNNfLemXicAxKwFcb7ro9Wpww+qBZoRNayXUCWXHuJ3pCO6bX6OMxin/LXtO8Icspz+0giFRKn6
-	lGRWxyFCGfhhDW4k8CosaQF3bvJrrBay3wOxbZB4tKk594e/F0QDMBKEWJBsNz63SFJ04irh7aQsc
-	wEmjwI/w==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xbBBqHh5fKcUfXzPQSFe7Mc3xQp0cVkOSlT5xsu4+tM=; b=LA+LPd5lCabV94HHJwYhPlnGG3
+	w+AYEQ8vfVHg60PUJe8pcQzzXQJrzWwlq0UUuTptSv9PH4QoX9EBWR4WaYT2ShWCOAiayRqCDqs/c
+	44nZu04SOcp/r4Fpmc1frz0wNoOc39xm+RecJqUewB+SMBVaS08xqbklD0meiIdfIz9kpTRj/XgMP
+	m0DtYYYO3e3zABDeUN6hv4bts3hYRRz7H1FhZRE/5Kl6cjwqM0qXc5JT7WzHU06I8IBaoAKDxBlw6
+	kMpxLSrWN5HCoxiufFLNrOsDV6at7MFBH98Y0neDMeVNObzwukxbfVrXfxz/OOIv758AOLq35+y0Q
+	IGVtKKPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rG0UO-000bVm-1T;
-	Wed, 20 Dec 2023 17:36:12 +0000
-Received: from relay6-d.mail.gandi.net ([217.70.183.198])
+	id 1rG4me-00122U-22;
+	Wed, 20 Dec 2023 22:11:20 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rG0UJ-000bTT-15;
-	Wed, 20 Dec 2023 17:36:10 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 40F9AC0007;
-	Wed, 20 Dec 2023 17:35:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1703093760;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=fV1sJxMriyTh60SAIXi7liP9zt+2ygBCARx0JGK9+4U=;
-	b=ps1VYKiciDXKUfDbjiWkSBN34+Qb+mbhQCYjPSZwOO0HdhCHI0u82ZTsWuNqBZctmkSGA7
-	70DC5cbNk4MxJq9m7kjenJaSCEAZvr3xt55QZMiROIc2q0RRi9mZTjZXIsXsUOrRkUU9Lx
-	3sAbnZqT78jUdW0ocXKc9zhczeGneQGerojtBts+AyOuR0xwEy370/nNwcGFltGXlf7Eql
-	dfntEUE1DzM6lizsRGe0Jkg+9oQEs4q7TCWA35k8Qk2pD3ph0WiJVFwfMoqPDkgNVPLbKx
-	g4so2m+oUR9EwiipDsthT3jSnQ3DAPrjE4BbFBgLAsn8oX+yGtb9SlGQbDRY8Q==
-From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: David Bauer <mail@david-bauer.net>,
-	mithat.guner@xeront.com,
-	erkin.bozoglu@xeront.com,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next] net: dsa: mt7530: register OF node for internal MDIO bus
-Date: Wed, 20 Dec 2023 19:35:39 +0200
-Message-Id: <20231220173539.59071-1-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.40.1
+	id 1rG4mc-00121z-14
+	for linux-mediatek@lists.infradead.org;
+	Wed, 20 Dec 2023 22:11:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id A940CCE180B
+	for <linux-mediatek@lists.infradead.org>; Wed, 20 Dec 2023 22:11:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E86A3C433CA
+	for <linux-mediatek@lists.infradead.org>; Wed, 20 Dec 2023 22:11:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1703110273;
+	bh=rxDWW9QQfeURQ6v06XkkImaEoG89S2ehL9UgQ+cUoeA=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=WGdmIwZrgaS4iKYsgfiyk4PJt2NEUCZdE82cSr+sKOgC46vX6YZwye7l0B69icPv7
+	 D72cgncPEjzaJhxcsk8bAFIcyB0PHq8Cl3b3awZ+tqoi3O+O/VMfonNqb65qhhQfQo
+	 +hrdyqTgoPpbMsNTRQQKdR+9R+ZwhZCfG6BAGK0X4p+8oYWm3qbliXgklmgwf2XO/b
+	 2GxuNMVEAMI6+bJ2u9Qq6Ed9gZN+DSAhLyvlfbtC3rmtiUnAoKqtH36qgBX2VOD91a
+	 kciaHzPSYJIEMYZJrDJ9yyam++bkFUZqCpTjsEoSSUYvyKoBoIWPebmeU6Db4HA3/F
+	 raKZP3himDs8Q==
+Received: by mail-lf1-f50.google.com with SMTP id 2adb3069b0e04-50e4e36c09cso53625e87.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 20 Dec 2023 14:11:13 -0800 (PST)
+X-Gm-Message-State: AOJu0YyTRK+2qTdtXVnfS63muBIBKXnuZxbshra0YN+TeCmyDZm5ot8r
+	byM5DV7FSQOEYKJPcQj5KMbNPh0ddaJ/HnG5Rmk=
+X-Google-Smtp-Source: AGHT+IEjwS9CUhYy5Y14XEyQPAzBrDZRuoUZgOQ5H8WeRazoWY/3VWAE0atf0hicbr0SYACedWqrgT52JeFq/jX9a0Q=
+X-Received: by 2002:a05:6512:15a2:b0:50e:3216:ca49 with SMTP id
+ bp34-20020a05651215a200b0050e3216ca49mr8560824lfb.3.1703110272104; Wed, 20
+ Dec 2023 14:11:12 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+References: <20231220092138.12830-1-mingyen.hsieh@mediatek.com> <20231220092138.12830-3-mingyen.hsieh@mediatek.com>
+In-Reply-To: <20231220092138.12830-3-mingyen.hsieh@mediatek.com>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Wed, 20 Dec 2023 16:11:00 -0600
+X-Gmail-Original-Message-ID: <CAGp9LzoB5FRiectZD4RL2m6twBicSZvk3TvBM9EQgrsPyHG69g@mail.gmail.com>
+Message-ID: <CAGp9LzoB5FRiectZD4RL2m6twBicSZvk3TvBM9EQgrsPyHG69g@mail.gmail.com>
+Subject: Re: [PATCH 2/4] wifi: mt76: mt7921: fix potential command timeout
+ issues when suspend
+To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+Cc: nbd@nbd.name, lorenzo@kernel.org, deren.wu@mediatek.com, 
+	Sean.Wang@mediatek.com, Soul.Huang@mediatek.com, Leon.Yen@mediatek.com, 
+	Eric-SY.Chang@mediatek.com, km.lin@mediatek.com, robin.chiu@mediatek.com, 
+	ch.yeh@mediatek.com, posh.sun@mediatek.com, Quan.Zhou@mediatek.com, 
+	Ryder.Lee@mediatek.com, Shayne.Chen@mediatek.com, 
+	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231220_093607_623888_E449B5F2 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20231220_141118_853507_3AEA15B5 
+X-CRM114-Status: GOOD (  16.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,51 +85,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: David Bauer <mail@david-bauer.net>
+Hi Mingyen,
 
-The MT753x switches provide a switch-internal MDIO bus for the embedded
-PHYs.
+On Wed, Dec 20, 2023 at 3:22=E2=80=AFAM Mingyen Hsieh
+<mingyen.hsieh@mediatek.com> wrote:
+>
+> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+>
+> An ongoing command may be interrupted if suspended, leading to a
+> command timeout. Add a lock to the suspend function in order to
+> protect the ongoing command from being interrupted.
+>
+> Signed-off-by: Leon Yen <leon.yen@mediatek.com>
+> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/pci.c
+> index 57903c6e4f11..e1c53f18abdc 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> @@ -409,7 +409,9 @@ static int mt7921_pci_suspend(struct device *device)
+>         if (err < 0)
+>                 goto restore_suspend;
+>
+> +       mt792x_mutex_acquire(dev);
+>         err =3D mt76_connac_mcu_set_hif_suspend(mdev, true);
+> +       mt792x_mutex_release(dev);
 
-Register a OF sub-node on the switch OF-node for this internal MDIO bus.
-This allows to configure the embedded PHYs using device-tree.
+I had assumed that all commands would finish up before the suspend
+handler is called, given that processes are frozen before the
+suspension can progress. Could you provide more details on the
+specific conflict between these two commands and how it results in the
+command timeout?
 
-Signed-off-by: David Bauer <mail@david-bauer.net>
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
- drivers/net/dsa/mt7530.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+Moreover, while I understand you've identified some potential issues,
+I suggest we work towards a comprehensive solution to address timeouts
+caused by potential command conflicts, not just for the specific
+command. For instance, we should take into account other MCU commands
+during suspension and extend this consideration to similar scenarios
+in SDIO suspension.
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 391c4dbdff42..f8ecc354630b 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2155,10 +2155,13 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
- {
- 	struct dsa_switch *ds = priv->ds;
- 	struct device *dev = priv->dev;
-+	struct device_node *np, *mnp;
- 	struct mii_bus *bus;
- 	static int idx;
- 	int ret;
- 
-+	np = priv->dev->of_node;
-+
- 	bus = devm_mdiobus_alloc(dev);
- 	if (!bus)
- 		return -ENOMEM;
-@@ -2177,7 +2180,9 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
- 	if (priv->irq)
- 		mt7530_setup_mdio_irq(priv);
- 
--	ret = devm_mdiobus_register(dev, bus);
-+	mnp = of_get_child_by_name(np, "mdio");
-+	ret = devm_of_mdiobus_register(dev, bus, mnp);
-+	of_node_put(mnp);
- 	if (ret) {
- 		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
- 		if (priv->irq)
--- 
-2.40.1
-
+>         if (err)
+>                 goto restore_suspend;
+>
+> --
+> 2.18.0
+>
+>
 
