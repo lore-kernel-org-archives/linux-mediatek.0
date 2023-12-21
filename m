@@ -4,76 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A094CC3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Dec 2023 03:27:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BBFEC46CD2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Dec 2023 06:56:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qlh/VbDYXlXEU1JaXc715148R0jpddLs+ZhwUrdEA90=; b=mvdo7b9iGIe8IOwvq1bodPuHJr
-	WL+QvKtOs9s6bsvRveGvq7xepB3eS2syvdYetaD7BUCY15nuTQd146/D0p+E1sfUChNc6Jj2OK6tw
-	dxubBkEGcU7A58+L7nRf+1voNfwqjJVQHQeIxqJvop7pG7CJ2EolFeRW+5xAkhbuZ8yeQ3KakCHqH
-	hv95fecOAyYLGjH+jgyma10iHeiPDUhl/mRTcczknn2Fa5MUreJ9ZUbJqxBuvEDulZWx/0Q8kGFb9
-	7hYNbNL4rMQbcLO9wllz/SA1OYLLH+8+H8//YmzsmFPsAfqp/Qc1vwXY8P4RThFnYNpbNA7XuAaGU
-	EIRLbAgQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
+	bh=9gFL3uCthOMnQkTwrbPanBRwPVZKyEWGArY0eovPAM8=; b=jHZktiUEwxpB2QjnHK16fNeyFj
+	MMzsr8nQUun0nP1lWbH8V9t9lihmS8FQNII3Yw6s5uRQhl4jVSwmzK2FfcYLRQ/WAbMkv8zxj2V/d
+	J7THZkfipVp/2SrFX0nRj0ZnLsM3NkxANwhgWi0za4aytosDonPEwMboKiost+J7l/QcfcecLGrXZ
+	5j+bhyn52HOwR0np/0u53jNejndx8LQzvftDBslFTM6f9ZXZcGbtpx/IXg/gV6LCajBvwkQwxab+i
+	J6nPZmfEPgWQc/kQvFDGHC/wcPngWzReOFOE6HjXYaZHJkJlXdi1BLnJnW95djFvug/8F9cxKi7XH
+	uev89fwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rG9ik-001bWO-1D;
-	Thu, 21 Dec 2023 03:27:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rGCzE-001rfi-0J;
+	Thu, 21 Dec 2023 06:56:52 +0000
+Received: from mailout1.samsung.com ([203.254.224.24])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rG9if-001bVi-1Z;
-	Thu, 21 Dec 2023 03:27:35 +0000
-X-UUID: dcfbcba29fb011ee9b09ad09c76753c8-20231220
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=qlh/VbDYXlXEU1JaXc715148R0jpddLs+ZhwUrdEA90=;
-	b=F5RWXqHPPTCwYDeM+Zckon9CTQAHP5hBqWehQOEoNSgOYogk8NQyQmBOGY8G2n6A9J67oAMM5+fW04FcKAjjXzHsIH/XNv85ENYea1vWUkO6gHze/aXIjYOc0qQbb/VQUpH9JXiNScjFx+4ohb/TRvw6ni6hLkfCos4TE4Rk0zY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:75ccbbb8-6bdc-4c16-a8a2-076d232c485c,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:5d391d7,CLOUDID:0b1a688d-e2c0-40b0-a8fe-7c7e47299109,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: dcfbcba29fb011ee9b09ad09c76753c8-20231220
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <chui-hao.chiu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 802695935; Wed, 20 Dec 2023 20:27:26 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 21 Dec 2023 11:26:49 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 21 Dec 2023 11:26:49 +0800
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Rob Herring <robh+dt@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-CC: Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <linux-wireless@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Peter Chiu <chui-hao.chiu@mediatek.com>
-Subject: [PATCH v4] dt-bindings: net: wireless: mt76: add interrupts description for MT7986
-Date: Thu, 21 Dec 2023 11:26:48 +0800
-Message-ID: <20231221032648.641-1-chui-hao.chiu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1rGCzA-001rec-2T
+	for linux-mediatek@lists.infradead.org;
+	Thu, 21 Dec 2023 06:56:50 +0000
+Received: from epcas1p2.samsung.com (unknown [182.195.41.46])
+	by mailout1.samsung.com (KnoxPortal) with ESMTP id 20231221065639epoutp01fc94ee46a78c3a332679e94419374bca~ixnFX0Aej2133721337epoutp01M
+	for <linux-mediatek@lists.infradead.org>; Thu, 21 Dec 2023 06:56:39 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.samsung.com 20231221065639epoutp01fc94ee46a78c3a332679e94419374bca~ixnFX0Aej2133721337epoutp01M
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1703141799;
+	bh=9gFL3uCthOMnQkTwrbPanBRwPVZKyEWGArY0eovPAM8=;
+	h=From:To:Cc:Subject:Date:References:From;
+	b=ZBbI+85OF6bbY1/CxE4PVDNoRdJqz9mMYEP9pm+SScfJI3wFUjoQ51HTqtrN8DN7P
+	 MyV6k5LRdVBBI59tNl61HEWxC6i+nEHKbYf/I89NtVl+HPdHdVL9FXt0Exc5ia4Wat
+	 g7L07k52Xdjr5QKS9zicIEjzA80sfD7aaDEEs4sU=
+Received: from epsnrtp4.localdomain (unknown [182.195.42.165]) by
+	epcas1p4.samsung.com (KnoxPortal) with ESMTP id
+	20231221065638epcas1p4bd597d940f7b5477bec514586d2dfdb3~ixnEy-5Ad1052110521epcas1p4E;
+	Thu, 21 Dec 2023 06:56:38 +0000 (GMT)
+Received: from epsmges1p5.samsung.com (unknown [182.195.36.225]) by
+	epsnrtp4.localdomain (Postfix) with ESMTP id 4Swh6s74hXz4x9Pv; Thu, 21 Dec
+	2023 06:56:37 +0000 (GMT)
+Received: from epcas1p3.samsung.com ( [182.195.41.47]) by
+	epsmges1p5.samsung.com (Symantec Messaging Gateway) with SMTP id
+	BB.0F.10025.5A1E3856; Thu, 21 Dec 2023 15:56:37 +0900 (KST)
+Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
+	epcas1p2.samsung.com (KnoxPortal) with ESMTPA id
+	20231221065637epcas1p203dcd5cfb1d4a3964fff9543a041d78d~ixnDvEQvp2639826398epcas1p2V;
+	Thu, 21 Dec 2023 06:56:37 +0000 (GMT)
+Received: from epsmgms1p2new.samsung.com (unknown [182.195.42.42]) by
+	epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
+	20231221065637epsmtrp134b2375a6dabf4539c8f416dedb1a507~ixnDs1CTz3242132421epsmtrp1U;
+	Thu, 21 Dec 2023 06:56:37 +0000 (GMT)
+X-AuditID: b6c32a39-9d9ff70000002729-94-6583e1a5ee57
+Received: from epsmtip2.samsung.com ( [182.195.34.31]) by
+	epsmgms1p2new.samsung.com (Symantec Messaging Gateway) with SMTP id
+	D3.72.08817.5A1E3856; Thu, 21 Dec 2023 15:56:37 +0900 (KST)
+Received: from localhost.localdomain (unknown [10.253.100.232]) by
+	epsmtip2.samsung.com (KnoxPortal) with ESMTPA id
+	20231221065637epsmtip2a3a1ef3dce1a1ec17cf901744b8b121e~ixnDXVdkT2484324843epsmtip2t;
+	Thu, 21 Dec 2023 06:56:37 +0000 (GMT)
+From: Chanwoo Lee <cw9316.lee@samsung.com>
+To: alim.akhtar@samsung.com, avri.altman@wdc.com, bvanassche@acm.org,
+	jejb@linux.ibm.com, martin.petersen@oracle.com, peter.wang@mediatek.com,
+	chu.stanley@gmail.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, stanley.chu@mediatek.com,
+	quic_cang@quicinc.com, mani@kernel.org, quic_asutoshd@quicinc.com,
+	powen.kao@mediatek.com, quic_nguyenb@quicinc.com,
+	yang.lee@linux.alibaba.com, beanhuo@micron.com, Arthur.Simchaev@wdc.com,
+	ebiggers@google.com, linux-scsi@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: grant.jung@samsung.com, jt77.jang@samsung.com, dh0421.hwang@samsung.com,
+	sh043.lee@samsung.com, ChanWoo Lee <cw9316.lee@samsung.com>
+Subject: [PATCH v2] ufs: mcq: Adding a function for MCQ enable
+Date: Thu, 21 Dec 2023 15:56:08 +0900
+Message-Id: <20231221065608.9899-1-cw9316.lee@samsung.com>
+X-Mailer: git-send-email 2.29.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
+X-Brightmail-Tracker: H4sIAAAAAAAAA01Ta0xTZxjO13N6WnDMQ2XuGxpW6zYirEChwIcBHJFsZ2PZ2OXXloWd0LNC
+	oJf1IsNk4ChyqYqiTKWiIIPCkK6kXERWkJaFjo0pF0WQEEBGBCMKCA4ZjrUUN/8975Pn+d73
+	eb+8XIyXz/Hlpso1jEpOpwsIT7yla0+wsHpSx4T8fD4cTVxoIdDAjxAVFhvZaPbJTQLZJgtx
+	dHr+CYaW+q9i6OxveWzUMdTDQf2Xctlo9amZgyqHW1io9W4vB1mmhthosK2MQIO6foCO3Gol
+	UOd8HUA1jn9YKCc3DDUv/s1Gc2PrOLpYcB5HJ4caCPT9jIODctY6cFTdPALQg++6wFs7qcEb
+	CVTrWBWgrhjGOFSFRUtZ6goJ6spkFHWishNQjVXZVG7PVZz6y1xAUAvTt3Gq2JpFFTXVAeqR
+	xY/K7zzCStz6WVp0CkNLGBWfkScrJKlyaYwg4ZOk/UnhESEioSgKRQr4clrGxAji308Uvp2a
+	7lyNgH+ATtc6qURarRYEx0arFFoNw09RqDUxAkYpSVdGKIPUtEytlUuD5IxmrygkJDTcKfwy
+	LaWrY4qt7N35TV/J9kPgFNQDDy4kxbBqfZnlwjyyFcBho1YPPJ14EcAzOivhLh4DaDtnZOsB
+	d8PRbcpw8+0AXrL14e5iCcCcu/cwl4ggA+Bod4KL9yFncDhtrGW5CozUA7hq0+OuftvIWNiw
+	eHkD4+TrcGLoNMeFvci98FixFbjnexWujR/F3Lw37Cn9c0OPOXld8znM9Sgkf/CAlY9MbLch
+	HlabB1huvA3eczRx3NgXzh7P47gNOgAv3ndsuk8AuLQwSrhV+6DusI5wZcDIPdDcFuzu9iJ8
+	sHx0M78XLMjjudWvwTL9NeLZ+wvDU5szULCr7yRwyXnkF/BxueIE8DM8F8HwXATD/70qAFYH
+	tjNKtUzKqEXK8P8+Mlkhs4CNiwiIagVn5uaD7IDFBXYAuZjAx6u9MIfheUnozIOMSpGk0qYz
+	ajsIdy61GPN9KVnhPCm5JkkkjgoRR4SKUVhUWITgZa/eGwcYHimlNUwawygZ1TMfi+vhe4hV
+	0Gq4ExYo1+2X6D/99R0yPLKiqM0k03dKPs79/I6k/PauHddrFt5c42fWrTwspu3l0kz/xbJu
+	fkznRIzQT3Ph/lokHbdLeqrhp/cM9LH2rHph79zgG/b4F0ZKSsiFLfHr7/5hxXYn2G+FFvkH
+	ZJrzqfGh5f5YUy17aWqW2ve12bvUKPSR1gfFzc78nmFdEYyu9gUEmU1BfhkTiy0TvezSkkbH
+	9IA5UwW5uuoPxjOmcV1T/cODK/Em6/Gtnteyz/puaXB8FK37dndXcrAx8PpXS8PsnF8sH8Zl
+	1wZetuywiguiCw/XaEZeuSmz2QxNRovYOwU1+D+d54P8rK7G1AUBrk6hRQGYSk3/C5urgJia
+	BAAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA02RfVDLcRzH77vfw351pp/q+EqnjDx0pyKnL0c4h99dOo7zFIedftZOm2wl
+	+aOy7dSWnjA0SWJcG8lSVk1bLTHH9cSQ2ynPIlYhJWF17vz3vtf7de/PHx8K87bifpRIkshK
+	JYJ4PumJV9n4AXN1XQo2rKODhzqLqkjUVgqRKv8ygT4MPiZRfZcKR6dcgxj62mrB0Jn7RwlU
+	57BzUatBSaChX9e5qORpFQeZ3j3gIuMrB4HaawpJ1K5oBSjriYlEVpceoCt3RzhIrgxHlX0/
+	CdTj/I2jC5nncHTcUU4izfu7XCQfrsORrvIZQJ+P2MByf6b9URRjcl4CTLXWyWWKjUmMUa8i
+	mequRUxeiRUwFZfSGKXdgjMD1zNJpvdNB87km1OZnJt6wPQbpzIZ1izOeq8YzyWxbLzoICsN
+	jdztGWere0UkPPA/1HJyYjo4AdWAoiC9ADZdS1YDT8qbrgVQ90ODqYHHX+4Hay3N5JjjA202
+	2ZjTB6DT/p1wc5IOhs+boty6Ly0noFId6HYwOg/Ai496Rnd86EhY3ncLd2ecDoKdjlNcd+bR
+	i2F2vhmM3QqAwy+OYWN8ArQXvB71sb9cUXkWywPjtf9V2v+qYsDRg8lsgkwsFMvmJcyXsMkh
+	MoFYliQRhuzZLzaC0ScHB5uAWe8KaQAcCjQASGF8X95tlZz15sUKUg6z0v27pEnxrKwBTKFw
+	/iTe94/Zsd60UJDI7mPZBFb6r+VQHn7pnEmxmh0r78yO1jjqSzICVMve7R7YGt2vHnGsaItJ
+	zh1qvBF2r3Ny+tXOhzNVkRviDKff2geflCkHI4SKJuR71o/rKmu2XKgXCZIOWmq7jw+Z10wp
+	lu9sdPbD4YqWxqXlU4tCX256fl8aYZxO+NRHFJ3fluoVZpgWFJg68E2HWjeOHKAXSgptIZhH
+	WUnPnrTMovgwl3yBskahywvcYpjDwSMTpd3XVOsHiC2/yvYOa7OEYMOncYLEn9vbl2m+1sw2
+	LN8c9SUg25rdlGLMeRYqWu1fED69t2FtRuGsY9rwq+Kg8yLSq892Irp0Y/W6Ga9Ls1y3VhWc
+	NltMOblcw0w8t5mPy+IE84IxqUzwBxykXBJTAwAA
+X-CMS-MailID: 20231221065637epcas1p203dcd5cfb1d4a3964fff9543a041d78d
+X-Msg-Generator: CA
+Content-Type: text/plain; charset="utf-8"
+CMS-TYPE: 101P
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20231221065637epcas1p203dcd5cfb1d4a3964fff9543a041d78d
+References: <CGME20231221065637epcas1p203dcd5cfb1d4a3964fff9543a041d78d@epcas1p2.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231220_192733_531127_DD812AB0 
-X-CRM114-Status: GOOD (  12.13  )
+X-CRM114-CacheID: sfid-20231220_225649_115222_2AAD2CEF 
+X-CRM114-Status: GOOD (  20.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,83 +145,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mt7986 can support four interrupts to distribute the interrupts
-to different CPUs.
+From: ChanWoo Lee <cw9316.lee@samsung.com>
 
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
----
-v2: Change to use description instead of using items.
-v3: Change to use items and set different minItems for mediatek,mt7986-wmac
-v4: Move allOf after required and remove duplicated blank line.
----
- .../bindings/net/wireless/mediatek,mt76.yaml  | 32 ++++++++++++++++---
- 1 file changed, 27 insertions(+), 5 deletions(-)
+The REG_UFS_MEM_CFG register is too general(broad)
+and it is difficult to know the meaning only with a value of 0x1.
+So far, comments were required.
 
-diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-index 252207adbc54..0c6835db397f 100644
---- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-+++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-@@ -19,9 +19,6 @@ description: |
-   Alternatively, it can specify the wireless part of the MT7628/MT7688
-   or MT7622/MT7986 SoC.
+Therefore, I have added new functions and defines
+to improve code readability/reusability.
+
+Signed-off-by: ChanWoo Lee <cw9316.lee@samsung.com>
+
+* v1->v2:
+   1) Excluding ESI_ENABLE
+   2) Replace with ufshcd_rmwl, BIT()
+   3) Separating hba->mcq_enabled
+---
+ drivers/ufs/core/ufs-mcq.c      | 6 ++++++
+ drivers/ufs/core/ufshcd.c       | 4 +---
+ drivers/ufs/host/ufs-mediatek.c | 4 +---
+ include/ufs/ufshcd.h            | 1 +
+ include/ufs/ufshci.h            | 3 +++
+ 5 files changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index 0787456c2b89..edc752e55878 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -399,6 +399,12 @@ void ufshcd_mcq_enable_esi(struct ufs_hba *hba)
+ }
+ EXPORT_SYMBOL_GPL(ufshcd_mcq_enable_esi);
  
--allOf:
--  - $ref: ieee80211.yaml#
--
- properties:
-   compatible:
-     enum:
-@@ -38,7 +35,12 @@ properties:
-       MT7986 should contain 3 regions consys, dcm, and sku, in this order.
- 
-   interrupts:
--    maxItems: 1
-+    minItems: 1
-+    items:
-+      - description: major interrupt for rings
-+      - description: additional interrupt for ring 19
-+      - description: additional interrupt for ring 4
-+      - description: additional interrupt for ring 5
- 
-   power-domains:
-     maxItems: 1
-@@ -217,6 +219,23 @@ required:
-   - compatible
-   - reg
- 
-+allOf:
-+  - $ref: ieee80211.yaml#
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt7986-wmac
-+    then:
-+      properties:
-+        interrupts:
-+          minItems: 4
-+    else:
-+      properties:
-+        interrupts:
-+          maxItems: 1
++void ufshcd_mcq_enable(struct ufs_hba *hba)
++{
++	ufshcd_rmwl(hba, MCQ_MODE_SELECT, MCQ_MODE_SELECT, REG_UFS_MEM_CFG);
++}
++EXPORT_SYMBOL_GPL(ufshcd_mcq_enable);
 +
- unevaluatedProperties: false
+ void ufshcd_mcq_config_esi(struct ufs_hba *hba, struct msi_msg *msg)
+ {
+ 	ufshcd_writel(hba, msg->address_lo, REG_UFS_ESILBA);
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index ae9936fc6ffb..30df6f6a72c6 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -8723,9 +8723,7 @@ static void ufshcd_config_mcq(struct ufs_hba *hba)
+ 	hba->host->can_queue = hba->nutrs - UFSHCD_NUM_RESERVED;
+ 	hba->reserved_slot = hba->nutrs - UFSHCD_NUM_RESERVED;
  
- examples:
-@@ -293,7 +312,10 @@ examples:
-         reg = <0x18000000 0x1000000>,
-               <0x10003000 0x1000>,
-               <0x11d10000 0x1000>;
--        interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>;
-+        interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>,
-+                     <GIC_SPI 214 IRQ_TYPE_LEVEL_HIGH>,
-+                     <GIC_SPI 215 IRQ_TYPE_LEVEL_HIGH>,
-+                     <GIC_SPI 216 IRQ_TYPE_LEVEL_HIGH>;
-         clocks = <&topckgen 50>,
-                  <&topckgen 62>;
-         clock-names = "mcu", "ap2conn";
+-	/* Select MCQ mode */
+-	ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | 0x1,
+-		      REG_UFS_MEM_CFG);
++	ufshcd_mcq_enable(hba);
+ 	hba->mcq_enabled = true;
+ 
+ 	dev_info(hba->dev, "MCQ configured, nr_queues=%d, io_queues=%d, read_queue=%d, poll_queues=%d, queue_depth=%d\n",
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index fc61790d289b..1048add66419 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -1219,9 +1219,7 @@ static int ufs_mtk_link_set_hpm(struct ufs_hba *hba)
+ 		ufs_mtk_config_mcq(hba, false);
+ 		ufshcd_mcq_make_queues_operational(hba);
+ 		ufshcd_mcq_config_mac(hba, hba->nutrs);
+-		/* Enable MCQ mode */
+-		ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | 0x1,
+-			      REG_UFS_MEM_CFG);
++		ufshcd_mcq_enable(hba);
+ 	}
+ 
+ 	if (err)
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index d862c8ddce03..a96c45fa4b4b 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -1257,6 +1257,7 @@ unsigned long ufshcd_mcq_poll_cqe_lock(struct ufs_hba *hba,
+ 					 struct ufs_hw_queue *hwq);
+ void ufshcd_mcq_make_queues_operational(struct ufs_hba *hba);
+ void ufshcd_mcq_enable_esi(struct ufs_hba *hba);
++void ufshcd_mcq_enable(struct ufs_hba *hba);
+ void ufshcd_mcq_config_esi(struct ufs_hba *hba, struct msi_msg *msg);
+ 
+ int ufshcd_opp_config_clks(struct device *dev, struct opp_table *opp_table,
+diff --git a/include/ufs/ufshci.h b/include/ufs/ufshci.h
+index d5accacae6bc..2a6989a70671 100644
+--- a/include/ufs/ufshci.h
++++ b/include/ufs/ufshci.h
+@@ -282,6 +282,9 @@ enum {
+ /* UTMRLRSR - UTP Task Management Request Run-Stop Register 80h */
+ #define UTP_TASK_REQ_LIST_RUN_STOP_BIT		0x1
+ 
++/* REG_UFS_MEM_CFG - Global Config Registers 300h */
++#define MCQ_MODE_SELECT 	BIT(0)
++
+ /* CQISy - CQ y Interrupt Status Register  */
+ #define UFSHCD_MCQ_CQIS_TAIL_ENT_PUSH_STS	0x1
+ 
 -- 
-2.18.0
+2.29.0
 
 
