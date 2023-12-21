@@ -4,92 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C6E0C35274
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Dec 2023 08:57:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63290C35274
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Dec 2023 09:23:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=16IxcBEYZK9twQ1G/yQmRxe1As8IXBcEe8yradY/0k8=; b=jUk309DGD4WjAYy17wRVuYLfA3
-	2sBUorK+prj4VlYFLS4Bp8hIvB3EohpEHp5u6oSnk13GZ3Yl5RRBNvNodzGV8u2GJlP9t6ZdLoqtZ
-	b/SPRNU37gjd5622UQmJtBP2CEHC1iLzjgFcU71wvEEqlY11j2rZWW2atIwOgJ+I8j9wc/8Ks6anw
-	GCxS5T0YozY9dE4plyWWetVSgf/RiBPTAz8JgchXXauhCyG7QQGAKdlwe/pHD/jX7gkwvztOS2WXK
-	a0Q5cgigfEXKpVkMiKQPzzmpliiiIg+LHBtsCiM9HkkzU6zJrdkjeOXxpJqpaLMPJuXWtF+y/ss3A
-	pYX8/HFw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Kg7QV/oFyp9DuWfL+Kx8o8ppQQ1Ib7IJOm2jNNQfg5c=; b=gzgzyRATf5N+NC
+	wnPh/du22AM43My/wMJmXHsFpVmZxy1+/hxAUPSPmt7tdqr71C/1vb7YfbKrsO//afrQ6oKMcWEVE
+	FBg0TCKglb3UnSOHA2SQ96NlwwgKERe1gB4JqMOsAFiom93+KQFVCUy8fkIE7cJ10kso5TTx7RM/8
+	kktyNRikdWIbbUIgzlJbomDfiuwc8J+49+lG8zT8aT1vQusr4Z/XPc9OUb4Iqe/HGns+KA1oFWQTu
+	4BxbRk42gksW0Zld2c8JDypuMxWgw/jXlRVwnFiI8d2QTnPpGQ9qKr5n+hcYx5IUFOeKC5wZMkcuw
+	AxY/T/fpLw4nOexbHTyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGErZ-0026uN-1l;
-	Thu, 21 Dec 2023 08:57:05 +0000
-Received: from fllv0016.ext.ti.com ([198.47.19.142])
+	id 1rGFH0-002FGn-22;
+	Thu, 21 Dec 2023 09:23:22 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGErV-0026tU-2B;
-	Thu, 21 Dec 2023 08:57:03 +0000
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
-	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 3BL8uVRa014634;
-	Thu, 21 Dec 2023 02:56:31 -0600
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1703148991;
-	bh=16IxcBEYZK9twQ1G/yQmRxe1As8IXBcEe8yradY/0k8=;
-	h=Date:Subject:To:CC:References:From:In-Reply-To;
-	b=EOiQtYjbdl2KdH+EqJDqJOwxPYmI0wE86tJ4Tnkq8/vVJSZUFOmfo4lpTPaWuPq5n
-	 3QijJeWBLHvfBjtlGFYHgFyDfYNTVn0nbchvNpw0A2PKGb5wZjMGQuEF7tc/fDfRd8
-	 qh5RE1qqwq39c49MQzZM0+Nmrlzj95WReElkv5OE=
-Received: from DLEE102.ent.ti.com (dlee102.ent.ti.com [157.170.170.32])
-	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 3BL8uVCH063030
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 21 Dec 2023 02:56:31 -0600
-Received: from DLEE106.ent.ti.com (157.170.170.36) by DLEE102.ent.ti.com
- (157.170.170.32) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Thu, 21
- Dec 2023 02:56:31 -0600
-Received: from lelvsmtp6.itg.ti.com (10.180.75.249) by DLEE106.ent.ti.com
- (157.170.170.36) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Thu, 21 Dec 2023 02:56:31 -0600
-Received: from [172.24.227.247] (uda0500640.dhcp.ti.com [172.24.227.247])
-	by lelvsmtp6.itg.ti.com (8.15.2/8.15.2) with ESMTP id 3BL8uORk081324;
-	Thu, 21 Dec 2023 02:56:25 -0600
-Message-ID: <d78949f0-bb03-82ea-b40f-1bb92b41e200@ti.com>
-Date: Thu, 21 Dec 2023 14:26:24 +0530
+	id 1rGFGx-002FDN-0f
+	for linux-mediatek@lists.infradead.org;
+	Thu, 21 Dec 2023 09:23:20 +0000
+Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-6d089e8b1b2so366219b3a.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 21 Dec 2023 01:23:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1703150597; x=1703755397; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Kg7QV/oFyp9DuWfL+Kx8o8ppQQ1Ib7IJOm2jNNQfg5c=;
+        b=Dfpj4FWXYGe/S9a99HRn8j3folTGBjmsbIYrkXVINAZJOdtV0knj+YO8fo18AGZLX7
+         FTCGQyPL5GWy6pC2VMXIAV8gKRnWbyBFUz1/w9OQo/QpXZ3Tj2immDVhIP48fJ/iUSI/
+         hEB9o6XHHB1ihJCXrcvIgIhUmxS507jk0t5wg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1703150597; x=1703755397;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Kg7QV/oFyp9DuWfL+Kx8o8ppQQ1Ib7IJOm2jNNQfg5c=;
+        b=XJ+xGNZVmdkgde63x8MLXo04YagiDi0NMYAQBoY+hjC6YVwQWaCs/YGhAUeF+odmxW
+         8lp2oZZ8fcXCgs8201faWxnv45LrQwC/6pph4w4aBybxwfNLmvmvq+5SykDUt2djm1ww
+         JF1GnliLd91ozOoSUC0rHJgLaZvGnkTxyKew6FvCsx5Uzv75cbgCSXI6h4MuUQTqnjrm
+         BTJvfSYVluyBeOBU+lhr7L5dVKknMdh7R+PkdVLzLAGfuoSOsRVc6o11bbnxlKrs0Van
+         GBByS88SA2+8iPQjoevqRSHNxhx15J6nj1OjyahjXbBK/bmUQfHixPVntfENI8xVg2Vc
+         kGCw==
+X-Gm-Message-State: AOJu0Ywc0banBdU1AwGLOjCn8sqKEbzP5fU6DZ9+2Lqd9P8A6bUugjjS
+	DRTm2OlQgq5jvgvTMznRokRjLg==
+X-Google-Smtp-Source: AGHT+IFDxUKLBz3VGC2yCoNsiSxvdSiRStRV4vEwYMcZ1GLlryESWkqSr0FR8fSbQq7cz7HdROcAPg==
+X-Received: by 2002:a05:6a20:548c:b0:18f:97c:8235 with SMTP id i12-20020a056a20548c00b0018f097c8235mr778237pzk.63.1703150596960;
+        Thu, 21 Dec 2023 01:23:16 -0800 (PST)
+Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:5d8a:fab1:933a:9ae9])
+        by smtp.gmail.com with ESMTPSA id l6-20020a17090add8600b00274b035246esm1001915pjv.1.2023.12.21.01.23.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 21 Dec 2023 01:23:16 -0800 (PST)
+From: Fei Shao <fshao@chromium.org>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 0/4] Improvement around mtk_vcodec_mem_free() logging and usage
+Date: Thu, 21 Dec 2023 17:17:42 +0800
+Message-ID: <20231221092226.1395427-1-fshao@chromium.org>
+X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH net-next] net: dsa: mt7530: register OF node for internal
- MDIO bus
-Content-Language: en-US
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-        Daniel Golle
-	<daniel@makrotopia.org>,
-        Landen Chao <Landen.Chao@mediatek.com>,
-        DENG
- Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
-        Andrew Lunn
-	<andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
-        Vladimir Oltean
-	<olteanv@gmail.com>,
-        "David S. Miller" <davem@davemloft.net>,
-        Eric Dumazet
-	<edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
-        Paolo Abeni
-	<pabeni@redhat.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: David Bauer <mail@david-bauer.net>, <mithat.guner@xeront.com>,
-        <erkin.bozoglu@xeront.com>, <netdev@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>,
-        Ravi Gunasekaran <r-gunasekaran@ti.com>
-References: <20231220173539.59071-1-arinc.unal@arinc9.com>
-From: Ravi Gunasekaran <r-gunasekaran@ti.com>
-In-Reply-To: <20231220173539.59071-1-arinc.unal@arinc9.com>
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231221_005701_863317_67800C31 
-X-CRM114-Status: GOOD (  21.13  )
+X-CRM114-CacheID: sfid-20231221_012319_270771_3076ECB1 
+X-CRM114-Status: GOOD (  10.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,64 +81,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, linux-kernel@vger.kernel.org, Xiaoyong Lu <xiaoyong.lu@mediatek.com>, linux-mediatek@lists.infradead.org, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
+This series includes some improvements around mtk_vcodec_mem_free() in
+mtk_vcodec_util.c.
 
-On 12/20/23 11:05 PM, Arınç ÜNAL wrote:
-> From: David Bauer <mail@david-bauer.net>
-> 
-> The MT753x switches provide a switch-internal MDIO bus for the embedded
-> PHYs.
-> 
-> Register a OF sub-node on the switch OF-node for this internal MDIO bus.
-> This allows to configure the embedded PHYs using device-tree.
-> 
-> Signed-off-by: David Bauer <mail@david-bauer.net>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> ---
->  drivers/net/dsa/mt7530.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 391c4dbdff42..f8ecc354630b 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -2155,10 +2155,13 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
->  {
->  	struct dsa_switch *ds = priv->ds;
->  	struct device *dev = priv->dev;
-> +	struct device_node *np, *mnp;
->  	struct mii_bus *bus;
->  	static int idx;
->  	int ret;
->  
-> +	np = priv->dev->of_node;
-> +
->  	bus = devm_mdiobus_alloc(dev);
->  	if (!bus)
->  		return -ENOMEM;
-> @@ -2177,7 +2180,9 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
->  	if (priv->irq)
->  		mt7530_setup_mdio_irq(priv);
->  
-> -	ret = devm_mdiobus_register(dev, bus);
-> +	mnp = of_get_child_by_name(np, "mdio");
+I noticed that mtk_vcodec_mem_free() generates a spurious error if the
+target DMA buffer has been freed previously:
+  mtk_vcodec_mem_free(),69: [MTK_V4L2][ERROR] 18000000.video-codec
+  dma_free size=0 failed!
 
-If the node is not found, then the return value would be NULL.
-Though devm_of_mdiobus_register() and of_node_put() take care of NULL references,
-other drivers that use devm_of_mdiobus_register() mostly perform a early exit if the node is NULL.
+The warning is harmless, but it brings some confusion to our developers
+and testing infra, so I sent this series to fix that with some minor
+improvement for the driver alongside.
 
+The first two patches are for aesthetic and style improvements, the
+third tries to make the error logs more informative, and the last adds
+back the missing checks when calling the free function.
 
-> +	ret = devm_of_mdiobus_register(dev, bus, mnp);
-> +	of_node_put(mnp);
->  	if (ret) {
->  		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
->  		if (priv->irq)
+Regards,
+Fei
+
+v1: https://lore.kernel.org/all/20231113123049.4117280-1-fshao@chromium.org/
+
+Changes in v2:
+- rebased on top of next-20231219
+- revise commit message for clearer intention and rationale
+- update the error messages based on the suggestion
+
+Fei Shao (4):
+  media: mediatek: vcodec: Replace dev_name in error string
+  media: mediatek: vcodec: Drop unnecessary variable
+  media: mediatek: vcodec: Update mtk_vcodec_mem_free() error messages
+  media: mediatek: vcodec: Only free buffer VA that is not NULL
+
+ .../mediatek/vcodec/common/mtk_vcodec_util.c  | 23 +++++++++----------
+ .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c | 22 ++++++++++++------
+ .../vcodec/encoder/venc/venc_h264_if.c        |  5 ++--
+ 3 files changed, 29 insertions(+), 21 deletions(-)
 
 -- 
-Regards,
-Ravi
+2.43.0.472.g3155946c3a-goog
+
 
