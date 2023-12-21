@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D584C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Dec 2023 17:16:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08AFBC46CCD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Dec 2023 22:29:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KYyPnYDxgSY2w5lQbQ4Uzqfc6EirewJcVQ2sGdgWkNE=; b=i0V2/R6nUau32Zu3+6c4qBuSDU
-	X81BQzhj7cHYvMXynCCEZQmdSUmAsULw8cXfFWpEF4j5gxAAaTAxDj6BrP5Ctn7Kbr5sg/2aiE2L3
-	m2hHtaivp4yWx7IhNxmM5qVvfK59VF9t10lOymE9ze802Jyu4slCyBPi3kRSgX42WKMbtjlPqy1PG
-	h84qlDGuB/433wL7GhdhemvLS2wv+gX5g8OvkpL8UXduGnIjgfgHZl/O37get6d8X8d72/IOGGxZx
-	7VBc9zmcCX4cObkaWAXcZX1t3Yshp7BUodamdmTKWSurcW9XKzEAhLzvSUZwtUyJK2G0ytsGymZdM
-	MCYmyvZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hUiKqlE2CAG2qliENKeXRMA9l6Bd2IWc9WFFo7nrKmc=; b=AeaSlbT3db2wUjavxOPt9KxUIi
+	z6QV1v/wBoxLyD2CN3bppbUO6YIqSGeEpViYsdWXa8NoqYeB/A7LXxZ5Irl9PHipJoR5alxvSg4Ck
+	1JsGQvW4jeRJlOUTD1kCO0G0vV7bZ9UBgpUI3nlBNbl7vmt7QUg/24tOPDZrrijPYIUwCarJ1Xyf3
+	AQRwgcqc9o/UR6ZuUyYkZzFdfSVfHdNkihr2o3GPLj3QNSW7FUzPbDgGZB7p+HGaBUylAcSdUbHqt
+	XMLxyiBujz2NKUFlHOdx4vRZp57mWPZQ55zXGHGz7dpLsXmXh0Lsh+QuYh3gwHMftK5ydOczVHCKI
+	uAtGpj5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGMeg-003bhO-1c;
-	Thu, 21 Dec 2023 17:16:18 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rGRXw-004Jn2-14;
+	Thu, 21 Dec 2023 22:29:40 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGMeS-003bd8-19;
-	Thu, 21 Dec 2023 17:16:05 +0000
+	id 1rGRXt-004JlF-07;
+	Thu, 21 Dec 2023 22:29:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B8F4461A11;
-	Thu, 21 Dec 2023 17:16:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A9BCC433C8;
-	Thu, 21 Dec 2023 17:15:59 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 6FEFBCE203C;
+	Thu, 21 Dec 2023 22:29:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 227AAC433C8;
+	Thu, 21 Dec 2023 22:29:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1703178963;
-	bh=ddkCtqedJXUfrPiPFVW9vL0khrWJ0HeXZyzlFi+7ZN0=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=XllADW8fzqgI6ZGH4zVju2IL8ZRfeJQIDo7nwhIGPXo5s7p7HBGyUtX9nYCc1qUdh
-	 ETZuKyc9WwEEf5ZDax/GJ5iQrwJCLnHZpjkyDrsMDjTpcPf7aMtwwz+L8fe2kfKnnO
-	 jiuPzMYidXNe6vU1pS00Khwr8ffSccCnlQgMjvTFZ0eZi438AcS+B2PzXPSx9birN0
-	 FvwDAUI0cLzcfEXKuGFqLdTDkHEvtpcXmN5ZC77EKrK87clIVfvsjzwIX6wYbksbD6
-	 9yuABNt3RX3FjRiVjSAVzKJ5ESnBhXF4daUM6bEfWQQH8nIgE3ikiGZx6f6bF//cGp
-	 gyZHPHz2qln0Q==
-From: Vinod Koul <vkoul@kernel.org>
-To: Rob Herring <robh+dt@kernel.org>, 
- Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <20231211025624.28991-1-chunfeng.yun@mediatek.com>
-References: <20231211025624.28991-1-chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v2 1/2] dt-bindings: phy: mediatek: tphy: add a
- property for force-mode switch
-Message-Id: <170317895962.712473.102387666807925662.b4-ty@kernel.org>
-Date: Thu, 21 Dec 2023 22:45:59 +0530
+	s=k20201202; t=1703197774;
+	bh=3olSdqCH1RJ2MPrPxBn2yqWGIxPoGVfij5wrm0E4WBw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WQmpAzbQVhum7pt8MnB5a/VRcUcuMzWWOygOildljSPEjspTWsN83Xs3do5JEyt4B
+	 wOCQgDpqhdFiW0WB/4sfRaIcd+qt5e7eTZSHRVCWTIFXFmZWl3uUc4gJ5glMTBM9pC
+	 8opfAwrvBB5vm3T4T6bfmRyk3L3xtHbGRrKQgs+ztgCeb9W7qwzwX0LS/nQOPDFmk/
+	 1J9++p45KKmNAvXL4jeQgaDDYSYHdw4nnmacHwrGB/e20j87aqa572TAD0p2q4cdB8
+	 Q8cHuXjlwkKXyyGPSr03UR34eKjWumho6+z1zy94B2cm6b2v72lysJKg8LDsDKrji0
+	 zqwj9JXTs/AeA==
+Received: (nullmailer pid 205437 invoked by uid 1000);
+	Thu, 21 Dec 2023 22:29:32 -0000
+Date: Thu, 21 Dec 2023 16:29:32 -0600
+From: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Moudy Ho <moudy.ho@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v10 02/16] dt-bindings: media: mediatek: mdp3: merge the
+ indentical RDMA under display
+Message-ID: <20231221222932.GA196757-robh@kernel.org>
+References: <20231220100853.20616-1-moudy.ho@mediatek.com>
+ <20231220100853.20616-3-moudy.ho@mediatek.com>
+ <250fead9-868b-4063-a054-4cb966dc4ba3@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.12.3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <250fead9-868b-4063-a054-4cb966dc4ba3@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231221_091604_435961_057A7DEC 
-X-CRM114-Status: UNSURE (   8.64  )
+X-CRM114-CacheID: sfid-20231221_142937_242938_079474DA 
+X-CRM114-Status: UNSURE (   9.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,27 +75,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, 11 Dec 2023 10:56:23 +0800, Chunfeng Yun wrote:
-> Due to some old SoCs with shared t-phy between usb3 and pcie only support
-> force-mode switch, and shared and non-shared t-phy may exist at the same
-> time on a SoC, can't use compatible to distinguish between shared and
-> non-shared t-phy, add a property to supported it.
-> Currently, only support switch from default pcie mode to usb3 mode.
-> But now prefer to use "mediatek,syscon-type" on new SoC as far as possible.
+On Thu, Dec 21, 2023 at 10:28:52AM +0100, Krzysztof Kozlowski wrote:
+> On 20/12/2023 11:08, Moudy Ho wrote:
+> > To simplify maintenance and avoid branches, the identical component
+> > should be merged and placed in the path belonging to the MDP
+> > (from display/* to media/*).
 > 
-> [...]
+> Combining bindings into one bigger meta-binding makes it usually more
+> difficult to maintain and review.
 
-Applied, thanks!
+Yeah, but these mediatek blocks appear to be used for both display and 
+video codec pipelines. So having different bindings was probably wrong 
+to start with.
 
-[1/2] dt-bindings: phy: mediatek: tphy: add a property for force-mode switch
-      commit: cc230a4cd8e91f64c90b5494dfd76848197418ed
-[2/2] phy: mediatek: tphy: add support force phy mode switch
-      commit: 9b27303003f5af0d378f29ccccea57c7d65cc642
-
-Best regards,
--- 
-~Vinod
-
-
+Rob
 
