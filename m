@@ -4,133 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BBFEC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Dec 2023 06:56:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47B90C46CD4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Dec 2023 08:20:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
-	bh=9gFL3uCthOMnQkTwrbPanBRwPVZKyEWGArY0eovPAM8=; b=jHZktiUEwxpB2QjnHK16fNeyFj
-	MMzsr8nQUun0nP1lWbH8V9t9lihmS8FQNII3Yw6s5uRQhl4jVSwmzK2FfcYLRQ/WAbMkv8zxj2V/d
-	J7THZkfipVp/2SrFX0nRj0ZnLsM3NkxANwhgWi0za4aytosDonPEwMboKiost+J7l/QcfcecLGrXZ
-	5j+bhyn52HOwR0np/0u53jNejndx8LQzvftDBslFTM6f9ZXZcGbtpx/IXg/gV6LCajBvwkQwxab+i
-	J6nPZmfEPgWQc/kQvFDGHC/wcPngWzReOFOE6HjXYaZHJkJlXdi1BLnJnW95djFvug/8F9cxKi7XH
-	uev89fwg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=l/Oi4HtAn4tEeOeSBvZ5kOQ4IEe6nPEOYrXOm9jL8kI=; b=bgbL6ZNUMgqB1yRrS8AxgNzTvu
+	flhzgkje7L5Y0f2Y0S39WNhcXI7eA6qHUYZC1LtI491uoDrLkKVr7Sn7+wt9aKENLD4+uwhMIpcIt
+	TC1h8Vbkxxeoz/2AQhkMt16xTGdTARmhzrAuTo7vpbKNUVhtXKT9kWcZCLI6EiDw7BJfH7EysggLp
+	k9yE/rMTI6o/uTAsv4k9e7ktx+TneKH61qqgSlPKDdTKadzDiotR0KIhJeyISBPxKZixOtqZntxXX
+	PVk+FzA0jIPzVsID5SJr4qePiNjNiIydel4TK+/RNSqk0jHmYbbRCM4AP+YcxytrIN5mxmPoJ/6FG
+	ONz9G4CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGCzE-001rfi-0J;
-	Thu, 21 Dec 2023 06:56:52 +0000
-Received: from mailout1.samsung.com ([203.254.224.24])
+	id 1rGEHi-0021Cy-0b;
+	Thu, 21 Dec 2023 08:20:02 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGCzA-001rec-2T
+	id 1rGEHf-0021CD-2m
 	for linux-mediatek@lists.infradead.org;
-	Thu, 21 Dec 2023 06:56:50 +0000
-Received: from epcas1p2.samsung.com (unknown [182.195.41.46])
-	by mailout1.samsung.com (KnoxPortal) with ESMTP id 20231221065639epoutp01fc94ee46a78c3a332679e94419374bca~ixnFX0Aej2133721337epoutp01M
-	for <linux-mediatek@lists.infradead.org>; Thu, 21 Dec 2023 06:56:39 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.samsung.com 20231221065639epoutp01fc94ee46a78c3a332679e94419374bca~ixnFX0Aej2133721337epoutp01M
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1703141799;
-	bh=9gFL3uCthOMnQkTwrbPanBRwPVZKyEWGArY0eovPAM8=;
-	h=From:To:Cc:Subject:Date:References:From;
-	b=ZBbI+85OF6bbY1/CxE4PVDNoRdJqz9mMYEP9pm+SScfJI3wFUjoQ51HTqtrN8DN7P
-	 MyV6k5LRdVBBI59tNl61HEWxC6i+nEHKbYf/I89NtVl+HPdHdVL9FXt0Exc5ia4Wat
-	 g7L07k52Xdjr5QKS9zicIEjzA80sfD7aaDEEs4sU=
-Received: from epsnrtp4.localdomain (unknown [182.195.42.165]) by
-	epcas1p4.samsung.com (KnoxPortal) with ESMTP id
-	20231221065638epcas1p4bd597d940f7b5477bec514586d2dfdb3~ixnEy-5Ad1052110521epcas1p4E;
-	Thu, 21 Dec 2023 06:56:38 +0000 (GMT)
-Received: from epsmges1p5.samsung.com (unknown [182.195.36.225]) by
-	epsnrtp4.localdomain (Postfix) with ESMTP id 4Swh6s74hXz4x9Pv; Thu, 21 Dec
-	2023 06:56:37 +0000 (GMT)
-Received: from epcas1p3.samsung.com ( [182.195.41.47]) by
-	epsmges1p5.samsung.com (Symantec Messaging Gateway) with SMTP id
-	BB.0F.10025.5A1E3856; Thu, 21 Dec 2023 15:56:37 +0900 (KST)
-Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
-	epcas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20231221065637epcas1p203dcd5cfb1d4a3964fff9543a041d78d~ixnDvEQvp2639826398epcas1p2V;
-	Thu, 21 Dec 2023 06:56:37 +0000 (GMT)
-Received: from epsmgms1p2new.samsung.com (unknown [182.195.42.42]) by
-	epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
-	20231221065637epsmtrp134b2375a6dabf4539c8f416dedb1a507~ixnDs1CTz3242132421epsmtrp1U;
-	Thu, 21 Dec 2023 06:56:37 +0000 (GMT)
-X-AuditID: b6c32a39-9d9ff70000002729-94-6583e1a5ee57
-Received: from epsmtip2.samsung.com ( [182.195.34.31]) by
-	epsmgms1p2new.samsung.com (Symantec Messaging Gateway) with SMTP id
-	D3.72.08817.5A1E3856; Thu, 21 Dec 2023 15:56:37 +0900 (KST)
-Received: from localhost.localdomain (unknown [10.253.100.232]) by
-	epsmtip2.samsung.com (KnoxPortal) with ESMTPA id
-	20231221065637epsmtip2a3a1ef3dce1a1ec17cf901744b8b121e~ixnDXVdkT2484324843epsmtip2t;
-	Thu, 21 Dec 2023 06:56:37 +0000 (GMT)
-From: Chanwoo Lee <cw9316.lee@samsung.com>
-To: alim.akhtar@samsung.com, avri.altman@wdc.com, bvanassche@acm.org,
-	jejb@linux.ibm.com, martin.petersen@oracle.com, peter.wang@mediatek.com,
-	chu.stanley@gmail.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, stanley.chu@mediatek.com,
-	quic_cang@quicinc.com, mani@kernel.org, quic_asutoshd@quicinc.com,
-	powen.kao@mediatek.com, quic_nguyenb@quicinc.com,
-	yang.lee@linux.alibaba.com, beanhuo@micron.com, Arthur.Simchaev@wdc.com,
-	ebiggers@google.com, linux-scsi@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: grant.jung@samsung.com, jt77.jang@samsung.com, dh0421.hwang@samsung.com,
-	sh043.lee@samsung.com, ChanWoo Lee <cw9316.lee@samsung.com>
-Subject: [PATCH v2] ufs: mcq: Adding a function for MCQ enable
-Date: Thu, 21 Dec 2023 15:56:08 +0900
-Message-Id: <20231221065608.9899-1-cw9316.lee@samsung.com>
-X-Mailer: git-send-email 2.29.0
+	Thu, 21 Dec 2023 08:20:01 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-55322dbabf6so548991a12.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 21 Dec 2023 00:19:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1703146798; x=1703751598; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=l/Oi4HtAn4tEeOeSBvZ5kOQ4IEe6nPEOYrXOm9jL8kI=;
+        b=FQh5lskEDpEC9OFcni1PtuuGjcqDy8q22Z0WeYy3I7ua7yY7LCzcegqroUHMpfvsYc
+         J8ZVuTPK5sgDRLszqRKQycMi9ioJzo0L0ewqkE84Ckh8TkksOt9o7R9jy4YGV/PJ3UE/
+         Dy4TlmmgqqR45ApxLWOM65Nuop2g1H7eqm8EvK893stOTxdMupqQJy+Lan3eYIO6vsHn
+         Z9mJdB3DbFawNCzLoxsS1VsQbruGBzl9eIKFQM2KEpwk+GyXB+vBwUFc77dgX0pRlurI
+         D+fDiNKimI26NkHtw3ArN5b2Mjf4zxve3q8mQZfM3ThAajf0LeelTwJR1eBNInx4WIN+
+         y1bw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1703146798; x=1703751598;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=l/Oi4HtAn4tEeOeSBvZ5kOQ4IEe6nPEOYrXOm9jL8kI=;
+        b=QungG0eqGNBV2Mo4WTfN5W19Llo19d91csVxOGy8f1G3t41bYTY2BFEBDK9aK6kBfP
+         +UvwAYRr6h58mlTS8IuZgnWx9fGmCcG9KRs3v3+LeHdTzLnCVF1ExeI8yM41bUYiDmTh
+         LaIBZZrTbNkPJUKcC5KQI3M3KuumRAvNfUtz1pyFHiwvh36sXEQ7ipHKZUaBpe+tn0Sn
+         KOb+4c+T2hBkLk5Ghoz1JrCFGjXMEMkCKrzg/sS6oJhe/o0Ae4JiWwdVsWMt28HQzKXp
+         kQGsjq6HoXiTP2xuVEbS/gSd53uaX9u8v8adbycuE24IjGpzTkdUCOeyCIwOqGVoj4y1
+         DFdw==
+X-Gm-Message-State: AOJu0YxCYqRsm/+ZBgBQVn7kU+HO+ijrA2pN1Md9Egb4wxksm3tM88m7
+	kRnjshSMkLBaLh9obuKlTZgKBA==
+X-Google-Smtp-Source: AGHT+IGsEVQpMwL+xrqsluaAnI7MapypACMt13CiLut4ihC5EDf1irwhlBT7Zrk9+BEv34QNR2Acvw==
+X-Received: by 2002:a17:906:7386:b0:a14:b151:72e6 with SMTP id f6-20020a170906738600b00a14b15172e6mr9189560ejl.21.1703146797800;
+        Thu, 21 Dec 2023 00:19:57 -0800 (PST)
+Received: from [192.168.0.22] ([78.10.206.178])
+        by smtp.gmail.com with ESMTPSA id n19-20020a170906689300b00a269597d17bsm686650ejr.147.2023.12.21.00.19.56
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 21 Dec 2023 00:19:57 -0800 (PST)
+Message-ID: <5abb125e-eca8-41d8-813b-7573daaa23a0@linaro.org>
+Date: Thu, 21 Dec 2023 09:19:55 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Brightmail-Tracker: H4sIAAAAAAAAA01Ta0xTZxjO13N6WnDMQ2XuGxpW6zYirEChwIcBHJFsZ2PZ2OXXloWd0LNC
-	oJf1IsNk4ChyqYqiTKWiIIPCkK6kXERWkJaFjo0pF0WQEEBGBCMKCA4ZjrUUN/8975Pn+d73
-	eb+8XIyXz/Hlpso1jEpOpwsIT7yla0+wsHpSx4T8fD4cTVxoIdDAjxAVFhvZaPbJTQLZJgtx
-	dHr+CYaW+q9i6OxveWzUMdTDQf2Xctlo9amZgyqHW1io9W4vB1mmhthosK2MQIO6foCO3Gol
-	UOd8HUA1jn9YKCc3DDUv/s1Gc2PrOLpYcB5HJ4caCPT9jIODctY6cFTdPALQg++6wFs7qcEb
-	CVTrWBWgrhjGOFSFRUtZ6goJ6spkFHWishNQjVXZVG7PVZz6y1xAUAvTt3Gq2JpFFTXVAeqR
-	xY/K7zzCStz6WVp0CkNLGBWfkScrJKlyaYwg4ZOk/UnhESEioSgKRQr4clrGxAji308Uvp2a
-	7lyNgH+ATtc6qURarRYEx0arFFoNw09RqDUxAkYpSVdGKIPUtEytlUuD5IxmrygkJDTcKfwy
-	LaWrY4qt7N35TV/J9kPgFNQDDy4kxbBqfZnlwjyyFcBho1YPPJ14EcAzOivhLh4DaDtnZOsB
-	d8PRbcpw8+0AXrL14e5iCcCcu/cwl4ggA+Bod4KL9yFncDhtrGW5CozUA7hq0+OuftvIWNiw
-	eHkD4+TrcGLoNMeFvci98FixFbjnexWujR/F3Lw37Cn9c0OPOXld8znM9Sgkf/CAlY9MbLch
-	HlabB1huvA3eczRx3NgXzh7P47gNOgAv3ndsuk8AuLQwSrhV+6DusI5wZcDIPdDcFuzu9iJ8
-	sHx0M78XLMjjudWvwTL9NeLZ+wvDU5szULCr7yRwyXnkF/BxueIE8DM8F8HwXATD/70qAFYH
-	tjNKtUzKqEXK8P8+Mlkhs4CNiwiIagVn5uaD7IDFBXYAuZjAx6u9MIfheUnozIOMSpGk0qYz
-	ajsIdy61GPN9KVnhPCm5JkkkjgoRR4SKUVhUWITgZa/eGwcYHimlNUwawygZ1TMfi+vhe4hV
-	0Gq4ExYo1+2X6D/99R0yPLKiqM0k03dKPs79/I6k/PauHddrFt5c42fWrTwspu3l0kz/xbJu
-	fkznRIzQT3Ph/lokHbdLeqrhp/cM9LH2rHph79zgG/b4F0ZKSsiFLfHr7/5hxXYn2G+FFvkH
-	ZJrzqfGh5f5YUy17aWqW2ve12bvUKPSR1gfFzc78nmFdEYyu9gUEmU1BfhkTiy0TvezSkkbH
-	9IA5UwW5uuoPxjOmcV1T/cODK/Em6/Gtnteyz/puaXB8FK37dndXcrAx8PpXS8PsnF8sH8Zl
-	1wZetuywiguiCw/XaEZeuSmz2QxNRovYOwU1+D+d54P8rK7G1AUBrk6hRQGYSk3/C5urgJia
-	BAAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA02RfVDLcRzH77vfw351pp/q+EqnjDx0pyKnL0c4h99dOo7zFIedftZOm2wl
-	+aOy7dSWnjA0SWJcG8lSVk1bLTHH9cSQ2ynPIlYhJWF17vz3vtf7de/PHx8K87bifpRIkshK
-	JYJ4PumJV9n4AXN1XQo2rKODhzqLqkjUVgqRKv8ygT4MPiZRfZcKR6dcgxj62mrB0Jn7RwlU
-	57BzUatBSaChX9e5qORpFQeZ3j3gIuMrB4HaawpJ1K5oBSjriYlEVpceoCt3RzhIrgxHlX0/
-	CdTj/I2jC5nncHTcUU4izfu7XCQfrsORrvIZQJ+P2MByf6b9URRjcl4CTLXWyWWKjUmMUa8i
-	mequRUxeiRUwFZfSGKXdgjMD1zNJpvdNB87km1OZnJt6wPQbpzIZ1izOeq8YzyWxbLzoICsN
-	jdztGWere0UkPPA/1HJyYjo4AdWAoiC9ADZdS1YDT8qbrgVQ90ODqYHHX+4Hay3N5JjjA202
-	2ZjTB6DT/p1wc5IOhs+boty6Ly0noFId6HYwOg/Ai496Rnd86EhY3ncLd2ecDoKdjlNcd+bR
-	i2F2vhmM3QqAwy+OYWN8ArQXvB71sb9cUXkWywPjtf9V2v+qYsDRg8lsgkwsFMvmJcyXsMkh
-	MoFYliQRhuzZLzaC0ScHB5uAWe8KaQAcCjQASGF8X95tlZz15sUKUg6z0v27pEnxrKwBTKFw
-	/iTe94/Zsd60UJDI7mPZBFb6r+VQHn7pnEmxmh0r78yO1jjqSzICVMve7R7YGt2vHnGsaItJ
-	zh1qvBF2r3Ny+tXOhzNVkRviDKff2geflCkHI4SKJuR71o/rKmu2XKgXCZIOWmq7jw+Z10wp
-	lu9sdPbD4YqWxqXlU4tCX256fl8aYZxO+NRHFJ3fluoVZpgWFJg68E2HWjeOHKAXSgptIZhH
-	WUnPnrTMovgwl3yBskahywvcYpjDwSMTpd3XVOsHiC2/yvYOa7OEYMOncYLEn9vbl2m+1sw2
-	LN8c9SUg25rdlGLMeRYqWu1fED69t2FtRuGsY9rwq+Kg8yLSq892Irp0Y/W6Ga9Ls1y3VhWc
-	NltMOblcw0w8t5mPy+IE84IxqUzwBxykXBJTAwAA
-X-CMS-MailID: 20231221065637epcas1p203dcd5cfb1d4a3964fff9543a041d78d
-X-Msg-Generator: CA
-Content-Type: text/plain; charset="utf-8"
-CMS-TYPE: 101P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20231221065637epcas1p203dcd5cfb1d4a3964fff9543a041d78d
-References: <CGME20231221065637epcas1p203dcd5cfb1d4a3964fff9543a041d78d@epcas1p2.samsung.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4] dt-bindings: net: wireless: mt76: add interrupts
+ description for MT7986
+Content-Language: en-US
+To: Peter Chiu <chui-hao.chiu@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi
+ <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-wireless@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20231221032648.641-1-chui-hao.chiu@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20231221032648.641-1-chui-hao.chiu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231220_225649_115222_2AAD2CEF 
-X-CRM114-Status: GOOD (  20.51  )
+X-CRM114-CacheID: sfid-20231221_001959_901114_F0F712DE 
+X-CRM114-Status: UNSURE (   7.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,103 +147,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChanWoo Lee <cw9316.lee@samsung.com>
+On 21/12/2023 04:26, Peter Chiu wrote:
+> The mt7986 can support four interrupts to distribute the interrupts
+> to different CPUs.
+> 
+> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+> ---
+> v2: Change to use description instead of using items.
+> v3: Change to use items and set different minItems for mediatek,mt7986-wmac
+> v4: Move allOf after required and remove duplicated blank line.
 
-The REG_UFS_MEM_CFG register is too general(broad)
-and it is difficult to know the meaning only with a value of 0x1.
-So far, comments were required.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Therefore, I have added new functions and defines
-to improve code readability/reusability.
-
-Signed-off-by: ChanWoo Lee <cw9316.lee@samsung.com>
-
-* v1->v2:
-   1) Excluding ESI_ENABLE
-   2) Replace with ufshcd_rmwl, BIT()
-   3) Separating hba->mcq_enabled
----
- drivers/ufs/core/ufs-mcq.c      | 6 ++++++
- drivers/ufs/core/ufshcd.c       | 4 +---
- drivers/ufs/host/ufs-mediatek.c | 4 +---
- include/ufs/ufshcd.h            | 1 +
- include/ufs/ufshci.h            | 3 +++
- 5 files changed, 12 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-index 0787456c2b89..edc752e55878 100644
---- a/drivers/ufs/core/ufs-mcq.c
-+++ b/drivers/ufs/core/ufs-mcq.c
-@@ -399,6 +399,12 @@ void ufshcd_mcq_enable_esi(struct ufs_hba *hba)
- }
- EXPORT_SYMBOL_GPL(ufshcd_mcq_enable_esi);
- 
-+void ufshcd_mcq_enable(struct ufs_hba *hba)
-+{
-+	ufshcd_rmwl(hba, MCQ_MODE_SELECT, MCQ_MODE_SELECT, REG_UFS_MEM_CFG);
-+}
-+EXPORT_SYMBOL_GPL(ufshcd_mcq_enable);
-+
- void ufshcd_mcq_config_esi(struct ufs_hba *hba, struct msi_msg *msg)
- {
- 	ufshcd_writel(hba, msg->address_lo, REG_UFS_ESILBA);
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index ae9936fc6ffb..30df6f6a72c6 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -8723,9 +8723,7 @@ static void ufshcd_config_mcq(struct ufs_hba *hba)
- 	hba->host->can_queue = hba->nutrs - UFSHCD_NUM_RESERVED;
- 	hba->reserved_slot = hba->nutrs - UFSHCD_NUM_RESERVED;
- 
--	/* Select MCQ mode */
--	ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | 0x1,
--		      REG_UFS_MEM_CFG);
-+	ufshcd_mcq_enable(hba);
- 	hba->mcq_enabled = true;
- 
- 	dev_info(hba->dev, "MCQ configured, nr_queues=%d, io_queues=%d, read_queue=%d, poll_queues=%d, queue_depth=%d\n",
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index fc61790d289b..1048add66419 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1219,9 +1219,7 @@ static int ufs_mtk_link_set_hpm(struct ufs_hba *hba)
- 		ufs_mtk_config_mcq(hba, false);
- 		ufshcd_mcq_make_queues_operational(hba);
- 		ufshcd_mcq_config_mac(hba, hba->nutrs);
--		/* Enable MCQ mode */
--		ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | 0x1,
--			      REG_UFS_MEM_CFG);
-+		ufshcd_mcq_enable(hba);
- 	}
- 
- 	if (err)
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index d862c8ddce03..a96c45fa4b4b 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -1257,6 +1257,7 @@ unsigned long ufshcd_mcq_poll_cqe_lock(struct ufs_hba *hba,
- 					 struct ufs_hw_queue *hwq);
- void ufshcd_mcq_make_queues_operational(struct ufs_hba *hba);
- void ufshcd_mcq_enable_esi(struct ufs_hba *hba);
-+void ufshcd_mcq_enable(struct ufs_hba *hba);
- void ufshcd_mcq_config_esi(struct ufs_hba *hba, struct msi_msg *msg);
- 
- int ufshcd_opp_config_clks(struct device *dev, struct opp_table *opp_table,
-diff --git a/include/ufs/ufshci.h b/include/ufs/ufshci.h
-index d5accacae6bc..2a6989a70671 100644
---- a/include/ufs/ufshci.h
-+++ b/include/ufs/ufshci.h
-@@ -282,6 +282,9 @@ enum {
- /* UTMRLRSR - UTP Task Management Request Run-Stop Register 80h */
- #define UTP_TASK_REQ_LIST_RUN_STOP_BIT		0x1
- 
-+/* REG_UFS_MEM_CFG - Global Config Registers 300h */
-+#define MCQ_MODE_SELECT 	BIT(0)
-+
- /* CQISy - CQ y Interrupt Status Register  */
- #define UFSHCD_MCQ_CQIS_TAIL_ENT_PUSH_STS	0x1
- 
--- 
-2.29.0
+Best regards,
+Krzysztof
 
 
