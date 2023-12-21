@@ -4,78 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E924C35274
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Dec 2023 13:42:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4B91C35274
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Dec 2023 15:16:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FFQdCE5wy1vk7xsNVo027n1K1IDU6V0694pXF0JvkQA=; b=Az++8CYcRoBkefkQaBAQiNAc+5
-	b/cGycgv/cVQjYG8hgbkyyaj33wZekhfTyCFiTRhDMgpsrZE+B6s8Nxl/1WqCEH51qjmi6NfWk70I
-	VoFMz/yUJYcwmLJi3spQyzUKkeNtGN+Mj+oVKZd07sYf8KhuFNHA3WEhityl+IwLeiyGm489u5EPM
-	k0+5HRGh4ab1ucjO0CDvid/+nFoCrzIB6tOpVqpHVX760jQQftIXk5n3bZ3Ac0ZVmWyG7rOTlxpiX
-	jx672o7nbhb34Zy1Epp4ClyfQYUTYoYhi6MKSMIlJmNOVXaEgcILX/gthnbewn1QRgpYb11QVf9fm
-	zG3ZWTpg==;
+	bh=TqbYPdC+pzdSRXmHEIhagjUyGTTzN7gMcr6zGrguEvA=; b=4MV8RLo5ORTvAW03dUu95yAU3s
+	crn/k0/NPrqGLj+XM+jD6qCDKZOlF6SgA1On3Z0KYAwCH5QBZHH8EdM8iYxroXpKj5TDTQe7KzIwT
+	AlWQ4ZN9LQpG82Got1J6UCHttb6BmDZOXQSKdFLW28j+lH51Bh2wgdVxVdVlPP5aUpI9oVGQjG+cc
+	UGiGlCnj+gljtx0ecD5LwIGUGH4A5B7W6VYfEkZ6Ny6J+5tBTVFplHJqxrorDZ18sj/ZiCgMxooLb
+	Puime2ipL9CCBBrBHh1um7aWk3f+CHFr/H4FxfMxkYznmBOm5zAGoT8LVPjrKsQjSlne8WW0sko+n
+	z5bLjxXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGJK5-0031Ip-0c;
-	Thu, 21 Dec 2023 13:42:49 +0000
-Received: from mgamail.intel.com ([192.55.52.93])
+	id 1rGKmf-003Ijq-25;
+	Thu, 21 Dec 2023 15:16:25 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGJK1-0031BT-1n;
-	Thu, 21 Dec 2023 13:42:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1703166165; x=1734702165;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=R6miQeV/VuHmO5eVyMe/230bW5y4XCSTO7Hh0DdH/iE=;
-  b=CCtEWFc8Sht2Glzp4nUPbjTcGiQjvIZ457oyb8sQMwVepcqYfwApvjGa
-   0DXX0PBoZBD7uBC+V8ed6Ww8ovHplFaV+s1hZ3duYrErF8eter290/XIU
-   xdGoPd2sbr/JPOeb782qKDDWaK3LklU/j/qOobq2s5nf0Ze9oFzJ88xk+
-   Xm73BZARIIGSBrjP5ehZbuCXNTURq7jmeWys5/d/Se0mZ+Kirnu0uIXIc
-   M5u0buaoaj2Z/zutTkYB29Oin7qLkAz9Ra9zncNzys2wNpqpWxooMlQ7h
-   Kvkgjz5x5vMqeIBMW5becKHcrbpSBwjyZz8FHsV92LnNGQmgG6NuHe2Ro
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10930"; a="393141730"
-X-IronPort-AV: E=Sophos;i="6.04,293,1695711600"; 
-   d="scan'208";a="393141730"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Dec 2023 05:42:24 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10930"; a="776707125"
-X-IronPort-AV: E=Sophos;i="6.04,293,1695711600"; 
-   d="scan'208";a="776707125"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Dec 2023 05:42:20 -0800
-Received: from andy by smile.fi.intel.com with local (Exim 4.97)
-	(envelope-from <andriy.shevchenko@intel.com>)
-	id 1rGJJa-00000007rYy-0CnL;
-	Thu, 21 Dec 2023 15:42:18 +0200
-Date: Thu, 21 Dec 2023 15:42:17 +0200
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Mark Hasemeyer <markhas@chromium.org>
-Cc: LKML <linux-kernel@vger.kernel.org>, chrome-platform@lists.linux.dev,
-	cros-qcom-dts-watchers@chromium.org, devicetree@vger.kernel.org,
-	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, linux-gpio@vger.kernel.org,
-	linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v2 00/22] Improve IRQ wake capability reporting and
- update the cros_ec driver to use it
-Message-ID: <ZYRAuY1LGdD8_u5K@smile.fi.intel.com>
-References: <20231220235459.2965548-1-markhas@chromium.org>
+	id 1rGKma-003Ij8-0Z;
+	Thu, 21 Dec 2023 15:16:23 +0000
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-55372c1338bso989406a12.2;
+        Thu, 21 Dec 2023 07:16:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1703171773; x=1703776573; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=TqbYPdC+pzdSRXmHEIhagjUyGTTzN7gMcr6zGrguEvA=;
+        b=iHf0WTYiX9oDYCUViclrNbFc+W8NC/jbNpkXJab6AIMD/N98J60pY/eyqWyMfMS5u4
+         pBjd+2R89ZCVFxm+6IZ/w/32GQeZd76jrX3Seq/b6Ts+YJu85BBJh3zl3q+3onMxfWvr
+         BNBuLUaJFEvd5B/7GiKWN3d9Vy9fQppAk5bBT34OzTx3o9ny1Et892lA4atr78UZbdOJ
+         5YAWvXEvwLBhcKCEnJrENkNtw1v81vHlb0PrjWEVV7fIJDiiwlZTG1fVEcnqfC+3WbJ5
+         Yr8nwAcU4GKIHWSj0PbjIyG0ISpJ+yJ5iw2RAUAQqrAwOyuV39yF3toi7U5zOtRbkc5u
+         XByw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1703171773; x=1703776573;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=TqbYPdC+pzdSRXmHEIhagjUyGTTzN7gMcr6zGrguEvA=;
+        b=vh4zLovcRf+wsn8S3LDWtpq/VwXTg6jfohb7o89b63mChv4oQKBXFAbMSjTCkXESWz
+         rcHC3g/WLGzYVhS5s+jkdGt3EvpwObun7V4jvdzPTSqsocbCXXkN1O5/BYUKwSzuxYY6
+         Lw8Xq5tT92a0OXB2H6Y86+FsMjFNtFkp8qoUyZpdUCYOLbgxdqdhdbNM2Bj3ruXR467z
+         +DP0GZixDUCGIvkahstjJc6V14e/3wIV3KWAiNBeUsMIe1dwEG5N2vdJwdqqHCPF3UUp
+         VYXH2OjJRiQ5UAQZEGFvfSp2nP3351CWx6kO5+AwgMcu+2mvSUjxp5KPS2hJm+N3kWYK
+         h/Tw==
+X-Gm-Message-State: AOJu0YwlZLQlA5y0wT+qK1u6PaXiMQO8+OjiYPTNSDn2Vq6OGYFgS6vv
+	nUrnMIM+o/GVZYT5uhwpn28=
+X-Google-Smtp-Source: AGHT+IHJjhFl8aucUSYY9VqO85+850iDGfZwpNYK/Qur+Y7lQw4rO6QDuDU6rtJXE5crDceVW8fznQ==
+X-Received: by 2002:a50:cdcf:0:b0:553:d641:a662 with SMTP id h15-20020a50cdcf000000b00553d641a662mr1897345edj.16.1703171772730;
+        Thu, 21 Dec 2023 07:16:12 -0800 (PST)
+Received: from skbuf ([188.27.185.68])
+        by smtp.gmail.com with ESMTPSA id o15-20020aa7d3cf000000b00553a094dd5csm1273484edr.32.2023.12.21.07.16.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 21 Dec 2023 07:16:10 -0800 (PST)
+Date: Thu, 21 Dec 2023 17:16:07 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	David Bauer <mail@david-bauer.net>, mithat.guner@xeront.com,
+	erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next] net: dsa: mt7530: register OF node for internal
+ MDIO bus
+Message-ID: <20231221151607.ujobhh4aet4obxdz@skbuf>
+References: <20231220173539.59071-1-arinc.unal@arinc9.com>
+ <20231220173539.59071-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20231220235459.2965548-1-markhas@chromium.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20231220173539.59071-1-arinc.unal@arinc9.com>
+ <20231220173539.59071-1-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231221_054245_606170_29040F42 
-X-CRM114-Status: GOOD (  16.22  )
+X-CRM114-CacheID: sfid-20231221_071620_229933_F90E0F8F 
+X-CRM114-Status: GOOD (  12.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,28 +106,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 20, 2023 at 04:54:14PM -0700, Mark Hasemeyer wrote:
-> Currently the cros_ec driver assumes that its associated interrupt is
-> wake capable. This is an incorrect assumption as some Chromebooks use a
-> separate wake pin, while others overload the interrupt for wake and IO.
-> This patch train updates the driver to query the underlying ACPI/DT data
-> to determine whether or not the IRQ should be enabled for wake.
+On Wed, Dec 20, 2023 at 07:35:39PM +0200, Arınç ÜNAL wrote:
+> From: David Bauer <mail@david-bauer.net>
 > 
-> Both the device tree and ACPI systems have methods for reporting IRQ
-> wake capability. In device tree based systems, a node can advertise
-> itself as a 'wakeup-source'. In ACPI based systems, GpioInt and
-> Interrupt resource descriptors can use the 'SharedAndWake' or
-> 'ExclusiveAndWake' share types.
+> The MT753x switches provide a switch-internal MDIO bus for the embedded
+> PHYs.
 > 
-> Some logic is added to the platform, ACPI, and DT subsystems to more
-> easily pipe wakeirq information up to the driver.
+> Register a OF sub-node on the switch OF-node for this internal MDIO bus.
+> This allows to configure the embedded PHYs using device-tree.
+> 
+> Signed-off-by: David Bauer <mail@david-bauer.net>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> ---
 
-Just wondering if you used --histogram diff algo when preparing patches.
-
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+Can you please not assign "bus" to ds->user_mii_bus unless there is no
+"mdio" OF node? We don't need ds->user_mii_bus populated when it is
+described in device tree.
 
