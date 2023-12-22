@@ -4,55 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14922C41535
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Dec 2023 09:40:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41996C41535
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Dec 2023 15:07:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RvFPmQYSXCW++H17F3FBSpFjPOkodCCqULNpYKx/X4M=; b=hligCYaias8+waF86Nklz7rz4h
-	3UQh14BCRZf6BmTX0bNyn6cYyltSrHIcdBrQNc2R8mBB2JeR6NLsQsqultdiBrPCTFrathUsOICRX
-	iyCjH/GDj07FDgxxxj8Rnnc/Q1yz804zArzYLIk7fbHQlFzwWfO42bn3ptQ/ntN3qungXMGW/Sjjk
-	MzhnZwDdQWq5pv4n7Foi+Ju9aPE9CeWUjUqIsme44E35xc6LVAP1AHxLtnuAu/cIEMwUZVUMG7+0M
-	E9NchtAsmGpJMMF+tvWX+GKFVqqERvzmze7hpvpUcKtTwTOZWVsHiUD06z2Pa9p3v6IdUjP+pKv5m
-	/lYEHHvQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QKsD7/3iN4ODvvjNv947DB6L9uQaJjdBT/a4noYL/b0=; b=AIrQpm1YiL94QzMLU7nKlKmdLV
+	9OP+4+P978Z0DUP+B2aj/tZiNk7k/W644Woskm9rKND6TU6RAAUq9G63aTuv4ZNEDJPyXpKXqTVri
+	8xDPrhHYe/dZ6LOiUIf4GP4OvfjQIWgDRoY7P+/UwfPf8ar/yheZkb2qAvX+wQJLBeIJduaVLlFGt
+	OkKuC5xv5y1E4cw88NVSmE0R/y05Egjx3ryHmk/aZJHTFcJbzLJnNkjeLH/sGxbJCt/dIWTIQi43j
+	yppcZgnIWCqniIX868agAB/9usQf6k0Dy+AoN9g5epHI83cBbBvr/c5dch2IIdtGPPa1JsqLgmjhD
+	t4BTlUig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGc1I-005SBK-33;
-	Fri, 22 Dec 2023 09:40:40 +0000
-Received: from mail-4018.proton.ch ([185.70.40.18])
+	id 1rGh7X-006BAs-0R;
+	Fri, 22 Dec 2023 15:07:27 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGc1F-005S9e-1w;
-	Fri, 22 Dec 2023 09:40:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=emersion.fr;
-	s=protonmail2; t=1703238029; x=1703497229;
-	bh=RvFPmQYSXCW++H17F3FBSpFjPOkodCCqULNpYKx/X4M=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=KUeJEFF8cS8NbUYEe1YI7C9RCUnb22uQFIsHpP6jjSohQf0y1mWvISCZss2RSG0cE
-	 FpFbc+rRNMpRZSb13C1ahONUfnCzGKxUsUUXSsR5C+1R9ci2C5g3By5Mb251Zs9fVi
-	 YFv/UAC1f8dJ2Vd22XeC0cShQ3exgbgm9qAvG5p0ggzE7Kr1Y++nvPWpA9zuiSt7oR
-	 JeJvwrdg3px1mpjFK/Pb0+sldHag3128mqywcYp+5f8irYQA4y3n4J7ElJxPnbAZiR
-	 03F5CEcznFJEOCNtxpJk+MYxgpv1yuAr1WVgq6nUByVZdezLQspZZ6YpOL8YNsVtZb
-	 E9NXLgPNEemwQ==
-Date: Fri, 22 Dec 2023 09:40:18 +0000
-To: Pekka Paalanen <ppaalanen@gmail.com>
-From: Simon Ser <contact@emersion.fr>
-Cc: Joakim Bech <joakim.bech@linaro.org>, Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>, christian.koenig@amd.com, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, John Stultz <jstultz@google.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Jeffrey Kardatzke <jkardatzke@google.com>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, Vijayanand Jitta <quic_vjitta@quicinc.com>, Nicolas Dufresne <nicolas@ndufresne.ca>, jianjiao.zeng@mediatek.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, ckoenig.leichtzumerken@gmail.com, linaro-mm-sig@lists.linaro.org, linux-mediatek@lists.infradead.org, tjmercier@google.com, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 0/7] dma-buf: heaps: Add secure heap
-Message-ID: <9m8eC1j8YSwxu9Mr8vCXyzF0nfyCSHpFbfc__FtUjjKppew65jElBbUqa-nkzFTN-N_ME893w0YQRcb3r3UbIajQUP-Y5LxnHKKFoiBepSI=@emersion.fr>
-In-Reply-To: <20231213161614.43e5bca8@eldfell>
-References: <20231212024607.3681-1-yong.wu@mediatek.com> <DPBmATfmfvSP8Cwjz99kj_JvCEiAqRfuMFJZEBF2aIgl8NZqWFR66eyPTX1E8bHyOlimBihEE3E80p9bfOJ-0SNu8pwoIzL9gD2Xae6r97g=@emersion.fr> <20231213110517.6ce36aca@eldfell> <20231213101549.lioqfzjxcvmqxqu3@pop-os.localdomain> <20231213133825.0a329864@eldfell> <20231213132229.q3uxdhtdsxuzw3w6@pop-os.localdomain> <20231213161614.43e5bca8@eldfell>
-Feedback-ID: 1358184:user:proton
+	id 1rGh7T-006B9K-0p;
+	Fri, 22 Dec 2023 15:07:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 0DC73B822F3;
+	Fri, 22 Dec 2023 15:07:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A24D4C433C8;
+	Fri, 22 Dec 2023 15:07:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1703257640;
+	bh=lz9jX9ZQQWUL3HJ4uKy+xNfuOW6S4uTXYnJqWi7HVSs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Pj1auZeMLIYM9vAfcdZWY598ztp4RYNvw2gVvnfZEUqC2f0V9DwMDu1JcGNXtZEm8
+	 hsh+iRj3mrJBwcsO1dd7tlT6ot97BI0mX7a8vplphRtjiIl6dajoZat4fdHziamV0S
+	 g2mF3M7avj6MYEDrO8SMBKir2RNttPymcl8KMAQKaCkHCsCKZ2oap6l4e+tz+gtfXc
+	 bdXiTBJGz/6Suxl4oeJx43BTzHUhXliL3KdLo2NMisZVecGuUxMJvhvKtEwPDUdDNk
+	 GolJj07/sQ1UxmE6PTS25TYKhcc/plpi68fEFB0lP5H5oK1z7LqLxLykVNzEZfTet1
+	 rZChU9wO9lZPA==
+Date: Fri, 22 Dec 2023 15:07:14 +0000
+From: Conor Dooley <conor@kernel.org>
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Jason-ch Chen <jason-ch.chen@mediatek.com>,
+	Johnson Wang <johnson.wang@mediatek.com>,
+	Singo Chang <singo.chang@mediatek.com>,
+	Nancy Lin <nancy.lin@mediatek.com>,
+	Shawn Sung <shawn.sung@mediatek.com>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v3 2/9] dt-bindings: mailbox: Add mboxes property for
+ CMDQ secure driver
+Message-ID: <20231222-unpicked-jaundice-837baa3092ed@spud>
+References: <20231222045228.27826-1-jason-jh.lin@mediatek.com>
+ <20231222045228.27826-3-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="5C0G5NxMMW7lzTZE"
+Content-Disposition: inline
+In-Reply-To: <20231222045228.27826-3-jason-jh.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231222_014037_813938_3EF155FF 
-X-CRM114-Status: GOOD (  19.42  )
+X-CRM114-CacheID: sfid-20231222_070723_600218_2F3D5EF1 
+X-CRM114-Status: GOOD (  17.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,38 +87,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wednesday, December 13th, 2023 at 15:16, Pekka Paalanen <ppaalanen@gmail=
-.com> wrote:
 
-> > > It is protected/shielded/fortified from all the kernel and userspace,
-> > > but a more familiar word to describe that is inaccessible.
-> > > "Inaccessible buffer" per se OTOH sounds like a useless concept.
-> > >=20
-> > > It is not secure, because it does not involve security in any way. In
-> > > fact, given it's so fragile, I'd classify it as mildly opposite of
-> > > secure, as e.g. clients of a Wayland compositor can potentially DoS t=
-he
-> > > compositor with it by simply sending such a dmabuf. Or DoS the whole
-> > > system.
-> >=20
-> > I hear what you are saying and DoS is a known problem and attack vector=
-,
-> > but regardless, we have use cases where we don't want to expose
-> > information in the clear and where we also would like to have some
-> > guarantees about correctness. That is where various secure elements and
-> > more generally security is needed.
-> >=20
-> > So, it sounds like we have two things here, the first is the naming and
-> > the meaning behind it. I'm pretty sure the people following and
-> > contributing to this thread can agree on a name that makes sense. Would
-> > you personally be OK with "restricted" as the name? It sounds like that=
-.
+--5C0G5NxMMW7lzTZE
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Dec 22, 2023 at 12:52:21PM +0800, Jason-JH.Lin wrote:
+> Add mboxes to define a GCE loopping thread as a secure irq handler.
+
+> This property is only required if CMDQ secure driver is supported.
+
+What do drivers have to do with this? Either the mailbox channel exists
+or it does not. That said, I am not sure why this should be in DT in the
+first place, can't the driver for the mailbox controller reserve a
+channel for its own use?
+
+Thanks,
+Conor.
+
 >=20
-> I would. I'm also just a by-stander, not a maintainer of kernel
-> anything. I have no power to accept nor reject anything here.
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> ---
+>  .../devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml      | 3 +++
+>  1 file changed, 3 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailb=
+ox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.ya=
+ml
+> index e4da0a58c943..0c17e1be99c2 100644
+> --- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+> +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+> @@ -56,6 +56,9 @@ properties:
+>        include/dt-bindings/gce/<chip>-gce.h of each chips.
+>      $ref: /schemas/types.yaml#/definitions/uint32-array
+> =20
+> +  mboxes:
+> +    maxItems: 1
+> +
+>  required:
+>    - compatible
+>    - "#mbox-cells"
+> --=20
+> 2.18.0
+>=20
 
-I'd also personally be OK with "restricted", I think it's a lot better
-than "secure".
+--5C0G5NxMMW7lzTZE
+Content-Type: application/pgp-signature; name="signature.asc"
 
-In general I agree with everything Pekka said.
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZYWmIgAKCRB4tDGHoIJi
+0v7KAP9rXDTXnNEgdhcvQJISjTma+ULoi7AVf044gvTAiu+I4wEAhI0/WGXRcWI2
+sMsJ6dV7i7ItV4+IYNJ+EBRIZruR5Qw=
+=gZJH
+-----END PGP SIGNATURE-----
+
+--5C0G5NxMMW7lzTZE--
 
