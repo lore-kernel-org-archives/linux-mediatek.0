@@ -4,86 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AAF6C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Dec 2023 02:28:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6252C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Dec 2023 04:52:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NyTkqDg6WwLWozuY326EMKGpYj8UeiaEZFzqtwEMEr0=; b=Ct/YF2XAxkfNAnbiSloP4T1qi1
-	413UjTTDz4wA9x67kK2+GoB9gO6YYtoYRNE3aXlz7Vb7YrLhD8icGPyv7OZ3AV03vWuif5yeDF4rC
-	4sjOEu8k1I4ArsBcxheIK4dWRepLKXT/TsBhKxMIge3rjn+IvkR/8N1eXsc6OLm3Qv9jpzsh9A9D+
-	cIzvN5OB47A/rkHFquTimF91RmnF+LSF1WYA2rZ9N8xPCxp2RhxQvtmgOlHUPgZtqDvQun6vMIbVK
-	ErezVCskdffYZC1kCEl+c2DAyD0wW/GJwPnG+xTvqhJE+1OOBNCAWXti012Dvl+Hq+cyTY15zZvXq
-	8LANE7pQ==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Vo7/8SdJTy6PD+1QaQcWVlel/mcBE+WmrpBeWZ3cneU=; b=n8YnJEs7IQkRb9clccM7NiUqk/
+	EET8ddp35J6U3IRfXYDQt3NN6WU67ZHJCEBwT7f3Hm7dXrFeU9yYiCA6s83JQ2IxzAb3VUmk6FTGb
+	DnHg1kw6A2i7PMbcBLGwh6W86rP4QcGPb6tvH0+1cbCi5QZ6KKy//0IDvFFGJsYq41hqG11/qQusS
+	pbMM3n2W3nZkEHZVSwTQAJCo99enmKsURQ11WrB+7FXsPekMCBGDiju++BAyf35JW7ZZoYOXj+rqN
+	DoPvHC+hOyG8YC/izE/RKtaaU+5frXP3tOXUImDIiJzsVkuhXFko0b5IrfTq6pVUFzNBNynjAETA8
+	Laz1KCnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGVHA-004gGv-04;
-	Fri, 22 Dec 2023 02:28:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rGXWi-004tK7-11;
+	Fri, 22 Dec 2023 04:52:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGVH6-004gGU-0e;
-	Fri, 22 Dec 2023 02:28:34 +0000
-X-UUID: c5d9c098a07111ee9b09ad09c76753c8-20231221
+	id 1rGXWe-004tFH-3A;
+	Fri, 22 Dec 2023 04:52:46 +0000
+X-UUID: ecf134eaa08511ee958cff29c719f35b-20231221
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=NyTkqDg6WwLWozuY326EMKGpYj8UeiaEZFzqtwEMEr0=;
-	b=IlC0YDpUMP6uCJgd4TE56w04PaWtdh9/2wg4Zvu/aQ8uxu2u8YWPbu4GdSlbGBB/i91ofvda989ATT6DKmeq6nRGPO83Wbdj2zq0Zz7j5hCZ8SI3lIWCSV79D8VlVkNFeK2jKZHJbL5o8wvWAC1lsd8wqQKo8riyt7mfnEMu7Mg=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Vo7/8SdJTy6PD+1QaQcWVlel/mcBE+WmrpBeWZ3cneU=;
+	b=eY6sUOpfqyatahaw++pVC3GYiWQy2Fnm/0hvpaa+q7USWTpWbv8kdifzzNNrRxNcIPiB2aCBJ21jAT3mkbUEN6z3QTjhICQNONEbI0C3lGsaQjvUU/uQirmISkrC1SojrUYM3zDhhprs7Kr1QzO0w8pof5jlp6/zEoOVupPFRPQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:7edfea26-5c8f-4336-8761-63909a4aca19,IP:0,U
+X-CID-O-INFO: VERSION:1.1.35,REQID:c35b4418-5179-419b-9209-dcadc8e8b4e5,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:989b5c2e-1ab8-4133-9780-81938111c800,B
+X-CID-META: VersionHash:5d391d7,CLOUDID:e2d20c82-8d4f-477b-89d2-1e3bdbef96d1,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: c5d9c098a07111ee9b09ad09c76753c8-20231221
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <boy.wu@mediatek.com>)
+X-UUID: ecf134eaa08511ee958cff29c719f35b-20231221
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 206591398; Thu, 21 Dec 2023 19:28:20 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+	with ESMTP id 50903083; Thu, 21 Dec 2023 21:52:36 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 22 Dec 2023 10:27:45 +0800
+ 15.2.1118.26; Fri, 22 Dec 2023 12:52:31 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 22 Dec 2023 10:27:45 +0800
-From: boy.wu <boy.wu@mediatek.com>
-To: Russell King <linux@armlinux.org.uk>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Boy
- Wu" <boy.wu@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] arm: kasan: clear stale stack poison
-Date: Fri, 22 Dec 2023 10:27:41 +0800
-Message-ID: <20231222022741.8223-1-boy.wu@mediatek.com>
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 22 Dec 2023 12:52:31 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>
+CC: Conor Dooley <conor+dt@kernel.org>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-media@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Jason-ch Chen <jason-ch.chen@mediatek.com>, Johnson Wang
+	<johnson.wang@mediatek.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+	Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+	Shawn Sung <shawn.sung@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v3 7/9] mailbox: mediatek: Move reuseable definition to header for secure driver
+Date: Fri, 22 Dec 2023 12:52:26 +0800
+Message-ID: <20231222045228.27826-8-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20231222045228.27826-1-jason-jh.lin@mediatek.com>
+References: <20231222045228.27826-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10-0.324100-8.000000
-X-TMASE-MatchedRID: 20do18fyep2bGHSBj+j5WSZm6wdY+F8Kndls9F9zmi3iKUaoIhea7bhd
-	ARHnUbVtXlLd88Celdep0cCmigWLzBmNqsUuotRsws9cphnKwlE+B+IaKi3iScT0k564D5qWs+7
-	m6nszghjxDYFUSVeB0XYZHJmPi+HdwvvHoQOeXvMdxBAG5/hkWzAKasuXH5J1UekjLrC3lTDcEz
-	4YkwgVzQzW4ChLfVzzVA/7+pWI2BUdEFCjPPS3/4xVBvj1jbcjfS0Ip2eEHnyTitjWv6+zCBe9C
-	QaLe2PP9xS3mVzWUuBUNjjpwwGmR0kTDcsujd29Bt7dzXQLbrOkxotN8IwXgCM61xnO7ygbYFoo
-	uYX2FOxpt6xIInG8AJdldkdUVkLNgatYyy5QTYH1F4nEZm2WUnmVKZusLp922v9OjYWA2uMMswg
-	45VMfPadst5iAforfWoC08z/YUWKUTGVAhB5EbQ==
+X-TM-AS-Result: No-10--8.411300-8.000000
+X-TMASE-MatchedRID: K02MXwpCiCtLbaTfilVXfTPDkSOzeDWWf6/Md8Lb2l/1gF7PCEF9bli5
+	r+TKtIsr64Ta3P14gV2y7ec+ITUwMzW+K/PcvqBra0aUozXm0DYh9mNF8ZPJ2Cz+5QCTrE/sgK6
+	qCGa1Z9euDlY3VLd7CFn74Xleqcq0QBI3/CURWxx05zsoB1UKTqk89YpdLgI7DpCUEeEFm7AtiD
+	c0qML5ZNwAFNNtZv2wtcF3I8fd45iXBXaJoB9JZxRFJJyf5BJe3QfwsVk0UbuGrPnef/I+eqzZI
+	n3r7BwhnZgsMwbJ9WzENc1hpwdtvClyqLZvurBwC8XKjsVbJjU=
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10-0.324100-8.000000
+X-TMASE-Result: 10--8.411300-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: CAED9D811469AD88D9567D7625B732FCBAC2B7218D7F85C3EE9A8A5D81258E732000:8
+X-TM-SNTS-SMTP: ACEFB8A57DD322DB60FA41F160643FA22A28B778E24856E957B2F5837CA286092000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231221_182832_244054_ECB70E02 
-X-CRM114-Status: UNSURE (   7.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231221_205245_019736_23DD3596 
+X-CRM114-Status: GOOD (  14.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,78 +106,136 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Boy Wu <boy.wu@mediatek.com>
+To support CMDQ secure driver, move some reuseable definition to header.
+- define: e.g. CMDQ_GCE_NUM_MAX, CMDQ_THR_BASE, CMDQ_THR_SIZE.
+- struct: e.g. cmdq_thread, cmdq, cmdq_task.
+- include: e.g. <linux/clk.h>.
 
-We found below OOB crash:
+Add "#include <linux/mailbox_controller.h>" for the function that takes
+"struct mbox_chan * chan" as a parameter. That may occur a build error
+if secure driver header includes the mtk-cmdq-mailbox.h.
+- function: e.g. cmdq_get_shift_pa(struct mbox_chan *chan).
 
-[   33.452494] ==================================================================
-[   33.453513] BUG: KASAN: stack-out-of-bounds in refresh_cpu_vm_stats.constprop.0+0xcc/0x2ec
-[   33.454660] Write of size 164 at addr c1d03d30 by task swapper/0/0
-[   33.455515]
-[   33.455767] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G           O       6.1.25-mainline #1
-[   33.456880] Hardware name: Generic DT based system
-[   33.457555]  unwind_backtrace from show_stack+0x18/0x1c
-[   33.458326]  show_stack from dump_stack_lvl+0x40/0x4c
-[   33.459072]  dump_stack_lvl from print_report+0x158/0x4a4
-[   33.459863]  print_report from kasan_report+0x9c/0x148
-[   33.460616]  kasan_report from kasan_check_range+0x94/0x1a0
-[   33.461424]  kasan_check_range from memset+0x20/0x3c
-[   33.462157]  memset from refresh_cpu_vm_stats.constprop.0+0xcc/0x2ec
-[   33.463064]  refresh_cpu_vm_stats.constprop.0 from tick_nohz_idle_stop_tick+0x180/0x53c
-[   33.464181]  tick_nohz_idle_stop_tick from do_idle+0x264/0x354
-[   33.465029]  do_idle from cpu_startup_entry+0x20/0x24
-[   33.465769]  cpu_startup_entry from rest_init+0xf0/0xf4
-[   33.466528]  rest_init from arch_post_acpi_subsys_init+0x0/0x18
-[   33.467397]
-[   33.467644] The buggy address belongs to stack of task swapper/0/0
-[   33.468493]  and is located at offset 112 in frame:
-[   33.469172]  refresh_cpu_vm_stats.constprop.0+0x0/0x2ec
-[   33.469917]
-[   33.470165] This frame has 2 objects:
-[   33.470696]  [32, 76) 'global_zone_diff'
-[   33.470729]  [112, 276) 'global_node_diff'
-[   33.471294]
-[   33.472095] The buggy address belongs to the physical page:
-[   33.472862] page:3cd72da8 refcount:1 mapcount:0 mapping:00000000 index:0x0 pfn:0x41d03
-[   33.473944] flags: 0x1000(reserved|zone=0)
-[   33.474565] raw: 00001000 ed741470 ed741470 00000000 00000000 00000000 ffffffff 00000001
-[   33.475656] raw: 00000000
-[   33.476050] page dumped because: kasan: bad access detected
-[   33.476816]
-[   33.477061] Memory state around the buggy address:
-[   33.477732]  c1d03c00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-[   33.478630]  c1d03c80: 00 00 00 00 00 00 00 00 f1 f1 f1 f1 00 00 00 00
-[   33.479526] >c1d03d00: 00 04 f2 f2 f2 f2 00 00 00 00 00 00 f1 f1 f1 f1
-[   33.480415]                                                ^
-[   33.481195]  c1d03d80: 00 00 00 00 00 00 00 00 00 00 04 f3 f3 f3 f3 f3
-[   33.482088]  c1d03e00: f3 f3 f3 f3 00 00 00 00 00 00 00 00 00 00 00 00
-[   33.482978] ==================================================================
-
-We find the root cause of this OOB is that arm does not clear stale stack
-poison in the case of cpuidle.
-
-This patch refer to arch/arm64/kernel/sleep.S to resolve this issue.
-
-Signed-off-by: Boy Wu <boy.wu@mediatek.com>
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 ---
- arch/arm/kernel/sleep.S | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/mailbox/mtk-cmdq-mailbox.c       | 30 ---------------------
+ include/linux/mailbox/mtk-cmdq-mailbox.h | 33 ++++++++++++++++++++++++
+ 2 files changed, 33 insertions(+), 30 deletions(-)
 
-diff --git a/arch/arm/kernel/sleep.S b/arch/arm/kernel/sleep.S
-index a86a1d4f3461..93afd1005b43 100644
---- a/arch/arm/kernel/sleep.S
-+++ b/arch/arm/kernel/sleep.S
-@@ -127,6 +127,10 @@ cpu_resume_after_mmu:
- 	instr_sync
- #endif
- 	bl	cpu_init		@ restore the und/abt/irq banked regs
-+#if defined(CONFIG_KASAN) && defined(CONFIG_KASAN_STACK)
-+	mov	r0, sp
-+	bl	kasan_unpoison_task_stack_below
-+#endif
- 	mov	r0, #0			@ return zero on success
- 	ldmfd	sp!, {r4 - r11, pc}
- ENDPROC(cpu_resume_after_mmu)
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 5390b6488ebc..04321f7e10c3 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -3,7 +3,6 @@
+ // Copyright (c) 2018 MediaTek Inc.
+ 
+ #include <linux/bitops.h>
+-#include <linux/clk.h>
+ #include <linux/clk-provider.h>
+ #include <linux/dma-mapping.h>
+ #include <linux/errno.h>
+@@ -22,13 +21,10 @@
+ 
+ #define CMDQ_OP_CODE_MASK		(0xff << CMDQ_OP_CODE_SHIFT)
+ #define CMDQ_NUM_CMD(t)			(t->cmd_buf_size / CMDQ_INST_SIZE)
+-#define CMDQ_GCE_NUM_MAX		(2)
+ 
+ #define CMDQ_CURR_IRQ_STATUS		0x10
+ #define CMDQ_SYNC_TOKEN_UPDATE		0x68
+ #define CMDQ_THR_SLOT_CYCLES		0x30
+-#define CMDQ_THR_BASE			0x100
+-#define CMDQ_THR_SIZE			0x80
+ #define CMDQ_THR_WARM_RESET		0x00
+ #define CMDQ_THR_ENABLE_TASK		0x04
+ #define CMDQ_THR_SUSPEND_TASK		0x08
+@@ -59,32 +55,6 @@
+ #define CMDQ_JUMP_BY_OFFSET		0x10000000
+ #define CMDQ_JUMP_BY_PA			0x10000001
+ 
+-struct cmdq_thread {
+-	struct mbox_chan	*chan;
+-	void __iomem		*base;
+-	struct list_head	task_busy_list;
+-	u32			priority;
+-};
+-
+-struct cmdq_task {
+-	struct cmdq		*cmdq;
+-	struct list_head	list_entry;
+-	dma_addr_t		pa_base;
+-	struct cmdq_thread	*thread;
+-	struct cmdq_pkt		*pkt; /* the packet sent from mailbox client */
+-};
+-
+-struct cmdq {
+-	struct mbox_controller	mbox;
+-	void __iomem		*base;
+-	int			irq;
+-	u32			irq_mask;
+-	const struct gce_plat	*pdata;
+-	struct cmdq_thread	*thread;
+-	struct clk_bulk_data	clocks[CMDQ_GCE_NUM_MAX];
+-	bool			suspended;
+-};
+-
+ struct gce_plat {
+ 	u32 thread_nr;
+ 	u8 shift;
+diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+index f78a08e7c6ed..43eae45a08c9 100644
+--- a/include/linux/mailbox/mtk-cmdq-mailbox.h
++++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+@@ -7,10 +7,17 @@
+ #ifndef __MTK_CMDQ_MAILBOX_H__
+ #define __MTK_CMDQ_MAILBOX_H__
+ 
++#include <linux/clk.h>
++#include <linux/mailbox_controller.h>
+ #include <linux/platform_device.h>
+ #include <linux/slab.h>
+ #include <linux/types.h>
+ 
++#define CMDQ_GCE_NUM_MAX		2
++
++#define CMDQ_THR_BASE			0x100
++#define CMDQ_THR_SIZE			0x80
++
+ #define CMDQ_INST_SIZE			8 /* instruction is 64-bit */
+ #define CMDQ_SUBSYS_SHIFT		16
+ #define CMDQ_OP_CODE_SHIFT		24
+@@ -79,6 +86,32 @@ struct cmdq_pkt {
+ 	bool			loop;
+ };
+ 
++struct cmdq_thread {
++	struct mbox_chan	*chan;
++	void __iomem		*base;
++	struct list_head	task_busy_list;
++	u32			priority;
++};
++
++struct cmdq {
++	struct mbox_controller	mbox;
++	void __iomem		*base;
++	int			irq;
++	u32			irq_mask;
++	const struct gce_plat	*pdata;
++	struct cmdq_thread	*thread;
++	struct clk_bulk_data	clocks[CMDQ_GCE_NUM_MAX];
++	bool			suspended;
++};
++
++struct cmdq_task {
++	struct cmdq		*cmdq;
++	struct list_head	list_entry;
++	dma_addr_t		pa_base;
++	struct cmdq_thread	*thread;
++	struct cmdq_pkt		*pkt; /* the packet sent from mailbox client */
++};
++
+ u8 cmdq_get_shift_pa(struct mbox_chan *chan);
+ 
+ #endif /* __MTK_CMDQ_MAILBOX_H__ */
 -- 
 2.18.0
 
