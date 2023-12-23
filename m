@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5588C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Dec 2023 04:00:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A3B9C47073
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Dec 2023 04:00:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HJrLG1zM8PTKraRTm33Q1ashFfc4kPfHJeFcFgICb/k=; b=0F8ezstammE7DRZCWm4eO4mOWZ
-	YGf+grGTUaCG3CdQWC8ljcVIvnIHaxDoHqTiTevcCK1oSKQA7hf4f1MeEz/5a2DZ8avEnuyUNtczq
-	6Hnwy+Pw+euD85L1UPUSfoHc1Qj80L45g3htiig2rBYj4X1AJyP3fa+HBlGCXt5bwm9zM/uRjpeRr
-	18UHONqvh236vEqa37SdvjXyX0nhORFNUQq9MqFCcIkJ+rHTdaDTKfXW6QeD8w3TVNepcSU1Wuyxn
-	IXffpcsFaG0dicMqITSTbPA9j2Q6ELjfHX4cd9v1w1fW4uvSMq2Fbp79/CVkdwYEiRXzTRwTcNvgU
-	tq2yDwmg==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=T4y2M/bxn/FUb1H1/6pqnuKBUyHHVpd9Ga7hLziROJI=; b=iqg4zETHUEL7zLbkw7OBqS9XiS
+	ApwxfOKXnJJyEsn++ELCFhVQpKIYYtFj8hD2vYvSa1bCD1aDk0mX5PZylGSlaBOtIO38v49ZQQC6D
+	OREoXUZBGckYJiMF1Ewk+6QSmb2Ui16W6LBmOfaD6dLl/uJIKTzdOI3eniDpU001ulGdZO4JHsG97
+	yS5b5o4bjG2dwmMZeyWrxC1iJtuhKc/olGUxIXWo2pbjLTU/ETrlLJqV5nt7OTSWckznvWBC6qJ+E
+	PsW4rL7PVfw4Y+0MquQQm5Vt6hO8HlHnqsilW7sL/M7Lo5cORN/81+SxowHNKG9hMGvpDAfJ+NyQS
+	x0psV7Fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGtBa-007JWq-1v;
-	Sat, 23 Dec 2023 04:00:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rGtBc-007JXD-38;
+	Sat, 23 Dec 2023 04:00:28 +0000
+Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGtBX-007JWD-2g
+	id 1rGtBZ-007JW8-2H
 	for linux-mediatek@lists.infradead.org;
-	Sat, 23 Dec 2023 04:00:25 +0000
-X-UUID: c73c4edea14711ee958cff29c719f35b-20231222
+	Sat, 23 Dec 2023 04:00:27 +0000
+X-UUID: c707227ca14711ee958cff29c719f35b-20231222
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HJrLG1zM8PTKraRTm33Q1ashFfc4kPfHJeFcFgICb/k=;
-	b=MLFnyUx9NaIszp+9L6hTppeZMktz8MpKZLkm78SEAxvctH+XALfGFBjw3llsUtpDry7JRZ5i5SW+sXETHdhUkLME4HGHHhE6/AQ8SqQOp7GBhTueSPwEdwNX5y+i0rADaBo0mpcqMOkw3+v82ZGoUaufYwdJBmc3hlkMc0V5vJI=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=T4y2M/bxn/FUb1H1/6pqnuKBUyHHVpd9Ga7hLziROJI=;
+	b=lGByIyXsfZjyhHA+NddFov4NJvk1gMAOJRcYwv+DJAJ6jWLi86AHM7vhShpgFFCt/y4oS5JZMx2lZ38JRJTVKVUUqW+DgQxD2oJoKiyWWYW0J1MsWYTMKLnQg9wm0fkXCf/pavK6S5TXlP9If2ZhOdlJDKq6qwcKPl4ePgaPeO8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:9a23f6fa-7d62-4de0-9868-9059f104b7f8,IP:0,U
-	RL:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-30
-X-CID-META: VersionHash:5d391d7,CLOUDID:59eb947e-4f93-4875-95e7-8c66ea833d57,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
-	L:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,D
-	KR:0,DKP:0,BRR:0,BRE:0
+X-CID-O-INFO: VERSION:1.1.35,REQID:ba52720e-3966-44eb-bc1f-83da45c60695,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:5d391d7,CLOUDID:cd59662e-1ab8-4133-9780-81938111c800,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: c73c4edea14711ee958cff29c719f35b-20231222
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: c707227ca14711ee958cff29c719f35b-20231222
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
 	(envelope-from <deren.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 519269141; Fri, 22 Dec 2023 21:00:15 -0700
+	with ESMTP id 1713099140; Fri, 22 Dec 2023 21:00:14 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Sat, 23 Dec 2023 12:00:12 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -60,27 +60,18 @@ CC: Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
 	Shayne Chen <shayne.chen@mediatek.com>, linux-wireless
 	<linux-wireless@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH 1/3] wifi: mt76: usb: create a dedicated queue for psd traffic
-Date: Sat, 23 Dec 2023 11:43:06 +0800
-Message-ID: <3eb3a860ccdf465b77ae63d6ddcf6a584d1729ce.1703301666.git.deren.wu@mediatek.com>
+Subject: [PATCH 3/3] wifi: mt76: mt792xu: enable dmashdl support
+Date: Sat, 23 Dec 2023 11:43:08 +0800
+Message-ID: <28d84bfc81e90be921c28fbda7e79e33b2b515d0.1703301666.git.deren.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <3eb3a860ccdf465b77ae63d6ddcf6a584d1729ce.1703301666.git.deren.wu@mediatek.com>
+References: <3eb3a860ccdf465b77ae63d6ddcf6a584d1729ce.1703301666.git.deren.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--5.304200-8.000000
-X-TMASE-MatchedRID: P7IsGr2NQXpxERu/GEvUx57tR0mnRAg19k2LdvNVos40QmmUihPzrOD+
-	bNUbvCNRThbvLLI8RvOP8lyp0EjHaun2wHlv5vGudXu122+iJtrGYnoF/CTeZZ6fSoF3Lt+MQeG
-	LuticaUPbU8hbAd0JD341niV9KymzHxPMjOKY7A9t1O49r1VEa8RB0bsfrpPIXzYxeQR1Dvvndz
-	T1VUm+yW0uVYlAtwt47fEUfA3jpjWYSNo3e1rEeo7dlbKe85Mf
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--5.304200-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 401E56649758C30EA66F75B96BA1EB57C31FCB9DB5BEBF1839A7ED984E5D1A1B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231222_200023_883163_D1626153 
-X-CRM114-Status: GOOD (  10.71  )
+X-CRM114-CacheID: sfid-20231222_200025_748684_F892DD38 
+X-CRM114-Status: GOOD (  10.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,76 +86,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
+dmashdl(DMA scheduler) was disable and may cause packets corruption
+without propoer resource handling. Enable this to control resources
+between usb-bus/pse/hardware-ac-queue.
 
-Create a dedicate queue for psd/mgmt traffic and do not rely on voice
-one. This is a preliminary patch to fix mt7921u/mt7925 usb dmasl
-configuration.
-
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/usb.c | 17 +++++++----------
- 1 file changed, 7 insertions(+), 10 deletions(-)
+ .../net/wireless/mediatek/mt76/mt792x_usb.c   | 74 +++++++++----------
+ 1 file changed, 36 insertions(+), 38 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
-index 1584665fe3cb..9958399ff57e 100644
---- a/drivers/net/wireless/mediatek/mt76/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/usb.c
-@@ -767,7 +767,7 @@ static void mt76u_status_worker(struct mt76_worker *w)
- 	if (!test_bit(MT76_STATE_RUNNING, &dev->phy.state))
- 		return;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
+index 2dd283caed36..fbf49da16b92 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
+@@ -121,44 +121,25 @@ static void mt792xu_uhw_wr(struct mt76_dev *dev, u32 addr, u32 val)
  
--	for (i = 0; i < IEEE80211_NUM_ACS; i++) {
-+	for (i = 0; i <= MT_TXQ_PSD; i++) {
- 		q = dev->phy.q_tx[i];
- 		if (!q)
- 			continue;
-@@ -928,14 +928,11 @@ static u8 mt76u_ac_to_hwq(struct mt76_dev *dev, u8 ac)
- 
- static int mt76u_alloc_tx(struct mt76_dev *dev)
+ static void mt792xu_dma_prefetch(struct mt792x_dev *dev)
  {
--	struct mt76_queue *q;
--	int i, j, err;
+-	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(0),
+-		 MT_WPDMA0_MAX_CNT_MASK, 4);
+-	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(0),
+-		 MT_WPDMA0_BASE_PTR_MASK, 0x80);
+-
+-	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(1),
+-		 MT_WPDMA0_MAX_CNT_MASK, 4);
+-	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(1),
+-		 MT_WPDMA0_BASE_PTR_MASK, 0xc0);
+-
+-	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(2),
+-		 MT_WPDMA0_MAX_CNT_MASK, 4);
+-	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(2),
+-		 MT_WPDMA0_BASE_PTR_MASK, 0x100);
+-
+-	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(3),
+-		 MT_WPDMA0_MAX_CNT_MASK, 4);
+-	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(3),
+-		 MT_WPDMA0_BASE_PTR_MASK, 0x140);
+-
+-	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(4),
+-		 MT_WPDMA0_MAX_CNT_MASK, 4);
+-	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(4),
+-		 MT_WPDMA0_BASE_PTR_MASK, 0x180);
+-
+-	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(16),
+-		 MT_WPDMA0_MAX_CNT_MASK, 4);
+-	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(16),
+-		 MT_WPDMA0_BASE_PTR_MASK, 0x280);
+-
+-	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(17),
+-		 MT_WPDMA0_MAX_CNT_MASK, 4);
+-	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(17),
+-		 MT_WPDMA0_BASE_PTR_MASK,  0x2c0);
++#define DMA_PREFETCH_CONF(_idx_, _cnt_, _base_) \
++	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL((_idx_)), \
++		 MT_WPDMA0_MAX_CNT_MASK | MT_WPDMA0_BASE_PTR_MASK, \
++		 FIELD_PREP(MT_WPDMA0_MAX_CNT_MASK, (_cnt_)) | \
++		 FIELD_PREP(MT_WPDMA0_BASE_PTR_MASK, (_base_)))
++
++	DMA_PREFETCH_CONF(0, 4, 0x080);
++	DMA_PREFETCH_CONF(1, 4, 0x0c0);
++	DMA_PREFETCH_CONF(2, 4, 0x100);
++	DMA_PREFETCH_CONF(3, 4, 0x140);
++	DMA_PREFETCH_CONF(4, 4, 0x180);
++	DMA_PREFETCH_CONF(16, 4, 0x280);
++	DMA_PREFETCH_CONF(17, 4, 0x2c0);
+ }
+ 
+ static void mt792xu_wfdma_init(struct mt792x_dev *dev)
+ {
 +	int i;
++
+ 	mt792xu_dma_prefetch(dev);
  
- 	for (i = 0; i <= MT_TXQ_PSD; i++) {
--		if (i >= IEEE80211_NUM_ACS) {
--			dev->phy.q_tx[i] = dev->phy.q_tx[0];
--			continue;
--		}
-+		struct mt76_queue *q;
-+		int j, err;
+ 	mt76_clear(dev, MT_UWFDMA0_GLO_CFG, MT_WFDMA0_GLO_CFG_OMIT_RX_INFO);
+@@ -169,10 +150,27 @@ static void mt792xu_wfdma_init(struct mt792x_dev *dev)
+ 		 MT_WFDMA0_GLO_CFG_TX_DMA_EN |
+ 		 MT_WFDMA0_GLO_CFG_RX_DMA_EN);
  
- 		q = devm_kzalloc(dev->dev, sizeof(*q), GFP_KERNEL);
- 		if (!q)
-@@ -969,7 +966,7 @@ static void mt76u_free_tx(struct mt76_dev *dev)
+-	/* disable dmashdl */
+-	mt76_clear(dev, MT_UWFDMA0_GLO_CFG_EXT0,
+-		   MT_WFDMA0_CSR_TX_DMASHDL_ENABLE);
+-	mt76_set(dev, MT_DMASHDL_SW_CONTROL, MT_DMASHDL_DMASHDL_BYPASS);
++	mt76_rmw(dev, MT_DMASHDL_REFILL, MT_DMASHDL_REFILL_MASK, 0xffe00000);
++	mt76_clear(dev, MT_DMASHDL_PAGE, MT_DMASHDL_GROUP_SEQ_ORDER);
++	mt76_rmw(dev, MT_DMASHDL_PKT_MAX_SIZE,
++		 MT_DMASHDL_PKT_MAX_SIZE_PLE | MT_DMASHDL_PKT_MAX_SIZE_PSE,
++		 FIELD_PREP(MT_DMASHDL_PKT_MAX_SIZE_PLE, 1) |
++		 FIELD_PREP(MT_DMASHDL_PKT_MAX_SIZE_PSE, 0));
++	for (i = 0; i < 5; i++)
++		mt76_wr(dev, MT_DMASHDL_GROUP_QUOTA(i),
++			FIELD_PREP(MT_DMASHDL_GROUP_QUOTA_MIN, 0x3) |
++			FIELD_PREP(MT_DMASHDL_GROUP_QUOTA_MAX, 0xfff));
++	for (i = 5; i < 16; i++)
++		mt76_wr(dev, MT_DMASHDL_GROUP_QUOTA(i),
++			FIELD_PREP(MT_DMASHDL_GROUP_QUOTA_MIN, 0x0) |
++			FIELD_PREP(MT_DMASHDL_GROUP_QUOTA_MAX, 0x0));
++	mt76_wr(dev, MT_DMASHDL_Q_MAP(0), 0x32013201);
++	mt76_wr(dev, MT_DMASHDL_Q_MAP(1), 0x32013201);
++	mt76_wr(dev, MT_DMASHDL_Q_MAP(2), 0x55555444);
++	mt76_wr(dev, MT_DMASHDL_Q_MAP(3), 0x55555444);
++
++	mt76_wr(dev, MT_DMASHDL_SCHED_SET(0), 0x76540132);
++	mt76_wr(dev, MT_DMASHDL_SCHED_SET(1), 0xFEDCBA98);
  
- 	mt76_worker_teardown(&dev->usb.status_worker);
- 
--	for (i = 0; i < IEEE80211_NUM_ACS; i++) {
-+	for (i = 0; i <= MT_TXQ_PSD; i++) {
- 		struct mt76_queue *q;
- 		int j;
- 
-@@ -999,7 +996,7 @@ void mt76u_stop_tx(struct mt76_dev *dev)
- 
- 		dev_err(dev->dev, "timed out waiting for pending tx\n");
- 
--		for (i = 0; i < IEEE80211_NUM_ACS; i++) {
-+		for (i = 0; i <= MT_TXQ_PSD; i++) {
- 			q = dev->phy.q_tx[i];
- 			if (!q)
- 				continue;
-@@ -1013,7 +1010,7 @@ void mt76u_stop_tx(struct mt76_dev *dev)
- 		/* On device removal we maight queue skb's, but mt76u_tx_kick()
- 		 * will fail to submit urb, cleanup those skb's manually.
- 		 */
--		for (i = 0; i < IEEE80211_NUM_ACS; i++) {
-+		for (i = 0; i <= MT_TXQ_PSD; i++) {
- 			q = dev->phy.q_tx[i];
- 			if (!q)
- 				continue;
+ 	mt76_set(dev, MT_WFDMA_DUMMY_CR, MT_WFDMA_NEED_REINIT);
+ }
 -- 
 2.18.0
 
