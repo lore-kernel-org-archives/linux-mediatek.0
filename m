@@ -4,74 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2B21C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Dec 2023 04:00:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4385AC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Dec 2023 07:37:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WzPfFq3PXd/eEY3q3pIRTwOEtnm5hPd8UW2giEGbMc0=; b=CBvvXKwqHDpjihvyNKx39CrOUx
-	ANAyboVSpMokdKv96y181xDWR2ZZ35V1O5k8DYJ09eJU/yIO1iXKJdJZgJd0P/Ab1RwuiXyuNKWBJ
-	OoVeVIosfT2DEK/c3Wv8F7WYadYEKTRJJ4m1EFooQABsjvvPQGlUa2papop4Kd/MaJli4AfoPYeaj
-	7MkWyM2VyDHeb/5jPrThg4yTmralocYmvKbeao8dq2OJ0E5RRdd3dDlgeoi2SQd4P8NtAqhmCbBB2
-	xUYjV5v5DrwBdb8ouSCpkq8wslIb22UBLrUFoQGKwNsD/NwCnSKbqezKhVvR6AwHAuA3DRlkQ8AbQ
-	SjIO58rQ==;
+	bh=zZ0YrmCHn1unBBHTzUHWtqBD/LKotEbKtR8Lnn7RF0c=; b=nc8pc8pC4RuU1rpjQHVoD5VvJu
+	FzIE3KGiVyfOZm+r+TVVeyM5neCvtwbSi7Y8UNcEsf8Eux+4yAxS/Mp1y6tSc2SGKUnL/dTSTj/Dd
+	2a9NLaPk3tbwTBZQKwQOVHN42xPb9BTjUfdbajnuOspyxHbtWBsnfaMAqovU6iikoFiJtLn3l6ChM
+	ZxN8RP1o+Q02bsnBroGiuJOp+YbKJxVyO2jkbq3sZjkB+3bC/70kJP44MO9y4r5Y6qLj+CPFAM76B
+	ildMXiyvuwz/tv5+IxuSzN603SLr4+d6bGmuGq3XsPjtLNUm4ri5nlHJB3Bn5vUhAno0Lw+1B+ASm
+	sV6phHbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGtBu-007JYr-2X;
-	Sat, 23 Dec 2023 04:00:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rGwZY-007WIA-2F;
+	Sat, 23 Dec 2023 07:37:24 +0000
+Received: from mgamail.intel.com ([192.198.163.9])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGtBs-007JYL-2U
-	for linux-mediatek@lists.infradead.org;
-	Sat, 23 Dec 2023 04:00:46 +0000
-X-UUID: d567119ca14711ee9b09ad09c76753c8-20231222
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=WzPfFq3PXd/eEY3q3pIRTwOEtnm5hPd8UW2giEGbMc0=;
-	b=SVArxqMG1NFSiTbVw2Egjfw73nFNhMMstyBCbw/W/fkBO2jOiU8qTstR4uuOI/T/DnDldVfbjrqx6z5QBPqQ6aSrFc8nHid9BGQwFX+TsaM6ioWd9ByVS3cPqyIG2QdClhwx+zP56t9TA4LEV7obfb4qaxUpBvnzMGBxMz94wH8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:34493927-0062-44cc-803f-19713f247616,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:5d391d7,CLOUDID:e9f47b8d-e2c0-40b0-a8fe-7c7e47299109,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: d567119ca14711ee9b09ad09c76753c8-20231222
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1650855893; Fri, 22 Dec 2023 21:00:39 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 23 Dec 2023 12:00:12 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 23 Dec 2023 12:00:12 +0800
-From: Deren Wu <deren.wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>, linux-wireless
-	<linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH 2/3] wifi: mt76: usb: store usb endpoint in mt76_queue
-Date: Sat, 23 Dec 2023 11:43:07 +0800
-Message-ID: <5f955adb9abacf1f55151f86907dde539db6ea93.1703301666.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <3eb3a860ccdf465b77ae63d6ddcf6a584d1729ce.1703301666.git.deren.wu@mediatek.com>
-References: <3eb3a860ccdf465b77ae63d6ddcf6a584d1729ce.1703301666.git.deren.wu@mediatek.com>
+	id 1rGwZV-007WHA-1b;
+	Sat, 23 Dec 2023 07:37:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1703317041; x=1734853041;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=a2m4tM/yHyh0WQQ5DyOfXe4Sy7woCWkTH+cVcUpAHIY=;
+  b=chQyZ9LBoJaIO7Um0Xj8SDGz76uaVmYCxIqpPKUdp5kSlzBtZG9/9sds
+   RKyPjb/Jr3ooFc1EarCLoJ3b35UwBnlE7vbJkOXVjjnviibTAr2+3HlPy
+   jEKSDhF0s5ljwKP/NCFO8SNUWtNzWLCXBc0lNCPkTtR9K+N8FL7C6uhfp
+   WA3CNyqEvJSANyMq0uAJRX45hUPQ4/SgY/FPuFgwE1VqsjWSqtmDfaaK+
+   FrnkxhNKuDP/FQz9ZSOo/uEthvvqUBDpvtbdfSz3NTm2yirKzl8FE3u4O
+   IzQsXWiesr+hwvK6xf98yPAvwVH3yRKFJfl0dVrB3t3PT4zsN53SC1+0D
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10932"; a="3027972"
+X-IronPort-AV: E=Sophos;i="6.04,298,1695711600"; 
+   d="scan'208";a="3027972"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Dec 2023 23:37:17 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10932"; a="1108711237"
+X-IronPort-AV: E=Sophos;i="6.04,298,1695711600"; 
+   d="scan'208";a="1108711237"
+Received: from lkp-server02.sh.intel.com (HELO b07ab15da5fe) ([10.239.97.151])
+  by fmsmga005.fm.intel.com with ESMTP; 22 Dec 2023 23:37:11 -0800
+Received: from kbuild by b07ab15da5fe with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1rGwZJ-000AQV-2N;
+	Sat, 23 Dec 2023 07:37:09 +0000
+Date: Sat, 23 Dec 2023 15:36:37 +0800
+From: kernel test robot <lkp@intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	chunkuang.hu@kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, p.zabel@pengutronix.de,
+	airlied@gmail.com, daniel@ffwll.ch, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com
+Subject: Re: [PATCH v2 3/4] drm/mediatek: dsi: Use bitfield macros where
+ useful
+Message-ID: <202312231512.ioiD48LA-lkp@intel.com>
+References: <20231220135722.192080-4-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231220135722.192080-4-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231222_200044_815286_A3DDC30C 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20231222_233721_573339_8435D351 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,136 +89,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
+Hi AngeloGioacchino,
 
-Store usb endpoint in mt76_queue structure and rework q2ep routine.
+kernel test robot noticed the following build errors:
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt76.h     | 10 ++----
- .../wireless/mediatek/mt76/mt76x02_usb_core.c |  2 +-
- drivers/net/wireless/mediatek/mt76/usb.c      | 35 ++++++++++++-------
- 3 files changed, 25 insertions(+), 22 deletions(-)
+[auto build test ERROR on drm-misc/drm-misc-next]
+[also build test ERROR on drm/drm-next drm-exynos/exynos-drm-next drm-intel/for-linux-next-fixes drm-tip/drm-tip linus/master v6.7-rc6 next-20231222]
+[cannot apply to drm-intel/for-linux-next]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index b20c34d5a0f7..98fe533af20f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -210,6 +210,8 @@ struct mt76_queue {
- 	u16 first;
- 	u16 head;
- 	u16 tail;
-+	u8 hw_idx;
-+	u8 ep;
- 	int ndesc;
- 	int queued;
- 	int buf_size;
-@@ -217,7 +219,6 @@ struct mt76_queue {
- 	bool blocked;
- 
- 	u8 buf_offset;
--	u8 hw_idx;
- 	u16 flags;
- 
- 	struct mtk_wed_device *wed;
-@@ -1470,13 +1471,6 @@ static inline bool mt76u_urb_error(struct urb *urb)
- 	       urb->status != -ENOENT;
- }
- 
--/* Map hardware queues to usb endpoints */
--static inline u8 q2ep(u8 qid)
--{
--	/* TODO: take management packets to queue 5 */
--	return qid + 1;
--}
--
- static inline int
- mt76u_bulk_msg(struct mt76_dev *dev, void *data, int len, int *actual_len,
- 	       int timeout, int ep)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_usb_core.c b/drivers/net/wireless/mediatek/mt76/mt76x02_usb_core.c
-index 85a78dea4085..29b9a15f8dbe 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_usb_core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_usb_core.c
-@@ -67,7 +67,7 @@ int mt76x02u_tx_prepare_skb(struct mt76_dev *mdev, void *data,
- 			    struct mt76_tx_info *tx_info)
- {
- 	struct mt76x02_dev *dev = container_of(mdev, struct mt76x02_dev, mt76);
--	int pid, len = tx_info->skb->len, ep = q2ep(dev->mphy.q_tx[qid]->hw_idx);
-+	int pid, len = tx_info->skb->len, ep = dev->mphy.q_tx[qid]->ep;
- 	struct mt76x02_txwi *txwi;
- 	bool ampdu = IEEE80211_SKB_CB(tx_info->skb)->flags & IEEE80211_TX_CTL_AMPDU;
- 	enum mt76_qsel qsel;
-diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
-index 9958399ff57e..55b74919df21 100644
---- a/drivers/net/wireless/mediatek/mt76/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/usb.c
-@@ -872,9 +872,8 @@ mt76u_tx_queue_skb(struct mt76_dev *dev, struct mt76_queue *q,
- 	if (err < 0)
- 		return err;
- 
--	mt76u_fill_bulk_urb(dev, USB_DIR_OUT, q2ep(q->hw_idx),
--			    q->entry[idx].urb, mt76u_complete_tx,
--			    &q->entry[idx]);
-+	mt76u_fill_bulk_urb(dev, USB_DIR_OUT, q->ep, q->entry[idx].urb,
-+			    mt76u_complete_tx, &q->entry[idx]);
- 
- 	q->head = (q->head + 1) % q->ndesc;
- 	q->entry[idx].skb = tx_info.skb;
-@@ -906,9 +905,13 @@ static void mt76u_tx_kick(struct mt76_dev *dev, struct mt76_queue *q)
- 	}
- }
- 
--static u8 mt76u_ac_to_hwq(struct mt76_dev *dev, u8 ac)
-+static void
-+mt76u_ac_to_hwq(struct mt76_dev *dev, struct mt76_queue *q, u8 qid)
- {
--	if (mt76_chip(dev) == 0x7663) {
-+	u8 ac = qid < IEEE80211_NUM_ACS ? qid : IEEE80211_AC_BE;
-+
-+	switch (mt76_chip(dev)) {
-+	case 0x7663: {
- 		static const u8 lmac_queue_map[] = {
- 			/* ac to lmac mapping */
- 			[IEEE80211_AC_BK] = 0,
-@@ -917,13 +920,20 @@ static u8 mt76u_ac_to_hwq(struct mt76_dev *dev, u8 ac)
- 			[IEEE80211_AC_VO] = 4,
- 		};
- 
--		if (WARN_ON(ac >= ARRAY_SIZE(lmac_queue_map)))
--			return 1; /* BE */
--
--		return lmac_queue_map[ac];
-+		q->hw_idx = lmac_queue_map[ac];
-+		q->ep = q->hw_idx + 1;
-+		break;
-+	}
-+	case 0x7961:
-+	case 0x7925:
-+		q->hw_idx = mt76_ac_to_hwq(ac);
-+		q->ep = qid == MT_TXQ_PSD ? MT_EP_OUT_HCCA : q->hw_idx + 1;
-+		break;
-+	default:
-+		q->hw_idx = mt76_ac_to_hwq(ac);
-+		q->ep = q->hw_idx + 1;
-+		break;
- 	}
--
--	return mt76_ac_to_hwq(ac);
- }
- 
- static int mt76u_alloc_tx(struct mt76_dev *dev)
-@@ -939,8 +949,7 @@ static int mt76u_alloc_tx(struct mt76_dev *dev)
- 			return -ENOMEM;
- 
- 		spin_lock_init(&q->lock);
--		q->hw_idx = mt76u_ac_to_hwq(dev, i);
--
-+		mt76u_ac_to_hwq(dev, q, i);
- 		dev->phy.q_tx[i] = q;
- 
- 		q->entry = devm_kcalloc(dev->dev,
+url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/drm-mediatek-dsi-Use-GENMASK-for-register-mask-definitions/20231222-164513
+base:   git://anongit.freedesktop.org/drm/drm-misc drm-misc-next
+patch link:    https://lore.kernel.org/r/20231220135722.192080-4-angelogioacchino.delregno%40collabora.com
+patch subject: [PATCH v2 3/4] drm/mediatek: dsi: Use bitfield macros where useful
+config: arm-allmodconfig (https://download.01.org/0day-ci/archive/20231223/202312231512.ioiD48LA-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231223/202312231512.ioiD48LA-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202312231512.ioiD48LA-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/gpu/drm/mediatek/mtk_dsi.c: In function 'mtk_dsi_phy_timconfig':
+>> drivers/gpu/drm/mediatek/mtk_dsi.c:260:19: error: implicit declaration of function 'FIELD_PREP' [-Werror=implicit-function-declaration]
+     260 |         timcon0 = FIELD_PREP(LPX, timing->lpx) |
+         |                   ^~~~~~~~~~
+   cc1: some warnings being treated as errors
+
+
+vim +/FIELD_PREP +260 drivers/gpu/drm/mediatek/mtk_dsi.c
+
+   236	
+   237	static void mtk_dsi_phy_timconfig(struct mtk_dsi *dsi)
+   238	{
+   239		u32 timcon0, timcon1, timcon2, timcon3;
+   240		u32 data_rate_mhz = DIV_ROUND_UP(dsi->data_rate, 1000000);
+   241		struct mtk_phy_timing *timing = &dsi->phy_timing;
+   242	
+   243		timing->lpx = (60 * data_rate_mhz / (8 * 1000)) + 1;
+   244		timing->da_hs_prepare = (80 * data_rate_mhz + 4 * 1000) / 8000;
+   245		timing->da_hs_zero = (170 * data_rate_mhz + 10 * 1000) / 8000 + 1 -
+   246				     timing->da_hs_prepare;
+   247		timing->da_hs_trail = timing->da_hs_prepare + 1;
+   248	
+   249		timing->ta_go = 4 * timing->lpx - 2;
+   250		timing->ta_sure = timing->lpx + 2;
+   251		timing->ta_get = 4 * timing->lpx;
+   252		timing->da_hs_exit = 2 * timing->lpx + 1;
+   253	
+   254		timing->clk_hs_prepare = 70 * data_rate_mhz / (8 * 1000);
+   255		timing->clk_hs_post = timing->clk_hs_prepare + 8;
+   256		timing->clk_hs_trail = timing->clk_hs_prepare;
+   257		timing->clk_hs_zero = timing->clk_hs_trail * 4;
+   258		timing->clk_hs_exit = 2 * timing->clk_hs_trail;
+   259	
+ > 260		timcon0 = FIELD_PREP(LPX, timing->lpx) |
+   261			  FIELD_PREP(HS_PREP, timing->da_hs_prepare) |
+   262			  FIELD_PREP(HS_ZERO, timing->da_hs_zero) |
+   263			  FIELD_PREP(HS_TRAIL, timing->da_hs_trail);
+   264	
+   265		timcon1 = FIELD_PREP(TA_GO, timing->ta_go) |
+   266			  FIELD_PREP(TA_SURE, timing->ta_sure) |
+   267			  FIELD_PREP(TA_GET, timing->ta_get) |
+   268			  FIELD_PREP(DA_HS_EXIT, timing->da_hs_exit);
+   269	
+   270		timcon2 = FIELD_PREP(DA_HS_SYNC, 1) |
+   271			  FIELD_PREP(CLK_ZERO, timing->clk_hs_zero) |
+   272			  FIELD_PREP(CLK_TRAIL, timing->clk_hs_trail);
+   273	
+   274		timcon3 = FIELD_PREP(CLK_HS_PREP, timing->clk_hs_prepare) |
+   275			  FIELD_PREP(CLK_HS_POST, timing->clk_hs_post) |
+   276			  FIELD_PREP(CLK_HS_EXIT, timing->clk_hs_exit);
+   277	
+   278		writel(timcon0, dsi->regs + DSI_PHY_TIMECON0);
+   279		writel(timcon1, dsi->regs + DSI_PHY_TIMECON1);
+   280		writel(timcon2, dsi->regs + DSI_PHY_TIMECON2);
+   281		writel(timcon3, dsi->regs + DSI_PHY_TIMECON3);
+   282	}
+   283	
+
 -- 
-2.18.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
