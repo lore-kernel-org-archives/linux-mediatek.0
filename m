@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E1DEC47074
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Dec 2023 18:30:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E770C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Dec 2023 18:30:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=3gOWOBV0rgKU+/PmGI3xj46A8m8R3ijvR09XFgFjDzI=; b=cURF9lw8M5iiohHv82TcNOG2vb
-	y+B5h4NusBz18yuNBM7AkuOLdqwWUjczlHScuFq2CDHFISR5nGAmY6rVZpvX3z3uLbUbVfg0s5snq
-	esyXuhhjJ61hEPI4HtWmkZciLHhQxCvUSXdmBzztti6cr+h52O/KNYw3f+6nI/arZZ60o8MzhidU3
-	E3a5hjIYJ6F5X5w4lsZsx31rwRGKdqvE+QOXEXHJjTte41sfcwseXECyt1D9JyJLyod5QEiEgvqDU
-	+P2cpIKbsD9xZ1eJ3ha2yRkxbFEmMsVjtRG/w+JEBJU3FbABr7x2nJo/BLY1UyXb5+HpA3/hyeT+5
-	uYP1SAHA==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SzoPn8uxMb6pfB9NNf9fBM1vsuCNX8c3U3b+FwXjf1I=; b=qmcU/FC5Q3TzFZu2WRci8hLGbR
+	AQvOxJrifWZXMj93cnkCNjVqFZRAgQdhgQ8tKStkduKcoeZjr5OW9yjYYEv62FAZw9fbNC3Idzege
+	8L0mVI5Mwe2Yex1nDSptIFN8ifp7K7s6Jg5xHr0RN00yKTblXq5mnrKW4JMp1gEInHlxft8BXwnBp
+	CvQofQreyjgfgtasd/RorPBVFNPWyTnAj4yGJ7bPCpr5KoIza/lqozDW1qStwAq8usrYymazITCKS
+	uNBWje5dAIYFKyuZQ4gCG/733rWYZ5qKcWl9Mj1UN7SY4suBTm6HRuPMbiOa5Sm8IMP9FcaE1RXPS
+	kUBY+SMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rH6lH-008IYd-1c;
-	Sat, 23 Dec 2023 18:30:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rH6lY-008Ila-3D;
+	Sat, 23 Dec 2023 18:30:29 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rH6ks-008IGX-0W;
-	Sat, 23 Dec 2023 18:29:49 +0000
-X-UUID: 39d92b1ea1c111ee958cff29c719f35b-20231223
+	id 1rH6kt-008IGN-1P;
+	Sat, 23 Dec 2023 18:29:51 +0000
+X-UUID: 3aa3fb1ea1c111ee9b09ad09c76753c8-20231223
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=3gOWOBV0rgKU+/PmGI3xj46A8m8R3ijvR09XFgFjDzI=;
-	b=DIh3bXCtN/fYiNVanoR0oH/u095iil8OqB/bV4Ft11zdeqJ12vybbNzJidSozVn3CCkudYBJgiujZct5pog0dsIYcYxeUk9MW/azE3v4dg9N9yzYKPcmSofJJUpYyb5VE7BroAW9Mfmq2QGMqUayH05wxOaRld/LAncd4v8lU8U=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=SzoPn8uxMb6pfB9NNf9fBM1vsuCNX8c3U3b+FwXjf1I=;
+	b=pXCUiTZ3fEBE0FqbxoNlwT/7hUImXfQ2HwkiF6/WPffyXnVBH9szGT6f6HaKIZSnz9cGN91u3BCQSMZ1jZH0uCUF9kA3RVjAAyIhKUr+jiiUua/bF8BD7fLX50cYcMqmOPLjdyFNhWRfUDLX9jk3dA+rG69+dTOie7fZA+DPAE8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:a1f5a310-7628-439d-b707-3f8d8a74e0c2,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:87c0692e-1ab8-4133-9780-81938111c800,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-O-INFO: VERSION:1.1.35,REQID:787cc6dd-4fec-4f7b-ad81-4b2996ed11e6,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:-55
+X-CID-META: VersionHash:5d391d7,CLOUDID:ef711882-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
+	L:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,D
+	KR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 39d92b1ea1c111ee958cff29c719f35b-20231223
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 3aa3fb1ea1c111ee9b09ad09c76753c8-20231223
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1678952468; Sat, 23 Dec 2023 11:29:36 -0700
+	with ESMTP id 485859951; Sat, 23 Dec 2023 11:29:37 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sun, 24 Dec 2023 02:29:33 +0800
+ 15.2.1118.26; Sun, 24 Dec 2023 02:29:35 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sun, 24 Dec 2023 02:29:33 +0800
+ 15.2.1118.26 via Frontend Transport; Sun, 24 Dec 2023 02:29:35 +0800
 From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
@@ -67,18 +67,19 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Nancy
  Lin <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jeffrey Kardatzke
-	<jkardatzke@google.com>, Jason-jh Lin
-	<jason-jh.lin@mediatek.corp-partner.google.com>
-Subject: [PATCH v3 00/11] Add mediate-drm secure flow for SVP
-Date: Sun, 24 Dec 2023 02:29:21 +0800
-Message-ID: <20231223182932.27683-1-jason-jh.lin@mediatek.com>
+	<jkardatzke@google.com>
+Subject: [PATCH v3 07/11] drm/mediatek: Add secure layer config support for ovl
+Date: Sun, 24 Dec 2023 02:29:28 +0800
+Message-ID: <20231223182932.27683-8-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20231223182932.27683-1-jason-jh.lin@mediatek.com>
+References: <20231223182932.27683-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231223_102946_202061_7940831B 
-X-CRM114-Status: GOOD (  18.82  )
+X-CRM114-CacheID: sfid-20231223_102947_479072_5289E094 
+X-CRM114-Status: GOOD (  18.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,115 +94,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
+Add secure layer config support for ovl.
 
-Memory Definitions:
-secure memory - Memory allocated in the TEE (Trusted Execution
-Environment) which is inaccessible in the REE (Rich Execution
-Environment, i.e. linux kernel/userspace).
-secure handle - Integer value which acts as reference to 'secure
-memory'. Used in communication between TEE and REE to reference
-'secure memory'.
-secure buffer - 'secure memory' that is used to store decrypted,
-compressed video or for other general purposes in the TEE.
-secure surface - 'secure memory' that is used to store graphic buffers.
-
-Memory Usage in SVP:
-The overall flow of SVP starts with encrypted video coming in from an
-outside source into the REE. The REE will then allocate a 'secure
-buffer' and send the corresponding 'secure handle' along with the
-encrypted, compressed video data to the TEE. The TEE will then decrypt
-the video and store the result in the 'secure buffer'. The REE will
-then allocate a 'secure surface'. The REE will pass the 'secure
-handles' for both the 'secure buffer' and 'secure surface' into the
-TEE for video decoding. The video decoder HW will then decode the
-contents of the 'secure buffer' and place the result in the 'secure
-surface'. The REE will then attach the 'secure surface' to the overlay
-plane for rendering of the video.
-
-Everything relating to ensuring security of the actual contents of the
-'secure buffer' and 'secure surface' is out of scope for the REE and
-is the responsibility of the TEE.
-
-DRM driver handles allocation of gem objects that are backed by a 'secure
-surface' and for displaying a 'secure surface' on the overlay plane.
-This introduces a new flag for object creation called
-DRM_MTK_GEM_CREATE_ENCRYPTED which indicates it should be a 'secure
-surface'. All changes here are in MediaTek specific code.
----
 TODO:
-1) Remove get sec larb port interface in ddp_comp, ovl and ovl_adaptor.
-2) Verify instruction for enabling/disabling dapc and larb port in TEE
-   drop the sec_engine flags in normal world and.
-3) Move DISP_REG_OVL_SECURE setting to secure world for mtk_disp_ovl.c.
-4) Change the parameter register address in mtk_ddp_sec_write()
+1. Move DISP_REG_OVL_SECURE setting to secure world.
+2. Change the parameter register address in mtk_ddp_sec_write()
    from "u32 addr" to "struct cmdq_client_reg *cmdq_reg".
-5) Implement setting mmsys routing table in the secure world series.
+
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 ---
-Based on 5 series and 1 patch:
-[1] v3 dma-buf: heaps: Add MediaTek secure heap
-- https://patchwork.kernel.org/project/linux-mediatek/list/?series=809023
-[2] v3 add driver to support secure video decoder
-- https://patchwork.kernel.org/project/linux-mediatek/list/?series=807308
-[3] v4 soc: mediatek: Add register definitions for GCE
-- https://patchwork.kernel.org/project/linux-mediatek/patch/20231212121957.19231-2-shawn.sung@mediatek.com/
-[4] v2 Add CMDQ driver support for mt8188
-- https://patchwork.kernel.org/project/linux-mediatek/list/?series=810302
-[5] Add mediatek,gce-events definition to mediatek,gce-mailbox bindings
-- https://patchwork.kernel.org/project/linux-mediatek/list/?series=810938
-[6] v3 Add CMDQ secure driver for SVP
-- https://patchwork.kernel.org/project/linux-mediatek/list/?series=812379
----
-Change in v3:
-1. fix kerneldoc problems
-2. fix typo in title and commit message
-3. adjust naming for secure variable
-4. add the missing part for is_suecure plane implementation
-5. use BIT_ULL macro to replace bit shifting
-6. move modification of ovl_adaptor part to the correct patch
-7. add TODO list in commit message
-8. add commit message for using share memory to store execute count
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  2 ++
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c     | 31 +++++++++++++++++++--
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 29 +++++++++++++++++++
+ 3 files changed, 60 insertions(+), 2 deletions(-)
 
-Change in v2:
-
-1. remove the DRIVER_RDNDER flag for mtk_drm_ioctl
-2. move cmdq_insert_backup_cookie into client driver
-3. move secure gce node define from mt8195-cherry.dtsi to mt8195.dtsi
----
-CK Hu (1):
-  drm/mediatek: Add interface to allocate MediaTek GEM buffer.
-
-Jason-JH.Lin (10):
-  drm/mediatek/uapi: Add DRM_MTK_GEM_CREATE_ENCRYPTED flag
-  drm/mediatek: Add secure buffer control flow to mtk_drm_gem
-  drm/mediatek: Add secure identify flag and funcution to mtk_drm_plane
-  drm/mediatek: Add mtk_ddp_sec_write to config secure buffer info
-  drm/mediatek: Add get_sec_port interface to mtk_ddp_comp
-  drm/mediatek: Add secure layer config support for ovl
-  drm/mediatek: Add secure layer config support for ovl_adaptor
-  drm/mediatek: Add secure flow support to mediatek-drm
-  drm/mediatek: Add cmdq_insert_backup_cookie before secure pkt finalize
-  arm64: dts: mt8195: Add secure mbox settings for vdosys
-
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      |   6 +-
- drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   3 +
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c       |  31 +-
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  15 +
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c       | 274 +++++++++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h       |   1 +
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |  30 ++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |  14 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  13 +
- drivers/gpu/drm/mediatek/mtk_drm_gem.c        | 122 ++++++++
- drivers/gpu/drm/mediatek/mtk_drm_gem.h        |  16 +
- drivers/gpu/drm/mediatek/mtk_drm_plane.c      |  26 ++
- drivers/gpu/drm/mediatek/mtk_drm_plane.h      |   2 +
- drivers/gpu/drm/mediatek/mtk_mdp_rdma.c       |  11 +-
- drivers/gpu/drm/mediatek/mtk_mdp_rdma.h       |   2 +
- include/uapi/drm/mediatek_drm.h               |  59 ++++
- 16 files changed, 607 insertions(+), 18 deletions(-)
- create mode 100644 include/uapi/drm/mediatek_drm.h
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index 1311562d25cc..77054adcd9cf 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -9,6 +9,7 @@
+ #include <linux/soc/mediatek/mtk-cmdq.h>
+ #include <linux/soc/mediatek/mtk-mmsys.h>
+ #include <linux/soc/mediatek/mtk-mutex.h>
++#include "mtk_drm_ddp_comp.h"
+ #include "mtk_drm_plane.h"
+ #include "mtk_mdp_rdma.h"
+ 
+@@ -82,6 +83,7 @@ void mtk_ovl_clk_disable(struct device *dev);
+ void mtk_ovl_config(struct device *dev, unsigned int w,
+ 		    unsigned int h, unsigned int vrefresh,
+ 		    unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
++u64 mtk_ovl_get_sec_port(struct mtk_ddp_comp *comp, unsigned int idx);
+ int mtk_ovl_layer_check(struct device *dev, unsigned int idx,
+ 			struct mtk_plane_state *mtk_state);
+ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index 2bffe4245466..c18f76412a2e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -46,6 +46,7 @@
+ #define DISP_REG_OVL_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n))
+ #define DISP_REG_OVL_HDR_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x04)
+ #define DISP_REG_OVL_HDR_PITCH(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x08)
++#define DISP_REG_OVL_SECURE			0x0fc0
+ 
+ #define GMC_THRESHOLD_BITS	16
+ #define GMC_THRESHOLD_HIGH	((1 << GMC_THRESHOLD_BITS) / 4)
+@@ -126,8 +127,19 @@ struct mtk_disp_ovl {
+ 	const struct mtk_disp_ovl_data	*data;
+ 	void				(*vblank_cb)(void *data);
+ 	void				*vblank_cb_data;
++	resource_size_t			regs_pa;
+ };
+ 
++u64 mtk_ovl_get_sec_port(struct mtk_ddp_comp *comp, unsigned int idx)
++{
++	if (comp->id == DDP_COMPONENT_OVL0)
++		return BIT_ULL(CMDQ_SEC_DISP_OVL0);
++	else if (comp->id == DDP_COMPONENT_OVL1)
++		return BIT_ULL(CMDQ_SEC_DISP_OVL1);
++
++	return 0;
++}
++
+ static irqreturn_t mtk_disp_ovl_irq_handler(int irq, void *dev_id)
+ {
+ 	struct mtk_disp_ovl *priv = dev_id;
+@@ -449,8 +461,22 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 			      DISP_REG_OVL_SRC_SIZE(idx));
+ 	mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
+ 			      DISP_REG_OVL_OFFSET(idx));
+-	mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
+-			      DISP_REG_OVL_ADDR(ovl, idx));
++
++	if (state->pending.is_secure) {
++		const struct drm_format_info *fmt_info = drm_format_info(fmt);
++		unsigned int buf_size = (pending->height - 1) * pending->pitch +
++					pending->width * fmt_info->cpp[0];
++
++		mtk_ddp_write_mask(cmdq_pkt, BIT(idx), &ovl->cmdq_reg, ovl->regs,
++				   DISP_REG_OVL_SECURE, BIT(idx));
++		mtk_ddp_sec_write(cmdq_pkt, ovl->regs_pa + DISP_REG_OVL_ADDR(ovl, idx),
++				  pending->addr, CMDQ_IWC_H_2_MVA, 0, buf_size, 0);
++	} else {
++		mtk_ddp_write_mask(cmdq_pkt, 0, &ovl->cmdq_reg, ovl->regs,
++				   DISP_REG_OVL_SECURE, BIT(idx));
++		mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
++				      DISP_REG_OVL_ADDR(ovl, idx));
++	}
+ 
+ 	if (is_afbc) {
+ 		mtk_ddp_write_relaxed(cmdq_pkt, hdr_addr, &ovl->cmdq_reg, ovl->regs,
+@@ -529,6 +555,7 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	priv->regs_pa = res->start;
+ 	priv->regs = devm_ioremap_resource(dev, res);
+ 	if (IS_ERR(priv->regs)) {
+ 		dev_err(dev, "failed to ioremap ovl\n");
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index 3046c0409353..6aed7647dfc0 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -111,6 +111,34 @@ void mtk_ddp_write_mask(struct cmdq_pkt *cmdq_pkt, unsigned int value,
+ #endif
+ }
+ 
++void mtk_ddp_sec_write(struct cmdq_pkt *cmdq_pkt, u32 addr, u64 base,
++		       const enum cmdq_iwc_addr_metadata_type type,
++		       const u32 offset, const u32 size, const u32 port)
++{
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	if (!cmdq_pkt)
++		return;
++
++	/* secure buffer will be 4K alignment */
++	cmdq_sec_pkt_write(cmdq_pkt, addr, base, type,
++			   offset, ALIGN(size, PAGE_SIZE), port);
++#endif
++}
++
++void mtk_ddp_sec_write(struct cmdq_pkt *cmdq_pkt, u32 addr, u64 base,
++		       const enum cmdq_iwc_addr_metadata_type type,
++		       const u32 offset, const u32 size, const u32 port)
++{
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	if (!cmdq_pkt)
++		return;
++
++	/* secure buffer will be 4K alignment */
++	cmdq_sec_pkt_write(cmdq_pkt, addr, base, type,
++			   offset, ALIGN(size, PAGE_SIZE), port);
++#endif
++}
++
+ static int mtk_ddp_clk_enable(struct device *dev)
+ {
+ 	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+@@ -365,6 +393,7 @@ static const struct mtk_ddp_comp_funcs ddp_ovl = {
+ 	.bgclr_in_off = mtk_ovl_bgclr_in_off,
+ 	.get_formats = mtk_ovl_get_formats,
+ 	.get_num_formats = mtk_ovl_get_num_formats,
++	.get_sec_port = mtk_ovl_get_sec_port,
+ };
+ 
+ static const struct mtk_ddp_comp_funcs ddp_postmask = {
 -- 
 2.18.0
 
