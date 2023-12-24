@@ -4,94 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64B03C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Dec 2023 18:39:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 919ADC46CD3
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Dec 2023 07:37:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cg/Qnxb9jy60k4OKAUmtfo8qKzFnKjDqFVak8aIVfac=; b=VL+XmyFv5ixRiWrqJMiVBZKWD+
-	1Wjtwsu/CmXG2ptKLk3tBw8zWUQtBN6yMubMnvm7OV5VuzH8QdPHyDsEwJxfosHDOr9grbUJISwKS
-	BW2IlnKRzQVDFpR+cAixxxCIEspq690FEk0pLXdw7pxj3LluX+5BebPctRG0mrAThDU4sE2zS2Hhq
-	tiOSqR6PMDMQlHvIdC3SaStfjjikv+4tifLW1x7TaDl+ockSn9nSAhYimpG19K558rxihUKq5sKOK
-	ddJTgA6PXWXnqMTkp+PnodhSxlTsF2iz/lDQFJKROnz9aITAiY5xw1m+pSiAKqr9DD/eKlZl3DRsw
-	BgulVNCQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iJeCIB0MUy6a0K9bJwBkE5sgfhPIDLdWREiwE76A+mY=; b=ZX/TPUWwm1uuUnU90uwUBPYHCL
+	IEQrcYrU9zSW2JDOi1SZEHPZLRnxcNDksRL4uolcQg/R5h3v0Z7gv8MOPRx7wXc1QEe2gXX4Far4M
+	veRnnfe0qSGpEjjxZMZVTyks2AJfo5LnHRGF4JUkWB7dGW1f/hluoc7Aq62oYur7G9n3hmRy69Ak5
+	/1dVLnICZ7/lXuoFhb4XLrlZ/l8EwRCBN3qa1b91CBfPgEMTTfAnMlckvNuD+p7kDdmSWv0aPuDUG
+	Cn7TvvLMTXoxXIoUVmKK/8oaf6AeTTsOydrcGuD36U1mXLxufWwiPbbnzwHeoFmglXWvkt/SvvRoT
+	qZVbt/QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rH6uV-008KaH-0G;
-	Sat, 23 Dec 2023 18:39:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rHJ3U-0090Rb-1T;
+	Sun, 24 Dec 2023 07:37:48 +0000
+Received: from relay4-d.mail.gandi.net ([2001:4b98:dc4:8::224])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rH6uT-008KZB-0l;
-	Sat, 23 Dec 2023 18:39:42 +0000
-X-UUID: a04b71f8a1c211ee958cff29c719f35b-20231223
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=cg/Qnxb9jy60k4OKAUmtfo8qKzFnKjDqFVak8aIVfac=;
-	b=AW6Slt7reMN5iPhjhyFQyVoe6GTyfuhvO2r4nQ6GZ/cAmFUsKypEu65ELPnsFZG9sdLdpdmnTfYZH+ykHT9uNn1vK5hd5B52pu/Ogwrwm4udpGn2BSKUgvgmUX5qpYDysmXptxT9S8GY+Rj6x2g3OG0BcYRsN+MYONqbvQzlDaY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:a5b194a4-6277-449a-85ee-f6dddfc0aeb6,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:5d391d7,CLOUDID:01c8692e-1ab8-4133-9780-81938111c800,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: a04b71f8a1c211ee958cff29c719f35b-20231223
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1897205074; Sat, 23 Dec 2023 11:39:38 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sun, 24 Dec 2023 02:29:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sun, 24 Dec 2023 02:29:34 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<dri-devel@lists.freedesktop.org>, <linux-media@vger.kernel.org>,
-	<linaro-mm-sig@lists.linaro.org>, Jason-ch Chen <jason-ch.chen@mediatek.com>,
-	Johnson Wang <johnson.wang@mediatek.com>, "Jason-JH . Lin"
-	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, "Nancy
- Lin" <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jeffrey Kardatzke
-	<jkardatzke@google.com>
-Subject: [PATCH v3 03/11] drm/mediatek: Add secure buffer control flow to mtk_drm_gem
-Date: Sun, 24 Dec 2023 02:29:24 +0800
-Message-ID: <20231223182932.27683-4-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20231223182932.27683-1-jason-jh.lin@mediatek.com>
-References: <20231223182932.27683-1-jason-jh.lin@mediatek.com>
+	id 1rHJ3P-0090Qm-0U;
+	Sun, 24 Dec 2023 07:37:45 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 77AFCE0002;
+	Sun, 24 Dec 2023 07:37:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1703403455;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=iJeCIB0MUy6a0K9bJwBkE5sgfhPIDLdWREiwE76A+mY=;
+	b=YVheBZkd+rhv1Xtb3FKA22bt980BBrx4xCqK/81PQCTxpyc5Wk49AigoBhuQ9fKYYlW1p0
+	IIWVefIMrIamZxJF/PY8MnLwj/iknBUDOSFyLFEtFD5elyOcEaKd+kRR2ct9f3If72F+YI
+	EXZI3H0bUn0o/VGWn5C9ADlUaYxmfAfQgil1ZVNUVzibym7PA4Gug4OltqiagqG8khm0D+
+	kYJarMXArnOvwAcGrUVo/6izvnHh07Pkbu/VU+vh7fLZhDoc2fcvtou8y7k9CjEO21qxME
+	lQVIzqBJ5Hsl5LNUWGVinF5UWhaYk4r/3uKFLW25b8Za7R+mY5++YahAwiNfDg==
+Message-ID: <6600c6b1-2230-4963-940c-8b95a01750fd@arinc9.com>
+Date: Sun, 24 Dec 2023 10:37:12 +0300
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--7.977800-8.000000
-X-TMASE-MatchedRID: XAa2d/45j8QXSulpnju2HwNJ3EDwuUClKx5ICGp/WtFLgo8+IIHbcJh8
-	90SylZrlwPiYYkBDBMe2fd29CPQsSyQVVteP90CtKaMQ6tw7oDJMkOX0UoduuUYvSDWdWaRhkmi
-	3zE7HIvnZoTly3PGW4OyVvSGEffbDb6wZx1ul0pzJ5W6OZe5hhS7te75+XjKBv8D7QPW2jo8ARd
-	T81SrHjvetcOpa0TfdcBOyDww4NUgfE8yM4pjsD7j1D7wMfbaSxEHRux+uk8h+ICquNi0WJOo7G
-	aNcNoz1fMq3T8hRzFHWGvKb+enT6vQ1ivOPqkd1ftwZ3X11IV0=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--7.977800-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 609317B4147BB04E5C647078290145FD627771F3495687EBCC1162BE35CEC3862000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next] net: dsa: mt7530: register OF node for internal
+ MDIO bus
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Daniel Golle <daniel@makrotopia.org>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ David Bauer <mail@david-bauer.net>, mithat.guner@xeront.com,
+ erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20231220173539.59071-1-arinc.unal@arinc9.com>
+ <20231220173539.59071-1-arinc.unal@arinc9.com>
+ <20231221151607.ujobhh4aet4obxdz@skbuf>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20231221151607.ujobhh4aet4obxdz@skbuf>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231223_103941_278327_99A68E38 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20231223_233743_510340_9ED8FF2C 
+X-CRM114-Status: GOOD (  16.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,162 +85,118 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add secure buffer control flow to mtk_drm_gem.
+On 21.12.2023 18:16, Vladimir Oltean wrote:
+> On Wed, Dec 20, 2023 at 07:35:39PM +0200, Arınç ÜNAL wrote:
+>> From: David Bauer <mail@david-bauer.net>
+>>
+>> The MT753x switches provide a switch-internal MDIO bus for the embedded
+>> PHYs.
+>>
+>> Register a OF sub-node on the switch OF-node for this internal MDIO bus.
+>> This allows to configure the embedded PHYs using device-tree.
+>>
+>> Signed-off-by: David Bauer <mail@david-bauer.net>
+>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>> ---
+> 
+> Can you please not assign "bus" to ds->user_mii_bus unless there is no
+> "mdio" OF node? We don't need ds->user_mii_bus populated when it is
+> described in device tree.
 
-When user space takes DRM_MTK_GEM_CREATE_ENCRYPTED flag and size
-to create a mtk_drm_gem object, mtk_drm_gem will find a matched size
-dma buffer from secure dma-heap and bind it to mtk_drm_gem object.
+Do you mean like this:
 
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_gem.c | 85 +++++++++++++++++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_gem.h |  4 ++
- 2 files changed, 88 insertions(+), 1 deletion(-)
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 391c4dbdff42..d239462a4bd8 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2155,15 +2155,21 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
+  {
+  	struct dsa_switch *ds = priv->ds;
+  	struct device *dev = priv->dev;
++	struct device_node *np, *mnp;
+  	struct mii_bus *bus;
+  	static int idx;
+  	int ret;
+  
++	np = priv->dev->of_node;
++	mnp = of_get_child_by_name(np, "mdio");
++
+  	bus = devm_mdiobus_alloc(dev);
+  	if (!bus)
+  		return -ENOMEM;
+  
+-	ds->user_mii_bus = bus;
++	if (mnp == NULL)
++		ds->user_mii_bus = bus;
++
+  	bus->priv = priv;
+  	bus->name = KBUILD_MODNAME "-mii";
+  	snprintf(bus->id, MII_BUS_ID_SIZE, KBUILD_MODNAME "-%d", idx++);
+@@ -2177,7 +2183,8 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
+  	if (priv->irq)
+  		mt7530_setup_mdio_irq(priv);
+  
+-	ret = devm_mdiobus_register(dev, bus);
++	ret = devm_of_mdiobus_register(dev, bus, mnp);
++	of_node_put(mnp);
+  	if (ret) {
+  		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
+  		if (priv->irq)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-index 30e347adcbe9..858f34a735f8 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-@@ -4,6 +4,8 @@
-  */
- 
- #include <linux/dma-buf.h>
-+#include <linux/dma-heap.h>
-+#include <uapi/linux/dma-heap.h>
- #include <drm/mediatek_drm.h>
- 
- #include <drm/drm.h>
-@@ -55,6 +57,81 @@ static struct mtk_drm_gem_obj *mtk_drm_gem_init(struct drm_device *dev,
- 	return mtk_gem_obj;
- }
- 
-+struct mtk_drm_gem_obj *mtk_drm_gem_create_from_heap(struct drm_device *dev,
-+						     const char *heap, size_t size)
-+{
-+	struct mtk_drm_private *priv = dev->dev_private;
-+	struct mtk_drm_gem_obj *mtk_gem;
-+	struct drm_gem_object *obj;
-+	struct dma_heap *dma_heap;
-+	struct dma_buf *dma_buf;
-+	struct dma_buf_attachment *attach;
-+	struct sg_table *sgt;
-+	struct iosys_map map = {};
-+	int ret;
-+
-+	mtk_gem = mtk_drm_gem_init(dev, size);
-+	if (IS_ERR(mtk_gem))
-+		return ERR_CAST(mtk_gem);
-+
-+	obj = &mtk_gem->base;
-+
-+	dma_heap = dma_heap_find(heap);
-+	if (!dma_heap) {
-+		DRM_ERROR("heap find fail\n");
-+		goto err_gem_free;
-+	}
-+	dma_buf = dma_heap_buffer_alloc(dma_heap, size,
-+					O_RDWR | O_CLOEXEC, DMA_HEAP_VALID_HEAP_FLAGS);
-+	if (IS_ERR(dma_buf)) {
-+		DRM_ERROR("buffer alloc fail\n");
-+		dma_heap_put(dma_heap);
-+		goto err_gem_free;
-+	}
-+	dma_heap_put(dma_heap);
-+
-+	attach = dma_buf_attach(dma_buf, priv->dma_dev);
-+	if (IS_ERR(attach)) {
-+		DRM_ERROR("attach fail, return\n");
-+		dma_buf_put(dma_buf);
-+		goto err_gem_free;
-+	}
-+
-+	sgt = dma_buf_map_attachment(attach, DMA_BIDIRECTIONAL);
-+	if (IS_ERR(sgt)) {
-+		DRM_ERROR("map failed, detach and return\n");
-+		dma_buf_detach(dma_buf, attach);
-+		dma_buf_put(dma_buf);
-+		goto err_gem_free;
-+	}
-+	obj->import_attach = attach;
-+	mtk_gem->dma_addr = sg_dma_address(sgt->sgl);
-+	mtk_gem->sg = sgt;
-+	mtk_gem->size = dma_buf->size;
-+
-+	if (!strcmp(heap, "mtk_svp") || !strcmp(heap, "mtk_svp_cma")) {
-+		/* secure buffer can not be mapped */
-+		mtk_gem->secure = true;
-+	} else {
-+		ret = dma_buf_vmap(dma_buf, &map);
-+		mtk_gem->kvaddr = map.vaddr;
-+		if (ret) {
-+			DRM_ERROR("map failed, ret=%d\n", ret);
-+			dma_buf_unmap_attachment(attach, sgt, DMA_BIDIRECTIONAL);
-+			dma_buf_detach(dma_buf, attach);
-+			dma_buf_put(dma_buf);
-+			mtk_gem->kvaddr = NULL;
-+		}
-+	}
-+
-+	return mtk_gem;
-+
-+err_gem_free:
-+	drm_gem_object_release(obj);
-+	kfree(mtk_gem);
-+	return ERR_PTR(-ENOMEM);
-+}
-+
- struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm_device *dev,
- 					   size_t size, bool alloc_kmap)
- {
-@@ -225,7 +302,9 @@ struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_device *dev,
- 	if (IS_ERR(mtk_gem))
- 		return ERR_CAST(mtk_gem);
- 
-+	mtk_gem->secure = !sg_page(sg->sgl);
- 	mtk_gem->dma_addr = sg_dma_address(sg->sgl);
-+	mtk_gem->size = attach->dmabuf->size;
- 	mtk_gem->sg = sg;
- 
- 	return &mtk_gem->base;
-@@ -301,7 +380,11 @@ int mtk_gem_create_ioctl(struct drm_device *dev, void *data,
- 	struct drm_mtk_gem_create *args = data;
- 	int ret;
- 
--	mtk_gem = mtk_drm_gem_create(dev, args->size, false);
-+	if (args->flags & DRM_MTK_GEM_CREATE_ENCRYPTED)
-+		mtk_gem = mtk_drm_gem_create_from_heap(dev, "mtk_svp_cma", args->size);
-+	else
-+		mtk_gem = mtk_drm_gem_create(dev, args->size, false);
-+
- 	if (IS_ERR(mtk_gem))
- 		return PTR_ERR(mtk_gem);
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.h b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
-index 90f3d2916ec5..8fd5ce827d4f 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
-@@ -27,9 +27,11 @@ struct mtk_drm_gem_obj {
- 	void			*cookie;
- 	void			*kvaddr;
- 	dma_addr_t		dma_addr;
-+	size_t			size;
- 	unsigned long		dma_attrs;
- 	struct sg_table		*sg;
- 	struct page		**pages;
-+	bool			secure;
- };
- 
- #define to_mtk_gem_obj(x)	container_of(x, struct mtk_drm_gem_obj, base)
-@@ -37,6 +39,8 @@ struct mtk_drm_gem_obj {
- void mtk_drm_gem_free_object(struct drm_gem_object *gem);
- struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm_device *dev, size_t size,
- 					   bool alloc_kmap);
-+struct mtk_drm_gem_obj *mtk_drm_gem_create_from_heap(struct drm_device *dev,
-+						     const char *heap, size_t size);
- int mtk_drm_gem_dumb_create(struct drm_file *file_priv, struct drm_device *dev,
- 			    struct drm_mode_create_dumb *args);
- struct sg_table *mtk_gem_prime_get_sg_table(struct drm_gem_object *obj);
--- 
-2.18.0
+If the MDIO bus of the switch is defined on the devicetree, the
+(!ds->user_mii_bus && ds->ops->phy_read) check in dsa_switch_setup will be
+true so the MDIO bus will be attempted to be registered again, resulting in
+a kernel panic.
 
+[    1.369012] mt7530-mdio mdio-bus:1f: MT7530 adapts as multi-chip module
+[    1.391552] CPU 0 Unable to handle kernel paging request at virtual address 00000700, epc == 802eb948, ra == 802eb938
+[    1.402205] Oops[#1]:
+[    1.404481] CPU: 0 PID: 26 Comm: kworker/u5:1 Not tainted 6.7.0-rc6-next-20231222-00012-g9997041f4e67-dirty #281
+[    1.414622] Hardware name: UniElec U7621-06 (16M flash)
+[    1.419829] Workqueue: events_unbound deferred_probe_work_func
+[    1.425664] $ 0   : 00000000 00000001 00000011 00000700
+[    1.430895] $ 4   : 00000700 814d0000 00000000 00000000
+[    1.436123] $ 8   : 00000001 00000011 00000011 81595a80
+[    1.441353] $12   : 81595a80 81595ad8 81595a80 81595ad8
+[    1.446585] $16   : 81589a80 00000000 82019000 81589600
+[    1.451815] $20   : 807d4a88 8205a280 00000005 00000000
+[    1.457045] $24   : 00000000 802efd60
+[    1.462274] $28   : 81594000 81595c18 80760000 802eb938
+[    1.467505] Hi    : 00000000
+[    1.470371] Lo    : 00000000
+[    1.473235] epc   : 802eb948 mt753x_setup+0x39c/0x3bc
+[    1.478283] ra    : 802eb938 mt753x_setup+0x38c/0x3bc
+[    1.483324] Status: 11000403	KERNEL EXL IE
+[    1.487508] Cause : 4080000c (ExcCode 03)
+[    1.491502] BadVA : 00000700
+[    1.494367] PrId  : 0001992f (MIPS 1004Kc)
+[    1.498446] Process kworker/u5:1 (pid: 26, threadinfo=(ptrval), task=(ptrval), tls=00000000)
+[    1.506853] Stack : 7fffffff 00000000 8205a280 00000000 806a8ab8 81589a80 8205a280 81521f00
+[    1.515224]         81521f08 8157dc00 806ba49c 8205a280 00000001 804c6374 81589e00 81589c80
+[    1.523601]         806a5ed0 81589600 00000000 81595c9c 805cab30 806d0000 8069e96c 806b99cc
+[    1.531971]         00000006 00000dc0 ffffffff 802bd188 81589600 802bd29c fffffff4 fffffff4
+[    1.540341]         8205a480 807d339c 00000000 00000000 00000000 00000000 00000000 00000000
+[    1.548707]         ...
+[    1.551150] Call Trace:
+[    1.553583] [<802eb948>] mt753x_setup+0x39c/0x3bc
+[    1.558286] [<804c6374>] dsa_register_switch+0x924/0xcc4
+[    1.563592] [<802ddad0>] mdio_probe+0x34/0x6c
+[    1.567943] [<802b95d0>] really_probe+0x16c/0x2dc
+[    1.572639] [<802b995c>] driver_probe_device+0x40/0xd0
+[    1.577767] [<802b9a4c>] __device_attach_driver+0x60/0xe8
+[    1.583154] [<802b7694>] bus_for_each_drv+0xc8/0xf4
+[    1.588042] [<802b9d8c>] __device_attach+0xd8/0x14c
+[    1.592912] [<802b831c>] bus_probe_device+0x48/0xd8
+[    1.597788] [<802b8f5c>] deferred_probe_work_func+0xb4/0xcc
+[    1.603348] [<8003ab1c>] process_scheduled_works+0x1dc/0x2b8
+[    1.609015] [<8003b1b0>] worker_thread+0x2dc/0x330
+[    1.613804] [<80041d4c>] kthread+0xf8/0x100
+[    1.617996] [<80002a18>] ret_from_kernel_thread+0x14/0x1c
+[    1.623385]
+[    1.624869] Code: 8ea30030  00042080  00641821 <ac620000> 26310001  1636fff1  00003825  1000ff67  02803025
+[    1.634638]
+[    1.636435] ---[ end trace 0000000000000000 ]---
+
+Arınç
 
