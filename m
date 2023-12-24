@@ -4,73 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 919ADC46CD3
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Dec 2023 07:37:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9035BC46CD3
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Dec 2023 08:08:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iJeCIB0MUy6a0K9bJwBkE5sgfhPIDLdWREiwE76A+mY=; b=ZX/TPUWwm1uuUnU90uwUBPYHCL
-	IEQrcYrU9zSW2JDOi1SZEHPZLRnxcNDksRL4uolcQg/R5h3v0Z7gv8MOPRx7wXc1QEe2gXX4Far4M
-	veRnnfe0qSGpEjjxZMZVTyks2AJfo5LnHRGF4JUkWB7dGW1f/hluoc7Aq62oYur7G9n3hmRy69Ak5
-	/1dVLnICZ7/lXuoFhb4XLrlZ/l8EwRCBN3qa1b91CBfPgEMTTfAnMlckvNuD+p7kDdmSWv0aPuDUG
-	Cn7TvvLMTXoxXIoUVmKK/8oaf6AeTTsOydrcGuD36U1mXLxufWwiPbbnzwHeoFmglXWvkt/SvvRoT
-	qZVbt/QQ==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=M5Ap3MIoom3Cah/P1/+3hr2fJ0d5kw3uyf9qk8neY38=; b=gk7tvbQ2kHlxoxERuD3WhkCd5z
+	Yj2oFtbyW07SD8yMZ0rfo0k/oHOf2MyFmB0eiouh5gvLBTr+FQGcMSg5iOSdxRkUlanYyTWk4HJip
+	72me3+PIu7tFTlsrq7DGFvWgrJ5Pereo2upD7/qfq7+th90rnIaT3MXVbG2o1hw+yltQeelmTCHN7
+	wth4P7cj7Mi7mTht1Qm27xyGMtttwy4/mMqDOJ3ePXmvvNwrPFzz8T8mgZFDhKsLdFwiY/9GKdtkh
+	83WDZ8ZaJJBFUyxE6YDpmaqm+x1vFQBnSm9RFs1jO9nbJ3NcHzOsgR5Qmhe8zW5fDvjM0IrXHANBG
+	EuVYvDmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHJ3U-0090Rb-1T;
-	Sun, 24 Dec 2023 07:37:48 +0000
-Received: from relay4-d.mail.gandi.net ([2001:4b98:dc4:8::224])
+	id 1rHJXT-0091gd-0f;
+	Sun, 24 Dec 2023 08:08:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHJ3P-0090Qm-0U;
-	Sun, 24 Dec 2023 07:37:45 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 77AFCE0002;
-	Sun, 24 Dec 2023 07:37:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1703403455;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=iJeCIB0MUy6a0K9bJwBkE5sgfhPIDLdWREiwE76A+mY=;
-	b=YVheBZkd+rhv1Xtb3FKA22bt980BBrx4xCqK/81PQCTxpyc5Wk49AigoBhuQ9fKYYlW1p0
-	IIWVefIMrIamZxJF/PY8MnLwj/iknBUDOSFyLFEtFD5elyOcEaKd+kRR2ct9f3If72F+YI
-	EXZI3H0bUn0o/VGWn5C9ADlUaYxmfAfQgil1ZVNUVzibym7PA4Gug4OltqiagqG8khm0D+
-	kYJarMXArnOvwAcGrUVo/6izvnHh07Pkbu/VU+vh7fLZhDoc2fcvtou8y7k9CjEO21qxME
-	lQVIzqBJ5Hsl5LNUWGVinF5UWhaYk4r/3uKFLW25b8Za7R+mY5++YahAwiNfDg==
-Message-ID: <6600c6b1-2230-4963-940c-8b95a01750fd@arinc9.com>
-Date: Sun, 24 Dec 2023 10:37:12 +0300
+	id 1rHJXP-0091fi-2D
+	for linux-mediatek@lists.infradead.org;
+	Sun, 24 Dec 2023 08:08:45 +0000
+X-UUID: a353279ea23311ee9b09ad09c76753c8-20231224
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=M5Ap3MIoom3Cah/P1/+3hr2fJ0d5kw3uyf9qk8neY38=;
+	b=UOz0Poobu0BU9HJ4vSZfEOaRxcmbk4eMPxDBtbM+5WdSnpJ4zFgZi9sg9ke/nq8kSNer2FdpusmGBfRmduqBdpIX65QImmoUrLoEYN+X/zYlGcoqsycoNAIMGHpcyks1PbVsOkaknv+Zk1UFZyHFXjPrL/1pdbnmzHo5h4vcTqo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35,REQID:a593501e-aabf-46f7-9dbe-326150d10410,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:5d391d7,CLOUDID:40806c2e-1ab8-4133-9780-81938111c800,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: a353279ea23311ee9b09ad09c76753c8-20231224
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <deren.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 510594383; Sun, 24 Dec 2023 01:08:36 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sun, 24 Dec 2023 16:08:03 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Sun, 24 Dec 2023 16:08:02 +0800
+From: Deren Wu <deren.wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Leon Yen
+	<Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Quan Zhou
+	<quan.zhou@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, linux-wireless <linux-wireless@vger.kernel.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>, Deren Wu
+	<deren.wu@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7925: support temperature sensor
+Date: Sun, 24 Dec 2023 16:04:59 +0800
+Message-ID: <90a818483daff3c6fa2a2a2367dc0cc0be9b3378.1703403371.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next] net: dsa: mt7530: register OF node for internal
- MDIO bus
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Daniel Golle <daniel@makrotopia.org>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- David Bauer <mail@david-bauer.net>, mithat.guner@xeront.com,
- erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20231220173539.59071-1-arinc.unal@arinc9.com>
- <20231220173539.59071-1-arinc.unal@arinc9.com>
- <20231221151607.ujobhh4aet4obxdz@skbuf>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20231221151607.ujobhh4aet4obxdz@skbuf>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--7.656000-8.000000
+X-TMASE-MatchedRID: PehFwp3zCOBjcGvWjN+53s9tRbA8O6QzlZnydB88IJLfUZT83lbkEPq+
+	JLKFEPMF4ZQqYHZtqxjtaDDr9p69jSFj8NsBczzdFYJUGv4DL3y2McZY43zJ423D6f6IpbLIawP
+	hQZJn9Bzx6gF+AN4QjiB0rM1vTjvT87Q/R9NEbKsZXJLztZviXPngX/aL8PCNYdpcZH3BrBR0v1
+	TYNt6TWl2EerRYP46mB6TWlWdPFRI2xqN5L+oQEqIBnfMCFBiCVddk7QGQHackm/L/MIL+8ppuE
+	ZGhn28t3VN4WLcWL3BftuJwrFEhTY2j49Ftap9Eymsk/wUE4ho2+VkdMxapXE8iY45nBhHymHjZ
+	ALHIFjpAtJKqHMn6+f1ZpzwLrNQq
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--7.656000-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: C09AB1D4CF61D677CB0C535EF66C83E69EA53BCC56189DE152ACE82E3138E1F22000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231223_233743_510340_9ED8FF2C 
-X-CRM114-Status: GOOD (  16.65  )
+X-CRM114-CacheID: sfid-20231224_000843_758705_CDE92895 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,118 +103,158 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21.12.2023 18:16, Vladimir Oltean wrote:
-> On Wed, Dec 20, 2023 at 07:35:39PM +0200, Arınç ÜNAL wrote:
->> From: David Bauer <mail@david-bauer.net>
->>
->> The MT753x switches provide a switch-internal MDIO bus for the embedded
->> PHYs.
->>
->> Register a OF sub-node on the switch OF-node for this internal MDIO bus.
->> This allows to configure the embedded PHYs using device-tree.
->>
->> Signed-off-by: David Bauer <mail@david-bauer.net>
->> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->> ---
-> 
-> Can you please not assign "bus" to ds->user_mii_bus unless there is no
-> "mdio" OF node? We don't need ds->user_mii_bus populated when it is
-> described in device tree.
+Allow sensors tool to read radio's temperature, example:
 
-Do you mean like this:
+mt7925_phy8-pci-3b00
+Adapter: PCI adapter
+temp1:        +35.0°C
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 391c4dbdff42..d239462a4bd8 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2155,15 +2155,21 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
-  {
-  	struct dsa_switch *ds = priv->ds;
-  	struct device *dev = priv->dev;
-+	struct device_node *np, *mnp;
-  	struct mii_bus *bus;
-  	static int idx;
-  	int ret;
-  
-+	np = priv->dev->of_node;
-+	mnp = of_get_child_by_name(np, "mdio");
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7925/init.c  | 56 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 36 ++++++++++++
+ .../wireless/mediatek/mt76/mt7925/mt7925.h    |  1 +
+ 3 files changed, 93 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+index 8f9b7a2f376c..c4cbc8976046 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+@@ -2,11 +2,61 @@
+ /* Copyright (C) 2023 MediaTek Inc. */
+ 
+ #include <linux/etherdevice.h>
++#include <linux/hwmon.h>
++#include <linux/hwmon-sysfs.h>
++#include <linux/thermal.h>
+ #include <linux/firmware.h>
+ #include "mt7925.h"
+ #include "mac.h"
+ #include "mcu.h"
+ 
++static ssize_t mt7925_thermal_temp_show(struct device *dev,
++					struct device_attribute *attr,
++					char *buf)
++{
++	switch (to_sensor_dev_attr(attr)->index) {
++	case 0: {
++		struct mt792x_phy *phy = dev_get_drvdata(dev);
++		struct mt792x_dev *mdev = phy->dev;
++		int temperature;
 +
-  	bus = devm_mdiobus_alloc(dev);
-  	if (!bus)
-  		return -ENOMEM;
-  
--	ds->user_mii_bus = bus;
-+	if (mnp == NULL)
-+		ds->user_mii_bus = bus;
++		mt792x_mutex_acquire(mdev);
++		temperature = mt7925_mcu_get_temperature(phy);
++		mt792x_mutex_release(mdev);
 +
-  	bus->priv = priv;
-  	bus->name = KBUILD_MODNAME "-mii";
-  	snprintf(bus->id, MII_BUS_ID_SIZE, KBUILD_MODNAME "-%d", idx++);
-@@ -2177,7 +2183,8 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
-  	if (priv->irq)
-  		mt7530_setup_mdio_irq(priv);
-  
--	ret = devm_mdiobus_register(dev, bus);
-+	ret = devm_of_mdiobus_register(dev, bus, mnp);
-+	of_node_put(mnp);
-  	if (ret) {
-  		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
-  		if (priv->irq)
++		if (temperature < 0)
++			return temperature;
++		/* display in millidegree Celsius */
++		return sprintf(buf, "%u\n", temperature * 1000);
++	}
++	default:
++		return -EINVAL;
++	}
++}
++static SENSOR_DEVICE_ATTR_RO(temp1_input, mt7925_thermal_temp, 0);
++
++static struct attribute *mt7925_hwmon_attrs[] = {
++	&sensor_dev_attr_temp1_input.dev_attr.attr,
++	NULL,
++};
++ATTRIBUTE_GROUPS(mt7925_hwmon);
++
++static int mt7925_thermal_init(struct mt792x_phy *phy)
++{
++	struct wiphy *wiphy = phy->mt76->hw->wiphy;
++	struct device *hwmon;
++	const char *name;
++
++	if (!IS_REACHABLE(CONFIG_HWMON))
++		return 0;
++
++	name = devm_kasprintf(&wiphy->dev, GFP_KERNEL, "mt7925_%s",
++			      wiphy_name(wiphy));
++
++	hwmon = devm_hwmon_device_register_with_groups(&wiphy->dev, name, phy,
++						       mt7925_hwmon_groups);
++	return PTR_ERR_OR_ZERO(hwmon);
++}
+ static void
+ mt7925_regd_notifier(struct wiphy *wiphy,
+ 		     struct regulatory_request *req)
+@@ -142,6 +192,12 @@ static void mt7925_init_work(struct work_struct *work)
+ 		return;
+ 	}
+ 
++	ret = mt7925_thermal_init(&dev->phy);
++	if (ret) {
++		dev_err(dev->mt76.dev, "thermal init failed\n");
++		return;
++	}
++
+ 	/* we support chip reset now */
+ 	dev->hw_init_done = true;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index c5fd7116929b..d6909d77bbe1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -656,6 +656,42 @@ int mt7925_mcu_fw_log_2_host(struct mt792x_dev *dev, u8 ctrl)
+ 	return ret;
+ }
+ 
++int mt7925_mcu_get_temperature(struct mt792x_phy *phy)
++{
++	struct {
++		u8 _rsv[4];
++
++		__le16 tag;
++		__le16 len;
++		u8 _rsv2[4];
++	} __packed req = {
++		.tag = cpu_to_le16(0x0),
++		.len = cpu_to_le16(sizeof(req) - 4),
++	};
++	struct mt7925_thermal_evt {
++		u8 rsv[4];
++		__le32 temperature;
++	} __packed * evt;
++	struct mt792x_dev *dev = phy->dev;
++	int temperature, ret;
++	struct sk_buff *skb;
++
++	ret = mt76_mcu_send_and_get_msg(&dev->mt76,
++					MCU_WM_UNI_CMD_QUERY(THERMAL),
++					&req, sizeof(req), true, &skb);
++	if (ret)
++		return ret;
++
++	skb_pull(skb, 4 + sizeof(struct tlv));
++	evt = (struct mt7925_thermal_evt *)skb->data;
++
++	temperature = le32_to_cpu(evt->temperature);
++
++	dev_kfree_skb(skb);
++
++	return temperature;
++}
++
+ static void
+ mt7925_mcu_parse_phy_cap(struct mt792x_dev *dev, char *data)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+index 33785f526acf..8a4a71f6bcb6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+@@ -271,6 +271,7 @@ int mt7925_mcu_set_sniffer(struct mt792x_dev *dev, struct ieee80211_vif *vif,
+ 			   bool enable);
+ int mt7925_mcu_config_sniffer(struct mt792x_vif *vif,
+ 			      struct ieee80211_chanctx_conf *ctx);
++int mt7925_mcu_get_temperature(struct mt792x_phy *phy);
+ 
+ int mt7925_usb_sdio_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+ 				   enum mt76_txq_id qid, struct mt76_wcid *wcid,
+-- 
+2.18.0
 
-If the MDIO bus of the switch is defined on the devicetree, the
-(!ds->user_mii_bus && ds->ops->phy_read) check in dsa_switch_setup will be
-true so the MDIO bus will be attempted to be registered again, resulting in
-a kernel panic.
-
-[    1.369012] mt7530-mdio mdio-bus:1f: MT7530 adapts as multi-chip module
-[    1.391552] CPU 0 Unable to handle kernel paging request at virtual address 00000700, epc == 802eb948, ra == 802eb938
-[    1.402205] Oops[#1]:
-[    1.404481] CPU: 0 PID: 26 Comm: kworker/u5:1 Not tainted 6.7.0-rc6-next-20231222-00012-g9997041f4e67-dirty #281
-[    1.414622] Hardware name: UniElec U7621-06 (16M flash)
-[    1.419829] Workqueue: events_unbound deferred_probe_work_func
-[    1.425664] $ 0   : 00000000 00000001 00000011 00000700
-[    1.430895] $ 4   : 00000700 814d0000 00000000 00000000
-[    1.436123] $ 8   : 00000001 00000011 00000011 81595a80
-[    1.441353] $12   : 81595a80 81595ad8 81595a80 81595ad8
-[    1.446585] $16   : 81589a80 00000000 82019000 81589600
-[    1.451815] $20   : 807d4a88 8205a280 00000005 00000000
-[    1.457045] $24   : 00000000 802efd60
-[    1.462274] $28   : 81594000 81595c18 80760000 802eb938
-[    1.467505] Hi    : 00000000
-[    1.470371] Lo    : 00000000
-[    1.473235] epc   : 802eb948 mt753x_setup+0x39c/0x3bc
-[    1.478283] ra    : 802eb938 mt753x_setup+0x38c/0x3bc
-[    1.483324] Status: 11000403	KERNEL EXL IE
-[    1.487508] Cause : 4080000c (ExcCode 03)
-[    1.491502] BadVA : 00000700
-[    1.494367] PrId  : 0001992f (MIPS 1004Kc)
-[    1.498446] Process kworker/u5:1 (pid: 26, threadinfo=(ptrval), task=(ptrval), tls=00000000)
-[    1.506853] Stack : 7fffffff 00000000 8205a280 00000000 806a8ab8 81589a80 8205a280 81521f00
-[    1.515224]         81521f08 8157dc00 806ba49c 8205a280 00000001 804c6374 81589e00 81589c80
-[    1.523601]         806a5ed0 81589600 00000000 81595c9c 805cab30 806d0000 8069e96c 806b99cc
-[    1.531971]         00000006 00000dc0 ffffffff 802bd188 81589600 802bd29c fffffff4 fffffff4
-[    1.540341]         8205a480 807d339c 00000000 00000000 00000000 00000000 00000000 00000000
-[    1.548707]         ...
-[    1.551150] Call Trace:
-[    1.553583] [<802eb948>] mt753x_setup+0x39c/0x3bc
-[    1.558286] [<804c6374>] dsa_register_switch+0x924/0xcc4
-[    1.563592] [<802ddad0>] mdio_probe+0x34/0x6c
-[    1.567943] [<802b95d0>] really_probe+0x16c/0x2dc
-[    1.572639] [<802b995c>] driver_probe_device+0x40/0xd0
-[    1.577767] [<802b9a4c>] __device_attach_driver+0x60/0xe8
-[    1.583154] [<802b7694>] bus_for_each_drv+0xc8/0xf4
-[    1.588042] [<802b9d8c>] __device_attach+0xd8/0x14c
-[    1.592912] [<802b831c>] bus_probe_device+0x48/0xd8
-[    1.597788] [<802b8f5c>] deferred_probe_work_func+0xb4/0xcc
-[    1.603348] [<8003ab1c>] process_scheduled_works+0x1dc/0x2b8
-[    1.609015] [<8003b1b0>] worker_thread+0x2dc/0x330
-[    1.613804] [<80041d4c>] kthread+0xf8/0x100
-[    1.617996] [<80002a18>] ret_from_kernel_thread+0x14/0x1c
-[    1.623385]
-[    1.624869] Code: 8ea30030  00042080  00641821 <ac620000> 26310001  1636fff1  00003825  1000ff67  02803025
-[    1.634638]
-[    1.636435] ---[ end trace 0000000000000000 ]---
-
-Arınç
 
