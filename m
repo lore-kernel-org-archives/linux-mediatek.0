@@ -4,86 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50748C47073
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jan 2024 11:32:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A54B7C47074
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jan 2024 12:42:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=++yrsJrzau0SCaizLWufalB6DIb/7OAtjBFolyLrQwU=; b=eimJWMy8nGC3UeouqC9agQg6xF
-	S8HJm2UZzviskS8DYHQSEFGdcivffW6+PDYEkqj0+somHPIhbNlVIeChEOI0em6xC5ikyd+KZNJ16
-	eCBHVXAdPIH4N+iIXTKwBUGVp51wRi4NDhGToWPXfwqEHnMYrDSXTY3jJ2LkAy3poyjdXJXKE7gtT
-	F48AlYLMg4KaG6JHD3+PkOZSG8SEOlTeqMbC+qVY88tuDZfdA2QZs/F8GDE5KL0jMaCtag7oC8Cy3
-	17IXWTcf2wFGJkZ1TxdwNbzPBLX3ZzcrPBa3MYCI0bw+yzfwVR261ZoilJRm+T3i4tuoR8nyMmSAW
-	fJsRadVw==;
+	bh=ncwBF96I3+wYyMTERq4e+nBDWR/IIaIfVwaDbdyJKS8=; b=g9SqxZ1iYZhxAyKGoh4IImVMEc
+	csku84wmdemnApWOraSAyqGQi/nzwtpXLe3nNz9iHTqQURSXXT5BZy0kGtVO6YhinO4ATYnjmdjRX
+	VTWDvjqklGhirxxIO3zQTCqLK1Z+CSWpYLXn3xx3fLsYQ6+4+1C7ToQD9Dy/+SeezoVK0knKTIqEa
+	MFVkE81JTJzy5X/NEkCdMN5iPbWtGD44rAY63hHw7FfQISDj0OQ5l7aTPysHSnvV4HfOUf2+mm+g7
+	Xg4nGDiGef2jsp5ZpxlceV16UBZDJJgSTvQiwHyuPorRVaYZwvqUEqHKrxjKhc5NQlZ2rELb+3GYl
+	/V9o+Vwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLLxS-00Dnis-1a;
-	Thu, 04 Jan 2024 11:32:18 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rLN38-00E0OO-2R;
+	Thu, 04 Jan 2024 12:42:14 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLLxP-00DneP-1b
-	for linux-mediatek@lists.infradead.org;
-	Thu, 04 Jan 2024 11:32:17 +0000
-X-UUID: e6140930aaf411eeafd70d0b34820190-20240104
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=++yrsJrzau0SCaizLWufalB6DIb/7OAtjBFolyLrQwU=;
-	b=geOFI75cvRzyU75LbcqVUy+emrrcbImzZs/ENMHm4QmHGfDbEDTyqUAljMiBfLOszoilrPJ/wAJRQVIqC3pOHxDJQyyZ0i/CClxHzSJPcpVbPnGVlmJ+PijMkAXkAjh5J5wedPs0lV4qf7Y7q5fZekDqRT1kXAIa7rwPOPD9Txk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:92f96d1b-9f35-4c16-85c6-5a80d448b7fc,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:a6eafc7e-4f93-4875-95e7-8c66ea833d57,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: e6140930aaf411eeafd70d0b34820190-20240104
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 887895437; Thu, 04 Jan 2024 04:32:10 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 4 Jan 2024 19:32:07 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 4 Jan 2024 19:32:07 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Eric-SY.Chang@mediatek.com>, <km.lin@mediatek.com>,
-	<robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
-	<Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
-	<mingyen.hsieh@mediatek.com>
-Subject: [PATCH v2] wifi: mt76: mt7925: fix the wrong data type for scan command
-Date: Thu, 4 Jan 2024 19:32:06 +0800
-Message-ID: <20240104113206.13252-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1rHkx5-00AvRW-2C;
+	Mon, 25 Dec 2023 13:25:05 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-3367632ce7bso3390143f8f.2;
+        Mon, 25 Dec 2023 05:25:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1703510700; x=1704115500; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=ncwBF96I3+wYyMTERq4e+nBDWR/IIaIfVwaDbdyJKS8=;
+        b=WkTT8Sqyc0y3zDB66SPegw7PUJtL9D/zfoHEIoSdzsv0Ef2sfYh49YkC1Uv2Hm45DJ
+         IR0dpAW+li8ivF+WQ8mwNPlojR3uM5gaeeTkWF3e1r18IKZpOQuplV6pb85XC6k2CMZ7
+         7ErvxLPcazLkr6PKTs6BsUMbLYj1pXxWoN8k+qsmGM0hogNFJIra0Xxr3KGOK178Crxn
+         eFPBagQDwIdmaZ9VmDYEgsvkJIYL1STO0qu8tfFAPL2BIvDWcszqENN5Ty28L3aTNEZ1
+         xq08r34eFc8J/FhjYwBVAgoiCgzWyDY+bKSxl1uIMjVnJ5yuoP25Siz9C5HTFwu1m5sn
+         Mi0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1703510700; x=1704115500;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ncwBF96I3+wYyMTERq4e+nBDWR/IIaIfVwaDbdyJKS8=;
+        b=lCfgqeY+WO9Bz/1Ied8ehw5OLZHMes6KURT4nJV6YDMmlOEV9Vui0CGmSv1XPcP8uV
+         cNmNvPNFEPLTXta7ObFJVheloPgHDcgwvdDoGUs9p+qWScu10H7NhciqEU34qmPWTOu5
+         D8XJMBfM941s7fAHsN43zd7t70wdYQpEUVwlpEjkv7ACKOvf+kw34HRMCDEnLmBymg6h
+         7ct5P+x9a8ci4fX136Iaj+3uiWvZFACQCzkbF2mNsMV4Iaac1errHSaDOf0HNLU8FVeB
+         KVZ+tOSJUE7K0p5xsHV24+KkpZDqDQ2hliHUKJSRkNVCBEK0YTTubqX0UeARsx+mu8Xh
+         1U1w==
+X-Gm-Message-State: AOJu0YzrMRBCFy9GXe+zr7sc23oalobbuiEXJ804duVt311qEiQeD5qg
+	5RNZGDDTkVSK1cO90eI/uyILNWcldlfE8NSddZM=
+X-Google-Smtp-Source: AGHT+IG41SCwACWV8U87qYA6+6Kcw8BMdXdgLiqNbl02y0fJ7Ng0ACLwuJ4cwq6yo6961NrTK8H6KAeOUAmB5KRkDO4=
+X-Received: by 2002:adf:fd11:0:b0:336:8ac7:4654 with SMTP id
+ e17-20020adffd11000000b003368ac74654mr3188758wrr.135.1703510699790; Mon, 25
+ Dec 2023 05:24:59 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--0.507500-8.000000
-X-TMASE-MatchedRID: EJLkrvRJ8yxIQkQ+2Oh2tcAmcZEx8XHJQl/FdRYkUZL01TdrRxjjBl4s
-	hHbNA5484vM1YF6AJbbGJQ3BiiLAggtuKBGekqUpOlxBO2IcOBaUr4UTaNYjAOxyJvKRzDVEd7r
-	8EQd0X8Jk1fx+G1RLBPiNk75IK0l68wkY9DwRNABPi0PYVK4cl7wh+S5j613tVAlaNPJUwKHBkG
-	BTIlURuXoXDz8+lMxFpW+aIDJ4DaRzkxJ+SIkUjmncuUSUEdOX
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--0.507500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: E6C718F3336F38C754DA4F673ABCA838045B8B2ED76587825CF1D80AC3135DB32000:8
+From: Ruipeng Qi <ruipengqi7@gmail.com>
+Date: Mon, 25 Dec 2023 21:24:48 +0800
+Message-ID: <CADHLONEODF_JiB4q9zQW3P--U68Tf4RGKne4Gt3PB9e8pz7jPA@mail.gmail.com>
+Subject: Re: [Patch v6 03/12] docs: qcom: Add qualcomm minidump guide
+To: quic_mojha@quicinc.com
+Cc: agross@kernel.org, alim.akhtar@samsung.com, andersson@kernel.org, 
+	bmasney@redhat.com, conor+dt@kernel.org, corbet@lwn.net, gpiccoli@igalia.com, 
+	keescook@chromium.org, kernel@quicinc.com, kgene@kernel.org, 
+	konrad.dybcio@linaro.org, krzysztof.kozlowski+dt@linaro.org, 
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	linux-doc@vger.kernel.org, linux-hardening@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-remoteproc@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
+	mathieu.poirier@linaro.org, matthias.bgg@gmail.com, nm@ti.com, 
+	robh+dt@kernel.org, tony.luck@intel.com, vigneshr@ti.com
+Content-Type: text/plain; charset="UTF-8"
+X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240104_033215_548216_0193E3C7 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20231225_052503_725773_3D299FBB 
+X-CRM114-Status: UNSURE (   6.68  )
+X-CRM114-Notice: Please train this message.
+X-Mailman-Approved-At: Thu, 04 Jan 2024 04:42:13 -0800
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,34 +93,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+On Sat, 25 Nov 2023, Mukesh Ojha wrote:
 
-For the member of 'struct scan_req_tlv', replace data type of
-func_mask_ext from 'u8' to '__le32'.
+<+How a kernel client driver can register region with minidump
+<+------------------------------------------------------------
+<+
+<+Client driver can use ``qcom_minidump_region_register`` API's to register
+<+and ``qcom_minidump_region_unregister`` to unregister their region from
+<+minidump driver.
+<+
+<+Client needs to fill their region by filling ``qcom_minidump_region``
+<+structure object which consists of the region name, region's virtual
+<+and physical address and its size.
 
-Change-Id: Ib9fc1aadd1f1960b63d35f31f0a4655416884bf0
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
----
-v2:
- change the data type from 'u32' to '__le32'.
----
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hi, Mukesh, wish you a good holiday :)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-index 3c41e21303b1..98cb705e7423 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-@@ -208,7 +208,7 @@ struct scan_req_tlv {
- 	__le16 channel_dwell_time; /* channel Dwell interval */
- 	__le16 timeout_value;
- 	__le16 probe_delay_time;
--	u8 func_mask_ext;
-+	__le32 func_mask_ext;
- };
- 
- struct scan_ssid_tlv {
--- 
-2.18.0
+I have the following idea, please help me to assess whether this can be
+implemented or not. As we all know, most of the kernel objects are
+allocated by the slab sub-system.I wonder if we can dump all memory
+keeped by the slab sub-system? If so,  we got most of the kernel objects
+which will be helpful to fix problems when we run with system issues.
 
+How can we do this? From the description above, I think we should
+register one region for each slab,  for each slab will have some pages,
+and the memory between each slab is non-continuous. As we all
+know, there are millions of slabs in the system, so if we dump slabs
+in this way, it will introduce a heavy overhead.
+
+I am not very familiar with qualcomm minidump, maybe my thought
+is wrong. Looking forward to your reply!
+
+Best Regards
+Ruipeng
 
