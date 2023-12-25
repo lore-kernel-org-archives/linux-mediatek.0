@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81DAEC3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Dec 2023 09:39:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8015C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Dec 2023 09:39:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Qtc/UT0sxKoldwIN+ov3bFvbcaNDnm1oh+icAmEqNDI=; b=e2fCGQJAN/7o+pQ7pgosH34LR2
-	powYbdH/b/Xh82c/J2y3mPM+7/gZSQ6mPWgo+YGkD3IGvuC/2xqZ7Zo74Sozs1IO5AN3UaYidUK3M
-	LF6Og5g6nWsPWK/jCow1YLGfJzK/JaULx+h2TP51g+WxFrXsZe+91kC3WeklBpavXsMFNweOEVBkT
-	NRd56aKpIhziEchEi7uB4qmFfq+ZxYeogXY/K3Hg7Mw32+3Ai2WL7BfdbsrwsxAEvMMKNMQKUhzFa
-	KzOKZWFSFu9KcsbMZ0kDFS/Q/JjdG1QmBa+z4T+ZnGwzwjIrRzIhEcZ7gNJeUH4bQQ+lIJueXuiST
-	DS31yWxQ==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=czFD26N8OYC/3DSto6FsZIsjge+0OKu4XVhJ0fL5OF4=; b=lofWxwUaTKY31XdbyWrPcV7jjs
+	f1zbl66++eEXnswyAihmRCoKSY8hZPJyBNSn7wB/w2VkPmZpNc2p6vnyBhtWjMZs84sCN5hBHwSWE
+	bV4rZsKsJ/bI/Xq7x+/cjTFw+h8v/sp3y+TTWZsOjthp0c7ujy6Frwb4h2QiQLCrOgf+x6eBi8A5Z
+	cQJNzB/sVYsmEfaDlWjbUc7eyCnGMqWADpGml9k1WhMCjqJvryxOubdJC/T5Qfh4Spiz4Dy9eQ1HU
+	d2cQusy10AoCN+8SzBmpXJl4nRrFh5uqqf0q7ahhwDMz9GXf7y7VInfR0HHtoyVCyNyTRp9yD0wvx
+	HLNmSQuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHhQL-00ATsy-0i;
-	Mon, 25 Dec 2023 09:39:01 +0000
+	id 1rHhR8-00AU0d-22;
+	Mon, 25 Dec 2023 09:39:50 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHhQI-00ATsZ-1N;
-	Mon, 25 Dec 2023 09:38:59 +0000
-X-UUID: 68cc75d6a30911ee9b09ad09c76753c8-20231225
+	id 1rHhR6-00AU0B-0x;
+	Mon, 25 Dec 2023 09:39:49 +0000
+X-UUID: 89d45348a30911ee9b09ad09c76753c8-20231225
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Qtc/UT0sxKoldwIN+ov3bFvbcaNDnm1oh+icAmEqNDI=;
-	b=mYNF7VsRRurLSLTIcHRZPcVfT7XKTDOIhhqYvQu5/kSZz56sEm2JX63fF9Z8D9cDVh5bhHvgvXoDryvdnVsOa4qREpSAaOGJHu6uZqvzKf3OENAnknup8olyFr2fKzN+B4qPoYhT9uu07zktpHjmBKy35YMSUsS++5NBChjgv78=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=czFD26N8OYC/3DSto6FsZIsjge+0OKu4XVhJ0fL5OF4=;
+	b=kGywvtXGXSAutyHvttY4edEMzHtz5sx+HKb6c2Gk50nxVBPi3rOCS39KtVHsBlcCXmikPYrX9yEpjXek9AXm8XjYaXZNyFhZcbFWGnDaEgOla1A5O8tcVM2Ttun2apNsZnRui7PWdgULYA3Yt6Glj6CIzdSHWgRoMzetEd3feSI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:7a12fff8-d24e-417c-b44e-e007bae48ff0,IP:0,U
-	RL:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-30
-X-CID-META: VersionHash:5d391d7,CLOUDID:f7728b8d-e2c0-40b0-a8fe-7c7e47299109,B
+X-CID-O-INFO: VERSION:1.1.35,REQID:52effc6c-9d54-487e-a899-082a9ed15903,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:-35
+X-CID-META: VersionHash:5d391d7,CLOUDID:a378a47e-4f93-4875-95e7-8c66ea833d57,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
-	L:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,D
+	L:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,D
 	KR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 68cc75d6a30911ee9b09ad09c76753c8-20231225
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 89d45348a30911ee9b09ad09c76753c8-20231225
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <mengqi.zhang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1055132949; Mon, 25 Dec 2023 02:38:50 -0700
+	with ESMTP id 1953490885; Mon, 25 Dec 2023 02:39:45 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 25 Dec 2023 17:38:47 +0800
+ 15.2.1118.26; Mon, 25 Dec 2023 17:39:43 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 25 Dec 2023 17:38:46 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 25 Dec 2023 17:39:42 +0800
 From: Mengqi Zhang <mengqi.zhang@mediatek.com>
 To: <ulf.hansson@linaro.org>, <chaotian.jing@mediatek.com>,
 	<matthias.bgg@gmail.com>, <mengqi.zhang@mediatek.com>,
@@ -61,27 +61,18 @@ CC: <yangyingliang@huawei.com>, <adrian.hunter@intel.com>,
 	<avri.altman@wdc.com>, <vincent.whitchurch@axis.com>,
 	<linux-mmc@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v3 0/1] mmc: core: Add HS400 tuning in HS400es initialization
-Date: Mon, 25 Dec 2023 17:38:38 +0800
-Message-ID: <20231225093839.22931-1-mengqi.zhang@mediatek.com>
+Subject: [PATCH v3 1/1] mmc: core: Add HS400 tuning in HS400es initialization
+Date: Mon, 25 Dec 2023 17:38:40 +0800
+Message-ID: <20231225093839.22931-2-mengqi.zhang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20231225093839.22931-1-mengqi.zhang@mediatek.com>
+References: <20231225093839.22931-1-mengqi.zhang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--0.214900-8.000000
-X-TMASE-MatchedRID: K5X4qC6dTGXHO8eAxCOj9g5KPhGIg0MRmdrHMkUHHq/d1Nq3SV2z16PF
-	jJEFr+olAmPpbGBYlhvkwjHXXC/4I8ZW5ai5WKlyUbuU0PqmIHzXf6gk5EUc2PO6QeGRZiXtToE
-	IiXyM+vCS0844xDjSIhz+PhojlLUuev0YPTN868QBqq+/+aGCsQhzL04Or2eZVlxr1FJij9s=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--0.214900-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 6200C6012DED93DD56A71F42AC0FB3308455ADF6E74D051D7356F2AB2D2A06A92000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231225_013858_472400_3B939A81 
-X-CRM114-Status: UNSURE (   4.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231225_013948_344373_790C2956 
+X-CRM114-Status: GOOD (  11.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,20 +87,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-change v3
-1. remove mmc_retune_disable() and mmc_retune_enable() from
-   hs400es initialization.
+During the initialization to HS400es stage, add hs400 tuning flow as an
+optional process. For Mediatek IP, HS00es mode requires a specific
+tuning to ensure the correct HS400 timing setting.
 
-change v2
-1. remove hs400 tuning from mmc_retune.
-2. remove mmc_retune_enable() from hs400es initialization.
-
-Mengqi Zhang (1):
-  mmc: core: Add HS400 tuning in HS400es initialization
-
+Signed-off-by: Mengqi Zhang <mengqi.zhang@mediatek.com>
+---
+v1 https://patchwork.kernel.org/project/linux-mediatek/patch/20231201030547.11553-1-mengqi.zhang@mediatek.com/
+v2 https://patchwork.kernel.org/project/linux-mediatek/patch/20231222062236.26370-1-mengqi.zhang@mediatek.com/
+---
  drivers/mmc/core/mmc.c | 9 +++++++--
  1 file changed, 7 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+index 705942edacc6..d5173a9bb4b0 100644
+--- a/drivers/mmc/core/mmc.c
++++ b/drivers/mmc/core/mmc.c
+@@ -1822,8 +1822,13 @@ static int mmc_init_card(struct mmc_host *host, u32 ocr,
+ 
+ 		if (err)
+ 			goto free_card;
+-
+-	} else if (!mmc_card_hs400es(card)) {
++	} else if (mmc_card_hs400es(card)) {
++		if (host->ops->execute_hs400_tuning) {
++			err = host->ops->execute_hs400_tuning(host, card);
++			if (err)
++				goto free_card;
++		}
++	} else {
+ 		/* Select the desired bus width optionally */
+ 		err = mmc_select_bus_width(card);
+ 		if (err > 0 && mmc_card_hs(card)) {
 -- 
 2.25.1
 
