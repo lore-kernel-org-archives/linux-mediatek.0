@@ -4,75 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8015C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Dec 2023 09:39:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED5ACC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Dec 2023 13:36:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=czFD26N8OYC/3DSto6FsZIsjge+0OKu4XVhJ0fL5OF4=; b=lofWxwUaTKY31XdbyWrPcV7jjs
-	f1zbl66++eEXnswyAihmRCoKSY8hZPJyBNSn7wB/w2VkPmZpNc2p6vnyBhtWjMZs84sCN5hBHwSWE
-	bV4rZsKsJ/bI/Xq7x+/cjTFw+h8v/sp3y+TTWZsOjthp0c7ujy6Frwb4h2QiQLCrOgf+x6eBi8A5Z
-	cQJNzB/sVYsmEfaDlWjbUc7eyCnGMqWADpGml9k1WhMCjqJvryxOubdJC/T5Qfh4Spiz4Dy9eQ1HU
-	d2cQusy10AoCN+8SzBmpXJl4nRrFh5uqqf0q7ahhwDMz9GXf7y7VInfR0HHtoyVCyNyTRp9yD0wvx
-	HLNmSQuA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lLpa3917JD05YA+mD0231DWxTjcZEo6HAsDWGG6CFyA=; b=rlHVpR0F0vqVrePtcTi+cyTn0e
+	7vMGzPEpNQeeSmMGHQ8kV8MpNQwkF5Sq0xgeY0RvI4jsnx+WZDmXj3eCNvpH2BnRaFmZIdjtGd6Tk
+	q7CmB6c0w7XLncifpx6ZSo97JoPIJuZnZ0i7qSlkqlqgcOqLp1fCk0G/Xi0sCJwBHbjStf/998qlD
+	+V4ZWpDYUYNxt3p0O1MHt0r3Lqv/kpDiljpaSTjzgBsF2OF9ocGknDo3W9+Y/IYZ6/Pg7+uFdjr/n
+	asf3I13petjFWH8kCXM8r9bieBLgKmmpGFCO0tDThaLTknlCjQeNiH88SLxmIgV48LgxF5f4wJFUT
+	Z991IxHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHhR8-00AU0d-22;
-	Mon, 25 Dec 2023 09:39:50 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rHl8A-00AwBv-1c;
+	Mon, 25 Dec 2023 13:36:30 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHhR6-00AU0B-0x;
-	Mon, 25 Dec 2023 09:39:49 +0000
-X-UUID: 89d45348a30911ee9b09ad09c76753c8-20231225
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=czFD26N8OYC/3DSto6FsZIsjge+0OKu4XVhJ0fL5OF4=;
-	b=kGywvtXGXSAutyHvttY4edEMzHtz5sx+HKb6c2Gk50nxVBPi3rOCS39KtVHsBlcCXmikPYrX9yEpjXek9AXm8XjYaXZNyFhZcbFWGnDaEgOla1A5O8tcVM2Ttun2apNsZnRui7PWdgULYA3Yt6Glj6CIzdSHWgRoMzetEd3feSI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:52effc6c-9d54-487e-a899-082a9ed15903,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:-35
-X-CID-META: VersionHash:5d391d7,CLOUDID:a378a47e-4f93-4875-95e7-8c66ea833d57,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
-	L:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,D
-	KR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 89d45348a30911ee9b09ad09c76753c8-20231225
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <mengqi.zhang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1953490885; Mon, 25 Dec 2023 02:39:45 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 25 Dec 2023 17:39:43 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 25 Dec 2023 17:39:42 +0800
-From: Mengqi Zhang <mengqi.zhang@mediatek.com>
-To: <ulf.hansson@linaro.org>, <chaotian.jing@mediatek.com>,
-	<matthias.bgg@gmail.com>, <mengqi.zhang@mediatek.com>,
-	<wenbin.mei@mediatek.com>
-CC: <yangyingliang@huawei.com>, <adrian.hunter@intel.com>,
-	<avri.altman@wdc.com>, <vincent.whitchurch@axis.com>,
-	<linux-mmc@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v3 1/1] mmc: core: Add HS400 tuning in HS400es initialization
-Date: Mon, 25 Dec 2023 17:38:40 +0800
-Message-ID: <20231225093839.22931-2-mengqi.zhang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20231225093839.22931-1-mengqi.zhang@mediatek.com>
-References: <20231225093839.22931-1-mengqi.zhang@mediatek.com>
+	id 1rHl86-00AwBM-39;
+	Mon, 25 Dec 2023 13:36:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1703511381;
+	bh=IwmmB7WjpTOgIxwbZn9fGmU/1RvI/f6TS4uE1mr5Uko=;
+	h=From:To:Cc:Subject:Date:From;
+	b=rQwXs4oR7QOzlNkpL89uoyhg3/ZaKB6wfLk2Tn0SmVMllirbtqgeMNOkI3k1sUP2W
+	 sfh9B5917RFN16+ZwyDwCzC4ejLeZHvaoEXYCqmlGahippC8uUVoDN6AqgZoA3XyfM
+	 18tRdB2+Qc1Y2MsR9hQdIPDFrCGOnHyqA+HhcUHpwVSfbWAemOLty0357oCZVEhRQN
+	 0j2AhFCiLeutVafMlRbWJpJkpkYMbUJv3URd/ayY0DWgp04cudNOp4MTFLuw5omIFL
+	 Ehz/TnMjQfObkBvmoRyFnj56NA7iPop8K0ki7IiddtjprUaP2ehp1lACW7R/rRgQ4z
+	 UbIOqDG4Cm7kQ==
+Received: from eugen-station.. (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: ehristev)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B50D937813F2;
+	Mon, 25 Dec 2023 13:36:20 +0000 (UTC)
+From: Eugen Hristev <eugen.hristev@collabora.com>
+To: matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com,
+	Eugen Hristev <eugen.hristev@collabora.com>
+Subject: [PATCH] pmdomain: mediatek: fix race conditions with genpd
+Date: Mon, 25 Dec 2023 15:36:15 +0200
+Message-Id: <20231225133615.78993-1-eugen.hristev@collabora.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231225_013948_344373_790C2956 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20231225_053627_192258_3C553A81 
+X-CRM114-Status: GOOD (  18.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,39 +75,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-During the initialization to HS400es stage, add hs400 tuning flow as an
-optional process. For Mediatek IP, HS00es mode requires a specific
-tuning to ensure the correct HS400 timing setting.
+If the power domains are registered first with genpd and *after that*
+the driver attempts to power them on in the probe sequence, then it is
+possible that a race condition occurs if genpd tries to power them on
+in the same time.
+The same is valid for powering them off before unregistering them
+from genpd.
+Attempt to fix race conditions by first removing the domains from genpd
+and *after that* powering down domains.
+Also first power up the domains and *after that* register them
+to genpd.
 
-Signed-off-by: Mengqi Zhang <mengqi.zhang@mediatek.com>
+Fixes: 59b644b01cf4 ("soc: mediatek: Add MediaTek SCPSYS power domains")
+Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
 ---
-v1 https://patchwork.kernel.org/project/linux-mediatek/patch/20231201030547.11553-1-mengqi.zhang@mediatek.com/
-v2 https://patchwork.kernel.org/project/linux-mediatek/patch/20231222062236.26370-1-mengqi.zhang@mediatek.com/
----
- drivers/mmc/core/mmc.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-index 705942edacc6..d5173a9bb4b0 100644
---- a/drivers/mmc/core/mmc.c
-+++ b/drivers/mmc/core/mmc.c
-@@ -1822,8 +1822,13 @@ static int mmc_init_card(struct mmc_host *host, u32 ocr,
+This comes as another way to fix the problem as described in this thread:
+https://lore.kernel.org/linux-arm-kernel/20231129113120.4907-1-eugen.hristev@collabora.com/
+
+I have not been able to reproduce the problem with either fix anymore
+(so far).
+
+I have a few doubts about this one though, if I really covered the
+way it's supposed to work, and registering the pmdomains in the recursive
+function in the reversed order has any side effect or if it does not
+work correctly.
+Tested on mt8186 where it appears to be fine.
+
+Eugen
+
+ drivers/pmdomain/mediatek/mtk-pm-domains.c | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+index e26dc17d07ad..e274e3315fe7 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+@@ -561,6 +561,11 @@ static int scpsys_add_subdomain(struct scpsys *scpsys, struct device_node *paren
+ 			goto err_put_node;
+ 		}
  
- 		if (err)
- 			goto free_card;
++		/* recursive call to add all subdomains */
++		ret = scpsys_add_subdomain(scpsys, child);
++		if (ret)
++			goto err_put_node;
++
+ 		ret = pm_genpd_add_subdomain(parent_pd, child_pd);
+ 		if (ret) {
+ 			dev_err(scpsys->dev, "failed to add %s subdomain to parent %s\n",
+@@ -570,11 +575,6 @@ static int scpsys_add_subdomain(struct scpsys *scpsys, struct device_node *paren
+ 			dev_dbg(scpsys->dev, "%s add subdomain: %s\n", parent_pd->name,
+ 				child_pd->name);
+ 		}
 -
--	} else if (!mmc_card_hs400es(card)) {
-+	} else if (mmc_card_hs400es(card)) {
-+		if (host->ops->execute_hs400_tuning) {
-+			err = host->ops->execute_hs400_tuning(host, card);
-+			if (err)
-+				goto free_card;
-+		}
-+	} else {
- 		/* Select the desired bus width optionally */
- 		err = mmc_select_bus_width(card);
- 		if (err > 0 && mmc_card_hs(card)) {
+-		/* recursive call to add all subdomains */
+-		ret = scpsys_add_subdomain(scpsys, child);
+-		if (ret)
+-			goto err_put_node;
+ 	}
+ 
+ 	return 0;
+@@ -588,9 +588,6 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
+ {
+ 	int ret;
+ 
+-	if (scpsys_domain_is_on(pd))
+-		scpsys_power_off(&pd->genpd);
+-
+ 	/*
+ 	 * We're in the error cleanup already, so we only complain,
+ 	 * but won't emit another error on top of the original one.
+@@ -600,6 +597,8 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
+ 		dev_err(pd->scpsys->dev,
+ 			"failed to remove domain '%s' : %d - state may be inconsistent\n",
+ 			pd->genpd.name, ret);
++	if (scpsys_domain_is_on(pd))
++		scpsys_power_off(&pd->genpd);
+ 
+ 	clk_bulk_put(pd->num_clks, pd->clks);
+ 	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
 -- 
-2.25.1
+2.34.1
 
 
