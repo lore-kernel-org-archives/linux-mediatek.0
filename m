@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 339B7C4706F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Dec 2023 19:22:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19BB5C46CD3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Dec 2023 19:22:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ESf+HP/4Pbj+l15SV7DO/QREg1e8QVEjr0ahdi8QujY=; b=z5utLkuL7seHruHWDqTymhhL2P
-	vzafCNDpgrPsdZKEkz4hxGVEjBcw+9lI206IJ35LJH0VdGI7p/rItp0HxyCZR/7uM5E6tVCH0TnL3
-	oTuZIddWz6zC2SjJ7EVhOaXIW3Xi8UtWaL+ZafOvcf7NyJWhmPdST8qQ3XJIVyLtzR/2igf7m+Ebw
-	C95rem6CWgGHGR7yuF1SW7Oe1HrbB13u/9FbbbnpfW0wBzvG2e6RzBBNpuGED3lRw1BEnLPH4xdU/
-	IdAjz+9AaOqRa/z9pDmMNXk0ISjIYf0UEvC67GNSvbzLv2k/GmmkqkEgk/PfFfMfJJM6og7OnxcEt
-	AxR5+sGA==;
+	bh=0O8RtIP4pYk/I1CB5YssfqNJgeBGU8rziw+9z/3E58g=; b=AxqrIS9AK+HKubatjJCwhC/+u8
+	XNts33zJMtNf7eSh49yBNjtyNnWXHlLs7te4OhqvrmPFVhRKy0GBOBD4Mc0H2cImoGMmizRqj2pCF
+	BLyP0NxiFb0mVvIChfKYJrqzJN6evKu15FBjClSrFnK40X4Nx1DCrEtlXl6YGDcL6ykjHOLmDkYWX
+	Lz4YhjQqVTinyhhwBlrt2JvIQnliFFiT974SGgKiFbvbLKGKVWyzDO5YCJEXhYWNy4fKHwU/Yu+8T
+	0Hsu3hwb6Gmc9qqH6QcwV5tw+UjgwEUfAlSVkBW9fSuoZfOk2Ufgc3R8K13o+4D2wXpIhcSJ+9z/1
+	QT1s8qsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rID0g-00DQ2S-0n;
-	Tue, 26 Dec 2023 19:22:38 +0000
-Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d])
+	id 1rID0n-00DQ5h-33;
+	Tue, 26 Dec 2023 19:22:46 +0000
+Received: from mail-il1-x12f.google.com ([2607:f8b0:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rID0H-00DPkY-1q
+	id 1rID0H-00DPl8-2N
 	for linux-mediatek@lists.infradead.org;
-	Tue, 26 Dec 2023 19:22:15 +0000
-Received: by mail-io1-xd2d.google.com with SMTP id ca18e2360f4ac-7bafda3999cso21321839f.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 Dec 2023 11:22:12 -0800 (PST)
+	Tue, 26 Dec 2023 19:22:17 +0000
+Received: by mail-il1-x12f.google.com with SMTP id e9e14a558f8ab-35fe47edd2eso6971705ab.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 Dec 2023 11:22:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1703618531; x=1704223331; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1703618532; x=1704223332; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ESf+HP/4Pbj+l15SV7DO/QREg1e8QVEjr0ahdi8QujY=;
-        b=EBPAIw0iJJN0kPOuRDDRJ+F4q3IbS6DM40MsuozEaIyMTZkl+5VBme8be+rRHHGFEL
-         DAH7JyY/4JaAnSfTb1a6GzbglQGA4akJod71i5/URXh9u5oxuRixJXCvWG2F3jYFjf9C
-         cW/ZZYJFS0JlC4RH614ehzLdhddn2CdCeGGe0=
+        bh=0O8RtIP4pYk/I1CB5YssfqNJgeBGU8rziw+9z/3E58g=;
+        b=daZFaTYFqt/WrzOwCMvMoKgbfWXuG6+3vxzgIf5CicoDa6eXrcnYfg5UsL6IpWtLd6
+         Xv6ua7HtD09Ey10qzIEOcrNpz7XmeC6v2rd3IR4/8QVFhc4n/xBOfSYNNlNnmsx6ZQNZ
+         X07CxPnH9YFGd7uFZWBgjfraDqv9ohkJInVj8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703618531; x=1704223331;
+        d=1e100.net; s=20230601; t=1703618532; x=1704223332;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ESf+HP/4Pbj+l15SV7DO/QREg1e8QVEjr0ahdi8QujY=;
-        b=VUq8Q4lJTQi2p7I0m8NY/MHeW9WQVvJmduxR7c7h/RJJITyK5iU2jUDSzg/B6tRNON
-         vSaVETMJsA0hBLDGY5jD7qVAqpKVrUOTCp83FugRO565OSziyMlfqoVFRfuHtEKGgUI9
-         c+veLXl9bepiBGDgs/hqnI61O9pwPWs8SK7d5Ifr2Loka1X+szIlkoB6B8sN6FHQatN4
-         7RcnhnU2l9uV25K7eTleWaiNNX7O1V6PxSuxlAlDp/gSvIUnP+pnCMeXN44v1oD688vO
-         6yT0rxlqsBzri24+guuDRYETXjhh/ay1YCCNEVYPBlgVWdlEb3aRSuaAqAd9iY3qrAR9
-         ny0w==
-X-Gm-Message-State: AOJu0YxL6v7BQ5XHMZa+0U5icpGSEUr2OulAh9eUihsU9lNRqRS/VtSb
-	Em7zCrgHN8owensg3vlPIf6afeIxkH/o
-X-Google-Smtp-Source: AGHT+IHL8LG5CIj6VbEuHzPAo+E1eayG3+anqUkueUhwD4N1X/1qk2RhdEsAN0sRAt9MtvhT5qjugA==
-X-Received: by 2002:a6b:e714:0:b0:7ba:94cb:aa23 with SMTP id b20-20020a6be714000000b007ba94cbaa23mr8299937ioh.21.1703618531662;
-        Tue, 26 Dec 2023 11:22:11 -0800 (PST)
+        bh=0O8RtIP4pYk/I1CB5YssfqNJgeBGU8rziw+9z/3E58g=;
+        b=RXMgyx9pIIhXTtJkRXK5chgT8i0ig2LhocW7q1zZ9Hqj+cYD4Vy1lh6pkmsnbrYapo
+         QU2nBxeyz2uggaW4Ig1lfKAR2g/17YtEKPjNKJDShxodUbskkjbBKEof1htA1WOCs7Fe
+         sqALKLHjDDYJOf/k66PtakTRGxbl32CUHnBtaayoYByk9RuKV1whMsXVJTWq/nIg5jNZ
+         b6McsXdax9dbtwFVuFpG0ra00E4fVaXbwJYr0KtZkOiecnrA86+z7M07tKzzxbnfA8Ek
+         j3vigCGIMqopMqq9t8fmYT0d+FcG/Jybntx8hwT2StwqzS28slRTcG7f6oq2kZhRlv7K
+         TyFA==
+X-Gm-Message-State: AOJu0Yx9tbL3UciatGK8VJady4yvhn3+OBXHk5/UvOkkhqMRXwt2vLon
+	MSm4AlXf/8gv60u7/uT+6+a3bQWWc0NO
+X-Google-Smtp-Source: AGHT+IEPvjdPgLWnim9CRScF1zgDLSQesNC/8qGs5BHhtwyK/zW05fi43O35+h7z9keU2BUHrJr/5Q==
+X-Received: by 2002:a05:6e02:1a08:b0:35f:eceb:f845 with SMTP id s8-20020a056e021a0800b0035fecebf845mr4107785ild.8.1703618532594;
+        Tue, 26 Dec 2023 11:22:12 -0800 (PST)
 Received: from markhas1.lan (71-218-50-136.hlrn.qwest.net. [71.218.50.136])
-        by smtp.gmail.com with ESMTPSA id gw3-20020a0566381ee300b0046b692e719esm3207609jab.150.2023.12.26.11.22.10
+        by smtp.gmail.com with ESMTPSA id gw3-20020a0566381ee300b0046b692e719esm3207609jab.150.2023.12.26.11.22.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Dec 2023 11:22:11 -0800 (PST)
+        Tue, 26 Dec 2023 11:22:12 -0800 (PST)
 From: Mark Hasemeyer <markhas@chromium.org>
 To: LKML <linux-kernel@vger.kernel.org>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -77,17 +77,17 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 11/24] arm64: dts: mediatek: mt8192: Enable cros-ec-spi as wake source
-Date: Tue, 26 Dec 2023 12:21:15 -0700
-Message-ID: <20231226122113.v3.11.Ibd330d26a00f5e219a7e448452769124833a9762@changeid>
+Subject: [PATCH v3 12/24] arm64: dts: mediatek: mt8195: Enable cros-ec-spi as wake source
+Date: Tue, 26 Dec 2023 12:21:16 -0700
+Message-ID: <20231226122113.v3.12.Iee33a7f1f991408cef372744199026f936bf54e2@changeid>
 X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
 In-Reply-To: <20231226192149.1830592-1-markhas@chromium.org>
 References: <20231226192149.1830592-1-markhas@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231226_112213_612737_64B56C48 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20231226_112213_799301_9184113B 
+X-CRM114-Status: GOOD (  12.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,21 +128,21 @@ Signed-off-by: Mark Hasemeyer <markhas@chromium.org>
 Changes in v2:
 -Split by arch/soc
 
- arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 1 +
+ arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index f2281250ac35d..ab44d382f757e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -1332,6 +1332,7 @@ cros_ec: ec@0 {
- 		spi-max-frequency = <3000000>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index bbdcd441c049d..2edb270d0bc2f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -1149,6 +1149,7 @@ cros_ec: ec@0 {
  		pinctrl-names = "default";
  		pinctrl-0 = <&cros_ec_int>;
+ 		spi-max-frequency = <3000000>;
 +		wakeup-source;
  
- 		#address-cells = <1>;
- 		#size-cells = <0>;
+ 		keyboard-backlight {
+ 			compatible = "google,cros-kbd-led-backlight";
 -- 
 2.43.0.472.g3155946c3a-goog
 
