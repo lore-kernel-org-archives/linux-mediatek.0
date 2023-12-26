@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2E60C4706F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Dec 2023 19:22:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69106C46CD3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Dec 2023 19:22:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=72Y9hKrM6wg7C/dkdJ1azVBKmo9vO5yjLJYb3Lbo8g8=; b=M6nEm6cLcy5zAPlcavKDrbvtHS
-	45wHkhbZcR6BEqjJ+kILMvPTBtFOY1GhzxwSlDG6FzREqeR1GWI/OFO9NEL9mDL8a3EKKdwzjxdqd
-	23ui17tN+wuMVzH+M5c/kquw+Ltrq6/U17Ku7GuC+aVUJhCICUNtCQ8SHcACvdlGPoRASpyeUPTz2
-	z2QuwaoCp9boFD5n8IAVuzT20gDpvARWhqhMl7bEJ6v6UZFydqmiEf0qutYOxRYZmIBqrrNDPlkfx
-	UkITQzaMKKHWiY6sRrRv3WR2zZQHPkMAzR+q06JewmhhJpNrdjMRDIMvuCgzAjU6lHiD5zuHQUp1X
-	IDG7XUdQ==;
+	bh=h7Ja8Mbk0Dn0paAcqtccJazS/+ZwMfvgkX5xOL8nKJI=; b=4WRDIuGqpjdjXiOoYKTxUNB6V6
+	gJQxROrQlySAcikkvbq70b+LMOgHzo19ERsIZve3f/VdKESCQl8K72BnsBSI5id8Il5sSq5pHX815
+	Er2fK4fDG57oe5Af3lwDWbdciajgIHjpg2ElSMYIE5jhH3JtnHRZXjPjq319MIVbCFf/8AgHRcDx2
+	yl0aFnWn++gOt31i48JB5D16OmyQAX+MYfNNvvjGBoVh2wcazm4PY93FCZh7DNSylFR7Cz7LIDVoz
+	5rWUvrIqv117iMxaObkQP5hYW2SMsKRfdH33z2JhfIYxTJywJD3TfHHQEFIgmMQlmuByABdpUtJVJ
+	zbRHV+MA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rID0J-00DPnd-1n;
-	Tue, 26 Dec 2023 19:22:15 +0000
-Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31])
+	id 1rID0S-00DPuJ-1R;
+	Tue, 26 Dec 2023 19:22:24 +0000
+Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rID0E-00DPiz-1R
+	id 1rID0F-00DPja-0m
 	for linux-mediatek@lists.infradead.org;
-	Tue, 26 Dec 2023 19:22:11 +0000
-Received: by mail-io1-xd31.google.com with SMTP id ca18e2360f4ac-7b7fdde8b54so249161239f.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 Dec 2023 11:22:10 -0800 (PST)
+	Tue, 26 Dec 2023 19:22:12 +0000
+Received: by mail-io1-xd2b.google.com with SMTP id ca18e2360f4ac-7b3708b3eacso211665139f.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 Dec 2023 11:22:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google; t=1703618530; x=1704223330; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=72Y9hKrM6wg7C/dkdJ1azVBKmo9vO5yjLJYb3Lbo8g8=;
-        b=E8kZ3h+jaPMk4CLZGtQEyZ+3mFaqyakfo6uZnsd9vPuvOoktZDAUK1tZurDEnTBVc0
-         YoVY8K8MS2T4xR8TubJRwtpseaDLpcfsnfV3djKpWU7fJ4sYXNioqIrTRB0/QdvjS/+1
-         IqA0ZmLX8a7H/O8rclSJKUlPMEt74iV1k0FR4=
+        bh=h7Ja8Mbk0Dn0paAcqtccJazS/+ZwMfvgkX5xOL8nKJI=;
+        b=H1DauJUMC3Gh9rYUBbcV2phHhOxzUC3pf+1qVDrTgLCGwsdCSnuKv+/Us1ofqcc8wn
+         Pmlu1Mnz/At3zC2Yyny7/Fnsx2FNlHQddVH6ih0nbFSWhiQV0sJhMJJDKbO+CjisCFbz
+         BI+EmJEoFb4Hw0wirbHNmc2oyFK4XXL7ak7d8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20230601; t=1703618530; x=1704223330;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=72Y9hKrM6wg7C/dkdJ1azVBKmo9vO5yjLJYb3Lbo8g8=;
-        b=TCmfFHxj/zy6zVwx0m/lppuLu3cun8Rio/Nw/un0b/eHh6Yl8qPzvpFmSL3rh+8y0N
-         crPIo+Go9cZSawPulRYlPxU4yrUIlC6WhLrj4ht2lay6vbG1v/TvhB9VSxarq9/ovU7o
-         3vZEfZlnxs66hq7zTU4kjwmZeORttdqIhAlkqWn+1FPU4yXS/pg4kufe8GZaWG/8+7F1
-         RWyS60PXfFkLJfU3nPdELHi2D/D2H4ut96lOpt7CzUDvnm/Mphh3DC/FypTPT/4L6fjo
-         AkUFQteWHRubMuGH0KKM/ZM7sOVgpoIuJtCCJhYKTH1fuRK6NRQlKFbiQeX2icKtia41
-         rlOg==
-X-Gm-Message-State: AOJu0YywxnGsX4vbGrct0326awpHT9TkknCAzuhCcMfhb68jOOr7cloI
-	GH/GPxqJUzsdILf8rq+iP/sbJwjgei9S
-X-Google-Smtp-Source: AGHT+IF6JaIjJ+4nkw3XKAI7b2qhT+RLQRJF93my4pWqagV6xX2LpANA+cbIE30OOMeWGip9I5fCQg==
-X-Received: by 2002:a6b:d807:0:b0:7ba:9ad0:657f with SMTP id y7-20020a6bd807000000b007ba9ad0657fmr10906914iob.0.1703618529969;
-        Tue, 26 Dec 2023 11:22:09 -0800 (PST)
+        bh=h7Ja8Mbk0Dn0paAcqtccJazS/+ZwMfvgkX5xOL8nKJI=;
+        b=UvT67jbvzn6JVFi6UlOLR5yssvN9UDmTz8daPr95b5Jso/PBAo2flfpusj1ylWWIiX
+         Pf7EGTplr9j0T+HsCAAEa7R6yxNeWjvuNlvnSizqm+accwc+ph4kgCKfUI1jxNBpUU0L
+         kQ7Vyy9E2uMTn/Ckv/zAHbY/dQDSyTD6HuKADkjSoijmN8QCLnFByFH7RCTtDBK14Pmj
+         epHCoZQV9gTeRzWjztxxzQk+LXuxvYC3sB3XZACRAc7tVgnOdto+4DVcIPV/yDUDwOsH
+         hjbOBKlqx+5Mv5PuOz9P1U7cNW+opneYjgy28NauA/yc8womyju+cv8M5DYHiks9PC3q
+         Ttkw==
+X-Gm-Message-State: AOJu0YzJF9O+DHbTaTEXYrpk//7HCTu7Uw7bU+ldfu8HecMb5xO+/8o/
+	M6jNWSlM8ogTqMiqFGREXRE7G38i8f8f
+X-Google-Smtp-Source: AGHT+IG8helE4u9r3GeIgnMcwM3YERloc3FZd47BOCTyom2igtFIusFh5HNKk7KvOaUbVJAxoSn/Dw==
+X-Received: by 2002:a05:6602:3e8b:b0:7ba:a650:13d1 with SMTP id el11-20020a0566023e8b00b007baa65013d1mr9133258iob.10.1703618530770;
+        Tue, 26 Dec 2023 11:22:10 -0800 (PST)
 Received: from markhas1.lan (71-218-50-136.hlrn.qwest.net. [71.218.50.136])
-        by smtp.gmail.com with ESMTPSA id gw3-20020a0566381ee300b0046b692e719esm3207609jab.150.2023.12.26.11.22.09
+        by smtp.gmail.com with ESMTPSA id gw3-20020a0566381ee300b0046b692e719esm3207609jab.150.2023.12.26.11.22.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Dec 2023 11:22:09 -0800 (PST)
+        Tue, 26 Dec 2023 11:22:10 -0800 (PST)
 From: Mark Hasemeyer <markhas@chromium.org>
 To: LKML <linux-kernel@vger.kernel.org>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -77,17 +77,17 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 09/24] arm64: dts: mediatek: mt8173: Enable cros-ec-spi as wake source
-Date: Tue, 26 Dec 2023 12:21:13 -0700
-Message-ID: <20231226122113.v3.9.Ic09ebe116c18e83cc1161f4bb073fea8043f03f3@changeid>
+Subject: [PATCH v3 10/24] arm64: dts: mediatek: mt8183: Enable cros-ec-spi as wake source
+Date: Tue, 26 Dec 2023 12:21:14 -0700
+Message-ID: <20231226122113.v3.10.Iba4a8b7e908989e57f7838a80013a4062be5e614@changeid>
 X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
 In-Reply-To: <20231226192149.1830592-1-markhas@chromium.org>
 References: <20231226192149.1830592-1-markhas@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231226_112210_485123_0049A6F4 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20231226_112211_279006_8BD6F512 
+X-CRM114-Status: GOOD (  12.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,20 +128,20 @@ Signed-off-by: Mark Hasemeyer <markhas@chromium.org>
 Changes in v2:
 -Split by arch/soc
 
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 1 +
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index 8d614ac2c58ed..335aed42dc9e3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -1155,6 +1155,7 @@ cros_ec: ec@0 {
- 		spi-max-frequency = <12000000>;
- 		interrupts-extended = <&pio 0 IRQ_TYPE_LEVEL_LOW>;
- 		google,cros-ec-spi-msg-delay = <500>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index 5506de83f61d4..08261164ab18d 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -924,6 +924,7 @@ cros_ec: cros-ec@0 {
+ 		interrupts-extended = <&pio 151 IRQ_TYPE_LEVEL_LOW>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&ec_ap_int_odl>;
 +		wakeup-source;
  
- 		i2c_tunnel: i2c-tunnel0 {
+ 		i2c_tunnel: i2c-tunnel {
  			compatible = "google,cros-ec-i2c-tunnel";
 -- 
 2.43.0.472.g3155946c3a-goog
