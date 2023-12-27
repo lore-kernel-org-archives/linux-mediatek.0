@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FF14C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Dec 2023 04:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 428FEC46CD4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Dec 2023 04:44:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=65dnSrXOzOWi1yBmaxCyl5uIl8FJyuseOOIh7XCp6Nw=; b=nuzREDV04gxrEW
-	8Hc0OV5255B/Z4mKHkoPcNfCVLfID78gLGEwVCOGSl5wy1Qz+r7DkJ+A+bdU5I1SGavPO46CqBpmb
-	zj90/Nlpf1dJwFWXgRuTmDv+2v1GtB6urddSSN5jze6x3lFb6tAZVUEPPmraRXVhWAvMefIcl8HpT
-	8jwhFHwHCvFIwmCHYzL/nM3T0sclxSi49Z006jitiRwcllKrDgRBgQ2XjDA2ALnQLaFDCa03efIeY
-	TSCUc2wj5ph3f3Vfn23ZK3qEd8XXFQoQEqwziosZn7CNaAtCofBqKOk6QxNVmH1WxDTkxdxj1Glh3
-	2DGKbAzLHXowPJlAtd3A==;
+	List-Owner; bh=Yq8FPR2LuMZyALJszWpCeHHckLAPDv/7+vYZcgFAtMY=; b=OeR8UoQdLVhOR4
+	gl90p3UUAitQQEHXtUcCykEyIH70hwQUheyMVL6tZQH+0ol3H2/w+2HupoJv0GDOtMI4eS6SSAEqb
+	bV3SUoZiP8AmgH6O3lt76WIDKlR/u+qPyDCLLyV5V9i89yaiYXqYhVyMLrAbn8a3rS41EO8XYqX7H
+	L7XLNaq7hj6IvDNlUCiJhJfhXARKLewOpbVbd2XU3c/cIrfVmCX3EiQPShlTha+o13WSWVnjI8d/s
+	sWxi0Xu8oAlb+bdOknaffz+XWLcE5Y4H6S7+FHGK/Hvvm9wCpPGhfIoVaKX73EV2OKvioY84HYzqh
+	i8Zrj2deLBQihYEmFklQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rILmi-00Dxu1-2I;
-	Wed, 27 Dec 2023 04:44:48 +0000
-Received: from relay5-d.mail.gandi.net ([217.70.183.197])
+	id 1rILmk-00DxvW-0R;
+	Wed, 27 Dec 2023 04:44:50 +0000
+Received: from relay5-d.mail.gandi.net ([2001:4b98:dc4:8::225])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rILmP-00Dxio-1r;
-	Wed, 27 Dec 2023 04:44:31 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id AFD961C0005;
-	Wed, 27 Dec 2023 04:44:23 +0000 (UTC)
+	id 1rILmU-00Dxli-14;
+	Wed, 27 Dec 2023 04:44:35 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 62E1D1C0006;
+	Wed, 27 Dec 2023 04:44:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1703652268;
+	t=1703652272;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=65dnSrXOzOWi1yBmaxCyl5uIl8FJyuseOOIh7XCp6Nw=;
-	b=pbfdb9ZckIq0GiF6ZQXcoPL9NYz5KTp/akQy1oM+OAntJ30kQlZiw6pwN+X4dsC+9U3YtF
-	J71g4J37jWowhZ72DE0O6YwTyypqsGvP242XbLs2av7OJG7lEXCrdqQj6PhyAZOIB+0IE/
-	9s0yxYbwgx9oyZQWhdGuDMPbfdT3pcgS36qQwzyFVFRkXlMLZhOa6UnHZoA0iZirn8L0Ps
-	P9326Uh6Ftrxakq3sSrah0a9eyZFdij23CtsqlbSKonkhP82O00fuKd5zW7LeJJwqBMmql
-	NJwSb8oLh4a85qBLryil8hdemUvaAYomlzScItjvrj7E90QAM4VJ45yU947Qsg==
+	bh=Yq8FPR2LuMZyALJszWpCeHHckLAPDv/7+vYZcgFAtMY=;
+	b=O+NbHwlQGumS7TsEOQr9BI9W/qAdYrT25uhKxHnbDp/6iBiFPtfRnlV/0F6b1nbfwhTWoT
+	u2vYueKcYpUpw5Pr39+fRIlu4PyumjW/2rRanqAFAqojNwUfDFT1L1ll4wneNf83ZtLcsn
+	736eO/i5HT/mjys/KN8ZHI4LtHXm99iy6woUe/odmouV4neBPhbcp+UEB6e8p8n/ZquCqQ
+	nO9++Mx8uADhqjY7UIKNJUfzVCxpWxckEZw1E9FRpE4bcmMOWVRpjHyO0LIjPcK6REUjof
+	EJmTqMesQ05kZdaNsk05SoOeiQER89KrSOAhZhjeqoQLs8Md98z6maOdzCnx6g==
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
 	Daniel Golle <daniel@makrotopia.org>,
@@ -56,9 +56,9 @@ To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Russell King <linux@armlinux.org.uk>
-Subject: [PATCH net-next v2 5/7] net: dsa: mt7530: improve code path for setting up port 5
-Date: Wed, 27 Dec 2023 07:43:45 +0300
-Message-Id: <20231227044347.107291-6-arinc.unal@arinc9.com>
+Subject: [PATCH net-next v2 6/7] net: dsa: mt7530: do not set priv->p5_interface on mt7530_setup_port5()
+Date: Wed, 27 Dec 2023 07:43:46 +0300
+Message-Id: <20231227044347.107291-7-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231227044347.107291-1-arinc.unal@arinc9.com>
 References: <20231227044347.107291-1-arinc.unal@arinc9.com>
@@ -67,8 +67,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231226_204429_876652_23EC6208 
-X-CRM114-Status: GOOD (  17.04  )
+X-CRM114-CacheID: sfid-20231226_204434_518589_7E8EC02C 
+X-CRM114-Status: UNSURE (   9.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,91 +85,29 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.i
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There're two code paths for setting up port 5:
-
-mt7530_setup()
--> mt7530_setup_port5()
-
-mt753x_phylink_mac_config()
--> mt753x_mac_config()
-   -> mt7530_mac_config()
-      -> mt7530_setup_port5()
-
-Currently mt7530_setup_port5() from mt7530_setup() always runs. If port 5
-is used as a CPU, DSA, or user port, mt7530_setup_port5() from
-mt753x_phylink_mac_config() won't run. That is because priv->p5_interface
-set on mt7530_setup_port5() will match state->interface on
-mt753x_phylink_mac_config() which will stop running mt7530_setup_port5()
-again.
-
-Therefore, mt7530_setup_port5() will never run from
-mt753x_phylink_mac_config().
-
-Address this by not running mt7530_setup_port5() from mt7530_setup() if
-port 5 is used as a CPU, DSA, or user port. This driver isn't in the
-dsa_switches_apply_workarounds[] array so phylink will always be present.
-
-To keep the cases where port 5 isn't controlled by phylink working as
-before, preserve the mt7530_setup_port5() call from mt7530_setup().
-
-Do not set priv->p5_intf_sel to P5_DISABLED. It is already set to that when
-"priv" is allocated.
-
-Move setting the interface to a more specific location. It's supposed to be
-overwritten if PHY muxing is detected.
-
-Improve the comment which explains the process.
+priv->p5_interface and priv->p6_interface are for use on the MT7531 switch.
+They prevent the CPU ports of MT7531 to be configured again. They are
+useless for MT7530. Therefore, remove setting priv->p5_interface for
+MT7530.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 17 ++++++++---------
- 1 file changed, 8 insertions(+), 9 deletions(-)
+ drivers/net/dsa/mt7530.c | 2 --
+ 1 file changed, 2 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 558784f830c2..bf6c59ecc489 100644
+index bf6c59ecc489..07c5f1c6d036 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -2308,16 +2308,15 @@ mt7530_setup(struct dsa_switch *ds)
- 		return ret;
+@@ -978,8 +978,6 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+ 	dev_dbg(ds->dev, "Setup P5, HWTRAP=0x%x, intf_sel=%s, phy-mode=%s\n",
+ 		val, p5_intf_modes(priv->p5_intf_sel), phy_modes(interface));
  
- 	/* Setup port 5 */
--	priv->p5_intf_sel = P5_DISABLED;
--	interface = PHY_INTERFACE_MODE_NA;
+-	priv->p5_interface = interface;
 -
- 	if (!dsa_is_unused_port(ds, 5)) {
- 		priv->p5_intf_sel = P5_INTF_SEL_GMAC5;
--		ret = of_get_phy_mode(dsa_to_port(ds, 5)->dn, &interface);
--		if (ret && ret != -ENODEV)
--			return ret;
- 	} else {
--		/* Scan the ethernet nodes. look for GMAC1, lookup used phy */
-+		/* Scan the ethernet nodes. Look for GMAC1, lookup the used PHY.
-+		 * Set priv->p5_intf_sel to the appropriate value if PHY muxing
-+		 * is detected.
-+		 */
-+		interface = PHY_INTERFACE_MODE_NA;
-+
- 		for_each_child_of_node(dn, mac_np) {
- 			if (!of_device_is_compatible(mac_np,
- 						     "mediatek,eth-mac"))
-@@ -2348,6 +2347,8 @@ mt7530_setup(struct dsa_switch *ds)
- 			of_node_put(phy_node);
- 			break;
- 		}
-+
-+		mt7530_setup_port5(ds, interface);
- 	}
- 
- #ifdef CONFIG_GPIOLIB
-@@ -2358,8 +2359,6 @@ mt7530_setup(struct dsa_switch *ds)
- 	}
- #endif /* CONFIG_GPIOLIB */
- 
--	mt7530_setup_port5(ds, interface);
--
- 	/* Flush the FDB table */
- 	ret = mt7530_fdb_cmd(priv, MT7530_FDB_FLUSH, NULL);
- 	if (ret < 0)
+ unlock_exit:
+ 	mutex_unlock(&priv->reg_mutex);
+ }
 -- 
 2.40.1
 
