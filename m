@@ -4,71 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55C3DC47072
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Dec 2023 04:44:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69C26C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Dec 2023 06:04:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YCZIbkTLfmiSszqRUWdE3uv72vBPQhPeE1uqn8XXA8k=; b=TtKXw0er2MnSvr
-	0aLvS9HO2dRVdJDkSFNrikfG+qwTMJ5FjLSdbTtibWUiwIjMjS4OBNxLsiPtHslOVUbOKs5UmFm/N
-	oEMXQUaF7W0Zs+UnDUmOnUs5k7CTgBjqUTLYfNwxjVKTLp4TKw0ahFfzUbc0TwAevBCJbOL6XBRUc
-	7Uxht3xKMUlJXymhtvDEt91LTuDSVNpi0XHZCKC9VaY3L1aIkKL5rkuIotWRDj+s2f7HoAPKPT5Bo
-	Twb9B6gRod8mMv3LATSGF5H6mbLR2YTvjMbQbTaICUesiqo2E7g54/EucMGPClR+mqCgkUP10Svwd
-	2kriVMEVNMxq/UIzIs6g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5qBKHfc8i14d6XJhRnuWE5dChDSzj6DCcNgKR3axeCs=; b=JHpz83rC3tS/n8/aV9R6MmfBFT
+	XQNAVscYx8l5lWaEgQ0YSLJUfhqJq+40sJJ7Y3SKwTf0Y6R8/9OR/i5dEPSNiyJB2WDjawomAS9ls
+	qrmIrpcZdDh5qNqiHUylDvfr2RWd5KRsRcgP4x+DhDVh36J5MOw/pEcsKNuFaqfqyTJpIAySnIvVQ
+	ETZIdzRJ+DqVexuxB+o9lWc4V1yr878N8zAFeoW/dUkShJ5HU7/DT7DOPMDFnJX3TO6J/zxG3SnwC
+	MP5//EQCLbmhXozwVIXeQQ2aHxAKeredTMvFzN1pwayKd8lwLl6uIUMCKHFx/ZQwVb6hkPuECcNW5
+	OvxJr6ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rILml-00Dxwf-19;
-	Wed, 27 Dec 2023 04:44:51 +0000
-Received: from relay5-d.mail.gandi.net ([217.70.183.197])
+	id 1rIN1O-00E1gI-1l;
+	Wed, 27 Dec 2023 06:04:02 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rILmZ-00DxnH-1a;
-	Wed, 27 Dec 2023 04:44:41 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 0DEED1C0007;
-	Wed, 27 Dec 2023 04:44:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1703652278;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=YCZIbkTLfmiSszqRUWdE3uv72vBPQhPeE1uqn8XXA8k=;
-	b=ES/9BjMkXaCK3b66k00HkJeL+EOUGYJISv3f6Gom5VwI/njRkTwfwxfzNZVBwXM6ZtJ/hN
-	irPbSiSwIfVJumUkk0UtinwO04rq8ZUWhG1jd2lBYX0xNzzsz8Eu22Zia6wS0EbqmtFpct
-	AmEV9VPvFBvVdVxrD5VsjXy7XRMHQ/MbS4uA8msq7zglmY0ic4qCHYmaQhSzAVTlYQVAsm
-	8Gn1thUlWJATffyIJOC5ibSAG3PqK4LSp8UZHOr1nJdM3PioYdM+dJZVE8fxesTZMQLDh9
-	4QNSQTsr+QkwQXYn+Cs8U+mg2q1Mnc9YD63pDO7L+AVhTzdd1Qeodud3zuEWSw==
-From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>
-Subject: [PATCH net-next v2 7/7] net: dsa: mt7530: do not run mt7530_setup_port5() if port 5 is disabled
-Date: Wed, 27 Dec 2023 07:43:47 +0300
-Message-Id: <20231227044347.107291-8-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20231227044347.107291-1-arinc.unal@arinc9.com>
-References: <20231227044347.107291-1-arinc.unal@arinc9.com>
+	id 1rIN1K-00E1dw-08;
+	Wed, 27 Dec 2023 06:04:01 +0000
+X-UUID: b41ff182a47d11eeafd70d0b34820190-20231226
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=5qBKHfc8i14d6XJhRnuWE5dChDSzj6DCcNgKR3axeCs=;
+	b=LUHhn5xnyJcqn3ecl8vx/aLGhOo4silXeEevSTsZbkbzlQbNk/5i0W4Pmoge3AE1/U1MxSPzaGi4dyxjGnmMb7Lo4ZJVRySTFOiDFBGpqFFoD9d5d/DfqQHSl7u/bBqYXq/nNBcKypprfSjvIkBRXqHqGkWIwsoeG+4NRPcb65g=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35,REQID:656084d3-4d10-449b-94a7-d8b82a999f3d,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5d391d7,CLOUDID:5d4a9d8d-e2c0-40b0-a8fe-7c7e47299109,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: b41ff182a47d11eeafd70d0b34820190-20231226
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <chunfeng.yun@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2058172778; Tue, 26 Dec 2023 23:03:49 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 27 Dec 2023 14:03:19 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 27 Dec 2023 14:03:18 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Conor Dooley
+	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Mathias
+ Nyman" <mathias.nyman@intel.com>, <linux-usb@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Eddie Hung
+	<eddie.hung@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>
+Subject: [PATCH v4 3/3] arm64: dts: mediatek: mt8195: Add 'rx-fifo-depth' for cherry
+Date: Wed, 27 Dec 2023 14:03:16 +0800
+Message-ID: <20231227060316.8539-3-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20231227060316.8539-1-chunfeng.yun@mediatek.com>
+References: <20231227060316.8539-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10-2.825800-8.000000
+X-TMASE-MatchedRID: ZzsyKKMlPmWLwgJA7qJvFEf49ONH0RaSGSqdEmeD/nUQVRHC3B6FYFfe
+	kLFvP8UVQt2470g7vecqScZQsLRFpNRvK63SVd6gQPrPw3WbUAtRnscLnNAC7BjQD3m2MCf73j3
+	TOgY19l5UK0FnzcPd0uKOmN63egZIr78SC5iivxwURSScn+QSXt0H8LFZNFG7CKFCmhdu5cWMli
+	PzJGLy1pXHFyiI0uGzANmR3/AtY5RjyzFNloJjQSJjvR2uj1AQfnRrx7yt7dn7QvrLnS2+q5yUI
+	XNmAxUvnsnNd1zv3CVpp55fZDlsr34cY/B7JqXaYZ1R7NXn0MdBmmCXcKyFFPqy+VVvqH2X
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10-2.825800-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: F39E914BBC51F28300BA942E2DD319AEC74CE0379EF1859D1C1E66BF5D291F672000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231226_204439_795353_05FFE4F7 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20231226_220358_094888_39792779 
+X-CRM114-Status: UNSURE (   9.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,64 +101,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, erkin.bozoglu@xeront.com, mithat.guner@xeront.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There's no need to run all the code on mt7530_setup_port5() if port 5 is
-disabled. The only case for calling mt7530_setup_port5() from
-mt7530_setup() is when PHY muxing is enabled. That is because port 5 is not
-defined as a port on the devicetree, therefore, it cannot be controlled by
-phylink.
+Add the quirk property "rx-fifo-depth" to work around Gen1 isoc-in
+transfer issue which send out unexpected ACK even after device
+already finished the burst transfer with a short patcket, specially
+for a 4K camera device.
 
-Because of this, run mt7530_setup_port5() if priv->p5_intf_sel is
-P5_INTF_SEL_PHY_P0 or P5_INTF_SEL_PHY_P4. Remove the P5_DISABLED case from
-mt7530_setup_port5().
-
-Stop initialising the interface variable as the remaining cases will always
-call mt7530_setup_port5() with it initialised.
-
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/net/dsa/mt7530.c | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+v4:
+change property value, and put before supply
+add reviewed-by Angelo
+v3: change value according to binding
+v2: use 'rx-fifo-depth' property
+---
+ arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 07c5f1c6d036..0c3b2b75f106 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -942,9 +942,6 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 		/* MT7530_P5_MODE_GMAC: P5 -> External phy or 2nd GMAC */
- 		val &= ~MHWTRAP_P5_DIS;
- 		break;
--	case P5_DISABLED:
--		interface = PHY_INTERFACE_MODE_NA;
--		break;
- 	default:
- 		dev_err(ds->dev, "Unsupported p5_intf_sel %d\n",
- 			priv->p5_intf_sel);
-@@ -2313,8 +2310,6 @@ mt7530_setup(struct dsa_switch *ds)
- 		 * Set priv->p5_intf_sel to the appropriate value if PHY muxing
- 		 * is detected.
- 		 */
--		interface = PHY_INTERFACE_MODE_NA;
--
- 		for_each_child_of_node(dn, mac_np) {
- 			if (!of_device_is_compatible(mac_np,
- 						     "mediatek,eth-mac"))
-@@ -2346,7 +2341,9 @@ mt7530_setup(struct dsa_switch *ds)
- 			break;
- 		}
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index dd5b89b73190..00fcde60300e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -1183,6 +1183,7 @@
+ &xhci0 {
+ 	status = "okay";
  
--		mt7530_setup_port5(ds, interface);
-+		if (priv->p5_intf_sel == P5_INTF_SEL_PHY_P0 ||
-+		    priv->p5_intf_sel == P5_INTF_SEL_PHY_P4)
-+			mt7530_setup_port5(ds, interface);
- 	}
++	rx-fifo-depth = <3072>;
+ 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
+ 	vbus-supply = <&usb_vbus>;
+ };
+@@ -1190,6 +1191,7 @@
+ &xhci1 {
+ 	status = "okay";
  
- #ifdef CONFIG_GPIOLIB
++	rx-fifo-depth = <3072>;
+ 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
+ 	vbus-supply = <&usb_vbus>;
+ };
 -- 
-2.40.1
+2.18.0
 
 
