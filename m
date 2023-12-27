@@ -4,70 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7D45C47072
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Dec 2023 13:08:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60178C46CD4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Dec 2023 16:01:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TD0S7hvKR+xai/tSrPKvTXKXSx4uja0h0beaQknOOjs=; b=at7b0r1BVPpMgEeue2q41GOSM6
-	3OLOYUP8wqMtvfXVA2HvhEVXsndpF7nHcw9IB99JIdKB6aAxuBXTMl+7iwlXcAa9glmqHGaSpGXx5
-	AYpEPaWyGxuIimOxpnCHoa6wZ7sZ4b25y5D0ZGeQGeKhhou72VvHtPQ9xnOK1fSvazCfX78LS7rBj
-	LaSY8DkosJbNXiN7aMPv/LRVWIB37RA7iZ4yWP8e3mKKAvt6Hh/i9EelpI97AEmGJOFV+tmqeo8dQ
-	FlIubZLHakT7h2gWTUWrkVj+5h2rU9g+rLjTIwG0us0qkoAnijRwSrnHPoB4bSW3rnMiuf5u1Snh5
-	+sjyqKbQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hvdkzMcPB0BnhtpyqYBsUSBabcmCryFsG0lmm846Yoc=; b=NVSbAMnhfoqFcqwidyo5EyHgf6
+	TQni5v3SNXptV/Niz7Gu2iAleGZ13eQnzesxCgh7FyUEZVD8ipnTgIp0E9a0AwcTzeVzV6E827r/3
+	tMi2BFfXzaNNvi6Pb9v5LlITf7Qgx/fswygoBPGJKqIwg0n44P7ITvRA2X6Vgh/NE2yRTzSUME2Kg
+	UCDO6Q7BfCiyjQ4JohHuF6JPY6UD1Ix1vG3/5Wh0aZaHD+9NSqI76nLjAcpqTDJ69UGKkZYmvFs8Y
+	O3MlVicautAfKbBFPuwmCCeqBpnWxfvj7hGt9b0tsIhQbU/dQc13ZrkdtD51ujQPcNc908wYR60aK
+	+8Xmak6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rITeB-00Eh4O-2N;
-	Wed, 27 Dec 2023 13:08:31 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rIWLx-00F0YD-0V;
+	Wed, 27 Dec 2023 16:01:53 +0000
+Received: from mgamail.intel.com ([192.198.163.10])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rITe7-00Eh3F-2D;
-	Wed, 27 Dec 2023 13:08:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1703682502;
-	bh=HmyjXOD56zgdLDRREs3MjGe7P0nir2jbpaxQCaL5xWM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=F3gYODER8pnUeQQ4RhLeIl6uvFvnY5Kj4qdCHil+dk8eUti5rjTBXHPwGODNyeUXB
-	 b3Q7x61UzMh1jmHWbY57TCn82zA9F9jO5qq2+ulGLMBvp+nkmebVfqR0/Eo03zsXdv
-	 /rVoVxh36fVTjOj9AFzL3uDEDC6FQ7qNA76WyDHQXIKKqcbF6Sz6B7SeKkd3SJcwbB
-	 Z7/eqpws2ldOOcJYhXTdpjZ+6OLl+V7/Hj7gqqkPRzqIqu0FXmH6EefEoK/TmrynHd
-	 AI+91XTt2WlGifOOQBrXietyLWSQ5hOG+qWbeD4630xepTpxi8M3Z4ObrcTF4yLBL3
-	 ygfT9/x4Ga2uA==
-Received: from eugen-station.. (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: ehristev)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B7CC137802F2;
-	Wed, 27 Dec 2023 13:08:21 +0000 (UTC)
-From: Eugen Hristev <eugen.hristev@collabora.com>
-To: bin.liu@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	Max Staudt <mstaudt@chromium.org>,
-	Ricardo Ribalda <ribalda@chromium.org>,
-	Eugen Hristev <eugen.hristev@collabora.com>
-Subject: [PATCH 2/2] arm64: dts: mediatek: mt8186: Add jpgenc node
-Date: Wed, 27 Dec 2023 15:08:12 +0200
-Message-Id: <20231227130812.148914-2-eugen.hristev@collabora.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231227130812.148914-1-eugen.hristev@collabora.com>
-References: <20231227130812.148914-1-eugen.hristev@collabora.com>
+	id 1rIWLt-00F0X1-3C;
+	Wed, 27 Dec 2023 16:01:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1703692910; x=1735228910;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=qIi6/FGG1XhIsYOH+tdaJ+Cr8i/oTUD6GGfo2SnNl+w=;
+  b=gbGIjuYK3Y2pP7Rm8uX3/bS4hqUid5SLYprrN16P7NxWbOtHpesY5a4b
+   1gbNxO9fvFYPNlRQcrseNyPSq61XfLaZ4HISFeM5oKGcRHxTpiZDf5o6w
+   BZqGXMwJaX5sng/8JXbDnMa7l/XB1LR03reih4ZEHz8w8Q0Kb7ayDk3Cl
+   7mMTYmHcxevCOMrljYC2jL7yi1ZrJvq2bwNO6Bm+D8igwuUps0vzQ8jXo
+   uCusMfrCr48Ea0cUyXLCZC8fPBTcBVgjw/Wvu4R4kV/hMhrY+49ANUd2t
+   ZIG58SaELucQ8Wu02+bt6QeP3yfTTHIQend5Vmozf8RAIVLWO9y9EkXuS
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10936"; a="3745325"
+X-IronPort-AV: E=Sophos;i="6.04,309,1695711600"; 
+   d="scan'208";a="3745325"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Dec 2023 08:01:48 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10936"; a="951530427"
+X-IronPort-AV: E=Sophos;i="6.04,309,1695711600"; 
+   d="scan'208";a="951530427"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by orsmga005.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Dec 2023 08:01:43 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.97)
+	(envelope-from <andriy.shevchenko@intel.com>)
+	id 1rIWLk-00000009SPM-3mSN;
+	Wed, 27 Dec 2023 18:01:40 +0200
+Date: Wed, 27 Dec 2023 18:01:40 +0200
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Mark Hasemeyer <markhas@chromium.org>
+Cc: LKML <linux-kernel@vger.kernel.org>, chrome-platform@lists.linux.dev,
+	cros-qcom-dts-watchers@chromium.org, devicetree@vger.kernel.org,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-gpio@vger.kernel.org,
+	linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org
+Subject: Re: [PATCH v2 00/22] Improve IRQ wake capability reporting and
+ update the cros_ec driver to use it
+Message-ID: <ZYxKZD4IMJH_QjQW@smile.fi.intel.com>
+References: <20231220235459.2965548-1-markhas@chromium.org>
+ <ZYRAuY1LGdD8_u5K@smile.fi.intel.com>
+ <CANg-bXDw+bYNTu-HFaNAPb4e+_oKt2ExR6PehWR_==vpboKGaw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CANg-bXDw+bYNTu-HFaNAPb4e+_oKt2ExR6PehWR_==vpboKGaw@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231227_050827_873020_8552EC70 
-X-CRM114-Status: UNSURE (   8.34  )
+X-CRM114-CacheID: sfid-20231227_080150_037751_A8D4A71F 
+X-CRM114-Status: UNSURE (   9.88  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,46 +93,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+On Fri, Dec 22, 2023 at 03:30:43PM -0700, Mark Hasemeyer wrote:
+> > Just wondering if you used --histogram diff algo when preparing patches.
+> 
+> Not knowingly. I use patman which uses 'git format-patch' under the
+> covers with some added options:
+> https://github.com/siemens/u-boot/blob/master/tools/patman/gitutil.py#L308
 
-Add JPEG encoder node.
+Add a configuration into your ~/.gitconfig (or local for the project),
+it really makes the difference.
 
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Reviewed-by: Hsin-Yi Wang <hsinyi@chromium.org>
-Reviewed-by: Max Staudt <mstaudt@chromium.org>
-Tested-by: Max Staudt <mstaudt@chromium.org>
-Reviewed-by: Ricardo Ribalda <ribalda@chromium.org>
-[eugen.hristev@collabora.com: minor cleanup]
-Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8186.dtsi | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-index e451b6c8cd9e..ef1b269f9184 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-@@ -2054,6 +2054,19 @@ venc: video-encoder@17020000 {
- 			mediatek,scp = <&scp>;
- 		};
- 
-+		jpgenc: jpgenc@17030000 {
-+			compatible = "mediatek,mt8186-jpgenc", "mediatek,mtk-jpgenc";
-+			reg = <0 0x17030000 0 0x10000>;
-+			interrupts = <GIC_SPI 245 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&vencsys CLK_VENC_CKE2_JPGENC>;
-+			clock-names = "jpgenc";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_VENC>;
-+			iommus = <&iommu_mm IOMMU_PORT_L7_JPGENC_Y_RDMA>,
-+				 <&iommu_mm IOMMU_PORT_L7_JPGENC_C_RDMA>,
-+				 <&iommu_mm IOMMU_PORT_L7_JPGENC_Q_TABLE>,
-+				 <&iommu_mm IOMMU_PORT_L7_JPGENC_BSDMA>;
-+		};
-+
- 		camsys: clock-controller@1a000000 {
- 			compatible = "mediatek,mt8186-camsys";
- 			reg = <0 0x1a000000 0 0x1000>;
 -- 
-2.34.1
+With Best Regards,
+Andy Shevchenko
+
 
 
