@@ -4,97 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 876C4C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Dec 2023 20:02:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7A6DC46CD4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Dec 2023 21:03:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F/knE1RdGvxQU+ZfFNTNGYvbGggyDmP5kq99ZSddVPc=; b=Ij+fGvEwcJE0DBx3ITGT24vyHS
-	GA2Ph0Gsa2aaYwK7ggZs8vKtekdnYIY/DEwpTtBJWJH2sNIzWS1jb0Tr87LssQlQMKU4xH+Ipicne
-	kyUPlbmqnlz/jJ9qNkyv7ZV74pQENE1Kk5nKR5pRYK4UypOlZF0pEz78Xo9ZQEDlTkSA4GkTFqNkY
-	jzBTq2xS3ZQyfGYLkUkbAeCq65etQZfKdvVMcCRCg1nXaFSE0wu1KeJD++/eqjzr/sNNGRh7BxAwF
-	KhcTW1MRrvITPw+UeRlFtSse9NYl/GhF22Q2zrwb4iDexpuVXiJwbQG37NSkiy3jxsmGiVHZJKqKf
-	6gMSNjdA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8ucazntuoRNgnVSvJ3raA82ExnonuL+zH/wvYr1CwMc=; b=H6pyBxLIJ+lHAj06epLT+fEHmE
+	VEPvYIH+niPtsoaOkykbgFxVRhK2nG4HG3d4bCb/qNXIWr/hoacuKeZ6xWqp9yYadpAz11I8gX+xZ
+	jX3af/AaejmyUVIX8vPowoFb5/Pl/Qz+GlbB2Z6V1R6JpVRNPj5PojjmCA4kkasqEI8uLgVK6PVI4
+	p3wUIq+YQ0LotKPnEsNtt8IAeCKfqhXl79NZkSQCfD742Z9M5cncmb6BsZ8OPyPwD+xFZQOg6tiTr
+	RLptVOYQweK6HCOD2Nqteik2yT+PSn+eApOiG5FO7iM8bQMnGaeb8jOj1l+f8NI5ILKiapODQYuh8
+	vNdVxB7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIa6k-00FQH8-1D;
-	Wed, 27 Dec 2023 20:02:26 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1rIb3U-00FUzg-0t;
+	Wed, 27 Dec 2023 21:03:08 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIa6g-00FQFy-2f;
-	Wed, 27 Dec 2023 20:02:24 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-40d2e56f3a6so30951795e9.1;
-        Wed, 27 Dec 2023 12:02:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1703707341; x=1704312141; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=F/knE1RdGvxQU+ZfFNTNGYvbGggyDmP5kq99ZSddVPc=;
-        b=QyI+Os3xVmdmmucWGneGf18kzkk+J/qpocWJJuForb5ZpZtahbD/MTkb5nn7PGzxFQ
-         puCRZw+zsKp/ZoS2LNQFGgP53TsHPxxkZnQUZ5zWpRbst5RC5+2v3Wah7irPFrZjGgnF
-         LBbvt9zjBIin2YAZlsxjFxpOt1Fdknnoe2iCWfe25y37s3D0QOZcdFf8KoAAETWzaeNw
-         P/HqJM/yhvV2l2KyO9D1TvCzXTVcNXubFkfCGUp5YesIbguMsrHs3ZQaVmX2ma1SsSPE
-         AWZEsPhYaYM7BIwCredssRrZLcVuq2kEfrR2DFRHSHCjCkNi918+34F+HA9kIm7ZA044
-         Yfvw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703707341; x=1704312141;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=F/knE1RdGvxQU+ZfFNTNGYvbGggyDmP5kq99ZSddVPc=;
-        b=gvw5k8N9qJI11svxwfxFim5N88qOnnt18Hh1qN8Y4lrLGB7nmBdLPkr4/+qxBPWSkB
-         bBqodKo6WtV3ox4Wj4Ej9bFTT501If3i0t2pOcz31NeIU666noxX2Cn39Huq20iHuCOf
-         qPyWIgDGpHbwVIKHtAOcU1kYG+YtWYrp3hS/ZpICRbVNz9F8DagtI3m4+LQZtT6xcU1v
-         YVgF3LrPJNy4ljo0jLPHOxJIJWKn6uWfDpJ6yHrKg6gS3Hq8nOme3Ftf2kzlCoHNmHdz
-         luc14KmzwHMBVjNV/WYAEIuOIkWlCYZGO972ViD3CN6ht9A9/cbvOu4GcWPks3KDfzsp
-         oBuQ==
-X-Gm-Message-State: AOJu0Yz96IewWxzh8NR6Dwtwo0nUp9YJE79x2N05jRTah7QKYbxot7SO
-	g5Q+oM81LscN950xFEseKCI=
-X-Google-Smtp-Source: AGHT+IG11a2jEJ56aVZt743+Urcm+oZvsgxk0OjEW0YCylo3AApnPF7ZuFFcQ/IqgS9k8gVkMvV36A==
-X-Received: by 2002:a05:600c:4503:b0:40d:3eb8:580f with SMTP id t3-20020a05600c450300b0040d3eb8580fmr4726111wmo.14.1703707340716;
-        Wed, 27 Dec 2023 12:02:20 -0800 (PST)
-Received: from skbuf ([188.25.254.72])
-        by smtp.gmail.com with ESMTPSA id m19-20020a05600c4f5300b0040d5b849f38sm5739904wmq.0.2023.12.27.12.02.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Dec 2023 12:02:20 -0800 (PST)
-Date: Wed, 27 Dec 2023 22:02:17 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	id 1rIb3P-00FUwt-27
+	for linux-mediatek@lists.infradead.org;
+	Wed, 27 Dec 2023 21:03:05 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rIb3M-0000le-3j; Wed, 27 Dec 2023 22:03:00 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rIb3H-001wEi-AR; Wed, 27 Dec 2023 22:02:56 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rIb3I-001ZVE-0o;
+	Wed, 27 Dec 2023 22:02:56 +0100
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Jassi Brar <jassisinghbrar@gmail.com>
+Cc: linux-kernel@vger.kernel.org,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	linux-arm-kernel@lists.infradead.org,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	David Bauer <mail@david-bauer.net>, mithat.guner@xeront.com,
-	erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next] net: dsa: mt7530: register OF node for internal
- MDIO bus
-Message-ID: <20231227200217.kdltxpmhvlp6z4cd@skbuf>
-References: <20231220173539.59071-1-arinc.unal@arinc9.com>
- <20231220173539.59071-1-arinc.unal@arinc9.com>
- <20231221151607.ujobhh4aet4obxdz@skbuf>
- <6600c6b1-2230-4963-940c-8b95a01750fd@arinc9.com>
- <20231227191154.6jkqdlqdxciidpfw@skbuf>
- <bdbe24b2-30f6-48fa-b6eb-a1ae3afe9076@arinc9.com>
+	linux-mediatek@lists.infradead.org,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	linux-arm-msm@vger.kernel.org,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	linux-sunxi@lists.linux.dev,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	linux-tegra@vger.kernel.org,
+	Michal Simek <michal.simek@amd.com>,
+	kernel@pengutronix.de
+Subject: [PATCH 00/12] mailbox: Convert to platform remove callback returning void
+Date: Wed, 27 Dec 2023 22:02:28 +0100
+Message-ID: <cover.1703710628.git.u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2241; i=u.kleine-koenig@pengutronix.de; h=from:subject:message-id; bh=TnloZYpKIYRmaOM4Vyp6tR8nMUztNxQOKpyjV0rpvQ4=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBljJDlF5RcQbsMo+jn9Hk4Fn0DGB3DTp1LZRoam 4uXEKKoj2GJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZYyQ5QAKCRCPgPtYfRL+ TmefCACxCqozxo0GnqWmhu00tf7kElJNTysNznKKdidgf7fo9mcsJuA7Ck125Ja84llYdplJCvv Dsdgd+ignUqSSvOgP0rhHT1pxzc3t9CgKIvLUZMIwaiFUxnPuGs0iLILF0hhUoUb6JLwyAFJw/W pPtgJ/owxsaEcqXJEcIL+CMDaCWvE8mUTxuY4pmJCm6WMPBEM3f8affobB2FMtJ7qI2crJx7ojl xgvXdsuX9EtOecBbxd/N706v8sAbPO2cSehuoXojKHPV81zg+QhoTYPjdqW75nODS26hacjnboO xL/0decenMphAvdsq/GieTqJqbXlITNBQapQQbyLQwxG+KFY
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <bdbe24b2-30f6-48fa-b6eb-a1ae3afe9076@arinc9.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231227_120222_878014_EC29F8EF 
-X-CRM114-Status: GOOD (  12.91  )
+X-CRM114-CacheID: sfid-20231227_130303_745120_A7E26B83 
+X-CRM114-Status: UNSURE (   6.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,30 +99,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 27, 2023 at 10:51:08PM +0300, Arınç ÜNAL wrote:
-> I didn't realise ds->user_mii_bus is also used to store irq mapping for
-> each PHY.
+Hello,
 
-It needs to, if the MDIO bus does not have an OF description through
-which PHYs can have an 'interrupts' property. But if there is an OF
-description for the MDIO bus and the PHYs, I think it is strange to
-expect PHYs to have interrupts if they aren't described in OF.
+this series converts all platform drivers below drivers/mailbox that
+make use of .remove() to use .remove_new() instead.
 
-> Should we agree that user_mii_bus is needed for all cases or make
-> another way to store the irq mappings?
+See commit 5c5a7680e67b ("platform: Provide a remove callback that
+returns no value") for an extended explanation and the eventual goal.
+The TL;DR; is to make it harder for driver authors to leak resources
+without noticing. The drivers here get it right though and so can be
+converted trivially.
 
-I looked at the upstream device trees:
-- users of arch/mips/boot/dts/ralink/mt7621.dtsi
-- arch/arm/boot/dts/mediatek/mt7623n-bananapi-bpi-r2.dts
-- arch/arm/boot/dts/mediatek/mt7623n-rfb-emmc.dts
-- arch/arm/boot/dts/mediatek/mt7623a.dtsi
-- arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-- arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-- arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-- arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+This is merge window material. All patches are pairwise independent, so
+they can be applied individually.
 
-and without exception, none of these have the MDIO bus described in OF.
-I'm not sure about other device trees. But it may well be that the
-situation where "MDIO buses present in OF need an IRQ mapping for their
-PHYs" does not need to be handled.
+Best regards
+Uwe
+
+Uwe Kleine-König (12):
+  mailbox: bcm-flexrm: Convert to platform remove callback returning void
+  mailbox: bcm-pdc: Convert to platform remove callback returning void
+  mailbox: imx: Convert to platform remove callback returning void
+  mailbox: mailbox-test: Convert to platform remove callback returning void
+  mailbox: mtk-cmdq: Convert to platform remove callback returning void
+  mailbox: omap: Convert to platform remove callback returning void
+  mailbox: qcom-apcs-ipc: Convert to platform remove callback returning void
+  mailbox: qcom-ipcc: Convert to platform remove callback returning void
+  mailbox: stm32-ipcc: Convert to platform remove callback returning void
+  mailbox: sun6i-msgbox: Convert to platform remove callback returning void
+  mailbox: tegra-hsp: Convert to platform remove callback returning void
+  mailbox: zynqmp-ipi: Convert to platform remove callback returning void
+
+ drivers/mailbox/bcm-flexrm-mailbox.c    | 6 ++----
+ drivers/mailbox/bcm-pdc-mailbox.c       | 5 ++---
+ drivers/mailbox/imx-mailbox.c           | 6 ++----
+ drivers/mailbox/mailbox-test.c          | 6 ++----
+ drivers/mailbox/mtk-cmdq-mailbox.c      | 5 ++---
+ drivers/mailbox/omap-mailbox.c          | 6 ++----
+ drivers/mailbox/qcom-apcs-ipc-mailbox.c | 6 ++----
+ drivers/mailbox/qcom-ipcc.c             | 6 ++----
+ drivers/mailbox/stm32-ipcc.c            | 6 ++----
+ drivers/mailbox/sun6i-msgbox.c          | 6 ++----
+ drivers/mailbox/tegra-hsp.c             | 6 ++----
+ drivers/mailbox/zynqmp-ipi-mailbox.c    | 6 ++----
+ 12 files changed, 24 insertions(+), 46 deletions(-)
+
+base-commit: 39676dfe52331dba909c617f213fdb21015c8d10
+-- 
+2.43.0
+
 
