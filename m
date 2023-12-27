@@ -4,63 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 868C8C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Dec 2023 16:27:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05009C46CD4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Dec 2023 16:27:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ll6YGpIKic/fJIjuCuZafsLUOG8yDcOukKFLjujQHQs=; b=XTQ4W3bupG9rtrBSfGX7S/TURE
-	TvxwI51WqyR8dsp+rmaWx4AbFvJE94eRl1GzMQ4H3s+XqoXs9ma1LD7sYmmL9HozPyOrRFOn8Y/8Y
-	HPpcY5WJ5CPk7ePRGhaA2jaolFbZ+jgSBRbjTVHqmEj+oJo1oyryra+ZHIRNRRPckMGUVDLNOvOof
-	WL3+Pdmrimpq4ct9SEJtTCZrIa7NfoLKU/1PGgyQrYJJUcMzj5WYl2jzpgSJXzdg1uo+2PthSCRFy
-	JXeGPP0yK7ZGu1o+ka7W70FTJ1/lR/6NUmnogZqxCLz/fbR/g/r/RCCSnqJOj+WFn5MRgLwygTu4y
-	S5I3u3lA==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nSlKP1GxI2Ye3GqsYymwuSaRfpjJx6SmiaLvZsReiUw=; b=VJvz0ox9As3FIsYK3IF0tEGnNI
+	t77LDQQ8LmM5pexifuZ+B6jB6ut2wTXI2tFuy4+3eEEraCb2FkyUiX5e5cmpFHjQijWKHPaDnhqn9
+	Dvo0zaRd5EGod5xaa0G168kr9+dyr3hL8xO0dW/f3+1PNPKQPSf9CWF2N4HDYYiCYwQCy4BxhhpDe
+	QC8tYCINE0bB0imGLrc6JNNc5Al1pElSuX1fKWMCF22/VKl4P9VJk80dSoX1nI1LwcEBcTA/ihjHS
+	JdKWUisU1iG/WRUU2OsbC7UIw2NHwz7f6Tp7xZ6ehpOSBiSDv/Ur0gI5kITAMCBkGp1jlVjA2IkkL
+	BhfxbnJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIWkO-00F4MZ-1M;
-	Wed, 27 Dec 2023 16:27:08 +0000
+	id 1rIWks-00F4gJ-03;
+	Wed, 27 Dec 2023 16:27:38 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIWkD-00F4HE-1u
+	id 1rIWki-00F4ZH-2g
 	for linux-mediatek@lists.infradead.org;
-	Wed, 27 Dec 2023 16:26:58 +0000
+	Wed, 27 Dec 2023 16:27:30 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1rIWjz-00059q-UX; Wed, 27 Dec 2023 17:26:43 +0100
+	id 1rIWk9-00059l-Ry; Wed, 27 Dec 2023 17:26:53 +0100
 Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1rIWjx-001tZW-KD; Wed, 27 Dec 2023 17:26:42 +0100
+	id 1rIWjw-001tZH-HS; Wed, 27 Dec 2023 17:26:41 +0100
 Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1rIWjy-001Wmx-21;
-	Wed, 27 Dec 2023 17:26:42 +0100
+	id 1rIWjx-001Wmd-1d;
+	Wed, 27 Dec 2023 17:26:41 +0100
 From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+To: Sudeep Holla <sudeep.holla@arm.com>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Daniel Baluta <daniel.baluta@nxp.com>,
 	Thierry Reding <treding@nvidia.com>,
+	Hao Ge <gehao@kylinos.cn>,
 	Rob Herring <robh@kernel.org>,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Arnd Bergmann <arnd@arndb.de>,
-	Sudeep Holla <sudeep.holla@arm.com>
+	Gabriel Somlo <somlo@cmu.edu>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Kieran Bingham <kieran.bingham@ideasonboard.com>,
+	Dinh Nguyen <dinguyen@kernel.org>,
+	=?utf-8?q?Marek_Beh=C3=BAn?= <kabel@kernel.org>,
+	Michal Simek <michal.simek@amd.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jay Buddhabhatti <jay.buddhabhatti@amd.com>,
+	Sai Krishna Potthuri <sai.krishna.potthuri@amd.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Nava kishore Manne <nava.kishore.manne@amd.com>,
+	Rajan Vaja <rajan.vaja@xilinx.com>,
+	Dhaval Shah <dhaval.r.shah@amd.com>,
+	Marek Vasut <marex@denx.de>
 Cc: kernel@pengutronix.de,
-	linux-kernel@vger.kernel.org,
+	Cristian Marussi <cristian.marussi@arm.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 05/11] firmware: mtk-adsp-ipc: Convert to platform remove callback returning void
-Date: Wed, 27 Dec 2023 17:26:29 +0100
-Message-ID: <e2ea8abb4c30190392a86cf05cecd722d0f0b493.1703693980.git.u.kleine-koenig@pengutronix.de>
+	linux-kernel@vger.kernel.org,
+	Brian Norris <briannorris@chromium.org>,
+	Julius Werner <jwerner@chromium.org>,
+	chrome-platform@lists.linux.dev,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	linux-mediatek@lists.infradead.org,
+	qemu-devel@nongnu.org,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	linux-rpi-kernel@lists.infradead.org
+Subject: [PATCH 00/11] firmware: Convert to platform remove callback returning void
+Date: Wed, 27 Dec 2023 17:26:24 +0100
+Message-ID: <cover.1703693980.git.u.kleine-koenig@pengutronix.de>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <cover.1703693980.git.u.kleine-koenig@pengutronix.de>
-References: <cover.1703693980.git.u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1902; i=u.kleine-koenig@pengutronix.de; h=from:subject:message-id; bh=a63jCU/xmx3JjQAul7+0HQjMC2XzUPEGHuetp5aEk3E=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBljFA3VZRLFHuI4OPARK9PwC54oddug682gpz+A znDmlUhrkyJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZYxQNwAKCRCPgPtYfRL+ ThSDCACWPSchgdcXQcSe1ovZmVZAWx9vNPIVAPhqu3ln3Y0yG+zsXGBC0H7gc9JaRmGlwAY+riC eSc7+8e3umCnEsXjDUEu6wJnGrWaJCNz4XQlWNzvPaZFSY+i7Mu4Ez+p6/+vcyu1KcXoXqvMFO5 67QAssIT+LYqZ/834Rieou/m7tWmsf3nBZavxgKHIqdkP+pH9gqxcaNnaFixFR89MkOfLUJ9aZH l9qeyQnZP819ihTK0OlbOu2YRAc0oB14rJ36x3WDkg+YwHzMTsBiMMubWPbCdQzfoeX27D4TvnG VKoMdv3Bb+9ECeJu3WAOA//PoFDN6f9c40u6nLxdDcFKxoD0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2285; i=u.kleine-koenig@pengutronix.de; h=from:subject:message-id; bh=tI3zkKx4Ui/NNKJl8C0bvrZtoud3+4uqGjgMG21LlTs=; b=owGbwMvMwMXY3/A7olbonx/jabUkhtSeAKNH8tevhnB8dlzNPIGlymlxs/6VfQ7Zsacbwi4eS m/jlu3vZDRmYWDkYpAVU2Sxb1yTaVUlF9m59t9lmEGsTCBTGLg4BWAiCa/Z/9cn838+oXFr/z2L FyUtR2cw+haX73S48WmTZ9FOuTgxrrTr8lYvFvFx7OX2yc6QnvUtSviR/N5ft82FOnsDUv9/tlj eskLcWs9N+PqrufauLGUqGWY6t7dqca28cfdQXvW8eTafm1bPVv/j/rpm78XrGxiCbzm0Nz68YO xYtWSa6gaNrIybLSzGNhHeZXLT1Xi9D6/vOe708zk3d33rrux1X9LsXZa8jhJnuhPyVLryz8MFO mk27O+F0mfK/qlxOduSf3JesLWJY8PtiEbdO8E/TrfNvvdeuetgsmG4TjtXXIrBqWN7Lir2hcbv 2R3tYjRPK7tZ8KNkyfbGmcUVh0wfbwlTWRz6K+jbg5pZAA==
 X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -68,8 +96,9 @@ X-SA-Exim-Mail-From: ukl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231227_082657_635233_27EC39DE 
-X-CRM114-Status: GOOD (  16.03  )
+X-CRM114-CacheID: sfid-20231227_082728_877386_EF1F314C 
+X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,55 +113,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The .remove() callback for a platform driver returns an int which makes
-many driver authors wrongly assume it's possible to do error handling by
-returning an error code. However the value returned is ignored (apart
-from emitting a warning) and this typically results in resource leaks.
+Hello,
 
-To improve here there is a quest to make the remove callback return
-void. In the first step of this quest all drivers are converted to
-.remove_new(), which already returns void. Eventually after all drivers
-are converted, .remove_new() will be renamed to .remove().
+this series converts all platform drivers below drivers/firmware that
+make use of .remove() to use .remove_new() instead.
 
-Trivially convert this driver from always returning zero in the remove
-callback to the void returning variant.
+See commit 5c5a7680e67b ("platform: Provide a remove callback that
+returns no value") for an extended explanation and the eventual goal.
+The TL;DR; is to make it harder for driver authors to leak resources
+without noticing. The drivers here get it right though and so can be
+converted trivially.
 
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
----
- drivers/firmware/mtk-adsp-ipc.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+This is merge window material. There doesn't seem to be a maintainer for
+all of drivers/firmware and I don't know how patch application works
+there usually.  All patches are pairwise independent, so they can be
+applied individually.
 
-diff --git a/drivers/firmware/mtk-adsp-ipc.c b/drivers/firmware/mtk-adsp-ipc.c
-index 85e94ddc7204..a762302978de 100644
---- a/drivers/firmware/mtk-adsp-ipc.c
-+++ b/drivers/firmware/mtk-adsp-ipc.c
-@@ -116,7 +116,7 @@ static int mtk_adsp_ipc_probe(struct platform_device *pdev)
- 	return 0;
- }
- 
--static int mtk_adsp_ipc_remove(struct platform_device *pdev)
-+static void mtk_adsp_ipc_remove(struct platform_device *pdev)
- {
- 	struct mtk_adsp_ipc *adsp_ipc = dev_get_drvdata(&pdev->dev);
- 	struct mtk_adsp_chan *adsp_chan;
-@@ -126,8 +126,6 @@ static int mtk_adsp_ipc_remove(struct platform_device *pdev)
- 		adsp_chan = &adsp_ipc->chans[i];
- 		mbox_free_channel(adsp_chan->ch);
- 	}
--
--	return 0;
- }
- 
- static struct platform_driver mtk_adsp_ipc_driver = {
-@@ -135,7 +133,7 @@ static struct platform_driver mtk_adsp_ipc_driver = {
- 		.name = "mtk-adsp-ipc",
- 	},
- 	.probe = mtk_adsp_ipc_probe,
--	.remove = mtk_adsp_ipc_remove,
-+	.remove_new = mtk_adsp_ipc_remove,
- };
- builtin_platform_driver(mtk_adsp_ipc_driver);
- 
+Best regards
+Uwe
+
+Uwe Kleine-König (11):
+  firmware: arm_scmi: Convert to platform remove callback returning void
+  firmware: arm_scpi: Convert to platform remove callback returning void
+  firmware: coreboot_table: Convert to platform remove callback returning void
+  firmware: imx-dsp: Convert to platform remove callback returning void
+  firmware: mtk-adsp-ipc: Convert to platform remove callback returning void
+  firmware: qemu_fw_cfg: Convert to platform remove callback returning void
+  firmware: raspberrypi: Convert to platform remove callback returning void
+  firmware: stratix10-rsu: Convert to platform remove callback returning void
+  firmware: stratix10-svc: Convert to platform remove callback returning void
+  firmware: turris-mox-rwtm: Convert to platform remove callback returning void
+  firmware: zynqmp: Convert to platform remove callback returning void
+
+ drivers/firmware/arm_scmi/driver.c       | 6 ++----
+ drivers/firmware/arm_scpi.c              | 6 ++----
+ drivers/firmware/google/coreboot_table.c | 5 ++---
+ drivers/firmware/imx/imx-dsp.c           | 6 ++----
+ drivers/firmware/mtk-adsp-ipc.c          | 6 ++----
+ drivers/firmware/qemu_fw_cfg.c           | 5 ++---
+ drivers/firmware/raspberrypi.c           | 6 ++----
+ drivers/firmware/stratix10-rsu.c         | 5 ++---
+ drivers/firmware/stratix10-svc.c         | 6 ++----
+ drivers/firmware/turris-mox-rwtm.c       | 6 ++----
+ drivers/firmware/xilinx/zynqmp.c         | 6 ++----
+ 11 files changed, 22 insertions(+), 41 deletions(-)
+
+base-commit: 39676dfe52331dba909c617f213fdb21015c8d10
 -- 
 2.43.0
 
