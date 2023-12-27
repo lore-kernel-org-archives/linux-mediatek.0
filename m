@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69C26C46CD2
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C30FCC46CD4
 	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Dec 2023 06:04:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5qBKHfc8i14d6XJhRnuWE5dChDSzj6DCcNgKR3axeCs=; b=JHpz83rC3tS/n8/aV9R6MmfBFT
-	XQNAVscYx8l5lWaEgQ0YSLJUfhqJq+40sJJ7Y3SKwTf0Y6R8/9OR/i5dEPSNiyJB2WDjawomAS9ls
-	qrmIrpcZdDh5qNqiHUylDvfr2RWd5KRsRcgP4x+DhDVh36J5MOw/pEcsKNuFaqfqyTJpIAySnIvVQ
-	ETZIdzRJ+DqVexuxB+o9lWc4V1yr878N8zAFeoW/dUkShJ5HU7/DT7DOPMDFnJX3TO6J/zxG3SnwC
-	MP5//EQCLbmhXozwVIXeQQ2aHxAKeredTMvFzN1pwayKd8lwLl6uIUMCKHFx/ZQwVb6hkPuECcNW5
-	OvxJr6ww==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NGljdjksTJl7cSSu9XYy7FO8kYtRZge6sNRdb6feXL4=; b=Z4jlUAnJH+/Bl3RGfQIxs4DAhA
+	0CfRroyv2I6jn1cAU+AdzAnzg5YtlALstOfVW244TfCf3dRBYjK+ngxyDfR60ReNhiYdT8kgQatRk
+	K4mj7WpXw6GMjP8Ae+KHIUy+4rqLhlx1GatLnyQy0GylhqAezOgwO6mL7co+4twL3vJj50yTzRSC5
+	9e0wTMqa2RBHUDnAAqXOQ5RpzSbvbAuuCQWqbpBr/w+r3lvhpW1Y8+XBpIDRjBlSvmpAeEWbw+pPw
+	OtfvdUceUt/QvoIDTmnHjS1L8czj4tfme5rPWprHIK7FbXUua1LJzJ/ZqWdNhQIQHnkXuZ9hfho29
+	zB0vry7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIN1O-00E1gI-1l;
-	Wed, 27 Dec 2023 06:04:02 +0000
+	id 1rIN1Q-00E1gd-2y;
+	Wed, 27 Dec 2023 06:04:04 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIN1K-00E1dw-08;
+	id 1rIN1L-00E1fN-2a;
 	Wed, 27 Dec 2023 06:04:01 +0000
-X-UUID: b41ff182a47d11eeafd70d0b34820190-20231226
+X-UUID: b794f8c6a47d11eeafd70d0b34820190-20231226
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=5qBKHfc8i14d6XJhRnuWE5dChDSzj6DCcNgKR3axeCs=;
-	b=LUHhn5xnyJcqn3ecl8vx/aLGhOo4silXeEevSTsZbkbzlQbNk/5i0W4Pmoge3AE1/U1MxSPzaGi4dyxjGnmMb7Lo4ZJVRySTFOiDFBGpqFFoD9d5d/DfqQHSl7u/bBqYXq/nNBcKypprfSjvIkBRXqHqGkWIwsoeG+4NRPcb65g=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=NGljdjksTJl7cSSu9XYy7FO8kYtRZge6sNRdb6feXL4=;
+	b=NcxIVVNS0IdJpB5IsuQktbnvfJasN0mYmtFKHPu1rBiCeDvV3SiZytfUSH5h1xgy9sEI/DdeJPzUSwFLoqeYDjmGLqSiV383PR+fR6aXS6HSJEANYRpZIGDXQsCdGu7Z1ZH+3EU7/i3F4f3o/kLEht5lz+X2d0SIUsg1WelQyIg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:656084d3-4d10-449b-94a7-d8b82a999f3d,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:5d4a9d8d-e2c0-40b0-a8fe-7c7e47299109,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-O-INFO: VERSION:1.1.35,REQID:67d4e2c8-cf35-400b-9f87-dc50b68da0e5,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-30
+X-CID-META: VersionHash:5d391d7,CLOUDID:914a9d8d-e2c0-40b0-a8fe-7c7e47299109,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
+	L:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:N
+	O,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: b41ff182a47d11eeafd70d0b34820190-20231226
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+X-UUID: b794f8c6a47d11eeafd70d0b34820190-20231226
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <chunfeng.yun@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2058172778; Tue, 26 Dec 2023 23:03:49 -0700
+	with ESMTP id 1930532562; Tue, 26 Dec 2023 23:03:55 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 27 Dec 2023 14:03:19 +0800
+ 15.2.1118.26; Wed, 27 Dec 2023 14:03:17 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 27 Dec 2023 14:03:18 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 27 Dec 2023 14:03:17 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
 	<robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -64,32 +64,29 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Conor Dooley
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Eddie Hung
 	<eddie.hung@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>
-Subject: [PATCH v4 3/3] arm64: dts: mediatek: mt8195: Add 'rx-fifo-depth' for cherry
-Date: Wed, 27 Dec 2023 14:03:16 +0800
-Message-ID: <20231227060316.8539-3-chunfeng.yun@mediatek.com>
+Subject: [PATCH v4 1/3] dt-bindings: usb: mtk-xhci: add a property for Gen1 isoc-in transfer issue
+Date: Wed, 27 Dec 2023 14:03:14 +0800
+Message-ID: <20231227060316.8539-1-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20231227060316.8539-1-chunfeng.yun@mediatek.com>
-References: <20231227060316.8539-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10-2.825800-8.000000
-X-TMASE-MatchedRID: ZzsyKKMlPmWLwgJA7qJvFEf49ONH0RaSGSqdEmeD/nUQVRHC3B6FYFfe
-	kLFvP8UVQt2470g7vecqScZQsLRFpNRvK63SVd6gQPrPw3WbUAtRnscLnNAC7BjQD3m2MCf73j3
-	TOgY19l5UK0FnzcPd0uKOmN63egZIr78SC5iivxwURSScn+QSXt0H8LFZNFG7CKFCmhdu5cWMli
-	PzJGLy1pXHFyiI0uGzANmR3/AtY5RjyzFNloJjQSJjvR2uj1AQfnRrx7yt7dn7QvrLnS2+q5yUI
-	XNmAxUvnsnNd1zv3CVpp55fZDlsr34cY/B7JqXaYZ1R7NXn0MdBmmCXcKyFFPqy+VVvqH2X
+X-TM-AS-Result: No-10--6.698500-8.000000
+X-TMASE-MatchedRID: G4NbPPbBCbo28LK855iUisp9Bgr5ONKhXxT5cg8K/td+YesuCgkiXKLs
+	GdYIe0oEWB8Rur00SOpx/Hv6BudnAqB/4ZSHyd2lsyNb+yeIRApRnscLnNAC7BjQD3m2MCf7FWo
+	Asts4LpWPqQJ9fQR1ziV2YP+J+E56aACC67qZQKpsG7r4Qh7N3DNzwULQwTBPVzOmd/bB9b6uoc
+	zUog5jKJR0/TJZAy/xoJY+2TrDFLUdpD3DKTh+QJ4CIKY/Hg3AGdQnQSTrKGPEQdG7H66TyH4gK
+	q42LRYkmKjeD7ZgQXRJ1fYQaQSqLhehi1q7el9sGHUWvrwT/1d+3BndfXUhXQ==
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10-2.825800-8.000000
+X-TMASE-Result: 10--6.698500-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: F39E914BBC51F28300BA942E2DD319AEC74CE0379EF1859D1C1E66BF5D291F672000:8
+X-TM-SNTS-SMTP: 9363BDB1CBB7952FF72435AEDE0989D1A860F3E2E01C0BACAFCA187C3CADDD0C2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231226_220358_094888_39792779 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231226_220359_842929_073CF2D7 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,43 +101,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the quirk property "rx-fifo-depth" to work around Gen1 isoc-in
-transfer issue which send out unexpected ACK even after device
-already finished the burst transfer with a short patcket, specially
-for a 4K camera device.
+For Gen1 isoc-in endpoint on controller before about SSUSB IPM v1.6.0, it
+still send out unexpected ACK after receiving a short packet in burst
+transfer, this will cause an exception on connected device, specially for
+a 4k camera.
+Add a quirk property "rx-fifo-depth" to work around this hardware issue,
+prefer to use 3k bytes;
+The side-effect is that may cause performance drop about 10%, including
+bulk transfer.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-v4:
-change property value, and put before supply
-add reviewed-by Angelo
-v3: change value according to binding
-v2: use 'rx-fifo-depth' property
+v4: change rx-fifo size in bytes
+v3: add fifo depth unit, change the value range from 0-3 to 1-4
+v2: change 'mediatek,rxfifo-depth' to 'rx-fifo-depth'
 ---
- arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+ .../devicetree/bindings/usb/mediatek,mtk-xhci.yaml    | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index dd5b89b73190..00fcde60300e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -1183,6 +1183,7 @@
- &xhci0 {
- 	status = "okay";
+diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+index e9644e333d78..9f621f2209df 100644
+--- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
++++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+@@ -124,6 +124,17 @@ properties:
+       defined in the xHCI spec on MTK's controller.
+     default: 5000
  
-+	rx-fifo-depth = <3072>;
- 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
- 	vbus-supply = <&usb_vbus>;
- };
-@@ -1190,6 +1191,7 @@
- &xhci1 {
- 	status = "okay";
- 
-+	rx-fifo-depth = <3072>;
- 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
- 	vbus-supply = <&usb_vbus>;
- };
++  rx-fifo-depth:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description:
++      It is a quirk used to work around Gen1 isoc-in endpoint transfer issue
++      that still send out unexpected ACK after device finish the burst transfer
++      with a short packet and cause an exception, specially on a 4K camera
++      device, it happens on controller before about IPM v1.6.0; the side-effect
++      is that may cause performance drop about 10%, include bulk transfer,
++      prefer to use 3k here. The size is in bytes.
++    enum: [1024, 2048, 3072, 4096]
++
+   # the following properties are only used for case 1
+   wakeup-source:
+     description: enable USB remote wakeup, see power/wakeup-source.txt
 -- 
 2.18.0
 
