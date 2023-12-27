@@ -4,81 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60178C46CD4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Dec 2023 16:01:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 868C8C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Dec 2023 16:27:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hvdkzMcPB0BnhtpyqYBsUSBabcmCryFsG0lmm846Yoc=; b=NVSbAMnhfoqFcqwidyo5EyHgf6
-	TQni5v3SNXptV/Niz7Gu2iAleGZ13eQnzesxCgh7FyUEZVD8ipnTgIp0E9a0AwcTzeVzV6E827r/3
-	tMi2BFfXzaNNvi6Pb9v5LlITf7Qgx/fswygoBPGJKqIwg0n44P7ITvRA2X6Vgh/NE2yRTzSUME2Kg
-	UCDO6Q7BfCiyjQ4JohHuF6JPY6UD1Ix1vG3/5Wh0aZaHD+9NSqI76nLjAcpqTDJ69UGKkZYmvFs8Y
-	O3MlVicautAfKbBFPuwmCCeqBpnWxfvj7hGt9b0tsIhQbU/dQc13ZrkdtD51ujQPcNc908wYR60aK
-	+8Xmak6Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ll6YGpIKic/fJIjuCuZafsLUOG8yDcOukKFLjujQHQs=; b=XTQ4W3bupG9rtrBSfGX7S/TURE
+	TvxwI51WqyR8dsp+rmaWx4AbFvJE94eRl1GzMQ4H3s+XqoXs9ma1LD7sYmmL9HozPyOrRFOn8Y/8Y
+	HPpcY5WJ5CPk7ePRGhaA2jaolFbZ+jgSBRbjTVHqmEj+oJo1oyryra+ZHIRNRRPckMGUVDLNOvOof
+	WL3+Pdmrimpq4ct9SEJtTCZrIa7NfoLKU/1PGgyQrYJJUcMzj5WYl2jzpgSJXzdg1uo+2PthSCRFy
+	JXeGPP0yK7ZGu1o+ka7W70FTJ1/lR/6NUmnogZqxCLz/fbR/g/r/RCCSnqJOj+WFn5MRgLwygTu4y
+	S5I3u3lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIWLx-00F0YD-0V;
-	Wed, 27 Dec 2023 16:01:53 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1rIWkO-00F4MZ-1M;
+	Wed, 27 Dec 2023 16:27:08 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIWLt-00F0X1-3C;
-	Wed, 27 Dec 2023 16:01:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1703692910; x=1735228910;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=qIi6/FGG1XhIsYOH+tdaJ+Cr8i/oTUD6GGfo2SnNl+w=;
-  b=gbGIjuYK3Y2pP7Rm8uX3/bS4hqUid5SLYprrN16P7NxWbOtHpesY5a4b
-   1gbNxO9fvFYPNlRQcrseNyPSq61XfLaZ4HISFeM5oKGcRHxTpiZDf5o6w
-   BZqGXMwJaX5sng/8JXbDnMa7l/XB1LR03reih4ZEHz8w8Q0Kb7ayDk3Cl
-   7mMTYmHcxevCOMrljYC2jL7yi1ZrJvq2bwNO6Bm+D8igwuUps0vzQ8jXo
-   uCusMfrCr48Ea0cUyXLCZC8fPBTcBVgjw/Wvu4R4kV/hMhrY+49ANUd2t
-   ZIG58SaELucQ8Wu02+bt6QeP3yfTTHIQend5Vmozf8RAIVLWO9y9EkXuS
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10936"; a="3745325"
-X-IronPort-AV: E=Sophos;i="6.04,309,1695711600"; 
-   d="scan'208";a="3745325"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Dec 2023 08:01:48 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10936"; a="951530427"
-X-IronPort-AV: E=Sophos;i="6.04,309,1695711600"; 
-   d="scan'208";a="951530427"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga005.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Dec 2023 08:01:43 -0800
-Received: from andy by smile.fi.intel.com with local (Exim 4.97)
-	(envelope-from <andriy.shevchenko@intel.com>)
-	id 1rIWLk-00000009SPM-3mSN;
-	Wed, 27 Dec 2023 18:01:40 +0200
-Date: Wed, 27 Dec 2023 18:01:40 +0200
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Mark Hasemeyer <markhas@chromium.org>
-Cc: LKML <linux-kernel@vger.kernel.org>, chrome-platform@lists.linux.dev,
-	cros-qcom-dts-watchers@chromium.org, devicetree@vger.kernel.org,
-	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, linux-gpio@vger.kernel.org,
-	linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v2 00/22] Improve IRQ wake capability reporting and
- update the cros_ec driver to use it
-Message-ID: <ZYxKZD4IMJH_QjQW@smile.fi.intel.com>
-References: <20231220235459.2965548-1-markhas@chromium.org>
- <ZYRAuY1LGdD8_u5K@smile.fi.intel.com>
- <CANg-bXDw+bYNTu-HFaNAPb4e+_oKt2ExR6PehWR_==vpboKGaw@mail.gmail.com>
+	id 1rIWkD-00F4HE-1u
+	for linux-mediatek@lists.infradead.org;
+	Wed, 27 Dec 2023 16:26:58 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rIWjz-00059q-UX; Wed, 27 Dec 2023 17:26:43 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rIWjx-001tZW-KD; Wed, 27 Dec 2023 17:26:42 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rIWjy-001Wmx-21;
+	Wed, 27 Dec 2023 17:26:42 +0100
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Thierry Reding <treding@nvidia.com>,
+	Rob Herring <robh@kernel.org>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Sudeep Holla <sudeep.holla@arm.com>
+Cc: kernel@pengutronix.de,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 05/11] firmware: mtk-adsp-ipc: Convert to platform remove callback returning void
+Date: Wed, 27 Dec 2023 17:26:29 +0100
+Message-ID: <e2ea8abb4c30190392a86cf05cecd722d0f0b493.1703693980.git.u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <cover.1703693980.git.u.kleine-koenig@pengutronix.de>
+References: <cover.1703693980.git.u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CANg-bXDw+bYNTu-HFaNAPb4e+_oKt2ExR6PehWR_==vpboKGaw@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1902; i=u.kleine-koenig@pengutronix.de; h=from:subject:message-id; bh=a63jCU/xmx3JjQAul7+0HQjMC2XzUPEGHuetp5aEk3E=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBljFA3VZRLFHuI4OPARK9PwC54oddug682gpz+A znDmlUhrkyJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZYxQNwAKCRCPgPtYfRL+ ThSDCACWPSchgdcXQcSe1ovZmVZAWx9vNPIVAPhqu3ln3Y0yG+zsXGBC0H7gc9JaRmGlwAY+riC eSc7+8e3umCnEsXjDUEu6wJnGrWaJCNz4XQlWNzvPaZFSY+i7Mu4Ez+p6/+vcyu1KcXoXqvMFO5 67QAssIT+LYqZ/834Rieou/m7tWmsf3nBZavxgKHIqdkP+pH9gqxcaNnaFixFR89MkOfLUJ9aZH l9qeyQnZP819ihTK0OlbOu2YRAc0oB14rJ36x3WDkg+YwHzMTsBiMMubWPbCdQzfoeX27D4TvnG VKoMdv3Bb+9ECeJu3WAOA//PoFDN6f9c40u6nLxdDcFKxoD0
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231227_080150_037751_A8D4A71F 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231227_082657_635233_27EC39DE 
+X-CRM114-Status: GOOD (  16.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,19 +84,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 22, 2023 at 03:30:43PM -0700, Mark Hasemeyer wrote:
-> > Just wondering if you used --histogram diff algo when preparing patches.
-> 
-> Not knowingly. I use patman which uses 'git format-patch' under the
-> covers with some added options:
-> https://github.com/siemens/u-boot/blob/master/tools/patman/gitutil.py#L308
+The .remove() callback for a platform driver returns an int which makes
+many driver authors wrongly assume it's possible to do error handling by
+returning an error code. However the value returned is ignored (apart
+from emitting a warning) and this typically results in resource leaks.
 
-Add a configuration into your ~/.gitconfig (or local for the project),
-it really makes the difference.
+To improve here there is a quest to make the remove callback return
+void. In the first step of this quest all drivers are converted to
+.remove_new(), which already returns void. Eventually after all drivers
+are converted, .remove_new() will be renamed to .remove().
 
+Trivially convert this driver from always returning zero in the remove
+callback to the void returning variant.
+
+Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+---
+ drivers/firmware/mtk-adsp-ipc.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/firmware/mtk-adsp-ipc.c b/drivers/firmware/mtk-adsp-ipc.c
+index 85e94ddc7204..a762302978de 100644
+--- a/drivers/firmware/mtk-adsp-ipc.c
++++ b/drivers/firmware/mtk-adsp-ipc.c
+@@ -116,7 +116,7 @@ static int mtk_adsp_ipc_probe(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static int mtk_adsp_ipc_remove(struct platform_device *pdev)
++static void mtk_adsp_ipc_remove(struct platform_device *pdev)
+ {
+ 	struct mtk_adsp_ipc *adsp_ipc = dev_get_drvdata(&pdev->dev);
+ 	struct mtk_adsp_chan *adsp_chan;
+@@ -126,8 +126,6 @@ static int mtk_adsp_ipc_remove(struct platform_device *pdev)
+ 		adsp_chan = &adsp_ipc->chans[i];
+ 		mbox_free_channel(adsp_chan->ch);
+ 	}
+-
+-	return 0;
+ }
+ 
+ static struct platform_driver mtk_adsp_ipc_driver = {
+@@ -135,7 +133,7 @@ static struct platform_driver mtk_adsp_ipc_driver = {
+ 		.name = "mtk-adsp-ipc",
+ 	},
+ 	.probe = mtk_adsp_ipc_probe,
+-	.remove = mtk_adsp_ipc_remove,
++	.remove_new = mtk_adsp_ipc_remove,
+ };
+ builtin_platform_driver(mtk_adsp_ipc_driver);
+ 
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.43.0
 
 
