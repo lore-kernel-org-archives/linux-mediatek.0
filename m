@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E8EAC3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Dec 2023 13:57:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81CC5C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Dec 2023 15:01:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5kG9AXeTl19f4EKHdYTi1yOfVIk3bG1ak9XH8Lo3CoA=; b=UVs4MpnUHKYCIBo/P4vmnDdPSP
-	DCzXZwoNcw0xlWqHRWr6I/2GtDAwOSIR1WQOSWxFOVg9MVaSMGkofbXZlskkYVDksoCwPXrAocioF
-	Tqu2kxen1/RSs67Sq+1xJMORe+DWvWIc8VGOMPbRp6indq2j5Wh/b98a/Bi6YBhOkyXfu9kEJfJYZ
-	lJ3G31Ge+F9DYnRxYB2yMnH2vSopr4/yFu2CoLOjqvY8uD7yhQcgC+LZk20+0Ef/0kvmX6QS42tBj
-	nLpPlW2i7LZ8TF0eHhKSlNR8dC6IqcZ74y0vHqfrMGZN3DVXJaXm4fGW/OvaUC2Vda4oC18Sovcug
-	p6mkUsqA==;
+	bh=yN7wqmVVQSGvfvwdlEboWfqvlCSJLJg/xFVPiX85kaA=; b=ozwMSzFhcmUOqAdoK+ZTErxkQd
+	VRrOb6yxo7dVGfvSjpZZe18EJlD+AKeLuUoTLkhIYBVRlQtxxeo6mwL7lkwRI5HELiK3b6T17zFuQ
+	sc40gWIOVnYUbqnhSF8wYHTLdxXKPYXC9Bfrhlg2ndkTG1ocyfM4g9gQlBx+FI2xoHbsNE4e3p7Wo
+	UHFwJqrawhOvlJhaK9ZpA4Jog7gNsDhEohcN6rY/oEv20G8oLf2/H0AAcvbzbnj76igbkZilQJaG7
+	JUMbRLEj2YwVWRvb2yNwEq3b4bGX7MDkXCdfONI+vca19knpV06RpcatGHROx7E5wMd4VNwZAIDBg
+	YVoX4r0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIqsi-00Gy9i-1V;
-	Thu, 28 Dec 2023 13:57:04 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1rIrtM-00H1qg-1w;
+	Thu, 28 Dec 2023 15:01:48 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIqsg-00Gy9K-0h
-	for linux-mediatek@lists.infradead.org;
-	Thu, 28 Dec 2023 13:57:03 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 29931B80DF4;
-	Thu, 28 Dec 2023 13:57:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC8A8C433C9;
-	Thu, 28 Dec 2023 13:56:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1703771818;
-	bh=hATKOzQ3Q86ZtUqOoVn7GJyRPGck95qMw+6ADEnabXE=;
+	id 1rIrtI-00H1qC-2R;
+	Thu, 28 Dec 2023 15:01:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1703775696;
+	bh=f5uBxFja9DMkfap4ZKntPYZpZ4ZCc3Cy9poJ6+NQsxc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YwhCzhasK6hswS3nE4O0iXFkWECzy6V4t+bZSD8boruVp/yREufAWt5WF50OyJRbE
-	 tXiJTrQsI9yo469f2vD61Qhd3KubX7UGWbpkeYcaVF9rjMmwfvlymkzuHV4CneYSCE
-	 XnnC0G62dLcaPzCmMgIfVm6KdEPpWoeRHBJ3NEo5JQACC8s8je/k8/OtQoq6Tmtq5t
-	 e1LyAJCStWkOP4enFH7igkYrHx/v6BzUWonwJl8MH/AwiPzHBbJSCsIwjJMwZFSAHW
-	 QZnsOn1zARfkRTN7lZajwZXp4pQPcta8dMUV47Td0ywpieRXtKdJMQCdfuUi0drYta
-	 qrvFRYh2RTTnA==
-Date: Thu, 28 Dec 2023 14:56:52 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-Cc: nbd@nbd.name, deren.wu@mediatek.com, Sean.Wang@mediatek.com,
-	Soul.Huang@mediatek.com, Leon.Yen@mediatek.com,
-	Eric-SY.Chang@mediatek.com, km.lin@mediatek.com,
-	robin.chiu@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
-	Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com,
-	Shayne.Chen@mediatek.com, linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 04/10] wifi: mt76: mt7925: fix wmm queue mapping
-Message-ID: <ZY1-pG8isKAXBhqa@lore-rh-laptop>
-References: <20231228090749.15191-1-mingyen.hsieh@mediatek.com>
- <20231228090749.15191-5-mingyen.hsieh@mediatek.com>
+	b=Xkhfcba5stsYFFBMs8uvuCqj7wU29mNZ9esC/bGRgAABwJ4zVcoYhfdAzJOtf0Hft
+	 mDdPr/ePtvE/595TqtvTVl4nj+tg9bpDpoN0O2EcUblUiVf7PLx9EGaxZ9YlJy25WZ
+	 Kp5QSGeC1PkiYUXgAlL7fFoZ0+gVFQC2z+LMEY6c+49eQSPATck/uFUGdjOuTS/3/W
+	 I5WrwvxAsHJkSCapDLqCN8DuSmYa/D/97DqVihNtloLdt1doP4ZCXN+KStLWaNiHai
+	 FBVRO74QUSTfoIQGWzRvH8yr+AI7FpiIyCVAOpEr4u8DzIhx0U/fbBPhZIRhVQz+/N
+	 AUaTRHkWTT/KA==
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A87F537813C4;
+	Thu, 28 Dec 2023 15:01:32 +0000 (UTC)
+Date: Thu, 28 Dec 2023 12:00:59 -0300
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
+	lpieralisi@kernel.org, kw@linux.com, robh@kernel.org,
+	bhelgaas@google.com, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 2/2] PCI: mediatek-gen3: Assert MAC reset only if PHY
+ reset also present
+Message-ID: <d8cfb804-e47a-471c-8bc0-e974ee045655@notapiano>
+References: <20230504113509.184633-1-angelogioacchino.delregno@collabora.com>
+ <20230504113509.184633-3-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="WQ30o7v/EYClCnAa"
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20231228090749.15191-5-mingyen.hsieh@mediatek.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230504113509.184633-3-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231228_055702_566901_62844E5F 
-X-CRM114-Status: GOOD (  15.64  )
+X-CRM114-CacheID: sfid-20231228_070145_014188_93446DFD 
+X-CRM114-Status: GOOD (  16.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,101 +78,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, May 04, 2023 at 01:35:09PM +0200, AngeloGioacchino Del Regno wrote:
+> Some SoCs have two PCI-Express controllers: in the case of MT8195,
+> one of them is using a dedicated PHY, but the other uses a combo PHY
+> that is shared with USB and in that case the PHY cannot be reset
+> from the PCIe driver, or USB functionality will be unable to resume.
+> 
+> Resetting the PCIe MAC without also resetting the PHY will result in
+> a full system lockup at PCIe resume time and the only option to
+> resume operation is to hard reboot the system (with a PMIC cut-off).
+> 
+> To resolve this issue, check if we've got both a PHY and a MAC reset
+> and, if not, never assert resets at PM suspend time: in that case,
+> the link is still getting powered down as both the clocks and the
+> power domains will go down anyway.
+> 
+> Fixes: d537dc125f07 ("PCI: mediatek-gen3: Add system PM support")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
---WQ30o7v/EYClCnAa
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Hi Angelo,
 
-> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
->=20
-> Firmware uses access class index (ACI) for wmm parameters update,
-> so convert mac80211 queue to ACI in mt7925_conf_tx().
->=20
-> Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for =
-mt7925 chips")
-> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-> ---
->  .../net/wireless/mediatek/mt76/mt7925/main.c  | 21 ++++++++++++++++++-
->  .../net/wireless/mediatek/mt76/mt7925/mcu.c   |  2 +-
->  2 files changed, 21 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/n=
-et/wireless/mediatek/mt76/mt7925/main.c
-> index a080df58120f..b832dd8adee5 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> @@ -1273,6 +1273,25 @@ mt7925_channel_switch_beacon(struct ieee80211_hw *=
-hw,
->  	mt792x_mutex_release(dev);
->  }
-> =20
-> +static int
-> +mt7925_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-> +	       unsigned int link_id, u16 queue,
-> +	       const struct ieee80211_tx_queue_params *params)
-> +{
-> +	struct mt792x_vif *mvif =3D (struct mt792x_vif *)vif->drv_priv;
-> +	const u8 mq_to_aci[] =3D {
+It seems this patch was forgotten but it's still very much needed. As you
+describe above, the Tomato Chromebook (MT8195-based) is currently unable to
+resume from suspend due to this issue. Upon resume, the following error is
+printed, and the system hangs:
 
-nit: static const here
+[   67.018281] mtk-pcie-gen3 112f8000.pcie: PCIe link down, current LTSSM state: detect.quiet (0x0)
+[   67.027162] mtk-pcie-gen3 112f8000.pcie: PM: dpm_run_callback(): genpd_resume_noirq+0x0/0x24 returns -110
+[   67.036791] mtk-pcie-gen3 112f8000.pcie: PM: failed to resume noirq: error -110
 
-Regards,
-Lorenzo
+And further investigation showed that all PCIe registers return 0x0 when read in
+this situation.
 
-> +		    [IEEE80211_AC_VO] =3D 3,
-> +		    [IEEE80211_AC_VI] =3D 2,
-> +		    [IEEE80211_AC_BE] =3D 0,
-> +		    [IEEE80211_AC_BK] =3D 1,
-> +	};
-> +
-> +	/* firmware uses access class index */
-> +	mvif->queue_params[mq_to_aci[queue]] =3D *params;
-> +
-> +	return 0;
-> +}
-> +
->  static int
->  mt7925_start_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
->  		struct ieee80211_bss_conf *link_conf)
-> @@ -1396,7 +1415,7 @@ const struct ieee80211_ops mt7925_ops =3D {
->  	.add_interface =3D mt7925_add_interface,
->  	.remove_interface =3D mt792x_remove_interface,
->  	.config =3D mt7925_config,
-> -	.conf_tx =3D mt792x_conf_tx,
-> +	.conf_tx =3D mt7925_conf_tx,
->  	.configure_filter =3D mt7925_configure_filter,
->  	.bss_info_changed =3D mt7925_bss_info_changed,
->  	.start_ap =3D mt7925_start_ap,
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7925/mcu.c
-> index 4811fccbe30e..0299045b4b83 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> @@ -895,7 +895,7 @@ int mt7925_mcu_set_tx(struct mt792x_dev *dev, struct =
-ieee80211_vif *vif)
-> =20
->  		e =3D (struct edca *)tlv;
->  		e->set =3D WMM_PARAM_SET;
-> -		e->queue =3D ac + mvif->mt76.wmm_idx * MT76_CONNAC_MAX_WMM_SETS;
-> +		e->queue =3D ac;
->  		e->aifs =3D q->aifs;
->  		e->txop =3D cpu_to_le16(q->txop);
-> =20
-> --=20
-> 2.18.0
->=20
+Commenting out the MAC reset in the PCIe DT node fixes the issue: the PCIe
+registers can be read correctly upon resume and resume proceeds succesfully.
+Your patch here essentially does the same as not providing the MAC reset, with
+the benefit of us still being able to describe the reset in DT and thus having a
+more complete HW description.
 
---WQ30o7v/EYClCnAa
-Content-Type: application/pgp-signature; name="signature.asc"
+But this patch no longer applies, so please rebase it so we can get working
+suspend/resume on MT8195-Tomato :).
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZY1+oQAKCRA6cBh0uS2t
-rPj8AP0Qg+6JBTjCMzdcyWCdxF9WJUoD8KX46+BDiNcsAwtWfwD9GQOsR6uC8i+V
-DBdzmKvn6Mg5rijo8s1SO00vDUv96Ak=
-=GFFC
------END PGP SIGNATURE-----
-
---WQ30o7v/EYClCnAa--
+Thanks,
+Nícolas
 
