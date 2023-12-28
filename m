@@ -4,66 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81CC5C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Dec 2023 15:01:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1D84C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Dec 2023 16:58:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yN7wqmVVQSGvfvwdlEboWfqvlCSJLJg/xFVPiX85kaA=; b=ozwMSzFhcmUOqAdoK+ZTErxkQd
-	VRrOb6yxo7dVGfvSjpZZe18EJlD+AKeLuUoTLkhIYBVRlQtxxeo6mwL7lkwRI5HELiK3b6T17zFuQ
-	sc40gWIOVnYUbqnhSF8wYHTLdxXKPYXC9Bfrhlg2ndkTG1ocyfM4g9gQlBx+FI2xoHbsNE4e3p7Wo
-	UHFwJqrawhOvlJhaK9ZpA4Jog7gNsDhEohcN6rY/oEv20G8oLf2/H0AAcvbzbnj76igbkZilQJaG7
-	JUMbRLEj2YwVWRvb2yNwEq3b4bGX7MDkXCdfONI+vca19knpV06RpcatGHROx7E5wMd4VNwZAIDBg
-	YVoX4r0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iLzd7A9jFskmhen4DUM2XT5CFAIISUlx1M90s2C0fRs=; b=THHLsV+huseXJgS8bZwlTJThm2
+	u5lQEdEDiwhOc4IeIMe7x9v3PZ3+mt2Y0d596W6Eody/5AMw7ZXRR2W4Bt0AbDl4ReGMPDpZLakdF
+	enx0THD5+cJBczgOrQdq0SJFZnhn559Gud9i+P5vSpFBlQUKtENUel2hEpFNjLjDlm6GFF6UNVO52
+	opBkqLW1P1yH8oK1HRkOe1WVdYPbmis4U6mIIJKiPRzxuya5sl2HtYjAPG07BATN2aaoEQrFee6nu
+	F0WeIbKKgD9DteMXHv/OQvmSxMwGnqK/QJqGptd1ghhYHQr9N0HGIRMSdzXhggvZYaxBAd4oy+s8Z
+	7pHu5lBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIrtM-00H1qg-1w;
-	Thu, 28 Dec 2023 15:01:48 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rItiJ-00HAmM-24;
+	Thu, 28 Dec 2023 16:58:31 +0000
+Received: from relay3-d.mail.gandi.net ([2001:4b98:dc4:8::223])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIrtI-00H1qC-2R;
-	Thu, 28 Dec 2023 15:01:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1703775696;
-	bh=f5uBxFja9DMkfap4ZKntPYZpZ4ZCc3Cy9poJ6+NQsxc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Xkhfcba5stsYFFBMs8uvuCqj7wU29mNZ9esC/bGRgAABwJ4zVcoYhfdAzJOtf0Hft
-	 mDdPr/ePtvE/595TqtvTVl4nj+tg9bpDpoN0O2EcUblUiVf7PLx9EGaxZ9YlJy25WZ
-	 Kp5QSGeC1PkiYUXgAlL7fFoZ0+gVFQC2z+LMEY6c+49eQSPATck/uFUGdjOuTS/3/W
-	 I5WrwvxAsHJkSCapDLqCN8DuSmYa/D/97DqVihNtloLdt1doP4ZCXN+KStLWaNiHai
-	 FBVRO74QUSTfoIQGWzRvH8yr+AI7FpiIyCVAOpEr4u8DzIhx0U/fbBPhZIRhVQz+/N
-	 AUaTRHkWTT/KA==
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A87F537813C4;
-	Thu, 28 Dec 2023 15:01:32 +0000 (UTC)
-Date: Thu, 28 Dec 2023 12:00:59 -0300
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
-	lpieralisi@kernel.org, kw@linux.com, robh@kernel.org,
-	bhelgaas@google.com, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 2/2] PCI: mediatek-gen3: Assert MAC reset only if PHY
- reset also present
-Message-ID: <d8cfb804-e47a-471c-8bc0-e974ee045655@notapiano>
-References: <20230504113509.184633-1-angelogioacchino.delregno@collabora.com>
- <20230504113509.184633-3-angelogioacchino.delregno@collabora.com>
+	id 1rItiF-00HAjX-1C;
+	Thu, 28 Dec 2023 16:58:29 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 40D4660003;
+	Thu, 28 Dec 2023 16:58:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1703782701;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=iLzd7A9jFskmhen4DUM2XT5CFAIISUlx1M90s2C0fRs=;
+	b=g4obSGsGdqga49bgW8wAunpOtYZ0THRFsYWaK4w7Af0B0xPCc90zQ+86HdcMGVvPoU7I6N
+	JGcMDWFjCwKDXP0yaOMFncICV1yeNYsgLN2sQ7kT/0RgBZE8XZiabUaGSXvAO6+4InerMj
+	8GZlnaSpqzmhSxJgexjcgeXJUNgJlCm7ukiB0jp4wY3c64hVw8JXZ1raAnyFONxmba3ZkP
+	MzawQwY8euzM3riMX9gGKIe7QL6Lhtteg/Zaxj9+D3UV9UdVUZJ43MTP4+khVGmvU8f5wC
+	gF08+DBfiPO1pnR7eKy9mk2nGHJMIUYxHZnKZzSsngDLFfzfBI9zHfmTkMb2ZA==
+Message-ID: <d2a7cc7e-bb27-472f-8921-5579a894c71d@arinc9.com>
+Date: Thu, 28 Dec 2023 19:58:13 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next] net: dsa: mt7530: register OF node for internal
+ MDIO bus
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Daniel Golle <daniel@makrotopia.org>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ David Bauer <mail@david-bauer.net>, mithat.guner@xeront.com,
+ erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20231220173539.59071-1-arinc.unal@arinc9.com>
+ <20231220173539.59071-1-arinc.unal@arinc9.com>
+ <20231221151607.ujobhh4aet4obxdz@skbuf>
+ <6600c6b1-2230-4963-940c-8b95a01750fd@arinc9.com>
+ <20231227191154.6jkqdlqdxciidpfw@skbuf>
+ <bdbe24b2-30f6-48fa-b6eb-a1ae3afe9076@arinc9.com>
+ <20231227200217.kdltxpmhvlp6z4cd@skbuf>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20231227200217.kdltxpmhvlp6z4cd@skbuf>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230504113509.184633-3-angelogioacchino.delregno@collabora.com>
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231228_070145_014188_93446DFD 
-X-CRM114-Status: GOOD (  16.21  )
+X-CRM114-CacheID: sfid-20231228_085827_728164_7C6F3ADB 
+X-CRM114-Status: GOOD (  24.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,47 +89,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 04, 2023 at 01:35:09PM +0200, AngeloGioacchino Del Regno wrote:
-> Some SoCs have two PCI-Express controllers: in the case of MT8195,
-> one of them is using a dedicated PHY, but the other uses a combo PHY
-> that is shared with USB and in that case the PHY cannot be reset
-> from the PCIe driver, or USB functionality will be unable to resume.
+On 27.12.2023 23:02, Vladimir Oltean wrote:
+> On Wed, Dec 27, 2023 at 10:51:08PM +0300, Arınç ÜNAL wrote:
+>> I didn't realise ds->user_mii_bus is also used to store irq mapping for
+>> each PHY.
 > 
-> Resetting the PCIe MAC without also resetting the PHY will result in
-> a full system lockup at PCIe resume time and the only option to
-> resume operation is to hard reboot the system (with a PMIC cut-off).
+> It needs to, if the MDIO bus does not have an OF description through
+> which PHYs can have an 'interrupts' property. But if there is an OF
+> description for the MDIO bus and the PHYs, I think it is strange to
+> expect PHYs to have interrupts if they aren't described in OF.
 > 
-> To resolve this issue, check if we've got both a PHY and a MAC reset
-> and, if not, never assert resets at PM suspend time: in that case,
-> the link is still getting powered down as both the clocks and the
-> power domains will go down anyway.
+>> Should we agree that user_mii_bus is needed for all cases or make
+>> another way to store the irq mappings?
 > 
-> Fixes: d537dc125f07 ("PCI: mediatek-gen3: Add system PM support")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> I looked at the upstream device trees:
+> - users of arch/mips/boot/dts/ralink/mt7621.dtsi
+> - arch/arm/boot/dts/mediatek/mt7623n-bananapi-bpi-r2.dts
+> - arch/arm/boot/dts/mediatek/mt7623n-rfb-emmc.dts
+> - arch/arm/boot/dts/mediatek/mt7623a.dtsi
+> - arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+> - arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+> - arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> - arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+> 
+> and without exception, none of these have the MDIO bus described in OF.
+> I'm not sure about other device trees. But it may well be that the
+> situation where "MDIO buses present in OF need an IRQ mapping for their
+> PHYs" does not need to be handled.
 
-Hi Angelo,
+As Daniel stated on a previous submission of this patch, being able to
+reference the PHYs on the switch MDIO bus is mandatory on MT7988 as
+calibration data from NVMEM for each PHY is required, so defining the MDIO
+bus is required to support MT7988. Therefore, we should support interrupts
+on device trees with the switch MDIO bus defined.
 
-It seems this patch was forgotten but it's still very much needed. As you
-describe above, the Tomato Chromebook (MT8195-based) is currently unable to
-resume from suspend due to this issue. Upon resume, the following error is
-printed, and the system hangs:
+The implementation below follows this logic:
 
-[   67.018281] mtk-pcie-gen3 112f8000.pcie: PCIe link down, current LTSSM state: detect.quiet (0x0)
-[   67.027162] mtk-pcie-gen3 112f8000.pcie: PM: dpm_run_callback(): genpd_resume_noirq+0x0/0x24 returns -110
-[   67.036791] mtk-pcie-gen3 112f8000.pcie: PM: failed to resume noirq: error -110
+No switch MDIO bus defined: Register the MDIO bus, set the interrupts for
+PHYs if "interrupt-controller" is defined at the switch node.
 
-And further investigation showed that all PCIe registers return 0x0 when read in
-this situation.
+Switch MDIO bus defined: Register the MDIO bus, set the interrupts for PHYs
+if ["interrupt-controller" is defined at the switch node and "interrupts"
+is defined at the PHY nodes under the switch MDIO bus node].
 
-Commenting out the MAC reset in the PCIe DT node fixes the issue: the PCIe
-registers can be read correctly upon resume and resume proceeds succesfully.
-Your patch here essentially does the same as not providing the MAC reset, with
-the benefit of us still being able to describe the reset in DT and thus having a
-more complete HW description.
+I think this approach fits your description so I'd like to agree that this
+should be the way for all DSA subdrivers. Please let me know what you
+think.
 
-But this patch no longer applies, so please rebase it so we can get working
-suspend/resume on MT8195-Tomato :).
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 391c4dbdff42..bbd230a73ead 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2155,15 +2155,21 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
+  {
+  	struct dsa_switch *ds = priv->ds;
+  	struct device *dev = priv->dev;
++	struct device_node *np, *mnp;
+  	struct mii_bus *bus;
+  	static int idx;
+  	int ret;
+  
++	np = priv->dev->of_node;
++	mnp = of_get_child_by_name(np, "mdio");
++
+  	bus = devm_mdiobus_alloc(dev);
+  	if (!bus)
+  		return -ENOMEM;
+  
+-	ds->user_mii_bus = bus;
++	if (mnp == NULL)
++		ds->user_mii_bus = bus;
++
+  	bus->priv = priv;
+  	bus->name = KBUILD_MODNAME "-mii";
+  	snprintf(bus->id, MII_BUS_ID_SIZE, KBUILD_MODNAME "-%d", idx++);
+@@ -2174,10 +2180,11 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
+  	bus->parent = dev;
+  	bus->phy_mask = ~ds->phys_mii_mask;
+  
+-	if (priv->irq)
++	if (priv->irq && mnp == NULL)
+  		mt7530_setup_mdio_irq(priv);
+  
+-	ret = devm_mdiobus_register(dev, bus);
++	ret = devm_of_mdiobus_register(dev, bus, mnp);
++	of_node_put(mnp);
+  	if (ret) {
+  		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
+  		if (priv->irq)
 
-Thanks,
-N�colas
+With this device tree:
+
+switch {
+	interrupt-controller;
+}
+
+[    1.420534] mt7530-mdio mdio-bus:1f lan1 (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=17)
+[    1.433224] mt7530-mdio mdio-bus:1f lan2 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7530 PHY] (irq=18)
+[    1.445338] mt7530-mdio mdio-bus:1f lan3 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7530 PHY] (irq=19)
+[    1.457472] mt7530-mdio mdio-bus:1f lan4 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7530 PHY] (irq=20)
+[    1.469587] mt7530-mdio mdio-bus:1f wan (uninitialized): PHY [mt7530-0:04] driver [MediaTek MT7530 PHY] (irq=21)
+
+With this device tree:
+
+switch {
+	interrupt-controller;
+
+	mdio {
+		phy {
+			reg = <0>;
+		}
+	}
+}
+
+[    1.413101] mt7530-mdio mdio-bus:1f lan1 (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=POLL)
+[    1.429954] mt7530-mdio mdio-bus:1f lan2 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7530 PHY] (irq=POLL)
+[    1.443704] mt7530-mdio mdio-bus:1f lan3 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7530 PHY] (irq=POLL)
+[    1.455876] mt7530-mdio mdio-bus:1f lan4 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7530 PHY] (irq=POLL)
+[    1.468079] mt7530-mdio mdio-bus:1f wan (uninitialized): PHY [mt7530-0:04] driver [MediaTek MT7530 PHY] (irq=POLL)
+
+With this device tree:
+
+switch {
+	interrupt-controller;
+
+	mdio {
+		phy {
+			reg = <0>;
+			interrupts = <0>;
+		}
+	}
+}
+
+[    1.420534] mt7530-mdio mdio-bus:1f lan1 (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=17)
+[    1.433224] mt7530-mdio mdio-bus:1f lan2 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7530 PHY] (irq=18)
+[    1.445338] mt7530-mdio mdio-bus:1f lan3 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7530 PHY] (irq=19)
+[    1.457472] mt7530-mdio mdio-bus:1f lan4 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7530 PHY] (irq=20)
+[    1.469587] mt7530-mdio mdio-bus:1f wan (uninitialized): PHY [mt7530-0:04] driver [MediaTek MT7530 PHY] (irq=21)
+
+Arınç
 
