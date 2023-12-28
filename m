@@ -4,73 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F5ADC3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Dec 2023 11:33:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E8EAC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Dec 2023 13:57:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W653f3pVQL5Ic+1C+7POVMvYSp9qVH87u7uaN4LFloI=; b=BU1R1Ugs1ZbK6QVK7bPsx5HuPF
-	TzyRMMi0pzefq3W4EsSoOCZQiZe5nA7XHONiiOtEV0OR/GOYddXdN/VMX9sIMod8/+Wu94AK3Q3qx
-	jGWT1QPPZOWGNRfTk4EJBMSAwEWPeQkTOXQuGzTVWujadeNF5+xjzW6CXotwrfpgRf7CAHKO7cA5J
-	naO05egB0urInpvXGl9TJSbgP6JpkGV5pChUKQApR2CHQgZllrc8OzEGCDUE73xm7UZ2CPi4M6h4Y
-	VdY34wEOS+q/f7oERtYp3U0SqQFngKPJzo3syPXuwAJ//+NUJivBGpAdHkhExi3ow5sGl7J/KNDI2
-	huy+jWmw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5kG9AXeTl19f4EKHdYTi1yOfVIk3bG1ak9XH8Lo3CoA=; b=UVs4MpnUHKYCIBo/P4vmnDdPSP
+	DCzXZwoNcw0xlWqHRWr6I/2GtDAwOSIR1WQOSWxFOVg9MVaSMGkofbXZlskkYVDksoCwPXrAocioF
+	Tqu2kxen1/RSs67Sq+1xJMORe+DWvWIc8VGOMPbRp6indq2j5Wh/b98a/Bi6YBhOkyXfu9kEJfJYZ
+	lJ3G31Ge+F9DYnRxYB2yMnH2vSopr4/yFu2CoLOjqvY8uD7yhQcgC+LZk20+0Ef/0kvmX6QS42tBj
+	nLpPlW2i7LZ8TF0eHhKSlNR8dC6IqcZ74y0vHqfrMGZN3DVXJaXm4fGW/OvaUC2Vda4oC18Sovcug
+	p6mkUsqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIodx-00GgEt-2a;
-	Thu, 28 Dec 2023 11:33:41 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rIqsi-00Gy9i-1V;
+	Thu, 28 Dec 2023 13:57:04 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIodL-00Gfqg-1M;
-	Thu, 28 Dec 2023 11:33:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1703763182;
-	bh=37Z5+7S5t846U9B0A0dcCmQr8H0ZxSimQ6IOeUd6EuQ=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=1z0cOoyTvc9pTmCrf9DWg7bgLlojEZ8Oh50GKVtLwZuJPKIPvGJnhCnFjkoBTPWJ/
-	 sAaRJD+I20+ohk1nhbTuxSymui4d5QhB8R/Xv5BDlYdpAonk8aIjMvuPRPTksXC3Jr
-	 yG57VuVD/NzJ5VfImR7Qd3lACDL6vcOWiUXO54E0j2wxbjRm17qgGeymzzo1mfmDdR
-	 N86OtiqbS1YkOa8ZVvvbb1YFpQK/l5VT0/DnTnjCwXcl5XQkuV5kP5qYSXp+9FEb5z
-	 3xqCTQQZm/61IZDE+kRmbnf5fNsRNwkdKaHK1Gbj51XyTRfDdry/MRAZUMS1bFBS9g
-	 yp5c0wW841dmg==
-Received: from eugen-station.. (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: ehristev)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3556C3781419;
-	Thu, 28 Dec 2023 11:33:01 +0000 (UTC)
-From: Eugen Hristev <eugen.hristev@collabora.com>
-To: tiffany.lin@mediatek.com,
-	andrew-ct.chen@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
+	id 1rIqsg-00Gy9K-0h
+	for linux-mediatek@lists.infradead.org;
+	Thu, 28 Dec 2023 13:57:03 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 29931B80DF4;
+	Thu, 28 Dec 2023 13:57:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC8A8C433C9;
+	Thu, 28 Dec 2023 13:56:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1703771818;
+	bh=hATKOzQ3Q86ZtUqOoVn7GJyRPGck95qMw+6ADEnabXE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=YwhCzhasK6hswS3nE4O0iXFkWECzy6V4t+bZSD8boruVp/yREufAWt5WF50OyJRbE
+	 tXiJTrQsI9yo469f2vD61Qhd3KubX7UGWbpkeYcaVF9rjMmwfvlymkzuHV4CneYSCE
+	 XnnC0G62dLcaPzCmMgIfVm6KdEPpWoeRHBJ3NEo5JQACC8s8je/k8/OtQoq6Tmtq5t
+	 e1LyAJCStWkOP4enFH7igkYrHx/v6BzUWonwJl8MH/AwiPzHBbJSCsIwjJMwZFSAHW
+	 QZnsOn1zARfkRTN7lZajwZXp4pQPcta8dMUV47Td0ywpieRXtKdJMQCdfuUi0drYta
+	 qrvFRYh2RTTnA==
+Date: Thu, 28 Dec 2023 14:56:52 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+Cc: nbd@nbd.name, deren.wu@mediatek.com, Sean.Wang@mediatek.com,
+	Soul.Huang@mediatek.com, Leon.Yen@mediatek.com,
+	Eric-SY.Chang@mediatek.com, km.lin@mediatek.com,
+	robin.chiu@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
+	Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com,
+	Shayne.Chen@mediatek.com, linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Cc: eugen.hristev@collabora.com,
-	linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	robh+dt@kernel.org,
-	kernel@collabora.com,
-	Kyrie Wu <kyrie.wu@mediatek.com>,
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
-	Hsin-Yi Wang <hsinyi@chromium.org>
-Subject: [PATCH v3 6/6] arm64: dts: mediatek: mt8186: Add venc node
-Date: Thu, 28 Dec 2023 13:32:45 +0200
-Message-Id: <20231228113245.174706-7-eugen.hristev@collabora.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231228113245.174706-1-eugen.hristev@collabora.com>
-References: <20231228113245.174706-1-eugen.hristev@collabora.com>
+Subject: Re: [PATCH 04/10] wifi: mt76: mt7925: fix wmm queue mapping
+Message-ID: <ZY1-pG8isKAXBhqa@lore-rh-laptop>
+References: <20231228090749.15191-1-mingyen.hsieh@mediatek.com>
+ <20231228090749.15191-5-mingyen.hsieh@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="WQ30o7v/EYClCnAa"
+Content-Disposition: inline
+In-Reply-To: <20231228090749.15191-5-mingyen.hsieh@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231228_033303_665045_D048F3FB 
-X-CRM114-Status: UNSURE (   9.02  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231228_055702_566901_62844E5F 
+X-CRM114-Status: GOOD (  15.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,60 +78,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Kyrie Wu <kyrie.wu@mediatek.com>
 
-Add video encoder node.
+--WQ30o7v/EYClCnAa
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Reviewed-by: Hsin-Yi Wang <hsinyi@chromium.org>
-[eugen.hristev@collabora.com: minor cleanup]
-Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
----
-Changes in v3:
-- remove dma ranges and cells.
-Changes in v2:
-- change node name
-- change compatible to include 8186
-- change props order
-- change clock name to cope with binding
+> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+>=20
+> Firmware uses access class index (ACI) for wmm parameters update,
+> so convert mac80211 queue to ACI in mt7925_conf_tx().
+>=20
+> Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for =
+mt7925 chips")
+> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> ---
+>  .../net/wireless/mediatek/mt76/mt7925/main.c  | 21 ++++++++++++++++++-
+>  .../net/wireless/mediatek/mt76/mt7925/mcu.c   |  2 +-
+>  2 files changed, 21 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7925/main.c
+> index a080df58120f..b832dd8adee5 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+> @@ -1273,6 +1273,25 @@ mt7925_channel_switch_beacon(struct ieee80211_hw *=
+hw,
+>  	mt792x_mutex_release(dev);
+>  }
+> =20
+> +static int
+> +mt7925_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+> +	       unsigned int link_id, u16 queue,
+> +	       const struct ieee80211_tx_queue_params *params)
+> +{
+> +	struct mt792x_vif *mvif =3D (struct mt792x_vif *)vif->drv_priv;
+> +	const u8 mq_to_aci[] =3D {
 
- arch/arm64/boot/dts/mediatek/mt8186.dtsi | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+nit: static const here
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-index 66ead3f23336..bafb0845e986 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-@@ -1993,6 +1993,27 @@ larb7: smi@17010000 {
- 			power-domains = <&spm MT8186_POWER_DOMAIN_VENC>;
- 		};
- 
-+		venc: video-encoder@17020000 {
-+			compatible = "mediatek,mt8186-vcodec-enc", "mediatek,mt8183-vcodec-enc";
-+			reg = <0 0x17020000 0 0x2000>;
-+			interrupts = <GIC_SPI 243 IRQ_TYPE_LEVEL_HIGH 0>;
-+			iommus = <&iommu_mm IOMMU_PORT_L7_VENC_RCPU>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_REC>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_BSDMA>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_SV_COMV>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_RD_COMV>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_CUR_LUMA>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_CUR_CHROMA>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_REF_LUMA>,
-+				 <&iommu_mm IOMMU_PORT_L7_VENC_REF_CHROMA>;
-+			clocks = <&vencsys CLK_VENC_CKE1_VENC>;
-+			clock-names = "venc_sel";
-+			assigned-clocks = <&topckgen CLK_TOP_VENC>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D3>;
-+			power-domains = <&spm MT8186_POWER_DOMAIN_VENC>;
-+			mediatek,scp = <&scp>;
-+		};
-+
- 		camsys: clock-controller@1a000000 {
- 			compatible = "mediatek,mt8186-camsys";
- 			reg = <0 0x1a000000 0 0x1000>;
--- 
-2.34.1
+Regards,
+Lorenzo
 
+> +		    [IEEE80211_AC_VO] =3D 3,
+> +		    [IEEE80211_AC_VI] =3D 2,
+> +		    [IEEE80211_AC_BE] =3D 0,
+> +		    [IEEE80211_AC_BK] =3D 1,
+> +	};
+> +
+> +	/* firmware uses access class index */
+> +	mvif->queue_params[mq_to_aci[queue]] =3D *params;
+> +
+> +	return 0;
+> +}
+> +
+>  static int
+>  mt7925_start_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+>  		struct ieee80211_bss_conf *link_conf)
+> @@ -1396,7 +1415,7 @@ const struct ieee80211_ops mt7925_ops =3D {
+>  	.add_interface =3D mt7925_add_interface,
+>  	.remove_interface =3D mt792x_remove_interface,
+>  	.config =3D mt7925_config,
+> -	.conf_tx =3D mt792x_conf_tx,
+> +	.conf_tx =3D mt7925_conf_tx,
+>  	.configure_filter =3D mt7925_configure_filter,
+>  	.bss_info_changed =3D mt7925_bss_info_changed,
+>  	.start_ap =3D mt7925_start_ap,
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7925/mcu.c
+> index 4811fccbe30e..0299045b4b83 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> @@ -895,7 +895,7 @@ int mt7925_mcu_set_tx(struct mt792x_dev *dev, struct =
+ieee80211_vif *vif)
+> =20
+>  		e =3D (struct edca *)tlv;
+>  		e->set =3D WMM_PARAM_SET;
+> -		e->queue =3D ac + mvif->mt76.wmm_idx * MT76_CONNAC_MAX_WMM_SETS;
+> +		e->queue =3D ac;
+>  		e->aifs =3D q->aifs;
+>  		e->txop =3D cpu_to_le16(q->txop);
+> =20
+> --=20
+> 2.18.0
+>=20
+
+--WQ30o7v/EYClCnAa
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZY1+oQAKCRA6cBh0uS2t
+rPj8AP0Qg+6JBTjCMzdcyWCdxF9WJUoD8KX46+BDiNcsAwtWfwD9GQOsR6uC8i+V
+DBdzmKvn6Mg5rijo8s1SO00vDUv96Ak=
+=GFFC
+-----END PGP SIGNATURE-----
+
+--WQ30o7v/EYClCnAa--
 
