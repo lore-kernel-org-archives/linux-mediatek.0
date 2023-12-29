@@ -4,77 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1D84C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Dec 2023 16:58:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C94CC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Dec 2023 00:46:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iLzd7A9jFskmhen4DUM2XT5CFAIISUlx1M90s2C0fRs=; b=THHLsV+huseXJgS8bZwlTJThm2
-	u5lQEdEDiwhOc4IeIMe7x9v3PZ3+mt2Y0d596W6Eody/5AMw7ZXRR2W4Bt0AbDl4ReGMPDpZLakdF
-	enx0THD5+cJBczgOrQdq0SJFZnhn559Gud9i+P5vSpFBlQUKtENUel2hEpFNjLjDlm6GFF6UNVO52
-	opBkqLW1P1yH8oK1HRkOe1WVdYPbmis4U6mIIJKiPRzxuya5sl2HtYjAPG07BATN2aaoEQrFee6nu
-	F0WeIbKKgD9DteMXHv/OQvmSxMwGnqK/QJqGptd1ghhYHQr9N0HGIRMSdzXhggvZYaxBAd4oy+s8Z
-	7pHu5lBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xGRtMaeqrkUUiJ0HiUqTREq/tkRssFTyg1Rd1BHCb4I=; b=UGzbl+aUh8cgCoX6VKlpzqkcy2
+	J+vAc9tJFFbB6i/8SY7ua5d7Q7qzQwaRgQbUEMEFAghmZP7qs3FRwPc6Npv5lD9QKNeVS/TlWcy4t
+	gMJvvwBBVBvearn2YYbXVz59GJkxVhstjiMN88aHdaqxTc90UI3uGkqz5tS6ai2hI3dhYCr09hLOq
+	yqCOB2pa/O27SeS4cL4+FN67etAhbK04jpOXKfiDnh4WFWj9q3j0XMYjmqb+vKqcvvyAbqIHECzVQ
+	O9iovjyf/bSO3KvJjyZ+J0kvLa0tIfLyT7tF1MtdEWMHkAAdIRvKY27Z3sH1yWPYS5xDQ1bjTDpjb
+	cUeHPCaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rItiJ-00HAmM-24;
-	Thu, 28 Dec 2023 16:58:31 +0000
-Received: from relay3-d.mail.gandi.net ([2001:4b98:dc4:8::223])
+	id 1rJ11I-0000RH-1U;
+	Fri, 29 Dec 2023 00:46:36 +0000
+Received: from mgamail.intel.com ([134.134.136.126])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rItiF-00HAjX-1C;
-	Thu, 28 Dec 2023 16:58:29 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 40D4660003;
-	Thu, 28 Dec 2023 16:58:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1703782701;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=iLzd7A9jFskmhen4DUM2XT5CFAIISUlx1M90s2C0fRs=;
-	b=g4obSGsGdqga49bgW8wAunpOtYZ0THRFsYWaK4w7Af0B0xPCc90zQ+86HdcMGVvPoU7I6N
-	JGcMDWFjCwKDXP0yaOMFncICV1yeNYsgLN2sQ7kT/0RgBZE8XZiabUaGSXvAO6+4InerMj
-	8GZlnaSpqzmhSxJgexjcgeXJUNgJlCm7ukiB0jp4wY3c64hVw8JXZ1raAnyFONxmba3ZkP
-	MzawQwY8euzM3riMX9gGKIe7QL6Lhtteg/Zaxj9+D3UV9UdVUZJ43MTP4+khVGmvU8f5wC
-	gF08+DBfiPO1pnR7eKy9mk2nGHJMIUYxHZnKZzSsngDLFfzfBI9zHfmTkMb2ZA==
-Message-ID: <d2a7cc7e-bb27-472f-8921-5579a894c71d@arinc9.com>
-Date: Thu, 28 Dec 2023 19:58:13 +0300
+	id 1rJ11F-0000Oj-20
+	for linux-mediatek@lists.infradead.org;
+	Fri, 29 Dec 2023 00:46:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1703810793; x=1735346793;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=h0d7MyfanjVVQK9qj4fu4bv00Y+gJQB03toFTcpEIak=;
+  b=TuWsTpmdNZNRj47K+ikLxkX4DOrerEX0ifKZm01qOzgqIxUva1umsW0I
+   5AHSIAHV7RVbtEIDUkHH5xGGIQEfGrr7qTJP1MyryrgH8BNtqwYA/ru2o
+   Q45JlvXKgJWL9/130NZ6lwg1BCfdGm/dzspar2HA/CYbyZOWqj1ySgxAp
+   cS6yRgQMU9tDZDxsdu4og+aQYSCmQcwi0yR0gCooZbI7AUFN9HnQ32S/8
+   YLGvBojfKnvk0JZgV244QGkztceCRoNgQv8PMG9FfxInkUIN5RjCzGUUI
+   E0+pR8dZSADOrMQ2m2FQAMlVm8SrspLua7L/5TXLFgw7dDj/Yk25qLsF4
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10937"; a="381578334"
+X-IronPort-AV: E=Sophos;i="6.04,313,1695711600"; 
+   d="scan'208";a="381578334"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Dec 2023 16:45:50 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10937"; a="869261577"
+X-IronPort-AV: E=Sophos;i="6.04,313,1695711600"; 
+   d="scan'208";a="869261577"
+Received: from lkp-server02.sh.intel.com (HELO b07ab15da5fe) ([10.239.97.151])
+  by FMSMGA003.fm.intel.com with ESMTP; 28 Dec 2023 16:45:46 -0800
+Received: from kbuild by b07ab15da5fe with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1rJ10S-000Gxl-0Y;
+	Fri, 29 Dec 2023 00:45:44 +0000
+Date: Fri, 29 Dec 2023 08:44:49 +0800
+From: kernel test robot <lkp@intel.com>
+To: Peter Tsao <peter.tsao@mediatek.com>,
+	Marcel Holtmann <marcel@holtmann.org>,
+	Johan Hedberg <johan.hedberg@gmail.com>,
+	Luiz Von Dentz <luiz.dentz@gmail.com>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Sean Wang <sean.wang@mediatek.com>,
+	Deren Wu <deren.Wu@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
+	Aaron Hou <aaron.hou@mediatek.com>,
+	Steve Lee <steve.lee@mediatek.com>,
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+	linux-kernel <linux-kernel@vger.kernel.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>,
+	Peter Tsao <peter.tsao@mediatek.com>
+Subject: Re: [PATCH] Bluetooth: btusb: Fix MT7925 fail to send download patch
+ command
+Message-ID: <202312290838.c0zcBoUz-lkp@intel.com>
+References: <20231228092014.23184-1-peter.tsao@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next] net: dsa: mt7530: register OF node for internal
- MDIO bus
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Daniel Golle <daniel@makrotopia.org>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- David Bauer <mail@david-bauer.net>, mithat.guner@xeront.com,
- erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20231220173539.59071-1-arinc.unal@arinc9.com>
- <20231220173539.59071-1-arinc.unal@arinc9.com>
- <20231221151607.ujobhh4aet4obxdz@skbuf>
- <6600c6b1-2230-4963-940c-8b95a01750fd@arinc9.com>
- <20231227191154.6jkqdlqdxciidpfw@skbuf>
- <bdbe24b2-30f6-48fa-b6eb-a1ae3afe9076@arinc9.com>
- <20231227200217.kdltxpmhvlp6z4cd@skbuf>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20231227200217.kdltxpmhvlp6z4cd@skbuf>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231228092014.23184-1-peter.tsao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231228_085827_728164_7C6F3ADB 
-X-CRM114-Status: GOOD (  24.02  )
+X-CRM114-CacheID: sfid-20231228_164633_727227_E1C1AD9C 
+X-CRM114-Status: GOOD (  16.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,143 +95,231 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27.12.2023 23:02, Vladimir Oltean wrote:
-> On Wed, Dec 27, 2023 at 10:51:08PM +0300, Arınç ÜNAL wrote:
->> I didn't realise ds->user_mii_bus is also used to store irq mapping for
->> each PHY.
-> 
-> It needs to, if the MDIO bus does not have an OF description through
-> which PHYs can have an 'interrupts' property. But if there is an OF
-> description for the MDIO bus and the PHYs, I think it is strange to
-> expect PHYs to have interrupts if they aren't described in OF.
-> 
->> Should we agree that user_mii_bus is needed for all cases or make
->> another way to store the irq mappings?
-> 
-> I looked at the upstream device trees:
-> - users of arch/mips/boot/dts/ralink/mt7621.dtsi
-> - arch/arm/boot/dts/mediatek/mt7623n-bananapi-bpi-r2.dts
-> - arch/arm/boot/dts/mediatek/mt7623n-rfb-emmc.dts
-> - arch/arm/boot/dts/mediatek/mt7623a.dtsi
-> - arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-> - arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> - arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-> - arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> 
-> and without exception, none of these have the MDIO bus described in OF.
-> I'm not sure about other device trees. But it may well be that the
-> situation where "MDIO buses present in OF need an IRQ mapping for their
-> PHYs" does not need to be handled.
+Hi Peter,
 
-As Daniel stated on a previous submission of this patch, being able to
-reference the PHYs on the switch MDIO bus is mandatory on MT7988 as
-calibration data from NVMEM for each PHY is required, so defining the MDIO
-bus is required to support MT7988. Therefore, we should support interrupts
-on device trees with the switch MDIO bus defined.
+kernel test robot noticed the following build errors:
 
-The implementation below follows this logic:
+[auto build test ERROR on bluetooth/master]
+[also build test ERROR on bluetooth-next/master linus/master v6.7-rc7 next-20231222]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-No switch MDIO bus defined: Register the MDIO bus, set the interrupts for
-PHYs if "interrupt-controller" is defined at the switch node.
+url:    https://github.com/intel-lab-lkp/linux/commits/Peter-Tsao/Bluetooth-btusb-Fix-MT7925-fail-to-send-download-patch-command/20231228-172328
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth.git master
+patch link:    https://lore.kernel.org/r/20231228092014.23184-1-peter.tsao%40mediatek.com
+patch subject: [PATCH] Bluetooth: btusb: Fix MT7925 fail to send download patch command
+config: i386-buildonly-randconfig-002-20231229 (https://download.01.org/0day-ci/archive/20231229/202312290838.c0zcBoUz-lkp@intel.com/config)
+compiler: ClangBuiltLinux clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231229/202312290838.c0zcBoUz-lkp@intel.com/reproduce)
 
-Switch MDIO bus defined: Register the MDIO bus, set the interrupts for PHYs
-if ["interrupt-controller" is defined at the switch node and "interrupts"
-is defined at the PHY nodes under the switch MDIO bus node].
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202312290838.c0zcBoUz-lkp@intel.com/
 
-I think this approach fits your description so I'd like to agree that this
-should be the way for all DSA subdrivers. Please let me know what you
-think.
+All errors (new ones prefixed by >>):
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 391c4dbdff42..bbd230a73ead 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2155,15 +2155,21 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
-  {
-  	struct dsa_switch *ds = priv->ds;
-  	struct device *dev = priv->dev;
-+	struct device_node *np, *mnp;
-  	struct mii_bus *bus;
-  	static int idx;
-  	int ret;
-  
-+	np = priv->dev->of_node;
-+	mnp = of_get_child_by_name(np, "mdio");
-+
-  	bus = devm_mdiobus_alloc(dev);
-  	if (!bus)
-  		return -ENOMEM;
-  
--	ds->user_mii_bus = bus;
-+	if (mnp == NULL)
-+		ds->user_mii_bus = bus;
-+
-  	bus->priv = priv;
-  	bus->name = KBUILD_MODNAME "-mii";
-  	snprintf(bus->id, MII_BUS_ID_SIZE, KBUILD_MODNAME "-%d", idx++);
-@@ -2174,10 +2180,11 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
-  	bus->parent = dev;
-  	bus->phy_mask = ~ds->phys_mii_mask;
-  
--	if (priv->irq)
-+	if (priv->irq && mnp == NULL)
-  		mt7530_setup_mdio_irq(priv);
-  
--	ret = devm_mdiobus_register(dev, bus);
-+	ret = devm_of_mdiobus_register(dev, bus, mnp);
-+	of_node_put(mnp);
-  	if (ret) {
-  		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
-  		if (priv->irq)
+>> drivers/bluetooth/btusb.c:3122:49: error: use of undeclared identifier 'val'
+    3122 |                 btusb_mtk_uhw_reg_read(data, MT7925_SLPPROT, &val);
+         |                                                               ^
+   drivers/bluetooth/btusb.c:3123:3: error: use of undeclared identifier 'val'
+    3123 |                 val |= SLPPROT_BYPASS;
+         |                 ^
+   drivers/bluetooth/btusb.c:3124:49: error: use of undeclared identifier 'val'
+    3124 |                 btusb_mtk_uhw_reg_write(data, MT7925_SLPPROT, val);
+         |                                                               ^
+   3 errors generated.
 
-With this device tree:
 
-switch {
-	interrupt-controller;
-}
+vim +/val +3122 drivers/bluetooth/btusb.c
 
-[    1.420534] mt7530-mdio mdio-bus:1f lan1 (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=17)
-[    1.433224] mt7530-mdio mdio-bus:1f lan2 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7530 PHY] (irq=18)
-[    1.445338] mt7530-mdio mdio-bus:1f lan3 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7530 PHY] (irq=19)
-[    1.457472] mt7530-mdio mdio-bus:1f lan4 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7530 PHY] (irq=20)
-[    1.469587] mt7530-mdio mdio-bus:1f wan (uninitialized): PHY [mt7530-0:04] driver [MediaTek MT7530 PHY] (irq=21)
+  3068	
+  3069	static int btusb_mtk_setup(struct hci_dev *hdev)
+  3070	{
+  3071		struct btusb_data *data = hci_get_drvdata(hdev);
+  3072		struct btmtk_hci_wmt_params wmt_params;
+  3073		ktime_t calltime, delta, rettime;
+  3074		struct btmtk_tci_sleep tci_sleep;
+  3075		unsigned long long duration;
+  3076		struct sk_buff *skb;
+  3077		const char *fwname;
+  3078		int err, status;
+  3079		u32 dev_id = 0;
+  3080		char fw_bin_name[64];
+  3081		u32 fw_version = 0;
+  3082		u8 param;
+  3083		struct btmediatek_data *mediatek;
+  3084	
+  3085		calltime = ktime_get();
+  3086	
+  3087		err = btusb_mtk_id_get(data, 0x80000008, &dev_id);
+  3088		if (err < 0) {
+  3089			bt_dev_err(hdev, "Failed to get device id (%d)", err);
+  3090			return err;
+  3091		}
+  3092	
+  3093		if (!dev_id || dev_id != 0x7663) {
+  3094			err = btusb_mtk_id_get(data, 0x70010200, &dev_id);
+  3095			if (err < 0) {
+  3096				bt_dev_err(hdev, "Failed to get device id (%d)", err);
+  3097				return err;
+  3098			}
+  3099			err = btusb_mtk_id_get(data, 0x80021004, &fw_version);
+  3100			if (err < 0) {
+  3101				bt_dev_err(hdev, "Failed to get fw version (%d)", err);
+  3102				return err;
+  3103			}
+  3104		}
+  3105	
+  3106		mediatek = hci_get_priv(hdev);
+  3107		mediatek->dev_id = dev_id;
+  3108		mediatek->reset_sync = btusb_mtk_reset;
+  3109	
+  3110		err = btmtk_register_coredump(hdev, btusb_driver.name, fw_version);
+  3111		if (err < 0)
+  3112			bt_dev_err(hdev, "Failed to register coredump (%d)", err);
+  3113	
+  3114		switch (dev_id) {
+  3115		case 0x7663:
+  3116			fwname = FIRMWARE_MT7663;
+  3117			break;
+  3118		case 0x7668:
+  3119			fwname = FIRMWARE_MT7668;
+  3120			break;
+  3121		case 0x7925:
+> 3122			btusb_mtk_uhw_reg_read(data, MT7925_SLPPROT, &val);
+  3123			val |= SLPPROT_BYPASS;
+  3124			btusb_mtk_uhw_reg_write(data, MT7925_SLPPROT, val);
+  3125			fallthrough;
+  3126		case 0x7922:
+  3127		case 0x7961:
+  3128			if (dev_id == 0x7925)
+  3129				snprintf(fw_bin_name, sizeof(fw_bin_name),
+  3130					 "mediatek/mt%04x/BT_RAM_CODE_MT%04x_1_%x_hdr.bin",
+  3131					 dev_id & 0xffff, dev_id & 0xffff, (fw_version & 0xff) + 1);
+  3132			else
+  3133				snprintf(fw_bin_name, sizeof(fw_bin_name),
+  3134					 "mediatek/BT_RAM_CODE_MT%04x_1_%x_hdr.bin",
+  3135					 dev_id & 0xffff, (fw_version & 0xff) + 1);
+  3136	
+  3137			err = btmtk_setup_firmware_79xx(hdev, fw_bin_name,
+  3138							btusb_mtk_hci_wmt_sync);
+  3139			if (err < 0) {
+  3140				bt_dev_err(hdev, "Failed to set up firmware (%d)", err);
+  3141				return err;
+  3142			}
+  3143	
+  3144			/* It's Device EndPoint Reset Option Register */
+  3145			btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, MTK_EP_RST_IN_OUT_OPT);
+  3146	
+  3147			/* Enable Bluetooth protocol */
+  3148			param = 1;
+  3149			wmt_params.op = BTMTK_WMT_FUNC_CTRL;
+  3150			wmt_params.flag = 0;
+  3151			wmt_params.dlen = sizeof(param);
+  3152			wmt_params.data = &param;
+  3153			wmt_params.status = NULL;
+  3154	
+  3155			err = btusb_mtk_hci_wmt_sync(hdev, &wmt_params);
+  3156			if (err < 0) {
+  3157				bt_dev_err(hdev, "Failed to send wmt func ctrl (%d)", err);
+  3158				return err;
+  3159			}
+  3160	
+  3161			hci_set_msft_opcode(hdev, 0xFD30);
+  3162			hci_set_aosp_capable(hdev);
+  3163			goto done;
+  3164		default:
+  3165			bt_dev_err(hdev, "Unsupported hardware variant (%08x)",
+  3166				   dev_id);
+  3167			return -ENODEV;
+  3168		}
+  3169	
+  3170		/* Query whether the firmware is already download */
+  3171		wmt_params.op = BTMTK_WMT_SEMAPHORE;
+  3172		wmt_params.flag = 1;
+  3173		wmt_params.dlen = 0;
+  3174		wmt_params.data = NULL;
+  3175		wmt_params.status = &status;
+  3176	
+  3177		err = btusb_mtk_hci_wmt_sync(hdev, &wmt_params);
+  3178		if (err < 0) {
+  3179			bt_dev_err(hdev, "Failed to query firmware status (%d)", err);
+  3180			return err;
+  3181		}
+  3182	
+  3183		if (status == BTMTK_WMT_PATCH_DONE) {
+  3184			bt_dev_info(hdev, "firmware already downloaded");
+  3185			goto ignore_setup_fw;
+  3186		}
+  3187	
+  3188		/* Setup a firmware which the device definitely requires */
+  3189		err = btmtk_setup_firmware(hdev, fwname,
+  3190					   btusb_mtk_hci_wmt_sync);
+  3191		if (err < 0)
+  3192			return err;
+  3193	
+  3194	ignore_setup_fw:
+  3195		err = readx_poll_timeout(btusb_mtk_func_query, hdev, status,
+  3196					 status < 0 || status != BTMTK_WMT_ON_PROGRESS,
+  3197					 2000, 5000000);
+  3198		/* -ETIMEDOUT happens */
+  3199		if (err < 0)
+  3200			return err;
+  3201	
+  3202		/* The other errors happen in btusb_mtk_func_query */
+  3203		if (status < 0)
+  3204			return status;
+  3205	
+  3206		if (status == BTMTK_WMT_ON_DONE) {
+  3207			bt_dev_info(hdev, "function already on");
+  3208			goto ignore_func_on;
+  3209		}
+  3210	
+  3211		/* Enable Bluetooth protocol */
+  3212		param = 1;
+  3213		wmt_params.op = BTMTK_WMT_FUNC_CTRL;
+  3214		wmt_params.flag = 0;
+  3215		wmt_params.dlen = sizeof(param);
+  3216		wmt_params.data = &param;
+  3217		wmt_params.status = NULL;
+  3218	
+  3219		err = btusb_mtk_hci_wmt_sync(hdev, &wmt_params);
+  3220		if (err < 0) {
+  3221			bt_dev_err(hdev, "Failed to send wmt func ctrl (%d)", err);
+  3222			return err;
+  3223		}
+  3224	
+  3225	ignore_func_on:
+  3226		/* Apply the low power environment setup */
+  3227		tci_sleep.mode = 0x5;
+  3228		tci_sleep.duration = cpu_to_le16(0x640);
+  3229		tci_sleep.host_duration = cpu_to_le16(0x640);
+  3230		tci_sleep.host_wakeup_pin = 0;
+  3231		tci_sleep.time_compensation = 0;
+  3232	
+  3233		skb = __hci_cmd_sync(hdev, 0xfc7a, sizeof(tci_sleep), &tci_sleep,
+  3234				     HCI_INIT_TIMEOUT);
+  3235		if (IS_ERR(skb)) {
+  3236			err = PTR_ERR(skb);
+  3237			bt_dev_err(hdev, "Failed to apply low power setting (%d)", err);
+  3238			return err;
+  3239		}
+  3240		kfree_skb(skb);
+  3241	
+  3242	done:
+  3243		rettime = ktime_get();
+  3244		delta = ktime_sub(rettime, calltime);
+  3245		duration = (unsigned long long)ktime_to_ns(delta) >> 10;
+  3246	
+  3247		bt_dev_info(hdev, "Device setup in %llu usecs", duration);
+  3248	
+  3249		return 0;
+  3250	}
+  3251	
 
-With this device tree:
-
-switch {
-	interrupt-controller;
-
-	mdio {
-		phy {
-			reg = <0>;
-		}
-	}
-}
-
-[    1.413101] mt7530-mdio mdio-bus:1f lan1 (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=POLL)
-[    1.429954] mt7530-mdio mdio-bus:1f lan2 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7530 PHY] (irq=POLL)
-[    1.443704] mt7530-mdio mdio-bus:1f lan3 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7530 PHY] (irq=POLL)
-[    1.455876] mt7530-mdio mdio-bus:1f lan4 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7530 PHY] (irq=POLL)
-[    1.468079] mt7530-mdio mdio-bus:1f wan (uninitialized): PHY [mt7530-0:04] driver [MediaTek MT7530 PHY] (irq=POLL)
-
-With this device tree:
-
-switch {
-	interrupt-controller;
-
-	mdio {
-		phy {
-			reg = <0>;
-			interrupts = <0>;
-		}
-	}
-}
-
-[    1.420534] mt7530-mdio mdio-bus:1f lan1 (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=17)
-[    1.433224] mt7530-mdio mdio-bus:1f lan2 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7530 PHY] (irq=18)
-[    1.445338] mt7530-mdio mdio-bus:1f lan3 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7530 PHY] (irq=19)
-[    1.457472] mt7530-mdio mdio-bus:1f lan4 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7530 PHY] (irq=20)
-[    1.469587] mt7530-mdio mdio-bus:1f wan (uninitialized): PHY [mt7530-0:04] driver [MediaTek MT7530 PHY] (irq=21)
-
-Arınç
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
