@@ -4,82 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67EB7C46CD4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Dec 2023 05:08:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51A63C46CD3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Dec 2023 07:57:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lzpVfYPAe8DHq4/EOHqYBHcbwuJum1C7TAA5wEVLrWc=; b=klZrKODMLKOORfTKDIIZ2E5lFp
-	B/ipSZz5yy/JKwLBdNevE5wt0INKrDOAWB1/VTcSO/ZGyghnCdrOjPO3vd49TBoxd+EHyLCyLXMAR
-	Y+bzd0YoAUy12AgNHi1l+s4EW075NTG3uCCTYeV1kL55yGZo59io3KDiPdM/ebzYYUV+lc+okVzKe
-	ULbxGWsocsIzeBkUU1yDjcDgA6mUQuIrGcukdejZgDG2cfE2YW56CK0eA8OvnuFq8CFoc9th9Afzw
-	XroB1hY6rguPy48AFTMszkQQDbW8Um4sPLjGaEV86ULAQgsK5OZ3ekZ7pavWbM+4XiBJahk7aQvbu
-	Dcvf7MNw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aC/jqfThqXUSI51sfHhy0CvTGG4B4LNXIBP7bVGM1r0=; b=zRhjxfJx2MY2tSK9pbEVLEFM5m
+	oH0ntodnFbGIUqejgpbxLARCzUZl4PzB0ls9rJOyFCiqAZMNB4cIEdmFJ20xG/GgQpdEzb8V+Otfn
+	OIV8ZglXzdW4D6EYzYComvQ+BrN6brSocK7x/nrfM2n5k136Qpvw0VQAm4q3VrFjUkWh4H5gSVAeP
+	cbGUy+kwlqdwnxl2DUhFKxi3DpF/rN9/1X6IcL71c1gAu1dkL8ZBJalkSOEHRe9nkp/ec8Z/wW7Tg
+	iEVp6E2yo9+HWnUUVbnwWcJnIjnyIrYkQ6dkBD6+87dRUebCDDyGxvRA7LgQXan4AMQX0k9CSm9ry
+	Id1hUMdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJ56U-000Ecj-2j;
-	Fri, 29 Dec 2023 05:08:14 +0000
-Received: from mgamail.intel.com ([134.134.136.24])
+	id 1rJ7kh-000PXv-0d;
+	Fri, 29 Dec 2023 07:57:55 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJ56R-000Ec6-1L
-	for linux-mediatek@lists.infradead.org;
-	Fri, 29 Dec 2023 05:08:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1703826491; x=1735362491;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=RW9NR0qy+yngvdt3sOR4g5zaC03TNEsf7LMbSGcr3/c=;
-  b=TvLT/q89FC8vyvoEpWzIOH7ssEG7q2oMS9pNduf4/YLzGEAQVxRUFPl7
-   W2oC9dZDgSlFrcop3jZo5DB94XQzbwtYeLm9JII9ae3CjNooGrsULvT9O
-   7EQgTerzZWy/RGtCDGkytqyJ7pwHGBmNGGV/0Lh1R6eOXpHNrsyoiPAM3
-   FIlneZbyVEFarmhYWFR85FQO0rvk8oHPul//ZE9RuKavP4ZJlQwi6/suP
-   6hsafjfGC0wZ4iLc1ulYzCbgh/EGMCUgDMvi5Khts2eZfkEelGtStl6+S
-   qEwJOzjGGjnlhsPTBmq/NO0Itsi/CtW/Nt2c59leA4lHY+wIPmFvpt9Yh
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10937"; a="399401789"
-X-IronPort-AV: E=Sophos;i="6.04,314,1695711600"; 
-   d="scan'208";a="399401789"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Dec 2023 21:07:42 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10937"; a="951994868"
-X-IronPort-AV: E=Sophos;i="6.04,314,1695711600"; 
-   d="scan'208";a="951994868"
-Received: from lkp-server02.sh.intel.com (HELO b07ab15da5fe) ([10.239.97.151])
-  by orsmga005.jf.intel.com with ESMTP; 28 Dec 2023 21:07:38 -0800
-Received: from kbuild by b07ab15da5fe with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1rJ55s-000H6b-18;
-	Fri, 29 Dec 2023 05:07:36 +0000
-Date: Fri, 29 Dec 2023 13:06:46 +0800
-From: kernel test robot <lkp@intel.com>
-To: Peter Tsao <peter.tsao@mediatek.com>,
-	Marcel Holtmann <marcel@holtmann.org>,
-	Johan Hedberg <johan.hedberg@gmail.com>,
-	Luiz Von Dentz <luiz.dentz@gmail.com>
-Cc: oe-kbuild-all@lists.linux.dev, Sean Wang <sean.wang@mediatek.com>,
-	Deren Wu <deren.Wu@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
-	Aaron Hou <aaron.hou@mediatek.com>,
-	Steve Lee <steve.lee@mediatek.com>,
-	linux-bluetooth <linux-bluetooth@vger.kernel.org>,
-	linux-kernel <linux-kernel@vger.kernel.org>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>,
-	Peter Tsao <peter.tsao@mediatek.com>
-Subject: Re: [PATCH] Bluetooth: btusb: Fix MT7925 fail to send download patch
- command
-Message-ID: <202312291253.5LoPimum-lkp@intel.com>
-References: <20231228092014.23184-1-peter.tsao@mediatek.com>
+	id 1rJ7kd-000PWc-0V;
+	Fri, 29 Dec 2023 07:57:52 +0000
+Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-a2343c31c4bso756222266b.1;
+        Thu, 28 Dec 2023 23:57:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1703836668; x=1704441468; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=aC/jqfThqXUSI51sfHhy0CvTGG4B4LNXIBP7bVGM1r0=;
+        b=fUKDurfPrDWXvhN5qjOL9vmQXnh3Ln2uXEsdO71JL6/X2gbEKu+YDeouWnrL6HPGEw
+         T4BwboHudDWITCnnyAdEu0ecgxOb8yfhM1pikJ07Xo2h5aX1342dO1wjMVIMaKiGLTZv
+         1bJqnKDlMUu56vNUcuWGQVNQSK/0FeiEuSTfgn17p7xGaeFuiVenk1kznsJzFmNj9+42
+         DHli5hgW/0Adc3Mge3A1uusWZ4dwSHirXH0f35d0egeOYqV7U0jKAF815jrxG8q4c8ix
+         vH/ePjcCzT/FG56KYqzcgX6pTFzHOII1OCD1wdBwFZUNDukmolQPw+szi4qJXGgneE1R
+         srvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1703836668; x=1704441468;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=aC/jqfThqXUSI51sfHhy0CvTGG4B4LNXIBP7bVGM1r0=;
+        b=vqhmhT2RNzoXsAckWgWLiZrNrHNfupHwS/yDxTc0eBIf0pjRm2I9KwoGvJmTwImGLx
+         C/FjkVAKHHoNpHU+LDfTSSiCKFpAeNSKQL4FU08ohPi+whr7gKaMIWdB5z6yPgNOJq62
+         MA/mxyCfyhGS+QPiPo+fCzSs3K1TrQjZanSB001FRmZWUKTuEiNoJJs1NkPyGk96HSWh
+         dXXCkFfd2Yt184PJvQC8kiB79ltScF6nu+vuFvw0VzXmAI1CfoQNPe6vvW17U50FKKHZ
+         ODAeVLKdeDL9eSqWksNJjhShK9WGoIp7Vq45rUugXM3nPx0KuvX0n5EnwsW5dtekuVxk
+         j/vA==
+X-Gm-Message-State: AOJu0Ywafm4XkPyppqQAOtm5dkzfg6J0UQngLTNZXpK8XF888oVLp4hz
+	SOAfhJvO/ErGLsLSIVxepRM=
+X-Google-Smtp-Source: AGHT+IHrAtN7LZkNf03QOXG8GL5AdPbgF5/rBKk+hdBcHgXDuq6+YX9HC4AtU5B+mXYXn+wbY/N6zw==
+X-Received: by 2002:a17:906:519a:b0:a27:7cc5:425d with SMTP id y26-20020a170906519a00b00a277cc5425dmr401094ejk.52.1703836668210;
+        Thu, 28 Dec 2023 23:57:48 -0800 (PST)
+Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.gmail.com with ESMTPSA id wh13-20020a170906fd0d00b00a2684d2e684sm8120865ejb.92.2023.12.28.23.57.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 28 Dec 2023 23:57:47 -0800 (PST)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH 1/2] arm64: dts: mediatek: mt7986: reorder properties
+Date: Fri, 29 Dec 2023 08:57:38 +0100
+Message-Id: <20231229075739.8328-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231228092014.23184-1-peter.tsao@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231228_210811_495646_2E07319C 
-X-CRM114-Status: GOOD (  18.08  )
+X-CRM114-CacheID: sfid-20231228_235751_198203_80C18245 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,226 +95,239 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Peter,
+From: Rafał Miłecki <rafal@milecki.pl>
 
-kernel test robot noticed the following build errors:
+Use order described as preferred in DTS Coding Style. Mostly just move
+"compatible", "reg" and "ranges" properties. In two nodes also move
+vendor-prefixed props down.
 
-[auto build test ERROR on bluetooth/master]
-[also build test ERROR on bluetooth-next/master linus/master v6.7-rc7 next-20231222]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+---
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 67 ++++++++++++-----------
+ 1 file changed, 34 insertions(+), 33 deletions(-)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Peter-Tsao/Bluetooth-btusb-Fix-MT7925-fail-to-send-download-patch-command/20231228-172328
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth.git master
-patch link:    https://lore.kernel.org/r/20231228092014.23184-1-peter.tsao%40mediatek.com
-patch subject: [PATCH] Bluetooth: btusb: Fix MT7925 fail to send download patch command
-config: arm64-defconfig (https://download.01.org/0day-ci/archive/20231229/202312291253.5LoPimum-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231229/202312291253.5LoPimum-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202312291253.5LoPimum-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/bluetooth/btusb.c: In function 'btusb_mtk_setup':
->> drivers/bluetooth/btusb.c:3122:63: error: 'val' undeclared (first use in this function)
-    3122 |                 btusb_mtk_uhw_reg_read(data, MT7925_SLPPROT, &val);
-         |                                                               ^~~
-   drivers/bluetooth/btusb.c:3122:63: note: each undeclared identifier is reported only once for each function it appears in
-
-
-vim +/val +3122 drivers/bluetooth/btusb.c
-
-  3068	
-  3069	static int btusb_mtk_setup(struct hci_dev *hdev)
-  3070	{
-  3071		struct btusb_data *data = hci_get_drvdata(hdev);
-  3072		struct btmtk_hci_wmt_params wmt_params;
-  3073		ktime_t calltime, delta, rettime;
-  3074		struct btmtk_tci_sleep tci_sleep;
-  3075		unsigned long long duration;
-  3076		struct sk_buff *skb;
-  3077		const char *fwname;
-  3078		int err, status;
-  3079		u32 dev_id = 0;
-  3080		char fw_bin_name[64];
-  3081		u32 fw_version = 0;
-  3082		u8 param;
-  3083		struct btmediatek_data *mediatek;
-  3084	
-  3085		calltime = ktime_get();
-  3086	
-  3087		err = btusb_mtk_id_get(data, 0x80000008, &dev_id);
-  3088		if (err < 0) {
-  3089			bt_dev_err(hdev, "Failed to get device id (%d)", err);
-  3090			return err;
-  3091		}
-  3092	
-  3093		if (!dev_id || dev_id != 0x7663) {
-  3094			err = btusb_mtk_id_get(data, 0x70010200, &dev_id);
-  3095			if (err < 0) {
-  3096				bt_dev_err(hdev, "Failed to get device id (%d)", err);
-  3097				return err;
-  3098			}
-  3099			err = btusb_mtk_id_get(data, 0x80021004, &fw_version);
-  3100			if (err < 0) {
-  3101				bt_dev_err(hdev, "Failed to get fw version (%d)", err);
-  3102				return err;
-  3103			}
-  3104		}
-  3105	
-  3106		mediatek = hci_get_priv(hdev);
-  3107		mediatek->dev_id = dev_id;
-  3108		mediatek->reset_sync = btusb_mtk_reset;
-  3109	
-  3110		err = btmtk_register_coredump(hdev, btusb_driver.name, fw_version);
-  3111		if (err < 0)
-  3112			bt_dev_err(hdev, "Failed to register coredump (%d)", err);
-  3113	
-  3114		switch (dev_id) {
-  3115		case 0x7663:
-  3116			fwname = FIRMWARE_MT7663;
-  3117			break;
-  3118		case 0x7668:
-  3119			fwname = FIRMWARE_MT7668;
-  3120			break;
-  3121		case 0x7925:
-> 3122			btusb_mtk_uhw_reg_read(data, MT7925_SLPPROT, &val);
-  3123			val |= SLPPROT_BYPASS;
-  3124			btusb_mtk_uhw_reg_write(data, MT7925_SLPPROT, val);
-  3125			fallthrough;
-  3126		case 0x7922:
-  3127		case 0x7961:
-  3128			if (dev_id == 0x7925)
-  3129				snprintf(fw_bin_name, sizeof(fw_bin_name),
-  3130					 "mediatek/mt%04x/BT_RAM_CODE_MT%04x_1_%x_hdr.bin",
-  3131					 dev_id & 0xffff, dev_id & 0xffff, (fw_version & 0xff) + 1);
-  3132			else
-  3133				snprintf(fw_bin_name, sizeof(fw_bin_name),
-  3134					 "mediatek/BT_RAM_CODE_MT%04x_1_%x_hdr.bin",
-  3135					 dev_id & 0xffff, (fw_version & 0xff) + 1);
-  3136	
-  3137			err = btmtk_setup_firmware_79xx(hdev, fw_bin_name,
-  3138							btusb_mtk_hci_wmt_sync);
-  3139			if (err < 0) {
-  3140				bt_dev_err(hdev, "Failed to set up firmware (%d)", err);
-  3141				return err;
-  3142			}
-  3143	
-  3144			/* It's Device EndPoint Reset Option Register */
-  3145			btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, MTK_EP_RST_IN_OUT_OPT);
-  3146	
-  3147			/* Enable Bluetooth protocol */
-  3148			param = 1;
-  3149			wmt_params.op = BTMTK_WMT_FUNC_CTRL;
-  3150			wmt_params.flag = 0;
-  3151			wmt_params.dlen = sizeof(param);
-  3152			wmt_params.data = &param;
-  3153			wmt_params.status = NULL;
-  3154	
-  3155			err = btusb_mtk_hci_wmt_sync(hdev, &wmt_params);
-  3156			if (err < 0) {
-  3157				bt_dev_err(hdev, "Failed to send wmt func ctrl (%d)", err);
-  3158				return err;
-  3159			}
-  3160	
-  3161			hci_set_msft_opcode(hdev, 0xFD30);
-  3162			hci_set_aosp_capable(hdev);
-  3163			goto done;
-  3164		default:
-  3165			bt_dev_err(hdev, "Unsupported hardware variant (%08x)",
-  3166				   dev_id);
-  3167			return -ENODEV;
-  3168		}
-  3169	
-  3170		/* Query whether the firmware is already download */
-  3171		wmt_params.op = BTMTK_WMT_SEMAPHORE;
-  3172		wmt_params.flag = 1;
-  3173		wmt_params.dlen = 0;
-  3174		wmt_params.data = NULL;
-  3175		wmt_params.status = &status;
-  3176	
-  3177		err = btusb_mtk_hci_wmt_sync(hdev, &wmt_params);
-  3178		if (err < 0) {
-  3179			bt_dev_err(hdev, "Failed to query firmware status (%d)", err);
-  3180			return err;
-  3181		}
-  3182	
-  3183		if (status == BTMTK_WMT_PATCH_DONE) {
-  3184			bt_dev_info(hdev, "firmware already downloaded");
-  3185			goto ignore_setup_fw;
-  3186		}
-  3187	
-  3188		/* Setup a firmware which the device definitely requires */
-  3189		err = btmtk_setup_firmware(hdev, fwname,
-  3190					   btusb_mtk_hci_wmt_sync);
-  3191		if (err < 0)
-  3192			return err;
-  3193	
-  3194	ignore_setup_fw:
-  3195		err = readx_poll_timeout(btusb_mtk_func_query, hdev, status,
-  3196					 status < 0 || status != BTMTK_WMT_ON_PROGRESS,
-  3197					 2000, 5000000);
-  3198		/* -ETIMEDOUT happens */
-  3199		if (err < 0)
-  3200			return err;
-  3201	
-  3202		/* The other errors happen in btusb_mtk_func_query */
-  3203		if (status < 0)
-  3204			return status;
-  3205	
-  3206		if (status == BTMTK_WMT_ON_DONE) {
-  3207			bt_dev_info(hdev, "function already on");
-  3208			goto ignore_func_on;
-  3209		}
-  3210	
-  3211		/* Enable Bluetooth protocol */
-  3212		param = 1;
-  3213		wmt_params.op = BTMTK_WMT_FUNC_CTRL;
-  3214		wmt_params.flag = 0;
-  3215		wmt_params.dlen = sizeof(param);
-  3216		wmt_params.data = &param;
-  3217		wmt_params.status = NULL;
-  3218	
-  3219		err = btusb_mtk_hci_wmt_sync(hdev, &wmt_params);
-  3220		if (err < 0) {
-  3221			bt_dev_err(hdev, "Failed to send wmt func ctrl (%d)", err);
-  3222			return err;
-  3223		}
-  3224	
-  3225	ignore_func_on:
-  3226		/* Apply the low power environment setup */
-  3227		tci_sleep.mode = 0x5;
-  3228		tci_sleep.duration = cpu_to_le16(0x640);
-  3229		tci_sleep.host_duration = cpu_to_le16(0x640);
-  3230		tci_sleep.host_wakeup_pin = 0;
-  3231		tci_sleep.time_compensation = 0;
-  3232	
-  3233		skb = __hci_cmd_sync(hdev, 0xfc7a, sizeof(tci_sleep), &tci_sleep,
-  3234				     HCI_INIT_TIMEOUT);
-  3235		if (IS_ERR(skb)) {
-  3236			err = PTR_ERR(skb);
-  3237			bt_dev_err(hdev, "Failed to apply low power setting (%d)", err);
-  3238			return err;
-  3239		}
-  3240		kfree_skb(skb);
-  3241	
-  3242	done:
-  3243		rettime = ktime_get();
-  3244		delta = ktime_sub(rettime, calltime);
-  3245		duration = (unsigned long long)ktime_to_ns(delta) >> 10;
-  3246	
-  3247		bt_dev_info(hdev, "Device setup in %llu usecs", duration);
-  3248	
-  3249		return 0;
-  3250	}
-  3251	
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+index fc751e049953..23feeff881de 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+@@ -27,34 +27,34 @@ cpus {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+ 		cpu0: cpu@0 {
+-			device_type = "cpu";
+ 			compatible = "arm,cortex-a53";
+-			enable-method = "psci";
+ 			reg = <0x0>;
++			device_type = "cpu";
++			enable-method = "psci";
+ 			#cooling-cells = <2>;
+ 		};
+ 
+ 		cpu1: cpu@1 {
+-			device_type = "cpu";
+ 			compatible = "arm,cortex-a53";
+-			enable-method = "psci";
+ 			reg = <0x1>;
++			device_type = "cpu";
++			enable-method = "psci";
+ 			#cooling-cells = <2>;
+ 		};
+ 
+ 		cpu2: cpu@2 {
+-			device_type = "cpu";
+ 			compatible = "arm,cortex-a53";
+-			enable-method = "psci";
+ 			reg = <0x2>;
++			device_type = "cpu";
++			enable-method = "psci";
+ 			#cooling-cells = <2>;
+ 		};
+ 
+ 		cpu3: cpu@3 {
+-			device_type = "cpu";
+-			enable-method = "psci";
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x3>;
++			device_type = "cpu";
++			enable-method = "psci";
+ 			#cooling-cells = <2>;
+ 		};
+ 	};
+@@ -131,22 +131,22 @@ timer {
+ 	};
+ 
+ 	soc {
+-		#address-cells = <2>;
+-		#size-cells = <2>;
+ 		compatible = "simple-bus";
+ 		ranges;
++		#address-cells = <2>;
++		#size-cells = <2>;
+ 
+ 		gic: interrupt-controller@c000000 {
+ 			compatible = "arm,gic-v3";
+-			#interrupt-cells = <3>;
+-			interrupt-parent = <&gic>;
+-			interrupt-controller;
+ 			reg = <0 0x0c000000 0 0x10000>,  /* GICD */
+ 			      <0 0x0c080000 0 0x80000>,  /* GICR */
+ 			      <0 0x0c400000 0 0x2000>,   /* GICC */
+ 			      <0 0x0c410000 0 0x1000>,   /* GICH */
+ 			      <0 0x0c420000 0 0x2000>;   /* GICV */
++			interrupt-parent = <&gic>;
+ 			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-controller;
++			#interrupt-cells = <3>;
+ 		};
+ 
+ 		infracfg: infracfg@10001000 {
+@@ -311,9 +311,9 @@ i2c0: i2c@11008000 {
+ 
+ 		spi0: spi@1100a000 {
+ 			compatible = "mediatek,mt7986-spi-ipm", "mediatek,spi-ipm";
++			reg = <0 0x1100a000 0 0x100>;
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+-			reg = <0 0x1100a000 0 0x100>;
+ 			interrupts = <GIC_SPI 140 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&topckgen CLK_TOP_MPLL_D2>,
+ 				 <&topckgen CLK_TOP_SPI_SEL>,
+@@ -325,9 +325,9 @@ spi0: spi@1100a000 {
+ 
+ 		spi1: spi@1100b000 {
+ 			compatible = "mediatek,mt7986-spi-ipm", "mediatek,spi-ipm";
++			reg = <0 0x1100b000 0 0x100>;
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+-			reg = <0 0x1100b000 0 0x100>;
+ 			interrupts = <GIC_SPI 141 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&topckgen CLK_TOP_MPLL_D2>,
+ 				 <&topckgen CLK_TOP_SPIM_MST_SEL>,
+@@ -389,7 +389,6 @@ mmc0: mmc@11230000 {
+ 		};
+ 
+ 		thermal: thermal@1100c800 {
+-			#thermal-sensor-cells = <1>;
+ 			compatible = "mediatek,mt7986-thermal";
+ 			reg = <0 0x1100c800 0 0x800>;
+ 			interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
+@@ -397,30 +396,30 @@ thermal: thermal@1100c800 {
+ 				 <&infracfg CLK_INFRA_ADC_26M_CK>,
+ 				 <&infracfg CLK_INFRA_ADC_FRC_CK>;
+ 			clock-names = "therm", "auxadc", "adc_32k";
+-			mediatek,auxadc = <&auxadc>;
+-			mediatek,apmixedsys = <&apmixedsys>;
+ 			nvmem-cells = <&thermal_calibration>;
+ 			nvmem-cell-names = "calibration-data";
++			#thermal-sensor-cells = <1>;
++			mediatek,auxadc = <&auxadc>;
++			mediatek,apmixedsys = <&apmixedsys>;
+ 		};
+ 
+ 		pcie: pcie@11280000 {
+ 			compatible = "mediatek,mt7986-pcie",
+ 				     "mediatek,mt8192-pcie";
++			reg = <0x00 0x11280000 0x00 0x4000>;
++			reg-names = "pcie-mac";
++			ranges = <0x82000000 0x00 0x20000000 0x00
++				  0x20000000 0x00 0x10000000>;
+ 			device_type = "pci";
+ 			#address-cells = <3>;
+ 			#size-cells = <2>;
+-			reg = <0x00 0x11280000 0x00 0x4000>;
+-			reg-names = "pcie-mac";
+ 			interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_HIGH>;
+ 			bus-range = <0x00 0xff>;
+-			ranges = <0x82000000 0x00 0x20000000 0x00
+-				  0x20000000 0x00 0x10000000>;
+ 			clocks = <&infracfg CLK_INFRA_IPCIE_PIPE_CK>,
+ 				 <&infracfg CLK_INFRA_IPCIE_CK>,
+ 				 <&infracfg CLK_INFRA_IPCIER_CK>,
+ 				 <&infracfg CLK_INFRA_IPCIEB_CK>;
+ 			clock-names = "pl_250m", "tl_26m", "peri_26m", "top_133m";
+-			status = "disabled";
+ 
+ 			phys = <&pcie_port PHY_TYPE_PCIE>;
+ 			phy-names = "pcie-phy";
+@@ -431,6 +430,8 @@ pcie: pcie@11280000 {
+ 					<0 0 0 2 &pcie_intc 1>,
+ 					<0 0 0 3 &pcie_intc 2>,
+ 					<0 0 0 4 &pcie_intc 3>;
++			status = "disabled";
++
+ 			pcie_intc: interrupt-controller {
+ 				#address-cells = <0>;
+ 				#interrupt-cells = <1>;
+@@ -441,9 +442,9 @@ pcie_intc: interrupt-controller {
+ 		pcie_phy: t-phy {
+ 			compatible = "mediatek,mt7986-tphy",
+ 				     "mediatek,generic-tphy-v2";
++			ranges;
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+-			ranges;
+ 			status = "disabled";
+ 
+ 			pcie_port: pcie-phy@11c00000 {
+@@ -468,9 +469,9 @@ thermal_calibration: calib@274 {
+ 		usb_phy: t-phy@11e10000 {
+ 			compatible = "mediatek,mt7986-tphy",
+ 				     "mediatek,generic-tphy-v2";
++			ranges = <0 0 0x11e10000 0x1700>;
+ 			#address-cells = <1>;
+ 			#size-cells = <1>;
+-			ranges = <0 0 0x11e10000 0x1700>;
+ 			status = "disabled";
+ 
+ 			u2port0: usb-phy@0 {
+@@ -498,11 +499,11 @@ u2port1: usb-phy@1000 {
+ 		};
+ 
+ 		ethsys: syscon@15000000 {
+-			 #address-cells = <1>;
+-			 #size-cells = <1>;
+ 			 compatible = "mediatek,mt7986-ethsys",
+ 				      "syscon";
+ 			 reg = <0 0x15000000 0 0x1000>;
++			 #address-cells = <1>;
++			 #size-cells = <1>;
+ 			 #clock-cells = <1>;
+ 			 #reset-cells = <1>;
+ 		};
+@@ -579,26 +580,26 @@ eth: ethernet@15100000 {
+ 					  <&topckgen CLK_TOP_SGM_325M_SEL>;
+ 			assigned-clock-parents = <&apmixedsys CLK_APMIXED_NET2PLL>,
+ 						 <&apmixedsys CLK_APMIXED_SGMPLL>;
++			#reset-cells = <1>;
++			#address-cells = <1>;
++			#size-cells = <0>;
+ 			mediatek,ethsys = <&ethsys>;
+ 			mediatek,sgmiisys = <&sgmiisys0>, <&sgmiisys1>;
+ 			mediatek,wed-pcie = <&wed_pcie>;
+ 			mediatek,wed = <&wed0>, <&wed1>;
+-			#reset-cells = <1>;
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+ 			status = "disabled";
+ 		};
+ 
+ 		wifi: wifi@18000000 {
+ 			compatible = "mediatek,mt7986-wmac";
++			reg = <0 0x18000000 0 0x1000000>,
++			      <0 0x10003000 0 0x1000>,
++			      <0 0x11d10000 0 0x1000>;
+ 			resets = <&watchdog MT7986_TOPRGU_CONSYS_SW_RST>;
+ 			reset-names = "consys";
+ 			clocks = <&topckgen CLK_TOP_CONN_MCUSYS_SEL>,
+ 				 <&topckgen CLK_TOP_AP2CNN_HOST_SEL>;
+ 			clock-names = "mcu", "ap2conn";
+-			reg = <0 0x18000000 0 0x1000000>,
+-			      <0 0x10003000 0 0x1000>,
+-			      <0 0x11d10000 0 0x1000>;
+ 			interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>,
+ 				     <GIC_SPI 214 IRQ_TYPE_LEVEL_HIGH>,
+ 				     <GIC_SPI 215 IRQ_TYPE_LEVEL_HIGH>,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.35.3
+
 
