@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63EE6C4706F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Dec 2023 02:01:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBBCBC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Dec 2023 02:01:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/vDByupUfyISXXTWuopoR7VUqbCKko4NXwHDyQ6l7KU=; b=RZKMOR+C1nAyykHsn2FQRejPKN
-	CxA6z2BrAYmKFG/zORLwJui67fMtpHgx/ztT9cJy+l/By44gzh6Pi7QOyZxwpu0TJlFQbOE0EApxs
-	vqcNm5fdE2sJOJ8aIno8tgfLFDbD+VDJLJdGzU41m9DhqEwBOmDYsuopk/2DYRtnc7L3pujIqQM0S
-	9g7wcH9Uz7LP3IaUb5xS/OiDj0UWClSXvVwZw6QPgQznSaZIrgDNXwV1Gvjzcl/PYuw+YWOEUg0DP
-	wW55UGx9oOXB7Oa8Mt1/JLMxOnVSbeeaU86nDV9/mZOLmDfDmEBJjkHa6dgSS2cw5Z2dO4uInTbIy
-	XR0qP29A==;
+	bh=ixki3DqzAq4cmzEmI1gi4aPq+TJbnvD0XOxbDCZxy9M=; b=PZtVORm2zKMlxnHnaSnXRDUwnV
+	NUvyBkK9Bo6TqbH21tDhS+YFpPEE6SyaNKYamfENUpKCPOc4r6/QtVvXF8j08IBEUuR/5OwTgv5bY
+	WOWbBnbMUERB6nioFzaTLtqV+d1vdDEgRDPWdyDUtcQntmEHhqblTwjGQ66X8lkYADTwzFUF7HB0Z
+	g1qblj7JYXnRdzKhpQCJoR8wbTGJLUc1vJje9545Ngrxp3HiO8vMsSBLv96/Eep246ViVUlbp24bk
+	PNnZoI7pjkTithfbUcmzgvurTktHMsvkTqqWC6DyePb76Wbwgy5l6HjuMgpXiUCPvgQ/YIkE8pXbZ
+	VJfXTIHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJ2BO-0004X0-1K;
-	Fri, 29 Dec 2023 02:01:06 +0000
+	id 1rJ2BQ-0004YW-2m;
+	Fri, 29 Dec 2023 02:01:08 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJ2BM-0004Vq-0w
+	id 1rJ2BN-0004W9-0v
 	for linux-mediatek@lists.infradead.org;
-	Fri, 29 Dec 2023 02:01:05 +0000
-X-UUID: 18b22748a5ee11eeafd70d0b34820190-20231228
+	Fri, 29 Dec 2023 02:01:06 +0000
+X-UUID: 17f6bb98a5ee11eeafd70d0b34820190-20231228
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=/vDByupUfyISXXTWuopoR7VUqbCKko4NXwHDyQ6l7KU=;
-	b=k91DBMWkCXQEd3tShwSy5JGGCi6eDpQNaBIJoXynjjzhFaOQQh3r0dXJbKPmMiMjrzAZ/ohcnILS1gs3Lp5MeLZgMHcZw36eSJDK/W0blkgI37iW57YEJPQraeGZhkcPAB1U/ebBRzUP7LDyRPCzsBsyTFVmPOUMsXEUjBSdIv0=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ixki3DqzAq4cmzEmI1gi4aPq+TJbnvD0XOxbDCZxy9M=;
+	b=B+uJC9BA++WsC7uUVw10EhPymb2YWMtjWUexzJY7VrAEL0hj5jHLcuUWczYjYVfpjP602SyQs11mfrXYTAOBIbNOSEomVZDlpXAbaO+fxL5i6CkhHzEdVHmZFZ6I/kYTm/Ao61Dm4MaTJaCmBzxCBXW/Xaf1oWGE7lM23oH0NhQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:c0e2e277-68c1-48cd-9a64-e62e3b6f5cee,IP:0,U
+X-CID-O-INFO: VERSION:1.1.35,REQID:f91155cd-8141-4458-aa54-dc635152cc91,IP:0,U
 	RL:0,TC:0,Content:-32768,EDM:-32768,RT:0,SF:-32768,FILE:0,BULK:-32768,RULE
 	:Release_Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:8239c87e-4f93-4875-95e7-8c66ea833d57,B
+X-CID-META: VersionHash:5d391d7,CLOUDID:8039c87e-4f93-4875-95e7-8c66ea833d57,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:nil,EDM:nil,IP:ni
 	l,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
 	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 18b22748a5ee11eeafd70d0b34820190-20231228
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 17f6bb98a5ee11eeafd70d0b34820190-20231228
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
 	(envelope-from <mingyen.hsieh@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1243839783; Thu, 28 Dec 2023 19:00:53 -0700
+	with ESMTP id 1332755937; Thu, 28 Dec 2023 19:00:51 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Fri, 29 Dec 2023 10:00:16 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -64,18 +64,17 @@ CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
 	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
 	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
 	<mingyen.hsieh@mediatek.com>
-Subject: [PATCH v1 07/10] wifi: mt76: mt7925: fix the wrong header translation config
-Date: Fri, 29 Dec 2023 10:00:06 +0800
-Message-ID: <20231229020009.12385-8-mingyen.hsieh@mediatek.com>
+Subject: [PATCH v1 10/10] wifi: mt76: mt7925: update PCIe DMA settings
+Date: Fri, 29 Dec 2023 10:00:09 +0800
+Message-ID: <20231229020009.12385-11-mingyen.hsieh@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231229020009.12385-1-mingyen.hsieh@mediatek.com>
 References: <20231229020009.12385-1-mingyen.hsieh@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231228_180104_337712_E3DC16CE 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231228_180105_325947_C9AC4138 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,86 +89,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+From: Deren Wu <deren.wu@mediatek.com>
 
-The header translation config should set to broadcast and unicast
-cases correctly, not only unicast case. And also remove the cmds
-of wtbl (wlan table) series, because these MCU commands have
-already been replaced by other commands in mt7925.
+Fix the wrong WFDMA settings to improve TX performance.
 
 Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 32 +++++--------------
- 1 file changed, 8 insertions(+), 24 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt792x_dma.c  | 13 ++++++++++---
+ drivers/net/wireless/mediatek/mt76/mt792x_regs.h |  5 +++++
+ 2 files changed, 15 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 8c3233182083..932ecf38672c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -814,6 +814,7 @@ mt7925_mcu_sta_hdr_trans_tlv(struct sk_buff *skb,
- 			     struct ieee80211_vif *vif,
- 			     struct ieee80211_sta *sta)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
+index 488326ce5ed4..8fa36b59e738 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
+@@ -123,14 +123,13 @@ static void mt792x_dma_prefetch(struct mt792x_dev *dev)
+ 
+ int mt792x_dma_enable(struct mt792x_dev *dev)
  {
-+	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
- 	struct sta_rec_hdr_trans *hdr_trans;
- 	struct mt76_wcid *wcid;
- 	struct tlv *tlv;
-@@ -827,7 +828,11 @@ mt7925_mcu_sta_hdr_trans_tlv(struct sk_buff *skb,
- 	else
- 		hdr_trans->from_ds = true;
- 
--	wcid = (struct mt76_wcid *)sta->drv_priv;
-+	if (sta)
-+		wcid = (struct mt76_wcid *)sta->drv_priv;
-+	else
-+		wcid = &mvif->sta.wcid;
-+
- 	if (!wcid)
- 		return;
- 
-@@ -1577,8 +1582,6 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
- {
- 	struct mt76_vif *mvif = (struct mt76_vif *)info->vif->drv_priv;
- 	struct mt76_dev *dev = phy->dev;
--	struct wtbl_req_hdr *wtbl_hdr;
--	struct tlv *sta_wtbl;
- 	struct sk_buff *skb;
- 
- 	skb = __mt76_connac_mcu_alloc_sta_req(dev, mvif, info->wcid,
-@@ -1602,30 +1605,11 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
- 		mt7925_mcu_sta_state_v2_tlv(phy, skb, info->sta,
- 					    info->vif, info->rcpi,
- 					    info->state);
--		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->sta);
- 		mt7925_mcu_sta_mld_tlv(skb, info->vif, info->sta);
- 	}
- 
--	sta_wtbl = mt76_connac_mcu_add_tlv(skb, STA_REC_WTBL,
--					   sizeof(struct tlv));
+-	if (is_mt7925(&dev->mt76))
+-		mt76_rmw(dev, MT_UWFDMA0_GLO_CFG_EXT1, BIT(28), BIT(28));
 -
--	wtbl_hdr = mt76_connac_mcu_alloc_wtbl_req(dev, info->wcid,
--						  WTBL_RESET_AND_SET,
--						  sta_wtbl, &skb);
--	if (IS_ERR(wtbl_hdr))
--		return PTR_ERR(wtbl_hdr);
--
--	if (info->enable) {
--		mt76_connac_mcu_wtbl_generic_tlv(dev, skb, info->vif,
--						 info->sta, sta_wtbl,
--						 wtbl_hdr);
--		mt76_connac_mcu_wtbl_hdr_trans_tlv(skb, info->vif, info->wcid,
--						   sta_wtbl, wtbl_hdr);
--		if (info->sta)
--			mt76_connac_mcu_wtbl_ht_tlv(dev, skb, info->sta,
--						    sta_wtbl, wtbl_hdr,
--						    true, true);
--	}
-+	if (info->enable)
-+		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->sta);
+ 	/* configure perfetch settings */
+ 	mt792x_dma_prefetch(dev);
  
- 	return mt76_mcu_skb_send_msg(dev, skb, info->cmd, true);
- }
+ 	/* reset dma idx */
+ 	mt76_wr(dev, MT_WFDMA0_RST_DTX_PTR, ~0);
++	if (is_mt7925(&dev->mt76))
++		mt76_wr(dev, MT_WFDMA0_RST_DRX_PTR, ~0);
+ 
+ 	/* configure delay interrupt */
+ 	mt76_wr(dev, MT_WFDMA0_PRI_DLY_INT_CFG0, 0);
+@@ -140,12 +139,20 @@ int mt792x_dma_enable(struct mt792x_dev *dev)
+ 		 MT_WFDMA0_GLO_CFG_FIFO_LITTLE_ENDIAN |
+ 		 MT_WFDMA0_GLO_CFG_CLK_GAT_DIS |
+ 		 MT_WFDMA0_GLO_CFG_OMIT_TX_INFO |
++		 FIELD_PREP(MT_WFDMA0_GLO_CFG_DMA_SIZE, 3) |
++		 MT_WFDMA0_GLO_CFG_FIFO_DIS_CHECK |
++		 MT_WFDMA0_GLO_CFG_RX_WB_DDONE |
+ 		 MT_WFDMA0_GLO_CFG_CSR_DISP_BASE_PTR_CHAIN_EN |
+ 		 MT_WFDMA0_GLO_CFG_OMIT_RX_INFO_PFET2);
+ 
+ 	mt76_set(dev, MT_WFDMA0_GLO_CFG,
+ 		 MT_WFDMA0_GLO_CFG_TX_DMA_EN | MT_WFDMA0_GLO_CFG_RX_DMA_EN);
+ 
++	if (is_mt7925(&dev->mt76)) {
++		mt76_rmw(dev, MT_UWFDMA0_GLO_CFG_EXT1, BIT(28), BIT(28));
++		mt76_set(dev, MT_WFDMA0_INT_RX_PRI, 0x0F00);
++		mt76_set(dev, MT_WFDMA0_INT_TX_PRI, 0x7F00);
++	}
+ 	mt76_set(dev, MT_WFDMA_DUMMY_CR, MT_WFDMA_NEED_REINIT);
+ 
+ 	/* enable interrupts for TX/RX rings */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
+index d7f9b24cd665..458cfd0260b1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
+@@ -292,9 +292,12 @@
+ #define MT_WFDMA0_GLO_CFG_TX_DMA_BUSY	BIT(1)
+ #define MT_WFDMA0_GLO_CFG_RX_DMA_EN	BIT(2)
+ #define MT_WFDMA0_GLO_CFG_RX_DMA_BUSY	BIT(3)
++#define MT_WFDMA0_GLO_CFG_DMA_SIZE	GENMASK(5, 4)
+ #define MT_WFDMA0_GLO_CFG_TX_WB_DDONE	BIT(6)
+ #define MT_WFDMA0_GLO_CFG_FW_DWLD_BYPASS_DMASHDL BIT(9)
++#define MT_WFDMA0_GLO_CFG_FIFO_DIS_CHECK	BIT(11)
+ #define MT_WFDMA0_GLO_CFG_FIFO_LITTLE_ENDIAN	BIT(12)
++#define MT_WFDMA0_GLO_CFG_RX_WB_DDONE	BIT(13)
+ #define MT_WFDMA0_GLO_CFG_CSR_DISP_BASE_PTR_CHAIN_EN BIT(15)
+ #define MT_WFDMA0_GLO_CFG_OMIT_RX_INFO_PFET2	BIT(21)
+ #define MT_WFDMA0_GLO_CFG_OMIT_RX_INFO	BIT(27)
+@@ -322,6 +325,8 @@
+ 
+ #define MT_WFDMA0_RST_DTX_PTR		MT_WFDMA0(0x20c)
+ #define MT_WFDMA0_RST_DRX_PTR		MT_WFDMA0(0x280)
++#define MT_WFDMA0_INT_RX_PRI		MT_WFDMA0(0x298)
++#define MT_WFDMA0_INT_TX_PRI		MT_WFDMA0(0x29c)
+ #define MT_WFDMA0_GLO_CFG_EXT0		MT_WFDMA0(0x2b0)
+ #define MT_WFDMA0_CSR_TX_DMASHDL_ENABLE	BIT(6)
+ #define MT_WFDMA0_PRI_DLY_INT_CFG0	MT_WFDMA0(0x2f0)
 -- 
 2.18.0
 
