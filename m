@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EC81C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Dec 2023 03:10:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEB8AC47073
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Dec 2023 03:10:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/vDByupUfyISXXTWuopoR7VUqbCKko4NXwHDyQ6l7KU=; b=0Z3kXbItCn0TMzk++l8hjdVecC
-	VLVYeEfcPF8mVl6FojpzQiQLJo59BIgGyXJIYV2RNL1YVUxs3RIHWABupLBid3YGQypnyJSAxZiEa
-	XHgAviB+md/Ru2BzyDuhnLQ579DycMaf3J0HNrWDIib5mO1JanpMF3hN3S/ovpHyzghLheUN4Topg
-	fqPL90ITX4DDvFcvj5kVEVgbfwLHRVYDMMpV1FBLwjoSHEOngK35e4RoPzxplnnEzSUJBnpo2f7yU
-	CqySfnV0j4VYWoX5tGAZfQ93tE/rMRVw8UGmLw/moUhHFnqm+c/+soyaH6qr5sp1cWE3dUaaONuNo
-	Vc7U5wJg==;
+	bh=IGGC5pOBDPEDthaV7kHlRmsE6IFZQlw9U1xCEMj9Inw=; b=M4ZR9STXEmnvjo6x1z91BBud1m
+	wEMOYecwOWUgQKFOP91a9hQPyCkasYFUGnKtCIa/zFu8qUA+oCMeBVWtWNUkLs290wv/A6Gy+o/KP
+	J5GKElKzexMj6/2VNSnuPo9s/WDIowsWYWSOCe4m+HarSNmZj9WGPDGwD7xteEiB/tMyXeKlM502/
+	9JgpFvrg5gqLrv7E2m3ZKllbhJvAUa4iRZUlEqgbmz7DXRmm/fbkxb9r/jtt3EyBtQSRclMnuFE/N
+	MM5YSxW10NQ6XWOeO425s81kv2VSBkBQ3DK57kQy59ud2bWnPTK7p2CBaUWj2PJORu1zqCe2giYty
+	UQq36QVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJ3GL-0008Gn-1X;
-	Fri, 29 Dec 2023 03:10:17 +0000
+	id 1rJ3GN-0008I5-2l;
+	Fri, 29 Dec 2023 03:10:19 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJ3GI-0008FW-0H
+	id 1rJ3GL-0008Gb-09
 	for linux-mediatek@lists.infradead.org;
-	Fri, 29 Dec 2023 03:10:15 +0000
-X-UUID: c6a171d4a5f711ee9a662f17bb45267e-20231228
+	Fri, 29 Dec 2023 03:10:18 +0000
+X-UUID: c8d93e3ca5f711ee9a662f17bb45267e-20231228
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=/vDByupUfyISXXTWuopoR7VUqbCKko4NXwHDyQ6l7KU=;
-	b=SZr3L481QVMQ4s9NfDSPccWv5elbNbRMeXNRdRJuyo2XgawhkQiBUjXvNdZ9ZCewN5ma/Smu5Ge/hydQVPEmqcOBwSVMJm1G+1uJX+Uq7Y/L+1lcV9RVWlvvmwENf9tTDT9EzeQADum5kh4fTPCm0sEDwiDv8rdGf2ZJGbOOWp0=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=IGGC5pOBDPEDthaV7kHlRmsE6IFZQlw9U1xCEMj9Inw=;
+	b=MSvi+dR2to0AQAn5sE7F9oTJiX+BrJ3fuST2Z0g1sFYwFAOuZNx14FcmNdd4G+mptq7T1rMfK6D/RXD15EjWuWokFYU03FDRD/VygFIWeTwcYwIzOG5VPbviKuK9nhOqq9m1D6rgozi7pJK3/RX0KWAApauuZQJi2/vRGPpnuRc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:7a8d4586-aa0f-4df9-8c08-328f8ab997dc,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:a6ecaf8d-e2c0-40b0-a8fe-7c7e47299109,B
+X-CID-O-INFO: VERSION:1.1.35,REQID:dc28b6fa-b963-4b33-8ffe-a35fd64bbdd5,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:5d391d7,CLOUDID:c4ecaf8d-e2c0-40b0-a8fe-7c7e47299109,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: c6a171d4a5f711ee9a662f17bb45267e-20231228
+X-UUID: c8d93e3ca5f711ee9a662f17bb45267e-20231228
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <mingyen.hsieh@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1163714825; Thu, 28 Dec 2023 20:10:10 -0700
+	with ESMTP id 939598658; Thu, 28 Dec 2023 20:10:14 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Fri, 29 Dec 2023 11:09:41 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -62,19 +62,32 @@ CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
 	<robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
 	<Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
 	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
-	<mingyen.hsieh@mediatek.com>
-Subject: [PATCH v2 07/10] wifi: mt76: mt7925: fix the wrong header translation config
-Date: Fri, 29 Dec 2023 11:09:34 +0800
-Message-ID: <20231229030937.22605-8-mingyen.hsieh@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, Quan Zhou <quan.zhou@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Subject: [PATCH v2 08/10] wifi: mt76: mt7925: add flow to avoid chip bt function fail
+Date: Fri, 29 Dec 2023 11:09:35 +0800
+Message-ID: <20231229030937.22605-9-mingyen.hsieh@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20231229030937.22605-1-mingyen.hsieh@mediatek.com>
 References: <20231229030937.22605-1-mingyen.hsieh@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--2.224500-8.000000
+X-TMASE-MatchedRID: uyqRcNBN+ubpRzKqh62z7I4V8tCoXo/SjzwigoyOACRTCQL4BWtbpGDb
+	UAcMOUZ0MbcpjNXxwebhihMBM8ipLFilxHYfa34UH5YQyOg71ZZMkOX0UoduuQqiCYa6w8tvIub
+	j9bOa7Mt5lXU337u2SOWYSIzA/m69DPIzF4wRfrAURSScn+QSXt0H8LFZNFG7doMssNsUwYVpHR
+	SnbupUBB1x/By+gvnhaTKhO+lvTeQvZkbHd6W91e0kc/JNjS08EgywJelLOq9HqzOtgqvuRwy2w
+	bvlZJdK7IZlhIDgeCWAhOcaQrQ0U1GyRcoeF18qmKP0zzpTAeGwod8xOMKmvA1Aka/KIp/p
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--2.224500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 3BC64EDDF9AEFF503E50CBCCAFCD4DA3910AC5A0458AE190E40EA9D6CC0AFD272000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231228_191014_131962_C2F1FC4D 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20231228_191017_093800_295AF05B 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,86 +102,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+From: Quan Zhou <quan.zhou@mediatek.com>
 
-The header translation config should set to broadcast and unicast
-cases correctly, not only unicast case. And also remove the cmds
-of wtbl (wlan table) series, because these MCU commands have
-already been replaced by other commands in mt7925.
+A sub-process of Wifi L0.5 reset will make chip common partition
+enter low power, and have chance lead to Bluetooth host-to-chip
+command timeout, modify the software flow according to the chip's
+design to solve the problem.
 
 Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
+Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
 Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 32 +++++--------------
- 1 file changed, 8 insertions(+), 24 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7925/pci.c  | 2 ++
+ drivers/net/wireless/mediatek/mt76/mt792x_regs.h | 3 +++
+ 2 files changed, 5 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 8c3233182083..932ecf38672c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -814,6 +814,7 @@ mt7925_mcu_sta_hdr_trans_tlv(struct sk_buff *skb,
- 			     struct ieee80211_vif *vif,
- 			     struct ieee80211_sta *sta)
- {
-+	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
- 	struct sta_rec_hdr_trans *hdr_trans;
- 	struct mt76_wcid *wcid;
- 	struct tlv *tlv;
-@@ -827,7 +828,11 @@ mt7925_mcu_sta_hdr_trans_tlv(struct sk_buff *skb,
- 	else
- 		hdr_trans->from_ds = true;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+index 734f31ee40d3..7661098a02b8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+@@ -386,6 +386,8 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
  
--	wcid = (struct mt76_wcid *)sta->drv_priv;
-+	if (sta)
-+		wcid = (struct mt76_wcid *)sta->drv_priv;
-+	else
-+		wcid = &mvif->sta.wcid;
+ 	dev_info(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
+ 
++	mt76_rmw_field(dev, MT_HW_EMI_CTL, MT_HW_EMI_CTL_SLPPROT_EN, 1);
 +
- 	if (!wcid)
- 		return;
+ 	ret = mt792x_wfsys_reset(dev);
+ 	if (ret)
+ 		goto err_free_dev;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
+index a99af23e4b56..d7f9b24cd665 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
+@@ -389,6 +389,9 @@
+ #define MT_HW_CHIPID			0x70010200
+ #define MT_HW_REV			0x70010204
  
-@@ -1577,8 +1582,6 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
- {
- 	struct mt76_vif *mvif = (struct mt76_vif *)info->vif->drv_priv;
- 	struct mt76_dev *dev = phy->dev;
--	struct wtbl_req_hdr *wtbl_hdr;
--	struct tlv *sta_wtbl;
- 	struct sk_buff *skb;
- 
- 	skb = __mt76_connac_mcu_alloc_sta_req(dev, mvif, info->wcid,
-@@ -1602,30 +1605,11 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
- 		mt7925_mcu_sta_state_v2_tlv(phy, skb, info->sta,
- 					    info->vif, info->rcpi,
- 					    info->state);
--		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->sta);
- 		mt7925_mcu_sta_mld_tlv(skb, info->vif, info->sta);
- 	}
- 
--	sta_wtbl = mt76_connac_mcu_add_tlv(skb, STA_REC_WTBL,
--					   sizeof(struct tlv));
--
--	wtbl_hdr = mt76_connac_mcu_alloc_wtbl_req(dev, info->wcid,
--						  WTBL_RESET_AND_SET,
--						  sta_wtbl, &skb);
--	if (IS_ERR(wtbl_hdr))
--		return PTR_ERR(wtbl_hdr);
--
--	if (info->enable) {
--		mt76_connac_mcu_wtbl_generic_tlv(dev, skb, info->vif,
--						 info->sta, sta_wtbl,
--						 wtbl_hdr);
--		mt76_connac_mcu_wtbl_hdr_trans_tlv(skb, info->vif, info->wcid,
--						   sta_wtbl, wtbl_hdr);
--		if (info->sta)
--			mt76_connac_mcu_wtbl_ht_tlv(dev, skb, info->sta,
--						    sta_wtbl, wtbl_hdr,
--						    true, true);
--	}
-+	if (info->enable)
-+		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->sta);
- 
- 	return mt76_mcu_skb_send_msg(dev, skb, info->cmd, true);
- }
++#define MT_HW_EMI_CTL			0x18011100
++#define MT_HW_EMI_CTL_SLPPROT_EN	BIT(1)
++
+ #define MT_PCIE_MAC_BASE		0x10000
+ #define MT_PCIE_MAC(ofs)		(MT_PCIE_MAC_BASE + (ofs))
+ #define MT_PCIE_MAC_INT_ENABLE		MT_PCIE_MAC(0x188)
 -- 
 2.18.0
 
