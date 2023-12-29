@@ -4,63 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6A7EC47073
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Dec 2023 18:39:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 102A8C46CD4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Dec 2023 21:31:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9vyaVc2ZBYpAXsk6Pbvuihq+ETaJUl1FbvatQj74u8g=; b=Y1EtCyuRXZ3QmoDPCBdhgRKJU3
-	hIvUTgFkj3OGEv1pdolJa7JYFCtpySJPoj87jdnro8XOJqCxsNG+Bg0mhXlNFm/Ibc19FiaNwuoFT
-	aP/ygHfEpXtZ532D8nryE8eTdxjY3Hrikq2B0wEdWtK5exgLY7egUUVO5XHnC8ywetXOrcD+A4U+9
-	BVH6E6hfiMpsLXHodnXrvz0++JOaYmgeT8xbEFBF6IJDwGWZvap3ClY8vMTpiWCk5PZEm6Wt3QQVb
-	erVl5Kk+i7OTQcTOYJ0paZy/T0SI3iFa7pEl4fc2fWIzK/8CbnsbZo6IzMpgtRrKbn+F7bO3HWn9q
-	5Qh68HZg==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LXfvJDZMYr06hSjzDAHn45R5+yBGyiltXIa/WtMIqNk=; b=mxIxOQFKhAsrMQPH/HwLlce2xa
+	ypJ8xDaahJuoaVZCe8soyyTkvt/OEvpe3oArrVuxWbNy7fwUk9NeNxU4GqopdIo5K0ywPVqzow7gV
+	2fiJz3EEWSMEY27mmQlIGsCVfsU3DahTn4/8OgkvoVXqcMtj2HpohF2zcDWfEU4Az3MDvJc2fH88+
+	1axam2gUxlYyJbMoNKqkT0EhMA6CDrwCbqSzLh2uy5SMuOaVvyc9aYF7iVqBNijOpvg5EDoMLcZB8
+	YO07Ztp+PhJRA64gZAzEVqu3Y1vlV4AXkru/c2ouTEGRzSQk5Y2RA3AvevRCch1NXztYGAKh13QUb
+	2KUJZsnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJHlK-001K1H-2x;
-	Fri, 29 Dec 2023 18:39:14 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rJKRh-001a04-0T;
+	Fri, 29 Dec 2023 21:31:09 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJHlH-001K0b-22;
-	Fri, 29 Dec 2023 18:39:13 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9666A611EE;
-	Fri, 29 Dec 2023 18:39:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8EDC1C433C7;
-	Fri, 29 Dec 2023 18:39:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1703875150;
-	bh=sTxR6z5JOWgh+34pWTsQbRixIn+UfsgPr8ZOpdldSIg=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=rW4QzQXsxou3N/rtnJwoktJXEcINLWb+6cYcPwnu1jSUyQ/4Guh0j5AGr5fJeCsGi
-	 u3IBxg42F87pjcnhpE5NyrJ/u14mgxwUIu/06jXkJXgNUfAjk0ehb4+igcjBiV+kFS
-	 16TufM4Hc41S0hWv4vaf+24mf2qe/mnemI4BHe01NkbAoAWWvG5LkLbKeo03XiAISk
-	 6/UI4LPySjsbOLv3fPyTKdxYnmxcDp7If7nGNGTGzKuoEiYy70vSesajOxdd1uYhwz
-	 t51NAJJ/EE1oSMmBfUsQWEcNvsHrKD4ht76FY3HJaKyAvLltXuHhD996FfxuMCaxAn
-	 nQloDkoTHS5bQ==
-From: Mark Brown <broonie@kernel.org>
-To: linux-sound@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- Eugen Hristev <eugen.hristev@collabora.com>
-Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- allen-kh.cheng@mediatek.com, jiaxin.yu@mediatek.com, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- kernel@collabora.com
-In-Reply-To: <20231229114342.195867-1-eugen.hristev@collabora.com>
-References: <20231229114342.195867-1-eugen.hristev@collabora.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8186: fix AUD_PAD_TOP register and
- offset
-Message-Id: <170387514707.3010118.10483161102893986503.b4-ty@kernel.org>
-Date: Fri, 29 Dec 2023 18:39:07 +0000
+	id 1rJKRe-001ZyC-0e;
+	Fri, 29 Dec 2023 21:31:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1703885462;
+	bh=h3ANz3W0DslZaQwI4kM53iFECoCiLF7i5w4P/6cAJS8=;
+	h=From:To:Cc:Subject:Date:From;
+	b=3gOIgpCN0rHmhUVUO1x2NnY6I/4ngpObwu+s2JXdw+Ag6ioDeIyjdvrO/Uk+g24Sq
+	 D7Ne+1Ni/VgEbpuKRL05s5UI27ctN3ZkHkPeyWm0iAlwHZ7ytovnXYUueBkoukDqF9
+	 UjNMiOP/HVjzYwyncI8WR8sMPsAbOpIz08kRmfrVaazWFSIU22xTHrEe7Yym8yFj2n
+	 8mx5y53Iy/5e4FPWcsgN+9YDVEefyQ0LLxiqTW5vhXwLURDC58gwj0FBH/P69XU/7w
+	 YwoqaLOCC5jW3B4Dgun60zgg8Bice0jLp0IkvzslrLeytSWfTv9NQqD5card03KGyX
+	 ZVcVV3emGe49A==
+Received: from localhost.localdomain (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 44A0E3781FD5;
+	Fri, 29 Dec 2023 21:30:56 +0000 (UTC)
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Viresh Kumar <viresh.kumar@linaro.org>,
+	"Rafael J . Wysocki" <rafael@kernel.org>
+Cc: kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Hector Yuan <hector.yuan@mediatek.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-pm@vger.kernel.org
+Subject: [PATCH 1/2] dt-bindings: cpufreq: Add big CPU supply
+Date: Fri, 29 Dec 2023 18:28:39 -0300
+Message-ID: <20231229212853.277334-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13-dev-0438c
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231229_103911_736533_64916DB0 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20231229_133106_452147_CD686D0E 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,40 +84,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 29 Dec 2023 13:43:42 +0200, Eugen Hristev wrote:
-> AUD_PAD_TOP widget's correct register is AFE_AUD_PAD_TOP , and not zero.
-> Having a zero as register, it would mean that the `snd_soc_dapm_new_widgets`
-> would try to read the register at offset zero when trying to get the power
-> status of this widget, which is incorrect.
-> 
-> 
+The performance-controller hardware block on MediaTek SoCs is
+responsible for controlling the frequency of the CPUs. As such, it needs
+any CPU regulator to have been configured prior to initializing. Add a
+phandle in the binding so this dependency can be described.
 
-Applied to
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+ .../devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml        | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Thanks!
-
-[1/1] ASoC: mediatek: mt8186: fix AUD_PAD_TOP register and offset
-      commit: 38744c3fa00109c51076121c2deb4f02e2f09194
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
+index d0aecde2b89b..d75b01d04998 100644
+--- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
++++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
+@@ -33,6 +33,8 @@ properties:
+       performance domains.
+     const: 1
+ 
++  big-cpus-supply: true
++
+ required:
+   - compatible
+   - reg
+-- 
+2.43.0
 
 
