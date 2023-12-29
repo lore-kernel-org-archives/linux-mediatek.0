@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 102A8C46CD4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Dec 2023 21:31:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35481C47074
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Dec 2023 21:31:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LXfvJDZMYr06hSjzDAHn45R5+yBGyiltXIa/WtMIqNk=; b=mxIxOQFKhAsrMQPH/HwLlce2xa
-	ypJ8xDaahJuoaVZCe8soyyTkvt/OEvpe3oArrVuxWbNy7fwUk9NeNxU4GqopdIo5K0ywPVqzow7gV
-	2fiJz3EEWSMEY27mmQlIGsCVfsU3DahTn4/8OgkvoVXqcMtj2HpohF2zcDWfEU4Az3MDvJc2fH88+
-	1axam2gUxlYyJbMoNKqkT0EhMA6CDrwCbqSzLh2uy5SMuOaVvyc9aYF7iVqBNijOpvg5EDoMLcZB8
-	YO07Ztp+PhJRA64gZAzEVqu3Y1vlV4AXkru/c2ouTEGRzSQk5Y2RA3AvevRCch1NXztYGAKh13QUb
-	2KUJZsnQ==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e0uNg0JJza3ekbCEOERdWEzmvDh/VhU6Jzy3Re4RDF0=; b=ULO0ohMgeeBMTlQcmrhE17t/yH
+	FVM3v8iUB1VPWqReioVhn+C1+mKohR3r/8KoB0fqc1CBB1W2BLA0UpJ85vFAMWi1g71t/lNBIW1Fg
+	K5NaZ/d5tdd/BsROCCc95SIlieW6NWmhubpViKsWX+Wr67q7oLMopWObm4tn85zDfeF1dvr9Hf2d0
+	rMdWO3cw7HQQW6RMq5hAC6EvKjgj6JArbVH+inw/MVm5NzkSgtusHl8WruX7rZUkR8+2Ti4PXUg3p
+	2ogJd8Evv9i0XK9d18HZ1LkK+MsLhjr71OMITkyLRqucCv5X7nt3I9hO1WEILmjN0zYBkZrIINxCj
+	XevDttxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJKRh-001a04-0T;
-	Fri, 29 Dec 2023 21:31:09 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rJKRq-001a2P-0p;
+	Fri, 29 Dec 2023 21:31:18 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJKRe-001ZyC-0e;
-	Fri, 29 Dec 2023 21:31:07 +0000
+	id 1rJKRi-001Zzr-1F;
+	Fri, 29 Dec 2023 21:31:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1703885462;
-	bh=h3ANz3W0DslZaQwI4kM53iFECoCiLF7i5w4P/6cAJS8=;
-	h=From:To:Cc:Subject:Date:From;
-	b=3gOIgpCN0rHmhUVUO1x2NnY6I/4ngpObwu+s2JXdw+Ag6ioDeIyjdvrO/Uk+g24Sq
-	 D7Ne+1Ni/VgEbpuKRL05s5UI27ctN3ZkHkPeyWm0iAlwHZ7ytovnXYUueBkoukDqF9
-	 UjNMiOP/HVjzYwyncI8WR8sMPsAbOpIz08kRmfrVaazWFSIU22xTHrEe7Yym8yFj2n
-	 8mx5y53Iy/5e4FPWcsgN+9YDVEefyQ0LLxiqTW5vhXwLURDC58gwj0FBH/P69XU/7w
-	 YwoqaLOCC5jW3B4Dgun60zgg8Bice0jLp0IkvzslrLeytSWfTv9NQqD5card03KGyX
-	 ZVcVV3emGe49A==
+	s=mail; t=1703885467;
+	bh=XL6wkiD2HYx6HaI4hGDV0Keb34y3XqC2DjGmqSSBy68=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=HPgwDdLKJcKpAtUbU9HxQhIW+JM1CO3SqRQv5YJMD2R4TwrVN+DJJBNTbNklpO7nS
+	 Bfklfoae+bCfaUPBoDG9McM1aebFRKxtHozaTaQZ2xjsuoC8tUX2utslWOKSADvf04
+	 X3SsEQVGUlzn4VfGVG6l45wtPcjIY10tTUeqZE1BMjpgEdkp9qbFSx/B+rl2z0vc6r
+	 Pc3Z+/REaBuT1b029wtURtyKCBUpAcvbzgfDOiGMi98HAa1J+/5/Kj+5QPvT44UK92
+	 9/ZIkguje/JeQsZ+vuHU81HeqEy4/e9iz0AM/HwPdFOdLMqtxuaV3IA0ALA/L8jQWL
+	 Pfsh9wZQX7AdA==
 Received: from localhost.localdomain (zone.collabora.co.uk [167.235.23.81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 44A0E3781FD5;
-	Fri, 29 Dec 2023 21:30:56 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E0A023781FDE;
+	Fri, 29 Dec 2023 21:31:02 +0000 (UTC)
 From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
 To: Viresh Kumar <viresh.kumar@linaro.org>,
 	"Rafael J . Wysocki" <rafael@kernel.org>
@@ -50,26 +50,25 @@ Cc: kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Hector Yuan <hector.yuan@mediatek.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	Rob Herring <robh+dt@kernel.org>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-pm@vger.kernel.org
-Subject: [PATCH 1/2] dt-bindings: cpufreq: Add big CPU supply
-Date: Fri, 29 Dec 2023 18:28:39 -0300
-Message-ID: <20231229212853.277334-1-nfraprado@collabora.com>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 2/2] arm64: dts: mediatek: cherry: Add CPU supply dependency to cpufreq-hw
+Date: Fri, 29 Dec 2023 18:28:40 -0300
+Message-ID: <20231229212853.277334-2-nfraprado@collabora.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20231229212853.277334-1-nfraprado@collabora.com>
+References: <20231229212853.277334-1-nfraprado@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231229_133106_452147_CD686D0E 
-X-CRM114-Status: UNSURE (   9.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231229_133110_554856_553425E6 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,30 +83,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The performance-controller hardware block on MediaTek SoCs is
-responsible for controlling the frequency of the CPUs. As such, it needs
-any CPU regulator to have been configured prior to initializing. Add a
-phandle in the binding so this dependency can be described.
+When the mediatek-cpufreq-hw driver enables the hardware (by
+writing to REG_FREQ_ENABLE), if the regulator supplying the voltage to
+the big CPUs hasn't probed yet, the platform hangs shortly after and
+"rcu: INFO: rcu_preempt detected stalls on CPUs/tasks" are printed in
+the log.
+
+To prevent this from happening, describe the big CPUs regulator in the
+performance-controller DT node, so that devlink ensures the regulator
+has been probed and configured before the frequency scaling hardware is
+probed and enabled.
 
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
 ---
 
- .../devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml        | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-index d0aecde2b89b..d75b01d04998 100644
---- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-+++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-@@ -33,6 +33,8 @@ properties:
-       performance domains.
-     const: 1
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index dd5b89b73190..505da60eee90 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -502,6 +502,10 @@ &pcie1 {
+ 	pinctrl-0 = <&pcie1_pins_default>;
+ };
  
-+  big-cpus-supply: true
++&performance {
++	big-cpus-supply = <&mt6315_6_vbuck1>;
++};
 +
- required:
-   - compatible
-   - reg
+ &pio {
+ 	mediatek,rsel-resistance-in-si-unit;
+ 	pinctrl-names = "default";
 -- 
 2.43.0
 
