@@ -4,82 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E26CC47073
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jan 2024 11:45:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09745C47073
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jan 2024 14:09:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=E/uOy3CnFQHiCBe8I/foRgMuvqzi5S8GoqT8eS9RKiI=; b=T3srp1OVyx3qA1e0g4CekPMinb
-	7INxXs7Ot2VuQEokB5LS7kuxyGOEHF7HQKBDlt2+fgqItDvzdRjBJS3nWz0gGhOlY+oBM+Ld/LgZx
-	f2xzJG6up3OvXTdmMnnjJxO3L+kRfEW7AlYXFPRy6hOu4Sd+5ylT6tHXtbDCVMjoJy0DgDVdMckel
-	71zspM+DwmHwP4vsQtjkIVKp8ejw8R5L7AkQVmiPGBtS0IHaQe6Dg+K7g+cxdM9zN9hlOGSG1W13E
-	+ydturBSkgM/cSD7MU108tSfD4QcRVlckjShiSGI1oOV3QERmhNSMLTQcnN4txxd6g2b9/CRKowQW
-	SC4T2CDA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WwbOnKSd2CNVtq/rFasgcnH+4hEeCpjbjthcy/qXQwg=; b=KpxTCAycJepOP9ivveIXVXjhEV
+	wkNfa7J0iiNNimjyl0VNP+lD8k+1xQ7CQck74+ppzM6fuM0QzJWJI0ywdJfg37Nz0YIxAv7QtXx9o
+	/mFs0zD6DNxzAa1pha5sL3dKDtaY+mMuVcOpyQvSejlKiNcTc+TCzSANtJKaUpp8ZfAgmJ5Bhykww
+	CRFaxMVBGqfsgyO+oRrErKYnQTDqgj8iSTKW6dwT0DQ3GdWtA8PFTRnP8p35uiAOuaQzaVH6mhTTh
+	bGBd2176HxB1GW5y2Q/p2N6ARmnS73zz43qWODCO5C9/uNzAskcnNFp0cMeGeOfqqQMiT0RtbA+bn
+	OmN44ylQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKGjS-00665x-1m;
-	Mon, 01 Jan 2024 11:45:22 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1rKIz0-006MpY-26;
+	Mon, 01 Jan 2024 14:09:34 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKGjP-00665Z-0n;
-	Mon, 01 Jan 2024 11:45:20 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a27db7d85c7so88329766b.1;
-        Mon, 01 Jan 2024 03:45:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704109516; x=1704714316; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=E/uOy3CnFQHiCBe8I/foRgMuvqzi5S8GoqT8eS9RKiI=;
-        b=Iptyp0MVwx9z2NCrkavVgHkQXnfAsIdzujJ2gc0jfInG7zSvnu969sAsTDXqh4F1Ir
-         FF/y4rfDHjhu4XEHM5XO/TKD9Aq2AF1UVbc1f058KnWKnEprB4rpzY2llZSNALfXnI/l
-         CV9urwGEmVRUTaHOj7UDZeK9suzbLhW3gn+38QLoFAtavktudEpH6lES6bVu07rcG35U
-         1yhKz4HSQowJnODRNZe72zIf8HIuy4hS1jizXJ3ib1vOc5CPl6gUcStRxDwc2lFOjsKD
-         /DP8aMSut45nAWeGrXAY69S2+UZKbGalW7K7k9g6fSeRnHYawIKcektlHWPKbwkn6h1+
-         qQfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704109516; x=1704714316;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=E/uOy3CnFQHiCBe8I/foRgMuvqzi5S8GoqT8eS9RKiI=;
-        b=IxHrEb2aU3YiYwbcB4BPUl76Bcnb3o/dWES6isWUG9ykZWWRR6KbtJQqysUJCz79/k
-         rZHWB0iEnlw8ofEUkWJVhOA1aaD+dttf0KolwP8QoG2A8uFTECN/EyZ/c6rXknk+4Py1
-         tp07p4/RDm14qYH5eVCH178+yM8zBnAA90DyEJNasN8G+Ayp4gdE535e75ZkjBV0C+S5
-         NAXnLElRduHtQULg3FJPRIYdrKpsHUtQNDQeGJdtAzXfKEckp2QlVL1BqXR3idgW/pbr
-         gpYNnRoS/n3dhvdTCKTEqjQJj/rFA1N/qb533s/VdAMX82haxko70YMTDGpXyn7XVl1a
-         95PQ==
-X-Gm-Message-State: AOJu0Yyv50kQCJST7X58R8PgUXPUezuBCY79N4twEMe+4Jq5yBE+x52l
-	rZwryrGs5OweD03cJabOJeU=
-X-Google-Smtp-Source: AGHT+IFMWdpcy0/MWx/ibh/j5+HmrLs7nLJ4sDnWRai+R4T/INhnpkzvFC/JV7WzEppaM+XkK1gr4g==
-X-Received: by 2002:a17:906:f1da:b0:a26:9812:deb9 with SMTP id gx26-20020a170906f1da00b00a269812deb9mr6081870ejb.126.1704109516008;
-        Mon, 01 Jan 2024 03:45:16 -0800 (PST)
-Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id fc19-20020a1709073a5300b00a26ea2179e8sm7455038ejc.41.2024.01.01.03.45.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 Jan 2024 03:45:15 -0800 (PST)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: Antoine Tenart <atenart@kernel.org>,
-	Sam Shih <sam.shih@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-crypto@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH RFC] dt-bindings: crypto: inside-secure,safexcel: make eip/mem IRQs optional
-Date: Mon,  1 Jan 2024 12:44:32 +0100
-Message-Id: <20240101114432.28139-1-zajec5@gmail.com>
-X-Mailer: git-send-email 2.35.3
+	id 1rKIyw-006Mol-24;
+	Mon, 01 Jan 2024 14:09:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1704118167;
+	bh=OZMmbVxNYTdn5G997u5ldg9//qwD2Jc/HwiTcRisc9k=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=JhCd8xBueIwwraiiSM1KXO3LAqwfjVvDTpi/URk5pfrGewSZOFyL+hhIs5tluFvOV
+	 AMRK5Wi1YgtsaunA+tOzFhF5WZsM+hEPb8k6qcvqR9i21rSnwvXsoYajv4I/9wMSJn
+	 /v1shqK7JVntFJuRb+ZI1o7ESNYFih1gWsmZDK1c3v8Xpds8O5SW8CkpBywT1x2ruW
+	 jbrkmjYGpF9dPEjMhr/Ehmrl4s8LpX++/yFUq/G6D9/72PT5bZLDK8V9jppzjubZnY
+	 ztdYr0XNQx2wBPMWmWexw+8DIiTXb5i5T06nm43OdClWrDLMirRPo6zF22MFo+OitU
+	 F5lwbhkC3rcVw==
+Received: from [100.90.194.27] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: ehristev)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 5B1DB37802F2;
+	Mon,  1 Jan 2024 14:09:26 +0000 (UTC)
+Message-ID: <19c98266-0a8e-4e99-8766-cdf31a3a97b6@collabora.com>
+Date: Mon, 1 Jan 2024 16:09:25 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 6/9] arm64: dts: mediatek: Add MT8186 Krabby platform
+ based Tentacruel / Tentacool
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>
+References: <20231213150435.4134390-1-wenst@chromium.org>
+ <20231213150435.4134390-7-wenst@chromium.org>
+From: Eugen Hristev <eugen.hristev@collabora.com>
+In-Reply-To: <20231213150435.4134390-7-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240101_034519_329628_90BC0A77 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20240101_060930_845284_CE138911 
+X-CRM114-Status: GOOD (  20.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,45 +81,217 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+Hello Chen-Yu,
 
-Binding for this cryptographic engine defined 6 interrupts since its
-beginning. It seems however only 4 rings IRQs are really required for
-operating this hardware. Linux driver doesn't use "eip" or "mem" IRQs
-and it isn't clear if they are always available (MT7986 SoC binding
-doesn't specify them).
+There is still some nonconformity with the bindings, please see below:
 
-This deals with:
-arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtb: crypto@10320000: interrupts: [[0, 116, 4], [0, 117, 4], [0, 118, 4], [0, 119, 4]] is too short
-        from schema $id: http://devicetree.org/schemas/crypto/inside-secure,safexcel.yaml#
-arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtb: crypto@10320000: interrupt-names: ['ring0', 'ring1', 'ring2', 'ring3'] is too short
-        from schema $id: http://devicetree.org/schemas/crypto/inside-secure,safexcel.yaml#
+On 12/13/23 17:04, Chen-Yu Tsai wrote:
+> Tentacruel and Tentacool are MT8186 based Chromebooks based on the
+> Krabby design.
+> 
+> Tentacruel, also known as the ASUS Chromebook CM14 Flip CM1402F, is a
+> convertible device with touchscreen and stylus.
+> 
+> Tentacool, also known as the ASUS Chromebook CM14 CM1402C, is a laptop
+> device. It does not have a touchscreen or stylus.
+> 
+> The two devices both have two variants. The difference is a second
+> source touchpad controller that shares the same address as the original,
+> but is incompatible.
+> 
+> The extra SKU IDs for the Tentacruel devices map to different sensor
+> components attached to the Embedded Controller. These are not visible
+> to the main processor.
+> 
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> ---
+> Changes since v3:
+> - Reorder some properties to conform better to the newly proposed DT
+>   style guidelines
+> - Drop unused labels
+> - Rename bt-sco node name to bt-sco-codec
+> - Drop i2s*-share properties from afe node
+> - Drop aud_gpio_tdm_{on,off} pinctrl nodes
+> - Replace interrupts with interrupts-extended in tpm node
+> - Enable adsp device
+> 
+> Changes since v2:
+> - Picked up Conor's ack
+> - Rename touchpad to trackpad
+> - Drop pinctrl properties from trackpad in tentacruel/tentacool second
+>   source trackpad
+> 
+> Changes since v1:
+> - Reorder SKU numbers in descending order.
+> - Fixed pinconfig node names
+> - Moved pinctrl-* properties after interrupts-*
+> - Switched to interrupts-extended for external components
+> - Marked ADSP as explicitly disabled, with a comment explaining that it
+>   stalls the system
+> - Renamed "touchpad" to "trackpad"
+> - Dropped bogus "no-laneswap" property from it6505 node
+> - Moved "realtek,jd-src" property to after all the regulator supplies
+> - Switched to macros for MT6366 regulator "regulator-allowed-modes"
+> - Renamed "vgpu" regulator name to allow coupling, with a comment
+>   containing the name used in the design
+> - Renamed "cr50" node name to "tpm"
+> - Moved trackpad_pins reference up to i2c2; workaround for second source
+>   component resource sharing.
+> - Fix copyright year
+> - Fixed touchscreen supply name
+> ---
 
-Cc: Antoine Tenart <atenart@kernel.org>
-Ref: ecc5287cfe53 ("arm64: dts: mt7986: add crypto related device nodes")
-Cc: Sam Shih <sam.shih@mediatek.com>
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
----
- .../devicetree/bindings/crypto/inside-secure,safexcel.yaml      | 2 ++
- 1 file changed, 2 insertions(+)
+[snip]
 
-diff --git a/Documentation/devicetree/bindings/crypto/inside-secure,safexcel.yaml b/Documentation/devicetree/bindings/crypto/inside-secure,safexcel.yaml
-index ef07258d16c1..c8f4028aa7f3 100644
---- a/Documentation/devicetree/bindings/crypto/inside-secure,safexcel.yaml
-+++ b/Documentation/devicetree/bindings/crypto/inside-secure,safexcel.yaml
-@@ -26,9 +26,11 @@ properties:
-     maxItems: 1
- 
-   interrupts:
-+    minItems: 4
-     maxItems: 6
- 
-   interrupt-names:
-+    minItems: 4
-     items:
-       - const: ring0
-       - const: ring1
--- 
-2.35.3
+> +
+> +&i2c3 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c3_pins>;
+> +	clock-frequency = <100000>;
+> +	status = "okay";
+> +
+> +	it6505dptx: dp-bridge@5c {
+> +		compatible = "ite,it6505";
 
+dp-bridge@5c: '#address-cells', '#size-cells', '#sound-dai-cells' do not match any
+of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/display/bridge/ite,it6505.yaml#
+
+> +		reg = <0x5c>;
+> +		interrupts-extended = <&pio 8 IRQ_TYPE_LEVEL_LOW>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&it6505_pins>;
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+
+/soc/i2c@1100f000/dp-bridge@5c: unnecessary #address-cells/#size-cells without
+"ranges" or child "reg" property
+
+> +		#sound-dai-cells = <0>;
+> +		ovdd-supply = <&mt6366_vsim2_reg>;
+> +		pwr18-supply = <&pp1800_dpbrdg_dx>;
+> +		reset-gpios = <&pio 177 GPIO_ACTIVE_HIGH>;
+> +
+> +		ports {
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			port@0 {
+> +				reg = <0>;
+> +
+> +				it6505_in: endpoint {
+> +					link-frequencies = /bits/ 64 <150000000>;
+> +					remote-endpoint = <&dpi_out>;
+> +				};
+> +			};
+> +
+> +			port@1 {
+> +				reg = <1>;
+> +			};
+> +		};
+> +	};
+> +};
+> +
+
+[snip]
+
+> +&spi1 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&spi1_pins>;
+> +	mediatek,pad-select = <0>;
+> +	status = "okay";
+> +
+> +	cros_ec: ec@0 {
+> +		compatible = "google,cros-ec-spi";
+> +		reg = <0>;
+> +		interrupts-extended = <&pio 13 IRQ_TYPE_LEVEL_LOW>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&ec_ap_int>;
+> +		spi-max-frequency = <1000000>;
+> +
+> +		i2c_tunnel: i2c-tunnel {
+> +			compatible = "google,cros-ec-i2c-tunnel";
+> +			google,remote-bus = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +		};
+> +
+> +		typec {
+> +			compatible = "google,cros-ec-typec";
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			usb_c0: connector@0 {
+> +				compatible = "usb-c-connector";
+> +				reg = <0>;
+> +				label = "left";
+> +				power-role = "dual";
+> +				data-role = "host";
+> +				try-power-role = "source";
+> +
+> +				ports {
+> +					#address-cells = <1>;
+> +					#size-cells = <0>;
+> +
+typec:connector@0:ports: 'port@0' is a required property
+> +					port@1 {
+> +						reg = <1>;
+> +
+> +						typec_port0: endpoint { };
+> +					};
+> +				};
+> +			};
+> +
+> +			usb_c1: connector@1 {
+> +				compatible = "usb-c-connector";
+> +				reg = <1>;
+> +				label = "right";
+> +				power-role = "dual";
+> +				data-role = "host";
+> +				try-power-role = "source";
+> +
+> +				ports {
+connector@1: Unevaluated properties are not allowed ('ports' was unexpected)
+	from schema $id: http://devicetree.org/schemas/connector/usb-connector.yaml#
+> +					#address-cells = <1>;
+> +					#size-cells = <0>;
+> +
+> +					port@1 {
+connector@0: ports: 'port@0' is a required property
+> +						reg = <1>;
+> +
+> +						typec_port1: endpoint { };
+> +					};
+> +				};
+> +			};
+> +		};
+> +	};
+> +};
+> +
+
+[snip]
+
+> +
+> +&usb_host1 {
+> +	#address-cells = <2>;
+> +	#size-cells = <2>;
+
+ usb@11281000: usb@11280000:#address-cells:0:0: 1 was expected
+	from schema $id: http://devicetree.org/schemas/usb/mediatek,mtu3.yaml#
+usb@11281000: usb@11280000:#size-cells:0:0: 0 was expected
+
+> +	vbus-supply = <&usb_p1_vbus>;
+> +	status = "okay";
+> +};
+> +
+> +&watchdog {
+> +	mediatek,reset-by-toprgu;
+> +};
+> +
+> +#include <arm/cros-ec-keyboard.dtsi>
+> +#include <arm/cros-ec-sbs.dtsi>
+
+
+Eugen
 
