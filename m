@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5843FC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 09:15:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 892E8C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 09:28:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=98Bb80kwxiws2BkNTrrSYqpOcnwq6ljZ2TVtfCQWkoc=; b=GncPQjjTk5wos5MKdDX/kRMBxK
-	dXYR3x9b7U+KJXTs3dRZz0CEL8uzNpc2gDw5TfZfe3MRvBOgLdOV9O5OF/MdFQPZTgAjysZDPdEZY
-	2eywC4+yDzm/6amN5lk6E4V0iAJIummDNNfPkDC+SARsHnZSBqEdjmLeRosCZBfjNoz+2Vo+6U8sA
-	d81lVKJ2f27NC3ZDtURkmatEMTFcuA28L36QfM2kiSfyQd2evfYIc9FtwjmBEI44AlD0dAE69k89s
-	7M8C92Mi/+6+11lJwFtWvVxQMMhTJ9svlVomBCVvmyvMb2DUximHLvhF80nQ02LK/wtxUMLZgHoCz
-	ViHJO2Jg==;
+	bh=dcFlvlufGOA8tk+dETtpgVigIfpCB/xTqnbSS3WlgGc=; b=SEexs2f6vgk47zTwenarHv8ktC
+	6s+g6bLa2mykDAX5HoY0FscGTYDvOGN4YI/ZtTmFjbdiEFgzRSrqyZ8w9NM7HkCspiYT+N1OQBoQi
+	3Cs8BgRExJkaYSpVEHzjsN1Uo+QefnthyMc9WL9DFlmD1635yrAw9nbK7JbaCeZgyOkA68Lp4mG5S
+	3ai4htmSiB7DErsfklgTkePSCFB4iESVbY4wPYbc3pxU8QC8MwElqGHae6jzpZq6NK3v0FPtvo9Ez
+	WmW4bijiJNglb3VYAKetLDztMDrvk0q/NND0v2TpC90WGZpdCzytxQ6Ai9ERYFuB/tjWwpgLi29SL
+	gmGIwl7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKarW-007Qkc-1C;
-	Tue, 02 Jan 2024 09:15:02 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rKb4b-007SeE-1g;
+	Tue, 02 Jan 2024 09:28:33 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKarS-007QhJ-1E;
-	Tue, 02 Jan 2024 09:14:59 +0000
+	id 1rKb4Y-007SdW-33;
+	Tue, 02 Jan 2024 09:28:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1704186897;
-	bh=h1vYuqHfw4Si6zEFGSCOCtG/Sf6p6ZMOenHPLIBQu1g=;
+	s=mail; t=1704187707;
+	bh=gn5FpuH9CD4cUJLZXPICGs3i6tDEmWT7HtO3PfLeCgc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=m6E0ItzoMYPOvZwdJ9vXEdYJcHQj2X7R7GUh7rEnF6uqjrJAqHNJX3fZ3YU90QkKU
-	 F9M5a57t4N/SSBoXdtO4wexHOIXr6JezHTjwTfk/bn5eB6ESJ5brgIpgpJg+0uFUgx
-	 eAA3GEsNK8JwORvp5Z92CAXqqHRFDY9eXDPNzy2yH1YEXxjy4xrZYTJ24Eo7ih8RWQ
-	 JpVi3bA6HlY9j0bpLSFgcJBnlVEFGRMbToEGWiMU1T5Mt1ssk35v2Rrc2myfLVzreC
-	 f3QT+tq67VkSLRWIXHTZoLqX52FD2udi4EGOUle0jz6Oxm8TGKETdtr0iLM3rhXtnq
-	 kROLcNG31KPDg==
+	b=nPgXO884a+Eq0z4hmL++VX1/Z7gHK4mqbGOWWtBUKM14g7nEmlHwqdEit8GZIZ2Rv
+	 pNv6IFOdRH3iCg8Q4lzHUlpfv3V4DBbtr3+BMJe+3voFUhXIq2+yDMXGPDu4YjSqPN
+	 aj9ExNclKXsReyrqbE0W7FZ8K1JpLFHySrbLrS/MRWrtQ5hZxParUbjbokUjIUUlEp
+	 TnAJ1M3gSGiodthnO2d1QWOo3HyIN3RygaD8fPeCedPokPUCX/dJIOcxHr3AmP/Z1Y
+	 Lr3OLY22zZmPhDT2w2dgocdYqvNnv+nEOswkadZJJrjnTxQUzuyPo3tvY23D1GwsUb
+	 otaPuoKMDxvfQ==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 224FC37804B2;
-	Tue,  2 Jan 2024 09:14:56 +0000 (UTC)
-Message-ID: <d44ccb77-1bd9-43fe-be2d-cc2c342eae89@collabora.com>
-Date: Tue, 2 Jan 2024 10:14:56 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D7B8037813DB;
+	Tue,  2 Jan 2024 09:28:26 +0000 (UTC)
+Message-ID: <39d7a40b-3618-4746-9229-c9dbe1e19d2e@collabora.com>
+Date: Tue, 2 Jan 2024 10:28:25 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 6/6] arm64: dts: mediatek: mt8186: Add venc node
+Subject: Re: [PATCH 2/2] arm64: dts: mediatek: mt8186: Add jpgenc node
 Content-Language: en-US
-To: Eugen Hristev <eugen.hristev@collabora.com>, tiffany.lin@mediatek.com,
- andrew-ct.chen@mediatek.com, matthias.bgg@gmail.com,
- linux-mediatek@lists.infradead.org
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- robh+dt@kernel.org, kernel@collabora.com, Kyrie Wu <kyrie.wu@mediatek.com>,
+To: Eugen Hristev <eugen.hristev@collabora.com>, bin.liu@mediatek.com,
+ matthias.bgg@gmail.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
  Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>
-References: <20231228113245.174706-1-eugen.hristev@collabora.com>
- <20231228113245.174706-7-eugen.hristev@collabora.com>
+ Hsin-Yi Wang <hsinyi@chromium.org>, Max Staudt <mstaudt@chromium.org>,
+ Ricardo Ribalda <ribalda@chromium.org>
+References: <20231227130812.148914-1-eugen.hristev@collabora.com>
+ <20231227130812.148914-2-eugen.hristev@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231228113245.174706-7-eugen.hristev@collabora.com>
+In-Reply-To: <20231227130812.148914-2-eugen.hristev@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_011458_545007_4F749015 
-X-CRM114-Status: UNSURE (   6.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240102_012831_137573_E37A59F4 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,18 +80,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/12/23 12:32, Eugen Hristev ha scritto:
-> From: Kyrie Wu <kyrie.wu@mediatek.com>
+Il 27/12/23 14:08, Eugen Hristev ha scritto:
+> From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 > 
-> Add video encoder node.
+> Add JPEG encoder node.
 > 
-> Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
 > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 > Reviewed-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> Reviewed-by: Max Staudt <mstaudt@chromium.org>
+> Tested-by: Max Staudt <mstaudt@chromium.org>
+> Reviewed-by: Ricardo Ribalda <ribalda@chromium.org>
 > [eugen.hristev@collabora.com: minor cleanup]
 > Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8186.dtsi | 13 +++++++++++++
+>   1 file changed, 13 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> index e451b6c8cd9e..ef1b269f9184 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> @@ -2054,6 +2054,19 @@ venc: video-encoder@17020000 {
+>   			mediatek,scp = <&scp>;
+>   		};
+>   
+> +		jpgenc: jpgenc@17030000 {
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Can we please call this jpeg-encoder@17030000 instead?
+
+> +			compatible = "mediatek,mt8186-jpgenc", "mediatek,mtk-jpgenc";
+> +			reg = <0 0x17030000 0 0x10000>;
+> +			interrupts = <GIC_SPI 245 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			clocks = <&vencsys CLK_VENC_CKE2_JPGENC>;
+> +			clock-names = "jpgenc";
+
+clock-names ...
+iommus ....
+power-domains ...
+
+Cheers,
+Angelo
 
 
 
