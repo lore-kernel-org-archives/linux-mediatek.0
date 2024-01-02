@@ -4,70 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D57D8C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 16:54:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9682DC46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 16:57:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ym8XN/Df1WlMo9mD7X4HtFJt2SYBy5ajgwkXdj3Ufko=; b=Mj0HQux35QWBa/pBPG8noZdBI5
-	nr9bYtIPNVhuoAs6tGzgmx9PmQnc8Z2dOi30aAQCK8ll6wyyvzEo9q+oG7L9puMG3sWf9aop93DXc
-	ooSMriSeVA1ya+OhPitk9d1Ivhgrm7dbHenFdD3XDOaG6ZCkE0gsiIh8v5D23suECPZ+pysM5nxGo
-	UUiReuHoN6VetP/U1rgoMTv1cdXo3n/U9tO/fGcFXIfry4VAR6ADV/HOrVYFLHRu4mnKhXuLNbjbR
-	EbHx9m10/fX4MWxkcwbrBd90mC8cSJhyO9DNNua+YRl9z+2LKm8LRM0BNg+BJ98jG0S6/ibGC/GDY
-	H0OwselQ==;
+	bh=P7mw9sYe2c4ti/SYwthiIEsX16vYxBmZCGPwYl/4Wm0=; b=vytoUJbsTaI96/P1qWTjYbY8Sa
+	P9EzQzYyDxxeQnFInCYb4CjmA5U6sfyY+qb2QBBrZ0dUNQIm6hTjC0GaapldVkCXZ2biebMBrDQC3
+	hQiYgbBZdXBf6Kwclfdf/VoBrR14MacyB+jK4ccGP30PEs8YQA0f6EibYWyNhPQfzQ67YnXZxrsyO
+	Cc1kc/lZH+fy3l/HeiACLrGITXTcsNmpzIj77uYNgx7iw0vuV9/o4hXmgDT6/skWpPrxgYAgc+MGy
+	vZrB8KF6PfuphBEcit4eyfbRs68b4GT+Gy07XdvQKYBsYF7atqrJv1ILYQYEUSYC/fRhFCGAbQXT7
+	mFYY5mqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKi25-008WpA-32;
-	Tue, 02 Jan 2024 16:54:25 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rKi5V-008XFx-1b;
+	Tue, 02 Jan 2024 16:57:57 +0000
+Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKi1z-008WnE-2Q;
-	Tue, 02 Jan 2024 16:54:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E6A41CE0FEA;
-	Tue,  2 Jan 2024 16:54:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E317AC433C7;
-	Tue,  2 Jan 2024 16:54:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1704214455;
-	bh=Xs6JWdVhz8UCi2Nb+OZ68Hcw6GchoGb6m+i1P4qfvuM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mT94ck572c8+zWeYLk5Ty8g9hs+aLOzRuOHkgL7yBhTPleFzdpvBPLc3hYYQkek8L
-	 K5tDaUuauPOfkKBwB9ZEgYu9Mddik0WrFru4v6+Zvt2J7OWnBpEI1R4g1b/5TR9fgg
-	 XbHOZ0N4eGT2vTwzKROzBM27+kSbQYF/0zeEGG8OljQmtekYaAnwu4npup1sXEIc8z
-	 4JrikAmlbHqkFBUeoE1BYQrPGnC9sPh42ZqyXBfVKsJCA/dlre3rpmLFEiSKd+2vQT
-	 RYbGJoRbgGxDLEGiNRMRULMbpOPMePIl4lQaWWb0yE1r10UwpdIdosIHQvpr1TlYVm
-	 /MquyPnPKrAXg==
-Date: Tue, 2 Jan 2024 22:23:56 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Chanwoo Lee <cw9316.lee@samsung.com>
-Cc: alim.akhtar@samsung.com, avri.altman@wdc.com, bvanassche@acm.org,
-	jejb@linux.ibm.com, martin.petersen@oracle.com,
-	peter.wang@mediatek.com, chu.stanley@gmail.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	stanley.chu@mediatek.com, quic_cang@quicinc.com,
-	quic_asutoshd@quicinc.com, powen.kao@mediatek.com,
-	quic_nguyenb@quicinc.com, yang.lee@linux.alibaba.com,
-	athierry@redhat.com, linux-scsi@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, grant.jung@samsung.com,
-	jt77.jang@samsung.com, dh0421.hwang@samsung.com,
-	sh043.lee@samsung.com
-Subject: Re: [PATCH v3] ufs: mcq: Add definition for REG_UFS_MEM_CFG register
-Message-ID: <20240102165356.GD4917@thinkpad>
-References: <CGME20240102014248epcas1p4d49dcf2cd3f020bed88eebaeba648789@epcas1p4.samsung.com>
- <20240102014222.23351-1-cw9316.lee@samsung.com>
+	id 1rKi5N-008XB0-03
+	for linux-mediatek@lists.infradead.org;
+	Tue, 02 Jan 2024 16:57:53 +0000
+Received: by mail-yw1-x1135.google.com with SMTP id 00721157ae682-5f00bef973aso27924867b3.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Jan 2024 08:57:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1704214664; x=1704819464; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=P7mw9sYe2c4ti/SYwthiIEsX16vYxBmZCGPwYl/4Wm0=;
+        b=Hf9iURgyasqs5eRgFradY7/72MVxgJ3z/fv3VGC6IfaEs80LCaQ8DOn1tEV/8KjLh5
+         XdyVW7HHAkjKyL11nBN81di6210E/++xhCwGIsm2AgtxD/GSBHKN8lmYiet42cJHEWlo
+         y4o8+iO76//TZxhQEnet4CHBu0VMI3oz986ccbp+GVu+tWYii74mlZ60stkUm3zUk07v
+         dAdseTD+eol45oJy0yXTqMc0xllqZiryPG6aZkCNPkqZtVL49h74CglNxZCyqHeLb+Xg
+         ktCshPxFkwkYJzjd2PqsPHIRCoAjtQiqi0R6qjR+2boXCGrUrTpnKEpcRJ7XfUEzfApW
+         0h1Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704214664; x=1704819464;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=P7mw9sYe2c4ti/SYwthiIEsX16vYxBmZCGPwYl/4Wm0=;
+        b=JVcydhs4kZTnND+sVZkk7ezU+XZ9CnAS3innM4FC1LpKZymQJB7zNtelLOgxW1ok57
+         yk2xV3SCgVsq091Xae67+mf1gRgE5w4NwuMB/x2tPwiVtpqaYQkU52+xzvdQLAMJXE/X
+         CPmGf4qNj/74V/stlq7f0rBcLEmcuVSdyC7zt5yC83+eG8ZUXtQ5N9is0SOlEMtremrX
+         ofnUf0nq54usby9w0fSJsq1dhLrRu6D0mljnaya6/cySPTD3ZYNjAc8vk2vo4jCwZcSd
+         YPCCNnUlTIqyH8PW7FkSihwvLIybC3AuO4/A9CDbXkXYd/pydnvPbySmZlSy0URUpmkr
+         Q09A==
+X-Gm-Message-State: AOJu0YygdF170PYnPQfEMUxctoTz8JmAgGhXbm0yT4bwWRBYnV6HDlvv
+	keHy2CoeLFb7XbW1K65m7x9nsKeLYQn9NbC7FSqjKLXIi0lS9A==
+X-Google-Smtp-Source: AGHT+IGiPhJOvkXq8K67MCuEJDvv31lDX3hkO3sQTLR2RzvsBVTJnxsVkQzQRyAgjzoE0B1L1g65UJ2h/Z4CL/yHUxE=
+X-Received: by 2002:a81:7b04:0:b0:5e2:2125:2763 with SMTP id
+ w4-20020a817b04000000b005e221252763mr12300180ywc.19.1704214663745; Tue, 02
+ Jan 2024 08:57:43 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240102014222.23351-1-cw9316.lee@samsung.com>
+References: <20231218224832.81347-1-bo.ye@mediatek.com>
+In-Reply-To: <20231218224832.81347-1-bo.ye@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 2 Jan 2024 17:57:07 +0100
+Message-ID: <CAPDyKFpW_2vYPkOHHihib+EKi74-TGzW4_2Z4jnRJhdH+=Yi-g@mail.gmail.com>
+Subject: Re: [PATCH v2] mmc: add wp_grp_size node
+To: Bo Ye <bo.ye@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, yongdong.zhang@mediatek.com, 
+	"lin.gui" <lin.gui@mediatek.com>, linux-mmc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_085420_254670_527BB741 
-X-CRM114-Status: GOOD (  19.27  )
+X-CRM114-CacheID: sfid-20240102_085749_265641_6D8EB7A3 
+X-CRM114-Status: GOOD (  26.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,113 +89,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 02, 2024 at 10:42:22AM +0900, Chanwoo Lee wrote:
-> From: ChanWoo Lee <cw9316.lee@samsung.com>
-> 
-> Instead of hardcoding the register field, add the proper definition. While
-> at it, let's also use ufshcd_rmwl() to simplify updating this register.
-> 
-> Reviewed-by: Peter Wang <peter.wang@mediatek.com>
-> Signed-off-by: ChanWoo Lee <cw9316.lee@samsung.com>
+On Mon, 18 Dec 2023 at 23:48, Bo Ye <bo.ye@mediatek.com> wrote:
+>
+> From: "lin.gui" <lin.gui@mediatek.com>
+>
+> Detail:
+> Add node "wp_grp_size", corresponding to WP_GRP_SIZE
+> (write protect group size) of eMMC's CSD register.
+>
+> Scenario:
+> The eMMC card can be set into write-protected mode to
+> prevent data from being accidentally modified or deleted.
+> Wp_grp_size (Write Protect Group Size) refers to an
+> attribute of the eMMC card, used to manage write protection,
+> and is the CSD register  [36:32] of the eMMC device.
+> Wp_grp_size (Write Protect Group Size) indicates how many
+> eMMC blocks are contained in each write protection group on the eMMC card.
+>
+> Final rendered file:
+> "/sys/class/mmc_host/mmc0/mmc0:0001/wp_grp_size"
+>
+> Signed-off-by: Lin Gui <lin.gui@mediatek.com>
+> Signed-off-by: Bo Ye <bo.ye@mediatek.com>
 
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Applied for next, thanks!
 
-- Mani
+Note that checkpatch complained about the patch (see below), but I
+fixed it up this time.
+
+WARNING: From:/Signed-off-by: email name mismatch: 'From: "lin.gui"
+<lin.gui@mediatek.com>' != 'Signed-off-by: Lin Gui
+<lin.gui@mediatek.com>'
+
+Kind regards
+Uffe
+
+
 
 > ---
-> * v2->v3: Change subject and description
->   v2 : https://patchwork.kernel.org/project/linux-scsi/patch/20231221065608.9899-1-cw9316.lee@samsung.com/
-> 
-> * v1->v2:
->   v1 : https://patchwork.kernel.org/project/linux-scsi/patch/20231220052737.19857-1-cw9316.lee@samsung.com/
->    1) Excluding ESI_ENABLE
->    2) Replace with ufshcd_rmwl, BIT()
->    3) Separating hba->mcq_enabled
+> Change in v2:
+> -remove Change-Id
+> -replace space with tabulation
 > ---
->  drivers/ufs/core/ufs-mcq.c      | 6 ++++++
->  drivers/ufs/core/ufshcd.c       | 4 +---
->  drivers/ufs/host/ufs-mediatek.c | 4 +---
->  include/ufs/ufshcd.h            | 1 +
->  include/ufs/ufshci.h            | 3 +++
->  5 files changed, 12 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-> index 0787456c2b89..edc752e55878 100644
-> --- a/drivers/ufs/core/ufs-mcq.c
-> +++ b/drivers/ufs/core/ufs-mcq.c
-> @@ -399,6 +399,12 @@ void ufshcd_mcq_enable_esi(struct ufs_hba *hba)
+>  drivers/mmc/core/mmc.c   | 16 +++++++++++++++-
+>  include/linux/mmc/card.h |  2 ++
+>  2 files changed, 17 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+> index 705942edacc6..e0d72378ac77 100644
+> --- a/drivers/mmc/core/mmc.c
+> +++ b/drivers/mmc/core/mmc.c
+> @@ -136,6 +136,17 @@ static void mmc_set_erase_size(struct mmc_card *card)
+>         mmc_init_erase(card);
 >  }
->  EXPORT_SYMBOL_GPL(ufshcd_mcq_enable_esi);
->  
-> +void ufshcd_mcq_enable(struct ufs_hba *hba)
+>
+> +
+> +static void mmc_set_wp_grp_size(struct mmc_card *card)
 > +{
-> +	ufshcd_rmwl(hba, MCQ_MODE_SELECT, MCQ_MODE_SELECT, REG_UFS_MEM_CFG);
+> +       if (card->ext_csd.erase_group_def & 1)
+> +               card->wp_grp_size = card->ext_csd.hc_erase_size *
+> +                       card->ext_csd.raw_hc_erase_gap_size;
+> +       else
+> +               card->wp_grp_size = card->csd.erase_size *
+> +                       (card->csd.wp_grp_size + 1);
 > +}
-> +EXPORT_SYMBOL_GPL(ufshcd_mcq_enable);
 > +
->  void ufshcd_mcq_config_esi(struct ufs_hba *hba, struct msi_msg *msg)
->  {
->  	ufshcd_writel(hba, msg->address_lo, REG_UFS_ESILBA);
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index ae9936fc6ffb..30df6f6a72c6 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -8723,9 +8723,7 @@ static void ufshcd_config_mcq(struct ufs_hba *hba)
->  	hba->host->can_queue = hba->nutrs - UFSHCD_NUM_RESERVED;
->  	hba->reserved_slot = hba->nutrs - UFSHCD_NUM_RESERVED;
->  
-> -	/* Select MCQ mode */
-> -	ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | 0x1,
-> -		      REG_UFS_MEM_CFG);
-> +	ufshcd_mcq_enable(hba);
->  	hba->mcq_enabled = true;
->  
->  	dev_info(hba->dev, "MCQ configured, nr_queues=%d, io_queues=%d, read_queue=%d, poll_queues=%d, queue_depth=%d\n",
-> diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-> index fc61790d289b..1048add66419 100644
-> --- a/drivers/ufs/host/ufs-mediatek.c
-> +++ b/drivers/ufs/host/ufs-mediatek.c
-> @@ -1219,9 +1219,7 @@ static int ufs_mtk_link_set_hpm(struct ufs_hba *hba)
->  		ufs_mtk_config_mcq(hba, false);
->  		ufshcd_mcq_make_queues_operational(hba);
->  		ufshcd_mcq_config_mac(hba, hba->nutrs);
-> -		/* Enable MCQ mode */
-> -		ufshcd_writel(hba, ufshcd_readl(hba, REG_UFS_MEM_CFG) | 0x1,
-> -			      REG_UFS_MEM_CFG);
-> +		ufshcd_mcq_enable(hba);
->  	}
->  
->  	if (err)
-> diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-> index d862c8ddce03..a96c45fa4b4b 100644
-> --- a/include/ufs/ufshcd.h
-> +++ b/include/ufs/ufshcd.h
-> @@ -1257,6 +1257,7 @@ unsigned long ufshcd_mcq_poll_cqe_lock(struct ufs_hba *hba,
->  					 struct ufs_hw_queue *hwq);
->  void ufshcd_mcq_make_queues_operational(struct ufs_hba *hba);
->  void ufshcd_mcq_enable_esi(struct ufs_hba *hba);
-> +void ufshcd_mcq_enable(struct ufs_hba *hba);
->  void ufshcd_mcq_config_esi(struct ufs_hba *hba, struct msi_msg *msg);
->  
->  int ufshcd_opp_config_clks(struct device *dev, struct opp_table *opp_table,
-> diff --git a/include/ufs/ufshci.h b/include/ufs/ufshci.h
-> index d5accacae6bc..2a6989a70671 100644
-> --- a/include/ufs/ufshci.h
-> +++ b/include/ufs/ufshci.h
-> @@ -282,6 +282,9 @@ enum {
->  /* UTMRLRSR - UTP Task Management Request Run-Stop Register 80h */
->  #define UTP_TASK_REQ_LIST_RUN_STOP_BIT		0x1
->  
-> +/* REG_UFS_MEM_CFG - Global Config Registers 300h */
-> +#define MCQ_MODE_SELECT 	BIT(0)
-> +
->  /* CQISy - CQ y Interrupt Status Register  */
->  #define UFSHCD_MCQ_CQIS_TAIL_ENT_PUSH_STS	0x1
->  
-> -- 
-> 2.29.0
-> 
-
--- 
-மணிவண்ணன் சதாசிவம்
+>  /*
+>   * Given a 128-bit response, decode to our card CSD structure.
+>   */
+> @@ -186,6 +197,7 @@ static int mmc_decode_csd(struct mmc_card *card)
+>                 b = UNSTUFF_BITS(resp, 37, 5);
+>                 csd->erase_size = (a + 1) * (b + 1);
+>                 csd->erase_size <<= csd->write_blkbits - 9;
+> +               csd->wp_grp_size = UNSTUFF_BITS(resp, 32, 5);
+>         }
+>
+>         return 0;
+> @@ -790,6 +802,7 @@ MMC_DEV_ATTR(csd, "%08x%08x%08x%08x\n", card->raw_csd[0], card->raw_csd[1],
+>  MMC_DEV_ATTR(date, "%02d/%04d\n", card->cid.month, card->cid.year);
+>  MMC_DEV_ATTR(erase_size, "%u\n", card->erase_size << 9);
+>  MMC_DEV_ATTR(preferred_erase_size, "%u\n", card->pref_erase << 9);
+> +MMC_DEV_ATTR(wp_grp_size, "%u\n", card->wp_grp_size << 9);
+>  MMC_DEV_ATTR(ffu_capable, "%d\n", card->ext_csd.ffu_capable);
+>  MMC_DEV_ATTR(hwrev, "0x%x\n", card->cid.hwrev);
+>  MMC_DEV_ATTR(manfid, "0x%06x\n", card->cid.manfid);
+> @@ -850,6 +863,7 @@ static struct attribute *mmc_std_attrs[] = {
+>         &dev_attr_date.attr,
+>         &dev_attr_erase_size.attr,
+>         &dev_attr_preferred_erase_size.attr,
+> +       &dev_attr_wp_grp_size.attr,
+>         &dev_attr_fwrev.attr,
+>         &dev_attr_ffu_capable.attr,
+>         &dev_attr_hwrev.attr,
+> @@ -1764,7 +1778,7 @@ static int mmc_init_card(struct mmc_host *host, u32 ocr,
+>                         mmc_set_erase_size(card);
+>                 }
+>         }
+> -
+> +       mmc_set_wp_grp_size(card);
+>         /*
+>          * Ensure eMMC user default partition is enabled
+>          */
+> diff --git a/include/linux/mmc/card.h b/include/linux/mmc/card.h
+> index 7b12eebc5586..b9c3c6303a22 100644
+> --- a/include/linux/mmc/card.h
+> +++ b/include/linux/mmc/card.h
+> @@ -32,6 +32,7 @@ struct mmc_csd {
+>         unsigned int            r2w_factor;
+>         unsigned int            max_dtr;
+>         unsigned int            erase_size;             /* In sectors */
+> +       unsigned int            wp_grp_size;
+>         unsigned int            read_blkbits;
+>         unsigned int            write_blkbits;
+>         unsigned int            capacity;
+> @@ -306,6 +307,7 @@ struct mmc_card {
+>         unsigned int            eg_boundary;    /* don't cross erase-group boundaries */
+>         unsigned int            erase_arg;      /* erase / trim / discard */
+>         u8                      erased_byte;    /* value of erased bytes */
+> +       unsigned int            wp_grp_size;    /* write group size in sectors */
+>
+>         u32                     raw_cid[4];     /* raw card CID */
+>         u32                     raw_csd[4];     /* raw card CSD */
+> --
+> 2.18.0
+>
 
