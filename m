@@ -4,76 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CBACC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 12:49:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71FC5C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 12:55:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3ntL+5uaAV9DSRO6KwCdZOXUOQstLPvq7hVMkRfPMeA=; b=R0enoRrdZUMVqrLjxvapSkBcS3
-	9056UiwnH77QDHCnfTVgyjj4QMpBC4i/7nvx8JKjjRLR/AJgheVOng3MTyiQgdnJrfitg8L9xfVWN
-	7r42CzTTFY2CDDS2qWlbDTLxS0lFaunutzcHelkcb6xAlAAD4TkQ5IdddjDjWsWnTmLVXDYHP7jf2
-	C9atb+usSQ06a8N7PSvwMKr9gx1V4ZeaTWsRrGe6UZEghUF5gnq3C00BAhgFS8T3WPaY8g5ylsds+
-	WU4cdq05IPNukcNcqm9DcnQAu5D1Qoa3hIuSmQSuFE5pwwnHZ93DhU8IIccE0YMCnzKy58dDhzU+l
-	EkHe9TRQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+6zV12XTifi7kUx3OOAHC6KwNMFaqKkolPFrVGczEkk=; b=U5eH/cuuo8BZbh
+	S8UjhX2IbtLOn/9XV9LbA18ihwUCXRu8cZrGwrBVnSX+n26vgl2Hq2EbCAGceqp9ETeOWI82qJj7E
+	kZVZ5GrOFKZ/lyvnusk5u/0CFJ81RtulEosRgpyWcOSaT9zgrwG1jNBkEXszfzYtDhOVA00m5xuIa
+	keL0BK3lBGNF4MxyHmj5CMCKujJO0rVEXSMJ7565srT7geSwwzcfPdj6bA8YHay1EJxEq//xEkYV4
+	edZ39wBcicNot1MuXlVxdIXYmEiN6DMAINqK3p7GNFUwUogjXvrxAMSu60lorKQBZ3csJPbMej+3F
+	+Htgb9BkV7r+7FMbc2Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKeD6-008202-1u;
-	Tue, 02 Jan 2024 12:49:32 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rKeJ2-0082dH-0Y;
+	Tue, 02 Jan 2024 12:55:40 +0000
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKeD4-0081yw-2G
-	for linux-mediatek@lists.infradead.org;
-	Tue, 02 Jan 2024 12:49:32 +0000
-X-UUID: 5ac6751ca96d11ee9a662f17bb45267e-20240102
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3ntL+5uaAV9DSRO6KwCdZOXUOQstLPvq7hVMkRfPMeA=;
-	b=XXEYOoS/ZjG/xZFVlcVJMsKMSJap/aoIwLyFQabUOkOyoCKhg3eKl9NmOohlvNDZtHOBA3kTlaUwDu2hKXbSv/3xql2bgRSMfHEBSLVvnjyyAEcFzlVRL41mXLvALMl57JVPqHtSe5M6F7OWXYtZOr5liGMXPe3E2KUDY3/xqSk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:680339b9-436c-4d08-a65d-d322192e37c3,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:8e25b92e-1ab8-4133-9780-81938111c800,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 5ac6751ca96d11ee9a662f17bb45267e-20240102
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <hao.qin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1818757804; Tue, 02 Jan 2024 05:49:23 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 2 Jan 2024 20:48:46 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 2 Jan 2024 20:48:45 +0800
-From: Hao Qin <hao.qin@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.Wu@mediatek.com>,
-	Aaron Hou <aaron.hou@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, Steve
- Lee <steve.lee@mediatek.com>, linux-bluetooth
-	<linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, hao.qin <hao.qin@mediatek.com>
-Subject: [PATCH v2 2/2] Bluetooth: btusb: mediatek: add a recovery method for MT7922 and MT7925
-Date: Tue, 2 Jan 2024 20:47:47 +0800
-Message-ID: <20240102124747.21644-2-hao.qin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240102124747.21644-1-hao.qin@mediatek.com>
-References: <20240102124747.21644-1-hao.qin@mediatek.com>
+	id 1rKeIy-0082bc-2a;
+	Tue, 02 Jan 2024 12:55:38 +0000
+Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-6d9c2db82b0so1761365b3a.1;
+        Tue, 02 Jan 2024 04:55:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1704200135; x=1704804935; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:references
+         :in-reply-to:user-agent:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=+6zV12XTifi7kUx3OOAHC6KwNMFaqKkolPFrVGczEkk=;
+        b=UFXBpBxKOX199AIfHUfu1LCL5/oBoQZOWaNquLBjWO6rpRg7ktiNAP+DvZLve4YSww
+         HN2g6uZz0U93pHUNpNVQMVGBUeBHnNpiJC2RkQw1cnbfCIubG3qUxtCkuEiGZuKqyvql
+         oQFxEuo/6e68sLaQdYQJKbp6J2MdEOR6vUNynoxeiNOz3otMguI6y7niOfelD9Hg+zlk
+         VasW6ryJ8lglLZfTXGOc3CGftAx/Rasg4ipTtMvhsu1uaVhh0an18S8tDfhvgA6MB65o
+         OI5OxfGSK3BpBtGwptwqYzKe+l2SkuHT0vxTiWLwkHcGvHjBbQfJhR2QfpBnK13Zn6Dj
+         owpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704200135; x=1704804935;
+        h=content-transfer-encoding:mime-version:message-id:references
+         :in-reply-to:user-agent:subject:cc:to:from:date:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=+6zV12XTifi7kUx3OOAHC6KwNMFaqKkolPFrVGczEkk=;
+        b=c6ZgzqfumzZ9fKKJuwmBYacQfn3mQo2SBAihkbc+NgKLVQcjLafMi6AhS9dySV7t6Y
+         X3qab7NF5xtgX+4VWqOq24PrsOs6YsDEqeNH7BYaWCWd8wkDOE85aW5d8p1umkQdnPpv
+         qolH9PVHKl75/l3crVzbbRDNE967nFlxm4SCq9Y/qbgDalRl6enf+3XtAyCRqpiupr3V
+         HYMsDZFkFSqnI4rcpPWFZ2c9NRaAtsf3Fim8LJC9nHkHBLQdh28xmYkYzCazIkvbGZbN
+         7ieI12dWsLVnOKrtpeQCDGsD2D/CkPbEO7V5bw49JLZXDUMddocbYways0ssLB3qzM/B
+         cmJg==
+X-Gm-Message-State: AOJu0YyT5bOioVhZ28HKzCuhb2GtWczQseV16n6CoQnsl3ZSH2JmluRa
+	LI0dqCqdqqSBSCf0sEMAHl0=
+X-Google-Smtp-Source: AGHT+IFRCZojliga3N9ozWGn5Eayce7SFrQ/owylc0cKJuk3qq2nb7v1hWLetkyhKqOrD4ap5xRY6A==
+X-Received: by 2002:a05:6a00:4505:b0:6d9:a0da:4fbc with SMTP id cw5-20020a056a00450500b006d9a0da4fbcmr7360079pfb.36.1704200134866;
+        Tue, 02 Jan 2024 04:55:34 -0800 (PST)
+Received: from [127.0.0.1] ([89.205.132.224])
+        by smtp.gmail.com with ESMTPSA id w37-20020a631625000000b005cd8bf50c13sm20655512pgl.58.2024.01.02.04.55.34
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 02 Jan 2024 04:55:34 -0800 (PST)
+Date: Tue, 02 Jan 2024 13:55:33 +0100
+From: Eric Woudstra <ericwouds@gmail.com>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_RFC_net-next=5D_net=3A_pcs=3A_pcs-mtk-lyn?= =?US-ASCII?Q?xi_fix_mtk=5Fpcs=5Flynxi=5Fget=5Fstate=28=29_for_2500base-x?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <ZZP9GR15ufDbjGAJ@shell.armlinux.org.uk>
+References: <20240102074408.1049203-1-ericwouds@gmail.com> <ZZP9GR15ufDbjGAJ@shell.armlinux.org.uk>
+Message-ID: <92190426-3614-4774-9E9F-18F121622788@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_044930_739444_0178947E 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20240102_045536_836178_9F7AC1B5 
+X-CRM114-Status: GOOD (  16.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,90 +87,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "hao.qin" <hao.qin@mediatek.com>
+>Please describe your setup more fully=2E What is the link partner on this
+>2500base-X link?
 
-For MT7922 and MT7925, add USB reset retry to recover from patch
-download failure, and perform a reset before patch download to
-avoid unexpected problems caused by unkonwn status of dongle.
+I use a BananaPi R3, with the oem-sfp2=2E5g-t module=2E It has the SFP qui=
+rk that disables autoneg=2E I was trying Marek's rtl8221b patchset, but fou=
+nd that even with unmodified code,  original net-next unmodified, I could g=
+et link up, but no traffic is going through=2E
 
-Signed-off-by: hao.qin <hao.qin@mediatek.com>
----
- drivers/bluetooth/btusb.c | 29 ++++++++++++++++++++++++-----
- 1 file changed, 24 insertions(+), 5 deletions(-)
+On the other side is a=2Erock5b with rtl8125b=2E
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index abefcd1a089d..26ad4864d06c 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -3000,17 +3000,26 @@ static int btusb_mtk_subsys_reset(struct hci_dev *hdev, u32 dev_id)
- 	u32 val;
- 	int err;
- 
--	if (dev_id == 0x7925) {
-+	if (dev_id == 0x7922) {
-+		btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
-+		val |= 0x00002020;
-+		btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
-+		btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, 0x00010001);
-+		btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
-+		val |= BIT(0);
-+		btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
-+		msleep(100);
-+	} else if (dev_id == 0x7925) {
- 		btusb_mtk_uhw_reg_read(data, MTK_BT_RESET_REG_CONNV3, &val);
--		val |= (1 << 5);
-+		val |= BIT(5);
- 		btusb_mtk_uhw_reg_write(data, MTK_BT_RESET_REG_CONNV3, val);
- 		btusb_mtk_uhw_reg_read(data, MTK_BT_RESET_REG_CONNV3, &val);
- 		val &= 0xFFFF00FF;
--		val |= (1 << 13);
-+		val |= BIT(13);
- 		btusb_mtk_uhw_reg_write(data, MTK_BT_RESET_REG_CONNV3, val);
- 		btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, 0x00010001);
- 		btusb_mtk_uhw_reg_read(data, MTK_BT_RESET_REG_CONNV3, &val);
--		val |= (1 << 0);
-+		val |= BIT(0);
- 		btusb_mtk_uhw_reg_write(data, MTK_BT_RESET_REG_CONNV3, val);
- 		btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT, 0x000000FF);
- 		btusb_mtk_uhw_reg_read(data, MTK_UDMA_INT_STA_BT, &val);
-@@ -3040,6 +3049,9 @@ static int btusb_mtk_subsys_reset(struct hci_dev *hdev, u32 dev_id)
- 	if (err < 0)
- 		bt_dev_err(hdev, "Reset timeout");
- 
-+	if (dev_id == 0x7922)
-+		btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT, 0x000000FF);
-+
- 	btusb_mtk_id_get(data, 0x70010200, &val);
- 	if (!val)
- 		bt_dev_err(hdev, "Can't get device id, subsys reset fail.");
-@@ -3128,8 +3140,10 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 		fwname = FIRMWARE_MT7668;
- 		break;
- 	case 0x7922:
--	case 0x7961:
- 	case 0x7925:
-+		btusb_mtk_subsys_reset(hdev, dev_id);
-+		fallthrough;
-+	case 0x7961:
- 		if (dev_id == 0x7925)
- 			snprintf(fw_bin_name, sizeof(fw_bin_name),
- 				 "mediatek/mt%04x/BT_RAM_CODE_MT%04x_1_%x_hdr.bin",
-@@ -3143,6 +3157,11 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 						btusb_mtk_hci_wmt_sync);
- 		if (err < 0) {
- 			bt_dev_err(hdev, "Failed to set up firmware (%d)", err);
-+			if (dev_id == 0x7922 || dev_id == 0x7925) {
-+				btusb_stop_traffic(data);
-+				usb_kill_anchored_urbs(&data->tx_anchor);
-+				usb_queue_reset_device(data->intf);
-+			}
- 			return err;
- 		}
- 
--- 
-2.18.0
+Only after applying this patch, it works and eth1 reports link up with 2=
+=2E5Gbps instead of unknown speed=2E
 
+If you need more debugging info, I can supply it at a later time=2E
+
+
+On January 2, 2024 1:10:01 PM GMT+01:00, "Russell King (Oracle)" <linux@ar=
+mlinux=2Eorg=2Euk> wrote:
+>On Tue, Jan 02, 2024 at 08:44:08AM +0100, Eric Woudstra wrote:
+>> From: Daniel Golle <daniel@makrotopia=2Eorg>
+>>=20
+>> Need to fix mtk_pcs_lynxi_get_state() in order for the pcs to function
+>> correctly when the interface is set to 2500base-x, even when
+>> PHYLINK_PCS_NEG_INBAND_DISABLED is set=2E
+>
+>Please describe your setup more fully=2E What is the link partner on this
+>2500base-X link?
+>
+>In PHYLINK_PCS_NEG_INBAND_DISABLED mode, this means that phylink is
+>operating in inband mode, but Autoneg is clear in the advertisement
+>mask, meaning Autoneg is disabled and we are using a "fixed" setting=2E
+>state->speed and state->duplex should already be initialised=2E
+>
+>> When the pcs is set to 2500base-x, the register values are not compatib=
+le
+>> with phylink_mii_c22_pcs_decode_state()=2E It results in parameters suc=
+h as
+>> speed unknown and such=2E Then the mac/pcs are setup incorrectly and do=
+ not
+>> function=2E
+>
+>Since Autoneg is clear, phylink_mii_c22_pcs_decode_state() won't
+>change state->speed and state->duplex, which should already be
+>correctly set=2E
+>
 
