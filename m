@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 211B7C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 09:09:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41D1AC46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 09:13:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DeEhYJEkhrqqOFPlKQh6EIVIcojzNxmPPGBpc5k+ESY=; b=jOrQ+fi8rZZ1QVXM84dmC06kyD
-	oKOaDxKSTGa5oJ6jfe/Fy1kEUcKK1lZxMD4rnvZidQCX58UaojB0S85wKkhRqMt6zQFlrE9AJtXwi
-	0PESAtsO+wnIBa29xrVyC8LitO/kS5o9xnV+UymleedfDfUOkVTdh3HME8COxoDO5TYDE5Ak6EnoP
-	F457kgg8eDiyArb1XUkieQFkK9ZHaGxLBXOwNLOk2WBOakAp+4laz0PCuWZmMotC0NTno5PATb+fN
-	lhPp3GMIWbKc2ySmXmEbQBoHrhBqQpRHgPbdjyjonQobs5RVVcBZnub0TVDkNHmBFuo4JhPyaTs7s
-	HcKTnhaw==;
+	bh=LsgB+eVUnR/ybqDxu5TtMVeh5JwwM/GwAxmrqNhVGPs=; b=qW07ReHmHcX6vQp29HJuNH5f0d
+	ufzX86vHfqnTfAWcRXfd+4EWHW2nMBxDuVrL0WHoBzc0jk+Fq4G2gLQesrmMzmE/Mgv7T1qYd8T7R
+	bv4Qxcs4bJVlxzRWT+COS53idaInRAahI1PnF0L/BZ59/8XR33bcfkcV3+yEkpOK2b5jS7X+KF8ah
+	Yi3bkW1ForOsdhvLWU5YlhF/C1QqifaMFs55VZAPEzMRmLd9AOE2d5Mdt1auBHNfD0mBby40qZLrw
+	jrGoGFbW4pb9d1a2YL49wzBMFv7mxR3XrPO4fNEcYKcmahjSyE3mfxbCRj4YVYOJXRkFiIcNYco+9
+	hDI/Ki6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKamJ-007PgP-0a;
-	Tue, 02 Jan 2024 09:09:39 +0000
+	id 1rKapv-007QCE-1A;
+	Tue, 02 Jan 2024 09:13:23 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKamF-007Pf3-1u;
-	Tue, 02 Jan 2024 09:09:37 +0000
+	id 1rKaps-007QBI-0B;
+	Tue, 02 Jan 2024 09:13:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1704186572;
-	bh=0IJc2UOGZ6oMEAmRyC8mL1X+nZIu6VgIRz8xHSvM2KI=;
+	s=mail; t=1704186798;
+	bh=B+g24IYiBKORcfZQs1hoAavc4iFduekqDsr9toXcU+g=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=P94UWCDeEk5DKNB6KMkv3dEvRD8cI6BmKuy/6krHuaJB+1o+zwQoDoGEVvPdZdaaD
-	 8VcqkRQfLaqEvHgRFs7agU3FTdKAfkJlamVTamOQVIwdt3uSITjLpAetWlPu80wFZf
-	 uehhpHxvakYiX8ZVTA1yaTuC+CnAk83nY9E6433BXB/8Dj76LWc+nBQLEpnvdL5FFT
-	 3jCWAxT7A9JLv4GDNjxCiZ6usIkmyBpWZEdnPCvRwBIpdEYsPeyeyrZd+Wafw3eb3T
-	 Fjk8QOqTY53UaB+3ahZDRfpHG77yfGQfiQNVSI+HHhO2EY4wYIXPvZ5runNQEXVMxp
-	 B0uah6DH1q7vg==
+	b=lPv38sIrIyOx5QurwJmCJW1n3tFAcAidBfIeLyGrUDIO95QkL/6usSSP3retXr2jA
+	 ZBsUxnoxjgHSCUzlyybC//aWBaHo6F+w6I77sXGm+DgG1e1QSBHUvdctlqyhRJHLwJ
+	 PQ/JqdFkMxtur2GbXZEXQnZdUh4hfcEMLAUjarN+tzrY3bLeiXbyTNskhU1IjKgE0w
+	 OUAo5VLc46dC1aLlzRcsZiQrAZCxCymBIEYk5Ek+RpXwo/Z488/o8ZtieHBdLNjZZB
+	 enZ77+Z97j9jAxpCbYREEqMm6qIqAFgZ35eMt5JMMjKoBtVaRbG/1YlKhijxmHEP2T
+	 S8xU/Lp+2gBuQ==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4C3C237804B2;
-	Tue,  2 Jan 2024 09:09:31 +0000 (UTC)
-Message-ID: <a288d5c8-6eb9-49f8-bcbc-f2b41e51c797@collabora.com>
-Date: Tue, 2 Jan 2024 10:09:30 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E222337804B2;
+	Tue,  2 Jan 2024 09:13:17 +0000 (UTC)
+Message-ID: <b2b8d64d-c975-45ed-a4ec-ff1b9a14708f@collabora.com>
+Date: Tue, 2 Jan 2024 10:13:17 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: cherry: Add CPU supply
- dependency to cpufreq-hw
-To: Viresh Kumar <viresh.kumar@linaro.org>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: "Rafael J . Wysocki" <rafael@kernel.org>, kernel@collabora.com,
- Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20231229212853.277334-1-nfraprado@collabora.com>
- <20231229212853.277334-2-nfraprado@collabora.com>
- <20240102061123.frvwltggqqh6m7pm@vireshk-i7>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v3 3/6] arm64: dts: mediatek: mt8192: fix vencoder clock
+ name
 Content-Language: en-US
-In-Reply-To: <20240102061123.frvwltggqqh6m7pm@vireshk-i7>
+To: Eugen Hristev <eugen.hristev@collabora.com>, tiffany.lin@mediatek.com,
+ andrew-ct.chen@mediatek.com, matthias.bgg@gmail.com,
+ linux-mediatek@lists.infradead.org
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ robh+dt@kernel.org, kernel@collabora.com
+References: <20231228113245.174706-1-eugen.hristev@collabora.com>
+ <20231228113245.174706-4-eugen.hristev@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231228113245.174706-4-eugen.hristev@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_010935_813084_E739ACA2 
-X-CRM114-Status: GOOD (  17.31  )
+X-CRM114-CacheID: sfid-20240102_011320_226500_429A6E60 
+X-CRM114-Status: UNSURE (   6.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,56 +80,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/01/24 07:11, Viresh Kumar ha scritto:
-> On 29-12-23, 18:28, Nícolas F. R. A. Prado wrote:
->> When the mediatek-cpufreq-hw driver enables the hardware (by
->> writing to REG_FREQ_ENABLE), if the regulator supplying the voltage to
->> the big CPUs hasn't probed yet, the platform hangs shortly after and
->> "rcu: INFO: rcu_preempt detected stalls on CPUs/tasks" are printed in
->> the log.
->>
->> To prevent this from happening, describe the big CPUs regulator in the
->> performance-controller DT node, so that devlink ensures the regulator
->> has been probed and configured before the frequency scaling hardware is
->> probed and enabled.
->>
->> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->>
->> ---
->>
->>   arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 4 ++++
->>   1 file changed, 4 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
->> index dd5b89b73190..505da60eee90 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
->> @@ -502,6 +502,10 @@ &pcie1 {
->>   	pinctrl-0 = <&pcie1_pins_default>;
->>   };
->>   
->> +&performance {
->> +	big-cpus-supply = <&mt6315_6_vbuck1>;
->> +};
->> +
->>   &pio {
->>   	mediatek,rsel-resistance-in-si-unit;
->>   	pinctrl-names = "default";
+Il 28/12/23 12:32, Eugen Hristev ha scritto:
+> Clock name should be `venc_sel` as per binding.
+> Fix the warning message :
+> arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dtb: vcodec@17020000: clock-names:0: 'venc_sel' was expected
+>          from schema $id: http://devicetree.org/schemas/media/mediatek,vcodec-encoder.yaml#
 > 
-> I think the regulator needs to be mentioned in the CPU's node and not
-> here ?
-> 
+> Fixes: aa8f3711fc87 ("arm64: dts: mt8192: Add H264 venc device node")
+> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
 
-Even if the regulator voltage is being changed by firmware with cpufreq-hw, the
-actual regulators should go to each CPU node and not in the cpufreq driver node,
-I agree with Viresh.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Besides, that's the same thing that we're doing with mediatek-cpufreq as well...
-and since we're talking about that, we should also do something about this such
-that we stop declaring `regulator-always-on` for CPU cores in devicetree, but
-this is probably slightly out of context for what you're trying to do here, so,
-read that as an "extra consideration" :-)
 
-Cheers,
-Angelo
 
