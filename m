@@ -4,78 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71FC5C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 12:55:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED53FC46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 13:16:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+6zV12XTifi7kUx3OOAHC6KwNMFaqKkolPFrVGczEkk=; b=U5eH/cuuo8BZbh
-	S8UjhX2IbtLOn/9XV9LbA18ihwUCXRu8cZrGwrBVnSX+n26vgl2Hq2EbCAGceqp9ETeOWI82qJj7E
-	kZVZ5GrOFKZ/lyvnusk5u/0CFJ81RtulEosRgpyWcOSaT9zgrwG1jNBkEXszfzYtDhOVA00m5xuIa
-	keL0BK3lBGNF4MxyHmj5CMCKujJO0rVEXSMJ7565srT7geSwwzcfPdj6bA8YHay1EJxEq//xEkYV4
-	edZ39wBcicNot1MuXlVxdIXYmEiN6DMAINqK3p7GNFUwUogjXvrxAMSu60lorKQBZ3csJPbMej+3F
-	+Htgb9BkV7r+7FMbc2Hg==;
+	List-Owner; bh=ymg1RUEbhaahilNTpT76VrpoWo6TTp5cRA3gjAaiXis=; b=UOO573ezeO4SyN
+	ZfqQo46d/PawDSQTDmJ0AH/t4SVfSDIfLPhvCElMA1CJVUUt31sm6E+zYraMF3claataVwGfbtDFc
+	srzfuwR1Hxmgv6MCRH4q+b6zxc9k6y9vygfZPLBVjSQSh9P9pyOBSZa4k92Xi2zXQk62iB33nnMAR
+	3osbtox4KCK8xK8uIIzIfJR9r2JBTlgBvJ7x5BuKHBNpmD4KvD0wJUtlE7lk4PEsUkGk9lBMWnbCy
+	iNjNMZgO6qtEFbGe9DC7iUDG1oyIv6F39mGrHp1L3gBlzvq2YR01RFzeoMsdzRBA9kB77cYnHiYFX
+	BihavkPTC1NZBFfXzBwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKeJ2-0082dH-0Y;
-	Tue, 02 Jan 2024 12:55:40 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1rKed2-0085Kx-02;
+	Tue, 02 Jan 2024 13:16:20 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKeIy-0082bc-2a;
-	Tue, 02 Jan 2024 12:55:38 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-6d9c2db82b0so1761365b3a.1;
-        Tue, 02 Jan 2024 04:55:35 -0800 (PST)
+	id 1rKecy-0085JK-2q;
+	Tue, 02 Jan 2024 13:16:18 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-5534dcfdd61so16006086a12.0;
+        Tue, 02 Jan 2024 05:16:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704200135; x=1704804935; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1704201374; x=1704806174; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:references
          :in-reply-to:user-agent:subject:cc:to:from:date:from:to:cc:subject
          :date:message-id:reply-to;
-        bh=+6zV12XTifi7kUx3OOAHC6KwNMFaqKkolPFrVGczEkk=;
-        b=UFXBpBxKOX199AIfHUfu1LCL5/oBoQZOWaNquLBjWO6rpRg7ktiNAP+DvZLve4YSww
-         HN2g6uZz0U93pHUNpNVQMVGBUeBHnNpiJC2RkQw1cnbfCIubG3qUxtCkuEiGZuKqyvql
-         oQFxEuo/6e68sLaQdYQJKbp6J2MdEOR6vUNynoxeiNOz3otMguI6y7niOfelD9Hg+zlk
-         VasW6ryJ8lglLZfTXGOc3CGftAx/Rasg4ipTtMvhsu1uaVhh0an18S8tDfhvgA6MB65o
-         OI5OxfGSK3BpBtGwptwqYzKe+l2SkuHT0vxTiWLwkHcGvHjBbQfJhR2QfpBnK13Zn6Dj
-         owpQ==
+        bh=ymg1RUEbhaahilNTpT76VrpoWo6TTp5cRA3gjAaiXis=;
+        b=QU3KLRkBaa/JPxeGEJetCghsZNYyOQrogK0myIZpqQJ9bGUb0F6rv40PJE6FDd5NEv
+         +GNkiwl6nBxEVrzibpXqj6+vEMrISFKoa0Rhvs+qcsRouJHGncHFHaMMVy86+2UxoIjK
+         Y+zMMEcugRN7eQUyZ4Fx0goNg+EiAuH7Lwi3q2j2zyCNRbSVQFFu5un02glMdQcAfRzJ
+         TqxNz9WbajReKmRhLC11Cy6+iy2qwKFpB5WYwDPmUUeWX1gdHQAkWbH3iB+wJsoZ28Mh
+         cgtI8tlZMBJvdaSaeFfldBe7huCtl7WHS7ZivewWx1Qqw58lRn6wc1tp19Geh+fU21y/
+         m//g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704200135; x=1704804935;
+        d=1e100.net; s=20230601; t=1704201374; x=1704806174;
         h=content-transfer-encoding:mime-version:message-id:references
          :in-reply-to:user-agent:subject:cc:to:from:date:x-gm-message-state
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=+6zV12XTifi7kUx3OOAHC6KwNMFaqKkolPFrVGczEkk=;
-        b=c6ZgzqfumzZ9fKKJuwmBYacQfn3mQo2SBAihkbc+NgKLVQcjLafMi6AhS9dySV7t6Y
-         X3qab7NF5xtgX+4VWqOq24PrsOs6YsDEqeNH7BYaWCWd8wkDOE85aW5d8p1umkQdnPpv
-         qolH9PVHKl75/l3crVzbbRDNE967nFlxm4SCq9Y/qbgDalRl6enf+3XtAyCRqpiupr3V
-         HYMsDZFkFSqnI4rcpPWFZ2c9NRaAtsf3Fim8LJC9nHkHBLQdh28xmYkYzCazIkvbGZbN
-         7ieI12dWsLVnOKrtpeQCDGsD2D/CkPbEO7V5bw49JLZXDUMddocbYways0ssLB3qzM/B
-         cmJg==
-X-Gm-Message-State: AOJu0YyT5bOioVhZ28HKzCuhb2GtWczQseV16n6CoQnsl3ZSH2JmluRa
-	LI0dqCqdqqSBSCf0sEMAHl0=
-X-Google-Smtp-Source: AGHT+IFRCZojliga3N9ozWGn5Eayce7SFrQ/owylc0cKJuk3qq2nb7v1hWLetkyhKqOrD4ap5xRY6A==
-X-Received: by 2002:a05:6a00:4505:b0:6d9:a0da:4fbc with SMTP id cw5-20020a056a00450500b006d9a0da4fbcmr7360079pfb.36.1704200134866;
-        Tue, 02 Jan 2024 04:55:34 -0800 (PST)
+        bh=ymg1RUEbhaahilNTpT76VrpoWo6TTp5cRA3gjAaiXis=;
+        b=pwge31XhDBhmE3IyvVX1v8QwmmqCQuBpYmhSSvjZ6sxH1SG5CmOUwXMDKQRPkB79+c
+         5zi4SeEQVAu+BVgvFyqQyBB9VqWkkhb+Z745DkLpbISxmAZQlc0Iz2SNrHNtb4j45DUx
+         MeXxcgZC0uC8p26i3zcbPh3xnhUagWNzIILD8zDYb84Uy/YzOMgggTbStLYokpUSqK2Y
+         EEFvoerpz7MsK2p2aFhgczzCRQw5yfdBGwLMvzgQ7X9/exIIyMEQukv0who6rLsAJYsp
+         Xy6I5oSZF6X6rBk4wgbjkHZIItocP/kR/VwXdqBc3793iFBh1XbAdvPheBTrjxU6tfMB
+         KL8A==
+X-Gm-Message-State: AOJu0YyY/7+pclzSdawc9TKNQtwjelS7gDm7ZGTbtK78yW5nKl/ubjQ5
+	roGjgIPdmf5ErwZUaDWnBKA=
+X-Google-Smtp-Source: AGHT+IG6FQg0SPLjELmusCQ1pxaKN/Jc2EfCRw64reeXapXoPt86R09+3G6WZl7C8LMxW86E2RUbhQ==
+X-Received: by 2002:a05:6402:268b:b0:554:c9af:a66e with SMTP id w11-20020a056402268b00b00554c9afa66emr13601900edd.9.1704201373893;
+        Tue, 02 Jan 2024 05:16:13 -0800 (PST)
 Received: from [127.0.0.1] ([89.205.132.224])
-        by smtp.gmail.com with ESMTPSA id w37-20020a631625000000b005cd8bf50c13sm20655512pgl.58.2024.01.02.04.55.34
+        by smtp.gmail.com with ESMTPSA id g20-20020a056402091400b005551b2f66f0sm9627874edz.43.2024.01.02.05.16.13
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 02 Jan 2024 04:55:34 -0800 (PST)
-Date: Tue, 02 Jan 2024 13:55:33 +0100
+        Tue, 02 Jan 2024 05:16:13 -0800 (PST)
+Date: Tue, 02 Jan 2024 14:16:14 +0100
 From: Eric Woudstra <ericwouds@gmail.com>
 To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_RFC_net-next=5D_net=3A_pcs=3A_pcs-mtk-lyn?= =?US-ASCII?Q?xi_fix_mtk=5Fpcs=5Flynxi=5Fget=5Fstate=28=29_for_2500base-x?=
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_RFC_net-next=5D_ne?= =?US-ASCII?Q?t=3A_phylink=3A_add_quirk_for_d?= =?US-ASCII?Q?isabling_in-band-status_for_mediatek_pcs_at_2500base-x?=
 User-Agent: K-9 Mail for Android
-In-Reply-To: <ZZP9GR15ufDbjGAJ@shell.armlinux.org.uk>
-References: <20240102074408.1049203-1-ericwouds@gmail.com> <ZZP9GR15ufDbjGAJ@shell.armlinux.org.uk>
-Message-ID: <92190426-3614-4774-9E9F-18F121622788@gmail.com>
+In-Reply-To: <ZZQDWzYlxAKl0JxI@shell.armlinux.org.uk>
+References: <20240102074326.1049179-1-ericwouds@gmail.com> <ZZQDWzYlxAKl0JxI@shell.armlinux.org.uk>
+Message-ID: <A660847B-FEFF-4AE1-809B-F0A6EBE2A52C@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain;
  charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_045536_836178_9F7AC1B5 
-X-CRM114-Status: GOOD (  16.58  )
+X-CRM114-CacheID: sfid-20240102_051616_915494_29737875 
+X-CRM114-Status: UNSURE (   8.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,53 +88,16 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->Please describe your setup more fully=2E What is the link partner on this
->2500base-X link?
+Since using compatible is not an option and in and 2500base-x is hardware d=
+ependant, then I was thinking this would be useful=2E
 
-I use a BananaPi R3, with the oem-sfp2=2E5g-t module=2E It has the SFP qui=
-rk that disables autoneg=2E I was trying Marek's rtl8221b patchset, but fou=
-nd that even with unmodified code,  original net-next unmodified, I could g=
-et link up, but no traffic is going through=2E
+bool pcs->ops->supports_inband(interface)
 
-On the other side is a=2Erock5b with rtl8125b=2E
-
-Only after applying this patch, it works and eth1 reports link up with 2=
-=2E5Gbps instead of unknown speed=2E
-
-If you need more debugging info, I can supply it at a later time=2E
-
-
-On January 2, 2024 1:10:01 PM GMT+01:00, "Russell King (Oracle)" <linux@ar=
-mlinux=2Eorg=2Euk> wrote:
->On Tue, Jan 02, 2024 at 08:44:08AM +0100, Eric Woudstra wrote:
->> From: Daniel Golle <daniel@makrotopia=2Eorg>
->>=20
->> Need to fix mtk_pcs_lynxi_get_state() in order for the pcs to function
->> correctly when the interface is set to 2500base-x, even when
->> PHYLINK_PCS_NEG_INBAND_DISABLED is set=2E
->
->Please describe your setup more fully=2E What is the link partner on this
->2500base-X link?
->
->In PHYLINK_PCS_NEG_INBAND_DISABLED mode, this means that phylink is
->operating in inband mode, but Autoneg is clear in the advertisement
->mask, meaning Autoneg is disabled and we are using a "fixed" setting=2E
->state->speed and state->duplex should already be initialised=2E
->
->> When the pcs is set to 2500base-x, the register values are not compatib=
-le
->> with phylink_mii_c22_pcs_decode_state()=2E It results in parameters suc=
-h as
->> speed unknown and such=2E Then the mac/pcs are setup incorrectly and do=
- not
->> function=2E
->
->Since Autoneg is clear, phylink_mii_c22_pcs_decode_state() won't
->change state->speed and state->duplex, which should already be
->correctly set=2E
->
+I'll be happy to invest some time in this, but I'll need to know which way=
+ to go, before I invest more time in something that would not be accepted=
+=2E
 
