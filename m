@@ -4,65 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAE4CC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 09:29:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70834C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 09:31:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jZspIdwPfwjMVdesud/zxLQzSxefi2EwUC/T482SpUw=; b=kFBJUy8zek3Wx5RIf62FiVcezB
-	DkLHjyH3WgPhyqftfZ3h/t6xQ1Z32OaPNS4V6Q6LbJnIA61QtNKWcE4EqCu4Rzz6FWlbhN3v9PhoO
-	CRfuP+GRJtdZ+JIkOFD0sR5blJP31Qsnskmhy1XdskjKGeopUhYg/woOV7NW9e8cND8uhEV5gxKDq
-	u/c7KU5Zcb6GWF672fZbg+MaanX8Z0SksGVcAWvEoDuyWzkal32avJmqy/+7srtftjqMtMHJYz9UU
-	SndAVT9Ty0Rhet024uRcbHJWhFceIUFZVbt/LscqxXyEpbLyH27Ng0wnJfMZtBtedZqIUniwvvHSw
-	kUBdcCOg==;
+	bh=uqL7q26P9IiF+NjyZdizoHlpz2acdbbh+vgf9IrqO5E=; b=vVb3YDow2K3gBGMFS99E7XKR/R
+	5xkPlrMWnImeerMNw73uJMZMhdnvM83cScEkkzXMcd6FqLlgLgqk403K3pDCf601ebAqViUYg9dvH
+	B3pDhlIbJei0DED8mN+sYKUROeL5/OYwtBpZLWN2OEFxH2nk7/TXpcTbgHP9m4bG9SHMGDE9tmRvO
+	VQoRP5wiGmumnHFgvm2aMk6TSdgA8vyV9gIg+Zg1gw9iEQpK/BaUTvM3GaUbWYkoQKU73oTwQBfWW
+	fkZdUbXIWdK68K9izPRyLRw1Oki8Jqh7EkZSi01aTfdROjSdwPQtSjhM1NFGgKTVkR6BUSEYiB+Ks
+	QXOGuqvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKb5d-007Spg-08;
-	Tue, 02 Jan 2024 09:29:37 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rKb7r-007TB7-1t;
+	Tue, 02 Jan 2024 09:31:55 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKb5Z-007Sos-2Q;
-	Tue, 02 Jan 2024 09:29:35 +0000
+	id 1rKb7n-007TAC-36;
+	Tue, 02 Jan 2024 09:31:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1704187772;
-	bh=X3V/FUP7jB7imPZc6a3/phfo3h5eler6vQthFA3zLC0=;
+	s=mail; t=1704187910;
+	bh=GS1ilAjGtQe9kYt0ZI0ljTUErP/Rc2UM30xX6zpBUl0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Jf8esK5AKxIa/brudcCHU0UiYvO2pmC29TKXKFazyHwe51nl7mJ9rTLT6TMri+DXW
-	 CR1f5LycZXNqGF5vdL7dggD0rhKyTw7suSPKQWOcGD86dLIre936kfJXIYwAtGSLzz
-	 0vXMs3/xqgKiY67o/avkHRZa3qO+/58d9xIvLa/jOiF4EFvBMS/j2NBHHwObWqgWzk
-	 TDkLXzFwAuNuEJ8BfP+t3uCKw9lx4XzUz+j69TXSjETy24mwcHv2AkMhOO/JcVTE4s
-	 3TUjuQyH3gLYM3Vsbqj6D7lS1CIl0KNca9i/VY2dNaM+RQ1R2v9dye3bNRIp93Xdhm
-	 KF2TPYpN8PuWQ==
+	b=hC5jvCVas/Ki5j2R6EMxqy8XF1AZwdw0WBI++dRQdLK8BF7Czcj+1Mk/pg2Q5D0V9
+	 3aRpZnVS/OU9GI2ZFp6vGxtsykLR7XHYgG9ap6SRWHOhD9Mos/KDykGIZ5y9GAtaka
+	 syEVvz0ceeDCbtkfyAfbRumHjHIfklYBmzWxKf7Y6n7U3g8Zs6znpMdKmnLfMK6Z0O
+	 ZlxeH7ysuRCuY2rU45gJm21/abxJCWBxqv2TFxVBSRi+uvopFMpOm86kR99IXURS9X
+	 d6Igr+QeM6FYjxbm30Kf4s4FHJ3YwmxFisRHKB1PQPHUkVY48A/bYgOgWbyT74vYG5
+	 u245MsWFF5YDA==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 8DBD53781433;
-	Tue,  2 Jan 2024 09:29:31 +0000 (UTC)
-Message-ID: <5ad9e27b-761f-47a9-8d7d-f182dac5d2cd@collabora.com>
-Date: Tue, 2 Jan 2024 10:29:31 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 8122737813DB;
+	Tue,  2 Jan 2024 09:31:49 +0000 (UTC)
+Message-ID: <db7b4cb4-7302-47c0-9712-0d746347c6a9@collabora.com>
+Date: Tue, 2 Jan 2024 10:31:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: media: mediatek-jpeg-encoder: change max
- ioomus count
+Subject: Re: [PATCH v4 1/3] dt-bindings: usb: mtk-xhci: add a property for
+ Gen1 isoc-in transfer issue
 Content-Language: en-US
-To: Eugen Hristev <eugen.hristev@collabora.com>, bin.liu@mediatek.com,
- matthias.bgg@gmail.com, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20231227130812.148914-1-eugen.hristev@collabora.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Eddie Hung <eddie.hung@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>
+References: <20231227060316.8539-1-chunfeng.yun@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231227130812.148914-1-eugen.hristev@collabora.com>
+In-Reply-To: <20231227060316.8539-1-chunfeng.yun@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_012933_915590_043A377F 
-X-CRM114-Status: GOOD (  14.84  )
+X-CRM114-CacheID: sfid-20240102_013152_133189_FCBB3DAD 
+X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,36 +83,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/12/23 14:08, Eugen Hristev ha scritto:
-> MT8186 has 4 iommus in the list, to cope with this situation, adjust
-> the maxItems to 4 (instead of previous 2).
-> Add also minItems as 1 since iommus are mandatory, to avoid warning
-> on the example.
+Il 27/12/23 07:03, Chunfeng Yun ha scritto:
+> For Gen1 isoc-in endpoint on controller before about SSUSB IPM v1.6.0, it
+> still send out unexpected ACK after receiving a short packet in burst
+> transfer, this will cause an exception on connected device, specially for
+> a 4k camera.
+> Add a quirk property "rx-fifo-depth" to work around this hardware issue,
+> prefer to use 3k bytes;
+> The side-effect is that may cause performance drop about 10%, including
+> bulk transfer.
 > 
-> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
-> ---
->   .../devicetree/bindings/media/mediatek-jpeg-encoder.yaml       | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-> index 37800e1908cc..60c75b9312e8 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-> @@ -38,7 +38,8 @@ properties:
->       maxItems: 1
->   
->     iommus:
-> -    maxItems: 2
-> +    minItems: 1
-> +    maxItems: 4
->       description: |
->         Points to the respective IOMMU block with master port as argument, see
->         Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
-
-(commit title) `ioomus` is something I've never heard of before... :-P
-
-Please fix the typo, after which:
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
