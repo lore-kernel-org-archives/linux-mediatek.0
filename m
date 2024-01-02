@@ -4,48 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36301C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 10:55:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30163C47074
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 11:45:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mfPmEMBE1Wpq00R+242jiaLXkWvYzNKOQ5mWEYSaTTM=; b=o3Wf+jDVugwABRuBUrsJRdmdZ6
-	9nK1AS2vhIhnekkKj3bMWIP7VX2Roo4/wPZun6HCdjz4kayNvpt8tNX/W2ze6NxKcDyHiqwm9xAuT
-	f6IXvbHALXyIZF3tGqkm2UOB5YdRvKlzHkWjm866xoUxLZUG8xZQOR8npn9xR0cHpg5mpizUQJHO+
-	F+Ft+KTAyYDMMczX+47VAsRHz2NF7FfvagTPBzX9t+dDlQFLV5fozm3SSc7MZukh39sPE8uxYqGdU
-	ZY1/CVu9OO8daO0MBxngjgBgaHzdGvwD/gEwUFgHMIhRgCLkgwkrzttsqO57aspu6CloC3h+VvM4Q
-	66dGThPA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Subject:To:From:Date:References:
+	In-Reply-To:Message-Id:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lVTkJg3cjvcYbcVCRM3jEwk1bpjplmmOC1M0Z0hmekI=; b=FRkNtKMkwh/Box
+	JOzS3n1+n9NDBKyBCBPCLKlSKVS3g4HobGThbrbNkIzegwWiWFebZ79c/6FIHI+/8Qm5pwaB7qvw4
+	uTLLGEWKvFxQLhQPlO4nLthiQX1/5Pd0AJjl6h9822BL/5PSVdiyQonkyWCaZHdVxZOEk4XaKDJHc
+	HssdajWliVBqHQ91WX/SnJX35g3RYX3N87XwAQAU3r6MdunJSuMjan1vgK2Vcs114vZK9R4FCMcf3
+	u1BBqFRme+WDtKsfH0PaijSB2ExgYUjBNBM9XOlKoiFqzy4SyABoFG/BiBx0NRgVmW965rK74yJy+
+	U4DBG2vXEKjfFb2EV65Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKcQm-007edV-0N;
-	Tue, 02 Jan 2024 10:55:32 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1rKdD8-007pdR-1B;
+	Tue, 02 Jan 2024 11:45:30 +0000
+Received: from wout2-smtp.messagingengine.com ([64.147.123.25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKcQi-007ebh-2P;
-	Tue, 02 Jan 2024 10:55:30 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1rKcQJ-0006IK-2M;
-	Tue, 02 Jan 2024 10:55:04 +0000
-Date: Tue, 2 Jan 2024 11:52:34 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Eric Woudstra <ericwouds@gmail.com>
-Subject: Re: [PATCH RFC net-next] net: phylink: add quirk for disabling
- in-band-status for mediatek pcs at 2500base-x
-Message-ID: <ZZPq8iMAv3eR9Gfk@pidgin.makrotopia.org>
-References: <20240102074326.1049179-1-ericwouds@gmail.com>
+	id 1rKdD3-007pXo-2E;
+	Tue, 02 Jan 2024 11:45:28 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailout.west.internal (Postfix) with ESMTP id 91E4E3200A96;
+	Tue,  2 Jan 2024 06:45:22 -0500 (EST)
+Received: from imap51 ([10.202.2.101])
+  by compute5.internal (MEProxy); Tue, 02 Jan 2024 06:45:23 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to; s=fm1; t=1704195922;
+	 x=1704282322; bh=lVTkJg3cjvcYbcVCRM3jEwk1bpjplmmOC1M0Z0hmekI=; b=
+	k3OneBTh08tqoscwl4dIXVoPry+kCmejuelbg85RE8OONq6Wrw/7vjBfTg38tW2c
+	gy1+TbV2xEOJU4c1CweKIgVKGuYYyM/KPfC6MiatsOWik6KDIBm8U6C4GGa9VBga
+	uwYNRqZniFCrE0VRyLtX7JdtUM7XZfZKSlSA3VkZgOvm9m4TEC6shFYVkf5HYJsb
+	iJqfe2vtsvrWWEXPybF3Pl4kzgw9Z8kEnyhs6pRpCRzc9De0l6pQnCNbdaWL00zm
+	VAPUVdpmp9gxnCpAXYkXx7mwZu4Ep+AKRrKER/ug+8IZfeghmStJ4H9EjDje1wCO
+	SpDRtMIw4oTCEbN3WSPc2Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1704195922; x=
+	1704282322; bh=lVTkJg3cjvcYbcVCRM3jEwk1bpjplmmOC1M0Z0hmekI=; b=u
+	iHAKjnpN0YBw68MTQ8mSElSczQ24tUV32LaDWsmNRSJ6u80MFE1aqVNoq1fwh/L/
+	+ZffLD3emWtonwtdHtp7ZzpIEnazajW97FYBvm1Cv+OVeTIIb5n6Kvs3QQGQUyre
+	ue2udCOUlKkxssR1zVZJeVwaE091oEE/hzT2W+Hhsq+wCdF2wG9PFYyQJ0ZXMmVY
+	uc4IfeejW44ZD10NRxqbs+Mxm3sfYw/YBpy47O1b6KTd90lAn0uS37Yuzfx8MJeM
+	0MFt6u5OOGdhxPc2ENwKxH1iGotPv4IJ0XxJY1OVPOT5xM5ogfLCgCuTdW+IkFUz
+	7AS684kAbdZ0Dc+FJGi+w==
+X-ME-Sender: <xms:UfeTZa0cX-zxQaMGagWO0r2MRVFl5kXn7d_UGH98xxXW19-IzWp1Hg>
+    <xme:UfeTZdG_tNUXuDecWnemKqtJBTrYTW7JmxGtKYk6LM0eqCj9p0By8Vsbghorj8-3m
+    pgrK8r5noOKu7hhjzk>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrvdegvddgfedtucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepofgfggfkjghffffhvfevufgtgfesthhqredtreerjeenucfhrhhomhepfdet
+    rhhnugcuuegvrhhgmhgrnhhnfdcuoegrrhhnugesrghrnhgusgdruggvqeenucggtffrrg
+    htthgvrhhnpeegfeejhedvledvffeijeeijeeivddvhfeliedvleevheejleetgedukedt
+    gfejveenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+    grrhhnugesrghrnhgusgdruggv
+X-ME-Proxy: <xmx:UfeTZS7KV2yZHBfZMjIzr9ASSmLK9Jt3f3LtxdsMauxiUdqUPveQtg>
+    <xmx:UfeTZb3VUYx-de1_qkHa2FchWjH4V_Y7G4SBAFYYyjFXO-t4nQrc6w>
+    <xmx:UfeTZdGTX3FcGZS_XAPaOxPg8xZmukYHIBGlG_CndY0HhfiaPhW6dw>
+    <xmx:UveTZV-8hnN-e1YNJKFFNfk6U1XPReYj7RBSvyWpSQZKI7sokD3ppA>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id C69DAB6008D; Tue,  2 Jan 2024 06:45:21 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.9.0-alpha0-1364-ga51d5fd3b7-fm-20231219.001-ga51d5fd3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240102074326.1049179-1-ericwouds@gmail.com>
+Message-Id: <e0fae82d-aa6c-4341-bc56-1370dcf733b1@app.fastmail.com>
+In-Reply-To: <ddbdec9b-f075-4c7e-9411-28baf1e68401@linaro.org>
+References: <20231116130816.4932-1-zajec5@gmail.com>
+ <a5113b85-e29c-454f-b776-ac7abbca771f@gmail.com>
+ <d0734a8f-0b72-4609-a941-da4bdc3e323e@gmail.com>
+ <ddbdec9b-f075-4c7e-9411-28baf1e68401@linaro.org>
+Date: Tue, 02 Jan 2024 12:45:01 +0100
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>,
+ =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "Rob Herring" <robh+dt@kernel.org>,
+ "Krzysztof Kozlowski" <krzysztof.kozlowski+dt@linaro.org>,
+ "Conor Dooley" <conor+dt@kernel.org>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt7986: fix reference to PWM in fan node
+Content-Type: text/plain;charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_025528_785694_C96F693C 
-X-CRM114-Status: GOOD (  36.06  )
+X-CRM114-CacheID: sfid-20240102_034525_763541_A105289D 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,128 +108,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 02, 2024 at 08:43:26AM +0100, Eric Woudstra wrote:
-> In follow up to: net: pcs: pcs-mtk-lynxi: use 2500Base-X without AN
-> 
-> MediaTek LynxI PCS, 2500Base-X will only work without inband status due to
-> hardware limitation.
-> 
-> I understand this patch probably will not get approved as it is now, but
-> perhaps with some pointers in the correct direction to follow, I can change
-> it so it could be. It does however get the result that the rtl8221b on a
-> sfp module functions correctly, with and without (as optical sfp) the phy
-> attached and without using a quirk/ethtool to disable auto-negotiation.
-> 
-> Introduce bool phylink_major_no_inband(pl,interface), a function similar to
-> bool phylink_phy_no_inband(phy). An option could be to use a function like
-> bool pcs->ops->supports_inband(interface), where if the function-pointer is
-> null, it means it is supported for all. This instead of using
-> of_device_is_compatible() inside the phylink_major_no_inband() function.
-> 
-> Code added to phylink_major_config():
-> 
-> When there is no PHY attached, pl->pcs_neg_mode is set to
-> PHYLINK_PCS_NEG_INBAND_DISABLED.
-> 
-> When there is a PHY attached, pl->cur_link_an_mode is set to MLO_AN_PHY.
-> To have the pcs function correctly with the rtl8221b, we need to do the
-> following to the in-band-status:
-> 
-> We need to disable it when interface of the pcs is set to 2500base-x,
-> but need it enable it when switched to sgmii.
-> 
-> So we get:
-> 
-> [...] mtk_soc_eth ... eth1: phy link up sgmii/1Gbps/Full/none/rx/tx
-> [...] mtk_soc_eth ... eth1: phylink_mac_config: mode=inband/sgmii/none
->                                 adv=00,00000000,00000000,00000000 pause=03
-> 
-> [...] mtk_soc_eth ... eth1: phy link up 2500base-x/2.5Gbps/Full/none/rx/tx
-> [...] mtk_soc_eth ... eth1: phylink_mac_config: mode=phy/2500base-x/none
->                                 adv=00,00000000,00008000,0000606f pause=03
-> 
-> Changes to be committed:
-> 	modified:   drivers/net/phy/phylink.c
-> 
-> Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
-> ---
->  drivers/net/phy/phylink.c | 31 +++++++++++++++++++++++++++++++
->  1 file changed, 31 insertions(+)
+On Thu, Dec 28, 2023, at 08:14, Krzysztof Kozlowski wrote:
+> On 28/12/2023 08:03, Rafa=C5=82 Mi=C5=82ecki wrote:
+>> On 14.12.2023 07:43, Rafa=C5=82 Mi=C5=82ecki wrote:
+>>> On 16.11.2023 14:08, Rafa=C5=82 Mi=C5=82ecki wrote:
+>>>> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
+>>>
+>>> I sent those few trivial fixes weeks ago:
+>>> [PATCH] arm64: dts: mediatek: mt7986: fix reference to PWM in fan no=
+de
+>>> [PATCH 1/2] arm64: dts: mediatek: mt7986: fix SPI bus width properti=
+es
+>>> [PATCH 2/2] arm64: dts: mediatek: mt7986: fix SPI nodename
+>>> [PATCH] arm64: dts: mediatek: mt7986: drop crypto's unneeded/invalid=
+ clock name
+>>>
+>>> Could someone pick them up, please?
+>
+> This should happen some time ago but...
+>>=20
+>> Anyone, please?
+>
+> ... exactly now, this cannot happen. We are way past applying patches
+> for the next cycle. Please ping or resend after the merge window.
 
-Your changes should go into mtk_eth_soc.c, you sould not need to modify
-phylink for this and as the link being up or down is still reported
-correctly by the hardware, it is also ok to have phylink believe that
-in-band-status is being used and just not set the SGMII_AN bit in the
-MediaTek LynxI hardware.
-(ie. only auto-negotiation of speed and duplex doesn't work in
-2500Base-X mode)
+If these are bugfixes, I still take them, only new functionality
+should wait. I still need a reply from the maintainers of course.
 
-> 
-> diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
-> index 298dfd6982a5..6e443eb8ee46 100644
-> --- a/drivers/net/phy/phylink.c
-> +++ b/drivers/net/phy/phylink.c
-> @@ -1074,6 +1074,22 @@ static void phylink_pcs_an_restart(struct phylink *pl)
->  		pl->pcs->ops->pcs_an_restart(pl->pcs);
->  }
->  
-> +static bool phylink_major_no_inband(struct phylink *pl, phy_interface_t interface)
-> +{
-> +	struct device_node *node = pl->config->dev->of_node;
-> +
-> +	if (!node)
-> +		return false;
-> +
-> +	if (!of_device_is_compatible(node, "mediatek,eth-mac"))
-> +		return false;
-> +
-> +	if (interface != PHY_INTERFACE_MODE_2500BASEX)
-> +		return false;
-> +
-> +	return true;
-> +}
-> +
->  static void phylink_major_config(struct phylink *pl, bool restart,
->  				  const struct phylink_link_state *state)
->  {
-> @@ -1085,10 +1101,22 @@ static void phylink_major_config(struct phylink *pl, bool restart,
->  
->  	phylink_dbg(pl, "major config %s\n", phy_modes(state->interface));
->  
-> +	if (phylink_major_no_inband(pl, state->interface) && (!!pl->phydev)) {
-> +		if (pl->cur_link_an_mode == MLO_AN_INBAND)
-> +			pl->cur_link_an_mode = MLO_AN_PHY;
-> +		else
-> +			/* restore mode if it was changed before */
-> +			pl->cur_link_an_mode = pl->cfg_link_an_mode;
-> +	}
-> +
->  	pl->pcs_neg_mode = phylink_pcs_neg_mode(pl->cur_link_an_mode,
->  						state->interface,
->  						state->advertising);
->  
-> +	if (phylink_major_no_inband(pl, state->interface) && !pl->phydev &&
-> +	    pl->pcs_neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED)
-> +		pl->pcs_neg_mode = PHYLINK_PCS_NEG_INBAND_DISABLED;
-> +
->  	if (pl->using_mac_select_pcs) {
->  		pcs = pl->mac_ops->mac_select_pcs(pl->config, state->interface);
->  		if (IS_ERR(pcs)) {
-> @@ -1218,6 +1246,9 @@ static void phylink_mac_pcs_get_state(struct phylink *pl,
->  				      struct phylink_link_state *state)
->  {
->  	linkmode_copy(state->advertising, pl->link_config.advertising);
-> +	if (pl->pcs_neg_mode == PHYLINK_PCS_NEG_INBAND_DISABLED)
-> +		linkmode_clear_bit(ETHTOOL_LINK_MODE_Autoneg_BIT,
-> +				   state->advertising);
->  	linkmode_zero(state->lp_advertising);
->  	state->interface = pl->link_config.interface;
->  	state->rate_matching = pl->link_config.rate_matching;
-> -- 
-> 2.42.1
-> 
+      Arnd
 
