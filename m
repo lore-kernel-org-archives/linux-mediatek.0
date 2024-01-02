@@ -4,93 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF691C47074
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 21:00:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B673EC46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 21:04:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ajkx4bsq5FblcMrag9XMXkO7pdSXa2ulGlzhuPvkJzs=; b=mF86qgRRITlu9C1w7pftEx9mAM
-	26HH4bblV2kFc8VN9fQZXX4d6UQCPPjc5zmbxer/7e5+6XYbvEtcJc8Te9yQ5Ymv05cArN0DJ2fA0
-	otcYYVupyz6QYvv0D9WzG+nC6Ma1nPDK2/gX8kLYPz3/EBRs49hSGBLtYPlQLgJLR+x59p5xWhFEc
-	70HbG3RXCtOKpzxJlpOPMm95U4t18WTH/NfVQDMyp4BH3yDGMRoaXhPtxBba1WC9RdmJgwy22qJ88
-	DptYOTaFeqjo2d9HetgoSEGAaKq3C5NYwxQYXw2Gw5wCKg+wk8rGwOa7FG8RM9UqnShd0/iLBAkco
-	ihYq09qA==;
+	bh=OKJoKCNa2on6MaUw+IXLyW9j+tclUcYQbGIbH/zTLG0=; b=M2Tqay65s8EGxMTSd9BLPJgFOY
+	3jOUAoWJ74IaOORRnA3HRuOJ205tYFupRUeVCljdXJe1N/opliHIfj300d0RYnMEtHVFL6PGqs1a3
+	zmXVO1R9O9FajvJDWSD6EQXayJTnRTyrWKIl37GhXswWAEc82luwBunPJHFzoc2yWQvdtnxv1vxUu
+	GgTP+XR2R/V75TOcIqZuCSMZWy4I3e3GG3WVvZtNpy8mNmA0q8CWwdUxwMbfcmXjZU6mCILM4aIAH
+	YgDta3lFQ2ZOn8dcdh5X5ixnfTCA0MKlxM/f8EVWmVf1wCqhYfWeI94KcOaOgUBorPNQHkivj26Wh
+	czKJMc2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKlrn-008yhs-2j;
-	Tue, 02 Jan 2024 21:00:03 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1rKlvi-008zGe-1z;
+	Tue, 02 Jan 2024 21:04:06 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKlrh-008ycL-1I;
-	Tue, 02 Jan 2024 21:00:00 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a26ed1e05c7so756689366b.2;
-        Tue, 02 Jan 2024 12:59:53 -0800 (PST)
+	id 1rKlve-008zFQ-3B
+	for linux-mediatek@lists.infradead.org;
+	Tue, 02 Jan 2024 21:04:04 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-40d5a41143fso60604185e9.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Jan 2024 13:04:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704229192; x=1704833992; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Ajkx4bsq5FblcMrag9XMXkO7pdSXa2ulGlzhuPvkJzs=;
-        b=Ss3wT2ItyWLsfvVbMzT1l2+R4U7ptv35DJkn/nQq+DQNs37bwdpxMLB7mUx5OUrcIR
-         Z3+Nk+BvAVFCJv+HcmnCkTTuc55Z7pAjXpdQlEGSbWvlAJ+8tskrnySL7N2JlYsmEpSc
-         X86s5h0IkVP4dcIYtDDZfqwHp8VUrUVMvkDVN44CrlgXRqFSaSwvuo3sMFX+OIqOWdwE
-         nGjTkyiS82qIRjqpIbacsacStQvW8k87GkbJHx2pqkQspPUvWrM+fH1cQHZvgvwpeOIz
-         IITnx0K6uxhFLpGvxUEJwoCBl6JYMO+UtYST1IARrSJb5aZMZVQO37AvQpQ1/1gxFSyf
-         ARPQ==
+        d=linaro.org; s=google; t=1704229441; x=1704834241; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=OKJoKCNa2on6MaUw+IXLyW9j+tclUcYQbGIbH/zTLG0=;
+        b=nLzh5UtzebVu6K/E6cUj3FIpKMt8ZVLfFBrt9uL2YzoNIqie4d280G0tvP8Z5ndvoF
+         0eXdj9gJ65njN1N0y2C4ISZeubV5m9gI+AHJi6duVIhoAMFkU9kfdoHD7WTbv7pLdsAT
+         7hJzvtoBsikWReHD43dRAysKARmSs2pwE4gKO8MObZJoDlRidKRSiHqrKz+BskAydVGm
+         L855wmMrguo/H7FPXLFWKyuEl//hwv3U81Z8ISTKmy8Qqm9x5aS81SA2NWotcDVSueb+
+         ECGiUfGfVn4azeHOVz/tM7WbEIi3cPTx1ohgQCQrTdO/MrgLos0lsumxwCuRdKVsX2zV
+         /xvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704229192; x=1704833992;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Ajkx4bsq5FblcMrag9XMXkO7pdSXa2ulGlzhuPvkJzs=;
-        b=CucmITrY+RUUKZ4GjxctvMh39JppcEQ4QFWhMrymzkU5A628SD5BITl97yA79Ohh/I
-         73hLRvBZgTj4nj+O8Zen/BJGsViMIFfD0J++7AJA0rNHqnSpp6ruD7ICIGB/Nyk1PNy3
-         wd3GxR8MInRt1MBAE+9a6+pyqKq04TJRh/7kgj1l5Loa86iV+9fzBVxfVMpR683jP5Gf
-         Z+SJIpo7qrlh0MQwUSIbL963x5fezVdbHgUXPBJe5HAq1zW0QlPg2MAJuH/pOZW+ZIHf
-         TMMkqeQrky6AU9XM8hQBbIRTQ7aZNx2a2UkZoeTh91Npl6mhaB7IYeUq/O6jAds+P+IY
-         DXlg==
-X-Gm-Message-State: AOJu0YygwR+eKRnkAGb1LIu+j/4TywUlHl7fHxRtMl/4y9/6zdt/ocQN
-	DvbZBD2QnHaI+O6KHEiYaR4=
-X-Google-Smtp-Source: AGHT+IHhDQdRAcYOHrrLF2vqGrpF1xEzF7AiAnQxEGAx2mAbQ4UFRo0J9Hw9Iabzet1I/707xTXfUg==
-X-Received: by 2002:a17:906:1091:b0:a23:5b04:d2ed with SMTP id u17-20020a170906109100b00a235b04d2edmr4778977eju.142.1704229191786;
-        Tue, 02 Jan 2024 12:59:51 -0800 (PST)
-Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id f15-20020a17090660cf00b00a26f66ce72fsm7941200ejk.83.2024.01.02.12.59.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Jan 2024 12:59:51 -0800 (PST)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Daniel Golle <daniel@makrotopia.org>,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
-	jason-ch chen <Jason-ch.Chen@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	=?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH 2/2] arm64: dts: mediatek: Add initial MT7988A and BPI-R4
-Date: Tue,  2 Jan 2024 21:59:41 +0100
-Message-Id: <20240102205941.29654-2-zajec5@gmail.com>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20240102205941.29654-1-zajec5@gmail.com>
-References: <20240102205941.29654-1-zajec5@gmail.com>
+        d=1e100.net; s=20230601; t=1704229441; x=1704834241;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=OKJoKCNa2on6MaUw+IXLyW9j+tclUcYQbGIbH/zTLG0=;
+        b=rAEnZ1tRiK2w58X+xWdxaNQDrh0YWXU+A5/9FlioIh4iOt6nrdHeaG+tfAHwuNYp9b
+         rArlPSWVlkx6J3wRR3sC0pQDkIVTo2heFlZ4pWCxTt8dH+XfO9iYOeNslkr2Oy6AHAvq
+         zxCehRd3A3YhYovLm8b2/rOsnRo0GSykNE1IZEDYWN1R8iMY1MTGE/dqyk1ZvwDJKQmk
+         oL3TwQtjeYhUHtApDoAEUgIm9RJ50ABKKYa57HI9E9GPl/pE/WKbI2ti47Vr5Wp4gOTF
+         TRczLBL+71VQ2fcgm92Db9tlZvCwgR/9+NOAXc+D93BuNC3USS9+RtmQPOIK2I9lOYr6
+         TgMQ==
+X-Gm-Message-State: AOJu0YwnD5Dcoj0f1unU2Xm/6WTFxOnJSPxLNDGDMdtI9Q8e5nDRmLmL
+	58Rp0iiJl2B2qtoNexkoUhzECwUu2YBF6Q==
+X-Google-Smtp-Source: AGHT+IEK5cPCsj9m5d/GQtYelB04E1U7v+ztksDpXfXNxBtoE6427uqVQLyVG2dGgUBL3Ab426D8eg==
+X-Received: by 2002:a05:600c:3053:b0:40c:38dc:f6c8 with SMTP id n19-20020a05600c305300b0040c38dcf6c8mr9139926wmh.172.1704229440917;
+        Tue, 02 Jan 2024 13:04:00 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.218.27])
+        by smtp.gmail.com with ESMTPSA id 14-20020a05600c020e00b0040d23cea7bcsm19170797wmi.1.2024.01.02.13.03.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 02 Jan 2024 13:04:00 -0800 (PST)
+Message-ID: <69d285c8-1f0d-49b4-8ac7-6bafc3bce430@linaro.org>
+Date: Tue, 2 Jan 2024 22:03:58 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/3] dt-bindings: usb: mtk-xhci: add a property for
+ Gen1 isoc-in transfer issue
+Content-Language: en-US
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Eddie Hung <eddie.hung@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>
+References: <20231227060316.8539-1-chunfeng.yun@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20231227060316.8539-1-chunfeng.yun@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_125957_530519_2B4E5028 
-X-CRM114-Status: GOOD (  17.88  )
+X-CRM114-CacheID: sfid-20240102_130403_054536_D38E2313 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,210 +146,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+On 27/12/2023 07:03, Chunfeng Yun wrote:
+> For Gen1 isoc-in endpoint on controller before about SSUSB IPM v1.6.0, it
+> still send out unexpected ACK after receiving a short packet in burst
+> transfer, this will cause an exception on connected device, specially for
+> a 4k camera.
+> Add a quirk property "rx-fifo-depth" to work around this hardware issue,
+> prefer to use 3k bytes;
+> The side-effect is that may cause performance drop about 10%, including
+> bulk transfer.
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v4: change rx-fifo size in bytes
 
-MT7988A (AKA MediaTek Filogic 880) is a quad-core ARM Cortex-A73
-platform designed for Wi-Fi 7 devices (there is no wireless on SoC
-though). The first public MT7988A device is Banana Pi BPI-R4.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Many SoC parts remain to be added (they need their own bindings or
-depend on missing clocks). Those present block however are correct and
-having base .dtsi will help testing & working on missing stuff.
-
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
----
- arch/arm64/boot/dts/mediatek/Makefile         |   1 +
- .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  |  11 ++
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi     | 149 ++++++++++++++++++
- 3 files changed, 161 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 1e6f91731e92..0a189d5d8006 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -15,6 +15,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nor.dtbo
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtbo
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-new file mode 100644
-index 000000000000..efc4ad0b08b8
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-@@ -0,0 +1,11 @@
-+// SPDX-License-Identifier: GPL-2.0-only OR MIT
-+
-+/dts-v1/;
-+
-+#include "mt7988a.dtsi"
-+
-+/ {
-+	compatible = "bananapi,bpi-r4", "mediatek,mt7988a";
-+	model = "Banana Pi BPI-R4";
-+	chassis-type = "embedded";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-new file mode 100644
-index 000000000000..0f2ae9c7aef7
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -0,0 +1,149 @@
-+// SPDX-License-Identifier: GPL-2.0-only OR MIT
-+
-+#include <dt-bindings/interrupt-controller/arm-gic.h>
-+
-+/ {
-+	compatible = "mediatek,mt7986a";
-+	interrupt-parent = <&gic>;
-+	#address-cells = <2>;
-+	#size-cells = <2>;
-+
-+	cpus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		cpu@0 {
-+			compatible = "arm,cortex-a73";
-+			reg = <0x0>;
-+			device_type = "cpu";
-+			enable-method = "psci";
-+		};
-+
-+		cpu@1 {
-+			compatible = "arm,cortex-a73";
-+			reg = <0x1>;
-+			device_type = "cpu";
-+			enable-method = "psci";
-+		};
-+
-+		cpu@2 {
-+			compatible = "arm,cortex-a73";
-+			reg = <0x2>;
-+			device_type = "cpu";
-+			enable-method = "psci";
-+		};
-+
-+		cpu@3 {
-+			compatible = "arm,cortex-a73";
-+			reg = <0x3>;
-+			device_type = "cpu";
-+			enable-method = "psci";
-+		};
-+	};
-+
-+	oscillator-40m {
-+		compatible = "fixed-clock";
-+		clock-frequency = <40000000>;
-+		#clock-cells = <0>;
-+		clock-output-names = "clkxtal";
-+	};
-+
-+	pmu {
-+		compatible = "arm,cortex-a73-pmu";
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
-+	};
-+
-+	psci {
-+		compatible = "arm,psci-0.2";
-+		method = "smc";
-+	};
-+
-+	reserved-memory {
-+		ranges;
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+
-+		/* 320 KiB reserved for ARM Trusted Firmware (BL31 and BL32) */
-+		secmon@43000000 {
-+			reg = <0 0x43000000 0 0x50000>;
-+			no-map;
-+		};
-+
-+	};
-+
-+	soc {
-+		compatible = "simple-bus";
-+		ranges;
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+
-+		gic: interrupt-controller@c000000 {
-+			compatible = "arm,gic-v3";
-+			reg = <0 0x0c000000 0 0x40000>,  /* GICD */
-+			      <0 0x0c080000 0 0x200000>, /* GICR */
-+			      <0 0x0c400000 0 0x2000>,   /* GICC */
-+			      <0 0x0c410000 0 0x1000>,   /* GICH */
-+			      <0 0x0c420000 0 0x2000>;   /* GICV */
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-controller;
-+			#interrupt-cells = <3>;
-+		};
-+
-+		watchdog@1001c000 {
-+			compatible = "mediatek,mt7988-wdt";
-+			reg = <0 0x1001c000 0 0x1000>;
-+			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
-+			#reset-cells = <1>;
-+		};
-+	};
-+
-+	thermal-zones {
-+		cpu-thermal {
-+			polling-delay-passive = <1000>;
-+			polling-delay = <1000>;
-+
-+			trips {
-+				crit {
-+					temperature = <125000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+
-+				hot {
-+					temperature = <120000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
-+				active-high {
-+					temperature = <115000>;
-+					hysteresis = <2000>;
-+					type = "active";
-+				};
-+
-+				active-med {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "active";
-+				};
-+
-+				active-low {
-+					temperature = <40000>;
-+					hysteresis = <2000>;
-+					type = "active";
-+				};
-+			};
-+		};
-+	};
-+
-+	timer {
-+		compatible = "arm,armv8-timer";
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
-+	};
-+};
--- 
-2.35.3
+Best regards,
+Krzysztof
 
 
