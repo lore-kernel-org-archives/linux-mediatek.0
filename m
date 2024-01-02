@@ -4,99 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30163C47074
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 11:45:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB7B7C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 12:10:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Subject:To:From:Date:References:
-	In-Reply-To:Message-Id:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lVTkJg3cjvcYbcVCRM3jEwk1bpjplmmOC1M0Z0hmekI=; b=FRkNtKMkwh/Box
-	JOzS3n1+n9NDBKyBCBPCLKlSKVS3g4HobGThbrbNkIzegwWiWFebZ79c/6FIHI+/8Qm5pwaB7qvw4
-	uTLLGEWKvFxQLhQPlO4nLthiQX1/5Pd0AJjl6h9822BL/5PSVdiyQonkyWCaZHdVxZOEk4XaKDJHc
-	HssdajWliVBqHQ91WX/SnJX35g3RYX3N87XwAQAU3r6MdunJSuMjan1vgK2Vcs114vZK9R4FCMcf3
-	u1BBqFRme+WDtKsfH0PaijSB2ExgYUjBNBM9XOlKoiFqzy4SyABoFG/BiBx0NRgVmW965rK74yJy+
-	U4DBG2vXEKjfFb2EV65Q==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=su1M2ye5o0dILxMk9cyElIFBQ93oGry7ZL5GdcqEe5c=; b=q+rIdjUavfTRUUJdYhx70RAeSh
+	wwsAlCybSL4/j+gSB8vGFRlZAa4LBCShJRY4z+przkEJpVktfCzq182LhAKDQWG1koSkD8dvSvti/
+	I/diUvIVwFguM5h2NYaQS8w8z3x2XE9fWn2h155QBRiWRiR1xB3780uxVJUrDOGY9EyQnGVd09QaT
+	/z2X1H5aOmHqA3kSv3yc0L0mR6FiFq60nwnBogPTo7NbuzsBV/1e3yq+O4HSHMVgcO+FFHBvA1q41
+	Vc2yevxn3ljGQlWr9/kkgI8FNTtH5J4ou/TycXHWr3IMGL4YDt4Y17uFynFLNkh9X0ePl0SDXls/G
+	N2uJnGYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKdD8-007pdR-1B;
-	Tue, 02 Jan 2024 11:45:30 +0000
-Received: from wout2-smtp.messagingengine.com ([64.147.123.25])
+	id 1rKdb8-007wmZ-2d;
+	Tue, 02 Jan 2024 12:10:18 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKdD3-007pXo-2E;
-	Tue, 02 Jan 2024 11:45:28 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailout.west.internal (Postfix) with ESMTP id 91E4E3200A96;
-	Tue,  2 Jan 2024 06:45:22 -0500 (EST)
-Received: from imap51 ([10.202.2.101])
-  by compute5.internal (MEProxy); Tue, 02 Jan 2024 06:45:23 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm1; t=1704195922;
-	 x=1704282322; bh=lVTkJg3cjvcYbcVCRM3jEwk1bpjplmmOC1M0Z0hmekI=; b=
-	k3OneBTh08tqoscwl4dIXVoPry+kCmejuelbg85RE8OONq6Wrw/7vjBfTg38tW2c
-	gy1+TbV2xEOJU4c1CweKIgVKGuYYyM/KPfC6MiatsOWik6KDIBm8U6C4GGa9VBga
-	uwYNRqZniFCrE0VRyLtX7JdtUM7XZfZKSlSA3VkZgOvm9m4TEC6shFYVkf5HYJsb
-	iJqfe2vtsvrWWEXPybF3Pl4kzgw9Z8kEnyhs6pRpCRzc9De0l6pQnCNbdaWL00zm
-	VAPUVdpmp9gxnCpAXYkXx7mwZu4Ep+AKRrKER/ug+8IZfeghmStJ4H9EjDje1wCO
-	SpDRtMIw4oTCEbN3WSPc2Q==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1704195922; x=
-	1704282322; bh=lVTkJg3cjvcYbcVCRM3jEwk1bpjplmmOC1M0Z0hmekI=; b=u
-	iHAKjnpN0YBw68MTQ8mSElSczQ24tUV32LaDWsmNRSJ6u80MFE1aqVNoq1fwh/L/
-	+ZffLD3emWtonwtdHtp7ZzpIEnazajW97FYBvm1Cv+OVeTIIb5n6Kvs3QQGQUyre
-	ue2udCOUlKkxssR1zVZJeVwaE091oEE/hzT2W+Hhsq+wCdF2wG9PFYyQJ0ZXMmVY
-	uc4IfeejW44ZD10NRxqbs+Mxm3sfYw/YBpy47O1b6KTd90lAn0uS37Yuzfx8MJeM
-	0MFt6u5OOGdhxPc2ENwKxH1iGotPv4IJ0XxJY1OVPOT5xM5ogfLCgCuTdW+IkFUz
-	7AS684kAbdZ0Dc+FJGi+w==
-X-ME-Sender: <xms:UfeTZa0cX-zxQaMGagWO0r2MRVFl5kXn7d_UGH98xxXW19-IzWp1Hg>
-    <xme:UfeTZdG_tNUXuDecWnemKqtJBTrYTW7JmxGtKYk6LM0eqCj9p0By8Vsbghorj8-3m
-    pgrK8r5noOKu7hhjzk>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrvdegvddgfedtucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepofgfggfkjghffffhvfevufgtgfesthhqredtreerjeenucfhrhhomhepfdet
-    rhhnugcuuegvrhhgmhgrnhhnfdcuoegrrhhnugesrghrnhgusgdruggvqeenucggtffrrg
-    htthgvrhhnpeegfeejhedvledvffeijeeijeeivddvhfeliedvleevheejleetgedukedt
-    gfejveenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
-    grrhhnugesrghrnhgusgdruggv
-X-ME-Proxy: <xmx:UfeTZS7KV2yZHBfZMjIzr9ASSmLK9Jt3f3LtxdsMauxiUdqUPveQtg>
-    <xmx:UfeTZb3VUYx-de1_qkHa2FchWjH4V_Y7G4SBAFYYyjFXO-t4nQrc6w>
-    <xmx:UfeTZdGTX3FcGZS_XAPaOxPg8xZmukYHIBGlG_CndY0HhfiaPhW6dw>
-    <xmx:UveTZV-8hnN-e1YNJKFFNfk6U1XPReYj7RBSvyWpSQZKI7sokD3ppA>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
-	id C69DAB6008D; Tue,  2 Jan 2024 06:45:21 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.9.0-alpha0-1364-ga51d5fd3b7-fm-20231219.001-ga51d5fd3
+	id 1rKdb4-007wlq-2y;
+	Tue, 02 Jan 2024 12:10:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=su1M2ye5o0dILxMk9cyElIFBQ93oGry7ZL5GdcqEe5c=; b=A+4Q2ju+LRwnACQadXkh3mRDOd
+	F4GjSEr48wc7/6dH+TGpdTTVy+yOEJMzKGAvhnKZ2WqDHdz9Yfil/pofBF9pG85v5bIxSor/ksZsw
+	ddZ//ZQ5wpf3NIRoFjM40NZhQtTpM4xOu79dYkqpqxLp8Pr2+0QtDdOsOtXgPizonvaqIz69URts9
+	xqAbqIzfjmCZM5bz2WMNDgi2ID8bVdj9kANgTkCzUzAcRqED1QIkl/AlAbg3erSCwYGSGfsh2HVEv
+	T/QMUxFge9AJYEWnWJpHHRqApfDINJyCSZ0H2yU3nJjZLoaMSQyaaddYENww1KgSnn4H3pkebA0yO
+	A7nW7RyQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:46174)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1rKdas-0006Wk-01;
+	Tue, 02 Jan 2024 12:10:02 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1rKdar-0005Hg-2n; Tue, 02 Jan 2024 12:10:01 +0000
+Date: Tue, 2 Jan 2024 12:10:01 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Eric Woudstra <ericwouds@gmail.com>
+Subject: Re: [PATCH RFC net-next] net: pcs: pcs-mtk-lynxi fix
+ mtk_pcs_lynxi_get_state() for 2500base-x
+Message-ID: <ZZP9GR15ufDbjGAJ@shell.armlinux.org.uk>
+References: <20240102074408.1049203-1-ericwouds@gmail.com>
 MIME-Version: 1.0
-Message-Id: <e0fae82d-aa6c-4341-bc56-1370dcf733b1@app.fastmail.com>
-In-Reply-To: <ddbdec9b-f075-4c7e-9411-28baf1e68401@linaro.org>
-References: <20231116130816.4932-1-zajec5@gmail.com>
- <a5113b85-e29c-454f-b776-ac7abbca771f@gmail.com>
- <d0734a8f-0b72-4609-a941-da4bdc3e323e@gmail.com>
- <ddbdec9b-f075-4c7e-9411-28baf1e68401@linaro.org>
-Date: Tue, 02 Jan 2024 12:45:01 +0100
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>,
- =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>,
- "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- "Matthias Brugger" <matthias.bgg@gmail.com>,
- "Rob Herring" <robh+dt@kernel.org>,
- "Krzysztof Kozlowski" <krzysztof.kozlowski+dt@linaro.org>,
- "Conor Dooley" <conor+dt@kernel.org>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt7986: fix reference to PWM in fan node
-Content-Type: text/plain;charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240102074408.1049203-1-ericwouds@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_034525_763541_A105289D 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20240102_041014_982298_EDCAA171 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,36 +72,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>, linux-arm-kernel@lists.infradead.org
+Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 28, 2023, at 08:14, Krzysztof Kozlowski wrote:
-> On 28/12/2023 08:03, Rafa=C5=82 Mi=C5=82ecki wrote:
->> On 14.12.2023 07:43, Rafa=C5=82 Mi=C5=82ecki wrote:
->>> On 16.11.2023 14:08, Rafa=C5=82 Mi=C5=82ecki wrote:
->>>> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
->>>
->>> I sent those few trivial fixes weeks ago:
->>> [PATCH] arm64: dts: mediatek: mt7986: fix reference to PWM in fan no=
-de
->>> [PATCH 1/2] arm64: dts: mediatek: mt7986: fix SPI bus width properti=
-es
->>> [PATCH 2/2] arm64: dts: mediatek: mt7986: fix SPI nodename
->>> [PATCH] arm64: dts: mediatek: mt7986: drop crypto's unneeded/invalid=
- clock name
->>>
->>> Could someone pick them up, please?
->
-> This should happen some time ago but...
->>=20
->> Anyone, please?
->
-> ... exactly now, this cannot happen. We are way past applying patches
-> for the next cycle. Please ping or resend after the merge window.
+On Tue, Jan 02, 2024 at 08:44:08AM +0100, Eric Woudstra wrote:
+> From: Daniel Golle <daniel@makrotopia.org>
+> 
+> Need to fix mtk_pcs_lynxi_get_state() in order for the pcs to function
+> correctly when the interface is set to 2500base-x, even when
+> PHYLINK_PCS_NEG_INBAND_DISABLED is set.
 
-If these are bugfixes, I still take them, only new functionality
-should wait. I still need a reply from the maintainers of course.
+Please describe your setup more fully. What is the link partner on this
+2500base-X link?
 
-      Arnd
+In PHYLINK_PCS_NEG_INBAND_DISABLED mode, this means that phylink is
+operating in inband mode, but Autoneg is clear in the advertisement
+mask, meaning Autoneg is disabled and we are using a "fixed" setting.
+state->speed and state->duplex should already be initialised.
+
+> When the pcs is set to 2500base-x, the register values are not compatible
+> with phylink_mii_c22_pcs_decode_state(). It results in parameters such as
+> speed unknown and such. Then the mac/pcs are setup incorrectly and do not
+> function.
+
+Since Autoneg is clear, phylink_mii_c22_pcs_decode_state() won't
+change state->speed and state->duplex, which should already be
+correctly set.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
