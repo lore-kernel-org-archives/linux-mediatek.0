@@ -4,57 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3713C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 22:34:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF61EC46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 23:14:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dzt2SwyvJkT3cWwRAztqs6RAYo3+uR/xkztEwtRwNKw=; b=NC7j5RHMWTqrB5
-	pfTrngjr4lmdPrmPqafQH5tgMP6aso5ohssSYq5GFiZ/N8QdYOWTe4doRtfQhKGMUXl146CSRR4on
-	iyOGc4rgzxgGKT/J1QFVgsbjIlCOFvKdCS+Dq5iF9APGIDlqKlU/CduqujgKN9YDD/FE/qOD/V7tB
-	A+8gnCLl+z7VQLga2hwPayFTb2HzrhJx6l9w5gkIrgo9ZmgCFXYBoHZhpxWRFeHnnE25IS0KX9UT9
-	R6r56QB15YeZWmcr/oPbbcr0N2kRL9He3s7Z9Y69oVnySw4bCH6naWjV6A1SvrguhJQaWff2S6Hpc
-	fJcza2O0E13r2qT6CxWQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xTWK/uZV1kkx8JdNSuAByCvLyhYTn0JHSMyI9KBhW58=; b=ZHBFNyMuiBcX/66TG0GmDUI7kb
+	uouK1Rok/tL2eUOJmBM5gswNMcGs3WZe3TBniArOc/PWj5HKz/jt/6cDVq8vyS6RTtvDK5aF6G5g+
+	7/PJ2ocfndGAn/GKgW6WKyl8RXYJn45psldO2eBTdq4Uhfyl2tPPwKLkpWzURhwPyV9Hs3nnYIS3d
+	SmF5DJh+yO95A/98CtRzAocdL1YyVev4RAOadkgbt5JdJhOce8xBWc4pNqlmfWhcNshs2hPn+j+QF
+	KhAZ2yNSyZ5yqPex8mFKoncHTYo7btK3ZdMxo9zQ/+Gj+qPjYgehE8M2dXw+bJAHmRDtf9Jbr4nzt
+	thIsGkDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKnKx-009DuO-1m;
-	Tue, 02 Jan 2024 22:34:15 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rKnxU-009HR3-24;
+	Tue, 02 Jan 2024 23:14:04 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKnKs-009Ds7-2v;
-	Tue, 02 Jan 2024 22:34:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id A919BCE0CFB;
-	Tue,  2 Jan 2024 22:34:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D3C7C433C8;
-	Tue,  2 Jan 2024 22:34:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1704234844;
-	bh=dzt2SwyvJkT3cWwRAztqs6RAYo3+uR/xkztEwtRwNKw=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=qsvskS2Mw0W0xcDLDb8xYjmE5BCJNQKbDW7ZKsvrwwuHZnjXjSRLmpG4JWMbLhR4D
-	 BQvxTdyjYrTtAAnhF7iIqZBQv7jzPGqoj5UXKG6LAy7JEQwk1rfdreexqPuvXQnLn1
-	 8mWYl25V5GTlykfWBYbUxZvPXtvxgvmV8eNOUADAd9BO19lO+GEhWwi5pO9Zh6wbTB
-	 r+jrsBD198mbSjRNLEQr1a1pztn6m0g6SNAvyFdUy7ICJEZaj4j4upPGs1XDBgDvld
-	 Yy4EFHeDTx/+verYZ5MA984TEkRAFijC8pxkA75mzHWjDOlR5YafkmB+HfhOyWXLWR
-	 k5gproqazy/KA==
-Date: Tue, 2 Jan 2024 14:34:02 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [PATCH net-next v2 0/7] MT7530 DSA Subdriver Improvements Act I
-Message-ID: <20240102143402.5f639ec3@kernel.org>
-In-Reply-To: <20231227044347.107291-1-arinc.unal@arinc9.com>
-References: <20231227044347.107291-1-arinc.unal@arinc9.com>
+	id 1rKnxQ-009HPh-2f;
+	Tue, 02 Jan 2024 23:14:02 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1rKnx0-0001EK-1z;
+	Tue, 02 Jan 2024 23:13:35 +0000
+Date: Wed, 3 Jan 2024 00:10:54 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Eric Woudstra <ericwouds@gmail.com>
+Subject: Re: [PATCH RFC net-next] net: pcs: pcs-mtk-lynxi fix
+ mtk_pcs_lynxi_get_state() for 2500base-x
+Message-ID: <ZZSX_oNUIQr6R9FU@pidgin.makrotopia.org>
+References: <20240102074408.1049203-1-ericwouds@gmail.com>
+ <ZZP9GR15ufDbjGAJ@shell.armlinux.org.uk>
+ <92190426-3614-4774-9E9F-18F121622788@gmail.com>
+ <74223164-ab50-4d6d-a4f4-561b0a70d396@gmail.com>
+ <ZZRrk85SCDmo76NJ@pidgin.makrotopia.org>
+ <6666EB36-984E-4898-A41A-2D9713DE4DB0@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <6666EB36-984E-4898-A41A-2D9713DE4DB0@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_143411_172941_5DEF17B8 
-X-CRM114-Status: UNSURE (   9.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240102_151400_867400_0F49F504 
+X-CRM114-Status: GOOD (  17.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,21 +62,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, Russell King <linux@armlinux.org.uk>, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Vladimir Oltean <olteanv@gmail.com>, mithat.guner@xeront.com, "David S.
- Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, "Russell King \(Oracle\)" <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 27 Dec 2023 07:43:40 +0300 Ar=C4=B1n=C3=A7 =C3=9CNAL wrote:
-> This patch series simplifies the MT7530 DSA subdriver and improves the
-> logic of the support for MT7530, MT7531, and the switch on the MT7988 SoC.
->=20
-> I have done a simple ping test to confirm basic communication on all swit=
-ch
-> ports on MCM and standalone MT7530, and MT7531 switch with this patch
-> series applied.
+On Tue, Jan 02, 2024 at 11:13:58PM +0100, Eric Woudstra wrote:
+> I believe the general idea is that phylink should be aware wether to use inband or outband negotiation in order to setup the hardware correctly. Speaking of a situation where there is a PHY attached.
 
-Posted during shutdown, rebase & repost, please:
+Well, SGMII speed/duplex AN is not defined for 2500Base-X by any
+standard and not supported by the hardware (unlike e.g. RealTek
+which came up with their own proprietary extension called HiSGMII).
 
-https://lore.kernel.org/all/20231205101002.1c09e027@kernel.org/
+So we should simply never set the SGMII_SPEED_DUPLEX_AN bit if using
+2500Base-X on MediaTek LynxI PCS -- in-band link status will still work,
+and as 2500Base-X anyway only supports 2500M speed at full duplex it is
+not a problem that speed and duplex are hard-coded in the driver in this
+case imho. And that works fine for SFPs with and without
+present/discoverable/accessible PHY.
+
+Surely, having phylink take care whether SGMII_SPEED_DUPLEX_AN should be
+set would be even nicer.
+
+I believe that source of confusion here is simply that
+
+in-band-status != SGMII_SPEED_DUPLEX_AN
+
+We *do* have in-band-status even without having SGMII_SPEED_DUPLEX_AN set
+with 2500Base-X link mode (as in: link being up or down and link, duplex
+and speed is fixed anyway for 2500Base-X).
+
+
+> 
+> On January 2, 2024 9:01:23 PM GMT+01:00, Daniel Golle <daniel@makrotopia.org> wrote:
+> >On Tue, Jan 02, 2024 at 08:33:32PM +0100, Eric Woudstra wrote:
+> >> [...]
+> >> 
+> >> So if phylink_mii_c22_pcs_decode_state() should not set the speed, then it is not correctly set somewhere else.
+> >
+> >Yes, but the fix should go to pcs-mtk-lynxi.c and you don't need to
+> >change phylink for it to work.
+> >This should be enough:
+> >https://patchwork.kernel.org/project/netdevbpf/patch/091e466912f1333bb76d23e95dc6019c9b71645f.1699565880.git.daniel@makrotopia.org/
+> >
 
