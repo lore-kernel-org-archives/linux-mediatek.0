@@ -4,79 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED53FC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 13:16:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7CADC47074
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 14:02:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ymg1RUEbhaahilNTpT76VrpoWo6TTp5cRA3gjAaiXis=; b=UOO573ezeO4SyN
-	ZfqQo46d/PawDSQTDmJ0AH/t4SVfSDIfLPhvCElMA1CJVUUt31sm6E+zYraMF3claataVwGfbtDFc
-	srzfuwR1Hxmgv6MCRH4q+b6zxc9k6y9vygfZPLBVjSQSh9P9pyOBSZa4k92Xi2zXQk62iB33nnMAR
-	3osbtox4KCK8xK8uIIzIfJR9r2JBTlgBvJ7x5BuKHBNpmD4KvD0wJUtlE7lk4PEsUkGk9lBMWnbCy
-	iNjNMZgO6qtEFbGe9DC7iUDG1oyIv6F39mGrHp1L3gBlzvq2YR01RFzeoMsdzRBA9kB77cYnHiYFX
-	BihavkPTC1NZBFfXzBwg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=V/7mv4b7UJD/BzLag5HRBVmocUnHPWAiQ2MQxiW+kVo=; b=zD+dJJ2mYV0dQmdvR+lEq55aoL
+	ibyuBMFJaBDeAyG+ilDPSNPGzYzFBFYI8NGvLaswy+2kOLaXG3AfArCjGEXlkZptdkCJhq/k8f6MF
+	yUiKgnulwg74hyVX6czMDyfBN1VnaywFRpwDZODYSBRvupkbqLHSfoLq+zJ6V5TYN5+jQQe/WQNkj
+	FXKugxR+i/WoylF5DzITYfWUz0zS4FeKjpLB+T9ff/tB+jEMSOKM64tvUcgdcnzv7qL9znjewHsH3
+	24CNasNFCzUnWjJrnD5Pk1XXNTPPXR6xRseNbt55HOAbmhl9JAGyeQbO6IGnb4bNeI+dLgYbHf6LU
+	H2F3wxcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKed2-0085Kx-02;
-	Tue, 02 Jan 2024 13:16:20 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1rKfM6-008B8x-2z;
+	Tue, 02 Jan 2024 14:02:54 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKecy-0085JK-2q;
-	Tue, 02 Jan 2024 13:16:18 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-5534dcfdd61so16006086a12.0;
-        Tue, 02 Jan 2024 05:16:15 -0800 (PST)
+	id 1rKfM2-008B6O-35
+	for linux-mediatek@lists.infradead.org;
+	Tue, 02 Jan 2024 14:02:52 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-40d60ad5f0bso55288565e9.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Jan 2024 06:02:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704201374; x=1704806174; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:user-agent:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=ymg1RUEbhaahilNTpT76VrpoWo6TTp5cRA3gjAaiXis=;
-        b=QU3KLRkBaa/JPxeGEJetCghsZNYyOQrogK0myIZpqQJ9bGUb0F6rv40PJE6FDd5NEv
-         +GNkiwl6nBxEVrzibpXqj6+vEMrISFKoa0Rhvs+qcsRouJHGncHFHaMMVy86+2UxoIjK
-         Y+zMMEcugRN7eQUyZ4Fx0goNg+EiAuH7Lwi3q2j2zyCNRbSVQFFu5un02glMdQcAfRzJ
-         TqxNz9WbajReKmRhLC11Cy6+iy2qwKFpB5WYwDPmUUeWX1gdHQAkWbH3iB+wJsoZ28Mh
-         cgtI8tlZMBJvdaSaeFfldBe7huCtl7WHS7ZivewWx1Qqw58lRn6wc1tp19Geh+fU21y/
-         m//g==
+        d=linaro.org; s=google; t=1704204163; x=1704808963; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=V/7mv4b7UJD/BzLag5HRBVmocUnHPWAiQ2MQxiW+kVo=;
+        b=WhFTWfBSgcnwXotSVTNz/Nq2Pa0KQdW7XGxcKzGWMp+mhYHAYK4xTcOyQdXY+ltZRr
+         vz1uaalq17aQcgYxli0EVEgH2Hf8hBllN914VoVfxGexS/I/9Wr8d3nrUj5v4eaAPirY
+         kIHBwJWBkRNi/d5i3rwpINFDZaysTmlfSvoeyxudnmfGdIiW9GS1+2mZa/WFim7UXpTQ
+         Dwmd0PlePb0l0LQ5kMnj+CA5IQFwZJqpezw5JsdnDzfpbEhAvSIvPokFeE/knU2WHxE1
+         sx4UeJZGyAjPE9VKrKxUQOE/LdMDFmAAfxfd7Tgi8LQCXa1nbdEGhypQH2VzaYEv3tlO
+         Pliw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704201374; x=1704806174;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:user-agent:subject:cc:to:from:date:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ymg1RUEbhaahilNTpT76VrpoWo6TTp5cRA3gjAaiXis=;
-        b=pwge31XhDBhmE3IyvVX1v8QwmmqCQuBpYmhSSvjZ6sxH1SG5CmOUwXMDKQRPkB79+c
-         5zi4SeEQVAu+BVgvFyqQyBB9VqWkkhb+Z745DkLpbISxmAZQlc0Iz2SNrHNtb4j45DUx
-         MeXxcgZC0uC8p26i3zcbPh3xnhUagWNzIILD8zDYb84Uy/YzOMgggTbStLYokpUSqK2Y
-         EEFvoerpz7MsK2p2aFhgczzCRQw5yfdBGwLMvzgQ7X9/exIIyMEQukv0who6rLsAJYsp
-         Xy6I5oSZF6X6rBk4wgbjkHZIItocP/kR/VwXdqBc3793iFBh1XbAdvPheBTrjxU6tfMB
-         KL8A==
-X-Gm-Message-State: AOJu0YyY/7+pclzSdawc9TKNQtwjelS7gDm7ZGTbtK78yW5nKl/ubjQ5
-	roGjgIPdmf5ErwZUaDWnBKA=
-X-Google-Smtp-Source: AGHT+IG6FQg0SPLjELmusCQ1pxaKN/Jc2EfCRw64reeXapXoPt86R09+3G6WZl7C8LMxW86E2RUbhQ==
-X-Received: by 2002:a05:6402:268b:b0:554:c9af:a66e with SMTP id w11-20020a056402268b00b00554c9afa66emr13601900edd.9.1704201373893;
-        Tue, 02 Jan 2024 05:16:13 -0800 (PST)
-Received: from [127.0.0.1] ([89.205.132.224])
-        by smtp.gmail.com with ESMTPSA id g20-20020a056402091400b005551b2f66f0sm9627874edz.43.2024.01.02.05.16.13
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 02 Jan 2024 05:16:13 -0800 (PST)
-Date: Tue, 02 Jan 2024 14:16:14 +0100
-From: Eric Woudstra <ericwouds@gmail.com>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_RFC_net-next=5D_ne?= =?US-ASCII?Q?t=3A_phylink=3A_add_quirk_for_d?= =?US-ASCII?Q?isabling_in-band-status_for_mediatek_pcs_at_2500base-x?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <ZZQDWzYlxAKl0JxI@shell.armlinux.org.uk>
-References: <20240102074326.1049179-1-ericwouds@gmail.com> <ZZQDWzYlxAKl0JxI@shell.armlinux.org.uk>
-Message-ID: <A660847B-FEFF-4AE1-809B-F0A6EBE2A52C@gmail.com>
+        d=1e100.net; s=20230601; t=1704204163; x=1704808963;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=V/7mv4b7UJD/BzLag5HRBVmocUnHPWAiQ2MQxiW+kVo=;
+        b=Xjt4ttbtRCjgD84KgxYsAzaCgmvemM90KOEH83737I9DbqV2bSpjt43QjuXVVLaJ2I
+         gFB2UH2gAtKfo5Rjeq33hPszEPW587CECc0M87vaUKqZQZmDwuGXf2PvcJ1/Eyf49H20
+         UPUrO9WxjavLcXMOsiRpWXpxHFQ+S/2hnDvSlg4JerRyr2RmUGW44P3B8C98qYSjHAAk
+         Jtgz9Z5mvlm+ksjBPZcBZzcq+6QMKRI01sxgumpIxCGQm0zq6ct3JZX4g8qXlYCkf9ga
+         9AiLp6jjNitNfn0xYfhnaZ53U0M4caEVPsH+9DZNjfRijN1Y1j+eUcmbFCKWLbiPjKqN
+         uyBA==
+X-Gm-Message-State: AOJu0YzZdFQ3r7axJVEzDxLxL6yRMLFiE8PaCf4vdHigWTbnAxSQz3MF
+	yL2RC7OHej8/UExeaV4Q/nOU7KIUNwQVJA==
+X-Google-Smtp-Source: AGHT+IH3VhlRlXj3x0V/u8jvLVtAXEEM7HcxvHM0IRuRu0WxGAZJxGIyDO1XWwQIMO+yb2HlWf8VnQ==
+X-Received: by 2002:a05:600c:2d84:b0:40b:5e59:ccb3 with SMTP id i4-20020a05600c2d8400b0040b5e59ccb3mr8821823wmg.148.1704204163222;
+        Tue, 02 Jan 2024 06:02:43 -0800 (PST)
+Received: from localhost ([102.140.209.237])
+        by smtp.gmail.com with ESMTPSA id g14-20020a05600c310e00b0040d6eb862a7sm18594695wmo.41.2024.01.02.06.02.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 02 Jan 2024 06:02:42 -0800 (PST)
+Date: Tue, 2 Jan 2024 14:16:45 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Subject: Re: [PATCH net-next 07/15] net: dsa: mt7530: do not run
+ mt7530_setup_port5() if port 5 is disabled
+Message-ID: <48b664fb-edf9-4170-abde-2eb99e04f0e5@suswa.mountain>
+References: <20231118123205.266819-1-arinc.unal@arinc9.com>
+ <20231118123205.266819-8-arinc.unal@arinc9.com>
+ <20231121185358.GA16629@kernel.org>
+ <a2826485-70a6-4ba7-89e1-59e68e622901@arinc9.com>
+ <90fde560-054e-4188-b15c-df2e082d3e33@moroto.mountain>
+ <20231207184015.u7uoyfhdxiyuw6hh@skbuf>
+ <9b729dab-aebc-4c0c-a5e1-164845cd0948@suswa.mountain>
+ <20231208184652.k2max4kf7r3fgksg@skbuf>
+ <c3a0fc6a-825c-4de3-b5cf-b454a6d4d3cf@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <c3a0fc6a-825c-4de3-b5cf-b454a6d4d3cf@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_051616_915494_29737875 
-X-CRM114-Status: UNSURE (   8.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240102_060250_992184_EF9B2D34 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,16 +96,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Simon Horman <horms@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since using compatible is not an option and in and 2500base-x is hardware d=
-ependant, then I was thinking this would be useful=2E
+On Sun, Dec 17, 2023 at 03:22:27PM +0300, Arınç ÜNAL wrote:
+> On 8.12.2023 21:46, Vladimir Oltean wrote:
+> > Hmm, maybe the problem, all along, was that we let the -ENODEV return
+> > code from of_get_phy_mode() pass through? "interface" will really be
+> > uninitialized in that case. It's not a false positive.
+> > 
+> > Instead of:
+> > 
+> > 	ret = of_get_phy_mode(mac_np, &interface);
+> > 	if (ret && ret != -ENODEV) {
+> > 		...
+> > 		return ret;
+> > 	}
+> > 
+> > it should have been like this, to not complain:
+> > 
+> > 	ret = of_get_phy_mode(mac_np, &interface);
+> > 	if (ret) {
+> > 		...
+> > 		return ret;
+> > 	}
+> > 
+> 
+> I just tried this, smatch still reports "interface" as uninitialised.
+> 
+> $ export ARCH=mips CROSS_COMPILE=mips-linux-gnu-
+> $ ../smatch/smatch_scripts/kchecker --spammy drivers/net/dsa/mt7530.c
+> 
+>   UPD     include/config/kernel.release
+>   UPD     include/generated/utsrelease.h
+>   CHECK   scripts/mod/empty.c
+>   CALL    scripts/checksyscalls.sh
+>   CC      drivers/net/dsa/mt7530.o
+>   CHECK   drivers/net/dsa/mt7530.c
+> drivers/net/dsa/mt7530.c:217 mt7530_mii_read() warn: call of 'warn_slowpath_fmt' with non-constant format argument
+> drivers/net/dsa/mt7530.c:454 mt7530_setup_port6() error: uninitialized symbol 'ncpo1'.
+> drivers/net/dsa/mt7530.c:868 mt7530_set_ageing_time() error: uninitialized symbol 'age_count'.
+> drivers/net/dsa/mt7530.c:868 mt7530_set_ageing_time() error: uninitialized symbol 'age_unit'.
+> drivers/net/dsa/mt7530.c:2324 mt7530_setup() error: uninitialized symbol 'interface'.
 
-bool pcs->ops->supports_inband(interface)
+That's so strange.
 
-I'll be happy to invest some time in this, but I'll need to know which way=
- to go, before I invest more time in something that would not be accepted=
-=2E
+Vladimir was right that I was misreading what he said and also hadn't
+noticed the break.
+
+For me, his approach silences the warning with or without the cross
+function DB.  Also of_get_phy_mode() initializes interface on all paths
+so checking for -EINVAL doesn't matter as far as this warning is
+concerned.
+
+regards,
+dan carpenter
 
