@@ -4,79 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AF26C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jan 2024 08:51:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0040DC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jan 2024 09:49:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XiqjQ4CtsdHzeZ/6fpkEoYxayaW7/f/QwsswQ02BtUY=; b=BwuqjZyJyNIIUZ
-	D+kktGfZwsF8RseMenNd5UOLjFqz4y6simWHMrt5H/0lLNR6ML6zC8ym/WpKr50cKmS5/0NddslMe
-	CedFY5bsPN9s9myJ0Pf0ZnIWntIc6EPyJhcbxxNMU7J9+jfSSKblULdZSazjrvmZm4re3wLF2looF
-	t6ESK5y6+oLNNETAGYbcoCTWRXog3K+f/Ay9QCyU/PuEgqXHeVdBEG5UCwphnhWI2ELVynmaS8sXy
-	SG5CNpKr04Oor4EboI+UWPueYIBVydQQwo7EqXMULqUqep1laAx3TwqdPK7nX8Ud3oqWkt58bzP5Q
-	isrQEv2XZtNjik33/fSw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4YCBPD0DHLKARNVTyi3s0vpWpkxftl8rMbgEZLJrm6c=; b=2b+djr/29yFqp/Xi+2mxW1YuZ6
+	PD57hcmmVMdoksosW6FPAeSJHEt3YdiTC5Aa5srs2J5msHUFOkNSEbGkbBa94ys86OK8rTvB/QTWj
+	EkS8ESbooKQzrHQMgakSGQnvuxEI12yMDEp29PSPl22Gk8bbG4ycFEI/sG9nbgqPYsjYNZleC5sKD
+	ssTJKRlFAFfq+m9+LFB0g0XLNij831y7P+TBNEA43datT38eoMOcRTcZSvLjJ/zqUCRuE3H3geZHc
+	+KU2Ulj683v52PLlZ2+aCdDIKlBgXZeyQ9rmnNH0fYG3ZA3zQxzVfnpLNDMyLVfiiFIzvn56RME4L
+	6cGR6QRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKwxz-00A82v-1h;
-	Wed, 03 Jan 2024 08:51:11 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1rKxsN-00AHhm-0P;
+	Wed, 03 Jan 2024 09:49:27 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKwxw-00A81x-1X;
-	Wed, 03 Jan 2024 08:51:09 +0000
-Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-556aa7fe765so1115509a12.2;
-        Wed, 03 Jan 2024 00:51:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704271866; x=1704876666; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:user-agent:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=XiqjQ4CtsdHzeZ/6fpkEoYxayaW7/f/QwsswQ02BtUY=;
-        b=Tgjry9ueFKW0maWffrq5cfSbgpdVIVo0axlT32V3Q9ME908/nV2NPCiH0sLAGFP5aO
-         16pZuWWB0sOUky6CHhxh4I/Aht7NPKpqaz03jutgoGTTKEByzKgXewUaq/S//YAxhVXt
-         8zynTFfMLAqT5DzMBRub+heDThDmk1LmG5rI7nU141qK6ODXT0XGtrEYCorY18CSS88t
-         5RWh8RR6wbf56ByImbWCUh+F4n+Qgen4bjIH1TzVtGGxhHezNrxMNotRE+3qvjXm9eg0
-         GCfcwLMcHY3VBXfUn+8S7VD5Nkr2JCm44r0ulBMXtdyEWBgPzDiYqTqeCwKLBFXyEXE2
-         QM+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704271866; x=1704876666;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:user-agent:subject:cc:to:from:date:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=XiqjQ4CtsdHzeZ/6fpkEoYxayaW7/f/QwsswQ02BtUY=;
-        b=nvYf2D4IvOpofW2aG9zdG+VpTMyTP4zoOqMV0PhEFrDuNigtAqvmdebu7IQ/JJWtdw
-         0upt4JoMjdPNM85hQyLeQ9RaLSaV5t2kUm9F/iZ9kk2wEHuCgC+aTIGkZO5oCVp7f9qo
-         V4JI0XSucXDIED8pZ/sgrHsHz4ZF9dUYOLk0SeMv4s8IftA/MxYSlctwtcAsV1h05BWZ
-         +dj7y+eh7SeDafpHLlLmYkWSC2ic7ScW6bBrFEbXw+/PjwHLHZ+zN9lu4LD1cv0GRpuT
-         LL+PYnK5AtoHSp8os9wZJPrOH7gZNPzdJRpDEKUzkzpE0crhR9Qq2nD2qFi0f+BpPiqi
-         4S7A==
-X-Gm-Message-State: AOJu0YzKjzRxW3fcABFnAf5hRc+u7I4hNlVjegIjupfXS/rOMWE1qg09
-	MwCgo5y0kLg2EkKzBG1KbW0=
-X-Google-Smtp-Source: AGHT+IGNYJlgqX4aL4rwFT6qPkLkPCNzu0T6qFd3mLQ/9Gm/aUXTDoxlbkwKVyX8g/IDS0wJ8Nwjrg==
-X-Received: by 2002:aa7:d795:0:b0:552:3044:1df9 with SMTP id s21-20020aa7d795000000b0055230441df9mr10602167edq.67.1704271865117;
-        Wed, 03 Jan 2024 00:51:05 -0800 (PST)
-Received: from [127.0.0.1] ([89.205.132.224])
-        by smtp.gmail.com with ESMTPSA id o18-20020aa7dd52000000b00555a0fa2211sm7690447edw.31.2024.01.03.00.51.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 03 Jan 2024 00:51:04 -0800 (PST)
-Date: Wed, 03 Jan 2024 09:51:06 +0100
-From: Eric Woudstra <ericwouds@gmail.com>
-To: Daniel Golle <daniel@makrotopia.org>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_RFC_net-next=5D_net=3A_pcs=3A_pcs-mtk-lyn?= =?US-ASCII?Q?xi_fix_mtk=5Fpcs=5Flynxi=5Fget=5Fstate=28=29_for_2500base-x?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <ZZSX_oNUIQr6R9FU@pidgin.makrotopia.org>
-References: <20240102074408.1049203-1-ericwouds@gmail.com> <ZZP9GR15ufDbjGAJ@shell.armlinux.org.uk> <92190426-3614-4774-9E9F-18F121622788@gmail.com> <74223164-ab50-4d6d-a4f4-561b0a70d396@gmail.com> <ZZRrk85SCDmo76NJ@pidgin.makrotopia.org> <6666EB36-984E-4898-A41A-2D9713DE4DB0@gmail.com> <ZZSX_oNUIQr6R9FU@pidgin.makrotopia.org>
-Message-ID: <654EAEA9-052C-43C6-AA8E-16A30721A916@gmail.com>
+	id 1rKxsJ-00AHfV-2o;
+	Wed, 03 Jan 2024 09:49:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1704275360;
+	bh=Ni5rBHAlIMtWk86HY1gN61XLWmUkTFatgPLd6DcQjh4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=MvEj7DVr1QdjE61VfLIAjrd5GFOxeL9mtEQfW1EUFcJyHR4DIpKtj67ELKDBlPggH
+	 oK1XDtD6i7PY00t8f0D+lFrQ/3dlle9uYHXBE0g5pycK+xKbAXDDL3sU3buYTTOWF/
+	 hOpg1knT19+YG1ToGMIkJqPraicB52TzXgVZVvTlgKTzDBTVl9+++fiO+xfJoL9u/3
+	 Rtk571GdIwnHH2x/5PfXzs06qtvPi0ep76JrGYZLJaG6cGJkMixRmCKe9SKfz2scIZ
+	 Mt7Wgir5EOcfGlbVivxLzZc1xcII0VvR3TX1r6SJmo4jJuyapSe3UR+nzsEAVY/81e
+	 8V5UoB1Rn74EQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0EEF83780629;
+	Wed,  3 Jan 2024 09:49:19 +0000 (UTC)
+Message-ID: <04dbf010-5e0a-42f9-8a13-d02f97347c23@collabora.com>
+Date: Wed, 3 Jan 2024 10:49:18 +0100
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] arm64: dts: mediatek: Add initial MT7988A and BPI-R4
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Cc: Daniel Golle <daniel@makrotopia.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
+ jason-ch chen <Jason-ch.Chen@mediatek.com>,
+ Macpaul Lin <macpaul.lin@mediatek.com>,
+ =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
+ Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>
+References: <20240102205941.29654-1-zajec5@gmail.com>
+ <20240102205941.29654-2-zajec5@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240102205941.29654-2-zajec5@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240103_005108_512223_A4BDA3AA 
-X-CRM114-Status: UNSURE (   8.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240103_014924_070552_FE825EE0 
+X-CRM114-Status: GOOD (  22.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,23 +82,230 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, "Russell King \(Oracle\)" <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->Surely, having phylink take care whether SGMII_SPEED_DUPLEX_AN should be
->set would be even nicer=2E
->
->I believe that source of confusion here is simply that
->
->in-band-status !=3D SGMII_SPEED_DUPLEX_AN
->
->We *do* have in-band-status even without having SGMII_SPEED_DUPLEX_AN set
->with 2500Base-X link mode (as in: link being up or down and link, duplex
->and speed is fixed anyway for 2500Base-X)=2E
+Il 02/01/24 21:59, Rafał Miłecki ha scritto:
+> From: Rafał Miłecki <rafal@milecki.pl>
+> 
+> MT7988A (AKA MediaTek Filogic 880) is a quad-core ARM Cortex-A73
+> platform designed for Wi-Fi 7 devices (there is no wireless on SoC
+> though). The first public MT7988A device is Banana Pi BPI-R4.
+> 
+> Many SoC parts remain to be added (they need their own bindings or
+> depend on missing clocks). Those present block however are correct and
+> having base .dtsi will help testing & working on missing stuff.
+> 
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> ---
+>   arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+>   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  |  11 ++
+>   arch/arm64/boot/dts/mediatek/mt7988a.dtsi     | 149 ++++++++++++++++++
+>   3 files changed, 161 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index 1e6f91731e92..0a189d5d8006 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -15,6 +15,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nor.dtbo
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtbo
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+> new file mode 100644
+> index 000000000000..efc4ad0b08b8
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+> @@ -0,0 +1,11 @@
+> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
+> +
+> +/dts-v1/;
+> +
+> +#include "mt7988a.dtsi"
+> +
+> +/ {
+> +	compatible = "bananapi,bpi-r4", "mediatek,mt7988a";
+> +	model = "Banana Pi BPI-R4";
+> +	chassis-type = "embedded";
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+> new file mode 100644
+> index 000000000000..0f2ae9c7aef7
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+> @@ -0,0 +1,149 @@
+> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
+> +
+> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> +
+> +/ {
+> +	compatible = "mediatek,mt7986a";
 
+Why is the compatible describing MT798*6*A instead of MT7988A? Please fix.
 
-All clear, and even with autoneg disabled, one way or another, we now
-have a non-functional 2500base-x=2E Cannot manipulate anything in
-userland to get the connection functional=2E We need a fix in kernel=2E
+> +	interrupt-parent = <&gic>;
+> +	#address-cells = <2>;
+> +	#size-cells = <2>;
+> +
+> +	cpus {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		cpu@0 {
+> +			compatible = "arm,cortex-a73";
+> +			reg = <0x0>;
+> +			device_type = "cpu";
+> +			enable-method = "psci";
+> +		};
+> +
+> +		cpu@1 {
+> +			compatible = "arm,cortex-a73";
+> +			reg = <0x1>;
+> +			device_type = "cpu";
+> +			enable-method = "psci";
+> +		};
+> +
+> +		cpu@2 {
+> +			compatible = "arm,cortex-a73";
+> +			reg = <0x2>;
+> +			device_type = "cpu";
+> +			enable-method = "psci";
+> +		};
+> +
+> +		cpu@3 {
+> +			compatible = "arm,cortex-a73";
+> +			reg = <0x3>;
+> +			device_type = "cpu";
+> +			enable-method = "psci";
+> +		};
+> +	};
+> +
+> +	oscillator-40m {
+> +		compatible = "fixed-clock";
+> +		clock-frequency = <40000000>;
+> +		#clock-cells = <0>;
+> +		clock-output-names = "clkxtal";
+> +	};
+> +
+> +	pmu {
+> +		compatible = "arm,cortex-a73-pmu";
+> +		interrupt-parent = <&gic>;
+> +		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
+> +	};
+> +
+> +	psci {
+> +		compatible = "arm,psci-0.2";
+> +		method = "smc";
+> +	};
+> +
+> +	reserved-memory {
+> +		ranges;
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +
+> +		/* 320 KiB reserved for ARM Trusted Firmware (BL31 and BL32) */
+> +		secmon@43000000 {
+
+This is board specific (actually, it is bootloader specific!), so please move it
+to your board dts(i).
+
+> +			reg = <0 0x43000000 0 0x50000>;
+> +			no-map;
+> +		};
+> +
+> +	};
+> +
+> +	soc {
+> +		compatible = "simple-bus";
+> +		ranges;
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +
+> +		gic: interrupt-controller@c000000 {
+> +			compatible = "arm,gic-v3";
+> +			reg = <0 0x0c000000 0 0x40000>,  /* GICD */
+> +			      <0 0x0c080000 0 0x200000>, /* GICR */
+> +			      <0 0x0c400000 0 0x2000>,   /* GICC */
+> +			      <0 0x0c410000 0 0x1000>,   /* GICH */
+> +			      <0 0x0c420000 0 0x2000>;   /* GICV */
+> +			interrupt-parent = <&gic>;
+> +			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
+> +			interrupt-controller;
+> +			#interrupt-cells = <3>;
+> +		};
+> +
+> +		watchdog@1001c000 {
+> +			compatible = "mediatek,mt7988-wdt";
+> +			reg = <0 0x1001c000 0 0x1000>;
+> +			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
+> +			#reset-cells = <1>;
+> +		};
+> +	};
+> +
+> +	thermal-zones {
+> +		cpu-thermal {
+> +			polling-delay-passive = <1000>;
+> +			polling-delay = <1000>;
+> +
+
+Those thermal zones will not work, as they have no thermal-sensors - as this
+node is right now, it will produce a probe error and nothing else: please
+either drop it entirely or add support for the thermal sensors (lvts or auxadc?)
+and fix this node to use them.
+
+> +			trips {
+> +				crit {
+> +					temperature = <125000>;
+> +					hysteresis = <2000>;
+> +					type = "critical";
+> +				};
+> +
+> +				hot {
+> +					temperature = <120000>;
+> +					hysteresis = <2000>;
+> +					type = "hot";
+> +				};
+> +
+> +				active-high {
+> +					temperature = <115000>;
+> +					hysteresis = <2000>;
+> +					type = "active";
+
+Active cooling is board specific. Keep only critical/hot trips in the SoC DT.
+
+> +				};
+> +
+> +				active-med {
+> +					temperature = <85000>;
+> +					hysteresis = <2000>;
+> +					type = "active";
+> +				};
+> +
+> +				active-low {
+> +					temperature = <40000>;
+> +					hysteresis = <2000>;
+> +					type = "active";
+> +				};
+> +			};
+> +		};
+> +	};
+> +
+> +	timer {
+> +		compatible = "arm,armv8-timer";
+> +		interrupt-parent = <&gic>;
+> +		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
+> +	};
+> +};
+
+Regards,
+Angelo
 
