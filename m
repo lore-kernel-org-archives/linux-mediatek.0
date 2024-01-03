@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3FF3C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jan 2024 09:57:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4A51C4707B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jan 2024 11:20:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CPfRm0RxHNeiMA1fbdeDjZpspbrje3JC2BDkcjIVSZs=; b=B8VSweQ61bmuGcNgUMePCL3/ka
-	J91l6st+Wa16obtvPbiRfwlUB5C05k49rhlaGlKKK04NnwtQWCHfGYULpjthPORt4bRuWwu1qPx3s
-	ob0DcP03j5bIgRgGtu50rNRWrFnyi8Gg22VhKroJ/rIvtA83dQsDHiW1Rv1oOXC+3LEl0+ka2MeoI
-	fYRHQohaf6IS838JQGGNRXcrqWjzH8FD3BQBRKkk3G46xg2M2k0IAJldy9//68gmcxDQCbzVVLuBk
-	lUDv1RWVFJVerqEcOWOuwtaic0sJs6a/ne1j+BgLVZ80ZDhaBGcLybPT0iV/11NvHKFlTwlwYMqQc
-	grvF2h0w==;
+	bh=qP4o6WoadvxoWxPxLI1uV5qkWBeO6DZ9IGfpq4QrUwM=; b=NQ1pmJX+q7pGCThpGa8F/dHS7T
+	RxvdWxxw50sXnApTKY3+21H8XGXeIsl61ITvYuVnW0RzbsNJ5iN1KjB47YIoq8clxn/EzHI3XhSSw
+	i5ac3pp//6vM6esz775K1zXvyPCPaJs9ZzKmGY/8eFvIV5SctsSunfCs28LdRP7BAqM2xYlZBrCK+
+	ZfdUgCe8cwa6OuLCSOISSCvqusDfwYloHh4myU950qs/DLoyOeZvnFIFhMl2ou7GcZMDqmLh2ih4z
+	FP9bJqfdo/qboJvC7Bqwzm+WYtnK0QX72Sl8aNDjr6o2Uc0ej4N0OkbqCXz+Iytfqktn8NoXX4GUq
+	RA2h7pPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKy0R-00AJ9U-2S;
-	Wed, 03 Jan 2024 09:57:47 +0000
-Received: from szxga05-in.huawei.com ([45.249.212.191])
+	id 1rKzIN-00AV3a-3A;
+	Wed, 03 Jan 2024 11:20:23 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKy0N-00AJ7D-27;
-	Wed, 03 Jan 2024 09:57:46 +0000
-Received: from mail.maildlp.com (unknown [172.19.162.112])
-	by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4T4lR93hNjz1FHNv;
-	Wed,  3 Jan 2024 17:53:41 +0800 (CST)
-Received: from dggpemm500005.china.huawei.com (unknown [7.185.36.74])
-	by mail.maildlp.com (Postfix) with ESMTPS id 5586B1404F1;
-	Wed,  3 Jan 2024 17:57:40 +0800 (CST)
-Received: from localhost.localdomain (10.69.192.56) by
- dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Wed, 3 Jan 2024 17:57:27 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
-	<linyunsheng@huawei.com>, Jason Wang <jasowang@redhat.com>, Jeroen de Borst
-	<jeroendb@google.com>, Praveen Kaligineedi <pkaligineedi@google.com>,
-	Shailend Chand <shailend@google.com>, Eric Dumazet <edumazet@google.com>,
-	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
-	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith
- Busch <kbusch@kernel.org>, Jens Axboe <axboe@kernel.dk>, Christoph Hellwig
-	<hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, Chaitanya Kulkarni
-	<kch@nvidia.com>, "Michael S. Tsirkin" <mst@redhat.com>, Andrew Morton
-	<akpm@linux-foundation.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-nvme@lists.infradead.org>,
-	<kvm@vger.kernel.org>, <virtualization@lists.linux.dev>, <linux-mm@kvack.org>
-Subject: [PATCH net-next 5/6] net: introduce page_frag_cache_drain()
-Date: Wed, 3 Jan 2024 17:56:48 +0800
-Message-ID: <20240103095650.25769-6-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20240103095650.25769-1-linyunsheng@huawei.com>
-References: <20240103095650.25769-1-linyunsheng@huawei.com>
+	id 1rKzIK-00AV2J-1C;
+	Wed, 03 Jan 2024 11:20:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=qP4o6WoadvxoWxPxLI1uV5qkWBeO6DZ9IGfpq4QrUwM=; b=1LwAzpg5o164Q7dDM9h0kCLQRX
+	ZhFvB8bNZsY3zVtUr7dvjrBjTSqUhd8wZ4s7pqfkeibfWzX3VFLCnCO8Ec4qwC66yYOro862n8TFs
+	TDL87PYZmwdXOdrqCcOSkCUVkD4UQf2xQ7/zZDbdOejlH6DwOg52wqHAJc7CPzqYMtbeTKFgQocgu
+	8Ocad2nSaAHjGXrShQiez8wRD3wGLAnEIZbayKMcr10ayRC47M29rxd8VJ4Qe+APZmx6jFAtAkFSH
+	mXFCi3bwVL1PxZvInDR8mwawQy2e4u+143EjF2aEQef1ElZX4W0d9MZQmzxO77hFOq8IyAh+LDXH3
+	YrfzIrEw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:46830)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1rKzI6-0007NQ-0R;
+	Wed, 03 Jan 2024 11:20:06 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1rKzI6-0006Ji-05; Wed, 03 Jan 2024 11:20:06 +0000
+Date: Wed, 3 Jan 2024 11:20:05 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH RFC net-next] net: pcs: pcs-mtk-lynxi fix
+ mtk_pcs_lynxi_get_state() for 2500base-x
+Message-ID: <ZZVC5ThEmikwiVfM@shell.armlinux.org.uk>
+References: <20240102074408.1049203-1-ericwouds@gmail.com>
+ <ZZP9GR15ufDbjGAJ@shell.armlinux.org.uk>
+ <92190426-3614-4774-9E9F-18F121622788@gmail.com>
+ <74223164-ab50-4d6d-a4f4-561b0a70d396@gmail.com>
+ <ZZRrk85SCDmo76NJ@pidgin.makrotopia.org>
+ <6666EB36-984E-4898-A41A-2D9713DE4DB0@gmail.com>
+ <ZZSX_oNUIQr6R9FU@pidgin.makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.69.192.56]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- dggpemm500005.china.huawei.com (7.185.36.74)
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZZSX_oNUIQr6R9FU@pidgin.makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240103_015744_003203_2060B967 
-X-CRM114-Status: GOOD (  15.16  )
+X-CRM114-CacheID: sfid-20240103_032020_408842_46BFB141 
+X-CRM114-Status: GOOD (  15.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,193 +78,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, Eric Woudstra <ericwouds@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When draining a page_frag_cache, most user are doing
-the similar steps, so introduce an API to avoid code
-duplication.
+On Wed, Jan 03, 2024 at 12:10:54AM +0100, Daniel Golle wrote:
+> On Tue, Jan 02, 2024 at 11:13:58PM +0100, Eric Woudstra wrote:
+> > I believe the general idea is that phylink should be aware wether to use inband or outband negotiation in order to setup the hardware correctly. Speaking of a situation where there is a PHY attached.
+> 
+> Well, SGMII speed/duplex AN is not defined for 2500Base-X by any
+> standard and not supported by the hardware (unlike e.g. RealTek
+> which came up with their own proprietary extension called HiSGMII).
 
-Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
-Acked-by: Jason Wang <jasowang@redhat.com>
----
- drivers/net/ethernet/google/gve/gve_main.c | 11 ++---------
- drivers/net/ethernet/mediatek/mtk_wed_wo.c | 17 ++---------------
- drivers/nvme/host/tcp.c                    |  7 +------
- drivers/nvme/target/tcp.c                  |  4 +---
- drivers/vhost/net.c                        |  4 +---
- include/linux/gfp.h                        |  2 ++
- mm/page_alloc.c                            | 10 ++++++++++
- 7 files changed, 19 insertions(+), 36 deletions(-)
+I give up trying to work out whether people are abusing the SGMII term
+or not. SGMII *IS NOT ANY* BASE-X.
 
-diff --git a/drivers/net/ethernet/google/gve/gve_main.c b/drivers/net/ethernet/google/gve/gve_main.c
-index 619bf63ec935..d976190b0f4d 100644
---- a/drivers/net/ethernet/google/gve/gve_main.c
-+++ b/drivers/net/ethernet/google/gve/gve_main.c
-@@ -1278,17 +1278,10 @@ static void gve_unreg_xdp_info(struct gve_priv *priv)
- 
- static void gve_drain_page_cache(struct gve_priv *priv)
- {
--	struct page_frag_cache *nc;
- 	int i;
- 
--	for (i = 0; i < priv->rx_cfg.num_queues; i++) {
--		nc = &priv->rx[i].page_cache;
--		if (nc->va) {
--			__page_frag_cache_drain(virt_to_page(nc->va),
--						nc->pagecnt_bias);
--			nc->va = NULL;
--		}
--	}
-+	for (i = 0; i < priv->rx_cfg.num_queues; i++)
-+		page_frag_cache_drain(&priv->rx[i].page_cache);
- }
- 
- static int gve_open(struct net_device *dev)
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-index d58b07e7e123..7063c78bd35f 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-@@ -286,7 +286,6 @@ mtk_wed_wo_queue_free(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- static void
- mtk_wed_wo_queue_tx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- {
--	struct page *page;
- 	int i;
- 
- 	for (i = 0; i < q->n_desc; i++) {
-@@ -301,19 +300,12 @@ mtk_wed_wo_queue_tx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- 		entry->buf = NULL;
- 	}
- 
--	if (!q->cache.va)
--		return;
--
--	page = virt_to_page(q->cache.va);
--	__page_frag_cache_drain(page, q->cache.pagecnt_bias);
--	memset(&q->cache, 0, sizeof(q->cache));
-+	page_frag_cache_drain(&q->cache);
- }
- 
- static void
- mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- {
--	struct page *page;
--
- 	for (;;) {
- 		void *buf = mtk_wed_wo_dequeue(wo, q, NULL, true);
- 
-@@ -323,12 +315,7 @@ mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- 		skb_free_frag(buf);
- 	}
- 
--	if (!q->cache.va)
--		return;
--
--	page = virt_to_page(q->cache.va);
--	__page_frag_cache_drain(page, q->cache.pagecnt_bias);
--	memset(&q->cache, 0, sizeof(q->cache));
-+	page_frag_cache_drain(&q->cache);
- }
- 
- static void
-diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index 08805f027810..c80037a78066 100644
---- a/drivers/nvme/host/tcp.c
-+++ b/drivers/nvme/host/tcp.c
-@@ -1344,7 +1344,6 @@ static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
- 
- static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
- {
--	struct page *page;
- 	struct nvme_tcp_ctrl *ctrl = to_tcp_ctrl(nctrl);
- 	struct nvme_tcp_queue *queue = &ctrl->queues[qid];
- 	unsigned int noreclaim_flag;
-@@ -1355,11 +1354,7 @@ static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
- 	if (queue->hdr_digest || queue->data_digest)
- 		nvme_tcp_free_crypto(queue);
- 
--	if (queue->pf_cache.va) {
--		page = virt_to_head_page(queue->pf_cache.va);
--		__page_frag_cache_drain(page, queue->pf_cache.pagecnt_bias);
--		queue->pf_cache.va = NULL;
--	}
-+	page_frag_cache_drain(&queue->pf_cache);
- 
- 	noreclaim_flag = memalloc_noreclaim_save();
- 	/* ->sock will be released by fput() */
-diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
-index 4cc27856aa8f..11237557cfc5 100644
---- a/drivers/nvme/target/tcp.c
-+++ b/drivers/nvme/target/tcp.c
-@@ -1576,7 +1576,6 @@ static void nvmet_tcp_free_cmd_data_in_buffers(struct nvmet_tcp_queue *queue)
- 
- static void nvmet_tcp_release_queue_work(struct work_struct *w)
- {
--	struct page *page;
- 	struct nvmet_tcp_queue *queue =
- 		container_of(w, struct nvmet_tcp_queue, release_work);
- 
-@@ -1600,8 +1599,7 @@ static void nvmet_tcp_release_queue_work(struct work_struct *w)
- 	if (queue->hdr_digest || queue->data_digest)
- 		nvmet_tcp_free_crypto(queue);
- 	ida_free(&nvmet_tcp_queue_ida, queue->idx);
--	page = virt_to_head_page(queue->pf_cache.va);
--	__page_frag_cache_drain(page, queue->pf_cache.pagecnt_bias);
-+	page_frag_cache_drain(&queue->pf_cache);
- 	kfree(queue);
- }
- 
-diff --git a/drivers/vhost/net.c b/drivers/vhost/net.c
-index 805e11d598e4..4b2fcb228a0a 100644
---- a/drivers/vhost/net.c
-+++ b/drivers/vhost/net.c
-@@ -1386,9 +1386,7 @@ static int vhost_net_release(struct inode *inode, struct file *f)
- 	kfree(n->vqs[VHOST_NET_VQ_RX].rxq.queue);
- 	kfree(n->vqs[VHOST_NET_VQ_TX].xdp);
- 	kfree(n->dev.vqs);
--	if (n->pf_cache.va)
--		__page_frag_cache_drain(virt_to_head_page(n->pf_cache.va),
--					n->pf_cache.pagecnt_bias);
-+	page_frag_cache_drain(&n->pf_cache);
- 	kvfree(n);
- 	return 0;
- }
-diff --git a/include/linux/gfp.h b/include/linux/gfp.h
-index bbd75976541e..03ba079655d3 100644
---- a/include/linux/gfp.h
-+++ b/include/linux/gfp.h
-@@ -316,6 +316,8 @@ extern void *page_frag_alloc_align(struct page_frag_cache *nc,
- 				   unsigned int fragsz, gfp_t gfp_mask,
- 				   unsigned int align);
- 
-+void page_frag_cache_drain(struct page_frag_cache *nc);
-+
- static inline void *page_frag_alloc(struct page_frag_cache *nc,
- 			     unsigned int fragsz, gfp_t gfp_mask)
- {
-diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 083e0c38fb62..5a0e68edcb05 100644
---- a/mm/page_alloc.c
-+++ b/mm/page_alloc.c
-@@ -4716,6 +4716,16 @@ void __page_frag_cache_drain(struct page *page, unsigned int count)
- }
- EXPORT_SYMBOL(__page_frag_cache_drain);
- 
-+void page_frag_cache_drain(struct page_frag_cache *nc)
-+{
-+	if (!nc->va)
-+		return;
-+
-+	__page_frag_cache_drain(virt_to_head_page(nc->va), nc->pagecnt_bias);
-+	nc->va = NULL;
-+}
-+EXPORT_SYMBOL(page_frag_cache_drain);
-+
- void *page_frag_alloc_align(struct page_frag_cache *nc,
- 		      unsigned int fragsz, gfp_t gfp_mask,
- 		      unsigned int align)
+SGMII is Cisco SGMII, defined to operate at 10, 100 and 1000M speeds
+over a single serdes lane operating at 1.25GBaud.
+
+2500Base-X was many proprietary standards (called by many different
+names like HiSGMII, HS-SGMII, 2500base-X etc) that eventually got IEEE
+acceptance in one form as 2500base-X.
+
+``PHY_INTERFACE_MODE_2500BASEX``
+    This defines a variant of 1000BASE-X which is clocked 2.5 times as fast
+    as the 802.3 standard, giving a fixed bit rate of 3.125Gbaud.
+
+Note: not "SGMII upclocked by 2.5 times".
+
+We do have devices that _do_ use 802.3z (NOT SGMII) negotiation over
+2500base-X - not for speed or duplex, but for the pause modes, and
+we have devices where it is specified that when operating in BASE-X
+mode, inband AN *must* be enabled - which means upclocking 1000base-X
+to 2500base-X requires inband AN for these devices.
+
+Simply hacking PCS to do whatever they care for 2500BASE-X is not
+acceptable. We need a *proper* solution to this, and we need to stop
+fart arsing about over this, and we need to stop fart arsing around
+calling things stuff that they are not, perpetuating the confusion
+in the wider industry.
+
 -- 
-2.33.0
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
