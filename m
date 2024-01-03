@@ -4,69 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4A51C4707B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jan 2024 11:20:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 608EDC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jan 2024 11:37:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qP4o6WoadvxoWxPxLI1uV5qkWBeO6DZ9IGfpq4QrUwM=; b=NQ1pmJX+q7pGCThpGa8F/dHS7T
-	RxvdWxxw50sXnApTKY3+21H8XGXeIsl61ITvYuVnW0RzbsNJ5iN1KjB47YIoq8clxn/EzHI3XhSSw
-	i5ac3pp//6vM6esz775K1zXvyPCPaJs9ZzKmGY/8eFvIV5SctsSunfCs28LdRP7BAqM2xYlZBrCK+
-	ZfdUgCe8cwa6OuLCSOISSCvqusDfwYloHh4myU950qs/DLoyOeZvnFIFhMl2ou7GcZMDqmLh2ih4z
-	FP9bJqfdo/qboJvC7Bqwzm+WYtnK0QX72Sl8aNDjr6o2Uc0ej4N0OkbqCXz+Iytfqktn8NoXX4GUq
-	RA2h7pPA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yDqs0eenUsnUNG0CoT09Fiy1+9rxaRgIsGBhWNdrQkU=; b=vGl4YUIQhtYTb+e4fop2OPwOXZ
+	WzmPvDlPAOg7VLnZkPzXUAoXifhH5gQMpeEDcW8AXRcq8Xhaz26iqO4zD59327Ad/Y0BOX3eckIL8
+	h3VM6faMwrng3UrJH7QeOYGPkyJBmJu1NmRJInvaTS/JPM2qfZPVbaPL4s63GHrNy9u+bzcwswqpU
+	i++4MEuo1TMgmg1BMNDEtl8fVXKw2r8MVsh9MRzaLh/QpwKvb63X8Ie21tIc5L7MZZjUFEjyHK18z
+	53vp2nCfqxi788FqpBbcVtlrJGwEkiG6irF1cjXZMwDBSpL3uNON4KCJ4Apdt6FXwKM4b9MmPXXyL
+	g44wTrpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKzIN-00AV3a-3A;
-	Wed, 03 Jan 2024 11:20:23 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1rKzZK-00AZU8-15;
+	Wed, 03 Jan 2024 11:37:54 +0000
+Received: from mout.gmx.net ([212.227.15.18])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKzIK-00AV2J-1C;
-	Wed, 03 Jan 2024 11:20:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=qP4o6WoadvxoWxPxLI1uV5qkWBeO6DZ9IGfpq4QrUwM=; b=1LwAzpg5o164Q7dDM9h0kCLQRX
-	ZhFvB8bNZsY3zVtUr7dvjrBjTSqUhd8wZ4s7pqfkeibfWzX3VFLCnCO8Ec4qwC66yYOro862n8TFs
-	TDL87PYZmwdXOdrqCcOSkCUVkD4UQf2xQ7/zZDbdOejlH6DwOg52wqHAJc7CPzqYMtbeTKFgQocgu
-	8Ocad2nSaAHjGXrShQiez8wRD3wGLAnEIZbayKMcr10ayRC47M29rxd8VJ4Qe+APZmx6jFAtAkFSH
-	mXFCi3bwVL1PxZvInDR8mwawQy2e4u+143EjF2aEQef1ElZX4W0d9MZQmzxO77hFOq8IyAh+LDXH3
-	YrfzIrEw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:46830)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1rKzI6-0007NQ-0R;
-	Wed, 03 Jan 2024 11:20:06 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1rKzI6-0006Ji-05; Wed, 03 Jan 2024 11:20:06 +0000
-Date: Wed, 3 Jan 2024 11:20:05 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH RFC net-next] net: pcs: pcs-mtk-lynxi fix
- mtk_pcs_lynxi_get_state() for 2500base-x
-Message-ID: <ZZVC5ThEmikwiVfM@shell.armlinux.org.uk>
-References: <20240102074408.1049203-1-ericwouds@gmail.com>
- <ZZP9GR15ufDbjGAJ@shell.armlinux.org.uk>
- <92190426-3614-4774-9E9F-18F121622788@gmail.com>
- <74223164-ab50-4d6d-a4f4-561b0a70d396@gmail.com>
- <ZZRrk85SCDmo76NJ@pidgin.makrotopia.org>
- <6666EB36-984E-4898-A41A-2D9713DE4DB0@gmail.com>
- <ZZSX_oNUIQr6R9FU@pidgin.makrotopia.org>
+	id 1rKzZG-00AZNb-2l;
+	Wed, 03 Jan 2024 11:37:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1704281856; x=1704886656; i=frank-w@public-files.de;
+	bh=sUpi9OO18E6+D4gSZ3zZNN+IT1SjgCxBXG5+RS7BeFk=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:
+	 References;
+	b=DkaoUD9mIKj4cwMCmzN4odZ5Qfr7MwPs2SOO/cwIcQo7KU9WI7m3nA6Udjxs1AL3
+	 +h+HFCv7ttqCspwQArgaHQILKA8wgcjr1HZOZZC//40Vs7aGvoe6Eb29OSOD8tSlD
+	 Ig5cl8rTJrfpzpMzYcXwiniILgzTXq2H2WfiTgW+of5iEACMrz2m5j/1tgf7vdRD3
+	 GqJEIJgmNbB0+Hcd+y1WEbQMp8ZWpejeTJhFi8CH9ZmnSPzppUihgKZWT3kNuGMpb
+	 eCvaA1A2vZ2tQ03eVgKI1Lo50zFroBLctT/Nc6b8DJFVCyhe1FTLR8cy0EecZyoyf
+	 a5wCOs5Rb0/9l9O9Uw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.158.44] ([217.61.158.44]) by web-mail.gmx.net
+ (3c-app-gmx-bs51.server.lan [172.19.170.104]) (via HTTP); Wed, 3 Jan 2024
+ 12:37:36 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZZSX_oNUIQr6R9FU@pidgin.makrotopia.org>
+Message-ID: <trinity-9d471f1d-cbfd-492b-95a6-59aca5412fab-1704281856691@3c-app-gmx-bs51>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Daniel Golle <daniel@makrotopia.org>, =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?=
+ <zajec5@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>,
+ =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
+ jason-ch chen <Jason-ch.Chen@mediatek.com>, Macpaul Lin
+ <macpaul.lin@mediatek.com>, =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?=
+ <bero@baylibre.com>, Sean Wang <sean.wang@mediatek.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Daniel
+ Golle <daniel@makrotopia.org>
+Subject: Aw: Re: [PATCH 2/2] arm64: dts: mediatek: Add initial MT7988A and
+ BPI-R4
+Content-Type: text/plain; charset=UTF-8
+Date: Wed, 3 Jan 2024 12:37:36 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <04dbf010-5e0a-42f9-8a13-d02f97347c23@collabora.com>
+References: <20240102205941.29654-1-zajec5@gmail.com>
+ <20240102205941.29654-2-zajec5@gmail.com>
+ <04dbf010-5e0a-42f9-8a13-d02f97347c23@collabora.com>
+Content-Transfer-Encoding: quoted-printable
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:UwYn9+R8+0ROzDo5XL00LlQX5+rKlJBgLjUUaYfq5iSqqHiUEJTjbA8gqjeS2XPDokroC
+ H41V2BF6UJR1VrJhdN4z/T3jssHSVxO6DS5A3cb5aEjELuXAawMQKgCf8+meG61g9hQzrK9QfU9d
+ J2kP3bGpFwefsHMASVgiaSQ3NOLdYmTJKBlwhpASs7kG/9VvtTDcfcOALF8m9E/Se1rRbvgiEoE2
+ 4xt1FmUUlO0IzKfbxsvkVRSEhf87D+vlaHBIFQVJ6QDLoFzxV39XSLIG0C3BgJa0kEvJN0Na0IBz
+ 1c=
+UI-OutboundReport: notjunk:1;M01:P0:Ml/GBz+8k3w=;0yL9TS6Khvfp6Eds/Jka3DWq23I
+ Hi/qc5Tuz4deq2FsACkpvO4/GEzaxaJgJz8b7yrfFerTLdayeDnDlDGVyrCnZAygLnC01oNf+
+ z1T73zzayk4BWQJs91FT31LFYmOyxMpF/7rS+LbnBj4/3X4WuWDueLOChxffVg7s4yQ3oQYrn
+ /s4UOdc+UBCFjYJCDa7P8tSTOHKZyPxDbUcRCQ1TJj/Adn6d3mGWeUlZdQBNCPQYKSOL4WFnL
+ wkC0il4KHnxvI4ctlB91KRlL9vzigMwwA7eSvrfqYxPfv6QzfUN/GmO8L/WhYPNUL6+4iiFOI
+ DhKDsCKW/UCFdG/elAqPFVe35ENTYpRlEX5i4KpRlbnaZXXiKIrKcdTCgwaUAzY0/f/tiwPI4
+ 2iLXRp933jIobMft70ncF5/lAoEhOA7bwnYM6J2yqAh388ma3DFnE5IyM7SllJ4HZM/xOQKeP
+ JdCsL3hdMzFL0vSi0mnlN7QGBBtLc1YcuPO3xQYTZ4VtfjkpWq2jF7qcJ33KWyx1fnaBK4rkL
+ ERo/c4PwwmkujuGR1byH8enj+tW/XHh1NVhwdCUA1/wy6JWMOI0EUr0NaZhs7KPdonzr6nSrO
+ lEwpJNTeDWdwnzc0+12K7LAIkzUeDQUPqfFvTXBFDTJ3H17wpIsLkrOtMlBKmpu0yVA6QQ+Jj
+ i3LlWAnvvSvmr0O3YZ5ojir0lRnsKRdNPSXekluSiAk702uus578yIgdQI5MRY+Lt9pW9w4Mu
+ kcAucHSqbnJhZonS6BVkEWGSM3g4wgbgiMhfIiPB35V31chQt/k+HNN5qD4OQFK90Pw/khQFf
+ AKU9far4mZG4i888k2esby2Q==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240103_032020_408842_46BFB141 
-X-CRM114-Status: GOOD (  15.38  )
+X-CRM114-CacheID: sfid-20240103_033751_279197_B7BBC050 
+X-CRM114-Status: GOOD (  19.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,47 +103,112 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, Eric Woudstra <ericwouds@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 03, 2024 at 12:10:54AM +0100, Daniel Golle wrote:
-> On Tue, Jan 02, 2024 at 11:13:58PM +0100, Eric Woudstra wrote:
-> > I believe the general idea is that phylink should be aware wether to use inband or outband negotiation in order to setup the hardware correctly. Speaking of a situation where there is a PHY attached.
-> 
-> Well, SGMII speed/duplex AN is not defined for 2500Base-X by any
-> standard and not supported by the hardware (unlike e.g. RealTek
-> which came up with their own proprietary extension called HiSGMII).
+Hi
 
-I give up trying to work out whether people are abusing the SGMII term
-or not. SGMII *IS NOT ANY* BASE-X.
+thanks Rafal for making the first loop of Dts-patches and splitting it and=
+ Angelo for first review=2E
+Just my 2c on the thermal-part=2E
 
-SGMII is Cisco SGMII, defined to operate at 10, 100 and 1000M speeds
-over a single serdes lane operating at 1.25GBaud.
+> Gesendet: Mittwoch, 03=2E Januar 2024 um 10:49 Uhr
+> Von: "AngeloGioacchino Del Regno" <angelogioacchino=2Edelregno@collabora=
+=2Ecom>
+>
+> Il 02/01/24 21:59, Rafa=C5=82 Mi=C5=82ecki ha scritto:
+> > From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki=2Epl>
+> >=20
+> > MT7988A (AKA MediaTek Filogic 880) is a quad-core ARM Cortex-A73
+> > platform designed for Wi-Fi 7 devices (there is no wireless on SoC
+> > though)=2E The first public MT7988A device is Banana Pi BPI-R4=2E
+> >=20
+> > Many SoC parts remain to be added (they need their own bindings or
+> > depend on missing clocks)=2E Those present block however are correct a=
+nd
+> > having base =2Edtsi will help testing & working on missing stuff=2E
+> >=20
+> > +	thermal-zones {
+> > +		cpu-thermal {
+> > +			polling-delay-passive =3D <1000>;
+> > +			polling-delay =3D <1000>;
+> > +
+>=20
+> Those thermal zones will not work, as they have no thermal-sensors - as =
+this
+> node is right now, it will produce a probe error and nothing else: pleas=
+e
+> either drop it entirely or add support for the thermal sensors (lvts or =
+auxadc?)
+> and fix this node to use them=2E
 
-2500Base-X was many proprietary standards (called by many different
-names like HiSGMII, HS-SGMII, 2500base-X etc) that eventually got IEEE
-acceptance in one form as 2500base-X.
+it is LVTS and i upstreamed dt-binding and driverchange already, but it al=
+so needs a (infracfg-)reset which
+i try to upstream soon after infracfg clock driver appear in next (imho da=
+niels patch merged in subsystem tree today)=2E
 
-``PHY_INTERFACE_MODE_2500BASEX``
-    This defines a variant of 1000BASE-X which is clocked 2.5 times as fast
-    as the 802.3 standard, giving a fixed bit rate of 3.125Gbaud.
+so also the infracfg-node will be needed in next round, if thermal part sh=
+ould be part of it (else not much is in the dtsi at this time)=2E
 
-Note: not "SGMII upclocked by 2.5 times".
+> > +			trips {
+> > +				crit {
+> > +					temperature =3D <125000>;
+> > +					hysteresis =3D <2000>;
+> > +					type =3D "critical";
+> > +				};
+> > +
+> > +				hot {
+> > +					temperature =3D <120000>;
+> > +					hysteresis =3D <2000>;
+> > +					type =3D "hot";
+> > +				};
+> > +
+> > +				active-high {
+> > +					temperature =3D <115000>;
+> > +					hysteresis =3D <2000>;
+> > +					type =3D "active";
+>=20
+> Active cooling is board specific=2E Keep only critical/hot trips in the =
+SoC DT=2E
+>=20
+> > +				};
+> > +
+> > +				active-med {
+> > +					temperature =3D <85000>;
+> > +					hysteresis =3D <2000>;
+> > +					type =3D "active";
+> > +				};
+> > +
+> > +				active-low {
+> > +					temperature =3D <40000>;
+> > +					hysteresis =3D <2000>;
+> > +					type =3D "active";
+> > +				};
+> > +			};
+> > +		};
+> > +	};
+> > +
+> > +	timer {
+> > +		compatible =3D "arm,armv8-timer";
+> > +		interrupt-parent =3D <&gic>;
+> > +		interrupts =3D <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
+> > +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
+> > +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
+> > +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
+> > +	};
+> > +};
+>=20
+> Regards,
+> Angelo
 
-We do have devices that _do_ use 802.3z (NOT SGMII) negotiation over
-2500base-X - not for speed or duplex, but for the pause modes, and
-we have devices where it is specified that when operating in BASE-X
-mode, inband AN *must* be enabled - which means upclocking 1000base-X
-to 2500base-X requires inband AN for these devices.
+@rafal how do we sync our work? what is your codebase?
+i currently work on daniels wip tree, but it does not contain your current=
+ splitting=2E=2E=2E
+maybe daniel can include your splitted dts patches?
 
-Simply hacking PCS to do whatever they care for 2500BASE-X is not
-acceptable. We need a *proper* solution to this, and we need to stop
-fart arsing about over this, and we need to stop fart arsing around
-calling things stuff that they are not, perpetuating the confusion
-in the wider industry.
+i already tried to fix some binding-issues in the full dts(i)=2E=2E=2E=2E
+waiting for vendor about clocks for mmc which are currently not matching a=
+ctual binding (and using mt7986 compatible)=2E
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+regards Frank
 
