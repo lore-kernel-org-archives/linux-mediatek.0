@@ -4,94 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 608EDC3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jan 2024 11:37:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6693EC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jan 2024 12:19:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yDqs0eenUsnUNG0CoT09Fiy1+9rxaRgIsGBhWNdrQkU=; b=vGl4YUIQhtYTb+e4fop2OPwOXZ
-	WzmPvDlPAOg7VLnZkPzXUAoXifhH5gQMpeEDcW8AXRcq8Xhaz26iqO4zD59327Ad/Y0BOX3eckIL8
-	h3VM6faMwrng3UrJH7QeOYGPkyJBmJu1NmRJInvaTS/JPM2qfZPVbaPL4s63GHrNy9u+bzcwswqpU
-	i++4MEuo1TMgmg1BMNDEtl8fVXKw2r8MVsh9MRzaLh/QpwKvb63X8Ie21tIc5L7MZZjUFEjyHK18z
-	53vp2nCfqxi788FqpBbcVtlrJGwEkiG6irF1cjXZMwDBSpL3uNON4KCJ4Apdt6FXwKM4b9MmPXXyL
-	g44wTrpw==;
+	bh=lQs36gcAEpaGcWdvwnSQ6VOzYegdEqT0+acCi5JjEPE=; b=Q4ZsFhHTpvfdl6/pB5Jxsce/ih
+	LD0vd1nITwCk/ixfcNLTU9Fe5Pd2xgbm6G8jNLJF8WOIiEHJGP87F3l1SNi7TjDWCi8cjXgFTKO94
+	tgR+ks687XW0kpJ6aEaHzYM9+TNClHa0aO4f3f5ZCKPjEEq2bVJU34iDSsJp+JDrY48Ot0ePzwc1g
+	cZI3ziuyOcr6a3zH4DSqHq4hdLezmedcz4q/KD6kuZeAsjqKXbGpC8yI0xC8C5Bvacjh8yGJfMXZe
+	ppOJQ8xkqTiptCa5mPCNkPWpgtjACEXLpvsDUuEPVTRNArtYI013vpC7TQOQn9czyPBzEwy4neJhS
+	mXHXmf8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKzZK-00AZU8-15;
-	Wed, 03 Jan 2024 11:37:54 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1rL0Dd-00AnBo-1Q;
+	Wed, 03 Jan 2024 12:19:33 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKzZG-00AZNb-2l;
-	Wed, 03 Jan 2024 11:37:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1704281856; x=1704886656; i=frank-w@public-files.de;
-	bh=sUpi9OO18E6+D4gSZ3zZNN+IT1SjgCxBXG5+RS7BeFk=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:
-	 References;
-	b=DkaoUD9mIKj4cwMCmzN4odZ5Qfr7MwPs2SOO/cwIcQo7KU9WI7m3nA6Udjxs1AL3
-	 +h+HFCv7ttqCspwQArgaHQILKA8wgcjr1HZOZZC//40Vs7aGvoe6Eb29OSOD8tSlD
-	 Ig5cl8rTJrfpzpMzYcXwiniILgzTXq2H2WfiTgW+of5iEACMrz2m5j/1tgf7vdRD3
-	 GqJEIJgmNbB0+Hcd+y1WEbQMp8ZWpejeTJhFi8CH9ZmnSPzppUihgKZWT3kNuGMpb
-	 eCvaA1A2vZ2tQ03eVgKI1Lo50zFroBLctT/Nc6b8DJFVCyhe1FTLR8cy0EecZyoyf
-	 a5wCOs5Rb0/9l9O9Uw==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.158.44] ([217.61.158.44]) by web-mail.gmx.net
- (3c-app-gmx-bs51.server.lan [172.19.170.104]) (via HTTP); Wed, 3 Jan 2024
- 12:37:36 +0100
+	id 1rL0Da-00AnB3-0h;
+	Wed, 03 Jan 2024 12:19:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1704284368;
+	bh=sXvCTJMiMZYRpZ56qv2vfroblI96aeB5QJhYBTGQ51s=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=JQ2uUbfxeiEBF2kzZjHIHn9Tdpp3LgHNaU6HfR0+Ta1mDvIV09iUJyfCqgy3OBVYp
+	 YOqMmMCP1NvVqwgSdrUALT2FXZ4PVcObau2maRNTgYKjl8b+aCUjv+7VBLX2KlyMeB
+	 KpVAgw+uaCqls572liiibW+OaX3hzfqqn2XGBhfs+zEqNrHos/KSU+RkY4GpBzrHXl
+	 cDYMyIrUza28IlH5XPy1XtMX6EUu2L6apf9/Az+zrQEPn1Jewg6oRuSvKq5Pyi6jSy
+	 SUqO3O2GjG0l7TgZgCmY96PkGvKZQ1s9hakqYJz5NfC2zybaoMKzwuGA6H8Fb4LXua
+	 qLtGS69h25y/A==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 451A5378104C;
+	Wed,  3 Jan 2024 12:19:27 +0000 (UTC)
+Message-ID: <eed88b36-ae56-40d3-8588-0d5d75da71a6@collabora.com>
+Date: Wed, 3 Jan 2024 13:19:26 +0100
 MIME-Version: 1.0
-Message-ID: <trinity-9d471f1d-cbfd-492b-95a6-59aca5412fab-1704281856691@3c-app-gmx-bs51>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Daniel Golle <daniel@makrotopia.org>, =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?=
- <zajec5@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>,
- =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
- jason-ch chen <Jason-ch.Chen@mediatek.com>, Macpaul Lin
- <macpaul.lin@mediatek.com>, =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?=
- <bero@baylibre.com>, Sean Wang <sean.wang@mediatek.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Daniel
- Golle <daniel@makrotopia.org>
-Subject: Aw: Re: [PATCH 2/2] arm64: dts: mediatek: Add initial MT7988A and
- BPI-R4
-Content-Type: text/plain; charset=UTF-8
-Date: Wed, 3 Jan 2024 12:37:36 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <04dbf010-5e0a-42f9-8a13-d02f97347c23@collabora.com>
-References: <20240102205941.29654-1-zajec5@gmail.com>
- <20240102205941.29654-2-zajec5@gmail.com>
- <04dbf010-5e0a-42f9-8a13-d02f97347c23@collabora.com>
-Content-Transfer-Encoding: quoted-printable
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:UwYn9+R8+0ROzDo5XL00LlQX5+rKlJBgLjUUaYfq5iSqqHiUEJTjbA8gqjeS2XPDokroC
- H41V2BF6UJR1VrJhdN4z/T3jssHSVxO6DS5A3cb5aEjELuXAawMQKgCf8+meG61g9hQzrK9QfU9d
- J2kP3bGpFwefsHMASVgiaSQ3NOLdYmTJKBlwhpASs7kG/9VvtTDcfcOALF8m9E/Se1rRbvgiEoE2
- 4xt1FmUUlO0IzKfbxsvkVRSEhf87D+vlaHBIFQVJ6QDLoFzxV39XSLIG0C3BgJa0kEvJN0Na0IBz
- 1c=
-UI-OutboundReport: notjunk:1;M01:P0:Ml/GBz+8k3w=;0yL9TS6Khvfp6Eds/Jka3DWq23I
- Hi/qc5Tuz4deq2FsACkpvO4/GEzaxaJgJz8b7yrfFerTLdayeDnDlDGVyrCnZAygLnC01oNf+
- z1T73zzayk4BWQJs91FT31LFYmOyxMpF/7rS+LbnBj4/3X4WuWDueLOChxffVg7s4yQ3oQYrn
- /s4UOdc+UBCFjYJCDa7P8tSTOHKZyPxDbUcRCQ1TJj/Adn6d3mGWeUlZdQBNCPQYKSOL4WFnL
- wkC0il4KHnxvI4ctlB91KRlL9vzigMwwA7eSvrfqYxPfv6QzfUN/GmO8L/WhYPNUL6+4iiFOI
- DhKDsCKW/UCFdG/elAqPFVe35ENTYpRlEX5i4KpRlbnaZXXiKIrKcdTCgwaUAzY0/f/tiwPI4
- 2iLXRp933jIobMft70ncF5/lAoEhOA7bwnYM6J2yqAh388ma3DFnE5IyM7SllJ4HZM/xOQKeP
- JdCsL3hdMzFL0vSi0mnlN7QGBBtLc1YcuPO3xQYTZ4VtfjkpWq2jF7qcJ33KWyx1fnaBK4rkL
- ERo/c4PwwmkujuGR1byH8enj+tW/XHh1NVhwdCUA1/wy6JWMOI0EUr0NaZhs7KPdonzr6nSrO
- lEwpJNTeDWdwnzc0+12K7LAIkzUeDQUPqfFvTXBFDTJ3H17wpIsLkrOtMlBKmpu0yVA6QQ+Jj
- i3LlWAnvvSvmr0O3YZ5ojir0lRnsKRdNPSXekluSiAk702uus578yIgdQI5MRY+Lt9pW9w4Mu
- kcAucHSqbnJhZonS6BVkEWGSM3g4wgbgiMhfIiPB35V31chQt/k+HNN5qD4OQFK90Pw/khQFf
- AKU9far4mZG4i888k2esby2Q==
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/2] clk: mediatek: Introduce need_pm_runtime to
+ mtk_clk_desc
+Content-Language: en-US
+To: Pin-yen Lin <treapking@chromium.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Weiyi Lu <weiyi.lu@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Eugen Hristev <eugen.hristev@collabora.com>
+References: <20240102081402.1226795-1-treapking@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240102081402.1226795-1-treapking@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240103_033751_279197_B7BBC050 
-X-CRM114-Status: GOOD (  19.78  )
+X-CRM114-CacheID: sfid-20240103_041930_404775_E0258A77 
+X-CRM114-Status: GOOD (  22.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,109 +79,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+Il 02/01/24 09:12, Pin-yen Lin ha scritto:
+> Introduce a new need_pm_runtime variable to mtk_clk_desc to indicate
+> this clock needs a runtime PM get on the clock controller during the
+> probing stage.
+> 
+> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
 
-thanks Rafal for making the first loop of Dts-patches and splitting it and=
- Angelo for first review=2E
-Just my 2c on the thermal-part=2E
+Hello Pin-yen,
 
-> Gesendet: Mittwoch, 03=2E Januar 2024 um 10:49 Uhr
-> Von: "AngeloGioacchino Del Regno" <angelogioacchino=2Edelregno@collabora=
-=2Ecom>
->
-> Il 02/01/24 21:59, Rafa=C5=82 Mi=C5=82ecki ha scritto:
-> > From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki=2Epl>
-> >=20
-> > MT7988A (AKA MediaTek Filogic 880) is a quad-core ARM Cortex-A73
-> > platform designed for Wi-Fi 7 devices (there is no wireless on SoC
-> > though)=2E The first public MT7988A device is Banana Pi BPI-R4=2E
-> >=20
-> > Many SoC parts remain to be added (they need their own bindings or
-> > depend on missing clocks)=2E Those present block however are correct a=
-nd
-> > having base =2Edtsi will help testing & working on missing stuff=2E
-> >=20
-> > +	thermal-zones {
-> > +		cpu-thermal {
-> > +			polling-delay-passive =3D <1000>;
-> > +			polling-delay =3D <1000>;
-> > +
->=20
-> Those thermal zones will not work, as they have no thermal-sensors - as =
-this
-> node is right now, it will produce a probe error and nothing else: pleas=
-e
-> either drop it entirely or add support for the thermal sensors (lvts or =
-auxadc?)
-> and fix this node to use them=2E
+We have experienced something similar, but it was really hard to reproduce after
+some changes.
 
-it is LVTS and i upstreamed dt-binding and driverchange already, but it al=
-so needs a (infracfg-)reset which
-i try to upstream soon after infracfg clock driver appear in next (imho da=
-niels patch merged in subsystem tree today)=2E
+In an effort to try to solve this issue (but again, reproducing is really hard),
+Eugen has sent a commit in the hope that someone else found a way to easily
+reproduce. Please look at [1].
 
-so also the infracfg-node will be needed in next round, if thermal part sh=
-ould be part of it (else not much is in the dtsi at this time)=2E
+I'm also adding Eugen to the Cc's of this email.
 
-> > +			trips {
-> > +				crit {
-> > +					temperature =3D <125000>;
-> > +					hysteresis =3D <2000>;
-> > +					type =3D "critical";
-> > +				};
-> > +
-> > +				hot {
-> > +					temperature =3D <120000>;
-> > +					hysteresis =3D <2000>;
-> > +					type =3D "hot";
-> > +				};
-> > +
-> > +				active-high {
-> > +					temperature =3D <115000>;
-> > +					hysteresis =3D <2000>;
-> > +					type =3D "active";
->=20
-> Active cooling is board specific=2E Keep only critical/hot trips in the =
-SoC DT=2E
->=20
-> > +				};
-> > +
-> > +				active-med {
-> > +					temperature =3D <85000>;
-> > +					hysteresis =3D <2000>;
-> > +					type =3D "active";
-> > +				};
-> > +
-> > +				active-low {
-> > +					temperature =3D <40000>;
-> > +					hysteresis =3D <2000>;
-> > +					type =3D "active";
-> > +				};
-> > +			};
-> > +		};
-> > +	};
-> > +
-> > +	timer {
-> > +		compatible =3D "arm,armv8-timer";
-> > +		interrupt-parent =3D <&gic>;
-> > +		interrupts =3D <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
-> > +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
-> > +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
-> > +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
-> > +	};
-> > +};
->=20
-> Regards,
-> Angelo
+Cheers,
+Angelo
 
-@rafal how do we sync our work? what is your codebase?
-i currently work on daniels wip tree, but it does not contain your current=
- splitting=2E=2E=2E
-maybe daniel can include your splitted dts patches?
+[1]: 
+https://patchwork.kernel.org/project/linux-pm/patch/20231225133615.78993-1-eugen.hristev@collabora.com/
 
-i already tried to fix some binding-issues in the full dts(i)=2E=2E=2E=2E
-waiting for vendor about clocks for mmc which are currently not matching a=
-ctual binding (and using mt7986 compatible)=2E
+> ---
+> 
+> Changes in v2:
+> - Fix the order of error handling
+> - Update the commit message and add a comment before the runtime PM call
+> 
+>   drivers/clk/mediatek/clk-mtk.c | 15 +++++++++++++++
+>   drivers/clk/mediatek/clk-mtk.h |  2 ++
+>   2 files changed, 17 insertions(+)
+> 
+> diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+> index 2e55368dc4d8..c31e535909c8 100644
+> --- a/drivers/clk/mediatek/clk-mtk.c
+> +++ b/drivers/clk/mediatek/clk-mtk.c
+> @@ -13,6 +13,7 @@
+>   #include <linux/of.h>
+>   #include <linux/of_address.h>
+>   #include <linux/platform_device.h>
+> +#include <linux/pm_runtime.h>
+>   #include <linux/slab.h>
+>   
+>   #include "clk-mtk.h"
+> @@ -494,6 +495,14 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
+>   			return IS_ERR(base) ? PTR_ERR(base) : -ENOMEM;
+>   	}
+>   
+> +
+> +	if (mcd->need_runtime_pm) {
+> +		devm_pm_runtime_enable(&pdev->dev);
+> +		r = pm_runtime_resume_and_get(&pdev->dev);
+> +		if (r)
+> +			return r;
+> +	}
+> +
+>   	/* Calculate how many clk_hw_onecell_data entries to allocate */
+>   	num_clks = mcd->num_clks + mcd->num_composite_clks;
+>   	num_clks += mcd->num_fixed_clks + mcd->num_factor_clks;
+> @@ -574,6 +583,9 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
+>   			goto unregister_clks;
+>   	}
+>   
+> +	if (mcd->need_runtime_pm)
+> +		pm_runtime_put(&pdev->dev);
+> +
+>   	return r;
+>   
+>   unregister_clks:
+> @@ -604,6 +616,9 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
+>   free_base:
+>   	if (mcd->shared_io && base)
+>   		iounmap(base);
+> +
+> +	if (mcd->need_runtime_pm)
+> +		pm_runtime_put(&pdev->dev);
+>   	return r;
+>   }
+>   
+> diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+> index 22096501a60a..c17fe1c2d732 100644
+> --- a/drivers/clk/mediatek/clk-mtk.h
+> +++ b/drivers/clk/mediatek/clk-mtk.h
+> @@ -237,6 +237,8 @@ struct mtk_clk_desc {
+>   
+>   	int (*clk_notifier_func)(struct device *dev, struct clk *clk);
+>   	unsigned int mfg_clk_idx;
+> +
+> +	bool need_runtime_pm;
+>   };
+>   
+>   int mtk_clk_pdev_probe(struct platform_device *pdev);
 
-regards Frank
+
+
 
