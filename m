@@ -4,67 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D94BC3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jan 2024 09:51:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33E9DC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jan 2024 09:57:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D5wPLE9TZz9FB8/zFddxM+lmOG8aS1WUAq/N+WIF/34=; b=pGlTWEIkJHkeRAQ4xg4dwuky9r
-	/+Q1rIsKhqbD06R2i3QZjFZOMPlg+JdicOLL/p64ZH/X/pTv3MOLwMuHGjtaKKxNm9CJLSfhmoY0x
-	ZPDhDjzy0DZmdOSfZJKQJAd8W1KyTHEFFOcFa0Ry/74hx4QqCLoiZpFnYzyIE681aONtYCbNBtHZu
-	FkvtrsBjUW+E0IkwxVDkcic/aTmG4C9kXiHgar3sCTelh9rm4LuraPzLvdW/LSBxAnccwwWFq5Ea9
-	sFvn7AL/sSGYMjMZPjBaWGg8lhf6x02j6DBIoJ+jq9n2s8vmo3kmBiSMTHbxnCGa7+Pk+KBDg4Zfg
-	rNwppG6Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VvGf4tkAOhspSqLgQxhRC1W+18WMwKCjQ+w8d6y8GdM=; b=btBVcMvnhEX+jWc+d6LtO6A3c2
+	YPw758X22Q8dDKmffXCRYFHhjCI68WXAG6pBAdMdHD61oJfMP+TJJpzlDNT2wtxbFA19fTpchm1BP
+	s1yICZYa+rBtvfewkI/MuO7taKZ/XCM7fYQK46WFS8UeQ5KOboqsWjKRElkqiIdQ5pAOYjFlHgbNo
+	4a2aPZtFRrB2xBcJqDVToUdALLiOCDbmbnGa01KMfExF0FTiGUvu5eZUaxzbEc7bw4FvPBhbCKuZ/
+	d4Al1vsf8vPIPiBpPQy0jtjd0bXOGot2wMFj+QlFIaq54numJ7TwogdhqvSEOCOLSKJ1BHL1yglqb
+	X/8PbVkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKxts-00AI8Z-1e;
-	Wed, 03 Jan 2024 09:51:00 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1rKy0G-00AJ6A-0r;
+	Wed, 03 Jan 2024 09:57:36 +0000
+Received: from szxga03-in.huawei.com ([45.249.212.189])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKxto-00AI5X-28;
-	Wed, 03 Jan 2024 09:50:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=D5wPLE9TZz9FB8/zFddxM+lmOG8aS1WUAq/N+WIF/34=; b=jg9h8ytC1jyaCi86YZ3yq/HzUo
-	Seznnu4aTFRdTXJGmfFHAoH6YU3aS90j7cpthWeEQHQJRY2fKCahqw78iCTzpUsUvyYF0Idcea9e7
-	4arIyVUDfOFaoh9Ibm0so5z1qetdUTK0DxUHg3rlmi42pbdqAQmsIpfDsucH/U7J2FS+8C1QwFHUG
-	/ZaP/aEtdTMz/JKRqc7Fvp06Qz7ijJfpB+2r5LEOqJjR4MudDJfT0fJl8KRvuJCSFaU5DM/lstI4G
-	VrnQtA+7spviCCv2HrumYR8WSHEDQpeo70e0Z8kk54G9pVtQUnZ9haza8a/DcL/nUFA4ZkjBsJYKu
-	+4iAFSWQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:45524)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1rKxtZ-0007JJ-0I;
-	Wed, 03 Jan 2024 09:50:41 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1rKxtZ-0006G0-1w; Wed, 03 Jan 2024 09:50:41 +0000
-Date: Wed, 3 Jan 2024 09:50:41 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH RFC net-next] net: pcs: pcs-mtk-lynxi fix
- mtk_pcs_lynxi_get_state() for 2500base-x
-Message-ID: <ZZUt8YG/z8koXK9y@shell.armlinux.org.uk>
-References: <20240102074408.1049203-1-ericwouds@gmail.com>
- <ZZP9GR15ufDbjGAJ@shell.armlinux.org.uk>
- <92190426-3614-4774-9E9F-18F121622788@gmail.com>
- <74223164-ab50-4d6d-a4f4-561b0a70d396@gmail.com>
- <ZZRrk85SCDmo76NJ@pidgin.makrotopia.org>
+	id 1rKy0C-00AJ4D-0l;
+	Wed, 03 Jan 2024 09:57:34 +0000
+Received: from mail.maildlp.com (unknown [172.19.163.174])
+	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4T4lVk11btzMqfB;
+	Wed,  3 Jan 2024 17:56:46 +0800 (CST)
+Received: from dggpemm500005.china.huawei.com (unknown [7.185.36.74])
+	by mail.maildlp.com (Postfix) with ESMTPS id 4FAA7140336;
+	Wed,  3 Jan 2024 17:57:16 +0800 (CST)
+Received: from localhost.localdomain (10.69.192.56) by
+ dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Wed, 3 Jan 2024 17:57:16 +0800
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
+	<linyunsheng@huawei.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Alexei
+ Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper
+ Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<bpf@vger.kernel.org>
+Subject: [PATCH net-next 0/6] remove page frag implementation in vhost_net
+Date: Wed, 3 Jan 2024 17:56:43 +0800
+Message-ID: <20240103095650.25769-1-linyunsheng@huawei.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZZRrk85SCDmo76NJ@pidgin.makrotopia.org>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.69.192.56]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ dggpemm500005.china.huawei.com (7.185.36.74)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240103_015056_696411_39893E9F 
-X-CRM114-Status: GOOD (  13.02  )
+X-CRM114-CacheID: sfid-20240103_015732_647467_CCE9B27A 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,24 +69,97 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, Eric Woudstra <ericwouds@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 02, 2024 at 09:01:23PM +0100, Daniel Golle wrote:
-> On Tue, Jan 02, 2024 at 08:33:32PM +0100, Eric Woudstra wrote:
-> > [...]
-> > 
-> > So if phylink_mii_c22_pcs_decode_state() should not set the speed, then it is not correctly set somewhere else.
-> 
-> Yes, but the fix should go to pcs-mtk-lynxi.c and you don't need to
-> change phylink for it to work.
+Currently there are three implementations for page frag:
 
-... which is broken thinking. It's "let's add custom hacks to drivers
-to implement driver specific behaviour, ignoring what is being asked
-of them by the upper layers."
+1. mm/page_alloc.c: net stack seems to be using it in the
+   rx part with 'struct page_frag_cache' and the main API
+   being page_frag_alloc_align().
+2. net/core/sock.c: net stack seems to be using it in the
+   tx part with 'struct page_frag' and the main API being
+   skb_page_frag_refill().
+3. drivers/vhost/net.c: vhost seems to be using it to build
+   xdp frame, and it's implementation seems to be a mix of
+   the above two.
+
+This patch tries to unfiy the page frag implementation a
+little bit by unifying gfp bit for order 3 page allocation
+and replacing page frag implementation in vhost.c with the
+one in page_alloc.c.
+
+After this patchset, we are not only able to unify the page
+frag implementation a little, but also able to have about
+0.5% performance boost testing by using the vhost_net_test
+introduced in the last patch.
+
+Before this patchset:
+Performance counter stats for './vhost_net_test' (10 runs):
+
+     305325.78 msec task-clock                       #    1.738 CPUs utilized               ( +-  0.12% )
+       1048668      context-switches                 #    3.435 K/sec                       ( +-  0.00% )
+            11      cpu-migrations                   #    0.036 /sec                        ( +- 17.64% )
+            33      page-faults                      #    0.108 /sec                        ( +-  0.49% )
+  244651819491      cycles                           #    0.801 GHz                         ( +-  0.43% )  (64)
+   64714638024      stalled-cycles-frontend          #   26.45% frontend cycles idle        ( +-  2.19% )  (67)
+   30774313491      stalled-cycles-backend           #   12.58% backend cycles idle         ( +-  7.68% )  (70)
+  201749748680      instructions                     #    0.82  insn per cycle
+                                              #    0.32  stalled cycles per insn     ( +-  0.41% )  (66.76%)
+   65494787909      branches                         #  214.508 M/sec                       ( +-  0.35% )  (64)
+    4284111313      branch-misses                    #    6.54% of all branches             ( +-  0.45% )  (66)
+
+       175.699 +- 0.189 seconds time elapsed  ( +-  0.11% )
+
+
+After this patchset:
+Performance counter stats for './vhost_net_test' (10 runs):
+
+     303974.38 msec task-clock                       #    1.739 CPUs utilized               ( +-  0.14% )
+       1048807      context-switches                 #    3.450 K/sec                       ( +-  0.00% )
+            14      cpu-migrations                   #    0.046 /sec                        ( +- 12.86% )
+            33      page-faults                      #    0.109 /sec                        ( +-  0.46% )
+  251289376347      cycles                           #    0.827 GHz                         ( +-  0.32% )  (60)
+   67885175415      stalled-cycles-frontend          #   27.01% frontend cycles idle        ( +-  0.48% )  (63)
+   27809282600      stalled-cycles-backend           #   11.07% backend cycles idle         ( +-  0.36% )  (71)
+  195543234672      instructions                     #    0.78  insn per cycle
+                                              #    0.35  stalled cycles per insn     ( +-  0.29% )  (69.04%)
+   62423183552      branches                         #  205.357 M/sec                       ( +-  0.48% )  (67)
+    4135666632      branch-misses                    #    6.63% of all branches             ( +-  0.63% )  (67)
+
+       174.764 +- 0.214 seconds time elapsed  ( +-  0.12% )
+
+Changelog:
+V2: Change 'xor'd' to 'masked off', add vhost tx testing for
+    vhost_net_test.
+
+V1: Fix some typo, drop RFC tag and rebase on latest net-next.
+
+Yunsheng Lin (6):
+  mm/page_alloc: modify page_frag_alloc_align() to accept align as an
+    argument
+  page_frag: unify gfp bits for order 3 page allocation
+  mm/page_alloc: use initial zero offset for page_frag_alloc_align()
+  vhost/net: remove vhost_net_page_frag_refill()
+  net: introduce page_frag_cache_drain()
+  tools: virtio: introduce vhost_net_test
+
+ drivers/net/ethernet/google/gve/gve_main.c |  11 +-
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c |  17 +-
+ drivers/nvme/host/tcp.c                    |   7 +-
+ drivers/nvme/target/tcp.c                  |   4 +-
+ drivers/vhost/net.c                        |  91 +---
+ include/linux/gfp.h                        |   6 +-
+ include/linux/skbuff.h                     |  22 +-
+ mm/page_alloc.c                            |  48 +-
+ net/core/skbuff.c                          |  14 +-
+ net/core/sock.c                            |   2 +-
+ tools/virtio/Makefile                      |   8 +-
+ tools/virtio/vhost_net_test.c              | 574 +++++++++++++++++++++
+ 12 files changed, 657 insertions(+), 147 deletions(-)
+ create mode 100644 tools/virtio/vhost_net_test.c
 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+2.33.0
+
 
