@@ -4,53 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF61EC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jan 2024 23:14:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7372C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jan 2024 00:51:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xTWK/uZV1kkx8JdNSuAByCvLyhYTn0JHSMyI9KBhW58=; b=ZHBFNyMuiBcX/66TG0GmDUI7kb
-	uouK1Rok/tL2eUOJmBM5gswNMcGs3WZe3TBniArOc/PWj5HKz/jt/6cDVq8vyS6RTtvDK5aF6G5g+
-	7/PJ2ocfndGAn/GKgW6WKyl8RXYJn45psldO2eBTdq4Uhfyl2tPPwKLkpWzURhwPyV9Hs3nnYIS3d
-	SmF5DJh+yO95A/98CtRzAocdL1YyVev4RAOadkgbt5JdJhOce8xBWc4pNqlmfWhcNshs2hPn+j+QF
-	KhAZ2yNSyZ5yqPex8mFKoncHTYo7btK3ZdMxo9zQ/+Gj+qPjYgehE8M2dXw+bJAHmRDtf9Jbr4nzt
-	thIsGkDA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qTgi2mL/qWUSdzTq7Jk2j3SyyOnbKCA4XnZYuMo2fk4=; b=qIHEoHNPcxJtnFamiNVn8L6Eul
+	6eU9wwKMczfw+XtgCGYBLGk24jAoHRaUBCOFtu9MBeyv+Y7jA2y47z49ZCEnFMnNxMMew9LgikSbn
+	dKwpA58bHKgVEq8KN7vdYFmr4pL3vUVfvr/neSD4ee8rVMkcmdmEAeEBPFnUbAtGb/82u0RiGKE1e
+	utDWg7rGGg7qdizvQ0os+K/8Le3TTo6XQXXei61OR++bjLqmJ4vqYrrVhkVYcYWKJ92D1cKlrDZM/
+	KPa/cTvJ6qaS/a42c6RkUsEGoD3HwqKcJqdh0JUYxlBdW2Uo1AuAeQDbehTR9aJn4IGN8vb+VyQ7U
+	IONRZjiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKnxU-009HR3-24;
-	Tue, 02 Jan 2024 23:14:04 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1rKpTm-009Q3T-25;
+	Wed, 03 Jan 2024 00:51:30 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKnxQ-009HPh-2f;
-	Tue, 02 Jan 2024 23:14:02 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1rKnx0-0001EK-1z;
-	Tue, 02 Jan 2024 23:13:35 +0000
-Date: Wed, 3 Jan 2024 00:10:54 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Eric Woudstra <ericwouds@gmail.com>
-Subject: Re: [PATCH RFC net-next] net: pcs: pcs-mtk-lynxi fix
- mtk_pcs_lynxi_get_state() for 2500base-x
-Message-ID: <ZZSX_oNUIQr6R9FU@pidgin.makrotopia.org>
-References: <20240102074408.1049203-1-ericwouds@gmail.com>
- <ZZP9GR15ufDbjGAJ@shell.armlinux.org.uk>
- <92190426-3614-4774-9E9F-18F121622788@gmail.com>
- <74223164-ab50-4d6d-a4f4-561b0a70d396@gmail.com>
- <ZZRrk85SCDmo76NJ@pidgin.makrotopia.org>
- <6666EB36-984E-4898-A41A-2D9713DE4DB0@gmail.com>
+	id 1rKpTj-009Q2w-26;
+	Wed, 03 Jan 2024 00:51:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id CB37FB80EF5;
+	Wed,  3 Jan 2024 00:51:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C851DC433C8;
+	Wed,  3 Jan 2024 00:51:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1704243084;
+	bh=LWs+wtOQwJE2KAvg5du9NptcRU9govH4f+98sicou70=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=WxVaI9694aQvo58unwJTq2noH7ZFX0/naboe8Y0fEDYRJ5cFrH5OcfVD5EugMdpVz
+	 cZjjygm2a49RIB7BSTOdyvCoUlxvvotFFLH7ZpVmu/Jo2zg3t6tlkVC1zSJeavIM2t
+	 l2T5YbZ3Qi2ONbciE753zohKOsDnfOrfgb8sXZfDiUg0tOpbbPQgopdIzSJYLaB1xH
+	 jGuCcV1U3eSPFoUvIK8KkKmYOWNsebz95wOPBhR5sJdBMOVN+HWbYptkdcLFTQyUnz
+	 bypp6ZsI+eEmAiPViaiCRYYi6r52hIC+XLWVdn5rwHlbna/pWGh7AJ0L5vS0KW5IRH
+	 uwk74UZBvwJzA==
+Message-ID: <616e957ebb9d6606ccfdccb822aa0c42.sboyd@kernel.org>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <6666EB36-984E-4898-A41A-2D9713DE4DB0@gmail.com>
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20231103102533.69280-2-angelogioacchino.delregno@collabora.com>
+References: <20231103102533.69280-1-angelogioacchino.delregno@collabora.com> <20231103102533.69280-2-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v3 1/3] clk: mediatek: clk-mux: Support custom parent indices for muxes
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, wenst@chromium.org, msp@baylibre.com, amergnat@baylibre.com, yangyingliang@huawei.com, u.kleine-koenig@pengutronix.de, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel@collabora.com
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Date: Tue, 02 Jan 2024 16:51:22 -0800
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_151400_867400_0F49F504 
-X-CRM114-Status: GOOD (  17.86  )
+X-CRM114-CacheID: sfid-20240102_165127_862530_A98137EC 
+X-CRM114-Status: GOOD (  13.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,46 +67,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, "Russell King \(Oracle\)" <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 02, 2024 at 11:13:58PM +0100, Eric Woudstra wrote:
-> I believe the general idea is that phylink should be aware wether to use inband or outband negotiation in order to setup the hardware correctly. Speaking of a situation where there is a PHY attached.
+Quoting AngeloGioacchino Del Regno (2023-11-03 03:25:31)
+> Add support for customized parent indices for MediaTek muxes: this is
+> necessary for the case in which we want to exclude some clocks from
+> a mux's parent clocks list, where the exclusions are not from the
+> very bottom of the list but either in the middle or the beginning.
+>=20
+> Example:
+> - MUX1 (all parents)
+>   - parent1; idx=3D0
+>   - parent2; idx=3D1
+>   - parent3; idx=3D2
+>=20
+> - MUX1 (wanted parents)
+>   - parent1; idx=3D0
+>   - parent3; idx=3D2
+>=20
+> To achieve that add a `parent_index` array pointer to struct mtk_mux,
+> then in .set_parent(), .get_parent() callbacks check if this array
+> was populated and eventually get the index from that.
+>=20
+> Also, to avoid updating all clock drivers for all SoCs, rename the
+> "main" macro to __GATE_CLR_SET_UPD_FLAGS (so, `__` was added) and
+> add the new member to it; furthermore, GATE_CLK_SET_UPD_FLAGS has
+> been reintroduced as being fully compatible with the older version.
+>=20
+> The new parent_index can be specified with the new `_INDEXED`
+> variants of the MUX_GATE_CLR_SET_UPD_xxxx macros.
+>=20
+> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
 
-Well, SGMII speed/duplex AN is not defined for 2500Base-X by any
-standard and not supported by the hardware (unlike e.g. RealTek
-which came up with their own proprietary extension called HiSGMII).
-
-So we should simply never set the SGMII_SPEED_DUPLEX_AN bit if using
-2500Base-X on MediaTek LynxI PCS -- in-band link status will still work,
-and as 2500Base-X anyway only supports 2500M speed at full duplex it is
-not a problem that speed and duplex are hard-coded in the driver in this
-case imho. And that works fine for SFPs with and without
-present/discoverable/accessible PHY.
-
-Surely, having phylink take care whether SGMII_SPEED_DUPLEX_AN should be
-set would be even nicer.
-
-I believe that source of confusion here is simply that
-
-in-band-status != SGMII_SPEED_DUPLEX_AN
-
-We *do* have in-band-status even without having SGMII_SPEED_DUPLEX_AN set
-with 2500Base-X link mode (as in: link being up or down and link, duplex
-and speed is fixed anyway for 2500Base-X).
-
-
-> 
-> On January 2, 2024 9:01:23 PM GMT+01:00, Daniel Golle <daniel@makrotopia.org> wrote:
-> >On Tue, Jan 02, 2024 at 08:33:32PM +0100, Eric Woudstra wrote:
-> >> [...]
-> >> 
-> >> So if phylink_mii_c22_pcs_decode_state() should not set the speed, then it is not correctly set somewhere else.
-> >
-> >Yes, but the fix should go to pcs-mtk-lynxi.c and you don't need to
-> >change phylink for it to work.
-> >This should be enough:
-> >https://patchwork.kernel.org/project/netdevbpf/patch/091e466912f1333bb76d23e95dc6019c9b71645f.1699565880.git.daniel@makrotopia.org/
-> >
+Applied to clk-next
 
