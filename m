@@ -4,73 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0040DC3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jan 2024 09:49:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D94BC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jan 2024 09:51:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4YCBPD0DHLKARNVTyi3s0vpWpkxftl8rMbgEZLJrm6c=; b=2b+djr/29yFqp/Xi+2mxW1YuZ6
-	PD57hcmmVMdoksosW6FPAeSJHEt3YdiTC5Aa5srs2J5msHUFOkNSEbGkbBa94ys86OK8rTvB/QTWj
-	EkS8ESbooKQzrHQMgakSGQnvuxEI12yMDEp29PSPl22Gk8bbG4ycFEI/sG9nbgqPYsjYNZleC5sKD
-	ssTJKRlFAFfq+m9+LFB0g0XLNij831y7P+TBNEA43datT38eoMOcRTcZSvLjJ/zqUCRuE3H3geZHc
-	+KU2Ulj683v52PLlZ2+aCdDIKlBgXZeyQ9rmnNH0fYG3ZA3zQxzVfnpLNDMyLVfiiFIzvn56RME4L
-	6cGR6QRw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=D5wPLE9TZz9FB8/zFddxM+lmOG8aS1WUAq/N+WIF/34=; b=pGlTWEIkJHkeRAQ4xg4dwuky9r
+	/+Q1rIsKhqbD06R2i3QZjFZOMPlg+JdicOLL/p64ZH/X/pTv3MOLwMuHGjtaKKxNm9CJLSfhmoY0x
+	ZPDhDjzy0DZmdOSfZJKQJAd8W1KyTHEFFOcFa0Ry/74hx4QqCLoiZpFnYzyIE681aONtYCbNBtHZu
+	FkvtrsBjUW+E0IkwxVDkcic/aTmG4C9kXiHgar3sCTelh9rm4LuraPzLvdW/LSBxAnccwwWFq5Ea9
+	sFvn7AL/sSGYMjMZPjBaWGg8lhf6x02j6DBIoJ+jq9n2s8vmo3kmBiSMTHbxnCGa7+Pk+KBDg4Zfg
+	rNwppG6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKxsN-00AHhm-0P;
-	Wed, 03 Jan 2024 09:49:27 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rKxts-00AI8Z-1e;
+	Wed, 03 Jan 2024 09:51:00 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKxsJ-00AHfV-2o;
-	Wed, 03 Jan 2024 09:49:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1704275360;
-	bh=Ni5rBHAlIMtWk86HY1gN61XLWmUkTFatgPLd6DcQjh4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MvEj7DVr1QdjE61VfLIAjrd5GFOxeL9mtEQfW1EUFcJyHR4DIpKtj67ELKDBlPggH
-	 oK1XDtD6i7PY00t8f0D+lFrQ/3dlle9uYHXBE0g5pycK+xKbAXDDL3sU3buYTTOWF/
-	 hOpg1knT19+YG1ToGMIkJqPraicB52TzXgVZVvTlgKTzDBTVl9+++fiO+xfJoL9u/3
-	 Rtk571GdIwnHH2x/5PfXzs06qtvPi0ep76JrGYZLJaG6cGJkMixRmCKe9SKfz2scIZ
-	 Mt7Wgir5EOcfGlbVivxLzZc1xcII0VvR3TX1r6SJmo4jJuyapSe3UR+nzsEAVY/81e
-	 8V5UoB1Rn74EQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0EEF83780629;
-	Wed,  3 Jan 2024 09:49:19 +0000 (UTC)
-Message-ID: <04dbf010-5e0a-42f9-8a13-d02f97347c23@collabora.com>
-Date: Wed, 3 Jan 2024 10:49:18 +0100
+	id 1rKxto-00AI5X-28;
+	Wed, 03 Jan 2024 09:50:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=D5wPLE9TZz9FB8/zFddxM+lmOG8aS1WUAq/N+WIF/34=; b=jg9h8ytC1jyaCi86YZ3yq/HzUo
+	Seznnu4aTFRdTXJGmfFHAoH6YU3aS90j7cpthWeEQHQJRY2fKCahqw78iCTzpUsUvyYF0Idcea9e7
+	4arIyVUDfOFaoh9Ibm0so5z1qetdUTK0DxUHg3rlmi42pbdqAQmsIpfDsucH/U7J2FS+8C1QwFHUG
+	/ZaP/aEtdTMz/JKRqc7Fvp06Qz7ijJfpB+2r5LEOqJjR4MudDJfT0fJl8KRvuJCSFaU5DM/lstI4G
+	VrnQtA+7spviCCv2HrumYR8WSHEDQpeo70e0Z8kk54G9pVtQUnZ9haza8a/DcL/nUFA4ZkjBsJYKu
+	+4iAFSWQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:45524)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1rKxtZ-0007JJ-0I;
+	Wed, 03 Jan 2024 09:50:41 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1rKxtZ-0006G0-1w; Wed, 03 Jan 2024 09:50:41 +0000
+Date: Wed, 3 Jan 2024 09:50:41 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH RFC net-next] net: pcs: pcs-mtk-lynxi fix
+ mtk_pcs_lynxi_get_state() for 2500base-x
+Message-ID: <ZZUt8YG/z8koXK9y@shell.armlinux.org.uk>
+References: <20240102074408.1049203-1-ericwouds@gmail.com>
+ <ZZP9GR15ufDbjGAJ@shell.armlinux.org.uk>
+ <92190426-3614-4774-9E9F-18F121622788@gmail.com>
+ <74223164-ab50-4d6d-a4f4-561b0a70d396@gmail.com>
+ <ZZRrk85SCDmo76NJ@pidgin.makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: Add initial MT7988A and BPI-R4
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: Daniel Golle <daniel@makrotopia.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
- =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
- jason-ch chen <Jason-ch.Chen@mediatek.com>,
- Macpaul Lin <macpaul.lin@mediatek.com>,
- =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
- Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
- <rafal@milecki.pl>
-References: <20240102205941.29654-1-zajec5@gmail.com>
- <20240102205941.29654-2-zajec5@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240102205941.29654-2-zajec5@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZZRrk85SCDmo76NJ@pidgin.makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240103_014924_070552_FE825EE0 
-X-CRM114-Status: GOOD (  22.31  )
+X-CRM114-CacheID: sfid-20240103_015056_696411_39893E9F 
+X-CRM114-Status: GOOD (  13.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,230 +76,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, Eric Woudstra <ericwouds@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/01/24 21:59, Rafał Miłecki ha scritto:
-> From: Rafał Miłecki <rafal@milecki.pl>
+On Tue, Jan 02, 2024 at 09:01:23PM +0100, Daniel Golle wrote:
+> On Tue, Jan 02, 2024 at 08:33:32PM +0100, Eric Woudstra wrote:
+> > [...]
+> > 
+> > So if phylink_mii_c22_pcs_decode_state() should not set the speed, then it is not correctly set somewhere else.
 > 
-> MT7988A (AKA MediaTek Filogic 880) is a quad-core ARM Cortex-A73
-> platform designed for Wi-Fi 7 devices (there is no wireless on SoC
-> though). The first public MT7988A device is Banana Pi BPI-R4.
-> 
-> Many SoC parts remain to be added (they need their own bindings or
-> depend on missing clocks). Those present block however are correct and
-> having base .dtsi will help testing & working on missing stuff.
-> 
-> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
-> ---
->   arch/arm64/boot/dts/mediatek/Makefile         |   1 +
->   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  |  11 ++
->   arch/arm64/boot/dts/mediatek/mt7988a.dtsi     | 149 ++++++++++++++++++
->   3 files changed, 161 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index 1e6f91731e92..0a189d5d8006 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -15,6 +15,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nor.dtbo
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtbo
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-> new file mode 100644
-> index 000000000000..efc4ad0b08b8
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-> @@ -0,0 +1,11 @@
-> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
-> +
-> +/dts-v1/;
-> +
-> +#include "mt7988a.dtsi"
-> +
-> +/ {
-> +	compatible = "bananapi,bpi-r4", "mediatek,mt7988a";
-> +	model = "Banana Pi BPI-R4";
-> +	chassis-type = "embedded";
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-> new file mode 100644
-> index 000000000000..0f2ae9c7aef7
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-> @@ -0,0 +1,149 @@
-> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
-> +
-> +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +/ {
-> +	compatible = "mediatek,mt7986a";
+> Yes, but the fix should go to pcs-mtk-lynxi.c and you don't need to
+> change phylink for it to work.
 
-Why is the compatible describing MT798*6*A instead of MT7988A? Please fix.
+... which is broken thinking. It's "let's add custom hacks to drivers
+to implement driver specific behaviour, ignoring what is being asked
+of them by the upper layers."
 
-> +	interrupt-parent = <&gic>;
-> +	#address-cells = <2>;
-> +	#size-cells = <2>;
-> +
-> +	cpus {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		cpu@0 {
-> +			compatible = "arm,cortex-a73";
-> +			reg = <0x0>;
-> +			device_type = "cpu";
-> +			enable-method = "psci";
-> +		};
-> +
-> +		cpu@1 {
-> +			compatible = "arm,cortex-a73";
-> +			reg = <0x1>;
-> +			device_type = "cpu";
-> +			enable-method = "psci";
-> +		};
-> +
-> +		cpu@2 {
-> +			compatible = "arm,cortex-a73";
-> +			reg = <0x2>;
-> +			device_type = "cpu";
-> +			enable-method = "psci";
-> +		};
-> +
-> +		cpu@3 {
-> +			compatible = "arm,cortex-a73";
-> +			reg = <0x3>;
-> +			device_type = "cpu";
-> +			enable-method = "psci";
-> +		};
-> +	};
-> +
-> +	oscillator-40m {
-> +		compatible = "fixed-clock";
-> +		clock-frequency = <40000000>;
-> +		#clock-cells = <0>;
-> +		clock-output-names = "clkxtal";
-> +	};
-> +
-> +	pmu {
-> +		compatible = "arm,cortex-a73-pmu";
-> +		interrupt-parent = <&gic>;
-> +		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
-> +	};
-> +
-> +	psci {
-> +		compatible = "arm,psci-0.2";
-> +		method = "smc";
-> +	};
-> +
-> +	reserved-memory {
-> +		ranges;
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +
-> +		/* 320 KiB reserved for ARM Trusted Firmware (BL31 and BL32) */
-> +		secmon@43000000 {
-
-This is board specific (actually, it is bootloader specific!), so please move it
-to your board dts(i).
-
-> +			reg = <0 0x43000000 0 0x50000>;
-> +			no-map;
-> +		};
-> +
-> +	};
-> +
-> +	soc {
-> +		compatible = "simple-bus";
-> +		ranges;
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +
-> +		gic: interrupt-controller@c000000 {
-> +			compatible = "arm,gic-v3";
-> +			reg = <0 0x0c000000 0 0x40000>,  /* GICD */
-> +			      <0 0x0c080000 0 0x200000>, /* GICR */
-> +			      <0 0x0c400000 0 0x2000>,   /* GICC */
-> +			      <0 0x0c410000 0 0x1000>,   /* GICH */
-> +			      <0 0x0c420000 0 0x2000>;   /* GICV */
-> +			interrupt-parent = <&gic>;
-> +			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
-> +			interrupt-controller;
-> +			#interrupt-cells = <3>;
-> +		};
-> +
-> +		watchdog@1001c000 {
-> +			compatible = "mediatek,mt7988-wdt";
-> +			reg = <0 0x1001c000 0 0x1000>;
-> +			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
-> +			#reset-cells = <1>;
-> +		};
-> +	};
-> +
-> +	thermal-zones {
-> +		cpu-thermal {
-> +			polling-delay-passive = <1000>;
-> +			polling-delay = <1000>;
-> +
-
-Those thermal zones will not work, as they have no thermal-sensors - as this
-node is right now, it will produce a probe error and nothing else: please
-either drop it entirely or add support for the thermal sensors (lvts or auxadc?)
-and fix this node to use them.
-
-> +			trips {
-> +				crit {
-> +					temperature = <125000>;
-> +					hysteresis = <2000>;
-> +					type = "critical";
-> +				};
-> +
-> +				hot {
-> +					temperature = <120000>;
-> +					hysteresis = <2000>;
-> +					type = "hot";
-> +				};
-> +
-> +				active-high {
-> +					temperature = <115000>;
-> +					hysteresis = <2000>;
-> +					type = "active";
-
-Active cooling is board specific. Keep only critical/hot trips in the SoC DT.
-
-> +				};
-> +
-> +				active-med {
-> +					temperature = <85000>;
-> +					hysteresis = <2000>;
-> +					type = "active";
-> +				};
-> +
-> +				active-low {
-> +					temperature = <40000>;
-> +					hysteresis = <2000>;
-> +					type = "active";
-> +				};
-> +			};
-> +		};
-> +	};
-> +
-> +	timer {
-> +		compatible = "arm,armv8-timer";
-> +		interrupt-parent = <&gic>;
-> +		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
-> +	};
-> +};
-
-Regards,
-Angelo
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
