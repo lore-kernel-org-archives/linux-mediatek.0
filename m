@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7372C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jan 2024 00:51:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34F36C47074
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jan 2024 00:51:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
 	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qTgi2mL/qWUSdzTq7Jk2j3SyyOnbKCA4XnZYuMo2fk4=; b=qIHEoHNPcxJtnFamiNVn8L6Eul
-	6eU9wwKMczfw+XtgCGYBLGk24jAoHRaUBCOFtu9MBeyv+Y7jA2y47z49ZCEnFMnNxMMew9LgikSbn
-	dKwpA58bHKgVEq8KN7vdYFmr4pL3vUVfvr/neSD4ee8rVMkcmdmEAeEBPFnUbAtGb/82u0RiGKE1e
-	utDWg7rGGg7qdizvQ0os+K/8Le3TTo6XQXXei61OR++bjLqmJ4vqYrrVhkVYcYWKJ92D1cKlrDZM/
-	KPa/cTvJ6qaS/a42c6RkUsEGoD3HwqKcJqdh0JUYxlBdW2Uo1AuAeQDbehTR9aJn4IGN8vb+VyQ7U
-	IONRZjiw==;
+	bh=iw4D9K6H60zW9yGTucSNQ0sP7AfAVXzYnq7+xAS58UM=; b=k2BH1ICS51xmA88QmDlAzfMRFH
+	LQfWGiNUTOp+7h5D3HCOis2f1Ptrh54i4QMLCWzPTETmF2BRHETdZsci06jHSmJwbEgxj46GYTujL
+	CJ0xnKB7orPQq/RqePgTg5saS1X2LuNKeMoxLysACR1VTCyoc0c278U9n3aCWONUVnZyVvDnXzsyC
+	hdUVMS2LMD+5J6ZSLuIlOJdsGdwBwxHkXW9BeYPYRChkkwrySPFaCeDN+Ktn9JMF6XqrvyILdwuOG
+	VrT75zXFoD3Nj0sG/hkrtiIlWDWGxROcQciTIw6t5afyyrzQaBedDeQmN06WtbdfuoNckOsbipdmA
+	3EipaudQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKpTm-009Q3T-25;
-	Wed, 03 Jan 2024 00:51:30 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1rKpTx-009Q7F-18;
+	Wed, 03 Jan 2024 00:51:41 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKpTj-009Q2w-26;
-	Wed, 03 Jan 2024 00:51:29 +0000
+	id 1rKpTs-009Q4Y-2r;
+	Wed, 03 Jan 2024 00:51:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id CB37FB80EF5;
-	Wed,  3 Jan 2024 00:51:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C851DC433C8;
-	Wed,  3 Jan 2024 00:51:24 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 7E8CACE1292;
+	Wed,  3 Jan 2024 00:51:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AA994C433C8;
+	Wed,  3 Jan 2024 00:51:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1704243084;
-	bh=LWs+wtOQwJE2KAvg5du9NptcRU9govH4f+98sicou70=;
+	s=k20201202; t=1704243093;
+	bh=08KXlXgNZeakwMogHdMN3HKZsxc/azSBB+WAxe4fQKk=;
 	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=WxVaI9694aQvo58unwJTq2noH7ZFX0/naboe8Y0fEDYRJ5cFrH5OcfVD5EugMdpVz
-	 cZjjygm2a49RIB7BSTOdyvCoUlxvvotFFLH7ZpVmu/Jo2zg3t6tlkVC1zSJeavIM2t
-	 l2T5YbZ3Qi2ONbciE753zohKOsDnfOrfgb8sXZfDiUg0tOpbbPQgopdIzSJYLaB1xH
-	 jGuCcV1U3eSPFoUvIK8KkKmYOWNsebz95wOPBhR5sJdBMOVN+HWbYptkdcLFTQyUnz
-	 bypp6ZsI+eEmAiPViaiCRYYi6r52hIC+XLWVdn5rwHlbna/pWGh7AJ0L5vS0KW5IRH
-	 uwk74UZBvwJzA==
-Message-ID: <616e957ebb9d6606ccfdccb822aa0c42.sboyd@kernel.org>
+	b=YFYMYv4WTcktJ/dyY3MCx1mzQl2yO1WZbhlk7IVHTrRRd+mQXC8UOQKL7efWNbxZG
+	 Wbx8Mw2PxlYyOGLOKefA8mEDZjp5yonW111jj/HBZwGNPxt0mlZOIocd1Cf2ap2yuf
+	 zi/TicIK9UDpvf/nHYAhusU2ELOnhybZL9vMGAMTtO+EwtlSh13OgJ8OcjcvBAef5w
+	 o0LhbK4ZXZXyLs8IUFoJTdbjFGuayp3B8DPAquUhnF8MXRVc2AkDMUXdgl6vguDnu4
+	 6xlYz3LvTbalpxjLGDbo7OvHMovs2BQlBf4eO0dapXLqmGCPoJiDiluQOALe7A61I7
+	 aewQOFXaBGttw==
+Message-ID: <f2fa34e137bb378f88a0a375f4044e50.sboyd@kernel.org>
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20231103102533.69280-2-angelogioacchino.delregno@collabora.com>
-References: <20231103102533.69280-1-angelogioacchino.delregno@collabora.com> <20231103102533.69280-2-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v3 1/3] clk: mediatek: clk-mux: Support custom parent indices for muxes
+In-Reply-To: <20231103102533.69280-3-angelogioacchino.delregno@collabora.com>
+References: <20231103102533.69280-1-angelogioacchino.delregno@collabora.com> <20231103102533.69280-3-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v3 2/3] clk: mediatek: mt8195-topckgen: Refactor parents for top_dp/edp muxes
 From: Stephen Boyd <sboyd@kernel.org>
 Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, wenst@chromium.org, msp@baylibre.com, amergnat@baylibre.com, yangyingliang@huawei.com, u.kleine-koenig@pengutronix.de, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel@collabora.com
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Date: Tue, 02 Jan 2024 16:51:22 -0800
+Date: Tue, 02 Jan 2024 16:51:31 -0800
 User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_165127_862530_A98137EC 
-X-CRM114-Status: GOOD (  13.51  )
+X-CRM114-CacheID: sfid-20240102_165137_157494_13D64B78 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,33 +70,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting AngeloGioacchino Del Regno (2023-11-03 03:25:31)
-> Add support for customized parent indices for MediaTek muxes: this is
-> necessary for the case in which we want to exclude some clocks from
-> a mux's parent clocks list, where the exclusions are not from the
-> very bottom of the list but either in the middle or the beginning.
+Quoting AngeloGioacchino Del Regno (2023-11-03 03:25:32)
+> The top_dp and top_edp muxes can be both parented to either TVDPLL1
+> or TVDPLL2, two identically specced PLLs for the specific purpose of
+> giving out pixel clock: this becomes a problem when the MediaTek
+> DisplayPort Interface (DPI) driver tries to set the pixel clock rate.
 >=20
-> Example:
-> - MUX1 (all parents)
->   - parent1; idx=3D0
->   - parent2; idx=3D1
->   - parent3; idx=3D2
+> In the usecase of two simultaneous outputs (using two controllers),
+> it was seen that one of the displays would sometimes display garbled
+> output (if any at all) and this was because:
+>  - top_edp was set to TVDPLL1, outputting X GHz
+>  - top_dp was set to TVDPLL2, outputting Y GHz
+>    - mtk_dpi calls clk_set_rate(top_edp, Z GHz)
+>      - top_dp is switched to TVDPLL1
+>      - TVDPLL1 changes its rate, top_edp outputs the wrong rate.
+>      - eDP display is garbled
 >=20
-> - MUX1 (wanted parents)
->   - parent1; idx=3D0
->   - parent3; idx=3D2
->=20
-> To achieve that add a `parent_index` array pointer to struct mtk_mux,
-> then in .set_parent(), .get_parent() callbacks check if this array
-> was populated and eventually get the index from that.
->=20
-> Also, to avoid updating all clock drivers for all SoCs, rename the
-> "main" macro to __GATE_CLR_SET_UPD_FLAGS (so, `__` was added) and
-> add the new member to it; furthermore, GATE_CLK_SET_UPD_FLAGS has
-> been reintroduced as being fully compatible with the older version.
->=20
-> The new parent_index can be specified with the new `_INDEXED`
-> variants of the MUX_GATE_CLR_SET_UPD_xxxx macros.
+> To solve this issue, remove all TVDPLL1 parents from `top_dp` and
+> all TVDPLL2 parents from `top_edp`, plus, necessarily switch both
+> clocks to use the new MUX_GATE_CLR_SET_UPD_INDEXED() macro to be
+> able to use the right bit index for the new parents list.
 >=20
 > Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 > Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
