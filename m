@@ -4,83 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E6C7C4706F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jan 2024 08:04:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4458EC47073
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jan 2024 08:04:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SyuGcP1D5BGUcMJ8icIN8M3Lavd6GsNJCUB2gjJbli4=; b=LpiXWxJbpBMVaeD0jLj/tFZ+i9
-	krRwWjmyy6lLr9ujq5Ypn38YVv1zryzASCE7mckppW5HrvciJxhyNx/CNIm8LPSl3ukvBsrl1OmCY
-	q1Ahk74N6Jt4vNjPyAnT7hPKiZAla6Zq8fJAtCJ4lNGP1hBYYI1sT45jj7Gp6KO5TcFS1IFs6iCqi
-	VrjvAAHu/1hiJK7b2iJhABXfcKI8mgcil6PXWyYbXZwJuGwLMLa7ri4QRpAlIDe+H2CfEBKwVFBv2
-	+1WBS2Ws9XNiUry0K7PTlPH/BVoYMU4OsaX1HZzhcVLPmmHX9wVisvoxJXMQN61lEUy3wVz/l4hC2
-	Xyl+HIMQ==;
+	bh=ATbBAJmbxu3OA1twQpIT7nmBhtAHhm7KTP7Mv2IH7n0=; b=1IPY0ffcOW8lthiAz6TqqCumbH
+	qvsVojC3zGjR640MvyiYccS80EjOP6YB5I/8+TZC6jdsrAlIdEhlY9ypGx1F+PXqzOnaKIXt8NyRm
+	XCF/DaROK7dM+nDCVclSNK+risMxkBR4C8vB/d5cmqsD5DGYjZ0I8YWQiNFABPysUibPNJ9gwjAAh
+	drcUhb+Ib1dvccahmLKXzyooX6XRKhXjNgA/KP3yRSguFT7ZRjTdUgVn/dlVsEvPWwPrOe90nL0fW
+	mfFwgtOKZOlWbFpEgnhspX+EKmjiR7Hh8E1RY8ApxPRtZkTl7kmWWVnscuglr4cdu2kPMzNcOyb1H
+	26BvGxFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLIht-00D9pC-0O;
-	Thu, 04 Jan 2024 08:04:01 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1rLIiY-00D9xM-0w;
+	Thu, 04 Jan 2024 08:04:42 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLIhq-00D9nt-0f
+	id 1rLIiV-00D9w6-1Z
 	for linux-mediatek@lists.infradead.org;
-	Thu, 04 Jan 2024 08:03:59 +0000
-Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-556ab8b85e3so364574a12.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 04 Jan 2024 00:03:57 -0800 (PST)
+	Thu, 04 Jan 2024 08:04:40 +0000
+Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-555aa7fd668so280826a12.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 04 Jan 2024 00:04:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704355436; x=1704960236; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=SyuGcP1D5BGUcMJ8icIN8M3Lavd6GsNJCUB2gjJbli4=;
-        b=wEkDuadr5XEe6IX3lcpeI84jfksyI0OigMChyhjJNHyitq4mTkVsF6Mf2RTn/5NI45
-         Eeyml2wJNGfgSYjVNXf9ANA+5dNubTRG9zEmkTQd2l/u7ua0oHuDVVabAmDn5zRNuhuL
-         1UXjmTLUKp2u9bwPgmV+TsnUFqoxRAT03CJmbt7jnjeBnM/pvusDfCqnYeQBqCO4S1jD
-         mYfVxFfaxl9yS18ju/U/zvlfvQWWATWMorqDXu0lv5I188xvzG+AfDH1hwRKhRetLO1P
-         dPLg4zc9QrGzYxFEEm3LVrQ/Dg0gzpmIjGFyk7qwLRdAyOTAZt93u3ZT5hiUqx2GodA0
-         gFvg==
+        d=linaro.org; s=google; t=1704355473; x=1704960273; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ATbBAJmbxu3OA1twQpIT7nmBhtAHhm7KTP7Mv2IH7n0=;
+        b=xC7LbC3kF7Yg1h2Ywcg6r20FCBLM0RoRdywqpvIByEoJ04bTR0urLIc31TZT4TZbJg
+         SS48nKkTC8RLlQeYKLEpOwLI3NN+zghceSfcFIvoENbjpbCudn6fAp0mhDTAZ5eq4BI5
+         40w+Df+2JKOIcPDz313eYc5QTlKUyooZfBc8uQpC7o23/w5ra2t4wu9CxNsMmDCJMsxl
+         LKg/wdEQRfGWBpykD9dEstQ5qPr758Goxgk2ZOBK3MoCdf9zepR8bjVZZNZPROeHoi5i
+         avKjapsIHorvLyrLVAqxd6r5LtrteSROFwPnNmjmYzead80J0oNowXoVZBwnNwzoT9FL
+         NOvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704355436; x=1704960236;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SyuGcP1D5BGUcMJ8icIN8M3Lavd6GsNJCUB2gjJbli4=;
-        b=rHZg+BV0A3ddTmLpWPBKECdriPTY5Zskn5bUZEmzf2YLYA7DRD+rcjn8uJgDBeSlP1
-         4VbhjGNqXRXTj2Bkixy2VYWJmeTBApXsqCF9GYoxUv+3EqHTRWkuXYzeUZD+kvx6HnAo
-         1lNh1DnNaOXFRHTHW3N1EWYVnmPhDS2SPiaSv1bIFkXvJCzYqFzsmze9y4TCzvI1liGf
-         5pZRoxemFFGGj8DZ/3Of+jeD0G7j5ilUZR6k8qpcZKx2oXBFVT/h4sJs0Et9QeVYK0/S
-         GyiD8mPvAzdVNhJhNRvwhds7EoL8YzYidpx/KmoKhKPA5yA+xpYWYp4avkETcM2DxyhR
-         9D5Q==
-X-Gm-Message-State: AOJu0Yz29GGvB3uLIPs1OJZ7qbmkWnoDpAagORvF5ikKpaSbJIdb2Mng
-	lx/TOat4cWxSaHHOI1DRFWUV0rUyWZOW4w==
-X-Google-Smtp-Source: AGHT+IE170fCL0MUDsxr5CJ+VSflu51pi+pM6vymQ13pCBE9PZBZWH516etaNPrMuOpihTN7PAby9Q==
-X-Received: by 2002:a50:c301:0:b0:553:2cbe:9abb with SMTP id a1-20020a50c301000000b005532cbe9abbmr210907edb.2.1704355436551;
-        Thu, 04 Jan 2024 00:03:56 -0800 (PST)
+        d=1e100.net; s=20230601; t=1704355473; x=1704960273;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ATbBAJmbxu3OA1twQpIT7nmBhtAHhm7KTP7Mv2IH7n0=;
+        b=K5A/uSnbO1gBxfbay9WZ2dlyPv8C+I+d+lOetVY0CQ0UZwGmJXKqLnPYhaltGQyfSj
+         7v48NMBOyPgDb6qESR5woX1qKG45n6USXNQ+vsl5OuJwPDioVWUioznaqwJy09cCTS1n
+         MyvY6UZKUyuU+K87wGP3tj4x8tK8tnL7p16F+ANUR5jU56wQxs4PW8bYHalkR+/mxVNj
+         eKrfsteVpjgY3OdiRDhMgQAyxYQzfhtdOjUAWBZXtSntWvYY8FXanYBnb3Yfj2D7i5ad
+         8Pzu/hd/i076mQrOhoYTh7nNU0+Jy8Bsga3K8wFBFZxoWLnGgsINkuHpSZLibyco43SE
+         owNA==
+X-Gm-Message-State: AOJu0YxXhwUIX7iv1YAC0UvTFmzuUDIGmtsGRf6B+Fm6YWbT1t2Pg18i
+	IxARo0VyIrIpCJRUhr4Zfijk7uE1rZyAOw==
+X-Google-Smtp-Source: AGHT+IEnmjYpjSbvwLEQNOSa8ioL3JiJ0nYrMim6c6CiDG7fyP7l8/sRczU9fuQiGFu/dd8pwoiUGw==
+X-Received: by 2002:a05:6402:c9b:b0:54c:b185:2895 with SMTP id cm27-20020a0564020c9b00b0054cb1852895mr116983edb.27.1704355472918;
+        Thu, 04 Jan 2024 00:04:32 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.218.27])
-        by smtp.gmail.com with ESMTPSA id p12-20020a05640243cc00b0055493aa8905sm15001520edc.63.2024.01.04.00.03.54
+        by smtp.gmail.com with ESMTPSA id p12-20020a05640243cc00b0055493aa8905sm15001520edc.63.2024.01.04.00.04.31
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 04 Jan 2024 00:03:56 -0800 (PST)
-Message-ID: <4aa2c006-3210-4667-b05c-3c7b8e8e61be@linaro.org>
-Date: Thu, 4 Jan 2024 09:03:53 +0100
+        Thu, 04 Jan 2024 00:04:32 -0800 (PST)
+Message-ID: <ef861321-1b22-403f-b2f4-a75b165e30fd@linaro.org>
+Date: Thu, 4 Jan 2024 09:04:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: cpufreq: Add big CPU supply
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Viresh Kumar <viresh.kumar@linaro.org>,
- "Rafael J . Wysocki" <rafael@kernel.org>
-Cc: kernel@collabora.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Conor Dooley <conor+dt@kernel.org>, Hector Yuan <hector.yuan@mediatek.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org
-References: <20231229212853.277334-1-nfraprado@collabora.com>
+Subject: Re: [PATCH] dt-bindings: thermal: mediatek,thermal: document AUXADC
+ 32k clock
 Content-Language: en-US
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ "Rafael J . Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>
+Cc: Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>, Daniel Golle <daniel@makrotopia.org>,
+ Sam Shih <sam.shih@mediatek.com>
+References: <20240101205134.9886-1-zajec5@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -126,12 +128,13 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231229212853.277334-1-nfraprado@collabora.com>
+In-Reply-To: <20240101205134.9886-1-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240104_000358_254713_34328CB5 
-X-CRM114-Status: GOOD (  12.81  )
+X-CRM114-CacheID: sfid-20240104_000439_526203_78D436CF 
+X-CRM114-Status: UNSURE (   7.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,33 +149,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 29/12/2023 22:28, Nícolas F. R. A. Prado wrote:
-> The performance-controller hardware block on MediaTek SoCs is
-> responsible for controlling the frequency of the CPUs. As such, it needs
-> any CPU regulator to have been configured prior to initializing. Add a
-> phandle in the binding so this dependency can be described.
+On 01/01/2024 21:51, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
+> SoCs MT7981 and MT7986 include a newer thermal block (V3) that requires
+> enabling one more clock called AUXADC 32k. Require it in binding.
 > 
->  .../devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml        | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-> index d0aecde2b89b..d75b01d04998 100644
-> --- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-> +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-> @@ -33,6 +33,8 @@ properties:
->        performance domains.
->      const: 1
+
 >  
-> +  big-cpus-supply: true
+> +allOf:
+> +  - $ref: thermal-sensor.yaml#
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt7981-thermal
+> +              - mediatek,mt7986-thermal
+> +    then:
+> +      properties:
+> +        clocks:
+> +          minItems: 3
+> +
+> +        clock-names:
+> +          minItems: 3
 
-Why big? Neither little nor medium need power? Why you do not need to
-provide all supplies?
-
-About the naming, use something matching the devices, e.g. from their
-datasheet/manual.
+else:
+Is the clock valid for other variants?
 
 Best regards,
 Krzysztof
