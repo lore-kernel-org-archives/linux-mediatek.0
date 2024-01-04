@@ -4,82 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22F9BC47073
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jan 2024 15:29:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B738DC47073
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jan 2024 15:42:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=//61JkAFmR4ja1MQYPV50hTEwRUwt59eOyo8emTzwoc=; b=hxybrGDvIaYxrsl476GWtLp+Kf
-	QyYdMgyK0qgnhhfyKb6OglEfkeQfKoTGuOiq1AHHu+nuMUa9thfmUtHrsHLFP4DpBfeesQATxzCVv
-	2TKY3m6kVIGnFEmf/JW3lkVAWrGuYJ8JVR9wFDOZm8hCwwxy0SqXZj+FPqzqKdvP5WKZFjwzTNtxa
-	QGPQC7MvCBvaZddIOKgIC4GFfC3hcDi4jGb9zYxCiMGn3LHsKo8op2zZRYU7q/q2Ml221YxZwHliY
-	GSebhP8wFYBLbvCjvO++yMFYL1llMJMQ3OQvcEp5AHWJbRbQghjsv04RsfZIr5lejNsnFeT5SSaA9
-	67SyG0cw==;
+	bh=jTkbnBm6/5/MdujzWlHiWh0IB4tKyJUPbJXAGWM4F7k=; b=qX+iaYuDRkXIB29qj7F9IuBTMD
+	qLP8AXiuS+5HNBXB2RTyiIZ6KlbOGZYO9UtCMfRr5X7SqVHrNN3cuJ+a8KJTOPGh0YGUpd0op6iN9
+	sZF1nP4tV7tYAzLiBHF7OH2B8lIMkn2HhBcZasF3gAzWjx2Y3Kyl77AfEA2FUXMBZHxabX0NGW9UW
+	o2ZwgAvrWkSfBnM7Nb1P3PukFVs8+fT3Qv3Q84YIhofWi4CsJyEaj1iHOvyXhW+x5eG+tNENBrDcj
+	jYw4Fj1b15ph76qng3TpoEqNud5LZpM0UDYI98FRcWJRR3kLsIzUUsFMydKxE2lcuYta0M6pAgZEd
+	8FXiwZ0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLPf2-00EUtr-0S;
-	Thu, 04 Jan 2024 15:29:32 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1rLPrx-00EXHw-21;
+	Thu, 04 Jan 2024 15:42:53 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLPex-00EUsL-2Z;
-	Thu, 04 Jan 2024 15:29:29 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-55719cdc0e1so107801a12.1;
-        Thu, 04 Jan 2024 07:29:24 -0800 (PST)
+	id 1rLPru-00EXEV-0A;
+	Thu, 04 Jan 2024 15:42:51 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a27cd5850d6so72220466b.1;
+        Thu, 04 Jan 2024 07:42:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704382163; x=1704986963; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1704382964; x=1704987764; darn=lists.infradead.org;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=//61JkAFmR4ja1MQYPV50hTEwRUwt59eOyo8emTzwoc=;
-        b=DOI+WH4fxO9Ov7aqdjfDLeVVogXa9AkSa8RynYWG0tS5V4+1pfXLXjajes61nSzbgY
-         AQTMpVk84a/awUxhczAwaCSmxPY9JZEL9JrVeh7fMokgaSpj549j5s0+TiJuOLhII4vd
-         Uh80ZsT8Zl2zcQwjEbf7rbqyvbeRMMTh74XrBCxHhYzzNdeqbwq0Rpzlc/RYi6rEaf4w
-         8q8mjl0fvloVx2XeWMH+R+oeDXGouGoBKlD/vvFodgcw1bib5OvjZUnvy2tx+V/JXEjS
-         VIw1kZcPSRNkYl2R4Jg3VMrku3vajHsQZk3AFFQSvUUFnklDkeojtHfvIkmdNq5DYLVA
-         jnCQ==
+        bh=jTkbnBm6/5/MdujzWlHiWh0IB4tKyJUPbJXAGWM4F7k=;
+        b=ae6FIpqpcQ096OeUCYkilVf6yUR/b8jKkD79Jm1K61KlbV8z+Hvun6rTjIrX/YadCH
+         1bFJkYhEOP1IS6wrwZEmbS7F+Nc2AeceNJsHVa2NHtSiCOJeEpez/MXqG+b0HHAqF4o7
+         sRuitbrYwAjb1Vv5WWPRTu3HeZBaf8oCNIgjJSZZoN+v8KwaqIBAp5YmFCZeuulY546X
+         QU0dd+AoAR0HsAmL1lQpH4kWBVGg/kaMzz5QSMuTM53MEbIO9JLkIaUctaWaAvxsvLYP
+         Q7BL1Zi/+koLa/5s3Gn1Tz68sdjR9YNE+42VUEX22f0ZE9wPCZfio/lfq/6hv5U76GA3
+         3krw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704382163; x=1704986963;
+        d=1e100.net; s=20230601; t=1704382964; x=1704987764;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=//61JkAFmR4ja1MQYPV50hTEwRUwt59eOyo8emTzwoc=;
-        b=N9SQDsmJ0nL28wQFrUO2354dGc7piiIAuZ0mbq3ZYlZyT5uCDlTAL5pEC4CdCPh428
-         VUkjMcx0p55suc/PcQsCOLIVSj8qyvAv9/iJVsUkFrMr6MFgUOOe5XGRrlelSbRbmTI0
-         Lff2dDr+gQv1pXrL+xDqbAelliXPVjnHklR9AKrid4n4wXaXvl5BgqGvIGBv/sqVEMnj
-         pxEiZsoGC5OTJdzvGwNTKsoP7uAtBSlrTIEe9Cv/s7kvHJed59PZxsnojFVH+6gGoLOE
-         0y/eGijBCFL6ywxVuryzDJ2lBK6fiey5P5vJ3CYyFeldxqCrHA5kS67kW3plmRWQKZ/b
-         4PLg==
-X-Gm-Message-State: AOJu0Yx1yD3UdZvjRpzuvnltD/TDXN/ES8epFMuxN3JUKQXp9yrx6ejx
-	QGFb/sSS5IWVG+LTDX+YHps=
-X-Google-Smtp-Source: AGHT+IEFGh6wzkj5OLLtZKwtP7/o8aS6I+L0Q/lrIXojf++vN1QSj7YEGQahqkI2+h3JUmXLtyaL9w==
-X-Received: by 2002:a17:906:f247:b0:a27:2f12:94ab with SMTP id gy7-20020a170906f24700b00a272f1294abmr430597ejb.99.1704382162780;
-        Thu, 04 Jan 2024 07:29:22 -0800 (PST)
+        bh=jTkbnBm6/5/MdujzWlHiWh0IB4tKyJUPbJXAGWM4F7k=;
+        b=U+ZolYIfegCYQAkwEbuX+RzgWtUsCc+n1SRxS5dVD7mHotHXGZ+uVQElwMjxHIQ4G7
+         WiwK5Eg0UhQJM3eSPBqeo3KpSKcvNoRUmRy5FVez4j+0wKBTtVRB6Iv7GQdNAeN2L/f1
+         ehNL6NaALYltvrA+V53HM9ix7shx2e9LkbPEbjG7/C3jI0g2I0R0uxhTGYL4WGOpBNKm
+         WxHWBiqrtVgT+gcXb7d8luWzrXbqRi5kpXbIwkS+gPFZwnpkkbCnO5A0rE71apqTK5SY
+         y0VqoZUW21xXcau3peYfUbWu/lwU1SrOW9szCqHsdBmy2k8ICv82jdMUJcNKz7Ert6dF
+         iEVA==
+X-Gm-Message-State: AOJu0YwZI1X+/6SzY1lj6ni2Na2dpvBPe8X1lEAyh0lBY9ix7WGtkQMa
+	eDUJOUBwbZkxVc4UioZKqMI=
+X-Google-Smtp-Source: AGHT+IHjeXF9p0hr/CJfgF2dv0x7zBSZO13sqctpbNXoAzsJdZH9m1qlb87mAlfmbz+5nHim8Q727g==
+X-Received: by 2002:a17:907:76ac:b0:a28:b9b8:2f8c with SMTP id jw12-20020a17090776ac00b00a28b9b82f8cmr381280ejc.152.1704382963780;
+        Thu, 04 Jan 2024 07:42:43 -0800 (PST)
 Received: from skbuf ([188.25.255.36])
-        by smtp.gmail.com with ESMTPSA id zv13-20020a170907718d00b00a26aeb9e37csm13066662ejb.6.2024.01.04.07.29.21
+        by smtp.gmail.com with ESMTPSA id ex17-20020a170907955100b00a269fa0d305sm13894476ejc.8.2024.01.04.07.42.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 04 Jan 2024 07:29:22 -0800 (PST)
-Date: Thu, 4 Jan 2024 17:29:20 +0200
+        Thu, 04 Jan 2024 07:42:43 -0800 (PST)
+Date: Thu, 4 Jan 2024 17:42:41 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
 To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [PATCH net-next v2 5/7] net: dsa: mt7530: improve code path for
- setting up port 5
-Message-ID: <20240104152920.gxzpv2ljvcuhdzvf@skbuf>
+Subject: Re: [PATCH net-next v2 6/7] net: dsa: mt7530: do not set
+ priv->p5_interface on mt7530_setup_port5()
+Message-ID: <20240104154241.rxjins4mi5zkbhia@skbuf>
 References: <20231227044347.107291-1-arinc.unal@arinc9.com>
- <20231227044347.107291-1-arinc.unal@arinc9.com>
- <20231227044347.107291-6-arinc.unal@arinc9.com>
- <20231227044347.107291-6-arinc.unal@arinc9.com>
+ <20231227044347.107291-7-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231227044347.107291-6-arinc.unal@arinc9.com>
- <20231227044347.107291-6-arinc.unal@arinc9.com>
+In-Reply-To: <20231227044347.107291-7-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240104_072928_732822_F194FCBA 
-X-CRM114-Status: GOOD (  17.17  )
+X-CRM114-CacheID: sfid-20240104_074250_098241_93D62F1E 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,44 +92,38 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Floria
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 27, 2023 at 07:43:45AM +0300, Arınç ÜNAL wrote:
-> There're two code paths for setting up port 5:
-> 
-> mt7530_setup()
-> -> mt7530_setup_port5()
-> 
-> mt753x_phylink_mac_config()
-> -> mt753x_mac_config()
->    -> mt7530_mac_config()
->       -> mt7530_setup_port5()
-> 
-> Currently mt7530_setup_port5() from mt7530_setup() always runs. If port 5
-> is used as a CPU, DSA, or user port, mt7530_setup_port5() from
-> mt753x_phylink_mac_config() won't run. That is because priv->p5_interface
-> set on mt7530_setup_port5() will match state->interface on
-> mt753x_phylink_mac_config() which will stop running mt7530_setup_port5()
-> again.
-> 
-> Therefore, mt7530_setup_port5() will never run from
-> mt753x_phylink_mac_config().
-> 
-> Address this by not running mt7530_setup_port5() from mt7530_setup() if
-> port 5 is used as a CPU, DSA, or user port. This driver isn't in the
-> dsa_switches_apply_workarounds[] array so phylink will always be present.
-> 
-> To keep the cases where port 5 isn't controlled by phylink working as
-> before, preserve the mt7530_setup_port5() call from mt7530_setup().
-> 
-> Do not set priv->p5_intf_sel to P5_DISABLED. It is already set to that when
-> "priv" is allocated.
-> 
-> Move setting the interface to a more specific location. It's supposed to be
-> overwritten if PHY muxing is detected.
-> 
-> Improve the comment which explains the process.
+On Wed, Dec 27, 2023 at 07:43:46AM +0300, Arınç ÜNAL wrote:
+> priv->p5_interface and priv->p6_interface are for use on the MT7531 switch.
+> They prevent the CPU ports of MT7531 to be configured again. They are
+> useless for MT7530. Therefore, remove setting priv->p5_interface for
+> MT7530.
 > 
 > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 > ---
 
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+What makes priv->p5_interface and priv->p6_interface useless for MT7530
+as you say? This code in mt753x_phylink_mac_config() seems executed
+regardless of switch family:
+
+	case 5:
+		if (priv->p5_interface == state->interface)
+			break;
+
+		if (mt753x_mac_config(ds, port, mode, state) < 0)
+			goto unsupported;
+
+		if (priv->p5_intf_sel != P5_DISABLED)
+			priv->p5_interface = state->interface;
+		break;
+	case 6:
+		if (priv->p6_interface == state->interface)
+			break;
+
+		mt753x_pad_setup(ds, state);
+
+		if (mt753x_mac_config(ds, port, mode, state) < 0)
+			goto unsupported;
+
+		priv->p6_interface = state->interface;
+		break;
 
