@@ -4,92 +4,169 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 547F0C47074
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jan 2024 20:55:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6FBEC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jan 2024 06:11:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y8VEB6HQwXm6DpR13vmV738GQxZIvcC/gBFklT6JV8w=; b=OrbrujSkz4ThhZp6678rQAhLUE
-	v5c/4OgDeF+mSF1ZnMKGxF/bZkUUjCep1d2i7/A9gr7uiXljeWX96+9Jgfp/yI5wrxPe1R/hgp/s5
-	d5CiTDKh8iFJc8DZIecXaEZ+0GNJsquj0Sf80GnTnxM3ZUBuYRlTr4rRUqun1RXV01aSPRGwTRTGf
-	4dxlLat/HyUkODnyvmJoK62ZsvBwt8hp6HmdDMtTKXFSoeIDN1i2DV8WvGR8/oO/76sJZSLNT6iRY
-	lWW9qjYedZcUHWRGhRFaumbgYNzxNPzPO5433xASQf/iGCF+1TXAS37XWCfNjYgsu9x7gg6whPDPk
-	DpNoaf+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5PuAyi/PtCzlSqrDQX2XkxR53mSkYjD+miCs2RFos+A=; b=X+HS/jFwLkxS9fuJvHDfut/cyP
+	3EljDn8NUfrh3UIhjLBIPfUTwSZJVZVCbHvpeE8G2cqKKLuIz3Xl/eNorhC1I8bARAEbuegaOYJ4u
+	xbO9hEahEsQKJmvu8YoDAm7AdGzwKhyJU1tjD9EIl5whVGdlh7SFEQBdF9rJiETlzw71q3ST6OoJz
+	BFqrcmpu68V2eJMwO0hmPY5XqdazFrAO3aDgim5xeLc2ALyTo9LfZSyYeQKcH+r986TmcEKKanPQr
+	TP/L+l5utc/MK/Noxg9WT07GKcZG0a0/EaLhykCPFHl9ELD3Qi8eRxOHPlBD7mOo/ftNglVxi0i0V
+	X8pn2tXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLUjz-00FCmn-0b;
-	Thu, 04 Jan 2024 20:54:59 +0000
-Received: from mout.gmx.net ([212.227.15.19])
+	id 1rLdQH-00G2lT-2p;
+	Fri, 05 Jan 2024 06:11:13 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLUju-00FCmI-1O;
-	Thu, 04 Jan 2024 20:54:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1704401681; x=1705006481; i=frank-w@public-files.de;
-	bh=SKkSJVBzIOnKnn+RMuSC3/60nyMBWnquf6LcANeBPSQ=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:
-	 References;
-	b=CS2ViA3AGo92P0jwir5NIAVAgbg6yV/+1DM8ORA/rlVp8n/46+3FpFHhG3b3oDXu
-	 cuSQfVCACQpt2XO/1SIKwDEWf8+7CXPyh2g51AhADAaEvRJspB7C9dMZugSvCx/wf
-	 dqOleA4miuHaV7LzdRjZ9MKoVxTNTZGgApFdXmf50Y6MR9SnlCd7CODPj+0V8YkO1
-	 jDaGg8yPxeZaVhMLxmhx3QwSsT5lbLMbZITqKwUvMOBjnEBCk9zGSxCE7OSbS1p61
-	 dRMtq3jhAdQtWjyMhFbUgyqCmTzbWZfjCjH4g+eBuemcngs/5pLg69kRRCA8ejRWi
-	 xcCEOwOsEdcaW/DCCQ==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [157.180.226.237] ([157.180.226.237]) by web-mail.gmx.net
- (3c-app-gmx-bs29.server.lan [172.19.170.81]) (via HTTP); Thu, 4 Jan 2024
- 21:54:40 +0100
+	id 1rLdQD-00G2gM-2Q;
+	Fri, 05 Jan 2024 06:11:11 +0000
+X-UUID: 31177f56ab9111eeafd70d0b34820190-20240104
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=5PuAyi/PtCzlSqrDQX2XkxR53mSkYjD+miCs2RFos+A=;
+	b=KwRWg9WpXzFNX04Bpz9fnGEUohRCwHviZpKcHKGgQfaBXW0sltOmyjP7IrJQNXAl7BpGyxq1v3i6lZTheKPnhQL+cpV8lpI6KO2smycg7yuFGDLM2l5ZKL50WFsNg6RhSDlYOUFkoIkkD/Fa4FPBgkMMiet7Ak3HDk14O+3puhA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35,REQID:15506630-d310-48fa-8f1b-ddaba65f4fde,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5d391d7,CLOUDID:7d4aeb8d-e2c0-40b0-a8fe-7c7e47299109,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 31177f56ab9111eeafd70d0b34820190-20240104
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1451148883; Thu, 04 Jan 2024 23:10:57 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 5 Jan 2024 14:10:23 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 5 Jan 2024 14:10:22 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=H6vGvchDdpTeAR8e/6fwDMSRr8RmPpRRn9U+KFeuiD5+ikEqrnaJXAD7CnJVIITKYVKVBY8AzXrET9Zu0cdKb0TWInMi7FobdEq4Ria5JQlS4AWJBVBO5SHtNBo27iXk7Il7FgITL7g6de5DOk7F8UENNq4iVhB+P7t3tTquQdB4J7/R9XwVIagzWgcB/1bQMl4JYn87v0Cf4azyiMBONsrO/AGEstym7sanl31/gVX3ggSmXZGcL1I8pUkiSux1iFvlJZd/0qXLR5Cd1dDGyB5HyKGr90x+2r+qygRNH7KVe1pGW17zRv/sWeIaOECcC3zu/jW9mx7OvHY88NWZfg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5PuAyi/PtCzlSqrDQX2XkxR53mSkYjD+miCs2RFos+A=;
+ b=XtSZcp5dLN+uSRqQiqirj8x1tspYsx8lG8zJiygDdcJNck5eli9P1Bmp8LQBcSxh6difnkjdX/1BKkYfemuA0z6z7SteL9TCGzvHTeOdykVJGTyhIxq8ZgK5CYP4vy/X4HtkfY0Qj6vofbpW15iZ2CAM8Y8gz6XcT7i7qDJcP43YC8Dru+17GtctCLoI1Fcxj1Plkpyg9nEh2cpX3i2+oOugQJ8VCkl/mo4d/secDB4rHTKqAfn6Y4XEjU7g0FhnSSUgpEwKk6gRPmugIcaDQbBy6aWjEl5eUBkbJeu4iaGTCNEdvaBbgL6PN1EDQ4BRSNugtOjofAqQtqjpxZfeww==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5PuAyi/PtCzlSqrDQX2XkxR53mSkYjD+miCs2RFos+A=;
+ b=LRtZ5/hjDCdZrj6tUkcL+TWF+NOQ65RdHjkOPWIn+QbCk5ymMVU7v1f7P4ZaqxlnTOdcSsDwG7i/XPQmS2pD9a334AOAUSlQRgNckOiTkXNPcgvXv2TGiBvPP32lHlUvz8yn0Z4x7+V/xTdXVRM+qVw9+HxJqiG1N22fEFC0FiA=
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
+ by TYZPR03MB7242.apcprd03.prod.outlook.com (2603:1096:400:28e::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7159.16; Fri, 5 Jan
+ 2024 06:10:20 +0000
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::eb43:57cb:edfd:3762]) by TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::eb43:57cb:edfd:3762%7]) with mapi id 15.20.7159.013; Fri, 5 Jan 2024
+ 06:10:20 +0000
+From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
+To: =?utf-8?B?TWFjIFNoZW4gKOayiOS/iik=?= <Mac.Shen@mediatek.com>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+	=?utf-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
+	"daniel@ffwll.ch" <daniel@ffwll.ch>, "p.zabel@pengutronix.de"
+	<p.zabel@pengutronix.de>, "airlied@gmail.com" <airlied@gmail.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+CC: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>,
+	=?utf-8?B?U2h1aWppbmcgTGkgKOadjuawtOmdmSk=?= <Shuijing.Li@mediatek.com>
+Subject: Re: [PATCH] drm/mediatek/dp: Add the HDCP feature for DisplayPort
+Thread-Topic: [PATCH] drm/mediatek/dp: Add the HDCP feature for DisplayPort
+Thread-Index: AQHaHrPjdunoffcOCEGmErF8vNrJIrDK/lAA
+Date: Fri, 5 Jan 2024 06:10:20 +0000
+Message-ID: <8b38cd45634bb37e8e652060d920b3ad74680918.camel@mediatek.com>
+References: <20231124085346.26602-1-mac.shen@mediatek.com>
+In-Reply-To: <20231124085346.26602-1-mac.shen@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|TYZPR03MB7242:EE_
+x-ms-office365-filtering-correlation-id: f97d94ce-0430-4822-007c-08dc0db4ff42
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: p85CiNQRkOTHy8Hvm+yeIuLZGqR7gpJETSROBBdSp0gQNCcVxkSA2FN6z36Chm14A/wlOcx+1Ft7Gr0SE0u9DPH+v2QhKzxdAnZeZ4CVjtfGLnVSUTTkOG4Z8pcjVq0YJ+tGAL0Kdvkx5tuwWCZQdclRrfopthCNgXU6bfmArFr5rpcEzlHPwlJp3YvPB6ru1ML5Tz3DiYh5vy2nw2ffx0KvyWBFTC7dnYcdKOh0UCTp9qQXV8NBTVIxRKyvbKW8SfsaUWk5gp6i3CLX+LlqQEAXVrydGim153KJAxbTarfkQOUOUEmS7SfgBIvScIk9N9ksjl1UAkmLbFcl0enjEY24nWaLTRuhUfJ5fWidIB4mtcrn7uI9sPyT0tBRS5/fTdLfqtYSsmsAD0IcAmIzuY8XAoS7x/ToNJuQcE1ySYaDTmYHI09o2LxDOTicSWRslge23bHknskGUQNlVm52Qn6yA3okCtffXnO5cNDNEUyh4cX8oybflOwm4x3BACdUyIkzx/tqF0V3TJLyASnTzZfKuqSwWUoJoxIbTQVCzAfky1wtavd5mLuKXNX3SEGrHi3dAlYC7Q9IMeteCY6ROB1gEOoPeBTlFlLW63d8lEf+3O9qAerPU4unF5RdEmEbdLDZhFi6wNcY9u1DEce09w==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(346002)(396003)(376002)(39860400002)(366004)(136003)(230922051799003)(1800799012)(451199024)(186009)(64100799003)(76116006)(66556008)(64756008)(66446008)(66946007)(66476007)(316002)(8936002)(8676002)(54906003)(110136005)(7416002)(4744005)(5660300002)(86362001)(2906002)(85182001)(41300700001)(4001150100001)(38070700009)(36756003)(4326008)(107886003)(2616005)(26005)(6506007)(6512007)(83380400001)(38100700002)(6486002)(122000001)(478600001)(966005)(71200400001);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?SVlCMjNDemhZRnNVbHZDSGhpQWtEdGJpZ2djZTlFbjJYbmpWaXVVclphNmFq?=
+ =?utf-8?B?NmJxQnpDdTVtcDFLWnBReFplSXNadGRhOFovVm9CL1VWTjlpR0w2OUJXOURx?=
+ =?utf-8?B?UXpoWnMvb3d2L1lud2wyM2cxc3NhQ1d0V3BJZWJYd0IySXQ1eUVMeTJwVk90?=
+ =?utf-8?B?NXJxWG9hSS9LYm5IeGwrZGhtNDZqVnFqSDFlY24rVTVaNDFFSTh2N2VHZy9z?=
+ =?utf-8?B?K09EZGQzVUxLd0I3TEJmanljVWhBMkQwbE1pQ1AyekgzbjFUcmlwQ1dtdUFN?=
+ =?utf-8?B?dTF6TXp2bXJUNkJmc1ltYS9JQWlmQk5WdU5nK1ptVkJ2Ni9yYlVGRGFWV3ZJ?=
+ =?utf-8?B?emRKeVhqQkRYejI5ekVtdWZIOGFMa3FDSUZ2WEtDVVphOFl3T05PZ05SK1pr?=
+ =?utf-8?B?a1NjNFd5b0ZKMFhNLzZkV0NhU1dQcmlFa1NWc3lSaHVGMHVjMFBYVENabzVp?=
+ =?utf-8?B?M1A2VHQ0d0s1WHY1MC9SWW1ZaXJRQXFmVmZQYnFoU0J4VHFaamVaNU0rK1Vh?=
+ =?utf-8?B?dENkNkZUSTIzczlZWGhmVWxOZlVDOS9ZNjR3OFQ2Q1pzV0FLN0E5d3dYYWla?=
+ =?utf-8?B?TW5zUUs2M0ZpOUlvWkk3cG9FWUduUTlpNjRFa1NkZWZNZkJnYXNyeFVUUTE0?=
+ =?utf-8?B?d3RZaEZBekpLQ0ZicTlScU14TGt6VndPMmNKV0NPRmdPb3BCMEpSUXVjQnVJ?=
+ =?utf-8?B?Rll4Vlg4Y1Vjd2hYTFMzWE4zeG9QZDhYMlkwOHdSRGJlZEl2QU1ueEdGejha?=
+ =?utf-8?B?WG9RNTEybVBuczRsazNhUEhzZHZWckxFekpEeVpScUtOL3dMYmZYaWMwWXVS?=
+ =?utf-8?B?TVIvMHlWRDBoOVRzUFpia2NqeHZ2WEgzWFhsV0xRWDl4V3VFTkJSaHBtbC9F?=
+ =?utf-8?B?NS84R1kvZUx1NEs4Z2hudS9lZWVlWUZ6Zk5BU283UmNWK1V0dnNBMHc0VDAr?=
+ =?utf-8?B?TXN1aWoyK0lKT3B1bXJEZzYwMHNMQUFtbmh0QXFGYVNzS2hYbVJ4UHp2SVl3?=
+ =?utf-8?B?bDRYN0t3R0xDMzlDdUE2MitFZTBEWHV0Q0JHazhndlc2RjhGRmZtamtOTm94?=
+ =?utf-8?B?N28vbGRPNVlBc3V6TldpSTBvWVZzVCtWbUNEcSsvdUR3ZEVtYVFTVzdlTzV1?=
+ =?utf-8?B?SlkxR2gwYUIwR3NiOVhXcFpaUis5Z1hwVG1TaHA2R3BCam12TldwWGJhZmYv?=
+ =?utf-8?B?Y2k1Nnp1L201NVhEUlZBRndhODFVSngwMVlhLytxYjh1M1FmdUl3TFczanpm?=
+ =?utf-8?B?RTBHam9wamRuYnFhdWh4Yzcrc3ZuSXFrNWtNL0ZWVzVJREhGb0VHaVh1dXMw?=
+ =?utf-8?B?THdrRUZqZnZHVk9pNVpNNkx0b1BLRTlDcWdwR3Bmb1JrazBJR21Hdlk2MUJ0?=
+ =?utf-8?B?eHh3bStKZFdSUTFOMjU3cGFFSEh2R05TbVRPYTQ2azJGTHg3aXZPTzlVM09Q?=
+ =?utf-8?B?TUR1WnBOTEVabWk2R1RORm1GSEtmSWM1WlZDVFd6K3U1NnlQNEJyRk13NTcy?=
+ =?utf-8?B?NitWZGNpT3V1S20wcWVjQkY2UVVuZ2MxTXZTUUllc0pFclJpRkYwanlORlIv?=
+ =?utf-8?B?eFBRdmo4T2FlTUlqd1NvNmNDandaSnNMZFVteGJUemI2RnF6QVFhcmZIbFB3?=
+ =?utf-8?B?alpHVlB6T1F1YStNY3NEQTk5RE00ZzVHSE56ZVJzSEVEYktVZTV0Vm1FZTF3?=
+ =?utf-8?B?M0JYa2tGL3IyTzVHYVZEMFZ6VytpS3VCVXNTRFBYaUR4NFN4ZTVhVWc0QWMw?=
+ =?utf-8?B?UFE2dUlaazg4eDE0blpWSnZRSXBrZGQ3RVJOaFkzYjhTRlBtNWtvZTVoazNa?=
+ =?utf-8?B?c1Yvd3BrcXBKN0ZYNEc0UnprQVZ3MTZYQ0RCOXdUWktTSFJNWklEVnh2SlhH?=
+ =?utf-8?B?Rm9yS1FKcHlVWkI3bnJqTmlRMDRLeExveGI4TTdoSzZiYXNkUmxLVklVU0p0?=
+ =?utf-8?B?Z0IrM0VUQ3dmT01nWkRqbDVNTkZrZUYxZmRQc2czVDlSempkTzZOaUJLbkU4?=
+ =?utf-8?B?ZjdmZVZJRGxXMmpMd1RpZE9ObnFZMDdwSldkY2p5dWw4eGV0WVVneHVUS2FI?=
+ =?utf-8?B?dlJFMWE1VjV0TFJVc3g0L1RLUStEZ1puUTdjOTBrQkV5ai9tZXpTa0I2cTBx?=
+ =?utf-8?Q?kt3IUeb7V2UDPSZdx8KeBK3Ip?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <7AA9BDB66EEC224696A6BD38012F99C2@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Message-ID: <trinity-940b6e7e-1246-45f8-af65-f5048bc2265b-1704401680934@3c-app-gmx-bs29>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Daniel Golle <daniel@makrotopia.org>, Frank Wunderlich
- <linux@fw-web.de>, linux-mediatek@lists.infradead.org, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Philipp Zabel
- <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
- <conor+dt@kernel.org>, Sam Shih <sam.shih@mediatek.com>,
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Aw: Re: [PATCH 1/2] dt-bindings: reset: mediatek: add MT7988 LVTS
- reset ID
-Content-Type: text/plain; charset=UTF-8
-Date: Thu, 4 Jan 2024 21:54:40 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <3e3455a1-c540-4323-9d9d-95289a395c3f@linaro.org>
-References: <20240104173930.13907-1-linux@fw-web.de>
- <20240104173930.13907-2-linux@fw-web.de>
- <ZZb0-pFWxuQlEm7q@pidgin.makrotopia.org>
- <3e3455a1-c540-4323-9d9d-95289a395c3f@linaro.org>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:ZLdxy+zk76HP1t6Fqt05SLqZ3emcYLI8IAqKeFvSrgvBnnBbjqewMQxqbTy69hsc+QjMq
- lffypJx3P8BsU3PPzXiNZ5iojUA+7zknLAIk7XF3U36Z+N7bEAwaU2K1eV7NAKq7kmSd4mpUPK+T
- vDzWopQ/zM2pdfMPWYpXpoCVWNC9FZ11a6/jlaAyfC76iBU43/oW6nF4ftAFkpAuDk1VQifJsRRt
- /DPKTi1eHs5BVsIJjmVGcHVGXxFgQAf+CLejc8zBq1p4omlNorq+qAWl9EbZnCR7WpMLsaSSMCrg
- eA=
-UI-OutboundReport: notjunk:1;M01:P0:tB+ieJbTebQ=;0WICBO5JQdiX9M3vSS+T9ckm3a9
- bGtqXX18GHN6TYSLML7cneFFD2QCV0i55WJmMuU6C3NnsZzm7XZGNPSL2fVmEnaarxkfVGXtH
- u0nyxo+FCXPVprhuYZwKluLsQBI3+AXoNTKEC1lxjGM4TAqbZdgH/dudmrYqXpk41uBE9I7az
- 28FsvUElYvWBgGO3d4PSJIV07+q+uNKtXYoVq0WXrDRc7Lv/Q9dVYqrqkS0aOU+htULnJ7gnC
- W4vYjamfWlb1Y5LFMNu5YnNeMTNB6frj+XOUNOB7mjf2rz1sMJWg/sKW6xDIkO0kFrtCm5k1a
- F11TBoh2WrGmunSRhCxHPFEQGJrFQ8B412mqr5ubbuLZ2GCk9dtUuen9PapKyofzttvcPrQpw
- j43qPTxTVd8R1zxscAxHJpb/ivgBL8Mqj69QbRe4ldLrHCwG9yQKJrAIu9jVR4UMg2vqkcj5L
- MW7ijNCAOaO7maqwa9Ab3t80RzVf5gR0ljoMBy6yT0dKFAJdpaVsTXC2FrNMZB69CkB2oZvBo
- gg15EsOhF7obUIWzF9KufGYYGe450auwNceaiXv6HkQkER69bQ0Tu+sa5Aqwi7iUWKM5Xmdcb
- oIQIk0KRkBriUvzo9BohB5dUnA4bO/Hz6B8OkZGDra9DdSQJEuz22LiDCotNZpdcmvmVl0zXS
- UX33TFUhPKS+oQYZPEzeiXoZ075J/2FfTS/iCboU/HXZCuIlgNIY6oYNRD1MYIzyz8+axCWPZ
- N1f6B/PcyoF1JfUlNwKCQc78IOgdR2C7ZopRmhPBJTDir9ozPjav8PFHiwGrD6Hbw9JOFQR00
- VTrNtPB/zjBe/yMvvEQ7lLkyiSPb2CATLh6gaNXrFcPOk=
-Content-Transfer-Encoding: quoted-printable
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f97d94ce-0430-4822-007c-08dc0db4ff42
+X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Jan 2024 06:10:20.7230
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ygxZS1+0omxUqPG/dB6CkGsBWyBSmIIWLvn5ORAyxS35tK9WpWkGYK2BrOa9hOdhhkQqIrwUYn4G3Tc6LPTEAg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB7242
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240104_125454_857948_C72D8C13 
-X-CRM114-Status: GOOD (  24.30  )
+X-CRM114-CacheID: sfid-20240104_221109_792095_1D067967 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,59 +181,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
-
-> Gesendet: Donnerstag, 04. Januar 2024 um 20:19 Uhr
-> Von: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
-> Betreff: Re: [PATCH 1/2] dt-bindings: reset: mediatek: add MT7988 LVTS r=
-eset ID
->
-> On 04/01/2024 19:12, Daniel Golle wrote:
-> > Hi Frank,
-> >
-> > On Thu, Jan 04, 2024 at 06:39:29PM +0100, Frank Wunderlich wrote:
-> >> From: Frank Wunderlich <frank-w@public-files.de>
-> >>
-> >> ---
-> >>  include/dt-bindings/reset/mediatek,mt7988-resets.h | 4 ++++
-> >>  1 file changed, 4 insertions(+)
-> >>
-> >> diff --git a/include/dt-bindings/reset/mediatek,mt7988-resets.h b/inc=
-lude/dt-bindings/reset/mediatek,mt7988-resets.h
-> >> index 493301971367..3f1e4ec07ad5 100644
-> >> --- a/include/dt-bindings/reset/mediatek,mt7988-resets.h
-> >> +++ b/include/dt-bindings/reset/mediatek,mt7988-resets.h
-> >> @@ -10,4 +10,8 @@
-> >>  /* ETHWARP resets */
-> >>  #define MT7988_ETHWARP_RST_SWITCH		0
-> >>
-> >> +/* INFRA resets */
-> >> +#define MT7988_INFRA_RST0_THERM_CTRL_SWRST	9
-> >
-> > I suppose this argument applies here as well:
-> >
-> > "IDs should start from 0 or 1 and increment by 1. If these are not IDs=
-,
-> > then you do not need them in the bindings."
-> >
-> > https://lore.kernel.org/all/59629ec1-cc0c-4c5a-87cc-ea30d64ec191@linar=
-o.org/
-> >
-> > As a consequence, as what you are describing there are hardware bits
->
-> If this is existing driver which already uses such pattern, then it is
-> fine. I usually comment this on new drivers which can be changed.
-
-this is a new driver so i guess i should change this like daniel suggests.
-As i want to use this constant in dts and driver i would like keep it as b=
-inding in the reset header,
-but because i use it only as index in the infra_idx_map array its value do=
-es not need to have the value
-needed in hardware. i kept it same to not have different values and for or=
-dering purposes (when the other
-possible resets are added).
-
-so the way starting at 0 will be the preferred one for me, is this ok?
-
-regards Frank
+SGksIE1hYzoNCg0KT24gRnJpLCAyMDIzLTExLTI0IGF0IDE2OjUzICswODAwLCBtYWMuc2hlbiB3
+cm90ZToNCj4gQWRkIHRlZSBjbGllbnQgYXBwbGljYXRpb24sIEhEQ1AgMS54IGFuZCAyLnggYXV0
+aGVudGljYXRpb24gZm9yDQo+IERpc3BsYXlQb3J0DQo+IHRvIHN1cHBvcnQgdGhlIEhEQ1AgZmVh
+dHVyZS4NCj4gDQo+IFNpZ25lZC1vZmYtYnk6IG1hYy5zaGVuIDxtYWMuc2hlbkBtZWRpYXRlay5j
+b20+DQo+IC0tLQ0KDQpbc25pcF0NCg0KPiAgDQo+IEBAIC0yMjcxLDcgKzIzMjQsNyBAQCBzdGF0
+aWMgdm9pZCBtdGtfZHBfYnJpZGdlX2F0b21pY19lbmFibGUoc3RydWN0DQo+IGRybV9icmlkZ2Ug
+KmJyaWRnZSwNCj4gIA0KPiAgCW10a19kcC0+ZW5hYmxlZCA9IHRydWU7DQo+ICAJbXRrX2RwX3Vw
+ZGF0ZV9wbHVnZ2VkX3N0YXR1cyhtdGtfZHApOw0KPiAtDQo+ICsJbXRrX2RwX3JlX2F1dGhlbnRp
+Y2F0aW9uKCZtdGtfZHAtPmhkY3BfaW5mbyk7DQoNCkFjY29yZGluZyB0byBpbnRlbCBIRENQIGZs
+b3cgWzFdLCBJIHRoaW5rIHlvdSBzaG91bGQgZW5hYmxlIEhEQ1ANCmFjY29yZGluZyB0byB0aGUg
+Y29ubmVjdG9yIHN0YXR1cyBzZXQgYnkgdXNlciBzcGFjZS4NCg0KWzFdIA0KaHR0cHM6Ly9naXQu
+a2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvbmV4dC9saW51eC1uZXh0LmdpdC90
+cmVlL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2Rpc3BsYXkvaW50ZWxfaGRjcC5jP2g9bmV4dC0yMDI0
+MDEwNCNuMjQxMw0KDQpSZWdhcmRzLA0KQ0sNCg0KPiAgCXJldHVybjsNCj4gIHBvd2VyX29mZl9h
+dXg6DQo+ICAJbXRrX2RwX3VwZGF0ZV9iaXRzKG10a19kcCwgTVRLX0RQX1RPUF9QV1JfU1RBVEUs
+DQo+IA0K
 
