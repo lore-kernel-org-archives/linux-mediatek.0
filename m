@@ -4,63 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F98DC3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jan 2024 16:21:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EABCEC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jan 2024 20:45:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fn9i81xP7ZEmQqZw0cHUB5qam/4Zd8WwUWJ3g2A50Zs=; b=DLMgH11TRtyVDK
-	Rct8apohiIxDw6XFm9u6KMpm98VJOF8kfc30FPMvsi0jWVfvHMouLWx7q5L6m+AHQo/7O7p7qOvcb
-	O11aFhABqZw5Ro7hmmg5+NkfeJMMkrRVSpa+//iqisb0Q+gFhpgKnh3+91MPnhSBl84fIhliBNbWq
-	7MxJjrxNw2kprRiTxDjus7H2Fgd049elU1DPHezSVNhQWDf73aqcazwpmUVhsbDdepnbiWwZC7P9B
-	jRDN4eA9YmKPvLiQUJMiIzJphQjGnt20jFUctLWSzW6YBp5ZAm2264EDhMbdjbd662GJ3P/swmDfM
-	bkKCvXbMEggLPDRCLV/g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mMAg9jld//C51JoR4LMGUJ8fPsqbBBCWDsSDlVbcZt4=; b=DBO3pXo3u1colFWg7ODkO3Hh9V
+	I65ONJIn8GYor5M937KW4ptGF3l4v6vMOi0tv9pUkos+F6/EfTY4kXDkRprPrciFx1fLgA0gLn624
+	fOU5J9Bmz95ZXTKQiL5tl1f+/Jju3x/BtuaI3YKa35yKOmq8S6mh34G/hYwwMxi9uVt7kHlgUl5z1
+	YGrq+62q1ZwySOvUqk4Y1w6Bera7wlBnD67PC4c6A9tOSvbzTLuYjd+keF1ejTOWzlT5rFGzsqN+v
+	F4HxoEAckzrczYMs7zNwJU4k0+N9qmzVid350M9Zr7apvZDQZc0wrnt34O5VfQspfnzBt/AIiLl0V
+	EF2YP47A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLmwe-00HIh1-1q;
-	Fri, 05 Jan 2024 16:21:16 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1rLr4c-000EYy-37;
+	Fri, 05 Jan 2024 20:45:46 +0000
+Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLmwW-00HIcX-2e;
-	Fri, 05 Jan 2024 16:21:12 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout2.routing.net (Postfix) with ESMTP id CB4AE5FD8F;
-	Fri,  5 Jan 2024 16:21:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1704471664;
+	id 1rLr4Y-000EW8-1p;
+	Fri, 05 Jan 2024 20:45:44 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 401C8FF805;
+	Fri,  5 Jan 2024 20:45:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1704487536;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=fn9i81xP7ZEmQqZw0cHUB5qam/4Zd8WwUWJ3g2A50Zs=;
-	b=S1GKJ1tAYxprTNflZhTx9uOs6ybollM4dzkhgH7awAEpawoFGquR+ImYthbmzCyujR8uMn
-	H2ARnzNafZr1Jh9zPlXOlEGVy6zP/+bIivUFnU/5Dq0G1CI+Qki/PVvAlwNC3ZPKrsIDkp
-	DxgkmjUS0us2GbPrEc1CxKmfetbsc/E=
-Received: from frank-G5.. (fttx-pool-80.245.77.34.bambit.de [80.245.77.34])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id B682B360303;
-	Fri,  5 Jan 2024 16:21:02 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Subject: [PATCH v2 0/2] Add reset controller to mt7988 infracfg
-Date: Fri,  5 Jan 2024 17:20:53 +0100
-Message-Id: <20240105162056.43266-1-linux@fw-web.de>
-X-Mailer: git-send-email 2.34.1
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=mMAg9jld//C51JoR4LMGUJ8fPsqbBBCWDsSDlVbcZt4=;
+	b=jDeNszcHy+TaKLR6TCFOLvVAPiRaRJdw+iRQvipfT9sLXuI+Hnll/4icc9lB9aQJ7dcqIV
+	pKCCdNpNC39hBK0M0oABh5XXXImfLcrMRV97tNgfWO40lgsIGJ8RN02bqxKq5yR424Xi1Z
+	KHq4Geyu7CvCkH0knoLqwLslPOyzLRszSyvIxn8O45fQKMUp6vCJyr3oemDPBn+c7yQvJV
+	nKGXRQ0xLAg8i3hC2hwjlTUxuH9jBCfcIfGFLyTy7/7julcomY2Zdx020rbTpsnd1iKbP8
+	TZpqnV+Zut57nRIHduGgdsmREw5NwN0E4BKvwYmj15VJBmjt7kk2IKiH0S5WHw==
+Message-ID: <d31000b0-c0d9-457f-9493-e54fd228e317@arinc9.com>
+Date: Fri, 5 Jan 2024 23:45:29 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next] net: dsa: mt7530: register OF node for internal
+ MDIO bus
+Content-Language: en-US
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Daniel Golle <daniel@makrotopia.org>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ David Bauer <mail@david-bauer.net>, mithat.guner@xeront.com,
+ erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20231220173539.59071-1-arinc.unal@arinc9.com>
+ <20231220173539.59071-1-arinc.unal@arinc9.com>
+ <20231221151607.ujobhh4aet4obxdz@skbuf>
+ <6600c6b1-2230-4963-940c-8b95a01750fd@arinc9.com>
+ <20231227191154.6jkqdlqdxciidpfw@skbuf>
+ <bdbe24b2-30f6-48fa-b6eb-a1ae3afe9076@arinc9.com>
+ <20231227200217.kdltxpmhvlp6z4cd@skbuf>
+ <d2a7cc7e-bb27-472f-8921-5579a894c71d@arinc9.com>
+ <20240103190246.ctyeehvfmhctpphf@skbuf>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20240103190246.ctyeehvfmhctpphf@skbuf>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: d5bc6535-430f-4be9-8228-d74279bce75c
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240105_082109_008102_C5600E96 
-X-CRM114-Status: UNSURE (   8.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240105_124542_909436_05AF5D8F 
+X-CRM114-Status: GOOD (  33.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,32 +88,159 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+On 3.01.2024 22:02, Vladimir Oltean wrote:
+> On Thu, Dec 28, 2023 at 07:58:13PM +0300, Arınç ÜNAL wrote:
+>> The implementation below follows this logic:
+>>
+>> No switch MDIO bus defined: Register the MDIO bus, set the interrupts for
+>> PHYs if "interrupt-controller" is defined at the switch node.
+>>
+>> Switch MDIO bus defined: Register the MDIO bus, set the interrupts for PHYs
+>> if ["interrupt-controller" is defined at the switch node and "interrupts"
+>> is defined at the PHY nodes under the switch MDIO bus node].
+>>
+>> I think this approach fits your description so I'd like to agree that this
+>> should be the way for all DSA subdrivers. Please let me know what you
+>> think.
+>>
+>> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+>> index 391c4dbdff42..bbd230a73ead 100644
+>> --- a/drivers/net/dsa/mt7530.c
+>> +++ b/drivers/net/dsa/mt7530.c
+>> @@ -2155,15 +2155,21 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
+>>   {
+>>   	struct dsa_switch *ds = priv->ds;
+>>   	struct device *dev = priv->dev;
+>> +	struct device_node *np, *mnp;
+>>   	struct mii_bus *bus;
+>>   	static int idx;
+>>   	int ret;
+>> +	np = priv->dev->of_node;
+>> +	mnp = of_get_child_by_name(np, "mdio");
+>> +
+> 
+> Empty line between variable declarations and code. Or you can initialize
+> them as part of their declaration, but you need to stick to the "longest
+> line first" rule.
+> 
+> Also, it would be good to also check of_device_is_available(mnp).
 
-Infracfg on mt7988 supports reset controller function which is
-needed to get lvts thermal working.
+Will do.
 
-Patches are based on clk-next due to recently added mt7988 clock driver:
-https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git
+> 
+>> +		ds->user_mii_bus = bus;
+>> +
+>>   	bus->priv = priv;
+>>   	bus->name = KBUILD_MODNAME "-mii";
+>>   	snprintf(bus->id, MII_BUS_ID_SIZE, KBUILD_MODNAME "-%d", idx++);
+>> @@ -2174,10 +2180,11 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
+>>   	bus->parent = dev;
+>>   	bus->phy_mask = ~ds->phys_mii_mask;
+>> -	if (priv->irq)
+>> +	if (priv->irq && mnp == NULL)
+>>   		mt7530_setup_mdio_irq(priv);
+>> -	ret = devm_mdiobus_register(dev, bus);
+>> +	ret = devm_of_mdiobus_register(dev, bus, mnp);
+>> +	of_node_put(mnp);
+> 
+> This is going to be interesting. There isn't really a correct way to
+> manage the reference to "mnp", as far as I can tell. Normally, it should
+> have been possible to release the reference as you did. But you need
+> something along the lines of what Luiz/Russell have been discussing
+> here:
+> 
+> https://lore.kernel.org/netdev/20231220045228.27079-2-luizluca@gmail.com/
+> 
+> In any case, the devres variant of of_mdiobus_register() seems incompatible
+> with the mt7530 driver owning the "mnp" node for any longer than this,
+> because it has no hook to call of_node_put() once the MDIO bus is unregistered.
 
-changes:
-  v2:
-    - change value of constant to 0 from 9
-    - add missing SoB and commit-message for binding-patch
+I'm not sure what's the step I should take here. I don't know how MDIO
+registration works and don't intend to spend time studying it at this time.
 
-Frank Wunderlich (2):
-  dt-bindings: reset: mediatek: add MT7988 LVTS reset ID
-  clk: mediatek: add infracfg reset controller for mt7988
+Looking at the conversation, I see that, in the end, this patch is applied:
 
- drivers/clk/mediatek/clk-mt7988-infracfg.c    | 20 +++++++++++++++++++
- .../reset/mediatek,mt7988-resets.h            |  4 ++++
- 2 files changed, 24 insertions(+)
+https://lore.kernel.org/netdev/E1rLL6p-00EvAd-Ej@rmk-PC.armlinux.org.uk/
 
--- 
-2.34.1
+> 
+>>   	if (ret) {
+>>   		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
+>>   		if (priv->irq)
+>>
+>> With this device tree:
+>>
+>> switch {
+>> 	interrupt-controller;
+>> }
+>>
+>> [    1.420534] mt7530-mdio mdio-bus:1f lan1 (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=17)
+>> [    1.433224] mt7530-mdio mdio-bus:1f lan2 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7530 PHY] (irq=18)
+>> [    1.445338] mt7530-mdio mdio-bus:1f lan3 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7530 PHY] (irq=19)
+>> [    1.457472] mt7530-mdio mdio-bus:1f lan4 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7530 PHY] (irq=20)
+>> [    1.469587] mt7530-mdio mdio-bus:1f wan (uninitialized): PHY [mt7530-0:04] driver [MediaTek MT7530 PHY] (irq=21)
+>>
+>> With this device tree:
+>>
+>> switch {
+>> 	interrupt-controller;
+>>
+>> 	mdio {
+>> 		phy {
+>> 			reg = <0>;
+>> 		}
+>> 	}
+>> }
+>>
+>> [    1.413101] mt7530-mdio mdio-bus:1f lan1 (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=POLL)
+>> [    1.429954] mt7530-mdio mdio-bus:1f lan2 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7530 PHY] (irq=POLL)
+>> [    1.443704] mt7530-mdio mdio-bus:1f lan3 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7530 PHY] (irq=POLL)
+>> [    1.455876] mt7530-mdio mdio-bus:1f lan4 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7530 PHY] (irq=POLL)
+>> [    1.468079] mt7530-mdio mdio-bus:1f wan (uninitialized): PHY [mt7530-0:04] driver [MediaTek MT7530 PHY] (irq=POLL)
+>>
+>> With this device tree:
+>>
+>> switch {
+>> 	interrupt-controller;
+>>
+>> 	mdio {
+>> 		phy {
+>> 			reg = <0>;
+>> 			interrupts = <0>;
+>> 		}
+>> 	}
+>> }
+>>
+>> [    1.420534] mt7530-mdio mdio-bus:1f lan1 (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=17)
+>> [    1.433224] mt7530-mdio mdio-bus:1f lan2 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7530 PHY] (irq=18)
+>> [    1.445338] mt7530-mdio mdio-bus:1f lan3 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7530 PHY] (irq=19)
+>> [    1.457472] mt7530-mdio mdio-bus:1f lan4 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7530 PHY] (irq=20)
+>> [    1.469587] mt7530-mdio mdio-bus:1f wan (uninitialized): PHY [mt7530-0:04] driver [MediaTek MT7530 PHY] (irq=21)
+> 
+> Looks sane.
+> 
+> FWIW, I found Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
+> where internal PHYs don't have an 'interrupts' property, yet they are
+> probably still expected to use interrupts - according to ksz_irq_phy_setup().
 
+This conflicts with the reason we want the subdrivers to use
+ds->user_mii_bus for. I'd much like to implement what I've done with this
+patch to this subdriver. I believe it's negligible for the old device trees
+to have the switch PHYs work with polling until the interrupts are defined
+on the device tree.
+
+> 
+> Anyway, what's done is done, but I still don't see the point of making
+> the binding much more flexible than it needs to be.
+
+I don't see it that way. It's simply about describing the hardware. PHYs
+without interrupts is still valid hardware. If the PHYs of this specific
+hardware cannot possibly come without interrupts, then it should be the
+bindings that ensure that interrupts on the device tree are always defined.
+Not the other way around: Keep this information out of the device tree and
+do it on the subdriver.
+
+Arınç
 
