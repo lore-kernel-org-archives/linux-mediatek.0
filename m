@@ -4,79 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13745C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jan 2024 08:40:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 737E8C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jan 2024 09:35:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8hYTNkHTn/zV3BgYDxe7QnouYI4dlQvnLZozWj8iLVc=; b=CeBPr/aHtvMw4AkPz1aLTapBDJ
-	mRBaDFLR+4CHMqQV4D48k9jLdGTQqKHbFA/M6RGO8FfNwcZ81oB6x/jQRBtu23rxyR3IOr2C3ZYKr
-	yEvxLgwpCNB12hJoqvgihgnBu84rzzIJ+SuqVtI2xtsL1rP1KXRAHcKh6P8Me6hllSJ/n69YDq76m
-	aRCQBF4/TZL24OVgtyDew6BNwRPkGEqbwLcKcVhBCEaD4aiu0z4dH2/+T5goUBxwqh6sRWcWAdAiW
-	XNhZijKC1yD60Agu28lntc1OcwiAmlgU2LU1SHK6KTOyjrtonYnwkF/82EA1Vb9tgZPwtck7KR+jP
-	/y7Ua87g==;
+	bh=lJUyDVGU0XKgaKwYDjGSDxNTROvNmlr5rGkLfg67AJU=; b=t4I6f3QWMGzQf9SA9woenNAXKD
+	NzfhJ0/QvgBdel6VmqMaYpwDTGh8xyC80Id0N4RBMpW7OpKciWaMXW/TfeAsOb4NmuFFhXt9aPaZ1
+	hjn/z7DfD63nrFLqW1ZVs1aILPlqeiYpTEV9+6fEY95vyhJTz9qQS9majWWkSazMG0RGOg16+ICzx
+	j3We3iSm41gEIqxLG1bj2XagjOfSpewde7blVD5DBuU2RSU4K5UMKmxdPpqp0idnMgdQafykAGAOY
+	AicKhuEQBfNbFb81WdvlP/Pl+RNjgKDgQVh3ksv+BmXgm1shN98RBR4xCFaYF2BlCeRLeJqyTKvC7
+	zCK6Cj1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLfkS-00GHEI-0g;
-	Fri, 05 Jan 2024 08:40:12 +0000
-Received: from mail-il1-x133.google.com ([2607:f8b0:4864:20::133])
+	id 1rLgbi-00GP5d-1T;
+	Fri, 05 Jan 2024 09:35:14 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLfkP-00GHDI-07
-	for linux-mediatek@lists.infradead.org;
-	Fri, 05 Jan 2024 08:40:11 +0000
-Received: by mail-il1-x133.google.com with SMTP id e9e14a558f8ab-3606ee78686so1586015ab.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 05 Jan 2024 00:40:06 -0800 (PST)
+	id 1rLgbg-00GP3a-1J;
+	Fri, 05 Jan 2024 09:35:13 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-40d5d898162so10251655e9.3;
+        Fri, 05 Jan 2024 01:35:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1704444006; x=1705048806; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8hYTNkHTn/zV3BgYDxe7QnouYI4dlQvnLZozWj8iLVc=;
-        b=iDBqCBDjv+h3vA2/ADmxw+ElwWZIPt7ql2AbGg16TCfDy/Ez+JxXd84oGqBvUHYnOW
-         f4PyxCVvaVfDz+jz3nyha4D/rOGOT+/gnvULA/5pZYx6jdz5pT/Z/+8co1QtHJOJ7hvM
-         O47VJG8F3adFxjXHXCeP2YGSxJdFZ9CnLMl7o=
+        d=gmail.com; s=20230601; t=1704447308; x=1705052108; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=lJUyDVGU0XKgaKwYDjGSDxNTROvNmlr5rGkLfg67AJU=;
+        b=V1UFSspoG+iF5nllGyRJHxWKCjH0fBs04vvekeN9Wr9VMSt6t0UpTgEBwgK9jXlPl6
+         ytRGsgN6dz5eksuliK1/OViRmMJilJbtM1B2ujkRPdMOvr7AX2I+iOYmGsISyUUYy5od
+         P3nY9AGE4SLL1PJKC8qwDD24SBg7uGLFuMrthMRy97HwM1HgwXCgWeSu3GQSMX0Uo3rS
+         6Kmpb0wElYJbtkr/VnKdfaKMr1va4AEHU6jOi2xDWG1TaIDS0yQmAkMG41WNjKMyeVaQ
+         layHSGqOwWicuyHF0tw9T4csha6sT94LlUHQr6ibc6QwFVpQjQSVUtbCiY7IPndWKtc7
+         FqwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704444006; x=1705048806;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=8hYTNkHTn/zV3BgYDxe7QnouYI4dlQvnLZozWj8iLVc=;
-        b=wK2fLHmbuvUOPeUU2CvVJY4/8UmP+bOuAmc1YlxuRejbgWTm9eTXckHHhWebQgNO+1
-         9b/PlmWGGPPIR9jdLm1dQIa8Z1JUf0O1K7K/7xTGPxUkT+qQRjnyqwBxBX5H78q9bG4f
-         X++m76nRRog2XshAj+SqIBHx/J4vWXvzC8nzQxdsgLpXHlHQIDeuOK/Y7U/5meCGsoeu
-         +aoJUOcYVgJ5l0G/2R5wNQASsI09rrKpuwDe0A339OGz92eO37dZuSR95fRP/Tqwl2xj
-         z+L9WC4y6NT6+UNF+GyjuoHTnVxhXg4dKcazuXNXsWJfS4UZGuqFuDX+05b2dyJhQvLB
-         zqXQ==
-X-Gm-Message-State: AOJu0YypaHVrFjzTicIm/HJe53yaaCaUKgoghnSdVEil9tpXouow97Mp
-	iK5nLObqdDP1I0DSO5t4uoYeZUHf1BLtoGl6LkIx3wDa4yRC
-X-Google-Smtp-Source: AGHT+IG2pc/bVNtoQyA5vLjyh1fbFJLdrI+GkS/9G1KKGXF6RnAflb2KFxD/87ykUzd6ApsxNMt9jeo2n4l5+qagNf8=
-X-Received: by 2002:a05:6e02:1aac:b0:35f:ea02:7491 with SMTP id
- l12-20020a056e021aac00b0035fea027491mr2019344ilv.60.1704444005875; Fri, 05
- Jan 2024 00:40:05 -0800 (PST)
+        d=1e100.net; s=20230601; t=1704447308; x=1705052108;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=lJUyDVGU0XKgaKwYDjGSDxNTROvNmlr5rGkLfg67AJU=;
+        b=gZOc+aSOR0RVmuPVUj07zxrbVty2CK1UWjeDbu/7gE7jx0HtrqiqLw6eol1O3gvX1R
+         11nLfnMTv8X5wWxPzn2673ZS/kft5flCgKMoT1kDIcoJXETC7t8cEs72zEHb5bKn4yzH
+         wcPukUkQIv3QKxa4JtAwI1zeaB1mHaOqCtuVnzS4rIlXUz9EZg8eh0YGaYD8ipCz9mS4
+         TDJu7haAEeff71TEY/8wsjm28pOhG8P2LiAjJi7YFuhuE8xI7ZAv8Gf89hxKq/fuDhZi
+         UkNbOQWrjZZDkEpea715xcl7aToQYstr3U/ah3g98SyADGzp9f1l4CrNHa8xlLbzvTOZ
+         BHhw==
+X-Gm-Message-State: AOJu0YyvhSFPAZmkwfnBSsapQwPGvFTk/ZijwxefvaxRrC0mnpnirTru
+	GhA3yK/Udwr3uZQdz6//TV0=
+X-Google-Smtp-Source: AGHT+IGdYoX12msFQex2gQBmL00N+tTwnAfTSgVHTKvPHEqpTgUu6NAX8rJzRZKET7C6gVrEN0zBkQ==
+X-Received: by 2002:a05:600c:4fcb:b0:40e:347e:b4d with SMTP id o11-20020a05600c4fcb00b0040e347e0b4dmr1100921wmq.89.1704447308037;
+        Fri, 05 Jan 2024 01:35:08 -0800 (PST)
+Received: from [10.254.108.81] (munvpn.amd.com. [165.204.72.6])
+        by smtp.gmail.com with ESMTPSA id j26-20020a05600c1c1a00b0040e3804ea71sm1002466wms.10.2024.01.05.01.35.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 05 Jan 2024 01:35:07 -0800 (PST)
+Message-ID: <160df81d-e5fa-4798-96d4-5ab1809a9680@gmail.com>
+Date: Fri, 5 Jan 2024 10:35:04 +0100
 MIME-Version: 1.0
-References: <20240102081402.1226795-1-treapking@chromium.org>
- <eed88b36-ae56-40d3-8588-0d5d75da71a6@collabora.com> <5520e8e3-c75b-480f-b831-c40b5cca029f@collabora.com>
- <CAEXTbpeqRsWNgZE3ZgcFKogxv-tjAmQT=D6o6X4ViuG5ZZFCHQ@mail.gmail.com>
-In-Reply-To: <CAEXTbpeqRsWNgZE3ZgcFKogxv-tjAmQT=D6o6X4ViuG5ZZFCHQ@mail.gmail.com>
-From: Pin-yen Lin <treapking@chromium.org>
-Date: Fri, 5 Jan 2024 16:39:55 +0800
-Message-ID: <CAEXTbpdCHa9M=nMQAOdRiqeQqEB3gHYiwSuVUsPhOD0vCkyY8A@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] clk: mediatek: Introduce need_pm_runtime to mtk_clk_desc
-To: Eugen Hristev <eugen.hristev@collabora.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>, 
-	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 0/7] dma-buf: heaps: Add secure heap
+Content-Language: en-US
+To: Jeffrey Kardatzke <jkardatzke@google.com>, Simon Ser <contact@emersion.fr>
+Cc: Pekka Paalanen <ppaalanen@gmail.com>, Joakim Bech
+ <joakim.bech@linaro.org>, Yong Wu <yong.wu@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>,
+ christian.koenig@amd.com, Matthias Brugger <matthias.bgg@gmail.com>,
+ dri-devel@lists.freedesktop.org, John Stultz <jstultz@google.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Vijayanand Jitta <quic_vjitta@quicinc.com>,
+ Nicolas Dufresne <nicolas@ndufresne.ca>, jianjiao.zeng@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ Conor Dooley <conor+dt@kernel.org>, linaro-mm-sig@lists.linaro.org,
+ linux-mediatek@lists.infradead.org, tjmercier@google.com,
+ linux-arm-kernel@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org
+References: <20231212024607.3681-1-yong.wu@mediatek.com>
+ <DPBmATfmfvSP8Cwjz99kj_JvCEiAqRfuMFJZEBF2aIgl8NZqWFR66eyPTX1E8bHyOlimBihEE3E80p9bfOJ-0SNu8pwoIzL9gD2Xae6r97g=@emersion.fr>
+ <20231213110517.6ce36aca@eldfell>
+ <20231213101549.lioqfzjxcvmqxqu3@pop-os.localdomain>
+ <20231213133825.0a329864@eldfell>
+ <20231213132229.q3uxdhtdsxuzw3w6@pop-os.localdomain>
+ <20231213161614.43e5bca8@eldfell>
+ <9m8eC1j8YSwxu9Mr8vCXyzF0nfyCSHpFbfc__FtUjjKppew65jElBbUqa-nkzFTN-N_ME893w0YQRcb3r3UbIajQUP-Y5LxnHKKFoiBepSI=@emersion.fr>
+ <CA+ddPcOew7Wtb1-Cakq_LPN1VwtG+4vpjpLFvXdsjBunpefT1A@mail.gmail.com>
+From: =?UTF-8?Q?Christian_K=C3=B6nig?= <ckoenig.leichtzumerken@gmail.com>
+In-Reply-To: <CA+ddPcOew7Wtb1-Cakq_LPN1VwtG+4vpjpLFvXdsjBunpefT1A@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240105_004009_075217_3EE539DC 
-X-CRM114-Status: GOOD (  40.93  )
+X-CRM114-CacheID: sfid-20240105_013512_451355_6FA770CC 
+X-CRM114-Status: GOOD (  21.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,163 +113,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 4, 2024 at 10:51=E2=80=AFPM Pin-yen Lin <treapking@chromium.org=
-> wrote:
->
-> Hi Eugen and Angelo,
->
-> Unfortunately, I don't have a way to reliably reproduce this either.
->
-> We notice this issue from the automatic crash reports sent from the
-> users, but we are still not able to reproduce this locally.  So our
-> plan is to ship this patch to the users and see if the crash rate goes
-> down after a month or so.
->
-> Regards,
-> Pin-yen
->
-> On Wed, Jan 3, 2024 at 9:20=E2=80=AFPM Eugen Hristev
-> <eugen.hristev@collabora.com> wrote:
-> >
-> > On 1/3/24 14:19, AngeloGioacchino Del Regno wrote:
-> > > Il 02/01/24 09:12, Pin-yen Lin ha scritto:
-> > >> Introduce a new need_pm_runtime variable to mtk_clk_desc to indicate
-> > >> this clock needs a runtime PM get on the clock controller during the
-> > >> probing stage.
-> > >>
-> > >> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> > >
-> > > Hello Pin-yen,
-> > >
-> > > We have experienced something similar, but it was really hard to repr=
-oduce after
-> > > some changes.
-> > >
-> > > In an effort to try to solve this issue (but again, reproducing is re=
-ally hard),
-> > > Eugen has sent a commit in the hope that someone else found a way to =
-easily
-> > > reproduce. Please look at [1].
-> > >
-> > > I'm also adding Eugen to the Cc's of this email.
-> > >
-> > > Cheers,
-> > > Angelo
-> > >
-> > > [1]:
-> > > https://patchwork.kernel.org/project/linux-pm/patch/20231225133615.78=
-993-1-eugen.hristev@collabora.com/
-> >
-> > Hello Pin-yen,
-> >
-> > Can you try my patch and let me know if this changes anything for you ?
-> >
-> > If it does not change anything, can you also try this one as well ? It'=
-s another
-> > attempt to fix the synchronization with genpd.
-> >
-> > https://lore.kernel.org/linux-arm-kernel/20231129113120.4907-1-eugen.hr=
-istev@collabora.com/
-> >
-> > Thanks,
-> > Eugen
+Am 04.01.24 um 20:50 schrieb Jeffrey Kardatzke:
+> Any feedback from maintainers on what their preference is?  I'm fine
+> with 'restricted' as well, but the main reason we chose secure was
+> because of its use in ARM nomenclature and this is more for ARM usage
+> than x86.
 
-Hi Eugen and Angelo,
+Well AMD calls this "trusted", but I think that's just slightly better 
+than "secure".
 
-After the offline discussion with Chen-yu, we think this series is
-solving a different issue from the patches you mentioned. This one is
-trying to resolve a deadlock in the probe stage, and more details can
-be found in the commit message of the next patch. The referenced
-patches seem to be fixing other race conditions on powering on/off the
-power domain. Sorry for adding the wrong commit message and maybe
-leading to incorrect understanding on this series.
-
-By the way, sorry for the top posting in the previous mail.
++1 for using "restricted" cause that seems to match the technical 
+consequences.
 
 Regards,
-Pin-yen
-> >
-> > >
-> > >> ---
-> > >>
-> > >> Changes in v2:
-> > >> - Fix the order of error handling
-> > >> - Update the commit message and add a comment before the runtime PM =
-call
-> > >>
-> > >>   drivers/clk/mediatek/clk-mtk.c | 15 +++++++++++++++
-> > >>   drivers/clk/mediatek/clk-mtk.h |  2 ++
-> > >>   2 files changed, 17 insertions(+)
-> > >>
-> > >> diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/c=
-lk-mtk.c
-> > >> index 2e55368dc4d8..c31e535909c8 100644
-> > >> --- a/drivers/clk/mediatek/clk-mtk.c
-> > >> +++ b/drivers/clk/mediatek/clk-mtk.c
-> > >> @@ -13,6 +13,7 @@
-> > >>   #include <linux/of.h>
-> > >>   #include <linux/of_address.h>
-> > >>   #include <linux/platform_device.h>
-> > >> +#include <linux/pm_runtime.h>
-> > >>   #include <linux/slab.h>
-> > >>
-> > >>   #include "clk-mtk.h"
-> > >> @@ -494,6 +495,14 @@ static int __mtk_clk_simple_probe(struct platfo=
-rm_device *pdev,
-> > >>                      return IS_ERR(base) ? PTR_ERR(base) : -ENOMEM;
-> > >>      }
-> > >>
-> > >> +
-> > >> +    if (mcd->need_runtime_pm) {
-> > >> +            devm_pm_runtime_enable(&pdev->dev);
-> > >> +            r =3D pm_runtime_resume_and_get(&pdev->dev);
-> > >> +            if (r)
-> > >> +                    return r;
-> > >> +    }
-> > >> +
-> > >>      /* Calculate how many clk_hw_onecell_data entries to allocate *=
-/
-> > >>      num_clks =3D mcd->num_clks + mcd->num_composite_clks;
-> > >>      num_clks +=3D mcd->num_fixed_clks + mcd->num_factor_clks;
-> > >> @@ -574,6 +583,9 @@ static int __mtk_clk_simple_probe(struct platfor=
-m_device *pdev,
-> > >>                      goto unregister_clks;
-> > >>      }
-> > >>
-> > >> +    if (mcd->need_runtime_pm)
-> > >> +            pm_runtime_put(&pdev->dev);
-> > >> +
-> > >>      return r;
-> > >>
-> > >>   unregister_clks:
-> > >> @@ -604,6 +616,9 @@ static int __mtk_clk_simple_probe(struct platfor=
-m_device *pdev,
-> > >>   free_base:
-> > >>      if (mcd->shared_io && base)
-> > >>              iounmap(base);
-> > >> +
-> > >> +    if (mcd->need_runtime_pm)
-> > >> +            pm_runtime_put(&pdev->dev);
-> > >>      return r;
-> > >>   }
-> > >>
-> > >> diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/c=
-lk-mtk.h
-> > >> index 22096501a60a..c17fe1c2d732 100644
-> > >> --- a/drivers/clk/mediatek/clk-mtk.h
-> > >> +++ b/drivers/clk/mediatek/clk-mtk.h
-> > >> @@ -237,6 +237,8 @@ struct mtk_clk_desc {
-> > >>
-> > >>      int (*clk_notifier_func)(struct device *dev, struct clk *clk);
-> > >>      unsigned int mfg_clk_idx;
-> > >> +
-> > >> +    bool need_runtime_pm;
-> > >>   };
-> > >>
-> > >>   int mtk_clk_pdev_probe(struct platform_device *pdev);
-> > >
-> > >
-> > >
-> > >
-> >
+Christian.
+
+>
+> The main difference with similar buffers on AMD/Intel is that with
+> AMD/Intel the buffers are mappable and readable by the CPU in the
+> kernel. The problem is their contents are encrypted so you get junk
+> back if you do that. On ARM, the buffers are completely inaccessible
+> by the kernel and the memory controller prevents access to them
+> completely from the kernel.
+>
+> There are also other use cases for this where the hypervisor is what
+> is controlling access (second stage in the MMU is providing
+> isolation)....and in that case I do agree that 'secure' would not be
+> the right terminology for those types of buffers.   So I do agree
+> something other than 'secure' is probably a better option overall.
+>
+>
+> On Fri, Dec 22, 2023 at 1:40 AM Simon Ser <contact@emersion.fr> wrote:
+>> On Wednesday, December 13th, 2023 at 15:16, Pekka Paalanen <ppaalanen@gmail.com> wrote:
+>>
+>>>>> It is protected/shielded/fortified from all the kernel and userspace,
+>>>>> but a more familiar word to describe that is inaccessible.
+>>>>> "Inaccessible buffer" per se OTOH sounds like a useless concept.
+>>>>>
+>>>>> It is not secure, because it does not involve security in any way. In
+>>>>> fact, given it's so fragile, I'd classify it as mildly opposite of
+>>>>> secure, as e.g. clients of a Wayland compositor can potentially DoS the
+>>>>> compositor with it by simply sending such a dmabuf. Or DoS the whole
+>>>>> system.
+>>>> I hear what you are saying and DoS is a known problem and attack vector,
+>>>> but regardless, we have use cases where we don't want to expose
+>>>> information in the clear and where we also would like to have some
+>>>> guarantees about correctness. That is where various secure elements and
+>>>> more generally security is needed.
+>>>>
+>>>> So, it sounds like we have two things here, the first is the naming and
+>>>> the meaning behind it. I'm pretty sure the people following and
+>>>> contributing to this thread can agree on a name that makes sense. Would
+>>>> you personally be OK with "restricted" as the name? It sounds like that.
+>>> I would. I'm also just a by-stander, not a maintainer of kernel
+>>> anything. I have no power to accept nor reject anything here.
+>> I'd also personally be OK with "restricted", I think it's a lot better
+>> than "secure".
+>>
+>> In general I agree with everything Pekka said.
+
 
