@@ -4,94 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE098C47079
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jan 2024 15:48:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 541B7C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jan 2024 16:21:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oHjuD7i+UA3Qw3m7etGOaevmlRCqaIA5WQMiwQTIlE8=; b=PD0+M6PVBEu+hYJUCFQS4zHUVK
-	5sHGzuXJZwWKqdo98Qm3H4LdJwT/kEdxEAZ5DmgH1VkGOUooP7tszJnOYBiMiLF3MqqAsQeuWBuhg
-	WChYj8wCa116aHUvaVukF9RzOepNE0vUN9lh+YTDHlTvcr7Z9Xj0glyvRddThFdK8GRoRHvpQPIfV
-	b5QF8wuXrYVUXnKIJWIxMPkECCGJ0KqgDYU25bBgOcA4c475vlDLs7X9AlI8lbvCKW8LXvgyW+Wxa
-	cqGEjJeI01AJ8fykVkgAN7/K0Qwn4+HRA3GORiPn0NXzL2FHfVMw1aGqZNvmSVucF8a/97aeP3heP
-	WLgnXaJw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vJWaZdp7vwDloIQ8UP6qzcfjDSiX0CaWYDKppc3KgpY=; b=j3M9Q1VBAPiUx1
+	HjxLZr6Dc1Aqew3OX9Ve+5eeTykuzal+HMGOAYPMeaYF5w7EuVxZC2JeSivzg49k2c/EzmQJvRNKw
+	wVkSTi+mHdvgh4iym6fGuiGnFNAyyfnjKYBnQM2RgtwsxHvrxIMSZdMt/iqmNXt7BkN/+Zh2iUi+Q
+	cfSXeO9e2lOOjaDGuBu96685yEn89gIv8Q9+0ymfV4kDv+ApA550oLujlBOIPNhGJ1gm8ihRmRzFd
+	afX4fFDv4XXFCsBewjCWqr5rfr1EN3/M9GB8OicCA7iMGwdq+CrzEoBHLSiMb1IRILkNbJcWAT1fk
+	a0nlzeB8dvZqIofQq7Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLmRD-00HDAg-2S;
-	Fri, 05 Jan 2024 15:48:47 +0000
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	id 1rLmwb-00HIf0-1E;
+	Fri, 05 Jan 2024 16:21:13 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLmRA-00HD9a-2g;
-	Fri, 05 Jan 2024 15:48:46 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-28c0d8dd88bso1242579a91.2;
-        Fri, 05 Jan 2024 07:48:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704469722; x=1705074522; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=oHjuD7i+UA3Qw3m7etGOaevmlRCqaIA5WQMiwQTIlE8=;
-        b=Vsog1nngPKo0zzVkImCeKRav9fr0ToWFfCih0bT9IIfiiIzx/MG0DuX6gdiFd0FSRW
-         LBZzcoXcNig++CXxneulYuKh8GOWSe10tI7FxM5go9V0BDfBKzFpKsYX5GTYky2kHo0Q
-         iE6Pp7W43iTvquJM84/DsjIJnLzLl4Pl8ivymw9e98a7B9SfmjLVwiNH4kL6srirr3Cn
-         MIVKKaFOJzyObzuS5+5Sl26mkc03d1nXEwi4aJ0ZZcMtASxYLW5hcUUZW0qfsGzYG7c1
-         t5GcZJhYGVLklSC0MOYE+YtIvGBxs0tEDlycLQIsk19XcPr9zg6253jfAhltEMTZ2s9L
-         TKoA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704469722; x=1705074522;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=oHjuD7i+UA3Qw3m7etGOaevmlRCqaIA5WQMiwQTIlE8=;
-        b=W95K3mVQ4xHwicXRDuLXDb+FN4BYe/TRcdh8IoTMIUZou2FV2mDNVFYe6dDebfDELS
-         C3wOtyqsDOZ2fz2epd6F7E4UTOK874RO/141wYyVaqgAVHH2zhee+W77cr/eXWywryMv
-         ZWRINKXYghHpguKPhyqsYzs2iUQaqFOt1tvfJusuaBJmbYCfqV2pcsOcJwlnEPOlaUSi
-         tsR1+OJhpj0+bqeHhHL/8WUrtRDUq6yqzXY2hnbMsRAYRgB88D1+CoaoN9G/B99ub0dD
-         EaXwiOkle0ldlum7PBp0zWrkNbaHm+bCtS25iEWpNs6BFuj87Gg7T7dbe0kZuqPhIcg5
-         zisg==
-X-Gm-Message-State: AOJu0YwTsCFJZXE5pgQ5dotPBMA0A+gGAJZY1GI340kVYtbb3AFCEudX
-	fASce6jr4/kP00sPfiTA/gp+yCPjunA=
-X-Google-Smtp-Source: AGHT+IG4JLyKQE+gM4c27FKh73op2FHqLSCwte9ikVSJ5ZEE7F/zmt6FTbncQktxxFKJuFQG75IOqA==
-X-Received: by 2002:a17:90a:5512:b0:28c:ef1a:db1a with SMTP id b18-20020a17090a551200b0028cef1adb1amr1858002pji.35.1704469721772;
-        Fri, 05 Jan 2024 07:48:41 -0800 (PST)
-Received: from ?IPv6:2605:59c8:448:b800:82ee:73ff:fe41:9a02? ([2605:59c8:448:b800:82ee:73ff:fe41:9a02])
-        by smtp.googlemail.com with ESMTPSA id gj9-20020a17090b108900b0028be4f51d2dsm1420897pjb.5.2024.01.05.07.48.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 05 Jan 2024 07:48:41 -0800 (PST)
-Message-ID: <ec7f36ffdb2a76fe5cac7272da07242b3a6296f4.camel@gmail.com>
-Subject: Re: [PATCH net-next 5/6] net: introduce page_frag_cache_drain()
-From: Alexander H Duyck <alexander.duyck@gmail.com>
-To: Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
- kuba@kernel.org,  pabeni@redhat.com
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Jason Wang
- <jasowang@redhat.com>, Jeroen de Borst <jeroendb@google.com>, Praveen
- Kaligineedi <pkaligineedi@google.com>, Shailend Chand
- <shailend@google.com>, Eric Dumazet <edumazet@google.com>, Felix Fietkau
- <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
- <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith
- Busch <kbusch@kernel.org>,  Jens Axboe <axboe@kernel.dk>, Christoph Hellwig
- <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,  Chaitanya Kulkarni
- <kch@nvidia.com>, "Michael S. Tsirkin" <mst@redhat.com>, Andrew Morton
- <akpm@linux-foundation.org>, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org, 
- kvm@vger.kernel.org, virtualization@lists.linux.dev, linux-mm@kvack.org
-Date: Fri, 05 Jan 2024 07:48:39 -0800
-In-Reply-To: <20240103095650.25769-6-linyunsheng@huawei.com>
-References: <20240103095650.25769-1-linyunsheng@huawei.com>
-	 <20240103095650.25769-6-linyunsheng@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+	id 1rLmwW-00HIch-0a;
+	Fri, 05 Jan 2024 16:21:11 +0000
+Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
+	by mxout1.routing.net (Postfix) with ESMTP id 5AEE04027B;
+	Fri,  5 Jan 2024 16:21:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1704471665;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=vJWaZdp7vwDloIQ8UP6qzcfjDSiX0CaWYDKppc3KgpY=;
+	b=eTopNlLc2+mGcCIV+tMnOyedCitCF83/aJOtYLEbxcgOCBQLCYMDMx6+Aa3JEH5Hx3kCgN
+	auv4YVUphpYKa0WbyYbeQ4FhrGz/Ae45YjSMDzpETYWyF2dC/RgwET1YGwepZnUy16risK
+	gmJig4Cr65ntK6Av8xywoPDzKIO02Dw=
+Received: from frank-G5.. (fttx-pool-80.245.77.34.bambit.de [80.245.77.34])
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 7F9C6360303;
+	Fri,  5 Jan 2024 16:21:04 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Subject: [PATCH v2 2/2] clk: mediatek: add infracfg reset controller for mt7988
+Date: Fri,  5 Jan 2024 17:20:55 +0100
+Message-Id: <20240105162056.43266-3-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240105162056.43266-1-linux@fw-web.de>
+References: <20240105162056.43266-1-linux@fw-web.de>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: 31b037bd-067d-4073-9b39-c5bd1557013d
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240105_074844_868044_697BF959 
-X-CRM114-Status: UNSURE (   7.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240105_082108_383659_029F4EAB 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,19 +74,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2024-01-03 at 17:56 +0800, Yunsheng Lin wrote:
-> When draining a page_frag_cache, most user are doing
-> the similar steps, so introduce an API to avoid code
-> duplication.
->=20
-> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
-> Acked-by: Jason Wang <jasowang@redhat.com>
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Looks good to me.
+Infracfg can also operate as reset controller, add support for it.
 
-Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ drivers/clk/mediatek/clk-mt7988-infracfg.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/drivers/clk/mediatek/clk-mt7988-infracfg.c b/drivers/clk/mediatek/clk-mt7988-infracfg.c
+index 8011ef278bea..1660a45349ff 100644
+--- a/drivers/clk/mediatek/clk-mt7988-infracfg.c
++++ b/drivers/clk/mediatek/clk-mt7988-infracfg.c
+@@ -14,6 +14,9 @@
+ #include "clk-gate.h"
+ #include "clk-mux.h"
+ #include <dt-bindings/clock/mediatek,mt7988-clk.h>
++#include <dt-bindings/reset/mediatek,mt7988-resets.h>
++
++#define	INFRA_RST_SET_OFFSET	0x80
+ 
+ static DEFINE_SPINLOCK(mt7988_clk_lock);
+ 
+@@ -249,12 +252,29 @@ static const struct mtk_gate infra_clks[] = {
+ 	GATE_INFRA3(CLK_INFRA_133M_PCIE_CK_P3, "infra_133m_pcie_ck_p3", "sysaxi_sel", 31),
+ };
+ 
++static u16 infra_rst_ofs[] = {
++	INFRA_RST_SET_OFFSET,
++};
++
++static u16 infra_idx_map[] = {
++	[MT7988_INFRA_RST0_THERM_CTRL_SWRST] = 0 * RST_NR_PER_BANK + 9,
++};
++
++static struct mtk_clk_rst_desc infra_rst_desc = {
++	.version = MTK_RST_SET_CLR,
++	.rst_bank_ofs = infra_rst_ofs,
++	.rst_bank_nr = ARRAY_SIZE(infra_rst_ofs),
++	.rst_idx_map = infra_idx_map,
++	.rst_idx_map_nr = ARRAY_SIZE(infra_idx_map),
++};
++
+ static const struct mtk_clk_desc infra_desc = {
+ 	.clks = infra_clks,
+ 	.num_clks = ARRAY_SIZE(infra_clks),
+ 	.mux_clks = infra_muxes,
+ 	.num_mux_clks = ARRAY_SIZE(infra_muxes),
+ 	.clk_lock = &mt7988_clk_lock,
++	.rst_desc = &infra_rst_desc,
+ };
+ 
+ static const struct of_device_id of_match_clk_mt7988_infracfg[] = {
+-- 
+2.34.1
 
 
