@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 541B7C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jan 2024 16:21:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9331FC47079
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jan 2024 16:21:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vJWaZdp7vwDloIQ8UP6qzcfjDSiX0CaWYDKppc3KgpY=; b=j3M9Q1VBAPiUx1
-	HjxLZr6Dc1Aqew3OX9Ve+5eeTykuzal+HMGOAYPMeaYF5w7EuVxZC2JeSivzg49k2c/EzmQJvRNKw
-	wVkSTi+mHdvgh4iym6fGuiGnFNAyyfnjKYBnQM2RgtwsxHvrxIMSZdMt/iqmNXt7BkN/+Zh2iUi+Q
-	cfSXeO9e2lOOjaDGuBu96685yEn89gIv8Q9+0ymfV4kDv+ApA550oLujlBOIPNhGJ1gm8ihRmRzFd
-	afX4fFDv4XXFCsBewjCWqr5rfr1EN3/M9GB8OicCA7iMGwdq+CrzEoBHLSiMb1IRILkNbJcWAT1fk
-	a0nlzeB8dvZqIofQq7Yg==;
+	List-Owner; bh=bbTPIz1gjiBa6bP04mmh2p5yqroBe9n9SqY/1TA2rR0=; b=Tj6lDdVBPpPSFk
+	wqvihxSRB8iRRD/Zer4b1jCRSvYfOyAiftTTs/4HLe13FYsADqmETLJ2SRzrLAvvUu4omLdOeLiz9
+	EPZhgPfbIrXgK42HyY/cd+tl9n+LIObSXmJGCptbYEQaRChnpDOLuNBf4NwYJEcbmc47X7aYWOnQ/
+	qIduo6Ihy8o4FD1oAL4WRiTgvnfh0vw7ioBqd6+nriPKzkcXY9FK1Fjmu9yHFxPV2IjdcLNwIU3Ll
+	F1uNYpXMVoYNVV2tF6T300u16kbTWayB7AbbQG2Hh0xhLqySDZm+rMPQMIfUkZLXDJkg2Ik41Y89n
+	ojqm8hMUuWnUwi7SgyIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLmwb-00HIf0-1E;
-	Fri, 05 Jan 2024 16:21:13 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1rLmwd-00HIgQ-22;
+	Fri, 05 Jan 2024 16:21:15 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLmwW-00HIch-0a;
-	Fri, 05 Jan 2024 16:21:11 +0000
+	id 1rLmwW-00HIcc-2e;
+	Fri, 05 Jan 2024 16:21:12 +0000
 Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout1.routing.net (Postfix) with ESMTP id 5AEE04027B;
-	Fri,  5 Jan 2024 16:21:05 +0000 (UTC)
+	by mxout4.routing.net (Postfix) with ESMTP id 8AC1B100866;
+	Fri,  5 Jan 2024 16:21:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1704471665;
+	s=20200217; t=1704471664;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=vJWaZdp7vwDloIQ8UP6qzcfjDSiX0CaWYDKppc3KgpY=;
-	b=eTopNlLc2+mGcCIV+tMnOyedCitCF83/aJOtYLEbxcgOCBQLCYMDMx6+Aa3JEH5Hx3kCgN
-	auv4YVUphpYKa0WbyYbeQ4FhrGz/Ae45YjSMDzpETYWyF2dC/RgwET1YGwepZnUy16risK
-	gmJig4Cr65ntK6Av8xywoPDzKIO02Dw=
+	bh=bbTPIz1gjiBa6bP04mmh2p5yqroBe9n9SqY/1TA2rR0=;
+	b=YgBZW8H8tPQZI6XRVvoImj6SKnHvJEXOz+8OiJKrlS5cGHYR5FwJdv8eX6O/0iXgn3b/7j
+	4iJaXnf+9nOUnjAZqYiMB2UA042Qd29XFU4/6TX3nBNAIjedZIuvicOChnGm/T1LJD5m1y
+	KFBufk7ulRwHQNfFXv3/xdJOjaKDQq4=
 Received: from frank-G5.. (fttx-pool-80.245.77.34.bambit.de [80.245.77.34])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 7F9C6360303;
-	Fri,  5 Jan 2024 16:21:04 +0000 (UTC)
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id B4938360670;
+	Fri,  5 Jan 2024 16:21:03 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>,
@@ -51,18 +51,18 @@ To: Michael Turquette <mturquette@baylibre.com>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>
-Subject: [PATCH v2 2/2] clk: mediatek: add infracfg reset controller for mt7988
-Date: Fri,  5 Jan 2024 17:20:55 +0100
-Message-Id: <20240105162056.43266-3-linux@fw-web.de>
+Subject: [PATCH v2 1/2] dt-bindings: reset: mediatek: add MT7988 LVTS reset ID
+Date: Fri,  5 Jan 2024 17:20:54 +0100
+Message-Id: <20240105162056.43266-2-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240105162056.43266-1-linux@fw-web.de>
 References: <20240105162056.43266-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: 31b037bd-067d-4073-9b39-c5bd1557013d
+X-Mail-ID: 675202b4-de89-47e3-acdb-612b0c41f0f9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240105_082108_383659_029F4EAB 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20240105_082109_000883_EB364FBF 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,57 +80,30 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Infracfg can also operate as reset controller, add support for it.
+Add reset constant for using as index in driver and dts.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- drivers/clk/mediatek/clk-mt7988-infracfg.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+v2:
+ - add missing commit message and SoB
+ - change value of infrareset to 0
+---
+ include/dt-bindings/reset/mediatek,mt7988-resets.h | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/clk/mediatek/clk-mt7988-infracfg.c b/drivers/clk/mediatek/clk-mt7988-infracfg.c
-index 8011ef278bea..1660a45349ff 100644
---- a/drivers/clk/mediatek/clk-mt7988-infracfg.c
-+++ b/drivers/clk/mediatek/clk-mt7988-infracfg.c
-@@ -14,6 +14,9 @@
- #include "clk-gate.h"
- #include "clk-mux.h"
- #include <dt-bindings/clock/mediatek,mt7988-clk.h>
-+#include <dt-bindings/reset/mediatek,mt7988-resets.h>
-+
-+#define	INFRA_RST_SET_OFFSET	0x80
+diff --git a/include/dt-bindings/reset/mediatek,mt7988-resets.h b/include/dt-bindings/reset/mediatek,mt7988-resets.h
+index 493301971367..0216eeb249c7 100644
+--- a/include/dt-bindings/reset/mediatek,mt7988-resets.h
++++ b/include/dt-bindings/reset/mediatek,mt7988-resets.h
+@@ -10,4 +10,8 @@
+ /* ETHWARP resets */
+ #define MT7988_ETHWARP_RST_SWITCH		0
  
- static DEFINE_SPINLOCK(mt7988_clk_lock);
- 
-@@ -249,12 +252,29 @@ static const struct mtk_gate infra_clks[] = {
- 	GATE_INFRA3(CLK_INFRA_133M_PCIE_CK_P3, "infra_133m_pcie_ck_p3", "sysaxi_sel", 31),
- };
- 
-+static u16 infra_rst_ofs[] = {
-+	INFRA_RST_SET_OFFSET,
-+};
++/* INFRA resets */
++#define MT7988_INFRA_RST0_THERM_CTRL_SWRST	0
 +
-+static u16 infra_idx_map[] = {
-+	[MT7988_INFRA_RST0_THERM_CTRL_SWRST] = 0 * RST_NR_PER_BANK + 9,
-+};
+ #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT7988 */
 +
-+static struct mtk_clk_rst_desc infra_rst_desc = {
-+	.version = MTK_RST_SET_CLR,
-+	.rst_bank_ofs = infra_rst_ofs,
-+	.rst_bank_nr = ARRAY_SIZE(infra_rst_ofs),
-+	.rst_idx_map = infra_idx_map,
-+	.rst_idx_map_nr = ARRAY_SIZE(infra_idx_map),
-+};
-+
- static const struct mtk_clk_desc infra_desc = {
- 	.clks = infra_clks,
- 	.num_clks = ARRAY_SIZE(infra_clks),
- 	.mux_clks = infra_muxes,
- 	.num_mux_clks = ARRAY_SIZE(infra_muxes),
- 	.clk_lock = &mt7988_clk_lock,
-+	.rst_desc = &infra_rst_desc,
- };
- 
- static const struct of_device_id of_match_clk_mt7988_infracfg[] = {
 -- 
 2.34.1
 
