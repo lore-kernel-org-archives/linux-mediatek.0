@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC153C47073
-	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Jan 2024 18:32:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCE6DC47073
+	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Jan 2024 18:44:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3ITLUw3/wwzNbCgnrBc39myl7J+F3NZ5Z7SwgjR2fQQ=; b=Sf5QL68dKtNOCq03qKzbZ04Wwg
-	UnB86MiPrJL4fPeZujrkWwH71SbGm/NtDTqt6k4f1ZYQ82+Y+ez6C2248S3VUKAlqa/d8Sln3vnPk
-	msU7m+leSPo0KwrPW9EE8qzlq93ZUeGzz6YxVqC2GWX6ysEeiQgnP6wf0RA9C7zMT9m6Xyh6KXxX8
-	Uy1vZ8UPIxrIRjuXuC6/yUzT6ACO/57G7aoO4CunVD6FBsr/vLxb12aVaPc2gtJ8ANQf4iAEFXG0g
-	4BVys7T0xek4N4+wlWfMylDssENAeTFTYQqydM4HP9L3EgriVMm5Cf0F0f9xnCvFFaUt6PdqHiEbw
-	qccnTtGQ==;
+	bh=0jaV7ovbzbIte+b19ohi0bhK6HoVIw2c2WB+T5GbL3w=; b=YZKtKvRUVsdR/vIdZheUfq/rNm
+	dxNP8hyWr65UwYkIZFXD2gEX4dkVHTZj2X5AjhVsvNqLgHYTC+moNjDit27V0xoIVJqU+ieBGzGgi
+	oYKECYCVHC9Z81UtPmve+YqpHWmwmhDcFDSaasVkyGWDXadTQ5w4zPtGkOlIOHqVuGNuzZhLGZ4Jw
+	kRLHIrVlEObSuv0iBWTqv6O3o9Qf7OjSmdx/u2RfBbMO9t6NepDyXjh96/Why1nl1Eb2RCIuRQ4Ea
+	+GNQHPYwxWajdKimLH/rUhw/4tmNHpaUOIhA1OWpFgFS3kV3jM+fNCtEBvFF0sIW8jy5nMFnI1kZr
+	aGHP0K4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMXwh-003NRk-2L;
-	Sun, 07 Jan 2024 18:32:27 +0000
+	id 1rMY8k-003OGc-2s;
+	Sun, 07 Jan 2024 18:44:54 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMXwe-003NQ8-08;
-	Sun, 07 Jan 2024 18:32:25 +0000
+	id 1rMY8h-003OG8-3A;
+	Sun, 07 Jan 2024 18:44:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=3ITLUw3/wwzNbCgnrBc39myl7J+F3NZ5Z7SwgjR2fQQ=; b=CNd4uLQZPqShcuU+wNi7F7AamO
-	TJ50Wk/4AoY4GAayKb6qKIen+J3kf1sMDWzFNwkEiTJncIBb/JBcjnKAnMRoZkQWH/6cs+Y8TSZQg
-	IV/+I6GhLRGCUGX8AnZjObGq5zVrHF/XnzKDlkQUIhq6Mqk6i93h+NO30OHI3hpohq2w=;
+	bh=0jaV7ovbzbIte+b19ohi0bhK6HoVIw2c2WB+T5GbL3w=; b=zVfDGiXp6wfbV4hPykKINDsu5o
+	bTNMbvJfQbUbj+0Yq4aQOmAJzZjomgTN6WGOFgvTmV14HyQ17z0v39+IkD3N89/rL0nbaor+uITc5
+	lcxAn35uNW/cP0ogR2PHGYr7s3Vqu5wHzHa8nx8eSX3C7niVUEGzmGxC5xA6oKpmV3aI=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1rMXwB-004aDT-G4; Sun, 07 Jan 2024 19:31:55 +0100
-Date: Sun, 7 Jan 2024 19:31:55 +0100
+	id 1rMY8S-004aGA-Bh; Sun, 07 Jan 2024 19:44:36 +0100
+Date: Sun, 7 Jan 2024 19:44:36 +0100
 From: Andrew Lunn <andrew@lunn.ch>
-To: Sergey Ryazanov <ryazanov.s.a@gmail.com>
-Cc: Christian Marangi <ansuelsmth@gmail.com>,
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Sergey Ryazanov <ryazanov.s.a@gmail.com>,
 	Robert Marko <robert.marko@sartura.hr>,
 	Vladimir Oltean <olteanv@gmail.com>,
 	Rob Herring <robh+dt@kernel.org>, Luo Jie <quic_luoj@quicinc.com>,
@@ -61,17 +61,19 @@ Cc: Christian Marangi <ansuelsmth@gmail.com>,
 	linux-mediatek@lists.infradead.org
 Subject: Re: [net-next PATCH RFC v3 1/8] dt-bindings: net: document ethernet
  PHY package nodes
-Message-ID: <1437d9df-2868-43f5-aebd-e0c57fe4d905@lunn.ch>
+Message-ID: <a6a155ab-0852-4f08-b49b-952ac74124a8@lunn.ch>
 References: <20231126015346.25208-1-ansuelsmth@gmail.com>
  <20231126015346.25208-2-ansuelsmth@gmail.com>
  <0926ea46-1ce4-4118-a04c-b6badc0b9e15@gmail.com>
+ <659aedb1.df0a0220.35691.1853@mx.google.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <0926ea46-1ce4-4118-a04c-b6badc0b9e15@gmail.com>
+In-Reply-To: <659aedb1.df0a0220.35691.1853@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240107_103224_082883_2DB7B8CE 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20240107_104452_089079_35EE0A51 
+X-CRM114-Status: UNSURE (   8.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,27 +88,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> And I would like to ask you about another issue raised by Vladimir [1].
-> These phy chips become SoC with all these built-in PHYs, PCSs, clocks,
-> interrupt controllers, etc. Should we address this now? Or should we go with
-> the proposed solution for now and postpone modeling of other peripherals
-> until we get a real hardware, as Andrew suggested?
-> 
-> I'm asking because it looks like we have got a real hardware. Luo currently
-> trying to push QCA8084 (multi-phy/switch chip) support, and this chip
-> exactly contains a huge clock/reset controller [2,3].
+> Honestly I would postpone untile we have a clear idea of what is
+> actually part of the PHY and what can be handled externally... Example
+> setting the clock in gcc, writing a specific driver...
 
-Ideally the reset controller is modelled as a Linux reset
-controller. The clock part of it is modelled using the common clock
-framework. When done correctly, the PHY should not really care. All it
-does is ask for its clock to be enabled, and its reset to be disabled.
-
-Also, given how difficult it is proving to be to make any progress at
-all, i want to get one little part correctly described, the pure
-PHY. Once we have that, we can start on the next little part. So long
-as we keep to the Linux architecture of blocks or hardware with
-standard Linux drivers, and DT to glue them together, a small step by
-step approach should work out.
+That is really core of the problem here. We have no reliable
+description of the hardware. The datasheet often starts with a block
+diagram of the PHY package. Sometimes there is a product brief with
+the same diagram. We need that published. I'm not asking for the full
+data sheet, just the introductory text which gives a high level
+overview of what the hardware actually is. Then we can sketch out a
+high level Linux architecture for the PHY package.
 
      Andrew
 
