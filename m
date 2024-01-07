@@ -4,75 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1106C47073
-	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Jan 2024 19:53:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A45D0C47074
+	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Jan 2024 21:49:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R+NJ7y/qzwFNpXQqGRUYCEhnHrVLVIjhj3cqFkodOqg=; b=4dx/NjXFMEieUIL1FKOyDa+TKi
-	i4l5x9R7E+0V8jxopkd2X0RISRhFnaKNZNIkDkx8nd081RoeEm5CcM1hxPgdRP/h36g0A9KkW09+u
-	dkyfWLigybS/VvZTXWdgKXR0FKmiGCIsP6QWafHWSj6TthipgODRBvyYVt9FzkoBI8wQFKOwBG5TE
-	UmhKEtZyvOuc/8/kCSn11uL14OA4S4FrbP4CWQllshC4pIHG/vjpw/clZiWaJFwbacu+2OQllB0Y4
-	Kc9/GnEQwRrPFpwQyBVze2nQTwdyPmBC/BiVGeNUlUOAl8bG5ekPjPZL1f782yVMBdWUL/SK43Lkh
-	mJQrtcOw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=d5mdwjsu/PFOSh1W0Q3EjHNBZwj9Qa79+/3TGj0T76A=; b=MCF+BdG6IvIftt7usdOX8Ggm+I
+	FBfTl8XBR1oKjYZchBstAmXn2QISimlwJ1D4QPvb+tkOcbXWnjoTJ3kw/5VQL2xm0RVAkHA2pCMBH
+	YEti3DC2AC1HnipUruPt7Or8JshxAM4Q5De7vMueeLpueYyyH6ZhQEN5c8Mto1gV3/SSLoR7hgVLl
+	cFIgFRgtbFtwczw7rIzi87byM7/Fvwcolvwe8MrhKsv6co45j6d7CrVvPYEEwsr0PsjId9Pb3RdM1
+	6cWcB9eFVxNEgn8HZ8KqauUmWSqqh2PfpRQSY72pAWm1x9MTipXhlMgOApj+3BIgwqyGvpcQr7YPk
+	2/V2EkRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMZCd-003Rtt-2i;
-	Sun, 07 Jan 2024 19:52:59 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1rMb1F-003d5I-1Z;
+	Sun, 07 Jan 2024 21:49:21 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMZCa-003Rt3-2C;
-	Sun, 07 Jan 2024 19:52:58 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 6568AB8095D;
-	Sun,  7 Jan 2024 19:52:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB244C433C8;
-	Sun,  7 Jan 2024 19:52:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1704657168;
-	bh=0mJ6xiLJKj/jFKQ9JbI84trjO4v1ZovLdA3D35k6E5E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RdZwIGQJFl8v61u03DHLyxb8H18WGB3ANDT6V1AoQakIo4HuJ/ZgwABc/u2PG+cJg
-	 SQ4Ezh7Z4iuRBNuy5xVFSOoDRhawTG7oBLNtgZlQLMWkGAWk0mlupo7rv9CGgUtNoe
-	 HCgQipBweZqqyE3p2Sf1SNQqEfJW75qYDw8YbM9lXPYKwUMkOhexuDF/ed4g7gMjor
-	 2ArRk9zQ1BakM6/jOjxT2vYFEeNvALvfYC3H0NJmNdDKuFky4BgjzTmd+bvLIuzVXL
-	 61sJ2EUJuu2mqWvyvtDQJqR+v4Z+p6+HZzW/lGopyoF8Cxdu8/y2Xfh8h4JHFbQnW8
-	 3cAoYaBGML5+w==
-Date: Sun, 7 Jan 2024 19:52:41 +0000
-From: Simon Horman <horms@kernel.org>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	David Bauer <mail@david-bauer.net>, mithat.guner@xeront.com,
-	erkin.bozoglu@xeront.com,
-	Luiz Angelo Daros de Luca <luizluca@gmail.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next] net: dsa: mt7530: support OF-based registration
- of switch MDIO bus
-Message-ID: <20240107195241.GB132648@kernel.org>
-References: <20240106122142.235389-1-arinc.unal@arinc9.com>
+	id 1rMb1C-003d4k-0g;
+	Sun, 07 Jan 2024 21:49:20 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-40d5ac76667so12105815e9.1;
+        Sun, 07 Jan 2024 13:49:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1704664156; x=1705268956; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=d5mdwjsu/PFOSh1W0Q3EjHNBZwj9Qa79+/3TGj0T76A=;
+        b=EadxSO5N/4SY1zFV7FPXxaNb30laSsOLoXB62GzwC72u0tDjRSiWuvrNeAIc1OS5Ax
+         5Rr4HtsoJYsrBpsGpLr7t8awpWaL/wLa3Ph/YflxxBXjF622LqvhPwYyHXsbPr0JW6Vv
+         +5vEKCL1w9axB5M3K1vz90KJYdnqr/XQwz29lQPkIYebglmS3qD3SqHbu/4tOSYOsmJt
+         /C9Y9BVpXgJ3fT+TIDwSeqCnY1CWaFP2W4EqkjJ2gGxc1XWfRZp9BKhJEp6XY3EaFgPO
+         MrhnwFQt3BVHSiU0WkbauR29n2eP511lX/rkz2UBq3rAomVJFBNxJb1F+EpydSMTaJ6w
+         rKXA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704664156; x=1705268956;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=d5mdwjsu/PFOSh1W0Q3EjHNBZwj9Qa79+/3TGj0T76A=;
+        b=JG+aidlTwD4oPQDQrBw/pPe55o7l40fHNwEWe83tQYlfKL36my8X+P4fUVRfZIizd5
+         TO0IkOWcDhTrfkyi6ajC47FaQjZzyNggX+aOb7Bxqyr0/R2tt+YroQPzy2ILU1kAi5mt
+         oBkcd6wy528/n++I1p9SP8ySQ1wNjLbrDOJXl63p6hd1PT8fOKdvzcnbTAmFt/LdZiiK
+         7MfnUw4BjKycgV1FG5i88SWorjO7dz1gzv5/O+j5E1p1nAbiWUl3OaEBXMP1Oz4bZwgN
+         EQDPNOl+WxL1tngrZP6C8NkRuzzNYWMIwiOIsk2PVPZC3JRIMy/B4UuYQ0TKxpZLWYr1
+         lbeg==
+X-Gm-Message-State: AOJu0YwPTeWD1pT66omJCP/lkFfqrM10SddHhwQAobHfCQiJJFRf0JQf
+	3g0vZDhX3eQpE9n2qm8ZybM=
+X-Google-Smtp-Source: AGHT+IG3NImT7x1ZNWhqMkGZN8jVJ/SjUMmxQpvLwG5e6+xm5AJDc9F/U0vwnMz2PiFZJZbG0eILqg==
+X-Received: by 2002:a05:600c:3103:b0:40e:3a66:57b5 with SMTP id g3-20020a05600c310300b0040e3a6657b5mr1626285wmo.77.1704664155631;
+        Sun, 07 Jan 2024 13:49:15 -0800 (PST)
+Received: from [192.168.0.3] ([69.6.8.124])
+        by smtp.gmail.com with ESMTPSA id bi26-20020a05600c3d9a00b0040d53588d94sm8775105wmb.46.2024.01.07.13.49.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 07 Jan 2024 13:49:15 -0800 (PST)
+Message-ID: <0f4ec2ff-4ef7-4667-adef-d065cfbc0a91@gmail.com>
+Date: Sun, 7 Jan 2024 23:49:12 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240106122142.235389-1-arinc.unal@arinc9.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [net-next PATCH RFC v3 1/8] dt-bindings: net: document ethernet
+ PHY package nodes
+Content-Language: en-US
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Robert Marko <robert.marko@sartura.hr>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Luo Jie <quic_luoj@quicinc.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Russell King
+ <linux@armlinux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20231126015346.25208-1-ansuelsmth@gmail.com>
+ <20231126015346.25208-2-ansuelsmth@gmail.com>
+ <0926ea46-1ce4-4118-a04c-b6badc0b9e15@gmail.com>
+ <659aedb1.df0a0220.35691.1853@mx.google.com>
+From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
+In-Reply-To: <659aedb1.df0a0220.35691.1853@mx.google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240107_115257_045617_57726BAD 
-X-CRM114-Status: GOOD (  30.04  )
+X-CRM114-CacheID: sfid-20240107_134918_276375_72DA0FE0 
+X-CRM114-Status: GOOD (  36.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,102 +109,188 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jan 06, 2024 at 03:21:42PM +0300, Arınç ÜNAL wrote:
-> From: David Bauer <mail@david-bauer.net>
-> 
-> Currently the MDIO bus of the switches the MT7530 DSA subdriver controls
-> can only be registered as non-OF-based. Bring support for registering the
-> bus OF-based.
-> 
-> The subdrivers that control switches [with MDIO bus] probed on OF must
-> follow this logic to support all cases properly:
-> 
-> No switch MDIO bus defined: Populate ds->user_mii_bus, register the MDIO
-> bus, set the interrupts for PHYs if "interrupt-controller" is defined at
-> the switch node. This case should only be covered for the switches which
-> their dt-bindings documentation didn't document the MDIO bus from the
-> start. This is to keep supporting the device trees that do not describe the
-> MDIO bus on the device tree but the MDIO bus is being used nonetheless.
-> 
-> Switch MDIO bus defined: Don't populate ds->user_mii_bus, register the MDIO
-> bus, set the interrupts for PHYs if ["interrupt-controller" is defined at
-> the switch node and "interrupts" is defined at the PHY nodes under the
-> switch MDIO bus node].
-> 
-> Switch MDIO bus defined but explicitly disabled: If the device tree says
-> status = "disabled" for the MDIO bus, we shouldn't need an MDIO bus at all.
-> Instead, just exit as early as possible and do not call any MDIO API.
-> 
-> The use of ds->user_mii_bus is inappropriate when the MDIO bus of the
-> switch is described on the device tree [1], which is why we don't populate
-> ds->user_mii_bus in that case.
-> 
-> Link: https://lore.kernel.org/netdev/20231213120656.x46fyad6ls7sqyzv@skbuf/ [1]
-> Suggested-by: David Bauer <mail@david-bauer.net>
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> ---
->  drivers/net/dsa/mt7530.c | 18 ++++++++++++++----
->  1 file changed, 14 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 391c4dbdff42..39d7e7ad7154 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -2153,17 +2153,25 @@ mt7530_free_irq(struct mt7530_priv *priv)
->  static int
->  mt7530_setup_mdio(struct mt7530_priv *priv)
->  {
-> +	struct device_node *mnp, *np = priv->dev->of_node;
->  	struct dsa_switch *ds = priv->ds;
->  	struct device *dev = priv->dev;
->  	struct mii_bus *bus;
->  	static int idx;
-> -	int ret;
-> +	int ret = 0;
-> +
-> +	mnp = of_get_child_by_name(np, "mdio");
-> +
-> +	if (mnp && !of_device_is_available(mnp))
-> +		goto out;
+Hi Christian,
 
-nit: I think it would easier on the eyes to simply
-
-		return 0;
-
->  
->  	bus = devm_mdiobus_alloc(dev);
->  	if (!bus)
->  		return -ENOMEM;
->  
-> -	ds->user_mii_bus = bus;
-> +	if (!mnp)
-> +		ds->user_mii_bus = bus;
-> +
->  	bus->priv = priv;
->  	bus->name = KBUILD_MODNAME "-mii";
->  	snprintf(bus->id, MII_BUS_ID_SIZE, KBUILD_MODNAME "-%d", idx++);
-> @@ -2174,16 +2182,18 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
->  	bus->parent = dev;
->  	bus->phy_mask = ~ds->phys_mii_mask;
->  
-> -	if (priv->irq)
-> +	if (priv->irq && !mnp)
->  		mt7530_setup_mdio_irq(priv);
->  
-> -	ret = devm_mdiobus_register(dev, bus);
-> +	ret = devm_of_mdiobus_register(dev, bus, mnp);
-> +	of_node_put(mnp);
->  	if (ret) {
->  		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
->  		if (priv->irq)
->  			mt7530_free_mdio_irq(priv);
->  	}
->  
-> +out:
->  	return ret;
->  }
->  
-> -- 
-> 2.40.1
+On 07.01.2024 20:30, Christian Marangi wrote:
+> On Sun, Jan 07, 2024 at 08:00:33PM +0200, Sergey Ryazanov wrote:
+>> On 26.11.2023 03:53, Christian Marangi wrote:
+>>> Document ethernet PHY package nodes used to describe PHY shipped in
+>>> bundle of 4-5 PHY. The special node describe a container of PHY that
+>>> share common properties. This is a generic schema and PHY package
+>>> should create specialized version with the required additional shared
+>>> properties.
+>>>
+>>> Example are PHY package that have some regs only in one PHY of the
+>>> package and will affect every other PHY in the package, for example
+>>> related to PHY interface mode calibration or global PHY mode selection.
+>>>
+>>> The PHY package node MUST declare the base address used by the PHY driver
+>>> for global configuration by calculating the offsets of the global PHY
+>>> based on the base address of the PHY package and declare the
+>>> "ethrnet-phy-package" compatible.
+>>>
+>>> Each reg of the PHY defined in the PHY package node is absolute and will
+>>> reference the real address of the PHY on the bus.
+>>>
+>>> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+>>> ---
+>>>    .../bindings/net/ethernet-phy-package.yaml    | 75 +++++++++++++++++++
+>>>    1 file changed, 75 insertions(+)
+>>>    create mode 100644 Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml b/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
+>>> new file mode 100644
+>>> index 000000000000..244d4bc29164
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
+>>> @@ -0,0 +1,75 @@
+>>> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: http://devicetree.org/schemas/net/ethernet-phy-package.yaml#
+>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>> +
+>>> +title: Ethernet PHY Package Common Properties
+>>> +
+>>> +maintainers:
+>>> +  - Christian Marangi <ansuelsmth@gmail.com>
+>>> +
+>>> +description:
+>>> +  This schema describe PHY package as simple container for
+>>> +  a bundle of PHYs that share the same properties and
+>>> +  contains the PHYs of the package themself.
+>>> +
+>>> +  Each reg of the PHYs defined in the PHY package node is
+>>> +  absolute and describe the real address of the PHY on the bus.
+>>> +
+>>> +properties:
+>>> +  $nodename:
+>>> +    pattern: "^ethernet-phy-package(@[a-f0-9]+)?$"
+>>> +
+>>> +  compatible:
+>>> +    const: ethernet-phy-package
+>>> +
+>>> +  reg:
+>>> +    minimum: 0
+>>> +    maximum: 31
+>>> +    description:
+>>> +      The base ID number for the PHY package.
+>>> +      Commonly the ID of the first PHY in the PHY package.
+>>> +
+>>> +      Some PHY in the PHY package might be not defined but
+>>> +      still exist on the device (just not attached to anything).
+>>> +      The reg defined in the PHY package node might differ and
+>>> +      the related PHY might be not defined.
+>>> +
+>>> +  '#address-cells':
+>>> +    const: 1
+>>> +
+>>> +  '#size-cells':
+>>> +    const: 0
+>>> +
+>>> +patternProperties:
+>>> +  ^ethernet-phy(@[a-f0-9]+)?$:
+>>> +    $ref: ethernet-phy.yaml#
+>>> +
+>>> +required:
+>>> +  - compatible
+>>> +  - reg
+>>> +
+>>> +additionalProperties: true
+>>> +
+>>> +examples:
+>>> +  - |
+>>> +    mdio {
+>>> +        #address-cells = <1>;
+>>> +        #size-cells = <0>;
+>>> +
+>>> +        ethernet-phy-package@16 {
+>>> +            #address-cells = <1>;
+>>> +            #size-cells = <0>;
+>>> +            compatible = "ethernet-phy-package";
+>>> +            reg = <0x16>;
+>>> +
+>>> +            ethernet-phy@16 {
+>>> +              reg = <0x16>;
+>>> +            };
+>>> +
+>>> +            phy4: ethernet-phy@1a {
+>>> +              reg = <0x1a>;
+>>> +            };
+>>> +        };
+>>> +    };
+>>
+>> So, we ended up on a design where we use the predefined compatible string
+>> 'ethernet-phy-package' to recognize a phy package inside the
+>> of_mdiobus_register() function. During the V1 discussion, Vladimir came up
+>> with the idea of 'ranges' property usage [1]. Can we use 'ranges' to
+>> recognize a phy package in of_mdiobus_register()? IMHO this will give us a
+>> clear DT solution. I mean 'ranges' clearly indicates that child nodes are in
+>> the same address range as the parent node. Also we can list all child
+>> addresses in 'reg' to mark them occupied.
+>>
+>>    mdio {
+>>      ...
+>>
+>>      ethernet-phy-package@16 {
+>>        compatible = "qcom,qca8075";
+>>        reg = <0x16>, <0x17>, <0x18>, <0x19>, <0x1a>;
+>>        ranges;
+>>        ...
+>>
+>>        ethernet-phy@16 {
+>>          reg = <0x16>;
+>>        };
+>>
+>>        ethernet-phy@1a {
+>>          reg = <0x1a>;
+>>        };
+>>      };
+>>    };
+>>
+>> Did you find some issues with the 'ranges' conception?
 > 
+> Nope it's ok but it might pose some confusion with the idea that the
+> very first element MUST be THE STARTING ADDR of the PHY package. (people
+> might think that it's just the list of the PHYs in the package and
+> remove the hardware unconnected ones... but that would be fault of who
+> write the DT anyway.)
+
+Make sense. I do not insist on addresses listing. Mainly I'm thinking of 
+a proper way to show that child nodes are accessible directly on the 
+parent bus, and introducing the special compatibility string, while we 
+already have the 'ranges' property.
+
+But it's good to know Rob's opinion on whether it is conceptually right 
+to use 'ranges' here.
+
+>> And I would like to ask you about another issue raised by Vladimir [1].
+>> These phy chips become SoC with all these built-in PHYs, PCSs, clocks,
+>> interrupt controllers, etc. Should we address this now? Or should we go with
+>> the proposed solution for now and postpone modeling of other peripherals
+>> until we get a real hardware, as Andrew suggested?
+> 
+> Honestly I would postpone untile we have a clear idea of what is
+> actually part of the PHY and what can be handled externally... Example
+> setting the clock in gcc, writing a specific driver...
+> 
+> It's a random idea but maybe most of the stuff required for that PHY is
+> just when it's connected to a switch... In that case it would all be
+> handled in the switch driver (tobe extended qca8k) and all these extra
+> stuff would be placed in that node instead of bloating phy nodes with
+> all kind of clk and other stuff.
+> 
+> This series still require 2 more series (at803x splint and cleanup) to be
+> actually proposed so we have some time to better define this.
+> 
+> What do you think?
+
+Fair enough! Let's postpone until we really need it. I noticed this 
+PHY-like-SoC discussion in the V1 comments, and it was not finished 
+there neither addressed in the latest patch comment. So I asked just to 
+be sure that we were finished with this. Thank you for the clarification.
+
+--
+Sergey
+
 
