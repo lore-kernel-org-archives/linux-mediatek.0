@@ -4,74 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9261C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 14:30:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC0FCC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 15:35:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sVMqThbVP0Q8RE+595KzEmSzoEzPpkpeb2mdqe/54Po=; b=aKB15tzrpS91KhlOtEpMuNIGgZ
-	bdWk3H6fqMwxrCkheYFjF6FcbQ/gS571+10W8liOefSVSNeAKWFEkbSj31E0Yq6bPWw4bFvU42cjU
-	2a78mooNAPHkq9QKkE5HNRaWn+HNU17hAb9kaRXJgvuLU56hFWA7e2IqaKfL8bW990UwnhOV+KBt+
-	xK9+ZbGtmRE0Pu4jHVUrqEEe7ck3m3k1EytGE/wfVc//vyHiRxGb7g4bdp4Z9QE1hrwNJZ4yLVgYu
-	r8jcDO7RHyQtwe6vtmKtsHo0FRpkbXyepu4jWCgXTSvaIuMhNHntqIIIDZ3Fl6LhZBfz8SbDilJbk
-	NkS2YYyw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0dSkJ2ZiJqHanlAP+HAK0y6zusm5LzCHKOPBAF01RGI=; b=4G0j9CalE96FryRInGTbPQdLxa
+	zzXN1CXrRRYw6IuYWs+Lv6sDPY8pX+gQI5+0xeB3bBWiFB7HInlt9q/GyozW6o4mmem510+bz1JEh
+	F6VZhqQvoYeyLj/Qo0u6TtVIUdwFwz1H4H9Z5fvbNHsm01yHgDTxoyOO/mXlDPsLEDYpiT6kLqt2b
+	p0hOZ25NTiOrZ8/icil0RfwFL7IiY8PfMrgmujSBawUf2ESDnnijyGMcPJV+Xu3fllg2Kwpk1XO0N
+	WeV4IS/JweQ9ONNfTB4St2UDkQH+rrETCL0DaVF3MNb0SWAWQfAyLUTNfH+JZc7hF7wl5w9IFxkBt
+	0jCgmtFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMqdp-005Mpo-31;
-	Mon, 08 Jan 2024 14:30:13 +0000
-Received: from mail-pl1-f178.google.com ([209.85.214.178])
+	id 1rMreg-005V6i-2f;
+	Mon, 08 Jan 2024 15:35:10 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMqdm-005Mo8-2f;
-	Mon, 08 Jan 2024 14:30:12 +0000
-Received: by mail-pl1-f178.google.com with SMTP id d9443c01a7336-1d3e2972f65so2808175ad.3;
-        Mon, 08 Jan 2024 06:30:09 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704724209; x=1705329009;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+	id 1rMref-005V5V-1B;
+	Mon, 08 Jan 2024 15:35:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=0dSkJ2ZiJqHanlAP+HAK0y6zusm5LzCHKOPBAF01RGI=; b=dJgt4wTk0nuO8qbaXkpHe2QGRq
+	craSt56fF9Z9Soullk/jqkVP82WCJWpBrr3syfdPTg9HnubP3BPBWxN/B0FxjoEbqbqrgId3ktrmE
+	CCOyPwkiuGaMlJaja1Z2Em1FESWwd17FNr5gar21toiSEpqMZ6OILISxCG0qZ61bHfn9hbRkJ+w6o
+	wDdSk0WYA0ZtvUjptggLfmjUUg4cHbMRD+QiMydKf5d9DSBmnH+cxIt+o8+MeE7LFKOn9FDf9wR8Z
+	+VgLeD6luJ/LCqBNUQRTqPDf9bvaHcssml827KoJ75eQ3nAOpOBVOLzFNKIteK7VpKGQrctbF8Ben
+	fSsG/FPw==;
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1rMrea-007s2p-0y;
+	Mon, 08 Jan 2024 15:35:07 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-33677fb38a3so2160267f8f.0;
+        Mon, 08 Jan 2024 07:35:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1704728101; x=1705332901; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=sVMqThbVP0Q8RE+595KzEmSzoEzPpkpeb2mdqe/54Po=;
-        b=iQP+cXWeI6Rsla/j0MstBMmavlZpx8zqi751cZHP636GQ4jMEv06jWbFVnlG3ThIe4
-         LN9T7IomgLxH/zU7oYSfwxk0fOLOnNp058AQOSWgbdNLbGDk64gUL2afTJS29n7oXrLm
-         3BO3JLO+w40DHn7Weyl0aazJTRQFZ3S6asmaLggoXd2rZpj82O8xNowZ6rKEPcNH5Rl4
-         f82wC0dclCbucC1cMfcge7mvKW9DIvMLXg6EnPJkKc1GkpsMf1TINe1wbL0tqrnIf7Kv
-         7mjvO8qDW5cLjXlUiZyXgz/Jg23ESB4nkhfZeAgrRHb2DtIalj0HzfH6zC1SyqNIypj9
-         UT2Q==
-X-Gm-Message-State: AOJu0Yz+Iv/lj6okIIo5wRjJ8k9arSZOf87z34DS8krqF2mPPbbb9CrS
-	vum1gy9rgKKKt3cZ8Q5iXW8=
-X-Google-Smtp-Source: AGHT+IE3fdqzVYISbL4ZtM/lxTCygtaE0GCar9x98h7e8R949MP4dVwbh+1fDeut8mKc+f/isMwbKQ==
-X-Received: by 2002:a17:902:ce81:b0:1d5:2197:46e9 with SMTP id f1-20020a170902ce8100b001d5219746e9mr1033721plg.117.1704724208990;
-        Mon, 08 Jan 2024 06:30:08 -0800 (PST)
-Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
-        by smtp.gmail.com with ESMTPSA id u13-20020a170902e5cd00b001d09c5424d4sm6321570plf.297.2024.01.08.06.30.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Jan 2024 06:30:08 -0800 (PST)
-Date: Mon, 8 Jan 2024 23:30:06 +0900
-From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-To: Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, qizhong.cheng@mediatek.com,
-	stable@vger.kernel.org
-Subject: Re: [PATCH v4] PCI: mediatek: Clear interrupt status before
- dispatching handler
-Message-ID: <20240108143006.GA2602112@rocinante>
-References: <20231211094923.31967-1-jianjun.wang@mediatek.com>
+        bh=0dSkJ2ZiJqHanlAP+HAK0y6zusm5LzCHKOPBAF01RGI=;
+        b=hIGZH1NFfvfMK1yo3ypPkDKdov5b0zpgfV2FKFEUSM3dIwnAWj6uHGmglqcBjm3tUw
+         +h6Eac08CgooMzQ8LnBYOt5ZDX1hNnglRFtH/x7KOa/uf/oJNq6e2EweReFDCC7i3VZG
+         PZy5PuH5tDiNX0ZBfAhqVUknH6vI0EyahoQBkYNEX1CrgQip91cXynFYpY2HAVqSLITB
+         e2Oal36W49H/z8sB1I7jxvy8XZgw7hMLi7Vhy7p20WP3lvs6r/mXI94ZiNpLdOyd8cma
+         sQBvWDBFcsDsN/82jMiJLiuhRzjRxL14X5NXkRsEiW62n7QFUVQG1kox7KC/dAC2F6v0
+         KzVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704728101; x=1705332901;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0dSkJ2ZiJqHanlAP+HAK0y6zusm5LzCHKOPBAF01RGI=;
+        b=QXHWE3ZWsFhqpeU+SLlyGOTE3EqFq0fBeKWE/95UMgmNZGD7XiA8Zduq/VGqj3oy7L
+         2XnC6hdxHoIvOgUwSBGR6K4mO9JjZUjm1W/V+WpYIo1MZ6EKam4ORbCoraFYaeh8552p
+         wAZ0qeWrXLOMLoFydNdZY+WGr8kmxZqjUS4MvxjeR33w9y2juJx1IspIosddqen4ksDV
+         Aas93gl1GnCgE1DeJQduQULcBWWtvlKmonSjN6v7HcfE+C8PTPBRyTWkBnLUezxWtONw
+         /c+aWoEd2VRcxGvbog+WQhBkMOo1YXFb9tDI+QBhwUgzItpsqfT7jeenS8cXMq1SleDz
+         mAzg==
+X-Gm-Message-State: AOJu0Yw9p6rjMCAr2gqomEhMTFrD0ivIPQab78NkYGln9bfngxKp2jui
+	lwFX6Ezs6proacQmRL+buEK/HW7iRHlin7fKt0c=
+X-Google-Smtp-Source: AGHT+IEDyiUE/fCZgQ2fiflpohBhP714EYsyUDi/vkkXfWWGgss80RDHy8tK389zVkT20aui+pSoTQyf4TXc3l08ehI=
+X-Received: by 2002:adf:f0d2:0:b0:337:4c69:d6b with SMTP id
+ x18-20020adff0d2000000b003374c690d6bmr1755895wro.6.1704728101148; Mon, 08 Jan
+ 2024 07:35:01 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231211094923.31967-1-jianjun.wang@mediatek.com>
+References: <1700864395-1479-4-git-send-email-quic_mojha@quicinc.com>
+ <20231225135542.1789-1-ruipengqi7@gmail.com> <520e377d-e990-c185-4a20-07806873e506@quicinc.com>
+In-Reply-To: <520e377d-e990-c185-4a20-07806873e506@quicinc.com>
+From: Ruipeng Qi <ruipengqi7@gmail.com>
+Date: Mon, 8 Jan 2024 23:34:50 +0800
+Message-ID: <CADHLONEn4oyRFrNWEbt2mxMczyc8FrDLMzaZ7fsijzm9Y8VTBA@mail.gmail.com>
+Subject: Re: RESEND: Re: [Patch v6 03/12] docs: qcom: Add qualcomm minidump guide
+To: Mukesh Ojha <quic_mojha@quicinc.com>
+Cc: agross@kernel.org, alim.akhtar@samsung.com, andersson@kernel.org, 
+	bmasney@redhat.com, conor+dt@kernel.org, corbet@lwn.net, gpiccoli@igalia.com, 
+	keescook@chromium.org, kernel@quicinc.com, kgene@kernel.org, 
+	konrad.dybcio@linaro.org, krzysztof.kozlowski+dt@linaro.org, 
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	linux-doc@vger.kernel.org, linux-hardening@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-remoteproc@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
+	mathieu.poirier@linaro.org, matthias.bgg@gmail.com, nm@ti.com, 
+	robh+dt@kernel.org, tony.luck@intel.com, vigneshr@ti.com, 
+	qiruipeng@lixiang.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240108_063010_867230_57C2EBAA 
-X-CRM114-Status: UNSURE (   9.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240108_153504_598550_A39E4A8D 
+X-CRM114-Status: GOOD (  16.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,20 +111,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+On Wed, Jan 3, 2024 at 11:27=E2=80=AFPM Mukesh Ojha <quic_mojha@quicinc.com=
+> wrote:
+>
+>
+> One more thing, kernel part of minidump, we are calling it APSS Minidump
+> has limitation of no of entries so it will be difficult to dump
+> non-continuous regions after a certain number of registration ~200. Howev=
+er,
+> we do have a solution in downstream kernel for it like to create a big
+> CMA buffer and register this buffer with Minidump so that whatever gets
+> dumped in that buffer gets captured during crash and fill up this buffer
+> and create elf during panic. I think, similar thing you are also doing
+> with your OS-minidump.
+>
+> I have just glanced into your implementation of OS-minidump, it
+> more of relying on basic concept of RAM content preserved
+> across boot and later reading it through procfs but this basic
+> stuff is common to pstore(ram) as well and pstore has file system
+> support why don't you make your driver as one of pstore record and that
+> way Qualcomm minidump also gets benefited where entire OS-minidump
+> record gets registered with Qualcomm minidump and we get this on panic
+> and you get this via pstorefs.
+>
+Thanks Mukesh=EF=BC=81It is a good suggestion to move OS-minidump forward!
+By the way, I have some questions here for which I need your assistance.
 
-> We found a failure when used iperf tool for wifi performance testing,
-> there are some MSIs received while clearing the interrupt status,
-> these MSIs cannot be serviced.
-> 
-> The interrupt status can be cleared even the MSI status still remaining,
-> as an edge-triggered interrupts, its interrupt status should be cleared
-> before dispatching to the handler of device.
+Firstly,I can reimplement OS-minidump as one of the pstore records to
+dump data. The resulting dump file would contain thousands of
+non-contiguous memory regions, each with only the virtual address and
+size recorded. As far as I know, Qualcomm's minidump can handle
+several memory regions, each with a physical address and size.
+This seems to be a difference, and I'm curious as to how you deal with
+data dumped by OS-minidump. I would really appreciate it if you could
+provide more details on your approach.
 
-Applied to controller/mediatek, thank you!
+Secondly, what tools do you use to analyze the dump data, and does it
+support crash tool?
 
-[1/1] PCI: mediatek: Clear interrupt status before dispatching handler
-      https://git.kernel.org/pci/pci/c/4fea201e110e
+Lastly, is Qualcomm minidump compatible with non-Qualcomm SoCs,
+and if so, how can one use it?
 
-	Krzysztof
+Best Regards
+Ruipeng Qi
 
