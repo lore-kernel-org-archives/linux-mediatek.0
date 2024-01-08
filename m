@@ -4,68 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60AEFC47073
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 08:29:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 492BAC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 08:52:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L1ntSDYdIqiXGmKDUk14VC4eoZWflbnSsw+b9rVVPPs=; b=tpyqkeE1HsTwnOtBLU/6eo/ucd
-	m+iAxXTySeP1oF/Uv71Y7zhZeK6CLUqm6ciTVQgOuegaQXjxFJacEoFtHr1agaJa5oO6cbW+VqAXo
-	NcCdV1lOlQdM3LhNEf9N/prPeALg7KFuwGzM5tVxW/LV6Mx9xCei2+wjWm2gCxxzRf4hHqzb0bTNo
-	qMDG/In1WrsljdGl0COivodaCD9/KEuFWR23duN09MbQwxLC5XdUP7daW/NrrUCz42agEOHB4Iy0L
-	AU8ZXXJ2syv9l5FhxlPZPX/AvtBMBnDuzEzsXDNSUjTp5BbBlqSs9cEWo3j+2f7xZdIzJMJxGEQct
-	Oha/7YoA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ppF24KpgP4fjgy/hlMdkQhkb5I1IwiQejK7rQbEm/PM=; b=3rxLHW5noFU03C
+	4Jrc5mS4gfA7KndeKl2aBUPV/k7Goi/in3trLbITH2D37lCBAC31FhDCIakyfCVTNGpiHlum+OCdW
+	5nNomhNkD/Tmpb81VzAAMlmLSl15LpSmCbVoPBEY2VbRjoLpRGu6sWPlx8gkxs9XNrrENkbNbktLV
+	tRheE15a3WJg4yCwrk2GShjojPlO0vEZc2rPSIjxNO8kljbCKACekvzG2nROMMsuZs4sWBEOmP+pk
+	FqhI3svPE5Hhn84zpPT0FoU6FLTscaNZdjfu1HwmNkbLkzLITsRv/7F9MgkFP9w3r+KXHzH6GMtxz
+	ov2Bq9obluDuLq8qR7ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMl1B-004JhL-1g;
-	Mon, 08 Jan 2024 08:29:57 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1rMlNO-004N5F-0W;
+	Mon, 08 Jan 2024 08:52:54 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMl17-004Jg3-1R;
-	Mon, 08 Jan 2024 08:29:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 45B0FB80C76;
-	Mon,  8 Jan 2024 08:29:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A28AFC433C7;
-	Mon,  8 Jan 2024 08:29:45 +0000 (UTC)
-Message-ID: <545138cc-2cc1-4da0-9b26-7ebe4241c8df@xs4all.nl>
-Date: Mon, 8 Jan 2024 09:29:42 +0100
+	id 1rMlNK-004N0l-1P;
+	Mon, 08 Jan 2024 08:52:51 +0000
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a28ee72913aso444195366b.1;
+        Mon, 08 Jan 2024 00:52:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1704703967; x=1705308767; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ppF24KpgP4fjgy/hlMdkQhkb5I1IwiQejK7rQbEm/PM=;
+        b=Sp6+8vXsxkbvab90K9Th+cFys0+sAQsxgyu9gwUGJ4XZXRcQnvdaWs1bVPEe8Lgutz
+         CBiivleOuArK84z64dNfEIrsVuC9/2l2vlx32EjG9OxuqtUrlzJWN5XJHw7d6XqZFD6l
+         Hv647kAvNMaussTHGzvUBr64m+p97l331xhgDo2W7bqFVgZuaaTaQu587MLfn4db73ZX
+         xMfedJk3MfmYsQaCNYkhQdTvTpXrb3oTuF5kKImf4e5Woroa7BZj4HzqArM0mMO2p+i8
+         7qVxGgMzY8nMTxkAwDH76N4efa+HVki40lwxdg/QNLvB1jAvjVnhHjgflx5/O7/mcadn
+         ECTA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704703967; x=1705308767;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ppF24KpgP4fjgy/hlMdkQhkb5I1IwiQejK7rQbEm/PM=;
+        b=E5JzPagqCXjcaF9buom63U5aqtPQYfxCle9LlEJTEMjKPnOpol1lNijP4gVNyXlxtZ
+         o5sAceH8tZrgMBOX2+c9ezwxMT8sxLl5FPHGK1MzQ9doszS+SmTr7CI8kviMTPnjP4Dt
+         4LIC6wYNJpRat2ys2oV6RwQpPMPqXcuFcZdRvHICQi+AqFxVyVobiMMetLCneYPy07K1
+         vJD+1pGjolifAPFQ1NtoA4daOna4MAuTt6nWZdifBw7K93rCnDVF2m9jhKiCJYoQ7wxK
+         vN5FVWvbA4eFS1UWxeMtBzapFxK3ug0yGfl/mjWF8wEF0H9/PLHww1UzzOTbLHN36oIg
+         P4qg==
+X-Gm-Message-State: AOJu0YzgJeUn1m/yRcQjTQJDlQ0/UGZcwmdHX/fhV/QvjgoE+sujSlwp
+	Qsky6MfhFYtKXHByCIdzHdY=
+X-Google-Smtp-Source: AGHT+IEZUGj+AGl61d6B5jZoTKEYcG9DUr85VaOxtUgLTqQ+hJ52tqWzHjbsBOE6xTUBngYETXEMGA==
+X-Received: by 2002:a17:906:c2d6:b0:a2a:a3dc:621b with SMTP id ch22-20020a170906c2d600b00a2aa3dc621bmr1080196ejb.4.1704703966805;
+        Mon, 08 Jan 2024 00:52:46 -0800 (PST)
+Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.gmail.com with ESMTPSA id uz29-20020a170907119d00b00a2aae23b414sm666046ejb.26.2024.01.08.00.52.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 08 Jan 2024 00:52:46 -0800 (PST)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Subject: [PATCH V2 0/3] mt7988: initial DT changes
+Date: Mon,  8 Jan 2024 09:52:25 +0100
+Message-Id: <20240108085228.4727-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3,04/21] v4l: add documentation for secure memory flag
-To: Jeffrey Kardatzke <jkardatzke@google.com>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>,
- =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Nathan Hebert <nhebert@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>,
- Yong Wu <yong.wu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- Steve Cho <stevecho@chromium.org>, Sumit Semwal <sumit.semwal@linaro.org>,
- Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
- "T . J . Mercier" <tjmercier@google.com>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org,
- linaro-mm-sig@lists.linaro.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20231206081538.17056-1-yunfei.dong@mediatek.com>
- <20231206081538.17056-5-yunfei.dong@mediatek.com>
- <ce2110bf-a16a-45ae-979b-7e41be2896cd@xs4all.nl>
- <CA+ddPcM6nz0ufF5NXUq7E_vF6HnFKrEEag5iUDAknT6=hWTCNQ@mail.gmail.com>
-Content-Language: en-US, nl
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <CA+ddPcM6nz0ufF5NXUq7E_vF6HnFKrEEag5iUDAknT6=hWTCNQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240108_002953_828964_75D65BC5 
-X-CRM114-Status: GOOD (  18.05  )
+X-CRM114-CacheID: sfid-20240108_005250_473037_BC263680 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,77 +87,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>, =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, jason-ch chen <Jason-ch.Chen@mediatek.com>, linux-mediatek@lists.infradead.org, Macpaul Lin <macpaul.lin@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 04/01/2024 21:05, Jeffrey Kardatzke wrote:
-> On Mon, Dec 11, 2023 at 3:05 AM Hans Verkuil <hverkuil-cisco@xs4all.nl> wrote:
->>
->> On 06/12/2023 09:15, Yunfei Dong wrote:
->>> From: Jeffrey Kardatzke <jkardatzke@google.com>
->>>
->>> Adds documentation for V4L2_MEMORY_FLAG_SECURE.
->>>
->>> Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
->>> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
->>> ---
->>>  Documentation/userspace-api/media/v4l/buffer.rst | 8 +++++++-
->>>  1 file changed, 7 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/Documentation/userspace-api/media/v4l/buffer.rst b/Documentation/userspace-api/media/v4l/buffer.rst
->>> index 52bbee81c080..a5a7d1c72d53 100644
->>> --- a/Documentation/userspace-api/media/v4l/buffer.rst
->>> +++ b/Documentation/userspace-api/media/v4l/buffer.rst
->>> @@ -696,7 +696,7 @@ enum v4l2_memory
->>>
->>>  .. _memory-flags:
->>>
->>> -Memory Consistency Flags
->>> +Memory Flags
->>>  ------------------------
->>>
->>>  .. raw:: latex
->>> @@ -728,6 +728,12 @@ Memory Consistency Flags
->>>       only if the buffer is used for :ref:`memory mapping <mmap>` I/O and the
->>>       queue reports the :ref:`V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS
->>>       <V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS>` capability.
->>> +    * .. _`V4L2-MEMORY-FLAG-SECURE`:
->>> +
->>> +      - ``V4L2_MEMORY_FLAG_SECURE``
->>> +      - 0x00000002
->>> +      - DMA bufs passed into the queue will be validated to ensure they were
->>> +     allocated from a secure dma-heap.
->>
->> Hmm, that needs a bit more work. How about:
->>
->> - The queued buffers are expected to be in secure memory. If not, an error will be
->>   returned. This flag can only be used with ``V4L2_MEMORY_DMABUF``. Typically
->>   secure buffers are allocated using a secure dma-heap. This flag can only be
->>   specified if the ``V4L2_BUF_CAP_SUPPORTS_SECURE_MEM`` is set.
->>
-> 
-> Thanks Hans. Yunfei, can you integrate this change into the patch please?
-> 
->> In addition, the title of this table is currently "Memory Consistency Flags": that
->> should be renamed to "Memory Flags".
-> 
-> Hans, the patch is already renaming the table as you suggested. :)
-> (unless there's some other spot I'm missing)
+From: Rafał Miłecki <rafal@milecki.pl>
 
-Sorry for the noise, I missed that change.
+This work is based on linux-next content and was successfully verified
+using "dtbs_check". It's initial code for MT7988A that will get extended
+as we get more bindings available (pinctrl is big blocker right now).
 
-Regards,
+AngeloGioacchino, Matthias: is this something you could queue in
+git://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux
+for v6.9?
 
-	Hans
+Rafał Miłecki (3):
+  dt-bindings: arm64: mediatek: Add MT7988A and BPI-R4
+  arm64: dts: mediatek: Add initial MT7988A and BPI-R4
+  arm64: dts: mediatek: mt7988: add clock controllers
 
->>
->> Regards,
->>
->>         Hans
->>
->>>
->>>  .. raw:: latex
->>>
->>
+ .../devicetree/bindings/arm/mediatek.yaml     |   4 +
+ arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+ .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  |  11 ++
+ arch/arm64/boot/dts/mediatek/mt7988a.dtsi     | 136 ++++++++++++++++++
+ 4 files changed, 152 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+
+-- 
+2.35.3
 
 
