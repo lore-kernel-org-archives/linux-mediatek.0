@@ -4,104 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0A7EC3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 12:34:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30935C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 13:20:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=InaA6S2R9U+w0dMzKJ26FvYihdPWx+aFSXWaCzGQox0=; b=CWNVycvMQaVpIZp8diLJvD/ang
-	zf1XlYL3FC9WYl05X5U9ZZdJc6JtzOFOqjraR6QUqk3dz3RlFnRDlAsno5pfUnd0pu+P2NQE0ff8b
-	otU20T6Kbkoy2uVpEOJIszM9a8NQUGNw5X5hNn645LaU2cSXvNQ8ZcEXsUkoaa7tCsZ6TBweYOUzP
-	WT5/WsS0LocNSP/2FI+IwSwl/hrqVrJjuKD895prdy0t5eJyZbB8x8SMAGZfk2lT8YWgEiloEvVYy
-	s/Sm5BqMvM1CA4mzlyo9MIzvyOH5d3yEVHG4SXtoy80Fq+z+NqtzMXDp/i5TQ5mdQHCuE2CmU51KP
-	iSl6TJ5Q==;
+	bh=iMQUfhOKGODVKE5j7lmJb9vjYDymD1aXyaIUsVPYuyY=; b=igNnRy12/LMJef6ncqZ0UPQrOw
+	Q3QdQivDRDeMSgGqktNC0X4dzyxXfZRJOyMaM6utMn4E/iak0KnNJ1XJhX0PX2bPklxBuVPt5vuWM
+	uOTeL3Q8bt061+sNt3s24obUcoFnhA3VLkdhB8K3Vlom8kg02rtUQaQTMvND+5DwdgUia1YBLduiu
+	Cw6y5QaWVfM1vttL0Wt3c6ownyJHbhO1SCdD6yNMskPNCG7dBmaesyUK4etcQHN9qmStzUJ59m/cr
+	I9QpTU1DBkpl/NumcSUX1r/Acga00VFwY/FoQLHYsRyVZ1CK2Fw9/M9zVmampKHfroV3jU88K5ZQF
+	KO9DNX6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMoqE-0054Ud-2U;
-	Mon, 08 Jan 2024 12:34:54 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1rMpYE-005C0e-1k;
+	Mon, 08 Jan 2024 13:20:22 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMoq9-0054Q4-2J;
-	Mon, 08 Jan 2024 12:34:51 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-55790581457so1299333a12.3;
-        Mon, 08 Jan 2024 04:34:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704717287; x=1705322087; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=InaA6S2R9U+w0dMzKJ26FvYihdPWx+aFSXWaCzGQox0=;
-        b=hdfcobFmiyF7tqDHkhs5kkw/Ao+3S41dSOxbNhK4ra2ZdcqcfgjzYp0FlIq/l8TBpv
-         tTWGgV7PaTOeJGAC/2aSPBIuR0w7qpWZxkoiqNdojNF3xzZESY++WWVu6tz9Qd+XAaFC
-         SknH7P34qNrq1h64GSwIq+CE5NuzI7Fll/rtbfHTaKiEvWvPEbpaNDtQUJunb5mX78UP
-         gykutRldzlHuoux7wIokCM6oOsxe3hcRgiw/Du8qE2WJwt4iaNFgqJTmqEH3pOJWDEwz
-         qr8r7Ri5B1EJaNlj0IaA+aKZG8SUKWzycQ3pYBMKU7vuW7PBj3uUziZNJN9R1zZnKuM/
-         tC2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704717287; x=1705322087;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=InaA6S2R9U+w0dMzKJ26FvYihdPWx+aFSXWaCzGQox0=;
-        b=X3HUiyohO7RYM+naAUqlhkK25E2/63OAHM/Uk1zQ8lqtEtCUoECZtDt6+NOLad4cBL
-         5EMqo9n5vaO7RQ4DL7qPO6zZ5JKtBpV8zBQ7u9PSOJavwCxtZthJWP+OerjyYnyPNDU1
-         Hnwh4x7+sBh/dF6tADBdMABsHeIIGcpxsUNB/RVQunXJkx/HeajnKf8gVesTZii1B8LM
-         YUl6OqBibKBjcXlEqz/qpcilR6AeZvwTJTDJ1xC4O3fyauDN+iKoRQYerw5Z9ZY62EOd
-         lSHe37H3RSP4ncy19GJVc6a56bx0S9b9VS9T+Flb62JQ4kmUGvxHzeEZ8VAVXWZm2TsY
-         Y9/Q==
-X-Gm-Message-State: AOJu0YwSsP9DSvkVsSwJ94qgEyXm5CpuG7S0qn8VUBiKmALiwthhc1p+
-	cxjAhQa5OYhgm8uCA+OBXNs=
-X-Google-Smtp-Source: AGHT+IGUddrnY5+YKbCei4noQYPHLM7BkRkB2zZCINU5UYnRktijbOTfd3LtC/AkKciXs9PFqbp8wQ==
-X-Received: by 2002:a17:907:770c:b0:a28:e441:7998 with SMTP id kw12-20020a170907770c00b00a28e4417998mr1222461ejc.108.1704717287040;
-        Mon, 08 Jan 2024 04:34:47 -0800 (PST)
-Received: from skbuf ([188.25.255.36])
-        by smtp.gmail.com with ESMTPSA id 1-20020a170906318100b00a2a632e4eebsm1439209ejy.119.2024.01.08.04.34.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Jan 2024 04:34:46 -0800 (PST)
-Date: Mon, 8 Jan 2024 14:34:44 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: Simon Horman <horms@kernel.org>, Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
+	id 1rMpYB-005BzV-0G;
+	Mon, 08 Jan 2024 13:20:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=iMQUfhOKGODVKE5j7lmJb9vjYDymD1aXyaIUsVPYuyY=; b=oGwAScyDtVosDA7OHfpyUWlDYZ
+	Ps+1KDLsZouzt7iLOTnSCi7vIfN1KrCCKkPSBx+zOOyTvP8URff4bcbkmgcrHu1efIzf2yR7T7rQ9
+	vSqGltlTLDjW3Zf2g1rUhReSar9xRROmG4h8YTwuMbFHK/ahLt52/bmak5X7nU4OhHbs=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1rMpXk-004dn5-LD; Mon, 08 Jan 2024 14:19:52 +0100
+Date: Mon, 8 Jan 2024 14:19:52 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Jie Luo <quic_luoj@quicinc.com>
+Cc: Sergey Ryazanov <ryazanov.s.a@gmail.com>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Robert Marko <robert.marko@sartura.hr>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	David Bauer <mail@david-bauer.net>, mithat.guner@xeront.com,
-	erkin.bozoglu@xeront.com,
-	Luiz Angelo Daros de Luca <luizluca@gmail.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next] net: dsa: mt7530: support OF-based registration
- of switch MDIO bus
-Message-ID: <20240108123444.r3k4mhgii2yontc4@skbuf>
-References: <20240106122142.235389-1-arinc.unal@arinc9.com>
- <20240107195241.GB132648@kernel.org>
- <65274929-fa59-482c-a744-6b9ce162ab46@arinc9.com>
- <20240108110000.aujqhlufehngtkjj@skbuf>
- <20240106122142.235389-1-arinc.unal@arinc9.com>
- <20240107195241.GB132648@kernel.org>
- <65274929-fa59-482c-a744-6b9ce162ab46@arinc9.com>
- <20240108110000.aujqhlufehngtkjj@skbuf>
- <7e89034c-afbd-4180-98e5-50d8cd07f924@arinc9.com>
- <7e89034c-afbd-4180-98e5-50d8cd07f924@arinc9.com>
+Subject: Re: [net-next PATCH RFC v3 1/8] dt-bindings: net: document ethernet
+ PHY package nodes
+Message-ID: <841ef784-b27e-4f7a-94f2-f04f93178c61@lunn.ch>
+References: <20231126015346.25208-1-ansuelsmth@gmail.com>
+ <20231126015346.25208-2-ansuelsmth@gmail.com>
+ <0926ea46-1ce4-4118-a04c-b6badc0b9e15@gmail.com>
+ <1437d9df-2868-43f5-aebd-e0c57fe4d905@lunn.ch>
+ <b75e6267-7d54-412e-8882-af4d9a0b54e6@quicinc.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <7e89034c-afbd-4180-98e5-50d8cd07f924@arinc9.com>
- <7e89034c-afbd-4180-98e5-50d8cd07f924@arinc9.com>
+In-Reply-To: <b75e6267-7d54-412e-8882-af4d9a0b54e6@quicinc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240108_043449_754426_65AAEF5A 
-X-CRM114-Status: GOOD (  19.15  )
+X-CRM114-CacheID: sfid-20240108_052019_258989_4187C0D3 
+X-CRM114-Status: GOOD (  23.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,83 +89,233 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 08, 2024 at 03:14:45PM +0300, Arınç ÜNAL wrote:
-> I realised that I also miss these:
+> Since qca8075 PHY is also multiple port PHY, which is same as qca8084,
+> but qca8084 also includes the integrated clock controller, this is the
+> first qcom PHY chip integrating the clock controller internally.
+> can we also consider designing the clocks and resets DT models in the
+> PHY package DT.
 > 
-> - run of_node_put(mnp) if bus = devm_mdiobus_alloc(dev) fails
-> - don't run mt7530_free_mdio_irq if MDIO bus is described on OF
+> For qca8084 PURE PHY chip, which is the quad PHY chip and two PCSes,
+> it integrates the clock controller that generates the clocks to be used
+> by the link of PHYs, the integrated controller also provides the resets
+> to the PHY,  the clock controller(NSSCC) driver of qca8084 works at the
+> same way of the GCC of SoC(IPQ), qca8084 needs to be initialized with
+> the clocks and resets for the qca8084 PHY package, these clocks and
+> resets are generated by the NSSCC, even for PURE phy chip qca8084, there
+> is also some PHY package level clocks needs to be initialized.
 > 
-> Please let me know if this addresses everything:
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 391c4dbdff42..cf2ff7680c15 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -2146,24 +2146,40 @@ mt7530_free_irq_common(struct mt7530_priv *priv)
->  static void
->  mt7530_free_irq(struct mt7530_priv *priv)
->  {
-> -	mt7530_free_mdio_irq(priv);
-> +	struct device_node *mnp, *np = priv->dev->of_node;
-> +
-> +	mnp = of_get_child_by_name(np, "mdio");
-> +	if (!mnp)
-> +		mt7530_free_mdio_irq(priv);
-> +	of_node_put(mnp);
-> +
->  	mt7530_free_irq_common(priv);
->  }
->  static int
->  mt7530_setup_mdio(struct mt7530_priv *priv)
->  {
-> +	struct device_node *mnp, *np = priv->dev->of_node;
->  	struct dsa_switch *ds = priv->ds;
->  	struct device *dev = priv->dev;
->  	struct mii_bus *bus;
->  	static int idx;
-> -	int ret;
-> +	int ret = 0;
-> +
-> +	mnp = of_get_child_by_name(np, "mdio");
-> +
-> +	if (mnp && !of_device_is_available(mnp))
-> +		goto out;
->  	bus = devm_mdiobus_alloc(dev);
-> -	if (!bus)
-> -		return -ENOMEM;
-> +	if (!bus) {
-> +		ret = -ENOMEM;
-> +		goto out;
-> +	}
-> +
-> +	if (!mnp)
-> +		ds->user_mii_bus = bus;
-> -	ds->user_mii_bus = bus;
->  	bus->priv = priv;
->  	bus->name = KBUILD_MODNAME "-mii";
->  	snprintf(bus->id, MII_BUS_ID_SIZE, KBUILD_MODNAME "-%d", idx++);
-> @@ -2174,16 +2190,18 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
->  	bus->parent = dev;
->  	bus->phy_mask = ~ds->phys_mii_mask;
-> -	if (priv->irq)
-> +	if (priv->irq && !mnp)
->  		mt7530_setup_mdio_irq(priv);
-> -	ret = devm_mdiobus_register(dev, bus);
-> +	ret = devm_of_mdiobus_register(dev, bus, mnp);
->  	if (ret) {
->  		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
-> -		if (priv->irq)
-> +		if (priv->irq && !mnp)
->  			mt7530_free_mdio_irq(priv);
->  	}
-> +out:
-> +	of_node_put(mnp);
->  	return ret;
->  }
+> here is the diagram of qca8084.
+> __| |_______________| |__
+> | PCS0 |          |PCS1 |
+> |______|          |_____|
+> |_________________      |
+> |                |      |
+> |     NSSCC      |      |
+> |________________|      |
+> |_______________________|
+> |     |     |     |     |
+> |PHY1 |PHY2 |PHY3 |PHY4 |
+> |_____|_____|_____|_____|
 
-Looks ok.
+Please add to the diagram the external clocks and external resets.
 
-Please note that net-next has now closed. Sorry that I couldn't bring
-myself to review more during the weekend and the holidays.
-https://lore.kernel.org/netdev/20240107172221.733a7a44@kernel.org/
+Additionally, add the resets and clocks between the NSSCC and the
+individual PHYs. Typically, the internal clocks and resets are not in
+DT, at last not for a single PHY. For a quad PHY in a package, it
+might make sense to add them. Before we can decide that, we need a
+clear idea what the hardware looks like.
+
+> let me example the initial clocks and resets for the pure PHY chip qca8084
+> as below, the clocks and resets should be put into the first
+> MDIO node to be initialized firstly before qca8084 PHY will work.
+> 
+> ethernet-phy-package@0 {
+> 
+>         #address-cells = <1>;
+> 
+>         #size-cells = <0>;
+> 
+>         compatible = "ethernet-phy-package";
+> 
+>         reg = <0>;
+> 
+> 
+> 
+>         /* initial PHY package level clocks */
+> 
+>         clocks = <&qca8k_nsscc NSS_CC_APB_BRIDGE_CLK>,
+> 
+>                <&qca8k_nsscc NSS_CC_AHB_CLK>,
+> 
+>                <&qca8k_nsscc NSS_CC_SEC_CTRL_AHB_CLK>,
+> 
+>                <&qca8k_nsscc NSS_CC_TLMM_CLK>,
+> 
+>                <&qca8k_nsscc NSS_CC_TLMM_AHB_CLK>,
+> 
+>                <&qca8k_nsscc NSS_CC_CNOC_AHB_CLK>,
+> 
+>                <&qca8k_nsscc NSS_CC_MDIO_AHB_CLK>;
+
+Device tree effectively defined devices on bus, in a tree, and how
+they interconnect. Does the NSSCC have its own address on the MDIO
+bus? Or does it share an address with one of the PHYs? It could be we
+want to describe the NSSCC as a DT node of its own within the
+package. It is probably both a clock consumer, and a clock provider.
+The individual PHYs are then clock consumers, of the clocks the NSSCC
+exports. Same for resets.
+
+> 
+>         clock-names = "apb_bridge",
+> 
+>                 "ahb",
+> 
+>                 "sec_ctrl_ahb",
+> 
+>                 "tlmm",
+> 
+>                 "tlmm_ahb",
+> 
+>                 "cnoc_ahb",
+> 
+>                 "mdio_ahb";
+> 
+> 
+> 
+>         /* initial PHY package level reset */
+> 
+>         resets = <&qca8k_nsscc NSS_CC_DSP_ARES>;
+> 
+>         reset-names = "gephy_dsp";
+> 
+> 
+> 
+>         /* initial clocks and resets for first phy */
+> 
+>         phy0 {
+> 
+>                 reg = <0>;
+> 
+>                 clocks = <&qca8k_nsscc NSS_CC_GEPHY0_SYS_CLK>;
+> 
+>                 clock-names = "gephy0_sys";
+> 
+>                 resets = <&qca8k_nsscc NSS_CC_GEPHY0_SYS_ARES>,
+> 
+>                        <&qca8k_nsscc NSS_CC_GEPHY0_ARES>;
+> 
+>                 reset-names = "gephy0_sys",
+> 
+>                         "gephy0_soft";
+> 
+>         };
+> 
+> 
+> 
+>         /* initial clocks and resets for second phy */
+> 
+>         phy1 {
+> 
+>                 reg = <1>;
+> 
+>                 clocks = <&qca8k_nsscc NSS_CC_GEPHY1_SYS_CLK>;
+> 
+>                 clock-names = "gephy1_sys";
+> 
+>                 resets = <&qca8k_nsscc NSS_CC_GEPHY1_SYS_ARES>,
+> 
+>                        <&qca8k_nsscc NSS_CC_GEPHY1_ARES>;
+> 
+>                 reset-names = "gephy1_sys",
+> 
+>                         "gephy1_soft";
+> 
+>         };
+> 
+> 
+> 
+>         /* initial clocks and resets for third phy */
+> 
+>         phy2 {
+> 
+>                 reg = <2>;
+> 
+>                 clocks = <&qca8k_nsscc NSS_CC_GEPHY2_SYS_CLK>;
+> 
+>                 clock-names = "gephy2_sys";
+>                 resets = <&qca8k_nsscc NSS_CC_GEPHY2_SYS_ARES>,
+> 
+>                        <&qca8k_nsscc NSS_CC_GEPHY2_ARES>;
+> 
+>                 reset-names = "gephy2_sys",
+> 
+>                         "gephy2_soft";
+> 
+>         };
+> 
+> 
+> 
+>         /* initial clocks and resets for fourth phy */
+> 
+>         phy3 {
+> 
+>                 reg = <3>;
+> 
+>                 clocks = <&qca8k_nsscc NSS_CC_GEPHY3_SYS_CLK>;
+> 
+>                 clock-names = "gephy3_sys";
+> 
+>                 resets = <&qca8k_nsscc NSS_CC_GEPHY3_SYS_ARES>,
+> 
+>                        <&qca8k_nsscc NSS_CC_GEPHY3_ARES>;
+> 
+>                 reset-names = "gephy3_sys",
+> 
+>                         "gephy3_soft";
+> 
+>         };
+
+This is starting to look O.K.
+
+>         /* initial clocks and resets for pcs0. */
+> 
+>         pcs0 {
+> 
+>                 reg = <4>;
+> 
+>                 clocks = <&qca8k_nsscc NSS_CC_SRDS0_SYS_CLK>;
+> 
+>                 clock-names = "srds0_sys";
+> 
+>                 resets = <&qca8k_nsscc NSS_CC_SRDS0_SYS_ARES>;
+> 
+>                 reset-names = "srds0_sys";
+> 
+>         };
+> 
+> 
+> 
+>         /* initial clocks and resets for pcs1. */
+> 
+>         pcs1 {
+> 
+>                 reg = <5>;
+> 
+>                 clocks = <&qca8k_nsscc NSS_CC_SRDS1_SYS_CLK>;
+> 
+>                 clock-names = "srds1_sys";
+> 
+>                 resets = <&qca8k_nsscc NSS_CC_SRDS1_SYS_ARES>;
+> 
+>                 reset-names = "srds1_sys";
+> 
+>         };
+
+PCS will need further work and thinking about. Typically, they are not
+described in DT for a PHY. In general, a PCS in a PHY does not have a
+driver of its own, the firmware in the PHY mostly controls it, not
+Linux. For the moment, lets leave them as they are, and we will come
+back to them once we get the clocks and resets correctly described.
+
+     Andrew
 
