@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CFD8C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 14:24:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9261C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 14:30:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LRR/AX/Ad0QtJHcBfyTON92y1gdHqlvl0b4nc8KLN/Y=; b=iig5FVgzrEpXYuJEvsIZzeEIWm
-	ytl33t5G05289eh3MFyNlnZRwDjNgAuWrk3KvtanlKn3aLMVtzaN3F/36mz/PKVt7Js2znpOBm+lv
-	r4g0DW9XDWN19f/Cd1vVR6IHAeoM+OIqhSmn4DWQlrk97Gkk5NBOztdfGGAS4FdVr3K2zJdqZH5Q2
-	f7S9Mfv2Qkhr1SQCl1mS22c2BCVoeochuBlbeppVqK5w+Bt26KCJxas1xGGVWOos5o6YdQCWYOG47
-	uHOPApvdGZwGKf8/StWfwHozemqNXDvNYPx9EQFC2xeRBjXwv1yfd/f/eQD04Kdkpu64KgqbCG0qU
-	hyejFG8g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sVMqThbVP0Q8RE+595KzEmSzoEzPpkpeb2mdqe/54Po=; b=aKB15tzrpS91KhlOtEpMuNIGgZ
+	bdWk3H6fqMwxrCkheYFjF6FcbQ/gS571+10W8liOefSVSNeAKWFEkbSj31E0Yq6bPWw4bFvU42cjU
+	2a78mooNAPHkq9QKkE5HNRaWn+HNU17hAb9kaRXJgvuLU56hFWA7e2IqaKfL8bW990UwnhOV+KBt+
+	xK9+ZbGtmRE0Pu4jHVUrqEEe7ck3m3k1EytGE/wfVc//vyHiRxGb7g4bdp4Z9QE1hrwNJZ4yLVgYu
+	r8jcDO7RHyQtwe6vtmKtsHo0FRpkbXyepu4jWCgXTSvaIuMhNHntqIIIDZ3Fl6LhZBfz8SbDilJbk
+	NkS2YYyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMqYL-005Lxn-0P;
-	Mon, 08 Jan 2024 14:24:33 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rMqdp-005Mpo-31;
+	Mon, 08 Jan 2024 14:30:13 +0000
+Received: from mail-pl1-f178.google.com ([209.85.214.178])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMqYG-005Lri-2C;
-	Mon, 08 Jan 2024 14:24:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1704723851;
-	bh=mc5HOamFYriYeumJK9D1W6NJdUvkZnUeuFa4C5EjT4U=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=xJJewCu+KvPzQrBNi+2a5MFjUmLSwERs67kGfo1ETpOrHxyqcC/pvQ1aC81P+0ueT
-	 QzBhhgaJOZuK1Jxt4/Hs32Lvf7xkh8rwihSifMjxAOFoRc38cvnj4CBOcP9dhtAiuz
-	 x2Wwov8BJSQ7tupXjNr4FiQQ5jaaZ2TzxMk4u05yo9DJ3Y2nPH9nI1jq05DRXJ9Rhh
-	 B33nCnK2BY9X+2QtZ9sdje4H3hZmWwpZja7F/bMLT68WeXyZUprXTaRFGL0DKX+yJv
-	 leYmMEsERtm04zjCvL5LNDTUx983NBAvkT/xSe22QqS+LuRUdMyoEIKO6plMBUJ/4S
-	 XR5gaOweUb/FQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 64BFF378003D;
-	Mon,  8 Jan 2024 14:24:10 +0000 (UTC)
-Message-ID: <19f5ef6e-ecc1-4f6c-b6f1-8a729d170ef6@collabora.com>
-Date: Mon, 8 Jan 2024 15:24:09 +0100
+	id 1rMqdm-005Mo8-2f;
+	Mon, 08 Jan 2024 14:30:12 +0000
+Received: by mail-pl1-f178.google.com with SMTP id d9443c01a7336-1d3e2972f65so2808175ad.3;
+        Mon, 08 Jan 2024 06:30:09 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704724209; x=1705329009;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=sVMqThbVP0Q8RE+595KzEmSzoEzPpkpeb2mdqe/54Po=;
+        b=iQP+cXWeI6Rsla/j0MstBMmavlZpx8zqi751cZHP636GQ4jMEv06jWbFVnlG3ThIe4
+         LN9T7IomgLxH/zU7oYSfwxk0fOLOnNp058AQOSWgbdNLbGDk64gUL2afTJS29n7oXrLm
+         3BO3JLO+w40DHn7Weyl0aazJTRQFZ3S6asmaLggoXd2rZpj82O8xNowZ6rKEPcNH5Rl4
+         f82wC0dclCbucC1cMfcge7mvKW9DIvMLXg6EnPJkKc1GkpsMf1TINe1wbL0tqrnIf7Kv
+         7mjvO8qDW5cLjXlUiZyXgz/Jg23ESB4nkhfZeAgrRHb2DtIalj0HzfH6zC1SyqNIypj9
+         UT2Q==
+X-Gm-Message-State: AOJu0Yz+Iv/lj6okIIo5wRjJ8k9arSZOf87z34DS8krqF2mPPbbb9CrS
+	vum1gy9rgKKKt3cZ8Q5iXW8=
+X-Google-Smtp-Source: AGHT+IE3fdqzVYISbL4ZtM/lxTCygtaE0GCar9x98h7e8R949MP4dVwbh+1fDeut8mKc+f/isMwbKQ==
+X-Received: by 2002:a17:902:ce81:b0:1d5:2197:46e9 with SMTP id f1-20020a170902ce8100b001d5219746e9mr1033721plg.117.1704724208990;
+        Mon, 08 Jan 2024 06:30:08 -0800 (PST)
+Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
+        by smtp.gmail.com with ESMTPSA id u13-20020a170902e5cd00b001d09c5424d4sm6321570plf.297.2024.01.08.06.30.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 08 Jan 2024 06:30:08 -0800 (PST)
+Date: Mon, 8 Jan 2024 23:30:06 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, qizhong.cheng@mediatek.com,
+	stable@vger.kernel.org
+Subject: Re: [PATCH v4] PCI: mediatek: Clear interrupt status before
+ dispatching handler
+Message-ID: <20240108143006.GA2602112@rocinante>
+References: <20231211094923.31967-1-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] clk: mediatek: add infracfg reset controller for
- mt7988
-Content-Language: en-US
-To: frank-w@public-files.de, Frank Wunderlich <linux@fw-web.de>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: Sam Shih <sam.shih@mediatek.com>, Daniel Golle <daniel@makrotopia.org>,
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20240105162056.43266-1-linux@fw-web.de>
- <20240105162056.43266-3-linux@fw-web.de>
- <717a21bb-de39-4f7d-913c-f2a20d8b02bd@collabora.com>
- <D0CA0019-A61D-4843-B502-7F40DA619FB3@public-files.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <D0CA0019-A61D-4843-B502-7F40DA619FB3@public-files.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231211094923.31967-1-jianjun.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240108_062428_844154_01F8EDAB 
-X-CRM114-Status: GOOD (  14.99  )
+X-CRM114-CacheID: sfid-20240108_063010_867230_57C2EBAA 
+X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,61 +86,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/01/24 14:46, Frank Wunderlich ha scritto:
-> Am 8. Januar 2024 11:12:26 MEZ schrieb AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>:
->> Il 05/01/24 17:20, Frank Wunderlich ha scritto:
->>> From: Frank Wunderlich <frank-w@public-files.de>
->>>
->>> Infracfg can also operate as reset controller, add support for it.
->>>
->>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->>> ---
->>>    drivers/clk/mediatek/clk-mt7988-infracfg.c | 20 ++++++++++++++++++++
->>>    1 file changed, 20 insertions(+)
->>>
->>> diff --git a/drivers/clk/mediatek/clk-mt7988-infracfg.c b/drivers/clk/mediatek/clk-mt7988-infracfg.c
->>> index 8011ef278bea..1660a45349ff 100644
->>> --- a/drivers/clk/mediatek/clk-mt7988-infracfg.c
->>> +++ b/drivers/clk/mediatek/clk-mt7988-infracfg.c
->>> @@ -14,6 +14,9 @@
->>>    #include "clk-gate.h"
->>>    #include "clk-mux.h"
->>>    #include <dt-bindings/clock/mediatek,mt7988-clk.h>
->>> +#include <dt-bindings/reset/mediatek,mt7988-resets.h>
->>> +
->>> +#define	INFRA_RST_SET_OFFSET	0x80
->>>      static DEFINE_SPINLOCK(mt7988_clk_lock);
->>>    @@ -249,12 +252,29 @@ static const struct mtk_gate infra_clks[] = {
->>>    	GATE_INFRA3(CLK_INFRA_133M_PCIE_CK_P3, "infra_133m_pcie_ck_p3", "sysaxi_sel", 31),
->>>    };
->>>    +static u16 infra_rst_ofs[] = {
->>> +	INFRA_RST_SET_OFFSET,
->>> +};
->>> +
->>> +static u16 infra_idx_map[] = {
->>> +	[MT7988_INFRA_RST0_THERM_CTRL_SWRST] = 0 * RST_NR_PER_BANK + 9,
->>
->> The MT7988A datasheet says that INFRA_RST0 bit 9 is CONN2EMI_M0_GALS_SLV_SWRST, so
->> this is wrong: THERM_CTRL_SWRST is in the RST1 register, bit 9.
->>
->> Also, I'm sure that you really want to add the PCIe MAC reset bit as well, to be
->> used with the PCIe driver...
->>
->> [MT7988_INFRA_RST0_PEXTP_MAC_SWRST] = 0 * RST_NR_PER_BANK + 6,
->> [MT7988_INFRA_RST1_THERM_CTRL_SWRST] = 1 * RST_NR_PER_BANK + 9,
+Hello,
+
+> We found a failure when used iperf tool for wifi performance testing,
+> there are some MSIs received while clearing the interrupt status,
+> these MSIs cannot be serviced.
 > 
-> Yes you are right...i have only rst1 as screenshot,need to get the full datasheet or can you tell me base address for rst0? Need to change value of INFRA_RST_SET_OFFSET then to rst0 and check RST_NR_PER_BANK to be correct.
+> The interrupt status can be cleared even the MSI status still remaining,
+> as an edge-triggered interrupts, its interrupt status should be cleared
+> before dispatching to the handler of device.
 
-The datasheet is public ... [1] has it in the Resources paragraph :-)
+Applied to controller/mediatek, thank you!
 
-Anyway, since I already have it here in front of me...
+[1/1] PCI: mediatek: Clear interrupt status before dispatching handler
+      https://git.kernel.org/pci/pci/c/4fea201e110e
 
-10001070 INFRA_GLOBALCON_RST0_SET
-10001080 INFRA_GLOBALCON_RST1_SET
-
-[1]: https://wiki.banana-pi.org/Banana_Pi_BPI-R4
-
-Cheers,
-Angelo
-
+	Krzysztof
 
