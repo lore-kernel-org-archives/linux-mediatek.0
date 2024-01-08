@@ -4,87 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0FCFC3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 13:46:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CFD8C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 14:24:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nF8dIOh9/N9jjusv6rO6q9PGcu1d10410OU4JSpt70Q=; b=fhNkovO1SPS93l
-	tob934bFDLkjR2hFv684iGHPXEw3ROAsT0MyQzL9CChxU9i2khZtAje7NWcH1uaN4GYik3KpB+Myi
-	hLB3wqq20kHmmFrhrZE7l1hqK6QV6v3l/5gSkmGOmmyLYZQ0KCNcH4SJryxcBK1ThwiDLHVi10mYp
-	p1ZbQxvjHRnQPEBSP4rK19CoeFNAx0lUXxdWH9+857EQeg3txsIJk2l3srtxSaM5T/LIwYJb6c4SY
-	ejOy/bhQTcqaemYcAirNvgv/e/yPPUZDo4Zd593XvEJUufMdCJ2ePovJ6OBxRx7Q5EroeDAvao4fk
-	NwYlx05aUbUxaQnMQvYw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LRR/AX/Ad0QtJHcBfyTON92y1gdHqlvl0b4nc8KLN/Y=; b=iig5FVgzrEpXYuJEvsIZzeEIWm
+	ytl33t5G05289eh3MFyNlnZRwDjNgAuWrk3KvtanlKn3aLMVtzaN3F/36mz/PKVt7Js2znpOBm+lv
+	r4g0DW9XDWN19f/Cd1vVR6IHAeoM+OIqhSmn4DWQlrk97Gkk5NBOztdfGGAS4FdVr3K2zJdqZH5Q2
+	f7S9Mfv2Qkhr1SQCl1mS22c2BCVoeochuBlbeppVqK5w+Bt26KCJxas1xGGVWOos5o6YdQCWYOG47
+	uHOPApvdGZwGKf8/StWfwHozemqNXDvNYPx9EQFC2xeRBjXwv1yfd/f/eQD04Kdkpu64KgqbCG0qU
+	hyejFG8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMpxp-005FSm-1g;
-	Mon, 08 Jan 2024 13:46:49 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1rMqYL-005Lxn-0P;
+	Mon, 08 Jan 2024 14:24:33 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMpxm-005FRS-0D;
-	Mon, 08 Jan 2024 13:46:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1704721594; x=1705326394; i=frank-w@public-files.de;
-	bh=eHFTTnrAlxZxsnvH49LqdXsKFSZ7Cww6ornO/kw2wR4=;
-	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
-	 References;
-	b=Nzu45zx7TGWivSS7zIVmVRMzMRk2B9poNz47OhalBWl/jadI7bUDH5bEc8Y6zVOi
-	 3SH41JApS5KTBKRnGS1JdHCjnvn8lqPVKN79D695LFi1C//6O+/SORTwX4fl3dZJD
-	 DZnTAxyn5NWu4CgQX1MRbIQadJCMJYUBUsvM3glgjWEHZSlBIMPxfzdZuAF/iNLNw
-	 HchtxXDyBW9czu9+7RxMIDIdG9xGFhrbcngLGSUWPIXoeNvJy3zBQUh1siHGUAlgN
-	 +fy1no13Mi1waJl54T+eAUQZGhMKJtdjEAaRzFZrDt1NO5B8IlDpfZRuhfRIAGkD7
-	 3DfRMgspDTUF+t39cQ==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [IPv6:::1] ([80.187.71.7]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MEFzr-1rWQKj44DF-00AHf2; Mon, 08
- Jan 2024 14:46:34 +0100
-Date: Mon, 08 Jan 2024 14:46:17 +0100
-From: Frank Wunderlich <frank-w@public-files.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Frank Wunderlich <linux@fw-web.de>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1rMqYG-005Lri-2C;
+	Mon, 08 Jan 2024 14:24:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1704723851;
+	bh=mc5HOamFYriYeumJK9D1W6NJdUvkZnUeuFa4C5EjT4U=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=xJJewCu+KvPzQrBNi+2a5MFjUmLSwERs67kGfo1ETpOrHxyqcC/pvQ1aC81P+0ueT
+	 QzBhhgaJOZuK1Jxt4/Hs32Lvf7xkh8rwihSifMjxAOFoRc38cvnj4CBOcP9dhtAiuz
+	 x2Wwov8BJSQ7tupXjNr4FiQQ5jaaZ2TzxMk4u05yo9DJ3Y2nPH9nI1jq05DRXJ9Rhh
+	 B33nCnK2BY9X+2QtZ9sdje4H3hZmWwpZja7F/bMLT68WeXyZUprXTaRFGL0DKX+yJv
+	 leYmMEsERtm04zjCvL5LNDTUx983NBAvkT/xSe22QqS+LuRUdMyoEIKO6plMBUJ/4S
+	 XR5gaOweUb/FQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 64BFF378003D;
+	Mon,  8 Jan 2024 14:24:10 +0000 (UTC)
+Message-ID: <19f5ef6e-ecc1-4f6c-b6f1-8a729d170ef6@collabora.com>
+Date: Mon, 8 Jan 2024 15:24:09 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] clk: mediatek: add infracfg reset controller for
+ mt7988
+Content-Language: en-US
+To: frank-w@public-files.de, Frank Wunderlich <linux@fw-web.de>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>
-CC: Sam Shih <sam.shih@mediatek.com>, Daniel Golle <daniel@makrotopia.org>,
+Cc: Sam Shih <sam.shih@mediatek.com>, Daniel Golle <daniel@makrotopia.org>,
  linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_2/2=5D_clk=3A_mediatek=3A_add?= =?US-ASCII?Q?_infracfg_reset_controller_for_mt7988?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <717a21bb-de39-4f7d-913c-f2a20d8b02bd@collabora.com>
-References: <20240105162056.43266-1-linux@fw-web.de> <20240105162056.43266-3-linux@fw-web.de> <717a21bb-de39-4f7d-913c-f2a20d8b02bd@collabora.com>
-Message-ID: <D0CA0019-A61D-4843-B502-7F40DA619FB3@public-files.de>
-MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:xblEkwWVshSiG/6u0lgUW6oJn5QhPXUSO4eD2KMSmL3wRJcRLMH
- N52WYGxVpESAKG26Qc5C0MuKrWlqmrURECmvc4GnzGt9lwnwy27vrdLzDrlXEgANOKfq6uk
- bDz2NHK/9fUaUeA7HaRsDDfp9fnPpUX/3a+WxuhbWPM8AcsZc58J8UAj9j3MNUoX5R1rpyD
- rQRWLzvjH3ZEg0N2VWDUQ==
-UI-OutboundReport: notjunk:1;M01:P0:UHoxeZHGFCA=;zNPt/J3l03QqhDyB7HxtL7N9zr4
- NA8NfUJbGXxSCURvNbWIP13RBD1w8aha9xpnzf3RuoIEmLZOnVU7tcJGT5ABNsEvDjo+V/rbg
- 4S4A7/qReBDzO4pjGWDqyWvK/CzpWnlt9BYpuCQnxUxcQEZ1NJ1Tg/XpfRZkSXfIhHZuF4Scu
- p023r/UsyLcF+GfZ18YKyEuNXsOiD0u+/LR3rorNhNBCh5kEi2d3Vm9hLaOeQwTu+1PnvZsdY
- krSDiDizdIXOo7ySGRr38dVsceK3YxrRuGFMAsJt5jRE9FMHCxo+563TfWlGDXcCccUfeJl2r
- nJhCNrG8kOmFPi6Zl2fjRtDYJQ8bclKit1OXTjCrzJvSvJmlyXQWc64zP/ffePBvBRwKPoQar
- bDIFY1dt64NJCeG6RVDCza417fRzl14DfRc324Z43utKSlIhswr2crEAf/P51kzDC0WZrnHrO
- 6yGsg1OWsK9aCR9d0NkvVW1o6/LswUyGlvKevmWIiSn94KL4WPKiWH+nlhMqDYB/RnyYCZDf+
- 0Wd+ZJ7tn387ZIqq++rnSepwo6T9H2bxhlT2o9RwXx0Uqa2+nTA6u+5GvIpK2OszC5cb+knx0
- D0dVrX9P49ADAswF/dNBJR19J5x6bVBbrgPm5IJ+YH8Tr4h/I5zxe6lnCqlFqStOFQ2FVh0+H
- LXZ5N9YFxCxmqbirPh8rSMyBp1XVH4yLHaaDxMcDyVUMCnXT26IGh65Cwn3JM5p/JhwmkzqzJ
- HwlVXigIwOtGblAEs2ca6HsWXgHY+7yc/ows9rLksLNrw6h+coYyKYF2mgWnF4XmKeST/lnBp
- g7aHpZsoyR6aMqLb4vP6bwzKsc8X6RV+my67Pn9FwxoYn++Ng4Um7JmAIXk/Seh4RY51woWBk
- 85NpLVxq/u3itttkE3DiUt6bKTI8os87bliwvFwQRsNL3MYEZwCle/ZBlO8TNhIuLn/2q9Wne
- ivecCg==
+References: <20240105162056.43266-1-linux@fw-web.de>
+ <20240105162056.43266-3-linux@fw-web.de>
+ <717a21bb-de39-4f7d-913c-f2a20d8b02bd@collabora.com>
+ <D0CA0019-A61D-4843-B502-7F40DA619FB3@public-files.de>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <D0CA0019-A61D-4843-B502-7F40DA619FB3@public-files.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240108_054646_486633_2D9EC6BA 
-X-CRM114-Status: GOOD (  12.68  )
+X-CRM114-CacheID: sfid-20240108_062428_844154_01F8EDAB 
+X-CRM114-Status: GOOD (  14.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,69 +82,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 8=2E Januar 2024 11:12:26 MEZ schrieb AngeloGioacchino Del Regno <angelo=
-gioacchino=2Edelregno@collabora=2Ecom>:
->Il 05/01/24 17:20, Frank Wunderlich ha scritto:
->> From: Frank Wunderlich <frank-w@public-files=2Ede>
->>=20
->> Infracfg can also operate as reset controller, add support for it=2E
->>=20
->> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
->> ---
->>   drivers/clk/mediatek/clk-mt7988-infracfg=2Ec | 20 +++++++++++++++++++=
-+
->>   1 file changed, 20 insertions(+)
->>=20
->> diff --git a/drivers/clk/mediatek/clk-mt7988-infracfg=2Ec b/drivers/clk=
-/mediatek/clk-mt7988-infracfg=2Ec
->> index 8011ef278bea=2E=2E1660a45349ff 100644
->> --- a/drivers/clk/mediatek/clk-mt7988-infracfg=2Ec
->> +++ b/drivers/clk/mediatek/clk-mt7988-infracfg=2Ec
->> @@ -14,6 +14,9 @@
->>   #include "clk-gate=2Eh"
->>   #include "clk-mux=2Eh"
->>   #include <dt-bindings/clock/mediatek,mt7988-clk=2Eh>
->> +#include <dt-bindings/reset/mediatek,mt7988-resets=2Eh>
->> +
->> +#define	INFRA_RST_SET_OFFSET	0x80
->>     static DEFINE_SPINLOCK(mt7988_clk_lock);
->>   @@ -249,12 +252,29 @@ static const struct mtk_gate infra_clks[] =3D {
->>   	GATE_INFRA3(CLK_INFRA_133M_PCIE_CK_P3, "infra_133m_pcie_ck_p3", "sys=
-axi_sel", 31),
->>   };
->>   +static u16 infra_rst_ofs[] =3D {
->> +	INFRA_RST_SET_OFFSET,
->> +};
->> +
->> +static u16 infra_idx_map[] =3D {
->> +	[MT7988_INFRA_RST0_THERM_CTRL_SWRST] =3D 0 * RST_NR_PER_BANK + 9,
->
->The MT7988A datasheet says that INFRA_RST0 bit 9 is CONN2EMI_M0_GALS_SLV_=
-SWRST, so
->this is wrong: THERM_CTRL_SWRST is in the RST1 register, bit 9=2E
->
->Also, I'm sure that you really want to add the PCIe MAC reset bit as well=
-, to be
->used with the PCIe driver=2E=2E=2E
->
->[MT7988_INFRA_RST0_PEXTP_MAC_SWRST] =3D 0 * RST_NR_PER_BANK + 6,
->[MT7988_INFRA_RST1_THERM_CTRL_SWRST] =3D 1 * RST_NR_PER_BANK + 9,
+Il 08/01/24 14:46, Frank Wunderlich ha scritto:
+> Am 8. Januar 2024 11:12:26 MEZ schrieb AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>:
+>> Il 05/01/24 17:20, Frank Wunderlich ha scritto:
+>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>>
+>>> Infracfg can also operate as reset controller, add support for it.
+>>>
+>>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>>> ---
+>>>    drivers/clk/mediatek/clk-mt7988-infracfg.c | 20 ++++++++++++++++++++
+>>>    1 file changed, 20 insertions(+)
+>>>
+>>> diff --git a/drivers/clk/mediatek/clk-mt7988-infracfg.c b/drivers/clk/mediatek/clk-mt7988-infracfg.c
+>>> index 8011ef278bea..1660a45349ff 100644
+>>> --- a/drivers/clk/mediatek/clk-mt7988-infracfg.c
+>>> +++ b/drivers/clk/mediatek/clk-mt7988-infracfg.c
+>>> @@ -14,6 +14,9 @@
+>>>    #include "clk-gate.h"
+>>>    #include "clk-mux.h"
+>>>    #include <dt-bindings/clock/mediatek,mt7988-clk.h>
+>>> +#include <dt-bindings/reset/mediatek,mt7988-resets.h>
+>>> +
+>>> +#define	INFRA_RST_SET_OFFSET	0x80
+>>>      static DEFINE_SPINLOCK(mt7988_clk_lock);
+>>>    @@ -249,12 +252,29 @@ static const struct mtk_gate infra_clks[] = {
+>>>    	GATE_INFRA3(CLK_INFRA_133M_PCIE_CK_P3, "infra_133m_pcie_ck_p3", "sysaxi_sel", 31),
+>>>    };
+>>>    +static u16 infra_rst_ofs[] = {
+>>> +	INFRA_RST_SET_OFFSET,
+>>> +};
+>>> +
+>>> +static u16 infra_idx_map[] = {
+>>> +	[MT7988_INFRA_RST0_THERM_CTRL_SWRST] = 0 * RST_NR_PER_BANK + 9,
+>>
+>> The MT7988A datasheet says that INFRA_RST0 bit 9 is CONN2EMI_M0_GALS_SLV_SWRST, so
+>> this is wrong: THERM_CTRL_SWRST is in the RST1 register, bit 9.
+>>
+>> Also, I'm sure that you really want to add the PCIe MAC reset bit as well, to be
+>> used with the PCIe driver...
+>>
+>> [MT7988_INFRA_RST0_PEXTP_MAC_SWRST] = 0 * RST_NR_PER_BANK + 6,
+>> [MT7988_INFRA_RST1_THERM_CTRL_SWRST] = 1 * RST_NR_PER_BANK + 9,
+> 
+> Yes you are right...i have only rst1 as screenshot,need to get the full datasheet or can you tell me base address for rst0? Need to change value of INFRA_RST_SET_OFFSET then to rst0 and check RST_NR_PER_BANK to be correct.
 
-Yes you are right=2E=2E=2Ei have only rst1 as screenshot,need to get the f=
-ull datasheet or can you tell me base address for rst0? Need to change valu=
-e of INFRA_RST_SET_OFFSET then to rst0 and check RST_NR_PER_BANK to be corr=
-ect=2E
+The datasheet is public ... [1] has it in the Resources paragraph :-)
 
->Enjoy=2E=2E=2E :-)
->
->Cheers,
->Angelo
->
+Anyway, since I already have it here in front of me...
 
+10001070 INFRA_GLOBALCON_RST0_SET
+10001080 INFRA_GLOBALCON_RST1_SET
 
-regards Frank
+[1]: https://wiki.banana-pi.org/Banana_Pi_BPI-R4
+
+Cheers,
+Angelo
+
 
