@@ -4,78 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88021C4707C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 18:17:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E902C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 19:21:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZTbnmv//8S6AoGwmpmf7bKm2BZ2V4fg+EHVTPs33yVA=; b=Xr1cLQqUIP29+76DU/375P5B9S
-	SGATt1bSCJqgUlVx7FEox17qpOlir/oR+3MiABWiKa+wkbr/wIxzyCazjQiCSb4ndubHcuGRWWy6N
-	FpRQ4wpaaQe3B3rmvZU9pusBMf9d5ZtZ9vxqROnpUAwbObotaXroAh1dqHYn7BBpGlXfXUqbBvKF9
-	124wtQS4jBNFdFV0E540FUQ83HOgay5cHvYFo8aikuiuTIiqilpqTGRFx7W6mTk/boFU4ppegYIo5
-	SklaKZFiwsEvtAki5hfuJlL6emQyEGLZtOOAZgNSYHhDV9R3B2t8I7DH/dwS1xhBc778EUhT1CptY
-	jsJqj/0A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cAZKhoc1sQaXAZyI0XthhLVPBiZCvaLujckzoEmqp6w=; b=MzRymYab1eNCSyi3zd1OGA2xMy
+	w9NoSJFzBtAs/eQRUAh6Sug1hU7DX45wYUaZS+9HxztRl2LDsofbFFfnrlAfRrMsxBseBPb1A1OKX
+	9AIE/5ETrUb9EOgyitfKj9cj2OLQ1dv+8KJVr9/l3F8qcmEEOpLbsVK4DVWvkOb1FWrEtL2XEULvp
+	bmxk9aO7mck8q5yM5WmjOHkXqLxdBE0WwjIbmlrmQovCf8X5FfwIDIajT46nIYc/Cju7+P62Oi9cL
+	GmuhDT43DFTMhYkN4aPW3ctX/Wl4Cpp/BAu6sg9gHyCljLlhxTwfYYaK0oJPCr+b8/HkNhtq+YYRk
+	uBBRAWyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMuBS-005rOX-1p;
-	Mon, 08 Jan 2024 18:17:10 +0000
-Received: from mail-lj1-f175.google.com ([209.85.208.175])
+	id 1rMvBo-0061Om-2u;
+	Mon, 08 Jan 2024 19:21:36 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMuBP-005rMW-0O;
-	Mon, 08 Jan 2024 18:17:08 +0000
-Received: by mail-lj1-f175.google.com with SMTP id 38308e7fff4ca-2cc7b9281d1so27183831fa.1;
-        Mon, 08 Jan 2024 10:17:04 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704737823; x=1705342623;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ZTbnmv//8S6AoGwmpmf7bKm2BZ2V4fg+EHVTPs33yVA=;
-        b=sm8HwR8UWiZCXpPCCkTxGAAcgdCHPqinbrJ1U4OQp//Tj/AzGvLVWjCscO5EL3Enfx
-         esqiio0iZzRBCFXkKzudN6sJlqiG8wAa7+joRlUg/Zne1bGJt2RWE5IKHCXi++kDRgFI
-         H9wA6urjVKfnzWrB8ZsINmi6W9LQulHHT7k3Btg27JxUIkJuAktSESLkunDhl7GV3b6R
-         E/B0kkxjKt80mBIEVNTF1B0315AzKgWtvJEKGIBwcJL2mLWJacKcOfVSje6S6kSOBGlw
-         bZmrdB6TRCqSwpwKKBiHfsVix2hgjQUAs7L/QYdwhRYdaQtkvtlUARR7+gLvVifzn6Mr
-         wqLw==
-X-Gm-Message-State: AOJu0Yw6tEHBHybdxLg9R28mZlB5Mwh+nCSsBwtP1bp7l3vUs/mLfpJG
-	9zGAA+bQGRKQ5WuweOyMBDM=
-X-Google-Smtp-Source: AGHT+IG/YKMNWq9Ur9N/wASmN0Xl3EdEs2BMrhUl9KbhdT7qB2KLXiVpvQS9WcC8+noseq7/jC5QQg==
-X-Received: by 2002:a2e:9347:0:b0:2cc:2b43:566c with SMTP id m7-20020a2e9347000000b002cc2b43566cmr1779053ljh.14.1704737823369;
-        Mon, 08 Jan 2024 10:17:03 -0800 (PST)
-Received: from localhost (fwdproxy-lla-007.fbsv.net. [2a03:2880:30ff:7::face:b00c])
-        by smtp.gmail.com with ESMTPSA id a1-20020aa7cf01000000b00552d45bd8e7sm90125edy.77.2024.01.08.10.17.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Jan 2024 10:17:03 -0800 (PST)
-From: Breno Leitao <leitao@debian.org>
-To: davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	Alexander Couzens <lynxis@fe80.eu>,
+	id 1rMvBl-0061M6-22;
+	Mon, 08 Jan 2024 19:21:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=cAZKhoc1sQaXAZyI0XthhLVPBiZCvaLujckzoEmqp6w=; b=uuhCwomrY3L6fLdraat+dg7C/X
+	mR2Jpw+vZi7E/9/ixt9zJNELThCJB3Ss7Koen0mY7nXlpAOK4rP84gHrTIT4iMM4o1Geu4X7Q66Mv
+	euT6khRIMozafBtozorvtOYX5FzSjeHwEsnyzFhQJQOFydpSWRH6t/v5uihWAvdoX1bw=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1rMvBH-004fyv-K3; Mon, 08 Jan 2024 20:21:03 +0100
+Date: Mon, 8 Jan 2024 20:21:03 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Breno Leitao <leitao@debian.org>
+Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, Alexander Couzens <lynxis@fe80.eu>,
 	Daniel Golle <daniel@makrotopia.org>,
-	Andrew Lunn <andrew@lunn.ch>,
 	Heiner Kallweit <hkallweit1@gmail.com>,
 	Russell King <linux@armlinux.org.uk>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH net-next 10/10] net: fill in MODULE_DESCRIPTION()s for PCS Layer
-Date: Mon,  8 Jan 2024 10:16:10 -0800
-Message-Id: <20240108181610.2697017-11-leitao@debian.org>
-X-Mailer: git-send-email 2.39.3
-In-Reply-To: <20240108181610.2697017-1-leitao@debian.org>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org,
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH net-next 10/10] net: fill in MODULE_DESCRIPTION()s for
+ PCS Layer
+Message-ID: <cf825e28-cceb-49e1-9880-7971cc955b2c@lunn.ch>
 References: <20240108181610.2697017-1-leitao@debian.org>
+ <20240108181610.2697017-11-leitao@debian.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240108181610.2697017-11-leitao@debian.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240108_101707_179110_303D3FB6 
-X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-CacheID: sfid-20240108_112133_665767_56C4A101 
+X-CRM114-Status: UNSURE (   6.05  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,25 +78,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-W=1 builds now warn if module is built without a MODULE_DESCRIPTION().
-Add descriptions to the LynxI PCS MediaTek's SoC.
+On Mon, Jan 08, 2024 at 10:16:10AM -0800, Breno Leitao wrote:
+> W=1 builds now warn if module is built without a MODULE_DESCRIPTION().
+> Add descriptions to the LynxI PCS MediaTek's SoC.
 
-Signed-off-by: Breno Leitao <leitao@debian.org>
----
- drivers/net/pcs/pcs-mtk-lynxi.c | 1 +
- 1 file changed, 1 insertion(+)
+Does pcs-lynx.c also have this issue? It can be built at a module.
 
-diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
-index 8501dd365279..4f63abe638c4 100644
---- a/drivers/net/pcs/pcs-mtk-lynxi.c
-+++ b/drivers/net/pcs/pcs-mtk-lynxi.c
-@@ -303,4 +303,5 @@ void mtk_pcs_lynxi_destroy(struct phylink_pcs *pcs)
- }
- EXPORT_SYMBOL(mtk_pcs_lynxi_destroy);
- 
-+MODULE_DESCRIPTION("MediaTek SGMII library for LynxI");
- MODULE_LICENSE("GPL");
--- 
-2.39.3
-
+     Andrew
 
