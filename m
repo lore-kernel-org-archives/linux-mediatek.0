@@ -4,74 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70601C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 12:15:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31E02C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 12:21:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Dm5EAPPVxetSThQhTA1Yp9hIcUX30yOFV9rrGkdITCw=; b=NDKiYFWFs/cUSI79tg+OH/3eJb
-	JifIJSYzN1MNra6iRYo7auPocvtxyocHG36AVtFx9RJeWLXjHHeCgRq8EPBFvRRA2DO2nAnzzRuD6
-	5HZM2CZ3+4+M13ZPu+pwyvQsA2hPe10UpNzt2eGL71rsUMxxj7qbV+N8LaiC1tU1QSfZQB2wgr4l2
-	4sJrYE2GLbc0lqTLLAjPkB/HG2e98xvT6b8pY7fr4rI/Bmi7EXTc/8JGEVeXmUAbU9wjw6A0Odapz
-	kVEm6PiYljCUlaC8LaTyAk2Pypa0ytEv1H50d4GrEpUe5o1pRmdX5ZJ8Ikx34W6T/e3O3/Dr+zDN7
-	KgVkz4KA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WQZDa6ilZNXmfNTth7j6XpoepsKlorpYmcwfbtEgwkU=; b=EuM2qXWCdt08GXabkau3V2YGWv
+	i+ptcJ0yWNqI05SvuEtWDTamqQhk4oh2mGgaH5Q9bEGaZpb/fx4kNce1wuikDc7huaBAZw6mBDKlq
+	lsRl3ZaMszgj1JbljHCS33vGHTK5bWBGxTuUxx2JG2AUgghRPmfD1n4ZGnDOm5XkdlohgJS+HIaDw
+	DhYi5MeO2OYwckxFn0mV400m92jmBfyJ0jei76VwND/gQKSHoqYITcwFwXkIt7b4J7kZWuRUSTG8O
+	u3sGXkaFHlYOEHhoLtVTkOP/HjcMSyByVo0CMZKkHs++A8GWt/69nD0onVncspFFdlXZA0Yqueu9e
+	Zpn/EAbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMoX0-00511N-0i;
-	Mon, 08 Jan 2024 12:15:02 +0000
-Received: from relay5-d.mail.gandi.net ([217.70.183.197])
+	id 1rModV-0051fN-0s;
+	Mon, 08 Jan 2024 12:21:45 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMoWw-0050zt-28;
-	Mon, 08 Jan 2024 12:15:00 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id C0C6C1C0006;
-	Mon,  8 Jan 2024 12:14:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1704716095;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Dm5EAPPVxetSThQhTA1Yp9hIcUX30yOFV9rrGkdITCw=;
-	b=CnWKE+c2iTvEZ+tt6oyNhwN+KXV0tsgvbYNlDK66quL+Ws/yc8i9Xbp9OJi18PakSyBmZt
-	RSdA+1OYQcgDhcKDN6eJrCQ2SnafZhAsjzXMAgtnutbQluDH0cvFWGzk33J5WFK08xvmZt
-	ASu9x8zdLivdIj+s+WnZo4buiGf47DZx6ybS0Uj3zNbtvjeEH/eUSHlHIqTvQ2e13PXrZf
-	4OdOxugnhJ6uFh36iCVzb9I6ptuujnqht1ZFJARncCdUMrUZH1xWFj838ubKbVASZmhZr3
-	A8ULRC2nEArCBqUrEzYj+wkKA0vcXdj/K+8kszZ/D/C9a60nCVIxyYaUrn+BCA==
-Message-ID: <7e89034c-afbd-4180-98e5-50d8cd07f924@arinc9.com>
-Date: Mon, 8 Jan 2024 15:14:45 +0300
+	id 1rModR-0051el-2v;
+	Mon, 08 Jan 2024 12:21:43 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1rMod7-0004sJ-33;
+	Mon, 08 Jan 2024 12:21:23 +0000
+Date: Mon, 8 Jan 2024 12:21:15 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Subject: Re: [PATCH V2 3/3] arm64: dts: mediatek: mt7988: add clock
+ controllers
+Message-ID: <ZZvou6RXPcXZS72s@makrotopia.org>
+References: <20240108085228.4727-1-zajec5@gmail.com>
+ <20240108085228.4727-4-zajec5@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next] net: dsa: mt7530: support OF-based registration
- of switch MDIO bus
-Content-Language: en-US
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Simon Horman <horms@kernel.org>, Daniel Golle <daniel@makrotopia.org>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- David Bauer <mail@david-bauer.net>, mithat.guner@xeront.com,
- erkin.bozoglu@xeront.com, Luiz Angelo Daros de Luca <luizluca@gmail.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240106122142.235389-1-arinc.unal@arinc9.com>
- <20240107195241.GB132648@kernel.org>
- <65274929-fa59-482c-a744-6b9ce162ab46@arinc9.com>
- <20240108110000.aujqhlufehngtkjj@skbuf>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20240108110000.aujqhlufehngtkjj@skbuf>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+In-Reply-To: <20240108085228.4727-4-zajec5@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240108_041458_986465_EEC2FD79 
-X-CRM114-Status: GOOD (  13.57  )
+X-CRM114-CacheID: sfid-20240108_042141_943662_F3267F30 
+X-CRM114-Status: GOOD (  14.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,117 +59,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Bernhard =?iso-8859-1?Q?Rosenkr=E4nzer?= <bero@baylibre.com>, =?iso-8859-1?Q?N=EDcolas_F_=2E_R_=2E_A_=2E?= Prado <nfraprado@collabora.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, jason-ch chen <Jason-ch.Chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Macpaul Lin <macpaul.lin@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8.01.2024 14:00, Vladimir Oltean wrote:
-> On Mon, Jan 08, 2024 at 01:22:18PM +0300, Arınç ÜNAL wrote:
->>>> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
->>>> index 391c4dbdff42..39d7e7ad7154 100644
->>>> --- a/drivers/net/dsa/mt7530.c
->>>> +++ b/drivers/net/dsa/mt7530.c
->>>> @@ -2153,17 +2153,25 @@ mt7530_free_irq(struct mt7530_priv *priv)
->>>>    static int
->>>>    mt7530_setup_mdio(struct mt7530_priv *priv)
->>>>    {
->>>> +	struct device_node *mnp, *np = priv->dev->of_node;
->>>>    	struct dsa_switch *ds = priv->ds;
->>>>    	struct device *dev = priv->dev;
->>>>    	struct mii_bus *bus;
->>>>    	static int idx;
->>>> -	int ret;
->>>> +	int ret = 0;
->>>> +
->>>> +	mnp = of_get_child_by_name(np, "mdio");
->>>> +
->>>> +	if (mnp && !of_device_is_available(mnp))
->>>> +		goto out;
->>>
->>> nit: I think it would easier on the eyes to simply
->>>
->>> 		return 0;
+On Mon, Jan 08, 2024 at 09:52:28AM +0100, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> Actually "return 0" leaks "mnp". An of_node_put() is needed.
+> Add bindings of on-SoC clocks.
+> 
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 
-I realised that I also miss these:
+Reviewed-by: Daniel Golle <daniel@makrotopia.org>
 
-- run of_node_put(mnp) if bus = devm_mdiobus_alloc(dev) fails
-- don't run mt7530_free_mdio_irq if MDIO bus is described on OF
-
-Please let me know if this addresses everything:
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 391c4dbdff42..cf2ff7680c15 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2146,24 +2146,40 @@ mt7530_free_irq_common(struct mt7530_priv *priv)
-  static void
-  mt7530_free_irq(struct mt7530_priv *priv)
-  {
--	mt7530_free_mdio_irq(priv);
-+	struct device_node *mnp, *np = priv->dev->of_node;
-+
-+	mnp = of_get_child_by_name(np, "mdio");
-+	if (!mnp)
-+		mt7530_free_mdio_irq(priv);
-+	of_node_put(mnp);
-+
-  	mt7530_free_irq_common(priv);
-  }
-  
-  static int
-  mt7530_setup_mdio(struct mt7530_priv *priv)
-  {
-+	struct device_node *mnp, *np = priv->dev->of_node;
-  	struct dsa_switch *ds = priv->ds;
-  	struct device *dev = priv->dev;
-  	struct mii_bus *bus;
-  	static int idx;
--	int ret;
-+	int ret = 0;
-+
-+	mnp = of_get_child_by_name(np, "mdio");
-+
-+	if (mnp && !of_device_is_available(mnp))
-+		goto out;
-  
-  	bus = devm_mdiobus_alloc(dev);
--	if (!bus)
--		return -ENOMEM;
-+	if (!bus) {
-+		ret = -ENOMEM;
-+		goto out;
-+	}
-+
-+	if (!mnp)
-+		ds->user_mii_bus = bus;
-  
--	ds->user_mii_bus = bus;
-  	bus->priv = priv;
-  	bus->name = KBUILD_MODNAME "-mii";
-  	snprintf(bus->id, MII_BUS_ID_SIZE, KBUILD_MODNAME "-%d", idx++);
-@@ -2174,16 +2190,18 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
-  	bus->parent = dev;
-  	bus->phy_mask = ~ds->phys_mii_mask;
-  
--	if (priv->irq)
-+	if (priv->irq && !mnp)
-  		mt7530_setup_mdio_irq(priv);
-  
--	ret = devm_mdiobus_register(dev, bus);
-+	ret = devm_of_mdiobus_register(dev, bus, mnp);
-  	if (ret) {
-  		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
--		if (priv->irq)
-+		if (priv->irq && !mnp)
-  			mt7530_free_mdio_irq(priv);
-  	}
-  
-+out:
-+	of_node_put(mnp);
-  	return ret;
-  }
-  
-
-Arınç
+> ---
+> V2: New PATCH in the series thanks to Daniel's bindings work
+> 
+>  arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 41 ++++++++++++++++++++++-
+>  1 file changed, 40 insertions(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+> index 5a778188ac21..bba97de4fb44 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+> @@ -78,12 +78,51 @@ gic: interrupt-controller@c000000 {
+>  			#interrupt-cells = <3>;
+>  		};
+>  
+> -		watchdog@1001c000 {
+> +		clock-controller@10001000 {
+> +			compatible = "mediatek,mt7988-infracfg", "syscon";
+> +			reg = <0 0x10001000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		clock-controller@1001b000 {
+> +			compatible = "mediatek,mt7988-topckgen", "syscon";
+> +			reg = <0 0x1001b000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		watchdog: watchdog@1001c000 {
+>  			compatible = "mediatek,mt7988-wdt";
+>  			reg = <0 0x1001c000 0 0x1000>;
+>  			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
+>  			#reset-cells = <1>;
+>  		};
+> +
+> +		clock-controller@1001e000 {
+> +			compatible = "mediatek,mt7988-apmixedsys";
+> +			reg = <0 0x1001e000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		clock-controller@11f40000 {
+> +			compatible = "mediatek,mt7988-xfi-pll";
+> +			reg = <0 0x11f40000 0 0x1000>;
+> +			resets = <&watchdog 16>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		clock-controller@15000000 {
+> +			compatible = "mediatek,mt7988-ethsys", "syscon";
+> +			reg = <0 0x15000000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +			#reset-cells = <1>;
+> +		};
+> +
+> +		clock-controller@15031000 {
+> +			compatible = "mediatek,mt7988-ethwarp";
+> +			reg = <0 0x15031000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +			#reset-cells = <1>;
+> +		};
+>  	};
+>  
+>  	timer {
+> -- 
+> 2.35.3
+> 
 
