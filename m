@@ -4,81 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7714FC47077
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 08:18:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60AEFC47073
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 08:29:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xNB8eseBc6is+G1DowRroY47UdkWdAr6xj971vFYoJE=; b=pz1uRXP/lzE8SWQXr2gKlmdkQy
-	KAiX5DOA3hJFns4ZcTDO2lKVBuY57zef9wEK08SUB9p1v15rsWmmXGK9dRNmiIFT9gCz5W+PfHcVv
-	ssvUqDsA+DROQIm1URDCu8VgINTCoL+nZ/FpsKRk15FC6ZqMHH9A0TnQjgaBpax9RwXMT/BaQToHF
-	gmv1yGm5+lQDkJ83bAbBCUNPFtHNvJlVv61H9Fww53T395Mm1uq2s8Tde1xQirixDkcskuU28JikR
-	0SRqBwnpfmekCE0zjrRznyXOM5VjLOdzpiP8b9fj9+ffFHQ7NQyeZ5HFe5HLOLDPkZ0pp+0iq2nc6
-	PlILMZJw==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L1ntSDYdIqiXGmKDUk14VC4eoZWflbnSsw+b9rVVPPs=; b=tpyqkeE1HsTwnOtBLU/6eo/ucd
+	m+iAxXTySeP1oF/Uv71Y7zhZeK6CLUqm6ciTVQgOuegaQXjxFJacEoFtHr1agaJa5oO6cbW+VqAXo
+	NcCdV1lOlQdM3LhNEf9N/prPeALg7KFuwGzM5tVxW/LV6Mx9xCei2+wjWm2gCxxzRf4hHqzb0bTNo
+	qMDG/In1WrsljdGl0COivodaCD9/KEuFWR23duN09MbQwxLC5XdUP7daW/NrrUCz42agEOHB4Iy0L
+	AU8ZXXJ2syv9l5FhxlPZPX/AvtBMBnDuzEzsXDNSUjTp5BbBlqSs9cEWo3j+2f7xZdIzJMJxGEQct
+	Oha/7YoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMkqN-004H0B-1j;
-	Mon, 08 Jan 2024 08:18:47 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1rMl1B-004JhL-1g;
+	Mon, 08 Jan 2024 08:29:57 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMkqJ-004GxT-38
-	for linux-mediatek@lists.infradead.org;
-	Mon, 08 Jan 2024 08:18:45 +0000
-Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-1d41bb4da91so2731675ad.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 08 Jan 2024 00:18:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1704701920; x=1705306720; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=xNB8eseBc6is+G1DowRroY47UdkWdAr6xj971vFYoJE=;
-        b=bAfmx+qdZVCqkeJPsE+hKYB/skWrZoe/VtFGEfQfwz/azmsg0Fc7GX49k/erxo4oti
-         x6n63l31VkiOIEoJy6HcpeIFIlIQQPhuRApzmesfdF0yH60yxa89E7ZfZviK7jOkIOUh
-         /xYu3k6AsJbxZ2BCl9LEc9dp5btK1wBCXOnuk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704701920; x=1705306720;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=xNB8eseBc6is+G1DowRroY47UdkWdAr6xj971vFYoJE=;
-        b=Y00Y8FhpzInYalnlH4FzfDddjaTutVOwOArUidbZzejeoayruzOJqdw6xE9naL3QAC
-         Go9OPi2rtZJ4rRYyU8G/4IIcNiJJ7dZF3bWPTDDJozMzpQgO1uhEmIRpubh5UDhLBKfS
-         xLzJDVAkmn1I2zXuGGUGDxA1MRHH13F/qlFMb9+c/q3arbSUymAWEP2pEQMR+IwZ+wXT
-         mnhcZ1yZfTwaVGcu0JA/yw/9pa3HRa7nrVhW++27PPyUBsaItdy3Jcu5A7ETZzGAvyUQ
-         FTpiJZ2LJwuO9ASBVJTEPq/WqZ8lb5Hl8dj4flqCDNJlBYZLCyRZlGBzqdmd/oTNBdxu
-         ryZg==
-X-Gm-Message-State: AOJu0YyOOC7T8MEjUfATRTDIBSLwXWm/5Par2RIcf7Y7uJ1uHrW0XEi7
-	SxLhwIClBYEO8m2lNn0pDDUeVfh0pU33
-X-Google-Smtp-Source: AGHT+IE0thN83ywdJrPNf/EGvsxE+uqGedDoJv4f+6m5lRBkmlTLbuqE5qHl18jLTcqMCayCTdhYxQ==
-X-Received: by 2002:a17:902:8a88:b0:1d4:be64:263f with SMTP id p8-20020a1709028a8800b001d4be64263fmr1076115plo.120.1704701920600;
-        Mon, 08 Jan 2024 00:18:40 -0800 (PST)
-Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:6859:f8da:3370:7a74])
-        by smtp.gmail.com with ESMTPSA id jj4-20020a170903048400b001d078445059sm5672513plb.143.2024.01.08.00.18.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Jan 2024 00:18:40 -0800 (PST)
-From: Pin-yen Lin <treapking@chromium.org>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Pin-yen Lin <treapking@chromium.org>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Weiyi Lu <weiyi.lu@mediatek.com>,
-	linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v3 1/2] clk: mediatek: Introduce need_pm_runtime to mtk_clk_desc
-Date: Mon,  8 Jan 2024 16:18:15 +0800
-Message-ID: <20240108081834.408403-1-treapking@chromium.org>
-X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
+	id 1rMl17-004Jg3-1R;
+	Mon, 08 Jan 2024 08:29:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 45B0FB80C76;
+	Mon,  8 Jan 2024 08:29:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A28AFC433C7;
+	Mon,  8 Jan 2024 08:29:45 +0000 (UTC)
+Message-ID: <545138cc-2cc1-4da0-9b26-7ebe4241c8df@xs4all.nl>
+Date: Mon, 8 Jan 2024 09:29:42 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3,04/21] v4l: add documentation for secure memory flag
+To: Jeffrey Kardatzke <jkardatzke@google.com>
+Cc: Yunfei Dong <yunfei.dong@mediatek.com>,
+ =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Nathan Hebert <nhebert@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>,
+ Yong Wu <yong.wu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Steve Cho <stevecho@chromium.org>, Sumit Semwal <sumit.semwal@linaro.org>,
+ Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
+ "T . J . Mercier" <tjmercier@google.com>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org,
+ linaro-mm-sig@lists.linaro.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20231206081538.17056-1-yunfei.dong@mediatek.com>
+ <20231206081538.17056-5-yunfei.dong@mediatek.com>
+ <ce2110bf-a16a-45ae-979b-7e41be2896cd@xs4all.nl>
+ <CA+ddPcM6nz0ufF5NXUq7E_vF6HnFKrEEag5iUDAknT6=hWTCNQ@mail.gmail.com>
+Content-Language: en-US, nl
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <CA+ddPcM6nz0ufF5NXUq7E_vF6HnFKrEEag5iUDAknT6=hWTCNQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240108_001844_006989_31F5C160 
-X-CRM114-Status: GOOD (  15.88  )
+X-CRM114-CacheID: sfid-20240108_002953_828964_75D65BC5 
+X-CRM114-Status: GOOD (  18.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,90 +80,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce a new need_pm_runtime variable to mtk_clk_desc to indicate
-this clock controller needs runtime PM for its operations.
-Also do a runtime PM get on the clock controller during the
-probing stage to workaround a possible deadlock.
+On 04/01/2024 21:05, Jeffrey Kardatzke wrote:
+> On Mon, Dec 11, 2023 at 3:05 AM Hans Verkuil <hverkuil-cisco@xs4all.nl> wrote:
+>>
+>> On 06/12/2023 09:15, Yunfei Dong wrote:
+>>> From: Jeffrey Kardatzke <jkardatzke@google.com>
+>>>
+>>> Adds documentation for V4L2_MEMORY_FLAG_SECURE.
+>>>
+>>> Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
+>>> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+>>> ---
+>>>  Documentation/userspace-api/media/v4l/buffer.rst | 8 +++++++-
+>>>  1 file changed, 7 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/Documentation/userspace-api/media/v4l/buffer.rst b/Documentation/userspace-api/media/v4l/buffer.rst
+>>> index 52bbee81c080..a5a7d1c72d53 100644
+>>> --- a/Documentation/userspace-api/media/v4l/buffer.rst
+>>> +++ b/Documentation/userspace-api/media/v4l/buffer.rst
+>>> @@ -696,7 +696,7 @@ enum v4l2_memory
+>>>
+>>>  .. _memory-flags:
+>>>
+>>> -Memory Consistency Flags
+>>> +Memory Flags
+>>>  ------------------------
+>>>
+>>>  .. raw:: latex
+>>> @@ -728,6 +728,12 @@ Memory Consistency Flags
+>>>       only if the buffer is used for :ref:`memory mapping <mmap>` I/O and the
+>>>       queue reports the :ref:`V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS
+>>>       <V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS>` capability.
+>>> +    * .. _`V4L2-MEMORY-FLAG-SECURE`:
+>>> +
+>>> +      - ``V4L2_MEMORY_FLAG_SECURE``
+>>> +      - 0x00000002
+>>> +      - DMA bufs passed into the queue will be validated to ensure they were
+>>> +     allocated from a secure dma-heap.
+>>
+>> Hmm, that needs a bit more work. How about:
+>>
+>> - The queued buffers are expected to be in secure memory. If not, an error will be
+>>   returned. This flag can only be used with ``V4L2_MEMORY_DMABUF``. Typically
+>>   secure buffers are allocated using a secure dma-heap. This flag can only be
+>>   specified if the ``V4L2_BUF_CAP_SUPPORTS_SECURE_MEM`` is set.
+>>
+> 
+> Thanks Hans. Yunfei, can you integrate this change into the patch please?
+> 
+>> In addition, the title of this table is currently "Memory Consistency Flags": that
+>> should be renamed to "Memory Flags".
+> 
+> Hans, the patch is already renaming the table as you suggested. :)
+> (unless there's some other spot I'm missing)
 
-Signed-off-by: Pin-yen Lin <treapking@chromium.org>
----
+Sorry for the noise, I missed that change.
 
-Changes in v3:
-- Update the commit message and the comments before runtime PM call
+Regards,
 
-Changes in v2:
-- Fix the order of error handling
-- Update the commit message and add a comment before the runtime PM call
+	Hans
 
- drivers/clk/mediatek/clk-mtk.c | 19 +++++++++++++++++++
- drivers/clk/mediatek/clk-mtk.h |  2 ++
- 2 files changed, 21 insertions(+)
-
-diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index 2e55368dc4d8..ba1d1c495bc2 100644
---- a/drivers/clk/mediatek/clk-mtk.c
-+++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -13,6 +13,7 @@
- #include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
- #include <linux/slab.h>
- 
- #include "clk-mtk.h"
-@@ -494,6 +495,18 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
- 			return IS_ERR(base) ? PTR_ERR(base) : -ENOMEM;
- 	}
- 
-+
-+	if (mcd->need_runtime_pm) {
-+		devm_pm_runtime_enable(&pdev->dev);
-+		/*
-+		 * Do a pm_runtime_resume_and_get() to workaround a possible
-+		 * deadlock between clk_register() and the genpd framework.
-+		 */
-+		r = pm_runtime_resume_and_get(&pdev->dev);
-+		if (r)
-+			return r;
-+	}
-+
- 	/* Calculate how many clk_hw_onecell_data entries to allocate */
- 	num_clks = mcd->num_clks + mcd->num_composite_clks;
- 	num_clks += mcd->num_fixed_clks + mcd->num_factor_clks;
-@@ -574,6 +587,9 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
- 			goto unregister_clks;
- 	}
- 
-+	if (mcd->need_runtime_pm)
-+		pm_runtime_put(&pdev->dev);
-+
- 	return r;
- 
- unregister_clks:
-@@ -604,6 +620,9 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
- free_base:
- 	if (mcd->shared_io && base)
- 		iounmap(base);
-+
-+	if (mcd->need_runtime_pm)
-+		pm_runtime_put(&pdev->dev);
- 	return r;
- }
- 
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index 22096501a60a..c17fe1c2d732 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -237,6 +237,8 @@ struct mtk_clk_desc {
- 
- 	int (*clk_notifier_func)(struct device *dev, struct clk *clk);
- 	unsigned int mfg_clk_idx;
-+
-+	bool need_runtime_pm;
- };
- 
- int mtk_clk_pdev_probe(struct platform_device *pdev);
--- 
-2.43.0.472.g3155946c3a-goog
+>>
+>> Regards,
+>>
+>>         Hans
+>>
+>>>
+>>>  .. raw:: latex
+>>>
+>>
 
 
