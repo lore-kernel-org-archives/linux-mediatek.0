@@ -4,77 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30935C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 13:20:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0FCFC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 13:46:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iMQUfhOKGODVKE5j7lmJb9vjYDymD1aXyaIUsVPYuyY=; b=igNnRy12/LMJef6ncqZ0UPQrOw
-	Q3QdQivDRDeMSgGqktNC0X4dzyxXfZRJOyMaM6utMn4E/iak0KnNJ1XJhX0PX2bPklxBuVPt5vuWM
-	uOTeL3Q8bt061+sNt3s24obUcoFnhA3VLkdhB8K3Vlom8kg02rtUQaQTMvND+5DwdgUia1YBLduiu
-	Cw6y5QaWVfM1vttL0Wt3c6ownyJHbhO1SCdD6yNMskPNCG7dBmaesyUK4etcQHN9qmStzUJ59m/cr
-	I9QpTU1DBkpl/NumcSUX1r/Acga00VFwY/FoQLHYsRyVZ1CK2Fw9/M9zVmampKHfroV3jU88K5ZQF
-	KO9DNX6w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nF8dIOh9/N9jjusv6rO6q9PGcu1d10410OU4JSpt70Q=; b=fhNkovO1SPS93l
+	tob934bFDLkjR2hFv684iGHPXEw3ROAsT0MyQzL9CChxU9i2khZtAje7NWcH1uaN4GYik3KpB+Myi
+	hLB3wqq20kHmmFrhrZE7l1hqK6QV6v3l/5gSkmGOmmyLYZQ0KCNcH4SJryxcBK1ThwiDLHVi10mYp
+	p1ZbQxvjHRnQPEBSP4rK19CoeFNAx0lUXxdWH9+857EQeg3txsIJk2l3srtxSaM5T/LIwYJb6c4SY
+	ejOy/bhQTcqaemYcAirNvgv/e/yPPUZDo4Zd593XvEJUufMdCJ2ePovJ6OBxRx7Q5EroeDAvao4fk
+	NwYlx05aUbUxaQnMQvYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMpYE-005C0e-1k;
-	Mon, 08 Jan 2024 13:20:22 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1rMpxp-005FSm-1g;
+	Mon, 08 Jan 2024 13:46:49 +0000
+Received: from mout.gmx.net ([212.227.15.18])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMpYB-005BzV-0G;
-	Mon, 08 Jan 2024 13:20:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=iMQUfhOKGODVKE5j7lmJb9vjYDymD1aXyaIUsVPYuyY=; b=oGwAScyDtVosDA7OHfpyUWlDYZ
-	Ps+1KDLsZouzt7iLOTnSCi7vIfN1KrCCKkPSBx+zOOyTvP8URff4bcbkmgcrHu1efIzf2yR7T7rQ9
-	vSqGltlTLDjW3Zf2g1rUhReSar9xRROmG4h8YTwuMbFHK/ahLt52/bmak5X7nU4OhHbs=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1rMpXk-004dn5-LD; Mon, 08 Jan 2024 14:19:52 +0100
-Date: Mon, 8 Jan 2024 14:19:52 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Jie Luo <quic_luoj@quicinc.com>
-Cc: Sergey Ryazanov <ryazanov.s.a@gmail.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Robert Marko <robert.marko@sartura.hr>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [net-next PATCH RFC v3 1/8] dt-bindings: net: document ethernet
- PHY package nodes
-Message-ID: <841ef784-b27e-4f7a-94f2-f04f93178c61@lunn.ch>
-References: <20231126015346.25208-1-ansuelsmth@gmail.com>
- <20231126015346.25208-2-ansuelsmth@gmail.com>
- <0926ea46-1ce4-4118-a04c-b6badc0b9e15@gmail.com>
- <1437d9df-2868-43f5-aebd-e0c57fe4d905@lunn.ch>
- <b75e6267-7d54-412e-8882-af4d9a0b54e6@quicinc.com>
+	id 1rMpxm-005FRS-0D;
+	Mon, 08 Jan 2024 13:46:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1704721594; x=1705326394; i=frank-w@public-files.de;
+	bh=eHFTTnrAlxZxsnvH49LqdXsKFSZ7Cww6ornO/kw2wR4=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References;
+	b=Nzu45zx7TGWivSS7zIVmVRMzMRk2B9poNz47OhalBWl/jadI7bUDH5bEc8Y6zVOi
+	 3SH41JApS5KTBKRnGS1JdHCjnvn8lqPVKN79D695LFi1C//6O+/SORTwX4fl3dZJD
+	 DZnTAxyn5NWu4CgQX1MRbIQadJCMJYUBUsvM3glgjWEHZSlBIMPxfzdZuAF/iNLNw
+	 HchtxXDyBW9czu9+7RxMIDIdG9xGFhrbcngLGSUWPIXoeNvJy3zBQUh1siHGUAlgN
+	 +fy1no13Mi1waJl54T+eAUQZGhMKJtdjEAaRzFZrDt1NO5B8IlDpfZRuhfRIAGkD7
+	 3DfRMgspDTUF+t39cQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [IPv6:::1] ([80.187.71.7]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MEFzr-1rWQKj44DF-00AHf2; Mon, 08
+ Jan 2024 14:46:34 +0100
+Date: Mon, 08 Jan 2024 14:46:17 +0100
+From: Frank Wunderlich <frank-w@public-files.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Frank Wunderlich <linux@fw-web.de>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>
+CC: Sam Shih <sam.shih@mediatek.com>, Daniel Golle <daniel@makrotopia.org>,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_2/2=5D_clk=3A_mediatek=3A_add?= =?US-ASCII?Q?_infracfg_reset_controller_for_mt7988?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <717a21bb-de39-4f7d-913c-f2a20d8b02bd@collabora.com>
+References: <20240105162056.43266-1-linux@fw-web.de> <20240105162056.43266-3-linux@fw-web.de> <717a21bb-de39-4f7d-913c-f2a20d8b02bd@collabora.com>
+Message-ID: <D0CA0019-A61D-4843-B502-7F40DA619FB3@public-files.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <b75e6267-7d54-412e-8882-af4d9a0b54e6@quicinc.com>
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:xblEkwWVshSiG/6u0lgUW6oJn5QhPXUSO4eD2KMSmL3wRJcRLMH
+ N52WYGxVpESAKG26Qc5C0MuKrWlqmrURECmvc4GnzGt9lwnwy27vrdLzDrlXEgANOKfq6uk
+ bDz2NHK/9fUaUeA7HaRsDDfp9fnPpUX/3a+WxuhbWPM8AcsZc58J8UAj9j3MNUoX5R1rpyD
+ rQRWLzvjH3ZEg0N2VWDUQ==
+UI-OutboundReport: notjunk:1;M01:P0:UHoxeZHGFCA=;zNPt/J3l03QqhDyB7HxtL7N9zr4
+ NA8NfUJbGXxSCURvNbWIP13RBD1w8aha9xpnzf3RuoIEmLZOnVU7tcJGT5ABNsEvDjo+V/rbg
+ 4S4A7/qReBDzO4pjGWDqyWvK/CzpWnlt9BYpuCQnxUxcQEZ1NJ1Tg/XpfRZkSXfIhHZuF4Scu
+ p023r/UsyLcF+GfZ18YKyEuNXsOiD0u+/LR3rorNhNBCh5kEi2d3Vm9hLaOeQwTu+1PnvZsdY
+ krSDiDizdIXOo7ySGRr38dVsceK3YxrRuGFMAsJt5jRE9FMHCxo+563TfWlGDXcCccUfeJl2r
+ nJhCNrG8kOmFPi6Zl2fjRtDYJQ8bclKit1OXTjCrzJvSvJmlyXQWc64zP/ffePBvBRwKPoQar
+ bDIFY1dt64NJCeG6RVDCza417fRzl14DfRc324Z43utKSlIhswr2crEAf/P51kzDC0WZrnHrO
+ 6yGsg1OWsK9aCR9d0NkvVW1o6/LswUyGlvKevmWIiSn94KL4WPKiWH+nlhMqDYB/RnyYCZDf+
+ 0Wd+ZJ7tn387ZIqq++rnSepwo6T9H2bxhlT2o9RwXx0Uqa2+nTA6u+5GvIpK2OszC5cb+knx0
+ D0dVrX9P49ADAswF/dNBJR19J5x6bVBbrgPm5IJ+YH8Tr4h/I5zxe6lnCqlFqStOFQ2FVh0+H
+ LXZ5N9YFxCxmqbirPh8rSMyBp1XVH4yLHaaDxMcDyVUMCnXT26IGh65Cwn3JM5p/JhwmkzqzJ
+ HwlVXigIwOtGblAEs2ca6HsWXgHY+7yc/ows9rLksLNrw6h+coYyKYF2mgWnF4XmKeST/lnBp
+ g7aHpZsoyR6aMqLb4vP6bwzKsc8X6RV+my67Pn9FwxoYn++Ng4Um7JmAIXk/Seh4RY51woWBk
+ 85NpLVxq/u3itttkE3DiUt6bKTI8os87bliwvFwQRsNL3MYEZwCle/ZBlO8TNhIuLn/2q9Wne
+ ivecCg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240108_052019_258989_4187C0D3 
-X-CRM114-Status: GOOD (  23.50  )
+X-CRM114-CacheID: sfid-20240108_054646_486633_2D9EC6BA 
+X-CRM114-Status: GOOD (  12.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,236 +96,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Since qca8075 PHY is also multiple port PHY, which is same as qca8084,
-> but qca8084 also includes the integrated clock controller, this is the
-> first qcom PHY chip integrating the clock controller internally.
-> can we also consider designing the clocks and resets DT models in the
-> PHY package DT.
-> 
-> For qca8084 PURE PHY chip, which is the quad PHY chip and two PCSes,
-> it integrates the clock controller that generates the clocks to be used
-> by the link of PHYs, the integrated controller also provides the resets
-> to the PHY,  the clock controller(NSSCC) driver of qca8084 works at the
-> same way of the GCC of SoC(IPQ), qca8084 needs to be initialized with
-> the clocks and resets for the qca8084 PHY package, these clocks and
-> resets are generated by the NSSCC, even for PURE phy chip qca8084, there
-> is also some PHY package level clocks needs to be initialized.
-> 
-> here is the diagram of qca8084.
-> __| |_______________| |__
-> | PCS0 |          |PCS1 |
-> |______|          |_____|
-> |_________________      |
-> |                |      |
-> |     NSSCC      |      |
-> |________________|      |
-> |_______________________|
-> |     |     |     |     |
-> |PHY1 |PHY2 |PHY3 |PHY4 |
-> |_____|_____|_____|_____|
+Am 8=2E Januar 2024 11:12:26 MEZ schrieb AngeloGioacchino Del Regno <angelo=
+gioacchino=2Edelregno@collabora=2Ecom>:
+>Il 05/01/24 17:20, Frank Wunderlich ha scritto:
+>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+>>=20
+>> Infracfg can also operate as reset controller, add support for it=2E
+>>=20
+>> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
+>> ---
+>>   drivers/clk/mediatek/clk-mt7988-infracfg=2Ec | 20 +++++++++++++++++++=
++
+>>   1 file changed, 20 insertions(+)
+>>=20
+>> diff --git a/drivers/clk/mediatek/clk-mt7988-infracfg=2Ec b/drivers/clk=
+/mediatek/clk-mt7988-infracfg=2Ec
+>> index 8011ef278bea=2E=2E1660a45349ff 100644
+>> --- a/drivers/clk/mediatek/clk-mt7988-infracfg=2Ec
+>> +++ b/drivers/clk/mediatek/clk-mt7988-infracfg=2Ec
+>> @@ -14,6 +14,9 @@
+>>   #include "clk-gate=2Eh"
+>>   #include "clk-mux=2Eh"
+>>   #include <dt-bindings/clock/mediatek,mt7988-clk=2Eh>
+>> +#include <dt-bindings/reset/mediatek,mt7988-resets=2Eh>
+>> +
+>> +#define	INFRA_RST_SET_OFFSET	0x80
+>>     static DEFINE_SPINLOCK(mt7988_clk_lock);
+>>   @@ -249,12 +252,29 @@ static const struct mtk_gate infra_clks[] =3D {
+>>   	GATE_INFRA3(CLK_INFRA_133M_PCIE_CK_P3, "infra_133m_pcie_ck_p3", "sys=
+axi_sel", 31),
+>>   };
+>>   +static u16 infra_rst_ofs[] =3D {
+>> +	INFRA_RST_SET_OFFSET,
+>> +};
+>> +
+>> +static u16 infra_idx_map[] =3D {
+>> +	[MT7988_INFRA_RST0_THERM_CTRL_SWRST] =3D 0 * RST_NR_PER_BANK + 9,
+>
+>The MT7988A datasheet says that INFRA_RST0 bit 9 is CONN2EMI_M0_GALS_SLV_=
+SWRST, so
+>this is wrong: THERM_CTRL_SWRST is in the RST1 register, bit 9=2E
+>
+>Also, I'm sure that you really want to add the PCIe MAC reset bit as well=
+, to be
+>used with the PCIe driver=2E=2E=2E
+>
+>[MT7988_INFRA_RST0_PEXTP_MAC_SWRST] =3D 0 * RST_NR_PER_BANK + 6,
+>[MT7988_INFRA_RST1_THERM_CTRL_SWRST] =3D 1 * RST_NR_PER_BANK + 9,
 
-Please add to the diagram the external clocks and external resets.
+Yes you are right=2E=2E=2Ei have only rst1 as screenshot,need to get the f=
+ull datasheet or can you tell me base address for rst0? Need to change valu=
+e of INFRA_RST_SET_OFFSET then to rst0 and check RST_NR_PER_BANK to be corr=
+ect=2E
 
-Additionally, add the resets and clocks between the NSSCC and the
-individual PHYs. Typically, the internal clocks and resets are not in
-DT, at last not for a single PHY. For a quad PHY in a package, it
-might make sense to add them. Before we can decide that, we need a
-clear idea what the hardware looks like.
+>Enjoy=2E=2E=2E :-)
+>
+>Cheers,
+>Angelo
+>
 
-> let me example the initial clocks and resets for the pure PHY chip qca8084
-> as below, the clocks and resets should be put into the first
-> MDIO node to be initialized firstly before qca8084 PHY will work.
-> 
-> ethernet-phy-package@0 {
-> 
->         #address-cells = <1>;
-> 
->         #size-cells = <0>;
-> 
->         compatible = "ethernet-phy-package";
-> 
->         reg = <0>;
-> 
-> 
-> 
->         /* initial PHY package level clocks */
-> 
->         clocks = <&qca8k_nsscc NSS_CC_APB_BRIDGE_CLK>,
-> 
->                <&qca8k_nsscc NSS_CC_AHB_CLK>,
-> 
->                <&qca8k_nsscc NSS_CC_SEC_CTRL_AHB_CLK>,
-> 
->                <&qca8k_nsscc NSS_CC_TLMM_CLK>,
-> 
->                <&qca8k_nsscc NSS_CC_TLMM_AHB_CLK>,
-> 
->                <&qca8k_nsscc NSS_CC_CNOC_AHB_CLK>,
-> 
->                <&qca8k_nsscc NSS_CC_MDIO_AHB_CLK>;
 
-Device tree effectively defined devices on bus, in a tree, and how
-they interconnect. Does the NSSCC have its own address on the MDIO
-bus? Or does it share an address with one of the PHYs? It could be we
-want to describe the NSSCC as a DT node of its own within the
-package. It is probably both a clock consumer, and a clock provider.
-The individual PHYs are then clock consumers, of the clocks the NSSCC
-exports. Same for resets.
-
-> 
->         clock-names = "apb_bridge",
-> 
->                 "ahb",
-> 
->                 "sec_ctrl_ahb",
-> 
->                 "tlmm",
-> 
->                 "tlmm_ahb",
-> 
->                 "cnoc_ahb",
-> 
->                 "mdio_ahb";
-> 
-> 
-> 
->         /* initial PHY package level reset */
-> 
->         resets = <&qca8k_nsscc NSS_CC_DSP_ARES>;
-> 
->         reset-names = "gephy_dsp";
-> 
-> 
-> 
->         /* initial clocks and resets for first phy */
-> 
->         phy0 {
-> 
->                 reg = <0>;
-> 
->                 clocks = <&qca8k_nsscc NSS_CC_GEPHY0_SYS_CLK>;
-> 
->                 clock-names = "gephy0_sys";
-> 
->                 resets = <&qca8k_nsscc NSS_CC_GEPHY0_SYS_ARES>,
-> 
->                        <&qca8k_nsscc NSS_CC_GEPHY0_ARES>;
-> 
->                 reset-names = "gephy0_sys",
-> 
->                         "gephy0_soft";
-> 
->         };
-> 
-> 
-> 
->         /* initial clocks and resets for second phy */
-> 
->         phy1 {
-> 
->                 reg = <1>;
-> 
->                 clocks = <&qca8k_nsscc NSS_CC_GEPHY1_SYS_CLK>;
-> 
->                 clock-names = "gephy1_sys";
-> 
->                 resets = <&qca8k_nsscc NSS_CC_GEPHY1_SYS_ARES>,
-> 
->                        <&qca8k_nsscc NSS_CC_GEPHY1_ARES>;
-> 
->                 reset-names = "gephy1_sys",
-> 
->                         "gephy1_soft";
-> 
->         };
-> 
-> 
-> 
->         /* initial clocks and resets for third phy */
-> 
->         phy2 {
-> 
->                 reg = <2>;
-> 
->                 clocks = <&qca8k_nsscc NSS_CC_GEPHY2_SYS_CLK>;
-> 
->                 clock-names = "gephy2_sys";
->                 resets = <&qca8k_nsscc NSS_CC_GEPHY2_SYS_ARES>,
-> 
->                        <&qca8k_nsscc NSS_CC_GEPHY2_ARES>;
-> 
->                 reset-names = "gephy2_sys",
-> 
->                         "gephy2_soft";
-> 
->         };
-> 
-> 
-> 
->         /* initial clocks and resets for fourth phy */
-> 
->         phy3 {
-> 
->                 reg = <3>;
-> 
->                 clocks = <&qca8k_nsscc NSS_CC_GEPHY3_SYS_CLK>;
-> 
->                 clock-names = "gephy3_sys";
-> 
->                 resets = <&qca8k_nsscc NSS_CC_GEPHY3_SYS_ARES>,
-> 
->                        <&qca8k_nsscc NSS_CC_GEPHY3_ARES>;
-> 
->                 reset-names = "gephy3_sys",
-> 
->                         "gephy3_soft";
-> 
->         };
-
-This is starting to look O.K.
-
->         /* initial clocks and resets for pcs0. */
-> 
->         pcs0 {
-> 
->                 reg = <4>;
-> 
->                 clocks = <&qca8k_nsscc NSS_CC_SRDS0_SYS_CLK>;
-> 
->                 clock-names = "srds0_sys";
-> 
->                 resets = <&qca8k_nsscc NSS_CC_SRDS0_SYS_ARES>;
-> 
->                 reset-names = "srds0_sys";
-> 
->         };
-> 
-> 
-> 
->         /* initial clocks and resets for pcs1. */
-> 
->         pcs1 {
-> 
->                 reg = <5>;
-> 
->                 clocks = <&qca8k_nsscc NSS_CC_SRDS1_SYS_CLK>;
-> 
->                 clock-names = "srds1_sys";
-> 
->                 resets = <&qca8k_nsscc NSS_CC_SRDS1_SYS_ARES>;
-> 
->                 reset-names = "srds1_sys";
-> 
->         };
-
-PCS will need further work and thinking about. Typically, they are not
-described in DT for a PHY. In general, a PCS in a PHY does not have a
-driver of its own, the firmware in the PHY mostly controls it, not
-Linux. For the moment, lets leave them as they are, and we will come
-back to them once we get the clocks and resets correctly described.
-
-     Andrew
+regards Frank
 
