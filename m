@@ -4,88 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F6E4C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 19:45:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C482C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jan 2024 20:47:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DX3yF2JNvu6/Fxu4Za4yQXD/UPEj9fRLrpyFbqNUgko=; b=qxp6qXaZZzDC0/68FEM7aLblv6
-	KB7oU/F1Pa62/+e6wdramxuvqx+Rf0hzSY9ypHrbRvMsVWp/+RsUgjHTCEb7fxvzgi6fpnvCMlPzB
-	tRuXp80BjmQY62xIqoFzwYG4i4SMTTT7kvXvUilzS2HZQN64WbD/VP3e02XNsFCEFyoV+XDB4+VY8
-	BtD/UMUHo44SYh8npSq5W4roRBRa8FEFIwSDjl6Fkn4dKmXGDbJm+i3JTOwfVsbKHZagyg1PR+APw
-	nH7EmfadAkctnxvjUUd+oVSzGmB8/Vorwgka5wq9zNXMbiuord5W/ozK4u8PEb6QV7y5K8Qq2Mrpa
-	3F56/NJA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=RXargCYC5tp6JJ5K6cG6yI4OFY52NWFfheJBVFalhQw=; b=EY90iLiMYKb0eBO6+AblAJhMvP
+	X9Gk2KYdc1nJCk6LuU40Xn/bEYl5k81XSd7XxqUjM0B7fyQ9VgktDbe3XewsZ+R6FDIId2mUkkFel
+	Fa39XbF/0+hn+BWFe2fkXxeNBSX3VWN2VXBj0PEOGAcDfXWDmC+KdDZ5q9lhkUme6jdKkdqOjsfEo
+	O4ihoL8r8OHlYVs3+2SJz6bDxlrCto3CJqxOScRK0nIGR2FrULQ0XJpdYGT6knYkJn75G6V16JoXN
+	UzQds+tQpRu+vytbpEATER+nQ7D9msXur8fdzG+jGgPZMqvi2I8X4w1D2iFrut3d1T6TlzhkWAEeQ
+	Fm+Eom3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMvZ6-0064s0-0J;
-	Mon, 08 Jan 2024 19:45:40 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1rMwWy-006CMN-1b;
+	Mon, 08 Jan 2024 20:47:32 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMvZ1-0064rG-2Z
-	for linux-mediatek@lists.infradead.org;
-	Mon, 08 Jan 2024 19:45:38 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-50eabfac2b7so2268047e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 08 Jan 2024 11:45:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1704743133; x=1705347933; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=DX3yF2JNvu6/Fxu4Za4yQXD/UPEj9fRLrpyFbqNUgko=;
-        b=J4rJzvgv3/xP8qJ3Nke8AMRywQ8KnUIXAJqHSR8zopFJaQz+TPWaBhHIBHwn8TidUK
-         J6xC8h0H74ag7VgUwwx5NWIj10PCXL6Uh3IsbF3cmVWmP1tgGrZg9m0worbclfNq9nMa
-         OFljV9XwdiYrCpiUWsVt+rhdCZVw3b0Vsn4+ImDU1GLnK7r4nrbLT1qt7131zRF3xDpU
-         Me7jWl4zLuPeMCiGM+MayVIIatJbnoQ2aqvoOhgNDACmluJjw/Sf1/IDzRFpp+Kjw9Jr
-         RDhCrdw+UfjEckQ29wvb5wa7971BGuXKRxxkIs/3cb71IveibhbIqt01Q4Kxq0ZQFbj+
-         pCjQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704743133; x=1705347933;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=DX3yF2JNvu6/Fxu4Za4yQXD/UPEj9fRLrpyFbqNUgko=;
-        b=gDRLKkJvRfYHTA3ybKBUawD13zfmLQqs+pQSjIxziwmABPz5ZtriIFx/uHrAf0EdnC
-         8o4EwwVXhZKorhZXxiRwzwlNpyIchFU0ayTwkEcJCTUCioBcNhOlM+t0+lOEgJuKp9w6
-         uXqhUpsna5s4KvtZ3ziSxLX6PbBlsnnuhQdNCC3yoRoMeGd3uDW8kAyT1TjvSrquWjRz
-         CgDK9eHQMm2xqxKiH7e/oQHhVYdWXh2Et0gQXNH5jrukLKE3g9gO5uro1jfv1DcaqdvX
-         RifZi0IRxSf6RMVQI/b1t89Uu/XbB/gn/Aamfc3B8MGxAUj9ycKATGwU3tOwvDILCGRv
-         KH3w==
-X-Gm-Message-State: AOJu0YxQEIAsNWH3OsX2sTiz7Oys7S0oYOwQ6nEwqoH2zOWBIMqGmbED
-	Ea9tNFZJOxsyLJu3tXuYuDPywvNyTBAwuw==
-X-Google-Smtp-Source: AGHT+IFsDvX5CEXvMenXkidfIHO0DoXgGLeD/ILb7vLHTPacwac9o5fGcDSkGD9LnOXCpOfp3YahFg==
-X-Received: by 2002:a05:6512:31c2:b0:50e:bcde:f47b with SMTP id j2-20020a05651231c200b0050ebcdef47bmr1614184lfe.58.1704743133389;
-        Mon, 08 Jan 2024 11:45:33 -0800 (PST)
-Received: from blmsp ([2001:4091:a246:821e:6f3b:6b50:4762:8343])
-        by smtp.gmail.com with ESMTPSA id h26-20020a17090619da00b00a29beb20353sm189093ejd.192.2024.01.08.11.45.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Jan 2024 11:45:32 -0800 (PST)
-Date: Mon, 8 Jan 2024 20:45:31 +0100
-From: "msp@baylibre.com" <msp@baylibre.com>
-To: Yu-chang Lee =?utf-8?B?KOadjuemueeSiyk=?= <Yu-chang.Lee@mediatek.com>
-Cc: "fparent@baylibre.com" <fparent@baylibre.com>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Ben Lok =?utf-8?B?KOmZuOW/l+aBhik=?= <ben.lok@mediatek.com>, 
-	Chris-qj Chen =?utf-8?B?KOmZs+Wlh+mAsik=?= <Chris-qj.Chen@mediatek.com>, Louis Yu =?utf-8?B?KOa4uOaUv+mMlSk=?= <louis.yu@mediatek.com>, 
-	Bear Wang =?utf-8?B?KOiQqeWOn+aDn+W+tyk=?= <bear.wang@mediatek.com>, 
-	MandyJH Liu =?utf-8?B?KOWKieS6uuWDlik=?= <MandyJH.Liu@mediatek.com>, "amergnat@baylibre.com" <amergnat@baylibre.com>, 
-	"afgros@baylibre.com" <afgros@baylibre.com>, 
-	Xiufeng Li =?utf-8?B?KOadjuengOWzsCk=?= <Xiufeng.Li@mediatek.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
-	Fan Chen =?utf-8?B?KOmZs+WHoSk=?= <fan.chen@mediatek.com>, "abailon@baylibre.com" <abailon@baylibre.com>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: Need help to validate power domain driver modification on mt8365
-Message-ID: <jqmcjyk7rthljefkgcsysmeys2uwjnt2otjg5cawzdxlkq4ui2@ycpciyzqwwfs>
-References: <d4445c168a15c03ebfe3bc88dc12b219f08a81d5.camel@mediatek.com>
+	id 1rMwWt-006CJ9-2Z;
+	Mon, 08 Jan 2024 20:47:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1704746837;
+	bh=UQ/Pqq9hCugSxC3Fzh31NRAczf6loqtAEVkRzY9ZrUY=;
+	h=From:To:Cc:Subject:Date:From;
+	b=fu3FyYNgD+idTI4piSZ17tN+M/ZavzrqZBkRgO1z+9KFmMqXzHO/8MaMHHeKbgKmT
+	 FCunKCxfVFTFdoQar8AN/9ZqZr73MNkTPjR4aPHsgoeJMS3NuE0UjmZFmJZh9B/wfm
+	 uBEtKjRtItys+DDipV5HuIPi+QxZbVslRP6BrQ25fHTV6u4sqn6rq+CbWBPIPNKJIu
+	 Z7TIDqO1NBgHE+VnrVF1jYrZ+UsjsfAxgLF+mpZLRIqqcC8Nrg5QeSBRea5wf5wLY2
+	 BeZvGKI5a1tuhoHWLF+B5uVf+5ch4VRy95pl7af70cunodjkUWc85q+yz1zoXVfAPQ
+	 RwNDbkGikAX2Q==
+Received: from localhost.localdomain (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 924B33781475;
+	Mon,  8 Jan 2024 20:47:12 +0000 (UTC)
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	kernel@collabora.com,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado=20via=20Alsa-devel?= <alsa-devel@alsa-project.org>,
+	Rob Herring <robh@kernel.org>,
+	Takashi Iwai <tiwai@suse.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-sound@vger.kernel.org
+Subject: [PATCH] ASoC: mediatek: mt8192: Check existence of dai_name before dereferencing
+Date: Mon,  8 Jan 2024 17:44:58 -0300
+Message-ID: <20240108204508.691739-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <d4445c168a15c03ebfe3bc88dc12b219f08a81d5.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240108_114536_040384_E555F930 
-X-CRM114-Status: GOOD (  14.19  )
+X-CRM114-CacheID: sfid-20240108_124727_994038_F9BD4C76 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,49 +83,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yu-chang.lee,
+Following commit 13f58267cda3 ("ASoC: soc.h: don't create dummy
+Component via COMP_DUMMY()"), the dai_name field is only populated for
+dummy components after the card is registered. This causes a null
+pointer dereference in the mt8192-mt6359 sound card driver's probe
+function when searching for a dai_name among all the card's dai links.
 
-On Tue, Dec 26, 2023 at 06:56:39AM +0000, Yu-chang Lee (李禹璋) wrote:
-> Hi Markus,
-> 
-> Attachment 0003 is the proposal I make for the clamp protection issue
-> we last discussed and others are some dependency patch. Since smi has
-> have two type of protection but in different stage. So I eventually
-> decide to separate it. May you help test these patch on mt8365, I test
-> it a bit on mt8188 and it work fine. Still any advice and modification
-> are welcome!
+Verify that the dai_name is non-null before passing it to strcmp. While
+at it, also check that there's at least one codec.
 
-Could you please send your patches as a series using git send-email? It
-is easier to discuss patches that way as I can do inline comments.
-Thank you!
+Reported-by: "kernelci.org bot" <bot@kernelci.org>
+Closes: https://linux.kernelci.org/test/case/id/6582cd6d992645c680e13478/
+Fixes: 13f58267cda3 ("ASoC: soc.h: don't create dummy Component via COMP_DUMMY()")
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-I personally actually liked the suggestion of Angelo to do a strict
-ordering in bp_cfg. I see you split the config into a separate field
-now, .clamp_smi.
+---
 
-Best,
-Markus
+ sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-> 
-> SMI protection type
-> 1. clamp 
-> 2. bus protection
-> 
-> For example: power on 
-> "clamp protection enable" (smi, with clamp flag)
->   -> regulator enable 
->     ...
->       -> clamp protection disaled (smi, with clamp flag)
->         -> bus protection disabled (smi -> infra)
-> 
-> For example: power off
-> "clamp protection enable" (smi, with clamp flag)
->   -> bus protection enable (infra -> smi)
-> 
-> Best Regards,
-> Yu-chang.lee
-
-
-
+diff --git a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
+index 5bd6addd1450..bfcb2c486c39 100644
+--- a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
++++ b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
+@@ -1208,7 +1208,8 @@ static int mt8192_mt6359_dev_probe(struct platform_device *pdev)
+ 			dai_link->ignore = 0;
+ 		}
+ 
+-		if (strcmp(dai_link->codecs[0].dai_name, RT1015_CODEC_DAI) == 0)
++		if (dai_link->num_codecs && dai_link->codecs[0].dai_name &&
++		    strcmp(dai_link->codecs[0].dai_name, RT1015_CODEC_DAI) == 0)
+ 			dai_link->ops = &mt8192_rt1015_i2s_ops;
+ 
+ 		if (!dai_link->platforms->name)
+-- 
+2.43.0
 
 
