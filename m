@@ -4,78 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F159C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jan 2024 08:01:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 619B0C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jan 2024 08:04:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f3XO5DB3PGTjxuxdHbpQfOFkjCrDikXFoyaY9Xd9GxA=; b=Jup7R5dXDATzJlRhTcZqTR7gpI
-	/sIn0IFW80SmMQycgjhSbrM+On4LP5IY80iTidEufOupfalMpEg4z3mf+z9SA7EHbb4XC7Tcq56ST
-	wrL7hHqJ3VzhiVIudfXKCdDBPtuaNGMpuYaQgd1UQ5TbKNi/T+J8r8uZszgG2RxjveEFNwbydNk5M
-	qFUIU/h+X6HA1gZ+gFrV8Al3YNkyRqXnPorHOXIUkKk0GcWHW9tO+oxoQLytt444tFydd+vdyltQq
-	GxT0cMB/DCb9ckzghnYqfE8ZTxWJjJL/qIKaCcUNRyo3WsjKFdaeyCHlCA6TtQw2aX2Pf7FECYV0s
-	KvnTzkBA==;
+	bh=2i0SBu6zK60taCvvvUGt/J20VuCQ3I5RN4bCAKsZhKk=; b=MZjSirC/2f9F0P3VPVRdTvtRpr
+	bgTEbsfyf0QyNv2KEtLcKErO9xKEppzfUtIHREyPmOFjd5tjw6rigLKsZJOJHxxbBp7Mxw920CRUX
+	eCPdm9uofdANEmAmJr6G3MrCYRFqpZsjx1hvJt9QNV/TKaeOyUds5b9xOEqy6y3L4OP7oXEhBzK8y
+	I9ycKYx/kXSVkcDrw7TOIPoyyDSya19LmRYCpNSsKM1qNI5P9mScnVChmP8KgPxjYarc9JiBZsIi1
+	OtXCmEiXmke/cyBSF4J1CMU4yORS8SneYhTTNqHQbqIBeXVbw9/krJDtUlk8RHACUki1MMPxezevu
+	2C3MZWkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rN73L-007Ekd-1p;
-	Tue, 09 Jan 2024 08:01:39 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1rN769-007F66-16;
+	Tue, 09 Jan 2024 08:04:33 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rN73I-007EjG-35
+	id 1rN766-007F5S-0v
 	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Jan 2024 08:01:38 +0000
-Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-55719cdc0e1so2950687a12.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Jan 2024 00:01:36 -0800 (PST)
+	Tue, 09 Jan 2024 08:04:31 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-557bfc7f7b4so2470559a12.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Jan 2024 00:04:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704787295; x=1705392095; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1704787468; x=1705392268; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=f3XO5DB3PGTjxuxdHbpQfOFkjCrDikXFoyaY9Xd9GxA=;
-        b=ouXp8ZYru3AHlU6kja7hmzF5vZRdC/joJASap8YW3vHDn3UIpqAQCmEgpBPusBUYXj
-         iAev4MPQWcfKG9R7AfeIMGAPHul93Ynv7ysxINDjBDXzO6gPrCNgZ5UhbqPK7ZjUzWGa
-         1Fs41XATSzoSaPk11kTr10GS7lxTgD2d+tygyOKT4PIkZYSiWmyKHB98JigaJ+urtGh8
-         L1fcTn6PIi858jGsSXj23ylY69Yn4Rap+YNNwewvXH5Q7YqBfgLlKLhvzHSTRTisum/V
-         34nmaYYiTzWPGdbPrIECUhXSUk2WtxLtytVGjBJMFL4A4UzWPlthiicycpjPf+rEb3gO
-         P24g==
+        bh=2i0SBu6zK60taCvvvUGt/J20VuCQ3I5RN4bCAKsZhKk=;
+        b=WB6si5GxDuArcqOyfqUmOHEsoNlFXLkEMRDnNcP9r/8OVbxDLzvqNjWJo2NTvzookw
+         h2SM1WB/VGOmELsPbeb/HYYk2k/2oxk/gXKSyUwe4ZElKmpfvCTkwPp/hVIFYxCQslAB
+         xX9krIFCBtQjlcS8YTdFuC/DlnFo7h7WQhsqH8M8u1kDtMlfQTgBPiRRwQYND4od3UfW
+         lXN03EO05mmAg29sLbMCT2nT00yTEDWfTthYqqTwCzwhro9cUvcfHmy8IEe+BrRtXZWc
+         DnClQ51azrJ7xI5KS3XirO4RPPHsowmQEDI2NqYSavaHdc75iou5dHogjoG7fDf33UVH
+         zvnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704787295; x=1705392095;
+        d=1e100.net; s=20230601; t=1704787468; x=1705392268;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=f3XO5DB3PGTjxuxdHbpQfOFkjCrDikXFoyaY9Xd9GxA=;
-        b=EbOtys4gJOfElrhk/2wjL6n5w3QVx+vHL+6NNEDgopfa0n0HPyjEzTCAb7RbMIQDNk
-         k0B2U/GEazWoc28nsNFIscZQPXeby4j9SIQZoSkpbgwkmcigBfUol73CbDpK1FMrVFXQ
-         4ppnnwtf6N418b3NBoaIadahLg8yf3u4IPxxtCJD6NOrq5yHcymKRamIklx2gIN/8xWC
-         N/OGg/nT50dSv5hRl3H0ufr5S0sXqABRv4zIOIqT3K2dht2SkGfj2o4aSve7DyggL8f9
-         W/zzipQQ+NCBmKY1ggaFKff95VFf+DYBzitnYcYPFNTFo1TAS3RmRgRMAirbNnza2bq7
-         +ysg==
-X-Gm-Message-State: AOJu0YzzZRmCNt48nzZdDJMBnWvK512el4/SGZPA3xiScTtaVbEAfkGy
-	sJi9rKowWbEgPt1PMXCkJjZUIVWC5YL5vQ==
-X-Google-Smtp-Source: AGHT+IF1GSToyQlrpEPofm9UvrPga/MigSZPc/25BkAiBCLnoWx+TRpXlU1tHbQMS8w47mIgUXx3Pw==
-X-Received: by 2002:a50:bae3:0:b0:557:a3c:9d45 with SMTP id x90-20020a50bae3000000b005570a3c9d45mr3106851ede.79.1704787294740;
-        Tue, 09 Jan 2024 00:01:34 -0800 (PST)
+        bh=2i0SBu6zK60taCvvvUGt/J20VuCQ3I5RN4bCAKsZhKk=;
+        b=Vu+dh1pkHBjOfBLWZydpxes3doVCwLy8ofM25TMOjwYvr4nRupvnGtE4wzm1deNET+
+         xX3YRRYB8YnJ1ylgJIozEbhiRGH0GpQ1QWjL1ekvTQWHj6dKs3pYBt8muudokBtF6UTO
+         1FYy2i0LswIJytPh2ewi9N5wI/cIsA1c4GcE3iIL6WQ3/oL5A1U3NjzgvCYE/o3rr7Zu
+         k/O+h60jFi4m/tmOti7K2EibOqkIevodPitRI+AAZf3hogSFxhQUz+ZlvhGV+2ztxgoD
+         G0z/aymV/IcyD5BSx8IgUD4qcvJKZ8nYyEF6yvC20p/M1KYV6Qd9pwShZX0YM+zHHCyh
+         9Gig==
+X-Gm-Message-State: AOJu0YwGeSvSNvZGsj4owxpSgO2MJbCbUQK8anAT0DAeR4Og+9qzNt8M
+	XpMEbc5Tijo74+cjo6+YMOhQ4fauisJadA==
+X-Google-Smtp-Source: AGHT+IEvgrg00JkVeIBsstHuk5YOGI5ERdKGo02b+eJjoN6pwTNO5Tgbf1ue791ZI88lYeTQ+7Vnqw==
+X-Received: by 2002:a50:d7d6:0:b0:557:8077:efe4 with SMTP id m22-20020a50d7d6000000b005578077efe4mr336009edj.27.1704787468581;
+        Tue, 09 Jan 2024 00:04:28 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.223.112])
-        by smtp.gmail.com with ESMTPSA id dn1-20020a05640222e100b00557e0e24abbsm657444edb.59.2024.01.09.00.01.31
+        by smtp.gmail.com with ESMTPSA id r23-20020a056402035700b0055298b38768sm652462edw.80.2024.01.09.00.04.25
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 09 Jan 2024 00:01:34 -0800 (PST)
-Message-ID: <1da935b9-3b59-4b09-8883-decd13af2dc2@linaro.org>
-Date: Tue, 9 Jan 2024 09:01:31 +0100
+        Tue, 09 Jan 2024 00:04:27 -0800 (PST)
+Message-ID: <32df74f3-33bf-42fe-a295-fc5500906318@linaro.org>
+Date: Tue, 9 Jan 2024 09:04:24 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] media: dt-bindings: media: i2c: Document GC08A3
- bindings
+Subject: Re: [PATCH 1/2] media: i2c: Add GC08A3 image sensor driver
 Content-Language: en-US
-To: =?UTF-8?B?WmhpIE1hbyAo5q+b5pm6KQ==?= <zhi.mao@mediatek.com>,
- "mchehab@kernel.org" <mchehab@kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
+To: =?UTF-8?B?WmhpIE1hbyAo5q+b5pm6KQ==?= <zhi.mao@mediatek.com>
 Cc: "heiko@sntech.de" <heiko@sntech.de>,
  "gerald.loacker@wolfvision.net" <gerald.loacker@wolfvision.net>,
- "tomi.valkeinen@ideasonboard.com" <tomi.valkeinen@ideasonboard.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
  "yunkec@chromium.org" <yunkec@chromium.org>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  "dan.scally@ideasonboard.com" <dan.scally@ideasonboard.com>,
@@ -85,28 +81,31 @@ Cc: "heiko@sntech.de" <heiko@sntech.de>,
  "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
  "andy.shevchenko@gmail.com" <andy.shevchenko@gmail.com>,
  =?UTF-8?B?WWF5YSBDaGFuZyAo5by16ZuF5riFKQ==?= <Yaya.Chang@mediatek.com>,
- "bingbu.cao@intel.com" <bingbu.cao@intel.com>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,
  "jacopo.mondi@ideasonboard.com" <jacopo.mondi@ideasonboard.com>,
  "jernej.skrabec@gmail.com" <jernej.skrabec@gmail.com>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "bingbu.cao@intel.com" <bingbu.cao@intel.com>,
  Project_Global_Chrome_Upstream_Group
  <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  "conor+dt@kernel.org" <conor+dt@kernel.org>,
  "10572168@qq.com" <10572168@qq.com>,
- "sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>,
  "hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
+ "tomi.valkeinen@ideasonboard.com" <tomi.valkeinen@ideasonboard.com>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
  "linux-arm-kernel@lists.infradead.org"
  <linux-arm-kernel@lists.infradead.org>,
  "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
  "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
  "angelogioacchino.delregno@collabora.com"
  <angelogioacchino.delregno@collabora.com>,
- "macromorgan@hotmail.com" <macromorgan@hotmail.com>
+ "macromorgan@hotmail.com" <macromorgan@hotmail.com>,
+ "sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>
 References: <20231207052016.25954-1-zhi.mao@mediatek.com>
- <20231207052016.25954-3-zhi.mao@mediatek.com>
- <a7a9a204-cfd2-4510-890d-ce3f72d5fcda@linaro.org>
- <6b1b6970e715e4bcdb0d72adb8b895b836e34201.camel@mediatek.com>
+ <20231207052016.25954-2-zhi.mao@mediatek.com>
+ <ZXGtqwjYruBQVaUr@kekkonen.localdomain>
+ <4021c964afebc502860571b1253423fab91b20f1.camel@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -152,12 +151,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <6b1b6970e715e4bcdb0d72adb8b895b836e34201.camel@mediatek.com>
+In-Reply-To: <4021c964afebc502860571b1253423fab91b20f1.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240109_000136_996740_7158C6BD 
-X-CRM114-Status: UNSURE (   7.36  )
+X-CRM114-CacheID: sfid-20240109_000430_337417_B639B3D6 
+X-CRM114-Status: UNSURE (   8.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -173,23 +172,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/01/2024 04:08, Zhi Mao (毛智) wrote:
-> On Thu, 2023-12-07 at 09:21 +0100, Krzysztof Kozlowski wrote:
+On 09/01/2024 04:03, Zhi Mao (毛智) wrote:
+> On Thu, 2023-12-07 at 11:34 +0000, Sakari Ailus wrote:
 > External email : Please do not click links or open attachments until you have verified the sender or the content.
 > 
-> On 07/12/2023 06:20, Zhi Mao wrote:
+> Hi Zhi,
 > 
->> Add YAML device tree binding for GC08A3 CMOS image sensor,
 > 
->> and the relevant MAINTAINERS entries.
-> 
->>
-> 
->> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
-> 
+> Thanks for the patch and please see my comments below.
 
-What happened to this email? Why so many blank lines and no responses?
-Fix your email program.
+"Hi Zhi"? Are you responding to yourself?
 
 Best regards,
 Krzysztof
