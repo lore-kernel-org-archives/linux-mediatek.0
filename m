@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAF4DC47073
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jan 2024 08:01:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F159C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jan 2024 08:01:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bdxnAmjWNKq4y1w9DC06BYcijknvo3Hfm6Sa3dcMMKc=; b=diyuRAI3zx1ghNNbzFzdB6J/Q7
-	N5eWmmxQRRCUwpI/gKGdKtNQH2K1kvPcqtVOXRiSjW4kYzoN6bPwc6VI+W/+kWKmZRK/p2Bo31W0+
-	yfaK+kBfd/HDlBxARtEmBqLIP59OrDY2g1B06gv12L0MVuAHkSuYMbBNWSsc6kvwdx55kG56ZLsWJ
-	KZd7Ine8u+FxI9WdXPyxUtU6JLDH3FXfYQg+yisQ8KzvIwInzAngsUCSFMF3S2lOew9f/l0NDIaPQ
-	NBBbK9eV9aTF6DBzW0/kF8T7zkGqKgJifUIg/hrh7eLZ3AQsSkgJDVvPpQmyRnIwivlU1+/+RtcyD
-	2y8OJiIw==;
+	bh=f3XO5DB3PGTjxuxdHbpQfOFkjCrDikXFoyaY9Xd9GxA=; b=Jup7R5dXDATzJlRhTcZqTR7gpI
+	/sIn0IFW80SmMQycgjhSbrM+On4LP5IY80iTidEufOupfalMpEg4z3mf+z9SA7EHbb4XC7Tcq56ST
+	wrL7hHqJ3VzhiVIudfXKCdDBPtuaNGMpuYaQgd1UQ5TbKNi/T+J8r8uZszgG2RxjveEFNwbydNk5M
+	qFUIU/h+X6HA1gZ+gFrV8Al3YNkyRqXnPorHOXIUkKk0GcWHW9tO+oxoQLytt444tFydd+vdyltQq
+	GxT0cMB/DCb9ckzghnYqfE8ZTxWJjJL/qIKaCcUNRyo3WsjKFdaeyCHlCA6TtQw2aX2Pf7FECYV0s
+	KvnTzkBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rN72u-007EdR-1B;
-	Tue, 09 Jan 2024 08:01:12 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1rN73L-007Ekd-1p;
+	Tue, 09 Jan 2024 08:01:39 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rN72q-007EcN-2F
+	id 1rN73I-007EjG-35
 	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Jan 2024 08:01:10 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-5571e662b93so2224939a12.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Jan 2024 00:01:07 -0800 (PST)
+	Tue, 09 Jan 2024 08:01:38 +0000
+Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-55719cdc0e1so2950687a12.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Jan 2024 00:01:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704787266; x=1705392066; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1704787295; x=1705392095; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=bdxnAmjWNKq4y1w9DC06BYcijknvo3Hfm6Sa3dcMMKc=;
-        b=k04SeOGI8tUzHKsiA+stTDmfmtguL6YWcbUFSBN6k8wU/59TBGkhE2iQ4bYXO2hCM+
-         D8E/lqs576jlX5FqwVRbmXwx5997kl+jfrlSuOhhN31Pqu8oK3wn9sjvDhVuR8n8Woa+
-         eKvtbbkn/5sCxTKxh4YOBPLE8ftZQp7e8GG1JNudCDFr19A37tDCkFAfrbLcnPlzrmB9
-         vBinKzA71YO8gTRLGloagROi51Z0XodEsT/MRqXbxvcrEqNc8EFKVI/GDmHw2TSACuLo
-         ucj3VTQ2qdIPEowVkxTtJk5UXmoeqD8e41LBtBBK7KIVBVBRcR36YZiWqweY1zE2zZLM
-         RegA==
+        bh=f3XO5DB3PGTjxuxdHbpQfOFkjCrDikXFoyaY9Xd9GxA=;
+        b=ouXp8ZYru3AHlU6kja7hmzF5vZRdC/joJASap8YW3vHDn3UIpqAQCmEgpBPusBUYXj
+         iAev4MPQWcfKG9R7AfeIMGAPHul93Ynv7ysxINDjBDXzO6gPrCNgZ5UhbqPK7ZjUzWGa
+         1Fs41XATSzoSaPk11kTr10GS7lxTgD2d+tygyOKT4PIkZYSiWmyKHB98JigaJ+urtGh8
+         L1fcTn6PIi858jGsSXj23ylY69Yn4Rap+YNNwewvXH5Q7YqBfgLlKLhvzHSTRTisum/V
+         34nmaYYiTzWPGdbPrIECUhXSUk2WtxLtytVGjBJMFL4A4UzWPlthiicycpjPf+rEb3gO
+         P24g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704787266; x=1705392066;
+        d=1e100.net; s=20230601; t=1704787295; x=1705392095;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=bdxnAmjWNKq4y1w9DC06BYcijknvo3Hfm6Sa3dcMMKc=;
-        b=fXWjx+HG8r9CCek1xXdThanBFgFKtOJ3tEKrffGNwwknOvyY/BZn840FEiNR7/hVu1
-         ITKd51qXo/RXjbJq8yuPNQjN1vZU6amKuM6jI2p8+VL38G19Wnt8IvoEGuDlrEtn+9ZA
-         I55Z5IgW9z9az4hHflCr+Kd+l5BwVKYrC741EJQQ5AdIBK1jxaAw8D3/3l4pm/LKgpN5
-         zqb0GFcTb4ZKY2b0kw3XB44T/PZUUu9guxWh9WhtHS1hheVDl+c57rinpa0494P18eCa
-         HiN4t10BHPDYdW5t1fxVUuPGhGtcVMg9BZ3/CRoOq33N3h+N7sr+ZSMNzlRO3yCItfpF
-         dpxg==
-X-Gm-Message-State: AOJu0YyttFaISaaceo9irwxLTnA0opyJZKm9Y/9YU1zUtlrp8n2pAIqj
-	uiQQ+5T87bIPpin7dF0OhkLl3LqnYP1oLw==
-X-Google-Smtp-Source: AGHT+IEa/o2zzbOHIBzotoGx7Xl85bxPkGyo6iosf7bc67LTjXqjkMi5CuZMGjLY2nDSSD4ToGehDg==
-X-Received: by 2002:a50:cc88:0:b0:557:13ad:bc8f with SMTP id q8-20020a50cc88000000b0055713adbc8fmr2800560edi.28.1704787266082;
-        Tue, 09 Jan 2024 00:01:06 -0800 (PST)
+        bh=f3XO5DB3PGTjxuxdHbpQfOFkjCrDikXFoyaY9Xd9GxA=;
+        b=EbOtys4gJOfElrhk/2wjL6n5w3QVx+vHL+6NNEDgopfa0n0HPyjEzTCAb7RbMIQDNk
+         k0B2U/GEazWoc28nsNFIscZQPXeby4j9SIQZoSkpbgwkmcigBfUol73CbDpK1FMrVFXQ
+         4ppnnwtf6N418b3NBoaIadahLg8yf3u4IPxxtCJD6NOrq5yHcymKRamIklx2gIN/8xWC
+         N/OGg/nT50dSv5hRl3H0ufr5S0sXqABRv4zIOIqT3K2dht2SkGfj2o4aSve7DyggL8f9
+         W/zzipQQ+NCBmKY1ggaFKff95VFf+DYBzitnYcYPFNTFo1TAS3RmRgRMAirbNnza2bq7
+         +ysg==
+X-Gm-Message-State: AOJu0YzzZRmCNt48nzZdDJMBnWvK512el4/SGZPA3xiScTtaVbEAfkGy
+	sJi9rKowWbEgPt1PMXCkJjZUIVWC5YL5vQ==
+X-Google-Smtp-Source: AGHT+IF1GSToyQlrpEPofm9UvrPga/MigSZPc/25BkAiBCLnoWx+TRpXlU1tHbQMS8w47mIgUXx3Pw==
+X-Received: by 2002:a50:bae3:0:b0:557:a3c:9d45 with SMTP id x90-20020a50bae3000000b005570a3c9d45mr3106851ede.79.1704787294740;
+        Tue, 09 Jan 2024 00:01:34 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.223.112])
-        by smtp.gmail.com with ESMTPSA id dn1-20020a05640222e100b00557e0e24abbsm657444edb.59.2024.01.09.00.01.03
+        by smtp.gmail.com with ESMTPSA id dn1-20020a05640222e100b00557e0e24abbsm657444edb.59.2024.01.09.00.01.31
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 09 Jan 2024 00:01:05 -0800 (PST)
-Message-ID: <11c58108-4851-4378-b7b9-2c302231ac68@linaro.org>
-Date: Tue, 9 Jan 2024 09:01:02 +0100
+        Tue, 09 Jan 2024 00:01:34 -0800 (PST)
+Message-ID: <1da935b9-3b59-4b09-8883-decd13af2dc2@linaro.org>
+Date: Tue, 9 Jan 2024 09:01:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] media: i2c: Add GC08A3 image sensor driver
+Subject: Re: [PATCH 2/2] media: dt-bindings: media: i2c: Document GC08A3
+ bindings
 Content-Language: en-US
 To: =?UTF-8?B?WmhpIE1hbyAo5q+b5pm6KQ==?= <zhi.mao@mediatek.com>,
  "mchehab@kernel.org" <mchehab@kernel.org>,
@@ -103,9 +104,9 @@ Cc: "heiko@sntech.de" <heiko@sntech.de>,
  <angelogioacchino.delregno@collabora.com>,
  "macromorgan@hotmail.com" <macromorgan@hotmail.com>
 References: <20231207052016.25954-1-zhi.mao@mediatek.com>
- <20231207052016.25954-2-zhi.mao@mediatek.com>
- <1d58c2b9-4206-409c-b312-87f4fb649512@linaro.org>
- <e709beb2acaf0cb68c6922f3b48431644e9a0246.camel@mediatek.com>
+ <20231207052016.25954-3-zhi.mao@mediatek.com>
+ <a7a9a204-cfd2-4510-890d-ce3f72d5fcda@linaro.org>
+ <6b1b6970e715e4bcdb0d72adb8b895b836e34201.camel@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -151,12 +152,13 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <e709beb2acaf0cb68c6922f3b48431644e9a0246.camel@mediatek.com>
+In-Reply-To: <6b1b6970e715e4bcdb0d72adb8b895b836e34201.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240109_000108_780417_A1F0AD8F 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20240109_000136_996740_7158C6BD 
+X-CRM114-Status: UNSURE (   7.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -171,32 +173,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/01/2024 03:50, Zhi Mao (毛智) wrote:
-> On Thu, 2023-12-07 at 09:18 +0100, Krzysztof Kozlowski wrote:
+On 09/01/2024 04:08, Zhi Mao (毛智) wrote:
+> On Thu, 2023-12-07 at 09:21 +0100, Krzysztof Kozlowski wrote:
 > External email : Please do not click links or open attachments until you have verified the sender or the content.
 > 
 > On 07/12/2023 06:20, Zhi Mao wrote:
 > 
->> Add a V4L2 sub-device driver for Galaxycore GC08A3 image sensor.
+>> Add YAML device tree binding for GC08A3 CMOS image sensor,
+> 
+>> and the relevant MAINTAINERS entries.
 > 
 >>
 > 
->> Reviewed-By: yunkec@chromium.org
+>> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
 > 
-> 
-> I don't see review given here:
-> 
-> 
-> https://lore.kernel.org/linux-media/20231123115104.32094-1-zhi.mao@mediatek.com/
-> 
-> 
-> This does not look like real review. Where was it performed? How
-> 
-> thorough was it? How many review iterations did it include?  Why there
-> 
-> is no name but anonymous review?
 
-That was my message, not yours! Fix your quoting and reply again.
+What happened to this email? Why so many blank lines and no responses?
+Fix your email program.
 
 Best regards,
 Krzysztof
