@@ -4,77 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80691C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jan 2024 13:38:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10135C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jan 2024 13:48:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:Cc:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7mDLa1lDA9I4zsDt/vUi7Q5DM723KSTf2pIxDEMdeEE=; b=oBtdOuy/AOmkvhrxBCpS8N1Dn+
-	d2rQiuYxNFZOoLWzgTZEVE4lQe8I0I5UlD0Jug85TmfLvwWbSnxbPxdgTl5tPT5XE32leqZOkrA6Q
-	cp/oBTiVbc8qhAIyrUVCL2w4dyS3nMvqgXlQG9V73HlRoWlcK8bXiXcwN5UUkVZeOepMnl28hgnDt
-	7mcXUHJ/GUl6t72A+kzk4noeRuNK5ufR4rdc63KfwkRott5APdovOBL1Z8KAqigpQlD4AJwi7ahmh
-	hWrS1ugsR1hK4/zJfPfAqsbNIsjYJC0shiP5oIOycXC8qj+jjCB7HpORnHXCwbRFsHn50/lLDpeuX
-	z92sFpmQ==;
+	bh=wvVG2KQV/oETOX0CukFpt/vsd01F13tBQ9AIaAYqp6w=; b=JXg38lfre9BEYE42sLpR7hQBcC
+	RRD9pxbuNLlIimboN5meaNlh/VWs764YmJA6NpCpJ/2eG6xvd4XsIeHnHExD1Ue1CEct7HKwyQaAY
+	zy3lMDWcO2VbooxNM1OkDqVrjHFotWXHLzb7lXlCEsx4KOz44r7bvHHHI1p8u7vwDaypwGoRDYzz1
+	cWyqQFpKYtkCOwepryejRHdqhm1QABqBFtdfDLTgyGFFDrHhodE3fXXbY4xWJcp8RG/5Z8lFfBhxw
+	MvgU4Zx2AcRDS7FwKd7zI76/JoSN5ksTbMPZssSVo6KHc7P5SzCsc6mFTC7gzBqIO5kfXXye/W50S
+	Ia7G4rAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNCJI-008OVd-1c;
-	Tue, 09 Jan 2024 13:38:28 +0000
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
+	id 1rNCTD-008PoV-1s;
+	Tue, 09 Jan 2024 13:48:44 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNCJB-008OU7-2G
-	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Jan 2024 13:38:27 +0000
-Received: by mail-oi1-x22c.google.com with SMTP id 5614622812f47-3bbd6e377ceso2751952b6e.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Jan 2024 05:38:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1704807499; x=1705412299; darn=lists.infradead.org;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=7mDLa1lDA9I4zsDt/vUi7Q5DM723KSTf2pIxDEMdeEE=;
-        b=qKfT9Ns23BC8nz+0XwlIdVUH3aVT4Yl2lOY1QaDiSelbf+GLc/vRTXyt6w/g2hWl3W
-         iUc+eLnONK11UuLx4rO3zV1DMdB+p/izhaZp1ekw+bFr8IEjibAbBYOGLEUXshkMmrG2
-         XnQjPsGp/I0qwGJLbApBgBxbfV9SdGwMjd2IodpX3tDsj4OEC9YNMTmdfhCHs8B9226u
-         vy4A9xnuQxDsHLNmkAcICK8DNqc31g8weZyL0GQnovBdna+rq3olPO2nDYm3OCvtRJyo
-         Af8rcamW47lIeJ189eecOMGN1OnDWGkxgvRy+2l0wO4tXZ2B/CsoDD7We+S+U0aEeSjd
-         /+ug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704807499; x=1705412299;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=7mDLa1lDA9I4zsDt/vUi7Q5DM723KSTf2pIxDEMdeEE=;
-        b=hKG0epVvJiqlENa4v334U1u+a+3y56ESF13X8iWoax3y4a8s6iEbMfHPz/grZENwHi
-         j0uRzeCaRS0/dO102sJZztv2KaPm67yzrVyIYRydMZolY4Q57nmCB2Qp+EHivF5VTHt3
-         sqF0j6TmlcIsWuZCqylf7M0Wwqp4poNMERymdysrwrWpmWhVOPQe1eFhISjl5JYLJMy2
-         muEqkpaNAqY1YZzNyoc/9gw7Zwn+NNAwe6J+Iz+WQh/YSy8AfCR4Wvf8Im23+/U5y1Ay
-         M6cmgB9ojju7vXj66xlxXcTBSjEyC3ElNsZEApPGHAzkwrjFgyuvM+F/lfIntl+eG4b9
-         UZSA==
-X-Gm-Message-State: AOJu0Yy1mCewgA9f0IawekYOyjJr0+yW9Ad0jT8lupQ9n+flxi74FODa
-	q8DyJh9j6+IMuWns182GeZhed60Ax4q2K4kl7FILSgNzzmVj5g==
-X-Google-Smtp-Source: AGHT+IEiIF+TOwHH0WeGea/W9p977jXEPA2RPNa5wHtj/r0Fwo02EIRShmM0F605PcR5+mNqG3weRRapKtHQAzzaPtk=
-X-Received: by 2002:a05:6808:3185:b0:3bb:d83a:99a8 with SMTP id
- cd5-20020a056808318500b003bbd83a99a8mr8896956oib.58.1704807499107; Tue, 09
- Jan 2024 05:38:19 -0800 (PST)
+	id 1rNCT9-008PnL-2v;
+	Tue, 09 Jan 2024 13:48:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=wvVG2KQV/oETOX0CukFpt/vsd01F13tBQ9AIaAYqp6w=; b=GH4SbNxaChv564U3M/bDK7+b6W
+	e4yuHL2BbR4aMHapx53lmIvMyxVTYAtqrdRkQYktWCIpUKceG2nUrXqGw2/b97QNGnEZNL4DgCO+j
+	9qS+8VnvXTjPKZu+ILIS9TiPBkLrHFksXOg3/HhB2VxLn1JefXhhBq2PT6SUrN1OF6DY=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1rNCSm-004pw9-Bx; Tue, 09 Jan 2024 14:48:16 +0100
+Date: Tue, 9 Jan 2024 14:48:16 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Jie Luo <quic_luoj@quicinc.com>
+Cc: Sergey Ryazanov <ryazanov.s.a@gmail.com>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Robert Marko <robert.marko@sartura.hr>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [net-next PATCH RFC v3 1/8] dt-bindings: net: document ethernet
+ PHY package nodes
+Message-ID: <2f2328ee-205b-4b4f-a683-2df4fbb22dde@lunn.ch>
+References: <20231126015346.25208-1-ansuelsmth@gmail.com>
+ <20231126015346.25208-2-ansuelsmth@gmail.com>
+ <0926ea46-1ce4-4118-a04c-b6badc0b9e15@gmail.com>
+ <1437d9df-2868-43f5-aebd-e0c57fe4d905@lunn.ch>
+ <b75e6267-7d54-412e-8882-af4d9a0b54e6@quicinc.com>
+ <841ef784-b27e-4f7a-94f2-f04f93178c61@lunn.ch>
+ <07c01c11-0cc2-4837-b371-1404f2ce3359@quicinc.com>
 MIME-Version: 1.0
-References: <20231220121110.1441160-1-vignesh.raman@collabora.com>
-In-Reply-To: <20231220121110.1441160-1-vignesh.raman@collabora.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Tue, 9 Jan 2024 13:38:08 +0000
-Message-ID: <CAPj87rOMPioOK0r74vcnVkXusm6Nah6KNUWyxYgpVLdkMNtW2g@mail.gmail.com>
-Subject: Re: [PATCH v1 0/8] drm/ci: Add support for GPU and display testing
-To: Helen Koike <helen.koike@collabora.com>, Dave Airlie <airlied@gmail.com>, 
-	Sima Vetter <daniel@ffwll.ch>, Daniel Stone <daniels@collabora.com>, Emma Anholt <emma@anholt.net>, 
-	linux-rockchip <linux-rockchip@lists.infradead.org>, guilherme.gallo@collabora.com, 
-	sergi.blanch.torne@collabora.com, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	David Heidelberg <david.heidelberg@collabora.com>, Rob Clark <robdclark@gmail.com>, 
-	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <07c01c11-0cc2-4837-b371-1404f2ce3359@quicinc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240109_053825_857386_A4C4528B 
-X-CRM114-Status: GOOD (  17.03  )
+X-CRM114-CacheID: sfid-20240109_054839_955562_D8BA8F7B 
+X-CRM114-Status: GOOD (  14.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,48 +91,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+> 
+> __| |_______________| |__
+> | PCS0 |          |PCS1 |
+> |______|          |_____|
+> |_______                |<---- REF clock 50MHZ
+> |      |------------    |
+> |NSSCC |    |clks  |rsts|<---- GPIO reset
+> |______|    |      |    |
+> |           V      V    |
+> |_______________________|
+> |     |     |     |     |
+> |PHY1 |PHY2 |PHY3 |PHY4 |
+> |_____|_____|_____|_____|
 
-On Wed, 20 Dec 2023 at 12:11, Vignesh Raman <vignesh.raman@collabora.com> wrote:
-> Some ARM SOCs have a separate display controller and GPU, each with
-> different drivers. For mediatek mt8173, the GPU driver is powervr,
-> and the display driver is mediatek. In the case of mediatek mt8183,
-> the GPU driver is panfrost, and the display driver is mediatek.
-> With rockchip rk3288/rk3399, the GPU driver is panfrost, while the
-> display driver is rockchip. For amlogic meson, the GPU driver is
-> panfrost, and the display driver is meson.
->
-> IGT tests run various tests with different xfails and can test both
-> GPU devices and KMS/display devices. Currently, in drm-ci for MediaTek,
-> Rockchip, and Amlogic Meson platforms, only the GPU driver is tested.
-> This leads to incomplete coverage since the display is never tested on
-> these platforms. This commit series adds support in drm-ci to run tests
-> for both GPU and display drivers for MediaTek, Rockchip, and Amlogic
-> Meson platforms.
+Not the best of improvements. So the ref clock goes to the package,
+and then magically somehow gets to the NSSCC? Are there any more
+blocks it goes through before reaching the NSSCC? How does the GPIO
+reset get converted into multiple reset inside the package? Details,
+details, details.
 
-Thanks a lot for these. The patches need to be squashed to be
-bisectable though. For example, patch #2 changes the MTK job names and
-adds more jobs, but the corresponding xfail updates only come in #7
-and #8. This means we have a span of a few patches where we don't have
-useful test results.
+> There are difference clock trees generated from NSSCC for the different
+> PHYs, all clocks and resets for qca8084 CHIP working are internally
+> provided by the NSSCC.
 
-A better sequencing would be something like:
-  1. add ANX7625 config
-  2. refactor _existing_ MTK display jobs to use YAML includes, change
-the existing job name, and rename the existing xfail set, remove
-IGT_FORCE_DRIVER from the script since it's now set by the job
-  3. add MTK Panfrost+PVR GPU jobs with new xfails, add xfail entry to
-MAINTAINERS
-  4+5: same as 2+3 but for Amlogic
-  6+7: same as 2+3 but for Rockchip
+So show this in the block diagram.
 
-Then the separate rename/update xfail commits just disappear, as does
-the removal of IGT_FORCE_DRIVER, because it's just done incrementally
-as part of the commits which change the related functionality. It's
-extremely important that every change can work standalone, instead of
-introducing intermediate breakage which is only fixed in later commits
-in the series.
+> Yes, Andrew, the NSSCC provider driver is probed based on the MDIO
+> device, the PHY CHIP occupies the MDIO addresses, so the NSSCC is
+> registered as the MDIO device.
+> 
+> DT of the NSSCC device node:
+> mdio {
+>       #address-cells = <1>;
+>       #size-cells = <0>;
+> 
+>       clock-controller@18 {
+>         compatible = "qcom,qca8084-nsscc";
+>         reg = <0x18>;
+>         clocks = <&qca8k_xo>,
+>                  <&qca8k_uniphy0_rx>,
+>                  <&qca8k_uniphy0_tx>,
+>                  <&qca8k_uniphy1_rx>,
+>                  <&qca8k_uniphy1_tx>,
+>                  <&qca8k_uniphy1_rx312p5m>,
+>                  <&qca8k_uniphy1_tx312p5m>;
+>         #clock-cells = <1>;
+>         #reset-cells = <1>;
+>         #power-domain-cells = <1>;
+>       };
+>     };
+ 
+This does not make any sense. You have one clock input, 50MHz. So why
+are you listing 6 consumer clocks, not one? And where are the clocks
+this clock controller provides, clock-output-names=<...>;
 
-Cheers,
-Daniel
+I give up. Please consider this PHY driver NACKed.
+
+Get Linaro, or some other organisation with a lot of experience with
+mainline to take over the work.
+
+	 Andrew
 
