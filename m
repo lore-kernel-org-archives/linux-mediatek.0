@@ -4,60 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2700EC4707B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jan 2024 19:06:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7720EC4707B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jan 2024 21:34:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0imiBNAmxYdjFrN91N+Gr3Ke3cIJ1Iq7tWli0ojzx6g=; b=F/eqVqp2cJtPxYQ6KKyWUsMCb/
-	twNNlJkKF6SSlbAEk/8+m8pIM1ewNlyfzxq86Xqr82zLG9qzSBjAGcnwqHtgHQYwswgQjod3jGRgM
-	3uM54elLQSscHMFI9J8a7K9FlqfffLuhXAdlFYbP7slW9ZPAWwDSVhZJR2gjQkqYGNJ8B1GRugQpw
-	E2oFxhrhelQBbJeXhWlXjN0x34efiObiwOhiCVd5P4EiA/Jj+Kp09jx6o8JpXDF+PSEFVx/L+Kw57
-	KpIwDKdn3x+TukSpi3sZQdf+vyP8iJmHdC5INkfKx0i4BT8lLk9GOd35Hp2S79NjeF3vW7+IUoyIv
-	UnWvtd2Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gE416TbjEYVis8prf1cXZYaoI5U/2BL23yGsz4kqVcY=; b=axKGbD/SwB4UAq2fGnUqfGKbaI
+	UZaaiQuuz9MWYvu26YduGwB7NYLxYt2SvgtYW86TstTbJSyo+ConxR2ki7MXVkCDkMCwyTQFA2Ox9
+	iI4I4GkgZESstAj6Bj7BQ1HeNHRRe2Sef/U5fHOXNMCKsac6EmqLSueewqnYoxo9+jISvQO76hgEV
+	PAhSY1TAwNe0okzEz/m3oyFZiB/AjqkRi83qAaHxw6RGViwmO7Msljz52FPm2rM57CXpenP1xqbGA
+	dLV7NKigxvOEbE1oXrhn3hK6o4K0y9Qtq5UBPrzlnloP3rjKPpipjNMfAeWG7lOsQP8HgnB3Gidnw
+	QLgnXGhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNHQl-009Ebr-0Y;
-	Tue, 09 Jan 2024 19:06:31 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rNJji-009ZFY-1k;
+	Tue, 09 Jan 2024 21:34:14 +0000
+Received: from mail-pl1-f173.google.com ([209.85.214.173])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNHQh-009EZS-2K;
-	Tue, 09 Jan 2024 19:06:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8425061515;
-	Tue,  9 Jan 2024 19:06:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B5E7C433C7;
-	Tue,  9 Jan 2024 19:06:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1704827179;
-	bh=0imiBNAmxYdjFrN91N+Gr3Ke3cIJ1Iq7tWli0ojzx6g=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=MjZtUgOZvQGQl18Kb0i7Od4ej24M4wYIlxaH3LHBBFvTzGYNOw6xpBm4TpJdQoQtd
-	 wLZdd1rRiOeaoJQeODjChVJsIFYNZaAXWN4WDynOjY3SXqXmk+KadiXhwOjDsb17OE
-	 lM4J/qEf/5jJ73PruB6olUaSOe/d0bT7x9I1QCdL22G4nvlziD0r2mkzEB6HTdzNI1
-	 VPQBPqg4Ef7Zyn8cLC/5PORvB0QsKep7Ux6AF6PEQX/1e77Eo/nY4Yuy2+9FtzXDE0
-	 Bl2rn15DbWRbYZD5sx0lvPiS+/ouRgipB7YdjwWZX/Qz0XfFlhS/Y7z9FsY6rinf3a
-	 QWLXkvSz2YvPA==
-Received: (nullmailer pid 2960236 invoked by uid 1000);
-	Tue, 09 Jan 2024 19:06:17 -0000
-Date: Tue, 9 Jan 2024 13:06:17 -0600
-From: Rob Herring <robh@kernel.org>
-To: Eugen Hristev <eugen.hristev@collabora.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, bin.liu@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, kernel@collabora.com, matthias.bgg@gmail.com
-Subject: Re: [PATCH v2 1/2] dt-bindings: media: mediatek-jpeg-encoder: change
- max iommus count
-Message-ID: <20240109190617.GA2958445-robh@kernel.org>
-References: <20240102103801.268647-1-eugen.hristev@collabora.com>
+	id 1rNJjf-009ZEq-2A
+	for linux-mediatek@lists.infradead.org;
+	Tue, 09 Jan 2024 21:34:12 +0000
+Received: by mail-pl1-f173.google.com with SMTP id d9443c01a7336-1d54b763d15so14191985ad.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Jan 2024 13:34:10 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704836050; x=1705440850;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=gE416TbjEYVis8prf1cXZYaoI5U/2BL23yGsz4kqVcY=;
+        b=iucrEnUyufT4x0wZJAveopHVqTYAGdQhRCxSRFBhVWE8BypERgKiraBITpVN6wTFH0
+         i+V9HLY/VDIh0xuNnUuwS2EFqngLCp9XfmiRv3cVUXDywtxeOkundxLZACkIzcmN26nh
+         Japea3NSC6gxb9HFzTyG6fXhT+VrlQ68z4RrgfUxGacPoM6N4MczFJaKOvW2M+5wPswD
+         d27pqfNXJ4zXgBxQkglK5azKWuJ1zRHevNt2v8au2N6WHgOaqpuQ1uoC5vjrPDxInq8c
+         geqtv2vCeKHJq5CTaK3qSCfmdpwx3nR7zp3uXO9jNApsb4Hr3aQ+A5ZZJ6Ndhx7MrdeS
+         mcrQ==
+X-Gm-Message-State: AOJu0YwKDbZxM8fzxqq8y/q+FHliP8VMYwuW3BwUnYBd+9UcWxQ1imBl
+	lkCG2/peobL8NKcFvTC0+jc=
+X-Google-Smtp-Source: AGHT+IG4rBkEvRL39X6PgG0KP4QJbqKwxIRkuTDkYKKNIgR4JAvpmVnPlNU9UihIMnbPAp3cmN2XRQ==
+X-Received: by 2002:a17:90b:3d12:b0:28d:950f:a207 with SMTP id pt18-20020a17090b3d1200b0028d950fa207mr1393071pjb.30.1704836050211;
+        Tue, 09 Jan 2024 13:34:10 -0800 (PST)
+Received: from ?IPV6:2620:0:1000:8411:b76f:b657:4602:d182? ([2620:0:1000:8411:b76f:b657:4602:d182])
+        by smtp.gmail.com with ESMTPSA id d16-20020a17090b005000b0028aea6c24bcsm9010150pjt.53.2024.01.09.13.34.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 09 Jan 2024 13:34:09 -0800 (PST)
+Message-ID: <53d4c814-0b6a-4328-852c-7dfa2d8466b9@acm.org>
+Date: Tue, 9 Jan 2024 13:34:08 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240102103801.268647-1-eugen.hristev@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 1/2] scsi: core: move auto suspend timer to Scsi_Host
+Content-Language: en-US
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com, chu.stanley@gmail.com
+References: <20240109124015.31359-1-peter.wang@mediatek.com>
+ <20240109124015.31359-2-peter.wang@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20240109124015.31359-2-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240109_110627_898531_1DA98FFE 
-X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-CacheID: sfid-20240109_133411_711636_7BB384FD 
+X-CRM114-Status: UNSURE (   6.31  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,15 +88,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 02, 2024 at 12:38:00PM +0200, Eugen Hristev wrote:
-> MT8186 has 4 iommus in the list, to cope with this situation, adjust
-> the maxItems to 4 (instead of previous 2).
-> Add also minItems as 1 since iommus are mandatory, to avoid warning
-> on the example.
+On 1/9/24 04:40, peter.wang@mediatek.com wrote:
+> Runtime suspend timer is a const value in scsi_host_template, which
+> host cannot modify this value.
+> Move it to Scsi_Host for host flexible use.
 
-maxItems alone means minItems is the same size. If IOMMU is required,
-then 'required' is where that is defined. Is there a case where 1 IOMMU
-is valid? If so, what h/w has this case.
+It would help to mention in the cover letter that the UFSHCI driver is
+the only driver that sets .rpm_autosuspend_delay in the SCSI host template
+and hence that this patch does not break any SCSI drivers. Anyway:
 
-Rob
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
