@@ -4,101 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7878BC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jan 2024 08:29:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5EEDC46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jan 2024 08:38:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XCLdJ0e/Bd3E8o6EOrKg5ZcKtjQ7aRyzG5ZKf+9ziCU=; b=FoYhZgnnNdph58oJX7K6yHi7qK
-	rC621JaoPkaXwuDOq1ITpU6fDslkQ9HN0zKMI9Jymask2uRrX2ZypuNczG+Iwqs1pGa9TUx9WLgUx
-	PkCFr0NCJa7k2EhRlVGqbF9y8inY2IlfFC1e3mtBf8u0AfLKaZ083vE1auvRJUxHOpOAQEt/eVoNG
-	F4DkOQaQGnlNWVM4dqEPaamF0gpHxwqI8sfgIa+e2iiyLrUeV4FqNJuYbyhuI4S9x9rWpn6jjziAE
-	EPv5iLY5gaAuTMLonQ5OjmOvOsa+/bizj34rakkU0k2yLeEGyksW50bs6ztCXhWxhAmFaXIkzS5mA
-	uFlrXobg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r9QMnkuYmipKOpeUnc0mWJw1q3uDWwK59GxkGpEP2+E=; b=XXk5YAShHtPbfNhNlPetteZn6J
+	b3zzrLjOjBGYN3XqrxAKKsp1zOiq//hZViZvEY5kazLlFvl3CYD7HdgJWXqzUrhWv/ZNB+nw5RyC2
+	aUc8NbxxrKtI06KEcXq4OzSPdQb49FCYGUn9dpEp0lv8HRVnE+Cg7OJT41E4WtERO0F/Pq+XE6ZRp
+	l4Z8LrMCiOwfqD3vZX2W6dnI/tZl1rGrq3vVYM9HSrOU1PmE/CfOwRitdwpkEWwkPQ/j9U/Rv46Nl
+	ZzixF0fKBVhM24CQWSeJWZI8G0oyja00BahRQVtlt/13h+2KSt8oDxu+X3RhzunkrmJhq+bpdxEoB
+	ptzHqQTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rN7UN-007KEj-0a;
-	Tue, 09 Jan 2024 08:29:35 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1rN7d9-007MLn-26;
+	Tue, 09 Jan 2024 08:38:39 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rN7UK-007KCK-1d;
-	Tue, 09 Jan 2024 08:29:34 +0000
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 4098Aatk030120;
-	Tue, 9 Jan 2024 08:29:10 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	message-id:date:mime-version:subject:to:cc:references:from
-	:in-reply-to:content-type:content-transfer-encoding; s=
-	qcppdkim1; bh=XCLdJ0e/Bd3E8o6EOrKg5ZcKtjQ7aRyzG5ZKf+9ziCU=; b=BJ
-	fda8C1lqJRjmxN28FUYHnf1uc6atqJmo7U2bJE8k8mOsCaqKthZxrKuqUHtJteiR
-	A7wY0ilF9P3pORVsE3IY0mk8iSBgWnckL6lxGGZ+s/fsisZSSmmK2Vf9jyWKhLND
-	0P34E9D6zHlYIb9iGlORDujP3upOkrUeCGJ8N0yiSQB/eyPmjZuZ0YnLiPm8pqDe
-	8RjwSjzWNAsaqhriN9ukzS4HUxx3+OvPhDb+PfzCUQFQvdUkpJ9ETTcy2PYdEUmq
-	Ftf3iHYcOiCUx7AR+30n2xN+0a4nKA1pXPzV1/kojucPesoD0mE6gP0R3x5sSQOk
-	X6sOlF/KGep5at/ejnCQ==
-Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3vgwsjrhp2-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 09 Jan 2024 08:29:10 +0000 (GMT)
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 4098T8PB002926
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 9 Jan 2024 08:29:08 GMT
-Received: from [10.214.66.81] (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Tue, 9 Jan
- 2024 00:27:12 -0800
-Message-ID: <209abe99-734d-f571-d930-4493437983bf@quicinc.com>
-Date: Tue, 9 Jan 2024 13:57:09 +0530
+	id 1rN7d6-007MK3-0r;
+	Tue, 09 Jan 2024 08:38:37 +0000
+Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 4B523922;
+	Tue,  9 Jan 2024 09:37:26 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1704789446;
+	bh=An17x/TosDCNv/2qZzVjPa+OEHjTqymUr94pBBedJzA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bYEmRngfPqsRR8BSOfq4pWwu/WzaNWtiKQrilIkHwmWcMYm01YLh6c2UejushhwGH
+	 KyAuFQl4WYbSg8oL6uTbLKdQUakm9eeHEDSKgoKOHBFVKLC00T8FzN2mfk0F5dKtKL
+	 hdu+GS/dyv/NSWkpUxVcGyIL2FrX6qqw07qKswvY=
+Date: Tue, 9 Jan 2024 10:38:39 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Zhi Mao =?utf-8?B?KOavm+aZuik=?= <zhi.mao@mediatek.com>
+Cc: "mchehab@kernel.org" <mchehab@kernel.org>,
+	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	"heiko@sntech.de" <heiko@sntech.de>,
+	"gerald.loacker@wolfvision.net" <gerald.loacker@wolfvision.net>,
+	"tomi.valkeinen@ideasonboard.com" <tomi.valkeinen@ideasonboard.com>,
+	"yunkec@chromium.org" <yunkec@chromium.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"dan.scally@ideasonboard.com" <dan.scally@ideasonboard.com>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	Shengnan Wang =?utf-8?B?KOeOi+Wco+eUtyk=?= <shengnan.wang@mediatek.com>,
+	"hdegoede@redhat.com" <hdegoede@redhat.com>,
+	"linus.walleij@linaro.org" <linus.walleij@linaro.org>,
+	"andy.shevchenko@gmail.com" <andy.shevchenko@gmail.com>,
+	Yaya Chang =?utf-8?B?KOW8tembhea4hSk=?= <Yaya.Chang@mediatek.com>,
+	"bingbu.cao@intel.com" <bingbu.cao@intel.com>,
+	"jacopo.mondi@ideasonboard.com" <jacopo.mondi@ideasonboard.com>,
+	"jernej.skrabec@gmail.com" <jernej.skrabec@gmail.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"10572168@qq.com" <10572168@qq.com>,
+	"sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>,
+	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
+	"macromorgan@hotmail.com" <macromorgan@hotmail.com>
+Subject: Re: [PATCH 1/2] media: i2c: Add GC08A3 image sensor driver
+Message-ID: <20240109083839.GH20868@pendragon.ideasonboard.com>
+References: <20231207052016.25954-1-zhi.mao@mediatek.com>
+ <20231207052016.25954-2-zhi.mao@mediatek.com>
+ <1d58c2b9-4206-409c-b312-87f4fb649512@linaro.org>
+ <e709beb2acaf0cb68c6922f3b48431644e9a0246.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: RESEND: Re: [Patch v6 03/12] docs: qcom: Add qualcomm minidump
- guide
-Content-Language: en-US
-To: Ruipeng Qi <ruipengqi7@gmail.com>
-CC: <agross@kernel.org>, <alim.akhtar@samsung.com>, <andersson@kernel.org>,
-        <bmasney@redhat.com>, <conor+dt@kernel.org>, <corbet@lwn.net>,
-        <gpiccoli@igalia.com>, <keescook@chromium.org>, <kernel@quicinc.com>,
-        <kgene@kernel.org>, <konrad.dybcio@linaro.org>,
-        <krzysztof.kozlowski+dt@linaro.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-arm-msm@vger.kernel.org>, <linux-doc@vger.kernel.org>,
-        <linux-hardening@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <linux-remoteproc@vger.kernel.org>,
-        <linux-samsung-soc@vger.kernel.org>, <mathieu.poirier@linaro.org>,
-        <matthias.bgg@gmail.com>, <nm@ti.com>, <robh+dt@kernel.org>,
-        <tony.luck@intel.com>, <vigneshr@ti.com>, <qiruipeng@lixiang.com>
-References: <1700864395-1479-4-git-send-email-quic_mojha@quicinc.com>
- <20231225135542.1789-1-ruipengqi7@gmail.com>
- <520e377d-e990-c185-4a20-07806873e506@quicinc.com>
- <CADHLONEn4oyRFrNWEbt2mxMczyc8FrDLMzaZ7fsijzm9Y8VTBA@mail.gmail.com>
-From: Mukesh Ojha <quic_mojha@quicinc.com>
-In-Reply-To: <CADHLONEn4oyRFrNWEbt2mxMczyc8FrDLMzaZ7fsijzm9Y8VTBA@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: mmGVKHzYwm-iQH9vrziQjsvmW2EMUnvr
-X-Proofpoint-ORIG-GUID: mmGVKHzYwm-iQH9vrziQjsvmW2EMUnvr
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-12-09_02,2023-12-07_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1015 suspectscore=0
- lowpriorityscore=0 phishscore=0 priorityscore=1501 adultscore=0
- spamscore=0 impostorscore=0 mlxscore=0 bulkscore=0 mlxlogscore=999
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2311290000 definitions=main-2401090065
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <e709beb2acaf0cb68c6922f3b48431644e9a0246.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240109_002932_699016_4C0D0345 
-X-CRM114-Status: GOOD (  23.73  )
+X-CRM114-CacheID: sfid-20240109_003836_484755_FD4E5538 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,99 +96,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello Zhi,
 
+HTML e-mails are not allowed on the Linux kernel mailing list. Please
+use plain text only.
 
-On 1/8/2024 9:04 PM, Ruipeng Qi wrote:
-> On Wed, Jan 3, 2024 at 11:27 PM Mukesh Ojha <quic_mojha@quicinc.com> wrote:
->>
->>
->> One more thing, kernel part of minidump, we are calling it APSS Minidump
->> has limitation of no of entries so it will be difficult to dump
->> non-continuous regions after a certain number of registration ~200. However,
->> we do have a solution in downstream kernel for it like to create a big
->> CMA buffer and register this buffer with Minidump so that whatever gets
->> dumped in that buffer gets captured during crash and fill up this buffer
->> and create elf during panic. I think, similar thing you are also doing
->> with your OS-minidump.
->>
->> I have just glanced into your implementation of OS-minidump, it
->> more of relying on basic concept of RAM content preserved
->> across boot and later reading it through procfs but this basic
->> stuff is common to pstore(ram) as well and pstore has file system
->> support why don't you make your driver as one of pstore record and that
->> way Qualcomm minidump also gets benefited where entire OS-minidump
->> record gets registered with Qualcomm minidump and we get this on panic
->> and you get this via pstorefs.
->>
-> Thanks Mukesh！It is a good suggestion to move OS-minidump forward!
-> By the way, I have some questions here for which I need your assistance.
+[snip]
+
+> ************* MEDIATEK Confidentiality Notice
+>  ********************
+> The information contained in this e-mail message (including any
+> attachments) may be confidential, proprietary, privileged, or otherwise
+> exempt from disclosure under applicable laws. It is intended to be
+> conveyed only to the designated recipient(s). Any use, dissemination,
+> distribution, printing, retaining or copying of this e-mail (including its
+> attachments) by unintended recipient(s) is strictly prohibited and may
+> be unlawful. If you are not an intended recipient of this e-mail, or believe
 > 
-> Firstly,I can reimplement OS-minidump as one of the pstore records to
-> dump data. The resulting dump file would contain thousands of
-> non-contiguous memory regions, each with only the virtual address and
-> size recorded. As far as I know, Qualcomm's minidump can handle
-> several memory regions, each with a physical address and size.
-> This seems to be a difference, and I'm curious as to how you deal with
-> data dumped by OS-minidump. I would really appreciate it if you could
-> provide more details on your approach.
+> that you have received this e-mail in error, please notify the sender
+> immediately (by replying to this e-mail), delete any and all copies of
+> this e-mail (including any attachments) from your system, and do not
+> disclose the content of this e-mail to any other person. Thank you!
 
-What my thought was to think your OS-minidump to be one of pstore record 
-similar to existing records like console, ftrace, pmsg, dmesg etc.,
-If you follow this series patch 11/12 and 12/12 is trying to get the
-pstore(ram) record information and registering with minidump and here
-the physical address are of the ramoops record addresses.
+This is also not appropriate for mailing lists. Please ensure that
+future replies will not contain such footers. You may need to contact
+your IT department if they are added automatically by the Mediatek mail
+servers.
 
-So, once you are capturing everything inside in a record, all minidump
-has to do is get your Os-minidump record physical address and size
-and register with minidump.
-> 
-> Secondly, what tools do you use to analyze the dump data, and does it
-> support crash tool?
+-- 
+Regards,
 
-Currently, we are trying to capture only pstore ramoops region in text
-format and not been using any tool.
-
-Since, Qualcomm minidump is controlled from boot firmware and it can
-not be used on non-Qualcomm SoCs so here minidump driver and its usecase
-is limited to capture only pstore (ram)records for targets where RAM
-content is not guaranteed to be preserved across boots.
-
-So, you can think minidump as one of ramoops backend which will be
-dumping all the ramoops regions/records/zones.
-
-+---------+     +---------+   +--------+      +---------+
-  | console |     | pmsg    |   | ftrace |     | dmesg   | ...Os-minidump
-  +---------+     +---------+   +--------+     +---------+
-        |             |             |              |
-        |             |             |              |
-        +------------------------------------------+
-                           |
-                          \ /
-                   +----------------+
-             (1)   |pstore frontends|
-                   +----------------+
-                           |
-                          \ /
-                  +------------------- +
-             (2)  | pstore backend(ram)|
-                  +--------------------+
-                           |
-                          \ /
-
-                    +---------------+
-             (3)    | qcom_minidump |
-                    +---------------+
-
-
-> 
-> Lastly, is Qualcomm minidump compatible with non-Qualcomm SoCs,
-> and if so, how can one use it?
-
-I already replied it above.
-
--Mukesh
-
-> 
-> Best Regards
-> Ruipeng Qi
+Laurent Pinchart
 
