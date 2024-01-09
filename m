@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D7E0C47077
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jan 2024 12:40:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEB2DC46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jan 2024 12:40:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9YnYZ+9HQO7srjh6G+ugxuioYLUj69zev/NkRZhEzbo=; b=xetqkJv++yJxr6RKkqkvYLh4gg
-	tyjWEZfAc4Mu+9A/HuUfFqvS3Fxj3JjYnIpknX5Zz9Lx00Z7Kc3UkkdpkafELzbpPccttn5WQ8s4b
-	FaLu1eHL+0/+5WKQaZMF0FX1zmTcexzmHLh7UVU0wCisR+1E0R8NljyBqKmZabfYLSvpOR6WDNHe0
-	SIGSmXBaadzkDUf+cAxW+hz+JjVcpxavGtaxrLOSyA+hnnKx4Am2Qrnk389CtFqYmxBnTJj3TOx7S
-	Wjw2oZsPusJ3Aa6E7PeHV4/90X7hJQ7HL28FfBOcfoM9yKircGy6YE7we3z1pdy3A0Z31ZxVk/JJW
-	VXEII5Cg==;
+	bh=OVSdB3ffjjvy/33vCX7gSgD1MBNclv/B3WHdsWG5/r8=; b=k12cn92RNqEKOO/AiQeTSKUHnW
+	XM7djTWaRN+DtjYVf0OXn6FK7fS2T03Qqx1fr4zU9ogRk60f1PFeqd63r/DS+X4WIOPMs6yfCki+C
+	CMeMTB0iWWht9fAVqoIvRNAkFkdRqrizCfxYQpofqqbsJNaDh+pJ1JM9L0m9zGADKhAR/arIMLJb6
+	+Aii3PpZNUhik/TLTh1ugDohXd3Rp0980S8cW8ipYGIIp5XuswkGn6W/Zzt8BDG5UPVS1n9WMc/07
+	VjjSR7MLtCzig2Z9V91wcDEu9aVm+4mkqpitXz97VkIFtMPLrSF28TX0IvfTHiLbyNwdyQEuQVSqx
+	BK2o/A8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNBPF-008GJE-02;
-	Tue, 09 Jan 2024 12:40:33 +0000
+	id 1rNBPG-008GKM-2Y;
+	Tue, 09 Jan 2024 12:40:34 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNBPC-008GHH-03
+	id 1rNBPC-008GHA-15
 	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Jan 2024 12:40:31 +0000
-X-UUID: 4058c6d8aeec11ee9a662f17bb45267e-20240109
+	Tue, 09 Jan 2024 12:40:32 +0000
+X-UUID: 40bbf456aeec11ee9a662f17bb45267e-20240109
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=9YnYZ+9HQO7srjh6G+ugxuioYLUj69zev/NkRZhEzbo=;
-	b=aXZKAQNtYZKOH3bNT4RGB24aiokaYMoul5NfGMridaUJ9nnLxH+7fKBVUg+w0TUNwDhXiYx4t0E58Vl/lOge+c9ToMLsLFuWm4bVg1SN+CUvpaA2ee1B0ecVAHrPSE3TVCXAPX0qFRR2B4/5EYYUTZ2ys9mEPnTRNSbuYzzBkqU=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=OVSdB3ffjjvy/33vCX7gSgD1MBNclv/B3WHdsWG5/r8=;
+	b=hxu+fRZowEHHyR5uu1PmFMQ+qIQGpPIi3lIWGLv593mA62r+WM5+9H30ucwXx/BAE9wNJe5nESAGvS+3sj7qqQBovyHuVvvRnGFs8o5ixeFgJAp9TNcC4RLfypXKQ/3fsbe7WiZVooArRacbsGi4vmGQw8KMZhZm4vOglRco2NY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:10dc284a-8f87-4735-ad02-c6ce4c093897,IP:0,U
+X-CID-O-INFO: VERSION:1.1.35,REQID:744817ad-6a4e-4784-95fb-87a5594087f4,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:5d391d7,CLOUDID:2b320f8e-e2c0-40b0-a8fe-7c7e47299109,B
+X-CID-META: VersionHash:5d391d7,CLOUDID:7542a882-8d4f-477b-89d2-1e3bdbef96d1,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
 	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 4058c6d8aeec11ee9a662f17bb45267e-20240109
+X-UUID: 40bbf456aeec11ee9a662f17bb45267e-20240109
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <peter.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1132376803; Tue, 09 Jan 2024 05:40:21 -0700
+	with ESMTP id 405663728; Tue, 09 Jan 2024 05:40:21 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -64,29 +64,30 @@ CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
 	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
 	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
 	<naomi.chu@mediatek.com>, <chu.stanley@gmail.com>
-Subject: [PATCH v1 2/2] ufs: host: mediatek: change default auto suspend timer
-Date: Tue, 9 Jan 2024 20:40:15 +0800
-Message-ID: <20240109124015.31359-3-peter.wang@mediatek.com>
+Subject: [PATCH v1 1/2] scsi: core: move auto suspend timer to Scsi_Host
+Date: Tue, 9 Jan 2024 20:40:14 +0800
+Message-ID: <20240109124015.31359-2-peter.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240109124015.31359-1-peter.wang@mediatek.com>
 References: <20240109124015.31359-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--6.634100-8.000000
-X-TMASE-MatchedRID: ivhBngArENGAAYHsHSPDcxn0UD4GU5IquLwbhNl9B5UY0A95tjAn+4lb
-	XigDnfa40/AsCkkwxo4Dcb80+9h4A294Ipa1otxo4pdq9sdj8LUK3n1SHen81WHZ+cd7VyKXFrG
-	/KStN8Cgkh92jn4TMCfWwXl0A4TcEGAdnzrnkM48URSScn+QSXt0H8LFZNFG7bkV4e2xSge4JOD
-	FehVdzk7cfTC05fAlZLwYE9U5/3fLkf9e0AcUBj+ulxyHOcPoH
+X-TM-AS-Result: No-10--20.050800-8.000000
+X-TMASE-MatchedRID: kLbINH/kiBSAAYHsHSPDcxn0UD4GU5Iq4OSJW6hGEzv4JyR+b5tvoHB4
+	4IkzjfYyThbvLLI8RvPxY0WGgfScAw/mRvSsqYV7nu1HSadECDUxmbT6wQT2a01KG1YrOQW/1C1
+	xDg+NhRCT3RiCXcXyqxfOdxvhPLmMmxh0gY/o+VmzLD5kmcW6ZFg3VqSTJ7SoJ3LvjgQ/uICCJD
+	nrZiuTOONWoxLD8I/a8NsyesFB+nxBEeXXYJxA3sMOZc2T6sulfS0Ip2eEHnz3IzXlXlpamPoLR
+	4+zsDTtAqYBE3k9Mpw=
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--6.634100-8.000000
+X-TMASE-Result: 10--20.050800-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 408B38EB27E7D1DC6ECFE717F89F4676B026CAFDF49F764B6564A733B55A921B2000:8
+X-TM-SNTS-SMTP: 9C69DBFA8D795FB59DCDAE2E2F359226932AD0273A2AF9C9DEB44A49F426C6292000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240109_044030_072044_FB30A6F6 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20240109_044030_401812_CAF32740 
+X-CRM114-Status: GOOD (  16.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,51 +104,92 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Peter Wang <peter.wang@mediatek.com>
 
-Mediatek ufs driver change default auto suspend timer from 2000 ms
-to 500 ms.
+Runtime suspend timer is a const value in scsi_host_template, which
+host cannot modify this value.
+Move it to Scsi_Host for host flexible use.
 
 Signed-off-by: Peter Wang <peter.wang@mediatek.com>
 ---
- drivers/ufs/host/ufs-mediatek.c | 4 ++++
- drivers/ufs/host/ufs-mediatek.h | 3 +++
- 2 files changed, 7 insertions(+)
+ drivers/scsi/sd.c         | 2 +-
+ drivers/ufs/core/ufshcd.c | 9 +++++++--
+ include/scsi/scsi_host.h  | 6 +++---
+ 3 files changed, 11 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index fc61790d289b..1bcf75dd13fc 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -893,6 +893,7 @@ static int ufs_mtk_init(struct ufs_hba *hba)
- 	const struct of_device_id *id;
- 	struct device *dev = hba->dev;
- 	struct ufs_mtk_host *host;
-+	struct Scsi_Host *shost = hba->host;
- 	int err = 0;
+diff --git a/drivers/scsi/sd.c b/drivers/scsi/sd.c
+index 542a4bbb21bc..c1dc96331225 100644
+--- a/drivers/scsi/sd.c
++++ b/drivers/scsi/sd.c
+@@ -3731,7 +3731,7 @@ static int sd_probe(struct device *dev)
+ 	blk_pm_runtime_init(sdp->request_queue, dev);
+ 	if (sdp->rpm_autosuspend) {
+ 		pm_runtime_set_autosuspend_delay(dev,
+-			sdp->host->hostt->rpm_autosuspend_delay);
++			sdp->host->rpm_autosuspend_delay);
+ 	}
  
- 	host = devm_kzalloc(dev, sizeof(*host), GFP_KERNEL);
-@@ -937,6 +938,9 @@ static int ufs_mtk_init(struct ufs_hba *hba)
- 	/* Enable clk scaling*/
- 	hba->caps |= UFSHCD_CAP_CLK_SCALING;
+ 	error = device_add_disk(dev, gd, NULL);
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 16d76325039a..f9436d6560c4 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -7982,11 +7982,13 @@ static void ufshcd_set_active_icc_lvl(struct ufs_hba *hba)
  
-+	/* Set runtime pm delay to replace default */
-+	shost->rpm_autosuspend_delay = MTK_RPM_AUTOSUSPEND_DELAY_MS;
+ static inline void ufshcd_blk_pm_runtime_init(struct scsi_device *sdev)
+ {
++	struct Scsi_Host *shost = sdev->host;
 +
- 	hba->quirks |= UFSHCI_QUIRK_SKIP_MANUAL_WB_FLUSH_CTRL;
- 	hba->quirks |= UFSHCD_QUIRK_MCQ_BROKEN_INTR;
- 	hba->quirks |= UFSHCD_QUIRK_MCQ_BROKEN_RTC;
-diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
-index f76e80d91729..596edadfe747 100644
---- a/drivers/ufs/host/ufs-mediatek.h
-+++ b/drivers/ufs/host/ufs-mediatek.h
-@@ -190,6 +190,9 @@ struct ufs_mtk_host {
- 	struct ufs_mtk_mcq_intr_info mcq_intr_info[UFSHCD_MAX_Q_NR];
+ 	scsi_autopm_get_device(sdev);
+ 	blk_pm_runtime_init(sdev->request_queue, &sdev->sdev_gendev);
+ 	if (sdev->rpm_autosuspend)
+ 		pm_runtime_set_autosuspend_delay(&sdev->sdev_gendev,
+-						 RPM_AUTOSUSPEND_DELAY_MS);
++						 shost->rpm_autosuspend_delay);
+ 	scsi_autopm_put_device(sdev);
+ }
+ 
+@@ -8988,7 +8990,6 @@ static const struct scsi_host_template ufshcd_driver_template = {
+ 	.track_queue_depth	= 1,
+ 	.skip_settle_delay	= 1,
+ 	.sdev_groups		= ufshcd_driver_groups,
+-	.rpm_autosuspend_delay	= RPM_AUTOSUSPEND_DELAY_MS,
  };
  
-+/* MTK delay of autosuspend: 500 ms */
-+#define MTK_RPM_AUTOSUSPEND_DELAY_MS 500
+ static int ufshcd_config_vreg_load(struct device *dev, struct ufs_vreg *vreg,
+@@ -10439,6 +10440,10 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
+ 	host->max_cmd_len = UFS_CDB_SIZE;
+ 	host->queuecommand_may_block = !!(hba->caps & UFSHCD_CAP_CLK_GATING);
+ 
++	/* Use default RPM delay if host not set */
++	if (host->rpm_autosuspend_delay == 0)
++		host->rpm_autosuspend_delay = RPM_AUTOSUSPEND_DELAY_MS;
 +
+ 	hba->max_pwr_info.is_valid = false;
+ 
+ 	/* Initialize work queues */
+diff --git a/include/scsi/scsi_host.h b/include/scsi/scsi_host.h
+index 3b907fc2ef08..b259d42a1e1a 100644
+--- a/include/scsi/scsi_host.h
++++ b/include/scsi/scsi_host.h
+@@ -497,9 +497,6 @@ struct scsi_host_template {
+ 	 *   scsi_netlink.h
+ 	 */
+ 	u64 vendor_id;
+-
+-	/* Delay for runtime autosuspend */
+-	int rpm_autosuspend_delay;
+ };
+ 
  /*
-  * Multi-VCC by Numbering
-  */
+@@ -713,6 +710,9 @@ struct Scsi_Host {
+ 	 */
+ 	struct device *dma_dev;
+ 
++	/* Delay for runtime autosuspend */
++	int rpm_autosuspend_delay;
++
+ 	/*
+ 	 * We should ensure that this is aligned, both for better performance
+ 	 * and also because some compilers (m68k) don't automatically force
 -- 
 2.18.0
 
