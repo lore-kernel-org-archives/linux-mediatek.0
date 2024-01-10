@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEF9BC3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 10:47:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96D09C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 10:58:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Cc:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=heB8gN1EGMzx6ieb62Nc60/SaFPpKYWT5IDanzidogc=; b=nARh0AigMysUgHnh8/ayQZx7Lp
-	qxQfKbASXyOJfgV//38kh0oBFclf2pb/jcYDPemU9sus1xDS/0rdXBWbkYNmPC7xjdruFPr3M/e8A
-	8U+uh3QHRfb6bFUctZLBeWrqJemL0LgYCSpvjz0QBCnm1ZsoNeDJbPZAkyNRrqezJVWcd6esAuABm
-	d99fDrIeJCxYDHB8r/96z+EcyxCFB6FL6yMJxCTM+BwNwjWZvBkXnk3xEBURyA6r/HsC1n2LYiVHD
-	Yat2TaANsZOT5T8n/eSUWY4GdsRvQM5LHJPPvXvqn+zS4Hsc5LGmvB4ReAuKNhgSC29RTo3snf9Ev
-	ocRLoCag==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+Rl+iEa6cK9wzmOdCEGnhWOT8PAhGDZuza6jLI6/6x4=; b=wSbyt6Ig52OWG/tRUEngYl1bRX
+	o9WT6U63r/g9WThEdGDn+7V97DTTHvGurEDrQaQZ6FOkNF0KcOFxP1eRWJmA1G2gsU4ZtHet0AGkQ
+	ub3hdCMvbYp/V8nBDHDwQETXSMRsJyKnDM0JDtfKmoyodkoariX8m8HZtdT49YoKmNoQp10dbpCNK
+	OadNIqflslMIt+ugo5VKVkWTHX/aEHgtM4EDGqCQ4oHvEpUEIzIo/bEUX+cyh/u0UCcgbbVK8sZmx
+	1SdtFA/xL/4gTwhwImN47U2LZjG9FzRqbxcwvTK3rAv4J06iTuL8kKL4a4lBtf7u8QPaeUQumw739
+	UZmfRwMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNW7Y-00B5NT-2H;
-	Wed, 10 Jan 2024 10:47:40 +0000
+	id 1rNWHt-00B7lD-0l;
+	Wed, 10 Jan 2024 10:58:21 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNW7V-00B5JC-28;
-	Wed, 10 Jan 2024 10:47:39 +0000
+	id 1rNWHp-00B7jr-1q;
+	Wed, 10 Jan 2024 10:58:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1704883651;
-	bh=07NYN+tS7WFxafPAhAuyICZjW1AV4EkuTeDYId+eNHg=;
-	h=Date:Subject:To:References:Cc:From:In-Reply-To:From;
-	b=YCCgBU+eHNGMmR+MFSocFPFvEpkA1/nZrBz3jfG87mz0Z3h2CXucMvC9Ysb2Ih4wN
-	 xEsf7JUICTW3pjbDoNtCR4p7mMfK2shvH9vkrqEDNWEE8CIfivbP9fbgfkQ+RhzNym
-	 JSdee2IBP0sCe3Mg7vUZ4ILXxjtvKMqe1OKe1HYF2G7C3AZZlUEtdV5If/bcu3G5V5
-	 kX1VnBPnkNRMiaA0fenakZsGXYnCV/y/atjf+Dpj6n2uv/Az+0wogQ+H7kfLMCssml
-	 KtomeDBKsC2vyYkY1tO3oitf3s7JB0yg8mCLg2hPvTBmaNuP0X68y+SfQPNkLAE/29
-	 UbZpZ9ro2ra2w==
-Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1704884294;
+	bh=ejCQ/B2168XNcMV52MIKqts9e15VwfWaFghCB5BVK5M=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ZZyHrYV3/0myTKoWch/rgpBIlOIGYxgRA1mywFfFpVBmqCBn9/9zFri/PCwHKtDm8
+	 VBzZXQF28pRNt3yryKEPWeLBMxIK8IdBwRk/3y4JnPUwgPg4yk/C2OiEmBFvOKAOzn
+	 9PyMICsaY/bVtP1YUh0qnXBcydNwdryl37wgf67EFayGxaZqFrZTL2q94jItQLKg/N
+	 Q0e8CnDgQa+GD6IqkcobAFTv/e8mRFvXh8kt3pbZZ4Li2y75ipw7pGUEqjeDVoqHbR
+	 /GHZLCtopQ4/BgvkMQ38FEJI2RinLXuQz6Bd5yEu+aKFzlS3KE/0Hiw7lAWyguGcdG
+	 1NDRZi+UR0WZw==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id AA8FF3780C21;
-	Wed, 10 Jan 2024 10:47:26 +0000 (UTC)
-Message-ID: <ad7cbd59-5264-96e8-5e9b-aafde8028e41@collabora.com>
-Date: Wed, 10 Jan 2024 16:17:23 +0530
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A85273780C21;
+	Wed, 10 Jan 2024 10:58:13 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: broonie@kernel.org
+Cc: lgirdwood@gmail.com,
+	perex@perex.cz,
+	tiwai@suse.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	u.kleine-koenig@pengutronix.de,
+	kuninori.morimoto.gx@renesas.com,
+	trevor.wu@mediatek.com,
+	jernej.skrabec@gmail.com,
+	claudiu.beznea@tuxon.dev,
+	robh@kernel.org,
+	linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] ASoC: mediatek: mt8195: Remove afe-dai component and rework codec link
+Date: Wed, 10 Jan 2024 11:57:57 +0100
+Message-ID: <20240110105757.539089-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v1 0/8] drm/ci: Add support for GPU and display testing
-Content-Language: en-US
-To: Daniel Stone <daniel@fooishbar.org>
-References: <20231220121110.1441160-1-vignesh.raman@collabora.com>
- <CAPj87rOMPioOK0r74vcnVkXusm6Nah6KNUWyxYgpVLdkMNtW2g@mail.gmail.com>
-Cc: Helen Koike <helen.koike@collabora.com>, Dave Airlie <airlied@gmail.com>,
- Sima Vetter <daniel@ffwll.ch>, Daniel Stone <daniels@collabora.com>,
- Emma Anholt <emma@anholt.net>,
- linux-rockchip <linux-rockchip@lists.infradead.org>,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- David Heidelberg <david.heidelberg@collabora.com>,
- Rob Clark <robdclark@gmail.com>, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <CAPj87rOMPioOK0r74vcnVkXusm6Nah6KNUWyxYgpVLdkMNtW2g@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240110_024737_844032_5C0B913E 
-X-CRM114-Status: GOOD (  23.19  )
+X-CRM114-CacheID: sfid-20240110_025817_761455_2EAB8823 
+X-CRM114-Status: GOOD (  21.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,54 +83,195 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
+Remove the extra 'mt8195-afe-pcm-dai' component, register the DAI
+drivers to the main AFE component, and rework the DAI linking between
+the headset codec (RT5682/RT5682S) and the TDM interface in the probe
+function to stop assigning name, relying on the of_node of the codec.
+Also replace the COMP_DUMMY codec entry with a COMP_EMPTY for the
+ETDM2_IN and remove it entirely from ETDM1_OUT to fix the registration
+flow for this sound card.
 
-On 09/01/24 19:08, Daniel Stone wrote:
-> Hi,
-> 
-> On Wed, 20 Dec 2023 at 12:11, Vignesh Raman <vignesh.raman@collabora.com> wrote:
->> Some ARM SOCs have a separate display controller and GPU, each with
->> different drivers. For mediatek mt8173, the GPU driver is powervr,
->> and the display driver is mediatek. In the case of mediatek mt8183,
->> the GPU driver is panfrost, and the display driver is mediatek.
->> With rockchip rk3288/rk3399, the GPU driver is panfrost, while the
->> display driver is rockchip. For amlogic meson, the GPU driver is
->> panfrost, and the display driver is meson.
->>
->> IGT tests run various tests with different xfails and can test both
->> GPU devices and KMS/display devices. Currently, in drm-ci for MediaTek,
->> Rockchip, and Amlogic Meson platforms, only the GPU driver is tested.
->> This leads to incomplete coverage since the display is never tested on
->> these platforms. This commit series adds support in drm-ci to run tests
->> for both GPU and display drivers for MediaTek, Rockchip, and Amlogic
->> Meson platforms.
-> 
-> Thanks a lot for these. The patches need to be squashed to be
-> bisectable though. For example, patch #2 changes the MTK job names and
-> adds more jobs, but the corresponding xfail updates only come in #7
-> and #8. This means we have a span of a few patches where we don't have
-> useful test results.
-> 
-> A better sequencing would be something like:
->    1. add ANX7625 config
->    2. refactor _existing_ MTK display jobs to use YAML includes, change
-> the existing job name, and rename the existing xfail set, remove
-> IGT_FORCE_DRIVER from the script since it's now set by the job
->    3. add MTK Panfrost+PVR GPU jobs with new xfails, add xfail entry to
-> MAINTAINERS
->    4+5: same as 2+3 but for Amlogic
->    6+7: same as 2+3 but for Rockchip
-> 
-> Then the separate rename/update xfail commits just disappear, as does
-> the removal of IGT_FORCE_DRIVER, because it's just done incrementally
-> as part of the commits which change the related functionality. It's
-> extremely important that every change can work standalone, instead of
-> introducing intermediate breakage which is only fixed in later commits
-> in the series.
+While at it, since we also need to swap the codec init function from
+ETDM2_IN to ETDM1_OUT, remove the static assignment of both `ops` and
+`init` for both, as we now assign these dynamically during probe.
 
-Thank you for reviewing the patches. I agree, will follow this sequence 
-and send a v2 version.
+Fixes: 13f58267cda3 ("ASoC: soc.h: don't create dummy Component via COMP_DUMMY()")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
 
-Regards,
-Vignesh
+This was tested on the MT8195 Cherry Tomato Chromebook w/Pipewire:
+audio works again with both internal speakers and 3.5mm jack.
+As a (mostly personal) note, this driver's probe function should get
+refactored at some point to rely on snd_soc_of_parse_audio_routing()
+instead; I plan to do that as soon as I can (bandwidth permitting...!)
+
+ sound/soc/mediatek/mt8195/mt8195-afe-pcm.c | 33 +----------------
+ sound/soc/mediatek/mt8195/mt8195-mt6359.c  | 41 +++++++++++++++-------
+ 2 files changed, 29 insertions(+), 45 deletions(-)
+
+diff --git a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
+index 1e33863c85ca..620d7ade1992 100644
+--- a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
++++ b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
+@@ -1795,10 +1795,6 @@ static const struct snd_kcontrol_new mt8195_memif_controls[] = {
+ 			    MT8195_AFE_IRQ_28),
+ };
+ 
+-static const struct snd_soc_component_driver mt8195_afe_pcm_dai_component = {
+-	.name = "mt8195-afe-pcm-dai",
+-};
+-
+ static const struct mtk_base_memif_data memif_data[MT8195_AFE_MEMIF_NUM] = {
+ 	[MT8195_AFE_MEMIF_DL2] = {
+ 		.name = "DL2",
+@@ -3037,7 +3033,6 @@ static int mt8195_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct reset_control *rstc;
+ 	int i, irq_id, ret;
+-	struct snd_soc_component *component;
+ 
+ 	ret = of_reserved_mem_device_init(dev);
+ 	if (ret)
+@@ -3170,36 +3165,12 @@ static int mt8195_afe_pcm_dev_probe(struct platform_device *pdev)
+ 
+ 	/* register component */
+ 	ret = devm_snd_soc_register_component(dev, &mt8195_afe_component,
+-					      NULL, 0);
++					      afe->dai_drivers, afe->num_dai_drivers);
+ 	if (ret) {
+ 		dev_warn(dev, "err_platform\n");
+ 		goto err_pm_put;
+ 	}
+ 
+-	component = devm_kzalloc(dev, sizeof(*component), GFP_KERNEL);
+-	if (!component) {
+-		ret = -ENOMEM;
+-		goto err_pm_put;
+-	}
+-
+-	ret = snd_soc_component_initialize(component,
+-					   &mt8195_afe_pcm_dai_component,
+-					   dev);
+-	if (ret)
+-		goto err_pm_put;
+-
+-#ifdef CONFIG_DEBUG_FS
+-	component->debugfs_prefix = "pcm";
+-#endif
+-
+-	ret = snd_soc_add_component(component,
+-				    afe->dai_drivers,
+-				    afe->num_dai_drivers);
+-	if (ret) {
+-		dev_warn(dev, "err_dai_component\n");
+-		goto err_pm_put;
+-	}
+-
+ 	ret = regmap_multi_reg_write(afe->regmap, mt8195_afe_reg_defaults,
+ 				     ARRAY_SIZE(mt8195_afe_reg_defaults));
+ 	if (ret)
+@@ -3224,8 +3195,6 @@ static int mt8195_afe_pcm_dev_probe(struct platform_device *pdev)
+ 
+ static void mt8195_afe_pcm_dev_remove(struct platform_device *pdev)
+ {
+-	snd_soc_unregister_component(&pdev->dev);
+-
+ 	pm_runtime_disable(&pdev->dev);
+ 	if (!pm_runtime_status_suspended(&pdev->dev))
+ 		mt8195_afe_runtime_suspend(&pdev->dev);
+diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359.c b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
+index 4feb9fb76967..53fd8a897b9d 100644
+--- a/sound/soc/mediatek/mt8195/mt8195-mt6359.c
++++ b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
+@@ -934,12 +934,11 @@ SND_SOC_DAILINK_DEFS(ETDM1_IN_BE,
+ 
+ SND_SOC_DAILINK_DEFS(ETDM2_IN_BE,
+ 		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM2_IN")),
+-		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()),
+ 		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
+ 
+ SND_SOC_DAILINK_DEFS(ETDM1_OUT_BE,
+ 		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM1_OUT")),
+-		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
+ 		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
+ 
+ SND_SOC_DAILINK_DEFS(ETDM2_OUT_BE,
+@@ -1237,8 +1236,6 @@ static struct snd_soc_dai_link mt8195_mt6359_dai_links[] = {
+ 			SND_SOC_DAIFMT_NB_NF |
+ 			SND_SOC_DAIFMT_CBS_CFS,
+ 		.dpcm_capture = 1,
+-		.init = mt8195_rt5682_init,
+-		.ops = &mt8195_rt5682_etdm_ops,
+ 		.be_hw_params_fixup = mt8195_etdm_hw_params_fixup,
+ 		SND_SOC_DAILINK_REG(ETDM2_IN_BE),
+ 	},
+@@ -1249,7 +1246,6 @@ static struct snd_soc_dai_link mt8195_mt6359_dai_links[] = {
+ 			SND_SOC_DAIFMT_NB_NF |
+ 			SND_SOC_DAIFMT_CBS_CFS,
+ 		.dpcm_playback = 1,
+-		.ops = &mt8195_rt5682_etdm_ops,
+ 		.be_hw_params_fixup = mt8195_etdm_hw_params_fixup,
+ 		SND_SOC_DAILINK_REG(ETDM1_OUT_BE),
+ 	},
+@@ -1381,7 +1377,7 @@ static int mt8195_mt6359_dev_probe(struct platform_device *pdev)
+ 	struct snd_soc_dai_link *dai_link;
+ 	struct mtk_soc_card_data *soc_card_data;
+ 	struct mt8195_mt6359_priv *mach_priv;
+-	struct device_node *platform_node, *adsp_node, *dp_node, *hdmi_node;
++	struct device_node *platform_node, *adsp_node, *codec_node, *dp_node, *hdmi_node;
+ 	struct mt8195_card_data *card_data;
+ 	int is5682s = 0;
+ 	int init6359 = 0;
+@@ -1401,8 +1397,12 @@ static int mt8195_mt6359_dev_probe(struct platform_device *pdev)
+ 	if (!card->name)
+ 		card->name = card_data->name;
+ 
+-	if (strstr(card->name, "_5682s"))
++	if (strstr(card->name, "_5682s")) {
++		codec_node = of_find_compatible_node(NULL, NULL, "realtek,rt5682s");
+ 		is5682s = 1;
++	} else
++		codec_node = of_find_compatible_node(NULL, NULL, "realtek,rt5682i");
++
+ 	soc_card_data = devm_kzalloc(&pdev->dev, sizeof(*card_data), GFP_KERNEL);
+ 	if (!soc_card_data)
+ 		return -ENOMEM;
+@@ -1488,12 +1488,27 @@ static int mt8195_mt6359_dev_probe(struct platform_device *pdev)
+ 				dai_link->codecs->dai_name = "i2s-hifi";
+ 				dai_link->init = mt8195_hdmi_codec_init;
+ 			}
+-		} else if (strcmp(dai_link->name, "ETDM1_OUT_BE") == 0 ||
+-			   strcmp(dai_link->name, "ETDM2_IN_BE") == 0) {
+-			dai_link->codecs->name =
+-				is5682s ? RT5682S_DEV0_NAME : RT5682_DEV0_NAME;
+-			dai_link->codecs->dai_name =
+-				is5682s ? RT5682S_CODEC_DAI : RT5682_CODEC_DAI;
++		} else if (strcmp(dai_link->name, "ETDM1_OUT_BE") == 0) {
++			if (!codec_node) {
++				dev_err(&pdev->dev, "Codec not found!\n");
++			} else {
++				dai_link->codecs->of_node = codec_node;
++				dai_link->codecs->name = NULL;
++				dai_link->codecs->dai_name =
++					is5682s ? RT5682S_CODEC_DAI : RT5682_CODEC_DAI;
++				dai_link->init = mt8195_rt5682_init;
++				dai_link->ops = &mt8195_rt5682_etdm_ops;
++			}
++		} else if (strcmp(dai_link->name, "ETDM2_IN_BE") == 0) {
++			if (!codec_node) {
++				dev_err(&pdev->dev, "Codec not found!\n");
++			} else {
++				dai_link->codecs->of_node = codec_node;
++				dai_link->codecs->name = NULL;
++				dai_link->codecs->dai_name =
++					is5682s ? RT5682S_CODEC_DAI : RT5682_CODEC_DAI;
++				dai_link->ops = &mt8195_rt5682_etdm_ops;
++			}
+ 		} else if (strcmp(dai_link->name, "DL_SRC_BE") == 0 ||
+ 			   strcmp(dai_link->name, "UL_SRC1_BE") == 0 ||
+ 			   strcmp(dai_link->name, "UL_SRC2_BE") == 0) {
+-- 
+2.43.0
+
 
