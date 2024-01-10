@@ -4,75 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5B04C3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 07:16:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C939AC3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 07:27:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EOW57OUXuZU3/Ye+Ce6TauP/AqyMCBhkCXYeKvnbDiM=; b=YQFeihbtAALtfN0gJZM4j5N9Zx
-	5p2O7A0FdFDYHDnnX8Nomt02oOlJmuBSVD/HzPdD3pqg0uAheq12/6qUGh/66s4SLXUtY8BuXMiDp
-	uhjTKy2X0zaVxQRwp8oa0f9SXwicG0OrWvMMdnB4twLkXo3F9iAuEV2tNV92bn79r5rr7wcIzLjdq
-	60QLEGK0/qIfCnPc/K0OWiZllDA7QNf/nArUbmi6PDMuEheg4fyTP4uJpGEs+xNtm2Ii44UN+Rv8e
-	mwEu0DmXst9SXn7c27oXF7D0p+jvfd1vTwLO91Rh16c0BY1U3lHIKscIJpwxu/sfOQ7rUlA82LHjB
-	YV6vAYqg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=a/FlQC5Q2ET2tc73S8vRew9D2w/9C51b4ONdPMKoY6Y=; b=tJjJBJhQpuUgLI
+	7cZvL97pyvDaG/0PR7VZEzpq6V3vsgmvEd9EA1JGFJ0hGrYlPaBo80kORIQ/HI0hfPhz4YSpAXNRJ
+	VNCBZHyIR5k93Mgggvr+i07q9BjC+wfzhh/sVnkSn75jYrX6pOm/W0yWD5hjQrDAhPBx5pWz42y2z
+	mhSWNXLUbrgBEC1k3xwBRqQwTo6Vo4nWAVzPmRZFw8hZRN7UYpsHpz/iZoZuZCp6dhUeObfJkiyzp
+	y/rMaGMHEwM9jNiXqlSkYHQnXp1McZPCrMVNABJFRrYpiJiCaZrK2WNzbxphxMTlulwvD0dkyoY8L
+	88UGts6J5w5IyQKzs4SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNSpZ-00AaGc-2v;
-	Wed, 10 Jan 2024 07:16:53 +0000
-Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
+	id 1rNSzZ-00Abgb-2F;
+	Wed, 10 Jan 2024 07:27:13 +0000
+Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNSpW-00AaFJ-0O
-	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Jan 2024 07:16:51 +0000
-Received: by mail-oa1-x36.google.com with SMTP id 586e51a60fabf-2053f5e97b2so2522903fac.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Jan 2024 23:16:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704871005; x=1705475805; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=EOW57OUXuZU3/Ye+Ce6TauP/AqyMCBhkCXYeKvnbDiM=;
-        b=ftsqumajVHa7r+kzb82OxY2uhaO4al0w2IyhY4z2PFmo7RW8z9AAk4W1U5XRFY5FBM
-         HBxc4aplHeatkQIdoc1RbVjaUNlD/wZ1pgamk20fA17WAiwVGWdCvYWq9TowoyueVGBb
-         K1ga5nA7Ip6Q92t89YxBBAl8E+Zp7i34gjTFdotXGDnKxqTsYbGWm+esoe+ov1amiI4i
-         +RgOuO3SyKD9N55RwJq/NdQhO8kYbLeyE5wPUYVcz1Jy5M+OeJQoiCgaSjGR1HkoXD8S
-         vpFDifALkJM8kv+qLC6VfVZf2EHO9VbLEHzSvAS236wIDX9B1d8ftBabvDQeofUZIU9/
-         y6RQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704871005; x=1705475805;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=EOW57OUXuZU3/Ye+Ce6TauP/AqyMCBhkCXYeKvnbDiM=;
-        b=keIHC87B16xDmE4xi4GF+eMhfFIeEsv6XxUtTeXDlkmr1D8EABIsRPjUNtdd1XyFFm
-         6riUPTyNkFUvzZAyDHZ64orMcjxrLH6ra/E/BSLEsh2bHYk1hG39Ur7pi58QfpZ/+xZL
-         w6hnTh/9qtko0aF6r/RSbTA6v4WZv9kiieH/dM++9TrreAgkrtJc3IZV/j/jgSfBE0Qc
-         yVy+lOeTZGDw79N1N0HRvqytGoGoHQ4AN8i3oJHU5g6JyWT+EdmnbIWrAso/O+kEVBsh
-         nYWOu7AY2O4wg6U6A4rBRTvjwhaML5Jiyf9UlFRU238/FanP6uXveJgSQBJzQkV2UzpE
-         87Cw==
-X-Gm-Message-State: AOJu0YxhzscpLuRSQcHt200g0kQ/G+bJkqt8aVpqYAGsW4J46F+zVq20
-	LAWl2o8XRRgmn8WUlpbc6cFzL09znBKF/0pRg/8=
-X-Google-Smtp-Source: AGHT+IGbFlTQKx2TfF5clBJ9JA66JR2JWDmAGPOibvE5cwQq6NBl7iD5x8WXUwXlqfeGFyOutmMU4gZJ06dM/Lw3/sk=
-X-Received: by 2002:a05:6871:7a3:b0:1fb:2c68:6c0b with SMTP id
- o35-20020a05687107a300b001fb2c686c0bmr356822oap.37.1704871005578; Tue, 09 Jan
- 2024 23:16:45 -0800 (PST)
+	id 1rNSzU-00AbfP-2e;
+	Wed, 10 Jan 2024 07:27:10 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 203EFC0005;
+	Wed, 10 Jan 2024 07:26:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1704871623;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=a/FlQC5Q2ET2tc73S8vRew9D2w/9C51b4ONdPMKoY6Y=;
+	b=T5qJ7b4xaA0GBYZYKmmBMQKQm9GhK5NqUzyB+rLGNLIeULaidw/I5/MEhJVsdwAAGmNJRz
+	zzqorDR0yLw4ihEE+TL5uwC7cOAgwx3E53ERubOLFzmdBoQMbBgLfreaXTIKgoA26NChsG
+	+QLDoHl0qkRTAdOskGqKY+qVf+aGId/cMXu2gnJAgP1/D5XH6782V5ZmyiFx2hRq57iRRs
+	FAmZ2PdvdGIKBokpN+jYpGF4Zyf5Rchd5F6as+3sbWz4lT1Mpx38udHAUSaNI1TkW4iY8e
+	UCcI47FhTkyGU53/+pFPLIaqPrpXfhZim+0Ad36Irl2RmE1xQP3PsaXBhsX7pQ==
+Message-ID: <0a086b5f-b319-4f08-9513-a38c214e1da7@arinc9.com>
+Date: Wed, 10 Jan 2024 10:26:54 +0300
 MIME-Version: 1.0
-References: <20240109235148.GA2082000@bhelgaas>
-In-Reply-To: <20240109235148.GA2082000@bhelgaas>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Wed, 10 Jan 2024 08:16:33 +0100
-Message-ID: <CAMhs-H_7EovAntGwmDUDS3HNKV5H4w1UM=7cpk9GMi7Hi_kQVQ@mail.gmail.com>
-Subject: Re: mt7621 static check warning
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 07/15] net: dsa: mt7530: do not run
+ mt7530_setup_port5() if port 5 is disabled
+Content-Language: en-US
+To: Vladimir Oltean <olteanv@gmail.com>
+References: <20231118123205.266819-8-arinc.unal@arinc9.com>
+ <20231121185358.GA16629@kernel.org>
+ <a2826485-70a6-4ba7-89e1-59e68e622901@arinc9.com>
+ <90fde560-054e-4188-b15c-df2e082d3e33@moroto.mountain>
+ <20231207184015.u7uoyfhdxiyuw6hh@skbuf>
+ <9b729dab-aebc-4c0c-a5e1-164845cd0948@suswa.mountain>
+ <20231208184652.k2max4kf7r3fgksg@skbuf>
+ <c3a0fc6a-825c-4de3-b5cf-b454a6d4d3cf@arinc9.com>
+ <48b664fb-edf9-4170-abde-2eb99e04f0e5@suswa.mountain>
+ <2ad136ed-be3a-407f-bf3c-5faf664b927c@arinc9.com>
+ <20240109145740.3vbtkuowiwedz5hx@skbuf>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20240109145740.3vbtkuowiwedz5hx@skbuf>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240109_231650_157002_4C356F70 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20240109_232709_139457_05DA58E9 
+X-CRM114-Status: GOOD (  27.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,104 +78,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Daniel Golle <daniel@makrotopia.org>, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Dan Carpenter <dan.carpenter@linaro.org>, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Russell King <linux@armlinux.org.uk>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Simon Horman <horms@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Bjorn,
+On 9.01.2024 17:57, Vladimir Oltean wrote:
+> Yes, well _now_ it is a false positive, probably because smatch cannot
+> determine that when priv->p5_intf_sel has been set to P5_INTF_SEL_PHY_P0
+> or P5_INTF_SEL_PHY_P4, "interface" should have been also initialized.
+> But it doesn't matter, you can ignore a false positive. I'm also seeing it.
+> Although you should check whether treating -ENODEV as a hard error is fine
+> and won't cause regressions.
+> 
+>> Just so you know, I intend to remove this whole PHY muxing feature once I
+>> bring changing DSA conduit support to this subdriver. I've got two strong
+>> reasons for this.
+>> - Changing the DSA conduit achieves the same result with the only overhead
+>>    being the DSA header included on every frame.
+>>
+>> - There can't be proper dt-bindings for it as the nature of the feature
+>>    shows that it represents an optional way to operate the hardware, it does
+>>    not represent a hardware design. Overall, the implementation is a hack to
+>>    make it work for specific hardware (switch must be connected to gmac1 of
+>>    a MediaTek SoC, no PHY must be present at address 0 or 4 on the MDIO bus
+>>    of the SoC. It should rather be configurable on userspace. Which will
+>>    never happen as it is specific to this switch and the changing DSA
+>>    conduit feature is the perfect substitute for this.
+> 
+> Is PHY muxing a "true" switch bypass, or is it just a route through the
+> switch for all packets coming from GMAC5 to go to phy0 or phy4? If the
+> latter, I agree that dynamic conduit changing is a more flexible option,
+> not to mention the user space tooling is already there.
 
-Thanks for the report.
+It's the latter, and that's exactly what I think.
 
-On Wed, Jan 10, 2024 at 12:51=E2=80=AFAM Bjorn Helgaas <helgaas@kernel.org>=
- wrote:
->
-> Hi Sergio,
->
-> FYI:
->
->   $ make W=3D1 drivers/pci/
->     CC      drivers/pci/controller/pcie-mt7621.o
->   drivers/pci/controller/pcie-mt7621.c: In function =E2=80=98mt7621_pcie_=
-probe=E2=80=99:
->   drivers/pci/controller/pcie-mt7621.c:228:49: error: =E2=80=98snprintf=
-=E2=80=99 output may be truncated before the last format character [-Werror=
-=3Dformat-truncation=3D]
->     228 |         snprintf(name, sizeof(name), "pcie-phy%d", slot);
->         |                                                 ^
->   drivers/pci/controller/pcie-mt7621.c:228:9: note: =E2=80=98snprintf=E2=
-=80=99 output between 10 and 11 bytes into a destination of size 10
->     228 |         snprintf(name, sizeof(name), "pcie-phy%d", slot);
->         |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->
+> 
+> Are there existing systems that use PHY muxing? The possible problem I
+> see is breaking those boards which have a phy-handle on gmac5, if the
+> mt7530 driver is no longer going to modify its HWTRAP register.
 
-Would you be happy if I just increment the buffer as follows?
+Ah see, for PHY muxing, the driver actually wants the phy-handle to be put
+on the SoC MAC, and the PHY to be defined on the SoC ethernet's MDIO bus.
+We don't even define gmac5 as a port on the switch dt-bindings.
 
-diff --git a/drivers/pci/controller/pcie-mt7621.c
-b/drivers/pci/controller/pcie-mt7621.c
-index 79e225edb42a..d97b956e6e57 100644
---- a/drivers/pci/controller/pcie-mt7621.c
-+++ b/drivers/pci/controller/pcie-mt7621.c
-@@ -202,7 +202,7 @@ static int mt7621_pcie_parse_port(struct mt7621_pcie *p=
-cie,
-        struct mt7621_pcie_port *port;
-        struct device *dev =3D pcie->dev;
-        struct platform_device *pdev =3D to_platform_device(dev);
--       char name[10];
-+       char name[11];
-        int err;
+While none of the DTs on the Linux repository utilise this, some of the
+mt7621 DTs on OpenWrt do. The change in behaviour will only be that phy0/4
+will be inaccessible from the SoC MAC's network interface. I de-facto
+maintain the mt7621 device tree source files there. I intend to revert it
+along with adding port 5 as a CPU port so that the conduit changing feature
+becomes available.
 
-        port =3D devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
+> 
+>>
+>> Let me know if you've got any suggestions that can get rid of the warning
+>> without reworking the whole code block. Otherwise, I'm just going to ignore
+>> it until I get rid of the whole code block.
+> 
+> The obvious way would be to leave the initialization to PHY_INTERFACE_MODE_NA
+> there. Or to just ignore the warning.
 
-Or should I use scnprintf instead? Since the statement is not using
-function return value at all snprintf looks more correct and simpler
-at a first glance.
+I'll ignore.
 
-diff --git a/drivers/pci/controller/pcie-mt7621.c
-b/drivers/pci/controller/pcie-mt7621.c
-index 79e225edb42a..0eae1b5b079e 100644
---- a/drivers/pci/controller/pcie-mt7621.c
-+++ b/drivers/pci/controller/pcie-mt7621.c
-@@ -225,7 +225,7 @@ static int mt7621_pcie_parse_port(struct mt7621_pcie *p=
-cie,
-                return PTR_ERR(port->pcie_rst);
-        }
-
--       snprintf(name, sizeof(name), "pcie-phy%d", slot);
-+       scnprintf(name, sizeof(name), "pcie-phy%d", slot);
-        port->phy =3D devm_of_phy_get(dev, node, name);
-        if (IS_ERR(port->phy)) {
-                dev_err(dev, "failed to get pcie-phy%d\n", slot);
-
-
-Both of them silence the warning, so let me know your preference here.
-
-> I know we'll never actually hit this, but it'd be nice to clean this
-> up, and I don't think it would really cost us anything.  I think it's
-> currently the only "W=3D1" warning in drivers/pci/.
-
-I am also getting this:
-
-drivers/pci/controller/dwc/pci-dra7xx.c: In function =E2=80=98dra7xx_pcie_p=
-robe=E2=80=99:
-drivers/pci/controller/dwc/pci-dra7xx.c:754:41: error: =E2=80=98%d=E2=80=99=
- directive
-output may be truncated writing between 1 and 10 bytes into a region
-of size 2 [-Werror=3Dformat-truncation=3D]
-  754 |   snprintf(name, sizeof(name), "pcie-phy%d", i);
-      |                                         ^~
-drivers/pci/controller/dwc/pci-dra7xx.c:754:32: note: directive
-argument in the range [0, 2147483646]
-  754 |   snprintf(name, sizeof(name), "pcie-phy%d", i);
-      |                                ^~~~~~~~~~~~
-drivers/pci/controller/dwc/pci-dra7xx.c:754:3: note: =E2=80=98snprintf=E2=
-=80=99 output
-between 10 and 19 bytes into a destination of size 10
-  754 |   snprintf(name, sizeof(name), "pcie-phy%d", i);
-      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Best regards,
-    Sergio Paracuellos
-
->
-> Bjorn
+Arınç
 
