@@ -4,119 +4,187 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69395C47077
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 03:14:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38E13C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 05:44:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qvs8qvtjNFrrte8K+3p2MUtW8MNqP6IVzNBLDgvst3s=; b=qopTWwa0llci6e2pg466k4LzbZ
-	NIznGWu1o3j8PAcmzc5BHeWkM3FgzpbffH/UYwk/+Uvhhu1n4lrJiwUGeWk95IAzprFrcS0Cas9j/
-	shCflHIt6gNFGuASGe2ZukGsu+SyS24r5ZTd4YepcPoRsBlpH0tBdDSzFpW65UAYda/6+pUCqaebb
-	/unq6ua++58lWOgzVixOCdxKVGJTocmNFUe+p3eZOxPzHJWOVRcQFfLPvYnhvwv/VD1PP7vWvOU0X
-	w7NgdvwQrTfq7mc0VP3G2Lo15y8+7hz3PNEE2EkbJ+LesWkoJWwCsxqYjmKqsTqQ495GNCNqgDyYd
-	qI63TKjQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XTWtR5oKs5BXnNVPj/KhjmlGunFCZ8V+8wQIpVvJuHY=; b=tts/7rZO8222WRgicBQyaYOgnB
+	Mpm+ouIldpuoA6E50mlIpwmjpPOiVITWbvQZRB8qkTuH4UMV+71nRIsGBcboxrfJ9yhK7xUzBBpqM
+	wC6ORppNY2kSTMuhJxkExSJwAnMpQct+/Hos9RpSKFIzpwVNAS2UN0dD5z005GfM0GvQJC2IAJNHl
+	1WVafmTVhg6dDb4WD3j0MQ1j4h2dzz888gZ5t6Q8/YXqP728jGNT2iDtUk6y4IqiTV+njursAepdL
+	loYSVwTKEdSDo1SmU2FzCn+Pr413m/CVpgvI18wwPvDwO29h10lWXc5sVj04GGDVhND6XnaPoCjmg
+	VCCWm47g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNP2W-00ACeY-1u;
-	Wed, 10 Jan 2024 03:14:00 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1rNROH-00APKA-0E;
+	Wed, 10 Jan 2024 05:44:37 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNP2R-00ACdk-1B;
-	Wed, 10 Jan 2024 03:13:57 +0000
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 40A1UMJt030426;
-	Wed, 10 Jan 2024 03:13:29 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	message-id:date:mime-version:subject:to:cc:references:from
-	:in-reply-to:content-type:content-transfer-encoding; s=
-	qcppdkim1; bh=qvs8qvtjNFrrte8K+3p2MUtW8MNqP6IVzNBLDgvst3s=; b=BW
-	JJ5KkshCR1mU2UfZGpb3u59jrM6ePGRsX557mPXzLVGuaIxasYDeo6Sb1QgJGlvv
-	ogvhgoyDYcbcND0muxQa6kFX/hzGJZeCHwqxH2x04dJy5YeOPUAFZeX43Bq9u9YG
-	m4kO50/PrM0kSXtLV0EDwowE5rOF3sJGIUrrcoGSi2iT3rHvcgmkPPbdEuDJux+x
-	rHo+qSagSZCU3kxXGGfD6HH3J/5HFg73DtOHqYhUq1doVob3Sh40V7D0Zk1jfqBb
-	hQWfRUAC1w+pqTD6pPGbOOyVBAD1ZwYFlxNbfewBeG5wI+Z678Rj7Q3ySP+jCd3K
-	xIdpN0OtP+0NM89+GN/Q==
-Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3vh9q716jt-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 10 Jan 2024 03:13:28 +0000 (GMT)
-Received: from nalasex01c.na.qualcomm.com (nalasex01c.na.qualcomm.com [10.47.97.35])
-	by NALASPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 40A3DRk9014164
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 10 Jan 2024 03:13:27 GMT
-Received: from [10.253.15.239] (10.80.80.8) by nalasex01c.na.qualcomm.com
- (10.47.97.35) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Tue, 9 Jan
- 2024 19:13:21 -0800
-Message-ID: <2de50b16-bcf7-401d-a4f9-79540ac24311@quicinc.com>
-Date: Wed, 10 Jan 2024 11:13:17 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [net-next PATCH RFC v3 1/8] dt-bindings: net: document ethernet
- PHY package nodes
+	id 1rNROD-00APJA-0p
+	for linux-mediatek@lists.infradead.org;
+	Wed, 10 Jan 2024 05:44:34 +0000
+X-UUID: 4fdcfb12af7b11eeafd70d0b34820190-20240109
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=XTWtR5oKs5BXnNVPj/KhjmlGunFCZ8V+8wQIpVvJuHY=;
+	b=cvbRzAax/6mtIX9bICNdFD5b8/c101i8SdPtpRXpqnVpkgdCNSWiCfQ3NgHjknrQ6JdOXKOR7lhZ4iuGvwHjMz35by0nG8UaFubUnGFc6WAP0+Zev7hnCN18Dtn6eOU/wOMEloiIY4aQJP6rapKHq1wX/0lDcO2JojSFPYQZzuc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35,REQID:bd11463b-c21a-4bc2-ac06-9e6d03d45e5c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5d391d7,CLOUDID:fc23af82-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 4fdcfb12af7b11eeafd70d0b34820190-20240109
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <chun-jen.tseng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 964466235; Tue, 09 Jan 2024 22:44:25 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 10 Jan 2024 13:44:22 +0800
+Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 10 Jan 2024 13:44:21 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=IHHdZkKYy0nO7mxwpUyZRl/ZEM8bWYSqg3xCx7JawbzAvQsum4M3+axJvo5+EBekjgM80OpfM74EipLv15g57TDHAoYmg+b5n+F30cHOnI8P/qPa04rPg7LWzMwwVAB/YO1utK5dC3d5kszaeIEqs7QQE6kyS+xJMYUAexMt2BEn3GHWKtTj8Bp4NDR9GNoEFd1NgWvnJsdVI0yiWSIo7o+6gF5FUG5wLq+4FuklGJdXUI07t17PtaKSkP7+Iv8X+KuYxtWRGXqwIn4bVTuKDbQ8t5S4x/1qWCOUlQN9wR5zGsKT8gB5u0dqXiMmlOjD6bzofv3nxtHowZOpBCfF2w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=XTWtR5oKs5BXnNVPj/KhjmlGunFCZ8V+8wQIpVvJuHY=;
+ b=bB5Sz+NCKbsWX6p2GCb92L6WUmn6VH2z7VIipKjHhJzXy43dfeqTnyvW7KWfWdDYMrrvXJU3HFhtMF47afmqHNmzEnPCvoYCdAY1A3NyTD35k/SMnJnjMBDBV+V+TxdekK2IIW60MoijSDhqc4nGwnVpVgzAGvJF/zvhZC0SUslX5n7rLczU75si8JdB6iyOoxXnBhz6/rpqOudd1xNi4PZO8KOBBptxd+r3VPKMLRvVXdRa5xMNOe9oKNd5VOZTluPPHm8v8AdIUXVcHZBfhnyWW5ycynTJpMJ1jRltPJATzcF/Aedf6bBVrC6q4dS11JW2fxjF0ubUIA9sicnHsw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=XTWtR5oKs5BXnNVPj/KhjmlGunFCZ8V+8wQIpVvJuHY=;
+ b=PCPouoJ6yCwMAFg7vD65vAkl4qDMl6ttw8V5gzWrT7DBgGWJkpgOfCtpL3s2LWUymumAZz0Kw1LDsSh+aIk1FnJTt2kokLdb1b6BiLCYjvqHP+8FcIMJsuR0YMCaTjEFK5wnfJHcZR1HxWhpJ+dsGCmtrYzR5DIDdAogYP09Gcs=
+Received: from PSAPR03MB5351.apcprd03.prod.outlook.com (2603:1096:301:40::11)
+ by KL1PR03MB8259.apcprd03.prod.outlook.com (2603:1096:820:113::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7181.17; Wed, 10 Jan
+ 2024 05:44:19 +0000
+Received: from PSAPR03MB5351.apcprd03.prod.outlook.com
+ ([fe80::e883:35a:fe3d:65b9]) by PSAPR03MB5351.apcprd03.prod.outlook.com
+ ([fe80::e883:35a:fe3d:65b9%6]) with mapi id 15.20.7159.020; Wed, 10 Jan 2024
+ 05:44:19 +0000
+From: =?utf-8?B?Q2h1bi1KZW4gVHNlbmcgKOabvuS/iuS7gSk=?=
+	<Chun-Jen.Tseng@mediatek.com>
+To: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "wenst@chromium.org"
+	<wenst@chromium.org>, "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "robh+dt@kernel.org"
+	<robh+dt@kernel.org>, "krzysztof.kozlowski+dt@linaro.org"
+	<krzysztof.kozlowski+dt@linaro.org>, "conor+dt@kernel.org"
+	<conor+dt@kernel.org>
+CC: "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: Re: [PATCH v2 1/1] arm64: dts: mediatek: mt8186: Increase CCI
+ frequency
+Thread-Topic: [PATCH v2 1/1] arm64: dts: mediatek: mt8186: Increase CCI
+ frequency
+Thread-Index: AQHZ5wSUhbsMZ16YIEu+XAqYgTN4rLCRwDuAgEGB1gA=
+Date: Wed, 10 Jan 2024 05:44:18 +0000
+Message-ID: <894594bd2adb156fa8f290f4e603edbccdbbcdab.camel@mediatek.com>
+References: <20230914121035.17320-1-chun-jen.tseng@mediatek.com>
+	 <20230914121035.17320-2-chun-jen.tseng@mediatek.com>
+	 <c9881e63-a52a-4d14-895e-9a14d31004e3@collabora.com>
+In-Reply-To: <c9881e63-a52a-4d14-895e-9a14d31004e3@collabora.com>
+Accept-Language: zh-TW, en-US
 Content-Language: en-US
-To: Andrew Lunn <andrew@lunn.ch>
-CC: Sergey Ryazanov <ryazanov.s.a@gmail.com>,
-        Christian Marangi
-	<ansuelsmth@gmail.com>,
-        Robert Marko <robert.marko@sartura.hr>,
-        Vladimir
- Oltean <olteanv@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-        "David S.
- Miller" <davem@davemloft.net>,
-        Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>,
-        Paolo Abeni <pabeni@redhat.com>,
-        Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-        Conor Dooley
-	<conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
-        Bjorn Andersson
-	<andersson@kernel.org>,
-        Konrad Dybcio <konrad.dybcio@linaro.org>,
-        Heiner
- Kallweit <hkallweit1@gmail.com>,
-        Russell King <linux@armlinux.org.uk>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-        <netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>
-References: <20231126015346.25208-1-ansuelsmth@gmail.com>
- <20231126015346.25208-2-ansuelsmth@gmail.com>
- <0926ea46-1ce4-4118-a04c-b6badc0b9e15@gmail.com>
- <1437d9df-2868-43f5-aebd-e0c57fe4d905@lunn.ch>
- <b75e6267-7d54-412e-8882-af4d9a0b54e6@quicinc.com>
- <841ef784-b27e-4f7a-94f2-f04f93178c61@lunn.ch>
- <07c01c11-0cc2-4837-b371-1404f2ce3359@quicinc.com>
- <2f2328ee-205b-4b4f-a683-2df4fbb22dde@lunn.ch>
-From: Jie Luo <quic_luoj@quicinc.com>
-In-Reply-To: <2f2328ee-205b-4b4f-a683-2df4fbb22dde@lunn.ch>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01c.na.qualcomm.com (10.47.97.35)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: vQvHT32-CIbe2Ge8LoWUTyaNM2oNaS72
-X-Proofpoint-GUID: vQvHT32-CIbe2Ge8LoWUTyaNM2oNaS72
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-12-09_01,2023-12-07_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 adultscore=0
- clxscore=1015 impostorscore=0 suspectscore=0 bulkscore=0 mlxlogscore=999
- malwarescore=0 lowpriorityscore=0 priorityscore=1501 mlxscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2311290000 definitions=main-2401100025
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PSAPR03MB5351:EE_|KL1PR03MB8259:EE_
+x-ms-office365-filtering-correlation-id: 8607a6dc-ca3a-49f1-fd74-08dc119f307d
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: zk9nr92ZqkSAxZl8HvVdJldL2xRhWBD1/lJ5dtBwbn5wrM16l48wz+2cCXOprFVfe6YDULiGdXJCBxjD7GJo/WW+6kQGw+v6jD5Rr0N27fp5DlodbqgsPiQiD6DeToIQpSK18kMvrPj9g+OaeXMWjufZ8P8RyndEZdSnl+fbO6V77bAXNXM2MMMa14v575R15otnAMmqlHaMb1JOQsroyGn78RCs0PDrapBMeCddxXI3bU0ayxuvYDdXHORaRbl4eDqshMHCzWX41Qhrq9pDfj353YygofSLNfl6XGjyBaiowLWnn2fkv/2T8lTn6o6ubObS4Gz4HIbH3iFM/z4wPLdFoMBPcJWSpkPnepIRsOrwIeo3tQYGsOJm7AI84yIXoku98UYh0dwQGmb0xGcXa+nAkeXD4GmlrP53R0Mt41QJDPIJ88TCoJC/zfcIHnqtGXOkMIKRkCIvVrhIWD2VJ62ta8gRMQDCgKGAVWVNNikyAvkkxRaUg8MdrvDIUnHBlb2+82KTE1dyG91XT3MU61yri8/eQ43TYNoBA2/lwfsAbjx1jpYg1uGqwf6sHrJHBrhCM/YnRt392YvgWcX/MAhXgtHev69OZMnaXQYyq5tmVB+oj8A78uJXGXYRseRnYzSRqFWXknwR4f7sECQSrg==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PSAPR03MB5351.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376002)(366004)(136003)(39860400002)(346002)(396003)(230922051799003)(186009)(64100799003)(1800799012)(451199024)(478600001)(6506007)(966005)(71200400001)(2616005)(6512007)(76116006)(64756008)(66446008)(66556008)(66476007)(91956017)(66946007)(54906003)(110136005)(316002)(6486002)(26005)(107886003)(83380400001)(41300700001)(5660300002)(2906002)(7416002)(8676002)(8936002)(4326008)(4001150100001)(38070700009)(36756003)(85182001)(38100700002)(122000001)(86362001);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?a0pOZWNRWjhlcVFBK2NNWkhxYnpGTTAyalZDcWlQczBuOU5PMUs2NGttR005?=
+ =?utf-8?B?TGhxYmdCSzA4M29lRllLVDFrNkZFa0NMampWYUZhR3RzeHJhTFlSc0tFZ09F?=
+ =?utf-8?B?Vy9QUVpZaEpRQnI1THVqdGFnZmwrZTZlcThZTXNTM093ZDdrZGpSaStPTmQy?=
+ =?utf-8?B?Q1ljSXBGQ0QvRDluTDU0U1lRekR4NXBCVGFTanpnWWpZakhYR3U2citER0hO?=
+ =?utf-8?B?U3VtRUlKNzB0TjVDODloem1FdVk2US8zeU8xTno4WGRnUnl1MUJ1bkZ1ZzY3?=
+ =?utf-8?B?Uy9ibS9NME9FZGZ3dWNlYlVrbjdWTklNR2ZEcVZMU2ZYWjNTNm5RTStZWkpp?=
+ =?utf-8?B?OGVveEpIRkJXT2daUHJYcVJpcnJjZXZOQkRVOE42akY1WDQ0UHNkRXhLZXBq?=
+ =?utf-8?B?NXIyQk9LYm5jK2JPQTI4UkZkbWRkQThsa1BHMm1RdmNDdDUzSEQ0VENJK0wr?=
+ =?utf-8?B?ZnpMOVh0bGtZRzdGQVRBa1M0Tjk1aTdaTnBpSjNianNtRWtRQkkzQ1cxd1hI?=
+ =?utf-8?B?YnlyQVR1WVJ2ZlZDRWdYNzF3QzkwV2k1OVhSd3JZYklOa3F5VWEzVzlpT0RV?=
+ =?utf-8?B?SjhLWFNxWDIzVHJBcHdmM0oveTk4R0pkcjI0cW1EUDR0VWtWVkJodzU1M0pz?=
+ =?utf-8?B?VFB2N0FZbDhaRzNKVXlQNW9SaDdQSmxFL0NrT29qL2trUGtLT1lHNW1sYmNi?=
+ =?utf-8?B?bWl0VWFUZ25yOFlPZnNVdjNUTzBmOVRzV3Ftd0pRempVajVLNjkyWHIxZ2V2?=
+ =?utf-8?B?d0NEMjhWTi9TTFNidUpSQk9SeS9sUms4UXh5R2R3c1JreFVQSXdhRE5FMnYw?=
+ =?utf-8?B?Wm90bkZnaTRrb01EWGpuYWRCeDR3RjRESlNxOFlMSmJCVjQ0YUZJc3k3TlE3?=
+ =?utf-8?B?TFFIT2RSWFVsbU1mdTJvOEc4dXdiUkk3NzV4bGJORU4xTXNWSUV1M0EvYzdq?=
+ =?utf-8?B?M2FlcU5uMFU2dFg1dmVFZjU5b0JqU3RMUXN5REk2bHhBUUVJMVNpdklqZHhv?=
+ =?utf-8?B?aGQyekNmY21HRGdIYysyQmZEUDNoMjV0a21LRy84dVhtS1RqRFNrR0VRTUli?=
+ =?utf-8?B?YWUxa0xqbkJaV3dCajFJcHZ0MUdJZTY3MmU4WU9nUUdJKzE2aW1ScnZ6WmpU?=
+ =?utf-8?B?bnRKTWNuRURwbnVKM01oUFhJSHhHamR2WlVYS2lLTmdjVjBWZnJ1dDBocm12?=
+ =?utf-8?B?T2pEQWtwdVN2RU8xVEF4ZkxRN0NpUHlLUVVaRUVFM1RBVG9jOWVNSitVWGYr?=
+ =?utf-8?B?bktRdVpiNTFGSko1bU85d2NjMkp6dUkzL0ZRTHZvakE5TkZFTVlXSFZZVkJm?=
+ =?utf-8?B?blhxUjNFNDYrdHhGS1NucVozU05YT1RuRk9jTmZsTmJMZ2dJYzFHVFVRVE9V?=
+ =?utf-8?B?MVZ0WWpOTVBKU3l1WjVTbnQ2YnJrYW9FQ3lXNCtObGlKbm5Tajlvb1I0aE5B?=
+ =?utf-8?B?U2FGdmhIbFFReEFZYVF1NlV2UGNnRS8zN0J4UWc4WTc3Q0o5UzZ4TStOakI0?=
+ =?utf-8?B?djM3Vm1lSkoxeEFTY0dPOUR2eFBleE5VL3R1M0E2ckhXdkhzaGVxNUpFaE4w?=
+ =?utf-8?B?eDBiSTVFUno2ZXBpR1czNGQwK2I5UW9LVWZXK09VR3hGNlI2MlZUSExqa3l5?=
+ =?utf-8?B?UjhFSCtpa01Rd0U2VSthUjdEdmpqdG9TSWJSMURKOExSTU5yNDAyYzFHYkh3?=
+ =?utf-8?B?dW5FNm5qa0JOekwzWlNvbkovb0xsOFFYK1pLcHFxRisvNmw5dkZ5ZW8rdjRt?=
+ =?utf-8?B?T09pNmtwSGdWQ0JtbkpuQVEvWjF6RTM5ZzBkSWdKVmd5bXg0NzNmaVJjZDhv?=
+ =?utf-8?B?dHN3YUNjbkd2ai9EWHg5U1gwZzFGTitBTlVOYlh6Mk11MjBTbmtSQUJpZEx3?=
+ =?utf-8?B?SUw4V1MwdUdjMm9oQlhJR0llcitkQ0paVnNESnN2dzBVVGVRWU5tUmZTa0FU?=
+ =?utf-8?B?eWZ2NWlSWDVTcyt2SmlmbDVEK0JQRkNMVG1ZQ29UekRYMjRIUHIwalZvWjhm?=
+ =?utf-8?B?OS8xMmxBbmNlRnRGQVRubWZtZU1EdlQ4N0NTcHZYeEdZQ2VnQnZNdjVINkRX?=
+ =?utf-8?B?NmlDTkJucS8yMk5iTHkwRXpUY3M1dHM2NG9KQlViQkY4K21WOWFseUFkQlpF?=
+ =?utf-8?B?VVFCNGNVU0NpMnRFRjJ3cmk2d2VXa0lEMDFiaHpGaFVLQVFOdjJnU1ZCWXZY?=
+ =?utf-8?B?U0E9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <7D689D5DDC63C24E8A8C52BF16699766@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PSAPR03MB5351.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8607a6dc-ca3a-49f1-fd74-08dc119f307d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Jan 2024 05:44:19.0546
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: +uoLClWyT7I/FWeqpH5BWROuem/y4NI+swPZtmKTmjjn9ZWoLyUtLs/LvjKsevmN8NYgYQxpIzXjwL74pY/F9sUAu7urRCItiKkjBJow23U=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB8259
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--20.579000-8.000000
+X-TMASE-MatchedRID: 9M69yBZ2Ml7UL3YCMmnG4pkEOBootbylYefZ7F9kLgsNcckEPxfz2Iqe
+	hz/PsL8GqZFEOMJ4eYr89WDKQGB2Lr2qE/TXOSRcO9+ygK4Bw/4Cfg/sW4pUUFwpnAAvAwazJue
+	jAccQ+DfA0A1lR3Z6hZkjw6+I2QxRuBKKB37nRtozw5Ejs3g1llsChor7BLiN1gisw2JKo8n2wt
+	JdngDYbSSokrz/9xB4u7YXZyzcQdSPLG+A0qvEppmug812qIbzBdebOqawiLth7WbOnt2TB92v7
+	KCkib/qBQl5gCSY8ZjrmgsWcquPnl3MeDPg67Bebc297PAGtWb4qCLIu0mtILDOZkvqV9x1o8WM
+	kQWv6iUVR7DQWX/WkQGLeSok4rrZC24oEZ6SpSk6XEE7Yhw4FpRMZUCEHkRt
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--20.579000-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 45DFCA3A8190DD0BFE3A7D42FEAB4E30CDC32E018AC1FCD23CA17FBE116D94A92000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240109_191355_665251_FA4554CA 
-X-CRM114-Status: GOOD (  26.39  )
+X-CRM114-CacheID: sfid-20240109_214433_318836_4FC80723 
+X-CRM114-Status: GOOD (  19.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,140 +199,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 1/9/2024 9:48 PM, Andrew Lunn wrote:
->>
->> __| |_______________| |__
->> | PCS0 |          |PCS1 |
->> |______|          |_____|
->> |_______                |<---- REF clock 50MHZ
->> |      |------------    |
->> |NSSCC |    |clks  |rsts|<---- GPIO reset
->> |______|    |      |    |
->> |           V      V    |
->> |_______________________|
->> |     |     |     |     |
->> |PHY1 |PHY2 |PHY3 |PHY4 |
->> |_____|_____|_____|_____|
-> 
-> Not the best of improvements. So the ref clock goes to the package,
-> and then magically somehow gets to the NSSCC? Are there any more
-> blocks it goes through before reaching the NSSCC? How does the GPIO
-> reset get converted into multiple reset inside the package? Details,
-> details, details.
-
-The GPIO reset for the whole CHIP, like a GPIO reset on the single port
-PHY qca8081, after the GPIO reset, the whole qca8084 chip is in the cold
-reset state, so the initial clocks ans resets need to be initialized as
-we are designing the clock model here.
-
-As for the reference clock 50M input, this reference clock 50MHZ is
-PLLed by the PCS1 block of qca8084, then there are fix 312.5MHZ is
-generated to the NSSCC, NSSCC includes multiple RCG clock trees to
-generate the clocks to the PHY and PCS, all these blocks(PCS and PHY)
-are located in the qca8084 PHY chip, sorry for missed this diagram
-info, updated the diagram as below, since the PCS generates the clocks
-to NSSCC, there are initial clocks ans resets included for PCS need
-to be configured before CHIP to work.
-
-So the parent clocks are PCS0(uniphy0) and PCS1(uniphy1) for NSSCC,
-as i provide the DT of NSSCC provider below, the parent clock rate
-of PCS is changed according to the PHY link speed, and there are
-also fix clock rate 312.5MHZ from PCS1, these parent clocks are
-the root clock of RCG clock tree in NSSCC, the output clocks of
-the RCG are consumed by the PHYs(PHY1-PHY4 and PCS0, PCS1).
-
-    REF 50MHZ
-       |
-       |
-______V__________________
-| PCS1 |       ____|PCS0|
-|______|      |    |____|
-|  |  ________|         |
-|  | |                  |<----------GPIO reset
-|__V_V__                |
-|      |------------    |
-|NSSCC |    |clks  |rsts|
-|______|    |      |    |
-|           V      V    |
-|_______________________|
-|     |     |     |     |
-|PHY1 |PHY2 |PHY3 |PHY4 |
-|_____|_____|_____|_____|
-
-> 
->> There are difference clock trees generated from NSSCC for the different
->> PHYs, all clocks and resets for qca8084 CHIP working are internally
->> provided by the NSSCC.
-> 
-> So show this in the block diagram.
-> 
->> Yes, Andrew, the NSSCC provider driver is probed based on the MDIO
->> device, the PHY CHIP occupies the MDIO addresses, so the NSSCC is
->> registered as the MDIO device.
->>
->> DT of the NSSCC device node:
->> mdio {
->>        #address-cells = <1>;
->>        #size-cells = <0>;
->>
->>        clock-controller@18 {
->>          compatible = "qcom,qca8084-nsscc";
->>          reg = <0x18>;
->>          clocks = <&qca8k_xo>,
->>                   <&qca8k_uniphy0_rx>,
->>                   <&qca8k_uniphy0_tx>,
->>                   <&qca8k_uniphy1_rx>,
->>                   <&qca8k_uniphy1_tx>,
->>                   <&qca8k_uniphy1_rx312p5m>,
->>                   <&qca8k_uniphy1_tx312p5m>;
->>          #clock-cells = <1>;
->>          #reset-cells = <1>;
->>          #power-domain-cells = <1>;
->>        };
->>      };
->   
-> This does not make any sense. You have one clock input, 50MHz. So why
-> are you listing 6 consumer clocks, not one? And where are the clocks
-> this clock controller provides, clock-output-names=<...>;
-
-Hi Andrew,
-Sorry for the confusion.
-the DT of the NSSCC device node is from the NSSCC provider driver, which
-is under review currently as the link below.
-https://lore.kernel.org/lkml/20231104034858.9159-2-quic_luoj@quicinc.com/T/#m204c22d14be8f9dda7cd7f666ed726b8fc3301ef
-
-the property "clocks" are the parent clock list of RCG clock tree in
-the NSSCC driver, for qca8084 chip, there are two UNIPHY(PCS) as
-mentioned in the diagram, there are also fix rate clocks 312.5MHZ,
-the output clocks of NSSCC are not listed in the DT, which is same
-as the GCC(IPQ SoC) DT.
-
-The output clocks of NSSCC are provided by the DT of the clock consumer
-such as the DT of qca8084 as below.
-phy0 {
-         reg = <0>;
-         clocks = <&qca8k_nsscc NSS_CC_GEPHY0_SYS_CLK>;
-         clock-names = "gephy0_sys";
-         resets = <&qca8k_nsscc NSS_CC_GEPHY0_SYS_ARES>,
-                  <&qca8k_nsscc NSS_CC_GEPHY0_ARES>;
-         reset-names = "gephy0_sys", "gephy0_soft";
-      };
-
-In the DT node above, the qca8k_nssc refers to the NSSCC clock provider
-DT node "clock-controller@18", the clock ID "NSS_CC_GEPHY0_SYS_CLK" is
-also provided by the NSSCC clock provider driver.
-
-The different PHY(PHY1-PHY4) of qca8084 has the different clock
-tree(RCG), the clock consumer driver needs to define the DT properties
-clocks and clcok-names to get the clocks from the NSSCC clock provider.
-
-> 
-> I give up. Please consider this PHY driver NACKed.
-> 
-> Get Linaro, or some other organisation with a lot of experience with
-> mainline to take over the work.
-> 
-> 	 Andrew
+T24gV2VkLCAyMDIzLTExLTI5IGF0IDE0OjIyICswMTAwLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBS
+ZWdubyB3cm90ZToNCj4gSWwgMTQvMDkvMjMgMTQ6MTAsIE1hcmsgVHNlbmcgaGEgc2NyaXR0bzoN
+Cj4gPiBUaGUgb3JpZ2luYWwgQ0NJIE9QUCB0YWJsZSdzIGxvd2VzdCBmcmVxdWVuY3kgNTAwIE1I
+eiBpcyB0b28gbG93DQo+ID4gYW5kIGNhdXNlcw0KPiA+IHN5c3RlbSBzdGFsbHMuIEluY3JlYXNl
+IHRoZSBmcmVxdWVuY3kgcmFuZ2UgdG8gMS4wNSBHSHogfiAxLjQgR0h6DQo+ID4gYW5kIGFkanVz
+dA0KPiA+IHRoZSBPUFBzIGFjY29yZGluZ2x5Lg0KPiA+IA0KPiA+IEZpeGVzOiAzMmRmYmMwM2Zj
+MjYgKCJhcm02NDogZHRzOiBtZWRpYXRlazogbXQ4MTg2OiBBZGQgQ0NJIG5vZGUNCj4gPiBhbmQg
+Q0NJIE9QUCB0YWJsZSIpDQo+ID4gDQo+ID4gU2lnbmVkLW9mZi1ieTogTWFyayBUc2VuZyA8Y2h1
+bi1qZW4udHNlbmdAbWVkaWF0ZWsuY29tPg0KPiANCj4gWW91IGlnbm9yZWQgbXkgY29tbWVudCBb
+MV0gb24gdGhlIHYxIG9mIHRoaXMgcGF0Y2guDQo+IA0KPiBCZXNpZGVzLCBJIHRoaW5rIHRoYXQg
+eW91IHNob3VsZCBhdCBsZWFzdCBrZWVwIHRoZSA1MDBNSHogZnJlcXVlbmN5DQo+IGZvciBhDQo+
+IHNsZWVwLW9ubHkvaWRsZSBPUFAgdG8gc2F2ZSBwb3dlci4NCj4gDQo+IEl0IHdvdWxkIGFsc28g
+YmUgaGVscGZ1bCB0byB1bmRlcnN0YW5kIHdoeSB5b3UgY2hvc2UgdGhpcyBuZXcNCj4gZnJlcXVl
+bmN5IHJhbmdlLA0KPiBzbyBpZiB5b3UgY2FuLCBwbGVhc2UgcHV0IHNvbWUgbnVtYmVycyBpbiB0
+aGUgY29tbWl0IGRlc2NyaXB0aW9uLA0KPiBzaG93aW5nIHRoZQ0KPiBzdGFsbCBpbiB0ZXJtcyBv
+ZiByZXF1ZXN0ZWQgQlcgdnMgYWN0dWFsIEJXIChhcyBJJ2QgaW1hZ2luZSB0aGF0IGEgMngNCj4g
+aW5jcmVhc2UNCj4gaW4gQ0NJIGZyZXF1ZW5jeSBtZWFucyB0aGF0IHdlIG5lZWQgKnR3aWNlKiB0
+aGUgYmFuZHdpZHRoIGNvbXBhcmVkIHRvDQo+IHdoYXQgd2UNCj4gaGF2ZSBmb3IgdGhlIHdvcmts
+b2FkcyB0aGF0IGFyZSBzdGFsbGluZyB0aGUgc3lzdGVtKS4NCj4gDQpIaSBBbmdlbG9HaW9hY2No
+aW5vIERlbCBSZWdubywNCg0KVGhhbmtzIHlvdXIgcmVtaW5kZXIgdGhpcyBpc3N1ZS4gQWZ0ZXIg
+YWpkdXN0bWVudCBDQ0kgT1BQLCB3ZSBhbHNvIGRvDQpwb3dlciB0ZXN0IGJlbmNobWFyayBhbmQg
+dGhlIHJlc3VsdCBpcyBQQVNTLg0KDQpUaGUgb3JpZ2luYWwgQ0NJIHRhYmxlIGhhcyBzdGFsbCBp
+c3N1ZS4gIFdoZW4gdGhlIEJpZyBDUFUgZnJlcXVlbmN5IHNldA0Kb24gMi4wNUcgYW5kIENDSSBm
+cmVxdWVuY3kga2VlcCBvbiA1MDBNSHogdGhlbiBydW4gQ1RTIE1lZGlhVGVzdCB3aWxsDQpzeXN0
+ZW0gc3RhbGwgdGhlbiB0cmlnZ2VyIHdhdGNoZG9nIHJlc2V0IFNvQy4NCg0KVGhlIENQVSBhbmQg
+Q0NJIGZyZXF1ZW5jeSBzZXR0aW5nIGFyZSBub3QgaW4gdGhlIHNhbWUgZHJpdmVyLiBTbyBpdA0K
+d2lsbCBoYXZlIHRpbWluZyBpc3N1ZSBjYXVzZSBDUFUgc3RhbGwgc2lkZSBlZmZlY3QuDQoNCkJS
+cywNCg0KTWFyayBUc2VuZw0KDQo+IFsxXTogDQo+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2Fs
+bC83OTkzMjVmNS0yOWI1LWYwYzAtMTZlYS1kNDdjMDY4MzBlZDNAY29sbGFib3JhLmNvbS8NCj4g
+DQo+IFJlZ2FyZHMsDQo+IEFuZ2Vsbw0K
 
