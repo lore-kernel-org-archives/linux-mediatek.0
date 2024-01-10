@@ -4,64 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 285DAC4707B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 11:30:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFD3AC47258
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 11:48:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CSqO5eCZ27MS2fADuP5ThwfLEsbc8s+DlvDx2BBPL9k=; b=b98wlp1w3sTqIb
-	HRJveECo1BjpigCngDk1MubKiMOuLk3X7T/Jzw8YSHNBuLElMDN78ZVz9hT6qW8lMLiWoxG6UY02w
-	8dBbKtJxl9NIG0EadbWJ7Tr/ifF9kvMt4iqUl6ya2EHZjknXfImTJu4hqWf+c6lPTFnrW+BB/xYwJ
-	2kdMTQM7kHT+MpEq9zwkT9pSwSQoz0RCQTfyYu7cfpevq0xGsmbvhlbt66RRMsrLZJiwwXXr8GmnV
-	P3UjQaz5W17yZ7VHEktGxaHHxEJkh6OGLqZo7h14iPsW+/K3R9uozD7GeAA9Wiuj4rtLyzlmikcGF
-	tXeAmq/bypKqngzaDxTA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=I9Zq9GKWqta6ICAtqEU6fr3Wjl7exxbBxBD4kWvF4dU=; b=MxBIfiz+N89azW+koQhq/hH5pu
+	EAnX/nB8Vi8JJ0+UunYHfpo1fZJeoQ4HDvXGV7cqNJI236qO4wWaD/e21F6H68VmSi6RQFGgr9tGn
+	Tx23YacUsTYU8Xne2gZBYM0jJGsjaaK9gLs4jMmxyZZQxXAbuSzjFqTltCzdN5OXAcIIcoBdma3Ov
+	cS1hm52QnznPKcXkHtkOiyvsUW/YDkYhDi8ZQC9RvYOexH3B0R6DEQOJNrlb6LRbAaYHdpA1UFFWV
+	8+ln/wjR0gw1Snaam1nWomIrtZlDZYU6HstYVAMVZ1OVLcA1DmQ/rup4yrGGqejKgAPwd9FOubEfF
+	1NigfNlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNWmi-00BK5x-1x;
-	Wed, 10 Jan 2024 11:30:12 +0000
-Received: from relay6-d.mail.gandi.net ([217.70.183.198])
+	id 1rNX4F-00BWXw-1l;
+	Wed, 10 Jan 2024 11:48:19 +0000
+Received: from mail-ed1-f43.google.com ([209.85.208.43])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNWme-00BJzu-1m;
-	Wed, 10 Jan 2024 11:30:10 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 36DB0C0004;
-	Wed, 10 Jan 2024 11:29:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1704886204;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CSqO5eCZ27MS2fADuP5ThwfLEsbc8s+DlvDx2BBPL9k=;
-	b=Tzfpi8yuk+TImYcUywQQIvFFpb91SjmS/Ouw4VxsSkKzJYC8O8pINGX9ZiuhuFPx76S8MP
-	U0Wi4gkUhaAaxwL5hPdzb50wFg23My4q65d4VZlhj4qID9HOZ7DiFQnQqnmVC+T89ofRpM
-	dUA4DVECweXkce6hnMN8egguyQviZZSAmR+M6WthOF75YBd0tnqDw5ejsZAup7Ie11i1Uu
-	UFNdQwyX15P67nNAfNJPcVnkTfGxZuXGjKmN28/kHW4fU8a6vu+mo1m21ASjCqVe/Lwm+g
-	5Q+t4YJQJne3IgPPWP9IW8vFuddLKx4pyL0EGJGiuN/A9ca9hxoV1sIEj3FjNw==
-Message-ID: <ad2df325-2a48-4a81-be13-be8230b7aa8a@arinc9.com>
-Date: Wed, 10 Jan 2024 14:29:57 +0300
+	id 1rNX4B-00BWUx-05;
+	Wed, 10 Jan 2024 11:48:16 +0000
+Received: by mail-ed1-f43.google.com with SMTP id 4fb4d7f45d1cf-55642663ac4so4553520a12.1;
+        Wed, 10 Jan 2024 03:48:12 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704887291; x=1705492091;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=I9Zq9GKWqta6ICAtqEU6fr3Wjl7exxbBxBD4kWvF4dU=;
+        b=bKrBeH5Nvqct8FuEqcCUQtqhU4QjFgbf7BAY8DNI2uP9+aLTsBWVU1vdKgHX+aSd2t
+         EIqd/xrRy2bq/Jm7ZjBS5dWlRVFdhXthUZhryf4bgA4oWWlgbcOk4MwEyR7StO43goRp
+         JWlzHHL4zNJZym8HuvgCAqx2ixKMv4lASLaC8xWz+GtQaAaHJTj2BnAdH1fq1Z4PuXdD
+         P1C5dkU2QfqhNIeVyzwY20vR/f8O92o6v5+GQ+XwivOTH1YTwPGOuoxKjTOoej2s2del
+         1+hF22BbtEHekkDv3okBloHmvzlfodkWq8Z9EYGcxSr3vnhL3e0OxIgh7cm9HmnZyA1G
+         6w3Q==
+X-Gm-Message-State: AOJu0Yx8v28IjBXkFrIe6PBUMUtq61bxxNRfq4V0z4gut4TRiODufx7J
+	Zqfo6csdHsQrc/HsMTzVhBI=
+X-Google-Smtp-Source: AGHT+IGjzvnapI0zijY7x5/NYywNVV1ffVnagAX2zyHlUgtQbten23Ytlf8qlfI9RIg1uAtJdyiFDg==
+X-Received: by 2002:a05:6402:26c7:b0:557:91e1:25aa with SMTP id x7-20020a05640226c700b0055791e125aamr410983edd.78.1704887290635;
+        Wed, 10 Jan 2024 03:48:10 -0800 (PST)
+Received: from gmail.com (fwdproxy-cln-017.fbsv.net. [2a03:2880:31ff:11::face:b00c])
+        by smtp.gmail.com with ESMTPSA id x3-20020aa7d6c3000000b00557463cdc76sm1894746edr.69.2024.01.10.03.48.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 10 Jan 2024 03:48:10 -0800 (PST)
+Date: Wed, 10 Jan 2024 03:48:08 -0800
+From: Breno Leitao <leitao@debian.org>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, Alexander Couzens <lynxis@fe80.eu>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org,
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH net-next 10/10] net: fill in MODULE_DESCRIPTION()s for
+ PCS Layer
+Message-ID: <ZZ6D+AylYTNDW9F9@gmail.com>
+References: <20240108181610.2697017-1-leitao@debian.org>
+ <20240108181610.2697017-11-leitao@debian.org>
+ <cf825e28-cceb-49e1-9880-7971cc955b2c@lunn.ch>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v2 6/7] net: dsa: mt7530: do not set
- priv->p5_interface on mt7530_setup_port5()
-Content-Language: en-US
-To: Vladimir Oltean <olteanv@gmail.com>
-References: <20231227044347.107291-1-arinc.unal@arinc9.com>
- <20231227044347.107291-7-arinc.unal@arinc9.com>
- <20240104154241.rxjins4mi5zkbhia@skbuf>
- <f9ad000a-2e42-4ddf-89a4-9a3ff452dc4b@arinc9.com>
- <2793938a-91e1-419d-a011-850756177e31@arinc9.com>
- <20240109115115.yuct3yw4oy6ipd3i@skbuf>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20240109115115.yuct3yw4oy6ipd3i@skbuf>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cf825e28-cceb-49e1-9880-7971cc955b2c@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240110_033008_731018_CD0D3789 
-X-CRM114-Status: GOOD (  13.10  )
+X-CRM114-CacheID: sfid-20240110_034815_067129_6E972D3D 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,36 +88,19 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, Russell King <linux@armlinux.org.uk>, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, mithat.guner@xeront.com, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9.01.2024 14:51, Vladimir Oltean wrote:
-> On Tue, Jan 09, 2024 at 02:42:45PM +0300, Arınç ÜNAL wrote:
->> Running mt7530_setup_port5() from mt753x_phylink_mac_config() multiple
->> times is being prevented which shouldn't be done. That's because of a
->> different reason involving MT7531. I will deal with this with a later
->> patch.
->>
->> I intend to put this on the patch log.
+On Mon, Jan 08, 2024 at 08:21:03PM +0100, Andrew Lunn wrote:
+> On Mon, Jan 08, 2024 at 10:16:10AM -0800, Breno Leitao wrote:
+> > W=1 builds now warn if module is built without a MODULE_DESCRIPTION().
+> > Add descriptions to the LynxI PCS MediaTek's SoC.
 > 
-> Still not clear why it shouldn't be done. Ideally you could come up with
-> a plausible hypothesis as to why it's there in the first place, and why
-> it's not needed.
+> Does pcs-lynx.c also have this issue? It can be built at a module.
 
-I can't tell why it's there. Russell did analyse why it's not needed [1]
-and my test [2] confirms it.
+Absolutely. I can see the warning in pcs-lynx and pcs-pts.
 
-This patch is about removing the unnecessary setting of priv->p5_interface
-on mt7530_setup_port5() which I believe I have already explained. I would
-like to get into the details of priv->p5_interface and priv->p6_interface
-when I remove them along with cpu_port_config().
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/net/pcs/pcs_xpcs.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/net/pcs/pcs-lynx.o
 
-That said, I will refrain from including the last paragraph on the patch
-log.
-
-[1] https://lore.kernel.org/netdev/ZHy2jQLesdYFMQtO@shell.armlinux.org.uk/
-[2] https://lore.kernel.org/netdev/9308fa1a-6de3-490b-9aeb-eb207b0432df@arinc9.com/
-
-Arınç
 
