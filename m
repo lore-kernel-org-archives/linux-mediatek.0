@@ -4,73 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 332A3C4707C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 16:05:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96F21C4707B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 16:12:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=59+le7fXjctIPbpN9qB4BCB8QpLgl+kvZFwrdOVqGm4=; b=VueqsqxJm3gnuddgutclP0mAPh
-	EFzUG9Obna8xo3LBgiY6fKDAY/FYdEowquw1xejf5ur+oEL7BGzKG2vBNTQ2Rg8zZdniBAEPupkzv
-	BbJiPuhMCS2v1b+03Bn/LDQUoykwJGv2ti+YANkKZZiWUC+Xih4gw49iYlm3bkJLJuh9MKCYups4+
-	jMqFQqafvu1SuVQd3Vtf59USjUBm23D6pIsjbZ5Ee9jMLICCvJFlf3k+Qluxni+USxR4KZH/2xgEK
-	GV8TH+tYTf8JHD4gYzcp0JltiJ13yIgoCby99F1i/ZRB+pRi4rvqWKVRmyET2t3nV6oei5AkqkxBg
-	BLQTdPWQ==;
+	bh=Q0s1k9eEoemlcYdOq0E9vro+IfDLJ8Z+Cnoho1ngrrs=; b=fBqCWJhXJDmx7+aAPbNw0/25ap
+	f3Y42yaBV5DjO/0pg5Euhkrh2ASlPFhOra1n6r7uwwSIRNe4lv6Z7lqg94SIJve1NE5qt4LFk7Lpc
+	WkZQ3xlw/qQBLk9MAst+wpwdwRuVBgLbVcixDGIGqJ3wjDBpqlUoYHr3laJVkcMtEco+6SqNYk9Ri
+	GAtWSG1fLdo5EA/0L+Q2Vb7xaZY5fACva/0GzTrWsgvRFqGQXzGZuYzjlhbrTyf64gTq2nfnr7TSv
+	xGBs5ISEVgrxAuykVLxh8KeAvnVLGSf9sgaMv4MmoV2hZ51NhbLoBd+MZp8WOqzGvlb1vtXSVW8Du
+	FQJtmGQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNb4o-00Cmdy-0G;
-	Wed, 10 Jan 2024 16:05:10 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1rNbBZ-00CokX-1D;
+	Wed, 10 Jan 2024 16:12:09 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNb4k-00Cmcf-25;
-	Wed, 10 Jan 2024 16:05:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 09063B81DD5;
-	Wed, 10 Jan 2024 16:05:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 24FF9C433C7;
-	Wed, 10 Jan 2024 16:05:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1704902704;
-	bh=59+le7fXjctIPbpN9qB4BCB8QpLgl+kvZFwrdOVqGm4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=A0Nh8JmSeLh/gTbSgK2b8WTCaIEeipH7goasBhQCrfZRmSBahEj7Ky+DgX3NKgGY9
-	 XmMx0nZ48ovzcOigjXBme91g0Flmneme/+y8Qq3/scWgw7C4pAq7i5AmjZU7FkFuiO
-	 DHpMk91c0Dnv/NF0jVcLrOwtsVFeUJHovwkCSyLBGpX85CtJ0eYMHlHEfRwNIqrkhC
-	 Gh10IjhW7kGVzJzIXkqKEXxHUEQfn01/05HGM/fE9vnioT2NkjFONmYLfW10uVjAGX
-	 7ejdWnX5AEX+aztvzw0Z3hCwdNjAdIJE8B5f5XbmRGnxEMEjuJaC9KtQLlfE+rSVdI
-	 4viU2fkU8tuew==
-Date: Wed, 10 Jan 2024 16:04:58 +0000
-From: Conor Dooley <conor@kernel.org>
-To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	=?iso-8859-1?Q?N=EDcolas_F_=2E_R_=2E_A_=2E?= Prado <nfraprado@collabora.com>,
-	jason-ch chen <Jason-ch.Chen@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-Subject: Re: [PATCH 1/2] dt-bindings: arm64: mediatek: Add MT7981B and Xiaomi
- AX3000T
-Message-ID: <20240110-commend-scrunch-847e224918c6@spud>
-References: <20240110095118.25598-1-zajec5@gmail.com>
+	id 1rNbBV-00Coh0-1G;
+	Wed, 10 Jan 2024 16:12:07 +0000
+X-UUID: f90f1808afd211eeafd70d0b34820190-20240110
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Q0s1k9eEoemlcYdOq0E9vro+IfDLJ8Z+Cnoho1ngrrs=;
+	b=qnBc33gkezpWmU/ZtR4Clr9s194GJpeUPEBj8Jky+GUbwmj5GcH4O9hN3zrEsMTaosXyALo7xYXB494ooy25YmpM0pOy77/BPavTw/NqrUv7l+PGZeJK7cLSiNwQ0bCoVv5TmXH9K/+LT9l2SEMZEB6f2TaYOSrlrSeZvEx4Nmo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35,REQID:a4a95dae-d68d-495a-b9ff-cb2ace27f5d7,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5d391d7,CLOUDID:c4a6052f-1ab8-4133-9780-81938111c800,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: f90f1808afd211eeafd70d0b34820190-20240110
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1479375686; Wed, 10 Jan 2024 09:11:55 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 10 Jan 2024 23:51:51 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 10 Jan 2024 23:51:51 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>
+CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Jason-ch Chen
+	<jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang
+	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung
+	<shawn.sung@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH 1/2] mailbox: mtk-cmdq: Change GCE hardware timeout to software timeout
+Date: Wed, 10 Jan 2024 23:51:47 +0800
+Message-ID: <20240110155148.6383-2-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240110155148.6383-1-jason-jh.lin@mediatek.com>
+References: <20240110155148.6383-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="nFyTv1x5d4o5hpfV"
-Content-Disposition: inline
-In-Reply-To: <20240110095118.25598-1-zajec5@gmail.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240110_080506_837853_4E52395A 
-X-CRM114-Status: UNSURE (   9.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240110_081205_448974_2F310F23 
+X-CRM114-Status: GOOD (  26.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,35 +91,286 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+GCE axi_clock 156MHz, 1 tick cycle = 6.41ns.
 
---nFyTv1x5d4o5hpfV
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The register CMDQ_INSTN_TIMEOUT_CYCLES is a GCE hardware configuration
+for instruction timeout cycles. It's the cycles to issue instruction
+timeout interrupt for wait and poll instructions.
 
-On Wed, Jan 10, 2024 at 10:51:17AM +0100, Rafa=C5=82 Mi=C5=82ecki wrote:
-> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
->=20
-> MT7981B (AKA Filogic 820) is MediaTek's dual-core ARM Cortex-A53 SoC.
-> One of market devices using this SoC is Xiaomi AX3000T.
->=20
-> Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
+This timeout setting is coarse-grain and has 100% uncertainty,
+which means that if it is set to 16 cycles, the timeout will be reduced
+from 16 * 2 = 32 cycles to 16 cycles.
+If it is set to 64 cycles, the timeout will be reduced from 64 * 2 = 128
+cycles to 64 cycles.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Current CMDQ_INSTN_TIMEOUT_CYCLES is set to 22, it means instruction
+timeout is reduced from 2^22 * 2 * 6.41ns = 53.8ms to 26.9ms.
 
-Cheers,
-Conor.
+Since the max value of CMDQ_INSTN_TIMEOUT_CYCLES is 27, it means the max
+instruction timeout is reduced from 2^27 * 2 * 6.41ns = 1720ms to 860ms.
 
---nFyTv1x5d4o5hpfV
-Content-Type: application/pgp-signature; name="signature.asc"
+It's not enough for the use case of ISP driver below:
+GCE Thread A: wait for SOF and set event 1.
+GCE Thread B: wait for event 1 and set event 2.
+GCE Thread C: wait for event 2 and set event 3.
+GCE Thread D: wait for event 3 and set event 4.
+GCE Thread E: wait for event 4 and set EOF.
+If all GCE Threads start at the same time, the latest GCE Thread E will
+wait for event more than 2 seconds.
 
------BEGIN PGP SIGNATURE-----
+Therefore, we changed the hardware timeout to software timeout, making it
+longer, more certain, and making it configurable by CMDQ client drivers.
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZZ7AKgAKCRB4tDGHoIJi
-0m1ZAP9HShIib21NY/hwAr4GUciP78tQnAWEozG/x6/G0PZt9AD+KcxphqD4ptPZ
-d2WQOFJ3JjaujTk+7/mNVeIdBsQMDA0=
-=2AMC
------END PGP SIGNATURE-----
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c       | 172 +++++++++++++++++++++++
+ include/linux/mailbox/mtk-cmdq-mailbox.h |   3 +
+ 2 files changed, 175 insertions(+)
 
---nFyTv1x5d4o5hpfV--
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index de862e9137d5..89567f837513 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -12,6 +12,9 @@
+ #include <linux/iopoll.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
++#include <linux/timer.h>
++#include <linux/workqueue.h>
++#include <linux/sched/clock.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/mailbox_controller.h>
+@@ -64,6 +67,11 @@ struct cmdq_thread {
+ 	void __iomem		*base;
+ 	struct list_head	task_busy_list;
+ 	u32			priority;
++	u32			idx;
++	struct timer_list	timeout;
++	u32			timeout_ms;
++	struct work_struct	timeout_work;
++	u64			timer_mod;
+ };
+ 
+ struct cmdq_task {
+@@ -83,6 +91,7 @@ struct cmdq {
+ 	struct cmdq_thread	*thread;
+ 	struct clk_bulk_data	clocks[CMDQ_GCE_NUM_MAX];
+ 	bool			suspended;
++	struct workqueue_struct	*timeout_wq;
+ };
+ 
+ struct gce_plat {
+@@ -288,6 +297,158 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
+ 
+ 	if (list_empty(&thread->task_busy_list))
+ 		cmdq_thread_disable(cmdq, thread);
++
++	if (!task) {
++		cmdq_thread_disable(cmdq, thread);
++		pr_debug("empty task thread:%u", thread->idx);
++	} else {
++		mod_timer(&thread->timeout, jiffies +
++			  msecs_to_jiffies(thread->timeout_ms));
++		thread->timer_mod = sched_clock();
++		pr_debug("mod_timer pkt:0x%p timeout:%u thread:%u",
++			 task->pkt, thread->timeout_ms, thread->idx);
++	}
++}
++
++static bool cmdq_thread_timeout_exceed(struct cmdq_thread *thread)
++{
++	u64 duration;
++
++	/*
++	 * If the first execution time stamp is smaller than timeout value,
++	 * it is the last round of timeout. Skip it.
++	 */
++	duration = div_s64(sched_clock() - thread->timer_mod, 1000000);
++	if (duration < thread->timeout_ms) {
++		mod_timer(&thread->timeout, jiffies +
++			  msecs_to_jiffies(thread->timeout_ms - duration));
++		thread->timer_mod = sched_clock();
++		pr_debug("thread:%u mod time:%llu dur:%llu timeout not exceed",
++			 thread->idx, thread->timer_mod, duration);
++		return false;
++	}
++
++	return true;
++}
++
++static void cmdq_thread_handle_timeout_work(struct work_struct *work_item)
++{
++	struct cmdq_thread *thread = container_of(work_item,
++	struct cmdq_thread, timeout_work);
++	struct cmdq *cmdq = container_of(thread->chan->mbox, struct cmdq, mbox);
++	struct cmdq_task *task, *tmp, *timeout_task = NULL;
++	unsigned long flags;
++	dma_addr_t pa_curr;
++	struct list_head removes;
++
++	INIT_LIST_HEAD(&removes);
++
++	spin_lock_irqsave(&thread->chan->lock, flags);
++
++	if (list_empty(&thread->task_busy_list)) {
++		spin_unlock_irqrestore(&thread->chan->lock, flags);
++		return;
++	}
++
++	/* Check before suspending thread to prevent performance penalty. */
++	if (!cmdq_thread_timeout_exceed(thread)) {
++		spin_unlock_irqrestore(&thread->chan->lock, flags);
++		return;
++	}
++
++	WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
++
++	/*
++	 * Although IRQ is disabled, GCE continues to execute.
++	 * It may have pending IRQ before GCE thread is suspended,
++	 * so check this condition again.
++	 */
++	cmdq_thread_irq_handler(cmdq, thread);
++
++	if (list_empty(&thread->task_busy_list)) {
++		pr_err("thread:%u empty after irq handle in timeout", thread->idx);
++		goto unlock_free_done;
++	}
++
++	/* After IRQ, the first task may change. */
++	if (!cmdq_thread_timeout_exceed(thread)) {
++		cmdq_thread_resume(thread);
++		goto unlock_free_done;
++	}
++
++	pr_err("timeout for thread:0x%p idx:%u", thread->base, thread->idx);
++
++	pa_curr = readl(thread->base + CMDQ_THR_CURR_ADDR) << cmdq->pdata->shift;
++	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
++				 list_entry) {
++		u32 task_end_pa = task->pa_base + task->pkt->cmd_buf_size;
++
++		if (pa_curr >= task->pa_base && pa_curr < task_end_pa) {
++			timeout_task = task;
++			break;
++		}
++
++		pr_info("ending not curr in timeout pkt:0x%p curr_pa:%pa", task->pkt, &pa_curr);
++		cmdq_task_exec_done(task, 0);
++		kfree(task);
++	}
++
++	if (timeout_task) {
++		spin_unlock_irqrestore(&thread->chan->lock, flags);
++
++		cmdq_task_exec_done(timeout_task, -ETIMEDOUT);
++
++		spin_lock_irqsave(&thread->chan->lock, flags);
++
++		task = list_first_entry_or_null(&thread->task_busy_list,
++						struct cmdq_task, list_entry);
++		if (timeout_task == task) {
++			cmdq_task_exec_done(task, -ETIMEDOUT);
++			kfree(task);
++		} else {
++			pr_err("task list changed");
++		}
++	}
++
++	task = list_first_entry_or_null(&thread->task_busy_list,
++					struct cmdq_task, list_entry);
++	if (task) {
++		mod_timer(&thread->timeout, jiffies +
++			  msecs_to_jiffies(thread->timeout_ms));
++		thread->timer_mod = sched_clock();
++		cmdq_thread_reset(cmdq, thread);
++		cmdq_thread_resume(thread);
++	} else {
++		cmdq_thread_resume(thread);
++		cmdq_thread_disable(cmdq, thread);
++		pm_runtime_mark_last_busy(cmdq->mbox.dev);
++	}
++
++unlock_free_done:
++	spin_unlock_irqrestore(&thread->chan->lock, flags);
++
++	list_for_each_entry_safe(task, tmp, &removes, list_entry) {
++		list_del(&task->list_entry);
++		kfree(task);
++	}
++}
++
++static void cmdq_thread_handle_timeout(struct timer_list *t)
++{
++	struct cmdq_thread *thread = from_timer(thread, t, timeout);
++	struct cmdq *cmdq = container_of(thread->chan->mbox, struct cmdq, mbox);
++	unsigned long flags;
++	bool empty;
++
++	spin_lock_irqsave(&thread->chan->lock, flags);
++	empty = list_empty(&thread->task_busy_list);
++	spin_unlock_irqrestore(&thread->chan->lock, flags);
++
++	if (empty || work_pending(&thread->timeout_work))
++		return;
++
++	pr_debug("queue cmdq timeout thread:%u", thread->idx);
++	queue_work(cmdq->timeout_wq, &thread->timeout_work);
+ }
+ 
+ static irqreturn_t cmdq_irq_handler(int irq, void *dev)
+@@ -426,6 +587,11 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+ 		writel(thread->priority, thread->base + CMDQ_THR_PRIORITY);
+ 		writel(CMDQ_THR_IRQ_EN, thread->base + CMDQ_THR_IRQ_ENABLE);
+ 		writel(CMDQ_THR_ENABLED, thread->base + CMDQ_THR_ENABLE_TASK);
++		if (thread->timeout_ms != CMDQ_NO_TIMEOUT) {
++			mod_timer(&thread->timeout, jiffies +
++				  msecs_to_jiffies(thread->timeout_ms));
++			thread->timer_mod = sched_clock();
++		}
+ 	} else {
+ 		WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
+ 		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) <<
+@@ -657,10 +823,14 @@ static int cmdq_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	for (i = 0; i < cmdq->pdata->thread_nr; i++) {
++		cmdq->thread[i].idx = i;
+ 		cmdq->thread[i].base = cmdq->base + CMDQ_THR_BASE +
+ 				CMDQ_THR_SIZE * i;
++		cmdq->thread[i].timeout_ms = CMDQ_TIMEOUT_DEFAULT;
+ 		INIT_LIST_HEAD(&cmdq->thread[i].task_busy_list);
+ 		cmdq->mbox.chans[i].con_priv = (void *)&cmdq->thread[i];
++		timer_setup(&cmdq->thread[i].timeout, cmdq_thread_handle_timeout, 0);
++		INIT_WORK(&cmdq->thread[i].timeout_work, cmdq_thread_handle_timeout_work);
+ 	}
+ 
+ 	err = devm_mbox_controller_register(dev, &cmdq->mbox);
+@@ -669,6 +839,8 @@ static int cmdq_probe(struct platform_device *pdev)
+ 		return err;
+ 	}
+ 
++	cmdq->timeout_wq = create_singlethread_workqueue("cmdq_timeout_handler");
++
+ 	platform_set_drvdata(pdev, cmdq);
+ 
+ 	WARN_ON(clk_bulk_prepare(cmdq->pdata->gce_num, cmdq->clocks));
+diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+index a8f0070c7aa9..4973b2ec37db 100644
+--- a/include/linux/mailbox/mtk-cmdq-mailbox.h
++++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+@@ -21,6 +21,9 @@
+ #define CMDQ_WFE_WAIT			BIT(15)
+ #define CMDQ_WFE_WAIT_VALUE		0x1
+ 
++#define CMDQ_TIMEOUT_DEFAULT		1000
++#define CMDQ_NO_TIMEOUT			0xffffffff
++
+ /*
+  * WFE arg_b
+  * bit 0-11: wait value
+-- 
+2.18.0
+
 
