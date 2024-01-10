@@ -4,73 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2FF6C47073
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 18:33:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7CA0C47073
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 21:23:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ygJO/yfS/kYURGo632XL+UAKC6HRU0bCt+QfkkSA/jQ=; b=yXpgtBS7jFCHES4Qge5Z+Kt/GJ
-	8ICpPuS/L3i/1eG5S3cbHidULUoipXKtZuLKqZZw0k9qfPVN+rEmzkvCkJdJdeiVomMpDQo0OSdbs
-	trpXmeLIiUsJx8AkKnxIBkI+59dt6y5+7oFBKB5oj4DtLRgKihJmqtoBMjwPBf9GbWKz8YHDFn9D2
-	2+RTbPZ2akAcYoFPnf2zLYeSlc9ATdN3kWRlvuKDgWoWg7wWZiAbBQK0712lC98dMq1LqxC3B/BX8
-	FQQfQbinWwDu7VXknmWGod4OuAqJayM4JWpDQoRi/9+6tY0a0hp8qBDpW3KGMonnCc/hLj8LWS0JV
-	cK8yFC3Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	bh=08hvWAgiPewDXfZkaXlL6KDD20tFKkCJ2dXFPSuq2og=; b=BqGnTPS4HqPiPcDHbREZmJh3RB
+	YXKvt5GTL3cmd9kCP45ZrmF2rgKrmbCR2TIFBvnV24dGn9sQJVhjduV1yK2GSMx1LOIxsSjyliKA4
+	oj3bc1PM1O9PjUcQ31ujweQPNKr3ajwUEGh9nvW12ALU8p37a5C0QuqaNNe0Ei45y3q7QGvT59F7i
+	5O4N7EhW7qOM3hsLN5zMMbQ/NjJ4fPen1lcYnN1Uc4oHeCnyTtniItyAVBpW2IRhdAZBgy2lkBazR
+	WhRVN2GAvnEIZKtebMnjLlhud8BWDqNX1FDnQOjG6PlTpN1Xo/AIyTqmDrz68iVcGWC/sTKNN4mr+
+	EJNmzsyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNdOf-00DTW8-27;
-	Wed, 10 Jan 2024 18:33:49 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1rNg2Z-00EFCu-0B;
+	Wed, 10 Jan 2024 21:23:11 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNdOc-00DSy6-1w;
-	Wed, 10 Jan 2024 18:33:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=ygJO/yfS/kYURGo632XL+UAKC6HRU0bCt+QfkkSA/jQ=; b=Altj7fFEgmnst3pkUyvqp/ev10
-	l8KOLFzehOuc1jSUkQ/pKC5Dr5WSCqjyO67puXiqXG1Sz+x+DYTyX5m1XDJsdvqRFRJdccIXFuwtZ
-	f3qUcAw+XChvxpSGtvl7S7pfLiUaFbjj+Xh2mm6OKniuh+4h3rSm82IA/KeANy4uD3lgyUrGlgcyF
-	lQCz+bnsqvqzTHaGbcXe4jrGT1DPToEkIdTYVW9oRXAgc0gJxQ/fofdHYIA902JAW0+rMS/wQvQ3E
-	/FDlBX3atzL92Ci3v6VVOqAagyqzTsYJq57SCv1sASq7QTsfYPsFsATL+ejKr+3FsxbtfXePkCoy8
-	vxb/pohQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:40166)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1rNdMB-0005hi-25;
-	Wed, 10 Jan 2024 18:31:15 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1rNdM7-0005XE-DA; Wed, 10 Jan 2024 18:31:11 +0000
-Date: Wed, 10 Jan 2024 18:31:11 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Vladimir Oltean <olteanv@gmail.com>
-Subject: Re: [PATCH net-next 08/30] net: dsa: mt7530: change p{5,6}_interface
- to p{5,6}_configured
-Message-ID: <ZZ7ib5WWyH4TyirS@shell.armlinux.org.uk>
-References: <ZHy2jQLesdYFMQtO@shell.armlinux.org.uk>
- <0542e150-5ff4-5f74-361a-1a531d19eb7d@arinc9.com>
- <7c224663-7588-988d-56cb-b9de5b43b504@arinc9.com>
- <20230610175553.hle2josd5s5jfhjo@skbuf>
- <22fba48c-054d-ff0a-ae2c-b38f192b26f7@arinc9.com>
- <9308fa1a-6de3-490b-9aeb-eb207b0432df@arinc9.com>
- <9308fa1a-6de3-490b-9aeb-eb207b0432df@arinc9.com>
- <20240110142721.vuthnnwhmuvghiw4@skbuf>
- <b47311f8-315d-46d9-bd5b-757141708a3f@arinc9.com>
- <20240110180525.wwxkkoqam37oqm2f@skbuf>
+	id 1rNg2W-00EFBa-2l
+	for linux-mediatek@lists.infradead.org;
+	Wed, 10 Jan 2024 21:23:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2DE38618EA;
+	Wed, 10 Jan 2024 21:23:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 987E4C433C7;
+	Wed, 10 Jan 2024 21:23:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1704921784;
+	bh=U23M4BnqUmQe+FZ2LuryebH7D7fAcpk83TMAju7/hB8=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=pW1dcj1zvTnNRPfns6XF7nTb/HfRSXkkdg277b9w4HlSt/MGZ+sRontsI+MDrCrQA
+	 ecRE5ZHr/jADkYEJQKWBRPEyDgp98YJwPNkyjv7YAf9ltbUUWLYcQxf3/bn36DjSCU
+	 j2CIiud87RJT529EZfj24laCjFErXJ53QC6Fj6iezUUgJzPCvDDZmppw7hw5QMWPt3
+	 7FqTDPHmnRXQ803YjSj9r6DGexm4lb8+iCb6J0A5y9YsLe2TsAtMeuTkDQW0gmizep
+	 q20LAkMkwanoHrfPwVR3jdIZhX9b72nuZJidKSqhvTqSG+ciwNJm6h7Z7Vn9sw/LaG
+	 vOR9dtaWXwosw==
+Date: Wed, 10 Jan 2024 15:23:02 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	Vignesh Raghavendra <vigneshr@ti.com>, linux-omap@vger.kernel.org
+Subject: Re: mt7621 static check warning
+Message-ID: <20240110212302.GA2123146@bhelgaas>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240110180525.wwxkkoqam37oqm2f@skbuf>
+In-Reply-To: <CAMhs-H_7EovAntGwmDUDS3HNKV5H4w1UM=7cpk9GMi7Hi_kQVQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240110_103346_659590_7B7FE05A 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20240110_132308_976978_340C03CD 
+X-CRM114-Status: GOOD (  29.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,30 +68,128 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 10, 2024 at 08:05:25PM +0200, Vladimir Oltean wrote:
-> On Wed, Jan 10, 2024 at 08:15:20PM +0300, Arınç ÜNAL wrote:
-> > __builtin_return_address(1) doesn't seem to work. I'm running this on arm64.
-> 
-> I can't tell you why either, I'm sorry. I can just point to the
-> documentation, which does specify that "On some machines it may be
-> impossible to determine the return address of any function other than
-> the current one". If somebody knows what this depends on, feel free to
-> interject.
-> https://gcc.gnu.org/onlinedocs/gcc/Return-Address.html
-> 
-> On my NXP LS1028A (also arm64) plus clang-16 compiler, __builtin_return_address()
-> does work with multiple nesting levels.
+[+cc Vignesh for dra7xx snprintf issue and CONFIG_TI_PIPE3 question]
 
-gcc will probably need to be using frame pointers so it can walk the
-stack, if gcc even implements non-zero values to
-__builtin_return_address(). Without frame pointers, it would need an
-unwinder.
+On Wed, Jan 10, 2024 at 08:16:33AM +0100, Sergio Paracuellos wrote:
+> On Wed, Jan 10, 2024 at 12:51 AM Bjorn Helgaas <helgaas@kernel.org> wrote:
+> > FYI:
+> >
+> >   $ make W=1 drivers/pci/
+> >     CC      drivers/pci/controller/pcie-mt7621.o
+> >   drivers/pci/controller/pcie-mt7621.c: In function ‘mt7621_pcie_probe’:
+> >   drivers/pci/controller/pcie-mt7621.c:228:49: error: ‘snprintf’ output may be truncated before the last format character [-Werror=format-truncation=]
+> >     228 |         snprintf(name, sizeof(name), "pcie-phy%d", slot);
+> >         |                                                 ^
+> >   drivers/pci/controller/pcie-mt7621.c:228:9: note: ‘snprintf’ output between 10 and 11 bytes into a destination of size 10
+> >     228 |         snprintf(name, sizeof(name), "pcie-phy%d", slot);
+> >         |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> >
+> 
+> Would you be happy if I just increment the buffer as follows?
+> 
+> diff --git a/drivers/pci/controller/pcie-mt7621.c
+> b/drivers/pci/controller/pcie-mt7621.c
+> index 79e225edb42a..d97b956e6e57 100644
+> --- a/drivers/pci/controller/pcie-mt7621.c
+> +++ b/drivers/pci/controller/pcie-mt7621.c
+> @@ -202,7 +202,7 @@ static int mt7621_pcie_parse_port(struct mt7621_pcie *pcie,
+>         struct mt7621_pcie_port *port;
+>         struct device *dev = pcie->dev;
+>         struct platform_device *pdev = to_platform_device(dev);
+> -       char name[10];
+> +       char name[11];
+>         int err;
+> 
+>         port = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
+> 
+> Or should I use scnprintf instead? Since the statement is not using
+> function return value at all snprintf looks more correct and simpler
+> at a first glance.
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+I don't know enough to have an opinion, but grep says all similar
+cases in drivers/pci/ use snprintf(), so I guess I would follow the
+crowd.  If there's an argument for scnprintf() instead, we can convert
+them all at once.
+
+> diff --git a/drivers/pci/controller/pcie-mt7621.c
+> b/drivers/pci/controller/pcie-mt7621.c
+> index 79e225edb42a..0eae1b5b079e 100644
+> --- a/drivers/pci/controller/pcie-mt7621.c
+> +++ b/drivers/pci/controller/pcie-mt7621.c
+> @@ -225,7 +225,7 @@ static int mt7621_pcie_parse_port(struct mt7621_pcie *pcie,
+>                 return PTR_ERR(port->pcie_rst);
+>         }
+> 
+> -       snprintf(name, sizeof(name), "pcie-phy%d", slot);
+> +       scnprintf(name, sizeof(name), "pcie-phy%d", slot);
+>         port->phy = devm_of_phy_get(dev, node, name);
+>         if (IS_ERR(port->phy)) {
+>                 dev_err(dev, "failed to get pcie-phy%d\n", slot);
+> 
+> Both of them silence the warning, so let me know your preference here.
+> 
+> > I know we'll never actually hit this, but it'd be nice to clean this
+> > up, and I don't think it would really cost us anything.  I think it's
+> > currently the only "W=1" warning in drivers/pci/.
+> 
+> I am also getting this:
+> 
+> drivers/pci/controller/dwc/pci-dra7xx.c: In function ‘dra7xx_pcie_probe’:
+> drivers/pci/controller/dwc/pci-dra7xx.c:754:41: error: ‘%d’ directive
+> output may be truncated writing between 1 and 10 bytes into a region
+> of size 2 [-Werror=format-truncation=]
+>   754 |   snprintf(name, sizeof(name), "pcie-phy%d", i);
+>       |                                         ^~
+> drivers/pci/controller/dwc/pci-dra7xx.c:754:32: note: directive
+> argument in the range [0, 2147483646]
+>   754 |   snprintf(name, sizeof(name), "pcie-phy%d", i);
+>       |                                ^~~~~~~~~~~~
+> drivers/pci/controller/dwc/pci-dra7xx.c:754:3: note: ‘snprintf’ output
+> between 10 and 19 bytes into a destination of size 10
+>   754 |   snprintf(name, sizeof(name), "pcie-phy%d", i);
+>       |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Oh, thanks for this.  I didn't have CONFIG_TI_PIPE3=y in my .config,
+which CONFIG_PCI_DRA7XX depends on.
+
+I didn't go to the trouble of trying to figure out exactly what
+CONFIG_TI_PIPE3=y enables, but with the patch below, I *was* able to
+successfully build and link a kernel with:
+
+  CONFIG_COMPILE_TEST=y
+  CONFIG_PCI_DRA7XX=y
+  CONFIG_PCI_DRA7XX_HOST=y
+  CONFIG_PCI_DRA7XX_EP=y
+  # CONFIG_TI_PIPE3 is not set
+
+So maybe there's a way to write these dependencies in a way that would
+give us better compile-testing?
+
+Bjorn
+
+diff --git a/drivers/pci/controller/dwc/Kconfig b/drivers/pci/controller/dwc/Kconfig
+index 5ac021dbd46a..8b837b183981 100644
+--- a/drivers/pci/controller/dwc/Kconfig
++++ b/drivers/pci/controller/dwc/Kconfig
+@@ -376,7 +376,7 @@ config PCI_DRA7XX
+ config PCI_DRA7XX_HOST
+ 	tristate "TI DRA7xx PCIe controller (host mode)"
+ 	depends on SOC_DRA7XX || COMPILE_TEST
+-	depends on OF && HAS_IOMEM && TI_PIPE3
++	depends on OF && HAS_IOMEM
+ 	depends on PCI_MSI
+ 	select PCIE_DW_HOST
+ 	select PCI_DRA7XX
+@@ -392,7 +392,7 @@ config PCI_DRA7XX_HOST
+ config PCI_DRA7XX_EP
+ 	tristate "TI DRA7xx PCIe controller (endpoint mode)"
+ 	depends on SOC_DRA7XX || COMPILE_TEST
+-	depends on OF && HAS_IOMEM && TI_PIPE3
++	depends on OF && HAS_IOMEM
+ 	depends on PCI_ENDPOINT
+ 	select PCIE_DW_EP
+ 	select PCI_DRA7XX
 
