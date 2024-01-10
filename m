@@ -4,86 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D75DFC3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 09:55:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7905C3DA6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 10:36:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=T39FyNEwI6F/HZ7nRpTpZVn4jqVCtPlIlNVn7jkEgME=; b=GKjF2BVrYFAAL6TTBKoA2oWDZ8
-	U+7/QI5bFmfeaKHUftQvVmkk56xU/G5o+1pPiLjeH65Wf2Ndsyhmxfrt1ELEQO+bhtPjbexUsgn8I
-	EU+TlQtlEaLMn2oAB2o8KaSjZzJEbg5Nw5bUsczTSrjt/gTyfQO3yeEImy6G4TfVVWI6t3JGwqQMr
-	CMyQBjIx+NHBM7stmrLsdNDI9S4yJt1keXlWqTiRBfEPBsOVln8CVFoIBiJ056jvhx2tjvNKkYOz/
-	dEkXtKhVFOtpjodu96ZwJdlq/VUldlmQJOKBI08C/3z/b8K3VhYuAYGt6FBTQaPqhiW/rosgkbET6
-	J6aDVI1Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=H9BbTWhBscTrsdR6Pfy3gZxWfM3wIWmZeuQMxvBvAD0=; b=NJR1OzjmLE1Lnn+YysJd9otpIS
+	MjCthvIdxH0ComGjox3gC4qRy+82+720Z9DKvI6LJrlF4M6W12FHDEu4Uyc+7R284vgjkjmL70kYg
+	TEKMITv6lI63T9/9g3ZdXwT9EVxfbhSkHBM50ykqjDx6u1RjkpPUaulUB+W9EGXmD9xTEU/yQDlUe
+	jAnZisHty/KzHxnyENiWrQnvs61Dnyy5iiL4igYtgVLQgcWisdXh/T9sgght1AiR3zAPKG/NtOHgK
+	fymT1nsfn+ftHkVlgrgvPyvYGvu7jOZdUGsc6XwzUaEYvo41z0rezTnd4KZs2h4V/bB+7d0oaN0IK
+	1m6suXaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNVJK-00AwGS-2S;
-	Wed, 10 Jan 2024 09:55:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rNVx7-00B45M-17;
+	Wed, 10 Jan 2024 10:36:53 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNVJH-00AwFZ-29
-	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Jan 2024 09:55:44 +0000
-X-UUID: 66bed3f0af9e11ee9a662f17bb45267e-20240110
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=T39FyNEwI6F/HZ7nRpTpZVn4jqVCtPlIlNVn7jkEgME=;
-	b=L3rJUk2F6vqgZu3dmzKcUFAf9JmfBPF0X/c0kDsXh+125CYKj71TBsroVjD9mBe9L11t9ZAZzqDw57fksRm+excK6MIrHSaljpamkluD22SfHF4RAR1jV+NfwHUvVJFyiNDBpRoMcsdcH6gYLgWvzdxj8O/OTS8AHD0FBrBeNDM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:ce039376-b74e-4570-b763-a0818362bb62,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:8b11327f-4f93-4875-95e7-8c66ea833d57,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 66bed3f0af9e11ee9a662f17bb45267e-20240110
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2068038638; Wed, 10 Jan 2024 02:55:35 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 10 Jan 2024 17:55:02 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 10 Jan 2024 17:55:02 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Eric-SY.Chang@mediatek.com>, <km.lin@mediatek.com>,
-	<robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
-	<Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
-	<mingyen.hsieh@mediatek.com>
-Subject: [PATCH v3] wifi: mt76: mt7925: fix the wrong data type for scan command
-Date: Wed, 10 Jan 2024 17:54:57 +0800
-Message-ID: <20240110095457.11951-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1rNVx2-00B446-2y;
+	Wed, 10 Jan 2024 10:36:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id CF035CE1B4F;
+	Wed, 10 Jan 2024 10:36:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21E85C43399;
+	Wed, 10 Jan 2024 10:36:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1704883005;
+	bh=wyOV/LJsR4E42qHMH4S9CWfQEeQYMZb2sHN/hq7z69s=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=DfqxjOAzvmxxlrtfgjsBWM5kOd9J6DM1J4iR8UoturW00QX+6YM0H8absFofzutoI
+	 IKpGFWtQcpipJDvG2R6Z3+Juv7HqxX61c85UD2onEh640uArHaDqIuCUE4+68wxPfi
+	 nBpeUlRh74VF9V6M7Maf5lK7qDwFIerJ7WYMHA07mBPJ5DxEvrheqV0Kn51o1bZ1AF
+	 ZVQVIQFPSRwzdwoK1bH7A9d/WnTpcoWIi6VBK61a5hTusaerrH9NNyZv2Uk0fmUJj1
+	 2UHz4KFa4AuKOU3x9etbWTHuQ97+r/SkaRyFSrDm04n4Tq7iQ8puOFBw5cSmrEuZAP
+	 nDIESOy+HJ1Gg==
+Date: Wed, 10 Jan 2024 10:36:39 +0000
+From: Conor Dooley <conor@kernel.org>
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Jason-ch Chen <jason-ch.chen@mediatek.com>,
+	Johnson Wang <johnson.wang@mediatek.com>,
+	Singo Chang <singo.chang@mediatek.com>,
+	Nancy Lin <nancy.lin@mediatek.com>,
+	Shawn Sung <shawn.sung@mediatek.com>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v2 2/4] dt-bindings: mailbox: mediatek: gce-mailbox: Add
+ reference to gce-props.yaml
+Message-ID: <20240110-grumbling-tattling-0202fc5e21f2@spud>
+References: <20240110063532.14124-1-jason-jh.lin@mediatek.com>
+ <20240110063532.14124-3-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--0.277500-8.000000
-X-TMASE-MatchedRID: dHqkmzbglWZIQkQ+2Oh2tcAmcZEx8XHJMVx/3ZYby79b6PBUqmq+UlO4
-	BD7nLMxns8CcQmOfNJ/cFPFR1xoqQh8TzIzimOwP0C1sQRfQzEHEQdG7H66TyN+E/XGDLHcMTcV
-	YJ/W0+IfQwa+VkK70gBRfQH7W22PyeFJEhPOce+XHT0feGj9sxPyVjEKMi9OXNlo6G1fYocNl75
-	UwE60dAf2Zr4ZzVe8ZjofsMjQaxVwyYjbiqIQ3CsykhtyXcigD6rVdgBjDT2oh1j2M6LiVMg==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--0.277500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: A135D5F670C88D2A372A26A7F1C56D4384ACC8B9DB37747C26561D84A13ACF642000:8
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="UHPsus4u3u0dm8mG"
+Content-Disposition: inline
+In-Reply-To: <20240110063532.14124-3-jason-jh.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240110_015543_723160_73EF54B1 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20240110_023649_314082_5573E809 
+X-CRM114-Status: GOOD (  17.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,35 +86,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-For the member of 'struct scan_req_tlv', replace data type of
-func_mask_ext from 'u8' to '__le32'.
+--UHPsus4u3u0dm8mG
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
----
-v2:
- change the data type from 'u32' to '__le32'.
-v3:
- remove redundant "Change-Id tag" in commit message.
----
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Wed, Jan 10, 2024 at 02:35:30PM +0800, Jason-JH.Lin wrote:
+> 1. Add "Provider" to the title to make it clearer.
+> 2. Add reference to gce-props.yaml for adding mediatek,gce-events propert=
+y.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-index 3c41e21303b1..98cb705e7423 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-@@ -208,7 +208,7 @@ struct scan_req_tlv {
- 	__le16 channel_dwell_time; /* channel Dwell interval */
- 	__le16 timeout_value;
- 	__le16 probe_delay_time;
--	u8 func_mask_ext;
-+	__le32 func_mask_ext;
- };
- 
- struct scan_ssid_tlv {
--- 
-2.18.0
+I can see this from the diff. There's still no explanation here as to
+why the mailbox provider needs to have a gce-event id. NAK until you can
+explain that.
 
+Cheers,
+Conor.
+
+>=20
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> ---
+>  .../devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml   | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailb=
+ox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.ya=
+ml
+> index cef9d7601398..728dc93117a6 100644
+> --- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+> +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+> @@ -4,7 +4,7 @@
+>  $id: http://devicetree.org/schemas/mailbox/mediatek,gce-mailbox.yaml#
+>  $schema: http://devicetree.org/meta-schemas/core.yaml#
+> =20
+> -title: Mediatek Global Command Engine Mailbox
+> +title: MediaTek Global Command Engine Mailbox Provider
+> =20
+>  maintainers:
+>    - Houlong Wei <houlong.wei@mediatek.com>
+> @@ -57,6 +57,8 @@ required:
+>    - clocks
+> =20
+>  allOf:
+> +  - $ref: mediatek,gce-props.yaml
+> +
+>    - if:
+>        not:
+>          properties:
+> @@ -67,7 +69,7 @@ allOf:
+>        required:
+>          - clock-names
+> =20
+> -additionalProperties: false
+> +unevaluatedProperties: false
+> =20
+>  examples:
+>    - |
+> --=20
+> 2.18.0
+>=20
+
+--UHPsus4u3u0dm8mG
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZZ5zNwAKCRB4tDGHoIJi
+0kjpAP9Yk36rZPZIu4QvFIRWcWvj+BIgAH03XRGq39GAwZCtNQEAlW83e29Zc5Ld
+FJrUZnZshBfMyq32x1MacvUWrJoDsQc=
+=ngct
+-----END PGP SIGNATURE-----
+
+--UHPsus4u3u0dm8mG--
 
