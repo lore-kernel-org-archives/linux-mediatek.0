@@ -4,91 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC47EC4707C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 15:41:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D4C1C4707C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 15:52:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KsR/ATrfPdIgLGIZ2coCrOAOA9UzCcQEuLMVPEYRm48=; b=HuqL62guyJl4dy+Ze+jaIw9Jvf
-	QbUu0uQjLG7JULwg0fgESuv6NQwksLIez31zwoc/BC9nbHcwLZ0yCj1XQ00yA33AA1qbcgKoEwHtw
-	xpK9GYwzMi50Po94zDwG3nwlmctqg0H/5cmaj715O1iAyu0RThQFCWChoPZaaoiT/EAh2uQcNbhTF
-	1fmRgvWFsaIKh6qXLok50nYQiQcQb8M5BRctWs2/z9qYlOu8BFfsJ2/WNdVPYjwgIykn3I1icIWMV
-	r+rlvi0J1325/mVmMRz8u4XK1f+jw+e3BxkBWUlVoIZkhildfm/FrgyBUUWlvQM5Ed/1HdE0ZL0xe
-	ppAk9m2g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=biuspGH8XRrmsRxtjUDtNrCdanOfOuJyi8se9k7muB0=; b=fdZsC3F3IDvZCwpEwuVJD2ZGa6
+	Cox+Fqzezwj1Jcs3ToH7w3vwS8h8OhUAojO2ttgV4qbcxEdhXiGkvDg0VhiGiuHWSXrrvMCsdKvWt
+	ivfH0q0haYJ3TisSeM1c1uL+hSUFwPnuPyx8qgPiD2L1s6oTz2cRACjF0WeyMY5Hk16iWEJ3eCDlQ
+	BFlvoDZE+FssBGgW+2VDhev5IotXe6JOXYm4UjZR281M7kVokrTSNyRT6L4YrPydBJdDmO8dv0sEp
+	26PKhvkG6Fyax9vnFPfq7fXBItO+kjuTUgZkHlaxFqaw3lFz8FoOHtVjPwOOeBKJXdMxsvCNCQdVr
+	ckhWgtww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNaiL-00CeYV-23;
-	Wed, 10 Jan 2024 15:41:57 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1rNasA-00ChXa-0I;
+	Wed, 10 Jan 2024 15:52:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNaiH-00CeWh-3C;
-	Wed, 10 Jan 2024 15:41:55 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-a29058bb2ceso466012866b.0;
-        Wed, 10 Jan 2024 07:41:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704901310; x=1705506110; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=KsR/ATrfPdIgLGIZ2coCrOAOA9UzCcQEuLMVPEYRm48=;
-        b=Ca6JjzM5DFpb0LN2h4iXP5S8xJ/N5q/0npVzoDK7xt4XHC+DPCowZoJyihVo84Yl5F
-         +zPs5d0rMz4IzLTakUkFK56lokXaGFgixQhURY+EhDAzV48WWtq1jOmnDvl5CI/dbgcw
-         fmHRzGVdUIO1+NWFRszlXnPFnl3EONa0z1CbCwMrIo4Xlcu8eRaSkbSnpcs+1SsAKDFc
-         TOpPO8vBV6qnZEKrTw1jl+hs0R/jtV6En4NRTCiNoKA+nT0GqK0rsb2WxU21FWg0UAYo
-         bTIHbxv3HC3DBGqA7ywoLAU7ZRZXvykNYnl1KqwfFazp7rnZnoPGuOzNzJfSI1qD9ZvN
-         Ggcg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704901310; x=1705506110;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=KsR/ATrfPdIgLGIZ2coCrOAOA9UzCcQEuLMVPEYRm48=;
-        b=I39esZKJaF7Re/HmcWj7rC5bOmUr20V5dg7wy7pn4huKRPupqxX+1zeBUmYABRF8MM
-         nxfDXvMRAtPBNyEFGTk9aijvqUz+BKk0ZsxjdaukjLIlvTeypbY6zC9BKNBJNayNVvpP
-         O7Vv0x6HlPTyqGlXV5th28y7L9pQOn6hvx28Glz8Iln7YbootDRSFwEPp2kt/PX16wWz
-         QCEd1a284j9D0WUtjaUwn6ji5W8iLzpo2czJ8S7TXQklk7SIRh5ogo0rF/xabyvkPPfY
-         ylMNFLr+X8xksgs0KzSD6877VKCK++rbop6s5jqwiDFyLAdbmkcu8ocoJXMKdxQZVj8s
-         j4qw==
-X-Gm-Message-State: AOJu0Yyorw2ZER67ezquoT1KwzR7VBjP6svxSlm+JK24vOrckOvZ1A+7
-	hWm3xltcYf3WeWtCkdPFdpo=
-X-Google-Smtp-Source: AGHT+IEpzs8YcWbD9Zfpq1vhLm5OkWGSL3+lkBeN5CTV4dvVJhPvEdFa+MGe40p0nNRxX1INZDFyPQ==
-X-Received: by 2002:a17:907:6016:b0:a28:a79e:7f5b with SMTP id fs22-20020a170907601600b00a28a79e7f5bmr362566ejc.221.1704901309935;
-        Wed, 10 Jan 2024 07:41:49 -0800 (PST)
-Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.googlemail.com with ESMTPSA id g19-20020a170906349300b00a2a2426728bsm2223958ejb.178.2024.01.10.07.41.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 10 Jan 2024 07:41:49 -0800 (PST)
-Message-ID: <557cf463-5ffa-4d81-8b38-44f610b26163@gmail.com>
-Date: Wed, 10 Jan 2024 16:41:47 +0100
+	id 1rNas6-00ChUQ-10;
+	Wed, 10 Jan 2024 15:52:04 +0000
+X-UUID: 2d4cfc14afd011ee9a662f17bb45267e-20240110
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=biuspGH8XRrmsRxtjUDtNrCdanOfOuJyi8se9k7muB0=;
+	b=qV47iH2xHmewp2WiyCyJFsCnmWVaup97ro78j9A9hFJn4mheuRJFiE72UQm9MguahzNQoGxOci5t47ibsr6iM/v02ztVFgtloZCJ2wlJAyOgLmEj77EAaVbzcdGiMGb+ECC1M588KK4W9fVJ7ruRoA0QbE47+xx3r5KQBSvPfOI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35,REQID:03094ea5-b964-447e-98be-96ffc6424a9b,IP:0,U
+	RL:0,TC:0,Content:56,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:56
+X-CID-META: VersionHash:5d391d7,CLOUDID:9c32b482-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:801|102,TC:nil,Content:3,EDM:-3,IP:n
+	il,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR
+	:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 2d4cfc14afd011ee9a662f17bb45267e-20240110
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 72977279; Wed, 10 Jan 2024 08:51:54 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 10 Jan 2024 23:51:51 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 10 Jan 2024 23:51:51 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>
+CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Jason-ch Chen
+	<jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang
+	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung
+	<shawn.sung@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH 2/2] mailbox: mtk-cmdq: Add set GCE thread timeout interface
+Date: Wed, 10 Jan 2024 23:51:48 +0800
+Message-ID: <20240110155148.6383-3-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240110155148.6383-1-jason-jh.lin@mediatek.com>
+References: <20240110155148.6383-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: Add initial MT7981B and Xiaomi
- AX3000T
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: Daniel Golle <daniel@makrotopia.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
- =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
- jason-ch chen <Jason-ch.Chen@mediatek.com>,
- Macpaul Lin <macpaul.lin@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20240110095118.25598-1-zajec5@gmail.com>
- <20240110095118.25598-2-zajec5@gmail.com>
- <34bda5e0-0587-459b-b31c-46112b1b10fa@collabora.com>
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-In-Reply-To: <34bda5e0-0587-459b-b31c-46112b1b10fa@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240110_074154_032901_AD2B7238 
-X-CRM114-Status: GOOD (  19.88  )
+X-CRM114-CacheID: sfid-20240110_075202_375705_F1F13062 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,125 +91,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10.01.2024 14:38, AngeloGioacchino Del Regno wrote:
-> Il 10/01/24 10:51, Rafał Miłecki ha scritto:
->> From: Rafał Miłecki <rafal@milecki.pl>
->>
->> MT7981B (AKA MediaTek Filogic 820) is a dual-core ARM Cortex-A53 SoC.
->> One of market devices using this SoC is Xiaomi AX3000T.
->>
->> This is initial contribution with basic SoC support. More hardware block
->> will get added later. Some will need their bindings (like auxadc).
->>
->> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
->> ---
->>   arch/arm64/boot/dts/mediatek/Makefile         |   1 +
->>   .../dts/mediatek/mt7981b-xiaomi-ax3000t.dts   |  15 +++
->>   arch/arm64/boot/dts/mediatek/mt7981b.dtsi     | 108 ++++++++++++++++++
->>   3 files changed, 124 insertions(+)
->>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7981b-xiaomi-ax3000t.dts
->>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7981b.dtsi
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
->> index 0a189d5d8006..8bff11acfe1f 100644
->> --- a/arch/arm64/boot/dts/mediatek/Makefile
->> +++ b/arch/arm64/boot/dts/mediatek/Makefile
->> @@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
->> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7981b-xiaomi-ax3000t.dtb
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtbo
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
->> diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-xiaomi-ax3000t.dts b/arch/arm64/boot/dts/mediatek/mt7981b-xiaomi-ax3000t.dts
->> new file mode 100644
->> index 000000000000..a314c3e05e50
->> --- /dev/null
->> +++ b/arch/arm64/boot/dts/mediatek/mt7981b-xiaomi-ax3000t.dts
->> @@ -0,0 +1,15 @@
->> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
->> +
->> +/dts-v1/;
->> +
->> +#include "mt7981b.dtsi"
->> +
->> +/ {
->> +    compatible = "xiaomi,ax3000t", "mediatek,mt7981b";
->> +    model = "Xiaomi AX3000T";
->> +
->> +    memory@40000000 {
->> +        reg = <0 0x40000000 0 0x10000000>;
->> +        device_type = "memory";
->> +    };
->> +};
->> diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
->> new file mode 100644
->> index 000000000000..ce878ad55204
->> --- /dev/null
->> +++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
->> @@ -0,0 +1,108 @@
->> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
->> +
->> +#include <dt-bindings/clock/mediatek,mt7981-clk.h>
->> +#include <dt-bindings/interrupt-controller/arm-gic.h>
->> +
->> +/ {
->> +    compatible = "mediatek,mt7981b";
->> +    interrupt-parent = <&gic>;
->> +    #address-cells = <2>;
->> +    #size-cells = <2>;
->> +
->> +    cpus {
->> +        #address-cells = <1>;
->> +        #size-cells = <0>;
->> +
->> +        cpu@0 {
->> +            compatible = "arm,cortex-a53";
->> +            reg = <0x0>;
->> +            device_type = "cpu";
->> +            enable-method = "psci";
->> +        };
->> +
->> +        cpu@1 {
->> +            compatible = "arm,cortex-a53";
->> +            reg = <0x1>;
->> +            device_type = "cpu";
->> +            enable-method = "psci";
->> +        };
->> +    };
->> +
->> +    oscillator-40m {
->> +        compatible = "fixed-clock";
->> +        clock-frequency = <40000000>;
->> +        clock-output-names = "clkxtal";
->> +        #clock-cells = <0>;
->> +    };
->> +
->> +    psci {
->> +        compatible = "arm,psci-0.2";
-> 
-> PSCI 0.2? I invite you to check a kernel log for a string like this one:
-> 
-> `PSCIv%d.%d detected in firmware`
-> ...because of course if it says v1.0, this should be "arm,psci-1.0".
-> 
-> This is just a nitpick anyway, so you can already get my
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-> P.S.: but please, confirm or deny that PSCI thing ASAP :-)
-> P.P.S.: For next time - I'd be happy if you could add a cover letter to your
-> patch series..!
+Add cmdq_mbox_set_thread_timeout() to configue interrupt timeout
+for the GCE thread used by CMDQ client drivers.
 
-You were right, good catch!
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c       | 11 +++++++++++
+ include/linux/mailbox/mtk-cmdq-mailbox.h |  1 +
+ 2 files changed, 12 insertions(+)
 
-[    0.000000] psci: probing for conduit method from DT.
-[    0.000000] psci: PSCIv1.1 detected in firmware.
-[    0.000000] psci: Using standard PSCI v0.2 function IDs
-[    0.000000] psci: MIGRATE_INFO_TYPE not supported.
-[    0.000000] psci: SMC Calling Convention v1.0
-
-I'll fix that in V2. Thanks!
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 89567f837513..9c0b5a43bf9f 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -122,6 +122,17 @@ u8 cmdq_get_shift_pa(struct mbox_chan *chan)
+ }
+ EXPORT_SYMBOL(cmdq_get_shift_pa);
+ 
++void cmdq_mbox_set_thread_timeout(void *chan, u32 timeout)
++{
++	struct cmdq_thread *thread = ((struct mbox_chan *)chan)->con_priv;
++	unsigned long flags;
++
++	spin_lock_irqsave(&thread->chan->lock, flags);
++	thread->timeout_ms = timeout;
++	spin_unlock_irqrestore(&thread->chan->lock, flags);
++}
++EXPORT_SYMBOL(cmdq_mbox_set_thread_timeout);
++
+ static int cmdq_thread_suspend(struct cmdq *cmdq, struct cmdq_thread *thread)
+ {
+ 	u32 status;
+diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+index 4973b2ec37db..59c9f8ebd01f 100644
+--- a/include/linux/mailbox/mtk-cmdq-mailbox.h
++++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+@@ -82,5 +82,6 @@ struct cmdq_pkt {
+ };
+ 
+ u8 cmdq_get_shift_pa(struct mbox_chan *chan);
++void cmdq_mbox_set_thread_timeout(void *chan, u32 timeout);
+ 
+ #endif /* __MTK_CMDQ_MAILBOX_H__ */
+-- 
+2.18.0
 
 
