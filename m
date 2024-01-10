@@ -4,70 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A79BC3DA6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 11:16:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 285DAC4707B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jan 2024 11:30:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:To:From:Subject
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=esqVAeFguK1WuZvtxZXY5PD9UqDdBuwkKAf6r4Z6RBA=; b=ONJrqLjkceWxNh
-	oGALw5q+Z0l4GMhtNWtSgXNrzuP7q6oIYXdTDtDGfnCD4fCnoqzBqSBwGVubtXSBcVDi4AiHdoVnw
-	emhapuxDpz6qf9qp+2E6Qh7lhGgS5sY/ntqolP8BtcDuzWbeCIiAWA8iUamYft0ftqlTBsHjzaZKD
-	Pj2snaj4LUYVg2t5NAj1l4Np2ABYBAdVdrjv/1/TMgYkJWra8qHOCEDnZeUTYcxSpTdan0tu0BJTu
-	dVqqSe0QVysVu0zyhNR7LC9uEOTd1Ge7/kf1OPMCD6ZLqDvV5PaULDUb2LO9bI3va7tRa2wpNWtMw
-	1sIgYh0/8NU+GnrOwDIg==;
+	List-Owner; bh=CSqO5eCZ27MS2fADuP5ThwfLEsbc8s+DlvDx2BBPL9k=; b=b98wlp1w3sTqIb
+	HRJveECo1BjpigCngDk1MubKiMOuLk3X7T/Jzw8YSHNBuLElMDN78ZVz9hT6qW8lMLiWoxG6UY02w
+	8dBbKtJxl9NIG0EadbWJ7Tr/ifF9kvMt4iqUl6ya2EHZjknXfImTJu4hqWf+c6lPTFnrW+BB/xYwJ
+	2kdMTQM7kHT+MpEq9zwkT9pSwSQoz0RCQTfyYu7cfpevq0xGsmbvhlbt66RRMsrLZJiwwXXr8GmnV
+	P3UjQaz5W17yZ7VHEktGxaHHxEJkh6OGLqZo7h14iPsW+/K3R9uozD7GeAA9Wiuj4rtLyzlmikcGF
+	tXeAmq/bypKqngzaDxTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNWZG-00BAYi-1Z;
-	Wed, 10 Jan 2024 11:16:18 +0000
-Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
+	id 1rNWmi-00BK5x-1x;
+	Wed, 10 Jan 2024 11:30:12 +0000
+Received: from relay6-d.mail.gandi.net ([217.70.183.198])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNWZA-00BAVu-1r;
-	Wed, 10 Jan 2024 11:16:15 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 83115FF809;
-	Wed, 10 Jan 2024 11:15:59 +0000 (UTC)
+	id 1rNWme-00BJzu-1m;
+	Wed, 10 Jan 2024 11:30:10 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 36DB0C0004;
+	Wed, 10 Jan 2024 11:29:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1704885365;
+	t=1704886204;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=esqVAeFguK1WuZvtxZXY5PD9UqDdBuwkKAf6r4Z6RBA=;
-	b=Lpkh2SCb+qZtcgGcqghZA9pk/9RmHEpOG6N3CxfbO1NQFSZbSkqMhx5HhPHY9cRK5I/z3L
-	JtnbQYLM2iO/BMSfhp5nmNBWYmFvJtCz/rp7qBt/+hq20CHfPbl49VsHRdFTpedWrlugdR
-	yychWVEjI/VznMOXiZsVtOH1KAGtbzOqGFVA20396iXKc4v4Qmc68HZKiN+v6w6j2s/Giy
-	cgJguxkCqEuUvuT5vIzCswQZMwzkvatSP/403HWNH9HDPoW5YOuTRxTtXQN0BMCX/wdyJh
-	tnIBRMuz7OERq0JGUe+3fS9vI8yWCwPwtCNXIgQ/sfz9lBjQGPnxisqaf+o/NQ==
-Message-ID: <9308fa1a-6de3-490b-9aeb-eb207b0432df@arinc9.com>
-Date: Wed, 10 Jan 2024 14:15:57 +0300
+	bh=CSqO5eCZ27MS2fADuP5ThwfLEsbc8s+DlvDx2BBPL9k=;
+	b=Tzfpi8yuk+TImYcUywQQIvFFpb91SjmS/Ouw4VxsSkKzJYC8O8pINGX9ZiuhuFPx76S8MP
+	U0Wi4gkUhaAaxwL5hPdzb50wFg23My4q65d4VZlhj4qID9HOZ7DiFQnQqnmVC+T89ofRpM
+	dUA4DVECweXkce6hnMN8egguyQviZZSAmR+M6WthOF75YBd0tnqDw5ejsZAup7Ie11i1Uu
+	UFNdQwyX15P67nNAfNJPcVnkTfGxZuXGjKmN28/kHW4fU8a6vu+mo1m21ASjCqVe/Lwm+g
+	5Q+t4YJQJne3IgPPWP9IW8vFuddLKx4pyL0EGJGiuN/A9ca9hxoV1sIEj3FjNw==
+Message-ID: <ad2df325-2a48-4a81-be13-be8230b7aa8a@arinc9.com>
+Date: Wed, 10 Jan 2024 14:29:57 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 08/30] net: dsa: mt7530: change p{5,6}_interface
- to p{5,6}_configured
+Subject: Re: [PATCH net-next v2 6/7] net: dsa: mt7530: do not set
+ priv->p5_interface on mt7530_setup_port5()
 Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 To: Vladimir Oltean <olteanv@gmail.com>
-References: <826fd2fc-fbf8-dab7-9c90-b726d15e2983@arinc9.com>
- <ZHyA/AmXmCxO6YMq@shell.armlinux.org.uk>
- <20230604125517.fwqh2uxzvsa7n5hu@skbuf>
- <ZHyMezyKizkz2+Wg@shell.armlinux.org.uk>
- <d269ac88-9923-c00c-8047-cc8c9f94ef2c@arinc9.com>
- <ZHyqI2oOI4KkvgB8@shell.armlinux.org.uk>
- <ZHy1C7wzqaj5KCmy@shell.armlinux.org.uk>
- <ZHy2jQLesdYFMQtO@shell.armlinux.org.uk>
- <0542e150-5ff4-5f74-361a-1a531d19eb7d@arinc9.com>
- <7c224663-7588-988d-56cb-b9de5b43b504@arinc9.com>
- <20230610175553.hle2josd5s5jfhjo@skbuf>
- <22fba48c-054d-ff0a-ae2c-b38f192b26f7@arinc9.com>
-In-Reply-To: <22fba48c-054d-ff0a-ae2c-b38f192b26f7@arinc9.com>
+References: <20231227044347.107291-1-arinc.unal@arinc9.com>
+ <20231227044347.107291-7-arinc.unal@arinc9.com>
+ <20240104154241.rxjins4mi5zkbhia@skbuf>
+ <f9ad000a-2e42-4ddf-89a4-9a3ff452dc4b@arinc9.com>
+ <2793938a-91e1-419d-a011-850756177e31@arinc9.com>
+ <20240109115115.yuct3yw4oy6ipd3i@skbuf>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20240109115115.yuct3yw4oy6ipd3i@skbuf>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240110_031613_483273_542902CE 
-X-CRM114-Status: GOOD (  16.72  )
+X-CRM114-CacheID: sfid-20240110_033008_731018_CD0D3789 
+X-CRM114-Status: GOOD (  13.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,117 +73,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, "Russell King \(Oracle\)" <linux@armlinux.org.uk>, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, Russell King <linux@armlinux.org.uk>, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, mithat.guner@xeront.com, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11.06.2023 10:23, Arınç ÜNAL wrote:
-> 
-> On 10.06.2023 20:55, Vladimir Oltean wrote:
->> On Sat, Jun 10, 2023 at 01:57:27PM +0300, Arınç ÜNAL wrote:
->>> I was able to confirm all user ports of the MT7531BE switch transmit/receive
->>> traffic to/from the SGMII CPU port and computer fine after getting rid of
->>> priv->info->cpu_port_config().
->>>
->>> Tried all user ports being affine to the RGMII CPU port, that works too.
->>>
->>> https://github.com/arinc9/linux/commit/4e79313a95d45950cab526456ef0030286ba4d4e
+On 9.01.2024 14:51, Vladimir Oltean wrote:
+> On Tue, Jan 09, 2024 at 02:42:45PM +0300, Arınç ÜNAL wrote:
+>> Running mt7530_setup_port5() from mt753x_phylink_mac_config() multiple
+>> times is being prevented which shouldn't be done. That's because of a
+>> different reason involving MT7531. I will deal with this with a later
+>> patch.
 >>
->> Did you do black-box testing after removing the code, or were you
->> also able to independently confirm that the configurations done by
->> cpu_port_config() were later overwritten? I'm trying to disambiguate
->> between "works by coincidence" and "works because the analysis was
->> correct".
+>> I intend to put this on the patch log.
 > 
-> I did my testing, merely to make sure we didn't miss anything as Russell already stated that the configuration from cpu_port_config() is later overwritten.
-> 
-> I could put some dev_info around to confirm the code path that overwrites the configuration.
+> Still not clear why it shouldn't be done. Ideally you could come up with
+> a plausible hypothesis as to why it's there in the first place, and why
+> it's not needed.
 
-I have finally tested this.
+I can't tell why it's there. Russell did analyse why it's not needed [1]
+and my test [2] confirms it.
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index a4468468b53c..7b60a67d016a 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -968,9 +968,11 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
-  
-  	/* Setup max capability of CPU port at first */
-  	if (priv->info->cpu_port_config) {
-+		dev_info(priv->dev, "running cpu_port_config()\n");
-  		ret = priv->info->cpu_port_config(ds, port);
-  		if (ret)
-  			return ret;
-+		dev_info(priv->dev, "cpu_port_config() ran\n");
-  	}
-  
-  	/* Enable Mediatek header mode on the cpu port */
-@@ -1024,6 +1026,9 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
-  		   priv->ports[port].pm);
-  	mt7530_clear(priv, MT7530_PMCR_P(port), PMCR_LINK_SETTINGS_MASK);
-  
-+	if ((port == 5 || port == 6) && dsa_port_is_cpu(dp))
-+		dev_info(priv->dev, "MT7530_PMCR_P%d PMCR_LINK_SETTINGS_MASK is cleared\n", port);
-+
-  	mutex_unlock(&priv->reg_mutex);
-  
-  	return 0;
-@@ -2693,6 +2698,9 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
-  	mcr_new |= PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | PMCR_BACKOFF_EN |
-  		   PMCR_BACKPR_EN | PMCR_FORCE_MODE_ID(priv->id);
-  
-+	if ((port == 5 && dsa_is_cpu_port(ds, 5)) || (port == 6 && dsa_is_cpu_port(ds, 6)))
-+		dev_info(priv->dev, "MT7530_PMCR_P%d PMCR_CPU_PORT_SETTING equivalent is set\n", port);
-+
-  	/* Are we connected to external phy */
-  	if (port == 5 && dsa_is_user_port(ds, 5))
-  		mcr_new |= PMCR_EXT_PHY;
-@@ -2760,6 +2768,9 @@ static void mt753x_phylink_mac_link_up(struct dsa_switch *ds, int port,
-  	}
-  
-  	mt7530_set(priv, MT7530_PMCR_P(port), mcr);
-+
-+	if ((port == 5 && dsa_is_cpu_port(ds, 5)) || (port == 6 && dsa_is_cpu_port(ds, 6)))
-+		dev_info(priv->dev, "MT7530_PMCR_P%d PMCR_LINK_SETTINGS_MASK equivalent is set\n", port);
-  }
-  
-  static int
-@@ -2796,6 +2807,9 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
-  
-  	mt7530_write(priv, MT7530_PMCR_P(port),
-  		     PMCR_CPU_PORT_SETTING(priv->id));
-+
-+	dev_info(priv->dev, "MT7530_PMCR_P%d PMCR_CPU_PORT_SETTING is set\n", port);
-+
-  	mt753x_phylink_mac_link_up(ds, port, MLO_AN_FIXED, interface, NULL,
-  				   speed, DUPLEX_FULL, true, true);
-  
+This patch is about removing the unnecessary setting of priv->p5_interface
+on mt7530_setup_port5() which I believe I have already explained. I would
+like to get into the details of priv->p5_interface and priv->p6_interface
+when I remove them along with cpu_port_config().
 
-[    1.763066] mt7530-mdio mdio-bus:00: running cpu_port_config()
-[    1.769237] mt7530-mdio mdio-bus:00: MT7530_PMCR_P5 PMCR_CPU_PORT_SETTING is set
-[    1.776724] mt7530-mdio mdio-bus:00: MT7530_PMCR_P5 PMCR_LINK_SETTINGS_MASK equivalent is set
-[    1.785254] mt7530-mdio mdio-bus:00: cpu_port_config() ran
-[    1.792098] mt7530-mdio mdio-bus:00: running cpu_port_config()
-[    1.798019] mt7530-mdio mdio-bus:00: MT7530_PMCR_P6 PMCR_CPU_PORT_SETTING is set
-[    1.805502] mt7530-mdio mdio-bus:00: MT7530_PMCR_P6 PMCR_LINK_SETTINGS_MASK equivalent is set
-[    1.814023] mt7530-mdio mdio-bus:00: cpu_port_config() ran
-[    1.844941] mt7530-mdio mdio-bus:00: MT7530_PMCR_P5 PMCR_LINK_SETTINGS_MASK is cleared
-[    1.852972] mt7530-mdio mdio-bus:00: configuring for fixed/rgmii link mode
-[    1.859944] mt7530-mdio mdio-bus:00: MT7530_PMCR_P5 PMCR_CPU_PORT_SETTING equivalent is set
-[    1.868658] mt7530-mdio mdio-bus:00: MT7530_PMCR_P5 PMCR_LINK_SETTINGS_MASK equivalent is set
-[    1.868913] mt7530-mdio mdio-bus:00: MT7530_PMCR_P6 PMCR_LINK_SETTINGS_MASK is cleared
-[    1.877190] mt7530-mdio mdio-bus:00: Link is Up - 1Gbps/Full - flow control rx/tx
-[    1.885179] mt7530-mdio mdio-bus:00: configuring for fixed/2500base-x link mode
-[    1.899973] mt7530-mdio mdio-bus:00: MT7530_PMCR_P6 PMCR_CPU_PORT_SETTING equivalent is set
-[    1.910147] mt7530-mdio mdio-bus:00: MT7530_PMCR_P6 PMCR_LINK_SETTINGS_MASK equivalent is set
-[    1.918681] mt7530-mdio mdio-bus:00: Link is Up - 2.5Gbps/Full - flow control rx/tx
-[    1.920654] mt7530-mdio mdio-bus:00 wan (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7531 PHY] (irq=137)
-[    1.948453] mt7530-mdio mdio-bus:00 lan0 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7531 PHY] (irq=138)
-[    1.970382] mt7530-mdio mdio-bus:00 lan1 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7531 PHY] (irq=139)
-[    1.992423] mt7530-mdio mdio-bus:00 lan2 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7531 PHY] (irq=140)
-[    2.014310] mt7530-mdio mdio-bus:00 lan3 (uninitialized): PHY [mt7530-0:04] driver [MediaTek MT7531 PHY] (irq=141)
-[    2.025396] mtk_soc_eth 1b100000.ethernet eth1: entered promiscuous mode
-[    2.032160] mtk_soc_eth 1b100000.ethernet eth0: entered promiscuous mode
-[    2.038912] DSA: tree 0 setup
+That said, I will refrain from including the last paragraph on the patch
+log.
+
+[1] https://lore.kernel.org/netdev/ZHy2jQLesdYFMQtO@shell.armlinux.org.uk/
+[2] https://lore.kernel.org/netdev/9308fa1a-6de3-490b-9aeb-eb207b0432df@arinc9.com/
 
 Arınç
 
