@@ -4,87 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 755F3C47077
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 09:19:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E58BAC4725D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 10:15:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0pKz3Yu/YSA1o0yNgREr/FozQgVaAcHWi4yqSk6JGiI=; b=08h7wP7LSmUEttbCkvifFrjqtm
-	qzyJQcSYnHViOx6UhndmaSIFEHkhwlaF1dIguHDLMSyxCM10ruGIBsD1+OoiiSCO++E+DVMXeKWFw
-	ACkO7TvhcHWDVLYuYOAW9w3UyOkRSS0gZDZVRxK2G8yOmK9Mumb7DLpRJoCdDpGQR3Jj59teuQUP9
-	nUL8oWH9nGC+CsyhivjjyYQ5gQ5OD7TOU3NgX0NBU1iAQoaIjdzzn8DtO3AM0xt4SStRF0gEgtDeE
-	/8F/aBMAnOTyjupAfs3KqioWq+goS1Hfia2pflDM6ZQj1irgj+s70ux+xODCvNEZ7QXNnNhBxOMhm
-	23GqWatQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+V4JzjzBqaHzJLZncYnEckgIPzqOvsDKGfGUY3ZauSA=; b=FQhtQqLlKhGvHlujne8aSDlWav
+	rm9fIuJb+9hmPsY8o5y/oHB3LCC4n05cx++FbzDAIRrnvwfOZ3kE+CmxJ/EftjsAVMGv/9C64wbvY
+	lqnw/okqrX0PeuuAH7KswG2/E/hTN++qJGTT1icecikpi8fA6A0SKKjhUsmfgLSHNr63Pf4MJce3K
+	+Lpbco7hUDcq370Awpxu0+VtFK18BEhd0QVi0XBhVS85Xkp/lA2l6paxw1ss9GbmpZCCu2gSh4/lq
+	4PEmy12NhdRU4k5Te+cSEYPrhvAW+/pUjTpgJKEGLioYaq+ViGVoZtMq22YJGj5PVZ84WePH0OpXB
+	nxHM/CDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNrE3-00GjBO-0O;
-	Thu, 11 Jan 2024 09:19:47 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1rNs5k-00Gw41-1Y;
+	Thu, 11 Jan 2024 10:15:16 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNrDz-00Gj81-1E;
-	Thu, 11 Jan 2024 09:19:44 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-3374eb61cbcso4590520f8f.0;
-        Thu, 11 Jan 2024 01:19:40 -0800 (PST)
+	id 1rNs5f-00Gvxm-1A
+	for linux-mediatek@lists.infradead.org;
+	Thu, 11 Jan 2024 10:15:14 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-3373a30af67so4615642f8f.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jan 2024 02:15:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704964779; x=1705569579; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=0pKz3Yu/YSA1o0yNgREr/FozQgVaAcHWi4yqSk6JGiI=;
-        b=mtXAFfKlWbHgnX/6UxFyjYjuDI0ggxfu5NrsSTzZnmgf/MIDFNuaoUxmfkxzN0Us1A
-         5HHkBF3O4lDHtZaA6N5GZLbhVoXj3i6mu7fRkB48rsaajmvWGbMGV5gPYjM418pZRCUO
-         l4Si2Jsy8nSyfARd/b/lYGDAU2eWUADQsJDn84qLL3OjbU0vwjZNG7p9GVEzsZcclDKq
-         FKullqYwzWG+Lhut6IROa9lvNV7hmUIoowbPhOTO0iRr3E70JyJpFYmaiR/ha8OVaoz1
-         6/E1xffwEue9K8ZZMSUHEymX6/OovNzJRCQ7WRCMtYGJGKFCgyca9jb7AbQpPErTkr75
-         lWUA==
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1704968109; x=1705572909; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=+V4JzjzBqaHzJLZncYnEckgIPzqOvsDKGfGUY3ZauSA=;
+        b=D3K009Om4gnVByQ/zLlpS7R86wEb4xnOKhIr/+9gWem1Rrw0nei6CYOTOLnq4I2pqH
+         6j7shZgACp4ZqFdORJoU6JrFQS0oxDZSsFtYcSC7AhBKOYmheRCH6VpBBk+4yHrVFzmd
+         lYpEP/U6glLb/hXwmmPCMHlCJSBZzlXs4h1MdPd5yCKl3fEJsRB5SlztJEWjQNg6F11p
+         9qFqoBPk+R4UYJlMdTBERieoRghhJ3OsabMdp1tuzOxHWuE+2Qwnc7YobVO40pFwDZ1I
+         IvoD4y6Rquy3dqDuPn/VGmkxPye4Y2XDnNcNi/3Wc94FyJ7odKwdvMMn99o1UTHudAhM
+         JIHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704964779; x=1705569579;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0pKz3Yu/YSA1o0yNgREr/FozQgVaAcHWi4yqSk6JGiI=;
-        b=MJsCGHyst96f6lkVrC2baZYhH1zz8k9HxDOGMPP/P4jdLhB3+T0pb944OlVSX15sXD
-         yO+5IvAOKvTE/t9iCdLkG8WfOikLWqMXjTkdvDXawEMuB0KeN4Xz6tJi/U29uvwuaYHt
-         ain8sc4yVrrow9dl4+mMaFmMA+oSRqYlc4rQSdgi6IWiMdOawuI4DyzZzCd+a4rp5E8b
-         UpeyRhTMd9wneDSsM01IGKq8CcB5Nhsj7pg7NT+uZLuhW4wIqKpMQHE7zIpck0jMp7Xl
-         7X2boB8RAakQK4GY8WogSAIOwvg9mnJWVORvMqF/ycCjSDk31LzXF//AkuSzG9YfwMfI
-         +erA==
-X-Gm-Message-State: AOJu0YxUt4YQGK7iSpwZDS2qCiUnjDuY32Ck5In1SdAXvpBJxs5uOa6b
-	DT3EHo+C7neCmYLCRLht4Hc=
-X-Google-Smtp-Source: AGHT+IHaL1yXwN7SnYCBfwLdpKbQICRvcgvZxb0jEt+hbIXtiaPUdMz70UaWXbbgf21g3tnTfyJ7Eg==
-X-Received: by 2002:adf:edca:0:b0:336:c876:a407 with SMTP id v10-20020adfedca000000b00336c876a407mr488759wro.3.1704964779334;
-        Thu, 11 Jan 2024 01:19:39 -0800 (PST)
-Received: from skbuf ([188.25.255.36])
-        by smtp.gmail.com with ESMTPSA id b7-20020adfe647000000b0033763a9ea2dsm692905wrn.63.2024.01.11.01.19.37
+        d=1e100.net; s=20230601; t=1704968109; x=1705572909;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=+V4JzjzBqaHzJLZncYnEckgIPzqOvsDKGfGUY3ZauSA=;
+        b=Y8BG9mNvcnt2j6afJPOZIxEv7zMM88mP0KOL3nwxhjJZX7shakHFaMR9E5BeCWmZs+
+         GloghOGhp7MB93h07FSz0LOiYcY7jZJyYod7Divh7dyhwr0qV5KHQZ4gnmNAW2Z7Xyac
+         CUOdtZzcq4Pyzk8FENye9eES0Ab2GqfHPJqq0qI4Pjb/DVFLRg4xJQVBJGAF2x/3Q5ta
+         ver0Ry7+U1TBsYx8jtiNJaKJxedu5vwn2WiPSU6RaFKjrDvYChrGchHtswC9iJofwkpn
+         DbeM4hWS6+aoLraeerAo+9VxyNHIoK4Tb6ogZE66xK9cDmPU+S8aGgAQyEMfXnWpA04p
+         G3vQ==
+X-Gm-Message-State: AOJu0YyDqOZ6ExW1SUjH9NTesUleLDRi/d0K40DQ870653499SSvr376
+	+RWdECQqreyr2mZsy9NHGNj0+sVpMUClkw==
+X-Google-Smtp-Source: AGHT+IEm+n9REC3cDZLVtCMBBH7ollyf38bVEHwiAvqjBMBz1qwTcxZsn0pt65qrruZ1CkOufUMg3Q==
+X-Received: by 2002:a05:600c:3b1d:b0:40e:6206:a518 with SMTP id m29-20020a05600c3b1d00b0040e6206a518mr68778wms.184.1704968109127;
+        Thu, 11 Jan 2024 02:15:09 -0800 (PST)
+Received: from localhost.localdomain ([2a01:e0a:55f:21e0:9e19:4376:dea6:dbfa])
+        by smtp.gmail.com with ESMTPSA id j7-20020a05600c190700b0040e52cac976sm5157758wmq.29.2024.01.11.02.15.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 Jan 2024 01:19:39 -0800 (PST)
-Date: Thu, 11 Jan 2024 11:19:36 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Subject: Re: [PATCH net-next 08/30] net: dsa: mt7530: change p{5,6}_interface
- to p{5,6}_configured
-Message-ID: <20240111091936.y3el2yp5tndcnkzn@skbuf>
-References: <0542e150-5ff4-5f74-361a-1a531d19eb7d@arinc9.com>
- <7c224663-7588-988d-56cb-b9de5b43b504@arinc9.com>
- <20230610175553.hle2josd5s5jfhjo@skbuf>
- <22fba48c-054d-ff0a-ae2c-b38f192b26f7@arinc9.com>
- <9308fa1a-6de3-490b-9aeb-eb207b0432df@arinc9.com>
- <9308fa1a-6de3-490b-9aeb-eb207b0432df@arinc9.com>
- <20240110142721.vuthnnwhmuvghiw4@skbuf>
- <b47311f8-315d-46d9-bd5b-757141708a3f@arinc9.com>
- <20240110180525.wwxkkoqam37oqm2f@skbuf>
- <ZZ7ib5WWyH4TyirS@shell.armlinux.org.uk>
+        Thu, 11 Jan 2024 02:15:08 -0800 (PST)
+From: Julien Stephan <jstephan@baylibre.com>
+To: 
+Cc: Julien Stephan <jstephan@baylibre.com>,
+	Andy Hsieh <andy.hsieh@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>
+Subject: [PATCH v5 0/2] phy: mtk-mipi-csi: add driver for CSI phy
+Date: Thu, 11 Jan 2024 11:14:49 +0100
+Message-ID: <20240111101504.468169-1-jstephan@baylibre.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZZ7ib5WWyH4TyirS@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240111_011943_427838_0E4F402A 
-X-CRM114-Status: GOOD (  18.37  )
+X-CRM114-CacheID: sfid-20240111_021511_401536_3EC4C66E 
+X-CRM114-Status: GOOD (  20.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,30 +101,117 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, mithat.guner@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Richard van Schagen <richard@routerhints.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Landen Chao <Landen.Chao@mediatek.com>, Richard van Schagen <vschagen@cs.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 10, 2024 at 06:31:11PM +0000, Russell King (Oracle) wrote:
-> On Wed, Jan 10, 2024 at 08:05:25PM +0200, Vladimir Oltean wrote:
-> > On Wed, Jan 10, 2024 at 08:15:20PM +0300, Arınç ÜNAL wrote:
-> > > __builtin_return_address(1) doesn't seem to work. I'm running this on arm64.
-> > 
-> > I can't tell you why either, I'm sorry. I can just point to the
-> > documentation, which does specify that "On some machines it may be
-> > impossible to determine the return address of any function other than
-> > the current one". If somebody knows what this depends on, feel free to
-> > interject.
-> > https://gcc.gnu.org/onlinedocs/gcc/Return-Address.html
-> > 
-> > On my NXP LS1028A (also arm64) plus clang-16 compiler, __builtin_return_address()
-> > does work with multiple nesting levels.
-> 
-> gcc will probably need to be using frame pointers so it can walk the
-> stack, if gcc even implements non-zero values to
-> __builtin_return_address(). Without frame pointers, it would need an
-> unwinder.
+Adding a new driver for the MIPI CSI CD-PHY module v 0.5 embedded in
+some Mediatek soc, such as the MT8365
 
-Yeah, I guess it's a gcc limitation. I recompiled the kernel for the same
-platform with gcc 11.2 from Arm, and I get the same result as Arınç now.
+This driver was adapted from https://patchwork.kernel.org/project/linux-mediatek/cover/20200708104023.3225-1-louis.kuo@mediatek.com/
+
+v1 can be found here: https://lore.kernel.org/all/20230403071929.360911-1-jstephan@baylibre.com/
+
+v2 can be found here: https://lore.kernel.org/all/20230515090551.1251389-1-jstephan@baylibre.com/
+
+v3 can be found here: https://lore.kernel.org/all/20230524083033.486490-1-jstephan@baylibre.com/
+
+v4 can be found here: https://lore.kernel.org/linux-phy/20230620121928.1231745-1-jstephan@baylibre.com/
+
+Changelog
+Changes in v5:
+- rebase on latest master scheduled for 6.8-rc1
+- sort alphabetically CONFIG_PHY_MTK_MIPI_CSI_0_5 in Kconfig and Makefile
+- put lines under 100 chars on one line
+
+Changes in v4:
+include/dt-bindings/phy/phy.h:
+	- remove commit adding PHY_TYPE_CDPHY definition
+
+Binding file:
+	- use the standard phy-type property instead of a custom one so
+	  rename mediatek,phy-type -> phy-type
+	- phy-type property is made optional: when present, describes the
+	  phy type and the operating mode
+	- phy-cell is modified to accept a phy argument representing the
+	  phy operating mode if phy-type is not specified
+	- adding new property num-lanes
+
+Driver:
+	- add a custom xlate function to handle phy cells
+	- update probe function to retrieve the new value phy-type
+	  instead of the mediatek,phy-type
+	- remove useless struct define `struct mtk_mipi_dphy;`
+	- rename some functin/variable from `xx_dphy_xx` to `xx_cdphy_xx`
+	- update probe function to read num-lanes property
+
+Changes in v3:
+Binding file:
+	- rename compatible string
+	  mediatek,phy-mipi-csi-0-5 -> mediatek,mt8365-csi-rx
+	- rename binding file to be as compatible string
+	- change property mediatek,is_cdphy -> mediatek,phy-type using an
+	  enum value instead of boolean for scalability
+	- remove status property from example nodes
+	- rename example node name 'mipi_rx_csi0: mipi_rx_csi0@11c10000' ->
+	  'csi0_rx: phy@11c10000'
+	- put reg address in lower case
+
+include/dt-bindings/phy/phy.h:
+	- add PHY_TYPE_CDPHY definition
+
+Driver:
+	- rename compatible string
+	- rename property mediatek,is_cdphy -> mediatek,phy-type
+	- rename CSIx* macro to CSIX* (x -> X)
+	- fix style issue on the driver data structure
+	- update MODULE_DESCRIPTION as suggested by Angelo
+	  and update the kconfig module description to match it
+	- add dphy /cdphy eq tuning function to factor the code
+	  and increase readability
+	- fix typo __PHY_MTK__MIPI_CSI__C_0_5_RX_REG_H_ -->
+	  __PHY_MTK_MIPI_CSI_V_0_5_RX_REG_H_
+	- reword commit message to update my contributions
+	- added missing copyright
+	- added module name in Kconfig
+
+Changes in v2:
+	- fix all comments on bindings
+	- move the binding chunk from driver to binding commit
+	- fix dt_binding_check error (reported by DT_CHECKER_FLAGS)
+	- use a more generic compatible string
+	- add a new dt properties to simplify the driver
+	  "mediatek,is_cdphy"
+	- rename the driver and the corresponding file to include
+	  version
+	- drop of_match_ptr()
+	- use devm_platform_ioremap_resource
+	- use phy-mtk-io.h api instead of regmap
+	- rework the driver to use dt nodes to declare PHY instead of an
+	  array in the driver
+	- remove useless define for unused registers
+	- remove support for CSI0A/B because it cannot be tested, and it
+	  simplifies the driver for a first review
+	- edit commit message and bindings to be more descriptive about the
+	  hardware
+
+Florian Sylvestre (1):
+  dt-bindings: phy: add mediatek MIPI CD-PHY module v0.5
+
+Phi-bang Nguyen (1):
+  phy: mtk-mipi-csi: add driver for CSI phy
+
+ .../bindings/phy/mediatek,mt8365-csi-rx.yaml  |  79 +++++
+ MAINTAINERS                                   |   7 +
+ drivers/phy/mediatek/Kconfig                  |  12 +
+ drivers/phy/mediatek/Makefile                 |   2 +
+ .../mediatek/phy-mtk-mipi-csi-0-5-rx-reg.h    |  62 ++++
+ drivers/phy/mediatek/phy-mtk-mipi-csi-0-5.c   | 294 ++++++++++++++++++
+ 6 files changed, 456 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,mt8365-csi-rx.yaml
+ create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-csi-0-5-rx-reg.h
+ create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-csi-0-5.c
+
+-- 
+2.43.0
+
 
