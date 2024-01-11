@@ -4,53 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED617C47077
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 10:22:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 650CEC47077
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 10:31:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qfFonYRVFf4urM+5uJF5QuqNz9TM00Eh0PPfAvORzBU=; b=aOqNTMGBEpuY9w
-	6SmswzeLPAF5JD55mqfwO4swYhW66EabkcmdENpMAcOs32uk/3yHGBq74BkDyABRDZxh0rMy71EoZ
-	zzy1pUiLw04tAZt3TmzTY4p6CiN0hnkldcfKsSgPU0zKxbZv0+4ocWuoE6SADAGRFMs63pVOdTkWb
-	x8X+5loPLzBxpygnx3V4QKa9enEccHmjOgxAMu63rtMKimAubJHJmqwD3nhZb84iOZCl1+knr7Cmg
-	2Vn5plnvOW1cDxtUfMVKCtjPDKbf7XAqrqETJT1C1Gq/fN9GmUAhGUZF5rTDjTbkiSJEbOI0ls0Wn
-	oghPzirthHrlCD6I3KZA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c96eHGeRMy0FA5YmUP0POLqi/6OSA4NTqHeMHP6wHhc=; b=gxc4ED5Zk+XNl8p6gxm1rcCxwh
+	ZZekXy2LiMvh/9OArBGOyVYVLn0aSKOyQG9VOTC30USkgXb80lqABSo23Dbs5cusKIqRGFIweOsoH
+	k+QssS4f0qTtKWwtFkMr1BV0zPVL2a5UwVoVHWm2BNONkMGwuFVqG4YgcaNJ228Fun4i1ZfPJxQIn
+	xD3dqiGchH0wVQlFuW6MafMFlsoMEQ63fepVGtRQWONsAZangQn9XQNFwXGE/ZUpZZ4h6pY4Om9yn
+	zrjOFrztW7WLVv6FqtARAJF1czqz1xctg6gMikO7GPep/qoxQ1D+5GHlRg7bgJufC2iN5ljmg0fZp
+	OG6RWqDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNsCn-00GyPt-2G;
-	Thu, 11 Jan 2024 10:22:33 +0000
-Received: from relay7-d.mail.gandi.net ([2001:4b98:dc4:8::227])
+	id 1rNsLu-00H0Y6-0S;
+	Thu, 11 Jan 2024 10:31:58 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNsCk-00GyLo-0g;
-	Thu, 11 Jan 2024 10:22:31 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id E659120004;
-	Thu, 11 Jan 2024 10:22:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1704968539;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=qfFonYRVFf4urM+5uJF5QuqNz9TM00Eh0PPfAvORzBU=;
-	b=LM8IrbNhBB6sP+VNXbhM/PMiu4yRl818gZZJ2Uuv1XoKpUImGDyCEGSTwITmoLBFH07xp/
-	FTFrteUc/sgwpLwBvoojN1UOrcw2xcKO/Mc8sKAz5zRMotIXyoVv7DxUStr3nQa0by/U2F
-	mfP2OBVLlfn7Y6D8l0jww9ni/ocSVACBj2fGg8IpmKFGuVQtKeQD3/N2nCOGKjZI9C/2A6
-	ZiiQJCYnfxpywkEkFxlrEnmCd8kPy3tTCIwgvblyvvyomd9+q1uqW6fp5cylAEAUwcxBDx
-	U2T1LspaH3ve+YGxBV8WFhuVO8BJdPR6c8TBGgTDYkWW25ibWX9MKa2fWD5h0Q==
-Message-ID: <009fec43-0669-419e-a3a9-ce54c676a324@arinc9.com>
-Date: Thu, 11 Jan 2024 13:22:12 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1rNsLq-00H0VP-0g;
+	Thu, 11 Jan 2024 10:31:55 +0000
+Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-a28b2e1a13fso544980366b.3;
+        Thu, 11 Jan 2024 02:31:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1704969110; x=1705573910; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=c96eHGeRMy0FA5YmUP0POLqi/6OSA4NTqHeMHP6wHhc=;
+        b=m1QsBbGIV9NZkhSShMlkFWEZr43nCCiBgzVhDlR0ZjoTgCvKROodyO8n+GZvWTUMou
+         BOKLnEVBgAqL8ObF+cm4gtIClfUpohUIM06hDdArECL5IhsT4fIw4LQD4q1XiX8H5F2o
+         qYgoMnpkfAudyEm4cMTbEfyy/njaRwqavAUB45r7rkgdz5Fxd+UK2k/Vvc1uhNOsLpK9
+         +8U1UuyAHiwH7xD3XLsYfr7uEnGfKiCKh50KftDkH3HPskEc0nL7NWInLii38OTSVqNi
+         QBK1VajAb7CsYTFohhGLLYXK2O4oB4D9tks5cI1rYHnLvmMtBDBwM6/+sRVtvfQiqyO0
+         ej0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704969110; x=1705573910;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=c96eHGeRMy0FA5YmUP0POLqi/6OSA4NTqHeMHP6wHhc=;
+        b=PX3Y/P4kHWF0cTi6uZ75b4/7Nf0sN+iKHLxjvWCuBW7lhhbN4OXFUh1OmfhWtZoJeq
+         vlRhc9TrFuDy+L1wiwDKyRI6gCCiQ1z9I2IXjrgFCDA38H+ByLxjavwjJbT4nXy9rZgN
+         TI/MbUhCrJSGyn5ByxduU5UltFBvQU7J3OKERrUArdXc2t9YDpLh/bAYp0of+qemWbbR
+         t2ZFaYPJ7BUh4i6yBB0H9zXamSH9dBfidFdRBASR1E0dweIHqOPbGxAf8LtadqMiKwAC
+         SFe9+t6EXtzTDsIvvJAagRX3GaQeLNcafJErVcdrPTuHqc/aI0EMd1bnuIY2JYumb//I
+         LwLQ==
+X-Gm-Message-State: AOJu0YzRGQ/jqf9n3pL1E07BmRLClQbjuhzL3S6cbefFGrJhYCWmBNdr
+	8WXDHOpwmefeGp5ZtOvxBaw=
+X-Google-Smtp-Source: AGHT+IG1bsDJjT+tCb6RsDzpYr+HZg8W8eOGQ5g6FgdP2xO4ZZeFbzslfzXkR//fI092SnqELgkksA==
+X-Received: by 2002:a17:907:842:b0:a28:fd0e:6051 with SMTP id ww2-20020a170907084200b00a28fd0e6051mr697695ejb.33.1704969110140;
+        Thu, 11 Jan 2024 02:31:50 -0800 (PST)
+Received: from skbuf ([188.25.255.36])
+        by smtp.gmail.com with ESMTPSA id g6-20020a170906c18600b00a2a9ddd15b8sm409460ejz.173.2024.01.11.02.31.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 11 Jan 2024 02:31:49 -0800 (PST)
+Date: Thu, 11 Jan 2024 12:31:46 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 Subject: Re: [PATCH net-next 07/15] net: dsa: mt7530: do not run
  mt7530_setup_port5() if port 5 is disabled
-Content-Language: en-US
-To: Vladimir Oltean <olteanv@gmail.com>
-References: <a2826485-70a6-4ba7-89e1-59e68e622901@arinc9.com>
- <90fde560-054e-4188-b15c-df2e082d3e33@moroto.mountain>
- <20231207184015.u7uoyfhdxiyuw6hh@skbuf>
+Message-ID: <20240111103146.t5fzr2wlw2tyrkkb@skbuf>
+References: <20231207184015.u7uoyfhdxiyuw6hh@skbuf>
  <9b729dab-aebc-4c0c-a5e1-164845cd0948@suswa.mountain>
  <20231208184652.k2max4kf7r3fgksg@skbuf>
  <c3a0fc6a-825c-4de3-b5cf-b454a6d4d3cf@arinc9.com>
@@ -59,14 +76,15 @@ References: <a2826485-70a6-4ba7-89e1-59e68e622901@arinc9.com>
  <20240109145740.3vbtkuowiwedz5hx@skbuf>
  <0a086b5f-b319-4f08-9513-a38c214e1da7@arinc9.com>
  <20240110182358.ci7pg7ipcbsjxqjf@skbuf>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20240110182358.ci7pg7ipcbsjxqjf@skbuf>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <009fec43-0669-419e-a3a9-ce54c676a324@arinc9.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+In-Reply-To: <009fec43-0669-419e-a3a9-ce54c676a324@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240111_022230_555043_006C85AF 
-X-CRM114-Status: GOOD (  21.44  )
+X-CRM114-CacheID: sfid-20240111_023154_247140_70C3CCF3 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,47 +100,19 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Daniel Golle <daniel@makrotopia.org>, Eric Dum
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10.01.2024 21:23, Vladimir Oltean wrote:
-> On Wed, Jan 10, 2024 at 10:26:54AM +0300, Arınç ÜNAL wrote:
->>> Are there existing systems that use PHY muxing? The possible problem I
->>> see is breaking those boards which have a phy-handle on gmac5, if the
->>> mt7530 driver is no longer going to modify its HWTRAP register.
->>
->> Ah see, for PHY muxing, the driver actually wants the phy-handle to be put
->> on the SoC MAC, and the PHY to be defined on the SoC ethernet's MDIO bus.
->> We don't even define gmac5 as a port on the switch dt-bindings.
+On Thu, Jan 11, 2024 at 01:22:12PM +0300, Arınç ÜNAL wrote:
+> > BTW, besides OpenWrt, what other software is deployed on these SoCs
+> > typically?
 > 
-> I noticed that from the code already. Maybe I shouldn't have said
-> "gmac5" when I meant "the GMAC attached to switch port 5, aka GMAC0".
-> I was under the impression that you were also using this slightly
-> incorrect terminology, to keep a numerical association between the CPU
-> port number and its directly attached GMAC.
+> Other than OpenWrt which is widely used for these SoCs for its ease of
+> flashing and upgrading, compatibility with legacy U-boot versions that
+> usually come with any vendor making a product out of these SoCs, I can only
+> talk about what I deploy to run Linux. I use mainline U-Boot along with the
+> device trees from the Linux repository to boot mainline Linux kernels with
+> Buildroot as the filesystem.
 > 
->> While none of the DTs on the Linux repository utilise this, some of the
->> mt7621 DTs on OpenWrt do. The change in behaviour will only be that phy0/4
->> will be inaccessible from the SoC MAC's network interface. I de-facto
->> maintain the mt7621 device tree source files there. I intend to revert it
->> along with adding port 5 as a CPU port so that the conduit changing feature
->> becomes available.
-> 
-> If OpenWrt kernels are always shipped in tandem with updated device
-> trees (i.e. no Arm SystemReady IR platforms, where the DT is provided by
-> U-Boot), I won't oppose to retracting features described via DT if their
-> platform maintainers agree in a wide enough circle that the breakage is
-> manageable.
+> Arınç
 
-I will see to this when the time comes.
-
-> 
-> BTW, besides OpenWrt, what other software is deployed on these SoCs
-> typically?
-
-Other than OpenWrt which is widely used for these SoCs for its ease of
-flashing and upgrading, compatibility with legacy U-boot versions that
-usually come with any vendor making a product out of these SoCs, I can only
-talk about what I deploy to run Linux. I use mainline U-Boot along with the
-device trees from the Linux repository to boot mainline Linux kernels with
-Buildroot as the filesystem.
-
-Arınç
+I meant what other software (operating system) _instead_ of OpenWRT.
+I'm trying to figure out what other users of PHY muxing there might be.
 
