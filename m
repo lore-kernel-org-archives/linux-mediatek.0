@@ -4,70 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDD78C47077
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 19:55:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BFF7C47077
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 21:28:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6TLPOhvUQxQxpHJYecTyjhD9JdQ3vTgQmkBcVauqkyg=; b=KYK/i521I+f6gfbIURYDTz+rns
-	mqpfmFMr8ZHuDlLTi4cG8feY+U50GXRPW178O2D5pCYl9i0bJNRyvHu7WjuZ0IAnJ3w8tiCbCHGrZ
-	mJn+EE61A4pxsCA15kO/YSSnQsl1dIZF7YzxDPShmdnShOQGip5YgFT3qf8G3y2Rx0gUTJaXAPEsP
-	nPJlpm8SO90gC7SY+743I3KAj6OVhaHndnQGAGx/B5cDCBEA6T+fa3A6XJFuxIlvxGXv2rEYHapj6
-	5gLifegsXMW/d9raYZvXiqeq3Mf/E/NNcBjNvSJ7+PNHl9O9AwvFKV3SgQqVTdhwdz5QpgyfxoztM
-	RqEr74Pw==;
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bSlknirIIR8WbJio5I9v96WTeb2+ZWGORUtbr7Q038g=; b=EHZXIRe88ou34yCHNgmHgffAS/
+	nh1SsCht1xbkK5DhS3rYvQ9XUaMS3YonyKggrwedJx5jfRUo84A1pPcC/UxuerHP4/8f3Oc9JY2l4
+	U38ps5d57lmD1ejWYvN+9L7balBMljqcaO2qaMO6gNpPOU0bpT6XIZecdtpJ4BA6NgefcGck2aFih
+	kwg/BG+sevFmMc2EyUuKAbKSRfDJVliqWgsy+tukI/CHijF6UZ5EQnnWc5MO9YG/3dJbnlk2LGP1J
+	kgBo9whU/dMk19jh1gwpScmFdAM2bW7sg2ZAkLe1GqM1pPSuR0DIMrVvnsPMlKWhZUtK4ri7e3RSB
+	ZY7Cc3xQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rO19d-0012JU-20;
-	Thu, 11 Jan 2024 19:55:53 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rO2bC-001FkY-26;
+	Thu, 11 Jan 2024 21:28:26 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rO19Z-0012It-24;
-	Thu, 11 Jan 2024 19:55:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705002944;
-	bh=SmeOEDSBky71Md5WcIgFutmSu6F+tVl6/qd5e5Nr00I=;
-	h=From:To:Cc:Subject:Date:From;
-	b=vXUnY8TokOIid07j7JM3xAa6tWdwjj2xyHSGuAXP1cTmJrPb+dtU9lKsB3GINxata
-	 uuEkniEOyCZ+2jDJ1Oor6r9Z9D5oecP/6jjVjT0/NytnnbtvFBp84swvmWtXpzVap6
-	 2tzb9d3AIWMTzvDV+JXpsJyZDuDb3ql2UTdv04Uo07yd+Rfjoe7taQYgl3RQnhkyis
-	 maRheIu04/BTdEN+WxUapufoIdG+H51lE+53vrQiOsXSuq2YE0LoKOuzAW9+VeAFZQ
-	 IN81QP0RDna7P9+REF+hROxy82SpudMNKHzeQubyYQqHezxy9bXqatha62wQs6F3Kv
-	 5fC+RDYnksbfg==
-Received: from localhost.localdomain (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 35F703780894;
-	Thu, 11 Jan 2024 19:55:39 +0000 (UTC)
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel@collabora.com,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Enric Balletbo i Serra <eballetbo@kernel.org>,
-	Ikjoon Jang <ikjn@chromium.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Stephen Boyd <swboyd@chromium.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] arm64: dts: mt8183: juniper: Remove CrosEC base detection node
-Date: Thu, 11 Jan 2024 16:53:12 -0300
-Message-ID: <20240111195335.871096-1-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.43.0
+	id 1rO2b9-001Fk2-2U;
+	Thu, 11 Jan 2024 21:28:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id E5173CE2145;
+	Thu, 11 Jan 2024 21:28:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84F2AC433C7;
+	Thu, 11 Jan 2024 21:28:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1705008501;
+	bh=xfT2lbYAwKsfWKscclTNCiUip1woT0/W69P1c37dqBw=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=o+hyhlEYYzWi7d2r740CFFGz6drWNPDfrqjOKc6JjyWWsoeruXenxmY/e2Y+UopKY
+	 qv0bY6rvU0Ft2ELBEF9q2bBnnuMhH52+Ucvipv+w8MPUJPZ8oYBFXvTxKgN8lMYDjT
+	 o4ESKQGR8WsdTtMXnE2RLRiJTjxpo4PWe09DiLDDkPA8rnWofDFkmLfvq3Se/ycdfU
+	 MKzX2zRIqC93UtSzxFuZ4TOSbYlMCVTTe/kwWNzEZVCsGRzPVeRaYmXl4OqCR3X30T
+	 CR+lyKZeZ5OsOpu7roGAVqhL6dfluZCtJGL9NM2qqq+9K9XOwVWxP5/Xyzu+P5fnNJ
+	 HhLZqtxMLEOdg==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: perex@perex.cz, tiwai@suse.com, matthias.bgg@gmail.com, 
+ trevor.wu@mediatek.com, kuninori.morimoto.gx@renesas.com, 
+ chunxu.li@mediatek.com, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20240111105226.117603-1-angelogioacchino.delregno@collabora.com>
+References: <20240111105226.117603-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] ASoC: mediatek: sof-common: Add NULL check for
+ normal_link string
+Message-Id: <170500849826.453613.12911028566745797174.b4-ty@kernel.org>
+Date: Thu, 11 Jan 2024 21:28:18 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-5c066
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240111_115549_844638_28DEC1C9 
-X-CRM114-Status: GOOD (  11.41  )
+X-CRM114-CacheID: sfid-20240111_132823_988976_72BAFACC 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,40 +76,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The cbas node is used to describe base detection functionality in the
-ChromeOS EC, which is used for units that have a detachable keyboard and
-thus rely on this functionality to switch between tablet and laptop
-mode.
+On Thu, 11 Jan 2024 11:52:26 +0100, AngeloGioacchino Del Regno wrote:
+> It's not granted that all entries of struct sof_conn_stream declare
+> a `normal_link` (a non-SOF, direct link) string, and this is the case
+> for SoCs that support only SOF paths (hence do not support both direct
+> and SOF usecases).
+> 
+> For example, in the case of MT8188 there is no normal_link string in
+> any of the sof_conn_stream entries and there will be more drivers
+> doing that in the future.
+> 
+> [...]
 
-The juniper-sku16 machine is a convertible, meaning the keyboard can be
-flipped but not detached. The detection for the keyboard getting
-flipped is handled by the driver bound to the keyboard-controller
-node in the EC.
+Applied to
 
-Since there is no base detection in this machine, and the device backed
-by this node fails to probe and goes unused, delete the node from the
-DT.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Fixes: 4fa8492d1e5b ("arm64: dts: mt8183: add cbas node under cros_ec")
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Thanks!
 
----
+[1/1] ASoC: mediatek: sof-common: Add NULL check for normal_link string
+      commit: e3b3ec967a7d93b9010a5af9a2394c8b5c8f31ed
 
- .../boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts   | 3 +++
- 1 file changed, 3 insertions(+)
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts
-index 8ac6bf5b17f9..8096ca215258 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts
-@@ -13,3 +13,6 @@ / {
- 	compatible = "google,juniper-sku16", "google,juniper", "mediatek,mt8183";
- };
- 
-+&cros_ec {
-+	/delete-node/ cbas;
-+};
--- 
-2.43.0
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
