@@ -4,84 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 946ABC4707B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 08:27:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28AFCC4707B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 08:32:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XG+5LYoTfM19+HCSh2Sxdy2rjn8YuyVWQvJzeP4kCnM=; b=MpTOpAPY9v2uTck4Ny0WuczZZC
-	GZDlwqg51TrOkM9O81EvEyVW6cL/poOtnIh+gSfKUlybk37/EcRlikImFESL16VOsDBGdixpVK6vr
-	hWTN/gyts+HNgVYPmxnTwxIUntlh703wN6e9KWk12qGjE/O/NshNULpSFyDd63ho7qRK7W3zuQT45
-	V7v65fnBC5YdBhXkUCTgYlm22Jw0sH8Vgfy+HoCrVzOCPy6/+H9AVcXwZk6UwIoS3n5eKmzWOH/Jx
-	5HGLI/Wc3Gzwk3w0q20bx8deZviXsWZdv+XeMRfBNH6ZZnMteuM7bZWTpjxaFtSwdr2JUpr9wRfDB
-	ie2LA77Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SGc4eEfkH6XXJdwFpid+7Ry79gYdSJ1JR4m7E24WfDQ=; b=ZRkhOz63mzUqLuEwG/i9KdObT/
+	XphewtDDEjTN6FZA7nMtAGsrjE8hJH0vIFApIIZ50tx16igUn3QsqbNOWKUbRaL6ABPLHoiYsjaxW
+	VCZAtIyYeGuZ3fYKYW8y6oi5OEdZFcpkzHfa5tv/2Z2QgXXIzpgF8mu7IeEtq4fG2j+gLtIHbOeIA
+	U5lBT38Th/Fx/LX5QrZM1qWnBc94+9gIWzlYAbAF4IX6e2VV8GHHAr9I8/nh/X/qEum5dlZzHAUvx
+	e8mavu4Ef4AqprFCRpMk1miDYq2ZUcxtFMuM//gSUoR/TgWr0kHQbcXWPSqVYX9wGu7GGKNIz6g0l
+	L5qiCE4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNqPA-00GW3n-0a;
-	Thu, 11 Jan 2024 08:27:12 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1rNqUg-00GXFZ-0D;
+	Thu, 11 Jan 2024 08:32:54 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNqP7-00GW1q-0u
-	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Jan 2024 08:27:10 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-40d60c49ee7so57022625e9.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jan 2024 00:27:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704961627; x=1705566427; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=XG+5LYoTfM19+HCSh2Sxdy2rjn8YuyVWQvJzeP4kCnM=;
-        b=JhHe0FLAegKh5WukoZWbQjBPuRloQAzCyfZKCZ1aBXK3nWQKBN5Q13l/E+dgRSIVro
-         BJRf5fH1+IXgFHGD+YtbNllSIqDw9aEyL/RmSmcIOj4FMO578DVvhTO8BrXHgPnIMcP+
-         aEtxiEcs+YqiCAJl+CnlJlQb6GdiXri9Dz/stuKtpK7tL1XX83FXi25z73BXc1TILh0U
-         7mjEin+3DLNPR/xqeASGq+uMVJSZvhXjs7toVQIvPsJoUqxgoq5nZViRr3BV1LaerHGF
-         3EQI21nn0UH1cf2rhPcRyeHMNLSqtZKIq8bQdCdmBRpitla3YMGlZ5y7h3hG6os+N43D
-         s+nw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704961627; x=1705566427;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=XG+5LYoTfM19+HCSh2Sxdy2rjn8YuyVWQvJzeP4kCnM=;
-        b=xK9kOlyPN21pSa+ffJaPJqUs/QbTIGXF84Jq9c7Wpw2lYIk/U4JSzxMbcu6Lxx7zPF
-         WsxuZjpyr1lJwQytMINxRummYTovEaTYpOXGHG5zDe69B/w+sHzd+zborjSdSG9Ucxi8
-         OX5s92lW9P5aWRytfB5L+5lRc1aGO8QrzKHuYlqB/V6EEcVMIvcjvvDJV7lGFHUimTiW
-         8NZ5xrxWvSSKfGa//YcoKRfHdncpqiQIkuxG0HiaVSQQLMeYIRhzsW0cLJSbONxvAB0h
-         dNFtv9oyolMFBTDfBmeaEFjz9ML0bH5bSMXzTf+jWsHcT8Y8NGCJ7GvZtVdqQ42NNcGc
-         br0g==
-X-Gm-Message-State: AOJu0YwMrK9jgk8WA//CmVSi1DZpstsFs1grBhbA7Uyz5j+yDk06G7O3
-	1osW3Khm0cFcx61ArXBcWrY=
-X-Google-Smtp-Source: AGHT+IGoHE88PnZkOefJgr4PQyBMdDPvYPBdgLpyCha13BLRcXAiFUo/jkisxliGZgfOAaqZetm8Ww==
-X-Received: by 2002:a05:600c:2d51:b0:40e:4861:b3f6 with SMTP id a17-20020a05600c2d5100b0040e4861b3f6mr170775wmg.48.1704961627170;
-        Thu, 11 Jan 2024 00:27:07 -0800 (PST)
-Received: from localhost.localdomain (141.red-88-10-53.dynamicip.rima-tde.net. [88.10.53.141])
-        by smtp.gmail.com with ESMTPSA id n18-20020a05600c3b9200b0040e4ca7fcb4sm967868wms.37.2024.01.11.00.27.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 Jan 2024 00:27:06 -0800 (PST)
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-To: linux-pci@vger.kernel.org
-Cc: bhelgaas@google.com,
-	lpieralisi@kernel.org,
-	kw@linux.com,
-	robh@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Bjorn Helgaas <helgaas@kernel.org>
-Subject: [PATCH] PCI: mt7621: Fix possible string truncation in snprintf
-Date: Thu, 11 Jan 2024 09:27:04 +0100
-Message-Id: <20240111082704.2259450-1-sergio.paracuellos@gmail.com>
-X-Mailer: git-send-email 2.25.1
+	id 1rNqUc-00GXET-1F;
+	Thu, 11 Jan 2024 08:32:51 +0000
+Received: from pendragon.ideasonboard.com (89-27-53-110.bb.dnainternet.fi [89.27.53.110])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 7509EC85;
+	Thu, 11 Jan 2024 09:31:43 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1704961903;
+	bh=ceQsDzx9kmf/zRBGPdmkZuFW/ytCU3PmUX8H/digl28=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KaF6d0HgOgcGH5ytchcHR12iaXtbe9jS/8O7JFfKq56ECJLgqHOMeT+x7+klEOV6w
+	 k2L2sKF6iMPG1hTMKE57TxRwoEjcl4NMzoLaLCdsgTHNsU97S6JhvB0fKVHW5HzMaE
+	 9L05waBXzHRRISrXXwIvUmqavUeChgPbWEMEXJNw=
+Date: Thu, 11 Jan 2024 10:32:55 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: Andy Hsieh <andy.hsieh@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	Florian Sylvestre <fsylvestre@baylibre.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+	Louis Kuo <louis.kuo@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Phi-bang Nguyen <pnguyen@baylibre.com>,
+	Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v4 5/5] arm64: dts: mediatek: mt8365: Add support for
+ camera
+Message-ID: <20240111083255.GC30988@pendragon.ideasonboard.com>
+References: <20240110141443.364655-1-jstephan@baylibre.com>
+ <20240110141443.364655-6-jstephan@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20240110141443.364655-6-jstephan@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240111_002709_335875_6F8DF04B 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20240111_003250_586067_FE01ACEC 
+X-CRM114-Status: GOOD (  20.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,42 +78,191 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The following warning appears when driver is compiled with W=1.
+Hi Julien,
 
-CC      drivers/pci/controller/pcie-mt7621.o
-drivers/pci/controller/pcie-mt7621.c: In function ‘mt7621_pcie_probe’:
-drivers/pci/controller/pcie-mt7621.c:228:49: error: ‘snprintf’ output may
-be truncated before the last format character [-Werror=format-truncation=]
-228 |         snprintf(name, sizeof(name), "pcie-phy%d", slot);
-    |                                                 ^
-drivers/pci/controller/pcie-mt7621.c:228:9: note: ‘snprintf’ output between
-10 and 11 bytes into a destination of size 10
-228 |         snprintf(name, sizeof(name), "pcie-phy%d", slot);
-    |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Thank you for the patch.
 
-Clean this up increasing destination buffer one byte.
+On Wed, Jan 10, 2024 at 03:14:42PM +0100, Julien Stephan wrote:
+> Add base support for cameras for mt8365 platforms. This requires nodes
+> for the sensor interface, camsv, and CSI receivers.
+> 
+> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8365.dtsi | 128 +++++++++++++++++++++++
+>  1 file changed, 128 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+> index 24581f7410aa..9059b2f83b83 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+> @@ -10,6 +10,7 @@
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include <dt-bindings/phy/phy.h>
+>  #include <dt-bindings/power/mediatek,mt8365-power.h>
+> +#include <dt-bindings/memory/mediatek,mt8365-larb-port.h>
+>  
+>  / {
+>  	compatible = "mediatek,mt8365";
+> @@ -703,6 +704,133 @@ ethernet: ethernet@112a0000 {
+>  			status = "disabled";
+>  		};
+>  
+> +		camsv1: camsv@15050000 {
+> +			compatible = "mediatek,mt8365-camsv";
+> +			reg = <0 0x15050000 0 0x0040>,
+> +			      <0 0x15050208 0 0x0020>,
+> +			      <0 0x15050400 0 0x0100>;
+> +			interrupts = <GIC_SPI 186 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&camsys CLK_CAM>,
+> +				 <&camsys CLK_CAMTG>,
+> +				 <&camsys CLK_CAMSV0>;
+> +			clock-names = "cam", "camtg", "camsv";
+> +			iommus = <&iommu M4U_PORT_CAM_IMGO>;
+> +			mediatek,larb = <&larb2>;
+> +			power-domains = <&spm MT8365_POWER_DOMAIN_CAM>;
+> +			status = "disabled";
+> +
+> +			ports {
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +				port@0 {
+> +					reg = <0>;
+> +					camsv1_endpoint: endpoint {
+> +						remote-endpoint =
+> +							<&seninf_camsv1_endpoint>;
 
-Reported-by: Bjorn Helgaas <helgaas@kernel.org>
-Closes: https://lore.kernel.org/linux-pci/20240110212302.GA2123146@bhelgaas/T/#t
-Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
----
- drivers/pci/controller/pcie-mt7621.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I think you can keep this on a single line. Same below.
 
-diff --git a/drivers/pci/controller/pcie-mt7621.c b/drivers/pci/controller/pcie-mt7621.c
-index 79e225edb42a..d97b956e6e57 100644
---- a/drivers/pci/controller/pcie-mt7621.c
-+++ b/drivers/pci/controller/pcie-mt7621.c
-@@ -202,7 +202,7 @@ static int mt7621_pcie_parse_port(struct mt7621_pcie *pcie,
- 	struct mt7621_pcie_port *port;
- 	struct device *dev = pcie->dev;
- 	struct platform_device *pdev = to_platform_device(dev);
--	char name[10];
-+	char name[11];
- 	int err;
- 
- 	port = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
+> +					};
+> +				};
+> +			};
+> +		};
+> +
+> +		camsv2: camsv@15050800 {
+> +			compatible = "mediatek,mt8365-camsv";
+> +			reg = <0 0x15050800 0 0x0040>,
+> +			      <0 0x15050228 0 0x0020>,
+> +			      <0 0x15050C00 0 0x0100>;
+
+Lower-case hex constants.
+
+> +			interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&camsys CLK_CAM>,
+> +				 <&camsys CLK_CAMTG>,
+> +				 <&camsys CLK_CAMSV1>;
+> +			clock-names = "cam", "camtg", "camsv";
+> +			iommus = <&iommu M4U_PORT_CAM_IMGO>;
+> +
+
+Nitpicking, camsv doesn't have a blank line here. I'm fine either way,
+but please do the same for both nodes.
+
+> +			mediatek,larb = <&larb2>;
+> +			power-domains = <&spm MT8365_POWER_DOMAIN_CAM>;
+> +			status = "disabled";
+> +
+> +			ports {
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +				port@0 {
+> +					reg = <0>;
+> +					camsv2_endpoint: endpoint {
+> +						remote-endpoint =
+> +							<&seninf_camsv2_endpoint>;
+> +					};
+> +				};
+> +			};
+> +		};
+> +
+> +		seninf: seninf@15040000 {
+
+This should go before the two camsv instances to keep nodes sorted by
+address. The camsv1, camsv2 and seninf nodes need to be moved further
+down for the same reason.
+
+> +			compatible = "mediatek,mt8365-seninf";
+> +			reg = <0 0x15040000 0 0x6000>;
+> +			interrupts = <GIC_SPI 210 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&camsys CLK_CAM_SENIF>,
+> +				 <&topckgen CLK_TOP_SENIF_SEL>;
+> +			clock-names = "camsys", "top_mux";
+> +
+> +			power-domains = <&spm MT8365_POWER_DOMAIN_CAM>;
+> +
+> +			phys = <&mipi_csi0 PHY_TYPE_DPHY>, <&mipi_csi1>;
+> +			phy-names = "csi0", "csi1";
+> +
+> +			status = "disabled";
+> +
+> +			ports {
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +
+> +				port@0 {
+> +					reg = <0>;
+> +				};
+> +
+> +				port@1 {
+> +					reg = <1>;
+> +				};
+> +
+> +				port@2 {
+> +					reg = <2>;
+> +				};
+> +
+> +				port@3 {
+> +					reg = <3>;
+> +				};
+> +
+> +				port@4 {
+> +					reg = <4>;
+> +					seninf_camsv1_endpoint: endpoint {
+> +						remote-endpoint =
+> +							<&camsv1_endpoint>;
+> +					};
+> +				};
+> +
+> +				port@5 {
+> +					reg = <5>;
+> +					seninf_camsv2_endpoint: endpoint {
+> +						remote-endpoint =
+> +							<&camsv2_endpoint>;
+> +					};
+> +				};
+> +			};
+> +		};
+> +
+> +		mipi_csi0: mipi-csi0@11c10000 {
+> +			compatible = "mediatek,mt8365-csi-rx";
+> +			reg = <0 0x11C10000 0 0x2000>;
+
+Lower-case hex constants.
+
+> +			status = "disabled";
+> +			num-lanes = <4>;
+> +			#phy-cells = <1>;
+> +		};
+> +
+> +		mipi_csi1: mipi-csi1@11c12000 {
+> +			compatible = "mediatek,mt8365-csi-rx";
+> +			reg = <0 0x11C12000 0 0x2000>;
+
+Lower-case hex constants.
+
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+> +			phy-type = <PHY_TYPE_DPHY>;
+> +			status = "disabled";
+> +			num-lanes = <4>;
+> +			#phy-cells = <0>;
+> +		};
+> +
+>  		u3phy: t-phy@11cc0000 {
+>  			compatible = "mediatek,mt8365-tphy", "mediatek,generic-tphy-v2";
+>  			#address-cells = <1>;
+
 -- 
-2.25.1
+Regards,
 
+Laurent Pinchart
 
