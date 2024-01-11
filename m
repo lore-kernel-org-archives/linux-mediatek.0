@@ -4,66 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EC66C4707B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 08:15:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 946ABC4707B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 08:27:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JObukGQGiHReC/pM9mv2waVjya23PoJB/lAIUeZhxYw=; b=vt6if6dURYzWw0p4nwZZCx3qSe
-	RJ1d2tsI2PKQ932bd8Gj6lsmmDg6BKKq0tQH2fOsac6mzRf5xvRDJcXGHStieOFfSBFNee7eAdUWk
-	B/t47p4VQjtsg1n2bNqVnEpwKzvIqsF61FEgSR5kBnO9gf8MyJl67YTSqiKVm0ABo5Wz2bV+jnK8n
-	G7l+xxP/zi53G5hVu8+Enl83z+xKZlWEck3FU6FVsRCW31h3XVjI+bqSZomtAxdix5t3gAJgC0LVd
-	jlLJfaKCFS+k43M+DZsh4c1Swv4on83lG4RQf7MdgIPS2/GZFexrE+OqAYZYDZZvWUCk6S98oj2Qx
-	0ZgixCPg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XG+5LYoTfM19+HCSh2Sxdy2rjn8YuyVWQvJzeP4kCnM=; b=MpTOpAPY9v2uTck4Ny0WuczZZC
+	GZDlwqg51TrOkM9O81EvEyVW6cL/poOtnIh+gSfKUlybk37/EcRlikImFESL16VOsDBGdixpVK6vr
+	hWTN/gyts+HNgVYPmxnTwxIUntlh703wN6e9KWk12qGjE/O/NshNULpSFyDd63ho7qRK7W3zuQT45
+	V7v65fnBC5YdBhXkUCTgYlm22Jw0sH8Vgfy+HoCrVzOCPy6/+H9AVcXwZk6UwIoS3n5eKmzWOH/Jx
+	5HGLI/Wc3Gzwk3w0q20bx8deZviXsWZdv+XeMRfBNH6ZZnMteuM7bZWTpjxaFtSwdr2JUpr9wRfDB
+	ie2LA77Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNqDp-00GRdR-36;
-	Thu, 11 Jan 2024 08:15:29 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1rNqPA-00GW3n-0a;
+	Thu, 11 Jan 2024 08:27:12 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNqDl-00GRaR-0G;
-	Thu, 11 Jan 2024 08:15:27 +0000
-Received: from pendragon.ideasonboard.com (89-27-53-110.bb.dnainternet.fi [89.27.53.110])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 6EC6EC85;
-	Thu, 11 Jan 2024 09:14:17 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1704960857;
-	bh=kkDLkfafgifBK/qqR8wZuC6H24XJLUeDEmU02c9PAoI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CvRmlcUcAL2fz+ZsrBcQVO8RmcXC6wU94oBlgnTtNbUx2QLsZU6CuMjcNkXRlPZiz
-	 wAcnB2yYLfTYNexZ3WwUDVElCb7FIENGFR9fpBIX5L3HXZFNP4gQMpXke1rFkBNNnS
-	 /owabKPwRi670NCL+inSeVDAvBPK9DD4veH6MKlM=
-Date: Thu, 11 Jan 2024 10:15:30 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Julien Stephan <jstephan@baylibre.com>
-Cc: Louis Kuo <louis.kuo@mediatek.com>,
-	Phi-Bang Nguyen <pnguyen@baylibre.com>,
-	Andy Hsieh <andy.hsieh@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
-	Florian Sylvestre <fsylvestre@baylibre.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v4 1/5] dt-bindings: media: add mediatek ISP3.0 sensor
- interface
-Message-ID: <20240111081530.GB30988@pendragon.ideasonboard.com>
-References: <20240110141443.364655-1-jstephan@baylibre.com>
- <20240110141443.364655-2-jstephan@baylibre.com>
+	id 1rNqP7-00GW1q-0u
+	for linux-mediatek@lists.infradead.org;
+	Thu, 11 Jan 2024 08:27:10 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-40d60c49ee7so57022625e9.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jan 2024 00:27:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1704961627; x=1705566427; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=XG+5LYoTfM19+HCSh2Sxdy2rjn8YuyVWQvJzeP4kCnM=;
+        b=JhHe0FLAegKh5WukoZWbQjBPuRloQAzCyfZKCZ1aBXK3nWQKBN5Q13l/E+dgRSIVro
+         BJRf5fH1+IXgFHGD+YtbNllSIqDw9aEyL/RmSmcIOj4FMO578DVvhTO8BrXHgPnIMcP+
+         aEtxiEcs+YqiCAJl+CnlJlQb6GdiXri9Dz/stuKtpK7tL1XX83FXi25z73BXc1TILh0U
+         7mjEin+3DLNPR/xqeASGq+uMVJSZvhXjs7toVQIvPsJoUqxgoq5nZViRr3BV1LaerHGF
+         3EQI21nn0UH1cf2rhPcRyeHMNLSqtZKIq8bQdCdmBRpitla3YMGlZ5y7h3hG6os+N43D
+         s+nw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704961627; x=1705566427;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=XG+5LYoTfM19+HCSh2Sxdy2rjn8YuyVWQvJzeP4kCnM=;
+        b=xK9kOlyPN21pSa+ffJaPJqUs/QbTIGXF84Jq9c7Wpw2lYIk/U4JSzxMbcu6Lxx7zPF
+         WsxuZjpyr1lJwQytMINxRummYTovEaTYpOXGHG5zDe69B/w+sHzd+zborjSdSG9Ucxi8
+         OX5s92lW9P5aWRytfB5L+5lRc1aGO8QrzKHuYlqB/V6EEcVMIvcjvvDJV7lGFHUimTiW
+         8NZ5xrxWvSSKfGa//YcoKRfHdncpqiQIkuxG0HiaVSQQLMeYIRhzsW0cLJSbONxvAB0h
+         dNFtv9oyolMFBTDfBmeaEFjz9ML0bH5bSMXzTf+jWsHcT8Y8NGCJ7GvZtVdqQ42NNcGc
+         br0g==
+X-Gm-Message-State: AOJu0YwMrK9jgk8WA//CmVSi1DZpstsFs1grBhbA7Uyz5j+yDk06G7O3
+	1osW3Khm0cFcx61ArXBcWrY=
+X-Google-Smtp-Source: AGHT+IGoHE88PnZkOefJgr4PQyBMdDPvYPBdgLpyCha13BLRcXAiFUo/jkisxliGZgfOAaqZetm8Ww==
+X-Received: by 2002:a05:600c:2d51:b0:40e:4861:b3f6 with SMTP id a17-20020a05600c2d5100b0040e4861b3f6mr170775wmg.48.1704961627170;
+        Thu, 11 Jan 2024 00:27:07 -0800 (PST)
+Received: from localhost.localdomain (141.red-88-10-53.dynamicip.rima-tde.net. [88.10.53.141])
+        by smtp.gmail.com with ESMTPSA id n18-20020a05600c3b9200b0040e4ca7fcb4sm967868wms.37.2024.01.11.00.27.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 11 Jan 2024 00:27:06 -0800 (PST)
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+To: linux-pci@vger.kernel.org
+Cc: bhelgaas@google.com,
+	lpieralisi@kernel.org,
+	kw@linux.com,
+	robh@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Bjorn Helgaas <helgaas@kernel.org>
+Subject: [PATCH] PCI: mt7621: Fix possible string truncation in snprintf
+Date: Thu, 11 Jan 2024 09:27:04 +0100
+Message-Id: <20240111082704.2259450-1-sergio.paracuellos@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20240110141443.364655-2-jstephan@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240111_001525_263027_707CBE42 
-X-CRM114-Status: GOOD (  24.91  )
+X-CRM114-CacheID: sfid-20240111_002709_335875_6F8DF04B 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,325 +96,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Julien,
+The following warning appears when driver is compiled with W=1.
 
-Thank you for the patch.
+CC      drivers/pci/controller/pcie-mt7621.o
+drivers/pci/controller/pcie-mt7621.c: In function ‘mt7621_pcie_probe’:
+drivers/pci/controller/pcie-mt7621.c:228:49: error: ‘snprintf’ output may
+be truncated before the last format character [-Werror=format-truncation=]
+228 |         snprintf(name, sizeof(name), "pcie-phy%d", slot);
+    |                                                 ^
+drivers/pci/controller/pcie-mt7621.c:228:9: note: ‘snprintf’ output between
+10 and 11 bytes into a destination of size 10
+228 |         snprintf(name, sizeof(name), "pcie-phy%d", slot);
+    |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On Wed, Jan 10, 2024 at 03:14:38PM +0100, Julien Stephan wrote:
-> From: Louis Kuo <louis.kuo@mediatek.com>
-> 
-> This adds the bindings, for the mediatek ISP3.0 SENINF module embedded in
-> some Mediatek SoC, such as the mt8365
-> 
-> Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
-> Signed-off-by: Phi-Bang Nguyen <pnguyen@baylibre.com>
-> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
-> Link: https://lore.kernel.org/r/20230807094940.329165-2-jstephan@baylibre.com
-> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> ---
->  .../media/mediatek,mt8365-seninf.yaml         | 259 ++++++++++++++++++
->  MAINTAINERS                                   |   7 +
->  2 files changed, 266 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8365-seninf.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8365-seninf.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8365-seninf.yaml
-> new file mode 100644
-> index 000000000000..0a7b7d949df7
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek,mt8365-seninf.yaml
-> @@ -0,0 +1,259 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +# Copyright (c) 2023 MediaTek, BayLibre
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/mediatek,mt8365-seninf.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Sensor Interface 3.0
-> +
-> +maintainers:
-> +  - Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> +  - Julien Stephan <jstephan@baylibre.com>
-> +  - Andy Hsieh <andy.hsieh@mediatek.com>
-> +
-> +description:
-> +  The ISP3.0 SENINF is the CSI-2 and parallel camera sensor interface found in
-> +  multiple MediaTek SoCs. It can support up to three physical CSI-2
-> +  input ports, configured in DPHY (2 or 4 data lanes) or CPHY depending on the soc.
+Clean this up increasing destination buffer one byte.
 
-s/soc/SoC/
+Reported-by: Bjorn Helgaas <helgaas@kernel.org>
+Closes: https://lore.kernel.org/linux-pci/20240110212302.GA2123146@bhelgaas/T/#t
+Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+---
+ drivers/pci/controller/pcie-mt7621.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-And while at it, you can reflow the text to 80 columns.
-
-> +  On the output side, SENINF can be connected either to CAMSV instance or
-> +  to the internal ISP. CAMSV is used to bypass the internal ISP processing
-> +  in order to connect either an external ISP, or a sensor (RAW, YUV).
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8365-seninf
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    items:
-> +      - description: Seninf camsys clock
-> +      - description: Seninf top mux clock
-> +
-> +  clock-names:
-> +    items:
-> +      - const: camsys
-> +      - const: top_mux
-> +
-> +  phys:
-> +    minItems: 1
-> +    maxItems: 4
-> +    description:
-> +      phandle to the PHYs connected to CSI0/A, CSI1, CSI2 and CSI0B
-> +
-> +  phy-names:
-> +    minItems: 1
-> +    items:
-> +      - const: csi0
-> +      - const: csi1
-> +      - const: csi2
-> +      - const: csi0b
-> +
-> +  ports:
-> +    $ref: /schemas/graph.yaml#/properties/ports
-> +
-> +    properties:
-> +      port@0:
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description: CSI0 or CSI0A port
-> +
-> +        properties:
-> +          endpoint:
-> +            $ref: video-interfaces.yaml#
-> +            unevaluatedProperties: false
-> +
-> +            properties:
-> +              clock-lanes:
-> +                maxItems: 1
-> +              data-lanes:
-> +                minItems: 1
-> +                maxItems: 4
-> +
-> +      port@1:
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description: CSI1 port
-> +
-> +        properties:
-> +          endpoint:
-> +            $ref: video-interfaces.yaml#
-> +            unevaluatedProperties: false
-> +
-> +            properties:
-> +              clock-lanes:
-> +                maxItems: 1
-> +              data-lanes:
-> +                minItems: 1
-> +                maxItems: 4
-> +
-> +      port@2:
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description: CSI2 port
-> +
-> +        properties:
-> +          endpoint:
-> +            $ref: video-interfaces.yaml#
-> +            unevaluatedProperties: false
-> +
-> +            properties:
-> +              clock-lanes:
-> +                maxItems: 1
-> +              data-lanes:
-> +                minItems: 1
-> +                maxItems: 4
-> +
-> +      port@3:
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description: CSI0B port
-> +
-> +        properties:
-> +          endpoint:
-> +            $ref: video-interfaces.yaml#
-> +            unevaluatedProperties: false
-> +
-> +            properties:
-> +              clock-lanes:
-> +                maxItems: 1
-> +              data-lanes:
-> +                minItems: 1
-> +                maxItems: 2
-> +
-> +      port@4:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: connection point for cam0
-> +
-> +      port@5:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: connection point for cam1
-> +
-> +      port@6:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: connection point for camsv0
-> +
-> +      port@7:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: connection point for camsv1
-> +
-> +      port@8:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: connection point for camsv2
-> +
-> +      port@9:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: connection point for camsv3
-> +
-> +    required:
-> +      - port@0
-> +      - port@1
-> +      - port@2
-> +      - port@3
-> +      - port@4
-> +      - port@5
-> +      - port@6
-> +      - port@7
-> +      - port@8
-> +      - port@9
-> +
-> +required:
-> +  - compatible
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +  - power-domains
-> +  - ports
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mediatek,mt8365-clk.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/phy/phy.h>
-> +    #include <dt-bindings/power/mediatek,mt8365-power.h>
-> +
-> +    soc {
-> +          #address-cells = <2>;
-> +          #size-cells = <2>;
-> +
-> +          seninf: seninf@15040000 {
-> +                compatible = "mediatek,mt8365-seninf";
-> +                reg = <0 0x15040000 0 0x6000>;
-> +                interrupts = <GIC_SPI 210 IRQ_TYPE_LEVEL_LOW>;
-> +                clocks = <&camsys CLK_CAM_SENIF>,
-> +                         <&topckgen CLK_TOP_SENIF_SEL>;
-> +                clock-names = "camsys", "top_mux";
-> +
-> +                power-domains = <&spm MT8365_POWER_DOMAIN_CAM>;
-> +
-> +                phys = <&mipi_csi0 PHY_TYPE_DPHY>;
-> +                phy-names = "csi0";
-> +
-> +                ports {
-> +                      #address-cells = <1>;
-> +                      #size-cells = <0>;
-> +
-> +                      port@0 {
-> +                            reg = <0>;
-> +                            seninf_in1: endpoint {
-> +                              clock-lanes = <2>;
-> +                              data-lanes = <1 3 0 4>;
-> +                              remote-endpoint = <&isp1_out>;
-
-Indentation issue, you need two more spaces here.
-
-With these small issues fixed,
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-
-> +                            };
-> +                      };
-> +
-> +                      port@1 {
-> +                          reg = <1>;
-> +                      };
-> +
-> +                      port@2 {
-> +                            reg = <2>;
-> +                      };
-> +
-> +                      port@3 {
-> +                            reg = <3>;
-> +                      };
-> +
-> +                      port@4 {
-> +                            reg = <4>;
-> +                            seninf_camsv1_endpoint: endpoint {
-> +                                remote-endpoint = <&camsv1_endpoint>;
-> +                            };
-> +                      };
-> +
-> +                      port@5 {
-> +                            reg = <5>;
-> +                      };
-> +
-> +                      port@6 {
-> +                            reg = <6>;
-> +                      };
-> +
-> +                      port@7 {
-> +                            reg = <7>;
-> +                      };
-> +
-> +                      port@8 {
-> +                            reg = <8>;
-> +                      };
-> +
-> +                      port@9 {
-> +                            reg = <9>;
-> +                      };
-> +
-> +                };
-> +          };
-> +    };
-> +
-> +...
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 41e0862cfa7d..4444e719cf8e 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -13611,6 +13611,13 @@ M:	Sean Wang <sean.wang@mediatek.com>
->  S:	Maintained
->  F:	drivers/char/hw_random/mtk-rng.c
->  
-> +MEDIATEK ISP3.0 DRIVER
-> +M:	Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> +M:	Julien Stephan <jstephan@baylibre.com>
-> +M:	Andy Hsieh <andy.hsieh@mediatek.com>
-> +S:	Supported
-> +F:	Documentation/devicetree/bindings/media/mediatek,mt8365-seninf.yaml
-> +
->  MEDIATEK SMI DRIVER
->  M:	Yong Wu <yong.wu@mediatek.com>
->  L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
-
+diff --git a/drivers/pci/controller/pcie-mt7621.c b/drivers/pci/controller/pcie-mt7621.c
+index 79e225edb42a..d97b956e6e57 100644
+--- a/drivers/pci/controller/pcie-mt7621.c
++++ b/drivers/pci/controller/pcie-mt7621.c
+@@ -202,7 +202,7 @@ static int mt7621_pcie_parse_port(struct mt7621_pcie *pcie,
+ 	struct mt7621_pcie_port *port;
+ 	struct device *dev = pcie->dev;
+ 	struct platform_device *pdev = to_platform_device(dev);
+-	char name[10];
++	char name[11];
+ 	int err;
+ 
+ 	port = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
 -- 
-Regards,
+2.25.1
 
-Laurent Pinchart
 
