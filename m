@@ -4,91 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B8F2C47077
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 07:38:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57BD0C47077
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 08:08:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QAGCSwDqUq3ugQLyXDVrlUyjHPOkl/PCtmOmNpGqBUg=; b=ifCXTxPdQCJdse9Abj30TAyQlz
-	S6eZLR+Oec1vh1tUTvyE+8ALKdVF6Kk3c+Xp0Vt8xmJ/6cKSkv1yDXKCdxbDHqBVl764XfMwUKQNt
-	JFI6aKVVN4w9xODBo9ETvt9ufwkdGpaEQDV37ZZtAAeq/PxD5QZ5Qk0//YnxYCiJFAoj46PMINTW+
-	NVp97msLDQOjppxvGqZ8/RVtojID+9395NCIb81yJgdXYWRV+GmVPzMnGav5dFYoMXrCQ/fFnqyjN
-	wh3yfCMRNAMicRmoUYy1H8Y3Wqj2HGF5I5sVIbGrl3vL6K99nfUu3cO66++xD6EVGW2qNV9kBWnXk
-	HBsNIAWQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vSO4rsqGTytf6/0Prk7ujy7Nghy7DZNOQ0GfzFRDvqk=; b=Ua9yAD+ZAc0bYvsCrmvASl2k1N
+	GimOPoYkLmnCfVprwuGhnt56plj229MO88r0geOX9tt2cl8jo5zjdqb6atk6Pxu/1pJNfwEEcGosY
+	MGAY1Aq1d9D8JjXk9KqHVLNQ//Wa2yxBkWKgFMbBkaaExbNGsdcepGI57D3UyaE7U/R8nr4QggPAP
+	k65HRk/RrtkMBsV7guLmmhOacx2saLOWZyU7b1Wz6ZbWM8L4BfoHcHQr3QN1lO4vOXHZfyTzqxzFz
+	ZErFnTA3EJ/Ms2ZTKFrkbEBIHuHVoBpNcDbX0K3sjAROKBJCa++XHJquHYMTh30YzMdTcTjtApKSI
+	u37/mKVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNpdb-00GKS0-0m;
-	Thu, 11 Jan 2024 07:38:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rNq7D-00GQP0-0s;
+	Thu, 11 Jan 2024 08:08:39 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNpdX-00GKQo-2T;
-	Thu, 11 Jan 2024 07:38:01 +0000
-X-UUID: 541e1c9ab05411eeafd70d0b34820190-20240111
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=QAGCSwDqUq3ugQLyXDVrlUyjHPOkl/PCtmOmNpGqBUg=;
-	b=WmYYR0Kqqskm8lQTnGVwhOq4TEDaISs6+VzOWmzJS2mIeOhOcDlAmlV9lkoHrHffuFYzNW7DJNuOHsiO172E90PZj7y7iHcbWdeFVwE2vMLKhPqNsO6Z/RKbbfvVojDq08F1/NOOinGNPiTe4++sTag7Zb3yEgM6iRmyFEHWkao=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:ad80545c-47f0-42df-8962-a94e0de7cb82,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:5d391d7,CLOUDID:4454bb82-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 541e1c9ab05411eeafd70d0b34820190-20240111
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 597316474; Thu, 11 Jan 2024 00:37:53 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 11 Jan 2024 15:17:15 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 11 Jan 2024 15:17:14 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, "Yunfei
- Dong" <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH] media: mediatek: vcodec: setting request complete before buffer done
-Date: Thu, 11 Jan 2024 15:17:13 +0800
-Message-ID: <20240111071713.16331-1-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1rNq79-00GQNh-2Q;
+	Thu, 11 Jan 2024 08:08:37 +0000
+Received: from pendragon.ideasonboard.com (89-27-53-110.bb.dnainternet.fi [89.27.53.110])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C211AC85;
+	Thu, 11 Jan 2024 09:07:24 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1704960445;
+	bh=qmei24w/G2Gd38IxUj6H/ANIvTM67mnsZB7V0/RAtLI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MkyY8POSVX7UaEBiHxkzQk/CvAeTddOKPInEUe2lqAC8sd8iiVp8EOWmbT4xVvwCs
+	 SUYCwgl6oQwd37DkkC+LE+zrlPX+IqygjAq3WeNY+PM+neqWudwbyBDpAf/NXP2FIW
+	 EJykbF8O+CempNUHb0/63gw0Bb3QMjQqUNhQst/s=
+Date: Thu, 11 Jan 2024 10:08:37 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: Andy Hsieh <andy.hsieh@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	Florian Sylvestre <fsylvestre@baylibre.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+	Louis Kuo <louis.kuo@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Phi-bang Nguyen <pnguyen@baylibre.com>,
+	Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v4 0/5] Add Mediatek ISP3.0
+Message-ID: <20240111080837.GA30988@pendragon.ideasonboard.com>
+References: <20240110141443.364655-1-jstephan@baylibre.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--10.959100-8.000000
-X-TMASE-MatchedRID: CCNvt8z5Ak2+FYZWdxc4kUKcYi5Qw/RVkKAa/khZ3iSYoidDrWJoA3AX
-	R/gLaDwaUtP0ANsDUBbMePXE5HvRkAGEq6uX29KSA9lly13c/gEraL2mh8ZVKwqiCYa6w8tv/Ge
-	vfoH427riq2Kf6Q8mHbww5oZM4lf9IaVPgU+koVHE+QHQwgFpcQBqi9O94W3Vd7TzqAWUgsZdaO
-	8DxOlYWPcqU4dInnrpwEBYRaV0KQ1zx/hJctUaaangbqTYC4GHfS0Ip2eEHnyTitjWv6+zCBe9C
-	QaLe2PP9xS3mVzWUuCgZHIBpyeFpg8B6faX5pGQYJT7u7oJRT6SjcckO6I4aU3zt7BqKFYTftwZ
-	3X11IV0=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--10.959100-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 4CB914801B4194367F4502AECA63B55A29930B1A85A11025F78E70B1153504EF2000:8
-X-MTK: N
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20240110141443.364655-1-jstephan@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240110_233759_817621_63CD3CFC 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20240111_000835_955609_F6D6250B 
+X-CRM114-Status: GOOD (  27.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,235 +76,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The request status of output queue will be set to MEDIA_REQUEST_STATE_COMPLETE
-when user space dequeue output buffer. Then calling v4l2_ctrl_request_complete
-will get below warning, need to call v4l2_ctrl_request_complete before
-v4l2_m2m_buf_done.
-Workqueue: core-decoder vdec_msg_queue_core_work [mtk_vcodec_dec]
-pstate: 80c00089 (Nzcv daIf +PAN +UAO -TCO BTYPE=--)
-pc : media_request_object_bind+0xa8/0x124
-lr : media_request_object_bind+0x50/0x124
-sp : ffffffc011393be0
-x29: ffffffc011393be0 x28: 0000000000000000
-x27: ffffff890c280248 x26: ffffffe21a71ab88
-x25: 0000000000000000 x24: ffffff890c280280
-x23: ffffff890c280280 x22: 00000000fffffff0
-x21: 0000000000000000 x20: ffffff890260d280
-x19: ffffff890260d2e8 x18: 0000000000001000
-x17: 0000000000000400 x16: ffffffe21a4584a0
-x15: 000000000053361d x14: 0000000000000018
-x13: 0000000000000004 x12: ffffffa82427d000
-x11: ffffffe21ac3fce0 x10: 0000000000000001
-x9 : 0000000000000000 x8 : 0000000000000003
-x7 : 0000000000000000 x6 : 000000000000003f
-x5 : 0000000000000040 x4 : ffffff89052e7b98
-x3 : 0000000000000000 x2 : 0000000000000001
-x1 : 0000000000000000 x0 : 0000000000000000
-Call trace:
- media_request_object_bind+0xa8/0x124
- v4l2_ctrl_request_bind+0xc4/0x168
- v4l2_ctrl_request_complete+0x198/0x1f4
- mtk_vdec_stateless_cap_to_disp+0x58/0x8c [mtk_vcodec_dec 245a7c1e48ff1b2451a50e1dfcb174262b6b462c]
- vdec_vp9_slice_core_decode+0x1c0/0x268 [mtk_vcodec_dec 245a7c1e48ff1b2451a50e1dfcb174262b6b462c]
- vdec_msg_queue_core_work+0x60/0x11c [mtk_vcodec_dec 245a7c1e48ff1b2451a50e1dfcb174262b6b462c]
- process_one_work+0x140/0x480
- worker_thread+0x12c/0x2f8
- kthread+0x13c/0x1d8
- ret_from_fork+0x10/0x30
+Hi Julien,
 
-'Fixes: 7b182b8d9c852 ("media: mediatek: vcodec: Refactor get and put capture buffer flow")'
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h     |  3 ++-
- .../vcodec/decoder/mtk_vcodec_dec_stateless.c        | 12 +++++++-----
- .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c        |  7 +++++--
- .../vcodec/decoder/vdec/vdec_h264_req_multi_if.c     |  3 ++-
- .../vcodec/decoder/vdec/vdec_hevc_req_multi_if.c     |  3 ++-
- .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c        |  6 ++++--
- .../mediatek/vcodec/decoder/vdec_msg_queue.h         |  2 ++
- 7 files changed, 24 insertions(+), 12 deletions(-)
+Thank you for the patches.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-index 849b89dd205c..3f5b625330bc 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-@@ -111,7 +111,8 @@ struct mtk_vcodec_dec_pdata {
- 	int (*flush_decoder)(struct mtk_vcodec_dec_ctx *ctx);
- 	struct vdec_fb *(*get_cap_buffer)(struct mtk_vcodec_dec_ctx *ctx);
- 	void (*cap_to_disp)(struct mtk_vcodec_dec_ctx *ctx, int error,
--			    struct media_request *src_buf_req);
-+			    struct media_request *src_buf_req,
-+			    struct vb2_v4l2_buffer *vb2_v4l2_src);
- 
- 	const struct vb2_ops *vdec_vb2_ops;
- 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-index d54b3833790d..2efa34b6750b 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-@@ -245,7 +245,8 @@ static const struct v4l2_frmsize_stepwise stepwise_fhd = {
- };
- 
- static void mtk_vdec_stateless_cap_to_disp(struct mtk_vcodec_dec_ctx *ctx, int error,
--					   struct media_request *src_buf_req)
-+					   struct media_request *src_buf_req,
-+					   struct vb2_v4l2_buffer *vb2_v4l2_src)
- {
- 	struct vb2_v4l2_buffer *vb2_dst;
- 	enum vb2_buffer_state state;
-@@ -266,6 +267,9 @@ static void mtk_vdec_stateless_cap_to_disp(struct mtk_vcodec_dec_ctx *ctx, int e
- 
- 	if (src_buf_req)
- 		v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
-+
-+	if (vb2_v4l2_src)
-+		v4l2_m2m_buf_done(vb2_v4l2_src, state);
- }
- 
- static struct vdec_fb *vdec_get_cap_buffer(struct mtk_vcodec_dec_ctx *ctx)
-@@ -374,14 +378,12 @@ static void mtk_vdec_worker(struct work_struct *work)
- 	state = ret ? VB2_BUF_STATE_ERROR : VB2_BUF_STATE_DONE;
- 	if (!IS_VDEC_LAT_ARCH(dev->vdec_pdata->hw_arch) ||
- 	    ctx->current_codec == V4L2_PIX_FMT_VP8_FRAME) {
--		v4l2_m2m_buf_done_and_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx, state);
- 		if (src_buf_req)
- 			v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
-+		v4l2_m2m_buf_done_and_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx, state);
- 	} else {
--		if (ret != -EAGAIN) {
-+		if (ret != -EAGAIN)
- 			v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
--			v4l2_m2m_buf_done(vb2_v4l2_src, state);
--		}
- 		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
- 	}
- }
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
-index 2b6a5adbc419..f277b907c345 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
-@@ -1064,6 +1064,8 @@ static int vdec_av1_slice_setup_lat_from_src_buf(struct vdec_av1_slice_instance
- 		return -EINVAL;
- 
- 	lat_buf->src_buf_req = src->vb2_buf.req_obj.req;
-+	lat_buf->vb2_v4l2_src = src;
-+
- 	dst = &lat_buf->ts_info;
- 	v4l2_m2m_buf_copy_metadata(src, dst, true);
- 	vsi->frame.cur_ts = dst->vb2_buf.timestamp;
-@@ -2187,7 +2189,7 @@ static int vdec_av1_slice_core_decode(struct vdec_lat_buf *lat_buf)
- 		       &instance->core_vsi->trans.dma_addr_end);
- 	vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, instance->core_vsi->trans.dma_addr_end);
- 
--	ctx->dev->vdec_pdata->cap_to_disp(ctx, 0, lat_buf->src_buf_req);
-+	ctx->dev->vdec_pdata->cap_to_disp(ctx, 0, lat_buf->src_buf_req, lat_buf->vb2_v4l2_src);
- 
- 	return 0;
- 
-@@ -2196,7 +2198,8 @@ static int vdec_av1_slice_core_decode(struct vdec_lat_buf *lat_buf)
- 	vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dma_addr_end);
- 
- 	if (fb)
--		ctx->dev->vdec_pdata->cap_to_disp(ctx, 1, lat_buf->src_buf_req);
-+		ctx->dev->vdec_pdata->cap_to_disp(ctx, 1, lat_buf->src_buf_req,
-+						  lat_buf->vb2_v4l2_src);
- 
- 	return ret;
- }
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-index 0e741e0dc8ba..7033999018ca 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-@@ -533,7 +533,7 @@ static int vdec_h264_slice_core_decode(struct vdec_lat_buf *lat_buf)
- 
- vdec_dec_end:
- 	vdec_msg_queue_update_ube_rptr(&lat_buf->ctx->msg_queue, share_info->trans_end);
--	ctx->dev->vdec_pdata->cap_to_disp(ctx, !!err, lat_buf->src_buf_req);
-+	ctx->dev->vdec_pdata->cap_to_disp(ctx, !!err, lat_buf->src_buf_req, lat_buf->vb2_v4l2_src);
- 	mtk_vdec_debug(ctx, "core decode done err=%d", err);
- 	ctx->decoded_frame_cnt++;
- 	return 0;
-@@ -606,6 +606,7 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 
- 	inst->vsi->dec.nal_info = buf[nal_start_idx];
- 	lat_buf->src_buf_req = src_buf_info->m2m_buf.vb.vb2_buf.req_obj.req;
-+	lat_buf->vb2_v4l2_src = &src_buf_info->m2m_buf.vb;
- 	v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb, &lat_buf->ts_info, true);
- 
- 	err = vdec_h264_slice_fill_decode_parameters(inst, share_info);
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
-index 06ed47df693b..67fe3c4bfac3 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
-@@ -742,6 +742,7 @@ static int vdec_hevc_slice_setup_lat_buffer(struct vdec_hevc_slice_inst *inst,
- 
- 	src_buf_info = container_of(bs, struct mtk_video_dec_buf, bs_buffer);
- 	lat_buf->src_buf_req = src_buf_info->m2m_buf.vb.vb2_buf.req_obj.req;
-+	lat_buf->vb2_v4l2_src = &src_buf_info->m2m_buf.vb;
- 	v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb, &lat_buf->ts_info, true);
- 
- 	*res_chg = inst->resolution_changed;
-@@ -961,7 +962,7 @@ static int vdec_hevc_slice_core_decode(struct vdec_lat_buf *lat_buf)
- 
- vdec_dec_end:
- 	vdec_msg_queue_update_ube_rptr(&lat_buf->ctx->msg_queue, share_info->trans.dma_addr_end);
--	ctx->dev->vdec_pdata->cap_to_disp(ctx, !!err, lat_buf->src_buf_req);
-+	ctx->dev->vdec_pdata->cap_to_disp(ctx, !!err, lat_buf->src_buf_req, lat_buf->vb2_v4l2_src);
- 	mtk_vdec_debug(ctx, "core decode done err=%d", err);
- 	ctx->decoded_frame_cnt++;
- 	return 0;
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-index 69d37b93bd35..a7734d032269 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-@@ -723,6 +723,7 @@ static int vdec_vp9_slice_setup_lat_from_src_buf(struct vdec_vp9_slice_instance
- 		return -EINVAL;
- 
- 	lat_buf->src_buf_req = src->vb2_buf.req_obj.req;
-+	lat_buf->vb2_v4l2_src = src;
- 
- 	dst = &lat_buf->ts_info;
- 	v4l2_m2m_buf_copy_metadata(src, dst, true);
-@@ -2188,7 +2189,7 @@ static int vdec_vp9_slice_core_decode(struct vdec_lat_buf *lat_buf)
- 	mtk_vdec_debug(ctx, "core dma_addr_end 0x%lx\n",
- 		       (unsigned long)pfc->vsi.trans.dma_addr_end);
- 	vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dma_addr_end);
--	ctx->dev->vdec_pdata->cap_to_disp(ctx, 0, lat_buf->src_buf_req);
-+	ctx->dev->vdec_pdata->cap_to_disp(ctx, 0, lat_buf->src_buf_req, lat_buf->vb2_v4l2_src);
- 
- 	return 0;
- 
-@@ -2198,7 +2199,8 @@ static int vdec_vp9_slice_core_decode(struct vdec_lat_buf *lat_buf)
- 		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dma_addr_end);
- 
- 		if (fb)
--			ctx->dev->vdec_pdata->cap_to_disp(ctx, 1, lat_buf->src_buf_req);
-+			ctx->dev->vdec_pdata->cap_to_disp(ctx, 1, lat_buf->src_buf_req,
-+							  lat_buf->vb2_v4l2_src);
- 	}
- 	return ret;
- }
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.h
-index 1d9beb9e4a14..b0f2443d186f 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.h
-@@ -55,6 +55,7 @@ struct vdec_msg_queue_ctx {
-  * @rd_mv_addr:	mv addr for av1 lat hardware output, core hardware input
-  * @tile_addr:	tile buffer for av1 core input
-  * @ts_info: need to set timestamp from output to capture
-+ * @vb2_v4l2_src: the vb2 buffer of output queue
-  * @src_buf_req: output buffer media request object
-  *
-  * @private_data: shared information used to lat and core hardware
-@@ -71,6 +72,7 @@ struct vdec_lat_buf {
- 	struct mtk_vcodec_mem rd_mv_addr;
- 	struct mtk_vcodec_mem tile_addr;
- 	struct vb2_v4l2_buffer ts_info;
-+	struct vb2_v4l2_buffer *vb2_v4l2_src;
- 	struct media_request *src_buf_req;
- 
- 	void *private_data;
+On Wed, Jan 10, 2024 at 03:14:37PM +0100, Julien Stephan wrote:
+> This series adds the support of the Mediatek ISP3.0 found on some
+> Mediatek SoCs such as the mt8365. The driver is divided into 2 parts:
+> 
+> * SENINF: the sensor interface
+> * CAMSV: this driver provides a path to bypass the SoC ISP so that image
+>   data coming from the SENINF can go directly into memory without any
+>   image processing. This allows the use of an external ISP or camera
+>   sensor directly.
+
+I'm afraid this doesn't compile based on the latest media tree's master
+branch, scheduled for v6.8-rc1. I've pushed the following fixes to [1]:
+
+0d2e75fb8909 media: mediatek: isp_30: Update to new subdev state API
+05dc498f151a media: mediatek: isp_30: Update to new subdev state API
+
+You can squash those in v5 when you will rebase on v6.8-rc1.
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/pinchartl/linux.git/log/?h=mtk/v6.8/pumpkin/camera
+
+> The SENINF driver is based on previous work done by Louis Kuo available
+> as an RFC here: https://lore.kernel.org/all/20200708104023.3225-1-louis.kuo@mediatek.com/
+> 
+> This series depends on the following series for the phy [1]
+> 
+> Changes in v4:
+> - fix suspend/resume deadlock
+> - fix various locking issues reported by Laurent Pinchart on v3
+> - run LOCKDEP
+> - add missing include reported by kernel-test-robot for non mediatek arch and COMPILE_TEST=y
+> - use atomic poll inside mtk_camsv30_setup
+> - drop second lane support as it was not used 
+> - remove useless members in structs
+> - fix media entity initialization
+> - initialize correct pad for camsv video device
+> - add isp support in mt8365.dtsi
+> - rebase on 6.7
+> 
+> Changes in v3:
+> - fix a lot of formatting issues/coding style issues found in camsv/seninf reported by Angelo on v2
+> - fix camsv/seninf binding file error reported by Rob
+> 
+> Changes in v2:
+> - renamed clock `cam_seninf` to `camsys`
+> - renamed clock `top_mux_seninf` to `top_mux`
+> - moved phy properties from port nodes to top level
+> - remove patternProperties
+> - specify power management dependency in the cover letter description to fix
+>   missing include in dt-binding example
+> - change '$ref' properties on some endpoint nodes from
+>   '$ref: video-interfaces.yaml#' to '$ref: /schemas/graph.yaml#/$defs/endpoint-base'
+>  where applicable
+> 
+> Best
+> Julien Stephan
+> 
+> [1] : https://lore.kernel.org/all/20230620121928.1231745-1-jstephan@baylibre.com/
+> 
+> 
+> 
+> Louis Kuo (2):
+>   dt-bindings: media: add mediatek ISP3.0 sensor interface
+>   media: platform: mediatek: isp_30: add mediatek ISP3.0 sensor
+>     interface
+> 
+> Phi-bang Nguyen (2):
+>   dt-bindings: media: add mediatek ISP3.0 camsv
+>   media: platform: mediatek: isp_30: add mediatek ISP3.0 camsv
+> 
+>  .../bindings/media/mediatek,mt8365-camsv.yaml |  109 ++
+>  .../media/mediatek,mt8365-seninf.yaml         |  259 +++
+>  MAINTAINERS                                   |   10 +
+>  arch/arm64/boot/dts/mediatek/mt8365.dtsi      |  128 ++
+>  drivers/media/platform/mediatek/Kconfig       |    1 +
+>  drivers/media/platform/mediatek/Makefile      |    1 +
+>  drivers/media/platform/mediatek/isp/Kconfig   |    2 +
+>  drivers/media/platform/mediatek/isp/Makefile  |    3 +
+>  .../platform/mediatek/isp/isp_30/Kconfig      |   35 +
+>  .../platform/mediatek/isp/isp_30/Makefile     |    4 +
+>  .../mediatek/isp/isp_30/camsv/Makefile        |    7 +
+>  .../mediatek/isp/isp_30/camsv/mtk_camsv.c     |  328 ++++
+>  .../mediatek/isp/isp_30/camsv/mtk_camsv.h     |  199 +++
+>  .../isp/isp_30/camsv/mtk_camsv30_hw.c         |  427 +++++
+>  .../isp/isp_30/camsv/mtk_camsv30_regs.h       |   60 +
+>  .../isp/isp_30/camsv/mtk_camsv_video.c        |  774 +++++++++
+>  .../mediatek/isp/isp_30/seninf/Makefile       |    5 +
+>  .../mediatek/isp/isp_30/seninf/mtk_seninf.c   | 1488 +++++++++++++++++
+>  .../isp/isp_30/seninf/mtk_seninf_reg.h        |  112 ++
+>  19 files changed, 3952 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8365-camsv.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8365-seninf.yaml
+>  create mode 100644 drivers/media/platform/mediatek/isp/Kconfig
+>  create mode 100644 drivers/media/platform/mediatek/isp/Makefile
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/Kconfig
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/Makefile
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/Makefile
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv30_hw.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv30_regs.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv_video.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/seninf/Makefile
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/seninf/mtk_seninf.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/seninf/mtk_seninf_reg.h
+
 -- 
-2.18.0
+Regards,
 
+Laurent Pinchart
 
