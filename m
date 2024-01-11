@@ -4,45 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3522AC47DA2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 04:51:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E10ACC4707B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 06:19:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lAETidl+Wl8rX9fUWkjIkcQ01vBdcd3CEgjPvhm/LgI=; b=HaAe+0gK+r5Epfn9tVApmBLUWe
-	PhjuO2ZpKZwYTKTaWMWZNFs1ua4zpEHxnlqSEbONcURyMN8eBrwh6BPXjRWaOSl5oyb+mqQZJJr9w
-	Ts1ZdnIP4pTt1JtyVTdrN+Eoe7lo10kqqLU/l9VhhQMs6i8I4OPQv7KMjv0lZSXd8WXmIUChozgjc
-	aOsccV8H/GSS6+xNPMguhq28xQTTAjXLxhGGvLGAuGOCwHS0j1+Q7RhwnkUaNLVNL6PB8C3uIlV1Z
-	UNQa93N219ndG2AxWjmFJ+RPJwx+1M+f0AdyG0If3gNs8I3T4uPeguJybwZn10d0j3QFdtQqfHJCx
-	PYensTHQ==;
+	bh=IC3+GLMr4LDNrilPLuhGf61AY9/fwVusNXb18FDOfF8=; b=mOVKWJXZA5Ch9rgg9sxlKViH8q
+	D8skMg2EO30zGaMS+hp/dFRPijaLKprK6sbd03VQQoJkxUu1D3emdI4zpDsJhlV+W92Hj0ailpcz+
+	7ULzhbdLab1xElPAjAVLD7drZTGQ/IlhVbNB33giDYBGlJPomLiWr9okrgBpq6vtWQgZkYM3kL3Af
+	Y96OzkRkAzBKtRQBeaUbE/y6B0Yu4aIvv/AghtPz7n8wKUr5qfu0BKRGKKbqPyGMKufB72mCcQJN4
+	Q4vAoW7uzW2/7MIkc75uDSR7Lf79eJHghqgQRK4341A0k8dDVDEDPub43dzJgXHNeon80pu6AzRUr
+	g9ggfC6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNn2Q-00FrDo-0E;
-	Thu, 11 Jan 2024 04:51:30 +0000
-Received: from [50.53.46.231] (helo=bombadil.infradead.org)
-	by bombadil.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNn2N-00FrCJ-15;
-	Thu, 11 Jan 2024 04:51:27 +0000
-From: Randy Dunlap <rdunlap@infradead.org>
-To: linux-kernel@vger.kernel.org
-Cc: Randy Dunlap <rdunlap@infradead.org>,
-	kernel test robot <lkp@intel.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	linux-gpio@vger.kernel.org,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] pinctrl: mt7986: excise kernel-doc warnings
-Date: Wed, 10 Jan 2024 20:51:26 -0800
-Message-ID: <20240111045126.13768-1-rdunlap@infradead.org>
-X-Mailer: git-send-email 2.43.0
+	id 1rNoPG-00G48r-1B;
+	Thu, 11 Jan 2024 06:19:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1rNoPD-00G47v-2U
+	for linux-mediatek@lists.infradead.org;
+	Thu, 11 Jan 2024 06:19:09 +0000
+X-UUID: 4f326944b04911ee9a662f17bb45267e-20240110
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=IC3+GLMr4LDNrilPLuhGf61AY9/fwVusNXb18FDOfF8=;
+	b=W167zq8O5+tUC1JgntuS8WGQCz3XSlRmgXEhZw6pRRu3Wki/kbrXwWbkB/phukp4kD/81p/QlNTJaYxsX1eQGHrS2HsIP3WSeCi4hnf/aKjM/jTOH+HDK3puHWBUAM2mktlL31N/I/qUXeFMoMPQsvIGHMoz/BJcarA4ksCM73o=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35,REQID:5c05d3e2-da13-4b0f-bf14-60f76039ca3d,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:5d391d7,CLOUDID:ad67ba82-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 4f326944b04911ee9a662f17bb45267e-20240110
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 573353666; Wed, 10 Jan 2024 23:19:00 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 11 Jan 2024 14:18:57 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 11 Jan 2024 14:18:57 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <km.lin@mediatek.com>,
+	<robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+	<Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>, Leon Yen <leon.yen@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt792x: add the illegal value check for mtcl table of acpi
+Date: Thu, 11 Jan 2024 14:18:56 +0800
+Message-ID: <20240111061856.16370-1-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20240110_221907_843731_6B39B631 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,42 +87,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix kernel-doc warnings for enum (anonymous): the enum values are not
-documented, so don't indicate that the comment contains kernel-doc
-notation.
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-pinctrl-mt7986.c:68: warning: Enum value 'GPIO_BASE' not described in enum '(anonymous)'
-pinctrl-mt7986.c:68: warning: Enum value 'IOCFG_RT_BASE' not described in enum '(anonymous)'
-pinctrl-mt7986.c:68: warning: Enum value 'IOCFG_RB_BASE' not described in enum '(anonymous)'
-pinctrl-mt7986.c:68: warning: Enum value 'IOCFG_LT_BASE' not described in enum '(anonymous)'
-pinctrl-mt7986.c:68: warning: Enum value 'IOCFG_LB_BASE' not described in enum '(anonymous)'
-pinctrl-mt7986.c:68: warning: Enum value 'IOCFG_TR_BASE' not described in enum '(anonymous)'
-pinctrl-mt7986.c:68: warning: Enum value 'IOCFG_TL_BASE' not described in enum '(anonymous)'
+The mtcl table provided regulatory information for 5.9/6Ghz channels and
+configured by platform venders. So, sometimes vendors may write illegal
+values, and therefore it is necessary to check and add corresponding
+handling for such cases.
 
-Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
-Reported-by: kernel test robot <lkp@intel.com>
-Closes: https://lore.kernel.org/oe-kbuild-all/202312110210.x3vxq42A-lkp@intel.com/
-Cc: Linus Walleij <linus.walleij@linaro.org>
-Cc: linux-gpio@vger.kernel.org
-Cc: Sean Wang <sean.wang@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org
+Signed-off-by: Leon Yen <leon.yen@mediatek.com>
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 ---
- drivers/pinctrl/mediatek/pinctrl-mt7986.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
-diff -- a/drivers/pinctrl/mediatek/pinctrl-mt7986.c b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
---- a/drivers/pinctrl/mediatek/pinctrl-mt7986.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
-@@ -16,7 +16,7 @@
- 		PIN_FIELD_CALC(_s_pin, _e_pin, _i_base, _s_addr, _x_addrs, _s_bit,	\
- 			_x_bits, 32, 0)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+index e7afea87e82e..c64562216caa 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+@@ -353,11 +353,15 @@ static u8
+ mt792x_acpi_get_mtcl_map(int row, int column, struct mt792x_asar_cl *cl)
+ {
+ 	u8 config = 0;
++	u8 mode_6g, mode_5g9;
  
--/**
-+/*
-  * enum - Locking variants of the iocfg bases
-  *
-  * MT7986 have multiple bases to program pin configuration listed as the below:
+-	if (cl->cl6g[row] & BIT(column))
+-		config |= (cl->mode_6g & 0x3) << 2;
++	mode_6g = (cl->mode_6g > 0x02) ? 0 : cl->mode_6g;
++	mode_5g9 = (cl->mode_5g9 > 0x01) ? 0 : cl->mode_5g9;
++
++	if ((cl->cl6g[row] & BIT(column)) || cl->mode_6g == 0x02)
++		config |= (mode_6g & 0x3) << 2;
+ 	if (cl->version > 1 && cl->cl5g9[row] & BIT(column))
+-		config |= (cl->mode_5g9 & 0x3);
++		config |= (mode_5g9 & 0x3);
+ 
+ 	return config;
+ }
+-- 
+2.18.0
+
 
