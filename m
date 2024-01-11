@@ -4,78 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B044C47258
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 18:11:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDD78C47077
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jan 2024 19:55:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GNwfPpOc+w6+qUvr4c6LiIOhhkOq06R1P3AdfBXYN2Y=; b=UiCmBr10HHADdFrVOB11fmUegc
-	WGq2RbupCRNA+Mp3b4+fYlUBIwZ6rNxnl08VPpcAWE5rF5Qgrjnr/4ZhwB+K3o5h9NdOW0s9ml+4l
-	lvoikSAZl5BDdoplNk9z5mSxhKfmCEiFx7T9lY8LWq6+zyQrSBUbWXCMewfytLdYxaHK0o5SbPtbp
-	65Zk1NJz6ujlYg0ycoxkxNxxlPcnxY3g/FF4aGKVKN6/LrJ+clQCihTyr1+diY7UkJtPau0KJbqv3
-	CCj+HdutPmAPrjTRWe0kvIJ0LZKZDG8VMawiIA1dwHG7wW5ylYRLzitYrxRAr80/Z85/8BEq7nM/C
-	+2u5z46Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6TLPOhvUQxQxpHJYecTyjhD9JdQ3vTgQmkBcVauqkyg=; b=KYK/i521I+f6gfbIURYDTz+rns
+	mqpfmFMr8ZHuDlLTi4cG8feY+U50GXRPW178O2D5pCYl9i0bJNRyvHu7WjuZ0IAnJ3w8tiCbCHGrZ
+	mJn+EE61A4pxsCA15kO/YSSnQsl1dIZF7YzxDPShmdnShOQGip5YgFT3qf8G3y2Rx0gUTJaXAPEsP
+	nPJlpm8SO90gC7SY+743I3KAj6OVhaHndnQGAGx/B5cDCBEA6T+fa3A6XJFuxIlvxGXv2rEYHapj6
+	5gLifegsXMW/d9raYZvXiqeq3Mf/E/NNcBjNvSJ7+PNHl9O9AwvFKV3SgQqVTdhwdz5QpgyfxoztM
+	RqEr74Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNzWq-000njW-2n;
-	Thu, 11 Jan 2024 18:11:44 +0000
-Received: from mail-oi1-x232.google.com ([2607:f8b0:4864:20::232])
+	id 1rO19d-0012JU-20;
+	Thu, 11 Jan 2024 19:55:53 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNzWm-000nhj-1d
-	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Jan 2024 18:11:42 +0000
-Received: by mail-oi1-x232.google.com with SMTP id 5614622812f47-3bbc755167fso5025998b6e.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jan 2024 10:11:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1704996697; x=1705601497; darn=lists.infradead.org;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=GNwfPpOc+w6+qUvr4c6LiIOhhkOq06R1P3AdfBXYN2Y=;
-        b=YMS2RajpQQ71eu/F8BeBcMAElVTBWTyAib27FZD1kOHKcY6SfN/vG/KytqRV95wrn8
-         fak9JCqkb0w5FM0gXVifR43Zj9earr5SNX7UQKYWzuna20Mbsh3fy1ZPOKUZUN9sN6Pm
-         qLw16nAZwAURGbbiZbr+5Zl0sdWk3LR+0m4C4GLYK+QyoIrYGFHO4mva4PeJ0TejTiD8
-         JSGYIx6PgXdG9Mm2ACN7tOwjJwPK1EvMC5fxVW6fNZSjJrJ/w8ZcnXlgcz6vIyU1VJnV
-         zE9Eyh0wtEYbi6krfGWM0En2tibVdGog1AuZHIRqnNXufNV8/kHcLWKkAtdlWwsRfRjv
-         CdrQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704996697; x=1705601497;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=GNwfPpOc+w6+qUvr4c6LiIOhhkOq06R1P3AdfBXYN2Y=;
-        b=BrkJcGPkeujCU6nPR7bJhzG6qS/kMkXi3nzsf9MmTMNf0ieLLGOEmWth11H4yymrWb
-         eKTPdhNE1ItiHSpkxBbTkyDUYoPhP8Kkycun8qSsXnl+I69/9H1h1Nno6Q9Vyhm8YD6f
-         pE6excFPnAQi34pFk10s7AvCCIy4co24PfOUC3Xoye0a2TJPwIoxe3R/vFjeVlUSfrEB
-         9Ts/2+uRaB1NOif/Au60DNlC0Il2OMhAI2UdlWvWhAsA0AcjgVusbHgsgfDG8iBw37yn
-         tV8IN0VCqRZRljmC4FDKXkBhJg+3qBO85znRXPJBYiWmOvyptgUQvThuyV/Gmj0oG+EJ
-         Swjg==
-X-Gm-Message-State: AOJu0Yy7VMkBfwUtk9LtOTJylsz2A5urnvRaHGITYY155apvd8LH8Ktw
-	sgQbwQrFlTJx5Um3DoRPugWy5WV3za0bKLG002XGsSBP69OWgg==
-X-Google-Smtp-Source: AGHT+IEOQA3VGINqdDq3XtCaDe7x77fu7+Iwu6ym4ijoXArXnWe9XYkfG56HHC5HEq3XFTuTf4bmEuP1OyFcAzpA/9w=
-X-Received: by 2002:a05:6808:3989:b0:3bd:5006:e313 with SMTP id
- gq9-20020a056808398900b003bd5006e313mr78961oib.105.1704996696986; Thu, 11 Jan
- 2024 10:11:36 -0800 (PST)
+	id 1rO19Z-0012It-24;
+	Thu, 11 Jan 2024 19:55:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1705002944;
+	bh=SmeOEDSBky71Md5WcIgFutmSu6F+tVl6/qd5e5Nr00I=;
+	h=From:To:Cc:Subject:Date:From;
+	b=vXUnY8TokOIid07j7JM3xAa6tWdwjj2xyHSGuAXP1cTmJrPb+dtU9lKsB3GINxata
+	 uuEkniEOyCZ+2jDJ1Oor6r9Z9D5oecP/6jjVjT0/NytnnbtvFBp84swvmWtXpzVap6
+	 2tzb9d3AIWMTzvDV+JXpsJyZDuDb3ql2UTdv04Uo07yd+Rfjoe7taQYgl3RQnhkyis
+	 maRheIu04/BTdEN+WxUapufoIdG+H51lE+53vrQiOsXSuq2YE0LoKOuzAW9+VeAFZQ
+	 IN81QP0RDna7P9+REF+hROxy82SpudMNKHzeQubyYQqHezxy9bXqatha62wQs6F3Kv
+	 5fC+RDYnksbfg==
+Received: from localhost.localdomain (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 35F703780894;
+	Thu, 11 Jan 2024 19:55:39 +0000 (UTC)
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: kernel@collabora.com,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Enric Balletbo i Serra <eballetbo@kernel.org>,
+	Ikjoon Jang <ikjn@chromium.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Stephen Boyd <swboyd@chromium.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] arm64: dts: mt8183: juniper: Remove CrosEC base detection node
+Date: Thu, 11 Jan 2024 16:53:12 -0300
+Message-ID: <20240111195335.871096-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20231220121110.1441160-1-vignesh.raman@collabora.com>
- <CAPj87rOMPioOK0r74vcnVkXusm6Nah6KNUWyxYgpVLdkMNtW2g@mail.gmail.com> <ad7cbd59-5264-96e8-5e9b-aafde8028e41@collabora.com>
-In-Reply-To: <ad7cbd59-5264-96e8-5e9b-aafde8028e41@collabora.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Thu, 11 Jan 2024 18:11:25 +0000
-Message-ID: <CAPj87rPRRfJmxTev50YqxBizyvzCUhCiymoV_bdqsZ-zvcREfA@mail.gmail.com>
-Subject: Re: [PATCH v1 0/8] drm/ci: Add support for GPU and display testing
-To: Helen Koike <helen.koike@collabora.com>, Dave Airlie <airlied@gmail.com>, 
-	Sima Vetter <daniel@ffwll.ch>, Daniel Stone <daniels@collabora.com>, Emma Anholt <emma@anholt.net>, 
-	linux-rockchip <linux-rockchip@lists.infradead.org>, guilherme.gallo@collabora.com, 
-	sergi.blanch.torne@collabora.com, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	David Heidelberg <david.heidelberg@collabora.com>, Rob Clark <robdclark@gmail.com>, 
-	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240111_101140_726480_03671584 
-X-CRM114-Status: GOOD (  17.43  )
+X-CRM114-CacheID: sfid-20240111_115549_844638_28DEC1C9 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,38 +82,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Vignesh,
+The cbas node is used to describe base detection functionality in the
+ChromeOS EC, which is used for units that have a detachable keyboard and
+thus rely on this functionality to switch between tablet and laptop
+mode.
 
-On Wed, 10 Jan 2024 at 10:47, Vignesh Raman <vignesh.raman@collabora.com> wrote:
-> On 09/01/24 19:08, Daniel Stone wrote:
-> > A better sequencing would be something like:
-> >    1. add ANX7625 config
-> >    2. refactor _existing_ MTK display jobs to use YAML includes, change
-> > the existing job name, and rename the existing xfail set, remove
-> > IGT_FORCE_DRIVER from the script since it's now set by the job
-> >    3. add MTK Panfrost+PVR GPU jobs with new xfails, add xfail entry to
-> > MAINTAINERS
-> >    4+5: same as 2+3 but for Amlogic
-> >    6+7: same as 2+3 but for Rockchip
-> >
-> > Then the separate rename/update xfail commits just disappear, as does
-> > the removal of IGT_FORCE_DRIVER, because it's just done incrementally
-> > as part of the commits which change the related functionality. It's
-> > extremely important that every change can work standalone, instead of
-> > introducing intermediate breakage which is only fixed in later commits
-> > in the series.
->
-> Thank you for reviewing the patches. I agree, will follow this sequence
-> and send a v2 version.
+The juniper-sku16 machine is a convertible, meaning the keyboard can be
+flipped but not detached. The detection for the keyboard getting
+flipped is handled by the driver bound to the keyboard-controller
+node in the EC.
 
-Alongside Rob's patch to add msm-specific tests to the runlist, we'd
-need to add the Panfrost-specific tests. Whilst we're here, we might
-as well add the vc4/v3d/etnaviv/lima tests so they can use it in
-future.
+Since there is no base detection in this machine, and the device backed
+by this node fails to probe and goes unused, delete the node from the
+DT.
 
-Panfrost should also skip kms_.* tests - since it's not a KMS driver,
-it can't run the KMS tests, so there's no point in trying.
+Fixes: 4fa8492d1e5b ("arm64: dts: mt8183: add cbas node under cros_ec")
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Cheers,
-Daniel
+---
+
+ .../boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts   | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts
+index 8ac6bf5b17f9..8096ca215258 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts
+@@ -13,3 +13,6 @@ / {
+ 	compatible = "google,juniper-sku16", "google,juniper", "mediatek,mt8183";
+ };
+ 
++&cros_ec {
++	/delete-node/ cbas;
++};
+-- 
+2.43.0
+
 
