@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ADCEC4707C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 09:47:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFCB6C4707C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 09:47:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QK557IRd+wZON+YYTQtRDI9+cOJe6LiwCLXhqNwKlzY=; b=djOiSdaxwezUpaGR7vIMXwVk+T
-	hRhH3EIN33y8zATG0S+8EORO2LKPoVJ0fFb7AzHpR805Pt4TwcuR1mVHtnqwkn+PurNs4J1J09gxC
-	N3u97q7yfCoIsPIKh8zsscGJiWkjE4qzuSdI8GiBPLaZ6o3/qdx1VcF3ens4t69b6Nh/LtrxbDgh3
-	Rscv3pNCxR0B9OltkRgNE/G5Cf12a3zuOZ7GwF4Nc9kYb2/bXaAj/W8EZddER2mGQ5xrft3SlUjbv
-	MPmUeG+EYg7dKjfuUN/N00Qb2BQrK/vOvZ5KOfZq4HMIHV0ooMMVsk1zNDP4zuMDz7zvjclCZxSV1
-	uqnW37Ww==;
+	bh=4hDzwVL9hlvrw+EBTBX0nN4O9YeKBoXB8PgMdGHs6jY=; b=E9AxVqMVYQlS0u8QS8rcsGaENw
+	UqlKL36YuiRF6bXDnMiyaesyiA7ZCteNbisV6Rvu1qug/Kw3OrE3wRVDnHp+IML3VnIS2AId8G4WC
+	cwuYdDo9Y+9ot6ywa0ofwuZEsZyaRwQ5L0uvmk34DsdQDs6k/OixEAIyPRKv5MaYsXN7nDf+Clutr
+	QZI7bCOk83aZHHtr73v2qtVFFongMuqaVSxaB8rGyqdjQOfvTfwa5i+6TtjwFQzz64aobVv/f5nqb
+	6eKnzvWb8shQ8+tssWSSyHG8PZJ+2wN46KyOIbbrB5SOmjlKBFPs5st5dFZ+SCUrD5tmW/8KYZrZ0
+	YA1G7+nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOE8F-002Nhc-20;
-	Fri, 12 Jan 2024 09:47:19 +0000
+	id 1rOE8N-002Noz-1F;
+	Fri, 12 Jan 2024 09:47:27 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOE7p-002NDM-03;
-	Fri, 12 Jan 2024 09:46:54 +0000
+	id 1rOE7q-002NEP-09;
+	Fri, 12 Jan 2024 09:46:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705052811;
-	bh=45PTVpu/MLu2XZLF4j9xTan9RiiNLjDK7dk9hPp3Oa4=;
+	s=mail; t=1705052812;
+	bh=gL9dBZTGnU9IkMRPqj3ewg2fNvV9dpUlTIdwuTp/HeU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=h32px89Di+MFxlU4WfgB9Ae9JEHxh0IupX7Upv6vnZxdkdRucyxJFba76WXCH3o8H
-	 3hc1V6jW5JIsW/bN3t2kPvFEciK08WNpZauxW0Q59JIOHk2UsVvh8c0Eql32QnDiEz
-	 JUPgbLF2TX0Oh43I6EgGRC9kLjA7em93mvnwWckmkdCVz4ayd+YFvK0N0h3RXQayox
-	 VhakFOtsGUaDyOLfSGz7g6nHMVlSvQ7WUgdKn5EXEo0PemN+ca3oUhhNzheCIhvgyD
-	 GOQYzfeu5V3i7R33ZlWcnDTdyOauesNI+UhxC7amsZTN4aza+7meH3c4FszDbYpNVr
-	 MyoSxa/EeNy0g==
+	b=JgameZ7Qfy0yT8alx2+YKNEednVHANfwOvPmh9XyzJpaRvDVfl7mNGFizFGxgZlqr
+	 +sljUdc6UkzHSpUgDEgnOoTObIgshFnxILuxih0/Lg8RHIztL+IXyqjJkweN7J0h2A
+	 48neMrJYNXFvRbHlTkRVseZ4/n5wxp3gmyRZvY4c9VQBq+LqhLKy2UZERh53VOlLxk
+	 LHMrkGCnd8duiyb9AdrBfQ7/P77NMtWW+i62CZ5217BIvAMFwI72fPCd2CVtcKNx16
+	 4Hjr6PJw6CAaHp5GX8jZBdSLUAqAZUzyD9ypwEF7gghkoNri9Fkdy6tY4NSX3WFNyk
+	 lzbW0PqEiO2uA==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0F41A3782051;
-	Fri, 12 Jan 2024 09:46:51 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0D9443782035;
+	Fri, 12 Jan 2024 09:46:52 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org
 Cc: robh+dt@kernel.org,
@@ -59,17 +59,17 @@ Cc: robh+dt@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH 13/15] arm64: dts: mediatek: radxa-nio-12l: Enable SPI1/2 for 40pin header
-Date: Fri, 12 Jan 2024 10:46:30 +0100
-Message-ID: <20240112094632.66310-14-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 14/15] arm64: dts: mediatek: radxa-nio-12l: Enable UART1 for 40pin header
+Date: Fri, 12 Jan 2024 10:46:31 +0100
+Message-ID: <20240112094632.66310-15-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240112094632.66310-1-angelogioacchino.delregno@collabora.com>
 References: <20240112094632.66310-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240112_014653_194163_2E24507C 
-X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-CacheID: sfid-20240112_014654_215637_41B9D82A 
+X-CRM114-Status: UNSURE (   9.71  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,72 +85,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable the SPI1 and SPI2 controllers as pins for those are exposed on
-the 40pins header.
+Enable the secondary UART port, exposed on the 40pins header.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../dts/mediatek/mt8395-radxa-nio-12l.dts     | 40 +++++++++++++++++++
- 1 file changed, 40 insertions(+)
+ .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts     | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-index be2094b8fe3c..191c059f5c97 100644
+index 191c059f5c97..b0d66fa139b5 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
 +++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-@@ -582,6 +582,26 @@ pins-bus {
+@@ -609,6 +609,13 @@ pins-bus {
  		};
  	};
  
-+	spi1_pins: spi1-default-pins {
++	uart1_pins: uart1-pins {
 +		pins-bus {
-+			pinmux = <PINMUX_GPIO136__FUNC_SPIM1_CSB>,
-+				 <PINMUX_GPIO137__FUNC_SPIM1_CLK>,
-+				 <PINMUX_GPIO138__FUNC_SPIM1_MO>,
-+				 <PINMUX_GPIO139__FUNC_SPIM1_MI>;
-+			bias-disable;
++			pinmux = <PINMUX_GPIO102__FUNC_UTXD1>,
++				 <PINMUX_GPIO103__FUNC_URXD1>;
 +		};
 +	};
 +
-+	spi2_pins: spi2-default-pins {
-+		pins-bus {
-+			pinmux = <PINMUX_GPIO140__FUNC_SPIM2_CSB>,
-+				 <PINMUX_GPIO141__FUNC_SPIM2_CLK>,
-+				 <PINMUX_GPIO142__FUNC_SPIM2_MO>,
-+				 <PINMUX_GPIO143__FUNC_SPIM2_MI>;
-+			bias-disable;
-+		};
-+	};
-+
- 	uart0_pins: uart0-pins {
- 		pins-bus {
- 			pinmux = <PINMUX_GPIO98__FUNC_UTXD0>,
-@@ -622,6 +642,26 @@ &scp {
+ 	wifi_vreg_pins: wifi-vreg-pins {
+ 		pins-wifi-pmu-en {
+ 			pinmux = <PINMUX_GPIO65__FUNC_GPIO65>;
+@@ -707,6 +714,13 @@ &uart0 {
  	status = "okay";
  };
  
-+&spi1 {
++&uart1 {
 +	/* Exposed at 40 pin connector */
-+	pinctrl-0 = <&spi1_pins>;
++	pinctrl-0 = <&uart1_pins>;
 +	pinctrl-names = "default";
-+	mediatek,pad-select = <0>;
-+	#address-cells = <1>;
-+	#size-cells = <0>;
 +	status = "okay";
 +};
 +
-+&spi2 {
-+	/* Exposed at 40 pin connector */
-+	pinctrl-0 = <&spi2_pins>;
-+	pinctrl-names = "default";
-+	mediatek,pad-select = <0>;
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	status = "okay";
-+};
-+
- &spmi {
- 	#address-cells = <2>;
- 	#size-cells = <0>;
+ &xhci0 {
+ 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
+ 	vbus-supply = <&otg_vbus_regulator>;
 -- 
 2.43.0
 
