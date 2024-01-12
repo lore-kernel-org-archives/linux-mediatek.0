@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 174E7C4706C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 09:21:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5DD0C4706C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 09:21:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=plNlMh6L7Bhe6s5CZZaLhR2KjGh0ZZE3dRsgkTAADBM=; b=m8QXHsRoyUjHvgFcYPlT79SxAa
-	eeuIxAUPz5Tq04yR7qSOrrIfLZic6E1mf4c/YbV9sSI1XBgYh/DLxxwpB2o89tatMBQeVRH+HIo/x
-	weFt5sephxkDgmcH9XGOJmDyUlJFYmoe57VJ/9/vuDL1H9VASHbl8yBkvqDNcgfJNnv3ovqpTWHdp
-	i+9EcRcSxNH1mEoTuLwaKVNV9s8ZJEBbxXGvmr8vOJEJp01E1V7LNz5PvMxWwy2JcNeBjMY+XxsgS
-	HwbfQdMWDarxGZaqLcjW2/jZ0M6aq1roDV4WkktU2wwg5CtJrzLr4F3PlmgizwsSaSs7QA+YoXgpw
-	YFdLZzxw==;
+	bh=y+0mAD68siKHkA4YtgC2Wh8sXu2aPnlLjtzoxs7OLwk=; b=koleKF/+eg3UJ0NMgar5d7wojA
+	9TgdIVhSnsWKjm+EC5i5roLsjDBPRb0L7p5BcKOdqVRCvAbzW6cWJ3hQNW7BiSQPMoGWWx5fCaOIM
+	anIdG4KUh33yh4GNZ6Fmk5eEUYNPPjwyJRdSc3X0zTAISzWtIAMYhiAHyDwefjyAarIqRMtdjz5lm
+	cdQrcwlYizAcdFHGK5KIgOvlFFlsfxtYcr/jSRxkpzooKwDYSFrGhV3dL3yLqns1DQAgNbHHP5j2d
+	2J/DFZFEH47p77Ytb/XsL9n9EMiFVwQ0bdku8wyqf97Yk89a61BPxYeokyHNcuFvntFqJOiFNHUmj
+	3GVP++eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rODj7-002IFr-2w;
-	Fri, 12 Jan 2024 09:21:21 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rODjD-002IKb-2B;
+	Fri, 12 Jan 2024 09:21:27 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rODj4-002IDy-1f;
-	Fri, 12 Jan 2024 09:21:20 +0000
-X-UUID: edce8b4ab12b11ee9a662f17bb45267e-20240112
+	id 1rODj9-002IEY-1a;
+	Fri, 12 Jan 2024 09:21:25 +0000
+X-UUID: ef63e306b12b11eeafd70d0b34820190-20240112
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=plNlMh6L7Bhe6s5CZZaLhR2KjGh0ZZE3dRsgkTAADBM=;
-	b=oxlB8I7BZ4OwAzUMrXvH9tPcFG+YgmS68xa6lPgBMy4gGn+YDwNYGsCayxTBWHd3LI896jUWPebQdD5ZVLindaIMeeOmyCk0sptSC4mSx8YQCxYhwaYjQjcg9LM3vLZJwRhKPDjGRwBB4bj1ZRiOEtTbSEjYeCw8rYq61vPyXYw=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=y+0mAD68siKHkA4YtgC2Wh8sXu2aPnlLjtzoxs7OLwk=;
+	b=K+Qb3h5jK5ZR/4x6tTjPTZV2ehRN4QVagffRT45k75khzyN8wVA55TwlwnX56KJfpgmJmbLZ3oGfDkkdUmk2xJBHuaar1QmlozuNawGfVnfgpMj/mbDKwj3+x73GhX4r5VmG25eg+5oU6iaUGADmDWiQPF9k/awmj+6YK91601g=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:cddc3c3d-69b5-4471-ac83-1a207c65bb4f,IP:0,U
+X-CID-O-INFO: VERSION:1.1.35,REQID:ef1be907-4b60-4b04-8bf1-0f5f68b6ac28,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:5d391d7,CLOUDID:f1a5182f-1ab8-4133-9780-81938111c800,B
+X-CID-META: VersionHash:5d391d7,CLOUDID:cd542e8e-e2c0-40b0-a8fe-7c7e47299109,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: edce8b4ab12b11ee9a662f17bb45267e-20240112
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: ef63e306b12b11eeafd70d0b34820190-20240112
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
 	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2068990535; Fri, 12 Jan 2024 02:21:12 -0700
+	with ESMTP id 52256277; Fri, 12 Jan 2024 02:21:15 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 12 Jan 2024 17:20:47 +0800
+ 15.2.1118.26; Fri, 12 Jan 2024 17:21:12 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 12 Jan 2024 17:20:45 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 12 Jan 2024 17:21:11 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, <christian.koenig@amd.com>, Sumit Semwal
@@ -67,37 +67,23 @@ CC: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
 	<linaro-mm-sig@lists.linaro.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>, Robin Murphy <robin.murphy@arm.com>,
 	Vijayanand Jitta <quic_vjitta@quicinc.com>, Joakim Bech
-	<joakim.bech@linaro.org>, Jeffrey Kardatzke <jkardatzke@google.com>, "Pavel
- Machek" <pavel@ucw.cz>, Simon Ser <contact@emersion.fr>, Pekka Paalanen
+	<joakim.bech@linaro.org>, Jeffrey Kardatzke <jkardatzke@google.com>, Pavel
+ Machek <pavel@ucw.cz>, Simon Ser <contact@emersion.fr>, Pekka Paalanen
 	<ppaalanen@gmail.com>, <jianjiao.zeng@mediatek.com>,
 	<kuohong.wang@mediatek.com>, <youlin.pei@mediatek.com>
-Subject: [PATCH v4 2/7] dma-buf: heaps: Initialize a restricted heap
-Date: Fri, 12 Jan 2024 17:20:09 +0800
-Message-ID: <20240112092014.23999-3-yong.wu@mediatek.com>
+Subject: [PATCH v4 4/7] dma-buf: heaps: restricted_heap: Add dma_ops
+Date: Fri, 12 Jan 2024 17:20:11 +0800
+Message-ID: <20240112092014.23999-5-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240112092014.23999-1-yong.wu@mediatek.com>
 References: <20240112092014.23999-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10-1.555600-8.000000
-X-TMASE-MatchedRID: z8c0liBrbjrpHkfingCwBFz+axQLnAVB5Y0kb0hqatw1LB46LFAAkqSd
-	3wubgak2t+ki9vYAWeawblw6HaK6mqNu8YiLlIJQDYh1Uz6zv6MuLZ3AqIxH3Fc/Cedjlcvk4PS
-	yLdjnTmsKAm/Z86jMQ1b1Mjm+bRZC+niVaMBfU7MC9PSiNyNg6fNYQxCOihTNZ5yuplze9psxK5
-	LonEEbrjxXJFV2fyjAccRjfACWEZm4c6uEFrThdkOZWaJBszmquoYFb0nRiqPYIRSS/nf+VaPFj
-	JEFr+olwXCBO/GKkVr3FLeZXNZS4H0jHMQPhEvZ/eeo/eLXrNmgmLGCPVS10RF5GyxjDLjxdw0U
-	TgINhQPKrXtDwo7Rzro8yJLdnKCjRRbc9yKXf38+Qp0hgi4Bk5/rxaJt3oPahJVRlkc0uv5GBXo
-	eyrLHXVBo425nomviD2TeXwRpghw5Asr9kfiuVn7cGd19dSFd
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10-1.555600-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: E0330AFC751236FF884905E6CC3C296B7EE5284951FED07A2D758633DA382B4B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240112_012118_561120_2DA99785 
-X-CRM114-Status: GOOD (  19.60  )
+X-CRM114-CacheID: sfid-20240112_012123_557556_A3250AC8 
+X-CRM114-Status: GOOD (  13.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,147 +98,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Initialize a restricted heap. Currently just add a null heap, Prepare for
-the later patches.
+Add the dma_ops for this restricted heap. For restricted buffer,
+cache_ops/mmap are not allowed, thus return EPERM for them.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/dma-buf/heaps/Kconfig           |  9 ++++
- drivers/dma-buf/heaps/Makefile          |  3 +-
- drivers/dma-buf/heaps/restricted_heap.c | 67 +++++++++++++++++++++++++
- drivers/dma-buf/heaps/restricted_heap.h | 22 ++++++++
- 4 files changed, 100 insertions(+), 1 deletion(-)
- create mode 100644 drivers/dma-buf/heaps/restricted_heap.c
- create mode 100644 drivers/dma-buf/heaps/restricted_heap.h
+ drivers/dma-buf/heaps/restricted_heap.c | 103 ++++++++++++++++++++++++
+ 1 file changed, 103 insertions(+)
 
-diff --git a/drivers/dma-buf/heaps/Kconfig b/drivers/dma-buf/heaps/Kconfig
-index a5eef06c4226..e54506f480ea 100644
---- a/drivers/dma-buf/heaps/Kconfig
-+++ b/drivers/dma-buf/heaps/Kconfig
-@@ -12,3 +12,12 @@ config DMABUF_HEAPS_CMA
- 	  Choose this option to enable dma-buf CMA heap. This heap is backed
- 	  by the Contiguous Memory Allocator (CMA). If your system has these
- 	  regions, you should say Y here.
-+
-+config DMABUF_HEAPS_RESTRICTED
-+	bool "DMA-BUF Restricted Heap"
-+	depends on DMABUF_HEAPS
-+	help
-+	  Choose this option to enable dma-buf restricted heap. The purpose of this
-+	  heap is to manage buffers that are inaccessible to the kernel and user space.
-+	  There may be several ways to restrict it, for example it may be encrypted or
-+	  protected by a TEE or hypervisor. If in doubt, say N.
-diff --git a/drivers/dma-buf/heaps/Makefile b/drivers/dma-buf/heaps/Makefile
-index 974467791032..a2437c1817e2 100644
---- a/drivers/dma-buf/heaps/Makefile
-+++ b/drivers/dma-buf/heaps/Makefile
-@@ -1,3 +1,4 @@
- # SPDX-License-Identifier: GPL-2.0
--obj-$(CONFIG_DMABUF_HEAPS_SYSTEM)	+= system_heap.o
- obj-$(CONFIG_DMABUF_HEAPS_CMA)		+= cma_heap.o
-+obj-$(CONFIG_DMABUF_HEAPS_RESTRICTED)	+= restricted_heap.o
-+obj-$(CONFIG_DMABUF_HEAPS_SYSTEM)	+= system_heap.o
 diff --git a/drivers/dma-buf/heaps/restricted_heap.c b/drivers/dma-buf/heaps/restricted_heap.c
-new file mode 100644
-index 000000000000..fd7c82abd42e
---- /dev/null
+index 8c266a0f6192..ec4c63d2112d 100644
+--- a/drivers/dma-buf/heaps/restricted_heap.c
 +++ b/drivers/dma-buf/heaps/restricted_heap.c
-@@ -0,0 +1,67 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * DMABUF restricted heap exporter
-+ *
-+ * Copyright (C) 2024 MediaTek Inc.
-+ */
+@@ -12,6 +12,10 @@
+ 
+ #include "restricted_heap.h"
+ 
++struct restricted_heap_attachment {
++	struct sg_table			*table;
++};
 +
-+#include <linux/dma-buf.h>
-+#include <linux/dma-heap.h>
-+#include <linux/err.h>
-+#include <linux/slab.h>
-+
-+#include "restricted_heap.h"
-+
-+static struct dma_buf *
-+restricted_heap_allocate(struct dma_heap *heap, unsigned long size,
-+			 unsigned long fd_flags, unsigned long heap_flags)
+ static int
+ restricted_heap_memory_allocate(struct restricted_heap *heap, struct restricted_buffer *buf)
+ {
+@@ -45,6 +49,104 @@ restricted_heap_memory_free(struct restricted_heap *heap, struct restricted_buff
+ 	ops->memory_free(heap, buf);
+ }
+ 
++static int restricted_heap_attach(struct dma_buf *dmabuf, struct dma_buf_attachment *attachment)
 +{
-+	struct restricted_buffer *restricted_buf;
-+	DEFINE_DMA_BUF_EXPORT_INFO(exp_info);
-+	struct dma_buf *dmabuf;
++	struct restricted_buffer *restricted_buf = dmabuf->priv;
++	struct restricted_heap_attachment *a;
++	struct sg_table *table;
 +	int ret;
 +
-+	restricted_buf = kzalloc(sizeof(*restricted_buf), GFP_KERNEL);
-+	if (!restricted_buf)
-+		return ERR_PTR(-ENOMEM);
++	a = kzalloc(sizeof(*a), GFP_KERNEL);
++	if (!a)
++		return -ENOMEM;
 +
-+	restricted_buf->size = ALIGN(size, PAGE_SIZE);
-+	restricted_buf->heap = heap;
-+
-+	exp_info.exp_name = dma_heap_get_name(heap);
-+	exp_info.size = restricted_buf->size;
-+	exp_info.flags = fd_flags;
-+	exp_info.priv = restricted_buf;
-+
-+	dmabuf = dma_buf_export(&exp_info);
-+	if (IS_ERR(dmabuf)) {
-+		ret = PTR_ERR(dmabuf);
-+		goto err_free_buf;
++	table = kzalloc(sizeof(*table), GFP_KERNEL);
++	if (!table) {
++		ret = -ENOMEM;
++		goto err_free_attach;
 +	}
 +
-+	return dmabuf;
++	ret = sg_alloc_table(table, 1, GFP_KERNEL);
++	if (ret)
++		goto err_free_sgt;
++	sg_set_page(table->sgl, NULL, restricted_buf->size, 0);
 +
-+err_free_buf:
-+	kfree(restricted_buf);
-+	return ERR_PTR(ret);
-+}
++	a->table = table;
++	attachment->priv = a;
 +
-+static const struct dma_heap_ops restricted_heap_ops = {
-+	.allocate = restricted_heap_allocate,
-+};
-+
-+int restricted_heap_add(struct restricted_heap *rstrd_heap)
-+{
-+	struct dma_heap_export_info exp_info;
-+	struct dma_heap *heap;
-+
-+	exp_info.name = rstrd_heap->name;
-+	exp_info.ops = &restricted_heap_ops;
-+	exp_info.priv = (void *)rstrd_heap;
-+
-+	heap = dma_heap_add(&exp_info);
-+	if (IS_ERR(heap))
-+		return PTR_ERR(heap);
 +	return 0;
++
++err_free_sgt:
++	kfree(table);
++err_free_attach:
++	kfree(a);
++	return ret;
 +}
-+EXPORT_SYMBOL_GPL(restricted_heap_add);
-diff --git a/drivers/dma-buf/heaps/restricted_heap.h b/drivers/dma-buf/heaps/restricted_heap.h
-new file mode 100644
-index 000000000000..443028f6ba3b
---- /dev/null
-+++ b/drivers/dma-buf/heaps/restricted_heap.h
-@@ -0,0 +1,22 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Restricted heap Header.
-+ *
-+ * Copyright (C) 2024 MediaTek, Inc.
-+ */
 +
-+#ifndef _DMABUF_RESTRICTED_HEAP_H_
-+#define _DMABUF_RESTRICTED_HEAP_H_
++static void restricted_heap_detach(struct dma_buf *dmabuf, struct dma_buf_attachment *attachment)
++{
++	struct restricted_heap_attachment *a = attachment->priv;
 +
-+struct restricted_buffer {
-+	struct dma_heap		*heap;
-+	size_t			size;
++	sg_free_table(a->table);
++	kfree(a->table);
++	kfree(a);
++}
++
++static struct sg_table *
++restricted_heap_map_dma_buf(struct dma_buf_attachment *attachment, enum dma_data_direction direct)
++{
++	struct restricted_heap_attachment *a = attachment->priv;
++	struct sg_table *table = a->table;
++
++	return table;
++}
++
++static void
++restricted_heap_unmap_dma_buf(struct dma_buf_attachment *attachment, struct sg_table *table,
++			      enum dma_data_direction direction)
++{
++	struct restricted_heap_attachment *a = attachment->priv;
++
++	WARN_ON(a->table != table);
++}
++
++static int
++restricted_heap_dma_buf_begin_cpu_access(struct dma_buf *dmabuf, enum dma_data_direction direction)
++{
++	return -EPERM;
++}
++
++static int
++restricted_heap_dma_buf_end_cpu_access(struct dma_buf *dmabuf, enum dma_data_direction direction)
++{
++	return -EPERM;
++}
++
++static int restricted_heap_dma_buf_mmap(struct dma_buf *dmabuf, struct vm_area_struct *vma)
++{
++	return -EPERM;
++}
++
++static void restricted_heap_free(struct dma_buf *dmabuf)
++{
++	struct restricted_buffer *restricted_buf = dmabuf->priv;
++	struct restricted_heap *heap = dma_heap_get_drvdata(restricted_buf->heap);
++
++	restricted_heap_memory_free(heap, restricted_buf);
++	kfree(restricted_buf);
++}
++
++static const struct dma_buf_ops restricted_heap_buf_ops = {
++	.attach		= restricted_heap_attach,
++	.detach		= restricted_heap_detach,
++	.map_dma_buf	= restricted_heap_map_dma_buf,
++	.unmap_dma_buf	= restricted_heap_unmap_dma_buf,
++	.begin_cpu_access = restricted_heap_dma_buf_begin_cpu_access,
++	.end_cpu_access	= restricted_heap_dma_buf_end_cpu_access,
++	.mmap		= restricted_heap_dma_buf_mmap,
++	.release	= restricted_heap_free,
 +};
 +
-+struct restricted_heap {
-+	const char		*name;
-+};
-+
-+int restricted_heap_add(struct restricted_heap *rstrd_heap);
-+
-+#endif
+ static struct dma_buf *
+ restricted_heap_allocate(struct dma_heap *heap, unsigned long size,
+ 			 unsigned long fd_flags, unsigned long heap_flags)
+@@ -66,6 +168,7 @@ restricted_heap_allocate(struct dma_heap *heap, unsigned long size,
+ 	if (ret)
+ 		goto err_free_buf;
+ 	exp_info.exp_name = dma_heap_get_name(heap);
++	exp_info.ops = &restricted_heap_buf_ops;
+ 	exp_info.size = restricted_buf->size;
+ 	exp_info.flags = fd_flags;
+ 	exp_info.priv = restricted_buf;
 -- 
 2.25.1
 
