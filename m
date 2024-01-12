@@ -4,115 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 253F9C4707C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 09:49:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A156EC4706C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 10:04:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=us7FlGdER6e8HJOcJ9DbE8FEDZwENOAoyDuutoH2bnc=; b=gDVl7fwECctcz/4VB1fAHZ8mvf
-	nJJB8w5ZIsy+YzY/96pYMvB0gIE4nMjkJtL8GKtrdkkof1r6C6yWidGThK4e1bbshvE+PIN9wBnzH
-	HSmdWRl/YwiQpzl5pg6jb/39e1+eBYMm6IyAe3e4vOWttkiE9F5W8MWEdvGkZBOhrZQV9MyzNBY26
-	5dIq89xQ34h3YBKT+U5jbE67reT+Xm/COAlx2M4GBPPNfhv/SzCw13yhZYR8K4xk5gUq1F4QTSYb/
-	dPqy7psdgl8VvEcmhfYIURtXTIzjMJw7dzpxzKOENsLLkKlvofr/4bk5syFfYD8qcAKlNZbSoagIY
-	OU9FPlvQ==;
+	bh=49mGNK36uTAc2PcGxvuMH6FjMrZ7N2e/dp51dNcG2WI=; b=TVtlQUChtha2D4P4IiPNakKfgg
+	UMlzuKsBMEXfHiM4wTrmn7PzBmV7u2WCPt5xjf59/MRO6+8qN64F/ADMW7OXLjQBxI6mNzVATUWPW
+	Syyk+cIHHJwE299MVMl97RYhbpk886zR0OHFo+zQ9MZIFas0a4RO9pLhB+2VFyrhXfK0e6qeICTm/
+	0l7VIWmX+77/2caY3U5enm3QBkiRBu3wdzSx+sUz5kyi8lXTpQBYY/wNpL4VvEIJsFpZY6PyES+CK
+	oL6vDt8RQdUhYklVE+wsn279ym8eSId6r9Dt0cJgtgFaghiEF4ybmTARs2AWGgBH7vs/Cvp9Gh8lM
+	oBtv8oqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOEA5-002Omy-0M;
-	Fri, 12 Jan 2024 09:49:13 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1rOEOX-002RHq-0j;
+	Fri, 12 Jan 2024 10:04:09 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOEA1-002OkM-0f
-	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Jan 2024 09:49:11 +0000
-Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-5573c79aac5so1364684a12.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Jan 2024 01:49:07 -0800 (PST)
+	id 1rOEOT-002RH8-0p;
+	Fri, 12 Jan 2024 10:04:06 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-50e67e37661so8385851e87.0;
+        Fri, 12 Jan 2024 02:04:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ffwll.ch; s=google; t=1705052946; x=1705657746; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references
-         :mail-followup-to:message-id:subject:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=us7FlGdER6e8HJOcJ9DbE8FEDZwENOAoyDuutoH2bnc=;
-        b=MYoj1ztkxIcmKd7eIBb8NOaaXwb/WVPG7u/4OA2CnSJ9EJfv6VEmnHIdkqOQoSTZ/k
-         ykkb16E8pzynORvk/nflihWe3I8EiwwcRezwri2aRTUS/eYE/QaJyII4BI50/Nctf0Ns
-         aRKgwvY3vvE1Q2+OiBNZr3ogck3DgrSenX7rs=
+        d=gmail.com; s=20230601; t=1705053842; x=1705658642; darn=lists.infradead.org;
+        h=mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:from:to:cc:subject:date:message-id:reply-to;
+        bh=49mGNK36uTAc2PcGxvuMH6FjMrZ7N2e/dp51dNcG2WI=;
+        b=UhMWWZq3bhdzRQuPvGpILAVEVKeBgDOpTOnvaG+ynXOh/6nGYZ8mS9YCtoxJw7QUa2
+         JkmC/WFvLv6YpH6Gf6Kf1dDgQryDwIMJzznZ6cTZWODsOB2mvQuxOneKh9vd8jveMdv/
+         W8YUS2A1cSGwlU8vmfFsHEos7BnsvXILog9jG1he0M5bdv3On2vsb0rn/SmT6A3nLkfm
+         waKR2qBUZGIQvXotOmlJ2T6mGTtnTbjmeDfIlZDZggyBmYuC0dXZrmjnSeqr4QDQeU7x
+         Ki7VfTEkOfKa56gzrTnrnZrRROZW5IGMDDMjHEf+ifhUlEFnen0zH9K9I3aaszG0eJvF
+         Iyaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705052946; x=1705657746;
-        h=in-reply-to:content-disposition:mime-version:references
-         :mail-followup-to:message-id:subject:to:from:date:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=us7FlGdER6e8HJOcJ9DbE8FEDZwENOAoyDuutoH2bnc=;
-        b=A0iz+L8JO/mhtrPkE6Gc3thGOiWuK1z+trErvffp/oPGwwoxKKyPC+yaOTvt/sCrgP
-         KTAJCsoj9dLsPej7dudXD3+Br380iYy+guYmW59v06+oUaAjhm9jySG9biSyl0I6XHSq
-         W9GNroKflRmCWgLVU5CdOJHdNyeHi9Txo8UCb5F5PATaaq6LHcff7grJrAsAXCUQLlyb
-         tfhiW1WzuBi1jQf7VX1X8ClORXZfs4ulEMssBI14KokMh0kGFcvle97aejcirf1sDoBS
-         aQmw0w44t7daI/+7fcKZXCX+/sYVSTZsv0Rcy9n6Tz3LN6RPb+e3U+TGrokIH85Tq6Bq
-         UFNQ==
-X-Gm-Message-State: AOJu0YwGvMMoJNe0o3XcFbqmy1o/SGmy3D2b76oZty5bYSX3WYVCJf4l
-	BYgIHVAeo+AE/PY1WpA/1meIOovnBI1YoQ==
-X-Google-Smtp-Source: AGHT+IEOiq3FXhd4T4HCBcGkiMyRtMKljt8lxwRBUf3NerLJ5gdqm06t+lKy82F5LT4WBLgvMEXbXw==
-X-Received: by 2002:a05:6402:148d:b0:557:4249:44 with SMTP id e13-20020a056402148d00b0055742490044mr760113edv.1.1705052946272;
-        Fri, 12 Jan 2024 01:49:06 -0800 (PST)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
-        by smtp.gmail.com with ESMTPSA id dh19-20020a0564021d3300b00557332d657fsm1610937edb.39.2024.01.12.01.49.05
+        d=1e100.net; s=20230601; t=1705053842; x=1705658642;
+        h=mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=49mGNK36uTAc2PcGxvuMH6FjMrZ7N2e/dp51dNcG2WI=;
+        b=THRSiSUM8rEhJsRAy5NelHUw9FvmiNvEa8zO9xCUzeum8VrYu+A5SVp+qvBQ+NwGU9
+         qmwJgoYUqEgH1oOZylhpgy9bu1cogamD1RZoDG1mOBkRZe8M7COm258lBslgrqfKVpby
+         J5A6Jm00NL5SdprsuBHy9erYSof3F8bRc/L2rFDdM2//23dcBi9K0EBdNbSlZ1ecDGRp
+         hcVe8rc5W86fAvpDhLHruOfwJ2jPbALyoZR+bFVIzqxgRB8JJ0rAh7rAYwOjaFFYoiDB
+         2alu1XbCbgbmTgMSeAQrEuQk46rZogMvgRYintnOBSaiktkHLPr1t6EciURmI/FRwS2f
+         EEug==
+X-Gm-Message-State: AOJu0YxSxsu9vkFuvXaKNuCeB4HP3OOMX7Gk1osDNU/nHD9c1sQkbKqA
+	GcBVbPEbnO8d6nFSIRwziAQ=
+X-Google-Smtp-Source: AGHT+IEJgqgQRPe4+wGucPThB/wEKQwuXAHrrbJUK/XGlr7TnjYBQAAXKDwmwnzWG8Ho0OJhEyyxYw==
+X-Received: by 2002:a05:6512:3188:b0:50e:6b48:5407 with SMTP id i8-20020a056512318800b0050e6b485407mr667018lfe.82.1705053841920;
+        Fri, 12 Jan 2024 02:04:01 -0800 (PST)
+Received: from eldfell ([194.136.85.206])
+        by smtp.gmail.com with ESMTPSA id y22-20020a056512335600b0050eea9541casm26727lfd.44.2024.01.12.02.04.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 Jan 2024 01:49:05 -0800 (PST)
-Date: Fri, 12 Jan 2024 10:49:03 +0100
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, christian.koenig@amd.com,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	dri-devel@lists.freedesktop.org, John Stultz <jstultz@google.com>,
-	Pavel Machek <pavel@ucw.cz>,
-	Jeffrey Kardatzke <jkardatzke@google.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Vijayanand Jitta <quic_vjitta@quicinc.com>,
-	jianjiao.zeng@mediatek.com, linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
-	linaro-mm-sig@lists.linaro.org,
-	Pekka Paalanen <ppaalanen@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	Joakim Bech <joakim.bech@linaro.org>, tjmercier@google.com,
-	linux-arm-kernel@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	youlin.pei@mediatek.com, kuohong.wang@mediatek.com,
-	linux-kernel@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v4 4/7] dma-buf: heaps: restricted_heap: Add dma_ops
-Message-ID: <ZaELD4APVuX4p77P@phenom.ffwll.local>
-Mail-Followup-To: Yong Wu <yong.wu@mediatek.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, christian.koenig@amd.com,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	dri-devel@lists.freedesktop.org, John Stultz <jstultz@google.com>,
-	Pavel Machek <pavel@ucw.cz>,
-	Jeffrey Kardatzke <jkardatzke@google.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Vijayanand Jitta <quic_vjitta@quicinc.com>,
-	jianjiao.zeng@mediatek.com, linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
-	linaro-mm-sig@lists.linaro.org,
-	Pekka Paalanen <ppaalanen@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	Joakim Bech <joakim.bech@linaro.org>, tjmercier@google.com,
-	linux-arm-kernel@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	youlin.pei@mediatek.com, kuohong.wang@mediatek.com,
-	linux-kernel@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>
+        Fri, 12 Jan 2024 02:04:01 -0800 (PST)
+Date: Fri, 12 Jan 2024 12:03:57 +0200
+From: Pekka Paalanen <ppaalanen@gmail.com>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <christian.koenig@amd.com>, Sumit Semwal
+ <sumit.semwal@linaro.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey
+ <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
+ <tjmercier@google.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>, <linaro-mm-sig@lists.linaro.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Robin Murphy <robin.murphy@arm.com>,
+ Vijayanand Jitta <quic_vjitta@quicinc.com>, Joakim Bech
+ <joakim.bech@linaro.org>, Jeffrey Kardatzke <jkardatzke@google.com>, Pavel
+ Machek <pavel@ucw.cz>, Simon Ser <contact@emersion.fr>,
+ <jianjiao.zeng@mediatek.com>, <kuohong.wang@mediatek.com>,
+ <youlin.pei@mediatek.com>
+Subject: Re: [PATCH v4 0/7] dma-buf: heaps: Add restricted heap
+Message-ID: <20240112120357.724e9326@eldfell>
+In-Reply-To: <20240112092014.23999-1-yong.wu@mediatek.com>
 References: <20240112092014.23999-1-yong.wu@mediatek.com>
- <20240112092014.23999-5-yong.wu@mediatek.com>
- <ZaEJOjXP2EJIe9rK@phenom.ffwll.local>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZaEJOjXP2EJIe9rK@phenom.ffwll.local>
-X-Operating-System: Linux phenom 6.5.0-4-amd64 
+Content-Type: multipart/signed; boundary="Sig_/lS=3R00MGWXjD0UrR5LXr4S";
+ protocol="application/pgp-signature"; micalg=pgp-sha256
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240112_014909_246708_AB8B6148 
-X-CRM114-Status: GOOD (  35.24  )
+X-CRM114-CacheID: sfid-20240112_020405_301493_90161557 
+X-CRM114-Status: GOOD (  32.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,200 +104,139 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 12, 2024 at 10:41:14AM +0100, Daniel Vetter wrote:
-> On Fri, Jan 12, 2024 at 05:20:11PM +0800, Yong Wu wrote:
-> > Add the dma_ops for this restricted heap. For restricted buffer,
-> > cache_ops/mmap are not allowed, thus return EPERM for them.
-> > 
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > ---
-> >  drivers/dma-buf/heaps/restricted_heap.c | 103 ++++++++++++++++++++++++
-> >  1 file changed, 103 insertions(+)
-> > 
-> > diff --git a/drivers/dma-buf/heaps/restricted_heap.c b/drivers/dma-buf/heaps/restricted_heap.c
-> > index 8c266a0f6192..ec4c63d2112d 100644
-> > --- a/drivers/dma-buf/heaps/restricted_heap.c
-> > +++ b/drivers/dma-buf/heaps/restricted_heap.c
-> > @@ -12,6 +12,10 @@
-> >  
-> >  #include "restricted_heap.h"
-> >  
-> > +struct restricted_heap_attachment {
-> > +	struct sg_table			*table;
-> > +};
-> > +
-> >  static int
-> >  restricted_heap_memory_allocate(struct restricted_heap *heap, struct restricted_buffer *buf)
-> >  {
-> > @@ -45,6 +49,104 @@ restricted_heap_memory_free(struct restricted_heap *heap, struct restricted_buff
-> >  	ops->memory_free(heap, buf);
-> >  }
-> >  
-> > +static int restricted_heap_attach(struct dma_buf *dmabuf, struct dma_buf_attachment *attachment)
-> > +{
-> > +	struct restricted_buffer *restricted_buf = dmabuf->priv;
-> > +	struct restricted_heap_attachment *a;
-> > +	struct sg_table *table;
-> > +	int ret;
-> > +
-> > +	a = kzalloc(sizeof(*a), GFP_KERNEL);
-> > +	if (!a)
-> > +		return -ENOMEM;
-> > +
-> > +	table = kzalloc(sizeof(*table), GFP_KERNEL);
-> > +	if (!table) {
-> > +		ret = -ENOMEM;
-> > +		goto err_free_attach;
-> > +	}
-> > +
-> > +	ret = sg_alloc_table(table, 1, GFP_KERNEL);
-> > +	if (ret)
-> > +		goto err_free_sgt;
-> > +	sg_set_page(table->sgl, NULL, restricted_buf->size, 0);
-> 
-> So this is definitely broken and violating the dma-buf api rules. You
-> cannot let attach succed and supply a dummy/invalid sg table.
-> 
-> Two options:
-> 
-> - Reject ->attach for all this buffers with -EBUSY and provide instead a
->   private api for these secure buffers, similar to how virtio_dma_buf has
->   private virto-specific apis. This interface would need to be
->   standardized across all arm TEE users, so that we don't have a
->   disastrous proliferation of apis.
-> 
-> - Allow ->attach, but _only_ for drivers/devices which can access the
->   secure buffer correctly, and only if you can put the right secure buffer
->   address into the sg table directly. If dma to a secure buffer for a
->   given struct device * will not work correctly (i.e. without data
->   corruption), you _must_ reject the attach attempt with -EBUSY.
-> 
-> The 2nd approach would be my preferred one, if it's technically possible.
-> 
-> Also my understanding is that arm TEE is standardized, so I think we'll at
-> least want some acks from other soc people whether this will work for them
-> too.
-> 
-> Finally the usual drill:
-> - this also needs the driver side support, if there's any changes needed.
->   Just the new heap isn't enough.
+--Sig_/lS=3R00MGWXjD0UrR5LXr4S
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 
-Ok I quickly scrolled through your drm patches and that confirms that the
-current dma-buf interface you're implementing is just completely breaking
-the api. And you need to paper over that will all kinds of very icky
-special-casing.
+On Fri, 12 Jan 2024 17:20:07 +0800
+Yong Wu <yong.wu@mediatek.com> wrote:
 
-So definitely need to rethink the overall design between dma-buf heaps and
-drivers here.
--Sima
+> The purpose of this patchset is for MediaTek secure video playback, and
+> also to enable other potential uses of this in the future. The 'restricted
+> dma-heap' will be used to allocate dma_buf objects that reference memory
+> in the secure world that is inaccessible/unmappable by the non-secure
+> (i.e. kernel/userspace) world.  That memory will be used by the secure/
+> trusted world to store secure information (i.e. decrypted media content).
+> The dma_bufs allocated from the kernel will be passed to V4L2 for video
+> decoding (as input and output). They will also be used by the drm
+> system for rendering of the content.
+>=20
+> This patchset adds two MediaTek restricted heaps and they will be used in
+> v4l2[1] and drm[2].
+> 1) restricted_mtk_cm: secure chunk memory for MediaTek SVP (Secure Video
+>    Path). The buffer is reserved for the secure world after bootup and it
+>    is used for vcodec's ES/working buffer;
+> 2) restricted_mtk_cma: secure CMA memory for MediaTek SVP. This buffer is
+>    dynamically reserved for the secure world and will be got when we start
+>    playing secure videos. Once the security video playing is complete, the
+>    CMA will be released. This heap is used for the vcodec's frame buffer.=
+=20
+>=20
+> [1] https://lore.kernel.org/linux-mediatek/20231206081538.17056-1-yunfei.=
+dong@mediatek.com/
+> [2] https://lore.kernel.org/all/20231223182932.27683-1-jason-jh.lin@media=
+tek.com/
+>=20
+> Change note:
+> v4: 1) Rename the heap name from "secure" to "restricted". suggested from
+>      Simon/Pekka. There are still several "secure" string in MTK file
+>      since we use ARM platform in which we call this "secure world"/
+>      "secure command".
 
-> - and for drm you need open userspace for this. Doesn't have to be the
->   full content protection decode pipeline, the drivers in drm that landed
->   secure buffer support thus far enabled it using the
->   EGL_EXT_protected_content extension using gl, which side steps all the
->   complications around content decryption keys and support
-> 
-> Cheers, Sima
-> 
-> > +
-> > +	a->table = table;
-> > +	attachment->priv = a;
-> > +
-> > +	return 0;
-> > +
-> > +err_free_sgt:
-> > +	kfree(table);
-> > +err_free_attach:
-> > +	kfree(a);
-> > +	return ret;
-> > +}
-> > +
-> > +static void restricted_heap_detach(struct dma_buf *dmabuf, struct dma_buf_attachment *attachment)
-> > +{
-> > +	struct restricted_heap_attachment *a = attachment->priv;
-> > +
-> > +	sg_free_table(a->table);
-> > +	kfree(a->table);
-> > +	kfree(a);
-> > +}
-> > +
-> > +static struct sg_table *
-> > +restricted_heap_map_dma_buf(struct dma_buf_attachment *attachment, enum dma_data_direction direct)
-> > +{
-> > +	struct restricted_heap_attachment *a = attachment->priv;
-> > +	struct sg_table *table = a->table;
-> > +
-> > +	return table;
-> > +}
-> > +
-> > +static void
-> > +restricted_heap_unmap_dma_buf(struct dma_buf_attachment *attachment, struct sg_table *table,
-> > +			      enum dma_data_direction direction)
-> > +{
-> > +	struct restricted_heap_attachment *a = attachment->priv;
-> > +
-> > +	WARN_ON(a->table != table);
-> > +}
-> > +
-> > +static int
-> > +restricted_heap_dma_buf_begin_cpu_access(struct dma_buf *dmabuf, enum dma_data_direction direction)
-> > +{
-> > +	return -EPERM;
-> > +}
-> > +
-> > +static int
-> > +restricted_heap_dma_buf_end_cpu_access(struct dma_buf *dmabuf, enum dma_data_direction direction)
-> > +{
-> > +	return -EPERM;
-> > +}
-> > +
-> > +static int restricted_heap_dma_buf_mmap(struct dma_buf *dmabuf, struct vm_area_struct *vma)
-> > +{
-> > +	return -EPERM;
-> > +}
-> > +
-> > +static void restricted_heap_free(struct dma_buf *dmabuf)
-> > +{
-> > +	struct restricted_buffer *restricted_buf = dmabuf->priv;
-> > +	struct restricted_heap *heap = dma_heap_get_drvdata(restricted_buf->heap);
-> > +
-> > +	restricted_heap_memory_free(heap, restricted_buf);
-> > +	kfree(restricted_buf);
-> > +}
-> > +
-> > +static const struct dma_buf_ops restricted_heap_buf_ops = {
-> > +	.attach		= restricted_heap_attach,
-> > +	.detach		= restricted_heap_detach,
-> > +	.map_dma_buf	= restricted_heap_map_dma_buf,
-> > +	.unmap_dma_buf	= restricted_heap_unmap_dma_buf,
-> > +	.begin_cpu_access = restricted_heap_dma_buf_begin_cpu_access,
-> > +	.end_cpu_access	= restricted_heap_dma_buf_end_cpu_access,
-> > +	.mmap		= restricted_heap_dma_buf_mmap,
-> > +	.release	= restricted_heap_free,
-> > +};
-> > +
-> >  static struct dma_buf *
-> >  restricted_heap_allocate(struct dma_heap *heap, unsigned long size,
-> >  			 unsigned long fd_flags, unsigned long heap_flags)
-> > @@ -66,6 +168,7 @@ restricted_heap_allocate(struct dma_heap *heap, unsigned long size,
-> >  	if (ret)
-> >  		goto err_free_buf;
-> >  	exp_info.exp_name = dma_heap_get_name(heap);
-> > +	exp_info.ops = &restricted_heap_buf_ops;
-> >  	exp_info.size = restricted_buf->size;
-> >  	exp_info.flags = fd_flags;
-> >  	exp_info.priv = restricted_buf;
-> > -- 
-> > 2.25.1
-> > 
-> 
-> -- 
-> Daniel Vetter
-> Software Engineer, Intel Corporation
-> http://blog.ffwll.ch
+Hi,
 
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+I am really happy about this name change, thank you.
+
+It is unfortunate that ARM specifications use the word "secure", but so
+be it. When referring to specs, it's good to use the spec wording.
+
+In everything that is not a direct reference to some spec though it
+would be nice to use the "restricted" terminology if possible. I
+presume there are other vendors who use words other than what ARM uses
+for similar concepts. A common vocabulary would be nice.
+
+
+Thanks,
+pq
+
+> v3: https://lore.kernel.org/linux-mediatek/20231212024607.3681-1-yong.wu@=
+mediatek.com/
+>     1) Separate the secure heap to a common file(secure_heap.c) and mtk
+>      special file (secure_heap_mtk.c),  and put all the tee related code
+>      into our special file.
+>     2) About dt-binding, Add "mediatek," prefix since this is Mediatek TEE
+>      firmware definition.
+>     3) Remove the normal CMA heap which is a draft for qcom.
+>     Rebase on v6.7-rc1.
+>=20
+> v2: https://lore.kernel.org/linux-mediatek/20231111111559.8218-1-yong.wu@=
+mediatek.com/
+>     1) Move John's patches into the vcodec patchset since they use the new
+>        dma heap interface directly.
+>        https://lore.kernel.org/linux-mediatek/20231106120423.23364-1-yunf=
+ei.dong@mediatek.com/
+>     2) Reword the dt-binding description.
+>     3) Rename the heap name from mtk_svp to secure_mtk_cm.
+>        This means the current vcodec/DRM upstream code doesn't match this.
+>     4) Add a normal CMA heap. currently it should be a draft version.
+>     5) Regarding the UUID, I still use hard code, but put it in a private
+>     data which allow the others could set their own UUID. What's more, UU=
+ID
+>     is necessary for the session with TEE. If we don't have it, we can't
+>     communicate with the TEE, including the get_uuid interface, which tri=
+es
+>     to make uuid more generic, not working. If there is other way to make
+>     UUID more general, please free to tell me.
+>    =20
+> v1: https://lore.kernel.org/linux-mediatek/20230911023038.30649-1-yong.wu=
+@mediatek.com/
+>     Base on v6.6-rc1.
+>=20
+> Yong Wu (7):
+>   dt-bindings: reserved-memory: Add mediatek,dynamic-restricted-region
+>   dma-buf: heaps: Initialize a restricted heap
+>   dma-buf: heaps: restricted_heap: Add private heap ops
+>   dma-buf: heaps: restricted_heap: Add dma_ops
+>   dma-buf: heaps: restricted_heap: Add MediaTek restricted heap and
+>     heap_init
+>   dma-buf: heaps: restricted_heap_mtk: Add TEE memory service call
+>   dma_buf: heaps: restricted_heap_mtk: Add a new CMA heap
+>=20
+>  .../mediatek,dynamic-restricted-region.yaml   |  43 +++
+>  drivers/dma-buf/heaps/Kconfig                 |  16 +
+>  drivers/dma-buf/heaps/Makefile                |   4 +-
+>  drivers/dma-buf/heaps/restricted_heap.c       | 237 +++++++++++++
+>  drivers/dma-buf/heaps/restricted_heap.h       |  43 +++
+>  drivers/dma-buf/heaps/restricted_heap_mtk.c   | 322 ++++++++++++++++++
+>  6 files changed, 664 insertions(+), 1 deletion(-)
+>  create mode 100644 Documentation/devicetree/bindings/reserved-memory/med=
+iatek,dynamic-restricted-region.yaml
+>  create mode 100644 drivers/dma-buf/heaps/restricted_heap.c
+>  create mode 100644 drivers/dma-buf/heaps/restricted_heap.h
+>  create mode 100644 drivers/dma-buf/heaps/restricted_heap_mtk.c
+>=20
+
+
+--Sig_/lS=3R00MGWXjD0UrR5LXr4S
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEJQjwWQChkWOYOIONI1/ltBGqqqcFAmWhDo0ACgkQI1/ltBGq
+qqdgnhAAiXIHptPG8WhqVlmOGF8J+Dj7PxjrLasFg2BG/gbUDAM2FICO1VBkblIw
+bW1+LqpcdVG+FBs/hGrQOvEblaiIKjMXf5jyNnqPun4xGzi4VggC3sU7erHyIaAb
+bLqfGVzrG782jns8Ibj9AeX1fck6aooUm8yD6w5JvGJRKRNIXKIeGPZrRkiotfnn
+0NcTZ4BVoTufB5dzYgJABuiTmk1OyT4QkCVmVVE0mVn4tTc8Yd+s4m3rXqr/r3YE
+A0geZB/426wfXy6oxNmf0ftQzsyEIcVP/WZJZKtbh6rnXQ2RcMkK38wTTG0Bmyuf
+F1FW2L0GEyile6Vm6DyRJf97UQSzWCMraDUJKEd9+AbyjbreEnSUSL5WnPpWTbND
+lmsCrC1rVM+/hTOD7or/0mF6kp2WgfSaaH+BhrkvDb8MGjj/84yEs4v0jAwBM5y4
+knMaP00XF33xsX4OWEWbjniT+ZCdl9lhrGju9A+0+ZDTH+2LKAuzF5Rq9GgzWUzD
+NqoAZ3aLTUS6KdLfjG6Dzz+eLtjrmOcOcP0gdxKbObO5DXo3yL/r3WZyGDoBDDNr
+Ko38kjrDz+kuAsfKRzu1tDbPLnJLnVyt9rBl4NiD5Gl3BrJv0WvFRtuyzYrlNKHU
+M5t91RcbiaPApyXCZT0eXqefR5B27nW2e20Kqcf3kEPh+dsLVzc=
+=Y8bP
+-----END PGP SIGNATURE-----
+
+--Sig_/lS=3R00MGWXjD0UrR5LXr4S--
 
