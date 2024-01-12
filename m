@@ -4,88 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C15AC4706C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 07:22:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 496FFC4706C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 07:32:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0zod9jOIigkgHYYflYbRUuAS95/eYFPo+RbuUcLeBEY=; b=D5EmUGigHUObpjrTPy8v7+6vMt
-	fm84sAXER/RjgQTvBX6FQr/rCPMo0yjmc7sD+5kXFN09NBZLJGgRPDqwKDD0bf7pqUozf8dIcfy7r
-	XIB4cWVN4ywCvk+IZdK5DzzfVaEiZM81APXD2JjdXUe2it0OmW4HIk8eanBVbXFvAgNQwU1rokl6s
-	ylskFwowCnE1aEQ4v92wrA8HmwwImSxXNmLqp7YYHE6L4viO0exQydZ0BJukLMO/RBdNV9/kqM7p2
-	EOw02c36g4hX2kK6VudmCT+sDpysrqULD/886oq9I25g/Pcqf1kE9biSqITQsVxZqR957S2PY7lyt
-	mM0Ehptw==;
+	bh=+lZ5pNbtd5svoAtnRiRjmNP8aGu9v/OGDfR2LrQqfcI=; b=2kneofFotVz9ALDlKrn+TT72Dz
+	tekCcoqD+Igu3sPBTPsLU61ThKqpf/K7h+U93jX495x0HFuGw2jAY+ScrH+llZ/0ObjSniZSBkR6A
+	V32NqWYrOhwj2R6JAgo5YFGx7mZcKPXjVB9FWiTHWdu3pdzvvSw2L0vtveA6J5DDkHxY4nnTpyG1J
+	JJF1Ws+WW0Ihk6AgGvuEMK6nGFsU0yDUddwZlAjIaJL00UIJq1KlJSFrc2GWp+6oje/1BEN4dCCJp
+	sCD0PedxGKIi8EhuJmCE+n4f1Z004G5bW8qXKwcKij0PmrmIsbQ+7lSESOAWA68isEOdhFWel5Xzy
+	WiX/KS8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOBsX-0024eQ-3A;
-	Fri, 12 Jan 2024 07:22:57 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1rOC1s-0025z5-35;
+	Fri, 12 Jan 2024 07:32:36 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOBsV-0024ct-0M
+	id 1rOC1p-0025yA-2c
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Jan 2024 07:22:56 +0000
-Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-33677fb38a3so5577103f8f.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jan 2024 23:22:53 -0800 (PST)
+	Fri, 12 Jan 2024 07:32:35 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-40e63bc90f2so5790815e9.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jan 2024 23:32:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705044172; x=1705648972; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1705044750; x=1705649550; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=0zod9jOIigkgHYYflYbRUuAS95/eYFPo+RbuUcLeBEY=;
-        b=GoZrtaxN1R+YPPVYLyqujk8IT07REN7sQ/Fm4OZ2k2BZxHQCqfHNHnHXmXXpiEjg89
-         u4WGb/VcxR3vBR/pfMvKYTLZRNhhJ0PAbQC9IIx/OAltnpSkgQ5r14jQNR0j1fwj5MNa
-         FvAbs0u8uhVaRAtasWk+esyvkexsSx0R9x7qA94w/WEGarXDEgkAzJC7bJo9Hm1Q0DE1
-         NwSL3AgdVaoh4FwM1d/AgDCoPPnLW5o0VKSojPa64MphCuHNDauxszdnUd1kt0mZC3eF
-         OKNZ2lcTZZ16dTQN6uEcfJ19w5EhSXv9XZhSxggGJ/kh0A8OKKbyMNUYZN64YH4oeMV+
-         nHrg==
+        bh=+lZ5pNbtd5svoAtnRiRjmNP8aGu9v/OGDfR2LrQqfcI=;
+        b=ZZ9+ZykaxlPYRwDxybfBs51xr8jRHwmvx5IwMXxX90iaqYXrkAX7vsZKSPJqzjn1HG
+         VBhnV7gMIcesjzsL8dHldc9zpRmQItIlxgfDhcIb/KSZumxdq4luXlinh/61zjU12IC4
+         JDvbKJf1bsF2HeDA+plGGxjO15N42rJ5oDlzOrAVp8zp0vCCAqINvD6L1QFxzfo41ozF
+         KXpyGf569ktJ0vxgMAd4Wb2hVNwe4OkD5qAZXtC3HIHDnNeaMixofWKSHYEQFg2w/BRk
+         ZPl8VUreRvLpnjNzvQEq0ClOleKss4XmsxkCPC69XYkmqomeECR4MpSZYMZgDJHT0bai
+         pnWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705044172; x=1705648972;
+        d=1e100.net; s=20230601; t=1705044750; x=1705649550;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0zod9jOIigkgHYYflYbRUuAS95/eYFPo+RbuUcLeBEY=;
-        b=IzEKbdsuU0KrS4CGDTKejLb/0XX8BbIIWCdvSgsH03k5LMnw0+XMrOxnvY43iuV3R6
-         HG3JMfShXdUh0hrsGX3mTSSBG453/rD2ZaK7MhVVlmm1UCOa6PpMHc0PgAqeCDR081z+
-         gcLPaDUS+/FLer0fArxi740lEjejs7xJAw/4zFgyj9/U1rzhLtoe3JF6JeZ4wt7InhAj
-         LOoXDoefgnnRvtVKNaZmIYcCq6sjIG9q5gE5WMcmd4e/Fh8dr6w8O08jOuDf46vKHMO3
-         O7+3r8gyjAY2opSwQsV0BMvKQb0RJmYHwhmfLcdnUydHNTh2E00HmtdYCyZ54HQlk1+u
-         pivA==
-X-Gm-Message-State: AOJu0YxxLQgFeLal3AcIM1bBMqsTXDVaNzM8otgp9uyZAM96UiTM0CUT
-	h0YgNaVMmzupw0bA157q7MjUswJQNQem8w==
-X-Google-Smtp-Source: AGHT+IH8XR4Nx8gUk/Kge85NcS9avYm1/LLvwfVHCmNYNEidlWnAfkghnFOXYxB52gQp6ClSIF/xkg==
-X-Received: by 2002:a5d:4102:0:b0:336:66f7:2d2e with SMTP id l2-20020a5d4102000000b0033666f72d2emr539289wrp.8.1705044172163;
-        Thu, 11 Jan 2024 23:22:52 -0800 (PST)
+        bh=+lZ5pNbtd5svoAtnRiRjmNP8aGu9v/OGDfR2LrQqfcI=;
+        b=qdmYYaWiNehhSNEUYVED1u68vNrH2qJMO62W9Eo90uP1lr3QyMnGQHImDLTVrFQfKd
+         tDDaE+gFru9Idvzy8lfDUv84+mGjamES6BT7/P7dkI3iwZgbP90+9A36OLMX7IOAHYx0
+         w/soXlJkZ4uYtO/DZDv3PXWj5CmHevRigMsRJF6D6FNxOBkFvGu1QscHaVkEH16vn0VI
+         Gtq4C+0tyeVlHQjzN5UBmeJfy1xQsHqjiZ3TzPvYN8Jlpu+7nhAg/h9KNRXh8pt6YVFf
+         s3zGjeodBR5WX7BcnVo5pRb+9xCuMYKDK4KZAi5dhU665Gj6JFEf5gF2Vim1t4WFgR/l
+         /o4Q==
+X-Gm-Message-State: AOJu0YyFBoKOjsYh5ayDFHSmlLVR7U9Hhlmw4MaXNOPtXJKZULcoR9rU
+	Zd3GqRa/C7tohJDyNaKCoOJq0H43bMmwCg==
+X-Google-Smtp-Source: AGHT+IGzrGPxGzNAZX6qZ4D5J6KUh7V9eHw2NVyhm5+yZevc/neWxyTrugEGlvWIOfMIm/tD6kzldQ==
+X-Received: by 2002:a05:600c:512a:b0:40d:5a3f:8e90 with SMTP id o42-20020a05600c512a00b0040d5a3f8e90mr536073wms.20.1705044750092;
+        Thu, 11 Jan 2024 23:32:30 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.223.112])
-        by smtp.gmail.com with ESMTPSA id q6-20020adf9dc6000000b003378e67fd2asm2407525wre.86.2024.01.11.23.22.50
+        by smtp.gmail.com with ESMTPSA id n15-20020a05600c3b8f00b0040d5a5c523csm8647963wms.1.2024.01.11.23.32.28
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 11 Jan 2024 23:22:51 -0800 (PST)
-Message-ID: <d1bae8c6-a511-4bd2-9bc6-1b3c4dc6fb42@linaro.org>
-Date: Fri, 12 Jan 2024 08:22:49 +0100
+        Thu, 11 Jan 2024 23:32:29 -0800 (PST)
+Message-ID: <e0bf8667-cbb8-49ba-bb44-3edf93b019b8@linaro.org>
+Date: Fri, 12 Jan 2024 08:32:27 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/4] dt-bindings: media: mediatek: mdp: Change
- mediatek,gce-events to reference
+Subject: Re: [PATCH v4 1/5] dt-bindings: media: add mediatek ISP3.0 sensor
+ interface
 Content-Language: en-US
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: Louis Kuo <louis.kuo@mediatek.com>, Phi-Bang Nguyen
+ <pnguyen@baylibre.com>, Laurent Pinchart
+ <laurent.pinchart@ideasonboard.com>, Andy Hsieh <andy.hsieh@mediatek.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Jason-ch Chen <jason-ch.chen@mediatek.com>,
- Johnson Wang <johnson.wang@mediatek.com>,
- Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
- Shawn Sung <shawn.sung@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20240110063532.14124-1-jason-jh.lin@mediatek.com>
- <20240110063532.14124-4-jason-jh.lin@mediatek.com>
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ Florian Sylvestre <fsylvestre@baylibre.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Paul Elder <paul.elder@ideasonboard.com>, Rob Herring <robh+dt@kernel.org>
+References: <20240110141443.364655-1-jstephan@baylibre.com>
+ <20240110141443.364655-2-jstephan@baylibre.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -131,12 +129,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240110063532.14124-4-jason-jh.lin@mediatek.com>
+In-Reply-To: <20240110141443.364655-2-jstephan@baylibre.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240111_232255_155256_38CB1E81 
-X-CRM114-Status: GOOD (  14.25  )
+X-CRM114-CacheID: sfid-20240111_233233_848806_7B085723 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,44 +149,247 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/01/2024 07:35, Jason-JH.Lin wrote:
-> Change mediatek,gce-events property to reference mediatek,gce-props.yaml
-> instead of defining itself.
+On 10/01/2024 15:14, Julien Stephan wrote:
+> From: Louis Kuo <louis.kuo@mediatek.com>
 > 
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> ---
->  .../bindings/media/mediatek,mdp3-rdma.yaml           | 11 +++--------
->  .../devicetree/bindings/media/mediatek,mdp3-rsz.yaml | 12 ++++--------
->  .../bindings/media/mediatek,mdp3-wrot.yaml           | 12 ++++--------
->  3 files changed, 11 insertions(+), 24 deletions(-)
+> This adds the bindings, for the mediatek ISP3.0 SENINF module embedded in
+> some Mediatek SoC, such as the mt8365
 > 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> index 59db8306485b..1ba70b9a5843 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> @@ -44,13 +44,6 @@ properties:
->        4 arguments defined in this property. Each GCE subsys id is mapping to
->        a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
->  
-> -  mediatek,gce-events:
-> -    description:
-> -      The event id which is mapping to the specific hardware event signal
-> -      to gce. The event id is defined in the gce header
-> -      include/dt-bindings/gce/<chip>-gce.h of each chips.
-> -    $ref: /schemas/types.yaml#/definitions/uint32-array
-> -
->    mediatek,scp:
->      $ref: /schemas/types.yaml#/definitions/phandle
->      description:
-> @@ -96,6 +89,8 @@ required:
->    - '#dma-cells'
->  
->  allOf:
-> +  - $ref: ../mailbox/mediatek,gce-props.yaml
 
-You need full path, so /schemas/mailbox/
+...
 
-Applies to all the patches.
+> +  clock-names:
+> +    items:
+> +      - const: camsys
+> +      - const: top_mux
+> +
+> +  phys:
+> +    minItems: 1
+> +    maxItems: 4
+> +    description:
+> +      phandle to the PHYs connected to CSI0/A, CSI1, CSI2 and CSI0B
+> +
+> +  phy-names:
+> +    minItems: 1
+> +    items:
+> +      - const: csi0
+> +      - const: csi1
+> +      - const: csi2
+> +      - const: csi0b
+
+Why one hardware has flexible number of phys?
+
+> +
+> +  ports:
+> +    $ref: /schemas/graph.yaml#/properties/ports
+> +
+> +    properties:
+> +      port@0:
+> +        $ref: /schemas/graph.yaml#/$defs/port-base
+> +        unevaluatedProperties: false
+> +        description: CSI0 or CSI0A port
+> +
+> +        properties:
+> +          endpoint:
+> +            $ref: video-interfaces.yaml#
+> +            unevaluatedProperties: false
+> +
+> +            properties:
+> +              clock-lanes:
+> +                maxItems: 1
+> +              data-lanes:
+> +                minItems: 1
+> +                maxItems: 4
+> +
+> +      port@1:
+> +        $ref: /schemas/graph.yaml#/$defs/port-base
+> +        unevaluatedProperties: false
+> +        description: CSI1 port
+> +
+> +        properties:
+> +          endpoint:
+> +            $ref: video-interfaces.yaml#
+> +            unevaluatedProperties: false
+> +
+> +            properties:
+> +              clock-lanes:
+> +                maxItems: 1
+> +              data-lanes:
+> +                minItems: 1
+> +                maxItems: 4
+> +
+> +      port@2:
+> +        $ref: /schemas/graph.yaml#/$defs/port-base
+> +        unevaluatedProperties: false
+> +        description: CSI2 port
+> +
+> +        properties:
+> +          endpoint:
+> +            $ref: video-interfaces.yaml#
+> +            unevaluatedProperties: false
+> +
+> +            properties:
+> +              clock-lanes:
+> +                maxItems: 1
+> +              data-lanes:
+> +                minItems: 1
+> +                maxItems: 4
+> +
+> +      port@3:
+> +        $ref: /schemas/graph.yaml#/$defs/port-base
+> +        unevaluatedProperties: false
+> +        description: CSI0B port
+> +
+> +        properties:
+> +          endpoint:
+> +            $ref: video-interfaces.yaml#
+> +            unevaluatedProperties: false
+> +
+> +            properties:
+> +              clock-lanes:
+> +                maxItems: 1
+> +              data-lanes:
+> +                minItems: 1
+> +                maxItems: 2
+> +
+> +      port@4:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: connection point for cam0
+> +
+> +      port@5:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: connection point for cam1
+> +
+> +      port@6:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: connection point for camsv0
+> +
+> +      port@7:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: connection point for camsv1
+> +
+> +      port@8:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: connection point for camsv2
+> +
+> +      port@9:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: connection point for camsv3
+> +
+> +    required:
+> +      - port@0
+> +      - port@1
+> +      - port@2
+> +      - port@3
+> +      - port@4
+> +      - port@5
+> +      - port@6
+> +      - port@7
+> +      - port@8
+> +      - port@9
+> +
+> +required:
+> +  - compatible
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +  - power-domains
+> +  - ports
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mediatek,mt8365-clk.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/phy/phy.h>
+> +    #include <dt-bindings/power/mediatek,mt8365-power.h>
+> +
+> +    soc {
+> +          #address-cells = <2>;
+> +          #size-cells = <2>;
+
+Use 4 spaces for example indentation.
+
+> +
+> +          seninf: seninf@15040000 {
+
+Node names should be generic. See also an explanation and list of
+examples (not exhaustive) in DT specification:
+https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+
+
+> +                compatible = "mediatek,mt8365-seninf";
+> +                reg = <0 0x15040000 0 0x6000>;
+> +                interrupts = <GIC_SPI 210 IRQ_TYPE_LEVEL_LOW>;
+> +                clocks = <&camsys CLK_CAM_SENIF>,
+> +                         <&topckgen CLK_TOP_SENIF_SEL>;
+> +                clock-names = "camsys", "top_mux";
+> +
+> +                power-domains = <&spm MT8365_POWER_DOMAIN_CAM>;
+> +
+> +                phys = <&mipi_csi0 PHY_TYPE_DPHY>;
+> +                phy-names = "csi0";
+> +
+> +                ports {
+> +                      #address-cells = <1>;
+> +                      #size-cells = <0>;
+> +
+> +                      port@0 {
+> +                            reg = <0>;
+> +                            seninf_in1: endpoint {
+> +                              clock-lanes = <2>;
+> +                              data-lanes = <1 3 0 4>;
+> +                              remote-endpoint = <&isp1_out>;
+> +                            };
+> +                      };
+> +
+> +                      port@1 {
+> +                          reg = <1>;
+> +                      };
+> +
+> +                      port@2 {
+> +                            reg = <2>;
+> +                      };
+> +
+> +                      port@3 {
+> +                            reg = <3>;
+> +                      };
+> +
+> +                      port@4 {
+> +                            reg = <4>;
+> +                            seninf_camsv1_endpoint: endpoint {
+> +                                remote-endpoint = <&camsv1_endpoint>;
+> +                            };
+> +                      };
+> +
+> +                      port@5 {
+> +                            reg = <5>;
+> +                      };
+> +
+> +                      port@6 {
+> +                            reg = <6>;
+> +                      };
+> +
+> +                      port@7 {
+> +                            reg = <7>;
+> +                      };
+> +
+> +                      port@8 {
+> +                            reg = <8>;
+> +                      };
+> +
+> +                      port@9 {
+> +                            reg = <9>;
+> +                      };
+> +
+
+Stray blank line
+
+> +                };
+
+
 
 Best regards,
 Krzysztof
