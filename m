@@ -4,78 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED224C4707C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 07:10:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CD05C4707C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 07:20:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9CpLoCr6SU3NVlZhezQBUSxWV8XqfLhTOBbyUhiTFb0=; b=LGpxHCl2ns/pleXc+mW6o5RFi6
-	p3++GwcqMQDyYvyVMc9OAVkJgG+bV5qCmhF2WDNqhjmrKKN+Xy1aNxURQe5fzBs9Lpjj0KGbxD3FE
-	wkA1xsvfsNNHOjqXDSwJwhDYpqFWnlq3mqa+Ywa3+2uzwRpl62QncvWbgay0oxIzpgZwMpR+BxJNu
-	Jek/Md59p8mHpvjnq/mk+1nPF5ZhJTTMjMN2g+/6zOZRKbdVNHqBjveUC8BQiyqnqSyAN2/3Vfbl3
-	ahkSbXnu6xO7hIltiUsC5CWPZV1hTttCd0VFHzcf6WPPnH8YgydIIhtiStzFL1vS6XXhYxBHXR+Yo
-	ce/iwwPw==;
+	bh=WW6jGJjARLyzmvJo/Ejz9ZPhSP+j9ZHeaKbDRm9v9fQ=; b=SXUFgNS0JyMI1Ke7zYU7Y929Ud
+	gSYcfvPif4WXIpljlZO7uX9CfxKj8Iov1vCAYvBglfaEfE6l0auig5KL4a0a9hARJn190FkHEiYOx
+	AYg9wFxl+51TQY0nQFitbRm3t+bl+CGIOLrPNweSUlbUTkYHwcy/pC25x4V+qL+nr5YuIqifv5gGn
+	TSrQ4BI/o4pybehzKBOIOK3/xLghmIONhkC72CW+wFFM96b3r6sWxy2DtgXsYox/LNIprkoCzX+2j
+	Ey1T9vUptCxqZYt8m5U5GJE5cczoyAfhP3EdxeLx/cUF39PkwjzSpOykvvDzglgw//AD/wXtFW1Q9
+	9YU9rYww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOBgV-0023Ht-2U;
-	Fri, 12 Jan 2024 07:10:31 +0000
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+	id 1rOBqN-00249C-0M;
+	Fri, 12 Jan 2024 07:20:43 +0000
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOBgS-0023H9-00
+	id 1rOBqK-00248V-1I
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Jan 2024 07:10:29 +0000
-Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-2ccec119587so74282761fa.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jan 2024 23:10:25 -0800 (PST)
+	Fri, 12 Jan 2024 07:20:41 +0000
+Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2cd928a1d58so9980091fa.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jan 2024 23:20:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1705043424; x=1705648224; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9CpLoCr6SU3NVlZhezQBUSxWV8XqfLhTOBbyUhiTFb0=;
-        b=CgXAVQXH7/4ZfrGAorhvKOztWezjYxQxAjy77tG6HGmXo1iyO0s/4oMofblWyLgBdw
-         zgMG4pn/2XGd1KbEgmFYV2hgM5eHjfzOALzAJuAxVvQQqbAM9PGU05KMvw45O/Ne8Z2f
-         B6vGImrG13kqHdhlmeof5zfcHBSgsljXyOTB0=
+        d=linaro.org; s=google; t=1705044036; x=1705648836; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=WW6jGJjARLyzmvJo/Ejz9ZPhSP+j9ZHeaKbDRm9v9fQ=;
+        b=wdXaN/qHSPlFv40bpx+bYDX3p8NBENWf2XLuz/tmjh44Pd9pmvjtgOtj3bMxfG7E2F
+         xpmxfSIoaO80oEcWT9xDaKyJmyRfW+f92bsKm4twDOq5+22cX8hRXSGAaK4b/FqZNa5C
+         gThowHAyjJ4c41LKy4SAWKAxvWd+qdOL+gVAXPe49xR/dCTP5A/h6HYxVyWsA7pFDUXy
+         MqVvS5xO0WoQSASqVeIsX2KjVW2UwE2Gi7RMpdmFebfyfgEIJ34Y4h7LN9iDqrUlbM9w
+         phRjDKeWRW/2YqN/n8D1s+TfH4al6IaMBNhE3mdhxXqAm/tWyhgTpZdioGJG2OwO+A40
+         ekOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705043424; x=1705648224;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=9CpLoCr6SU3NVlZhezQBUSxWV8XqfLhTOBbyUhiTFb0=;
-        b=QlvnqTB2GaCXWNNqnodY7gp4wCSu8tGeLQAOOeSbDBgA5g/Za55crDuXTjNFmcl31Z
-         G0iTXRk2JrG24Md5OEUwvo1TMO4oYWOm7XuOgNZAkrzqtmDk7Pg1Vo6hLL/96GUhgn7e
-         UGX7/JwQeh9+2cUsUfzO/bdjh5GSEMMl5v8bQcpk7Y607eiRpmii62SUIZJtLsgzAuCa
-         rarDmBQQ/OFdcmnTxAmUHeIBNU85fcT2JAvmrEWPIaJYkQfQDFQennaCqvmm3klqgrs2
-         EZE9N653a85Z1UaUdeyWX9AztxkPFJGHogplnLjfXFhKRCjLhnP+nYB0iotsVtkTau50
-         S3VA==
-X-Gm-Message-State: AOJu0YzEb+rD3G5YQQEoM1lDwweYvxRG82/6Ocoll/y4njNzsOM4PcxD
-	CBEzEloN3wsEqkaf867Jtk7p17PxvSINUJIrATCO6GW3mkQO
-X-Google-Smtp-Source: AGHT+IHlsWzk7VBDrxQbPuwhEzOa8RrYAxu50cHzpD/G4LoHP/3wdiV0QT/8BgrvtuTGNBulNk5QS1QaSxP0kKJsgCE=
-X-Received: by 2002:a05:651c:170c:b0:2cc:a66d:3356 with SMTP id
- be12-20020a05651c170c00b002cca66d3356mr424298ljb.11.1705043423754; Thu, 11
- Jan 2024 23:10:23 -0800 (PST)
+        d=1e100.net; s=20230601; t=1705044036; x=1705648836;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=WW6jGJjARLyzmvJo/Ejz9ZPhSP+j9ZHeaKbDRm9v9fQ=;
+        b=BLOFxakUyE0xFwsFROJwOZSFhW/XSaURc484pN3X9FzXeTONhcRGO1Ohj+r7aqb71n
+         xP89svMd2R0oTE9N5nhHDrYAC4wPok5HrhiHL9jgumRxU+PSE5v9fN/v+zur8UIgjmYb
+         HmJ9Htme5Krf/5tKexCbVfxkCxyI8TVvsuTuCtlvnrNiiKjz1Wk6FeSHUXp+MLyBIrsJ
+         Z0ECaEfHjZic0cIWpB6Yh4yK0UxdMEagIU/SRcgbeyHB0CixI91syC2ewOQyARFG3TLP
+         cQsemj57z7kIRyPAqGQ+S35y1CG/9huRu476PtngfuUbN3rDgPQ6z1wYFmnOIeasPGcZ
+         U25g==
+X-Gm-Message-State: AOJu0YywcaehNWMNciicNnG8js+cwIpb9I4Ya4l7UOaVe17Xgsoa3u5o
+	Rhk1D0B6O1r4Yl60zwsFBBn1RQEj8hvSGg==
+X-Google-Smtp-Source: AGHT+IFEoThE0z4x+glmztfLbhGTbSb7RJhGRSWmlaS1LMAaccFBHO2vJ4Iui8hgUeBoGwx1LsJouQ==
+X-Received: by 2002:a2e:aaa3:0:b0:2cd:690d:5d37 with SMTP id bj35-20020a2eaaa3000000b002cd690d5d37mr398220ljb.29.1705044036312;
+        Thu, 11 Jan 2024 23:20:36 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.223.112])
+        by smtp.gmail.com with ESMTPSA id o12-20020a5d474c000000b00336aac53e75sm3021620wrs.97.2024.01.11.23.20.34
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 11 Jan 2024 23:20:35 -0800 (PST)
+Message-ID: <f9301f2c-8996-41ee-903a-372411e1d6f9@linaro.org>
+Date: Fri, 12 Jan 2024 08:20:33 +0100
 MIME-Version: 1.0
-References: <20240111195335.871096-1-nfraprado@collabora.com>
-In-Reply-To: <20240111195335.871096-1-nfraprado@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 12 Jan 2024 15:10:12 +0800
-Message-ID: <CAGXv+5FKHX482+QjYP=jWKWz2HD=Af6x9Cahi+fc4EKNmM-MMQ@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: mt8183: juniper: Remove CrosEC base detection node
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com, 
-	Conor Dooley <conor+dt@kernel.org>, Enric Balletbo i Serra <eballetbo@kernel.org>, 
-	Ikjoon Jang <ikjn@chromium.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Rob Herring <robh+dt@kernel.org>, Stephen Boyd <swboyd@chromium.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/4] dt-bindings: mailbox: Add mediatek,gce-props.yaml
+Content-Language: en-US
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Jason-ch Chen <jason-ch.chen@mediatek.com>,
+ Johnson Wang <johnson.wang@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Shawn Sung <shawn.sung@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20240110063532.14124-1-jason-jh.lin@mediatek.com>
+ <20240110063532.14124-2-jason-jh.lin@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20240110063532.14124-2-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240111_231028_083898_D74F3073 
-X-CRM114-Status: GOOD (  20.16  )
+X-CRM114-CacheID: sfid-20240111_232040_441473_7164BFA3 
+X-CRM114-Status: GOOD (  23.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,52 +150,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 12, 2024 at 3:55=E2=80=AFAM N=C3=ADcolas F. R. A. Prado
-<nfraprado@collabora.com> wrote:
->
-> The cbas node is used to describe base detection functionality in the
-> ChromeOS EC, which is used for units that have a detachable keyboard and
-> thus rely on this functionality to switch between tablet and laptop
-> mode.
->
-> The juniper-sku16 machine is a convertible, meaning the keyboard can be
-> flipped but not detached. The detection for the keyboard getting
-> flipped is handled by the driver bound to the keyboard-controller
-> node in the EC.
-
-We could do this for the whole jacuzzi family, which are all clamshell
-or convertibles.
-
-ChenYu
-
-> Since there is no base detection in this machine, and the device backed
-> by this node fails to probe and goes unused, delete the node from the
-> DT.
->
-> Fixes: 4fa8492d1e5b ("arm64: dts: mt8183: add cbas node under cros_ec")
-> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
->
+On 10/01/2024 07:35, Jason-JH.Lin wrote:
+> Add mediatek,gce-props.yaml for specific GCE properties for both
+> Mailbox Providers and Consumers.
+> 
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 > ---
->
->  .../boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts   | 3 +++
->  1 file changed, 3 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sk=
-u16.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.d=
-ts
-> index 8ac6bf5b17f9..8096ca215258 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts
-> @@ -13,3 +13,6 @@ / {
->         compatible =3D "google,juniper-sku16", "google,juniper", "mediate=
-k,mt8183";
->  };
->
-> +&cros_ec {
-> +       /delete-node/ cbas;
-> +};
-> --
-> 2.43.0
->
->
+>  .../bindings/mailbox/mediatek,gce-props.yaml  | 41 +++++++++++++++++++
+>  1 file changed, 41 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mailbox/mediatek,gce-props.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-props.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-props.yaml
+> new file mode 100644
+> index 000000000000..aac776b74e88
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-props.yaml
+> @@ -0,0 +1,41 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mailbox/mediatek,gce-props.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Global Command Engine common propertes for both Mailbox Providers and Consumers.
+
+That's way too long. Please observe coding style wrapping. Just MediaTek
+Global Command Engine Common Propertes
+(pay attention to capitalization)
+
+> +
+> +maintainers:
+> +  - Houlong Wei <houlong.wei@mediatek.com>
+> +
+> +description:
+> +  The Global Command Engine (GCE) is used to implement a Command Queue (CMDQ)
+> +  driver using the Linux Mailbox framework. The GCE is an instruction based,
+> +  multi-threaded, single-core command dispatcher for MediaTek hardware.
+> +  We use GCE Mailbox binding to define GCE core properties for GCE Mailbox Provider.
+> +  A device that uses the CMDQ driver to confige its hardware registers by requesting
+
+configure?
+
+> +  the Linux Mailbox Channels in the GCE Mailbox Controller is a Mailbox Consumer.
+> +  This binding defines the common GCE properties for both Mailbox Providers and Consumers.
+
+Last four sentences: a lot of text yet absolutely no meaning. I still do
+not understand why same property is shared between provider and consumer.
+
+Also, wrap according to Linux coding style.
+
+> +
+> +properties:
+> +  mediatek,gce-events:
+> +    description:
+> +      Each gce-events is an event id corresponding to a specific hardware event
+> +      signal sent to GCE. The event id is defined in the GCE header
+> +      include/dt-bindings/gce/<chip>-gce.h of each chips.
+> +      CMDQ client drivers have two usage of GCE event signals,
+> +      one is sfotware tokens and the other is hardware events.
+> +      Software tokens refer to GCE event signals triggered by drivers.
+> +      e.g. software drivers append GCE commands to set a GCE event after specific
+> +      GCE commands. Or CMDQ client driver uses the CPU to write the event id
+> +      into GCE register to trigger the GCE event corresponding to the event id.
+> +      Hardware events refer to GCE event signals triggered by hardware engines.
+> +      e.g. When OVL fetches all the data in the frame buffer, OVL will send
+
+There is no full stop before "e.g." and no new sentence. Please run this
+through grammar check, like Google, ChatGPT or human.
+
+> +      a frame done irq and send a frame done GCE event via hardware bus directly
+> +      at the same time.
+> +    $ref: /schemas/types.yaml#/definitions/uint32-array
+> +    minItems: 1
+> +    maxItems: 1024
+
+
+Best regards,
+Krzysztof
+
 
