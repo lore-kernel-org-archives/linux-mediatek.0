@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CD05C4707C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 07:20:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C15AC4706C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 07:22:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WW6jGJjARLyzmvJo/Ejz9ZPhSP+j9ZHeaKbDRm9v9fQ=; b=SXUFgNS0JyMI1Ke7zYU7Y929Ud
-	gSYcfvPif4WXIpljlZO7uX9CfxKj8Iov1vCAYvBglfaEfE6l0auig5KL4a0a9hARJn190FkHEiYOx
-	AYg9wFxl+51TQY0nQFitbRm3t+bl+CGIOLrPNweSUlbUTkYHwcy/pC25x4V+qL+nr5YuIqifv5gGn
-	TSrQ4BI/o4pybehzKBOIOK3/xLghmIONhkC72CW+wFFM96b3r6sWxy2DtgXsYox/LNIprkoCzX+2j
-	Ey1T9vUptCxqZYt8m5U5GJE5cczoyAfhP3EdxeLx/cUF39PkwjzSpOykvvDzglgw//AD/wXtFW1Q9
-	9YU9rYww==;
+	bh=0zod9jOIigkgHYYflYbRUuAS95/eYFPo+RbuUcLeBEY=; b=D5EmUGigHUObpjrTPy8v7+6vMt
+	fm84sAXER/RjgQTvBX6FQr/rCPMo0yjmc7sD+5kXFN09NBZLJGgRPDqwKDD0bf7pqUozf8dIcfy7r
+	XIB4cWVN4ywCvk+IZdK5DzzfVaEiZM81APXD2JjdXUe2it0OmW4HIk8eanBVbXFvAgNQwU1rokl6s
+	ylskFwowCnE1aEQ4v92wrA8HmwwImSxXNmLqp7YYHE6L4viO0exQydZ0BJukLMO/RBdNV9/kqM7p2
+	EOw02c36g4hX2kK6VudmCT+sDpysrqULD/886oq9I25g/Pcqf1kE9biSqITQsVxZqR957S2PY7lyt
+	mM0Ehptw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOBqN-00249C-0M;
-	Fri, 12 Jan 2024 07:20:43 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+	id 1rOBsX-0024eQ-3A;
+	Fri, 12 Jan 2024 07:22:57 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOBqK-00248V-1I
+	id 1rOBsV-0024ct-0M
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Jan 2024 07:20:41 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2cd928a1d58so9980091fa.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jan 2024 23:20:37 -0800 (PST)
+	Fri, 12 Jan 2024 07:22:56 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-33677fb38a3so5577103f8f.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jan 2024 23:22:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705044036; x=1705648836; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1705044172; x=1705648972; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=WW6jGJjARLyzmvJo/Ejz9ZPhSP+j9ZHeaKbDRm9v9fQ=;
-        b=wdXaN/qHSPlFv40bpx+bYDX3p8NBENWf2XLuz/tmjh44Pd9pmvjtgOtj3bMxfG7E2F
-         xpmxfSIoaO80oEcWT9xDaKyJmyRfW+f92bsKm4twDOq5+22cX8hRXSGAaK4b/FqZNa5C
-         gThowHAyjJ4c41LKy4SAWKAxvWd+qdOL+gVAXPe49xR/dCTP5A/h6HYxVyWsA7pFDUXy
-         MqVvS5xO0WoQSASqVeIsX2KjVW2UwE2Gi7RMpdmFebfyfgEIJ34Y4h7LN9iDqrUlbM9w
-         phRjDKeWRW/2YqN/n8D1s+TfH4al6IaMBNhE3mdhxXqAm/tWyhgTpZdioGJG2OwO+A40
-         ekOg==
+        bh=0zod9jOIigkgHYYflYbRUuAS95/eYFPo+RbuUcLeBEY=;
+        b=GoZrtaxN1R+YPPVYLyqujk8IT07REN7sQ/Fm4OZ2k2BZxHQCqfHNHnHXmXXpiEjg89
+         u4WGb/VcxR3vBR/pfMvKYTLZRNhhJ0PAbQC9IIx/OAltnpSkgQ5r14jQNR0j1fwj5MNa
+         FvAbs0u8uhVaRAtasWk+esyvkexsSx0R9x7qA94w/WEGarXDEgkAzJC7bJo9Hm1Q0DE1
+         NwSL3AgdVaoh4FwM1d/AgDCoPPnLW5o0VKSojPa64MphCuHNDauxszdnUd1kt0mZC3eF
+         OKNZ2lcTZZ16dTQN6uEcfJ19w5EhSXv9XZhSxggGJ/kh0A8OKKbyMNUYZN64YH4oeMV+
+         nHrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705044036; x=1705648836;
+        d=1e100.net; s=20230601; t=1705044172; x=1705648972;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=WW6jGJjARLyzmvJo/Ejz9ZPhSP+j9ZHeaKbDRm9v9fQ=;
-        b=BLOFxakUyE0xFwsFROJwOZSFhW/XSaURc484pN3X9FzXeTONhcRGO1Ohj+r7aqb71n
-         xP89svMd2R0oTE9N5nhHDrYAC4wPok5HrhiHL9jgumRxU+PSE5v9fN/v+zur8UIgjmYb
-         HmJ9Htme5Krf/5tKexCbVfxkCxyI8TVvsuTuCtlvnrNiiKjz1Wk6FeSHUXp+MLyBIrsJ
-         Z0ECaEfHjZic0cIWpB6Yh4yK0UxdMEagIU/SRcgbeyHB0CixI91syC2ewOQyARFG3TLP
-         cQsemj57z7kIRyPAqGQ+S35y1CG/9huRu476PtngfuUbN3rDgPQ6z1wYFmnOIeasPGcZ
-         U25g==
-X-Gm-Message-State: AOJu0YywcaehNWMNciicNnG8js+cwIpb9I4Ya4l7UOaVe17Xgsoa3u5o
-	Rhk1D0B6O1r4Yl60zwsFBBn1RQEj8hvSGg==
-X-Google-Smtp-Source: AGHT+IFEoThE0z4x+glmztfLbhGTbSb7RJhGRSWmlaS1LMAaccFBHO2vJ4Iui8hgUeBoGwx1LsJouQ==
-X-Received: by 2002:a2e:aaa3:0:b0:2cd:690d:5d37 with SMTP id bj35-20020a2eaaa3000000b002cd690d5d37mr398220ljb.29.1705044036312;
-        Thu, 11 Jan 2024 23:20:36 -0800 (PST)
+        bh=0zod9jOIigkgHYYflYbRUuAS95/eYFPo+RbuUcLeBEY=;
+        b=IzEKbdsuU0KrS4CGDTKejLb/0XX8BbIIWCdvSgsH03k5LMnw0+XMrOxnvY43iuV3R6
+         HG3JMfShXdUh0hrsGX3mTSSBG453/rD2ZaK7MhVVlmm1UCOa6PpMHc0PgAqeCDR081z+
+         gcLPaDUS+/FLer0fArxi740lEjejs7xJAw/4zFgyj9/U1rzhLtoe3JF6JeZ4wt7InhAj
+         LOoXDoefgnnRvtVKNaZmIYcCq6sjIG9q5gE5WMcmd4e/Fh8dr6w8O08jOuDf46vKHMO3
+         O7+3r8gyjAY2opSwQsV0BMvKQb0RJmYHwhmfLcdnUydHNTh2E00HmtdYCyZ54HQlk1+u
+         pivA==
+X-Gm-Message-State: AOJu0YxxLQgFeLal3AcIM1bBMqsTXDVaNzM8otgp9uyZAM96UiTM0CUT
+	h0YgNaVMmzupw0bA157q7MjUswJQNQem8w==
+X-Google-Smtp-Source: AGHT+IH8XR4Nx8gUk/Kge85NcS9avYm1/LLvwfVHCmNYNEidlWnAfkghnFOXYxB52gQp6ClSIF/xkg==
+X-Received: by 2002:a5d:4102:0:b0:336:66f7:2d2e with SMTP id l2-20020a5d4102000000b0033666f72d2emr539289wrp.8.1705044172163;
+        Thu, 11 Jan 2024 23:22:52 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.223.112])
-        by smtp.gmail.com with ESMTPSA id o12-20020a5d474c000000b00336aac53e75sm3021620wrs.97.2024.01.11.23.20.34
+        by smtp.gmail.com with ESMTPSA id q6-20020adf9dc6000000b003378e67fd2asm2407525wre.86.2024.01.11.23.22.50
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 11 Jan 2024 23:20:35 -0800 (PST)
-Message-ID: <f9301f2c-8996-41ee-903a-372411e1d6f9@linaro.org>
-Date: Fri, 12 Jan 2024 08:20:33 +0100
+        Thu, 11 Jan 2024 23:22:51 -0800 (PST)
+Message-ID: <d1bae8c6-a511-4bd2-9bc6-1b3c4dc6fb42@linaro.org>
+Date: Fri, 12 Jan 2024 08:22:49 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/4] dt-bindings: mailbox: Add mediatek,gce-props.yaml
+Subject: Re: [PATCH v2 3/4] dt-bindings: media: mediatek: mdp: Change
+ mediatek,gce-events to reference
 Content-Language: en-US
 To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
  Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
@@ -84,7 +85,7 @@ Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
  Shawn Sung <shawn.sung@mediatek.com>,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20240110063532.14124-1-jason-jh.lin@mediatek.com>
- <20240110063532.14124-2-jason-jh.lin@mediatek.com>
+ <20240110063532.14124-4-jason-jh.lin@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -130,12 +131,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240110063532.14124-2-jason-jh.lin@mediatek.com>
+In-Reply-To: <20240110063532.14124-4-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240111_232040_441473_7164BFA3 
-X-CRM114-Status: GOOD (  23.27  )
+X-CRM114-CacheID: sfid-20240111_232255_155256_38CB1E81 
+X-CRM114-Status: GOOD (  14.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,79 +152,43 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 10/01/2024 07:35, Jason-JH.Lin wrote:
-> Add mediatek,gce-props.yaml for specific GCE properties for both
-> Mailbox Providers and Consumers.
+> Change mediatek,gce-events property to reference mediatek,gce-props.yaml
+> instead of defining itself.
 > 
 > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 > ---
->  .../bindings/mailbox/mediatek,gce-props.yaml  | 41 +++++++++++++++++++
->  1 file changed, 41 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mailbox/mediatek,gce-props.yaml
+>  .../bindings/media/mediatek,mdp3-rdma.yaml           | 11 +++--------
+>  .../devicetree/bindings/media/mediatek,mdp3-rsz.yaml | 12 ++++--------
+>  .../bindings/media/mediatek,mdp3-wrot.yaml           | 12 ++++--------
+>  3 files changed, 11 insertions(+), 24 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-props.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-props.yaml
-> new file mode 100644
-> index 000000000000..aac776b74e88
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-props.yaml
-> @@ -0,0 +1,41 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mailbox/mediatek,gce-props.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Global Command Engine common propertes for both Mailbox Providers and Consumers.
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> index 59db8306485b..1ba70b9a5843 100644
+> --- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> @@ -44,13 +44,6 @@ properties:
+>        4 arguments defined in this property. Each GCE subsys id is mapping to
+>        a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
+>  
+> -  mediatek,gce-events:
+> -    description:
+> -      The event id which is mapping to the specific hardware event signal
+> -      to gce. The event id is defined in the gce header
+> -      include/dt-bindings/gce/<chip>-gce.h of each chips.
+> -    $ref: /schemas/types.yaml#/definitions/uint32-array
+> -
+>    mediatek,scp:
+>      $ref: /schemas/types.yaml#/definitions/phandle
+>      description:
+> @@ -96,6 +89,8 @@ required:
+>    - '#dma-cells'
+>  
+>  allOf:
+> +  - $ref: ../mailbox/mediatek,gce-props.yaml
 
-That's way too long. Please observe coding style wrapping. Just MediaTek
-Global Command Engine Common Propertes
-(pay attention to capitalization)
+You need full path, so /schemas/mailbox/
 
-> +
-> +maintainers:
-> +  - Houlong Wei <houlong.wei@mediatek.com>
-> +
-> +description:
-> +  The Global Command Engine (GCE) is used to implement a Command Queue (CMDQ)
-> +  driver using the Linux Mailbox framework. The GCE is an instruction based,
-> +  multi-threaded, single-core command dispatcher for MediaTek hardware.
-> +  We use GCE Mailbox binding to define GCE core properties for GCE Mailbox Provider.
-> +  A device that uses the CMDQ driver to confige its hardware registers by requesting
-
-configure?
-
-> +  the Linux Mailbox Channels in the GCE Mailbox Controller is a Mailbox Consumer.
-> +  This binding defines the common GCE properties for both Mailbox Providers and Consumers.
-
-Last four sentences: a lot of text yet absolutely no meaning. I still do
-not understand why same property is shared between provider and consumer.
-
-Also, wrap according to Linux coding style.
-
-> +
-> +properties:
-> +  mediatek,gce-events:
-> +    description:
-> +      Each gce-events is an event id corresponding to a specific hardware event
-> +      signal sent to GCE. The event id is defined in the GCE header
-> +      include/dt-bindings/gce/<chip>-gce.h of each chips.
-> +      CMDQ client drivers have two usage of GCE event signals,
-> +      one is sfotware tokens and the other is hardware events.
-> +      Software tokens refer to GCE event signals triggered by drivers.
-> +      e.g. software drivers append GCE commands to set a GCE event after specific
-> +      GCE commands. Or CMDQ client driver uses the CPU to write the event id
-> +      into GCE register to trigger the GCE event corresponding to the event id.
-> +      Hardware events refer to GCE event signals triggered by hardware engines.
-> +      e.g. When OVL fetches all the data in the frame buffer, OVL will send
-
-There is no full stop before "e.g." and no new sentence. Please run this
-through grammar check, like Google, ChatGPT or human.
-
-> +      a frame done irq and send a frame done GCE event via hardware bus directly
-> +      at the same time.
-> +    $ref: /schemas/types.yaml#/definitions/uint32-array
-> +    minItems: 1
-> +    maxItems: 1024
-
+Applies to all the patches.
 
 Best regards,
 Krzysztof
