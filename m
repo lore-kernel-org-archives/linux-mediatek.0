@@ -4,86 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 496FFC4706C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 07:32:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E0ADC4707C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 07:34:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+lZ5pNbtd5svoAtnRiRjmNP8aGu9v/OGDfR2LrQqfcI=; b=2kneofFotVz9ALDlKrn+TT72Dz
-	tekCcoqD+Igu3sPBTPsLU61ThKqpf/K7h+U93jX495x0HFuGw2jAY+ScrH+llZ/0ObjSniZSBkR6A
-	V32NqWYrOhwj2R6JAgo5YFGx7mZcKPXjVB9FWiTHWdu3pdzvvSw2L0vtveA6J5DDkHxY4nnTpyG1J
-	JJF1Ws+WW0Ihk6AgGvuEMK6nGFsU0yDUddwZlAjIaJL00UIJq1KlJSFrc2GWp+6oje/1BEN4dCCJp
-	sCD0PedxGKIi8EhuJmCE+n4f1Z004G5bW8qXKwcKij0PmrmIsbQ+7lSESOAWA68isEOdhFWel5Xzy
-	WiX/KS8Q==;
+	bh=ddS/24HTQnHz2ibEIady1e8z8N870H2ttPliU+CLMS0=; b=BFuGd3av+Jt3BaEWmxtxDfA2LZ
+	WWLW/BCkYC13Tqzks6nPMqV49Eh0IpuznQwKwEfpFzmxkLE6psIF9dydmaOZ4dOf6REmvfgOsTsci
+	tGUPHiOK4lYKev5FQGcQjFrrqrli09GBSqKZYW12PtdDGnm5AXzIYC4/mI97BJQfP0fK092GvK5KS
+	e//gVXLaL4sy3nD1YycIv3SMjJ5pWot1EmdnxrL+I4acIrSi0fe7HWGUUMxAtsHdmCh+Qz3KEvAb1
+	LInL6rH3UZGTNU9IWCfb95ZoTmHWgMH5v0RUsxlO7NUq1ZLFsLO1C7/brJRcVk9P1QBT2cxOTxnos
+	Z+vcDMDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOC1s-0025z5-35;
-	Fri, 12 Jan 2024 07:32:36 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1rOC48-0026BF-1y;
+	Fri, 12 Jan 2024 07:34:56 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOC1p-0025yA-2c
+	id 1rOC44-00269s-0z
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Jan 2024 07:32:35 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-40e63bc90f2so5790815e9.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jan 2024 23:32:31 -0800 (PST)
+	Fri, 12 Jan 2024 07:34:55 +0000
+Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-50ec948ad31so5116667e87.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jan 2024 23:34:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705044750; x=1705649550; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1705044888; x=1705649688; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=+lZ5pNbtd5svoAtnRiRjmNP8aGu9v/OGDfR2LrQqfcI=;
-        b=ZZ9+ZykaxlPYRwDxybfBs51xr8jRHwmvx5IwMXxX90iaqYXrkAX7vsZKSPJqzjn1HG
-         VBhnV7gMIcesjzsL8dHldc9zpRmQItIlxgfDhcIb/KSZumxdq4luXlinh/61zjU12IC4
-         JDvbKJf1bsF2HeDA+plGGxjO15N42rJ5oDlzOrAVp8zp0vCCAqINvD6L1QFxzfo41ozF
-         KXpyGf569ktJ0vxgMAd4Wb2hVNwe4OkD5qAZXtC3HIHDnNeaMixofWKSHYEQFg2w/BRk
-         ZPl8VUreRvLpnjNzvQEq0ClOleKss4XmsxkCPC69XYkmqomeECR4MpSZYMZgDJHT0bai
-         pnWQ==
+        bh=ddS/24HTQnHz2ibEIady1e8z8N870H2ttPliU+CLMS0=;
+        b=SEvLxtOKqdrIq/lXfwwpzCPMSXD43sz0oveYFnr7IMUlOfYRcC7J2pn0KH9fRjS2+S
+         7f2K9nKOiF/NnQDq8HDHiwksjrzNsvNtYtCO3sq9E57kr8VWV333V6gowrcKGI3BNPIk
+         MliLwJuVnAMDo3npbVG5gXUNFDIGn7aFbhcjxPqU50PoQxMNe3OvYZ4cBF1xVR5nyB0p
+         acuncAmdE0RXy0oQJe0Qfzx6jVNzmVayPHMkN6O5QHn+KREp5mvVrbIyMzznDPZtHLMS
+         GXDP1lv/R/4VoFfYzDfGXEsfY1Qdh97BQy1F4wng5vyT+YFqX9BmJr9vnNOI16yD7fUW
+         AcMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705044750; x=1705649550;
+        d=1e100.net; s=20230601; t=1705044888; x=1705649688;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=+lZ5pNbtd5svoAtnRiRjmNP8aGu9v/OGDfR2LrQqfcI=;
-        b=qdmYYaWiNehhSNEUYVED1u68vNrH2qJMO62W9Eo90uP1lr3QyMnGQHImDLTVrFQfKd
-         tDDaE+gFru9Idvzy8lfDUv84+mGjamES6BT7/P7dkI3iwZgbP90+9A36OLMX7IOAHYx0
-         w/soXlJkZ4uYtO/DZDv3PXWj5CmHevRigMsRJF6D6FNxOBkFvGu1QscHaVkEH16vn0VI
-         Gtq4C+0tyeVlHQjzN5UBmeJfy1xQsHqjiZ3TzPvYN8Jlpu+7nhAg/h9KNRXh8pt6YVFf
-         s3zGjeodBR5WX7BcnVo5pRb+9xCuMYKDK4KZAi5dhU665Gj6JFEf5gF2Vim1t4WFgR/l
-         /o4Q==
-X-Gm-Message-State: AOJu0YyFBoKOjsYh5ayDFHSmlLVR7U9Hhlmw4MaXNOPtXJKZULcoR9rU
-	Zd3GqRa/C7tohJDyNaKCoOJq0H43bMmwCg==
-X-Google-Smtp-Source: AGHT+IGzrGPxGzNAZX6qZ4D5J6KUh7V9eHw2NVyhm5+yZevc/neWxyTrugEGlvWIOfMIm/tD6kzldQ==
-X-Received: by 2002:a05:600c:512a:b0:40d:5a3f:8e90 with SMTP id o42-20020a05600c512a00b0040d5a3f8e90mr536073wms.20.1705044750092;
-        Thu, 11 Jan 2024 23:32:30 -0800 (PST)
+        bh=ddS/24HTQnHz2ibEIady1e8z8N870H2ttPliU+CLMS0=;
+        b=XfGGlUaRkpC+fawWIGtwLjwBeQfkNVuyEKsI4W9BKC9shBoxXj6q9/TpR+SuHjyp3M
+         AXcZJAdACyyrN/c1xLjIK+e5gaXCYJ5B9WAQ7iyKKZoQgRnXxnE/CxHuRaC95zUbzbj1
+         +wSjMVS81xW98s20IyN8ikt59+9K4H6HdZm34OLZY0t2Od4e4S5YA5czuEgBY/WbpnnQ
+         Y4zsXEcYZTjeYfT23V2CT1Lhl2vQPFwZY9WSMKq8cMxFsOg/tO2HhSUy/Tl8N1TKk3rv
+         ryQVH6WR7V5mnmqQDUy+GGFHTKbYj30lGxL99IF0pMHKwh/8B83GnfvxCfPKs+uZ9Cyk
+         mmlA==
+X-Gm-Message-State: AOJu0YwPYmEqnuYWACIme/3eUhzNuViGtWHXXCJwn+XIVrLZ1cCXNpj4
+	TdxvyYTv/XVsnu1t9JFz/c5sj8IW2ZMIMw==
+X-Google-Smtp-Source: AGHT+IGuxKgoZqP/kgGeomhgGnbvEoFh+VmURoaSHImamIpRtQwUDl/qrL2+BHg3Q4xKqDq3OQvUcA==
+X-Received: by 2002:ac2:4d04:0:b0:50e:dbfe:df2 with SMTP id r4-20020ac24d04000000b0050edbfe0df2mr336704lfi.109.1705044888127;
+        Thu, 11 Jan 2024 23:34:48 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.223.112])
-        by smtp.gmail.com with ESMTPSA id n15-20020a05600c3b8f00b0040d5a5c523csm8647963wms.1.2024.01.11.23.32.28
+        by smtp.gmail.com with ESMTPSA id l26-20020adfb11a000000b0033762d4ad5asm3092792wra.81.2024.01.11.23.34.46
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 11 Jan 2024 23:32:29 -0800 (PST)
-Message-ID: <e0bf8667-cbb8-49ba-bb44-3edf93b019b8@linaro.org>
-Date: Fri, 12 Jan 2024 08:32:27 +0100
+        Thu, 11 Jan 2024 23:34:47 -0800 (PST)
+Message-ID: <feb4e04f-8282-4b52-b785-07bf15008e06@linaro.org>
+Date: Fri, 12 Jan 2024 08:34:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/5] dt-bindings: media: add mediatek ISP3.0 sensor
- interface
+Subject: Re: [PATCH v4 2/5] dt-bindings: media: add mediatek ISP3.0 camsv
 Content-Language: en-US
 To: Julien Stephan <jstephan@baylibre.com>
-Cc: Louis Kuo <louis.kuo@mediatek.com>, Phi-Bang Nguyen
- <pnguyen@baylibre.com>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>, Andy Hsieh <andy.hsieh@mediatek.com>,
+Cc: Phi-bang Nguyen <pnguyen@baylibre.com>,
+ Andy Hsieh <andy.hsieh@mediatek.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
  Florian Sylvestre <fsylvestre@baylibre.com>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Louis Kuo <louis.kuo@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
  Paul Elder <paul.elder@ideasonboard.com>, Rob Herring <robh+dt@kernel.org>
 References: <20240110141443.364655-1-jstephan@baylibre.com>
- <20240110141443.364655-2-jstephan@baylibre.com>
+ <20240110141443.364655-3-jstephan@baylibre.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -129,12 +128,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240110141443.364655-2-jstephan@baylibre.com>
+In-Reply-To: <20240110141443.364655-3-jstephan@baylibre.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240111_233233_848806_7B085723 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20240111_233452_346784_830E7FEE 
+X-CRM114-Status: GOOD (  19.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,143 +149,95 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 10/01/2024 15:14, Julien Stephan wrote:
-> From: Louis Kuo <louis.kuo@mediatek.com>
+> From: Phi-bang Nguyen <pnguyen@baylibre.com>
 > 
-> This adds the bindings, for the mediatek ISP3.0 SENINF module embedded in
+> This adds the bindings, for the ISP3.0 camsv module embedded in
 > some Mediatek SoC, such as the mt8365
 > 
+> Signed-off-by: Phi-bang Nguyen <pnguyen@baylibre.com>
+> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+> Link: https://lore.kernel.org/r/20230807094940.329165-4-jstephan@baylibre.com
+> ---
+>  .../bindings/media/mediatek,mt8365-camsv.yaml | 109 ++++++++++++++++++
+>  MAINTAINERS                                   |   1 +
+>  2 files changed, 110 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8365-camsv.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8365-camsv.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8365-camsv.yaml
+> new file mode 100644
+> index 000000000000..097b1ab6bc72
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mt8365-camsv.yaml
+> @@ -0,0 +1,109 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +# Copyright (c) 2023 MediaTek, BayLibre
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/mediatek,mt8365-camsv.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek CAMSV 3.0
+> +
+> +maintainers:
+> +  - Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> +  - Julien Stephan <jstephan@baylibre.com>
+> +  - Andy Hsieh <andy.hsieh@mediatek.com>
+> +
+> +description:
+> +  The CAMSV is a set of DMA engines connected to the SENINF CSI-2
+> +  receivers. The number of CAMSVs depend on the SoC model.
 
-...
+DMA should not go to media, but to dma
 
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt8365-camsv
+> +
+> +  reg:
+> +    items:
+> +      - description: camsv base
+> +      - description: img0 base
+> +      - description: tg base
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: cam clock
+> +      - description: camtg clock
+> +      - description: camsv clock
+> +
 > +  clock-names:
 > +    items:
-> +      - const: camsys
-> +      - const: top_mux
+> +      - const: cam
+> +      - const: camtg
+> +      - const: camsv
 > +
-> +  phys:
-> +    minItems: 1
-> +    maxItems: 4
-> +    description:
-> +      phandle to the PHYs connected to CSI0/A, CSI1, CSI2 and CSI0B
-> +
-> +  phy-names:
-> +    minItems: 1
-> +    items:
-> +      - const: csi0
-> +      - const: csi1
-> +      - const: csi2
-> +      - const: csi0b
-
-Why one hardware has flexible number of phys?
-
+> +  iommus:
+> +    maxItems: 1
 > +
 > +  ports:
 > +    $ref: /schemas/graph.yaml#/properties/ports
 > +
 > +    properties:
 > +      port@0:
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description: CSI0 or CSI0A port
-> +
-> +        properties:
-> +          endpoint:
-> +            $ref: video-interfaces.yaml#
-> +            unevaluatedProperties: false
-> +
-> +            properties:
-> +              clock-lanes:
-> +                maxItems: 1
-> +              data-lanes:
-> +                minItems: 1
-> +                maxItems: 4
-> +
-> +      port@1:
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description: CSI1 port
-> +
-> +        properties:
-> +          endpoint:
-> +            $ref: video-interfaces.yaml#
-> +            unevaluatedProperties: false
-> +
-> +            properties:
-> +              clock-lanes:
-> +                maxItems: 1
-> +              data-lanes:
-> +                minItems: 1
-> +                maxItems: 4
-> +
-> +      port@2:
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description: CSI2 port
-> +
-> +        properties:
-> +          endpoint:
-> +            $ref: video-interfaces.yaml#
-> +            unevaluatedProperties: false
-> +
-> +            properties:
-> +              clock-lanes:
-> +                maxItems: 1
-> +              data-lanes:
-> +                minItems: 1
-> +                maxItems: 4
-> +
-> +      port@3:
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description: CSI0B port
-> +
-> +        properties:
-> +          endpoint:
-> +            $ref: video-interfaces.yaml#
-> +            unevaluatedProperties: false
-> +
-> +            properties:
-> +              clock-lanes:
-> +                maxItems: 1
-> +              data-lanes:
-> +                minItems: 1
-> +                maxItems: 2
-> +
-> +      port@4:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: connection point for cam0
-> +
-> +      port@5:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: connection point for cam1
-> +
-> +      port@6:
 > +        $ref: /schemas/graph.yaml#/properties/port
 > +        description: connection point for camsv0
-> +
-> +      port@7:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: connection point for camsv1
-> +
-> +      port@8:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: connection point for camsv2
-> +
-> +      port@9:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: connection point for camsv3
+
+This explains me nothing. What type of connection point? How does it fit
+the pipeline going to the display?
+
+It seems you represented DMA as some other device to make your drivers
+easier... That's not how it works.
+
 > +
 > +    required:
 > +      - port@0
-> +      - port@1
-> +      - port@2
-> +      - port@3
-> +      - port@4
-> +      - port@5
-> +      - port@6
-> +      - port@7
-> +      - port@8
-> +      - port@9
 > +
 > +required:
 > +  - compatible
@@ -294,100 +245,28 @@ Why one hardware has flexible number of phys?
 > +  - clocks
 > +  - clock-names
 > +  - power-domains
+> +  - iommus
 > +  - ports
 > +
 > +additionalProperties: false
 > +
 > +examples:
 > +  - |
-> +    #include <dt-bindings/clock/mediatek,mt8365-clk.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
 > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/phy/phy.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/clock/mediatek,mt8365-clk.h>
+> +    #include <dt-bindings/memory/mediatek,mt8365-larb-port.h>
 > +    #include <dt-bindings/power/mediatek,mt8365-power.h>
 > +
 > +    soc {
-> +          #address-cells = <2>;
-> +          #size-cells = <2>;
-
-Use 4 spaces for example indentation.
-
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
 > +
-> +          seninf: seninf@15040000 {
+> +        camsv1: camsv@15050000 {
 
 Node names should be generic. See also an explanation and list of
 examples (not exhaustive) in DT specification:
 https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
-
-
-> +                compatible = "mediatek,mt8365-seninf";
-> +                reg = <0 0x15040000 0 0x6000>;
-> +                interrupts = <GIC_SPI 210 IRQ_TYPE_LEVEL_LOW>;
-> +                clocks = <&camsys CLK_CAM_SENIF>,
-> +                         <&topckgen CLK_TOP_SENIF_SEL>;
-> +                clock-names = "camsys", "top_mux";
-> +
-> +                power-domains = <&spm MT8365_POWER_DOMAIN_CAM>;
-> +
-> +                phys = <&mipi_csi0 PHY_TYPE_DPHY>;
-> +                phy-names = "csi0";
-> +
-> +                ports {
-> +                      #address-cells = <1>;
-> +                      #size-cells = <0>;
-> +
-> +                      port@0 {
-> +                            reg = <0>;
-> +                            seninf_in1: endpoint {
-> +                              clock-lanes = <2>;
-> +                              data-lanes = <1 3 0 4>;
-> +                              remote-endpoint = <&isp1_out>;
-> +                            };
-> +                      };
-> +
-> +                      port@1 {
-> +                          reg = <1>;
-> +                      };
-> +
-> +                      port@2 {
-> +                            reg = <2>;
-> +                      };
-> +
-> +                      port@3 {
-> +                            reg = <3>;
-> +                      };
-> +
-> +                      port@4 {
-> +                            reg = <4>;
-> +                            seninf_camsv1_endpoint: endpoint {
-> +                                remote-endpoint = <&camsv1_endpoint>;
-> +                            };
-> +                      };
-> +
-> +                      port@5 {
-> +                            reg = <5>;
-> +                      };
-> +
-> +                      port@6 {
-> +                            reg = <6>;
-> +                      };
-> +
-> +                      port@7 {
-> +                            reg = <7>;
-> +                      };
-> +
-> +                      port@8 {
-> +                            reg = <8>;
-> +                      };
-> +
-> +                      port@9 {
-> +                            reg = <9>;
-> +                      };
-> +
-
-Stray blank line
-
-> +                };
 
 
 
