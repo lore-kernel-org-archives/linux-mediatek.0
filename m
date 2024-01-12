@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27299C4706C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 09:21:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D07D6C4706C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 09:21:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6jHIiPkYdMqrIuViIDt09m/oNMLq/0qMbZqFoJXbNq8=; b=3KpkMKnaqkKaKwfu27Sd1W0sz5
-	hOgxgTH50tehl4L07sTzwjzdY3b7+xzgntDeyHrP7nLRO/huuMEHMeMLFHZpsmTAO81im3DrxgDNg
-	dHfmaSQFwHFgq0POTD/8xfvP2Gzv5nBODZCKOfQ6JRGFlc7wx/5lvR20kmIq3B/fp7cLYXgY90IPL
-	h7V+T9xb1Ql3e4JkbqWve2mVcamhuFa4GLh4gmbtSHsdh9rqRPuxN5dTW+uIPWDjnHtZE8sXwbTsn
-	d7T6kzYYa7T/8Wvf51LhPJzlcAdsKtpQ7cByPBrEZzXyz7vS4FqP9rTocEJnGpByFzy7iKWBgiTiV
-	7keugZEg==;
+	bh=CsDipHrMcSMQZ5T1xzar/uAvtmPl0zEeVcCMjR5KaC0=; b=owSUuETRsxZM94yNVCvVljIjhp
+	rqpxjyi4f8svqs6NTgQr4j7p9SNhOR8lo11NabyceEDy9olaLXCrHv95P2VZnM+jcIJUnFAsu/TUt
+	ZHDepx6zvQGTG/pQOsqkwe61vgAuvbOAzVyJjhXaeSzWQODiiJgWKWp7YOdotnA4jox7TkM+fQwzR
+	IpZDOwxBtPNLR8bkifPYAQwNAjo3YQtSwV0nZbe78JmU6Qu3rfdmsS7kqYkKmkwxtMwA1ZQKSuIHa
+	WJWgIVBSD+6FvZVLvuQznC8nns9fiVNFVjF1h2hMK4ZW4Jn58j0+K8+eSyyStsXBiMG+r2MGmpT70
+	QlOSd7kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rODix-002IAO-2w;
-	Fri, 12 Jan 2024 09:21:11 +0000
+	id 1rODj4-002IEK-2Q;
+	Fri, 12 Jan 2024 09:21:18 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rODiu-002I7X-32;
-	Fri, 12 Jan 2024 09:21:10 +0000
-X-UUID: e64fd73eb12b11ee9a662f17bb45267e-20240112
+	id 1rODj1-002ICZ-1m;
+	Fri, 12 Jan 2024 09:21:17 +0000
+X-UUID: ed43dbbcb12b11ee9a662f17bb45267e-20240112
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=6jHIiPkYdMqrIuViIDt09m/oNMLq/0qMbZqFoJXbNq8=;
-	b=TD9sqqYIY5f+voXnqFuUeaiG7sOiy6ohkg3BKaAJwktv05l2zpep8PsoIk5lNQ9toA2slerzjC7M2yBX4Wk0LyrLDfUQ9GAnSW2UFkIw7qbtDrbX4AzwE/WFjZcGjFF4Ak8tFRnVOUO3sep+Bal8dtH6YilWJ6Oel/eAP2DcORQ=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=CsDipHrMcSMQZ5T1xzar/uAvtmPl0zEeVcCMjR5KaC0=;
+	b=NYil9XfQ59lQJZnRBfKxJX4IprCQ+NqbmOVP0ER+PCCi6z58brkkuvS6WzvMLOzUV/aumuzlWaQvV3VsFtP+vHWAgm1Nmp9ief31omekrHLuATa4xbGWh5N3flygjEsku9JtliN1xAuypamveEmKz8kYUubTPryIIsP7j5cE1Bk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:9f95ea79-c1c7-47e7-bf4b-507a1a3636c7,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:dc5ac782-8d4f-477b-89d2-1e3bdbef96d1,B
+X-CID-O-INFO: VERSION:1.1.35,REQID:bd3d6d82-8617-4c51-af95-9ade720a0a68,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:5d391d7,CLOUDID:c0a5182f-1ab8-4133-9780-81938111c800,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: e64fd73eb12b11ee9a662f17bb45267e-20240112
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: ed43dbbcb12b11ee9a662f17bb45267e-20240112
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 811239125; Fri, 12 Jan 2024 02:21:00 -0700
+	with ESMTP id 780378147; Fri, 12 Jan 2024 02:21:11 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 12 Jan 2024 17:20:55 +0800
+ 15.2.1118.26; Fri, 12 Jan 2024 17:20:37 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 12 Jan 2024 17:20:53 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 12 Jan 2024 17:20:35 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, <christian.koenig@amd.com>, Sumit Semwal
@@ -71,9 +71,9 @@ CC: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
  Machek" <pavel@ucw.cz>, Simon Ser <contact@emersion.fr>, Pekka Paalanen
 	<ppaalanen@gmail.com>, <jianjiao.zeng@mediatek.com>,
 	<kuohong.wang@mediatek.com>, <youlin.pei@mediatek.com>
-Subject: [PATCH v4 3/7] dma-buf: heaps: restricted_heap: Add private heap ops
-Date: Fri, 12 Jan 2024 17:20:10 +0800
-Message-ID: <20240112092014.23999-4-yong.wu@mediatek.com>
+Subject: [PATCH v4 1/7] dt-bindings: reserved-memory: Add mediatek,dynamic-restricted-region
+Date: Fri, 12 Jan 2024 17:20:08 +0800
+Message-ID: <20240112092014.23999-2-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240112092014.23999-1-yong.wu@mediatek.com>
 References: <20240112092014.23999-1-yong.wu@mediatek.com>
@@ -81,21 +81,23 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--2.237500-8.000000
-X-TMASE-MatchedRID: iSQL5szRvdExaBEU4bKrV0hEDfw/93BuMApqy5cfknVX4H/AHZTAKiyG
-	2FFo0u8oRHLRFcKKZXfbCHv011Gy9ZCoy9iDotiwzfqlpbtmcWiH7D1bP/FcOrXvDHySC+eU+a/
-	zdHOJ3WkVrfWt68rqN2a39PjWf0NNHxPMjOKY7A8LbigRnpKlKSBuGJWwgxArX1upngn1GyfAxT
-	6U8SDb8vUxfqD56Kpg95Wd/WEnd3Q/A2ducvlnMYZSLT91ovb7o0pTThB0QTAQDF6kcoF++1KIU
-	FLF1m+Y8mf/2A2Ja/Zpp55fZDlsr34cY/B7JqXaYZ1R7NXn0MdBmmCXcKyFFJ6oP1a0mRIj
+X-TM-AS-Result: No-10--3.946300-8.000000
+X-TMASE-MatchedRID: YXgS1C6OPWwxaBEU4bKrV8LPXKYZysJRecvjbu/xDjpMOjKUxCZwr6oy
+	tXMP4p4T7Oz5SO8AjrT8deRGOD4hQJ/vdeQQfVo4zfqlpbtmcWhMkOX0Uoduubuqk4cq52pzNDP
+	jsaoNaOmcPcDHCp4L+uSWVqW5qzmOGHMruoCVNItsG7r4Qh7N3J15MaKbV6Qv92wasZo4p00VN8
+	HXIE+U8k5/nzWZD6z607K+59sjwLdAXbiRmn1bD54CIKY/Hg3AaZGo0EeYG978V77yhJRgo99pj
+	zubZ2rH33fj+sMArfMJpevTilEwkFjGlbPXfDBGCFErBhF4CgwJ/T+F/HKSEHCVsvSCvlbfzLv5
+	+XaqEeZwkCae1ANnop9RAYWhalwdisxAtDy5oyiZqjnDjmy9xW1Rjoup2VCcWve+eVz4Pp5Vk5u
+	tmQ1VlGVF3+d9rnoxXsgQSqx49gY=
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--2.237500-8.000000
+X-TMASE-Result: 10--3.946300-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: E17AEBE1573EE56AA0E5BF0CDAEE0C2195895CC9F7701A5D61573FE5E60280622000:8
+X-TM-SNTS-SMTP: D68D2818C77DD63E4E15ABE939F9C3F9AD0BFE5F39B89A44924D760DB8D2C71A2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240112_012108_983152_F160BC2C 
-X-CRM114-Status: GOOD (  15.95  )
+X-CRM114-CacheID: sfid-20240112_012115_594445_41B3CA04 
+X-CRM114-Status: GOOD (  14.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,116 +112,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add "struct restricted_heap_ops". For the restricted memory, totally there
-are two steps:
-a) memory_alloc: Allocate the buffer in kernel;
-b) memory_restrict: Restrict/Protect/Secure that buffer.
-The memory_alloc is mandatory while memory_restrict is optinal since it may
-be part of memory_alloc.
+Add a binding for describing the dynamic restricted reserved memory range.
+The memory range also will be defined in the TEE firmware. It means the TEE
+will be configured with the same address/size that is being set in this
+DT node. Regarding to the detail TEE command, Please search
+MTK_TZCMD_SECMEM_ZALLOC and MTK_TZCMD_SECMEM_FREE.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/dma-buf/heaps/restricted_heap.c | 41 ++++++++++++++++++++++++-
- drivers/dma-buf/heaps/restricted_heap.h | 12 ++++++++
- 2 files changed, 52 insertions(+), 1 deletion(-)
+ .../mediatek,dynamic-restricted-region.yaml   | 43 +++++++++++++++++++
+ 1 file changed, 43 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,dynamic-restricted-region.yaml
 
-diff --git a/drivers/dma-buf/heaps/restricted_heap.c b/drivers/dma-buf/heaps/restricted_heap.c
-index fd7c82abd42e..8c266a0f6192 100644
---- a/drivers/dma-buf/heaps/restricted_heap.c
-+++ b/drivers/dma-buf/heaps/restricted_heap.c
-@@ -12,10 +12,44 @@
- 
- #include "restricted_heap.h"
- 
-+static int
-+restricted_heap_memory_allocate(struct restricted_heap *heap, struct restricted_buffer *buf)
-+{
-+	const struct restricted_heap_ops *ops = heap->ops;
-+	int ret;
+diff --git a/Documentation/devicetree/bindings/reserved-memory/mediatek,dynamic-restricted-region.yaml b/Documentation/devicetree/bindings/reserved-memory/mediatek,dynamic-restricted-region.yaml
+new file mode 100644
+index 000000000000..5cbe3a5637fa
+--- /dev/null
++++ b/Documentation/devicetree/bindings/reserved-memory/mediatek,dynamic-restricted-region.yaml
+@@ -0,0 +1,43 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/reserved-memory/mediatek,dynamic-restricted-region.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	ret = ops->memory_alloc(heap, buf);
-+	if (ret)
-+		return ret;
++title: MediaTek Dynamic Reserved Region
 +
-+	if (ops->memory_restrict) {
-+		ret = ops->memory_restrict(heap, buf);
-+		if (ret)
-+			goto memory_free;
-+	}
-+	return 0;
++description:
++  A memory region that can dynamically transition as a whole between
++  secure and non-secure states. This memory will be protected by OP-TEE
++  when allocations are active and unprotected otherwise.
 +
-+memory_free:
-+	ops->memory_free(heap, buf);
-+	return ret;
-+}
++maintainers:
++  - Yong Wu <yong.wu@mediatek.com>
 +
-+static void
-+restricted_heap_memory_free(struct restricted_heap *heap, struct restricted_buffer *buf)
-+{
-+	const struct restricted_heap_ops *ops = heap->ops;
++allOf:
++  - $ref: reserved-memory.yaml
 +
-+	if (ops->memory_unrestrict)
-+		ops->memory_unrestrict(heap, buf);
++properties:
++  compatible:
++    const: mediatek,dynamic-restricted-region
 +
-+	ops->memory_free(heap, buf);
-+}
++required:
++  - compatible
++  - reg
++  - reusable
 +
- static struct dma_buf *
- restricted_heap_allocate(struct dma_heap *heap, unsigned long size,
- 			 unsigned long fd_flags, unsigned long heap_flags)
- {
-+	struct restricted_heap *restricted_heap = dma_heap_get_drvdata(heap);
- 	struct restricted_buffer *restricted_buf;
- 	DEFINE_DMA_BUF_EXPORT_INFO(exp_info);
- 	struct dma_buf *dmabuf;
-@@ -28,6 +62,9 @@ restricted_heap_allocate(struct dma_heap *heap, unsigned long size,
- 	restricted_buf->size = ALIGN(size, PAGE_SIZE);
- 	restricted_buf->heap = heap;
- 
-+	ret = restricted_heap_memory_allocate(restricted_heap, restricted_buf);
-+	if (ret)
-+		goto err_free_buf;
- 	exp_info.exp_name = dma_heap_get_name(heap);
- 	exp_info.size = restricted_buf->size;
- 	exp_info.flags = fd_flags;
-@@ -36,11 +73,13 @@ restricted_heap_allocate(struct dma_heap *heap, unsigned long size,
- 	dmabuf = dma_buf_export(&exp_info);
- 	if (IS_ERR(dmabuf)) {
- 		ret = PTR_ERR(dmabuf);
--		goto err_free_buf;
-+		goto err_free_restricted_mem;
- 	}
- 
- 	return dmabuf;
- 
-+err_free_restricted_mem:
-+	restricted_heap_memory_free(restricted_heap, restricted_buf);
- err_free_buf:
- 	kfree(restricted_buf);
- 	return ERR_PTR(ret);
-diff --git a/drivers/dma-buf/heaps/restricted_heap.h b/drivers/dma-buf/heaps/restricted_heap.h
-index 443028f6ba3b..ddeaf9805708 100644
---- a/drivers/dma-buf/heaps/restricted_heap.h
-+++ b/drivers/dma-buf/heaps/restricted_heap.h
-@@ -15,6 +15,18 @@ struct restricted_buffer {
- 
- struct restricted_heap {
- 	const char		*name;
++unevaluatedProperties: false
 +
-+	const struct restricted_heap_ops *ops;
-+};
++examples:
++  - |
++    reserved-memory {
++        #address-cells = <1>;
++        #size-cells = <1>;
++        ranges;
 +
-+struct restricted_heap_ops {
-+	int	(*heap_init)(struct restricted_heap *heap);
-+
-+	int	(*memory_alloc)(struct restricted_heap *heap, struct restricted_buffer *buf);
-+	void	(*memory_free)(struct restricted_heap *heap, struct restricted_buffer *buf);
-+
-+	int	(*memory_restrict)(struct restricted_heap *heap, struct restricted_buffer *buf);
-+	void	(*memory_unrestrict)(struct restricted_heap *heap, struct restricted_buffer *buf);
- };
- 
- int restricted_heap_add(struct restricted_heap *rstrd_heap);
++        reserved-memory@80000000 {
++            compatible = "mediatek,dynamic-restricted-region";
++            reg = <0x80000000 0x18000000>;
++            reusable;
++        };
++    };
 -- 
 2.25.1
 
