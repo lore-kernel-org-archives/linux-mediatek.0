@@ -4,71 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CC30C4706C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 14:22:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5554C4706C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 17:04:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JzjRm5CmUHtKY7/maYZZnos4VHDfHigbtWtqgQqR1mU=; b=oCirvG4ptTJuU7PyIymuno3cka
-	UEJrGbNfltoG0ErMegXECGa33voYIMketxHbOaq4y14b0hlWM0GPoRGBbIsIsUChjahcLh+6f3qI7
-	0Q3ccSbTPlvq7mhbhC2zObGnSfSELhqc5xMaEeR+AtjNrHZWsZ9yBJNEEUhJeTh4/uHIrjE1glFmN
-	InrqSiR71Y7pXl5WWm732W0oSAUz2fndShV8Vqji9Hvdm1Z2O5/v2W317c1VE4SYxSIMRlc3k/QW5
-	4fFjzkHYIo4q/8fY0NBoIxxEaOHAM7+0E+YHSnrbcEvEhNHpBnjn1JIy/EDpMafjbPNmdABiDe5n1
-	T36UCiNw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rh5LVnRkxnsZprxSRV0ggBGsi5nvJIa3KM/5+Als/+w=; b=N1/nfoj7h9m3nH/69mSXCngoSN
+	EH0f/9J4TsvKZetyHzLrLhehSMG2jPTdnGGZrcbVYH5LHGcY62Riksjk921uN3dP8vmvcFJoUNXMk
+	WO7dzkD6cZNDEKkQX1mKlD3k07NRhIfqhCpKh7sLDtMYAdF4Gaf+S2oc3UmAQ0m61E/250nu6Ti/Q
+	J5ReEV2e/8KTcdf4c2oV2Vyg+ggM100Oimk2E9626JHBixNuHsQaUUDlG+wPC1zI4Mrm1PBhCrk9O
+	+UBv6MhrXk/Ay2KY+Mp4SSladzcREHDjWBxeT09HLPxJZ+eJKxmEgG3cZbQpsOBn8Ck49WMdBw1sB
+	nwkhYCpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOIQq-00312J-06;
-	Fri, 12 Jan 2024 14:22:48 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rOKxE-003OL0-1F;
+	Fri, 12 Jan 2024 17:04:24 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOIQm-00311C-0V;
-	Fri, 12 Jan 2024 14:22:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705069361;
-	bh=2cBD3Lbpl2cRVVQBqOcu4sRyjCaGrfbaTxuW4Uf9u2k=;
-	h=From:To:Cc:Subject:Date:From;
-	b=5IswpgLyvJQ/mJIsfPnF4WKCupnP39c+fFVV1tvMQdxIs1duZkylkmsmdnG3dTY07
-	 ffU5rLJyazvVoCGTVMnM3eI1JJm0HpPt9psFhDvT9Vei0roUZZ2t3EAY57K2jTcQfF
-	 F7kRJttqjHnpy/UQk0lHe9sBm1h4NRgMtwUUVSfD5Jad7f5ciCtGMD1RmEcoghPr5y
-	 qZrHeSFeACqYw1ZaOmdxbX+SfaPisa2qOCR3/8+qwIaHzvfy9gyO2SXFcKThx1NWf8
-	 uBTVqheYQrpVpOLQRjPPjmPs8K7plC4OJJtWnsKT7fVp17PpmtDBihD+AtuR8wns9c
-	 6WE44Hi7+6Wcg==
-Received: from localhost.localdomain (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0605A3780624;
-	Fri, 12 Jan 2024 14:22:35 +0000 (UTC)
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel@collabora.com,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Enric Balletbo i Serra <eballetbo@kernel.org>,
-	Ikjoon Jang <ikjn@chromium.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Stephen Boyd <swboyd@chromium.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2] arm64: dts: mt8183: jacuzzi: Remove CrosEC base detection node
-Date: Fri, 12 Jan 2024 11:20:28 -0300
-Message-ID: <20240112142032.909736-1-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.43.0
+	id 1rOKxA-003OJv-1w;
+	Fri, 12 Jan 2024 17:04:21 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5F2B661C2F;
+	Fri, 12 Jan 2024 17:04:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62DAAC433C7;
+	Fri, 12 Jan 2024 17:04:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1705079059;
+	bh=1iKtOHGK5dbeKaVrIFz5lHMuGkeVlaDW9VTBqF628Mc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=AjSL5aKbZ34Pzcb5zxFRhJmQRALsnxiMOMjoy1Ge3UcW7Z98aa5EhZqcxS2gbpeVr
+	 ETu6cWCg+YbLwckvU1wQE6Beie/Bm78MNMt0WPMpdooCfQIIC/ZJXCq9obWu2vBmgN
+	 wEFEVHQeomn5gjFIvpbfxJv3UICofiCo5uDvN71OiRlTX90hxpa+cqT6daNtX7bsJi
+	 BKInXQ+9D1uA/vXpfTk2g2ev1CYMKKLFJX6q56cZkCnqffMLzE1tzt9Lyzlvg2O58E
+	 97atUhkOirmrsKA2I5rqP4F5Q5Bbjik1sSvfViE67CJw3wIMCCBEldeHMtTxtsgswV
+	 gTfFDwlTQ3kfw==
+Date: Fri, 12 Jan 2024 17:04:14 +0000
+From: Conor Dooley <conor@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org,
+	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com,
+	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH 1/2] dt-bindings: usb: mtu3: Add MT8195 MTU3 ip-sleep
+ support
+Message-ID: <20240112-immodest-cuddly-1c0045fa2861@spud>
+References: <20240112133222.240038-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="EVXqlph5rFkFrGvl"
+Content-Disposition: inline
+In-Reply-To: <20240112133222.240038-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240112_062244_325282_CBC10BC0 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20240112_090420_688717_80405421 
+X-CRM114-Status: GOOD (  14.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,43 +76,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The cbas node is used to describe base detection functionality in the
-ChromeOS EC, which is used for units that have a detachable keyboard and
-thus rely on this functionality to switch between tablet and laptop
-mode.
 
-All machines in the jacuzzi family are either clamshells (ie normal
-laptops) or convertibles, meaning the keyboard can be flipped but not
-detached. The detection for the keyboard getting flipped is handled by
-the driver bound to the keyboard-controller node in the EC.
+--EVXqlph5rFkFrGvl
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Since there is no base detection in these machines, and the device
-backed by this node fails to probe and goes unused, delete the node from
-the DT.
+On Fri, Jan 12, 2024 at 02:32:21PM +0100, AngeloGioacchino Del Regno wrote:
+> Of the four USB controllers present on the MediaTek MT8195 SoC, three
+> of them (0, 2 and 3) are behind MTU3: add wakeup controls for them.
+>=20
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 
-Fixes: 4fa8492d1e5b ("arm64: dts: mt8183: add cbas node under cros_ec")
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
----
+Cheers,
+Conor.
 
-Changes in v2:
-- Moved cbas node removal to jacuzzi dtsi
+> ---
+>  Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml b/D=
+ocumentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+> index a59d91243ac8..d4e187c78a0b 100644
+> --- a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+> @@ -185,7 +185,10 @@ properties:
+>              2 - used by mt2712 etc, revision 2 with following IPM rule;
+>              101 - used by mt8183, specific 1.01;
+>              102 - used by mt8192, specific 1.02;
+> -          enum: [1, 2, 101, 102]
+> +            103 - used by mt8195, IP0, specific 1.03;
+> +            105 - used by mt8195, IP2, specific 1.05;
+> +            106 - used by mt8195, IP3, specific 1.06;
+> +          enum: [1, 2, 101, 102, 103, 105, 106]
+> =20
+>    mediatek,u3p-dis-msk:
+>      $ref: /schemas/types.yaml#/definitions/uint32
+> --=20
+> 2.43.0
+>=20
 
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi | 3 +++
- 1 file changed, 3 insertions(+)
+--EVXqlph5rFkFrGvl
+Content-Type: application/pgp-signature; name="signature.asc"
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-index 7592e3b86037..8c9f7435cf4c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-@@ -484,3 +484,6 @@ volup-btn-odl {
- 	};
- };
- 
-+&cros_ec {
-+	/delete-node/ cbas;
-+};
--- 
-2.43.0
+-----BEGIN PGP SIGNATURE-----
 
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZaFxDgAKCRB4tDGHoIJi
+0uvOAQCyWfE54y99jJzttlHBXQCvcZUHCZa1dEP9+XG1alVbZQD/Wgq9GEpo+OdO
+3RZ4iVo5U/IXF0RkrGu7V56LCksIhAU=
+=4QFj
+-----END PGP SIGNATURE-----
+
+--EVXqlph5rFkFrGvl--
 
