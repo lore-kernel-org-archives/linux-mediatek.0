@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5554C4706C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 17:04:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF197C47258
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 17:06:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rh5LVnRkxnsZprxSRV0ggBGsi5nvJIa3KM/5+Als/+w=; b=N1/nfoj7h9m3nH/69mSXCngoSN
-	EH0f/9J4TsvKZetyHzLrLhehSMG2jPTdnGGZrcbVYH5LHGcY62Riksjk921uN3dP8vmvcFJoUNXMk
-	WO7dzkD6cZNDEKkQX1mKlD3k07NRhIfqhCpKh7sLDtMYAdF4Gaf+S2oc3UmAQ0m61E/250nu6Ti/Q
-	J5ReEV2e/8KTcdf4c2oV2Vyg+ggM100Oimk2E9626JHBixNuHsQaUUDlG+wPC1zI4Mrm1PBhCrk9O
-	+UBv6MhrXk/Ay2KY+Mp4SSladzcREHDjWBxeT09HLPxJZ+eJKxmEgG3cZbQpsOBn8Ck49WMdBw1sB
-	nwkhYCpQ==;
+	bh=GX3RUS2CtN/HWMrPf2RyagoHHbVWTxXEs9A540DL8FA=; b=EgKpKpfnSihitaHDym/V5qEXpU
+	ZLR3PZqUuh5NsAFrUQVXTznmMTfpAnj9bj49w2tt3+RURE0uSLhyZRBvQzdbWxPmtC5+qaiCk370T
+	02hHWsIKFVB9QYZpvSdMCVXT8tiXua9jUPtAWLtTCzc9f+p3k7i2D6oVzANGnlWXUiACPibAuhqkD
+	EG6bSabOxwaBl+EPxOwK5I342UKiGHcAGTr1C2jr8r75/8YP7v6MRTzBDyQtHUV3i/zwdFmQpsamY
+	YtGnqI6BP/gLIMIQggFN52rD33p3mx6D5G213XwzPfyXgje3zoc4LOiukIyIABBOe3XQdMl+yeie9
+	5vuq37uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOKxE-003OL0-1F;
-	Fri, 12 Jan 2024 17:04:24 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rOKzN-003Ouq-17;
+	Fri, 12 Jan 2024 17:06:37 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOKxA-003OJv-1w;
-	Fri, 12 Jan 2024 17:04:21 +0000
+	id 1rOKzJ-003Oqv-05;
+	Fri, 12 Jan 2024 17:06:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5F2B661C2F;
-	Fri, 12 Jan 2024 17:04:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62DAAC433C7;
-	Fri, 12 Jan 2024 17:04:16 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 13D8FCE2439;
+	Fri, 12 Jan 2024 17:06:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 634CBC433F1;
+	Fri, 12 Jan 2024 17:06:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1705079059;
-	bh=1iKtOHGK5dbeKaVrIFz5lHMuGkeVlaDW9VTBqF628Mc=;
+	s=k20201202; t=1705079190;
+	bh=wZDnbh7n64HZXBziqJnarpVCrDn44XHiaryQeXzT4Jk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AjSL5aKbZ34Pzcb5zxFRhJmQRALsnxiMOMjoy1Ge3UcW7Z98aa5EhZqcxS2gbpeVr
-	 ETu6cWCg+YbLwckvU1wQE6Beie/Bm78MNMt0WPMpdooCfQIIC/ZJXCq9obWu2vBmgN
-	 wEFEVHQeomn5gjFIvpbfxJv3UICofiCo5uDvN71OiRlTX90hxpa+cqT6daNtX7bsJi
-	 BKInXQ+9D1uA/vXpfTk2g2ev1CYMKKLFJX6q56cZkCnqffMLzE1tzt9Lyzlvg2O58E
-	 97atUhkOirmrsKA2I5rqP4F5Q5Bbjik1sSvfViE67CJw3wIMCCBEldeHMtTxtsgswV
-	 gTfFDwlTQ3kfw==
-Date: Fri, 12 Jan 2024 17:04:14 +0000
+	b=O3lS3yPQkwbyA3T/nJ4LwyRW+9PissQShMQh5QL5f7Bmho0kWq2fc8EVIb/s7a0Ex
+	 f8rQ7wGaVWQVZ429XPgXv2+6eH92Krk3nyrexdA2hE5qUmi3yJBj0vkSX2kAJu3zN5
+	 eiRWTF7dz3mfOUIBAfUDNa1FzCy5xD40Y2tBFmKr91My270qB6kIFxv7gcjwsf++bS
+	 l83+elWFcsEgiDwapOb4z15ZJDiEzlv4pgq2C4Az4DJ6DMV8EwKTzhjMgKL5M2Q1/m
+	 2aon5a9GvA/fcN0f4uPmkNq2Io/7xwbtDpmKFCyIcO4XwZTBMnDBh06KGKyN9tcNt9
+	 1pxMwcGs/NSSw==
+Date: Fri, 12 Jan 2024 17:06:25 +0000
 From: Conor Dooley <conor@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com,
-	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH 1/2] dt-bindings: usb: mtu3: Add MT8195 MTU3 ip-sleep
- support
-Message-ID: <20240112-immodest-cuddly-1c0045fa2861@spud>
-References: <20240112133222.240038-1-angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	matthias.bgg@gmail.com, wenst@chromium.org, hsinyi@chromium.org,
+	nfraprado@collabora.com, macpaul.lin@mediatek.com,
+	sean.wang@mediatek.com, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com
+Subject: Re: [PATCH 01/15] dt-bindings: arm64: mediatek: Add MT8395 Radxa NIO
+ 12L board compatible
+Message-ID: <20240112-scanning-contour-019b286021e6@spud>
+References: <20240112094632.66310-1-angelogioacchino.delregno@collabora.com>
+ <20240112094632.66310-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="EVXqlph5rFkFrGvl"
+	protocol="application/pgp-signature"; boundary="govvU38t0WtaM7t9"
 Content-Disposition: inline
-In-Reply-To: <20240112133222.240038-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240112094632.66310-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240112_090420_688717_80405421 
-X-CRM114-Status: GOOD (  14.90  )
+X-CRM114-CacheID: sfid-20240112_090633_240512_5F84153A 
+X-CRM114-Status: GOOD (  13.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,14 +79,14 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---EVXqlph5rFkFrGvl
+--govvU38t0WtaM7t9
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Jan 12, 2024 at 02:32:21PM +0100, AngeloGioacchino Del Regno wrote:
-> Of the four USB controllers present on the MediaTek MT8195 SoC, three
-> of them (0, 2 and 3) are behind MTU3: add wakeup controls for them.
+On Fri, Jan 12, 2024 at 10:46:18AM +0100, AngeloGioacchino Del Regno wrote:
+> Add a board compatible for the Radxa NIO 12L, based on the MediaTek
+> MT8395 SoC.
 >=20
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
@@ -95,40 +97,36 @@ Cheers,
 Conor.
 
 > ---
->  Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 >=20
-> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml b/D=
-ocumentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-> index a59d91243ac8..d4e187c78a0b 100644
-> --- a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-> @@ -185,7 +185,10 @@ properties:
->              2 - used by mt2712 etc, revision 2 with following IPM rule;
->              101 - used by mt8183, specific 1.01;
->              102 - used by mt8192, specific 1.02;
-> -          enum: [1, 2, 101, 102]
-> +            103 - used by mt8195, IP0, specific 1.03;
-> +            105 - used by mt8195, IP2, specific 1.05;
-> +            106 - used by mt8195, IP3, specific 1.06;
-> +          enum: [1, 2, 101, 102, 103, 105, 106]
-> =20
->    mediatek,u3p-dis-msk:
->      $ref: /schemas/types.yaml#/definitions/uint32
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docume=
+ntation/devicetree/bindings/arm/mediatek.yaml
+> index 5d49c7af50e5..cc37c88d8d4a 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -345,6 +345,7 @@ properties:
+>        - items:
+>            - enum:
+>                - mediatek,mt8395-evk
+> +              - radxa,nio-12l
+>            - const: mediatek,mt8395
+>            - const: mediatek,mt8195
+>        - items:
 > --=20
 > 2.43.0
 >=20
 
---EVXqlph5rFkFrGvl
+--govvU38t0WtaM7t9
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZaFxDgAKCRB4tDGHoIJi
-0uvOAQCyWfE54y99jJzttlHBXQCvcZUHCZa1dEP9+XG1alVbZQD/Wgq9GEpo+OdO
-3RZ4iVo5U/IXF0RkrGu7V56LCksIhAU=
-=4QFj
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZaFxkQAKCRB4tDGHoIJi
+0u2ZAQCrxxq3yuqhnnom8wr4ZvEFVZTjfwbrnntQ/oN+LUXvxQD9EornS9s9da5q
+6K6qX/043jYEYDy4qbt94rd6ApvhXgA=
+=yQm+
 -----END PGP SIGNATURE-----
 
---EVXqlph5rFkFrGvl--
+--govvU38t0WtaM7t9--
 
