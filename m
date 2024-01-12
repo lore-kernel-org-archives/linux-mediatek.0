@@ -4,77 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 777D0C4707C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 08:17:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27299C4706C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 09:21:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZLUoJHH9vL1bZ2GgbR3YmRRkEoCjkjm9bBOPWHQDlGA=; b=wILHaxggAYWv0Cj1ZjC/r9pFU4
-	pldBP6HxfwEqFyy+W8rgWtyQTa77c0c3E9WRNVCTWfdcXsjHMZUcVxzIbw9sRxxkeZEbf6CU4epdy
-	lNm95SafLhX0AkXW9yv5aq/S4VkOU3k60LL1WEqIx5kpegSqVaq6us6JvmyOPvJehyp3HdwogafNx
-	7BeC4yqarn6XzIFIMtWUxsT2F0W+zmMgU5z8Ti6YadkcKEqPpeYHoUzpCoi+jP6UrmzcN1/85+kkc
-	65OfbLcA5XmO3+Z/XdwCPb3qEkk6Vy9OqJJXhhTJxg3tBx8XY7jfaqsL546h2leeLiEuDuXqj14r9
-	W5qw8VFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6jHIiPkYdMqrIuViIDt09m/oNMLq/0qMbZqFoJXbNq8=; b=3KpkMKnaqkKaKwfu27Sd1W0sz5
+	hOgxgTH50tehl4L07sTzwjzdY3b7+xzgntDeyHrP7nLRO/huuMEHMeMLFHZpsmTAO81im3DrxgDNg
+	dHfmaSQFwHFgq0POTD/8xfvP2Gzv5nBODZCKOfQ6JRGFlc7wx/5lvR20kmIq3B/fp7cLYXgY90IPL
+	h7V+T9xb1Ql3e4JkbqWve2mVcamhuFa4GLh4gmbtSHsdh9rqRPuxN5dTW+uIPWDjnHtZE8sXwbTsn
+	d7T6kzYYa7T/8Wvf51LhPJzlcAdsKtpQ7cByPBrEZzXyz7vS4FqP9rTocEJnGpByFzy7iKWBgiTiV
+	7keugZEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOCjl-002BfM-10;
-	Fri, 12 Jan 2024 08:17:57 +0000
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+	id 1rODix-002IAO-2w;
+	Fri, 12 Jan 2024 09:21:11 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOCji-002Bdy-0W
-	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Jan 2024 08:17:55 +0000
-Received: by mail-lj1-x22a.google.com with SMTP id 38308e7fff4ca-2cd0f4f306fso73232191fa.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Jan 2024 00:17:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1705047471; x=1705652271; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZLUoJHH9vL1bZ2GgbR3YmRRkEoCjkjm9bBOPWHQDlGA=;
-        b=W+b4HKnNSF8sQ2BtSs8gjfs1ubxOaENurvKzstcOsegbcjjevC3g9vWQ4F2yqx8TFE
-         NI9/L7JUz4oDyUt6K60OBP8oASIC7CpAjhzVylZNTuqWKUDh/nMiL1hnRDRaBJVEoEQp
-         hT+VgeRLttYSD8VULc4NH2I21UanQgdNf5Z2Q=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705047471; x=1705652271;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ZLUoJHH9vL1bZ2GgbR3YmRRkEoCjkjm9bBOPWHQDlGA=;
-        b=GTa/YTeFByesbjNSQ63+ygls5eaNPRxfUoQnCD9lOtEP8ILIkXUIxOewuV9vEDhxrg
-         tpzsIXDveQ63MB2xri0JzqIXIn2ITXW3foTOKYlfFteEZekfkYRjsv4mGvsCjIF9mDl+
-         +da7ZqaJxujYOyXohO6JK2iyPOhq7LlJ6Pi0OSBBA+lt2ol79oTYja8O9WVPPztJ1J6Z
-         O9sFTzAg4yoHKTQExBhRDj7Yc1rCewjbJ45i8xbG+BnJzzP9Otgb8ZSSEK1NVNEOBb8V
-         98fpGeI+xGfufrsPvGc9z6H8iI8DeP4kE3PIcupqDJCm5hf39Z6++0Zdm9o5VekfaEK2
-         utXA==
-X-Gm-Message-State: AOJu0YyCQOUxCtb35alzSWH5+Bboqanhf8J0Itt8I5oo0VdvEBet01xS
-	IYFe5lIU2//tiQWZcv2UwfsWKJQ+fxXFL3R+fkszvD2NkTSm
-X-Google-Smtp-Source: AGHT+IFnPq0abOqgKKGI/Lb7ZpqZ+iFRv9oNGRxuG8trKPUudrojUe1vsbrgqwS0pyK/Y0QND6YXPHJynUU7wm90eOs=
-X-Received: by 2002:a2e:8346:0:b0:2cc:e9de:3905 with SMTP id
- l6-20020a2e8346000000b002cce9de3905mr412718ljh.68.1705047471044; Fri, 12 Jan
- 2024 00:17:51 -0800 (PST)
+	id 1rODiu-002I7X-32;
+	Fri, 12 Jan 2024 09:21:10 +0000
+X-UUID: e64fd73eb12b11ee9a662f17bb45267e-20240112
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=6jHIiPkYdMqrIuViIDt09m/oNMLq/0qMbZqFoJXbNq8=;
+	b=TD9sqqYIY5f+voXnqFuUeaiG7sOiy6ohkg3BKaAJwktv05l2zpep8PsoIk5lNQ9toA2slerzjC7M2yBX4Wk0LyrLDfUQ9GAnSW2UFkIw7qbtDrbX4AzwE/WFjZcGjFF4Ak8tFRnVOUO3sep+Bal8dtH6YilWJ6Oel/eAP2DcORQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35,REQID:9f95ea79-c1c7-47e7-bf4b-507a1a3636c7,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5d391d7,CLOUDID:dc5ac782-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: e64fd73eb12b11ee9a662f17bb45267e-20240112
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <yong.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 811239125; Fri, 12 Jan 2024 02:21:00 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 12 Jan 2024 17:20:55 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 12 Jan 2024 17:20:53 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, <christian.koenig@amd.com>, Sumit Semwal
+	<sumit.semwal@linaro.org>
+CC: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+	<conor+dt@kernel.org>, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
+	<tjmercier@google.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Yong Wu <yong.wu@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+	<linaro-mm-sig@lists.linaro.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Robin Murphy <robin.murphy@arm.com>,
+	Vijayanand Jitta <quic_vjitta@quicinc.com>, Joakim Bech
+	<joakim.bech@linaro.org>, Jeffrey Kardatzke <jkardatzke@google.com>, "Pavel
+ Machek" <pavel@ucw.cz>, Simon Ser <contact@emersion.fr>, Pekka Paalanen
+	<ppaalanen@gmail.com>, <jianjiao.zeng@mediatek.com>,
+	<kuohong.wang@mediatek.com>, <youlin.pei@mediatek.com>
+Subject: [PATCH v4 3/7] dma-buf: heaps: restricted_heap: Add private heap ops
+Date: Fri, 12 Jan 2024 17:20:10 +0800
+Message-ID: <20240112092014.23999-4-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240112092014.23999-1-yong.wu@mediatek.com>
+References: <20240112092014.23999-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
-References: <20240111105247.117766-1-angelogioacchino.delregno@collabora.com> <20240111105247.117766-3-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240111105247.117766-3-angelogioacchino.delregno@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 12 Jan 2024 16:17:40 +0800
-Message-ID: <CAGXv+5Grq8XrpP9yssduXtetxWBb3PB1z7O6rvvaW=CcSPB8Dg@mail.gmail.com>
-Subject: Re: [PATCH 2/7] ASoC: mediatek: mt8173-afe-pcm: Use devm_snd_soc_register_component()
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, 
-	matthias.bgg@gmail.com, ribalda@chromium.org, nicolas.ferre@microchip.com, 
-	u.kleine-koenig@pengutronix.de, kuninori.morimoto.gx@renesas.com, 
-	nfraprado@collabora.com, alsa-devel@alsa-project.org, trevor.wu@mediatek.com, 
-	linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--2.237500-8.000000
+X-TMASE-MatchedRID: iSQL5szRvdExaBEU4bKrV0hEDfw/93BuMApqy5cfknVX4H/AHZTAKiyG
+	2FFo0u8oRHLRFcKKZXfbCHv011Gy9ZCoy9iDotiwzfqlpbtmcWiH7D1bP/FcOrXvDHySC+eU+a/
+	zdHOJ3WkVrfWt68rqN2a39PjWf0NNHxPMjOKY7A8LbigRnpKlKSBuGJWwgxArX1upngn1GyfAxT
+	6U8SDb8vUxfqD56Kpg95Wd/WEnd3Q/A2ducvlnMYZSLT91ovb7o0pTThB0QTAQDF6kcoF++1KIU
+	FLF1m+Y8mf/2A2Ja/Zpp55fZDlsr34cY/B7JqXaYZ1R7NXn0MdBmmCXcKyFFJ6oP1a0mRIj
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--2.237500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: E17AEBE1573EE56AA0E5BF0CDAEE0C2195895CC9F7701A5D61573FE5E60280622000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240112_001754_198246_7D3FCC01 
-X-CRM114-Status: GOOD (  21.86  )
+X-CRM114-CacheID: sfid-20240112_012108_983152_F160BC2C 
+X-CRM114-Status: GOOD (  15.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,140 +110,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 11, 2024 at 6:53=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Function devm_snd_soc_register_component() allocates a new struct
-> snd_soc_component, adds components and initializes them; since this
-> is also devm, it automatically unregisters components and frees
-> memory upon destruction.
->
-> That's exactly what we're doing in the probe function of this driver:
-> switch to that function instead, allowing to remove the last goto and
-> to discard the .remove_new() callback for this driver.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> ---
->  sound/soc/mediatek/mt8173/mt8173-afe-pcm.c | 58 +++-------------------
->  1 file changed, 8 insertions(+), 50 deletions(-)
->
-> diff --git a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c b/sound/soc/media=
-tek/mt8173/mt8173-afe-pcm.c
-> index ea611730de9c..b887e10635fe 100644
-> --- a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
-> +++ b/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
-> @@ -1129,72 +1129,31 @@ static int mt8173_afe_pcm_dev_probe(struct platfo=
-rm_device *pdev)
->         afe->runtime_resume =3D mt8173_afe_runtime_resume;
->         afe->runtime_suspend =3D mt8173_afe_runtime_suspend;
->
-> -       ret =3D devm_snd_soc_register_component(&pdev->dev,
-> -                                        &mtk_afe_pcm_platform,
-> -                                        NULL, 0);
-> +       ret =3D devm_snd_soc_register_component(&pdev->dev, &mtk_afe_pcm_=
-platform, NULL, 0);
->         if (ret)
->                 return ret;
->
-> -       comp_pcm =3D devm_kzalloc(&pdev->dev, sizeof(*comp_pcm), GFP_KERN=
-EL);
-> -       if (!comp_pcm)
-> -               return -ENOMEM;
-> -
-> -       ret =3D snd_soc_component_initialize(comp_pcm,
-> -                                          &mt8173_afe_pcm_dai_component,
-> -                                          &pdev->dev);
-> +       ret =3D devm_snd_soc_register_component(&pdev->dev, &mt8173_afe_p=
-cm_dai_component,
-> +                                             mt8173_afe_pcm_dais,
-> +                                             ARRAY_SIZE(mt8173_afe_pcm_d=
-ais));
->         if (ret)
->                 return ret;
->
-> -#ifdef CONFIG_DEBUG_FS
-> -       comp_pcm->debugfs_prefix =3D "pcm";
-> -#endif
+Add "struct restricted_heap_ops". For the restricted memory, totally there
+are two steps:
+a) memory_alloc: Allocate the buffer in kernel;
+b) memory_restrict: Restrict/Protect/Secure that buffer.
+The memory_alloc is mandatory while memory_restrict is optinal since it may
+be part of memory_alloc.
 
-To match existing behavior, can you move this to the component driver?
-In snd_soc_component_initialize(), component->debugfs_prefix will take
-component_driver->debugfs_prefix as default if it is not set.
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+---
+ drivers/dma-buf/heaps/restricted_heap.c | 41 ++++++++++++++++++++++++-
+ drivers/dma-buf/heaps/restricted_heap.h | 12 ++++++++
+ 2 files changed, 52 insertions(+), 1 deletion(-)
 
-Same for the HDMI component.
+diff --git a/drivers/dma-buf/heaps/restricted_heap.c b/drivers/dma-buf/heaps/restricted_heap.c
+index fd7c82abd42e..8c266a0f6192 100644
+--- a/drivers/dma-buf/heaps/restricted_heap.c
++++ b/drivers/dma-buf/heaps/restricted_heap.c
+@@ -12,10 +12,44 @@
+ 
+ #include "restricted_heap.h"
+ 
++static int
++restricted_heap_memory_allocate(struct restricted_heap *heap, struct restricted_buffer *buf)
++{
++	const struct restricted_heap_ops *ops = heap->ops;
++	int ret;
++
++	ret = ops->memory_alloc(heap, buf);
++	if (ret)
++		return ret;
++
++	if (ops->memory_restrict) {
++		ret = ops->memory_restrict(heap, buf);
++		if (ret)
++			goto memory_free;
++	}
++	return 0;
++
++memory_free:
++	ops->memory_free(heap, buf);
++	return ret;
++}
++
++static void
++restricted_heap_memory_free(struct restricted_heap *heap, struct restricted_buffer *buf)
++{
++	const struct restricted_heap_ops *ops = heap->ops;
++
++	if (ops->memory_unrestrict)
++		ops->memory_unrestrict(heap, buf);
++
++	ops->memory_free(heap, buf);
++}
++
+ static struct dma_buf *
+ restricted_heap_allocate(struct dma_heap *heap, unsigned long size,
+ 			 unsigned long fd_flags, unsigned long heap_flags)
+ {
++	struct restricted_heap *restricted_heap = dma_heap_get_drvdata(heap);
+ 	struct restricted_buffer *restricted_buf;
+ 	DEFINE_DMA_BUF_EXPORT_INFO(exp_info);
+ 	struct dma_buf *dmabuf;
+@@ -28,6 +62,9 @@ restricted_heap_allocate(struct dma_heap *heap, unsigned long size,
+ 	restricted_buf->size = ALIGN(size, PAGE_SIZE);
+ 	restricted_buf->heap = heap;
+ 
++	ret = restricted_heap_memory_allocate(restricted_heap, restricted_buf);
++	if (ret)
++		goto err_free_buf;
+ 	exp_info.exp_name = dma_heap_get_name(heap);
+ 	exp_info.size = restricted_buf->size;
+ 	exp_info.flags = fd_flags;
+@@ -36,11 +73,13 @@ restricted_heap_allocate(struct dma_heap *heap, unsigned long size,
+ 	dmabuf = dma_buf_export(&exp_info);
+ 	if (IS_ERR(dmabuf)) {
+ 		ret = PTR_ERR(dmabuf);
+-		goto err_free_buf;
++		goto err_free_restricted_mem;
+ 	}
+ 
+ 	return dmabuf;
+ 
++err_free_restricted_mem:
++	restricted_heap_memory_free(restricted_heap, restricted_buf);
+ err_free_buf:
+ 	kfree(restricted_buf);
+ 	return ERR_PTR(ret);
+diff --git a/drivers/dma-buf/heaps/restricted_heap.h b/drivers/dma-buf/heaps/restricted_heap.h
+index 443028f6ba3b..ddeaf9805708 100644
+--- a/drivers/dma-buf/heaps/restricted_heap.h
++++ b/drivers/dma-buf/heaps/restricted_heap.h
+@@ -15,6 +15,18 @@ struct restricted_buffer {
+ 
+ struct restricted_heap {
+ 	const char		*name;
++
++	const struct restricted_heap_ops *ops;
++};
++
++struct restricted_heap_ops {
++	int	(*heap_init)(struct restricted_heap *heap);
++
++	int	(*memory_alloc)(struct restricted_heap *heap, struct restricted_buffer *buf);
++	void	(*memory_free)(struct restricted_heap *heap, struct restricted_buffer *buf);
++
++	int	(*memory_restrict)(struct restricted_heap *heap, struct restricted_buffer *buf);
++	void	(*memory_unrestrict)(struct restricted_heap *heap, struct restricted_buffer *buf);
+ };
+ 
+ int restricted_heap_add(struct restricted_heap *rstrd_heap);
+-- 
+2.25.1
 
-ChenYu
-
-> -
-> -       ret =3D snd_soc_add_component(comp_pcm,
-> -                                   mt8173_afe_pcm_dais,
-> -                                   ARRAY_SIZE(mt8173_afe_pcm_dais));
-> +       ret =3D devm_snd_soc_register_component(&pdev->dev, &mt8173_afe_h=
-dmi_dai_component,
-> +                                             mt8173_afe_hdmi_dais,
-> +                                             ARRAY_SIZE(mt8173_afe_hdmi_=
-dais));
->         if (ret)
->                 return ret;
->
-> -       comp_hdmi =3D devm_kzalloc(&pdev->dev, sizeof(*comp_hdmi), GFP_KE=
-RNEL);
-> -       if (!comp_hdmi) {
-> -               ret =3D -ENOMEM;
-> -               goto err_cleanup_components;
-> -       }
-> -
-> -       ret =3D snd_soc_component_initialize(comp_hdmi,
-> -                                          &mt8173_afe_hdmi_dai_component=
-,
-> -                                          &pdev->dev);
-> -       if (ret)
-> -               goto err_cleanup_components;
-> -
-> -#ifdef CONFIG_DEBUG_FS
-> -       comp_hdmi->debugfs_prefix =3D "hdmi";
-> -#endif
-> -
-> -       ret =3D snd_soc_add_component(comp_hdmi,
-> -                                   mt8173_afe_hdmi_dais,
-> -                                   ARRAY_SIZE(mt8173_afe_hdmi_dais));
-> -       if (ret)
-> -               goto err_cleanup_components;
-> -
->         ret =3D devm_request_irq(afe->dev, irq_id, mt8173_afe_irq_handler=
-,
->                                0, "Afe_ISR_Handle", (void *)afe);
->         if (ret) {
->                 dev_err(afe->dev, "could not request_irq\n");
-> -               goto err_cleanup_components;
-> +               return ret;
->         }
->
->         dev_info(&pdev->dev, "MT8173 AFE driver initialized.\n");
->         return 0;
-> -
-> -err_cleanup_components:
-> -       snd_soc_unregister_component(&pdev->dev);
-> -       return ret;
-> -}
-> -
-> -static void mt8173_afe_pcm_dev_remove(struct platform_device *pdev)
-> -{
-> -       snd_soc_unregister_component(&pdev->dev);
->  }
->
->  static const struct of_device_id mt8173_afe_pcm_dt_match[] =3D {
-> @@ -1215,7 +1174,6 @@ static struct platform_driver mt8173_afe_pcm_driver=
- =3D {
->                    .pm =3D &mt8173_afe_pm_ops,
->         },
->         .probe =3D mt8173_afe_pcm_dev_probe,
-> -       .remove_new =3D mt8173_afe_pcm_dev_remove,
->  };
->
->  module_platform_driver(mt8173_afe_pcm_driver);
-> --
-> 2.43.0
->
->
 
