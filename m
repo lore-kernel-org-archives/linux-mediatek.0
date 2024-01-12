@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01695C4707C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 09:31:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE58EC4707C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 09:32:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/5MRUAf8nzbyEgJGFVzsz6MlL8E4uCaojf+OWju13B8=; b=GaKgdaVmPJ985TnYJ6CIUtU6j1
-	FQ6Tauif+Z0AmOJonUbh2Gu4Z6Z05SNQZ8YCIjt5EytDinDqlFPJLZPDP5Orwa+iQFxEG20u8UxKK
-	nsQH0AeVFmFxIgScN863uwB8U6VitkcGIHOR1bPNSM3/zprPXJHxfzqT7VY+mqth8+K+ntmv2WFh5
-	ZRVnsov9Eb5uDMAqmhIy7cIFUCSSoxQe7bjLmj3Cq54BYx/VdTYJU3p1oiqrBWxsJtLlG81TRxfK6
-	Uy5ejgHZLNTnPPrA67OVJQ9VEkyJ9G4C6KzKkSXYlKKqb0kIPpEQ++JJJoUdf4zEPbwB8XU8HvH5e
-	Zdif+gIA==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1qcdQjBZ56QTpzafWL1QFw5tiD6+cbZEjg74O5FAPTo=; b=3XVz5rmPNnSEmiGgVSIyx9cWVS
+	JSHmiANwhz04b1ZYYuxV5qHk4mrrJVPIP+rGQ9fLAzrLd6Llx8FGjtXNrChnv8qTAFl0Kp8+dcGZR
+	cWIGzX6qj0nH/n10wWmd7giZFvXsqqGltKOaT+tCj4ZHP9eN3KCebQE8TTYmSDhErXRfDGZ6LVFtk
+	1WQ9RcNU+lhrlh0VrRW5cYEd7/D2PPLoTZeiDRUxG5k58Z7GNhhJKD/+F+mw1QYJuQ9hBqc09k4es
+	HDFDxs/TEn/50JKOZAtisYrM/ujj+JH9ouVgtjwtU8wS0Ms4RnUtfNXWh+NGEAGVa/JHJIrOiVn5D
+	0kyMa8DQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rODsZ-002LDg-2u;
-	Fri, 12 Jan 2024 09:31:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rODtj-002LOc-1v;
+	Fri, 12 Jan 2024 09:32:19 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rODsV-002LC2-1V;
-	Fri, 12 Jan 2024 09:31:05 +0000
-X-UUID: 49f14cccb12d11eeafd70d0b34820190-20240112
+	id 1rODtg-002LNl-0T;
+	Fri, 12 Jan 2024 09:32:17 +0000
+X-UUID: 73ba407cb12d11ee9a662f17bb45267e-20240112
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=/5MRUAf8nzbyEgJGFVzsz6MlL8E4uCaojf+OWju13B8=;
-	b=shbLLU6aCW/Bh7DbF7m6TRxdbYiU72+hTRZUot8pOtGUmXJ1/XJ9tXsJTwz30ef0KDj/PZIsy6uYrIqFTnH10BDmVRvjCFK+hApulAUDVM/MevKEY1QgaETIzsjMno5B8J8HDjWbxy6MoofeGfXROS60lguvPmiLLdOYfak3rZ8=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1qcdQjBZ56QTpzafWL1QFw5tiD6+cbZEjg74O5FAPTo=;
+	b=aFRe8pWAfypydnYqJkIZcT+ALa1vxjZ4v+ax9V7suFPn8MHWq7J0peszdkt35l7Qv4gPEa4SF9dO/bsOXUpfbw6P0znHiviEEJGQ/+sCie/5DWGWMvwer5ifGwaW5le2pSM1vuVEMvALLGJ7rIVLLG6UlXVrByzetN1INYpO9vU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:e62d4e2b-3fce-4578-b1b9-f63889a5b5e9,IP:0,U
+X-CID-O-INFO: VERSION:1.1.35,REQID:dbc2c9ad-1f04-4a46-82ef-3a0401926c59,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:5d391d7,CLOUDID:82bf182f-1ab8-4133-9780-81938111c800,B
+X-CID-META: VersionHash:5d391d7,CLOUDID:e1c2182f-1ab8-4133-9780-81938111c800,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 49f14cccb12d11eeafd70d0b34820190-20240112
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 73ba407cb12d11ee9a662f17bb45267e-20240112
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1415919630; Fri, 12 Jan 2024 02:30:56 -0700
+	with ESMTP id 692352660; Fri, 12 Jan 2024 02:32:06 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 12 Jan 2024 17:20:22 +0800
+ 15.2.1118.26; Fri, 12 Jan 2024 17:21:30 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 12 Jan 2024 17:20:21 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 12 Jan 2024 17:21:29 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, <christian.koenig@amd.com>, Sumit Semwal
@@ -71,17 +71,19 @@ CC: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
  Machek <pavel@ucw.cz>, Simon Ser <contact@emersion.fr>, Pekka Paalanen
 	<ppaalanen@gmail.com>, <jianjiao.zeng@mediatek.com>,
 	<kuohong.wang@mediatek.com>, <youlin.pei@mediatek.com>
-Subject: [PATCH v4 0/7] dma-buf: heaps: Add restricted heap
-Date: Fri, 12 Jan 2024 17:20:07 +0800
-Message-ID: <20240112092014.23999-1-yong.wu@mediatek.com>
+Subject: [PATCH v4 6/7] dma-buf: heaps: restricted_heap_mtk: Add TEE memory service call
+Date: Fri, 12 Jan 2024 17:20:13 +0800
+Message-ID: <20240112092014.23999-7-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240112092014.23999-1-yong.wu@mediatek.com>
+References: <20240112092014.23999-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240112_013103_883467_353FDF9A 
-X-CRM114-Status: GOOD (  17.89  )
+X-CRM114-CacheID: sfid-20240112_013216_192403_B02F0DBE 
+X-CRM114-Status: GOOD (  22.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,86 +98,193 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The purpose of this patchset is for MediaTek secure video playback, and
-also to enable other potential uses of this in the future. The 'restricted
-dma-heap' will be used to allocate dma_buf objects that reference memory
-in the secure world that is inaccessible/unmappable by the non-secure
-(i.e. kernel/userspace) world.  That memory will be used by the secure/
-trusted world to store secure information (i.e. decrypted media content).
-The dma_bufs allocated from the kernel will be passed to V4L2 for video
-decoding (as input and output). They will also be used by the drm
-system for rendering of the content.
+Add TEE service call for MediaTek heap. We have a limited number of
+hardware entries to protect memory, therefore we cannot protect memory
+arbitrarily, and our secure memory management is actually inside OPTEE.
 
-This patchset adds two MediaTek restricted heaps and they will be used in
-v4l2[1] and drm[2].
-1) restricted_mtk_cm: secure chunk memory for MediaTek SVP (Secure Video
-   Path). The buffer is reserved for the secure world after bootup and it
-   is used for vcodec's ES/working buffer;
-2) restricted_mtk_cma: secure CMA memory for MediaTek SVP. This buffer is
-   dynamically reserved for the secure world and will be got when we start
-   playing secure videos. Once the security video playing is complete, the
-   CMA will be released. This heap is used for the vcodec's frame buffer. 
+The kernel just tells the TEE what size I want and the TEE will return a
+"secure handle"/"secure address". To make the name more general, We call
+it "restricted_addr" here. The restricted_addr is a reference to a secure
+buffer within TEE. We put it in the sg_dma_address, please see the comment
+in code.
 
-[1] https://lore.kernel.org/linux-mediatek/20231206081538.17056-1-yunfei.dong@mediatek.com/
-[2] https://lore.kernel.org/all/20231223182932.27683-1-jason-jh.lin@mediatek.com/
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+---
+ drivers/dma-buf/heaps/restricted_heap.c     | 17 ++++
+ drivers/dma-buf/heaps/restricted_heap.h     |  3 +
+ drivers/dma-buf/heaps/restricted_heap_mtk.c | 93 +++++++++++++++++++++
+ 3 files changed, 113 insertions(+)
 
-Change note:
-v4: 1) Rename the heap name from "secure" to "restricted". suggested from
-     Simon/Pekka. There are still several "secure" string in MTK file
-     since we use ARM platform in which we call this "secure world"/
-     "secure command".
-
-v3: https://lore.kernel.org/linux-mediatek/20231212024607.3681-1-yong.wu@mediatek.com/
-    1) Separate the secure heap to a common file(secure_heap.c) and mtk
-     special file (secure_heap_mtk.c),  and put all the tee related code
-     into our special file.
-    2) About dt-binding, Add "mediatek," prefix since this is Mediatek TEE
-     firmware definition.
-    3) Remove the normal CMA heap which is a draft for qcom.
-    Rebase on v6.7-rc1.
-
-v2: https://lore.kernel.org/linux-mediatek/20231111111559.8218-1-yong.wu@mediatek.com/
-    1) Move John's patches into the vcodec patchset since they use the new
-       dma heap interface directly.
-       https://lore.kernel.org/linux-mediatek/20231106120423.23364-1-yunfei.dong@mediatek.com/
-    2) Reword the dt-binding description.
-    3) Rename the heap name from mtk_svp to secure_mtk_cm.
-       This means the current vcodec/DRM upstream code doesn't match this.
-    4) Add a normal CMA heap. currently it should be a draft version.
-    5) Regarding the UUID, I still use hard code, but put it in a private
-    data which allow the others could set their own UUID. What's more, UUID
-    is necessary for the session with TEE. If we don't have it, we can't
-    communicate with the TEE, including the get_uuid interface, which tries
-    to make uuid more generic, not working. If there is other way to make
-    UUID more general, please free to tell me.
-    
-v1: https://lore.kernel.org/linux-mediatek/20230911023038.30649-1-yong.wu@mediatek.com/
-    Base on v6.6-rc1.
-
-Yong Wu (7):
-  dt-bindings: reserved-memory: Add mediatek,dynamic-restricted-region
-  dma-buf: heaps: Initialize a restricted heap
-  dma-buf: heaps: restricted_heap: Add private heap ops
-  dma-buf: heaps: restricted_heap: Add dma_ops
-  dma-buf: heaps: restricted_heap: Add MediaTek restricted heap and
-    heap_init
-  dma-buf: heaps: restricted_heap_mtk: Add TEE memory service call
-  dma_buf: heaps: restricted_heap_mtk: Add a new CMA heap
-
- .../mediatek,dynamic-restricted-region.yaml   |  43 +++
- drivers/dma-buf/heaps/Kconfig                 |  16 +
- drivers/dma-buf/heaps/Makefile                |   4 +-
- drivers/dma-buf/heaps/restricted_heap.c       | 237 +++++++++++++
- drivers/dma-buf/heaps/restricted_heap.h       |  43 +++
- drivers/dma-buf/heaps/restricted_heap_mtk.c   | 322 ++++++++++++++++++
- 6 files changed, 664 insertions(+), 1 deletion(-)
- create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,dynamic-restricted-region.yaml
- create mode 100644 drivers/dma-buf/heaps/restricted_heap.c
- create mode 100644 drivers/dma-buf/heaps/restricted_heap.h
- create mode 100644 drivers/dma-buf/heaps/restricted_heap_mtk.c
-
+diff --git a/drivers/dma-buf/heaps/restricted_heap.c b/drivers/dma-buf/heaps/restricted_heap.c
+index 4e9869ab4a85..148dbf5662c2 100644
+--- a/drivers/dma-buf/heaps/restricted_heap.c
++++ b/drivers/dma-buf/heaps/restricted_heap.c
+@@ -96,8 +96,23 @@ static struct sg_table *
+ restricted_heap_map_dma_buf(struct dma_buf_attachment *attachment, enum dma_data_direction direct)
+ {
+ 	struct restricted_heap_attachment *a = attachment->priv;
++	struct dma_buf *dmabuf = attachment->dmabuf;
++	struct restricted_buffer *restricted_buf = dmabuf->priv;
+ 	struct sg_table *table = a->table;
+ 
++	/*
++	 * Technically dma_address refers to the address used by HW, But for restricted buffer
++	 * we don't know its dma_address in kernel, Instead, we may know its restricted address
++	 * which refers to the real buffer in the trusted or secure world. Here use this property
++	 * to save the restricted address, and the user will use it to obtain the real address in
++	 * trusted or secure world.
++	 *
++	 * Note: CONFIG_DMA_API_DEBUG requires this to be aligned with PAGE_SIZE.
++	 */
++	if (restricted_buf->restricted_addr) {
++		sg_dma_address(table->sgl) = restricted_buf->restricted_addr;
++		sg_dma_len(table->sgl) = restricted_buf->size;
++	}
+ 	return table;
+ }
+ 
+@@ -108,6 +123,8 @@ restricted_heap_unmap_dma_buf(struct dma_buf_attachment *attachment, struct sg_t
+ 	struct restricted_heap_attachment *a = attachment->priv;
+ 
+ 	WARN_ON(a->table != table);
++	sg_dma_address(table->sgl) = 0;
++	sg_dma_len(table->sgl) = 0;
+ }
+ 
+ static int
+diff --git a/drivers/dma-buf/heaps/restricted_heap.h b/drivers/dma-buf/heaps/restricted_heap.h
+index cf5865f829fc..6c93f6d257dc 100644
+--- a/drivers/dma-buf/heaps/restricted_heap.h
++++ b/drivers/dma-buf/heaps/restricted_heap.h
+@@ -11,6 +11,9 @@
+ struct restricted_buffer {
+ 	struct dma_heap		*heap;
+ 	size_t			size;
++
++	/* A reference to a buffer in the trusted or secure world. */
++	u64			restricted_addr;
+ };
+ 
+ struct restricted_heap {
+diff --git a/drivers/dma-buf/heaps/restricted_heap_mtk.c b/drivers/dma-buf/heaps/restricted_heap_mtk.c
+index a5f5365059cd..902add95bb7e 100644
+--- a/drivers/dma-buf/heaps/restricted_heap_mtk.c
++++ b/drivers/dma-buf/heaps/restricted_heap_mtk.c
+@@ -25,6 +25,27 @@ enum mtk_secure_mem_type {
+ 	MTK_SECURE_MEMORY_TYPE_CM_TZ	= 1,
+ };
+ 
++enum mtk_secure_buffer_tee_cmd {
++	/*
++	 * Allocate the zeroed secure memory from TEE.
++	 *
++	 * [in]  value[0].a: The buffer size.
++	 *       value[0].b: alignment.
++	 * [in]  value[1].a: enum mtk_secure_mem_type.
++	 * [out] value[3].a: The secure handle.
++	 */
++	MTK_TZCMD_SECMEM_ZALLOC	= 0x10000, /* MTK TEE Command ID Base */
++
++	/*
++	 * Free secure memory.
++	 *
++	 * [in]  value[0].a: The secure handle of this buffer, It's value[3].a of
++	 *                   MTK_TZCMD_SECMEM_ZALLOC.
++	 * [out] value[1].a: return value, 0 means successful, otherwise fail.
++	 */
++	MTK_TZCMD_SECMEM_FREE	= 0x10001,
++};
++
+ struct mtk_restricted_heap_data {
+ 	struct tee_context	*tee_ctx;
+ 	u32			tee_session;
+@@ -74,6 +95,74 @@ static int mtk_tee_session_init(struct mtk_restricted_heap_data *data)
+ 	return ret;
+ }
+ 
++static int mtk_tee_service_call(struct tee_context *tee_ctx, u32 session,
++				unsigned int command, struct tee_param *params)
++{
++	struct tee_ioctl_invoke_arg arg = {0};
++	int ret;
++
++	arg.num_params = TEE_PARAM_NUM;
++	arg.session = session;
++	arg.func = command;
++
++	ret = tee_client_invoke_func(tee_ctx, &arg, params);
++	if (ret < 0 || arg.ret) {
++		pr_err("%s: cmd %d ret %d:%x.\n", __func__, command, ret, arg.ret);
++		ret = -EOPNOTSUPP;
++	}
++	return ret;
++}
++
++static int mtk_tee_restrict_memory(struct restricted_heap *heap, struct restricted_buffer *buf)
++{
++	struct mtk_restricted_heap_data *data = heap->priv_data;
++	struct tee_param params[TEE_PARAM_NUM] = {0};
++	int ret;
++
++	params[0].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
++	params[0].u.value.a = buf->size;
++	params[0].u.value.b = PAGE_SIZE;
++	params[1].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
++	params[1].u.value.a = data->mem_type;
++	params[2].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
++	params[3].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_OUTPUT;
++	ret = mtk_tee_service_call(data->tee_ctx, data->tee_session,
++				   MTK_TZCMD_SECMEM_ZALLOC, params);
++	if (ret)
++		return -ENOMEM;
++
++	buf->restricted_addr = params[3].u.value.a;
++	return 0;
++}
++
++static void mtk_tee_unrestrict_memory(struct restricted_heap *heap, struct restricted_buffer *buf)
++{
++	struct mtk_restricted_heap_data *data = heap->priv_data;
++	struct tee_param params[TEE_PARAM_NUM] = {0};
++
++	params[0].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
++	params[0].u.value.a = buf->restricted_addr;
++	params[1].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_OUTPUT;
++
++	mtk_tee_service_call(data->tee_ctx, data->tee_session,
++			     MTK_TZCMD_SECMEM_FREE, params);
++	if (params[1].u.value.a)
++		pr_err("%s, Unrestrict buffer(0x%llx) fail(%lld) from TEE.\n",
++		       heap->name, buf->restricted_addr, params[1].u.value.a);
++}
++
++static int
++mtk_restricted_memory_allocate(struct restricted_heap *heap, struct restricted_buffer *buf)
++{
++	/* The memory allocating is within the TEE. */
++	return 0;
++}
++
++static void
++mtk_restricted_memory_free(struct restricted_heap *heap, struct restricted_buffer *buf)
++{
++}
++
+ static int mtk_restricted_heap_init(struct restricted_heap *heap)
+ {
+ 	struct mtk_restricted_heap_data *data = heap->priv_data;
+@@ -85,6 +174,10 @@ static int mtk_restricted_heap_init(struct restricted_heap *heap)
+ 
+ static const struct restricted_heap_ops mtk_restricted_heap_ops = {
+ 	.heap_init		= mtk_restricted_heap_init,
++	.memory_alloc		= mtk_restricted_memory_allocate,
++	.memory_free		= mtk_restricted_memory_free,
++	.memory_restrict	= mtk_tee_restrict_memory,
++	.memory_unrestrict	= mtk_tee_unrestrict_memory,
+ };
+ 
+ static struct mtk_restricted_heap_data mtk_restricted_heap_data = {
 -- 
-2.18.0
-
+2.25.1
 
 
