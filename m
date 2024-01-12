@@ -4,84 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56F08C4707C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 22:40:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 739B8C4707C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jan 2024 22:52:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:References:In-Reply-To:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=32kOpc7jmHfTKnUipGkgywWo/WFBVKADG1CFjMO63QA=; b=X6CJuRN895Q1v3Lm/4ueBMFpmu
-	TJSIwXdPsocVJceI9fhSRdri7NORg3kQVZrLJBNAAQgTjatVeB2Ddn0NyMwxKrV+nJszwR2zrXA6E
-	euVCzy7xYOQRjs1o3e1jfSoOqtzPirqnpFNON5aHz/N/JUlpw3PEnsuvyD8StCewJDpOmRCTLFsPD
-	f0USeoL510lG3wnjQHYAkfQHscDVUT2vG8WP8wwU64r4YN2d1YheFtWavK2InXTT773W7p2o4RXUB
-	JYOjH1nrg2ncSaDb9hCFu7DLDImfOCSpzi3xxaxK7TGErbZ8RPN6fneOhvs1owfChXxFPDXR11qbQ
-	Z400BhiA==;
+	bh=5zEBqjbWZbZ/3Uylirb4GeOi3RLFiwNvDX78phkZWD8=; b=WTbbnXjTOll/me0Fyo+wzgywGe
+	/q2wUHJjAZoqNnHfplMOlN9BTVnbJFZ6U9m30DfBt83cSV+h6syo0L+NNFH+eILvnmJFX8bTObR0j
+	YcB8+N7dgI/9xAppkJ0KFd91Mo7nKXw6SdGug38opUFZFkq3bEYLhf1BJlZ+/WlWYndBn0z0utMCM
+	WNbckGW+ywNd5n+mr1LjGy2ZlxkvmpErqVhHgWY3I+NMpqc3YMY3mkCAR4qYU4vnQkQA9hNb9viYl
+	kzs0dVeO/hyHLSDSsD3pVl0J0oEdqhHD0FmXgryJi7MZOf+ezxCTqWEAWhgzaKQc5UsuGvZgfVUPX
+	1o5VGrJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOQCc-00494r-1k;
-	Fri, 12 Jan 2024 22:40:38 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1rOQOX-0049tU-0A;
+	Fri, 12 Jan 2024 22:52:57 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOQCZ-00494H-1z
+	id 1rOQOS-0049sY-1c
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Jan 2024 22:40:36 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-50e72e3d435so6814292e87.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Jan 2024 14:40:32 -0800 (PST)
+	Fri, 12 Jan 2024 22:52:54 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-553e36acfbaso4069a12.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Jan 2024 14:52:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1705099230; x=1705704030; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:user-agent
-         :from:references:in-reply-to:mime-version:from:to:cc:subject:date
+        d=google.com; s=20230601; t=1705099969; x=1705704769; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=32kOpc7jmHfTKnUipGkgywWo/WFBVKADG1CFjMO63QA=;
-        b=gdwTtDRB/PeortI+rpya1iWGZ2DjCLszQoy6d6rORmN/SHXpRVIfa/ustLAnA91+a8
-         8+67HZj0xakAvPZkgjfjeF5Rj8xGYAAfBjRUSorY2Tj+QS3I8na+mxYaUo68x7Ml3Qga
-         YAAXig7TDAa6aYh2Emcm1JuNOwbwHh4P2YMXY=
+        bh=5zEBqjbWZbZ/3Uylirb4GeOi3RLFiwNvDX78phkZWD8=;
+        b=puH4rl4m33TJdLZ875N9+p9It9G4ILNa88KzHehBFMVbjxjSFvxcWiXzzRNE6cLPs0
+         bl4TGFpLvrijiUGVfE8vitrMj7WnPV9y6fssOgw6ay47hXaASRrMt454tW98n8FG06hs
+         7soBB5QWFPwoGDMHYDE8excvX9syBzlRVV6n2ReHOze7XB1EXll0Pfxq7HN5lpXE95FI
+         TBIqkwm7afs9VXPPRT979GlaDCMuxGoH0TDyXiUmQlWQTw7j+liM9ZpnAPebf+5Y1hBh
+         qxeTKvQxpoXc67AP2Tc8iF2tc5Ee0pVNoby0EhKrmqrzB8lbudhJvVyVjojr5PgJailU
+         Ciqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705099230; x=1705704030;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:user-agent
-         :from:references:in-reply-to:mime-version:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=32kOpc7jmHfTKnUipGkgywWo/WFBVKADG1CFjMO63QA=;
-        b=FyewS4Mx+CjQ1HnTXA89W1vQrRv92Y2s7IBKGvVpmRs5wAlI4JPrQhICNVL5TIO1Kg
-         oWdHDaTkkbVvSmo1KcdnlkmfVTauntcSCHH9rBCys68vQ0QcEdeiiySR4qkyn+CPAQo/
-         b1qLLsgwOkuQKyf8LAsbf48WIaFBPrhIZDxg4rnogLp6YU8F9U5iaufy5xQh6EZsolzD
-         MSQSKLFRJphuufpPC97bPs54QLT0xh3QPcqrA6LokiuGPMmL2q73szoZE/qCyhZNReMg
-         rsAnxdpE1TldZ4Fvnhf6wWmxYlyyvx3lO+9FNuO1XNyffzXQ/N6N9WIoOciTQaLoFKIw
-         PssQ==
-X-Gm-Message-State: AOJu0YxEatMJFeC7GllvSFEYoEvFkbAVUlhnPqQe4bN3Wp1OWzSSfIJk
-	OyueAF6ZLiGoODq65Tl38xXqJ9FqcIMDyN8GxxM35flzuWeA
-X-Google-Smtp-Source: AGHT+IFAGDRltzrOuwOjfQw3BbOLAGH99OOdLrJfIuQiRQpUY3N7PM2+1jOwKqS+5bXXF/pZCJmDPVeNB9k5DbXpKmQ=
-X-Received: by 2002:a19:9116:0:b0:50e:ab9b:c1d with SMTP id
- t22-20020a199116000000b0050eab9b0c1dmr695685lfd.37.1705099230506; Fri, 12 Jan
- 2024 14:40:30 -0800 (PST)
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Fri, 12 Jan 2024 14:40:29 -0800
+        d=1e100.net; s=20230601; t=1705099969; x=1705704769;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=5zEBqjbWZbZ/3Uylirb4GeOi3RLFiwNvDX78phkZWD8=;
+        b=iS0lL71WXSe5Gn8CS61jhFJv8vLILVnzioVcQ+oAlU+FSXGXS9PjXxhekRWVt5AFD/
+         nmGwEMnXIR0C9zVkdhybsJ5oChcLu2blKAcuQGjtEexC27BqMz87dXu5ZrE2Ra6J30c8
+         BAa4a3BSMS/kMbsASszxZ6Y2cVCwdo1PMzgr15T3uZtOMmdYABDsNX1dF0wijF5+yZyb
+         cdPXJTkIRWN5Cxw7YEpA6XDlTAlCppO7MaiaJ9gKVLFKAUXFcerRit31ZFJctWa/kryX
+         RsZoRHkq34WMbuDmPiofFf914mA14VaijSN3ozwgEFVie/s49Cqiwa075NlhWkiPTwtu
+         XslQ==
+X-Gm-Message-State: AOJu0YwIgBDtItZDIG0kUUHhENhAytscJ7/xaM0JVVtS86t8DW2ViRhu
+	N4c22eKWdyaMxYO3H1p606yK7N9kO8IdEDZkz2YgZDt1swQ=
+X-Google-Smtp-Source: AGHT+IHkgMN1yQJBbcRo0BFB3B8pFJiDvEWeO3tE0O3jDrHXiN3BUhVwpu15ZRDxRy6MkjLufhC9Rmys7MiCAQ75PZg=
+X-Received: by 2002:aa7:c98b:0:b0:554:2501:cc8e with SMTP id
+ c11-20020aa7c98b000000b005542501cc8emr18281edt.6.1705099969244; Fri, 12 Jan
+ 2024 14:52:49 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20240112142032.909736-1-nfraprado@collabora.com>
-References: <20240112142032.909736-1-nfraprado@collabora.com>
-From: Stephen Boyd <swboyd@chromium.org>
-User-Agent: alot/0.10
-Date: Fri, 12 Jan 2024 14:40:29 -0800
-Message-ID: <CAE-0n52sbshmkROspU4Hg=G_-RzhkG11q8ktc9uzHuo0JXn93w@mail.gmail.com>
-Subject: Re: [PATCH v2] arm64: dts: mt8183: jacuzzi: Remove CrosEC base
- detection node
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: kernel@collabora.com, Chen-Yu Tsai <wenst@chromium.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Enric Balletbo i Serra <eballetbo@kernel.org>, 
-	Ikjoon Jang <ikjn@chromium.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
+References: <20240112092014.23999-1-yong.wu@mediatek.com> <20240112092014.23999-4-yong.wu@mediatek.com>
+In-Reply-To: <20240112092014.23999-4-yong.wu@mediatek.com>
+From: John Stultz <jstultz@google.com>
+Date: Fri, 12 Jan 2024 14:52:37 -0800
+Message-ID: <CANDhNCrxpeqEhJD0xJzu3vm8a4jMXD2v+_dbDNvaKhLsLB5-4g@mail.gmail.com>
+Subject: Re: [PATCH v4 3/7] dma-buf: heaps: restricted_heap: Add private heap ops
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, christian.koenig@amd.com, 
+	Sumit Semwal <sumit.semwal@linaro.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>, 
+	tjmercier@google.com, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Robin Murphy <robin.murphy@arm.com>, Vijayanand Jitta <quic_vjitta@quicinc.com>, 
+	Joakim Bech <joakim.bech@linaro.org>, Jeffrey Kardatzke <jkardatzke@google.com>, 
+	Pavel Machek <pavel@ucw.cz>, Simon Ser <contact@emersion.fr>, Pekka Paalanen <ppaalanen@gmail.com>, 
+	jianjiao.zeng@mediatek.com, kuohong.wang@mediatek.com, 
+	youlin.pei@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240112_144035_703791_31037300 
-X-CRM114-Status: UNSURE (   7.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240112_145252_585371_1FCB6BDC 
+X-CRM114-Status: GOOD (  25.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,23 +100,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting N=C3=ADcolas F. R. A. Prado (2024-01-12 06:20:28)
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arc=
-h/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-> index 7592e3b86037..8c9f7435cf4c 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-> @@ -484,3 +484,6 @@ volup-btn-odl {
->         };
+On Fri, Jan 12, 2024 at 1:21=E2=80=AFAM Yong Wu <yong.wu@mediatek.com> wrot=
+e:
+>
+> Add "struct restricted_heap_ops". For the restricted memory, totally ther=
+e
+> are two steps:
+> a) memory_alloc: Allocate the buffer in kernel;
+> b) memory_restrict: Restrict/Protect/Secure that buffer.
+> The memory_alloc is mandatory while memory_restrict is optinal since it m=
+ay
+> be part of memory_alloc.
+>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>  drivers/dma-buf/heaps/restricted_heap.c | 41 ++++++++++++++++++++++++-
+>  drivers/dma-buf/heaps/restricted_heap.h | 12 ++++++++
+>  2 files changed, 52 insertions(+), 1 deletion(-)
+>
+
+Thanks for sending this out! A thought below.
+
+> diff --git a/drivers/dma-buf/heaps/restricted_heap.h b/drivers/dma-buf/he=
+aps/restricted_heap.h
+> index 443028f6ba3b..ddeaf9805708 100644
+> --- a/drivers/dma-buf/heaps/restricted_heap.h
+> +++ b/drivers/dma-buf/heaps/restricted_heap.h
+> @@ -15,6 +15,18 @@ struct restricted_buffer {
+>
+>  struct restricted_heap {
+>         const char              *name;
+> +
+> +       const struct restricted_heap_ops *ops;
+> +};
+> +
+> +struct restricted_heap_ops {
+> +       int     (*heap_init)(struct restricted_heap *heap);
+> +
+> +       int     (*memory_alloc)(struct restricted_heap *heap, struct rest=
+ricted_buffer *buf);
+> +       void    (*memory_free)(struct restricted_heap *heap, struct restr=
+icted_buffer *buf);
+> +
+> +       int     (*memory_restrict)(struct restricted_heap *heap, struct r=
+estricted_buffer *buf);
+> +       void    (*memory_unrestrict)(struct restricted_heap *heap, struct=
+ restricted_buffer *buf);
 >  };
 >
-> +&cros_ec {
-> +       /delete-node/ cbas;
-> +};
+>  int restricted_heap_add(struct restricted_heap *rstrd_heap);
 
-Usually we add nodes instead of delete them. Can you move the cbas node
-addition to the other files that include mt8183-kukui.dtsi instead? It
-will be a larger patch in number of lines but then we don't run into
-problems where the node is moved later and this breaks because 'cbas'
-doesn't exist.
+So, I'm a little worried here, because you're basically turning the
+restricted_heap dma-buf heap driver into a framework itself.
+Where this patch is creating a subdriver framework.
+
+Part of my hesitancy, is you're introducing this under the dma-buf
+heaps. For things like CMA, that's more of a core subsystem that has
+multiple users, and exporting cma buffers via dmabuf heaps is just an
+additional interface.  What I like about that is the core kernel has
+to define the semantics for the memory type and then the dmabuf heap
+is just exporting that well understood type of buffer.
+
+But with these restricted buffers, I'm not sure there's yet a well
+understood set of semantics nor a central abstraction for that which
+other drivers use directly.
+
+I know part of this effort here is to start to centralize all these
+vendor specific restricted buffer implementations, which I think is
+great, but I just worry that in doing it in the dmabuf heap interface,
+it is a bit too user-facing. The likelihood of encoding a particular
+semantic to the singular "restricted_heap" name seems high.
+
+Similarly we might run into systems with multiple types of restricted
+buffers (imagine a discrete gpu having one type along with TEE
+protected buffers also being used on the same system).
+
+So the one question I have: Why not just have a mediatek specific
+restricted_heap dmabuf heap driver?  Since there's already been some
+talk of slight semantic differences in various restricted buffer
+implementations, should we just start with separately named dmabuf
+heaps for each? Maybe consolidating to a common name as more drivers
+arrive and we gain a better understanding of the variations of
+semantics folks are using?
+
+thanks
+-john
 
