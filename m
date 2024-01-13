@@ -4,79 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87EC1C4707B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jan 2024 09:10:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46671C4707B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jan 2024 09:34:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2XKH1OQynYvIBIkLwQvThFdECmXZ47Au14j7QHW/2sQ=; b=d93S6IULjU2EOceEmV8VYkTfyb
-	CCYFN+lqyGebMKtGfravoTk8S4xTkdRK3Xh2TpLFDbnR8CE/McWipONfgvGr6F2Oba1fXFX5GS9e/
-	3a7SXyZUBvdQt906mB90GclUT3ZWHhLCsHC/O0XJdHlWtDYoZ+cusOrFeIz8y5z6VUeHnGdCgkeOn
-	Ezl88tx4bYnRMtF6s6Fjt5oV2tnHE5xTcA/Hr1UvwU1FX/lKhFq4QPozqhlXy5KKQ/n2BncZkgpD+
-	8TBi+24q2m1BYvxk70xX9oSuSHVG3G7vDXQlCI6tpYp6XfsB471EZKaal3NqgVKAxXZKU5ezdDmQp
-	S5HNtOyQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uTfZ42YMdPsc//kAzPHZ2G81y8NgAM6Sfpnm9pJXkZE=; b=VEm8BjB1sYom33UI41kFxH+0qP
+	7IxVMX30Dl1OkEdsJAoTIT7K+2PgfUK8ASVrGAQMAQVf4Ia9peG9Kzv8JaG0RYeBdWJahJcGcNn9f
+	hFBiZMKPsKiavZF51nNuWVsUPs0b4MaALSyVbLRIeC9nowqC4WF6r8sAumhpbO5GGyrMhY6vFVhFs
+	hI30LbO+5N29CJCIj83XlALyYZLl9yrFHujYMctH7gLQVafuexH0T1wU/TtIrM7A8OuUPeBMUyvIB
+	hJ0sZ1oJuP8kNWzajF+vUsjBTZ0zY5bZuEu3TnvnEQzPWnWrY19Oc0qZX+4Fd5o6Tk3yAcwv3qkpo
+	x1EviVlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOa2V-004omk-2l;
-	Sat, 13 Jan 2024 09:10:51 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rOaPg-004qB0-2H;
+	Sat, 13 Jan 2024 09:34:48 +0000
+Received: from relay6-d.mail.gandi.net ([217.70.183.198])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOa2T-004omH-1M
-	for linux-mediatek@lists.infradead.org;
-	Sat, 13 Jan 2024 09:10:50 +0000
-X-UUID: 9fae6b10b1f311eeafd70d0b34820190-20240113
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=2XKH1OQynYvIBIkLwQvThFdECmXZ47Au14j7QHW/2sQ=;
-	b=Xa6u4lfKtwDoEG3SfarJ53i24+kkHAItwIaNc0FYXUBy6d+3FaUDs3bfjJXNIaLicW9kZXuiByoEeXqSIHBd+AaJoleycvxtHRcljIemLVdur8rqZno2df+d38RKsjHijXVPKqTpiIz5UysPywzxZc/REgxBOgSeipuE+3xgFBA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:28838a14-0c74-489e-a43d-a4fc616ea90b,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:5d391d7,CLOUDID:a7431f2f-1ab8-4133-9780-81938111c800,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 9fae6b10b1f311eeafd70d0b34820190-20240113
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1139414249; Sat, 13 Jan 2024 02:10:40 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 13 Jan 2024 17:00:37 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 13 Jan 2024 17:00:37 +0800
-From: Deren Wu <deren.wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Leon Yen
-	<Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin
-	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
-	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Quan Zhou
-	<quan.zhou@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, linux-wireless <linux-wireless@vger.kernel.org>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>, Deren Wu
-	<deren.wu@mediatek.com>
-Subject: [PATCH 2/2] wifi: mt76: mt7925e: fix use-after-free in free_irq()
-Date: Sat, 13 Jan 2024 17:00:23 +0800
-Message-ID: <6a08840f845587ecd83369760a89c881e6496e5e.1705135817.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <572d6af305a09fc8bdd96a8ee57399039803a2bb.1705135817.git.deren.wu@mediatek.com>
-References: <572d6af305a09fc8bdd96a8ee57399039803a2bb.1705135817.git.deren.wu@mediatek.com>
+	id 1rOaPa-004q2T-1y;
+	Sat, 13 Jan 2024 09:34:47 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 83DA4C0002;
+	Sat, 13 Jan 2024 09:32:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1705138349;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=uTfZ42YMdPsc//kAzPHZ2G81y8NgAM6Sfpnm9pJXkZE=;
+	b=Aj872vFTK+K4/JTWrCU6DEE/lK2ElJNHEfPdF0aCeV0q0v6Ulr9HVnwqswPw+yo7uLyUaB
+	GplVrG3ENZDb+IgDKCP2AUPw6RB38CXZLWk2N7jshRa9yGUQ5SSxA8iH6ctEFz6BhSbhxV
+	ufN5MRbfPd4C8uFp1VXHpZPdylHSspFpQy4uLD9Bs2lm4qny3DmvnJab1yy5EW9/UxeK3z
+	Uzc4nNojGRv5Ai+e0odsaMMv9yP7Tzr4OsENVWls8CUD5Xo/vh4HGbJXSBmovU8v0AhV41
+	bieR6CADy+1fV8mYimtpd0TmQnqLu76bYl+FMp4QO3l/ZkgTOFopuTWyLRGODA==
+From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: David Bauer <mail@david-bauer.net>,
+	mithat.guner@xeront.com,
+	erkin.bozoglu@xeront.com,
+	Luiz Angelo Daros de Luca <luizluca@gmail.com>,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [RFC PATCH net-next] net: dsa: mt7530: support OF-based registration of switch MDIO bus
+Date: Sat, 13 Jan 2024 12:32:16 +0300
+Message-Id: <20240113093216.42391-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240113_011049_469287_A1BE81F2 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20240113_013442_937133_90461D12 
+X-CRM114-Status: GOOD (  18.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,31 +87,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From commit a304e1b82808 ("[PATCH] Debug shared irqs"), there is a test
-to make sure the shared irq handler should be able to handle the unexpected
-event after deregistration. For this case, let's apply MT76_REMOVED flag to
-indicate the device was removed and do not run into the resource access
-anymore.
+Currently the MDIO bus of the switches the MT7530 DSA subdriver controls
+can only be registered as non-OF-based. Bring support for registering the
+bus OF-based.
 
-Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+The subdrivers that control switches [with MDIO bus] probed on OF must
+follow this logic to support all cases properly:
+
+No switch MDIO bus defined: Populate ds->user_mii_bus, register the MDIO
+bus, set the interrupts for PHYs if "interrupt-controller" is defined at
+the switch node. This case should only be covered for the switches which
+their dt-bindings documentation didn't document the MDIO bus from the
+start. This is to keep supporting the device trees that do not describe the
+MDIO bus on the device tree but the MDIO bus is being used nonetheless.
+
+Switch MDIO bus defined: Don't populate ds->user_mii_bus, register the MDIO
+bus, set the interrupts for PHYs if ["interrupt-controller" is defined at
+the switch node and "interrupts" is defined at the PHY nodes under the
+switch MDIO bus node].
+
+Switch MDIO bus defined but explicitly disabled: If the device tree says
+status = "disabled" for the MDIO bus, we shouldn't need an MDIO bus at all.
+Instead, just exit as early as possible and do not call any MDIO API.
+
+The use of ds->user_mii_bus is inappropriate when the MDIO bus of the
+switch is described on the device tree [1], which is why we don't populate
+ds->user_mii_bus in that case.
+
+Link: https://lore.kernel.org/netdev/20231213120656.x46fyad6ls7sqyzv@skbuf/ [1]
+Suggested-by: David Bauer <mail@david-bauer.net>
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/pci.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/dsa/mt7530.c | 34 ++++++++++++++++++++++++++--------
+ 1 file changed, 26 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-index 734f31ee40d3..689d3f1521ee 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-@@ -425,6 +425,7 @@ static void mt7925_pci_remove(struct pci_dev *pdev)
- 	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 391c4dbdff42..cf2ff7680c15 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2146,24 +2146,40 @@ mt7530_free_irq_common(struct mt7530_priv *priv)
+ static void
+ mt7530_free_irq(struct mt7530_priv *priv)
+ {
+-	mt7530_free_mdio_irq(priv);
++	struct device_node *mnp, *np = priv->dev->of_node;
++
++	mnp = of_get_child_by_name(np, "mdio");
++	if (!mnp)
++		mt7530_free_mdio_irq(priv);
++	of_node_put(mnp);
++
+ 	mt7530_free_irq_common(priv);
+ }
  
- 	mt7925e_unregister_device(dev);
-+	set_bit(MT76_REMOVED, &mdev->phy.state);
- 	devm_free_irq(&pdev->dev, pdev->irq, dev);
- 	mt76_free_device(&dev->mt76);
- 	pci_free_irq_vectors(pdev);
+ static int
+ mt7530_setup_mdio(struct mt7530_priv *priv)
+ {
++	struct device_node *mnp, *np = priv->dev->of_node;
+ 	struct dsa_switch *ds = priv->ds;
+ 	struct device *dev = priv->dev;
+ 	struct mii_bus *bus;
+ 	static int idx;
+-	int ret;
++	int ret = 0;
++
++	mnp = of_get_child_by_name(np, "mdio");
++
++	if (mnp && !of_device_is_available(mnp))
++		goto out;
+ 
+ 	bus = devm_mdiobus_alloc(dev);
+-	if (!bus)
+-		return -ENOMEM;
++	if (!bus) {
++		ret = -ENOMEM;
++		goto out;
++	}
++
++	if (!mnp)
++		ds->user_mii_bus = bus;
+ 
+-	ds->user_mii_bus = bus;
+ 	bus->priv = priv;
+ 	bus->name = KBUILD_MODNAME "-mii";
+ 	snprintf(bus->id, MII_BUS_ID_SIZE, KBUILD_MODNAME "-%d", idx++);
+@@ -2174,16 +2190,18 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
+ 	bus->parent = dev;
+ 	bus->phy_mask = ~ds->phys_mii_mask;
+ 
+-	if (priv->irq)
++	if (priv->irq && !mnp)
+ 		mt7530_setup_mdio_irq(priv);
+ 
+-	ret = devm_mdiobus_register(dev, bus);
++	ret = devm_of_mdiobus_register(dev, bus, mnp);
+ 	if (ret) {
+ 		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
+-		if (priv->irq)
++		if (priv->irq && !mnp)
+ 			mt7530_free_mdio_irq(priv);
+ 	}
+ 
++out:
++	of_node_put(mnp);
+ 	return ret;
+ }
+ 
 -- 
-2.18.0
+2.40.1
 
 
