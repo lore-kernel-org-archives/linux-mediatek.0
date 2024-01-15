@@ -4,91 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE562C3DA79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jan 2024 18:20:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FBF5C4707C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jan 2024 20:21:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Pk9BYAlXOny5vx7IIMl1r8Ckvn8t89LgHQENG37+b/I=; b=M/IjyyGvbDoRvAm2MAgP6Za5On
-	OGDLtOjUaTHxrAxbXu6bkeXNYz5x/4HOKo6ORBYOsAAhP6ubsEzk1Hq0k+HyEVHOovqukWfqG1H+V
-	gIeJf3t43CjfFGaM9c/98dNBJFg7Vp3JpZ5i0XmMUIGVLZ7BX75NhVU53FX/R9l3hiVrFpR9fBMSi
-	xQMg1euaVvTeZV6nnZ55rFXxYD7j4QEqwXKrc5o6Th6LYE6EUg5SOYZ2P1lWgw+yl0qYU8Pu49X2/
-	3vIN2n/aYfsmHuDMJQrz6u/V8q1dwKhAdgxcV617T1cMfIcebdq/oi1WZslYQy/kgt+b6zyeqVV0T
-	JkG4f0HA==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Xjz205kwzJuuh+fas2NR1g2vtuEOc7c6hwbFjh9AJSc=; b=2vq/NfQEeesN2gn80mBrO9FFWr
+	pDSnOghf/XQWWuPp35NL3bEN/GkupjZuIIpnkgp6BBoEocCixzkDLJKggD+mw7DIAJwH5wuEUZnWt
+	fk6zpvXv562gD5sc2SXTndhP7trevtJd7DQMUUx2UNzRSwAKzE6jeFd177NUaVP1/YNlQq7mDvfXV
+	X+9KVTr9HiFak4qaTRGFT/P+VoHkMB+e/HZ9yz3yCzoX8l9f9Ve40b+KWl4cPjHK2EztuBK20BbME
+	aIq/GDSN+0LXwDxxSMjMyosdI72cbRXZ+qC+GnvvVjrW2FmQVj/jeSfo1EfOR3OJD0bH1r57ACbsd
+	Wr0cfftw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPRZf-009uTU-1L;
-	Mon, 15 Jan 2024 18:20:39 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1rPTSV-00A8Dw-1L;
+	Mon, 15 Jan 2024 20:21:23 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPRZc-009uRd-1h
+	id 1rPTSQ-00A8Ae-2y
 	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Jan 2024 18:20:38 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-55818b733f7so7953381a12.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 Jan 2024 10:20:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705342834; x=1705947634; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Pk9BYAlXOny5vx7IIMl1r8Ckvn8t89LgHQENG37+b/I=;
-        b=ZBK22a6S8ZIzEa8B9XiPT831gBVjfIfxZht7UaVpFfh0R7cdKryMsQgqN4Qpd/MrlL
-         JRvA6hePWXL3hu4O8H8fwgW6k9SCvdTb0TM0D5pX25S6FEMUaKg/BPZ4pfHdxbzc3TTS
-         87kpAbVkqP1lMNewwiuLk7lzcWODF7Jj/iBIqy0vJGqgBi4tameuC2Vz782uSM3oyVRJ
-         KuPEfw7JFs6qddCBSe29R95dsA4qYsit0fU432XMLpy//uvz8XFOMdeJ7Zbi6f0GUENY
-         tQsH1lrnMdTmz5SZscKMNfDi2xT6F5i7lFvsXrM9pW9UBkUABm19XV/TlN73955lxQEV
-         sgAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705342834; x=1705947634;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Pk9BYAlXOny5vx7IIMl1r8Ckvn8t89LgHQENG37+b/I=;
-        b=f9YvFJgEyXIJ9ufn3yGjnS+c+4F2Cg0m2EACzWLAwqs50YncgdTl1ijWvGFX9KUBUO
-         tmgddCtyCwV+Ayp04sxghoxYvwUHwPri/p92oPQ9iG0qWWHVJ4yhKBVXNITeSdoKVyTh
-         KCigqtcoaQ8JlYuUaZfcp2iMqBp7553yCIg2CItBMZ5HRfuKLUf8dpYUS8lGCdMa5v4k
-         0eemvCuRqFShvyoWrJYieLaB0VV3zgperGqo8pA4QEf9/hgz1anXbLQHE6G1WhSQhm2E
-         mPjXaFRvlXI3OqLLoBd8oyYEnPETFTrieuiFiapneSfeSwmiWsKkEpAj2KBXo2tw4AvH
-         MM8A==
-X-Gm-Message-State: AOJu0YytjwDFOnKdX2oPNwiZfwFdXJIFZGILKxlxGFerQqPpMEE8+KGs
-	tURD/xT70+1MT0EAef79sm1QCK4/ghwIjA==
-X-Google-Smtp-Source: AGHT+IE8Rv7TALy6QHOmV7wneFYPZJqN4DYMVXyzwYotmqd3ln8eAYgtdWF5rpaj14WiTEjiCunTIQ==
-X-Received: by 2002:a17:907:c24d:b0:a2e:49a4:fabe with SMTP id tj13-20020a170907c24d00b00a2e49a4fabemr138108ejc.16.1705342834090;
-        Mon, 15 Jan 2024 10:20:34 -0800 (PST)
-Received: from krzk-bin.. ([178.197.215.66])
-        by smtp.gmail.com with ESMTPSA id n11-20020a170906118b00b00a2bd02d5f7asm5591970eja.148.2024.01.15.10.20.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jan 2024 10:20:33 -0800 (PST)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Bjorn Andersson <andersson@kernel.org>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	Mon, 15 Jan 2024 20:21:21 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rPTSH-0004v8-U7; Mon, 15 Jan 2024 21:21:09 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rPTSH-0005hM-Fr; Mon, 15 Jan 2024 21:21:09 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rPTSH-000N8h-1J;
+	Mon, 15 Jan 2024 21:21:09 +0100
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Mark Brown <broonie@kernel.org>,
+	Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: linux-spi@vger.kernel.org,
+	kernel@pengutronix.de,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Tinghan Shen <tinghan.shen@mediatek.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Bhupesh Sharma <bhupesh.sharma@linaro.org>,
-	linux-remoteproc@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH] dt-bindings: remoteproc: do not override firmware-name $ref
-Date: Mon, 15 Jan 2024 19:20:31 +0100
-Message-Id: <20240115182031.1610088-1-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 23/33] spi: slave-mt27xx: Follow renaming of SPI "master" to "controller"
+Date: Mon, 15 Jan 2024 21:13:09 +0100
+Message-ID: <ce0557861684ad5b6c51cf8f537c69b5a59947f1.1705348270.git.u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <cover.1705348269.git.u.kleine-koenig@pengutronix.de>
+References: <cover.1705348269.git.u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1009; i=u.kleine-koenig@pengutronix.de; h=from:subject:message-id; bh=9RamQld7ehDahTK1UAe+GkwrSp24P4ucFsRrUBlQgRI=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlpZHaQqGDl7ik5LslfQtscg1JcQlYlHu/HR25p /4gsc45q1+JATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZaWR2gAKCRCPgPtYfRL+ Tn0oB/9yfU3PrYZgymgA3AjxI3ghhDkjbhz19h9alePBnaKB2qt3J/u/318cz1uV5grRhFgxBAW udtVfwAn/Ls6FT17y0F0k6viqivc1r4PKbUYMUZycFyx/gsoJyh4sQc3+UG4lky+G9CgXInAqUQ cX3yeENuM7DcLWR6q/bqfPr1MKGs1/vWmYAWt5oYAW/4T6K5syMJs1huJhAqXiJaxzhRmky4lRM dFsknCqm8cIn+mHi6VmZvofo4ZD5aRzHt69G3yqz2X4KOkJv76OkA1CcSvK7ys+udvFyPWNa61L 71AO8dSpzIzuHujiofr7V71fWSzLy/nkH25pFTN5j78CcBsQ
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240115_102036_565108_7D7B8C0A 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20240115_122118_958105_A35CA549 
+X-CRM114-Status: GOOD (  11.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,178 +82,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-dtschema package defines firmware-name as string-array, so individual
-bindings should not make it a string but instead just narrow the number
-of expected firmware file names.
+In commit 8caab75fd2c2 ("spi: Generalize SPI "master" to "controller"")
+some functions and struct members were renamed. To not break all drivers
+compatibility macros were provided.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To be able to remove these compatibility macros push the renaming into
+this driver.
+
+Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 ---
- Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml     | 4 ++--
- .../devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml       | 2 +-
- .../devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml       | 2 +-
- .../devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml  | 2 +-
- .../devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml      | 2 +-
- .../devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml       | 2 +-
- .../devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml       | 2 +-
- .../devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml       | 2 +-
- .../devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml       | 2 +-
- .../devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml       | 2 +-
- .../devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml        | 2 +-
- 11 files changed, 12 insertions(+), 12 deletions(-)
+ drivers/spi/spi-slave-mt27xx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-index 09102dda4942..507f98f73d23 100644
---- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-@@ -47,7 +47,7 @@ properties:
-     maxItems: 1
+diff --git a/drivers/spi/spi-slave-mt27xx.c b/drivers/spi/spi-slave-mt27xx.c
+index 6d6772974783..f1ddf4c099a3 100644
+--- a/drivers/spi/spi-slave-mt27xx.c
++++ b/drivers/spi/spi-slave-mt27xx.c
+@@ -297,7 +297,7 @@ static int mtk_spi_slave_transfer_one(struct spi_controller *ctlr,
  
-   firmware-name:
--    $ref: /schemas/types.yaml#/definitions/string
-+    maxItems: 1
-     description:
-       If present, name (or relative path) of the file within the
-       firmware search path containing the firmware image used when
-@@ -115,7 +115,7 @@ patternProperties:
-         maxItems: 1
+ static int mtk_spi_slave_setup(struct spi_device *spi)
+ {
+-	struct mtk_spi_slave *mdata = spi_controller_get_devdata(spi->master);
++	struct mtk_spi_slave *mdata = spi_controller_get_devdata(spi->controller);
+ 	u32 reg_val;
  
-       firmware-name:
--        $ref: /schemas/types.yaml#/definitions/string
-+        maxItems: 1
-         description:
-           If present, name (or relative path) of the file within the
-           firmware search path containing the firmware image used when
-diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml
-index eb868a7ff4cd..ad45fd00ae34 100644
---- a/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml
-@@ -46,7 +46,7 @@ properties:
-     description: Reference to the reserved-memory for the Hexagon core
- 
-   firmware-name:
--    $ref: /schemas/types.yaml#/definitions/string
-+    maxItems: 1
-     description: Firmware name for the Hexagon core
- 
- required:
-diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml
-index c054b84fdcd5..66b455d0a8e3 100644
---- a/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml
-@@ -45,7 +45,7 @@ properties:
-   smd-edge: false
- 
-   firmware-name:
--    $ref: /schemas/types.yaml#/definitions/string
-+    maxItems: 1
-     description: Firmware name for the Hexagon core
- 
- required:
-diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml
-index b6bd33438584..9381c7022ff4 100644
---- a/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml
-@@ -80,7 +80,7 @@ properties:
-     description: Reference to the reserved-memory for the Hexagon core
- 
-   firmware-name:
--    $ref: /schemas/types.yaml#/definitions/string
-+    maxItems: 1
-     description:
-       The name of the firmware which should be loaded for this remote
-       processor.
-diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml
-index 4744a37b2b5d..45ee9fbe0966 100644
---- a/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml
-@@ -42,7 +42,7 @@ properties:
-     description: Reference to the reserved-memory for the Hexagon core
- 
-   firmware-name:
--    $ref: /schemas/types.yaml#/definitions/string
-+    maxItems: 1
-     description: Firmware name for the Hexagon core
- 
- required:
-diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml
-index 028287235912..758adb06c8dd 100644
---- a/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml
-@@ -47,7 +47,7 @@ properties:
-   smd-edge: false
- 
-   firmware-name:
--    $ref: /schemas/types.yaml#/definitions/string
-+    maxItems: 1
-     description: Firmware name for the Hexagon core
- 
- required:
-diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml
-index f7e40fb166da..c1a3cc308bdb 100644
---- a/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml
-@@ -42,7 +42,7 @@ properties:
-   smd-edge: false
- 
-   firmware-name:
--    $ref: /schemas/types.yaml#/definitions/string
-+    maxItems: 1
-     description: Firmware name for the Hexagon core
- 
- required:
-diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml
-index 3e4a03eb4532..7286b2baa19f 100644
---- a/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml
-@@ -36,7 +36,7 @@ properties:
-     description: Reference to the reserved-memory for the Hexagon core
- 
-   firmware-name:
--    $ref: /schemas/types.yaml#/definitions/string
-+    maxItems: 1
-     description: Firmware name for the Hexagon core
- 
-   smd-edge: false
-diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml
-index 238c6e5e67c5..d67386c50fa4 100644
---- a/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml
-@@ -46,7 +46,7 @@ properties:
-   smd-edge: false
- 
-   firmware-name:
--    $ref: /schemas/types.yaml#/definitions/string
-+    maxItems: 1
-     description: Firmware name for the Hexagon core
- 
- required:
-diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml
-index 53cea8e53a31..4b9fb74fb9e9 100644
---- a/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml
-@@ -47,7 +47,7 @@ properties:
-     description: Reference to the reserved-memory for the Hexagon core
- 
-   firmware-name:
--    $ref: /schemas/types.yaml#/definitions/string
-+    maxItems: 1
-     description: Firmware name for the Hexagon core
- 
- required:
-diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml
-index 45eb42bd3c2c..8e033b22d28c 100644
---- a/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml
-@@ -51,7 +51,7 @@ properties:
-       - const: stop-ack
- 
-   firmware-name:
--    $ref: /schemas/types.yaml#/definitions/string
-+    maxItems: 1
-     description:
-       Relative firmware image path for the WCNSS core. Defaults to
-       "wcnss.mdt".
+ 	reg_val = DMA_DONE_EN | DATA_DONE_EN |
 -- 
-2.34.1
+2.43.0
 
 
