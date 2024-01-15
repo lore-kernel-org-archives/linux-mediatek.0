@@ -4,81 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C4AEC3DA79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jan 2024 17:23:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE562C3DA79
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jan 2024 18:20:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pvbgD9nhTUJHvQsQEOSEEgAPiPHRgx0KErVvIXJhY28=; b=wCtnZQEn5BBNSPe1mB/noBAKF3
-	zBrQy+a7Db81K2+841Pg8c1YzHUnxvm2vDeprImbyDP8A+OiitT0m9Jgcs1nP1zdumcsefNjb+ysx
-	F91ntFiSUE26viop043acPo3oGFC9kMO7BR7U7gk7k1urlV7iOLKOYhuNpnZQApGAhRFRctBP/GrO
-	XjIhrQ9T0rDGQnO4YNVPeGzwabYZGTcxaqDSBU113wndMXbaXLYsbOvHDK6Bv6lCwdw9BmGnPedmu
-	fcGu/8AeVlHGej4D8rLbV46BX35SvCQeVo1SodZ+LUoGHjJB7cHU/hTcE7R60IsnKuBcoJRpuUJSs
-	f+amCUSg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Pk9BYAlXOny5vx7IIMl1r8Ckvn8t89LgHQENG37+b/I=; b=M/IjyyGvbDoRvAm2MAgP6Za5On
+	OGDLtOjUaTHxrAxbXu6bkeXNYz5x/4HOKo6ORBYOsAAhP6ubsEzk1Hq0k+HyEVHOovqukWfqG1H+V
+	gIeJf3t43CjfFGaM9c/98dNBJFg7Vp3JpZ5i0XmMUIGVLZ7BX75NhVU53FX/R9l3hiVrFpR9fBMSi
+	xQMg1euaVvTeZV6nnZ55rFXxYD7j4QEqwXKrc5o6Th6LYE6EUg5SOYZ2P1lWgw+yl0qYU8Pu49X2/
+	3vIN2n/aYfsmHuDMJQrz6u/V8q1dwKhAdgxcV617T1cMfIcebdq/oi1WZslYQy/kgt+b6zyeqVV0T
+	JkG4f0HA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPQg3-009oEk-11;
-	Mon, 15 Jan 2024 17:23:11 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rPRZf-009uTU-1L;
+	Mon, 15 Jan 2024 18:20:39 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPQfz-009oDb-1H;
-	Mon, 15 Jan 2024 17:23:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C647160F63;
-	Mon, 15 Jan 2024 17:23:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF34CC433C7;
-	Mon, 15 Jan 2024 17:23:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1705339386;
-	bh=JWnACth0LzK7HNW8h/dOlwEvzifFvKEPIk8Dim2dsV0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KqlK2dIDtCW6ZHgZAwO6Wv353sYnGQa+fSqmbp9c2bNiEs6pPbZtO5SvxWvFwNOT7
-	 OHwTXnG9uLG2H7H1WG1bwORxzfdbR6Uh7Vq+GY82ZF0+K5LdoJ9qEFE5CnNkjnyIwb
-	 u+RmS0odFVtlBW9pAaYtY/+i+NB73ZOHc3GhDdYp9AvB9/PStOi+XcTu/uJdOwwvSC
-	 0gE/96B8/Zk2/u71kgW49xvWckn44jfEKGweNafZr7E5uuFQgzbbfII3PKTUurY4zf
-	 7TxbjPKdb/xIAc2MZ8JwDU7Kupdyqh9v13Mqm1wC0yIuvLtgTXrTxkorZX70bkzMff
-	 Hcx7+r+vxUUzg==
-Date: Mon, 15 Jan 2024 17:23:00 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Jason-JH Lin =?utf-8?B?KOael+edv+elpSk=?= <Jason-JH.Lin@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"robh+dt@kernel.org" <robh+dt@kernel.org>,
-	Johnson Wang =?utf-8?B?KOeOi+iBlumRqyk=?= <Johnson.Wang@mediatek.com>,
-	Singo Chang =?utf-8?B?KOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
-	Jason-ch Chen =?utf-8?B?KOmZs+W7uuixqik=?= <Jason-ch.Chen@mediatek.com>,
-	Shawn Sung =?utf-8?B?KOWui+WtneismSk=?= <Shawn.Sung@mediatek.com>,
-	Nancy Lin =?utf-8?B?KOael+aso+ieoik=?= <Nancy.Lin@mediatek.com>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2 2/4] dt-bindings: mailbox: mediatek: gce-mailbox: Add
- reference to gce-props.yaml
-Message-ID: <20240115-player-waltz-8efb5885a23f@spud>
-References: <20240110063532.14124-1-jason-jh.lin@mediatek.com>
- <20240110063532.14124-3-jason-jh.lin@mediatek.com>
- <20240110-grumbling-tattling-0202fc5e21f2@spud>
- <8c4004d5b6f68dc096aaf2a537e429c310b60c08.camel@mediatek.com>
- <20240111-anthology-dock-c60d28ac7f1c@spud>
- <5eaccb10853215a6399759a715d2f0356782bac9.camel@mediatek.com>
+	id 1rPRZc-009uRd-1h
+	for linux-mediatek@lists.infradead.org;
+	Mon, 15 Jan 2024 18:20:38 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-55818b733f7so7953381a12.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 15 Jan 2024 10:20:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1705342834; x=1705947634; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Pk9BYAlXOny5vx7IIMl1r8Ckvn8t89LgHQENG37+b/I=;
+        b=ZBK22a6S8ZIzEa8B9XiPT831gBVjfIfxZht7UaVpFfh0R7cdKryMsQgqN4Qpd/MrlL
+         JRvA6hePWXL3hu4O8H8fwgW6k9SCvdTb0TM0D5pX25S6FEMUaKg/BPZ4pfHdxbzc3TTS
+         87kpAbVkqP1lMNewwiuLk7lzcWODF7Jj/iBIqy0vJGqgBi4tameuC2Vz782uSM3oyVRJ
+         KuPEfw7JFs6qddCBSe29R95dsA4qYsit0fU432XMLpy//uvz8XFOMdeJ7Zbi6f0GUENY
+         tQsH1lrnMdTmz5SZscKMNfDi2xT6F5i7lFvsXrM9pW9UBkUABm19XV/TlN73955lxQEV
+         sgAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1705342834; x=1705947634;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Pk9BYAlXOny5vx7IIMl1r8Ckvn8t89LgHQENG37+b/I=;
+        b=f9YvFJgEyXIJ9ufn3yGjnS+c+4F2Cg0m2EACzWLAwqs50YncgdTl1ijWvGFX9KUBUO
+         tmgddCtyCwV+Ayp04sxghoxYvwUHwPri/p92oPQ9iG0qWWHVJ4yhKBVXNITeSdoKVyTh
+         KCigqtcoaQ8JlYuUaZfcp2iMqBp7553yCIg2CItBMZ5HRfuKLUf8dpYUS8lGCdMa5v4k
+         0eemvCuRqFShvyoWrJYieLaB0VV3zgperGqo8pA4QEf9/hgz1anXbLQHE6G1WhSQhm2E
+         mPjXaFRvlXI3OqLLoBd8oyYEnPETFTrieuiFiapneSfeSwmiWsKkEpAj2KBXo2tw4AvH
+         MM8A==
+X-Gm-Message-State: AOJu0YytjwDFOnKdX2oPNwiZfwFdXJIFZGILKxlxGFerQqPpMEE8+KGs
+	tURD/xT70+1MT0EAef79sm1QCK4/ghwIjA==
+X-Google-Smtp-Source: AGHT+IE8Rv7TALy6QHOmV7wneFYPZJqN4DYMVXyzwYotmqd3ln8eAYgtdWF5rpaj14WiTEjiCunTIQ==
+X-Received: by 2002:a17:907:c24d:b0:a2e:49a4:fabe with SMTP id tj13-20020a170907c24d00b00a2e49a4fabemr138108ejc.16.1705342834090;
+        Mon, 15 Jan 2024 10:20:34 -0800 (PST)
+Received: from krzk-bin.. ([178.197.215.66])
+        by smtp.gmail.com with ESMTPSA id n11-20020a170906118b00b00a2bd02d5f7asm5591970eja.148.2024.01.15.10.20.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 15 Jan 2024 10:20:33 -0800 (PST)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Tinghan Shen <tinghan.shen@mediatek.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Bhupesh Sharma <bhupesh.sharma@linaro.org>,
+	linux-remoteproc@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH] dt-bindings: remoteproc: do not override firmware-name $ref
+Date: Mon, 15 Jan 2024 19:20:31 +0100
+Message-Id: <20240115182031.1610088-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="wJ/jLXk4vNiM6iYD"
-Content-Disposition: inline
-In-Reply-To: <5eaccb10853215a6399759a715d2f0356782bac9.camel@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240115_092307_525028_60646EE8 
-X-CRM114-Status: GOOD (  58.52  )
+X-CRM114-CacheID: sfid-20240115_102036_565108_7D7B8C0A 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,218 +103,178 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+dtschema package defines firmware-name as string-array, so individual
+bindings should not make it a string but instead just narrow the number
+of expected firmware file names.
 
---wJ/jLXk4vNiM6iYD
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml     | 4 ++--
+ .../devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml       | 2 +-
+ .../devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml       | 2 +-
+ .../devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml  | 2 +-
+ .../devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml      | 2 +-
+ .../devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml       | 2 +-
+ .../devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml       | 2 +-
+ .../devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml       | 2 +-
+ .../devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml       | 2 +-
+ .../devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml       | 2 +-
+ .../devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml        | 2 +-
+ 11 files changed, 12 insertions(+), 12 deletions(-)
 
-On Fri, Jan 12, 2024 at 07:44:13AM +0000, Jason-JH Lin (=E6=9E=97=E7=9D=BF=
-=E7=A5=A5) wrote:
-> On Thu, 2024-01-11 at 17:31 +0000, Conor Dooley wrote:
-> > On Wed, Jan 10, 2024 at 04:36:20PM +0000, Jason-JH Lin (=E6=9E=97=E7=9D=
-=BF=E7=A5=A5) wrote:
-> > > Hi Conor,
-> > >=20
-> > > Thanks for the reviews.
-> > >=20
-> > > On Wed, 2024-01-10 at 10:36 +0000, Conor Dooley wrote:
-> > > > On Wed, Jan 10, 2024 at 02:35:30PM +0800, Jason-JH.Lin wrote:
-> > > > > 1. Add "Provider" to the title to make it clearer.
-> > > > > 2. Add reference to gce-props.yaml for adding mediatek,gce-
-> > > > > events
-> > > > > property.
-> > > >=20
-> > > > I can see this from the diff. There's still no explanation here
-> > > > as to
-> > > > why the mailbox provider needs to have a gce-event id. NAK until
-> > > > you
-> > > > can
-> > > > explain that.
-> > > >=20
-> > >=20
-> > > Sorry for missing the reason in commit message, I'll add it in the
-> > > next
-> > > version.
-> > >=20
-> > > There are 2 reasons why the mailbox provider needs gce-events:
-> > > 1. The mailbox provider here is CMDQ mailbox driver. It configures
-> > > GCE
-> > > hardware register by CPU directly. If we want to set the default
-> > > value
-> > > from 0 to 1 for specific gce-events during the initialization of
-> > > CMDQ
-> > > driver. We need to tell CMDQ driver what gce-events need to be set
-> > > and
-> > > I think such GCE hardware setting can get from its device node.
-> >=20
-> > Why would someone want to set it to 1 or 0?
->=20
-> GCE HW have an event table in SRAM. Each event ID has a boolean event
-> value and the default value is 0. There are 1024 event IDs (0~1023) in
-> the event table. The mediatek,gce-events is the property to get the
-> event IDs.
->=20
-> E.g.
-> In some camera suspend/resume use cases, the may set the event ID: 100
-> to 1 before suspend. When CMDQ driver resumes, all the event value of
-> event IDs will be clear to 0. But camera driver won't know the event
-> IDs:100 has been cleared to 0 and still send a cmd to wait for the
-> event ID:100. So CMDQ driver may need to keep the value of event ID:
-> 100 before suspend and set back the value to 1 after CMDQ driver
-> clearing all the event value of event IDs.
->=20
-> CMDQ driver will need to know which event IDs' values need to be
-> backupped and restored in that camera suspend/resume use case.
+diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+index 09102dda4942..507f98f73d23 100644
+--- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+@@ -47,7 +47,7 @@ properties:
+     maxItems: 1
+ 
+   firmware-name:
+-    $ref: /schemas/types.yaml#/definitions/string
++    maxItems: 1
+     description:
+       If present, name (or relative path) of the file within the
+       firmware search path containing the firmware image used when
+@@ -115,7 +115,7 @@ patternProperties:
+         maxItems: 1
+ 
+       firmware-name:
+-        $ref: /schemas/types.yaml#/definitions/string
++        maxItems: 1
+         description:
+           If present, name (or relative path) of the file within the
+           firmware search path containing the firmware image used when
+diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml
+index eb868a7ff4cd..ad45fd00ae34 100644
+--- a/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml
+@@ -46,7 +46,7 @@ properties:
+     description: Reference to the reserved-memory for the Hexagon core
+ 
+   firmware-name:
+-    $ref: /schemas/types.yaml#/definitions/string
++    maxItems: 1
+     description: Firmware name for the Hexagon core
+ 
+ required:
+diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml
+index c054b84fdcd5..66b455d0a8e3 100644
+--- a/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml
+@@ -45,7 +45,7 @@ properties:
+   smd-edge: false
+ 
+   firmware-name:
+-    $ref: /schemas/types.yaml#/definitions/string
++    maxItems: 1
+     description: Firmware name for the Hexagon core
+ 
+ required:
+diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml
+index b6bd33438584..9381c7022ff4 100644
+--- a/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml
+@@ -80,7 +80,7 @@ properties:
+     description: Reference to the reserved-memory for the Hexagon core
+ 
+   firmware-name:
+-    $ref: /schemas/types.yaml#/definitions/string
++    maxItems: 1
+     description:
+       The name of the firmware which should be loaded for this remote
+       processor.
+diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml
+index 4744a37b2b5d..45ee9fbe0966 100644
+--- a/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml
+@@ -42,7 +42,7 @@ properties:
+     description: Reference to the reserved-memory for the Hexagon core
+ 
+   firmware-name:
+-    $ref: /schemas/types.yaml#/definitions/string
++    maxItems: 1
+     description: Firmware name for the Hexagon core
+ 
+ required:
+diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml
+index 028287235912..758adb06c8dd 100644
+--- a/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml
+@@ -47,7 +47,7 @@ properties:
+   smd-edge: false
+ 
+   firmware-name:
+-    $ref: /schemas/types.yaml#/definitions/string
++    maxItems: 1
+     description: Firmware name for the Hexagon core
+ 
+ required:
+diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml
+index f7e40fb166da..c1a3cc308bdb 100644
+--- a/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml
+@@ -42,7 +42,7 @@ properties:
+   smd-edge: false
+ 
+   firmware-name:
+-    $ref: /schemas/types.yaml#/definitions/string
++    maxItems: 1
+     description: Firmware name for the Hexagon core
+ 
+ required:
+diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml
+index 3e4a03eb4532..7286b2baa19f 100644
+--- a/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml
+@@ -36,7 +36,7 @@ properties:
+     description: Reference to the reserved-memory for the Hexagon core
+ 
+   firmware-name:
+-    $ref: /schemas/types.yaml#/definitions/string
++    maxItems: 1
+     description: Firmware name for the Hexagon core
+ 
+   smd-edge: false
+diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml
+index 238c6e5e67c5..d67386c50fa4 100644
+--- a/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml
+@@ -46,7 +46,7 @@ properties:
+   smd-edge: false
+ 
+   firmware-name:
+-    $ref: /schemas/types.yaml#/definitions/string
++    maxItems: 1
+     description: Firmware name for the Hexagon core
+ 
+ required:
+diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml
+index 53cea8e53a31..4b9fb74fb9e9 100644
+--- a/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml
+@@ -47,7 +47,7 @@ properties:
+     description: Reference to the reserved-memory for the Hexagon core
+ 
+   firmware-name:
+-    $ref: /schemas/types.yaml#/definitions/string
++    maxItems: 1
+     description: Firmware name for the Hexagon core
+ 
+ required:
+diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml
+index 45eb42bd3c2c..8e033b22d28c 100644
+--- a/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml
+@@ -51,7 +51,7 @@ properties:
+       - const: stop-ack
+ 
+   firmware-name:
+-    $ref: /schemas/types.yaml#/definitions/string
++    maxItems: 1
+     description:
+       Relative firmware image path for the WCNSS core. Defaults to
+       "wcnss.mdt".
+-- 
+2.34.1
 
-Unfortunately "some use case" doesn't really help me here, it is hard
-for me to tell whether these use cases are software policy or an
-attribute of the hardware. If I had the same exact camera but was using
-it for a different reason, might I set it to 1 before suspend in one
-case but not in the other?
-
-I also don't really understand how having this property helps in this
-case either. If a camera is a mailbox consumer, it should have a
-gce-event property for the event ID that it is using in its node.
-
-Why is that not sufficient and a gce-event also needs to be present in
-the consumer node? It seems to me like having it in the consumer alone
-should be sufficient, and the registration process would inform the
-mailbox provider driver which gce-event ID was being used by the camera.
-
->=20
-> > At what level will that vary? Per SoC? Per board? Something else?
-> >=20
->=20
-> I think the SoC supports camera feature may need this property.
->=20
-> > > 2. We'll have the secure CMDQ mailbox driver in the future patch
-> > > [1].
-> > > It will request or reserve a mailbox channel, which is a dedicate
-> > > GCE
-> > > thread, as a secure IRQ handler. This GCE thread executes a looping
-> > > instruction set that keeps waiting for the gce-event set from
-> > > another
-> > > GCE thread in the secure world. So we also need to tell the CMDQ
-> > > driver
-> > > what gce-event need to be waited.
-> >=20
-> > Ditto here, what level does this vary at? Do different SoCs or
-> > different
-> > boards/platforms dictate the value?
->=20
-> It's a SoC level, the SoC supports secure feature will need this
-> property.
->=20
-> > Could this channel be determined from the soc-specific compatible?
-> >=20
-> > In other words, please explain in your commit message why this
-> > requires
-> > a property and is not detectable from any existing mechanism. From
-> > reading this I don't know what is preventing the secure mailbox
-> > channel
-> > from picking a "random" unused channel.
->=20
-> The secure channel could be dedicated from the soc-specific compatible,
-> but the event ID couldn't.
->=20
-> The same event signal corresponding event ID may changes in different
-> SoC.
-> E.g.
-> The HW event signal for CMDQ_EVENT_VDO0_MUTEX_STREAM_DONE_0 is
-> corresponding to GCE event ID: 574 in MT8188, but it's corresponding to
-> eventID: 597 in MT8195.
-
-Is it always 574 in MT8188 and always 597 in MT8195?
-
-Thanks,
-Conor.
-
-> I can take any of the "unused" mailbox channel for the secure irq
-> handler. But without the property mediatek,gce-events, the secure
-> channel might not know what event ID to wait for.
->=20
-> Regards,
-> Jason-JH.Lin
-> >=20
-> > Thanks,
-> > Conor.
-> >=20
-> > > [1] cmdq_sec_irq_notify_start() is where the GCE thread is
-> > > requested to
-> > > prepare a looping instruction set to wait for the gce-event.
-> > > -=20
-> > >=20
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20231222045228.=
-27826-9-jason-jh.lin@mediatek.com/
-> > >=20
-> > > Regards,
-> > > Jason-JH.Lin
-> > >=20
-> > > > Cheers,
-> > > > Conor.
-> > > >=20
-> > > > >=20
-> > > > > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> > > > > ---
-> > > > >  .../devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml   |
-> > > > > 6
-> > > > > ++++--
-> > > > >  1 file changed, 4 insertions(+), 2 deletions(-)
-> > > > >=20
-> > > > > diff --git
-> > > > > a/Documentation/devicetree/bindings/mailbox/mediatek,gce-
-> > > > > mailbox.yaml
-> > > > > b/Documentation/devicetree/bindings/mailbox/mediatek,gce-
-> > > > > mailbox.yaml
-> > > > > index cef9d7601398..728dc93117a6 100644
-> > > > > --- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-
-> > > > > mailbox.yaml
-> > > > > +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-
-> > > > > mailbox.yaml
-> > > > > @@ -4,7 +4,7 @@
-> > > > >  $id:=20
-> > > > >=20
-> http://devicetree.org/schemas/mailbox/mediatek,gce-mailbox.yaml#
-> > > > >  $schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > > > =20
-> > > > > -title: Mediatek Global Command Engine Mailbox
-> > > > > +title: MediaTek Global Command Engine Mailbox Provider
-> > > > > =20
-> > > > >  maintainers:
-> > > > >    - Houlong Wei <houlong.wei@mediatek.com>
-> > > > > @@ -57,6 +57,8 @@ required:
-> > > > >    - clocks
-> > > > > =20
-> > > > >  allOf:
-> > > > > +  - $ref: mediatek,gce-props.yaml
-> > > > > +
-> > > > >    - if:
-> > > > >        not:
-> > > > >          properties:
-> > > > > @@ -67,7 +69,7 @@ allOf:
-> > > > >        required:
-> > > > >          - clock-names
-> > > > > =20
-> > > > > -additionalProperties: false
-> > > > > +unevaluatedProperties: false
-> > > > > =20
-> > > > >  examples:
-> > > > >    - |
-> > > > > --=20
-> > > > > 2.18.0
-> > > > >=20
-
---wJ/jLXk4vNiM6iYD
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZaVp9AAKCRB4tDGHoIJi
-0ucwAQDQ7iL6IxT5xeFFIgZmy1d8nErCc0ODiz9/qpKRG8QSgwEAuWPzmOA6EYym
-kg59jObX1MP438/COfKD75/g+zMofww=
-=x6aM
------END PGP SIGNATURE-----
-
---wJ/jLXk4vNiM6iYD--
 
