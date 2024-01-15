@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05F5BC3DA79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jan 2024 21:37:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E3DBC3DA79
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jan 2024 21:42:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bpZXuxTCll8YyBXk7ascc8Zs2wHnoSmMilYdgRpGMyg=; b=GBG4DZT9mP130xJhQziOyya/fB
-	HBpYWZsnHt46LStH47FK+uTTZhT2Je42+IBdwBDpk3rR+gDIs66jjL4xqssPH3Q7BHQX2Kih2Kfsm
-	WDkWSzfiLvo66k4G5InIXM/prmn9Pj6bW8Aqb80rlnsi5Yyv8XVHisvlirtDO64sPl1BrYGR17a9J
-	+6lDIzwK/nwK18/STfR+8nVoyZPo7EIjMycTr6Zormsycoqc90uAH035/ZOqVzdWj5Ka+XD7ycLHl
-	SahDPgYRgyboCB5hR427JYnxS8nJ+2AlwlPzu/VRESrPkZE/iedkE8dYOj8rqunlUylj9aJhhnJcb
-	/S30tLnw==;
+	bh=55NEIJBXCpIIIZWtPRCLfdLr/foh8lYBwfef4urHTYE=; b=u8i815A6xqhHgniA7vBtcJVgFu
+	/+eRKmSrHpKinCLTEr5CcxWiuWg83O5OS8WNnnrtaHAbw249clCBQj2Q2SnQyexm16yVDmu6Lo5Fc
+	rn92X0R4+knmqLo4oETNTcVPK98+CyvbG0garUCRhrAm8wSmEeo/PjDyv+aPQcfjc/r9KA+OLywLw
+	X6nvr3R66GwEJG5C/Yff4H2ijEkWHNBrJam3Fh7JyOZHA2Ml6bChnKiF1WkuZEHNrKW+FTvZg86NR
+	7Y2VMJeexLrwyHAJ6BqX0KlrBtCiwSe2CJvccMcU6drriPoIag2tP3I/27UC8Zs/bq29zKeJP0mY0
+	AYmw8jXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPUe8-00AEf4-2R;
-	Mon, 15 Jan 2024 21:37:28 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1rPUjG-00AF0h-31;
+	Mon, 15 Jan 2024 21:42:46 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPUe5-00AEeb-1m;
-	Mon, 15 Jan 2024 21:37:26 +0000
-Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-a28da6285c1so1650139466b.0;
-        Mon, 15 Jan 2024 13:37:24 -0800 (PST)
+	id 1rPUjD-00AF0B-2h;
+	Mon, 15 Jan 2024 21:42:45 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a28b1095064so1029431566b.2;
+        Mon, 15 Jan 2024 13:42:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1705354643; x=1705959443; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1705354961; x=1705959761; darn=lists.infradead.org;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=bpZXuxTCll8YyBXk7ascc8Zs2wHnoSmMilYdgRpGMyg=;
-        b=hRwj1vrIoVSuqJf0F0BnmQhjlGjsG4V04a9xvBY2je8KdzukhnNPI2W3vNpBGkJ64S
-         o2jgbSk7tjb1WUK8EmQXCvOd6YlB8okKu3lozJ4QzdmNBDDNanra7D0oKPsiLWHjlgM1
-         r6HVEVXsVyXgBXjjxvMDiSlcUKxvJLyBsjECyxR/2cavDdmPCi/jrigpIoTdPyy5AGni
-         orpEIliwS8lUybDBgb4cxxL+6eFI4zvgjPuMIdnE1+eh5a6g/GRSzxmRgxrJnT5L9uyQ
-         dq1P6GFwd+l90rzlZsYzd6LmgTY+QEwtFm0cdaWWc/bkBhbEKqKjyO4JcdATUwIMJFVg
-         wsaA==
+        bh=55NEIJBXCpIIIZWtPRCLfdLr/foh8lYBwfef4urHTYE=;
+        b=lr92D2bVPoSvz1Uh6FgEbjLQnXnHukR/Y5FGogE4vhA4dyDYmX9OXCbM3Srt1HirIQ
+         uXcdlR0HelFF1K0WxxoBCU99kG5lrZF9YkUXEgHeT4OS8Uj1si7XTSk9ZDDcT1G1Ejom
+         nUwteSkIe4icplV6E6ucADg8+mA4nhmvQnVeq52bIpSB2HbpFuf2NzPxVDNvI/UQhtiX
+         7ALmbHznfpQZuh3u8fETUZ0bhQWw09DJtmsRzMv0UcCHIBYnW3O2LVKlKsw5p/P2Eiu/
+         G7eHHE0ocWU96b2z3pzXDy/WbvF/mbPvLDmsrUBkMYj6YoZPn1A5c0WM4EwhHcvV8A95
+         hvsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705354643; x=1705959443;
+        d=1e100.net; s=20230601; t=1705354961; x=1705959761;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=bpZXuxTCll8YyBXk7ascc8Zs2wHnoSmMilYdgRpGMyg=;
-        b=qxQeGleZqpZTyBxGpam/DOtOIE7mkd+tdzf71SAr9MydL//TKQWlzS5mKrjxcqeRuq
-         xb4jFg3gXAL8da2N2x6erl5QWi+zPBGnNl9ZBQ+uybl42kjE4dY/7Grk6CVKb748T46B
-         6TgW2RmcxHudRAc4r41J6Q4JAFia2YlDIJi7tixZOXSAHin/yzSb61ml8dCTavO1zalG
-         N2A/PlNrNgqDGSFYXxfVzezwVnC8yyWs/p703pLkOGCS3wFj5aPPkNwxxZTqEmCOeKI+
-         oexm/JM1SwTsd6ckXGHXipTEwkN1jMKsCYFsLF5W5IAfVWlOAYsGcCrMvaIq7slb04RH
-         d9og==
-X-Gm-Message-State: AOJu0Ywt1V/OcrA7YWBaxp+yX5RAI7YfjobN/ipZrd0yQyapaPt8Yh85
-	GOyAFEG3JckNDnUQfsvMQrY=
-X-Google-Smtp-Source: AGHT+IE10fMtaUsiAYNb4EjOpfYRAmVcn8WrWtsDg/nQyoNok54YoiMAF7YZfJtVLHXZAjFBrmuKEQ==
-X-Received: by 2002:a17:906:bf47:b0:a2c:f62d:a598 with SMTP id ps7-20020a170906bf4700b00a2cf62da598mr6138308ejb.0.1705354642880;
-        Mon, 15 Jan 2024 13:37:22 -0800 (PST)
+        bh=55NEIJBXCpIIIZWtPRCLfdLr/foh8lYBwfef4urHTYE=;
+        b=SzTwrKk7f8211efWDQMMVEbb4AhACYlVRyjOL5/QHmdoOJ7rfB7rL2uXiulaEuwcHZ
+         1j6MuY5WhT+ehGadQ0io1k5hb/uj5hpCPEOYlaeIMOHExCYCbO1IGW6bImHiV0apZG8j
+         adeG6lK/BrtvUQS7cadksgmup8zSzgobxWQRfV3p6Skm/UthfqElKNN2MV5Lc+mNIev1
+         vwQyw3+6ZZkz+/DvP26gAub7Dbe0OOQX5aYdvZviNMLB3Vy8zpcXVMHzjSvFKesC5wmW
+         dodgfHcvZdomBC6MNFp9lOaK/eWiCCoz6yFY/5bExeXaEPGuNPDYawW+CDmQAMr7sKnX
+         f+4A==
+X-Gm-Message-State: AOJu0Ywd1iHgPDhozLc2PcfQW5Vg2SJ/EwuVi9rQEuS/bI6bQcnt+MhW
+	QUMhr+fpB/3uKoR2ti6SpxA=
+X-Google-Smtp-Source: AGHT+IFVXESXnZ5hXNPi66V18lKI+85ApHMSsnxuhoou/MRvRXnGDbW8FPlG037wrslaHLypJx/8dQ==
+X-Received: by 2002:a17:906:d044:b0:a28:1916:6cc9 with SMTP id bo4-20020a170906d04400b00a2819166cc9mr1609989ejb.270.1705354961355;
+        Mon, 15 Jan 2024 13:42:41 -0800 (PST)
 Received: from skbuf ([188.25.255.36])
-        by smtp.gmail.com with ESMTPSA id c17-20020a170906695100b00a26e53be089sm5690286ejs.44.2024.01.15.13.37.21
+        by smtp.gmail.com with ESMTPSA id kw7-20020a170907770700b00a29dcbe1e72sm5693853ejc.56.2024.01.15.13.42.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jan 2024 13:37:22 -0800 (PST)
-Date: Mon, 15 Jan 2024 23:37:20 +0200
+        Mon, 15 Jan 2024 13:42:41 -0800 (PST)
+Date: Mon, 15 Jan 2024 23:42:38 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
 To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 Cc: Daniel Golle <daniel@makrotopia.org>,
@@ -79,19 +79,19 @@ Cc: Daniel Golle <daniel@makrotopia.org>,
 	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [RFC PATCH net-next 6/8] net: dsa: mt7530: simplify
- mt7530_setup_port6() and change to void
-Message-ID: <20240115213720.vxlumsjwrjdkqxsl@skbuf>
+Subject: Re: [RFC PATCH net-next 7/8] net: dsa: mt7530: correct port
+ capabilities of MT7988
+Message-ID: <20240115214238.bnlvomatududng6l@skbuf>
 References: <20240113102529.80371-1-arinc.unal@arinc9.com>
- <20240113102529.80371-7-arinc.unal@arinc9.com>
+ <20240113102529.80371-8-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240113102529.80371-7-arinc.unal@arinc9.com>
+In-Reply-To: <20240113102529.80371-8-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240115_133725_597222_197DB558 
-X-CRM114-Status: GOOD (  18.42  )
+X-CRM114-CacheID: sfid-20240115_134243_900677_736AB9C8 
+X-CRM114-Status: GOOD (  11.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,43 +106,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jan 13, 2024 at 01:25:27PM +0300, Arınç ÜNAL wrote:
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 3ce4e0bb04dd..3a02308763ca 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -414,72 +414,56 @@ mt753x_preferred_default_local_cpu_port(struct dsa_switch *ds)
->  }
->  
->  /* Setup port 6 interface mode and TRGMII TX circuit */
-> -static int
-> +static void
->  mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
->  {
->  	struct mt7530_priv *priv = ds->priv;
-> -	u32 ncpo1, ssc_delta, trgint, xtal;
-> +	u32 ncpo1, ssc_delta, xtal;
->  
->  	mt7530_clear(priv, MT7530_MHWTRAP, MHWTRAP_P6_DIS);
->  
-> +	if (interface == PHY_INTERFACE_MODE_RGMII)
-> +		return;
+On Sat, Jan 13, 2024 at 01:25:28PM +0300, Arınç ÜNAL wrote:
+> On the switch on the MT7988 SoC, there are only 4 PHYs. That's port 0 to 3.
+> Set the internal phy cases to '0 ... 3'.
+> 
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> Acked-by: Daniel Golle <daniel@makrotopia.org>
+> ---
 
-It would be good to add a comment here which states that the port comes
-out of reset with values good for RGMII.
-
-Also, there's a built-in assumption in this patch, that dynamically
-switching between RGMII and TRGMII is not possible. This is because
-phylink mac_config() is not necesarily called only once immediately
-after reset, but after each major_config().
-
-The fact that the driver sets both PHY_INTERFACE_MODE_RGMII and
-PHY_INTERFACE_MODE_TRGMII at once in config->supported_interfaces does
-not disprove that dynamic reconfiguration is possible. Normally,
-interfaces for which it doesn't make sense to dynamically reconfigure
-(they are wired to fixed pinout) have a single bit set in
-supported_interfaces. Is this switching something that makes any sense
-at all, given that port 6 is internal? It's not something that phylink
-knows to do today, but if this is theoretically possible and remotely
-useful, someone might end up wanting, in the future, to revert this patch.
+For this patch to be obviously correct, please make a statement in the
+commit message about port 4. It doesn't exist at all?
 
