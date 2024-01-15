@@ -4,74 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90ECAC3DA79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jan 2024 11:06:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA03AC3DA79
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jan 2024 11:19:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A626LluLqavc8Rba7QE8gq+rDsxDvpizm68IdXwWAE8=; b=yJVonQXM8jYX8Z/me1sZVtmo1H
-	gGuJOzkGBP8zHl2QatdodLGRi+mDPVSinAUTHe4r3eBZqiJ3089BNVZwdzdTtcotisMiJrmkwBBiM
-	tPgOar5oDI+TtOzInGTgNFdRuTxkj0K0za46NJSh1XlhNYpuLQRk3JnQE8CoJxS4TLI5pGAWBo25a
-	TTI+SN7idsCJetwe/uZ5vsdRd8CUeW89r8KqICXx1ybeDqoqzwuqIKmtfRkXrA03f9THvWh12UsZO
-	IIVPE9qt3VfDZv6vDPbQbijhWKJGVTf6YAasJldTkEm/RuOrZr8Iv2Faqakwq0ZVGNyn3qjCvAyqU
-	aHGoKzcg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JL8etJQJZZlxR7+amaW8doF71Tvptr0HhTmq5ofDFk8=; b=NSJuMAnlxNtHH2/6pY5xJGymz9
+	gt4yCBm6ncPk+GTtKkex5fl7osjJ7AwqwkubgKueTIHF8yBj515rOOtEYNno3veknU/u4vCTKjaMI
+	+BBxRPJ5Ody9lvTs+eXNWyDSKqZtXiS1C7PNvdt6X3VfWJdzU9CTErq7gArX/UUbQKonypPwK/db7
+	J69cYxH/H0X7zzMDtZqDhFLJGpmwh8P8rw2nV00gsVhXJdQY6tD7lgbQ4BcaYFUKCKtsl/+N6+5mv
+	/rPfFmKyT84yUL5fxbuISJAk6VWn6o/+qRSZ6pJvWUISXv3kgSXAhZY6zU3n77dNmt6sJVd3n08mh
+	x9Dj1vvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPKnX-008dmp-1R;
-	Mon, 15 Jan 2024 11:06:31 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rPKzb-008f8B-2Z;
+	Mon, 15 Jan 2024 11:18:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPKnU-008dlo-0k;
-	Mon, 15 Jan 2024 11:06:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705316784;
-	bh=9McWAV60PkhZi7zD5efm3VtPNye+yEcAzKdSklegtGg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BrASkF+HM2Gm7Wsa52sDK8N9HzfyyrdcZxgzb42a/CyxwcT2wUo9E+pQdDnc9Cn4b
-	 Rdc+Ajh+t8fQH/aPj2vvCSsFvsk+knr+fDDupQ30g+kf3iktme0u3B77VWK9FQku+A
-	 rFjz1wbp8RJHLUrljs90IBQmOQh/hMYW+FCBQbrOfD+95GLrwz6+Bd/bBR0RCaXVf7
-	 SiOpewF/4s7ZnjYHWvkfgfCWaVbXlareuQxg1VJScbj/pKDlax2SByf4jA0AJSiu/b
-	 5V4MLbyCwlpb92VXdI1DQLPCAqYQTS2Ujv7/a3in5QPR08c+G9ow0WUMxBwzkzJhuN
-	 Hh5Zwaj6/cgow==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0FACE378134F;
-	Mon, 15 Jan 2024 11:06:22 +0000 (UTC)
-Message-ID: <2b28421b-d3a9-46f5-a60e-bed84191c9f8@collabora.com>
-Date: Mon, 15 Jan 2024 12:06:22 +0100
+	id 1rPKzY-008f6h-2l;
+	Mon, 15 Jan 2024 11:18:58 +0000
+X-UUID: db6dfc7eb39711ee9a662f17bb45267e-20240115
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Reply-To:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=JL8etJQJZZlxR7+amaW8doF71Tvptr0HhTmq5ofDFk8=;
+	b=nFX2iE/IKpTCVXvJp5icHv94H4aX+ShCfcbswSgJqxTuISdW3CwT63nnRbNYXctXien316BRp6mEwdGvdHsgcKcXkxhqz30Hafn19BHT1CqhdWwDXLfANehcYD1YdAwxGWSOvW17VBijJk0GoUYbt0BLakyh0uArgBnKMcW7y50=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35,REQID:21600bb7-5259-4548-a14c-fac3415c0825,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5d391d7,CLOUDID:dccc2e2f-1ab8-4133-9780-81938111c800,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: db6dfc7eb39711ee9a662f17bb45267e-20240115
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <yu-chang.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 941927661; Mon, 15 Jan 2024 04:18:49 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 15 Jan 2024 19:18:46 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 15 Jan 2024 19:18:46 +0800
+From: yu-chang.lee <yu-chang.lee@mediatek.com>
+To: <msp@baylibre.com>
+CC: Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <linux-pm@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <fparent@baylibre.com>, Ben Lok
+	<ben.lok@mediatek.com>, Chris-qj Chen <Chris-qj.Chen@mediatek.com>, Louis Yu
+	<louis.yu@mediatek.com>, Bear Wang <bear.wang@mediatek.com>, MandyJH Liu
+	<MandyJH.Liu@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, Xiufeng Li
+	<Xiufeng.Li@mediatek.com>, <abailon@baylibre.com>, <amergnat@baylibre.com>,
+	<afgros@baylibre.com>, yu-chang.lee <yu-chang.lee@mediatek.com>
+Subject: [PATCH 0/1] Need help to validate power domain driver modification on mt8365
+Date: Mon, 15 Jan 2024 19:18:43 +0800
+Message-ID: <20240115111844.22240-1-yu-chang.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <Need help to validate power domain driver modification on mt8365>
+References: <Need help to validate power domain driver modification on mt8365>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/8] Add MT8195 HDMI support
-Content-Language: en-US
-To: Guillaume Ranquet <granquet@baylibre.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
- Jitao shi <jitao.shi@mediatek.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, mac.shen@mediatek.com,
- stuart.lee@mediatek.com
-References: <20220919-v4-0-687f09a06dd9@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220919-v4-0-687f09a06dd9@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--5.523200-8.000000
+X-TMASE-MatchedRID: fXkh6SfpfhtM4VjZ76ar2IQ6iEG+7EHnQKuv8uQBDjos7eP5cPCWQxLB
+	HER/v45pa888eHP8TjxdPJV7o2tMJaLCTO1UKypvbQ9aoPSmWJFKPIx+MJF9o5soi2XrUn/JlR1
+	cT9YafQUG3jF6chFcDnS4vQrt84k3IAcCikR3vq/Yh98d0MMCXCdiKF9WF8aIyjYtBKCN99W//3
+	PsX06R2V2kuxS4dcf0
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--5.523200-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 5D51DBEE3B8543E096065A55E9CD6ACC2AC7770FC9861491344DB8422BAE874B2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240115_030628_401075_C89E9E5A 
-X-CRM114-Status: GOOD (  27.11  )
+X-CRM114-CacheID: sfid-20240115_031856_914891_42317BB9 
+X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,102 +100,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: msp@baylibre.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/05/23 16:30, Guillaume Ranquet ha scritto:
-> Add support for HDMI Tx on MT8195.
-> 
-> This includes a split of the current "legacy" hdmi driver into a common
-> library of functions and two dedicated compilation units with specific
-> code for mt8167 and another for the "v2" mt8195 SoC.
-> 
-> Support for the new mt8195 dpi/drm_drv adjustments to support hdmi.
-> 
-> Based on next-20230523
-> 
-> Still in my TODO-list for v5:
+Hi Markus,
 
-Hello,
-sorry for bumping a year old topic; are you still interested in upstreaming this?
+In reply to mail "Need help to validate power domain driver modification on
+mt8365", the timing of "smi clamp protection" being called is completely 
+different from the one of "bus protection" that is why I think there should
+be another member represent "smi clamp protection" since these are 
+different thing essentially. In this way we match smi to its protection
+in an 1 to 1 manner which is more direct way to support multiple smi I
+think.
 
-Cheers,
-Angelo
+By adding "scpsys_clamp_bus_protection_enable" at the end of bus protection
+function we also can guarantee bus protection still remain the same as
+before, while, at the same time, forcing bus protection sequence in the
+future.
 
-> 
-> - Removal of the 'is_internal_hdmi' flag in mtk_dpi. [1]
->      I Couldn't find a way to get rid of it with the way things are done
->      in mtk_drm_drv/mtk_ddp_comp.
-> - Do not use a "virtual" device for the ddc v2 hw as it is embedded in
->    the hdmi IP. [2]
->      Seems that a lot of work is done by the framework when using a
->      proper device-tree entry that can be linked as the ddc-i2c-bus of
->      the hdmi-connector.
->      I will keep the virtual device unless I find a way to avoid
->      rewriting the framework code that handles this.
-> 
-> [1] : https://lore.kernel.org/all/988b0a7a-69bb-34e4-e777-1d9516221077@collabora.com/
-> [2] : https://lore.kernel.org/all/7da1e73a0cca6867a060d5b69d45e8d4dfc89748.camel@mediatek.com/
-> 
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> ---
-> 
-> Changes in v4:
-> - Split phy related patches to another series (merged)
-> - Removed regmap wrappers in mtk_hdmi
-> - Removed colorimetry related changes as this initial version only
->    support one color depth
-> - Fixed dt-bindings properties
-> - Removed some now useless clocks from mtk_hdmi_v2 and mtk_dpi
-> - Link to v3: https://lore.kernel.org/r/20220919-v3-0-a803f2660127@baylibre.com
-> 
-> Changes in v3:
-> - phy: Grouped register and bit definition together to add clarity
-> - dt-bindings: Addressed comments
-> - Link to v2: https://lore.kernel.org/r/20220919-v2-0-8419dcf4f09d@baylibre.com
-> 
-> Changes in v2:
-> - Removed syscon requirement from the hdmi node
-> - Use as much as possible bit FIELD_PREP/FIELD_GET macros across all the
->    patches
-> - Make cec optional dynamically instead of hardcoded with a flag
-> - Renamed hdmi variants to v1 (legacy) and v2 (mt8195) while waiting for
->    a better name
-> - Rework hdmi v2 code to use a connector (same as v1)
-> - Remove "magic" 0x43 addr special handling in hdmi ddc code
-> - Link to v1: https://lore.kernel.org/r/20220919-v1-0-4844816c9808@baylibre.com
-> 
-> ---
-> Guillaume Ranquet (8):
->        dt-bindings: display: mediatek: add MT8195 hdmi bindings
->        drm/mediatek: hdmi: use a regmap instead of iomem
->        drm/mediatek: extract common functions from the mtk hdmi driver
->        drm/mediatek: hdmi: make the cec dev optional
->        drm/mediatek: hdmi: add v2 support
->        drm/mediatek: hdmi: v2: add audio support
->        dt-bindings: display: mediatek: dpi: Add compatible for MediaTek MT8195
->        drm/mediatek: dpi: Add mt8195 hdmi to DPI driver
-> 
->   .../bindings/display/mediatek/mediatek,dpi.yaml    |    1 +
->   .../bindings/display/mediatek/mediatek,hdmi.yaml   |   59 +-
->   .../display/mediatek/mediatek,mt8195-hdmi-ddc.yaml |   45 +
->   drivers/gpu/drm/mediatek/Kconfig                   |    2 +
->   drivers/gpu/drm/mediatek/Makefile                  |    5 +-
->   drivers/gpu/drm/mediatek/mtk_dpi.c                 |  121 +-
->   drivers/gpu/drm/mediatek/mtk_dpi_regs.h            |    5 +
->   drivers/gpu/drm/mediatek/mtk_hdmi.c                |  773 ++----------
->   drivers/gpu/drm/mediatek/mtk_hdmi.h                |   18 +
->   drivers/gpu/drm/mediatek/mtk_hdmi_common.c         |  437 +++++++
->   drivers/gpu/drm/mediatek/mtk_hdmi_common.h         |  208 ++++
->   drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c         |  362 ++++++
->   drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h        |  276 +++++
->   drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             | 1303 ++++++++++++++++++++
->   drivers/gpu/drm/mediatek/mtk_hdmi_v2.h             |   32 +
->   15 files changed, 2955 insertions(+), 692 deletions(-)
-> ---
-> base-commit: c8a64c6a78c54887da437098d97dc2accc689e89
-> change-id: 20220919-hdmi_mtk
-> 
-> Best regards,
+yu-chang.lee (1):
+  soc: mediatek: pm-domains: support clamp protection
+
+ drivers/pmdomain/mediatek/mt8183-pm-domains.h |  52 ++++---
+ drivers/pmdomain/mediatek/mt8188-pm-domains.h |  41 +++++-
+ drivers/pmdomain/mediatek/mt8365-pm-domains.h |  12 +-
+ drivers/pmdomain/mediatek/mtk-pm-domains.c    | 132 +++++++++++++++---
+ drivers/pmdomain/mediatek/mtk-pm-domains.h    |   2 +
+ 5 files changed, 189 insertions(+), 50 deletions(-)
+
+-- 
+2.18.0
 
 
