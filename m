@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E3DBC3DA79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jan 2024 21:42:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F094EC3DA79
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jan 2024 21:46:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=55NEIJBXCpIIIZWtPRCLfdLr/foh8lYBwfef4urHTYE=; b=u8i815A6xqhHgniA7vBtcJVgFu
-	/+eRKmSrHpKinCLTEr5CcxWiuWg83O5OS8WNnnrtaHAbw249clCBQj2Q2SnQyexm16yVDmu6Lo5Fc
-	rn92X0R4+knmqLo4oETNTcVPK98+CyvbG0garUCRhrAm8wSmEeo/PjDyv+aPQcfjc/r9KA+OLywLw
-	X6nvr3R66GwEJG5C/Yff4H2ijEkWHNBrJam3Fh7JyOZHA2Ml6bChnKiF1WkuZEHNrKW+FTvZg86NR
-	7Y2VMJeexLrwyHAJ6BqX0KlrBtCiwSe2CJvccMcU6drriPoIag2tP3I/27UC8Zs/bq29zKeJP0mY0
-	AYmw8jXw==;
+	bh=xLysBvDenEQ28MTHoWPLscX8SqHGcwin+UvlB8fQgMk=; b=cshnySaMvYNGcYWDz5GN7TkJ9H
+	bo1ZqUwsKpPAisykJo8s4SmPAduVhXTJbpJ15j8STt3NsWNwtDYKwyZbSfE2M+u+FB5XARV5OsWJT
+	HwXTWtteO3bLtwT9CemKTtIpSPAiJPSLYlJp14ML7Wez7NPUdiMJAemXazjSbbCXxjqsozaqbKb7+
+	y8ZIsnzSNL/IhUTaPvg+lbyBRrPtTKS5HXc/SEVLUJf68E+4UdxQq0t8oeaChwjk9ZsVSiRuCNvGb
+	6YSBIY2HzizYtCOC8KfvlV7QJdU4Ppq2mGvilIhTfFU5YlEH6Q0MpIupzwHPPQiYvk361FL1+1DcL
+	qLlhK59g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPUjG-00AF0h-31;
-	Mon, 15 Jan 2024 21:42:46 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1rPUn0-00AFTo-2h;
+	Mon, 15 Jan 2024 21:46:38 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPUjD-00AF0B-2h;
-	Mon, 15 Jan 2024 21:42:45 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a28b1095064so1029431566b.2;
-        Mon, 15 Jan 2024 13:42:42 -0800 (PST)
+	id 1rPUmx-00AFTC-03;
+	Mon, 15 Jan 2024 21:46:36 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a28b0207c1dso743942066b.3;
+        Mon, 15 Jan 2024 13:46:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1705354961; x=1705959761; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1705355193; x=1705959993; darn=lists.infradead.org;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=55NEIJBXCpIIIZWtPRCLfdLr/foh8lYBwfef4urHTYE=;
-        b=lr92D2bVPoSvz1Uh6FgEbjLQnXnHukR/Y5FGogE4vhA4dyDYmX9OXCbM3Srt1HirIQ
-         uXcdlR0HelFF1K0WxxoBCU99kG5lrZF9YkUXEgHeT4OS8Uj1si7XTSk9ZDDcT1G1Ejom
-         nUwteSkIe4icplV6E6ucADg8+mA4nhmvQnVeq52bIpSB2HbpFuf2NzPxVDNvI/UQhtiX
-         7ALmbHznfpQZuh3u8fETUZ0bhQWw09DJtmsRzMv0UcCHIBYnW3O2LVKlKsw5p/P2Eiu/
-         G7eHHE0ocWU96b2z3pzXDy/WbvF/mbPvLDmsrUBkMYj6YoZPn1A5c0WM4EwhHcvV8A95
-         hvsA==
+        bh=xLysBvDenEQ28MTHoWPLscX8SqHGcwin+UvlB8fQgMk=;
+        b=RdpTWQhB87Usar7DviGo9GyhzLyFN4MN/sO5T/a0unKqQ2N0T5RGqd8QhsmHWHgmve
+         cGR/ti5dnv78Qsv+YbbhNCfrkw87kJc4gYNdrjxV56FcYOMfeC75KUvry0pn/RYwigwo
+         Tf7PhP63XuR7fNCkl8p9A1Ryggq8uQyIz48rWF/JFAZDd+e4Lh1ipzLi/0zehEeBky9f
+         r8+qykZtpH5NbaLPApj5Zzq6+6tnMkSUUpWVBSiMa0SV0cOzCq06vOhThjd0CEYo4k9o
+         sSLZ6/f3b1Ux16ni60YN0H/LUEm8C3CCEJJS6mEYbnUVXk9DYSqAXkXcHM54WXK8sJAI
+         hZdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705354961; x=1705959761;
+        d=1e100.net; s=20230601; t=1705355193; x=1705959993;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=55NEIJBXCpIIIZWtPRCLfdLr/foh8lYBwfef4urHTYE=;
-        b=SzTwrKk7f8211efWDQMMVEbb4AhACYlVRyjOL5/QHmdoOJ7rfB7rL2uXiulaEuwcHZ
-         1j6MuY5WhT+ehGadQ0io1k5hb/uj5hpCPEOYlaeIMOHExCYCbO1IGW6bImHiV0apZG8j
-         adeG6lK/BrtvUQS7cadksgmup8zSzgobxWQRfV3p6Skm/UthfqElKNN2MV5Lc+mNIev1
-         vwQyw3+6ZZkz+/DvP26gAub7Dbe0OOQX5aYdvZviNMLB3Vy8zpcXVMHzjSvFKesC5wmW
-         dodgfHcvZdomBC6MNFp9lOaK/eWiCCoz6yFY/5bExeXaEPGuNPDYawW+CDmQAMr7sKnX
-         f+4A==
-X-Gm-Message-State: AOJu0Ywd1iHgPDhozLc2PcfQW5Vg2SJ/EwuVi9rQEuS/bI6bQcnt+MhW
-	QUMhr+fpB/3uKoR2ti6SpxA=
-X-Google-Smtp-Source: AGHT+IFVXESXnZ5hXNPi66V18lKI+85ApHMSsnxuhoou/MRvRXnGDbW8FPlG037wrslaHLypJx/8dQ==
-X-Received: by 2002:a17:906:d044:b0:a28:1916:6cc9 with SMTP id bo4-20020a170906d04400b00a2819166cc9mr1609989ejb.270.1705354961355;
-        Mon, 15 Jan 2024 13:42:41 -0800 (PST)
+        bh=xLysBvDenEQ28MTHoWPLscX8SqHGcwin+UvlB8fQgMk=;
+        b=KkZBhzWQUkkMmwGxGg4Rpl/OjTdLmAegq08oUTYlKj2K4UK9UOa6e057hGc+M71TYZ
+         6GqAQH6CXLIafQz9JTss/2xh5l9Rnlt3e1pgghymXdECAJam29YbZUXOan49X3dM9/BL
+         fPr38lDAW4cVoaDDKrtw2sRuRBy6zsqgeCH8Pke4Qai+gLpTLQVVmu+LukwLEPfPc12T
+         iCBKzEPpDXX6Q6+9lKubvPS1duB1PNv57X0MIv6xdDtLVW15tFuLP60XGcKy59u3ykiz
+         ETd/obvre5a569HoFyDfYV/IgFwV+17STEnzigPveyz/Uus8cthJoSvOJoGe4Pi5rEg0
+         PNvg==
+X-Gm-Message-State: AOJu0Yyq8nJdr2Blf/cjKU3RFDfcW7dJ4IyM70wX+Im8hvLJGERn5qBJ
+	1566L2nY7wNf533YGKkbVVs=
+X-Google-Smtp-Source: AGHT+IEidDGhYUK34ndwyOKDjPlSGil8Zv56DjOYyVMr22Hkg7xq0uUI0WZPWjrIOhcsnJb4RGTMXg==
+X-Received: by 2002:a17:907:a689:b0:a2c:e323:b71 with SMTP id vv9-20020a170907a68900b00a2ce3230b71mr2737988ejc.0.1705355192600;
+        Mon, 15 Jan 2024 13:46:32 -0800 (PST)
 Received: from skbuf ([188.25.255.36])
-        by smtp.gmail.com with ESMTPSA id kw7-20020a170907770700b00a29dcbe1e72sm5693853ejc.56.2024.01.15.13.42.40
+        by smtp.gmail.com with ESMTPSA id gw7-20020a170906f14700b00a27741ca951sm5678924ejb.108.2024.01.15.13.46.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jan 2024 13:42:41 -0800 (PST)
-Date: Mon, 15 Jan 2024 23:42:38 +0200
+        Mon, 15 Jan 2024 13:46:32 -0800 (PST)
+Date: Mon, 15 Jan 2024 23:46:29 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
 To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 Cc: Daniel Golle <daniel@makrotopia.org>,
@@ -79,19 +79,19 @@ Cc: Daniel Golle <daniel@makrotopia.org>,
 	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [RFC PATCH net-next 7/8] net: dsa: mt7530: correct port
- capabilities of MT7988
-Message-ID: <20240115214238.bnlvomatududng6l@skbuf>
+Subject: Re: [RFC PATCH net-next 8/8] net: dsa: mt7530: do not clear
+ config->supported_interfaces
+Message-ID: <20240115214629.ncdzoaawmw4gi7rk@skbuf>
 References: <20240113102529.80371-1-arinc.unal@arinc9.com>
- <20240113102529.80371-8-arinc.unal@arinc9.com>
+ <20240113102529.80371-9-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240113102529.80371-8-arinc.unal@arinc9.com>
+In-Reply-To: <20240113102529.80371-9-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240115_134243_900677_736AB9C8 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20240115_134635_075005_5236777B 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,14 +106,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jan 13, 2024 at 01:25:28PM +0300, Arınç ÜNAL wrote:
-> On the switch on the MT7988 SoC, there are only 4 PHYs. That's port 0 to 3.
-> Set the internal phy cases to '0 ... 3'.
+On Sat, Jan 13, 2024 at 01:25:29PM +0300, Arınç ÜNAL wrote:
+> There's no need to clear the config->supported_interfaces bitmap before
+> reporting the supported interfaces as all bits in the bitmap will already
+> be initialized to zero when the phylink_config structure is allocated.
+> There's no code that would change the bitmap beforehand. Remove it.
 > 
 > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 > Acked-by: Daniel Golle <daniel@makrotopia.org>
 > ---
 
-For this patch to be obviously correct, please make a statement in the
-commit message about port 4. It doesn't exist at all?
+Yes, the "config" pointer points to &dp->phylink_config, and "dp" is
+allocated by dsa_port_touch() with kzalloc(), so all its fields are
+filled with zeroes.
+
+Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
 
