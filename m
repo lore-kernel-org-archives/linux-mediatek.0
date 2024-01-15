@@ -4,80 +4,192 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CF13C4707C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jan 2024 11:19:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23C06C4707C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jan 2024 12:18:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xc7EAMbIGGsmYRLz3w7xLff0ZcSw79iBhdskRqlb92s=; b=xlI+hv6bP3wMI+psYlW7yrvFrn
-	MnkT8Bamf19VFYp5TyQzqRo2OahXW1ieNv9edIIyKdKlAhNuPafjBOJabV5a7p0a+8vYI+rJQDcRA
-	jFIfoT8hklvAk/4V2Bbt3ePjOUK8s8OuQ8fjZSIfhkXU/zkF6ORlw0vwuzDAfLcQy/AjOQfw2mJy/
-	Gn6ESYxMd8VREsPwQ5OUCN7+xaSI3g8iIKAKx8+5/3dMonRWBvasz6K9CTPfAJUq1cBIcyw6fXJSU
-	qTx1efG5d/dF9qas05A2NxA4c+OwJEhoDRJijaPv9L9vqTISAWysOSbdBr51+u1Pqv7K38t6ukNTV
-	a9zsDgKA==;
+	bh=+FQlJl4uaiWuOXE0OeowVT80YfNbmLZ6FIgQh01eWNE=; b=3y0ibV/w0gj5R0HVT0mkLpDH3t
+	v+4Qjxmx4qNHuf7gy+DnZQoG3xuDiD7ztvRzMjYbaUOCfTTt8WWJvaZeNA4MLUV2l5pdsmk5q3iMk
+	HuFruE26PKdVrwuJohXM/FRuvZhG1fBJzxL0ScviF+uCfsvChvkGZBOnYvMXfUgPkxHLwYmZIAmMA
+	xZiiANPR38RrAhin8tycYpbdxIhBicYBhsQsc1d/vUuQkFb2bUozpRWq02S3xlz8lP2EBTs2qPm8c
+	uS/QkNwtvgZHDNmE2DoNDoc90rx7wyZYK5iRr8A84QJYv77KyjE6G2B79rJpz+eDlT+79fyiC2hbJ
+	P44a3QTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPL0S-008fEA-09;
-	Mon, 15 Jan 2024 11:19:52 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rPLvd-008t0P-0i;
+	Mon, 15 Jan 2024 12:18:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPL0N-008fD8-1q;
-	Mon, 15 Jan 2024 11:19:49 +0000
-X-UUID: fc013f32b39711ee9a662f17bb45267e-20240115
+	id 1rPLva-008syz-0i
+	for linux-mediatek@lists.infradead.org;
+	Mon, 15 Jan 2024 12:18:56 +0000
+X-UUID: 3becb66eb3a011eeafd70d0b34820190-20240115
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Reply-To:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=xc7EAMbIGGsmYRLz3w7xLff0ZcSw79iBhdskRqlb92s=;
-	b=l/YIStRq4cX5SbnhBWv7pb0dD0ix7eNeS061k4G/T7FtX/8jBCBHMeQ2mB4kdUrxrS+0r+OY6tXghPHN4CCWHIAbWok659sBQJhM+YH/JxhZN5qzfB3kDIFQEOOqhVy2AZL9zFwjfUr4hiH/6CKCNL/r6Du1N0nEjYGANj94mpI=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=+FQlJl4uaiWuOXE0OeowVT80YfNbmLZ6FIgQh01eWNE=;
+	b=DKmutMCKUXwmurZMvCcfuDF6o51TghVvCnIoSKQrFZeJTTDZ+FUEz3+fphxuPD3axNTeZIrVvqlu/dHQiIGB/T5rDqsaiamQKIpS16upE0o2uBSwr32+c+wBv6i290ADXv9TiTop75uVf7rlBfcwnaGwx0vQbhC4oBXZ49iv2hU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.35,REQID:086f2614-0737-422b-974b-4a8dde4f480b,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5d391d7,CLOUDID:c17e448e-e2c0-40b0-a8fe-7c7e47299109,B
+X-CID-O-INFO: VERSION:1.1.35,REQID:dac8c08f-3f6e-48ff-9f27-065d39219a6b,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:5d391d7,CLOUDID:78d4448e-e2c0-40b0-a8fe-7c7e47299109,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: fc013f32b39711ee9a662f17bb45267e-20240115
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <yu-chang.lee@mediatek.com>)
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: 3becb66eb3a011eeafd70d0b34820190-20240115
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <deren.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1091654665; Mon, 15 Jan 2024 04:19:44 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+	with ESMTP id 1116940986; Mon, 15 Jan 2024 05:18:47 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 15 Jan 2024 19:19:10 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 15 Jan 2024 19:19:10 +0800
-From: yu-chang.lee <yu-chang.lee@mediatek.com>
-To: <msp@baylibre.com>
-CC: Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <linux-pm@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <fparent@baylibre.com>, Ben Lok
-	<ben.lok@mediatek.com>, Chris-qj Chen <Chris-qj.Chen@mediatek.com>, Louis Yu
-	<louis.yu@mediatek.com>, Bear Wang <bear.wang@mediatek.com>, MandyJH Liu
-	<MandyJH.Liu@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, Xiufeng Li
-	<Xiufeng.Li@mediatek.com>, <abailon@baylibre.com>, <amergnat@baylibre.com>,
-	<afgros@baylibre.com>, yu-chang.lee <yu-chang.lee@mediatek.com>
-Subject: [PATCH 1/1] soc: mediatek: pm-domains: support clamp protection
-Date: Mon, 15 Jan 2024 19:18:44 +0800
-Message-ID: <20240115111844.22240-2-yu-chang.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240115111844.22240-1-yu-chang.lee@mediatek.com>
-References: <Need help to validate power domain driver modification on mt8365>
- <20240115111844.22240-1-yu-chang.lee@mediatek.com>
+ 15.2.1118.26; Mon, 15 Jan 2024 20:18:14 +0800
+Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 15 Jan 2024 20:18:14 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=dIq6u00hx+wMht/qGsz9lA0HnXgmsPOw+oNU1wkDY68YMsCBlYAiXGsJl9yj/TrPvvyH1c8CCvF6zhmksFhJPx58sg+jmvfu3vBUr+uq1Er/Czbk2gqCr+azdvjxZA2FcjT3RW0wEOdnGdZmGNF0sc1tuX6Y69QPwyB4X7C8Fhm15xj4kYm/oMZ52eaHbvGX9NK2v2bYXhLhNxNPOZFDVd/OWTm6HCgHenS4fZGG4uboPKJclt0YxSeDFKVANhOkz9Lvv+5zifAjlFTHkYFQfzLHOIk//zWY25mSQdLhEN3rU7LH60pI0qMZR2VS1T2puH1rMmkzWyv2HJu72ASpPA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=+FQlJl4uaiWuOXE0OeowVT80YfNbmLZ6FIgQh01eWNE=;
+ b=H2F9jayDVOgyol+U4UmPO8G/siVJ/CmEjRudg7V4dtQ17ij7F4SJ//d7YVK25R431sdUI+9s9Fy0uhU4QLl940LY66bsDVKUJw5/EMr086G0gsp2vPz4Gdy2MtnNOkw+Yd8w2WOKXBSCIcS5VUXE0xjHot2+w9Eyq2dtY/JQFqA5lEyJal83AORv48+L6aJT/BoNDFrLjLgMOkSXY5VB3EPDw9AdREl3EKCiHZUd9wIaQmW/kVpFKYD6fpg2oLTZKhG8CsJnn8bQV6ucxmpgFWkPwuNMZ2CD4NxUHUamg/kgBEH1AU5i8bctu5T7vHKliH7dTmyEVurn57h9UZDXeg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=+FQlJl4uaiWuOXE0OeowVT80YfNbmLZ6FIgQh01eWNE=;
+ b=PomDwsLle6zMIO9bD5RQttrzYL15oTNVKU/U/cv0yATLXZ3GF2/7jZifetxxt/GhWuuO3Uq/M/LIWtO9jFTs7thsccqNadciu+5YFDGIXYQuE73B5BcOKvwr8O/ZUNtdNYvQ+1E/ya7JtmsIuHuctFZRUrGLtrIQgT1t5EQedRE=
+Received: from SI2PR03MB6194.apcprd03.prod.outlook.com (2603:1096:4:14e::9) by
+ JH0PR03MB7302.apcprd03.prod.outlook.com (2603:1096:990:e::12) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7181.23; Mon, 15 Jan 2024 12:18:12 +0000
+Received: from SI2PR03MB6194.apcprd03.prod.outlook.com
+ ([fe80::fb6f:5270:c66b:79b7]) by SI2PR03MB6194.apcprd03.prod.outlook.com
+ ([fe80::fb6f:5270:c66b:79b7%6]) with mapi id 15.20.7181.022; Mon, 15 Jan 2024
+ 12:18:12 +0000
+From: =?utf-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>
+To: "nbd@nbd.name" <nbd@nbd.name>, "pkshih@realtek.com" <pkshih@realtek.com>,
+	"lorenzo@kernel.org" <lorenzo@kernel.org>
+CC: =?utf-8?B?TWluZ3llbiBIc2llaCAo6Kyd5piO6Ku6KQ==?=
+	<Mingyen.Hsieh@mediatek.com>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?TGVvbiBZZW4gKOmhj+iJr+WEkik=?= <Leon.Yen@mediatek.com>,
+	=?utf-8?B?U2hheW5lIENoZW4gKOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
+	=?utf-8?B?UXVhbiBaaG91ICjlkajlhagp?= <Quan.Zhou@mediatek.com>, Sean Wang
+	<Sean.Wang@mediatek.com>, =?utf-8?B?S00gTGluICjmnpfmmIbmsJEp?=
+	<km.lin@mediatek.com>, =?utf-8?B?U291bCBIdWFuZyAo6buD6Iez5pi2KQ==?=
+	<Soul.Huang@mediatek.com>, =?utf-8?B?UG9zaCBTdW4gKOWtq+eRnuW7tyk=?=
+	<posh.sun@mediatek.com>, =?utf-8?B?RXJpYy1TWSBDaGFuZyAo5by15pu45rqQKQ==?=
+	<Eric-SY.Chang@mediatek.com>, =?utf-8?B?Q0ggWWVoICjokYnlv5fosaop?=
+	<ch.yeh@mediatek.com>, =?utf-8?B?Um9iaW4gQ2hpdSAo6YKx5ZyL5r+xKQ==?=
+	<robin.chiu@mediatek.com>, Ryder Lee <Ryder.Lee@mediatek.com>,
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>
+Subject: Re: [PATCH 1/2] wifi: mt76: mt7921e: fix use-after-free in free_irq()
+Thread-Topic: [PATCH 1/2] wifi: mt76: mt7921e: fix use-after-free in
+ free_irq()
+Thread-Index: AQHaRf7/gBSM1FlFxUyIYfeRf4LqTrDaIjAAgACroYA=
+Date: Mon, 15 Jan 2024 12:18:12 +0000
+Message-ID: <d02b15d0f76a842970f241db5a557cd37d894562.camel@mediatek.com>
+References: <572d6af305a09fc8bdd96a8ee57399039803a2bb.1705135817.git.deren.wu@mediatek.com>
+	 <3a3fc58206ec436e8cdfd97d71350795@realtek.com>
+In-Reply-To: <3a3fc58206ec436e8cdfd97d71350795@realtek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR03MB6194:EE_|JH0PR03MB7302:EE_
+x-ms-office365-filtering-correlation-id: d240d1b2-6086-4ffa-e828-08dc15c40b0a
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: C85aGhuzUf0bbBtDLLWZO0h2gzIyzVYCtm2RtNmg3edEdxMMbLWdYHHyqG7SmlSeuFEmIHbzxxmGIeu6mn32RmKvurY0veA81tEbzXypu4ggbmEPuD7/d/g6pRTF3k1JSd8KNDD7AmyBVqP9hbAMLUAqqtNVqA+uCPNTgc+JKWpgsVSIphst5TagDDKYNm8bFpBT2O6HqXh8S63rlCFnJklBkDDmco3TjkhdCFoTG4KGCZk4yCzysqq3W2TIJWvxCQRaltgX8pzp0jRyZwu0aqhydS4mkOz0MTOohzUhVO2aQTVOuBmgMfbXNan2L3RRnpQ1mQ+qgwKdPlt8sEPtoOmz4+6ye1eRRbVKNn03+WfeQpUSq1++MCi1q7ue1L+acqNNF5Z/MlNt+oH5KdA7bH5A+n1j6JmUEvuUr01Rdv5741sBbCiTcuAS7PiQTXjfT39ZNaRlgoeXn9APiZZnhUfl7hiPGYUI3X1CqrD7YtOW0V57VviRm+4UFKFC0bwKfaGHytUeIkBAYLnE5Wq/8/CCDBvwB61ijFfQNzCSf2H86uKKxN44SSJsGhBqSEi50QgDrOtkf5XtqL60oJ0CVvhTtw++ho+VZo7anDD31LPtdmNu0+HFd5fpT/W9E1jhpinqvRLjEMNaywDusFJaOQ==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB6194.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376002)(136003)(346002)(39860400002)(366004)(396003)(230922051799003)(64100799003)(186009)(451199024)(1800799012)(478600001)(6506007)(71200400001)(8936002)(6512007)(53546011)(8676002)(76116006)(66446008)(66946007)(66556008)(316002)(64756008)(54906003)(966005)(91956017)(6486002)(110136005)(66476007)(26005)(2616005)(83380400001)(2906002)(4326008)(5660300002)(41300700001)(38070700009)(85182001)(36756003)(38100700002)(122000001)(86362001);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RXRieW5BSHQ4aXo4dkJPbnRXVTdLM2xEVklDZGt1b2dBOE9vZmpMeDBLc1hu?=
+ =?utf-8?B?dXNqcUl1OTJSdlR4WlIrdUsyaElKOFl3RWMrRWUyVUtLclV3dElKczRRWTZD?=
+ =?utf-8?B?ci9yMmpZQmlIZW41K0FzbXRqZEJMeGxYdUliY0RSY1ErRlc5ZGh2N1FxbEpt?=
+ =?utf-8?B?disrUzNiMDZiZlpxZThhU1V1MlFaYTFQUFViM3NZcTFDdWd1TFZDc3I3KzJ1?=
+ =?utf-8?B?TnBFZFU5YVlNZ2Z5b1JVVFZTOWRQdUpvMmxaMFlUaTVmbTFGM2lKM0g4Yit2?=
+ =?utf-8?B?MkVpbjcvekdZb1BSRnF3c0J2M2c2dHFyTlRyWmtwcW5KUEk0VlVNU2JwYUdY?=
+ =?utf-8?B?bXU2WEg4dDJBWG1pOWNaZ25JTjNzQUQ5RjJVTWlaL2xQWDNJR1ZpRUJob2lm?=
+ =?utf-8?B?eElOS1ZmUGdVbndicEN1cVdZKzVjWThzZTBRWC9ML3BQNldTT2hSdHZQNUxw?=
+ =?utf-8?B?NjZHOSt1SFlYRmJMN0M4aDJZeWVXU004dFJ4ajVncTF3aTcxNkZkZFcxc0Ry?=
+ =?utf-8?B?dEpNREM3U3Jab2puTWZDRGZGTVp1YWkxSmszWndJMFljS3BQTWg2WnhORVhq?=
+ =?utf-8?B?ZDFKZzZxU1IzOFlQY2dxYjRQcVkrTGtmdjI3L283bWJ2QVQ0bW15Zm5VZmMw?=
+ =?utf-8?B?OWgyYmpBWjdhMzVLUmEwaFVrdGhsTVliNWxXSDl6cUwxMGNHandhamp4cklX?=
+ =?utf-8?B?Um9hekFvelFxWklDKzZzenA2M01FaUpIcWtQZ3VwU1dOd1poQ21pZDNiYmFI?=
+ =?utf-8?B?VXM5RDBIYkZNajFUU1dYV1h4MGNIUFdmQVFZTEpCUExZWnBNckMzZCtLenNH?=
+ =?utf-8?B?Z3F6TmV3bFZidk9UMmFVYmJ6L1NSd0lHT21RMUxoZUtKWTZpVjZRSnVOZjV2?=
+ =?utf-8?B?bVdaZnAvUXgvZUZPVFdDb1pVRUFXaGFIcWlTMU9DaFFuYmRNaDhFUWl1bDFK?=
+ =?utf-8?B?TE5CY2VHQWJIeWd3bFVGUHF5QWtVTmNrMVI4cWNkZG5QeG5VdFNCaHNVaUlZ?=
+ =?utf-8?B?b2tEWUhHaFYzakFwdkhuOUFSNHdwSit2dFBlQXdLTjdlcUdDYmRUcGxqZkQr?=
+ =?utf-8?B?Q1NoeU1IZ1AvZGxRNTMrcHlDcG95MWtLdFYrZnZUQmR0OFhkM05iMVZ0WTBK?=
+ =?utf-8?B?blFMVEF6ek56Y0pzM0xvSkpzVlhHSEkwZHZNMUpFdGNneWxwY2VaQ1BwYUlP?=
+ =?utf-8?B?TGtJdlZNYkdDUEhiSzBjZWIyblRjdjIvbDMrRHIwcjJMRGh4T3dpbUFLRHdl?=
+ =?utf-8?B?SldMM1VsWVlTVHdVSVRYcVlBYjRiZGtRYkM0a0lMeSt0UVkyRGp2bGtHQWsx?=
+ =?utf-8?B?c05Bdlkwd2NrWExHSGxPQ1RPbGVRaGRmM1lLWlZTelZXMXBKU2xJV0FwOE9O?=
+ =?utf-8?B?eW5adEhYRjdnSDQyakVFQ2VjdCt5Vmt3aXN5b0NQUytGcHhVdDI3eGI3eXNx?=
+ =?utf-8?B?ZVRrcnl5b01lY2xrZkpPMWFJWXE3Qy9FcC9tcFEyYXBHK3ROZjVhZkFKNXpB?=
+ =?utf-8?B?dlJBVGtjQmJLc25yalArNkROUm0zL2xBNkJOWFc0dHV4aUhVc2VLdmdPYjlz?=
+ =?utf-8?B?RHlQYUdpbm1FMXRZT0ZDeHd5L05jL1VMVWZCTk92RGpvNE52eXVWeHdNejdF?=
+ =?utf-8?B?NmZxVklCUWlPOW43Uk1UZG01M3lWL0NQclNYMFhpM2tqbDkzS0Z3SWovYll3?=
+ =?utf-8?B?TW1MVnVMd1Y0VkdXTGVxSjhGeE05NTlBVWNUN1BYRk5kVkV2SVZYajdGS2xU?=
+ =?utf-8?B?bzU4aVZJejBRWG91dWZDL1dVbnRtUm9pUlhWc0Q2dEY5ZFpmY1dRdTdxMzJ5?=
+ =?utf-8?B?Q0I1aEtrOFdHcjNjTm84bjBQN1lDME5KQkhtUUY4R1Y2alVUWkM0M0x2Mm1l?=
+ =?utf-8?B?SENaeXRkUGhzRXZhL2xQT1NqUXpqUE5Fd01JR0tMelZZYTlPeUgxZm5SdXBP?=
+ =?utf-8?B?ZTZoZTcrbDFaYjByWXM3a2VSR1FwUzZuSVFaSDJsemJNSXVSVW8xUmd6Zmxw?=
+ =?utf-8?B?WmY4NnlNYVUyYThLSEVSeWhzR3hxeHdwOUV2OWxzZDUzMGVYRFVxcEMrUUNz?=
+ =?utf-8?B?ajY4ZHRNOEQrZUhmekpEeFBhbDF4RUdXT2JKYkhHT0puTElWN25VUmxBT1cx?=
+ =?utf-8?B?dW1CeSsvNW5wV1AxZTF2THpBSFNUSGNna2ZKWi9hdXRyRkRmUnBFNXhncFpj?=
+ =?utf-8?B?T1E9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <F04DDDEB540E4C40A0513E319CFFAA86@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB6194.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d240d1b2-6086-4ffa-e828-08dc15c40b0a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jan 2024 12:18:12.2452
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: bnIdPN9dgUrsNYmZSaj6wwRm0jCVaNk7gGSTagbeT1oTOk6sNlNvXn9v1leAnl7DA2yiQv9yv9BOxbTeZn4JBw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR03MB7302
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--28.636000-8.000000
+X-TMASE-MatchedRID: petDSPmI9ITUL3YCMmnG4v01ZuXoOacd+WzVGPiSY8gNcckEPxfz2D6h
+	VXnKDh9XhIxgTFT6sNUQIIqVNQDiwWsS7dJUh+kDGfRQPgZTkiry118CCumToQalXeZRxrUDxQc
+	VXobqD8ItAHg74P6fo0WkTYdcN3jkx9ssvA0UfV6XXOyNnX/prCTbbsi+pqSFzdATtc2zn0BPH2
+	OEh/+ebJTC7dh8KHcpo0trwO9JCQx8Lz9nbQURYh3EEAbn+GRbewkrNztQZRpUjspoiX02F4GZ0
+	/+B73YgTHT2+pRTeRLOveDpu7C6KEWA+S/79tmldXu122+iJtqH7D1bP/FcOuebt/8o+APP9NWL
+	TaM7D7GamLLN0blsI2RdaS26EKBCupptyy2mu+7Kl4yJoI+fG0yNDX2PfTDJ6TxAl8JJnZHSKUt
+	bL1AAi3AF2KeEQ8wcQODN26Ym9swaprr0Zo5XTJ1U1lojafr/ylIdsC5UWr5D9iPiuXvzgXB44I
+	kzjfYyThbvLLI8RvP6govUb/AlcajC6/MNUxOo9Ib/6w+1lWRzd7C7BtJobiNGK7UC7ElMar5fY
+	xfTOGP3rGfbstODI05TqqstLWlHwp/mM9QGaq2VSBCoZUyqbB852jgffnmIwIizbmTBX9kiAqUq
+	Kxe/izEM+i49fHJL+ANTNmF7Y+ftCZWNSJWZaodlc1JaOB1Ts4sYR7FSefKbKItl61J/yfmS+aP
+	r0Ve8oTCA5Efyn8C5G5ZK4Ai7+N0H8LFZNFG7JQhrLH5KSJ0=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--28.636000-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: B893E8DC59588430C10BE003D15926EAA4A5B0E760F6459712E221CE61AB83032000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240115_031947_621652_4F1D2C65 
-X-CRM114-Status: GOOD (  16.42  )
+X-CRM114-CacheID: sfid-20240115_041854_293673_1B782251 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,548 +201,115 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: msp@baylibre.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch mainly do two things
-1. Add smi clamp protection support
-2. Force order of bus protection between infra and smi
-
-For example: power on
-"clamp protection enable" (smi, with clamp flag)
-  -> regulator enable
-    ...
-      -> clamp protection disaled (smi, with clamp flag)
-        -> bus protection disabled (smi -> infra)
-
-For example: power off
-"clamp protection enable" (smi, with clamp flag)
-  -> bus protection enable (infra -> smi)
-
-Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
----
- drivers/pmdomain/mediatek/mt8183-pm-domains.h |  52 ++++---
- drivers/pmdomain/mediatek/mt8188-pm-domains.h |  41 +++++-
- drivers/pmdomain/mediatek/mt8365-pm-domains.h |  12 +-
- drivers/pmdomain/mediatek/mtk-pm-domains.c    | 132 +++++++++++++++---
- drivers/pmdomain/mediatek/mtk-pm-domains.h    |   2 +
- 5 files changed, 189 insertions(+), 50 deletions(-)
-
-diff --git a/drivers/pmdomain/mediatek/mt8183-pm-domains.h b/drivers/pmdomain/mediatek/mt8183-pm-domains.h
-index c4c1b63d85b1..04fca4a1e8f3 100644
---- a/drivers/pmdomain/mediatek/mt8183-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mt8183-pm-domains.h
-@@ -103,6 +103,13 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 		.pwr_sta2nd_offs = 0x0184,
- 		.sram_pdn_bits = GENMASK(8, 8),
- 		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.clamp_smi = {
-+			BUS_PROT_WR(SMI,
-+				    MT8183_SMI_COMMON_SMI_CLAMP_DISP,
-+				    MT8183_SMI_COMMON_CLAMP_EN_SET,
-+				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
-+				    MT8183_SMI_COMMON_CLAMP_EN),
-+		},
- 		.bp_cfg = {
- 			BUS_PROT_WR(INFRA,
- 				    MT8183_TOP_AXI_PROT_EN_1_DISP,
-@@ -114,11 +121,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 				    MT8183_TOP_AXI_PROT_EN_SET,
- 				    MT8183_TOP_AXI_PROT_EN_CLR,
- 				    MT8183_TOP_AXI_PROT_EN_STA1),
--			BUS_PROT_WR(SMI,
--				    MT8183_SMI_COMMON_SMI_CLAMP_DISP,
--				    MT8183_SMI_COMMON_CLAMP_EN_SET,
--				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
--				    MT8183_SMI_COMMON_CLAMP_EN),
- 		},
- 	},
- 	[MT8183_POWER_DOMAIN_CAM] = {
-@@ -129,6 +131,13 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 		.pwr_sta2nd_offs = 0x0184,
- 		.sram_pdn_bits = GENMASK(9, 8),
- 		.sram_pdn_ack_bits = GENMASK(13, 12),
-+		.clamp_smi = {
-+			BUS_PROT_WR(SMI,
-+				    MT8183_SMI_COMMON_SMI_CLAMP_CAM,
-+				    MT8183_SMI_COMMON_CLAMP_EN_SET,
-+				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
-+				    MT8183_SMI_COMMON_CLAMP_EN),
-+		},
- 		.bp_cfg = {
- 			BUS_PROT_WR(INFRA,
- 				    MT8183_TOP_AXI_PROT_EN_MM_CAM,
-@@ -145,11 +154,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 					MT8183_TOP_AXI_PROT_EN_MM_SET,
- 					MT8183_TOP_AXI_PROT_EN_MM_CLR,
- 					MT8183_TOP_AXI_PROT_EN_MM_STA1),
--			BUS_PROT_WR(SMI,
--				    MT8183_SMI_COMMON_SMI_CLAMP_CAM,
--				    MT8183_SMI_COMMON_CLAMP_EN_SET,
--				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
--				    MT8183_SMI_COMMON_CLAMP_EN),
- 		},
- 	},
- 	[MT8183_POWER_DOMAIN_ISP] = {
-@@ -160,6 +164,13 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 		.pwr_sta2nd_offs = 0x0184,
- 		.sram_pdn_bits = GENMASK(9, 8),
- 		.sram_pdn_ack_bits = GENMASK(13, 12),
-+		.clamp_smi = {
-+			BUS_PROT_WR(SMI,
-+				    MT8183_SMI_COMMON_SMI_CLAMP_ISP,
-+				    MT8183_SMI_COMMON_CLAMP_EN_SET,
-+				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
-+				    MT8183_SMI_COMMON_CLAMP_EN),
-+		},
- 		.bp_cfg = {
- 			BUS_PROT_WR(INFRA,
- 				    MT8183_TOP_AXI_PROT_EN_MM_ISP,
-@@ -171,11 +182,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 					MT8183_TOP_AXI_PROT_EN_MM_SET,
- 					MT8183_TOP_AXI_PROT_EN_MM_CLR,
- 					MT8183_TOP_AXI_PROT_EN_MM_STA1),
--			BUS_PROT_WR(SMI,
--				    MT8183_SMI_COMMON_SMI_CLAMP_ISP,
--				    MT8183_SMI_COMMON_CLAMP_EN_SET,
--				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
--				    MT8183_SMI_COMMON_CLAMP_EN),
- 		},
- 	},
- 	[MT8183_POWER_DOMAIN_VDEC] = {
-@@ -186,7 +192,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 		.pwr_sta2nd_offs = 0x0184,
- 		.sram_pdn_bits = GENMASK(8, 8),
- 		.sram_pdn_ack_bits = GENMASK(12, 12),
--		.bp_cfg = {
-+		.clamp_smi = {
- 			BUS_PROT_WR(SMI,
- 				    MT8183_SMI_COMMON_SMI_CLAMP_VDEC,
- 				    MT8183_SMI_COMMON_CLAMP_EN_SET,
-@@ -202,7 +208,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 		.pwr_sta2nd_offs = 0x0184,
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = GENMASK(15, 12),
--		.bp_cfg = {
-+		.clamp_smi = {
- 			BUS_PROT_WR(SMI,
- 				    MT8183_SMI_COMMON_SMI_CLAMP_VENC,
- 				    MT8183_SMI_COMMON_CLAMP_EN_SET,
-@@ -218,6 +224,13 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 		.pwr_sta2nd_offs = 0x0184,
- 		.sram_pdn_bits = GENMASK(8, 8),
- 		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.clamp_smi = {
-+			BUS_PROT_WR(SMI,
-+				    MT8183_SMI_COMMON_SMI_CLAMP_VPU_TOP,
-+				    MT8183_SMI_COMMON_CLAMP_EN_SET,
-+				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
-+				    MT8183_SMI_COMMON_CLAMP_EN),
-+		},
- 		.bp_cfg = {
- 			BUS_PROT_WR(INFRA,
- 				    MT8183_TOP_AXI_PROT_EN_MM_VPU_TOP,
-@@ -234,11 +247,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 				    MT8183_TOP_AXI_PROT_EN_MM_SET,
- 				    MT8183_TOP_AXI_PROT_EN_MM_CLR,
- 				    MT8183_TOP_AXI_PROT_EN_MM_STA1),
--			BUS_PROT_WR(SMI,
--				    MT8183_SMI_COMMON_SMI_CLAMP_VPU_TOP,
--				    MT8183_SMI_COMMON_CLAMP_EN_SET,
--				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
--				    MT8183_SMI_COMMON_CLAMP_EN),
- 		},
- 	},
- 	[MT8183_POWER_DOMAIN_VPU_CORE0] = {
-diff --git a/drivers/pmdomain/mediatek/mt8188-pm-domains.h b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
-index ade3c01149af..be2393c41f3e 100644
---- a/drivers/pmdomain/mediatek/mt8188-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
-@@ -577,6 +577,18 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
- 		.pwr_sta2nd_offs = 0x170,
- 		.sram_pdn_bits = BIT(8),
- 		.sram_pdn_ack_bits = BIT(12),
-+		.clamp_smi = {
-+			BUS_PROT_WR(SMI,
-+				    MT8188_SMI_COMMON_SMI_CLAMP_DIP_TO_VDO0,
-+				    MT8188_SMI_COMMON_CLAMP_EN_SET,
-+				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
-+				    MT8188_SMI_COMMON_CLAMP_EN_STA),
-+			BUS_PROT_WR(SMI,
-+				    MT8188_SMI_COMMON_SMI_CLAMP_DIP_TO_VPP1,
-+				    MT8188_SMI_COMMON_CLAMP_EN_SET,
-+				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
-+				    MT8188_SMI_COMMON_CLAMP_EN_STA),
-+		},
- 		.reset_smi = {
- 			SMI_RESET_WR(MT8188_SMI_LARB10_RESET,
- 				     MT8188_SMI_LARB10_RESET_ADDR),
-@@ -589,7 +601,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
- 			SMI_RESET_WR(MT8188_SMI_LARB15_RESET,
- 				     MT8188_SMI_LARB15_RESET_ADDR),
- 		},
--		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_CLAMP_PROTECTION,
- 	},
- 	[MT8188_POWER_DOMAIN_IPE] = {
- 		.name = "ipe",
-@@ -599,11 +611,18 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
- 		.pwr_sta2nd_offs = 0x170,
- 		.sram_pdn_bits = BIT(8),
- 		.sram_pdn_ack_bits = BIT(12),
-+		.clamp_smi = {
-+			BUS_PROT_WR(SMI,
-+				    MT8188_SMI_COMMON_SMI_CLAMP_IPE_TO_VPP1,
-+				    MT8188_SMI_COMMON_CLAMP_EN_SET,
-+				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
-+				    MT8188_SMI_COMMON_CLAMP_EN_STA),
-+		},
- 		.reset_smi = {
- 			SMI_RESET_WR(MT8188_SMI_LARB12_RESET,
- 				     MT8188_SMI_LARB12_RESET_ADDR),
- 		},
--		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_CLAMP_PROTECTION,
- 	},
- 	[MT8188_POWER_DOMAIN_CAM_VCORE] = {
- 		.name = "cam_vcore",
-@@ -682,13 +701,20 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
- 		.pwr_sta2nd_offs = 0x170,
- 		.sram_pdn_bits = BIT(8),
- 		.sram_pdn_ack_bits = BIT(12),
-+		.clamp_smi = {
-+			BUS_PROT_WR(SMI,
-+				    MT8188_SMI_COMMON_SMI_CLAMP_CAM_SUBA_TO_VPP0,
-+				    MT8188_SMI_COMMON_CLAMP_EN_SET,
-+				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
-+				    MT8188_SMI_COMMON_CLAMP_EN_STA),
-+		},
- 		.reset_smi = {
- 			SMI_RESET_WR(MT8188_SMI_LARB16A_RESET,
- 				     MT8188_SMI_LARB16A_RESET_ADDR),
- 			SMI_RESET_WR(MT8188_SMI_LARB17A_RESET,
- 				     MT8188_SMI_LARB17A_RESET_ADDR),
- 		},
--		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_CLAMP_PROTECTION,
- 	},
- 	[MT8188_POWER_DOMAIN_CAM_SUBB] = {
- 		.name = "cam_subb",
-@@ -698,13 +724,20 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
- 		.pwr_sta2nd_offs = 0x170,
- 		.sram_pdn_bits = BIT(8),
- 		.sram_pdn_ack_bits = BIT(12),
-+		.clamp_smi = {
-+			BUS_PROT_WR(SMI,
-+				    MT8188_SMI_COMMON_SMI_CLAMP_CAM_SUBB_TO_VDO0,
-+				    MT8188_SMI_COMMON_CLAMP_EN_SET,
-+				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
-+				    MT8188_SMI_COMMON_CLAMP_EN_STA),
-+		},
- 		.reset_smi = {
- 			SMI_RESET_WR(MT8188_SMI_LARB16B_RESET,
- 				     MT8188_SMI_LARB16B_RESET_ADDR),
- 			SMI_RESET_WR(MT8188_SMI_LARB17B_RESET,
- 				     MT8188_SMI_LARB17B_RESET_ADDR),
- 		},
--		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_CLAMP_PROTECTION,
- 	},
- };
- 
-diff --git a/drivers/pmdomain/mediatek/mt8365-pm-domains.h b/drivers/pmdomain/mediatek/mt8365-pm-domains.h
-index 3d83d49eaa7c..f9813cdcd3aa 100644
---- a/drivers/pmdomain/mediatek/mt8365-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mt8365-pm-domains.h
-@@ -76,7 +76,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8365[] = {
- 		.pwr_sta2nd_offs = 0x0184,
- 		.sram_pdn_bits = GENMASK(8, 8),
- 		.sram_pdn_ack_bits = GENMASK(12, 12),
--		.bp_cfg = {
-+		.clamp_smi = {
- 			MT8365_BUS_PROT_SMI_WR_CLAMP_EN_PORT(1),
- 		},
- 	},
-@@ -138,10 +138,12 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8365[] = {
- 		.pwr_sta2nd_offs = 0x0184,
- 		.sram_pdn_bits = GENMASK(9, 8),
- 		.sram_pdn_ack_bits = GENMASK(13, 12),
-+		.clamp_smi = {
-+			MT8365_BUS_PROT_SMI_WR_CLAMP_EN_PORT(2),
-+		},
- 		.bp_cfg = {
- 			MT8365_BUS_PROT_INFRA_WR_TOPAXI_1(
- 				MT8365_INFRA_TOPAXI_PROTECTEN_1_CAM2MM_AXI_GALS_MST),
--			MT8365_BUS_PROT_SMI_WR_CLAMP_EN_PORT(2),
- 		},
- 	},
- 	[MT8365_POWER_DOMAIN_VDEC] = {
-@@ -152,7 +154,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8365[] = {
- 		.pwr_sta2nd_offs = 0x0184,
- 		.sram_pdn_bits = GENMASK(8, 8),
- 		.sram_pdn_ack_bits = GENMASK(12, 12),
--		.bp_cfg = {
-+		.clamp_smi = {
- 			MT8365_BUS_PROT_SMI_WR_CLAMP_EN_PORT(3),
- 		},
- 	},
-@@ -164,11 +166,13 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8365[] = {
- 		.pwr_sta2nd_offs = 0x0184,
- 		.sram_pdn_bits = GENMASK(14, 8),
- 		.sram_pdn_ack_bits = GENMASK(21, 15),
-+		.clamp_smi = {
-+			MT8365_BUS_PROT_SMI_WR_CLAMP_EN_PORT(4),
-+		},
- 		.bp_cfg = {
- 			MT8365_BUS_PROT_INFRA_WR_TOPAXI_1(
- 				MT8365_INFRA_TOPAXI_PROTECTEN_1_APU2AP |
- 				MT8365_INFRA_TOPAXI_PROTECTEN_1_APU_CBIP_GALS_MST),
--			MT8365_BUS_PROT_SMI_WR_CLAMP_EN_PORT(4),
- 		},
- 	},
- 	[MT8365_POWER_DOMAIN_DSP] = {
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-index 488920d29fbc..061296feb289 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-@@ -47,9 +47,10 @@ struct scpsys_domain {
- 	struct clk_bulk_data *subsys_clks;
- 	struct regmap *infracfg_nao;
- 	struct regmap *infracfg;
--	struct regmap *smi;
-+	struct regmap **smi;
- 	struct regmap **larb;
- 	int num_larb;
-+	int num_smi;
- 	struct regulator *supply;
- };
- 
-@@ -78,6 +79,71 @@ static bool scpsys_domain_is_on(struct scpsys_domain *pd)
- 	return status && status2;
- }
- 
-+static int _scpsys_clamp_bus_protection_enable(const struct scpsys_bus_prot_data bpd,
-+					       struct regmap *regmap)
-+{
-+	u32 val = 0, mask = bpd.bus_prot_sta_mask;
-+
-+	if (!mask)
-+		return 0;
-+
-+	if (bpd.flags & BUS_PROT_REG_UPDATE)
-+		regmap_set_bits(regmap, bpd.bus_prot_set, mask);
-+	else
-+		regmap_write(regmap, bpd.bus_prot_set, mask);
-+
-+	return regmap_read_poll_timeout(regmap, bpd.bus_prot_sta,
-+				       val, (val & mask) == mask,
-+				       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-+}
-+
-+static int scpsys_clamp_bus_protection_enable(struct scpsys_domain *pd)
-+{
-+	int ret, i;
-+
-+	for (i = 0; i < pd->num_smi; i++) {
-+		ret = _scpsys_clamp_bus_protection_enable(pd->data->clamp_smi[i], pd->smi[i]);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static int _scpsys_clamp_bus_protection_disable(const struct scpsys_bus_prot_data bpd,
-+						struct regmap *regmap)
-+{
-+	u32 val = 0, mask = bpd.bus_prot_sta_mask;
-+
-+	if (!mask)
-+		return 0;
-+
-+	if (bpd.flags & BUS_PROT_REG_UPDATE)
-+		regmap_clear_bits(regmap, bpd.bus_prot_clr, mask);
-+	else
-+		regmap_write(regmap, bpd.bus_prot_clr, mask);
-+
-+	if (bpd.flags & BUS_PROT_IGNORE_CLR_ACK)
-+		return 0;
-+
-+	return regmap_read_poll_timeout(regmap, bpd.bus_prot_sta,
-+				       val, !(val & mask),
-+				       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-+}
-+
-+static int scpsys_clamp_bus_protection_disable(struct scpsys_domain *pd)
-+{
-+	int ret, i;
-+
-+	for (i = pd->num_smi - 1 ; i >= 0; i--) {
-+		ret = _scpsys_clamp_bus_protection_disable(pd->data->clamp_smi[i], pd->smi[i]);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	return 0;
-+}
-+
- static int scpsys_sram_enable(struct scpsys_domain *pd)
- {
- 	u32 pdn_ack = pd->data->sram_pdn_ack_bits;
-@@ -122,14 +188,6 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
- 					MTK_POLL_TIMEOUT);
- }
- 
--static struct regmap *scpsys_bus_protect_get_regmap(struct scpsys_domain *pd,
--						    const struct scpsys_bus_prot_data *bpd)
--{
--	if (bpd->flags & BUS_PROT_COMPONENT_SMI)
--		return pd->smi;
--	else
--		return pd->infracfg;
--}
- 
- static struct regmap *scpsys_bus_protect_get_sta_regmap(struct scpsys_domain *pd,
- 							const struct scpsys_bus_prot_data *bpd)
-@@ -137,14 +195,14 @@ static struct regmap *scpsys_bus_protect_get_sta_regmap(struct scpsys_domain *pd
- 	if (bpd->flags & BUS_PROT_STA_COMPONENT_INFRA_NAO)
- 		return pd->infracfg_nao;
- 	else
--		return scpsys_bus_protect_get_regmap(pd, bpd);
-+		return pd->infracfg;
- }
- 
- static int scpsys_bus_protect_clear(struct scpsys_domain *pd,
- 				    const struct scpsys_bus_prot_data *bpd)
- {
- 	struct regmap *sta_regmap = scpsys_bus_protect_get_sta_regmap(pd, bpd);
--	struct regmap *regmap = scpsys_bus_protect_get_regmap(pd, bpd);
-+	struct regmap *regmap = pd->infracfg;
- 	u32 sta_mask = bpd->bus_prot_sta_mask;
- 	u32 expected_ack;
- 	u32 val;
-@@ -168,7 +226,7 @@ static int scpsys_bus_protect_set(struct scpsys_domain *pd,
- 				  const struct scpsys_bus_prot_data *bpd)
- {
- 	struct regmap *sta_regmap = scpsys_bus_protect_get_sta_regmap(pd, bpd);
--	struct regmap *regmap = scpsys_bus_protect_get_regmap(pd, bpd);
-+	struct regmap *regmap = pd->infracfg;
- 	u32 sta_mask = bpd->bus_prot_sta_mask;
- 	u32 val;
- 
-@@ -199,14 +257,19 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
- 			return ret;
- 	}
- 
--	return 0;
-+	return scpsys_clamp_bus_protection_enable(pd);
- }
- 
- static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
- {
-+	int ret;
-+
-+	ret = scpsys_clamp_bus_protection_disable(pd);
-+	if (ret)
-+		return ret;
-+
- 	for (int i = SPM_MAX_BUS_PROT_DATA - 1; i >= 0; i--) {
- 		const struct scpsys_bus_prot_data *bpd = &pd->data->bp_cfg[i];
--		int ret;
- 
- 		if (!bpd->bus_prot_set_clr_mask)
- 			continue;
-@@ -272,6 +335,12 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	bool tmp;
- 	int ret;
- 
-+	if (MTK_SCPD_CAPS(pd, MTK_SCPD_CLAMP_PROTECTION)) {
-+		ret = scpsys_clamp_bus_protection_enable(pd);
-+		if (ret)
-+			return ret;
-+	}
-+
- 	ret = scpsys_regulator_enable(pd->supply);
- 	if (ret)
- 		return ret;
-@@ -318,6 +387,12 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	if (ret < 0)
- 		goto err_disable_subsys_clks;
- 
-+	if (MTK_SCPD_CAPS(pd, MTK_SCPD_CLAMP_PROTECTION)) {
-+		ret = scpsys_clamp_bus_protection_disable(pd);
-+		if (ret)
-+			return ret;
-+	}
-+
- 	ret = scpsys_bus_protect_disable(pd);
- 	if (ret < 0)
- 		goto err_disable_sram;
-@@ -353,6 +428,12 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	bool tmp;
- 	int ret;
- 
-+	if (MTK_SCPD_CAPS(pd, MTK_SCPD_CLAMP_PROTECTION)) {
-+		ret = scpsys_clamp_bus_protection_enable(pd);
-+		if (ret)
-+			return ret;
-+	}
-+
- 	ret = scpsys_bus_protect_enable(pd);
- 	if (ret < 0)
- 		return ret;
-@@ -450,12 +531,23 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 	if (IS_ERR(pd->infracfg))
- 		return ERR_CAST(pd->infracfg);
- 
--	smi_node = of_parse_phandle(node, "mediatek,smi", 0);
--	if (smi_node) {
--		pd->smi = device_node_to_regmap(smi_node);
--		of_node_put(smi_node);
--		if (IS_ERR(pd->smi))
--			return ERR_CAST(pd->smi);
-+	pd->num_smi = of_count_phandle_with_args(node, "mediatek,smi", NULL);
-+	if (pd->num_smi > 0) {
-+		pd->smi = devm_kcalloc(scpsys->dev, pd->num_smi, sizeof(*pd->smi), GFP_KERNEL);
-+		if (!pd->smi)
-+			return ERR_PTR(-ENOMEM);
-+
-+		for (i = 0; i < pd->num_smi; i++) {
-+			smi_node = of_parse_phandle(node, "mediatek,smi", i);
-+			if (!smi_node)
-+				return ERR_PTR(-EINVAL);
-+
-+			pd->smi[i] = syscon_node_to_regmap(smi_node);
-+			if (IS_ERR(pd->smi[i]))
-+				return ERR_CAST(pd->smi[i]);
-+		}
-+	} else {
-+		pd->num_smi = 0;
- 	}
- 
- 	pd->num_larb = of_count_phandle_with_args(node, "mediatek,larb", NULL);
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.h b/drivers/pmdomain/mediatek/mtk-pm-domains.h
-index 31c2a1bb500f..f903e2943f0e 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.h
-@@ -13,6 +13,7 @@
- #define MTK_SCPD_EXT_BUCK_ISO		BIT(6)
- #define MTK_SCPD_HAS_INFRA_NAO		BIT(7)
- #define MTK_SCPD_STRICT_BUS_PROTECTION	BIT(8)
-+#define MTK_SCPD_CLAMP_PROTECTION	BIT(9)
- #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
- 
- #define SPM_VDE_PWR_CON			0x0210
-@@ -120,6 +121,7 @@ struct scpsys_domain_data {
- 	int ext_buck_iso_offs;
- 	u32 ext_buck_iso_mask;
- 	u16 caps;
-+	const struct scpsys_bus_prot_data clamp_smi[SPM_MAX_BUS_PROT_DATA];
- 	const struct scpsys_bus_prot_data bp_cfg[SPM_MAX_BUS_PROT_DATA];
- 	const struct smi_reset_data reset_smi[SPM_MAX_SMI_RESET_DATA];
- 	int pwr_sta_offs;
--- 
-2.18.0
-
+T24gTW9uLCAyMDI0LTAxLTE1IGF0IDAyOjAzICswMDAwLCBQaW5nLUtlIFNoaWggd3JvdGU6DQo+
+IA0KPiANCj4gPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiA+IEZyb206IERlcmVuIFd1
+IDxkZXJlbi53dUBtZWRpYXRlay5jb20+DQo+ID4gU2VudDogU2F0dXJkYXksIEphbnVhcnkgMTMs
+IDIwMjQgNTowMCBQTQ0KPiA+IFRvOiBGZWxpeCBGaWV0a2F1IDxuYmRAbmJkLm5hbWU+OyBMb3Jl
+bnpvIEJpYW5jb25pIDwNCj4gbG9yZW56b0BrZXJuZWwub3JnPg0KPiA+IENjOiBTZWFuIFdhbmcg
+PHNlYW4ud2FuZ0BtZWRpYXRlay5jb20+OyBTb3VsIEh1YW5nIDwNCj4gU291bC5IdWFuZ0BtZWRp
+YXRlay5jb20+OyBNaW5nIFllbiBIc2llaA0KPiA+IDxtaW5neWVuLmhzaWVoQG1lZGlhdGVrLmNv
+bT47IExlb24gWWVuIDxMZW9uLlllbkBtZWRpYXRlay5jb20+Ow0KPiBFcmljLVNZIENoYW5nDQo+
+ID4gPEVyaWMtU1kuQ2hhbmdAbWVkaWF0ZWsuY29tPjsgS00gTGluIDxrbS5saW5AbWVkaWF0ZWsu
+Y29tPjsgUm9iaW4NCj4gQ2hpdSA8cm9iaW4uY2hpdUBtZWRpYXRlay5jb20+OyBDSCBZZWgNCj4g
+PiA8Y2gueWVoQG1lZGlhdGVrLmNvbT47IFBvc2ggU3VuIDxwb3NoLnN1bkBtZWRpYXRlay5jb20+
+OyBRdWFuIFpob3UNCj4gPHF1YW4uemhvdUBtZWRpYXRlay5jb20+OyBSeWRlciBMZWUNCj4gPiA8
+cnlkZXIubGVlQG1lZGlhdGVrLmNvbT47IFNoYXluZSBDaGVuIDxzaGF5bmUuY2hlbkBtZWRpYXRl
+ay5jb20+Ow0KPiBsaW51eC13aXJlbGVzcw0KPiA+IDxsaW51eC13aXJlbGVzc0B2Z2VyLmtlcm5l
+bC5vcmc+OyBsaW51eC1tZWRpYXRlayA8DQo+IGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
+ZC5vcmc+OyBEZXJlbiBXdQ0KPiA+IDxkZXJlbi53dUBtZWRpYXRlay5jb20+DQo+ID4gU3ViamVj
+dDogW1BBVENIIDEvMl0gd2lmaTogbXQ3NjogbXQ3OTIxZTogZml4IHVzZS1hZnRlci1mcmVlIGlu
+DQo+IGZyZWVfaXJxKCkNCj4gPiANCj4gPiBGcm9tIGNvbW1pdCBhMzA0ZTFiODI4MDggKCJbUEFU
+Q0hdIERlYnVnIHNoYXJlZCBpcnFzIiksIHRoZXJlIGlzIGENCj4gdGVzdA0KPiA+IHRvIG1ha2Ug
+c3VyZSB0aGUgc2hhcmVkIGlycSBoYW5kbGVyIHNob3VsZCBiZSBhYmxlIHRvIGhhbmRsZSB0aGUN
+Cj4gdW5leHBlY3RlZA0KPiA+IGV2ZW50IGFmdGVyIGRlcmVnaXN0cmF0aW9uLiBGb3IgdGhpcyBj
+YXNlLCBsZXQncyBhcHBseSBNVDc2X1JFTU9WRUQNCj4gZmxhZyB0bw0KPiA+IGluZGljYXRlIHRo
+ZSBkZXZpY2Ugd2FzIHJlbW92ZWQgYW5kIGRvIG5vdCBydW4gaW50byB0aGUgcmVzb3VyY2UNCj4g
+YWNjZXNzDQo+ID4gYW55bW9yZS4NCj4gPiANCj4gPiBCVUc6IEtBU0FOOiB1c2UtYWZ0ZXItZnJl
+ZSBpbiBtdDc5MjFfaXJxX2hhbmRsZXIrMHhkOC8weDEwMA0KPiBbbXQ3OTIxZV0NCj4gPiBSZWFk
+IG9mIHNpemUgOCBhdCBhZGRyIGZmZmY4ODgyNGE3ZDNiNzggYnkgdGFzayBybW1vZC8xMTExNQ0K
+PiA+IENQVTogMjggUElEOiAxMTExNSBDb21tOiBybW1vZCBUYWludGVkOiBHICAgICAgICBXICAg
+IEwgICAgNS4xNy4wDQo+ICMxMA0KPiA+IEhhcmR3YXJlIG5hbWU6IE1pY3JvLVN0YXIgSW50ZXJu
+YXRpb25hbCBDby4sIEx0ZC4gTVMtN0Q3My9NUEcgQjY1MEkNCj4gPiBFREdFIFdJRkkgKE1TLTdE
+NzMpLCBCSU9TIDEuODEgMDEvMDUvMjAyNA0KPiA+IENhbGwgVHJhY2U6DQo+ID4gIDxUQVNLPg0K
+PiA+ICBkdW1wX3N0YWNrX2x2bCsweDZmLzB4YTANCj4gPiAgcHJpbnRfYWRkcmVzc19kZXNjcmlw
+dGlvbi5jb25zdHByb3AuMCsweDFmLzB4MTkwDQo+ID4gID8gbXQ3OTIxX2lycV9oYW5kbGVyKzB4
+ZDgvMHgxMDAgW210NzkyMWVdDQo+ID4gID8gbXQ3OTIxX2lycV9oYW5kbGVyKzB4ZDgvMHgxMDAg
+W210NzkyMWVdDQo+ID4gIGthc2FuX3JlcG9ydC5jb2xkKzB4N2YvMHgxMWINCj4gPiAgPyBtdDc5
+MjFfaXJxX2hhbmRsZXIrMHhkOC8weDEwMCBbbXQ3OTIxZV0NCj4gPiAgbXQ3OTIxX2lycV9oYW5k
+bGVyKzB4ZDgvMHgxMDAgW210NzkyMWVdDQo+ID4gIGZyZWVfaXJxKzB4NjI3LzB4YWEwDQo+ID4g
+IGRldm1fZnJlZV9pcnErMHg5NC8weGQwDQo+ID4gID8gZGV2bV9yZXF1ZXN0X2FueV9jb250ZXh0
+X2lycSsweDE2MC8weDE2MA0KPiA+ICA/IGtvYmplY3RfcHV0KzB4MThkLzB4NGEwDQo+ID4gIG10
+NzkyMV9wY2lfcmVtb3ZlKzB4MTUzLzB4MTkwIFttdDc5MjFlXQ0KPiA+ICBwY2lfZGV2aWNlX3Jl
+bW92ZSsweGEyLzB4MWQwDQo+ID4gIF9fZGV2aWNlX3JlbGVhc2VfZHJpdmVyKzB4MzQ2LzB4NmUw
+DQo+ID4gIGRyaXZlcl9kZXRhY2grMHgxZWYvMHgyYzANCj4gPiAgYnVzX3JlbW92ZV9kcml2ZXIr
+MHhlNy8weDJkMA0KPiA+ICA/IF9fY2hlY2tfb2JqZWN0X3NpemUrMHg1Ny8weDMxMA0KPiA+ICBw
+Y2lfdW5yZWdpc3Rlcl9kcml2ZXIrMHgyNi8weDI1MA0KPiA+ICBfX2RvX3N5c19kZWxldGVfbW9k
+dWxlKzB4MzA3LzB4NTEwDQo+ID4gID8gZnJlZV9tb2R1bGUrMHg2YTAvMHg2YTANCj4gPiAgPyBm
+cHJlZ3NfYXNzZXJ0X3N0YXRlX2NvbnNpc3RlbnQrMHg0Yi8weGIwDQo+ID4gID8gcmN1X3JlYWRf
+bG9ja19zY2hlZF9oZWxkKzB4MTAvMHg3MA0KPiA+ICA/IHN5c2NhbGxfZW50ZXJfZnJvbV91c2Vy
+X21vZGUrMHgyMC8weDcwDQo+ID4gID8gdHJhY2VfaGFyZGlycXNfb24rMHgxYy8weDEzMA0KPiA+
+ICBkb19zeXNjYWxsXzY0KzB4NWMvMHg4MA0KPiA+ICA/IHRyYWNlX2hhcmRpcnFzX29uX3ByZXBh
+cmUrMHg3Mi8weDE2MA0KPiA+ICA/IGRvX3N5c2NhbGxfNjQrMHg2OC8weDgwDQo+ID4gID8gdHJh
+Y2VfaGFyZGlycXNfb25fcHJlcGFyZSsweDcyLzB4MTYwDQo+ID4gIGVudHJ5X1NZU0NBTExfNjRf
+YWZ0ZXJfaHdmcmFtZSsweDQ0LzB4YWUNCj4gPiANCj4gPiBSZXBvcnRlZC1ieTogTWlraGFpbCBH
+YXZyaWxvdiA8bWlraGFpbC52LmdhdnJpbG92QGdtYWlsLmNvbT4NCj4gPiBDbG9zZXM6DQo+ID4g
+DQo+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXdpcmVsZXNzL0NBQlhHQ3NPZHZWd2RM
+bVNzQzhUWjFqRjBVT2dfRl9XM3dxTEVDV1g2MjBQVWt2Tms9QUBtYWlsLmdtYWlsDQo+IC4NCj4g
+PiBjb20vDQo+ID4gRml4ZXM6IDkyNzAyNzBkNjIxOSAoIndpZmk6IG10NzY6IG10NzkyMTogZml4
+IFBDSSBETUEgaGFuZyBhZnRlcg0KPiByZWJvb3QiKQ0KPiA+IFRlc3RlZC1ieTogTWlraGFpbCBH
+YXZyaWxvdiA8bWlraGFpbC52LmdhdnJpbG92QGdtYWlsLmNvbT4NCj4gPiBTaWduZWQtb2ZmLWJ5
+OiBEZXJlbiBXdSA8ZGVyZW4ud3VAbWVkaWF0ZWsuY29tPg0KPiA+IC0tLQ0KPiA+ICBkcml2ZXJz
+L25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzkyMS9wY2kuYyB8IDEgKw0KPiA+ICBkcml2
+ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzkyeF9kbWEuYyB8IDIgKysNCj4gPiAg
+MiBmaWxlcyBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKykNCj4gPiANCj4gPiBkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5MjEvcGNpLmMNCj4gPiBiL2Ry
+aXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3OTIxL3BjaS5jDQo+ID4gaW5kZXgg
+NTc5MDNjNmU0ZjExLi4yZjA0ZDY2NThiNmIgMTAwNjQ0DQo+ID4gLS0tIGEvZHJpdmVycy9uZXQv
+d2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5MjEvcGNpLmMNCj4gPiArKysgYi9kcml2ZXJzL25l
+dC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzkyMS9wY2kuYw0KPiA+IEBAIC0zODcsNiArMzg3
+LDcgQEAgc3RhdGljIHZvaWQgbXQ3OTIxX3BjaV9yZW1vdmUoc3RydWN0IHBjaV9kZXYNCj4gKnBk
+ZXYpDQo+ID4gICAgICAgICBzdHJ1Y3QgbXQ3OTJ4X2RldiAqZGV2ID0gY29udGFpbmVyX29mKG1k
+ZXYsIHN0cnVjdA0KPiBtdDc5MnhfZGV2LCBtdDc2KTsNCj4gPiANCj4gPiAgICAgICAgIG10Nzky
+MWVfdW5yZWdpc3Rlcl9kZXZpY2UoZGV2KTsNCj4gPiArICAgICAgIHNldF9iaXQoTVQ3Nl9SRU1P
+VkVELCAmbWRldi0+cGh5LnN0YXRlKTsNCj4gDQo+IENhbiBpdCBkbyBiZWxvdyBsaWtlIG10Nzky
+MV9wY2lfc3VzcGVuZCgpIHRvIHNhZmVseSBzdG9wIGludGVycnVwdA0KPiBoYW5kbGVyPw0KPiBJ
+bnN0ZWFkIG9mIHNldHRpbmcgYSBmbGFnLiANCj4gDQo+ICAgICAgICAgc3luY2hyb25pemVfaXJx
+KHBkZXYtPmlycSk7DQo+ICAgICAgICAgdGFza2xldF9raWxsKCZtZGV2LT5pcnFfdGFza2xldCk7
+DQo+IA0KDQpIZXJlIGlzIHRoZSBzbmFwc2hvdC4gVGhlIGNvZGUgaXMgdHJ5aW5nIHRvIGRpcmVj
+dCBhY2Nlc3MgdGhpcyBpcnENCmhhbmRsZXIgYWZ0ZXIgZGVyZWdpc2VyaW5nLCBmb3IgSVJRRl9T
+SEFSRUQgY2FzZS4gc3luY2hyb25pemVfaXJxKCkgYW5kDQp0YXNrbGV0X2tpbGwoKSBhcmUgYWxs
+IGRvbmUgaW4gcHJldmlvdXMgc3RlcHMuIFdlIG5lZWQgdG8gc3RvcCB0aGUNCmV4dHJhIGNhbGwg
+aGVyZS4gSWYgdGhlcmUgYXJlIGFueSBhbHRlcm5hdGl2ZSwgdGhhdCB3b3VsZCBiZQ0KYXBwcmVj
+aWF0ZWQuDQoNCi8qDQogKiBJdCdzIGEgc2hhcmVkIElSUSAtLSB0aGUgZHJpdmVyIG91Z2h0IHRv
+IGJlIHByZXBhcmVkIGZvciBhbiBJUlENCiAqIGV2ZW50IHRvIGhhcHBlbiBldmVuIG5vdyBpdCdz
+IGJlaW5nIGZyZWVkLCBzbyBsZXQncyBtYWtlIHN1cmUgdGhhdA0KICogaXMgc28gYnkgZG9pbmcg
+YW4gZXh0cmEgY2FsbCB0byB0aGUgaGFuZGxlciAuLi4uDQogKg0KICogKCBXZSBkbyB0aGlzIGFm
+dGVyIGFjdHVhbGx5IGRlcmVnaXN0ZXJpbmcgaXQsIHRvIG1ha2Ugc3VyZSB0aGF0IGENCiAqICAg
+J3JlYWwnIElSUSBkb2Vzbid0IHJ1biBpbiBwYXJhbGxlbCB3aXRoIG91ciBmYWtlLiApDQogKi8N
+CmlmIChhY3Rpb24tPmZsYWdzICYgSVJRRl9TSEFSRUQpIHsNCiAgICAgICAgbG9jYWxfaXJxX3Nh
+dmUoZmxhZ3MpOw0KICAgICAgICBhY3Rpb24tPmhhbmRsZXIoaXJxLCBkZXZfaWQpOw0KICAgICAg
+ICBsb2NhbF9pcnFfcmVzdG9yZShmbGFncyk7DQp9DQoNCmh0dHBzOi8vZWxpeGlyLmJvb3RsaW4u
+Y29tL2xpbnV4L3Y2Ljcvc291cmNlL2tlcm5lbC9pcnEvbWFuYWdlLmMjTDE5NDkNCg0KPiANCj4g
+PiAgICAgICAgIGRldm1fZnJlZV9pcnEoJnBkZXYtPmRldiwgcGRldi0+aXJxLCBkZXYpOw0KPiA+
+ICAgICAgICAgbXQ3Nl9mcmVlX2RldmljZSgmZGV2LT5tdDc2KTsNCj4gPiAgICAgICAgIHBjaV9m
+cmVlX2lycV92ZWN0b3JzKHBkZXYpOw0KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC93aXJl
+bGVzcy9tZWRpYXRlay9tdDc2L210NzkyeF9kbWEuYw0KPiA+IGIvZHJpdmVycy9uZXQvd2lyZWxl
+c3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5MnhfZG1hLmMNCj4gPiBpbmRleCA0ODgzMjZjZTVlZDQuLjM4
+OTNkYmU4NjZmZSAxMDA2NDQNCj4gPiAtLS0gYS9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRl
+ay9tdDc2L210NzkyeF9kbWEuYw0KPiA+ICsrKyBiL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlh
+dGVrL210NzYvbXQ3OTJ4X2RtYS5jDQo+ID4gQEAgLTEyLDYgKzEyLDggQEAgaXJxcmV0dXJuX3Qg
+bXQ3OTJ4X2lycV9oYW5kbGVyKGludCBpcnEsIHZvaWQNCj4gKmRldl9pbnN0YW5jZSkNCj4gPiAg
+ew0KPiA+ICAgICAgICAgc3RydWN0IG10NzkyeF9kZXYgKmRldiA9IGRldl9pbnN0YW5jZTsNCj4g
+PiANCj4gDQo+IElmIFBDSSBpcyByZW1vdmVkLCBpcyBpdCBzdGlsbCBzYWZlIHRvIGFjY2VzcyAn
+ZGV2X2luc3RhbmNlJz8NCj4gDQoNCkZvciB0aGlzIGNhc2UsIHdlIGFyZSBydW5uaW5nIGludG8g
+ZGV2bV9mcmVlX2lycSgpIGFuZCB0aGUgaW5zdGFuY2UgaXMNCnN0aWxsIGFsaXZlLiBUaGUgaXJx
+IGhhbmRsZXIgc2hvdWxkIGJlIGRlc3Ryb3llZCBiZWZvcmUgdGhlIFBDSSBpcw0KcmVtb3ZlZC4N
+Cg0KPiA+ICsgICAgICAgaWYgKHRlc3RfYml0KE1UNzZfUkVNT1ZFRCwgJmRldi0+bXQ3Ni5waHku
+c3RhdGUpKQ0KPiA+ICsgICAgICAgICAgICAgICByZXR1cm4gSVJRX05PTkU7DQo+ID4gICAgICAg
+ICBtdDc2X3dyKGRldiwgZGV2LT5pcnFfbWFwLT5ob3N0X2lycV9lbmFibGUsIDApOw0KPiA+IA0K
+PiA+ICAgICAgICAgaWYgKCF0ZXN0X2JpdChNVDc2X1NUQVRFX0lOSVRJQUxJWkVELCAmZGV2LT5t
+cGh5LnN0YXRlKSkNCj4gPiAtLQ0KPiA+IDIuMTguMA0KPiA+IA0KPiANCg==
 
