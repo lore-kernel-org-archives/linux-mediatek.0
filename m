@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F882C4707C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jan 2024 21:24:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05F5BC3DA79
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jan 2024 21:37:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g4BibwaX8MWABZKTTuvrQf1jMOqo1GohyvM0tbsIEuY=; b=Nqxh0fhZao91n0LHI2MFACE2cM
-	+338yhtjWpxJVb8PXuI+1q51w+fVBvYyxLfu0U5UlPCroa272lgkYU7apGKXENgIny1AhQLJCuVWj
-	ZbxjwrFRKNG6n/ZSfIJ8cjNuD3VLOVbS9BAIE8XQGPMOMwJb6shZLLhNlaqlWssaEflSrS9/scqks
-	CY5BaiV7HFsSt9pjbJdd2c2w4RnNsjYDyCFXP0NLN7J2zI78i9B1qo4+/m7GTozYIeyvwIl3pmdGt
-	vne3UOaygwdDOK/1pL05e8lg2nHeV3Eq0xiu4eTXoan6vGYJUsP3X0CSaAPS1T8Z+NiYcJnQglHqR
-	nf5iCidA==;
+	bh=bpZXuxTCll8YyBXk7ascc8Zs2wHnoSmMilYdgRpGMyg=; b=GBG4DZT9mP130xJhQziOyya/fB
+	HBpYWZsnHt46LStH47FK+uTTZhT2Je42+IBdwBDpk3rR+gDIs66jjL4xqssPH3Q7BHQX2Kih2Kfsm
+	WDkWSzfiLvo66k4G5InIXM/prmn9Pj6bW8Aqb80rlnsi5Yyv8XVHisvlirtDO64sPl1BrYGR17a9J
+	+6lDIzwK/nwK18/STfR+8nVoyZPo7EIjMycTr6Zormsycoqc90uAH035/ZOqVzdWj5Ka+XD7ycLHl
+	SahDPgYRgyboCB5hR427JYnxS8nJ+2AlwlPzu/VRESrPkZE/iedkE8dYOj8rqunlUylj9aJhhnJcb
+	/S30tLnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPURX-00ADwq-0q;
-	Mon, 15 Jan 2024 21:24:27 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1rPUe8-00AEf4-2R;
+	Mon, 15 Jan 2024 21:37:28 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPURU-00ADvs-0G;
-	Mon, 15 Jan 2024 21:24:25 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-40e7065b7bdso20881405e9.3;
-        Mon, 15 Jan 2024 13:24:21 -0800 (PST)
+	id 1rPUe5-00AEeb-1m;
+	Mon, 15 Jan 2024 21:37:26 +0000
+Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-a28da6285c1so1650139466b.0;
+        Mon, 15 Jan 2024 13:37:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1705353860; x=1705958660; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1705354643; x=1705959443; darn=lists.infradead.org;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=g4BibwaX8MWABZKTTuvrQf1jMOqo1GohyvM0tbsIEuY=;
-        b=ffbXjOBFo0Q2X+KTtC0YmQ4QzS4lRrQgTX6GdcdqifphTY2dOkvOwXvo/KOiIyE+ED
-         wjUIQabdl+CfYTrOpXdlg8s6lyEIB1+8ThxnNBOV/RXulQSBGTZryZrXZBqZTYhROfwV
-         m1ohi8veK9eddFYqAFxGZJ1gFYavFszFyKxSswYEGv6tUnIiFIj2s1b9tWnXlrv3mLzW
-         jeCz+iCd3ifOwAKN0kjKGl9FFzByY+3C7rr8alXem5jHQzYfkQ6W503hr1EjLNUrMCpe
-         UW9M1n0/k0ensOvdLLt4a7aoyAIOC2Pqm20mDdoWvqzcl4YGmBKXWTAvKKEx2Uz7NlfX
-         Hh3Q==
+        bh=bpZXuxTCll8YyBXk7ascc8Zs2wHnoSmMilYdgRpGMyg=;
+        b=hRwj1vrIoVSuqJf0F0BnmQhjlGjsG4V04a9xvBY2je8KdzukhnNPI2W3vNpBGkJ64S
+         o2jgbSk7tjb1WUK8EmQXCvOd6YlB8okKu3lozJ4QzdmNBDDNanra7D0oKPsiLWHjlgM1
+         r6HVEVXsVyXgBXjjxvMDiSlcUKxvJLyBsjECyxR/2cavDdmPCi/jrigpIoTdPyy5AGni
+         orpEIliwS8lUybDBgb4cxxL+6eFI4zvgjPuMIdnE1+eh5a6g/GRSzxmRgxrJnT5L9uyQ
+         dq1P6GFwd+l90rzlZsYzd6LmgTY+QEwtFm0cdaWWc/bkBhbEKqKjyO4JcdATUwIMJFVg
+         wsaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705353860; x=1705958660;
+        d=1e100.net; s=20230601; t=1705354643; x=1705959443;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=g4BibwaX8MWABZKTTuvrQf1jMOqo1GohyvM0tbsIEuY=;
-        b=vTL46fPMMbfxhKAUumMfLKLU4Ls8fSQuvK8M5Bn+Ze3ljP2EJsYBecLUDlQy5fz15u
-         OSk1hAG2wi02/z41Yu1nSX38ee+8Hwtw9zL7VV6bGVG7f8UukFuNIM0laX8TRWTzJwDn
-         HTmU9JyZuZZRg+HUf4c/1+c6+1E+YSTyGX6+3ZHWEYkKBpbmgK+WxO9i7EvRBPmOiEu2
-         /O1CYo7xJ+vVN7MDnxIByvQUMe+9D/KpYcjKScJU/wkhwLDxUhp/UdQm30uX4G3iPyFv
-         LtEVUmq6MgSqFMtZRhCDJuMafWnn06QPxOMivN+YrXoq505MoSrZnZs5lykB8wODASnK
-         yTCw==
-X-Gm-Message-State: AOJu0YzWCqKcazrCAsV1Py/vwAzwr62QinXbtBjDfygTKZDHrcnx2y+e
-	BPyuoUvBUk2yUC5HsZ28Yys=
-X-Google-Smtp-Source: AGHT+IGS2DleYsPDxFubSZWuGUfOFBEeJSJbvbS8UfWv276dj6fVdSeHn96g53WwPCorL+XvGdQWyw==
-X-Received: by 2002:a05:600c:3c8f:b0:40e:6ddb:2970 with SMTP id bg15-20020a05600c3c8f00b0040e6ddb2970mr1548393wmb.274.1705353860266;
-        Mon, 15 Jan 2024 13:24:20 -0800 (PST)
+        bh=bpZXuxTCll8YyBXk7ascc8Zs2wHnoSmMilYdgRpGMyg=;
+        b=qxQeGleZqpZTyBxGpam/DOtOIE7mkd+tdzf71SAr9MydL//TKQWlzS5mKrjxcqeRuq
+         xb4jFg3gXAL8da2N2x6erl5QWi+zPBGnNl9ZBQ+uybl42kjE4dY/7Grk6CVKb748T46B
+         6TgW2RmcxHudRAc4r41J6Q4JAFia2YlDIJi7tixZOXSAHin/yzSb61ml8dCTavO1zalG
+         N2A/PlNrNgqDGSFYXxfVzezwVnC8yyWs/p703pLkOGCS3wFj5aPPkNwxxZTqEmCOeKI+
+         oexm/JM1SwTsd6ckXGHXipTEwkN1jMKsCYFsLF5W5IAfVWlOAYsGcCrMvaIq7slb04RH
+         d9og==
+X-Gm-Message-State: AOJu0Ywt1V/OcrA7YWBaxp+yX5RAI7YfjobN/ipZrd0yQyapaPt8Yh85
+	GOyAFEG3JckNDnUQfsvMQrY=
+X-Google-Smtp-Source: AGHT+IE10fMtaUsiAYNb4EjOpfYRAmVcn8WrWtsDg/nQyoNok54YoiMAF7YZfJtVLHXZAjFBrmuKEQ==
+X-Received: by 2002:a17:906:bf47:b0:a2c:f62d:a598 with SMTP id ps7-20020a170906bf4700b00a2cf62da598mr6138308ejb.0.1705354642880;
+        Mon, 15 Jan 2024 13:37:22 -0800 (PST)
 Received: from skbuf ([188.25.255.36])
-        by smtp.gmail.com with ESMTPSA id v21-20020a50a455000000b005527c02c1d6sm6108008edb.50.2024.01.15.13.24.19
+        by smtp.gmail.com with ESMTPSA id c17-20020a170906695100b00a26e53be089sm5690286ejs.44.2024.01.15.13.37.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jan 2024 13:24:20 -0800 (PST)
-Date: Mon, 15 Jan 2024 23:24:17 +0200
+        Mon, 15 Jan 2024 13:37:22 -0800 (PST)
+Date: Mon, 15 Jan 2024 23:37:20 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
 To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 Cc: Daniel Golle <daniel@makrotopia.org>,
@@ -79,19 +79,19 @@ Cc: Daniel Golle <daniel@makrotopia.org>,
 	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [RFC PATCH net-next 5/8] net: dsa: mt7530: move enabling port 6
- to mt7530_setup_port6()
-Message-ID: <20240115212417.egqyslsbrqw6jp3q@skbuf>
+Subject: Re: [RFC PATCH net-next 6/8] net: dsa: mt7530: simplify
+ mt7530_setup_port6() and change to void
+Message-ID: <20240115213720.vxlumsjwrjdkqxsl@skbuf>
 References: <20240113102529.80371-1-arinc.unal@arinc9.com>
- <20240113102529.80371-6-arinc.unal@arinc9.com>
+ <20240113102529.80371-7-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240113102529.80371-6-arinc.unal@arinc9.com>
+In-Reply-To: <20240113102529.80371-7-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240115_132424_120490_B2F19792 
-X-CRM114-Status: GOOD (  10.51  )
+X-CRM114-CacheID: sfid-20240115_133725_597222_197DB558 
+X-CRM114-Status: GOOD (  18.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,13 +106,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jan 13, 2024 at 01:25:26PM +0300, Arınç ÜNAL wrote:
-> Enable port 6 only when port 6 is being used. Update the comment on
-> mt7530_setup() with a better explanation. Do not set MHWTRAP_MANUAL on
-> mt7530_setup_port5() as it's already done on mt7530_setup() beforehand.
-> 
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> ---
+On Sat, Jan 13, 2024 at 01:25:27PM +0300, Arınç ÜNAL wrote:
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 3ce4e0bb04dd..3a02308763ca 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -414,72 +414,56 @@ mt753x_preferred_default_local_cpu_port(struct dsa_switch *ds)
+>  }
+>  
+>  /* Setup port 6 interface mode and TRGMII TX circuit */
+> -static int
+> +static void
+>  mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
+>  {
+>  	struct mt7530_priv *priv = ds->priv;
+> -	u32 ncpo1, ssc_delta, trgint, xtal;
+> +	u32 ncpo1, ssc_delta, xtal;
+>  
+>  	mt7530_clear(priv, MT7530_MHWTRAP, MHWTRAP_P6_DIS);
+>  
+> +	if (interface == PHY_INTERFACE_MODE_RGMII)
+> +		return;
 
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+It would be good to add a comment here which states that the port comes
+out of reset with values good for RGMII.
+
+Also, there's a built-in assumption in this patch, that dynamically
+switching between RGMII and TRGMII is not possible. This is because
+phylink mac_config() is not necesarily called only once immediately
+after reset, but after each major_config().
+
+The fact that the driver sets both PHY_INTERFACE_MODE_RGMII and
+PHY_INTERFACE_MODE_TRGMII at once in config->supported_interfaces does
+not disprove that dynamic reconfiguration is possible. Normally,
+interfaces for which it doesn't make sense to dynamically reconfigure
+(they are wired to fixed pinout) have a single bit set in
+supported_interfaces. Is this switching something that makes any sense
+at all, given that port 6 is internal? It's not something that phylink
+knows to do today, but if this is theoretically possible and remotely
+useful, someone might end up wanting, in the future, to revert this patch.
 
