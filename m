@@ -4,75 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2447FC47077
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 17:06:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCF46C47077
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 17:23:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9HbZN4CyG8XR5HbXWl1OlbE6KwGeSWI/unoisp6ImNs=; b=Zd6P4uoDVG2//Gp7lbYul26Sja
-	rN5nWErL1VxGzZDHDxUuGNsOwMhJ5NLVwfdN37ErJhTeqLlPo2YBAY3B5T3JidHsHT1Sy3aWH4Hhb
-	eg7SKudXjW/Dd1s3qCMrX0GNf1jxkq8bwzp8ig8RGil/Z+/dnhBq1nKO6p1PPrhD7uWnpVwIWP/ey
-	YCgC7Zv50TD9Sfzf82s5V0u26IJ1FgiDpSfYjr6fqLeyqmTfJ3F+P6qJi9smN9y+tQzTOvgn1dLfY
-	VLMIrE6D/eWKGnCibtdy8xRFCrQol5SrqLbYj9L9XfrEbQYhw+phDCB1OrS1KeL7iGubnDodqEXcb
-	zylHNyfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aeuQUqx3/XnP3kl4fdTaJHE8QfJAHQ/nRMORFZZv5YM=; b=IqPMYri/L9Zmisarjn7j6ANSMy
+	9sAAIxnHbY1SzdBHPgNElhCrKauWJ1YNvgZpHlVTGbxtAPValc4uCfoVyjJz1AEEjGi1+eJuRQsha
+	0+N8mfRMOCyvhOuKS82QUp2UZiCThNnAfLzpLxbMDI5JeVMylNEGrDOLuWeh5WEUIiBDFXKcnj8Pn
+	1bFtAUt+xl5kac9pqGmrErHc1pV/QrJ82/e7V6GdMdwlMBDNrEzqKUN0ikU5TbYjZoSnt6YUwdX7u
+	WZSlnf1+pV16N22Ooyq6HKzkMhP6Rr8a79DQXS7J0CL/tpdnJPKYX3QiFMgX61HLg4oFql+43mucr
+	RxQJKVYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPmtJ-00ChS8-2r;
-	Tue, 16 Jan 2024 17:06:21 +0000
-Received: from relay8-d.mail.gandi.net ([217.70.183.201])
+	id 1rPnA6-00CmIk-1O;
+	Tue, 16 Jan 2024 17:23:42 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPmtF-00ChRI-1D;
-	Tue, 16 Jan 2024 17:06:19 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 56CE41BF204;
-	Tue, 16 Jan 2024 17:06:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1705424767;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9HbZN4CyG8XR5HbXWl1OlbE6KwGeSWI/unoisp6ImNs=;
-	b=EmY52/eFthuRUhpVhsbjsK+A6rs+RHpeZUlai6n64lBUcnxrMzTld4zvurzDsEkejPiz6G
-	z1DEU4qSG3V8H7LEqRqkhsXTiU4ECLRF3yxZfGi0TcBSPfPq+T2E2VB9gdSC271RsoZnpU
-	spoFhfo/jlaYTHcV6CHzg4+/AFBYXxrp3w418zoK9jPV/fZxjXD2P8G84pn6CUgDbcmNRH
-	R6MWmIVmfSyt+Cn2saJD1E+3OsupJkpf+r3OtdG3r6pgrdae5019MW9yoDGYUcdEuijoCP
-	oR0iN5wpmGm1ZcYCFv6PvNiZq4qJl2r/xM174AtI9KRXkwWib6acok2jWKol/w==
-Message-ID: <b9070fb6-4b85-441e-a863-8fe562408e48@arinc9.com>
-Date: Tue, 16 Jan 2024 20:05:57 +0300
+	id 1rPnA3-00CmI9-1C;
+	Tue, 16 Jan 2024 17:23:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id DF54C612A4;
+	Tue, 16 Jan 2024 17:23:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 004E1C433C7;
+	Tue, 16 Jan 2024 17:22:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1705425783;
+	bh=aeuQUqx3/XnP3kl4fdTaJHE8QfJAHQ/nRMORFZZv5YM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=E0SGn7KrXcA80C/xwi0Z/mSipWXyXqCfPLSkw8/pmneo+TeIxjJ5ef//g/+gfjqX8
+	 bST+sdWxN9OIeGmD/WDg09AfEKZQPeORVSPwoSLFITnywfu/xQ71X3zrn2ycopwH1T
+	 TZMvhEN9azPOhg8i+XRETu8SU63SVn1DIj+srzW1LOtgOJE8iKF3nfFu5w1nCWt0Bw
+	 ERRZMoqBmAm1cxhQ4rKhlzRJsPSMnW9eBw3ErsdnION2LTyF30AbptlsXbq7Ty1aYK
+	 CISRiIbfNciN83cXBjh/7Y6NG2Uo8vy/lzCk8Dlou5ukI1CMlpFdJnrDR/mm4Jq6hD
+	 ItS9GqpuVQCkA==
+Date: Tue, 16 Jan 2024 17:22:57 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Jason-JH Lin =?utf-8?B?KOael+edv+elpSk=?= <Jason-JH.Lin@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>,
+	Johnson Wang =?utf-8?B?KOeOi+iBlumRqyk=?= <Johnson.Wang@mediatek.com>,
+	Singo Chang =?utf-8?B?KOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	Jason-ch Chen =?utf-8?B?KOmZs+W7uuixqik=?= <Jason-ch.Chen@mediatek.com>,
+	Shawn Sung =?utf-8?B?KOWui+WtneismSk=?= <Shawn.Sung@mediatek.com>,
+	Nancy Lin =?utf-8?B?KOael+aso+ieoik=?= <Nancy.Lin@mediatek.com>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>,
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 2/4] dt-bindings: mailbox: mediatek: gce-mailbox: Add
+ reference to gce-props.yaml
+Message-ID: <20240116-cancel-perpetual-08320e21ec33@spud>
+References: <20240110063532.14124-1-jason-jh.lin@mediatek.com>
+ <20240110063532.14124-3-jason-jh.lin@mediatek.com>
+ <20240110-grumbling-tattling-0202fc5e21f2@spud>
+ <8c4004d5b6f68dc096aaf2a537e429c310b60c08.camel@mediatek.com>
+ <20240111-anthology-dock-c60d28ac7f1c@spud>
+ <5eaccb10853215a6399759a715d2f0356782bac9.camel@mediatek.com>
+ <20240115-player-waltz-8efb5885a23f@spud>
+ <4f1e6bdb3e266cf0e89f8a664095ea1709f9afe0.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH net-next 6/8] net: dsa: mt7530: simplify
- mt7530_setup_port6() and change to void
-Content-Language: en-US
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Daniel Golle <daniel@makrotopia.org>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
- Luiz Angelo Daros de Luca <luizluca@gmail.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20240113102529.80371-1-arinc.unal@arinc9.com>
- <20240113102529.80371-7-arinc.unal@arinc9.com>
- <20240115213720.vxlumsjwrjdkqxsl@skbuf>
- <7f59d9e6-1653-4a8d-910d-5922452bb9e8@arinc9.com>
- <20240116134705.mw2a2twoakw5b7jq@skbuf>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20240116134705.mw2a2twoakw5b7jq@skbuf>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="6o/PZYXOtaXbB6O9"
+Content-Disposition: inline
+In-Reply-To: <4f1e6bdb3e266cf0e89f8a664095ea1709f9afe0.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_090617_711362_0556EF36 
-X-CRM114-Status: GOOD (  21.91  )
+X-CRM114-CacheID: sfid-20240116_092339_501103_0875DA90 
+X-CRM114-Status: GOOD (  37.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,75 +95,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16.01.2024 16:47, Vladimir Oltean wrote:
-> On Tue, Jan 16, 2024 at 04:09:18PM +0300, Arınç ÜNAL wrote:
->> Do you mean by internal port that the port does not have MII pinout? Port 6
->> of the MT7530 switch do. It is possible to have an external PHY wired to it.
-> 
-> Yes, this is what I meant by internal port. It seems I was wrong to
-> assume it is always connected to GMAC0.
-> 
-> How is the selection done between internal and external wiring?
 
-There are two variants of MT7530. One is standalone, the other comes with
-the SoC as a part of the multi-chip module. More information at
-mediatek,mt7530.yaml.
+--6o/PZYXOtaXbB6O9
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-The standalone one is straightforward. A MAC or a PHY can be wired to the
-MII pinouts of port 5 and 6 on the PCB, just as the relevant MII standard
-describes.
+On Tue, Jan 16, 2024 at 08:21:15AM +0000, Jason-JH Lin (=E6=9E=97=E7=9D=BF=
+=E7=A5=A5) wrote:
+> On Mon, 2024-01-15 at 17:23 +0000, Conor Dooley wrote:
+> > On Fri, Jan 12, 2024 at 07:44:13AM +0000, Jason-JH Lin (=E6=9E=97=E7=9D=
+=BF=E7=A5=A5) wrote:
+> > > On Thu, 2024-01-11 at 17:31 +0000, Conor Dooley wrote:
+> > > > On Wed, Jan 10, 2024 at 04:36:20PM +0000, Jason-JH Lin (=E6=9E=97=
+=E7=9D=BF=E7=A5=A5)
 
-On the MT7621 SoCs which include the switch IC, port 6 is wired to GMAC0,
-port 5 is wired to GMAC1. I assume you mean internal and external wiring in
-reference to this case. This is the internal wiring.
+> > > > > 2. We'll have the secure CMDQ mailbox driver in the future
+> > > > > patch
+> > > > > [1].
+> > > > > It will request or reserve a mailbox channel, which is a
+> > > > > dedicate
+> > > > > GCE
+> > > > > thread, as a secure IRQ handler. This GCE thread executes a
+> > > > > looping
+> > > > > instruction set that keeps waiting for the gce-event set from
+> > > > > another
+> > > > > GCE thread in the secure world. So we also need to tell the
+> > > > > CMDQ
+> > > > > driver
+> > > > > what gce-event need to be waited.
+> > > >=20
+> > > > Ditto here, what level does this vary at? Do different SoCs or
+> > > > different
+> > > > boards/platforms dictate the value?
+> > >=20
+> > > It's a SoC level, the SoC supports secure feature will need this
+> > > property.
+> > >=20
+> > > > Could this channel be determined from the soc-specific
+> > > > compatible?
+> > > >=20
+> > > > In other words, please explain in your commit message why this
+> > > > requires
+> > > > a property and is not detectable from any existing mechanism.
+> > > > From
+> > > > reading this I don't know what is preventing the secure mailbox
+> > > > channel
+> > > > from picking a "random" unused channel.
+> > >=20
+> > > The secure channel could be dedicated from the soc-specific
+> > > compatible,
+> > > but the event ID couldn't.
+> > >=20
+> > > The same event signal corresponding event ID may changes in
+> > > different
+> > > SoC.
+> > > E.g.
+> > > The HW event signal for CMDQ_EVENT_VDO0_MUTEX_STREAM_DONE_0 is
+> > > corresponding to GCE event ID: 574 in MT8188, but it's
+> > > corresponding to
+> > > eventID: 597 in MT8195.
+> >=20
+> > Is it always 574 in MT8188 and always 597 in MT8195?
+> >=20
+> Yes, some gce-events are hardware bound and they can not change by
+> software. For example, in MT8195, when VDO0_MUTEX is stream done,
+> VDO_MUTEX will send an event signal to GCE, and the value of event
+> ID:597 will be set to 1. In MT8188, the value of event ID: 574 will be
+> set to 1 when VOD0_MUTEX is stream done.
+>=20
+> Some of gce-events are not hardware bound and they can change by
+> software. For example, in MT8188, we can take the event ID: 855 that is
+> not bound to any hardware to set its value to 1 when the driver in
+> secure world completes a task. But in MT8195, the event ID: 855 is
+> already bound to VDEC_LAT1, so we have to take another event ID to
+> achieve the same purpose.
+> This event ID can be change any IDs that is not bound to any hardware
+> and is not use in any software driver yet.
+> We can see if the event ID is bound to the hardware or is used by
+> software driver in the header
+> include/de-bindings/mailbox/mediatek,mt8188-gce.h.
 
-The external wiring works by wiring the PHY or MAC to the MII pinouts of
-the SoC's two MACs. Since RX of the switch MAC is wired to TX of the SoC
-MAC and vice versa, the external PHY or MAC must be wired TX to TX and RX
-to RX. Ubiquiti EdgeRouter X SFP is wired this way. The wiring for clock
-pins may need to be mirrored too, I haven't studied the RGMII specification
-that much in detail. This works by not enabling the SoC MAC.
+I see. Bring this particular patch back with your future series that
+adds support for the secure channel then.
 
-> 
-> If external wiring to a PHY is possible, shouldn't the driver accept all
-> 4 RGMII variants with phy_interface_mode_is_rgmii(), because the delays
-> specified in "rgmii-txid", "rgmii-rxid", "rgmii-id" always pertain to
-> the PHY, and thus it doesn't make sense for the MAC to not allow the use
-> of the full spectrum?
+Thanks,
+Conor.
 
-Great point. I think delays are not supported on port 6. There's only the
-"MT7530 Giga Switch programming guide v0.1" document mentioning setting
-delays on page 8, and it's only for port 5. It is also implemented on
-mt7530_setup_port5():
+--6o/PZYXOtaXbB6O9
+Content-Type: application/pgp-signature; name="signature.asc"
 
-/* P5 RGMII RX Clock Control: delay setting for 1000M */
-mt7530_write(priv, MT7530_P5RGMIIRXCR, CSR_RGMII_EDGE_ALIGN);
+-----BEGIN PGP SIGNATURE-----
 
-/* Don't set delay in DSA mode */
-if (!dsa_is_dsa_port(priv->ds, 5) &&
-     (interface == PHY_INTERFACE_MODE_RGMII_TXID ||
-      interface == PHY_INTERFACE_MODE_RGMII_ID))
-	tx_delay = 4; /* n * 0.5 ns */
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZaa7cQAKCRB4tDGHoIJi
+0qusAQC4vZ+1x8P8AmGrCXPV8uhPrW4y/28p8NsA0qLh9iIu4wEA7K74gMAGklLL
+9RRduns7EsZP8DogMqz9HEU2u3MHSg4=
+=QOwU
+-----END PGP SIGNATURE-----
 
-/* P5 RGMII TX Clock Control: delay x */
-mt7530_write(priv, MT7530_P5RGMIITXCR,
-	     CSR_RGMII_TXC_CFG(0x10 + tx_delay));
-
-There's only the TX driving mentioned for port 6 on the document. I'm
-guessing port 6 was intended to connect to another TRGMII capable MAC so
-delays were out of the question. TRGMII is just overclocked RGMII to
-provide up to 2Gbps TX/RX, at least in theory. The whole existence of the
-TRGMII interface on Linux is only being used by the MT7621 and MT7623 SoC
-MACs, and port 6 MAC of the MT7530 switch.
-
-> 
->> So it would make sense to design mt7530_setup_port6() in the sense that
->> dynamic reconfiguration is possible.
-> 
-> Ok, you mean to keep the dynamic reconfiguration possible rather than
-> redesign to disallow it.
-
-Very much so.
-
-Arınç
+--6o/PZYXOtaXbB6O9--
 
