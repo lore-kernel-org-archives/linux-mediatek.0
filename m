@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F419C47077
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 08:17:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51006C4706C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 08:17:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VCy+0DM59zTgHBUYuuvVOujtDEofJeeu7fJBTUB/2YY=; b=Syr1GVOSAnjxul/YpR1Ji5gePX
-	Y4iB9cbaOF4kEkugGqPAUMV+QF2eMaHvWv3BAAAYjfeCl45lrPcHcznygpDeoyYVbIHo5+96jDC5Y
-	kStJAzTAOTZqRbQqKY46JZlQVkBrVow6nMTxjynjE0afKo13ZYGN6Yj9WGSm10ZzjER9LpMJV0rL3
-	I4MQBX6IZnqgS4FNmwkZ6nDqtWAv1tVeGSouBc6EC3rYfwztSMy8CQ9cIZfcct2MyrjeBO8Yx3tJd
-	xFZ/97kEFr3Qjnomnk0tCoAYnLQLsVP1ekwcgCcOG3JtWvnET4gYa8PTdFbgzFs0usv2eMA9uYK21
-	Y3qBxfYg==;
+	bh=rrhK0c+0Rq6kEjHQTS6pPqJPShO2zOU/mFt3UGYecps=; b=UD6wMQIQ/ZYPLvsI1skkxc9pxH
+	EOU03q/uPg351/eT/leVmX5j38/1sZLIQ8ogY3162G/SvGKyaIa3hSrt9Zjo1a8/Vhwg1IP0mAY7Y
+	ASXNiGhzA6IrfXdaPYCBRNLDxJwdy8a/UtXa7J7Hy0hn8VwlnqJ/fVrKnJG/Noi30z5yroMq1WNNl
+	5CK/D2JPYvQs1TQCG0ctt3mA//KdbrFVoMWcrA8Xlg+uO3ZiDlHhXwidRLUq0Rc87WqzPVZL+Vjdh
+	UiNXFAEWolQdveLkHh/smGo5ki4rSrs+Gy7s20IYW6acPP6RuJWq4EcZgG1pDcW5+0DM6njKsKZrV
+	0j4h5d/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPed7-00BOWG-0O;
-	Tue, 16 Jan 2024 08:17:05 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1rPedL-00BOdW-0m;
+	Tue, 16 Jan 2024 08:17:19 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPed4-00BOU0-1R
+	id 1rPedI-00BObd-2X
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Jan 2024 08:17:03 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-5592d72edecso2280765a12.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Jan 2024 00:16:58 -0800 (PST)
+	Tue, 16 Jan 2024 08:17:18 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a271a28aeb4so1037394466b.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Jan 2024 00:17:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705393017; x=1705997817; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1705393035; x=1705997835; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=VCy+0DM59zTgHBUYuuvVOujtDEofJeeu7fJBTUB/2YY=;
-        b=m63GhRIKSvmJiwRm79IEBA5DBMikKLhh+z6w+IyD0XeWT9mM7Qkp4pg6drb6muRadE
-         PATLdh+p5Y/iQ1nhTpAlN86Gf+mrrVWt2UASPZv07V+kAGDQkaSSRQNXA4dwzSCBRxYK
-         6Juc3lNrQhOMOcqHdURB46cFxhBn/4n8lhELoGN6PrmQFFAkW/Dwjusy/AZjd/jBgWZh
-         GI7t1avzySMev/XqUjCr5fLm5OxCAD9tVS2HYOwebMECAlzidxX6ZDgxQHGwx3DrU51F
-         laFSkq0Sr3LFLBdGV9A/E/PtciXdmF/ZVMN1mPiucc+wjhambMGO/NvrpteRn54XUPW3
-         W9Aw==
+        bh=rrhK0c+0Rq6kEjHQTS6pPqJPShO2zOU/mFt3UGYecps=;
+        b=oRtyUKcdhee3dwlQ0/nYIzaOOsDt33O2EwtyMyFLVUblN+VHlAzSZiQcNt4JNIRYpM
+         WvEOg2BA8TiFzEOcGoalBz+Bhbvec6aKQ6fk8FMLknmJ7NJIWd5WQ9y7dJImrzJVB0oJ
+         W5WhCAwMbBiu0cqVOj0G5q48Q9Xjt2dzbIgW3vgSDK17FyQQxl32lH69dLsPQV+70Tff
+         0t7tqHlkaorwkYztBNixdmgANvRAIcknRa+PomDxn+isq+Gob8PeKD2fFlPTJjlonhiL
+         GnFpA7gfw9exzuCEIeEHF1wlXTg8Ktap0noS7LE6+UK97nEfrzP+Kr8g78iOi6Ca8Txe
+         E9Xw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705393017; x=1705997817;
+        d=1e100.net; s=20230601; t=1705393035; x=1705997835;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=VCy+0DM59zTgHBUYuuvVOujtDEofJeeu7fJBTUB/2YY=;
-        b=g9+SAm4KAtefHWJ755oIV/9E30s3+41R+VvJUmFZC85Vxw6P7BLzVjGy8lquDhI5X8
-         VRVIjTLf8H0KTSKo3906KruiXkUUdLAMZokoUvBP8ifUekfnSbD45cr+8lwvpZjfkuvm
-         q3iChhnDsb2E5DOzoOpDx+BIhTw+0VWUXWGUb7BZ9T/3jCkiVqiNyK480iaZMBzg1NjV
-         2+oajiIy6uqWJNKV/WeZqlPSN/JPiGBvUT/gaMqtTogYLiNAhpG5pg9sbTLki0XQ0EGS
-         kpHkg8he12Btp/uw1KhVDgXkbL/cTCNCv57WRb1N/QTQJHGwb7rGBCIu+Bi0Dt3cQUhl
-         Fr6w==
-X-Gm-Message-State: AOJu0YwcbfR7pHVHMQvnQ7aG28oUpaeaUyaBHu/WRdIYFA/3Ls2fLqwy
-	3p3NLcNRc66W/hkKRRZKQ5+Ul4zbyec+Hg==
-X-Google-Smtp-Source: AGHT+IFyV96uQzFbCV9ayjPZXQuesJzQraL9VFoWYo8L+C6+5JhuxEA40ShF48vJt+gKVVsXvIoHkg==
-X-Received: by 2002:a17:906:a44:b0:a26:db3d:4888 with SMTP id x4-20020a1709060a4400b00a26db3d4888mr2801216ejf.153.1705393017272;
-        Tue, 16 Jan 2024 00:16:57 -0800 (PST)
+        bh=rrhK0c+0Rq6kEjHQTS6pPqJPShO2zOU/mFt3UGYecps=;
+        b=h6/TIYl5xZybJAUOgq/19ovygK9n8Gl6TlcQ54mnYBO03BpFU3/LPYZS3jTMrMXp/y
+         8XSXrbO+jxPSVTm1kKiyfY+spe9lhVxaI6wfKh9KLIkWAtQTfi0EdaquwkMig48+nCWx
+         XmOVXoGK1E56ZVmIN/tHiIx1WebOGZGf16AWkpRrAjRHn8FfxuisJ4K7zRoVTfjv/vH8
+         gc4TiohniDrpddSUT0sePzHbExFqkBsEtl6RxP18Eyo7sxzOKypg3Dv2AoKoYk9sjuu3
+         2ZwJIyzDvQnY06SvHtHqQy+q7pCEcery/0y2FXRYyA+4Mn/g0ohnd0w6UwJJgD6/rhqT
+         e2Sw==
+X-Gm-Message-State: AOJu0Ywjf2px/YSJ1fCHbUbm0STe7/g2P5pUoyl++Gg5aUDoIHiXKgrw
+	R04Z8ZAJHhgE+XmMV8nHRTqRIsBe3Rr8zw==
+X-Google-Smtp-Source: AGHT+IFsuGoqfmd8ueOlfSy1KWHZl2ryVHic1JDuWPOXrlPGLSQboOdc1bK88UM3BI6/h7is3PV9Hw==
+X-Received: by 2002:a17:906:ff53:b0:a26:c83d:e086 with SMTP id zo19-20020a170906ff5300b00a26c83de086mr3025889ejb.103.1705393035378;
+        Tue, 16 Jan 2024 00:17:15 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.215.66])
-        by smtp.gmail.com with ESMTPSA id t19-20020a1709067c1300b00a2ca9d38654sm5267734ejo.85.2024.01.16.00.16.55
+        by smtp.gmail.com with ESMTPSA id t19-20020a1709067c1300b00a2ca9d38654sm5267734ejo.85.2024.01.16.00.17.13
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 16 Jan 2024 00:16:56 -0800 (PST)
-Message-ID: <6a1d612a-200e-4868-8577-49de933cf2bb@linaro.org>
-Date: Tue, 16 Jan 2024 09:16:54 +0100
+        Tue, 16 Jan 2024 00:17:14 -0800 (PST)
+Message-ID: <1125e1c3-4bbe-49c2-9c20-f109b782f15f@linaro.org>
+Date: Tue, 16 Jan 2024 09:17:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 04/15] arm64: dts: mediatek: radxa-nio-12l: Add external
- MT6360 PMIC on I2C6
+Subject: Re: [PATCH 07/15] arm64: dts: mediatek: radxa-nio-12l: Add MT6360
+ battery charger
 Content-Language: en-US
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  linux-mediatek@lists.infradead.org
@@ -78,7 +78,7 @@ Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  kernel@collabora.com
 References: <20240112094632.66310-1-angelogioacchino.delregno@collabora.com>
- <20240112094632.66310-5-angelogioacchino.delregno@collabora.com>
+ <20240112094632.66310-8-angelogioacchino.delregno@collabora.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -124,12 +124,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240112094632.66310-5-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240112094632.66310-8-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_001702_490742_80825C8C 
-X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-CacheID: sfid-20240116_001716_824569_64A50558 
+X-CRM114-Status: UNSURE (   7.76  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -146,15 +146,15 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 12/01/2024 10:46, AngeloGioacchino Del Regno wrote:
-> In preparation for adding the power tree for this board, add a node for
-> the MT6360 PMIC, connected to I2C6.
+> Enable the MT6360 PMIC's battery charger which also provides a regulator
+> the USB VBUS.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
 
-Why do you add new device in pieces? Logical change is "new device", not
-"half of device". If the patch is too big, sure, split it into two
-chunks, but not 15!
-
+Don't add new nodes one by one. This obfuscates entire picture.
 
 Best regards,
 Krzysztof
