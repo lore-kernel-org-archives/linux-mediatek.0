@@ -4,69 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AA01C47258
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 09:56:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4BFDC4706C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 10:28:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qZDdtv+xTP393/uLE7wbJPKxYVCBzUNH5S8uCh4zm9o=; b=RscAtqMOhZ10NFuxgxA6obltQ1
-	qlopF3lzPtcAFtusyke3//Ca47MRngJtQykJQs8roA0lQerAgV47zXggI7XCSPctCINDaXoIWoxXx
-	O7hiD7y0eYuPuVBjksgbaVrvGTxiw7KDWj/RTzssQKd6kG+qrqY0gr9hDJLpXEm0qQjgG5/l8a9eB
-	25UcE1vckztw6LGVPfrdKFR0DlnZdllNPMYfBRwaabRT+6n+wTqPb465C4fDCU3vjD1qneMtYpbc/
-	nZKaZD6OTYhHMLim3h39s7avK5/wUT4g+VAeDPFkQIFJz9hdT7LkjA4B7chm23tnneoLPU0B+7rol
-	Q2aXO0kA==;
+	bh=s0rfpmv9Or+stpxh4EBWSj6ehdjJTlWU7EHEjeSmTTQ=; b=WUpbYDH8YqgBYhu5KlGagOOZN7
+	zdA02rapFdxrqM2l5zzI6KJGvyqdq9U4+ipgvwnqu6BSjH3Pgf105iKf5WlHJrcmjsJ/JyTv4xneD
+	L1pQ/eEa6q6KMHdL9Pxh55pm/iJ2L0xKeSv5pd5eLwOuchZDcHk3uyVTpRG3XdIFmjHz6A0mnmp0N
+	AOdYngw9ykfBhaea2kwf8wa8dbVATsFzOHhcyFqTT8lbKd+fmqZCPWMOwiU546k3eRhrs9fk3njYS
+	oOL7FCEkM77TaMdkdbMIxMrIu3cRQYUZBeHhu88NBq+yMSeTbCBpHVi4sFur+voJdXepss0H6Kzpr
+	6rJg27Qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPgB5-00BbzD-0E;
-	Tue, 16 Jan 2024 09:56:15 +0000
+	id 1rPggR-00BfzH-2f;
+	Tue, 16 Jan 2024 10:28:39 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPgB0-00BbuT-1h;
-	Tue, 16 Jan 2024 09:56:12 +0000
+	id 1rPggM-00BfyM-1h;
+	Tue, 16 Jan 2024 10:28:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705398969;
-	bh=ihrYlqcfJH2iTt+S6IZaRZeXbpV9xKed8vW0TK/5lH8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=DfavQs062G4Ep8YU6BJqBZXeJI3NrkgXDT5iAduCZFZmiX0D/0o8jar1EZfLpSQn2
-	 8vHSobAQNGXvocFQOGl5F5VMnSbxBTCa+o01o0fo4pByHXzw1XBr29j45VLWGajSGd
-	 NmGYXJLTQ5uQw7Wro/1+ll8OA6dxwTijwvtaRw35tf/eGFgezB7Xq8d0RRpT+8ovLg
-	 hHQNhbx4pDh1I7vI7ixSbJzFWInjWMm/DMqC2pwmn7REK0MaDs/UvOFEuGh8QNkm5r
-	 foDQwqEPgUK2aq980tWCarCeQGf8aPcuL/lcle9MuOjOw7KiMgV36zkDEu+TIO1Dk7
-	 lGKgZk5qqrftg==
-Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1705400911;
+	bh=PZUrFo6wofZ134ZKXKMQfZxI6raHwunCQnvppb6TgF0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ld8DG5Rv52rXCMrMBVPQqZaDQG2VhlD8fDQBaNa8LxJ4uGD32vSEJNZufV6goewMN
+	 xAFHe/sIu+dnN12RS4u6cxveQXCGMHbeK16hCSDm1bRqs0WdgQpyP5UQy1rCWvocCT
+	 3ygkMlJfHoUa9P5aHLBi1EtTmLoVZMdfbQa6KM5gzCoAYTHoxUh/MBTgT9wKK76/v3
+	 bRE/M9YKq8xhjlTBeslcS+XOaNcymImKL+3HuTDPv61qC2Q6NwxnqEgn10Oroj7LIX
+	 Q8SEZor4vvp0Kn2ugEwzfecH20pvbyf+UBiCruWsixulcToqNvNh7BsxQ3FYFhjm2t
+	 rj/NivcW9XsRA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id AE2B83782067;
-	Tue, 16 Jan 2024 09:56:04 +0000 (UTC)
-From: Vignesh Raman <vignesh.raman@collabora.com>
-To: dri-devel@lists.freedesktop.org
-Cc: daniel@fooishbar.org,
-	helen.koike@collabora.com,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	david.heidelberg@collabora.com,
-	guilherme.gallo@collabora.com,
-	sergi.blanch.torne@collabora.com,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 7/7] drm/ci: rockchip: Add job to test panfrost GPU driver
-Date: Tue, 16 Jan 2024 15:24:39 +0530
-Message-Id: <20240116095439.107324-8-vignesh.raman@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20240116095439.107324-1-vignesh.raman@collabora.com>
-References: <20240116095439.107324-1-vignesh.raman@collabora.com>
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 79DD137811F1;
+	Tue, 16 Jan 2024 10:28:30 +0000 (UTC)
+Message-ID: <c476cc48-17ec-4e14-98d8-35bdffb5d296@collabora.com>
+Date: Tue, 16 Jan 2024 11:28:29 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/1] soc: mediatek: pm-domains: support clamp protection
+Content-Language: en-US
+To: "yu-chang.lee" <yu-chang.lee@mediatek.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, fparent@baylibre.com,
+ Ben Lok <ben.lok@mediatek.com>, Chris-qj Chen <Chris-qj.Chen@mediatek.com>,
+ Louis Yu <louis.yu@mediatek.com>, Bear Wang <bear.wang@mediatek.com>,
+ MandyJH Liu <MandyJH.Liu@mediatek.com>, Fan Chen <fan.chen@mediatek.com>,
+ Xiufeng Li <Xiufeng.Li@mediatek.com>, abailon@baylibre.com,
+ amergnat@baylibre.com, afgros@baylibre.com, msp@baylibre.com
+References: <Need help to validate power domain driver modification on mt8365>
+ <20240115111844.22240-1-yu-chang.lee@mediatek.com>
+ <20240115111844.22240-2-yu-chang.lee@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240115111844.22240-2-yu-chang.lee@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_015610_700792_D42AB75B 
-X-CRM114-Status: GOOD (  15.69  )
+X-CRM114-CacheID: sfid-20240116_022834_860446_24FADA0A 
+X-CRM114-Status: GOOD (  22.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,287 +83,632 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For rockchip rk3288 and rk3399, the GPU driver is panfrost.
-So add support in drm-ci to test panfrost driver for rockchip
-SOC and update xfails.
+Il 15/01/24 12:18, yu-chang.lee ha scritto:
+> This patch mainly do two things
+> 1. Add smi clamp protection support
+> 2. Force order of bus protection between infra and smi
+> 
+> For example: power on
+> "clamp protection enable" (smi, with clamp flag)
+>    -> regulator enable
+>      ...
+>        -> clamp protection disaled (smi, with clamp flag)
+>          -> bus protection disabled (smi -> infra)
+> 
+> For example: power off
+> "clamp protection enable" (smi, with clamp flag)
+>    -> bus protection enable (infra -> smi)
+> 
+> Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
+> ---
+>   drivers/pmdomain/mediatek/mt8183-pm-domains.h |  52 ++++---
+>   drivers/pmdomain/mediatek/mt8188-pm-domains.h |  41 +++++-
+>   drivers/pmdomain/mediatek/mt8365-pm-domains.h |  12 +-
+>   drivers/pmdomain/mediatek/mtk-pm-domains.c    | 132 +++++++++++++++---
+>   drivers/pmdomain/mediatek/mtk-pm-domains.h    |   2 +
+>   5 files changed, 189 insertions(+), 50 deletions(-)
+> 
+> diff --git a/drivers/pmdomain/mediatek/mt8183-pm-domains.h b/drivers/pmdomain/mediatek/mt8183-pm-domains.h
+> index c4c1b63d85b1..04fca4a1e8f3 100644
+> --- a/drivers/pmdomain/mediatek/mt8183-pm-domains.h
+> +++ b/drivers/pmdomain/mediatek/mt8183-pm-domains.h
+> @@ -103,6 +103,13 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+>   		.pwr_sta2nd_offs = 0x0184,
+>   		.sram_pdn_bits = GENMASK(8, 8),
+>   		.sram_pdn_ack_bits = GENMASK(12, 12),
+> +		.clamp_smi = {
+> +			BUS_PROT_WR(SMI,
+> +				    MT8183_SMI_COMMON_SMI_CLAMP_DISP,
+> +				    MT8183_SMI_COMMON_CLAMP_EN_SET,
+> +				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
+> +				    MT8183_SMI_COMMON_CLAMP_EN),
+> +		},
+>   		.bp_cfg = {
+>   			BUS_PROT_WR(INFRA,
+>   				    MT8183_TOP_AXI_PROT_EN_1_DISP,
+> @@ -114,11 +121,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+>   				    MT8183_TOP_AXI_PROT_EN_SET,
+>   				    MT8183_TOP_AXI_PROT_EN_CLR,
+>   				    MT8183_TOP_AXI_PROT_EN_STA1),
+> -			BUS_PROT_WR(SMI,
+> -				    MT8183_SMI_COMMON_SMI_CLAMP_DISP,
+> -				    MT8183_SMI_COMMON_CLAMP_EN_SET,
+> -				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
+> -				    MT8183_SMI_COMMON_CLAMP_EN),
+>   		},
+>   	},
+>   	[MT8183_POWER_DOMAIN_CAM] = {
+> @@ -129,6 +131,13 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+>   		.pwr_sta2nd_offs = 0x0184,
+>   		.sram_pdn_bits = GENMASK(9, 8),
+>   		.sram_pdn_ack_bits = GENMASK(13, 12),
+> +		.clamp_smi = {
+> +			BUS_PROT_WR(SMI,
+> +				    MT8183_SMI_COMMON_SMI_CLAMP_CAM,
+> +				    MT8183_SMI_COMMON_CLAMP_EN_SET,
+> +				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
+> +				    MT8183_SMI_COMMON_CLAMP_EN),
+> +		},
+>   		.bp_cfg = {
+>   			BUS_PROT_WR(INFRA,
+>   				    MT8183_TOP_AXI_PROT_EN_MM_CAM,
+> @@ -145,11 +154,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+>   					MT8183_TOP_AXI_PROT_EN_MM_SET,
+>   					MT8183_TOP_AXI_PROT_EN_MM_CLR,
+>   					MT8183_TOP_AXI_PROT_EN_MM_STA1),
+> -			BUS_PROT_WR(SMI,
+> -				    MT8183_SMI_COMMON_SMI_CLAMP_CAM,
+> -				    MT8183_SMI_COMMON_CLAMP_EN_SET,
+> -				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
+> -				    MT8183_SMI_COMMON_CLAMP_EN),
+>   		},
+>   	},
+>   	[MT8183_POWER_DOMAIN_ISP] = {
+> @@ -160,6 +164,13 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+>   		.pwr_sta2nd_offs = 0x0184,
+>   		.sram_pdn_bits = GENMASK(9, 8),
+>   		.sram_pdn_ack_bits = GENMASK(13, 12),
+> +		.clamp_smi = {
+> +			BUS_PROT_WR(SMI,
+> +				    MT8183_SMI_COMMON_SMI_CLAMP_ISP,
+> +				    MT8183_SMI_COMMON_CLAMP_EN_SET,
+> +				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
+> +				    MT8183_SMI_COMMON_CLAMP_EN),
+> +		},
+>   		.bp_cfg = {
+>   			BUS_PROT_WR(INFRA,
+>   				    MT8183_TOP_AXI_PROT_EN_MM_ISP,
+> @@ -171,11 +182,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+>   					MT8183_TOP_AXI_PROT_EN_MM_SET,
+>   					MT8183_TOP_AXI_PROT_EN_MM_CLR,
+>   					MT8183_TOP_AXI_PROT_EN_MM_STA1),
+> -			BUS_PROT_WR(SMI,
+> -				    MT8183_SMI_COMMON_SMI_CLAMP_ISP,
+> -				    MT8183_SMI_COMMON_CLAMP_EN_SET,
+> -				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
+> -				    MT8183_SMI_COMMON_CLAMP_EN),
+>   		},
+>   	},
+>   	[MT8183_POWER_DOMAIN_VDEC] = {
+> @@ -186,7 +192,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+>   		.pwr_sta2nd_offs = 0x0184,
+>   		.sram_pdn_bits = GENMASK(8, 8),
+>   		.sram_pdn_ack_bits = GENMASK(12, 12),
+> -		.bp_cfg = {
+> +		.clamp_smi = {
+>   			BUS_PROT_WR(SMI,
+>   				    MT8183_SMI_COMMON_SMI_CLAMP_VDEC,
+>   				    MT8183_SMI_COMMON_CLAMP_EN_SET,
+> @@ -202,7 +208,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+>   		.pwr_sta2nd_offs = 0x0184,
+>   		.sram_pdn_bits = GENMASK(11, 8),
+>   		.sram_pdn_ack_bits = GENMASK(15, 12),
+> -		.bp_cfg = {
+> +		.clamp_smi = {
+>   			BUS_PROT_WR(SMI,
+>   				    MT8183_SMI_COMMON_SMI_CLAMP_VENC,
+>   				    MT8183_SMI_COMMON_CLAMP_EN_SET,
+> @@ -218,6 +224,13 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+>   		.pwr_sta2nd_offs = 0x0184,
+>   		.sram_pdn_bits = GENMASK(8, 8),
+>   		.sram_pdn_ack_bits = GENMASK(12, 12),
+> +		.clamp_smi = {
+> +			BUS_PROT_WR(SMI,
+> +				    MT8183_SMI_COMMON_SMI_CLAMP_VPU_TOP,
+> +				    MT8183_SMI_COMMON_CLAMP_EN_SET,
+> +				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
+> +				    MT8183_SMI_COMMON_CLAMP_EN),
+> +		},
+>   		.bp_cfg = {
+>   			BUS_PROT_WR(INFRA,
+>   				    MT8183_TOP_AXI_PROT_EN_MM_VPU_TOP,
+> @@ -234,11 +247,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+>   				    MT8183_TOP_AXI_PROT_EN_MM_SET,
+>   				    MT8183_TOP_AXI_PROT_EN_MM_CLR,
+>   				    MT8183_TOP_AXI_PROT_EN_MM_STA1),
+> -			BUS_PROT_WR(SMI,
+> -				    MT8183_SMI_COMMON_SMI_CLAMP_VPU_TOP,
+> -				    MT8183_SMI_COMMON_CLAMP_EN_SET,
+> -				    MT8183_SMI_COMMON_CLAMP_EN_CLR,
+> -				    MT8183_SMI_COMMON_CLAMP_EN),
+>   		},
+>   	},
+>   	[MT8183_POWER_DOMAIN_VPU_CORE0] = {
+> diff --git a/drivers/pmdomain/mediatek/mt8188-pm-domains.h b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
+> index ade3c01149af..be2393c41f3e 100644
+> --- a/drivers/pmdomain/mediatek/mt8188-pm-domains.h
+> +++ b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
+> @@ -577,6 +577,18 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+>   		.pwr_sta2nd_offs = 0x170,
+>   		.sram_pdn_bits = BIT(8),
+>   		.sram_pdn_ack_bits = BIT(12),
+> +		.clamp_smi = {
+> +			BUS_PROT_WR(SMI,
+> +				    MT8188_SMI_COMMON_SMI_CLAMP_DIP_TO_VDO0,
+> +				    MT8188_SMI_COMMON_CLAMP_EN_SET,
+> +				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
+> +				    MT8188_SMI_COMMON_CLAMP_EN_STA),
+> +			BUS_PROT_WR(SMI,
+> +				    MT8188_SMI_COMMON_SMI_CLAMP_DIP_TO_VPP1,
+> +				    MT8188_SMI_COMMON_CLAMP_EN_SET,
+> +				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
+> +				    MT8188_SMI_COMMON_CLAMP_EN_STA),
+> +		},
+>   		.reset_smi = {
+>   			SMI_RESET_WR(MT8188_SMI_LARB10_RESET,
+>   				     MT8188_SMI_LARB10_RESET_ADDR),
+> @@ -589,7 +601,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+>   			SMI_RESET_WR(MT8188_SMI_LARB15_RESET,
+>   				     MT8188_SMI_LARB15_RESET_ADDR),
+>   		},
+> -		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
+> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_CLAMP_PROTECTION,
+>   	},
+>   	[MT8188_POWER_DOMAIN_IPE] = {
+>   		.name = "ipe",
+> @@ -599,11 +611,18 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+>   		.pwr_sta2nd_offs = 0x170,
+>   		.sram_pdn_bits = BIT(8),
+>   		.sram_pdn_ack_bits = BIT(12),
+> +		.clamp_smi = {
+> +			BUS_PROT_WR(SMI,
+> +				    MT8188_SMI_COMMON_SMI_CLAMP_IPE_TO_VPP1,
+> +				    MT8188_SMI_COMMON_CLAMP_EN_SET,
+> +				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
+> +				    MT8188_SMI_COMMON_CLAMP_EN_STA),
+> +		},
+>   		.reset_smi = {
+>   			SMI_RESET_WR(MT8188_SMI_LARB12_RESET,
+>   				     MT8188_SMI_LARB12_RESET_ADDR),
+>   		},
+> -		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
+> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_CLAMP_PROTECTION,
+>   	},
+>   	[MT8188_POWER_DOMAIN_CAM_VCORE] = {
+>   		.name = "cam_vcore",
+> @@ -682,13 +701,20 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+>   		.pwr_sta2nd_offs = 0x170,
+>   		.sram_pdn_bits = BIT(8),
+>   		.sram_pdn_ack_bits = BIT(12),
+> +		.clamp_smi = {
+> +			BUS_PROT_WR(SMI,
+> +				    MT8188_SMI_COMMON_SMI_CLAMP_CAM_SUBA_TO_VPP0,
+> +				    MT8188_SMI_COMMON_CLAMP_EN_SET,
+> +				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
+> +				    MT8188_SMI_COMMON_CLAMP_EN_STA),
+> +		},
+>   		.reset_smi = {
+>   			SMI_RESET_WR(MT8188_SMI_LARB16A_RESET,
+>   				     MT8188_SMI_LARB16A_RESET_ADDR),
+>   			SMI_RESET_WR(MT8188_SMI_LARB17A_RESET,
+>   				     MT8188_SMI_LARB17A_RESET_ADDR),
+>   		},
+> -		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
+> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_CLAMP_PROTECTION,
+>   	},
+>   	[MT8188_POWER_DOMAIN_CAM_SUBB] = {
+>   		.name = "cam_subb",
+> @@ -698,13 +724,20 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+>   		.pwr_sta2nd_offs = 0x170,
+>   		.sram_pdn_bits = BIT(8),
+>   		.sram_pdn_ack_bits = BIT(12),
+> +		.clamp_smi = {
+> +			BUS_PROT_WR(SMI,
+> +				    MT8188_SMI_COMMON_SMI_CLAMP_CAM_SUBB_TO_VDO0,
+> +				    MT8188_SMI_COMMON_CLAMP_EN_SET,
+> +				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
+> +				    MT8188_SMI_COMMON_CLAMP_EN_STA),
+> +		},
+>   		.reset_smi = {
+>   			SMI_RESET_WR(MT8188_SMI_LARB16B_RESET,
+>   				     MT8188_SMI_LARB16B_RESET_ADDR),
+>   			SMI_RESET_WR(MT8188_SMI_LARB17B_RESET,
+>   				     MT8188_SMI_LARB17B_RESET_ADDR),
+>   		},
+> -		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
+> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_CLAMP_PROTECTION,
+>   	},
+>   };
+>   
+> diff --git a/drivers/pmdomain/mediatek/mt8365-pm-domains.h b/drivers/pmdomain/mediatek/mt8365-pm-domains.h
+> index 3d83d49eaa7c..f9813cdcd3aa 100644
+> --- a/drivers/pmdomain/mediatek/mt8365-pm-domains.h
+> +++ b/drivers/pmdomain/mediatek/mt8365-pm-domains.h
+> @@ -76,7 +76,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8365[] = {
+>   		.pwr_sta2nd_offs = 0x0184,
+>   		.sram_pdn_bits = GENMASK(8, 8),
+>   		.sram_pdn_ack_bits = GENMASK(12, 12),
+> -		.bp_cfg = {
+> +		.clamp_smi = {
+>   			MT8365_BUS_PROT_SMI_WR_CLAMP_EN_PORT(1),
+>   		},
+>   	},
+> @@ -138,10 +138,12 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8365[] = {
+>   		.pwr_sta2nd_offs = 0x0184,
+>   		.sram_pdn_bits = GENMASK(9, 8),
+>   		.sram_pdn_ack_bits = GENMASK(13, 12),
+> +		.clamp_smi = {
+> +			MT8365_BUS_PROT_SMI_WR_CLAMP_EN_PORT(2),
+> +		},
+>   		.bp_cfg = {
+>   			MT8365_BUS_PROT_INFRA_WR_TOPAXI_1(
+>   				MT8365_INFRA_TOPAXI_PROTECTEN_1_CAM2MM_AXI_GALS_MST),
+> -			MT8365_BUS_PROT_SMI_WR_CLAMP_EN_PORT(2),
+>   		},
+>   	},
+>   	[MT8365_POWER_DOMAIN_VDEC] = {
+> @@ -152,7 +154,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8365[] = {
+>   		.pwr_sta2nd_offs = 0x0184,
+>   		.sram_pdn_bits = GENMASK(8, 8),
+>   		.sram_pdn_ack_bits = GENMASK(12, 12),
+> -		.bp_cfg = {
+> +		.clamp_smi = {
+>   			MT8365_BUS_PROT_SMI_WR_CLAMP_EN_PORT(3),
+>   		},
+>   	},
+> @@ -164,11 +166,13 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8365[] = {
+>   		.pwr_sta2nd_offs = 0x0184,
+>   		.sram_pdn_bits = GENMASK(14, 8),
+>   		.sram_pdn_ack_bits = GENMASK(21, 15),
+> +		.clamp_smi = {
+> +			MT8365_BUS_PROT_SMI_WR_CLAMP_EN_PORT(4),
+> +		},
+>   		.bp_cfg = {
+>   			MT8365_BUS_PROT_INFRA_WR_TOPAXI_1(
+>   				MT8365_INFRA_TOPAXI_PROTECTEN_1_APU2AP |
+>   				MT8365_INFRA_TOPAXI_PROTECTEN_1_APU_CBIP_GALS_MST),
+> -			MT8365_BUS_PROT_SMI_WR_CLAMP_EN_PORT(4),
+>   		},
+>   	},
+>   	[MT8365_POWER_DOMAIN_DSP] = {
+> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> index 488920d29fbc..061296feb289 100644
+> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> @@ -47,9 +47,10 @@ struct scpsys_domain {
+>   	struct clk_bulk_data *subsys_clks;
+>   	struct regmap *infracfg_nao;
+>   	struct regmap *infracfg;
+> -	struct regmap *smi;
+> +	struct regmap **smi;
+>   	struct regmap **larb;
+>   	int num_larb;
+> +	int num_smi;
+>   	struct regulator *supply;
+>   };
+>   
+> @@ -78,6 +79,71 @@ static bool scpsys_domain_is_on(struct scpsys_domain *pd)
+>   	return status && status2;
+>   }
+>   
+> +static int _scpsys_clamp_bus_protection_enable(const struct scpsys_bus_prot_data bpd,
+> +					       struct regmap *regmap)
+> +{
+> +	u32 val = 0, mask = bpd.bus_prot_sta_mask;
+> +
+> +	if (!mask)
+> +		return 0;
+> +
+> +	if (bpd.flags & BUS_PROT_REG_UPDATE)
+> +		regmap_set_bits(regmap, bpd.bus_prot_set, mask);
+> +	else
+> +		regmap_write(regmap, bpd.bus_prot_set, mask);
+> +
+> +	return regmap_read_poll_timeout(regmap, bpd.bus_prot_sta,
+> +				       val, (val & mask) == mask,
+> +				       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> +}
 
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
----
+This is practically a duplicated scpsys_bus_protect_set() function: it's doing the
+exact same, with the addition of that zero mask check, which is done elsewhere for
+the former anyway.
 
-v2:
-  - Add panfrost GPU jobs for rockchip SOC with new xfails.
+You can totally reuse scpsys_bus_protect_set() and scpsys_bus_protect_enable()
+instead of introducing new functions, and you can even add SMI bus protections
+to .bp_cfg if you do something like that:
 
----
- drivers/gpu/drm/ci/test.yml                   | 14 ++++
- .../ci/xfails/panfrost-rk3288-gpu-fails.txt   | 54 +++++++++++++
- .../ci/xfails/panfrost-rk3288-gpu-skips.txt   | 52 +++++++++++++
- .../ci/xfails/panfrost-rk3399-gpu-fails.txt   | 75 +++++++++++++++++++
- .../ci/xfails/panfrost-rk3399-gpu-flakes.txt  |  7 ++
- .../ci/xfails/panfrost-rk3399-gpu-skips.txt   |  5 ++
- 6 files changed, 207 insertions(+)
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-skips.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-flakes.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-skips.txt
+static int scpsys_bus_protect_set(struct scpsys_domain *pd,
+				  const struct scpsys_bus_prot_data *bpd,
+				  struct regmap *regmap, struct regmap *sta_regmap)
+{
+	struct regmap *sta_regmap = scpsys_bus_protect_get_sta_regmap(pd, bpd);
+	struct regmap *regmap = scpsys_bus_protect_get_regmap(pd, bpd);
+	u32 sta_mask = bpd->bus_prot_sta_mask;
+	u32 val;
 
-diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index c9ba58571882..4d44421ec510 100644
---- a/drivers/gpu/drm/ci/test.yml
-+++ b/drivers/gpu/drm/ci/test.yml
-@@ -175,6 +175,13 @@ msm:sdm845:
-     KERNEL_IMAGE_TYPE: ""
-     RUNNER_TAG: mesa-ci-x86-64-lava-rk3399-gru-kevin
- 
-+rockchip:rk3288-gpu:
-+  extends:
-+    - .rk3288
-+  variables:
-+    GPU_VERSION: rk3288-gpu
-+    DRIVER_NAME: panfrost
-+
- rockchip:rk3288-display:
-   extends:
-     - .rk3288
-@@ -182,6 +189,13 @@ rockchip:rk3288-display:
-     GPU_VERSION: rk3288-display
-     DRIVER_NAME: rockchip
- 
-+rockchip:rk3399-gpu:
-+  extends:
-+    - .rk3399
-+  variables:
-+    GPU_VERSION: rk3399-gpu
-+    DRIVER_NAME: panfrost
-+
- rockchip:rk3399-display:
-   extends:
-     - .rk3399
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-fails.txt
-new file mode 100644
-index 000000000000..90c63f519e9e
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-fails.txt
-@@ -0,0 +1,54 @@
-+kms_3d,Crash
-+kms_bw@linear-tiling-2-displays-1920x1080p,Fail
-+kms_bw@linear-tiling-2-displays-2560x1440p,Fail
-+kms_bw@linear-tiling-2-displays-3840x2160p,Fail
-+kms_bw@linear-tiling-3-displays-1920x1080p,Fail
-+kms_bw@linear-tiling-3-displays-2560x1440p,Fail
-+kms_bw@linear-tiling-3-displays-3840x2160p,Fail
-+kms_flip@flip-vs-modeset-vs-hang,Crash
-+kms_flip@flip-vs-panning-vs-hang,Crash
-+kms_force_connector_basic@force-load-detect,Fail
-+kms_invalid_mode@int-max-clock,Crash
-+kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Crash
-+kms_pipe_crc_basic@nonblocking-crc-frame-sequence,Crash
-+kms_pipe_crc_basic@read-crc-frame-sequence,Crash
-+kms_plane@pixel-format,Crash
-+kms_plane@pixel-format-source-clamping,Crash
-+kms_plane@plane-position-hole,Crash
-+kms_plane@plane-position-hole-dpms,Crash
-+kms_plane_cursor@overlay,Crash
-+kms_plane_cursor@pipe-A-overlay-size-128,Fail
-+kms_plane_cursor@pipe-A-overlay-size-256,Fail
-+kms_plane_cursor@pipe-A-overlay-size-64,Fail
-+kms_plane_cursor@pipe-A-primary-size-128,Fail
-+kms_plane_cursor@pipe-A-primary-size-256,Fail
-+kms_plane_cursor@pipe-A-primary-size-64,Fail
-+kms_plane_cursor@pipe-A-viewport-size-128,Fail
-+kms_plane_cursor@pipe-A-viewport-size-256,Fail
-+kms_plane_cursor@pipe-A-viewport-size-64,Fail
-+kms_plane_cursor@pipe-B-overlay-size-128,Fail
-+kms_plane_cursor@pipe-B-overlay-size-256,Fail
-+kms_plane_cursor@pipe-B-overlay-size-64,Fail
-+kms_plane_cursor@pipe-B-primary-size-128,Fail
-+kms_plane_cursor@pipe-B-primary-size-256,Fail
-+kms_plane_cursor@pipe-B-primary-size-64,Fail
-+kms_plane_cursor@pipe-B-viewport-size-128,Fail
-+kms_plane_cursor@pipe-B-viewport-size-256,Fail
-+kms_plane_cursor@pipe-B-viewport-size-64,Fail
-+kms_plane_cursor@primary,Crash
-+kms_plane_cursor@viewport,Crash
-+kms_plane_lowres@tiling-none,Fail
-+kms_plane_scaling@downscale-with-modifier-factor-0-25,Fail
-+kms_plane_scaling@downscale-with-rotation-factor-0-25,Fail
-+kms_plane_scaling@upscale-with-modifier-20x20,Fail
-+kms_plane_scaling@upscale-with-modifier-factor-0-25,Fail
-+kms_plane_scaling@upscale-with-pixel-format-20x20,Fail
-+kms_plane_scaling@upscale-with-pixel-format-factor-0-25,Fail
-+kms_plane_scaling@upscale-with-rotation-20x20,Fail
-+kms_prime@basic-crc,Fail
-+kms_properties@connector-properties-atomic,Crash
-+kms_properties@connector-properties-legacy,Crash
-+kms_properties@get_properties-sanity-atomic,Crash
-+kms_properties@get_properties-sanity-non-atomic,Crash
-+kms_rmfb@close-fd,Crash
-+kms_setmode@invalid-clone-single-crtc,Crash
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-skips.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-skips.txt
-new file mode 100644
-index 000000000000..f20c3574b75a
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-skips.txt
-@@ -0,0 +1,52 @@
-+# Suspend to RAM seems to be broken on this machine
-+.*suspend.*
-+
-+# Too unstable, machine ends up hanging after lots of Oopses
-+kms_cursor_legacy.*
-+
-+# Started hanging the machine on Linux 5.19-rc2:
-+#
-+# [IGT] kms_plane_lowres: executing
-+# [IGT] kms_plane_lowres: starting subtest pipe-F-tiling-y
-+# [IGT] kms_plane_lowres: exiting, ret=77
-+# Console: switching to colour frame buffer device 170x48
-+# rockchip-drm display-subsystem: [drm] *ERROR* flip_done timed out
-+# rockchip-drm display-subsystem: [drm] *ERROR* [CRTC:35:crtc-0] commit wait timed out
-+# BUG: spinlock bad magic on CPU#3, kms_plane_lowre/482
-+# 8<--- cut here ---
-+# Unable to handle kernel paging request at virtual address 7812078e
-+# [7812078e] *pgd=00000000
-+# Internal error: Oops: 5 [#1] SMP ARM
-+# Modules linked in:
-+# CPU: 3 PID: 482 Comm: kms_plane_lowre Tainted: G        W         5.19.0-rc2-323596-g00535de92171 #1
-+# Hardware name: Rockchip (Device Tree)
-+# Process kms_plane_lowre (pid: 482, stack limit = 0x1193ac2b)
-+#  spin_dump from do_raw_spin_lock+0xa4/0xe8
-+#  do_raw_spin_lock from wait_for_completion_timeout+0x2c/0x120
-+#  wait_for_completion_timeout from drm_crtc_commit_wait+0x18/0x7c
-+#  drm_crtc_commit_wait from drm_atomic_helper_wait_for_dependencies+0x44/0x168
-+#  drm_atomic_helper_wait_for_dependencies from commit_tail+0x34/0x180
-+#  commit_tail from drm_atomic_helper_commit+0x164/0x18c
-+#  drm_atomic_helper_commit from drm_atomic_commit+0xac/0xe4
-+#  drm_atomic_commit from drm_client_modeset_commit_atomic+0x23c/0x284
-+#  drm_client_modeset_commit_atomic from drm_client_modeset_commit_locked+0x60/0x1c8
-+#  drm_client_modeset_commit_locked from drm_client_modeset_commit+0x24/0x40
-+#  drm_client_modeset_commit from drm_fbdev_client_restore+0x58/0x94
-+#  drm_fbdev_client_restore from drm_client_dev_restore+0x70/0xbc
-+#  drm_client_dev_restore from drm_release+0xf4/0x114
-+#  drm_release from __fput+0x74/0x240
-+#  __fput from task_work_run+0x84/0xb4
-+#  task_work_run from do_exit+0x34c/0xa20
-+#  do_exit from do_group_exit+0x34/0x98
-+#  do_group_exit from __wake_up_parent+0x0/0x18
-+# Code: e595c008 12843d19 03e00000 03093168 (15940508)
-+# ---[ end trace 0000000000000000 ]---
-+# note: kms_plane_lowre[482] exited with preempt_count 1
-+# Fixing recursive fault but reboot is needed!
-+kms_plane_lowres@pipe-F-tiling-y
-+
-+# Take too long, we have only two machines, and these are very flaky
-+kms_cursor_crc.*
-+
-+# Machine is hanging in this test, so skip it
-+kms_pipe_crc_basic@disable-crc-after-crtc
-\ No newline at end of file
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-fails.txt
-new file mode 100644
-index 000000000000..d516d9c1d546
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-fails.txt
-@@ -0,0 +1,75 @@
-+kms_color@gamma,Fail
-+kms_color@legacy-gamma,Fail
-+kms_color@pipe-A-legacy-gamma,Fail
-+kms_color@pipe-B-legacy-gamma,Fail
-+kms_cursor_crc@cursor-alpha-opaque,Fail
-+kms_cursor_crc@cursor-alpha-transparent,Fail
-+kms_cursor_crc@cursor-dpms,Fail
-+kms_cursor_crc@cursor-offscreen-32x10,Fail
-+kms_cursor_crc@cursor-offscreen-32x32,Fail
-+kms_cursor_crc@cursor-offscreen-64x64,Fail
-+kms_cursor_crc@cursor-onscreen-32x10,Fail
-+kms_cursor_crc@cursor-onscreen-32x32,Fail
-+kms_cursor_crc@cursor-onscreen-64x21,Fail
-+kms_cursor_crc@cursor-onscreen-64x64,Fail
-+kms_cursor_crc@cursor-random-32x10,Fail
-+kms_cursor_crc@cursor-random-32x32,Fail
-+kms_cursor_crc@cursor-random-64x21,Fail
-+kms_cursor_crc@cursor-random-64x64,Fail
-+kms_cursor_crc@cursor-rapid-movement-32x32,Fail
-+kms_cursor_crc@cursor-rapid-movement-64x21,Fail
-+kms_cursor_crc@cursor-rapid-movement-64x64,Fail
-+kms_cursor_crc@cursor-size-change,Fail
-+kms_cursor_crc@cursor-sliding-32x10,Fail
-+kms_cursor_crc@cursor-sliding-32x32,Fail
-+kms_cursor_crc@cursor-sliding-64x21,Fail
-+kms_cursor_crc@cursor-sliding-64x64,Fail
-+kms_flip@basic-flip-vs-wf_vblank,Fail
-+kms_flip@blocking-wf_vblank,Fail
-+kms_flip@dpms-vs-vblank-race,Fail
-+kms_flip@flip-vs-absolute-wf_vblank,Fail
-+kms_flip@flip-vs-absolute-wf_vblank-interruptible,Fail
-+kms_flip@flip-vs-blocking-wf-vblank,Fail
-+kms_flip@flip-vs-modeset-vs-hang,Fail
-+kms_flip@flip-vs-panning,Fail
-+kms_flip@flip-vs-panning-interruptible,Fail
-+kms_flip@flip-vs-panning-vs-hang,Fail
-+kms_flip@modeset-vs-vblank-race,Fail
-+kms_flip@plain-flip-fb-recreate,Fail
-+kms_flip@plain-flip-fb-recreate-interruptible,Fail
-+kms_flip@plain-flip-ts-check,Fail
-+kms_flip@plain-flip-ts-check-interruptible,Fail
-+kms_flip@wf_vblank-ts-check,Fail
-+kms_flip@wf_vblank-ts-check-interruptible,Fail
-+kms_invalid_mode@int-max-clock,Fail
-+kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
-+kms_pipe_crc_basic@compare-crc-sanitycheck-xr24,Fail
-+kms_pipe_crc_basic@disable-crc-after-crtc,Fail
-+kms_pipe_crc_basic@nonblocking-crc,Fail
-+kms_pipe_crc_basic@nonblocking-crc-frame-sequence,Fail
-+kms_pipe_crc_basic@read-crc,Fail
-+kms_pipe_crc_basic@read-crc-frame-sequence,Fail
-+kms_plane@pixel-format,Fail
-+kms_plane@pixel-format-source-clamping,Fail
-+kms_plane@plane-panning-bottom-right,Fail
-+kms_plane@plane-panning-top-left,Fail
-+kms_plane@plane-position-covered,Fail
-+kms_plane@plane-position-hole,Fail
-+kms_plane@plane-position-hole-dpms,Fail
-+kms_plane_cursor@overlay,Fail
-+kms_plane_cursor@pipe-B-overlay-size-128,Fail
-+kms_plane_cursor@pipe-B-overlay-size-256,Fail
-+kms_plane_cursor@pipe-B-overlay-size-64,Fail
-+kms_plane_cursor@pipe-B-primary-size-128,Fail
-+kms_plane_cursor@pipe-B-primary-size-256,Fail
-+kms_plane_cursor@pipe-B-primary-size-64,Fail
-+kms_plane_cursor@pipe-B-viewport-size-128,Fail
-+kms_plane_cursor@pipe-B-viewport-size-256,Fail
-+kms_plane_cursor@pipe-B-viewport-size-64,Fail
-+kms_plane_cursor@primary,Fail
-+kms_plane_cursor@viewport,Fail
-+kms_plane_multiple@atomic-pipe-B-tiling-none,Fail
-+kms_plane_multiple@tiling-none,Fail
-+kms_prime@basic-crc,Fail
-+kms_rmfb@close-fd,Fail
-+kms_universal_plane@universal-plane-pipe-B-functional,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-flakes.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-flakes.txt
-new file mode 100644
-index 000000000000..c9fdc623ab91
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-flakes.txt
-@@ -0,0 +1,7 @@
-+kms_bw@linear-tiling-2-displays-1920x1080p
-+kms_cursor_crc@cursor-offscreen-64x21
-+kms_flip@dpms-vs-vblank-race-interruptible
-+kms_flip@flip-vs-wf_vblank-interruptible
-+kms_plane_cursor@overlay
-+kms_plane_cursor@primary
-+kms_plane_cursor@viewport
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-skips.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-skips.txt
-new file mode 100644
-index 000000000000..10c3d81a919a
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-skips.txt
-@@ -0,0 +1,5 @@
-+# Suspend to RAM seems to be broken on this machine
-+.*suspend.*
-+
-+# Too unstable, machine ends up hanging after lots of Oopses
-+kms_cursor_legacy.*
--- 
-2.40.1
+	if (bpd->flags & BUS_PROT_REG_UPDATE)
+		regmap_set_bits(regmap, bpd->bus_prot_set, bpd->bus_prot_set_clr_mask);
+	else
+		regmap_write(regmap, bpd->bus_prot_set, bpd->bus_prot_set_clr_mask);
+
+	return regmap_read_poll_timeout(sta_regmap, bpd->bus_prot_sta,
+					val, (val & sta_mask) == sta_mask,
+					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+}
+
+static int __scpsys_bus_protect_enable(struct scpsys_domain *pd, enum 
+scpsys_bus_prot_flags flags)
+{
+	for (int i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
+		const struct scpsys_bus_prot_data *bpd = &pd->data->bp_cfg[i];
+		int j, num_regmaps, ret;
+		bool is_smi = bpd->flags & BUS_PROT_COMPONENT_SMI;
+
+		if (!bpd->bus_prot_set_clr_mask)
+			break;
+
+		if (!(bpd->flags & flags))
+			continue;
+
+		num_regmaps = is_smi ? pd->num_smi : 1;
+
+		for (j = 0; j < num_regmaps; j++) {
+			struct regmap *sta_regmap, *regmap;
+
+			if (is_smi) {
+				sta_regmap = pd->smi[j];
+				regmap = pd->smi[j];
+			} else {
+				sta_regmap = scpsys_bus_protect_get_sta_regmap(pd, bpd);
+				regmap = scpsys_bus_protect_get_regmap(pd, bpd);
+			}
+
+			if (bpd->flags & BUS_PROT_INVERTED)
+				ret = scpsys_bus_protect_clear(pd, bpd, regmap, sta_regmap);
+			else
+				ret = scpsys_bus_protect_set(pd, bpd, regmap, sta_regmap);
+			if (ret)
+				return ret;
+		}
+	}
+
+	return 0;
+}
+
+static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
+{
+	int ret;
+
+	/* Enable bus protection and/or clamping on SMI first */
+	ret = __scpsys_bus_protect_enable(pd, BUS_PROT_COMPONENT_SMI);
+	if (ret)
+		return ret;
+
+	ret = __scpsys_bus_protect_enable(pd, BUS_PROT_COMPONENT_INFRA);
+	if (ret)
+		return ret;
+
+	return 0;
+}
+
+
+...and it's the same for the protection_disable part.
+
+Regards,
+Angelo
+
+> +
+> +static int scpsys_clamp_bus_protection_enable(struct scpsys_domain *pd)
+> +{
+> +	int ret, i;
+> +
+> +	for (i = 0; i < pd->num_smi; i++) {
+> +		ret = _scpsys_clamp_bus_protection_enable(pd->data->clamp_smi[i], pd->smi[i]);
+> +		if (ret)
+> +			return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int _scpsys_clamp_bus_protection_disable(const struct scpsys_bus_prot_data bpd,
+> +						struct regmap *regmap)
+> +{
+> +	u32 val = 0, mask = bpd.bus_prot_sta_mask;
+> +
+> +	if (!mask)
+> +		return 0;
+> +
+> +	if (bpd.flags & BUS_PROT_REG_UPDATE)
+> +		regmap_clear_bits(regmap, bpd.bus_prot_clr, mask);
+> +	else
+> +		regmap_write(regmap, bpd.bus_prot_clr, mask);
+> +
+> +	if (bpd.flags & BUS_PROT_IGNORE_CLR_ACK)
+> +		return 0;
+> +
+> +	return regmap_read_poll_timeout(regmap, bpd.bus_prot_sta,
+> +				       val, !(val & mask),
+> +				       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> +}
+> +
+> +static int scpsys_clamp_bus_protection_disable(struct scpsys_domain *pd)
+> +{
+> +	int ret, i;
+> +
+> +	for (i = pd->num_smi - 1 ; i >= 0; i--) {
+> +		ret = _scpsys_clamp_bus_protection_disable(pd->data->clamp_smi[i], pd->smi[i]);
+> +		if (ret)
+> +			return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>   static int scpsys_sram_enable(struct scpsys_domain *pd)
+>   {
+>   	u32 pdn_ack = pd->data->sram_pdn_ack_bits;
+> @@ -122,14 +188,6 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
+>   					MTK_POLL_TIMEOUT);
+>   }
+>   
+> -static struct regmap *scpsys_bus_protect_get_regmap(struct scpsys_domain *pd,
+> -						    const struct scpsys_bus_prot_data *bpd)
+> -{
+> -	if (bpd->flags & BUS_PROT_COMPONENT_SMI)
+> -		return pd->smi;
+> -	else
+> -		return pd->infracfg;
+> -}
+>   
+>   static struct regmap *scpsys_bus_protect_get_sta_regmap(struct scpsys_domain *pd,
+>   							const struct scpsys_bus_prot_data *bpd)
+> @@ -137,14 +195,14 @@ static struct regmap *scpsys_bus_protect_get_sta_regmap(struct scpsys_domain *pd
+>   	if (bpd->flags & BUS_PROT_STA_COMPONENT_INFRA_NAO)
+>   		return pd->infracfg_nao;
+>   	else
+> -		return scpsys_bus_protect_get_regmap(pd, bpd);
+> +		return pd->infracfg;
+>   }
+>   
+>   static int scpsys_bus_protect_clear(struct scpsys_domain *pd,
+>   				    const struct scpsys_bus_prot_data *bpd)
+>   {
+>   	struct regmap *sta_regmap = scpsys_bus_protect_get_sta_regmap(pd, bpd);
+> -	struct regmap *regmap = scpsys_bus_protect_get_regmap(pd, bpd);
+> +	struct regmap *regmap = pd->infracfg;
+>   	u32 sta_mask = bpd->bus_prot_sta_mask;
+>   	u32 expected_ack;
+>   	u32 val;
+> @@ -168,7 +226,7 @@ static int scpsys_bus_protect_set(struct scpsys_domain *pd,
+>   				  const struct scpsys_bus_prot_data *bpd)
+>   {
+>   	struct regmap *sta_regmap = scpsys_bus_protect_get_sta_regmap(pd, bpd);
+> -	struct regmap *regmap = scpsys_bus_protect_get_regmap(pd, bpd);
+> +	struct regmap *regmap = pd->infracfg;
+>   	u32 sta_mask = bpd->bus_prot_sta_mask;
+>   	u32 val;
+>   
+> @@ -199,14 +257,19 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
+>   			return ret;
+>   	}
+>   
+> -	return 0;
+> +	return scpsys_clamp_bus_protection_enable(pd);
+>   }
+>   
+>   static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
+>   {
+> +	int ret;
+> +
+> +	ret = scpsys_clamp_bus_protection_disable(pd);
+> +	if (ret)
+> +		return ret;
+> +
+>   	for (int i = SPM_MAX_BUS_PROT_DATA - 1; i >= 0; i--) {
+>   		const struct scpsys_bus_prot_data *bpd = &pd->data->bp_cfg[i];
+> -		int ret;
+>   
+>   		if (!bpd->bus_prot_set_clr_mask)
+>   			continue;
+> @@ -272,6 +335,12 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+>   	bool tmp;
+>   	int ret;
+>   
+> +	if (MTK_SCPD_CAPS(pd, MTK_SCPD_CLAMP_PROTECTION)) {
+> +		ret = scpsys_clamp_bus_protection_enable(pd);
+> +		if (ret)
+> +			return ret;
+> +	}
+> +
+>   	ret = scpsys_regulator_enable(pd->supply);
+>   	if (ret)
+>   		return ret;
+> @@ -318,6 +387,12 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+>   	if (ret < 0)
+>   		goto err_disable_subsys_clks;
+>   
+> +	if (MTK_SCPD_CAPS(pd, MTK_SCPD_CLAMP_PROTECTION)) {
+> +		ret = scpsys_clamp_bus_protection_disable(pd);
+> +		if (ret)
+> +			return ret;
+> +	}
+> +
+>   	ret = scpsys_bus_protect_disable(pd);
+>   	if (ret < 0)
+>   		goto err_disable_sram;
+> @@ -353,6 +428,12 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>   	bool tmp;
+>   	int ret;
+>   
+> +	if (MTK_SCPD_CAPS(pd, MTK_SCPD_CLAMP_PROTECTION)) {
+> +		ret = scpsys_clamp_bus_protection_enable(pd);
+> +		if (ret)
+> +			return ret;
+> +	}
+> +
+>   	ret = scpsys_bus_protect_enable(pd);
+>   	if (ret < 0)
+>   		return ret;
+> @@ -450,12 +531,23 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+>   	if (IS_ERR(pd->infracfg))
+>   		return ERR_CAST(pd->infracfg);
+>   
+> -	smi_node = of_parse_phandle(node, "mediatek,smi", 0);
+> -	if (smi_node) {
+> -		pd->smi = device_node_to_regmap(smi_node);
+> -		of_node_put(smi_node);
+> -		if (IS_ERR(pd->smi))
+> -			return ERR_CAST(pd->smi);
+> +	pd->num_smi = of_count_phandle_with_args(node, "mediatek,smi", NULL);
+> +	if (pd->num_smi > 0) {
+> +		pd->smi = devm_kcalloc(scpsys->dev, pd->num_smi, sizeof(*pd->smi), GFP_KERNEL);
+> +		if (!pd->smi)
+> +			return ERR_PTR(-ENOMEM);
+> +
+> +		for (i = 0; i < pd->num_smi; i++) {
+> +			smi_node = of_parse_phandle(node, "mediatek,smi", i);
+> +			if (!smi_node)
+> +				return ERR_PTR(-EINVAL);
+> +
+> +			pd->smi[i] = syscon_node_to_regmap(smi_node);
+> +			if (IS_ERR(pd->smi[i]))
+> +				return ERR_CAST(pd->smi[i]);
+> +		}
+> +	} else {
+> +		pd->num_smi = 0;
+>   	}
+>   
+>   	pd->num_larb = of_count_phandle_with_args(node, "mediatek,larb", NULL);
+> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.h b/drivers/pmdomain/mediatek/mtk-pm-domains.h
+> index 31c2a1bb500f..f903e2943f0e 100644
+> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.h
+> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.h
+> @@ -13,6 +13,7 @@
+>   #define MTK_SCPD_EXT_BUCK_ISO		BIT(6)
+>   #define MTK_SCPD_HAS_INFRA_NAO		BIT(7)
+>   #define MTK_SCPD_STRICT_BUS_PROTECTION	BIT(8)
+> +#define MTK_SCPD_CLAMP_PROTECTION	BIT(9)
+>   #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
+>   
+>   #define SPM_VDE_PWR_CON			0x0210
+> @@ -120,6 +121,7 @@ struct scpsys_domain_data {
+>   	int ext_buck_iso_offs;
+>   	u32 ext_buck_iso_mask;
+>   	u16 caps;
+> +	const struct scpsys_bus_prot_data clamp_smi[SPM_MAX_BUS_PROT_DATA];
+>   	const struct scpsys_bus_prot_data bp_cfg[SPM_MAX_BUS_PROT_DATA];
+>   	const struct smi_reset_data reset_smi[SPM_MAX_SMI_RESET_DATA];
+>   	int pwr_sta_offs;
 
 
