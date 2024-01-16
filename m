@@ -4,127 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40682C47DA2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 14:41:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9458C47077
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 15:20:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JSglB3NGsVJ35mscmjzrHJb+szGktESs9qTY9UaRe8A=; b=XEAt7Ij/1smdIOf7YOodeTHLAu
-	irrC32I3gKaZXP8iMk42PMYXpIv6WfJl8EVHclB2jEe60O/cjHFmgdrxwCmjlNHXyeQ1r0rqznsoS
-	LmKGCxMrCvYVhTvMGPmPO/pdhiVc4cKpOokB1fw+6dVK/VKENLU90hRFuh1HfzheidnDQwyP7tHkf
-	0LeYZvR5tL1QDKfFFeAKxo/Mtm4uCOhkWK20jyagq1uz0byKDtzMGwy1QPJzKyGbPsUrXJYFuj6wl
-	6+2gouAVU2jC1eqGLu4GfbvlGtZtb4NOaqt8WPM9xRYYLE+fBcIpgNWUxtXrPHIwd4KNYBR85NIKw
-	EzY42a7w==;
+	bh=cUgn6xaJV9hQMI+kxMbCDm9O9KkWhhQd7PFtT+8BbYY=; b=y6FTGHMqf0tbjiKvayoWt03Lcj
+	Aue/ZJkXCEQf+sovj12hJHDKzNTXC34UNyQuUfRk8f4mo1Uzac0wDSJFcSjA/Wv4SIJTf64UPcYK4
+	x7QtLBq6YgpmKWqy4tX+WQq0C/8b52AeeSMXIlxwoDPlq8CTgjrqLEMzBpwwZD9Z+YJZVMvvUQBql
+	JD0DcHnnV2ykRjAnV6S1Y4l8Sf+q2raw56timwnwzMU9DUKTOElylLWati3ky+c1q8C5n1V4Ih7e3
+	QE58uigl973snFmkIx5F/c6OT49Rl8PKEA5pcAjUvQoFkYx6nozKULbKajiRtAzc1Xf6k2Z/LUHTf
+	A5BjUpfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPkcq-00CJ8T-12;
-	Tue, 16 Jan 2024 14:41:12 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rPlF6-00COx9-1W;
+	Tue, 16 Jan 2024 15:20:44 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPkcl-00CJ6W-2g;
-	Tue, 16 Jan 2024 14:41:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 5BF2FCE19B0;
-	Tue, 16 Jan 2024 14:41:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82385C433F1;
-	Tue, 16 Jan 2024 14:40:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1705416062;
-	bh=pi9f5n7aCz4k4GcDtHhDD5lv5OgeZ4ucYdJWw/uz8rU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=eoW8PYM2MfAuIBhKaoTZlWZwOEH64nrarWgh8smz385NHA2AvWbxhu44TZid6guIO
-	 ztdPcokve4KGk/P0r48xP9LXjdlp+nfRggeFVeFp1EKUfQh1HSmalAz393OHzBH8yx
-	 HITZr7gQr/eVgLSaMXJ0zK/Hypf/9tgOSbSJiXzjxDaUW1d3OgO9S7G4+/H4mw666+
-	 L5PksNx2fvrD/Q9/Cn2uOjt9fv52HRvN58krYPnsggJ/tW1Mam7cV3tInWEBTcjzIV
-	 QhTlg/jUO4g8ofnL8rKCTYV2n5vBGWNCAEmw7Luoyo7bgDS5dKI4oEy8rewQcDvB/c
-	 CCz+OFltnyGUA==
-Date: Tue, 16 Jan 2024 14:40:39 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Geert Uytterhoeven <geert+renesas@glider.be>, linux-spi@vger.kernel.org,
-	kernel@pengutronix.de, Moritz Fischer <mdf@kernel.org>,
-	Wu Hao <hao.wu@intel.com>, Xu Yilun <yilun.xu@intel.com>,
-	Tom Rix <trix@redhat.com>, linux-fpga@vger.kernel.org,
-	Alexander Aring <alex.aring@gmail.com>,
-	Stefan Schmidt <stefan@datenfreihafen.org>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-wpan@vger.kernel.org, netdev@vger.kernel.org,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>, linux-iio@vger.kernel.org,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	linux-input@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Rayyan Ansari <rayyan@ansari.sh>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Martin Tuma <martin.tuma@digiteqautomotive.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	linux-media@vger.kernel.org, Sergey Kozlov <serjk@netup.ru>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Yang Yingliang <yangyingliang@huawei.com>,
-	linux-mmc@vger.kernel.org, Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
-	Rob Herring <robh@kernel.org>, linux-mtd@lists.infradead.org,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
-	Ronald Wahl <ronald.wahl@raritan.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	chrome-platform@lists.linux.dev,
-	Michal Simek <michal.simek@amd.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	linux-arm-msm@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Javier Martinez Canillas <javierm@redhat.com>,
-	Sam Ravnborg <sam@ravnborg.org>,
-	Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>,
-	dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org,
-	linux-staging@lists.linux.dev, Rui Miguel Silva <rmfrfs@gmail.com>,
-	Viresh Kumar <vireshk@kernel.org>, Johan Hovold <johan@kernel.org>,
-	Alex Elder <elder@kernel.org>, greybus-dev@lists.linaro.org,
-	Peter Huewe <peterhuewe@gmx.de>,
-	Jarkko Sakkinen <jarkko@kernel.org>, Jason Gunthorpe <jgg@ziepe.ca>,
-	linux-integrity@vger.kernel.org,
-	Herve Codina <herve.codina@bootlin.com>,
-	Aaro Koskinen <aaro.koskinen@iki.fi>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	linux-usb@vger.kernel.org, Helge Deller <deller@gmx.de>,
-	Dario Binacchi <dario.binacchi@amarulasolutions.com>,
-	Kalle Valo <kvalo@kernel.org>, Dmitry Antipov <dmantipov@yandex.ru>,
-	libertas-dev@lists.infradead.org, linux-wireless@vger.kernel.org,
-	Jonathan Corbet <corbet@lwn.net>, James Clark <james.clark@arm.com>,
-	Bjorn Helgaas <bhelgaas@google.com>, linux-doc@vger.kernel.org
+	id 1rPlF2-00COvq-34
+	for linux-mediatek@lists.infradead.org;
+	Tue, 16 Jan 2024 15:20:42 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rPlD8-0000tu-OV; Tue, 16 Jan 2024 16:18:42 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rPlD0-000Gxt-VX; Tue, 16 Jan 2024 16:18:34 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rPlD0-0011AW-2X;
+	Tue, 16 Jan 2024 16:18:34 +0100
+Date: Tue, 16 Jan 2024 16:18:34 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Mark Brown <broonie@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Linus Walleij <linus.walleij@linaro.org>, 
+	dri-devel@lists.freedesktop.org, Miquel Raynal <miquel.raynal@bootlin.com>, 
+	Ronald Wahl <ronald.wahl@raritan.com>, Stefan Schmidt <stefan@datenfreihafen.org>, 
+	libertas-dev@lists.infradead.org, Javier Martinez Canillas <javierm@redhat.com>, 
+	Alex Elder <elder@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	linux-usb@vger.kernel.org, linux-wireless@vger.kernel.org, linux-spi@vger.kernel.org, 
+	kernel@pengutronix.de, linux-media@vger.kernel.org, linux-wpan@vger.kernel.org, 
+	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>, linux-doc@vger.kernel.org, Dmitry Antipov <dmantipov@yandex.ru>, 
+	Max Filippov <jcmvbkbc@gmail.com>, Eric Dumazet <edumazet@google.com>, 
+	James Clark <james.clark@arm.com>, Guenter Roeck <groeck@chromium.org>, 
+	Dario Binacchi <dario.binacchi@amarulasolutions.com>, chrome-platform@lists.linux.dev, 
+	Lars-Peter Clausen <lars@metafoo.de>, Michael Hennerich <Michael.Hennerich@analog.com>, 
+	Viresh Kumar <vireshk@kernel.org>, Helge Deller <deller@gmx.de>, Wu Hao <hao.wu@intel.com>, 
+	Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	linux-arm-msm@vger.kernel.org, greybus-dev@lists.linaro.org, 
+	Bjorn Helgaas <bhelgaas@google.com>, Michal Simek <michal.simek@amd.com>, 
+	linux-arm-kernel@lists.infradead.org, Aaro Koskinen <aaro.koskinen@iki.fi>, 
+	"David S. Miller" <davem@davemloft.net>, Jarkko Sakkinen <jarkko@kernel.org>, 
+	linux-integrity@vger.kernel.org, Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>, 
+	Jonathan Cameron <jic23@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, 
+	Herve Codina <herve.codina@bootlin.com>, linux-iio@vger.kernel.org, Tom Rix <trix@redhat.com>, 
+	linux-fpga@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-mtd@lists.infradead.org, 
+	Sam Ravnborg <sam@ravnborg.org>, Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
+	linux-staging@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	linux-input@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>, Arnd Bergmann <arnd@arndb.de>, 
+	Yang Yingliang <yangyingliang@huawei.com>, Moritz Fischer <mdf@kernel.org>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Benson Leung <bleung@chromium.org>, 
+	Rayyan Ansari <rayyan@ansari.sh>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+	linux-mmc@vger.kernel.org, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Martin Tuma <martin.tuma@digiteqautomotive.com>, Xu Yilun <yilun.xu@intel.com>, 
+	Alexander Aring <alex.aring@gmail.com>, Vignesh Raghavendra <vigneshr@ti.com>, 
+	Peter Huewe <peterhuewe@gmx.de>, Sergey Kozlov <serjk@netup.ru>, 
+	Richard Weinberger <richard@nod.at>, Jason Gunthorpe <jgg@ziepe.ca>, Jakub Kicinski <kuba@kernel.org>, 
+	Kalle Valo <kvalo@kernel.org>, Johan Hovold <johan@kernel.org>, 
+	Rui Miguel Silva <rmfrfs@gmail.com>, linux-mediatek@lists.infradead.org, 
+	Tzung-Bi Shih <tzungbi@kernel.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Bjorn Andersson <andersson@kernel.org>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>
 Subject: Re: [PATCH 00/33] spi: get rid of some legacy macros
-Message-ID: <3404c9af-6c11-45d7-9ba4-a120e21e407e@sirena.org.uk>
+Message-ID: <l4azekfj7hduzi4wcyphispst46fi3m5ams65nzer2ai6upoxw@3p2uki626ytt>
 References: <cover.1705348269.git.u.kleine-koenig@pengutronix.de>
+ <3404c9af-6c11-45d7-9ba4-a120e21e407e@sirena.org.uk>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="c8yli56mmI+gJGEV"
+	protocol="application/pgp-signature"; boundary="ojpgqs276usvjple"
 Content-Disposition: inline
-In-Reply-To: <cover.1705348269.git.u.kleine-koenig@pengutronix.de>
-X-Cookie: Programmers do it bit by bit.
+In-Reply-To: <3404c9af-6c11-45d7-9ba4-a120e21e407e@sirena.org.uk>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_064108_225263_E7F89466 
-X-CRM114-Status: GOOD (  18.17  )
+X-CRM114-CacheID: sfid-20240116_072040_987004_6D77598A 
+X-CRM114-Status: GOOD (  24.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,43 +116,60 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---c8yli56mmI+gJGEV
+--ojpgqs276usvjple
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Jan 15, 2024 at 09:12:46PM +0100, Uwe Kleine-K=F6nig wrote:
+Hello Mark,
 
-> In commit 8caab75fd2c2 ("spi: Generalize SPI "master" to "controller"")
-> some functions were renamed. Further some compat defines were introduced
-> to map the old names to the new ones.
+On Tue, Jan 16, 2024 at 02:40:39PM +0000, Mark Brown wrote:
+> On Mon, Jan 15, 2024 at 09:12:46PM +0100, Uwe Kleine-K=F6nig wrote:
+>=20
+> > In commit 8caab75fd2c2 ("spi: Generalize SPI "master" to "controller"")
+> > some functions were renamed. Further some compat defines were introduced
+> > to map the old names to the new ones.
+>=20
+> > Patch #18 and #19 touch the same driver, otherwise the patches #1 - #31
+> > are pairwise independent and could be applied by their respective
+> > maintainers. The alternative is to let all patches go via the spi tree.
+> > Mark, what's your preference here?
+>=20
+> I don't have a strong preference here, I'm happy to take all the patches
+> if the maintainers for the other subsystem are OK with that - ideally
+> I'd apply things at -rc1 but the timeline is a bit tight there.  I think
+> my plan here unless anyone objects (or I notice something myself) will
+> be to queue things at -rc3, please shout if that doesn't seem
+> reasonable.
 
-> Patch #18 and #19 touch the same driver, otherwise the patches #1 - #31
-> are pairwise independent and could be applied by their respective
-> maintainers. The alternative is to let all patches go via the spi tree.
-> Mark, what's your preference here?
+=46rom my side there is no rush, we lived with these defines since
+4.13-rc1. Applying them during the next merge window is fine for me.
 
-I don't have a strong preference here, I'm happy to take all the patches
-if the maintainers for the other subsystem are OK with that - ideally
-I'd apply things at -rc1 but the timeline is a bit tight there.  I think
-my plan here unless anyone objects (or I notice something myself) will
-be to queue things at -rc3, please shout if that doesn't seem
-reasonable.
+Anyhow, I intend to resend the series for the feedback I received after
+-rc1. Up to you when you want to apply it. Watching out for offending
+patches using lore shouldn't be a big thing and I can do that.
 
---c8yli56mmI+gJGEV
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--ojpgqs276usvjple
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmWmlVwACgkQJNaLcl1U
-h9AImgf/YhrOsj57KBdfXCGkJi2n+rTwU/YN3Vvfy2fP+4gmJoFGfjk1o+luXQwi
-q3+RNetq9JicN07DE0eggUdY7EqvLtghmHnQWYraw+gEPT7PwkiFuKZgDEy79tmH
-pNpJuEKTeDipvLkXCVMzD0T+NrW2BXshkACyxLpBrh+ewGJpmmgJEH8LEo52dxrk
-uLfK3YjSYco5zXw8Dzak8Ea9Hb57dnySjT6aQf8GRXZMjNYAPqMC27Pzd5pWHnD1
-am4raQY/1ji5yjiVs38+2RB0EnWlFJyj0VvC9vL5PEhkz0XiW3OTTedLKcxKKoYv
-H+d+5ZwIRVx3bl+qcRRzH8EMyJW7pA==
-=Umm1
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmWmnkkACgkQj4D7WH0S
+/k7Jlgf/bxg8PBfYKKX7PvDPgT3ZVpLLtWReyLQDBjEkSddRCSKzwPE5dQsE6TGF
+pkpgz7Za7CnFfHKtW25alERgnrqA9inDitGvBoBIVgSHPf6GJsGOPVLhziEMU9t1
+tBlCUkInYGMvS/Gn5tOoSjNLmapgV8tiNzeos6MHWZzdKpWIzj6SBNH72Bof8kUq
+R287GggNJ2PLZa24vL2Pct4BZIfpbD+n1o6O62edEmpGe17xuDkSNfjirG7MojjX
+vAtAlEpsLidT0eabHr4XkgyBSQZLwlh1OdReMiXhtK5GM3Oh9R4Y2XVhUq83hKSl
+5zzsBEXwEe1w3pKgGJnCD1jxAAcJ9A==
+=Sz6E
 -----END PGP SIGNATURE-----
 
---c8yli56mmI+gJGEV--
+--ojpgqs276usvjple--
 
