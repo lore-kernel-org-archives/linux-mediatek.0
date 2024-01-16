@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 913FEC47077
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 12:06:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E5B0C4706C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 13:09:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SZVJMFu3NxnuYfN43wZ8pSgTI8KHEd7KUsVOGgBBsfo=; b=XrD21Tq4zQ1euLYLeEunXdRoZl
-	SfeJMlbiDFfSNxxdlnaRuT6FMRe/S1HzOqUSEAhUfBEakmDkn+nnoXvSFvG2hAzvRblN7zfCxmPZg
-	2Txg5ZpRrasw3IanmKjCUj7H/QaVHGDg7qgVpgH2fy7vjs7O3H6Iioojzy8OZj1mcQFTqUYfolfqb
-	sfcYtTtFjycuiiJ/1WbwjwWtrKpV8VC/5TRwQPQIHlWlCUMDHjyyOXa03A+lfSnXnqIkmMDJNg4/x
-	2RKsEur8MU52R6gI1bi9OOjABe1xyrzVdiOpzvp/u9tcB3Qar9VMAL6jHprSoanCd7ikh+WTzZTxA
-	SUUgJHCA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3l6hxpsFug+dZMhj61g9EoNgZMZVSBaqnjCk7tOjeaw=; b=z4b0fAG3ejuouY1bfOoDOGojpA
+	oeUfdt2tDvZHKPCERvvz3G5T7jXOGM+tPfA54WB9xpXSyBlyFtLTBhYgeI0cknxhtsTAZXfn29IXr
+	ItMEMh8+UvJLmdGXJsbNLhY8FSPv571Mee6HRcuFqXqgy/7vP5UOPq2iZLPxjsqAtEiVQRbYfFatR
+	eJMloSoV4I4IHSh/xAUvMNVm7OXXledvE8XFnTukLWuCB40VPwZyftFYwwZ3nHQHN4bZ9I8yn2sSJ
+	fhy3mAIbxHYgnLKu38BRnAqFbrVv6Gy6TxdFKXnlbUfOdIBp2vJZ/7XDjkFm8D+Qk7Sg2gV3z2ncH
+	U0U4QEEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPiD7-00C1vs-1F;
-	Tue, 16 Jan 2024 12:06:29 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rPjCD-00C8dd-0Z;
+	Tue, 16 Jan 2024 13:09:37 +0000
+Received: from relay3-d.mail.gandi.net ([2001:4b98:dc4:8::223])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPiD4-00C1v7-0F;
-	Tue, 16 Jan 2024 12:06:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705406780;
-	bh=Fxu/czZW/jT7hNLv/XBIT3iwaM6qWGV9i9J3Ejpkuuw=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=DLMEjBIB1ZKfVU8ldqQhumVvxKZEhJKMevjUnSiDru3olRWzI1CQqvIQPO3AErBqn
-	 3i/FuH/zPq1opBuGhi7j+yoP6I9gW18FTNgnZxEygkzsMCd7F3xMD/nx7cgd5ZkZVr
-	 OvSR3XnjeEbzvvNYs8klVfaOkg+nR1j2T41pJez8bRm4D9Qex5oC9VLSg1/drGPsBW
-	 mtbtEwMuqEjNIseUQRp1Cu7pZOCEg9h4hXJNmJRZtoQa7y0YWyyLWg88eqcZy1gIwI
-	 fZT7UA0+vhAUia6DDkT2LXWIZCi2hzmGn6hB5zorqzkic4ykCHf+Ct81PM1pyl4lUj
-	 j4CuUKEQySUXA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C5B3137802F2;
-	Tue, 16 Jan 2024 12:06:19 +0000 (UTC)
-Message-ID: <e0143649-f268-4c10-8bc2-89cdb6244a01@collabora.com>
-Date: Tue, 16 Jan 2024 13:06:19 +0100
+	id 1rPjC9-00C8c0-0C;
+	Tue, 16 Jan 2024 13:09:35 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id C7F1B60005;
+	Tue, 16 Jan 2024 13:09:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1705410567;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=3l6hxpsFug+dZMhj61g9EoNgZMZVSBaqnjCk7tOjeaw=;
+	b=pi/24u2pxzRvb+HE2QJTXSQdGLJDl+SNa4sY6ZwbdftUBQlELzwy0ASmfca4TyL//tWK4p
+	FbAsL6ELKRBOIKhMoMq1uwSp6DTTAhWsq9qcBcZu5Cy5n5Dxc59NWsJbFZSjJeWXp4EBys
+	kE8R+wTEPiz3fTWraQqSFIbbDI6jeHeIUXYhziNx46fgHN8bOlKq31jFlMzOHBels00sSM
+	Y0b9bO/z9PqN++BFVvCQxijTjfMXx95rN5oCxMkjsdu0MD7KwzFJHJRyLwIjUExpxp/U0R
+	jYSMJpOrzY8sipOi5hVX5hpN61LG6RW+iWpgqEp38GffH16AG4gJWoiO5VTR9Q==
+Message-ID: <7f59d9e6-1653-4a8d-910d-5922452bb9e8@arinc9.com>
+Date: Tue, 16 Jan 2024 16:09:18 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: remoteproc: do not override firmware-name
- $ref
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Konrad Dybcio <konrad.dybcio@linaro.org>,
- Tinghan Shen <tinghan.shen@mediatek.com>,
- Manivannan Sadhasivam <mani@kernel.org>,
- Bhupesh Sharma <bhupesh.sharma@linaro.org>,
- linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+Subject: Re: [RFC PATCH net-next 6/8] net: dsa: mt7530: simplify
+ mt7530_setup_port6() and change to void
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Daniel Golle <daniel@makrotopia.org>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+ Luiz Angelo Daros de Luca <luizluca@gmail.com>, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-References: <20240115182031.1610088-1-krzysztof.kozlowski@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240115182031.1610088-1-krzysztof.kozlowski@linaro.org>
+ linux-mediatek@lists.infradead.org
+References: <20240113102529.80371-1-arinc.unal@arinc9.com>
+ <20240113102529.80371-7-arinc.unal@arinc9.com>
+ <20240115213720.vxlumsjwrjdkqxsl@skbuf>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20240115213720.vxlumsjwrjdkqxsl@skbuf>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_040626_316384_6F968502 
-X-CRM114-Status: GOOD (  15.75  )
+X-CRM114-CacheID: sfid-20240116_050933_406784_CDF4EFE3 
+X-CRM114-Status: GOOD (  23.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,189 +85,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/01/24 19:20, Krzysztof Kozlowski ha scritto:
-> dtschema package defines firmware-name as string-array, so individual
-> bindings should not make it a string but instead just narrow the number
-> of expected firmware file names.
+On 16.01.2024 00:37, Vladimir Oltean wrote:
+> On Sat, Jan 13, 2024 at 01:25:27PM +0300, Arınç ÜNAL wrote:
+>> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+>> index 3ce4e0bb04dd..3a02308763ca 100644
+>> --- a/drivers/net/dsa/mt7530.c
+>> +++ b/drivers/net/dsa/mt7530.c
+>> @@ -414,72 +414,56 @@ mt753x_preferred_default_local_cpu_port(struct dsa_switch *ds)
+>>   }
+>>   
+>>   /* Setup port 6 interface mode and TRGMII TX circuit */
+>> -static int
+>> +static void
+>>   mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
+>>   {
+>>   	struct mt7530_priv *priv = ds->priv;
+>> -	u32 ncpo1, ssc_delta, trgint, xtal;
+>> +	u32 ncpo1, ssc_delta, xtal;
+>>   
+>>   	mt7530_clear(priv, MT7530_MHWTRAP, MHWTRAP_P6_DIS);
+>>   
+>> +	if (interface == PHY_INTERFACE_MODE_RGMII)
+>> +		return;
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-... a better commit description:
-
-The devicetree schema core defines firmware-name as a string-array:
-remove the override and narrow the number of expected file names to 1.
-
-Besides,
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> ---
->   Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml     | 4 ++--
->   .../devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml       | 2 +-
->   .../devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml       | 2 +-
->   .../devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml  | 2 +-
->   .../devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml      | 2 +-
->   .../devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml       | 2 +-
->   .../devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml       | 2 +-
->   .../devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml       | 2 +-
->   .../devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml       | 2 +-
->   .../devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml       | 2 +-
->   .../devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml        | 2 +-
->   11 files changed, 12 insertions(+), 12 deletions(-)
+> It would be good to add a comment here which states that the port comes
+> out of reset with values good for RGMII.
 > 
-> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> index 09102dda4942..507f98f73d23 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> @@ -47,7 +47,7 @@ properties:
->       maxItems: 1
->   
->     firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->       description:
->         If present, name (or relative path) of the file within the
->         firmware search path containing the firmware image used when
-> @@ -115,7 +115,7 @@ patternProperties:
->           maxItems: 1
->   
->         firmware-name:
-> -        $ref: /schemas/types.yaml#/definitions/string
-> +        maxItems: 1
->           description:
->             If present, name (or relative path) of the file within the
->             firmware search path containing the firmware image used when
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml
-> index eb868a7ff4cd..ad45fd00ae34 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml
-> @@ -46,7 +46,7 @@ properties:
->       description: Reference to the reserved-memory for the Hexagon core
->   
->     firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->       description: Firmware name for the Hexagon core
->   
->   required:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml
-> index c054b84fdcd5..66b455d0a8e3 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml
-> @@ -45,7 +45,7 @@ properties:
->     smd-edge: false
->   
->     firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->       description: Firmware name for the Hexagon core
->   
->   required:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml
-> index b6bd33438584..9381c7022ff4 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml
-> @@ -80,7 +80,7 @@ properties:
->       description: Reference to the reserved-memory for the Hexagon core
->   
->     firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->       description:
->         The name of the firmware which should be loaded for this remote
->         processor.
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml
-> index 4744a37b2b5d..45ee9fbe0966 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml
-> @@ -42,7 +42,7 @@ properties:
->       description: Reference to the reserved-memory for the Hexagon core
->   
->     firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->       description: Firmware name for the Hexagon core
->   
->   required:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml
-> index 028287235912..758adb06c8dd 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml
-> @@ -47,7 +47,7 @@ properties:
->     smd-edge: false
->   
->     firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->       description: Firmware name for the Hexagon core
->   
->   required:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml
-> index f7e40fb166da..c1a3cc308bdb 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml
-> @@ -42,7 +42,7 @@ properties:
->     smd-edge: false
->   
->     firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->       description: Firmware name for the Hexagon core
->   
->   required:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml
-> index 3e4a03eb4532..7286b2baa19f 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml
-> @@ -36,7 +36,7 @@ properties:
->       description: Reference to the reserved-memory for the Hexagon core
->   
->     firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->       description: Firmware name for the Hexagon core
->   
->     smd-edge: false
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml
-> index 238c6e5e67c5..d67386c50fa4 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml
-> @@ -46,7 +46,7 @@ properties:
->     smd-edge: false
->   
->     firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->       description: Firmware name for the Hexagon core
->   
->   required:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml
-> index 53cea8e53a31..4b9fb74fb9e9 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml
-> @@ -47,7 +47,7 @@ properties:
->       description: Reference to the reserved-memory for the Hexagon core
->   
->     firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->       description: Firmware name for the Hexagon core
->   
->   required:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml
-> index 45eb42bd3c2c..8e033b22d28c 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml
-> @@ -51,7 +51,7 @@ properties:
->         - const: stop-ack
->   
->     firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->       description:
->         Relative firmware image path for the WCNSS core. Defaults to
->         "wcnss.mdt".
+> Also, there's a built-in assumption in this patch, that dynamically
+> switching between RGMII and TRGMII is not possible. This is because
+> phylink mac_config() is not necesarily called only once immediately
+> after reset, but after each major_config().
+> 
+> The fact that the driver sets both PHY_INTERFACE_MODE_RGMII and
+> PHY_INTERFACE_MODE_TRGMII at once in config->supported_interfaces does
+> not disprove that dynamic reconfiguration is possible. Normally,
+> interfaces for which it doesn't make sense to dynamically reconfigure
+> (they are wired to fixed pinout) have a single bit set in
+> supported_interfaces. Is this switching something that makes any sense
+> at all, given that port 6 is internal? It's not something that phylink
+> knows to do today, but if this is theoretically possible and remotely
+> useful, someone might end up wanting, in the future, to revert this patch.
 
+Do you mean by internal port that the port does not have MII pinout? Port 6
+of the MT7530 switch do. It is possible to have an external PHY wired to
+it. So it would make sense to design mt7530_setup_port6() in the sense that
+dynamic reconfiguration is possible.
 
+I've tested to see that the core operations for TRGMII does not interfere
+so no need to undo them when the interface changes from TRGMII to RGMII.
 
+I'll do below on this patch:
+
+	if (interface == PHY_INTERFACE_MODE_RGMII) {
+		mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
+			   P6_INTF_MODE(0));
+		return;
+	}
+
+Arınç
 
