@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22B84C47258
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 09:55:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E106C47258
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 09:55:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ktx4ypJkW+1F1HzwXwLecmJCQRCiFmplhvDRzxxhFw4=; b=ejk339vaR8aMxIvbNC1CoadrI1
-	QHfJWeWCrKlxpHNx8SgyNjI2KkTe28kMSpu7CGIzXhxCZCY/RcviRIA1fXnUn/+FMlgzi5o+CU1Bd
-	qdrVxR+nf2SsAoBo4dWyKP8pDJvcqBZAy3l8ndjyMTJBxiJ3e6jk/0KZOWyNx9e3OzawFUllBtgzm
-	DyBfQqHgWdYymIprZJDHhpdvX8KhlQFPo9QgyTu+IuYyYa7HqSAvcO6CeLO+Ev2lXGjbMvunOcu3K
-	2BnD6Fvo8d2XUJ/OPOEYiUsOWEQuxEhP3JmH5aYZmcDfSETr+gEMiL4cXRPX5IjcVPD9ricNfhZJ/
-	mvskAAMQ==;
+	bh=ANr0NMvZ0N0p/R6itniZFn8gtrZFLYiwU+fk29J2z/Q=; b=GfVpKiiDu3vvxFASG0NJX5MyPn
+	MzNwOo/L7t+ziqphRI+UPcAIkdjwapXEGCOOkmpqpNbu1Buz3HonDmZSRJLweDm89znsFtZeko3ws
+	/8ibrrpCzSmCVt1OAtZ/oG/piunpiyGKKfJKbg9Q5ZWpTePBWa2KSFkcVEywWHrYBhWnuTQGZzgKY
+	rvnFLrQPKZl276pXVo0P3q7/Dojf5FrHi3V08qT504kGrXR++/k0DXiKDg1MPRZVr5CBLo/SrwmNF
+	v5on/4jiZlRqQulVJ+ipNbOY+Eew/Ueq2jQ5IKFf134vIvUBxZv6hQPBYAlGMGskf2sUFQo5wvDEX
+	BhPX+b5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPgAa-00BbZb-0K;
-	Tue, 16 Jan 2024 09:55:44 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rPgAh-00Bbe7-0z;
+	Tue, 16 Jan 2024 09:55:51 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPgAV-00BbXF-1x;
-	Tue, 16 Jan 2024 09:55:41 +0000
+	id 1rPgAc-00BbZm-0r;
+	Tue, 16 Jan 2024 09:55:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705398938;
-	bh=7gy2cH8xCKeZd7q+A6urQ6kNK0M655zZCD9c0wUy2r4=;
+	s=mail; t=1705398944;
+	bh=Tn+C3n03tNhekIf30piUSEYf+ajiHEYTFZ4foDIQlaQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=QcMf11gTMvzzNOZtPCYn+f7g7nolvmby/iKAkFPoWq7ectFIAZcBomxghxN247cQg
-	 oO4n9UHQOIEDlPZLONhur3TZj5jFwqBbDs29DutcRiqmVdYYvHMcjPhk7RrJaFrKGP
-	 wfbCCDEYOoVMtWtrG7DpZ9inXmaQYW5PX0wM7oLH1NjRxB/3yIdvc8l+2V6CL66SzY
-	 haPnEzQG2vQyB3HgwcwjAHoNStbvrJewgB0grI2xvfCKkYch6rjPfEuNZE4My+I5w3
-	 /WTjOahIPZy+5QlITq2RUuFDHTeqX2c7wAIM2hMhjCyqBd3QKEAavdC5vi+s7Fka9S
-	 EYeUgRT5SECog==
+	b=WxalD3kgWx42Sccc2+7/LZt2Rz9iBn+AWmE4isthaTm2vMtAcgyoCt0USfvllXCzA
+	 fxQ0Z6T0O/fJDEhYg98iS42f7RSHMqwi5NlTXdczQGaIx0mg2oZJ/FZNBY/IgLKU0X
+	 oZaFBQRpyw20mx1oO8HEP3S5cH48NNSekxF0cpzjsjGUq36RiTkNMPSm1iJvNk2ydK
+	 JcA4MrkYVLmloru+zzpAN/6c89wxbMdDb+0tM4MukeXEPV29mY0lYfBZd2DunDtuka
+	 ZTFr+OADY7kRCHOGUJX+h1dy4VVFRvMshNl5pmukn/J71X1l1rBwgdpHqcEZO7XyeA
+	 P8n3hinMwCp6Q==
 Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 05A733782067;
-	Tue, 16 Jan 2024 09:55:33 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1F05A3782068;
+	Tue, 16 Jan 2024 09:55:38 +0000 (UTC)
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: dri-devel@lists.freedesktop.org
 Cc: daniel@fooishbar.org,
@@ -56,18 +56,17 @@ Cc: daniel@fooishbar.org,
 	linux-rockchip@lists.infradead.org,
 	linux-amlogic@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 1/7] drm/ci: arm64.config: Enable CONFIG_DRM_ANALOGIX_ANX7625
-Date: Tue, 16 Jan 2024 15:24:33 +0530
-Message-Id: <20240116095439.107324-2-vignesh.raman@collabora.com>
+Subject: [PATCH v2 2/7] drm/ci: mediatek: Rename exisitng job
+Date: Tue, 16 Jan 2024 15:24:34 +0530
+Message-Id: <20240116095439.107324-3-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20240116095439.107324-1-vignesh.raman@collabora.com>
 References: <20240116095439.107324-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_015539_767476_0385764A 
-X-CRM114-Status: UNSURE (   8.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240116_015546_442505_D52851EF 
+X-CRM114-Status: GOOD (  18.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,35 +81,180 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable CONFIG_DRM_ANALOGIX_ANX7625 in the arm64 defconfig to get
-display driver probed on the mt8183-kukui-jacuzzi-juniper machine.
+For mediatek mt8173 and mt8183, the display driver is mediatek.
+Currently, in drm-ci for mediatek, only the display driver is
+tested. So rename the mediatek job to indicate that display
+driver is tested.
 
-arch/arm64/configs/defconfig has CONFIG_DRM_ANALOGIX_ANX7625=m,
-but drm-ci don't have initrd with modules, so add
-CONFIG_DRM_ANALOGIX_ANX7625=y in CI arm64 config.
+Rename the name of xfail files for mediatek (mt8173 and mt8183),
+to include information about the tested driver and update xfails
+accordingly. Since the correct driver name is passed from the job to
+test gpu and display driver, remove the check to set IGT_FORCE_DRIVER
+based on driver name.
 
 Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 ---
 
 v2:
-  - No changes
+  - Refactor the patch to rename job to indicate display driver testing,
+    rename the existing xfail files, and remove IGT_FORCE_DRIVER from the
+    script since it's now set by the job.
 
 ---
- drivers/gpu/drm/ci/arm64.config | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/ci/igt_runner.sh              | 10 ---------
+ drivers/gpu/drm/ci/test.yml                   | 21 ++++++++++++++-----
+ ....txt => mediatek-mt8173-display-fails.txt} |  0
+ .../xfails/mediatek-mt8173-display-flakes.txt | 13 ++++++++++++
+ .../xfails/mediatek-mt8183-display-fails.txt  |  7 +++++++
+ .../xfails/mediatek-mt8183-display-flakes.txt |  8 +++++++
+ .../drm/ci/xfails/mediatek-mt8183-fails.txt   | 13 ------------
+ 7 files changed, 44 insertions(+), 28 deletions(-)
+ rename drivers/gpu/drm/ci/xfails/{mediatek-mt8173-fails.txt => mediatek-mt8173-display-fails.txt} (100%)
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-display-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
 
-diff --git a/drivers/gpu/drm/ci/arm64.config b/drivers/gpu/drm/ci/arm64.config
-index 8dbce9919a57..37d23fd7a367 100644
---- a/drivers/gpu/drm/ci/arm64.config
-+++ b/drivers/gpu/drm/ci/arm64.config
-@@ -187,6 +187,7 @@ CONFIG_MTK_DEVAPC=y
- CONFIG_PWM_MTK_DISP=y
- CONFIG_MTK_CMDQ=y
- CONFIG_REGULATOR_DA9211=y
-+CONFIG_DRM_ANALOGIX_ANX7625=y
+diff --git a/drivers/gpu/drm/ci/igt_runner.sh b/drivers/gpu/drm/ci/igt_runner.sh
+index f1a08b9b146f..ce6e22369d4d 100755
+--- a/drivers/gpu/drm/ci/igt_runner.sh
++++ b/drivers/gpu/drm/ci/igt_runner.sh
+@@ -20,16 +20,6 @@ cat /sys/kernel/debug/dri/*/state
+ set -e
  
- # For nouveau.  Note that DRM must be a module so that it's loaded after NFS is up to provide the firmware.
- CONFIG_ARCH_TEGRA=y
+ case "$DRIVER_NAME" in
+-    rockchip|meson)
+-        export IGT_FORCE_DRIVER="panfrost"
+-        ;;
+-    mediatek)
+-        if [ "$GPU_VERSION" = "mt8173" ]; then
+-            export IGT_FORCE_DRIVER=${DRIVER_NAME}
+-        elif [ "$GPU_VERSION" = "mt8183" ]; then
+-            export IGT_FORCE_DRIVER="panfrost"
+-        fi
+-        ;;
+     amdgpu)
+         # Cannot use HWCI_KERNEL_MODULES as at that point we don't have the module in /lib
+         mv /install/modules/lib/modules/* /lib/modules/.
+diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
+index 355b794ef2b1..e3aaec06a65d 100644
+--- a/drivers/gpu/drm/ci/test.yml
++++ b/drivers/gpu/drm/ci/test.yml
+@@ -279,29 +279,40 @@ amdgpu:stoney:
+     - .lava-igt:arm64
+   stage: mediatek
+   variables:
+-    DRIVER_NAME: mediatek
+     DTB: ${DEVICE_TYPE}
+     BOOT_METHOD: depthcharge
+     KERNEL_IMAGE_TYPE: ""
+ 
+-mediatek:mt8173:
++.mt8173:
+   extends:
+     - .mediatek
+   parallel: 4
+   variables:
+     DEVICE_TYPE: mt8173-elm-hana
+-    GPU_VERSION: mt8173
+     RUNNER_TAG: mesa-ci-x86-64-lava-mt8173-elm-hana
+ 
+-mediatek:mt8183:
++.mt8183:
+   extends:
+     - .mediatek
+   parallel: 3
+   variables:
+     DEVICE_TYPE: mt8183-kukui-jacuzzi-juniper-sku16
+-    GPU_VERSION: mt8183
+     RUNNER_TAG: mesa-ci-x86-64-lava-mt8183-kukui-jacuzzi-juniper-sku16
+ 
++mediatek:mt8173-display:
++  extends:
++    - .mt8173
++  variables:
++    GPU_VERSION: mt8173-display
++    DRIVER_NAME: mediatek
++
++mediatek:mt8183-display:
++  extends:
++    - .mt8183
++  variables:
++    GPU_VERSION: mt8183-display
++    DRIVER_NAME: mediatek
++
+ # drm-mtk doesn't even probe yet in mainline for mt8192
+ .mediatek:mt8192:
+   extends:
+diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-display-fails.txt
+similarity index 100%
+rename from drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
+rename to drivers/gpu/drm/ci/xfails/mediatek-mt8173-display-fails.txt
+diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-display-flakes.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-display-flakes.txt
+new file mode 100644
+index 000000000000..64b30c092c85
+--- /dev/null
++++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-display-flakes.txt
+@@ -0,0 +1,13 @@
++# Board Name: mt8173-elm-hana.dtb
++# Bug Report: https://lore.kernel.org/dri-devel/931e3f9a-9c5c-fc42-16fc-abaac4e0c0ff@collabora.com/T/#u
++# IGT Version: 1.28-gd2af13d9f
++# Failure Rate: 50
++# Linux Version: 6.7.0-rc3
++
++# Reported by deqp-runner
++kms_cursor_legacy@cursor-vs-flip-atomic-transitions
++
++# Below test shows inconsistency across multiple runs,
++# giving results of Pass and Timeout/Fail alternately
++kms_prop_blob@invalid-set-prop
++kms_prop_blob@invalid-set-prop-any
+diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-fails.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-fails.txt
+new file mode 100644
+index 000000000000..bfa2f92c907a
+--- /dev/null
++++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-fails.txt
+@@ -0,0 +1,7 @@
++kms_bw@linear-tiling-2-displays-3840x2160p,Fail
++kms_cursor_legacy@cursor-vs-flip-atomic,Fail
++kms_flip@flip-vs-panning-vs-hang,Fail
++kms_flip@flip-vs-suspend,Fail
++kms_prop_blob@invalid-set-prop,Fail
++kms_prop_blob@invalid-set-prop-any,Fail
++kms_properties@get_properties-sanity-atomic,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-flakes.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-flakes.txt
+new file mode 100644
+index 000000000000..5885a950fa72
+--- /dev/null
++++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-flakes.txt
+@@ -0,0 +1,8 @@
++# Board Name: mt8183-kukui-jacuzzi-juniper-sku16.dtb
++# Bug Report: https://lore.kernel.org/dri-devel/931e3f9a-9c5c-fc42-16fc-abaac4e0c0ff@collabora.com/T/#u
++# IGT Version: 1.28-gd2af13d9f
++# Failure Rate: 100
++# Linux Version: 6.7.0-rc3
++
++# Reported by deqp-runner
++kms_cursor_legacy@cursor-vs-flip-atomic-transitions
+diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
+deleted file mode 100644
+index 67d690fc4037..000000000000
+--- a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
++++ /dev/null
+@@ -1,13 +0,0 @@
+-kms_addfb_basic@addfb25-bad-modifier,Fail
+-kms_bw@linear-tiling-1-displays-2560x1440p,Fail
+-kms_bw@linear-tiling-2-displays-1920x1080p,Fail
+-kms_bw@linear-tiling-2-displays-2560x1440p,Fail
+-kms_bw@linear-tiling-2-displays-3840x2160p,Fail
+-kms_bw@linear-tiling-3-displays-2560x1440p,Fail
+-kms_bw@linear-tiling-3-displays-3840x2160p,Fail
+-kms_color@pipe-A-invalid-gamma-lut-sizes,Fail
+-kms_plane_cursor@overlay,Fail
+-kms_plane_cursor@primary,Fail
+-kms_plane_cursor@viewport,Fail
+-kms_plane_scaling@upscale-with-rotation-20x20,Fail
+-kms_rmfb@close-fd,Fail
 -- 
 2.40.1
 
