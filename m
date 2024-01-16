@@ -4,90 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B944DC47DA2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 16:13:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2447FC47077
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 17:06:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fEOjtDtYVBOB1Sc9meCvWqA+RQADIvF7Dvcqsf5Mj80=; b=VGoTOnmGyOTt+iBgxvRIuFaPBb
-	YGPocIRaEE43KDPzGIOVhj61tomlposxmzMZdfXRznljEGxTWpGdN8PEV0nizAcpC1XoEai4efj6V
-	m/b9d/tEEnPEjTHX+WNu7YfxoGqcopO4RNd6qRzcfItl4fz8tMIjd8acNpz8X5C+qh4suygZRfWC2
-	6UZOZ2RHSKzb694VGQ+frBvqDrpkfl7T8IgfPUdzR6ymagRVvK1+RROyPzexI9DBmHv0e7XlhUzjj
-	vyBdFbggp6lRp5tIqDMf3OagMgXRJ526yZH3jeXmqLKvWCcRn7ToUGXHLpb4/EbEX0mxrUBwwAZ1m
-	3SI98KfA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9HbZN4CyG8XR5HbXWl1OlbE6KwGeSWI/unoisp6ImNs=; b=Zd6P4uoDVG2//Gp7lbYul26Sja
+	rN5nWErL1VxGzZDHDxUuGNsOwMhJ5NLVwfdN37ErJhTeqLlPo2YBAY3B5T3JidHsHT1Sy3aWH4Hhb
+	eg7SKudXjW/Dd1s3qCMrX0GNf1jxkq8bwzp8ig8RGil/Z+/dnhBq1nKO6p1PPrhD7uWnpVwIWP/ey
+	YCgC7Zv50TD9Sfzf82s5V0u26IJ1FgiDpSfYjr6fqLeyqmTfJ3F+P6qJi9smN9y+tQzTOvgn1dLfY
+	VLMIrE6D/eWKGnCibtdy8xRFCrQol5SrqLbYj9L9XfrEbQYhw+phDCB1OrS1KeL7iGubnDodqEXcb
+	zylHNyfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPm4a-00CYxj-1x;
-	Tue, 16 Jan 2024 16:13:56 +0000
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+	id 1rPmtJ-00ChS8-2r;
+	Tue, 16 Jan 2024 17:06:21 +0000
+Received: from relay8-d.mail.gandi.net ([217.70.183.201])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPm4W-00CYut-2W
-	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Jan 2024 16:13:54 +0000
-Received: by mail-pg1-x535.google.com with SMTP id 41be03b00d2f7-5cdf76cde78so5000271a12.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Jan 2024 08:13:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705421629; x=1706026429; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=fEOjtDtYVBOB1Sc9meCvWqA+RQADIvF7Dvcqsf5Mj80=;
-        b=PxYisJeijN5gN5tAMqDp2H1WYIcwABMJAiGPCmWDgjQNJ4LpYqCGxkGMpYQtsfX3XY
-         vmkgmDHmOiu78i7QrWXMZJXp2fG5gB8VMUxOIJ6wFGBI3Xi+05zhisg19v4BNBwO/RD+
-         SOd32Tqj7ZWPSzUnrpDj7ZiUyQNeJ8MRpauhOduTvz0ptKCdpTzbfw9D4i8inahqPnY2
-         dSa1gkxZSYrX5ZC4Br5QiCbo8xpZ6iSv9SG6GSwUDiG9d7rLyega3T8V7Aqs28p5T6NN
-         ggtP60XMcqvZYwkxVXw1XZpejMp5K6831ShzMsCeujV970MyOuNRp2KDUSqcfcL8rCNh
-         Ngqg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705421629; x=1706026429;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=fEOjtDtYVBOB1Sc9meCvWqA+RQADIvF7Dvcqsf5Mj80=;
-        b=q1S+TLJYvM9iaCy8ioGI+rm4QLJFHyZmnfsDXA0MmpGFqAqpBCzPp4lubBva4jL7rY
-         U6rhTG4AgnuEFjrzGEYEZXEs++I1q099FXE3V47iB4IlgyGBrpBxJMSjQCB6y5NKfa7p
-         PjKGTuxlbYOb/X/FhswuhD2xBi8EFFf/dBhNGbP7jpR4z30RrDAlm/Rp+qhRbMYxLzNP
-         +O2xZrkEUA2XvitYcgrwql1efhu/7fjm3FLlyAdu825exKpb5gFZtsmibsC8AwA6Ye5+
-         0C2LP0mehqmRePLQNGKGtH5rvHPQbl/dZ3BoPWmLhDoJS1dF6sv8XblcSuQAOSmahPob
-         U1Gw==
-X-Gm-Message-State: AOJu0Yyjo6URu0J/WFRR0Xd+uIC8eDBw8aeHX62tdrXqoPhkxPiSxWYs
-	qrnOX0nkI6j+9RYOtPxojjIhXymclt73bQ==
-X-Google-Smtp-Source: AGHT+IGqo6AFxOY/lJm+DyF6xmEXUShCosfyfZqWOZaC24dFB/lBB7V8xo1CdgEHQp2/QnY9hCKm0A==
-X-Received: by 2002:a17:90a:ad8b:b0:28d:b72f:a63b with SMTP id s11-20020a17090aad8b00b0028db72fa63bmr3758818pjq.69.1705421629666;
-        Tue, 16 Jan 2024 08:13:49 -0800 (PST)
-Received: from p14s ([2604:3d09:148c:c800::5ced])
-        by smtp.gmail.com with ESMTPSA id sd5-20020a17090b514500b0028d573397dcsm14451049pjb.42.2024.01.16.08.13.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Jan 2024 08:13:49 -0800 (PST)
-Date: Tue, 16 Jan 2024 09:13:46 -0700
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Bjorn Andersson <andersson@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Tinghan Shen <tinghan.shen@mediatek.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Bhupesh Sharma <bhupesh.sharma@linaro.org>,
-	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: remoteproc: do not override firmware-name
- $ref
-Message-ID: <ZaarOuqx3jzftWU3@p14s>
-References: <20240115182031.1610088-1-krzysztof.kozlowski@linaro.org>
+	id 1rPmtF-00ChRI-1D;
+	Tue, 16 Jan 2024 17:06:19 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 56CE41BF204;
+	Tue, 16 Jan 2024 17:06:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1705424767;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9HbZN4CyG8XR5HbXWl1OlbE6KwGeSWI/unoisp6ImNs=;
+	b=EmY52/eFthuRUhpVhsbjsK+A6rs+RHpeZUlai6n64lBUcnxrMzTld4zvurzDsEkejPiz6G
+	z1DEU4qSG3V8H7LEqRqkhsXTiU4ECLRF3yxZfGi0TcBSPfPq+T2E2VB9gdSC271RsoZnpU
+	spoFhfo/jlaYTHcV6CHzg4+/AFBYXxrp3w418zoK9jPV/fZxjXD2P8G84pn6CUgDbcmNRH
+	R6MWmIVmfSyt+Cn2saJD1E+3OsupJkpf+r3OtdG3r6pgrdae5019MW9yoDGYUcdEuijoCP
+	oR0iN5wpmGm1ZcYCFv6PvNiZq4qJl2r/xM174AtI9KRXkwWib6acok2jWKol/w==
+Message-ID: <b9070fb6-4b85-441e-a863-8fe562408e48@arinc9.com>
+Date: Tue, 16 Jan 2024 20:05:57 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240115182031.1610088-1-krzysztof.kozlowski@linaro.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH net-next 6/8] net: dsa: mt7530: simplify
+ mt7530_setup_port6() and change to void
+Content-Language: en-US
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Daniel Golle <daniel@makrotopia.org>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+ Luiz Angelo Daros de Luca <luizluca@gmail.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240113102529.80371-1-arinc.unal@arinc9.com>
+ <20240113102529.80371-7-arinc.unal@arinc9.com>
+ <20240115213720.vxlumsjwrjdkqxsl@skbuf>
+ <7f59d9e6-1653-4a8d-910d-5922452bb9e8@arinc9.com>
+ <20240116134705.mw2a2twoakw5b7jq@skbuf>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20240116134705.mw2a2twoakw5b7jq@skbuf>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_081352_823215_41BCE53A 
-X-CRM114-Status: GOOD (  18.19  )
+X-CRM114-CacheID: sfid-20240116_090617_711362_0556EF36 
+X-CRM114-Status: GOOD (  21.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,184 +87,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 15, 2024 at 07:20:31PM +0100, Krzysztof Kozlowski wrote:
-> dtschema package defines firmware-name as string-array, so individual
-> bindings should not make it a string but instead just narrow the number
-> of expected firmware file names.
+On 16.01.2024 16:47, Vladimir Oltean wrote:
+> On Tue, Jan 16, 2024 at 04:09:18PM +0300, Arınç ÜNAL wrote:
+>> Do you mean by internal port that the port does not have MII pinout? Port 6
+>> of the MT7530 switch do. It is possible to have an external PHY wired to it.
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->  Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml     | 4 ++--
-
-For the above:
-
-Reviewed-by: Mathieu Poirier <mathieu.poirier@linaro.org>
-
->  .../devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml       | 2 +-
->  .../devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml       | 2 +-
->  .../devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml  | 2 +-
->  .../devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml      | 2 +-
->  .../devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml       | 2 +-
->  .../devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml       | 2 +-
->  .../devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml       | 2 +-
->  .../devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml       | 2 +-
->  .../devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml       | 2 +-
->  .../devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml        | 2 +-
->  11 files changed, 12 insertions(+), 12 deletions(-)
+> Yes, this is what I meant by internal port. It seems I was wrong to
+> assume it is always connected to GMAC0.
 > 
-> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> index 09102dda4942..507f98f73d23 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> @@ -47,7 +47,7 @@ properties:
->      maxItems: 1
->  
->    firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->      description:
->        If present, name (or relative path) of the file within the
->        firmware search path containing the firmware image used when
-> @@ -115,7 +115,7 @@ patternProperties:
->          maxItems: 1
->  
->        firmware-name:
-> -        $ref: /schemas/types.yaml#/definitions/string
-> +        maxItems: 1
->          description:
->            If present, name (or relative path) of the file within the
->            firmware search path containing the firmware image used when
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml
-> index eb868a7ff4cd..ad45fd00ae34 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,qcs404-pas.yaml
-> @@ -46,7 +46,7 @@ properties:
->      description: Reference to the reserved-memory for the Hexagon core
->  
->    firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->      description: Firmware name for the Hexagon core
->  
->  required:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml
-> index c054b84fdcd5..66b455d0a8e3 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sc7180-pas.yaml
-> @@ -45,7 +45,7 @@ properties:
->    smd-edge: false
->  
->    firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->      description: Firmware name for the Hexagon core
->  
->  required:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml
-> index b6bd33438584..9381c7022ff4 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sc7280-wpss-pil.yaml
-> @@ -80,7 +80,7 @@ properties:
->      description: Reference to the reserved-memory for the Hexagon core
->  
->    firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->      description:
->        The name of the firmware which should be loaded for this remote
->        processor.
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml
-> index 4744a37b2b5d..45ee9fbe0966 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sc8180x-pas.yaml
-> @@ -42,7 +42,7 @@ properties:
->      description: Reference to the reserved-memory for the Hexagon core
->  
->    firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->      description: Firmware name for the Hexagon core
->  
->  required:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml
-> index 028287235912..758adb06c8dd 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm6115-pas.yaml
-> @@ -47,7 +47,7 @@ properties:
->    smd-edge: false
->  
->    firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->      description: Firmware name for the Hexagon core
->  
->  required:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml
-> index f7e40fb166da..c1a3cc308bdb 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm6350-pas.yaml
-> @@ -42,7 +42,7 @@ properties:
->    smd-edge: false
->  
->    firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->      description: Firmware name for the Hexagon core
->  
->  required:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml
-> index 3e4a03eb4532..7286b2baa19f 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm6375-pas.yaml
-> @@ -36,7 +36,7 @@ properties:
->      description: Reference to the reserved-memory for the Hexagon core
->  
->    firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->      description: Firmware name for the Hexagon core
->  
->    smd-edge: false
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml
-> index 238c6e5e67c5..d67386c50fa4 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm8150-pas.yaml
-> @@ -46,7 +46,7 @@ properties:
->    smd-edge: false
->  
->    firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->      description: Firmware name for the Hexagon core
->  
->  required:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml
-> index 53cea8e53a31..4b9fb74fb9e9 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,sm8350-pas.yaml
-> @@ -47,7 +47,7 @@ properties:
->      description: Reference to the reserved-memory for the Hexagon core
->  
->    firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->      description: Firmware name for the Hexagon core
->  
->  required:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml b/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml
-> index 45eb42bd3c2c..8e033b22d28c 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/qcom,wcnss-pil.yaml
-> @@ -51,7 +51,7 @@ properties:
->        - const: stop-ack
->  
->    firmware-name:
-> -    $ref: /schemas/types.yaml#/definitions/string
-> +    maxItems: 1
->      description:
->        Relative firmware image path for the WCNSS core. Defaults to
->        "wcnss.mdt".
-> -- 
-> 2.34.1
+> How is the selection done between internal and external wiring?
+
+There are two variants of MT7530. One is standalone, the other comes with
+the SoC as a part of the multi-chip module. More information at
+mediatek,mt7530.yaml.
+
+The standalone one is straightforward. A MAC or a PHY can be wired to the
+MII pinouts of port 5 and 6 on the PCB, just as the relevant MII standard
+describes.
+
+On the MT7621 SoCs which include the switch IC, port 6 is wired to GMAC0,
+port 5 is wired to GMAC1. I assume you mean internal and external wiring in
+reference to this case. This is the internal wiring.
+
+The external wiring works by wiring the PHY or MAC to the MII pinouts of
+the SoC's two MACs. Since RX of the switch MAC is wired to TX of the SoC
+MAC and vice versa, the external PHY or MAC must be wired TX to TX and RX
+to RX. Ubiquiti EdgeRouter X SFP is wired this way. The wiring for clock
+pins may need to be mirrored too, I haven't studied the RGMII specification
+that much in detail. This works by not enabling the SoC MAC.
+
 > 
+> If external wiring to a PHY is possible, shouldn't the driver accept all
+> 4 RGMII variants with phy_interface_mode_is_rgmii(), because the delays
+> specified in "rgmii-txid", "rgmii-rxid", "rgmii-id" always pertain to
+> the PHY, and thus it doesn't make sense for the MAC to not allow the use
+> of the full spectrum?
+
+Great point. I think delays are not supported on port 6. There's only the
+"MT7530 Giga Switch programming guide v0.1" document mentioning setting
+delays on page 8, and it's only for port 5. It is also implemented on
+mt7530_setup_port5():
+
+/* P5 RGMII RX Clock Control: delay setting for 1000M */
+mt7530_write(priv, MT7530_P5RGMIIRXCR, CSR_RGMII_EDGE_ALIGN);
+
+/* Don't set delay in DSA mode */
+if (!dsa_is_dsa_port(priv->ds, 5) &&
+     (interface == PHY_INTERFACE_MODE_RGMII_TXID ||
+      interface == PHY_INTERFACE_MODE_RGMII_ID))
+	tx_delay = 4; /* n * 0.5 ns */
+
+/* P5 RGMII TX Clock Control: delay x */
+mt7530_write(priv, MT7530_P5RGMIITXCR,
+	     CSR_RGMII_TXC_CFG(0x10 + tx_delay));
+
+There's only the TX driving mentioned for port 6 on the document. I'm
+guessing port 6 was intended to connect to another TRGMII capable MAC so
+delays were out of the question. TRGMII is just overclocked RGMII to
+provide up to 2Gbps TX/RX, at least in theory. The whole existence of the
+TRGMII interface on Linux is only being used by the MT7621 and MT7623 SoC
+MACs, and port 6 MAC of the MT7530 switch.
+
+> 
+>> So it would make sense to design mt7530_setup_port6() in the sense that
+>> dynamic reconfiguration is possible.
+> 
+> Ok, you mean to keep the dynamic reconfiguration possible rather than
+> redesign to disallow it.
+
+Very much so.
+
+Arınç
 
