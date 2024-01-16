@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 706ADC3DA79
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 00:26:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B506C3DA79
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 00:27:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9o4fJOuImUkYjqx5qB+NgTdRzXMR3WNhm1CDpm9iDdQ=; b=25qX8kVd23jlieTgE1JrTFLHcy
-	fjWoOYJUFeZIZjH7PcUnb9CWRrFBnQXAf9cTdiqXZBiBaO7oK1FTtCepFZfCIbuniFi2T46CUMyWG
-	DzZgQoQ1Zwmii7MJqWXF26IM/wNKh6Fm4K+VqMjy4ZkiExlhtLIiAZsxER+qzGJuJzT4TH0SgDH07
-	ocxgp2x3lyrjUpFANTgUQm/VCyegQDi/EokgeXBkm8cDrHXbf6zMKWllIxXJd9gRIVxOdrLccxT8x
-	URm2hMnvNj5NGUh+ES2/3wob0hMLLpx1O7GI7LjNv2DMhKsRrmlUCd+glD3aQyxFvKywvevNwLib6
-	EQwe0qNA==;
+	bh=xkUCeoMb3oISw3CDI26FuV6EZE/61K+hVfWdtzNZcs4=; b=PlmWzZlUR5fyRlq5WzmcJOfjI8
+	+UA4HPn41CJ86WMUG63Tx6FYjzHMnycA1PSYPNEbTKYE8EyHyk691r0FYTxo8jhWzmA4A3LFTJWXt
+	Qstdfqa7ZzddE/DWAig18/sBkcVYV+W9CHz6zl611O9WR7wGejMZp8xeAjLQYyhDtvCNEukVkLYOs
+	tb/drtKUuopstpzsfvLMDxRgTDOfSC5CWAtxlnlC+VMaDA2mDGAKAhkoTUsykxk5uqYRO65fvjMLE
+	4Nm14SAdoTY+IHnqpT5A2kpAtG0HB6Cesy7A8QIiKX7JjXC/S6fY672iNPxhprhQUmodSHydJgP98
+	cy661Zbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPXHg-00AVbU-1h;
-	Tue, 16 Jan 2024 00:26:28 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1rPXIs-00AW4D-1u;
+	Tue, 16 Jan 2024 00:27:42 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPXHc-00AVZB-1Z;
-	Tue, 16 Jan 2024 00:26:26 +0000
+	id 1rPXIo-00AW2G-2d;
+	Tue, 16 Jan 2024 00:27:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 0211FB80D54;
-	Tue, 16 Jan 2024 00:26:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3013AC43394;
-	Tue, 16 Jan 2024 00:26:21 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 46AC860BA3;
+	Tue, 16 Jan 2024 00:27:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0414C433A6;
+	Tue, 16 Jan 2024 00:27:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1705364782;
-	bh=NxpqsO3yj33VWaO2m8CzkxJFAAtKW59jzjIbaK632fk=;
+	s=k20201202; t=1705364828;
+	bh=PddBw6uDzqipD7P9eSsG2zgouGOp/A1QGYqGB+hWYys=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=dMo/EtuoEeQAgMC8SYBR/juN48Qdtu5mUtfWml9HCSP9oaJAIzBCkJVKYANCrs+Z/
-	 c/l8dq0geqA2lioH3Mz8js9659u/uHmd2Z9pell218qRf5/phiAK8gVEUUvBidSsSD
-	 NM8wJcjx25t17utdiDKy4nMF3zMZJILY48XFdp2AwZrA13CJgu5Wc79U1V+PSgBL3d
-	 fVgzOdZKOXiS2eCI50s8XW7fSIsxi7cmtwt+BJIhUvy3ICBiGdGifOWWMbJ2hii2XQ
-	 rA05jutzMU7E71h2k9bkcfS5NFHeaNE93ZuSYZFv2n+Gc7+/SBpD5XSrovVSGhnIn7
-	 o90O4ccM3VBJg==
+	b=tNydv1QCOaiW2k5jGEUdEODQucaEZ3TsDUxTxvHuQFj8F3TOzbwIO3/vFjRkLeSW9
+	 LoEQVR9K7vckp4e0ilET1e0NWaTNpVQwcsMPJJzFFS1eLfyL/hHmbxqrJDqmZDxa7F
+	 KW8IBGVhYnFgeRMe4EosouY3RjjN8N8iuAy4Rt8jWsOGzomou7dedEtg/f24gbs9+6
+	 l5b1C4Wwh2pfx8ATAsGOuFPueHvUBq5tWgI4S8k+1DJpSYtvY98yrgkoI7JEXLsMl5
+	 16dbAUpGnUbeuBoEqY8kwktsCTJS9Fl0dbvHm4gkZ5zeRTOV5fzaBSjYOjkV2Ds8Wu
+	 5oaFt86M0piFw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -53,19 +53,19 @@ Cc: Weichen Chen <weichen.chen@mediatek.com>,
 	linux-hardening@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 07/13] pstore/ram: Fix crash when setting number of cpus to an odd number
-Date: Mon, 15 Jan 2024 19:25:43 -0500
-Message-ID: <20240116002603.215942-7-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.10 07/12] pstore/ram: Fix crash when setting number of cpus to an odd number
+Date: Mon, 15 Jan 2024 19:26:32 -0500
+Message-ID: <20240116002649.216260-7-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240116002603.215942-1-sashal@kernel.org>
-References: <20240116002603.215942-1-sashal@kernel.org>
+In-Reply-To: <20240116002649.216260-1-sashal@kernel.org>
+References: <20240116002649.216260-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 5.15.147
+X-stable-base: Linux 5.10.208
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240115_162624_685670_E4663DE2 
+X-CRM114-CacheID: sfid-20240115_162738_897772_74B46C0D 
 X-CRM114-Status: UNSURE (   9.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -110,7 +110,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 insertion(+)
 
 diff --git a/fs/pstore/ram.c b/fs/pstore/ram.c
-index f3fa3625d772..e15b4631364a 100644
+index 98e579ce0d63..44fc3b396288 100644
 --- a/fs/pstore/ram.c
 +++ b/fs/pstore/ram.c
 @@ -519,6 +519,7 @@ static int ramoops_init_przs(const char *name,
