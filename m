@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44F21C3DA79
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 00:13:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 304C1C47258
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 00:14:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eqQK+wuHjj+2NMnr1ZsTaGRuk0D0/SsG9NdOJHc2XTs=; b=MXCOxM+YA+5RVIUFByW3m0BEEG
-	ln/a1idcviDbjpRxQvnUUAFXzN5CYQ5f5Cqye3XBMJH7YJ12f4OtnvkXBZ3miLLs5yzXxZETR0ITa
-	fhMufFEtY4nzZ/6HB787I500KSpPvKpzkS3NuFC2QXugDXhHc1EU8WGkcE5gHzUt/EHf1gR72CjNG
-	VFrk9MKfxuW17/wjF92LMWeQG2qXU0hdeDXVxySaN3QaampTFsVIyY6ZehZ8NXKbH6Rn+h5BhDV9Q
-	ruSDp0n90a8UxC/FiU3uux4NfqNbJwacHRPIaGX/RpPyXHKxy1Yu/iRoPcwbvqR7Q8+jKLltr4F1k
-	+IlkMhlA==;
+	bh=cGkAVoAlQa7VFQwjhBkSwuF++zo29UkpIggxxfQz7bA=; b=fk8d95JoVJPdN1YnhCajxNW/++
+	1yl+i2hM7+HKNHLVOQsH5Wc3kKm/Z2AUg6OSPkXDakWOuXaURKMFnyTfYw/zqy7cuEkaMETRufiwk
+	jl74roR8mlTec0xKPTtwoyZKtWqMWtBwo8HsG1IxJwxJg/XcbP+57Cxrk2sG3Zde90YKa6+ahBdQh
+	tgbezfET7RlfgRJvKRVwyvFsy50+nz8enJas/DOWmdLrmgww8y3s91Qsm9JhaZDjF28Pi5cb5qVSL
+	ycpyINn6ngIMj4MjJNB2/qoSt1IcFJLv8ysqE3GXENC6/tZTi+rQNnM190NvtyG/fwg2tKMKC+ZLW
+	I3OzSsWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPX5P-00ASn9-2d;
-	Tue, 16 Jan 2024 00:13:47 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rPX5u-00AT05-2z;
+	Tue, 16 Jan 2024 00:14:18 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPX5L-00ASmg-26;
-	Tue, 16 Jan 2024 00:13:45 +0000
+	id 1rPX5r-00ASyE-14;
+	Tue, 16 Jan 2024 00:14:17 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id DABF1CE180B;
-	Tue, 16 Jan 2024 00:13:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C72D1C433C7;
-	Tue, 16 Jan 2024 00:13:38 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id 04DD6B80D54;
+	Tue, 16 Jan 2024 00:14:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B4CBC43390;
+	Tue, 16 Jan 2024 00:14:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1705364020;
-	bh=qu8PZWL5sa4HADRmhp8O/xnDAnb+X3Fz4jVED4/Lwsc=;
+	s=k20201202; t=1705364053;
+	bh=KYODEJCLLPPa1wSTMb/nZ9RdT/B9th3CPaj83m5iMEE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Lf7ZY1IJiiVtM6xVuHvS5TN9wz1+kxMtqs9WUhosdOD2UQIcDuXSAvotLTMZAregC
-	 PzxwQfHsHdkHhaQ8+iYvusOI97wj26Qteu/d1e8pMDJJ6ucnEB227TAdlEN5B0orZD
-	 pOttQNna5gH4oO+xHSeauFfQnyYD5H1J34ipt6IavLefIBR9QQs7jq6JGo2S9uMq5j
-	 LCX/VnBLpcFIo5r67K8vqqSgtfv/dvRPQZChRGGkxiNBg5/rcBUzhB3fT9n/WXR4kQ
-	 WeiM3Pnqx4CR+r2nTHnER6RwZF59JR+SaTYcptT6KP2KlGuS00WIVk2MmgRfC+Hdbn
-	 FmMGTUWOGG3Kw==
+	b=nGRGbeSO80FQx3MocgZJcwZmpuekhJrlDhdUEA+W/drWn+ddwdp2nQ4zmtFjY5rKq
+	 Nt9lwOstBqdb6wgg6SvO+cwBtqANzGqafTUWj2TH+YJBuEx2OqPxjCVLtLGMXRrV/i
+	 fL4zZpDNhmOjAQm3cA9/u7wrt4dZkgTXZCCp9YHKqZWzRMSpinqufo++l1pgWQueuk
+	 eOsuJcjo9JRJiJxJ1IhgAlc7epDi/9fHXeNTu3KK3rH6sca6HXfDtLAVva73YjaNQh
+	 x6fJndiN4e6oywts/UNk5dlHZEuII3o7INJ8mBW5qiAqVz6391VJxwbI9XsGAoQ/nh
+	 uHJjSi+VAZ/jw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -54,20 +54,20 @@ Cc: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
 	linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.7 18/18] thermal: core: Fix thermal zone suspend-resume synchronization
-Date: Mon, 15 Jan 2024 19:13:00 -0500
-Message-ID: <20240116001308.212917-18-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.6 14/14] thermal: core: Fix thermal zone suspend-resume synchronization
+Date: Mon, 15 Jan 2024 19:13:40 -0500
+Message-ID: <20240116001347.213328-14-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240116001308.212917-1-sashal@kernel.org>
-References: <20240116001308.212917-1-sashal@kernel.org>
+In-Reply-To: <20240116001347.213328-1-sashal@kernel.org>
+References: <20240116001347.213328-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.7
+X-stable-base: Linux 6.6.12
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240115_161344_043084_C5D8624A 
-X-CRM114-Status: GOOD (  16.35  )
+X-CRM114-CacheID: sfid-20240115_161415_643467_C5CDFB9D 
+X-CRM114-Status: GOOD (  16.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,7 +125,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  2 files changed, 25 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
-index 9c17d35ccbbd..fe3bcfba4d67 100644
+index e6f3166a9208..86ec48c1af93 100644
 --- a/drivers/thermal/thermal_core.c
 +++ b/drivers/thermal/thermal_core.c
 @@ -37,8 +37,6 @@ static LIST_HEAD(thermal_governor_list);
@@ -137,16 +137,16 @@ index 9c17d35ccbbd..fe3bcfba4d67 100644
  static struct thermal_governor *def_governor;
  
  /*
-@@ -405,7 +403,7 @@ void __thermal_zone_device_update(struct thermal_zone_device *tz,
+@@ -409,7 +407,7 @@ void __thermal_zone_device_update(struct thermal_zone_device *tz,
  {
- 	const struct thermal_trip *trip;
+ 	int count;
  
 -	if (atomic_read(&in_suspend))
 +	if (tz->suspended)
  		return;
  
  	if (WARN_ONCE(!tz->ops->get_temp,
-@@ -1515,17 +1513,35 @@ static int thermal_pm_notify(struct notifier_block *nb,
+@@ -1528,17 +1526,35 @@ static int thermal_pm_notify(struct notifier_block *nb,
  	case PM_HIBERNATION_PREPARE:
  	case PM_RESTORE_PREPARE:
  	case PM_SUSPEND_PREPARE:
@@ -187,10 +187,10 @@ index 9c17d35ccbbd..fe3bcfba4d67 100644
  	default:
  		break;
 diff --git a/include/linux/thermal.h b/include/linux/thermal.h
-index cee814d5d1ac..1da1739d75d9 100644
+index a5ae4af955ff..4012f440bfdc 100644
 --- a/include/linux/thermal.h
 +++ b/include/linux/thermal.h
-@@ -149,6 +149,7 @@ struct thermal_cooling_device {
+@@ -150,6 +150,7 @@ struct thermal_cooling_device {
   * @node:	node in thermal_tz_list (in thermal_core.c)
   * @poll_queue:	delayed work for polling
   * @notify_event: Last notification event
@@ -198,7 +198,7 @@ index cee814d5d1ac..1da1739d75d9 100644
   */
  struct thermal_zone_device {
  	int id;
-@@ -181,6 +182,7 @@ struct thermal_zone_device {
+@@ -183,6 +184,7 @@ struct thermal_zone_device {
  	struct list_head node;
  	struct delayed_work poll_queue;
  	enum thermal_notify_event notify_event;
