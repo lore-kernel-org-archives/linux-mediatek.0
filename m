@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E218C47077
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 15:41:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D85A1C47077
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jan 2024 16:01:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jxCyQZwNbDNl0nONyJqst9sda5njmxl8cVr5tAs4E6E=; b=JFuxET2dfarTtyBDJbEct/CE6a
-	t+i/lnCLQJtQfp/MuOmNwWkz89n2gxia4iTEvxceHWvtro4Mc6u2RpeEI39YWBqK8thSbvM7wdJmu
-	dvvRpdaCgeklL4tUY0cIzl8rjEpNVuGsDpyYc/u8NuS1dmBfK3ligw8vsGKSiCa0blHkc+6rfebSl
-	J4LMKGNzRu8eeIwsRZ7YWgBm+z2kemqB2TX6Aw8OFkoUrJZoKt7uD63PSFGT5D/EbTEI+nwwmxgb9
-	zfnlbdBg+8ezdtRQzRSwsHrA1ZCtEOUXVvS4Mre5J26fFffDY1UAocIktp7yagVf74C2MChKwYUcc
-	SjY17JHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6Rrf1fxb70Gr9p8ajyV2P0qTu+donro7enOc5GGL3Zg=; b=JLuWc58zbaQDEIOwL4NckxRfg+
+	aLJMD7c6UyNr332eDbCvVPmwz6ACu13SxcktRpklLSGKkSfszVOc7tZgATZ0XOSMHFfBWtM0jviyB
+	UwrIZJSM5pC9HhQYqXjk29AWNiPUborb9Liks2EUMcGvllJ35Kw13z9wxIknR7xXHganv6+U/HTMb
+	UYQXBndIl0aHTAGM/rKguWDeG1BL5x8QM1VJ70+odZiDmZGI9cn9jX7V5hNkJ3SAwZrtnlHn1d3Tr
+	dPsbjLtFRuK0+ftWQeat53j4UsWHqNWJqwD/Kz3M4CFJxHtonlqJcxEGhvx/GIDpuypPRWfOGjaM9
+	W5LqpUsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPlZU-00CT7a-0W;
-	Tue, 16 Jan 2024 15:41:48 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1rPlsB-00CWm0-0E;
+	Tue, 16 Jan 2024 16:01:07 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPlZQ-00CT6i-2l;
-	Tue, 16 Jan 2024 15:41:46 +0000
+	id 1rPls4-00CWjO-37
+	for linux-mediatek@lists.infradead.org;
+	Tue, 16 Jan 2024 16:01:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 3FD7FB80D6C;
-	Tue, 16 Jan 2024 15:41:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E09D9C433C7;
-	Tue, 16 Jan 2024 15:41:40 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id BF236612A4;
+	Tue, 16 Jan 2024 16:00:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 6C670C433B1;
+	Tue, 16 Jan 2024 16:00:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1705419702;
-	bh=jxCyQZwNbDNl0nONyJqst9sda5njmxl8cVr5tAs4E6E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dsp2tg04xZe2Jy2dRXcM8+R4ecZ51WGAX+kSDrAtwOBxWt/I9Lx4ltnsdsE0YWvNX
-	 hw1chck62SipAPkHdFSufV9TyIcMBHe7mTwXXFdXVYz6I20fKkghQaynL1OOk6tuSd
-	 op36QQ84gylzFofdKxjfE6z+w1myyfEMw54TAyuCAtQVR2uRTSUNDdiAxFO2i5ChjE
-	 lnG8Odo879NgvHo4ifG4DDEHw0fZl162yVc4RlRz9vApM/iOWJZlxxTAxNECzF/Ipv
-	 HUPMerxJQ4MNXnYPlXmMrbqwmc07PsvkhHmVvakoJSDb+3aCqlaFWuGp0zaMKoV8gC
-	 u6g1M1M9BiJCQ==
-Date: Tue, 16 Jan 2024 15:41:35 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Geert Uytterhoeven <geert+renesas@glider.be>, linux-spi@vger.kernel.org,
-	kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 23/33] spi: slave-mt27xx: Follow renaming of SPI "master"
- to "controller"
-Message-ID: <9e396453-3979-41bd-bcb3-0a4c2fe3d804@sirena.org.uk>
-References: <cover.1705348269.git.u.kleine-koenig@pengutronix.de>
- <ce0557861684ad5b6c51cf8f537c69b5a59947f1.1705348270.git.u.kleine-koenig@pengutronix.de>
+	s=k20201202; t=1705420829;
+	bh=VR0zelLUhCaJCX6Q+iJZSRg5efDI4Ll3fVjKY9C1snQ=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=aJTgUX3e6/A0yIlhhnIzOStguN5+R3jHPTRwWftJgervl+iM1z2yHGabqqGT1j2Mv
+	 2P6SmQjA051ZSnNdrioIU3vevkkKIgEqy/iCojZ9L5Rkp/Yhbt5PvPK1Do2f1IbNNS
+	 flX5Iu78NYp86thTPRzU55uTeEq6IG6mwgxGGV7WrSSavmlyXsrJGJsJgwbRBQdRBz
+	 PcZ9A36paB2fGPTblj4Dz0KZdVL+jID2szHxSPqqweV1ipt6CURIHcTbn4KKDFUX+O
+	 76XDwNwpk6qIW0b1aKfvKWiD8Tyj5MoEG6v923rtEb3My7HNZmYGPk66BSYhoBI7w0
+	 Q2ZaYsB0+3COg==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 53407D8C987;
+	Tue, 16 Jan 2024 16:00:29 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="lnhaZFfqnb7DhkjJ"
-Content-Disposition: inline
-In-Reply-To: <ce0557861684ad5b6c51cf8f537c69b5a59947f1.1705348270.git.u.kleine-koenig@pengutronix.de>
-X-Cookie: Programmers do it bit by bit.
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH] Bluetooth: btusb: Add new VID/PID 13d3/3602 for MT7925
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <170542082933.25552.3927828232982053152.git-patchwork-notify@kernel.org>
+Date: Tue, 16 Jan 2024 16:00:29 +0000
+References: <800469f157c862bcdef7213793004d2de977791f.1705129502.git.deren.wu@mediatek.com>
+In-Reply-To: <800469f157c862bcdef7213793004d2de977791f.1705129502.git.deren.wu@mediatek.com>
+To: =?utf-8?b?RGVyZW4gV3UgKOatpuW+t+S7gSkgPERlcmVuLld1QG1lZGlhdGVrLmNvbT4=?=@ci.codeaurora.org
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ sean.wang@mediatek.com, chris.lu@mediatek.com, aaron.hou@mediatek.com,
+ steve.lee@mediatek.com, linux-bluetooth@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ ulrik@strid.tech, deren.wu@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_074145_073286_087A1669 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20240116_080101_067772_3732A97D 
+X-CRM114-Status: UNSURE (   7.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,36 +78,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
---lnhaZFfqnb7DhkjJ
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-On Mon, Jan 15, 2024 at 09:13:09PM +0100, Uwe Kleine-K=F6nig wrote:
-> In commit 8caab75fd2c2 ("spi: Generalize SPI "master" to "controller"")
-> some functions and struct members were renamed. To not break all drivers
-> compatibility macros were provided.
->=20
-> To be able to remove these compatibility macros push the renaming into
-> this driver.
+On Sat, 13 Jan 2024 15:27:38 +0800 you wrote:
+> From: Ulrik Strid <ulrik@strid.tech>
+> 
+> Add VID 13d3 & PID 3602 for MediaTek MT7925 USB Bluetooth chip.
+> 
+> The information in /sys/kernel/debug/usb/devices about the Bluetooth
+> device is listed as the below.
+> 
+> [...]
 
-There's obviously a rather large elephant in the room with this one :/
+Here is the summary with links:
+  - Bluetooth: btusb: Add new VID/PID 13d3/3602 for MT7925
+    https://git.kernel.org/bluetooth/bluetooth-next/c/eaab5c300eab
 
---lnhaZFfqnb7DhkjJ
-Content-Type: application/pgp-signature; name="signature.asc"
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
------BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmWmo68ACgkQJNaLcl1U
-h9D8lwf/ZhQYFD3maLXuFyT7mmGI4bKhBsI2Ql4UpW1PT/I6J1tKGKk/S0oeVCDl
-uG32Z9pWSc3IBPBscsn8pbRilVB9bkNuNNaepPUOjOxLVf+ivmT5xA/C2/o+zVCl
-eJIY2VTANVTlGi3VI/vq7zdKWrvIxb4edbRxXp4yTsBD5UPVneUoQM+nh5Xne5Bd
-bDkvHy2hpGfSfyG9Vh+URa7WOAF56O67k+IImTlCGAK0u0h/qaf5mpkQZbqvwyW2
-oBsPHiQ3tdcu+iBRUhcA+U/YjfWIsHUr1xSGrr39R4slchpzd9BszpFU8V9XP/Ep
-GUzEaPW8bhWmt+GoQI+1B+jrllxWOA==
-=ijMg
------END PGP SIGNATURE-----
-
---lnhaZFfqnb7DhkjJ--
 
