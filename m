@@ -4,44 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61708C47DA2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jan 2024 20:05:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65465C47258
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jan 2024 20:26:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R6Lc/SpeoZHjRLO/GO2tIVDi6ZtvIYMTaxkExG+20Jo=; b=DETISsF/3PH5cyI2kf4sDb2zNe
-	az8r8uIcjlWOdkwVCMqA40XfVs7uk1v7JnxEt7pvgqKwRWAcAs8Lc5CtHAG1UwfGVGAyZjQdaeA9O
-	KaIFo/WaDPQnsf5ljN2TCkgvV7h/RK7sZ5DbhSeA6kxwWwZ+zL5lfyTj+fszjt8fqZ4xSzDoBngyh
-	RkT4oYIgs1sLXanoqtSsb4PGE0OhoI/E5Shl8lASSXPppPnUjjIWoXDClju1B/ZiJESAWkYPwhDBV
-	easUZoedf6YwmqpGkmMvfsxdGVr2/sIBlTrz209n/XhQGoczm2+SHFit36Tt1JcG3Kz6zXWlAaU9Z
-	a5rzVU5w==;
+	bh=P8rf2SDpeJIDnLRy/4kZh4YbVZ8HNJJqeRRnm/LfsEg=; b=UILJB3hnitDfmgub4IXcrMCOWh
+	COUra9PEtbwrnyBszztXo1Lwz0xuEAIew7SzVPe3k66hpK0fqA7V47YnesLm1lE1U0O3os71e5y3K
+	ym+DrYGDI4WBKoFNp7hN0/WGy5uVC3GaPc0M8hqdHB6I9BuzEXEkGzuYZPvshYO2zAWh8c7Tq/OAB
+	fECdOWbGBMKl69TeLN56LiYXiLM6tfkv6rDEju+Tj2Tpj2WevEj3w1qYlrSVCnYY/Hx1PYYV1QJ9E
+	pdbQSCkSkfIsLGAEj+pIvA+3IRqxUDIyzRQHcbs4iih/v30+cgRCKdVzZsFcv7j3QxV08pOQ4Pf7d
+	veioK/vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQCAB-000bBp-0u;
-	Wed, 17 Jan 2024 20:05:27 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1rQCUz-000emo-0Y;
+	Wed, 17 Jan 2024 20:26:57 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQCA7-000b7p-0c;
-	Wed, 17 Jan 2024 20:05:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=R6Lc/SpeoZHjRLO/GO2tIVDi6ZtvIYMTaxkExG+20Jo=; b=3draHPj8t5mDQDFbBv4roebFZx
-	rwjM497PSAeoci7h2LvI2jrqsw8Hz3hd6mcxMjkS9fZ7AvRicv5INfMox2ULL+byoce8Qy96RlaJ8
-	6gp2gJNqNNV5cBwWN/HW0GI94olfSl2G0a4AA6QCGCBLJ50sDfFGQkVyK9a1R9vxLMLw=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1rQC9m-005Qig-J3; Wed, 17 Jan 2024 21:05:02 +0100
-Date: Wed, 17 Jan 2024 21:05:02 +0100
-From: Andrew Lunn <andrew@lunn.ch>
+	id 1rQCUv-000elm-0S;
+	Wed, 17 Jan 2024 20:26:55 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-40e88012233so13871345e9.0;
+        Wed, 17 Jan 2024 12:26:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1705523208; x=1706128008; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=P8rf2SDpeJIDnLRy/4kZh4YbVZ8HNJJqeRRnm/LfsEg=;
+        b=A407xoM0u/lkeZEjzBJNKgIqanvNktqdFlM0NtKeg8MgzKWqsCZ77RBX/dkjGiP7ev
+         SYfpneUIauKGAILyTq4d812NPhNa+flpR4//uWT6P10t4ji4xsxnXtB45BgCWT6tdJJf
+         Eci1bpLkSZ5vCmjdYo99tc+UIFtsZb+AYScU+hxRNH6ZCCj34uSzARCQyo1P7ISH4ZIQ
+         wPjIAkNbTi1AJAyxqwxhUTuHX4Fc2OU+1mKwJC91/sKux5ZBiMWK/Dl172S2GCWOPpFP
+         89+0j1cvDVt7zRti/1XwOk200IJG7wJbOE0JRhciMYLIj+FB2KAdQCaBIw7DoDImcSVM
+         WPbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1705523208; x=1706128008;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=P8rf2SDpeJIDnLRy/4kZh4YbVZ8HNJJqeRRnm/LfsEg=;
+        b=j4z6m+0ZSW9u9fsXG5SgxoS4lbDjKz9pOAG5ZLGEa2iaKL74bhGr7cQXq/Ksztfvyb
+         ceftZyeoxeN/s9Dh928ux9aNs/0TrqAi74Su69eMB3ZYgDbtlazdi3L6/kzQLDu56Jhb
+         WKer8Jx/qIrsf9STwt/hzzTbx5vvoRBURceJFSz5UgxWqJDc+lorpaEp5tbZCFMgkgLf
+         O5y1qmwF84yt6DTkQDn+tzWW+wRc2I1/Qq3PNEupcE9gp8DeYHg6prEOCUMKxviHA9lw
+         bLiOZWxOvDDozCcXu0vosOiaWd3pwaBrzqPRR9Y1n+4HCDiiWyJtod5RKM9SMI7oS/bI
+         A8wg==
+X-Gm-Message-State: AOJu0YxTUNFcPpCaHqPXw4j1pEqEERtWxoPnD/gVLO3WInzeZ4E+MvNb
+	Whyhb0Gq5TXTZm79M0eE6W8=
+X-Google-Smtp-Source: AGHT+IG3pkOgSDyG+Mim9jG1CanLVxlpdPUceoeyNtzuTV3xqSw0NqiLc1i5iKJYa6LT/U+Zz9yseA==
+X-Received: by 2002:a05:600c:2215:b0:40d:88f2:fe7c with SMTP id z21-20020a05600c221500b0040d88f2fe7cmr5184282wml.77.1705523208064;
+        Wed, 17 Jan 2024 12:26:48 -0800 (PST)
+Received: from Ansuel-xps. (93-34-89-13.ip49.fastwebnet.it. [93.34.89.13])
+        by smtp.gmail.com with ESMTPSA id n18-20020a05600c501200b0040e77ce8768sm11653057wmr.16.2024.01.17.12.26.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 17 Jan 2024 12:26:47 -0800 (PST)
+Message-ID: <65a83807.050a0220.506d0.65fd@mx.google.com>
+X-Google-Original-Message-ID: <ZagyqhEwZnMWHnn6@Ansuel-xps.>
+Date: Wed, 17 Jan 2024 21:03:54 +0100
+From: Christian Marangi <ansuelsmth@gmail.com>
 To: Sergey Ryazanov <ryazanov.s.a@gmail.com>
-Cc: Christian Marangi <ansuelsmth@gmail.com>,
-	Robert Marko <robert.marko@sartura.hr>,
+Cc: Robert Marko <robert.marko@sartura.hr>, Andrew Lunn <andrew@lunn.ch>,
 	Vladimir Oltean <olteanv@gmail.com>,
 	Rob Herring <robh+dt@kernel.org>, Luo Jie <quic_luoj@quicinc.com>,
 	"David S. Miller" <davem@davemloft.net>,
@@ -61,7 +85,6 @@ Cc: Christian Marangi <ansuelsmth@gmail.com>,
 	linux-mediatek@lists.infradead.org
 Subject: Re: [net-next PATCH RFC v3 1/8] dt-bindings: net: document ethernet
  PHY package nodes
-Message-ID: <1fb9448f-c2c8-4e01-aa12-5f60f2b49160@lunn.ch>
 References: <20231126015346.25208-1-ansuelsmth@gmail.com>
  <20231126015346.25208-2-ansuelsmth@gmail.com>
  <0926ea46-1ce4-4118-a04c-b6badc0b9e15@gmail.com>
@@ -74,8 +97,8 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <c81af808-d836-4054-b596-4a53b05f4c78@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240117_120523_254181_48F599A9 
-X-CRM114-Status: GOOD (  12.78  )
+X-CRM114-CacheID: sfid-20240117_122653_203147_4C66F2E5 
+X-CRM114-Status: GOOD (  62.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,6 +113,212 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Jan 17, 2024 at 09:39:25PM +0200, Sergey Ryazanov wrote:
+> Hi Christian,
+> 
+> On 17.01.2024 02:36, Christian Marangi wrote:
+> > On Sun, Jan 07, 2024 at 11:49:12PM +0200, Sergey Ryazanov wrote:
+> > > Hi Christian,
+> > > 
+> > > On 07.01.2024 20:30, Christian Marangi wrote:
+> > > > On Sun, Jan 07, 2024 at 08:00:33PM +0200, Sergey Ryazanov wrote:
+> > > > > On 26.11.2023 03:53, Christian Marangi wrote:
+> > > > > > Document ethernet PHY package nodes used to describe PHY shipped in
+> > > > > > bundle of 4-5 PHY. The special node describe a container of PHY that
+> > > > > > share common properties. This is a generic schema and PHY package
+> > > > > > should create specialized version with the required additional shared
+> > > > > > properties.
+> > > > > > 
+> > > > > > Example are PHY package that have some regs only in one PHY of the
+> > > > > > package and will affect every other PHY in the package, for example
+> > > > > > related to PHY interface mode calibration or global PHY mode selection.
+> > > > > > 
+> > > > > > The PHY package node MUST declare the base address used by the PHY driver
+> > > > > > for global configuration by calculating the offsets of the global PHY
+> > > > > > based on the base address of the PHY package and declare the
+> > > > > > "ethrnet-phy-package" compatible.
+> > > > > > 
+> > > > > > Each reg of the PHY defined in the PHY package node is absolute and will
+> > > > > > reference the real address of the PHY on the bus.
+> > > > > > 
+> > > > > > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> > > > > > ---
+> > > > > >     .../bindings/net/ethernet-phy-package.yaml    | 75 +++++++++++++++++++
+> > > > > >     1 file changed, 75 insertions(+)
+> > > > > >     create mode 100644 Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
+> > > > > > 
+> > > > > > diff --git a/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml b/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
+> > > > > > new file mode 100644
+> > > > > > index 000000000000..244d4bc29164
+> > > > > > --- /dev/null
+> > > > > > +++ b/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
+> > > > > > @@ -0,0 +1,75 @@
+> > > > > > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> > > > > > +%YAML 1.2
+> > > > > > +---
+> > > > > > +$id: http://devicetree.org/schemas/net/ethernet-phy-package.yaml#
+> > > > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > > > > +
+> > > > > > +title: Ethernet PHY Package Common Properties
+> > > > > > +
+> > > > > > +maintainers:
+> > > > > > +  - Christian Marangi <ansuelsmth@gmail.com>
+> > > > > > +
+> > > > > > +description:
+> > > > > > +  This schema describe PHY package as simple container for
+> > > > > > +  a bundle of PHYs that share the same properties and
+> > > > > > +  contains the PHYs of the package themself.
+> > > > > > +
+> > > > > > +  Each reg of the PHYs defined in the PHY package node is
+> > > > > > +  absolute and describe the real address of the PHY on the bus.
+> > > > > > +
+> > > > > > +properties:
+> > > > > > +  $nodename:
+> > > > > > +    pattern: "^ethernet-phy-package(@[a-f0-9]+)?$"
+> > > > > > +
+> > > > > > +  compatible:
+> > > > > > +    const: ethernet-phy-package
+> > > > > > +
+> > > > > > +  reg:
+> > > > > > +    minimum: 0
+> > > > > > +    maximum: 31
+> > > > > > +    description:
+> > > > > > +      The base ID number for the PHY package.
+> > > > > > +      Commonly the ID of the first PHY in the PHY package.
+> > > > > > +
+> > > > > > +      Some PHY in the PHY package might be not defined but
+> > > > > > +      still exist on the device (just not attached to anything).
+> > > > > > +      The reg defined in the PHY package node might differ and
+> > > > > > +      the related PHY might be not defined.
+> > > > > > +
+> > > > > > +  '#address-cells':
+> > > > > > +    const: 1
+> > > > > > +
+> > > > > > +  '#size-cells':
+> > > > > > +    const: 0
+> > > > > > +
+> > > > > > +patternProperties:
+> > > > > > +  ^ethernet-phy(@[a-f0-9]+)?$:
+> > > > > > +    $ref: ethernet-phy.yaml#
+> > > > > > +
+> > > > > > +required:
+> > > > > > +  - compatible
+> > > > > > +  - reg
+> > > > > > +
+> > > > > > +additionalProperties: true
+> > > > > > +
+> > > > > > +examples:
+> > > > > > +  - |
+> > > > > > +    mdio {
+> > > > > > +        #address-cells = <1>;
+> > > > > > +        #size-cells = <0>;
+> > > > > > +
+> > > > > > +        ethernet-phy-package@16 {
+> > > > > > +            #address-cells = <1>;
+> > > > > > +            #size-cells = <0>;
+> > > > > > +            compatible = "ethernet-phy-package";
+> > > > > > +            reg = <0x16>;
+> > > > > > +
+> > > > > > +            ethernet-phy@16 {
+> > > > > > +              reg = <0x16>;
+> > > > > > +            };
+> > > > > > +
+> > > > > > +            phy4: ethernet-phy@1a {
+> > > > > > +              reg = <0x1a>;
+> > > > > > +            };
+> > > > > > +        };
+> > > > > > +    };
+> > > > > 
+> > > > > So, we ended up on a design where we use the predefined compatible string
+> > > > > 'ethernet-phy-package' to recognize a phy package inside the
+> > > > > of_mdiobus_register() function. During the V1 discussion, Vladimir came up
+> > > > > with the idea of 'ranges' property usage [1]. Can we use 'ranges' to
+> > > > > recognize a phy package in of_mdiobus_register()? IMHO this will give us a
+> > > > > clear DT solution. I mean 'ranges' clearly indicates that child nodes are in
+> > > > > the same address range as the parent node. Also we can list all child
+> > > > > addresses in 'reg' to mark them occupied.
+> > > > > 
+> > > > >     mdio {
+> > > > >       ...
+> > > > > 
+> > > > >       ethernet-phy-package@16 {
+> > > > >         compatible = "qcom,qca8075";
+> > > > >         reg = <0x16>, <0x17>, <0x18>, <0x19>, <0x1a>;
+> > > > >         ranges;
+> > > > >         ...
+> > > > > 
+> > > > >         ethernet-phy@16 {
+> > > > >           reg = <0x16>;
+> > > > >         };
+> > > > > 
+> > > > >         ethernet-phy@1a {
+> > > > >           reg = <0x1a>;
+> > > > >         };
+> > > > >       };
+> > > > >     };
+> > > > > 
+> > > > > Did you find some issues with the 'ranges' conception?
+> > > > 
+> > > > Nope it's ok but it might pose some confusion with the idea that the
+> > > > very first element MUST be THE STARTING ADDR of the PHY package. (people
+> > > > might think that it's just the list of the PHYs in the package and
+> > > > remove the hardware unconnected ones... but that would be fault of who
+> > > > write the DT anyway.)
+> > > 
+> > > Make sense. I do not insist on addresses listing. Mainly I'm thinking of a
+> > > proper way to show that child nodes are accessible directly on the parent
+> > > bus, and introducing the special compatibility string, while we already have
+> > > the 'ranges' property.
+> > > 
+> > > But it's good to know Rob's opinion on whether it is conceptually right to
+> > > use 'ranges' here.
+> > > 
+> > 
+> > I wonder if something like this might make sense... Thing is that with
+> > the ranges property we would have the define the address in the PHY
+> > Package node as offsets...
+> > 
+> > An example would be
+> > 
+> >      mdio {
+> >          #address-cells = <1>;
+> >          #size-cells = <0>;
+> > 
+> >          ethernet-phy-package@10 {
+> >              #address-cells = <1>;
+> >              #size-cells = <0>;
+> >              compatible = "qcom,qca807x-package";
+> >              reg = <0x10>;
+> >              ranges = <0x0 0x10 0x5>;
+> > 
+> >              qcom,package-mode = "qsgmii";
+> > 
+> >              ethernet-phy@0 {
+> >                  reg = <0>;
+> > 
+> >                  leds {
+> > 
+> > 		...
+> > 
+> > With a PHY Package at 0x10, that span 5 address and the child starts at
+> > 0x0 offset.
+> > 
+> > This way we would be very precise on describing the amount of address
+> > used by the PHY Package without having to define the PHY not actually
+> > connected.
+> > 
+> > PHY needs to be at an offset to make sense of the ranges first element
+> > property (0x0). With a non offset way we would have to have something
+> > like
+> > 
+> > ranges = <0x10 0x10 0x5>;
+> > 
+> > With the child and tha parent always matching.
+> > 
+> > (this is easy to handle in the parsing and probe as we will just
+> > calculate the real address based on the base address of the PHY package
+> > + offset)
+> 
 > On one hand it makes sense and looks useful for software development. On
 > another, it looks like a violation of the main DT designing rule, when DT
 > should be used to describe that hardware properties, which can not be learnt
@@ -98,22 +327,41 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 > As far as I understand this specific chip, each of embedded PHYs has its own
 > MDIO bus address and not an offset from a main common address. Correct me
 > please, if I am got it wrong.
+>
 
-I don't have the datasheet for this specific PHY. But the concept of a
-quad PHY in one package is well known. Take for example the
-VSC8584. The datasheet is open on Microchips website. It has four
-strapping pins to determine the addresses of the PHYs in the
-package. The PHY number, 0 - 3 determine bits 0-1 of the MDIO
-address. The 4 strapping pins then determine bit 2-5 of the address.
+Correct, it's a quad PHY but each PHY have it's own address and they
+can't be changed (they are incremental from the base one)
 
-In theory, each PHY could have its own strapping pins, allowing it to
-be set to any address, and two PHYs could even have the same
-address. But i doubt anybody actually builds hardware like that. I
-expect the base addresses is set at the package level, and then PHYs
-are just offsets from this.
+We have lots of device that have this (it's present in 99% of the the
+ipq40xx and ipq807x SoC) and the common setup is putting the quad PHY
+and connect only some port to it. (the address are occupiaed anyway just
+the ethernet port is not connected)
 
-So to me, a range property does seem reasonable. However, I agree, we
-need acceptance from the DT Maintainers.
+Honestly I don't think it's a violation, IMHO quite the opposite. If DT
+is there to describe the hardware, defining each PHY of the package as a
+separate one is wrong and actually cause confusion by dropping entirely
+any description that they are indeed in a package and that on the BUS
+there may be address used without anything connected.
 
-     Andrew
+I'm more convinced with the ranges property as we can't put a size to
+the reg property. (due to mdio node having address-cell to 0, changing
+this will affect also every other phy node and that is problematic)
+
+> > I hope Rob can give more feedback about this, is this what you were
+> > thinking with the usage of ranges property?
+> > 
+> > (this has also the bonus point of introducing some validation in the PHY
+> > core code to make sure the right amount of PHY are defined in the
+> > package by checking if the number of PHY doesn't exceed the value set in
+> > ranges.)
+> 
+> Yep, I am also would like to hear some clarification from Rob regarding
+> acceptable 'range' property usage and may be some advice on how to specify
+> the size of occupied addresses. Rob?
+> 
+> --
+> Sergey
+
+-- 
+	Ansuel
 
