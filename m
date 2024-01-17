@@ -4,99 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D66C3C47258
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jan 2024 19:39:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C309FC47258
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jan 2024 20:03:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QeuTafQX40/bhE79jlyyxN484RLluokaSda2KNrJ6KI=; b=KYEV2T5knU+A5MPvXhOrUjKaAz
-	5SER5N+OVxBZkqVA2yImJqT+FQgEAj1havAIAre/InhxuEg5DAukGMLM3LM/zLBtdmDct0ZGqbiMm
-	C4E/+4sR7kwNMPWObOEQNu1gvCtR0qrjGrOfwGJBbeJ/O+IZcZoV7Nc0gutG3Gojd8u4S6AeBCMjO
-	CLFzsUZSTLE+HOBh6kg/ckBBC5ATTo6tlqNh20esi8MXwmNiMRDlLV4kuMH+VmuMnobt+o94SdVnw
-	bBWWL3Vwvx5EzCVmavrpwUUWoNDiR9TUgfkgbuew5tuUICmcaRTB+ckUlFSLkXoKRgyL086X0siVk
-	Xr0C16cw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AHUfvCfxd4k8Bgz5ztOEzg9LGWwV6DjTS5TyfNL8d9g=; b=XSrLqQvbmu+8fn7mGgc+m3ZPEy
+	t1Z8WU79JgKGRRbbAXegks5+v+SRe9W0GdelOn/RoHZt6Eib4c45+9jAbGjoeSjjCdgo6qFoRXm0+
+	28PVy8jxpoblj6zPDPN8CPHOym4HiE99jSOmrFDnFnf/bU+Jgy+Ogk0pkK+dIEsy6dPQsLbkq6StU
+	i1a9oilEmAC/ZH5UEvypTF4tcpGv7Hm7000f4VigA4EtaruPjP0FKkz5P8L4uFu9eE18QMA6UCGBk
+	ZQhg4657aj7JYGvL1afJ5aQhktMRULy4C9w+DCkP2cBLE5ZMelsqtEnZfB2Qqnc80d1svL0DcF97G
+	02jUZm7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQBlE-000WgI-2F;
-	Wed, 17 Jan 2024 19:39:40 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1rQC7p-000ZuT-1D;
+	Wed, 17 Jan 2024 20:03:01 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQBl9-000Wc4-2w;
-	Wed, 17 Jan 2024 19:39:37 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-40e86a9fc4bso20710585e9.2;
-        Wed, 17 Jan 2024 11:39:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1705520369; x=1706125169; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=QeuTafQX40/bhE79jlyyxN484RLluokaSda2KNrJ6KI=;
-        b=mQ49Aur3DGm7EFyDABFlf+Qd5NczLddo2AbtpVnPWtl73sy/n4o3dOkfRblZpfzjGz
-         SmdW4OIRXaGcagXQko0V+Kdj03R6QRtZMnseMBdO4CtASaKI9/+sbVwlBhEYRG0Sjm1B
-         meHwiXYT4TfVH/JBijDr60C4wDfbW0UU7TcngZrTQgR+y3uuAAaV0jkgckdx5TT5ZdDI
-         9i7/yvsuS2+DbibSX3EvT/b9Z2nk+ai0xS6sQ8Xk1xfK4AxyMEW2ggRn/7wRTUTSSXh+
-         2WWOHv9CtfaZzyGxWx1N0idbfA9WNZ95NN+u4q/+kdYAm9NoXxgFkgje80UpgyNLTZBD
-         q/Dw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705520369; x=1706125169;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=QeuTafQX40/bhE79jlyyxN484RLluokaSda2KNrJ6KI=;
-        b=pp98/GSbhZqpw6hTsBZwwdq9uNhp62tmwiVeG5NbGKVS1cB7Gf394MmNTVVCVF+kb3
-         Ukb1xwafQ2LyUj30xW32u8KBMQk6aXKDM40dUUziB4JTXIMmpCd1G44u0MFqwxDxNvOO
-         22pPp1XR5Ci6zlPDPEoAnJxOmb2ty6YSXT3K03NA1w5vwz8L71siRyENAZ0+W1RBn8Hv
-         Bq6q/CaiSb6woK0bzurVscJ1WjjewQ7pY8GiqvFDwEYELDyU/kR20eYSO26tEpyxLoS2
-         WwOK5eg6WoEtaJhEZdB/19O8I9bo106XFDmwgHqe8WcPQSmk9ktEHQeBRJrMS+zb9qEu
-         zcwA==
-X-Gm-Message-State: AOJu0YxN/FLML9rIGqSuUCWdJEhFbasVJUZBWReIZUTmhDWr1K5tNdCo
-	/D+Yb1/9+tq7XkO6jpAcO+o=
-X-Google-Smtp-Source: AGHT+IGQ/vgsgMyVvJJZEFczZQRj1bkOBQgeDCIkSAsQdn9ihyhpR1zcD1iO3JBmHov+nZGsYZZC1Q==
-X-Received: by 2002:a05:600c:1392:b0:40e:479d:ce47 with SMTP id u18-20020a05600c139200b0040e479dce47mr4893168wmf.181.1705520369096;
-        Wed, 17 Jan 2024 11:39:29 -0800 (PST)
-Received: from [192.168.0.3] ([69.6.8.124])
-        by smtp.gmail.com with ESMTPSA id y8-20020a5d4ac8000000b00337af95c1d2sm2325448wrs.14.2024.01.17.11.39.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 17 Jan 2024 11:39:28 -0800 (PST)
-Message-ID: <c81af808-d836-4054-b596-4a53b05f4c78@gmail.com>
-Date: Wed, 17 Jan 2024 21:39:25 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [net-next PATCH RFC v3 1/8] dt-bindings: net: document ethernet
- PHY package nodes
-Content-Language: en-US
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Robert Marko <robert.marko@sartura.hr>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Luo Jie <quic_luoj@quicinc.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Heiner Kallweit <hkallweit1@gmail.com>, Russell King
- <linux@armlinux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1rQC7m-000Zs9-0n;
+	Wed, 17 Jan 2024 20:02:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1705521776;
+	bh=ipV+rKUR/CE2oxvQo7qJXW3DS21dt/GIWuErpGmS7EI=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=dfyS3Ud0/YPnPIWUJg0da8N+L2V1HI5iAvT+we12fNamdAqj9lQgbgSok9QXMCK5q
+	 9BsnCZZGa9tjO8+oO9hns/QB7YnA7u7FH9NCsOK7KkhMr3nNBAnXCNtB57D9fULf6W
+	 gmFYQahjIgcBPDx7oiaoknQ9olUd0+IkZBEX0kg3XNqIZdrqyu0bBCeDE64Phiy7/1
+	 wcTaoV1IcWceb/Zd7DZ1epVkm+fQRERDWjLQH6ilvIcXEBJ/N69JqD4SzFgaiqqi+b
+	 7LAGwMR9lFPr6itTFnQgkJFVLH093+CyTDl/K6wfpYV+as3icC/zNWG4/7dC3C77mI
+	 K8jSIrabuwq4w==
+Received: from nicolas-tpx395.localdomain (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 176823781FC7;
+	Wed, 17 Jan 2024 20:02:52 +0000 (UTC)
+Message-ID: <3b4c8bedd57cf229a36fd195c4c9fe85809abf92.camel@collabora.com>
+Subject: Re: [PATCH v3,04/21] v4l: add documentation for secure memory flag
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Jeffrey Kardatzke
+ <jkardatzke@google.com>, =?ISO-8859-1?Q?N=EDcolas?= "F . R . A . Prado"
+ <nfraprado@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20231126015346.25208-1-ansuelsmth@gmail.com>
- <20231126015346.25208-2-ansuelsmth@gmail.com>
- <0926ea46-1ce4-4118-a04c-b6badc0b9e15@gmail.com>
- <659aedb1.df0a0220.35691.1853@mx.google.com>
- <0f4ec2ff-4ef7-4667-adef-d065cfbc0a91@gmail.com>
- <65a7210f.df0a0220.d10b2.1162@mx.google.com>
-From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
-In-Reply-To: <65a7210f.df0a0220.d10b2.1162@mx.google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, Nathan Hebert
+ <nhebert@chromium.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, 
+ Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+ Daniel Vetter <daniel@ffwll.ch>,  Steve Cho <stevecho@chromium.org>, Sumit
+ Semwal <sumit.semwal@linaro.org>, Brian Starkey <Brian.Starkey@arm.com>,
+ John Stultz <jstultz@google.com>, "T . J . Mercier" <tjmercier@google.com>,
+ Christian =?ISO-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>,  dri-devel@lists.freedesktop.org,
+ linaro-mm-sig@lists.linaro.org,  devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Date: Wed, 17 Jan 2024 15:02:48 -0500
+In-Reply-To: <20231206081538.17056-5-yunfei.dong@mediatek.com>
+References: <20231206081538.17056-1-yunfei.dong@mediatek.com>
+	 <20231206081538.17056-5-yunfei.dong@mediatek.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=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
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.50.3 (3.50.3-1.fc39) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240117_113935_947776_37AA3170 
-X-CRM114-Status: GOOD (  40.14  )
+X-CRM114-CacheID: sfid-20240117_120258_440369_A200A02F 
+X-CRM114-Status: GOOD (  14.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,232 +92,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Christian,
+Hi,
 
-On 17.01.2024 02:36, Christian Marangi wrote:
-> On Sun, Jan 07, 2024 at 11:49:12PM +0200, Sergey Ryazanov wrote:
->> Hi Christian,
->>
->> On 07.01.2024 20:30, Christian Marangi wrote:
->>> On Sun, Jan 07, 2024 at 08:00:33PM +0200, Sergey Ryazanov wrote:
->>>> On 26.11.2023 03:53, Christian Marangi wrote:
->>>>> Document ethernet PHY package nodes used to describe PHY shipped in
->>>>> bundle of 4-5 PHY. The special node describe a container of PHY that
->>>>> share common properties. This is a generic schema and PHY package
->>>>> should create specialized version with the required additional shared
->>>>> properties.
->>>>>
->>>>> Example are PHY package that have some regs only in one PHY of the
->>>>> package and will affect every other PHY in the package, for example
->>>>> related to PHY interface mode calibration or global PHY mode selection.
->>>>>
->>>>> The PHY package node MUST declare the base address used by the PHY driver
->>>>> for global configuration by calculating the offsets of the global PHY
->>>>> based on the base address of the PHY package and declare the
->>>>> "ethrnet-phy-package" compatible.
->>>>>
->>>>> Each reg of the PHY defined in the PHY package node is absolute and will
->>>>> reference the real address of the PHY on the bus.
->>>>>
->>>>> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
->>>>> ---
->>>>>     .../bindings/net/ethernet-phy-package.yaml    | 75 +++++++++++++++++++
->>>>>     1 file changed, 75 insertions(+)
->>>>>     create mode 100644 Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
->>>>>
->>>>> diff --git a/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml b/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
->>>>> new file mode 100644
->>>>> index 000000000000..244d4bc29164
->>>>> --- /dev/null
->>>>> +++ b/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
->>>>> @@ -0,0 +1,75 @@
->>>>> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
->>>>> +%YAML 1.2
->>>>> +---
->>>>> +$id: http://devicetree.org/schemas/net/ethernet-phy-package.yaml#
->>>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->>>>> +
->>>>> +title: Ethernet PHY Package Common Properties
->>>>> +
->>>>> +maintainers:
->>>>> +  - Christian Marangi <ansuelsmth@gmail.com>
->>>>> +
->>>>> +description:
->>>>> +  This schema describe PHY package as simple container for
->>>>> +  a bundle of PHYs that share the same properties and
->>>>> +  contains the PHYs of the package themself.
->>>>> +
->>>>> +  Each reg of the PHYs defined in the PHY package node is
->>>>> +  absolute and describe the real address of the PHY on the bus.
->>>>> +
->>>>> +properties:
->>>>> +  $nodename:
->>>>> +    pattern: "^ethernet-phy-package(@[a-f0-9]+)?$"
->>>>> +
->>>>> +  compatible:
->>>>> +    const: ethernet-phy-package
->>>>> +
->>>>> +  reg:
->>>>> +    minimum: 0
->>>>> +    maximum: 31
->>>>> +    description:
->>>>> +      The base ID number for the PHY package.
->>>>> +      Commonly the ID of the first PHY in the PHY package.
->>>>> +
->>>>> +      Some PHY in the PHY package might be not defined but
->>>>> +      still exist on the device (just not attached to anything).
->>>>> +      The reg defined in the PHY package node might differ and
->>>>> +      the related PHY might be not defined.
->>>>> +
->>>>> +  '#address-cells':
->>>>> +    const: 1
->>>>> +
->>>>> +  '#size-cells':
->>>>> +    const: 0
->>>>> +
->>>>> +patternProperties:
->>>>> +  ^ethernet-phy(@[a-f0-9]+)?$:
->>>>> +    $ref: ethernet-phy.yaml#
->>>>> +
->>>>> +required:
->>>>> +  - compatible
->>>>> +  - reg
->>>>> +
->>>>> +additionalProperties: true
->>>>> +
->>>>> +examples:
->>>>> +  - |
->>>>> +    mdio {
->>>>> +        #address-cells = <1>;
->>>>> +        #size-cells = <0>;
->>>>> +
->>>>> +        ethernet-phy-package@16 {
->>>>> +            #address-cells = <1>;
->>>>> +            #size-cells = <0>;
->>>>> +            compatible = "ethernet-phy-package";
->>>>> +            reg = <0x16>;
->>>>> +
->>>>> +            ethernet-phy@16 {
->>>>> +              reg = <0x16>;
->>>>> +            };
->>>>> +
->>>>> +            phy4: ethernet-phy@1a {
->>>>> +              reg = <0x1a>;
->>>>> +            };
->>>>> +        };
->>>>> +    };
->>>>
->>>> So, we ended up on a design where we use the predefined compatible string
->>>> 'ethernet-phy-package' to recognize a phy package inside the
->>>> of_mdiobus_register() function. During the V1 discussion, Vladimir came up
->>>> with the idea of 'ranges' property usage [1]. Can we use 'ranges' to
->>>> recognize a phy package in of_mdiobus_register()? IMHO this will give us a
->>>> clear DT solution. I mean 'ranges' clearly indicates that child nodes are in
->>>> the same address range as the parent node. Also we can list all child
->>>> addresses in 'reg' to mark them occupied.
->>>>
->>>>     mdio {
->>>>       ...
->>>>
->>>>       ethernet-phy-package@16 {
->>>>         compatible = "qcom,qca8075";
->>>>         reg = <0x16>, <0x17>, <0x18>, <0x19>, <0x1a>;
->>>>         ranges;
->>>>         ...
->>>>
->>>>         ethernet-phy@16 {
->>>>           reg = <0x16>;
->>>>         };
->>>>
->>>>         ethernet-phy@1a {
->>>>           reg = <0x1a>;
->>>>         };
->>>>       };
->>>>     };
->>>>
->>>> Did you find some issues with the 'ranges' conception?
->>>
->>> Nope it's ok but it might pose some confusion with the idea that the
->>> very first element MUST be THE STARTING ADDR of the PHY package. (people
->>> might think that it's just the list of the PHYs in the package and
->>> remove the hardware unconnected ones... but that would be fault of who
->>> write the DT anyway.)
->>
->> Make sense. I do not insist on addresses listing. Mainly I'm thinking of a
->> proper way to show that child nodes are accessible directly on the parent
->> bus, and introducing the special compatibility string, while we already have
->> the 'ranges' property.
->>
->> But it's good to know Rob's opinion on whether it is conceptually right to
->> use 'ranges' here.
->>
-> 
-> I wonder if something like this might make sense... Thing is that with
-> the ranges property we would have the define the address in the PHY
-> Package node as offsets...
-> 
-> An example would be
-> 
->      mdio {
->          #address-cells = <1>;
->          #size-cells = <0>;
-> 
->          ethernet-phy-package@10 {
->              #address-cells = <1>;
->              #size-cells = <0>;
->              compatible = "qcom,qca807x-package";
->              reg = <0x10>;
->              ranges = <0x0 0x10 0x5>;
-> 
->              qcom,package-mode = "qsgmii";
-> 
->              ethernet-phy@0 {
->                  reg = <0>;
-> 
->                  leds {
-> 
-> 		...
-> 
-> With a PHY Package at 0x10, that span 5 address and the child starts at
-> 0x0 offset.
-> 
-> This way we would be very precise on describing the amount of address
-> used by the PHY Package without having to define the PHY not actually
-> connected.
-> 
-> PHY needs to be at an offset to make sense of the ranges first element
-> property (0x0). With a non offset way we would have to have something
-> like
-> 
-> ranges = <0x10 0x10 0x5>;
-> 
-> With the child and tha parent always matching.
-> 
-> (this is easy to handle in the parsing and probe as we will just
-> calculate the real address based on the base address of the PHY package
-> + offset)
+Le mercredi 06 d=C3=A9cembre 2023 =C3=A0 16:15 +0800, Yunfei Dong a =C3=A9c=
+rit=C2=A0:
+> From: Jeffrey Kardatzke <jkardatzke@google.com>
+>=20
+> Adds documentation for V4L2_MEMORY_FLAG_SECURE.
 
-On one hand it makes sense and looks useful for software development. On 
-another, it looks like a violation of the main DT designing rule, when 
-DT should be used to describe that hardware properties, which can not be 
-learnt from other sources.
+As I noticed from DMA Heap discussions, shall this also be renamed SECURE -=
+>
+RESTRICTED ?
 
-As far as I understand this specific chip, each of embedded PHYs has its 
-own MDIO bus address and not an offset from a main common address. 
-Correct me please, if I am got it wrong.
+regards,
+Nicolas
 
-> I hope Rob can give more feedback about this, is this what you were
-> thinking with the usage of ranges property?
-> 
-> (this has also the bonus point of introducing some validation in the PHY
-> core code to make sure the right amount of PHY are defined in the
-> package by checking if the number of PHY doesn't exceed the value set in
-> ranges.)
+>=20
+> Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> ---
+>  Documentation/userspace-api/media/v4l/buffer.rst | 8 +++++++-
+>  1 file changed, 7 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/Documentation/userspace-api/media/v4l/buffer.rst b/Documenta=
+tion/userspace-api/media/v4l/buffer.rst
+> index 52bbee81c080..a5a7d1c72d53 100644
+> --- a/Documentation/userspace-api/media/v4l/buffer.rst
+> +++ b/Documentation/userspace-api/media/v4l/buffer.rst
+> @@ -696,7 +696,7 @@ enum v4l2_memory
+> =20
+>  .. _memory-flags:
+> =20
+> -Memory Consistency Flags
+> +Memory Flags
+>  ------------------------
+> =20
+>  .. raw:: latex
+> @@ -728,6 +728,12 @@ Memory Consistency Flags
+>  	only if the buffer is used for :ref:`memory mapping <mmap>` I/O and the
+>  	queue reports the :ref:`V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS
+>  	<V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS>` capability.
+> +    * .. _`V4L2-MEMORY-FLAG-SECURE`:
+> +
+> +      - ``V4L2_MEMORY_FLAG_SECURE``
+> +      - 0x00000002
+> +      - DMA bufs passed into the queue will be validated to ensure they =
+were
+> +	allocated from a secure dma-heap.
+> =20
+>  .. raw:: latex
+> =20
 
-Yep, I am also would like to hear some clarification from Rob regarding 
-acceptable 'range' property usage and may be some advice on how to 
-specify the size of occupied addresses. Rob?
-
---
-Sergey
 
