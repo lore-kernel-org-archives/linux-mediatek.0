@@ -4,56 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5F38C47258
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jan 2024 10:29:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8276C47258
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jan 2024 10:29:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TZlYkCBl1Y6CdrhayBhNxw2p07BMxLVRsxuvs4s82bo=; b=ExkVdBFhQinxI/M+UphsQHdTAb
-	yngzkMYCNNgsVepjDBSuFG8FEMO5apDj6Tzmbrfx6/89TSvtUQXfypaGpqxXKOSDluj/07pAJY/+Z
-	jjYIdv++qSTxoR6qjv/a4Qy8Tax9Y9CtkgnA2HoZs7dMPp6apNVkdhzRnWRN82krJYTkcChHD5WWW
-	o32D3uvuRH1wiQuhdGTo88hAsuyAPuyhMSj54O8oLqzQqlRqZgRvd+zA1o8kYTI2YzVrsbbx6+L1B
-	9CpevB0a7Q5tWSnxZX/qN1+bGki7BhO4vs+HtBmNhs2GEvqEftX+N6Mi32j5DmWiCSAtLfLoXPq6g
-	CbGYF7Cw==;
+	bh=Qn/CM/13jA6bEJ08mmw/siDZC+0Aw36++ZhJWcM0VR8=; b=oEMB0dcI1d17SYLyOL4JXMsI8s
+	b7Z+nLPHNP0FEcHEjbdwrdEdA0w9zsx/P0l46mRcGMH6u64wQx7v9NLHxFQ5VmpvrcvJN/H94urPI
+	6YVQi7SbqVAOxi5XdzGprI4xCdrdc3kMdfLw6D0D0//rQ1t6J39w38NsrTlF7pnTunVcEwOF4Gjyi
+	D8ME1Sypv9E48qvliq+uuJBKmVi197fgUHkxSbV+igBN7PfDVDgCifN58D1CYTOaqcOUbnTzGUvj5
+	T00A1RaafM/mf42ep1d7Ojbpntbe3VX0DJ0bSgxp5lZqlrjw/uGLl4KyAS040eLDmCCEotsYZyF7m
+	g7IDiQKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQ3Av-00FH7p-1q;
-	Wed, 17 Jan 2024 10:29:37 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQ3Ag-00FGxe-1c;
-	Wed, 17 Jan 2024 10:29:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=TZlYkCBl1Y6CdrhayBhNxw2p07BMxLVRsxuvs4s82bo=; b=Ef5UK9n/Qja6rFDuf1aKfzdpqK
-	oeIS46lG8wAkR7HwWF5wzT46GTy8pYntkzvOcCM5YMpGhpZ9AKZCmv8S/mkSDIRLX5pqr6XieTPvX
-	D1/MLdCn329tjFsGfDB+m2m5Op+lJR1rEfInmvDUyLqZFKtP/F0pC+o2ViZToLL6Z3JrUtk+xQNB1
-	zJURe8Nh3PoOXmyFMTHF3oJlPZTYKyI8SXa1Me/ar3LehnwbNa8LMylrsiH8lAUVi1sZPUp14R792
-	OyS9M3lqtxXYuPMju3lr4Com3jheXbjH+9Kvthmw3uymXRqoOeNwDBCM9djOBj4XMRIllmHWGVLxJ
-	Fc2pto9g==;
+	id 1rQ3Ax-00FH9O-2Z;
+	Wed, 17 Jan 2024 10:29:39 +0000
 Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rQ3Ad-00000000OK4-1SzY;
-	Wed, 17 Jan 2024 10:29:21 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id E126D40008;
-	Wed, 17 Jan 2024 10:29:13 +0000 (UTC)
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1rQ3Ah-00FGy7-34;
+	Wed, 17 Jan 2024 10:29:25 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 51CDB40004;
+	Wed, 17 Jan 2024 10:29:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1705487358;
+	t=1705487362;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=TZlYkCBl1Y6CdrhayBhNxw2p07BMxLVRsxuvs4s82bo=;
-	b=ef5N6e9QwFxk3EUuXBHTv99i4fDQfzfVUoA33JgLMIGamg7c6cDSk2inSFTfGUyl1gwiF1
-	11EPF30H13+8ZkF6qaN5vmPsO9j/dUMUQ0QVzxvvRlC1U/iXc+oGyANi32WHNDl7cekCr2
-	B5mQz6YFXqwo+oym/KfX4Q6xqgnxldvIXzSuum5SCjCPTcpA3Iwyoc1qR5+KOarVfnF0IE
-	rw5E1LbYkGiQIIkijBsnFBQ5hSqxsQXzgnrX8hRmr0MzFMOhzGIb7nCjIw2AivihbsD5k1
-	JiI9nZZBOp/O49sGbPc9RxXMEEjm+Y1R3mtfOOOnktG4KWq/oIKEf7+YNv/IqQ==
+	bh=Qn/CM/13jA6bEJ08mmw/siDZC+0Aw36++ZhJWcM0VR8=;
+	b=HOBvp+VKd3gSUyKv+efAO7NCLecB7ub7TXN8LfH/FwFSIqqQNpygHUEktYzTTuiVSiNuXj
+	RqX//iSAbbb76hqdJgKn8L9mn8bo4fTjW1cewMp4zXtO9/Ibm9zVw9UhO2tVuTL/cknXC0
+	b1Z/mKflcuBAdIEiTLtuThH7Xi2mT5p/rgS75HFiqCdxGJKkFQeZBgObCB+94j0RI/gJmD
+	nEwRrS+f/he5f4++Zev0ohyXel6PMPKtrRaF9eDZ+7HC2ZmvqQw6VBcpotSh/NalaSdAfv
+	C1FY+Kd+Y/JWsX9RnDj6uizcoeNATgg13u8gErQxQWyrrqPxZK6/fmtyncFNkA==
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>,
 	Landen Chao <Landen.Chao@mediatek.com>,
@@ -76,9 +62,9 @@ Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [RFC PATCH net-next 6/8] net: dsa: mt7530: get rid of mt753x_mac_config()
-Date: Wed, 17 Jan 2024 13:28:36 +0300
-Message-Id: <20240117102838.57445-7-arinc.unal@arinc9.com>
+Subject: [RFC PATCH net-next 7/8] net: dsa: mt7530: put initialising PCS devices code back to original order
+Date: Wed, 17 Jan 2024 13:28:37 +0300
+Message-Id: <20240117102838.57445-8-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20240117102838.57445-1-arinc.unal@arinc9.com>
 References: <20240117102838.57445-1-arinc.unal@arinc9.com>
@@ -87,8 +73,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240117_102919_567443_8FD431BB 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20240117_022924_619009_79F31AAD 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,47 +89,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There is no need for a separate function to call
-priv->info->mac_port_config(). Call it from mt753x_phylink_mac_config()
-instead and remove mt753x_mac_config().
+The commit fae463084032 ("net: dsa: mt753x: fix pcs conversion regression")
+fixes regression caused by cpu_port_config manually calling phylink
+operations. cpu_port_config was deemed useless and was removed. Therefore,
+put initialising PCS devices code back to its original order.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 14 ++------------
- 1 file changed, 2 insertions(+), 12 deletions(-)
+ drivers/net/dsa/mt7530.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 76b304f8fb87..680e59732d94 100644
+index 680e59732d94..e565406d3314 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -2617,16 +2617,6 @@ mt7531_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 	}
- }
- 
--static void
--mt753x_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
--		  const struct phylink_link_state *state)
--{
--	struct mt7530_priv *priv = ds->priv;
--
--	if (priv->info->mac_port_config)
--		priv->info->mac_port_config(ds, port, mode, state->interface);
--}
--
- static struct phylink_pcs *
- mt753x_phylink_mac_select_pcs(struct dsa_switch *ds, int port,
- 			      phy_interface_t interface)
-@@ -2652,8 +2642,8 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+@@ -2802,17 +2802,9 @@ static int
+ mt753x_setup(struct dsa_switch *ds)
+ {
  	struct mt7530_priv *priv = ds->priv;
- 	u32 mcr_cur, mcr_new;
+-	int i, ret;
+-
+-	/* Initialise the PCS devices */
+-	for (i = 0; i < priv->ds->num_ports; i++) {
+-		priv->pcs[i].pcs.ops = priv->info->pcs_ops;
+-		priv->pcs[i].pcs.neg_mode = true;
+-		priv->pcs[i].priv = priv;
+-		priv->pcs[i].port = i;
+-	}
++	int ret = priv->info->sw_setup(ds);
++	int i;
  
--	if (port == 5 || port == 6)
--		mt753x_mac_config(ds, port, mode, state);
-+	if ((port == 5 || port == 6) && priv->info->mac_port_config)
-+		priv->info->mac_port_config(ds, port, mode, state->interface);
+-	ret = priv->info->sw_setup(ds);
+ 	if (ret)
+ 		return ret;
  
- 	mcr_cur = mt7530_read(priv, MT7530_PMCR_P(port));
- 	mcr_new = mcr_cur;
+@@ -2824,6 +2816,14 @@ mt753x_setup(struct dsa_switch *ds)
+ 	if (ret && priv->irq)
+ 		mt7530_free_irq_common(priv);
+ 
++	/* Initialise the PCS devices */
++	for (i = 0; i < priv->ds->num_ports; i++) {
++		priv->pcs[i].pcs.ops = priv->info->pcs_ops;
++		priv->pcs[i].pcs.neg_mode = true;
++		priv->pcs[i].priv = priv;
++		priv->pcs[i].port = i;
++	}
++
+ 	if (priv->create_sgmii) {
+ 		ret = priv->create_sgmii(priv);
+ 		if (ret && priv->irq)
 -- 
 2.40.1
 
