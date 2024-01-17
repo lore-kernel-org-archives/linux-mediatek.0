@@ -4,145 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90168C47422
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jan 2024 04:18:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC9AAC47258
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jan 2024 10:14:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r+LdiP284hQSpXTR3cpbcjM3mqB2LluK7C+u1uQIQyg=; b=PfkcE7JATdejLcMo7XCmlgS+7R
-	gfX3Vz1xhW8ak/a4SITIMqKEs/T2L+Go+BY761xas3xjt8pR+fYOUbSqiJbfGN0hxDBLjhAH9p8aV
-	QUP+sK6nh+xSwKPPU7EuwbaiDAiDAV6kD9m/d4GAdCUTzAD56PfK9Udky4qhO2OtP7btDSCRqBLEQ
-	U8fi0OsiJrEVS84ewfCAZ3O/sVcCiByEDDMXBFLuBjiO+i/bRby8CBb2cuji4spJdVU1CoE10xbQg
-	qMHOvO08a/YaDuJJd3t9DP8cHo9kZ5Zp80YEZnaIjXfHwx6g8tZqonPHSC6OPE2pesiT/x5agI+/Y
-	yYPfmZrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Tl7FhOkCtAq7fSRYh6YMDAIWBHfXaGVctin+qhonKSA=; b=fYAri1ioQb8ar2QeZ+A37n2Jbz
+	Hv7PVydqeg9lbQKasuMUtmVLrFeUnWORi4vkHOJvN9zIHvOL6AOr37fwleDM3CKhrir/oDUlNYBdv
+	1N9AUjEe45irorS/urMz3pdsbn9UN9WTa9JehhEQ/E3tAORyL30YTbG8iIt2zMtN3j7Zg6j3a2tif
+	WcWCJtJb19YXLiVw+tQ9a0liXhc4Vth+wDSPCFuyDjeoS6mM5fGy4xbIawWYzzDubuH0elSDtJcmO
+	f1P0zbUOtBEKB+yJT1KLp7sGflrgJg0TPowUPzZ9V8f0iMEUNMTj66LAzSqwx2JxDX4EQWujHzlWa
+	mYQv8W0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPxO2-00ENRx-2b;
-	Wed, 17 Jan 2024 04:18:46 +0000
-Received: from mail-dm6nam12on2075.outbound.protection.outlook.com ([40.107.243.75] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+	id 1rQ2wA-00FETK-2S;
+	Wed, 17 Jan 2024 10:14:22 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPxNz-00ENPj-0Q
-	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Jan 2024 04:18:45 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Lr71aFp7UijNTu91mQoPfdZgBfMDcMYFx2Bt/lDyn5jzXPpThbUDPg4C+KaY/tSkh5oFBrbQNM8luQxo9KyfiU7c3OfOWnp3en++y1NP/emWvj1WpKL1dFFNCfMjWrUvZfA20WD013XB+1/ddufNFLfC16Zsys80+BWDkHycFXKAJnGf2L8sNpBxMa57KpgjW9wG+S/lLkoMC++5AYhQSP+9g0FAY4TEu8m4I880Thryy7afSq4ltJruwY+HjJmIvsKZpTrvXRSgdeK68AB+ecYiv8MQhzfHhZwDtwUX8aIyYtNpRWnfFSbyRPvfc5vWbaSlL/NDe37Y3sG/AwVwVQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=r+LdiP284hQSpXTR3cpbcjM3mqB2LluK7C+u1uQIQyg=;
- b=cpq/4LpA5zUBas0kdugJRYPSfI+7t70Xo+qjPK6KBV5QGvDP5F8bu7WbV0mQmcVdkdFZ7qBhYN1JrV3BU3P0BtD9PJlXvJmOVMJjoH0Cid41X6apXZM6U6CzG2rd2396dE9BAVt9WZrhDOqdkzjDvvPZvGsYWCETS1hnUdEGTwokqG8SwjFkvqLT1YvxNVxXxFTrccqd0UIyckXGoMKMvSZ2ErkyaOhZdNJInlfeZLREC9sEbVTpqcT8I62GTeEtWS5mu65xfxWWI6FAPTjrGe0IP8CHPOE4ZcmEwgYq5a7VzYu7GIWmXsm4ANBUwJVfTh3y8FhCjWsYIZVzgPcreA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=r+LdiP284hQSpXTR3cpbcjM3mqB2LluK7C+u1uQIQyg=;
- b=XD4VMnXs9ZNpGJffNDF9hL4uxy/PjO41DhIDC3orFwPFWQHUsyHN5jFcdT04agz3+RT3tn/5ZCQ7ddgZYSfQMzO7+dkQPgZ4XHw+QDLkCox1kbhP9oPzfqZcnSKE8nCuTppwHiElp62yMxynHHvVsHATzvgek4u82DA4g0wJpF0=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Received: from MN0PR12MB6101.namprd12.prod.outlook.com (2603:10b6:208:3cb::10)
- by SA0PR12MB4495.namprd12.prod.outlook.com (2603:10b6:806:70::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7181.28; Wed, 17 Jan
- 2024 04:18:18 +0000
-Received: from MN0PR12MB6101.namprd12.prod.outlook.com
- ([fe80::ce8d:7121:cb06:91ba]) by MN0PR12MB6101.namprd12.prod.outlook.com
- ([fe80::ce8d:7121:cb06:91ba%4]) with mapi id 15.20.7181.029; Wed, 17 Jan 2024
- 04:18:18 +0000
-Message-ID: <045bf616-f69b-4253-92ce-05744d72b084@amd.com>
-Date: Tue, 16 Jan 2024 22:18:14 -0600
+	id 1rQ2w6-00FESR-1o;
+	Wed, 17 Jan 2024 10:14:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1705486456;
+	bh=syRL93p3m7lOCFY42/TgG/irGtWwZk2a6EBIxB3AtG8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=rzaUGLT+FS5la69XrXwkC7+wXBJfGG2Zc+GHh7DoNXgLDFHIWOBbw3+8xKfqHK5uR
+	 nE80DdCGwRM73OQERoaRk9LHu17/6Xwu8qXbnYKnjjAoh2w5WiGVxrD001I79BLaBt
+	 5Ybnl523C/VQFOnsd7o3YG7AtDy7Uyh73Rq8YqvzHFcQvX2BT/o/v9hw+XhWJm4AXz
+	 0+DYra7WjOGDL/QKOT3p8mCaeEOtOXWA9Rxo43jAEQ+GEfUvCyq81GUgRAP/AA4QSO
+	 m9C9axzdOmjHD8fzZOmFDGlY15LhocM5KNtHRRTR7o5w9f+3Of262HfKzPeRIXEoDX
+	 k/MiMIrqjALDA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4E6F737811F1;
+	Wed, 17 Jan 2024 10:14:15 +0000 (UTC)
+Message-ID: <720dc418-16f7-473c-b33c-f0c9786c02e2@collabora.com>
+Date: Wed, 17 Jan 2024 11:14:14 +0100
+MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] wifi: mt76: mt7921: Disable powersaving by default
+Subject: Re: [PATCH v3] arm64: dts: mt8183: Move CrosEC base detection node to
+ kukui-based DTs
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Enric Balletbo i Serra <eballetbo@kernel.org>,
+ Ikjoon Jang <ikjn@chromium.org>, Stephen Boyd <swboyd@chromium.org>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20240116-mt8183-kukui-cbas-remove-v3-1-055e21406e86@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-To: James Prestwood <prestwoj@gmail.com>, Ben Greear
- <greearb@candelatech.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Kalle Valo <kvalo@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Deren Wu <deren.wu@mediatek.com>, Ming Yen Hsieh
- <mingyen.hsieh@mediatek.com>,
- "open list:MEDIATEK MT76 WIRELESS LAN DRIVER"
- <linux-wireless@vger.kernel.org>,
- "open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, Sultan Alsawaf <sultan@kerneltoast.com>
-References: <20231212090852.162787-1-mario.limonciello@amd.com>
- <874jgmnud8.fsf@kernel.org> <ZXmxD1foASMaCDIe@lore-desk>
- <d92c081e-47dd-5c57-a6f1-bd72b2748141@candelatech.com>
- <1ef12773-74ca-489c-b36b-d3cf7da22c43@amd.com>
- <e0fbe9cb-22de-462f-9123-14a220d5a9c6@gmail.com>
-From: Mario Limonciello <mario.limonciello@amd.com>
-In-Reply-To: <e0fbe9cb-22de-462f-9123-14a220d5a9c6@gmail.com>
+In-Reply-To: <20240116-mt8183-kukui-cbas-remove-v3-1-055e21406e86@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: SA0PR11CA0049.namprd11.prod.outlook.com
- (2603:10b6:806:d0::24) To MN0PR12MB6101.namprd12.prod.outlook.com
- (2603:10b6:208:3cb::10)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MN0PR12MB6101:EE_|SA0PR12MB4495:EE_
-X-MS-Office365-Filtering-Correlation-Id: 44743a7b-c107-4006-9aca-08dc1713551a
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 3j3gNyoUs3QcJ7Qzb6axz2g2HgJoyUjcDZdOgxV+SfTmll7gN8lv+LQLu1JEZG+ITjdssFI90jS8hP5TfPNRPGU7L0Tn6EwAWcfLtsCj0Bjw6dyRrBppmvFHuVq0tynA1k9PuCbouMbiFSgJIekMKUttK2aOiYviUecX2DdJx+pQ58AuPHVHRXotdPzurwv6mCHcEKUZ7bIBA8KCtHeeApiDTh3Rkg8+cVRysbnox4em2aPZeSxeWI06zTyqfEeaAwNJ0mCwTjepOcWVXAKhz7Uo4Dk/oL1rXzyvmJQcuobH2KFZR5lJvSCajP/zZFX7pRZEHdua/hvQ4+/MewCB4HmTdXUunknZfvZx3XS0ypkaB27e+YBZp3mhL+tgnQcrOWS5DU6ulICrKC0Hpn+PqOIEI1WblVYjTbXpep469x2/8V0B2i3r7WADWfcqs8UsYnfiTbqs7hp+a9wrQtpHyef4OPxQqEVS/CkEGlbwA3GG++cHd4up/fp+xmQd2dJqHuzIohXDLaSn+Grbz4H3j2NAsPtPH6qMeI4Q3gpbfD/Wz7SXNDWjWsF2pvy1DAVviHjsvrxSvcsaYDmCmymsEeH5Oc3BtFRtOSiW1oaUEIKDbPflwqrmE/4GY5/e0pKdh6Nc26mqqq8jx9GRzwDmMQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN0PR12MB6101.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366004)(376002)(346002)(396003)(39860400002)(136003)(230922051799003)(186009)(64100799003)(1800799012)(451199024)(31686004)(6666004)(83380400001)(478600001)(966005)(5660300002)(4326008)(7416002)(6506007)(8936002)(316002)(66946007)(54906003)(6512007)(66476007)(6486002)(66556008)(26005)(110136005)(44832011)(2616005)(8676002)(38100700002)(53546011)(41300700001)(2906002)(31696002)(86362001)(36756003)(45980500001)(43740500002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RDR0UVloZ052Tm4yR2s2Q2VtNWEwQ2ZOd0JJMjZxN3dRTURUb0FuKzhVR0JW?=
- =?utf-8?B?S0djWlZBM2kxV1EvbW1yclhIUmpLUjBObXI2UlZTcHpielc0S2RySGhDUHov?=
- =?utf-8?B?bnlCNllTM0dYaS8yMzFzNWs1UE9oR1UxV2tNSGR3N2RqbmV0RDFwejVOa0hH?=
- =?utf-8?B?RlBKa01KZSt6bnEyaVdMR3VyU0JtK05LWkJ4OUttRlJjbFpNOFFBQThSdmpR?=
- =?utf-8?B?YWFJNHJ3c3cxV1NSTHk0STdQVGlCRGVIUGFkRms3U2MxMnl2ZFdUTWhraXU5?=
- =?utf-8?B?bWxUYTE1by9TVHc3d1RBUVUwcklVbHUxWXlUVWlFakVFSEUwSnZpWHV1SURv?=
- =?utf-8?B?dnp1bTZMbWwyZkw3K1hPYmtpOUhwTWVUZlRrNkdLV282bS9ueXIvWUdhZm9J?=
- =?utf-8?B?S09YTGExZkFZS3hQRFIwS1JOY1FNazZtMjg5MGZNdHVXK3dEcFRyQ1NFUEpv?=
- =?utf-8?B?SVhBcmpsejBTVlBBcnJ2VXRNYmxCSHdzdngwRFluYmZPNHAraVkzOCtrTWFm?=
- =?utf-8?B?SGRxbmJRS2ZuUkJYM3B5d0MreFNPV1NlZ003MTFmSldieHVCbGROLytlOFZU?=
- =?utf-8?B?blRqSUlJeU12ZmVZd0Zwc1VNU2JLb0ZiQlZqeG4xWjlQWXRCeDZscW51MGd2?=
- =?utf-8?B?N25KUUloOFBMWmRVSmZFVXR0b3c0WnVidjlidE8rSks5UVR2dzNVcW9HSml1?=
- =?utf-8?B?alhKZ0Q5SmQvT0s5bFlTZlc5WVI2b042TG1MMXdWNmt5SVFWNkROMjloU3hh?=
- =?utf-8?B?OGw0YWl6Z0M0a3JzZ1Y2QkhPY3dOQis3eFVBOWFJL01NZmg2SG5NeklRZUJ4?=
- =?utf-8?B?bHlUekN6R082RGJBL2pNWXlzRk15aU41QlUrcERaeWlyTlJ3d2FxTnVwTXJ0?=
- =?utf-8?B?bTZhUUZNVGlTVlk1VTRnMXcyNU9BZStKa24wNzltZi9WU2dRNkk0dmIzd2NZ?=
- =?utf-8?B?Q2M1V084TFJzL2VTaHlzQWw3QkFPWlZMdytYVXdHRzRZQ2dTT0toU3N3MnFW?=
- =?utf-8?B?S1RBaFZlWVdQajZDeXJsVlBlT1JzeXBKZU1pTDdZVkV4RmliWTM0aEZhclB0?=
- =?utf-8?B?SVVTRFFuSEdMU2pDVVAzYitTa3VKQTFZZ2N3Z2R1d1NURHBwbmthTWdRSDZv?=
- =?utf-8?B?TFd4TXk5ZTAyeFQrZlU0bFVYVjlTSmVHSG5NMXlyTVlNbngrMzJSRVhGaUxZ?=
- =?utf-8?B?S01PMllJMTJUVXRzb1VvTmxubWUyRkVYdHZBQTFqaWpMSU9mN1ZTckZQVzRx?=
- =?utf-8?B?SEtlQ29oYlBHeHFBbm1iUFBYMHFKV2dicG15VW1ndWZsQS8zd0g2bXQvWkFP?=
- =?utf-8?B?czZ0KzhZNGlaQThLKzl2ZDR2SXRsNDhtQnV2VFlVd01sTlF1cUpGMkVySlh6?=
- =?utf-8?B?cG1TOWxMQXVvZnpsOExrc1FLcnlBUVdpKytRZWpwbE51WmJvQnBIRTJEdTdJ?=
- =?utf-8?B?QjRzMTN4MGNmZzJoWWxOSFdWRm5jNFVRemw0YlU2V2FkN2Y3OUg4WkR2Vkpv?=
- =?utf-8?B?K0I2MEpINnE5Szgxb1JEOXVhZnJwMDZ0SVlhSVRQYzFWbzdEeU4xeno1MHpM?=
- =?utf-8?B?TVlIcTRwM0xsTk1SaElYTzR3OHhydUpReGpsWFJhZStsenRHL01SMjVDSE5K?=
- =?utf-8?B?WnFFVUpuQ1k2R2V5ak5TM2lOdS84UXlaMEg5SENsYnduZlFIY3QwWmhISm1V?=
- =?utf-8?B?ZCtGdTVmekY5akFPcW4wOURiMGYrTy9BSG4xMzVKUU9vekl5cXNKR2lDZzZs?=
- =?utf-8?B?cmxyS3oycXR0Tkw5MXY4dHlrdThUa1BSKzdQM25KT2kwV3JvNlRkMy95aytL?=
- =?utf-8?B?VjFqMmtCV1Z0UWpWRVcweSsrWWtieTdvWUl1cmtIZWZ5TEx5WWs4VmF3L3FQ?=
- =?utf-8?B?ZW1xT09peEg1ZzAxOEVxZjVWV1JFSjI1NjhSQ2FCM0JOQlpPeFVISXpnYWZV?=
- =?utf-8?B?cVI0bDJFVFRYSklGaG5ueVFRdHNqazBZbWtVS1BLN0YzalIzTDB4TytZcGRL?=
- =?utf-8?B?d2puUjRhaTVVWGJLdWwwazVaazdtLzB1SWNhamRBc1Z1c3MrckhVWjFFallr?=
- =?utf-8?B?VWlEVzF6ZGU5amZzR20rckVPbmZYOUF3WVVSWFJzRWxsblYyaXdpM3YwT3lI?=
- =?utf-8?Q?Q3QlrHh+KngpF0SBgkDQa3mHP?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 44743a7b-c107-4006-9aca-08dc1713551a
-X-MS-Exchange-CrossTenant-AuthSource: MN0PR12MB6101.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jan 2024 04:18:18.0764
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: PBF5b1fdCbNhyEwIGWhUCwYm892srfy6kNU2Tdp+myjgjH9w6nuD8YHrI+ldOoNu3FPpqrmDPm0Kst+og+S+bg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR12MB4495
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_201843_191580_017BF03C 
-X-CRM114-Status: GOOD (  18.05  )
+X-CRM114-CacheID: sfid-20240117_021418_764810_1D493AA2 
+X-CRM114-Status: GOOD (  22.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,86 +82,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/14/2023 06:39, James Prestwood wrote:
-> On 12/13/23 11:27, Mario Limonciello wrote:
->> On 12/13/2023 08:45, Ben Greear wrote:
->>> On 12/13/23 5:26 AM, Lorenzo Bianconi wrote:
->>>>> Mario Limonciello <mario.limonciello@amd.com> writes:
->>>>>
->>>>>> Several users have reported awful latency when powersaving is enabled
->>>>>> with certain access point combinations.
->>>>>
->>>>> What APs are these exactly? In the past 802.11 Power Save Mode was
->>>>> challenging due to badly behaving APs. But nowadays with so many 
->>>>> mobile
->>>>> devices in the market I would assume that APs work a lot better. It
->>>>> would be best to investigate the issues in detail and try to fix 
->>>>> them in
->>>>> mt76, assuming the bugs are in mt76 driver or firmware.
->>>>>
->>>>>> It's also reported that the powersaving feature doesn't provide an
->>>>>> ample enough savings to justify being enabled by default with these
->>>>>> issues.
->>>>>
->>>>> Any numbers or how was this concluded?
->>>>>
->>>>>> Introduce a module parameter that would control the power saving
->>>>>> behavior.  Set it to default as disabled. This mirrors what some 
->>>>>> other
->>>>>> WLAN drivers like iwlwifi do.
->>>>>
->>>>> We have already several ways to control 802.11 power save mode:
->>>>>
->>>>> * NL80211_CMD_SET_POWER_SAVE (for example used by 'iw set power_save')
->>>>>
->>>>> * CONFIG_CFG80211_DEFAULT_PS (for kernel level default)
->>>>>
->>>>> * WIPHY_FLAG_PS_ON_BY_DEFAULT (for the driver to control the 
->>>>> default setting)
->>>>>
->>>>> Adding module parameters as a fourth method sounds confusing so not
->>>>> really a fan of this. And the bar is quite high for adding new module
->>>>> parameters anyway.
->>>>
->>>> agree, I think we do not need a new parameter for this, just use the 
->>>> current
->>>> APIs.
->>>
->>> Is there a convenient way for a user to make any of those options 
->>> above stick through
->>> reboots?
->>>
->>> To me, the ability to set system defaults through reboots is a nice 
->>> feature of
->>> module options.
->>>
->>> Thanks,
->>> Ben
->>>
->>
->> Some userspace has the ability to do this.  For example in Network 
->> Manager:
->>
->> https://unix.stackexchange.com/questions/595116/wi-fi-powersaving-in-networkmanager
+Il 16/01/24 22:38, Nícolas F. R. A. Prado ha scritto:
+> The cbas node is used to describe base detection functionality in the
+> ChromeOS EC, which is used for units that have a detachable keyboard and
+> thus rely on this functionality to switch between tablet and laptop
+> mode.
 > 
-> And recently added to IWD for this very reason, there are no decent ways 
-> to persist between reboots (except when using NM).
+> Despite the original commit having added the cbas node to the
+> mt8183-kukui.dtsi, not all machines that include it are detachables. In
+> fact all machines that include from mt8183-kukui-jacuzzi.dtsi are either
+> clamshells (ie normal laptops) or convertibles, meaning the keyboard can
+> be flipped but not detached. The detection for the keyboard getting
+> flipped is handled by the driver bound to the keyboard-controller node
+> in the EC.
 > 
-> https://git.kernel.org/pub/scm/network/wireless/iwd.git/commit/?id=29edb1626d88bb713db71f7b374d8f24832fd94f
+> Move the base detection node from the base kukui dtsi to the dtsis where
+> all machines are detachables, and thus actually make use of the node.
 > 
-> Thanks,
-> 
-> James
-> 
+> Fixes: 4fa8492d1e5b ("arm64: dts: mt8183: add cbas node under cros_ec")
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-All,
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Just wanted to update you that I looked at this issue again over the 
-holidays and it's fixed by upgrading the linux-firmware for the mt7921 
-that was submitted in late November.
+> ---
+> Changes in v3:
+> - Instead of deleting the node in jacuzzi, moved the node from kukui to
+>    the dtsis including kukui that are detachables
+> 
+> Changes in v2:
+> - Moved cbas node removal to jacuzzi dtsi
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi | 4 ++++
+>   arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi | 4 ++++
+>   arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi  | 4 ++++
+>   arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi        | 4 ----
+>   4 files changed, 12 insertions(+), 4 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
+> index b6a9830af269..bfb9e42c8aca 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
+> @@ -360,6 +360,10 @@ pen_eject {
+>   };
+>   
+>   &cros_ec {
+> +	cbas {
+> +		compatible = "google,cros-cbas";
+> +	};
+> +
+>   	keyboard-controller {
+>   		compatible = "google,cros-ec-keyb-switches";
+>   	};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
+> index 306c95166f3f..5c1bf6a1e475 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
+> @@ -339,6 +339,10 @@ touch_pin_reset: pin_reset {
+>   };
+>   
+>   &cros_ec {
+> +	cbas {
+> +		compatible = "google,cros-cbas";
+> +	};
+> +
+>   	keyboard-controller {
+>   		compatible = "google,cros-ec-keyb-switches";
+>   	};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
+> index 382e4c6d7191..0f5fa893a774 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
+> @@ -343,6 +343,10 @@ rst_pin {
+>   };
+>   
+>   &cros_ec {
+> +	cbas {
+> +		compatible = "google,cros-cbas";
+> +	};
+> +
+>   	keyboard-controller {
+>   		compatible = "google,cros-ec-keyb-switches";
+>   	};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> index 5506de83f61d..66eb099e15f0 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> @@ -937,10 +937,6 @@ usbc_extcon: extcon0 {
+>   			google,usb-port-id = <0>;
+>   		};
+>   
+> -		cbas {
+> -			compatible = "google,cros-cbas";
+> -		};
+> -
+>   		typec {
+>   			compatible = "google,cros-ec-typec";
+>   			#address-cells = <1>;
+> 
+> ---
+> base-commit: 0f067394dd3b2af3263339cf7183bdb6ee0ac1f8
+> change-id: 20240116-mt8183-kukui-cbas-remove-657b62aeced6
+> 
+> Best regards,
 
-I get the correct performance and latency without modifying power saving 
-now on my Unifi access points.
-
-Thanks,
 
