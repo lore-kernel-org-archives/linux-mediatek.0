@@ -4,74 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4065BC47258
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jan 2024 10:58:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC5E0C47DA7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jan 2024 12:43:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nlEfas6Rpy3UYg5EK9gZ7dni3mL9IFdj4p/cPVFiUqo=; b=LlSd3IznV3BC+BPkyWdTmeWngv
-	LCbjoaSY2znpWJ5MSS4JKexoYS164NUd/VTPFt7lxFc1u5EUItqfGeXdNArl5Y8wQ6PnMemlDt/bT
-	3T/DPLIBHgbLicxCrZkvr/novAoQ2bWeZ7cXNypFamuE6uwWraa4kfpxxuDmNPiG3aA64IjeTj8yH
-	5wS9NnCBulYx++hZvquV0PTb6u2O1jyv0MWA6CqZivaC9UHULDlijOcqqwQv/DVbyVz/JfStEZSMc
-	Wcv46/wqFMRx8Kre2MxDJzXsjzrdX1rcmFV4Vei3iFBJv0CJ5A1FHbn80P2WFjCbI0fb7jh7lp0VB
-	IgrpFS1Q==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=U95ZWgtvdbuuMo3m4xl/IdVyw6SYbPt7+R8Z7mFsD5k=; b=dWOvF7V3EDULN+V8IAwk2lPfm8
+	pHx+VBuC9YkGacFy9P9acW0TZNVbzhhUnm3jAxsTWUwJBAiKz6/Yz8IAlW6hsmOZGSS+5Px6uSpwT
+	s5mwuS20Ux5UyiSkVCLePvCHLMzTrduW848D+lig2+PpDjQq2xaFo/lvW5LvX6/Hlrp8K+FnYWOMP
+	WxfudIJ2zU81dvLjMRFE4s8oOYVhmDixeCbfj2/qQQO6Qiodkykrnt2jBU7Y9goVpsIVIGZQyyOcf
+	7DSFIQO08zduAgD8LS2HOx0XuXsea3Z32TT92ON1qw4xZwm8xIQKbenGmxT8O/Kq9czTLiPY5wyMp
+	RTEKRFBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQ3cr-00FMlG-2q;
-	Wed, 17 Jan 2024 10:58:30 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rQ5GJ-00G3lP-1r;
+	Wed, 17 Jan 2024 12:43:22 +0000
+Received: from smtp6-g21.free.fr ([212.27.42.6])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQ3co-00FMjk-0R;
-	Wed, 17 Jan 2024 10:58:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705489103;
-	bh=/7lI1B2ezdJpZing7eGVqikWQmFS6qFYXxnwlupy290=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=tMgwAN0XVR4clizkCEDnib7CoFsCa0hRMJsErRaVWDzYjzOc+/kEVeArCbv4OAkss
-	 rpyyvEjyWbQ5q58V+e3HDrUPMAEkws77pSqguHFBDQveJf1dSibyrnCo59m3br4vcf
-	 7beOB9K/TZmZ/TC9vg3/ObJJLIC7uujE4Rg9LGOz3TUcDF3zfm+iUq19+MqwxEBdWZ
-	 oLAqi4Z4U/tKm4Mfnny72PK7fsdzOhqzZlFxfGG0FH/ORgLOAdcz3xYiWkwut99mwI
-	 sxf+GwNw8OwGDAXsh5Sua/04RN8TS6Ojh7Ezb8MgD6GO1Td9kkHR/CPk7C21yRtRC0
-	 94/E4NOFiPHJg==
-Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4285F3782021;
-	Wed, 17 Jan 2024 10:58:17 +0000 (UTC)
-Message-ID: <7f123e16-54d7-e25e-63ae-cf6efc31d136@collabora.com>
-Date: Wed, 17 Jan 2024 16:28:15 +0530
+	id 1rQ5GE-00G3ej-1g;
+	Wed, 17 Jan 2024 12:43:16 +0000
+Received: from localhost.localdomain (unknown [IPv6:2a01:e0a:aa1:d2f0:f6b3:db6:44c:eeef])
+	(Authenticated sender: isaias57@free.fr)
+	by smtp6-g21.free.fr (Postfix) with ESMTPSA id B2AF778034D;
+	Wed, 17 Jan 2024 13:42:57 +0100 (CET)
+From: Jean Thomas <jean.thomas@wifirst.fr>
+To: sean.wang@kernel.org,
+	linus.walleij@linaro.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: Jean Thomas <jean.thomas@wifirst.fr>
+Subject: [PATCH 1/2] pinctrl: mediatek: mt7981: add additional uart group
+Date: Wed, 17 Jan 2024 13:42:33 +0100
+Message-Id: <20240117124234.3137050-1-jean.thomas@wifirst.fr>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v1 0/8] drm/ci: Add support for GPU and display testing
-To: Daniel Stone <daniel@fooishbar.org>,
- Helen Koike <helen.koike@collabora.com>, Dave Airlie <airlied@gmail.com>,
- Sima Vetter <daniel@ffwll.ch>, Daniel Stone <daniels@collabora.com>,
- Emma Anholt <emma@anholt.net>,
- linux-rockchip <linux-rockchip@lists.infradead.org>,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- David Heidelberg <david.heidelberg@collabora.com>,
- Rob Clark <robdclark@gmail.com>, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org
-References: <20231220121110.1441160-1-vignesh.raman@collabora.com>
- <CAPj87rOMPioOK0r74vcnVkXusm6Nah6KNUWyxYgpVLdkMNtW2g@mail.gmail.com>
- <ad7cbd59-5264-96e8-5e9b-aafde8028e41@collabora.com>
- <CAPj87rPRRfJmxTev50YqxBizyvzCUhCiymoV_bdqsZ-zvcREfA@mail.gmail.com>
-Content-Language: en-US
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <CAPj87rPRRfJmxTev50YqxBizyvzCUhCiymoV_bdqsZ-zvcREfA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240117_025826_335080_E0519957 
-X-CRM114-Status: GOOD (  16.10  )
+X-CRM114-CacheID: sfid-20240117_044314_724149_03FF089A 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,45 +64,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
+Add uart1_3 (pins 26, 27) group to the pinctrl driver for the
+MediaTek MT7981 SoC.
 
-On 11/01/24 23:41, Daniel Stone wrote:
-> Hi Vignesh,
-> 
-> On Wed, 10 Jan 2024 at 10:47, Vignesh Raman <vignesh.raman@collabora.com> wrote:
->> On 09/01/24 19:08, Daniel Stone wrote:
->>> A better sequencing would be something like:
->>>     1. add ANX7625 config
->>>     2. refactor _existing_ MTK display jobs to use YAML includes, change
->>> the existing job name, and rename the existing xfail set, remove
->>> IGT_FORCE_DRIVER from the script since it's now set by the job
->>>     3. add MTK Panfrost+PVR GPU jobs with new xfails, add xfail entry to
->>> MAINTAINERS
->>>     4+5: same as 2+3 but for Amlogic
->>>     6+7: same as 2+3 but for Rockchip
->>>
->>> Then the separate rename/update xfail commits just disappear, as does
->>> the removal of IGT_FORCE_DRIVER, because it's just done incrementally
->>> as part of the commits which change the related functionality. It's
->>> extremely important that every change can work standalone, instead of
->>> introducing intermediate breakage which is only fixed in later commits
->>> in the series.
->>
->> Thank you for reviewing the patches. I agree, will follow this sequence
->> and send a v2 version.
-> 
-> Alongside Rob's patch to add msm-specific tests to the runlist, we'd
-> need to add the Panfrost-specific tests. Whilst we're here, we might
-> as well add the vc4/v3d/etnaviv/lima tests so they can use it in
-> future.
-> 
-> Panfrost should also skip kms_.* tests - since it's not a KMS driver,
-> it can't run the KMS tests, so there's no point in trying.
+Signed-off-by: Jean Thomas <jean.thomas@wifirst.fr>
+---
+ drivers/pinctrl/mediatek/pinctrl-mt7981.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-I will add these tests and update skips file. Sorry missed this before 
-sending v2. I'm rechecking the xfails for the v2 series and will send
-v3 with these changes. Thanks.
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7981.c b/drivers/pinctrl/mediatek/pinctrl-mt7981.c
+index 7e59a4407859..ca667ed25a4d 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt7981.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt7981.c
+@@ -737,6 +737,9 @@ static int mt7981_uart1_1_funcs[] = { 2, 2, 2, 2, };
+ static int mt7981_uart1_2_pins[] = { 9, 10, };
+ static int mt7981_uart1_2_funcs[] = { 2, 2, };
+ 
++static int mt7981_uart1_3_pins[] = { 26, 27, };
++static int mt7981_uart1_3_funcs[] = { 2, 2, };
++
+ /* UART2 */
+ static int mt7981_uart2_1_pins[] = { 22, 23, 24, 25, };
+ static int mt7981_uart2_1_funcs[] = { 3, 3, 3, 3, };
+@@ -871,6 +874,8 @@ static const struct group_desc mt7981_groups[] = {
+ 	PINCTRL_PIN_GROUP("uart1_1", mt7981_uart1_1),
+ 	/* @GPIO(9,10): UART1(2) */
+ 	PINCTRL_PIN_GROUP("uart1_2", mt7981_uart1_2),
++	/* @GPIO(26,27): UART1(2) */
++	PINCTRL_PIN_GROUP("uart1_3", mt7981_uart1_3),
+ 	/* @GPIO(22,25): UART1(3) */
+ 	PINCTRL_PIN_GROUP("uart2_1", mt7981_uart2_1),
+ 	/* @GPIO(22,24) PTA_EXT(4) */
+@@ -933,7 +938,7 @@ static const struct group_desc mt7981_groups[] = {
+ static const char *mt7981_wa_aice_groups[] = { "wa_aice1", "wa_aice2", "wm_aice1_1",
+ 	"wa_aice3", "wm_aice1_2", };
+ static const char *mt7981_uart_groups[] = { "net_wo0_uart_txd_0", "net_wo0_uart_txd_1",
+-	"net_wo0_uart_txd_2", "uart0", "uart1_0", "uart1_1", "uart1_2", "uart2_0",
++	"net_wo0_uart_txd_2", "uart0", "uart1_0", "uart1_1", "uart1_2", "uart1_3", "uart2_0",
+ 	"uart2_0_tx_rx", "uart2_1", "wm_uart_0", "wm_aurt_1", "wm_aurt_2", };
+ static const char *mt7981_dfd_groups[] = { "dfd", "dfd_ntrst", };
+ static const char *mt7981_wdt_groups[] = { "watchdog", "watchdog1", };
+-- 
+2.39.2
 
-Regards,
-Vignesh
 
