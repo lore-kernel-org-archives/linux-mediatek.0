@@ -4,70 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC9AAC47258
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jan 2024 10:14:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13553C47258
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jan 2024 10:29:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tl7FhOkCtAq7fSRYh6YMDAIWBHfXaGVctin+qhonKSA=; b=fYAri1ioQb8ar2QeZ+A37n2Jbz
-	Hv7PVydqeg9lbQKasuMUtmVLrFeUnWORi4vkHOJvN9zIHvOL6AOr37fwleDM3CKhrir/oDUlNYBdv
-	1N9AUjEe45irorS/urMz3pdsbn9UN9WTa9JehhEQ/E3tAORyL30YTbG8iIt2zMtN3j7Zg6j3a2tif
-	WcWCJtJb19YXLiVw+tQ9a0liXhc4Vth+wDSPCFuyDjeoS6mM5fGy4xbIawWYzzDubuH0elSDtJcmO
-	f1P0zbUOtBEKB+yJT1KLp7sGflrgJg0TPowUPzZ9V8f0iMEUNMTj66LAzSqwx2JxDX4EQWujHzlWa
-	mYQv8W0A==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mVtGIgwkGXkguB4MvPhZK/Q8mhOzuHbn1l8x9D2I17U=; b=JY1fcj4T0CqKVR3NHvbkbbh7UT
+	FHuvg3wNqvot+gKe4DA2BMiUH+Keh2SOl5uw9sDDpD0N7twEcW1SIRKDpr02otsC3FQp2Q1E2tkl8
+	B3jTnRPJ8dKfSqzT8j8NotCJKy1PRsJCNAMjBURqwZvKfakq7iFJhPgQ0Rl63qy95F+dstQ2EzLWo
+	d3RMvBB/WDWlnbZtoNqslfXitymsxbQemPXSbIqe/1PP3N2xxB14EP9PAlkURkgkLCUla9A8BTMK8
+	0h2m/ib0ekwRja2m4V/RJOt5FGEBYyCEmJyWZ+Y0R5Bp0Do5xSLeX7dy7OhPOWLTVuChByjsgWWiT
+	tyF/dmig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQ2wA-00FETK-2S;
-	Wed, 17 Jan 2024 10:14:22 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rQ3AI-00FGkF-1p;
+	Wed, 17 Jan 2024 10:28:58 +0000
+Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQ2w6-00FESR-1o;
-	Wed, 17 Jan 2024 10:14:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705486456;
-	bh=syRL93p3m7lOCFY42/TgG/irGtWwZk2a6EBIxB3AtG8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=rzaUGLT+FS5la69XrXwkC7+wXBJfGG2Zc+GHh7DoNXgLDFHIWOBbw3+8xKfqHK5uR
-	 nE80DdCGwRM73OQERoaRk9LHu17/6Xwu8qXbnYKnjjAoh2w5WiGVxrD001I79BLaBt
-	 5Ybnl523C/VQFOnsd7o3YG7AtDy7Uyh73Rq8YqvzHFcQvX2BT/o/v9hw+XhWJm4AXz
-	 0+DYra7WjOGDL/QKOT3p8mCaeEOtOXWA9Rxo43jAEQ+GEfUvCyq81GUgRAP/AA4QSO
-	 m9C9axzdOmjHD8fzZOmFDGlY15LhocM5KNtHRRTR7o5w9f+3Of262HfKzPeRIXEoDX
-	 k/MiMIrqjALDA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4E6F737811F1;
-	Wed, 17 Jan 2024 10:14:15 +0000 (UTC)
-Message-ID: <720dc418-16f7-473c-b33c-f0c9786c02e2@collabora.com>
-Date: Wed, 17 Jan 2024 11:14:14 +0100
+	id 1rQ3AF-00FGhc-3B;
+	Wed, 17 Jan 2024 10:28:57 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 3FE3240008;
+	Wed, 17 Jan 2024 10:28:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1705487330;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=mVtGIgwkGXkguB4MvPhZK/Q8mhOzuHbn1l8x9D2I17U=;
+	b=gCx0K+My9QVshgTPmG70Ieg22AYFOiv/+wEl+CpuuwADi73GpmElmaWarKaIOfwXCQNs7h
+	JG4DA2cUCVRC3WVezvuHPgehSDzRnkIK23gZjAY1+vsIxYeQfWiPP8Wxe+E8QDGmHUkdNX
+	3VJ3NlCK1D9KVHDZ3xxOBRMSfQvKIk1ch3PiJ2MAAufl29tYzyudbAUemwEYdUuIlpTgVj
+	fYCcpvaMzVT7fqR6m8v0iFCsO5ku510uN7d3JPpsnG7DgeSh/XyU00YcccJKEOdnmIXFZU
+	5gfeQ2War/BoAEbaMIjKly+OTFjFRz9CQTjzZzYxX4rPCwuRSYuEBgwbTg2TNg==
+From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+To: Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>
+Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	mithat.guner@xeront.com,
+	erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [RFC PATCH net-next 0/8] MT7530 DSA Subdriver Improvements Act III
+Date: Wed, 17 Jan 2024 13:28:30 +0300
+Message-Id: <20240117102838.57445-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] arm64: dts: mt8183: Move CrosEC base detection node to
- kukui-based DTs
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Enric Balletbo i Serra <eballetbo@kernel.org>,
- Ikjoon Jang <ikjn@chromium.org>, Stephen Boyd <swboyd@chromium.org>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20240116-mt8183-kukui-cbas-remove-v3-1-055e21406e86@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240116-mt8183-kukui-cbas-remove-v3-1-055e21406e86@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240117_021418_764810_1D493AA2 
-X-CRM114-Status: GOOD (  22.52  )
+X-CRM114-CacheID: sfid-20240117_022856_194444_C27CF5A0 
+X-CRM114-Status: UNSURE (   7.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,107 +87,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/01/24 22:38, Nícolas F. R. A. Prado ha scritto:
-> The cbas node is used to describe base detection functionality in the
-> ChromeOS EC, which is used for units that have a detachable keyboard and
-> thus rely on this functionality to switch between tablet and laptop
-> mode.
-> 
-> Despite the original commit having added the cbas node to the
-> mt8183-kukui.dtsi, not all machines that include it are detachables. In
-> fact all machines that include from mt8183-kukui-jacuzzi.dtsi are either
-> clamshells (ie normal laptops) or convertibles, meaning the keyboard can
-> be flipped but not detached. The detection for the keyboard getting
-> flipped is handled by the driver bound to the keyboard-controller node
-> in the EC.
-> 
-> Move the base detection node from the base kukui dtsi to the dtsis where
-> all machines are detachables, and thus actually make use of the node.
-> 
-> Fixes: 4fa8492d1e5b ("arm64: dts: mt8183: add cbas node under cros_ec")
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Hello.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+This is the third patch series I'm submitting for review.
 
-> ---
-> Changes in v3:
-> - Instead of deleting the node in jacuzzi, moved the node from kukui to
->    the dtsis including kukui that are detachables
-> 
-> Changes in v2:
-> - Moved cbas node removal to jacuzzi dtsi
-> ---
->   arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi | 4 ++++
->   arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi | 4 ++++
->   arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi  | 4 ++++
->   arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi        | 4 ----
->   4 files changed, 12 insertions(+), 4 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-> index b6a9830af269..bfb9e42c8aca 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-> @@ -360,6 +360,10 @@ pen_eject {
->   };
->   
->   &cros_ec {
-> +	cbas {
-> +		compatible = "google,cros-cbas";
-> +	};
-> +
->   	keyboard-controller {
->   		compatible = "google,cros-ec-keyb-switches";
->   	};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-> index 306c95166f3f..5c1bf6a1e475 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-> @@ -339,6 +339,10 @@ touch_pin_reset: pin_reset {
->   };
->   
->   &cros_ec {
-> +	cbas {
-> +		compatible = "google,cros-cbas";
-> +	};
-> +
->   	keyboard-controller {
->   		compatible = "google,cros-ec-keyb-switches";
->   	};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-> index 382e4c6d7191..0f5fa893a774 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-> @@ -343,6 +343,10 @@ rst_pin {
->   };
->   
->   &cros_ec {
-> +	cbas {
-> +		compatible = "google,cros-cbas";
-> +	};
-> +
->   	keyboard-controller {
->   		compatible = "google,cros-ec-keyb-switches";
->   	};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> index 5506de83f61d..66eb099e15f0 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> @@ -937,10 +937,6 @@ usbc_extcon: extcon0 {
->   			google,usb-port-id = <0>;
->   		};
->   
-> -		cbas {
-> -			compatible = "google,cros-cbas";
-> -		};
-> -
->   		typec {
->   			compatible = "google,cros-ec-typec";
->   			#address-cells = <1>;
-> 
-> ---
-> base-commit: 0f067394dd3b2af3263339cf7183bdb6ee0ac1f8
-> change-id: 20240116-mt8183-kukui-cbas-remove-657b62aeced6
-> 
-> Best regards,
+Cheers.
+Arınç
+
+Arınç ÜNAL (8):
+  net: dsa: mt7530: remove .mac_port_config for MT7988 and make it
+    optional
+  net: dsa: mt7530: set interrupt register only for MT7530
+  net: dsa: mt7530: do not use SW_PHY_RST to reset MT7531 switch
+  net: dsa: mt7530: get rid of useless error returns on phylink code
+    path
+  net: dsa: mt7530: get rid of priv->info->cpu_port_config()
+  net: dsa: mt7530: get rid of mt753x_mac_config()
+  net: dsa: mt7530: put initialising PCS devices code back to original
+    order
+  net: dsa: mt7530: simplify link operations and force link down on all
+    ports
+
+ drivers/net/dsa/mt7530.c | 251 +++++++--------------------------------
+ drivers/net/dsa/mt7530.h |  15 +--
+ 2 files changed, 46 insertions(+), 220 deletions(-)
+
+-- 
+2.40.1
 
 
