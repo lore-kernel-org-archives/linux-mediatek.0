@@ -4,99 +4,200 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78A40C47077
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jan 2024 00:36:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1DE1C47077
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jan 2024 02:25:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KIn0gCmXZ0lxMlQGGnzRf82yHu6dGB0sxsIjteoQakg=; b=haGvP2ejfBpBTnOILf8mIwhoc8
-	09wFIDYhvdsRqE/qV3lD4XN4hAFZvu0SbPYwW5JmGBZjAj7B0D/ZZUgDLiR0NOjQwkSQJ3iRv3Q93
-	hWKPsM5v9zIGDY6dVoOeTrOtxKpAu8G6iv0sdVYxLg/3OYWGkVKcMR2FP9eAl9GrV9AdSIcuLY4Wc
-	JgNSnO0SP7j969qbcB2s7uHcxL3iGsBcbx58XfcaDNSS+6rLXYK8UaNP93qSwc5j2+Pggslr5CetH
-	hqYtKSET2nGR4l9FRnWTxjB1fwPFWLm9zg8Iiqkyv7eKXGjICpE22VDEPCVKxxusOmuf/l6UUDKs7
-	TqKLyj6w==;
+	bh=Aoz3Aoxs4An6uWeF/GtsX9/vDD369l/SoYu419rm2VU=; b=ev9eJoONEalOuoPr8KwB94CWgK
+	nsP971QkbE7C8q+s3kXOit2QZf9fZdPfwxeCxZhSrD8X54c1l4St6tRZ566lu0DwLkRQ9JXvItaVE
+	2qE+sg3GCC3Iap6vA7Rgp1OLfWsTXiZI1TaHJlqyiB66PovPQWa6P+gD6jsD4blkaxBxLymuk9vGP
+	dto/n5HEkv1J2gth9oT8Ekf77XBHE8GqCDtTJcDFJy/lSXZMnvE+Xkyt+XZVOGStZH6hBqXxIRP4O
+	LAgu4kMVVoI/ag7v7WwVSuAQLnc/I+Ng51nsTwkppEt02UXJAonlxU7Y19C/xEK6gG30xGhD7om9B
+	stGc7DAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPtv6-00E56z-0E;
-	Wed, 17 Jan 2024 00:36:40 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1rPvcL-00EEJu-24;
+	Wed, 17 Jan 2024 02:25:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPtv1-00E56H-0i;
-	Wed, 17 Jan 2024 00:36:37 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-40e69b31365so38672515e9.0;
-        Tue, 16 Jan 2024 16:36:33 -0800 (PST)
+	id 1rPvcH-00EEHv-1t;
+	Wed, 17 Jan 2024 02:25:23 +0000
+X-UUID: a4b9bd0ab4df11eeafd70d0b34820190-20240116
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=Aoz3Aoxs4An6uWeF/GtsX9/vDD369l/SoYu419rm2VU=;
+	b=n8aeSihbaAVSFnjlEtTWreBYtxRIJSzta5CDu4yi1bZNzcRYgyEdWzPzJHz9ruPTcBFDZFevIbmbk5mDi9T+vTouWm8kbspgG2+nYcS/ESYBXGgplQBsJ5vbRIGcuPPeXCr9j+kYJdFUT/iusJGLN8qw/QzDhtf/17+zLCT9UCQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35,REQID:527e8497-7318-4462-96ac-c0be6f1cb3a7,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:5d391d7,CLOUDID:71da3e2f-1ab8-4133-9780-81938111c800,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: a4b9bd0ab4df11eeafd70d0b34820190-20240116
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1723486845; Tue, 16 Jan 2024 19:25:12 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 17 Jan 2024 10:24:36 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 17 Jan 2024 10:24:36 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WSBQRa0M+G6tX0/W8DNtMeYASXnjUkp/gD+8gcXsA6YgV9ijz7HF9wn/P+hPz5j3WJZWPCt5tt7GoazSpeB123qKQXoZtMCdYQj4dyU0YC1Y1FOVV+Z4j2Qy3DdMVAS3Ni+SE2MpAoBigHzNynaMlP8Dx1ph7vu/ThAWEO6PsITpAOTF3Se2XJ7EK9zsP8WuOUtuQ2UjVVGccgWHf/hw00SbIz4alu2cODjUZwv06ioKfn12Oo1S/ZBYuOcHAz0/R+FrXuj+fEUVIDh4vc2lLoDFmfGpV5GN4BKSm+VdkJVNNoOyMTrn4iDrXYcXpmOlnuZ3zLmlXgRV9hm+Xnns1Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Aoz3Aoxs4An6uWeF/GtsX9/vDD369l/SoYu419rm2VU=;
+ b=Nux/1ttA5U6hx+5PQ8jcSJ67dp4tdru979BlYlusnod/zgdMWGpb3J56ZTrhasOL4ChyrevGeImPu6Jmu6CEiWH5epTN6kG/8/ImjkWgmEcFKHfHlBXS7J+xGdpa9Fc9b8TbrH4OVpP6Q0CWarIda4m8T3oC0DD5ud0U+ftXpwUp+Xq05znZRB0ptEa7HRLpbypwrrrpclbvgkhrgANTUuNf9UAxbZ8fbfE4ekZkpU1z1VUgf2oT6jzLRWZct6fGRwfmKVrWVSSS5jDJvqTcKp/aKPQXfarclxz7O8XQmOwwaOBdyWs6xHYE5HpDWve+LubkoOMEfJzZ0+TdqrVMdg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1705451792; x=1706056592; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=KIn0gCmXZ0lxMlQGGnzRf82yHu6dGB0sxsIjteoQakg=;
-        b=IIvrrQnPv7rZtDqg0CHYpH5CUYt8kQwoayW9WdgwyuOngrkHtdnJAB6JnjFP5CQJAR
-         1MzRgpvBs7WyPy4WxhTNT3pXN2fXo8Q89J84lvNqqOeQw8Wl2aQnoR6kaRbfZu64dOL8
-         UiQxEDxarN1KY3lRkQTnYryYmdp7WXtxY7+C0RF0uqk0S1P+Q9Bx/mmQ+wVshdHSSrst
-         BnQ8Mo8PXxGDLKpGTlVjpIbsGc40FbRqYGPxZcuB8+NgcnAT5JGK1HqKfH0fgNjxyK4z
-         kVR7gYrIrws8B9upLpN8JuumAfNT3ezeG2Myhy4xFaZaDN1oCXSJvgRnGdHWFtibmerc
-         gHuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705451792; x=1706056592;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=KIn0gCmXZ0lxMlQGGnzRf82yHu6dGB0sxsIjteoQakg=;
-        b=Q+sYvNOLM3H5qOajlIPz+iFpb+7XkDXHIbNLozKoCq3amO2jHlX+L/rl/sZgHzRt4Y
-         oH1cJqA97to1yYJcQm0Z37mVz4pwLWOFxK6/I04jbhtAqVM+7FYqm8W6PMaCJhrGcNIc
-         X2qmCP5A8tcRj3SzuNirj2zFZHRgOsWC0/Sdyv74Xm+U2UjhIh+Oltqw4AOyzaocOczX
-         5ZZRuMdpVK1ezRnViT1j5O7vpEeS7istYxvjvU0xJThxG5h2wz4c16OaKu8LUhd7B0RC
-         rVnlZ0zAajFviGIBuPuNyUZDMap2btw+J7iOvm6x4osyQd0mUQ7vR99EVy2yqyZ9jDzb
-         7ZSA==
-X-Gm-Message-State: AOJu0YzQ0bwQrHiPpKD69+RaKLONovl0E56lUQ6TJbh/D0HGwtcoCoye
-	CkHqIgj0q6LkaTN2F+YB+88=
-X-Google-Smtp-Source: AGHT+IGZXiVBSI9rEk4Tdqko5QtIpx9MEPXVIIgt/eTZP2+LCMfjt7M0UWwZE6xsruV8+nQfO4NwGw==
-X-Received: by 2002:adf:fa0e:0:b0:337:5b60:dca9 with SMTP id m14-20020adffa0e000000b003375b60dca9mr4353405wrr.94.1705451792219;
-        Tue, 16 Jan 2024 16:36:32 -0800 (PST)
-Received: from Ansuel-xps. (93-34-89-13.ip49.fastwebnet.it. [93.34.89.13])
-        by smtp.gmail.com with ESMTPSA id l14-20020adffe8e000000b00336755f15b0sm310897wrr.68.2024.01.16.16.36.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Jan 2024 16:36:31 -0800 (PST)
-Message-ID: <65a7210f.df0a0220.d10b2.1162@mx.google.com>
-X-Google-Original-Message-ID: <ZachDLzFEWQV8lhl@Ansuel-xps.>
-Date: Wed, 17 Jan 2024 01:36:28 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Sergey Ryazanov <ryazanov.s.a@gmail.com>
-Cc: Robert Marko <robert.marko@sartura.hr>, Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>, Luo Jie <quic_luoj@quicinc.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [net-next PATCH RFC v3 1/8] dt-bindings: net: document ethernet
- PHY package nodes
-References: <20231126015346.25208-1-ansuelsmth@gmail.com>
- <20231126015346.25208-2-ansuelsmth@gmail.com>
- <0926ea46-1ce4-4118-a04c-b6badc0b9e15@gmail.com>
- <659aedb1.df0a0220.35691.1853@mx.google.com>
- <0f4ec2ff-4ef7-4667-adef-d065cfbc0a91@gmail.com>
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Aoz3Aoxs4An6uWeF/GtsX9/vDD369l/SoYu419rm2VU=;
+ b=VYX0WOZtJrPgcX6tER42FKzuxkSOc4hQhXJt4bR7CvJnqQCM8NrS+ga9QfxFCCmFGwofQU9yqhcuzYUtEOdmZ6zogvrk47a8KyBPhnB7x3oX+ArxKmHJBjwdvZGtQakU9mXPahNgKh8dQOaKNwNanRhvM2G7CW7aHLN0gmQ9Hpk=
+Received: from SEYPR03MB7682.apcprd03.prod.outlook.com (2603:1096:101:149::11)
+ by JH0PR03MB8334.apcprd03.prod.outlook.com (2603:1096:990:49::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7181.26; Wed, 17 Jan
+ 2024 02:24:32 +0000
+Received: from SEYPR03MB7682.apcprd03.prod.outlook.com
+ ([fe80::d006:ec9c:ff42:ff60]) by SEYPR03MB7682.apcprd03.prod.outlook.com
+ ([fe80::d006:ec9c:ff42:ff60%5]) with mapi id 15.20.7202.020; Wed, 17 Jan 2024
+ 02:24:32 +0000
+From: =?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
+To: "conor@kernel.org" <conor@kernel.org>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>,
+	=?utf-8?B?Sm9obnNvbiBXYW5nICjnjovogZbpkasp?= <Johnson.Wang@mediatek.com>,
+	=?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+	=?utf-8?B?SmFzb24tY2ggQ2hlbiAo6Zmz5bu66LGqKQ==?=
+	<Jason-ch.Chen@mediatek.com>, =?utf-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?=
+	<Shawn.Sung@mediatek.com>, =?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?=
+	<Nancy.Lin@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+	Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "krzysztof.kozlowski+dt@linaro.org"
+	<krzysztof.kozlowski+dt@linaro.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "jassisinghbrar@gmail.com"
+	<jassisinghbrar@gmail.com>, "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 2/4] dt-bindings: mailbox: mediatek: gce-mailbox: Add
+ reference to gce-props.yaml
+Thread-Topic: [PATCH v2 2/4] dt-bindings: mailbox: mediatek: gce-mailbox: Add
+ reference to gce-props.yaml
+Thread-Index: AQHaQ49Q/kjMpPuFZkuoMhc+qwpaZbDS2qqAgABkfoCAAaGoAIAA7laAgAVYtQCAAPr2AIAAl1uAgACXUIA=
+Date: Wed, 17 Jan 2024 02:24:32 +0000
+Message-ID: <ce2044f3b89e47517d7797e3684935ac3fb17fb5.camel@mediatek.com>
+References: <20240110063532.14124-1-jason-jh.lin@mediatek.com>
+	 <20240110063532.14124-3-jason-jh.lin@mediatek.com>
+	 <20240110-grumbling-tattling-0202fc5e21f2@spud>
+	 <8c4004d5b6f68dc096aaf2a537e429c310b60c08.camel@mediatek.com>
+	 <20240111-anthology-dock-c60d28ac7f1c@spud>
+	 <5eaccb10853215a6399759a715d2f0356782bac9.camel@mediatek.com>
+	 <20240115-player-waltz-8efb5885a23f@spud>
+	 <4f1e6bdb3e266cf0e89f8a664095ea1709f9afe0.camel@mediatek.com>
+	 <20240116-cancel-perpetual-08320e21ec33@spud>
+In-Reply-To: <20240116-cancel-perpetual-08320e21ec33@spud>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEYPR03MB7682:EE_|JH0PR03MB8334:EE_
+x-ms-office365-filtering-correlation-id: d648bff8-862b-49b1-b5ee-08dc170370eb
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: jH5zt1RMe2PA8V/xbM9cYTpX/dt8rPHU1wEBGQNKh2xI7h9zOR7AOouAPNjQQ/dU0kZfOo4ZNcCRVu6oWvfn/xqk2rEnO3N9/aLIZy/KSzQmdfsQ/iwF0CEwuT/vUzdV1X8VXr07ASl6o+HzBpn9r66rdIgDV0dXNjiziM5o3UrFRYo6SyL/cpIV4fnm6XvbQDtIWhcrvpUXWoEThOVHcrFqaBe3Ny2Ts97qOQgV1J8ziGpuZL9pw9xs7TFYR/GB7d8mWzUasJjZeX5+CuBErRMmAJpzEz6g852cZ0Jf8PSPz3NI9IaaP0Gb2WcrIXyT701ljD0mPyjdXMIqVDLBbGjy/ulLPEodTVzqDRBKt2bYQPHZu3X/AwkXfArhxy/fOTN5YkiCdYs+4HTzwKMUQ/nFxVSGVybp1zoZ0qQyT0j8eH1DoejZN2lpttEfQh30FW7J9MDXIzA+N5exCLcEz82E6HBv+q/UO/lp/sa2ha8fUcCMvDE0afEMQKk22caMkqbW1psczz29gRuR9vU/qovK2qadmIa9+hyf0qZt+aLPFLIErzBj63fCRXkVi2mu4OeWAzLH4j1fGaukBZ+ED/RQw98ZZzhO76OluTMmdO+CheyOHCwruSLKNpgquh70
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEYPR03MB7682.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(136003)(39860400002)(366004)(346002)(396003)(376002)(230922051799003)(451199024)(64100799003)(186009)(1800799012)(83380400001)(85182001)(76116006)(36756003)(86362001)(41300700001)(38070700009)(122000001)(478600001)(91956017)(6512007)(2616005)(26005)(66556008)(5660300002)(15650500001)(71200400001)(2906002)(8936002)(66476007)(54906003)(6506007)(316002)(38100700002)(66446008)(6916009)(66946007)(7416002)(64756008)(8676002)(4326008)(6486002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?a0pPNWFwcUN3V1V5RmxaQllsMlhsSDJzZFlGdnJ4K1I0UlJBZlYzMng3Q3dZ?=
+ =?utf-8?B?R2hneDQ3S2pLc0F5RkdOenAzVUtab2M0ek5JRW5BcUZZOUlrU2hMcHpqR1lH?=
+ =?utf-8?B?bENQK0xZd3B4YmI4UnNFQnlQVHlaMno3RE1UTmh5RHBXQWVwSlVZTVFFUUdT?=
+ =?utf-8?B?SVltWGVoNWY4eWpYWGtUTHBKUkhqSmJTNnpFOFkyRWY2VEx1NHhubFRCM3JZ?=
+ =?utf-8?B?djl2Q1RxaEJYVFNNRnNHZXFFVXlMb3U3L2Z5dWRtRWhXZlNKNFFXR1hVd3Qz?=
+ =?utf-8?B?c3k4NnZGMmx1ZnZ4WkR5MTJGb2tKbW5OcGV4SzBxeE5Xbm9iSHdFMTlUK2F3?=
+ =?utf-8?B?ME5WMUZteW14cHRtTVdHcXFBV2REU1VkOVJSdEJka25lTTI1VmRwNEFpb1FK?=
+ =?utf-8?B?MG9vbXh5TS9xb0tHRkNBU0FSSzlUVGdIOG9VbzJncjdUMEhiQXJoZ2F1VGVk?=
+ =?utf-8?B?QmtRUnRrazR6ZTdIRndrV0NNNEROYjd0T0JlREk4WGYwaFgrOW9FUWhqckMv?=
+ =?utf-8?B?UFFsR2RhSVhIb21YeUxHdENYcGNUTDRDRW1pSTllNVJ1cDdaSjhLNStKWFB4?=
+ =?utf-8?B?Tm53ajVtWm1heW5SWkhPYTRKc0lvRFU4a0hvMm9yUG1KQlNVUjlPeVNMRE1I?=
+ =?utf-8?B?LzAyYzVaVE9TSS9BL2VLNFRXYjViWnFkdjZFVUxWR3BORHRZR3F3Y3RHbkpT?=
+ =?utf-8?B?RFc4UXhvRGJqUGdQMUFyU0xBZkFKaXM2TlJRRCtFZXVwSkExdGcvblFIYm9S?=
+ =?utf-8?B?c2FTRldheXprbW9aTXRpVFVaTXVSU1M4aXFsdUh1VWlOc2R0bFJkQkdJOCtz?=
+ =?utf-8?B?N2dGMGVlZ2RVdE8zY0FCYTZOV3ZML1pFNHFHZVFZUE82cmV3NVRETHFvbXRG?=
+ =?utf-8?B?YkdsSHlDcDM2MzBlRVJ2S1FGZkJ1RlJZQTBneFM4eWRwd3Uwc25DbVJPQk9K?=
+ =?utf-8?B?TXIwa1IrU2dvQllzNDRBU2locUJlNHlkZ01EdlBvRk9BSENNQ2l1OW1kdkxE?=
+ =?utf-8?B?TnNnbkR0d2c2OXEwZ1BUanpLRzUxNVhsTzhTYUJQdmxsVU5WMmR5WUw0UGdY?=
+ =?utf-8?B?YXNuWExhV0FETmdGRFZIdkVROEluOEVDNzJLOW9VMHFkeWVVMzNqOFZiMU5I?=
+ =?utf-8?B?TC9RNzd1RWZYTnorK0huVG11RWRlRk1JcFhPMHR4UkpJZjZ4Y09samdURFpi?=
+ =?utf-8?B?RktSVVNiYitWQWtSWXdMZmlSZEM1UU9lTVlONzFkOHo2OE43VldDR1pFajdy?=
+ =?utf-8?B?WWsvcEpwdHBNTVhxYlNuNjhMVGw0dzRlOTNGTlF1RTAyc3RVK2QxaEhhdDJM?=
+ =?utf-8?B?WnEvQzJtVUk5WDlCYThtNFlCQVpFb0twZSs0R0phbWgxN2FYWFZNQnh1MTF6?=
+ =?utf-8?B?L2JLYkZNSEJwYkVIKzl4c0gwL3Y2SWVGeVBsOVNYVGwxMkN2M1NUNkFVVTZN?=
+ =?utf-8?B?WG5pNmFTTG9LbHRraXE0VWlDNXNoaEVYT1dsUmZzUnR4UGh5RXRCZU5UQS85?=
+ =?utf-8?B?TjRTVVpoaFkvOTI1VStaSjRvUUlOSXlJYm5VSTRFWGNNQTRtUjljQVlmVHFD?=
+ =?utf-8?B?Q0ZlR3VtelQvRThieHkrWmp3OUZDVjY3Nm1RSVJYcEhvTXFTYjRKZksyNlRr?=
+ =?utf-8?B?MGV1YmdScjJPOEViYW9TWlduU0N5WXozU0p2ZmQvdFdJOWR3MVFuRHlZRTVm?=
+ =?utf-8?B?ZUNVOC9ZWTNuTGxDaVNJeE5qWGg2OFNDWjg2Zm9hOVA2WiszVzRhQ04zdWVR?=
+ =?utf-8?B?MVJXNDFLL3p2S2xnaVo1UnpjTWg3c2t6ZEpSQ3RhVTV2ZXR5WkpXbE8rbHJs?=
+ =?utf-8?B?RVJSTUtqMHdhYVFiQ0hESllWR1l4ODM1NVFEblNSVVBnL21FaTlkb2N3Z25N?=
+ =?utf-8?B?SnpMcHRub2d6a0d3bTMvNi9BakdHTXA5Zk5WM3lkNitZWTk0bUMwNmFuZk9l?=
+ =?utf-8?B?Z2RDWWxQM004LzkvY0NoUXNXVGNpMndveVlhQkZnanhoTGJUZmZVTUN1SENr?=
+ =?utf-8?B?aEFZVWgxOHBUOHV1SW55aTFrekVCNnc2QkZEc3VZNitiVFNEbWhNb2JhekFG?=
+ =?utf-8?B?KzYyYUVtclJycmdDYlhwUjllbkVWVC9waFl0K0dOVFcwalJkYnlBUVcrOXJK?=
+ =?utf-8?B?bElpeVkreVlza2lwYk9Fc1BIM3FzVXdmeWd5TENYd0N3c3NrZlNJZUpoOW12?=
+ =?utf-8?B?Rmc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <D3D4327E889AAB439E0B728A462A1BB6@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <0f4ec2ff-4ef7-4667-adef-d065cfbc0a91@gmail.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEYPR03MB7682.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d648bff8-862b-49b1-b5ee-08dc170370eb
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Jan 2024 02:24:32.6294
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: nI/kvFBtg+azgqEu5vCS8AajH1y5uESgsM3BiPyyV2C2oGRKPNh9Apy4xahxeQXhTbWT6quyB3/3kn7VpyUZc+Uk99jrVcthEiNPeVPy2yI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR03MB8334
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--20.373900-8.000000
+X-TMASE-MatchedRID: 6otD/cJAac0OwH4pD14DsPHkpkyUphL9fjJOgArMOCZV1lQ/Hn0TOsYS
+	7f9q03FJIWwPHhGKUOgt9Hrwzo1Oe95yRi6HwLg5kdRuK7C3A1leu73mFK6GNIokuE0bLiKwEwa
+	0+RTIVt3vAkvb7xTgsch2Rq1a1/nAlOnw5adVFsW8coKUcaOOvdZKsq3DGpalW+jwVKpqvlJRTm
+	J1jjwch5VsEH/NobswjKD+OrKh5L2H6FJxCilEmbdQIb8hCnY+mX+W7bzPOQG1mUU06Uh6IGDbU
+	AcMOUZ0XPYWFnRViiSmGoA01AmmltCjuUhsbmmkTSPNp9e/u1OeimGtNywjtpsoi2XrUn/J+ZL5
+	o+vRV7xJeFvFlVDkf46HM5rqDwqtlExlQIQeRG0=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--20.373900-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: A344200C8DBEA6B0384DF549F238AB6F727ACA51609F657F0DF61F26CE2C39502000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_163635_264764_2F9EB277 
-X-CRM114-Status: GOOD (  61.03  )
+X-CRM114-CacheID: sfid-20240116_182521_638520_313B88CF 
+X-CRM114-Status: GOOD (  27.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,246 +212,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jan 07, 2024 at 11:49:12PM +0200, Sergey Ryazanov wrote:
-> Hi Christian,
-> 
-> On 07.01.2024 20:30, Christian Marangi wrote:
-> > On Sun, Jan 07, 2024 at 08:00:33PM +0200, Sergey Ryazanov wrote:
-> > > On 26.11.2023 03:53, Christian Marangi wrote:
-> > > > Document ethernet PHY package nodes used to describe PHY shipped in
-> > > > bundle of 4-5 PHY. The special node describe a container of PHY that
-> > > > share common properties. This is a generic schema and PHY package
-> > > > should create specialized version with the required additional shared
-> > > > properties.
-> > > > 
-> > > > Example are PHY package that have some regs only in one PHY of the
-> > > > package and will affect every other PHY in the package, for example
-> > > > related to PHY interface mode calibration or global PHY mode selection.
-> > > > 
-> > > > The PHY package node MUST declare the base address used by the PHY driver
-> > > > for global configuration by calculating the offsets of the global PHY
-> > > > based on the base address of the PHY package and declare the
-> > > > "ethrnet-phy-package" compatible.
-> > > > 
-> > > > Each reg of the PHY defined in the PHY package node is absolute and will
-> > > > reference the real address of the PHY on the bus.
-> > > > 
-> > > > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> > > > ---
-> > > >    .../bindings/net/ethernet-phy-package.yaml    | 75 +++++++++++++++++++
-> > > >    1 file changed, 75 insertions(+)
-> > > >    create mode 100644 Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
-> > > > 
-> > > > diff --git a/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml b/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
-> > > > new file mode 100644
-> > > > index 000000000000..244d4bc29164
-> > > > --- /dev/null
-> > > > +++ b/Documentation/devicetree/bindings/net/ethernet-phy-package.yaml
-> > > > @@ -0,0 +1,75 @@
-> > > > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> > > > +%YAML 1.2
-> > > > +---
-> > > > +$id: http://devicetree.org/schemas/net/ethernet-phy-package.yaml#
-> > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > > +
-> > > > +title: Ethernet PHY Package Common Properties
-> > > > +
-> > > > +maintainers:
-> > > > +  - Christian Marangi <ansuelsmth@gmail.com>
-> > > > +
-> > > > +description:
-> > > > +  This schema describe PHY package as simple container for
-> > > > +  a bundle of PHYs that share the same properties and
-> > > > +  contains the PHYs of the package themself.
-> > > > +
-> > > > +  Each reg of the PHYs defined in the PHY package node is
-> > > > +  absolute and describe the real address of the PHY on the bus.
-> > > > +
-> > > > +properties:
-> > > > +  $nodename:
-> > > > +    pattern: "^ethernet-phy-package(@[a-f0-9]+)?$"
-> > > > +
-> > > > +  compatible:
-> > > > +    const: ethernet-phy-package
-> > > > +
-> > > > +  reg:
-> > > > +    minimum: 0
-> > > > +    maximum: 31
-> > > > +    description:
-> > > > +      The base ID number for the PHY package.
-> > > > +      Commonly the ID of the first PHY in the PHY package.
-> > > > +
-> > > > +      Some PHY in the PHY package might be not defined but
-> > > > +      still exist on the device (just not attached to anything).
-> > > > +      The reg defined in the PHY package node might differ and
-> > > > +      the related PHY might be not defined.
-> > > > +
-> > > > +  '#address-cells':
-> > > > +    const: 1
-> > > > +
-> > > > +  '#size-cells':
-> > > > +    const: 0
-> > > > +
-> > > > +patternProperties:
-> > > > +  ^ethernet-phy(@[a-f0-9]+)?$:
-> > > > +    $ref: ethernet-phy.yaml#
-> > > > +
-> > > > +required:
-> > > > +  - compatible
-> > > > +  - reg
-> > > > +
-> > > > +additionalProperties: true
-> > > > +
-> > > > +examples:
-> > > > +  - |
-> > > > +    mdio {
-> > > > +        #address-cells = <1>;
-> > > > +        #size-cells = <0>;
-> > > > +
-> > > > +        ethernet-phy-package@16 {
-> > > > +            #address-cells = <1>;
-> > > > +            #size-cells = <0>;
-> > > > +            compatible = "ethernet-phy-package";
-> > > > +            reg = <0x16>;
-> > > > +
-> > > > +            ethernet-phy@16 {
-> > > > +              reg = <0x16>;
-> > > > +            };
-> > > > +
-> > > > +            phy4: ethernet-phy@1a {
-> > > > +              reg = <0x1a>;
-> > > > +            };
-> > > > +        };
-> > > > +    };
-> > > 
-> > > So, we ended up on a design where we use the predefined compatible string
-> > > 'ethernet-phy-package' to recognize a phy package inside the
-> > > of_mdiobus_register() function. During the V1 discussion, Vladimir came up
-> > > with the idea of 'ranges' property usage [1]. Can we use 'ranges' to
-> > > recognize a phy package in of_mdiobus_register()? IMHO this will give us a
-> > > clear DT solution. I mean 'ranges' clearly indicates that child nodes are in
-> > > the same address range as the parent node. Also we can list all child
-> > > addresses in 'reg' to mark them occupied.
-> > > 
-> > >    mdio {
-> > >      ...
-> > > 
-> > >      ethernet-phy-package@16 {
-> > >        compatible = "qcom,qca8075";
-> > >        reg = <0x16>, <0x17>, <0x18>, <0x19>, <0x1a>;
-> > >        ranges;
-> > >        ...
-> > > 
-> > >        ethernet-phy@16 {
-> > >          reg = <0x16>;
-> > >        };
-> > > 
-> > >        ethernet-phy@1a {
-> > >          reg = <0x1a>;
-> > >        };
-> > >      };
-> > >    };
-> > > 
-> > > Did you find some issues with the 'ranges' conception?
-> > 
-> > Nope it's ok but it might pose some confusion with the idea that the
-> > very first element MUST be THE STARTING ADDR of the PHY package. (people
-> > might think that it's just the list of the PHYs in the package and
-> > remove the hardware unconnected ones... but that would be fault of who
-> > write the DT anyway.)
-> 
-> Make sense. I do not insist on addresses listing. Mainly I'm thinking of a
-> proper way to show that child nodes are accessible directly on the parent
-> bus, and introducing the special compatibility string, while we already have
-> the 'ranges' property.
-> 
-> But it's good to know Rob's opinion on whether it is conceptually right to
-> use 'ranges' here.
->
-
-I wonder if something like this might make sense... Thing is that with
-the ranges property we would have the define the address in the PHY
-Package node as offsets...
-
-An example would be
-
-    mdio {
-        #address-cells = <1>;
-        #size-cells = <0>;
-
-        ethernet-phy-package@10 {
-            #address-cells = <1>;
-            #size-cells = <0>;
-            compatible = "qcom,qca807x-package";
-            reg = <0x10>; 
-            ranges = <0x0 0x10 0x5>;
-
-            qcom,package-mode = "qsgmii";
-
-            ethernet-phy@0 {
-                reg = <0>;
-
-                leds {
-
-		...
-
-With a PHY Package at 0x10, that span 5 address and the child starts at
-0x0 offset.
-
-This way we would be very precise on describing the amount of address
-used by the PHY Package without having to define the PHY not actually
-connected.
-
-PHY needs to be at an offset to make sense of the ranges first element
-property (0x0). With a non offset way we would have to have something
-like
-
-ranges = <0x10 0x10 0x5>;
-
-With the child and tha parent always matching.
-
-(this is easy to handle in the parsing and probe as we will just
-calculate the real address based on the base address of the PHY package
-+ offset)
-
-I hope Rob can give more feedback about this, is this what you were
-thinking with the usage of ranges property?
-
-(this has also the bonus point of introducing some validation in the PHY
-core code to make sure the right amount of PHY are defined in the
-package by checking if the number of PHY doesn't exceed the value set in
-ranges.)
-
-> > > And I would like to ask you about another issue raised by Vladimir [1].
-> > > These phy chips become SoC with all these built-in PHYs, PCSs, clocks,
-> > > interrupt controllers, etc. Should we address this now? Or should we go with
-> > > the proposed solution for now and postpone modeling of other peripherals
-> > > until we get a real hardware, as Andrew suggested?
-> > 
-> > Honestly I would postpone untile we have a clear idea of what is
-> > actually part of the PHY and what can be handled externally... Example
-> > setting the clock in gcc, writing a specific driver...
-> > 
-> > It's a random idea but maybe most of the stuff required for that PHY is
-> > just when it's connected to a switch... In that case it would all be
-> > handled in the switch driver (tobe extended qca8k) and all these extra
-> > stuff would be placed in that node instead of bloating phy nodes with
-> > all kind of clk and other stuff.
-> > 
-> > This series still require 2 more series (at803x splint and cleanup) to be
-> > actually proposed so we have some time to better define this.
-> > 
-> > What do you think?
-> 
-> Fair enough! Let's postpone until we really need it. I noticed this
-> PHY-like-SoC discussion in the V1 comments, and it was not finished there
-> neither addressed in the latest patch comment. So I asked just to be sure
-> that we were finished with this. Thank you for the clarification.
-> 
-> --
-> Sergey
-> 
-
--- 
-	Ansuel
+T24gVHVlLCAyMDI0LTAxLTE2IGF0IDE3OjIyICswMDAwLCBDb25vciBEb29sZXkgd3JvdGU6DQo+
+IE9uIFR1ZSwgSmFuIDE2LCAyMDI0IGF0IDA4OjIxOjE1QU0gKzAwMDAsIEphc29uLUpIIExpbiAo
+5p6X552/56WlKSB3cm90ZToNCj4gPiBPbiBNb24sIDIwMjQtMDEtMTUgYXQgMTc6MjMgKzAwMDAs
+IENvbm9yIERvb2xleSB3cm90ZToNCj4gPiA+IE9uIEZyaSwgSmFuIDEyLCAyMDI0IGF0IDA3OjQ0
+OjEzQU0gKzAwMDAsIEphc29uLUpIIExpbiAo5p6X552/56WlKQ0KPiA+ID4gd3JvdGU6DQo+ID4g
+PiA+IE9uIFRodSwgMjAyNC0wMS0xMSBhdCAxNzozMSArMDAwMCwgQ29ub3IgRG9vbGV5IHdyb3Rl
+Og0KPiA+ID4gPiA+IE9uIFdlZCwgSmFuIDEwLCAyMDI0IGF0IDA0OjM2OjIwUE0gKzAwMDAsIEph
+c29uLUpIIExpbiAo5p6X552/56WlKQ0KPiA+ID4gPiA+ID4gMi4gV2UnbGwgaGF2ZSB0aGUgc2Vj
+dXJlIENNRFEgbWFpbGJveCBkcml2ZXIgaW4gdGhlIGZ1dHVyZQ0KPiA+ID4gPiA+ID4gcGF0Y2gN
+Cj4gPiA+ID4gPiA+IFsxXS4NCj4gPiA+ID4gPiA+IEl0IHdpbGwgcmVxdWVzdCBvciByZXNlcnZl
+IGEgbWFpbGJveCBjaGFubmVsLCB3aGljaCBpcyBhDQo+ID4gPiA+ID4gPiBkZWRpY2F0ZQ0KPiA+
+ID4gPiA+ID4gR0NFDQo+ID4gPiA+ID4gPiB0aHJlYWQsIGFzIGEgc2VjdXJlIElSUSBoYW5kbGVy
+LiBUaGlzIEdDRSB0aHJlYWQgZXhlY3V0ZXMgYQ0KPiA+ID4gPiA+ID4gbG9vcGluZw0KPiA+ID4g
+PiA+ID4gaW5zdHJ1Y3Rpb24gc2V0IHRoYXQga2VlcHMgd2FpdGluZyBmb3IgdGhlIGdjZS1ldmVu
+dCBzZXQNCj4gPiA+ID4gPiA+IGZyb20NCj4gPiA+ID4gPiA+IGFub3RoZXINCj4gPiA+ID4gPiA+
+IEdDRSB0aHJlYWQgaW4gdGhlIHNlY3VyZSB3b3JsZC4gU28gd2UgYWxzbyBuZWVkIHRvIHRlbGwg
+dGhlDQo+ID4gPiA+ID4gPiBDTURRDQo+ID4gPiA+ID4gPiBkcml2ZXINCj4gPiA+ID4gPiA+IHdo
+YXQgZ2NlLWV2ZW50IG5lZWQgdG8gYmUgd2FpdGVkLg0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IERp
+dHRvIGhlcmUsIHdoYXQgbGV2ZWwgZG9lcyB0aGlzIHZhcnkgYXQ/IERvIGRpZmZlcmVudCBTb0Nz
+DQo+ID4gPiA+ID4gb3INCj4gPiA+ID4gPiBkaWZmZXJlbnQNCj4gPiA+ID4gPiBib2FyZHMvcGxh
+dGZvcm1zIGRpY3RhdGUgdGhlIHZhbHVlPw0KPiA+ID4gPiANCj4gPiA+ID4gSXQncyBhIFNvQyBs
+ZXZlbCwgdGhlIFNvQyBzdXBwb3J0cyBzZWN1cmUgZmVhdHVyZSB3aWxsIG5lZWQNCj4gPiA+ID4g
+dGhpcw0KPiA+ID4gPiBwcm9wZXJ0eS4NCj4gPiA+ID4gDQo+ID4gPiA+ID4gQ291bGQgdGhpcyBj
+aGFubmVsIGJlIGRldGVybWluZWQgZnJvbSB0aGUgc29jLXNwZWNpZmljDQo+ID4gPiA+ID4gY29t
+cGF0aWJsZT8NCj4gPiA+ID4gPiANCj4gPiA+ID4gPiBJbiBvdGhlciB3b3JkcywgcGxlYXNlIGV4
+cGxhaW4gaW4geW91ciBjb21taXQgbWVzc2FnZSB3aHkNCj4gPiA+ID4gPiB0aGlzDQo+ID4gPiA+
+ID4gcmVxdWlyZXMNCj4gPiA+ID4gPiBhIHByb3BlcnR5IGFuZCBpcyBub3QgZGV0ZWN0YWJsZSBm
+cm9tIGFueSBleGlzdGluZyBtZWNoYW5pc20uDQo+ID4gPiA+ID4gRnJvbQ0KPiA+ID4gPiA+IHJl
+YWRpbmcgdGhpcyBJIGRvbid0IGtub3cgd2hhdCBpcyBwcmV2ZW50aW5nIHRoZSBzZWN1cmUNCj4g
+PiA+ID4gPiBtYWlsYm94DQo+ID4gPiA+ID4gY2hhbm5lbA0KPiA+ID4gPiA+IGZyb20gcGlja2lu
+ZyBhICJyYW5kb20iIHVudXNlZCBjaGFubmVsLg0KPiA+ID4gPiANCj4gPiA+ID4gVGhlIHNlY3Vy
+ZSBjaGFubmVsIGNvdWxkIGJlIGRlZGljYXRlZCBmcm9tIHRoZSBzb2Mtc3BlY2lmaWMNCj4gPiA+
+ID4gY29tcGF0aWJsZSwNCj4gPiA+ID4gYnV0IHRoZSBldmVudCBJRCBjb3VsZG4ndC4NCj4gPiA+
+ID4gDQo+ID4gPiA+IFRoZSBzYW1lIGV2ZW50IHNpZ25hbCBjb3JyZXNwb25kaW5nIGV2ZW50IElE
+IG1heSBjaGFuZ2VzIGluDQo+ID4gPiA+IGRpZmZlcmVudA0KPiA+ID4gPiBTb0MuDQo+ID4gPiA+
+IEUuZy4NCj4gPiA+ID4gVGhlIEhXIGV2ZW50IHNpZ25hbCBmb3IgQ01EUV9FVkVOVF9WRE8wX01V
+VEVYX1NUUkVBTV9ET05FXzAgaXMNCj4gPiA+ID4gY29ycmVzcG9uZGluZyB0byBHQ0UgZXZlbnQg
+SUQ6IDU3NCBpbiBNVDgxODgsIGJ1dCBpdCdzDQo+ID4gPiA+IGNvcnJlc3BvbmRpbmcgdG8NCj4g
+PiA+ID4gZXZlbnRJRDogNTk3IGluIE1UODE5NS4NCj4gPiA+IA0KPiA+ID4gSXMgaXQgYWx3YXlz
+IDU3NCBpbiBNVDgxODggYW5kIGFsd2F5cyA1OTcgaW4gTVQ4MTk1Pw0KPiA+ID4gDQo+ID4gDQo+
+ID4gWWVzLCBzb21lIGdjZS1ldmVudHMgYXJlIGhhcmR3YXJlIGJvdW5kIGFuZCB0aGV5IGNhbiBu
+b3QgY2hhbmdlIGJ5DQo+ID4gc29mdHdhcmUuIEZvciBleGFtcGxlLCBpbiBNVDgxOTUsIHdoZW4g
+VkRPMF9NVVRFWCBpcyBzdHJlYW0gZG9uZSwNCj4gPiBWRE9fTVVURVggd2lsbCBzZW5kIGFuIGV2
+ZW50IHNpZ25hbCB0byBHQ0UsIGFuZCB0aGUgdmFsdWUgb2YgZXZlbnQNCj4gPiBJRDo1OTcgd2ls
+bCBiZSBzZXQgdG8gMS4gSW4gTVQ4MTg4LCB0aGUgdmFsdWUgb2YgZXZlbnQgSUQ6IDU3NCB3aWxs
+DQo+ID4gYmUNCj4gPiBzZXQgdG8gMSB3aGVuIFZPRDBfTVVURVggaXMgc3RyZWFtIGRvbmUuDQo+
+ID4gDQo+ID4gU29tZSBvZiBnY2UtZXZlbnRzIGFyZSBub3QgaGFyZHdhcmUgYm91bmQgYW5kIHRo
+ZXkgY2FuIGNoYW5nZSBieQ0KPiA+IHNvZnR3YXJlLiBGb3IgZXhhbXBsZSwgaW4gTVQ4MTg4LCB3
+ZSBjYW4gdGFrZSB0aGUgZXZlbnQgSUQ6IDg1NQ0KPiA+IHRoYXQgaXMNCj4gPiBub3QgYm91bmQg
+dG8gYW55IGhhcmR3YXJlIHRvIHNldCBpdHMgdmFsdWUgdG8gMSB3aGVuIHRoZSBkcml2ZXIgaW4N
+Cj4gPiBzZWN1cmUgd29ybGQgY29tcGxldGVzIGEgdGFzay4gQnV0IGluIE1UODE5NSwgdGhlIGV2
+ZW50IElEOiA4NTUgaXMNCj4gPiBhbHJlYWR5IGJvdW5kIHRvIFZERUNfTEFUMSwgc28gd2UgaGF2
+ZSB0byB0YWtlIGFub3RoZXIgZXZlbnQgSUQgdG8NCj4gPiBhY2hpZXZlIHRoZSBzYW1lIHB1cnBv
+c2UuDQo+ID4gVGhpcyBldmVudCBJRCBjYW4gYmUgY2hhbmdlIHRvIGFueSBJRHMgdGhhdCBpcyBu
+b3QgYm91bmQgdG8gYW55DQo+ID4gaGFyZHdhcmUNCj4gPiBhbmQgaXMgbm90IHVzZWQgaW4gYW55
+IHNvZnR3YXJlIGRyaXZlciB5ZXQuDQo+ID4gV2UgY2FuIHNlZSBpZiB0aGUgZXZlbnQgSUQgaXMg
+Ym91bmQgdG8gdGhlIGhhcmR3YXJlIG9yIGlzIHVzZWQgYnkNCj4gPiBzb2Z0d2FyZSBkcml2ZXIg
+aW4gdGhlIGhlYWRlcg0KPiA+IGluY2x1ZGUvZGUtYmluZGluZ3MvbWFpbGJveC9tZWRpYXRlayxt
+dDgxODgtZ2NlLmguDQo+IA0KPiBJIHNlZS4gQnJpbmcgdGhpcyBwYXJ0aWN1bGFyIHBhdGNoIGJh
+Y2sgd2l0aCB5b3VyIGZ1dHVyZSBzZXJpZXMgdGhhdA0KPiBhZGRzIHN1cHBvcnQgZm9yIHRoZSBz
+ZWN1cmUgY2hhbm5lbCB0aGVuLg0KPiANCg0KT0ssIEknbGwgbW92ZSB0aGlzIHBhcnRpY3VsYXIg
+cGF0Y2ggdG8gdGhlIGZ1dHVyZSBzZWN1cmUgc2VyaWVzIHRoYXQNCmFkZHMgc3VwcG9ydCBmb3Ig
+dGhlIHNlY3VyZSBjaGFubmVsLiBUaGFua3MhDQoNClJlZ2FyZHMsDQpKYXNvbi1KSC5MaW4NCg0K
+PiBUaGFua3MsDQo+IENvbm9yLg0K
 
