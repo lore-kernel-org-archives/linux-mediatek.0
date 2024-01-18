@@ -4,66 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70F89C47DAF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jan 2024 18:37:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B747C47422
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jan 2024 22:00:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Fe6rbSJm2UEsTdz5bzEmdOd0YC4TFsuPJ+UafRAHMgU=; b=M0NNQZuOE94Fca6I5YeY5d8leV
-	JUF/qNwptukFDLAxdCYlWsjZYWeVt27nG5EmLSDwpgDcrsIQl/sQedRGoWPv/bKbTOPm3lBiAtE+s
-	e4txY4apMPhJkXJ6vR18P5VPyOZJv89WEkG969/HBbkTod/eSPUGkULtRo7Wd7N3JVvLsv6liUwdx
-	Z8/XPZGsGAhh3NlRE1HePuQKuG9RyL26Xy8rngOqMXiIDKloyGPGXMXXsjJEdqwYUu2gR6PJQec1w
-	TX95tk/PkPKARiL7s8iafKC7I0PRlHr+556I99QQOpc90TemYNLZqzGZ0gBGCmONOLCji42wECPr4
-	u+Ht5DuA==;
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rBbx+Wt6S1feccAtybOjt8GIthdRGefgaPTWcRnjuIQ=; b=gTyURDQWy0p9tvYj5ctkGcYvqG
+	5Mews8svBW5KJny0KYhrC6gjjsP1d9Phq5bMIBpSD3+bEqT7DC92NjCIQPIVxOvWBFpZeCLQqV/je
+	tkZQKQTK3j9RWvp2SuYhOEKSR10gMkMZMzFQ6a+HGDvYHHhfI1PU9s09uSdjBhQYrjCQjiCagtk1C
+	Vxa9p+D9MElk5zzfT1MXt06j8NYyS0XAe4jeH7UFc1fUEP+398cbJUGrH1rXtETxXSBPclitObXri
+	lwcKG9GuuFhsb48MGGQNe4HLhNwbjxheGCcSyiby6P7EkxaJzWMxqZGKnQ4aee2oWc35pDKkmEnkl
+	IryOLptw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQXGO-003X7C-0t;
-	Thu, 18 Jan 2024 18:37:16 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rQaQr-003xW7-0M;
+	Thu, 18 Jan 2024 22:00:17 +0000
+Received: from mout.gmx.net ([212.227.17.20])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQXGK-003X64-1Y;
-	Thu, 18 Jan 2024 18:37:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705603026;
-	bh=B12x5CU3LJAATEvwezybaFPvAgE1iCNB0PAo3tZON0Y=;
-	h=Date:From:To:Cc:Subject:From;
-	b=T1tN/aj+jOtqsSFJBIUGFabkBd+Gj6AIapWW+uI7ctwXpcFOY3P9CrOYWSsAWR0wQ
-	 rAgdU8RV7LFieTsYwb5lhSKh64lF8XybTXPoepaFemc4CBuvwgPh7Xg/ROd3IDKcdK
-	 vkHOhW46eH4DXdOBCX3DRgjKckb7VYvaYfQcXYi+cJ4MMrC3fWnuMakG2MB9XF8x0Q
-	 fKx0fK2REDa0nGx2arEVJjLNAUqpAMpl6YUTVx6FE+2sbLOngGffeCWasFLlJdls9x
-	 bKqXovIjuuw9l1E/+w5Ow7Bc0mB9xHlGWyHATrTZ92aJ2oGav87yvE66XP6FpJTgur
-	 Hh3/ytjo04XHw==
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id EFFA83782079;
-	Thu, 18 Jan 2024 18:37:02 +0000 (UTC)
-Date: Thu, 18 Jan 2024 15:36:30 -0300
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Chen-Yu Tsai <wenst@chromium.org>
-Subject: Probe failure of usb controller @11290000 on MT8195 after
- next-20231221
-Message-ID: <9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano>
+	id 1rQaQo-003xUy-0x;
+	Thu, 18 Jan 2024 22:00:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1705615201; x=1706220001; i=frank-w@public-files.de;
+	bh=wLvsv08eBZtYU7ZaISCpiqBuWqPFTTvXPV3fWg3VUvE=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:
+	 References;
+	b=SNygzZwl8NfRCJswcMPa1qVnqtVMkWjHZFA8tBNg4DXhCdz2eroL9vQ3dbkRQ/Ni
+	 aj7x406MCWWHhVcekTs/Ba8hCs6VsigS3bFLa1UwnMyk9lZb7ZHDs6OflttwxQZJ1
+	 nvMcMdnSzcOJUDp64TZx7g1ThNYgkiRnReat+IQ/bbSTQiwLese2F6/Yy4n6AfZqu
+	 gmhRIf+u9XOcljJqD2OF1TUDfuqTQTlfbriHhNvPkS7AOI+kzGMjt/mwM4/X2Rfu6
+	 c1yQPaB5n2/OnV+dJphPqXqt3kLdC6X8XD+PmvnlPO3LY2ljEiGTyAe+HAgqvQqHx
+	 Ir5lZe60hBiIPyD3DQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.159.198] ([217.61.159.198]) by web-mail.gmx.net
+ (3c-app-gmx-bap21.server.lan [172.19.172.91]) (via HTTP); Thu, 18 Jan 2024
+ 23:00:00 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
+Message-ID: <trinity-afc4f48e-65e1-46ee-a78b-1d670cc0f310-1705615200900@3c-app-gmx-bap21>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Conor Dooley <conor@kernel.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>
+Cc: Frank Wunderlich <linux@fw-web.de>, Michael Turquette
+ <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Sam Shih <sam.shih@mediatek.com>, Daniel Golle <daniel@makrotopia.org>,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Subject: Aw: Re: [PATCH v3 1/2] dt-bindings: reset: mediatek: add MT7988
+ reset IDs
+Content-Type: text/plain; charset=UTF-8
+Date: Thu, 18 Jan 2024 23:00:00 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20240118-calcium-krypton-3c787b8d1912@spud>
+References: <20240117184111.62371-1-linux@fw-web.de>
+ <20240117184111.62371-2-linux@fw-web.de>
+ <20240118-calcium-krypton-3c787b8d1912@spud>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:i7cKlr7pbBOeeo2MJju4eygi1kMNVyLIp+PFrgFTenIkemr6mJ/6zZ1a/Lg1H9bvFTdMp
+ TI7kGYsJ+UQM26RzgcW7nABwCLt3D1kj+LOIj9a0Cq6nZrtefigXaCJBaeV3x/mcPy6KsMB7kXU9
+ dM0jDKxM9ibIjtGnclsOb0Mqoog2SEyR9Cko1fqakeMUdslD4rpxVB2ypJfppjPFxuXFdFYGPzQP
+ 6O3N8pLs7UnnLzru6iS1jFdOxB0t/+rjiqYhxiD96PppyYlpd6CUzg/T4yYBP9pq3BNDAGSOm9e5
+ ik=
+UI-OutboundReport: notjunk:1;M01:P0:Gzu+rTj6VvA=;AFUqbzs2KLld0OIuq1bzMhSKPgl
+ Kd7wJWth+9/ff1+bN2OyVvlJR0rjHQ7GcdSOu5Gg2jgh331Cni4J64RQFLkLC/EaHwzxmS2Uz
+ XL44FMFv8vE4oCmSOzKtD24Nr1ISiK9JraRdcY5PZPfIDv122vBbvsk3DHmEjbM+q9fjkMb+q
+ YmREoZ5tY3k9jH3P9QMpN3UYxARaUzCezNsWzSsRDitvRXFPI9fyn9SYTqT9tRfC1Uh9cnCyW
+ m6plg3l/HV2u/4ItKFKwD/yX8o6kNWsy6th/2u0qO4+EDzy7hMz96zo4kkzFTzjzPdATfYYG/
+ CcQ65Cxeo/Q3IDz/NmtvkpGq7/d+hIR3pNHpweLsy50DWTic+PHXlQ+wc4c3JxdIY/+eJgar9
+ 9dSDWS6xBkRSUzCX26dPWzEowUPPaKtAPl0kkQY9BLoXZmlM1LuzV3oHW0TpGiPXsVR6bPWw+
+ nhxlc2CGClYR2an6957v3MOMdYtqbNnanhl79XeoEMFIqgqHYiDPrO834OqDPg4AM6b6qIVF1
+ WR7gsIYRWrdXsS+lhb/FHdIOt+wwG8hBHQ6ihMBrnrUSgm8xTWHEJM+v6a4U3ZQYLeQPEUJn7
+ omzxu8D1RDFlLgxRO9viMu0N/xh0Qr9W2niMCedv4y4VEjFJMhxK+ygXRKjwzastXE3TYNJea
+ WlA+RXaGs7BDFDEXjBV1DJDzATdgGqXq8AnOW9CtWyrrirW9TJpTV0IRbj6No/L8d5pqf01oj
+ E8+0bhGoBMcdz8f6cL6gqxMCoGGAH1tVzG9IlVljibVUcGPRy8IhPXyxK5yFok+EerEmSq2tL
+ b5i84Et/qC1kETeXvhxKK7ew==
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240118_103712_714681_6279EE63 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240118_140014_723624_6813873B 
+X-CRM114-Status: GOOD (  19.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,37 +103,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+> Gesendet: Donnerstag, 18. Januar 2024 um 17:49 Uhr
+> Von: "Conor Dooley" <conor@kernel.org>
+> On Wed, Jan 17, 2024 at 07:41:10PM +0100, Frank Wunderlich wrote:
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> >
+> > Add reset constants for using as index in driver and dts.
+> >
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > ---
+> > v3:
+> > - add pcie reset id as suggested by angelo
+> >
+> > v2:
+> >  - add missing commit message and SoB
+> >  - change value of infrareset to 0
+> > ---
+> >  include/dt-bindings/reset/mediatek,mt7988-resets.h | 6 ++++++
+> >  1 file changed, 6 insertions(+)
+> >
+> > diff --git a/include/dt-bindings/reset/mediatek,mt7988-resets.h b/incl=
+ude/dt-bindings/reset/mediatek,mt7988-resets.h
+> > index 493301971367..0eb152889a89 100644
+> > --- a/include/dt-bindings/reset/mediatek,mt7988-resets.h
+> > +++ b/include/dt-bindings/reset/mediatek,mt7988-resets.h
+> > @@ -10,4 +10,10 @@
+> >  /* ETHWARP resets */
+> >  #define MT7988_ETHWARP_RST_SWITCH		0
+> >
+> > +/* INFRA resets */
+> > +#define MT7988_INFRA_RST0_PEXTP_MAC_SWRST	0
+> > +#define MT7988_INFRA_RST1_THERM_CTRL_SWRST	1
+>
+> These are just "random" numbers, why not continue the numbering from the
+> ETHWARP?
 
-KernelCI has identified a failure in the probe of one of the USB controllers on
-the MT8195-Tomato Chromebook [1]:
+i can do...basicly these consts are used in DTS and driver only as index.
 
-[   16.336840] xhci-mtk 11290000.usb: uwk - reg:0x400, version:104
-[   16.337081] xhci-mtk 11290000.usb: xHCI Host Controller
-[   16.337093] xhci-mtk 11290000.usb: new USB bus registered, assigned bus number 5
-[   16.357114] xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
-[   16.357119] xhci-mtk 11290000.usb: can't setup: -110
-[   16.357128] xhci-mtk 11290000.usb: USB bus 5 deregistered
-[   16.359484] xhci-mtk: probe of 11290000.usb failed with error -110
+@angelo what do you think? I though also in leaving some space to allow gr=
+ouping RST0 and RST1
+when more consts are added, else the numbers are mixed up.
 
-A previous message [2] suggests that a force-mode phy property that has been
-merged might help with addressing the issue, however it's not clear to me how,
-given that the controller at 1129000 uses a USB2 phy and the phy driver patch
-only looks for the property on USB3 phys.
+so e.g. let RST0 start at 20 and RST1 at 40 (or even higher, because RST0 =
+and RST1 can have up to 32 resets).
+That will allow adding more reset constants between my values and having r=
+aising numbers.
 
-Worth noting that the issue doesn't always happen. For instance the test did
-pass for next-20240110 and then failed again on today's next [3]. But it does
-seem that the issue was introduced, or at least became much more likely, between
-next-20231221 and next-20240103, given that it never happened out of 10 runs
-before, and after that has happened 5 out of 7 times.
-
-Note: On the Tomato Chromebook specifically this USB controller is not connected
-to anything.
-
-[1] https://linux.kernelci.org/test/case/id/659ce3506673076a8c52a428/
-[2] https://lore.kernel.org/all/239def9b-437b-9211-7844-af4332651df0@mediatek.com/
-[3] https://linux.kernelci.org/test/case/id/65a8c66ee89acb56ac52a405/
-
-Thanks,
-Nícolas
+regards Frank
 
