@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22994C4725D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jan 2024 09:41:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EDCEC4725D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jan 2024 09:41:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wwZKZUjRjs3XCXeM2yTPtJdlhSE2Am3dRvCgFqrlgko=; b=Js+L+PuEahBFhMCEftK8yTQHbN
-	UxiEv7vSgzHzpvKwv1cXam02aDAL8uzMp/9elyHBVIkd3LheTyuGRAvIYHXdBPAegwzKrU0cMy2uN
-	17HIHeRsNateGjecTQDNvPAuegdiCS5CZTTN/MJC0zlKxuV1FJ27c+9x8zVpld4Va2V3AIDJUBTtx
-	NF2sT9YAZh5PXCQPH+kw1K2Rsf7IhhIFk3HTo82N/gkF/XTpiW9oSAsf3q5Gy3x9icUd7S8ZE09/0
-	Z58KrIY7HRZE6mJ9YP3JgddOcKIio9Dw27IjJjn1GdoJFURiQeMHWlHgy1EmTrCCuRdqPLVFCnWCH
-	6rUbUq/Q==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eQxCOkiJPm7iwfjWyWSuO6zq1Afslf9Y7Ms3VqNGulg=; b=ey5pLxLLCTaGgULFVm1adqsYYw
+	kl+OA7vk63IBXWaLqaqJilYYX+GohDZPc8Zs7PcD+aQaoKV/5/rYp8A+j72QXqxuy8z6fpTewH+pO
+	UnoXpijpNFkrDsJc4d8fW2rnKxJiCMwZEZ72JvaGyvAeZUl38BCyI1mz09xEUd9ul7m1u2dvbNtfL
+	QPjZfdfAqchbrGqJwXginRCdoAyKFFclzWhFGHcB9rmI/A2XsBIc9JjdFv5Y9WVU1MsIFUw27NvLO
+	DVPIyZTkrYzBdGNKSFsHAeIbQjNvonYDYuIkRS6F4RK/3H5/JKrBabTgMMubk2sGfjHo/4NVHB/CY
+	vyyxzgkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQlND-004zTK-0X;
-	Fri, 19 Jan 2024 09:41:15 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rQlNI-004zUr-0f;
+	Fri, 19 Jan 2024 09:41:20 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQlN8-004zSe-3D;
-	Fri, 19 Jan 2024 09:41:12 +0000
+	id 1rQlNC-004zT0-0Z;
+	Fri, 19 Jan 2024 09:41:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705657269;
-	bh=0cDiESFvb7qa9miqI4BzCZ+472VCEQGuIk9jkGeCoRw=;
-	h=From:To:Cc:Subject:Date:From;
-	b=4TpAef1mYqd/vXLVqPxRe+vRI+fmsaz79QlIT5ypjuDI09RFBTsEZM6vwSCyZRpfC
-	 JW7ULhVzEtdRVphkjqkhLQpFGtHSXq/e5nbCAbCv//33K4hFSZM9ApTPMwguJ6oVRp
-	 A3d5MekwJLbfuZ5xzzPG6GreWj980WVOH86OHxtcMw5ADzYrzGROfjVGSFYledLfQv
-	 u7BPKoGXRGUmAU94knmOFR6rd/7reWdgPl3jLGkzRcswBjwXNnXZfpKUqpY6OcpUMW
-	 Ffq8KkJ6EISw7LxSVAkMnAggqT4Bw8sfgv9ugvw6GY0OHBbClbDKtGcgR4uezKmaVe
-	 HRAeHRMDAhWiQ==
+	s=mail; t=1705657272;
+	bh=h9uUY0ElHE1xPzVp2yObyryTAaJ1/QLLOx9ZjW31TdE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Qaf1uNM7ZnUmYSVUcKvWGgF5F05PjhQqk0WXXNVvw9pKdbaakpS2bQvUvQunYRpyL
+	 P6/KX//n8V+IzCWiQvySCN0f5ivQKCwwr7jIRqt97C/bDA5607BJ7X2pSFrs/K1Spr
+	 +b5pXsObiYIei8G+U0kSqucmSi6cJMLK/1q/5LEp8jNhMdBF3IHQW4SPEzN9Xcn41F
+	 FUxc3mWSFkQq6Q80+TyhRrwkwZVbDQcuMD6CmsO1Z9pDMfeuMJ51xkKrCkGsgHvdmr
+	 iztszn5SOuYz3f5PwEsFmnWzdMGML5IuUFc+lWZYsHQ3gtNTX3jOS9iY4xcFxnTAzy
+	 45X0Nd+OykChg==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7088D37811F1;
-	Fri, 19 Jan 2024 09:41:08 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B54243782081;
+	Fri, 19 Jan 2024 09:41:11 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunfeng.yun@mediatek.com
 Cc: gregkh@linuxfoundation.org,
@@ -59,16 +59,17 @@ Cc: gregkh@linuxfoundation.org,
 	linux-mediatek@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 1/2] dt-bindings: usb: mt6360-tcpc: Drop interrupt-names
-Date: Fri, 19 Jan 2024 10:41:04 +0100
-Message-ID: <20240119094105.98312-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 2/2] usb: typec: tcpci_mt6360: Retrieve interrupt by index
+Date: Fri, 19 Jan 2024 10:41:05 +0100
+Message-ID: <20240119094105.98312-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240119094105.98312-1-angelogioacchino.delregno@collabora.com>
+References: <20240119094105.98312-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240119_014111_186591_B5A6235E 
-X-CRM114-Status: UNSURE (   7.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240119_014114_339702_3E4DD112 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,38 +84,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This IP has only one interrupt, hence interrupt-names is not necessary
-to have.
-Since there is no user yet, simply remove interrupt-names.
+This IP has only one interrupt and names are not needed in this case:
+change to use platform_get_irq() instead, dropping the PD_IRQB name.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml        | 5 -----
- 1 file changed, 5 deletions(-)
+ drivers/usb/typec/tcpm/tcpci_mt6360.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml b/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
-index 053264e60583..339bc9c00ac0 100644
---- a/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
-@@ -22,10 +22,6 @@ properties:
-   interrupts:
-     maxItems: 1
+diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+index 02b7fd302265..171592ae1bbe 100644
+--- a/drivers/usb/typec/tcpm/tcpci_mt6360.c
++++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+@@ -153,7 +153,7 @@ static int mt6360_tcpc_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
  
--  interrupt-names:
--    items:
--      - const: PD_IRQB
--
-   connector:
-     type: object
-     $ref: ../connector/usb-connector.yaml#
-@@ -58,7 +54,6 @@ examples:
-         tcpc {
-           compatible = "mediatek,mt6360-tcpc";
-           interrupts-extended = <&gpio26 3 IRQ_TYPE_LEVEL_LOW>;
--          interrupt-names = "PD_IRQB";
+-	mti->irq = platform_get_irq_byname(pdev, "PD_IRQB");
++	mti->irq = platform_get_irq(pdev, 0);
+ 	if (mti->irq < 0)
+ 		return mti->irq;
  
-           connector {
-             compatible = "usb-c-connector";
 -- 
 2.43.0
 
