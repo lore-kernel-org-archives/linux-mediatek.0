@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B02B8C47DD3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jan 2024 06:33:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5A48C47DD3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jan 2024 06:33:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pmamzG/uxvoY/9JcXAepY44DJ/qDUJu48SqEyvjF57s=; b=FlWH6ug84V+yNU1qaml4VNqip4
-	pEvtAA21Q74jbvD+4H3IqgB2ZqoAOwn06TJaJimzVxl06TCrqSIralWWmLsoMr3iV2XzQVo5BGqfi
-	BxpIDYFuIHpehfeQoEeyV0uRxAP8CDUJnIIl8XlJe6eN5u7flioQ1QSD7MXJgBD9sJUgTlQtisBY1
-	HLXf3NK4ajy3mbf5+xs956AjCY/qOu6f9Qu/Ex6XNRb02n/A7fQvynevVKY3iAHfTxDMJ2acVUxiV
-	zqbrK5GETr8S5/Nm0Aolj+H0X9le31VrygVeTGxUPX75YkeK14bi5qSRlkmL/p9D8tCdc/6SsSH1H
-	OD12SCFw==;
+	bh=FwGx9t8Ya6K6n4RmygSg+WES02bkxAi+xN+PSkJnWU0=; b=VmvRISCk6YF6Gr9AwlK/qFgXDM
+	rNY6fvYnNCoQlhDBWJOz+po2/cCwQd46LhUcCO5d5UOwTmUAENGsrFr5qd2+JFb2hf8xmCPDl5g8i
+	H8vGafUt3bQolrQD4Or7IvFmooOhwzl8YAIKAFokJ4uZ9RpuzVzKSEQ7k2ZvAEkBpWu9Tn9zl7HkG
+	u9UVhsZiKzpPC8y9t6H4JcIAT7FimUUSyYvZ7SBWLLhNJpwBJGKSZ+0Fjw54AwYkFGtunhHBJtMPc
+	KWjQgXxETmpLGwqg+dt+ZZNdnICf7ResDdW9BACIUiKK3bvlVk1ITD0o/os5/FioZvOwFkhgt8jba
+	JMwsNNRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQiRA-004baM-1x;
-	Fri, 19 Jan 2024 06:33:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rQiRG-004bda-2S;
+	Fri, 19 Jan 2024 06:33:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQiR6-004bXm-2z;
-	Fri, 19 Jan 2024 06:33:06 +0000
-X-UUID: 96e85536b69411ee9a263b4415211400-20240118
+	id 1rQiR8-004bZG-0q;
+	Fri, 19 Jan 2024 06:33:07 +0000
+X-UUID: 98647c64b69411eea0bf134e88e6c2dc-20240118
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=pmamzG/uxvoY/9JcXAepY44DJ/qDUJu48SqEyvjF57s=;
-	b=HoK0iuu9JkLpxOOxEC+Nvkqw1ABk9i4OjnUc7q5bXEHBnaWY+U82GEZXJ88CXNEt4k3dEKdXrF1WLIQCc8rXQbuqb79TaPiJMDVoLkvOBxSYVdI194ofNq47A1bobB8NWE42sAEAqHMYqFAh+L6ZanbiKqkkCxaHnDVhNk2lZ3E=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FwGx9t8Ya6K6n4RmygSg+WES02bkxAi+xN+PSkJnWU0=;
+	b=sUZqtrfC0pMroa0QePz2g6QAzOJZ16rtq7O0ZG7oEOzQCY4DfVvCoU04GKOCloLfsUSYM8TZIPJ3DMQl4RuBXZxNQcEeE3nNoqhgUBKSZwXzE4rWLWepjbGeT5SHzxqVvRFCVmQll+s26+OR5D9uG0WwObd6cL6NtTDGvj7IG7I=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.36,REQID:33ba950f-262f-4e31-be0d-13529e00b9d5,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6e16cf4,CLOUDID:07da6c8e-e2c0-40b0-a8fe-7c7e47299109,B
+X-CID-O-INFO: VERSION:1.1.36,REQID:325fbebd-8888-4de6-bed3-6dc9ed7ed7df,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:6e16cf4,CLOUDID:7b1e572f-1ab8-4133-9780-81938111c800,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 96e85536b69411ee9a263b4415211400-20240118
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 98647c64b69411eea0bf134e88e6c2dc-20240118
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1529550407; Thu, 18 Jan 2024 23:32:59 -0700
+	with ESMTP id 938578866; Thu, 18 Jan 2024 23:33:02 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Fri, 19 Jan 2024 14:32:25 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -67,9 +67,9 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Nancy
  Lin <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3 2/3] dt-bindings: media: mediatek: mdp: Change mediatek,gce-events to reference
-Date: Fri, 19 Jan 2024 14:32:23 +0800
-Message-ID: <20240119063224.29671-3-jason-jh.lin@mediatek.com>
+Subject: [PATCH v3 1/3] dt-bindings: mailbox: Add mediatek,gce-props.yaml
+Date: Fri, 19 Jan 2024 14:32:22 +0800
+Message-ID: <20240119063224.29671-2-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240119063224.29671-1-jason-jh.lin@mediatek.com>
 References: <20240119063224.29671-1-jason-jh.lin@mediatek.com>
@@ -77,8 +77,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240118_223304_969470_3CD682E7 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20240118_223306_303242_4C71923A 
+X-CRM114-Status: GOOD (  24.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,112 +93,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change mediatek,gce-events property to reference mediatek,gce-props.yaml
-instead of defining itself.
+Add mediatek,gce-props.yaml for common GCE properties that is used for
+both mailbox providers and consumers. We place the common property
+"mediatek,gce-events" in this binding currently.
+
+The property "mediatek,gce-events" is used for GCE event ID corresponding
+to a hardware event signal sent by the hardware or a sofware driver.
+If the mailbox providers or consumers want to manipulate the value of
+the event ID, they need to know the specific event ID.
 
 Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 ---
- .../bindings/media/mediatek,mdp3-rdma.yaml           | 11 +++--------
- .../devicetree/bindings/media/mediatek,mdp3-rsz.yaml | 12 ++++--------
- .../bindings/media/mediatek,mdp3-wrot.yaml           | 12 ++++--------
- 3 files changed, 11 insertions(+), 24 deletions(-)
+ .../bindings/mailbox/mediatek,gce-props.yaml  | 52 +++++++++++++++++++
+ 1 file changed, 52 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mailbox/mediatek,gce-props.yaml
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-index 59db8306485b..4a286d46c8ee 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-@@ -44,13 +44,6 @@ properties:
-       4 arguments defined in this property. Each GCE subsys id is mapping to
-       a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
- 
--  mediatek,gce-events:
--    description:
--      The event id which is mapping to the specific hardware event signal
--      to gce. The event id is defined in the gce header
--      include/dt-bindings/gce/<chip>-gce.h of each chips.
--    $ref: /schemas/types.yaml#/definitions/uint32-array
--
-   mediatek,scp:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description:
-@@ -96,6 +89,8 @@ required:
-   - '#dma-cells'
- 
- allOf:
-+  - $ref: /schemas/mailbox/mediatek,gce-props.yaml
+diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-props.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-props.yaml
+new file mode 100644
+index 000000000000..68b519ff089f
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-props.yaml
+@@ -0,0 +1,52 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mailbox/mediatek,gce-props.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-   - if:
-       properties:
-         compatible:
-@@ -142,7 +137,7 @@ allOf:
-         clocks:
-           maxItems: 1
- 
--additionalProperties: false
-+unevaluatedProperties: false
- 
- examples:
-   - |
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-index f5676bec4326..4774fdde1a1b 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-@@ -38,13 +38,6 @@ properties:
-       4 arguments defined in this property. Each GCE subsys id is mapping to
-       a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
- 
--  mediatek,gce-events:
--    description:
--      The event id which is mapping to the specific hardware event signal
--      to gce. The event id is defined in the gce header
--      include/dt-bindings/gce/<chip>-gce.h of each chips.
--    $ref: /schemas/types.yaml#/definitions/uint32-array
--
-   clocks:
-     minItems: 1
- 
-@@ -55,7 +48,10 @@ required:
-   - mediatek,gce-events
-   - clocks
- 
--additionalProperties: false
-+allOf:
-+  - $ref: /schemas/mailbox/mediatek,gce-props.yaml
++title: MediaTek Global Command Engine Common Propertes
 +
-+unevaluatedProperties: false
- 
- examples:
-   - |
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-index 53a679338402..a31f3f5aea96 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-@@ -38,13 +38,6 @@ properties:
-       4 arguments defined in this property. Each GCE subsys id is mapping to
-       a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
- 
--  mediatek,gce-events:
--    description:
--      The event id which is mapping to the specific hardware event signal
--      to gce. The event id is defined in the gce header
--      include/dt-bindings/gce/<chip>-gce.h of each chips.
--    $ref: /schemas/types.yaml#/definitions/uint32-array
--
-   power-domains:
-     maxItems: 1
- 
-@@ -67,7 +60,10 @@ required:
-   - iommus
-   - '#dma-cells'
- 
--additionalProperties: false
-+allOf:
-+  - $ref: /schemas/mailbox/mediatek,gce-props.yaml
++maintainers:
++  - Houlong Wei <houlong.wei@mediatek.com>
 +
-+unevaluatedProperties: false
- 
- examples:
-   - |
++description:
++  The Global Command Engine (GCE) is an instruction based, multi-threaded,
++  single-core command dispatcher for MediaTek hardware. The Command Queue
++  (CMDQ) mailbox driver is a driver for GCE, implemented using the Linux
++  mailbox framework. It is used to receive messages from mailbox consumers
++  and configure GCE to execute the specified instruction set in the message.
++  We use mediatek,gce-mailbox.yaml to define the properties for CMDQ mailbox
++  driver. A device driver that uses the CMDQ driver to configure its hardware
++  registers is a mailbox consumer. The mailbox consumer can request a mailbox
++  channel corresponding to a GCE hardware thread to send a message, specifying
++  that the GCE thread to configure its hardware. The mailbox provider can also
++  reserved a mailbox channel to configure GCE hardware register by the spcific
++  GCE thread. This binding defines the common GCE properties for both mailbox
++  provider and consumers.
++
++properties:
++  mediatek,gce-events:
++    description:
++      GCE has an event table in SRAM, consisting of 1024 event IDs (0~1023).
++      Each event ID has a boolean event value with the default value 0.
++      The property mediatek,gce-events is used to obtain the event IDs.
++      Some gce-events are hardware-bound and cannot be changed by software.
++      For instance, in MT8195, when VDO0_MUTEX is stream done, VDO_MUTEX will
++      send an event signal to GCE, setting the value of event ID 597 to 1.
++      Similarly, in MT8188, the value of event ID 574 will be set to 1 when
++      VOD0_MUTEX is stream done.
++      On the other hand, some gce-events are not hardware-bound and can be
++      changed by software. For example, in MT8188, we can set the value of
++      event ID 855, which is not bound to any hardware, to 1 when the driver
++      in the secure world completes a task. However, in MT8195, event ID 855
++      is already bound to VDEC_LAT1, so we need to select another event ID to
++      achieve the same purpose. This event ID can be any ID that is not bound
++      to any hardware and is not yet used in any software driver.
++      To determine if the event ID is bound to the hardware or used by a
++      software driver, refer to the GCE header
++      include/dt-bindings/gce/<chip>-gce.h of each chip.
++    $ref: /schemas/types.yaml#/definitions/uint32-array
++    minItems: 1
++    maxItems: 1024
++
++additionalProperties: true
 -- 
 2.18.0
 
