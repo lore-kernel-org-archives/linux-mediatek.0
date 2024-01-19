@@ -4,66 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB4D1C4725D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jan 2024 09:12:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 063EDC4725D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jan 2024 09:13:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dnvtOuZ6ED6eG7UNecSoUV/eae9cnB7yhkjV+5cGSBE=; b=Qdz5K4NJ3CAOyFk4fNZ6wZTT5y
-	8kpaGr0EDhCtAYVGoyNkGwrHfRMtzM0M7cPrCfsC41IpPr2M0W8AVBE4LjE1eHBoh595qmVN4gJoA
-	efG1EAw8LjcQAXsuEfAElHgyapkYJYzqNlcl6Tk1JgeqyEFqUStd9d94gLHFDMn2Kp1sva1+onwgJ
-	/WEobkpH/KfRynNAkO0ippjDP0m2yvK5U8ZrqgBLH3sVxQ2wCzWQashziC0SHWJu51JWy31FK3Ho0
-	I/U9D+WLbjQ65VYU+fw9C1Bgl2PgAajLtdNmg1z+gjqRpTC0SIJhNmo3NOGBGcwM2jODNORCrN0Id
-	GM+MMDKA==;
+	bh=0EjyJdKKx3+Bvs5lDww4YjkjolH/a1SPNPc33swfipo=; b=Ww8LM2ZC/dNvPfvpKHTyNdAezb
+	424oeOYcBU4XDOcu4WRWh39IE0cmyGUuyo6K+ma56R0of32G1DU7Mc6O1NGNbkiwwzyYD2ZUimQNY
+	ZrxSr3R8QmN0/cqRFDdKIS0Ok5BaqHbQgYtZHRyjEnGfLth/E1B2hkJHxrph0FRXqfJyazAb4TYAN
+	mhQBZIn6qocAiprqcvU1RdF2PdjrOOcVSA+7FmTlK3zNQ/E9MIQnXl5IsdLpmdUkmOW+NzmFVvDrT
+	6HuO2bn2z511VP0a7M9zvYW2tcO+sNiLvbFiqKNeTETD1YW5FagcFxz8twBlCX2thjZykhNjVXqJ0
+	f4y1Lj1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQkvC-004wIr-14;
-	Fri, 19 Jan 2024 09:12:18 +0000
+	id 1rQkwT-004wUD-2T;
+	Fri, 19 Jan 2024 09:13:37 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQkv8-004wGz-1h;
-	Fri, 19 Jan 2024 09:12:16 +0000
+	id 1rQkwQ-004wTU-1B;
+	Fri, 19 Jan 2024 09:13:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705655528;
-	bh=eNiJDJdYOUFmY5BTiqxpKfPXrwPImnQUYyFSWE2ZSJU=;
+	s=mail; t=1705655613;
+	bh=f8DISqCvdcOoye/zl+qWQ2jDLY06UuVEhG+Srk2JALU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=z3P4C5rpP4oH8MIrinLyBrZZZVLTwMNTKhUsEGxFrEAxX+qZsgt5wWovv3/SVw2fJ
-	 53XvZEQw3il/d9gtLpvQSnizwlBvKTmsszvqKYNG83lTWXA6MrWTUyyjVKlAArjymv
-	 yO8ffqW/6ynmiRhzqgVKPkPGtNvckK4eclAEexsP6mERqMYFkBEEWy1kejIJzeu22i
-	 RNpIa3zUaqQ7Ey8iWdTTVqueKPYTtEDWHEZWJPcsXvtBdFWWogxjKerYn+99eleMix
-	 e9og5Y4g/y6kVL+iLJVQScKWbw69vm1urU+qXOw/NNkLLgF203sYOqQl7hIv1MRFsn
-	 5SrxTe6HPTWGA==
+	b=VFkGWdVUFbjtsR450pVSXB6ORnFBiKY/gwb8EQUwm6wIu8ATjqBD883oLkyxOmxwD
+	 2Qqt8w7AoX8CwMMMYYmUh7NCnefo3tw7APDsGmjYjTLoDi72m1tIO4MnJqmNpxXTcJ
+	 uxCY7C3MWrXeMoHUAofuGQtnI1ZZh5wt3VI2MVpLWlT7rf0BqjycQijWMa6pcXzOZK
+	 pDpWKEYrYkuAVG+BWafQEDHLz1SlAUzkofOoo2uTmjpifUBD5z2/IqDwUlqfafgf6K
+	 EURO/jp7F62TBa5SQSjRqxd6ao3vIuGnzOvsLKEJZWYx/6X41RzK3x9S4tCquM9Gim
+	 JRuLRkjaEYaZw==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 419BA3781182;
-	Fri, 19 Jan 2024 09:12:08 +0000 (UTC)
-Message-ID: <064935d8-fbda-4eda-b013-8c8fc63b561c@collabora.com>
-Date: Fri, 19 Jan 2024 10:12:07 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 22FFC3781182;
+	Fri, 19 Jan 2024 09:13:32 +0000 (UTC)
+Message-ID: <7e3e3c7a-26ae-48ff-8884-d4f703995546@collabora.com>
+Date: Fri, 19 Jan 2024 10:13:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: Probe failure of usb controller @11290000 on MT8195 after
- next-20231221
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com, Macpaul Lin <macpaul.lin@mediatek.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
-References: <9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH 1/2] dt-bindings: usb: mt6360-tcpc: Rename IRQ to PD-IRQB
 Content-Language: en-US
-In-Reply-To: <9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano>
+To: Rob Herring <robh@kernel.org>
+Cc: chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, linux@roeck-us.net, heikki.krogerus@linux.intel.com,
+ cy_huang@richtek.com, linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com
+References: <20240112094538.65639-1-angelogioacchino.delregno@collabora.com>
+ <20240112142018.GA3127117-robh@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240112142018.GA3127117-robh@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240119_011214_706986_4EF41813 
-X-CRM114-Status: GOOD (  18.11  )
+X-CRM114-CacheID: sfid-20240119_011334_531620_E4999F27 
+X-CRM114-Status: GOOD (  13.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,54 +80,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/01/24 19:36, Nícolas F. R. A. Prado ha scritto:
-> Hi,
+Il 12/01/24 15:20, Rob Herring ha scritto:
+> On Fri, Jan 12, 2024 at 10:45:37AM +0100, AngeloGioacchino Del Regno wrote:
+>> Since there is no user yet, rename the only interrupt of this device
+>> to "PD-IRQB", avoiding underscores.
 > 
-> KernelCI has identified a failure in the probe of one of the USB controllers on
-> the MT8195-Tomato Chromebook [1]:
+> It is primarily node and property names that have this recommendation,
+> not so much -names values.
 > 
-> [   16.336840] xhci-mtk 11290000.usb: uwk - reg:0x400, version:104
-> [   16.337081] xhci-mtk 11290000.usb: xHCI Host Controller
-> [   16.337093] xhci-mtk 11290000.usb: new USB bus registered, assigned bus number 5
-> [   16.357114] xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
-> [   16.357119] xhci-mtk 11290000.usb: can't setup: -110
-> [   16.357128] xhci-mtk 11290000.usb: USB bus 5 deregistered
-> [   16.359484] xhci-mtk: probe of 11290000.usb failed with error -110
+> If there is only 1 interrupt, I'd just drop the name.
 > 
-> A previous message [2] suggests that a force-mode phy property that has been
-> merged might help with addressing the issue, however it's not clear to me how,
-> given that the controller at 1129000 uses a USB2 phy and the phy driver patch
-> only looks for the property on USB3 phys.
-> 
-> Worth noting that the issue doesn't always happen. For instance the test did
-> pass for next-20240110 and then failed again on today's next [3]. But it does
-> seem that the issue was introduced, or at least became much more likely, between
-> next-20231221 and next-20240103, given that it never happened out of 10 runs
-> before, and after that has happened 5 out of 7 times.
-> 
-> Note: On the Tomato Chromebook specifically this USB controller is not connected
-> to anything.
-> 
-> [1] https://linux.kernelci.org/test/case/id/659ce3506673076a8c52a428/
-> [2] https://lore.kernel.org/all/239def9b-437b-9211-7844-af4332651df0@mediatek.com/
-> [3] https://linux.kernelci.org/test/case/id/65a8c66ee89acb56ac52a405/
-> 
-> Thanks,
-> Nícolas
 
-Hey Nícolas,
+Yeah, you're totally right. I'll just drop it.
 
-I wonder if this is happening because of async probe... I have seen those happening
-once in a (long) while on MT8186 as well with the same kind of flakiness and I am
-not even able to reproduce anymore.
-
-For MT8195 Tomato, I guess we can simply disable that controller without any side
-effects but, at the same time, I'm not sure that this would be the right thing to
-do in this case.
-
-Besides, the controller at 11290000 is the only one that doesn't live behind MTU3,
-but I don't know if that can ring any bell....
-
-Cheers,
+Thanks!
 Angelo
+
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   .../devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml         | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml b/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
+>> index 053264e60583..0bea23ce2f09 100644
+>> --- a/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
+>> +++ b/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
+>> @@ -24,7 +24,7 @@ properties:
+>>   
+>>     interrupt-names:
+>>       items:
+>> -      - const: PD_IRQB
+>> +      - const: PD-IRQB
+>>   
+>>     connector:
+>>       type: object
+>> @@ -58,7 +58,7 @@ examples:
+>>           tcpc {
+>>             compatible = "mediatek,mt6360-tcpc";
+>>             interrupts-extended = <&gpio26 3 IRQ_TYPE_LEVEL_LOW>;
+>> -          interrupt-names = "PD_IRQB";
+>> +          interrupt-names = "PD-IRQB";
+>>   
+>>             connector {
+>>               compatible = "usb-c-connector";
+>> -- 
+>> 2.43.0
+>>
+
 
