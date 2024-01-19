@@ -4,75 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 121D1C47DB7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jan 2024 09:07:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB4D1C4725D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jan 2024 09:12:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TvxIW4C14aJXWPt/ZgsY7E7tG7QflT4efJyySE1EjY0=; b=OGpwyz5wnvXsir0eeiLFdaq66U
-	jO9+HZvdNqTAp3KZK4fg8o8Px+WkOczSkAqZzyY+9fvsDYnCObtnL1/k289aXelLW29jn47+iClHj
-	HackwkxskABkJa9JVvr36RT6mD+wYLkU+rDikzDBLDMq7HrkXXr91bIlAVVhxQ/YmpKTwxLFm8sER
-	V0b4uWM2yefePGn26X2qWDeVUtNoxVPqrTzOl5NR4CpTXPf3aUeik99x2fKanGWj62NIZ6l3b+Fv3
-	y5rOzlxX7Vb6U2qDXr+kdNJ/3TXToCdvyj+1LLwL84cJwZgf67NhBaMWgh8FaMKnOXdTNWr0PMPxD
-	6/0XT76g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dnvtOuZ6ED6eG7UNecSoUV/eae9cnB7yhkjV+5cGSBE=; b=Qdz5K4NJ3CAOyFk4fNZ6wZTT5y
+	8kpaGr0EDhCtAYVGoyNkGwrHfRMtzM0M7cPrCfsC41IpPr2M0W8AVBE4LjE1eHBoh595qmVN4gJoA
+	efG1EAw8LjcQAXsuEfAElHgyapkYJYzqNlcl6Tk1JgeqyEFqUStd9d94gLHFDMn2Kp1sva1+onwgJ
+	/WEobkpH/KfRynNAkO0ippjDP0m2yvK5U8ZrqgBLH3sVxQ2wCzWQashziC0SHWJu51JWy31FK3Ho0
+	I/U9D+WLbjQ65VYU+fw9C1Bgl2PgAajLtdNmg1z+gjqRpTC0SIJhNmo3NOGBGcwM2jODNORCrN0Id
+	GM+MMDKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQkqp-004vy6-2h;
-	Fri, 19 Jan 2024 09:07:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rQkvC-004wIr-14;
+	Fri, 19 Jan 2024 09:12:18 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQkqn-004vwv-1K
-	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Jan 2024 09:07:46 +0000
-X-UUID: 317e4942b6aa11eea0bf134e88e6c2dc-20240119
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=TvxIW4C14aJXWPt/ZgsY7E7tG7QflT4efJyySE1EjY0=;
-	b=Uut1uEWH/T7I5LYe4lqM0g4ug1ttTcInejz42fqqZZJeZYiuLv6nq9e0utAgvCejLXKob39gkqdaEwj+HghqfgsUFhGmEeT/ok3QaU7cm/xOyKzOCOgL4+mtAG/fLNbjWcOSRx7cOFMiZJLh67oqPU8QjI/v8ht6gNtWEBAC6d8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.36,REQID:3539f6cc-a5fd-4b60-abf0-57271629b7a2,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6e16cf4,CLOUDID:b5dc582f-1ab8-4133-9780-81938111c800,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 317e4942b6aa11eea0bf134e88e6c2dc-20240119
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <shayne.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 207272194; Fri, 19 Jan 2024 02:07:38 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 19 Jan 2024 16:57:35 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 19 Jan 2024 16:57:35 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
-	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Peter Chiu
-	<chui-hao.chiu@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH 02/12] wifi: mt76: mt7996: fix TWT issues
-Date: Fri, 19 Jan 2024 16:56:58 +0800
-Message-ID: <20240119085708.23592-2-shayne.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240119085708.23592-1-shayne.chen@mediatek.com>
-References: <20240119085708.23592-1-shayne.chen@mediatek.com>
+	id 1rQkv8-004wGz-1h;
+	Fri, 19 Jan 2024 09:12:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1705655528;
+	bh=eNiJDJdYOUFmY5BTiqxpKfPXrwPImnQUYyFSWE2ZSJU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=z3P4C5rpP4oH8MIrinLyBrZZZVLTwMNTKhUsEGxFrEAxX+qZsgt5wWovv3/SVw2fJ
+	 53XvZEQw3il/d9gtLpvQSnizwlBvKTmsszvqKYNG83lTWXA6MrWTUyyjVKlAArjymv
+	 yO8ffqW/6ynmiRhzqgVKPkPGtNvckK4eclAEexsP6mERqMYFkBEEWy1kejIJzeu22i
+	 RNpIa3zUaqQ7Ey8iWdTTVqueKPYTtEDWHEZWJPcsXvtBdFWWogxjKerYn+99eleMix
+	 e9og5Y4g/y6kVL+iLJVQScKWbw69vm1urU+qXOw/NNkLLgF203sYOqQl7hIv1MRFsn
+	 5SrxTe6HPTWGA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 419BA3781182;
+	Fri, 19 Jan 2024 09:12:08 +0000 (UTC)
+Message-ID: <064935d8-fbda-4eda-b013-8c8fc63b561c@collabora.com>
+Date: Fri, 19 Jan 2024 10:12:07 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: Probe failure of usb controller @11290000 on MT8195 after
+ next-20231221
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com, Macpaul Lin <macpaul.lin@mediatek.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
+References: <9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240119_010745_455376_082EEC9B 
-X-CRM114-Status: GOOD (  17.83  )
+X-CRM114-CacheID: sfid-20240119_011214_706986_4EF41813 
+X-CRM114-Status: GOOD (  18.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,132 +78,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
+Il 18/01/24 19:36, Nícolas F. R. A. Prado ha scritto:
+> Hi,
+> 
+> KernelCI has identified a failure in the probe of one of the USB controllers on
+> the MT8195-Tomato Chromebook [1]:
+> 
+> [   16.336840] xhci-mtk 11290000.usb: uwk - reg:0x400, version:104
+> [   16.337081] xhci-mtk 11290000.usb: xHCI Host Controller
+> [   16.337093] xhci-mtk 11290000.usb: new USB bus registered, assigned bus number 5
+> [   16.357114] xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
+> [   16.357119] xhci-mtk 11290000.usb: can't setup: -110
+> [   16.357128] xhci-mtk 11290000.usb: USB bus 5 deregistered
+> [   16.359484] xhci-mtk: probe of 11290000.usb failed with error -110
+> 
+> A previous message [2] suggests that a force-mode phy property that has been
+> merged might help with addressing the issue, however it's not clear to me how,
+> given that the controller at 1129000 uses a USB2 phy and the phy driver patch
+> only looks for the property on USB3 phys.
+> 
+> Worth noting that the issue doesn't always happen. For instance the test did
+> pass for next-20240110 and then failed again on today's next [3]. But it does
+> seem that the issue was introduced, or at least became much more likely, between
+> next-20231221 and next-20240103, given that it never happened out of 10 runs
+> before, and after that has happened 5 out of 7 times.
+> 
+> Note: On the Tomato Chromebook specifically this USB controller is not connected
+> to anything.
+> 
+> [1] https://linux.kernelci.org/test/case/id/659ce3506673076a8c52a428/
+> [2] https://lore.kernel.org/all/239def9b-437b-9211-7844-af4332651df0@mediatek.com/
+> [3] https://linux.kernelci.org/test/case/id/65a8c66ee89acb56ac52a405/
+> 
+> Thanks,
+> Nícolas
 
-This patch fixes the following TWT issues:
-- Change table_mask to u16 to support up to 16 TWT stations
-- Reject TWT flows for duplicated establishment
-- Fix possible unaligned pointer
-- Remove unsupported TWT_CONTROL_WAKE_DUR_UNIT flag
-- The minimum TWT duration supported by mt7996 chipsets is 64. Reply
-  with TWT_SETUP_CMD_DICTATE if the min_twt_dur is smaller than 64
+Hey Nícolas,
 
-Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7996/mac.c   | 53 ++++++++++++++++---
- .../wireless/mediatek/mt76/mt7996/mt7996.h    |  3 +-
- 2 files changed, 47 insertions(+), 9 deletions(-)
+I wonder if this is happening because of async probe... I have seen those happening
+once in a (long) while on MT8186 as well with the same kind of flakiness and I am
+not even able to reproduce anymore.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index a8414fbb07c8..63d34844c122 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -2530,6 +2530,34 @@ static int mt7996_mac_check_twt_req(struct ieee80211_twt_setup *twt)
- 	return 0;
- }
- 
-+static bool
-+mt7996_mac_twt_param_equal(struct mt7996_sta *msta,
-+			   struct ieee80211_twt_params *twt_agrt)
-+{
-+	u16 type = le16_to_cpu(twt_agrt->req_type);
-+	u8 exp;
-+	int i;
-+
-+	exp = FIELD_GET(IEEE80211_TWT_REQTYPE_WAKE_INT_EXP, type);
-+	for (i = 0; i < MT7996_MAX_STA_TWT_AGRT; i++) {
-+		struct mt7996_twt_flow *f;
-+
-+		if (!(msta->twt.flowid_mask & BIT(i)))
-+			continue;
-+
-+		f = &msta->twt.flow[i];
-+		if (f->duration == twt_agrt->min_twt_dur &&
-+		    f->mantissa == twt_agrt->mantissa &&
-+		    f->exp == exp &&
-+		    f->protection == !!(type & IEEE80211_TWT_REQTYPE_PROTECTION) &&
-+		    f->flowtype == !!(type & IEEE80211_TWT_REQTYPE_FLOWTYPE) &&
-+		    f->trigger == !!(type & IEEE80211_TWT_REQTYPE_TRIGGER))
-+			return true;
-+	}
-+
-+	return false;
-+}
-+
- void mt7996_mac_add_twt_setup(struct ieee80211_hw *hw,
- 			      struct ieee80211_sta *sta,
- 			      struct ieee80211_twt_setup *twt)
-@@ -2541,8 +2569,7 @@ void mt7996_mac_add_twt_setup(struct ieee80211_hw *hw,
- 	enum ieee80211_twt_setup_cmd sta_setup_cmd;
- 	struct mt7996_dev *dev = mt7996_hw_dev(hw);
- 	struct mt7996_twt_flow *flow;
--	int flowid, table_id;
--	u8 exp;
-+	u8 flowid, table_id, exp;
- 
- 	if (mt7996_mac_check_twt_req(twt))
- 		goto out;
-@@ -2555,9 +2582,19 @@ void mt7996_mac_add_twt_setup(struct ieee80211_hw *hw,
- 	if (hweight8(msta->twt.flowid_mask) == ARRAY_SIZE(msta->twt.flow))
- 		goto unlock;
- 
-+	if (twt_agrt->min_twt_dur < MT7996_MIN_TWT_DUR) {
-+		setup_cmd = TWT_SETUP_CMD_DICTATE;
-+		twt_agrt->min_twt_dur = MT7996_MIN_TWT_DUR;
-+		goto unlock;
-+	}
-+
-+	if (mt7996_mac_twt_param_equal(msta, twt_agrt))
-+		goto unlock;
-+
- 	flowid = ffs(~msta->twt.flowid_mask) - 1;
--	le16p_replace_bits(&twt_agrt->req_type, flowid,
--			   IEEE80211_TWT_REQTYPE_FLOWID);
-+	twt_agrt->req_type &= ~cpu_to_le16(IEEE80211_TWT_REQTYPE_FLOWID);
-+	twt_agrt->req_type |= le16_encode_bits(flowid,
-+					       IEEE80211_TWT_REQTYPE_FLOWID);
- 
- 	table_id = ffs(~dev->twt.table_mask) - 1;
- 	exp = FIELD_GET(IEEE80211_TWT_REQTYPE_WAKE_INT_EXP, req_type);
-@@ -2604,10 +2641,10 @@ void mt7996_mac_add_twt_setup(struct ieee80211_hw *hw,
- unlock:
- 	mutex_unlock(&dev->mt76.mutex);
- out:
--	le16p_replace_bits(&twt_agrt->req_type, setup_cmd,
--			   IEEE80211_TWT_REQTYPE_SETUP_CMD);
--	twt->control = (twt->control & IEEE80211_TWT_CONTROL_WAKE_DUR_UNIT) |
--		       (twt->control & IEEE80211_TWT_CONTROL_RX_DISABLED);
-+	twt_agrt->req_type &= ~cpu_to_le16(IEEE80211_TWT_REQTYPE_SETUP_CMD);
-+	twt_agrt->req_type |=
-+		le16_encode_bits(setup_cmd, IEEE80211_TWT_REQTYPE_SETUP_CMD);
-+	twt->control = twt->control & IEEE80211_TWT_CONTROL_RX_DISABLED;
- }
- 
- void mt7996_mac_twt_teardown_flow(struct mt7996_dev *dev,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index bc73bcb47bf0..8154ad37827f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -53,6 +53,7 @@
- 
- #define MT7996_MAX_TWT_AGRT		16
- #define MT7996_MAX_STA_TWT_AGRT		8
-+#define MT7996_MIN_TWT_DUR		64
- #define MT7996_MAX_QUEUE		(__MT_RXQ_MAX +	__MT_MCUQ_MAX + 3)
- 
- /* NOTE: used to map mt76_rates. idx may change if firmware expands table */
-@@ -320,7 +321,7 @@ struct mt7996_dev {
- 	struct rchan *relay_fwlog;
- 
- 	struct {
--		u8 table_mask;
-+		u16 table_mask;
- 		u8 n_agrt;
- 	} twt;
- 
--- 
-2.39.2
+For MT8195 Tomato, I guess we can simply disable that controller without any side
+effects but, at the same time, I'm not sure that this would be the right thing to
+do in this case.
 
+Besides, the controller at 11290000 is the only one that doesn't live behind MTU3,
+but I don't know if that can ring any bell....
+
+Cheers,
+Angelo
 
