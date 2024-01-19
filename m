@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21F94C4725D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D1ECC47DAF
 	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jan 2024 10:46:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SKHbaajHnQvvPjqGOqfRSPnn9K+Y+EmUMUlxyszHpJA=; b=OrtKDyg3z8WY38o+IE0yLD50tK
-	DLg2+S2VmDMk6QBS8wol1q3qiwPenIWu9TTFYEQmwobmGbnvPSkZOSf3RGdP+FFiubAY8AJfoQChm
-	OPjiofKH+xgjL4Q5eGLxAWFo5OKU5674sn1o8LK/f+a3Wb15br/mjZiRfNE81kZcs+/5CISkVLKDW
-	wAxtdwYSDLCuqVBuNfD9H8xsMi3p2PglVGm2qtss0Q2bHUKvVmgEgVAcsAGP9moP9R2MQGbEZ+q9/
-	jR7vTP615pht0IXoiOwa+ri7JagItvI5ECBerKkq1DMyH6KNDcMJX0r6PyCjl8+nyJiuHjhm91QWU
-	odHjQz7w==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kvlpkFBsC6q3hKHHJmMXxD34HwTNwUyxphdh1/InhRM=; b=5AvS5QAurbHMyX7kJDQMiG0+/Z
+	0vC7WdCPjIIgJIxdXyqEYflxT+d5iIKOV7xLqeWOosjNN3mUZuycAyrw7rKgJWHigIWCZlr/uh6In
+	n8g91dY3f39tOD+3Gnc9j81ZFvsX2H3OKOhAo+Ze7/sZ4grkkCFh+UhX6Zt7lR9x3ILqkfm1KxX3m
+	OoIMPkTndII6/oDfE1c3lpRVXjsxMYczy6UbybxrnoH/nUttge+bDV8cvWIgko7hAXJH0SQIcDIMf
+	sX9YLQKZlC42rOufsNqgO6GZbAZfHxzjuloMqyPiFdUBDsft22+wZ3mIjj2OxOPHWheXVigpT8L/B
+	MWtVj1Bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQmOV-00587j-2w;
-	Fri, 19 Jan 2024 10:46:39 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rQmOW-00587z-0m;
+	Fri, 19 Jan 2024 10:46:40 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQmNu-0057ax-1p;
-	Fri, 19 Jan 2024 10:46:06 +0000
+	id 1rQmNu-0057Zs-1o;
+	Fri, 19 Jan 2024 10:46:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705661158;
-	bh=yMBnHD84devz8pBb0bWiL0F28mWeot+MVGjDOv5Z7as=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=4Shbc6VRqhEa23YWSU8byPvUmRnm4h/gsWjKVJhGi4eNs0oVeQXY19FIolPUAkJZS
-	 D8hkRHxuIAD44Cblwc1NDspTmtaWc5wiABxeT4KHJQd7fCBmoietIgWiSRARDi2ZgO
-	 yxSuCne0OPu0K93fPILgjxmmT+6D15aCmQIzNM9fAnmOrEyYIb0/AVw1+su1Kqc3IY
-	 nnXnuRb5Xl1kMBDvy31HhqzdzfwcD3jBEXUsF1M9uKyNl/Rnmco32CeHZyUPZQHCx+
-	 ClE/mvHn4RWZ7PP4ChBtaRvDDHpVwPKVA/2BhyocRzHwR2H5zWhOPBSyirf2Evm8c1
-	 HjEDlonA0/tpw==
+	s=mail; t=1705661157;
+	bh=+BtwhZWZLy/TV7bT5xQL0CluIjxMSGPYSHEHTV2fZ3E=;
+	h=From:To:Cc:Subject:Date:From;
+	b=kQi+KwgBvloxAnur4ACXtrvBUdciPBgjm4NPdwynxtEzi36qqnIUGCX2Q/rk4MF+B
+	 z0Jnn4dSB/i9e0ueNQaKD/FeHD0UfuVviadwz//b7mww8YRKNvA9yqDXV1/HvruUSM
+	 iqzjZ6MCibi9dXyg91ehzUWoUBplevDftfVGWQcg8zXORHwU4nhzzDrm7ZexiCDgso
+	 wwlH0B1vmWOydihSb1m3DZSurvScU2qWq19jJgDUw/J9rhydTgSF3Sr7EYOQxi/qlN
+	 9zJa0km4Jh2J2/9NnFYikx+NyCyb3A7DVZEUTJo5hYFfvpdj14HYPryAdoa/QDOAjh
+	 DBSeJLN0uTctA==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7E00A378207E;
-	Fri, 19 Jan 2024 10:45:57 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 04E09378202D;
+	Fri, 19 Jan 2024 10:45:55 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: gregkh@linuxfoundation.org
 Cc: robh+dt@kernel.org,
@@ -63,17 +63,16 @@ Cc: robh+dt@kernel.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 1/2] dt-bindings: usb: Introduce ITE IT5205 Alt. Mode Passive MUX
-Date: Fri, 19 Jan 2024 11:45:49 +0100
-Message-ID: <20240119104550.140061-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 0/2] Add ITE IT5205 Passive MUX
+Date: Fri, 19 Jan 2024 11:45:48 +0100
+Message-ID: <20240119104550.140061-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240119104550.140061-1-angelogioacchino.delregno@collabora.com>
-References: <20240119104550.140061-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240119_024602_754747_9B9EE4E3 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20240119_024602_761027_D33E55A1 
+X-CRM114-Status: UNSURE (   9.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,94 +87,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce a binding for the ITE IT5205 Alternate Mode Passive MUX,
-used for connecting, disconnecting and switching orientation and
-control the SBU signals for alternate modes on USB Type-C ports.
+This series adds a driver for the ITE IT5205/FN, found on various
+MediaTek board designs, including the MT8395Genio 1200 EVB and
+others following that.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../devicetree/bindings/usb/ite,it5205.yaml   | 72 +++++++++++++++++++
- 1 file changed, 72 insertions(+)
+AngeloGioacchino Del Regno (2):
+  dt-bindings: usb: Introduce ITE IT5205 Alt. Mode Passive MUX
+  usb: typec: mux: Add ITE IT5205 Alternate Mode Passive MUX driver
+
+ .../devicetree/bindings/usb/ite,it5205.yaml   |  72 +++++
+ drivers/usb/typec/mux/Kconfig                 |  10 +
+ drivers/usb/typec/mux/Makefile                |   1 +
+ drivers/usb/typec/mux/it5205.c                | 292 ++++++++++++++++++
+ 4 files changed, 375 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/usb/ite,it5205.yaml
+ create mode 100644 drivers/usb/typec/mux/it5205.c
 
-diff --git a/Documentation/devicetree/bindings/usb/ite,it5205.yaml b/Documentation/devicetree/bindings/usb/ite,it5205.yaml
-new file mode 100644
-index 000000000000..36ec4251b5f2
---- /dev/null
-+++ b/Documentation/devicetree/bindings/usb/ite,it5205.yaml
-@@ -0,0 +1,72 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/usb/ite,it5205.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: ITE IT5202 Type-C USB Alternate Mode Passive MUX
-+
-+maintainers:
-+  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+  - Tianping Fang <tianping.fang@mediatek.com>
-+
-+properties:
-+  compatible:
-+    const: ite,it5205
-+
-+  reg:
-+    maxItems: 1
-+
-+  vcc-supply:
-+    description: Power supply for VCC pin (3.3V)
-+
-+  mode-switch:
-+    description: Flag the port as possible handle of altmode switching
-+    type: boolean
-+
-+  orientation-switch:
-+    description: Flag the port as possible handler of orientation switching
-+    type: boolean
-+
-+  ite,ovp-enable:
-+    description: Enable Over Voltage Protection functionality
-+    type: boolean
-+
-+  port:
-+    $ref: /schemas/graph.yaml#/properties/port
-+    description:
-+      A port node to link the IT5205 to a TypeC controller for the purpose of
-+      handling altmode muxing and orientation switching.
-+
-+required:
-+  - compatible
-+  - reg
-+  - orientation-switch
-+  - port
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    i2c2 {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        typec-mux@48 {
-+          compatible = "ite,it5205";
-+          reg = <0x48>;
-+
-+          mode-switch;
-+          orientation-switch;
-+
-+          vcc-supply = <&mt6359_vibr_ldo_reg>;
-+
-+          port {
-+            it5205_usbss_sbu: endpoint {
-+              remote-endpoint = <&typec_controller>;
-+            };
-+          };
-+        };
-+    };
-+...
 -- 
 2.43.0
 
