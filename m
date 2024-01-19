@@ -4,90 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47FECC4725D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jan 2024 14:01:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 050BEC4725D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jan 2024 16:18:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XQjxeAg4FMlAR2AMfr+/SzZ5fjjHHh8St6fsVL7XDT8=; b=jR/g8/MeWsm9nSbkEVqAeD7BZ6
-	7cTEJ/8xUZSNhm5hm+Sadqcdk1x6VktlWVsuOVifU2b2tsb29CxLd6KkfmXLXEW4yiHJnEC00zz+c
-	H4z1gFn2Mh/LB8LKQ8BoofB7BfP/rrTG3TMWfbaM46Z4bSNe7fnjAVjQoD1BH9tKOnVlGjYWpNZ+w
-	+cflS0VldB9x/gj+jR/vDc7bGii/gB+3G9P4LnqrTEzc9nU38BIefgDzZgi3sELRhMr7O1gXygFqS
-	UfdqFnFiJftD3FSDAKQlrFq/vfxQxSjsq408qS3KxYtiG+RTYYgMWi3GYeKf6koYr3415FbPxFWgQ
-	TvJxW/Ag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uK6CI5wzk7ehJIN/tIuHvi2SDckUMTIquiWn6Gi5/RY=; b=I4mMJ809Y8rNF/QWPzllhL47z1
+	OWQf+DHpCEYJ3CaXF1bzhWBCJmWQLNeSQHNwMDUGCigt+9+Wu39L91WNm2E3l79pVJP5A0T0PvWbl
+	DNNflqYZEVrBI1cemuqKVx54yXHbgCpsCK3/Y35iFHtb3+xcoU4NjIc2MxLrcA9urkicQz+peoNwe
+	v8mPUQEpASf4xu5GSqfeFC1LqfmLnQjQOOqCzbETf7HqavozNCKCIru13Ccv3/Uh/LUC+kjUuzvi0
+	L1VtkH8pNL3rZvEt41uU4Lfh8dEjvqqP4JeGjDfF0rXwrYOTvGEaINFwVHbml7phbDHOYgFKYAhX6
+	5op7UfTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQpRD-005mbs-03;
-	Fri, 19 Jan 2024 14:01:39 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rQrZh-0065Wi-3D;
+	Fri, 19 Jan 2024 16:18:33 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQoRz-005ZgV-1D;
-	Fri, 19 Jan 2024 12:58:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=XQjxeAg4FMlAR2AMfr+/SzZ5fjjHHh8St6fsVL7XDT8=; b=hZouz22GnziNpRM5cMxddrUhj4
-	eDtfUKqpKXgwluP0ado4YTIX3G+Yrg6gYNNt9zLerQcvmWwBZa0+9yeyGQ5DFIyniENeGjajNAcfG
-	f2zE+MKJ9C+Z/EgiMzUo3uaoMWA+XaICbH39WyNIATwW2+5/UfxVG8ahCf6QxffZbgc7McO6S+NMX
-	cCGfXteP46XKP/hNGwrZeiPK2k4ioRJtlU38MO6svp8PZ8g4MrXTOsa7k5UOJVZI8PKQzHhpQ2MPs
-	6I7nwk4JkNLX//tXWMFnXlddNo5gXDTpsU274l/eqTek0UnQgSJNhYWUE0/MG60fkpt5VkKmS4FP+
-	Y9j8QA2A==;
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rQoRw-00000001Ye1-159n;
-	Fri, 19 Jan 2024 12:58:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705669099;
-	bh=bRnM9eljKI9massoRsV14doqnV7kMIldV5Ltjnszp4I=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=N2P9Sc6BGA+TNzE9uQk4cQTWX9iyv+LBSg0ELkU1/f1Qd4Ug3tYuDmM3bJO5P9wn7
-	 iT8ClB2U3NTMPOgMNw/Y5EMVFIcP4EzKXtCpXH4MpTxffTuA9AQsoicDMskiRy5zpO
-	 dRbb7JWm7W+OC9Nj465yM9A4SJnwUFEuaPSB5MV0K/F513GFuDdIhMbs+WpcVYInxy
-	 rVuNFucuoXm4vdRyRsvx7JfESOXOyX39eqzzE6GVNglUNcQZpQGTtqTYQGwSXYaN7P
-	 raDJTMOOiWQeRe322exIU3drq5kNmBf4+sui9a0Gtwu/01eLhw64fyFoxUr0MEswBL
-	 bshMMphGXwDdA==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 331E4378207E;
-	Fri, 19 Jan 2024 12:58:18 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: gregkh@linuxfoundation.org
-Cc: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	heikki.krogerus@linux.intel.com,
-	matthias.bgg@gmail.com,
-	dmitry.baryshkov@linaro.org,
-	neil.armstrong@linaro.org,
-	andersson@kernel.org,
-	nathan@kernel.org,
-	luca.weiss@fairphone.com,
-	tianping.fang@mediatek.com,
-	linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1rQrZe-0065VS-1Z;
+	Fri, 19 Jan 2024 16:18:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 979F3618F6;
+	Fri, 19 Jan 2024 16:18:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82990C433F1;
+	Fri, 19 Jan 2024 16:18:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1705681109;
+	bh=PSbkzYeX811ItSViusyC1PoucHT5C5dbiK5s5R+//Rc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Q+eThb5l7sEce6revVcLqp76lCDQtAaJ13L1qS3uyNOLaVIjk42HLfg7St84Sepo4
+	 HYKvID3ToWBuU7kgFePrtxOZiYym0AC+CEHF5lX5XKd6rdkWawE5a3aLVWOM/LLAAn
+	 0SsJMQzA3AZiZzcel+jVKQWRL3kAisE3rsj6rYNyN6A+GYhIwCi0SmG6VljIaHfs7O
+	 UWzdqbTkifDCK5J4Y6Y26PK0m6CRH64IndM41XNPTCGjkGEW8WSuKrtOhv1+Ocs9XA
+	 inTTLSs6EY8SYEBdGr1HEHgfWaXjTFsr4EdGp2fvBOWwmj8qQjPjim8wNXrPx7RMps
+	 2clVHKzWPOxbg==
+Date: Fri, 19 Jan 2024 16:18:23 +0000
+From: Conor Dooley <conor@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: gregkh@linuxfoundation.org, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	heikki.krogerus@linux.intel.com, matthias.bgg@gmail.com,
+	dmitry.baryshkov@linaro.org, neil.armstrong@linaro.org,
+	andersson@kernel.org, nathan@kernel.org, luca.weiss@fairphone.com,
+	tianping.fang@mediatek.com, linux-usb@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 2/2] usb: typec: mux: Add ITE IT5205 Alternate Mode Passive MUX driver
-Date: Fri, 19 Jan 2024 13:58:12 +0100
-Message-ID: <20240119125812.239197-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240119125812.239197-1-angelogioacchino.delregno@collabora.com>
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 1/2] dt-bindings: usb: Introduce ITE IT5205 Alt. Mode
+ Passive MUX
+Message-ID: <20240119-remedial-unripe-2a3a46b4f117@spud>
 References: <20240119125812.239197-1-angelogioacchino.delregno@collabora.com>
+ <20240119125812.239197-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="9xj4ieRRilZigVCK"
+Content-Disposition: inline
+In-Reply-To: <20240119125812.239197-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240119_125820_453157_3CDCF933 
-X-CRM114-Status: GOOD (  24.21  )
+X-CRM114-CacheID: sfid-20240119_081830_649509_6389825F 
+X-CRM114-Status: GOOD (  16.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,352 +80,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The ITE IT5202 is a USB Type-C Alternate Mode Passive MUX, used for
-muxing the SBU lines of a Type-C port with DisplayPort altmode and
-also providing an orientation switch.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/usb/typec/mux/Kconfig  |  10 ++
- drivers/usb/typec/mux/Makefile |   1 +
- drivers/usb/typec/mux/it5205.c | 294 +++++++++++++++++++++++++++++++++
- 3 files changed, 305 insertions(+)
- create mode 100644 drivers/usb/typec/mux/it5205.c
+--9xj4ieRRilZigVCK
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/usb/typec/mux/Kconfig b/drivers/usb/typec/mux/Kconfig
-index d2cb5e733e57..399c7b0983df 100644
---- a/drivers/usb/typec/mux/Kconfig
-+++ b/drivers/usb/typec/mux/Kconfig
-@@ -36,6 +36,16 @@ config TYPEC_MUX_INTEL_PMC
- 	  control the USB role switch and also the multiplexer/demultiplexer
- 	  switches used with USB Type-C Alternate Modes.
- 
-+config TYPEC_MUX_IT5205
-+	tristate "ITE IT5205 Type-C USB Alt Mode Passive MUX driver"
-+	depends on I2C
-+	select REGMAP_I2C
-+	help
-+	  Driver for the ITE IT5205 Type-C USB Alternate Mode Passive MUX
-+	  which provides support for muxing DisplayPort and sideband signals
-+	  on a common USB Type-C connector.
-+	  If compiled as a module, the module will be named it5205.
-+
- config TYPEC_MUX_NB7VPQ904M
- 	tristate "On Semiconductor NB7VPQ904M Type-C redriver driver"
- 	depends on I2C
-diff --git a/drivers/usb/typec/mux/Makefile b/drivers/usb/typec/mux/Makefile
-index 57dc9ac6f8dc..bb96f30267af 100644
---- a/drivers/usb/typec/mux/Makefile
-+++ b/drivers/usb/typec/mux/Makefile
-@@ -4,6 +4,7 @@ obj-$(CONFIG_TYPEC_MUX_FSA4480)		+= fsa4480.o
- obj-$(CONFIG_TYPEC_MUX_GPIO_SBU)	+= gpio-sbu-mux.o
- obj-$(CONFIG_TYPEC_MUX_PI3USB30532)	+= pi3usb30532.o
- obj-$(CONFIG_TYPEC_MUX_INTEL_PMC)	+= intel_pmc_mux.o
-+obj-$(CONFIG_TYPEC_MUX_IT5205)		+= it5205.o
- obj-$(CONFIG_TYPEC_MUX_NB7VPQ904M)	+= nb7vpq904m.o
- obj-$(CONFIG_TYPEC_MUX_PTN36502)	+= ptn36502.o
- obj-$(CONFIG_TYPEC_MUX_WCD939X_USBSS)	+= wcd939x-usbss.o
-diff --git a/drivers/usb/typec/mux/it5205.c b/drivers/usb/typec/mux/it5205.c
-new file mode 100644
-index 000000000000..b68535f80ceb
---- /dev/null
-+++ b/drivers/usb/typec/mux/it5205.c
-@@ -0,0 +1,294 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * ITE IT5205 Type-C USB alternate mode passive mux
-+ *
-+ * Copyright (c) 2020 MediaTek Inc.
-+ * Copyright (c) 2024 Collabora Ltd.
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ *
-+ */
-+
-+#include <linux/delay.h>
-+#include <linux/i2c.h>
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+#include <linux/regulator/consumer.h>
-+#include <linux/usb/tcpm.h>
-+#include <linux/usb/typec.h>
-+#include <linux/usb/typec_dp.h>
-+#include <linux/usb/typec_mux.h>
-+
-+#define IT5205_REG_CHIP_ID(x)	(0x4 + (x))
-+#define IT5205FN_CHIP_ID	0x35323035 /* "5205" */
-+
-+/* MUX power down register */
-+#define IT5205_REG_MUXPDR        0x10
-+#define IT5205_MUX_POWER_DOWN    BIT(0)
-+
-+/* MUX control register */
-+#define IT5205_REG_MUXCR         0x11
-+#define IT5205_POLARITY_INVERTED BIT(4)
-+#define IT5205_DP_USB_CTRL_MASK  GENMASK(3, 0)
-+#define IT5205_DP                0x0f
-+#define IT5205_DP_USB            0x03
-+#define IT5205_USB               0x07
-+
-+/* Vref Select Register */
-+#define IT5205_REG_VSR            0x10
-+#define IT5205_VREF_SELECT_MASK   GENMASK(5, 4)
-+#define IT5205_VREF_SELECT_3_3V   0x00
-+#define IT5205_VREF_SELECT_OFF    0x20
-+
-+/* CSBU Over Voltage Protection Register */
-+#define IT5205_REG_CSBUOVPSR      0x1e
-+#define IT5205_OVP_SELECT_MASK    GENMASK(5, 4)
-+#define IT5205_OVP_3_90V          0x00
-+#define IT5205_OVP_3_68V          0x10
-+#define IT5205_OVP_3_62V          0x20
-+#define IT5205_OVP_3_57V          0x30
-+
-+/* CSBU Switch Register */
-+#define IT5205_REG_CSBUSR         0x22
-+#define IT5205_CSBUSR_SWITCH      BIT(0)
-+
-+/* Interrupt Switch Register */
-+#define IT5205_REG_ISR            0x25
-+#define IT5205_ISR_CSBU_MASK      BIT(4)
-+#define IT5205_ISR_CSBU_OVP       BIT(0)
-+
-+struct it5205 {
-+	struct i2c_client *client;
-+	struct regmap *regmap;
-+	struct typec_switch_dev *sw;
-+	struct typec_mux_dev *mux;
-+};
-+
-+static int it5205_switch_set(struct typec_switch_dev *sw, enum typec_orientation orientation)
-+{
-+	struct it5205 *it = typec_switch_get_drvdata(sw);
-+
-+	switch (orientation) {
-+	case TYPEC_ORIENTATION_NORMAL:
-+		regmap_update_bits(it->regmap, IT5205_REG_MUXCR,
-+				   IT5205_POLARITY_INVERTED, 0);
-+		break;
-+	case TYPEC_ORIENTATION_REVERSE:
-+		regmap_update_bits(it->regmap, IT5205_REG_MUXCR,
-+				   IT5205_POLARITY_INVERTED, IT5205_POLARITY_INVERTED);
-+		break;
-+	case TYPEC_ORIENTATION_NONE:
-+		fallthrough;
-+	default:
-+		regmap_write(it->regmap, IT5205_REG_MUXCR, 0);
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int it5205_mux_set(struct typec_mux_dev *mux, struct typec_mux_state *state)
-+{
-+	struct it5205 *it = typec_mux_get_drvdata(mux);
-+	u8 val;
-+
-+	if (state->mode >= TYPEC_STATE_MODAL &&
-+	    state->alt->svid != USB_TYPEC_DP_SID)
-+		return -EINVAL;
-+
-+	switch (state->mode) {
-+	case TYPEC_STATE_USB:
-+		val = IT5205_USB;
-+		break;
-+	case TYPEC_DP_STATE_C:
-+		fallthrough;
-+	case TYPEC_DP_STATE_E:
-+		val = IT5205_DP;
-+		break;
-+	case TYPEC_DP_STATE_D:
-+		val = IT5205_DP_USB;
-+		break;
-+	case TYPEC_STATE_SAFE:
-+		fallthrough;
-+	default:
-+		val = 0;
-+		break;
-+	}
-+
-+	return regmap_update_bits(it->regmap, IT5205_REG_MUXCR,
-+				  IT5205_DP_USB_CTRL_MASK, val);
-+}
-+
-+static irqreturn_t it5205_irq_handler(int irq, void *data)
-+{
-+	struct it5205 *it = data;
-+	int ret;
-+	u32 val;
-+
-+	ret = regmap_read(it->regmap, IT5205_REG_ISR, &val);
-+	if (ret)
-+		return IRQ_NONE;
-+
-+	if (val & IT5205_ISR_CSBU_OVP) {
-+		dev_warn(&it->client->dev, "Overvoltage detected!\n");
-+
-+		/* Reset CSBU */
-+		regmap_update_bits(it->regmap, IT5205_REG_CSBUSR,
-+				   IT5205_CSBUSR_SWITCH, 0);
-+		regmap_update_bits(it->regmap, IT5205_REG_CSBUSR,
-+				   IT5205_CSBUSR_SWITCH, IT5205_CSBUSR_SWITCH);
-+	}
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static void it5205_enable_ovp(struct it5205 *it)
-+{
-+	/* Select Vref 3.3v */
-+	regmap_update_bits(it->regmap, IT5205_REG_VSR,
-+			   IT5205_VREF_SELECT_MASK, IT5205_VREF_SELECT_3_3V);
-+
-+	/* Trigger OVP at 3.68V */
-+	regmap_update_bits(it->regmap, IT5205_REG_CSBUOVPSR,
-+			   IT5205_OVP_SELECT_MASK, IT5205_OVP_3_68V);
-+
-+	/* Unmask OVP interrupt */
-+	regmap_update_bits(it->regmap, IT5205_REG_ISR,
-+			   IT5205_ISR_CSBU_MASK, 0);
-+
-+	/* Enable CSBU Interrupt */
-+	regmap_update_bits(it->regmap, IT5205_REG_CSBUSR,
-+			   IT5205_CSBUSR_SWITCH, IT5205_CSBUSR_SWITCH);
-+}
-+
-+static const struct regmap_config it5205_regmap = {
-+	.max_register = 0x2f,
-+	.reg_bits = 8,
-+	.val_bits = 8,
-+};
-+
-+static int it5205_probe(struct i2c_client *client)
-+{
-+	struct typec_switch_desc sw_desc = { };
-+	struct typec_mux_desc mux_desc = { };
-+	struct device *dev = &client->dev;
-+	struct it5205 *it;
-+	u32 val, chipid = 0;
-+	int i, ret;
-+
-+	it = devm_kzalloc(dev, sizeof(*it), GFP_KERNEL);
-+	if (!it)
-+		return -ENOMEM;
-+
-+	ret = devm_regulator_get_enable(dev, "vcc");
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Failed to get regulator\n");
-+
-+	it->client = client;
-+
-+	it->regmap = devm_regmap_init_i2c(client, &it5205_regmap);
-+	if (IS_ERR(it->regmap))
-+		return dev_err_probe(dev, PTR_ERR(it->regmap),
-+				     "Failed to init regmap\n");
-+
-+	/* IT5205 needs a long time to power up after enabling regulator */
-+	msleep(50);
-+
-+	/* Unset poweroff bit */
-+	ret = regmap_write(it->regmap, IT5205_REG_MUXPDR, 0);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Failed to set power on\n");
-+
-+	/* Read the 32 bits ChipID */
-+	for (i = 3; i >= 0; i--) {
-+		ret = regmap_read(it->regmap, IT5205_REG_CHIP_ID(i), &val);
-+		if (ret)
-+			return ret;
-+
-+		chipid |= val << (i * 8);
-+	}
-+
-+	if (chipid != IT5205FN_CHIP_ID)
-+		return dev_err_probe(dev, -EINVAL,
-+				     "Unknown ChipID 0x%x\n", chipid);
-+
-+	/* Initialize as USB mode with default (non-inverted) polarity */
-+	ret = regmap_write(it->regmap, IT5205_REG_MUXCR, IT5205_USB);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Cannot set mode to USB\n");
-+
-+	sw_desc.drvdata = it;
-+	sw_desc.fwnode = dev_fwnode(dev);
-+	sw_desc.set = it5205_switch_set;
-+
-+	it->sw = typec_switch_register(dev, &sw_desc);
-+	if (IS_ERR(it->sw))
-+		return dev_err_probe(dev, PTR_ERR(it->sw),
-+				     "failed to register typec switch\n");
-+
-+	mux_desc.drvdata = it;
-+	mux_desc.fwnode = dev_fwnode(dev);
-+	mux_desc.set = it5205_mux_set;
-+
-+	it->mux = typec_mux_register(dev, &mux_desc);
-+	if (IS_ERR(it->mux)) {
-+		typec_switch_unregister(it->sw);
-+		return dev_err_probe(dev, PTR_ERR(it->mux),
-+				     "failed to register typec mux\n");
-+	}
-+
-+	i2c_set_clientdata(client, it);
-+
-+	if (of_property_read_bool(dev->of_node, "ite,ovp-enable") && client->irq) {
-+		it5205_enable_ovp(it);
-+
-+		ret = devm_request_threaded_irq(dev, client->irq, NULL,
-+						it5205_irq_handler,
-+						IRQF_ONESHOT, dev_name(dev), it);
-+		if (ret) {
-+			typec_mux_unregister(it->mux);
-+			typec_switch_unregister(it->sw);
-+			return dev_err_probe(dev, ret, "Failed to request irq\n");
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static void it5205_remove(struct i2c_client *client)
-+{
-+	struct it5205 *it = i2c_get_clientdata(client);
-+
-+	typec_mux_unregister(it->mux);
-+	typec_switch_unregister(it->sw);
-+}
-+
-+static const struct i2c_device_id it5205_table[] = {
-+	{ "it5205" },
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(i2c, it5205_table);
-+
-+static const struct of_device_id it5205_of_table[] = {
-+	{ .compatible = "ite,it5205" },
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, it5205_match_table);
-+
-+static struct i2c_driver it5205_driver = {
-+	.driver = {
-+		.name = "it5205",
-+		.of_match_table = it5205_of_table,
-+	},
-+	.probe = it5205_probe,
-+	.remove = it5205_remove,
-+	.id_table = it5205_table,
-+};
-+module_i2c_driver(it5205_driver);
-+
-+MODULE_AUTHOR("Tianping Fang <tianping.fang@mediatek.com>");
-+MODULE_AUTHOR("AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>");
-+MODULE_DESCRIPTION("ITE IT5205 alternate mode passive MUX driver");
-+MODULE_LICENSE("GPL");
--- 
-2.43.0
+On Fri, Jan 19, 2024 at 01:58:11PM +0100, AngeloGioacchino Del Regno wrote:
+> Introduce a binding for the ITE IT5205 Alternate Mode Passive MUX,
+> used for connecting, disconnecting and switching orientation and
+> control the SBU signals for alternate modes on USB Type-C ports.
+>=20
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  .../devicetree/bindings/usb/ite,it5205.yaml   | 72 +++++++++++++++++++
+>  1 file changed, 72 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/usb/ite,it5205.yaml
+>=20
+> diff --git a/Documentation/devicetree/bindings/usb/ite,it5205.yaml b/Docu=
+mentation/devicetree/bindings/usb/ite,it5205.yaml
+> new file mode 100644
+> index 000000000000..36ec4251b5f2
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/usb/ite,it5205.yaml
+> @@ -0,0 +1,72 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/usb/ite,it5205.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: ITE IT5202 Type-C USB Alternate Mode Passive MUX
+> +
+> +maintainers:
+> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> +  - Tianping Fang <tianping.fang@mediatek.com>
+> +
+> +properties:
+> +  compatible:
+> +    const: ite,it5205
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  vcc-supply:
+> +    description: Power supply for VCC pin (3.3V)
+> +
+> +  mode-switch:
+> +    description: Flag the port as possible handle of altmode switching
+> +    type: boolean
+> +
+> +  orientation-switch:
+> +    description: Flag the port as possible handler of orientation switch=
+ing
+> +    type: boolean
+> +
+> +  ite,ovp-enable:
+> +    description: Enable Over Voltage Protection functionality
+> +    type: boolean
 
+Bitta devil's advocacy perhaps, but why is this DT property? Is it not
+known whether or not this is supported based on the compatible, and
+whether or not to enable it is a decision for the operating system to
+make?
+
+--9xj4ieRRilZigVCK
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZaqgzwAKCRB4tDGHoIJi
+0jXTAP9VDbyyEoQ1CABhFZkzTHaAveF6g22etA5lGD8yD7UudAEAxgJII9jVF6rG
+10llZjO0yQjzZMumgGCQmHPSOQo7uQs=
+=ASpH
+-----END PGP SIGNATURE-----
+
+--9xj4ieRRilZigVCK--
 
