@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 050BEC4725D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jan 2024 16:18:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E90E3C4725D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jan 2024 16:32:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uK6CI5wzk7ehJIN/tIuHvi2SDckUMTIquiWn6Gi5/RY=; b=I4mMJ809Y8rNF/QWPzllhL47z1
-	OWQf+DHpCEYJ3CaXF1bzhWBCJmWQLNeSQHNwMDUGCigt+9+Wu39L91WNm2E3l79pVJP5A0T0PvWbl
-	DNNflqYZEVrBI1cemuqKVx54yXHbgCpsCK3/Y35iFHtb3+xcoU4NjIc2MxLrcA9urkicQz+peoNwe
-	v8mPUQEpASf4xu5GSqfeFC1LqfmLnQjQOOqCzbETf7HqavozNCKCIru13Ccv3/Uh/LUC+kjUuzvi0
-	L1VtkH8pNL3rZvEt41uU4Lfh8dEjvqqP4JeGjDfF0rXwrYOTvGEaINFwVHbml7phbDHOYgFKYAhX6
-	5op7UfTw==;
+	bh=pp+Jb1fP38NYQtT00NVwKynJsliIjnE48NTbOrHAsg4=; b=fAeiOZMq0ywonmUXArsTLd2xBC
+	CBaja+OVznjllDxGpAXdLcMgjhabTurbbNkDXF+uBpFIxS9iiJbTKw4RPn6Wwp2HW6HhvdMACa1x4
+	jTs/4dvMdUgsudDPSe1iag7d20P94Pi5S308EzhDn/Pm/f1OGVAWp9w5n6nfpKJ3Cj0aJL8PlrMg6
+	f0VKA7X9qyjzKFaSqZIfWFwSM1boWy/IidN2Fh2KcavRxekLfPrVn7lKxjmuMQNi49dU5aqExhTxm
+	pMFruNiqy9UeKa3qW9jyNJBvlLbQI8EWoJzMVYNimj43cZ/C5afzZMZ2SIaSdiQObefA+ffWQFI4X
+	CrIzo4iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQrZh-0065Wi-3D;
-	Fri, 19 Jan 2024 16:18:33 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rQrnU-0067x9-2q;
+	Fri, 19 Jan 2024 16:32:48 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQrZe-0065VS-1Z;
-	Fri, 19 Jan 2024 16:18:31 +0000
+	id 1rQrnR-0067wM-1q;
+	Fri, 19 Jan 2024 16:32:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 979F3618F6;
-	Fri, 19 Jan 2024 16:18:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82990C433F1;
-	Fri, 19 Jan 2024 16:18:25 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id EA1ABB803F2;
+	Fri, 19 Jan 2024 16:32:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 47119C433C7;
+	Fri, 19 Jan 2024 16:32:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1705681109;
-	bh=PSbkzYeX811ItSViusyC1PoucHT5C5dbiK5s5R+//Rc=;
+	s=k20201202; t=1705681963;
+	bh=Uyi+TQxKZEL1bmpstEqg5Fp2tSvzVnztn39cu+KNpTE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Q+eThb5l7sEce6revVcLqp76lCDQtAaJ13L1qS3uyNOLaVIjk42HLfg7St84Sepo4
-	 HYKvID3ToWBuU7kgFePrtxOZiYym0AC+CEHF5lX5XKd6rdkWawE5a3aLVWOM/LLAAn
-	 0SsJMQzA3AZiZzcel+jVKQWRL3kAisE3rsj6rYNyN6A+GYhIwCi0SmG6VljIaHfs7O
-	 UWzdqbTkifDCK5J4Y6Y26PK0m6CRH64IndM41XNPTCGjkGEW8WSuKrtOhv1+Ocs9XA
-	 inTTLSs6EY8SYEBdGr1HEHgfWaXjTFsr4EdGp2fvBOWwmj8qQjPjim8wNXrPx7RMps
-	 2clVHKzWPOxbg==
-Date: Fri, 19 Jan 2024 16:18:23 +0000
+	b=gwNaC6E6Cwo4i9yG9KcL+67C4UHTf8i7iJ8C0KnIHDMYWmRhaRc8kGrPgwnoHaQ3m
+	 qoMU8FXzdXnmyVpEs9vIPr1bTtk/NXSzoZvPB06jMm0dBJ7UJ58Hc3eZbmNJ7jCu/P
+	 vRo+l6JjPbmG3JEwYHfEH+nV35saGfHcllxorLDiuCoBoWP4lZ+otMvV8OGYXZ8mu4
+	 VDpTK2ccBqS27gqC4hZUAOWhH988jlQnWbVirQQBj7+lKfNEdtxiGU4r2EmMgAMU4H
+	 CrsmCk6rMRfPr5XVSqMZf1+66Gd4gP7Oz+bVU5qEZX4XVGdQy9qT+ysr1yLS2y3FQ+
+	 xOp3qXwSYiidQ==
+Date: Fri, 19 Jan 2024 16:32:37 +0000
 From: Conor Dooley <conor@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: gregkh@linuxfoundation.org, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
-	heikki.krogerus@linux.intel.com, matthias.bgg@gmail.com,
-	dmitry.baryshkov@linaro.org, neil.armstrong@linaro.org,
-	andersson@kernel.org, nathan@kernel.org, luca.weiss@fairphone.com,
-	tianping.fang@mediatek.com, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 1/2] dt-bindings: usb: Introduce ITE IT5205 Alt. Mode
- Passive MUX
-Message-ID: <20240119-remedial-unripe-2a3a46b4f117@spud>
-References: <20240119125812.239197-1-angelogioacchino.delregno@collabora.com>
- <20240119125812.239197-2-angelogioacchino.delregno@collabora.com>
+Cc: chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org,
+	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com, linux@roeck-us.net,
+	heikki.krogerus@linux.intel.com, cy_huang@richtek.com,
+	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/2] dt-bindings: usb: mt6360-tcpc: Drop
+ interrupt-names
+Message-ID: <20240119-eldest-discharge-e2d3812be0a9@spud>
+References: <20240119094105.98312-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="9xj4ieRRilZigVCK"
+	protocol="application/pgp-signature"; boundary="ToI4F3JwM2kTOdm/"
 Content-Disposition: inline
-In-Reply-To: <20240119125812.239197-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240119094105.98312-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240119_081830_649509_6389825F 
-X-CRM114-Status: GOOD (  16.97  )
+X-CRM114-CacheID: sfid-20240119_083245_764892_1C311F6B 
+X-CRM114-Status: GOOD (  16.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,80 +78,66 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---9xj4ieRRilZigVCK
+--ToI4F3JwM2kTOdm/
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Jan 19, 2024 at 01:58:11PM +0100, AngeloGioacchino Del Regno wrote:
-> Introduce a binding for the ITE IT5205 Alternate Mode Passive MUX,
-> used for connecting, disconnecting and switching orientation and
-> control the SBU signals for alternate modes on USB Type-C ports.
->=20
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
+On Fri, Jan 19, 2024 at 10:41:04AM +0100, AngeloGioacchino Del Regno wrote:
+> This IP has only one interrupt, hence interrupt-names is not necessary
+> to have.
+> Since there is no user yet, simply remove interrupt-names.
+
+I'm a bit confused chief. Patch 2 in this series removes a user of this
+property from a driver, so can you explain how this statement is true?
+
+Maybe I need to drink a few cans of Monster and revisit this patchset?
+
+Thanks,
+Conor.
+
 > ---
->  .../devicetree/bindings/usb/ite,it5205.yaml   | 72 +++++++++++++++++++
->  1 file changed, 72 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/usb/ite,it5205.yaml
+>  .../devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml        | 5 -----
+>  1 file changed, 5 deletions(-)
 >=20
-> diff --git a/Documentation/devicetree/bindings/usb/ite,it5205.yaml b/Docu=
-mentation/devicetree/bindings/usb/ite,it5205.yaml
-> new file mode 100644
-> index 000000000000..36ec4251b5f2
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/usb/ite,it5205.yaml
-> @@ -0,0 +1,72 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/usb/ite,it5205.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: ITE IT5202 Type-C USB Alternate Mode Passive MUX
-> +
-> +maintainers:
-> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> +  - Tianping Fang <tianping.fang@mediatek.com>
-> +
-> +properties:
-> +  compatible:
-> +    const: ite,it5205
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  vcc-supply:
-> +    description: Power supply for VCC pin (3.3V)
-> +
-> +  mode-switch:
-> +    description: Flag the port as possible handle of altmode switching
-> +    type: boolean
-> +
-> +  orientation-switch:
-> +    description: Flag the port as possible handler of orientation switch=
-ing
-> +    type: boolean
-> +
-> +  ite,ovp-enable:
-> +    description: Enable Over Voltage Protection functionality
-> +    type: boolean
+> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.y=
+aml b/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
+> index 053264e60583..339bc9c00ac0 100644
+> --- a/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
+> +++ b/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
+> @@ -22,10 +22,6 @@ properties:
+>    interrupts:
+>      maxItems: 1
+> =20
+> -  interrupt-names:
+> -    items:
+> -      - const: PD_IRQB
+> -
+>    connector:
+>      type: object
+>      $ref: ../connector/usb-connector.yaml#
+> @@ -58,7 +54,6 @@ examples:
+>          tcpc {
+>            compatible =3D "mediatek,mt6360-tcpc";
+>            interrupts-extended =3D <&gpio26 3 IRQ_TYPE_LEVEL_LOW>;
+> -          interrupt-names =3D "PD_IRQB";
+> =20
+>            connector {
+>              compatible =3D "usb-c-connector";
+> --=20
+> 2.43.0
+>=20
 
-Bitta devil's advocacy perhaps, but why is this DT property? Is it not
-known whether or not this is supported based on the compatible, and
-whether or not to enable it is a decision for the operating system to
-make?
-
---9xj4ieRRilZigVCK
+--ToI4F3JwM2kTOdm/
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZaqgzwAKCRB4tDGHoIJi
-0jXTAP9VDbyyEoQ1CABhFZkzTHaAveF6g22etA5lGD8yD7UudAEAxgJII9jVF6rG
-10llZjO0yQjzZMumgGCQmHPSOQo7uQs=
-=ASpH
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZaqkJQAKCRB4tDGHoIJi
+0re0AP9LNbikp4X8ttFLgxTITUwV8RZsxGtpIStRXArzEiJQtwD+JNTZjIHT5i09
+CSekQiT3QUgqZzXuCTtm+oiY2IL76Ak=
+=mjGn
 -----END PGP SIGNATURE-----
 
---9xj4ieRRilZigVCK--
+--ToI4F3JwM2kTOdm/--
 
