@@ -4,80 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F024C47DD3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 08:38:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D815C4725D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 08:57:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2yugJCPd8jiYL0SGmTLIZgbC+PDBHwJ6+q45hgq8ymY=; b=odrU1Ywb7QchejXKzbj7gKhn2S
-	yJC1H1aPpxzhLbMsvg1sG7vOcd74MYc01V0D9R9Vlev997BRccPIvvE1YxNxVSmDiOx8RbtDfpbEq
-	WTj7JuPXhtAwUKFG0aAW5qASEvPvja9/e/hdi6MclNDXYqZJZXKAK/pjBsk7joxarx0SGqgUwqAfj
-	FX/cT68BLraVYl+QbFDwAVB1nSpG8bW7uQgoVQa8OC55xCoXZPuwFL7jW1QRbsnKZg0pMqfnzmKjv
-	319KgOrSq11uXQYKUN57jGRN1Z0DFUzDL+DieDcJ5Lskrs5TIPbD+LqK2JJItCP8IwYbcjqlOLoHa
-	I5a5J8Fw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=w1+TRGt25MpNfEoS3hXoxH/tN7Awcod+oM5fMO5D3jc=; b=113w6hYYAiJeml
+	XSSs/s81sstdkFxP8F4qj/IigOYOaXw8mNHuCyJTrdA7Uv2EP0pTfhYVKxzHTTqUVGtD5QuTzzP43
+	1GNEqIYvvGf+zShMo0HIrvDeUZY0UwaoXiteA3AI+JclNJoleWmvL+jOvY8zWn4di2RTOs90dhT26
+	FcM1ggZ+nmAYxH2KJPOmceP3TOptpoowoGh9W0GTceLHXat04vDhqoGS+NjdCZkR9MgLOeieSX43q
+	BHPvZyiml23oSbAiPIemKsoqDE04JSaIIEyFjCPQIqPTv2NRNEAyBIJDpVu/mlTrxLQQPeN+yBKd3
+	r69EtMjW5QqtuUEuiBaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRppZ-00B6B5-2E;
-	Mon, 22 Jan 2024 08:38:57 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1rRq7L-00BAR9-0J;
+	Mon, 22 Jan 2024 08:57:19 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRppW-00B69g-1m;
-	Mon, 22 Jan 2024 08:38:55 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-40e880121efso32472665e9.3;
-        Mon, 22 Jan 2024 00:38:54 -0800 (PST)
+	id 1rRq7I-00BAPp-0g;
+	Mon, 22 Jan 2024 08:57:17 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-40eb033c192so1424075e9.0;
+        Mon, 22 Jan 2024 00:57:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1705912733; x=1706517533; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1705913833; x=1706518633; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=2yugJCPd8jiYL0SGmTLIZgbC+PDBHwJ6+q45hgq8ymY=;
-        b=bANm35pPxbBnQqLQmVIbRGVtc0zvnvVLKTYplvz9j793n/14ucHWPObBhtt1dpAyj/
-         MEGmLqLsis2IYTSTWX7dscDxl0iqQg2qW0J9gYDRa4D9FrAxgTO4+P/hZpTas7y6GvQS
-         cMurhTRUHKfYdvm1uB5/e7tPyCV2iiHib0FfxuapsxBvo6/vH3/HGX+2n0OBzYjVLvdP
-         IKcI0ye8IOmJShepUx63BwX7jf2wqb8qTpnO2zB6wJMsrjxMZlHoh0u+2MWC+VJrB2xn
-         0HGfqHRv+kdN4ApjF6D6BI/NYDKD/BgaLevhvkc47I1QZiMXcsQh+PZzm84TtGOXqKP+
-         Kv8Q==
+        bh=w1+TRGt25MpNfEoS3hXoxH/tN7Awcod+oM5fMO5D3jc=;
+        b=XYaMI32kcbJYbv9nqvGuIWqbsqbRcqeKeXEgjG4YWFO1Br2a+PwtGRHmErRD0bI6o1
+         KBbba1IVG9gzb5B0q1vAseOEV0jsXnZwgkcfobeT6LA4lwtF+vLe3W2U9GOpD5MXx6eV
+         1zCNGChypLiF8TYK172M9fqR45UcV5joSMUkksjZq3xbHl5QwRVVHCVZK387B6bihddQ
+         v0qK1n8oVxXehKjzS+e2UH9ZSX8e+DtLvfYc17S6Q8dz8RtDDtdKRC1hKdhIFDykBWHr
+         0gyRZXoWZvOXrwljdOcE1qH5F5ceyE92zV5aw9moeoOSALtzdeF11GMBYa9QoiFb6Ewe
+         MpqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705912733; x=1706517533;
+        d=1e100.net; s=20230601; t=1705913833; x=1706518633;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=2yugJCPd8jiYL0SGmTLIZgbC+PDBHwJ6+q45hgq8ymY=;
-        b=GjO2XG6AMmWU8xySWoUL6j7GH9FDajKukpbPGmjP6LHVzJN//icYyOpJeYTmJLVDQZ
-         qp/WjXLvd7zkosx5dONgsT5/fOq9kDbEtHhtOB4T4Ktm/+oKg/KRHOdoNbedQc9JH1Xs
-         R3R6z4hJynYIAUFKaEeiI3+OaSQrcu8xG4Z6kzGuV6FgJTlTYtU/2REVmgk67EOMAUiw
-         vFnxW3BAe9Oh8Zxmn8ya+vaG+ahULt2DkJe2mAcahvrLt8ccsxawZk5cWi2YW/jEtTaP
-         HYDmbfjXIpJ3D3CpdZYMkpT7eED8uZhQ69W+cdfXCxKBU8IyyWxH0ter13dhPXRSvWDf
-         5QYw==
-X-Gm-Message-State: AOJu0YwhQt8ya26ryhiE+xPzLjvHpiWgd5tbKwuQLK6k+1QPYPH7x/uQ
-	lG5oK3DMgozaXCRsJELlp4BYutf2x61+Ld/Y7RLdSriYPHi4VwBy
-X-Google-Smtp-Source: AGHT+IHGL/CN7Ch/XQHu070cYX0yhaZRpgJ8dXbFAwR62/I6GOIuKFyU3SRJTiPHD1YNSW1Stzt6QA==
-X-Received: by 2002:a05:600c:1906:b0:40e:4b0d:286d with SMTP id j6-20020a05600c190600b0040e4b0d286dmr2034987wmq.35.1705912732771;
-        Mon, 22 Jan 2024 00:38:52 -0800 (PST)
+        bh=w1+TRGt25MpNfEoS3hXoxH/tN7Awcod+oM5fMO5D3jc=;
+        b=WpYonvCfuGJTcJY6uihPjyBdwmPfScHP/Phahc/D4yBFaMvOCzdxqxa7BkaSVrsWLR
+         YIEnN781xmUfDvfBzcf90EkZh89jOHxuAadbGaQkfou+GrZ4ub7S8dH8xyyqA5Jyli8O
+         3ZarAsarwJ+B83BJBr8xJ1gunGtA/N0V71lU+U+dw7tS4YZ7Doo4fFRkQFpN9KZpqc2l
+         84ZXJx+aQ4pHxbMf3G8rfp7iOs/VAm6k6KEL/oVI/qqDB0hPme1jzkTetcW9/L0THRpq
+         PDcsQVHzy5SwWUpr46La5yhLu/+RPxpD4KTsYYZHZe53BGt23I/Y6L0tJ/sbKwjhu6Ef
+         VRnw==
+X-Gm-Message-State: AOJu0YyTo4cm7rDXJIyfM++kJ5/P1rgiJnuyB3cB1ziEoaQAwd8k6//I
+	jZaVTTJQUgDL0ads55AaSanzIz0GXKQZuuNi2jZPhUdHTGxU9QYj
+X-Google-Smtp-Source: AGHT+IHTPThDUzVUHUWazCjWo+HmxmUbfHP07K3tx1bQtUkViBI9fvhJQ7xyJRZWWrJ9IqRbxqlZig==
+X-Received: by 2002:a05:600c:6a8e:b0:40e:4ad9:90df with SMTP id jl14-20020a05600c6a8e00b0040e4ad990dfmr1813366wmb.158.1705913833292;
+        Mon, 22 Jan 2024 00:57:13 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.161.188])
-        by smtp.gmail.com with ESMTPSA id iv17-20020a05600c549100b0040e5034d8e0sm42483332wmb.43.2024.01.22.00.38.51
+        by smtp.gmail.com with ESMTPSA id s8-20020a05600c45c800b0040e527602c8sm42479485wmo.9.2024.01.22.00.57.11
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 22 Jan 2024 00:38:51 -0800 (PST)
-Message-ID: <011d5f5b-cf10-4476-8b5c-2fc9805e71e2@gmail.com>
-Date: Mon, 22 Jan 2024 09:38:50 +0100
+        Mon, 22 Jan 2024 00:57:12 -0800 (PST)
+Message-ID: <0d3c2713-6da5-4e7c-8568-180df6e424d7@gmail.com>
+Date: Mon, 22 Jan 2024 09:57:11 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] cpufreq: mediatek-hw: Wait for CPU supplies before
- probing
+Subject: Re: [PATCH v2 1/2] dt-bindings: reset: mediatek: add MT7988 LVTS
+ reset ID
 Content-Language: en-US, ca-ES, es-ES
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Viresh Kumar <viresh.kumar@linaro.org>,
- "Rafael J . Wysocki" <rafael@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, "Hector.Yuan" <hector.yuan@mediatek.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-References: <20240110142305.755367-1-nfraprado@collabora.com>
- <20240110142305.755367-3-nfraprado@collabora.com>
+To: Frank Wunderlich <linux@fw-web.de>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>
+References: <20240105162056.43266-1-linux@fw-web.de>
+ <20240105162056.43266-2-linux@fw-web.de>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  xsFNBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -122,12 +121,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240110142305.755367-3-nfraprado@collabora.com>
+In-Reply-To: <20240105162056.43266-2-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240122_003854_589233_0A85AE3B 
-X-CRM114-Status: GOOD (  22.26  )
+X-CRM114-CacheID: sfid-20240122_005716_247427_1F8F1246 
+X-CRM114-Status: GOOD (  14.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,71 +138,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
 
-On 10/01/2024 15:23, Nícolas F. R. A. Prado wrote:
-> Before proceeding with the probe and enabling frequency scaling for the
-> CPUs, make sure that all supplies feeding the CPUs have probed.
+On 05/01/2024 17:20, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> This fixes an issue observed on MT8195-Tomato where if the
-> mediatek-cpufreq-hw driver enabled the hardware (by writing to
-> REG_FREQ_ENABLE) before the SPMI controller driver (spmi-mtk-pmif),
-> behind which lies the big CPU supply, probed the platform would hang
-> shortly after with "rcu: INFO: rcu_preempt detected stalls on
-> CPUs/tasks" being printed in the log.
+> Add reset constant for using as index in driver and dts.
 > 
-> Fixes: 4855e26bcf4d ("cpufreq: mediatek-hw: Add support for CPUFREQ HW")
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-> 
 > ---
+> v2:
+>   - add missing commit message and SoB
+>   - change value of infrareset to 0
+> ---
+>   include/dt-bindings/reset/mediatek,mt7988-resets.h | 4 ++++
+>   1 file changed, 4 insertions(+)
 > 
-> Changes in v2:
-> - Added this commit
-> 
->   drivers/cpufreq/mediatek-cpufreq-hw.c | 19 ++++++++++++++++++-
->   1 file changed, 18 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
-> index d46afb3c0092..a1aa9385980a 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq-hw.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
-> @@ -13,6 +13,7 @@
->   #include <linux/of.h>
->   #include <linux/of_platform.h>
->   #include <linux/platform_device.h>
-> +#include <linux/regulator/consumer.h>
->   #include <linux/slab.h>
+> diff --git a/include/dt-bindings/reset/mediatek,mt7988-resets.h b/include/dt-bindings/reset/mediatek,mt7988-resets.h
+> index 493301971367..0216eeb249c7 100644
+> --- a/include/dt-bindings/reset/mediatek,mt7988-resets.h
+> +++ b/include/dt-bindings/reset/mediatek,mt7988-resets.h
+> @@ -10,4 +10,8 @@
+>   /* ETHWARP resets */
+>   #define MT7988_ETHWARP_RST_SWITCH		0
 >   
->   #define LUT_MAX_ENTRIES			32U
-> @@ -300,7 +301,23 @@ static struct cpufreq_driver cpufreq_mtk_hw_driver = {
->   static int mtk_cpufreq_hw_driver_probe(struct platform_device *pdev)
->   {
->   	const void *data;
-> -	int ret;
-> +	int ret, cpu;
-> +	struct device *cpu_dev;
-> +	struct regulator *cpu_reg;
+> +/* INFRA resets */
+> +#define MT7988_INFRA_RST0_THERM_CTRL_SWRST	0
 > +
-> +	/* Make sure that all CPU supplies are available before proceeding. */
-> +	for_each_possible_cpu(cpu) {
-> +		cpu_dev = get_cpu_device(cpu);
-> +		if (!cpu_dev)
-> +			return dev_err_probe(&pdev->dev, -EPROBE_DEFER,
-> +					     "Failed to get cpu%d device\n", cpu);
+>   #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT7988 */
 > +
-> +		cpu_reg = devm_regulator_get_optional(cpu_dev, "cpu");
-> +		if (IS_ERR(cpu_reg))
-> +			return dev_err_probe(&pdev->dev, PTR_ERR(cpu_reg),
-> +					     "CPU%d regulator get failed\n", cpu);
-> +	}
-> +
->   
->   	data = of_device_get_match_data(&pdev->dev);
->   	if (!data)
 
