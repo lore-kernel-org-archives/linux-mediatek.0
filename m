@@ -4,43 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E2DEC47DAF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 19:32:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A0ACC47DD3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 19:34:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cF/5WcGtupcAPpyn/342Z0TbwPW0vp8TDhRMkqrhsOk=; b=Iddhgl2740DfB4t4BWy4csb4wN
-	JqXUM5wlTAJVIAohYgt6mBCnqc8tuJnyyuLwnrc8a0kA9K3TVT0z8YeG95F3FmOaNvnsB4md7218v
-	o/Okx6oppxQdEF29yWmlmJY5iN/Rsdxm4jKNz3fr1krpfxw6LPaBMqZFuHPvih0h+cyENNRyR4498
-	nyAzDmHr1KMjNPQEQF4P/jBrOwtyg4bKatixTeISDTtHOqKBq/8cQOwMyX9q01NfzjmvCaMQHnQiJ
-	VaQWuXUWOAPiLrm1JDVgaMYYUZvFnjwU/bjJQR09R6PNdeakI+x1XBBmv+0ZaSrXiwD1P3p14CrcD
-	DmkCwyuA==;
+	bh=/Z6SXTn8YhiWrcZlgd1ZQ8j3V9FW9S8AEHmuF/IWI4A=; b=k7NET/Zy1YR5BtCoS3/1D+zOEr
+	3QUO98Nd7FT29bwQWeEv0zmrVb3Z9KTaAd1tvo4/v3CvPCIWCoIMQ0kIPGlszWqKEih5wqsYJP7de
+	AJlf0+TxSIk/XmWSQXbiXUrD5CgLTngO5w45vq98cpZPfi+db6NzMnaQ0T7I7K9NGcoG49K5E5z7D
+	QqZk2cXlhS9N1JP5bX33STg3mdO5m1ZT0IVWA1L/LTZKAHEgNaNohs54OZXluzsuYAPG4mb5ZqrSK
+	equUwg7/DX1G6tiu1Fg4y34+B7NvN8M1PlEc7cSSk5K24rLgig7iOSjcmzQzWhvqojC8X+6a3IV5g
+	/hid2fXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rS01e-00DjVT-0l;
-	Mon, 22 Jan 2024 19:32:06 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1rS03W-00Djo6-1F;
+	Mon, 22 Jan 2024 19:34:02 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rS01b-00DjUF-0k;
-	Mon, 22 Jan 2024 19:32:04 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1rS010-00082y-1s;
-	Mon, 22 Jan 2024 19:31:27 +0000
-Date: Mon, 22 Jan 2024 19:31:18 +0000
-From: Daniel Golle <daniel@makrotopia.org>
+	id 1rS03T-00Djms-07;
+	Mon, 22 Jan 2024 19:34:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=/Z6SXTn8YhiWrcZlgd1ZQ8j3V9FW9S8AEHmuF/IWI4A=; b=jO/DHwQ3UDrqPgaEKtXlb4KHhO
+	uOoDeXsV8PaWWb+8cBpTjQXStv6T5GVS/7ybW/ZtdJ1r8nBWbNzCHUtWA3OmkVQyxNdroow63o24l
+	u3pH6TnbNKF6aXOkIrgkVw8Ia0qjLYomaVI/PL7XdWk4S9HhXx5mLLyoTnsBu5ggpgO0=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1rS031-005lA4-Eo; Mon, 22 Jan 2024 20:33:31 +0100
+Date: Mon, 22 Jan 2024 20:33:31 +0100
+From: Andrew Lunn <andrew@lunn.ch>
 To: Breno Leitao <leitao@debian.org>
 Cc: kuba@kernel.org, davem@davemloft.net, abeni@redhat.com,
 	edumazet@google.com, Ioana Ciornei <ioana.ciornei@nxp.com>,
-	Andrew Lunn <andrew@lunn.ch>,
 	Heiner Kallweit <hkallweit1@gmail.com>,
 	Russell King <linux@armlinux.org.uk>,
 	Paolo Abeni <pabeni@redhat.com>, Alexander Couzens <lynxis@fe80.eu>,
+	Daniel Golle <daniel@makrotopia.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Jose Abreu <Jose.Abreu@synopsys.com>, dsahern@kernel.org,
@@ -51,7 +56,7 @@ Cc: kuba@kernel.org, davem@davemloft.net, abeni@redhat.com,
 	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 Subject: Re: [PATCH net-next 03/22] net: fill in MODULE_DESCRIPTION()s for
  PCS Layer
-Message-ID: <Za7ChrR88vvqAJ5X@makrotopia.org>
+Message-ID: <52e39a1b-c551-4eea-9606-62be0cbad39f@lunn.ch>
 References: <20240122184543.2501493-1-leitao@debian.org>
  <20240122184543.2501493-4-leitao@debian.org>
 MIME-Version: 1.0
@@ -59,8 +64,8 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20240122184543.2501493-4-leitao@debian.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240122_113203_271745_E548BCE6 
-X-CRM114-Status: GOOD (  13.18  )
+X-CRM114-CacheID: sfid-20240122_113359_070545_AB9B4841 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,12 +80,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Breno,
-
 On Mon, Jan 22, 2024 at 10:45:24AM -0800, Breno Leitao wrote:
 > W=1 builds now warn if module is built without a MODULE_DESCRIPTION().
 > Add descriptions to the LynxI PCS MediaTek's SoC.
-> 
+
+That patch now does more than that.
+
 > Signed-off-by: Breno Leitao <leitao@debian.org>
 > ---
 >  drivers/net/pcs/pcs-lynx.c      | 1 +
@@ -98,44 +103,10 @@ On Mon, Jan 22, 2024 at 10:45:24AM -0800, Breno Leitao wrote:
 >  
 > +MODULE_DESCRIPTION("MediaTek SGMII library for Lynx PCS");
 
-Nah, pcs-lynx.c is used by various SoC vendors **other than MediaTek**
-such as Freescale and STMicroelectronics.
+pcs-lynx is for NXP hardware, not MediaTek.
 
-Users of the pcs-lynx.c driver are
-ethernet/stmicro/stmmac/dwmac-socfpga.c
-ethernet/altera/altera_tse_main.c
-ethernet/freescale/dpaa2/dpaa2-mac.c
-ethernet/freescale/enetc/enetc_pf.c
-ethernet/freescale/fman/fman_memac.c
-dsa/ocelot/felix_vsc9959.c
-dsa/ocelot/seville_vsc9953.c
+    Andrew
 
-
->  MODULE_LICENSE("Dual BSD/GPL");
-> diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
-> index 8501dd365279..4f63abe638c4 100644
-> --- a/drivers/net/pcs/pcs-mtk-lynxi.c
-> +++ b/drivers/net/pcs/pcs-mtk-lynxi.c
-> @@ -303,4 +303,5 @@ void mtk_pcs_lynxi_destroy(struct phylink_pcs *pcs)
->  }
->  EXPORT_SYMBOL(mtk_pcs_lynxi_destroy);
->  
-> +MODULE_DESCRIPTION("MediaTek SGMII library for LynxI");
-
-Ack on this one.
-
->  MODULE_LICENSE("GPL");
-> diff --git a/drivers/net/pcs/pcs-xpcs.c b/drivers/net/pcs/pcs-xpcs.c
-> index 31f0beba638a..9c020dd3c766 100644
-> --- a/drivers/net/pcs/pcs-xpcs.c
-> +++ b/drivers/net/pcs/pcs-xpcs.c
-> @@ -1456,4 +1456,5 @@ struct dw_xpcs *xpcs_create_mdiodev(struct mii_bus *bus, int addr,
->  }
->  EXPORT_SYMBOL_GPL(xpcs_create_mdiodev);
->  
-> +MODULE_DESCRIPTION("Synopsys DesignWare XPCS helpers");
->  MODULE_LICENSE("GPL v2");
-> -- 
-> 2.39.3
-> 
+---
+pw-bot: cr
 
