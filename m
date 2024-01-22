@@ -4,128 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A95A6C4725D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 07:53:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A113C47DAF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 07:54:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xq2E337IRcW0cWdNtXuyvIv8Cc8tASWsvBm9h/Ky4Zc=; b=RQ4ERAB4724rQtza6TGz/PJcPT
-	xjqlRKj6wVIBxoCmLwpmjrfLpfbryMADjtzv//oxJp1nASlfy8f+IqJTLSxsWVzQ6vgQDQMHQ9cbU
-	E64uNbTbyAG5QSzHfPODUoly0KCDq0MXvIyXoi+D+7a+xgTiztvnsyAcVD9TZl8+dWLOqFsgrfrJY
-	+b9sdAMeeBzCljMGCPT+XPw0yyZD9QMgWOWCJYzIjqLIVDrch5Nujd2B3Vyw6Ac+X/UvXfRUMxjiH
-	o8rz2FhbJFU8seZdly9/9qhd1cEn8L4TL0nlYLNLxcAQK4zEGjFAzsTtto6bcxvKhG/AoAlTwa7rQ
-	/AaLeWgQ==;
+	bh=NFTySZLknwOIa/6XryFgCM80LO0RtuAMQ/mEo405xFw=; b=AV0Jxf9HPRKSzs4ELtNm+Mx7f8
+	IlV0gexHSOoT40hOvCAXlkp2qpaf+L6WMpdV/3U2uuGIc7VpYxM6Ms3L/4l3/lIJZHzeRfbwQy2KW
+	LXquXtWa/kXMdrPglUHEvRl296gWPGJRZkvR1iRi2mF5FYoKAhSPSVyLjyrNsiuz+skNwKWC1ukZ+
+	ekqIatN4EF9ZNEPEV6vJa57RSoNXFsA/rlzagejayPWW2u317nVz29QBTfzZcG7/Uptvp0atSzo1l
+	+sQRXKQ944x3iqW19cC8RlrpdL1xmNLhWQYoH61Waik4o86z4+pvZBTdpVlSoBYXgU4T6MEBjOuVH
+	HTMKn8Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRp79-00AvpV-1k;
-	Mon, 22 Jan 2024 07:53:03 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1rRp8k-00Aw91-0l;
+	Mon, 22 Jan 2024 07:54:42 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRp75-00AvoO-1e;
-	Mon, 22 Jan 2024 07:53:00 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-40eacb6067dso9033375e9.1;
-        Sun, 21 Jan 2024 23:52:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1705909974; x=1706514774; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Xq2E337IRcW0cWdNtXuyvIv8Cc8tASWsvBm9h/Ky4Zc=;
-        b=fPiroVuVzX79mMcPW7q9smeFQpTpQjm0jR9CX+6fI9I3KWrNS28JWh4Q/ULqG+NQTH
-         WcJA37pBtpkoSKVD1VOY19kquLMFYbtDNX2WanCGInkLt0zUTDxrPZ95CH94xHkh5VcR
-         wv3J2fbVFSTTDj+7ZArgmp+WCFI5HzmN8KOWCdMI2gYxvpRAy7UV3f+e+ajnRiZH1bkg
-         +dkAFb+dXn00Vbe9HE5VLOby2/9f725JVgoFfIPIXj/QYpxKLvOLxnd7gp1xsnyyM9vc
-         qzzatGFMCsOQla/oRq1BTmO16LHYecSLvcnA9hzw27/I1b6Sk/6iBXAHOTw/DXASd5Gq
-         tyiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705909974; x=1706514774;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Xq2E337IRcW0cWdNtXuyvIv8Cc8tASWsvBm9h/Ky4Zc=;
-        b=eM9xtT3SPZP7DOXYsyWzfMN7NU3V1+rhpYUL+hu3uGCCSBOAMYfOZTy6s7tRtp4qO9
-         0+hiN0erM1EPq84vveFMYmNLtUX9tkGkY4/Tymgpm6p5D5QJ58E+ezTO/HSo0jBkzUCr
-         NGOmI2ocTflAKo3Xs6paPXy0uoPN7R5CDqP2Xn6ivZadfYfhaVf4OxsoX95PVkkOfpr3
-         BRkRXS9rKkqILLlgWRlQGoltJbCAdkcSoB+aMkDSnuj9H5gFjUKfzaQ0oI4pNBcHD+pD
-         p9uMSJGe9QWIxoAjJQcS352Yw5m1EAI4+u63WyMaJ66pd7YdhkqjQTbQhnhIr5y+GiKf
-         zuaQ==
-X-Gm-Message-State: AOJu0YzA8yCxIE+w9949P0cjSXkh4xmPWD2pKem9BRllyHY5BTqtbEyg
-	rL8clafcL/7GYPNGVS3NGSsgPgvn/LBtnDCTKqy4LPtju4iLKfPu
-X-Google-Smtp-Source: AGHT+IFJHGkQRJaf19kskcpBx7XRwZ3XpSWByp8JSPuZ+7TlwGl7DNPYEZ42exxLImc8MW6iW7JxMA==
-X-Received: by 2002:a05:600c:3d8f:b0:40e:872f:d09f with SMTP id bi15-20020a05600c3d8f00b0040e872fd09fmr1024225wmb.121.1705909973812;
-        Sun, 21 Jan 2024 23:52:53 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.161.188])
-        by smtp.gmail.com with ESMTPSA id f7-20020adff8c7000000b0033921c383b2sm7841170wrq.67.2024.01.21.23.52.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 21 Jan 2024 23:52:52 -0800 (PST)
-Message-ID: <c5898964-819e-473f-94ac-61503db50a0f@gmail.com>
-Date: Mon, 22 Jan 2024 08:52:51 +0100
+	id 1rRp8e-00Aw7P-1v;
+	Mon, 22 Jan 2024 07:54:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 2051CCE2863;
+	Mon, 22 Jan 2024 07:54:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50038C433C7;
+	Mon, 22 Jan 2024 07:54:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1705910073;
+	bh=2su90Gj5IaJlBWuPLJpwINxwihDs/8h9SYfAyTVMhWA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=hTAKZoKLuH2t2yUIgq5LHKfcopj5o9NUM1gYLq++7+wP6PY7JFs6T3gCgeeFtXSik
+	 T2sVtvlVa4Py4S1IwOwV3L/EUnwe55mlkd1Dx/FKOtd6FJZmLxvFYsCGVKWlAjVZO3
+	 prHwnb9QzikZhY4Rk6DYAkjKYU2qxnzudtEJHWwk6Mso/i5aWNJgkY7fedEtVDJ9UA
+	 sRZfgxYEi6KvQTbj5dsoRjtKiaBeA/kjq5drKQ0eLaYUC9DRmeVuDrXPLeQUWejWrX
+	 ua8LxiATeUmVmJvtnGIK9DvUkXUjPUM4qlamgUk6yuJr3IuchUXLdng4pzxeMojuV0
+	 M1LXZIH7hd4sQ==
+Message-ID: <3c40c1fb-fafc-47e2-acd0-360d7456e93b@kernel.org>
+Date: Mon, 22 Jan 2024 08:54:27 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: usb: mtu3: Add MT8195 MTU3 ip-sleep
+Subject: Re: [PATCH 8/8] arm64: dts: qcom: ipq5018-rdp432-c2: enable ethernet
  support
-Content-Language: en-US, ca-ES, es-ES
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- chunfeng.yun@mediatek.com
-Cc: gregkh@linuxfoundation.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-References: <20240112133222.240038-1-angelogioacchino.delregno@collabora.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Autocrypt: addr=matthias.bgg@gmail.com; keydata=
- xsFNBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
- fL3eT7ZsYV5nur7zctmJ+vbszoOASXUpfq8M+S5hU2w7sBaVk5rpH9yW8CUWz2+ZpQXPJcFa
- OhLZuSKB1F5JcvLbETRjNzNU7B3TdS2+zkgQQdEyt7Ij2HXGLJ2w+yG2GuR9/iyCJRf10Okq
- gTh//XESJZ8S6KlOWbLXRE+yfkKDXQx2Jr1XuVvM3zPqH5FMg8reRVFsQ+vI0b+OlyekT/Xe
- 0Hwvqkev95GG6x7yseJwI+2ydDH6M5O7fPKFW5mzAdDE2g/K9B4e2tYK6/rA7Fq4cqiAw1+u
- EgO44+eFgv082xtBez5WNkGn18vtw0LW3ESmKh19u6kEGoi0WZwslCNaGFrS4M7OH+aOJeqK
- fx5dIv2CEbxc6xnHY7dwkcHikTA4QdbdFeUSuj4YhIZ+0QlDVtS1QEXyvZbZky7ur9rHkZvP
- ZqlUsLJ2nOqsmahMTIQ8Mgx9SLEShWqD4kOF4zNfPJsgEMB49KbS2o9jxbGB+JKupjNddfxZ
- HlH1KF8QwCMZEYaTNogrVazuEJzx6JdRpR3sFda/0x5qjTadwIW6Cl9tkqe2h391dOGX1eOA
- 1ntn9O/39KqSrWNGvm+1raHK+Ev1yPtn0Wxn+0oy1tl67TxUjQARAQABzSlNYXR0aGlhcyBC
- cnVnZ2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPsLBkgQTAQIAPAIbAwYLCQgHAwIGFQgC
- CQoLBBYCAwECHgECF4AWIQTmuZIYwPLDJRwsOhfZFAuyVhMC8QUCWt3scQIZAQAKCRDZFAuy
- VhMC8WzRD/4onkC+gCxG+dvui5SXCJ7bGLCu0xVtiGC673Kz5Aq3heITsERHBV0BqqctOEBy
- ZozQQe2Hindu9lasOmwfH8+vfTK+2teCgWesoE3g3XKbrOCB4RSrQmXGC3JYx6rcvMlLV/Ch
- YMRR3qv04BOchnjkGtvm9aZWH52/6XfChyh7XYndTe5F2bqeTjt+kF/ql+xMc4E6pniqIfkv
- c0wsH4CkBHqoZl9w5e/b9MspTqsU9NszTEOFhy7p2CYw6JEa/vmzR6YDzGs8AihieIXDOfpT
- DUr0YUlDrwDSrlm/2MjNIPTmSGHH94ScOqu/XmGW/0q1iar/Yr0leomUOeeEzCqQtunqShtE
- 4Mn2uEixFL+9jiVtMjujr6mphznwpEqObPCZ3IcWqOFEz77rSL+oqFiEA03A2WBDlMm++Sve
- 9jpkJBLosJRhAYmQ6ey6MFO6Krylw1LXcq5z1XQQavtFRgZoruHZ3XlhT5wcfLJtAqrtfCe0
- aQ0kJW+4zj9/So0uxJDAtGuOpDYnmK26dgFN0tAhVuNInEVhtErtLJHeJzFKJzNyQ4GlCaLw
- jKcwWcqDJcrx9R7LsCu4l2XpKiyxY6fO4O8DnSleVll9NPfAZFZvf8AIy3EQ8BokUsiuUYHz
- wUo6pclk55PZRaAsHDX/fNr24uC6Eh5oNQ+v4Pax/gtyyc7BTQRd1TlIARAAm78mTny44Hwd
- IYNK4ZQH6U5pxcJtU45LLBmSr4DK/7er9chpvJ5pgzCGuI25ceNTEg5FChYcgfNMKqwCAekk
- V9Iegzi6UK448W1eOp8QeQDS6sHpLSOe8np6/zvmUvhiLokk7tZBhGz+Xs5qQmJPXcag7AMi
- fuEcf88ZSpChmUB3WflJV2DpxF3sSon5Ew2i53umXLqdRIJEw1Zs2puDJaMqwP3wIyMdrfdI
- H1ZBBJDIWV/53P52mKtYQ0Khje+/AolpKl96opi6o9VLGeqkpeqrKM2cb1bjo5Zmn4lXl6Nv
- JRH/ZT68zBtOKUtwhSlOB2bE8IDonQZCOYo2w0opiAgyfpbij8uiI7siBE6bWx2fQpsmi4Jr
- ZBmhDT6n/uYleGW0DRcZmE2UjeekPWUumN13jaVZuhThV65SnhU05chZT8vU1nATAwirMVeX
- geZGLwxhscduk3nNb5VSsV95EM/KOtilrH69ZL6Xrnw88f6xaaGPdVyUigBTWc/fcWuw1+nk
- GJDNqjfSvB7ie114R08Q28aYt8LCJRXYM1WuYloTcIhRSXUohGgHmh7usl469/Ra5CFaMhT3
- yCVciuHdZh3u+x+O1sRcOhaFW3BkxKEy+ntxw8J7ZzhgFOgi2HGkOGgM9R03A6ywc0sPwbgk
- gF7HCLirshP2U/qxWy3C8DkAEQEAAcLBdgQYAQgAIBYhBOa5khjA8sMlHCw6F9kUC7JWEwLx
- BQJd1TlIAhsMAAoJENkUC7JWEwLxtdcP/jHJ9vI8adFi1HQoWUKCQbZdZ5ZJHayFKIzU9kZE
- /FHzzzMDZYFgcCTs2kmUVyGloStXpZ0WtdCMMB31jBoQe5x9LtICHEip0irNXm80WsyPCEHU
- 3wx91QkOmDJftm6T8+F3lqhlc3CwJGpoPY7AVlevzXNJfATZR0+Yh9NhON5Ww4AjsZntqQKx
- E8rrieLRd+he57ZdRKtRRNGKZOS4wetNhodjfnjhr4Z25BAssD5q+x4uaO8ofGxTjOdrSnRh
- vhzPCgmP7BKRUZA0wNvFxjboIw8rbTiOFGb1Ebrzuqrrr3WFuK4C1YAF4CyXUBL6Z1Lto//i
- 44ziQUK9diAgfE/8GhXP0JlMwRUBlXNtErJgItR/XAuFwfO6BOI43P19YwEsuyQq+rubW2Wv
- rWY2Bj2dXDAKUxS4TuLUf2v/b9Rct36ljzbNxeEWt+Yq4IOY6QHnE+w4xVAkfwjT+Vup8sCp
- +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
- 7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
- a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240112133222.240038-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Ziyang Huang <hzyitc@outlook.com>, mcoquelin.stm32@gmail.com
+Cc: alexandre.torgue@foss.st.com, richardcochran@gmail.com,
+ p.zabel@pengutronix.de, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <TYZPR01MB55563BD6A2B78402E4BB44D4C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
+ <TYZPR01MB5556D3E73D7F7242F810F915C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <TYZPR01MB5556D3E73D7F7242F810F915C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240121_235259_552968_7DF85129 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20240121_235436_999903_BB267E11 
+X-CRM114-Status: GOOD (  14.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,34 +121,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 21/01/2024 13:42, Ziyang Huang wrote:
+> Signed-off-by: Ziyang Huang <hzyitc@outlook.com>
 
+Missing commit msg.
 
-On 12/01/2024 14:32, AngeloGioacchino Del Regno wrote:
-> Of the four USB controllers present on the MediaTek MT8195 SoC, three
-> of them (0, 2 and 3) are behind MTU3: add wakeup controls for them.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Please use scripts/get_maintainers.pl to get a list of necessary people
+and lists to CC. It might happen, that command when run on an older
+kernel, gives you outdated entries. Therefore please be sure you base
+your patches on recent Linux kernel.
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Tools like b4 or scripts_getmaintainer.pl provide you proper list of
+people, so fix your workflow. Tools might also fail if you work on some
+ancient tree (don't, use mainline), work on fork of kernel (don't, use
+mainline) or you ignore some maintainers (really don't). Just use b4 and
+all the problems go away.
+
+You missed at least devicetree list (maybe more), so this won't be
+tested by automated tooling. Performing review on untested code might be
+a waste of time, thus I will skip this patch entirely till you follow
+the process allowing the patch to be tested.
+
+Please kindly resend and include all necessary To/Cc entries.
+
 
 > ---
->   Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml | 5 ++++-
->   1 file changed, 4 insertions(+), 1 deletion(-)
+>  .../arm64/boot/dts/qcom/ipq5018-rdp432-c2.dts | 52 +++++++++++++++++++
+>  1 file changed, 52 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-> index a59d91243ac8..d4e187c78a0b 100644
-> --- a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-> @@ -185,7 +185,10 @@ properties:
->               2 - used by mt2712 etc, revision 2 with following IPM rule;
->               101 - used by mt8183, specific 1.01;
->               102 - used by mt8192, specific 1.02;
-> -          enum: [1, 2, 101, 102]
-> +            103 - used by mt8195, IP0, specific 1.03;
-> +            105 - used by mt8195, IP2, specific 1.05;
-> +            106 - used by mt8195, IP3, specific 1.06;
-> +          enum: [1, 2, 101, 102, 103, 105, 106]
->   
->     mediatek,u3p-dis-msk:
->       $ref: /schemas/types.yaml#/definitions/uint32
+> diff --git a/arch/arm64/boot/dts/qcom/ipq5018-rdp432-c2.dts b/arch/arm64/boot/dts/qcom/ipq5018-rdp432-c2.dts
+> index e636a1cb9b77..074b78d7939c 100644
+> --- a/arch/arm64/boot/dts/qcom/ipq5018-rdp432-c2.dts
+> +++ b/arch/arm64/boot/dts/qcom/ipq5018-rdp432-c2.dts
+> @@ -15,6 +15,9 @@ / {
+>  
+>  	aliases {
+>  		serial0 = &blsp1_uart1;
+> +
+
+Drop.
+
+> +		ethernet0 = &gmac0;
+> +		ethernet1 = &gmac1;
+
+Keep alphabetical order.
+
+>  	};
+>  
+>  	chosen {
+> @@ -43,6 +46,22 @@ &sleep_clk {
+>  };
+>  
+>  &tlmm {
+> +	mdio1_pins: mdio1_pins {
+
+This wasn't ever tested. NAK.
+
+It does not look like you tested the DTS against bindings. Please run
+`make dtbs_check W=1` (see
+Documentation/devicetree/bindings/writing-schema.rst or
+https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
+for instructions).
+
+
+Best regards,
+Krzysztof
+
 
