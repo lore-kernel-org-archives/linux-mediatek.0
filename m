@@ -4,77 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17471C4725D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 13:04:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E819C4725D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 13:05:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b5i5G2yOiZ9eUfCJ43ewBhDOr7UpvLXAZLm3dzR9tTw=; b=AX82dfQC4pIeZqhaCBkUYtNjmH
-	zaYdXaH3/0pgLMtDnYfCwTkNffr2rMqli/qY3prawZo6zhK3Ah/PpbpAmFnO4gkZTDMHXEUkIs3zz
-	7AGCfckf8b12kgIam8oVU4yQI/4X7vOsn1sE6U4iQ6Qs0uP6h3cuImERx4JaI1cZXRanm4yvEDvBJ
-	B737mHdJQUTi9YwN273uxqyChwy8+NrueTBi8gQOo8QYTlfPaubIgr5em55v9m4a9lpi4JbBwPmGK
-	8HhTgnaaQrxhfmqqStoOT/IKDHEthMQXX379xWurEoHoQ5k7g/sAd5lw+hpDmCc9YlSGaRj7z+Aam
-	klyBpIGg==;
+	bh=Mp/8xDRCZjv5y4KcPViCiBMqajiVKRc1465woAo3Ngo=; b=xbAKToD1kticSfC5S3SRF4PNqN
+	w3irDE5wsqRHW1ZFd32ENB0H3VWWmcNK6Dw5Hbrnz8PaSd65X9u6BSie9NT2JA/JBTXU/AAvIxYts
+	AXNjVTenGN++w/sru8045iek1wS68MukEj0mnqULUW0G+cfl4t+P9H7Uaq+lwv0j4ZbMa1FkdV0Cr
+	SA+Nymd6QePTMOrquwejp3ShBnBBaV3pi+iOFEPIRG2a7Ec8qdyL3LHld/n6VC2QsBYprxttkNPuQ
+	BfEgrTjasopLKrsDuDcSe5tOULuh6NT/Sd5rmV8sZ0pivfCPgOGLPyhlo+EWH7Z/B0iQSq80jrMSn
+	wNRBh3XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRtyb-00CDPQ-2C;
-	Mon, 22 Jan 2024 13:04:33 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1rRtzY-00CDYM-27;
+	Mon, 22 Jan 2024 13:05:32 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRtyY-00CDOS-1N
-	for linux-mediatek@lists.infradead.org;
-	Mon, 22 Jan 2024 13:04:31 +0000
-Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-337d05b8942so3580294f8f.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 22 Jan 2024 05:04:30 -0800 (PST)
+	id 1rRtzU-00CDWh-20;
+	Mon, 22 Jan 2024 13:05:29 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-33921b95dddso1404376f8f.1;
+        Mon, 22 Jan 2024 05:05:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1705928669; x=1706533469; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1705928727; x=1706533527; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=b5i5G2yOiZ9eUfCJ43ewBhDOr7UpvLXAZLm3dzR9tTw=;
-        b=HE0T2akuoeHvvd4SG6RDKwWN6aA5O3Y5kBSjmW4wpet8NCVkB2LrzXwA9exAFuJges
-         MRy7wkd8B49wzemF8bB0IBE9k+zZoYuNTSPmjclIJv2bHfDRYxlwFBwLfQYkKBwClaFT
-         MPF2GJmP7xkzwAuMzXgs0xffxXxQlk7JUN4zzPc7NLQI+W8sThUmAtG/6YQEyp3X6Zp9
-         V7+LO3RKAPLSdjSsdNgvXHbDCKwRWwDwQLAWvQCIjWOCuMrdoSZqUMS09rpYtJ5KUGBk
-         T4fZ2F5j4t5+vSOl64eYQaY2+WtuV1PcfEhlEU/4cg6q69dp3wk8e0aZ6sPafnVM5bYf
-         tShQ==
+        bh=Mp/8xDRCZjv5y4KcPViCiBMqajiVKRc1465woAo3Ngo=;
+        b=fvGIFEVTfGWnDIeszPSTclTxrpUmXLIeGL0Sjl7vwZcHR9gerqUhI64P7XzHxl5uaz
+         WmFM9sbIgn3qgP3endc/g+qTAenYfqHWjPANVrnKP1kN7kEUC+K1AroPTo3l8tAExdKy
+         PJyio6LUvlJOnaD56EudWItShrwzhiWlOzet0fDFX2PLWIihR9hAoPtz2htuWvhUp9EI
+         BezpuwxMo0Kb4KRsRFUSNK8jGsCJcIMDoaqIkIZt2TzAbeEilbkDwpa+o4MZiXrhpp7K
+         oD8NYltrqr90KhD+LTf5Q7WST1pglHAhA6wR2mcKyXGG4KTkAkcgQW6SI4RPRfi2rEAL
+         ksYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705928669; x=1706533469;
+        d=1e100.net; s=20230601; t=1705928727; x=1706533527;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=b5i5G2yOiZ9eUfCJ43ewBhDOr7UpvLXAZLm3dzR9tTw=;
-        b=EFq7JdR5W5mgMa01k3VJJDUg4e7c+/DVkHUMdlG18uL3Xaze2HM7tYy8KuQ9/513x6
-         tbBmjiZoT11zrJIjS45pbBHjas4/buxTUdzvhCBSC+IlPegx7jYLXoY2D0sqFovCxAZ2
-         5p+Lu8M2t4nL77oZLilZEDEMwV7fAQW1vk1gHRSJ3cSIZ4R73i3F2U+/QvWtCPPOTjkm
-         huiXmcYLd6rFCWhBjDlFUwocx013VRdLKxlsWNNU6ouYZR7t225K7i84XBl7w03LN9XY
-         XYAjOyyBlk7Ll9YiD0DjkrUvfOiYANcaBnatf7rtw6zF0U+yL+1oA9kmrlalGcIRG9kB
-         +1mw==
-X-Gm-Message-State: AOJu0Yx2ATsAh2QdFxXXDg/9P9xfRsFsFeG9Hm2jijHy1kw2Lr7uk9z6
-	72F6n3Hv8O49kHKk4HYhr2RlHjXrOBkmPwhWx8Duk2kJ/K23wpVsA+fg0s13zUI=
-X-Google-Smtp-Source: AGHT+IFEwCw0xRZ5fWkZBBlXy0WRBGNeZjfGjgZlMdlbQ214K4W0SCXesS7Z9/c7od+omdRrJHzUOQ==
-X-Received: by 2002:a05:600c:4486:b0:40e:49c6:bb97 with SMTP id e6-20020a05600c448600b0040e49c6bb97mr2471766wmo.160.1705928668631;
-        Mon, 22 Jan 2024 05:04:28 -0800 (PST)
+        bh=Mp/8xDRCZjv5y4KcPViCiBMqajiVKRc1465woAo3Ngo=;
+        b=PUCs9urK2DIbnRhKuWE+KTHReW6ZJx/kw1S4CM0TbcvkjNvLQ2+rAXaTVcmCmUtYEl
+         fiPuUotHRFA7p4x42n2XfF+soPnzDVIrEaS18dKm8/H6Swg4Ht5XsLs4EB0yJs1fw6q+
+         QwCHW0ScF3K7dgspDRH8RjMe7VgYF7tZAzyKwg4R/x0tESjsvou7enJKumGGrRXpZQDW
+         CMHb999sXZZLdqxqYWsF4DneVINwUf3z0opnyW02YU9k6gFbCEQHu3qamy0wOqA/grwL
+         SmfFPGinl9j0dkkO8m4UWIan8HGmqkNS8gD87vU4HhRbQCU11A940UJWL+3NHDfIXCcU
+         yRpQ==
+X-Gm-Message-State: AOJu0YwdoGgWiCb/vMvD1J0JrDS5xxy8Lr28KJO2IklzcHDBMJ7u8Inu
+	ONjX8fwPfyPSGZHnLy7KUwTU+4NdnIuWg0nvs0CQ3xxtYQABkRpWjw2F7yYbr04=
+X-Google-Smtp-Source: AGHT+IFHmjEmeu7pWua+wi7iLe6qjSDVPRL27NITeBmGF9vpz49mzsF7SGDLAVjMhHv73ZtGi6vZHg==
+X-Received: by 2002:a05:600c:3509:b0:40d:8881:4d1e with SMTP id h9-20020a05600c350900b0040d88814d1emr2236549wmq.66.1705928726767;
+        Mon, 22 Jan 2024 05:05:26 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.161.188])
-        by smtp.gmail.com with ESMTPSA id h10-20020adff4ca000000b0033925aa222dsm6846512wrp.57.2024.01.22.05.04.27
+        by smtp.gmail.com with ESMTPSA id h10-20020adff4ca000000b0033925aa222dsm6846512wrp.57.2024.01.22.05.05.25
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 22 Jan 2024 05:04:27 -0800 (PST)
-Message-ID: <327767c1-4358-4ccc-abc0-24c35d33e3a1@gmail.com>
-Date: Mon, 22 Jan 2024 14:04:26 +0100
+        Mon, 22 Jan 2024 05:05:25 -0800 (PST)
+Message-ID: <5339e8b2-8fcd-498a-b9d8-2dc2e3ddb272@gmail.com>
+Date: Mon, 22 Jan 2024 14:05:25 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] media: mediatek: vcodec: drop excess struct members
- descriptions
+Subject: Re: [PATCH v2 2/2] usb: mtu3: Add MT8195 MTU3 ip-sleep wakeup support
 Content-Language: en-US, ca-ES, es-ES
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>,
- Sebastian Fricke <sebastian.fricke@collabora.com>,
- Chen-Yu Tsai <wenst@chromium.org>, linux-mediatek@lists.infradead.org
-References: <092cc12f-c671-45b8-bfd1-7a4d1daab4c5@xs4all.nl>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ chunfeng.yun@mediatek.com
+Cc: gregkh@linuxfoundation.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>
+References: <20240122111809.148546-1-angelogioacchino.delregno@collabora.com>
+ <20240122111809.148546-2-angelogioacchino.delregno@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  xsFNBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -119,12 +120,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <092cc12f-c671-45b8-bfd1-7a4d1daab4c5@xs4all.nl>
+In-Reply-To: <20240122111809.148546-2-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240122_050430_460864_4641D3C6 
-X-CRM114-Status: GOOD (  11.69  )
+X-CRM114-CacheID: sfid-20240122_050528_660220_9E596DBC 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,44 +142,75 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 22/01/2024 10:26, Hans Verkuil wrote:
-> Drop obsolete @wait_key_frame and @mv_joint struct member descriptions.
+On 22/01/2024 12:18, AngeloGioacchino Del Regno wrote:
+> Add support for the ip-sleep wakeup functionality on the three MTU3
+> controllers found on the MT8195 SoC.
 > 
-> This fixes two warnings:
-> 
-> drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c:57: warning: Excess struct member 'wait_key_frame' description in 'vdec_vp8_slice_info'
-> drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c:166: warning: Excess struct member 'mv_joint' description in 'vdec_vp9_slice_counts_map'
-> 
-> Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
-> I plan to merge this Wednesday, since this causes annoying compile warnings.
-> ---
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
-> index f64b21c07169..f677e499fefa 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
-> @@ -37,7 +37,6 @@
->    * @bs_sz:		bitstream size
->    * @resolution_changed:resolution change flag 1 - changed,  0 - not change
->    * @frame_header_type:	current frame header type
-> - * @wait_key_frame:	wait key frame coming
->    * @crc:		used to check whether hardware's status is right
->    * @reserved:		reserved, currently unused
->    */
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-> index 69d37b93bd35..cf48d09b78d7 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-> @@ -141,7 +141,6 @@ struct vdec_vp9_slice_frame_counts {
->    * @skip:	skip counts.
->    * @y_mode:	Y prediction mode counts.
->    * @filter:	interpolation filter counts.
-> - * @mv_joint:	motion vector joint counts.
->    * @sign:	motion vector sign counts.
->    * @classes:	motion vector class counts.
->    * @class0:	motion vector class0 bit counts.
 > 
+> Changes in v2:
+>   - Dropped unused definition for WC0_IS_EN_P1_95
+> 
+>   drivers/usb/mtu3/mtu3_host.c | 30 ++++++++++++++++++++++++++++++
+>   1 file changed, 30 insertions(+)
+> 
+> diff --git a/drivers/usb/mtu3/mtu3_host.c b/drivers/usb/mtu3/mtu3_host.c
+> index 9f2be22af844..7c657ea2dabd 100644
+> --- a/drivers/usb/mtu3/mtu3_host.c
+> +++ b/drivers/usb/mtu3/mtu3_host.c
+> @@ -34,6 +34,18 @@
+>   #define WC0_SSUSB0_CDEN		BIT(6)
+>   #define WC0_IS_SPM_EN		BIT(1)
+>   
+> +/* mt8195 */
+> +#define PERI_WK_CTRL0_8195	0x04
+> +#define WC0_IS_P_95		BIT(30)	/* polarity */
+> +#define WC0_IS_C_95(x)		((u32)(((x) & 0x7) << 27))
+> +#define WC0_IS_EN_P3_95		BIT(26)
+> +#define WC0_IS_EN_P2_95		BIT(25)
+> +
+> +#define PERI_WK_CTRL1_8195	0x20
+> +#define WC1_IS_C_95(x)		((u32)(((x) & 0xf) << 28))
+> +#define WC1_IS_P_95		BIT(12)
+> +#define WC1_IS_EN_P0_95		BIT(6)
+> +
+>   /* mt2712 etc */
+>   #define PERI_SSUSB_SPM_CTRL	0x0
+>   #define SSC_IP_SLEEP_EN	BIT(4)
+> @@ -44,6 +56,9 @@ enum ssusb_uwk_vers {
+>   	SSUSB_UWK_V2,
+>   	SSUSB_UWK_V1_1 = 101,	/* specific revision 1.01 */
+>   	SSUSB_UWK_V1_2,		/* specific revision 1.02 */
+> +	SSUSB_UWK_V1_3,		/* mt8195 IP0 */
+> +	SSUSB_UWK_V1_5 = 105,	/* mt8195 IP2 */
+> +	SSUSB_UWK_V1_6,		/* mt8195 IP3 */
+>   };
+>   
+>   /*
+> @@ -70,6 +85,21 @@ static void ssusb_wakeup_ip_sleep_set(struct ssusb_mtk *ssusb, bool enable)
+>   		msk = WC0_SSUSB0_CDEN | WC0_IS_SPM_EN;
+>   		val = enable ? msk : 0;
+>   		break;
+> +	case SSUSB_UWK_V1_3:
+> +		reg = ssusb->uwk_reg_base + PERI_WK_CTRL1_8195;
+> +		msk = WC1_IS_EN_P0_95 | WC1_IS_C_95(0xf) | WC1_IS_P_95;
+> +		val = enable ? (WC1_IS_EN_P0_95 | WC1_IS_C_95(0x1)) : 0;
+> +		break;
+> +	case SSUSB_UWK_V1_5:
+> +		reg = ssusb->uwk_reg_base + PERI_WK_CTRL0_8195;
+> +		msk = WC0_IS_EN_P2_95 | WC0_IS_C_95(0x7) | WC0_IS_P_95;
+> +		val = enable ? (WC0_IS_EN_P2_95 | WC0_IS_C_95(0x1)) : 0;
+> +		break;
+> +	case SSUSB_UWK_V1_6:
+> +		reg = ssusb->uwk_reg_base + PERI_WK_CTRL0_8195;
+> +		msk = WC0_IS_EN_P3_95 | WC0_IS_C_95(0x7) | WC0_IS_P_95;
+> +		val = enable ? (WC0_IS_EN_P3_95 | WC0_IS_C_95(0x1)) : 0;
+> +		break;
+>   	case SSUSB_UWK_V2:
+>   		reg = ssusb->uwk_reg_base + PERI_SSUSB_SPM_CTRL;
+>   		msk = SSC_IP_SLEEP_EN | SSC_SPM_INT_EN;
 
