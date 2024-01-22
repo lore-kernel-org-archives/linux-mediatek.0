@@ -4,81 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2D9EC4725D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 07:29:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A95A6C4725D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 07:53:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lCnmdq66XmjZoBv44BM5Iul1c6YAS75MAAm26+CD69Q=; b=bMru2VXnvPWI5v28SWSFz1ccEW
-	+1sEpYPzRI6SEfqXhe21lR9EHFEJzZUMjKhkCGD63Ovtdf4rELcV3QlNvSRZZzEJRv0E+W8jcoBbs
-	mJeefbX3x6tCoqtEwQVSAIooBDxH1O+cW26jLbLRgEclstYOJv7Bh4+576CQKh838Tfya7SBj1DlO
-	aVvPNjr7teFSYHze/ERt53zvzYq6dTHd9M1M9X67mYiNQR/m/Y73mYHou/6CLzHehzzX7yNkNH3UP
-	Xa0BEqj6M76T5TKG4guRJig/pnnF7RWtK3KUiPfocdNW6Kt6S5nIEniumFPyq49w/5CajJVGS6SHz
-	1K88suYw==;
+	bh=Xq2E337IRcW0cWdNtXuyvIv8Cc8tASWsvBm9h/Ky4Zc=; b=RQ4ERAB4724rQtza6TGz/PJcPT
+	xjqlRKj6wVIBxoCmLwpmjrfLpfbryMADjtzv//oxJp1nASlfy8f+IqJTLSxsWVzQ6vgQDQMHQ9cbU
+	E64uNbTbyAG5QSzHfPODUoly0KCDq0MXvIyXoi+D+7a+xgTiztvnsyAcVD9TZl8+dWLOqFsgrfrJY
+	+b9sdAMeeBzCljMGCPT+XPw0yyZD9QMgWOWCJYzIjqLIVDrch5Nujd2B3Vyw6Ac+X/UvXfRUMxjiH
+	o8rz2FhbJFU8seZdly9/9qhd1cEn8L4TL0nlYLNLxcAQK4zEGjFAzsTtto6bcxvKhG/AoAlTwa7rQ
+	/AaLeWgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRojx-00AqvH-26;
-	Mon, 22 Jan 2024 07:29:05 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1rRp79-00AvpV-1k;
+	Mon, 22 Jan 2024 07:53:03 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRojv-00Aqul-0n;
-	Mon, 22 Jan 2024 07:29:04 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-40e800461baso34971285e9.3;
-        Sun, 21 Jan 2024 23:29:00 -0800 (PST)
+	id 1rRp75-00AvoO-1e;
+	Mon, 22 Jan 2024 07:53:00 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-40eacb6067dso9033375e9.1;
+        Sun, 21 Jan 2024 23:52:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1705908539; x=1706513339; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1705909974; x=1706514774; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=lCnmdq66XmjZoBv44BM5Iul1c6YAS75MAAm26+CD69Q=;
-        b=ADjN3BQpU5MT4mDS/4UjvujxxK0lU7yxovP4dzg1zCLvppXSQjWlqj3n+jdNQY2CUd
-         chbC1TDbfRmOk/C7cXhFp3d9+2Oor1G0CpKQY9pC+1lQRBxaYOmoC5zcCgq/jMpgrwZU
-         +A/2V7Elhb9Oq/b8dryN6eF2gq89lMyJIUgDBF4cdUSi0UzfMdGGzdhaENW3H/V2GFUq
-         Uz99udFfgYSwCFDwm/aifuRCZ+8Y6RieTOLp/Jss8rwvIbCHR0HB2Uppg/cvoLVVOVXS
-         libnzu0aF8ixpBWG4g6eouQV0dA144fJMyNDb4I640HqywfPuYiD/w677utFBXJBeTUs
-         H9bg==
+        bh=Xq2E337IRcW0cWdNtXuyvIv8Cc8tASWsvBm9h/Ky4Zc=;
+        b=fPiroVuVzX79mMcPW7q9smeFQpTpQjm0jR9CX+6fI9I3KWrNS28JWh4Q/ULqG+NQTH
+         WcJA37pBtpkoSKVD1VOY19kquLMFYbtDNX2WanCGInkLt0zUTDxrPZ95CH94xHkh5VcR
+         wv3J2fbVFSTTDj+7ZArgmp+WCFI5HzmN8KOWCdMI2gYxvpRAy7UV3f+e+ajnRiZH1bkg
+         +dkAFb+dXn00Vbe9HE5VLOby2/9f725JVgoFfIPIXj/QYpxKLvOLxnd7gp1xsnyyM9vc
+         qzzatGFMCsOQla/oRq1BTmO16LHYecSLvcnA9hzw27/I1b6Sk/6iBXAHOTw/DXASd5Gq
+         tyiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705908539; x=1706513339;
+        d=1e100.net; s=20230601; t=1705909974; x=1706514774;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=lCnmdq66XmjZoBv44BM5Iul1c6YAS75MAAm26+CD69Q=;
-        b=a/4DL+Rs+gD7L87lhFnU4/pvKei2EvGiNoi86e5x4irbELR8BXWLoXjcX96TR+R8V1
-         kfS7SkLAxY0KMF3gtVrkfNKJJLDylXgv9hnQKdENgAlXc3bjsO1HJgGnBxBSxI9+oOE8
-         IALV1KFSJbxjKyOmUYaJnv4ftOBmv8Xh1MK5wTrcllQyu73yePjkwRQqK+UOUvHGDLAl
-         Wyit4jNjZVSuwphkPUt/Uli+WBsfshe1K0uXhTt+ADdkG7zSHwdMOhS0ynSKea+MSK1/
-         MwuDLkzCnm70FTKr27PwvI+zJNk2nffCMJeG+1JO+64hVevrKFci//xnBt7aJft1YBs0
-         Zn/w==
-X-Gm-Message-State: AOJu0YxjfeJOxIDA/sCvM/z/q3tJh/ZzEhc2xiTk+hVnfWqWwnXLwQvT
-	wfIgH+PVXgSXAG+gzmWWfbTJnJcpGPigNwBaWB2Xi228SuAxHKqd
-X-Google-Smtp-Source: AGHT+IFDqWE0bKaWplinhKBKsebEIUM6fNGea7VOyi6s7g6ktFVDEYnKaJ3WD+0OmZgk6Q9UKMAAcw==
-X-Received: by 2002:a05:600c:2213:b0:40e:702c:3430 with SMTP id z19-20020a05600c221300b0040e702c3430mr943239wml.212.1705908539067;
-        Sun, 21 Jan 2024 23:28:59 -0800 (PST)
+        bh=Xq2E337IRcW0cWdNtXuyvIv8Cc8tASWsvBm9h/Ky4Zc=;
+        b=eM9xtT3SPZP7DOXYsyWzfMN7NU3V1+rhpYUL+hu3uGCCSBOAMYfOZTy6s7tRtp4qO9
+         0+hiN0erM1EPq84vveFMYmNLtUX9tkGkY4/Tymgpm6p5D5QJ58E+ezTO/HSo0jBkzUCr
+         NGOmI2ocTflAKo3Xs6paPXy0uoPN7R5CDqP2Xn6ivZadfYfhaVf4OxsoX95PVkkOfpr3
+         BRkRXS9rKkqILLlgWRlQGoltJbCAdkcSoB+aMkDSnuj9H5gFjUKfzaQ0oI4pNBcHD+pD
+         p9uMSJGe9QWIxoAjJQcS352Yw5m1EAI4+u63WyMaJ66pd7YdhkqjQTbQhnhIr5y+GiKf
+         zuaQ==
+X-Gm-Message-State: AOJu0YzA8yCxIE+w9949P0cjSXkh4xmPWD2pKem9BRllyHY5BTqtbEyg
+	rL8clafcL/7GYPNGVS3NGSsgPgvn/LBtnDCTKqy4LPtju4iLKfPu
+X-Google-Smtp-Source: AGHT+IFJHGkQRJaf19kskcpBx7XRwZ3XpSWByp8JSPuZ+7TlwGl7DNPYEZ42exxLImc8MW6iW7JxMA==
+X-Received: by 2002:a05:600c:3d8f:b0:40e:872f:d09f with SMTP id bi15-20020a05600c3d8f00b0040e872fd09fmr1024225wmb.121.1705909973812;
+        Sun, 21 Jan 2024 23:52:53 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.161.188])
-        by smtp.gmail.com with ESMTPSA id c2-20020a5d4cc2000000b003392d3dcf60sm3912210wrt.88.2024.01.21.23.28.57
+        by smtp.gmail.com with ESMTPSA id f7-20020adff8c7000000b0033921c383b2sm7841170wrq.67.2024.01.21.23.52.52
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 21 Jan 2024 23:28:58 -0800 (PST)
-Message-ID: <035bd556-f9a3-4255-907f-5e119f94c976@gmail.com>
-Date: Mon, 22 Jan 2024 08:28:57 +0100
+        Sun, 21 Jan 2024 23:52:52 -0800 (PST)
+Message-ID: <c5898964-819e-473f-94ac-61503db50a0f@gmail.com>
+Date: Mon, 22 Jan 2024 08:52:51 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 04/15] arm64: dts: mediatek: radxa-nio-12l: Add external
- MT6360 PMIC on I2C6
+Subject: Re: [PATCH 1/2] dt-bindings: usb: mtu3: Add MT8195 MTU3 ip-sleep
+ support
 Content-Language: en-US, ca-ES, es-ES
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- conor+dt@kernel.org, wenst@chromium.org, hsinyi@chromium.org,
- nfraprado@collabora.com, macpaul.lin@mediatek.com, sean.wang@mediatek.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-References: <20240112094632.66310-1-angelogioacchino.delregno@collabora.com>
- <20240112094632.66310-5-angelogioacchino.delregno@collabora.com>
- <6a1d612a-200e-4868-8577-49de933cf2bb@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ chunfeng.yun@mediatek.com
+Cc: gregkh@linuxfoundation.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20240112133222.240038-1-angelogioacchino.delregno@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  xsFNBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -123,13 +120,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <6a1d612a-200e-4868-8577-49de933cf2bb@linaro.org>
+In-Reply-To: <20240112133222.240038-1-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240121_232903_310856_CDA7E2DA 
-X-CRM114-Status: UNSURE (   8.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240121_235259_552968_7DF85129 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,19 +142,32 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 16/01/2024 09:16, Krzysztof Kozlowski wrote:
-> On 12/01/2024 10:46, AngeloGioacchino Del Regno wrote:
->> In preparation for adding the power tree for this board, add a node for
->> the MT6360 PMIC, connected to I2C6.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On 12/01/2024 14:32, AngeloGioacchino Del Regno wrote:
+> Of the four USB controllers present on the MediaTek MT8195 SoC, three
+> of them (0, 2 and 3) are behind MTU3: add wakeup controls for them.
 > 
-> Why do you add new device in pieces? Logical change is "new device", not
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Well we have done that in the past, so somehow for MediaTek tree that's ok to 
-do. From my personal maintainer position it's easier to review 15 small patches 
-then one or two huge ones.
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Regards,
-Matthias
+> ---
+>   Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml | 5 ++++-
+>   1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+> index a59d91243ac8..d4e187c78a0b 100644
+> --- a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+> @@ -185,7 +185,10 @@ properties:
+>               2 - used by mt2712 etc, revision 2 with following IPM rule;
+>               101 - used by mt8183, specific 1.01;
+>               102 - used by mt8192, specific 1.02;
+> -          enum: [1, 2, 101, 102]
+> +            103 - used by mt8195, IP0, specific 1.03;
+> +            105 - used by mt8195, IP2, specific 1.05;
+> +            106 - used by mt8195, IP3, specific 1.06;
+> +          enum: [1, 2, 101, 102, 103, 105, 106]
+>   
+>     mediatek,u3p-dis-msk:
+>       $ref: /schemas/types.yaml#/definitions/uint32
 
