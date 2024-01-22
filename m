@@ -4,72 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EBB1C4725D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 10:27:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 631BFC4725D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 10:32:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SipZJc99j0I/1X4Xuui9r9+HPmEcu/KZrm21kShk30g=; b=VFsAFVrOm/XeiAhYR8u7r/mSxt
-	lqEVCFHUTyCdH+eP14xWXrtc4mJUqRMSJthJiJPGMWGG9d8yd/UqXfE/U2MWFNRuQL6/BKyKVVuEo
-	gfVvoU2b/c1pQs7JgrrU6Xuvv7t+tVGhVAJRHUlcqZvnZvqX8KfaY4RfKyteZiRpD6rkN/79b1efv
-	LRUQyvixyR/psAkjCDry5ljLN1WvA2bqVBqwNN8b2pyOhyn9hSa//v0cIYsoJqPi54k+bmT1/5ttN
-	IUMP98Gmx0dEN81jviSbUBw1mb9VUmMZBCvBAhmn4xiP0is+8qTQpMK6CqkxOTrzAYTZhqZ1rLxMz
-	S9YzHtlA==;
+	bh=SGK7NH8Qc0fcKXWjstiG+UG2RVKnibn9y87x4q3Yn8k=; b=bZ8RV2W8kq7xHuawg1JheMRfN/
+	BxaibRRDlUjCV/hPBrST7fk6w9VFJF1i3xviLtKtrovBg0HqTGK3xheIsfDJp7W/HpzoWww4fWqBm
+	yS6JfWZz6Ad4mL09Y1SA3Sd1oQjUns46ORbdLHOm80g6TUSZZQ3AdXfrxS/K+DIWM3WqmWNUVh9+2
+	jB2lRN7y2YEVxEY29d5Eur6VgSsu60TH2QoeOzMAef+4zGB1mkG2k0C1snzGCbfJdbiXB4fCjjPt8
+	mb0fUxzErEcOIB1PhKcwccBmKb1z4yLNlbrlVOemhBMemC90WH57GYF+XbEEJa3yAXBrtQlfzRYm3
+	XesTDGEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRrWa-00BWnf-0W;
-	Mon, 22 Jan 2024 10:27:28 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rRrbZ-00BXxd-0w;
+	Mon, 22 Jan 2024 10:32:37 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRrWW-00BWky-1A;
-	Mon, 22 Jan 2024 10:27:26 +0000
+	id 1rRrbV-00BXve-1v;
+	Mon, 22 Jan 2024 10:32:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705919233;
-	bh=FY7Gp4Bm7Ak1n3UKFzuIDhZpSZ7yf3MtGEoBq1h4qog=;
+	s=mail; t=1705919551;
+	bh=3bcuHEEJjol3ORfk+55aI9k34MFRZBBDcr1e/CQUF5Q=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=3ipDCBV1tGi+R57x5vNj70y1cbLC1IqLgywON8LSpS/kJiTvskpj1mqM3B6xogwW5
-	 gudbyZeFgyUWu0X2rVXe+vWdTwhABaT63vlwVrpwGmWCy1PHmWMVqQOsbe1I7LWTQK
-	 BKKXDLYDUEUxW6JTdLORZzK9kU7eVXtrOUsaD9V5RtYTNfqQbZqzuChRS3ZZfjHQ/T
-	 VAYhTigFRb3nrOB83GVB7pWzUN72isGFkQ2/ndbC4oIy3vE9X19DxSgUIHAq1gMe9A
-	 g9LXeur952anKfWqujvlxqVlqNGu5JyYCcvu/9tLCcCqhgstn8XXl9hyvP3zPKLiNV
-	 wVj/nuwT9yGLA==
+	b=XM0iSXbg2Nziyyd6ztgNjUnTTcdenVcJcypAmL712TiILIukqJ3aBlQUai6mbImwM
+	 01yzQ34o1C01otXnih1MZDJ8xauoAn5del8Yw0VRUD/aEzVr5IsnFLJ7BqIO4opzjG
+	 ffsBvmy4fExNxhIyyuptoYDu/kJXljnGhfqHe1NOYOj32CHFX4XSjx6cCzGaSATVYF
+	 6/Q6i7E402AIZGUgIa0PosgityNEQkFod+gRi86pRxsYZM7TZVGAuQHBf4qYuTXxWT
+	 Eidj2wtfS/ggjRMp15YiZB6s9WL38sQy6f1sXgPUhwbPBvVF0ZI7dLUWgq4+rTBDve
+	 eHLCzX4l2Ef8g==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 6E147378045F;
-	Mon, 22 Jan 2024 10:27:12 +0000 (UTC)
-Message-ID: <9605c20a-12ad-49ad-8114-d59f2f772514@collabora.com>
-Date: Mon, 22 Jan 2024 11:27:11 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B3598378045F;
+	Mon, 22 Jan 2024 10:32:30 +0000 (UTC)
+Message-ID: <12b7b339-498b-45c1-bc5e-05e07660aefa@collabora.com>
+Date: Mon, 22 Jan 2024 11:32:30 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] dt-bindings: usb: Introduce ITE IT5205 Alt. Mode
- Passive MUX
-To: Conor Dooley <conor@kernel.org>
-Cc: gregkh@linuxfoundation.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- heikki.krogerus@linux.intel.com, matthias.bgg@gmail.com,
- dmitry.baryshkov@linaro.org, neil.armstrong@linaro.org,
- andersson@kernel.org, nathan@kernel.org, luca.weiss@fairphone.com,
- tianping.fang@mediatek.com, linux-usb@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20240119125812.239197-1-angelogioacchino.delregno@collabora.com>
- <20240119125812.239197-2-angelogioacchino.delregno@collabora.com>
- <20240119-remedial-unripe-2a3a46b4f117@spud>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: usb: mt6360-tcpc: Drop
+ interrupt-names
 Content-Language: en-US
-In-Reply-To: <20240119-remedial-unripe-2a3a46b4f117@spud>
+To: Conor Dooley <conor@kernel.org>
+Cc: chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, linux@roeck-us.net, heikki.krogerus@linux.intel.com,
+ cy_huang@richtek.com, linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20240119094105.98312-1-angelogioacchino.delregno@collabora.com>
+ <20240119-eldest-discharge-e2d3812be0a9@spud>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240119-eldest-discharge-e2d3812be0a9@spud>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240122_022724_576165_622D3821 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20240122_023233_813209_6C8B933A 
+X-CRM114-Status: GOOD (  16.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,70 +80,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/01/24 17:18, Conor Dooley ha scritto:
-> On Fri, Jan 19, 2024 at 01:58:11PM +0100, AngeloGioacchino Del Regno wrote:
->> Introduce a binding for the ITE IT5205 Alternate Mode Passive MUX,
->> used for connecting, disconnecting and switching orientation and
->> control the SBU signals for alternate modes on USB Type-C ports.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   .../devicetree/bindings/usb/ite,it5205.yaml   | 72 +++++++++++++++++++
->>   1 file changed, 72 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/usb/ite,it5205.yaml
->>
->> diff --git a/Documentation/devicetree/bindings/usb/ite,it5205.yaml b/Documentation/devicetree/bindings/usb/ite,it5205.yaml
->> new file mode 100644
->> index 000000000000..36ec4251b5f2
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/usb/ite,it5205.yaml
->> @@ -0,0 +1,72 @@
->> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/usb/ite,it5205.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: ITE IT5202 Type-C USB Alternate Mode Passive MUX
->> +
->> +maintainers:
->> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> +  - Tianping Fang <tianping.fang@mediatek.com>
->> +
->> +properties:
->> +  compatible:
->> +    const: ite,it5205
->> +
->> +  reg:
->> +    maxItems: 1
->> +
->> +  vcc-supply:
->> +    description: Power supply for VCC pin (3.3V)
->> +
->> +  mode-switch:
->> +    description: Flag the port as possible handle of altmode switching
->> +    type: boolean
->> +
->> +  orientation-switch:
->> +    description: Flag the port as possible handler of orientation switching
->> +    type: boolean
->> +
->> +  ite,ovp-enable:
->> +    description: Enable Over Voltage Protection functionality
->> +    type: boolean
+Il 19/01/24 17:32, Conor Dooley ha scritto:
+> On Fri, Jan 19, 2024 at 10:41:04AM +0100, AngeloGioacchino Del Regno wrote:
+>> This IP has only one interrupt, hence interrupt-names is not necessary
+>> to have.
+>> Since there is no user yet, simply remove interrupt-names.
 > 
-> Bitta devil's advocacy perhaps, but why is this DT property? Is it not
-> known whether or not this is supported based on the compatible, and
-> whether or not to enable it is a decision for the operating system to
-> make?
+> I'm a bit confused chief. Patch 2 in this series removes a user of this
+> property from a driver, so can you explain how this statement is true?
 > 
+> Maybe I need to drink a few cans of Monster and revisit this patchset?
 > 
 
-AFAIK, not all board designs can use the OVP. On some, this may be unstable - the
-use case where this can be safely enabled is when there's nothing in between the
-mux and the controller, and between the mux and the port.
+What I mean with "there is no user" is that there's no device tree with any
+mt6360-tcpc node upstream yet, so there is no meaningful ABI breakage.
+Different story would be if there was a device tree using this already, in
+which case, you can make a required property optional but not remove it.
+
+Anything wrong?! :-)
 
 Cheers,
 Angelo
+
+
+> Thanks,
+> Conor.
+> 
+>> ---
+>>   .../devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml        | 5 -----
+>>   1 file changed, 5 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml b/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
+>> index 053264e60583..339bc9c00ac0 100644
+>> --- a/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
+>> +++ b/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
+>> @@ -22,10 +22,6 @@ properties:
+>>     interrupts:
+>>       maxItems: 1
+>>   
+>> -  interrupt-names:
+>> -    items:
+>> -      - const: PD_IRQB
+>> -
+>>     connector:
+>>       type: object
+>>       $ref: ../connector/usb-connector.yaml#
+>> @@ -58,7 +54,6 @@ examples:
+>>           tcpc {
+>>             compatible = "mediatek,mt6360-tcpc";
+>>             interrupts-extended = <&gpio26 3 IRQ_TYPE_LEVEL_LOW>;
+>> -          interrupt-names = "PD_IRQB";
+>>   
+>>             connector {
+>>               compatible = "usb-c-connector";
+>> -- 
+>> 2.43.0
+>>
 
 
