@@ -4,68 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75C9FC47DD9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 17:24:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB14DC47DAF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 17:27:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iRK+9Ef5ahhMDXno1UeX1l/jSM4KMCVl6LyK4W/Z9Qw=; b=TilAdcqN47H16BP0M1PDC1+O8D
-	GIYh8Rlbdv5K+Zd7/D6XXQzDNdkFUxSZ04ylWoD4rqj5EGlbYrxsiTS+SlFOy32hUOVvlVXioq5n7
-	iDNifh8CpMqNSJLLV1Nq+iZcWi/fzN9aBwyS8LGWmtDZeNnwP93vsFx1agZgL8K5NzaSXmZxweeF9
-	JwV0ZNFUnvclcgfkJMuz7CCcR75PFtu0jZ749w3A6xSeFhaVEOk7MXopnuiQFCy20OVa3giM0nLLs
-	SIi4bpoIDM3m8C1wy844eJOZ2Aep0UWdvLCpIpPIoB+WBt7eCnDBYHlo8dr4ZFW8wjViT4gOXpZ2h
-	JxF9cC3Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wSKAYF9IlX95zipvf0YSfJnTfG2ghF6yU76cWzKEMrU=; b=qiTS/Ef6tiB1zAPlPL14mO8fUZ
+	DMXrwg3hS7BbieL3I5uubeO1XWneoS7LAXPjEAwSLDt62dN8TYsQJukUuI6qNZy11uNZzps5vK1JC
+	IQLf4QvVFurKYB8TjRfzFKDbzNNu0GTB8duIlQ5qFu7eWUIFXrOj0buUdMGajiiI2lthieTNOsNRt
+	njJikWFKDVb2dkGq/BEtU4B2le2tPZDnGW24cZiaf9aDs6Wjv83T/i08IRx8DLKAU0I6OzukdB+4U
+	krnrTg5TxgRSBqY7zsna3FFiR3GZOk8yJRR3a6xcQOpdfjPiAcFTut7yJYxQpuZB1kd6BauNYLUo0
+	UlzE+wag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRy1l-00DCmI-0f;
-	Mon, 22 Jan 2024 17:24:05 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rRy4w-00DDpZ-2W;
+	Mon, 22 Jan 2024 17:27:22 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRy1h-00DCkM-0R;
-	Mon, 22 Jan 2024 17:24:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705944237;
-	bh=q/Db6h3lSGlyLo8SBnIe8RHfu81djoDKGGU7SHOYQ2k=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=uBtCLcczeAtmD4FGIX8AHJyXbfc7pM4+ZDyKIlPkc8NiniQCpgajGOvz02NniCFe5
-	 j9tYgO3EnjPsT7rinfmlHsF2ZPcnxV+gpcCA87+oPmj8TwrWvERXvjRpue13yfs7Km
-	 MhLEHi6s0rEx8EUWgDfxgNPJKg42t+OqCZNKAof1vKPF1lPyIF3g7SO+CBI31BfCrl
-	 Php9LcG5W0xM0kCeoTiociYFp26QrnMWqT/p9jKGSlGk/4TrNHfCSM+4xqbA67KipX
-	 stkf5E+aoYW5DKCh2s2IA92iHElYZ8WE5NLQi56GBxIQCXUnl3d0lQ8JM1F1JbDq4X
-	 rAghQ5nIlOdEg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 5BE1E3780016;
-	Mon, 22 Jan 2024 17:23:57 +0000 (UTC)
-Message-ID: <fb04b007-f0d0-4aca-9cb2-6e6d42778560@collabora.com>
-Date: Mon, 22 Jan 2024 18:23:56 +0100
+	id 1rRy4t-00DDnD-0k;
+	Mon, 22 Jan 2024 17:27:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
+	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
+	In-Reply-To:References; bh=wSKAYF9IlX95zipvf0YSfJnTfG2ghF6yU76cWzKEMrU=; b=OP
+	XwlR+s3tYyiMnAuHZeUMC0NgdVyHMwJHz+EXNQn0HiJN/iPHPx/LTEnFdlIEHlQEEhHmbH/QSGyjD
+	tbEbEdubSV1aYnmlgzjHQIluTIxYdODhohY1AzSEmnb0pEmfnuFRXgWkEsohIDXFxPseJuRFhqvsh
+	QbgyhLla6bf+eBA=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1rRy4e-005kPU-JS; Mon, 22 Jan 2024 18:27:04 +0100
+Date: Mon, 22 Jan 2024 18:27:04 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Ziyang Huang <hzyitc@outlook.com>
+Cc: mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
+	richardcochran@gmail.com, p.zabel@pengutronix.de,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	linux-kernel@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 7/8] arm64: dts: qcom: ipq5018: enable ethernet support
+Message-ID: <5d36f465-a9fc-434d-a777-bc9833f7d6ba@lunn.ch>
+References: <TYZPR01MB55563BD6A2B78402E4BB44D4C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
+ <TYZPR01MB5556FA040B07F48AFE544680C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
+ <b8510b38-3669-4a04-9ca6-dbe937ecbec3@lunn.ch>
+ <TYZPR01MB5556603EA4C5D7BAF9C27C6AC9752@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt7622: add missing "device_type"
- to memory nodes
-Content-Language: en-US
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20240122132357.31264-1-zajec5@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240122132357.31264-1-zajec5@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <TYZPR01MB5556603EA4C5D7BAF9C27C6AC9752@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240122_092401_354292_C7211E2F 
-X-CRM114-Status: UNSURE (   6.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240122_092719_269669_4F1E8C7C 
+X-CRM114-Status: GOOD (  26.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,17 +76,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/01/24 14:23, Rafał Miłecki ha scritto:
-> From: Rafał Miłecki <rafal@milecki.pl>
+On Mon, Jan 22, 2024 at 11:52:30PM +0800, Ziyang Huang wrote:
+> 在 2024/1/22 0:45, Andrew Lunn 写道:
+> > On Sun, Jan 21, 2024 at 08:42:36PM +0800, Ziyang Huang wrote:
+> > > Signed-off-by: Ziyang Huang <hzyitc@outlook.com>
+> > > ---
+> > >   arch/arm64/boot/dts/qcom/ipq5018.dtsi | 120 +++++++++++++++++++++++++-
+> > >   1 file changed, 116 insertions(+), 4 deletions(-)
+> > > 
+> > > diff --git a/arch/arm64/boot/dts/qcom/ipq5018.dtsi b/arch/arm64/boot/dts/qcom/ipq5018.dtsi
+> > > index e502a3ecf4b7..b36e5c2136b7 100644
+> > > --- a/arch/arm64/boot/dts/qcom/ipq5018.dtsi
+> > > +++ b/arch/arm64/boot/dts/qcom/ipq5018.dtsi
+> > > @@ -94,6 +94,63 @@ soc: soc@0 {
+> > >   		#size-cells = <1>;
+> > >   		ranges = <0 0 0 0xffffffff>;
+> > > +		mdio0: mdio@88000 {
+> > > +			#address-cells = <1>;
+> > > +			#size-cells = <0>;
+> > > +			compatible = "qcom,ipq5018-mdio", "qcom,qca-mdio";
+> > > +			reg = <0x88000 0x64>;
+> > > +			resets = <&gcc GCC_GEPHY_MDC_SW_ARES>,
+> > > +				 <&gcc GCC_GEPHY_DSP_HW_ARES>;
+> > 
+> > What do these two resets do? An MDIO bus controller is unlikely to
+> > have a DSP in it. That is something a PHY is more likely to have. An
+> > MDIO bus controller does have an MDC line, but why is it
+> > GCC_GEPHY_MDC_SW_ARES not GCC_MDIO_MDC_SW_ARES? So this again makes me
+> > think this is a PHY reset, so should be in the PHY node.
+> > 
 > 
-> This fixes:
-> arch/arm64/boot/dts/mediatek/mt7622-rfb1.dtb: /: memory@40000000: 'device_type' is a required property
->          from schema $id: http://devicetree.org/schemas/memory.yaml#
-> arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dtb: /: memory@40000000: 'device_type' is a required property
->          from schema $id: http://devicetree.org/schemas/memory.yaml#
+> IPQ5018 has two mdio bus. mdio0 is an internal bus which only connects to
+> internal PHY while mdio1 is outgoing and can be used to connect PHY or
+> switch.
 > 
-> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> So I thought GCC_GEPHY_MDC_SW_ARES is for mdio0 and GCC_MDIO_MDC_SW_ARES is
+> for mdio1.
+> 
+> GCC_GEPHY_DSP_HW_ARES is seem like PHY reset. But if we don't deassert it,
+> the phy node can't be scaned. So I add it here like what reset-gpios do - to
+> reset PHY or switch.
+> 
+> > A device tree binding will help sort this out.
+> 
+> Base on the functions I explained, I can't write the accurate names and
+> number of resets here.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Without a device tree binding, your patch will not be accepted. At
+minimum, you need to describe your understanding of the hardware, what
+you think the resets do.
 
+Since this is an internal PHY, you know exactly what it is. So you can
+use ID values in the compatible so the driver loads. The driver can
+then deal with clocks and resets. With complex setups like this,
+scanning is not always possible.
+
+     Andrew
 
