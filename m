@@ -4,67 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA25EC4725D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 11:00:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EA77C4725D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 11:04:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kk5etcf9dUcnm7dWGL+iuziMYTZmGe/tLxwpcuiJuSE=; b=aV+1jma4Ssw0HSeqVPg++QjpjM
-	n5sEly/AxogMw6p6Q2OTGu6mR22ZaLO1DT8UDJyKyPSUTlsqjtstPNmKteFO+NLR0fmSFRp8eXf45
-	sI1sHfiAdTNhs/UN135rc9DAyL65sUdMFj0VjVgR0+1nKl6RLv1UDgcS08gYMcHmL+drsylbC5fgi
-	c/L6RLq4TVellky7Jsq5wcu3ZoYdh0EXsEMa0hukbkgPSX86d4p0VK6BVHv5zJs5SnY0zLzUrY6cY
-	UnzQOdRYqQJ7tjcgXfQP+WQLttSvfxrfWpHoP4oihHC0+NX1pTShyslXhvPnJIN5i95V6ZC8Tz+D7
-	twhbTzLA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XBJFaL+Q2YIz7h/2o3VV6FT8jIV8p9oXJKZMSgPRBT0=; b=hx1nc0lLw91/yJ0A831Y8ixjTK
+	I3q6oqUPeloMfr8LW731sUrabrD12OKNwk1+Anfm5E4CDF9JsikOjZmojA1HUFoxjNywx6BP0V2wL
+	DinBydpHf8OT9pi9Cm5J6/LF96LKhuIArTiKaXWf0YTiOc9bsD8NzCnTy1uN+/O+vH4nyW3B7H1Jq
+	xmV/9arrdKgyHhCHk5E3ojm8y0WuoAhli4LACnVbEGCLi1OCanpQQBRJ8YxYCGQLrD1DMXtXQRanB
+	8cIun8eGpYJYl05G0dCsIoqjCYa5QQrHqddO8vX3xARPUL/TueWHOFrYHyCU1llfBXkHlVfCcjk8e
+	EHzCfrCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRs2H-00Bcpi-1L;
-	Mon, 22 Jan 2024 11:00:13 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rRs6p-00Be5e-1D;
+	Mon, 22 Jan 2024 11:04:55 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRs2E-00Bcp1-16;
-	Mon, 22 Jan 2024 11:00:11 +0000
+	id 1rRs6l-00Be1y-2K;
+	Mon, 22 Jan 2024 11:04:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705921208;
-	bh=G6ENMbYnSExmBsiKgUE0XhOt+HRgA6TcZEvQKVF8gYI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cYEV9FRWZv8f/lwYnr1LE0PtXwV207uuNisL4vf0YddAd0RXp9RHIaf4/q/wCjtbU
-	 FpV8G8RlBORFfIcTuP9PQuqDPg7R4hvv80O9bWsBOFFfutvgLvOJOxxsqNKUi0QUZ8
-	 nFM1eza4JYtCyjVwSkYtNgDsmUOuEOxJJNcTe86FXUkHGTYoag+8ANXsHSYmPL6qPN
-	 LgnKUB1Kb5BVP9JKW5fCFqAcb2a5xB6W+dsWZ/28tqIKK3WXGgTt3CvgM35UdYyrsm
-	 jB+Szy8JSGGNe/OvQwDibrr2pcqeExSJ/JUKQBSQmEKV6trMa5MzqsCWqTfEocXr/X
-	 MYq3Tl12vQK0w==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1705921490;
+	bh=3m1/vci+MfAYp79wBH/oi/rLtZ2m4Wx+8gZRTD02VwU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=BLOL7btbWcb/npidSycVbvPsflgnOgK9uWB48Y6VSDYYZuxsD6uHl0R2DPQBFVDdf
+	 wFpzEAPNWNuM+UXqTI0G0wa44q+O0Vlqd9yWaesfZptiXt+K14XraK4lil0EgSVWx1
+	 TYn9Y+/esgW77UNAulq0LYWxlrpCsQPiD9AxRisEujW/C60KL85jk56iDSEkYfGjQ9
+	 fzRb6e8lG52sLj99V2FWf/gRKwg9LnUC938Vqc1FI2e+QZ7ZjWG0z5bge9VUgxO7+f
+	 ggQlEQ501mBDzhuKS6lmstDuWZ5Povlp4AWr4dQP7KXf/gi0/qE9LS8vykleoH0vNf
+	 ojzEm3cw3vt1Q==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E8A613781FDF;
-	Mon, 22 Jan 2024 11:00:07 +0000 (UTC)
-Message-ID: <2f8d6e4e-ba01-4a87-94d6-65421db765ed@collabora.com>
-Date: Mon, 22 Jan 2024 12:00:07 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] usb: mtu3: Add MT8195 MTU3 ip-sleep wakeup support
-Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>, chunfeng.yun@mediatek.com
-Cc: gregkh@linuxfoundation.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-References: <20240112133222.240038-1-angelogioacchino.delregno@collabora.com>
- <20240112133222.240038-2-angelogioacchino.delregno@collabora.com>
- <5bf2910f-c184-4681-a474-69bea8ee7b71@gmail.com>
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id F1FAB3781FDF;
+	Mon, 22 Jan 2024 11:04:48 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <5bf2910f-c184-4681-a474-69bea8ee7b71@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: gregkh@linuxfoundation.org
+Cc: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	heikki.krogerus@linux.intel.com,
+	matthias.bgg@gmail.com,
+	dmitry.baryshkov@linaro.org,
+	neil.armstrong@linaro.org,
+	andersson@kernel.org,
+	nathan@kernel.org,
+	luca.weiss@fairphone.com,
+	tianping.fang@mediatek.com,
+	linux-usb@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 0/2] Add ITE IT5205 Passive MUX
+Date: Mon, 22 Jan 2024 12:04:44 +0100
+Message-ID: <20240122110446.140226-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240122_030010_531257_41A84D9B 
-X-CRM114-Status: GOOD (  14.46  )
+X-CRM114-CacheID: sfid-20240122_030451_884971_D1287599 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,91 +87,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/01/24 08:58, Matthias Brugger ha scritto:
-> 
-> 
-> On 12/01/2024 14:32, AngeloGioacchino Del Regno wrote:
->> Add support for the ip-sleep wakeup functionality on the three MTU3
->> controllers found on the MT8195 SoC.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/usb/mtu3/mtu3_host.c | 31 +++++++++++++++++++++++++++++++
->>   1 file changed, 31 insertions(+)
->>
->> diff --git a/drivers/usb/mtu3/mtu3_host.c b/drivers/usb/mtu3/mtu3_host.c
->> index 9f2be22af844..85f49e00e8db 100644
->> --- a/drivers/usb/mtu3/mtu3_host.c
->> +++ b/drivers/usb/mtu3/mtu3_host.c
->> @@ -34,6 +34,19 @@
->>   #define WC0_SSUSB0_CDEN        BIT(6)
->>   #define WC0_IS_SPM_EN        BIT(1)
->> +/* mt8195 */
->> +#define PERI_WK_CTRL0_8195    0x04
->> +#define WC0_IS_P_95        BIT(30)    /* polarity */
->> +#define WC0_IS_C_95(x)        ((u32)(((x) & 0x7) << 27))
->> +#define WC0_IS_EN_P3_95        BIT(26)
->> +#define WC0_IS_EN_P2_95        BIT(25)
->> +#define WC0_IS_EN_P1_95        BIT(24)
-> 
-> Not used, shouldn't we drop that?
-> 
+This series adds a driver for the ITE IT5205/FN, found on various
+MediaTek board designs, including the MT8395Genio 1200 EVB and
+others following that.
 
-Hey Matthias!
+Changes in v3:
+ - Fixed MODULE_DEVICE_TABLE for it5205_of_table
 
-Thanks for catching that - yeah that bit exists, but cannot be used in MTU3, so
-it has to be dropped.
+Changes in v2:
+ - Reordered headers and removed unused ones
+ - Added a check for altmode in it5205_mux_set()
 
-Sending a v2 in a jiffy....... or two. :-)
+AngeloGioacchino Del Regno (2):
+  dt-bindings: usb: Introduce ITE IT5205 Alt. Mode Passive MUX
+  usb: typec: mux: Add ITE IT5205 Alternate Mode Passive MUX driver
 
-Cheers,
-Angelo
+ .../devicetree/bindings/usb/ite,it5205.yaml   |  72 +++++
+ drivers/usb/typec/mux/Kconfig                 |  10 +
+ drivers/usb/typec/mux/Makefile                |   1 +
+ drivers/usb/typec/mux/it5205.c                | 294 ++++++++++++++++++
+ 4 files changed, 377 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/usb/ite,it5205.yaml
+ create mode 100644 drivers/usb/typec/mux/it5205.c
 
-> Regards,
-> Matthias
-> 
->> +
->> +#define PERI_WK_CTRL1_8195    0x20
->> +#define WC1_IS_C_95(x)        ((u32)(((x) & 0xf) << 28))
->> +#define WC1_IS_P_95        BIT(12)
->> +#define WC1_IS_EN_P0_95        BIT(6)
->> +
->>   /* mt2712 etc */
->>   #define PERI_SSUSB_SPM_CTRL    0x0
->>   #define SSC_IP_SLEEP_EN    BIT(4)
->> @@ -44,6 +57,9 @@ enum ssusb_uwk_vers {
->>       SSUSB_UWK_V2,
->>       SSUSB_UWK_V1_1 = 101,    /* specific revision 1.01 */
->>       SSUSB_UWK_V1_2,        /* specific revision 1.02 */
->> +    SSUSB_UWK_V1_3,        /* mt8195 IP0 */
->> +    SSUSB_UWK_V1_5 = 105,    /* mt8195 IP2 */
->> +    SSUSB_UWK_V1_6,        /* mt8195 IP3 */
->>   };
->>   /*
->> @@ -70,6 +86,21 @@ static void ssusb_wakeup_ip_sleep_set(struct ssusb_mtk *ssusb, 
->> bool enable)
->>           msk = WC0_SSUSB0_CDEN | WC0_IS_SPM_EN;
->>           val = enable ? msk : 0;
->>           break;
->> +    case SSUSB_UWK_V1_3:
->> +        reg = ssusb->uwk_reg_base + PERI_WK_CTRL1_8195;
->> +        msk = WC1_IS_EN_P0_95 | WC1_IS_C_95(0xf) | WC1_IS_P_95;
->> +        val = enable ? (WC1_IS_EN_P0_95 | WC1_IS_C_95(0x1)) : 0;
->> +        break;
->> +    case SSUSB_UWK_V1_5:
->> +        reg = ssusb->uwk_reg_base + PERI_WK_CTRL0_8195;
->> +        msk = WC0_IS_EN_P2_95 | WC0_IS_C_95(0x7) | WC0_IS_P_95;
->> +        val = enable ? (WC0_IS_EN_P2_95 | WC0_IS_C_95(0x1)) : 0;
->> +        break;
->> +    case SSUSB_UWK_V1_6:
->> +        reg = ssusb->uwk_reg_base + PERI_WK_CTRL0_8195;
->> +        msk = WC0_IS_EN_P3_95 | WC0_IS_C_95(0x7) | WC0_IS_P_95;
->> +        val = enable ? (WC0_IS_EN_P3_95 | WC0_IS_C_95(0x1)) : 0;
->> +        break;
->>       case SSUSB_UWK_V2:
->>           reg = ssusb->uwk_reg_base + PERI_SSUSB_SPM_CTRL;
->>           msk = SSC_IP_SLEEP_EN | SSC_SPM_INT_EN;
-
-
+-- 
+2.43.0
 
 
