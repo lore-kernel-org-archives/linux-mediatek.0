@@ -4,78 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FA73C47DAF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 09:07:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58EF6C4725D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 09:08:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QX8IfcAr9X1UJafiVIiyhQh6PceXGyS90hZuCGg+q38=; b=sfjsoBacuTMO5C
-	eJbtFA70WAp/quRUQh/meM5NlxPokoweAJiuVrtLTW70o7nca0Ma7x7rmFs9M6T3QNAdggaPSrgc9
-	tgBbjvkRh1WaUEJad3cT0JI+CkZvER1yF6qwBJSlBTT1q4/DACSVA+Y8iuzd0f/WmGXigfTtOGzIw
-	K6Thm/VCo66ZoySTWfNnL6Iqd8xRSc+7b+a3DI/WdFCkAOkTF+eV6uk8soNnKSNPVLGV1JINBkQD8
-	2Q0xerYsu++Q1erxSZbB8elHxPg0TzxbayFm48Ablj828biT7/fOOwEtArZDc2Zcequ19zXTcyizz
-	o0dUxAvwvX9v0Vd+E2cw==;
+	List-Owner; bh=xIyqXvY9FI8LQ6DAWc+kw1xWcm3h/hj3La4mo8cVDW0=; b=KnSwjSbE68EEDh
+	Z6IObWVIzHHhUmsqVMVFMWf9qXJGWebRTkbO4+Fkt1HhO67P+ft4HJWWTfIj99enJf4CK4xgMAqOI
+	G3YmVOA4uyhZDcCP+i/3FQEzCtv5/CA6ls42fEhF0FkI7NS6rZQuzEGB2a5YxhdpfMmW55u1m3HXO
+	E5d7MtMy9vO+6dvinKmXzjCL2UjFnm7ONHUBhCpkJXupf2sVcgaxgRv5bQ70NvCsC64utuhfqfX9T
+	xneAdU/Q2TxRnjdoABJkPtiwtuBxv7JYimqPgTzHx7fMMDB7RHbSr7aYwuPIAaVCh9+F3v7jFGAut
+	y1ddE/XnU3wBqiThBiqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRqGu-00BDDH-1J;
-	Mon, 22 Jan 2024 09:07:12 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1rRqHo-00BDNe-0a;
+	Mon, 22 Jan 2024 09:08:08 +0000
+Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRqGo-00BD8E-0g;
-	Mon, 22 Jan 2024 09:07:10 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-40eb0836f8dso1880745e9.2;
-        Mon, 22 Jan 2024 01:07:00 -0800 (PST)
+	id 1rRqHk-00BDMq-18;
+	Mon, 22 Jan 2024 09:08:05 +0000
+Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-2cd64022164so40399891fa.3;
+        Mon, 22 Jan 2024 01:08:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1705914419; x=1706519219; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1705914482; x=1706519282; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=QX8IfcAr9X1UJafiVIiyhQh6PceXGyS90hZuCGg+q38=;
-        b=A/qYININ+RqY4nre4j2eWusJg7+pgq2cGj2LA5UHBw4i+zJbmyR0z071Gq0GYRkTwl
-         ifsU99eE/lb9ba1LyB8u/eIMXEPRvajVdTAh/wW2hxsr9qVJ5wEaCHb3sfFEEKOKdrtr
-         eopNMk6g3smj0BdwM9oY6nMDRHZJISQO7ySgrnN/lbmqJOWL+x9L4w5lUXB7QKHEgd8P
-         LTEx2Z3NnzXhXzYrLCEz/l+CL/OnEpVpofvySht0cNkeZCt72LjB3oFWndedwJnNmtVj
-         +aR88tDg6clwteyM6yzb+JC8KnclDL6oeGsU0QQnVPAtjDzf2pCjblEmVjEYWILCnieI
-         bktQ==
+        bh=xIyqXvY9FI8LQ6DAWc+kw1xWcm3h/hj3La4mo8cVDW0=;
+        b=fdkw3P+a5AllEgX8HxDLNLjtURXfazEwCNmXlSpe8eRXL/nukrsuNp1IgtYl5npiXA
+         VLtw99luoUSNIuXrmevurcXMYShHDMStoEhoHbYTgpYSXOSYV/IyU7gE0Usq0QPZHVWf
+         Cw/A6ZeqDgB0JnACMbLU4ghghukLvtQoo8HXJZcHHi+5V22dRppAnkx7ULg3QGgKk3VK
+         frsmwLN/SsSMal34pM/QtW7WQdq4W2Y4ari3r3YYenH9uFyOimzEq9RqXj8jIGb6qRUA
+         b7U2y5AypRtbZJJI9Z+rloIKmYt9XOSps+CJbSCKJaXSuZwIY4+L+wXDcwlcOyD5B8bl
+         8PcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705914419; x=1706519219;
+        d=1e100.net; s=20230601; t=1705914482; x=1706519282;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=QX8IfcAr9X1UJafiVIiyhQh6PceXGyS90hZuCGg+q38=;
-        b=WFwqZvVFzAyt+MHuK1OKC3njuZdID+YTBUD+ZmSaLIe/SJTcN1DHTIJoUnsQVZ0TID
-         2gnG/Fv9cGkT8Dn9FOrPMlpyDawp01l2N87jZ+ED7OBmBTgRbzzfI8fWzmGWpjtAUYtm
-         v6khV9yl4L+aYCsroIez31np6wjBCXKWB+6uH1FbONv9JgqKdtUFW89wqitm7FYPALHm
-         7ZBxKFDmdFmbOjnFZENL/3RSlbyh4wKbdXqveX9Rgootvo734o1hlzo7EGswQ3g8PdZc
-         sPODXfCEz7NaDLVI9zU/YKzE+vyfxO5zSeDMs1xxlXVZyxhZn//joRVGvv5Se9owifSJ
-         EmyA==
-X-Gm-Message-State: AOJu0YxdXionc73+4H9iE/7gjEV2IImZ6W7/FJ8HI4fyd5h4dT/Po387
-	KZcqbovM0i49ey1C1Hc35QcaN+CrtHMmkRfZ+RbeaqpaawVqypq2
-X-Google-Smtp-Source: AGHT+IEzmuJcnqbK98PsWeJ1O8gAkJ4aCe9apD5zuu3n66uXbUNdeURZtVSsGW3ACAkKZzdb/AkLSQ==
-X-Received: by 2002:a05:600c:1388:b0:40e:a447:9fb2 with SMTP id u8-20020a05600c138800b0040ea4479fb2mr1690629wmf.18.1705914419090;
-        Mon, 22 Jan 2024 01:06:59 -0800 (PST)
+        bh=xIyqXvY9FI8LQ6DAWc+kw1xWcm3h/hj3La4mo8cVDW0=;
+        b=R/4dLXyGzopgtWRiBA6L77Ok8E5XC9rq2TCN838LAYYwaAfcVvQAaKoEnvR26UVXFT
+         vFY07oACDjdKEkvIZ/Zku5tyYnqUFi6cjTsVisn4EvRA6fGA4SDK2mCLpyhySpVVAqwi
+         d2ipvVnnqd20s4xzVsYP5HysVuBZOKCKFOJ1ts2bUCw4SIyC5GJFXZfGH8jpNRTm0izF
+         A6Jjc7zmlwsOGV+tO2/jEfJlVPqGaOn8j+tocGQ36e4HSFS4hJuNBBOfqjbZjpIHfIDS
+         RMTVz/9LdBU6VPdO3pSYEO6ljLAy4j0QO3pCyq284rsnpNhYqQoHiVGHOhyLZ4Hko+dw
+         Q5cA==
+X-Gm-Message-State: AOJu0YwHxG1WdNeGn9t6G9K6R1yLKdo2TaKt9NZf/wDHZBqO9R2wrEkf
+	C5075Z5ESrz4XTc2oQjj2UCeIHl+pQClpdAHuYKdeXqz5rCxr7YH
+X-Google-Smtp-Source: AGHT+IG8LvE5vuQut+03t7wrw+Hk6qgBu1ovVTmu7z5M0yRS93Pk3w89uOplLPlbm5bsAWtmxecksg==
+X-Received: by 2002:a2e:a587:0:b0:2cd:e926:92da with SMTP id m7-20020a2ea587000000b002cde92692damr1935608ljp.88.1705914481375;
+        Mon, 22 Jan 2024 01:08:01 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.161.188])
-        by smtp.gmail.com with ESMTPSA id y8-20020a5d4ac8000000b00337af95c1d2sm13255827wrs.14.2024.01.22.01.06.57
+        by smtp.gmail.com with ESMTPSA id y8-20020a5d4ac8000000b00337af95c1d2sm13255827wrs.14.2024.01.22.01.07.59
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 22 Jan 2024 01:06:58 -0800 (PST)
-Message-ID: <f2374a92-ab8e-47d1-b6b8-3e92b6bc2bb0@gmail.com>
-Date: Mon, 22 Jan 2024 10:06:57 +0100
+        Mon, 22 Jan 2024 01:08:00 -0800 (PST)
+Message-ID: <d3149b71-56af-4d93-a576-85f0eea9c262@gmail.com>
+Date: Mon, 22 Jan 2024 10:07:59 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt7986: fix reference to PWM in fan
- node
+Subject: Re: [PATCH] arm64: dts: mediatek: mt7986: drop crypto's
+ unneeded/invalid clock name
 Content-Language: en-US, ca-ES, es-ES
 To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Arnd Bergmann <arnd@arndb.de>
-References: <20231116130816.4932-1-zajec5@gmail.com>
- <a5113b85-e29c-454f-b776-ac7abbca771f@gmail.com>
- <d0734a8f-0b72-4609-a941-da4bdc3e323e@gmail.com>
+ Conor Dooley <conor+dt@kernel.org>
+References: <20231116132411.7665-1-zajec5@gmail.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  xsFNBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -120,12 +118,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <d0734a8f-0b72-4609-a941-da4bdc3e323e@gmail.com>
+In-Reply-To: <20231116132411.7665-1-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240122_010706_249253_8BF0CCDD 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20240122_010804_394451_2DD34A5D 
+X-CRM114-Status: GOOD (  14.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,61 +135,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, linux-mediatek@lists.infradead.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
 
-On 28/12/2023 08:03, Rafał Miłecki wrote:
-> Hi,
+On 16/11/2023 14:24, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> On 14.12.2023 07:43, Rafał Miłecki wrote:
->> On 16.11.2023 14:08, Rafał Miłecki wrote:
->>> From: Rafał Miłecki <rafal@milecki.pl>
->>>
->>> This fixes typo and resolves following validation error:
->>> arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtb: pwm-fan: pwms: 
->>> [[54, 0, 10000], [0]] is too long
->>>          from schema $id: http://devicetree.org/schemas/hwmon/pwm-fan.yaml#
->>>
->>> Fixes: c26f779a2295 ("arm64: dts: mt7986: add pwm-fan and cooling-maps to 
->>> BPI-R3 dts")
->>> Cc: Daniel Golle <daniel@makrotopia.org>
->>> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
->>
->> I sent those few trivial fixes weeks ago:
->> [PATCH] arm64: dts: mediatek: mt7986: fix reference to PWM in fan node
->> [PATCH 1/2] arm64: dts: mediatek: mt7986: fix SPI bus width properties
->> [PATCH 2/2] arm64: dts: mediatek: mt7986: fix SPI nodename
->> [PATCH] arm64: dts: mediatek: mt7986: drop crypto's unneeded/invalid clock name
->>
->> Could someone pick them up, please?
+> According to the "inside-secure,safexcel-eip97" binding "clock-names" is
+> required only if there are two clocks specified. If present the first
+> name must by "core".
 > 
-> Anyone, please?
+> Name "infra_eip97_ck" is invalid and was probably just a typo. Drop it.
 > 
-> I did quick research and it seems Linus pulls mediatek DTS changes from:
-> git://git.kernel.org/pub/scm/linux/kernel/git/soc/soc (from Arnd)
-> 
-> 
-> Arnd seems to pull mediatek changes from either:
-> 
-> 1. https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux
-> (Most pulls so far from Matthias)
+> Fixes: ecc5287cfe53 ("arm64: dts: mt7986: add crypto related device nodes")
+> Cc: Sam Shih <sam.shih@mediatek.com>
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 
-That's the old tree, we don't use this anymore for mediatek.
+Applied, thanks.
 
+> ---
+>   arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 1 -
+>   1 file changed, 1 deletion(-)
 > 
-> 2. git://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux
-> (The most recent pull from AngeloGioacchino)
-
-That's the new tree you should watch out to see your patches showing up.
-
-Regards,
-Matthias
-
-> 
-> 
-> AngeloGioacchino, Matthias: can you pick up my patches, please?
-> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> index 24eda00e320d..017168453ec5 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> @@ -234,7 +234,6 @@ crypto: crypto@10320000 {
+>   				     <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH>;
+>   			interrupt-names = "ring0", "ring1", "ring2", "ring3";
+>   			clocks = <&infracfg CLK_INFRA_EIP97_CK>;
+> -			clock-names = "infra_eip97_ck";
+>   			assigned-clocks = <&topckgen CLK_TOP_EIP_B_SEL>;
+>   			assigned-clock-parents = <&apmixedsys CLK_APMIXED_NET2PLL>;
+>   			status = "disabled";
 
