@@ -4,80 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A95CC47422
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 03:15:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 462CCC47DD9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 03:31:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wIwH8u8/5jj2pBx8FxMnpPMe9QlITbo0kBdV2qazlVs=; b=0imIUE6Gu2knYHxHDDiz95it6N
-	/aykEeOYmi12jIFIdRyBxkl3TbDmcddg3Mba23h1Le0A1dplkrdfocojFHnt1EMIlegWzw1oGjEfD
-	1VXDPQQp+qo4QN+SEmq6TjBBG4u3ko1/wheSGG0I9kbVVYfyD+PDJ94icPceXNbzyPnPl6ZgGGVux
-	KYuRelWJnldOa6cq/X3gRTPwkJqXtJdlwC30TDz1w0FxViuzY+kdbyNN1wQjhhWOsw6Ye3s2G676O
-	brdAnz9o4wA87QcnJzjqSrrG39zp8N56SVkY13UXA6RR++oRpZyKMNPK+6i0UOx8k5tiQLflbX3zW
-	ouJT5azw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OtF+0AZ9mYZSgEmOfYMUgTrNZfxIctdI17hPwZH8CYw=; b=V9Bk5mXAoEsiOdvnEV+svlQbao
+	349LsyCG41tYjrF3PLyXaMPual+uJMQmADz98xuM0XuCZsCGMuDqrLu+R8nA8p3i/D2u3pyl4+I72
+	8y9km8bgKyEzRKf5qOYodXviOJ80mfRU2wKdADyjkkXls/b13EwczKQMvQ17ldsfgWcSQi8V/eBYs
+	PuuOe4fQWjUQF+cUNwBjkxvXbBxw9rzqpps1MUhwew5pGBSGHOlcrdqW/+Q4gIHZHvVa2t3A2NBZa
+	dsPZI5EhkLuhFntr9px9hvC7ePsIPCsXVnBwNWWMupSmvF2NnWAgeODDwf00EQPQjJcP8MR9dFQHV
+	0QwvF6pQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRkm8-00ARUm-2L;
-	Mon, 22 Jan 2024 03:15:04 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1rRl1q-00ASog-0M;
+	Mon, 22 Jan 2024 03:31:18 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRklz-00ARRl-2n
-	for linux-mediatek@lists.infradead.org;
-	Mon, 22 Jan 2024 03:15:01 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-50ea98440a7so2470740e87.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 21 Jan 2024 19:14:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1705893293; x=1706498093; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wIwH8u8/5jj2pBx8FxMnpPMe9QlITbo0kBdV2qazlVs=;
-        b=PJmKnPfG+X3Hh875tKZYHiR+eEnV7qBZB9LUy7EYPQZ5kdSmCqx3+2WnxvIHczcaC7
-         44M0nlXOjar+u01vpeu0yu5quEXY6novVqOxEfPUl19HcwT9WzrocmBdh28nd3vQb4wX
-         zZq321ryOp/EPNdCkkJvBAwizh4HD65Y5RyfA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705893293; x=1706498093;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=wIwH8u8/5jj2pBx8FxMnpPMe9QlITbo0kBdV2qazlVs=;
-        b=Gi3IQk0nDfzAE97JpT1iXdA4LNIA9SWRtyHxj+n7O+wasW77tzvmenEMQfNaeG95YP
-         hQdGjP9KMZsJ4+3/rs2VBkTznrbYDlQIHeVcEMxAbShLy8c2Is2VEc8Ii473zHNr4pQm
-         ilHIvhESFfjElOHstxpSAD5E5IYNTRniYHKBgCGM6pux9f21S8C+/cwvezZbTwQ/T/u0
-         k0KFBJYYW3OBIjTakQKmanlU3ZnX5Pl5sGKVYY4ywWzQjCEdkb7BxEEFhyPYFcwTHOsw
-         3Cb5V+UHo+oPtE85SlgDphCJA1aF/+gPQC+aTJDeO4nGifMDG6DSJoOJswJ0ZtXOBZtp
-         mstQ==
-X-Gm-Message-State: AOJu0Ywkst/7dl86uomUTPMI0e/jB09wENcd1gP9Fjt3iSjrOYNO4CEw
-	hzY1UZNEuceeBTzB4WUxv90r7IXkuVuP7cuwBvWZwAqU5dj73A/0wM+m4D3Kn3Y6+IvL3WH34wR
-	G4I7kmRkmL9ruCjRXRM4FT0sn8gydJWl71ikB
-X-Google-Smtp-Source: AGHT+IG6AuOfNUIiLXBXFv6N8QEOaQrTM606vHb4YTb+l/QlkvcgDXSkhojmlB75Pyenuq4p7gCZoDQPC4rRxkqqY6A=
-X-Received: by 2002:a05:6512:34d0:b0:50e:7d6c:b968 with SMTP id
- w16-20020a05651234d000b0050e7d6cb968mr775787lfr.201.1705893293315; Sun, 21
- Jan 2024 19:14:53 -0800 (PST)
+	id 1rRl1o-00ASo2-0G;
+	Mon, 22 Jan 2024 03:31:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=OtF+0AZ9mYZSgEmOfYMUgTrNZfxIctdI17hPwZH8CYw=; b=blbufh+/edoEOsvCjfxyMSkPeL
+	Ft4p4rX0rJGFWaJVaa1dcGE4froQC4i7GaHj8d/XbKoIaWqQ3s6PFM3/gLxFmAC/EktiTkg8kcZ3S
+	/4D7I7qXQAaGuEHuQBd0Bi2RgO5kDRlTIlnZLN9WRpZ4zOvrg5t07ogw2aCn4L/URAC/Cr4rPw140
+	LKVzTw561LO0alHSJIwtlmftXXXXQK3DGrseqfkS689bO2EfmSIh45UCeIty/TV1R41Ky8fFFYKey
+	p1Mh3fp3l4lJG8I29Z+5mp88NQzTbFBKjgSen8VLMPdoBeZ0k36TJ1a2na0hzbnRwH16sXxgzyKId
+	jGxSyZcg==;
+Received: from willy by casper.infradead.org with local (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rRl1j-0000000Eqh2-1y9B;
+	Mon, 22 Jan 2024 03:31:11 +0000
+Date: Mon, 22 Jan 2024 03:31:11 +0000
+From: Matthew Wilcox <willy@infradead.org>
+To: Haiqiang Gong <Haiqiang.Gong@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, mike.zhang@mediatek.com,
+	Andrew Morton <akpm@linux-foundation.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] mm/compaction: add check mechanism to avoid cma alloc
+ fail
+Message-ID: <Za3hf6A4V5QECvDy@casper.infradead.org>
+References: <20240122022317.30091-1-Haiqiang.Gong@mediatek.com>
 MIME-Version: 1.0
-References: <20231213150435.4134390-1-wenst@chromium.org> <20231213150435.4134390-7-wenst@chromium.org>
- <13c8ccbc-0eef-43f5-ae37-29ec64d1606b@collabora.com> <CAGXv+5HO+TW6H9kLv62Dp7cihHW7fs99gzUBMWvAEnzdrNY7mg@mail.gmail.com>
- <420e5184-fe35-4725-95c4-782cc096252f@collabora.com>
-In-Reply-To: <420e5184-fe35-4725-95c4-782cc096252f@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 22 Jan 2024 11:14:42 +0800
-Message-ID: <CAGXv+5GEdHxhOZ+BbSj7HrnihjKO+6-TgjngaYk0pRLMqskArQ@mail.gmail.com>
-Subject: Re: [PATCH v4 6/9] arm64: dts: mediatek: Add MT8186 Krabby platform
- based Tentacruel / Tentacool
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Eugen Hristev <eugen.hristev@collabora.com>, Conor Dooley <conor.dooley@microchip.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240121_191455_932930_1A9195BD 
-X-CRM114-Status: GOOD (  52.26  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240122022317.30091-1-Haiqiang.Gong@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,348 +70,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 19, 2024 at 9:19=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 14/12/23 15:37, Chen-Yu Tsai ha scritto:
-> > On Thu, Dec 14, 2023 at 7:31=E2=80=AFPM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> >>
-> >> Il 13/12/23 16:04, Chen-Yu Tsai ha scritto:
-> >>> Tentacruel and Tentacool are MT8186 based Chromebooks based on the
-> >>> Krabby design.
-> >>>
-> >>> Tentacruel, also known as the ASUS Chromebook CM14 Flip CM1402F, is a
-> >>> convertible device with touchscreen and stylus.
-> >>>
-> >>> Tentacool, also known as the ASUS Chromebook CM14 CM1402C, is a lapto=
-p
-> >>> device. It does not have a touchscreen or stylus.
-> >>>
-> >>> The two devices both have two variants. The difference is a second
-> >>> source touchpad controller that shares the same address as the origin=
-al,
-> >>> but is incompatible.
-> >>>
-> >>> The extra SKU IDs for the Tentacruel devices map to different sensor
-> >>> components attached to the Embedded Controller. These are not visible
-> >>> to the main processor.
-> >>>
-> >>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> >>> Acked-by: Conor Dooley <conor.dooley@microchip.com>
-> >>> ---
-> >>> Changes since v3:
-> >>> - Reorder some properties to conform better to the newly proposed DT
-> >>>     style guidelines
-> >>> - Drop unused labels
-> >>> - Rename bt-sco node name to bt-sco-codec
-> >>> - Drop i2s*-share properties from afe node
-> >>> - Drop aud_gpio_tdm_{on,off} pinctrl nodes
-> >>> - Replace interrupts with interrupts-extended in tpm node
-> >>> - Enable adsp device
-> >>>
-> >>> Changes since v2:
-> >>> - Picked up Conor's ack
-> >>> - Rename touchpad to trackpad
-> >>> - Drop pinctrl properties from trackpad in tentacruel/tentacool secon=
-d
-> >>>     source trackpad
-> >>>
-> >>> Changes since v1:
-> >>> - Reorder SKU numbers in descending order.
-> >>> - Fixed pinconfig node names
-> >>> - Moved pinctrl-* properties after interrupts-*
-> >>> - Switched to interrupts-extended for external components
-> >>> - Marked ADSP as explicitly disabled, with a comment explaining that =
-it
-> >>>     stalls the system
-> >>> - Renamed "touchpad" to "trackpad"
-> >>> - Dropped bogus "no-laneswap" property from it6505 node
-> >>> - Moved "realtek,jd-src" property to after all the regulator supplies
-> >>> - Switched to macros for MT6366 regulator "regulator-allowed-modes"
-> >>> - Renamed "vgpu" regulator name to allow coupling, with a comment
-> >>>     containing the name used in the design
-> >>> - Renamed "cr50" node name to "tpm"
-> >>> - Moved trackpad_pins reference up to i2c2; workaround for second sou=
-rce
-> >>>     component resource sharing.
-> >>> - Fix copyright year
-> >>> - Fixed touchscreen supply name
-> >>> ---
-> >>>    arch/arm64/boot/dts/mediatek/Makefile         |    4 +
-> >>>    .../dts/mediatek/mt8186-corsola-krabby.dtsi   |  129 ++
-> >>>    .../mt8186-corsola-tentacool-sku327681.dts    |   57 +
-> >>>    .../mt8186-corsola-tentacool-sku327683.dts    |   24 +
-> >>>    .../mt8186-corsola-tentacruel-sku262144.dts   |   44 +
-> >>>    .../mt8186-corsola-tentacruel-sku262148.dts   |   26 +
-> >>>    .../boot/dts/mediatek/mt8186-corsola.dtsi     | 1707 +++++++++++++=
-++++
-> >>>    7 files changed, 1991 insertions(+)
-> >>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-kra=
-bby.dtsi
-> >>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ten=
-tacool-sku327681.dts
-> >>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ten=
-tacool-sku327683.dts
-> >>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ten=
-tacruel-sku262144.dts
-> >>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ten=
-tacruel-sku262148.dts
-> >>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola.dts=
-i
-> >>>
-> >>> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/=
-dts/mediatek/Makefile
-> >>> index e6e7592a3645..442af61b1305 100644
-> >>> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> >>> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> >>> @@ -43,6 +43,10 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-koda=
-ma-sku32.dtb
-> >>>    dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-krane-sku0.dtb
-> >>>    dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-krane-sku176.dtb
-> >>>    dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-pumpkin.dtb
-> >>> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-tentacool-sku327681.=
-dtb
-> >>> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-tentacool-sku327683.=
-dtb
-> >>> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-tentacruel-sku262144=
-.dtb
-> >>> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-tentacruel-sku262148=
-.dtb
-> >>>    dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-evb.dtb
-> >>>    dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8192-asurada-hayato-r1.dtb
-> >>>    dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8192-asurada-hayato-r5-sku2.dtb
-> >>
-> >> ..snip..
-> >>
-> >>> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-s=
-ku262148.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku26=
-2148.dts
-> >>> new file mode 100644
-> >>> index 000000000000..447b57b12b41
-> >>> --- /dev/null
-> >>> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku26214=
-8.dts
-> >>> @@ -0,0 +1,26 @@
-> >>> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> >>> +/*
-> >>> + * Copyright 2023 Google LLC
-> >>> + */
-> >>> +
-> >>> +#include "mt8186-corsola-tentacruel-sku262144.dts"
-> >>> +
-> >>> +/ {
-> >>> +     compatible =3D "google,tentacruel-sku262151", "google,tentacrue=
-l-sku262150",
-> >>> +                  "google,tentacruel-sku262149", "google,tentacruel-=
-sku262148",
-> >>> +                  "google,tentacruel", "mediatek,mt8186";
-> >>> +};
-> >>> +
-> >>> +/* This variant replaces only the trackpad controller. */
-> >>> +&i2c2 {
-> >>> +     /delete-node/ trackpad@15;
-> >>> +
-> >>> +     trackpad@15 {
-> >>> +             compatible =3D "hid-over-i2c";
-> >>> +             reg =3D <0x15>;
-> >>> +             interrupts-extended =3D <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-> >>> +             hid-descr-addr =3D <0x0001>;
-> >>> +             vdd-supply =3D <&pp3300_s3>;
-> >>> +             wakeup-source;
-> >>> +     };
-> >>> +};
-> >>> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/=
-arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-> >>> new file mode 100644
-> >>> index 000000000000..adbeb0c765d3
-> >>> --- /dev/null
-> >>> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-> >>> @@ -0,0 +1,1707 @@
-> >>> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> >>> +/*
-> >>> + * Copyright (C) 2022 MediaTek Inc.
-> >>> + */
-> >>> +/dts-v1/;
-> >>> +#include "mt8186.dtsi"
-> >>> +#include <dt-bindings/pinctrl/mt8186-pinfunc.h>
-> >>> +#include <dt-bindings/gpio/gpio.h>
-> >>> +#include <dt-bindings/input/input.h>
-> >>> +#include <dt-bindings/input/gpio-keys.h>
-> >>> +#include <dt-bindings/regulator/mediatek,mt6397-regulator.h>
-> >>> +
-> >>
-> >> ..snip..
-> >>
-> >>> +
-> >>> +&i2c2 {
-> >>> +     pinctrl-names =3D "default";
-> >>> +     /*
-> >>> +      * Trackpad pin put here to work around second source component=
-s
-> >>> +      * sharing the pinmux in steelix designs.
-> >>> +      */
-> >>> +     pinctrl-0 =3D <&i2c2_pins>, <&trackpad_pin>;
-> >>> +     clock-frequency =3D <400000>;
-> >>> +     i2c-scl-internal-delay-ns =3D <10000>;
-> >>> +     status =3D "okay";
-> >>> +
-> >>> +     trackpad@15 {
-> >>> +             compatible =3D "elan,ekth3000";
-> >>
-> >> You forgot to change this one.
-> >>
-> >> Remove compatible from this node and stop using /delete-node/ in devic=
-e specific
-> >> devicetrees.
-> >
-> > I believe I already replied to the previous version why we can't and sh=
-ouldn't
-> > do that.
-> >
-> > "elan,ekth3000" and "hid-over-i2c" have incompatible bindings, specific=
-ally
-> > the former uses "vcc-supply" while the latter uses "vdd-supply".
-> >
-> > One has to track down if a property is a "sharable" property or not,
-> > then put it in the correct place, otherwise getting DT binding validati=
-on
-> > errors.
-> >
-> > To me it seems cleaner to just delete the node wholesale to not have an=
-y
-> > remnants of the original node, i.e. start from a clean slate. Trying to
-> > "share" common properties is asking for a headache.
-> >
-> > This feels more like a preference thing. I also asked if deleting the n=
-ode
-> > through the label would be cleaner, but you didn't reply.
-> >
->
-> I am truly sorry for not replying to that - and for replying to this one =
-very late.
->
-> Ok, in that case, I still don't really like seeing /delete-node/ statemen=
-ts... and
-> unless there is a truly valid reason to have those, can we please just ge=
-t each
-> node to each *.dts?
->
-> Just to clarify, a valid scenario to have a /delete-node/ statement there=
- would be
-> the following:
->   - Same platform, like Corsola in this case
->   - Four devices
->     - Three have one trackpad (better if expected more with the same TP)
->     - One has the other trackpad
->
-> Even though I am flexible with that, I just don't see the value in deleti=
-ng the
-> trackpad because we've got a 50-50 situation here!
->
-> At this point IMO it's worth defining the trackpad twice + twice instead.=
-.. but
-> if you expect to have more devices, conforming to the valid scenario that=
- I have
-> described above, then okay - keep going with /delete-node/.
+On Mon, Jan 22, 2024 at 10:23:17AM +0800, Haiqiang Gong wrote:
+> cma alloc may fail when we doing cma alloc/free test on kernel 5.10/5.15.
+> 
+> We found that the next memory cannot be migrated because of the alloc of
+> fs as next backtrace:
+> __alloc_pages_nodemask
+> pagecache_get_page
+> grow_dev_page
+> __getblk_gfp
+> ext4_sb_breadahead_unmovable
+> __ext4_get_inode_loc
+> __ext4_iget
+> ext4_lookup
+> __lookup_slow
+> walk_component
+> path_lookupat
+> filename_lookup
+> vfs_statx
+> This kind of unmovable memory is not placed in the cma buffer when kernel
+> memory alloc but is migrated in by kcompactd when the kernel migration.
+> It will cause memory can't be migrate when cma alloc.
 
-It's not 50-50, because all the other MT8186 devices inherit the original
-trackpad in mt8186-corsola.dtsi. So for those devices it either means
-pushing it down to the next level in mt8186-corsola-steelix.dtsi, or
-down to the individual .dts files, of which we already have six within
-this series, and another two for the Voltorb devices. So that's 10 vs 2.
+I don't understand.  You say that the memory isn't movable, but then you
+say that it's migrated in.  So it was movable, but it's no longer
+movable after being moved once?  
 
-I think that makes a very valid case for using /delete-node/ and not
-duplicating the device node everywhere?
+> Add check mechanism in the compaction_alloc() where kcompaced alloc for
+> memory. Will return NULL and give up this memory migration if the
+> allocated memory is in the cma buffer and the memory is unmovable.
 
-Maybe we'll be able to clean this mess up a bit with overlays and FIT
-images, but the FIT image stuff is still under discussion.
+> +static bool forbid_move_to_cma_range(struct folio *src, struct folio *dst)
+> +{
+> +	if (folio_mapping(src) && is_in_cma_range(dst))
+> +		return true;
+> +
+> +	return false;
+> +}
 
-
-ChenYu
-
-> > Also, "elan,ekth3000" is the one that was designed and tested on the Co=
-rsola
-> > reference design, so I think it rightfully belongs there. The Tentacrue=
-l
-> > SKU replaced it with another part, so the original part should be disab=
-led,
-> > or in this case, deleted, because otherwise there would be a conflict.
->
-> If you really want to document the fact that the Corsola Reference Design
-> suggests to use a Elan eKTH3000 part, you can always leave a comment in t=
-he
-> dtsi, though, that's interesting mostly only to OEMs... but anyway I'm no=
-t
-> against having a comment, at all.
->
-> Cheers,
-> Angelo
->
-> >
-> >
-> > Regards
-> > ChenYu
-> >
-> >
-> >
-> >>> +             reg =3D <0x15>;
-> >>> +             interrupts-extended =3D <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-> >>> +             vcc-supply =3D <&pp3300_s3>;
-> >>> +             wakeup-source;
-> >>> +     };
-> >>> +};
-> >>
-> >>
-> >> corsola.dtsi (here):
-> >>
-> >> &i2c2 {
-> >>          pinctrl-names =3D "default";
-> >>          /*
-> >>           * Trackpad pin put here to work around second source compone=
-nts
-> >>           * sharing the pinmux in steelix designs.
-> >>           */
-> >>          pinctrl-0 =3D <&i2c2_pins>, <&trackpad_pin>;
-> >>          clock-frequency =3D <400000>;
-> >>          i2c-scl-internal-delay-ns =3D <10000>;
-> >>          status =3D "okay";
-> >>
-> >>          trackpad_i2c2_15: trackpad@15 {
-> >>                  /*
-> >>                   * Those are common properties for i2c2 trackpad on C=
-orsola boards.
-> >>                   * The compatible string is declared in device specif=
-ic devicetrees
-> >>                   */
-> >>                  reg =3D <0x15>;
-> >>                  interrupts-extended =3D <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-> >>                  vcc-supply =3D <&pp3300_s3>;
-> >>                  wakeup-source;
-> >>                  status =3D "disabled";
-> >>          };
-> >> };
-> >>
-> >> corsola-some-device.dts:
-> >>
-> >> &trackpad_i2c2_15 {
-> >>          compatible =3D "hid-over-i2c";
-> >>          hid-descr-addr =3D <0x0001>;
-> >>          status =3D "okay";
-> >> };
-> >>
-> >> corsola-some-other-device.dts:
-> >>
-> >> &trackpad_i2c2_15 {
-> >>          compatible =3D "elan,ekth3000";
-> >>          status =3D "okay";
-> >> };
-> >>
-> >> ....everything else looks good.
-> >>
-> >> Cheers,
-> >> Angelo
->
->
->
+Why would folio_mapping() be the right way to determine if memory is
+unmovable?  The vast majority of filesystem data is movable.
 
