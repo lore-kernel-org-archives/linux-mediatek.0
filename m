@@ -4,93 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 973B6C4725D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 03:45:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD00DC4725D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 05:34:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kE8ms7ryFZW9Ht/e6NRcvd7QnzuOU18cg/pk9kEcOj4=; b=Bi4VHHrmhQY9k0sOQTz31ZtSyr
-	SFskImxWnGdk+d6QsrEt3DkSPw1zOLmTt7zA1t/jPB6xi7HvAKWR4XKiuWHmSy6BUSiFpLgYUrmpT
-	lRAz0Gw9nz04qDXB8/mm3nKrR1vj9t2GAvygekFCxsPcz0w5UGirNrvv5wadJbmD9N6x1toktg/HB
-	UkWKDmeHy571ukEnN020AsqqfFtO0YYiAStJoevgSYyFMvrcK/ilYxekUqXVc7h7BKk4xWZCGmckl
-	tss7hbFOZIuJ/6yDjgf9uIqWHrXc6H9itA1QhqYrAQHMZ2rCWY8gErjLizS0965fYgwp19THZ0yTD
-	nD6kuX0A==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uTfZ42YMdPsc//kAzPHZ2G81y8NgAM6Sfpnm9pJXkZE=; b=iKInONwKM1nOo0uu6/BkKf7Hyt
+	OAEPVTJUnGNOOTQoDE3laKqLbyj5gKWOWi1vvv/HysjSe/gCQB8FO8TJAFC3qMEMGMwexw7PUJzUg
+	Dp4zx/SGWIAMzg4+hdimcod5E+wUTZdn2j1sDGbn0+0P6lRVrtHSn2JKT2EE/a2MnoIpXIu4vVxud
+	quBZF5o7xCP6Tfg2YCcwgmzdBBmjwy0Jz3S++14EPwRcdqCsJ6e8mceXUumyiIqwfJSS8WLBwvI6K
+	jmz8I6HvLiK7+PVV2YgU+tIguPnXQRhczf0s4WjusYKM8YVl5oCpxVDcH2m1Xjzrshy/gVfu7fdw+
+	07gCcRLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRlFh-00ATtO-0P;
-	Mon, 22 Jan 2024 03:45:37 +0000
-Received: from mail-vk1-xa2e.google.com ([2607:f8b0:4864:20::a2e])
+	id 1rRmxU-00AbJG-1Y;
+	Mon, 22 Jan 2024 05:34:56 +0000
+Received: from relay1-d.mail.gandi.net ([2001:4b98:dc4:8::221])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRlFb-00ATse-0N
-	for linux-mediatek@lists.infradead.org;
-	Mon, 22 Jan 2024 03:45:35 +0000
-Received: by mail-vk1-xa2e.google.com with SMTP id 71dfb90a1353d-4b9302191a2so403280e0c.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 21 Jan 2024 19:45:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1705895128; x=1706499928; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kE8ms7ryFZW9Ht/e6NRcvd7QnzuOU18cg/pk9kEcOj4=;
-        b=eEXzURjrwXZBp+HWjx9MybBUqZUXE1EJw0ZO0oEfccPUTgbR/9jbEH5jS6pJAIxniY
-         /RclIwqRR6LQzOcXBWYfJ40ZWmxG1zpKXMXedcNvRclz3y4XJFevVINgnYZfv7t8DGHY
-         B/1Q5n+8RPG1vPZ4wshv8NyHd2gX72n+lMwuo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705895128; x=1706499928;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kE8ms7ryFZW9Ht/e6NRcvd7QnzuOU18cg/pk9kEcOj4=;
-        b=OVLdq2qw+h3hZro3FaKYosZMVmQ0ZZ4Dwl00XnjxvqG5hf/+tfo14BdQWgwV/bv5ls
-         mnRQRX9WmUOLEuIBnOROEgt6V18HIxtJETGfmT1/pgu7XwfKx1E50+9frK07F4DDIOHH
-         /T2z6Mr8Wz2bd+bJxsuMTK1a2fgZgtCeWP+OZqkSfJgYko4kl8i2cIHfx6bVUEefjFqN
-         jCpQs8S4NOEhx8XQarHzc1gwTClmExY2CpcAq0woaWEB2P5yC3we4VcifOVCwP2CTgB0
-         UJ4gl56+vQbrO6eD+V516GY/5TDWn3zDGpQ1U76zbM4FIkrJcmCvn+JoJhxU9WZXw3wo
-         Czug==
-X-Gm-Message-State: AOJu0YyUrXAUSs6bH0Y3Mow90bNu2Q+zKTns4htLY4ckvJK3WICes5vd
-	NhTj+PjbJ4CqidVBulHG8NtnvtV0hJULPSQ7Njui3MHNKrIKYjTVb3ZHwbDbRs3zxDxShcns5gP
-	jgQ==
-X-Google-Smtp-Source: AGHT+IFFCaiVfP9WTAQPf1JTt9yYyUQVHNNO3XISmWMV/LUcMkX51QsA40uSEzP4h3KBnpPGzCsZnA==
-X-Received: by 2002:a05:6122:4581:b0:4b6:b43f:1b04 with SMTP id de1-20020a056122458100b004b6b43f1b04mr995716vkb.9.1705895128427;
-        Sun, 21 Jan 2024 19:45:28 -0800 (PST)
-Received: from mail-vk1-f177.google.com (mail-vk1-f177.google.com. [209.85.221.177])
-        by smtp.gmail.com with ESMTPSA id r26-20020a05612206ba00b004b89836a609sm1988793vkq.49.2024.01.21.19.45.26
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 21 Jan 2024 19:45:27 -0800 (PST)
-Received: by mail-vk1-f177.google.com with SMTP id 71dfb90a1353d-4b978e5e240so471141e0c.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 21 Jan 2024 19:45:26 -0800 (PST)
-X-Received: by 2002:a05:6122:410b:b0:4b7:1658:e66b with SMTP id
- ce11-20020a056122410b00b004b71658e66bmr994565vkb.23.1705895125827; Sun, 21
- Jan 2024 19:45:25 -0800 (PST)
+	id 1rRmxO-00AbGA-1f;
+	Mon, 22 Jan 2024 05:34:54 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 2E957240004;
+	Mon, 22 Jan 2024 05:34:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1705901683;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=uTfZ42YMdPsc//kAzPHZ2G81y8NgAM6Sfpnm9pJXkZE=;
+	b=n/cLpFXAnCndk/5bqPBQr1sNRXHQbO3V/lGqNjaW2xLNfGvv4yW61KmF56OTU9yrw4zM92
+	7yEYaETXr6L4LPi5cPhmBhPFQWKfaNaqdJ3QXdcoyLs6I1CHdPOaR13ihNO43AQ76UlfTh
+	VTjzDp1CVW9VNmZEa2dZV/1tQTK1lbycsfvLYy4V7IS4hIGirRtUQqC5bmsymCjE8E49EX
+	NoW88/KHNkRAz2CFkut/qcUnRxkfdY54Oc4+0WCUx7waZ+tUOT3MjOn3OKtlZFXCFWHbsf
+	BaMb3OE15U3oENyr8kLkwAkez3dMEqVlL6rDyOp31VTUk8l+3UaR2eGGCsk5sg==
+From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: David Bauer <mail@david-bauer.net>,
+	mithat.guner@xeront.com,
+	erkin.bozoglu@xeront.com,
+	Luiz Angelo Daros de Luca <luizluca@gmail.com>,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next] net: dsa: mt7530: support OF-based registration of switch MDIO bus
+Date: Mon, 22 Jan 2024 08:34:31 +0300
+Message-Id: <20240122053431.7751-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-References: <20240119063224.29671-1-jason-jh.lin@mediatek.com> <20240119063224.29671-2-jason-jh.lin@mediatek.com>
-In-Reply-To: <20240119063224.29671-2-jason-jh.lin@mediatek.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Mon, 22 Jan 2024 11:44:48 +0800
-X-Gmail-Original-Message-ID: <CAC=S1ng5v5-LSq6d-R-89N35qiKd7qa8FEo6qakWxrzibYvgSQ@mail.gmail.com>
-Message-ID: <CAC=S1ng5v5-LSq6d-R-89N35qiKd7qa8FEo6qakWxrzibYvgSQ@mail.gmail.com>
-Subject: Re: [PATCH v3 1/3] dt-bindings: mailbox: Add mediatek,gce-props.yaml
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
-	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
-	Jason-ch Chen <jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>, 
-	Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, 
-	Shawn Sung <shawn.sung@mediatek.com>, Project_Global_Chrome_Upstream_Group@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240121_194531_198370_7FB3CE59 
-X-CRM114-Status: GOOD (  32.96  )
+X-CRM114-CacheID: sfid-20240121_213450_862911_D4744734 
+X-CRM114-Status: GOOD (  18.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,122 +87,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 19, 2024 at 2:32=E2=80=AFPM Jason-JH.Lin <jason-jh.lin@mediatek=
-.com> wrote:
-Hi Jason,
+Currently the MDIO bus of the switches the MT7530 DSA subdriver controls
+can only be registered as non-OF-based. Bring support for registering the
+bus OF-based.
 
-Just few nitpicks about typo:
->
-> Add mediatek,gce-props.yaml for common GCE properties that is used for
-> both mailbox providers and consumers. We place the common property
-> "mediatek,gce-events" in this binding currently.
->
-> The property "mediatek,gce-events" is used for GCE event ID corresponding
-> to a hardware event signal sent by the hardware or a sofware driver.
-software
+The subdrivers that control switches [with MDIO bus] probed on OF must
+follow this logic to support all cases properly:
 
-> If the mailbox providers or consumers want to manipulate the value of
-> the event ID, they need to know the specific event ID.
->
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> ---
->  .../bindings/mailbox/mediatek,gce-props.yaml  | 52 +++++++++++++++++++
->  1 file changed, 52 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mailbox/mediatek,gc=
-e-props.yaml
->
-> diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-props=
-.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-props.yaml
-> new file mode 100644
-> index 000000000000..68b519ff089f
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-props.yaml
-> @@ -0,0 +1,52 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mailbox/mediatek,gce-props.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Global Command Engine Common Propertes
-Properties
+No switch MDIO bus defined: Populate ds->user_mii_bus, register the MDIO
+bus, set the interrupts for PHYs if "interrupt-controller" is defined at
+the switch node. This case should only be covered for the switches which
+their dt-bindings documentation didn't document the MDIO bus from the
+start. This is to keep supporting the device trees that do not describe the
+MDIO bus on the device tree but the MDIO bus is being used nonetheless.
 
-> +
-> +maintainers:
-> +  - Houlong Wei <houlong.wei@mediatek.com>
-> +
-> +description:
-> +  The Global Command Engine (GCE) is an instruction based, multi-threade=
-d,
-> +  single-core command dispatcher for MediaTek hardware. The Command Queu=
-e
-> +  (CMDQ) mailbox driver is a driver for GCE, implemented using the Linux
-> +  mailbox framework. It is used to receive messages from mailbox consume=
-rs
-> +  and configure GCE to execute the specified instruction set in the mess=
-age.
-> +  We use mediatek,gce-mailbox.yaml to define the properties for CMDQ mai=
-lbox
-> +  driver. A device driver that uses the CMDQ driver to configure its har=
-dware
-> +  registers is a mailbox consumer. The mailbox consumer can request a ma=
-ilbox
-> +  channel corresponding to a GCE hardware thread to send a message, spec=
-ifying
-> +  that the GCE thread to configure its hardware. The mailbox provider ca=
-n also
-> +  reserved a mailbox channel to configure GCE hardware register by the s=
-pcific
-s/reserved/reserve/
-s/spcific/specific/
+Switch MDIO bus defined: Don't populate ds->user_mii_bus, register the MDIO
+bus, set the interrupts for PHYs if ["interrupt-controller" is defined at
+the switch node and "interrupts" is defined at the PHY nodes under the
+switch MDIO bus node].
 
-Regards,
-Fei
+Switch MDIO bus defined but explicitly disabled: If the device tree says
+status = "disabled" for the MDIO bus, we shouldn't need an MDIO bus at all.
+Instead, just exit as early as possible and do not call any MDIO API.
 
+The use of ds->user_mii_bus is inappropriate when the MDIO bus of the
+switch is described on the device tree [1], which is why we don't populate
+ds->user_mii_bus in that case.
 
-> +  GCE thread. This binding defines the common GCE properties for both ma=
-ilbox
-> +  provider and consumers.
-> +
-> +properties:
-> +  mediatek,gce-events:
-> +    description:
-> +      GCE has an event table in SRAM, consisting of 1024 event IDs (0~10=
-23).
-> +      Each event ID has a boolean event value with the default value 0.
-> +      The property mediatek,gce-events is used to obtain the event IDs.
-> +      Some gce-events are hardware-bound and cannot be changed by softwa=
-re.
-> +      For instance, in MT8195, when VDO0_MUTEX is stream done, VDO_MUTEX=
- will
-> +      send an event signal to GCE, setting the value of event ID 597 to =
-1.
-> +      Similarly, in MT8188, the value of event ID 574 will be set to 1 w=
-hen
-> +      VOD0_MUTEX is stream done.
-> +      On the other hand, some gce-events are not hardware-bound and can =
-be
-> +      changed by software. For example, in MT8188, we can set the value =
-of
-> +      event ID 855, which is not bound to any hardware, to 1 when the dr=
-iver
-> +      in the secure world completes a task. However, in MT8195, event ID=
- 855
-> +      is already bound to VDEC_LAT1, so we need to select another event =
-ID to
-> +      achieve the same purpose. This event ID can be any ID that is not =
-bound
-> +      to any hardware and is not yet used in any software driver.
-> +      To determine if the event ID is bound to the hardware or used by a
-> +      software driver, refer to the GCE header
-> +      include/dt-bindings/gce/<chip>-gce.h of each chip.
-> +    $ref: /schemas/types.yaml#/definitions/uint32-array
-> +    minItems: 1
-> +    maxItems: 1024
-> +
-> +additionalProperties: true
-> --
-> 2.18.0
->
->
+Link: https://lore.kernel.org/netdev/20231213120656.x46fyad6ls7sqyzv@skbuf/ [1]
+Suggested-by: David Bauer <mail@david-bauer.net>
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+ drivers/net/dsa/mt7530.c | 34 ++++++++++++++++++++++++++--------
+ 1 file changed, 26 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 391c4dbdff42..cf2ff7680c15 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2146,24 +2146,40 @@ mt7530_free_irq_common(struct mt7530_priv *priv)
+ static void
+ mt7530_free_irq(struct mt7530_priv *priv)
+ {
+-	mt7530_free_mdio_irq(priv);
++	struct device_node *mnp, *np = priv->dev->of_node;
++
++	mnp = of_get_child_by_name(np, "mdio");
++	if (!mnp)
++		mt7530_free_mdio_irq(priv);
++	of_node_put(mnp);
++
+ 	mt7530_free_irq_common(priv);
+ }
+ 
+ static int
+ mt7530_setup_mdio(struct mt7530_priv *priv)
+ {
++	struct device_node *mnp, *np = priv->dev->of_node;
+ 	struct dsa_switch *ds = priv->ds;
+ 	struct device *dev = priv->dev;
+ 	struct mii_bus *bus;
+ 	static int idx;
+-	int ret;
++	int ret = 0;
++
++	mnp = of_get_child_by_name(np, "mdio");
++
++	if (mnp && !of_device_is_available(mnp))
++		goto out;
+ 
+ 	bus = devm_mdiobus_alloc(dev);
+-	if (!bus)
+-		return -ENOMEM;
++	if (!bus) {
++		ret = -ENOMEM;
++		goto out;
++	}
++
++	if (!mnp)
++		ds->user_mii_bus = bus;
+ 
+-	ds->user_mii_bus = bus;
+ 	bus->priv = priv;
+ 	bus->name = KBUILD_MODNAME "-mii";
+ 	snprintf(bus->id, MII_BUS_ID_SIZE, KBUILD_MODNAME "-%d", idx++);
+@@ -2174,16 +2190,18 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
+ 	bus->parent = dev;
+ 	bus->phy_mask = ~ds->phys_mii_mask;
+ 
+-	if (priv->irq)
++	if (priv->irq && !mnp)
+ 		mt7530_setup_mdio_irq(priv);
+ 
+-	ret = devm_mdiobus_register(dev, bus);
++	ret = devm_of_mdiobus_register(dev, bus, mnp);
+ 	if (ret) {
+ 		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
+-		if (priv->irq)
++		if (priv->irq && !mnp)
+ 			mt7530_free_mdio_irq(priv);
+ 	}
+ 
++out:
++	of_node_put(mnp);
+ 	return ret;
+ }
+ 
+-- 
+2.40.1
+
 
