@@ -4,78 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E819C4725D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 13:05:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FCDAC4725D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jan 2024 13:19:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Mp/8xDRCZjv5y4KcPViCiBMqajiVKRc1465woAo3Ngo=; b=xbAKToD1kticSfC5S3SRF4PNqN
-	w3irDE5wsqRHW1ZFd32ENB0H3VWWmcNK6Dw5Hbrnz8PaSd65X9u6BSie9NT2JA/JBTXU/AAvIxYts
-	AXNjVTenGN++w/sru8045iek1wS68MukEj0mnqULUW0G+cfl4t+P9H7Uaq+lwv0j4ZbMa1FkdV0Cr
-	SA+Nymd6QePTMOrquwejp3ShBnBBaV3pi+iOFEPIRG2a7Ec8qdyL3LHld/n6VC2QsBYprxttkNPuQ
-	BfEgrTjasopLKrsDuDcSe5tOULuh6NT/Sd5rmV8sZ0pivfCPgOGLPyhlo+EWH7Z/B0iQSq80jrMSn
-	wNRBh3XQ==;
+	bh=Z1J14CwoB1zAZcfJ++8H9LLWPoowGUbnVzLpFfhNUg4=; b=a1RWJoL0RCEDjCGLfH/b5AZujt
+	2+MjVqEgu2mYp65WZAsA4YerGllPP/sBws7tv24FuUStlIvumBN51rGZeLBKfqVcPX1Lkt3cVY9jN
+	eznSa82WpNkK8asfmTlbRe6CTLz0Ud84bHpReeww/4z/n1dN2UpwEKAsKX2BzSmqUSD2IZyo54ICQ
+	cmXfvPRBnniJZYGE9YpnYUGE8NWaRCIJdOltPixE4W21K5Ckcp9Qq0j89yTeTtEfiX4r47MIVsh8M
+	3TXIQuRGWuRvyoQTgoVWwHDJL6fQtGK4uEI7ANjN5VX1vtqBCm/9ZyONMg4XUaCQVYgcydVrq6iYg
+	lQkltciw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRtzY-00CDYM-27;
-	Mon, 22 Jan 2024 13:05:32 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1rRuDE-00CGe0-1G;
+	Mon, 22 Jan 2024 13:19:40 +0000
+Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRtzU-00CDWh-20;
-	Mon, 22 Jan 2024 13:05:29 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-33921b95dddso1404376f8f.1;
-        Mon, 22 Jan 2024 05:05:28 -0800 (PST)
+	id 1rRuD9-00CGbh-34;
+	Mon, 22 Jan 2024 13:19:37 +0000
+Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-2cd853c159eso35767921fa.2;
+        Mon, 22 Jan 2024 05:19:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1705928727; x=1706533527; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1705929571; x=1706534371; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Mp/8xDRCZjv5y4KcPViCiBMqajiVKRc1465woAo3Ngo=;
-        b=fvGIFEVTfGWnDIeszPSTclTxrpUmXLIeGL0Sjl7vwZcHR9gerqUhI64P7XzHxl5uaz
-         WmFM9sbIgn3qgP3endc/g+qTAenYfqHWjPANVrnKP1kN7kEUC+K1AroPTo3l8tAExdKy
-         PJyio6LUvlJOnaD56EudWItShrwzhiWlOzet0fDFX2PLWIihR9hAoPtz2htuWvhUp9EI
-         BezpuwxMo0Kb4KRsRFUSNK8jGsCJcIMDoaqIkIZt2TzAbeEilbkDwpa+o4MZiXrhpp7K
-         oD8NYltrqr90KhD+LTf5Q7WST1pglHAhA6wR2mcKyXGG4KTkAkcgQW6SI4RPRfi2rEAL
-         ksYQ==
+        bh=Z1J14CwoB1zAZcfJ++8H9LLWPoowGUbnVzLpFfhNUg4=;
+        b=F9l803IRn0Uo0SMFZAoqSg/wwKEaHyviRNo7EIPU954MMHNlqXindb0/mUeF0geY0B
+         LhPfecHkActF7iGxErqNyh9ShmT5kDY3HCjGPxTJejF+hLLjuJw2axSQK6pe5Rl7csM+
+         lvtwPuXiHw8nI6qdACQ6ktX6yu+tz02tjeAkYqGU8OOf5qFtiJYnnV/gzuYwQkJTuire
+         3JsSQYT83ufdiTnIGBjuBIWqdOz3qe7FQdbOuoG2CC92MpTrQP9t1cZ6P5Yxdp8GfJ5a
+         yPVRCZIqPr7VhVhelsGW6awpTHZ0L4K8iBfTb7hdStuxjMWaoT9+3tUteTQhN/fFFi0k
+         CqnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705928727; x=1706533527;
+        d=1e100.net; s=20230601; t=1705929571; x=1706534371;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Mp/8xDRCZjv5y4KcPViCiBMqajiVKRc1465woAo3Ngo=;
-        b=PUCs9urK2DIbnRhKuWE+KTHReW6ZJx/kw1S4CM0TbcvkjNvLQ2+rAXaTVcmCmUtYEl
-         fiPuUotHRFA7p4x42n2XfF+soPnzDVIrEaS18dKm8/H6Swg4Ht5XsLs4EB0yJs1fw6q+
-         QwCHW0ScF3K7dgspDRH8RjMe7VgYF7tZAzyKwg4R/x0tESjsvou7enJKumGGrRXpZQDW
-         CMHb999sXZZLdqxqYWsF4DneVINwUf3z0opnyW02YU9k6gFbCEQHu3qamy0wOqA/grwL
-         SmfFPGinl9j0dkkO8m4UWIan8HGmqkNS8gD87vU4HhRbQCU11A940UJWL+3NHDfIXCcU
-         yRpQ==
-X-Gm-Message-State: AOJu0YwdoGgWiCb/vMvD1J0JrDS5xxy8Lr28KJO2IklzcHDBMJ7u8Inu
-	ONjX8fwPfyPSGZHnLy7KUwTU+4NdnIuWg0nvs0CQ3xxtYQABkRpWjw2F7yYbr04=
-X-Google-Smtp-Source: AGHT+IFHmjEmeu7pWua+wi7iLe6qjSDVPRL27NITeBmGF9vpz49mzsF7SGDLAVjMhHv73ZtGi6vZHg==
-X-Received: by 2002:a05:600c:3509:b0:40d:8881:4d1e with SMTP id h9-20020a05600c350900b0040d88814d1emr2236549wmq.66.1705928726767;
-        Mon, 22 Jan 2024 05:05:26 -0800 (PST)
+        bh=Z1J14CwoB1zAZcfJ++8H9LLWPoowGUbnVzLpFfhNUg4=;
+        b=PM+GadcajWDOiNB3NK0QMioIq3tnDtlhikBZ9WN2t7Q4j1k9TQ42bUBvjhTWgSpj4Y
+         YlXO0H1tLSSpuOiNegeLDYDvu1Myx/HWxpOEcddn755v0yy2+8Zkh+U4cDVTd/F9p+Dr
+         9HTXkD/oC5+UMtQMxdIXKnZ+gEFqgpKgHVU5nYBPqV0swLEN9A6qrKrKDM9Pgurdez0h
+         t2NREo0VmFcEvxsl8ez+t3Rwfa0fRw23Uqj1KOrz60DrQ3Fp14B1gEZwb7M2X6nsNl1i
+         D7gTC+I+hX6JoNbOpFLpqUelGkQx6R8X3KRSnBfCiNfvzqjwJtDunYvoxb0VAXEoNOfN
+         xT8w==
+X-Gm-Message-State: AOJu0YxZgeFlE4yCmUF5EpTPMMtpMZTB2GUVYfpSAtkytUGnJ8DmOuBc
+	GWBV6OvSKzEng/GG9i1euWEXyE6HOPv9HsgW7mp4dtIxHPze4QS4
+X-Google-Smtp-Source: AGHT+IEXao7fglqEEO9wOlw9QcUjQpOzOZASh9wa+irPcp7xzh/6PvDbwKWSC+JfsMh+r5dDOH8O8g==
+X-Received: by 2002:a2e:bc13:0:b0:2cc:5c19:d009 with SMTP id b19-20020a2ebc13000000b002cc5c19d009mr2374397ljf.45.1705929570561;
+        Mon, 22 Jan 2024 05:19:30 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.161.188])
-        by smtp.gmail.com with ESMTPSA id h10-20020adff4ca000000b0033925aa222dsm6846512wrp.57.2024.01.22.05.05.25
+        by smtp.gmail.com with ESMTPSA id a16-20020a056000101000b00337cd6b1890sm11336910wrx.80.2024.01.22.05.19.29
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 22 Jan 2024 05:05:25 -0800 (PST)
-Message-ID: <5339e8b2-8fcd-498a-b9d8-2dc2e3ddb272@gmail.com>
-Date: Mon, 22 Jan 2024 14:05:25 +0100
+        Mon, 22 Jan 2024 05:19:29 -0800 (PST)
+Message-ID: <1c4e14f7-ca34-4433-96cb-0ba6d6c6906d@gmail.com>
+Date: Mon, 22 Jan 2024 14:19:28 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] usb: mtu3: Add MT8195 MTU3 ip-sleep wakeup support
+Subject: Re: [PATCH] dt-bindings: rtc: convert MT2717 RTC to the json-schema
 Content-Language: en-US, ca-ES, es-ES
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- chunfeng.yun@mediatek.com
-Cc: gregkh@linuxfoundation.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>
-References: <20240122111809.148546-1-angelogioacchino.delregno@collabora.com>
- <20240122111809.148546-2-angelogioacchino.delregno@collabora.com>
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Ran Bi <ran.bi@mediatek.com>, linux-rtc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>
+References: <20240122124949.29577-1-zajec5@gmail.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  xsFNBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -120,12 +123,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240122111809.148546-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240122124949.29577-1-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240122_050528_660220_9E596DBC 
-X-CRM114-Status: GOOD (  16.13  )
+X-CRM114-CacheID: sfid-20240122_051935_991752_AEFCFA0D 
+X-CRM114-Status: GOOD (  16.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,75 +145,93 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 22/01/2024 12:18, AngeloGioacchino Del Regno wrote:
-> Add support for the ip-sleep wakeup functionality on the three MTU3
-> controllers found on the MT8195 SoC.
+On 22/01/2024 13:49, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
+> This helps validating DTS files. Introduced changes:
+> 1. Reworded title
+> 2. Dropper redundant properties descriptions
+> 3. Added required #include and adjusted "reg" in example
+> 
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 > ---
+>   .../bindings/rtc/mediatek,mt2712-rtc.yaml     | 39 +++++++++++++++++++
+>   .../devicetree/bindings/rtc/rtc-mt2712.txt    | 14 -------
+>   2 files changed, 39 insertions(+), 14 deletions(-)
+>   create mode 100644 Documentation/devicetree/bindings/rtc/mediatek,mt2712-rtc.yaml
+>   delete mode 100644 Documentation/devicetree/bindings/rtc/rtc-mt2712.txt
 > 
-> Changes in v2:
->   - Dropped unused definition for WC0_IS_EN_P1_95
-> 
->   drivers/usb/mtu3/mtu3_host.c | 30 ++++++++++++++++++++++++++++++
->   1 file changed, 30 insertions(+)
-> 
-> diff --git a/drivers/usb/mtu3/mtu3_host.c b/drivers/usb/mtu3/mtu3_host.c
-> index 9f2be22af844..7c657ea2dabd 100644
-> --- a/drivers/usb/mtu3/mtu3_host.c
-> +++ b/drivers/usb/mtu3/mtu3_host.c
-> @@ -34,6 +34,18 @@
->   #define WC0_SSUSB0_CDEN		BIT(6)
->   #define WC0_IS_SPM_EN		BIT(1)
->   
-> +/* mt8195 */
-> +#define PERI_WK_CTRL0_8195	0x04
-> +#define WC0_IS_P_95		BIT(30)	/* polarity */
-> +#define WC0_IS_C_95(x)		((u32)(((x) & 0x7) << 27))
-> +#define WC0_IS_EN_P3_95		BIT(26)
-> +#define WC0_IS_EN_P2_95		BIT(25)
+> diff --git a/Documentation/devicetree/bindings/rtc/mediatek,mt2712-rtc.yaml b/Documentation/devicetree/bindings/rtc/mediatek,mt2712-rtc.yaml
+
+In this schema can easily fit "mediatek,mt7622-rtc", so how about renaming it 
+and add reference for that RTC as well?
+
+Regards,
+Matthias
+
+
+> new file mode 100644
+> index 000000000000..75624ddf6d4d
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/rtc/mediatek,mt2712-rtc.yaml
+> @@ -0,0 +1,39 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/rtc/mediatek,mt2712-rtc.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +#define PERI_WK_CTRL1_8195	0x20
-> +#define WC1_IS_C_95(x)		((u32)(((x) & 0xf) << 28))
-> +#define WC1_IS_P_95		BIT(12)
-> +#define WC1_IS_EN_P0_95		BIT(6)
+> +title: MediaTek MT2712 on-SoC RTC
 > +
->   /* mt2712 etc */
->   #define PERI_SSUSB_SPM_CTRL	0x0
->   #define SSC_IP_SLEEP_EN	BIT(4)
-> @@ -44,6 +56,9 @@ enum ssusb_uwk_vers {
->   	SSUSB_UWK_V2,
->   	SSUSB_UWK_V1_1 = 101,	/* specific revision 1.01 */
->   	SSUSB_UWK_V1_2,		/* specific revision 1.02 */
-> +	SSUSB_UWK_V1_3,		/* mt8195 IP0 */
-> +	SSUSB_UWK_V1_5 = 105,	/* mt8195 IP2 */
-> +	SSUSB_UWK_V1_6,		/* mt8195 IP3 */
->   };
->   
->   /*
-> @@ -70,6 +85,21 @@ static void ssusb_wakeup_ip_sleep_set(struct ssusb_mtk *ssusb, bool enable)
->   		msk = WC0_SSUSB0_CDEN | WC0_IS_SPM_EN;
->   		val = enable ? msk : 0;
->   		break;
-> +	case SSUSB_UWK_V1_3:
-> +		reg = ssusb->uwk_reg_base + PERI_WK_CTRL1_8195;
-> +		msk = WC1_IS_EN_P0_95 | WC1_IS_C_95(0xf) | WC1_IS_P_95;
-> +		val = enable ? (WC1_IS_EN_P0_95 | WC1_IS_C_95(0x1)) : 0;
-> +		break;
-> +	case SSUSB_UWK_V1_5:
-> +		reg = ssusb->uwk_reg_base + PERI_WK_CTRL0_8195;
-> +		msk = WC0_IS_EN_P2_95 | WC0_IS_C_95(0x7) | WC0_IS_P_95;
-> +		val = enable ? (WC0_IS_EN_P2_95 | WC0_IS_C_95(0x1)) : 0;
-> +		break;
-> +	case SSUSB_UWK_V1_6:
-> +		reg = ssusb->uwk_reg_base + PERI_WK_CTRL0_8195;
-> +		msk = WC0_IS_EN_P3_95 | WC0_IS_C_95(0x7) | WC0_IS_P_95;
-> +		val = enable ? (WC0_IS_EN_P3_95 | WC0_IS_C_95(0x1)) : 0;
-> +		break;
->   	case SSUSB_UWK_V2:
->   		reg = ssusb->uwk_reg_base + PERI_SSUSB_SPM_CTRL;
->   		msk = SSC_IP_SLEEP_EN | SSC_SPM_INT_EN;
+> +allOf:
+> +  - $ref: rtc.yaml#
+> +
+> +maintainers:
+> +  - Ran Bi <ran.bi@mediatek.com>
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt2712-rtc
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +required:
+> +  - reg
+> +  - interrupts
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +
+> +    rtc@10011000 {
+> +        compatible = "mediatek,mt2712-rtc";
+> +        reg = <0x10011000 0x1000>;
+> +        interrupts = <GIC_SPI 239 IRQ_TYPE_LEVEL_LOW>;
+> +    };
+> diff --git a/Documentation/devicetree/bindings/rtc/rtc-mt2712.txt b/Documentation/devicetree/bindings/rtc/rtc-mt2712.txt
+> deleted file mode 100644
+> index c33d87e5e753..000000000000
+> --- a/Documentation/devicetree/bindings/rtc/rtc-mt2712.txt
+> +++ /dev/null
+> @@ -1,14 +0,0 @@
+> -Device-Tree bindings for MediaTek SoC based RTC
+> -
+> -Required properties:
+> -- compatible	    : Should be "mediatek,mt2712-rtc" : for MT2712 SoC
+> -- reg 		    : Specifies base physical address and size of the registers;
+> -- interrupts	    : Should contain the interrupt for RTC alarm;
+> -
+> -Example:
+> -
+> -rtc: rtc@10011000 {
+> -	compatible = "mediatek,mt2712-rtc";
+> -	reg = <0 0x10011000 0 0x1000>;
+> -	interrupts = <GIC_SPI 239 IRQ_TYPE_LEVEL_LOW>;
+> -};
 
