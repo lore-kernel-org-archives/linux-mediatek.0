@@ -4,128 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54D15C47DDB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 15:45:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96B04C47258
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 15:54:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
 	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yhXckNtvEx+khjTvmjd/OcS50z4ss3Qyh+Tyga+M7KQ=; b=n7kR9mSOoyMogImW/wIhCatcPX
-	vR+Vp/PrEK3GtAeJp/xCONkpT+6U25VFBNXgFPFyczL/aTRARWn+AxVo8yvZ1HVpT8a2D21d3C8eV
-	aemsRbXkJ1ydIevQ7XWcm6FDxGyM+Pb25IzpoWY31TxLDS+zg9lWcZ/SE3dpgrZwu0TMe3XSqKdxi
-	KGCBLUS6Y9U3Pyhn1keOjPw7YK1c0znqhDaDGu5w6ZmE9rWZvWuiLsHogx+DghBqI5s6qy1dMtOyG
-	tl5LDzbpswwuWfwmosqEHirWt9FMQbSPDzqtob71vZCxdnHpeOp3TyCZ5LoaRe7NrqwmN1DIs8IN9
-	ux9QES/A==;
+	bh=8UN5FswGopswpXkkEN+sbdsQv6OLe0UIG7DcYj1weUg=; b=ppbAUwbe53rl0lXmCobtplMchG
+	2/YPDA2gW0hCcIqQZrY+qOU7RTrBZZtx+sKdTeGCSBKtbp32TnOPtHvnwMiZ/oNcIGRgi+lbpbNiE
+	jJ3n+Pns2b0FXSapOoqNREi9iLmIkDXlTUlZk5DkoLIiFaxxXulT1inz8VSlQVnH4gJhipPZTK8fq
+	0IG7xoIB5Sk4oqzGDhRgC0YyFyVbSlVvdMaDa2j408fAqE+bw/9hPD/uI8QlJLjsOIbgOn9VEVXPU
+	B83GFGdAkTShDAx1y6tJNkEDtSPekegUlcqhGbS4AaCcosV9B6huAIcOLq447ivLB2GRQULipzYKJ
+	1V6KtvAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSIxl-00H78Z-05;
-	Tue, 23 Jan 2024 15:45:21 +0000
-Received: from mail-tyzapc01olkn20801.outbound.protection.outlook.com ([2a01:111:f403:280c::801] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
+	id 1rSJ6Q-00H9G3-17;
+	Tue, 23 Jan 2024 15:54:18 +0000
+Received: from mail-tyzapc01olkn20800.outbound.protection.outlook.com ([2a01:111:f403:280c::800] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSIxh-00H77X-1Z;
-	Tue, 23 Jan 2024 15:45:19 +0000
+	id 1rSJ6M-00H9Ce-1b;
+	Tue, 23 Jan 2024 15:54:16 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=adoWhTctxNHF0VtYsVsAeAk48Rp7yGtla1we27Q1CLm/W9ObKbI21fSeb8AEK7lUZn9DltPa1E+suH2/Uy21SMz5d5nhdJH0rnQiVKOInQtuKa4XP4Mj+7sxVikCEecNnQhLSazPLMTq7BU3Oi0hijIBndhieM/cTMP8ddb9qSuR5NC3CPwInhvn3qUR6S1UAXSGm/noltFCelrQ0odCuevLeFU2Gc6OYuluP+4YOftOtF7yx47JoXJTCz/cMmjIajJWCAXVO+lH5vq/jEYkFI7faLxXzuur7TuSSBBf58G73RM6BN1Bfeluc08pC7gioHQ+Q8lpgOc/MziKYysHRw==
+ b=cIvw8q5q4/RcmfsGl9S55HgD034UapPSSH4vTIUiEoobJoI9AALUW9q03ufk5pdBANPyiw47G/B48WcVgXEl9btLiLEzcdKFaFwBPGmcooo0j8HprOeDHMzZ8h8/8JF9aN34FrW1ZeGUZHDj7KMyXlsE8dUm/7wGuGfslIWSziteLJNmscudT/I/A+ncNxooN5hD6o7ZLmkuzKcuMd4nCB4lJyaXmQ+HeikqkasUAFByIbi2hUnCECArpM4PE4DO1ZfdgyWTgZRRW/vi8Z6iQC7yba3WVrEOBmO681etx9hSOSKzhrJD0vtEjlzd6Pn9WEQL3rFPH889EYcQFHa9xQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=yhXckNtvEx+khjTvmjd/OcS50z4ss3Qyh+Tyga+M7KQ=;
- b=deUMuDtVm6FBXckKFdNBytiYfmHb1OF/ZnojMGywTT3FdSeCUXLgtlQUYejxUtrGKD1ePJoxDVYZsu9pGYsUuo7xCVF4fMGcuLyFs+FuNTNoVBVvyxZCOt41RANJJwaFKZ87IgwA0r5esipOvsQDjGcoOjFnXvcyPu0D4d598B7Pwjldo42qpVFQgbP2ScxPftySVAwg432I0ElIzchPShqixx0JcgDWagAJSHTZ2edCzhHcdcTTkDxig5FL2csRaqiCmn4lOMPHiccbydBOGVDn3VQGmajNZDnVS27oTtYDrH0IXi/HR/OHpaC0sYdOUSvRzKwokfPyzpcMWXTC/w==
+ bh=8UN5FswGopswpXkkEN+sbdsQv6OLe0UIG7DcYj1weUg=;
+ b=XdPav4yeaCZYayjiW1o+7t/AjgqFhIKzbJDEQaJe1VsI5h3WPk3yQ5E1S+/Z8Oq24QYqCY4jieuge0egy5PIBjZiVSpmwNNrP4mfaPV+GIUfuOcQcpxMvqCycGZ4Wdt0V9PjJHoN1EwKXhcnWzE+uM07TIrw7tQj9bEPL01NG27ZNcZx9H9dvMf8leSn6sSGSJfydmkbrN0wdWUXt7Kgh7YqBMBgXXs5Y+vbzGsF6u657nirS1xJGzSDnb4yzShrMYstV3QowafKEcb2zAThmpCWhiv9jWT1UAY/gn+gYsX2XB/Y8+MnaA9BeIWzp2LkVNxsUqLrMTGDEalZnTkPsQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
  dkim=none; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yhXckNtvEx+khjTvmjd/OcS50z4ss3Qyh+Tyga+M7KQ=;
- b=RI60ekXtlYR6cJshlh9jbb7cz/DmSxh55fqezATuoo8QK+HkzOV+5LKyBLyyf3Jtk1ciBJUbssXqqH3DINTJX8NkKz15F8dD5tgbZWrjj1U2+Moq6Liv8cF6QxXdnC4QnFGkq4JHFEASSfxmB/Y3bgo5DzRKVFwAb3xW/qRsUajcl0CcLI2ogKJ5/32QQ/K4v0esWr5Au6xngZj5hlz4mhBn/MXmmaSciE+SdXMBHUdsOZSCwZPhIuYL7B7WW6u/6JFIBx+pGEtL5LXTt5k0p/xjQbs2s5hn8ipH3Ka1v88C30WrBQkOVIZY2IPHyNOROYxufcIGYfpIhFjc3AtLoQ==
+ bh=8UN5FswGopswpXkkEN+sbdsQv6OLe0UIG7DcYj1weUg=;
+ b=ambkRJz1O5haDPqGnTDrJHvbv4d68tQVYn5nTfOo9zcmL4VjP0QcZcsmHsgEp6HwIBx+DP2DdQ4pMqDflPFczRibx5voEd3sfpZ+cPGGOSj24fr/ZJq2CTuwIAYsSIVd7VLThNmaRxI0Gg0sdLarK3/kcvE6t5tcCGMlnVL0oGS8Yai8haNBSNihIfQnR4WsrJ+M7p/RVGpfv5LfVkLbi3xMXzbMeGWywJ519XvmsA1eeMy3Hq84Q24NiWEAGTtFbskoyg5CfwZNP1mQ3Zr2agBVoA+jD+n3LmZPBkCaNc5DXe8oa9f74M7iNZTqjFbr/jnlXdGSCOjE7IXpj1WdyA==
 Received: from TYZPR01MB5556.apcprd01.prod.exchangelabs.com
- (2603:1096:400:363::9) by TY0PR0101MB4652.apcprd01.prod.exchangelabs.com
- (2603:1096:400:32b::8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7202.36; Tue, 23 Jan
- 2024 15:45:11 +0000
+ (2603:1096:400:363::9) by TYZPR01MB4378.apcprd01.prod.exchangelabs.com
+ (2603:1096:400:1d2::5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7228.22; Tue, 23 Jan
+ 2024 15:38:51 +0000
 Received: from TYZPR01MB5556.apcprd01.prod.exchangelabs.com
  ([fe80::a639:b02c:5189:7140]) by TYZPR01MB5556.apcprd01.prod.exchangelabs.com
  ([fe80::a639:b02c:5189:7140%7]) with mapi id 15.20.7202.031; Tue, 23 Jan 2024
- 15:45:11 +0000
-Message-ID: <TYZPR01MB55564E7754A27CB0E39F5FCDC9742@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
-Date: Tue, 23 Jan 2024 23:43:59 +0800
+ 15:38:51 +0000
+Message-ID: <TYZPR01MB55567CE79D7F08C738A81683C9742@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
+Date: Tue, 23 Jan 2024 23:38:01 +0800
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/8] clk: qcom: support for duplicate freq in RCG2 freq
- table
+Subject: Re: [PATCH 1/8] net: phy: Introduce Qualcomm IPQ5018 internal PHY
+ driver
 To: Andrew Lunn <andrew@lunn.ch>
 Cc: mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
  richardcochran@gmail.com, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
  angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com,
  linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Praveenkumar I <ipkumar@codeaurora.org>,
- Abhishek Sahu <absahu@codeaurora.org>
+ linux-mediatek@lists.infradead.org
 References: <TYZPR01MB55563BD6A2B78402E4BB44D4C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
- <TYZPR01MB5556DEA3D4740441EC561414C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
- <28cca132-d5bb-4cff-ba2f-9be241a5ce83@lunn.ch>
- <TYZPR01MB55565998F43009AD351AC07EC9752@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
- <b84df52a-f144-4ec3-b81b-20d1a0176aff@lunn.ch>
+ <TYZPR01MB5556D5568546D6DA4313209EC9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
+ <2c6c0d72-5d4e-4ec4-beb6-d30852108a67@lunn.ch>
+ <TYZPR01MB5556D035D9A13962844BB553C9752@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
+ <e1fd863a-6725-4180-8ad3-faeb44c09238@lunn.ch>
 From: Ziyang Huang <hzyitc@outlook.com>
-In-Reply-To: <b84df52a-f144-4ec3-b81b-20d1a0176aff@lunn.ch>
+In-Reply-To: <e1fd863a-6725-4180-8ad3-faeb44c09238@lunn.ch>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TMN: [HMKDoLYeQu4bc17005dO2W7OCKqDuTT7]
-X-ClientProxiedBy: SI2PR02CA0018.apcprd02.prod.outlook.com
- (2603:1096:4:194::18) To TYZPR01MB5556.apcprd01.prod.exchangelabs.com
+X-TMN: [HF3G0Zb0XWTZm5i1VGXNZiz9MQ5pdu65]
+X-ClientProxiedBy: TY2PR01CA0001.jpnprd01.prod.outlook.com
+ (2603:1096:404:a::13) To TYZPR01MB5556.apcprd01.prod.exchangelabs.com
  (2603:1096:400:363::9)
-X-Microsoft-Original-Message-ID: <3093ac9a-98e4-4e04-b9f3-efaf718de087@outlook.com>
+X-Microsoft-Original-Message-ID: <fe4cf73f-3394-4ccd-8466-e7b4c842f1c9@outlook.com>
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TYZPR01MB5556:EE_|TY0PR0101MB4652:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7c7c044c-2b42-4a54-ba7e-08dc1c2a4894
-X-MS-Exchange-SLBlob-MailProps: obhAqMD0nT/VAPap+pVtXZmepyzo+OmYTJKyPEetUGsLhppmK7jcpSQDR6JLxtt9/y5ybjgpUxMD4Stv2Ss4hm3VVdphgRLN0ii7kzyE296hLFCbM2+HSYnayDH+HZYTWX6242EG+LXv7bpdLc5dm+dNx+tNJrrnM0LeQPtXnJaq/JCIcoVqtJNQDXWrwVuRHKVlRfktdeeHn7SLv7RTHT2NJX+tDR3ozTt6x0YLI6lFM+/Wx+/lkhjqD9RfNhnN28AEseN6jYOWG8dAWLutUSDR4mi+5383UIyu+HqQyJ0BsTWV+oPGNhn4OoSajIUAWDF/yv8nlpJoQihMc9wJvmHpDd79IAp0s/A/CTjV+NeSaK6Wi3d8huAc2sXh/3a5kS9jz2pFFCrZ4C/tQuNdLyxQqTMVn4EIUP1Ewe+HTgpKY3+L85B8u94u2d9lns38WygBNj7yhTmbfya/n0fT/5m8v4MGWcFOvQGbCMfdg7P1tuoFaWXhBBUKN9gIb594kc7YU5uO6ajLjtWnBUK4BC/TMyYRRts54zg1F96TK1TCq+hkKL6bxg024ke7FoZVhL8VBAiLfmZNY4+G6R6DJwOPRiT7OuqSIKg0fSngkyhah/XLhZgak9BJKZjkp8vqfDXOYu1WydNwYQ1nw9xFBPUWcsXkupZBl92ieeKfS398d2VSrBFOwP6zZZ4LJZ/MWemd1x6vukSGKenP/cqlgVej4g4OewGDpTwHSfClOLOFDgesVzJBndo/nOMoE/ADnE90aD5DhchwUhuvrtjx9ISwkwyXg5QL53roGSUvbziBXCUoqErmUAwzzKaDQRmN
+X-MS-TrafficTypeDiagnostic: TYZPR01MB5556:EE_|TYZPR01MB4378:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4e60b8cf-5b5b-4207-7772-08dc1c29653d
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: okt2ZoXwqpH4/Mgp63bLRz9p1FclDPmDFn+JRXZefg/AWbaw0vwDXYhOPaP4bAyqUB2wAMbylRsOVv3nNhboqhWlAQKA5J7zwNDZc4Zy41IPk/Bc0aC525qo/vUdiWchKak1KKWX8/RqYmQY0U+S0C88xFT0bkA3S2zZeCUHw47HEw9CMetMUNJoj2DJBdA0lvsTQZip5R5TWky14I8a77f1v9S9OOJ8ANeH0dHhLz9Yg6eIv8ea880DxCXoV2SZZonApqbJSnLyjhm6nWUygbYWMYIhm7mv0jF1F8dVFRl0qXwbvSO/8d8OhidoR/BJBb45ScZafPL3ao9d+SJpOMLbHvRv/WIWslJfWqX3YKP4KwHiDgo9Ry3zufPCfdG1KuO44XUu1BAfQuloe4d5ljUNH6kAo8OfHt8QjbGK4FgbL+p333D5NlRhVbsnEa0POvo64Z7VLfacz4Jmf4xhTehLLmzivGfWhGT9qaCPY4/GdlUAopM6Pb3yUSU45BWI9hV0ar1cG0UjEVQQocfFjYRXo3Flqet1n2QmxQ2xCXSV1tKbkEub7vEJJZSO9ahG7ulIIUFghrP5r0FOd/HcmCXYjP9DRSieRXp06bpce+A=
+X-Microsoft-Antispam-Message-Info: ADw1j8K/Ea0gD+mwfGf6kzhlQA4FNPEgCQeDzTo+ZJxKdHHZbONLArT1YDlYRXev2Wu9Zh66gvncp2ZbNeGXG0i1gFpFFCEZ0oRpi+FlywPKKceKGHp0lkOXT7u9lB5jWt79xCfbmjhu05RqxCLTurSnUcOuEuEXUS5qUXjl5a+CpoNIWmeyLrtwMJDHQa+mswBSrn8m41X+RRxwU65K3Y9NoWPmxoM13hqXmzYHhWaAfFpf30trRITLCABokEYQf+vq4YfTImeHQ6M9osVa5pM1pcBTyerWPELxRGuqOrpirH3etSjJ0zdcWXHRcqa613vJqksvKTQOedjCDdoXDOrS8GAJ1Clw9r4BlQu5Z6jP06r3I80nDFbTeBW4+P2HfJ2SIkx2xBnNlWwXuZm0lTe0z3o5KLbNZS3wokWk3nz4EfIYPwvjuNNSF3sjBPwdLNGNSMpLf+B9RJTE61tQqUrlhxotTykTDQx4m05BKteEHYnxhH33hNuvdsSMsPf7GLfkSTABEe9HAlsk6ZsI5kcAL3XwYvNH3SYoFnC53zvhyQqN29iU5hmjmas5dIaU
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?amFZKys1aGQ5ZDdNa3NTMDBtNEQzR2JwYkthMjVuYnlCaWZXS3lMVW82UTFs?=
- =?utf-8?B?eVNJaUZ6VkN4ME56U1ZSekpJT1JNUGp5MFE3YXNkeDdGTGZzUForb3NmLzV4?=
- =?utf-8?B?Q09Ra0YveEQ5ZTBlaWMxT3kyU2ZzUU5aM2FMbHp1VEdXUTFxeG1kSFZFTjlW?=
- =?utf-8?B?czZ0S3JoV2VGajFhejN4aXlIWEg5d2ViTk1WUWZpMEJ5R3ovRjM5dTg1eTZN?=
- =?utf-8?B?N3dXZ1NmRTBuNkZpODE3RlZmWTFpd0toY25uVnE3bDVDRWk4bXFjMlQwL2Yx?=
- =?utf-8?B?eGdxZ2VMM0pvMEV0b3RPTWhnTG5QL3hRMFdneHhMUkU1a0QySkl2Mk8rWlNw?=
- =?utf-8?B?NnE0SkFRaHR6MzBZQXJlVXdSbUsycEZsWnVnOGhUeDRXaG5hUC9LV0p5WXlx?=
- =?utf-8?B?dHhzL1ZsSjcxN245QzJwUmN5a2dLMXVUeXdGZXdqNkZTU0lubzZKREp4cVQ1?=
- =?utf-8?B?N1hwYzlzKzFWak5ObnMyZzJaZDBaaC9reERzU0FKYmNSRlFUM2JVNzZqZExX?=
- =?utf-8?B?ZlJRSVU4dHp1ME91clNvUUVEUlVsWDF5NUFhSzdORXYyQzZsRURoSFpBL3RG?=
- =?utf-8?B?T2c3aFkxWnBoc2laWTZTWk5PVURxc3JudWRVZHdiS1VhOUV4b1c3UythZEU0?=
- =?utf-8?B?THlPQW9ReFJBWVVBVEN1Y1dFMUM5amY2ZlJrODl6ZFNWTnpuVktpbTEwYndB?=
- =?utf-8?B?dDhDbHM0WlFmK1oyZVk5bkVvVjIxbzhSYmFncGQ4S3R0TkVHY25GL2xhc1Aw?=
- =?utf-8?B?eHdTWVo0dk5zbDV2NTJXVFA1L0FZMUtFb3NzMjFranZmQ2sxYkQrVGZ2WGc5?=
- =?utf-8?B?Um5HSytQOWRDdUNsMHBTcFlEMmdXUnlRNkp0YVdIUWRqcWdYT3ZxbW9IMCtK?=
- =?utf-8?B?RUNDNUVtaytXV0cwREdwM0RtL2thcURoUVBYVmhuQUgrQlRhZEhxTzJveEZn?=
- =?utf-8?B?RUd5SlpFd1AxUWxROXhqMnFBVzRsUHMvQnhPdWRlc0NIbWNBWnNqazA5Q0w3?=
- =?utf-8?B?OVp5a1VuTU95dGxhSGVxWjVOTVVEUUxvY2Q0alpQUzhNN29tWTdWR1J5VmlF?=
- =?utf-8?B?N1JBL3ZHTFVSK1NhV05lcjVOVEdQWG1yU2pMZlFmdWNPeXViSDNEYWJBcWJu?=
- =?utf-8?B?VUpyYWY1R2t5anVLZE5aUWtPblk0RzkzNmVINzAzTjJhQklkdXU5ZG0zUkhV?=
- =?utf-8?B?RUlLZTJ4d3pPY3d0dm1xMUJ4bklHTi9uWEJlNk1XVFdZT1ZUdTlQeVRXOStk?=
- =?utf-8?B?dkh6NGY3S3plOGppQldTMEkrYThIbGxzaFZXNEQrbjVsR296WXVqc2lNajRa?=
- =?utf-8?B?UVB4N3FQSERjSm16N2xXMmYyUVNPdllkK2hRby91M090MzNmSmd5cHJhY3Bq?=
- =?utf-8?B?aVhLNlBUTGdsSm1qellFa25pWTJxR3JoN29zTGphM1VBK3FFVkc2OTBBNU4r?=
- =?utf-8?B?WEhmWC9jY05FdXJYcmczbWhaUXRRS3EydnMxTGh5c25HRG11T1BHMlM2WkRP?=
- =?utf-8?B?Sm1KTDlyM3hCQ01JZUxxWWFkaXUwVm04NmJSaUNjUStTand2SlpUbXNzUGFi?=
- =?utf-8?B?MGsrREx0ekFzMTF0cVZDVVFNU1phMEZvVmt1WlRxbXJDaytCK0I5NTZXd2pV?=
- =?utf-8?B?Z1lqNkxsR1RNRk1HbzRNTmphTGJoelE9PQ==?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?S2ZyTVUwOW42Q2RpM2hKQ2ZFYUMzN09jNjEvUUdabmFtNDV6blBHdXozSW1n?=
+ =?utf-8?B?Qkl5YVpwY2ZRRXNnVDl5RXlSVjI2SkJkQU9KSlVobC9CUytLM1Vxemp0UWJY?=
+ =?utf-8?B?OGtxMmFURmcwM1U4T2xTMUl6bDlBaXE2bVhpY3pLN0pOTHNhV290c0QwUW9X?=
+ =?utf-8?B?dEpwSGtZeFBTOTNlSkNlWG1LQk1ONkgwLzJSR2lUendCcVFsWnZmQkw5OFVj?=
+ =?utf-8?B?NkRYNXF4RzZLSzQ5ajBqM1h6OUpqNmQwT2xHV09FK3h3eFJ4YmNSa05nMjBm?=
+ =?utf-8?B?TEZwRG0xSFVVWG9LSXBGL3dTekJpdm1jWmphZ0dqR0JsK0VVRktYamhacFhu?=
+ =?utf-8?B?bTdKWlBiMDl2bmpDNkpxaEIwM2NBaWEyQ1NnSmJuUURIVDdTNVJQVW5aT00v?=
+ =?utf-8?B?a1NEelAydXF5dU44eDRpSTljMHZnUVVkNEVmdUVoMGRpZlN6MWNwRTQwMHho?=
+ =?utf-8?B?UkMxd0luNXpUM21Jdjc3QmVkaDlCWnVGNmFaRmJwaDFUc3BBTUZmV3dER2xG?=
+ =?utf-8?B?dm0vQ0ltemVaNGw2dGd2MzMvTHg4VFRKeHZsS0xUc3Y5dXFpTHdKOG5ZVm9Y?=
+ =?utf-8?B?anIySWIwQk1DbHpoZ3l2eHdvTjNMeklHSllxTUhoY0JQS0l6c0VudHNNY0hD?=
+ =?utf-8?B?bFFobjRmMzNaRUdueXFpWStjQ3RhUkM2UVA4Wm5PTEJVNnA3RUdHTXlyUlRa?=
+ =?utf-8?B?by81N1RmWkRCczlLNlJJZFFyU2hTRXJJQUNFbzdsNi8zNkpKcThOSDZSVSt0?=
+ =?utf-8?B?WnN6NVQ5VWh1MTNMdDBRWGRnZkhWZVN6U2h5NVcwQWdrOXNYb1VpMVgweExH?=
+ =?utf-8?B?NzMwQXJwUXRyWU1RTDNyRWllMEF6SVd1T1BtWlByT3ZPcHNaMkJoYWJUaWhk?=
+ =?utf-8?B?elZsRlRpNzFPSk92Z080K084eEQzUEE1VmxiRmZZUXN3R3N2Y1ZPRGhSVXVT?=
+ =?utf-8?B?NDkxOWxMY0JEZ0V4MmRjM3FIb3dNWGVHSTNpNDlpZDkyUDYxWkZPaW5XUWpx?=
+ =?utf-8?B?dDVGeU5XWlRGcHRpclEvdzN5Q3cwR3RoWENaMXdjbHNlYTE2R3paczlTUkdE?=
+ =?utf-8?B?b2JVM3I4c0xnakVLS2xOOVZYNjNXZXhxS1NEcjFwV1ZLTzJzL0VvQjFDeU5j?=
+ =?utf-8?B?a20zMEFjYTlmR3dWd0d5a05uQjRtMW4wUW15cm45RzMrSmtmdWxINTQ5Qk11?=
+ =?utf-8?B?d0tMcnQxeU9QWGpCOGdWVldFajhTQjlGNjZTZWx0cFJmTkdZWEsydHl4N2VF?=
+ =?utf-8?B?RWdQdnFUSW1nL0hVbEhrYm1Mc3Y0STdtcWdrYVNmMDBBTEdwN1NpeEJBOGxD?=
+ =?utf-8?B?UW1xM1AyQTcxaFlyRDRwRi9Vazd3WnNHYzhnSTh5UDN2QjVucHl5eGhnOXJC?=
+ =?utf-8?B?c2dsVHEwRVE4YTZVZGNzeVl6VCtxcEdYcFJWeVppTWVZM1JGTzhYOU5tNFdi?=
+ =?utf-8?B?emxoZU40Ni9BdTVSUmtxWG9ldkxyR3g3T0x5UG5IK0E5UGZ1Zis1ai9nUFUx?=
+ =?utf-8?B?ZW1UbjIzWE5NSWMwUzJ3cVNieFVHRSt0NFJQYXVkODJWeWdHVG8xUUJuSmhH?=
+ =?utf-8?B?SGlaTzRSL3MrRENMTjJLVmptMHpYUUkzZTZkREJTeE9lanF3bjhNYWJ3SURE?=
+ =?utf-8?B?UC9DYUpzMm1UUTRsSnB6ZWZ6eStHR2c9PQ==?=
 X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7c7c044c-2b42-4a54-ba7e-08dc1c2a4894
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4e60b8cf-5b5b-4207-7772-08dc1c29653d
 X-MS-Exchange-CrossTenant-AuthSource: TYZPR01MB5556.apcprd01.prod.exchangelabs.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jan 2024 15:45:11.3598
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jan 2024 15:38:49.9167
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
 X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR0101MB4652
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR01MB4378
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240123_074517_532539_70E55774 
-X-CRM114-Status: GOOD (  16.21  )
+X-CRM114-CacheID: sfid-20240123_075414_536622_22B99708 
+X-CRM114-Status: GOOD (  43.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,43 +138,175 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-在 2024/1/23 1:34, Andrew Lunn 写道:
->>>> Change-Id: I97d9e1b55d8f3ee095f6f01729af527ba90e50e5
->>>> Signed-off-by: Abhishek Sahu <absahu@codeaurora.org>
->>>> (cherry picked from commit 775e7d3b69ffc97afb5bd5a6c9c423f2f4d8a0b2)
->>>> Signed-off-by: Praveenkumar I <ipkumar@codeaurora.org>
->>>>
->>>> Change-Id: If10193fc79a3c1375ab73597813745ff1f4df0ad
->>>>
->>>> Pick from https://git.codelinaro.org/clo/qsdk/oss/kernel/linux-ipq-5.4/-/commit/6dfb368bae130bee58e00ddf8330b55066e1c8c5
->>>>
+在 2024/1/23 1:18, Andrew Lunn 写道:
+> On Mon, Jan 22, 2024 at 11:37:29PM +0800, Ziyang Huang wrote:
+>> 在 2024/1/22 0:19, Andrew Lunn 写道:
+>>> On Sun, Jan 21, 2024 at 08:42:30PM +0800, Ziyang Huang wrote:
 >>>> Signed-off-by: Ziyang Huang <hzyitc@outlook.com>
 >>>
->>> Please clean up these tags. These Change-ID tags are meaningless in
->>> mainline. 775e7d3b69ffc97afb5bd5a6c9c423f2f4d8a0b2 is not in mainline
->>> either. The picked from might be interesting, but please put it into
->>> the body of the commit message, not mixed in with the tags.
->>>
->>> Who actually wrote this patch? The first Signed-off-by: is from
->>> Abhishek Sahu. But you have a From of Praveenkumar I ?
+>>> You need to say something in the commit message. One obvious thing is
+>>> to justify not using the at803x driver, since
 >>
->> I have no idea about this. This patch is from Qualcomm vendor linux code.
+>> I want add more descriptions here. But I have no idea what to write. This is
+>> a mininal driver for a special phy.
 > 
-> O.K. Since this is direct from the vendor, who probably does not track
-> code authorship correctly, i would say the author in git is probably
-> wrong. I would set the author: to Abhishek Sahu <absahu@codeaurora.org>.
+> So say how it is special. Indicate why it needs a minimal driver.
 > 
->> What's more, I don't known how to deal with these commit message since I'm
->> not the author and I'm not sure do I have right to edit them even though
->> this is GPL code.
+> Does the hardware support cable test? WoL? Does it perform downshift
+> and you can read the actual speed from the AT803X_SPECIFIC_STATUS
+> registers?
 > 
-> You should keep all the Signed-off-by, in the order they are. But the
-> Change-Id is meaningless, so there is no problem removing them.
-> 
-> 	  Andrew
+> What we want to avoid is that you start with a special driver, and
+> then start copying bits of the at803x driver to support the hardware
+> features. The at803x.c driver already supports a few internal PHYs:
+> "Qualcomm Atheros AR9331 built-in", "Qualcomm Atheros QCA9561 built-in
+> PHY", "Qualcomm Atheros 8337 internal PHY", "Qualcomm Atheros 8327-A
+> internal PHY", "Qualcomm Atheros 8327-B internal PHY", so please add
+> it to the driver and test what additional features work for it.
 
-These days, I known a new knowledge: SGMII+ only support 2.5G. 1000M 
-can't work with SGMII+ mode. So the 1000M frequency divided from 3.125G 
-can be dropped. Then we don't have duplicated frequency and this patch 
-is unnecessary. Will test my guess.
+After rechecking the vendor code, you are right. The only special thing 
+of this device is that it's a combined device of UNIPHY and at803x 
+general phy. So it needs the UNIPHY initialization sequence. But for the 
+PHY part, it's almost same as others, just has some special registers. I 
+will merge it into at803x driver.
+
+> 
+>> Here is the thing, at first, I was tring to add these into at803x driver,
+>> then I found that the IPQ5018 internel phy is a special device. The
+>> initialization sequence is initing GCC clock and reset control, then
+>> registering clocks providers, which is very different from other devices.
+> 
+> That is a different story all together, and part of the problems we
+> had with Qualcomm patches. It might be you need to use ID values in
+> the compatible to get this driver loaded. The PHY driver can then
+> enable the clocks it needs and take itself out of reset. What is
+> important here is an accurate device tree representation. What clocks
+> and resets does this device consume.
+
+Ok, will try to do this.
+
+> 
+>>>> +	if (!priv)
+>>>> +		return dev_err_probe(dev, -ENOMEM,
+>>>> +				     "failed to allocate priv\n");
+>>>
+>>> Please read the documentation of dev_err_probe() and this fix the
+>>> obvious problem with this.
+> 
+>> And I can find the same code in other driver, so I thought it is a standard.
+>> Or should I just return -ENOMEM? Please let me known.
+> 
+> -ENOMEM is one of the error codes you are unlikely to see. And if it
+> does happen, you are going to have cascading errors. So just return
+> -ENOMEM.
+
+ok, got it. Thanks.
+
+> 
+>>>> +	snprintf(name, sizeof(name), "%s#rx", dev_name(dev));
+>>>> +	priv->clk_rx = clk_hw_register_fixed_rate(dev, name, NULL, 0,
+>>>> +						  TX_RX_CLK_RATE);
+>>>> +	if (IS_ERR_OR_NULL(priv->clk_rx))
+>>>> +		return dev_err_probe(dev, PTR_ERR(priv->clk_rx),
+>>>> +				     "failed to register rx clock\n");
+>>>> +
+>>>> +	snprintf(name, sizeof(name), "%s#tx", dev_name(dev));
+>>>> +	priv->clk_tx = clk_hw_register_fixed_rate(dev, name, NULL, 0,
+>>>> +						  TX_RX_CLK_RATE);
+>>>> +	if (IS_ERR_OR_NULL(priv->clk_tx))
+>>>> +		return dev_err_probe(dev, PTR_ERR(priv->clk_tx),
+>>>> +				     "failed to register tx clock\n");
+>>>> +
+>>>> +	priv->clk_data = devm_kzalloc(dev,
+>>>> +				      struct_size(priv->clk_data, hws, 2),
+>>>> +				      GFP_KERNEL);
+>>>> +	if (!priv->clk_data)
+>>>> +		return dev_err_probe(dev, -ENOMEM,
+>>>> +				     "failed to allocate clk_data\n");
+>>>> +
+>>>> +	priv->clk_data->num = 2;
+>>>> +	priv->clk_data->hws[0] = priv->clk_rx;
+>>>> +	priv->clk_data->hws[1] = priv->clk_tx;
+>>>> +	ret = of_clk_add_hw_provider(dev->of_node, of_clk_hw_onecell_get,
+>>>> +				     priv->clk_data);
+>>>> +	if (ret)
+>>>> +		return dev_err_probe(dev, ret,
+>>>> +				     "fail to register clock provider\n");
+>>>
+>>> This needs an explanation. Why register two fixed clocks, which you
+>>> never use? Why not put these two clocks in DT?
+>>
+>> Without documentions, here is my guess:
+> 
+> So you don't have the data sheet? Are you working from the Qualcomm
+> vendor tree?
+
+Unfortunately, Yes. I couldn't find any documentions about this part. So 
+I read the Qualcomm code, tried to realize the logic and guessed the
+functions of registers. Base on my understand, I use MACRO to describe 
+these registers for human-readable and examined them.
+
+> 
+>> This is required by GCC controller. GCC driver require TX and RX clocks from
+>> GEPHY/UNIPHY. Then throught some sel or div cells, output clocks to
+>> GEPHY/UNIPHY and MAC. So I need to register them to make them can be refered
+>> in GCC controller. Will add a figure describing the clock tree in UNIPHY
+>> driver.
+> 
+> So in this case, the GCC is a clock consumer and the PHY is a clock
+> provider. Does GCC use DT properties clocks/clock-names and phandles
+> to reference these clocks it is consuming? If so, you can just use
+> fixed-clocks in DT.
+
+Yes, GCC use DT handler to refer these clocks. Will try as your said.
+
+> 
+>>>> +static int ipq5018_soft_reset(struct phy_device *phydev)
+>>>> +{
+>>>> +	int ret;
+>>>> +
+>>>> +	ret = phy_modify(phydev, IPQ5018_PHY_FIFO_CONTROL,
+>>>> +			 IPQ5018_PHY_FIFO_RESET, 0);
+>>>> +	if (ret < 0)
+>>>> +		return ret;
+>>>> +
+>>>> +	msleep(50);
+>>>> +
+>>>> +	ret = phy_modify(phydev, IPQ5018_PHY_FIFO_CONTROL,
+>>>> +			 IPQ5018_PHY_FIFO_RESET, IPQ5018_PHY_FIFO_RESET);
+>>>> +	if (ret < 0)
+>>>> +		return ret;
+>>>> +
+>>>> +	return 0;
+>>>> +}
+>>>
+>>> This needs an explanation. It is also somewhat like
+>>> qca808x_link_change_notify(). Is it really sufficient to only do this
+>>> reset FIFO during a soft reset, or is it needed when ever the link
+>>> changes?
+>>
+>> I'm not sure here, this is what u-boot does. But I guess, we can reset
+>> GCC_GEPHY_* serial reset_controls.
+> 
+> Please add a comment with your best guess what it is doing and why. Is
+> this vendor u-boot, or upstream u-boot? Maybe the git history will
+> give you more details.
+
+Ok, I will also try to replace them with the series of GCC_GEPHY_* 
+reset_controls and check whether it work.
+
+> 
+>>> You also appear to be missing device tree bindings.
+>>
+>> Sorry for forgeting to add a WiP tag. Will add dt-bindings documentions in
+>> next patches.
+> 
+> The DT binding is just as important as the code. Often the DT binding
+> is so broken we don't even bother looking at the code...
+
+Will write them.
+
+> 
+>     Andrew
+
 
