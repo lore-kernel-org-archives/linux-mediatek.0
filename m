@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43AEFC47DDB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 10:44:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2D06C47DDB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 11:14:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BZWLD8kZydrbnEMhbWiN1ZsDya9JS9FS/nBFJqsWDUk=; b=E1mu+QO0dB0g/k1864LjsAX11D
-	ylvv1967uiEO2mZGY3eGOXo9n5QhESIGDv9C4pE4Xh4m+VzS8gO0BntAlgbLJsZEH29xn5tmy5yLB
-	NYKAMQgIfY1uTc9PdDjcEGzE4dd4s29vsa4Hpf5TogcYdICRumKQB2HH0EjGy52ap7/O/445a4yZJ
-	K9dJs6EVgGxu8bjCCK16QQ+Q+iJ6ZeLOE4JqsaPaIhF3/Up4qems2O3JWv4ToJdkf4AoEVVAV4uo1
-	rVaw5LQi3Pk7n7n6NKcb551BV+0K8o4XCWfYgIo05IfjWx4xZYpmKZo7GkAYZXVPgUCPitUS5DfpR
-	BQw5MM2g==;
+	bh=LzFdW1mPBHlsjn7nJEle0eif/YOakZ2YmhtbQP5rgFY=; b=BuHJLKrrPpbArRNLbH4LR9h1ZE
+	YS0YTDJLTliJAKE3pAHn0MIZQSt4KdOq4CNwluyqxO/6iwIuWZs5+d5eqNhPJfDDR+qkVvCmPT3sF
+	yJIDPC41KfMHK340ZsKfvJG495uwttcSoyVvBK/ykY4bhpykX8qIllqP7UTXc7pk67ITXYMHMqw+u
+	6/9cRQm/S4OPYx8yGX97PCbl+gzawjF9kQLFciJWcjOy8RtjeWBVZVMTIIWbClWLy5e8XpocmlpWE
+	IDIs525bOzpMgapVK81MBeWAzXEl0vXNLIBoBjDO0Ts8dG8WYtUfG8HFo6FD3Xy6Wl9Dw4BBYqxKt
+	rKh2A1gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSEGb-00FzQE-3D;
-	Tue, 23 Jan 2024 10:44:29 +0000
-Received: from szxga05-in.huawei.com ([45.249.212.191])
+	id 1rSEjE-00G6F0-07;
+	Tue, 23 Jan 2024 11:14:04 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSEGX-00FzND-2K;
-	Tue, 23 Jan 2024 10:44:27 +0000
-Received: from mail.maildlp.com (unknown [172.19.162.112])
-	by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4TK3ZM3bX9z1gxbG;
-	Tue, 23 Jan 2024 18:42:35 +0800 (CST)
-Received: from dggpemm500005.china.huawei.com (unknown [7.185.36.74])
-	by mail.maildlp.com (Postfix) with ESMTPS id B54261400D9;
-	Tue, 23 Jan 2024 18:44:03 +0800 (CST)
-Received: from localhost.localdomain (10.69.192.56) by
- dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 23 Jan 2024 18:43:38 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
-	<linyunsheng@huawei.com>, Jason Wang <jasowang@redhat.com>, Alexander Duyck
-	<alexanderduyck@fb.com>, Jeroen de Borst <jeroendb@google.com>, Praveen
- Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>,
-	Eric Dumazet <edumazet@google.com>, Felix Fietkau <nbd@nbd.name>, Sean Wang
-	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith
- Busch <kbusch@kernel.org>, Jens Axboe <axboe@kernel.dk>, Christoph Hellwig
-	<hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, Chaitanya Kulkarni
-	<kch@nvidia.com>, Andrew Morton <akpm@linux-foundation.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-nvme@lists.infradead.org>, <linux-mm@kvack.org>
-Subject: [PATCH net-next v3 3/5] net: introduce page_frag_cache_drain()
-Date: Tue, 23 Jan 2024 18:42:48 +0800
-Message-ID: <20240123104250.9103-4-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20240123104250.9103-1-linyunsheng@huawei.com>
-References: <20240123104250.9103-1-linyunsheng@huawei.com>
+	id 1rSEjB-00G6ED-0m
+	for linux-mediatek@lists.infradead.org;
+	Tue, 23 Jan 2024 11:14:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 12B54CE2EB4;
+	Tue, 23 Jan 2024 11:13:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92054C433C7;
+	Tue, 23 Jan 2024 11:13:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1706008437;
+	bh=1XJThjrtaCvmoFbHnTwpeqliwRYvGoxjsvJkfuZKUv0=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=pKyqhV7FjPHZjvR6o7xvv51nSUCFzmCQ8+274rmLt3t/TZsX34PHtF9LDHqwuI6Kj
+	 nR6WvCsZTnA/vZ1m7OMOLiDU9zsyxdUBid7I6UxSDWQbDRvtKSf+SB8Ip+3NZy0ZVT
+	 GUmk/ny+l8j7fdU2sKtaSapLDqLCN0WsqRhSvDImV2O4RuxndW7ijqxj6qYS4e1IyR
+	 QUp+rEFFEzh3EbmobPODsYF9kX62UkDA9BpQu4h85pmkXQJPca5B/7rdayXySsW8lP
+	 BV5cWEwiaitVwf/q2pCPOYm8y0BkBRVan/P/Og47wNp3U83gOP1aS07d9+NQuqX5Je
+	 E8wfwf9EYBl6Q==
+From: Kalle Valo <kvalo@kernel.org>
+To: Shayne Chen <shayne.chen@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>,  linux-wireless
+ <linux-wireless@vger.kernel.org>,  Lorenzo Bianconi <lorenzo@kernel.org>,
+  Ryder Lee <ryder.lee@mediatek.com>,  Evelyn Tsai
+ <evelyn.tsai@mediatek.com>,  Bo Jiao <Bo.Jiao@mediatek.com>,
+  linux-mediatek <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH 11/12] wifi: mt76: connac: set correct muar_idx for
+ mt799x chipsets
+References: <20240119085708.23592-1-shayne.chen@mediatek.com>
+	<20240119085708.23592-11-shayne.chen@mediatek.com>
+Date: Tue, 23 Jan 2024 13:13:53 +0200
+In-Reply-To: <20240119085708.23592-11-shayne.chen@mediatek.com> (Shayne Chen's
+	message of "Fri, 19 Jan 2024 16:57:07 +0800")
+Message-ID: <87zfwwcnf2.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-Originating-IP: [10.69.192.56]
-X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
- dggpemm500005.china.huawei.com (7.185.36.74)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240123_024426_087689_B219CBFE 
-X-CRM114-Status: GOOD (  14.78  )
+X-CRM114-CacheID: sfid-20240123_031401_457475_DC666955 
+X-CRM114-Status: UNSURE (   5.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,174 +78,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When draining a page_frag_cache, most user are doing
-the similar steps, so introduce an API to avoid code
-duplication.
+Shayne Chen <shayne.chen@mediatek.com> writes:
 
-Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
-Acked-by: Jason Wang <jasowang@redhat.com>
-Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>
----
- drivers/net/ethernet/google/gve/gve_main.c | 11 ++---------
- drivers/net/ethernet/mediatek/mtk_wed_wo.c | 17 ++---------------
- drivers/nvme/host/tcp.c                    |  7 +------
- drivers/nvme/target/tcp.c                  |  4 +---
- include/linux/gfp.h                        |  1 +
- mm/page_alloc.c                            | 10 ++++++++++
- 6 files changed, 17 insertions(+), 33 deletions(-)
+> Set the muar_idx to 0xe for the BMC WTBL entries of mt799x chipsets.
 
-diff --git a/drivers/net/ethernet/google/gve/gve_main.c b/drivers/net/ethernet/google/gve/gve_main.c
-index 619bf63ec935..d976190b0f4d 100644
---- a/drivers/net/ethernet/google/gve/gve_main.c
-+++ b/drivers/net/ethernet/google/gve/gve_main.c
-@@ -1278,17 +1278,10 @@ static void gve_unreg_xdp_info(struct gve_priv *priv)
- 
- static void gve_drain_page_cache(struct gve_priv *priv)
- {
--	struct page_frag_cache *nc;
- 	int i;
- 
--	for (i = 0; i < priv->rx_cfg.num_queues; i++) {
--		nc = &priv->rx[i].page_cache;
--		if (nc->va) {
--			__page_frag_cache_drain(virt_to_page(nc->va),
--						nc->pagecnt_bias);
--			nc->va = NULL;
--		}
--	}
-+	for (i = 0; i < priv->rx_cfg.num_queues; i++)
-+		page_frag_cache_drain(&priv->rx[i].page_cache);
- }
- 
- static int gve_open(struct net_device *dev)
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-index d58b07e7e123..7063c78bd35f 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-@@ -286,7 +286,6 @@ mtk_wed_wo_queue_free(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- static void
- mtk_wed_wo_queue_tx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- {
--	struct page *page;
- 	int i;
- 
- 	for (i = 0; i < q->n_desc; i++) {
-@@ -301,19 +300,12 @@ mtk_wed_wo_queue_tx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- 		entry->buf = NULL;
- 	}
- 
--	if (!q->cache.va)
--		return;
--
--	page = virt_to_page(q->cache.va);
--	__page_frag_cache_drain(page, q->cache.pagecnt_bias);
--	memset(&q->cache, 0, sizeof(q->cache));
-+	page_frag_cache_drain(&q->cache);
- }
- 
- static void
- mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- {
--	struct page *page;
--
- 	for (;;) {
- 		void *buf = mtk_wed_wo_dequeue(wo, q, NULL, true);
- 
-@@ -323,12 +315,7 @@ mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- 		skb_free_frag(buf);
- 	}
- 
--	if (!q->cache.va)
--		return;
--
--	page = virt_to_page(q->cache.va);
--	__page_frag_cache_drain(page, q->cache.pagecnt_bias);
--	memset(&q->cache, 0, sizeof(q->cache));
-+	page_frag_cache_drain(&q->cache);
- }
- 
- static void
-diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index 08805f027810..c80037a78066 100644
---- a/drivers/nvme/host/tcp.c
-+++ b/drivers/nvme/host/tcp.c
-@@ -1344,7 +1344,6 @@ static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
- 
- static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
- {
--	struct page *page;
- 	struct nvme_tcp_ctrl *ctrl = to_tcp_ctrl(nctrl);
- 	struct nvme_tcp_queue *queue = &ctrl->queues[qid];
- 	unsigned int noreclaim_flag;
-@@ -1355,11 +1354,7 @@ static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
- 	if (queue->hdr_digest || queue->data_digest)
- 		nvme_tcp_free_crypto(queue);
- 
--	if (queue->pf_cache.va) {
--		page = virt_to_head_page(queue->pf_cache.va);
--		__page_frag_cache_drain(page, queue->pf_cache.pagecnt_bias);
--		queue->pf_cache.va = NULL;
--	}
-+	page_frag_cache_drain(&queue->pf_cache);
- 
- 	noreclaim_flag = memalloc_noreclaim_save();
- 	/* ->sock will be released by fput() */
-diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
-index 4cc27856aa8f..11237557cfc5 100644
---- a/drivers/nvme/target/tcp.c
-+++ b/drivers/nvme/target/tcp.c
-@@ -1576,7 +1576,6 @@ static void nvmet_tcp_free_cmd_data_in_buffers(struct nvmet_tcp_queue *queue)
- 
- static void nvmet_tcp_release_queue_work(struct work_struct *w)
- {
--	struct page *page;
- 	struct nvmet_tcp_queue *queue =
- 		container_of(w, struct nvmet_tcp_queue, release_work);
- 
-@@ -1600,8 +1599,7 @@ static void nvmet_tcp_release_queue_work(struct work_struct *w)
- 	if (queue->hdr_digest || queue->data_digest)
- 		nvmet_tcp_free_crypto(queue);
- 	ida_free(&nvmet_tcp_queue_ida, queue->idx);
--	page = virt_to_head_page(queue->pf_cache.va);
--	__page_frag_cache_drain(page, queue->pf_cache.pagecnt_bias);
-+	page_frag_cache_drain(&queue->pf_cache);
- 	kfree(queue);
- }
- 
-diff --git a/include/linux/gfp.h b/include/linux/gfp.h
-index 28aea17fa59b..6cef1c241180 100644
---- a/include/linux/gfp.h
-+++ b/include/linux/gfp.h
-@@ -311,6 +311,7 @@ extern void __free_pages(struct page *page, unsigned int order);
- extern void free_pages(unsigned long addr, unsigned int order);
- 
- struct page_frag_cache;
-+void page_frag_cache_drain(struct page_frag_cache *nc);
- extern void __page_frag_cache_drain(struct page *page, unsigned int count);
- void *__page_frag_alloc_align(struct page_frag_cache *nc, unsigned int fragsz,
- 			      gfp_t gfp_mask, unsigned int align_mask);
-diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 636145c29f70..06aa1ebbd21c 100644
---- a/mm/page_alloc.c
-+++ b/mm/page_alloc.c
-@@ -4699,6 +4699,16 @@ static struct page *__page_frag_cache_refill(struct page_frag_cache *nc,
- 	return page;
- }
- 
-+void page_frag_cache_drain(struct page_frag_cache *nc)
-+{
-+	if (!nc->va)
-+		return;
-+
-+	__page_frag_cache_drain(virt_to_head_page(nc->va), nc->pagecnt_bias);
-+	nc->va = NULL;
-+}
-+EXPORT_SYMBOL(page_frag_cache_drain);
-+
- void __page_frag_cache_drain(struct page *page, unsigned int count)
- {
- 	VM_BUG_ON_PAGE(page_ref_count(page) == 0, page);
+The commit message should always answer to the question "Why?".
+
 -- 
-2.33.0
+https://patchwork.kernel.org/project/linux-wireless/list/
 
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
