@@ -4,66 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29369C47DDB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 15:02:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54D15C47DDB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 15:45:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XH0N7qwyzoiOquOXIU+a7EdmmXpDUtrm45+lLXzvaJ0=; b=xTPmPEB9kd09e2r/nPusg3gT2Y
-	IoQ9gAZVSoIvR4iD536rScwMelBiVr4mLzWZ8TC/v1mvOo9ISmMQaH/n3CaZFNlxwI2rLiR+v9QoI
-	LPHgixrV1xMMZ5/Xe2vvi6P3eiDnP7ghFb2YbnpBl/4NNIf31pOeDbE9LZd/gHf6MQW1cCqcauPIS
-	idLkD6H7ybWJqck5aZ8s4FCTRcstPzStbM+QXEoAcBpSt2iWmWFlGZIjYdsQ6gtliPKnblvTJeFib
-	sfBIP5uWIGNvodmtljuDEFmGS9EDa2y001UNORs61SmmNi8vxIX/bVdPPE5OG9tKyLLqmK8Gs+BmC
-	5dy4PJzw==;
+	bh=yhXckNtvEx+khjTvmjd/OcS50z4ss3Qyh+Tyga+M7KQ=; b=n7kR9mSOoyMogImW/wIhCatcPX
+	vR+Vp/PrEK3GtAeJp/xCONkpT+6U25VFBNXgFPFyczL/aTRARWn+AxVo8yvZ1HVpT8a2D21d3C8eV
+	aemsRbXkJ1ydIevQ7XWcm6FDxGyM+Pb25IzpoWY31TxLDS+zg9lWcZ/SE3dpgrZwu0TMe3XSqKdxi
+	KGCBLUS6Y9U3Pyhn1keOjPw7YK1c0znqhDaDGu5w6ZmE9rWZvWuiLsHogx+DghBqI5s6qy1dMtOyG
+	tl5LDzbpswwuWfwmosqEHirWt9FMQbSPDzqtob71vZCxdnHpeOp3TyCZ5LoaRe7NrqwmN1DIs8IN9
+	ux9QES/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSIIZ-00GxHV-2v;
-	Tue, 23 Jan 2024 15:02:47 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1rSIxl-00H78Z-05;
+	Tue, 23 Jan 2024 15:45:21 +0000
+Received: from mail-tyzapc01olkn20801.outbound.protection.outlook.com ([2a01:111:f403:280c::801] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSIIV-00GxEL-1L;
-	Tue, 23 Jan 2024 15:02:45 +0000
-Received: from pendragon.ideasonboard.com (89-27-53-110.bb.dnainternet.fi [89.27.53.110])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id E65F51571;
-	Tue, 23 Jan 2024 16:01:23 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1706022084;
-	bh=L7Ay3iiZRAgJbN7wH086fFR5PwqkMl12v5AXznuMD3M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=c5ATtRN7CvME+tv0AHM/uDb8UOBdrDaAb4fEdjZ75sT+AwuwLVoNmRAZtCTGO5dwG
-	 YeR4OinyAzqjAovyIIBqtWW1sRzbaOuIIiFbixrrFXfNpJkWnduvyJQ0pJiOr5eUj4
-	 t8AetpijdDVtKJd8XZ454Hipl3E30IZ4loOIKVUk=
-Date: Tue, 23 Jan 2024 17:02:36 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Fabien Parent <fabien.parent@linaro.org>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Julien Stephan <jstephan@baylibre.com>,
-	Suhrid Subramaniam <suhrid.subramaniam@mediatek.com>,
-	Ted Larson <ted@ologicinc.com>
-Subject: Re: [PATCH v2 3/3] arm64: dts: mediatek: Add device tree for
- MT8365-based Pumpkin i350
-Message-ID: <20240123150236.GJ10679@pendragon.ideasonboard.com>
-References: <20231025210342.30995-1-laurent.pinchart@ideasonboard.com>
- <20231025210342.30995-4-laurent.pinchart@ideasonboard.com>
- <cabd1f9d-340a-4778-96bb-4478ae3a791a@collabora.com>
+	id 1rSIxh-00H77X-1Z;
+	Tue, 23 Jan 2024 15:45:19 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=adoWhTctxNHF0VtYsVsAeAk48Rp7yGtla1we27Q1CLm/W9ObKbI21fSeb8AEK7lUZn9DltPa1E+suH2/Uy21SMz5d5nhdJH0rnQiVKOInQtuKa4XP4Mj+7sxVikCEecNnQhLSazPLMTq7BU3Oi0hijIBndhieM/cTMP8ddb9qSuR5NC3CPwInhvn3qUR6S1UAXSGm/noltFCelrQ0odCuevLeFU2Gc6OYuluP+4YOftOtF7yx47JoXJTCz/cMmjIajJWCAXVO+lH5vq/jEYkFI7faLxXzuur7TuSSBBf58G73RM6BN1Bfeluc08pC7gioHQ+Q8lpgOc/MziKYysHRw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=yhXckNtvEx+khjTvmjd/OcS50z4ss3Qyh+Tyga+M7KQ=;
+ b=deUMuDtVm6FBXckKFdNBytiYfmHb1OF/ZnojMGywTT3FdSeCUXLgtlQUYejxUtrGKD1ePJoxDVYZsu9pGYsUuo7xCVF4fMGcuLyFs+FuNTNoVBVvyxZCOt41RANJJwaFKZ87IgwA0r5esipOvsQDjGcoOjFnXvcyPu0D4d598B7Pwjldo42qpVFQgbP2ScxPftySVAwg432I0ElIzchPShqixx0JcgDWagAJSHTZ2edCzhHcdcTTkDxig5FL2csRaqiCmn4lOMPHiccbydBOGVDn3VQGmajNZDnVS27oTtYDrH0IXi/HR/OHpaC0sYdOUSvRzKwokfPyzpcMWXTC/w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=yhXckNtvEx+khjTvmjd/OcS50z4ss3Qyh+Tyga+M7KQ=;
+ b=RI60ekXtlYR6cJshlh9jbb7cz/DmSxh55fqezATuoo8QK+HkzOV+5LKyBLyyf3Jtk1ciBJUbssXqqH3DINTJX8NkKz15F8dD5tgbZWrjj1U2+Moq6Liv8cF6QxXdnC4QnFGkq4JHFEASSfxmB/Y3bgo5DzRKVFwAb3xW/qRsUajcl0CcLI2ogKJ5/32QQ/K4v0esWr5Au6xngZj5hlz4mhBn/MXmmaSciE+SdXMBHUdsOZSCwZPhIuYL7B7WW6u/6JFIBx+pGEtL5LXTt5k0p/xjQbs2s5hn8ipH3Ka1v88C30WrBQkOVIZY2IPHyNOROYxufcIGYfpIhFjc3AtLoQ==
+Received: from TYZPR01MB5556.apcprd01.prod.exchangelabs.com
+ (2603:1096:400:363::9) by TY0PR0101MB4652.apcprd01.prod.exchangelabs.com
+ (2603:1096:400:32b::8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7202.36; Tue, 23 Jan
+ 2024 15:45:11 +0000
+Received: from TYZPR01MB5556.apcprd01.prod.exchangelabs.com
+ ([fe80::a639:b02c:5189:7140]) by TYZPR01MB5556.apcprd01.prod.exchangelabs.com
+ ([fe80::a639:b02c:5189:7140%7]) with mapi id 15.20.7202.031; Tue, 23 Jan 2024
+ 15:45:11 +0000
+Message-ID: <TYZPR01MB55564E7754A27CB0E39F5FCDC9742@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
+Date: Tue, 23 Jan 2024 23:43:59 +0800
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 5/8] clk: qcom: support for duplicate freq in RCG2 freq
+ table
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
+ richardcochran@gmail.com, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Praveenkumar I <ipkumar@codeaurora.org>,
+ Abhishek Sahu <absahu@codeaurora.org>
+References: <TYZPR01MB55563BD6A2B78402E4BB44D4C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
+ <TYZPR01MB5556DEA3D4740441EC561414C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
+ <28cca132-d5bb-4cff-ba2f-9be241a5ce83@lunn.ch>
+ <TYZPR01MB55565998F43009AD351AC07EC9752@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
+ <b84df52a-f144-4ec3-b81b-20d1a0176aff@lunn.ch>
+From: Ziyang Huang <hzyitc@outlook.com>
+In-Reply-To: <b84df52a-f144-4ec3-b81b-20d1a0176aff@lunn.ch>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TMN: [HMKDoLYeQu4bc17005dO2W7OCKqDuTT7]
+X-ClientProxiedBy: SI2PR02CA0018.apcprd02.prod.outlook.com
+ (2603:1096:4:194::18) To TYZPR01MB5556.apcprd01.prod.exchangelabs.com
+ (2603:1096:400:363::9)
+X-Microsoft-Original-Message-ID: <3093ac9a-98e4-4e04-b9f3-efaf718de087@outlook.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <cabd1f9d-340a-4778-96bb-4478ae3a791a@collabora.com>
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TYZPR01MB5556:EE_|TY0PR0101MB4652:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7c7c044c-2b42-4a54-ba7e-08dc1c2a4894
+X-MS-Exchange-SLBlob-MailProps: obhAqMD0nT/VAPap+pVtXZmepyzo+OmYTJKyPEetUGsLhppmK7jcpSQDR6JLxtt9/y5ybjgpUxMD4Stv2Ss4hm3VVdphgRLN0ii7kzyE296hLFCbM2+HSYnayDH+HZYTWX6242EG+LXv7bpdLc5dm+dNx+tNJrrnM0LeQPtXnJaq/JCIcoVqtJNQDXWrwVuRHKVlRfktdeeHn7SLv7RTHT2NJX+tDR3ozTt6x0YLI6lFM+/Wx+/lkhjqD9RfNhnN28AEseN6jYOWG8dAWLutUSDR4mi+5383UIyu+HqQyJ0BsTWV+oPGNhn4OoSajIUAWDF/yv8nlpJoQihMc9wJvmHpDd79IAp0s/A/CTjV+NeSaK6Wi3d8huAc2sXh/3a5kS9jz2pFFCrZ4C/tQuNdLyxQqTMVn4EIUP1Ewe+HTgpKY3+L85B8u94u2d9lns38WygBNj7yhTmbfya/n0fT/5m8v4MGWcFOvQGbCMfdg7P1tuoFaWXhBBUKN9gIb594kc7YU5uO6ajLjtWnBUK4BC/TMyYRRts54zg1F96TK1TCq+hkKL6bxg024ke7FoZVhL8VBAiLfmZNY4+G6R6DJwOPRiT7OuqSIKg0fSngkyhah/XLhZgak9BJKZjkp8vqfDXOYu1WydNwYQ1nw9xFBPUWcsXkupZBl92ieeKfS398d2VSrBFOwP6zZZ4LJZ/MWemd1x6vukSGKenP/cqlgVej4g4OewGDpTwHSfClOLOFDgesVzJBndo/nOMoE/ADnE90aD5DhchwUhuvrtjx9ISwkwyXg5QL53roGSUvbziBXCUoqErmUAwzzKaDQRmN
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: okt2ZoXwqpH4/Mgp63bLRz9p1FclDPmDFn+JRXZefg/AWbaw0vwDXYhOPaP4bAyqUB2wAMbylRsOVv3nNhboqhWlAQKA5J7zwNDZc4Zy41IPk/Bc0aC525qo/vUdiWchKak1KKWX8/RqYmQY0U+S0C88xFT0bkA3S2zZeCUHw47HEw9CMetMUNJoj2DJBdA0lvsTQZip5R5TWky14I8a77f1v9S9OOJ8ANeH0dHhLz9Yg6eIv8ea880DxCXoV2SZZonApqbJSnLyjhm6nWUygbYWMYIhm7mv0jF1F8dVFRl0qXwbvSO/8d8OhidoR/BJBb45ScZafPL3ao9d+SJpOMLbHvRv/WIWslJfWqX3YKP4KwHiDgo9Ry3zufPCfdG1KuO44XUu1BAfQuloe4d5ljUNH6kAo8OfHt8QjbGK4FgbL+p333D5NlRhVbsnEa0POvo64Z7VLfacz4Jmf4xhTehLLmzivGfWhGT9qaCPY4/GdlUAopM6Pb3yUSU45BWI9hV0ar1cG0UjEVQQocfFjYRXo3Flqet1n2QmxQ2xCXSV1tKbkEub7vEJJZSO9ahG7ulIIUFghrP5r0FOd/HcmCXYjP9DRSieRXp06bpce+A=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?amFZKys1aGQ5ZDdNa3NTMDBtNEQzR2JwYkthMjVuYnlCaWZXS3lMVW82UTFs?=
+ =?utf-8?B?eVNJaUZ6VkN4ME56U1ZSekpJT1JNUGp5MFE3YXNkeDdGTGZzUForb3NmLzV4?=
+ =?utf-8?B?Q09Ra0YveEQ5ZTBlaWMxT3kyU2ZzUU5aM2FMbHp1VEdXUTFxeG1kSFZFTjlW?=
+ =?utf-8?B?czZ0S3JoV2VGajFhejN4aXlIWEg5d2ViTk1WUWZpMEJ5R3ovRjM5dTg1eTZN?=
+ =?utf-8?B?N3dXZ1NmRTBuNkZpODE3RlZmWTFpd0toY25uVnE3bDVDRWk4bXFjMlQwL2Yx?=
+ =?utf-8?B?eGdxZ2VMM0pvMEV0b3RPTWhnTG5QL3hRMFdneHhMUkU1a0QySkl2Mk8rWlNw?=
+ =?utf-8?B?NnE0SkFRaHR6MzBZQXJlVXdSbUsycEZsWnVnOGhUeDRXaG5hUC9LV0p5WXlx?=
+ =?utf-8?B?dHhzL1ZsSjcxN245QzJwUmN5a2dLMXVUeXdGZXdqNkZTU0lubzZKREp4cVQ1?=
+ =?utf-8?B?N1hwYzlzKzFWak5ObnMyZzJaZDBaaC9reERzU0FKYmNSRlFUM2JVNzZqZExX?=
+ =?utf-8?B?ZlJRSVU4dHp1ME91clNvUUVEUlVsWDF5NUFhSzdORXYyQzZsRURoSFpBL3RG?=
+ =?utf-8?B?T2c3aFkxWnBoc2laWTZTWk5PVURxc3JudWRVZHdiS1VhOUV4b1c3UythZEU0?=
+ =?utf-8?B?THlPQW9ReFJBWVVBVEN1Y1dFMUM5amY2ZlJrODl6ZFNWTnpuVktpbTEwYndB?=
+ =?utf-8?B?dDhDbHM0WlFmK1oyZVk5bkVvVjIxbzhSYmFncGQ4S3R0TkVHY25GL2xhc1Aw?=
+ =?utf-8?B?eHdTWVo0dk5zbDV2NTJXVFA1L0FZMUtFb3NzMjFranZmQ2sxYkQrVGZ2WGc5?=
+ =?utf-8?B?Um5HSytQOWRDdUNsMHBTcFlEMmdXUnlRNkp0YVdIUWRqcWdYT3ZxbW9IMCtK?=
+ =?utf-8?B?RUNDNUVtaytXV0cwREdwM0RtL2thcURoUVBYVmhuQUgrQlRhZEhxTzJveEZn?=
+ =?utf-8?B?RUd5SlpFd1AxUWxROXhqMnFBVzRsUHMvQnhPdWRlc0NIbWNBWnNqazA5Q0w3?=
+ =?utf-8?B?OVp5a1VuTU95dGxhSGVxWjVOTVVEUUxvY2Q0alpQUzhNN29tWTdWR1J5VmlF?=
+ =?utf-8?B?N1JBL3ZHTFVSK1NhV05lcjVOVEdQWG1yU2pMZlFmdWNPeXViSDNEYWJBcWJu?=
+ =?utf-8?B?VUpyYWY1R2t5anVLZE5aUWtPblk0RzkzNmVINzAzTjJhQklkdXU5ZG0zUkhV?=
+ =?utf-8?B?RUlLZTJ4d3pPY3d0dm1xMUJ4bklHTi9uWEJlNk1XVFdZT1ZUdTlQeVRXOStk?=
+ =?utf-8?B?dkh6NGY3S3plOGppQldTMEkrYThIbGxzaFZXNEQrbjVsR296WXVqc2lNajRa?=
+ =?utf-8?B?UVB4N3FQSERjSm16N2xXMmYyUVNPdllkK2hRby91M090MzNmSmd5cHJhY3Bq?=
+ =?utf-8?B?aVhLNlBUTGdsSm1qellFa25pWTJxR3JoN29zTGphM1VBK3FFVkc2OTBBNU4r?=
+ =?utf-8?B?WEhmWC9jY05FdXJYcmczbWhaUXRRS3EydnMxTGh5c25HRG11T1BHMlM2WkRP?=
+ =?utf-8?B?Sm1KTDlyM3hCQ01JZUxxWWFkaXUwVm04NmJSaUNjUStTand2SlpUbXNzUGFi?=
+ =?utf-8?B?MGsrREx0ekFzMTF0cVZDVVFNU1phMEZvVmt1WlRxbXJDaytCK0I5NTZXd2pV?=
+ =?utf-8?B?Z1lqNkxsR1RNRk1HbzRNTmphTGJoelE9PQ==?=
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7c7c044c-2b42-4a54-ba7e-08dc1c2a4894
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR01MB5556.apcprd01.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jan 2024 15:45:11.3598
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR0101MB4652
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240123_070243_754840_FE9EF759 
-X-CRM114-Status: GOOD (  39.20  )
+X-CRM114-CacheID: sfid-20240123_074517_532539_70E55774 
+X-CRM114-Status: GOOD (  16.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,470 +140,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+在 2024/1/23 1:34, Andrew Lunn 写道:
+>>>> Change-Id: I97d9e1b55d8f3ee095f6f01729af527ba90e50e5
+>>>> Signed-off-by: Abhishek Sahu <absahu@codeaurora.org>
+>>>> (cherry picked from commit 775e7d3b69ffc97afb5bd5a6c9c423f2f4d8a0b2)
+>>>> Signed-off-by: Praveenkumar I <ipkumar@codeaurora.org>
+>>>>
+>>>> Change-Id: If10193fc79a3c1375ab73597813745ff1f4df0ad
+>>>>
+>>>> Pick from https://git.codelinaro.org/clo/qsdk/oss/kernel/linux-ipq-5.4/-/commit/6dfb368bae130bee58e00ddf8330b55066e1c8c5
+>>>>
+>>>> Signed-off-by: Ziyang Huang <hzyitc@outlook.com>
+>>>
+>>> Please clean up these tags. These Change-ID tags are meaningless in
+>>> mainline. 775e7d3b69ffc97afb5bd5a6c9c423f2f4d8a0b2 is not in mainline
+>>> either. The picked from might be interesting, but please put it into
+>>> the body of the commit message, not mixed in with the tags.
+>>>
+>>> Who actually wrote this patch? The first Signed-off-by: is from
+>>> Abhishek Sahu. But you have a From of Praveenkumar I ?
+>>
+>> I have no idea about this. This patch is from Qualcomm vendor linux code.
+> 
+> O.K. Since this is direct from the vendor, who probably does not track
+> code authorship correctly, i would say the author in git is probably
+> wrong. I would set the author: to Abhishek Sahu <absahu@codeaurora.org>.
+> 
+>> What's more, I don't known how to deal with these commit message since I'm
+>> not the author and I'm not sure do I have right to edit them even though
+>> this is GPL code.
+> 
+> You should keep all the Signed-off-by, in the order they are. But the
+> Change-Id is meaningless, so there is no problem removing them.
+> 
+> 	  Andrew
 
-On Tue, Jan 23, 2024 at 02:53:58PM +0100, AngeloGioacchino Del Regno wrote:
-> Il 25/10/23 23:03, Laurent Pinchart ha scritto:
-> > Add a minimal device tree for the Genio i350 Pumpkin development board,
-> > which is based on a MediaTek MT8365.
-> > 
-> > The device tree is based on an initial version by Fabien Parent Based
-> > written against the MediaTek BSP kernel ([1]). It has been cleaned up,
-> > some features have been added (GPIO LEDs, ethernet), and some features
-> > removed (audio, camera, display and dual-role USB). Those features will
-> > be added back once the corresponding DT bindings and/or drivers become
-> > available in the upstream kernel.
-> > 
-> > [1] https://gitlab.com/mediatek/aiot/bsp/linux/-/blob/mtk-v5.15-dev/arch/arm64/boot/dts/mediatek/mt8365-pumpkin.dts
-> > 
-> > Co-developed-by: Fabien Parent <fparent@baylibre.com>
-> > Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> > Co-developed-by: Paul Elder <paul.elder@ideasonboard.com>
-> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > ---
-> > Changes since v1:
-> > 
-> > - Drop mmc2 alias
-> > - Reorder properties of i2c, mmc and usb nodes
-> > 
-> > Changes compared to the BSP version:
-> > 
-> > - Add ethernet controller
-> > - Add GPIO LEDs
-> > - Add reserved memory region for BL31
-> > - Update board model and compatible
-> > - Rename enable-sdio-wakeup to wakeup-source
-> > - Drop audio support
-> > - Drop display support
-> > - Drop dual role USB support
-> > - Don't use underscores in node names
-> > - Normalize pinmux node names
-> > - Remove unneeded labels
-> > - Drop unneeded always-on
-> > - Drop unused pinmux nodes
-> > - Drop camera GPIO hog
-> > - Update copyright
-> > - Fix formatting
-> > - Sort alphabetically
-> > ---
-> >   arch/arm64/boot/dts/mediatek/Makefile         |   1 +
-> >   .../boot/dts/mediatek/mt8365-pumpkin.dts      | 541 ++++++++++++++++++
-> >   2 files changed, 542 insertions(+)
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8365-pumpkin.dts
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> > index c99c3372a4b5..bbc232bdadc4 100644
-> > --- a/arch/arm64/boot/dts/mediatek/Makefile
-> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> > @@ -53,4 +53,5 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-cherry-tomato-r3.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-demo.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-evb.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8365-evk.dtb
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8365-pumpkin.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8365-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8365-pumpkin.dts
-> > new file mode 100644
-> > index 000000000000..9c75294c9889
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8365-pumpkin.dts
-> > @@ -0,0 +1,541 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +/*
-> > + * Copyright (c) 2021 BayLibre, SAS.
-> > + * Copyright (c) 2023 Ideas on Board Oy
-> > + *
-> > + * Author: Fabien Parent <fparent@baylibre.com>
-> > + */
-> > +
-> > +/dts-v1/;
-> > +
-> > +#include <dt-bindings/gpio/gpio.h>
-> > +#include <dt-bindings/input/input.h>
-> > +#include <dt-bindings/leds/common.h>
-> > +#include <dt-bindings/pinctrl/mt8365-pinfunc.h>
-> > +
-> > +#include "mt8365.dtsi"
-> > +#include "mt6357.dtsi"
-> > +
-> > +/ {
-> > +	model = "OLogic Pumpkin i350 EVK";
-> > +	compatible = "ologic,pumpkin-i350", "mediatek,mt8365";
-> > +
-> > +	aliases {
-> > +		ethernet0 = &ethernet_usb;
-> > +		mmc0 = &mmc0;
-> > +		mmc1 = &mmc1;
-> > +		serial0 = &uart0;
-> > +	};
-> > +
-> > +	chosen {
-> > +		stdout-path = "serial0:921600n8";
-> > +	};
-> > +
-> > +	firmware {
-> > +		optee {
-> > +			compatible = "linaro,optee-tz";
-> > +			method = "smc";
-> > +		};
-> > +	};
-> > +
-> > +	leds {
-> > +		compatible = "gpio-leds";
-> > +
-> > +		led-red {
-> > +			gpios = <&gpio_exp 12 GPIO_ACTIVE_HIGH>;
-> > +			color = <LED_COLOR_ID_RED>;
-> > +			function = LED_FUNCTION_HEARTBEAT;
-> > +			linux,default-trigger = "heartbeat";
-> > +		};
-> > +
-> > +		led-green {
-> > +			gpios = <&gpio_exp 13 GPIO_ACTIVE_HIGH>;
-> > +			color = <LED_COLOR_ID_GREEN>;
-> > +			default-state = "off";
-> > +		};
-> > +	};
-> > +
-> > +	memory@40000000 {
-> > +		device_type = "memory";
-> > +		reg = <0 0x40000000 0 0x80000000>;
-> > +	};
-> > +
-> > +	reserved-memory {
-> > +		#address-cells = <2>;
-> > +		#size-cells = <2>;
-> > +		ranges;
-> > +
-> > +		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
-> > +		secmon@43000000 {
-> > +			no-map;
-> > +			reg = <0 0x43000000 0 0x30000>;
-> 
-> reg first, no-map last.
-> 
-> > +		};
-> > +
-> > +		/*
-> > +		 * 12 MiB reserved for OP-TEE (BL32)
-> > +		 * +-----------------------+ 0x43e0_0000
-> > +		 * |      SHMEM 2MiB       |
-> > +		 * +-----------------------+ 0x43c0_0000
-> > +		 * |        | TA_RAM  8MiB |
-> > +		 * + TZDRAM +--------------+ 0x4340_0000
-> > +		 * |        | TEE_RAM 2MiB |
-> > +		 * +-----------------------+ 0x4320_0000
-> > +		 */
-> > +		optee@43200000 {
-> > +			no-map;
-> > +			reg = <0 0x43200000 0 0x00c00000>;
-> 
-> same here.
-> 
-> > +		};
-> > +	};
-> > +
-> > +	usb_otg_vbus: usb-otg-vbus-regulator {
-> > +		compatible = "regulator-fixed";
-> > +		regulator-name = "otg_vbus";
-> > +		regulator-min-microvolt = <5000000>;
-> > +		regulator-max-microvolt = <5000000>;
-> > +		gpio = <&pio 25 GPIO_ACTIVE_HIGH>;
-> > +		enable-active-high;
-> > +	};
-> > +};
-> > +
-> > +&cpu0 {
-> > +	proc-supply = <&mt6357_vproc_reg>;
-> > +	sram-supply = <&mt6357_vsram_proc_reg>;
-> > +};
-> > +
-> > +&cpu1 {
-> > +	proc-supply = <&mt6357_vproc_reg>;
-> > +	sram-supply = <&mt6357_vsram_proc_reg>;
-> > +};
-> > +
-> > +&cpu2 {
-> > +	proc-supply = <&mt6357_vproc_reg>;
-> > +	sram-supply = <&mt6357_vsram_proc_reg>;
-> > +};
-> > +
-> > +&cpu3 {
-> > +	proc-supply = <&mt6357_vproc_reg>;
-> > +	sram-supply = <&mt6357_vsram_proc_reg>;
-> > +};
-> > +
-> > +&i2c0 {
-> > +	clock-frequency = <100000>;
-> > +
-> > +	pinctrl-names = "default";
-> > +	pinctrl-0 = <&i2c0_pins>;
-> > +
-> > +	status = "okay";
-> > +};
-> > +
-> > +&i2c1 {
-> > +	clock-frequency = <100000>;
-> > +
-> > +	pinctrl-names = "default";
-> > +	pinctrl-0 = <&i2c1_pins>;
-> > +
-> > +	status = "okay";
-> > +
-> > +	gpio_exp: gpio@20 {
-> > +		compatible = "ti,tca6416";
-> > +		reg = <0x20>;
-> > +		reset-gpios = <&pio 78 GPIO_ACTIVE_LOW>;
-> > +		pinctrl-names = "default";
-> > +		pinctrl-0 = <&tca6416_pins>;
-> > +
-> > +		gpio-controller;
-> 
-> Please check Documentation/devicetree/bindings/dts-coding-style.rst
-
-I assume you mean the "Order of Properties in Device Node" section ?
-What part exactly ?
-
-> > +		#gpio-cells = <2>;
-> > +	};
-> > +};
-> > +
-> > +&i2c2 {
-> > +	clock-frequency = <100000>;
-> > +
-> > +	pinctrl-names = "default";
-> > +	pinctrl-0 = <&i2c2_pins>;
-> > +
-> > +	status = "okay";
-> > +};
-> > +
-> > +&i2c3 {
-> > +	clock-frequency = <100000>;
-> > +
-> > +	pinctrl-names = "default";
-> > +	pinctrl-0 = <&i2c3_pins>;
-> > +
-> > +	status = "okay";
-> > +};
-> > +
-> > +&keypad {
-> > +	status = "okay";
-> 
-> status goes last.
-> 
-> Please check Documentation/devicetree/bindings/dts-coding-style.rst
-> 
-> > +
-> > +	pinctrl-names = "default";
-> > +	pinctrl-0 = <&keypad_pins>;
-> > +
-> > +	keypad,num-rows = <2>;
-> > +	keypad,num-columns = <1>;
-> > +	mediatek,debounce-us = <32000>;
-> > +	mediatek,double-keys;
-> > +
-> > +	linux,keymap = <MATRIX_KEY(0x00, 0x00, KEY_VOLUMEDOWN)
-> > +			MATRIX_KEY(0x01, 0x00, KEY_VOLUMEUP)>;
-> > +};
-> > +
-> > +/* eMMC */
-> > +&mmc0 {
-> > +	bus-width = <8>;
-> > +	max-frequency = <200000000>;
-> > +
-> > +	cap-mmc-highspeed;
-> > +	cap-mmc-hw-reset;
-> > +	hs400-ds-delay = <0x12012>;
-> > +	mmc-hs200-1_8v;
-> > +	mmc-hs400-1_8v;
-> > +	no-sd;
-> > +	no-sdio;
-> > +	non-removable;
-> 
-> Please order by name.
-> 
-> > +
-> > +	vmmc-supply = <&mt6357_vemc_reg>;
-> > +	vqmmc-supply = <&mt6357_vio18_reg>;
-> > +
-> > +	pinctrl-names = "default", "state_uhs";
-> > +	pinctrl-0 = <&mmc0_pins_default>;
-> > +	pinctrl-1 = <&mmc0_pins_uhs>;
-> > +
-> > +	assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
-> 
-> assigned clocks and clock parents go first.
-> 
-> > +	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL>;
-> > +
-> > +	status = "okay";
-> > +};
-> > +
-> > +/* SD card connector */
-> > +&mmc1 {
-> > +	bus-width = <4>;
-> > +	max-frequency = <200000000>;
-> > +
-> > +	cap-sd-highspeed;
-> > +	cd-gpios = <&pio 76 GPIO_ACTIVE_LOW>;
-> > +	sd-uhs-sdr104;
-> > +	sd-uhs-sdr50;
-> 
-> Please order by name.
-> 
-> > +
-> > +	vmmc-supply = <&mt6357_vmch_reg>;
-> > +	vqmmc-supply = <&mt6357_vmc_reg>;
-> > +
-> > +	pinctrl-names = "default", "state_uhs";
-> > +	pinctrl-0 = <&mmc1_pins_default>;
-> > +	pinctrl-1 = <&mmc1_pins_uhs>;
-> > +
-> > +	status = "okay";
-> > +};
-> > +
-> > +/* WiFi module */
-> > +&mmc2 {
-> > +	bus-width = <4>;
-> > +	max-frequency = <200000000>;
-> > +
-> > +	cap-sd-highspeed;
-> > +	cap-sdio-irq;
-> > +	wakeup-source;
-> > +	hs400-ds-delay = <0x12012>;
-> 
-> Please order by name.
-> 
-> > +	keep-power-in-suspend;
-> > +	non-removable;
-> > +	sd-uhs-sdr104;
-> > +	sd-uhs-sdr25;
-> > +	sd-uhs-sdr50;
-> > +
-> > +	vmmc-supply = <&mt6357_vemc_reg>;
-> > +	vqmmc-supply = <&mt6357_vio18_reg>;
-> > +
-> > +	pinctrl-names = "default", "state_uhs";
-> > +	pinctrl-0 = <&mmc2_pins_default>;
-> > +	pinctrl-1 = <&mmc2_pins_uhs>;
-> > +
-> > +	assigned-clocks = <&topckgen CLK_TOP_MSDC50_2_SEL>;
-> > +	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL>;
-> > +
-> > +	status = "okay";
-> > +};
-> > +
-> > +&mt6357_pmic {
-> > +	interrupt-parent = <&pio>;
-> > +	interrupts = <145 IRQ_TYPE_LEVEL_HIGH>;
-> > +	interrupt-controller;
-> > +	#interrupt-cells = <2>;
-> > +};
-> > +
-> > +&pio {
-> > +	i2c0_pins: i2c0-pins {
-> > +		pins {
-> > +			pinmux = <MT8365_PIN_57_SDA0__FUNC_SDA0_0>,
-> > +				 <MT8365_PIN_58_SCL0__FUNC_SCL0_0>;
-> > +			mediatek,pull-up-adv = <3>;
-> > +			mediatek,drive-strength-adv = <00>;
-> 
-> I don't know what 00 is here, and it's not a valid drive strength value in uA.
-
-I don't know either, I didn't author that part. I'll look it up.
-
-> Valid values are 125, 250, 500 and 1000 microamps.
-> 
-> P.S.: Here and everywhere else.
-> 
-> > +			bias-pull-up;
-> > +		};
-> > +	};
-> > +
-> > +
-> 
-> ..snip..
-> 
-> > +	mmc0_pins_uhs: mmc0-uhs-pins{
-> > +		clk-pins {
-> > +			pinmux = <MT8365_PIN_99_MSDC0_CLK__FUNC_MSDC0_CLK>;
-> > +			drive-strength = <MTK_DRIVE_10mA>;
-> > +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-> > +		};
-> > +
-> > +		cmd-dat-pins {
-> > +			pinmux = <MT8365_PIN_103_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
-> > +				 <MT8365_PIN_102_MSDC0_DAT1__FUNC_MSDC0_DAT1>,
-> > +				 <MT8365_PIN_101_MSDC0_DAT2__FUNC_MSDC0_DAT2>,
-> > +				 <MT8365_PIN_100_MSDC0_DAT3__FUNC_MSDC0_DAT3>,
-> > +				 <MT8365_PIN_96_MSDC0_DAT4__FUNC_MSDC0_DAT4>,
-> > +				 <MT8365_PIN_95_MSDC0_DAT5__FUNC_MSDC0_DAT5>,
-> > +				 <MT8365_PIN_94_MSDC0_DAT6__FUNC_MSDC0_DAT6>,
-> > +				 <MT8365_PIN_93_MSDC0_DAT7__FUNC_MSDC0_DAT7>,
-> > +				 <MT8365_PIN_98_MSDC0_CMD__FUNC_MSDC0_CMD>;
-> > +			input-enable;
-> > +			drive-strength = <MTK_DRIVE_10mA>;
-> 
-> There's no need to use MTK_DRIVE_xxxx definitions, as they're really just defining
-> the same number that you can just clearly write.
-> 
-> In this case, it is
-> 			drive-strength = <10>;
-> 
-> please change it here and everywhere else.
-
-OK. Looks cleaner indeed.
-
-> > +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-> > +		};
-> > +
-> > +		ds-pins {
-> > +			pinmux = <MT8365_PIN_104_MSDC0_DSL__FUNC_MSDC0_DSL>;
-> > +			drive-strength = <MTK_DRIVE_10mA>;
-> > +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-> > +		};
-> > +
-> > +		rst-pins {
-> > +			pinmux = <MT8365_PIN_97_MSDC0_RSTB__FUNC_MSDC0_RSTB>;
-> > +			drive-strength = <MTK_DRIVE_10mA>;
-> > +			bias-pull-up;
-> > +		};
-> > +	};
-> > +
-> 
-> ..snip..
-> 
-> > +
-> > +&usb_host {
-> > +	#address-cells = <1>;
-> > +	#size-cells = <0>;
-> > +
-> > +	vusb33-supply = <&mt6357_vusb33_reg>;
-> > +
-> > +	status = "okay";
-> > +
-> > +	hub@2 {
-> > +		reg = <2>;
-> > +
-> > +		#address-cells = <1>;
-> > +		#size-cells = <0>;
-> > +
-> > +		ethernet_usb: ethernet@1 {
-> 
-> Can you please explain why you need this node on a fully discoverable bus?
-> Isn't it enough to just let USB auto enumerate this device at boot?
-
-To let the boot loader fill in the MAC address in DT. Would you like me
-to add a comment here ?
-
-> > +			compatible = "usb424,ec00";
-> > +			reg = <1>;
-> > +		};
-> > +	};
-> > +};
-
--- 
-Regards,
-
-Laurent Pinchart
+These days, I known a new knowledge: SGMII+ only support 2.5G. 1000M 
+can't work with SGMII+ mode. So the 1000M frequency divided from 3.125G 
+can be dropped. Then we don't have duplicated frequency and this patch 
+is unnecessary. Will test my guess.
 
