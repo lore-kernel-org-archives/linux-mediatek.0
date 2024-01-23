@@ -4,122 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13300C47258
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 15:59:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1894C47DDB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 17:01:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1LQR2p0Ri0VFR2HWbWfrx/fjQaSf+EZG2/aQ/SHpexA=; b=G/7ZjNX5vQ5t0YT59Ddtzua4ac
-	JeU5CWAHIarygIoBUigQiSW//SIKXnmwPzSAxpyve2vIgaSKk47mTaredYTyj3mF3GVkHITQGs2x7
-	KmogludQMJpi7C1jkCJpboTY2JsSt+1qXEStcOBeO7U2OiSTmywh7qYyX2VWqyQRngpCqkzdhyio6
-	GUqR1SzUYZCQ1GqfChh6HZz80iG31K0OyPiC883cHjnAEVfQfEEiNdupsF0aB54VKVf7M2hLmiF+1
-	XFlOpSWUTNTHFD68uw+auxiStEia7RYlu6ia8ZdSDM7IsJqfbiyxd8JipeQRqpPNz8jVum6lEq1j3
-	oeod+Aeg==;
+	bh=wAVdTUR6AraUf4MR7BIUfDWUmWTSaAJv+Uue5vYBw30=; b=vrahmXfQBI/g22E7ac9XF/vPjG
+	Hvdo5pbSlXh7axDOJ2+YBGTH4PCr5+bLnGcaXhM6J82zIfVLiYzn8ZGupsqZW4g4gkaF3IZfUtKQX
+	Ju8dJjjsRQ0reJd3nViB3CzkA/hRwERwekkniCYR9FlDcmkamXxAN8vCbwrJ9h3UagrvGnr6vKDLK
+	OaffUAKu/DW7o/KURPgjarXUREOUsuwWmIyHuSl2tDdL+cg/urviRgLExINnMIGyCXBfB9WDs7IBN
+	jiqCCVwoAkNkrM+21rXBfiDQCWMVFbM85Wy3S8UnLJoNdf9iH8FEhzBlSVOqtxl1b//DVCsRgzAns
+	QWhKSUaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSJBO-00HATh-2t;
-	Tue, 23 Jan 2024 15:59:26 +0000
-Received: from mail-tyzapc01olkn20801.outbound.protection.outlook.com ([2a01:111:f403:280c::801] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
+	id 1rSK9P-00HPiB-0U;
+	Tue, 23 Jan 2024 17:01:27 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSJBK-00HAR5-05;
-	Tue, 23 Jan 2024 15:59:24 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=agNgPqcDFiiw/yX5j6G8Z9Rj5X43OCPatgS06yXuKYGebSxLSWcUt7SdZhl0E+oOQ8qIYqWL1Tt2RVVWlclHGgYEw8n0BG6Ju2PynsJRX1RLDGXIXLNP10quSThpTQPSwZkIxEWnCXqepljd842IOh4ndnI0sGd9gTjdLAWQqt0ut356oKcOnaKLALdlIcriNug/KOMSmSXwTEbqxFbWXV/hlgkSGKzTwlCHBeASzpC/FcTBCQLwXX211FGfXXBlgdxBW/40wmAVUGElOQ7BVR5f9mMWCjpsQUG1Ak/rWj+xjcBa4N16TdVcMBYCSY+ySawthrA98azO8+lUUYWoFw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=1LQR2p0Ri0VFR2HWbWfrx/fjQaSf+EZG2/aQ/SHpexA=;
- b=jtRWQycDGvIkQi2qW4nMjITGMqmYQ5eebDc+tu4FYJAVzt67GiwfLDFyOuOMsZWZVoUwV3xjqLHKrOqT6+jy8F9r2nYEUeRgi0SuDXB71FtC0F7gBdATevZN8WXpF4b7LlIvnF4Xq5gK8qEuvR4mU7Vihl5YivQ+uPKmolOtJAZTYIACRB0AvFPpzpkJGa9tijHDQXA9k4TD6/JvvSnu7G0a2LZRYY/GhBkfG4/u1BIHF7KoGzL0DJ/04L5twG26Ewgo/8JclNH6qugBW9uXcJ4ZoqulrAEyjlE840YkvAE7w9jp4WrdmPYXSgKaqntyuUBfpVdzNsaey8Pgjl9OYw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1LQR2p0Ri0VFR2HWbWfrx/fjQaSf+EZG2/aQ/SHpexA=;
- b=XY5lowT8vQjivCkPprFAIOa9JMN+B9Xpig/Qgz5T4oHR58sD4sSlHpTk5NzAlIakRLk/UBKUrc/RNBWJ5yBreKEgqaza9eOTAoqnubX/t/w7ZC6BjJOTRQAu+YdQALVXWiWRj9Viqz72i/YIoF2oWX0kMMA5WvNtbarhrlJIpBrlnTOevNtsJK+lQk4H+sb1vpBEOUowAArD3/C9pGgPlX6P2otqTYgg9exqC/HmMRXej4RQPsATPR8CtvgSjLFAn7i8LCY5uAmMN4bTotMeOZoIhN3hHMNhkZRmZZofparwEQN9PEC3mVkYhIxOm+XEPv9Lj0cbXBFW3LT2e3HB5g==
-Received: from TYZPR01MB5556.apcprd01.prod.exchangelabs.com
- (2603:1096:400:363::9) by TYZPR01MB6330.apcprd01.prod.exchangelabs.com
- (2603:1096:405:ae::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7202.36; Tue, 23 Jan
- 2024 15:59:15 +0000
-Received: from TYZPR01MB5556.apcprd01.prod.exchangelabs.com
- ([fe80::a639:b02c:5189:7140]) by TYZPR01MB5556.apcprd01.prod.exchangelabs.com
- ([fe80::a639:b02c:5189:7140%7]) with mapi id 15.20.7202.031; Tue, 23 Jan 2024
- 15:59:15 +0000
-Message-ID: <TYZPR01MB555648886D03AB911224F6FAC9742@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
-Date: Tue, 23 Jan 2024 23:58:26 +0800
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/8] phy: Introduce Qualcomm ethernet uniphy driver
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
- richardcochran@gmail.com, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <TYZPR01MB55563BD6A2B78402E4BB44D4C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
- <TYZPR01MB55568ACB534944D7DEB00C7AC9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
-From: Ziyang Huang <hzyitc@outlook.com>
-In-Reply-To: <TYZPR01MB55568ACB534944D7DEB00C7AC9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TMN: [8lCv3zEj6h8yEKESM/B8CxmzyO8q/KbC]
-X-ClientProxiedBy: TYCP286CA0343.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:400:38e::11) To TYZPR01MB5556.apcprd01.prod.exchangelabs.com
- (2603:1096:400:363::9)
-X-Microsoft-Original-Message-ID: <4f3f8059-d280-46d2-a400-5bda4c654fd8@outlook.com>
+	id 1rSK9L-00HPe3-2C;
+	Tue, 23 Jan 2024 17:01:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id B5D03CE2EDC;
+	Tue, 23 Jan 2024 17:01:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B2FBC433F1;
+	Tue, 23 Jan 2024 17:01:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1706029279;
+	bh=V+pi3c5KR+NexGtTEkvtMJ8NNNixuoR/P6ynDkGNHog=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=EkGZ+/ogS6+hCHS8WHjmlSxTgntXLY5/EvV7KM/I0UJQsFIvfYFISudTysjnMMAtm
+	 XBN8NJ1rWx0kgM3kDM3ITGf+2vNTRV5P70FmMznXtyuaO/VZVvKJy/EIPztnP4fY8b
+	 fMhzPv3e/J8qlgnYBt5k9wMH2ZqDGtqkCuEeOgOZf4E+zdf7KQeLHXyAoLVbHeyuy7
+	 ypaKJbkV6koOWVdtRSWwXeybmQyzWHpyqUVXZQBJLlid3iUCUsGSaQgDjp2VLEpDjc
+	 NTH3uZG2rSC8dWPP2DSbD5Jd3wsbUr2TeN6Lp/ysx/0OjMe71Z7r7VpGpddE9Hn3bJ
+	 MI4xI7Pgdt9lw==
+Date: Tue, 23 Jan 2024 17:01:13 +0000
+From: Conor Dooley <conor@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
+	Jason-ch Chen <jason-ch.chen@mediatek.com>,
+	Johnson Wang <johnson.wang@mediatek.com>,
+	Singo Chang <singo.chang@mediatek.com>,
+	Nancy Lin <nancy.lin@mediatek.com>,
+	Shawn Sung <shawn.sung@mediatek.com>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v3 1/3] dt-bindings: mailbox: Add mediatek,gce-props.yaml
+Message-ID: <20240123-powwow-drainable-77dfd6158b05@spud>
+References: <20240119063224.29671-1-jason-jh.lin@mediatek.com>
+ <20240119063224.29671-2-jason-jh.lin@mediatek.com>
+ <20240119-demote-fragment-624a35367a87@spud>
+ <9c447297-2738-4b63-9da9-0d004660e65d@collabora.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TYZPR01MB5556:EE_|TYZPR01MB6330:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5bcceb14-649c-41b3-f96f-08dc1c2c3fbe
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: tA9BmN88n/EUMJkbzif7uNu3qa7ON99vcr1LUJLoRNRf6D7DtqIzXpKB3CmWuRms1Ng4OzaR0w18Wc+ajw46VxWxZCWuz4oIM2CDxuUj/8hrO4JHXvpSH6LYlrAyuvvCMdqrAtL+zWL/1Kmv2EJBOj4ub3zhV1gWqLXEAe+pauoUr59XRkiYeOgQP1KJF+0sKYWp1/K8dfsDk/FjazMUQCvrLApZLh5197HprawPljrt9CIOCTWGwMvJ7WepVfgtgq8oQHGW2/YGPSnsvUJTOMQ/WhtwKWpBBio2twLAExbkeRXtBeAfOsCgo1GVOc3Sig9AHEFE0G53yxfIrehcloW7D9URDq8MnYJIX6rhyFHbF7jtuKKw/uAmFgkzTUhnCifXwTWQLwQXm61E4adwS3KgpAUWohU4euvAixXIYZM08MerB9bJxb21iHfpCKonTaAa/qAGPAQg7eKjPmjyeo8HSNpnsU1yNyelFmEw9sesZ9bL6S4KrfhQhFtuwK7HXkLsiSmEUyWlZ8aXpIsSUDMs6cy/u5qlXpeahYZ/tjVoPaeEqlNOFf5/4IvJgoEc
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?S3MvalNxd01uZzZpUU9pSk9DSjloOWc5bUFPbVozbUJ5MTZOM2JjQVVNZEFB?=
- =?utf-8?B?b2szMCtOWFFaVTMrZzI5bnY5NG5TZkNNdFpGYjBCa1NMS1dKeFNjaHRPeHdH?=
- =?utf-8?B?UnJSSTVtM241MVNhbWRLaktCdWF3cGZLRjRXSS9FRi9QMUVGSW5jTFM3R3R5?=
- =?utf-8?B?ZStDS2ZpQmhSc3V1VWRkbGVQaitjSVN3by9PNnVacXBvblpGcVptdGdWc2FE?=
- =?utf-8?B?SWF2QXhIR3BhVHVzZ24yd0xtQjUvTzkvWThyQUY4ZjAvL2ZNNVRKSVBrdENZ?=
- =?utf-8?B?NEJKNDF3NzVKRXRpMU55dFZDWlVBUzR3UzgwOUlRMGtyNERHay9hblBFU256?=
- =?utf-8?B?UG5YcTBsbWVqcVFMUG9oLzJSMm1zZ0h1Y25iSGFicWVhU2xnRmh6UzF6ZEpj?=
- =?utf-8?B?QW9acWpvWW9yRkwzaTdQVHlWSHJ6Y0xySUd5MlVpbyt0dng2RUEzeFc1YlNw?=
- =?utf-8?B?VWI3Qkg1QWJSV3ZNWk5sbDMrYmMxenM5YzZ4TVZHMTZhY3daSlNlc0pralJV?=
- =?utf-8?B?cGZROUxJV1ZKdytudXB0WXNodG0rRHJyb3dXWFBDeUs5MlFaUWVDUmY3N1l5?=
- =?utf-8?B?SlF1ZmZuVG9ZcmhrTUI5YWppRGpPTkc4R2s1akFJaFZzNlBmUU5DZ0NLL3Bq?=
- =?utf-8?B?cThsOTBsTXpoY3VEbjAwMmgrcklJTGh5dlIxZWN5YStOWFhmNzNISTJiOHN4?=
- =?utf-8?B?eW5JZUxVcnQvb1lxV2V5RVlPUi9IWmkvQjFrV0w2SWFKd1VucWthNFlIQjFw?=
- =?utf-8?B?cHhDVm8xTTh6WUVyQTFwSXNiSm5vMzR3b0NMVlMrRmFoVGxQUzhrVjA4cEVY?=
- =?utf-8?B?emlKZExCbm1ScXJKNzNuRW5GVDdJU2hUVWd2NHVSQU5pajVmdDZ0OEphTm5F?=
- =?utf-8?B?RCtCSVhOSGlxUXNLbGw1UUU4RFNoaEZiVVhYL2Rqb0FtelJpeklzSlcyV21l?=
- =?utf-8?B?WkZ1S2hmVzJvMTBFRlo1S3pCc3BjQUR3UmJVWUY2czdvZzVFVEJrc2lkYnZ4?=
- =?utf-8?B?MEpORUlaVEpLS3U3eWhKdmxiNlozcm9LNS9PdFlpb3dUVnpCVUowb3I3THI1?=
- =?utf-8?B?MVk3eVRDVmhjdHNQZ3ZCRm9IUG5pQUZUU2tvS1lwOVZsbnEwckhuOUtka0p2?=
- =?utf-8?B?dlphVWpKOW54aTh0bXgvdjV6cXhPOVVaZWVtb2hSNDJTNk82R0FYcmJCSGVz?=
- =?utf-8?B?ajVRRTVUSGdSWG9MRjFJak1CVmdlaUdwWGJtaURYandvc3J3TXB6QjBvS1dP?=
- =?utf-8?B?VDZqYzAydHRBbWpuQ0pIdmM5ZDhJL1J6RHNpVk1BRS9BMDJWeXJvdFoxZ1dD?=
- =?utf-8?B?VWlYMEN3Ynd5bDVoakNXNkdCOUxIZmdhaVVaR3BnRE1ob0I1Zy9kSjBFVW5C?=
- =?utf-8?B?cEMxclNrZVIvWk5nL2hSb3drT0ZkQmtOdmhQM1QyWW9ESEx2OEpnbUUrR0Q0?=
- =?utf-8?B?cHYxYktMY0R6WTVMYkJyQ29yMVYvUXpNdWlzSFdTbEM5ZmF4YUxhNFAyTXEv?=
- =?utf-8?B?eDBNVjhyNFR4d2t3OHZ1THcyV0dDSDRrUG5jczZveEtQemFSVlJrR1RSUm96?=
- =?utf-8?B?VXNaRWxqdnV6cEUzbFRBekx2ampveU90VlRSMkp4alRpc1V0RC9GZWYwcVhO?=
- =?utf-8?B?aXIxem1KSGJQa2FmcDMvY1dVMnBScnc9PQ==?=
-X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5bcceb14-649c-41b3-f96f-08dc1c2c3fbe
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR01MB5556.apcprd01.prod.exchangelabs.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jan 2024 15:59:15.4681
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR01MB6330
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="2CTCg0wQKdRlifcE"
+Content-Disposition: inline
+In-Reply-To: <9c447297-2738-4b63-9da9-0d004660e65d@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240123_075922_075269_2E8094B3 
-X-CRM114-Status: GOOD (  13.45  )
+X-CRM114-CacheID: sfid-20240123_090124_071658_B0B4960A 
+X-CRM114-Status: GOOD (  22.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,68 +87,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-在 2024/1/21 20:42, Ziyang Huang 写道:
-> +#define rmwl(addr, mask, val) \
-> +	writel(((readl(addr) & ~(mask)) | ((val) & (mask))), addr)
-> +
-> +static int cmn_init(struct platform_device *pdev)
-> +{
-> +	struct resource *res;
-> +	void __iomem *cmn_base;
-> +	void __iomem *tcsr_base;
-> +	u32 val;
-> +
-> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "cmn");
-> +	if (!res)
-> +		return 0;
-> +
-> +	cmn_base = devm_ioremap_resource(&pdev->dev, res);
-> +	if (IS_ERR_OR_NULL(cmn_base))
-> +		return PTR_ERR(cmn_base);
-> +
-> +	/* For IPQ50xx, tcsr is necessary to enable cmn block */
-> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "tcsr");
-> +	if (res) {
-> +		tcsr_base = devm_ioremap_resource(&pdev->dev, res);
-> +		if (IS_ERR_OR_NULL(tcsr_base))
-> +			return PTR_ERR(tcsr_base);
-> +
-> +		rmwl((tcsr_base + TCSR_ETH_CMN), TCSR_ETH_CMN_ENABLE,
-> +		     TCSR_ETH_CMN_ENABLE);
-> +	}
-> +
-> +	rmwl((cmn_base + CMN_PLL_REFCLK_SRC),
-> +	     CMN_PLL_REFCLK_SRC_FROM_MASK,
-> +	     CMN_PLL_REFCLK_SRC_FROM_REG);
-> +	rmwl((cmn_base + CMN_PLL_REFCLK),
-> +	     (CMN_PLL_REFCLK_EXTERNAL | CMN_PLL_REFCLK_FREQ_MASK
-> +	      | CMN_PLL_REFCLK_DIV_MASK),
-> +	     (CMN_PLL_REFCLK_FREQ_48M | CMN_PLL_REFCLK_DIV(2)));
-> +
-> +	rmwl((cmn_base + CMN_PLL_CTRL), CMN_PLL_CTRL_RST_N, 0);
-> +	msleep(1);
-> +	rmwl((cmn_base + CMN_PLL_CTRL), CMN_PLL_CTRL_RST_N,
-> +	     CMN_PLL_CTRL_RST_N);
-> +	msleep(1);
-> +
-> +	return read_poll_timeout(readl, val,
-> +				 (val & CMN_PLL_STATUS_LOCKED),
-> +				 100, 200000, false,
-> +				 (cmn_base + CMN_PLL_STATUS));
-> +}
-> +
 
-Hi Andrew,
+--2CTCg0wQKdRlifcE
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Sorry to bother you. But I can't make a decision here.
+On Mon, Jan 22, 2024 at 11:38:15AM +0100, AngeloGioacchino Del Regno wrote:
+> Il 19/01/24 17:44, Conor Dooley ha scritto:
+> > Rob,
+> >=20
+> > On Fri, Jan 19, 2024 at 02:32:22PM +0800, Jason-JH.Lin wrote:
+> > > Add mediatek,gce-props.yaml for common GCE properties that is used for
+> > > both mailbox providers and consumers. We place the common property
+> > > "mediatek,gce-events" in this binding currently.
+> > >=20
+> > > The property "mediatek,gce-events" is used for GCE event ID correspon=
+ding
+> > > to a hardware event signal sent by the hardware or a sofware driver.
+> > > If the mailbox providers or consumers want to manipulate the value of
+> > > the event ID, they need to know the specific event ID.
+> > >=20
+> > > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> > > ---
+> > >   .../bindings/mailbox/mediatek,gce-props.yaml  | 52 ++++++++++++++++=
++++
+> >=20
+> > Is bindings/mailbox the correct directory to put this in?
+> >=20
+>=20
+> Well, the GCE is a mailbox :-)
+>=20
+> ...but I get why you're asking... and I don't think that this should go to
+> arm/mediatek/ as it's really just only referring to extra properties for =
+kind of
+> "special" mailbox client events...
 
-The CMN block (Seem like the Abbreviation of "component") controls the 
-entire network block. It need to be configured before uniphy, mdio, 
-gmac, etc.. In the past, Qualcomm put it in mdio driver. But UNIPHY need 
-to been initializated before mdio because some PHYs/switchs use the 
-outclk provided by UNIPHY as their main clocks.
+gce is a mailbox, but this isn't a binding for the mailbox itself, hence
+me wondering. I haven't been able to think of something better though,
+so
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
 
-So it seem like that it should be described in a separate node. But I 
-couldn't find a suitable driver directory for it. Can you please give me 
-some suggestions? Thanks.
+Cheers,
+Conor.
+
+--2CTCg0wQKdRlifcE
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZa/w2QAKCRB4tDGHoIJi
+0mVkAQD1E1YROaciJvV15+DoVLqDPd5wy0CwA0/B+tXa1nnLGAEAx7CXc/CtIrWm
+h/V9z3ZETpXmdBl0DoEl6myfpxb9pgc=
+=/QkO
+-----END PGP SIGNATURE-----
+
+--2CTCg0wQKdRlifcE--
 
