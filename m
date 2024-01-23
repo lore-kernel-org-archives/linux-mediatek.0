@@ -4,74 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD23AC47258
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 10:41:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40AD8C47258
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 10:43:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FwQqK6ErMCNxTFwfEPRSt8NI76cL+B4HKQIwP9v0GUA=; b=yrEoPFMHEjF51w3LMqV2oK5ZwP
-	OAa5pl3O/3IRA4jzF3yZAKK032udyz3zcZkJ7FX6zAInpXP/hmtO02s01iVkFCZtRVb927+rsi319
-	6F+D1ZYJQoHLu95pcVdKxTmG+2drAJj897FuSbMndMDAUPUSQ7GLcfUxb+6jXDiyzJOAUvq+mlLJv
-	8aQA7JGNyCS2ZrC3MCEMi1X6pWGk23wSHTSctXVMDzsB6cy+zPmq7MMdlOMeqpJxTlhtcFHEvn8WH
-	MPxu65kE3AODaXRa8dvlSTFWWPpmHAK6/Nf89UedzOCRt8XEcb60YdOLmgiRu5a7dKVfbG9nXCLhM
-	b67bKdlQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0iOrSiEA7uBBNVR9eo5SgB3kQ76rJxTUqbGo6zAWzRo=; b=41vE7Ll/BBC+GLK/Q6q9JQCVo4
+	Bo7Ho5KTUC9WL2KkR1dgPDAvXx42wlCEgtAhteoRdxjL4VAdamVkIOXss0bsH6HXwSPyQrw61//wU
+	Y3lQpyKNBPIclG2Df6+nglCMKcfoJYxV7r229reWWNGvTGkkGPCTY3L9/EvJ257LaQZVm/Ql8rY5z
+	ps7WahPU2spNlHZTlfPMJzimdNCZ6JxEKYUolXeOw+YPz6Wbto2D9shG4l51WfYpjDW/6CPWSBleK
+	fYVFla/q5aKI2hFlU06IQXt2NDdVAjGoKV5KDLh+f+zAjEm8HToq6kCUrHMWpMa/ClETFWh6zIFTA
+	mBhsTdMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSEDD-00FywL-1d;
-	Tue, 23 Jan 2024 10:40:59 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rSEFx-00FzDo-0E;
+	Tue, 23 Jan 2024 10:43:49 +0000
+Received: from szxga07-in.huawei.com ([45.249.212.35])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSED9-00FyvK-35;
-	Tue, 23 Jan 2024 10:40:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706006451;
-	bh=s4p4CLV+pTT8G1cNbeHX4mdCI5yB1F5H8tIRN0w1MxI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KCXB9rsPb1aJGlxX68Ab5Gb+R5dgLfA4hoWCkrUVDATQVt6rF8xnwh1l2wICT8cvQ
-	 bL6Mi2RnXULodReB52ZrM1ASZqBFAW9/4eSKLQTECXEH/a2Hp/WhX6Ocx4YCS5I07G
-	 GnEzZ0QXeMR4cLeM3JYDuTYLyezw6mQ+tOH3U3NsdPiilxFcljraNkuXIu0obmrGj6
-	 KXo+M1jRKkc8wkS8kDIpU7BtcmInaFlL2a3kmIrhfGvwTgq6janE1BSjDzMJauRL6R
-	 /q8omfi++AYEuaqECFFEfTlIgLm2E7JbUYQfB+r/5CHmpLHhQDHML9liBP8wWzOHCD
-	 Gz7EuP1GlqDHg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B138737820A9;
-	Tue, 23 Jan 2024 10:40:50 +0000 (UTC)
-Message-ID: <6e2c7fed-0e61-41fe-8213-9c7ae483cfd7@collabora.com>
-Date: Tue, 23 Jan 2024 11:40:50 +0100
+	id 1rSEFs-00FzDB-2w;
+	Tue, 23 Jan 2024 10:43:47 +0000
+Received: from mail.maildlp.com (unknown [172.19.163.17])
+	by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4TK3YR5zBhz1Q89Q;
+	Tue, 23 Jan 2024 18:41:47 +0800 (CST)
+Received: from dggpemm500005.china.huawei.com (unknown [7.185.36.74])
+	by mail.maildlp.com (Postfix) with ESMTPS id 92A341A0172;
+	Tue, 23 Jan 2024 18:43:31 +0800 (CST)
+Received: from localhost.localdomain (10.69.192.56) by
+ dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Tue, 23 Jan 2024 18:43:31 +0800
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
+	<linyunsheng@huawei.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Alexei
+ Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper
+ Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<bpf@vger.kernel.org>
+Subject: [PATCH net-next v3 0/5] remove page frag implementation in vhost_net
+Date: Tue, 23 Jan 2024 18:42:45 +0800
+Message-ID: <20240123104250.9103-1-linyunsheng@huawei.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: rtc: convert MT2717 RTC to the json-schema
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: Eddie Huang <eddie.huang@mediatek.com>, Sean Wang
- <sean.wang@mediatek.com>, Ran Bi <ran.bi@mediatek.com>,
- linux-rtc@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20240122124949.29577-1-zajec5@gmail.com>
- <1c4e14f7-ca34-4433-96cb-0ba6d6c6906d@gmail.com>
- <311fa703-7dbc-41d2-bfde-85dd7cb20657@gmail.com>
- <227a0fec-d295-45ea-8d65-3cb0a7ce1af5@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <227a0fec-d295-45ea-8d65-3cb0a7ce1af5@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.69.192.56]
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
+ dggpemm500005.china.huawei.com (7.185.36.74)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240123_024056_143850_88225A6E 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20240123_024345_314486_13214D49 
+X-CRM114-Status: GOOD (  12.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,48 +72,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/01/24 09:57, Krzysztof Kozlowski ha scritto:
-> On 22/01/2024 18:40, Rafał Miłecki wrote:
->> On 22.01.2024 14:19, Matthias Brugger wrote:
->>> On 22/01/2024 13:49, Rafał Miłecki wrote:
->>>> From: Rafał Miłecki <rafal@milecki.pl>
->>>>
->>>> This helps validating DTS files. Introduced changes:
->>>> 1. Reworded title
->>>> 2. Dropper redundant properties descriptions
->>>> 3. Added required #include and adjusted "reg" in example
->>>>
->>>> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
->>>> ---
->>>>    .../bindings/rtc/mediatek,mt2712-rtc.yaml     | 39 +++++++++++++++++++
->>>>    .../devicetree/bindings/rtc/rtc-mt2712.txt    | 14 -------
->>>>    2 files changed, 39 insertions(+), 14 deletions(-)
->>>>    create mode 100644 Documentation/devicetree/bindings/rtc/mediatek,mt2712-rtc.yaml
->>>>    delete mode 100644 Documentation/devicetree/bindings/rtc/rtc-mt2712.txt
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/rtc/mediatek,mt2712-rtc.yaml b/Documentation/devicetree/bindings/rtc/mediatek,mt2712-rtc.yaml
->>>
->>> In this schema can easily fit "mediatek,mt7622-rtc", so how about renaming it and add reference for that RTC as well?
->>
->> I see your point but by looking at existing Linux drivers:
->> drivers/rtc/rtc-mt2712.c
->> drivers/rtc/rtc-mt7622.c
->> it seems like quite different hardware blocks.
->>
->> Different registers, different programming, clk in MT7622.
->>
->> Should they really share a YAML binding just because they use similar
->> properties?
-> 
-> Hardware aspect matters more, including features not yet present in the
-> binding, like some power on/off control. Different clock inputs is also
-> an argument.
-> 
+Currently there are three implementations for page frag:
 
-I agree - those IPs are different, we should have two bindings for the two
-(very) different IP versions.
+1. mm/page_alloc.c: net stack seems to be using it in the
+   rx part with 'struct page_frag_cache' and the main API
+   being page_frag_alloc_align().
+2. net/core/sock.c: net stack seems to be using it in the
+   tx part with 'struct page_frag' and the main API being
+   skb_page_frag_refill().
+3. drivers/vhost/net.c: vhost seems to be using it to build
+   xdp frame, and it's implementation seems to be a mix of
+   the above two.
 
-Cheers,
-Angelo
+This patchset tries to unfiy the page frag implementation a
+little bit by unifying gfp bit for order 3 page allocation
+and replacing page frag implementation in vhost.c with the
+one in page_alloc.c.
+
+After this patchset, we are not only able to unify the page
+frag implementation a little, but also able to have about
+0.5% performance boost testing by using the vhost_net_test
+introduced in the last patch.
+
+Before this patchset:
+Performance counter stats for './vhost_net_test' (10 runs):
+
+     305325.78 msec task-clock                       #    1.738 CPUs utilized               ( +-  0.12% )
+       1048668      context-switches                 #    3.435 K/sec                       ( +-  0.00% )
+            11      cpu-migrations                   #    0.036 /sec                        ( +- 17.64% )
+            33      page-faults                      #    0.108 /sec                        ( +-  0.49% )
+  244651819491      cycles                           #    0.801 GHz                         ( +-  0.43% )  (64)
+   64714638024      stalled-cycles-frontend          #   26.45% frontend cycles idle        ( +-  2.19% )  (67)
+   30774313491      stalled-cycles-backend           #   12.58% backend cycles idle         ( +-  7.68% )  (70)
+  201749748680      instructions                     #    0.82  insn per cycle
+                                              #    0.32  stalled cycles per insn     ( +-  0.41% )  (66.76%)
+   65494787909      branches                         #  214.508 M/sec                       ( +-  0.35% )  (64)
+    4284111313      branch-misses                    #    6.54% of all branches             ( +-  0.45% )  (66)
+
+       175.699 +- 0.189 seconds time elapsed  ( +-  0.11% )
+
+
+After this patchset:
+Performance counter stats for './vhost_net_test' (10 runs):
+
+     303974.38 msec task-clock                       #    1.739 CPUs utilized               ( +-  0.14% )
+       1048807      context-switches                 #    3.450 K/sec                       ( +-  0.00% )
+            14      cpu-migrations                   #    0.046 /sec                        ( +- 12.86% )
+            33      page-faults                      #    0.109 /sec                        ( +-  0.46% )
+  251289376347      cycles                           #    0.827 GHz                         ( +-  0.32% )  (60)
+   67885175415      stalled-cycles-frontend          #   27.01% frontend cycles idle        ( +-  0.48% )  (63)
+   27809282600      stalled-cycles-backend           #   11.07% backend cycles idle         ( +-  0.36% )  (71)
+  195543234672      instructions                     #    0.78  insn per cycle
+                                              #    0.35  stalled cycles per insn     ( +-  0.29% )  (69.04%)
+   62423183552      branches                         #  205.357 M/sec                       ( +-  0.48% )  (67)
+    4135666632      branch-misses                    #    6.63% of all branches             ( +-  0.63% )  (67)
+
+       174.764 +- 0.214 seconds time elapsed  ( +-  0.12% )
+
+Changelog:
+V3:
+1. Add __page_frag_alloc_align() which is passed with the align mask
+   the original function expected as suggested by Alexander.
+2. Drop patch 3 in v2 suggested by Alexander.
+3. Reorder patch 4 & 5 in v2 suggested by Alexander.
+
+Note that placing this gfp flags handing for order 3 page in an inline
+function is not considered, as we may be able to unify the page_frag
+and page_frag_cache handling.
+
+V2: Change 'xor'd' to 'masked off', add vhost tx testing for
+    vhost_net_test.
+
+V1: Fix some typo, drop RFC tag and rebase on latest net-next.
+
+
+Yunsheng Lin (5):
+  mm/page_alloc: modify page_frag_alloc_align() to accept align as an
+    argument
+  page_frag: unify gfp bits for order 3 page allocation
+  net: introduce page_frag_cache_drain()
+  vhost/net: remove vhost_net_page_frag_refill()
+  tools: virtio: introduce vhost_net_test
+
+ drivers/net/ethernet/google/gve/gve_main.c |  11 +-
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c |  17 +-
+ drivers/nvme/host/tcp.c                    |   7 +-
+ drivers/nvme/target/tcp.c                  |   4 +-
+ drivers/vhost/net.c                        |  91 +---
+ include/linux/gfp.h                        |  16 +-
+ mm/page_alloc.c                            |  22 +-
+ net/core/skbuff.c                          |   6 +-
+ net/core/sock.c                            |   2 +-
+ tools/virtio/.gitignore                    |   1 +
+ tools/virtio/Makefile                      |   8 +-
+ tools/virtio/vhost_net_test.c              | 576 +++++++++++++++++++++
+ 12 files changed, 647 insertions(+), 114 deletions(-)
+ create mode 100644 tools/virtio/vhost_net_test.c
+
+-- 
+2.33.0
 
 
