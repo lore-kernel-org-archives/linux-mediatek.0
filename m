@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96B04C47258
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 15:54:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13300C47258
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 15:59:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
 	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8UN5FswGopswpXkkEN+sbdsQv6OLe0UIG7DcYj1weUg=; b=ppbAUwbe53rl0lXmCobtplMchG
-	2/YPDA2gW0hCcIqQZrY+qOU7RTrBZZtx+sKdTeGCSBKtbp32TnOPtHvnwMiZ/oNcIGRgi+lbpbNiE
-	jJ3n+Pns2b0FXSapOoqNREi9iLmIkDXlTUlZk5DkoLIiFaxxXulT1inz8VSlQVnH4gJhipPZTK8fq
-	0IG7xoIB5Sk4oqzGDhRgC0YyFyVbSlVvdMaDa2j408fAqE+bw/9hPD/uI8QlJLjsOIbgOn9VEVXPU
-	B83GFGdAkTShDAx1y6tJNkEDtSPekegUlcqhGbS4AaCcosV9B6huAIcOLq447ivLB2GRQULipzYKJ
-	1V6KtvAg==;
+	bh=1LQR2p0Ri0VFR2HWbWfrx/fjQaSf+EZG2/aQ/SHpexA=; b=G/7ZjNX5vQ5t0YT59Ddtzua4ac
+	JeU5CWAHIarygIoBUigQiSW//SIKXnmwPzSAxpyve2vIgaSKk47mTaredYTyj3mF3GVkHITQGs2x7
+	KmogludQMJpi7C1jkCJpboTY2JsSt+1qXEStcOBeO7U2OiSTmywh7qYyX2VWqyQRngpCqkzdhyio6
+	GUqR1SzUYZCQ1GqfChh6HZz80iG31K0OyPiC883cHjnAEVfQfEEiNdupsF0aB54VKVf7M2hLmiF+1
+	XFlOpSWUTNTHFD68uw+auxiStEia7RYlu6ia8ZdSDM7IsJqfbiyxd8JipeQRqpPNz8jVum6lEq1j3
+	oeod+Aeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSJ6Q-00H9G3-17;
-	Tue, 23 Jan 2024 15:54:18 +0000
-Received: from mail-tyzapc01olkn20800.outbound.protection.outlook.com ([2a01:111:f403:280c::800] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
+	id 1rSJBO-00HATh-2t;
+	Tue, 23 Jan 2024 15:59:26 +0000
+Received: from mail-tyzapc01olkn20801.outbound.protection.outlook.com ([2a01:111:f403:280c::801] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSJ6M-00H9Ce-1b;
-	Tue, 23 Jan 2024 15:54:16 +0000
+	id 1rSJBK-00HAR5-05;
+	Tue, 23 Jan 2024 15:59:24 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cIvw8q5q4/RcmfsGl9S55HgD034UapPSSH4vTIUiEoobJoI9AALUW9q03ufk5pdBANPyiw47G/B48WcVgXEl9btLiLEzcdKFaFwBPGmcooo0j8HprOeDHMzZ8h8/8JF9aN34FrW1ZeGUZHDj7KMyXlsE8dUm/7wGuGfslIWSziteLJNmscudT/I/A+ncNxooN5hD6o7ZLmkuzKcuMd4nCB4lJyaXmQ+HeikqkasUAFByIbi2hUnCECArpM4PE4DO1ZfdgyWTgZRRW/vi8Z6iQC7yba3WVrEOBmO681etx9hSOSKzhrJD0vtEjlzd6Pn9WEQL3rFPH889EYcQFHa9xQ==
+ b=agNgPqcDFiiw/yX5j6G8Z9Rj5X43OCPatgS06yXuKYGebSxLSWcUt7SdZhl0E+oOQ8qIYqWL1Tt2RVVWlclHGgYEw8n0BG6Ju2PynsJRX1RLDGXIXLNP10quSThpTQPSwZkIxEWnCXqepljd842IOh4ndnI0sGd9gTjdLAWQqt0ut356oKcOnaKLALdlIcriNug/KOMSmSXwTEbqxFbWXV/hlgkSGKzTwlCHBeASzpC/FcTBCQLwXX211FGfXXBlgdxBW/40wmAVUGElOQ7BVR5f9mMWCjpsQUG1Ak/rWj+xjcBa4N16TdVcMBYCSY+ySawthrA98azO8+lUUYWoFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8UN5FswGopswpXkkEN+sbdsQv6OLe0UIG7DcYj1weUg=;
- b=XdPav4yeaCZYayjiW1o+7t/AjgqFhIKzbJDEQaJe1VsI5h3WPk3yQ5E1S+/Z8Oq24QYqCY4jieuge0egy5PIBjZiVSpmwNNrP4mfaPV+GIUfuOcQcpxMvqCycGZ4Wdt0V9PjJHoN1EwKXhcnWzE+uM07TIrw7tQj9bEPL01NG27ZNcZx9H9dvMf8leSn6sSGSJfydmkbrN0wdWUXt7Kgh7YqBMBgXXs5Y+vbzGsF6u657nirS1xJGzSDnb4yzShrMYstV3QowafKEcb2zAThmpCWhiv9jWT1UAY/gn+gYsX2XB/Y8+MnaA9BeIWzp2LkVNxsUqLrMTGDEalZnTkPsQ==
+ bh=1LQR2p0Ri0VFR2HWbWfrx/fjQaSf+EZG2/aQ/SHpexA=;
+ b=jtRWQycDGvIkQi2qW4nMjITGMqmYQ5eebDc+tu4FYJAVzt67GiwfLDFyOuOMsZWZVoUwV3xjqLHKrOqT6+jy8F9r2nYEUeRgi0SuDXB71FtC0F7gBdATevZN8WXpF4b7LlIvnF4Xq5gK8qEuvR4mU7Vihl5YivQ+uPKmolOtJAZTYIACRB0AvFPpzpkJGa9tijHDQXA9k4TD6/JvvSnu7G0a2LZRYY/GhBkfG4/u1BIHF7KoGzL0DJ/04L5twG26Ewgo/8JclNH6qugBW9uXcJ4ZoqulrAEyjlE840YkvAE7w9jp4WrdmPYXSgKaqntyuUBfpVdzNsaey8Pgjl9OYw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
  dkim=none; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8UN5FswGopswpXkkEN+sbdsQv6OLe0UIG7DcYj1weUg=;
- b=ambkRJz1O5haDPqGnTDrJHvbv4d68tQVYn5nTfOo9zcmL4VjP0QcZcsmHsgEp6HwIBx+DP2DdQ4pMqDflPFczRibx5voEd3sfpZ+cPGGOSj24fr/ZJq2CTuwIAYsSIVd7VLThNmaRxI0Gg0sdLarK3/kcvE6t5tcCGMlnVL0oGS8Yai8haNBSNihIfQnR4WsrJ+M7p/RVGpfv5LfVkLbi3xMXzbMeGWywJ519XvmsA1eeMy3Hq84Q24NiWEAGTtFbskoyg5CfwZNP1mQ3Zr2agBVoA+jD+n3LmZPBkCaNc5DXe8oa9f74M7iNZTqjFbr/jnlXdGSCOjE7IXpj1WdyA==
+ bh=1LQR2p0Ri0VFR2HWbWfrx/fjQaSf+EZG2/aQ/SHpexA=;
+ b=XY5lowT8vQjivCkPprFAIOa9JMN+B9Xpig/Qgz5T4oHR58sD4sSlHpTk5NzAlIakRLk/UBKUrc/RNBWJ5yBreKEgqaza9eOTAoqnubX/t/w7ZC6BjJOTRQAu+YdQALVXWiWRj9Viqz72i/YIoF2oWX0kMMA5WvNtbarhrlJIpBrlnTOevNtsJK+lQk4H+sb1vpBEOUowAArD3/C9pGgPlX6P2otqTYgg9exqC/HmMRXej4RQPsATPR8CtvgSjLFAn7i8LCY5uAmMN4bTotMeOZoIhN3hHMNhkZRmZZofparwEQN9PEC3mVkYhIxOm+XEPv9Lj0cbXBFW3LT2e3HB5g==
 Received: from TYZPR01MB5556.apcprd01.prod.exchangelabs.com
- (2603:1096:400:363::9) by TYZPR01MB4378.apcprd01.prod.exchangelabs.com
- (2603:1096:400:1d2::5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7228.22; Tue, 23 Jan
- 2024 15:38:51 +0000
+ (2603:1096:400:363::9) by TYZPR01MB6330.apcprd01.prod.exchangelabs.com
+ (2603:1096:405:ae::12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7202.36; Tue, 23 Jan
+ 2024 15:59:15 +0000
 Received: from TYZPR01MB5556.apcprd01.prod.exchangelabs.com
  ([fe80::a639:b02c:5189:7140]) by TYZPR01MB5556.apcprd01.prod.exchangelabs.com
  ([fe80::a639:b02c:5189:7140%7]) with mapi id 15.20.7202.031; Tue, 23 Jan 2024
- 15:38:51 +0000
-Message-ID: <TYZPR01MB55567CE79D7F08C738A81683C9742@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
-Date: Tue, 23 Jan 2024 23:38:01 +0800
+ 15:59:15 +0000
+Message-ID: <TYZPR01MB555648886D03AB911224F6FAC9742@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
+Date: Tue, 23 Jan 2024 23:58:26 +0800
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/8] net: phy: Introduce Qualcomm IPQ5018 internal PHY
- driver
+Subject: Re: [PATCH 2/8] phy: Introduce Qualcomm ethernet uniphy driver
 To: Andrew Lunn <andrew@lunn.ch>
 Cc: mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
  richardcochran@gmail.com, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
@@ -62,68 +61,65 @@ Cc: mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
  linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
  linux-mediatek@lists.infradead.org
 References: <TYZPR01MB55563BD6A2B78402E4BB44D4C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
- <TYZPR01MB5556D5568546D6DA4313209EC9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
- <2c6c0d72-5d4e-4ec4-beb6-d30852108a67@lunn.ch>
- <TYZPR01MB5556D035D9A13962844BB553C9752@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
- <e1fd863a-6725-4180-8ad3-faeb44c09238@lunn.ch>
+ <TYZPR01MB55568ACB534944D7DEB00C7AC9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
 From: Ziyang Huang <hzyitc@outlook.com>
-In-Reply-To: <e1fd863a-6725-4180-8ad3-faeb44c09238@lunn.ch>
+In-Reply-To: <TYZPR01MB55568ACB534944D7DEB00C7AC9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TMN: [HF3G0Zb0XWTZm5i1VGXNZiz9MQ5pdu65]
-X-ClientProxiedBy: TY2PR01CA0001.jpnprd01.prod.outlook.com
- (2603:1096:404:a::13) To TYZPR01MB5556.apcprd01.prod.exchangelabs.com
+X-TMN: [8lCv3zEj6h8yEKESM/B8CxmzyO8q/KbC]
+X-ClientProxiedBy: TYCP286CA0343.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:400:38e::11) To TYZPR01MB5556.apcprd01.prod.exchangelabs.com
  (2603:1096:400:363::9)
-X-Microsoft-Original-Message-ID: <fe4cf73f-3394-4ccd-8466-e7b4c842f1c9@outlook.com>
+X-Microsoft-Original-Message-ID: <4f3f8059-d280-46d2-a400-5bda4c654fd8@outlook.com>
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TYZPR01MB5556:EE_|TYZPR01MB4378:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4e60b8cf-5b5b-4207-7772-08dc1c29653d
+X-MS-TrafficTypeDiagnostic: TYZPR01MB5556:EE_|TYZPR01MB6330:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5bcceb14-649c-41b3-f96f-08dc1c2c3fbe
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: ADw1j8K/Ea0gD+mwfGf6kzhlQA4FNPEgCQeDzTo+ZJxKdHHZbONLArT1YDlYRXev2Wu9Zh66gvncp2ZbNeGXG0i1gFpFFCEZ0oRpi+FlywPKKceKGHp0lkOXT7u9lB5jWt79xCfbmjhu05RqxCLTurSnUcOuEuEXUS5qUXjl5a+CpoNIWmeyLrtwMJDHQa+mswBSrn8m41X+RRxwU65K3Y9NoWPmxoM13hqXmzYHhWaAfFpf30trRITLCABokEYQf+vq4YfTImeHQ6M9osVa5pM1pcBTyerWPELxRGuqOrpirH3etSjJ0zdcWXHRcqa613vJqksvKTQOedjCDdoXDOrS8GAJ1Clw9r4BlQu5Z6jP06r3I80nDFbTeBW4+P2HfJ2SIkx2xBnNlWwXuZm0lTe0z3o5KLbNZS3wokWk3nz4EfIYPwvjuNNSF3sjBPwdLNGNSMpLf+B9RJTE61tQqUrlhxotTykTDQx4m05BKteEHYnxhH33hNuvdsSMsPf7GLfkSTABEe9HAlsk6ZsI5kcAL3XwYvNH3SYoFnC53zvhyQqN29iU5hmjmas5dIaU
+X-Microsoft-Antispam-Message-Info: tA9BmN88n/EUMJkbzif7uNu3qa7ON99vcr1LUJLoRNRf6D7DtqIzXpKB3CmWuRms1Ng4OzaR0w18Wc+ajw46VxWxZCWuz4oIM2CDxuUj/8hrO4JHXvpSH6LYlrAyuvvCMdqrAtL+zWL/1Kmv2EJBOj4ub3zhV1gWqLXEAe+pauoUr59XRkiYeOgQP1KJF+0sKYWp1/K8dfsDk/FjazMUQCvrLApZLh5197HprawPljrt9CIOCTWGwMvJ7WepVfgtgq8oQHGW2/YGPSnsvUJTOMQ/WhtwKWpBBio2twLAExbkeRXtBeAfOsCgo1GVOc3Sig9AHEFE0G53yxfIrehcloW7D9URDq8MnYJIX6rhyFHbF7jtuKKw/uAmFgkzTUhnCifXwTWQLwQXm61E4adwS3KgpAUWohU4euvAixXIYZM08MerB9bJxb21iHfpCKonTaAa/qAGPAQg7eKjPmjyeo8HSNpnsU1yNyelFmEw9sesZ9bL6S4KrfhQhFtuwK7HXkLsiSmEUyWlZ8aXpIsSUDMs6cy/u5qlXpeahYZ/tjVoPaeEqlNOFf5/4IvJgoEc
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?S2ZyTVUwOW42Q2RpM2hKQ2ZFYUMzN09jNjEvUUdabmFtNDV6blBHdXozSW1n?=
- =?utf-8?B?Qkl5YVpwY2ZRRXNnVDl5RXlSVjI2SkJkQU9KSlVobC9CUytLM1Vxemp0UWJY?=
- =?utf-8?B?OGtxMmFURmcwM1U4T2xTMUl6bDlBaXE2bVhpY3pLN0pOTHNhV290c0QwUW9X?=
- =?utf-8?B?dEpwSGtZeFBTOTNlSkNlWG1LQk1ONkgwLzJSR2lUendCcVFsWnZmQkw5OFVj?=
- =?utf-8?B?NkRYNXF4RzZLSzQ5ajBqM1h6OUpqNmQwT2xHV09FK3h3eFJ4YmNSa05nMjBm?=
- =?utf-8?B?TEZwRG0xSFVVWG9LSXBGL3dTekJpdm1jWmphZ0dqR0JsK0VVRktYamhacFhu?=
- =?utf-8?B?bTdKWlBiMDl2bmpDNkpxaEIwM2NBaWEyQ1NnSmJuUURIVDdTNVJQVW5aT00v?=
- =?utf-8?B?a1NEelAydXF5dU44eDRpSTljMHZnUVVkNEVmdUVoMGRpZlN6MWNwRTQwMHho?=
- =?utf-8?B?UkMxd0luNXpUM21Jdjc3QmVkaDlCWnVGNmFaRmJwaDFUc3BBTUZmV3dER2xG?=
- =?utf-8?B?dm0vQ0ltemVaNGw2dGd2MzMvTHg4VFRKeHZsS0xUc3Y5dXFpTHdKOG5ZVm9Y?=
- =?utf-8?B?anIySWIwQk1DbHpoZ3l2eHdvTjNMeklHSllxTUhoY0JQS0l6c0VudHNNY0hD?=
- =?utf-8?B?bFFobjRmMzNaRUdueXFpWStjQ3RhUkM2UVA4Wm5PTEJVNnA3RUdHTXlyUlRa?=
- =?utf-8?B?by81N1RmWkRCczlLNlJJZFFyU2hTRXJJQUNFbzdsNi8zNkpKcThOSDZSVSt0?=
- =?utf-8?B?WnN6NVQ5VWh1MTNMdDBRWGRnZkhWZVN6U2h5NVcwQWdrOXNYb1VpMVgweExH?=
- =?utf-8?B?NzMwQXJwUXRyWU1RTDNyRWllMEF6SVd1T1BtWlByT3ZPcHNaMkJoYWJUaWhk?=
- =?utf-8?B?elZsRlRpNzFPSk92Z080K084eEQzUEE1VmxiRmZZUXN3R3N2Y1ZPRGhSVXVT?=
- =?utf-8?B?NDkxOWxMY0JEZ0V4MmRjM3FIb3dNWGVHSTNpNDlpZDkyUDYxWkZPaW5XUWpx?=
- =?utf-8?B?dDVGeU5XWlRGcHRpclEvdzN5Q3cwR3RoWENaMXdjbHNlYTE2R3paczlTUkdE?=
- =?utf-8?B?b2JVM3I4c0xnakVLS2xOOVZYNjNXZXhxS1NEcjFwV1ZLTzJzL0VvQjFDeU5j?=
- =?utf-8?B?a20zMEFjYTlmR3dWd0d5a05uQjRtMW4wUW15cm45RzMrSmtmdWxINTQ5Qk11?=
- =?utf-8?B?d0tMcnQxeU9QWGpCOGdWVldFajhTQjlGNjZTZWx0cFJmTkdZWEsydHl4N2VF?=
- =?utf-8?B?RWdQdnFUSW1nL0hVbEhrYm1Mc3Y0STdtcWdrYVNmMDBBTEdwN1NpeEJBOGxD?=
- =?utf-8?B?UW1xM1AyQTcxaFlyRDRwRi9Vazd3WnNHYzhnSTh5UDN2QjVucHl5eGhnOXJC?=
- =?utf-8?B?c2dsVHEwRVE4YTZVZGNzeVl6VCtxcEdYcFJWeVppTWVZM1JGTzhYOU5tNFdi?=
- =?utf-8?B?emxoZU40Ni9BdTVSUmtxWG9ldkxyR3g3T0x5UG5IK0E5UGZ1Zis1ai9nUFUx?=
- =?utf-8?B?ZW1UbjIzWE5NSWMwUzJ3cVNieFVHRSt0NFJQYXVkODJWeWdHVG8xUUJuSmhH?=
- =?utf-8?B?SGlaTzRSL3MrRENMTjJLVmptMHpYUUkzZTZkREJTeE9lanF3bjhNYWJ3SURE?=
- =?utf-8?B?UC9DYUpzMm1UUTRsSnB6ZWZ6eStHR2c9PQ==?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?S3MvalNxd01uZzZpUU9pSk9DSjloOWc5bUFPbVozbUJ5MTZOM2JjQVVNZEFB?=
+ =?utf-8?B?b2szMCtOWFFaVTMrZzI5bnY5NG5TZkNNdFpGYjBCa1NMS1dKeFNjaHRPeHdH?=
+ =?utf-8?B?UnJSSTVtM241MVNhbWRLaktCdWF3cGZLRjRXSS9FRi9QMUVGSW5jTFM3R3R5?=
+ =?utf-8?B?ZStDS2ZpQmhSc3V1VWRkbGVQaitjSVN3by9PNnVacXBvblpGcVptdGdWc2FE?=
+ =?utf-8?B?SWF2QXhIR3BhVHVzZ24yd0xtQjUvTzkvWThyQUY4ZjAvL2ZNNVRKSVBrdENZ?=
+ =?utf-8?B?NEJKNDF3NzVKRXRpMU55dFZDWlVBUzR3UzgwOUlRMGtyNERHay9hblBFU256?=
+ =?utf-8?B?UG5YcTBsbWVqcVFMUG9oLzJSMm1zZ0h1Y25iSGFicWVhU2xnRmh6UzF6ZEpj?=
+ =?utf-8?B?QW9acWpvWW9yRkwzaTdQVHlWSHJ6Y0xySUd5MlVpbyt0dng2RUEzeFc1YlNw?=
+ =?utf-8?B?VWI3Qkg1QWJSV3ZNWk5sbDMrYmMxenM5YzZ4TVZHMTZhY3daSlNlc0pralJV?=
+ =?utf-8?B?cGZROUxJV1ZKdytudXB0WXNodG0rRHJyb3dXWFBDeUs5MlFaUWVDUmY3N1l5?=
+ =?utf-8?B?SlF1ZmZuVG9ZcmhrTUI5YWppRGpPTkc4R2s1akFJaFZzNlBmUU5DZ0NLL3Bq?=
+ =?utf-8?B?cThsOTBsTXpoY3VEbjAwMmgrcklJTGh5dlIxZWN5YStOWFhmNzNISTJiOHN4?=
+ =?utf-8?B?eW5JZUxVcnQvb1lxV2V5RVlPUi9IWmkvQjFrV0w2SWFKd1VucWthNFlIQjFw?=
+ =?utf-8?B?cHhDVm8xTTh6WUVyQTFwSXNiSm5vMzR3b0NMVlMrRmFoVGxQUzhrVjA4cEVY?=
+ =?utf-8?B?emlKZExCbm1ScXJKNzNuRW5GVDdJU2hUVWd2NHVSQU5pajVmdDZ0OEphTm5F?=
+ =?utf-8?B?RCtCSVhOSGlxUXNLbGw1UUU4RFNoaEZiVVhYL2Rqb0FtelJpeklzSlcyV21l?=
+ =?utf-8?B?WkZ1S2hmVzJvMTBFRlo1S3pCc3BjQUR3UmJVWUY2czdvZzVFVEJrc2lkYnZ4?=
+ =?utf-8?B?MEpORUlaVEpLS3U3eWhKdmxiNlozcm9LNS9PdFlpb3dUVnpCVUowb3I3THI1?=
+ =?utf-8?B?MVk3eVRDVmhjdHNQZ3ZCRm9IUG5pQUZUU2tvS1lwOVZsbnEwckhuOUtka0p2?=
+ =?utf-8?B?dlphVWpKOW54aTh0bXgvdjV6cXhPOVVaZWVtb2hSNDJTNk82R0FYcmJCSGVz?=
+ =?utf-8?B?ajVRRTVUSGdSWG9MRjFJak1CVmdlaUdwWGJtaURYandvc3J3TXB6QjBvS1dP?=
+ =?utf-8?B?VDZqYzAydHRBbWpuQ0pIdmM5ZDhJL1J6RHNpVk1BRS9BMDJWeXJvdFoxZ1dD?=
+ =?utf-8?B?VWlYMEN3Ynd5bDVoakNXNkdCOUxIZmdhaVVaR3BnRE1ob0I1Zy9kSjBFVW5C?=
+ =?utf-8?B?cEMxclNrZVIvWk5nL2hSb3drT0ZkQmtOdmhQM1QyWW9ESEx2OEpnbUUrR0Q0?=
+ =?utf-8?B?cHYxYktMY0R6WTVMYkJyQ29yMVYvUXpNdWlzSFdTbEM5ZmF4YUxhNFAyTXEv?=
+ =?utf-8?B?eDBNVjhyNFR4d2t3OHZ1THcyV0dDSDRrUG5jczZveEtQemFSVlJrR1RSUm96?=
+ =?utf-8?B?VXNaRWxqdnV6cEUzbFRBekx2ampveU90VlRSMkp4alRpc1V0RC9GZWYwcVhO?=
+ =?utf-8?B?aXIxem1KSGJQa2FmcDMvY1dVMnBScnc9PQ==?=
 X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4e60b8cf-5b5b-4207-7772-08dc1c29653d
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5bcceb14-649c-41b3-f96f-08dc1c2c3fbe
 X-MS-Exchange-CrossTenant-AuthSource: TYZPR01MB5556.apcprd01.prod.exchangelabs.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jan 2024 15:38:49.9167
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jan 2024 15:59:15.4681
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
 X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR01MB4378
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR01MB6330
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240123_075414_536622_22B99708 
-X-CRM114-Status: GOOD (  43.89  )
+X-CRM114-CacheID: sfid-20240123_075922_075269_2E8094B3 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,175 +134,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-在 2024/1/23 1:18, Andrew Lunn 写道:
-> On Mon, Jan 22, 2024 at 11:37:29PM +0800, Ziyang Huang wrote:
->> 在 2024/1/22 0:19, Andrew Lunn 写道:
->>> On Sun, Jan 21, 2024 at 08:42:30PM +0800, Ziyang Huang wrote:
->>>> Signed-off-by: Ziyang Huang <hzyitc@outlook.com>
->>>
->>> You need to say something in the commit message. One obvious thing is
->>> to justify not using the at803x driver, since
->>
->> I want add more descriptions here. But I have no idea what to write. This is
->> a mininal driver for a special phy.
-> 
-> So say how it is special. Indicate why it needs a minimal driver.
-> 
-> Does the hardware support cable test? WoL? Does it perform downshift
-> and you can read the actual speed from the AT803X_SPECIFIC_STATUS
-> registers?
-> 
-> What we want to avoid is that you start with a special driver, and
-> then start copying bits of the at803x driver to support the hardware
-> features. The at803x.c driver already supports a few internal PHYs:
-> "Qualcomm Atheros AR9331 built-in", "Qualcomm Atheros QCA9561 built-in
-> PHY", "Qualcomm Atheros 8337 internal PHY", "Qualcomm Atheros 8327-A
-> internal PHY", "Qualcomm Atheros 8327-B internal PHY", so please add
-> it to the driver and test what additional features work for it.
+在 2024/1/21 20:42, Ziyang Huang 写道:
+> +#define rmwl(addr, mask, val) \
+> +	writel(((readl(addr) & ~(mask)) | ((val) & (mask))), addr)
+> +
+> +static int cmn_init(struct platform_device *pdev)
+> +{
+> +	struct resource *res;
+> +	void __iomem *cmn_base;
+> +	void __iomem *tcsr_base;
+> +	u32 val;
+> +
+> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "cmn");
+> +	if (!res)
+> +		return 0;
+> +
+> +	cmn_base = devm_ioremap_resource(&pdev->dev, res);
+> +	if (IS_ERR_OR_NULL(cmn_base))
+> +		return PTR_ERR(cmn_base);
+> +
+> +	/* For IPQ50xx, tcsr is necessary to enable cmn block */
+> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "tcsr");
+> +	if (res) {
+> +		tcsr_base = devm_ioremap_resource(&pdev->dev, res);
+> +		if (IS_ERR_OR_NULL(tcsr_base))
+> +			return PTR_ERR(tcsr_base);
+> +
+> +		rmwl((tcsr_base + TCSR_ETH_CMN), TCSR_ETH_CMN_ENABLE,
+> +		     TCSR_ETH_CMN_ENABLE);
+> +	}
+> +
+> +	rmwl((cmn_base + CMN_PLL_REFCLK_SRC),
+> +	     CMN_PLL_REFCLK_SRC_FROM_MASK,
+> +	     CMN_PLL_REFCLK_SRC_FROM_REG);
+> +	rmwl((cmn_base + CMN_PLL_REFCLK),
+> +	     (CMN_PLL_REFCLK_EXTERNAL | CMN_PLL_REFCLK_FREQ_MASK
+> +	      | CMN_PLL_REFCLK_DIV_MASK),
+> +	     (CMN_PLL_REFCLK_FREQ_48M | CMN_PLL_REFCLK_DIV(2)));
+> +
+> +	rmwl((cmn_base + CMN_PLL_CTRL), CMN_PLL_CTRL_RST_N, 0);
+> +	msleep(1);
+> +	rmwl((cmn_base + CMN_PLL_CTRL), CMN_PLL_CTRL_RST_N,
+> +	     CMN_PLL_CTRL_RST_N);
+> +	msleep(1);
+> +
+> +	return read_poll_timeout(readl, val,
+> +				 (val & CMN_PLL_STATUS_LOCKED),
+> +				 100, 200000, false,
+> +				 (cmn_base + CMN_PLL_STATUS));
+> +}
+> +
 
-After rechecking the vendor code, you are right. The only special thing 
-of this device is that it's a combined device of UNIPHY and at803x 
-general phy. So it needs the UNIPHY initialization sequence. But for the 
-PHY part, it's almost same as others, just has some special registers. I 
-will merge it into at803x driver.
+Hi Andrew,
 
-> 
->> Here is the thing, at first, I was tring to add these into at803x driver,
->> then I found that the IPQ5018 internel phy is a special device. The
->> initialization sequence is initing GCC clock and reset control, then
->> registering clocks providers, which is very different from other devices.
-> 
-> That is a different story all together, and part of the problems we
-> had with Qualcomm patches. It might be you need to use ID values in
-> the compatible to get this driver loaded. The PHY driver can then
-> enable the clocks it needs and take itself out of reset. What is
-> important here is an accurate device tree representation. What clocks
-> and resets does this device consume.
+Sorry to bother you. But I can't make a decision here.
 
-Ok, will try to do this.
+The CMN block (Seem like the Abbreviation of "component") controls the 
+entire network block. It need to be configured before uniphy, mdio, 
+gmac, etc.. In the past, Qualcomm put it in mdio driver. But UNIPHY need 
+to been initializated before mdio because some PHYs/switchs use the 
+outclk provided by UNIPHY as their main clocks.
 
-> 
->>>> +	if (!priv)
->>>> +		return dev_err_probe(dev, -ENOMEM,
->>>> +				     "failed to allocate priv\n");
->>>
->>> Please read the documentation of dev_err_probe() and this fix the
->>> obvious problem with this.
-> 
->> And I can find the same code in other driver, so I thought it is a standard.
->> Or should I just return -ENOMEM? Please let me known.
-> 
-> -ENOMEM is one of the error codes you are unlikely to see. And if it
-> does happen, you are going to have cascading errors. So just return
-> -ENOMEM.
-
-ok, got it. Thanks.
-
-> 
->>>> +	snprintf(name, sizeof(name), "%s#rx", dev_name(dev));
->>>> +	priv->clk_rx = clk_hw_register_fixed_rate(dev, name, NULL, 0,
->>>> +						  TX_RX_CLK_RATE);
->>>> +	if (IS_ERR_OR_NULL(priv->clk_rx))
->>>> +		return dev_err_probe(dev, PTR_ERR(priv->clk_rx),
->>>> +				     "failed to register rx clock\n");
->>>> +
->>>> +	snprintf(name, sizeof(name), "%s#tx", dev_name(dev));
->>>> +	priv->clk_tx = clk_hw_register_fixed_rate(dev, name, NULL, 0,
->>>> +						  TX_RX_CLK_RATE);
->>>> +	if (IS_ERR_OR_NULL(priv->clk_tx))
->>>> +		return dev_err_probe(dev, PTR_ERR(priv->clk_tx),
->>>> +				     "failed to register tx clock\n");
->>>> +
->>>> +	priv->clk_data = devm_kzalloc(dev,
->>>> +				      struct_size(priv->clk_data, hws, 2),
->>>> +				      GFP_KERNEL);
->>>> +	if (!priv->clk_data)
->>>> +		return dev_err_probe(dev, -ENOMEM,
->>>> +				     "failed to allocate clk_data\n");
->>>> +
->>>> +	priv->clk_data->num = 2;
->>>> +	priv->clk_data->hws[0] = priv->clk_rx;
->>>> +	priv->clk_data->hws[1] = priv->clk_tx;
->>>> +	ret = of_clk_add_hw_provider(dev->of_node, of_clk_hw_onecell_get,
->>>> +				     priv->clk_data);
->>>> +	if (ret)
->>>> +		return dev_err_probe(dev, ret,
->>>> +				     "fail to register clock provider\n");
->>>
->>> This needs an explanation. Why register two fixed clocks, which you
->>> never use? Why not put these two clocks in DT?
->>
->> Without documentions, here is my guess:
-> 
-> So you don't have the data sheet? Are you working from the Qualcomm
-> vendor tree?
-
-Unfortunately, Yes. I couldn't find any documentions about this part. So 
-I read the Qualcomm code, tried to realize the logic and guessed the
-functions of registers. Base on my understand, I use MACRO to describe 
-these registers for human-readable and examined them.
-
-> 
->> This is required by GCC controller. GCC driver require TX and RX clocks from
->> GEPHY/UNIPHY. Then throught some sel or div cells, output clocks to
->> GEPHY/UNIPHY and MAC. So I need to register them to make them can be refered
->> in GCC controller. Will add a figure describing the clock tree in UNIPHY
->> driver.
-> 
-> So in this case, the GCC is a clock consumer and the PHY is a clock
-> provider. Does GCC use DT properties clocks/clock-names and phandles
-> to reference these clocks it is consuming? If so, you can just use
-> fixed-clocks in DT.
-
-Yes, GCC use DT handler to refer these clocks. Will try as your said.
-
-> 
->>>> +static int ipq5018_soft_reset(struct phy_device *phydev)
->>>> +{
->>>> +	int ret;
->>>> +
->>>> +	ret = phy_modify(phydev, IPQ5018_PHY_FIFO_CONTROL,
->>>> +			 IPQ5018_PHY_FIFO_RESET, 0);
->>>> +	if (ret < 0)
->>>> +		return ret;
->>>> +
->>>> +	msleep(50);
->>>> +
->>>> +	ret = phy_modify(phydev, IPQ5018_PHY_FIFO_CONTROL,
->>>> +			 IPQ5018_PHY_FIFO_RESET, IPQ5018_PHY_FIFO_RESET);
->>>> +	if (ret < 0)
->>>> +		return ret;
->>>> +
->>>> +	return 0;
->>>> +}
->>>
->>> This needs an explanation. It is also somewhat like
->>> qca808x_link_change_notify(). Is it really sufficient to only do this
->>> reset FIFO during a soft reset, or is it needed when ever the link
->>> changes?
->>
->> I'm not sure here, this is what u-boot does. But I guess, we can reset
->> GCC_GEPHY_* serial reset_controls.
-> 
-> Please add a comment with your best guess what it is doing and why. Is
-> this vendor u-boot, or upstream u-boot? Maybe the git history will
-> give you more details.
-
-Ok, I will also try to replace them with the series of GCC_GEPHY_* 
-reset_controls and check whether it work.
-
-> 
->>> You also appear to be missing device tree bindings.
->>
->> Sorry for forgeting to add a WiP tag. Will add dt-bindings documentions in
->> next patches.
-> 
-> The DT binding is just as important as the code. Often the DT binding
-> is so broken we don't even bother looking at the code...
-
-Will write them.
-
-> 
->     Andrew
-
+So it seem like that it should be described in a separate node. But I 
+couldn't find a suitable driver directory for it. Can you please give me 
+some suggestions? Thanks.
 
