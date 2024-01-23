@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88317C47258
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 08:21:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78E74C47258
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 08:21:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=e5IbYX72GKDgKEeebQF3JWpFaouRh1FyJnCJ8FxmRXQ=; b=mLTWCRlddQVvjdun63D1Rh+tYs
-	m20vjeFkDbb9IhjwuKrck25yuWTVXnsmp0c5AJlHYVPXx3ujNegZR8E723Scz5UKsOHyTIoNX49/6
-	PAKH0QMMhBpkRjp5kF0PKUkHx0MTGZ36w2r3RK3CVw+TmRR56cTdqEtiFu0sqgA4ubjFgPd9cOc43
-	MWgohFAcIK7LWh2lBziU/81I7Xi6NTSGeobuAzKP3afS9aY01RXlYjz4h8ZFCqQR1u6gFmHQ8zk91
-	Xwe/rq55Sa4zD9t2f+3LAHXUIfwHS7QGFdrtNp24W2R65OgJ8QWzQHG/VM8tQR45QsUsX16hrShdj
-	U3pCqd5Q==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=H0AEjAgTGGFMtUqCGTJO2UhVRa/rSiFP8yyo/+7uwmo=; b=MKeUnlhZq7QpFAr/0Vmg8XwsI1
+	fx5g7OnTHT8qYO7F8NQRNqfH9F0kX+SBPOWXxDXHXSKPEmiuDyvvj+RjiPykLCVd3gn4XrO8THId1
+	VxEee996sTlKMr/VhjVgdhTlCaXegZ7sAZPDA4lvHJndRD0u/1oBelCZmqdfi7R6IecudvzDDjzZO
+	TaVo5HEViQHPToDMgO3OzWKMVL3uS/UkCCRqjqVvWTI5Xq1Ig4E1+4STqHX6gyno6QRuwyykK/od8
+	eVdXqhWsqJLLetKHql95zgtCiEJp9pZ/Bqam1hBHBiPbGSvGDmKvEzMMgKpWv8Djns9YWWpTw9SnD
+	3dGPXsrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSC2X-00FWbO-0J;
-	Tue, 23 Jan 2024 08:21:49 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1rSC2d-00FWdu-11;
+	Tue, 23 Jan 2024 08:21:55 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSC2T-00FWZD-1g;
-	Tue, 23 Jan 2024 08:21:46 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-50eabbc3dccso4930309e87.2;
-        Tue, 23 Jan 2024 00:21:42 -0800 (PST)
+	id 1rSC2V-00FWa8-2k;
+	Tue, 23 Jan 2024 08:21:49 +0000
+Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-55817a12ad8so4424380a12.2;
+        Tue, 23 Jan 2024 00:21:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1705998101; x=1706602901; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=e5IbYX72GKDgKEeebQF3JWpFaouRh1FyJnCJ8FxmRXQ=;
-        b=h62eaAedDCEx89my+4F8JKuJgQlMFWQeP2dMQFjrjYdz7yHjbRu24W8xSLwEM1UtPs
-         JwMB5Z7c2nUmM6v6mfgmRfeGMKfCasEedaFkH936tLrXMYIz3eGKWx5LBMwiKEpNCnQX
-         CqNV15/6K5WGMzqe/ZyvClkL3SggqDmf4zWZsjff1iGlPhR2Lw4atDXzm6cSACsSv0HZ
-         Nql64gpQem12qIxvLf6vLaIRLKsgNgZAMA1Sc8F5CgY0prjstiE6gspjDyYKmigU2C9n
-         yn1Qel3/x0TCL1hSrSyOiGCZl6UM81fKf4c9prVbOu/eDumFvkUQE08ev0G+ywTNJb+O
-         /Gow==
+        d=gmail.com; s=20230601; t=1705998105; x=1706602905; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=H0AEjAgTGGFMtUqCGTJO2UhVRa/rSiFP8yyo/+7uwmo=;
+        b=X+serWny+Lk7kUig6FO2rbQA/4FgXEEcVWEXOgXmaYCUKg2bTBLo3IvrAntMSqz6BH
+         YSuLA40Y4QAVio0/Vqhd3fIPi5919QaVh8s68sz0Dtaz2mYk7gBYzde6WOULTr2YNlKr
+         SCSSdOZlmebmOxFSaaBDXW+xfJGrOYVG03hofXQ1++/mrgpujOjxrdTl2Cmg6lqtdXCl
+         06TGp+wJ+JZXNc9WsyxJk0pAc8+GpXihs2dBGQtaZOz6kfG4KslfnV5MP+ziSWdNdWsI
+         oB5z7IUb8BuWG/rB72J9FvhWag9fKjgpCmwmabjzcAmnqMUlRlM/ry2XwTYjnXezEnxr
+         /spA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705998101; x=1706602901;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=e5IbYX72GKDgKEeebQF3JWpFaouRh1FyJnCJ8FxmRXQ=;
-        b=Z4PTB1RnWVMlBKAqF0qwW6ZxuyMZOqvTTT+gv38WaBUa3Fo6kqFExsi2CZNoRrzyKE
-         eYwujCR1ndbV55SspwBGrkrnbP4sHSspnD7mxGxr96muVOU/PudWJED01Ri/AEVgbYh3
-         /AVNqxAVSSa8U10XL2sprv0d6TPReGdc+7SJsmDKHsKAI131zxnTH4lCib6Dxsn9ntsc
-         a8SrXIYVhC/TuPLoKyMvNJIHGcK3f3Sg+CR/uR9rymph+xCWtWttGDdl1vyYaCI5KB+W
-         aY1kkfzLyUmwhvMhCXKJ1vVOx+xrc9WCfQ+na3ST2RLS0h3aK7SuNLepzJzkTxSNrfNS
-         32xg==
-X-Gm-Message-State: AOJu0YwlXcdzoCLykcl0rSBGZVh3cx4IHVloHmRo3yKN3SlYD37nFFD9
-	s4OO0Ri6Bq/bJd2XFSsZ6wck7ZP6Itjntmlv2HGQ0ipADv1tfZrK
-X-Google-Smtp-Source: AGHT+IGW98fsghFfKlw+hkN3TgO1Gz02ckvGCA+O1HdiFcvUycwq8dljNadfhv7w5DjrFW/E7/gJmA==
-X-Received: by 2002:a05:6512:31c9:b0:50e:2e5d:10a8 with SMTP id j9-20020a05651231c900b0050e2e5d10a8mr1214541lfe.133.1705998100946;
-        Tue, 23 Jan 2024 00:21:40 -0800 (PST)
+        d=1e100.net; s=20230601; t=1705998105; x=1706602905;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=H0AEjAgTGGFMtUqCGTJO2UhVRa/rSiFP8yyo/+7uwmo=;
+        b=te+LszCggN1t5DD7pP6MRcU6AsN3OFo47Lh9PYs6RGZz2m9TVEdWaBVpTbQlH0355l
+         VekdDRmv8LPf/MiXh/fXvMeKmavvxtj3mCOj3UP3RG7DbWKJbGMqV5gL2yn+vJiNEUSK
+         7VIHwHrvXDNK5Dh45w9ybpvpS7en/zvL90wLhnGcYNQyCafcDhdpdcaGxs8MLpKhHm8g
+         l4JpZji+flZT0HIJZ245eJ0/tX47YoOhYtOB6EDOAcfz6dToXy6Xg4ylEgqhaFRgcolt
+         awSM8QT41xPoLrv4X7596aFjoIAYutaX/yPq4lAX4nHMCtlpLpq3T/Dnkt6IT86nA32z
+         2UHQ==
+X-Gm-Message-State: AOJu0YwVrNJ+L/kfX9Jj49jHhJxCV/L3Oh8rl7cWnDj9Lto8Tq28lgd3
+	lbTbmwSw25GxGSlt15bSKQHrUjBD7hVZBXWLjwgU1klyHWAgpclk
+X-Google-Smtp-Source: AGHT+IFqyvfBHcMnmtge3pmJlzokQ72yrfVfJpGffdlahMNIUJ7oKdfR2E7/e4UDrY5ANyfC8Q3ESA==
+X-Received: by 2002:a05:6402:40cd:b0:55c:876c:ca06 with SMTP id z13-20020a05640240cd00b0055c876cca06mr298074edb.29.1705998105575;
+        Tue, 23 Jan 2024 00:21:45 -0800 (PST)
 Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id u11-20020a056402110b00b00558aa40f914sm14810435edv.40.2024.01.23.00.21.39
+        by smtp.gmail.com with ESMTPSA id u11-20020a056402110b00b00558aa40f914sm14810435edv.40.2024.01.23.00.21.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 Jan 2024 00:21:40 -0800 (PST)
+        Tue, 23 Jan 2024 00:21:45 -0800 (PST)
 From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
 To: Russell King <linux@armlinux.org.uk>,
 	Daniel Lezcano <daniel.lezcano@linaro.org>,
@@ -75,16 +76,18 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH 0/3] dt-bindings: arm: mediatek: convert MT7622-related bindings to the json-schema
-Date: Tue, 23 Jan 2024 09:20:57 +0100
-Message-Id: <20240123082100.7334-1-zajec5@gmail.com>
+Subject: [PATCH 2/3] dt-bindings: arm: mediatek: convert PCIESYS to the json-schema
+Date: Tue, 23 Jan 2024 09:20:59 +0100
+Message-Id: <20240123082100.7334-3-zajec5@gmail.com>
 X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20240123082100.7334-1-zajec5@gmail.com>
+References: <20240123082100.7334-1-zajec5@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240123_002145_582546_0BFBB8D7 
-X-CRM114-Status: GOOD (  10.56  )
+X-CRM114-CacheID: sfid-20240123_002147_886724_17B54EE9 
+X-CRM114-Status: GOOD (  16.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,28 +104,102 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Rafał Miłecki <rafal@milecki.pl>
 
-There are more MediaTek bindings to convert but for now I focused on
-those used by MT7622.
+This helps validating DTS files. Introduced changes:
+1. Documented "reg" property
+2. Adjusted "reg" in example
 
-Rafał Miłecki (3):
-  dt-bindings: arm: mediatek: convert hifsys to the json-schema
-  dt-bindings: arm: mediatek: convert PCIESYS to the json-schema
-  dt-bindings: arm: mediatek: convert SSUSBSYS to the json-schema
-
- .../bindings/arm/mediatek/mediatek,hifsys.txt | 26 ---------
- .../arm/mediatek/mediatek,mt2701-hifsys.yaml  | 54 +++++++++++++++++++
- .../arm/mediatek/mediatek,mt7622-pciesys.yaml | 47 ++++++++++++++++
- .../mediatek/mediatek,mt7622-ssusbsys.yaml    | 47 ++++++++++++++++
- .../arm/mediatek/mediatek,pciesys.txt         | 25 ---------
- .../arm/mediatek/mediatek,ssusbsys.txt        | 25 ---------
- 6 files changed, 148 insertions(+), 76 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt2701-hifsys.yaml
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+---
+ .../arm/mediatek/mediatek,mt7622-pciesys.yaml | 47 +++++++++++++++++++
+ .../arm/mediatek/mediatek,pciesys.txt         | 25 ----------
+ 2 files changed, 47 insertions(+), 25 deletions(-)
  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-ssusbsys.yaml
  delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
- delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ssusbsys.txt
 
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml
+new file mode 100644
+index 000000000000..7340a2512402
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml
+@@ -0,0 +1,47 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt7622-pciesys.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek PCIESYS controller
++
++description:
++  The MediaTek PCIESYS controller provides various clocks to the system.
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt7622-pciesys
++          - mediatek,mt7629-pciesys
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  "#clock-cells":
++    const: 1
++    description: The available clocks are defined in dt-bindings/clock/mt*-clk.h
++
++  "#reset-cells":
++    const: 1
++
++required:
++  - reg
++  - "#clock-cells"
++  - "#reset-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    pciesys@1a100800 {
++        compatible = "mediatek,mt7622-pciesys", "syscon";
++        reg = <0x1a100800 0x1000>;
++        #clock-cells = <1>;
++        #reset-cells = <1>;
++    };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
+deleted file mode 100644
+index d179a61536f4..000000000000
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-MediaTek PCIESYS controller
+-============================
+-
+-The MediaTek PCIESYS controller provides various clocks to the system.
+-
+-Required Properties:
+-
+-- compatible: Should be:
+-	- "mediatek,mt7622-pciesys", "syscon"
+-	- "mediatek,mt7629-pciesys", "syscon"
+-- #clock-cells: Must be 1
+-- #reset-cells: Must be 1
+-
+-The PCIESYS controller uses the common clk binding from
+-Documentation/devicetree/bindings/clock/clock-bindings.txt
+-The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+-
+-Example:
+-
+-pciesys: pciesys@1a100800 {
+-	compatible = "mediatek,mt7622-pciesys", "syscon";
+-	reg = <0 0x1a100800 0 0x1000>;
+-	#clock-cells = <1>;
+-	#reset-cells = <1>;
+-};
 -- 
 2.35.3
 
