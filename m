@@ -4,72 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93E63C47258
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 05:48:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE295C47258
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 06:08:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bPxRxUZ+oqA+o7sYWwaUKD66vQMoVKVjNA4iAjZv5pg=; b=AguLICSpESKvMwMmhf5O7IlTvx
-	vuFI06CU7m07+vhVpbwW1LSPQEpz7Mt7hg0I0cHg4PFFTfLMt76cozadmPha6eWoVV4a9/M5P4dEm
-	kAk/42OxY4vJe/q8VEc2VQDaCIxq4UXKxniHeHulxoU5W+m/BAN2tQkLcJKR1wjZeyywhaFHH8JY3
-	/N9BQseVcp9pAL+B2LNyqUoJK9qGRfrdNvz5ZOknffaPunJV+SYia8gjO+zSOWeZWEbnLSaORUa7w
-	qAY9ZSLLX1reEjzeCHRidlEHIPlJEOR2a/cFYhcpjE2rTgFj7mI5ubdcRbkvaU0gBauA0Lo/Azsv6
-	QyilmrmQ==;
+	bh=t4qORfUlpEqFlYNvW/x/uQF2RSEyUxdmLIwXBI7kmUk=; b=VGUH1PD2QdWG43fuOtBOn0NGV8
+	DtSLi/hd2H3DsfgqyGm7D5KHilqfpXt0jvYAlMCSfeK04uQBGmDx38e3dGSGi+N9jxbC6LrjZF8Wd
+	L4EEgnW+7cyuoi7A6yHHNUL21vxZ4uuJ/bA/Fqd/jcO/F/VBRmYu1sYpMme/8pg2LkJODGkstulEJ
+	zVvpifLrsykImepn0x6CQp0lrgjgy3vjiiCW9qFOJ96ZZ6OyLBTfSkWu28mJR7yzkWTzGP+jYKtoE
+	dKv2EG6dcoGu2oqcJxednGuTbgPERle3tDLc8DENxtKS2bo7yPexgut40FFVGr/VsKMu8OXaIstWS
+	X9zeoNxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rS9eQ-00FByW-1G;
-	Tue, 23 Jan 2024 05:48:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rS9xS-00FDQs-04;
+	Tue, 23 Jan 2024 06:08:26 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rS9eN-00FBvH-2w
-	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Jan 2024 05:48:45 +0000
-X-UUID: 0b94957cb9b311eea0bf134e88e6c2dc-20240122
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=bPxRxUZ+oqA+o7sYWwaUKD66vQMoVKVjNA4iAjZv5pg=;
-	b=KTgVAgRmF3u7YEMbp3b1YKxcH9rKqCThWDfQCic+dJDPUKQMTe6Sduz88kXLSFHxhFbVxIamaE7YwEyXw1bVIy9C+9xEwCc6G/IloA2sGmTWju/ySgLdoi852AVXJq4jgpnrlr3Abm8ndD9xrtlMSJbL09BO7C8jJosi1OSO6yk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.36,REQID:3a92b2dc-4e23-421e-9bcd-3886d7e57348,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6e16cf4,CLOUDID:5f0e2683-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 0b94957cb9b311eea0bf134e88e6c2dc-20240122
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <michael-cy.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 480950446; Mon, 22 Jan 2024 22:48:33 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 23 Jan 2024 13:48:09 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 23 Jan 2024 13:48:09 +0800
-From: Michael-CY Lee <michael-cy.lee@mediatek.com>
-To: linux-wireless <linux-wireless@vger.kernel.org>
-CC: Johannes Berg <johannes@sipsolutions.net>, Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>, Michael-CY Lee
-	<michael-cy.lee@mediatek.com>
-Subject: [PATCH] wifi: mac80211: apply duration for SW scan
-Date: Tue, 23 Jan 2024 13:47:52 +0800
-Message-ID: <20240123054752.22833-1-michael-cy.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1rS9xO-00FDNs-2w;
+	Tue, 23 Jan 2024 06:08:24 +0000
+Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-50eabd1c701so4302622e87.3;
+        Mon, 22 Jan 2024 22:08:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1705990092; x=1706594892; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=t4qORfUlpEqFlYNvW/x/uQF2RSEyUxdmLIwXBI7kmUk=;
+        b=UXv9imUsXWNsdGT0mQOp3To5orXaovZ7Ux7kaYsH/xUcJjV6DGbFEgxmRG2630Ckfn
+         vo68He4FN+v2Hbu4gB0iswjs7zMFb+c1ECLgPQpYb4ZpoLtdyuaJNHw357CFNhrqHIwQ
+         UbzxeUlkXEj4IckKRM/aR9aSHHv9n9F7XsI+JeQCcLFBFqe4DIc+mKp5Mk9hToECc4RN
+         5ZYdzNLMCmfqfz2xjQ+7pfMdYS0a5xqaOP26ZX5KxQeySjO2uBtaRTjLwdnzRjadl6ld
+         VkiAXPIxWUWjKle/naMhlFX2sU+oMJw2ipKRqoA3XJMKGPvMFylHQLtP9gOzDhCQQNBC
+         9hgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1705990092; x=1706594892;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=t4qORfUlpEqFlYNvW/x/uQF2RSEyUxdmLIwXBI7kmUk=;
+        b=sva2NY1bKoUGj1dcLEbtnsUD4BdgnF67Xf34nR6X8h924mR5XI05AY206KE9SNfUaC
+         22iZbQurLa43ts56wMBSYxK1Nbo4D0dGPPyIzoWfFsgiDDD0lIU1LDaxXFVQp+wShrhM
+         ffB4hEF1RWiHp7aCGmZWhtxLqrdl1+WnTKdbhw/Zr/tOuuL9y59vjjH0zMkE3pmLAPuV
+         6U224dmQoX64Vx1tlnGKzxGIUVRbU8nEcgWKw55GwLZf0pMwizeam1x70GnnlKqGcvb7
+         DMdrEoyA4yDDzq3KboGeoSgBYoOA7rP65YsFpO6Jv6cdbBZIVtTxSiOZJNsd+rKu9Kgp
+         Y6Og==
+X-Gm-Message-State: AOJu0Yzdjx8HUbYtGB8Tz31t4Hl3yAMeYe8mELHyRLsYGooGmsszQ7Hr
+	5M7f7rEXQhNfxFOVtuseerQaMO5hoRWXa2ZlWvgtK0q5ofu0mWFZ
+X-Google-Smtp-Source: AGHT+IG6xtqGKymYk8+JRle5ViKMEL/w01zGchfO3OMVWOXeHFp4ZehD2KI0mPvKHeRC4vXp91HPXA==
+X-Received: by 2002:a05:6512:3c94:b0:50e:8d0c:5eeb with SMTP id h20-20020a0565123c9400b0050e8d0c5eebmr2981468lfv.85.1705990091798;
+        Mon, 22 Jan 2024 22:08:11 -0800 (PST)
+Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.gmail.com with ESMTPSA id 23-20020a170906311700b00a269b4692a9sm11727880ejx.84.2024.01.22.22.08.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 22 Jan 2024 22:08:11 -0800 (PST)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: Thomas Gleixner <tglx@linutronix.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH] dt-bindings: interrupt-controller: convert MediaTek sysirq to the json-schema
+Date: Tue, 23 Jan 2024 07:08:04 +0100
+Message-Id: <20240123060804.32254-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240122_214843_958309_C39E00D6 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20240122_220822_946478_6DFC3FB0 
+X-CRM114-Status: GOOD (  15.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,47 +96,160 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch makes duration in scan request be applicable when using
-SW scan, but only accepts durations greater than the default value for
-the following reasons:
-1. Most APs have a beacoon interval of 100ms.
-2. Sending and receiving probe require some delay.
-3. Setting channel to HW also requires some delays
+From: Rafał Miłecki <rafal@milecki.pl>
 
-Signed-off-by: Michael-CY Lee <michael-cy.lee@mediatek.com>
+This helps validating DTS files.
+
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 ---
- net/mac80211/scan.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ .../mediatek,mt6577-sysirq.yaml               | 85 +++++++++++++++++++
+ .../interrupt-controller/mediatek,sysirq.txt  | 44 ----------
+ 2 files changed, 85 insertions(+), 44 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/interrupt-controller/mediatek,mt6577-sysirq.yaml
+ delete mode 100644 Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
 
-diff --git a/net/mac80211/scan.c b/net/mac80211/scan.c
-index 645355e5f1bc..8adcb23262f5 100644
---- a/net/mac80211/scan.c
-+++ b/net/mac80211/scan.c
-@@ -671,7 +671,10 @@ static void ieee80211_scan_state_send_probe(struct ieee80211_local *local,
- 	 * After sending probe requests, wait for probe responses
- 	 * on the channel.
- 	 */
--	*next_delay = IEEE80211_CHANNEL_TIME;
-+	*next_delay = msecs_to_jiffies(scan_req->duration) >
-+		      IEEE80211_PROBE_DELAY + IEEE80211_CHANNEL_TIME ?
-+		      msecs_to_jiffies(scan_req->duration) - IEEE80211_PROBE_DELAY :
-+		      IEEE80211_CHANNEL_TIME;
- 	local->next_scan_state = SCAN_DECISION;
- }
- 
-@@ -994,7 +997,10 @@ static void ieee80211_scan_state_set_channel(struct ieee80211_local *local,
- 	 */
- 	if ((chan->flags & (IEEE80211_CHAN_NO_IR | IEEE80211_CHAN_RADAR)) ||
- 	    !scan_req->n_ssids) {
--		*next_delay = IEEE80211_PASSIVE_CHANNEL_TIME;
-+		*next_delay = msecs_to_jiffies(scan_req->duration) >
-+			      IEEE80211_PASSIVE_CHANNEL_TIME ?
-+			      msecs_to_jiffies(scan_req->duration) :
-+			      IEEE80211_PASSIVE_CHANNEL_TIME;
- 		local->next_scan_state = SCAN_DECISION;
- 		if (scan_req->n_ssids)
- 			set_bit(SCAN_BEACON_WAIT, &local->scanning);
+diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,mt6577-sysirq.yaml b/Documentation/devicetree/bindings/interrupt-controller/mediatek,mt6577-sysirq.yaml
+new file mode 100644
+index 000000000000..e1a379c052e4
+--- /dev/null
++++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,mt6577-sysirq.yaml
+@@ -0,0 +1,85 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/interrupt-controller/mediatek,mt6577-sysirq.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek sysirq
++
++description:
++  MediaTek SOCs sysirq support controllable irq inverter for each GIC SPI
++  interrupt.
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++properties:
++  compatible:
++    oneOf:
++      - const: mediatek,mt6577-sysirq
++      - items:
++          - enum:
++              - mediatek,mt2701-sysirq
++              - mediatek,mt2712-sysirq
++              - mediatek,mt6580-sysirq
++              - mediatek,mt6582-sysirq
++              - mediatek,mt6589-sysirq
++              - mediatek,mt6592-sysirq
++              - mediatek,mt6755-sysirq
++              - mediatek,mt6765-sysirq
++              - mediatek,mt6779-sysirq
++              - mediatek,mt6795-sysirq
++              - mediatek,mt6797-sysirq
++              - mediatek,mt7622-sysirq
++              - mediatek,mt7623-sysirq
++              - mediatek,mt7629-sysirq
++              - mediatek,mt8127-sysirq
++              - mediatek,mt8135-sysirq
++              - mediatek,mt8173-sysirq
++              - mediatek,mt8183-sysirq
++              - mediatek,mt8365-sysirq
++              - mediatek,mt8516-sysirq
++          - const: mediatek,mt6577-sysirq
++
++  reg:
++    minItems: 1
++    maxItems: 2
++
++  interrupt-controller: true
++
++  "#interrupt-cells":
++    $ref: "arm,gic.yaml#/properties/#interrupt-cells"
++
++required:
++  - reg
++  - interrupt-controller
++  - "#interrupt-cells"
++
++allOf:
++  - $ref: /schemas/interrupt-controller.yaml#
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt6797-sysirq
++    then:
++      properties:
++        reg:
++          minItems: 2
++    else:
++      properties:
++        reg:
++          maxItems: 1
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    interrupt-controller@10200620 {
++        compatible = "mediatek,mt6797-sysirq", "mediatek,mt6577-sysirq";
++        reg = <0x10220620 0x20>,
++              <0x10220690 0x10>;
++        interrupt-parent = <&gic>;
++        interrupt-controller;
++        #interrupt-cells = <3>;
++    };
+diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
+deleted file mode 100644
+index 3ffc60184e44..000000000000
+--- a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
++++ /dev/null
+@@ -1,44 +0,0 @@
+-MediaTek sysirq
+-
+-MediaTek SOCs sysirq support controllable irq inverter for each GIC SPI
+-interrupt.
+-
+-Required properties:
+-- compatible: should be
+-	"mediatek,mt8516-sysirq", "mediatek,mt6577-sysirq": for MT8516
+-	"mediatek,mt8183-sysirq", "mediatek,mt6577-sysirq": for MT8183
+-	"mediatek,mt8173-sysirq", "mediatek,mt6577-sysirq": for MT8173
+-	"mediatek,mt8135-sysirq", "mediatek,mt6577-sysirq": for MT8135
+-	"mediatek,mt8127-sysirq", "mediatek,mt6577-sysirq": for MT8127
+-	"mediatek,mt7622-sysirq", "mediatek,mt6577-sysirq": for MT7622
+-	"mediatek,mt7623-sysirq", "mediatek,mt6577-sysirq": for MT7623
+-	"mediatek,mt7629-sysirq", "mediatek,mt6577-sysirq": for MT7629
+-	"mediatek,mt6795-sysirq", "mediatek,mt6577-sysirq": for MT6795
+-	"mediatek,mt6797-sysirq", "mediatek,mt6577-sysirq": for MT6797
+-	"mediatek,mt6779-sysirq", "mediatek,mt6577-sysirq": for MT6779
+-	"mediatek,mt6765-sysirq", "mediatek,mt6577-sysirq": for MT6765
+-	"mediatek,mt6755-sysirq", "mediatek,mt6577-sysirq": for MT6755
+-	"mediatek,mt6592-sysirq", "mediatek,mt6577-sysirq": for MT6592
+-	"mediatek,mt6589-sysirq", "mediatek,mt6577-sysirq": for MT6589
+-	"mediatek,mt6582-sysirq", "mediatek,mt6577-sysirq": for MT6582
+-	"mediatek,mt6580-sysirq", "mediatek,mt6577-sysirq": for MT6580
+-	"mediatek,mt6577-sysirq": for MT6577
+-	"mediatek,mt2712-sysirq", "mediatek,mt6577-sysirq": for MT2712
+-	"mediatek,mt2701-sysirq", "mediatek,mt6577-sysirq": for MT2701
+-	"mediatek,mt8365-sysirq", "mediatek,mt6577-sysirq": for MT8365
+-- interrupt-controller : Identifies the node as an interrupt controller
+-- #interrupt-cells : Use the same format as specified by GIC in arm,gic.txt.
+-- reg: Physical base address of the intpol registers and length of memory
+-  mapped region. Could be multiple bases here. Ex: mt6797 needs 2 reg, others
+-  need 1.
+-
+-Example:
+-	sysirq: intpol-controller@10200620 {
+-		compatible = "mediatek,mt6797-sysirq",
+-			     "mediatek,mt6577-sysirq";
+-		interrupt-controller;
+-		#interrupt-cells = <3>;
+-		interrupt-parent = <&gic>;
+-		reg = <0 0x10220620 0 0x20>,
+-		      <0 0x10220690 0 0x10>;
+-	};
 -- 
-2.25.1
+2.35.3
 
 
