@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34B28C47DDB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 11:20:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD6DBC47258
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 11:52:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Kiug7kxjpiN77MygF4XI4IfliuDYO4n9PN+H+onGaYc=; b=aVaj6ZLU1GvlKSIPs71XUqUvXq
-	yB56I/CZAZeTrn8D3+InqQkXiZrigOBuZT7BTgzIA089fxRKreGlwGNYcu9U2dpih9Erh3zrGgHOI
-	LSVaOoavGSrE8nq4VFtdP/mwqBUQql0IjBsf7zAzKT6OXhX+hzRwixKonBzH7WxdHlxxAbvFl6Eel
-	rm3G17JJAZvFe/DoxE5XRHdpcq3/2z937ksmA59pOWT/tBv/aonIvDeca91gij/9Rp4+h3AIGrPdb
-	6h2NlOQ22wdct2bVA5rjRcmvZ5mEIFTNfcZ8C6VStR1pIadYMnZK0SzTUWP4BkyyBBDSfSVdKi5R0
-	B9awuy1Q==;
+	bh=VYfOSv4hltkOF8KbjqTQ7jdz2yMwzcwsI1qUH7icvOs=; b=jfgdurwzCtNSy6o+FKvOu9eTib
+	7btffe0m1+vrCMSyfh9HOOzj9o9ZbF6l6x+cAJs8l/kCzaVb2nwyoOpHYnvH9mFUwQQjeU8hSrUGO
+	K33Vr2pOmyfpE5B3zjaiCmm0s1QIAPgF1+MGjlfeVRmTfadClRAwbjEkQh//+j2JST7f9i9gCQaaC
+	fqTny3RY9+TeekzYkePV1Hg7jCO3TXceNarEAeBYOQ1gOSndUGSONANB0FIyjJD58UXARxdoO70qh
+	VdISR9yhvVXaSjjWTiDN6o2OpReYDgS4xXvsQiuwObHqNw6jheCXcbSOPIF/d52ipcvD3YV4HyNrs
+	12y75sMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSEpY-00G7jp-0C;
-	Tue, 23 Jan 2024 11:20:36 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rSFK9-00GKS6-1y;
+	Tue, 23 Jan 2024 11:52:13 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSEpV-00G7he-09;
-	Tue, 23 Jan 2024 11:20:34 +0000
+	id 1rSFK6-00GKRM-1P;
+	Tue, 23 Jan 2024 11:52:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706008831;
-	bh=Ma8J6HFntmgJqAnxZ1TzwNoqA60TOtVPoP1qAOVBdOo=;
+	s=mail; t=1706010724;
+	bh=CTJyc7lWxBIMIku8+r43eFfZ6jrdhpZoucjgq5lQsds=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OiIjpPi+qqbZF55b3g1FH53iADZRQPVIE3JvYXt24FNRlry7Mc/kxIGxSJjltIY8t
-	 paaOhSDkeW/GZIyZqk/I3coGbW7gHp/dEAQKoj3DpID416Tm0AvXMs5R0o7FVT7nHv
-	 n8z04qnbz8DdYLedWX5n8/cgCu2QEJ1c9qXdANZJsK+ZTrGGzUFO5ZBduQQW5P2UYr
-	 VZtb1xEHO2r9LVunE4J8+Kl5Edo4MWJCUv+pMq4282q+CcC39d3P00sY+9h/fNWkja
-	 EM0P7HPeVqgxT4jnvw2DZRHpYfEtgffMl6KGYqxdBOornIlk/jMc5lsF+vYmZpK+mB
-	 z/OYXluJ/LUvg==
+	b=TeJxYeeYccoqWHsL0SfusKYd5T5m+UBKllmxMZLU0x++aiKOUxmMEzgR0UXQJLEru
+	 yF8wVjawFulrJaXP3yDjEXbJt/17DEeuaboXGA0WEK1RhwWP9RO8BpxdDBo99wRaE7
+	 8DDnejk/6IB0gdiPj+tNyrDmLTwMhtqW/QnWKurJgoF629e42UZrpo98DknhmjormF
+	 ezVRPT6W+95Cxc/KMyisWpEL8L7EPzd4Dq5bNg5fRFtNihkXMlL1M5TLUt2pAg1T2W
+	 g9h5LMBcqLVhkeXCB4QfwgljsUFCriqpVJ6QbniMGSmjl4oEIQi8AvxKZu9IWnm5dj
+	 z8d6sY4IAprRQ==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 94BD937813B5;
-	Tue, 23 Jan 2024 11:20:30 +0000 (UTC)
-Message-ID: <e17b85b1-7f1f-4b60-89b7-43f560466cc2@collabora.com>
-Date: Tue, 23 Jan 2024 12:20:29 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id F26FC3781FD9;
+	Tue, 23 Jan 2024 11:52:02 +0000 (UTC)
+Message-ID: <ba53cd50-dedd-43a7-9183-83caca16b637@collabora.com>
+Date: Tue, 23 Jan 2024 12:52:02 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] dt-bindings: arm: mediatek: convert PCIESYS to the
- json-schema
+Subject: Re: [PATCH v2 1/2] dt-bindings: usb: Introduce ITE IT5205 Alt. Mode
+ Passive MUX
 Content-Language: en-US
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
- Russell King <linux@armlinux.org.uk>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Thomas Gleixner <tglx@linutronix.de>
-References: <20240123082100.7334-1-zajec5@gmail.com>
- <20240123082100.7334-3-zajec5@gmail.com>
+To: Conor Dooley <conor@kernel.org>
+Cc: gregkh@linuxfoundation.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ heikki.krogerus@linux.intel.com, matthias.bgg@gmail.com,
+ dmitry.baryshkov@linaro.org, neil.armstrong@linaro.org,
+ andersson@kernel.org, nathan@kernel.org, luca.weiss@fairphone.com,
+ tianping.fang@mediatek.com, linux-usb@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20240119125812.239197-1-angelogioacchino.delregno@collabora.com>
+ <20240119125812.239197-2-angelogioacchino.delregno@collabora.com>
+ <20240119-remedial-unripe-2a3a46b4f117@spud>
+ <9605c20a-12ad-49ad-8114-d59f2f772514@collabora.com>
+ <20240122-delouse-popsicle-a6f94cce9fb4@spud>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240123082100.7334-3-zajec5@gmail.com>
+In-Reply-To: <20240122-delouse-popsicle-a6f94cce9fb4@spud>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240123_032033_256616_8C9CCA5D 
-X-CRM114-Status: GOOD (  23.13  )
+X-CRM114-CacheID: sfid-20240123_035210_671593_57C9219C 
+X-CRM114-Status: GOOD (  17.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,138 +86,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/01/24 09:20, Rafał Miłecki ha scritto:
-> From: Rafał Miłecki <rafal@milecki.pl>
+Il 22/01/24 19:06, Conor Dooley ha scritto:
+> On Mon, Jan 22, 2024 at 11:27:11AM +0100, AngeloGioacchino Del Regno wrote:
+>> Il 19/01/24 17:18, Conor Dooley ha scritto:
+>>> On Fri, Jan 19, 2024 at 01:58:11PM +0100, AngeloGioacchino Del Regno wrote:
+>>>> Introduce a binding for the ITE IT5205 Alternate Mode Passive MUX,
+>>>> used for connecting, disconnecting and switching orientation and
+>>>> control the SBU signals for alternate modes on USB Type-C ports.
+>>>>
+>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>> ---
+>>>>    .../devicetree/bindings/usb/ite,it5205.yaml   | 72 +++++++++++++++++++
+>>>>    1 file changed, 72 insertions(+)
+>>>>    create mode 100644 Documentation/devicetree/bindings/usb/ite,it5205.yaml
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/usb/ite,it5205.yaml b/Documentation/devicetree/bindings/usb/ite,it5205.yaml
+>>>> new file mode 100644
+>>>> index 000000000000..36ec4251b5f2
+>>>> --- /dev/null
+>>>> +++ b/Documentation/devicetree/bindings/usb/ite,it5205.yaml
+>>>> @@ -0,0 +1,72 @@
+>>>> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+>>>> +%YAML 1.2
+>>>> +---
+>>>> +$id: http://devicetree.org/schemas/usb/ite,it5205.yaml#
+>>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>>> +
+>>>> +title: ITE IT5202 Type-C USB Alternate Mode Passive MUX
+>>>> +
+>>>> +maintainers:
+>>>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>> +  - Tianping Fang <tianping.fang@mediatek.com>
+>>>> +
+>>>> +properties:
+>>>> +  compatible:
+>>>> +    const: ite,it5205
+>>>> +
+>>>> +  reg:
+>>>> +    maxItems: 1
+>>>> +
+>>>> +  vcc-supply:
+>>>> +    description: Power supply for VCC pin (3.3V)
+>>>> +
+>>>> +  mode-switch:
+>>>> +    description: Flag the port as possible handle of altmode switching
+>>>> +    type: boolean
+>>>> +
+>>>> +  orientation-switch:
+>>>> +    description: Flag the port as possible handler of orientation switching
+>>>> +    type: boolean
+>>>> +
+>>>> +  ite,ovp-enable:
+>>>> +    description: Enable Over Voltage Protection functionality
+>>>> +    type: boolean
+>>>
+>>> Bitta devil's advocacy perhaps, but why is this DT property? Is it not
+>>> known whether or not this is supported based on the compatible, and
+>>> whether or not to enable it is a decision for the operating system to
+>>> make?
+>>>
+>>>
+>>
+>> AFAIK, not all board designs can use the OVP. On some, this may be unstable - the
+>> use case where this can be safely enabled is when there's nothing in between the
+>> mux and the controller, and between the mux and the port.
 > 
-> This helps validating DTS files. Introduced changes:
-> 1. Documented "reg" property
-> 2. Adjusted "reg" in example
+> Okay, if it varies based on the configuration that makes sense. Perhaps
+> in the future consider mentioning stuff like that in the commit message.
 > 
-> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
-> ---
->   .../arm/mediatek/mediatek,mt7622-pciesys.yaml | 47 +++++++++++++++++++
->   .../arm/mediatek/mediatek,pciesys.txt         | 25 ----------
->   2 files changed, 47 insertions(+), 25 deletions(-)
->   create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml
->   delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
+> Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml
-> new file mode 100644
-> index 000000000000..7340a2512402
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml
 
-I think that we should really move all those clock controller yaml files to their
-proper directory, which would be
+You're right, it's totally sensible to write that in the commit message,
+will do next time.
 
-Documentation/devicetree/bindings/clock/
+P.S.: I have been too much impatient and already sent a v3 because I had to
+fix an issue with the code, could you please give your R-b to the v3 as well?
+There's no change in the bindings commit.
 
-...because those are clock controllers anyway and the fact that they do also
-provide a reset controller doesn't really justify having them in arm/mediatek.
+https://lore.kernel.org/r/20240122110446.140226-2-angelogioacchino.delregno@collabora.com
 
-Besides, I would appreciate if you could also move mt8186/92/95 and eventual
-others that are there to clock/.
-
-> @@ -0,0 +1,47 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt7622-pciesys.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek PCIESYS controller
-> +
-> +description:
-> +  The MediaTek PCIESYS controller provides various clocks to the system.
-> +
-> +maintainers:
-> +  - Matthias Brugger <matthias.bgg@gmail.com>
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - enum:
-> +          - mediatek,mt7622-pciesys
-> +          - mediatek,mt7629-pciesys
-> +      - const: syscon
-
-I know that there's syscon all over the place and, even if I admit I didn't check,
-I am fairly sure that there's absolutely no reason to have syscon there, and that
-the syscon compatible never did anything for (most of, or all of) those clock
-controllers, at all.
-
-I'm not sure - though - if removing syscon during the txt->yaml conversion is
-acceptable (yeah we'd be cheating a bit), but something makes me say it is, because
-the bindings couldn't validate before that one as well.
-
-Of course you'd have to remove the syscon compatible from the affected device trees
-as well as omitting it here.
-
-However, to be sure that we're doing the right thing here, I have to summon someone
-that can actually give a definitive answer to what I just said.....
-
-Krzysztof, please? :-)
-
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  "#clock-cells":
-> +    const: 1
-> +    description: The available clocks are defined in dt-bindings/clock/mt*-clk.h
-> +
-> +  "#reset-cells":
-> +    const: 1
-> +
-> +required:
-> +  - reg
-> +  - "#clock-cells"
-> +  - "#reset-cells"
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    pciesys@1a100800 {
-
-This is a clock controller, so it is clock-controller@1a100800
-
-> +        compatible = "mediatek,mt7622-pciesys", "syscon";
-> +        reg = <0x1a100800 0x1000>;
-> +        #clock-cells = <1>;
-> +        #reset-cells = <1>;
-> +    };
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
-> deleted file mode 100644
-> index d179a61536f4..000000000000
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
-> +++ /dev/null
-> @@ -1,25 +0,0 @@
-> -MediaTek PCIESYS controller
-> -============================
-> -
-> -The MediaTek PCIESYS controller provides various clocks to the system.
-> -
-> -Required Properties:
-> -
-> -- compatible: Should be:
-> -	- "mediatek,mt7622-pciesys", "syscon"
-> -	- "mediatek,mt7629-pciesys", "syscon"
-> -- #clock-cells: Must be 1
-> -- #reset-cells: Must be 1
-> -
-> -The PCIESYS controller uses the common clk binding from
-> -Documentation/devicetree/bindings/clock/clock-bindings.txt
-> -The available clocks are defined in dt-bindings/clock/mt*-clk.h.
-> -
-> -Example:
-> -
-> -pciesys: pciesys@1a100800 {
-> -	compatible = "mediatek,mt7622-pciesys", "syscon";
-> -	reg = <0 0x1a100800 0 0x1000>;
-> -	#clock-cells = <1>;
-> -	#reset-cells = <1>;
-> -};
+Thanks again,
+Angelo
 
 
 
