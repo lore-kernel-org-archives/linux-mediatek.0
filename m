@@ -4,109 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56EEFC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 20:02:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 701DCC47DDF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 20:34:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qjhy1fzgqCf2RYE0EBDsgFOapcHLInSm5itFzJnGqRE=; b=md0aF5LEeUmpPFvoPy2chKnhuv
-	+5EVOBlk7m9zfeJQG6ab+yQVkwW5YpCwpvuBBk86urmpyOpqhpJ6G+yyLK2cU/wXg0TVDvE8PMJqb
-	akY3eRyLvxO4G6Gj6EhrGpRId7Pv+pLPrG86YTJfeSYCbCNLPXS9Jbb0/K0mZhbBKy26XtIwolcpn
-	9ZtMZoc9fOASmPdsRoybL7fB5rwiYvSH+ow/6uLE0K3u2qH6pKeofvcrUx14IDXH+7iwk0TksYK0G
-	h5TuqcDbE1snNWmk6ogDhrQC8OCtAKN7UYRUz8K/GR5jUdRmSSLvQvcZRAewAQnmOG6YsSL1HMFcU
-	EXsRxMxQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=sxg/U9D+imrfPG9jDiuL0JmY3QErb9Z9aC96KxwmCu8=; b=fR5PtS+9qHdGb6CcVwhbshleJC
+	mX4BPLz1TjBGk0JfH5omE/1Dr/UzlzTSGWTBR3e11suTwnKjPswxvn4d6NBkAqcQNH42RVQBj/5A4
+	xIrvmqexuQ58Np8FvRMob85/zhRV2X+eQGiHlZdX6JflzbaHLWiVIRsV5oOtwseUEhokBsf3YJHpJ
+	8P9C3fyPM+Z8l0fVAOf5gfp3WcPqaCjjF1PWRP2F7rZbEeINE/jJOkhlhFZ8JO/7yJ/+BsELN8ZzY
+	p7r6V8bRKBFPFKCzmrd6FgchlsY+y53dygsjryRvipInV5k3O4Mpd4dky+3aSjKKDSTGah1EWiQl8
+	JN5/KKaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSjSV-004wrX-2R;
-	Wed, 24 Jan 2024 20:02:51 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rSjxR-00522q-2S;
+	Wed, 24 Jan 2024 20:34:49 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSjSP-004wp1-0v;
-	Wed, 24 Jan 2024 20:02:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 66341CE321D;
-	Wed, 24 Jan 2024 20:02:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D9C4C433F1;
-	Wed, 24 Jan 2024 20:02:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1706126562;
-	bh=jfXWrPM5ALhDnKgFnFkdz4CMio32hmCt3xWSsf12HKU=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=TIXWtyFH5yxUa2sKS25qW3wOvsP8Ed2klnxIK0jQEvMXqnYVHZWCU0zqLjO7+ilCR
-	 JWdnVZmbglYShezSvqIcZWDN/Vh46HywERZIGBwdalc9QELX9rTL+upLtWfATkdWgT
-	 WOJSdLKuC7J9/6NYjh+DNGAalqkPr+gBHAK+jK1uAFFeeu8RJwLSBlu58kMYFUoEl1
-	 Yp7MPDfACwXPwjaV1u4/U968HoLm30T94Tl/mdr2QRYc4fOG1E9E30BuK8sKFpJ4U8
-	 n+9CHV5JSYN6y7zhCegxJ1IM+OVstyfug/6ZJ17Jvqz0l9lgm0LjUJl94LQR9K86D2
-	 ni5ld1wGOGq1w==
-Date: Wed, 24 Jan 2024 20:02:07 +0000
-From: Jonathan Cameron <jic23@kernel.org>
-To: Mark Brown <broonie@kernel.org>, linux-spi@vger.kernel.org
-Cc: Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@pengutronix.de>,
- kernel@pengutronix.de, Moritz Fischer <mdf@kernel.org>, Wu Hao
- <hao.wu@intel.com>, Xu Yilun <yilun.xu@intel.com>, Tom Rix
- <trix@redhat.com>, linux-fpga@vger.kernel.org,
- linux-kernel@vger.kernel.org, Alexander Aring <alex.aring@gmail.com>,
- Stefan Schmidt <stefan@datenfreihafen.org>, Miquel Raynal
- <miquel.raynal@bootlin.com>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, linux-wpan@vger.kernel.org,
- netdev@vger.kernel.org, Lars-Peter Clausen <lars@metafoo.de>, Michael
- Hennerich <Michael.Hennerich@analog.com>, linux-iio@vger.kernel.org, Dmitry
- Torokhov <dmitry.torokhov@gmail.com>, linux-input@vger.kernel.org, Ulf
- Hansson <ulf.hansson@linaro.org>, Rayyan Ansari <rayyan@ansari.sh>, Andy
- Shevchenko <andriy.shevchenko@linux.intel.com>, Jonathan Cameron
- <Jonathan.Cameron@huawei.com>, Martin Tuma
- <martin.tuma@digiteqautomotive.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, linux-media@vger.kernel.org, Sergey Kozlov
- <serjk@netup.ru>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Yang Yingliang <yangyingliang@huawei.com>,
- linux-mmc@vger.kernel.org, Richard Weinberger <richard@nod.at>, Vignesh
- Raghavendra <vigneshr@ti.com>, Rob Herring <robh@kernel.org>, Heiko
- Stuebner <heiko@sntech.de>, Michal Simek <michal.simek@amd.com>, Amit Kumar
- Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
- linux-mtd@lists.infradead.org, Martin Blumenstingl
- <martin.blumenstingl@googlemail.com>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Pali =?UTF-8?B?Um9ow6Fy?= <pali@kernel.org>,
- Simon Horman <horms@kernel.org>, Ronald Wahl <ronald.wahl@raritan.com>,
- Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>,
- Guenter Roeck <groeck@chromium.org>, chrome-platform@lists.linux.dev, Max
- Filippov <jcmvbkbc@gmail.com>, linux-arm-kernel@lists.infradead.org, Bjorn
- Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>,
- linux-arm-msm@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org, Thomas Zimmermann
- <tzimmermann@suse.de>, Javier Martinez Canillas <javierm@redhat.com>, Amit
- Kumar Mahapatra <amit.kumar-mahapatra@amd.com>,
- dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org,
- linux-staging@lists.linux.dev, Viresh Kumar <vireshk@kernel.org>, Rui
- Miguel Silva <rmfrfs@gmail.com>, Johan Hovold <johan@kernel.org>, Alex
- Elder <elder@kernel.org>, greybus-dev@lists.linaro.org, Peter Huewe
- <peterhuewe@gmx.de>, Jarkko Sakkinen <jarkko@kernel.org>, Jason Gunthorpe
- <jgg@ziepe.ca>, linux-integrity@vger.kernel.org, Herve Codina
- <herve.codina@bootlin.com>, Alan Stern <stern@rowland.harvard.edu>, Aaro
- Koskinen <aaro.koskinen@iki.fi>, Krzysztof Kozlowski
- <krzysztof.kozlowski@linaro.org>, linux-usb@vger.kernel.org, Helge Deller
- <deller@gmx.de>, Dario Binacchi <dario.binacchi@amarulasolutions.com>,
- Kalle Valo <kvalo@kernel.org>, Dmitry Antipov <dmantipov@yandex.ru>,
- libertas-dev@lists.infradead.org, linux-wireless@vger.kernel.org, Jonathan
- Corbet <corbet@lwn.net>, James Clark <james.clark@arm.com>, Bjorn Helgaas
- <bhelgaas@google.com>, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v2 00/33] spi: get rid of some legacy macros
-Message-ID: <20240124200207.7e02b501@jic23-huawei>
-In-Reply-To: <20240122192343.148a0b6d@jic23-huawei>
-References: <cover.1705944943.git.u.kleine-koenig@pengutronix.de>
-	<e62cdf7f-ce58-4f46-a0a0-25ce9fb271b1@sirena.org.uk>
-	<20240122192343.148a0b6d@jic23-huawei>
-X-Mailer: Claws Mail 4.2.0 (GTK 3.24.40; x86_64-pc-linux-gnu)
+	id 1rSjxN-005211-2F;
+	Wed, 24 Jan 2024 20:34:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1706128478;
+	bh=njWPHFRX9VBUYd2HwT+iNnDCR9j7CQAq4CCN3sSHM5M=;
+	h=From:Date:Subject:To:Cc:From;
+	b=C5JB22EqSKntWSOxCynR/3Q7KltjJGBsros94uUbGKsx1dC0xSmAdKdbrUjNOmBtK
+	 /TxEDUHA4qPAfC9Pce4Z19DbgsQhTwCaPv6vY//qvjOjjjazKCkO06tkRpJnT7eYEk
+	 AewFIv1eRaXAYaNbAI0YJ1aMHlZ69Av9QAkdHGVenR0zbBD1GxQ4B33sJbArvSygUz
+	 tkomH6fOW9qRa3SyPWdoJWCki5VTvCr2avwut32LBGfbzp7MHm3HfRx+1JUhEYoa/w
+	 sWYREUhas6l1uIC61K0kVrialRtZL1VHQDD3+bBqU4w/O2vsIXx1I6lXFbpCvpqNGK
+	 veHP2lyYMhOeA==
+Received: from [192.168.0.47] (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 5AFFB37813E9;
+	Wed, 24 Jan 2024 20:34:34 +0000 (UTC)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Wed, 24 Jan 2024 17:31:43 -0300
+Subject: [PATCH] cpufreq: mediatek-hw: Don't error out if supply is not
+ found
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20240124-mtk-cpufreq-hw-regulator-enodev-fix-v1-1-6f9fb7275886@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAK5zsWUC/x2NSwqEMBAFryK9tiEJIuNcZXAhpqONTuJ0/IF4d
+ 5tZ1qN4dUEmYcrwLi4Q2jlzigq2LKAfuzgQslcGZ1xlrKvwu07YL1sQ+uF4oNCwzd2aBCkmTzs
+ GPjHUVuWmfjXegD4tQjr/K5/2vh88GESLdQAAAA==
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, 
+ "Rafael J. Wysocki" <rafael@kernel.org>, Mark Brown <broonie@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ kernel@collabora.com, linux-pm@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, "kernelci.org bot" <bot@kernelci.org>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240124_120245_711966_9F123DF9 
-X-CRM114-Status: GOOD (  20.40  )
+X-CRM114-CacheID: sfid-20240124_123445_938424_098BD52A 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,33 +81,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 22 Jan 2024 19:23:43 +0000
-Jonathan Cameron <jic23@kernel.org> wrote:
+devm_regulator_get_optional() returns -ENODEV if no supply can be found.
+By introducing its usage, commit 788715b5f21c ("cpufreq: mediatek-hw:
+Wait for CPU supplies before probing") caused the driver to fail probe
+if no supply was present in any of the CPU DT nodes.
 
-> On Mon, 22 Jan 2024 18:18:22 +0000
-> Mark Brown <broonie@kernel.org> wrote:
->=20
-> > On Mon, Jan 22, 2024 at 07:06:55PM +0100, Uwe Kleine-K=C3=B6nig wrote:
-> >  =20
-> > > Note that Jonathan Cameron has already applied patch 3 to his tree, it
-> > > didn't appear in a public tree though yet. I still included it here to
-> > > make the kernel build bots happy.   =20
-> >=20
-> > It's also going to be needed for buildability of the end of the series.=
- =20
->=20
-> Ah.  I thought intent was to split this across all the different trees
-> then do the final patch only after they were all gone?
->=20
-> I'm fine with it going all in one go if people prefer that.
->=20
-> My tree will be out in a few mins. Was just waiting to rebase on rc1
-> which I've just done.
->=20
-> Jonathan
->=20
+Use devm_regulator_get() instead since the CPUs do require supplies
+even if not described in the DT. It will gracefully return a dummy
+regulator if none is found in the DT node, allowing probe to succeed.
 
-Dropped from my tree.
+Fixes: 788715b5f21c ("cpufreq: mediatek-hw: Wait for CPU supplies before probing")
+Reported-by: kernelci.org bot <bot@kernelci.org>
+Closes: https://linux.kernelci.org/test/case/id/65b0b169710edea22852a3fa/
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ drivers/cpufreq/mediatek-cpufreq-hw.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
+index a1aa9385980a..8d097dcddda4 100644
+--- a/drivers/cpufreq/mediatek-cpufreq-hw.c
++++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
+@@ -312,7 +312,7 @@ static int mtk_cpufreq_hw_driver_probe(struct platform_device *pdev)
+ 			return dev_err_probe(&pdev->dev, -EPROBE_DEFER,
+ 					     "Failed to get cpu%d device\n", cpu);
+ 
+-		cpu_reg = devm_regulator_get_optional(cpu_dev, "cpu");
++		cpu_reg = devm_regulator_get(cpu_dev, "cpu");
+ 		if (IS_ERR(cpu_reg))
+ 			return dev_err_probe(&pdev->dev, PTR_ERR(cpu_reg),
+ 					     "CPU%d regulator get failed\n", cpu);
+
+---
+base-commit: 9ac3ebaef3cc43ecd136911c44f1427286ee5a05
+change-id: 20240124-mtk-cpufreq-hw-regulator-enodev-fix-f614019689d0
+
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
 
