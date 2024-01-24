@@ -4,91 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0364C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 17:02:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 638C2C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 17:14:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wXHLNCaoB8c2KX+O06HEmNoziRnttpcnlBxXvtkvLog=; b=VsJdRhZsabdipuV3LnTA/hQcbJ
-	9QZZdazCTWML4/5bau+zW7v6sWVpPXz1Anpf6Bduf0umlmJWkOHgF0B4y6Y48bD7gJNEeUoxrjIw6
-	Mydd73Q4k+LE1yGRYAWMAOSjC7KZWxVs0UNfMZcnCGZqc4fnbUC+Qc39WsY7rOKEIKvwX3TsJqKKe
-	S7efispVdFLIH3VuIZk9VFchoS0Aau3dVEj3KRl2XyQdTTGnZEm931iLfVYt73iIZZsgJrbexELIw
-	nNAIzVzSJ2UjecKUBT9l2UI4UlrAMaZ5duBWD1cEmSsVZyGQr23aZleaQMPG/Ud4RzTjuLyM1PJN6
-	Bqpc4DdQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eB1EWRTs+M7kdfXhTV98/92eIGg4G3mEptM1kPte9nM=; b=nLmJ6rv2J04iFTl4QzIc11RiKk
+	n3bqPhXE3AdAuZ4GoSstb6u1E1rYxkBAwTiZ9gbOddQfHSwZC2cj/Cn/RW3l4RIYF0WfYIKo9ooY5
+	6zp48KqMtuohqPPureErkPV43zTBt7YWsawl49ZSIFf3KlHGGtLNCIUYE6ldFAh/dFuIsYI4lESOe
+	16yjGa6sg35hRfWAhfMBlsdsZJ5sSbgXBnco9vbEXSNYu5hI5XhC9i8Ha0G67ahSOouEEQFDlnN4U
+	ZrE3LPYWmrR7IUJBFycFVxdxXaZfdtMgEc/kz5CxfkThbxMNlgVkIiU8s2fI19+MPtGb6gzvXk17I
+	lLBl24nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSgdl-004L3w-0X;
-	Wed, 24 Jan 2024 17:02:17 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1rSgp6-004Ozh-2h;
+	Wed, 24 Jan 2024 17:14:00 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSgdh-004L2B-2c;
-	Wed, 24 Jan 2024 17:02:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1706115719; x=1706720519; i=frank-w@public-files.de;
-	bh=wXHLNCaoB8c2KX+O06HEmNoziRnttpcnlBxXvtkvLog=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:
-	 References;
-	b=IwakDZfmY7L6gQILVBuuBiQUXfanBrOXZqA0areXs4eLjTRI0dCF/O8jfs3tHQpU
-	 onDsvepLbjl09x1JVyKvCr4reXMuieL9UbdewkohAaV1h4naxzHhWQ5AzxX7hfzne
-	 bAXF37wwVzOGhAY3goG8RtTZaTtazmHP8BqAOtu+e9pCbxeIiq8yxQpVxoIxAife6
-	 HEnpZNP8ZJdtDHFFuQhfp3wnfsfS2pW6vOVs1MhEUeBy/4J8qsLNNOzyDa6wV4KAc
-	 6tLzfW+AR8c688FQ5hx/11Yt308mJhL8rRNlZMAXn1LETqo4+3GuCSSiRIYpNKQ6c
-	 1FJV8IdHcC7ltQP+Vg==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [80.245.72.177] ([80.245.72.177]) by web-mail.gmx.net
- (3c-app-gmx-bap04.server.lan [172.19.172.74]) (via HTTP); Wed, 24 Jan 2024
- 18:01:59 +0100
+	id 1rSgp1-004Owe-09;
+	Wed, 24 Jan 2024 17:13:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 28784CE314A;
+	Wed, 24 Jan 2024 17:13:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B096C43390;
+	Wed, 24 Jan 2024 17:13:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1706116430;
+	bh=jvo5IXYlQYdIU6VCmACeGNP4xo23ZIbLfeE2jvqqluI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=v2pVfufLGd3lCfp0CeG2fpxzUUsvpwbElgNFofM1ZPehhJ3gSyI8DyqjujjS7qB28
+	 HIx8X5ThDTkPR0Ay0PzOQVdIcq5n2pTAL/fkyg4/FCf2V3zKeABMVcc+DS8MIJ/Ztv
+	 A8j4KVPuFkJX9pHjYFH5A/rDYDM6TICeR0rlV7yw=
+Date: Wed, 24 Jan 2024 09:13:49 -0800
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Mark Brown <broonie@kernel.org>, kernel@pengutronix.de,
+	Moritz Fischer <mdf@kernel.org>, Wu Hao <hao.wu@intel.com>,
+	Xu Yilun <yilun.xu@intel.com>, Tom Rix <trix@redhat.com>,
+	linux-fpga@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Alexander Aring <alex.aring@gmail.com>,
+	Stefan Schmidt <stefan@datenfreihafen.org>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-wpan@vger.kernel.org, netdev@vger.kernel.org,
+	Lars-Peter Clausen <lars@metafoo.de>,
+	Michael Hennerich <Michael.Hennerich@analog.com>,
+	Jonathan Cameron <jic23@kernel.org>, linux-iio@vger.kernel.org,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	linux-input@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
+	Rayyan Ansari <rayyan@ansari.sh>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Martin Tuma <martin.tuma@digiteqautomotive.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-media@vger.kernel.org, Sergey Kozlov <serjk@netup.ru>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Yang Yingliang <yangyingliang@huawei.com>,
+	linux-mmc@vger.kernel.org, Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+	Michal Simek <michal.simek@amd.com>,
+	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
+	linux-mtd@lists.infradead.org,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
+	Simon Horman <horms@kernel.org>,
+	Ronald Wahl <ronald.wahl@raritan.com>,
+	Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	chrome-platform@lists.linux.dev, Max Filippov <jcmvbkbc@gmail.com>,
+	linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	linux-arm-msm@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Javier Martinez Canillas <javierm@redhat.com>,
+	Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>,
+	dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org,
+	linux-staging@lists.linux.dev, Viresh Kumar <vireshk@kernel.org>,
+	Rui Miguel Silva <rmfrfs@gmail.com>,
+	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
+	greybus-dev@lists.linaro.org, Peter Huewe <peterhuewe@gmx.de>,
+	Jarkko Sakkinen <jarkko@kernel.org>, Jason Gunthorpe <jgg@ziepe.ca>,
+	linux-integrity@vger.kernel.org,
+	Herve Codina <herve.codina@bootlin.com>,
+	Alan Stern <stern@rowland.harvard.edu>,
+	Aaro Koskinen <aaro.koskinen@iki.fi>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-usb@vger.kernel.org, Helge Deller <deller@gmx.de>,
+	Dario Binacchi <dario.binacchi@amarulasolutions.com>,
+	Kalle Valo <kvalo@kernel.org>, Dmitry Antipov <dmantipov@yandex.ru>,
+	libertas-dev@lists.infradead.org, linux-wireless@vger.kernel.org,
+	Jonathan Corbet <corbet@lwn.net>, James Clark <james.clark@arm.com>,
+	Bjorn Helgaas <bhelgaas@google.com>, linux-doc@vger.kernel.org
+Subject: Re: [PATCH v2 00/33] spi: get rid of some legacy macros
+Message-ID: <2024012417-prissy-sworn-bc55@gregkh>
+References: <cover.1705944943.git.u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-Message-ID: <trinity-08c06a61-9397-4097-9a54-9f078ac22af7-1706115719411@3c-app-gmx-bap04>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Frank Wunderlich <linux@fw-web.de>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
- <conor+dt@kernel.org>, Sam Shih <sam.shih@mediatek.com>, Daniel Golle
- <daniel@makrotopia.org>, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Aw: Re: [PATCH v2 1/2] dt-bindings: reset: mediatek: add MT7988
- LVTS reset ID
-Content-Type: text/plain; charset=UTF-8
-Date: Wed, 24 Jan 2024 18:01:59 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <0d3c2713-6da5-4e7c-8568-180df6e424d7@gmail.com>
-References: <20240105162056.43266-1-linux@fw-web.de>
- <20240105162056.43266-2-linux@fw-web.de>
- <0d3c2713-6da5-4e7c-8568-180df6e424d7@gmail.com>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:ulx5dIeWJcW3Za2njFFqNJJv6ciEdTUHHrCwpcD+GKtnJOHRljDlEEQe6nsrRW8zL7mfz
- BKTmCNEvNAt61YH5vlDMBmy6sMsLWiB/Wn4JYcasmQ7aYjLhtgPyNjmm5b7tslQW2ipa0Pr6KZEN
- efLPRXlqDDmqskDxqBe1J8ZY3sAhRpDe/VNNlx3LZPfotPyxTpa+R2rDb5F1mOCLl6rwRBpoJNS6
- SgVY5AofTYqcYt/lCE1x0swMDP5E4yO+HCF4TdBs27kvAuyDnPstCHt22rx5FqitmhNQrgQapFXn
- Ro=
-UI-OutboundReport: notjunk:1;M01:P0:hKFerlztyOE=;6u6ywOCU1fTGycRtlCIUyUtsGmE
- sRTAUXyl8Ro0jbY88oE1+r7+w0JokzfAu26O55bueT1Qo+aDKpLzVNQKmZh5afFmy0SjUPa/3
- WLZNB2hhpV8IGSDoeJ4nnQMpfbt7V+tx389WM1soB0wgLTo3atB5QyghOGtvC48JJvFUkaEri
- 0GAFhAE/K+mSg6bGv5caLsZScVDZNOvKAtSmlW9HMHfqjVuM+ldqMr73JR0L3SGcU6+4Wedu2
- Y02ccqsDRNLQB+WfQTiN5UnbI/oc8nfmLx2EC8jmUPZ97ea0kcvlfgr9blPXrXa3BQvoaJbU2
- IMVjJSJpzJVFvgX6NYExMTw2X7KU7KTLEErfg+D5ZM21IeN4TndBq/FqSBgWngYMWRdQiyy05
- RHE2II+sHZp/XBhZSN/R7gK5pYrwqyl78s8CMSQlu1LGf+2QL+Ck7mr1TdRgV3wuvpB1dgFhG
- Lp0jg4H+NWTON9Y+F+XDI0STjp/4H85gvZA3HexzBnW9wxaZhYJjMgc3yd89TWzadD3fhuV6B
- mQ0iQkTvYYl/JANDLDr7nzv+0sLSMjIbdnTXfbGWHA+r4+nf4nq+5FBhgDokvj+IGLJZrIF3l
- G62GKoDECzTtmwfSti3jg/2e8puqkBdDR9VGzp+qInPDjozW7MB816u6cfgiA0JskEkZFBvMV
- 1CSX3D6/lpyJB+vveXFK848nR+LzSahkBUKq63C5cSpLnRAaZkKH7E6InHLyOYtedP0aAUadK
- 0h1P12oCpUWNWIiDHDz80zVY4xjleMrEaXuqq53aDAevXlUApv1sE+ApWQeIjJBtmBXoxG4ar
- CDv3F36VdP8r+roDldHt2/wQ==
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <cover.1705944943.git.u.kleine-koenig@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240124_090214_230317_A997EA13 
-X-CRM114-Status: UNSURE (   9.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240124_091355_436328_749A74CB 
+X-CRM114-Status: GOOD (  20.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,31 +132,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Gesendet: Montag, 22. Januar 2024 um 09:57 Uhr
-> Von: "Matthias Brugger" <matthias.bgg@gmail.com>
-> On 05/01/2024 17:20, Frank Wunderlich wrote:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >
-> > Add reset constant for using as index in driver and dts.
-> >
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+On Mon, Jan 22, 2024 at 07:06:55PM +0100, Uwe Kleine-König wrote:
+> Hello,
+> 
+> this is v2 of this patch set.
+> 
+> Changes since (implicit) v1, sent with Message-Id:
+> cover.1705348269.git.u.kleine-koenig@pengutronix.de:
+> 
+>  - Rebase to v6.8-rc1
+>  - Fix a build failure on sh
+>  - Added the tags received in (implicit) v1.
+> 
+> The slave-mt27xx driver needs some more work. The patch presented here
+> is enough however to get rid of the defines handled in patch 32.
+> Cleaning that up is out-of-scope for this series, so I'll delay that
+> until later.
+> 
+> Note that Jonathan Cameron has already applied patch 3 to his tree, it
+> didn't appear in a public tree though yet. I still included it here to
+> make the kernel build bots happy.
 
-Hi
+Are we supposed to take the individual changes in our different
+subsystem trees, or do you want them all to go through the spi tree?
 
-good to hear again from you Matthias. unfortunately there is already a v3 =
-out,
-where i added multiple reset offsets/ids. Can you please review this one?
+Either is fine with me, just need to know.
 
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=3D817619
+thanks,
 
-and i also wait for 2 other patches to be reviewed before bpi-r4 dts patch=
-es can go in:
-
-https://patchwork.kernel.org/project/linux-mediatek/patch/20231025170832.7=
-8727-5-linux@fw-web.de/
-
-regards Frank
-
+greg k-h
 
