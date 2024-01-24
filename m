@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69C28C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 12:33:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45A08C47E49
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 13:43:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vX4ak2KErIjriVb2SwM3m8KEs1CKOKMU0hssskdQM3U=; b=rncvZxNNViq4Y+tFUlRgM3nSDj
-	UhpFhjkyPVLQKjSMb4xx1tbDJYMQY0wKimChLsrqMb/Mk87j0/NLT2M0BsIo4e/lcjDI2L4LHeXD8
-	m7VXu+Uio1XHsM8bFWvaE5X1MNMMYcs+lDKjnPae7Uascqs0QIZbozp+9qB2syMA6U1C3fBZqgzJj
-	0OeCDXgSZiC2B2Q5OQGxvxSVWeE5I+fjPTK7OuG9Tp6PO79oFOLnanKOeXexy8w3a4H+xbXZbyNiX
-	NDct4TALEqAsxHwCuop2gAiM7HVUxpT3BOLU0Vv1tsuPcVcY2v7R1o1VSsuurdLfTf0UpPCqD/zBO
-	cEeWkc6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uAYWtrzasjSA2lnZYzrAG9WmtmnQwSwHnhcYKFvprJ0=; b=yTjmtGHGO5Tj4W4GiJ973SnPBt
+	P4LqotLj2PNIrjRO0Y7hGDmWvOXylc4ZCP/GeuB1NdvpKqRRkAcWGSh90jBOvEkrLpP22emycbPHV
+	4gPL0O0y5+mTG517Kgro399Io5DQEB2wfB/zMCEt7kXIulNRBSojz7fZb4tc4GV1iYeUxOfOCodXW
+	0ObKr5eG+arAzvNgNGy5qNCerV9WG1jw8kzJh46svGnFzTcy8UyRsDdpl5reC62MPwXFzLSmO2nRU
+	QVC4uxJvxQes/K5POiJ9PqiCTbVFzUfEVzh7QLkRqLaF0rlOtiU32XJsQM6JXnNv0+PTXKNZZbLnG
+	Y/NMYt/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rScRd-003EqQ-0J;
-	Wed, 24 Jan 2024 12:33:29 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rSdXL-003VfJ-0C;
+	Wed, 24 Jan 2024 13:43:27 +0000
+Received: from mgamail.intel.com ([192.198.163.11])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rScRZ-003Eos-0b;
-	Wed, 24 Jan 2024 12:33:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706099599;
-	bh=ZMh7iqIZgYI902YIRrVcFsxLdtDLtRhbiBT/Ncsnml8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WerqKHpc45Lp24f8eTua8oih5ZL9z1gcOG2ODNaWNOFzUfASve9em1n64H1F+l6x6
-	 73dfgZQm3x9qGAW13N6liRMSxmQkXNVjs2noqqzXzT9MiRX0Y7nHyu55k+4VZlKtXe
-	 YgUs9Opr0bfXzXHKMmSFMucgK4O2ivclSQBn8Gx/rATyYHAecgJUFZR0DSORUK754S
-	 dzD0lyDypgDzvL1Xy0aVwiR6WzxTFIBHN0LXRDRsDKAzHNbPHLhGTR5P/QptSjF3av
-	 INd2FDogojLmsndck7v9meID/NOA/6NgdWe+I3sMPiHhuN9vRVgVaCezEGlikaAaZ7
-	 i1YXF4Pfz9lcQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id CCBFE378207B;
-	Wed, 24 Jan 2024 12:33:18 +0000 (UTC)
-Message-ID: <62fca33c-eb1a-42ad-b7f7-31b14f0aa446@collabora.com>
-Date: Wed, 24 Jan 2024 13:33:18 +0100
+	id 1rSdXG-003VdZ-1z;
+	Wed, 24 Jan 2024 13:43:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1706103802; x=1737639802;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=pNcY14Mdradw21mgFZzaxoOBUtx88NqXXXmsYGda3dk=;
+  b=a6lCvW3eF3GmW5IRXuTAO5CSwLdDJwhEXrZ6nxzIGEJQr6ho6yl3kfrm
+   Os1kdml4wbM5J9lCYp3nGtKZa5SURXWZYfQvSx6CSacS7nj6UK5CtZR+Y
+   uoEQIqBNvR5Yc3/Znx+se3ZWpvLBtkMFxTa5VsvFI+naj/v+okY5B4gJh
+   UWSPctU5SR5YgGSZ5OZNM+rRdxWWbmO7Rb3iZQjr7QsFqf46QnIwL4lLB
+   8reFPiUGiIMo9jRKStQ0lOU3ieXF7kKa+psJc11As0a899yw4oAHoe47e
+   6ShhcGgKClZwI6fpvmYL9X1Gt+dQrmQ9JYndlewDhOEbn2jcEnB8Qe2fr
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10962"; a="8518046"
+X-IronPort-AV: E=Sophos;i="6.05,216,1701158400"; 
+   d="scan'208";a="8518046"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jan 2024 05:43:20 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10962"; a="929686965"
+X-IronPort-AV: E=Sophos;i="6.05,216,1701158400"; 
+   d="scan'208";a="929686965"
+Received: from kuha.fi.intel.com ([10.237.72.185])
+  by fmsmga001.fm.intel.com with SMTP; 24 Jan 2024 05:43:15 -0800
+Received: by kuha.fi.intel.com (sSMTP sendmail emulation); Wed, 24 Jan 2024 15:43:14 +0200
+Date: Wed, 24 Jan 2024 15:43:14 +0200
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: gregkh@linuxfoundation.org, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	matthias.bgg@gmail.com, dmitry.baryshkov@linaro.org,
+	neil.armstrong@linaro.org, andersson@kernel.org, nathan@kernel.org,
+	luca.weiss@fairphone.com, tianping.fang@mediatek.com,
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v3 2/2] usb: typec: mux: Add ITE IT5205 Alternate Mode
+ Passive MUX driver
+Message-ID: <ZbET8jEdp0wYgJq1@kuha.fi.intel.com>
+References: <20240122110446.140226-1-angelogioacchino.delregno@collabora.com>
+ <20240122110446.140226-3-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: media: convert Mediatek consumer IR to the
- json-schema
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20240124095230.25704-1-zajec5@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240124095230.25704-1-zajec5@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240122110446.140226-3-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240124_043325_370775_6497F096 
-X-CRM114-Status: GOOD (  16.42  )
+X-CRM114-CacheID: sfid-20240124_054322_708045_EBEDEEF8 
+X-CRM114-Status: GOOD (  35.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,135 +88,359 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/01/24 10:52, Rafał Miłecki ha scritto:
-> From: Rafał Miłecki <rafal@milecki.pl>
+On Mon, Jan 22, 2024 at 12:04:46PM +0100, AngeloGioacchino Del Regno wrote:
+> The ITE IT5202 is a USB Type-C Alternate Mode Passive MUX, used for
+> muxing the SBU lines of a Type-C port with DisplayPort altmode and
+> also providing an orientation switch.
 > 
-> This helps validating DTS files. Introduced changes:
-> 1. Reworded title
-> 2. Added required #include-s and adjusted "reg" in example
-> 
-> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+
 > ---
->   .../bindings/media/mediatek,mt7622-cir.yaml   | 81 +++++++++++++++++++
->   .../devicetree/bindings/media/mtk-cir.txt     | 28 -------
->   2 files changed, 81 insertions(+), 28 deletions(-)
->   create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt7622-cir.yaml
->   delete mode 100644 Documentation/devicetree/bindings/media/mtk-cir.txt
+>  drivers/usb/typec/mux/Kconfig  |  10 ++
+>  drivers/usb/typec/mux/Makefile |   1 +
+>  drivers/usb/typec/mux/it5205.c | 294 +++++++++++++++++++++++++++++++++
+>  3 files changed, 305 insertions(+)
+>  create mode 100644 drivers/usb/typec/mux/it5205.c
 > 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt7622-cir.yaml b/Documentation/devicetree/bindings/media/mediatek,mt7622-cir.yaml
+> diff --git a/drivers/usb/typec/mux/Kconfig b/drivers/usb/typec/mux/Kconfig
+> index d2cb5e733e57..399c7b0983df 100644
+> --- a/drivers/usb/typec/mux/Kconfig
+> +++ b/drivers/usb/typec/mux/Kconfig
+> @@ -36,6 +36,16 @@ config TYPEC_MUX_INTEL_PMC
+>  	  control the USB role switch and also the multiplexer/demultiplexer
+>  	  switches used with USB Type-C Alternate Modes.
+>  
+> +config TYPEC_MUX_IT5205
+> +	tristate "ITE IT5205 Type-C USB Alt Mode Passive MUX driver"
+> +	depends on I2C
+> +	select REGMAP_I2C
+> +	help
+> +	  Driver for the ITE IT5205 Type-C USB Alternate Mode Passive MUX
+> +	  which provides support for muxing DisplayPort and sideband signals
+> +	  on a common USB Type-C connector.
+> +	  If compiled as a module, the module will be named it5205.
+> +
+>  config TYPEC_MUX_NB7VPQ904M
+>  	tristate "On Semiconductor NB7VPQ904M Type-C redriver driver"
+>  	depends on I2C
+> diff --git a/drivers/usb/typec/mux/Makefile b/drivers/usb/typec/mux/Makefile
+> index 57dc9ac6f8dc..bb96f30267af 100644
+> --- a/drivers/usb/typec/mux/Makefile
+> +++ b/drivers/usb/typec/mux/Makefile
+> @@ -4,6 +4,7 @@ obj-$(CONFIG_TYPEC_MUX_FSA4480)		+= fsa4480.o
+>  obj-$(CONFIG_TYPEC_MUX_GPIO_SBU)	+= gpio-sbu-mux.o
+>  obj-$(CONFIG_TYPEC_MUX_PI3USB30532)	+= pi3usb30532.o
+>  obj-$(CONFIG_TYPEC_MUX_INTEL_PMC)	+= intel_pmc_mux.o
+> +obj-$(CONFIG_TYPEC_MUX_IT5205)		+= it5205.o
+>  obj-$(CONFIG_TYPEC_MUX_NB7VPQ904M)	+= nb7vpq904m.o
+>  obj-$(CONFIG_TYPEC_MUX_PTN36502)	+= ptn36502.o
+>  obj-$(CONFIG_TYPEC_MUX_WCD939X_USBSS)	+= wcd939x-usbss.o
+> diff --git a/drivers/usb/typec/mux/it5205.c b/drivers/usb/typec/mux/it5205.c
 > new file mode 100644
-> index 000000000000..a2d0eed33292
+> index 000000000000..5535932e42cd
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek,mt7622-cir.yaml
-> @@ -0,0 +1,81 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/mediatek,mt7622-cir.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +++ b/drivers/usb/typec/mux/it5205.c
+> @@ -0,0 +1,294 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * ITE IT5205 Type-C USB alternate mode passive mux
+> + *
+> + * Copyright (c) 2020 MediaTek Inc.
+> + * Copyright (c) 2024 Collabora Ltd.
+> + *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> + *
+> + */
 > +
-> +title: Mediatek consumer IR on-SoC controller
+> +#include <linux/delay.h>
+> +#include <linux/i2c.h>
+> +#include <linux/kernel.h>
+> +#include <linux/module.h>
+> +#include <linux/of_platform.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/regmap.h>
+> +#include <linux/regulator/consumer.h>
+> +#include <linux/usb/tcpm.h>
+> +#include <linux/usb/typec.h>
+> +#include <linux/usb/typec_dp.h>
+> +#include <linux/usb/typec_mux.h>
+> +
+> +#define IT5205_REG_CHIP_ID(x)	(0x4 + (x))
+> +#define IT5205FN_CHIP_ID	0x35323035 /* "5205" */
+> +
+> +/* MUX power down register */
+> +#define IT5205_REG_MUXPDR        0x10
+> +#define IT5205_MUX_POWER_DOWN    BIT(0)
+> +
+> +/* MUX control register */
+> +#define IT5205_REG_MUXCR         0x11
+> +#define IT5205_POLARITY_INVERTED BIT(4)
+> +#define IT5205_DP_USB_CTRL_MASK  GENMASK(3, 0)
+> +#define IT5205_DP                0x0f
+> +#define IT5205_DP_USB            0x03
+> +#define IT5205_USB               0x07
+> +
+> +/* Vref Select Register */
+> +#define IT5205_REG_VSR            0x10
+> +#define IT5205_VREF_SELECT_MASK   GENMASK(5, 4)
+> +#define IT5205_VREF_SELECT_3_3V   0x00
+> +#define IT5205_VREF_SELECT_OFF    0x20
+> +
+> +/* CSBU Over Voltage Protection Register */
+> +#define IT5205_REG_CSBUOVPSR      0x1e
+> +#define IT5205_OVP_SELECT_MASK    GENMASK(5, 4)
+> +#define IT5205_OVP_3_90V          0x00
+> +#define IT5205_OVP_3_68V          0x10
+> +#define IT5205_OVP_3_62V          0x20
+> +#define IT5205_OVP_3_57V          0x30
+> +
+> +/* CSBU Switch Register */
+> +#define IT5205_REG_CSBUSR         0x22
+> +#define IT5205_CSBUSR_SWITCH      BIT(0)
+> +
+> +/* Interrupt Switch Register */
+> +#define IT5205_REG_ISR            0x25
+> +#define IT5205_ISR_CSBU_MASK      BIT(4)
+> +#define IT5205_ISR_CSBU_OVP       BIT(0)
+> +
+> +struct it5205 {
+> +	struct i2c_client *client;
+> +	struct regmap *regmap;
+> +	struct typec_switch_dev *sw;
+> +	struct typec_mux_dev *mux;
+> +};
+> +
+> +static int it5205_switch_set(struct typec_switch_dev *sw, enum typec_orientation orientation)
+> +{
+> +	struct it5205 *it = typec_switch_get_drvdata(sw);
+> +
+> +	switch (orientation) {
+> +	case TYPEC_ORIENTATION_NORMAL:
+> +		regmap_update_bits(it->regmap, IT5205_REG_MUXCR,
+> +				   IT5205_POLARITY_INVERTED, 0);
+> +		break;
+> +	case TYPEC_ORIENTATION_REVERSE:
+> +		regmap_update_bits(it->regmap, IT5205_REG_MUXCR,
+> +				   IT5205_POLARITY_INVERTED, IT5205_POLARITY_INVERTED);
+> +		break;
+> +	case TYPEC_ORIENTATION_NONE:
+> +		fallthrough;
+> +	default:
+> +		regmap_write(it->regmap, IT5205_REG_MUXCR, 0);
+> +		break;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int it5205_mux_set(struct typec_mux_dev *mux, struct typec_mux_state *state)
+> +{
+> +	struct it5205 *it = typec_mux_get_drvdata(mux);
+> +	u8 val;
+> +
+> +	if (state->mode >= TYPEC_STATE_MODAL &&
+> +	    state->alt->svid != USB_TYPEC_DP_SID)
+> +		return -EINVAL;
+> +
+> +	switch (state->mode) {
+> +	case TYPEC_STATE_USB:
+> +		val = IT5205_USB;
+> +		break;
+> +	case TYPEC_DP_STATE_C:
+> +		fallthrough;
+> +	case TYPEC_DP_STATE_E:
+> +		val = IT5205_DP;
+> +		break;
+> +	case TYPEC_DP_STATE_D:
+> +		val = IT5205_DP_USB;
+> +		break;
+> +	case TYPEC_STATE_SAFE:
+> +		fallthrough;
+> +	default:
+> +		val = 0;
+> +		break;
+> +	}
+> +
+> +	return regmap_update_bits(it->regmap, IT5205_REG_MUXCR,
+> +				  IT5205_DP_USB_CTRL_MASK, val);
+> +}
+> +
+> +static irqreturn_t it5205_irq_handler(int irq, void *data)
+> +{
+> +	struct it5205 *it = data;
+> +	int ret;
+> +	u32 val;
+> +
+> +	ret = regmap_read(it->regmap, IT5205_REG_ISR, &val);
+> +	if (ret)
+> +		return IRQ_NONE;
+> +
+> +	if (val & IT5205_ISR_CSBU_OVP) {
+> +		dev_warn(&it->client->dev, "Overvoltage detected!\n");
+> +
+> +		/* Reset CSBU */
+> +		regmap_update_bits(it->regmap, IT5205_REG_CSBUSR,
+> +				   IT5205_CSBUSR_SWITCH, 0);
+> +		regmap_update_bits(it->regmap, IT5205_REG_CSBUSR,
+> +				   IT5205_CSBUSR_SWITCH, IT5205_CSBUSR_SWITCH);
+> +	}
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +static void it5205_enable_ovp(struct it5205 *it)
+> +{
+> +	/* Select Vref 3.3v */
+> +	regmap_update_bits(it->regmap, IT5205_REG_VSR,
+> +			   IT5205_VREF_SELECT_MASK, IT5205_VREF_SELECT_3_3V);
+> +
+> +	/* Trigger OVP at 3.68V */
+> +	regmap_update_bits(it->regmap, IT5205_REG_CSBUOVPSR,
+> +			   IT5205_OVP_SELECT_MASK, IT5205_OVP_3_68V);
+> +
+> +	/* Unmask OVP interrupt */
+> +	regmap_update_bits(it->regmap, IT5205_REG_ISR,
+> +			   IT5205_ISR_CSBU_MASK, 0);
+> +
+> +	/* Enable CSBU Interrupt */
+> +	regmap_update_bits(it->regmap, IT5205_REG_CSBUSR,
+> +			   IT5205_CSBUSR_SWITCH, IT5205_CSBUSR_SWITCH);
+> +}
+> +
+> +static const struct regmap_config it5205_regmap = {
+> +	.max_register = 0x2f,
+> +	.reg_bits = 8,
+> +	.val_bits = 8,
+> +};
+> +
+> +static int it5205_probe(struct i2c_client *client)
+> +{
+> +	struct typec_switch_desc sw_desc = { };
+> +	struct typec_mux_desc mux_desc = { };
+> +	struct device *dev = &client->dev;
+> +	struct it5205 *it;
+> +	u32 val, chipid = 0;
+> +	int i, ret;
+> +
+> +	it = devm_kzalloc(dev, sizeof(*it), GFP_KERNEL);
+> +	if (!it)
+> +		return -ENOMEM;
+> +
+> +	ret = devm_regulator_get_enable(dev, "vcc");
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to get regulator\n");
+> +
+> +	it->client = client;
+> +
+> +	it->regmap = devm_regmap_init_i2c(client, &it5205_regmap);
+> +	if (IS_ERR(it->regmap))
+> +		return dev_err_probe(dev, PTR_ERR(it->regmap),
+> +				     "Failed to init regmap\n");
+> +
+> +	/* IT5205 needs a long time to power up after enabling regulator */
+> +	msleep(50);
+> +
+> +	/* Unset poweroff bit */
+> +	ret = regmap_write(it->regmap, IT5205_REG_MUXPDR, 0);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to set power on\n");
+> +
+> +	/* Read the 32 bits ChipID */
+> +	for (i = 3; i >= 0; i--) {
+> +		ret = regmap_read(it->regmap, IT5205_REG_CHIP_ID(i), &val);
+> +		if (ret)
+> +			return ret;
+> +
+> +		chipid |= val << (i * 8);
+> +	}
+> +
+> +	if (chipid != IT5205FN_CHIP_ID)
+> +		return dev_err_probe(dev, -EINVAL,
+> +				     "Unknown ChipID 0x%x\n", chipid);
+> +
+> +	/* Initialize as USB mode with default (non-inverted) polarity */
+> +	ret = regmap_write(it->regmap, IT5205_REG_MUXCR, IT5205_USB);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Cannot set mode to USB\n");
+> +
+> +	sw_desc.drvdata = it;
+> +	sw_desc.fwnode = dev_fwnode(dev);
+> +	sw_desc.set = it5205_switch_set;
+> +
+> +	it->sw = typec_switch_register(dev, &sw_desc);
+> +	if (IS_ERR(it->sw))
+> +		return dev_err_probe(dev, PTR_ERR(it->sw),
+> +				     "failed to register typec switch\n");
+> +
+> +	mux_desc.drvdata = it;
+> +	mux_desc.fwnode = dev_fwnode(dev);
+> +	mux_desc.set = it5205_mux_set;
+> +
+> +	it->mux = typec_mux_register(dev, &mux_desc);
+> +	if (IS_ERR(it->mux)) {
+> +		typec_switch_unregister(it->sw);
+> +		return dev_err_probe(dev, PTR_ERR(it->mux),
+> +				     "failed to register typec mux\n");
+> +	}
+> +
+> +	i2c_set_clientdata(client, it);
+> +
+> +	if (of_property_read_bool(dev->of_node, "ite,ovp-enable") && client->irq) {
+> +		it5205_enable_ovp(it);
+> +
+> +		ret = devm_request_threaded_irq(dev, client->irq, NULL,
+> +						it5205_irq_handler,
+> +						IRQF_ONESHOT, dev_name(dev), it);
+> +		if (ret) {
+> +			typec_mux_unregister(it->mux);
+> +			typec_switch_unregister(it->sw);
+> +			return dev_err_probe(dev, ret, "Failed to request irq\n");
+> +		}
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static void it5205_remove(struct i2c_client *client)
+> +{
+> +	struct it5205 *it = i2c_get_clientdata(client);
+> +
+> +	typec_mux_unregister(it->mux);
+> +	typec_switch_unregister(it->sw);
+> +}
+> +
+> +static const struct i2c_device_id it5205_table[] = {
+> +	{ "it5205" },
+> +	{ /* sentinel */ }
+> +};
+> +MODULE_DEVICE_TABLE(i2c, it5205_table);
+> +
+> +static const struct of_device_id it5205_of_table[] = {
+> +	{ .compatible = "ite,it5205" },
+> +	{ /* sentinel */ }
+> +};
+> +MODULE_DEVICE_TABLE(of, it5205_of_table);
+> +
+> +static struct i2c_driver it5205_driver = {
+> +	.driver = {
+> +		.name = "it5205",
+> +		.of_match_table = it5205_of_table,
+> +	},
+> +	.probe = it5205_probe,
+> +	.remove = it5205_remove,
+> +	.id_table = it5205_table,
+> +};
+> +module_i2c_driver(it5205_driver);
+> +
+> +MODULE_AUTHOR("Tianping Fang <tianping.fang@mediatek.com>");
+> +MODULE_AUTHOR("AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>");
+> +MODULE_DESCRIPTION("ITE IT5205 alternate mode passive MUX driver");
+> +MODULE_LICENSE("GPL");
+> -- 
+> 2.43.0
 
-title: MediaTek Consumer Infrared Receiver on-SoC Controller
-
-> +
-> +maintainers:
-> +  - Sean Wang <sean.wang@mediatek.com>
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt7622-cir
-> +      - mediatek,mt7623-cir
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    minItems: 1
-> +    maxItems: 2
-> +
-> +  clock-names:
-> +    minItems: 1
-> +    items:
-> +      - const: clk
-> +      - const: bus
-
-The driver says:
-
-	ir->bus = devm_clk_get(dev, "bus");
-	if (IS_ERR(ir->bus)) {
-		/*
-		 * For compatibility with older device trees try unnamed
-		 * ir->bus uses the same clock as ir->clock.
-		 */
-		ir->bus = ir->clk;
-	}
-
-This makes me think that requiring *one* clock on MT7623 would be a mistake
-and the devicetree should use clk, bus - CLK_INFRA_IRRX_PD, CLK_TOP_F10M_REF_SEL.
-
-Seen that - I'm sure that setting maxItems: 1 on mediatek,mt7623-cir would as
-well be a mistake.
-
-> +
-> +required:
-> +  - reg
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +
-> +allOf:
-> +  - $ref: rc.yaml#
-> +  - if:
-
-The solution would be to simply delete those if branches and, to keep compatibility
-with the already present mt7623.dtsi file, keep min/max items to 1 and 2 (of course
-in the case of clock-names, maxItems shall not be declared, as it's dictated by the
-consts).
-
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: mediatek,mt7622-cir
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 2
-> +
-> +        clock-names:
-> +          minItems: 2
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: mediatek,mt7623-cir
-> +    then:
-> +      properties:
-> +        clocks:
-> +          maxItems: 1
-> +
-> +        clock-names:
-> +          maxItems: 1
-> +
-> +unevaluatedProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mt2701-clk.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +    ir@10013000 {
-
-Please use a common generic name, as seen in gpio-ir-receiver.yaml and in
-amlogic,meson6-ir.yaml:
-
-ir-receiver@10013000 {
-
-Cheers,
-Angelo
-
+-- 
+heikki
 
