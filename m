@@ -4,123 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B72DC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 17:31:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73278C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 17:34:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2JceplMGSmlb7BCTcJftELbiGe5E7MWMvL9LY/R+77E=; b=hBAlX/dx5anOK8kIs5RZhpXzND
-	9A8ktFcauwkU3sPDYGnNDNXZBoYr1lXfnvZb37Q1Q8tV6U/5cWCb7Tq1+oveaPA8pyjYZS00FGCp8
-	owjGov9xFD4RgazRwGJEMjCjVjWOaoACAGFBVJjEIhR3zArXt92SthqBGH/Fy2BwDT8nol49YymLp
-	iwOKIiRhbZgE7nIEAlb1KLnAYzpH0fTt9fYSfgT5bow8+9GFBbp5oOgPulSZzgsRk4ksoMTj2Z3rx
-	K9f7y0pvNnLTKERdjmMmD4h1aHV4WQLMKYZZHa4GpgqmRLzPoSnoHeXb4r3MJkNLL3bEgbUyMFxyH
-	BbW0PuxQ==;
+	bh=1WNNMXqv3ctDwG992RJjLS0jvtj9IJbG8t02kMH53LQ=; b=onIuRTcHcDT0nYNZpd7c2NQoP5
+	AZr59V960OhRa7LVYO0HrjoegKY0X5c5/WCL4Wl2M14Fx04Qva9+PaQ6uaCJkT7SEy0HgaRw9ZFef
+	fjnQ7zhAOqXuXn/HPSO/cK/tWwqSeXhGfkg+2GvsTPmCebgpaD85Ys3D3Qms6m8PEziDybWq3OsbD
+	5AOMpj4Pwaz8MGiycFsSAzDCiHGhGeWPJqNvs1QMaWrZ856/vH17g8cQbx1sN/qiCqVhbOl7FeoT4
+	LMyc29AUO+IzydU1sHIGAcrqHQL0Cw6GNbwQH3IkptYSYXfC3LkGisTMgLNBZQsnx/bPT9gRH9MCX
+	RgyS3PMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSh5c-004UHw-2n;
-	Wed, 24 Jan 2024 17:31:04 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rSh8Y-004Vce-0h;
+	Wed, 24 Jan 2024 17:34:06 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSh5X-004UET-0q;
-	Wed, 24 Jan 2024 17:31:00 +0000
+	id 1rSh8T-004VZw-1h;
+	Wed, 24 Jan 2024 17:34:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 443BB61DE4;
-	Wed, 24 Jan 2024 17:30:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AA2D0C433C7;
-	Wed, 24 Jan 2024 17:30:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1706117457;
-	bh=NNDXRpvhIGTKBi9slZ/qWQEGn6Uj559Gpw2fxZO2A8A=;
+	by dfw.source.kernel.org (Postfix) with ESMTP id 178CB61DF0;
+	Wed, 24 Jan 2024 17:33:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B46AAC433C7;
+	Wed, 24 Jan 2024 17:33:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1706117638;
+	bh=F8O1LAlWtzyG7pKBPEZ8OXoCR4xC+gD0cGfc5INvsp4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TE8sMbvfIUEPS7l+FWWrLd9ucrffQrWpUeULzzDGbHOZntLPKHC9u7ekCFztLhU3U
-	 g9c/BN8CkGH0i32zPynRDSS6j46gbVDA6ioIe6yR345V3vEOlOOOrQK63M5gAF7wrU
-	 bDTC1oJaRecQ9F29HgZfYDFNvnxiLNzNXD19CPf8=
-Date: Wed, 24 Jan 2024 09:30:56 -0800
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Mark Brown <broonie@kernel.org>
-Cc: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	kernel@pengutronix.de, Moritz Fischer <mdf@kernel.org>,
-	Wu Hao <hao.wu@intel.com>, Xu Yilun <yilun.xu@intel.com>,
-	Tom Rix <trix@redhat.com>, linux-fpga@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Alexander Aring <alex.aring@gmail.com>,
-	Stefan Schmidt <stefan@datenfreihafen.org>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-wpan@vger.kernel.org, netdev@vger.kernel.org,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>, linux-iio@vger.kernel.org,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	linux-input@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
-	Rayyan Ansari <rayyan@ansari.sh>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Martin Tuma <martin.tuma@digiteqautomotive.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	linux-media@vger.kernel.org, Sergey Kozlov <serjk@netup.ru>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Yang Yingliang <yangyingliang@huawei.com>,
-	linux-mmc@vger.kernel.org, Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Michal Simek <michal.simek@amd.com>,
-	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
-	linux-mtd@lists.infradead.org,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
-	Simon Horman <horms@kernel.org>,
-	Ronald Wahl <ronald.wahl@raritan.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	chrome-platform@lists.linux.dev, Max Filippov <jcmvbkbc@gmail.com>,
-	linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	linux-arm-msm@vger.kernel.org,
+	b=B0Spo3rGnbgB9zPHV4UIgRZdD+ZLoVGQFY2Eu1smFyFZaHu5L5OPcrsFb2P+VUiDd
+	 LsK8KfQNiPp+twAUPul1m/4JYuSFohbWVFdIT+cJMA/7hiCVydYWQ/rGrZ1nEDpYF+
+	 saudLPuSyYrdYkiYA8mFF57PrCNvPDuXeb+5kR3VnN3fEI1QP5VMROZ4NjiKOOVx0R
+	 jByrTxfv6+39YfMDW5rYa9A6x0pxJ5AcNsedxJ73HgScC18dgziw/KCrD26cJA2KMx
+	 FfXQngOx7sr9KzHMJBpSWEuOR8C+2E8h76e9LowWxURe1wrgOg4Wi+QSOq4VX18hnc
+	 jD+a89wJ92Xgw==
+Date: Wed, 24 Jan 2024 17:33:52 +0000
+From: Conor Dooley <conor@kernel.org>
+To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Javier Martinez Canillas <javierm@redhat.com>,
-	Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>,
-	dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org,
-	linux-staging@lists.linux.dev, Viresh Kumar <vireshk@kernel.org>,
-	Rui Miguel Silva <rmfrfs@gmail.com>,
-	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
-	greybus-dev@lists.linaro.org, Peter Huewe <peterhuewe@gmx.de>,
-	Jarkko Sakkinen <jarkko@kernel.org>, Jason Gunthorpe <jgg@ziepe.ca>,
-	linux-integrity@vger.kernel.org,
-	Herve Codina <herve.codina@bootlin.com>,
-	Alan Stern <stern@rowland.harvard.edu>,
-	Aaro Koskinen <aaro.koskinen@iki.fi>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	linux-usb@vger.kernel.org, Helge Deller <deller@gmx.de>,
-	Dario Binacchi <dario.binacchi@amarulasolutions.com>,
-	Kalle Valo <kvalo@kernel.org>, Dmitry Antipov <dmantipov@yandex.ru>,
-	libertas-dev@lists.infradead.org, linux-wireless@vger.kernel.org,
-	Jonathan Corbet <corbet@lwn.net>, James Clark <james.clark@arm.com>,
-	Bjorn Helgaas <bhelgaas@google.com>, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v2 00/33] spi: get rid of some legacy macros
-Message-ID: <2024012439-machinist-amazingly-2d2c@gregkh>
-References: <cover.1705944943.git.u.kleine-koenig@pengutronix.de>
- <2024012417-prissy-sworn-bc55@gregkh>
- <c1e38a30-5075-4d01-af24-ac684e77cf29@sirena.org.uk>
+	Eddie Huang <eddie.huang@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, linux-rtc@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+Subject: Re: [PATCH] dt-bindings: rtc: convert MT7622 RTC to the json-schema
+Message-ID: <20240124-footnote-country-9dc331c51819@spud>
+References: <20240123125043.27192-1-zajec5@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="mzfSYH7PP20o44ht"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <c1e38a30-5075-4d01-af24-ac684e77cf29@sirena.org.uk>
+In-Reply-To: <20240123125043.27192-1-zajec5@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240124_093059_405496_0FFBBABC 
-X-CRM114-Status: GOOD (  18.52  )
+X-CRM114-CacheID: sfid-20240124_093401_651317_01F10EF6 
+X-CRM114-Status: GOOD (  20.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,22 +80,136 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 24, 2024 at 05:22:00PM +0000, Mark Brown wrote:
-> On Wed, Jan 24, 2024 at 09:13:49AM -0800, Greg Kroah-Hartman wrote:
-> > On Mon, Jan 22, 2024 at 07:06:55PM +0100, Uwe Kleine-König wrote:
-> 
-> > > Note that Jonathan Cameron has already applied patch 3 to his tree, it
-> > > didn't appear in a public tree though yet. I still included it here to
-> > > make the kernel build bots happy.
-> 
-> > Are we supposed to take the individual changes in our different
-> > subsystem trees, or do you want them all to go through the spi tree?
-> 
-> Given that the final patch removes the legacy interfaces I'm expecting
-> to take them via SPI.
 
-Great, thanks, I'll go ack the subsystem patches that are relevent for
-me.
+--mzfSYH7PP20o44ht
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-greg k-h
+On Tue, Jan 23, 2024 at 01:50:43PM +0100, Rafa=C5=82 Mi=C5=82ecki wrote:
+> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
+>=20
+> This helps validating DTS files. Introduced changes:
+> 1. Reworded title
+> 2. Dropper redundant properties descriptions
+> 3. Added required #include-s and adjusted "reg" in example
+>=20
+> Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
+
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+
+Cheers,
+Conor.
+
+> ---
+>  .../bindings/rtc/mediatek,mt7622-rtc.yaml     | 52 +++++++++++++++++++
+>  .../devicetree/bindings/rtc/rtc-mt7622.txt    | 21 --------
+>  2 files changed, 52 insertions(+), 21 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/rtc/mediatek,mt7622=
+-rtc.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/rtc/rtc-mt7622.txt
+>=20
+> diff --git a/Documentation/devicetree/bindings/rtc/mediatek,mt7622-rtc.ya=
+ml b/Documentation/devicetree/bindings/rtc/mediatek,mt7622-rtc.yaml
+> new file mode 100644
+> index 000000000000..e74dfc161cfc
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/rtc/mediatek,mt7622-rtc.yaml
+> @@ -0,0 +1,52 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/rtc/mediatek,mt7622-rtc.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT7622 on-SoC RTC
+> +
+> +allOf:
+> +  - $ref: rtc.yaml#
+> +
+> +maintainers:
+> +  - Sean Wang <sean.wang@mediatek.com>
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: mediatek,mt7622-rtc
+> +      - const: mediatek,soc-rtc
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  clock-names:
+> +    const: rtc
+> +
+> +required:
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt7622-clk.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +
+> +    rtc@10212800 {
+> +        compatible =3D "mediatek,mt7622-rtc", "mediatek,soc-rtc";
+> +        reg =3D <0x10212800 0x200>;
+> +        interrupts =3D <GIC_SPI 129 IRQ_TYPE_LEVEL_LOW>;
+> +        clocks =3D <&topckgen CLK_TOP_RTC>;
+> +        clock-names =3D "rtc";
+> +    };
+> diff --git a/Documentation/devicetree/bindings/rtc/rtc-mt7622.txt b/Docum=
+entation/devicetree/bindings/rtc/rtc-mt7622.txt
+> deleted file mode 100644
+> index 09fe8f51476f..000000000000
+> --- a/Documentation/devicetree/bindings/rtc/rtc-mt7622.txt
+> +++ /dev/null
+> @@ -1,21 +0,0 @@
+> -Device-Tree bindings for MediaTek SoC based RTC
+> -
+> -Required properties:
+> -- compatible	    : Should be
+> -			"mediatek,mt7622-rtc", "mediatek,soc-rtc" : for MT7622 SoC
+> -- reg 		    : Specifies base physical address and size of the registers;
+> -- interrupts	    : Should contain the interrupt for RTC alarm;
+> -- clocks	    : Specifies list of clock specifiers, corresponding to
+> -		      entries in clock-names property;
+> -- clock-names	    : Should contain "rtc" entries
+> -
+> -Example:
+> -
+> -rtc: rtc@10212800 {
+> -	compatible =3D "mediatek,mt7622-rtc",
+> -		     "mediatek,soc-rtc";
+> -	reg =3D <0 0x10212800 0 0x200>;
+> -	interrupts =3D <GIC_SPI 129 IRQ_TYPE_LEVEL_LOW>;
+> -	clocks =3D <&topckgen CLK_TOP_RTC>;
+> -	clock-names =3D "rtc";
+> -};
+> --=20
+> 2.35.3
+>=20
+
+--mzfSYH7PP20o44ht
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZbFKAAAKCRB4tDGHoIJi
+0hieAQCSVtBR/QWefVi/R8aPudHESw7FQN1nfXuBKJuUNQjjlAD+NLxT1QNvQr9y
+CoJayyLMfGR1nC0ul+pEvzRdrx6kUAA=
+=LfgQ
+-----END PGP SIGNATURE-----
+
+--mzfSYH7PP20o44ht--
 
