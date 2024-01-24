@@ -4,163 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C72BCC47258
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 02:34:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDFC3C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 05:17:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	In-Reply-To:Date:References:Message-ID:From:Subject:Cc:To:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+lAM/R1C/ZSgiyfMjFKIPw/zESlhXcK5t8q7zGtT4nw=; b=RaqO5sCY9GuRXmwobIH51iqf1k
-	vZzJh54XILNykSrZqB9Q0SN1UC/4kTxBM1anw4/u3IAkiOpbU6YdxjTt7qYAelglXTjXJc7RvX1BX
-	UJxAKXqp2X3zG+TMp5c21hWwUxbT05sKQxGwbgw7D6HXozQGhXzkAmEos0O0vYzNun3oIXlFjkKdn
-	eePOVCk8nL+3PIti8nntEti/Gect0u82pkYmtG3qgoR2Q2ugrGe4fln1Fx54ltLJrKgPHRYhfhGv1
-	djHOEYIRnPijtpFMv3i6wlpdOrLw0cVpUK8mCWotE30duK86yWr76aNvFu4hUAjbygdSVSaE+5Vxz
-	N9Gl506w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XNiwvYR0sbKZZynRPIUFLzn9Wcb2cw2TWYiLCwpV8zQ=; b=GdewVQqnEeQ/l8Ma/llye/07Vj
+	dv50sxkC0kF8wuWvmkeR06nC+xE035q+Q0HMP3gRpU5DPBeCkChFvoMQFRzxeBTbHmbva73vzLCtR
+	qjVVmZ5ZLpcwiMr4P8FJPfIT2Gru2wfpv4eDeWXODNw4RltzeIXryc9C3lI3EWk3kjlWJKZ2SbDq1
+	nl1K1ylTyOg+2qVXwpnyme/GTLdEBvGZMLWQ0Uw8EayMj2UxH6dvWTdb/nvIiYkyBorqZ5tEU+ksx
+	wf0qrv114pBsG/hmS8hUqt5HnXKJ2nFS4qYJ3XNjNkSA2xmHxF4GWWVx8ddhjBzT+UNiv/3tQDvvf
+	5DjksxkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rST6D-0019SZ-35;
-	Wed, 24 Jan 2024 02:34:45 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1rSVe8-001ZS9-24;
+	Wed, 24 Jan 2024 05:17:56 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rST6A-0019Rw-2F;
-	Wed, 24 Jan 2024 02:34:43 +0000
-Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 40NMwbN1026874;
-	Wed, 24 Jan 2024 02:34:25 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=to : cc : subject :
- from : message-id : references : date : in-reply-to : content-type :
- mime-version; s=corp-2023-11-20;
- bh=+lAM/R1C/ZSgiyfMjFKIPw/zESlhXcK5t8q7zGtT4nw=;
- b=JgmGINWzjVd4UBIxuDckWDK9sK03J1oO0OZ+vEHms53pJj1qbEHN0J6oJQVgpuysX5xf
- PI+4k3YyV03rT7CSive5UsBxVDAnx939JHT/Qp0higxGJXasWezbKOZygjkTP+yAXdIi
- SG5CzcpcLsTdUlDFIanRQKnJhlUSonvH2vcMqlVJsOM211iRgMuHSywMC02YaGUCpPt9
- WenLr1bJkSjzmw+R0r24SDuR5BkTniOOgpBKJG1RW+v+j30iguvIbgYk7B/yt6AspDyr
- QAs9V9QotnqR/ED5B5oEiemEp9vfYMUJz5zxZDG6qGWAcfFL9eQy4GVKAMvDXwQpFInH BA== 
-Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3vr7anqwhj-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 24 Jan 2024 02:34:25 +0000
-Received: from pps.filterd (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 40O0mlTS005426;
-	Wed, 24 Jan 2024 02:34:16 GMT
-Received: from nam04-bn8-obe.outbound.protection.outlook.com (mail-bn8nam04lp2041.outbound.protection.outlook.com [104.47.74.41])
-	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 3vs371re7r-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 24 Jan 2024 02:34:16 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Q1AQqqhbBcvPpLQQHsQ1KA1jQG/mCrWjo2CRMtRsT5RohdEhxDPZEKLxlBiQ2qmJpD+vV3whvaCSsv7pgfajEKVcLu6Tm1QZEGMF4o8aMXu8RSLseDTf0CFqNzLH2pMH6R9jRFMZvL2ozMjR+cHVwS11fHwnUrljBmmowJbHAjG4tCfSzzCaugu2BrtOps44kgQA94OtaN0ESPd51saYPk+ZkUMjCHBsch+Ou2agQQojBvm0Xs9M58z4UCE2Y5SkDD4FkDP6HBhiS9SAzywIjyZAmO3IFPalSCQh2awEVvvDJ4Z8VuHDkXpc5LoPNw45bT3siIHUgspy+tns2WfEIg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+lAM/R1C/ZSgiyfMjFKIPw/zESlhXcK5t8q7zGtT4nw=;
- b=X8Vk2m4nxWMVxHXY95knFmWsk6CWeOZTG4c7w4Bcc4f8p6YVftzGYJxuPxKw2PQTvUOGN4Ou8Ir82YFTr0GJCbc4HFa2HnATWKesmMKQqQY5Jllj1eXnZ/LIl8wf6DwcNG/3StaLSQ8rjHn5IfRPlDF7PuuR1OaSIae4YtQvv3lXTWYjuzi/afdMQ4d0QD10DrcztX2ISb6KiNpxz/tzZjYGxFMNsN4W3uNyeTr+OsA9sGOw5Kxmg3cnPBbjHNENHuzz/Zr4wmf08qUzb8Sh91dn/25GQrcG9EEPz4nQtOsb29VcQ0tKDc23O7xcpkXokZOvSNQG7thK69eU7qfIgQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+lAM/R1C/ZSgiyfMjFKIPw/zESlhXcK5t8q7zGtT4nw=;
- b=GZukn71K3DD8z6rhc91/zGQ+N29B4s+qYClCnO+xhDCk3n6VZsq1yhYMJlm1rceqrgPNbjlhSW3L74UP/5LOg56GR6VWQL3Qc5nT3kG2bcESN+fTJYPf/zrRXsrBMwfMCblFIcdV+6BBMANQG7g/BxTRbla4gdj5Ic3kbcAtKlY=
-Received: from PH0PR10MB4759.namprd10.prod.outlook.com (2603:10b6:510:3d::12)
- by DS0PR10MB7068.namprd10.prod.outlook.com (2603:10b6:8:144::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7202.34; Wed, 24 Jan
- 2024 02:34:13 +0000
-Received: from PH0PR10MB4759.namprd10.prod.outlook.com
- ([fe80::3676:ea76:7966:1654]) by PH0PR10MB4759.namprd10.prod.outlook.com
- ([fe80::3676:ea76:7966:1654%4]) with mapi id 15.20.7202.035; Wed, 24 Jan 2024
- 02:34:13 +0000
-To: Chanwoo Lee <cw9316.lee@samsung.com>
-Cc: alim.akhtar@samsung.com, avri.altman@wdc.com, bvanassche@acm.org,
-        jejb@linux.ibm.com, martin.petersen@oracle.com,
-        peter.wang@mediatek.com, chu.stanley@gmail.com, matthias.bgg@gmail.com,
-        angelogioacchino.delregno@collabora.com, stanley.chu@mediatek.com,
-        quic_cang@quicinc.com, mani@kernel.org, quic_asutoshd@quicinc.com,
-        powen.kao@mediatek.com, quic_nguyenb@quicinc.com,
-        yang.lee@linux.alibaba.com, athierry@redhat.com,
-        linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-mediatek@lists.infradead.org,
-        linux-arm-kernel@lists.infradead.org, grant.jung@samsung.com,
-        jt77.jang@samsung.com, dh0421.hwang@samsung.com, sh043.lee@samsung.com
-Subject: Re: [PATCH v3] ufs: mcq: Add definition for REG_UFS_MEM_CFG register
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Organization: Oracle Corporation
-Message-ID: <yq1sf2nxxwk.fsf@ca-mkp.ca.oracle.com>
-References: <CGME20240102014248epcas1p4d49dcf2cd3f020bed88eebaeba648789@epcas1p4.samsung.com>
-	<20240102014222.23351-1-cw9316.lee@samsung.com>
-Date: Tue, 23 Jan 2024 21:34:12 -0500
-In-Reply-To: <20240102014222.23351-1-cw9316.lee@samsung.com> (Chanwoo Lee's
-	message of "Tue, 2 Jan 2024 10:42:22 +0900")
-Content-Type: text/plain
-X-ClientProxiedBy: BL1P223CA0011.NAMP223.PROD.OUTLOOK.COM
- (2603:10b6:208:2c4::16) To PH0PR10MB4759.namprd10.prod.outlook.com
- (2603:10b6:510:3d::12)
+	id 1rSVe5-001ZPq-0F;
+	Wed, 24 Jan 2024 05:17:54 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1rSVdj-00010p-1D;
+	Wed, 24 Jan 2024 05:17:32 +0000
+Date: Wed, 24 Jan 2024 05:17:25 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: John Crispin <john@phrozen.org>
+Subject: [PATCH net] net: dsa: mt7530: fix 10M/100M speed on MT7988 switch
+Message-ID: <a5b04dfa8256d8302f402545a51ac4c626fdba25.1706071272.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR10MB4759:EE_|DS0PR10MB7068:EE_
-X-MS-Office365-Filtering-Correlation-Id: b885bcd5-4e07-40a5-4839-08dc1c84f41b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: EDcoeEjEeP7yA/x9U5MrdAQoiLjgOH9aCLTsC/K+O9IABe/XtPlW3DlvKzx1As6qaBG/N4JUu1Pa8n1w5KUKmaE6p+ndz/802d09CzYUBQg9t2jNPZh3DiuC3LXBT+1cI0V6/V/T9bKA2lR50OKKjoKl8kjqrMxwk22kSmDXoJR2CQuzGhe0UnOYsXXbXfxLAODxWKNMx45iJTUPJX1fUU+TAUxDn2wytw/kPeB/n6W8+FsOXiflHhStlPBdCkm3BK8u2LMd0qg9bmgCVET7/3pS+L3o/CH9xkLxWwMIwx0qp6A51KTT1rp+XQGRt+3XKsOceOeXaCECzMmDp/vb9ypmz+lu9orfOc285LieIOncOpdtDQlxaaPbYNlivkjA61x2BX4zpBL5MZNfyH5yGx+a0GpFwv5oPfVEa1k62l7WIlBiBu6xq2IHsjUGmCPV2d2xttA/f6YiIWgNL2tBwRUWI1pAQ2oMc55ePjTfl7cjnYwcnI5OYgBG+VQ8q+2SkJSDDN/+cwjgf1lKkmW/Xy+oPYfEkWFFUTTmMBa9g2VraOrdaFp2aGVvFzI2rqVA
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR10MB4759.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366004)(396003)(39860400002)(346002)(136003)(376002)(230922051799003)(64100799003)(451199024)(186009)(1800799012)(38100700002)(5660300002)(26005)(66556008)(8676002)(8936002)(41300700001)(7416002)(4326008)(2906002)(478600001)(66946007)(6916009)(66476007)(36916002)(6512007)(316002)(6486002)(6506007)(558084003)(86362001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?QhkrGqv9W1CC8zE5ZQPjCaDTboo6DNUSe4jhscCTMGdEZKvJy4F5GfXQJyBM?=
- =?us-ascii?Q?i2RW/c/ucrEBzjSk/7WnThb47uhHVFKVoOB93+tRdstaeqfD/geCKBj5/5uA?=
- =?us-ascii?Q?w6rVWXyQfNXXfMPthPz4W6y5EruPiHlSEOCcfK90oPvflKiC6/zc5448Afki?=
- =?us-ascii?Q?aanybzsO6dUmqx0mgrFwC7sIeiyB1Klda4ebuRetV+wEO2u3xxkKgJrgHyKc?=
- =?us-ascii?Q?SQjHEiJHJHYbvwFmKNt+2XpKUrPJaP8KTHtApnQsaRYotu8Xl1bFPKLvK3yK?=
- =?us-ascii?Q?dhOX1HYS/vZNKMe36eJBd7ojTmqhzM88anLyd807GT5FY1WF4SxJQr2opAR4?=
- =?us-ascii?Q?/HGbvF/CbV4nFWKciarmLTb00bNxJogerhLMoM/xOjZ7UdonRKYidU0iwnuS?=
- =?us-ascii?Q?yd/zz/6RGurWwCFO+FMDb8FertIUVFAblA3OgHlVitPMEjbcZcVOHbyWX4TC?=
- =?us-ascii?Q?XGQQNkrpNwDnJAIIXWVvs9v5LxLs7AOs6315VibupE5L0If7IB0n/tkTNRy0?=
- =?us-ascii?Q?HpDhWREOgjeDuGeWl16g/lpODZZgmbVmBbpm8jBvXkOBbG3pdi21LW67RpRI?=
- =?us-ascii?Q?ITtEF+bnP8G/B8HRNmswgsQEnyWoxzb5tGWPxjeCuLAWN8wbTcKVwR7+ZAzB?=
- =?us-ascii?Q?w/RG6YtdhjYB1UIfVCb213yii2KbGrZDklWBIUtmoIbCYUOQKj7cdF91mdYJ?=
- =?us-ascii?Q?m2c9Q0jGPJ5CVaNQlONGUR0ckukSFl5gmor35zzqO11kZDGxtKLTRzBW7d/5?=
- =?us-ascii?Q?N7BQLjGL/dpdVtVEx0edt1Q7xucgNBmyijvSEknJdpCv7fK1EGH2BdH6zYRY?=
- =?us-ascii?Q?i6JZVB6jTR72ZE+bGdm6qz7/cpimwNHcB0CoCNMxC642hc92ePONBb+eZYx7?=
- =?us-ascii?Q?UBszqM8duokYmREazL0RT/0LRdIN4NbmlwWaCZvoEdN3LyFeUY4Wer0lkHf7?=
- =?us-ascii?Q?alaGrAayWkAgKIOXWwA7qL9ggO+TkNqmMd/wRs11OsbKkxK5bCcqRMu1A4hK?=
- =?us-ascii?Q?gpLGF3vwniWP9laiPD1ITZEb3Bdv6n01FrFowmZwW3UnKWWKxrHZFJGOyeEo?=
- =?us-ascii?Q?nT+XpSsFvzO5YF8HSpYKKfEkEayDE9qk9narsxWnpqadHdagO3IdY7MfvQac?=
- =?us-ascii?Q?DRASgTdUoKOEOgR0bewVUyHAPhpX+uMgTEJ1/LdcrxhUKxgahuACYxJ2ct7/?=
- =?us-ascii?Q?YHBSI/pMgDYSXUtf4NIpKwlYVUfdl6vxebIzKh08tSK8hdA1cACirDDuQrWQ?=
- =?us-ascii?Q?WRRjZ1s43lyfAfL07AqtwEKq5sgYh0M73e70/QB7DO/2wwtJQmgq1edLlCfq?=
- =?us-ascii?Q?pmdwu64AwDVhd2QPkijtUoD2JH9HQTwFIr34Fh4Wi7XT5MvWGNX3TrT21UVK?=
- =?us-ascii?Q?7YaYqfJs/eU7H1bT2f1T8S0Hi+imhBzhAW0DgAvjJ3PBQEeNq8qhuLt15o96?=
- =?us-ascii?Q?WCzkAGkPzdWRsI0ueaYJcGIKmZEchLSbFOUg8d8w6oLwTEiikKLEiWy+u7Wc?=
- =?us-ascii?Q?DHUHvNYc7xrPCnrW+J3HkpejguTbk/tPs/akdnPumdG6uU7znii1nqE54CbJ?=
- =?us-ascii?Q?JmCfQtbuywCanazNIlrZtynSVsY6KvUqhwopslI1aa+IxyOmph+gz+MAo0sz?=
- =?us-ascii?Q?rg=3D=3D?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: 1mYf+2DNSaqxz89XWhAAuoqQqH9rV8lY/kykM9zyp683jzdzUu8gJYeeASRG2g84xDnB5tmSUJjHC0a5u0FtzwW3e9BQa8yreSmY15pXXVTW7jPfjK9zhAChbTkH7aDQE4XSSOaEC6zthP/mSTlCgcHD1pr214sMcdWclfamIzdGU2NfQzHdd/RljoJ88CQJpDTqcQucIMHMJnRLiDbhv9XodxqFu3stwm0LBR0r+B66YT5UG4g7RffiiMnu/3juU+M6F9BNUE6y81kdvrtbOt/jjhxUyw/wPwTXGB8aC9sjLsWxHo1tlK+OB9wtUFMeF3x4Z+v1EkOI16Ge8pzPVcfjXNvlPNfxiWJiTR1wRQgNaemgxO0+ExbvbQz0b4IRagywWdRCG3tRnyq9sk7L5v8/LG8iMBRjoz5YzHvNa1rkuJBJLpR8LfVx0yiG79LMdYuh/8RdH98ecSMTsKjc0YCpD61OccfZf+cGJ33LuxagBu5zJPK8uy3DiYzDGjP87FpoEJy235V0Bc8jW65PHfi0jy7/ZxzkGo3zUo+hcrCu0pVCbyg1gFaOvnwcwl31zM0VJgYXoDQ0mF4Rh+9ySJG1iV6+CKS5/nL4AlMYb7Y=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b885bcd5-4e07-40a5-4839-08dc1c84f41b
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB4759.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jan 2024 02:34:13.7342
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: +ebTh02xK+DWk8qLTq/PUSoSU4Y+PRt/04yQy7/ti0h0KrxsFfv/IlL7F+6Fk/JiN6ZeUwtgU7bPJaG58ffVo+FfT3/wU0ykg+XS5bIC2ck=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR10MB7068
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-01-23_15,2024-01-23_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0 bulkscore=0
- mlxlogscore=939 mlxscore=0 phishscore=0 adultscore=0 spamscore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311290000 definitions=main-2401240018
-X-Proofpoint-GUID: PEYm4BUmfewRSsn_UFq4dRe59xkMYagY
-X-Proofpoint-ORIG-GUID: PEYm4BUmfewRSsn_UFq4dRe59xkMYagY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240123_183442_742022_3581CFE3 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20240123_211753_110753_9A330A01 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -175,15 +71,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Setup PMCR port register for actual speed and duplex on internally
+connected PHYs of the MT7988 built-in switch. This fixes links with
+speeds other than 1000M.
 
-Chanwoo,
+Fixes: ("110c18bfed414 net: dsa: mt7530: introduce driver for MT7988 built-in switch")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/dsa/mt7530.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-> Instead of hardcoding the register field, add the proper definition.
-> While at it, let's also use ufshcd_rmwl() to simplify updating this
-> register.
-
-Applied to 6.9/scsi-staging, thanks!
-
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index f8ecc354630b0..fbd52ff7cbd6e 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2843,8 +2843,7 @@ static void mt753x_phylink_mac_link_up(struct dsa_switch *ds, int port,
+ 	/* MT753x MAC works in 1G full duplex mode for all up-clocked
+ 	 * variants.
+ 	 */
+-	if (interface == PHY_INTERFACE_MODE_INTERNAL ||
+-	    interface == PHY_INTERFACE_MODE_TRGMII ||
++	if (interface == PHY_INTERFACE_MODE_TRGMII ||
+ 	    (phy_interface_mode_is_8023z(interface))) {
+ 		speed = SPEED_1000;
+ 		duplex = DUPLEX_FULL;
 -- 
-Martin K. Petersen	Oracle Linux Engineering
+2.43.0
+
 
