@@ -4,47 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 638C2C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 17:14:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E63CC47E49
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 17:22:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eB1EWRTs+M7kdfXhTV98/92eIGg4G3mEptM1kPte9nM=; b=nLmJ6rv2J04iFTl4QzIc11RiKk
-	n3bqPhXE3AdAuZ4GoSstb6u1E1rYxkBAwTiZ9gbOddQfHSwZC2cj/Cn/RW3l4RIYF0WfYIKo9ooY5
-	6zp48KqMtuohqPPureErkPV43zTBt7YWsawl49ZSIFf3KlHGGtLNCIUYE6ldFAh/dFuIsYI4lESOe
-	16yjGa6sg35hRfWAhfMBlsdsZJ5sSbgXBnco9vbEXSNYu5hI5XhC9i8Ha0G67ahSOouEEQFDlnN4U
-	ZrE3LPYWmrR7IUJBFycFVxdxXaZfdtMgEc/kz5CxfkThbxMNlgVkIiU8s2fI19+MPtGb6gzvXk17I
-	lLBl24nQ==;
+	bh=J9cWHBzQAtoEqppKJznkEOwXANl/OtQJlMreI+w5+pM=; b=DnUQfuTwQaDTVx1tc9DZi+s9Nm
+	NarH4zKi40M7Ju6T/SAnSwbc5sYLatmTQbwG1qXCT9659hg+NQCuUykkhj2lvATd3oDoWHL67Pe+8
+	3pjS1S2npFSGJXEEpVY/VEpGMvGtloL0gg7s95IStL5JWpk1YxC6hGETP5gRGii8e/eezIxdeBE1l
+	bEdpzpsMfUH92TIacMwnouNyg4ZoO9Ts5bngcJ/fl0pvopebJysESunDu4HGg8E+ufYcoz/RVSJmn
+	Dk1uri8qYRu6ApLbwbScii9YUEjQucL1HuA0rWwICzu7fXZZuLvc5qaAd+dh75PapIWQq1N1tCV6m
+	H2DM++UA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSgp6-004Ozh-2h;
-	Wed, 24 Jan 2024 17:14:00 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rSgxM-004RQw-2U;
+	Wed, 24 Jan 2024 17:22:32 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSgp1-004Owe-09;
-	Wed, 24 Jan 2024 17:13:56 +0000
+	id 1rSgxB-004RM6-2X;
+	Wed, 24 Jan 2024 17:22:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 28784CE314A;
-	Wed, 24 Jan 2024 17:13:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B096C43390;
-	Wed, 24 Jan 2024 17:13:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1706116430;
-	bh=jvo5IXYlQYdIU6VCmACeGNP4xo23ZIbLfeE2jvqqluI=;
+	by dfw.source.kernel.org (Postfix) with ESMTP id B592E61DC3;
+	Wed, 24 Jan 2024 17:22:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AAF93C433C7;
+	Wed, 24 Jan 2024 17:22:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1706116940;
+	bh=J9cWHBzQAtoEqppKJznkEOwXANl/OtQJlMreI+w5+pM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=v2pVfufLGd3lCfp0CeG2fpxzUUsvpwbElgNFofM1ZPehhJ3gSyI8DyqjujjS7qB28
-	 HIx8X5ThDTkPR0Ay0PzOQVdIcq5n2pTAL/fkyg4/FCf2V3zKeABMVcc+DS8MIJ/Ztv
-	 A8j4KVPuFkJX9pHjYFH5A/rDYDM6TICeR0rlV7yw=
-Date: Wed, 24 Jan 2024 09:13:49 -0800
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Mark Brown <broonie@kernel.org>, kernel@pengutronix.de,
-	Moritz Fischer <mdf@kernel.org>, Wu Hao <hao.wu@intel.com>,
-	Xu Yilun <yilun.xu@intel.com>, Tom Rix <trix@redhat.com>,
-	linux-fpga@vger.kernel.org, linux-kernel@vger.kernel.org,
+	b=LzpFWfp68rpr4dWHpdN+3IBhvKe1BMer+To6gMN52sFIqJGOHOg2ldSKjRXCcMb5m
+	 TFWNLUoV1HFSfX27ssqcTmUNGmLjfsu/z7ab3gxQuXnjvSNFUQXmjhZEIyIhUWWEIT
+	 CgAYNmzcDLnvRg+viWfwfm6By4Ffbj0ymjEy26C89CVOqr6JLR32V+zT7k2ef93fpP
+	 1Ka1oOBMomGGEuXbLQOuhLohRSeVfalTXlkn0w18Bo0vP0gpL8EpG8vIchAhQdEue3
+	 Cd0Kc25AAqNkrZ3Jhe5TUtRkxqZmjaKSQ074XXZPz2CPZUgeNzrq5mcjx4JO7BaCUH
+	 nqaKOF7sEH13g==
+Date: Wed, 24 Jan 2024 17:22:00 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+	kernel@pengutronix.de, Moritz Fischer <mdf@kernel.org>,
+	Wu Hao <hao.wu@intel.com>, Xu Yilun <yilun.xu@intel.com>,
+	Tom Rix <trix@redhat.com>, linux-fpga@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	Alexander Aring <alex.aring@gmail.com>,
 	Stefan Schmidt <stefan@datenfreihafen.org>,
 	Miquel Raynal <miquel.raynal@bootlin.com>,
@@ -108,16 +112,18 @@ Cc: Mark Brown <broonie@kernel.org>, kernel@pengutronix.de,
 	Jonathan Corbet <corbet@lwn.net>, James Clark <james.clark@arm.com>,
 	Bjorn Helgaas <bhelgaas@google.com>, linux-doc@vger.kernel.org
 Subject: Re: [PATCH v2 00/33] spi: get rid of some legacy macros
-Message-ID: <2024012417-prissy-sworn-bc55@gregkh>
+Message-ID: <c1e38a30-5075-4d01-af24-ac684e77cf29@sirena.org.uk>
 References: <cover.1705944943.git.u.kleine-koenig@pengutronix.de>
+ <2024012417-prissy-sworn-bc55@gregkh>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="FdGjmVpGJ74QDTu1"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <cover.1705944943.git.u.kleine-koenig@pengutronix.de>
+In-Reply-To: <2024012417-prissy-sworn-bc55@gregkh>
+X-Cookie: To err is human, to moo bovine.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240124_091355_436328_749A74CB 
-X-CRM114-Status: GOOD (  20.02  )
+X-CRM114-CacheID: sfid-20240124_092222_055057_73991F17 
+X-CRM114-Status: GOOD (  18.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,33 +138,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 22, 2024 at 07:06:55PM +0100, Uwe Kleine-König wrote:
-> Hello,
-> 
-> this is v2 of this patch set.
-> 
-> Changes since (implicit) v1, sent with Message-Id:
-> cover.1705348269.git.u.kleine-koenig@pengutronix.de:
-> 
->  - Rebase to v6.8-rc1
->  - Fix a build failure on sh
->  - Added the tags received in (implicit) v1.
-> 
-> The slave-mt27xx driver needs some more work. The patch presented here
-> is enough however to get rid of the defines handled in patch 32.
-> Cleaning that up is out-of-scope for this series, so I'll delay that
-> until later.
-> 
-> Note that Jonathan Cameron has already applied patch 3 to his tree, it
-> didn't appear in a public tree though yet. I still included it here to
-> make the kernel build bots happy.
 
-Are we supposed to take the individual changes in our different
-subsystem trees, or do you want them all to go through the spi tree?
+--FdGjmVpGJ74QDTu1
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Either is fine with me, just need to know.
+On Wed, Jan 24, 2024 at 09:13:49AM -0800, Greg Kroah-Hartman wrote:
+> On Mon, Jan 22, 2024 at 07:06:55PM +0100, Uwe Kleine-K=F6nig wrote:
 
-thanks,
+> > Note that Jonathan Cameron has already applied patch 3 to his tree, it
+> > didn't appear in a public tree though yet. I still included it here to
+> > make the kernel build bots happy.
 
-greg k-h
+> Are we supposed to take the individual changes in our different
+> subsystem trees, or do you want them all to go through the spi tree?
+
+Given that the final patch removes the legacy interfaces I'm expecting
+to take them via SPI.
+
+--FdGjmVpGJ74QDTu1
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmWxRzcACgkQJNaLcl1U
+h9CS5Af+OPZh7Z4aM5AF1TAMNJebJxrwbV+lfEa8zsdVnpHBXYpXokCrVwsSRBtM
+yR/bt2+OoZjrVep6c0lufmewH58kEtQF4UazYao7MD2alCnwzn49m697Ubpnc/k9
+iSCRd+E5ICMZuRdRrDAmd/To7o3jsg85SeN4qLdeer17NkjU6VS9vR6NlzImV/nS
+MXj52eAHL5+EZIpIlwZSBkCxyEEsz/UFaGcFsKMonZ+24Oz5SXXWFhUWfiFCD+fA
+DNZKxXJ9Vk2i5pCUsduff5giUUypwRqVP4C01wYMs7o3jkMZ2cQhtuH8iyDtKKMU
+FSwO3bpbAgZzLbY2G2cqYZyEpqJ8Ow==
+=E3cl
+-----END PGP SIGNATURE-----
+
+--FdGjmVpGJ74QDTu1--
 
