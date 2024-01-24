@@ -4,88 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5269AC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 09:05:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D174DC47DDF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 09:41:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9TdYwfAa3Kb++bbinJAM8F6n7j06tuxaI+2yyckzaPc=; b=JgdXVzf4cKNSgIWX7ft3yL1QJv
-	1zoW4GXtGXFjPz/6mfG7yxWx/7dcXxj2H82sAM7Oekk+of0sZQeOD/EY+61k92S4LWg2m/atFayPY
-	673n1WbP+NlnYt2j5bjeukKT2TGR84p0oCb1Dg51t4o3l1lHulXa5n6INs92CpnWvyImpbFDGJnY0
-	GJWLDgq3be1LXATOTeTbgNBQY1D3REZgxhvplYW4i5ZeEOZnErBJpuEdosO7Mt6nrDatzbAGvyLBE
-	VwjB5O3AEGKlmQmDKj9jN6Q3gWRAC015rzp0/8mpJfNHAVHfFlWb8symEk6ggLITGnu9KlXuWsk0B
-	7cS96M5g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jibM/VnKvjeuj4KMHL2R0dMgYRr+N1F84LDt0wE4LB8=; b=wl9UC9NmZShDJphYlO+bl3ksJG
+	AO2siGkWb0R9LwQa6qiE2gS1RxVVEWof5SXbgqrZFj6CH6xoYGx7cQmiZYWZ/CtuhElbvRNfjhxrz
+	5IHvHwEo2J2c2Cq1NTq+Kp9ej+3fsQtuNBO71+4rHxnWxo4jI0sd0TWIPTJ3zU724uas/Qkba4Prb
+	C6sghNkCpKGitHtNN8JNLEIsy/RzT0yZaTg4vzUwc70ofkHieX9Fwgk+3xVEGs4Y8ypnfXnemZPIk
+	Hqe1p9JnZ/lL9GjFHVpRcVfnsxIwOZTRjuxC2AnWCosbydVRWGoqTsZfIgd58uxG8ZByg+l7LrKsl
+	CFLjZ/7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSZCG-0026ed-0Z;
-	Wed, 24 Jan 2024 09:05:24 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1rSZkw-002IZB-26;
+	Wed, 24 Jan 2024 09:41:14 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSZCC-0026bd-2W
-	for linux-mediatek@lists.infradead.org;
-	Wed, 24 Jan 2024 09:05:22 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-55783b7b47aso5892292a12.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 24 Jan 2024 01:05:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1706087113; x=1706691913; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9TdYwfAa3Kb++bbinJAM8F6n7j06tuxaI+2yyckzaPc=;
-        b=TQcsvD5OEzUS2pcntb37HPKM02W1lMWWwnpC2c1MOfzqnrbpjbV//i9XDBecTK+AgS
-         aeBnmRywuqE8442qBFASiA1qIWqDsP7+79VVZyL34Hsb19v58gOnuBkk1kOutYmGe1LY
-         7n/8ycOjtPhQKnoQ/iL1XmEELYYy4GT5W+ZgY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706087113; x=1706691913;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=9TdYwfAa3Kb++bbinJAM8F6n7j06tuxaI+2yyckzaPc=;
-        b=sCK5tad+C5I61ZKPn987nA5/qywqWtKRFTbu6Ve1wNAzQaSoi0qaTOHFE7V27eS53o
-         cLPE9RD7cD3nScA7Y5LeO1dMw3vx+uElKs/qxz2K7bGp36aCR4bTREsB/aFL+mTe8tv3
-         ZBUFhpP1qDHGMTG1/PqOV771jSyP5Jhht58N7fCDjBksZrIV2QjaVugwX9F2a0m7rCib
-         0XNUF/3M6b5NtK8rgcINmuIsnHsVZyzoeObPeYZguBR65TzOcACH/BtVUb2U0mPGh4od
-         VsYgOSrqMDWNcFC5ZpzpSk7aVa8zU8yPk6Bi/oace4TCIlgrQFMY2aB0jiV5E5i+Hzx7
-         cf1w==
-X-Gm-Message-State: AOJu0YzTrlm0VC5Dn04XiMp+AtcTG5ShRxSKpSeBZQx/6SnyD64OtnPL
-	rPF8IHrizdBL8GvXxxAwbV62LwHtBBWIlmhJoGmmaIagqnecGN9m+N5uKlO5kk6wUHwX2p26Xca
-	xovPhjJk=
-X-Google-Smtp-Source: AGHT+IH5LCLX9sLazY0oP543g0rOlopXlMPi0pjg26LrsR6VA4Tv3+WRtkXxjeXDZFy6DpkF+J5tVw==
-X-Received: by 2002:a17:906:2551:b0:a30:d361:406e with SMTP id j17-20020a170906255100b00a30d361406emr663813ejb.76.1706087112947;
-        Wed, 24 Jan 2024 01:05:12 -0800 (PST)
-Received: from mail-ej1-f52.google.com (mail-ej1-f52.google.com. [209.85.218.52])
-        by smtp.gmail.com with ESMTPSA id v1-20020a17090606c100b00a2a04754eb1sm15259137ejb.8.2024.01.24.01.05.12
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 24 Jan 2024 01:05:12 -0800 (PST)
-Received: by mail-ej1-f52.google.com with SMTP id a640c23a62f3a-a310f4b3597so43982366b.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 24 Jan 2024 01:05:12 -0800 (PST)
-X-Received: by 2002:a17:906:1756:b0:a30:cc71:7340 with SMTP id
- d22-20020a170906175600b00a30cc717340mr560441eje.120.1706087112019; Wed, 24
- Jan 2024 01:05:12 -0800 (PST)
+	id 1rSZku-002IXu-1a;
+	Wed, 24 Jan 2024 09:41:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=jibM/VnKvjeuj4KMHL2R0dMgYRr+N1F84LDt0wE4LB8=; b=TfXuyM+C7IlIREEPVW+J23kUaw
+	T6MMhk+SRjqaj441odSQSBT4o9M3KB9O4J0I0z3oFRg5AIHlisUUWPIMNQeppAoOcHujvkjyKxeex
+	5ep4Sbl3Uf+TzHgl7WYMYaQWcZ5t3oK/DvGYtqdqh0fTpxCJ2Cj+gq0k3pQipxXfFwp3+de5VGe5R
+	CCmFvxuv+KDOLvJSWzdIEMrrRYJj+rZ+fPm5FD0jPHQBBAnKfFoYS2CxvrjgC+Q+mo40Rf4vxR+ZX
+	/OJ8/lBk+qmwCDvQPkH+TVIqA7fW2w4KbVhBBkoq/JwDpBW5R9jG28pg1FpZTERxaBkOKwT7hJr9a
+	myVFYiQA==;
+Received: from mgamail.intel.com ([192.198.163.13])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rSZkq-00000004Mqi-2Bbn;
+	Wed, 24 Jan 2024 09:41:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1706089268; x=1737625268;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=+lkuKTCv3wUHbUhaYST2gExklAngKX84H00lKlFUXx4=;
+  b=OU3E0x/3ScyXwDdb7/WH4pZv0MoRSouo2ke3+KW5bAiXIRo3PhL1BHTI
+   ZQxJXXE8IehmHS2ZK4MpUV5mMD9r0v48jaUn6FBnf2+JpFPduxtTgSgYs
+   I1T/r7pmjNQgObWv+edRMW9akfy+tXgiKRKFx624EV8lsJqe+q2p3U4K7
+   47b6k5ZpO/a5xTvtb2+ajzg73Og9jfDnucwzgbKg3n1KchrEJSExU3yPC
+   FSV61jCHFRA3kd9k7N5X9m4wzyOlgj37XhPcetiAx1INxLqA2yWTdlBTY
+   Rljd7BIhO9YZuQAbv2x1zsxdQSDMxagm6skgE1bURlz3MU5eysHfAIRtL
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10962"; a="693421"
+X-IronPort-AV: E=Sophos;i="6.05,216,1701158400"; 
+   d="scan'208";a="693421"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jan 2024 01:41:03 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10962"; a="735868699"
+X-IronPort-AV: E=Sophos;i="6.05,216,1701158400"; 
+   d="scan'208";a="735868699"
+Received: from lkp-server01.sh.intel.com (HELO 961aaaa5b03c) ([10.239.97.150])
+  by orsmga003.jf.intel.com with ESMTP; 24 Jan 2024 01:40:58 -0800
+Received: from kbuild by 961aaaa5b03c with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1rSZke-00081p-13;
+	Wed, 24 Jan 2024 09:40:56 +0000
+Date: Wed, 24 Jan 2024 17:40:39 +0800
+From: kernel test robot <lkp@intel.com>
+To: Ziyang Huang <hzyitc@outlook.com>, mcoquelin.stm32@gmail.com
+Cc: oe-kbuild-all@lists.linux.dev, alexandre.torgue@foss.st.com,
+	richardcochran@gmail.com, p.zabel@pengutronix.de,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	linux-kernel@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Ziyang Huang <hzyitc@outlook.com>
+Subject: Re: [PATCH 3/8] net: stmmac: Introduce Qualcomm IPQ50xx DWMAC driver
+Message-ID: <202401241733.H4p1Af19-lkp@intel.com>
+References: <TYZPR01MB5556B8833322A83632709631C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
 MIME-Version: 1.0
-References: <20240124-send-upstream-v3-1-5097c9862a73@chromium.org> <786c85c7-7b38-4a2a-85ec-282196de7b5e@collabora.com>
-In-Reply-To: <786c85c7-7b38-4a2a-85ec-282196de7b5e@collabora.com>
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Wed, 24 Jan 2024 17:04:35 +0800
-X-Gmail-Original-Message-ID: <CAHc4DNKXOb54v7qJZJ2EsVP1KkMq7WnSJJLWhb2SzuhW_=qnxQ@mail.gmail.com>
-Message-ID: <CAHc4DNKXOb54v7qJZJ2EsVP1KkMq7WnSJJLWhb2SzuhW_=qnxQ@mail.gmail.com>
-Subject: Re: [PATCH v3] arm64: dts: mt8195-cherry-tomato: change watchdog
- reset boot flow
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <TYZPR01MB5556B8833322A83632709631C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240124_010520_857611_DBCF7F1B 
-X-CRM114-Status: GOOD (  19.94  )
+X-CRM114-CacheID: sfid-20240124_094109_333973_7A9BFA3C 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,94 +103,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+Hi Ziyang,
 
-This bug can be triggered by stopping watchdog daemon and running
-`sleep 60 > /dev/watchdog`.
+kernel test robot noticed the following build errors:
 
-Regards,
-Hsin-Te
+[auto build test ERROR on robh/for-next]
+[also build test ERROR on clk/clk-next pza/reset/next linus/master v6.8-rc1 next-20240123]
+[cannot apply to pza/imx-drm/next]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Ziyang-Huang/net-phy-Introduce-Qualcomm-IPQ5018-internal-PHY-driver/20240121-204840
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
+patch link:    https://lore.kernel.org/r/TYZPR01MB5556B8833322A83632709631C9762%40TYZPR01MB5556.apcprd01.prod.exchangelabs.com
+patch subject: [PATCH 3/8] net: stmmac: Introduce Qualcomm IPQ50xx DWMAC driver
+config: parisc-allmodconfig (https://download.01.org/0day-ci/archive/20240124/202401241733.H4p1Af19-lkp@intel.com/config)
+compiler: hppa-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240124/202401241733.H4p1Af19-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202401241733.H4p1Af19-lkp@intel.com/
+
+All error/warnings (new ones prefixed by >>):
+
+   drivers/net/ethernet/stmicro/stmmac/dwmac-ipq50xx.c: In function 'ipq50xx_gmac_probe':
+>> drivers/net/ethernet/stmicro/stmmac/dwmac-ipq50xx.c:94:20: error: implicit declaration of function 'stmmac_probe_config_dt'; did you mean 'devm_stmmac_probe_config_dt'? [-Werror=implicit-function-declaration]
+      94 |         plat_dat = stmmac_probe_config_dt(pdev, stmmac_res.mac);
+         |                    ^~~~~~~~~~~~~~~~~~~~~~
+         |                    devm_stmmac_probe_config_dt
+>> drivers/net/ethernet/stmicro/stmmac/dwmac-ipq50xx.c:94:18: warning: assignment to 'struct plat_stmmacenet_data *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+      94 |         plat_dat = stmmac_probe_config_dt(pdev, stmmac_res.mac);
+         |                  ^
+   cc1: some warnings being treated as errors
 
 
+vim +94 drivers/net/ethernet/stmicro/stmmac/dwmac-ipq50xx.c
 
-On Wed, Jan 24, 2024 at 4:27=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 24/01/24 08:51, Hsin-Te Yuan ha scritto:
-> > From: Hsin-Te Yuan <yuanhsinte@google.com>
-> >
-> > The external output reset signal was originally disabled and sent from
-> > firmware. However, an unfixed bug in the firmware on tomato prevents
-> > the signal from being sent, causing the device to fail to boot. To fix
-> > this, enable external output reset signal to allow the device to reboot
-> > normally.
-> >
-> > Fixes: 5eb2e303ec6b ("arm64: dts: mediatek: Introduce MT8195 Cherry pla=
-tform's Tomato")
-> > Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
->
-> Can't trigger the bug, but also this commit gives no side effects, so:
->
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
->
->
-> > ---
-> > Changes in v3:
-> > - Add Fixes tag
-> >
-> > Changes in v2:
-> > - Limit the effect only on tomato.
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts | 4 ++++
-> >   arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts | 4 ++++
-> >   arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts | 4 ++++
-> >   3 files changed, 12 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts b=
-/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-> > index 2d5e8f371b6de..a82d716f10d44 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-> > @@ -23,3 +23,7 @@ &sound {
-> >   &ts_10 {
-> >       status =3D "okay";
-> >   };
-> > +
-> > +&watchdog {
-> > +     /delete-property/ mediatek,disable-extrst;
-> > +};
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts b=
-/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
-> > index 2586c32ce6e6f..2fe20e0dad836 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
-> > @@ -43,3 +43,7 @@ &sound {
-> >   &ts_10 {
-> >       status =3D "okay";
-> >   };
-> > +
-> > +&watchdog {
-> > +     /delete-property/ mediatek,disable-extrst;
-> > +};
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts b=
-/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
-> > index f54f9477b99da..dd294ca98194c 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
-> > @@ -44,3 +44,7 @@ &sound {
-> >   &ts_10 {
-> >       status =3D "okay";
-> >   };
-> > +
-> > +&watchdog {
-> > +     /delete-property/ mediatek,disable-extrst;
-> > +};
-> >
-> > ---
-> > base-commit: 64b50fcb03649ca7f0d762a50e7a3484cfc1d586
-> > change-id: 20230818-send-upstream-e91e615a893c
-> >
-> > Best regards,
->
+    80	
+    81	static int ipq50xx_gmac_probe(struct platform_device *pdev)
+    82	{
+    83		struct device *dev = &pdev->dev;
+    84		struct stmmac_resources stmmac_res;
+    85		struct plat_stmmacenet_data *plat_dat;
+    86		struct ipq50xx_gmac *gmac;
+    87		int ret;
+    88	
+    89		ret = stmmac_get_platform_resources(pdev, &stmmac_res);
+    90		if (ret)
+    91			return dev_err_probe(dev, ret,
+    92					     "failed to get stmmac platform resources\n");
+    93	
+  > 94		plat_dat = stmmac_probe_config_dt(pdev, stmmac_res.mac);
+    95		if (IS_ERR_OR_NULL(plat_dat))
+    96			return dev_err_probe(dev, PTR_ERR(plat_dat),
+    97					     "failed to parse stmmac dt parameters\n");
+    98	
+    99		gmac = devm_kzalloc(dev, sizeof(*gmac), GFP_KERNEL);
+   100		if (!gmac)
+   101			return dev_err_probe(dev, -ENOMEM,
+   102					     "failed to allocate priv\n");
+   103	
+   104		gmac->dev = dev;
+   105	
+   106		memcpy(gmac->clks, ipq50xx_gmac_clks, sizeof(gmac->clks));
+   107		ret = devm_clk_bulk_get_optional(dev, ARRAY_SIZE(gmac->clks), gmac->clks);
+   108		if (ret)
+   109			return dev_err_probe(dev, ret,
+   110					     "failed to acquire clocks\n");
+   111	
+   112		ret = clk_bulk_prepare_enable(ARRAY_SIZE(gmac->clks), gmac->clks);
+   113		if (ret)
+   114			return dev_err_probe(dev, ret,
+   115					     "failed to enable clocks\n");
+   116	
+   117		gmac->rst = devm_reset_control_array_get_exclusive(dev);
+   118		if (IS_ERR_OR_NULL(gmac->rst))
+   119			return dev_err_probe(dev, PTR_ERR(gmac->rst),
+   120					     "failed to acquire reset\n");
+   121	
+   122		ret = reset_control_reset(gmac->rst);
+   123		if (ret)
+   124			return dev_err_probe(dev, ret,
+   125					     "failed to reset\n");
+   126	
+   127		gmac->uniphy = devm_phy_optional_get(dev, "uniphy");
+   128		if (IS_ERR(gmac->uniphy))
+   129			return dev_err_probe(dev, PTR_ERR(gmac->uniphy),
+   130					     "failed to acquire uniphy\n");
+   131	
+   132		plat_dat->bsp_priv = gmac;
+   133		plat_dat->serdes_powerup = ipq50xx_gmac_powerup;
+   134		plat_dat->fix_mac_speed = ipq50xx_gmac_fix_speed;
+   135	
+   136		return stmmac_dvr_probe(dev, plat_dat, &stmmac_res);
+   137	}
+   138	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
