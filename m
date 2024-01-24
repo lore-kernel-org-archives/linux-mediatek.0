@@ -4,71 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70D53C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 08:48:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FBE4C47DDF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 08:57:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JFyox+WtsyCICbvGtkgqOIBIiLLVQoD0ABLYVhaXX+A=; b=qkT7v243YNQNKRGcf78RMVuG9L
-	X+tcI2pegQa63S9rFHMU7dmxM6BBfXgVgnzb5GaoGuqzz3ycqXcY2oZ6to80hbNOYyKoPnmiAF7vG
-	ddMaSBto6UB7/2XDY0rhXRF9m53tTXz18xTJdXZovqwc2bZKBaN693/3MY1eXjZlUNx6AbF9PCs89
-	Zc5nDLj/0rqVL33JuD1gk68m3lCrYm8NHh9ohOOngQXxRkD7a+swfQqoEieP5oKZeYUO+wubxj/Gp
-	5OBgjx26cQ/IYmmFKbvu8CzPMd9+4TGKWI9/U8MDveq26WmoWdqCNo+p8rI31ULj0j2A0jA0Kkmu6
-	ca03V5qg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=whazQMvcS0EoXt4SdwfLyIksmCvU+xpV5kM3zRxG6Go=; b=k87A3kslta06ek
+	E0Zbtkt6Kt3hUQ/jbBglyJlg7JZzWXD8k5oI+oBKYo+oX941nkRiTGqIvMCoA0e1+pGaMWw+/NZgQ
+	+VeERNmcfnd4tIQ0biAdhVcery+SaZwkf0pwmAC6L6hYemGjWiNhgrOopeXcRM7gTK/mtw9ISSpMH
+	NHG8GuxFPdIz2pRKNAf+BtqT87W95qZAbcabKTenweswJNeAwkut8ot227oUkAQMiMwV5EJzBkjmV
+	YEyhntbdfrtDvdZVXghkGwZR3lGmIxwXTA0jbBUiFte/KJSoIsQUevzfQW6ZIu+sYt6uP+O53Tat5
+	mpc09OcyBxQm9VppaT4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSYvu-0023kp-0U;
-	Wed, 24 Jan 2024 08:48:30 +0000
+	id 1rSZ4c-0024u1-0Z;
+	Wed, 24 Jan 2024 08:57:30 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSYvq-0023jY-2g;
-	Wed, 24 Jan 2024 08:48:28 +0000
+	id 1rSZ4Y-0024rL-1X;
+	Wed, 24 Jan 2024 08:57:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706086105;
-	bh=ekyS4ZOSSZIbtYGGpgL9knQnsxr3+M0NajqbJuU+F1k=;
+	s=mail; t=1706086645;
+	bh=mv/7ewEA4l7pAVBAP8biUVLUr2QSV9pQKC7zQv+hEQQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BCoTd5gMIKJXbmId+RePuOy78x9TNjz+IVtfVvT8aMoOvt6GFXUMFfiK2evKiYXvb
-	 oZyO0AEFs4Dmavi4mJMbhG5F4NI7ioouzVKGC/NVwuEFsJeVkc0nhffNOnErG725n+
-	 VtKyB0hhyArbCln7dl/FSvP+0nKz/P6X/YkzIwnVFCR4mxTUoH1ucl9082Tsyqo2HN
-	 ICc7ksvioMRnWFs40WWbkN7ey5nw81o90DtxhGOwuLlF5S8LU17lSrTx0Hkk1mH8XR
-	 FvrHj7IpUcE8EFEQjdNOisxGchNMHFqBOSa4cbtHks5G06EP+uMMFJttyKdkxUEagA
-	 lchYKYqg7tOzA==
+	b=l29n1LNa4UC1tyoaI2ZVW6ekOax3ozxHbprpCoveeOUHpLNpPcK1uDNawsVKXqpOG
+	 FKzntSiTGRWcBsWdfGNjbo4doYTt4uFd9GNFeGDcp5IDGryVZBycZYzGFYr3brvMRx
+	 tW1j0yuv2fP0wgXojS/WkxRNhAL7u9D2OcY1NZUfGkDgkTh5g8MUxXRD+zhavi471c
+	 GTpoWaCp90tz5/5nD/6wsX9jiwwuxRXUD8jUfteBWaJOTwC8pq5h7AO4xWEfOK3bsh
+	 PJIuxAKVQX3bRFPA89SwaCTjKj7/XnFA3eSG3ty2zFn62Gv19nQaS3ncPxk7cam7XK
+	 inOcYNx/epBlQ==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 89EB137820B7;
-	Wed, 24 Jan 2024 08:48:24 +0000 (UTC)
-Message-ID: <4fdbc3d8-3d44-4c2c-aae6-daa0b431e1c9@collabora.com>
-Date: Wed, 24 Jan 2024 09:48:23 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C692C37802F2;
+	Wed, 24 Jan 2024 08:57:23 +0000 (UTC)
+Message-ID: <f91d3ac1-0a7d-4ca2-bf0f-c5e471c2f6bb@collabora.com>
+Date: Wed, 24 Jan 2024 09:57:23 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] dt-bindings: usb: mt6360-tcpc: Drop
- interrupt-names
+Subject: Re: [PATCH v4 1/3] dt-bindings: mailbox: Add mediatek,gce-props.yaml
 Content-Language: en-US
-To: Conor Dooley <conor@kernel.org>, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org
-Cc: chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com, linux@roeck-us.net,
- heikki.krogerus@linux.intel.com, cy_huang@richtek.com,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20240119094105.98312-1-angelogioacchino.delregno@collabora.com>
- <20240119-eldest-discharge-e2d3812be0a9@spud>
- <12b7b339-498b-45c1-bc5e-05e07660aefa@collabora.com>
- <20240123-procurer-jumbo-ebbec485505d@spud>
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
+References: <20240124011459.12204-1-jason-jh.lin@mediatek.com>
+ <20240124011459.12204-2-jason-jh.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240123-procurer-jumbo-ebbec485505d@spud>
+In-Reply-To: <20240124011459.12204-2-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240124_004827_001751_622C8636 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20240124_005726_648034_5BF0C476 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,41 +74,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, Jason-ch Chen <jason-ch.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Shawn Sung <shawn.sung@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/01/24 18:14, Conor Dooley ha scritto:
-> On Mon, Jan 22, 2024 at 11:32:30AM +0100, AngeloGioacchino Del Regno wrote:
->> Il 19/01/24 17:32, Conor Dooley ha scritto:
->>> On Fri, Jan 19, 2024 at 10:41:04AM +0100, AngeloGioacchino Del Regno wrote:
->>>> This IP has only one interrupt, hence interrupt-names is not necessary
->>>> to have.
->>>> Since there is no user yet, simply remove interrupt-names.
->>>
->>> I'm a bit confused chief. Patch 2 in this series removes a user of this
->>> property from a driver, so can you explain how this statement is true?
->>>
->>> Maybe I need to drink a few cans of Monster and revisit this patchset?
->>>
->>
->> What I mean with "there is no user" is that there's no device tree with any
->> mt6360-tcpc node upstream yet, so there is no meaningful ABI breakage.
->> Different story would be if there was a device tree using this already, in
->> which case, you can make a required property optional but not remove it.
+Il 24/01/24 02:14, Jason-JH.Lin ha scritto:
+> Add mediatek,gce-props.yaml for common GCE properties that is used for
+> both mailbox providers and consumers. We place the common property
+> "mediatek,gce-events" in this binding currently.
 > 
-> Not every devicetree lives within the kernel.. If the driver is using
-> it, I'm not inclined to agree that it should be removed.
+> The property "mediatek,gce-events" is used for GCE event ID corresponding
+> to a hardware event signal sent by the hardware or a software driver.
+> If the mailbox providers or consumers want to manipulate the value of
+> the event ID, they need to know the specific event ID.
+> 
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
 
-I get the point, but as far as I remember, it's not the first time that this
-kind of change is upstreamed.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-I'm fine with keeping things as they are but, since my intention is to actually
-introduce an actual user of this binding upstream, and that actually depends on
-if this change is accepted or not (as I have to know whether I can omit adding
-the interrupt-names property or not)....
 
-....may I ask for more feedback/opinions from Rob and/or Krzk?
-
-Thanks,
-Angelo
 
