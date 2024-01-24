@@ -4,63 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BE1AC47258
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jan 2024 23:25:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57DBEC47258
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 00:53:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3L0RW4HC32Lx5N8gtFQZihg57fFjleHQGb6GEyv904U=; b=wSkCA+7sZEWizEgYH2GPftkknc
-	vYsQmxkvIxzOE4HGjCRl9eoPbV6DfptjWEFFaNWJm3kHDoV+HbVTOW5wi8ZN5pknbTTZvKY6sxV3u
-	ZozJOD3VdskdJGOX12cGq3Gc2tepzulXQQpukoA4WyU042nDc9gy4dhX7loRIEehOmcGBZB5PGlgc
-	bdzUdx91gcPqaFIlZn6Wdb8gtsLfGguJxPbP7mHdbKccshiewNtlzjVfa9nBy5iIiCZ41AMSGJC6d
-	Uht1lDCXAPBog3AmtMkfMZ2PvolCQJw86qvKKWrtzBP8MFBRZOKqhnouq70IxnsjffLxxE7OjVNqI
-	XUSCMVcA==;
+	bh=77VcWK0lrmQvqbExYpl2P0h88IY5ng+l4taYew+D5XY=; b=hxsxyf4PMtlw6WflB86btpaAUf
+	aLjTlRso6P1qEEuTATBC/zR2f3IJNOLcPjZBcsqdV/+gskz9CVh/ni6E0j/LUnoRdOGMAKsBbqIsw
+	6ybWpdmr5YsEu1vqSwvBxv1jFSUJ2TpVfa5O4gSNoD5thqG/cn58Gsvq4B2Hbehpu98/2O4wCtR7V
+	FzY3j90kzLalFrv1vcf0qQSJ5/noTI/vvW47b2T97IHKlQSqhqfNUK6r6UbK9QA9OajbY8D6g6fkj
+	/EphS6Ei3wEYVUVaF+q6wXF7FA0GOOOcx/pUjlkF2EjA5WSRTWbb3dkyjJ9+aGFtP8nmFQ+5ZInZM
+	+j9MZM7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSQ8s-000oyP-1Y;
-	Tue, 23 Jan 2024 23:25:18 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1rSRWY-000wnT-0Y;
+	Wed, 24 Jan 2024 00:53:50 +0000
+Received: from mgamail.intel.com ([134.134.136.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSQ8p-000oxL-2i;
-	Tue, 23 Jan 2024 23:25:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
-	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
-	In-Reply-To:References; bh=3L0RW4HC32Lx5N8gtFQZihg57fFjleHQGb6GEyv904U=; b=Gr
-	D29UDWX/6aQD2sRb7aY/kxmfBVq8gBCbrbzylkaj3+maXmg+39XjQ//bc3h0pQe6NrE5FlbECD2h1
-	OFSQjWYIxZyLizyhMAttwp5ZPoa/PTVRkI3vqrWY6BNsDqw8u8oTCBTOTjFU9IPgjFHKVVgf1HL/O
-	LnjELfdoswWP1DI=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1rSQ8h-005t6u-Hh; Wed, 24 Jan 2024 00:25:07 +0100
-Date: Wed, 24 Jan 2024 00:25:07 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Ziyang Huang <hzyitc@outlook.com>
-Cc: mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
-	richardcochran@gmail.com, p.zabel@pengutronix.de,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	id 1rSRWU-000wmz-2Y;
+	Wed, 24 Jan 2024 00:53:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1706057626; x=1737593626;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=yU9VsaBUrWtQtZ+GU86aDxwFo8ytu1/OKjeCrxQZZw8=;
+  b=kiqvywg0QEgWWqu1p/pfXkyeu9eQlTZgE/h4TsOGozzNbFoHwJt4FuF+
+   Gw6v/tXWnmluV6bErjs5axGyyTLFR+gN8oNJb4tawd6GKvp98y8tv2uor
+   GBGvmr7opSmY99PMkjAKZwqa+kNpnC9GPhyOqqSJ08HTyw/Yf01Mef7Cf
+   w9349wnp/Gaudjo8ArCSEqxKiC/LuKlW6bvuHSGBaGEJcSEb1SajYWEg0
+   a+XsTBUD+TJ2D0fOtvmtAyCuNoTTMuJQgRfa6HbISVjPCuNjQMkgVa4CA
+   ggDh9nNweujvcU0B3Ps3vv9Eg018yTqPS6VhEirN7l6yICBUm70gMjoAd
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10962"; a="405454540"
+X-IronPort-AV: E=Sophos;i="6.05,215,1701158400"; 
+   d="scan'208";a="405454540"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jan 2024 16:53:44 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10962"; a="929509990"
+X-IronPort-AV: E=Sophos;i="6.05,215,1701158400"; 
+   d="scan'208";a="929509990"
+Received: from lkp-server01.sh.intel.com (HELO 961aaaa5b03c) ([10.239.97.150])
+  by fmsmga001.fm.intel.com with ESMTP; 23 Jan 2024 16:53:40 -0800
+Received: from kbuild by 961aaaa5b03c with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1rSRWM-0007lN-0F;
+	Wed, 24 Jan 2024 00:53:38 +0000
+Date: Wed, 24 Jan 2024 08:53:36 +0800
+From: kernel test robot <lkp@intel.com>
+To: Ziyang Huang <hzyitc@outlook.com>, mcoquelin.stm32@gmail.com
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	alexandre.torgue@foss.st.com, richardcochran@gmail.com,
+	p.zabel@pengutronix.de, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
 	linux-kernel@vger.kernel.org,
 	linux-stm32@st-md-mailman.stormreply.com,
 	linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/8] phy: Introduce Qualcomm ethernet uniphy driver
-Message-ID: <8488a274-148d-42da-9fd3-d56ef1db6061@lunn.ch>
-References: <TYZPR01MB55563BD6A2B78402E4BB44D4C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
- <TYZPR01MB55568ACB534944D7DEB00C7AC9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
- <TYZPR01MB555648886D03AB911224F6FAC9742@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
+	linux-mediatek@lists.infradead.org,
+	Ziyang Huang <hzyitc@outlook.com>
+Subject: Re: [PATCH 8/8] arm64: dts: qcom: ipq5018-rdp432-c2: enable ethernet
+ support
+Message-ID: <202401240841.gfbyp3Lz-lkp@intel.com>
+References: <TYZPR01MB5556D3E73D7F7242F810F915C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <TYZPR01MB555648886D03AB911224F6FAC9742@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
+In-Reply-To: <TYZPR01MB5556D3E73D7F7242F810F915C9762@TYZPR01MB5556.apcprd01.prod.exchangelabs.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240123_152515_875152_63E09E4F 
-X-CRM114-Status: GOOD (  19.53  )
+X-CRM114-CacheID: sfid-20240123_165346_939158_1C327C46 
+X-CRM114-Status: GOOD (  12.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,81 +91,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 23, 2024 at 11:58:26PM +0800, Ziyang Huang wrote:
-> 在 2024/1/21 20:42, Ziyang Huang 写道:
-> > +#define rmwl(addr, mask, val) \
-> > +	writel(((readl(addr) & ~(mask)) | ((val) & (mask))), addr)
-> > +
-> > +static int cmn_init(struct platform_device *pdev)
-> > +{
-> > +	struct resource *res;
-> > +	void __iomem *cmn_base;
-> > +	void __iomem *tcsr_base;
-> > +	u32 val;
-> > +
-> > +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "cmn");
-> > +	if (!res)
-> > +		return 0;
-> > +
-> > +	cmn_base = devm_ioremap_resource(&pdev->dev, res);
-> > +	if (IS_ERR_OR_NULL(cmn_base))
-> > +		return PTR_ERR(cmn_base);
-> > +
-> > +	/* For IPQ50xx, tcsr is necessary to enable cmn block */
-> > +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "tcsr");
-> > +	if (res) {
-> > +		tcsr_base = devm_ioremap_resource(&pdev->dev, res);
-> > +		if (IS_ERR_OR_NULL(tcsr_base))
-> > +			return PTR_ERR(tcsr_base);
-> > +
-> > +		rmwl((tcsr_base + TCSR_ETH_CMN), TCSR_ETH_CMN_ENABLE,
-> > +		     TCSR_ETH_CMN_ENABLE);
-> > +	}
-> > +
-> > +	rmwl((cmn_base + CMN_PLL_REFCLK_SRC),
-> > +	     CMN_PLL_REFCLK_SRC_FROM_MASK,
-> > +	     CMN_PLL_REFCLK_SRC_FROM_REG);
-> > +	rmwl((cmn_base + CMN_PLL_REFCLK),
-> > +	     (CMN_PLL_REFCLK_EXTERNAL | CMN_PLL_REFCLK_FREQ_MASK
-> > +	      | CMN_PLL_REFCLK_DIV_MASK),
-> > +	     (CMN_PLL_REFCLK_FREQ_48M | CMN_PLL_REFCLK_DIV(2)));
-> > +
-> > +	rmwl((cmn_base + CMN_PLL_CTRL), CMN_PLL_CTRL_RST_N, 0);
-> > +	msleep(1);
-> > +	rmwl((cmn_base + CMN_PLL_CTRL), CMN_PLL_CTRL_RST_N,
-> > +	     CMN_PLL_CTRL_RST_N);
-> > +	msleep(1);
-> > +
-> > +	return read_poll_timeout(readl, val,
-> > +				 (val & CMN_PLL_STATUS_LOCKED),
-> > +				 100, 200000, false,
-> > +				 (cmn_base + CMN_PLL_STATUS));
-> > +}
-> > +
-> 
-> Hi Andrew,
-> 
-> Sorry to bother you. But I can't make a decision here.
-> 
-> The CMN block (Seem like the Abbreviation of "component") controls the
-> entire network block. It need to be configured before uniphy, mdio, gmac,
-> etc.. In the past, Qualcomm put it in mdio driver. But UNIPHY need to been
-> initializated before mdio because some PHYs/switchs use the outclk provided
-> by UNIPHY as their main clocks.
-> 
-> So it seem like that it should be described in a separate node. But I
-> couldn't find a suitable driver directory for it. Can you please give me
-> some suggestions? Thanks.
+Hi Ziyang,
 
-Maybe drivers/soc/qcom.
+kernel test robot noticed the following build errors:
 
-Does it provide any resources to the uniphy, mdio, gmac, etc? Anything
-which can be used to link all the bits together?
+[auto build test ERROR on robh/for-next]
+[also build test ERROR on clk/clk-next pza/reset/next]
+[cannot apply to linus/master pza/imx-drm/next v6.8-rc1 next-20240123]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Looking at CMN_PLL_CTRL_RST_N, could it be considered as a reset
-driver? Each of the other drivers have a phandle to it, and use the
-reset API to take it out of reset when they probe? That should give
-you some ordering guarantees.
+url:    https://github.com/intel-lab-lkp/linux/commits/Ziyang-Huang/net-phy-Introduce-Qualcomm-IPQ5018-internal-PHY-driver/20240121-204840
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
+patch link:    https://lore.kernel.org/r/TYZPR01MB5556D3E73D7F7242F810F915C9762%40TYZPR01MB5556.apcprd01.prod.exchangelabs.com
+patch subject: [PATCH 8/8] arm64: dts: qcom: ipq5018-rdp432-c2: enable ethernet support
+config: arm64-randconfig-001-20240124 (https://download.01.org/0day-ci/archive/20240124/202401240841.gfbyp3Lz-lkp@intel.com/config)
+compiler: clang version 15.0.7 (https://github.com/llvm/llvm-project.git 8dfdcc7b7bf66834a761bd8de445840ef68e4d1a)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240124/202401240841.gfbyp3Lz-lkp@intel.com/reproduce)
 
-    Andrew
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202401240841.gfbyp3Lz-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> Error: arch/arm64/boot/dts/qcom/ipq5018-rdp432-c2.dts:102.26-27 syntax error
+   FATAL ERROR: Unable to parse input tree
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
