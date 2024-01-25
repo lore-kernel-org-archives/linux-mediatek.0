@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00D2EC47258
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jan 2024 13:49:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29A2BC47258
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jan 2024 13:50:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FoF3/1EhxgPYFSqWOaW3RRmCeI4xCUfE4gr4+e7ZtxI=; b=fnYncf/iuWcVYsWKoToh9YzehM
-	U9WjlyGAsdYJWbljDCG9cR6ZsmCufZfqZwxg/tnA3Zrb6cMEJg7TTjrxNUWF1rmy9ado1KQOrvAdC
-	z87+kcfxc60+eCswISvMUDK42KcZVwxi+ZCi6UEmxCPBjAchRDqjQKPVsNfBKmkV8tlLYgpEBH1d5
-	w479/4QoA98kbNHN/z857EFQT1bO/Prr0f9pKzG3JYV0f79txCKyVtmWjGLdoibheS4IT6qrGW4wl
-	3w6W/gVagdJ55OVGbZj60NiJLXgul3eoiE/+ciNoRdng/XzHdXNtJuJSTjJslGNFN2PKTiHbztgxW
-	o4oSPnIA==;
+	bh=A6p+Ikb+FWnsbZl/wQ+N3du9Q0O1Jo/a4LBjUHzLi8o=; b=qZztE7z3qhsO7osqzMYd8DzBVQ
+	FsgSxCqAawrYeZM2NCHqG916CgkbFot+uVB8vp6JnsxgT10lxSIA2JeCtLuLXHdEmDBVjOX3m3l8N
+	7yeIocOffufJyHOXyqBhXz4wSBAP4+qonmVBEuMkpio9RbPA/huDbnkOetGAg/RZo40ubJyQCRdKU
+	rgrc39hwBtTySDJ66ooS/B4YkYjtxcbPjEAJqy42B0ioL9acnfQrnShLLiyTOsO0fitjqdxdeRzIx
+	5H3hJay/SSNZaZs4m6BhAhDmKD0GI1XGVxxOj2Jtgub5/iqxAMc0csrvxr7eh9V3UwCNRKVDE/hRJ
+	r6hLVx0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rT06w-000000007oh-1tRf;
-	Thu, 25 Jan 2024 13:49:42 +0000
+	id 1rT07a-0000000088E-2Vkk;
+	Thu, 25 Jan 2024 13:50:22 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rT06t-000000007nf-3ObV;
-	Thu, 25 Jan 2024 13:49:39 +0000
+	id 1rT07S-0000000084q-3eIA
+	for linux-mediatek@bombadil.infradead.org;
+	Thu, 25 Jan 2024 13:50:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=FoF3/1EhxgPYFSqWOaW3RRmCeI4xCUfE4gr4+e7ZtxI=; b=qproZzJ3iHNpgWS2+uoDYXt4e0
-	X4mnBjtIvXRxmG/pxWoVTZtgT+ebRh3l7774jub4GXlqpNGg7X1N5Qfs7nqmdVK5FqJmGS1+HInKw
-	q/oImGd2ofJ8U0dD+5aoL8t5a29eeValuM9PNXqN7frWkYTOnUpoE+HUIEy8G+t0ecERSj2A1kUlc
-	NtTDA9pDgWH9qxBZ3xJlbS/C8YQt+CHFk10ZSUbp+z5S3t2WwTvJ9XUJdv4Th5Z1+q/p7mh+Nsi+e
-	51JtlR/SlZenL0yvceUBq86Oxwnsy4j4+IREDDSHR6m+dVcN9f2/ebQ9qVBNJJrOumDQG3eIEdSH1
-	KiSNNsTQ==;
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	bh=A6p+Ikb+FWnsbZl/wQ+N3du9Q0O1Jo/a4LBjUHzLi8o=; b=jtyLVxGo7LNpRMPaO8PEsTe2lW
+	0FAH59EfYCUNd5r70Fs+92bqoYpFZgfeo7AV/VCoFuHuy0X1lJ+MJj8dqVTX9dCdWX1ERNDs9fF/F
+	LmSO6DZ9gZ+AqBar7egHfHa/ByPazi8XZWv7+cu1GyKW5TjR3A7ACDuGDGKvYbEdaNW7PeuxLiF+o
+	zp3URCfnRBiTFPqON+srvmuzbGExLkPbnGc5iOW1b7qNQdLncuh/MUKafl4YLabOZTmWaqUOW4Fha
+	WjCd1aX7setwiWpmahBwM2dL5czjpQu/mCZjyJ/FVtMcvn6wqaiiAoUxgttlD2l00yIadvGVJL421
+	ImmFhkRA==;
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rSy64-00000005DOi-0thi;
-	Thu, 25 Jan 2024 11:40:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706182779;
-	bh=uuLQcn67ndZcZcBwuCqbGXWUe0vDASxm3uUwFtizmbE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=envjQJ8ceoZeoRYHWBr+w/i6IBO3d6F57Se1tosc9GNzMCx3O9LxVW0JZBA9sCPC2
-	 iMH6KmKwKTvnL0dT3TNrdEtI92faSsuTBg7+HOmEoZlJiWoK6jcvWHJaFYSI4QiuwQ
-	 jJ2s31+gFHe0a91WJYw/6A3qHT7bbtEbonwyQUSt4dVNkb3jOlbDVW9iXplPqTpclF
-	 Ff8mckuU7EsSsfGuA0T5LR4/prZZSCvM+/g06rqPViRaG4o62nmHB8aPwcyje0D87p
-	 iVDNUw1w4WzY9QXJ8VE/EIy09iyMrtrgE5uqNAPNzygW6gilTLMQyF0Kp9unItGGVr
-	 4yLjsoIAr+DQQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7D1F33781182;
-	Thu, 25 Jan 2024 11:39:38 +0000 (UTC)
-Message-ID: <68249675-4081-48d9-abbb-1b2e49894fae@collabora.com>
-Date: Thu, 25 Jan 2024 12:39:37 +0100
+	id 1rSybQ-00000005HgX-1tqr
+	for linux-mediatek@lists.infradead.org;
+	Thu, 25 Jan 2024 12:13:07 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rSyZA-0003jN-7m; Thu, 25 Jan 2024 13:10:44 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rSyZ9-002HPy-R6; Thu, 25 Jan 2024 13:10:43 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rSyZ9-007mzR-2N;
+	Thu, 25 Jan 2024 13:10:43 +0100
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-pwm@vger.kernel.org
+Cc: kernel@pengutronix.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v5 020/111] pwm: mtk-disp: Make use of pwmchip_parent() macro
+Date: Thu, 25 Jan 2024 13:08:42 +0100
+Message-ID: <0ebb99812e0d563437d2cdb8d980e89461e28a6d.1706182805.git.u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <cover.1706182805.git.u.kleine-koenig@pengutronix.de>
+References: <cover.1706182805.git.u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: net: bluetooth: Add MediaTek MT7921S
- SDIO Bluetooth
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>, Marcel Holtmann <marcel@holtmann.org>,
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, linux-bluetooth@vger.kernel.org,
- netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20240125095240.2308340-1-wenst@chromium.org>
- <20240125095240.2308340-2-wenst@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240125095240.2308340-2-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1778; i=u.kleine-koenig@pengutronix.de; h=from:subject:message-id; bh=2my+KTISTjKr4blFD22AL+yDfNEk1kSQLWB/RlEBkzo=; b=owEBbAGT/pANAwAKAY+A+1h9Ev5OAcsmYgBlsk9RzviGTen8OjNSCvRF2x6ld2MV3ea52eNvR wOwyTtOPAeJATIEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZbJPUQAKCRCPgPtYfRL+ TommB/jA5Z6pZ/uA1Ye/QbFGhQsZEg4kXPITCIu9yH6QU3WHNF+nB93lX9TnTRKgv2PL8CHAxvw Fes6xRHy3yEqA+QBzVQP1rv/cBLA3hLxQeOvzyDxgQBBPSPEGw/KRG8ngkorYRQ0q6n3yk6bzbO vM14u1uKpaTXB0u/qkmY1X3+K9iQbPKcQeQ2NR+4Y7k6vQx8LuTQwfn+gjiPde9G5rRkTEH2dzN p/zMD/bW/DPn9TkUE9ZAKWQvSK59b5iulGBSob1qsb/IbxnaHutm9Nq84pRjts+gEBKgaR74Ajs VgxaS1rKwiBjBLXbkIFmHydOquk/GAZvEAZLSiOzik0hHr4=
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240125_114040_420029_D0D2C08C 
-X-CRM114-Status: GOOD (  23.37  )
+X-CRM114-CacheID: sfid-20240125_121304_594312_C467D8B2 
+X-CRM114-Status: GOOD (  11.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,120 +95,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/01/24 10:52, Chen-Yu Tsai ha scritto:
-> The MediaTek MT7921S is a WiFi/Bluetooth combo chip that works over
-> SDIO. While the Bluetooth function is fully discoverable, the chip
-> has a pin that can reset just the Bluetooth side, as opposed to the
-> full chip. This needs to be described in the device tree.
-> 
-> Add a device tree binding for MT7921S Bluetooth over SDIO specifically
-> ot document the reset line.
-> 
-> Cc: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
->   .../bluetooth/mediatek,mt7921s-bluetooth.yaml | 49 +++++++++++++++++++
->   MAINTAINERS                                   |  1 +
->   2 files changed, 50 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7921s-bluetooth.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7921s-bluetooth.yaml b/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7921s-bluetooth.yaml
-> new file mode 100644
-> index 000000000000..bbe240e7cc40
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7921s-bluetooth.yaml
-> @@ -0,0 +1,49 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/net/bluetooth/mediatek,mt7921s-bluetooth.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT7921S Bluetooth
-> +
+struct pwm_chip::dev is about to change. To not have to touch this
+driver in the same commit as struct pwm_chip::dev, use the macro
+provided for exactly this purpose.
 
-title:
+Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+---
+ drivers/pwm/pwm-mtk-disp.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-maintainers:
-
-description:
-
-... and then, you missed
-
-allOf:
-   - $ref: bluetooth-controller.yaml#
-
-Everything else looks good.
-
-Cheers,
-Angelo
-
-> +description:
-
-MT7921S is a (dual?) SDIO-attached dual-radio WiFi+Bluetooth combo chip;
-this chip has two dedicated reset lines, one of which is used to reset
-the Bluetooth core.
-The WiFi part of this chip is described in ....where? :-)
-
-> +  This binding describes the Bluetooth side of the SDIO-attached MT7921S
-> +  WiFi+Bluetooth combo chips. These chips are dual-radio chips supporting
-> +  WiFi and Bluetooth. Bluetooth works over SDIO just like WiFi. Bluetooth
-> +  has its own reset line, separate from WiFi, which can be used to reset
-> +  the Bluetooth core.
-> +
-> +maintainers:
-> +  - Sean Wang <sean.wang@mediatek.com>
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt7921s-bluetooth
-> +  reg:
-> +    const: 2
-> +
-> +  reset-gpios:
-> +    maxItems: 1
-> +    description: A GPIO line connected to the Bluetooth subsystem reset line.
-> +      Typically the W_DISABLE2# pin on M.2 E-key modules. If present this
-> +      shall be flagged as active low.
-
-description:
-   An active-low reset line connected for the Bluetooth core;
-   on typical M.2 Key-E modules this is the W_DISABLE2# pin.
-
-Cheers,
-Angelo
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    mmc {
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +
-> +        bluetooth@2 {
-> +            compatible = "mediatek,mt7921s-bluetooth";
-> +            reg = <2>;
-> +            reset-gpios = <&pio 8 GPIO_ACTIVE_LOW>;
-> +        };
-> +    };
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index b64a64ca7916..662957146852 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -13657,6 +13657,7 @@ M:	Sean Wang <sean.wang@mediatek.com>
->   L:	linux-bluetooth@vger.kernel.org
->   L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
->   S:	Maintained
-> +F:	Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7921s-bluetooth.yaml
->   F:	Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
->   F:	drivers/bluetooth/btmtkuart.c
->   
+diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
+index a72f7be36996..186aa5c04435 100644
+--- a/drivers/pwm/pwm-mtk-disp.c
++++ b/drivers/pwm/pwm-mtk-disp.c
+@@ -91,14 +91,14 @@ static int mtk_disp_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+ 	if (!mdp->enabled) {
+ 		err = clk_prepare_enable(mdp->clk_main);
+ 		if (err < 0) {
+-			dev_err(chip->dev, "Can't enable mdp->clk_main: %pe\n",
++			dev_err(pwmchip_parent(chip), "Can't enable mdp->clk_main: %pe\n",
+ 				ERR_PTR(err));
+ 			return err;
+ 		}
+ 
+ 		err = clk_prepare_enable(mdp->clk_mm);
+ 		if (err < 0) {
+-			dev_err(chip->dev, "Can't enable mdp->clk_mm: %pe\n",
++			dev_err(pwmchip_parent(chip), "Can't enable mdp->clk_mm: %pe\n",
+ 				ERR_PTR(err));
+ 			clk_disable_unprepare(mdp->clk_main);
+ 			return err;
+@@ -181,13 +181,13 @@ static int mtk_disp_pwm_get_state(struct pwm_chip *chip,
+ 
+ 	err = clk_prepare_enable(mdp->clk_main);
+ 	if (err < 0) {
+-		dev_err(chip->dev, "Can't enable mdp->clk_main: %pe\n", ERR_PTR(err));
++		dev_err(pwmchip_parent(chip), "Can't enable mdp->clk_main: %pe\n", ERR_PTR(err));
+ 		return err;
+ 	}
+ 
+ 	err = clk_prepare_enable(mdp->clk_mm);
+ 	if (err < 0) {
+-		dev_err(chip->dev, "Can't enable mdp->clk_mm: %pe\n", ERR_PTR(err));
++		dev_err(pwmchip_parent(chip), "Can't enable mdp->clk_mm: %pe\n", ERR_PTR(err));
+ 		clk_disable_unprepare(mdp->clk_main);
+ 		return err;
+ 	}
+-- 
+2.43.0
 
 
