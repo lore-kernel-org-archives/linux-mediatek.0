@@ -4,136 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67A25C47258
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jan 2024 13:19:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 699B2C48285
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jan 2024 13:49:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1p6PsuJqyqTGuv5vnLtdjFz7HqpTiAo5pRXyQvLiI8Q=; b=f5l1aKgS0yeIfpBaiyEoqqJU5I
-	S68eiiKK2aTvtVPKGgksKcv46P5cW52OnqVvat62VlGgvawnLB/ewk1B3wQ7LLIFwmWJF/t1xy4X8
-	8wtJ8iqAjHG5LtRCjf/MvUfq6TlKKlMQ7YzxdvdPpluCwpFGXGb1palHAdi28Q+jxYIYBGJUAORpZ
-	Z6w1r5jLm0cWVZEZfWphOT5IxMT+N6KU13iV4s/1ijIZi8oFi80zIYPGZ6ilgH+3y2OuTJV0d/pnw
-	+Vig4BEjHqPNO04g2eJqEd7Cc1SbPVKcxjuEu1kkbpX3/JxcRLYm7jUaLrttdJTLVcVHodhq7jxjI
-	PRx3RHpw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/AWJa3ygkQ0q+CkY7uyIsI0AWxkylCF/UmJXKu8eyf0=; b=03aP4pzOmvrxTyiIKEUGgKmK2O
+	jE6d1S1WvSs6SZyQRws+m/rNcoYgy/2XK+iuWbfYaEUb9HdbrO/0bCmn4V4L3F3Oy9/+bAFSa7J/S
+	es3ZtymlA1GIwieSyGN7NapBLyKZJKvdEiWTz4ynRyecV5s0q7EOwCogBBuEeLbWGoGYYYlWzFSY5
+	SgqbH3PE1ffTnutdKjLy2KLNNuiGOfc/fVEwMplrnOLh0XEp5BQZbxFBvYTPdH991VpEjKsPwfenp
+	Buhn2MgPlvGUYxtIao8Ky5eDZ6dsPufq81alYV1cKNT+nAvVxTZd3Zi5qNy+OsDKcBur+JJZ457M9
+	36TmMe1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rSzdz-0000000013Y-3BxO;
-	Thu, 25 Jan 2024 13:19:47 +0000
-Received: from mail-ed1-f50.google.com ([209.85.208.50])
+	id 1rT06U-000000007cp-2vxL;
+	Thu, 25 Jan 2024 13:49:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rSx3O-000000009te-0j2E
-	for linux-mediatek@lists.infradead.org;
-	Thu, 25 Jan 2024 10:33:54 +0000
-Received: by mail-ed1-f50.google.com with SMTP id 4fb4d7f45d1cf-55a86795a3bso6950549a12.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 25 Jan 2024 02:33:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706178744; x=1706783544; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=1p6PsuJqyqTGuv5vnLtdjFz7HqpTiAo5pRXyQvLiI8Q=;
-        b=wlUjO/EXmqkny4hqN9/N5LrOIenjCopbrJglvaYar4kFOBvOUjS2kJwUGuhfbyN0EJ
-         PjdBHaMvYrftPpj/LJMD79ycFb+vsm2KVV2ipwKfNWXtuGcyU8X/xmTwiTblJn3OODvJ
-         h7EsMFmoU2zOVG37Uv5mVp6ILLn9OFiK54GWb9uaO/P868amNMoROPo6GtiQrdCmX7SO
-         Ep8ST7GZhF2Fc7hoGrLMBd/s17sVkdnymqR3SBY0+F6zuE42NnsldtQjIiUYAKODpRCg
-         eaBq+s0eqwd/dHr44DY3Pno/j+nbx4tqrd0+oRoNGxTtZdmFITNdMEh5sivUkbGb6DFR
-         FjqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706178744; x=1706783544;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=1p6PsuJqyqTGuv5vnLtdjFz7HqpTiAo5pRXyQvLiI8Q=;
-        b=pyWnhPYGfRypLB+ewOv/P3Sft2rZ77uFtIzjOCtKkHbQCljxs9IZaK2P8iLXoV6lMD
-         aN6DUHPgkZl2440kTjU4Fbal8k/uTDFIr0K4cn85JmaLtknW+Jw4xI0Q1WSNVwDcCF5X
-         xf26R+OV3p1T24C4y9hWS4iRN8CryFdcZJn1rmxO9G/M3cFUoFYJSDIpbTJsKektNrMC
-         PJ1cNuevO7oVBhNnjwZy0vWQYjnorW9Psyit81b8Gi7OJkwf/9iHRkvVaPrZvtvNF2Et
-         JLrdsr7b4hlxv/RHfR5IyJx1761d8DLXmzMO2g9KHAYrlVTJW50GD9SyjTFPFXb7QDoQ
-         qYVQ==
-X-Gm-Message-State: AOJu0Yyvm1WPOokx8hgUeaCNq2Tg9GZwRq/agjokfipSpU5wc5q31RdW
-	aLtWWURJsYOiJu2vx0Fp4xORAXMVzjPqz5S9QVR49GQEm9LO1V3RcPwCgE2Q86U=
-X-Google-Smtp-Source: AGHT+IHiwyuBltNWm8iCxD87eZxTyLo4GrWYdBbW9KRfkjS0jY0KD3lq5pOzfH+eBn1W3TIyzeRTIQ==
-X-Received: by 2002:a17:906:29c7:b0:a31:433c:2128 with SMTP id y7-20020a17090629c700b00a31433c2128mr206355eje.167.1706178743939;
-        Thu, 25 Jan 2024 02:32:23 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.215.66])
-        by smtp.gmail.com with ESMTPSA id vw16-20020a170907a71000b00a2fc36776a7sm891684ejc.19.2024.01.25.02.32.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 25 Jan 2024 02:32:23 -0800 (PST)
-Message-ID: <dc9773aa-690f-47b5-b60a-a79c1e2dbaf2@linaro.org>
-Date: Thu, 25 Jan 2024 11:32:21 +0100
+	id 1rT06Q-000000007XK-2Vbs;
+	Thu, 25 Jan 2024 13:49:12 +0000
+X-UUID: 80ff43eebb8811eea0bf134e88e6c2dc-20240125
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=/AWJa3ygkQ0q+CkY7uyIsI0AWxkylCF/UmJXKu8eyf0=;
+	b=VUWJQLE7Rjv3Qi7k0RwV7YiX4f2uKlFE/wtAhhRrOaoNfLMxN/sRdQ0CH134Nx5HuDIEeyNZB+OXIWtO5UTEqRWrn8W34prvoAROJprXzmgMeIw1fCNwAjuRZEVCB9KIHZ0rSMtDE2UwERodjKF3Nks1VYWBuezZZaEZKlfwrZM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.36,REQID:982132ce-3736-402c-ad5e-b846b50c81e8,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6e16cf4,CLOUDID:ccb925fe-c16b-4159-a099-3b9d0558e447,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 80ff43eebb8811eea0bf134e88e6c2dc-20240125
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <nini.song@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1862738644; Thu, 25 Jan 2024 06:49:04 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 25 Jan 2024 21:29:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 25 Jan 2024 21:29:00 +0800
+From: <nini.song@mediatek.com>
+To: <nini.song@mediatek.com>
+CC: <ci.wu@mediatek.com>, <mchehab@kernel.org>, <nicolas@fjasle.eu>,
+	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Jani
+ Nikula" <jani.nikula@intel.com>, <linux-kernel@vger.kernel.org>
+Subject: [PATCH] media: cec: core: remove length check of Timer Status
+Date: Thu, 25 Jan 2024 21:28:45 +0800
+Message-ID: <20240125132850.10430-1-nini.song@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] dt-bindings: usb: mt6360-tcpc: Drop
- interrupt-names
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Conor Dooley <conor@kernel.org>, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org
-Cc: chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com, linux@roeck-us.net,
- heikki.krogerus@linux.intel.com, cy_huang@richtek.com,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20240119094105.98312-1-angelogioacchino.delregno@collabora.com>
- <20240119-eldest-discharge-e2d3812be0a9@spud>
- <12b7b339-498b-45c1-bc5e-05e07660aefa@collabora.com>
- <20240123-procurer-jumbo-ebbec485505d@spud>
- <4fdbc3d8-3d44-4c2c-aae6-daa0b431e1c9@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <4fdbc3d8-3d44-4c2c-aae6-daa0b431e1c9@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--2.077400-8.000000
+X-TMASE-MatchedRID: J/H5Ci0f1rmmWOD8X0TFhBN+uzH2jcPDUXlp1FHYSPUG2HMvWEJeni2f
+	RWXvh9E9TKdCZaWtTIRXTV9N8R+l8aSbvL5QzJ6IEhGH3CRdKUVAxXcQsCnxBd9RlPzeVuQQnbt
+	Joik/uhtPwTClfwWa2Xug5fIqIMi34X8HWMSNX7rhG1IOMb7PsA/i8FY2vTOBmyiLZetSf8mfop
+	0ytGwvXiq2rl3dzGQ19+9ZqEp9FTjW3puOnxUj54jKqFb5kA20IZC5yr1vP62yI+zZf2L25y7ky
+	LWYE0faEsYRGRuZx3n2YxmhsvKIu/0krNbgAQ9znU2qXaDp0DUXRoPmWO3jekxwdkPqCq7vDEyN
+	+J8hd+jCS9WgDXVPCp6oP1a0mRIj
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--2.077400-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 136E736A2A19E8DE1F1CB962C7FEC4B6141D1A14242E7005AEC56E5E062997692000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240125_023350_528277_A721E5A6 
-X-CRM114-Status: GOOD (  18.13  )
+X-CRM114-CacheID: sfid-20240125_054910_675007_A2620BF8 
+X-CRM114-Status: GOOD (  11.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,46 +98,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24/01/2024 09:48, AngeloGioacchino Del Regno wrote:
-> Il 23/01/24 18:14, Conor Dooley ha scritto:
->> On Mon, Jan 22, 2024 at 11:32:30AM +0100, AngeloGioacchino Del Regno wrote:
->>> Il 19/01/24 17:32, Conor Dooley ha scritto:
->>>> On Fri, Jan 19, 2024 at 10:41:04AM +0100, AngeloGioacchino Del Regno wrote:
->>>>> This IP has only one interrupt, hence interrupt-names is not necessary
->>>>> to have.
->>>>> Since there is no user yet, simply remove interrupt-names.
->>>>
->>>> I'm a bit confused chief. Patch 2 in this series removes a user of this
->>>> property from a driver, so can you explain how this statement is true?
->>>>
->>>> Maybe I need to drink a few cans of Monster and revisit this patchset?
->>>>
->>>
->>> What I mean with "there is no user" is that there's no device tree with any
->>> mt6360-tcpc node upstream yet, so there is no meaningful ABI breakage.
->>> Different story would be if there was a device tree using this already, in
->>> which case, you can make a required property optional but not remove it.
->>
->> Not every devicetree lives within the kernel.. If the driver is using
->> it, I'm not inclined to agree that it should be removed.
-> 
-> I get the point, but as far as I remember, it's not the first time that this
-> kind of change is upstreamed.
-> 
-> I'm fine with keeping things as they are but, since my intention is to actually
-> introduce an actual user of this binding upstream, and that actually depends on
-> if this change is accepted or not (as I have to know whether I can omit adding
-> the interrupt-names property or not)....
-> 
-> ....may I ask for more feedback/opinions from Rob and/or Krzk?
+From: "nini.song" <nini.song@mediatek.com>
 
-Driver is the user and this is an old binding (released!), thus there
-can be out-of-kernel users already.
+The valid_la is used to check the length requirements,
+including special cases of Timer Status. If the length is
+shorter than 5, that means no Duration Available is returned,
+the message will be forced to be invalid.
 
-Minor cleanup is not really a reason to affect ABI. You could deprecate
-it, though. Driver change is fine.
+However, the description of Duration Available in the spec
+is that this parameter may be returned when these cases, or
+that it can be optionally return when these cases. The key
+words in the spec description are flexible choices.
 
-Best regards,
-Krzysztof
+Remove the special length check of Timer Status to fit the
+spec which is not compulsory about that.
+
+Signed-off-by: Nini Song <nini.song@mediatek.com>
+---
+ drivers/media/cec/core/cec-adap.c | 14 --------------
+ 1 file changed, 14 deletions(-)
+
+diff --git a/drivers/media/cec/core/cec-adap.c b/drivers/media/cec/core/cec-adap.c
+index 5741adf09a2e..559a172ebc6c 100644
+--- a/drivers/media/cec/core/cec-adap.c
++++ b/drivers/media/cec/core/cec-adap.c
+@@ -1151,20 +1151,6 @@ void cec_received_msg_ts(struct cec_adapter *adap,
+ 	if (valid_la && min_len) {
+ 		/* These messages have special length requirements */
+ 		switch (cmd) {
+-		case CEC_MSG_TIMER_STATUS:
+-			if (msg->msg[2] & 0x10) {
+-				switch (msg->msg[2] & 0xf) {
+-				case CEC_OP_PROG_INFO_NOT_ENOUGH_SPACE:
+-				case CEC_OP_PROG_INFO_MIGHT_NOT_BE_ENOUGH_SPACE:
+-					if (msg->len < 5)
+-						valid_la = false;
+-					break;
+-				}
+-			} else if ((msg->msg[2] & 0xf) == CEC_OP_PROG_ERROR_DUPLICATE) {
+-				if (msg->len < 5)
+-					valid_la = false;
+-			}
+-			break;
+ 		case CEC_MSG_RECORD_ON:
+ 			switch (msg->msg[2]) {
+ 			case CEC_OP_RECORD_SRC_OWN:
+-- 
+2.18.0
 
 
