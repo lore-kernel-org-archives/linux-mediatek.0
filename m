@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAA3CC47258
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jan 2024 22:45:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 951E3C47258
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jan 2024 22:49:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/wfCo1mRfWcIdpnT9reav4j0aC7oEhRFsNtNutPWFwI=; b=VJm2fLKVUfQlWTRIMiDRhM7K5+
-	SLgom4fbYBnHPAZ09YamsR0CX3PpM7SflCyocbafzouff916QBIu3g8iiwZhzleyMt5xQUniyh/QB
-	AU/jpmjBB3H7UGubfQ/siDT5yer3AdE5rxcKAEZmXYjO/TcPzPEgIkR8P+xNpqpCTs8+NWCOHAznx
-	zmcHc0U4qo7zKUp+hSXYUos5vgK5JUtk8drZ9AfzTZ8w5TyIg1uLxfTSURH2p0hnWAEAZGabh+EzF
-	p9lQXLsNmc/TuWQVulRtAxJ/gAWne8bjOZjcjpFJ/zUXPi9vypEtmo2T9pCVFew2dq1wDQ88qQwsC
-	TXuMr2Sw==;
+	bh=npd3pP1aReG/0ALjdGC6r+4bjQEOxICwXHbbVuqWcZ4=; b=p/n5YYtYGLMuUCwtzjCdC97ioI
+	SPwDMf+WRMXhNDWAbOVggvUHqK2E74Imj6BQ4OGXzhZsDs8qrKgG964b4fcc3T6WNMMTDrk5cPKZv
+	fDSqsjnrP9Bfm6bG3MvsGxweHGftrtAW9toslctM8GN1quQsNQwIHActIwC+bulsaDbGI+9xmvTpC
+	gtWe0D7cYSzJFU8Kteqy+JMPxmBo9Zb69ucwdlqn3lSn4T+ye8KPB7ir4ulNOfp9JvBxhwkkg0zhT
+	fXqbsNuARl+maRpdTHh1EO0BbzJKFMY5sLXMvD+Vk0u5ONtzxAIj1VoL2u7RiUZRo841Rx5MOjIaP
+	c5/5dPVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rT8TB-00000002H5G-0LUV;
-	Thu, 25 Jan 2024 22:45:13 +0000
-Received: from relay8-d.mail.gandi.net ([217.70.183.201])
+	id 1rT8Wz-00000002Hpj-0ROR;
+	Thu, 25 Jan 2024 22:49:09 +0000
+Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rT8T6-00000002H1o-3DJk;
-	Thu, 25 Jan 2024 22:45:11 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 7AC621BF204;
-	Thu, 25 Jan 2024 22:44:59 +0000 (UTC)
+	id 1rT8Wv-00000002Hno-1fW2;
+	Thu, 25 Jan 2024 22:49:06 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 4D7D4FF802;
+	Thu, 25 Jan 2024 22:48:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1706222704;
+	t=1706222941;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=/wfCo1mRfWcIdpnT9reav4j0aC7oEhRFsNtNutPWFwI=;
-	b=jiln+mWMiPebOcn9uW9BmCuY9qLY2XvRvbb9ncjNF/Cx2PjQjCgIyT/oeNmPnCJ1I13y86
-	coEVjjk2+lsBiiaXa0EkztIz9t2ZrMrRXCznqqGerkMj9V7WFFmAX1ynB6uuVJVUhCJm/p
-	qrA5brRtgGWpRuXVona3kstZ0u6s7JkrHzozhJ64Z79mD2ZgHtWKtq2s3tMhPOAt63cFzF
-	uDZDp8kiSlUAanWHXuxLaxen69N2J+nUYmnjlQdeuC0bT34DYM/fZqHlnVynuTr7ACqMYt
-	dkia8tFNa/42GWIx2avBW8dnp9VoyQRCo4kwaD+nWE7FTEzr3SCOIosNN57IRw==
-Message-ID: <99a038f3-18d2-44ca-8135-1faf7a37892a@arinc9.com>
-Date: Fri, 26 Jan 2024 01:44:57 +0300
+	bh=npd3pP1aReG/0ALjdGC6r+4bjQEOxICwXHbbVuqWcZ4=;
+	b=b6390NbnuGXNe15DVpYrjlfa1PtjIqNM14bhVWY5DOZGJW3IrdQIxWsUry2cdr1ko4tpL2
+	XYaM1eDs04rTuDv05UpUPeHePQfY40n9AM2SyvBKizzy15WRT2ukePEzD+BXGzNyI1EqBU
+	01dehgiepB3Gv3jPJidrzbLlzOUFiR8vrCCOrr7SCkp39Ri65quXPYI8i/WVMZVqTE6V0/
+	wxP2F8GR/RfCJ0XPj6t+8LoFzMkdRjpgiao5ymJs8U7x5dt/dgxDeFU/8k/H5Q0/enjohq
+	/3sdCLsg8wTcKEoVz3cM7v9dZsF2g6pZ/mCLagndFZfRHWxcMcMoZo/sX0pyLg==
+Message-ID: <a5b37e23-5f88-4a23-a1e3-908513a64f03@arinc9.com>
+Date: Fri, 26 Jan 2024 01:48:54 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net] net: dsa: mt7530: fix 10M/100M speed on MT7988 switch
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- John Crispin <john@phrozen.org>
-References: <a5b04dfa8256d8302f402545a51ac4c626fdba25.1706071272.git.daniel@makrotopia.org>
- <accda24c-9f12-4cfe-b532-a9c60ec97fca@arinc9.com>
- <ZbKJv84vGXInRIo1@makrotopia.org>
+Subject: Re: [PATCH net-next v3 6/7] net: dsa: mt7530: do not set
+ priv->p5_interface on mt7530_setup_port5()
 Content-Language: en-US
+To: Daniel Golle <daniel@makrotopia.org>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Russell King <linux@armlinux.org.uk>
+Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+ Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240122-for-netnext-mt7530-improvements-1-v3-0-042401f2b279@arinc9.com>
+ <20240122-for-netnext-mt7530-improvements-1-v3-6-042401f2b279@arinc9.com>
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <ZbKJv84vGXInRIo1@makrotopia.org>
+In-Reply-To: <20240122-for-netnext-mt7530-improvements-1-v3-6-042401f2b279@arinc9.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240125_144509_103554_4E1BFFB9 
-X-CRM114-Status: GOOD (  17.36  )
+X-CRM114-CacheID: sfid-20240125_144905_618829_A41BF7CA 
+X-CRM114-Status: GOOD (  15.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,60 +84,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25.01.2024 19:18, Daniel Golle wrote:
-> On Thu, Jan 25, 2024 at 12:49:19PM +0300, Arınç ÜNAL wrote:
->> On 24/01/2024 08:17, Daniel Golle wrote:
->>> Setup PMCR port register for actual speed and duplex on internally
->>> connected PHYs of the MT7988 built-in switch. This fixes links with
->>> speeds other than 1000M.
->>>
->>> Fixes: ("110c18bfed414 net: dsa: mt7530: introduce driver for MT7988 built-in switch")
->>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
->>
->> Acked-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->>
->> I'm wondering why we manually set speed and duplex for these interface
->> modes in the first place. I don't how it works for
->> PHY_INTERFACE_MODE_INTERNAL but, at least for PHY_INTERFACE_MODE_TRGMII and
->> 802.3z interfaces, phylink should already supply proper speed and duplex.
-> 
-> It's true that duplex should always be set to full-duplex already by
-> phylink. However, speed could be 2500MBit/s (2500Base-X) or 2000MBit/s
-> (?, TRGMII) and we yet need to program the PCR like if it was
-> 1000MBit/s.
-> 
-> Regarding the INTERNAL case: it was added by mistake. In case of
-> MT7988, all ports of the switch are connected via INTERNAL links,
-> however, the PHYs still need adjustment of the PCR register just like
-> on all other MT753x switches and the CPU port is setup elsewhere
-> anyway.
-
-It's not necessarily PHYs needing adjustment of the port MAC control
-register. After reset, speed, duplex mode, etc. will be determined by
-polling the PHY connected to the switch MAC. We're forcing these properties
-on the PMCR because we're also configuring switch MACs that are not
-connected to PHYs, meaning the switch cannot determine these properties by
-polling a PHY.
-
- From what I understand, this code block is for overriding the speed and
-duplex variables to make the operations on the PMCR below work. It seems
-that this is actually only useful for PHY_INTERFACE_MODE_2500BASEX.
-PHY_INTERFACE_MODE_TRGMII is given SPEED_1000 by
-drivers/net/phy/phylink.c:phylink_interface_max_speed().
-PHY_INTERFACE_MODE_2500BASEX is given SPEED_2500. Overriding the duplex
-variable looks unnecessary.
-
-Your patch here doesn't affect CPU ports because MT7531 and MT7988 PMCRs
-are configured with cpu_port_config before mt753x_phylink_mac_link_up(),
-and PHY_INTERFACE_MODE_INTERNAL is not used for MT7530 which, for MT7530,
-PMCRs will be set only on mt753x_phylink_mac_link_up().
-
-PMCR_FORCE_SPEED_1000 is set on cpu_port_config. If someone were to get rid
-of cpu_port_config because of its utter uselessness, PMCR_FORCE_SPEED_1000
-would not be set, causing the link between port 6 MAC and SoC MAC to break.
-
-In conclusion, I will add "case SPEED_10000:" to the operations where the
-speed and EEE bits are set on my patch for getting rid of cpu_port_config.
+Vladimir could you review this too? This is the only patch remaining
+without a review or ACK.
 
 Arınç
+
+On 22.01.2024 08:35, Arınç ÜNAL via B4 Relay wrote:
+> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> Running mt7530_setup_port5() from mt7530_setup() used to handle all cases
+> of configuring port 5, including phylink.
+> 
+> Setting priv->p5_interface under mt7530_setup_port5() makes sure that
+> mt7530_setup_port5() from mt753x_phylink_mac_config() won't run.
+> 
+> The commit ("net: dsa: mt7530: improve code path for setting up port 5")
+> makes so that mt7530_setup_port5() from mt7530_setup() runs only on
+> non-phylink cases.
+> 
+> Get rid of unnecessarily setting priv->p5_interface under
+> mt7530_setup_port5() as port 5 phylink configuration will be done by
+> running mt7530_setup_port5() from mt753x_phylink_mac_config() now.
+> 
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> ---
+>   drivers/net/dsa/mt7530.c | 2 --
+>   1 file changed, 2 deletions(-)
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 33c15f10de34..5394d8c6a40e 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -978,8 +978,6 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+>   	dev_dbg(ds->dev, "Setup P5, HWTRAP=0x%x, intf_sel=%s, phy-mode=%s\n",
+>   		val, p5_intf_modes(priv->p5_intf_sel), phy_modes(interface));
+>   
+> -	priv->p5_interface = interface;
+> -
+>   unlock_exit:
+>   	mutex_unlock(&priv->reg_mutex);
+>   }
+> 
 
