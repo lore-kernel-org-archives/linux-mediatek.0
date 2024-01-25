@@ -4,98 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8813C47E49
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jan 2024 09:31:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A513C48260
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jan 2024 09:46:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yF1vj6bD4OantSklaxQBfzwibMkOXYYkC5p2/Evicfs=; b=gUx41kjIrM7R+hlFr9G9VjUqe0
-	iT5AcbFbO8hwl3kXMREx4C4ti5Hm9AX/l2TR6SpoP1zYNTjROSrvuCu8ptjWbx6ZLgNeLFEy7IEcz
-	ZX3dz2aQtIURVJByNJJn7xJ9d5XWoHizPoYm59q0KOQpkziEZNWE05uaRY0NcuNGQD5CQHjyV+c4E
-	Gn2TMaNB/vwgBCPDLKTJ1PoOENVUpsYaTeOmxpv7f1e+wCMP9EzMHprIw6ww/WngP7zyo1PQDvUOY
-	QrLsjjqsksqcXicF2bOzBuXp3Ihz5Yx2v4K8xeDuEdLjNVElOSqiC8L9F0GHBZniT/XH18yYZ2PUh
-	QoMuGl4Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uKjEA1ufSVAWNn9i+0G+DRJUHaevlwhyDkwZbs4cgCo=; b=I602AZabNkaPJIV2lLFwQLNn4y
+	RvgNhEPl7/MN2gZSpbuiaHoTH9RruBgWvJidgagP0xF040Vnx+wllelTVlA9hTWasx0Uf7oph4y4o
+	NQI6rLkc/6XKf7sGk/OCBy5CP/Tc976zXNwaCO/k4GHi6NW7L2i5Nmun2USPIr87e1jUgi53B4wqn
+	THqNQ3ksjMCXMeje7DVT9aEvQcYp2Dh1uuZmYpFGQAFjHCmnHSi3fCSxLbIYp/RfagHbZMZ/aClKm
+	S4SUBm74bLvTGY+bjxYVUSjTv0twI9TK+N++N03Q3oyq4tsPzGZHkdb/dnvYyQZ0TV4KmIqcG8OLw
+	Uza8lNCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSw4o-007YjV-1h;
-	Thu, 25 Jan 2024 09:31:14 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1rSwJh-007dMT-18;
+	Thu, 25 Jan 2024 09:46:37 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSw4k-007Ygz-12;
-	Thu, 25 Jan 2024 09:31:11 +0000
-Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-55a035669d5so7849910a12.2;
-        Thu, 25 Jan 2024 01:31:07 -0800 (PST)
+	id 1rSwJe-007dLI-0T
+	for linux-mediatek@lists.infradead.org;
+	Thu, 25 Jan 2024 09:46:35 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-40eacb4bfa0so45633085e9.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 25 Jan 2024 01:46:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706175066; x=1706779866; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=yF1vj6bD4OantSklaxQBfzwibMkOXYYkC5p2/Evicfs=;
-        b=lRtUEQ/yU5mOIKvTDjvI9i9/7uDOA9MeWUHhzIlooSriSdr7gJPLxOAlgg4VPQZZes
-         M1KC4QKIbPfJ9NV40sfDsJTONZTlw5+nlnzzdyRMZq1sJXDxwFYqSzM7iHBEhqjvyaTv
-         59B7FgwYP7lcfp9EoNBSrrqqxvQMWY14whVGtHcj3J36wzUhoMbJV1T55UPXtTDxd6JU
-         KCNOp/JMzSrqbR4V33bj+BdFcNRhB9rUTT6WD+7ZLZJIKSm4gnN7uMpgcWsDcvj9SeCx
-         CIDr6aNj629oBlNfUAAejiy+ZuCg2uE9U/5sp50Rqtsg3EYcsrAun4DPpNO9C1B45D85
-         npYQ==
+        d=linaro.org; s=google; t=1706175992; x=1706780792; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=uKjEA1ufSVAWNn9i+0G+DRJUHaevlwhyDkwZbs4cgCo=;
+        b=MATPdCbha34clzdbc3jcXrd/JqQYwyZycJRsueBF6XZlJoLtITAJHO+tVnHD7SoSba
+         DG/m9QrvH73xRCkbQVDyxAMH3z74emzEv2HBNl4pjokpMjNSsHo6I+tpi5kbu1D4IA5A
+         Xno3L372lxacD5AQVEvZFm3EHDx7Lqx0hjfQEKlxYEonqyljJmH4sw0bIzrUTBC5PyI9
+         1E1wpFtBz+rDRJTYWgDERBhTenyO8ajuFRamJQd3JbhTOhNrY06HJE0XEXgF13lwI1zX
+         H3mpe2c5cYa6M4hBmSjwI+siBaCPyBcp6ncVFRgOu81H9/Gre+oN/Q/QU12rNRrSR0kW
+         ag1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706175066; x=1706779866;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        d=1e100.net; s=20230601; t=1706175992; x=1706780792;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=yF1vj6bD4OantSklaxQBfzwibMkOXYYkC5p2/Evicfs=;
-        b=nKuO/KhENGAPc55VRiEgD4dIs1ph/ZM+rsGbuiQPUUD2v1Kpq8Jp92RnTQVXsJcc3/
-         bS9uZGBbD8+EAdHg3reemCZm6BHhijLRGnKtj2D2QuvugGWm6kL7udNHADVdujRkmefO
-         eB5G4DkqttH9TTXz0u25AMM6NSLimDfc500q1n/npmoILPig7C8IkQNaPU3HujeRYl7f
-         DUMW9gvsWFq2ppPSQdFzwEziB6ao4TedwnegQVRAOhXsgj7WgD5ONFPzeBJFQHXeACEZ
-         RgmOXj0Ui3j8XHL7LsA8lCj+QJqMdaHzRAcXblJzW/2MBLtL/MEuHkU6tNACoxLkA48+
-         Fo0Q==
-X-Gm-Message-State: AOJu0Yw8z2Ic+0dKyfI6RJdF2GcNnAVDnZdNVG/0BCHRTUcrhz442Ktx
-	0eEGLBRhNvwQzvY23lW4A0gRdMlgu0ZC25tengA5Z8Qiozp1WPAm
-X-Google-Smtp-Source: AGHT+IFD9l2XpZg6gJ3Y5v2cAtGMf4TOPGAa0HvVrsoqEDBhW3/sdNPJABjpXIj+kn4fncD/5XKE+A==
-X-Received: by 2002:a17:907:8693:b0:a2d:d05e:5704 with SMTP id qa19-20020a170907869300b00a2dd05e5704mr456600ejc.30.1706175066341;
-        Thu, 25 Jan 2024 01:31:06 -0800 (PST)
-Received: from skbuf ([188.25.255.36])
-        by smtp.gmail.com with ESMTPSA id k14-20020a1709065fce00b00a28aa4871c7sm809849ejv.205.2024.01.25.01.31.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 25 Jan 2024 01:31:06 -0800 (PST)
-Date: Thu, 25 Jan 2024 11:31:03 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: arinc.unal@arinc9.com
-Cc: Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>, mithat.guner@xeront.com,
-	erkin.bozoglu@xeront.com,
-	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v3 1/7] net: dsa: mt7530: always trap frames to
- active CPU port on MT7530
-Message-ID: <20240125093103.xlf46pezqj6d5ij7@skbuf>
-References: <20240122-for-netnext-mt7530-improvements-1-v3-0-042401f2b279@arinc9.com>
- <20240122-for-netnext-mt7530-improvements-1-v3-0-042401f2b279@arinc9.com>
- <20240122-for-netnext-mt7530-improvements-1-v3-1-042401f2b279@arinc9.com>
- <20240122-for-netnext-mt7530-improvements-1-v3-1-042401f2b279@arinc9.com>
+        bh=uKjEA1ufSVAWNn9i+0G+DRJUHaevlwhyDkwZbs4cgCo=;
+        b=r9ixmPyjYJEUm3F0IfMpVmpkVyaJa6IWbz1y2tXcnYuSRJ4sLRSjYb2xS4LGa15zBw
+         RxgA88XfrY81+9YjVJso+aBsLHQGuYYrtoTcaY8eStWpR4nTRSWvd8t9HidFTMrvswG9
+         VqrB9Ye14yRHpJ9Lm2nEeaj3jgns35QmWKZozFkxUHRZJkWP8IWi8BfS+ZaJRir3PtGL
+         v34WAFt5BZicSGxrYTplV8AKEgztVmSoKAKPg2DZHwoJojKgkEHSSacVclWjgF5ax5+y
+         0NwxnRQn8BHAaMKKM6a9ZCKKofTquxy8LAqkSH3MGwL+T2gRQuyhmrImJtOwGV1THrMz
+         EaEg==
+X-Gm-Message-State: AOJu0YxUQDVqxl9doWviGF4HbwAUL0lSj5zlcJ95NiEXFP2d0XupP10y
+	84vKDDJWjE+I0Joam6M8BwdxgtiBwTyFp3LkVMPWw5q2kzlLb8lkdk27r0lJZ6A=
+X-Google-Smtp-Source: AGHT+IGn/FM9gXJkdJJpOQ1l+2CxmF5gIptmChuQvcivFbgEobBNM7oIX991MqEP8m0r+4vw7WNaCQ==
+X-Received: by 2002:a05:600c:a08:b0:40e:69da:4815 with SMTP id z8-20020a05600c0a0800b0040e69da4815mr295213wmp.35.1706175991985;
+        Thu, 25 Jan 2024 01:46:31 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:3cb:7bb0:e809:1d8e:6f0b:53c1? ([2a01:e0a:3cb:7bb0:e809:1d8e:6f0b:53c1])
+        by smtp.gmail.com with ESMTPSA id j11-20020a05600c190b00b0040e53f24ceasm1956031wmq.16.2024.01.25.01.46.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 25 Jan 2024 01:46:31 -0800 (PST)
+Message-ID: <d33bad27-da65-4866-96e7-a249824fcb6e@linaro.org>
+Date: Thu, 25 Jan 2024 10:46:30 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240122-for-netnext-mt7530-improvements-1-v3-1-042401f2b279@arinc9.com>
- <20240122-for-netnext-mt7530-improvements-1-v3-1-042401f2b279@arinc9.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] optee: support wq_sleep_timeout
+Content-Language: en-US
+To: "gavin.liu" <gavin.liu@mediatek.com>,
+ Jens Wiklander <jens.wiklander@linaro.org>,
+ Sumit Garg <sumit.garg@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ op-tee@lists.trustedfirmware.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20240125052744.18866-1-gavin.liu@mediatek.com>
+From: Jerome Forissier <jerome.forissier@linaro.org>
+In-Reply-To: <20240125052744.18866-1-gavin.liu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240125_013110_377631_41AF595D 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20240125_014634_209809_7CF139AF 
+X-CRM114-Status: GOOD (  18.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,31 +97,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 22, 2024 at 08:35:52AM +0300, Arınç ÜNAL via B4 Relay wrote:
-> From: Arınç ÜNAL <arinc.unal@arinc9.com>
-> 
-> On the MT7530 switch, the CPU_PORT field indicates which CPU port to trap
-> frames to, regardless of the affinity of the inbound user port.
-> 
-> When multiple CPU ports are in use, if the DSA conduit interface is down,
-> trapped frames won't be passed to the conduit interface.
-> 
-> To make trapping frames work including this case, implement
-> ds->ops->conduit_state_change() on this subdriver and set the CPU_PORT
-> field to the numerically smallest CPU port whose conduit interface is up.
-> Introduce the active_cpu_ports field to store the information of the active
-> CPU ports. Correct the macros, CPU_PORT is bits 4 through 6 of the
-> register.
-> 
-> Add a comment to explain frame trapping for this switch.
-> 
-> Currently, the driver doesn't support the use of multiple CPU ports so this
-> is not necessarily a bug fix.
-> 
-> Suggested-by: Vladimir Oltean <olteanv@gmail.com>
-> Suggested-by: Russell King (Oracle) <linux@armlinux.org.uk>
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> ---
 
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+
+On 1/25/24 06:27, gavin.liu via OP-TEE wrote:
+> From: Gavin Liu <gavin.liu@mediatek.com>
+> 
+> Add wq_sleep_timeout to support self waking when timeout for secure
+> driver usage.
+> 
+> Signed-off-by: Gavin Liu <gavin.liu@mediatek.com>
+> ---
+>  drivers/tee/optee/notif.c         |  9 +++++++--
+>  drivers/tee/optee/optee_private.h |  2 +-
+>  drivers/tee/optee/rpc.c           | 10 ++++++++--
+>  3 files changed, 16 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/tee/optee/notif.c b/drivers/tee/optee/notif.c
+> index 05212842b0a5..d5e5c0645609 100644
+> --- a/drivers/tee/optee/notif.c
+> +++ b/drivers/tee/optee/notif.c
+> @@ -29,7 +29,7 @@ static bool have_key(struct optee *optee, u_int key)
+>  	return false;
+>  }
+>  
+> -int optee_notif_wait(struct optee *optee, u_int key)
+> +int optee_notif_wait(struct optee *optee, u_int key, u32 timeout)
+>  {
+>  	unsigned long flags;
+>  	struct notif_entry *entry;
+> @@ -70,7 +70,12 @@ int optee_notif_wait(struct optee *optee, u_int key)
+>  	 * Unlock temporarily and wait for completion.
+>  	 */
+>  	spin_unlock_irqrestore(&optee->notif.lock, flags);
+> -	wait_for_completion(&entry->c);
+> +	if (timeout != 0) {
+> +		if (!wait_for_completion_timeout(&entry->c, timeout))
+> +			rc = -ETIMEDOUT;
+> +	} else {
+> +		wait_for_completion(&entry->c);
+> +	}
+>  	spin_lock_irqsave(&optee->notif.lock, flags);
+>  
+>  	list_del(&entry->link);
+> diff --git a/drivers/tee/optee/optee_private.h b/drivers/tee/optee/optee_private.h
+> index 7a5243c78b55..da990c4016ec 100644
+> --- a/drivers/tee/optee/optee_private.h
+> +++ b/drivers/tee/optee/optee_private.h
+> @@ -252,7 +252,7 @@ struct optee_call_ctx {
+>  
+>  int optee_notif_init(struct optee *optee, u_int max_key);
+>  void optee_notif_uninit(struct optee *optee);
+> -int optee_notif_wait(struct optee *optee, u_int key);
+> +int optee_notif_wait(struct optee *optee, u_int key, u32 timeout);
+>  int optee_notif_send(struct optee *optee, u_int key);
+>  
+>  u32 optee_supp_thrd_req(struct tee_context *ctx, u32 func, size_t num_params,
+> diff --git a/drivers/tee/optee/rpc.c b/drivers/tee/optee/rpc.c
+> index e69bc6380683..14e6246aaf05 100644
+> --- a/drivers/tee/optee/rpc.c
+> +++ b/drivers/tee/optee/rpc.c
+> @@ -130,6 +130,8 @@ static void handle_rpc_func_cmd_i2c_transfer(struct tee_context *ctx,
+>  static void handle_rpc_func_cmd_wq(struct optee *optee,
+>  				   struct optee_msg_arg *arg)
+>  {
+> +	int rc = 0;
+> +
+>  	if (arg->num_params != 1)
+>  		goto bad;
+>  
+> @@ -139,7 +141,8 @@ static void handle_rpc_func_cmd_wq(struct optee *optee,
+>  
+>  	switch (arg->params[0].u.value.a) {
+>  	case OPTEE_RPC_NOTIFICATION_WAIT:
+> -		if (optee_notif_wait(optee, arg->params[0].u.value.b))
+> +		rc = optee_notif_wait(optee, arg->params[0].u.value.b, arg->params[0].u.value.c);
+
+optee/optee_rpc_cmd.h needs updating (near "Waiting on notification") to reflect the meaning
+of value.c.
+
+Was value.c required to be zero prior to this change? Otherwise this could lead to undefined
+behavior.
+ 
+
+> +		if (rc)
+>  			goto bad;
+>  		break;
+>  	case OPTEE_RPC_NOTIFICATION_SEND:
+> @@ -153,7 +156,10 @@ static void handle_rpc_func_cmd_wq(struct optee *optee,
+>  	arg->ret = TEEC_SUCCESS;
+>  	return;
+>  bad:
+> -	arg->ret = TEEC_ERROR_BAD_PARAMETERS;
+> +	if (rc == -ETIMEDOUT)
+> +		arg->ret = TEEC_ERROR_BUSY;
+> +	else
+> +		arg->ret = TEEC_ERROR_BAD_PARAMETERS;
+>  }
+>  
+>  static void handle_rpc_func_cmd_wait(struct optee_msg_arg *arg)
+
+-- 
+Jerome
 
