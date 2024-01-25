@@ -4,83 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A0F0C47258
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jan 2024 19:36:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58E18C47258
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jan 2024 20:31:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QjqvkLmk8VDSM4lbemx7hZHtV6yp8+TOJnRN6X8CIwM=; b=mtgGs2HhvH0M+M3YDTroaN7h9j
-	gQUkuHGuEukNEtDgzaU1T0jD4PtBNu7G27xKHgWfOXfk8oHFWbYQWIhilk6OTi/nDfwznx6cgEP36
-	WOlfIltiV3A1hcE2/0qgmvygv1HgUfQ7OACMrEdlL93QWHKlbSjyZYu11Zu85HMivZOQm44LwsQVw
-	VBN6J87c9ALx5XkwcJ8ZH4p/hNtWDc3J36MboMMK6z8a7KF7RjsQnC5UKFuzMnR8NLDqpcNk8lu1t
-	HY3Z8k+DU4Cu72m9vZYicC9XdiZ5UuJyfA3mX3IwxriI7tdTsD4/NXCdPJnGqXhoVlTVrbCm++Rfh
-	tXJBTntg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1Q+JLukRnK1hs1HkBwyCFc7ejHeCJkJOVnJ8A0HTmWE=; b=T1XkyiA+HBWf0/Jcj03lTTXFma
+	lGYKe2G6em3AggBw8m616Ubc72N64TvzAEl8ojUHCFf3be3/Rhv838XDw+hbHSbuPtQbhNurlVj4y
+	gnVDjuJb6+zgJZlo3snIvgETiwzUNFCjTw+H72lXRIK2FIcTbbENa3HIuhl5svuh7ktuMqW7hBMId
+	ZyvYCpfAD28IvQLXUjQL1sE5QyDCOKPSXx/xF2NP2qXObZFKOkd0KTECSf18jj5q42KUCeAiHbcP8
+	Vxv6tbh2BOBT3abZ8O7InuF3t04f8S9RDiS0U0gwlgogqNwWj/3abRJkIK2GxItgywaMQurxn+bHu
+	/MYoa6jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rT5Wp-00000001aWh-0BL8;
-	Thu, 25 Jan 2024 19:36:47 +0000
-Received: from mail-ej1-f44.google.com ([209.85.218.44])
+	id 1rT6Na-00000001nI0-3NAS;
+	Thu, 25 Jan 2024 20:31:18 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rT5VO-00000001ZQ4-2CXP;
-	Thu, 25 Jan 2024 19:35:24 +0000
-Received: by mail-ej1-f44.google.com with SMTP id a640c23a62f3a-a2dc7827a97so803320766b.2;
-        Thu, 25 Jan 2024 11:35:17 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706211316; x=1706816116;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=QjqvkLmk8VDSM4lbemx7hZHtV6yp8+TOJnRN6X8CIwM=;
-        b=sd2ltGOdX87fZn3r1hld2ojTa9RQuCUt06Iwo30fnj5c1tY1tgSBMB2cyYjMJ4U1DE
-         XTgqKJe6qkCEnJUS8VW6PUrYfnTS1WhUYqRwDg4mTTNMuzp28PABqWs6IwkUwK9tSSQL
-         HB6V2XsnltWv8BFWNeR/vWd/bnsAO9X/di2dGDDUp9h9LX6tuTf06hCMp9xm3+edICrV
-         9DH8OhjVNM+YVVHpeMBEkTrNd2SZnxWHUnKsGUs9ym/t1pNgAZ/vfaMmC95gMDyfRiCh
-         wdV7OlFQFHLzm5jBGP26AgvX/mmqndorxue7dqnVUxA+IwCyDjzgjR//ndAATs+Bkwq0
-         NXIQ==
-X-Gm-Message-State: AOJu0Yz5gumVUmAWiayrc37d9N6XMh4yG5vp+hP/mG9eSO4QajuMiINC
-	0q5fMrXVYJLL/iQGrHWgTcZvqtl4N1LVKDcMy2f45Q9EpsHrMvdj
-X-Google-Smtp-Source: AGHT+IGw8OBJoLm4ygn5xm5az2pErjzlXXBBw71Cjl+glIux2aHdlBCQjZUfWm+NYYC6eQUQURnlxA==
-X-Received: by 2002:a17:906:f291:b0:a31:4378:288c with SMTP id gu17-20020a170906f29100b00a314378288cmr52427ejb.120.1706211315809;
-        Thu, 25 Jan 2024 11:35:15 -0800 (PST)
-Received: from localhost (fwdproxy-lla-116.fbsv.net. [2a03:2880:30ff:74::face:b00c])
-        by smtp.gmail.com with ESMTPSA id vi2-20020a170907d40200b00a30ed424e18sm1330363ejc.41.2024.01.25.11.35.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 25 Jan 2024 11:35:15 -0800 (PST)
-From: Breno Leitao <leitao@debian.org>
-To: kuba@kernel.org,
-	davem@davemloft.net,
-	pabeni@redhat.com,
-	edumazet@google.com,
-	Ioana Ciornei <ioana.ciornei@nxp.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Alexander Couzens <lynxis@fe80.eu>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jose Abreu <Jose.Abreu@synopsys.com>
-Cc: dsahern@kernel.org,
-	weiwan@google.com,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH net 08/10] net: fill in MODULE_DESCRIPTION()s for PCS drivers
-Date: Thu, 25 Jan 2024 11:34:18 -0800
-Message-Id: <20240125193420.533604-9-leitao@debian.org>
-X-Mailer: git-send-email 2.39.3
-In-Reply-To: <20240125193420.533604-1-leitao@debian.org>
-References: <20240125193420.533604-1-leitao@debian.org>
+	id 1rT6NY-00000001nGb-0gjT
+	for linux-mediatek@lists.infradead.org;
+	Thu, 25 Jan 2024 20:31:17 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rT6M4-0007oq-4x; Thu, 25 Jan 2024 21:29:44 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rT6Ly-002MWh-9O; Thu, 25 Jan 2024 21:29:38 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rT6Ly-0087Xo-0R;
+	Thu, 25 Jan 2024 21:29:38 +0100
+Date: Thu, 25 Jan 2024 21:29:37 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Florian Fainelli <florian.fainelli@broadcom.com>
+Cc: linux-pwm@vger.kernel.org, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+	Benson Leung <bleung@chromium.org>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Paul Cercueil <paul@crapouillou.net>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Kevin Hilman <khilman@baylibre.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>, 
+	Fabrice Gasnier <fabrice.gasnier@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, dri-devel@lists.freedesktop.org, linux-mips@vger.kernel.org, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Guenter Roeck <groeck@chromium.org>, linux-riscv@lists.infradead.org, 
+	Fabio Estevam <festevam@gmail.com>, linux-stm32@st-md-mailman.stormreply.com, 
+	Jerome Brunet <jbrunet@baylibre.com>, chrome-platform@lists.linux.dev, 
+	linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, NXP Linux Team <linux-imx@nxp.com>, linux-sunxi@lists.linux.dev, 
+	Jonas Karlman <jonas@kwiboo.se>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	greybus-dev@lists.linaro.org, linux-mediatek@lists.infradead.org, 
+	linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, Douglas Anderson <dianders@chromium.org>, kernel@pengutronix.de
+Subject: Re: [PATCH v5 003/111] pwm: Provide a macro to get the parent device
+ of a given chip
+Message-ID: <e3xeos2rtfydqj3hz3ql7xkon3aa3aingww7q5lpb3xa4arqrs@6jgwfrgay4le>
+References: <cover.1706182805.git.u.kleine-koenig@pengutronix.de>
+ <1cae6f73264ab313205eaa9483251f7aaf259cb4.1706182805.git.u.kleine-koenig@pengutronix.de>
+ <c89cbecf-253d-4a2c-8782-304b7b620175@broadcom.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="qxr7wcriw2tz34lp"
+Content-Disposition: inline
+In-Reply-To: <c89cbecf-253d-4a2c-8782-304b7b620175@broadcom.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240125_113519_168301_9327475B 
-X-CRM114-Status: UNSURE (   8.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240125_123116_360152_EAEEEFF0 
+X-CRM114-Status: GOOD (  20.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,47 +103,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-W=1 builds now warn if module is built without a MODULE_DESCRIPTION().
-Add descriptions to the Lynx, XPCS and LynxI PCS drivers.
 
-Signed-off-by: Breno Leitao <leitao@debian.org>
----
- drivers/net/pcs/pcs-lynx.c      | 1 +
- drivers/net/pcs/pcs-mtk-lynxi.c | 1 +
- drivers/net/pcs/pcs-xpcs.c      | 1 +
- 3 files changed, 3 insertions(+)
+--qxr7wcriw2tz34lp
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/net/pcs/pcs-lynx.c b/drivers/net/pcs/pcs-lynx.c
-index dc3962b2aa6b..853b8c138718 100644
---- a/drivers/net/pcs/pcs-lynx.c
-+++ b/drivers/net/pcs/pcs-lynx.c
-@@ -398,4 +398,5 @@ void lynx_pcs_destroy(struct phylink_pcs *pcs)
- }
- EXPORT_SYMBOL(lynx_pcs_destroy);
- 
-+MODULE_DESCRIPTION("NXP Lynx PCS phylink library");
- MODULE_LICENSE("Dual BSD/GPL");
-diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
-index 8501dd365279..4f63abe638c4 100644
---- a/drivers/net/pcs/pcs-mtk-lynxi.c
-+++ b/drivers/net/pcs/pcs-mtk-lynxi.c
-@@ -303,4 +303,5 @@ void mtk_pcs_lynxi_destroy(struct phylink_pcs *pcs)
- }
- EXPORT_SYMBOL(mtk_pcs_lynxi_destroy);
- 
-+MODULE_DESCRIPTION("MediaTek SGMII library for LynxI");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/net/pcs/pcs-xpcs.c b/drivers/net/pcs/pcs-xpcs.c
-index 31f0beba638a..52a7757ee419 100644
---- a/drivers/net/pcs/pcs-xpcs.c
-+++ b/drivers/net/pcs/pcs-xpcs.c
-@@ -1456,4 +1456,5 @@ struct dw_xpcs *xpcs_create_mdiodev(struct mii_bus *bus, int addr,
- }
- EXPORT_SYMBOL_GPL(xpcs_create_mdiodev);
- 
-+MODULE_DESCRIPTION("Synopsys DesignWare XPCS library");
- MODULE_LICENSE("GPL v2");
--- 
-2.39.3
+On Thu, Jan 25, 2024 at 11:32:47AM -0800, Florian Fainelli wrote:
+> On 1/25/24 04:08, Uwe Kleine-K=F6nig wrote:
+> > Currently a pwm_chip stores in its struct device *dev member a pointer
+> > to the parent device. Preparing a change that embeds a full struct
+> > device in struct pwm_chip, this accessor macro should be used in all
+> > drivers directly accessing chip->dev now. This way struct pwm_chip and
+> > this macro can be changed without having to touch all drivers in the
+> > same change set.
+> >=20
+> > Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+>=20
+> Nit: this is not a macro but an inline function.
 
+Oh right, it used to be a macro, but I changed that. I made the commit
+log read:
+
+    pwm: Provide an inline function to get the parent device of a given chip
+
+    Currently a pwm_chip stores in its struct device *dev member a pointer
+    to the parent device. Preparing a change that embeds a full struct
+    device in struct pwm_chip, this accessor function should be used in all
+    drivers directly accessing chip->dev now. This way struct pwm_chip and
+    this new function can be changed without having to touch all drivers in
+    the same change set.
+
+Thanks,
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--qxr7wcriw2tz34lp
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmWyxLEACgkQj4D7WH0S
+/k5nkwf9F+1G1rrz7HMmMk0kkol6Q/0nb8baCUPdKhCcHXWnUrkFf+l8BvLEafhy
+6D5c/214tles7OGu5Mgkku0rW4Ae8+sq9Ho2OEJEpVsSuULPwv3+L44VQzZgsjD6
+ULcEcc1vul0iOpwJ0bTHeMqX+P3OENhi72tUDh+NQNnml8ZgePsTI2Ef8agexXAb
+7GLAE/AnRbi3bqcn5XzmIjskyMJfwOT4AvyHWPzzM1sGWfGPOiDp8e2cQXNsUywY
+IZ1X1op4Eax4/Yg/DB2uED0doQLAwJct5JLN/G+Dfx6EReTyA39z64IHPuxNmCXA
+REKDvLe8LO4A9v/JIUQuiwXHBcbjLQ==
+=k1zn
+-----END PGP SIGNATURE-----
+
+--qxr7wcriw2tz34lp--
 
