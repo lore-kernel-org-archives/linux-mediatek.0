@@ -4,69 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB2FEC47258
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jan 2024 15:00:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3F8CC47258
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jan 2024 15:02:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kCQ9Yw4nlULNLX5Qw0mR8/RqZHNvQSSpxlZbvgmqlzg=; b=DHiiwnnLa5dkzW29pLAL/utSO+
-	CoahV0DuV9GqUSsJhlfIapxVLomLGbToABTZQMFC4G+ypsTEjlFZZ1RBjSwKd7ccyorgXYAilTGRE
-	EbkEeCKJQ9nnEtlNpdy1YSWaeCYOFNKZflYFAqXk+xrva9i2USXseiFfaULaiRJNvxm05ZwslHsQS
-	nG9zweUs1OOdCuGHAQSjrdh/makqDpwuSDh2r8mjqtiV1UmX6Tgtb+mrCiNhu0bCWG50U5HZ3R5lm
-	/Th+13rAhjAxNfe/xgNNM9SsXdLd/Pd8+hSjwV9OU4otdmtlA3oW8txqLltzwBMeotzRqcJ4prBYh
-	gDK7/t2g==;
+	bh=XTHYIZzUxtAT+UZGnWW/PMLr3D1IxYvIdKjSA4oFUS4=; b=CtkwTkuIl0k0X2iUZoQbm1L40t
+	yaBxFdtvI90ODgJl/dgQBHek5waIu4wNL26tpy0mlEp8KPjeuW4j+aeTV6JVBy9qxT0HDOyWNGz6S
+	BCfsXhK+sO+nFb74MQeNcv4R3fPpZg8eR+libzTf0YueGxI4/trX48d5QAovLbaLKeJ6BADssuidS
+	2YjNro+NXuO0BXNq4Jlcd1SldLMViCu+x0XJJw7p0VwXua52kJD3slDgYaJq8bSHxckYdCpyr/+Vl
+	16qIjUNcL0ZNA0UvJSbPLnSgPR3IXmskcvKJIM/+/HeTHk2+zPHJ5oljYbi58zwGyiUHh6Tj0ZLm8
+	iM18/6Rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rT1DZ-00000000W5U-1d65;
-	Thu, 25 Jan 2024 15:00:37 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rT1FL-00000000WY0-26HU;
+	Thu, 25 Jan 2024 15:02:27 +0000
+Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rT1DW-00000000W3k-0Okc;
-	Thu, 25 Jan 2024 15:00:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 88584CE33FE;
-	Thu, 25 Jan 2024 15:00:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id A49EBC43390;
-	Thu, 25 Jan 2024 15:00:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1706194826;
-	bh=eJ0fPZy5H3HPFj4qbHHzlx5qHvg0wqNVEjDL2Z6lfPA=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=MSpXFasW/lWHRJZ/rNGQYjVPz2RcWSJE1wv0XkdNwcjHHyt7zD48+qzoaCT2ry07L
-	 jujebahj6eccGcPEGAN2vPBuj/TXJLe3Y4srogK0w5tq3q4AqNSI2GkiF7gx5TCE9h
-	 jnh+PpPOc7U/yTlymPLdNmeXPnhixcT/xAKv14M3Q+WuRDiIlMeANS5woqHUMiK05Y
-	 HC/7jTwGIM7wIqSh6fQUJlhFE128uRfxy8nuj0wHXYoP23WHRLZAQdAp7o16xnnuKV
-	 NoKb88xMwchfej1nh7WGg9RBpp9xoKs9z7B88ky/cAjuXYy1D0HRjAaDuXdgJIrteQ
-	 yrV6+ltSsphUQ==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 867FBD8C962;
-	Thu, 25 Jan 2024 15:00:26 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1rT1FI-00000000WWO-275m
+	for linux-mediatek@lists.infradead.org;
+	Thu, 25 Jan 2024 15:02:25 +0000
+Received: by mail-oa1-x30.google.com with SMTP id 586e51a60fabf-214410e969cso415733fac.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 25 Jan 2024 07:02:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1706194942; x=1706799742; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XTHYIZzUxtAT+UZGnWW/PMLr3D1IxYvIdKjSA4oFUS4=;
+        b=t2kRssBSoxL4VE8HVvCxHMHA47QPw4a8GSNGv/iWsCIzw9X+kDlxhg4hZvpoJaXodn
+         gU5JMXNmaeIakUhJFHmt/4VrbNwB+Tehm2ppxtsQCmlwQ+XpHD14iRKS3p0v2mdOLrWJ
+         8Mv7QbF8p4U5Iji2cpFV6/AmrtpUIzSatMzpiU1To4Rs7B/2VjyFUT1QAsCwsW9jAt7K
+         1UV+dVEuYRRiYgDh6m9rmjegq/4nCrCBbM5HqR9mtSl3WCZmsH/o7n5OWOcMcM6Tasn1
+         YRRxzwZqlArFuIj+8aVE5yjA4sXZtOxqjZfraDokBbir/hSLiDGYU9v4SMxBCuOffA3s
+         Z2Kw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706194942; x=1706799742;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=XTHYIZzUxtAT+UZGnWW/PMLr3D1IxYvIdKjSA4oFUS4=;
+        b=NVvNFBAfu4LOYxjfJ5jNhB/ygmKb/F/sFK8MzhZurjpn0+/Ok+c2EY2IYVN7fpTcfe
+         RVpiLkVDVB/doz+hxoyp7OWllBkgkany9Dgeqkhoz4dqsMQkG6NXjC/Kja6m+K42Au3U
+         zBY+6s950QqzRvjQMiZx24Iz2HsBkliLdeWHGxNoxYGiK4mvNOmFU1FYZy+UBLhCXstL
+         ZNG8PNgJRvKhDqPzceuVI0kBTOzGOokE0OVB7A9mPTw3hVh+nWgBzB2WApczsTAtMuYV
+         VEa1oR2v/QuBUpgJfOz7XuTP9G780ibn8HjUPHjZXorBJGbfOLcfWzWA2sZBTviZfVSu
+         Wi8Q==
+X-Gm-Message-State: AOJu0YxA31eRD5pKTb15CkbbSTaWftMBxLLfzqljrJPXsflNi9UzfDAA
+	BboUUUhaWKy/DGupJ0YpvVDawFCzb636hi0vKtx4bGaTfxVi/NxMUxouS+5KW7e5a1sdRKW6l72
+	G6HAWcqWurMpSX/kTtKfhppJa2jp0U072NystRw==
+X-Google-Smtp-Source: AGHT+IH18fERkDlyVopUGZsEyzj2rkiDR7TmWSqJRbHrxYPyuZZATjZVn5OWkncC1o6/boI68kzvD+uz9/xOct5JPB4=
+X-Received: by 2002:a05:6870:9e9c:b0:214:d0c9:b8d9 with SMTP id
+ pu28-20020a0568709e9c00b00214d0c9b8d9mr433312oab.1.1706194940332; Thu, 25 Jan
+ 2024 07:02:20 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: dsa: mt7530: support OF-based registration of
- switch MDIO bus
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <170619482654.13332.18301642158515027225.git-patchwork-notify@kernel.org>
-Date: Thu, 25 Jan 2024 15:00:26 +0000
-References: <20240122053431.7751-1-arinc.unal@arinc9.com>
-In-Reply-To: <20240122053431.7751-1-arinc.unal@arinc9.com>
-To: =?utf-8?b?QXLEsW7DpyDDnE5BTCA8YXJpbmMudW5hbEBhcmluYzkuY29tPg==?=@ci.codeaurora.org
-Cc: daniel@makrotopia.org, Landen.Chao@mediatek.com, dqfext@gmail.com,
- sean.wang@mediatek.com, andrew@lunn.ch, f.fainelli@gmail.com,
- olteanv@gmail.com, davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, mail@david-bauer.net,
- mithat.guner@xeront.com, erkin.bozoglu@xeront.com, luizluca@gmail.com,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240125052744.18866-1-gavin.liu@mediatek.com>
+In-Reply-To: <20240125052744.18866-1-gavin.liu@mediatek.com>
+From: Jens Wiklander <jens.wiklander@linaro.org>
+Date: Thu, 25 Jan 2024 16:02:08 +0100
+Message-ID: <CAHUa44EcGnOno8TQ-wPE8Q_ghG8t5J5uRLqnYduAnQXx6oRATg@mail.gmail.com>
+Subject: Re: [PATCH] optee: support wq_sleep_timeout
+To: "gavin.liu" <gavin.liu@mediatek.com>
+Cc: Sumit Garg <sumit.garg@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, op-tee@lists.trustedfirmware.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	Jerome Forissier <jerome.forissier@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240125_070034_374778_38FBF762 
-X-CRM114-Status: UNSURE (   8.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240125_070224_578355_B4F714E5 
+X-CRM114-Status: GOOD (  19.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,29 +93,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Thu, Jan 25, 2024 at 6:28=E2=80=AFAM gavin.liu <gavin.liu@mediatek.com> =
+wrote:
+>
+> From: Gavin Liu <gavin.liu@mediatek.com>
+>
+> Add wq_sleep_timeout to support self waking when timeout for secure
+> driver usage.
+>
+> Signed-off-by: Gavin Liu <gavin.liu@mediatek.com>
+> ---
+>  drivers/tee/optee/notif.c         |  9 +++++++--
+>  drivers/tee/optee/optee_private.h |  2 +-
+>  drivers/tee/optee/rpc.c           | 10 ++++++++--
+>  3 files changed, 16 insertions(+), 5 deletions(-)
 
-This patch was applied to netdev/net-next.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
+I'd like to see the corresponding secure world changes taking
+advantage of this ABI change before we take this any further.
 
-On Mon, 22 Jan 2024 08:34:31 +0300 you wrote:
-> Currently the MDIO bus of the switches the MT7530 DSA subdriver controls
-> can only be registered as non-OF-based. Bring support for registering the
-> bus OF-based.
-> 
-> The subdrivers that control switches [with MDIO bus] probed on OF must
-> follow this logic to support all cases properly:
-> 
-> [...]
+Thanks,
+Jens
 
-Here is the summary with links:
-  - [net-next] net: dsa: mt7530: support OF-based registration of switch MDIO bus
-    https://git.kernel.org/netdev/net-next/c/91374ba537bd
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+>
+> diff --git a/drivers/tee/optee/notif.c b/drivers/tee/optee/notif.c
+> index 05212842b0a5..d5e5c0645609 100644
+> --- a/drivers/tee/optee/notif.c
+> +++ b/drivers/tee/optee/notif.c
+> @@ -29,7 +29,7 @@ static bool have_key(struct optee *optee, u_int key)
+>         return false;
+>  }
+>
+> -int optee_notif_wait(struct optee *optee, u_int key)
+> +int optee_notif_wait(struct optee *optee, u_int key, u32 timeout)
+>  {
+>         unsigned long flags;
+>         struct notif_entry *entry;
+> @@ -70,7 +70,12 @@ int optee_notif_wait(struct optee *optee, u_int key)
+>          * Unlock temporarily and wait for completion.
+>          */
+>         spin_unlock_irqrestore(&optee->notif.lock, flags);
+> -       wait_for_completion(&entry->c);
+> +       if (timeout !=3D 0) {
+> +               if (!wait_for_completion_timeout(&entry->c, timeout))
+> +                       rc =3D -ETIMEDOUT;
+> +       } else {
+> +               wait_for_completion(&entry->c);
+> +       }
+>         spin_lock_irqsave(&optee->notif.lock, flags);
+>
+>         list_del(&entry->link);
+> diff --git a/drivers/tee/optee/optee_private.h b/drivers/tee/optee/optee_=
+private.h
+> index 7a5243c78b55..da990c4016ec 100644
+> --- a/drivers/tee/optee/optee_private.h
+> +++ b/drivers/tee/optee/optee_private.h
+> @@ -252,7 +252,7 @@ struct optee_call_ctx {
+>
+>  int optee_notif_init(struct optee *optee, u_int max_key);
+>  void optee_notif_uninit(struct optee *optee);
+> -int optee_notif_wait(struct optee *optee, u_int key);
+> +int optee_notif_wait(struct optee *optee, u_int key, u32 timeout);
+>  int optee_notif_send(struct optee *optee, u_int key);
+>
+>  u32 optee_supp_thrd_req(struct tee_context *ctx, u32 func, size_t num_pa=
+rams,
+> diff --git a/drivers/tee/optee/rpc.c b/drivers/tee/optee/rpc.c
+> index e69bc6380683..14e6246aaf05 100644
+> --- a/drivers/tee/optee/rpc.c
+> +++ b/drivers/tee/optee/rpc.c
+> @@ -130,6 +130,8 @@ static void handle_rpc_func_cmd_i2c_transfer(struct t=
+ee_context *ctx,
+>  static void handle_rpc_func_cmd_wq(struct optee *optee,
+>                                    struct optee_msg_arg *arg)
+>  {
+> +       int rc =3D 0;
+> +
+>         if (arg->num_params !=3D 1)
+>                 goto bad;
+>
+> @@ -139,7 +141,8 @@ static void handle_rpc_func_cmd_wq(struct optee *opte=
+e,
+>
+>         switch (arg->params[0].u.value.a) {
+>         case OPTEE_RPC_NOTIFICATION_WAIT:
+> -               if (optee_notif_wait(optee, arg->params[0].u.value.b))
+> +               rc =3D optee_notif_wait(optee, arg->params[0].u.value.b, =
+arg->params[0].u.value.c);
+> +               if (rc)
+>                         goto bad;
+>                 break;
+>         case OPTEE_RPC_NOTIFICATION_SEND:
+> @@ -153,7 +156,10 @@ static void handle_rpc_func_cmd_wq(struct optee *opt=
+ee,
+>         arg->ret =3D TEEC_SUCCESS;
+>         return;
+>  bad:
+> -       arg->ret =3D TEEC_ERROR_BAD_PARAMETERS;
+> +       if (rc =3D=3D -ETIMEDOUT)
+> +               arg->ret =3D TEEC_ERROR_BUSY;
+> +       else
+> +               arg->ret =3D TEEC_ERROR_BAD_PARAMETERS;
+>  }
+>
+>  static void handle_rpc_func_cmd_wait(struct optee_msg_arg *arg)
+> --
+> 2.18.0
+>
 
