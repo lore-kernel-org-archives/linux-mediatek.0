@@ -4,95 +4,186 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C35F1C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jan 2024 22:00:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5595C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jan 2024 02:35:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5W3Zc4lw9OY5mCDTox2UyfPkd23B5LnUVm+szTHb4aA=; b=ksGYHMJEYGw+j19yjQViHYqQHa
-	DhX9qruQumpxBoLCooqH5EFX33WvP5E0rFWCYllY5z+LWkTrimVZ0YsfWujMhAs5b8BSYmVk7vj9l
-	uuBMxENF2bziYiDhWKPkRckYOwCpCp5S5w0FQFZ1F7EoU++/IfJIs7ymNbWoMOmHv2UrZPLzqYmHX
-	vIqooThMYM/URNfbVOtUDrhtPVjQ1k6kBcdbfuwV1qLVDu3Eb2LGHYmFlbdBtQkJkp+tihIeweti+
-	0VM7cWHmbbVm27ONAsbh5Epe9iaE2Ut6m/WgcIeSg8f+kN8zQtCC6wdC7hXYlY3I/aEfUwR67aMuW
-	+0KO1gmg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8leEpzl/CJ3bhHWIOlQ08Y7Qc2Kf6H2DtX0XFJTK38o=; b=4NI1KaoQQPwwDD3vv8qd/BNUXU
+	q6sNDUPxswqssfsu7nzICdMlLysH6gEDJaYQjJlaYTU6X9QobLzlAylpeLtaOKGQ02GXSBPKKQkOZ
+	Uj9I1l4KafBTbN9GuQHdQFQC4KdRLxn1C6DKHfYokpKS58tPBkM6kuNfl5bKIS/GCztbO/DvMllkX
+	sxBN/hJvvDayDqLn5U8YtuD0FGPptVOV77ekyQq6RmmAB/92j6dmzMfQhk3YGax24XA0pZj/7Kx2/
+	AV2ZQKav2utRBNKwX1qbi6TF1Oi9ttdksffxkCAS5bCNlm0n7AZGKfONt2lPEAYphdcGRycWY7EHP
+	+fLohopQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSlHq-005EUR-1H;
-	Wed, 24 Jan 2024 21:59:58 +0000
-Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d])
+	id 1rSpa9-005ui5-0J;
+	Thu, 25 Jan 2024 02:35:09 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSlHm-005ESG-2m
-	for linux-mediatek@lists.infradead.org;
-	Wed, 24 Jan 2024 21:59:56 +0000
-Received: by mail-io1-xd2d.google.com with SMTP id ca18e2360f4ac-7ba903342c2so341047439f.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 24 Jan 2024 13:59:50 -0800 (PST)
+	id 1rSpa5-005uhY-1X;
+	Thu, 25 Jan 2024 02:35:07 +0000
+X-UUID: 552c05b2bb2a11eea0bf134e88e6c2dc-20240124
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=8leEpzl/CJ3bhHWIOlQ08Y7Qc2Kf6H2DtX0XFJTK38o=;
+	b=YkPWTFcU05mECUiCM/Y3QKGTzd/AtIlm6WGQgLcShg2zPRdOykajT1tQnz1ARET2uRVsbMQYoOL25+yx2ZsEj1pCQqiTpMXE/q8Tx2occWznC4q0frPozGmuFgmWSYHl5luBdQhfYuHqprEkPjZMdNLMfikMXQsmD7a1G+Rhkq0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.36,REQID:2221c647-9b94-4113-ba96-a6dbb6a529cd,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6e16cf4,CLOUDID:ee99ba7f-4f93-4875-95e7-8c66ea833d57,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 552c05b2bb2a11eea0bf134e88e6c2dc-20240124
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <zhi.mao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1473672131; Wed, 24 Jan 2024 19:34:58 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 25 Jan 2024 10:24:54 +0800
+Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 25 Jan 2024 10:24:54 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=gJJZuFan0B7gs4hbD1rt83+XnnucoPNz6bNR3w+1H3hxSoHqI06cFI/V2NhON0D7xKcHNUk+O0EYMZXpzXwsubNg5JLpvfGob3hgMu9qqKLkVSBx6UIduQkmon+Iu5rXIm/uEKsrI/dkmj0qFNQzYb4pOM3dLMnrpXgRm495WQFCSd+ob7iZCwG3Vjf8lTLkNiwY7tvmI8HkshTfJOmVAyeHf/gZSlzBIYsxcNAc12AbkOYqlRQL7ekt4FdlOX+Rkj2mWkl73dW1QcoEurMwVgLe3Ns3vpIoxDrgF94lhRBOwK3mfZ3eDO6wZGu0I5nwk6bGnvPrq/45n1K8hNdIxA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8leEpzl/CJ3bhHWIOlQ08Y7Qc2Kf6H2DtX0XFJTK38o=;
+ b=jQtl/qlYCa6txhfQ/keoVlMy7+yJMJATDGV55hrOaoIcFjVsgi1tFkaqdoO3v6AsxULjxH7NidHVe9rSUwXtR+CeW30jSLrLBo1wI+4b4okl8aHAv9CRFYfuMn3OCzBaYO+NoGGXK41VhADv+9aFVqi+Z3+IRAs5gqb3feLShZjdILVAdLIRcTsPt5nb1j2xDj3zUcpHCCsdplY11g+SDiZx17kOel2lJFQpIOhokIShHS5qxi44FX+PJKnzMCZj8713CRt7ecXRSGDKi48AoiRacN+Zg52xy/bi5ONur7Dofshk+BrpCnBg5nnGzWHAgq4gc0fscNodAx0ywjoIrw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ieee.org; s=google; t=1706133590; x=1706738390; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=5W3Zc4lw9OY5mCDTox2UyfPkd23B5LnUVm+szTHb4aA=;
-        b=HdQSX6eV6/n/STfwXvp6cx28gBTWfHFuPMNZm6pd0wKXvqz+4KzZYjbB2IG6h+Dbci
-         Hl9pDpYvmrbY4qrth2a1CvNvnlDIahB13mKUBnUPsF2mvsdyZ/Qf58L/HW1n7aC3Biov
-         x6vEgJbeHa6j+qRyb3kRcn5bFFeOvUM0/3v10=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706133590; x=1706738390;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5W3Zc4lw9OY5mCDTox2UyfPkd23B5LnUVm+szTHb4aA=;
-        b=FutVMRRBRy7e3mTsbGkyDnNZcKyKECEYKQ/nseJot/sjtgQ0LnCkj9tl1XKuttTLrr
-         vXNRH4Mpk2RVZPxXmmJknebN2ZemPtmb3Eo0IynsAhOPLGntukspC8bLnqu6wOD43+8E
-         32xqN+dXSOWAgnowZwph2uIJho0Cx2rPcDouGodj1umEgrlUsvku5mQMknmEMUGMc32u
-         AbxmCYUGF6f/sn1ia9HClG0C6OKadaVsMubaIXpUp1pPV89VzeWN6ERIVxxnJTWemr+P
-         VbStYsQFULnHeeaptNsxE0k+irer0ZJrs8Ws3yFMKpx1uDRyuA3StRIGgHX5P4kfJuWZ
-         /AsA==
-X-Gm-Message-State: AOJu0YyDXkzDoBvNUhJNF8dzYzwpuynK7vXoclZI7X0ALkpSoz2p5djl
-	utIebedvC3dLb0CJMaiv4bKQG/UduO2LZk5ufn8y+xn7979p34CWZ54LEvcZ2A==
-X-Google-Smtp-Source: AGHT+IFoErDfBnp90Aso6XiHus3HsXdUa1t+JDihc6T5l+sSuJErscvKMaONLo9iiGOiH+hMVMxlSA==
-X-Received: by 2002:a6b:e901:0:b0:7ba:8db3:2997 with SMTP id u1-20020a6be901000000b007ba8db32997mr140857iof.6.1706133589792;
-        Wed, 24 Jan 2024 13:59:49 -0800 (PST)
-Received: from [172.22.22.28] (c-98-61-227-136.hsd1.mn.comcast.net. [98.61.227.136])
-        by smtp.googlemail.com with ESMTPSA id dq16-20020a0566384d1000b0046e025d9fefsm4228174jab.48.2024.01.24.13.59.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 24 Jan 2024 13:59:49 -0800 (PST)
-Message-ID: <51d07f81-45f4-4772-915f-ed5dac602a40@ieee.org>
-Date: Wed, 24 Jan 2024 15:59:46 -0600
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] treewide, serdev: change receive_buf() return type to
- size_t
-To: Francesco Dolcini <francesco@dolcini.it>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jiri Slaby <jirislaby@kernel.org>, linux-bluetooth@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, greybus-dev@lists.linaro.org,
- linux-iio@vger.kernel.org, netdev@vger.kernel.org,
- chrome-platform@lists.linux.dev, platform-driver-x86@vger.kernel.org,
- linux-serial@vger.kernel.org, linux-sound@vger.kernel.org
-Cc: Francesco Dolcini <francesco.dolcini@toradex.com>,
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
- Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
- Jonathan Cameron <jic23@kernel.org>, Lee Jones <lee@kernel.org>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Eric Dumazet <edumazet@google.com>, "David S. Miller" <davem@davemloft.net>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Hans de Goede <hdegoede@redhat.com>,
- =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
- Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>,
- Rob Herring <robh@kernel.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>
-References: <20240122180551.34429-1-francesco@dolcini.it>
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8leEpzl/CJ3bhHWIOlQ08Y7Qc2Kf6H2DtX0XFJTK38o=;
+ b=XZERNunyfult536444BTzxNU8tB+8h3PlVOKBLEoHsY1dCLg1q44SrJpMaKLga68UoTfMfWa/b3tnLbkn2ffTlS27OlBfqlxbNELTGHUE++NN21YHum/41tFpqO6F1uzC4SK0JYxf5n+dz7reOp+0jHipiuFfXPMMe76ZfNfhCQ=
+Received: from TYZPR03MB5566.apcprd03.prod.outlook.com (2603:1096:400:53::7)
+ by TYZPR03MB5598.apcprd03.prod.outlook.com (2603:1096:400:5e::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7228.25; Thu, 25 Jan
+ 2024 02:24:53 +0000
+Received: from TYZPR03MB5566.apcprd03.prod.outlook.com
+ ([fe80::33a9:162c:3c6e:4a0d]) by TYZPR03MB5566.apcprd03.prod.outlook.com
+ ([fe80::33a9:162c:3c6e:4a0d%7]) with mapi id 15.20.7228.023; Thu, 25 Jan 2024
+ 02:24:52 +0000
+From: =?utf-8?B?WmhpIE1hbyAo5q+b5pm6KQ==?= <zhi.mao@mediatek.com>
+To: "sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>
+CC: "heiko@sntech.de" <heiko@sntech.de>, "gerald.loacker@wolfvision.net"
+	<gerald.loacker@wolfvision.net>, "robh+dt@kernel.org" <robh+dt@kernel.org>,
+	"yunkec@chromium.org" <yunkec@chromium.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "dan.scally@ideasonboard.com"
+	<dan.scally@ideasonboard.com>, "linux-media@vger.kernel.org"
+	<linux-media@vger.kernel.org>,
+	=?utf-8?B?U2hlbmduYW4gV2FuZyAo546L5Zyj55S3KQ==?=
+	<shengnan.wang@mediatek.com>, "hdegoede@redhat.com" <hdegoede@redhat.com>,
+	"linus.walleij@linaro.org" <linus.walleij@linaro.org>,
+	"andy.shevchenko@gmail.com" <andy.shevchenko@gmail.com>,
+	=?utf-8?B?WWF5YSBDaGFuZyAo5by16ZuF5riFKQ==?= <Yaya.Chang@mediatek.com>,
+	"mchehab@kernel.org" <mchehab@kernel.org>, "jacopo.mondi@ideasonboard.com"
+	<jacopo.mondi@ideasonboard.com>, "jernej.skrabec@gmail.com"
+	<jernej.skrabec@gmail.com>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "bingbu.cao@intel.com"
+	<bingbu.cao@intel.com>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "conor+dt@kernel.org"
+	<conor+dt@kernel.org>, "10572168@qq.com" <10572168@qq.com>,
+	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
+	"tomi.valkeinen@ideasonboard.com" <tomi.valkeinen@ideasonboard.com>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "laurent.pinchart@ideasonboard.com"
+	<laurent.pinchart@ideasonboard.com>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "macromorgan@hotmail.com"
+	<macromorgan@hotmail.com>
+Subject: Re: [PATCH v3 2/2] media: i2c: Add GC08A3 image sensor driver
+Thread-Topic: [PATCH v3 2/2] media: i2c: Add GC08A3 image sensor driver
+Thread-Index: AQHaQqOcaJSxAdVZgECzYCFgQ+2t6LDRRRWAgBig/YA=
+Date: Thu, 25 Jan 2024 02:24:52 +0000
+Message-ID: <42cf05ea80a2413aae588b762e67c3418b9514d4.camel@mediatek.com>
+References: <20240109022715.30278-1-zhi.mao@mediatek.com>
+	 <20240109022715.30278-3-zhi.mao@mediatek.com>
+	 <ZZ0dcTEqxjYCohac@kekkonen.localdomain>
+In-Reply-To: <ZZ0dcTEqxjYCohac@kekkonen.localdomain>
+Accept-Language: en-US
 Content-Language: en-US
-From: Alex Elder <elder@ieee.org>
-In-Reply-To: <20240122180551.34429-1-francesco@dolcini.it>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB5566:EE_|TYZPR03MB5598:EE_
+x-ms-office365-filtering-correlation-id: f20edf70-8d04-4058-4842-08dc1d4cd04e
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 4Vf+ASjx4w/UAcgCoNgicn0KLUN00gfvDuiI2WWA8ymFYHPoPHzTdB9IZ96ol1kJqvbLQjSCJpn27h1Yj3OjAkZlILFhsJdkMrioHqLs+6GRFoUZoN9h5kypaDr9IZHmneSywUGnzxE0MFHZ3QwUgLVq59SUrodvd+4pkeZzGnMKjf0f6o3ze7WNQJg/mAQ6/kh5A3xLFPbtLJi1vVvaJWNZ3/DOzSyGO8rAf9I5aliZZRssKRy4x24CpWdwoA9W1LvZKTT2MpNidVkhtSBQkpTeHFvoGtpBYrxSiIsMAY10M4YOBM1KZEFs6w2QLFtp9exHP9go889/7iBlqYFSBhNyzle9eBO9PKcxywAKXkD+dixq4zIK523ct2kdEdCko0KVJxBZT3qKBIg2UHxt0pA+fNLC8dD2z+Z6nlTDz4U60HzFxznDIdq+V7zy/3eebhpOxAvM0qvZT40ezfurwz09xsrliAWlMKtYAuiU1izhNZnfLYft6AtUrZdHdciRA1FaFY9febYUphdzaCmzJN5mzK8myOMQVAOT8sCYO/j1bWG6J89KxYa6PPkItZVwV9oZes+0e1svz+4sEWmqquUmc6NdysBv2qj1U6ohVreh16O7pOY2H35wYsEOYuitlJmGcLzArWx270tft2Biug==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB5566.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(136003)(39860400002)(366004)(376002)(396003)(346002)(230173577357003)(230922051799003)(230273577357003)(451199024)(1800799012)(64100799003)(186009)(41300700001)(83380400001)(6512007)(38100700002)(26005)(2616005)(8676002)(4326008)(8936002)(5660300002)(7416002)(2906002)(478600001)(6506007)(966005)(6486002)(66476007)(71200400001)(66556008)(54906003)(64756008)(66446008)(66946007)(6916009)(316002)(76116006)(122000001)(38070700009)(36756003)(85182001)(86362001);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZWRwYUZIN2Q3T1ZhVzlFQ3FVeU85R0lGMDhGQkFXL3FxRjhJdWVUcUZtak51?=
+ =?utf-8?B?aWh1NVlnenFad2xlRnlwZmFyVFlGdWdETFNaclpWaUZNSGp4MkJiWWJaUlVL?=
+ =?utf-8?B?S1JUN2FtSy95dDl4ZTh3Uk9vV2dEaE1BVmVjMSswMmVtSVAyTHFOcW1IUnh4?=
+ =?utf-8?B?anlLaTNHbGpZVzRYT1FnbU1MMGE0Q255YmVFcDR2SThxTUlTc3YrM0RqdXFH?=
+ =?utf-8?B?VXg5VzFtdStNZU9qaU9KRjN0NENzY1Q5N1dGNW5ib3liWkpiZ1d2NG9JYndk?=
+ =?utf-8?B?VDNLZTZWY0JVOTRpcXRkbWMxcWwxSEc3OEdXdGlZM0pSNVphVzFhK2NJZWsz?=
+ =?utf-8?B?K1YyVzBmRWdReTJSRTFPOTVOOExTVHBod0dhOGpNZkREZWYwYURQS0RJSTBn?=
+ =?utf-8?B?QmtVTkY3bGxmVHFhVmRhZEQ3Q1U3VUs3WlZQcDEyWFROTWxkVWFSdXhvNG01?=
+ =?utf-8?B?ODhPdFFzYzc5aFd0bDJlNERWUzhqd1dZSEdEaHlXOXIzS0FBTHgxTnV0VVJB?=
+ =?utf-8?B?LzlHR00rSzhQdWZaclVCQzgxb1FCNWpQeEhkUnJTRVFjM3hITmZwUXlRNjRM?=
+ =?utf-8?B?cXcrc2Q2aDFzTE4yUndVL0JDblA3bWdNUDl4QXhpVEszMzZRTXdEZS9HYk9M?=
+ =?utf-8?B?Qlg1TDJtZE92dE5DT0V1MTF6U0ZEOVFISUJBQnZpbjN3ejU5Q2hXQkwrM29V?=
+ =?utf-8?B?a1FGWW56dnlsQ0pZYXI5YjFSMS90blBkTUN4STQyWGxCU2VZTVNyelZpNEha?=
+ =?utf-8?B?REJNU2xWYlhSYjFGdWdhUHhPQTBoc28rV2JWWDAxck1sSlBpTGg3eWpmRmJV?=
+ =?utf-8?B?czVUc2doWUNoVG1ISUE4Q0hoUmdlbW55T1hOeXYyVVJ0dkhKNUJ1eVFMdkc1?=
+ =?utf-8?B?QlVlYUJKTkNJaEZnUFA4Z01FNGVHd01KT1JWdXFsdlNadzBwVWpGeU9rWWVN?=
+ =?utf-8?B?WmNLeXdGWDNYSi80aW5Dd0Q3MmVEUk5hYTMvUllCT3N1eEJVdExZWm45M1Fn?=
+ =?utf-8?B?a1AxVlpUditLZFZTbldiVEl3cStPNWlKYVhqY1FGUnQwb3IxZUJXbWRkUEdB?=
+ =?utf-8?B?eHNabW42cjZIVmhuNENlc2JwOE03cDNBdkpYUWtPUWkzMFlOU3YzSmdBWnpW?=
+ =?utf-8?B?QlZEVlpUV2Zxd2JVNHRGVmlPV015ZWNma0loRGNsZmlwSnhRcVZzNzd4NGQ0?=
+ =?utf-8?B?OHhLRDZLVXdiZUZwNFJSVnFqSDljbTJTeExhTDB4NFBlUHl2MzAvM0JNMXF1?=
+ =?utf-8?B?TFpoU0M5RXgxTWpEU3lsYmtTTFMrM3V3UVdYVDF2L05BWmpva092RnJuWjYr?=
+ =?utf-8?B?UzNxQU1ZVG4vSCttaFZEYzdsd1ZrNWt4MFNvdU9XeHlWaWZQN09yOWd4KzN4?=
+ =?utf-8?B?d1Jyd29OZzFhT095bzF1bUtNL0pDQzNUVDJ4bnFoNmRCZXlJWGJvQjI0ajUy?=
+ =?utf-8?B?ZUo5NkREVWZiWXJxaU9mQm96SXBvb0g3UjFrWmlIZVBKNnFpdENQUnRMT09t?=
+ =?utf-8?B?dTBpTlFvSnlUQkN0Y0VKQlhuY0xhTHV1VnlSRHpZV0o3NWJjUDJsTGFFYzV2?=
+ =?utf-8?B?ZksxUG5jRXp6ekJMU203eEJVa01ncjBsMFJrOHVyYXJ6Vk1XMDlzUi93L3FK?=
+ =?utf-8?B?MU81dUlOK1dia2hVUjYva0RXWWlCZCtGcXlELzRhT29ZRUtMMGp2UUhMZ0JT?=
+ =?utf-8?B?VklGejhjdkkycTQwV3hQWk00Y1hjSk94YmV2Z3NRUDBxMlYvdjQ3bkc2RW9E?=
+ =?utf-8?B?aUlzZDc5UmQ4ZEk3ekpjTEZTYjVGVWFRUkNIS3ZFZVNUcnBsK08rZzRhajlF?=
+ =?utf-8?B?WFRTUFc0Q0xQV1NZTEFYQzlBRjB0YlNlVWd2NUZraDUvWnJGREViVDU5MzY2?=
+ =?utf-8?B?bjI2aUtqOWFoUTg5Q2o5ZkJXSVgwSXg1RUdMRjRURVBHbTc5bHZISS9HOTE0?=
+ =?utf-8?B?N3BLVXZ0djcvUHhkWll4c0JRd1lmZDVXNG80ZW5zQVBRcFI1T0MzWHBHbEdj?=
+ =?utf-8?B?dWMwTE81Z0VmYnFkWmIrTGFCcjBWK0tFUjg1ZmNuTGdsdXdsdDVRSFd0OWVv?=
+ =?utf-8?B?WTl5bGtReGpWR0FIeEcwL2R4dlR5cDFvYS9MbXVtV0ZMU3RCOFJxbTBySkdx?=
+ =?utf-8?Q?KhMGkV5iz9GX0hVANoIfaJ04W?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <963AB80C94EA0A44A160675A0B530D3E@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB5566.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f20edf70-8d04-4058-4842-08dc1d4cd04e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Jan 2024 02:24:52.8761
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 65VgTYLudxcpuwwJOVnFuJJpFzsza7ZKGyWxm0qklvrezL8aRAs+PbITOff1vYTOpgmj5mCsCQgrLIqFnbeSOg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB5598
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240124_135954_993478_5EC6AC95 
-X-CRM114-Status: GOOD (  28.84  )
+X-CRM114-CacheID: sfid-20240124_183505_576784_DF59AD87 
+X-CRM114-Status: GOOD (  18.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,148 +198,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1/22/24 12:05 PM, Francesco Dolcini wrote:
-> From: Francesco Dolcini <francesco.dolcini@toradex.com>
-> 
-> receive_buf() is called from ttyport_receive_buf() that expects values
-> ">= 0" from serdev_controller_receive_buf(), change its return type from
-> ssize_t to size_t.
-> 
-> The need for this clean-up was noticed while fixing a warning, see
-> commit 94d053942544 ("Bluetooth: btnxpuart: fix recv_buf() return value").
-> Changing the callback prototype to return an unsigned seems the best way
-> to document the API and ensure that is properly used.
-> 
-> GNSS drivers implementation of serdev receive_buf() callback return
-> directly the return value of gnss_insert_raw(). gnss_insert_raw()
-> returns a signed int, however this is not an issue since the value
-> returned is always positive, because of the kfifo_in() implementation.
-
-Agreed.
-
-> gnss_insert_raw() could be changed to return also an unsigned, however
-> this is not implemented here as request by the GNSS maintainer Johan
-> Hovold.
-
-I was going to suggest this, and suggest changing the "ret" in
-gnss_insert_raw() to return size_t.  But to really do that right
-it would include some other changes as well.  Leaving it as an
-int as Johan suggests preserves correct behavior.
-
-One minor point below, plus a couple comments affirming that
-an int return value is OK because it's always non-negative.
-
-Reviewed-by: Alex Elder <elder@linaro.org>
-
-
-> Suggested-by: Jiri Slaby <jirislaby@kernel.org>
-> Link: https://lore.kernel.org/all/087be419-ec6b-47ad-851a-5e1e3ea5cfcc@kernel.org/
-> Signed-off-by: Francesco Dolcini <francesco.dolcini@toradex.com>
-> Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com> #for-iio
-> ---
-> v1:
->   - https://lore.kernel.org/all/20231214170146.641783-1-francesco@dolcini.it/
-> v2:
->   - rebased on 6.8-rc1
->   - add acked-by Jonathan
->   - do not change gnss_insert_raw()
->   - do not change the code style of the gnss code
->   - commit message improvements, explain the reasons for doing only minimal
->     changes on the GNSS part
-> ---
->   drivers/bluetooth/btmtkuart.c              |  4 ++--
->   drivers/bluetooth/btnxpuart.c              |  4 ++--
->   drivers/bluetooth/hci_serdev.c             |  4 ++--
->   drivers/gnss/serial.c                      |  2 +-
->   drivers/gnss/sirf.c                        |  2 +-
->   drivers/greybus/gb-beagleplay.c            |  6 +++---
->   drivers/iio/chemical/pms7003.c             |  4 ++--
->   drivers/iio/chemical/scd30_serial.c        |  4 ++--
->   drivers/iio/chemical/sps30_serial.c        |  4 ++--
->   drivers/iio/imu/bno055/bno055_ser_core.c   |  4 ++--
->   drivers/mfd/rave-sp.c                      |  4 ++--
->   drivers/net/ethernet/qualcomm/qca_uart.c   |  2 +-
->   drivers/nfc/pn533/uart.c                   |  4 ++--
->   drivers/nfc/s3fwrn5/uart.c                 |  4 ++--
->   drivers/platform/chrome/cros_ec_uart.c     |  4 ++--
->   drivers/platform/surface/aggregator/core.c |  4 ++--
->   drivers/tty/serdev/serdev-ttyport.c        | 10 ++++------
->   include/linux/serdev.h                     |  8 ++++----
->   sound/drivers/serial-generic.c             |  4 ++--
->   19 files changed, 40 insertions(+), 42 deletions(-)
-> 
-
-. . .
-
-> diff --git a/drivers/mfd/rave-sp.c b/drivers/mfd/rave-sp.c
-> index 6ff84b2600c5..62a6613fb070 100644
-> --- a/drivers/mfd/rave-sp.c
-> +++ b/drivers/mfd/rave-sp.c
-> @@ -471,8 +471,8 @@ static void rave_sp_receive_frame(struct rave_sp *sp,
->   		rave_sp_receive_reply(sp, data, length);
->   }
->   
-> -static ssize_t rave_sp_receive_buf(struct serdev_device *serdev,
-> -				   const u8 *buf, size_t size)
-> +static size_t rave_sp_receive_buf(struct serdev_device *serdev,
-> +				  const u8 *buf, size_t size)
->   {
->   	struct device *dev = &serdev->dev;
->   	struct rave_sp *sp = dev_get_drvdata(dev);
-
-One return path in this function returns (src - buf), which is
-*almost* guaranteed to be positive.  The one case it wouldn't
-be is if the assignment of end wraps around, and that's not
-checked.
-
-I think it's fine, but... That seems theoretically possible.
-
-
-> diff --git a/drivers/net/ethernet/qualcomm/qca_uart.c b/drivers/net/ethernet/qualcomm/qca_uart.c
-> index 223321897b96..20f50bde82ac 100644
-
-. . .
-
-> diff --git a/drivers/platform/surface/aggregator/core.c b/drivers/platform/surface/aggregator/core.c
-> index 9591a28bc38a..ba550eaa06fc 100644
-> --- a/drivers/platform/surface/aggregator/core.c
-> +++ b/drivers/platform/surface/aggregator/core.c
-> @@ -227,8 +227,8 @@ EXPORT_SYMBOL_GPL(ssam_client_bind);
->   
->   /* -- Glue layer (serdev_device -> ssam_controller). ------------------------ */
->   
-> -static ssize_t ssam_receive_buf(struct serdev_device *dev, const u8 *buf,
-> -				size_t n)
-> +static size_t ssam_receive_buf(struct serdev_device *dev, const u8 *buf,
-> +			       size_t n)
->   {
->   	struct ssam_controller *ctrl;
->   	int ret;
-
-Here you the return value will be positive despite ret being
-a signed int.  So like the GNSS case, this is OK.
-
-> diff --git a/drivers/tty/serdev/serdev-ttyport.c b/drivers/tty/serdev/serdev-ttyport.c
-> index e94e090cf0a1..3d7ae7fa5018 100644
-
-. . .
-
-> diff --git a/sound/drivers/serial-generic.c b/sound/drivers/serial-generic.c
-> index d6e5aafd697c..36409a56c675 100644
-> --- a/sound/drivers/serial-generic.c
-> +++ b/sound/drivers/serial-generic.c
-> @@ -100,8 +100,8 @@ static void snd_serial_generic_write_wakeup(struct serdev_device *serdev)
->   	snd_serial_generic_tx_wakeup(drvdata);
->   }
->   
-> -static ssize_t snd_serial_generic_receive_buf(struct serdev_device *serdev,
-> -					      const u8 *buf, size_t count)
-> +static size_t snd_serial_generic_receive_buf(struct serdev_device *serdev,
-> +					     const u8 *buf, size_t count)
->   {
->   	int ret;
->   	struct snd_serial_generic *drvdata = serdev_device_get_drvdata(serdev);
-
-Same thing here.
-
+SGkgU2FrYXJpDQoNClRoYW5rcyBmb3IgeW91ciByZXZpZXcgY29kZSBhbmQgY29tbWVudHMuDQoN
+Ck9uIFR1ZSwgMjAyNC0wMS0wOSBhdCAxMDoxOCArMDAwMCwgU2FrYXJpIEFpbHVzIHdyb3RlOg0K
+PiAgCSANCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtzIG9yIG9w
+ZW4gYXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVyaWZpZWQgdGhlIHNlbmRlciBvciB0
+aGUgY29udGVudC4NCj4gIEhpIFpoaSwNCj4gDQo+IFRoYW5rcyBmb3IgdGhlIHVwZGF0ZS4NCj4g
+DQo+IE9uIFR1ZSwgSmFuIDA5LCAyMDI0IGF0IDEwOjI3OjE1QU0gKzA4MDAsIFpoaSBNYW8gd3Jv
+dGU6DQo+ID4gQWRkIGEgVjRMMiBzdWItZGV2aWNlIGRyaXZlciBmb3IgR2FsYXh5Y29yZSBHQzA4
+QTMgaW1hZ2Ugc2Vuc29yLg0KPiA+IA0KPiA+IFNpZ25lZC1vZmYtYnk6IFpoaSBNYW8gPHpoaS5t
+YW9AbWVkaWF0ZWsuY29tPg0KPiA+IC0tLQ0KPiA+ICBkcml2ZXJzL21lZGlhL2kyYy9LY29uZmln
+ICB8ICAgMTAgKw0KPiA+ICBkcml2ZXJzL21lZGlhL2kyYy9NYWtlZmlsZSB8ICAgIDEgKw0KPiA+
+ICBkcml2ZXJzL21lZGlhL2kyYy9nYzA4YTMuYyB8IDE0NjcNCj4gKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrDQo+ID4gIDMgZmlsZXMgY2hhbmdlZCwgMTQ3OCBpbnNlcnRpb25z
+KCspDQo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL2kyYy9nYzA4YTMuYw0K
+PiA+IA0KPiA+ICtmb3IgKGkgPSAwOyBpIDwgQVJSQVlfU0laRShsaW5rX2ZyZXFfbWVudV9pdGVt
+cyk7IGkrKykgew0KPiA+ICtmb3IgKGogPSAwOyBqIDwgYnVzX2NmZy5ucl9vZl9saW5rX2ZyZXF1
+ZW5jaWVzOyBqKyspIHsNCj4gPiAraWYgKGxpbmtfZnJlcV9tZW51X2l0ZW1zW2ldID09DQo+ID4g
+KyAgICBidXNfY2ZnLmxpbmtfZnJlcXVlbmNpZXNbal0pDQo+ID4gK2JyZWFrOw0KPiA+ICt9DQo+
+ID4gKw0KPiA+ICtpZiAoaiA9PSBidXNfY2ZnLm5yX29mX2xpbmtfZnJlcXVlbmNpZXMpIHsNCj4g
+PiArZGV2X2VycihkZXYsDQo+ID4gKyJubyBsaW5rIGZyZXF1ZW5jeSAlbGxkIHN1cHBvcnRlZCwg
+cGxlYXNlIGNoZWNrIERUIiwNCj4gPiArbGlua19mcmVxX21lbnVfaXRlbXNbaV0pOw0KPiA+ICty
+ZXQgPSAtRUlOVkFMOw0KPiA+ICtnb3RvIGRvbmU7DQo+ID4gK30NCj4gPiArfQ0KPiANCj4gUGxl
+YXNlIHVzZSB2NGwyX2xpbmtfZnJlcV90b19iaXRtYXAoKSBhdmFpbGFibGUgaGVyZQ0KPiA8VVJM
+Og0KPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1tZWRpYS8yMDI0MDEwODE1MTgwNS41
+NTU4NC0yLXNha2FyaS5haWx1c0BsaW51eC5pbnRlbC5jb20vVC8jdT4NCj4gOy4NCj4gV2UnbGwg
+dGhlbiBtZXJnZSBib3RoIGF0IHRoZSBzYW1lIHRpbWUuDQo+IA0KDQpBZnRlciBnb3QgdGhlIGxh
+dGVzdCBsaW51eCBrZXJuZWwgY29kZSBiYXNlKHRhZzogbmV4dC0yMDI0MDEyNCksIHRoZXJlDQpz
+ZWVtcyB0byBiZSBub3QgbmV3IEFQSTp2NGwyX2xpbmtfZnJlcV90b19iaXRtYXAoKSBzdGlsbC4N
+Cg0KV291bGQgeW91IHBsZWFzZSBsZXQgbWUga25vdywgaG93IGFib3V0IHRoZSBzdGF0dXMgYWJv
+dXQgdGhpcyBBUEk/DQoNClRoYW5rcyAmIFJlZ2FyZHMsDQpaaGkNCg0K
 
