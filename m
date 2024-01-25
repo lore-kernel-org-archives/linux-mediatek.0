@@ -4,88 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEDDAC47258
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jan 2024 04:59:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B0B6C47258
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jan 2024 06:46:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tpo7S81Q6e7picJzGDOqqGEtmvErnEcq2Z13Hltk/j8=; b=1zuUtj+U5/BYvGJ38jwp9ZEERB
-	zGvDvyqLwIzkPueA74Gz3AspuLKri8znTQWs14go5BhqhD1mghSdg1tqKloEuh6SFvBZZRSxiQS3e
-	8l+87b3IeQpPGqBwQ9JEz2h04kctLf782pKJN/photmzMYB0c0AD/GhLskcBJQptwErPilETRbeBY
-	p4zemSLLffpNtl+wPg6uZSsaIcjizhEh3P9FDzaPa62tz4Ra/mPJq8ecSw2MZUF92vS63v9w2miWp
-	yj5Z+pkE93WAx7M2PPr2XXJZQ8Wmz0rO255wQWZwV66xJp+vKYAPXEV2eVRDNpMFIO0YAvqbiGe0H
-	oU41I6ag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CI/NWBRSwikIHFcrWI6AUp0255MAfCWVxlivVpcLloM=; b=ghWBXCUfJaUcYunhH6GxjsmNpH
+	/EaQs3lUhrbXGrdrnW3daJs4SwGq08kwdh8nhMnHMDglrwh95w0p1tZoS0ES5PIhEz3OLK8iYwEsz
+	MjvIRu9S1NPOD9KzTBGpmVoiQWoEnU/UMRvG5n3iHBB7tPh9M4FVqafPAoh2fHZnHa2vx/0v2bWWW
+	xxIRPhsjB6/TdVQYv1AavsXdeCAOAYncbN28tpfeCXlKWzHeicrMdW5P8HKqZs8MvLf8EvAUPe4Jb
+	xvge6QYyJL12KJppB+AQDuZ69VM9OkfpdWDVi2BuBRChugzQ/kcXlSVMrqLAc+tc7vpOvje0dsTgQ
+	gNRzvY9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSrpQ-006N5m-35;
-	Thu, 25 Jan 2024 04:59:04 +0000
-Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
+	id 1rStVW-006sNh-1Z;
+	Thu, 25 Jan 2024 06:46:45 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSrpK-006N45-3D
-	for linux-mediatek@lists.infradead.org;
-	Thu, 25 Jan 2024 04:59:00 +0000
-Received: by mail-ot1-x32b.google.com with SMTP id 46e09a7af769-6dc8b280155so2866548a34.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 24 Jan 2024 20:58:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706158735; x=1706763535; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=tpo7S81Q6e7picJzGDOqqGEtmvErnEcq2Z13Hltk/j8=;
-        b=Ejbj+DYhKUR7jT1jQcstD+cWtcYK05YtsH8/SXbxVZiib9Naa4td6hVztJK2fHfgoq
-         KBW9SkGx/sZ08GzL7Cd/2SEVV+P/oVahWzSflOg+TItb40LQqewlfmLaLTdlDkHe0cqe
-         T6lUMMUucmOCx29CJ5xXxGkwd57yIot9cX1yzI/9tvpfROSnTqKSy5EeInH0dRaiIUj/
-         R6Mnz/yAZ1WMKbZJb7/0xKw7LM+/ZEoVaB1FEIjxzAwYD6S9TUX2/NXXSDY34G/fbmoi
-         Rgc2TNotrWxGkQMvH+ENnuJfMOOFpodpj0AcKAwNhzFe6X48hA9z55Qb8RXKGhhEVC8h
-         AXlA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706158735; x=1706763535;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=tpo7S81Q6e7picJzGDOqqGEtmvErnEcq2Z13Hltk/j8=;
-        b=Pb68/K+8AhLaL9Q+h5XqCFgoJEQWpSyHn8C/zzniRl2LSCtq20fsxMNDeMWiIyUSOa
-         xYT4AfFczCNGLzialQCh0xCS3hvS2L+71SLTeFuodAvv9qcBFe+5fGKj3U+OM1BquHf6
-         vR4s2f0nvnH/AGR1zIZlLsOQRD2px5Nh5ebBgrzGoqqiGPaZ3LZc/HvWXITNJtMfKV9y
-         Q305OfD0JTs3+pw5l+F5IuhE/+tDHdiIZwbF6vyjH84T6XpUYy3ZS9HryIJjHoXKCDOs
-         5kK9M4BTi3r79/1lzajA6XJNScPpBZNqrpa2fLHXdn2HOMC4do+His7V2DsvjxvIrder
-         vR4Q==
-X-Gm-Message-State: AOJu0YzBtkTDXeOWyCGJ4GxM5GJSNZUWV4VsMOb+joThsxKfvI3Nf+Zj
-	sJZWuaF/A0WiVmGTm1VtcEusDmRi8wE2XAO24AsSV05YRoO2SVtLRyODedtxL8s=
-X-Google-Smtp-Source: AGHT+IH73ljD+tyH98GgQeFlyFzdp++7wNKTqWqkYp/Jj3Cf3NjheYdC9xQZhkIOcBEa0yaqPJi7jw==
-X-Received: by 2002:a9d:7842:0:b0:6e0:e0e2:9e2d with SMTP id c2-20020a9d7842000000b006e0e0e29e2dmr209980otm.41.1706158735392;
-        Wed, 24 Jan 2024 20:58:55 -0800 (PST)
-Received: from localhost ([122.172.83.95])
-        by smtp.gmail.com with ESMTPSA id t26-20020a63955a000000b005d5a7ddd656sm1109237pgn.36.2024.01.24.20.58.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 Jan 2024 20:58:54 -0800 (PST)
-Date: Thu, 25 Jan 2024 10:28:52 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com, linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	"kernelci.org bot" <bot@kernelci.org>
-Subject: Re: [PATCH] cpufreq: mediatek-hw: Don't error out if supply is not
- found
-Message-ID: <20240125045852.urocd3yzts5ajmbh@vireshk-i7>
-References: <20240124-mtk-cpufreq-hw-regulator-enodev-fix-v1-1-6f9fb7275886@collabora.com>
+	id 1rSsWh-006Xsy-17;
+	Thu, 25 Jan 2024 05:43:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
+	Date:Subject:CC:To:From:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=CI/NWBRSwikIHFcrWI6AUp0255MAfCWVxlivVpcLloM=; b=G9fXYPympZdBmVOywp8cENxrpp
+	1YcFEg7dhBhz/46Nt5xyToORTe+1GZvo/A5X0bmtpfSWXIoJ7qJcCIu0Z9NF1gMRbcy/MxcOKeQNP
+	tHl2GB+y4qvZBHgcn5YD43tz24eMJK5JZgwN9qZ2c7LzAc9CdaaJcGgxBncjy1Qw77hSKq2CzUEum
+	IqOYSfEx5jUExG4l7KrG47rE2egRAfEnsB1uIDnQuEnMtF9WkjKJgSPmX92PC2UV/AWr2HfhVjMXS
+	H+cxMr8HbTIi/YeRl+RT6DhewuO3Ef7j7buNXEUj4PN0CosGeUkauT1RRt596ecEk4by4yL8rjVrL
+	h5qsqeUw==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rSsWR-00000004ufT-0jLK;
+	Thu, 25 Jan 2024 05:43:38 +0000
+X-UUID: 7e65d63ebb4211ee9a263b4415211400-20240124
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=CI/NWBRSwikIHFcrWI6AUp0255MAfCWVxlivVpcLloM=;
+	b=h0D3WLPbNPxeXzoCWk0+CRNrt5vaMmPR0UcJ8/C8s30bCRVoNxH8eriSE62llmfWOizYRJeydmbluHzvEmk+WyXMi2srdwE2n4VQqPj6pJRPQ1I+cBCnWadcZ+jH9Nfj1kOi+n4gxskS7qqjXpkIl+fTTl6pPH+l+Tm1/EqLzGk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.36,REQID:719ed47d-94b4-4921-a10c-e35f082eb76d,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6e16cf4,CLOUDID:40153c83-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 7e65d63ebb4211ee9a263b4415211400-20240124
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <gavin.liu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 970993360; Wed, 24 Jan 2024 22:27:55 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 25 Jan 2024 13:27:52 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 25 Jan 2024 13:27:52 +0800
+From: gavin.liu <gavin.liu@mediatek.com>
+To: Jens Wiklander <jens.wiklander@linaro.org>, Sumit Garg
+	<sumit.garg@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<op-tee@lists.trustedfirmware.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<gavin.liu@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH] optee: support wq_sleep_timeout
+Date: Thu, 25 Jan 2024 13:27:44 +0800
+Message-ID: <20240125052744.18866-1-gavin.liu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240124-mtk-cpufreq-hw-regulator-enodev-fix-v1-1-6f9fb7275886@collabora.com>
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--7.493700-8.000000
+X-TMASE-MatchedRID: qg9A2eKC0s6GeTbGWdRz1kKcYi5Qw/RVqQ9UezeTkTj7efdnqtsaE3B4
+	4IkzjfYyThbvLLI8RvPmRq+NdpkLXHW0oJLOugKB8rLt6/XzAZZA8JZETQujwhS11FlOYRohQyY
+	np0aZIjLD9dt+AOidH43/d0NuPcI1j2hRzH1UwuAURSScn+QSXt0H8LFZNFG73Yq8RVaZivVGBu
+	cRG9mMVEGysrMIjvt71lbKRwZ0frWo+cmBJ4qixNAUj8eogZsv
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--7.493700-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 90681AE6CC77A603801ECED92FA187A83A4070873E71D2606BD318CCA0010D692000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240124_205859_044137_881555B1 
-X-CRM114-Status: GOOD (  13.61  )
+X-CRM114-CacheID: sfid-20240125_054334_175469_F790823F 
+X-CRM114-Status: GOOD (  12.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,26 +109,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24-01-24, 17:31, Nícolas F. R. A. Prado wrote:
-> devm_regulator_get_optional() returns -ENODEV if no supply can be found.
-> By introducing its usage, commit 788715b5f21c ("cpufreq: mediatek-hw:
-> Wait for CPU supplies before probing") caused the driver to fail probe
-> if no supply was present in any of the CPU DT nodes.
-> 
-> Use devm_regulator_get() instead since the CPUs do require supplies
-> even if not described in the DT. It will gracefully return a dummy
-> regulator if none is found in the DT node, allowing probe to succeed.
-> 
-> Fixes: 788715b5f21c ("cpufreq: mediatek-hw: Wait for CPU supplies before probing")
-> Reported-by: kernelci.org bot <bot@kernelci.org>
-> Closes: https://linux.kernelci.org/test/case/id/65b0b169710edea22852a3fa/
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
->  drivers/cpufreq/mediatek-cpufreq-hw.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+From: Gavin Liu <gavin.liu@mediatek.com>
 
-Applied. Thanks.
+Add wq_sleep_timeout to support self waking when timeout for secure
+driver usage.
 
+Signed-off-by: Gavin Liu <gavin.liu@mediatek.com>
+---
+ drivers/tee/optee/notif.c         |  9 +++++++--
+ drivers/tee/optee/optee_private.h |  2 +-
+ drivers/tee/optee/rpc.c           | 10 ++++++++--
+ 3 files changed, 16 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/tee/optee/notif.c b/drivers/tee/optee/notif.c
+index 05212842b0a5..d5e5c0645609 100644
+--- a/drivers/tee/optee/notif.c
++++ b/drivers/tee/optee/notif.c
+@@ -29,7 +29,7 @@ static bool have_key(struct optee *optee, u_int key)
+ 	return false;
+ }
+ 
+-int optee_notif_wait(struct optee *optee, u_int key)
++int optee_notif_wait(struct optee *optee, u_int key, u32 timeout)
+ {
+ 	unsigned long flags;
+ 	struct notif_entry *entry;
+@@ -70,7 +70,12 @@ int optee_notif_wait(struct optee *optee, u_int key)
+ 	 * Unlock temporarily and wait for completion.
+ 	 */
+ 	spin_unlock_irqrestore(&optee->notif.lock, flags);
+-	wait_for_completion(&entry->c);
++	if (timeout != 0) {
++		if (!wait_for_completion_timeout(&entry->c, timeout))
++			rc = -ETIMEDOUT;
++	} else {
++		wait_for_completion(&entry->c);
++	}
+ 	spin_lock_irqsave(&optee->notif.lock, flags);
+ 
+ 	list_del(&entry->link);
+diff --git a/drivers/tee/optee/optee_private.h b/drivers/tee/optee/optee_private.h
+index 7a5243c78b55..da990c4016ec 100644
+--- a/drivers/tee/optee/optee_private.h
++++ b/drivers/tee/optee/optee_private.h
+@@ -252,7 +252,7 @@ struct optee_call_ctx {
+ 
+ int optee_notif_init(struct optee *optee, u_int max_key);
+ void optee_notif_uninit(struct optee *optee);
+-int optee_notif_wait(struct optee *optee, u_int key);
++int optee_notif_wait(struct optee *optee, u_int key, u32 timeout);
+ int optee_notif_send(struct optee *optee, u_int key);
+ 
+ u32 optee_supp_thrd_req(struct tee_context *ctx, u32 func, size_t num_params,
+diff --git a/drivers/tee/optee/rpc.c b/drivers/tee/optee/rpc.c
+index e69bc6380683..14e6246aaf05 100644
+--- a/drivers/tee/optee/rpc.c
++++ b/drivers/tee/optee/rpc.c
+@@ -130,6 +130,8 @@ static void handle_rpc_func_cmd_i2c_transfer(struct tee_context *ctx,
+ static void handle_rpc_func_cmd_wq(struct optee *optee,
+ 				   struct optee_msg_arg *arg)
+ {
++	int rc = 0;
++
+ 	if (arg->num_params != 1)
+ 		goto bad;
+ 
+@@ -139,7 +141,8 @@ static void handle_rpc_func_cmd_wq(struct optee *optee,
+ 
+ 	switch (arg->params[0].u.value.a) {
+ 	case OPTEE_RPC_NOTIFICATION_WAIT:
+-		if (optee_notif_wait(optee, arg->params[0].u.value.b))
++		rc = optee_notif_wait(optee, arg->params[0].u.value.b, arg->params[0].u.value.c);
++		if (rc)
+ 			goto bad;
+ 		break;
+ 	case OPTEE_RPC_NOTIFICATION_SEND:
+@@ -153,7 +156,10 @@ static void handle_rpc_func_cmd_wq(struct optee *optee,
+ 	arg->ret = TEEC_SUCCESS;
+ 	return;
+ bad:
+-	arg->ret = TEEC_ERROR_BAD_PARAMETERS;
++	if (rc == -ETIMEDOUT)
++		arg->ret = TEEC_ERROR_BUSY;
++	else
++		arg->ret = TEEC_ERROR_BAD_PARAMETERS;
+ }
+ 
+ static void handle_rpc_func_cmd_wait(struct optee_msg_arg *arg)
 -- 
-viresh
+2.18.0
+
 
