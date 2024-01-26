@@ -4,110 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9364CC47422
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jan 2024 17:12:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 316DBC47422
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jan 2024 22:31:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bfVWmQynOWG7oBazAWsQnbTSetbrA7yA+CmJvrvV0zk=; b=c2RO7QX//I67KIKeOUO+8bei7D
-	sTp77r9rNLfrzgrDk07DplwKgbFmlx6lO2/Wdpe3RnCgFcWRUoaeyvcHvdsuvyr1D+hi1EQC7k7YX
-	rkl+8/gCiKfPd3WajkL7uDv0cguULyKXAlTNKHH+SXYGxiemYRhOYeepW6fFxzIJqE+UTp/wN4PNZ
-	Uh15JBJbgNbSBcL7Z/te/RcJSq3fZ6IpnSUGxk0w4yq4q1mHLJgXg1BxEq8492HF93Jf6jTXMk3Cq
-	de9MNM7DIYIiEqPp82Yq+lYXW/NhX4kHgicsRzEzIHqVj4ifCMAWcEh6EtPVsDw8MCQ5ISW3DrdS5
-	emPgexdQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=omoVhA+pE38rBBIP7OtKLi1X88evCYSCF9C8oKe3Q0c=; b=sbgebEbBxvsaLYQgxd3RBxcA5v
+	AAlyfJrqgmVCkIsxJj8RgdrE07jzz8afTKSrdB+szKmIDyUyObnKHQSLCfwgRdekyk55ZH8xFUxbX
+	k9wlMUQ3EXYuC/m/9NfWBaftHrf9K2P3x0OxHNcwCIcbalNt0DboyWgdrQRa4JeKQuVkveaID9dkk
+	RvNGsYV9x41NMEEl0RuXS5eD7ug7rMqH1UmBZlh+KWP4uqYgMWQQkyrXWLtwAXzzApEwC9WgJwr1M
+	00ovZ4dHb4NakxtY5Pu/IQxlUgO9AtrgFYHKK/v4xhbJN0GXeY5ctk7bHB3+DNTpgMiY7fgyvzQui
+	7v9UkT0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTPke-00000004otd-0z7d;
-	Fri, 26 Jan 2024 17:12:24 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1rTUix-00000005czx-3qwX;
+	Fri, 26 Jan 2024 22:30:59 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTPka-00000004or7-38NT
-	for linux-mediatek@lists.infradead.org;
-	Fri, 26 Jan 2024 17:12:22 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rTPjB-0003h4-L9; Fri, 26 Jan 2024 18:10:53 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rTPiw-002YFi-JY; Fri, 26 Jan 2024 18:10:38 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rTPiw-008oFN-1F;
-	Fri, 26 Jan 2024 18:10:38 +0100
-Date: Fri, 26 Jan 2024 18:10:38 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Alex Elder <elder@ieee.org>
-Cc: Jonathan Corbet <corbet@lwn.net>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>, Bjorn Helgaas <bhelgaas@google.com>, 
-	James Clark <james.clark@arm.com>, linux-pwm@vger.kernel.org, Hector Martin <marcan@marcan.st>, 
-	Sven Peter <sven@svenpeter.dev>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, Alexander Shiyan <shc_work@mail.ru>, 
-	Benson Leung <bleung@chromium.org>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Paul Cercueil <paul@crapouillou.net>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Hans de Goede <hdegoede@redhat.com>, 
-	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Conor Dooley <conor.dooley@microchip.com>, 
-	Daire McNamara <daire.mcnamara@microchip.com>, Jonathan =?utf-8?Q?Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
-	Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>, 
-	Michael Walle <mwalle@kernel.org>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Hammer Hsieh <hammerh0314@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
-	Sean Anderson <sean.anderson@seco.com>, Michal Simek <michal.simek@amd.com>, 
-	Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, 
-	Anjelique Melendez <quic_amelende@quicinc.com>, Andi Shyti <andi.shyti@kernel.org>, 
-	Lu Hongfei <luhongfei@vivo.com>, Bjorn Andersson <quic_bjorande@quicinc.com>, 
-	Luca Weiss <luca@z3ntu.xyz>, Johan Hovold <johan@kernel.org>, 
-	Douglas Anderson <dianders@chromium.org>, linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	platform-driver-x86@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Guenter Roeck <groeck@chromium.org>, 
-	linux-riscv@lists.infradead.org, Fabio Estevam <festevam@gmail.com>, 
-	linux-stm32@st-md-mailman.stormreply.com, Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
-	Jerome Brunet <jbrunet@baylibre.com>, chrome-platform@lists.linux.dev, 
-	linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev, 
-	linux-rockchip@lists.infradead.org, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, NXP Linux Team <linux-imx@nxp.com>, linux-leds@vger.kernel.org, 
-	linux-sunxi@lists.linux.dev, Jonas Karlman <jonas@kwiboo.se>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, greybus-dev@lists.linaro.org, linux-mips@vger.kernel.org, 
-	asahi@lists.linux.dev, kernel@pengutronix.de
-Subject: Re: [PATCH v5 040/111] pwm: Provide devm_pwmchip_alloc() function
-Message-ID: <zjt3r6z5ilpffh26qidwp3axpnvfkwcrwanrtjjm2kscpdovuz@ppcrdlhmqiqq>
-References: <cover.1706182805.git.u.kleine-koenig@pengutronix.de>
- <f59b1a4a8d6fba65e4d3e8698310c9cb1d4c43ce.1706182805.git.u.kleine-koenig@pengutronix.de>
- <db05fb6a-2ea5-4e00-ac03-adc1897d96de@ieee.org>
+	id 1rTUiu-00000005czS-2QKI;
+	Fri, 26 Jan 2024 22:30:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id EFC6C6260D;
+	Fri, 26 Jan 2024 22:30:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 8C66EC43390;
+	Fri, 26 Jan 2024 22:30:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1706308225;
+	bh=jNbmp8YEA445pIRhuvsH6MW9zescGh1Hj65YFJ4341Y=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=SKclpH/q1/lseqlASPMIga1pozrXpQY7lZqwR5ajR0HSvNOqjr4BDqXi05rIaMv1V
+	 lNAPBPqnA9DWqmEMCZmBQk1yP2Cblw2Yql3x1pa8PPbndVQjb7UmBHotv7tyn9itDw
+	 JkWbfsGvPAFILnU6/uF8lQbhr8paecIDdA28UZcfUSoLUhcKf3BCzBKeAorA+8kT5M
+	 1DdJ/NS5wFt5OF0LdIWZTQdAhBjX88k7Fz6IgrU3UL+y6z8AVQ2iB4wX1GosfKF00P
+	 SC5bDS5AnWGQ+suegGSWaBl5kBq2DKUpxX8XZLUTEkWGaLuEANcUbC2xlGYcAQ/vEB
+	 htDowzZsU/R/g==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 71881D8C962;
+	Fri, 26 Jan 2024 22:30:25 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="b26sjadvk3fz44v6"
-Content-Disposition: inline
-In-Reply-To: <db05fb6a-2ea5-4e00-ac03-adc1897d96de@ieee.org>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net] net: dsa: mt7530: fix 10M/100M speed on MT7988 switch
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <170630822546.5179.9954095426642384849.git-patchwork-notify@kernel.org>
+Date: Fri, 26 Jan 2024 22:30:25 +0000
+References: <a5b04dfa8256d8302f402545a51ac4c626fdba25.1706071272.git.daniel@makrotopia.org>
+In-Reply-To: <a5b04dfa8256d8302f402545a51ac4c626fdba25.1706071272.git.daniel@makrotopia.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: arinc.unal@arinc9.com, dqfext@gmail.com, sean.wang@mediatek.com,
+ andrew@lunn.ch, f.fainelli@gmail.com, olteanv@gmail.com, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ john@phrozen.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240126_091220_950994_CF0D8C6B 
-X-CRM114-Status: GOOD (  26.90  )
+X-CRM114-CacheID: sfid-20240126_143056_666964_FD79A69F 
+X-CRM114-Status: UNSURE (   8.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,68 +79,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
---b26sjadvk3fz44v6
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Hello Alex,
+On Wed, 24 Jan 2024 05:17:25 +0000 you wrote:
+> Setup PMCR port register for actual speed and duplex on internally
+> connected PHYs of the MT7988 built-in switch. This fixes links with
+> speeds other than 1000M.
+> 
+> Fixes: ("110c18bfed414 net: dsa: mt7530: introduce driver for MT7988 built-in switch")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> 
+> [...]
 
-On Fri, Jan 26, 2024 at 08:56:33AM -0600, Alex Elder wrote:
-> On 1/25/24 6:09 AM, Uwe Kleine-K=F6nig wrote:
-> > This function allocates a struct pwm_chip and driver data. Compared to
-> > the status quo the split into pwm_chip and driver data is new, otherwise
-> > it doesn't change anything relevant (yet).
-> >=20
-> > The intention is that after all drivers are switched to use this
-> > allocation function, its possible to add a struct device to struct
-> > pwm_chip to properly track the latter's lifetime without touching all
-> > drivers again. Proper lifetime tracking is a necessary precondition to
-> > introduce character device support for PWMs (that implements atomic
-> > setting and doesn't suffer from the sysfs overhead of the /sys/class/pwm
-> > userspace support).
-> >=20
-> > The new function pwmchip_priv() (obviously?) only works for chips
-> > allocated with devm_pwmchip_alloc().
->=20
-> I think this looks good.  Two questions:
-> - Should you explicitly align the private data?  Or do you believe
->   the default alignment (currently pointer size aligned) is adequate?
+Here is the summary with links:
+  - [net] net: dsa: mt7530: fix 10M/100M speed on MT7988 switch
+    https://git.kernel.org/netdev/net/c/dfa988b4c7c3
 
-I'm not aware of a requirement for a higher order alignment (but I might
-well miss something). I did my tests on arm, nothing exploded there.
-Maybe the conservative approach of asserting the same alignment as
-kmalloc would be a good idea. I'll think and research about that.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-iio uses ARCH_DMA_MINALIGN, net uses 32 (NETDEV_ALIGN).
 
-> - Is there a non-devres version of the allocation function?
-
-Patch #109 introduces a non-devres variant. As it's not used it's a
-static function though. Can easily be changed is a use case pops up.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---b26sjadvk3fz44v6
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmWz540ACgkQj4D7WH0S
-/k4oQwf+Nnq9bGZWZrbCQsHJYB54zfZt1whu2kQgdRMIQzT8HP7NadKhFCqs3Ob6
-5xwIwbIpdczrpzHM25+5ZrTBiH5oSQ/Si0YMzglndL8Tm59GEJxcKoorYpDNplJR
-xHL2owB7VgG87fFIvSCe163biS2vI/gIjAGvL9bpzcSH62Eq7EO3APk7Hx+h7d9e
-QHLzzUmpN9JlrzYOhKE7Pu7/iVFPNqNb7FQtAOnamXe0kRLs05649mgdJ9q30gS8
-imf9reDedsSG7sHM5NjtZpBQpF9H3vulzuGbH2MH2jNDLjtcpvUXUZpfijLN69iQ
-GqSwNOqcwcXljLsP1A1wM8snNwzi/A==
-=cXfD
------END PGP SIGNATURE-----
-
---b26sjadvk3fz44v6--
 
