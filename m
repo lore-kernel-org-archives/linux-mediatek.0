@@ -4,72 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19368C47422
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jan 2024 06:31:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B687DC47422
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jan 2024 06:35:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0DUdyEK0UfNN06dDURtYyunSegOPRRffSVvE4FBPvac=; b=a7jRt+Fr5v4Y5thXXsg6RfstGB
-	5NxQBhnE6sf4ohn/K+JFOp2HLb/aSeCOQ9CZeulNXvpmShXew0+ZgGqi2TOjD35ftSFk4aYz02NHn
-	9qmIl7LBIPFEnrpMeaMeHysxNjz23QUc2434F0+HEQvEnri7JQiKuHc9iZ6graUaomwgvEnuP/Z1f
-	JinC5ODznxJDjo+5B4DI56UKWWmTCLEag2DyAm2M04VnS9FEma/R6g9KSP9Zb8tij5o4Gye5+s9ZJ
-	FWhmdgK2BbuVp8cjJKWg6t2EvK91EIjDLBOgL88ABf2fEfWkg2BLX/CK/U/Grbsfx/kWiDzohzPOw
-	np8c/4Mw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ySgp2UiszzMfNCnD6O5mfCcxxHNvIaL6WmT8mRfAk0M=; b=QuPH2DNytZR0dSuhUBUNyx+4bc
+	UbXW3gqke62XhOr1bd9yW/OCcVjw2Mg4BD6MgCG5niLY/xZpw42JJv9kmmLENv/oiDDbRAiMbOJvt
+	cAJpyV1Rgintl2tDT31i7FxchkvwIgqdNxj+pH8NDSipA6rgeNg8hxSOywIw1F9wjRyOdxb745jFg
+	UnEsLK/t4aUv86XHJKwMJiNpoibwPEhJpzc/wwbCHYjvET0z6oG56JuliTl88w7IRgEBjKZamhRMG
+	UM6bX22bnHzz76w85unyMbZa67WFXKbDhaP96mWHJjz992KWtbg0XU5TyV7rsDS02mWSuOiyuGn5D
+	ywjXxCNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTFkC-00000003FUc-36bN;
-	Fri, 26 Jan 2024 06:31:16 +0000
-Received: from relay2-d.mail.gandi.net ([217.70.183.194])
+	id 1rTFny-00000003FvX-1awt;
+	Fri, 26 Jan 2024 06:35:10 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTFjz-00000003FQw-3L6n;
-	Fri, 26 Jan 2024 06:31:08 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 2DBE940007;
-	Fri, 26 Jan 2024 06:30:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1706250660;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0DUdyEK0UfNN06dDURtYyunSegOPRRffSVvE4FBPvac=;
-	b=fP3egsGbl3q0y3kh8MvF+ob8MH/ijtiiuqXHeGQg/B/YPbBIv7SQsn74frUO2IqWp7dnhS
-	ZIgU0ZCgUmwxUsZpWrvyJj97gvIh6/HNmMZtTIvvVIP6K7865dIWH8AZ99I4u4RAXpI+GT
-	UhwE6MvKd55q81LLBznsKteQF07jba4c7sJn315n/uq68K8hFwmehUvnVS9bqUP5084xFC
-	POEYeiy5qoFN9mJp5nhoa3bzbD5EuTAj6gSsGRlkSgbK62ydzq6+u7lO5A5cy0uj1mloq2
-	3+zqVzexhBZ2RGaDhD0d9O8JoojXQtLj460K/yyPtO/t8HhoShKP2xPTg1+MXw==
-Message-ID: <c7d87124-4351-4996-8095-e8b95cc15f27@arinc9.com>
-Date: Fri, 26 Jan 2024 09:30:54 +0300
+	id 1rTFnv-00000003Fuk-1tHO
+	for linux-mediatek@lists.infradead.org;
+	Fri, 26 Jan 2024 06:35:08 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-6d9b37f4804so1012598b3a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 25 Jan 2024 22:35:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1706250905; x=1706855705; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ySgp2UiszzMfNCnD6O5mfCcxxHNvIaL6WmT8mRfAk0M=;
+        b=cxxVylXmeXCLzmyrfKlkZ8JgNpyJCj7Thb2M4OGH1TnZxmqeaEAYS2J6zdJpp4Rgbg
+         XpvGlcvERsF/6IHzUS503Ub0waVgEjED9CUM1WqHdSnKfZ3ZPToP0m6+ehezWNHOolAD
+         XVvCHxD4MLamane3Jp2m6JQrXpfRkHQkXWsGM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706250905; x=1706855705;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ySgp2UiszzMfNCnD6O5mfCcxxHNvIaL6WmT8mRfAk0M=;
+        b=h0uRs0roEsj6IDXKwVW4b4Vb3KMwa/ai8qh8Itc7yQzLsNKIAIQ+LNzkkKwDjXD8Ho
+         mIn2Wnx4Jc+FqSUwSt1RzbVz9QaGbBXm18Ss4ZGKHx7Vv1wUOlZhKV8rPpyfY1DeSeP3
+         kdN0aBzxRD8tt6cTyanH954d187+/c/jpARj5zKNsGdn74DGpS+JT2xJjOKYJN+rnmrw
+         604z5plJLFGBuubS5GsnnCoJy9L00cB9A4/asUs2T+bwZNkUJnx2vubEIe6fp8eZL5eQ
+         jCU6ZYRQ7paKhIMRS51j4QKY8ODdQcTYR7mX7LU9R1SiVgKW9AQ+GJZ2Pf4qKKfHNGln
+         g65g==
+X-Gm-Message-State: AOJu0Yx+XKL96jQ7QsKkgPnJZ2k2f4PHBfyxc5dtpwuVPd9Hphv4cgTl
+	DOQ6dx1gZBwFeHhN2Zlpyo57C9Zx3uJ1SE1RgpE978ByyoCt9X4TEYURbU9NsQ==
+X-Google-Smtp-Source: AGHT+IF1szoUbF1JDZy6toVdzGRAw8HhVOL8J8FWhgQ/IhKqWQPq084VnvUGMXytbOdxbOyYMcX4MA==
+X-Received: by 2002:a05:6a21:3987:b0:19c:53ab:d7d0 with SMTP id ad7-20020a056a21398700b0019c53abd7d0mr684905pzc.50.1706250905647;
+        Thu, 25 Jan 2024 22:35:05 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:2614:bbbd:8db2:1f54])
+        by smtp.gmail.com with ESMTPSA id ka3-20020a056a00938300b006db13a02921sm488735pfb.183.2024.01.25.22.35.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 25 Jan 2024 22:35:05 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	linux-bluetooth@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 0/2] bluetooth: mt7921s: Add binding and fixup existing dts
+Date: Fri, 26 Jan 2024 14:34:56 +0800
+Message-ID: <20240126063500.2684087-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.43.0.429.g432eaa2c6b-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net] net: dsa: mt7530: fix 10M/100M speed on MT7988 switch
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- John Crispin <john@phrozen.org>
-References: <a5b04dfa8256d8302f402545a51ac4c626fdba25.1706071272.git.daniel@makrotopia.org>
- <accda24c-9f12-4cfe-b532-a9c60ec97fca@arinc9.com>
- <ZbKJv84vGXInRIo1@makrotopia.org>
- <99a038f3-18d2-44ca-8135-1faf7a37892a@arinc9.com>
- <ZbL1VEcH3RgHZKsq@makrotopia.org>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <ZbL1VEcH3RgHZKsq@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240125_223104_129606_B2A768F2 
-X-CRM114-Status: GOOD (  38.22  )
+X-CRM114-CacheID: sfid-20240125_223507_545304_698B6C63 
+X-CRM114-Status: GOOD (  14.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,112 +97,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26.01.2024 02:57, Daniel Golle wrote:
-> On Fri, Jan 26, 2024 at 01:44:57AM +0300, Arınç ÜNAL wrote:
->> On 25.01.2024 19:18, Daniel Golle wrote:
->>> On Thu, Jan 25, 2024 at 12:49:19PM +0300, Arınç ÜNAL wrote:
->>>> On 24/01/2024 08:17, Daniel Golle wrote:
->>>>> Setup PMCR port register for actual speed and duplex on internally
->>>>> connected PHYs of the MT7988 built-in switch. This fixes links with
->>>>> speeds other than 1000M.
->>>>>
->>>>> Fixes: ("110c18bfed414 net: dsa: mt7530: introduce driver for MT7988 built-in switch")
->>>>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
->>>>
->>>> Acked-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->>>>
->>>> I'm wondering why we manually set speed and duplex for these interface
->>>> modes in the first place. I don't how it works for
->>>> PHY_INTERFACE_MODE_INTERNAL but, at least for PHY_INTERFACE_MODE_TRGMII and
->>>> 802.3z interfaces, phylink should already supply proper speed and duplex.
->>>
->>> It's true that duplex should always be set to full-duplex already by
->>> phylink. However, speed could be 2500MBit/s (2500Base-X) or 2000MBit/s
->>> (?, TRGMII) and we yet need to program the PCR like if it was
->>> 1000MBit/s.
->>>
->>> Regarding the INTERNAL case: it was added by mistake. In case of
->>> MT7988, all ports of the switch are connected via INTERNAL links,
->>> however, the PHYs still need adjustment of the PCR register just like
->>> on all other MT753x switches and the CPU port is setup elsewhere
->>> anyway.
->>
->> It's not necessarily PHYs needing adjustment of the port MAC control
->> register.
-> 
-> It's not the PHYs which need adjustment but the MAC PMCR register which
-> does.
-> 
->> After reset, speed, duplex mode, etc. will be determined by polling
->> the PHY connected to the switch MAC.
-> 
-> Yes, but as it is a DSA driver we don't use **hardware** PHY polling
-> and keep that off. Instead, PHY interrupts or software PHY polling is
-> used to have Linux determine the link properties.
-> We're then forcing these properties on the MAC port of the switch.
-> 
->> on the PMCR because we're also configuring switch MACs that are not
->> connected to PHYs, meaning the switch cannot determine these properties by
->> polling a PHY.
-> 
-> The switch **never** determines these properties itself when using the
-> DSA driver. It has a facility to do so, and yes, when accessing
-> Ethernet in U-Boot or when using the 'swconfig'-based driver then this
-> facility is used. But, I repeat, when using DSA we do not use hardware
-> PHY polling. We poll (or rather: react to interrupts) in software
-> instead.
-> 
->>
->>  From what I understand, this code block is for overriding the speed and
->> duplex variables to make the operations on the PMCR below work. It seems
->> that this is actually only useful for PHY_INTERFACE_MODE_2500BASEX.
->> PHY_INTERFACE_MODE_TRGMII is given SPEED_1000 by
->> drivers/net/phy/phylink.c:phylink_interface_max_speed().
->> PHY_INTERFACE_MODE_2500BASEX is given SPEED_2500. Overriding the duplex
->> variable looks unnecessary.
->>
->> Your patch here doesn't affect CPU ports because MT7531 and MT7988 PMCRs
-> 
-> This patch does not intend to affect the CPU port. As I've already
-> said in my previous reply "[...] the CPU port is setup elsewhere
-> anyway."
-> 
-> Maybe it wasn't clear, but I meant that the CPU port settings are
-> intentionally unaffected by this patch.
-> 
-> It is intended to affect user ports which with phy-mode = "internal";
-> set in DTS -- here we **do** need to set PMCR according the external
-> link speed and duplex.
-> 
-> 
->> are configured with cpu_port_config before mt753x_phylink_mac_link_up(),
->> and PHY_INTERFACE_MODE_INTERNAL is not used for MT7530 which, for MT7530,
->> PMCRs will be set only on mt753x_phylink_mac_link_up().
->>
->> PMCR_FORCE_SPEED_1000 is set on cpu_port_config. If someone were to get rid
->> of cpu_port_config because of its utter uselessness, PMCR_FORCE_SPEED_1000
->> would not be set, causing the link between port 6 MAC and SoC MAC to break.
->>
->> In conclusion, I will add "case SPEED_10000:" to the operations where the
->> speed and EEE bits are set on my patch for getting rid of cpu_port_config.
-> 
-> PMCR needs to be set according to actual link speed for built-in TP
-> PHYs. This is true for all mt7530 variants including MT7988.
-> 
-> Maybe the confusion here is that on MT7988 we use 'internal' phy-mode
-> for both, the switch CPU port's link to mtk_eth_soc gmac0 as well as
-> the links to the 4 built-in 1GE switch PHYs.
-> 
-> The latter were affected by wrongly overriding speed and duplex in
-> case phy-mode is set to "internal", which should not have been put
-> there (by me) in first place.
-> 
-> Let's just remove it, ok?
+Hi everyone,
 
-I don't see anything I disagree with on your reply. I've made my response
-to explain what I understand and how I will adapt my future changes
-accordingly with this patch so as to prevent introducing another issue.
-I've already acknowledged this patch!
+This is v2 of my MT7921S Bluetooth binding series.
 
-Arınç
+Changes since v1:
+- Reworded descriptions in binding
+- Moved binding maintainer section before binding description
+- Added missing reference to bluetooth-controller.yaml
+- Added missing GPIO header to example
+
+This short series adds a binding document for the MT7921S SDIO Bluetooth
+controller. The MT7921S is a SDIO-based WiFi/Bluetooth combo. WiFi and
+Bluetooth are separate SDIO functions. The chip has extra per-subsystem
+reset lines that can reset only WiFi or Bluetooth cores.
+
+Patch 1 documents the SDIO function and the reset line, based on
+existing device tree and driver usage. I listed Sean Wang, the original
+driver author and maintainer, as the maintainer of the binding.
+
+Patch 2 fixes up the sole existing usage of the compatible string by
+making it a proper SDIO function node.
+
+Please take a look. Not sure which tree patch 1 should be merged
+through? I suppose with proper acks it could go through the soc/mediatek
+tree together with patch 2.
+
+
+Regards
+ChenYu
+
+
+Chen-Yu Tsai (2):
+  dt-bindings: net: bluetooth: Add MediaTek MT7921S SDIO Bluetooth
+  arm64: dts: mediatek: mt8183-pico6: Fix bluetooth node
+
+ .../bluetooth/mediatek,mt7921s-bluetooth.yaml | 53 +++++++++++++++++++
+ MAINTAINERS                                   |  1 +
+ .../mediatek/mt8183-kukui-jacuzzi-pico6.dts   |  3 +-
+ 3 files changed, 56 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7921s-bluetooth.yaml
+
+-- 
+2.43.0.429.g432eaa2c6b-goog
+
 
