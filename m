@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18042C47422
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jan 2024 09:10:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CFFEC48286
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jan 2024 09:10:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BJ0SqrDpCqnZYAflAHsK8+u/jhmOLqrfhMsxL0zC1AQ=; b=mjEzJcAcwxhmbdAStZeR15S2og
-	MgEOE4SP+7kzzLj+IUe6YMBDOzZ1SQ5fZETOpeLB8+FX71+zmeKJrv2GvPY4tSNqJlwGwawJ8zNn8
-	WCnqvp9XBYmZqo+m54aeiLBuywQ+cYeGOP/pVRJtSjA5Oqxv7s7BDt8d9T5X6YqYkg9oc3vaEKHwb
-	BNKOrq7gZUwH/zft1zwfnXDpfn722tZavrYWWjA3DmQX8ci3ImrZ2a+qO4Ysn+t1sAISrtLFRsWWk
-	2UbpmheBiAXPTpErWgkvZ+5KcYkwQDxXSEwbbkMJB7j0x8SVcvTVH3d7a1ACDm7qtzyb6Va7htT0s
-	CxhRwQOA==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=QfBJh/G27e2/TM1jxbBhY/qC7WJr1g5LZzWtbcjgAfw=; b=ynxbrW6B7h8dczDa/U8sw459Ou
+	nhMisRh7XfSXb7TNr0OxUfdr77n+A00nm6jXRflY6zIp7eq5ntGM1kH+iHiDmX/R3fuK0NENdT0HW
+	NcDxDPG2iMeJiS5Gb6EtChMLDKh1lmHPRIcBe7FNEymdIV7SZA7PFbD3ghr42yBJNqKV8KV20FcSD
+	nhU8QjGpPdaVGwZ/b94Vi5TGZKelvAqEk/lNrIonsWXl5px64oqeqkxP7uSsBzvhgCeRl84zqsSCo
+	oBkmygnHoojWYb4V/h48ETFwxJ+Uyt/A1bn1hZV9qMvZPDDkKFhmY0+Ntv4jkponEn87etzz8rpGv
+	ZbhkoAdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTIDq-00000003ZzV-2iPH;
-	Fri, 26 Jan 2024 09:10:02 +0000
+	id 1rTIDr-00000003a0W-2qto;
+	Fri, 26 Jan 2024 09:10:03 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTIDm-00000003ZvE-0M45
+	id 1rTIDm-00000003ZvJ-1Auu
 	for linux-mediatek@lists.infradead.org;
-	Fri, 26 Jan 2024 09:09:59 +0000
-X-UUID: a9d9952ebc2a11eea0bf134e88e6c2dc-20240126
+	Fri, 26 Jan 2024 09:10:00 +0000
+X-UUID: a98a5298bc2a11eea0bf134e88e6c2dc-20240126
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=BJ0SqrDpCqnZYAflAHsK8+u/jhmOLqrfhMsxL0zC1AQ=;
-	b=OTBiLRr8gGNOwKMYahJhDKvNq/FSxW3Yzf7i66BvzcGKS63KeI0FBi/r/maLlmI/GMnIt33ruRsjZE58p405TU6jq1U+alwU+PhumRX7pdhskOwySDaH/PZuNR+jJxDH8pirvdtKMbFE7Hir+jJnRvthGqIXmgHXX0SomFbSeok=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=QfBJh/G27e2/TM1jxbBhY/qC7WJr1g5LZzWtbcjgAfw=;
+	b=NUxXM2yKTIGA1dOxb+VVxoWpGltN8T0TXqBlW58phT4LrlMzqVvflIP4gyyi9OYv1n8o1Ta8BRLyf0Bz4ml7kbHm60A0ttu3sYARoPHSwOEXwOEF+gNm9V/KDSDYDmT5+CjpDBOsIoFxrkrEtsPeVGPmdhgl72O8p/CYbTzEaXI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.36,REQID:5eb56aca-be73-4a68-9434-e1e28df8a5cd,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6e16cf4,CLOUDID:1f6f2efe-c16b-4159-a099-3b9d0558e447,B
+X-CID-O-INFO: VERSION:1.1.36,REQID:b624c3cc-2d51-415e-a47b-aabf7c585513,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6e16cf4,CLOUDID:f2404983-8d4f-477b-89d2-1e3bdbef96d1,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: a9d9952ebc2a11eea0bf134e88e6c2dc-20240126
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: a98a5298bc2a11eea0bf134e88e6c2dc-20240126
 Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1185340794; Fri, 26 Jan 2024 02:09:51 -0700
+	with ESMTP id 236963743; Fri, 26 Jan 2024 02:09:51 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 26 Jan 2024 17:09:50 +0800
+ 15.2.1118.26; Fri, 26 Jan 2024 17:09:49 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 26 Jan 2024 17:09:50 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 26 Jan 2024 17:09:49 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
@@ -61,19 +61,16 @@ CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
 	<evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Peter Chiu
 	<chui-hao.chiu@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH v2 09/12] wifi: mt76: mt7996: remove TXS queue setting
-Date: Fri, 26 Jan 2024 17:09:20 +0800
-Message-ID: <20240126090923.6357-9-shayne.chen@mediatek.com>
+Subject: [PATCH v2 01/12] wifi: mt76: mt7996: check txs format before getting skb by pid
+Date: Fri, 26 Jan 2024 17:09:12 +0800
+Message-ID: <20240126090923.6357-1-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240126090923.6357-1-shayne.chen@mediatek.com>
-References: <20240126090923.6357-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240126_010958_161547_1B52C134 
-X-CRM114-Status: UNSURE (   8.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240126_010958_389609_7C4C1D56 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,30 +87,60 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Peter Chiu <chui-hao.chiu@mediatek.com>
 
-DMA queue settings of TXS will be initialized by the firmware.
+The PPDU TXS does not include the error bit so it cannot use to report
+status to mac80211. This patch fixes issue that STA wrongly detects if AP
+is still alive.
 
+Fixes: 2569ea5326e2 ("wifi: mt76: mt7996: enable PPDU-TxS to host")
 Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/init.c | 5 -----
- 1 file changed, 5 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7996/mac.c   | 23 +++++++++++--------
+ 1 file changed, 13 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 1a1a60744272..5ae56b10f2b9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -507,11 +507,6 @@ void mt7996_mac_init(struct mt7996_dev *dev)
- 		mt76_rmw_field(dev, i, MT_LED_GPIO_SEL_MASK, 4);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index 53258488d49f..a8414fbb07c8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -1188,25 +1188,28 @@ mt7996_mac_add_txs_skb(struct mt7996_dev *dev, struct mt76_wcid *wcid,
+ 	struct ieee80211_tx_info *info;
+ 	struct sk_buff_head list;
+ 	struct rate_info rate = {};
+-	struct sk_buff *skb;
++	struct sk_buff *skb = NULL;
+ 	bool cck = false;
+ 	u32 txrate, txs, mode, stbc;
+ 
+ 	txs = le32_to_cpu(txs_data[0]);
+ 
+ 	mt76_tx_status_lock(mdev, &list);
+-	skb = mt76_tx_status_skb_get(mdev, wcid, pid, &list);
+ 
+-	if (skb) {
+-		info = IEEE80211_SKB_CB(skb);
+-		if (!(txs & MT_TXS0_ACK_ERROR_MASK))
+-			info->flags |= IEEE80211_TX_STAT_ACK;
++	/* only report MPDU TXS */
++	if (le32_get_bits(txs_data[0], MT_TXS0_TXS_FORMAT) == 0) {
++		skb = mt76_tx_status_skb_get(mdev, wcid, pid, &list);
++		if (skb) {
++			info = IEEE80211_SKB_CB(skb);
++			if (!(txs & MT_TXS0_ACK_ERROR_MASK))
++				info->flags |= IEEE80211_TX_STAT_ACK;
+ 
+-		info->status.ampdu_len = 1;
+-		info->status.ampdu_ack_len =
+-			!!(info->flags & IEEE80211_TX_STAT_ACK);
++			info->status.ampdu_len = 1;
++			info->status.ampdu_ack_len =
++				!!(info->flags & IEEE80211_TX_STAT_ACK);
+ 
+-		info->status.rates[0].idx = -1;
++			info->status.rates[0].idx = -1;
++		}
  	}
  
--	/* txs report queue */
--	mt76_rmw_field(dev, MT_DMA_TCRF1(0), MT_DMA_TCRF1_QIDX, 0);
--	mt76_rmw_field(dev, MT_DMA_TCRF1(1), MT_DMA_TCRF1_QIDX, 6);
--	mt76_rmw_field(dev, MT_DMA_TCRF1(2), MT_DMA_TCRF1_QIDX, 0);
--
- 	/* rro module init */
- 	if (is_mt7996(&dev->mt76))
- 		mt7996_mcu_set_rro(dev, UNI_RRO_SET_PLATFORM_TYPE, 2);
+ 	if (mtk_wed_device_active(&dev->mt76.mmio.wed) && wcid->sta) {
 -- 
 2.39.2
 
