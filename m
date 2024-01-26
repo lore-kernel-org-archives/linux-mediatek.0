@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F10BC47258
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jan 2024 01:40:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4619EC47DDF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jan 2024 02:20:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S8wzmmyUTFpl9UnELjaS2hlFiqL9KfRA5Cy9qiFP8k0=; b=f+LjICeG4/AXP4mv6D5a695O8J
-	3xQhdnoo801E1rnTOfxQdO3YjTiJHOjPI/B5ea68dkp6C0s1Z1XsQMFkfzJsw/fvuswf4y1MQGomz
-	wAAzBaKK70qsW9I589WN7WfglUigz2t30ruAwt8k+yaMbt4CX97iTJrJ4qBxgWjGUTPvH4cutUbz2
-	ddCby10IDoKt9Lo9ltE92yx/eGJzRXSTsCrmsNuuqxcw46E7KJSMwNECUoR1A7yPdOLq4uS99nH44
-	I2++7SH/Jl495rM7xB7JC1oiYF2xxvQxyZEjQG4DD1O5B5U9XexRK/u1URTsy+eiCqvk3us8ZiX8P
-	iiqWn8CQ==;
+	bh=1u6tFWnaDpsTXyzP7hk3MsxX22qkV4reJwZJVs9h+OQ=; b=m19SAl1a3ejw+t/TZla3tONoM9
+	tfHr9qfmcTIwocYJbcnQzFrxzQ7bJUy9ti5sxQE9+VBDf9wd2c8/S6q0nc7c6DCqjR7Dig4Px30EW
+	TFkfvyAU6DzXMybATbO/Q4amrEgktkrJzv0JakjoDPUR4d0WlS1eflpIdRrYoJxPG6Rgn1mI+p61h
+	aaoZrZHCyuCTOxILVU66TTpwFvese2FlIeowe6AtwghGEedtkSjHWXQYoI2xmlB8CB8BUz6+0twzS
+	XYvIxbRtJD8EyKmO67wB12tp0cRFXRgt+F4eqFS0odT1zl8kh6guDQ99RLnUSGCd1j9xWl2t0KxUI
+	RQJ3FigQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTBCq-00000002lsa-3LIo;
-	Fri, 26 Jan 2024 01:40:32 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rTBpU-00000002r9a-3uA5;
+	Fri, 26 Jan 2024 02:20:28 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTBCm-00000002lrG-0QQO;
-	Fri, 26 Jan 2024 01:40:29 +0000
+	id 1rTBpR-00000002r8i-3lfU;
+	Fri, 26 Jan 2024 02:20:27 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 4F87DCE35D0;
-	Fri, 26 Jan 2024 01:40:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 3CB89C433C7;
-	Fri, 26 Jan 2024 01:40:25 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id A65826239C;
+	Fri, 26 Jan 2024 02:20:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 4DE65C43390;
+	Fri, 26 Jan 2024 02:20:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1706233225;
-	bh=wJvNS3eGItxJktKZUgWX28Xkf8EoVdyha55c9fq7F+4=;
+	s=k20201202; t=1706235624;
+	bh=XydMzCkZqpTSrk2ptn7qOu5OKTaNmw3EnRJU88OcBbQ=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=q348R1ifm/PCzl/JiXEY/zN3JcP7xRDVrJWCCvpQBId2+KYob9+4+hn/KnCHzne9k
-	 jXjAsaOzU74yOEgrOl04r0lyek9JedVU/dRQvteRH0I+tpfQwQIc5Q7AymYXEVX9T0
-	 GOz3LvUaLD36DDhvv0ToQSW9TAtP4DqaDhUCVJJK5PyaVPtlm8fz6vQf6cReqeAVh4
-	 AYaaGrGJDi/9LFj+treWgltvY+y1bQqwLj0xBuMIabC8l+oLX2IEu1TzapOq7aRwNY
-	 jC9xBe4ZKY+Kyo66PgHX69jsECMbRGPHr9ech0FK0esEt+G+kSEVDtaPIFC8nvj81p
-	 g22q5ZewA78Og==
+	b=VexiKbuh70fuOyNI3mszktMmJESVD9zUPTEjBgzUiBCtSFQ+XTs6+rx27uAfLJx7J
+	 gVQg+WDfvETqIlZR92KWLUkcZCiFXFZUM3alPeQ3LyFc63hKgbSy+PEe3w5Y0M8DRn
+	 crNaRswG1FV3X29jUynaEYvdGAF3MVRYfqH8Pr/yU3daeLBdzKd2pKpEJbPAwnKfIo
+	 s6WdLyL/SEgpxlyJd+AGxDxrq9HCT+56iidx/3GuLp6PnQYGRsHCFD5J37EkUhg4qC
+	 uprI5WdHRxFYMfkqb1S9RQ0JAYMAlq4BER547AR2YYP94AILLMq6MOb5rXFooWi22A
+	 zHJ23XmM44deA==
 Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 225C6DFF767;
-	Fri, 26 Jan 2024 01:40:25 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 33BF9DFF765;
+	Fri, 26 Jan 2024 02:20:24 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: set DMA coherent mask to get
- PPE working
+Subject: Re: [PATCH net] net: phy: mediatek-ge-soc: sync driver with MediaTek SDK
 From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <170623322513.12449.11770533425186411622.git-patchwork-notify@kernel.org>
-Date: Fri, 26 Jan 2024 01:40:25 +0000
-References: <97e90925368b405f0974b9b15f1b7377c4a329ad.1706113251.git.daniel@makrotopia.org>
-In-Reply-To: <97e90925368b405f0974b9b15f1b7377c4a329ad.1706113251.git.daniel@makrotopia.org>
+Message-Id: <170623562420.30678.3476943936130627365.git-patchwork-notify@kernel.org>
+Date: Fri, 26 Jan 2024 02:20:24 +0000
+References: <f2195279c234c0f618946424b8236026126bc595.1706071311.git.daniel@makrotopia.org>
+In-Reply-To: <f2195279c234c0f618946424b8236026126bc595.1706071311.git.daniel@makrotopia.org>
 To: Daniel Golle <daniel@makrotopia.org>
-Cc: nbd@nbd.name, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
- lorenzo@kernel.org, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Cc: dqfext@gmail.com, SkyLake.Huang@mediatek.com, andrew@lunn.ch,
+ hkallweit1@gmail.com, linux@armlinux.org.uk, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ john@phrozen.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240125_174028_351350_7F590A79 
-X-CRM114-Status: UNSURE (   8.23  )
+X-CRM114-CacheID: sfid-20240125_182025_997899_37DCCE2D 
+X-CRM114-Status: UNSURE (   8.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,19 +84,19 @@ Hello:
 This patch was applied to netdev/net.git (main)
 by Jakub Kicinski <kuba@kernel.org>:
 
-On Wed, 24 Jan 2024 16:22:09 +0000 you wrote:
-> Set DMA coherent mask to 32-bit which makes PPE offloading engine start
-> working on BPi-R4 which got 4 GiB of RAM.
+On Wed, 24 Jan 2024 05:18:23 +0000 you wrote:
+> Sync initialization and calibration routines with MediaTek's reference
+> driver. Improves compliance and resolves link stability issues with
+> CH340 IoT devices connected to MT798x built-in PHYs.
 > 
-> Fixes: 2d75891ebc09 ("net: ethernet: mtk_eth_soc: support 36-bit DMA addressing on MT7988")
-> Suggested-by: Elad Yifee <eladwf@users.github.com>
+> Fixes: 98c485eaf509 ("net: phy: add driver for MediaTek SoC built-in GE PHYs")
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > 
 > [...]
 
 Here is the summary with links:
-  - [net] net: ethernet: mtk_eth_soc: set DMA coherent mask to get PPE working
-    https://git.kernel.org/netdev/net/c/cae1f1c36661
+  - [net] net: phy: mediatek-ge-soc: sync driver with MediaTek SDK
+    https://git.kernel.org/netdev/net/c/ff63cc2e9506
 
 You are awesome, thank you!
 -- 
