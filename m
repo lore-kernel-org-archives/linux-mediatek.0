@@ -4,68 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46A14C47422
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jan 2024 23:16:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9F59C47422
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jan 2024 23:16:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QQhDPXykohcFJW0qtm5EHtuEzwLA0yzgLshaZoliDrY=; b=XsNmL+qL6axVcbJWcVUSZevRt4
-	smxWe/SBzZRq8/Q5x46filAfHE/X9YQf8lCuoPspxsFTS2ukFbYmXEObl3q2Jb87q4aGg5+YeuHoh
-	0fkL2FwIASPlRCXuLoAF5VpfNQGjdP5ucCLb1Ej5iIKaYmtGRfXw+el8Fz+IvJ/w42C8iB0hXXU7y
-	zqNjZqH0kCAJPrf9d+yFpA+DaDeTc9OkR0eop873ju5SDeUnbWyCFYZ6bhQsvsO5Lr8hZA5n/rAkp
-	rE8laQ+jofIRmGH3evyJcCOpMp1HV1yHwj2Z6sRDKiemDrzuYNVJLuOBPMOVVx0UakQJx8o71j/Gv
-	h0KXmhTg==;
+	bh=K8jNV9DHXsOFSE/nzIDQ0aFfd3NfLzQF84gBDTm9ggE=; b=YQllZ0ALOlr6q9/IoQcg5499q/
+	fV6qBJTV8Vqrw/iDO9/QFbA+tKnqj4D+MQUF0mzTasSAUmS2XK86YT4hPeEswvhntvRkvbA5NRNvN
+	KaVjwsUNtb9Xn8I384FAE5XMa3TQtlI0i9SBpl0+bfO9Mr2gN7wJSfcmLlq3Fjt6L187GyTMjwj/b
+	bTkR6FE9BgoUzVOiwQqkkhKmJygn5rNhfLB8Vx87SQhRJvc1FmymKahrxO8UJ/H52DvXRcgR6yP2Q
+	o5sZ75zCf5/rTu71YCYxoxIuP6cP1MM1uGXSO+0m4GERZkNFTSMKv4Uoeybw/j3Wz6FMo/xo/mqtS
+	4T1Nc6vQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTVR4-00000005iqa-38Il;
-	Fri, 26 Jan 2024 23:16:34 +0000
-Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
+	id 1rTVR9-00000005iv4-3pqP;
+	Fri, 26 Jan 2024 23:16:39 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTVQe-00000005iSW-3WNR
+	id 1rTVQm-00000005iXT-1iMj
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 26 Jan 2024 23:16:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=K8jNV9DHXsOFSE/nzIDQ0aFfd3NfLzQF84gBDTm9ggE=; b=p0IlC7Q1Y9hz55FEv5DEzv2mrl
+	CkoC2FAoc7ZjibtgDYHrCgvnaOb+hi42jupz40wgBC4xodrLosC6w77bSPHfZ5G+aC1cBPwffhASn
+	eLQyQmYDA5rJrwNPhpgJzbBUL95vHFYky4y/HZiVX7i6g5vCgvTPFTQff+2yvAi4JePn1165roNJV
+	V7nXYCroufaXmVJ0C7WV6X2E3Uyp8Erib4gQyllA7b/4OZs8cAco8ayknKIih2idC5ijXuHX6JrbC
+	aTzXPPBlv5+IwFuo8AZca2vRsCfCftid6uXnvdVZ8LQzkI1zcY1TkuBQbZzo0+31zTVSvy49IodDn
+	2Hdf3ghg==;
+Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rTVQi-00000006IzE-1CM3
 	for linux-mediatek@lists.infradead.org;
 	Fri, 26 Jan 2024 23:16:14 +0000
-Received: by mail-qk1-x72d.google.com with SMTP id af79cd13be357-783cbc38a78so62463485a.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 26 Jan 2024 15:16:08 -0800 (PST)
+Received: by mail-qk1-x72b.google.com with SMTP id af79cd13be357-783c012593cso59950485a.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 26 Jan 2024 15:16:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1706310968; x=1706915768; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1706310969; x=1706915769; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=QQhDPXykohcFJW0qtm5EHtuEzwLA0yzgLshaZoliDrY=;
-        b=cuGj6p2D+aEnexB2jqUuQfe5FpjwzlSuCMtfOjqvvHryrHQIvXdbNHnfK73jHWW9KD
-         RwFLGosB8TkxZm3/7hTtXKQ6hvpptXGJgtbWtYHjJ4ZETEAI+7gHvgAu2iiOa9Qv5y/b
-         FPJP0SK1AEuihUMdCdz1SepEgr+0j340p1pVQ=
+        bh=K8jNV9DHXsOFSE/nzIDQ0aFfd3NfLzQF84gBDTm9ggE=;
+        b=fbLlysoRQ2/1s3XQxQp/96ldxbnnuYisxz5oRefZcHgw1KrGyWTkWqsNvOrBCVd/xc
+         LMGgW6vAC93pbzyqRa399rxBWFqm5ubTAGQNcOW+/jBUKEtoxbi0HuJb8HPpcUd9TtHd
+         z6eaqg8deUorOor4fTgwJCUFXvjGGygrlFHcI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706310968; x=1706915768;
+        d=1e100.net; s=20230601; t=1706310969; x=1706915769;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=QQhDPXykohcFJW0qtm5EHtuEzwLA0yzgLshaZoliDrY=;
-        b=LAr+/7CYRL0kcAAWog5JHsLhLyeAb7XMlEu1m7IyO2PVtBvLbiZh7Kx9MiPjOcQR6X
-         zepmd1rMeO1Sf4CoB83osHtI6xOsaqfxRjO3+ViPy0Ou8xcWbgNnu4rLjNTgth8dfIJB
-         xOMY0PiVr8rgFQ5xzUu47IGQQmnhxLlxBfwJhnCixjqIJ607QCLTiM+f3AaizsFnEOfd
-         Orilgjy+Ik3yqbLMgzJLyTfj5srXLm5I9eoy/DAxm1hGrFXRT4qIarN4cMF9a/47Oj9u
-         vVGxjMFI3DD9Mqw10KndQXopK24e4l/op5L6M+g6vifh2dUM6uN08bJHs+2kjNf6uAKQ
-         /dhg==
-X-Gm-Message-State: AOJu0YwCN2XoRanapL8JfpA+WcjvTqUH8K0akFkv+N1vzndE1n6f/+NY
-	J1UMuO8LAk+UnORERRlOxcTG033fd7mJu7GoMYlSrFumo58so7sRuqqhOzuHJA==
-X-Google-Smtp-Source: AGHT+IEYax7waeMsYzBi1V5anUAE9029IxFY99+NqU01WUd1yOqmYKRjKVGaw0nUqApkIUGiDbz6Vw==
-X-Received: by 2002:a05:620a:19aa:b0:783:e3be:9bb5 with SMTP id bm42-20020a05620a19aa00b00783e3be9bb5mr52250qkb.21.1706310968110;
-        Fri, 26 Jan 2024 15:16:08 -0800 (PST)
+        bh=K8jNV9DHXsOFSE/nzIDQ0aFfd3NfLzQF84gBDTm9ggE=;
+        b=GBzThbsyneQ51WPMyp1lKirG7Pp1R4LEPiQtUi9g5XUEK1J1WuxKiaIOySp5axsPEC
+         MRkpYAshIoZxd4/TEfiGAHnVVbcmwcBfNRT+zn2TwAFiO6JFa6YVEONbcrB5ALMYtA1/
+         Agr2aQHDeQSxgqGC22Q/PpQ1T4OqlevPEtRGjURUamC6E7tOVzdFer+vkaRuA1zbGhpr
+         /Av/RGeMOVAm2Qw8RIe1kYlnVUK7SUO691zmoErxl6AIemdYaCKFaLyZWaZSPNWWbU66
+         PIblPtpBdrU3GUKyeQdZORmbzmGy3eiJDcLIlftuSzscdZQ0CpLODOswFsfKsGFPFZtp
+         CvSw==
+X-Gm-Message-State: AOJu0Yzrve9USqjR3it2RwqT8rSXCvmxRtSrzuGWcLV+gVa0RXVzpe2d
+	V1DCE8atUK9S9E01wBdZ1cV5AWeuo5xpuz7zhMHGkvtHVYqrU7gws/dMZoFgzw==
+X-Google-Smtp-Source: AGHT+IHzyRuPGLIU9IzlEEdTKBGXo6/9Uou4vY0QASKHiYYbaa5Xmk9tSWpjCG3cIXB1RJj/V/BCqQ==
+X-Received: by 2002:a05:620a:28c8:b0:783:8d63:f3b2 with SMTP id l8-20020a05620a28c800b007838d63f3b2mr1010002qkp.54.1706310969221;
+        Fri, 26 Jan 2024 15:16:09 -0800 (PST)
 Received: from denia.c.googlers.com (240.157.150.34.bc.googleusercontent.com. [34.150.157.240])
-        by smtp.gmail.com with ESMTPSA id m4-20020a05620a290400b00783de3ddf5esm507358qkp.70.2024.01.26.15.16.06
+        by smtp.gmail.com with ESMTPSA id m4-20020a05620a290400b00783de3ddf5esm507358qkp.70.2024.01.26.15.16.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 15:16:07 -0800 (PST)
+        Fri, 26 Jan 2024 15:16:08 -0800 (PST)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Fri, 26 Jan 2024 23:16:02 +0000
-Subject: [PATCH 03/17] media: media-entity.h: Fix kerneldoc
+Date: Fri, 26 Jan 2024 23:16:03 +0000
+Subject: [PATCH 04/17] media: cec.h: Fix kerneldoc
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240126-gix-mtk-warnings-v1-3-eed7865fce18@chromium.org>
+Message-Id: <20240126-gix-mtk-warnings-v1-4-eed7865fce18@chromium.org>
 References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
 In-Reply-To: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
 To: Tiffany Lin <tiffany.lin@mediatek.com>, 
@@ -103,8 +118,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-amlogic@lists.infradead.org, Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240126_151608_928056_CCC13465 
-X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-CacheID: sfid-20240126_231612_611058_18510745 
+X-CRM114-Status: UNSURE (   8.81  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -120,27 +135,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The fields seems to be documented twice.
+The fields are gone, remove their documentation.
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- include/media/media-entity.h | 4 ----
- 1 file changed, 4 deletions(-)
+ include/media/cec.h | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/include/media/media-entity.h b/include/media/media-entity.h
-index 2b6cd343ee9e..c79176ed6299 100644
---- a/include/media/media-entity.h
-+++ b/include/media/media-entity.h
-@@ -337,10 +337,6 @@ enum media_entity_type {
-  * @info.dev:	Contains device major and minor info.
-  * @info.dev.major: device node major, if the device is a devnode.
-  * @info.dev.minor: device node minor, if the device is a devnode.
-- * @major:	Devnode major number (zero if not applicable). Kept just
-- *		for backward compatibility.
-- * @minor:	Devnode minor number (zero if not applicable). Kept just
-- *		for backward compatibility.
-  *
-  * .. note::
+diff --git a/include/media/cec.h b/include/media/cec.h
+index d77982685116..10c9cf6058b7 100644
+--- a/include/media/cec.h
++++ b/include/media/cec.h
+@@ -224,8 +224,6 @@ struct cec_adap_ops {
+  * @notifier:		CEC notifier
+  * @pin:		CEC pin status struct
+  * @cec_dir:		debugfs cec directory
+- * @status_file:	debugfs cec status file
+- * @error_inj_file:	debugfs cec error injection file
+  * @sequence:		transmit sequence counter
+  * @input_phys:		remote control input_phys name
   *
 
 -- 
