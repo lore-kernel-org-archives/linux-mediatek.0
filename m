@@ -4,65 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F130DC47DA9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 16:25:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72963C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 17:04:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5MZNQZ+U0qN5MQqp/SbJWOMILdkVqVbvXC98OckCEaY=; b=ocxG5Omf+XDnT9g8M+UK+09S/I
-	iChBn9bUfA8oPxBQ+uA74J/J4OYzED/NdBum0/l3f6CVLj9ePGLjUDYFKWy7gv4vnSw0K81l3ZwRn
-	cTsBrn8d9OoyrZlrFY9WqUeZtGx7Am6/1jKPv/ttcb9tNLitp1v8xuPWmwFReNKBNvSl34GNSE2XH
-	3LiBS5GqcREdFr7SdgyUwzlWwcp76gW28MbwXs3DxLdh/qxFyO3Ct0/iJ5NiDxlj48L7C7bq1S3BI
-	gDB9jCanAkaY1nJV6jyQnI1Erhf4zyO+nPZjaqKVJdUv0OhcCLU4wbJKEZknRFwBobk9QXAAyUKqz
-	ZGdFtTcQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=r13Vjhpp1w8wUVvF7CjpGTyopMC4ZZNMQ+oZrZiXUO4=; b=CyT2Q1g2+8IlknGHACPhFUzWZP
+	B8DXWZDuhluK64gpAgZ+GCIfvMzlacwXufbNn31Yq57srDfhZrALV1BqG3EY6DWRyV6tUov87MV/o
+	JWmcGVW/anQuwLDSf/seoHMu/gEzl85n0WQRYfU5wIZmAutyjclnltRbe74jNc97f//1w7/zAcKD2
+	7f8eGTDAMOHJd/JpwdKCfLcpTRUoyDFtC+gMqPpTz3YP1S96RGeVg5+HW9oJkoLzN5juv6DJu5YEk
+	V1QSKqXDgVWKYvKGYEhmPI1p+cIZ29URpb9dsdrNzOk8hRI6UXZ8ps9v1biphH7VsmXZfN1Bln7zW
+	7FMdY2fA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTlUL-00000007oL8-34ym;
-	Sat, 27 Jan 2024 16:25:01 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1rTm6k-00000007sg1-082v;
+	Sat, 27 Jan 2024 17:04:42 +0000
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTlSS-00000007n2b-27qm;
-	Sat, 27 Jan 2024 16:23:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=5MZNQZ+U0qN5MQqp/SbJWOMILdkVqVbvXC98OckCEaY=; b=rqYs4I7pZ1uOYVHIhQ1eakMTky
-	xgx4C15f0/00wCdgi9w+JgeWxwvQXI4m5zt0xW9x1HgI8MB3/pSlrBYWyvgwwNeMygMCuxxDLIkPt
-	LznO671hW7QiGV26CEanW4kgKOtg6pPianSOuKmxKgLYbPf7ohjtwlgnaqbEj6IkUA/tnrrdnNHkl
-	r67/9lxhpcp1ykswGE1Kf92N5dKpB4/aJxKM+t8xa1V5KCy76D5c/jFU5UouJWmQRz1YJJqbmTavI
-	Fs00/k4KhmC+WL1ygLW2KiV5ZaKYhaHU50ls9JEEDxnJdnJxYWzld8gnYSV8qUbQtWPlSfzieTztE
-	eeDylA2w==;
-Received: from willy by casper.infradead.org with local (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTlSP-0000000HM6Z-0ryK;
-	Sat, 27 Jan 2024 16:23:01 +0000
-Date: Sat, 27 Jan 2024 16:23:01 +0000
-From: Matthew Wilcox <willy@infradead.org>
-To: Haiqiang Gong =?utf-8?B?KOm+mua1t+W8uik=?= <Haiqiang.Gong@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-mm@kvack.org" <linux-mm@kvack.org>,
-	"akpm@linux-foundation.org" <akpm@linux-foundation.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	Mike Zhang =?utf-8?B?KOW8oOS8n+S8nyk=?= <Mike.Zhang@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: =?utf-8?B?5Zue5aSNOiBbUEFUQ0g=?= =?utf-8?Q?=5D?= mm/compaction:
- add check mechanism to avoid cma alloc fail
-Message-ID: <ZbUt5WkdnH8cLntU@casper.infradead.org>
-References: <20240122022317.30091-1-Haiqiang.Gong@mediatek.com>
- <Za3hf6A4V5QECvDy@casper.infradead.org>
- <JH0PR03MB8809FC349066C215C28DE119947B2@JH0PR03MB8809.apcprd03.prod.outlook.com>
- <ZbFZh-E7BZEGm_Ed@casper.infradead.org>
- <0da9c1215291afeebe2cd99b0d8691c7fe6bde3a.camel@mediatek.com>
+	id 1rTm6g-00000007sfY-3yc2;
+	Sat, 27 Jan 2024 17:04:40 +0000
+Received: by mail-pg1-x532.google.com with SMTP id 41be03b00d2f7-5d4d15ec7c5so1189672a12.1;
+        Sat, 27 Jan 2024 09:04:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1706375076; x=1706979876; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=r13Vjhpp1w8wUVvF7CjpGTyopMC4ZZNMQ+oZrZiXUO4=;
+        b=FzHWSwLjli4kJNQCzoM5YqEqK7yQGH2BKKD86Tz8v4SwPL5Sw66IUjXLBC7x3HNvY/
+         18CFOQTqSvFY0T45gUlfnB9K5EYSr4NAeOVaOcUX60UpXjWGG1sekkAZ4/t5b5Ko/xbY
+         Mg65SPGcik+KjvDkVk3LCqZdmSm+kA5t7Q6PYl4O5/JkRTPExU6Leaa8Ygga9IwVfDjn
+         TnDOQsPv51bjFJSduR1C2bNC/7uibrgQ/5M3dYIglN/r3bvaAqnc66kOg/ZrqDw5zzKD
+         2usRonJOZbRZ9zMpn8nXdEaNxCO7DWNdyuX5V07sqgzem6tTtsU5SJM5fRfPzA8DA345
+         5aHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706375076; x=1706979876;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=r13Vjhpp1w8wUVvF7CjpGTyopMC4ZZNMQ+oZrZiXUO4=;
+        b=KjyHZGhcvIjFmoJzynNsJ8ruXczgjtyhK+yS6GkBKlQW5Lu7h8ne2n+U8FetEdOpuG
+         Hx3c+v/qZuyyXaVFNpm1U+1ZbX1uZlKMDu9EERjZ6EoUOj3/OfwAX1bRD5ldrcjlQYir
+         RkGLKrHDpC0V0/4Zh/0NG55NfdHMCX35CW3I1wmQde1v11KxDZf3gKggLO+k/4l+mZcL
+         Rifo+oZsYQCqaQ7imOwfnKG7nrE1fsDTcInhjYuaqfSEQlFVM+qOTzIGyIgCLg5tnMdW
+         TZGTaLvF3WK3wgxd655pbjwMt0HNoHPpRF2YHxxXHlOPtWx7FCkA4um4s8VqAPCZMSMH
+         0ofA==
+X-Gm-Message-State: AOJu0YwQ/bu6tINQe0BQE3w02z0OEngl8Ew42SKzYCIbnCg3Nfc0hY4K
+	2/d6iFwNQHHak4J5oTUwxYqRnXmeZjCD9tRY4CfHN6qPB6VrlVnApbCTl/O/HHI=
+X-Google-Smtp-Source: AGHT+IE+5nHeNioxu7G8Kqsq/+WxVEz/RqtW33uaScGNhyPBfdpbDeCRCclIYUZEk8dRLEWDT+CBRA==
+X-Received: by 2002:a05:6a20:a209:b0:19b:2303:88a4 with SMTP id u9-20020a056a20a20900b0019b230388a4mr1529034pzk.105.1706375075733;
+        Sat, 27 Jan 2024 09:04:35 -0800 (PST)
+Received: from gen-frame.. ([2607:fb90:8763:4b41:e82e:cfdd:7c39:5874])
+        by smtp.gmail.com with ESMTPSA id h2-20020aa79f42000000b006ddc2a97806sm2994160pfr.213.2024.01.27.09.04.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 27 Jan 2024 09:04:35 -0800 (PST)
+From: Gen Xu <genxu6@gmail.com>
+To: lorenzo@kernel.org,
+	shayne.chen@mediatek.com
+Cc: nbd@nbd.name,
+	ryder.lee@mediatek.com,
+	sean.wang@mediatek.com,
+	kvalo@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Gen Xu <genxu6@gmail.com>
+Subject: [PATCH] wifi: mt76: fix ethtool stat for EHT rate stats
+Date: Sat, 27 Jan 2024 09:04:30 -0800
+Message-ID: <20240127170430.68427-1-genxu6@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <0da9c1215291afeebe2cd99b0d8691c7fe6bde3a.camel@mediatek.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20240127_090439_009365_DB24678E 
+X-CRM114-Status: UNSURE (   8.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,55 +98,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jan 27, 2024 at 11:03:48AM +0000, Haiqiang Gong (龚海强) wrote:
-> On Wed, 2024-01-24 at 18:40 +0000, Matthew Wilcox wrote:
-> >  On Wed, Jan 24, 2024 at 07:20:53AM +0000, Haiqiang Gong (龚海强) wrote:
-> > > > I don't understand.  You say that the memory isn't movable, but
-> > then you 
-> > > > say that it's migrated in.  So it was movable, but it's no longer
-> > > > movable after being moved once?  
-> > > Sorry for not expressing clearly
-> > > When doing memory migration, the kernel will determine whether the
-> > current 
-> > > page can be moved based on the refcount and mapcount of the current
-> > page.
-> > > This memory can be moved during kernel compaction. At this time,
-> > refcount 
-> > > is less than or equal to mapcount.
-> > > After this memory is kcompacted and placed in the cma buffer,
-> > under 
-> > > certain special conditions, the refcount may be greater than the
-> > mapcount
-> > > （ex:the current page is being used by fs）, and then migrate will
-> > fail.
-> > 
-> > But that's always true.  Any page that is currently in use might have
-> > its refcount temporarily incremented.  There's nothing special about
-> > pages that belong to a file.  You've basically just prevented all
-> > filesystem memory from being migrated to the CMA area, and that's
-> > wrong.
-> > 
-> Yes, we agree with you that refcount may temporarily incremented.
-> Issues we have reproduced:
-> The current page is migrated to the cma area by kcompactd, rather than
-> allocated by kernel memory allocater.
-> Our opinion is that if a page cannot be allocated to the CMA area, then
-> we should not put it in the CMA area when doing kernel migration. This
-> seems more reasonable. Do you agree with this view or do you have any
-> other suggestions?
+The patch add the missing ethtool stat for EHT rate stats.
 
-That does seem reasonable.  But I don't know if it helps you at all;
-is there a type of allocation which is migratable but not allocatable
-from the CMA area?
+The commit 731425f3a940d01be0cab0a5e45382988146aed8 introduced the EHT
+rate defined in struct mt76_sta_stats, but missed to add stats string to
+mt792x_gstrings_stats, as mt76_ethtool_worker walk through, it prints
+out error like this:
 
-> > What's special about this page?  Or were you just unlucky?
-> We didn't find anything special about this page. During our debugging,
-> we found that once a similar problem occurs in the current page, it can
-> no longer be migrated (retrying after an hour will not work).
+[98179.287352] mt7921e 0003:01:00.0: ei: 74  SSTATS_LEN: 73
 
-Perhaps you can find out more information about this particular page; who
-allocated it, why was it migratable initially but not the second time?
-Perhaps something happens to this page to keep the refcount high, and
-if we can find out that will happen, we can migrate it out of the CMA
-area before incrementing the refcount.
+Signed-off-by: Gen Xu <genxu6@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt792x_core.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+index 502be22dbe36..fb35eff6dc7b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+@@ -354,6 +354,7 @@ static const char mt792x_gstrings_stats[][ETH_GSTRING_LEN] = {
+ 	"v_tx_bw_40",
+ 	"v_tx_bw_80",
+ 	"v_tx_bw_160",
++	"v_tx_bw_320",
+ 	"v_tx_mcs_0",
+ 	"v_tx_mcs_1",
+ 	"v_tx_mcs_2",
+-- 
+2.43.0
+
 
