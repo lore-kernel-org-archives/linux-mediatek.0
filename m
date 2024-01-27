@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56849C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 21:02:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A106DC46CD2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 21:03:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LHqW8kH7shctWwwB3SlliSPu5mFAQXdBMQK5ohwulNE=; b=TjrD8jlHuRib82ztHotetNmvow
-	5nAvh5VdMLPJh/uWU20WrKYeDxs0zgG6cw1HDqOYSyDDz7vRLlKFXQvPbBpJXekQiJPIXpwWHQo0p
-	e7K5TMIL38IUdbVc+JMS2IGLSClVZw2AXkcFfFH2RBe1OFGPdqFfGi5+VfDtDuuSDRL0MQ0UPKjTF
-	0wWrxEuwErjx8j/hhbsV8CYPUihrt67dE8Tgt8beyanlRVNnUfXbQJBK59WzCEtgUQHPHaHSc6JG/
-	DZPJQzlPHU4mqj7dx6MUqOrdVORrDmyxX0YzBaqx1ISMLnkfnPXvOPoG77NvjWFp99+Y8oPbRInRk
-	7VINFznA==;
+	bh=o2qMCLVTADfJ6fB50r+bipM7dIFRLMPccc6A3oE+288=; b=MtYTJ1S3UcZHVik0PY7e7zVlyM
+	aD7wMDpQz4yqsDpKWy8KKvRE3dMlKIk4t4cvzAHqFxDU0V7xt8gRQ6xrd6D4nLmZhU6oasDfyFgeE
+	vJGwjkR2ZpTfppaPTI4rJpCHb/bqAZCVaZRcmfAcc1mlYjibhWrnkT5uWVX1VsrS7rGr8q88+ggUm
+	rKAUYv8xRss+avNWr4dqFKCCZLsW3dE/Abt8mb4i1zPcQ/YjWSz1awdj8LW5fHH5aJ+rBkcjEtC59
+	pFgVaVGLxhkBGUKIG84isWxQwVY+LoMQdikRvVI8ZqiCzbs1iHotr6hUu10Qyy5nZ6rZDXo7HyxcL
+	G1suX8ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTppH-00000008CFe-00Va;
-	Sat, 27 Jan 2024 21:02:55 +0000
+	id 1rTpqI-00000008CS6-1ExR;
+	Sat, 27 Jan 2024 21:03:58 +0000
 Received: from [50.53.50.0] (helo=[192.168.254.15])
 	by bombadil.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTppC-00000008CEz-3sDa;
-	Sat, 27 Jan 2024 21:02:52 +0000
-Message-ID: <70bf533c-fd77-4e4f-819c-8299ac764ca5@infradead.org>
-Date: Sat, 27 Jan 2024 13:02:49 -0800
+	id 1rTpqG-00000008CEz-2lDd;
+	Sat, 27 Jan 2024 21:03:56 +0000
+Message-ID: <4a3150da-b71f-4d86-a69b-d72a8baef252@infradead.org>
+Date: Sat, 27 Jan 2024 13:03:55 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 04/17] media: cec.h: Fix kerneldoc
+Subject: Re: [PATCH 05/17] media: pci: dt315.h: Fix kerneldoc
 Content-Language: en-US
 To: Ricardo Ribalda <ribalda@chromium.org>,
  Tiffany Lin <tiffany.lin@mediatek.com>,
@@ -67,9 +67,9 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev,
  linux-amlogic@lists.infradead.org
 References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
- <20240126-gix-mtk-warnings-v1-4-eed7865fce18@chromium.org>
+ <20240126-gix-mtk-warnings-v1-5-eed7865fce18@chromium.org>
 From: Randy Dunlap <rdunlap@infradead.org>
-In-Reply-To: <20240126-gix-mtk-warnings-v1-4-eed7865fce18@chromium.org>
+In-Reply-To: <20240126-gix-mtk-warnings-v1-5-eed7865fce18@chromium.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -89,7 +89,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 1/26/24 15:16, Ricardo Ribalda wrote:
-> The fields are gone, remove their documentation.
+> The field is gone, remove it.
 > 
 > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
@@ -98,22 +98,21 @@ Reviewed-by: Randy Dunlap <rdunlap@infradead.org>
 Thanks.
 
 > ---
->  include/media/cec.h | 2 --
->  1 file changed, 2 deletions(-)
+>  drivers/media/pci/dt3155/dt3155.h | 1 -
+>  1 file changed, 1 deletion(-)
 > 
-> diff --git a/include/media/cec.h b/include/media/cec.h
-> index d77982685116..10c9cf6058b7 100644
-> --- a/include/media/cec.h
-> +++ b/include/media/cec.h
-> @@ -224,8 +224,6 @@ struct cec_adap_ops {
->   * @notifier:		CEC notifier
->   * @pin:		CEC pin status struct
->   * @cec_dir:		debugfs cec directory
-> - * @status_file:	debugfs cec status file
-> - * @error_inj_file:	debugfs cec error injection file
->   * @sequence:		transmit sequence counter
->   * @input_phys:		remote control input_phys name
->   *
+> diff --git a/drivers/media/pci/dt3155/dt3155.h b/drivers/media/pci/dt3155/dt3155.h
+> index c9ce79cb5566..ce1835d9691e 100644
+> --- a/drivers/media/pci/dt3155/dt3155.h
+> +++ b/drivers/media/pci/dt3155/dt3155.h
+> @@ -162,7 +162,6 @@
+>   * @height:		frame height
+>   * @input:		current input
+>   * @sequence:		frame counter
+> - * @stats:		statistics structure
+>   * @regs:		local copy of mmio base register
+>   * @csr2:		local copy of csr2 register
+>   * @config:		local copy of config register
 > 
 
 -- 
