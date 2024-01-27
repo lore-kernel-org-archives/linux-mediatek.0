@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75B79C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 22:02:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 912CEC46CD2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 22:03:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jYMzBg65ur09cPf+WCiWU8IpVG08dwj8iwg1UyDuYvQ=; b=R73W02GSZop/LpyHY7HegyS8+5
-	8yP9C00Va1Dz7xDgXS1GShAhp1uhwVv9XP7pslL63Sy+udYhdKIpS8bG5WHIiDMvk9y9XKm8O4TOf
-	ZjIqJqIfkdfh+cSBts9baLFEm8lu2x25NjozI5B+thO6opGoi1kqat9xkG1ia38tULi4aXNTuwPUN
-	+UXE9cmHZ+Wh2+o2mjZOLG6vmAXP2Qfr+y2TogIfZHxcwxfS021ydM47Ak2z5DZKJJm2krpYQnTNu
-	33fnhMS/mO3JLVmgU3RyfuBV/ySF8tgSuTNdhQWZIJMBPIPA+COjhz3GKWCKWknFPPepYUUq9jcv4
-	Uyo6Z+Zg==;
+	bh=Oteu1XFMq0ml2SlaxheSfjNxtwlKfi/u96a13TCoSkU=; b=sqAh1MvU9GjEkUFwqkO9SOUExK
+	yXySjk7enIiFxIXNLA2jw5IHFbWxSMp1DoYTF0hV6lgM0+QlzUySIPLqqDj7fbIr1UqRlim/qnmDi
+	k5qd7CHyW+pOluJaumu8KNUSGxRvqPP42Ho9BiJdr0+D8uSpYZu/bxtcXjhDchN05A5e/P2LNjm+P
+	w07Mn6qt1r6FW0mhSHz1UBLUUjgSc/e2cJQye0bY46Vd6nZIbdra/Ml2dBlYmKiVWJRp7UIKaJX7L
+	wjdJ1qJqe3MqlyALYvjK9IPbfO8nENA4hMZ36AL5PP3I5dn1gWl5w2OomME9857OTfhWW/W3dKRlO
+	dGAnMivw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTqkr-00000008G9I-0Owt;
-	Sat, 27 Jan 2024 22:02:25 +0000
+	id 1rTqmN-00000008GNn-0rrJ;
+	Sat, 27 Jan 2024 22:03:59 +0000
 Received: from [50.53.50.0] (helo=[192.168.254.15])
 	by bombadil.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTqko-00000008G8i-10Rk;
-	Sat, 27 Jan 2024 22:02:22 +0000
-Message-ID: <0331b70a-ee6b-4654-8c55-235545dce4e2@infradead.org>
-Date: Sat, 27 Jan 2024 14:02:20 -0800
+	id 1rTqmK-00000008G8i-1Xs3;
+	Sat, 27 Jan 2024 22:03:56 +0000
+Message-ID: <520aa99c-78b5-48a9-975d-8ac77aa271d6@infradead.org>
+Date: Sat, 27 Jan 2024 14:03:54 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 07/17] media: i2c: adv748: Fix kerneldoc
+Subject: Re: [PATCH 08/17] media: mediatek: jpeg: Fix kerneldoc
 Content-Language: en-US
 To: Ricardo Ribalda <ribalda@chromium.org>,
  Tiffany Lin <tiffany.lin@mediatek.com>,
@@ -67,9 +67,9 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev,
  linux-amlogic@lists.infradead.org
 References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
- <20240126-gix-mtk-warnings-v1-7-eed7865fce18@chromium.org>
+ <20240126-gix-mtk-warnings-v1-8-eed7865fce18@chromium.org>
 From: Randy Dunlap <rdunlap@infradead.org>
-In-Reply-To: <20240126-gix-mtk-warnings-v1-7-eed7865fce18@chromium.org>
+In-Reply-To: <20240126-gix-mtk-warnings-v1-8-eed7865fce18@chromium.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -89,29 +89,30 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 1/26/24 15:16, Ricardo Ribalda wrote:
-> The field is gone, remove the documentation.
+> The field is gone, remove the documentation for it.
 > 
 > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
 Reviewed-by: Randy Dunlap <rdunlap@infradead.org>
+
 Thanks.
 
 > ---
->  drivers/media/i2c/adv748x/adv748x.h | 1 -
+>  drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h | 1 -
 >  1 file changed, 1 deletion(-)
 > 
-> diff --git a/drivers/media/i2c/adv748x/adv748x.h b/drivers/media/i2c/adv748x/adv748x.h
-> index 6f90f78f58cf..d2b5e722e997 100644
-> --- a/drivers/media/i2c/adv748x/adv748x.h
-> +++ b/drivers/media/i2c/adv748x/adv748x.h
-> @@ -173,7 +173,6 @@ struct adv748x_afe {
->   *
->   * @endpoints:		parsed device node endpoints for each port
->   *
-> - * @i2c_addresses:	I2C Page addresses
->   * @i2c_clients:	I2C clients for the page accesses
->   * @regmap:		regmap configuration pages.
->   *
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> index 8ba6e757e11a..8877eb39e807 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> @@ -144,7 +144,6 @@ struct mtk_jpegdec_clk {
+>   * @jpegenc_irq:	jpeg encode irq num
+>   * @job_timeout_work:	encode timeout workqueue
+>   * @hw_param:		jpeg encode hw parameters
+> - * @hw_rdy:		record hw ready
+>   * @hw_state:		record hw state
+>   * @hw_lock:		spinlock protecting the hw device resource
+>   */
 > 
 
 -- 
