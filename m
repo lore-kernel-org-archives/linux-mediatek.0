@@ -4,74 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AC44C47DA9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 01:51:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BAD2C48285
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 08:43:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lxYFxs/8WK1pTjOIC0n7A2x231owOnOSLs3pwAFP9f4=; b=2IZ+rnZrheMZcIeH0Nj0UCBKcu
-	h3OJngqv56rfxsneO/o60V7SHz0iJ5cafOyorwDc14kCG8Hm2JGtNAf941eE5xQj4OGg7epgEfUZA
-	G6wmGZJ/9YdQUkMUMtHAiirUrZhRN+/aWQhfy/bwiWomh1uz9WzxVhsWP0sMRsx1FjlccQOtczGbu
-	f/XmXRYyrgjcfE/M9olH18Pbrk31vR1NPWEKCkZGe9lhF23gyEE6eDoi6JQq8yYaoEa0JdgR36PaP
-	G80h07m2P6o08ysW1+IEnKpTkTNOmlXvuaB1RtdsovQjon6n4/Ve3morufNHcsCagLrlWPpGGJm0s
-	v8tyjEtQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qE95oGfl7ProVsPiOjQTscdIBUELif1esnax4VQCGIk=; b=DHwvIj81viZv/p99YWXEn9pCBG
+	PIkFK4zlkuO8VFjdkxoRxSfZ6bpqP1MSQ2ocrDxYUBnnSefwVGnd6i8L3FNvRJhAzD1jPGyOGJ7ME
+	SBSvliDDpbRQFshCkRBCEknGVZUMxpe8ifXFWm6digTZPNkOdqJLlLOZPe5R77JuH1W9bcxIIaKkf
+	Y54F6GCWcC6JgtJxWWRmWZJ09zaUugEAa071jAOfh+VwRUfdHQnR+a7E2i8jCnZyYmzmeYms6Aaz+
+	rv82dPxUJpzYsGxztlDJ6yGCQpahZvjZMR0AUmrLIHlME8x1r9r2KZtUNONKhldBO93Ue454WAxgO
+	T7SC/ksg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTXqi-00000006AnQ-0eoO;
-	Sat, 27 Jan 2024 01:51:12 +0000
-Received: from [50.53.50.0] (helo=[192.168.254.15])
-	by bombadil.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTXqe-00000006Alx-2cQm;
-	Sat, 27 Jan 2024 01:51:08 +0000
-Message-ID: <e6b72dff-911e-4923-9996-b3b7db36fb8e@infradead.org>
-Date: Fri, 26 Jan 2024 17:51:06 -0800
+	id 1rTeHa-00000007AXU-3Kmh;
+	Sat, 27 Jan 2024 08:43:22 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rTeHW-00000007AW5-3L0B;
+	Sat, 27 Jan 2024 08:43:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1706344991;
+	bh=8dRsLzcjxuiEqHzBiXW/6CBdzTfn9KdLsULhFxOyGP8=;
+	h=From:To:Cc:Subject:Date:From;
+	b=p0X6hNJ0/FNbHA3OoNK9VWsNQk1wTfyIk7rVN5WxanigwvN3uMMNOy+NbhOFePM+Q
+	 f3oG0AhM7w4NI8jCaIJjZKVgeapnd4i2FDK0z+TUH1WpLYmV6bsAnm1h8HgiabB9qB
+	 YmUB7LAN/0ZfJWFcX9y4XAeBTue3leCepR5Z2/9frosmd+l1cqEu1r2zOQEPFhdt1r
+	 4/Yq2e6rdDMZgG6xxC9XzAEDeHg+4fa/68DtBZkeCPk126eyb6qeIpbhCbQlI1hb/u
+	 rMi4WKI61iFLIM0poe6SqENgedUxqXHar+CMB3MuAGXkx0mIcTS+F/6TTVdDkSCG38
+	 29WBSqkdpARVw==
+Received: from eugen-station.. (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: ehristev)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 21F1D37809D0;
+	Sat, 27 Jan 2024 08:43:07 +0000 (UTC)
+From: Eugen Hristev <eugen.hristev@collabora.com>
+To: linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	bin.liu@mediatek.com
+Cc: linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	angelogioacchino.delregno@collabora.com,
+	kernel@collabora.com,
+	eugen.hristev@collabora.com,
+	matthias.bgg@gmail.com
+Subject: [PATCH v3 1/2] dt-bindings: media: mediatek-jpeg-encoder: change max iommus count
+Date: Sat, 27 Jan 2024 10:42:57 +0200
+Message-Id: <20240127084258.68302-1-eugen.hristev@collabora.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/17] media: media-entity.h: Fix kerneldoc
-Content-Language: en-US
-To: Ricardo Ribalda <ribalda@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Hans Verkuil <hverkuil@xs4all.nl>,
- Kieran Bingham <kieran.bingham@ideasonboard.com>,
- Bin Liu <bin.liu@mediatek.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
- Vikash Garodia <quic_vgarodia@quicinc.com>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>, Bingbu Cao <bingbu.cao@intel.com>,
- Tianshu Qiu <tian.shu.qiu@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev,
- linux-amlogic@lists.infradead.org
-References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
- <20240126-gix-mtk-warnings-v1-3-eed7865fce18@chromium.org>
-From: Randy Dunlap <rdunlap@infradead.org>
-In-Reply-To: <20240126-gix-mtk-warnings-v1-3-eed7865fce18@chromium.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20240127_004319_022655_0A4BD45C 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,84 +78,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+MT8186 has 4 iommus in the list, to cope with this situation, adjust
+the maxItems to 4 (instead of previous 2).
+Add also minItems as 2 to keep compatibility with current devices.
 
-
-On 1/26/24 15:16, Ricardo Ribalda wrote:
-> The fields seems to be documented twice.
-> 
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> ---
->  include/media/media-entity.h | 4 ----
->  1 file changed, 4 deletions(-)
-> 
-> diff --git a/include/media/media-entity.h b/include/media/media-entity.h
-> index 2b6cd343ee9e..c79176ed6299 100644
-> --- a/include/media/media-entity.h
-> +++ b/include/media/media-entity.h
-> @@ -337,10 +337,6 @@ enum media_entity_type {
->   * @info.dev:	Contains device major and minor info.
->   * @info.dev.major: device node major, if the device is a devnode.
->   * @info.dev.minor: device node minor, if the device is a devnode.
-> - * @major:	Devnode major number (zero if not applicable). Kept just
-> - *		for backward compatibility.
-> - * @minor:	Devnode minor number (zero if not applicable). Kept just
-> - *		for backward compatibility.
->   *
->   * .. note::
->   *
-> 
-
-I'd say that this is correct based on
-https://patchwork.kernel.org/project/linux-media/patch/20231223050707.14091-1-rdunlap@infradead.org/
-
-
-Hans, can you please explain this message from you, on 2024-Jan-22, that I cannot find in the media patchwork:
-
-
-Subject: [git:media_stage/master] media: media-entity.h: fix Excess kernel-doc description warnings
-
-
-
-This is an automatic generated email to let you know that the following patch were queued:
-
-Subject: media: media-entity.h: fix Excess kernel-doc description warnings
-Author:  Randy Dunlap <rdunlap@infradead.org>
-Date:    Fri Dec 22 21:07:07 2023 -0800
-
-Remove the @major: and @minor: lines to prevent the kernel-doc warnings:
-
-include/media/media-entity.h:376: warning: Excess struct member 'major' description in 'media_entity'
-include/media/media-entity.h:376: warning: Excess struct member 'minor' description in 'media_entity'
-
-Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-
- include/media/media-entity.h | 4 ----
- 1 file changed, 4 deletions(-)
-
+Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
+Changes in v3:
+minItems changed to 2.
 
-diff --git a/include/media/media-entity.h b/include/media/media-entity.h
-index 2b6cd343ee9e..c79176ed6299 100644
---- a/include/media/media-entity.h
-+++ b/include/media/media-entity.h
-@@ -337,10 +337,6 @@ enum media_entity_type {
-  * @info.dev:	Contains device major and minor info.
-  * @info.dev.major: device node major, if the device is a devnode.
-  * @info.dev.minor: device node minor, if the device is a devnode.
-- * @major:	Devnode major number (zero if not applicable). Kept just
-- *		for backward compatibility.
-- * @minor:	Devnode minor number (zero if not applicable). Kept just
-- *		for backward compatibility.
-  *
-  * .. note::
-  *
+Changes in v2:
+fixed typo in subject
 
+ .../devicetree/bindings/media/mediatek-jpeg-encoder.yaml       | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-
-Thanks.
+diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
+index 37800e1908cc..83c020a673d6 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
+@@ -38,7 +38,8 @@ properties:
+     maxItems: 1
+ 
+   iommus:
+-    maxItems: 2
++    minItems: 2
++    maxItems: 4
+     description: |
+       Points to the respective IOMMU block with master port as argument, see
+       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
 -- 
-#Randy
+2.34.1
+
 
