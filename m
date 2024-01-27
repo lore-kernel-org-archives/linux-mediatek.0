@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 912CEC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 22:03:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08FD6C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 22:07:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Oteu1XFMq0ml2SlaxheSfjNxtwlKfi/u96a13TCoSkU=; b=sqAh1MvU9GjEkUFwqkO9SOUExK
-	yXySjk7enIiFxIXNLA2jw5IHFbWxSMp1DoYTF0hV6lgM0+QlzUySIPLqqDj7fbIr1UqRlim/qnmDi
-	k5qd7CHyW+pOluJaumu8KNUSGxRvqPP42Ho9BiJdr0+D8uSpYZu/bxtcXjhDchN05A5e/P2LNjm+P
-	w07Mn6qt1r6FW0mhSHz1UBLUUjgSc/e2cJQye0bY46Vd6nZIbdra/Ml2dBlYmKiVWJRp7UIKaJX7L
-	wjdJ1qJqe3MqlyALYvjK9IPbfO8nENA4hMZ36AL5PP3I5dn1gWl5w2OomME9857OTfhWW/W3dKRlO
-	dGAnMivw==;
+	bh=sVH0boheHEjqFAG/uYCckQKXtdYKR4rZiD2FneAdLPQ=; b=J6oWRzLbztkN9sIwiT+PDHTewd
+	SgkGZYYjib5nNv6qXZEjo0JSxP1vW/hD/I0Y5d2mq2UxlO7MIk+cn4XH9r2pIT93n3IlWeFbB1+KU
+	5+JClIUGXUa2iCd7M4WUH33wNe0Ivjtg6w6b+lLUXCXLUGiZ9Bi/xRwodStHi+Lwra4GTgzVY/VZ+
+	ploBu2QKeQjvDQiNGuqSc0zkA1iSCGQqBKG9vpNz93UAu4dPBhdZs+631vTiuQJWbQ4hykYpegM6N
+	tohI1ZC2xyrOfuxEN8aSVc8O/3IFMaakR2C8DMbu4IsaEBTqTyJPgqu4kl+XnCCec9DKz++8tvTUt
+	ykjgM6EQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTqmN-00000008GNn-0rrJ;
-	Sat, 27 Jan 2024 22:03:59 +0000
+	id 1rTqpa-00000008GlW-2D4F;
+	Sat, 27 Jan 2024 22:07:18 +0000
 Received: from [50.53.50.0] (helo=[192.168.254.15])
 	by bombadil.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTqmK-00000008G8i-1Xs3;
-	Sat, 27 Jan 2024 22:03:56 +0000
-Message-ID: <520aa99c-78b5-48a9-975d-8ac77aa271d6@infradead.org>
-Date: Sat, 27 Jan 2024 14:03:54 -0800
+	id 1rTqpV-00000008GkT-32FI;
+	Sat, 27 Jan 2024 22:07:13 +0000
+Message-ID: <0b108b53-0dba-4c8f-91c1-2725f0752f23@infradead.org>
+Date: Sat, 27 Jan 2024 14:07:12 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/17] media: mediatek: jpeg: Fix kerneldoc
+Subject: Re: [PATCH 09/17] media: mediatek: vcodec: Fix kerneldoc
 Content-Language: en-US
 To: Ricardo Ribalda <ribalda@chromium.org>,
  Tiffany Lin <tiffany.lin@mediatek.com>,
@@ -67,9 +67,9 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev,
  linux-amlogic@lists.infradead.org
 References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
- <20240126-gix-mtk-warnings-v1-8-eed7865fce18@chromium.org>
+ <20240126-gix-mtk-warnings-v1-9-eed7865fce18@chromium.org>
 From: Randy Dunlap <rdunlap@infradead.org>
-In-Reply-To: <20240126-gix-mtk-warnings-v1-8-eed7865fce18@chromium.org>
+In-Reply-To: <20240126-gix-mtk-warnings-v1-9-eed7865fce18@chromium.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -89,30 +89,55 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 1/26/24 15:16, Ricardo Ribalda wrote:
-> The field is gone, remove the documentation for it.
+> Those fields have been removed. They do not need to be documented.
 > 
 > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
 Reviewed-by: Randy Dunlap <rdunlap@infradead.org>
-
 Thanks.
 
 > ---
->  drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h | 1 -
->  1 file changed, 1 deletion(-)
+>  drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.h | 1 -
+>  drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h    | 1 -
+>  drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.h | 1 -
+>  3 files changed, 3 deletions(-)
 > 
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> index 8ba6e757e11a..8877eb39e807 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> @@ -144,7 +144,6 @@ struct mtk_jpegdec_clk {
->   * @jpegenc_irq:	jpeg encode irq num
->   * @job_timeout_work:	encode timeout workqueue
->   * @hw_param:		jpeg encode hw parameters
-> - * @hw_rdy:		record hw ready
->   * @hw_state:		record hw state
->   * @hw_lock:		spinlock protecting the hw device resource
->   */
+> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.h
+> index ece27c880e50..1af075fc0194 100644
+> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.h
+> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.h
+> @@ -39,7 +39,6 @@ struct vdec_fb {
+>  /**
+>   * struct mtk_video_dec_buf - Private data related to each VB2 buffer.
+>   * @m2m_buf:	M2M buffer
+> - * @list:	link list
+>   * @used:	Capture buffer contain decoded frame data and keep in
+>   *			codec data structure
+>   * @queued_in_vb2:	Capture buffer is queue in vb2
+> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
+> index fbb3f34a73f0..aa7d08afc2f4 100644
+> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
+> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
+> @@ -22,7 +22,6 @@ struct mtk_vcodec_dec_ctx;
+>   *                in place of inst_addr in messages.
+>   * @signaled    : 1 - Host has received ack message from VPU, 0 - not received
+>   * @ctx         : context for v4l2 layer integration
+> - * @dev		: platform device of VPU
+>   * @wq          : wait queue to wait VPU message ack
+>   * @handler     : ipi handler for each decoder
+>   * @codec_type     : use codec type to separate different codecs
+> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.h b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.h
+> index 82246401ed4a..908d8179b2d2 100644
+> --- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.h
+> +++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.h
+> @@ -26,7 +26,6 @@
+>  /**
+>   * struct mtk_video_enc_buf - Private data related to each VB2 buffer.
+>   * @m2m_buf:	M2M buffer
+> - * @list:	list that buffer link to
+>   * @param_change: Types of encode parameter change before encoding this
+>   *				buffer
+>   * @enc_params: Encode parameters changed before encode this buffer
 > 
 
 -- 
