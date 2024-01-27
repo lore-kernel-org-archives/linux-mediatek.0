@@ -4,86 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31B2DC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 11:30:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F130DC47DA9
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 16:25:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2GZIIhmY4ewuA9KgJhwUUlqVtGcUt+YTA3IGIjyGp5g=; b=jCKXy81YfKlBSp61RIXREIsXss
-	smL3Fb7lQDtnOZ2h3/EK+HwDDqy+vcHWHwWRaM6L1sPPPjlxDuHDMe5AafEe0MLeuLIM6fWxFlRcj
-	ofm0ElsQXQiRNvdaA0duoGvcPpGdKbzTupVkEcYtubVkUxIB3/ZHnFo9J1kPs93ND0WcOsDRe1MiH
-	qk4rHCJkAseLUw9NojmSTm4JwS8yXpFWMcHdhbYr+fHXjyENqw8B+Sj1e0BcpbXV649xDVRcwoQvu
-	2fBxq/ewwkjm0y2lr36iQbkcP7mmnm0rxkzGqgJx3oTYl9yjyvPZKKwVFkE8nx0DJyUMYND7VVMQp
-	rH0rnSWA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5MZNQZ+U0qN5MQqp/SbJWOMILdkVqVbvXC98OckCEaY=; b=ocxG5Omf+XDnT9g8M+UK+09S/I
+	iChBn9bUfA8oPxBQ+uA74J/J4OYzED/NdBum0/l3f6CVLj9ePGLjUDYFKWy7gv4vnSw0K81l3ZwRn
+	cTsBrn8d9OoyrZlrFY9WqUeZtGx7Am6/1jKPv/ttcb9tNLitp1v8xuPWmwFReNKBNvSl34GNSE2XH
+	3LiBS5GqcREdFr7SdgyUwzlWwcp76gW28MbwXs3DxLdh/qxFyO3Ct0/iJ5NiDxlj48L7C7bq1S3BI
+	gDB9jCanAkaY1nJV6jyQnI1Erhf4zyO+nPZjaqKVJdUv0OhcCLU4wbJKEZknRFwBobk9QXAAyUKqz
+	ZGdFtTcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTgsu-00000007QTp-36Iy;
-	Sat, 27 Jan 2024 11:30:04 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1rTlUL-00000007oL8-34ym;
+	Sat, 27 Jan 2024 16:25:01 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTgsr-00000007QS9-2LAp
-	for linux-mediatek@lists.infradead.org;
-	Sat, 27 Jan 2024 11:30:03 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-40e86a9fc4bso21105905e9.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 27 Jan 2024 03:29:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706354996; x=1706959796; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2GZIIhmY4ewuA9KgJhwUUlqVtGcUt+YTA3IGIjyGp5g=;
-        b=nurBupADZUIg8FzCmOVdlFDwR2iAwUAz8Tr0pdT49e9cqQ99pvoVlxmb9C/puXsP18
-         ngdnk+JX59Uhms/8Ww1otIinhg2+qfCPwCT5FvKP2anPb+aRzv6q1Egtx8TzQJGjs1xp
-         q7t8mvTLXyXVP6W5aHPw358GlOMAaGYt+372Czt6ZzqD0rIfuCBuuQ150e82reZma/xJ
-         tSw0mYH2GwmotKJCFTYuLAGDJYJpn5184O+EiN4n0JLJF00onjd4QzjMt2L5LBFLuj5O
-         SbLe7gaVqzsnvZaNZjWgNoHoGlxk1So3cKFc766CACVWGweqRZSPI/80xcPlQTDcwgoX
-         3Vzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706354996; x=1706959796;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=2GZIIhmY4ewuA9KgJhwUUlqVtGcUt+YTA3IGIjyGp5g=;
-        b=oLRzN2n2Yd1OziOC10rFZVTLYCn/8dc1rkQgFc/m2XDoSgzF+X3rwyZ1ygqG8JEMk0
-         hNwqnVyaarRmQypyPkJA0Gaksj7y6oPFWMGTuvL1e0N0tEqYBORisJg+satlgFBDgXob
-         Ou3V+r5jh9kfz9W2+RdMi523Nun1SlKxy3P4cdtRDtWN8mPg7qbbRzY+ppoqC87E6EAo
-         3iY2bFypEa7kuXgItwIxzy3GqPHZyVuiGl/ACA+rrCgDA6MmMCPke6xRErv+MaOcSl2P
-         AIN4WWmb6aph60F/jHKKoEbhkGJQ+j83iW+K9AMblfarVnpoNqnHnKK4AdItuqK30hZu
-         I3IA==
-X-Gm-Message-State: AOJu0Yy64r7KsOfKW8k7pKnnKcv06vPg3kYlWMdDcnV4F/0KFMIJChqo
-	RcOt0qeDHS6KSbe5NKWhx4nYEtYoikhRZ3gjTajLfWmfXhDUOJTpaCmAQTFhcfM=
-X-Google-Smtp-Source: AGHT+IGK1wNu7ZSIsgbkTjQOCpa8D/ABpMbe7tI4xca9X8OXpOP9r4Fup/x/E/gFt/JZ9Szz1a9l0A==
-X-Received: by 2002:a05:600c:4f8e:b0:40e:b313:b8db with SMTP id n14-20020a05600c4f8e00b0040eb313b8dbmr1167208wmq.28.1706354996117;
-        Sat, 27 Jan 2024 03:29:56 -0800 (PST)
-Received: from [172.20.10.4] (82-132-215-85.dab.02.net. [82.132.215.85])
-        by smtp.gmail.com with ESMTPSA id h17-20020a05600c315100b0040d62f89381sm4427724wmo.35.2024.01.27.03.29.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 27 Jan 2024 03:29:55 -0800 (PST)
-From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-To: Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- William-tw Lin <william-tw.lin@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20231222080739.21706-1-william-tw.lin@mediatek.com>
-References: <20231222080739.21706-1-william-tw.lin@mediatek.com>
-Subject: Re: (subset) [PATCH v4 0/3] mtk-socinfo driver implementation
-Message-Id: <170635499406.41064.12411935787824963879.b4-ty@linaro.org>
-Date: Sat, 27 Jan 2024 11:29:54 +0000
+	id 1rTlSS-00000007n2b-27qm;
+	Sat, 27 Jan 2024 16:23:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=5MZNQZ+U0qN5MQqp/SbJWOMILdkVqVbvXC98OckCEaY=; b=rqYs4I7pZ1uOYVHIhQ1eakMTky
+	xgx4C15f0/00wCdgi9w+JgeWxwvQXI4m5zt0xW9x1HgI8MB3/pSlrBYWyvgwwNeMygMCuxxDLIkPt
+	LznO671hW7QiGV26CEanW4kgKOtg6pPianSOuKmxKgLYbPf7ohjtwlgnaqbEj6IkUA/tnrrdnNHkl
+	r67/9lxhpcp1ykswGE1Kf92N5dKpB4/aJxKM+t8xa1V5KCy76D5c/jFU5UouJWmQRz1YJJqbmTavI
+	Fs00/k4KhmC+WL1ygLW2KiV5ZaKYhaHU50ls9JEEDxnJdnJxYWzld8gnYSV8qUbQtWPlSfzieTztE
+	eeDylA2w==;
+Received: from willy by casper.infradead.org with local (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rTlSP-0000000HM6Z-0ryK;
+	Sat, 27 Jan 2024 16:23:01 +0000
+Date: Sat, 27 Jan 2024 16:23:01 +0000
+From: Matthew Wilcox <willy@infradead.org>
+To: Haiqiang Gong =?utf-8?B?KOm+mua1t+W8uik=?= <Haiqiang.Gong@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-mm@kvack.org" <linux-mm@kvack.org>,
+	"akpm@linux-foundation.org" <akpm@linux-foundation.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	Mike Zhang =?utf-8?B?KOW8oOS8n+S8nyk=?= <Mike.Zhang@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Subject: Re: =?utf-8?B?5Zue5aSNOiBbUEFUQ0g=?= =?utf-8?Q?=5D?= mm/compaction:
+ add check mechanism to avoid cma alloc fail
+Message-ID: <ZbUt5WkdnH8cLntU@casper.infradead.org>
+References: <20240122022317.30091-1-Haiqiang.Gong@mediatek.com>
+ <Za3hf6A4V5QECvDy@casper.infradead.org>
+ <JH0PR03MB8809FC349066C215C28DE119947B2@JH0PR03MB8809.apcprd03.prod.outlook.com>
+ <ZbFZh-E7BZEGm_Ed@casper.infradead.org>
+ <0da9c1215291afeebe2cd99b0d8691c7fe6bde3a.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.12.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240127_033001_644136_BF9CB7D2 
-X-CRM114-Status: UNSURE (   7.21  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <0da9c1215291afeebe2cd99b0d8691c7fe6bde3a.camel@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,24 +77,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Sat, Jan 27, 2024 at 11:03:48AM +0000, Haiqiang Gong (龚海强) wrote:
+> On Wed, 2024-01-24 at 18:40 +0000, Matthew Wilcox wrote:
+> >  On Wed, Jan 24, 2024 at 07:20:53AM +0000, Haiqiang Gong (龚海强) wrote:
+> > > > I don't understand.  You say that the memory isn't movable, but
+> > then you 
+> > > > say that it's migrated in.  So it was movable, but it's no longer
+> > > > movable after being moved once?  
+> > > Sorry for not expressing clearly
+> > > When doing memory migration, the kernel will determine whether the
+> > current 
+> > > page can be moved based on the refcount and mapcount of the current
+> > page.
+> > > This memory can be moved during kernel compaction. At this time,
+> > refcount 
+> > > is less than or equal to mapcount.
+> > > After this memory is kcompacted and placed in the cma buffer,
+> > under 
+> > > certain special conditions, the refcount may be greater than the
+> > mapcount
+> > > （ex:the current page is being used by fs）, and then migrate will
+> > fail.
+> > 
+> > But that's always true.  Any page that is currently in use might have
+> > its refcount temporarily incremented.  There's nothing special about
+> > pages that belong to a file.  You've basically just prevented all
+> > filesystem memory from being migrated to the CMA area, and that's
+> > wrong.
+> > 
+> Yes, we agree with you that refcount may temporarily incremented.
+> Issues we have reproduced:
+> The current page is migrated to the cma area by kcompactd, rather than
+> allocated by kernel memory allocater.
+> Our opinion is that if a page cannot be allocated to the CMA area, then
+> we should not put it in the CMA area when doing kernel migration. This
+> seems more reasonable. Do you agree with this view or do you have any
+> other suggestions?
 
-On Fri, 22 Dec 2023 16:07:36 +0800, William-tw Lin wrote:
-> v4 changes:
-> dts:
-> 1. remove phandle from socinfo-data for all platforms
-> 
-> mtk-socinfo.c:
-> 1. use module_platform_driver instead of builtin_platform_driver
-> 
-> [...]
+That does seem reasonable.  But I don't know if it helps you at all;
+is there a type of allocation which is migratable but not allocatable
+from the CMA area?
 
-Applied, thanks!
+> > What's special about this page?  Or were you just unlucky?
+> We didn't find anything special about this page. During our debugging,
+> we found that once a similar problem occurs in the current page, it can
+> no longer be migrated (retrying after an hour will not work).
 
-[3/3] nvmem: mtk-efuse: Register MediaTek socinfo driver from efuse
-      commit: 4e6102d60d88975bc65a0dde05a8ba096c450249
-
-Best regards,
--- 
-Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-
+Perhaps you can find out more information about this particular page; who
+allocated it, why was it migratable initially but not the second time?
+Perhaps something happens to this page to keep the refcount high, and
+if we can find out that will happen, we can migrate it out of the CMA
+area before incrementing the refcount.
 
