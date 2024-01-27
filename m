@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80434C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 23:38:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1D35C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 23:53:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jb6WzNOjU69Ryl5VimSWdc7WcJrT6NYdCN35vtE0l8g=; b=wmy+W5uTq6BPT/MAc5HIdO9PA1
-	JWMW0AsqSFZWfOliCkZgMpMbIQruGeD+wEAuEjnVBCUQ0bdhZXAqAXZHRhZ3LBNxC1M9IA5Tppr2U
-	RgnMs9MADP5ILBtzSzuiMyqjZdzn/E8FBqBNEqssAAvfsI+JI8csKXky13AfiHRRxASx27MvQeC6c
-	SSju6XPS6m8pzb4rSvIsvwPJ28IiyinG+5RMsKszM5+z2i4oRuN94pEWbupMy5B2i5q+eWAS31XJW
-	8kw4WnsA203VENXyRiqSPEAnPHYFAeoNoX7XLCgTPmlkjyTt10bVuTSNVwZkWgC0xJBUMEwkBmobv
-	HE+jc5EQ==;
+	bh=y29bBOr0W8GWvuErd7/PqliVtdGt3XvPDU1lv0OLRhw=; b=m2ntkU5zh2M88bR8YjVcRRiSAR
+	gjqXePW44AMbY4T75g6lFoCA8c+iifI16GFq3bJjN6pHl3N6uGU8X9XlvKDIA9kRKeiDu/w+UP+Pw
+	DaqSIxBo/U/KaAp8pBr62Zw0mQ7NhYHa4jYZtvPTYTRlgrGbdtQhbrQpsBv2vpF2Oh3ofoIva7Xcp
+	eOanB3KfRLwuB0LjvYcncY6E5VMmJQQPLsrieJPexubTqvKORyfhV1sUc2nt+M4AxiEx7xS8Yi985
+	qqSx/uLwTD/dy0Cjaw2dpWgur+HHq5gN511FJFFwLySrBoSo4csQUhz1DH5KJ+HXaBh2A7EXTXFeF
+	ScJ7Q0vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTsFw-00000008PU0-13EZ;
-	Sat, 27 Jan 2024 23:38:36 +0000
-Received: from mail-oa1-f41.google.com ([209.85.160.41])
+	id 1rTsUC-00000008Qb9-0XUR;
+	Sat, 27 Jan 2024 23:53:20 +0000
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTsFs-00000008PSl-3wNX
+	id 1rTsU8-00000008QZO-4Ami
 	for linux-mediatek@lists.infradead.org;
-	Sat, 27 Jan 2024 23:38:34 +0000
-Received: by mail-oa1-f41.google.com with SMTP id 586e51a60fabf-2142ef4a7feso1161275fac.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 27 Jan 2024 15:38:31 -0800 (PST)
+	Sat, 27 Jan 2024 23:53:18 +0000
+Received: by mail-yw1-x1129.google.com with SMTP id 00721157ae682-5ff828b93f0so17404697b3.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 27 Jan 2024 15:53:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706398651; x=1707003451; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1706399589; x=1707004389; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=jb6WzNOjU69Ryl5VimSWdc7WcJrT6NYdCN35vtE0l8g=;
-        b=v8emnJKwDyNSCDGl824DB6PMutEUPpiOjiAoF1p5UZXeV2KDiFPd5MdFOFjSQNt80q
-         xgy770A/evEQMnARWcqYD8jVJiBuBQgAPzmliyh10i03pqQxjBuH+mFOt23z02IDZPpj
-         waVjZJk2//oMev9LwPpoeHRpXBbY5Ezr+VEmBOttFbBPNUYg8CyRws15nJUSIBFKYgz/
-         bXBU0Wvy2+Oh6L1cpsMDsMzRXXsp45ZitguoOllQKMvj17HY9o3+OmkzyvZIvZvnP1yQ
-         BdUttWPToVvyDmol+ACNFdfkXNMWKn7RxjwISoZC8FuSCfC64YY50dB35tR7i9ZmmDFH
-         2yuw==
+        bh=y29bBOr0W8GWvuErd7/PqliVtdGt3XvPDU1lv0OLRhw=;
+        b=E74YVxJylYT7P3uOja+i8zqt3a6oV0o28LPeAuhAu7/moqJymiVkJH+01aNI9J/Nvi
+         03IpGJ6dpUXKizAW4DswW5EJD9c+IXLRmC1B+3Y/v+mII09Xu5yq9RSm4lFJ7bfDGEz5
+         BjkzJOPn8hVlYdkQEsunUharoryAOEwzkR6pDiwPUrd8ERHFxhoi426plIIoOiR+e75L
+         5r3uzOKMdpuBfhCmOClXTMXV3Ve1oPLP66bWhyuI1lxdVPd4P5cu2KGXyUNLDlWUGyT+
+         EzCsySJ6Eq2Q511a6znXHxxibcS6dvJYb9S9/7vDT9uJhDLF/bO78YgMqCSQ/TXaN7rK
+         9B2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706398651; x=1707003451;
+        d=1e100.net; s=20230601; t=1706399589; x=1707004389;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=jb6WzNOjU69Ryl5VimSWdc7WcJrT6NYdCN35vtE0l8g=;
-        b=qd7pr2YlVEtM4Vcwe70ZvJ8NinvEi+zcFEYPpWUgk2tdAJFVHoGbWXikKDe6TOmnTT
-         lYrdGLrIV8Y5qT3GEb/vSmylEMWBikX+oHwEsl0YpB44Yo21pWCsi1GS9BPyTwkyQFvD
-         PWHsw0cbY2lXHhVrlxNC32AdDxdAnlYVQczwj1Yf8ZcWPsC/l6TYoBmcFl3SBp9A+gD6
-         aPpUc+WKZyQijoTVUb7PvSDxGNZGiLgiwEStFPiBQBTg44Z6mRk2uWKczCfUAk315RgU
-         mXZgzeBy5axfAXiX0HOHGB+8lG4Qyy9+dxNy68eBSQWB9We6omtXqBfLnzbMUou2HhDO
-         loAA==
-X-Gm-Message-State: AOJu0YwpiQwnjfbxs3jEDiZgochawCjsA9nJJYEIwPR7fu641AcMt8FF
-	x9+9uSJhDhupT1l2+Cnpy6KHB1l5v4JsyBchKQQB4CDGFqpXaEve0DAYNUfyl80RN/YJBwEwd6Y
-	s6R7qLWmFNF5fhWgyYR2fjio3QBBD47p7T5ShpA==
-X-Google-Smtp-Source: AGHT+IFs1SEre5NR+L5aDvXgbQuHgUDG6N0Y5iH1sPtUeHn1yOVyVhTtmjBICXXTiujpD+0Wo9kngI/E6d4tsay4770=
-X-Received: by 2002:a05:6358:24a6:b0:176:351:377 with SMTP id
- m38-20020a05635824a600b0017603510377mr1356541rwc.38.1706398650988; Sat, 27
- Jan 2024 15:37:30 -0800 (PST)
+        bh=y29bBOr0W8GWvuErd7/PqliVtdGt3XvPDU1lv0OLRhw=;
+        b=vGPNCikIRzSaUmMnCQBK5hyEevZcOHxvR3kfgHejYtu/Ud+GKvPxxOMpCj7gzZAYHT
+         TV9F6AWftTP6FMWXeozm3mkb/V+SV4S1uxjm3U6a4RUKGdOg+8HAVJgMWL2bIMmbVtZE
+         galGePIE+gDbucwYuFGaNf9+jcKfNJi391D+W2KfNm7pUcyAISJIQlF4CwHYpYHwhZwe
+         uqHYPZxofScARW6JRhS1p1cE2ShXEaLuCd8Wwpclr1sFg+BiCxjzyHJvTq7s2xXjgxBg
+         55p+Gs4dbv/gJ/FCd698Tfdva6nfsHtdQwMxBeE1mgrDhSaOvLCmLXxOnUpkow25Dtly
+         KEAw==
+X-Gm-Message-State: AOJu0YxgiUrnUPHf2371NV18i+T2VmprKJLWa/gN95u3WnHMVugHjOoO
+	uQfhqBD9gEw20rNtakjNcK2PXRBaB3YBm1PJYIKhxud/Z6iA7LNTAQiODyXFvqW1yEOMjA4w+1Q
+	3kt1nHjWEZ76PL7tGc61nKg6VS0wZGW56EmIIMA==
+X-Google-Smtp-Source: AGHT+IEhBRR1+Lt+t5PwX5bLtetfxOwsLRlWvg5X+Vn3cAbutbVfqPerwvTLBdzuw4fwNlv3dgffGIvAL7Z3lkau6gE=
+X-Received: by 2002:a81:b187:0:b0:5ff:4b02:73b9 with SMTP id
+ p129-20020a81b187000000b005ff4b0273b9mr2196680ywh.21.1706399589451; Sat, 27
+ Jan 2024 15:53:09 -0800 (PST)
 MIME-Version: 1.0
-References: <20240111045126.13768-1-rdunlap@infradead.org>
-In-Reply-To: <20240111045126.13768-1-rdunlap@infradead.org>
+References: <20240117124234.3137050-1-jean.thomas@wifirst.fr>
+In-Reply-To: <20240117124234.3137050-1-jean.thomas@wifirst.fr>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Sun, 28 Jan 2024 00:37:20 +0100
-Message-ID: <CACRpkdau1QDDCWviEd_aLqokesFutDeorAbWgVYTW09bA9mdZw@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mt7986: excise kernel-doc warnings
-To: Randy Dunlap <rdunlap@infradead.org>
-Cc: linux-kernel@vger.kernel.org, kernel test robot <lkp@intel.com>, linux-gpio@vger.kernel.org, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Date: Sun, 28 Jan 2024 00:52:58 +0100
+Message-ID: <CACRpkdYFwS=KCmR5UDhz_G_DQ4B21f3JjJLTLCfr+D0Yn1iA=w@mail.gmail.com>
+Subject: Re: [PATCH 1/2] pinctrl: mediatek: mt7981: add additional uart group
+To: Jean Thomas <jean.thomas@wifirst.fr>
+Cc: sean.wang@kernel.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, linux-mediatek@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240127_153833_011062_AA92574F 
-X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-CacheID: sfid-20240127_155317_081254_D186F0E4 
+X-CRM114-Status: UNSURE (   6.81  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,42 +92,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 11, 2024 at 5:51=E2=80=AFAM Randy Dunlap <rdunlap@infradead.org=
+On Wed, Jan 17, 2024 at 1:43=E2=80=AFPM Jean Thomas <jean.thomas@wifirst.fr=
 > wrote:
 
-> Fix kernel-doc warnings for enum (anonymous): the enum values are not
-> documented, so don't indicate that the comment contains kernel-doc
-> notation.
+> Add uart1_3 (pins 26, 27) group to the pinctrl driver for the
+> MediaTek MT7981 SoC.
 >
-> pinctrl-mt7986.c:68: warning: Enum value 'GPIO_BASE' not described in enu=
-m '(anonymous)'
-> pinctrl-mt7986.c:68: warning: Enum value 'IOCFG_RT_BASE' not described in=
- enum '(anonymous)'
-> pinctrl-mt7986.c:68: warning: Enum value 'IOCFG_RB_BASE' not described in=
- enum '(anonymous)'
-> pinctrl-mt7986.c:68: warning: Enum value 'IOCFG_LT_BASE' not described in=
- enum '(anonymous)'
-> pinctrl-mt7986.c:68: warning: Enum value 'IOCFG_LB_BASE' not described in=
- enum '(anonymous)'
-> pinctrl-mt7986.c:68: warning: Enum value 'IOCFG_TR_BASE' not described in=
- enum '(anonymous)'
-> pinctrl-mt7986.c:68: warning: Enum value 'IOCFG_TL_BASE' not described in=
- enum '(anonymous)'
->
-> Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202312110210.x3vxq42A-lkp@i=
-ntel.com/
-> Cc: Linus Walleij <linus.walleij@linaro.org>
-> Cc: linux-gpio@vger.kernel.org
-> Cc: Sean Wang <sean.wang@kernel.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
+> Signed-off-by: Jean Thomas <jean.thomas@wifirst.fr>
 
 Patch applied.
 
-Yours.
+Yours,
 Linus Walleij
 
