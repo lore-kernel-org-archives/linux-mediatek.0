@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CFA8C47DA9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 01:38:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D5E1C47422
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 01:42:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XYytVHxOlurwd5+2vgAlofMMVVyo2Oaj6o0YkShtiUY=; b=IfmlpKdt5CHbNM5/aKloRrsR06
-	v1cvjZjm+H+kmrol9OyeRmyEJ0dCa/x7vj/HHGAFDyh7zP+puS9IDWzCg8wBPHylU1ngKgpGmuD1H
-	Mqy1I6N8wCey6TOkMC+Fbb+4EIjbxn8ZFJ/m1dUvOKZkqwgKqar71XXj+pHjjC53yslLlC0yrA8uD
-	AbCEGDFkDTZNwy+MfhBuT/SbB6+DkrszBsuSL1cQhN9kvYboM292/kxxKflB4ufEF0fz3rIAtrd6/
-	C3N9jAXfXp8Im5W+BECSaZ7BvNTegrl4KNTIMStA/XDleS09WgKmqtwBLEXRXnKq354nZF9+2hEzm
-	9P85NyYQ==;
+	bh=w4asszGwiUMo7LHN03Rxc+ehZmU371TLpgrR3TOTZpw=; b=IAPQOq95z2AT6IRKhoiusEz22r
+	8BxL6Hj0TZ8eyN4c4DdR2hcDyfX0VrSWgxe51yV8bznHxoaCIfynB/O8+umJvdqWXHxyCv7RIcBjz
+	ICb50cSjbSfyKnMfOGjmrD8OXkVOTvzID7SLiENogN5kauyZwsJwB4rREsj29FiiYIkgHSPfkHWqr
+	ilyP4/VVurKih8mpJQ+5WVMWa13ln6fR7DeYw93IlkhgnDKzGIeLU+zzCIqiFg4r0mZgBYmvAFsg2
+	sXCvnF1MYLnBw16iqhgkX4qQnvg1KrLh3jWBVDMONY1XITTsC+hGHige/IU0I7eJ5a92R+HBQp7b9
+	Cwi3+JDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTXed-000000068Ca-3yy7;
-	Sat, 27 Jan 2024 01:38:43 +0000
+	id 1rTXiO-000000069A1-0jnN;
+	Sat, 27 Jan 2024 01:42:36 +0000
 Received: from [50.53.50.0] (helo=[192.168.254.15])
 	by bombadil.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTXeY-000000068Aw-1jDt;
-	Sat, 27 Jan 2024 01:38:38 +0000
-Message-ID: <4131bd36-a6a8-4ec3-b323-b7c4aa487703@infradead.org>
-Date: Fri, 26 Jan 2024 17:38:34 -0800
+	id 1rTXiL-0000000698f-1Znu;
+	Sat, 27 Jan 2024 01:42:33 +0000
+Message-ID: <c2b1e412-f1da-4e71-8ab9-e1a655c966e3@infradead.org>
+Date: Fri, 26 Jan 2024 17:42:32 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/17] media: mediatek: vcodec: Fix kerneldoc warnings
+Subject: Re: [PATCH 02/17] media: videodev2.h: Fix kerneldoc
 Content-Language: en-US
 To: Ricardo Ribalda <ribalda@chromium.org>,
  Tiffany Lin <tiffany.lin@mediatek.com>,
@@ -67,9 +67,9 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev,
  linux-amlogic@lists.infradead.org
 References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
- <20240126-gix-mtk-warnings-v1-1-eed7865fce18@chromium.org>
+ <20240126-gix-mtk-warnings-v1-2-eed7865fce18@chromium.org>
 From: Randy Dunlap <rdunlap@infradead.org>
-In-Reply-To: <20240126-gix-mtk-warnings-v1-1-eed7865fce18@chromium.org>
+In-Reply-To: <20240126-gix-mtk-warnings-v1-2-eed7865fce18@chromium.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -89,45 +89,85 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 1/26/24 15:16, Ricardo Ribalda wrote:
-> These fields seems to be gone:
-> drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c:57: warning: Excess struct member 'wait_key_frame' description in 'vdec_vp8_slice_info'
-> drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c:166: warning: Excess struct member 'mv_joint' description in 'vdec_vp9_slice_counts_map'
+> Named nested unions need their prefix:
+> https://www.kernel.org/doc/html/latest/doc-guide/kernel-doc.html#nested-structs-unions
 > 
 > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
 Reviewed-by: Randy Dunlap <rdunlap@infradead.org>
+Tested-by: Randy Dunlap <rdunlap@infradead.org>
 
 Thanks.
 
 > ---
->  drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c    | 1 -
->  .../media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c    | 1 -
->  2 files changed, 2 deletions(-)
+>  include/uapi/linux/videodev2.h | 32 ++++++++++++++++----------------
+>  1 file changed, 16 insertions(+), 16 deletions(-)
 > 
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
-> index f64b21c07169..f677e499fefa 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
-> @@ -37,7 +37,6 @@
->   * @bs_sz:		bitstream size
->   * @resolution_changed:resolution change flag 1 - changed,  0 - not change
->   * @frame_header_type:	current frame header type
-> - * @wait_key_frame:	wait key frame coming
->   * @crc:		used to check whether hardware's status is right
->   * @reserved:		reserved, currently unused
+> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+> index 68e7ac178cc2..a8015e5e7fa4 100644
+> --- a/include/uapi/linux/videodev2.h
+> +++ b/include/uapi/linux/videodev2.h
+> @@ -1041,13 +1041,13 @@ struct v4l2_requestbuffers {
+>   * struct v4l2_plane - plane info for multi-planar buffers
+>   * @bytesused:		number of bytes occupied by data in the plane (payload)
+>   * @length:		size of this plane (NOT the payload) in bytes
+> - * @mem_offset:		when memory in the associated struct v4l2_buffer is
+> + * @m.mem_offset:	when memory in the associated struct v4l2_buffer is
+>   *			V4L2_MEMORY_MMAP, equals the offset from the start of
+>   *			the device memory for this plane (or is a "cookie" that
+>   *			should be passed to mmap() called on the video node)
+> - * @userptr:		when memory is V4L2_MEMORY_USERPTR, a userspace pointer
+> + * @m.userptr:		when memory is V4L2_MEMORY_USERPTR, a userspace pointer
+>   *			pointing to this plane
+> - * @fd:			when memory is V4L2_MEMORY_DMABUF, a userspace file
+> + * @m.fd:		when memory is V4L2_MEMORY_DMABUF, a userspace file
+>   *			descriptor associated with this plane
+>   * @m:			union of @mem_offset, @userptr and @fd
+>   * @data_offset:	offset in the plane to the start of data; usually 0,
+> @@ -1085,14 +1085,14 @@ struct v4l2_plane {
+>   * @sequence:	sequence count of this frame
+>   * @memory:	enum v4l2_memory; the method, in which the actual video data is
+>   *		passed
+> - * @offset:	for non-multiplanar buffers with memory == V4L2_MEMORY_MMAP;
+> + * @m.offset:	for non-multiplanar buffers with memory == V4L2_MEMORY_MMAP;
+>   *		offset from the start of the device memory for this plane,
+>   *		(or a "cookie" that should be passed to mmap() as offset)
+> - * @userptr:	for non-multiplanar buffers with memory == V4L2_MEMORY_USERPTR;
+> + * @m.userptr:	for non-multiplanar buffers with memory == V4L2_MEMORY_USERPTR;
+>   *		a userspace pointer pointing to this buffer
+> - * @fd:		for non-multiplanar buffers with memory == V4L2_MEMORY_DMABUF;
+> + * @m.fd:		for non-multiplanar buffers with memory == V4L2_MEMORY_DMABUF;
+>   *		a userspace file descriptor associated with this buffer
+> - * @planes:	for multiplanar buffers; userspace pointer to the array of plane
+> + * @m.planes:	for multiplanar buffers; userspace pointer to the array of plane
+>   *		info structs for this buffer
+>   * @m:		union of @offset, @userptr, @planes and @fd
+>   * @length:	size in bytes of the buffer (NOT its payload) for single-plane
+> @@ -2423,15 +2423,15 @@ struct v4l2_meta_format {
+>  
+>  /**
+>   * struct v4l2_format - stream data format
+> - * @type:	enum v4l2_buf_type; type of the data stream
+> - * @pix:	definition of an image format
+> - * @pix_mp:	definition of a multiplanar image format
+> - * @win:	definition of an overlaid image
+> - * @vbi:	raw VBI capture or output parameters
+> - * @sliced:	sliced VBI capture or output parameters
+> - * @raw_data:	placeholder for future extensions and custom formats
+> - * @fmt:	union of @pix, @pix_mp, @win, @vbi, @sliced, @sdr, @meta
+> - *		and @raw_data
+> + * @type:		enum v4l2_buf_type; type of the data stream
+> + * @fmt.pix:		definition of an image format
+> + * @fmt.pix_mp:		definition of a multiplanar image format
+> + * @fmt.win:		definition of an overlaid image
+> + * @fmt.vbi:		raw VBI capture or output parameters
+> + * @fmt.sliced:		sliced VBI capture or output parameters
+> + * @fmt.raw_data:	placeholder for future extensions and custom formats
+> + * @fmt:		union of @pix, @pix_mp, @win, @vbi, @sliced, @sdr,
+> + *			@meta and @raw_data
 >   */
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-> index 69d37b93bd35..cf48d09b78d7 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-> @@ -141,7 +141,6 @@ struct vdec_vp9_slice_frame_counts {
->   * @skip:	skip counts.
->   * @y_mode:	Y prediction mode counts.
->   * @filter:	interpolation filter counts.
-> - * @mv_joint:	motion vector joint counts.
->   * @sign:	motion vector sign counts.
->   * @classes:	motion vector class counts.
->   * @class0:	motion vector class0 bit counts.
+>  struct v4l2_format {
+>  	__u32	 type;
 > 
 
 -- 
