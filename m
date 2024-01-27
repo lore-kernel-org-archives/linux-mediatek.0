@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17922C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 22:16:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12DE3C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jan 2024 22:17:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QVk+wHOOHOwLPnfHS0Lt1FiDB1iuU9eTerDUMC8rmMk=; b=BkgDU6TyOYzklQhZJtRmFTC8YL
-	vKh6GdbqOs9KZb/LMjoq3EoHOKLHi0oTzkV2uDvfvQWK9S1lVyhGfZdhU8fepBAPTzI/O4IIzo36J
-	BdIFRW5AVYCq1zKuOZo5RucymLeSW7fTQ17UE3hqe6ERI0MSqD2mvoNuTkoNo5i5OT7uQMFHXJDlM
-	3yGK/kteE5eWWU4+jfSl/OzXAjGtmNjHsHVxyK/vVQziVAVEZaxb5jKyTtPHvrfMy6u+y4tuXP6jK
-	LQxlAZLe9uFw7tY4Tn3cahifPyZqlQjmNkMt3on3E1o6oatmzDAYwRJ2DMyKiL8OMRD/xwHs6NqcR
-	B7LkEKNw==;
+	bh=THYMKkTcMXpUfk1i5i9o98XbXUsf19talB62dQuJhd8=; b=WRDXyye4kLSSdhq3NhqQnecAYQ
+	p/3hk/BV4e05NfTpvGl98nYwrQq3FC6c33ASu2YZYPGsCDioXYAk2yUqBYkpWxEs2rtaT+wy1RIGo
+	yiaQgUzGs+2IIAjz0JcyrhIfMdhbgr/S6c+pyqQOGMR8DejRNHGUNFKy+GpReB1KE3lQ1S4VPjH/5
+	XH5JQVtK7cMpsvrNubNEOeHMFkaEKW/ux3j63/k1qe8iylya34hj5mqApKlnutAAVa7KTQpQLx7VC
+	V8GfCLRuYvaSV3x8v5uGLHzS8cbz4s43I/mxhPYd3QvzvgNN6ZUQOPk2gK2SKGcLowY2IakNYsALL
+	6LqWEoBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTqyP-00000008Hqo-3D3p;
-	Sat, 27 Jan 2024 22:16:25 +0000
+	id 1rTqzh-00000008I36-39Dg;
+	Sat, 27 Jan 2024 22:17:45 +0000
 Received: from [50.53.50.0] (helo=[192.168.254.15])
 	by bombadil.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTqyN-00000008Hpp-1WRk;
-	Sat, 27 Jan 2024 22:16:23 +0000
-Message-ID: <4b3f5de5-4039-4b95-880a-70635f2e3112@infradead.org>
-Date: Sat, 27 Jan 2024 14:16:21 -0800
+	id 1rTqzf-00000008Hpp-2Umt;
+	Sat, 27 Jan 2024 22:17:43 +0000
+Message-ID: <9790f78f-8616-45e8-becb-7afc10841e80@infradead.org>
+Date: Sat, 27 Jan 2024 14:17:42 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 12/17] media: samsung: exynos4-is: Fix kerneldoc
+Subject: Re: [PATCH 13/17] media: samsung: s5p-mfc: Fix kerneldoc
 Content-Language: en-US
 To: Ricardo Ribalda <ribalda@chromium.org>,
  Tiffany Lin <tiffany.lin@mediatek.com>,
@@ -67,9 +67,9 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev,
  linux-amlogic@lists.infradead.org
 References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
- <20240126-gix-mtk-warnings-v1-12-eed7865fce18@chromium.org>
+ <20240126-gix-mtk-warnings-v1-13-eed7865fce18@chromium.org>
 From: Randy Dunlap <rdunlap@infradead.org>
-In-Reply-To: <20240126-gix-mtk-warnings-v1-12-eed7865fce18@chromium.org>
+In-Reply-To: <20240126-gix-mtk-warnings-v1-13-eed7865fce18@chromium.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -97,30 +97,21 @@ Reviewed-by: Randy Dunlap <rdunlap@infradead.org>
 Thanks.
 
 > ---
->  drivers/media/platform/samsung/exynos4-is/fimc-lite.h | 3 ---
->  1 file changed, 3 deletions(-)
+>  drivers/media/platform/samsung/s5p-mfc/s5p_mfc_common.h | 1 -
+>  1 file changed, 1 deletion(-)
 > 
-> diff --git a/drivers/media/platform/samsung/exynos4-is/fimc-lite.h b/drivers/media/platform/samsung/exynos4-is/fimc-lite.h
-> index ddf29e0b5b1c..2d96fb00a5c6 100644
-> --- a/drivers/media/platform/samsung/exynos4-is/fimc-lite.h
-> +++ b/drivers/media/platform/samsung/exynos4-is/fimc-lite.h
-> @@ -117,8 +117,6 @@ struct flite_buffer {
->   * @ctrl_handler: v4l2 control handler
->   * @test_pattern: test pattern controls
->   * @index: FIMC-LITE platform device index
-> - * @pipeline: video capture pipeline data structure
-> - * @pipeline_ops: media pipeline ops for the video node driver
->   * @slock: spinlock protecting this data structure and the hw registers
->   * @lock: mutex serializing video device and the subdev operations
->   * @clock: FIMC-LITE gate clock
-> @@ -134,7 +132,6 @@ struct flite_buffer {
->   * @active_buf_q: the queue head of buffers scheduled in hardware
->   * @vb_queue: vb2 buffers queue
->   * @buf_index: helps to keep track of the DMA start address register index
-> - * @active_buf_count: number of video buffers scheduled in hardware
->   * @frame_count: the captured frames counter
->   * @reqbufs_count: the number of buffers requested with REQBUFS ioctl
->   * @events: event info
+> diff --git a/drivers/media/platform/samsung/s5p-mfc/s5p_mfc_common.h b/drivers/media/platform/samsung/s5p-mfc/s5p_mfc_common.h
+> index 59450b324f7d..7e7e7b695b53 100644
+> --- a/drivers/media/platform/samsung/s5p-mfc/s5p_mfc_common.h
+> +++ b/drivers/media/platform/samsung/s5p-mfc/s5p_mfc_common.h
+> @@ -612,7 +612,6 @@ struct s5p_mfc_codec_ops {
+>   * @chroma_dpb_size:	dpb buffer size for chroma
+>   * @me_buffer_size:	size of the motion estimation buffer
+>   * @tmv_buffer_size:	size of temporal predictor motion vector buffer
+> - * @frame_type:		used to force the type of the next encoded frame
+>   * @ref_queue:		list of the reference buffers for encoding
+>   * @force_frame_type:	encoder's frame type forcing control
+>   * @ref_queue_cnt:	number of the buffers in the reference list
 > 
 
 -- 
