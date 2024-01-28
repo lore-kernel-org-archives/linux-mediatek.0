@@ -4,87 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13699C47DDB
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jan 2024 02:12:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D1F7C47DDF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jan 2024 08:38:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j3C7WQBZgNLZ3JFZZb+3FA3visUd8j+r0zGWZyg3Ybg=; b=Lnyemfoat+zXHyeTgg/A7LOW35
-	SgSV7UIwyEa4HdBFAMv+shymKE9+uizwqUUIdupEygvJNxcXuHd66JIQzo/S73t8lxb1C91gdZDIo
-	ytVhJK1NkXfHg/v3vDeFsoENEIeTFA9CupOuTVgM45cn7SFQGNzS0UU/8EdS7UlPzX80lG4m9PK6l
-	Cn3SRrn+EXkNcUQZxZmWzvmKeX7PsU0cY7OhE+UErAvYI6r8CA/RFfLVNrFd9Yv6s+cqX6y/byN7a
-	KNGjHZoPCfJ9MvAI2PUG5N3QKiIznBjTkueGXFRPzfLz4XHgUabpnIJC/BNl13rlq4fcnbyb1OIMq
-	/D9f9nXw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=RvZ5Io0RuJBaQqGXuTB/cV5lrPQkLLFNN0oKaea8T94=; b=sCSMv0bx81KV5Nz3oWWdziqSjv
+	XmGgxyW17f7Q5E8+sMPzarxZeEmIJbE6JrHSIk8VXEZr6pVDv+qnRRZWCRoKwl/13wQ8ue9uBNTfe
+	tTYQvNx+Yi02DgUtXtttpmoAprn0RXo5UQdZIhkOI0q+PtjRWeJeYZ4dermPEASrJ+pKv5PmteCED
+	96i2PA7g6Iw0vvalaGp0EGYvM0MnOus97JPGQLoSMkAOYdMVVBGYjDhCO8JRSmB775rmbRISohr21
+	d4OjwmKak0JTPZ0jtapLFNq0PQQi3BcV1YbZ115fIzYi4DKpHCCrIcUpk/oOAnlIbnYFwtx9z1QQ5
+	PGoMSEEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTuf0-00000008ZTV-27eW;
-	Sun, 28 Jan 2024 02:12:38 +0000
-Received: from mail-qt1-x82c.google.com ([2607:f8b0:4864:20::82c])
+	id 1rU0gN-000000094X7-0YRN;
+	Sun, 28 Jan 2024 08:38:27 +0000
+Received: from smtp-26.smtpout.orange.fr ([80.12.242.26] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTuen-00000008ZNr-2g8j
+	id 1rU0gK-000000094WD-0MQ0
 	for linux-mediatek@lists.infradead.org;
-	Sun, 28 Jan 2024 02:12:27 +0000
-Received: by mail-qt1-x82c.google.com with SMTP id d75a77b69052e-42a8be32041so11059911cf.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 27 Jan 2024 18:12:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1706407945; x=1707012745; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=j3C7WQBZgNLZ3JFZZb+3FA3visUd8j+r0zGWZyg3Ybg=;
-        b=f//2QNbxvezrS9cvKJBN2G3vCcvW/rCMO30F2ktXn3im7NTwKnuqSOJO6t+XokBwNM
-         tqyHk0r0GvE6gjNxqhN3R/095NFVLngOQu7rM6qYRm7oiEWJGUqyxE8hagFwtJyhRW1L
-         Bkgef5kya0hdtqZLz/F6hOaA6tG2ZdsAUNQsA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706407945; x=1707012745;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=j3C7WQBZgNLZ3JFZZb+3FA3visUd8j+r0zGWZyg3Ybg=;
-        b=Ez/18kbtvEezW0cOdwFkMwPvzxckf6iibGTu623AmEXXdg3mx2E0DBUTHJVQnmuxGA
-         sBz2tPq0X2JhoEyik+DLXGj1b1GuVvYk1XwiNETy+gSmHnzglO1yT2w8OcP6Dxq3/h6T
-         0opHhkPk8UDiJ97kpRQid+PVlh7aMzo23jQ7R2UMZjEyl2M/MO2DLNtHk5nB2GZB7H3U
-         j2zUBAUi51TvSlsSxUQ88Qsbip77jM3VAvda5DcTrReaodFbmJ78lHG1eBPNNU2c8L/a
-         dDUgYZnFEXwhkSMG12y+kUylIIyg6w9jnK0IbkIIVjJNMz39O7mrU2rEw7uOb3VeP/s4
-         QFlw==
-X-Gm-Message-State: AOJu0YynpJMVxGTWsRwGwH9m+CiBqBfTU0nDTvZ/tolS/9OiN13hzyJ7
-	syeS6TRAxOZ5zAKT2EzWKLvhrBaGdjByHOGkvunnTm+7fRmtA6Ky7dFMxqXWpQ==
-X-Google-Smtp-Source: AGHT+IFQh4FaJ+1XI2IdQ76ww3xRTWTulNHZ3WBhfnSPiasZomtas55CswgU5xylWxHtrHsOrzM/jg==
-X-Received: by 2002:ac8:4e96:0:b0:42a:87ff:4b0a with SMTP id 22-20020ac84e96000000b0042a87ff4b0amr4978445qtp.99.1706407944870;
-        Sat, 27 Jan 2024 18:12:24 -0800 (PST)
-Received: from denia.c.googlers.com (240.157.150.34.bc.googleusercontent.com. [34.150.157.240])
-        by smtp.gmail.com with ESMTPSA id ka23-20020a05622a441700b0042a98bf0117sm568061qtb.78.2024.01.27.18.12.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 27 Jan 2024 18:12:24 -0800 (PST)
-From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Sun, 28 Jan 2024 02:12:22 +0000
-Subject: [PATCH 3/3] media: mediatek: vcodedc: Fix
- Wcast-function-type-strict warnings
+	Sun, 28 Jan 2024 08:38:25 +0000
+Received: from fedora.home ([92.140.202.140])
+	by smtp.orange.fr with ESMTPA
+	id U0gBr3CH8wnxGU0gCrvtYv; Sun, 28 Jan 2024 09:38:20 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1706431100;
+	bh=RvZ5Io0RuJBaQqGXuTB/cV5lrPQkLLFNN0oKaea8T94=;
+	h=From:To:Cc:Subject:Date;
+	b=KkY1L1xm+CslAfCnBetSSorAkB+OaeXBaDHr4YV0PRu1JZB5Sy18yYAWI0OuvejoE
+	 3yheer7k0bQlVvFFjbEDuXIbmoRotWyrxMNWW7Ec601FRIW8wTVOdGABkn69BH9iCh
+	 7HyNoeovoBD7ul9yGBW3W9Tp2IRShtHCquEJOZNo4M/AiKlyOol1dh8MRF+wHc32Ib
+	 YTc2anfLqXfHzeU3Kr38LtT2sWYHe1fJPDAL04XrgyX6GKl1mAzSIKCN6RkfcTrmST
+	 fePLWsovz0bloH1y8a84RQHIPdcyjTj7Bs4/pGsc8bMJNvvsKQgbWOKqpy4q23lwnm
+	 iTzRs1HT1NB+g==
+X-ME-Helo: fedora.home
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Sun, 28 Jan 2024 09:38:20 +0100
+X-ME-IP: 92.140.202.140
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Lukasz Luba <lukasz.luba@arm.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Balsam CHIHI <bchihi@baylibre.com>
+Cc: linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
+	linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] thermal/drivers/mediatek/lvts_thermal: Fix a memory leak in an error handling path
+Date: Sun, 28 Jan 2024 09:38:10 +0100
+Message-ID: <481d345233862d58c3c305855a93d0dbc2bbae7e.1706431063.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240128-fix-clang-warnings-v1-3-1d946013a421@chromium.org>
-References: <20240128-fix-clang-warnings-v1-0-1d946013a421@chromium.org>
-In-Reply-To: <20240128-fix-clang-warnings-v1-0-1d946013a421@chromium.org>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Nathan Chancellor <nathan@kernel.org>, 
- Nick Desaulniers <ndesaulniers@google.com>, 
- Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, 
- Mike Isely <isely@pobox.com>, Tiffany Lin <tiffany.lin@mediatek.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Yunfei Dong <yunfei.dong@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
- llvm@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Ricardo Ribalda <ribalda@chromium.org>
-X-Mailer: b4 0.12.3
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240127_181225_733473_2B017040 
-X-CRM114-Status: GOOD (  12.38  )
+X-CRM114-CacheID: sfid-20240128_003824_285923_682A4AB9 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,34 +82,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Building with LLVM=1 throws the following warning:
-drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c:38:32: warning: cast from 'mtk_vcodec_ipi_handler' (aka 'void (*)(void *, unsigned int, void *)') to 'ipi_handler_t' (aka 'void (*)(const void *, unsigned int, void *)') converts to incompatible function type [-Wcast-function-type-strict]
+If devm_krealloc() fails, then 'efuse' is leaking.
+So free it to avoid a leak.
 
-Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 ---
- drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/thermal/mediatek/lvts_thermal.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-index 9f6e4b59455d..781a0359afdc 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-@@ -33,9 +33,11 @@ static int mtk_vcodec_vpu_set_ipi_register(struct mtk_vcodec_fw *fw, int id,
- 	 * The handler we receive takes a void * as its first argument. We
- 	 * cannot change this because it needs to be passed down to the rproc
- 	 * subsystem when SCP is used. VPU takes a const argument, which is
--	 * more constrained, so the conversion below is safe.
-+	 * more constrained, so the conversion below is safe. We use the void
-+	 * casting, to convince clang with -Wcast-function-type-sctrict that
-+	 * this is safe.
- 	 */
--	ipi_handler_t handler_const = (ipi_handler_t)handler;
-+	ipi_handler_t handler_const = (ipi_handler_t)((void *)handler);
+diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+index 98d9c80bd4c6..fd4bd650c77a 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.c
++++ b/drivers/thermal/mediatek/lvts_thermal.c
+@@ -719,8 +719,10 @@ static int lvts_calibration_read(struct device *dev, struct lvts_domain *lvts_td
  
- 	return vpu_ipi_register(fw->pdev, id, handler_const, name, priv);
- }
-
+ 		lvts_td->calib = devm_krealloc(dev, lvts_td->calib,
+ 					       lvts_td->calib_len + len, GFP_KERNEL);
+-		if (!lvts_td->calib)
++		if (!lvts_td->calib) {
++			kfree(efuse);
+ 			return -ENOMEM;
++		}
+ 
+ 		memcpy(lvts_td->calib + lvts_td->calib_len, efuse, len);
+ 
 -- 
-2.43.0.429.g432eaa2c6b-goog
+2.43.0
 
 
