@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA4A9C47DA9
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jan 2024 16:13:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D21DC47DA9
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jan 2024 16:15:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UPOWE6dN0tbw8h+v0k26X/Yxsvihhp0Jnrvh95PLbis=; b=pCXhKC0ZTfPSTc
-	oVTpimpQec1mF8zmhpYpYa4e0jGzjf7BqGNNuNyPBSayuCsvFcj+t0dd0wdIJizTWiBFQc8HbV71/
-	RlNveNB211iWW8HFkwc4kMZUSAdLnwmP+WyrNktjFn3sEuu1VtCxtDGIaNdk/5yxzKGHvEx+4TvUy
-	qWmzqGmKkVfafdPV30FzAEGimkaSnV89UvUpmU1G2n07DBcO+RpSyfkSPPXqamNh9t0TDOA8n547y
-	ozmtht7vuGPOIFeM9c8skBP8ZxxbQAVIkNYHr8ivZ1syhGFe+OIMnU178ZkiJqS1pX6VgdyXxKb9y
-	6MgwEtH/DaGLNpmpmFNg==;
+	List-Owner; bh=sx90af6B8DuDpDTNrby1WTFnL3cUcGe/cR3sKgS9ulw=; b=yO19lCwilbqKga
+	Ny/Q2G1Nl+NEz/NWottsxfK5G4nNZ5SHYIxQlLbn3uZSDL0rV3Y3XxK7qIQPxHaKu5frhiEjthcXr
+	UOISdLeGFCCtAzYCPl+s3v9bFw19WOd/DD5Unqx+UI4jXar/yOrjQZizA25C27NPk5yU4He3TLdnT
+	z4PYh3LmG+wEXBB05mVWg7lA6vbVeZz5pzuS3ueBGtVy56jY08kyiIm4Ga2oOD3a0uR0a1xGUihYz
+	U904nCWizGhSLPqIgB+9sOp/QN0IrhKCaawizIWCW7X7ThMn+enEURs3p68ILBj3aIkGYmwWxSkyj
+	a9RGfQSGBIcYyjjsRqcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rU7mv-00000009q2G-1haM;
-	Sun, 28 Jan 2024 16:13:41 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rU7oU-00000009qz7-3XF9;
+	Sun, 28 Jan 2024 16:15:18 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rU7mr-00000009pzO-2Qwt;
-	Sun, 28 Jan 2024 16:13:39 +0000
+	id 1rU7oQ-00000009qvL-2caJ;
+	Sun, 28 Jan 2024 16:15:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E82EBCE0C6E;
-	Sun, 28 Jan 2024 16:13:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5DF0C433F1;
-	Sun, 28 Jan 2024 16:13:33 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id A376361B91;
+	Sun, 28 Jan 2024 16:14:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 11DEFC433F1;
+	Sun, 28 Jan 2024 16:14:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1706458415;
-	bh=51cvES8B4cwsZRZH2wNWrxlvRklkeZm6la8scxzeXso=;
+	s=k20201202; t=1706458483;
+	bh=hTRedzamfT7vm1GzvHYsLVvCpmoG43xST20/Q2nAqJA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=T5uSjTWUV6dV6dRjCyBkUn9DNSdKHe6dgLyE1sBg/wkrZfaj2TiZfHIqjNI1+6qMm
-	 8DPgHXLzRZP2aB3bI9T6YVMR/s+sKj2U8GkgtShKybJaofnsnIqQc97mQ68QEbHNeG
-	 01+4BkN8CbQ/myWQ8gn4fXSUr7ZFFv4zrZRcG4/SlvG35szco//AYaZ7MMU9fb38Js
-	 skD9BBptBJXXty7vnS4vX5obKWTPF8X6SChGphd4rvVficBKhP2qg5b1Hh7EYYWip0
-	 uPoc4BoI9Vk8ohfOFtUVb8Jprz7tTNxn43QI9hy/8uIZkAxioFekzzuiHf4W6GQSSx
-	 PTYhL4o8WB4uQ==
+	b=StZIe2FKjBqXTL6gYgCPmim4w0duhKxwsKWlR6Q8AEfvBSn8cGGt13613gNJMnVWU
+	 OfvBxzmemZwlswlUvXtDRfDsHts3OYi38hsjCmw1sJo0cuGJs/ttCX2psp0INbLEaT
+	 +0aqSohTecP7YwgEgEUmoiJ7DRvoXW14xelYSyGmMp/chWDKm+4lQh3hRYSCAtvlRA
+	 1EJ3YtSxmPS6Ca1oTQpXiQQTe+PhouXEY3OITxHFALTnQkIVt5DU2XUF5zALB2mqyr
+	 cffDVeWKDDW82xpYKiQvOr12j8N9Hz43RVrpqwOGDOAyG7qNu+aoFyHRk24O+iokTZ
+	 Qf7GNHhNP7LHg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 6.6 11/31] spmi: mediatek: Fix UAF on device remove
-Date: Sun, 28 Jan 2024 11:12:41 -0500
-Message-ID: <20240128161315.201999-11-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 10/27] spmi: mediatek: Fix UAF on device remove
+Date: Sun, 28 Jan 2024 11:13:55 -0500
+Message-ID: <20240128161424.203600-10-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240128161315.201999-1-sashal@kernel.org>
-References: <20240128161315.201999-1-sashal@kernel.org>
+In-Reply-To: <20240128161424.203600-1-sashal@kernel.org>
+References: <20240128161424.203600-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.14
+X-stable-base: Linux 6.1.75
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240128_081338_001684_B1D95AE4 
-X-CRM114-Status: GOOD (  13.35  )
+X-CRM114-CacheID: sfid-20240128_081514_803691_B5EA0FF4 
+X-CRM114-Status: GOOD (  13.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,7 +105,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/spmi/spmi-mtk-pmif.c b/drivers/spmi/spmi-mtk-pmif.c
-index b3c991e1ea40..74b73f9bc222 100644
+index ad511f2c3324..739ad0cbd3bb 100644
 --- a/drivers/spmi/spmi-mtk-pmif.c
 +++ b/drivers/spmi/spmi-mtk-pmif.c
 @@ -465,7 +465,7 @@ static int mtk_spmi_probe(struct platform_device *pdev)
@@ -135,14 +135,14 @@ index b3c991e1ea40..74b73f9bc222 100644
  err_put_ctrl:
  	spmi_controller_put(ctrl);
  	return err;
-@@ -509,6 +511,7 @@ static void mtk_spmi_remove(struct platform_device *pdev)
+@@ -509,6 +511,7 @@ static int mtk_spmi_remove(struct platform_device *pdev)
  	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
  
  	clk_bulk_disable_unprepare(arb->nclks, arb->clks);
 +	clk_bulk_put(arb->nclks, arb->clks);
  	spmi_controller_remove(ctrl);
  	spmi_controller_put(ctrl);
- }
+ 	return 0;
 -- 
 2.43.0
 
