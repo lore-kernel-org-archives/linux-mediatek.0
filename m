@@ -4,54 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40642C47258
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jan 2024 11:01:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99771C47258
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jan 2024 16:12:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:
-	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KC5P7t4gKrTR0YzDyDWzKYwIv/MVNwJXRJM7IN60R1U=; b=lyk3pp/1DJFgrqMJWNJ4SwrbIR
-	iR9OEj2RElc3/vAVC4hxgPDPECOHE3/i9OqfvO83a9lPOfD9kDRXdwBFyB5PXd/WLzckTE1LUezHh
-	e9QE/0ylgI+CgQBWDg7M7ZI+a8wx8gs+mPCXlLamNDnpr8+RI1BT+OovWr9jar3qwKua4D45+FxeS
-	l5COqpHaiCAWt5z+ibuiibpINsn+RwngODc9frFF2EuQ4ZT+gTS5dopZnc8YsAToVH6TlMXu/MVKR
-	UCO8v9mV1YovVn98HaoxQ4WCIczcNssMvW4uvtkJO+KjtIoT+ReFJo+1TRwR7EpVh7/2r2paaWMMz
-	wQ9XvJYQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UPOWE6dN0tbw8h+v0k26X/Yxsvihhp0Jnrvh95PLbis=; b=kpLAsBdBItza/q
+	FztW8oSCkDEfrzX4nlt54RRHCsxNAsUTpJGOw23HB39JP5nDvtqpXCrbhX1lhqA8qGVWLej4827SJ
+	CnzwxOlKhR1iRNeel9hTRxcc1MKhWa4Xeo1sc86qJ8vfdB2xA8TMra39l7Ta7fnVnW3JXAt5yiPbi
+	yz7Wd3+9T1GKsQ6DHfEVkVNby8wzuyaNyGbhNs50rnj+nmyrnaRAZXZYCQhiimmUrqYF15V06s1pj
+	AS6Qe1vcBgfZHKETgtbHlwKUtBoF/IilGrbn5WoBE2mWV2wOVF2YuuCZ4g4Vw2P2Ecay4XX1THmsK
+	YFyVmUPFt5hPXN7xKgTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rU2um-00000009H9V-14Lj;
-	Sun, 28 Jan 2024 11:01:28 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1rU7lH-00000009pL7-0X6j;
+	Sun, 28 Jan 2024 16:11:59 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rU2uh-00000009H7Z-3noB;
-	Sun, 28 Jan 2024 11:01:25 +0000
-Received: from pendragon.ideasonboard.com (aztw-30-b2-v4wan-166917-cust845.vm26.cable.virginm.net [82.37.23.78])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 0639A3D9;
-	Sun, 28 Jan 2024 11:59:58 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1706439599;
-	bh=5srCU8mALld93XXZWkuO9wczxnN7Mp+AiQKKleufIJY=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=RkhbdvRHlz1v8jg4VujoVEvuFFQwER/Of6VU8hgYvGxSJ6sauMOpigUM9jwIZggbM
-	 ovsTDbzG216rVaHmdrHBTfja6Y/1kngp8TZl25L/sIL9hjrprl+/lEEC7ofAXjaoqi
-	 ogP2fskaRCqFSgwLOtdxTIoWzpGtryil4ewfj2mk=
-Content-Type: text/plain; charset="utf-8"
+	id 1rU7lC-00000009pIK-1FiH;
+	Sun, 28 Jan 2024 16:11:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A00B760B07;
+	Sun, 28 Jan 2024 16:11:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AC0DC43399;
+	Sun, 28 Jan 2024 16:11:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1706458313;
+	bh=51cvES8B4cwsZRZH2wNWrxlvRklkeZm6la8scxzeXso=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=tMoeY4NGzjEsGE5qX5o9Sr+1z6sFZ9ZCk82bqeSIz9PVS16ild8MvbfWqht5ruV3+
+	 +4OrJMd1EMGO3HZMxUM0EoXbTBmSz8Ixzg/Yh9PHVC+bArdbsgEBp7Jdbu1jTzM++v
+	 lR4MJ71OVrKKoDzVTZZqa6DBUxbiHTfN1IyvoRujQMpao5TTkr0468sfgg3G1GUbgV
+	 CVl+olOnLce0Ff4d34paEj7rKDOSZGYhvUy1CdYUurV02czUrrV1RDIGV6M5i/rxIU
+	 bH6TKyJCaZ6i/P3uOqRy6TD3bWfuCOXOayCDFUut8U0Lnwt3p+F7BieSSxIM/tZoXV
+	 /Rt2HaitZwx0g==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 6.7 12/39] spmi: mediatek: Fix UAF on device remove
+Date: Sun, 28 Jan 2024 11:10:32 -0500
+Message-ID: <20240128161130.200783-12-sashal@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240128161130.200783-1-sashal@kernel.org>
+References: <20240128161130.200783-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20240126-gix-mtk-warnings-v1-7-eed7865fce18@chromium.org>
-References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org> <20240126-gix-mtk-warnings-v1-7-eed7865fce18@chromium.org>
-Subject: Re: [PATCH 07/17] media: i2c: adv748: Fix kerneldoc
-From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev, linux-amlogic@lists.infradead.org, Ricardo Ribalda <ribalda@chromium.org>
-To: Alim Akhtar <alim.akhtar@samsung.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Andrzej Hajda <andrzej.hajda@intel.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Bin Liu <bin.liu@mediatek.com>, Bingbu Cao <bingbu.cao@intel.com>, Bjorn Andersson <andersson@kernel.org>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Hans Verkuil <hverkuil@xs4all.nl>, Jerome Brunet <jbrunet@baylibre.com>, Kevin Hilman <khilman@baylibre.com>, Konrad Dybcio <konrad.dybcio@linaro.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, Philipp Zab
- el <p.zabel@pengutronix.de>, Ricardo Ribalda <ribalda@chromium.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Stanimir Varbanov <stanimir.k.varbanov@gmail.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Tianshu Qiu <tian.shu.qiu@intel.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Vikash Garodia <quic_vgarodia@quicinc.com>, Yunfei Dong <yunfei.dong@mediatek.com>
-Date: Sun, 28 Jan 2024 11:01:13 +0000
-Message-ID: <170643967334.1879520.13311953581412781310@ping.linuxembedded.co.uk>
-User-Agent: alot/0.10
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.7.2
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240128_030124_108082_B0DB2B63 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20240128_081154_483496_7742099C 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,40 +69,81 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Sasha Levin <sashal@kernel.org>, Yu-Che Cheng <giver@chromium.org>, Stephen Boyd <sboyd@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wenst@chromium.org>, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Ricardo Ribalda (2024-01-26 23:16:06)
-> The field is gone, remove the documentation.
+From: Yu-Che Cheng <giver@chromium.org>
 
-Looking at 3e89586a64df ("media: i2c: adv748x: add adv748x driver")
-confims it was never added. Must have been an old leftover when I
-upstreamed.
+[ Upstream commit e821d50ab5b956ed0effa49faaf29912fd4106d9 ]
 
-Thanks for the fix.
+The pmif driver data that contains the clocks is allocated along with
+spmi_controller.
+On device remove, spmi_controller will be freed first, and then devres
+, including the clocks, will be cleanup.
+This leads to UAF because putting the clocks will access the clocks in
+the pmif driver data, which is already freed along with spmi_controller.
 
-Reviewed-by: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
+This can be reproduced by enabling DEBUG_TEST_DRIVER_REMOVE and
+building the kernel with KASAN.
 
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> ---
->  drivers/media/i2c/adv748x/adv748x.h | 1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/drivers/media/i2c/adv748x/adv748x.h b/drivers/media/i2c/adv7=
-48x/adv748x.h
-> index 6f90f78f58cf..d2b5e722e997 100644
-> --- a/drivers/media/i2c/adv748x/adv748x.h
-> +++ b/drivers/media/i2c/adv748x/adv748x.h
-> @@ -173,7 +173,6 @@ struct adv748x_afe {
->   *
->   * @endpoints:         parsed device node endpoints for each port
->   *
-> - * @i2c_addresses:     I2C Page addresses
->   * @i2c_clients:       I2C clients for the page accesses
->   * @regmap:            regmap configuration pages.
->   *
->=20
-> --=20
-> 2.43.0.429.g432eaa2c6b-goog
->
+Fix the UAF issue by using unmanaged clk_bulk_get() and putting the
+clocks before freeing spmi_controller.
+
+Reported-by: Fei Shao <fshao@chromium.org>
+Signed-off-by: Yu-Che Cheng <giver@chromium.org>
+Link: https://lore.kernel.org/r/20230717173934.1.If004a6e055a189c7f2d0724fa814422c26789839@changeid
+Tested-by: Fei Shao <fshao@chromium.org>
+Reviewed-by: Fei Shao <fshao@chromium.org>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: Stephen Boyd <sboyd@kernel.org>
+Link: https://lore.kernel.org/r/20231206231733.4031901-3-sboyd@kernel.org
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/spmi/spmi-mtk-pmif.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/spmi/spmi-mtk-pmif.c b/drivers/spmi/spmi-mtk-pmif.c
+index b3c991e1ea40..74b73f9bc222 100644
+--- a/drivers/spmi/spmi-mtk-pmif.c
++++ b/drivers/spmi/spmi-mtk-pmif.c
+@@ -465,7 +465,7 @@ static int mtk_spmi_probe(struct platform_device *pdev)
+ 	for (i = 0; i < arb->nclks; i++)
+ 		arb->clks[i].id = pmif_clock_names[i];
+ 
+-	err = devm_clk_bulk_get(&pdev->dev, arb->nclks, arb->clks);
++	err = clk_bulk_get(&pdev->dev, arb->nclks, arb->clks);
+ 	if (err) {
+ 		dev_err(&pdev->dev, "Failed to get clocks: %d\n", err);
+ 		goto err_put_ctrl;
+@@ -474,7 +474,7 @@ static int mtk_spmi_probe(struct platform_device *pdev)
+ 	err = clk_bulk_prepare_enable(arb->nclks, arb->clks);
+ 	if (err) {
+ 		dev_err(&pdev->dev, "Failed to enable clocks: %d\n", err);
+-		goto err_put_ctrl;
++		goto err_put_clks;
+ 	}
+ 
+ 	ctrl->cmd = pmif_arb_cmd;
+@@ -498,6 +498,8 @@ static int mtk_spmi_probe(struct platform_device *pdev)
+ 
+ err_domain_remove:
+ 	clk_bulk_disable_unprepare(arb->nclks, arb->clks);
++err_put_clks:
++	clk_bulk_put(arb->nclks, arb->clks);
+ err_put_ctrl:
+ 	spmi_controller_put(ctrl);
+ 	return err;
+@@ -509,6 +511,7 @@ static void mtk_spmi_remove(struct platform_device *pdev)
+ 	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
+ 
+ 	clk_bulk_disable_unprepare(arb->nclks, arb->clks);
++	clk_bulk_put(arb->nclks, arb->clks);
+ 	spmi_controller_remove(ctrl);
+ 	spmi_controller_put(ctrl);
+ }
+-- 
+2.43.0
+
 
