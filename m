@@ -4,74 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A75BC47258
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jan 2024 09:24:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40642C47258
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jan 2024 11:01:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S63lzU5HWOeJ6CqMTZOe+jOUOTYU9dSOZ4hmwj1duZM=; b=NntoTBg4YCAkBD1/HDRiuaAJHx
-	9m19s0ewxmdHGEpxBELciYoHcb2k1ttJof5sbkzpQMDIhEwcAYfN5RlE8RVQ8XFd7HZXJvv1+Wav6
-	1ho9bJYxBaT0jrNJUr5107Xuclq47LYQugH9GvYfJiy7pRFTTPvi2URQ91rMQcz7n2dCZIZlBaIHa
-	U7ktLUPKwKVGy+eMqaJJd8ygqeS4kkYTC11s6yoElFyArRBU47zo+A9G+gB74dklbNyoqFRU6+yz4
-	LRs21iAa93MDx2ga3X4r378T1+uq6TAJHeCKjB6u/M1DmN5OZSA86YNVHaui59YGbuLURWIWh0mN+
-	03Uk9RAg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:
+	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KC5P7t4gKrTR0YzDyDWzKYwIv/MVNwJXRJM7IN60R1U=; b=lyk3pp/1DJFgrqMJWNJ4SwrbIR
+	iR9OEj2RElc3/vAVC4hxgPDPECOHE3/i9OqfvO83a9lPOfD9kDRXdwBFyB5PXd/WLzckTE1LUezHh
+	e9QE/0ylgI+CgQBWDg7M7ZI+a8wx8gs+mPCXlLamNDnpr8+RI1BT+OovWr9jar3qwKua4D45+FxeS
+	l5COqpHaiCAWt5z+ibuiibpINsn+RwngODc9frFF2EuQ4ZT+gTS5dopZnc8YsAToVH6TlMXu/MVKR
+	UCO8v9mV1YovVn98HaoxQ4WCIczcNssMvW4uvtkJO+KjtIoT+ReFJo+1TRwR7EpVh7/2r2paaWMMz
+	wQ9XvJYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rU1Og-0000000996r-0FaG;
-	Sun, 28 Jan 2024 09:24:14 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rU2um-00000009H9V-14Lj;
+	Sun, 28 Jan 2024 11:01:28 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rU1Oa-00000009968-1QSd;
-	Sun, 28 Jan 2024 09:24:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id EC57960EF8;
-	Sun, 28 Jan 2024 09:24:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16448C433C7;
-	Sun, 28 Jan 2024 09:24:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1706433846;
-	bh=vAmi5VfiuPfMgpUzWVLhzkemLp43TOQ6SblaolpCpeU=;
-	h=Date:From:To:Subject:References:In-Reply-To:From;
-	b=lMwxc7Qu0oHVJPI91GXXDLoO+fz95+HJ9gMP4NbphuEoMcrSG9m0cDtYmdaL+mc0D
-	 8ye0Pm1XOyX9C0eEm4+3RXpCD8HukjES5r/RWWVh5RBrFE1QEr34M6pLtJ6mU12Cx/
-	 WxDJ9Bm8MQ+X83R1CtubiX91LIAJfvlQhQy5CByGrKE+rxGUx9bNv5cjkB8jMxb0x6
-	 TXVe0Vx2dgish6qtjHNFUfU+5Ts1N8aIDd3OUWbCJaqGkgngaV+Chgypy+iQySjVXr
-	 wTsOyO73lllXi3Hi1f9ROIg1cIYPW2pREtE4baRZUzOm69tHS8lo9OLj/Q4+7k6XW2
-	 jONH1sldIYSlQ==
-Date: Sun, 28 Jan 2024 10:24:02 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Jason-JH Lin =?utf-8?B?KOael+edv+elpSk=?= <Jason-JH.Lin@mediatek.com>, 
-	"manasi.d.navare@intel.com" <manasi.d.navare@intel.com>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"michel@daenzer.net" <michel@daenzer.net>, 
-	"intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>, "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, 
-	"linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>, "mikita.lipski@amd.com" <mikita.lipski@amd.com>, 
-	"dmitry.baryshkov@linaro.org" <dmitry.baryshkov@linaro.org>, "tzimmermann@suse.de" <tzimmermann@suse.de>, 
-	"daniel.vetter@intel.com" <daniel.vetter@intel.com>, "nicholas.kazlauskas@amd.com" <nicholas.kazlauskas@amd.com>, 
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "quic_abhinavk@quicinc.com" <quic_abhinavk@quicinc.com>, 
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "lucas.demarchi@intel.com" <lucas.demarchi@intel.com>, 
-	"sean@poorly.run" <sean@poorly.run>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
-	"dmitry.osipenko@collabora.com" <dmitry.osipenko@collabora.com>, "fshao@chromium.org" <fshao@chromium.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "jani.nikula@intel.com" <jani.nikula@intel.com>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
-	"freedreno@lists.freedesktop.org" <freedreno@lists.freedesktop.org>
-Subject: Re: Re: [PATCH] drm/atomic-helpers: remove legacy_cursor_update hacks
-Message-ID: <vyh5wg2ltmrtqw2mhtyj2lii6i4eccrjjlynzpfg7x63tkrav6@cxbz3sasvjjm>
-References: <20230216111214.3489223-1-daniel.vetter@ffwll.ch>
- <20230307145613.xvhru3fpcudlpazt@houat>
- <aac416742920953999a9ce230ac68139bf5b9790.camel@mediatek.com>
- <ZbKlsTEvGPiGtzS3@phenom.ffwll.local>
+	id 1rU2uh-00000009H7Z-3noB;
+	Sun, 28 Jan 2024 11:01:25 +0000
+Received: from pendragon.ideasonboard.com (aztw-30-b2-v4wan-166917-cust845.vm26.cable.virginm.net [82.37.23.78])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 0639A3D9;
+	Sun, 28 Jan 2024 11:59:58 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1706439599;
+	bh=5srCU8mALld93XXZWkuO9wczxnN7Mp+AiQKKleufIJY=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=RkhbdvRHlz1v8jg4VujoVEvuFFQwER/Of6VU8hgYvGxSJ6sauMOpigUM9jwIZggbM
+	 ovsTDbzG216rVaHmdrHBTfja6Y/1kngp8TZl25L/sIL9hjrprl+/lEEC7ofAXjaoqi
+	 ogP2fskaRCqFSgwLOtdxTIoWzpGtryil4ewfj2mk=
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ogyu5zjbyc4numbu"
-Content-Disposition: inline
-In-Reply-To: <ZbKlsTEvGPiGtzS3@phenom.ffwll.local>
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20240126-gix-mtk-warnings-v1-7-eed7865fce18@chromium.org>
+References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org> <20240126-gix-mtk-warnings-v1-7-eed7865fce18@chromium.org>
+Subject: Re: [PATCH 07/17] media: i2c: adv748: Fix kerneldoc
+From: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev, linux-amlogic@lists.infradead.org, Ricardo Ribalda <ribalda@chromium.org>
+To: Alim Akhtar <alim.akhtar@samsung.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Andrzej Hajda <andrzej.hajda@intel.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Bin Liu <bin.liu@mediatek.com>, Bingbu Cao <bingbu.cao@intel.com>, Bjorn Andersson <andersson@kernel.org>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Hans Verkuil <hverkuil@xs4all.nl>, Jerome Brunet <jbrunet@baylibre.com>, Kevin Hilman <khilman@baylibre.com>, Konrad Dybcio <konrad.dybcio@linaro.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, Philipp Zab
+ el <p.zabel@pengutronix.de>, Ricardo Ribalda <ribalda@chromium.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Stanimir Varbanov <stanimir.k.varbanov@gmail.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Tianshu Qiu <tian.shu.qiu@intel.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Vikash Garodia <quic_vgarodia@quicinc.com>, Yunfei Dong <yunfei.dong@mediatek.com>
+Date: Sun, 28 Jan 2024 11:01:13 +0000
+Message-ID: <170643967334.1879520.13311953581412781310@ping.linuxembedded.co.uk>
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240128_012408_491419_D685162B 
-X-CRM114-Status: GOOD (  20.53  )
+X-CRM114-CacheID: sfid-20240128_030124_108082_B0DB2B63 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,54 +66,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Quoting Ricardo Ribalda (2024-01-26 23:16:06)
+> The field is gone, remove the documentation.
 
---ogyu5zjbyc4numbu
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Looking at 3e89586a64df ("media: i2c: adv748x: add adv748x driver")
+confims it was never added. Must have been an old leftover when I
+upstreamed.
 
-On Thu, Jan 25, 2024 at 07:17:21PM +0100, Daniel Vetter wrote:
-> On Tue, Jan 23, 2024 at 06:09:05AM +0000, Jason-JH Lin (=E6=9E=97=E7=9D=
-=BF=E7=A5=A5) wrote:
-> > Hi Maxime, Daniel,
-> >=20
-> > We encountered similar issue with mediatek SoCs.
-> >=20
-> > We have found that in drm_atomic_helper_commit_rpm(), when disabling
-> > the cursor plane, the old_state->legacy_cursor_update in
-> > drm_atomic_wait_for_vblank() is set to true.
-> > As the result, we are not actually waiting for a vlbank to wait for our
-> > hardware to close the cursor plane. Subsequently, the execution
-> > proceeds to drm_atomic_helper_cleanup_planes() to  free the cursor
-> > buffer. This can lead to use-after-free issues with our hardware.
-> >=20
-> > Could you please apply this patch to fix our problem?
-> > Or are there any considerations for not applying this patch?
+Thanks for the fix.
+
+Reviewed-by: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
+
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> ---
+>  drivers/media/i2c/adv748x/adv748x.h | 1 -
+>  1 file changed, 1 deletion(-)
 >=20
-> Mostly it needs someone to collect a pile of acks/tested-by and then land
-> it.
+> diff --git a/drivers/media/i2c/adv748x/adv748x.h b/drivers/media/i2c/adv7=
+48x/adv748x.h
+> index 6f90f78f58cf..d2b5e722e997 100644
+> --- a/drivers/media/i2c/adv748x/adv748x.h
+> +++ b/drivers/media/i2c/adv748x/adv748x.h
+> @@ -173,7 +173,6 @@ struct adv748x_afe {
+>   *
+>   * @endpoints:         parsed device node endpoints for each port
+>   *
+> - * @i2c_addresses:     I2C Page addresses
+>   * @i2c_clients:       I2C clients for the page accesses
+>   * @regmap:            regmap configuration pages.
+>   *
 >=20
-> I'd be _very_ happy if someone else can take care of that ...
->=20
-> There's also the potential issue that it might slow down some of the
-> legacy X11 use-cases that really needed a non-blocking cursor, but I think
-> all the drivers where this matters have switched over to the async plane
-> update stuff meanwhile. So hopefully that's good.
-
-I think there was also a regression with msm no one really figured out?
-
-Maxime
-
---ogyu5zjbyc4numbu
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZbYdMgAKCRDj7w1vZxhR
-xSJlAP95bsUAyxzHt1gZmvkN8tKWAggATAYm9apK9+8NFj/3MAEAnkts/Yh2y6zr
-dzc9/lsQ2HaDBNTsjGfOxrlJGX+aKwE=
-=2xdS
------END PGP SIGNATURE-----
-
---ogyu5zjbyc4numbu--
+> --=20
+> 2.43.0.429.g432eaa2c6b-goog
+>
 
