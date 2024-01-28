@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99771C47258
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jan 2024 16:12:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA4A9C47DA9
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jan 2024 16:13:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UPOWE6dN0tbw8h+v0k26X/Yxsvihhp0Jnrvh95PLbis=; b=kpLAsBdBItza/q
-	FztW8oSCkDEfrzX4nlt54RRHCsxNAsUTpJGOw23HB39JP5nDvtqpXCrbhX1lhqA8qGVWLej4827SJ
-	CnzwxOlKhR1iRNeel9hTRxcc1MKhWa4Xeo1sc86qJ8vfdB2xA8TMra39l7Ta7fnVnW3JXAt5yiPbi
-	yz7Wd3+9T1GKsQ6DHfEVkVNby8wzuyaNyGbhNs50rnj+nmyrnaRAZXZYCQhiimmUrqYF15V06s1pj
-	AS6Qe1vcBgfZHKETgtbHlwKUtBoF/IilGrbn5WoBE2mWV2wOVF2YuuCZ4g4Vw2P2Ecay4XX1THmsK
-	YFyVmUPFt5hPXN7xKgTA==;
+	List-Owner; bh=UPOWE6dN0tbw8h+v0k26X/Yxsvihhp0Jnrvh95PLbis=; b=pCXhKC0ZTfPSTc
+	oVTpimpQec1mF8zmhpYpYa4e0jGzjf7BqGNNuNyPBSayuCsvFcj+t0dd0wdIJizTWiBFQc8HbV71/
+	RlNveNB211iWW8HFkwc4kMZUSAdLnwmP+WyrNktjFn3sEuu1VtCxtDGIaNdk/5yxzKGHvEx+4TvUy
+	qWmzqGmKkVfafdPV30FzAEGimkaSnV89UvUpmU1G2n07DBcO+RpSyfkSPPXqamNh9t0TDOA8n547y
+	ozmtht7vuGPOIFeM9c8skBP8ZxxbQAVIkNYHr8ivZ1syhGFe+OIMnU178ZkiJqS1pX6VgdyXxKb9y
+	6MgwEtH/DaGLNpmpmFNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rU7lH-00000009pL7-0X6j;
-	Sun, 28 Jan 2024 16:11:59 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rU7mv-00000009q2G-1haM;
+	Sun, 28 Jan 2024 16:13:41 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rU7lC-00000009pIK-1FiH;
-	Sun, 28 Jan 2024 16:11:56 +0000
+	id 1rU7mr-00000009pzO-2Qwt;
+	Sun, 28 Jan 2024 16:13:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A00B760B07;
-	Sun, 28 Jan 2024 16:11:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AC0DC43399;
-	Sun, 28 Jan 2024 16:11:51 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id E82EBCE0C6E;
+	Sun, 28 Jan 2024 16:13:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5DF0C433F1;
+	Sun, 28 Jan 2024 16:13:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1706458313;
+	s=k20201202; t=1706458415;
 	bh=51cvES8B4cwsZRZH2wNWrxlvRklkeZm6la8scxzeXso=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=tMoeY4NGzjEsGE5qX5o9Sr+1z6sFZ9ZCk82bqeSIz9PVS16ild8MvbfWqht5ruV3+
-	 +4OrJMd1EMGO3HZMxUM0EoXbTBmSz8Ixzg/Yh9PHVC+bArdbsgEBp7Jdbu1jTzM++v
-	 lR4MJ71OVrKKoDzVTZZqa6DBUxbiHTfN1IyvoRujQMpao5TTkr0468sfgg3G1GUbgV
-	 CVl+olOnLce0Ff4d34paEj7rKDOSZGYhvUy1CdYUurV02czUrrV1RDIGV6M5i/rxIU
-	 bH6TKyJCaZ6i/P3uOqRy6TD3bWfuCOXOayCDFUut8U0Lnwt3p+F7BieSSxIM/tZoXV
-	 /Rt2HaitZwx0g==
+	b=T5uSjTWUV6dV6dRjCyBkUn9DNSdKHe6dgLyE1sBg/wkrZfaj2TiZfHIqjNI1+6qMm
+	 8DPgHXLzRZP2aB3bI9T6YVMR/s+sKj2U8GkgtShKybJaofnsnIqQc97mQ68QEbHNeG
+	 01+4BkN8CbQ/myWQ8gn4fXSUr7ZFFv4zrZRcG4/SlvG35szco//AYaZ7MMU9fb38Js
+	 skD9BBptBJXXty7vnS4vX5obKWTPF8X6SChGphd4rvVficBKhP2qg5b1Hh7EYYWip0
+	 uPoc4BoI9Vk8ohfOFtUVb8Jprz7tTNxn43QI9hy/8uIZkAxioFekzzuiHf4W6GQSSx
+	 PTYhL4o8WB4uQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 6.7 12/39] spmi: mediatek: Fix UAF on device remove
-Date: Sun, 28 Jan 2024 11:10:32 -0500
-Message-ID: <20240128161130.200783-12-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.6 11/31] spmi: mediatek: Fix UAF on device remove
+Date: Sun, 28 Jan 2024 11:12:41 -0500
+Message-ID: <20240128161315.201999-11-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240128161130.200783-1-sashal@kernel.org>
-References: <20240128161130.200783-1-sashal@kernel.org>
+In-Reply-To: <20240128161315.201999-1-sashal@kernel.org>
+References: <20240128161315.201999-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.7.2
+X-stable-base: Linux 6.6.14
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240128_081154_483496_7742099C 
+X-CRM114-CacheID: sfid-20240128_081338_001684_B1D95AE4 
 X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
