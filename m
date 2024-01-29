@@ -4,93 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E0A2C47258
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 02:32:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C865C47258
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 02:32:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=C31ZLci8ETcyZV0fXrsxl7MNMeUaMNLOpGVSDJNflsM=; b=KYCh50v7TxIVMym0lhyA9apLje
-	Hj4z9vJ2QvEzbglmoVqXhBUQyCKt/2cAszW4vHSCub/+reUkLQejCNzK9U2fDrHdM9yNAyMp+p0xJ
-	8z8vvVq+Gd5oaDaIIfDOFK+LZg80ElrDDpOmiNaaIgpASxzmCVqaoTYw0/BTvdw2RfqqTps8xqVpa
-	LwMYey81BJGFSJhxvkYXSYWyskYDWNoSF9biqqGgKTwwuOWALVBsoQtsEO3rHOmfnQlQ057UvDycb
-	pgnjncIlkjYGUsF4yVr4J/h+4J9rJlwV3qDWsWkTD/3GZp5pVgzrCSzpuX/v309VCGFFXxAcka0r7
-	CuuChh3g==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nG4MEfOtjTMFozhR+MMBa06cMwHk78fvnsRUvGipajY=; b=VND7DG+DKjBMjF1mcBy1+3b0Br
+	1UNtyuYEJw7W9oVFeD89CqZK2WBWT9xjVoNiUKQvAlq/lH5jC7pla6BJgLF34y1na/JsmvjOys4wo
+	2lZWZSc1qoBtTY5oD7wpASMJvgP8KTIyXoE+NEJFe49Ax1gHtN9BzubXgp8GsbELd7AtunO9Udc/G
+	2EKiZ/2Fx6t/JQv5zKrTHpKcL+diLYpZ96K685LVkqRFOBFPqczdzQo9Ab+7kGRo36kxJ/C6/ijXh
+	M3i38v6hlWazn/1eEe21YLR0CvqK6oSg5Xaekb4r7JUqaTNt1mSNaFmGZAbSt+N2ynpI+pWGuR6r1
+	MTKsaSJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUHRW-0000000B295-3XNt;
-	Mon, 29 Jan 2024 02:32:14 +0000
+	id 1rUHRZ-0000000B2Ad-2Nf9;
+	Mon, 29 Jan 2024 02:32:17 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUHRT-0000000B27I-20kq;
-	Mon, 29 Jan 2024 02:32:12 +0000
-X-UUID: 93565172be4e11eea0bf134e88e6c2dc-20240128
+	id 1rUHRW-0000000B27F-1OUV;
+	Mon, 29 Jan 2024 02:32:15 +0000
+X-UUID: 939e071abe4e11eea0bf134e88e6c2dc-20240128
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=C31ZLci8ETcyZV0fXrsxl7MNMeUaMNLOpGVSDJNflsM=;
-	b=MaPEvd+1PmV/mgLKRXdYYgFyK8XrR/A3X+a1vxWKg6g5pU+/ymHIWVkpPbN1nlKDbA8rSZqhZr1TwGE5SUXMIdaQXWhBntxHfLoXVXvKuMzmcxAg8krmVYY/XX0LZYBjVod0ZtrTTNzYhPEwd1oihACLqgut2ZLK4xkIZNbISG4=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=nG4MEfOtjTMFozhR+MMBa06cMwHk78fvnsRUvGipajY=;
+	b=bivIIOiTZW8mqQeE8LtWK9mECiyRQDDNfma1AT9C3W21Tl8K/dCImorXDKZyV23Ho2EpLvkKL9L/sN2CnPH1ftTgWb9N+nL4Azas8bVEEEhhZ+kSORh+etJWIETEL8iYiqRHIOCfrac0Wl3jASRf98JhZlbnlw5fHlan2PdEHFE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.36,REQID:51d47d9e-373c-4bde-8c78-5ee41cb1ee77,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6e16cf4,CLOUDID:2a59da7f-4f93-4875-95e7-8c66ea833d57,B
+X-CID-O-INFO: VERSION:1.1.36,REQID:ee5e8c65-3fa9-452e-91e5-c9f6ce0f1385,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:1,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-24
+X-CID-META: VersionHash:6e16cf4,CLOUDID:3937c18e-e2c0-40b0-a8fe-7c7e47299109,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 93565172be4e11eea0bf134e88e6c2dc-20240128
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+X-UUID: 939e071abe4e11eea0bf134e88e6c2dc-20240128
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1148039608; Sun, 28 Jan 2024 19:31:58 -0700
+	with ESMTP id 1848930284; Sun, 28 Jan 2024 19:31:58 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 29 Jan 2024 10:31:55 +0800
+ 15.2.1118.26; Mon, 29 Jan 2024 10:31:56 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 29 Jan 2024 10:31:54 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 29 Jan 2024 10:31:55 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
 	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>,
-	"Irui Wang" <irui.wang@mediatek.com>
+	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Irui
+ Wang <irui.wang@mediatek.com>
 CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, "Yunfei
- Dong" <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
+	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei
+ Dong <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2,1/2] media: mediatek: vcodec: adding lock to protect decoder context list
-Date: Mon, 29 Jan 2024 10:31:52 +0800
-Message-ID: <20240129023153.28521-1-yunfei.dong@mediatek.com>
+Subject: [PATCH v2,2/2] media: mediatek: vcodec: adding lock to protect encoder context list
+Date: Mon, 29 Jan 2024 10:31:53 +0800
+Message-ID: <20240129023153.28521-2-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240129023153.28521-1-yunfei.dong@mediatek.com>
+References: <20240129023153.28521-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--10.418800-8.000000
-X-TMASE-MatchedRID: 9p0QI/+vVwnUzvcPSorAlMNrWpY804TG5Y0kb0hqatxh2fnHe1cil9Qt
-	cQ4PjYUQWKuGHPyQzf50EP8QGYj3VpDE8A8BMmXzmqt7FrgJsRCwR/wKmchi2aBp/T5dSs2Tyla
-	ny27BLVxTCsaPIKnQPh9RiBf6acKHHEYRI8dNra762mDKTRDEUr8+q17GFLKRjNEMFREyl14RNx
-	2gZ6nN89Ow0Ro6UpZXiCbNFKe75Fjp+5uxX4D6T3TnOygHVQpOfLPKYyLDlAeFmddrIUs34gUzj
-	+gqhStRpC9vRu7WqSBhesC82wLQK41kmDYSNG7nSHCU59h5KrEP4vBWNr0zgZsoi2XrUn/JUTdY
-	/mdfTXtJKW4mDlJsMSAHAopEd76vNswBTrdoX7BFG8PlEtDcOUF8r1LeElXJYHtyMfWJ5O1eXx3
-	H+wW2dg==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--10.418800-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 7B3FBA7AB41DB34D9652D39D149D91453BECA613E8C23D5532D39C8ECF2BEA512000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240128_183211_589813_522ED534 
-X-CRM114-Status: GOOD (  17.20  )
+X-CRM114-CacheID: sfid-20240128_183214_405893_6FA0EE71 
+X-CRM114-Status: GOOD (  17.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,63 +95,28 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 The ctx_list will be deleted when scp getting unexpected behavior, then the
 ctx_list->next will be NULL, the kernel driver maybe access NULL pointer in
-function vpu_dec_ipi_handler when going through each context, then reboot.
+function vpu_enc_ipi_handler when going through each context, then reboot.
 
 Need to add lock to protect the ctx_list to make sure the ctx_list->next isn't
 NULL pointer.
 
-Hardware name: Google juniper sku16 board (DT)
-pstate: 20400005 (nzCv daif +PAN -UAO -TCO BTYPE=--)
-pc : vpu_dec_ipi_handler+0x58/0x1f8 [mtk_vcodec_dec]
-lr : scp_ipi_handler+0xd0/0x194 [mtk_scp]
-sp : ffffffc0131dbbd0
-x29: ffffffc0131dbbd0 x28: 0000000000000000
-x27: ffffff9bb277f348 x26: ffffff9bb242ad00
-x25: ffffffd2d440d3b8 x24: ffffffd2a13ff1d4
-x23: ffffff9bb7fe85a0 x22: ffffffc0133fbdb0
-x21: 0000000000000010 x20: ffffff9b050ea328
-x19: ffffffc0131dbc08 x18: 0000000000001000
-x17: 0000000000000000 x16: ffffffd2d461c6e0
-x15: 0000000000000242 x14: 000000000000018f
-x13: 000000000000004d x12: 0000000000000000
-x11: 0000000000000001 x10: fffffffffffffff0
-x9 : ffffff9bb6e793a8 x8 : 0000000000000000
-x7 : 0000000000000000 x6 : 000000000000003f
-x5 : 0000000000000040 x4 : fffffffffffffff0
-x3 : 0000000000000020 x2 : ffffff9bb6e79080
-x1 : 0000000000000010 x0 : ffffffc0131dbc08
-Call trace:
-vpu_dec_ipi_handler+0x58/0x1f8 [mtk_vcodec_dec (HASH:6c3f 2)]
-scp_ipi_handler+0xd0/0x194 [mtk_scp (HASH:7046 3)]
-mt8183_scp_irq_handler+0x44/0x88 [mtk_scp (HASH:7046 3)]
-scp_irq_handler+0x48/0x90 [mtk_scp (HASH:7046 3)]
-irq_thread_fn+0x38/0x94
-irq_thread+0x100/0x1c0
-kthread+0x140/0x1fc
-ret_from_fork+0x10/0x30
-Code: 54000088 f94ca50a eb14015f 54000060 (f9400108)
----[ end trace ace43ce36cbd5c93 ]---
-Kernel panic - not syncing: Oops: Fatal exception
-SMP: stopping secondary CPUs
-Kernel Offset: 0x12c4000000 from 0xffffffc010000000
-PHYS_OFFSET: 0xffffffe580000000
-CPU features: 0x08240002,2188200c
-Memory Limit: none
-
-'Fixes: 655b86e52eac ("media: mediatek: vcodec: Fix possible invalid memory access for decoder")'
+'Fixes: 1972e32431ed ("media: mediatek: vcodec: Fix possible invalid memory access for encoder")'
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
+change in v2:
+- fix unlock issue.
+---
  .../platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c      | 4 ++--
- .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c    | 5 +++++
- .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h    | 2 ++
- drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c | 2 ++
+ .../platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c    | 5 +++++
+ .../platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h    | 2 ++
+ drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c | 2 ++
  4 files changed, 11 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-index 9f6e4b59455d..9a11a2c24804 100644
+index 9a11a2c24804..8d578b690214 100644
 --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
 +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-@@ -58,12 +58,12 @@ static void mtk_vcodec_vpu_reset_dec_handler(void *priv)
+@@ -73,12 +73,12 @@ static void mtk_vcodec_vpu_reset_enc_handler(void *priv)
  
  	dev_err(&dev->plat_dev->dev, "Watchdog timeout!!");
  
@@ -177,75 +130,75 @@ index 9f6e4b59455d..9a11a2c24804 100644
 +	mutex_unlock(&dev->dev_ctx_lock);
  }
  
- static void mtk_vcodec_vpu_reset_enc_handler(void *priv)
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-index f47c98faf068..2073781ccadb 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-@@ -268,7 +268,9 @@ static int fops_vcodec_open(struct file *file)
- 
- 	ctx->dev->vdec_pdata->init_vdec_params(ctx);
+ static const struct mtk_vcodec_fw_ops mtk_vcodec_vpu_msg = {
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
+index 6319f24bc714..3cb8a1622222 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
+@@ -177,7 +177,9 @@ static int fops_vcodec_open(struct file *file)
+ 	mtk_v4l2_venc_dbg(2, ctx, "Create instance [%d]@%p m2m_ctx=%p ",
+ 			  ctx->id, ctx, ctx->m2m_ctx);
  
 +	mutex_lock(&dev->dev_ctx_lock);
  	list_add(&ctx->list, &dev->ctx_list);
 +	mutex_unlock(&dev->dev_ctx_lock);
- 	mtk_vcodec_dbgfs_create(ctx);
  
  	mutex_unlock(&dev->dev_mutex);
-@@ -311,7 +313,9 @@ static int fops_vcodec_release(struct file *file)
+ 	mtk_v4l2_venc_dbg(0, ctx, "%s encoder [%d]", dev_name(&dev->plat_dev->dev),
+@@ -212,7 +214,9 @@ static int fops_vcodec_release(struct file *file)
+ 	v4l2_fh_exit(&ctx->fh);
  	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
  
- 	mtk_vcodec_dbgfs_remove(dev, ctx->id);
 +	mutex_lock(&dev->dev_ctx_lock);
  	list_del_init(&ctx->list);
 +	mutex_unlock(&dev->dev_ctx_lock);
  	kfree(ctx);
  	mutex_unlock(&dev->dev_mutex);
  	return 0;
-@@ -404,6 +408,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 	for (i = 0; i < MTK_VDEC_HW_MAX; i++)
- 		mutex_init(&dev->dec_mutex[i]);
+@@ -294,6 +298,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 
+ 	mutex_init(&dev->enc_mutex);
  	mutex_init(&dev->dev_mutex);
 +	mutex_init(&dev->dev_ctx_lock);
  	spin_lock_init(&dev->irqlock);
  
  	snprintf(dev->v4l2_dev.name, sizeof(dev->v4l2_dev.name), "%s",
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-index 849b89dd205c..85b2c0d3d8bc 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-@@ -241,6 +241,7 @@ struct mtk_vcodec_dec_ctx {
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
+index a042f607ed8d..0bd85d0fb379 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
+@@ -178,6 +178,7 @@ struct mtk_vcodec_enc_ctx {
   *
-  * @dec_mutex: decoder hardware lock
+  * @enc_mutex: encoder hardware lock.
   * @dev_mutex: video_device lock
 + * @dev_ctx_lock: the lock of context list
-  * @decode_workqueue: decode work queue
+  * @encode_workqueue: encode work queue
   *
-  * @irqlock: protect data access by irq handler and work thread
-@@ -282,6 +283,7 @@ struct mtk_vcodec_dec_dev {
- 	/* decoder hardware mutex lock */
- 	struct mutex dec_mutex[MTK_VDEC_HW_MAX];
+  * @enc_irq: h264 encoder irq resource
+@@ -205,6 +206,7 @@ struct mtk_vcodec_enc_dev {
+ 	/* encoder hardware mutex lock */
+ 	struct mutex enc_mutex;
  	struct mutex dev_mutex;
 +	struct mutex dev_ctx_lock;
- 	struct workqueue_struct *decode_workqueue;
+ 	struct workqueue_struct *encode_workqueue;
  
- 	spinlock_t irqlock;
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-index 82e57ae983d5..da6be556727b 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-@@ -77,12 +77,14 @@ static bool vpu_dec_check_ap_inst(struct mtk_vcodec_dec_dev *dec_dev, struct vde
- 	struct mtk_vcodec_dec_ctx *ctx;
+ 	int enc_irq;
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
+index 84ad1cc6ad17..51bb7ee141b9 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
+@@ -47,12 +47,14 @@ static bool vpu_enc_check_ap_inst(struct mtk_vcodec_enc_dev *enc_dev, struct ven
+ 	struct mtk_vcodec_enc_ctx *ctx;
  	int ret = false;
  
-+	mutex_lock(&dec_dev->dev_ctx_lock);
- 	list_for_each_entry(ctx, &dec_dev->ctx_list, list) {
++	mutex_lock(&enc_dev->dev_ctx_lock);
+ 	list_for_each_entry(ctx, &enc_dev->ctx_list, list) {
  		if (!IS_ERR_OR_NULL(ctx) && ctx->vpu_inst == vpu) {
  			ret = true;
  			break;
  		}
  	}
-+	mutex_unlock(&dec_dev->dev_ctx_lock);
++	mutex_unlock(&enc_dev->dev_ctx_lock);
  
  	return ret;
  }
