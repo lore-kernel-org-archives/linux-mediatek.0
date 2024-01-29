@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7A7CC47DDF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 06:33:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C536C47DDF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 06:33:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JWJt5f3OFXku7W6faTUM0+bKsbswJle1HktQEF2gUcM=; b=QoA2IwGHmho1AFucSv7xDlQMNL
-	aAaO2PGdDpqcZ94fF9NOiE0ZEoyU7H/AkNf7azofN85ssfldRuhk8rgYjZtpo8pMaaNmKqT4DPdc6
-	OWqFQAxa/HT5SO7vFF7k+nwU1PgoBNRrUE0Q5ejB33Y3ZJX/qrmSO9utWqK1eQPQSIWB5bh0DRK9x
-	tHZ89zqVTUmk8/znEZngH9IG0xx3vk0M0Fc8NOOPTeOPd3XjsFf/NVYNuHVHnKZQ6zk7EV1CNZOAn
-	+0PmdFBaXaQUBaXTD2yKjztt2n/+59CbGN42uj2JfgglKt3RLIk2SAeCSvFHwDuRUEOy1dsgHNy5l
-	y3FD25dw==;
+	bh=ijVPGmUw8t6PtBg62F66I+NN1svYCFCRnEKk8itKJeo=; b=vWizDhwSrHObyXcizAycjQAnGq
+	3P7Hy1bTvv1jwOxYXiux8QRa4h5rI4NGeOIKsQhVbd4qQd+oS3ctYsgcP5My8OjQyEbSbm+WGYbC+
+	RXUYg4URnm6FUzYq+ucm/mh9mlm2TLLVonNqz50121O7DHnZ2ffT8PJ/sEfaxKqvw//Ywmfbc5v1t
+	FHSAl0D25SC6+CEnqshCqZ61jWx020e3aP1gzx43T71CioJXgwa7R3jVyf0vpq3JfEoCTzQ+LrvAW
+	cMkQu8DUuRnfD+B5iyWi+AyamRomJBwtrAbxvIjev7yVK03zeO93IBfLVvaIa7qq5hTWIjPWkQnr0
+	N8Mz/I6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rULD3-0000000BUp6-10wk;
-	Mon, 29 Jan 2024 06:33:33 +0000
+	id 1rULDD-0000000BUuB-11Sh;
+	Mon, 29 Jan 2024 06:33:43 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rULB5-0000000BTVL-2rTr;
-	Mon, 29 Jan 2024 06:31:33 +0000
-X-UUID: 06122f94be7011ee9a263b4415211400-20240128
+	id 1rULB6-0000000BTUe-1nJ0;
+	Mon, 29 Jan 2024 06:31:34 +0000
+X-UUID: 06ff8b36be7011ee9a263b4415211400-20240128
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=JWJt5f3OFXku7W6faTUM0+bKsbswJle1HktQEF2gUcM=;
-	b=GEmZUfsabgdW7N7fB5qxDZ472JDENF+98O5G8i9+TmpoyHZ1aqqMwEAFApkq8SymZipF9/4uaEUEg32R2AZh86RzTM1Pj1Thq7FHNihGty3p14JYo2zihSfNWiEp+NHwJSHs27F3CvByZ91L0i998+tCGYZzieSSrMEfx6suLqA=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ijVPGmUw8t6PtBg62F66I+NN1svYCFCRnEKk8itKJeo=;
+	b=cwqTKFJZMC1Cp2PSR/TCWWNPMnu96w9BzdEx8+M1T5sCucSYrztEPauzCwqwsLXdJLfncnggAuEOmoeBzAJMQqp/jokoehzhNOQagGbn10jix7GTiQvYwXwL/UY7hFgV2kUGvsyOTZVzDSjqviBmlq3fLgYaESDkoMxs6SEYrfQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.36,REQID:09c10344-186a-4491-a00f-a97762971655,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6e16cf4,CLOUDID:c2d6dc7f-4f93-4875-95e7-8c66ea833d57,B
+X-CID-O-INFO: VERSION:1.1.36,REQID:48229bca-91d1-4b3a-9641-327edc634f72,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:6e16cf4,CLOUDID:05b8c38e-e2c0-40b0-a8fe-7c7e47299109,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 06122f94be7011ee9a263b4415211400-20240128
+X-UUID: 06ff8b36be7011ee9a263b4415211400-20240128
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 213374751; Sun, 28 Jan 2024 23:31:24 -0700
+	with ESMTP id 1015829028; Sun, 28 Jan 2024 23:31:25 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 29 Jan 2024 14:30:45 +0800
+ 15.2.1118.26; Mon, 29 Jan 2024 14:31:04 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 29 Jan 2024 14:30:44 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 29 Jan 2024 14:31:02 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Jeffrey Kardatzke <jkardatzke@google.com>,
 	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
@@ -71,9 +71,9 @@ CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v4,07/22] dma-heap: Provide accessors so that in-kernel drivers can allocate dmabufs from specific heaps
-Date: Mon, 29 Jan 2024 14:30:10 +0800
-Message-ID: <20240129063025.29251-8-yunfei.dong@mediatek.com>
+Subject: [PATCH v4,21/22] media: mediatek: vcodec: move vdec init interface to setup callback
+Date: Mon, 29 Jan 2024 14:30:24 +0800
+Message-ID: <20240129063025.29251-22-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240129063025.29251-1-yunfei.dong@mediatek.com>
 References: <20240129063025.29251-1-yunfei.dong@mediatek.com>
@@ -82,8 +82,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240128_223131_863430_393C0E62 
-X-CRM114-Status: GOOD (  21.68  )
+X-CRM114-CacheID: sfid-20240128_223132_646905_11EC018A 
+X-CRM114-Status: GOOD (  16.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,184 +98,208 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: John Stultz <jstultz@google.com>
+Getting secure video playback (svp) flag when request output buffer, then
+calling init interface to init svp parameters in optee-os.
 
-This allows drivers who don't want to create their own
-DMA-BUF exporter to be able to allocate DMA-BUFs directly
-from existing DMA-BUF Heaps.
-
-There is some concern that the premise of DMA-BUF heaps is
-that userland knows better about what type of heap memory
-is needed for a pipeline, so it would likely be best for
-drivers to import and fill DMA-BUFs allocated by userland
-instead of allocating one themselves, but this is still
-up for debate.
-
-Signed-off-by: John Stultz <jstultz@google.com>
-Signed-off-by: T.J. Mercier <tjmercier@google.com>
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-[Yong: Fix the checkpatch alignment warning]
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- drivers/dma-buf/dma-heap.c | 83 ++++++++++++++++++++++++++++++--------
- include/linux/dma-heap.h   |  6 +++
- 2 files changed, 73 insertions(+), 16 deletions(-)
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 139 +++++++++++-------
+ 1 file changed, 89 insertions(+), 50 deletions(-)
 
-diff --git a/drivers/dma-buf/dma-heap.c b/drivers/dma-buf/dma-heap.c
-index 97025ee8500f..6efe833a4b10 100644
---- a/drivers/dma-buf/dma-heap.c
-+++ b/drivers/dma-buf/dma-heap.c
-@@ -51,12 +51,24 @@ static dev_t dma_heap_devt;
- static struct class *dma_heap_class;
- static DEFINE_XARRAY_ALLOC(dma_heap_minors);
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+index 5d876a31e566..667005ff49c0 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+@@ -184,6 +184,69 @@ void mtk_vcodec_dec_set_default_params(struct mtk_vcodec_dec_ctx *ctx)
+ 	q_data->bytesperline[1] = q_data->coded_width;
+ }
  
--static int dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
--				 unsigned int fd_flags,
--				 unsigned int heap_flags)
-+/**
-+ * dma_heap_buffer_alloc - Allocate dma-buf from a dma_heap
-+ * @heap:	DMA-Heap to allocate from
-+ * @len:	size to allocate in bytes
-+ * @fd_flags:	flags to set on returned dma-buf fd
-+ * @heap_flags: flags to pass to the dma heap
-+ *
-+ * This is for internal dma-buf allocations only. Free returned buffers with dma_buf_put().
-+ */
-+struct dma_buf *dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
-+				      unsigned int fd_flags,
-+				      unsigned int heap_flags)
- {
--	struct dma_buf *dmabuf;
--	int fd;
-+	if (fd_flags & ~DMA_HEAP_VALID_FD_FLAGS)
-+		return ERR_PTR(-EINVAL);
-+
-+	if (heap_flags & ~DMA_HEAP_VALID_HEAP_FLAGS)
-+		return ERR_PTR(-EINVAL);
- 
- 	/*
- 	 * Allocations from all heaps have to begin
-@@ -64,9 +76,20 @@ static int dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
- 	 */
- 	len = PAGE_ALIGN(len);
- 	if (!len)
--		return -EINVAL;
-+		return ERR_PTR(-EINVAL);
-+
-+	return heap->ops->allocate(heap, len, fd_flags, heap_flags);
-+}
-+EXPORT_SYMBOL_GPL(dma_heap_buffer_alloc);
- 
--	dmabuf = heap->ops->allocate(heap, len, fd_flags, heap_flags);
-+static int dma_heap_bufferfd_alloc(struct dma_heap *heap, size_t len,
-+				   unsigned int fd_flags,
-+				   unsigned int heap_flags)
++static int mtk_vcodec_dec_init_pic_info(struct mtk_vcodec_dec_ctx *ctx, enum v4l2_buf_type type)
 +{
-+	struct dma_buf *dmabuf;
-+	int fd;
++	const struct mtk_vcodec_dec_pdata *dec_pdata = ctx->dev->vdec_pdata;
++	struct mtk_q_data *q_data;
++	int ret;
 +
-+	dmabuf = dma_heap_buffer_alloc(heap, len, fd_flags, heap_flags);
- 	if (IS_ERR(dmabuf))
- 		return PTR_ERR(dmabuf);
- 
-@@ -104,15 +127,9 @@ static long dma_heap_ioctl_allocate(struct file *file, void *data)
- 	if (heap_allocation->fd)
- 		return -EINVAL;
- 
--	if (heap_allocation->fd_flags & ~DMA_HEAP_VALID_FD_FLAGS)
--		return -EINVAL;
--
--	if (heap_allocation->heap_flags & ~DMA_HEAP_VALID_HEAP_FLAGS)
--		return -EINVAL;
--
--	fd = dma_heap_buffer_alloc(heap, heap_allocation->len,
--				   heap_allocation->fd_flags,
--				   heap_allocation->heap_flags);
-+	fd = dma_heap_bufferfd_alloc(heap, heap_allocation->len,
-+				     heap_allocation->fd_flags,
-+				     heap_allocation->heap_flags);
- 	if (fd < 0)
- 		return fd;
- 
-@@ -205,6 +222,7 @@ void *dma_heap_get_drvdata(struct dma_heap *heap)
- {
- 	return heap->priv;
- }
-+EXPORT_SYMBOL_GPL(dma_heap_get_drvdata);
- 
- /**
-  * dma_heap_get_name - get heap name
-@@ -217,6 +235,7 @@ const char *dma_heap_get_name(struct dma_heap *heap)
- {
- 	return heap->name;
- }
-+EXPORT_SYMBOL_GPL(dma_heap_get_name);
- 
- /**
-  * dma_heap_add - adds a heap to dmabuf heaps
-@@ -307,6 +326,37 @@ struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info)
- 	kfree(heap);
- 	return err_ret;
- }
-+EXPORT_SYMBOL_GPL(dma_heap_add);
++	if (!ctx->current_codec)
++		return 0;
 +
-+/**
-+ * dma_heap_find - get the heap registered with the specified name
-+ * @name: Name of the DMA-Heap to find
-+ *
-+ * Returns:
-+ * The DMA-Heap with the provided name.
-+ *
-+ * NOTE: DMA-Heaps returned from this function MUST be released using
-+ * dma_heap_put() when the user is done to enable the heap to be unloaded.
-+ */
-+struct dma_heap *dma_heap_find(const char *name)
-+{
-+	struct dma_heap *h;
++	if (V4L2_TYPE_IS_OUTPUT(type) && ctx->state == MTK_STATE_FREE) {
++		q_data = mtk_vdec_get_q_data(ctx, V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
++		if (!q_data)
++			return -EINVAL;
 +
-+	mutex_lock(&heap_list_lock);
-+	list_for_each_entry(h, &heap_list, list) {
-+		if (!kref_get_unless_zero(&h->refcount))
-+			continue;
-+
-+		if (!strcmp(h->name, name)) {
-+			mutex_unlock(&heap_list_lock);
-+			return h;
++		ret = vdec_if_init(ctx, q_data->fmt->fourcc);
++		if (ret) {
++			mtk_v4l2_vdec_err(ctx, "[%d]: vdec_if_init() fail ret=%d",
++					  ctx->id, ret);
++			return -EINVAL;
 +		}
-+		dma_heap_put(h);
++		ctx->state = MTK_STATE_INIT;
 +	}
-+	mutex_unlock(&heap_list_lock);
-+	return NULL;
++
++	if (!dec_pdata->uses_stateless_api)
++		return 0;
++
++	/*
++	 * If get pic info fail, need to use the default pic info params, or
++	 * v4l2-compliance will fail
++	 */
++	ret = vdec_if_get_param(ctx, GET_PARAM_PIC_INFO, &ctx->picinfo);
++	if (ret)
++		mtk_v4l2_vdec_err(ctx, "[%d]Error!! Get GET_PARAM_PICTURE_INFO Fail",
++				  ctx->id);
++
++	q_data = mtk_vdec_get_q_data(ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
++	if (q_data->fmt->num_planes == 1) {
++		q_data->sizeimage[0] = ctx->picinfo.fb_sz[0] + ctx->picinfo.fb_sz[1];
++		q_data->bytesperline[0] = ctx->picinfo.buf_w;
++	} else {
++		if (ctx->is_secure_playback)
++			q_data->sizeimage[0] = ctx->picinfo.fb_sz[0] + ctx->picinfo.fb_sz[1];
++		else
++			q_data->sizeimage[0] = ctx->picinfo.fb_sz[0];
++
++		q_data->bytesperline[0] = ctx->picinfo.buf_w;
++		q_data->sizeimage[1] = ctx->picinfo.fb_sz[1];
++		q_data->bytesperline[1] = ctx->picinfo.buf_w;
++	}
++
++	q_data->coded_width = ctx->picinfo.buf_w;
++	q_data->coded_height = ctx->picinfo.buf_h;
++
++	ctx->last_decoded_picinfo = ctx->picinfo;
++	mtk_v4l2_vdec_dbg(2, ctx,
++			  "[%d] init() plane:%d wxh=%dx%d pic wxh=%dx%d sz=0x%x_0x%x",
++			  ctx->id, q_data->fmt->num_planes,
++			  ctx->picinfo.buf_w, ctx->picinfo.buf_h,
++			  ctx->picinfo.pic_w, ctx->picinfo.pic_h,
++			  q_data->sizeimage[0], q_data->sizeimage[1]);
++	return 0;
 +}
-+EXPORT_SYMBOL_GPL(dma_heap_find);
++
+ static int vidioc_vdec_qbuf(struct file *file, void *priv,
+ 			    struct v4l2_buffer *buf)
+ {
+@@ -479,17 +542,7 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
+ 		ctx->ycbcr_enc = pix_mp->ycbcr_enc;
+ 		ctx->quantization = pix_mp->quantization;
+ 		ctx->xfer_func = pix_mp->xfer_func;
+-
+ 		ctx->current_codec = fmt->fourcc;
+-		if (ctx->state == MTK_STATE_FREE) {
+-			ret = vdec_if_init(ctx, q_data->fmt->fourcc);
+-			if (ret) {
+-				mtk_v4l2_vdec_err(ctx, "[%d]: vdec_if_init() fail ret=%d",
+-						  ctx->id, ret);
+-				return -EINVAL;
+-			}
+-			ctx->state = MTK_STATE_INIT;
+-		}
+ 	} else {
+ 		ctx->capture_fourcc = fmt->fourcc;
+ 	}
+@@ -502,46 +555,11 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
+ 		ctx->picinfo.pic_w = pix_mp->width;
+ 		ctx->picinfo.pic_h = pix_mp->height;
  
- static void dma_heap_release(struct kref *ref)
- {
-@@ -332,6 +382,7 @@ void dma_heap_put(struct dma_heap *heap)
- {
- 	kref_put(&heap->refcount, dma_heap_release);
+-		/*
+-		 * If get pic info fail, need to use the default pic info params, or
+-		 * v4l2-compliance will fail
+-		 */
+-		ret = vdec_if_get_param(ctx, GET_PARAM_PIC_INFO, &ctx->picinfo);
+-		if (ret) {
+-			mtk_v4l2_vdec_err(ctx, "[%d]Error!! Get GET_PARAM_PICTURE_INFO Fail",
+-					  ctx->id);
+-		}
+-
+-		ctx->last_decoded_picinfo = ctx->picinfo;
+-
+-		if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 1) {
+-			ctx->q_data[MTK_Q_DATA_DST].sizeimage[0] =
+-				ctx->picinfo.fb_sz[0] +
+-				ctx->picinfo.fb_sz[1];
+-			ctx->q_data[MTK_Q_DATA_DST].bytesperline[0] =
+-				ctx->picinfo.buf_w;
+-		} else {
+-			ctx->q_data[MTK_Q_DATA_DST].sizeimage[0] =
+-				ctx->picinfo.fb_sz[0];
+-			ctx->q_data[MTK_Q_DATA_DST].bytesperline[0] =
+-				ctx->picinfo.buf_w;
+-			ctx->q_data[MTK_Q_DATA_DST].sizeimage[1] =
+-				ctx->picinfo.fb_sz[1];
+-			ctx->q_data[MTK_Q_DATA_DST].bytesperline[1] =
+-				ctx->picinfo.buf_w;
+-		}
+-
+-		ctx->q_data[MTK_Q_DATA_DST].coded_width = ctx->picinfo.buf_w;
+-		ctx->q_data[MTK_Q_DATA_DST].coded_height = ctx->picinfo.buf_h;
+-		mtk_v4l2_vdec_dbg(2, ctx,
+-				  "[%d] init() plane:%d wxh=%dx%d pic wxh=%dx%d sz=0x%x_0x%x",
+-				  ctx->id, pix_mp->num_planes,
+-				  ctx->picinfo.buf_w, ctx->picinfo.buf_h,
+-				  ctx->picinfo.pic_w, ctx->picinfo.pic_h,
+-				  ctx->q_data[MTK_Q_DATA_DST].sizeimage[0],
+-				  ctx->q_data[MTK_Q_DATA_DST].sizeimage[1]);
++		if (f->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE)
++			ret = mtk_vcodec_dec_init_pic_info(ctx, f->type);
+ 	}
+-	return 0;
++
++	return ret;
  }
-+EXPORT_SYMBOL_GPL(dma_heap_put);
  
- static char *dma_heap_devnode(const struct device *dev, umode_t *mode)
+ static int vidioc_enum_framesizes(struct file *file, void *priv,
+@@ -722,7 +740,7 @@ int vb2ops_vdec_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
  {
-diff --git a/include/linux/dma-heap.h b/include/linux/dma-heap.h
-index d57593f8a1bc..3cbf9bff2346 100644
---- a/include/linux/dma-heap.h
-+++ b/include/linux/dma-heap.h
-@@ -46,6 +46,12 @@ const char *dma_heap_get_name(struct dma_heap *heap);
+ 	struct mtk_vcodec_dec_ctx *ctx = vb2_get_drv_priv(vq);
+ 	struct mtk_q_data *q_data;
+-	unsigned int i;
++	unsigned int i, ret;
  
- struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info);
+ 	q_data = mtk_vdec_get_q_data(ctx, vq->type);
  
-+struct dma_heap *dma_heap_find(const char *name);
+@@ -731,6 +749,25 @@ int vb2ops_vdec_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
+ 		return -EINVAL;
+ 	}
+ 
++	if (vq->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
++		if (vq->restricted_mem && !ctx->is_secure_playback) {
++			ret = mtk_vcodec_dec_optee_open(ctx->dev->optee_private);
++			if (ret) {
++				mtk_v4l2_vdec_err(ctx, "Failed to open decoder optee os");
++				return ret;
++			}
++			ctx->is_secure_playback = vq->restricted_mem;
++			mtk_v4l2_vdec_dbg(1, ctx, "Getting secure decoder mode:%d",
++					  ctx->is_secure_playback);
++		}
 +
- void dma_heap_put(struct dma_heap *heap);
- 
-+struct dma_buf *dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
-+				      unsigned int fd_flags,
-+				      unsigned int heap_flags);
++		ret = mtk_vcodec_dec_init_pic_info(ctx, vq->type);
++		if (ret) {
++			mtk_v4l2_vdec_err(ctx, "Failed to init picture information");
++			return ret;
++		}
++	}
 +
- #endif /* _DMA_HEAPS_H */
+ 	if (*nplanes) {
+ 		if (vq->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
+ 			if (*nplanes != q_data->fmt->num_planes)
+@@ -980,6 +1017,7 @@ int mtk_vcodec_dec_queue_init(void *priv, struct vb2_queue *src_vq,
+ 	src_vq->lock		= &ctx->dev->dev_mutex;
+ 	src_vq->dev             = &ctx->dev->plat_dev->dev;
+ 	src_vq->allow_cache_hints = 1;
++	src_vq->allow_restricted_mem = 1;
+ 
+ 	ret = vb2_queue_init(src_vq);
+ 	if (ret) {
+@@ -996,6 +1034,7 @@ int mtk_vcodec_dec_queue_init(void *priv, struct vb2_queue *src_vq,
+ 	dst_vq->lock		= &ctx->dev->dev_mutex;
+ 	dst_vq->dev             = &ctx->dev->plat_dev->dev;
+ 	dst_vq->allow_cache_hints = 1;
++	dst_vq->allow_restricted_mem = 1;
+ 
+ 	ret = vb2_queue_init(dst_vq);
+ 	if (ret)
 -- 
 2.18.0
 
