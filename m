@@ -4,66 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C259C47DA9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 10:47:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C1A6C47DA9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 10:48:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xDhnj66Ip3nFPekOinF6//ytzTReqixTr3qlah8Aj9g=; b=FHDKl2sLTMp+KC2y4wC2z0UsA7
-	jUr/+2DG1x2lxsEE/r6+S3VfrZMxTK57Wwq+FNLY3LoV5b05FF5QaACBb7gLhtNsqL9DcFRmGW2nV
-	Ea0IEn0whFUw1iNZpVDrTfBzbegc4D1dvxzf3hzt493iq3T6YekV0hl50BEIhOdpBjjKIi0wy81m/
-	WkImCTxBIOzRH+yA34qMQJwAA7EEyhnzTQwKU8DDTWXKzZwh/Gdh1WnwSDmRGBjnWkfd7zdIYwSuf
-	8PQu45esvyMHWC2cVOKc9sDo8PlcO2ivzU9oNUMiUWuJm9GMGvI7+27Y+RkF53Ja6AlnMo8RzmuVC
-	cAh3su/g==;
+	bh=kAIP+HxvmUVxXdBp3PdQcGATlDYtlsu6tH37Os5WKtw=; b=EfIrC66d+kIRZChKBirQBSxSrZ
+	+Iw1NwJV3y9FjZMPTuNfdUT6SxzHLArP6oBneW0ktIlhcFQAvs28wlsAS6fLWZZWsm6xXv6VNvzRC
+	6Iv3JqvQ+mFiaLJv36EqWg5T6gX7GEoWdd3xiOkFsu5PVQET2e7lpTSQbHi0WRMMDZLur91T7AP/o
+	f7CvD58/pSMibK9s+v4mYL/SKqmOri9XDzHtb+FPXnmcYBk+exXwYpfLoy4/Covvnv7UPC0s6Aj9v
+	QYsyiwjCQdeEUSgXmvgbmTB+AMslR1iOmqvs93XRZdC4bngbl2xmKJsoukLVwuP8lKrbg8Oev2GwU
+	rBLdWYOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUPBF-0000000CHsM-3yuH;
-	Mon, 29 Jan 2024 10:47:57 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rUPBQ-0000000CHxb-3lDr;
+	Mon, 29 Jan 2024 10:48:08 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUPBC-0000000CHrS-2c0Q;
-	Mon, 29 Jan 2024 10:47:56 +0000
+	id 1rUPBJ-0000000CHtI-23uX;
+	Mon, 29 Jan 2024 10:48:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706525273;
-	bh=8Au+/H7E9o8ti3xE3u2gCsCzYHjbfhoH5OhsSjspxj8=;
+	s=mail; t=1706525280;
+	bh=xEqQM1fzy9szP+fpqrJ11n+/1aP8eVpnc7QXFhpkMec=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=0C0rvqiskSDGqyZG1knyWqrtpk+bGHC4dANO/XqqQ8pIbZK+5jHir+Fom/2ihzX2r
-	 P2rr2NfMiZc/IO+YTd4qz7y4CmURH5LjUsD36HAHK1+WHqmwuSbWbjmh419yRsXmgk
-	 xFKST7L1JsjYr+ypMyVV3h9I8jAE4EuAUvEeJ9u+3pmCLClBy/9VrNvfl1oqk1izAa
-	 X+HF3L3lJLRVn609OYsayVO3DJrp9OdGVtLkFc6qIrnjW0+XZ8xnpz5YxPnm7NQSu8
-	 3lWR+AQ0a3JDmJ8II7TEYDJzG56Q2dsSh591nfnGHBDDVFdxclKVAFKrigrZ2rpuuj
-	 RROhr6N5EAeXQ==
+	b=PWiNFEaj6ZhhaWudOxKUE7+4KkASnAySS/YDm22TwFah+JKIH57MNUdRqrygzZ/l2
+	 ckivlCZ3tgV5vCHKVsH5R77QdNxSXe2oyVN1o/QRgoejKWLhQOdfre6r/iOm0rIlkL
+	 FRxe8kTulECeWbfVgT0INS2b2AjVAMXbdjv37H0Lu8BPTzN74DdbeXJxiWEtsIK9NC
+	 8NUwmWg2ZAkMQI53FRmnFDwtUyqmGmjQ7H6p2rQ2vjm480F8B7bdHqUIWkjXCuaktg
+	 ja0DYn+xufl6U6IsybIe9YdMVaxs84Y14f2v3kPU7v9rF/L8hjSEfo0MS2iSqdpz8i
+	 gDo1A7ri6M0lg==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 8A0793780C1F;
-	Mon, 29 Jan 2024 10:47:52 +0000 (UTC)
-Message-ID: <6f362f4c-7a84-4979-b507-2384363d63ef@collabora.com>
-Date: Mon, 29 Jan 2024 11:47:51 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 907F13780C1F;
+	Mon, 29 Jan 2024 10:47:59 +0000 (UTC)
+Message-ID: <282822ba-0e96-4078-a807-4b0b08e42014@collabora.com>
+Date: Mon, 29 Jan 2024 11:47:59 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: (subset) [PATCH v3 0/6] video encoder on mt8186
+Subject: Re: [PATCH v3 1/2] dt-bindings: media: mediatek-jpeg-encoder: change
+ max iommus count
 Content-Language: en-US
 To: tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
  matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
- Eugen Hristev <eugen.hristev@collabora.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Eugen Hristev <eugen.hristev@collabora.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, bin.liu@mediatek.com
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  robh+dt@kernel.org, kernel@collabora.com
-References: <20231228113245.174706-1-eugen.hristev@collabora.com>
- <170652472371.127352.1415914611175058375.b4-ty@collabora.com>
+References: <20240127084258.68302-1-eugen.hristev@collabora.com>
+ <170652472373.127352.5854831299483160743.b4-ty@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <170652472371.127352.1415914611175058375.b4-ty@collabora.com>
+In-Reply-To: <170652472373.127352.5854831299483160743.b4-ty@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240129_024754_847480_AA31DE08 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20240129_024801_772318_C89F3DB4 
+X-CRM114-Status: UNSURE (   7.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,36 +82,23 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Il 29/01/24 11:41, AngeloGioacchino Del Regno ha scritto:
 > 
-> On Thu, 28 Dec 2023 13:32:39 +0200, Eugen Hristev wrote:
->> This series adds support for the video encoder on mt8186.
+> On Sat, 27 Jan 2024 10:42:57 +0200, Eugen Hristev wrote:
+>> MT8186 has 4 iommus in the list, to cope with this situation, adjust
+>> the maxItems to 4 (instead of previous 2).
+>> Add also minItems as 2 to keep compatibility with current devices.
 >>
->> Few patches fix the binding, there is a patch for the DT node,
->> and one patch for the driver that fixes an imbalance.
 >>
->> Changes in v3:
->> - removed the patch to add dma-ranges, because this was intentionally
->> removed (e.g. https://patchwork.kernel.org/project/linux-media/patch/20230303013842.23259-3-allen-kh.cheng@mediatek.com/ )
->> also removed dma-ranges and cells from the DT node
->>
->> [...]
 > 
 > Applied to v6.4-next/dts64, thanks!
 > 
 
 Sorry, typo: v6.8-next/dts64
 
-> [2/6] dt-bindings: media: mtk-vcodec-encoder: fix non-vp8 clock name
->        commit: b8248c4831787f0854e2e856fa83da68ad5afcde
-> [3/6] arm64: dts: mediatek: mt8192: fix vencoder clock name
->        commit: 0157de54920b556d575ffc82ae5d16f2b4cb9494
-> [4/6] dt-bindings: media: mtk-vcodec-encoder: add compatible for mt8186
->        commit: 178eaba322868a75c2e0ad078fcf91c3a6f5abba
-> [5/6] arm64: dts: mediatek: mt8186: fix VENC power domain clocks
->        commit: 2a08dba6bf6637295175f48ad870a24833955cd4
-> [6/6] arm64: dts: mediatek: mt8186: Add venc node
->        commit: f971c7ee301bbd423e06f82bcae768223a4dd602
+> [1/2] dt-bindings: media: mediatek-jpeg-encoder: change max iommus count
+>        commit: b824b32dd5e98221cbe2e8bcccc6fb4134e35fc1
+> [2/2] arm64: dts: mediatek: mt8186: Add jpgenc node
+>        commit: 4c5b46fbf52d52b0f392f0fc3913560bad438e49
 > 
 > Best regards,
-
 
 
