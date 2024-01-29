@@ -4,95 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7A04C47422
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 12:52:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79238C47422
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 14:18:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wh5PJX6dWm7kSDwjmqjlz8KtwMMRblZ6e8LLH/QNoIo=; b=wo14MCsLuZHEl4SKRD8fFGKham
-	+aeQYYAeseCE5a3rS81JRhdLkdEj+Ndab2NpcNhbVcAdq/SmVFmiNBx4f1Ul1/ZTmYLQoiAkxuNKj
-	v+B28/qI6K8Nz41PLk2rzz5oA7KuyKz8DanwhfhorXHfff99Af3f4UA9qw8J/rrOiUC6sgiv/07O1
-	j3OtSwdt2ZAGQMRSc58xLtKIyyxX9Qw2dAYf1g7uznZ/v9fOoWnBaaOowBGMR0CBy234Obsw5/Mlc
-	QDsPUB5Zlz/M23wvdNXAsIDqbSc/5yOZJtOQKYEq558cgJUawAly+kuNxHgr+Mu/ODCrVSLJMNwB6
-	3rUu1wxQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e6qIV6loRIOEv3P7fF583oE4mQ6UsCs4t3QHOrZAQ0c=; b=Xs3DwGcxS1wNlCpRAEa7rHesAt
+	VtBWPtpt65m9Y/ANtBtIrWgn5PYykqBStH76z6dHyavgjGkYVF3qWHgUampLZuoCe5H2oFfvor2tV
+	Z5Ui+t+USomeinoTtkedv6H6MAN30Dkn5LvPpSXqFxhebKQ330MhmD0nndXgTlshldMOSvEMDIV/K
+	jK5/9ad7Eu+WrSFW/qkIIAzJbI+S6zgJHgsqvi/dL91BpH1KBNGBVSuozBE/6YGyd0/IFwDOFPNtB
+	993eVCgcyr7+1Kg0NgC5atffQqncWv1bI4fWx2aQz3TASNPJaHm94jg5JQC/IMcoLdGjuwtRR8ZgB
+	tGtqCd5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUR87-0000000CiTz-1RMr;
-	Mon, 29 Jan 2024 12:52:51 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1rUSSi-0000000D287-09n6;
+	Mon, 29 Jan 2024 14:18:12 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUR83-0000000CiQy-1oQc;
-	Mon, 29 Jan 2024 12:52:48 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-a33735d22fcso233560066b.2;
-        Mon, 29 Jan 2024 04:52:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706532764; x=1707137564; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=wh5PJX6dWm7kSDwjmqjlz8KtwMMRblZ6e8LLH/QNoIo=;
-        b=cUJJLv5FF3mG5+ZzzP/SDGT4F24aFLBl3MBjG5toY94fu8XR65XSdrWgiD4Fj8jS4o
-         Wh/82VkZAtfnSS4aUBgbsM3/kdW7n5Lpuv4Tdmcyu38L2rZsyvVnNxsahS4KMaQWEkmk
-         2AmHZt4voowtx6FNqEOGsDv3Oe1nXbkLePQSAqmKCWWYm9Sz2sazO89+1Fx/WUhY6KiU
-         98N3aMSfRzZMinZwzIxUXgWHA+fLqXB7DsZOJdg3yc5ZTkNp71eLGB6Hi0i2EY6Prg63
-         wSIZqGDWKiRTZOX9P1Ophh9Hy2WmUTMno5jyThp4wTxallaLEAY2v5OXCFfeKpz04ULG
-         81ew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706532764; x=1707137564;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=wh5PJX6dWm7kSDwjmqjlz8KtwMMRblZ6e8LLH/QNoIo=;
-        b=wzOwqpGeGwcGA582eow9BpriOiHI+n8cixxodkwfe6AdfCdtTROfqLwn8Gq8F6R0k8
-         jtMJvzqH6zSqEMiVQiYrDhaOa4ot1hXogX37gKdxcrMooxVHqdwph1B4BCZZT4b4NCvq
-         U/mWoiqCcw9lSW9ZX9nE1/2YOtvRt+xP9i+y1yxCStBxS557Wzj5tWGU7FsoYjcmlr1H
-         aOs5tXONfkW8UTyO0IhJcY/j92BaizWtstx4kZcd2SEeAgvlUJJnTokUtyn3XYG2uqIb
-         6HLQJ2mKoF5XL68DMKjxlL+QEEZwiNvUH+CgyOYGRsBVbufVxA0JCrqmRcD83ckc5hey
-         MysA==
-X-Gm-Message-State: AOJu0YxFCvqKCGNvlZZoysZyjZYVbO2tqKJJRyClpm1LHAvT1rYJlCFe
-	m4aqdT5tXpziHy7evGSdMX3I2rEz4jEGD2PRCJ836efnCuaUsX+m
-X-Google-Smtp-Source: AGHT+IGbC5F/QL2xZapUcYogbDNebCDs/L/gjri3hScnNm/4bpqmoUfd2F93xmirprhA8WNJe/FXiA==
-X-Received: by 2002:a17:906:a45:b0:a28:fec2:ca17 with SMTP id x5-20020a1709060a4500b00a28fec2ca17mr3525460ejf.0.1706532764054;
-        Mon, 29 Jan 2024 04:52:44 -0800 (PST)
-Received: from skbuf ([188.25.173.195])
-        by smtp.gmail.com with ESMTPSA id cu12-20020a170906ba8c00b00a27a32e6502sm3847552ejd.117.2024.01.29.04.52.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jan 2024 04:52:43 -0800 (PST)
-Date: Mon, 29 Jan 2024 14:52:41 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: arinc.unal@arinc9.com
-Cc: Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>, mithat.guner@xeront.com,
-	erkin.bozoglu@xeront.com,
-	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	id 1rUSSe-0000000D25v-2Pkg;
+	Mon, 29 Jan 2024 14:18:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1706537883;
+	bh=kWxjb4ml+ynyqsVlPQAgRdTWagFtJPgdg5NTdak0Vgk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Dx1cQo0eksjy1IF4R7mGyf6fjgGfyGo2p3LnfOahQwW0DsfFpcsODh8KjqtS8w4nu
+	 YmOVBkU+2MXNXwiOEzr1soD+Tc0RKQ0+B+EgFuLGed80bHmwc5vaE6L/V4rBLa9e9m
+	 m1GIgnKytF3TulAjvhBrEb7Om8HrCjYtyO5GuDd8BAzTgrwPF4RqAVVi3FjjyWrAyc
+	 1rxtrTnUYdl5rjbKU6hLaGYpHLKklL3q/uymLgST4jyo9GSxE1eoO18bqIpbBGPU+7
+	 NCH3tHg0huh0J5VEy7E0oUXchipPlfjqah6BKwx7wJReu52ieiFIn20WRLr0O2HOCn
+	 wAjMIlGpttttg==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C08DC3781492;
+	Mon, 29 Jan 2024 14:18:02 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	Chen-Yu Tsai <wenst@chromium.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Eugen Hristev <eugen.hristev@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v3 6/7] net: dsa: mt7530: do not set
- priv->p5_interface on mt7530_setup_port5()
-Message-ID: <20240129125241.gu4srgufad6hpwor@skbuf>
-References: <20240122-for-netnext-mt7530-improvements-1-v3-0-042401f2b279@arinc9.com>
- <20240122-for-netnext-mt7530-improvements-1-v3-6-042401f2b279@arinc9.com>
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 0/9] arm64: dts: mediatek: Add MT8186 Corsola Chromebooks
+Date: Mon, 29 Jan 2024 15:17:46 +0100
+Message-ID: <170653783721.1024557.10198191746987942354.b4-ty@collabora.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240126083802.2728610-1-wenst@chromium.org>
+References: <20240126083802.2728610-1-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240122-for-netnext-mt7530-improvements-1-v3-6-042401f2b279@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240129_045247_511905_B41290E4 
-X-CRM114-Status: GOOD (  13.53  )
+X-CRM114-CacheID: sfid-20240129_061808_823572_847EA3AE 
+X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,30 +82,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 22, 2024 at 08:35:57AM +0300, Arınç ÜNAL via B4 Relay wrote:
-> From: Arınç ÜNAL <arinc.unal@arinc9.com>
-> 
-> Running mt7530_setup_port5() from mt7530_setup() used to handle all cases
-> of configuring port 5, including phylink.
-> 
-> Setting priv->p5_interface under mt7530_setup_port5() makes sure that
-> mt7530_setup_port5() from mt753x_phylink_mac_config() won't run.
-> 
-> The commit ("net: dsa: mt7530: improve code path for setting up port 5")
-> makes so that mt7530_setup_port5() from mt7530_setup() runs only on
-> non-phylink cases.
-> 
-> Get rid of unnecessarily setting priv->p5_interface under
-> mt7530_setup_port5() as port 5 phylink configuration will be done by
-> running mt7530_setup_port5() from mt753x_phylink_mac_config() now.
-> 
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> ---
 
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+On Fri, 26 Jan 2024 16:37:49 +0800, Chen-Yu Tsai wrote:
+> This is v5 of the MT8186 Chromebook device tree series. This series also
+> depends on MT7921S Bluetooth [1] and IT6505 audio [2] bindings.
+> 
+> Changes since v4:
+> - Rebase and fit in mt8188-evb in board DT binding
+> - Change "touchpad" to "trackpad" in descriptions and commit logs
+> - Drop #address-cells and #size-cells from it6505 and usb_host1 nodes
+> - Drop "ports" nodes from type-c nodes
+> - Fix pinmux node names
+> - Split anx7625 reset and power-en pins into separate pinmux nodes
+> 
+> [...]
 
-I hope this moves the patch set out of the 'deferred' state.
+Applied to v6.8-next/dts64, thanks!
 
----
-pw-bot: under-review
+[1/9] dt-bindings: arm: mediatek: Sort entries by SoC then board compatibles
+      commit: ab7e0bfc2ce6d9e81f096e4058e1ea5f9d3c11fe
+[2/9] dt-bindings: arm: mediatek: Add MT8186 Tentacruel / Tentacool Chromebooks
+      commit: 72d721234de52837d84f9a8ffe78e04a61bb9b37
+[3/9] dt-bindings: arm: mediatek: Add MT8186 Steelix Chromebook
+      commit: 0f20d2a2ff103ac9aa757357ddf1cb137f767d3e
+[4/9] dt-bindings: arm: mediatek: Add MT8186 Rusty Chromebook
+      commit: 66135c73d2dc43f7f0fab6e7fdf44fa8e42a9b97
+[5/9] dt-bindings: arm: mediatek: Add MT8186 Magneton Chromebooks
+      commit: a597b13dc92cee39547e894908f787210cbb1a99
+[6/9] arm64: dts: mediatek: Add MT8186 Krabby platform based Tentacruel / Tentacool
+      commit: 660324894cc56e60711a12de51d94398f4e794b6
+[7/9] arm64: dts: mediatek: Introduce MT8186 Steelix
+      commit: 5252fa5b5ecbd65fdab2dfec0c14b96d00ae4b97
+[8/9] arm64: dts: mediatek: Add MT8186 Steelix platform based Rusty
+      commit: 498a5b6f8b67f60e5859bdd3d582274ae3aa2bbb
+[9/9] arm64: dts: mediatek: Add MT8186 Magneton Chromebooks
+      commit: 71e147d069291d0c92e4df903a2895eb5587b559
+
+Best regards,
+-- 
+AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
