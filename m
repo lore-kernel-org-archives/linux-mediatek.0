@@ -4,82 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52A07C47DDB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 15:51:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6AC4C47DDB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 15:53:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lnZ3YgjHwasXf0eyT4vj8b0XymGE9K44gBnCacxIQwY=; b=Tb+WmP2FGSDYaP1GdVDi5ZVwqp
-	Pve/cQrpG366i8W4f/AlyBNXv4SoteXpujO7LA2LBX8n3KmL1FfghGdIoZoCgRVnTQiZCQiNYKzna
-	5dpLKmbrL3LJjqetDZqCChcn5Ej4gYV7ywizS015ZaXh5XJeoyqO/L8efmuXoxhKEd3ltc/g0pI21
-	+rmv1cWlobK/rz5Dp2UK30XIW2s3IEdJrfWzJ6NjWL3NLL52gi8yD+y27L1L4qcc8WP2xJQ+KyKY9
-	hIq6EoSuAnOgLFJqyje0RHSwfoat8h8pbeKl273x9gkpuoZVIg+B5pGC6D48vOW89LvXVlLUtM7Pd
-	v2imiYJA==;
+	bh=sl6xRcc4GrSXipgnGWDS4wf9NmHolrTlrkRgPUAPTZc=; b=QbeY+Zpo/xQN2cMPaX3CD7zhJP
+	IoJRXDg+yoFnNw5UAzSIuLiZk9/5d5T1uJJSdKZft68audwLguyZhgTFlJFK14G2wXEyj3VPkQUta
+	ZqwyUaXYQ3m5DHpAXpI63TMFVskfn8ajRf2VOHDp9vvZxnnnEqUx+1XA/a+nCSvQh1EDa/9virDUH
+	qv0JGppc8N7o6fa02FUc/ddasSBwAvhzmpHLQENlvdRRfj74WxyhdgaFGG246xM2kbVjIhsBsD89G
+	i9iSI9voUflCC425zQ/He5D1XvSwnUpHkrqj2vcZbpvC9DjQMQTh9apJ8LfKL90DilO+hLghJMkzu
+	P8vuYj/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUTv3-0000000DNua-00Ok;
-	Mon, 29 Jan 2024 15:51:33 +0000
-Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d])
+	id 1rUTwv-0000000DOFx-2abT;
+	Mon, 29 Jan 2024 15:53:29 +0000
+Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUTv0-0000000DNtX-45A8;
-	Mon, 29 Jan 2024 15:51:32 +0000
-Received: by mail-io1-xd2d.google.com with SMTP id ca18e2360f4ac-7c009016d5bso4384039f.1;
-        Mon, 29 Jan 2024 07:51:29 -0800 (PST)
+	id 1rUTws-0000000DOFF-2IhX;
+	Mon, 29 Jan 2024 15:53:27 +0000
+Received: by mail-io1-xd36.google.com with SMTP id ca18e2360f4ac-7baa8da5692so168007739f.0;
+        Mon, 29 Jan 2024 07:53:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706543489; x=1707148289; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1706543604; x=1707148404; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=lnZ3YgjHwasXf0eyT4vj8b0XymGE9K44gBnCacxIQwY=;
-        b=VUBgzzsiABipVSGqHkChLgdDAg9vFjvEtGuFC2XGvSPYd6ooJoUaZNd5H2m//LMsFv
-         5b0Kq3cojZ9Ta/u1k/rB8bHq1lZjoZBIcyrSq9SngbM9Lj6Gm6VmG+Rke4+Geu5b9AAl
-         HU7epfb1ZbGwQBF5SBbNPuO0R2Bo5rtZDRCvTJDixY0dQqwQAL8qs62N7Mumwv32/6KJ
-         Fldanw/J7Cd+SpEuIklvGH5gvcOAxdYbRM5YVESF/TAZR3+srH8qqYqFE7yVHH8k6+lP
-         M6yz1MncD7r7KVBMvH3A/WJideONriEpuWyrGPBCoRAUBK8hEqWJ96y1Tpqz5iaXj3mf
-         4k3Q==
+        bh=sl6xRcc4GrSXipgnGWDS4wf9NmHolrTlrkRgPUAPTZc=;
+        b=LqKXKGFTNOio5aMLhaC0C0tR/MHEyoH3Er/4lQzFC9q/9kSWrretPgXfvizjgFyX6D
+         SM8+PUKr2/gE8h6YizSil8+pHk28EHxf58oPQ3v5Q/JuLOFJgxah+gnsXXmI54JTwOJY
+         /e0wmnVxT2tj/AlZfUi9Nbitzt9wLVoQcZnZ0dggKHd05CU90x7xzN7o/IQKounKAQ+N
+         kHh+kUniNRO4lkxQUaTCwIuE0WZgVDgOvu00B+pbfZf5+qreCknHXTL9Bqa4UpLVIkJO
+         KnFU3kNTasqfQRw25FguS24nk2n2ze3GwUQhbUN3vKnkB8lPshJHU+e3KT3AyqPsA1gk
+         /myw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706543489; x=1707148289;
+        d=1e100.net; s=20230601; t=1706543604; x=1707148404;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=lnZ3YgjHwasXf0eyT4vj8b0XymGE9K44gBnCacxIQwY=;
-        b=NgDYAKq1PIsQAXM9bvo3JlE825qiKXTj3vaP989rV8VXzm7jlhNbgZsx2cG9tmQ9ti
-         cL3h1S5dZjpLTBSNgYL4QIjO7dhLMnlCDpfnd//QBLZrXt8TaBGOXLY2r2gsqfcBZc3P
-         L4Y/HjSID8bTQ4dhvNkm7bH46WCzurXhAaEWOG0k3cyfJAipkWAXCITO3Cbd5pu74ego
-         hIxDwZCBGuXRQJV1qOM287vByT1zf6yLUocmUCyiM4XMTCQlwpqgsNQ4SwW4Mv2GU9KS
-         u5eP3+mz+1ORZdFlZZpcDJsDnOzmz02OdmPUqwSc01UJtL+ITJ7JDu54ZXwqdWXBW/qR
-         8v0A==
-X-Gm-Message-State: AOJu0YzSaLbL7il51sHqWoqjHEj7AU4B7v1hS/6n/l6/I1T0Pb5v9+6m
-	st3ZH4SApCSXKMkirUrrZIyR8BVWJ47elSBqE12GZ4F/COrob+ONLoeVPDaH1G0=
-X-Google-Smtp-Source: AGHT+IFHaUYWd7WQF9lnQ7Tl+h4JGiyGBYw/dJ5SuMdUghqqpPbhQtM14d8IaHAwHpbGA47Yv9fiHw==
-X-Received: by 2002:a6b:e502:0:b0:7bf:eb28:50d5 with SMTP id y2-20020a6be502000000b007bfeb2850d5mr3757222ioc.21.1706543488923;
-        Mon, 29 Jan 2024 07:51:28 -0800 (PST)
+        bh=sl6xRcc4GrSXipgnGWDS4wf9NmHolrTlrkRgPUAPTZc=;
+        b=M65Q6jhuDBHLHEus4CdQRc1B14fYCpiIvgSFASQg+AxzQtwIASVPXIfyJLj51e9pXm
+         +0NBeOtwkKmVluARauPOMQHvRZP0PXQED/ZsaaEB77vC7hcPYPx/NW+vT+ONPo8bh4Z7
+         sbDSuKryyWr36+3QzBJSGZz1+XqWJb2DHaip24INrUzlYK4KUdW9SboViVp11oLfKERG
+         8FV06E9WXd2rziYf3oza2X6a4BWFrKe7ehqL9xv1XyZBNHB5TauwmZDb8LZwBkVbw+wH
+         MMJHuxr4pdjvrId/XZ9RXZj2C7G0mdLztn/8bWcHpvoGZUWq+WA30SYl0lpv3JA7q/Ce
+         DzRg==
+X-Gm-Message-State: AOJu0YwJ+qDAjpqH6a8Te2T/ASBUVho65g0Dm8KummLYd8hQXCwXcASR
+	gfcEssVBfjnD2yw0v4YZ/yVCCzpk5fVU9SJ5HI7eUI0IiK0dcNI8
+X-Google-Smtp-Source: AGHT+IFeXojZ2VrLb+XFsXRQtRFrNNcadfRkmESUIAq8odSi/2+m0qmbNDT3IyAlYaPjKV+/n6wEUQ==
+X-Received: by 2002:a5e:c60a:0:b0:7ba:99b7:2a72 with SMTP id f10-20020a5ec60a000000b007ba99b72a72mr7031441iok.20.1706543604558;
+        Mon, 29 Jan 2024 07:53:24 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.161.188])
-        by smtp.gmail.com with ESMTPSA id b19-20020a056602001300b007bfe121a3acsm1365349ioa.39.2024.01.29.07.51.19
+        by smtp.gmail.com with ESMTPSA id y19-20020a02bb13000000b00470b40b98dasm1081377jan.38.2024.01.29.07.53.21
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 29 Jan 2024 07:51:27 -0800 (PST)
-Message-ID: <6b05f990-b919-46e5-b9a7-49a667e012b2@gmail.com>
-Date: Mon, 29 Jan 2024 16:51:17 +0100
+        Mon, 29 Jan 2024 07:53:23 -0800 (PST)
+Message-ID: <aeabb741-97a1-4399-905c-da0f01304a1e@gmail.com>
+Date: Mon, 29 Jan 2024 16:53:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: mt8183-pico6: Fix bluetooth
- node
+Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: Fix a memory leak
+ in an error handling path
 Content-Language: en-US, ca-ES, es-ES
-To: Chen-Yu Tsai <wenst@chromium.org>, Marcel Holtmann <marcel@holtmann.org>,
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, linux-bluetooth@vger.kernel.org,
- netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20240126063500.2684087-1-wenst@chromium.org>
- <20240126063500.2684087-3-wenst@chromium.org>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
+ Lukasz Luba <lukasz.luba@arm.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Balsam CHIHI <bchihi@baylibre.com>
+Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
+ "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, linux-pm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <481d345233862d58c3c305855a93d0dbc2bbae7e.1706431063.git.christophe.jaillet@wanadoo.fr>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  xsFNBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -124,12 +122,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240126063500.2684087-3-wenst@chromium.org>
+In-Reply-To: <481d345233862d58c3c305855a93d0dbc2bbae7e.1706431063.git.christophe.jaillet@wanadoo.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240129_075131_049946_26478999 
-X-CRM114-Status: GOOD (  16.25  )
+X-CRM114-CacheID: sfid-20240129_075326_627817_E6D7C3C2 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,38 +144,33 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 26/01/2024 07:34, Chen-Yu Tsai wrote:
-> Bluetooth is not a random device connected to the MMC/SD controller. It
-> is function 2 of the SDIO device.
+On 28/01/2024 09:38, Christophe JAILLET wrote:
+> If devm_krealloc() fails, then 'efuse' is leaking.
+> So free it to avoid a leak.
 > 
-> Fix the address of the bluetooth node. Also fix the node name and drop
-> the label.
-> 
-> Fixes: 055ef10ccdd4 ("arm64: dts: mt8183: Add jacuzzi pico/pico6 board")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
-> Changes since v1:
-> - Collected reviewed-by
+>   drivers/thermal/mediatek/lvts_thermal.c | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
 > 
->   arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts
-> index a2e74b829320..6a7ae616512d 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts
-> @@ -82,7 +82,8 @@ pins-clk {
->   };
+> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+> index 98d9c80bd4c6..fd4bd650c77a 100644
+> --- a/drivers/thermal/mediatek/lvts_thermal.c
+> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> @@ -719,8 +719,10 @@ static int lvts_calibration_read(struct device *dev, struct lvts_domain *lvts_td
 >   
->   &mmc1 {
-> -	bt_reset: bt-reset {
-> +	bluetooth@2 {
-> +		reg = <2>;
->   		compatible = "mediatek,mt7921s-bluetooth";
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&bt_pins_reset>;
+>   		lvts_td->calib = devm_krealloc(dev, lvts_td->calib,
+>   					       lvts_td->calib_len + len, GFP_KERNEL);
+> -		if (!lvts_td->calib)
+> +		if (!lvts_td->calib) {
+> +			kfree(efuse);
+>   			return -ENOMEM;
+> +		}
+>   
+>   		memcpy(lvts_td->calib + lvts_td->calib_len, efuse, len);
+>   
 
