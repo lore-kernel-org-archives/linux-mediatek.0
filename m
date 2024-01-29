@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03101C47422
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 10:09:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6F38C47DA9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 10:09:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oCnOO+UTVrXPIOe9O7vUykX1yLvT1Y878UykbZlSgbw=; b=fKdtUf23Rf1e/92CAU7Ifhn9MF
-	JWaZOMs0UdjsE5xk2JBJ6QlxtVL0Pg1CRFTBYOhLhiG6Z9G2XI8oGl/+hUwXTiDCyUmitt5UHn3bc
-	sjcoSZjXJgHR+xE6xN0qQkLCRmAs2cEViWmeuv4JmyQdwhNkmqMIKg8nkyiQhgSrHgz0hBp2VVs/s
-	WaPo8blQNQJT/VKnOpBTFPjcW09S6iBN+db3LLGJf6ekyiCYYiBOzwuThNwK1rgUBd8YKiGXhviBl
-	rQhVQf/rvQa/MCJ+wgczcIO5QrxndTeLdyUnY1tkqosAhoHTnMenNCtO9VcB8stVIdrD8yZd6g2gY
-	hbsgBTZg==;
+	bh=K/VfVkQ1kJ239VnsifRk+70cpRN1QFvP1au2zhLIk9k=; b=zxSxKbedbwxCwS3X8jHrBghrXM
+	8q6kii8/Cuc3acQ4bwW8MJEujgSwoq0SGILi8q9dR2TV4kk6mVQbEK170L1TQPSWYDhcgCnUVVMbx
+	+LI3zBEM/sacvX80UTyEZOEP0gDjbEMFq9snQuI9B2V7+6ki1iImam0CCa9/HJ1td7ZslJ+Oc0sOe
+	YJdTUIeH7Rr15eC5iK8+ToGPUxGZMmOMVQVH4h1b1Ol8KRFG9acrdRCQGzISw0Mw4aaA66uRgC+iO
+	JWC172LHAP1OD5m/Yejjy+LbH+v8sjstqjlTRxoy7X3gCQFVbmJMeFGNacF1iFtgLhb5wKs+jOtTz
+	G0a8S3+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUOZk-0000000C9uJ-1p6j;
-	Mon, 29 Jan 2024 10:09:12 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rUOZr-0000000CA10-3Znl;
+	Mon, 29 Jan 2024 10:09:19 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUOZY-0000000C9kK-0AoA;
-	Mon, 29 Jan 2024 10:09:01 +0000
+	id 1rUOZY-0000000C9kg-44l7;
+	Mon, 29 Jan 2024 10:09:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706522936;
-	bh=gjTm7ZmqucA7gg9UGgFYPMnYH2k2+PyRYYu5UyXv2Qw=;
+	s=mail; t=1706522937;
+	bh=a1BeoBXrQ6ECM2Rq31BpawjwjfUF2QOaHLYwz7euRYI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=I8YO5r/r038C+J06g3ItoGr3pBXQhzN4TUSw5RrWcJqyfub52KAU89O3q+CHHDo4x
-	 nHYgcYUOpv4jGStICWrnh0nZQVepkftxG/unuJwzp65Q/KtR0/YrXZT7Po8uZdHabR
-	 ZTiMRqUk+CO0NlcsM0VsAqilkMJMZIzGeDgeKfOt595RLKf/hOe99dmDd38IT1rlO/
-	 kK/TQaCHc6pACyU5DPOAms1KCILfsNvRdC9rLZx66TLn5WugpLTBUtoflxx9wwoNi6
-	 INrAlSxTgT5UY9MCxnEIbbSxTGMQxj9aP9cxn+U1RB0zcl8eSlY9r+5rR6M/4ylH5J
-	 0Q0637TBWBPKA==
+	b=OpjtNAhohGldYipuSLHEWqQ2kpkBnux9VEepr8MQgIGwQGrMyKbtC7pp0xzbFFEKb
+	 MMOloc5DfjwVNERvhyaEwubtVNjskkIJVV3UvqFNoJUac1EiR5ZL9wsZ2s2GZm8pdu
+	 RD1375GNbcmwJY0FdfKa9zaJk7tHxZjsI7JRPP4DMOE3uHCW6lpmChZo78cF3maDgG
+	 f9/939otycow4CAM9B4GsdvssNtI/+sStQpxblJ8aBVByqCKuYnVolMvtPACJPPDXd
+	 nvrhwrl5Hq2rudzseQ6ZHKkJWRx4b3h/7mcuV4/LkhvU5CMXgJ9c0WjYPdlemNnKT3
+	 bNavaKxwOhhDA==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 95DF73781F92;
-	Mon, 29 Jan 2024 10:08:54 +0000 (UTC)
-Message-ID: <c27bc8c3-6ff7-4dd9-a4e4-4eef54b3feda@collabora.com>
-Date: Mon, 29 Jan 2024 11:08:53 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 23C0B3781F9C;
+	Mon, 29 Jan 2024 10:08:55 +0000 (UTC)
+Message-ID: <dab0e099-8223-41e3-9a37-126540e0cf19@collabora.com>
+Date: Mon, 29 Jan 2024 11:08:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 02/17] media: videodev2.h: Fix kerneldoc
+Subject: Re: [PATCH 09/17] media: mediatek: vcodec: Fix kerneldoc
 Content-Language: en-US
 To: Ricardo Ribalda <ribalda@chromium.org>,
  Tiffany Lin <tiffany.lin@mediatek.com>,
@@ -83,14 +83,14 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev,
  linux-amlogic@lists.infradead.org
 References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
- <20240126-gix-mtk-warnings-v1-2-eed7865fce18@chromium.org>
+ <20240126-gix-mtk-warnings-v1-9-eed7865fce18@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240126-gix-mtk-warnings-v1-2-eed7865fce18@chromium.org>
+In-Reply-To: <20240126-gix-mtk-warnings-v1-9-eed7865fce18@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240129_020900_258494_67491336 
-X-CRM114-Status: UNSURE (   5.59  )
+X-CRM114-CacheID: sfid-20240129_020901_182446_1363EAE0 
+X-CRM114-Status: UNSURE (   6.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -107,12 +107,10 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 27/01/24 00:16, Ricardo Ribalda ha scritto:
-> Named nested unions need their prefix:
-> https://www.kernel.org/doc/html/latest/doc-guide/kernel-doc.html#nested-structs-unions
+> Those fields have been removed. They do not need to be documented.
 > 
 > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
 
 
