@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA420C47DA9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 08:35:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 175BCC47422
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 08:35:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zOpMwu4BrT/uKABhkgmLORQQMZCHniuk++mO9S+bEnA=; b=33EzIH4QoO+QLhDLTepWrLIRcb
-	j6f1b9+XSvkHMT69j3UV8ss07v5aW+r7vGnn7vLdz2fRaDWpjtFif1DXFCKy1LZoMx+eZKDNwZy09
-	SuF+6r6bJpYz6grwlv1T3FmUyK1gJZGHDOZnPlF4aA/HHbes2oHAzqFoMHQ8C2Vs7HBxkK7Pw3+cw
-	mQKZ+mjgcO6HoHwnhALnk30IfdGxVjFbaH3Sst9z/q5tWTum4MHoPsvS0GXg7zRJ2WuaC+MwX7GNO
-	jdnVGx1yxRX0uUdv0jtuH6EK8Sagub4FgJy4oxdJVwQOuittAPwfNDXx7/cLWdWqqgysjboPGVy4p
-	YO+V+pTw==;
+	bh=vJ6SnD9MWpz/gLXXEictIBaqCdlg7dI3la2NXwfkwhU=; b=VMFtAr5GfKUI9xQvi9eV+kZHuk
+	J4m0SVFOHNftWZ6OW+ucV7HYxjF8ZEhhRL/Q+VDNieNWmLfVNEtcOngE+VgLtd6eb8TrDdEdIiZoN
+	JafbCbt21geZUQxLrTkyZx7/bDUmTWWbnjv4Fio3/ObZNV5/eukIYYR7kc6kDVme4PVlBYKRwEXTc
+	0OkabYLYgkI1soGx6c35oF+z9QGb5855L5NAbeVrEZkSWJ67MjuOgIOPOO8CMXvRwgXRY4vGF3Gzv
+	29OjEkaOVqsbn3ue3IhJ0Z+q/QXMwBnEhDm9MW2EIRY8Xi9AoFcuEdKu0zMqjs7W7Vju3LQLVaPpi
+	T+ixeyMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUN6a-0000000BnqZ-0smk;
-	Mon, 29 Jan 2024 08:35:00 +0000
+	id 1rUN6s-0000000Bo0H-31e2;
+	Mon, 29 Jan 2024 08:35:18 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUN57-0000000Bmwk-3InE;
-	Mon, 29 Jan 2024 08:33:31 +0000
-X-UUID: 09f0969ebe8111ee9a263b4415211400-20240129
+	id 1rUN58-0000000Bmxs-3BKx;
+	Mon, 29 Jan 2024 08:33:34 +0000
+X-UUID: 0952e458be8111ee9a263b4415211400-20240129
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=zOpMwu4BrT/uKABhkgmLORQQMZCHniuk++mO9S+bEnA=;
-	b=kbYQMCJxZDOJTnCBKq6ESF6l5KiSoi7gKpSKbpKPmUcgxha2UPIYGHev7QSTm9mQEyUofMA0wXLnebd7jr851q1jXzXiZ6Rw7Bv6HnJEMKQfQwcdwv8m4GOebViz+N61mguELzZ1AxdFafi+2D9O/UVV8SQE+us9oK+qL4Rhux8=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=vJ6SnD9MWpz/gLXXEictIBaqCdlg7dI3la2NXwfkwhU=;
+	b=DtajdotYy9MZNQSYqr/AGypdFEbxzk/CxkjgV3ByozB7y2+AMjnNJMDVZNvBRcMe4lcLnscHI+oo3W+7NlWJJnvZYExerRfViyDFveyTTxYuaokYN2JrduI88KBFGvVZQcLKmyyZh3kWed+Jffc/3g3Jtl6fgSf5TZvUjbqWvT4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.36,REQID:085f0738-3e2d-42db-8882-52120e3d55b6,IP:0,U
+X-CID-O-INFO: VERSION:1.1.36,REQID:fb9478cf-6524-48e0-83c2-fea43bd26aec,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:6e16cf4,CLOUDID:d2185e83-8d4f-477b-89d2-1e3bdbef96d1,B
+X-CID-META: VersionHash:6e16cf4,CLOUDID:d3185e83-8d4f-477b-89d2-1e3bdbef96d1,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 09f0969ebe8111ee9a263b4415211400-20240129
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 0952e458be8111ee9a263b4415211400-20240129
 Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
 	(envelope-from <yi-de.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 718867591; Mon, 29 Jan 2024 01:33:12 -0700
+	with ESMTP id 728506295; Mon, 29 Jan 2024 01:33:11 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 29 Jan 2024 16:33:09 +0800
+ 15.2.1118.26; Mon, 29 Jan 2024 16:33:08 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 29 Jan 2024 16:33:09 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 29 Jan 2024 16:33:08 +0800
 From: Yi-De Wu <yi-de.wu@mediatek.com>
 To: Yingshiuan Pan <yingshiuan.pan@mediatek.com>, Ze-Yu Wang
 	<ze-yu.wang@mediatek.com>, Yi-De Wu <yi-de.wu@mediatek.com>, Rob Herring
@@ -69,31 +69,33 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<my.chuang@mediatek.com>, Shawn Hsiao <shawn.hsiao@mediatek.com>, PeiLun Suei
 	<peilun.suei@mediatek.com>, Liju Chen <liju-clr.chen@mediatek.com>, "Willix
  Yeh" <chi-shen.yeh@mediatek.com>, Kevenny Hsieh <kevenny.hsieh@mediatek.com>
-Subject: [PATCH v9 20/21] virt: geniezone: Add tracing support for hyp call and vcpu exit_reason
-Date: Mon, 29 Jan 2024 16:33:01 +0800
-Message-ID: <20240129083302.26044-21-yi-de.wu@mediatek.com>
+Subject: [PATCH v9 15/21] virt: geniezone: Add demand paging support
+Date: Mon, 29 Jan 2024 16:32:56 +0800
+Message-ID: <20240129083302.26044-16-yi-de.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240129083302.26044-1-yi-de.wu@mediatek.com>
 References: <20240129083302.26044-1-yi-de.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--12.328700-8.000000
-X-TMASE-MatchedRID: iEpXmf/25Q09S3IiQd+eNcNrWpY804TGLoYOuiLW+uVh2fnHe1cil1mB
-	Y2oLO+3hkVOFsc3HEGn8I8AIZZ2s3pSL8e/MGApZKy67dnbJjn4WnD2CPybLCsXhke5ra0593AG
-	yPNT+2TGM0+ypVXg5IEzyp2gK85W+VJTV35UngiMVglQa/gMvfIfsPVs/8Vw6SSUXkvSVAdwluI
-	Iv8IIdTRyagBEJyc4yUvgoj+bRd81VY7t+zwxALh3EEAbn+GRbwx0jRRxcQfPxCQaCt6X8bibLS
-	tTV0GSXnyhY3ks4RISuJLLaxxUorDcpdZ3fQiLdFEUknJ/kEl7dB/CxWTRRu92KvEVWmYr16Y/h
-	PKKZNWrcaLEap++ycVPH31rarD7malNm98FYp20xlMMOLt4SZw==
+X-TM-AS-Result: No-10--17.768100-8.000000
+X-TMASE-MatchedRID: oTdiyqBUbz/fN9bhMNhpTUhwlOfYeSqxtDSfcMR+7ZOl4EP+dy+wBFme
+	FuNCwtl4vfKrrb4bmIr2in0s6cYY8X45uBZmw209Bg/PsQ7Io2FAq6/y5AEOOlcZNuxCoduSwdk
+	C9Ck+1Y6L1LF6ImdQDhd62hU8T8MrhQAimBygnyKEryjhqiyzyitovaaHxlUr70m3PKqB7tGKW8
+	BvXyLiE7NGh1y6CuUYYICOfGVBJhkGtTV246rrNLcPsR57JkIzCt59Uh3p/NVnerzbhugqsqmw5
+	s23nMRbW+5AYAhakwh8T/TWUlMbt9KK1Pn5CI9QdXu122+iJtq2McZY43zJ423D6f6IpbLISGGK
+	QPXm3qarQS40bMqMVoJl/jaG2IOvH3WbO3ydfMICg1rav4R3DY4lnIgC6UzTQQ1XgvCe7sF1j44
+	ZYEw/4TbBFkyI1h9E8LlyAg2vp/phfSDU2do4zDTk6JGbrQhuc3ewuwbSaG7FpA1uJFd1mmjd66
+	WKC/o1q/mwkeU+RjGG184Y5LIraR8TzIzimOwPC24oEZ6SpSk6XEE7Yhw4FpRMZUCEHkRt
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--12.328700-8.000000
+X-TMASE-Result: 10--17.768100-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 486CE25B760893D17ACFBE67EE20347D5C8A90FD3AF21EA0A22D0F97C92714A42000:8
+X-TM-SNTS-SMTP: 7E0E6069382AFDA3521653DFCF99F7BB5D4D28421E2AF609D4AA5BB967BA201F2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240129_003329_908810_DF25EA56 
-X-CRM114-Status: GOOD (  17.22  )
+X-CRM114-CacheID: sfid-20240129_003330_940322_A1BD09DA 
+X-CRM114-Status: GOOD (  26.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,154 +110,310 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add tracepoints for hypervisor calls and VCPU exit reasons in GenieZone
-driver. It aids performance debugging by providing more information
-about hypervisor operations and VCPU behavior.
+From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
 
-Command Usage:
-echo geniezone:* >> /sys/kernel/tracing/set_event
-echo 1 > /sys/kernel/tracing/tracing_on
-echo 0 > /sys/kernel/tracing/tracing_on
-cat /sys/kernel/tracing/trace
+This page fault handler helps GenieZone hypervisor to do demand paging.
+On a lower level translation fault, GenieZone hypervisor will first
+check the fault GPA (guest physical address or IPA in ARM) is valid
+e.g. within the registered memory region, then it will setup the
+vcpu_run->exit_reason with necessary information for returning to
+gzvm driver.
 
-For example:
-crosvm_vcpu0-4838 [004] ..... 76053.536034: mtk_hypcall_enter: id=0xbb001005
-crosvm_vcpu0-4838 [004] ..... 76053.540039: mtk_hypcall_leave: id=0xbb001005 invalid=0
-crosvm_vcpu0-4838 [004] ..... 76053.540040: mtk_vcpu_exit: vcpu exit_reason=0x92920003
+With the fault information, the gzvm driver looks up the physical
+address and call the MT_HVC_GZVM_MAP_GUEST to request the hypervisor
+maps the found PA to the fault GPA (IPA).
 
-This example tracks a hypervisor function call by an ID (`0xbb001005`)
-from initiation to termination, which is supported (invalid=0). A vCPU
-exit is triggered by an Interrupt Request (IRQ) (exit reason: 0x92920003).
+There is one exception, for protected vm, we will populate full VM's
+memory region in advance in order to improve performance.
 
-/* VM exit reason */
-enum {
-	GZVM_EXIT_UNKNOWN = 0x92920000,
-	GZVM_EXIT_MMIO = 0x92920001,
-	GZVM_EXIT_HYPERCALL = 0x92920002,
-	GZVM_EXIT_IRQ = 0x92920003,
-	GZVM_EXIT_EXCEPTION = 0x92920004,
-	GZVM_EXIT_DEBUG = 0x92920005,
-	GZVM_EXIT_FAIL_ENTRY = 0x92920006,
-	GZVM_EXIT_INTERNAL_ERROR = 0x92920007,
-	GZVM_EXIT_SYSTEM_EVENT = 0x92920008,
-	GZVM_EXIT_SHUTDOWN = 0x92920009,
-	GZVM_EXIT_GZ = 0x9292000a,
-};
-
-Signed-off-by: Liju-clr Chen <liju-clr.chen@mediatek.com>
+Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+Signed-off-by: Jerry Wang <ze-yu.wang@mediatek.com>
+Signed-off-by: kevenny hsieh <kevenny.hsieh@mediatek.com>
+Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
 Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
 ---
- arch/arm64/geniezone/vm.c          |  5 +++
- drivers/virt/geniezone/gzvm_vcpu.c |  3 ++
- include/trace/events/geniezone.h   | 54 ++++++++++++++++++++++++++++++
- 3 files changed, 62 insertions(+)
- create mode 100644 include/trace/events/geniezone.h
+ arch/arm64/geniezone/gzvm_arch_common.h |  2 ++
+ arch/arm64/geniezone/vm.c               |  9 ++++++
+ drivers/virt/geniezone/Makefile         |  4 +--
+ drivers/virt/geniezone/gzvm_exception.c | 39 +++++++++++++++++++++++++
+ drivers/virt/geniezone/gzvm_main.c      |  2 ++
+ drivers/virt/geniezone/gzvm_mmu.c       | 38 ++++++++++++++++++++++++
+ drivers/virt/geniezone/gzvm_vcpu.c      |  6 ++--
+ drivers/virt/geniezone/gzvm_vm.c        | 25 ++++++++++++++++
+ include/linux/gzvm_drv.h                |  7 +++++
+ include/uapi/linux/gzvm.h               | 12 ++++++++
+ 10 files changed, 140 insertions(+), 4 deletions(-)
+ create mode 100644 drivers/virt/geniezone/gzvm_exception.c
 
+diff --git a/arch/arm64/geniezone/gzvm_arch_common.h b/arch/arm64/geniezone/gzvm_arch_common.h
+index afb91713fc45..1f0c7a3fede8 100644
+--- a/arch/arm64/geniezone/gzvm_arch_common.h
++++ b/arch/arm64/geniezone/gzvm_arch_common.h
+@@ -24,6 +24,7 @@ enum {
+ 	GZVM_FUNC_INFORM_EXIT = 14,
+ 	GZVM_FUNC_MEMREGION_PURPOSE = 15,
+ 	GZVM_FUNC_SET_DTB_CONFIG = 16,
++	GZVM_FUNC_MAP_GUEST = 17,
+ 	NR_GZVM_FUNC,
+ };
+ 
+@@ -48,6 +49,7 @@ enum {
+ #define MT_HVC_GZVM_INFORM_EXIT		GZVM_HCALL_ID(GZVM_FUNC_INFORM_EXIT)
+ #define MT_HVC_GZVM_MEMREGION_PURPOSE	GZVM_HCALL_ID(GZVM_FUNC_MEMREGION_PURPOSE)
+ #define MT_HVC_GZVM_SET_DTB_CONFIG	GZVM_HCALL_ID(GZVM_FUNC_SET_DTB_CONFIG)
++#define MT_HVC_GZVM_MAP_GUEST		GZVM_HCALL_ID(GZVM_FUNC_MAP_GUEST)
+ 
+ #define GIC_V3_NR_LRS			16
+ 
 diff --git a/arch/arm64/geniezone/vm.c b/arch/arm64/geniezone/vm.c
-index 571326e70d98..8bec85bf9879 100644
+index 41ad1692dd18..a7a8a1bb6388 100644
 --- a/arch/arm64/geniezone/vm.c
 +++ b/arch/arm64/geniezone/vm.c
-@@ -7,6 +7,8 @@
- #include <linux/err.h>
- #include <linux/uaccess.h>
- 
-+#define CREATE_TRACE_POINTS
-+#include <trace/events/geniezone.h>
- #include <linux/gzvm.h>
- #include <linux/gzvm_drv.h>
- #include "gzvm_arch_common.h"
-@@ -33,7 +35,10 @@ int gzvm_hypcall_wrapper(unsigned long a0, unsigned long a1,
- 			 unsigned long a6, unsigned long a7,
- 			 struct arm_smccc_res *res)
- {
-+	trace_mtk_hypcall_enter(a0);
- 	arm_smccc_hvc(a0, a1, a2, a3, a4, a5, a6, a7, res);
-+	trace_mtk_hypcall_leave(a0, (res->a0 != ERR_NOT_SUPPORTED) ? 0 : 1);
-+
- 	return gzvm_err_to_errno(res->a0);
+@@ -388,3 +388,12 @@ u64 gzvm_hva_to_pa_arch(u64 hva)
+ 		return GZVM_PA_ERR_BAD;
+ 	return par;
  }
- 
-diff --git a/drivers/virt/geniezone/gzvm_vcpu.c b/drivers/virt/geniezone/gzvm_vcpu.c
-index 86c690749277..138ec064596b 100644
---- a/drivers/virt/geniezone/gzvm_vcpu.c
-+++ b/drivers/virt/geniezone/gzvm_vcpu.c
-@@ -10,6 +10,8 @@
- #include <linux/mm.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
 +
-+#include <trace/events/geniezone.h>
- #include <linux/gzvm_drv.h>
++int gzvm_arch_map_guest(u16 vm_id, int memslot_id, u64 pfn, u64 gfn,
++			u64 nr_pages)
++{
++	struct arm_smccc_res res;
++
++	return gzvm_hypcall_wrapper(MT_HVC_GZVM_MAP_GUEST, vm_id, memslot_id,
++				    pfn, gfn, nr_pages, 0, 0, &res);
++}
+diff --git a/drivers/virt/geniezone/Makefile b/drivers/virt/geniezone/Makefile
+index 9956f4891df2..2e12870637d5 100644
+--- a/drivers/virt/geniezone/Makefile
++++ b/drivers/virt/geniezone/Makefile
+@@ -8,5 +8,5 @@ GZVM_DIR ?= ../../../drivers/virt/geniezone
  
- /* maximum size needed for holding an integer */
-@@ -103,6 +105,7 @@ static long gzvm_vcpu_run(struct gzvm_vcpu *vcpu, void __user *argp)
- 
- 	while (!need_userspace && !signal_pending(current)) {
- 		gzvm_arch_vcpu_run(vcpu, &exit_reason);
-+		trace_mtk_vcpu_exit(exit_reason);
- 
- 		switch (exit_reason) {
- 		case GZVM_EXIT_MMIO:
-diff --git a/include/trace/events/geniezone.h b/include/trace/events/geniezone.h
+ gzvm-y := $(GZVM_DIR)/gzvm_main.o $(GZVM_DIR)/gzvm_vm.o \
+ 	  $(GZVM_DIR)/gzvm_mmu.o $(GZVM_DIR)/gzvm_vcpu.o \
+-	  $(GZVM_DIR)/gzvm_irqfd.o $(GZVM_DIR)/gzvm_ioeventfd.o
+-
++	  $(GZVM_DIR)/gzvm_irqfd.o $(GZVM_DIR)/gzvm_ioeventfd.o \
++	  $(GZVM_DIR)/gzvm_exception.o
+diff --git a/drivers/virt/geniezone/gzvm_exception.c b/drivers/virt/geniezone/gzvm_exception.c
 new file mode 100644
-index 000000000000..1fa44f9c4b3c
+index 000000000000..31fdb4ae8db4
 --- /dev/null
-+++ b/include/trace/events/geniezone.h
-@@ -0,0 +1,54 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
++++ b/drivers/virt/geniezone/gzvm_exception.c
+@@ -0,0 +1,39 @@
++// SPDX-License-Identifier: GPL-2.0
 +/*
 + * Copyright (c) 2023 MediaTek Inc.
 + */
 +
-+#undef TRACE_SYSTEM
-+#define TRACE_SYSTEM geniezone
++#include <linux/device.h>
++#include <linux/gzvm_drv.h>
 +
-+#define _TRACE_GENIEZONE_H
++/**
++ * gzvm_handle_guest_exception() - Handle guest exception
++ * @vcpu: Pointer to struct gzvm_vcpu_run in userspace
++ * Return:
++ * * true - This exception has been processed, no need to back to VMM.
++ * * false - This exception has not been processed, require userspace.
++ */
++bool gzvm_handle_guest_exception(struct gzvm_vcpu *vcpu)
++{
++	int ret;
 +
-+#include <linux/tracepoint.h>
++	for (int i = 0; i < ARRAY_SIZE(vcpu->run->exception.reserved); i++) {
++		if (vcpu->run->exception.reserved[i])
++			return -EINVAL;
++	}
 +
-+TRACE_EVENT(mtk_hypcall_enter,
-+	    TP_PROTO(unsigned long id),
++	switch (vcpu->run->exception.exception) {
++	case GZVM_EXCEPTION_PAGE_FAULT:
++		ret = gzvm_handle_page_fault(vcpu);
++		break;
++	case GZVM_EXCEPTION_UNKNOWN:
++		fallthrough;
++	default:
++		ret = -EFAULT;
++	}
 +
-+	    TP_ARGS(id),
++	if (!ret)
++		return true;
++	else
++		return false;
++}
+diff --git a/drivers/virt/geniezone/gzvm_main.c b/drivers/virt/geniezone/gzvm_main.c
+index 4e5d1b83df4a..af5ab8949206 100644
+--- a/drivers/virt/geniezone/gzvm_main.c
++++ b/drivers/virt/geniezone/gzvm_main.c
+@@ -28,6 +28,8 @@ int gzvm_err_to_errno(unsigned long err)
+ 		return 0;
+ 	case ERR_NO_MEMORY:
+ 		return -ENOMEM;
++	case ERR_INVALID_ARGS:
++		return -EINVAL;
+ 	case ERR_NOT_SUPPORTED:
+ 		return -EOPNOTSUPP;
+ 	case ERR_NOT_IMPLEMENTED:
+diff --git a/drivers/virt/geniezone/gzvm_mmu.c b/drivers/virt/geniezone/gzvm_mmu.c
+index 3c87eee1321f..cc007944eaa5 100644
+--- a/drivers/virt/geniezone/gzvm_mmu.c
++++ b/drivers/virt/geniezone/gzvm_mmu.c
+@@ -114,3 +114,41 @@ int gzvm_vm_allocate_guest_page(struct gzvm_memslot *slot, u64 gfn, u64 *pfn)
+ 	return 0;
+ }
+ 
++static int handle_single_demand_page(struct gzvm *vm, int memslot_id, u64 gfn)
++{
++	int ret;
++	u64 pfn;
 +
-+	    TP_STRUCT__entry(__field(unsigned long, id)),
++	ret = gzvm_vm_allocate_guest_page(&vm->memslot[memslot_id], gfn, &pfn);
++	if (unlikely(ret))
++		return -EFAULT;
 +
-+	    TP_fast_assign(__entry->id = id;),
++	ret = gzvm_arch_map_guest(vm->vm_id, memslot_id, pfn, gfn, 1);
++	if (unlikely(ret))
++		return -EFAULT;
 +
-+	    TP_printk("id=0x%lx", __entry->id)
-+);
++	return 0;
++}
 +
-+TRACE_EVENT(mtk_hypcall_leave,
-+	    TP_PROTO(unsigned long id, unsigned long invalid),
++/**
++ * gzvm_handle_page_fault() - Handle guest page fault, find corresponding page
++ *                            for the faulting gpa
++ * @vcpu: Pointer to struct gzvm_vcpu_run of the faulting vcpu
++ *
++ * Return:
++ * * 0		- Success to handle guest page fault
++ * * -EFAULT	- Failed to map phys addr to guest's GPA
++ */
++int gzvm_handle_page_fault(struct gzvm_vcpu *vcpu)
++{
++	struct gzvm *vm = vcpu->gzvm;
++	int memslot_id;
++	u64 gfn;
 +
-+	    TP_ARGS(id, invalid),
++	gfn = PHYS_PFN(vcpu->run->exception.fault_gpa);
++	memslot_id = gzvm_find_memslot(vm, gfn);
++	if (unlikely(memslot_id < 0))
++		return -EFAULT;
 +
-+	    TP_STRUCT__entry(__field(unsigned long, id)
-+			     __field(unsigned long, invalid)
-+	    ),
++	return handle_single_demand_page(vm, memslot_id, gfn);
++}
+diff --git a/drivers/virt/geniezone/gzvm_vcpu.c b/drivers/virt/geniezone/gzvm_vcpu.c
+index 77138e749e9a..455ae2e4285c 100644
+--- a/drivers/virt/geniezone/gzvm_vcpu.c
++++ b/drivers/virt/geniezone/gzvm_vcpu.c
+@@ -113,9 +113,11 @@ static long gzvm_vcpu_run(struct gzvm_vcpu *vcpu, void __user *argp)
+ 		 * it's geniezone's responsibility to fill corresponding data
+ 		 * structure
+ 		 */
+-		case GZVM_EXIT_HYPERCALL:
+-			fallthrough;
+ 		case GZVM_EXIT_EXCEPTION:
++			if (!gzvm_handle_guest_exception(vcpu))
++				need_userspace = true;
++			break;
++		case GZVM_EXIT_HYPERCALL:
+ 			fallthrough;
+ 		case GZVM_EXIT_DEBUG:
+ 			fallthrough;
+diff --git a/drivers/virt/geniezone/gzvm_vm.c b/drivers/virt/geniezone/gzvm_vm.c
+index 538549ef405c..9f7e44521de5 100644
+--- a/drivers/virt/geniezone/gzvm_vm.c
++++ b/drivers/virt/geniezone/gzvm_vm.c
+@@ -23,6 +23,31 @@ u64 gzvm_gfn_to_hva_memslot(struct gzvm_memslot *memslot, u64 gfn)
+ 	return memslot->userspace_addr + offset * PAGE_SIZE;
+ }
+ 
++/**
++ * gzvm_find_memslot() - Find memslot containing this @gpa
++ * @vm: Pointer to struct gzvm
++ * @gfn: Guest frame number
++ *
++ * Return:
++ * * >=0		- Index of memslot
++ * * -EFAULT		- Not found
++ */
++int gzvm_find_memslot(struct gzvm *vm, u64 gfn)
++{
++	int i;
 +
-+	    TP_fast_assign(__entry->id = id;
-+			   __entry->invalid = invalid;
-+	    ),
++	for (i = 0; i < GZVM_MAX_MEM_REGION; i++) {
++		if (vm->memslot[i].npages == 0)
++			continue;
 +
-+	    TP_printk("id=0x%lx invalid=%lu", __entry->id, __entry->invalid)
-+);
++		if (gfn >= vm->memslot[i].base_gfn &&
++		    gfn < vm->memslot[i].base_gfn + vm->memslot[i].npages)
++			return i;
++	}
 +
-+TRACE_EVENT(mtk_vcpu_exit,
-+	    TP_PROTO(unsigned long exit_reason),
++	return -EFAULT;
++}
 +
-+	    TP_ARGS(exit_reason),
+ /**
+  * register_memslot_addr_range() - Register memory region to GenieZone
+  * @gzvm: Pointer to struct gzvm
+diff --git a/include/linux/gzvm_drv.h b/include/linux/gzvm_drv.h
+index aacedb9c74ca..f6e4c5152ee5 100644
+--- a/include/linux/gzvm_drv.h
++++ b/include/linux/gzvm_drv.h
+@@ -29,6 +29,7 @@
+  */
+ #define NO_ERROR                (0)
+ #define ERR_NO_MEMORY           (-5)
++#define ERR_INVALID_ARGS        (-8)
+ #define ERR_NOT_SUPPORTED       (-24)
+ #define ERR_NOT_IMPLEMENTED     (-27)
+ #define ERR_FAULT               (-40)
+@@ -123,6 +124,8 @@ int gzvm_arch_set_memregion(u16 vm_id, size_t buf_size,
+ int gzvm_arch_check_extension(struct gzvm *gzvm, __u64 cap, void __user *argp);
+ int gzvm_arch_create_vm(unsigned long vm_type);
+ int gzvm_arch_destroy_vm(u16 vm_id);
++int gzvm_arch_map_guest(u16 vm_id, int memslot_id, u64 pfn, u64 gfn,
++			u64 nr_pages);
+ int gzvm_vm_ioctl_arch_enable_cap(struct gzvm *gzvm,
+ 				  struct gzvm_enable_cap *cap,
+ 				  void __user *argp);
+@@ -143,6 +146,10 @@ int gzvm_arch_vcpu_run(struct gzvm_vcpu *vcpu, __u64 *exit_reason);
+ int gzvm_arch_destroy_vcpu(u16 vm_id, int vcpuid);
+ int gzvm_arch_inform_exit(u16 vm_id);
+ 
++int gzvm_find_memslot(struct gzvm *vm, u64 gpa);
++int gzvm_handle_page_fault(struct gzvm_vcpu *vcpu);
++bool gzvm_handle_guest_exception(struct gzvm_vcpu *vcpu);
 +
-+	    TP_STRUCT__entry(__field(unsigned long, exit_reason)),
+ int gzvm_arch_create_device(u16 vm_id, struct gzvm_create_device *gzvm_dev);
+ int gzvm_arch_inject_irq(struct gzvm *gzvm, unsigned int vcpu_idx,
+ 			 u32 irq, bool level);
+diff --git a/include/uapi/linux/gzvm.h b/include/uapi/linux/gzvm.h
+index 09b1457f1270..73fd6a81116f 100644
+--- a/include/uapi/linux/gzvm.h
++++ b/include/uapi/linux/gzvm.h
+@@ -181,6 +181,12 @@ enum {
+ 	GZVM_EXIT_GZ = 0x9292000a,
+ };
+ 
++/* exception definitions of GZVM_EXIT_EXCEPTION */
++enum {
++	GZVM_EXCEPTION_UNKNOWN = 0x0,
++	GZVM_EXCEPTION_PAGE_FAULT = 0x1,
++};
 +
-+	    TP_fast_assign(__entry->exit_reason = exit_reason;),
-+
-+	    TP_printk("vcpu exit_reason=0x%lx", __entry->exit_reason)
-+);
-+
-+/* This part must be outside protection */
-+#include <trace/define_trace.h>
+ /**
+  * struct gzvm_vcpu_run: Same purpose as kvm_run, this struct is
+  *			 shared between userspace, kernel and
+@@ -245,6 +251,12 @@ struct gzvm_vcpu_run {
+ 			__u32 exception;
+ 			/* Exception error codes */
+ 			__u32 error_code;
++			/* Fault GPA (guest physical address or IPA in ARM) */
++			__u64 fault_gpa;
++			/* Future-proof reservation and reset to zero in hypervisor.
++			 * Fill up to the union size, 256 bytes.
++			 */
++			__u64 reserved[30];
+ 		} exception;
+ 		/* GZVM_EXIT_HYPERCALL */
+ 		struct {
 -- 
 2.18.0
 
