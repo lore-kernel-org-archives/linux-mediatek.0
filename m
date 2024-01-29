@@ -4,83 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26352C47DDF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 03:39:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7942BC47DDF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 06:30:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/yyUGF5rIxxEr8wGxy6mzO1hK1BzZ2gmE5L9TwgfgxA=; b=nFnBRGutY3HgosqmjEyF9CLW0l
-	Y/PPXPNYikFD1ZtSwJWb7BvTi1Vu2EfWClFsqdv2/Jl5wVbKaXzES/KKNAY6+V6RA22ibojqftocU
-	VnPoXYniEJ0CW1dQfEw8XoILtPYZKz/jiIeXWzE6dWNscCf008wJnO45Dkjbn0H0I3QU81ekxweZm
-	2HtI7Sm/fHrLW6zGQDwBNU4GRgNr04Na6j1IiwzE4aQ7hfoABTf7RK5nyShHMXZ2MBmAB6k/s2f45
-	ZZQyvUXTOTPS2n2KRx5IpP00KvNZYoBR/V9lJUk8Kdg5j+x3NhIvXcmGKXWRK9aMmpvM3e2guHkH3
-	EQChWkFw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ks8HEFFM+Bita0r2YqnY0e2OF7bLuHGY/XucvXvt/5M=; b=rcqq0C2upX1ojkcMiBty5RJn9d
+	MHIkDI5zsYK2KCzClURtWRJZNhdEM59fCFUMuIwjTTNONOOYvayXnZEE+I7pgYse/5GZxePnZD2hA
+	hkHHzihG9400gbV+x/9eFDndSj4/poUJMKrInpbFDf/pDPSinDdZ5mEXG0E5b5XO3iVOxE8egvPLQ
+	Y1jMm8DhKIrDTMTpgFVjt0M/qemnR1BjHXZgiOgTLMRHT2sSt3ZopwEQTx/nw+TNmOOsAlsL7lKnk
+	o5UNgcRMiA6LYU1atiKmpXxzFPlFhGkg6vXXOcPo6PPUioSEY3VgJI4Ft1cMao509vRlcuo86F6K7
+	rUCjY3hQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUIUE-0000000B8tD-2s5D;
-	Mon, 29 Jan 2024 03:39:06 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1rULAO-0000000BT00-0Cwr;
+	Mon, 29 Jan 2024 06:30:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUIUB-0000000B8sN-0XUh
-	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Jan 2024 03:39:04 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-510322d5363so1655752e87.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 28 Jan 2024 19:39:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1706499540; x=1707104340; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/yyUGF5rIxxEr8wGxy6mzO1hK1BzZ2gmE5L9TwgfgxA=;
-        b=hq3OffyAf/JynMxV49AL2/dH0PkR+ytxcGIiwfB6KrC/OJ0vPV2YmcaxPyiTVvM9JZ
-         p5kcdMh1CxPEQk8Tc4hrZrEhEMnZHB9d6VSnsOtWXcYtELahd1muaz0RwjfAGT69A/i7
-         CIRjbHKt3Jt0ORhr9wPsOF/FrhOXePryyepeU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706499540; x=1707104340;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/yyUGF5rIxxEr8wGxy6mzO1hK1BzZ2gmE5L9TwgfgxA=;
-        b=abCJINIAfeneW/cWz8vNN7PMW9MPE1+bj2SEUYczKRAH7MotTYt5/D6DPTB+dQzY6Y
-         hUQ/A+Kz7H1tdmu3CZwdz7AskmESFmqYtGo8oyrhu0YeERZL6jOY8UsypfNykT8isw/C
-         jS1lFudVayBjf7TU0y0lTUJlPFsW+lIcxGiD2IONIu80kIKG/U/uPuR+PIoXaNFyirJx
-         xpLg/X2yZIE5aKlgh/L7FpvoiA1ioZ+8GGTK62UWa7mvGEjOr7QWz04tZ/bOOh3wMCRa
-         vk8qB6mc8JEB1aU6e5N+kgQGjxmmnAX5HadX5rZVtg2IqnD3gfPUBgWR+1ZEbWd93U7E
-         NrhA==
-X-Gm-Message-State: AOJu0YziNnLifAMi6Q+NtUp6yrzaadaRGNRDQ/TZy5pWjac2qUD74/bU
-	Iw2GhNzY34AXlwT3vlnLjSzaznpPXCEwHF2B/b8+maVhVYnmJbfo6kr923dPACTaEOliinD99lb
-	VQ/w9lCjZkMt0PoS8F9E4aZps24fey/XJZFlm
-X-Google-Smtp-Source: AGHT+IEXgMUgHt38rJa9lkZWY3kg2sc8NUxr6P4rZVQj9hDCI16H5nC2o9tzHW8pEEyFHfhwuR4GhhyhIWVA70eTXH0=
-X-Received: by 2002:a05:6512:280e:b0:50e:b25e:94d8 with SMTP id
- cf14-20020a056512280e00b0050eb25e94d8mr3488177lfb.41.1706499540469; Sun, 28
- Jan 2024 19:39:00 -0800 (PST)
+	id 1rULAK-0000000BSyh-347z;
+	Mon, 29 Jan 2024 06:30:45 +0000
+X-UUID: ebca9fe0be6f11eea0bf134e88e6c2dc-20240128
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ks8HEFFM+Bita0r2YqnY0e2OF7bLuHGY/XucvXvt/5M=;
+	b=rC7CSzJzNC1ArM4nYD97m29F0aGXFq92DQ5DDdJtbho6hQRKy81VEhadHZiknB02IiEJhoc381lZDT4qLHDpOEaYVWnuuSAlwEokwK8HdXy/H+y+0WNdvccoQl723F5g2I7xLxcO1c+TgxH3bGLcawUfAbxcMuPwLtXWTdhSYGA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.36,REQID:b2b50ca8-3c80-424f-be10-e7edfd1d2449,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6e16cf4,CLOUDID:1ad4dc7f-4f93-4875-95e7-8c66ea833d57,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: ebca9fe0be6f11eea0bf134e88e6c2dc-20240128
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1170893052; Sun, 28 Jan 2024 23:30:40 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 29 Jan 2024 14:30:37 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 29 Jan 2024 14:30:36 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Jeffrey Kardatzke <jkardatzke@google.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
+CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
+ Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel
+ Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei Dong
+	<yunfei.dong@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>, Brian
+ Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T . J .
+ Mercier" <tjmercier@google.com>, =?UTF-8?q?Christian=20K=C3=B6nig?=
+	<christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	<dri-devel@lists.freedesktop.org>, <linaro-mm-sig@lists.linaro.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v4,01/22] v4l2: add restricted memory flags
+Date: Mon, 29 Jan 2024 14:30:04 +0800
+Message-ID: <20240129063025.29251-2-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240129063025.29251-1-yunfei.dong@mediatek.com>
+References: <20240129063025.29251-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-References: <20240126063500.2684087-1-wenst@chromium.org> <20240126063500.2684087-2-wenst@chromium.org>
- <74b9f249-fcb4-4338-bf7b-8477de6c935c@linaro.org>
-In-Reply-To: <74b9f249-fcb4-4338-bf7b-8477de6c935c@linaro.org>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 29 Jan 2024 11:38:49 +0800
-Message-ID: <CAGXv+5Hu+KsTBd1JtnKcaE3qUzPhHbunoVaH2++yfNopHtFf4g@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] dt-bindings: net: bluetooth: Add MediaTek MT7921S
- SDIO Bluetooth
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Marcel Holtmann <marcel@holtmann.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
-	Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Sean Wang <sean.wang@mediatek.com>, linux-bluetooth@vger.kernel.org, 
-	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240128_193903_251236_E76DCB9D 
-X-CRM114-Status: GOOD (  28.46  )
+X-CRM114-CacheID: sfid-20240128_223044_826479_1A9EE1F8 
+X-CRM114-Status: GOOD (  15.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,113 +98,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 26, 2024 at 6:40=E2=80=AFPM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
->
-> On 26/01/2024 07:34, Chen-Yu Tsai wrote:
-> > The MediaTek MT7921S is a WiFi/Bluetooth combo chip that works over
-> > SDIO. While the Bluetooth function is fully discoverable, the chip
-> > has a pin that can reset just the Bluetooth side, as opposed to the
-> > full chip. This needs to be described in the device tree.
-> >
-> > Add a device tree binding for MT7921S Bluetooth over SDIO specifically
-> > ot document the reset line.
->
-> s/ot/to/
->
-> >
-> > Cc: Sean Wang <sean.wang@mediatek.com>
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > ---
-> > Changes since v1:
-> > - Reworded descriptions
-> > - Moved binding maintainer section before description
-> > - Added missing reference to bluetooth-controller.yaml
-> > - Added missing GPIO header to example
-> >
-> >  .../bluetooth/mediatek,mt7921s-bluetooth.yaml | 53 +++++++++++++++++++
-> >  MAINTAINERS                                   |  1 +
-> >  2 files changed, 54 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/net/bluetooth/med=
-iatek,mt7921s-bluetooth.yaml
-> >
-> > diff --git a/Documentation/devicetree/bindings/net/bluetooth/mediatek,m=
-t7921s-bluetooth.yaml b/Documentation/devicetree/bindings/net/bluetooth/med=
-iatek,mt7921s-bluetooth.yaml
-> > new file mode 100644
-> > index 000000000000..ff11c95c816c
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7921s-=
-bluetooth.yaml
-> > @@ -0,0 +1,53 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/net/bluetooth/mediatek,mt7921s-blue=
-tooth.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: MediaTek MT7921S Bluetooth
-> > +
-> > +maintainers:
-> > +  - Sean Wang <sean.wang@mediatek.com>
-> > +
-> > +description:
-> > +  MT7921S is an SDIO-attached dual-radio WiFi+Bluetooth Combo chip; ea=
-ch
-> > +  function is its own SDIO function on a shared SDIO interface. The ch=
-ip
-> > +  has two dedicated reset lines, one for each function core.
-> > +  This binding only covers the Bluetooth part of the chip.
-> > +
-> > +allOf:
-> > +  - $ref: bluetooth-controller.yaml#
-> > +
-> > +properties:
-> > +  compatible:
-> > +    enum:
-> > +      - mediatek,mt7921s-bluetooth
->
-> Can it be also WiFi on separate bus? How many device nodes do you need
-> for this device?
+From: Jeffrey Kardatzke <jkardatzke@google.com>
 
-For the "S" variant, WiFi is also on SDIO. For the other two variants,
-"U" and "E", WiFi goes over USB and PCIe respectively. On both those
-variants, Bluetooth can either go over USB or UART. That is what I
-gathered from the pinouts. There are a dozen GPIO pins which don't
-have detailed descriptions though. If you want a comprehensive
-binding of the whole chip and all its variants, I suggest we ask
-MediaTek to provide it instead. My goal with the binding is to document
-existing usage and allow me to upstream new device trees.
+Adds a V4L2 flag which indicates that a queue is using restricted
+dmabufs and the corresponding capability flag.
 
-For now we only need the Bluetooth node. The WiFi part is perfectly
-detectable, and the driver doesn't seem to need the WiFi reset pin.
-The Bluetooth driver only uses its reset pin to reset a hung controller.
+Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ include/media/videobuf2-core.h | 8 +++++++-
+ include/uapi/linux/videodev2.h | 2 ++
+ 2 files changed, 9 insertions(+), 1 deletion(-)
 
-> Missing blank line.
+diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+index 56719a26a46c..047d4798e423 100644
+--- a/include/media/videobuf2-core.h
++++ b/include/media/videobuf2-core.h
+@@ -518,6 +518,9 @@ struct vb2_buf_ops {
+  *		->finish().
+  * @non_coherent_mem: when set queue will attempt to allocate buffers using
+  *		non-coherent memory.
++ * @allow_restricted_mem: when set user-space can pass the %V4L2_MEMORY_FLAG_RESTRICTED
++ *		flag to indicate the dma bufs are restricted.
++ * @restricted_mem: when set queue will verify that the dma bufs are restricted.
+  * @lock:	pointer to a mutex that protects the &struct vb2_queue. The
+  *		driver can set this to a mutex to let the v4l2 core serialize
+  *		the queuing ioctls. If the driver wants to handle locking
+@@ -604,6 +607,8 @@ struct vb2_queue {
+ 	unsigned int			uses_requests:1;
+ 	unsigned int			allow_cache_hints:1;
+ 	unsigned int			non_coherent_mem:1;
++	unsigned int			allow_restricted_mem:1;
++	unsigned int			restricted_mem:1;
+ 
+ 	struct mutex			*lock;
+ 	void				*owner;
+@@ -773,7 +778,8 @@ void vb2_core_querybuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb);
+  * @q:		pointer to &struct vb2_queue with videobuf2 queue.
+  * @memory:	memory type, as defined by &enum vb2_memory.
+  * @flags:	auxiliary queue/buffer management flags. Currently, the only
+- *		used flag is %V4L2_MEMORY_FLAG_NON_COHERENT.
++ *		used flags are %V4L2_MEMORY_FLAG_NON_COHERENT and
++ *		%V4L2_MEMORY_FLAG_RESTRICTED.
+  * @count:	requested buffer count.
+  *
+  * Videobuf2 core helper to implement VIDIOC_REQBUF() operation. It is called
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index 68e7ac178cc2..3e3f8d4b7c81 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -1026,6 +1026,7 @@ struct v4l2_requestbuffers {
+ };
+ 
+ #define V4L2_MEMORY_FLAG_NON_COHERENT			(1 << 0)
++#define V4L2_MEMORY_FLAG_RESTRICTED			(1 << 1)
+ 
+ /* capabilities for struct v4l2_requestbuffers and v4l2_create_buffers */
+ #define V4L2_BUF_CAP_SUPPORTS_MMAP			(1 << 0)
+@@ -1036,6 +1037,7 @@ struct v4l2_requestbuffers {
+ #define V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF	(1 << 5)
+ #define V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS		(1 << 6)
+ #define V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS		(1 << 7)
++#define V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM		(1 << 8)
+ 
+ /**
+  * struct v4l2_plane - plane info for multi-planar buffers
+-- 
+2.18.0
 
-Will fix.
-
-> > +  reg:
-> > +    const: 2
-> > +
-> > +  reset-gpios:
-> > +    maxItems: 1
-> > +    description:
-> > +      An active-low reset line for the Bluetooth core; on typical M.2
-> > +      key E modules this is the W_DISABLE2# pin.
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +
-> > +additionalProperties: false
->
-> Instead 'unevaluatedProperties: false'
-
-Will fix.
-
-
-Thanks
-ChenYu
 
