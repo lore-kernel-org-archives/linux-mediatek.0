@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C381C47DDF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 06:33:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7A7CC47DDF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 06:33:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=51VI1JkKQncCrOrUDLV94zJpq+Ll7EawPvLUuMJPvV4=; b=FWL92nTjLoWVg2DzVcE8UBuxjV
-	IipVrAFgIKTfkKYCSLIBp8qILNnNS4tPaiMVYrKZ17+BwAIh29c2TVyChhwsDGTLYzvZiocAl2i46
-	4Jp1YV+NoyLYqA0kXWRI8Lp8Oa7Ty3yN02L6EOMasDoolcpwYY6mKUIi1hzoBnysvIsnaxSjYMrV3
-	ZhHrTXbkg5RlGfwcIVrvNkcxwCWUcQGg2aGKIgTcOZam0iCNoVuznr91XombmccCoSgu6tr07esof
-	Z1tX6PrhDcS1651dux0gG38CQlIUq0KARoFFGZVAcKqJkAWKF90cZS0Zv/JfBpVbw2NCJkzqCijje
-	KWgSTaDQ==;
+	bh=JWJt5f3OFXku7W6faTUM0+bKsbswJle1HktQEF2gUcM=; b=QoA2IwGHmho1AFucSv7xDlQMNL
+	aAaO2PGdDpqcZ94fF9NOiE0ZEoyU7H/AkNf7azofN85ssfldRuhk8rgYjZtpo8pMaaNmKqT4DPdc6
+	OWqFQAxa/HT5SO7vFF7k+nwU1PgoBNRrUE0Q5ejB33Y3ZJX/qrmSO9utWqK1eQPQSIWB5bh0DRK9x
+	tHZ89zqVTUmk8/znEZngH9IG0xx3vk0M0Fc8NOOPTeOPd3XjsFf/NVYNuHVHnKZQ6zk7EV1CNZOAn
+	+0PmdFBaXaQUBaXTD2yKjztt2n/+59CbGN42uj2JfgglKt3RLIk2SAeCSvFHwDuRUEOy1dsgHNy5l
+	y3FD25dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rULCr-0000000BUiX-1hi8;
-	Mon, 29 Jan 2024 06:33:21 +0000
+	id 1rULD3-0000000BUp6-10wk;
+	Mon, 29 Jan 2024 06:33:33 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rULB4-0000000BTUe-2l63;
-	Mon, 29 Jan 2024 06:31:32 +0000
-X-UUID: 0688e6f2be7011ee9a263b4415211400-20240128
+	id 1rULB5-0000000BTVL-2rTr;
+	Mon, 29 Jan 2024 06:31:33 +0000
+X-UUID: 06122f94be7011ee9a263b4415211400-20240128
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=51VI1JkKQncCrOrUDLV94zJpq+Ll7EawPvLUuMJPvV4=;
-	b=pKDBtsTpLu8enx7QlG+wDlwtB+pvA8hI5G1//CTtSubNqf/lUYhd9Qg0jY2Rs6nNLIS0Jrkw/Um7gy/JKGPsOK3otCTiOj2nUHg1y7jp9DsYRS8qGJFJrgAilXPqziZHwfFZTy6fMJEOiWkv8qEXt1oZZsNM4EEonKWp42A6Tys=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=JWJt5f3OFXku7W6faTUM0+bKsbswJle1HktQEF2gUcM=;
+	b=GEmZUfsabgdW7N7fB5qxDZ472JDENF+98O5G8i9+TmpoyHZ1aqqMwEAFApkq8SymZipF9/4uaEUEg32R2AZh86RzTM1Pj1Thq7FHNihGty3p14JYo2zihSfNWiEp+NHwJSHs27F3CvByZ91L0i998+tCGYZzieSSrMEfx6suLqA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.36,REQID:bd858af7-aaea-427f-952d-d974f9e351ae,IP:0,U
+X-CID-O-INFO: VERSION:1.1.36,REQID:09c10344-186a-4491-a00f-a97762971655,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:6e16cf4,CLOUDID:c1d6dc7f-4f93-4875-95e7-8c66ea833d57,B
+X-CID-META: VersionHash:6e16cf4,CLOUDID:c2d6dc7f-4f93-4875-95e7-8c66ea833d57,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 0688e6f2be7011ee9a263b4415211400-20240128
+X-UUID: 06122f94be7011ee9a263b4415211400-20240128
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1700606594; Sun, 28 Jan 2024 23:31:25 -0700
+	with ESMTP id 213374751; Sun, 28 Jan 2024 23:31:24 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 29 Jan 2024 14:30:54 +0800
+ 15.2.1118.26; Mon, 29 Jan 2024 14:30:45 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 29 Jan 2024 14:30:53 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 29 Jan 2024 14:30:44 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Jeffrey Kardatzke <jkardatzke@google.com>,
 	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
@@ -71,9 +71,9 @@ CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v4,14/22] media: mediatek: vcodec: Add capture format to support one plane memory
-Date: Mon, 29 Jan 2024 14:30:17 +0800
-Message-ID: <20240129063025.29251-15-yunfei.dong@mediatek.com>
+Subject: [PATCH v4,07/22] dma-heap: Provide accessors so that in-kernel drivers can allocate dmabufs from specific heaps
+Date: Mon, 29 Jan 2024 14:30:10 +0800
+Message-ID: <20240129063025.29251-8-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240129063025.29251-1-yunfei.dong@mediatek.com>
 References: <20240129063025.29251-1-yunfei.dong@mediatek.com>
@@ -82,8 +82,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240128_223130_817282_2071F6A2 
-X-CRM114-Status: GOOD (  14.14  )
+X-CRM114-CacheID: sfid-20240128_223131_863430_393C0E62 
+X-CRM114-Status: GOOD (  21.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,74 +98,184 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Define one uncompressed capture format V4L2_PIX_FMT_MS21 in order to
-support one plane memory. The buffer size is luma + chroma, luma is
-stored at the start and chrome is stored at the end.
+From: John Stultz <jstultz@google.com>
 
+This allows drivers who don't want to create their own
+DMA-BUF exporter to be able to allocate DMA-BUFs directly
+from existing DMA-BUF Heaps.
+
+There is some concern that the premise of DMA-BUF heaps is
+that userland knows better about what type of heap memory
+is needed for a pipeline, so it would likely be best for
+drivers to import and fill DMA-BUFs allocated by userland
+instead of allocating one themselves, but this is still
+up for debate.
+
+Signed-off-by: John Stultz <jstultz@google.com>
+Signed-off-by: T.J. Mercier <tjmercier@google.com>
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+[Yong: Fix the checkpatch alignment warning]
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- Documentation/userspace-api/media/v4l/pixfmt-reserved.rst | 8 ++++++++
- drivers/media/v4l2-core/v4l2-common.c                     | 2 ++
- drivers/media/v4l2-core/v4l2-ioctl.c                      | 1 +
- include/uapi/linux/videodev2.h                            | 1 +
- 4 files changed, 12 insertions(+)
+ drivers/dma-buf/dma-heap.c | 83 ++++++++++++++++++++++++++++++--------
+ include/linux/dma-heap.h   |  6 +++
+ 2 files changed, 73 insertions(+), 16 deletions(-)
 
-diff --git a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
-index 886ba7b08d6b..6ec899649d50 100644
---- a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
-+++ b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
-@@ -295,6 +295,14 @@ please make a proposal on the linux-media mailing list.
-       - Compressed format used by Nuvoton NPCM video driver. This format is
-         defined in Remote Framebuffer Protocol (RFC 6143, chapter 7.7.4 Hextile
-         Encoding).
-+    * .. _V4L2-PIX-FMT-MS21:
+diff --git a/drivers/dma-buf/dma-heap.c b/drivers/dma-buf/dma-heap.c
+index 97025ee8500f..6efe833a4b10 100644
+--- a/drivers/dma-buf/dma-heap.c
++++ b/drivers/dma-buf/dma-heap.c
+@@ -51,12 +51,24 @@ static dev_t dma_heap_devt;
+ static struct class *dma_heap_class;
+ static DEFINE_XARRAY_ALLOC(dma_heap_minors);
+ 
+-static int dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
+-				 unsigned int fd_flags,
+-				 unsigned int heap_flags)
++/**
++ * dma_heap_buffer_alloc - Allocate dma-buf from a dma_heap
++ * @heap:	DMA-Heap to allocate from
++ * @len:	size to allocate in bytes
++ * @fd_flags:	flags to set on returned dma-buf fd
++ * @heap_flags: flags to pass to the dma heap
++ *
++ * This is for internal dma-buf allocations only. Free returned buffers with dma_buf_put().
++ */
++struct dma_buf *dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
++				      unsigned int fd_flags,
++				      unsigned int heap_flags)
+ {
+-	struct dma_buf *dmabuf;
+-	int fd;
++	if (fd_flags & ~DMA_HEAP_VALID_FD_FLAGS)
++		return ERR_PTR(-EINVAL);
 +
-+      - ``V4L2_PIX_FMT_MS21``
-+      - 'MS21'
-+      - This format has one plane, luma and chroma are stored in a contiguous
-+        memory. Luma pixel in 16x32 tiles at the start, chroma pixel in 16x16
-+        tiles at the end. The image height must be aligned with 32 and the image
-+        width must be aligned with 16.
- .. raw:: latex
++	if (heap_flags & ~DMA_HEAP_VALID_HEAP_FLAGS)
++		return ERR_PTR(-EINVAL);
  
-     \normalsize
-diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-index 273d83de2a87..315b906ed730 100644
---- a/drivers/media/v4l2-core/v4l2-common.c
-+++ b/drivers/media/v4l2-core/v4l2-common.c
-@@ -269,6 +269,8 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
- 		  .block_w = { 16, 8, 0, 0 }, .block_h = { 32, 16, 0, 0 }},
- 		{ .format = V4L2_PIX_FMT_MT2110R, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 2, .comp_planes = 2, .bpp = { 5, 10, 0, 0 }, .bpp_div = { 4, 4, 1, 1 }, .hdiv = 2, .vdiv = 2,
- 		  .block_w = { 16, 8, 0, 0 }, .block_h = { 32, 16, 0, 0 }},
-+		{ .format = V4L2_PIX_FMT_MS21,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2,
-+		  .block_w = { 16, 8, 0, 0 }, .block_h = { 32, 16, 0, 0 }},
+ 	/*
+ 	 * Allocations from all heaps have to begin
+@@ -64,9 +76,20 @@ static int dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
+ 	 */
+ 	len = PAGE_ALIGN(len);
+ 	if (!len)
+-		return -EINVAL;
++		return ERR_PTR(-EINVAL);
++
++	return heap->ops->allocate(heap, len, fd_flags, heap_flags);
++}
++EXPORT_SYMBOL_GPL(dma_heap_buffer_alloc);
  
- 		/* YUV planar formats */
- 		{ .format = V4L2_PIX_FMT_NV12,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
-diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index 33076af4dfdb..c38b12511bdb 100644
---- a/drivers/media/v4l2-core/v4l2-ioctl.c
-+++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -1511,6 +1511,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
- 		case V4L2_PIX_FMT_MT2110T:	descr = "Mediatek 10bit Tile Mode"; break;
- 		case V4L2_PIX_FMT_MT2110R:	descr = "Mediatek 10bit Raster Mode"; break;
- 		case V4L2_PIX_FMT_HEXTILE:	descr = "Hextile Compressed Format"; break;
-+		case V4L2_PIX_FMT_MS21:		descr = "MediaTek One Plane Format"; break;
- 		default:
- 			if (fmt->description[0])
- 				return;
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 3e3f8d4b7c81..53a3c908fcba 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -798,6 +798,7 @@ struct v4l2_pix_format {
- #define V4L2_PIX_FMT_MM21     v4l2_fourcc('M', 'M', '2', '1') /* Mediatek 8-bit block mode, two non-contiguous planes */
- #define V4L2_PIX_FMT_MT2110T  v4l2_fourcc('M', 'T', '2', 'T') /* Mediatek 10-bit block tile mode */
- #define V4L2_PIX_FMT_MT2110R  v4l2_fourcc('M', 'T', '2', 'R') /* Mediatek 10-bit block raster mode */
-+#define V4L2_PIX_FMT_MS21     v4l2_fourcc('M', 'S', '2', '1') /* MediaTek 8-bit block mode with one plane */
- #define V4L2_PIX_FMT_INZI     v4l2_fourcc('I', 'N', 'Z', 'I') /* Intel Planar Greyscale 10-bit and Depth 16-bit */
- #define V4L2_PIX_FMT_CNF4     v4l2_fourcc('C', 'N', 'F', '4') /* Intel 4-bit packed depth confidence information */
- #define V4L2_PIX_FMT_HI240    v4l2_fourcc('H', 'I', '2', '4') /* BTTV 8-bit dithered RGB */
+-	dmabuf = heap->ops->allocate(heap, len, fd_flags, heap_flags);
++static int dma_heap_bufferfd_alloc(struct dma_heap *heap, size_t len,
++				   unsigned int fd_flags,
++				   unsigned int heap_flags)
++{
++	struct dma_buf *dmabuf;
++	int fd;
++
++	dmabuf = dma_heap_buffer_alloc(heap, len, fd_flags, heap_flags);
+ 	if (IS_ERR(dmabuf))
+ 		return PTR_ERR(dmabuf);
+ 
+@@ -104,15 +127,9 @@ static long dma_heap_ioctl_allocate(struct file *file, void *data)
+ 	if (heap_allocation->fd)
+ 		return -EINVAL;
+ 
+-	if (heap_allocation->fd_flags & ~DMA_HEAP_VALID_FD_FLAGS)
+-		return -EINVAL;
+-
+-	if (heap_allocation->heap_flags & ~DMA_HEAP_VALID_HEAP_FLAGS)
+-		return -EINVAL;
+-
+-	fd = dma_heap_buffer_alloc(heap, heap_allocation->len,
+-				   heap_allocation->fd_flags,
+-				   heap_allocation->heap_flags);
++	fd = dma_heap_bufferfd_alloc(heap, heap_allocation->len,
++				     heap_allocation->fd_flags,
++				     heap_allocation->heap_flags);
+ 	if (fd < 0)
+ 		return fd;
+ 
+@@ -205,6 +222,7 @@ void *dma_heap_get_drvdata(struct dma_heap *heap)
+ {
+ 	return heap->priv;
+ }
++EXPORT_SYMBOL_GPL(dma_heap_get_drvdata);
+ 
+ /**
+  * dma_heap_get_name - get heap name
+@@ -217,6 +235,7 @@ const char *dma_heap_get_name(struct dma_heap *heap)
+ {
+ 	return heap->name;
+ }
++EXPORT_SYMBOL_GPL(dma_heap_get_name);
+ 
+ /**
+  * dma_heap_add - adds a heap to dmabuf heaps
+@@ -307,6 +326,37 @@ struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info)
+ 	kfree(heap);
+ 	return err_ret;
+ }
++EXPORT_SYMBOL_GPL(dma_heap_add);
++
++/**
++ * dma_heap_find - get the heap registered with the specified name
++ * @name: Name of the DMA-Heap to find
++ *
++ * Returns:
++ * The DMA-Heap with the provided name.
++ *
++ * NOTE: DMA-Heaps returned from this function MUST be released using
++ * dma_heap_put() when the user is done to enable the heap to be unloaded.
++ */
++struct dma_heap *dma_heap_find(const char *name)
++{
++	struct dma_heap *h;
++
++	mutex_lock(&heap_list_lock);
++	list_for_each_entry(h, &heap_list, list) {
++		if (!kref_get_unless_zero(&h->refcount))
++			continue;
++
++		if (!strcmp(h->name, name)) {
++			mutex_unlock(&heap_list_lock);
++			return h;
++		}
++		dma_heap_put(h);
++	}
++	mutex_unlock(&heap_list_lock);
++	return NULL;
++}
++EXPORT_SYMBOL_GPL(dma_heap_find);
+ 
+ static void dma_heap_release(struct kref *ref)
+ {
+@@ -332,6 +382,7 @@ void dma_heap_put(struct dma_heap *heap)
+ {
+ 	kref_put(&heap->refcount, dma_heap_release);
+ }
++EXPORT_SYMBOL_GPL(dma_heap_put);
+ 
+ static char *dma_heap_devnode(const struct device *dev, umode_t *mode)
+ {
+diff --git a/include/linux/dma-heap.h b/include/linux/dma-heap.h
+index d57593f8a1bc..3cbf9bff2346 100644
+--- a/include/linux/dma-heap.h
++++ b/include/linux/dma-heap.h
+@@ -46,6 +46,12 @@ const char *dma_heap_get_name(struct dma_heap *heap);
+ 
+ struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info);
+ 
++struct dma_heap *dma_heap_find(const char *name);
++
+ void dma_heap_put(struct dma_heap *heap);
+ 
++struct dma_buf *dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
++				      unsigned int fd_flags,
++				      unsigned int heap_flags);
++
+ #endif /* _DMA_HEAPS_H */
 -- 
 2.18.0
 
