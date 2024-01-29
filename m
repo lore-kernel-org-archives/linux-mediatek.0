@@ -4,72 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1E98C47DB3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 16:36:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41732C47DDB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 16:52:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bfHl2R0O29ld+Mzx1s1Rs88vhawyyZKmjQRnSaFJKBY=; b=a45gWH68PojX3LthAKLf5Nr6f3
-	sLCJwSxCo2Q0IuyDQqQIfM5QEedjkgoSvrN7T+S5K2k1xBUQb1ukB2U+N1YcYU7krzkCzSRg3csUq
-	qZR2CCKXxAfV15vAI/qNMFJtROIOfTwhWWuCn/iu6MdsSlkGVTlNdKynTpE/34zDiwc0IuOiWqkz6
-	WLaRDbdk6rxOHgnGHp+JShNLIpMTDYuy1RUEBlg5f5ZZfE8q7c5b+SSsagCf8VS8MTLKe88yD/AYh
-	LBzY+1p8m6AG7/pKMNupDUuDHU1ZmIBg5/dr1p9FbFqvPqki9wzEUC8furtLMs1aCSiNqj1u5N3Zf
-	iBR0QfVw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zM4YB6LCgMy5ymqGCGttDra+rFM6PL6B99ciN1rAFa8=; b=XQ/aKgldF8x9CgCdNnynfIhiv5
+	SOSF0eBaqQEwaJ3TDcp8kl+grBQ9KkwzrEoXLS3XsmCn4LlBLfmB536/y7ulrMVoYR2Fhf+0Tjm8n
+	zGHsGhSYEqgyO2xO3kkoPir1yQpF2VMG8sxRU8paUJMVbNkvznAiFZeD40EFOYebMyRmZJzhL2f5j
+	R8B50ojd+u1fYUTCwz1JuoxtNoPkNDjagHSmnk8tq3e9ADRunOh53d2Bfi6SpA4vBfqlteE0gJ1jV
+	AZWw4VNnTXzFd6iQCT4/6pyw9MR+pzcuY5nt7JsOpHNohiPzK+OaO67gc81KjYS0IMlPV4cOI5saY
+	hCg1BqwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUUcu-0000000DXeM-1rId;
-	Mon, 29 Jan 2024 16:36:52 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rUUri-0000000Dbwr-3w3z;
+	Mon, 29 Jan 2024 16:52:10 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUUcq-0000000DXb2-2R63;
-	Mon, 29 Jan 2024 16:36:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706546205;
-	bh=KeRmE3stTSKqTV2GA+O/3KWIiAY8DmL3ppn/fIpoFW4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=asPnCp/H8h6+VqbZ9tIYh5Vh4PY+FTVb/PmHnNL/1zsecKppZyoIPp6JiTq7LLyCY
-	 DjSK1ST1Y8SghrKCQfbsE5r2QFu0gSpmvqzYdtw5wzzKN3mblPkrMoUTZwnS65X3aB
-	 ndXrMWUF9aB1C8AhF3+RS4X1bEIZvOqQBFzIuYI8/mu4ICZ9gJZfhlDt84px+ixQ9+
-	 bTXJSWaqccLPFvt8H+gTH/8Y0VE31bsGxo6K39iH4kQGSUGoIceR8cBndhMOySlwom
-	 EuTIczHvBeR5nwOOVCcBK0ML05D5Tyt2GUrMuBEABJZyKVGCEqbp40RDeKN5AF5WQ3
-	 pZiLyMHQIBeEg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E834137814A4;
-	Mon, 29 Jan 2024 16:36:44 +0000 (UTC)
-Message-ID: <627c9ff9-06b3-4735-92ea-8c0ecfc2faf6@collabora.com>
-Date: Mon, 29 Jan 2024 17:36:44 +0100
+	id 1rUUrf-0000000Dbv8-1dqq;
+	Mon, 29 Jan 2024 16:52:08 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a26ed1e05c7so339543666b.2;
+        Mon, 29 Jan 2024 08:52:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1706547125; x=1707151925; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=zM4YB6LCgMy5ymqGCGttDra+rFM6PL6B99ciN1rAFa8=;
+        b=k1LskrkM0eO6W7MDVklBqs2p8CVUXyn6IY2P5ulilOJpOcStuHBv6b6gIu3xRUGNBh
+         fDC/9/euifCG7SBfgaIXB6ZcNvBRnbN41/5NOn14fanl1a4oBGX5rwb9cCa+W6O50/A4
+         lvI+QhRDjrV7oyU2sLC5qJf5QanrE1r0OQl0u0Kr3jSlL6SfEy3XQQKO/ag+Y4TFfCoc
+         Ndp/bRM5ztMIybMBosZQtoqKbMOVET7ZmgR3mcUcIREzQwqDXhLFOFAcNFDPg3LUiEVt
+         Oy9QgU9rnHGH/TAtcWC1d9sRZQ1Fqz1rpydJRe/x/OmfyhFi1Je/gL+96defzijZdqgU
+         6wvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706547125; x=1707151925;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=zM4YB6LCgMy5ymqGCGttDra+rFM6PL6B99ciN1rAFa8=;
+        b=WlOKuMgfFriW1ML8OAoOjFuRmSdc/nuRKemlJtbUu8tT3bWLIY3Oxw8i6qb99Lg1l8
+         vZSQeJiuoZqKUusxXK+xOXzXrDrnRRY7I9eakxUmDuM4yXYPsqMGz8cK0SO9XfP2IDy+
+         INYy3rYFnWiWgVKJhkDF3H+ZF9pZEFT8smG3xpXgRudQyLl9CtH7pJQbiBSXW1KCAueb
+         olY+OKRK/FQRYdRiXcpkmw2uTA+2EAQOFsF/tgMbKSigzTN3O7IhF/EyDy9B8f3aP5bC
+         3zMXs1mCbz0T323bubWMYgnDYay5RRHxFIb36vevyd8FItQqOMBRbPhS/GRZOEq827DA
+         EAAw==
+X-Gm-Message-State: AOJu0YwTzP07jkT60O/aC23XCyNAhxxCd4hVZNvUELgNSLkg3x51nHWz
+	Td6bME7aIlbafn9zcUQactuvC2FBbkE6y6QbPXPuRsWX8JSrENvH
+X-Google-Smtp-Source: AGHT+IGzq420DAFCukci9yVevy/O8K89kJMfsj41fc6AhgCNtdQXFjC0TQnH1aHeeatKT04gl1lHJw==
+X-Received: by 2002:a17:906:b48:b0:a35:cd66:3e32 with SMTP id v8-20020a1709060b4800b00a35cd663e32mr1692079ejg.35.1706547124675;
+        Mon, 29 Jan 2024 08:52:04 -0800 (PST)
+Received: from skbuf ([188.25.173.195])
+        by smtp.gmail.com with ESMTPSA id ld4-20020a1709079c0400b00a35a659cab5sm1616032ejc.179.2024.01.29.08.52.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 29 Jan 2024 08:52:04 -0800 (PST)
+Date: Mon, 29 Jan 2024 18:52:01 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>, mithat.guner@xeront.com,
+	erkin.bozoglu@xeront.com,
+	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v3 6/7] net: dsa: mt7530: do not set
+ priv->p5_interface on mt7530_setup_port5()
+Message-ID: <20240129165201.s4oiuk3sxtk6zcsw@skbuf>
+References: <20240122-for-netnext-mt7530-improvements-1-v3-0-042401f2b279@arinc9.com>
+ <20240122-for-netnext-mt7530-improvements-1-v3-6-042401f2b279@arinc9.com>
+ <20240129125241.gu4srgufad6hpwor@skbuf>
+ <431750cc-fb6b-4f7a-9123-b6986d359742@arinc9.com>
+ <20240129083152.34d899cd@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: mt8183-pico6: Fix bluetooth
- node
-Content-Language: en-US
-To: Paul Menzel <pmenzel@molgen.mpg.de>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- linux-bluetooth@vger.kernel.org, netdev@vger.kernel.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20240126063500.2684087-1-wenst@chromium.org>
- <20240126063500.2684087-3-wenst@chromium.org>
- <2c37a716-e4bb-4db3-a95f-a40e05b28cad@molgen.mpg.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <2c37a716-e4bb-4db3-a95f-a40e05b28cad@molgen.mpg.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240129083152.34d899cd@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240129_083648_810721_E6D5BD45 
-X-CRM114-Status: GOOD (  19.96  )
+X-CRM114-CacheID: sfid-20240129_085207_449550_5A739DAA 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,55 +110,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/01/24 17:31, Paul Menzel ha scritto:
-> Dear Chen-Yu,
+On Mon, Jan 29, 2024 at 08:31:52AM -0800, Jakub Kicinski wrote:
+> On Mon, 29 Jan 2024 19:22:28 +0300 Arınç ÜNAL wrote:
+> > > I hope this moves the patch set out of the 'deferred' state.
+> > > 
+> > > ---
+> > > pw-bot: under-review  
+> > 
+> > I still see deferred. I guess I'll have to submit this again. :/
 > 
-> 
-> Thank you for your patch.
-> 
-> Am 26.01.24 um 07:34 schrieb Chen-Yu Tsai:
->> Bluetooth is not a random device connected to the MMC/SD controller. It
->> is function 2 of the SDIO device.
->>
->> Fix the address of the bluetooth node. Also fix the node name and drop
->> the label.
-> 
-> Excuse my ignorance: Is this a cosmetic fix or does it fix the device somehow?
-> 
->> Fixes: 055ef10ccdd4 ("arm64: dts: mt8183: Add jacuzzi pico/pico6 board")
->> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->> Changes since v1:
->> - Collected reviewed-by
->>
->>   arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts | 3 ++-
->>   1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts 
->> b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts
->> index a2e74b829320..6a7ae616512d 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts
->> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts
->> @@ -82,7 +82,8 @@ pins-clk {
->>   };
->>   &mmc1 {
->> -    bt_reset: bt-reset {
->> +    bluetooth@2 {
->> +        reg = <2>;
-> 
-> To avoid confusion, would it be possible to use sdio as a “name”.
-> 
+> Took me an hour to fix the mailbot:
+> https://github.com/kuba-moo/nipa/commit/6766e97e72ac91ffb42ed2259bc8e2ace446d0ef
+> email is the most quirky thing ever.
 
-Names must be generic and descriptive; this is the Bluetooth part of the MT7921s
-hence it's called "bluetooth". If its functionality was "sdio", it'd be as such,
-but this is BT anyway.
+Ah, so it was my neomutt encoding email as base64...
 
-"sdio@xxx" would be applicable to, for example, a controller that provides support
-exclusively for SDIO (with no support for eMMC/SD).
-
-Regards,
-Angelo
-
-
+I see Arınç's series is now in the proper state, thanks!
 
