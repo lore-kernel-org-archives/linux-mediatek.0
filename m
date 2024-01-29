@@ -4,86 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB341C47DDF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 06:41:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98294C47422
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 07:34:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oUOfVeRKnJ1zcg5WgLZGiIN5J1sZ37QJ5q0Qif+5X/Q=; b=tgG9srDfpsNT4yNRI5Bn/6f1v1
-	lytZeXOdzpmbzWuXgD3gMFo+OPn8s4gnz+QbdN7mvMTGuXIM0j7yEqiurl5X1tLKpRa8O0xspsK5P
-	T/bXcQKy0FbtCPznAsiSFqEknYSyc2GnT+L4EcSKmKQES6LSW7nnM9mNOCUMzPGzRogi9Zr9kX2PJ
-	jY4RQoMrJeHCMfPopt0bqUn17lgKWa7tc5qeJciEfRKywUH8OPSEUusxyBXYbJF1GBfj8e4iqqeKT
-	VWjA6tUrwUrsmCuamE3xnZypXUBbLbpUkXveTERfLl5rO6JQD96fk5K9GW4gA6Izy6I+ojtmscHBZ
-	94vtXTMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+IuTsom5zNpziMyToWxRPDcrsspFG30xdypJVc9vvcU=; b=NDEe3yJatjxWt/5MzW+kVgjNtI
+	/8qeo5iRQnBI/HGLEfEtzMGlUgdQ9Xe3+M0Alql+ClH7gO74vkseGKCPluYU5I5NxAZzBHz9T/ruL
+	/+raptLivit+NIwEsTuYMhComZ/YpjJNxtODFDuy22E0noVXSrBAFQw5q0DoHJHS5yOxYo5bD3sZT
+	Jj74EkIKmJ2b22wHdQYvLpPp+6095nro+bSoWx7gpYs273dZmYstnbLGgx6kRXxsvaJN5Y8ji7pQH
+	kQsFbOI+tc7krrjfriQVe2iGCE/RiM0evXiZq/dZPlocVlXjkytKswTMS9gtGLpxSgoNIyW6sPXtb
+	1gZsEJkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rULKV-0000000BX3m-0nU6;
-	Mon, 29 Jan 2024 06:41:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rUM9k-0000000Bctz-15bg;
+	Mon, 29 Jan 2024 07:34:12 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rULKO-0000000BWzx-3LIJ;
-	Mon, 29 Jan 2024 06:41:12 +0000
-X-UUID: 6020495cbe7111ee9a263b4415211400-20240128
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=oUOfVeRKnJ1zcg5WgLZGiIN5J1sZ37QJ5q0Qif+5X/Q=;
-	b=cF8FVmcfDWfPnEAcbu2EoVsm/qnj32RM2gkMkI4hVV2uDy1IduRhpul4/voEAl/zjJrXR/zben79OPKwMqaZEAupVemvfpFjJSTuCDBroZ8AFwZfuVl4TjUcIB4GV7KEN44Z02B99Gm4eh3DiC1yfDMkDXGwXGHyY3RctymRU3Q=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.36,REQID:b27020c3-2a4a-43ea-a707-01cb42674cc4,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6e16cf4,CLOUDID:a4c75c83-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 6020495cbe7111ee9a263b4415211400-20240128
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 781519942; Sun, 28 Jan 2024 23:41:04 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 29 Jan 2024 14:31:01 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 29 Jan 2024 14:31:00 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Jeffrey Kardatzke <jkardatzke@google.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
-CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
- Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel
- Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei Dong
-	<yunfei.dong@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>, Brian
- Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T . J .
- Mercier" <tjmercier@google.com>, =?UTF-8?q?Christian=20K=C3=B6nig?=
-	<christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<dri-devel@lists.freedesktop.org>, <linaro-mm-sig@lists.linaro.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v4,19/22] media: mediatek: vcodec: disable wait interrupt for svp mode
-Date: Mon, 29 Jan 2024 14:30:22 +0800
-Message-ID: <20240129063025.29251-20-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240129063025.29251-1-yunfei.dong@mediatek.com>
-References: <20240129063025.29251-1-yunfei.dong@mediatek.com>
+	id 1rUM9g-0000000Bcsv-2QkE
+	for linux-mediatek@lists.infradead.org;
+	Mon, 29 Jan 2024 07:34:09 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a350bfcc621so223382566b.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 28 Jan 2024 23:34:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1706513645; x=1707118445; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=+IuTsom5zNpziMyToWxRPDcrsspFG30xdypJVc9vvcU=;
+        b=m82lAxDzx3Ws0KniB4LPqtOKmj/n08Z0AR7AQjVm4KXjpkNK6EtmcoYMfjyOUHra61
+         r1n+xQKRGpmXyijG54dDTMAocLwLMCawuIShCdR6pgSixYKYaoVU/7WpiKdGEW6fwT4R
+         88/7zLC/dLT6Sqky3R0OO+mTOaRkrKqgrr5WsvSHknrpgMfqpo8g4yG0WG0FCGwmag3L
+         6njg5gM39UcZJzE/n9jhFAQunqnMfPV7gHjI3AcakQX2lOyxofqIpbBZbJeAwheIsu9g
+         4oXSHvbHOtROyW6JL95E+uIineucJvllGxKlLP7wuYPYEQ4Nxu3cCNsbVMBeM4mbNVG6
+         wmmw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706513645; x=1707118445;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+IuTsom5zNpziMyToWxRPDcrsspFG30xdypJVc9vvcU=;
+        b=W7HGZjDlOaDgBSGpdtyjlu12OYUp7SHQ/l7aQameZa6MyGsosXR0SntyBvdPtqmbLB
+         d0nGevIwpImkZaeBi+cWMRCm8Pi3RHE9WUc+bAQVYJqlM/aMp6WJHO25Q/L7biBxZccj
+         ZXYl8mnQUpqp9zYuxYe6SRQrSGufadE1UUxR5x+Vyf1JKrW/f5ZUCpEZPujwK/vEVB1Z
+         Nc4t9Sw39KVywKgUsnYq502szraIsxVOeo/G1vX+zLVc1GBmtzVTQBZiJhCJLNPjwWTu
+         XiXCyFx+B1LMan5mLFy1GfNiOvPCV3ta5DRq2mOQcdCv7HMGaGt6kx91vu164Pcj01Nj
+         VhVQ==
+X-Gm-Message-State: AOJu0YzsQUitdI60bqZh1XQdoHwEsvAFlGhHpPHkv3nz3Sqc/x3odYkO
+	R1evOMI7vNzbaGFRK7LI2xMrYL9YEo3kNa83O2OSLnnrbiLYHh8NfpqHrQou4Ms=
+X-Google-Smtp-Source: AGHT+IGavKgH/vqKIh7pY+aZyTPtE8QX78FZQ9glqejNGoKMG6N9S72uFFSBCmWsrX81YL/TPnXVbg==
+X-Received: by 2002:a17:906:6945:b0:a35:eb82:be86 with SMTP id c5-20020a170906694500b00a35eb82be86mr147800ejs.3.1706513645635;
+        Sun, 28 Jan 2024 23:34:05 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.222.62])
+        by smtp.gmail.com with ESMTPSA id st1-20020a170907c08100b00a2a61b9c166sm3600622ejc.33.2024.01.28.23.34.03
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 28 Jan 2024 23:34:05 -0800 (PST)
+Message-ID: <21568334-b21f-429e-81cd-5ce77accaf3c@linaro.org>
+Date: Mon, 29 Jan 2024 08:34:02 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/2] dt-bindings: net: bluetooth: Add MediaTek MT7921S
+ SDIO Bluetooth
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Marcel Holtmann <marcel@holtmann.org>,
+ Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sean Wang <sean.wang@mediatek.com>, linux-bluetooth@vger.kernel.org,
+ netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20240126063500.2684087-1-wenst@chromium.org>
+ <20240126063500.2684087-2-wenst@chromium.org>
+ <74b9f249-fcb4-4338-bf7b-8477de6c935c@linaro.org>
+ <CAGXv+5Hu+KsTBd1JtnKcaE3qUzPhHbunoVaH2++yfNopHtFf4g@mail.gmail.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <CAGXv+5Hu+KsTBd1JtnKcaE3qUzPhHbunoVaH2++yfNopHtFf4g@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240128_224109_022930_9545E2C7 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20240128_233408_700880_FAFB408E 
+X-CRM114-Status: GOOD (  12.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,173 +151,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Waiting interrupt in optee-os for svp mode, need to disable it in kernel
-in case of interrupt is cleaned.
+On 29/01/2024 04:38, Chen-Yu Tsai wrote:
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- .../vcodec/decoder/mtk_vcodec_dec_hw.c        | 34 +++++------
- .../vcodec/decoder/mtk_vcodec_dec_pm.c        |  6 +-
- .../decoder/vdec/vdec_h264_req_multi_if.c     | 57 +++++++++++--------
- 3 files changed, 54 insertions(+), 43 deletions(-)
+>>> +allOf:
+>>> +  - $ref: bluetooth-controller.yaml#
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    enum:
+>>> +      - mediatek,mt7921s-bluetooth
+>>
+>> Can it be also WiFi on separate bus? How many device nodes do you need
+>> for this device?
+> 
+> For the "S" variant, WiFi is also on SDIO. For the other two variants,
+> "U" and "E", WiFi goes over USB and PCIe respectively. On both those
+> variants, Bluetooth can either go over USB or UART. That is what I
+> gathered from the pinouts. There are a dozen GPIO pins which don't
+> have detailed descriptions though. If you want a comprehensive
+> binding of the whole chip and all its variants, I suggest we ask
+> MediaTek to provide it instead. My goal with the binding is to document
+> existing usage and allow me to upstream new device trees.
+> 
+> For now we only need the Bluetooth node. The WiFi part is perfectly
+> detectable, and the driver doesn't seem to need the WiFi reset pin.
+> The Bluetooth driver only uses its reset pin to reset a hung controller.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_hw.c
-index 881d5de41e05..1982c088c6da 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_hw.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_hw.c
-@@ -72,26 +72,28 @@ static irqreturn_t mtk_vdec_hw_irq_handler(int irq, void *priv)
- 
- 	ctx = mtk_vcodec_get_curr_ctx(dev->main_dev, dev->hw_idx);
- 
--	/* check if HW active or not */
--	cg_status = readl(dev->reg_base[VDEC_HW_SYS] + VDEC_HW_ACTIVE_ADDR);
--	if (cg_status & VDEC_HW_ACTIVE_MASK) {
--		mtk_v4l2_vdec_err(ctx, "vdec active is not 0x0 (0x%08x)", cg_status);
--		return IRQ_HANDLED;
--	}
-+	if (!ctx->is_secure_playback) {
-+		/* check if HW active or not */
-+		cg_status = readl(dev->reg_base[VDEC_HW_SYS] + VDEC_HW_ACTIVE_ADDR);
-+		if (cg_status & VDEC_HW_ACTIVE_MASK) {
-+			mtk_v4l2_vdec_err(ctx, "vdec active is not 0x0 (0x%08x)", cg_status);
-+			return IRQ_HANDLED;
-+		}
- 
--	dec_done_status = readl(vdec_misc_addr);
--	if ((dec_done_status & MTK_VDEC_IRQ_STATUS_DEC_SUCCESS) !=
--	    MTK_VDEC_IRQ_STATUS_DEC_SUCCESS)
--		return IRQ_HANDLED;
-+		dec_done_status = readl(vdec_misc_addr);
-+		if ((dec_done_status & MTK_VDEC_IRQ_STATUS_DEC_SUCCESS) !=
-+		    MTK_VDEC_IRQ_STATUS_DEC_SUCCESS)
-+			return IRQ_HANDLED;
- 
--	/* clear interrupt */
--	writel(dec_done_status | VDEC_IRQ_CFG, vdec_misc_addr);
--	writel(dec_done_status & ~VDEC_IRQ_CLR, vdec_misc_addr);
-+		/* clear interrupt */
-+		writel(dec_done_status | VDEC_IRQ_CFG, vdec_misc_addr);
-+		writel(dec_done_status & ~VDEC_IRQ_CLR, vdec_misc_addr);
- 
--	wake_up_dec_ctx(ctx, MTK_INST_IRQ_RECEIVED, dev->hw_idx);
-+		wake_up_dec_ctx(ctx, MTK_INST_IRQ_RECEIVED, dev->hw_idx);
- 
--	mtk_v4l2_vdec_dbg(3, ctx, "wake up ctx %d, dec_done_status=%x",
--			  ctx->id, dec_done_status);
-+		mtk_v4l2_vdec_dbg(3, ctx, "wake up ctx %d, dec_done_status=%x",
-+				  ctx->id, dec_done_status);
-+	}
- 
- 	return IRQ_HANDLED;
- }
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c
-index aefd3e9e3061..a94eda936f16 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c
-@@ -238,7 +238,8 @@ void mtk_vcodec_dec_enable_hardware(struct mtk_vcodec_dec_ctx *ctx, int hw_idx)
- 		mtk_vcodec_dec_child_dev_on(ctx->dev, MTK_VDEC_LAT0);
- 	mtk_vcodec_dec_child_dev_on(ctx->dev, hw_idx);
- 
--	mtk_vcodec_dec_enable_irq(ctx->dev, hw_idx);
-+	if (!ctx->is_secure_playback)
-+		mtk_vcodec_dec_enable_irq(ctx->dev, hw_idx);
- 
- 	if (IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
- 		mtk_vcodec_load_racing_info(ctx);
-@@ -250,7 +251,8 @@ void mtk_vcodec_dec_disable_hardware(struct mtk_vcodec_dec_ctx *ctx, int hw_idx)
- 	if (IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
- 		mtk_vcodec_record_racing_info(ctx);
- 
--	mtk_vcodec_dec_disable_irq(ctx->dev, hw_idx);
-+	if (!ctx->is_secure_playback)
-+		mtk_vcodec_dec_disable_irq(ctx->dev, hw_idx);
- 
- 	mtk_vcodec_dec_child_dev_off(ctx->dev, hw_idx);
- 	if (IS_VDEC_LAT_ARCH(ctx->dev->vdec_pdata->hw_arch) &&
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-index 2dfb3043493e..3e2270399b6c 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-@@ -593,14 +593,16 @@ static int vdec_h264_slice_core_decode(struct vdec_lat_buf *lat_buf)
- 		goto vdec_dec_end;
- 	}
- 
--	/* wait decoder done interrupt */
--	timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
--					       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_CORE);
--	if (timeout)
--		mtk_vdec_err(ctx, "core decode timeout: pic_%d", ctx->decoded_frame_cnt);
--	inst->vsi_core->dec.timeout = !!timeout;
--
--	vpu_dec_core_end(vpu);
-+	if (!ctx->is_secure_playback) {
-+		/* wait decoder done interrupt */
-+		timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
-+						       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_CORE);
-+		if (timeout)
-+			mtk_vdec_err(ctx, "core decode timeout: pic_%d", ctx->decoded_frame_cnt);
-+		inst->vsi_core->dec.timeout = !!timeout;
-+
-+		vpu_dec_core_end(vpu);
-+	}
- 	mtk_vdec_debug(ctx, "pic[%d] crc: 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x",
- 		       ctx->decoded_frame_cnt,
- 		       inst->vsi_core->dec.crc[0], inst->vsi_core->dec.crc[1],
-@@ -724,14 +726,16 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 		vdec_msg_queue_qbuf(&inst->ctx->msg_queue.core_ctx, lat_buf);
- 	}
- 
--	/* wait decoder done interrupt */
--	timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
--					       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_LAT0);
--	if (timeout)
--		mtk_vdec_err(inst->ctx, "lat decode timeout: pic_%d", inst->slice_dec_num);
--	inst->vsi->dec.timeout = !!timeout;
-+	if (!inst->ctx->is_secure_playback) {
-+		/* wait decoder done interrupt */
-+		timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
-+						       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_LAT0);
-+		if (timeout)
-+			mtk_vdec_err(inst->ctx, "lat decode timeout: pic_%d", inst->slice_dec_num);
-+		inst->vsi->dec.timeout = !!timeout;
- 
--	err = vpu_dec_end(vpu);
-+		err = vpu_dec_end(vpu);
-+	}
- 	if (err == SLICE_HEADER_FULL || err == TRANS_BUFFER_FULL) {
- 		if (!IS_VDEC_INNER_RACING(inst->ctx->dev->dec_capability))
- 			vdec_msg_queue_qbuf(&inst->ctx->msg_queue.lat_ctx, lat_buf);
-@@ -831,16 +835,19 @@ static int vdec_h264_slice_single_decode(void *h_vdec, struct mtk_vcodec_mem *bs
- 	if (err)
- 		goto err_free_fb_out;
- 
--	/* wait decoder done interrupt */
--	err = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
--					   WAIT_INTR_TIMEOUT_MS, MTK_VDEC_CORE);
--	if (err)
--		mtk_vdec_err(inst->ctx, "decode timeout: pic_%d", inst->ctx->decoded_frame_cnt);
--
--	inst->vsi->dec.timeout = !!err;
--	err = vpu_dec_end(vpu);
--	if (err)
--		goto err_free_fb_out;
-+	if (!inst->ctx->is_secure_playback) {
-+		/* wait decoder done interrupt */
-+		err = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
-+						   WAIT_INTR_TIMEOUT_MS, MTK_VDEC_CORE);
-+		if (err)
-+			mtk_vdec_err(inst->ctx, "decode timeout: pic_%d",
-+				     inst->ctx->decoded_frame_cnt);
-+
-+		inst->vsi->dec.timeout = !!err;
-+		err = vpu_dec_end(vpu);
-+		if (err)
-+			goto err_free_fb_out;
-+	}
- 
- 	memcpy(&inst->vsi_ctx, inst->vpu.vsi, sizeof(inst->vsi_ctx));
- 	mtk_vdec_debug(inst->ctx, "pic[%d] crc: 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x",
--- 
-2.18.0
+Then suffix "bluetooth" seems redundant.
+
+
+
+Best regards,
+Krzysztof
 
 
