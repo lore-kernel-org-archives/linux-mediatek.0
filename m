@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4049C48285
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 06:31:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F5C2C47422
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jan 2024 06:31:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UPVHcc8KSPfm1YMszvxilcNFOHjhFpWP3tum1Ff3QE8=; b=co91wNe2AK+UccP2LfVPgPR0Ec
-	yhIkwODgXuY0gHzgQDgastFpJ3/U9ydsFKorGT45I3fQUIeSVsCyLTmoj+x8aj2R79uPJKGOu+1qu
-	Ml4iAZXYnD/pdfrJgixNzbJRCzkgqpQLGSzqLzp+ikRrzwB+1ffivB/8QjOgN97rRgSyzTJolqG6U
-	Tf/4vGm5QnOcYi+T/W7QH25fftsDX8aEysLiqa5FrbDmq6qMdyLI5ibxkMBj++u3f8sk1IjohpPnc
-	4zT3UeynGs9RMT7p5+R2gPSMcOOC8kMlm0vFT6Tf9tjsnc5k++uOA2VJZKBdWZcayFBgkx04KHeAm
-	WZhXHIlQ==;
+	bh=khLeNmeFr4dEE7zUUulOnX9v44u9sQtomfWBa91taAk=; b=RcrMgcS6PwWt5KrHqdcZmfMSci
+	FvZsZwY3Ur5wR/ZQ8LY2ArEzvVAHnGgHt0e651H093XLAi5gJlUB3M5Yba51+0RAD9PhdHAeaTtn+
+	7TzMBnk3enqtKyfayA936PEwVV6NBVpJQvDhx0mOCkJ1S/SsXwQGlPIU3nMmmxLkJ+wmn/foevez5
+	73Xo881em4Scxv32Fq8/1CSs2fRGBOv3bqk2yDsaKj9zoD0xTmnW38B3SxrAQilNZJ67F6XVl55Ub
+	zQVuBmCaf8ld+hPvLCGRgiYpKAiXUcpzWaYHZiyzo4UkhUjm6jcQddlnYUszal5yQlKBA0zkFe6Z9
+	ZcRFu88g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rULAv-0000000BTMq-0Joi;
-	Mon, 29 Jan 2024 06:31:21 +0000
+	id 1rULBC-0000000BTbV-39gT;
+	Mon, 29 Jan 2024 06:31:38 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rULAf-0000000BT56-0UuS;
-	Mon, 29 Jan 2024 06:31:08 +0000
-X-UUID: f4912162be6f11ee9a263b4415211400-20240128
+	id 1rULAf-0000000BTAc-30gL;
+	Mon, 29 Jan 2024 06:31:09 +0000
+X-UUID: f8d9a046be6f11ee9a263b4415211400-20240128
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=UPVHcc8KSPfm1YMszvxilcNFOHjhFpWP3tum1Ff3QE8=;
-	b=clgLIUTDmoE7Sir/ZTAJzt6KLVf0pb6zkSIfMC0/1VGSw2000DP3YZEg/ox8Sbziu80edPrR8+Eu+OE90z0odIeDttqmFvTkNtCF8DWizdc0Y0xtOi92dZYIzNZb9HnEpCfuelm0t7rgPbwofiC6MtVl2qJtaYh8r8EK5St6ur4=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=khLeNmeFr4dEE7zUUulOnX9v44u9sQtomfWBa91taAk=;
+	b=mIlsVpIt8O3m6cIA2cqfWHDuDtavMub8L5qyq7Sd6+axb6xrS3hsYUt0XyrtjpcNi0mCCrOkk3xwEP1GoIxOPIB15bn6sK+dI+GUfK11GG5TMv2mFKCvKgm16K7MWtMiftiMWVjkU+zmk3SSeTWEKVrIR4FohNy2Gn8jlg3ww08=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.36,REQID:4f1cbe20-fb00-4525-85a6-cfcb2f385710,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6e16cf4,CLOUDID:5fb6c38e-e2c0-40b0-a8fe-7c7e47299109,B
+X-CID-O-INFO: VERSION:1.1.36,REQID:72b56225-67b2-436b-bdb4-91baa8c4d65c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6e16cf4,CLOUDID:b4a95c83-8d4f-477b-89d2-1e3bdbef96d1,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: f4912162be6f11ee9a263b4415211400-20240128
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+X-UUID: f8d9a046be6f11ee9a263b4415211400-20240128
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1916247639; Sun, 28 Jan 2024 23:30:54 -0700
+	with ESMTP id 1379262645; Sun, 28 Jan 2024 23:31:02 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 29 Jan 2024 14:30:52 +0800
+ 15.2.1118.26; Mon, 29 Jan 2024 14:30:41 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 29 Jan 2024 14:30:50 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 29 Jan 2024 14:30:40 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Jeffrey Kardatzke <jkardatzke@google.com>,
 	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
@@ -71,9 +71,9 @@ CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v4,12/22] media: mediatek: vcodec: add interface to allocate/free secure memory
-Date: Mon, 29 Jan 2024 14:30:15 +0800
-Message-ID: <20240129063025.29251-13-yunfei.dong@mediatek.com>
+Subject: [PATCH v4,04/22] v4l: add documentation for restricted memory flag
+Date: Mon, 29 Jan 2024 14:30:07 +0800
+Message-ID: <20240129063025.29251-5-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240129063025.29251-1-yunfei.dong@mediatek.com>
 References: <20240129063025.29251-1-yunfei.dong@mediatek.com>
@@ -82,8 +82,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240128_223105_343239_279374B6 
-X-CRM114-Status: GOOD (  17.54  )
+X-CRM114-CacheID: sfid-20240128_223105_909911_E43EA0C0 
+X-CRM114-Status: GOOD (  11.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,204 +98,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Need to call dma heap interface to allocate/free secure memory when playing
-secure video.
+From: Jeffrey Kardatzke <jkardatzke@google.com>
 
+Adds documentation for V4L2_MEMORY_FLAG_RESTRICTED.
+
+Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../media/platform/mediatek/vcodec/Kconfig    |   1 +
- .../mediatek/vcodec/common/mtk_vcodec_util.c  | 122 +++++++++++++++++-
- .../mediatek/vcodec/common/mtk_vcodec_util.h  |   3 +
- 3 files changed, 123 insertions(+), 3 deletions(-)
+ Documentation/userspace-api/media/v4l/buffer.rst | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/Kconfig b/drivers/media/platform/mediatek/vcodec/Kconfig
-index bc8292232530..707865703e61 100644
---- a/drivers/media/platform/mediatek/vcodec/Kconfig
-+++ b/drivers/media/platform/mediatek/vcodec/Kconfig
-@@ -17,6 +17,7 @@ config VIDEO_MEDIATEK_VCODEC
- 	depends on VIDEO_MEDIATEK_VPU || !VIDEO_MEDIATEK_VPU
- 	depends on MTK_SCP || !MTK_SCP
- 	depends on MTK_SMI || (COMPILE_TEST && MTK_SMI=n)
-+	depends on DMABUF_HEAPS
- 	select VIDEOBUF2_DMA_CONTIG
- 	select V4L2_MEM2MEM_DEV
- 	select VIDEO_MEDIATEK_VCODEC_VPU if VIDEO_MEDIATEK_VPU
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c
-index 9ce34a3b5ee6..5cb7c347322b 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c
-@@ -5,9 +5,11 @@
- *	Tiffany Lin <tiffany.lin@mediatek.com>
- */
+diff --git a/Documentation/userspace-api/media/v4l/buffer.rst b/Documentation/userspace-api/media/v4l/buffer.rst
+index 52bbee81c080..807e43bfed2b 100644
+--- a/Documentation/userspace-api/media/v4l/buffer.rst
++++ b/Documentation/userspace-api/media/v4l/buffer.rst
+@@ -696,7 +696,7 @@ enum v4l2_memory
  
-+#include <linux/dma-heap.h>
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/regmap.h>
-+#include <uapi/linux/dma-heap.h>
+ .. _memory-flags:
  
- #include "../decoder/mtk_vcodec_dec_drv.h"
- #include "../encoder/mtk_vcodec_enc_drv.h"
-@@ -45,7 +47,7 @@ int mtk_vcodec_write_vdecsys(struct mtk_vcodec_dec_ctx *ctx, unsigned int reg,
- }
- EXPORT_SYMBOL(mtk_vcodec_write_vdecsys);
+-Memory Consistency Flags
++Memory Flags
+ ------------------------
  
--int mtk_vcodec_mem_alloc(void *priv, struct mtk_vcodec_mem *mem)
-+static int mtk_vcodec_mem_alloc_nor(void *priv, struct mtk_vcodec_mem *mem)
- {
- 	enum mtk_instance_type inst_type = *((unsigned int *)priv);
- 	struct platform_device *plat_dev;
-@@ -76,9 +78,71 @@ int mtk_vcodec_mem_alloc(void *priv, struct mtk_vcodec_mem *mem)
+ .. raw:: latex
+@@ -728,6 +728,14 @@ Memory Consistency Flags
+ 	only if the buffer is used for :ref:`memory mapping <mmap>` I/O and the
+ 	queue reports the :ref:`V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS
+ 	<V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS>` capability.
++    * .. _`V4L2-MEMORY-FLAG-RESTRICTED`:
++
++      - ``V4L2_MEMORY_FLAG_RESTRICTED``
++      - 0x00000002
++      - The queued buffers are expected to be in restricted memory. If not, an
++	error will be returned. This flag can only be used with ``V4L2_MEMORY_DMABUF``.
++	Typically restricted buffers are allocated using a restricted dma-heap. This flag
++	can only be specified if the ``V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM`` is set.
  
- 	return 0;
- }
--EXPORT_SYMBOL(mtk_vcodec_mem_alloc);
+ .. raw:: latex
  
--void mtk_vcodec_mem_free(void *priv, struct mtk_vcodec_mem *mem)
-+static int mtk_vcodec_mem_alloc_sec(struct mtk_vcodec_dec_ctx *ctx, struct mtk_vcodec_mem *mem)
-+{
-+	struct device *dev = &ctx->dev->plat_dev->dev;
-+	struct dma_buf *dma_buffer;
-+	struct dma_heap *vdec_heap;
-+	struct dma_buf_attachment *attach;
-+	struct sg_table *sgt;
-+	unsigned long size = mem->size;
-+	int ret = 0;
-+
-+	if (!size)
-+		return -EINVAL;
-+
-+	vdec_heap = dma_heap_find("restricted_mtk_cm");
-+	if (!vdec_heap) {
-+		mtk_v4l2_vdec_err(ctx, "dma heap find failed!");
-+		return -EPERM;
-+	}
-+
-+	dma_buffer = dma_heap_buffer_alloc(vdec_heap, size, DMA_HEAP_VALID_FD_FLAGS,
-+					   DMA_HEAP_VALID_HEAP_FLAGS);
-+	if (IS_ERR_OR_NULL(dma_buffer)) {
-+		mtk_v4l2_vdec_err(ctx, "dma heap alloc size=0x%lx failed!", size);
-+		return PTR_ERR(dma_buffer);
-+	}
-+
-+	attach = dma_buf_attach(dma_buffer, dev);
-+	if (IS_ERR_OR_NULL(attach)) {
-+		mtk_v4l2_vdec_err(ctx, "dma attach size=0x%lx failed!", size);
-+		ret = PTR_ERR(attach);
-+		goto err_attach;
-+	}
-+
-+	sgt = dma_buf_map_attachment(attach, DMA_BIDIRECTIONAL);
-+	if (IS_ERR_OR_NULL(sgt)) {
-+		mtk_v4l2_vdec_err(ctx, "dma map attach size=0x%lx failed!", size);
-+		ret = PTR_ERR(sgt);
-+		goto err_sgt;
-+	}
-+
-+	mem->va = dma_buffer;
-+	mem->dma_addr = (dma_addr_t)sg_dma_address((sgt)->sgl);
-+
-+	if (!mem->va || !mem->dma_addr) {
-+		mtk_v4l2_vdec_err(ctx, "dma buffer size=0x%lx failed!", size);
-+		ret = -EPERM;
-+		goto err_addr;
-+	}
-+
-+	mem->attach = attach;
-+	mem->sgt = sgt;
-+
-+	return 0;
-+err_addr:
-+	dma_buf_unmap_attachment(attach, sgt, DMA_BIDIRECTIONAL);
-+err_sgt:
-+	dma_buf_detach(dma_buffer, attach);
-+err_attach:
-+	dma_buf_put(dma_buffer);
-+
-+	return ret;
-+}
-+
-+static void mtk_vcodec_mem_free_nor(void *priv, struct mtk_vcodec_mem *mem)
- {
- 	enum mtk_instance_type inst_type = *((unsigned int *)priv);
- 	struct platform_device *plat_dev;
-@@ -111,6 +175,57 @@ void mtk_vcodec_mem_free(void *priv, struct mtk_vcodec_mem *mem)
- 	mem->dma_addr = 0;
- 	mem->size = 0;
- }
-+
-+static void mtk_vcodec_mem_free_sec(struct mtk_vcodec_mem *mem)
-+{
-+	if (mem->sgt)
-+		dma_buf_unmap_attachment(mem->attach, mem->sgt, DMA_BIDIRECTIONAL);
-+	dma_buf_detach((struct dma_buf *)mem->va, mem->attach);
-+	dma_buf_put((struct dma_buf *)mem->va);
-+
-+	mem->attach = NULL;
-+	mem->sgt = NULL;
-+	mem->va = NULL;
-+	mem->dma_addr = 0;
-+	mem->size = 0;
-+}
-+
-+int mtk_vcodec_mem_alloc(void *priv, struct mtk_vcodec_mem *mem)
-+{
-+	enum mtk_instance_type inst_type = *((unsigned int *)priv);
-+	int ret;
-+
-+	if (inst_type == MTK_INST_DECODER) {
-+		struct mtk_vcodec_dec_ctx *dec_ctx = priv;
-+
-+		if (dec_ctx->is_secure_playback) {
-+			ret = mtk_vcodec_mem_alloc_sec(dec_ctx, mem);
-+			goto alloc_end;
-+		}
-+	}
-+
-+	ret = mtk_vcodec_mem_alloc_nor(priv, mem);
-+alloc_end:
-+
-+	return ret;
-+}
-+EXPORT_SYMBOL(mtk_vcodec_mem_alloc);
-+
-+void mtk_vcodec_mem_free(void *priv, struct mtk_vcodec_mem *mem)
-+{
-+	enum mtk_instance_type inst_type = *((unsigned int *)priv);
-+
-+	if (inst_type == MTK_INST_DECODER) {
-+		struct mtk_vcodec_dec_ctx *dec_ctx = priv;
-+
-+		if (dec_ctx->is_secure_playback) {
-+			mtk_vcodec_mem_free_sec(mem);
-+			return;
-+		}
-+	}
-+
-+	mtk_vcodec_mem_free_nor(priv, mem);
-+}
- EXPORT_SYMBOL(mtk_vcodec_mem_free);
- 
- void *mtk_vcodec_get_hw_dev(struct mtk_vcodec_dec_dev *dev, int hw_idx)
-@@ -172,3 +287,4 @@ EXPORT_SYMBOL(mtk_vcodec_get_curr_ctx);
- 
- MODULE_LICENSE("GPL v2");
- MODULE_DESCRIPTION("Mediatek video codec driver");
-+MODULE_IMPORT_NS(DMA_BUF);
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.h
-index 85f615cdd4d3..22078e757ed0 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.h
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.h
-@@ -18,6 +18,9 @@ struct mtk_vcodec_mem {
- 	size_t size;
- 	void *va;
- 	dma_addr_t dma_addr;
-+
-+	struct dma_buf_attachment *attach;
-+	struct sg_table *sgt;
- };
- 
- struct mtk_vcodec_fb {
 -- 
 2.18.0
 
