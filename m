@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02B74C48285
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 15:22:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D27F0C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 15:22:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=YCD/8QR7tHGc022ZW1WizW7TIAt9RgXk00DuSqw2edc=; b=VE07kTQ/xSDZkcQMOYdLhDDEQr
-	se5v7PoceCfhBUwFhVqIdvl/ZP3ADE+ydJQxOz1K7sNTkAzhO504JifqW6eYhdlTFjMJ7U2DNQtIN
-	zXOPHIpezfrizFtjO+hI2JxIh1ItjcXSQT5TgIy50ta3D6IrKNchvXUGHNoGfrRxkiBqOsCIGcFjA
-	TOllzVcGIEa3S3kwSOSaDGQZDnwbOSqODanmTUv8Z7+lTucLR8pc9wCbyRYkbaBG8gZU/8DSc58XP
-	4C+ZsnWnl1OE0845Gei2yRVSllo/lcL3oG2Bw8HlpsbphkvnXhk4uYNwgHxuGIYFPi9gmvdfK7rOp
-	XIrVSgKA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Gq6hNDgTiF2uxFBN6g8AdJWTrfGAK1GyHWP9AT4U4Aw=; b=AUaiXC/sVGxhKXjod4dNT4lZxw
+	XQ4XuCHHTooYj9c9kbsewNks/Q0ksQAOXbxXzfUQfs7IBox86KuNBDdiaVT8FaQeBslaT/G/gPL/y
+	zNSzZUbGsWyWAS+LiqnQu52aTQ+6Y4OQclIDbHkYp0G1xv3muXjQmqoyBdLptIAddlwf1ePNLobVi
+	wefxllwLUzWGC3f5QIfghwfWkSGKNrNAG8L7MyRZ7YNPeNTg5UX8mkAI73b7FbLHqUMFlwUnjv2nx
+	ecJzZaUK4TG7TZ4ATVprZ8l0E4dOn8fPTHPwLC0tVid1NmETpxLQn6vyUJe6Sjai3L6zH/FBfwM27
+	8T3/htYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUpwg-0000000H9aA-2F6n;
-	Tue, 30 Jan 2024 15:22:42 +0000
+	id 1rUpwi-0000000H9bM-0bde;
+	Tue, 30 Jan 2024 15:22:44 +0000
 Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUpwb-0000000H9V1-0v46;
-	Tue, 30 Jan 2024 15:22:38 +0000
+	id 1rUpwb-0000000H9VS-3Pnw;
+	Tue, 30 Jan 2024 15:22:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 2319ECE1B35;
+	by sin.source.kernel.org (Postfix) with ESMTP id 2CAC6CE1B39;
 	Tue, 30 Jan 2024 15:22:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 84975C433B2;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 8B38CC43601;
 	Tue, 30 Jan 2024 15:20:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1706628056;
-	bh=LGaZ3YTJBfQ0lG0YcC/NrSyyzu8IUICWtPtIKqoiP3Q=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=tysz8r3YwVsemLIq+hMfVkBJfC/H0mgK7ddeEQchHcTp2nc8sk0YTF1yxWcwl0SkX
-	 mJB7Kmvq6aI8j6yMG+F9EW6tNTQC5HkoQsIL6CiFQZTBNqg4EkTRrP0ulKmjrEbVSE
-	 JC4/QfYaMvj8aq74szTuLVwVaO2BakfeGUrIJqHpYmh9tyPg5rje0d4YoZCuuiMxuP
-	 xM/Bx/0tPObZEiiYQTTd/kEEzOxYqi+zzseoUIxijPgFcxrGzVBl1lojhBq0deQfJE
-	 njEe0e4W6wpnCTZRFOZi3LDvxxtqITUIC/K+a4IAVJyLxR2Q19Q4cztDMkaQhr+h2U
-	 Z5HY1W+jwbP3A==
+	bh=rCvaDAdvVEPkc/5uSMACu9gWCQ1/fxBqVhcE39XQOQs=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=k10Ub8OvODBXwsxKyHfJhxZtbARCjktM5OyR6iM8PpAk4nxLrPgJMnZ+g4Oa/Ecqt
+	 sGRPT1bgyDrs8AdTgWcRugWfqbzz+MqkdLURjeZHur3S+Ardtd69KZ5zoQYo3BAam7
+	 gPzsDw4N1uFlkrNp6lAM60VytQHY1LveJZOlqnJrEmElkfzG1oH1cDlEHPTCFh8b66
+	 cajYus1RUQ93kOHIfOZrnaDuXZ4NI5wT6OpUAUZ90J6AgzHL040hIcZmUDWXFgnhHK
+	 UtE++ApFiAHWjFhzzRfpXDSyIPteL5GtWkp/AjYUCluKpjO6nZ/mDj261wOiRhQQCE
+	 pr7puNSYS1yvw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E082C47DDB;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 722F0C46CD2;
 	Tue, 30 Jan 2024 15:20:56 +0000 (UTC)
 From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
  <devnull+arinc.unal.arinc9.com@kernel.org>
-Subject: [PATCH net-next v2 0/7] MT7530 DSA Subdriver Improvements Act II
-Date: Tue, 30 Jan 2024 18:20:46 +0300
-Message-Id: <20240130-for-netnext-mt7530-improvements-2-v2-0-ba06f5dd9eb0@arinc9.com>
+Date: Tue, 30 Jan 2024 18:20:47 +0300
+Subject: [PATCH net-next v2 1/7] net: dsa: mt7530: empty default case on
+ mt7530_setup_port5()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-B4-Tracking: v=1; b=H4sIAM4TuWUC/yWNyw6CMBREf4XctZf0xcuV/2FYAF6kiW1JWwmG8
- O/WupvJ5Mw5IJDXFOBaHOBp00E7m4q4FDAtg30S6kfqIJhQjAuOs/NoKVraI5rYVJKhNqt3Gxm
- yMaDAUc1K1jUfVVtB+lk9zXrPjjskFH8s9GlZdIjOf7J843n/e7jkTFSiK1smG44cB6/tVL7t8
- Lrl2JWTM9Cf5/kFtSUfRcIAAAA=
+Message-Id: <20240130-for-netnext-mt7530-improvements-2-v2-1-ba06f5dd9eb0@arinc9.com>
+References: <20240130-for-netnext-mt7530-improvements-2-v2-0-ba06f5dd9eb0@arinc9.com>
+In-Reply-To: <20240130-for-netnext-mt7530-improvements-2-v2-0-ba06f5dd9eb0@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
  Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
  Florian Fainelli <f.fainelli@gmail.com>, 
@@ -71,18 +70,18 @@ Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
  linux-mediatek@lists.infradead.org, 
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1706628054; l=2695;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1706628054; l=1561;
  i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
- bh=LGaZ3YTJBfQ0lG0YcC/NrSyyzu8IUICWtPtIKqoiP3Q=;
- b=soUoCM9RUYqLpUSzNO6lqpgNpfqmqya/NbkPWl1MK6QH7ak+HzZWqpZSeJgHq3RlCvMIo7lr1
- j3B7IBb1T0ZC2LfVcKaKKaijupISylgykgjzqG1/m9ccuzWbVT1QuBx
+ bh=4iqmJSREOOSr69rzXZ9fMqbTsIjeBdURHVNrmhTA6EI=;
+ b=6SujO2PrKIZgF+6wBWfUvWWCIcvIYk1f93FV3BO1DcIVK8WneKIuOqxnJS4qGAesMcayw3uei
+ QVbA59r7qlBAGwZBjxrI/9IPvZ3M32jROVmYtJ1/Rd9L4qf5C2ho7zl
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt with auth_id=115
 X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_072237_709173_DC94D0C8 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20240130_072238_414578_BC8BA5CC 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,74 +97,58 @@ Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello!
+From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-This is the second patch series with the goal of simplifying the MT7530 DSA
-subdriver and improving support for MT7530, MT7531, and the switch on the
-MT7988 SoC.
+There're two code paths for setting up port 5:
 
-I have done a simple ping test to confirm basic communication on all switch
-ports on MCM and standalone MT7530, and MT7531 switch with this patch
-series applied.
+mt7530_setup()
+-> mt7530_setup_port5()
 
-MT7621 Unielec, MCM MT7530:
+mt753x_phylink_mac_config()
+-> mt753x_mac_config()
+   -> mt7530_mac_config()
+      -> mt7530_setup_port5()
 
-rgmii-only-gmac0-mt7621-unielec-u7621-06-16m.dtb
-gmac0-and-gmac1-mt7621-unielec-u7621-06-16m.dtb
+On the first code path, priv->p5_intf_sel is either set to
+P5_INTF_SEL_PHY_P0 or P5_INTF_SEL_PHY_P4 when mt7530_setup_port5() is run.
 
-tftpboot 0x80008000 mips-uzImage.bin; tftpboot 0x83000000 mips-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootm 0x80008000 0x83000000 0x83f00000
+On the second code path, priv->p5_intf_sel is set to P5_INTF_SEL_GMAC5 when
+mt7530_setup_port5() is run.
 
-MT7622 Bananapi, MT7531:
-
-gmac0-and-gmac1-mt7622-bananapi-bpi-r64.dtb
-
-tftpboot 0x40000000 arm64-Image; tftpboot 0x45000000 arm64-rootfs.cpio.uboot; tftpboot 0x4a000000 $dtb; booti 0x40000000 0x45000000 0x4a000000
-
-MT7623 Bananapi, standalone MT7530:
-
-rgmii-only-gmac0-mt7623n-bananapi-bpi-r2.dtb
-gmac0-and-gmac1-mt7623n-bananapi-bpi-r2.dtb
-
-tftpboot 0x80008000 arm-zImage; tftpboot 0x83000000 arm-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootz 0x80008000 0x83000000 0x83f00000
-
-This patch series is the continuation of the patch series linked below.
-
-https://lore.kernel.org/r/20230522121532.86610-1-arinc.unal@arinc9.com
+Empty the default case which will never run but is needed nonetheless to
+handle all the remaining enumeration values.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
 ---
-Changes in v2:
-- Update the patches with the latest received trailers.
-- Remove 'net: dsa: mt7530: move enabling port 6 to mt7530_setup_port6()'
-  which was patch 5. I will bring a more appropriate change with a later
-  patch series.
-- Patch 5
-  - Set P6_INTF_MODE(0) and explain why on the patch log.
-- Patch 6
-  - Mention the MT7988 document and explain more on the patch log.
-- Patch 7
-  - Explain more on the patch log.
-- Link to v1: https://lore.kernel.org/r/20240113102529.80371-1-arinc.unal@arinc9.com
+ drivers/net/dsa/mt7530.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
----
-Arınç ÜNAL (7):
-      net: dsa: mt7530: empty default case on mt7530_setup_port5()
-      net: dsa: mt7530: call port 6 setup from mt7530_mac_config()
-      net: dsa: mt7530: remove pad_setup function pointer
-      net: dsa: mt7530: move XTAL check to mt7530_setup()
-      net: dsa: mt7530: simplify mt7530_setup_port6() and change to void
-      net: dsa: mt7530: correct port capabilities of MT7988
-      net: dsa: mt7530: do not clear config->supported_interfaces
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 68be38ae66e0..330e22abc076 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -943,9 +943,7 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+ 		val &= ~MHWTRAP_P5_DIS;
+ 		break;
+ 	default:
+-		dev_err(ds->dev, "Unsupported p5_intf_sel %d\n",
+-			priv->p5_intf_sel);
+-		goto unlock_exit;
++		break;
+ 	}
+ 
+ 	/* Setup RGMII settings */
+@@ -975,7 +973,6 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+ 	dev_dbg(ds->dev, "Setup P5, HWTRAP=0x%x, intf_sel=%s, phy-mode=%s\n",
+ 		val, p5_intf_modes(priv->p5_intf_sel), phy_modes(interface));
+ 
+-unlock_exit:
+ 	mutex_unlock(&priv->reg_mutex);
+ }
+ 
 
- drivers/net/dsa/mt7530.c | 154 +++++++++++++++++------------------------------
- drivers/net/dsa/mt7530.h |   3 -
- 2 files changed, 54 insertions(+), 103 deletions(-)
----
-base-commit: 4acf4e62cd572b0c806035046b3698f5585ab821
-change-id: 20240121-for-netnext-mt7530-improvements-2-b4f43661b485
-
-Best regards,
 -- 
-Arınç ÜNAL <arinc.unal@arinc9.com>
+2.40.1
 
 
