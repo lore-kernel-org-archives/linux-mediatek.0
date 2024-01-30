@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A281C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 20:34:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2429BC46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 20:36:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yY1WwrBnhO4SXwMuRC8eeRNOw32NbKPO5pvrjtHgOOE=; b=e2DBv8jy5GVGaASE/8K4tKvK2F
-	yztwHgC9iMeohCfol38ynirsN4yXbkL/tJ2LYcfRy3UabqA1uIjDRGNMLerz99KzqHYccfHUHAQaj
-	J0rlg0VBl0KhXzaNt2DR2An8S8tGiFiquRVt5RDjZjwV+ha9U+CCXWl8A6sWFcHfiOyThmUz/0pD3
-	hMW36PgRAFMlG8fo+G0bBMib2LX13g9P552zoDVh+5LRjYIwev6OyS1UQDJZGT81TCRz1EUIfo/26
-	9cBnrEDEIc/N+9bv76MTcqykzsqon5fbwfmwGBkoF2tYUbDxnF2+FVJdwdinoPawEOV3P5Q2y9/MN
-	aP5J14Ug==;
+	bh=qnspcXUUXcfTB7Ax8pqAJVqBILSN3buvl5VONZJ6KKg=; b=YvZjqAMeuhbL/cLyanyMOW7f1H
+	jQUAAXcADFg7AnhlOxbS3FL8d7jAcDmqqeNJ4JVp5Fcm0M/46e4vyjrlLQy3qh5TYhgd10RGLYv8Q
+	ri8BnCDIsikyR/r+aWPRrtMY+qhgL4k9sih8wup6wT3sJSyCZLmbcLCbmy9sNj6C12/teA3CQEpWy
+	xNLftjjc6JKiIeNgAe1XrVmhVYgktq1o4TXwOe2sm6cHNW8FzDkmKjQZg3yAvTxL+7dni9UnvZjhT
+	SPzS+X1lXmyk8+PfngcOBeZBOqBLEtkf97K8RQvaI2eRmz1Dbv0PepdgX1cUt+SLbe4fAfRcXu4Cv
+	PzCVFIbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUuoJ-00000000UBP-0UXf;
-	Tue, 30 Jan 2024 20:34:23 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rUuqG-00000000URl-3PX4;
+	Tue, 30 Jan 2024 20:36:24 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUuoF-00000000U9v-3yJ8;
-	Tue, 30 Jan 2024 20:34:21 +0000
+	id 1rUuqD-00000000UR6-0EqY;
+	Tue, 30 Jan 2024 20:36:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 1E5E5CE1C9D;
-	Tue, 30 Jan 2024 20:34:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CEB0C433F1;
-	Tue, 30 Jan 2024 20:34:16 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 763E261062;
+	Tue, 30 Jan 2024 20:36:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CEB16C433C7;
+	Tue, 30 Jan 2024 20:36:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1706646856;
-	bh=/t3GFmRm5hVeR5xzoWsZKKi65PGNECWaoN8DFhDtjuI=;
+	s=k20201202; t=1706646980;
+	bh=L0Z4Y+2fjawz/djs1mYllXzmcvlnHK3ZDV6yTPhasGY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KR4vSkzhXVYDoJgMgUekpqQCkB0fnG56TeJoVnaeQrHDhNs0viEsSZp1NgkHvj6hy
-	 K+/DGxoG65pCGKy7cnZIha/D50KPC8xbtVQ6sIokl/3dE28rYz2dK+aWQd37rppXqq
-	 SzgWt77k7MdIHZ7h7aDp7XpwOf2bJT9oPn2IPkX5bH5XJNcfotHgGVmpofnhDmODiX
-	 xaxrL3RDXJEZHTc3bLIVQQgMqUOnxrHgzh7Aq17lpk4Q+VlaUmDEFj0H2jpJDOO84G
-	 a499XEVFN6mwFjKRSIepGcMTFMMZZcuJ34w89OqoWwhIDRlA3vX5ph1YreFdnVsiJp
-	 wFvB0O34NMVTw==
-Date: Tue, 30 Jan 2024 14:34:13 -0600
+	b=i1yds/eqjcxMrQ/ltGVfj/lMNN0pOHm55eLpUfjO+qRrT0W3KA5I7AKDV+d8qoA+x
+	 mLud5G8F6A7GaS2Rn+ZWgQULiRpp9IOMyA3luDDge/g7aY5wl4N8gs5eADu1sGF7CK
+	 lUb03ba1HoYULO/SLqW0zjp7CtPJ5R+hjQVH/MPD+WQGiZmS0DuwzuoOSizSTSN17n
+	 gINuYskiCX9CeBCLimfN/MRFPTQXarDizMFviW4tjt8xkQBrHonVm1OShpD+cI5uPT
+	 QW76LnZg2Va9xwHGLrsEydg6Qv7wgislPNzwIpaUzBehSbu+KPdiqcTZe2EAvm1N0y
+	 a7m5yC5ATYYFw==
+Date: Tue, 30 Jan 2024 14:36:17 -0600
 From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Cc: Russell King <linux@armlinux.org.uk>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	devicetree@vger.kernel.org, linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
-	Russell King <linux@armlinux.org.uk>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Thomas Gleixner <tglx@linutronix.de>
-Subject: Re: [PATCH 2/3] dt-bindings: arm: mediatek: convert PCIESYS to the
+	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+Subject: Re: [PATCH 1/3] dt-bindings: arm: mediatek: convert hifsys to the
  json-schema
-Message-ID: <20240130203413.GA2290196-robh@kernel.org>
+Message-ID: <20240130203617.GB2290196-robh@kernel.org>
 References: <20240123082100.7334-1-zajec5@gmail.com>
- <20240123082100.7334-3-zajec5@gmail.com>
- <e17b85b1-7f1f-4b60-89b7-43f560466cc2@collabora.com>
+ <20240123082100.7334-2-zajec5@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <e17b85b1-7f1f-4b60-89b7-43f560466cc2@collabora.com>
+In-Reply-To: <20240123082100.7334-2-zajec5@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_123420_370161_54723213 
-X-CRM114-Status: GOOD (  26.79  )
+X-CRM114-CacheID: sfid-20240130_123621_200718_D817E872 
+X-CRM114-Status: GOOD (  19.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,84 +82,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 23, 2024 at 12:20:29PM +0100, AngeloGioacchino Del Regno wrote:
-> Il 23/01/24 09:20, Rafał Miłecki ha scritto:
-> > From: Rafał Miłecki <rafal@milecki.pl>
-> > 
-> > This helps validating DTS files. Introduced changes:
-> > 1. Documented "reg" property
-> > 2. Adjusted "reg" in example
-> > 
-> > Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
-> > ---
-> >   .../arm/mediatek/mediatek,mt7622-pciesys.yaml | 47 +++++++++++++++++++
-> >   .../arm/mediatek/mediatek,pciesys.txt         | 25 ----------
-> >   2 files changed, 47 insertions(+), 25 deletions(-)
-> >   create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml
-> >   delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml
-> > new file mode 100644
-> > index 000000000000..7340a2512402
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml
+On Tue, Jan 23, 2024 at 09:20:58AM +0100, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> I think that we should really move all those clock controller yaml files to their
-> proper directory, which would be
+> This helps validating DTS files. Introduced changes:
+> 1. Documented "reg" property
+> 2. Documented "#reset-cells" property
+> 3. Adjusted "reg" in example
 > 
-> Documentation/devicetree/bindings/clock/
-> 
-> ...because those are clock controllers anyway and the fact that they do also
-> provide a reset controller doesn't really justify having them in arm/mediatek.
-> 
-> Besides, I would appreciate if you could also move mt8186/92/95 and eventual
-> others that are there to clock/.
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> ---
+>  .../bindings/arm/mediatek/mediatek,hifsys.txt | 26 ---------
+>  .../arm/mediatek/mediatek,mt2701-hifsys.yaml  | 54 +++++++++++++++++++
 
-Yes, please move it.
+Like the other one, please move this.
 
+>  2 files changed, 54 insertions(+), 26 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt2701-hifsys.yaml
 > 
-> > @@ -0,0 +1,47 @@
-> > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt7622-pciesys.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: MediaTek PCIESYS controller
-> > +
-> > +description:
-> > +  The MediaTek PCIESYS controller provides various clocks to the system.
-> > +
-> > +maintainers:
-> > +  - Matthias Brugger <matthias.bgg@gmail.com>
-> > +
-> > +properties:
-> > +  compatible:
-> > +    items:
-> > +      - enum:
-> > +          - mediatek,mt7622-pciesys
-> > +          - mediatek,mt7629-pciesys
-> > +      - const: syscon
-> 
-> I know that there's syscon all over the place and, even if I admit I didn't check,
-> I am fairly sure that there's absolutely no reason to have syscon there, and that
-> the syscon compatible never did anything for (most of, or all of) those clock
-> controllers, at all.
-> 
-> I'm not sure - though - if removing syscon during the txt->yaml conversion is
-> acceptable (yeah we'd be cheating a bit), but something makes me say it is, because
-> the bindings couldn't validate before that one as well.
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
+> deleted file mode 100644
+> index 323905af82c3..000000000000
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
+> +++ /dev/null
+> @@ -1,26 +0,0 @@
+> -Mediatek hifsys controller
+> -============================
+> -
+> -The Mediatek hifsys controller provides various clocks and reset
+> -outputs to the system.
+> -
+> -Required Properties:
+> -
+> -- compatible: Should be:
+> -	- "mediatek,mt2701-hifsys", "syscon"
+> -	- "mediatek,mt7622-hifsys", "syscon"
+> -	- "mediatek,mt7623-hifsys", "mediatek,mt2701-hifsys", "syscon"
+> -- #clock-cells: Must be 1
+> -
+> -The hifsys controller uses the common clk binding from
+> -Documentation/devicetree/bindings/clock/clock-bindings.txt
+> -The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+> -
+> -Example:
+> -
+> -hifsys: clock-controller@1a000000 {
+> -	compatible = "mediatek,mt2701-hifsys", "syscon";
+> -	reg = <0 0x1a000000 0 0x1000>;
+> -	#clock-cells = <1>;
+> -	#reset-cells = <1>;
+> -};
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt2701-hifsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt2701-hifsys.yaml
+> new file mode 100644
+> index 000000000000..7c7b7b7b1142
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt2701-hifsys.yaml
+> @@ -0,0 +1,54 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt2701-hifsys.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek hifsys controller
+> +
+> +description:
+> +  The Mediatek hifsys controller provides various clocks and reset outputs to
+> +  the system.
+> +
+> +maintainers:
+> +  - Matthias Brugger <matthias.bgg@gmail.com>
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - items:
+> +          - const: mediatek,mt2701-hifsys
+> +          - const: syscon
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt7623-hifsys
+> +          - const: mediatek,mt2701-hifsys
+> +          - const: syscon
+> +      - items:
+> +          - const: mediatek,mt7622-hifsys
+> +          - const: syscon
 
-As long as you state why you are removing it in the commit msg.
+The 1st and 3rd entries can be combined.
 
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  "#clock-cells":
+> +    const: 1
+> +    description: The available clocks are defined in dt-bindings/clock/mt*-clk.h
+> +
+> +  "#reset-cells":
+> +    const: 1
+> +
+> +required:
+> +  - reg
+> +  - "#clock-cells"
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    clock-controller@1a000000 {
+> +        compatible = "mediatek,mt2701-hifsys", "syscon";
+> +        reg = <0x1a000000 0x1000>;
+> +        #clock-cells = <1>;
+> +        #reset-cells = <1>;
+> +    };
+> -- 
+> 2.35.3
 > 
-> Of course you'd have to remove the syscon compatible from the affected device trees
-> as well as omitting it here.
-
-You could also do 'minItems: 1' and 'deprecated' in the 2nd item.
-
-> However, to be sure that we're doing the right thing here, I have to summon someone
-> that can actually give a definitive answer to what I just said.....
-> 
-> Krzysztof, please? :-)
 
