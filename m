@@ -4,92 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4501BC47DDB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 21:57:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6136C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 22:39:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wdh/VQpoX951eaSBCyP28Nr1FHihNafI7p4+z0vryQs=; b=19Ug/4t9yHgr1Sr1yHxVcH27i8
-	rio89qQdRjjTKcJXdMoLDFPZWbLrNy191oA8xIEenBrjao2J62Tunq31MdGRAJtYMZfSikfOquL5F
-	8ENTLjsp+1aq5h4htrojqA7TXBxbg8RR8t1yqzKabf0ikf5kAx7kp7Ni0mshNtA9aAyCtzqYxnQ6E
-	Z0MVwfaVokggIjW5t5Wvt0/4z8UI+ElQKNSOznl9i9+gfUIzs7hgeiLvSx+9+JXZyMTlRkr7gyI9B
-	8jXitYR+QgfpFAJdrzBosoKuieIYNKivgs3snTiDRygd8nQylmhNxzNGMGuqXZriazz207PLEvB6R
-	+QKn4Bbw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kMR8an0JRWHZA1P1/uHnoRp0s3WrOGW2c1tblhIF0S0=; b=u/WSe6/ngTTKiaNRCLgzae5dMz
+	f23QMXQS1/SrfdhDOAmVJTYOTmWz1KaRCea+IKk4s8tqu0fBZQbZO6DRBW4OLqwAduJkWJpZsz40R
+	o7YBExnttc8PkmPQuwSKQJGCNbxibFEVOJ5qKcqXoT7C7FSeP/FqTtDi3RkKrOB3hSVOqv4C74UD9
+	W8JZrpmZaEacYAKxLKm4DXqLryQ+JMAiPpqBgQlisxWw+gvS8ZNClkvIK45Y0NMJLZCuOQLf4SbYb
+	cEnnViEnBlLuvuVLo8aHJMyTx6g4+WOeXHucu6FjR8ePE0WFMHbAvd5ViN4a3T9uRtbeRywUEZPsF
+	ACIPk6Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUw7C-00000000gwJ-3W7K;
-	Tue, 30 Jan 2024 21:57:58 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1rUwkx-00000000mao-0khi;
+	Tue, 30 Jan 2024 22:39:03 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUw77-00000000guS-39ZA;
-	Tue, 30 Jan 2024 21:57:56 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-a3122b70439so607259466b.3;
-        Tue, 30 Jan 2024 13:57:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706651871; x=1707256671; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=wdh/VQpoX951eaSBCyP28Nr1FHihNafI7p4+z0vryQs=;
-        b=fdc1BmqtVvMjivYAQiXMprtLXWEqkNCMf7VbXiWyaRtUUPswAgKDMbJcJVHQTP8g42
-         RYfqyfdl1ICRwk0XFrGLZwKiH4+MWqlv1/kd/d61FHF6YX/ras2SwjNu3qURPTdk7/Gz
-         hdX8BJ349wiHZgOHoj/8bJrH3madhQOk7vkxKy6/qP7yRaFidm6+KhzziNOqs7o99KCs
-         EU/HPZPkhjkX0uQRIsDhmPqi38S7yGLphHsej1R4cb0Eou01qA1yS8MiW+BIpTGrxjcg
-         6DH5eCmeu72umd1qra/hzCMAAaTzFyrA17FGgRSBlO1eOXYQGoEe1gIPpu/9GBfxedDY
-         JeTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706651871; x=1707256671;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=wdh/VQpoX951eaSBCyP28Nr1FHihNafI7p4+z0vryQs=;
-        b=ocIvnm8DpTIWIdlhwf5g56xDFdxjJxWId6zyeN3UJDRQL4Y+kVX1OkqYZ8Efgl1vQp
-         L18qD7trP1pWNw5tal0HwrDe31LkLioDP3ypemnGyjUTh6xyyDCqKTka4wUwTpnI5WNy
-         ckN938MowIzc0bPhP7Ro9rT0SB2Ec7iKwa6xjt8e53u1O1GlaxGHw73jFpaO9NcJZPa0
-         ttmLHGKczvaRnySlif24HoCSrLXFslnfHXgo9k6bHuNBKNb96JM2ygvgkHDbpCkG8RGy
-         torfWBxAUPQD7Fwr3oDPfI/ihtBzKRzxh9VBVmdy/lC1aLIH7CqwGksSWL3F2qZKdrDP
-         PPXg==
-X-Gm-Message-State: AOJu0Yx4aKbSBJRTytagF3xH68Pu4RDvqxvUERBlxVkN03boVEkrBZCY
-	vPtTxZXJeKVkaxuKEDaw8pDPjMt6BxLJl1AyMXOxq84TtQ8NN52y
-X-Google-Smtp-Source: AGHT+IEQSbMTrpr0DCCyf4rAOMtntZKl6TLmVGMeQghYBiFGqw3C3cfdFBUahwQOq31kv6SqyZh6xQ==
-X-Received: by 2002:a17:906:4ad2:b0:a35:fbc4:4c20 with SMTP id u18-20020a1709064ad200b00a35fbc44c20mr3161908ejt.6.1706651870454;
-        Tue, 30 Jan 2024 13:57:50 -0800 (PST)
-Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.googlemail.com with ESMTPSA id x10-20020a170906298a00b00a34a20b247fsm5519809eje.84.2024.01.30.13.57.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 30 Jan 2024 13:57:49 -0800 (PST)
-Message-ID: <c2adae73-9f1b-467e-880d-3e87eaeb10ea@gmail.com>
-Date: Tue, 30 Jan 2024 22:57:47 +0100
+	id 1rUwkt-00000000mZM-26gR;
+	Tue, 30 Jan 2024 22:39:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0A6146110F;
+	Tue, 30 Jan 2024 22:38:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7FEABC433C7;
+	Tue, 30 Jan 2024 22:38:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1706654338;
+	bh=8Eyya2MZJxron5ZGyDFt7s2SHtvsfbEMHuSW8clUuFQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=tZqJ1j+iT4U1BpRQSHn+TKtGmW+du+QKRF7/9gbYMjf0dVK8rzdEq+m7boXXeg4Js
+	 1tao+CN71PidDU27iAQ+oPFCDReDWW5k6mRlBSTavzIGXIA7pnH+2fdTRC29sj9hwV
+	 g2qGfiAa6yyczzBrgTDjeHPKnpH91ym6Jvko3bLlmh8UMMIM92e8IVQ283ucErsHKf
+	 Q7XXGlQC2kx65ZuvP0utNzdN25wV+d1E7iPZwKFCMhRTEOozPUn3phiYp/2CPZ4gNP
+	 XwTQYHZIs0nBW2aRyTIPdu1ErbFAFBnXExyt/gRbq/wbBwQj712kC/Kqz0hBe/jiN3
+	 ZBVqPY2N/sVsA==
+Date: Tue, 30 Jan 2024 16:38:56 -0600
+From: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sean Wang <sean.wang@mediatek.com>, linux-bluetooth@vger.kernel.org,
+	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/2] dt-bindings: net: bluetooth: Add MediaTek MT7921S
+ SDIO Bluetooth
+Message-ID: <20240130223856.GA2538998-robh@kernel.org>
+References: <20240126063500.2684087-1-wenst@chromium.org>
+ <20240126063500.2684087-2-wenst@chromium.org>
+ <74b9f249-fcb4-4338-bf7b-8477de6c935c@linaro.org>
+ <CAGXv+5Hu+KsTBd1JtnKcaE3qUzPhHbunoVaH2++yfNopHtFf4g@mail.gmail.com>
+ <21568334-b21f-429e-81cd-5ce77accaf3c@linaro.org>
+ <CAGXv+5HxXzjigN3Bp96vkv71WfTJ1S2b7Wgafc4GxLmhu6+jMg@mail.gmail.com>
+ <a4324473-e0c6-4d53-8de0-03b69480e40b@linaro.org>
+ <CAGXv+5HAqmUizXztMH_nY6e+6oQh01hCtxEJXKtCn3_74-sOsQ@mail.gmail.com>
+ <78241d63-3b9d-4c04-9ea5-11b45eac6f00@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] dt-bindings: arm: mediatek: convert PCIESYS to the
- json-schema
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
- Russell King <linux@armlinux.org.uk>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Thomas Gleixner <tglx@linutronix.de>
-References: <20240123082100.7334-1-zajec5@gmail.com>
- <20240123082100.7334-3-zajec5@gmail.com>
- <e17b85b1-7f1f-4b60-89b7-43f560466cc2@collabora.com>
- <20240130203413.GA2290196-robh@kernel.org>
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-In-Reply-To: <20240130203413.GA2290196-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <78241d63-3b9d-4c04-9ea5-11b45eac6f00@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_135753_838697_298563E6 
-X-CRM114-Status: GOOD (  23.44  )
+X-CRM114-CacheID: sfid-20240130_143859_642573_737E2632 
+X-CRM114-Status: GOOD (  25.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,114 +89,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30.01.2024 21:34, Rob Herring wrote:
-> On Tue, Jan 23, 2024 at 12:20:29PM +0100, AngeloGioacchino Del Regno wrote:
->> Il 23/01/24 09:20, Rafał Miłecki ha scritto:
->>> From: Rafał Miłecki <rafal@milecki.pl>
->>>
->>> This helps validating DTS files. Introduced changes:
->>> 1. Documented "reg" property
->>> 2. Adjusted "reg" in example
->>>
->>> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
->>> ---
->>>    .../arm/mediatek/mediatek,mt7622-pciesys.yaml | 47 +++++++++++++++++++
->>>    .../arm/mediatek/mediatek,pciesys.txt         | 25 ----------
->>>    2 files changed, 47 insertions(+), 25 deletions(-)
->>>    create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml
->>>    delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
->>>
->>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml
->>> new file mode 100644
->>> index 000000000000..7340a2512402
->>> --- /dev/null
->>> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pciesys.yaml
->>
->> I think that we should really move all those clock controller yaml files to their
->> proper directory, which would be
->>
->> Documentation/devicetree/bindings/clock/
->>
->> ...because those are clock controllers anyway and the fact that they do also
->> provide a reset controller doesn't really justify having them in arm/mediatek.
->>
->> Besides, I would appreciate if you could also move mt8186/92/95 and eventual
->> others that are there to clock/.
+On Tue, Jan 30, 2024 at 05:25:38PM +0100, Krzysztof Kozlowski wrote:
+> On 30/01/2024 08:47, Chen-Yu Tsai wrote:
+> > On Tue, Jan 30, 2024 at 3:37 PM Krzysztof Kozlowski
+> > <krzysztof.kozlowski@linaro.org> wrote:
+> >>
+> >> On 30/01/2024 04:32, Chen-Yu Tsai wrote:
+> >>> On Mon, Jan 29, 2024 at 3:34 PM Krzysztof Kozlowski
+> >>> <krzysztof.kozlowski@linaro.org> wrote:
+> >>>>
+> >>>> On 29/01/2024 04:38, Chen-Yu Tsai wrote:
+> >>>>
+> >>>>>>> +allOf:
+> >>>>>>> +  - $ref: bluetooth-controller.yaml#
+> >>>>>>> +
+> >>>>>>> +properties:
+> >>>>>>> +  compatible:
+> >>>>>>> +    enum:
+> >>>>>>> +      - mediatek,mt7921s-bluetooth
+> >>>>>>
+> >>>>>> Can it be also WiFi on separate bus? How many device nodes do you need
+> >>>>>> for this device?
+> >>>>>
+> >>>>> For the "S" variant, WiFi is also on SDIO. For the other two variants,
+> >>>>> "U" and "E", WiFi goes over USB and PCIe respectively. On both those
+> >>>>> variants, Bluetooth can either go over USB or UART. That is what I
+> >>>>> gathered from the pinouts. There are a dozen GPIO pins which don't
+> >>>>> have detailed descriptions though. If you want a comprehensive
+> >>>>> binding of the whole chip and all its variants, I suggest we ask
+> >>>>> MediaTek to provide it instead. My goal with the binding is to document
+> >>>>> existing usage and allow me to upstream new device trees.
+> >>>>>
+> >>>>> For now we only need the Bluetooth node. The WiFi part is perfectly
+> >>>>> detectable, and the driver doesn't seem to need the WiFi reset pin.
+> >>>>> The Bluetooth driver only uses its reset pin to reset a hung controller.
+> >>>>
+> >>>> Then suffix "bluetooth" seems redundant.
+> >>>
+> >>> I think keeping the suffix makes more sense though. The chip is a two
+> >>> function piece, and this only targets one of the functions. Also, the
+> >>
+> >> That's why I asked and you said there is only one interface: SDIO.
+> > 
+> > There's only one interface, SDIO, but two SDIO functions. The two
+> > functions, if both were to be described in the device tree, would
+> > be two separate nodes. We just don't have any use for the WiFi one
+> > right now. Does that make sense to keep the suffix?
 > 
-> Yes, please move it.
-> 
->>
->>> @@ -0,0 +1,47 @@
->>> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
->>> +%YAML 1.2
->>> +---
->>> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt7622-pciesys.yaml#
->>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->>> +
->>> +title: MediaTek PCIESYS controller
->>> +
->>> +description:
->>> +  The MediaTek PCIESYS controller provides various clocks to the system.
->>> +
->>> +maintainers:
->>> +  - Matthias Brugger <matthias.bgg@gmail.com>
->>> +
->>> +properties:
->>> +  compatible:
->>> +    items:
->>> +      - enum:
->>> +          - mediatek,mt7622-pciesys
->>> +          - mediatek,mt7629-pciesys
->>> +      - const: syscon
->>
->> I know that there's syscon all over the place and, even if I admit I didn't check,
->> I am fairly sure that there's absolutely no reason to have syscon there, and that
->> the syscon compatible never did anything for (most of, or all of) those clock
->> controllers, at all.
->>
->> I'm not sure - though - if removing syscon during the txt->yaml conversion is
->> acceptable (yeah we'd be cheating a bit), but something makes me say it is, because
->> the bindings couldn't validate before that one as well.
-> 
-> As long as you state why you are removing it in the commit msg.
-> 
->>
->> Of course you'd have to remove the syscon compatible from the affected device trees
->> as well as omitting it here.
-> 
-> You could also do 'minItems: 1' and 'deprecated' in the 2nd item.
+> Number of functions does not really matter. Number of interfaces on the
+> bus would matter. Why would you have two separate nodes for the same
+> SDIO interface? Or do you want to say there are two interfaces?
 
-I expected this to be quite straightforward but I can't get it to work.
+Right, one device at 2 addresses on a bus should be a node with 2 "reg" 
+entries, not 2 nodes with 1 "reg" address each.
 
-Can you tell me if I'm making some mistake or is that some meta schema
-limitation?
-
-properties:
-   compatible:
-     oneOf:
-       - minItems: 1
-         items:
-           - enum:
-               - mediatek,mt2701-hifsys
-               - mediatek,mt7622-hifsys
-           - const: syscon
-             deprecated: true
-       - minItems: 2
-         items:
-           - enum:
-               - mediatek,mt7623-hifsys
-           - const: mediatek,mt2701-hifsys
-           - const: syscon
-             deprecated: true
-
-Gives me:
-
-Documentation/devicetree/bindings/clock/mediatek,mt2701-hifsys.yaml: properties:compatible:oneOf:0:items: 'oneOf' conditional failed, one must be fixed:
-         [{'enum': ['mediatek,mt2701-hifsys', 'mediatek,mt7622-hifsys']}, {'const': 'syscon', 'deprecated': True}] is not of type 'object'
-         Additional properties are not allowed ('deprecated' was unexpected)
-         from schema $id: http://devicetree.org/meta-schemas/string-array.yaml#
-Documentation/devicetree/bindings/clock/mediatek,mt2701-hifsys.yaml: properties:compatible:oneOf:1:items: 'oneOf' conditional failed, one must be fixed:
-         [{'enum': ['mediatek,mt7623-hifsys']}, {'const': 'mediatek,mt2701-hifsys'}, {'const': 'syscon', 'deprecated': True}] is not of type 'object'
-         Additional properties are not allowed ('deprecated' was unexpected)
-         from schema $id: http://devicetree.org/meta-schemas/string-array.yaml#
+Rob
 
