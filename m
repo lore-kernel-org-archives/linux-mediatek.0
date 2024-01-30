@@ -4,143 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DFE5C47DA9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 16:25:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44E42C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 17:46:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xx5LK5cIWTZjcQaikGkUtTQL7dv+9ckkh97t67Efamk=; b=Lcb8J1Jt39yP/X49n20odzvvX/
-	ZRVzPeWuUnSWyKg1JgHWKW4i2UATqKvs3nVu9qxlWGZ+zJoWzFUOsbajRSzQKkTcNAUZCxvMwjJBW
-	L6xrJMwinaoP+N6uq/1gDu+dCRHfeEOjRGl+o5sr5LIDd88AT8Bu8+PleT8HQd+SYu+KgeOMdTqjP
-	6T7uZvu/NMItNecMtKIg8p1dCG5GhCPNv6E9pirguAkEr23E70wcgrPJ58gCcw7q0HXxF22TGJcfa
-	hnuwN878SMiBCHlAqtQbeyFAs1oAHd1IAP7uyqAFgxLaQWjn/Fc5xTu15vrhc37+b7swVL3ef01GU
-	dL6NY4fA==;
+	bh=yeYHVBnNtWoSGK1TX7C9Ukvy1zAdkapytps+F5dGU8A=; b=URmF4Gtm4UoCelH2E7XEXXxO8v
+	l5iwr2+2tz4tkzz6Vfr78iIfrBuwp54LDJi18fyUwc0lYNO7KZkVmkPuXEzhYBbT+BG4GlHqvxjHg
+	w2R1ty8y8VpXusIKiykFm//pqULx0t8VXFNiaPrt8gcU5GIic+EKbD5YuAAoO5AfQTp+5nsYs/YB7
+	gDfc1R/tWaKnZxCbOG8wKpAfOBY/jPdsz6KKfbRyp4EJ90+pIw6zr31QJP/EyTwBeoGJy2+Zh+Ho2
+	HW+2xoR3Wo2DOytMy9IOsiLQlDFC16JuKgr7B2tliq5lNcpN9hG1TJQyCOctmiNFM4pGnyjTzeqm3
+	gGlpRZSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUqvh-0000000HLXm-1IAf;
-	Tue, 30 Jan 2024 16:25:45 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1rUsBg-000000000oo-0wqx;
+	Tue, 30 Jan 2024 17:46:20 +0000
+Received: from relay2-d.mail.gandi.net ([217.70.183.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUqvf-0000000HLWr-16zG
-	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Jan 2024 16:25:44 +0000
-Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-5111c9e48e8so988903e87.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jan 2024 08:25:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706631940; x=1707236740; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Xx5LK5cIWTZjcQaikGkUtTQL7dv+9ckkh97t67Efamk=;
-        b=Cx6PkmNvy4YgsAmnRkXI0cB5YeEpnMLftKpCgO595AD/wzaQgk/8z1vu62u91FfrUw
-         Anbkfm5WkIhxAVsgCpSb9I3eHSIorbeL16MBLtMn/5my4qZftrjzrIU1jNkfzd9NUgET
-         HY9qygTB1D+CBtj3kWKzUBXy4PC+Ml8EzCNSVxumvKyq451aaGz4zwi9OoYEk+5RtfqH
-         Lomi0kPgC3Acg9MnqjIPYVhHF/iuYt6vxr99mgHKwp51isHJKtUwtQNrYT9z4Ffvq8gQ
-         z8JVS1lLrMxVRG1mE8q5nb6Pb3qVdMHygls/3vvsgT+6xuPghiHDQSM90Hl4Lt/gnwXP
-         kJQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706631940; x=1707236740;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Xx5LK5cIWTZjcQaikGkUtTQL7dv+9ckkh97t67Efamk=;
-        b=f9V0/71TRK3UidBLq3xpqfMJRnHPaGUWAx3sPKgd0h3tMWpEZGNP3EwBb6BQPuOIPM
-         mInssf8y/LT+iQEF1lnRmX1q4x3YtbC1sDmpSZyysarxA/qaNxeWM5oRVZ/iWu/qZKB6
-         5hd4vkjwg8+Ny8/9fTgs4hwAGT1cSltrQxz94t8AR7Iha6VfU/Us+K3TJsJlX3fqO3ld
-         WkC/Es46S7j2PCa5VMOKLaZc1gKFQAKQg3f1RF0DyacYhewoEkATbaypZC36Khl8NjDK
-         NW6IipkLRJ4yVv/DnMZlQW3VPrnmLdDwzGhl3WUheE8kjldeIYDXEqRIMeQRQOG10tqF
-         kyyg==
-X-Gm-Message-State: AOJu0YzAUq3opolUJcVbtnWvkJwBQXMyKYS9H9/eGv5pEyr4/swfaVoB
-	ShomJ1Y0WKaP+wtbmHRoNn99hct2vPsEzI0BQhyVa+l5d5KGjbWXIZpe5XRLXK4=
-X-Google-Smtp-Source: AGHT+IGKmoGuj0MSsy/jyZO/UQZpGItSPG3/U4Kws6CIORIhy1+vliz1pR0tRfJaLsxxA8skGzJcqQ==
-X-Received: by 2002:a2e:8552:0:b0:2cd:9f2a:1450 with SMTP id u18-20020a2e8552000000b002cd9f2a1450mr5579437ljj.17.1706631940254;
-        Tue, 30 Jan 2024 08:25:40 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCVbt3+Bvs+rMDJrQfc4XovjpQSFvjOLVIDYT453/Fk87t14svX038oR2EttdIorcfJ3ZC+KXpajNm0Ln1Ptslbi7/6y1s5rew+bPKD84ODVNjOERPT1mX8BoWp+PBMHPGT9rNhMSO43orpcII3IBTQnBsn5R5h2r+D954t/SRDMUnTXrmpsE3ven9TfvFmFvZGZoeDKGX8Ze1pltFBYVj6ZQDQnaA7quAuYnssQ1Mv1eiac0Zviyql8BaXSBavqDJvd4OVotHGswsuGcY9dpYli3MGfIGmAQJieddCAcIHyEOgPyTV683RMedCmN+7PVnTTUCW5JmojHoeNnLLJzhMgZ9HsF+vmye91n2pmjipffUe9r6QhFyF7D1IWhxj5mtTaOUhq76jcTEuyia29cvKTan9+nCO7uPEBKGy3CZwh2iIRLiEraeQRYqHgOG5lAjwqKOb5/Tq5THKfXpcOlDv2goJwNYOiOzUJ0bZg80CEkZzjl/Wzl/oaj0jnjX7iNWAZ6EKwhEGB+8ak1Iz/GupL1fsbK5fSUGU/3qStMNAorAolyZNCHg==
-Received: from [192.168.1.20] ([178.197.222.62])
-        by smtp.gmail.com with ESMTPSA id c8-20020a509f88000000b0055f43384da2sm763543edf.56.2024.01.30.08.25.38
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 30 Jan 2024 08:25:39 -0800 (PST)
-Message-ID: <78241d63-3b9d-4c04-9ea5-11b45eac6f00@linaro.org>
-Date: Tue, 30 Jan 2024 17:25:38 +0100
+	id 1rUsBb-000000000m0-1X1j;
+	Tue, 30 Jan 2024 17:46:17 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 0E81E40008;
+	Tue, 30 Jan 2024 17:46:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1706636770;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=yeYHVBnNtWoSGK1TX7C9Ukvy1zAdkapytps+F5dGU8A=;
+	b=WYZB4kZxCt5DddXc6lJXra4AMcWfbgZXZXYJ/3lAZqO6HfSqEZgrr6Ql8/Edzo/uQQ/m9e
+	+5e3MSh9bra3/HnMcJrMZgDI/dExZTqlcxwagQcOEHp4v8B5Aw80DaMIaFxv53tXsN95Jp
+	40NUFim7ysWHJRrbCWRZLiBAHr7r3APoSZpyB8H48u82EyQ5J8TI7qZEUpFh7IxrGk696h
+	sbUor2a5hAeME4dA8Yjz5VCaPq1aHTkvJuhfAjiJjHSvvaqTCi53teTpXfmnYDV3Qc7Sf7
+	eTyp7ivSSCDNAdleux9heW9Zm+ogIeELdgI1lUPqGRX+JQ6z5zxqpa8ldwnndg==
+Message-ID: <77c38489-8a73-4b00-bd82-48174b4d620f@arinc9.com>
+Date: Tue, 30 Jan 2024 20:46:04 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] dt-bindings: net: bluetooth: Add MediaTek MT7921S
- SDIO Bluetooth
+Subject: Re: [PATCH net-next v2 5/7] net: dsa: mt7530: simplify
+ mt7530_setup_port6() and change to void
 Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sean Wang <sean.wang@mediatek.com>, linux-bluetooth@vger.kernel.org,
- netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20240126063500.2684087-1-wenst@chromium.org>
- <20240126063500.2684087-2-wenst@chromium.org>
- <74b9f249-fcb4-4338-bf7b-8477de6c935c@linaro.org>
- <CAGXv+5Hu+KsTBd1JtnKcaE3qUzPhHbunoVaH2++yfNopHtFf4g@mail.gmail.com>
- <21568334-b21f-429e-81cd-5ce77accaf3c@linaro.org>
- <CAGXv+5HxXzjigN3Bp96vkv71WfTJ1S2b7Wgafc4GxLmhu6+jMg@mail.gmail.com>
- <a4324473-e0c6-4d53-8de0-03b69480e40b@linaro.org>
- <CAGXv+5HAqmUizXztMH_nY6e+6oQh01hCtxEJXKtCn3_74-sOsQ@mail.gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <CAGXv+5HAqmUizXztMH_nY6e+6oQh01hCtxEJXKtCn3_74-sOsQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
+ Russell King <linux@armlinux.org.uk>, mithat.guner@xeront.com,
+ erkin.bozoglu@xeront.com, Bartel Eerdekens <bartel.eerdekens@constell8.be>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240130-for-netnext-mt7530-improvements-2-v2-0-ba06f5dd9eb0@arinc9.com>
+ <20240130-for-netnext-mt7530-improvements-2-v2-5-ba06f5dd9eb0@arinc9.com>
+ <Zbkc4BRORWYu79GZ@makrotopia.org>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <Zbkc4BRORWYu79GZ@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_082543_366946_6F57DDCA 
-X-CRM114-Status: GOOD (  17.70  )
+X-CRM114-CacheID: sfid-20240130_094616_119703_B7268CCF 
+X-CRM114-Status: GOOD (  38.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,59 +84,207 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30/01/2024 08:47, Chen-Yu Tsai wrote:
-> On Tue, Jan 30, 2024 at 3:37 PM Krzysztof Kozlowski
-> <krzysztof.kozlowski@linaro.org> wrote:
+On 30.01.2024 18:59, Daniel Golle wrote:
+> On Tue, Jan 30, 2024 at 06:20:51PM +0300, Arınç ÜNAL via B4 Relay wrote:
+>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
 >>
->> On 30/01/2024 04:32, Chen-Yu Tsai wrote:
->>> On Mon, Jan 29, 2024 at 3:34 PM Krzysztof Kozlowski
->>> <krzysztof.kozlowski@linaro.org> wrote:
->>>>
->>>> On 29/01/2024 04:38, Chen-Yu Tsai wrote:
->>>>
->>>>>>> +allOf:
->>>>>>> +  - $ref: bluetooth-controller.yaml#
->>>>>>> +
->>>>>>> +properties:
->>>>>>> +  compatible:
->>>>>>> +    enum:
->>>>>>> +      - mediatek,mt7921s-bluetooth
->>>>>>
->>>>>> Can it be also WiFi on separate bus? How many device nodes do you need
->>>>>> for this device?
->>>>>
->>>>> For the "S" variant, WiFi is also on SDIO. For the other two variants,
->>>>> "U" and "E", WiFi goes over USB and PCIe respectively. On both those
->>>>> variants, Bluetooth can either go over USB or UART. That is what I
->>>>> gathered from the pinouts. There are a dozen GPIO pins which don't
->>>>> have detailed descriptions though. If you want a comprehensive
->>>>> binding of the whole chip and all its variants, I suggest we ask
->>>>> MediaTek to provide it instead. My goal with the binding is to document
->>>>> existing usage and allow me to upstream new device trees.
->>>>>
->>>>> For now we only need the Bluetooth node. The WiFi part is perfectly
->>>>> detectable, and the driver doesn't seem to need the WiFi reset pin.
->>>>> The Bluetooth driver only uses its reset pin to reset a hung controller.
->>>>
->>>> Then suffix "bluetooth" seems redundant.
->>>
->>> I think keeping the suffix makes more sense though. The chip is a two
->>> function piece, and this only targets one of the functions. Also, the
+>> This code is from before this driver was converted to phylink API. Phylink
+>> deals with the unsupported interface cases before mt7530_setup_port6() is
+>> run. Therefore, the default case would never run. However, it must be
+>> defined nonetheless to handle all the remaining enumeration values, the
+>> phy-modes.
 >>
->> That's why I asked and you said there is only one interface: SDIO.
+>> Switch to if statement for RGMII and return which simplifies the code and
+>> saves an indent.
+>>
+>> Set P6_INTF_MODE, which is the the three least significant bits of the
+>> MT7530_P6ECR register, to 0 for RGMII even though it will already be 0
+>> after reset. This is to keep supporting dynamic reconfiguration of the port
+>> in the case the interface changes from TRGMII to RGMII. The core operations
+>> for TRGMII does not interfere with RGMII so no need to undo them.
 > 
-> There's only one interface, SDIO, but two SDIO functions. The two
-> functions, if both were to be described in the device tree, would
-> be two separate nodes. We just don't have any use for the WiFi one
-> right now. Does that make sense to keep the suffix?
+> That last sentence doesn't parse English gramar.
+> "operations": plural
+> "does": singular
+> 
+> Should probably be either "The core operation for TRGMII does not..."
+> or "The core operations for TRGMII do not..."
 
-Number of functions does not really matter. Number of interfaces on the
-bus would matter. Why would you have two separate nodes for the same
-SDIO interface? Or do you want to say there are two interfaces?
+I'll use the latter, thanks.
 
+> 
+> As you are mentioning it, I'm now curious if you consider to
+> dynamically reconfiguring TRGIII<->RGMII on port 6 depending on
+> whether there is more then 1 GBit/s possible bandwidth needed between
+> port 6 and the remaining ports? That could make sense for power
+> management, but then we should at least again switch off the TRGMII
+> clocks in the RGMII case before returning, see my suggestion inline
+> below.
 
+Turning off the TRGMII clocks for RGMII makes sense to me. But I don't see
+any cases where dynamic interface change between TRGMII and RGMII would
+ever occur. Speed too. No PHYs support TRGMII, only some MediaTek SoC MACs
+do. That means TRGMII would only be used in fixed links which there is no
+dynamic reconfiguration. My patch is about simplifying the code so I don't
+want to change the dynamic reconfiguration behaviour.
 
-Best regards,
-Krzysztof
+That said, last year, I have very thoroughly tested this "turbo" RGMII
+interface between MT7530 standalone switch and MT7623NI SoC, which would
+supposedly achieve 2 Gbps TX & 2 Gbps RX. The performance was as if the
+link was regular RGMII. Unless the MediaTek SoC ethernet driver somehow
+caps TRGMII to 1 Gbps, I consider this whole TRGMII shenanigans a scam, to
+be extremely blunt. I'll give this a one last shot sometime before I push
+for the removal of TRGMII from Linux altogether and default to RGMII where
+it's used. Because of this, I don't want to spend too much time on this
+patch as it's potentially wasted effort.
 
+> 
+>>
+>> Read XTAL after checking for RGMII as it's only needed for the TRGMII
+>> interface mode.
+>>
+>> Change mt7530_setup_port6() to void now that there're no error cases left.
+>>
+>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> Reviewed-by: Daniel Golle <daniel@makrotopia.org>
+> 
+>> ---
+>>   drivers/net/dsa/mt7530.c | 103 ++++++++++++++++++++---------------------------
+>>   1 file changed, 43 insertions(+), 60 deletions(-)
+>>
+>> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+>> index c4d492e29fdf..36dc2bbcf3b6 100644
+>> --- a/drivers/net/dsa/mt7530.c
+>> +++ b/drivers/net/dsa/mt7530.c
+>> @@ -414,70 +414,57 @@ mt753x_preferred_default_local_cpu_port(struct dsa_switch *ds)
+>>   }
+>>   
+>>   /* Setup port 6 interface mode and TRGMII TX circuit */
+>> -static int
+>> +static void
+>>   mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
+>>   {
+>>   	struct mt7530_priv *priv = ds->priv;
+>> -	u32 ncpo1, ssc_delta, trgint, xtal;
+>> -
+>> -	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
+>> +	u32 ncpo1, ssc_delta, xtal;
+>>   
+>> -	switch (interface) {
+>> -	case PHY_INTERFACE_MODE_RGMII:
+>> -		trgint = 0;
+>> -		break;
+>> -	case PHY_INTERFACE_MODE_TRGMII:
+>> -		trgint = 1;
+>> -		if (xtal == HWTRAP_XTAL_25MHZ)
+>> -			ssc_delta = 0x57;
+>> -		else
+>> -			ssc_delta = 0x87;
+>> -		if (priv->id == ID_MT7621) {
+>> -			/* PLL frequency: 125MHz: 1.0GBit */
+>> -			if (xtal == HWTRAP_XTAL_40MHZ)
+>> -				ncpo1 = 0x0640;
+>> -			if (xtal == HWTRAP_XTAL_25MHZ)
+>> -				ncpo1 = 0x0a00;
+>> -		} else { /* PLL frequency: 250MHz: 2.0Gbit */
+>> -			if (xtal == HWTRAP_XTAL_40MHZ)
+>> -				ncpo1 = 0x0c80;
+>> -			if (xtal == HWTRAP_XTAL_25MHZ)
+>> -				ncpo1 = 0x1400;
+>> -		}
+>> -		break;
+>> -	default:
+>> -		dev_err(priv->dev, "xMII interface %d not supported\n",
+>> -			interface);
+>> -		return -EINVAL;
+>> +	if (interface == PHY_INTERFACE_MODE_RGMII) {
+>> +		mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
+>> +			   P6_INTF_MODE(0));
+> 
+> Maybe at least switch off TRGMIICK here because we are sure we don't need it
+> in the RGMII case, ie:
+> core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
+> 
+> And that then is another line of code already present just below which
+> means you could keep variable trgint as it was and return after
+> switching off TRGMIICK below anyway...
+> 
+>> +		return;
+>>   	}
+>>   
+>> -	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
+>> -		   P6_INTF_MODE(trgint));
+>> +	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK, P6_INTF_MODE(1));
+>>   
+>> -	if (trgint) {
+>> -		/* Disable the MT7530 TRGMII clocks */
+>> -		core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
+>> +	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
+>>   
+>> -		/* Setup the MT7530 TRGMII Tx Clock */
+>> -		core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
+>> -		core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
+>> -		core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
+>> -		core_write(priv, CORE_PLL_GROUP11, RG_LCDDS_SSC_DELTA1(ssc_delta));
+>> -		core_write(priv, CORE_PLL_GROUP4,
+>> -			   RG_SYSPLL_DDSFBK_EN | RG_SYSPLL_BIAS_EN |
+>> -			   RG_SYSPLL_BIAS_LPF_EN);
+>> -		core_write(priv, CORE_PLL_GROUP2,
+>> -			   RG_SYSPLL_EN_NORMAL | RG_SYSPLL_VODEN |
+>> -			   RG_SYSPLL_POSDIV(1));
+>> -		core_write(priv, CORE_PLL_GROUP7,
+>> -			   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
+>> -			   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
+>> +	if (xtal == HWTRAP_XTAL_25MHZ)
+>> +		ssc_delta = 0x57;
+>> +	else
+>> +		ssc_delta = 0x87;
+>>   
+>> -		/* Enable the MT7530 TRGMII clocks */
+>> -		core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
+>> +	if (priv->id == ID_MT7621) {
+>> +		/* PLL frequency: 125MHz: 1.0GBit */
+>> +		if (xtal == HWTRAP_XTAL_40MHZ)
+>> +			ncpo1 = 0x0640;
+>> +		if (xtal == HWTRAP_XTAL_25MHZ)
+>> +			ncpo1 = 0x0a00;
+>> +	} else { /* PLL frequency: 250MHz: 2.0Gbit */
+>> +		if (xtal == HWTRAP_XTAL_40MHZ)
+>> +			ncpo1 = 0x0c80;
+>> +		if (xtal == HWTRAP_XTAL_25MHZ)
+>> +			ncpo1 = 0x1400;
+>>   	}
+>>   
+>> -	return 0;
+>> +	/* Disable the MT7530 TRGMII clocks */
+>> +	core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
+> 
+> ... by moving this line up and letting it happen unconditionally for
+> both RGMII and TRGMII (in case that works and doesn't break the RGMII
+> case, but I assume it doesn't)
+
+I've just tested this, works fine. This looks simpler than bringing back
+the trgint variable.
+
+static void
+mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
+{
+	struct mt7530_priv *priv = ds->priv;
+	u32 ncpo1, ssc_delta, xtal;
+
+	/* Disable the MT7530 TRGMII clocks */
+	core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
+
+	if (interface == PHY_INTERFACE_MODE_RGMII) {
+		mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
+			   P6_INTF_MODE(0));
+		return;
+	}
+
+	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK, P6_INTF_MODE(1));
+
+...
+
+Arınç
 
