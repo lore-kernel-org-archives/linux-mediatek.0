@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9EECC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 08:36:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9745C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 08:39:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iVO6bI9ILyJP3a4/f0L9BMiCYK6/WvSgkl3qu7Z4gMY=; b=SvPOK6nMtay4n1eR97RURP8HdZ
-	RXD0YQFgszIFwt7jLn0PYL+dKlCeWpWr4SD47sYxaCGfOg7ZL3eqJhCw3rct3tdsD+hqMVWhBfsPo
-	5MvuV4rJKuN6PE8XBLMuN0J2uW0avXebjC3s2dAxcHuN9i+zcl6mjRJklq5H0EVTU1le6Su+g5yn3
-	oK/4uckbO6xeg21vtwA2XLktmkIAXxWmgrplPbkpYGKWxbMQi+UTHTstmbve8gg0IHuXKWLkFfoFZ
-	zKNEq7QjpWM7RS4rI07hLEOWtKpIxTsGaEyoaHoMWulalf+CNr6EiB/Pz56d4y+Zzt0zyJYO4XUd+
-	CqqWEXfQ==;
+	bh=LCPlm1ET25q8lKgKQqsCSt4ku0aDJpqUlXyRtt9ALKs=; b=5Fgzhv0fgQPI/9eK7CsMvn6wYn
+	/JGPamyyB4/hMJd773tAHfCIp32KNcNJFgCXqjrkY/AmB5bY0DHxFTgAKHU94QNdfU21iFxk0tMQ2
+	Nnf/1rBC+Msmanf6WTWz/3hu8CM68CCVuMX4TnQ4CulmQA4p8ndgBbYhGPhyGyHYMscjB05qBFrub
+	6MolV2lcCB7q1nyvXx8ID3ruyaY0fA+YBrASMMn9mpWmUo8b0a5o/3+/dOJApzxOf7Dc/qyxZFQKV
+	z7mjKX8US9LpoTILtGwiN6+crotw5Jh3spkQXBhuXILSzfLGCKjEgynATxvosb/MnXYc48CtH+kE1
+	qLnYc6nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUjbR-0000000FjLJ-11os;
-	Tue, 30 Jan 2024 08:36:21 +0000
+	id 1rUjeP-0000000Fk3e-2ZWS;
+	Tue, 30 Jan 2024 08:39:25 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUjbO-0000000FjIN-0Pba;
-	Tue, 30 Jan 2024 08:36:19 +0000
+	id 1rUjeL-0000000Fk1I-3Rrx;
+	Tue, 30 Jan 2024 08:39:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706603775;
-	bh=DPzX8bKF/2fviPf/M2liuaua/0lWQdiOsoNEF2zZ3Kw=;
+	s=mail; t=1706603960;
+	bh=9fYopgXzbpsQiE7E/H2LDcOlBUc/v20dA7T49dXOcZA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QQ1m6SLdXWukRY/jHpuZaif7HrnumJY0OTOjXsU4HwmzLA3WaO7HtRytzJIcqztxu
-	 koxbBQ0E6kh7aVFy7PPw1ge3SKfXXR8VDKWego9QPPuQ2fKSDrCtjgPUUp1UcFG32C
-	 oA2Tockeh2++BG9SmsF/1MwNOPDLObfrl/qx9/CNaYnWDA49kvFxSU60zEqI9syhcy
-	 gGR2kQL0NT620VvFoARvoUNH0gZW87uTu1No8VUCAz5xcLq3uCFhAEMZpGZTxxqs5C
-	 kAIm8VFh1p+boVdOMCuLXq0SPgXsToceRwMLTKSLFhtfBkJhq68lGKf4d8ViFpqvuT
-	 JYnJaef/wSMug==
+	b=KJ//jMYd/5xJLL/l0JF6Usg6KpSaxKV6UEPWTOzcid5hnldRaFoWyGoZlVjfNpJAU
+	 8v6aiI+zOR2OKs0pzqlTJZiCRsYVHVHl3y1EuYQudeWWIdSX8ThAkp730BLsd+8Fr+
+	 Kd3VTLJcS/JBsbjk9vsVk+NE5jvLAvmDDBCy1LpxaEgldCbLzRm8JlaawMlrjzBISX
+	 9A4zAwP7HJTScRIy4RL0jCNcmLQgLxuqf58R1H27MMTEocRm67PUoYS60mauL/BXXw
+	 WasRNhhfC5eo0Z/xe6ASTBU+C6xhY5QsnH9Miy4ob7yJo9lHLMagZ41e6nYQEYgzyh
+	 mzS/uShqbszZA==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 885273782076;
-	Tue, 30 Jan 2024 08:36:14 +0000 (UTC)
-Message-ID: <46c05b42-dfc5-439e-9dd2-9c115199ff5f@collabora.com>
-Date: Tue, 30 Jan 2024 09:36:14 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0719C3782076;
+	Tue, 30 Jan 2024 08:39:19 +0000 (UTC)
+Message-ID: <bc1d5824-fc34-4c04-b375-1f506a358193@collabora.com>
+Date: Tue, 30 Jan 2024 09:39:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: Fix a memory leak
- in an error handling path
+Subject: Re: [PATCH v3 1/2] dt-bindings: media: mediatek-jpeg-encoder: change
+ max iommus count
 Content-Language: en-US
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Balsam CHIHI <bchihi@baylibre.com>
-Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
- "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <481d345233862d58c3c305855a93d0dbc2bbae7e.1706431063.git.christophe.jaillet@wanadoo.fr>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20240127084258.68302-1-eugen.hristev@collabora.com>
+ <170652472373.127352.5854831299483160743.b4-ty@collabora.com>
+ <282822ba-0e96-4078-a807-4b0b08e42014@collabora.com>
+ <CAGXv+5Em3HUJV1pv177LUwf9iMhKSLcGhVAt6ON9YZMNaT2oZw@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <481d345233862d58c3c305855a93d0dbc2bbae7e.1706431063.git.christophe.jaillet@wanadoo.fr>
+In-Reply-To: <CAGXv+5Em3HUJV1pv177LUwf9iMhKSLcGhVAt6ON9YZMNaT2oZw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_003618_369265_DBADD4E2 
-X-CRM114-Status: UNSURE (   6.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240130_003922_005386_363D3AC3 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,14 +79,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/01/24 09:38, Christophe JAILLET ha scritto:
-> If devm_krealloc() fails, then 'efuse' is leaking.
-> So free it to avoid a leak.
+Il 30/01/24 04:24, Chen-Yu Tsai ha scritto:
+> (Drop a bunch of people from CC)
 > 
-> Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> On Mon, Jan 29, 2024 at 6:48 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Il 29/01/24 11:41, AngeloGioacchino Del Regno ha scritto:
+>>>
+>>> On Sat, 27 Jan 2024 10:42:57 +0200, Eugen Hristev wrote:
+>>>> MT8186 has 4 iommus in the list, to cope with this situation, adjust
+>>>> the maxItems to 4 (instead of previous 2).
+>>>> Add also minItems as 2 to keep compatibility with current devices.
+>>>>
+>>>>
+>>>
+>>> Applied to v6.4-next/dts64, thanks!
+>>>
+>>
+>> Sorry, typo: v6.8-next/dts64
+> 
+> I was wondering, what script produces this email?
+> 
+> AFAIK `b4 ty` gives a simple thank you letter without branch or commit
+> hashes.
+> 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+That's exactly `b4 ty` :-)
+You can use a custom template, so that it reads something like
 
+`Applied to ${branch}, thanks!`
+
+Cheers,
+Angelo
+
+> ChenYu
+> 
+>>> [1/2] dt-bindings: media: mediatek-jpeg-encoder: change max iommus count
+>>>         commit: b824b32dd5e98221cbe2e8bcccc6fb4134e35fc1
+>>> [2/2] arm64: dts: mediatek: mt8186: Add jpgenc node
+>>>         commit: 4c5b46fbf52d52b0f392f0fc3913560bad438e49
+>>>
+>>> Best regards,
+>>
+>>
 
 
