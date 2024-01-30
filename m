@@ -4,80 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50196C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 08:50:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BDADC46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 09:52:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SckZ+DDf8jBpsZ2C44Te6eNpzkzX9NFHG5PB36IqdKM=; b=maVFSc3z5j71LgOTEpNIbYr61y
-	QjtY9X4bnBkDEBEoIywwLSRQyIhpTTUI6KM4uFYS+fxzMs186S9Z2GSRNqiFYL6tombNXEL9NQ2iU
-	s9iJ8exA+n5+IQFPL8k3RUouabO7fm0kc/jhLwIHHA6yaQ5zHBUzAKiTSvboeCUpD5lN29C2pnuu0
-	3HRIe89L5m7anVIv6/PX9IWMylgeAhIieKm/PciPNvuydOszVkhWGSGTERQHzzQQwXypoeUQH2T21
-	cb9OOcHBFsU7JjNdil9934gZ2up9g45g2PDy2ptR1D4B8IhFh9QBT+/GPK8XAXPziJoRFr2dEZ5ed
-	Ndf4VCmw==;
+	bh=UHvebLwHuRfKrhRhx4zUZc+osrZ3cO5ITZcXKlhy5f4=; b=yk0i8lBECUUMnuNAZ5XWWR0sfj
+	DjRGo/g8Moe+X3Q5r92VgcJZh++cpoC9Fj3XR9qFJRH80TVZgs830PRC5C/HOA2qO/5JN8aL4zJFo
+	UrL2WsEgH2Z3lYMYKvUa+ZivAKot6pH85n+YJGTtiOQzfNmCJ1qvVF6SpE1qDRStI//vZHsjC5Kw4
+	OKzi2B/kU5DghV77KRkpMqEY8pPfWeZtLMu88ImYSNeB0kmuGoe7mZHfkRoPzF4GPkYZvxvEca9EY
+	WZSS6wNIihHzbgkscIPtaQQuIQCWyWTviVoIKHcDNMgIhpXTf6WTHAw4/Hx0C7zrjRju+R1O8nR6e
+	rafC/zOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUjp5-0000000FmtW-46mv;
-	Tue, 30 Jan 2024 08:50:27 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rUkmt-0000000G2Kc-0s35;
+	Tue, 30 Jan 2024 09:52:15 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUjp3-0000000Fmsw-12vR;
-	Tue, 30 Jan 2024 08:50:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706604623;
-	bh=L7g7UHjKNr5SvQAGpzc9mh21hs6JnAcMjRSyUdwAxPo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nrqHLF4Y2RIFvV3i1CagzTPMXnxRu8+Xec++UFZsM9uNUN0z1WjrHKVf4UrYt+sjF
-	 lpcqovqRbqjlmPeYKMlWMRfnb4QlLUz+znUbVbd5nLwENsRhgipQVvd+ElXcYvdQvG
-	 I7gwY7+k2ehLl86TGjghkWdIjrqrRwJ0W/IZG6LiWBR+uwwHCX06JrYXirg7nyEfWx
-	 xdUSydKlIsgHe+uzkethfqub9itVdFEjI/wGVaWmwMhHVWDN1SNUoQgOO2TFBBNN0m
-	 iMpqa+JPM57QDE5QdLjz0iFNw4iXIGJ0CJDseKKoq2FSt9g4MSPfimH2ApQQFJwNp0
-	 EZZVxjpXk6Y1A==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 99F213782076;
-	Tue, 30 Jan 2024 08:50:22 +0000 (UTC)
-Message-ID: <20fc5f3f-3c52-448c-979f-4b1fdcef10f3@collabora.com>
-Date: Tue, 30 Jan 2024 09:50:21 +0100
+	id 1rUkmr-0000000G2JS-2ROm
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 30 Jan 2024 09:52:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=UHvebLwHuRfKrhRhx4zUZc+osrZ3cO5ITZcXKlhy5f4=; b=NBOkQV56Z6faEm6jMRpGUeO4yr
+	O3Dp7DQhv0dJoIHB+9b4i0CpfCuI6vh0aJ3GHvIrYq3dTDepdnEctcmCmJep5spG0hkoAyhaytl+M
+	MJbCeB3WHXFYnF8AfLuRtZ1zZvdBZ5OHVVjbmmUP/oGCx2DRuSgxOlUqP0VrN2mNpRVoBmy51qfrk
+	SxEFi05PRwHJap5kssq6A7CC2/jFYGljxNrwBg+0KH/i2QntDaZF3XniN59xwwsXtMfA+v9RxgeBt
+	jnIZB5OBw3Q5flb7IOTf9jcDowft0vWobM46hxHungSpEmiFAwVXnmv9CfKZ3OFt/Q66VvLOv0vdp
+	YdAb4ckA==;
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rUkme-00000008G2f-4AnK
+	for linux-mediatek@lists.infradead.org;
+	Tue, 30 Jan 2024 09:52:08 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-40eb033c1b0so42408065e9.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jan 2024 01:51:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1706608314; x=1707213114; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=UHvebLwHuRfKrhRhx4zUZc+osrZ3cO5ITZcXKlhy5f4=;
+        b=krVxyB6Cs4f8QXn+rOuB5YPg91okKJaHBqSrS/hHSfp/JvoDCdb5wmEtaBGUHSgZMZ
+         GZfK+a5rGHRGQv8Xn2+7e/p+mt/5AX74u1lGsvv5KIseeIPX4Ld0OHkYiLDbvu4DTQ5j
+         FPw+11K0XKBHwY2dxKrxG8JcTc7KS+KnFX66JrCevv3Enw7KcoQhxgDkM2eSPaCpECwM
+         Hb8FXbxSZr3Yd6f0d4oFwZ1CypGfEP5ZFDiiesUJrnUFVqh4foQrt9HHcqQNeSzSPxHD
+         qKCfTwjXxl59OpMdlN3b3YPfYxWOaWp7WNP5al9AgWKy+F6+2kSMDt02xruKnxQaij80
+         007A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706608314; x=1707213114;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=UHvebLwHuRfKrhRhx4zUZc+osrZ3cO5ITZcXKlhy5f4=;
+        b=R0cH3fspGgTz2a1lNTMBRbymd6sEnDALnDwKi71Ijfxd1AoMRbs5BYJPCJWGOzlTl/
+         BBSWJX2selQgYMrjfchlCNefy+CM9pAfZvjl09D4ffPwLf2L2coh7dUNoTYL4QtsNR9b
+         J3J1ItLBB2dQ11qjx2LK35OYmj8+kKTPlMRwp2zbGa2EROJldnn3WCaxVADa03//pthY
+         QpbZXF1NF2HStJD7Ult8G0Q+6HmqZhyA8x6j5UGiFhs2j87zP8gKqCvwD3Lcnm9y68uH
+         wWhM3yniuFzPxMkLQdaMVgo+q1pHVtK2s0fyHwVzq2HfYx4fMnEi4AHA6Az8PqABrttS
+         QeIw==
+X-Gm-Message-State: AOJu0YxPyo/mIQ7AuMVtUtGnEE7ffJwYwVyUDkA9S9WY1/8AVsHMWq48
+	wIQSlWq4m6reTpohFzcj+Oc7ClFW/KzEZlfWpphhUVR/6faUr1wSZHd3o59iwBg=
+X-Google-Smtp-Source: AGHT+IF38u7/UMq2Ehe06B1hdRlnUG7cUccj6aYmXDUSxOCpUZXxCEPO+lNn+j1151l0KXe8fxwwHw==
+X-Received: by 2002:a05:600c:4d96:b0:40e:d319:4792 with SMTP id v22-20020a05600c4d9600b0040ed3194792mr6064680wmp.22.1706608314364;
+        Tue, 30 Jan 2024 01:51:54 -0800 (PST)
+Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
+        by smtp.googlemail.com with ESMTPSA id u7-20020a05600c138700b0040d8ff79fd8sm12646748wmf.7.2024.01.30.01.51.53
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 30 Jan 2024 01:51:54 -0800 (PST)
+Message-ID: <57a5ca95-9d79-45cb-89dd-fa7a3a6ad228@linaro.org>
+Date: Tue, 30 Jan 2024 10:51:53 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2,1/2] media: mediatek: vcodec: adding lock to protect
- decoder context list
+Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: Fix a memory leak
+ in an error handling path
 Content-Language: en-US
-To: =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>,
- "nhebert@chromium.org" <nhebert@chromium.org>,
- "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
- "nfraprado@collabora.com" <nfraprado@collabora.com>,
- "nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>,
- "hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
- =?UTF-8?B?SXJ1aSBXYW5nICjnjovnkZ4p?= <Irui.Wang@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "frkoenig@chromium.org" <frkoenig@chromium.org>,
- "stevecho@chromium.org" <stevecho@chromium.org>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "daniel@ffwll.ch" <daniel@ffwll.ch>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "hsinyi@chromium.org" <hsinyi@chromium.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-References: <20240129023153.28521-1-yunfei.dong@mediatek.com>
- <df6c8b2b-df56-46c5-933d-e56bf704525f@collabora.com>
- <b0b32ef4fb6edb979840b49a3de0278089088f14.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <b0b32ef4fb6edb979840b49a3de0278089088f14.camel@mediatek.com>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Lukasz Luba <lukasz.luba@arm.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Balsam CHIHI <bchihi@baylibre.com>
+Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
+ "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, linux-pm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <481d345233862d58c3c305855a93d0dbc2bbae7e.1706431063.git.christophe.jaillet@wanadoo.fr>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <481d345233862d58c3c305855a93d0dbc2bbae7e.1706431063.git.christophe.jaillet@wanadoo.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_005025_446410_9E1891F9 
-X-CRM114-Status: GOOD (  21.44  )
+X-CRM114-CacheID: sfid-20240130_095205_737767_E494E0B3 
+X-CRM114-Status: UNSURE (   7.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,105 +116,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/01/24 07:29, Yunfei Dong (董云飞) ha scritto:
-> Hi AngeloGioacchino,
+On 28/01/2024 09:38, Christophe JAILLET wrote:
+> If devm_krealloc() fails, then 'efuse' is leaking.
+> So free it to avoid a leak.
 > 
-> Thanks for your reviewing.
-> On Mon, 2024-01-29 at 12:19 +0100, AngeloGioacchino Del Regno wrote:
->> Il 29/01/24 03:31, Yunfei Dong ha scritto:
->>> The ctx_list will be deleted when scp getting unexpected behavior,
->>> then the
->>> ctx_list->next will be NULL, the kernel driver maybe access NULL
->>> pointer in
->>> function vpu_dec_ipi_handler when going through each context, then
->>> reboot.
->>>
->>> Need to add lock to protect the ctx_list to make sure the ctx_list-
->>>> next isn't
->>> NULL pointer.
->>>
->>> Hardware name: Google juniper sku16 board (DT)
->>> pstate: 20400005 (nzCv daif +PAN -UAO -TCO BTYPE=--)
->>> pc : vpu_dec_ipi_handler+0x58/0x1f8 [mtk_vcodec_dec]
->>> lr : scp_ipi_handler+0xd0/0x194 [mtk_scp]
->>> sp : ffffffc0131dbbd0
->>> x29: ffffffc0131dbbd0 x28: 0000000000000000
->>> x27: ffffff9bb277f348 x26: ffffff9bb242ad00
->>> x25: ffffffd2d440d3b8 x24: ffffffd2a13ff1d4
->>> x23: ffffff9bb7fe85a0 x22: ffffffc0133fbdb0
->>> x21: 0000000000000010 x20: ffffff9b050ea328
->>> x19: ffffffc0131dbc08 x18: 0000000000001000
->>> x17: 0000000000000000 x16: ffffffd2d461c6e0
->>> x15: 0000000000000242 x14: 000000000000018f
->>> x13: 000000000000004d x12: 0000000000000000
->>> x11: 0000000000000001 x10: fffffffffffffff0
->>> x9 : ffffff9bb6e793a8 x8 : 0000000000000000
->>> x7 : 0000000000000000 x6 : 000000000000003f
->>> x5 : 0000000000000040 x4 : fffffffffffffff0
->>> x3 : 0000000000000020 x2 : ffffff9bb6e79080
->>> x1 : 0000000000000010 x0 : ffffffc0131dbc08
->>> Call trace:
->>> vpu_dec_ipi_handler+0x58/0x1f8 [mtk_vcodec_dec (HASH:6c3f 2)]
->>> scp_ipi_handler+0xd0/0x194 [mtk_scp (HASH:7046 3)]
->>> mt8183_scp_irq_handler+0x44/0x88 [mtk_scp (HASH:7046 3)]
->>> scp_irq_handler+0x48/0x90 [mtk_scp (HASH:7046 3)]
->>> irq_thread_fn+0x38/0x94
->>> irq_thread+0x100/0x1c0
->>> kthread+0x140/0x1fc
->>> ret_from_fork+0x10/0x30
->>> Code: 54000088 f94ca50a eb14015f 54000060 (f9400108)
->>> ---[ end trace ace43ce36cbd5c93 ]---
->>> Kernel panic - not syncing: Oops: Fatal exception
->>> SMP: stopping secondary CPUs
->>> Kernel Offset: 0x12c4000000 from 0xffffffc010000000
->>> PHYS_OFFSET: 0xffffffe580000000
->>> CPU features: 0x08240002,2188200c
->>> Memory Limit: none
->>>
->>> 'Fixes: 655b86e52eac ("media: mediatek: vcodec: Fix possible
->>> invalid memory access for decoder")'
->>
->> Hello Yunfei,
->>
->> You've sent two patches as a v2, but:
->>    - The two patches are identical (!) apart from the commit message?!
->>    - It's Fixes: xxxx , not 'Fixes: xxxx' (please remove the quotes!)
->>    - There's no changelog from v1, so, what changed in v2?!
->>
-> 1> These two patch used to fix the same issue, just used to separate
-> encoder with decoder;
+> Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> ---
 
-I just noticed that - I'm sorry.
+Applied, thanks
 
-> 2> Will fix in next patch;
-> 3> patch 1 are the same for v1 and v2, just the patch 2 (encoder)
-> change something.
-> 
-Next time, can you please add a cover letter to your series?
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
 
-I think it would be easier for people to see what changed in the entire series,
-even if it is just two or three patches, as you'd be writing the changelog in
-there instead of writing it in each patch :-)
-
-
-> Best Regards,
-> Yunfei Dong
->> Cheers,
->> Angelo
->>
->>> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
->>> ---
->>>    .../platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c      | 4
->>> ++--
->>>    .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c    | 5
->>> +++++
->>>    .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h    | 2
->>> ++
->>>    drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c | 2
->>> ++
->>>    4 files changed, 11 insertions(+), 2 deletions(-)
->>>
->>
->>
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
 
