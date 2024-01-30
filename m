@@ -4,77 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9800C47DA9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 03:24:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 171F9C47DB3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 03:32:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FTNL9ohxLrANr0wy+wFa79m7nHa0bIs2wMJPrxNz1A8=; b=pcPMtMAsk7iwAEAK58YrrQnss0
-	LdXxvCsz/gZ2Sn+dOY0DyM0L77GXbvn69EhbgxzymOLLX+GNFBJMs7KenMhcIY6iHLr1yce0W5Q8+
-	5xhvNgEFrh0Ywp5aRPNSatmX92X5YkybYKCRWqEiNTzNq7ew/qMnvE0aOR03D+jvG6Hv+rEOmioi3
-	KnnCydbP/J1KAS8WJq3BTbkM30NdnyoPvhjhdXLfF+ZONGl/t02NyrGervK7aUpeGkbIOvuFAqeoq
-	SlCN5tb8fYZrJoGsog11KYliMJaE51oy+HL+mA9OWbogMxUb3J3Sjq7T54FQqc7mceoaM0ya7aOGT
-	M54Dvl5Q==;
+	bh=HVSWuVPedMZ0hCiYeV6t6vWEzmV0Yu6IxhjiX+iJPeQ=; b=INFevBhRN8kIsjd9sobh9YCGMS
+	LeHvxQyyTzrFdIWW1OvW55Hzm2ClwKVnFZevv0XSP7aJO3KFajZg9pFelihNTh6mVTgow57IpfU6k
+	dULMWDlOyFb00F3Q4KcvcGN5HRn1OyqttK0ephqRpE9T0RbHsvRp0GVfJ0v2iJgUoqe4pi67asIZz
+	98gIcqSGAeNXCeDo4+kJ6Sz219CG8prgdx8DKqDo/cMmHMXPK3ZUmDDgx96kiYx6a8Kvt6bcRZULf
+	ttLlJikguo+h/qgfxJg9x87ibhsMYIPOA+Y7hW2uRN3edy6RQXiAaCvnlgy5oM5GwdCbX3aTQ3d7b
+	wCHfwvOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUejd-0000000F7F8-20qs;
-	Tue, 30 Jan 2024 03:24:29 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1rUerM-0000000F8U1-3GMr;
+	Tue, 30 Jan 2024 03:32:28 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUeja-0000000F7E1-1cWD
+	id 1rUerH-0000000F8Su-37Md
 	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Jan 2024 03:24:27 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-51031ae95a1so3062535e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jan 2024 19:24:25 -0800 (PST)
+	Tue, 30 Jan 2024 03:32:25 +0000
+Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-51030ce36fbso3423647e87.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jan 2024 19:32:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1706585063; x=1707189863; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1706585541; x=1707190341; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=FTNL9ohxLrANr0wy+wFa79m7nHa0bIs2wMJPrxNz1A8=;
-        b=mqTTxp8tQ97G21eFe+8jKFVBg+YExk/NDQ1CYKFodQjZytGE+umrH5yqu0AqILCAXH
-         dQeEFQ81wbG1M0OuDCg2N2Ro+ZXdZb2UHdouvkepkoJ6lK7aoHmev1E6fZY8hZJho46t
-         71B7JqGtLt0x5hVPQKtzNyl/XUPktajZFXmRk=
+        bh=HVSWuVPedMZ0hCiYeV6t6vWEzmV0Yu6IxhjiX+iJPeQ=;
+        b=PH9rBNAJdIWv4s2B6WKuyz2Tyce2MgUVoZswh4AxHfmfMpnS4kuwdNh9w5V2NSON14
+         TeLk+LNiikGNC1Lf4iLXtgNr3wkPz+nh7K2LAo4p4oSRzIRJ/itMes1vGXbFPGK+I9VX
+         zvoATqirLesMtq+tpNUZrNgcDoEy5Kyqhk0Ic=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706585063; x=1707189863;
+        d=1e100.net; s=20230601; t=1706585541; x=1707190341;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=FTNL9ohxLrANr0wy+wFa79m7nHa0bIs2wMJPrxNz1A8=;
-        b=IU5Vk9dW4SWZjwnX3qx0GnpxlRxkIWGGbHwSv8P+5rSiV/+LVsKpZHjd9GSiXOyklh
-         fwXe95cM2HCOF8G8ofkjUE2pCvwDCbHcupgrlWcqaOlz5SRu3qMuxqNMvJpc6JzILTkm
-         THlompjTW6ZFqjzMMqWhI5V3BLltgRYmkIRCM/N3CAPbhaxtFn2YQvrQYkIvTXOJTTGn
-         PBHRpUVy3BVqEbE0q10kNRq1Xo+uQIA3xztwRCL605MGAzq5CLONizDs1zuirXRRu18t
-         0b9dTSsm28HWP2eN25uRAUkhEqATkzx9geXhgeazpQgoVAFTM0X59fNuzoOHxWcPUEn6
-         XuHA==
-X-Gm-Message-State: AOJu0YyWNdlNFvwapIm34e8V1i4NOSOewk5AmAV7gSelv+kqbFPSqk+s
-	c+eETq1GeuN2vRJ9kilhb+FWnqE6srn7rviYrcFKIhDk9ZHLQO0k1b8RPsowBMH4gN+e99+rd1Q
-	IsYwfgGbjFHz7zbPBf7NO1eR5s3mtq/cnWfzP
-X-Google-Smtp-Source: AGHT+IHasIeOeQNhmIgzA0J3oP+hkDAX7iNew/UQEnuWH9J+d2zxww/qMxouAz63r8GpwRI6Q1usW0Rn5MblFlW2xIM=
-X-Received: by 2002:a05:6512:401c:b0:50e:7bc5:20d8 with SMTP id
- br28-20020a056512401c00b0050e7bc520d8mr5731043lfb.4.1706585063646; Mon, 29
- Jan 2024 19:24:23 -0800 (PST)
+        bh=HVSWuVPedMZ0hCiYeV6t6vWEzmV0Yu6IxhjiX+iJPeQ=;
+        b=XFBudYJ4UJxDXmp3lVSmKPxXrIeFuofU3I3Qq5viMhy5nTZ/U2hDMJlNQndUhyY2i3
+         sQZoGqRkFqRtBHee5ACjMW0jZhSspQpTa6zrFIxiHN7JAjo/YI8c4BmOqfOkULXAV93K
+         bGJmA4GLLZC22TZ4NnvULOKG6vsgI4BMMlTlnuny+2lT+tCdkp8AVMzhMJSRSZVg8F0M
+         f/LETieK9UQ3Bm/Bov3UAdKEfvve1HIr9YM5cQkuDyxcMU4fhJLbSycXjfWhEJHkVzsR
+         A422F2SKEJRF3sFc5j6N8Dp9VGuBt+6I5jF3yNbt8GqIFIMwyrVX8Dhlb68XG821RTIN
+         rNMA==
+X-Gm-Message-State: AOJu0Yz7OZ5nIIHFSCLg2kpzYa3uJbW5bZNgdv2Izii2HNqyVSTc3b+n
+	bD3pWm8ZkyBG3dyFStF6I84czSmEl1rXBHi015YbiLAgqgbyTxlkGvkmoLBGDGMwJYHiec4KrLL
+	aK1Ubvlk6NziHTNALzSSE4Am8/8pUxNgds1Xd
+X-Google-Smtp-Source: AGHT+IHxJ9h0TpEGL+1arI5K15dK7ZMfTGGFT7sxI5crnwlEMm10GtDatZbLxi1ebhRtIB1BUsGi7EDALv4X9Wo6UoA=
+X-Received: by 2002:a2e:8496:0:b0:2cf:34b4:63de with SMTP id
+ b22-20020a2e8496000000b002cf34b463demr4704323ljh.35.1706585540108; Mon, 29
+ Jan 2024 19:32:20 -0800 (PST)
 MIME-Version: 1.0
-References: <20240127084258.68302-1-eugen.hristev@collabora.com>
- <170652472373.127352.5854831299483160743.b4-ty@collabora.com> <282822ba-0e96-4078-a807-4b0b08e42014@collabora.com>
-In-Reply-To: <282822ba-0e96-4078-a807-4b0b08e42014@collabora.com>
+References: <20240126063500.2684087-1-wenst@chromium.org> <20240126063500.2684087-2-wenst@chromium.org>
+ <74b9f249-fcb4-4338-bf7b-8477de6c935c@linaro.org> <CAGXv+5Hu+KsTBd1JtnKcaE3qUzPhHbunoVaH2++yfNopHtFf4g@mail.gmail.com>
+ <21568334-b21f-429e-81cd-5ce77accaf3c@linaro.org>
+In-Reply-To: <21568334-b21f-429e-81cd-5ce77accaf3c@linaro.org>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 30 Jan 2024 11:24:12 +0800
-Message-ID: <CAGXv+5Em3HUJV1pv177LUwf9iMhKSLcGhVAt6ON9YZMNaT2oZw@mail.gmail.com>
-Subject: Re: [PATCH v3 1/2] dt-bindings: media: mediatek-jpeg-encoder: change
- max iommus count
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
+Date: Tue, 30 Jan 2024 11:32:09 +0800
+Message-ID: <CAGXv+5HxXzjigN3Bp96vkv71WfTJ1S2b7Wgafc4GxLmhu6+jMg@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: net: bluetooth: Add MediaTek MT7921S
+ SDIO Bluetooth
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Marcel Holtmann <marcel@holtmann.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Sean Wang <sean.wang@mediatek.com>, linux-bluetooth@vger.kernel.org, 
+	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240129_192426_651362_E821BB82 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20240129_193223_831876_B2ACC4AD 
+X-CRM114-Status: GOOD (  19.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,39 +96,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-(Drop a bunch of people from CC)
-
-On Mon, Jan 29, 2024 at 6:48=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+On Mon, Jan 29, 2024 at 3:34=E2=80=AFPM Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
 >
-> Il 29/01/24 11:41, AngeloGioacchino Del Regno ha scritto:
-> >
-> > On Sat, 27 Jan 2024 10:42:57 +0200, Eugen Hristev wrote:
-> >> MT8186 has 4 iommus in the list, to cope with this situation, adjust
-> >> the maxItems to 4 (instead of previous 2).
-> >> Add also minItems as 2 to keep compatibility with current devices.
-> >>
-> >>
-> >
-> > Applied to v6.4-next/dts64, thanks!
-> >
+> On 29/01/2024 04:38, Chen-Yu Tsai wrote:
 >
-> Sorry, typo: v6.8-next/dts64
+> >>> +allOf:
+> >>> +  - $ref: bluetooth-controller.yaml#
+> >>> +
+> >>> +properties:
+> >>> +  compatible:
+> >>> +    enum:
+> >>> +      - mediatek,mt7921s-bluetooth
+> >>
+> >> Can it be also WiFi on separate bus? How many device nodes do you need
+> >> for this device?
+> >
+> > For the "S" variant, WiFi is also on SDIO. For the other two variants,
+> > "U" and "E", WiFi goes over USB and PCIe respectively. On both those
+> > variants, Bluetooth can either go over USB or UART. That is what I
+> > gathered from the pinouts. There are a dozen GPIO pins which don't
+> > have detailed descriptions though. If you want a comprehensive
+> > binding of the whole chip and all its variants, I suggest we ask
+> > MediaTek to provide it instead. My goal with the binding is to document
+> > existing usage and allow me to upstream new device trees.
+> >
+> > For now we only need the Bluetooth node. The WiFi part is perfectly
+> > detectable, and the driver doesn't seem to need the WiFi reset pin.
+> > The Bluetooth driver only uses its reset pin to reset a hung controller=
+.
+>
+> Then suffix "bluetooth" seems redundant.
 
-I was wondering, what script produces this email?
+I think keeping the suffix makes more sense though. The chip is a two
+function piece, and this only targets one of the functions. Also, the
+compatible string is already used in an existing driver [1] and
+soon-to-be in-tree device tree [2].
 
-AFAIK `b4 ty` gives a simple thank you letter without branch or commit
-hashes.
 
 ChenYu
 
-> > [1/2] dt-bindings: media: mediatek-jpeg-encoder: change max iommus coun=
-t
-> >        commit: b824b32dd5e98221cbe2e8bcccc6fb4134e35fc1
-> > [2/2] arm64: dts: mediatek: mt8186: Add jpgenc node
-> >        commit: 4c5b46fbf52d52b0f392f0fc3913560bad438e49
-> >
-> > Best regards,
->
->
+[1] https://elixir.bootlin.com/linux/latest/source/drivers/bluetooth/btmtks=
+dio.c#L1414
+[2] https://elixir.bootlin.com/linux/v6.8-rc1/source/arch/arm64/boot/dts/me=
+diatek/mt8183-kukui-jacuzzi-pico6.dts#L86
 
