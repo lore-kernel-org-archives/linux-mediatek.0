@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35724C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 11:16:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27542C47DDF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 11:19:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FZwzJwk/ZVqpwHHO2cbL9FX+b4lQQCc0FnrhH1HtUt0=; b=HbJMtd9ivSzzHmU4zpO6MfU6Y4
-	GTcPfVb8KnsIjDe2aKzc65+fep64TUfIDLff4OaE3T35QGfYi0udS/GuUdV9dbcfeIN4sTGQylm5f
-	RIuD/B+qhUfXst9dn15sjGrrbrHLQFbXAxs3Ih3QTBFewulhvS1g0IoKg56u0rR82wYo6H9rQifo/
-	hguCnJ8gBaTenMYOWG63WiBgO7j/5SBvQ3eqe5Qo+cRB9u9E9/lCeNV+D68n9+KGW+p4XT3jTJp2e
-	/bbdtFOH1Pm9eAZBuWOi0Xcqq3ovIw5R1Ww6VdHjcJ59LU4vOb9bDNwmnL2SjoMzhg86A0TC8jupW
-	1II31FoA==;
+	bh=eI0qz/Jag29CDPjGlmZ+rAVhTYk69+7CIhbu2Grvp/M=; b=fdtOi5JcE0DVQs38sumR4nB1xO
+	rHlHO0pfAgkZrbTeoAry3erRU4ur5i2VH7DeJLadUClvvVAV+FT4BuUXOOjU7cMXb8d+h+etx6b3t
+	Lz10lpYfW27vG6yO9E8qDufOniCaiMX5ufNOE86n3gXRNvmvJE5nmwIKNy36HMuaBNRRZ5hJr6ed8
+	R22fw/3bule3oacAstSti8G/wlJt+XPCPPo3eT3z3koxZ6iHZ2yayXFUumIvqrT/FK12Rmsgl2Lx4
+	Jr2rCtmbHR1g00/0jqs9lZd+tzMclXhKHbdloLeaorQrHHrhoQ9YK/nAFKkgchaFWvKfaQOPDHlBB
+	UD9xpN2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUm6H-0000000GNw3-3kSI;
-	Tue, 30 Jan 2024 11:16:21 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rUm9R-0000000GOqQ-3EVg;
+	Tue, 30 Jan 2024 11:19:37 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUm5f-0000000GNlH-2l72;
-	Tue, 30 Jan 2024 11:15:51 +0000
+	id 1rUm9O-0000000GOoW-1vsx;
+	Tue, 30 Jan 2024 11:19:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706613342;
-	bh=Ui52xWIkaVO5Fw8DIIJWouNt7gfaHvstMTUCljysJvY=;
+	s=mail; t=1706613573;
+	bh=QsmMvdygEzykc/sigoFHqJXzg33HVkZ+pgYlsBhHams=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NzQ1dUL2rQjqP+79snNYiqWVKdtyNEFWLMDGzz9G/EZUFJvOx7LrS9Kp7XPNJh4EE
-	 O0MFSK2IJJ8LtV6g/iiXIweBWy4JJOat51ncsA5kZuWglBbPeobxMZqBZl+750NPSs
-	 vT5l12neAtKQmmXZtx4MVyXaIlvFecZR3DC7aCQgrn+FUytn0n4Bhw44n7iHvZO3Us
-	 7pBUeUgJcA+aA/qMcFb4S0BhUjfdN48/PRFdpTtAG/kJ/V14DXpr1q6FuS89x6wmy0
-	 0yTYgJenvj3GoPaSK9CUttxehr9RXkCgWCv31JEZ3wES7qzQ4ocqjR0/T5UWZ018wX
-	 UxHPj6SJAJwEQ==
+	b=Qafc92t5mUfWNoHkO4pzlKcIqlcsJSEfVnIvGZCqMXYCTHgibJYm/XEGYWztFAtz4
+	 H23b7iwyyg3hrRS/UWcKZTt3mhs2kAAwzMcNZjPaKqCTSPRwoYCPT2pox0pujSH63i
+	 bupyE3ezU/ylG/r8jQV4f57N29GqleERwqh9ocn+Y0QeamVWFyMkPVNi7kr2oEXvsV
+	 Ssj3B406/aGsy402OJsC1hDkkNXn0xyQ/nSzqk4PU6sDk+OOGTLmboyIwMUOK6/0CJ
+	 eHCgvsn3EPZDgakogJil9lWDCEYlix1alHZlHyn/N9MQVCMaiVphqTeRdyZtAW+C1W
+	 URIHohc3FZ7VQ==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id BB8393780FC7;
-	Tue, 30 Jan 2024 11:15:41 +0000 (UTC)
-Message-ID: <3eb512ec-1c50-48ab-93f1-6c783b5e6e48@collabora.com>
-Date: Tue, 30 Jan 2024 12:15:41 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 8DCDE3782051;
+	Tue, 30 Jan 2024 11:19:32 +0000 (UTC)
+Message-ID: <98c8da0f-efe8-4ce0-8534-106114141cba@collabora.com>
+Date: Tue, 30 Jan 2024 12:19:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] nvmem: mtk-efuse: Drop NVMEM device name
+Subject: Re: [PATCH 2/3] soc: mediatek: mtk-socinfo: Add extra entry for
+ MT8183
 Content-Language: en-US
 To: Chen-Yu Tsai <wenst@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+ William-tw Lin <william-tw.lin@mediatek.com>
 Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org,
- William-tw Lin <william-tw.lin@mediatek.com>
+ William-tw Lin <william-tw.lin@mediatek.com>,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 References: <20240130095656.3712469-1-wenst@chromium.org>
- <20240130095656.3712469-4-wenst@chromium.org>
+ <20240130095656.3712469-3-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240130095656.3712469-4-wenst@chromium.org>
+In-Reply-To: <20240130095656.3712469-3-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_031544_338703_E8804C7B 
-X-CRM114-Status: UNSURE (   8.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240130_031934_652999_13AD23C1 
+X-CRM114-Status: GOOD (  15.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,17 +81,36 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 30/01/24 10:56, Chen-Yu Tsai ha scritto:
-> The MT8183 has not one but two efuse devices. The static name and ID
-> causes the second efuse device to fail to probe, due to duplicate sysfs
-> entries.
+> The MT8183 has another socinfo match, with the second cell only
+> differing by one bit. Add it to the driver.
 > 
-> With the rework of the mtk-socinfo driver, lookup by name is no longer
-> necessary. The custom name can simply be dropped.
-> 
-> Fixes: 4e6102d60d88 ("nvmem: mtk-efuse: Register MediaTek socinfo driver from efuse")
+> Fixes: 423a54da3c7e ("soc: mediatek: mtk-socinfo: Add driver for getting chip information")
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>   drivers/soc/mediatek/mtk-socinfo.c | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-socinfo.c b/drivers/soc/mediatek/mtk-socinfo.c
+> index 3909d22062ce..42572e8c1520 100644
+> --- a/drivers/soc/mediatek/mtk-socinfo.c
+> +++ b/drivers/soc/mediatek/mtk-socinfo.c
+> @@ -45,6 +45,7 @@ static const char *cell_names[MAX_CELLS] = {"socinfo-data1", "socinfo-data2"};
+>   static struct socinfo_data socinfo_data_table[] = {
+>   	MTK_SOCINFO_ENTRY("MT8173", "MT8173V/AC", "MT8173", 0x6CA20004, 0x10000000),
+>   	MTK_SOCINFO_ENTRY("MT8183", "MT8183V/AZA", "Kompanio 500", 0x00010043, 0x00000840),
+> +	MTK_SOCINFO_ENTRY("MT8183", "MT8183V/AZA", "Kompanio 500", 0x00010043, 0x00000940),
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Are you sure that 0x940 is the same MT8183V/AZA?
+
+Added William-tw to the loop; MediaTek, can you please confirm, and please say why,
+there are two MT8183V/AZA with two different ChipIDs?
+
+Thanks,
+Angelo
+
+>   	MTK_SOCINFO_ENTRY("MT8186", "MT8186GV/AZA", "Kompanio 520", 0x81861001, CELL_NOT_USED),
+>   	MTK_SOCINFO_ENTRY("MT8186T", "MT8186TV/AZA", "Kompanio 528", 0x81862001, CELL_NOT_USED),
+>   	MTK_SOCINFO_ENTRY("MT8188", "MT8188GV/AZA", "Kompanio 830", 0x81880000, 0x00000010),
 
 
 
