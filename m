@@ -4,104 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BDADC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 09:52:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AAB8C46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 09:57:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UHvebLwHuRfKrhRhx4zUZc+osrZ3cO5ITZcXKlhy5f4=; b=yk0i8lBECUUMnuNAZ5XWWR0sfj
-	DjRGo/g8Moe+X3Q5r92VgcJZh++cpoC9Fj3XR9qFJRH80TVZgs830PRC5C/HOA2qO/5JN8aL4zJFo
-	UrL2WsEgH2Z3lYMYKvUa+ZivAKot6pH85n+YJGTtiOQzfNmCJ1qvVF6SpE1qDRStI//vZHsjC5Kw4
-	OKzi2B/kU5DghV77KRkpMqEY8pPfWeZtLMu88ImYSNeB0kmuGoe7mZHfkRoPzF4GPkYZvxvEca9EY
-	WZSS6wNIihHzbgkscIPtaQQuIQCWyWTviVoIKHcDNMgIhpXTf6WTHAw4/Hx0C7zrjRju+R1O8nR6e
-	rafC/zOw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1E8FaeEXOaFC0eCzbjnFP8K081LnYEvpyUI9em1l5vI=; b=kbm+ff0+BBIDtTcuYe7ZL1XHLl
+	pgyZ3tgKvit8yD3chisH1e+kG+hohWdu0P0dyjteVK/o7YJjIGlHibbw6sM4wCfCy9DdzRmaU3nAL
+	j0fLPXo+CMoFqJyTPOC+YlfvfWDpCcCe+ZGmV5y6QxnqK47PF1cmvE65BguHR2dNICohMbgIqEntt
+	lo31FDaG/ypP9Z36aIXAXxVGEWxp+FnCDysXo3YExM8XLAE/h2eH4ep+KpVrrroMH9t5qBmWGrVsa
+	SkbQ4rADPJVgxVIg85/HFLCwyLdo62yadRJ6CUOYkOVBd5WCCnH5C7kMhC42JTyXGuiZ/csFvsQ6O
+	ua4ZTFRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUkmt-0000000G2Kc-0s35;
-	Tue, 30 Jan 2024 09:52:15 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rUkrc-0000000G3hz-11Q5;
+	Tue, 30 Jan 2024 09:57:08 +0000
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUkmr-0000000G2JS-2ROm
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 30 Jan 2024 09:52:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=UHvebLwHuRfKrhRhx4zUZc+osrZ3cO5ITZcXKlhy5f4=; b=NBOkQV56Z6faEm6jMRpGUeO4yr
-	O3Dp7DQhv0dJoIHB+9b4i0CpfCuI6vh0aJ3GHvIrYq3dTDepdnEctcmCmJep5spG0hkoAyhaytl+M
-	MJbCeB3WHXFYnF8AfLuRtZ1zZvdBZ5OHVVjbmmUP/oGCx2DRuSgxOlUqP0VrN2mNpRVoBmy51qfrk
-	SxEFi05PRwHJap5kssq6A7CC2/jFYGljxNrwBg+0KH/i2QntDaZF3XniN59xwwsXtMfA+v9RxgeBt
-	jnIZB5OBw3Q5flb7IOTf9jcDowft0vWobM46hxHungSpEmiFAwVXnmv9CfKZ3OFt/Q66VvLOv0vdp
-	YdAb4ckA==;
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUkme-00000008G2f-4AnK
+	id 1rUkrY-0000000G3eG-0IIC
 	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Jan 2024 09:52:08 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-40eb033c1b0so42408065e9.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jan 2024 01:51:55 -0800 (PST)
+	Tue, 30 Jan 2024 09:57:05 +0000
+Received: by mail-pj1-x1029.google.com with SMTP id 98e67ed59e1d1-290d59df3f0so2837086a91.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jan 2024 01:57:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706608314; x=1707213114; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=UHvebLwHuRfKrhRhx4zUZc+osrZ3cO5ITZcXKlhy5f4=;
-        b=krVxyB6Cs4f8QXn+rOuB5YPg91okKJaHBqSrS/hHSfp/JvoDCdb5wmEtaBGUHSgZMZ
-         GZfK+a5rGHRGQv8Xn2+7e/p+mt/5AX74u1lGsvv5KIseeIPX4Ld0OHkYiLDbvu4DTQ5j
-         FPw+11K0XKBHwY2dxKrxG8JcTc7KS+KnFX66JrCevv3Enw7KcoQhxgDkM2eSPaCpECwM
-         Hb8FXbxSZr3Yd6f0d4oFwZ1CypGfEP5ZFDiiesUJrnUFVqh4foQrt9HHcqQNeSzSPxHD
-         qKCfTwjXxl59OpMdlN3b3YPfYxWOaWp7WNP5al9AgWKy+F6+2kSMDt02xruKnxQaij80
-         007A==
+        d=chromium.org; s=google; t=1706608621; x=1707213421; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=1E8FaeEXOaFC0eCzbjnFP8K081LnYEvpyUI9em1l5vI=;
+        b=ZQTCExP3uYO2mGRmpOr7QzRqokVHFU4dlJeydj9IKFf+NnEz7nZ2V3/qVnG4nvh0Tk
+         a2HbE5MHfaH2oCTS5yUvrdBGVXlrMEjalMSCXCz8HT5RuhX7xEA3flxM/6XBxREA55Mu
+         AU4E7ZOeaUiVD0iy796mYvfWV0cqxismEbGmM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706608314; x=1707213114;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=UHvebLwHuRfKrhRhx4zUZc+osrZ3cO5ITZcXKlhy5f4=;
-        b=R0cH3fspGgTz2a1lNTMBRbymd6sEnDALnDwKi71Ijfxd1AoMRbs5BYJPCJWGOzlTl/
-         BBSWJX2selQgYMrjfchlCNefy+CM9pAfZvjl09D4ffPwLf2L2coh7dUNoTYL4QtsNR9b
-         J3J1ItLBB2dQ11qjx2LK35OYmj8+kKTPlMRwp2zbGa2EROJldnn3WCaxVADa03//pthY
-         QpbZXF1NF2HStJD7Ult8G0Q+6HmqZhyA8x6j5UGiFhs2j87zP8gKqCvwD3Lcnm9y68uH
-         wWhM3yniuFzPxMkLQdaMVgo+q1pHVtK2s0fyHwVzq2HfYx4fMnEi4AHA6Az8PqABrttS
-         QeIw==
-X-Gm-Message-State: AOJu0YxPyo/mIQ7AuMVtUtGnEE7ffJwYwVyUDkA9S9WY1/8AVsHMWq48
-	wIQSlWq4m6reTpohFzcj+Oc7ClFW/KzEZlfWpphhUVR/6faUr1wSZHd3o59iwBg=
-X-Google-Smtp-Source: AGHT+IF38u7/UMq2Ehe06B1hdRlnUG7cUccj6aYmXDUSxOCpUZXxCEPO+lNn+j1151l0KXe8fxwwHw==
-X-Received: by 2002:a05:600c:4d96:b0:40e:d319:4792 with SMTP id v22-20020a05600c4d9600b0040ed3194792mr6064680wmp.22.1706608314364;
-        Tue, 30 Jan 2024 01:51:54 -0800 (PST)
-Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id u7-20020a05600c138700b0040d8ff79fd8sm12646748wmf.7.2024.01.30.01.51.53
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 30 Jan 2024 01:51:54 -0800 (PST)
-Message-ID: <57a5ca95-9d79-45cb-89dd-fa7a3a6ad228@linaro.org>
-Date: Tue, 30 Jan 2024 10:51:53 +0100
+        d=1e100.net; s=20230601; t=1706608621; x=1707213421;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=1E8FaeEXOaFC0eCzbjnFP8K081LnYEvpyUI9em1l5vI=;
+        b=HKhi5hmHARf5g2waFpTaAlt+ZDdOjGzvTEmI81brx1oCDdF0LmdNZYm4Du4hkac1RN
+         K4jfyuxFvBA2fwIbc2ERJTCF/sY00fP4BiObL/D2T9bib2cOeHJ7BOs2N5CqzvWBR/A8
+         FwZGt2WbqDyZq5X4ZxptUnjkfuLgNmwET4ix7XOag/UjVh7WNpupUJMipbZODU4YIefn
+         OdDnFRJzPPGijKu2RuHyk9jp4F7fcr6IhOnjuraAPF/m00HLH5Vhk6xqvBGsIOyhLKEb
+         bNIE984/3CAzQOjUa454qXU6R6g/pviMlg6zpruha9Q4/10/8S4aklB4WHQyS4f0Nx/O
+         K3iw==
+X-Gm-Message-State: AOJu0Yxi9tdcU795tJ97S2VMM6CRKolVBSXYcrHcjzc0ojLadblphZJX
+	F1i5AyJNZTXaF8aYVpPZ+43E12gxUtfq4t5C8XJqIxqjYWq+4+egcyMTipk8VA==
+X-Google-Smtp-Source: AGHT+IEhklyD2jX0T8w1fgxrasE/X8QO381avV5owsKZFBkH/q5N+2daMyJs0ABiAgETVQ3QeKrdRg==
+X-Received: by 2002:a17:90a:6303:b0:28d:74eb:97c7 with SMTP id e3-20020a17090a630300b0028d74eb97c7mr5294648pjj.34.1706608620693;
+        Tue, 30 Jan 2024 01:57:00 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:469:110f:d748:6896])
+        by smtp.gmail.com with ESMTPSA id sm5-20020a17090b2e4500b0028ffea988a2sm8069810pjb.37.2024.01.30.01.56.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 30 Jan 2024 01:57:00 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	William-tw Lin <william-tw.lin@mediatek.com>
+Subject: [PATCH 0/3] soc: mediatek: mtk-socinfo: Fixes and cleanup
+Date: Tue, 30 Jan 2024 17:56:50 +0800
+Message-ID: <20240130095656.3712469-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.43.0.429.g432eaa2c6b-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: Fix a memory leak
- in an error handling path
-Content-Language: en-US
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Balsam CHIHI <bchihi@baylibre.com>
-Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
- "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <481d345233862d58c3c305855a93d0dbc2bbae7e.1706431063.git.christophe.jaillet@wanadoo.fr>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <481d345233862d58c3c305855a93d0dbc2bbae7e.1706431063.git.christophe.jaillet@wanadoo.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_095205_737767_E494E0B3 
-X-CRM114-Status: UNSURE (   7.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240130_015704_154005_BB519A66 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,21 +90,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28/01/2024 09:38, Christophe JAILLET wrote:
-> If devm_krealloc() fails, then 'efuse' is leaking.
-> So free it to avoid a leak.
-> 
-> Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> ---
+Hi,
 
-Applied, thanks
+The new mtk-socinfo driver has a double put of the nvmem device used to
+read the socinfo data. While fixing it, I rewrote the read function to
+make better use of the device node and device relationship.
+
+Patch 1 rewrites the cell read function in the mtk-socinfo so that no
+resource leaks happen, and device lookup is more efficient.
+
+Sidenote: I think the cell read function could be reworked a bit more
+to return different error codes for different failure modes.
+
+Patch 2 adds an extra socinfo entry for MT8183. It seems that some units
+have chips that have this one. At least mine does.
+
+Patch 3 drops the custom nvmem device name from the mtk-efuse driver.
+This was previously used for nvmem device lookup, but on MT8183 with
+two efuses, one would fail to probe due to this. Since after patch 1
+this is no longer used, we can just drop it.
+
+Please merge. On the MT8183 ChromeOS devices this currently crashes.
+
+
+Thanks
+ChenYu
+
+
+Chen-Yu Tsai (3):
+  soc: mediatek: mtk-socinfo: Clean up NVMEM cell read
+  soc: mediatek: mtk-socinfo: Add extra entry for MT8183
+  nvmem: mtk-efuse: Drop NVMEM device name
+
+ drivers/nvmem/mtk-efuse.c          |  1 -
+ drivers/soc/mediatek/mtk-socinfo.c | 17 +++++++++++------
+ 2 files changed, 11 insertions(+), 7 deletions(-)
 
 -- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+2.43.0.429.g432eaa2c6b-goog
 
 
