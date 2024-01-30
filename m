@@ -4,70 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B0BC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 12:10:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 248C8C47DDB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 14:26:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FM5Jv2ykjkKS9BAvCVVWB0r190nreD7RnvO+E/m5m5w=; b=CZvXryKj2cxQTt2QYOtNIGVvn1
-	SjKTvkwqQDwUDdn75OSSnSzNPsuSx2f/gl3PlAM1a0aCG/vmfbVze2jY2zr8KdPTZ3LsIqG/8rp55
-	7ACqhxagW9XouwoRkubtILg8XRf1ZiaIQnm5xUGcJgBoK+Bi3/P5+IAusJ/yzvwpa0i4aYuY9TO56
-	IWiWx2OKvMLR+SMsF7yOm4PyNG0C2qV4XRRXn7Z8us187Vq9B8Dz6PfuF36FI3wWI2UaK/lN+HMQ8
-	dpOAnD+bLy7hHq7rdnScwe59h/Q1crrzGRPcbRv4mDegb+7GKFGAEgtxa27le7yfZCa1O2BtZRU1k
-	rH8fAG0Q==;
+	bh=EiU+vp3jmxj1RQvTE/aNTb9Remw5rmZoUoKv2t5MunA=; b=KCowEPKre6mtgUZCtsNwT15utD
+	74BfXYk918yCU3ubvnHlEZafoPSOn57sMP+GtJeD/ZRRbNzZvkD4I8FCT6rU8+inf4ls6U56zaj9f
+	HNZUbn8+OLy6rzgehDY58hv8afpyDgDx67mLd6VguLdL8+NfMCeSALkaIeX6+mWkothTT2r6RC4BF
+	zGa06d7vJkWrX9oSOhZyBzjz4s2jDeOt8wNJF5cBLMhLs2+WCQAdHM3TLyyfNZOTYZ5/qByK1N3lt
+	UdjxyQ8GITNu3sXTC27azrsrqhyypx9TM/xoxPZX6/hpDu7PGWUYuZ1mzyOCV8jniC0K3b06Ka98C
+	C2eLqfhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUmwi-0000000GcPw-25Fk;
-	Tue, 30 Jan 2024 12:10:32 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rUp4b-0000000Gy8B-2z01;
+	Tue, 30 Jan 2024 14:26:49 +0000
+Received: from relay5-d.mail.gandi.net ([2001:4b98:dc4:8::225])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUmwe-0000000GcOL-3cMA;
-	Tue, 30 Jan 2024 12:10:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E5B73CE1A1F;
-	Tue, 30 Jan 2024 12:10:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 25058C43394;
-	Tue, 30 Jan 2024 12:10:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1706616626;
-	bh=ZWN9I22FnsH58CTQa5pd4CXfCR+OhSYKRggqL9Rt5Gg=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=GHvQcBtT0D+CRZV3GeXl7jiKSdGS9wcN/Mdbc1b93f4Ej49kP7UZsKHmiyUK/FnBk
-	 foZMC5RTikbC0vpeGtQSeYt2Kw7vFfufSjWLuPFiGRX6BIIQoTVTlV8yCSaFV2j9+G
-	 qBLUximMUOPToY3L9+KwaZwzqL5jNE9wHHVywHepDcNpEdp4eaC84Uk8MvsPUfUPL1
-	 WTy9KTtKfJGzp5QLIr79OzCK/qHyCe1HOu9ZKgyniqb83WL5N0KXe4BCLeSwMUF/vy
-	 WmEZtC3oTmEhDyM+ppDu9fiPwuc/3E86Amot6cNBa1QWIuY7/uwssRE3J8Q7uNQpMG
-	 86PIu7jSARyoA==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 0A2E7E3237E;
-	Tue, 30 Jan 2024 12:10:26 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1rUp4Q-0000000Gy29-2OJh;
+	Tue, 30 Jan 2024 14:26:40 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 8E3C81C000E;
+	Tue, 30 Jan 2024 14:26:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1706624795;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=EiU+vp3jmxj1RQvTE/aNTb9Remw5rmZoUoKv2t5MunA=;
+	b=lIpVxYMXZCa4HN5li0menqRxSUg6vkEUPhvFUqJ5VTxetW7YHyR0ScfsR5g7qFNFfQFhsU
+	/GRQVAzrasNhW3ICz/tX6L/w3LV2YslSM2K9TCMk14M7u60E0lSISz63YaS/yKVmfzFyXN
+	La1rgFSd4Wg22M/jvjqLFGvyAXXclRwiNc0cpQJkY+iVUO5v0BZH4e/PTBE2xYRyGRFOn0
+	6ZLys8l9Cl/y/3+x2mcuOVqm4b7ctVFruZkFU9CWmQc0zjDRQG4cvgbQXf64kxuzbuiggH
+	3LB5RhFoLEwzk2Ah0CiuvGh5lHSNE9Inw99BkBBpBWsZ37RHmjJf1Tjg8frtEA==
+Message-ID: <8b7e1d9d-70ec-4664-be04-48a2e2877891@arinc9.com>
+Date: Tue, 30 Jan 2024 17:26:29 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v3 6/7] net: dsa: mt7530: do not set
+ priv->p5_interface on mt7530_setup_port5()
+Content-Language: en-US
+To: Jakub Kicinski <kuba@kernel.org>, Vladimir Oltean <olteanv@gmail.com>
+Cc: Daniel Golle <daniel@makrotopia.org>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Russell King <linux@armlinux.org.uk>, mithat.guner@xeront.com,
+ erkin.bozoglu@xeront.com, Bartel Eerdekens <bartel.eerdekens@constell8.be>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240122-for-netnext-mt7530-improvements-1-v3-0-042401f2b279@arinc9.com>
+ <20240122-for-netnext-mt7530-improvements-1-v3-6-042401f2b279@arinc9.com>
+ <20240129125241.gu4srgufad6hpwor@skbuf>
+ <431750cc-fb6b-4f7a-9123-b6986d359742@arinc9.com>
+ <20240129083152.34d899cd@kernel.org> <20240129165201.s4oiuk3sxtk6zcsw@skbuf>
+ <20240129090034.01c11667@kernel.org>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20240129090034.01c11667@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v2 0/2] net: stmmac: dwmac-imx: Time Based Scheduling support
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <170661662603.28218.1318230641182920988.git-patchwork-notify@kernel.org>
-Date: Tue, 30 Jan 2024 12:10:26 +0000
-References: <cover.1706256158.git.esben@geanix.com>
-In-Reply-To: <cover.1706256158.git.esben@geanix.com>
-To: Esben Haabendal <esben@geanix.com>
-Cc: netdev@vger.kernel.org, alexandre.torgue@foss.st.com,
- joabreu@synopsys.com, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, mcoquelin.stm32@gmail.com,
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
- festevam@gmail.com, linux-imx@nxp.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com,
- linux-arm-kernel@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-kernel@vger.kernel.org,
- rohan.g.thomas@intel.com, quic_abchauha@quicinc.com,
- linux-mediatek@lists.infradead.org
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_041029_097898_0BE9C181 
-X-CRM114-Status: UNSURE (   8.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240130_062638_912545_5A9A815A 
+X-CRM114-Status: GOOD (  14.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,31 +87,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
 
-This series was applied to netdev/net.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
 
-On Fri, 26 Jan 2024 10:10:40 +0100 you wrote:
-> This small patch series allows using TBS support of the i.MX Ethernet QOS
-> controller for etf qdisc offload.
-> It achieves this in a similar manner that it is done in dwmac-intel.c,
-> dwmac-mediatek.c and stmmac_pci.c.
+On 29.01.2024 20:00, Jakub Kicinski wrote:
+> On Mon, 29 Jan 2024 18:52:01 +0200 Vladimir Oltean wrote:
+>>>> I still see deferred. I guess I'll have to submit this again. :/
+>>>
+>>> Took me an hour to fix the mailbot:
+>>> https://github.com/kuba-moo/nipa/commit/6766e97e72ac91ffb42ed2259bc8e2ace446d0ef
+>>> email is the most quirky thing ever.
+>>
+>> Ah, so it was my neomutt encoding email as base64...
 > 
-> Changes since v1:
-> 
-> [...]
+> Something magical going on there, the email is encoded.. twice?
+> See the attachment. That's already thru a round of base64 decode
+> and there's another copy of the email with base64 inside it :o
+> Anyway, unwrapping it once is good enough for the bot to see the
+> command, and enough time spent on this ;)
 
-Here is the summary with links:
-  - [v2,1/2] net: stmmac: do not clear TBS enable bit on link up/down
-    https://git.kernel.org/netdev/net/c/4896bb7c0b31
-  - [v2,2/2] net: stmmac: dwmac-imx: set TSO/TBS TX queues default settings
-    https://git.kernel.org/netdev/net/c/3b12ec8f618e
+I don't claim to be an email expert. I've received Vladimir's email with
+the "Content-Transfer-Encoding: 8bit" header. The body was plaintext, not
+base64 encoded. I have checked how the netdev mailing list distributed
+Vladimir's email, its body is plaintext as well, not base64 encoded. Only
+the linux-arm-kernel mailing list distributed the body base64 encoded, the
+header is "Content-Transfer-Encoding: base64".
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+And the attachment you've provided seems to be from the raw output of
+lore.kernel.org/all which seems to put together the email distribution from
+all mailing lists.
 
+raw from all:
 
+https://lore.kernel.org/all/20240129125241.gu4srgufad6hpwor@skbuf/raw
+
+raw from netdev:
+
+https://lore.kernel.org/netdev/20240129125241.gu4srgufad6hpwor@skbuf/raw
+
+raw from linux-arm-kernel:
+
+https://lore.kernel.org/linux-arm-kernel/20240129125241.gu4srgufad6hpwor@skbuf/raw
+
+I don't know which mailing list mailbot looks at in case of an email is
+sent with multiple mailing lists being CC'd or TO'd. It seems to be that it
+looked at linux-arm-kernel in this instance.
+
+Arınç
 
