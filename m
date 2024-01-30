@@ -4,72 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44E42C46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 17:46:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE8FFC46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 19:23:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yeYHVBnNtWoSGK1TX7C9Ukvy1zAdkapytps+F5dGU8A=; b=URmF4Gtm4UoCelH2E7XEXXxO8v
-	l5iwr2+2tz4tkzz6Vfr78iIfrBuwp54LDJi18fyUwc0lYNO7KZkVmkPuXEzhYBbT+BG4GlHqvxjHg
-	w2R1ty8y8VpXusIKiykFm//pqULx0t8VXFNiaPrt8gcU5GIic+EKbD5YuAAoO5AfQTp+5nsYs/YB7
-	gDfc1R/tWaKnZxCbOG8wKpAfOBY/jPdsz6KKfbRyp4EJ90+pIw6zr31QJP/EyTwBeoGJy2+Zh+Ho2
-	HW+2xoR3Wo2DOytMy9IOsiLQlDFC16JuKgr7B2tliq5lNcpN9hG1TJQyCOctmiNFM4pGnyjTzeqm3
-	gGlpRZSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6nd+9YLF/3+eWh/iRX84Oaf3lJFfzLWSPCQA0c+rGho=; b=Oa5TmQHVEaBqS7DnJ8Fxh53LYI
+	4OSUYZkn1oJ8bXNEEDHhbVX4mhmEBd8akSg19tdVlfEoW101IZDgh4hap0MWAPJoJjAxCWEaJZZPc
+	1J2sratSlLMrvWY3eZr+Nm4c/azJ4rGckk+E5ZmZddX17f6vs1z4N/ShIBQ4/+ssSPGtFmxIJvGO5
+	/SG5U2ZqNjOAnoNFF/joVrShxdx8dpvRlt6teUs2A2pHgOsHx3eX3WGOl8SfH+zeIqnPEGhsllOfK
+	QEnK6QUFOIQYpUYooEJpP7tbmHqCSlWjmeM5RaDvqBUBtQvr5MwizdRW4L4Pb5YO/ZBZCqPdkZbh+
+	EwPXF7Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUsBg-000000000oo-0wqx;
-	Tue, 30 Jan 2024 17:46:20 +0000
-Received: from relay2-d.mail.gandi.net ([217.70.183.194])
+	id 1rUti4-00000000Jfz-1ZBz;
+	Tue, 30 Jan 2024 19:23:52 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUsBb-000000000m0-1X1j;
-	Tue, 30 Jan 2024 17:46:17 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 0E81E40008;
-	Tue, 30 Jan 2024 17:46:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1706636770;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=yeYHVBnNtWoSGK1TX7C9Ukvy1zAdkapytps+F5dGU8A=;
-	b=WYZB4kZxCt5DddXc6lJXra4AMcWfbgZXZXYJ/3lAZqO6HfSqEZgrr6Ql8/Edzo/uQQ/m9e
-	+5e3MSh9bra3/HnMcJrMZgDI/dExZTqlcxwagQcOEHp4v8B5Aw80DaMIaFxv53tXsN95Jp
-	40NUFim7ysWHJRrbCWRZLiBAHr7r3APoSZpyB8H48u82EyQ5J8TI7qZEUpFh7IxrGk696h
-	sbUor2a5hAeME4dA8Yjz5VCaPq1aHTkvJuhfAjiJjHSvvaqTCi53teTpXfmnYDV3Qc7Sf7
-	eTyp7ivSSCDNAdleux9heW9Zm+ogIeELdgI1lUPqGRX+JQ6z5zxqpa8ldwnndg==
-Message-ID: <77c38489-8a73-4b00-bd82-48174b4d620f@arinc9.com>
-Date: Tue, 30 Jan 2024 20:46:04 +0300
+	id 1rUti0-00000000JfF-3RlO;
+	Tue, 30 Jan 2024 19:23:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 444FB60DFE;
+	Tue, 30 Jan 2024 19:23:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8568C433F1;
+	Tue, 30 Jan 2024 19:23:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1706642627;
+	bh=8VflfkXLHZ292qH8KopeytZ7etQ8Y0XHoeku0xktQDY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LzHHxxdaWyxqTms0YeaXMPXZf8yGIJFJG+qFcw4t8Rd3oaR1/O7Rh7TemzD/SQOtU
+	 lGKGu5amiPquoxJb5y3FHpFMPDqPIZkitkXTzDmUElViVTOyC9i7X7so28nCtPNEkX
+	 eTgn6V0z7nVPSbwlrBRWYoKt3CXcDZ3Rka85RTtupqR+2xIsZ6NQwU0Wq4vth26VZq
+	 lzp6ReKdWgtsWi9e2N4bdmsPlO/4zxA1rN1MrLHAbMZKxZOJIH6zxi3PWfOBLm73yH
+	 FdqTTUe78BqKRky75Bq8xhBJ/FAZHbt3A5jdf/178stDptU9u5x1Uiwe9k4vNlqEy/
+	 WZxuVZnCBYXaQ==
+Date: Tue, 30 Jan 2024 13:23:45 -0600
+From: Rob Herring <robh@kernel.org>
+To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
+	devicetree@vger.kernel.org, linux-rtc@vger.kernel.org,
+	Ran Bi <ran.bi@mediatek.com>, Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Eddie Huang <eddie.huang@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>
+Subject: Re: [PATCH] dt-bindings: rtc: convert MT2717 RTC to the json-schema
+Message-ID: <170664262503.2186910.3437321072867058001.robh@kernel.org>
+References: <20240122124949.29577-1-zajec5@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v2 5/7] net: dsa: mt7530: simplify
- mt7530_setup_port6() and change to void
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Russell King <linux@armlinux.org.uk>, mithat.guner@xeront.com,
- erkin.bozoglu@xeront.com, Bartel Eerdekens <bartel.eerdekens@constell8.be>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240130-for-netnext-mt7530-improvements-2-v2-0-ba06f5dd9eb0@arinc9.com>
- <20240130-for-netnext-mt7530-improvements-2-v2-5-ba06f5dd9eb0@arinc9.com>
- <Zbkc4BRORWYu79GZ@makrotopia.org>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <Zbkc4BRORWYu79GZ@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+In-Reply-To: <20240122124949.29577-1-zajec5@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_094616_119703_B7268CCF 
-X-CRM114-Status: GOOD (  38.45  )
+X-CRM114-CacheID: sfid-20240130_112348_917186_0A262910 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,207 +82,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30.01.2024 18:59, Daniel Golle wrote:
-> On Tue, Jan 30, 2024 at 06:20:51PM +0300, Arınç ÜNAL via B4 Relay wrote:
->> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>
->> This code is from before this driver was converted to phylink API. Phylink
->> deals with the unsupported interface cases before mt7530_setup_port6() is
->> run. Therefore, the default case would never run. However, it must be
->> defined nonetheless to handle all the remaining enumeration values, the
->> phy-modes.
->>
->> Switch to if statement for RGMII and return which simplifies the code and
->> saves an indent.
->>
->> Set P6_INTF_MODE, which is the the three least significant bits of the
->> MT7530_P6ECR register, to 0 for RGMII even though it will already be 0
->> after reset. This is to keep supporting dynamic reconfiguration of the port
->> in the case the interface changes from TRGMII to RGMII. The core operations
->> for TRGMII does not interfere with RGMII so no need to undo them.
+
+On Mon, 22 Jan 2024 13:49:49 +0100, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> That last sentence doesn't parse English gramar.
-> "operations": plural
-> "does": singular
+> This helps validating DTS files. Introduced changes:
+> 1. Reworded title
+> 2. Dropper redundant properties descriptions
+> 3. Added required #include and adjusted "reg" in example
 > 
-> Should probably be either "The core operation for TRGMII does not..."
-> or "The core operations for TRGMII do not..."
-
-I'll use the latter, thanks.
-
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> ---
+>  .../bindings/rtc/mediatek,mt2712-rtc.yaml     | 39 +++++++++++++++++++
+>  .../devicetree/bindings/rtc/rtc-mt2712.txt    | 14 -------
+>  2 files changed, 39 insertions(+), 14 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/rtc/mediatek,mt2712-rtc.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/rtc/rtc-mt2712.txt
 > 
-> As you are mentioning it, I'm now curious if you consider to
-> dynamically reconfiguring TRGIII<->RGMII on port 6 depending on
-> whether there is more then 1 GBit/s possible bandwidth needed between
-> port 6 and the remaining ports? That could make sense for power
-> management, but then we should at least again switch off the TRGMII
-> clocks in the RGMII case before returning, see my suggestion inline
-> below.
 
-Turning off the TRGMII clocks for RGMII makes sense to me. But I don't see
-any cases where dynamic interface change between TRGMII and RGMII would
-ever occur. Speed too. No PHYs support TRGMII, only some MediaTek SoC MACs
-do. That means TRGMII would only be used in fixed links which there is no
-dynamic reconfiguration. My patch is about simplifying the code so I don't
-want to change the dynamic reconfiguration behaviour.
+Reviewed-by: Rob Herring <robh@kernel.org>
 
-That said, last year, I have very thoroughly tested this "turbo" RGMII
-interface between MT7530 standalone switch and MT7623NI SoC, which would
-supposedly achieve 2 Gbps TX & 2 Gbps RX. The performance was as if the
-link was regular RGMII. Unless the MediaTek SoC ethernet driver somehow
-caps TRGMII to 1 Gbps, I consider this whole TRGMII shenanigans a scam, to
-be extremely blunt. I'll give this a one last shot sometime before I push
-for the removal of TRGMII from Linux altogether and default to RGMII where
-it's used. Because of this, I don't want to spend too much time on this
-patch as it's potentially wasted effort.
-
-> 
->>
->> Read XTAL after checking for RGMII as it's only needed for the TRGMII
->> interface mode.
->>
->> Change mt7530_setup_port6() to void now that there're no error cases left.
->>
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> 
-> Reviewed-by: Daniel Golle <daniel@makrotopia.org>
-> 
->> ---
->>   drivers/net/dsa/mt7530.c | 103 ++++++++++++++++++++---------------------------
->>   1 file changed, 43 insertions(+), 60 deletions(-)
->>
->> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
->> index c4d492e29fdf..36dc2bbcf3b6 100644
->> --- a/drivers/net/dsa/mt7530.c
->> +++ b/drivers/net/dsa/mt7530.c
->> @@ -414,70 +414,57 @@ mt753x_preferred_default_local_cpu_port(struct dsa_switch *ds)
->>   }
->>   
->>   /* Setup port 6 interface mode and TRGMII TX circuit */
->> -static int
->> +static void
->>   mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
->>   {
->>   	struct mt7530_priv *priv = ds->priv;
->> -	u32 ncpo1, ssc_delta, trgint, xtal;
->> -
->> -	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
->> +	u32 ncpo1, ssc_delta, xtal;
->>   
->> -	switch (interface) {
->> -	case PHY_INTERFACE_MODE_RGMII:
->> -		trgint = 0;
->> -		break;
->> -	case PHY_INTERFACE_MODE_TRGMII:
->> -		trgint = 1;
->> -		if (xtal == HWTRAP_XTAL_25MHZ)
->> -			ssc_delta = 0x57;
->> -		else
->> -			ssc_delta = 0x87;
->> -		if (priv->id == ID_MT7621) {
->> -			/* PLL frequency: 125MHz: 1.0GBit */
->> -			if (xtal == HWTRAP_XTAL_40MHZ)
->> -				ncpo1 = 0x0640;
->> -			if (xtal == HWTRAP_XTAL_25MHZ)
->> -				ncpo1 = 0x0a00;
->> -		} else { /* PLL frequency: 250MHz: 2.0Gbit */
->> -			if (xtal == HWTRAP_XTAL_40MHZ)
->> -				ncpo1 = 0x0c80;
->> -			if (xtal == HWTRAP_XTAL_25MHZ)
->> -				ncpo1 = 0x1400;
->> -		}
->> -		break;
->> -	default:
->> -		dev_err(priv->dev, "xMII interface %d not supported\n",
->> -			interface);
->> -		return -EINVAL;
->> +	if (interface == PHY_INTERFACE_MODE_RGMII) {
->> +		mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
->> +			   P6_INTF_MODE(0));
-> 
-> Maybe at least switch off TRGMIICK here because we are sure we don't need it
-> in the RGMII case, ie:
-> core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
-> 
-> And that then is another line of code already present just below which
-> means you could keep variable trgint as it was and return after
-> switching off TRGMIICK below anyway...
-> 
->> +		return;
->>   	}
->>   
->> -	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
->> -		   P6_INTF_MODE(trgint));
->> +	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK, P6_INTF_MODE(1));
->>   
->> -	if (trgint) {
->> -		/* Disable the MT7530 TRGMII clocks */
->> -		core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
->> +	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
->>   
->> -		/* Setup the MT7530 TRGMII Tx Clock */
->> -		core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
->> -		core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
->> -		core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
->> -		core_write(priv, CORE_PLL_GROUP11, RG_LCDDS_SSC_DELTA1(ssc_delta));
->> -		core_write(priv, CORE_PLL_GROUP4,
->> -			   RG_SYSPLL_DDSFBK_EN | RG_SYSPLL_BIAS_EN |
->> -			   RG_SYSPLL_BIAS_LPF_EN);
->> -		core_write(priv, CORE_PLL_GROUP2,
->> -			   RG_SYSPLL_EN_NORMAL | RG_SYSPLL_VODEN |
->> -			   RG_SYSPLL_POSDIV(1));
->> -		core_write(priv, CORE_PLL_GROUP7,
->> -			   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
->> -			   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
->> +	if (xtal == HWTRAP_XTAL_25MHZ)
->> +		ssc_delta = 0x57;
->> +	else
->> +		ssc_delta = 0x87;
->>   
->> -		/* Enable the MT7530 TRGMII clocks */
->> -		core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
->> +	if (priv->id == ID_MT7621) {
->> +		/* PLL frequency: 125MHz: 1.0GBit */
->> +		if (xtal == HWTRAP_XTAL_40MHZ)
->> +			ncpo1 = 0x0640;
->> +		if (xtal == HWTRAP_XTAL_25MHZ)
->> +			ncpo1 = 0x0a00;
->> +	} else { /* PLL frequency: 250MHz: 2.0Gbit */
->> +		if (xtal == HWTRAP_XTAL_40MHZ)
->> +			ncpo1 = 0x0c80;
->> +		if (xtal == HWTRAP_XTAL_25MHZ)
->> +			ncpo1 = 0x1400;
->>   	}
->>   
->> -	return 0;
->> +	/* Disable the MT7530 TRGMII clocks */
->> +	core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
-> 
-> ... by moving this line up and letting it happen unconditionally for
-> both RGMII and TRGMII (in case that works and doesn't break the RGMII
-> case, but I assume it doesn't)
-
-I've just tested this, works fine. This looks simpler than bringing back
-the trgint variable.
-
-static void
-mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
-{
-	struct mt7530_priv *priv = ds->priv;
-	u32 ncpo1, ssc_delta, xtal;
-
-	/* Disable the MT7530 TRGMII clocks */
-	core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
-
-	if (interface == PHY_INTERFACE_MODE_RGMII) {
-		mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
-			   P6_INTF_MODE(0));
-		return;
-	}
-
-	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK, P6_INTF_MODE(1));
-
-...
-
-Arınç
 
