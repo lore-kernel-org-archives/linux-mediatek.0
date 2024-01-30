@@ -4,66 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 290FBC46CD2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 11:32:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3539AC46CD2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jan 2024 11:38:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xb4BRznvcipYUdfGIHa1A0A+GbAvjyZxoFLN7I4LaDA=; b=eGO1caEc4PndVSFMFivSalLG6X
-	O6GKRW+rTvOCL4t76oUPaji4+hUkEjnxYBg+PqmdVtuYqDKw38VU/mRKkXOSH1dHkOue/Vs9MLyDW
-	nDBKARJxIn8DMaHWgoWtQGWiuJOLygpqGfOWp1t3AsVFYOc7PKMlbacvq+YaddbYuBA+UJsHwXrHc
-	V8Kh2yzyoLcINTaSwOY2JOJh581oCgXumTTBS2Y9bd94xEjIViu79BfAEJfevVu/cBcvckvB4vKPv
-	RW1LjsVviBkR+zjPd9kaWjXxkoNnPwN50lFyrpp28PL/wh0eV+DS4wlzv151Q5Y1y4v5clFFDRqlh
-	TPFBOpVQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Fd9Bb4G3jzan+HdsMoU9v6bnCUvXvu9hWx1bUV58+yo=; b=ecmyZqeH0/qv4GVVycx1P01t7o
+	QibgrW1YHWcMTg68MeqJ6uuQbCHaZL5hnoESwfYivicYthX64bgdUzQ/j8xN0gyMwTUjp/3+DiCh8
+	leNIW/7A+XBfX06iSSDt3g0dMJ0Tbhjjh5hKHoVjb1cL3VxwA7Xqwk8JfDDk4uTGB0o3uLX9q/wWv
+	GjgnrQFAVefnlJoHcK8rgEb6k/5ToWKAPPTmJQc8xNN0BZmvj8T9n3nc85UVsvST8ngYdMPAIXUzG
+	/KQ/DZlq+VzaC6g+aL4GLR518jfFAv9cgy3tXli9tOsAIXhXV5GLPm+GK9/cv41kZRksjGJ79ISVI
+	RRZqtdCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUmM5-0000000GSGV-31WH;
-	Tue, 30 Jan 2024 11:32:41 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rUmRM-0000000GULv-3fH4;
+	Tue, 30 Jan 2024 11:38:08 +0000
+Received: from szxga07-in.huawei.com ([45.249.212.35])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUmM2-0000000GSFm-1FO1;
-	Tue, 30 Jan 2024 11:32:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706614356;
-	bh=2c3rpex/zB7h9HCUvPXodVCfRpwJO79GoYARME11Ky4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=X1dbL0lfhVBFj5E3codYazedPAoZt6ugh1Fn+4vvwvbS0pshsJqJ5iNwwdRgtbSAT
-	 5dmiU0PHaC7iWzj5QxEvtXREZqtWp98qGlmelg6j6avZp1II5JD/2cSfpiPfQqHqVf
-	 im45pdGPRgRPAIPtA2nShOw9B+/ZcVYPop8LrV/ov+Y0FfdvPWbvlp/kWesA0Jh2GJ
-	 oqa1rmIgWj2aZ127tyLy/AJqFf/3Oi5W2+KTZIIQYK5KV8El1A2BEE25t7eC3b8f45
-	 ZL2AvHUzg+Hc1O5oBXH3ajqAqcV8Nqm6r6jNPRT/QD3LMsfjuGHQb4S3fBOivluyTD
-	 YHNo/lpKGbLPQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E47E43782081;
-	Tue, 30 Jan 2024 11:32:35 +0000 (UTC)
-Message-ID: <a79fa347-f42d-49a3-9faf-40fbefb69998@collabora.com>
-Date: Tue, 30 Jan 2024 12:32:35 +0100
+	id 1rUmRJ-0000000GULA-1y48;
+	Tue, 30 Jan 2024 11:38:07 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.214])
+	by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4TPNQt4bZrz1Q85S;
+	Tue, 30 Jan 2024 19:36:06 +0800 (CST)
+Received: from dggpemm500005.china.huawei.com (unknown [7.185.36.74])
+	by mail.maildlp.com (Postfix) with ESMTPS id 8EAC21A016B;
+	Tue, 30 Jan 2024 19:37:56 +0800 (CST)
+Received: from localhost.localdomain (10.69.192.56) by
+ dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Tue, 30 Jan 2024 19:37:56 +0800
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
+	<linyunsheng@huawei.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Alexei
+ Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper
+ Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<bpf@vger.kernel.org>
+Subject: [PATCH net-next v4 0/5] remove page frag implementation in vhost_net 
+Date: Tue, 30 Jan 2024 19:37:05 +0800
+Message-ID: <20240130113710.34511-1-linyunsheng@huawei.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Add MTU3 nodes and
- correctly describe USB
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- conor+dt@kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, wenst@chromium.org,
- kernel@collabora.com, matthias.bgg@gmail.com
-References: <20240115084336.938426-1-angelogioacchino.delregno@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240115084336.938426-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.69.192.56]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ dggpemm500005.china.huawei.com (7.185.36.74)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_033238_510384_377A7251 
-X-CRM114-Status: GOOD (  23.59  )
+X-CRM114-CacheID: sfid-20240130_033805_862057_97C4DAAD 
+X-CRM114-Status: GOOD (  12.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,370 +72,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/01/24 09:43, AngeloGioacchino Del Regno ha scritto:
-> The MT8195 SoC has four USB controllers: only one is a direct path to
-> a XHCI controller, while the other three (0, 2 and 3) are behind the
-> MTU3 DRD controller instead!
-> 
-> Add the missing MTU3 nodes, default disabled, for controllers 0, 2 and
-> 3 and move the related XHCI nodes to be children of their MTU3 DRD to
-> correctly describe the SoC.
-> 
-> In order to retain USB functionality on all of the MT8195 and MT8395
-> boards, also move the vusb33 supply and enable the relevant MTU3 nodes
-> with special attention to the MT8195 Cherry Chromebook, where it was
-> necessary to set the dr_mode of all MTU3 controllers to host to avoid
-> interfering with the EC performing DRD on its own.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Currently there are three implementations for page frag:
 
-Hello Chen-Yu,
+1. mm/page_alloc.c: net stack seems to be using it in the
+   rx part with 'struct page_frag_cache' and the main API
+   being page_frag_alloc_align().
+2. net/core/sock.c: net stack seems to be using it in the
+   tx part with 'struct page_frag' and the main API being
+   skb_page_frag_refill().
+3. drivers/vhost/net.c: vhost seems to be using it to build
+   xdp frame, and it's implementation seems to be a mix of
+   the above two.
 
-even though I've carefully tested that on my MT8195 Chromebook, can you please
-check this one?
+This patchset tries to unfiy the page frag implementation a
+little bit by unifying gfp bit for order 3 page allocation
+and replacing page frag implementation in vhost.c with the
+one in page_alloc.c.
 
-Four eyes are better than two. :-)
+After this patchset, we are not only able to unify the page
+frag implementation a little, but also able to have about
+0.5% performance boost testing by using the vhost_net_test
+introduced in the last patch.
 
-P.S.: Sorry, I forgot to Cc you in the first submission....
+Before this patchset:
+Performance counter stats for './vhost_net_test' (10 runs):
 
-Thanks,
-Angelo
+     305325.78 msec task-clock                       #    1.738 CPUs utilized               ( +-  0.12% )
+       1048668      context-switches                 #    3.435 K/sec                       ( +-  0.00% )
+            11      cpu-migrations                   #    0.036 /sec                        ( +- 17.64% )
+            33      page-faults                      #    0.108 /sec                        ( +-  0.49% )
+  244651819491      cycles                           #    0.801 GHz                         ( +-  0.43% )  (64)
+   64714638024      stalled-cycles-frontend          #   26.45% frontend cycles idle        ( +-  2.19% )  (67)
+   30774313491      stalled-cycles-backend           #   12.58% backend cycles idle         ( +-  7.68% )  (70)
+  201749748680      instructions                     #    0.82  insn per cycle
+                                              #    0.32  stalled cycles per insn     ( +-  0.41% )  (66.76%)
+   65494787909      branches                         #  214.508 M/sec                       ( +-  0.35% )  (64)
+    4284111313      branch-misses                    #    6.54% of all branches             ( +-  0.45% )  (66)
 
-> ---
-> 
-> Depends on [1]
-> 
-> This patch was tested on a MT8395 board and on the MT8195 Cherry
-> Tomato Chromebook.
-> 
-> [1]: https://lore.kernel.org/all/20240112133222.240038-1-angelogioacchino.delregno@collabora.com
-> 
->   .../boot/dts/mediatek/mt8195-cherry.dtsi      |  26 +++-
->   arch/arm64/boot/dts/mediatek/mt8195-demo.dts  |  18 ++-
->   arch/arm64/boot/dts/mediatek/mt8195-evb.dts   |  12 ++
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 125 +++++++++++-------
->   .../dts/mediatek/mt8395-genio-1200-evk.dts    |  17 ++-
->   5 files changed, 140 insertions(+), 58 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> index a136bea99d9c..e563a2dc4cce 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> @@ -1293,11 +1293,32 @@ &uart0 {
->   	status = "okay";
->   };
->   
-> +/*
-> + * For the USB Type-C ports the role and alternate modes switching is
-> + * done by the EC so we set dr_mode to host to avoid interfering.
-> + */
-> +&ssusb0 {
-> +	dr_mode = "host";
-> +	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-> +	status = "okay";
-> +};
-> +
-> +&ssusb2 {
-> +	dr_mode = "host";
-> +	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-> +	status = "okay";
-> +};
-> +
-> +&ssusb3 {
-> +	dr_mode = "host";
-> +	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-> +	status = "okay";
-> +};
-> +
->   &xhci0 {
->   	status = "okay";
->   
->   	rx-fifo-depth = <3072>;
-> -	vusb33-supply = <&mt6359_vusb_ldo_reg>;
->   	vbus-supply = <&usb_vbus>;
->   };
->   
-> @@ -1311,8 +1332,6 @@ &xhci1 {
->   
->   &xhci2 {
->   	status = "okay";
-> -
-> -	vusb33-supply = <&mt6359_vusb_ldo_reg>;
->   	vbus-supply = <&usb_vbus>;
->   };
->   
-> @@ -1321,7 +1340,6 @@ &xhci3 {
->   
->   	/* MT7921's USB Bluetooth has issues with USB2 LPM */
->   	usb2-lpm-disable;
-> -	vusb33-supply = <&mt6359_vusb_ldo_reg>;
->   	vbus-supply = <&usb_vbus>;
->   };
->   
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> index 69c7f3954ae5..9872743f743f 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> @@ -528,8 +528,22 @@ &u3phy3 {
->   	status = "okay";
->   };
->   
-> -&xhci0 {
-> +&ssusb0 {
-> +	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-> +	status = "okay";
-> +};
-> +
-> +&ssusb2 {
->   	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-> +	status = "okay";
-> +};
-> +
-> +&ssusb3 {
-> +	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-> +	status = "okay";
-> +};
-> +
-> +&xhci0 {
->   	vbus-supply = <&otg_vbus_regulator>;
->   	status = "okay";
->   };
-> @@ -540,11 +554,9 @@ &xhci1 {
->   };
->   
->   &xhci2 {
-> -	vusb33-supply = <&mt6359_vusb_ldo_reg>;
->   	status = "okay";
->   };
->   
->   &xhci3 {
-> -	vusb33-supply = <&mt6359_vusb_ldo_reg>;
->   	status = "okay";
->   };
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-> index 690dc7717f2c..341b6e074139 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-> @@ -160,6 +160,18 @@ &uart0 {
->   	status = "okay";
->   };
->   
-> +&ssusb0 {
-> +	status = "okay";
-> +};
-> +
-> +&ssusb2 {
-> +	status = "okay";
-> +};
-> +
-> +&ssusb3 {
-> +	status = "okay";
-> +};
-> +
->   &xhci0 {
->   	status = "okay";
->   };
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index 152cc0b191bb..45f278efd946 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -1349,29 +1349,40 @@ queue3 {
->   			};
->   		};
->   
-> -		xhci0: usb@11200000 {
-> -			compatible = "mediatek,mt8195-xhci",
-> -				     "mediatek,mtk-xhci";
-> -			reg = <0 0x11200000 0 0x1000>,
-> -			      <0 0x11203e00 0 0x0100>;
-> +		ssusb0: usb@11201000 {
-> +			compatible = "mediatek,mt8195-mtu3", "mediatek,mtu3";
-> +			reg = <0 0x11201000 0 0x2dff>, <0 0x11203e00 0 0x0100>;
->   			reg-names = "mac", "ippc";
-> -			interrupts = <GIC_SPI 129 IRQ_TYPE_LEVEL_HIGH 0>;
-> -			phys = <&u2port0 PHY_TYPE_USB2>,
-> -			       <&u3port0 PHY_TYPE_USB3>;
-> -			assigned-clocks = <&topckgen CLK_TOP_USB_TOP>,
-> -					  <&topckgen CLK_TOP_SSUSB_XHCI>;
-> -			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>,
-> -						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-> +			ranges = <0 0 0 0x11200000 0 0x3f00>;
-> +			#address-cells = <2>;
-> +			#size-cells = <2>;
-> +			interrupts = <GIC_SPI 128 IRQ_TYPE_LEVEL_HIGH 0>;
->   			clocks = <&infracfg_ao CLK_INFRA_AO_SSUSB>,
->   				 <&topckgen CLK_TOP_SSUSB_REF>,
-> -				 <&apmixedsys CLK_APMIXED_USB1PLL>,
-> -				 <&clk26m>,
->   				 <&infracfg_ao CLK_INFRA_AO_SSUSB_XHCI>;
-> -			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-> -				      "xhci_ck";
-> -			mediatek,syscon-wakeup = <&pericfg 0x400 103>;
-> +			clock-names = "sys_ck", "ref_ck", "mcu_ck";
-> +			phys = <&u2port0 PHY_TYPE_USB2>, <&u3port0 PHY_TYPE_USB3>;
->   			wakeup-source;
-> +			mediatek,syscon-wakeup = <&pericfg 0x400 103>;
->   			status = "disabled";
-> +
-> +			xhci0: usb@0 {
-> +				compatible = "mediatek,mt8195-xhci", "mediatek,mtk-xhci";
-> +				reg = <0 0 0 0x1000>;
-> +				reg-names = "mac";
-> +				interrupts = <GIC_SPI 129 IRQ_TYPE_LEVEL_HIGH 0>;
-> +				assigned-clocks = <&topckgen CLK_TOP_USB_TOP>,
-> +						  <&topckgen CLK_TOP_SSUSB_XHCI>;
-> +				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>,
-> +							 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-> +				clocks = <&infracfg_ao CLK_INFRA_AO_SSUSB>,
-> +					 <&topckgen CLK_TOP_SSUSB_REF>,
-> +					 <&apmixedsys CLK_APMIXED_USB1PLL>,
-> +					 <&clk26m>,
-> +					 <&infracfg_ao CLK_INFRA_AO_SSUSB_XHCI>;
-> +				clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck", "xhci_ck";
-> +				status = "disabled";
-> +			};
->   		};
->   
->   		mmc0: mmc@11230000 {
-> @@ -1452,52 +1463,68 @@ xhci1: usb@11290000 {
->   			status = "disabled";
->   		};
->   
-> -		xhci2: usb@112a0000 {
-> -			compatible = "mediatek,mt8195-xhci",
-> -				     "mediatek,mtk-xhci";
-> -			reg = <0 0x112a0000 0 0x1000>,
-> -			      <0 0x112a3e00 0 0x0100>;
-> +		ssusb2: usb@112a1000 {
-> +			compatible = "mediatek,mt8195-mtu3", "mediatek,mtu3";
-> +			reg = <0 0x112a1000 0 0x2dff>, <0 0x112a3e00 0 0x0100>;
->   			reg-names = "mac", "ippc";
-> -			interrupts = <GIC_SPI 533 IRQ_TYPE_LEVEL_HIGH 0>;
-> -			phys = <&u2port2 PHY_TYPE_USB2>;
-> -			assigned-clocks = <&topckgen CLK_TOP_USB_TOP_2P>,
-> -					  <&topckgen CLK_TOP_SSUSB_XHCI_2P>;
-> -			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>,
-> -						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-> +			ranges = <0 0 0 0x112a0000 0 0x3f00>;
-> +			#address-cells = <2>;
-> +			#size-cells = <2>;
-> +			interrupts = <GIC_SPI 532 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			assigned-clocks = <&topckgen CLK_TOP_USB_TOP_2P>;
-> +			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
->   			clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_2P_BUS>,
->   				 <&topckgen CLK_TOP_SSUSB_P2_REF>,
-> -				 <&clk26m>,
-> -				 <&clk26m>,
->   				 <&pericfg_ao CLK_PERI_AO_SSUSB_2P_XHCI>;
-> -			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-> -				      "xhci_ck";
-> -			mediatek,syscon-wakeup = <&pericfg 0x400 105>;
-> +			clock-names = "sys_ck", "ref_ck", "mcu_ck";
-> +			phys = <&u2port2 PHY_TYPE_USB2>;
->   			wakeup-source;
-> +			mediatek,syscon-wakeup = <&pericfg 0x400 105>;
->   			status = "disabled";
-> +
-> +			xhci2: usb@0 {
-> +				compatible = "mediatek,mt8195-xhci", "mediatek,mtk-xhci";
-> +				reg = <0 0 0 0x1000>;
-> +				reg-names = "mac";
-> +				interrupts = <GIC_SPI 533 IRQ_TYPE_LEVEL_HIGH 0>;
-> +				assigned-clocks = <&topckgen CLK_TOP_SSUSB_XHCI_2P>;
-> +				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-> +				clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_2P_XHCI>;
-> +				clock-names = "sys_ck";
-> +				status = "disabled";
-> +			};
->   		};
->   
-> -		xhci3: usb@112b0000 {
-> -			compatible = "mediatek,mt8195-xhci",
-> -				     "mediatek,mtk-xhci";
-> -			reg = <0 0x112b0000 0 0x1000>,
-> -			      <0 0x112b3e00 0 0x0100>;
-> +		ssusb3: usb@112b1000 {
-> +			compatible = "mediatek,mt8195-mtu3", "mediatek,mtu3";
-> +			reg = <0 0x112b1000 0 0x2dff>, <0 0x112b3e00 0 0x0100>;
->   			reg-names = "mac", "ippc";
-> -			interrupts = <GIC_SPI 536 IRQ_TYPE_LEVEL_HIGH 0>;
-> -			phys = <&u2port3 PHY_TYPE_USB2>;
-> -			assigned-clocks = <&topckgen CLK_TOP_USB_TOP_3P>,
-> -					  <&topckgen CLK_TOP_SSUSB_XHCI_3P>;
-> -			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>,
-> -						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-> +			ranges = <0 0 0 0x112b0000 0 0x3f00>;
-> +			#address-cells = <2>;
-> +			#size-cells = <2>;
-> +			interrupts = <GIC_SPI 535 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			assigned-clocks = <&topckgen CLK_TOP_USB_TOP_3P>;
-> +			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
->   			clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_3P_BUS>,
->   				 <&topckgen CLK_TOP_SSUSB_P3_REF>,
-> -				 <&clk26m>,
-> -				 <&clk26m>,
->   				 <&pericfg_ao CLK_PERI_AO_SSUSB_3P_XHCI>;
-> -			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-> -				      "xhci_ck";
-> -			mediatek,syscon-wakeup = <&pericfg 0x400 106>;
-> +			clock-names = "sys_ck", "ref_ck", "mcu_ck";
-> +			phys = <&u2port3 PHY_TYPE_USB2>;
->   			wakeup-source;
-> +			mediatek,syscon-wakeup = <&pericfg 0x400 106>;
->   			status = "disabled";
-> +
-> +			xhci3: usb@0 {
-> +				compatible = "mediatek,mt8195-xhci", "mediatek,mtk-xhci";
-> +				reg = <0 0 0 0x1000>;
-> +				reg-names = "mac";
-> +				interrupts = <GIC_SPI 536 IRQ_TYPE_LEVEL_HIGH 0>;
-> +				assigned-clocks = <&topckgen CLK_TOP_SSUSB_XHCI_3P>;
-> +				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-> +				clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_3P_XHCI>;
-> +				clock-names = "sys_ck";
-> +				status = "disabled";
-> +			};
->   		};
->   
->   		pcie0: pcie@112f0000 {
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-> index 7fc515a07c65..1558649f633c 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-> @@ -880,6 +880,21 @@ &ufsphy {
->   	status = "disabled";
->   };
->   
-> +&ssusb0 {
-> +	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-> +	status = "okay";
-> +};
-> +
-> +&ssusb2 {
-> +	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-> +	status = "okay";
-> +};
-> +
-> +&ssusb3 {
-> +	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-> +	status = "okay";
-> +};
-> +
->   &xhci0 {
->   	status = "okay";
->   };
-> @@ -890,11 +905,9 @@ &xhci1 {
->   };
->   
->   &xhci2 {
-> -	vusb33-supply = <&mt6359_vusb_ldo_reg>;
->   	status = "okay";
->   };
->   
->   &xhci3 {
-> -	vusb33-supply = <&mt6359_vusb_ldo_reg>;
->   	status = "okay";
->   };
+       175.699 +- 0.189 seconds time elapsed  ( +-  0.11% )
 
+
+After this patchset:
+Performance counter stats for './vhost_net_test' (10 runs):
+
+     303974.38 msec task-clock                       #    1.739 CPUs utilized               ( +-  0.14% )
+       1048807      context-switches                 #    3.450 K/sec                       ( +-  0.00% )
+            14      cpu-migrations                   #    0.046 /sec                        ( +- 12.86% )
+            33      page-faults                      #    0.109 /sec                        ( +-  0.46% )
+  251289376347      cycles                           #    0.827 GHz                         ( +-  0.32% )  (60)
+   67885175415      stalled-cycles-frontend          #   27.01% frontend cycles idle        ( +-  0.48% )  (63)
+   27809282600      stalled-cycles-backend           #   11.07% backend cycles idle         ( +-  0.36% )  (71)
+  195543234672      instructions                     #    0.78  insn per cycle
+                                              #    0.35  stalled cycles per insn     ( +-  0.29% )  (69.04%)
+   62423183552      branches                         #  205.357 M/sec                       ( +-  0.48% )  (67)
+    4135666632      branch-misses                    #    6.63% of all branches             ( +-  0.63% )  (67)
+
+       174.764 +- 0.214 seconds time elapsed  ( +-  0.12% )
+
+Changelog:
+V4: resend based on latest net-next branch.
+
+V3:
+1. Add __page_frag_alloc_align() which is passed with the align mask
+   the original function expected as suggested by Alexander.
+2. Drop patch 3 in v2 suggested by Alexander.
+3. Reorder patch 4 & 5 in v2 suggested by Alexander.
+
+Note that placing this gfp flags handing for order 3 page in an inline
+function is not considered, as we may be able to unify the page_frag
+and page_frag_cache handling.
+
+V2: Change 'xor'd' to 'masked off', add vhost tx testing for
+    vhost_net_test.
+
+V1: Fix some typo, drop RFC tag and rebase on latest net-next.
+
+Yunsheng Lin (5):
+  mm/page_alloc: modify page_frag_alloc_align() to accept align as an
+    argument
+  page_frag: unify gfp bits for order 3 page allocation
+  net: introduce page_frag_cache_drain()
+  vhost/net: remove vhost_net_page_frag_refill()
+  tools: virtio: introduce vhost_net_test
+
+ drivers/net/ethernet/google/gve/gve_main.c |  11 +-
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c |  17 +-
+ drivers/nvme/host/tcp.c                    |   7 +-
+ drivers/nvme/target/tcp.c                  |   4 +-
+ drivers/vhost/net.c                        |  91 +---
+ include/linux/gfp.h                        |  16 +-
+ mm/page_alloc.c                            |  22 +-
+ net/core/skbuff.c                          |   6 +-
+ net/core/sock.c                            |   2 +-
+ tools/virtio/.gitignore                    |   1 +
+ tools/virtio/Makefile                      |   8 +-
+ tools/virtio/vhost_net_test.c              | 576 +++++++++++++++++++++
+ 12 files changed, 647 insertions(+), 114 deletions(-)
+ create mode 100644 tools/virtio/vhost_net_test.c
+
+-- 
+2.33.0
 
 
