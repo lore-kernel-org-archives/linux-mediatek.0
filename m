@@ -4,106 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0776C47DB3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jan 2024 14:15:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8358C47258
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jan 2024 22:07:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nNlIzsJJ/O803DqutNwmb0UTB7M/H8vgIySfsDe/068=; b=anikYIJO3bhAZ5xUfDWMiCf0kS
-	x3lEb78CrpieHBO/sycmGiXEN8F9tE+YSEKtrj+HleKuwMaTQZqPe3H/zjSffIrfJvSJ7CO25WR3g
-	qtW6w1J8IebNmdqeuxWsw9gAzCBgdzPQ/ghpTOZm/cWXBlPZxZHnbZrvXjzTmrjrZWZyHP/JIqJNN
-	0stwPuoY4Q7rG0aDFB/0l20bxacedJdvrgtqewdFHEQ8wCvNguOOu+VsNnwWVeG7jRlRers3Y2po/
-	L4Bjmrd8A9wUsmnqgCdyXCERL+teQEm/aUujTYvYwaAYc1h5Wqat+qLmjTP07ji7UuX/33deJsFcj
-	wdBm3Drw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VxGRQtTivmWoKuFadnWNImbg21dR/diu+Neco1gJfcY=; b=os7Q/i200OA0Vj2kKpy+BcLunr
+	Dbw69sCTi032Nm5/AcXbhs72urDN0JSxeE0gab8Bn7tKQ7FqjT51VCTSdj6uNbMpbkaNdIQkSMhMb
+	1ugZJG1bCy8/AijUgD/HR9BX0K6Z9pCQgEP86exV7AHILNQwbbuy1N7j6F8H3CVcUsk1L4QtVpGjA
+	u5kpR/RdUYYra2wNi44BdRN4dkSPhM7oY2jrMg6xQ3Xl6sKeZHSlApAmpbApDviPvX7RSEzwlFm30
+	0uFs8m4VTckY26n6rEUyL62fG9g3GoW3au1j+Sv0etMYHeGMVGxT96DwImS2NMyUx0zY02Ij1MjSL
+	EbiFaQ7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVBNE-00000003pIH-1Hb0;
-	Wed, 31 Jan 2024 14:15:32 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1rVIk2-00000005eg9-0o0v;
+	Wed, 31 Jan 2024 22:07:34 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVBNB-00000003pFM-1Ksd
+	id 1rVIjz-00000005eer-0Lpe
 	for linux-mediatek@lists.infradead.org;
-	Wed, 31 Jan 2024 14:15:30 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a28a6cef709so700630366b.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 31 Jan 2024 06:15:27 -0800 (PST)
+	Wed, 31 Jan 2024 22:07:32 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-40ef9382752so17565e9.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 31 Jan 2024 14:07:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706710526; x=1707315326; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=nNlIzsJJ/O803DqutNwmb0UTB7M/H8vgIySfsDe/068=;
-        b=bFxNkLIg06CwwKfs6NOGxvOUt+f8z0IXJvCoarYi4vO991E4WiYgemV5hyjb0dKbiX
-         PTuTwnhFcStq+cV1SbewPTcljCOL6nyeYbWokYLBDqhe4YOXmtShAPfi9niabmcOKRi4
-         N5tBo+ZOdcNqnsLeT587Aa3WoT7Fuw3nsp7bs5b9oYYjQa55oLJoSGWK5D+oT9SoEVll
-         i0riP1hGAraV+XqfH9axSgTtE4bhFzH4Sftl2UL3RkmQ1ROf2Ty7OSzmCsUfBvdcOoAe
-         gNrsVpneABGf/tY9x+ck4L4Rp2vQk33a6NgaOlyd/d7NzL2fwpj1eboa1lO44rLTpQ00
-         nZZA==
+        d=google.com; s=20230601; t=1706738847; x=1707343647; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=VxGRQtTivmWoKuFadnWNImbg21dR/diu+Neco1gJfcY=;
+        b=gBQk+weor15aZTvWSXmmdpfNxh0NrisXdnqy5Vwp+Ny9HLt5Z8K/xGgdUGO+FTeDIS
+         Zi04/ZlmIOTNIE7cgFlWvHEs7NDzGXgWsN87zgNFszrBU4shHcRz07vnucp+cimL5I9N
+         0whbit6DPiW5NnB5vyQ2r+NVVey1BapueTuQRn6M5I0wBSHn7EjEknvMJx4p0fO5vLCm
+         riBgMZ1u2BiNNe6a1oFLW3sM2HkQl0eR3dTwTmbnjZwD/lBMGV30xNSTr2VGSW670wRt
+         Xb1lvc+OiBlwHosSEbD/LaivUs8gCyKB5i1oh6qMWao0iEmFNcdjNHWudtLLHX0vNkgJ
+         W1oQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706710526; x=1707315326;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=nNlIzsJJ/O803DqutNwmb0UTB7M/H8vgIySfsDe/068=;
-        b=nk5ADPD8nldcrpxCPozxVUOcCc317Asak2gJrKpNfddNaGfWZeLs1fRKTe0hcirJIB
-         JXvgeRxD12tTgfGk90zsTQeFLd7Vi5WG1eZAljDbj7gsm9Ncm8gQmHIijS/5vAeL4wbL
-         4Zi0RdXFBn9j7so/r5DvYv0wEK3UjfU+aVIBAY4BWbIncM3xAXW15/FXltnU1c5qIkb3
-         EkV/a4B3tJfqO662rpB37lT3Y9inZGJdUIO/wONflF1nQUtR5RXcM5EbVOvfZ2tx1vz1
-         jXxUUku8S1UBY232QayUkmlo/zRMCxe4mVuXgcXiv0eJuVVfwkIsOAS09Jmx91dg8Hso
-         BXsQ==
-X-Gm-Message-State: AOJu0Yxm3R2sBtsx5YmQgzOr9vJMnZCxK8fkrwvLZR/oCByux71L/pbE
-	2MIeexFdxFZw1iRM/kehUaCJvZw9oVJpmHY160X4XFLS32hoBk5gtlPqVbnYvnc=
-X-Google-Smtp-Source: AGHT+IHGSNrZrx8lhdfpuacSLRFgTdJ5NfMsSvc/CvwYDYgJxFvfWZNSFP+DAnXhOop8GVnRQDrb6A==
-X-Received: by 2002:a17:906:6d8:b0:a31:3dc5:6bda with SMTP id v24-20020a17090606d800b00a313dc56bdamr1293250ejb.64.1706710526369;
-        Wed, 31 Jan 2024 06:15:26 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCU6efCsWycPh1JAhTyNPAjNvnweXqD7LfOvLHeNnwv0SvdHIfC7xlCv5STV+33dO+lY6NYJYz4SAyhuS25W5HmIsKnF6IG7JdUB21pnh0QfOQ1lCcEwg8NWyt4e7a9vNb//fZPrFcLCq+mt6UfXnuYVq5RS8RnavneViDd5N6Su2aFK4whsxxRmJoif7dJWT+chAcUGwWlZxUbGvoOWMB3G8DV6VDnhGda0U96+67dma+Nv9E085BKS4tGcAovVwU7cgXUWywrg032CUiidKOXOU15Ran40Whooteb7Lk+RUuOmzz49sVTJwT/eI1hJVuiV1YSchMZ0NHwXYr6VjCNtQHOfBYpy5AmBEGhHJSSC3kgPn1HwSA52JP2g+oE2lN1hzC8o4Jo1Y8j6DU+PoPuR+FKrKBX0SwGcxLWfvq1CMFwwBVdkDj1fb5FSBa2TvRsV+KQx8ksmqvY3/bRSHobT0Bl+kbLmt0tTUm+R7Y9tHXnEz2tuNvmP5aHV+g6ZlruKt2lwSJfaPzujaeV5DSNv4+yyJnDLfBRUzCefUVy5aId4uCPDgO/JDcDDEegEi6k6RD2wfQFIK8X0HUkbHUt6YigPf5ZcLX+0X9ezZFfZ+0oInafUsOsICdEzpL4wIlsdXL9P1Vi443C3RLBTMEfR/u9yh61fxe3tVeJmfWxowtX9iage1AwJTiXHCvEDedDpY4omThjVx/SYLcBLMPk8Wi5Nen1zWtD6NsJIh8Y+WOxwQATkh/am6qDgLjdayMNiBblkaO9v7fj7mxybs0lRhqpVAYJEDXv++KavYBBKZWqp7kLnRMr0JlWmty201Js0Kj6EkatLZd2kDdGgUvp6ysOgjFO/IvCN7dmQ7wzBsKbPdxyTsC+X8CPg+XM3S5TT4t+qMOLotFHsEN+9geGbqdJYz0xGgVAbWzhxNWl8h6WZhk96k9pCCvsuvjwe6qpVQ5
- 6Z0BQFdKikglYoMlYcES1SpehdgBV2xwU=
-Received: from pop-os.localdomain (81-231-61-187-no276.tbcn.telia.com. [81.231.61.187])
-        by smtp.gmail.com with ESMTPSA id vk8-20020a170907cbc800b00a352afd952fsm5396812ejc.43.2024.01.31.06.15.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 31 Jan 2024 06:15:25 -0800 (PST)
-Date: Wed, 31 Jan 2024 15:15:23 +0100
-From: Joakim Bech <joakim.bech@linaro.org>
-To: John Stultz <jstultz@google.com>
-Cc: Jeffrey Kardatzke <jkardatzke@google.com>,
-	Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, christian.koenig@amd.com,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Brian Starkey <Brian.Starkey@arm.com>, tjmercier@google.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linaro-mm-sig@lists.linaro.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Robin Murphy <robin.murphy@arm.com>,
-	Vijayanand Jitta <quic_vjitta@quicinc.com>,
-	Pavel Machek <pavel@ucw.cz>, Simon Ser <contact@emersion.fr>,
-	Pekka Paalanen <ppaalanen@gmail.com>, jianjiao.zeng@mediatek.com,
-	kuohong.wang@mediatek.com, youlin.pei@mediatek.com
-Subject: Re: [PATCH v4 3/7] dma-buf: heaps: restricted_heap: Add private heap
- ops
-Message-ID: <20240131141523.yh74hsddtuooqfgi@pop-os.localdomain>
-References: <20240112092014.23999-1-yong.wu@mediatek.com>
- <20240112092014.23999-4-yong.wu@mediatek.com>
+        d=1e100.net; s=20230601; t=1706738847; x=1707343647;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=VxGRQtTivmWoKuFadnWNImbg21dR/diu+Neco1gJfcY=;
+        b=LqJ5W7JnNuM7uhz3t5yrqe+mkwzxbBkf+XEnHcwhqOdIcdEje7NMNPlQgXd2or7q8C
+         Gf65ho0WHbwyTum/eaO2rn7PiJwx0SgG1HjWlvf3Tdeish4OvlxvGOCLJxCLn0V5VIBc
+         TZCT+VRYqpmSgOFz8wWWuFdgO/hSH2z9qpZx6SL777pjAwfs/Pp+KWhB4jbzcWi/fuXz
+         AgqZ0DpRupaTYv6/9BBe0QKLUOGfubAmhKlIaLT0zQbITz+Kg6sgFSKcto5ALl7VR5rW
+         HhAXryPcFS8aOSg5nrXPTPs5tsHjoC/3/phaadiBq4L/6AfA8c1y0tB4L9iXhF8sVAYu
+         j/SQ==
+X-Gm-Message-State: AOJu0YwgRx0w1RC2yYy1TtW0g/bDCDUr4hDw2+0m6J6lbcGvwHoWrKRt
+	9gPaJHhrOD+o6caC2kjEQm0bpQ2WnOzCoqJ6H8yIqEiCZ/khsdhmqcHY9OgzaD7vwcKGMLDZj8g
+	dF0vJUJrgbqGLrx/7wMPWfikUBtXAeW6WMK8=
+X-Google-Smtp-Source: AGHT+IE/2Dxf4agbwoKTbMQd8Mnstjn4gRLtOYMhgr/arfVgtxcTfa+Kk1PDbnEzzrNLU0B/ZV7z7fa+Npsy3Ek/Uvk=
+X-Received: by 2002:a05:600c:5026:b0:40e:e7ce:da68 with SMTP id
+ n38-20020a05600c502600b0040ee7ceda68mr66122wmr.0.1706738846818; Wed, 31 Jan
+ 2024 14:07:26 -0800 (PST)
+MIME-Version: 1.0
+References: <20240112092014.23999-1-yong.wu@mediatek.com> <20240112092014.23999-4-yong.wu@mediatek.com>
  <CANDhNCrxpeqEhJD0xJzu3vm8a4jMXD2v+_dbDNvaKhLsLB5-4g@mail.gmail.com>
  <CA+ddPcNdniUTpE_pJb-fL7+MHNSUZTkQojL48iqvW9JPr-Tc-g@mail.gmail.com>
  <CANDhNCqieBaH-Wi=vy3NSKTpwHcWef6qMOFi-7sgdGiDW7JtwA@mail.gmail.com>
  <CA+ddPcP9bgApNw_Nu7bxcV-oK_s3Bq1i5qun+vNSuRUO9tPEkA@mail.gmail.com>
- <CANDhNCrGxhHJLA2ct-iqemLAsQRt3C8m5=xAD3_dDdKH6Njrdg@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CANDhNCrGxhHJLA2ct-iqemLAsQRt3C8m5=xAD3_dDdKH6Njrdg@mail.gmail.com>
+ <CANDhNCrGxhHJLA2ct-iqemLAsQRt3C8m5=xAD3_dDdKH6Njrdg@mail.gmail.com> <20240131141523.yh74hsddtuooqfgi@pop-os.localdomain>
+In-Reply-To: <20240131141523.yh74hsddtuooqfgi@pop-os.localdomain>
+From: John Stultz <jstultz@google.com>
+Date: Wed, 31 Jan 2024 14:07:13 -0800
+Message-ID: <CANDhNCqKPmo-RUd6RRRS2=ZJHqyy40G9HE=6_cAyop1CN2xOgw@mail.gmail.com>
+Subject: Re: [PATCH v4 3/7] dma-buf: heaps: restricted_heap: Add private heap ops
+To: Joakim Bech <joakim.bech@linaro.org>
+Cc: Jeffrey Kardatzke <jkardatzke@google.com>, Yong Wu <yong.wu@mediatek.com>, 
+	Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, christian.koenig@amd.com, 
+	Sumit Semwal <sumit.semwal@linaro.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>, 
+	tjmercier@google.com, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Robin Murphy <robin.murphy@arm.com>, Vijayanand Jitta <quic_vjitta@quicinc.com>, 
+	Pavel Machek <pavel@ucw.cz>, Simon Ser <contact@emersion.fr>, Pekka Paalanen <ppaalanen@gmail.com>, 
+	jianjiao.zeng@mediatek.com, kuohong.wang@mediatek.com, 
+	youlin.pei@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240131_061529_443894_EF57DB78 
-X-CRM114-Status: GOOD (  64.06  )
+X-CRM114-CacheID: sfid-20240131_140731_150430_F1390A1C 
+X-CRM114-Status: GOOD (  29.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,134 +106,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 12, 2024 at 05:23:07PM -0800, John Stultz wrote:
-> On Fri, Jan 12, 2024 at 4:13 PM Jeffrey Kardatzke <jkardatzke@google.com> wrote:
-> > On Fri, Jan 12, 2024 at 3:51 PM John Stultz <jstultz@google.com> wrote:
-> > >
-> > > On Fri, Jan 12, 2024 at 3:27 PM Jeffrey Kardatzke <jkardatzke@google.com> wrote:
-> > > > On Fri, Jan 12, 2024 at 2:52 PM John Stultz <jstultz@google.com> wrote:
-> > > > > I know part of this effort here is to start to centralize all these
-> > > > > vendor specific restricted buffer implementations, which I think is
-> > > > > great, but I just worry that in doing it in the dmabuf heap interface,
-> > > > > it is a bit too user-facing. The likelihood of encoding a particular
-> > > > > semantic to the singular "restricted_heap" name seems high.
-> > > >
-> > > > In patch #5 it has the actual driver implementation for the MTK heap
-> > > > that includes the heap name of "restricted_mtk_cm", so there shouldn't
-> > > > be a heap named "restricted_heap" that's actually getting exposed. The
-> > >
-> > > Ah, I appreciate that clarification! Indeed, you're right the name is
-> > > passed through. Apologies for missing that detail.
-> > >
-> > > > restricted_heap code is a framework, and not a driver itself.  Unless
-> > > > I'm missing something in this patchset...but that's the way it's
-> > > > *supposed* to be.
-> > >
-> > > So I guess I'm not sure I understand the benefit of the extra
-> > > indirection. What then does the restricted_heap.c logic itself
-> > > provide?
-> > > The dmabuf heaps framework already provides a way to add heap implementations.
+On Wed, Jan 31, 2024 at 6:15=E2=80=AFAM Joakim Bech <joakim.bech@linaro.org=
+> wrote:
+> On Fri, Jan 12, 2024 at 05:23:07PM -0800, John Stultz wrote:
+> > So we need some clarity in what "restricted" really means.  For
+> > instance, it being not cpu mappable vs other potential variations like
+> > being cpu mappable, but not cpu accessible.  Or not cpu mappable, but
+> > only mappable between a set of 3 devices (Which 3 devices?! How can we
+> > tell?).
 > >
-> > So in the v1 patchset, it was done with just a Mediatek specific heap
-> > with no framework or abstractions for another vendor to build on top
-> > of. The feedback was to make this more generic since Mediatek won't be
-> > the only vendor who wants a restricted heap..which is how it ended up
-> > here. There was more code in the framework before relating to TEE
-> > calls, but then that was moved to the vendor specific code since not
-> > all restricted heaps are allocated through a TEE.
-> 
-> Yeah. I apologize, as I know how frustrating the contradictory
-> feedback can be. I don't mean to demotivate. :(
-> 
-> I think folks would very much like to see consolidation around the
-> various implementations, and I agree!
-> I just worry that creating the common framework for this concept in a
-> dmabuf heaps driver is maybe too peripheral/close to userland.
-> 
-> > This was also desirable for the V4L2 pieces since there's going to be
-> > a V4L2 flag set when using restricted dma_bufs (and it wants to
-> > validate that)....so in order to keep that more generic, there should
-> > be a higher level concept of restricted dma_bufs that isn't specific
-> > to a single vendor.  One other thing that would ideally come out of
-> > this is a cleaner way to check that a dma_buf is restricted or not.
-> 
-> Yeah. If there is a clear meaning to "restricted" here, I think having
-> a query method on the dmabuf is reasonable.
-> My only fret is if the meaning is too vague and userland starts
-> depending on it meaning what it meant for vendor1, but doesn't mean
-> for vendor2.
-> 
-> So we need some clarity in what "restricted" really means.  For
-> instance, it being not cpu mappable vs other potential variations like
-> being cpu mappable, but not cpu accessible.  Or not cpu mappable, but
-> only mappable between a set of 3 devices (Which 3 devices?! How can we
-> tell?).
-> 
-Can we flip things around? I.e., instead of saying which devices are
-allowed to use the restricted buffer, can we instead say where it's not
-allowed to be used? My view has been that by default the contents of the
-types of buffers where talking about here is only accessible to things
-running on the secure side, i.e, typically S-EL3, S-EL1 and a specific
-Trusted Application running in S-EL0. I guess that serves as some kind
-of baseline. 
+> Can we flip things around? I.e., instead of saying which devices are
+> allowed to use the restricted buffer, can we instead say where it's not
+> allowed to be used? My view has been that by default the contents of the
+> types of buffers where talking about here is only accessible to things
+> running on the secure side, i.e, typically S-EL3, S-EL1 and a specific
+> Trusted Application running in S-EL0. I guess that serves as some kind
+> of baseline.
 
-From there, things turns to a more dynamic nature, where firewalls etc,
-can be configured to give access to various IPs, blocks and runtimes.
+? This seems like you're suggesting enumerating badness? I'm not sure
+I understand the benefit of that.
 
-I understand that it's nice to be able to know all this from the Linux
-kernel point of view, but does it have to be aware of this? What's the
-major drawback if Linux doesn't know about it?
+> From there, things turns to a more dynamic nature, where firewalls etc,
+> can be configured to give access to various IPs, blocks and runtimes.
+>
+> I understand that it's nice to be able to know all this from the Linux
+> kernel point of view, but does it have to be aware of this? What's the
+> major drawback if Linux doesn't know about it?
 
-> And if there is variation, maybe we need to enumerate the types of
-> "restricted" buffers so we can be specific when it's queried.
-> 
-> That's where maybe having the framework for this be more central or
-> closer to the kernel mm code and not just a sub-type of a dmabuf heap
-> driver might be better?
-> 
-> > The current V4L2 patchset just attaches the dma_buf and then checks if
-> > the page table is empty....and if so, it's restricted. But now I see
-> > there's other feedback indicating attaching a restricted dma_buf
-> > shouldn't even be allowed, so we'll need another strategy for
-> > detecting them. Ideally there is some function/macro like
-> > is_dma_buf_restricted(struct dma_buf*) that can indicate that...but we
-> > haven't come up with a good way to do that yet which doesn't involve
-> > adding another field to dma_buf or to dma_buf_ops (and if such a thing
-> > would be fine, then OK...but I had assumed we would get pushback on
-> > modifying either of those structs).
-> 
-> If there's a need and the best place to put something is in the
-> dma_buf or dma_buf_ops, that's where it should go.  Folks may
-> reasonably disagree if it's the best place (there may be yet better
-> spots for the state to sit in the abstractions), but for stuff going
-> upstream, there's no reason to try to hack around things or smuggle
-> state just to avoid changing core structures. Especially if core
-> structures are internal only and have no ABI implications.
-> 
-> Sima's suggestion that attachments should fail if the device cannot
-> properly map the restricted buffer makes sense to me. Though I don't
-> quite see why all attachments should fail, and I don't really like the
-> idea of a private api, but I need to look more at the suggested virtio
-> example (but even they said that wasn't their preferred route).
-> 
-> My sense of attach was only that it was supposed to connect a device's
-> interest in the buffer, allowing lazy allocation to satisfy various
-> device constraints before first mapping - a design feature that I
-> don't think anyone ever implemented.  So my sense was it didn't have
-> much meaning otherwise (but was a requirement to call before map). But
-> that may have evolved since the early days.
-> 
-> And I'm sure the method to figure out if the attachment can work with
-> the device may be complicated/difficult, so it sounding reasonable can
-> be far from it being reasonable to implement.
-> 
-> And again, I don't mean to frustrate or demotivate here. I'm really
-> excited to see this effort being pushed upstream!
-> 
-> thanks
-> -john
+Indeed, it doesn't necessarily. The idea with DMABUF heaps is it
+provides a name to abstract/wrap a type of constraint. So you can then
+allocate buffers that satisfy that constraint.
 
--- 
-// Regards
-Joakim
+Admittedly the downside with DMABUF heaps is that it has a bit of a
+gap in the abstraction in that we don't have a mapping of device
+constraints, so in Android gralloc provides a device specific
+usage/pipeline -> heap mapping.
+(Note: This I don't think is very problematic - I often use the
+example of fstab as device-specific config everyone is comfortable
+with - but I know folks would like to have something more generic)
+
+I believe Christian has previously proposed to have the devices
+provide something like symlinks from their sysfs  nodes to the heaps
+the device supports, which is an interesting idea to mostly close that
+issue. Applications could then scan the devices in a pipeline and find
+the type they all support, and the specific names wouldn't matter.
+
+However, I'd expect the same hardware pipeline might support both
+restricted and unrestricted playback, so there would need to be some
+way to differentiate for the use case, so I'm not sure you can get
+away from some heap name to functionality mapping.
+
+My main concern with this patch series is that it seems to want to
+bundle all the different types of "restricted" buffers that might be
+possible under a single "restricted" heap name.
+
+Since we likely have devices with different security domains, thus
+different types of restrictions. So we may need to be able to
+differentiate between "secure video playback" uses and "protected
+device firmware" uses on the same machine. Thus, I'm not sure it's a
+good idea to bundle all of these under the same heap name.
+
+thanks
+-john
 
