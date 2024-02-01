@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D63E0C48BF5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 18:02:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86D36C48BF7
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 18:02:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=COOyqqru2hxz+S/Tw5V0x98XNKrZiamgLSe8wHDYh14=; b=Mh5ywsDMnwaCE/9LLm7SEhZNmi
-	k4y+S36DOxRtJkDQ2pxtOMtY8XNee/8OupxBHliGQrTySzWKDGmrnywqviIpMglrxCQ37XdC1Rs1V
-	iomOynVTgqznxtdVl3xVnaeYXh4l97AQVNhwOLOuoWr+fG1zEILgwh+GXm0mXY7tEoYonbQe0OxGK
-	FUBJzvYHSAfAmthFC8chxepO6U4jZepnHlKekUs9/JyrpY1gKdTp9T3V9f2Zelo3Ktr9RWZYdSuH7
-	sXmqvjLupQuFB/IOGXFvjqj0RJ+7lHA41a2dXqtuDvxl/Qy/lBAeQkk3CWspifRRXlAAxyyBE7JNx
-	9ZHfI7Fw==;
+	bh=awh4L/FvuKTUk4LCovxuQcQcm/YmAlMhgCuKLpIU3pA=; b=h33vjsiOW17n/nlN6AkQl5WDfz
+	+F2S1Hgz4OoExtaDZ1ggb14jqXwDE9M0slzWmDYtyQOqgJVNVRABZ1O9lZmTLUo9t2yMguizLFCka
+	TfTM6ID2Qc1k5aftdl1TkyWRuiMfWITnffEmP93PDv3JUbP4dieXq/Elv7Ck59DE/bLPOwrw2LURz
+	wUWbovgYoMeRmv0VsQ8xMOgYFOd5BDeLH6P87bZMg/Fve3+zmsLDjUUs/cuLw7n0K4DXUswPKUJ2v
+	lxxGJmkz2yg+7/ZohJ58XCkQi1AKWZhl11itF1cVkp/25QMLPfQfWgojG9iwcG0WMbj8M+DeJRlvb
+	HZTJPp5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVbOU-00000008uST-1LPU;
-	Thu, 01 Feb 2024 18:02:34 +0000
+	id 1rVbOi-00000008ufZ-2eJv;
+	Thu, 01 Feb 2024 18:02:48 +0000
 Received: from lelv0142.ext.ti.com ([198.47.23.249])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVbNO-00000008tSf-0RWc;
-	Thu, 01 Feb 2024 18:01:30 +0000
+	id 1rVbNP-00000008tVJ-26f8;
+	Thu, 01 Feb 2024 18:01:32 +0000
 Received: from fllv0034.itg.ti.com ([10.64.40.246])
-	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 411I15Ww127741;
-	Thu, 1 Feb 2024 12:01:05 -0600
+	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 411I16NW127754;
+	Thu, 1 Feb 2024 12:01:06 -0600
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1706810465;
-	bh=COOyqqru2hxz+S/Tw5V0x98XNKrZiamgLSe8wHDYh14=;
+	s=ti-com-17Q1; t=1706810466;
+	bh=awh4L/FvuKTUk4LCovxuQcQcm/YmAlMhgCuKLpIU3pA=;
 	h=From:To:CC:Subject:Date:In-Reply-To:References;
-	b=ZUTao+ON9CWb0zgC3QleK6FgjoBGaePcjIH1rqYG741ILwUOVJ5EPuu1x7fRDozW/
-	 KhssLyZRFRkz13rNM4UuQXysuBo7g2w11hWdsMcXYClMGnNT0NipIfMZb9m6AteHwX
-	 AgYM+Q18l6fGcV0NnJi889mkmA7JSH1MPJe2wSok=
-Received: from DLEE110.ent.ti.com (dlee110.ent.ti.com [157.170.170.21])
-	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 411I151w120338
+	b=w1pNiTRgiYLJ3cK7YvY8c2Pa4edi510sVdoaT8seLl/gN9yEbfAU6Nl/gX2KqZhQO
+	 jQpE3eI6pz/LFdKE9c6sgY5455FAfFmj3+bpt38atd6cneNOvWGhnDOl3+cEWWiOyv
+	 Xws7a6m7Jn2cXLLzac0mfvROnKD1dLeI5pESMkco=
+Received: from DFLE115.ent.ti.com (dfle115.ent.ti.com [10.64.6.36])
+	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 411I16oq120370
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 1 Feb 2024 12:01:05 -0600
-Received: from DLEE114.ent.ti.com (157.170.170.25) by DLEE110.ent.ti.com
- (157.170.170.21) with Microsoft SMTP Server (version=TLS1_2,
+	Thu, 1 Feb 2024 12:01:06 -0600
+Received: from DFLE106.ent.ti.com (10.64.6.27) by DFLE115.ent.ti.com
+ (10.64.6.36) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Thu, 1
- Feb 2024 12:01:05 -0600
-Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DLEE114.ent.ti.com
- (157.170.170.25) with Microsoft SMTP Server (version=TLS1_2,
+ Feb 2024 12:01:06 -0600
+Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DFLE106.ent.ti.com
+ (10.64.6.27) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Thu, 1 Feb 2024 12:01:05 -0600
+ Frontend Transport; Thu, 1 Feb 2024 12:01:06 -0600
 Received: from lelvsmtp6.itg.ti.com ([10.249.42.149])
-	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 411I12Gh117221;
-	Thu, 1 Feb 2024 12:01:04 -0600
+	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 411I12Gj117221;
+	Thu, 1 Feb 2024 12:01:06 -0600
 From: Andrew Davis <afd@ti.com>
 To: Sebastian Reichel <sre@kernel.org>,
         Manivannan Sadhasivam
@@ -72,9 +72,9 @@ CC: <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-actions@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
         <linux-arm-kernel@lists.infradead.org>,
         <linux-mediatek@lists.infradead.org>, Andrew Davis <afd@ti.com>
-Subject: [PATCH 03/18] power: reset: xgene-reboot: Use devm_register_sys_off_handler(RESTART)
-Date: Thu, 1 Feb 2024 12:00:47 -0600
-Message-ID: <20240201180102.70395-4-afd@ti.com>
+Subject: [PATCH 05/18] power: reset: tps65086-restart: Remove unneeded device data struct
+Date: Thu, 1 Feb 2024 12:00:49 -0600
+Message-ID: <20240201180102.70395-6-afd@ti.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240201180102.70395-1-afd@ti.com>
 References: <20240201180102.70395-1-afd@ti.com>
@@ -83,8 +83,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_100126_525770_D5FA31D2 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20240201_100128_017341_9F5B0A01 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,47 +99,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use device life-cycle managed register function to simplify probe.
+We only need one member of the struct tps65086_restart, pass that
+tps65086_restart_notify() directly. Remove that struct and its
+allocation.
 
 Signed-off-by: Andrew Davis <afd@ti.com>
 ---
- drivers/power/reset/xgene-reboot.c | 13 ++++---------
- 1 file changed, 4 insertions(+), 9 deletions(-)
+ drivers/power/reset/tps65086-restart.c | 35 ++++++--------------------
+ 1 file changed, 8 insertions(+), 27 deletions(-)
 
-diff --git a/drivers/power/reset/xgene-reboot.c b/drivers/power/reset/xgene-reboot.c
-index c2e5a99940d37..5c923ab838a55 100644
---- a/drivers/power/reset/xgene-reboot.c
-+++ b/drivers/power/reset/xgene-reboot.c
-@@ -24,15 +24,11 @@ struct xgene_reboot_context {
- 	struct device *dev;
- 	void *csr;
- 	u32 mask;
--	struct notifier_block restart_handler;
- };
+diff --git a/drivers/power/reset/tps65086-restart.c b/drivers/power/reset/tps65086-restart.c
+index 82d7a761a0385..6976dbcac74fa 100644
+--- a/drivers/power/reset/tps65086-restart.c
++++ b/drivers/power/reset/tps65086-restart.c
+@@ -9,19 +9,14 @@
+ #include <linux/platform_device.h>
+ #include <linux/reboot.h>
  
--static int xgene_restart_handler(struct notifier_block *this,
--				 unsigned long mode, void *cmd)
-+static int xgene_restart_handler(struct sys_off_data *data)
+-struct tps65086_restart {
+-	struct device *dev;
+-};
+-
+ static int tps65086_restart_notify(struct sys_off_data *data)
  {
--	struct xgene_reboot_context *ctx =
--		container_of(this, struct xgene_reboot_context,
--			     restart_handler);
-+	struct xgene_reboot_context *ctx = data->cb_data;
+-	struct tps65086_restart *tps65086_restart = data->cb_data;
+-	struct tps65086 *tps65086 = dev_get_drvdata(tps65086_restart->dev->parent);
++	struct tps65086 *tps65086 = data->cb_data;
+ 	int ret;
  
- 	/* Issue the reboot */
- 	writel(ctx->mask, ctx->csr);
-@@ -64,9 +60,8 @@ static int xgene_reboot_probe(struct platform_device *pdev)
- 		ctx->mask = 0xFFFFFFFF;
+ 	ret = regmap_write(tps65086->regmap, TPS65086_FORCESHUTDN, 1);
+ 	if (ret) {
+-		dev_err(tps65086_restart->dev, "%s: error writing to tps65086 pmic: %d\n",
++		dev_err(tps65086->dev, "%s: error writing to tps65086 pmic: %d\n",
+ 			__func__, ret);
+ 		return NOTIFY_DONE;
+ 	}
+@@ -36,27 +31,13 @@ static int tps65086_restart_notify(struct sys_off_data *data)
  
- 	ctx->dev = dev;
--	ctx->restart_handler.notifier_call = xgene_restart_handler;
--	ctx->restart_handler.priority = 128;
--	err = register_restart_handler(&ctx->restart_handler);
-+	err = devm_register_sys_off_handler(dev, SYS_OFF_MODE_RESTART, 128,
-+					    xgene_restart_handler, ctx);
- 	if (err) {
- 		iounmap(ctx->csr);
- 		dev_err(dev, "cannot register restart handler (err=%d)\n", err);
+ static int tps65086_restart_probe(struct platform_device *pdev)
+ {
+-	struct tps65086_restart *tps65086_restart;
+-	int ret;
+-
+-	tps65086_restart = devm_kzalloc(&pdev->dev, sizeof(*tps65086_restart), GFP_KERNEL);
+-	if (!tps65086_restart)
+-		return -ENOMEM;
+-
+-	tps65086_restart->dev = &pdev->dev;
+-
+-	ret = devm_register_sys_off_handler(&pdev->dev,
+-					    SYS_OFF_MODE_RESTART,
+-					    SYS_OFF_PRIO_HIGH,
+-					    tps65086_restart_notify,
+-					    tps65086_restart);
+-	if (ret) {
+-		dev_err(&pdev->dev, "%s: cannot register restart handler: %d\n",
+-			__func__, ret);
+-		return -ENODEV;
+-	}
++	struct tps65086 *tps65086 = dev_get_drvdata(pdev->dev.parent);
+ 
+-	return 0;
++	return devm_register_sys_off_handler(&pdev->dev,
++					     SYS_OFF_MODE_RESTART,
++					     SYS_OFF_PRIO_HIGH,
++					     tps65086_restart_notify,
++					     tps65086);
+ }
+ 
+ static const struct platform_device_id tps65086_restart_id_table[] = {
 -- 
 2.39.2
 
