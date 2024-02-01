@@ -4,80 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1888C48286
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 18:20:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7659C48286
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 18:24:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hPlLDcArSF1cBikO4rFTlnRitwqEi0aGbatvchQYh/M=; b=oyx4Yo91Cu8HW62ZjBuvaWMi4b
-	OdHFn3JUXV2IaYoByhpCsPPjY2J3tq69VhNl1XISmEykr0FKGnBzfkUi5GmRiCqXut2btG3gJY/0p
-	IkgNcb91Idjjc0LX/QVbgIH0zopoXcb02f4DBXKCVb0KpPlQkPMeDixhwCFMxbGkSqCpLiZ7lBI8A
-	1/6QFsJlqLdrjSccRersxZpRQbqIWcA+C5aI/19lV5PqKAit9UlaIl94168AGHHnuDd57nVP6f1va
-	bqziSrBZqV8tp4Ma2XeKRvtOhV1a06ThXNPd3KbNIXfJ72R3XjCdXUybJ6Z/GiDI5gDGZlqvjSIfz
-	aQkWf6+Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FM4cDbc05aFm+s5YmM2e5LZAZcaagXIlqsb3avH/P4U=; b=AJaL5pclG17TZ2
+	xqsWJ4J/V2KETIF1Qn2AWqP6m3Y8PkFycEr5HFAx/4s5GulfOxtljTNn1r/JMr3m40NFC1uRZWmVo
+	+r2IGH+0UWlwiS6oP+5o3v6zh4dL33BdbFMvM8AUSMal5FB/s4pLzIAqqxKyetXCJeD9hxLAm7I1D
+	7rhWHLDc4SwEOPc46SPF+dnrr83/ciUPBYS2WmA0r4DktUiL+G5W2yEhENKqv1cp254fTEAx6jop6
+	WYGS+nHjyJaCuNlmXrDOqYnuaRVEJ/cVWnr07Nwi1BRzvQV1DYoLYWpFVCeDXqkd/fGIRmuazEV+c
+	QW0Cnt12YuY/z+EFbKaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVbfm-00000008zOh-1is6;
-	Thu, 01 Feb 2024 18:20:26 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rVbjh-000000090Bb-13QP;
+	Thu, 01 Feb 2024 18:24:29 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVbfi-00000008zNs-2Ocs;
-	Thu, 01 Feb 2024 18:20:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 9BA30CE2777;
-	Thu,  1 Feb 2024 18:20:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75700C433F1;
-	Thu,  1 Feb 2024 18:20:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1706811619;
-	bh=hPlLDcArSF1cBikO4rFTlnRitwqEi0aGbatvchQYh/M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=R3VdfipOeSEOruQUNgkJ5igtoy9AihiH0Mmm8DX8nTYaEmEEAWEuJcAxlzC42rjxx
-	 hDU5Oanbc112HkwOM7gmMxyEsVNZS14RtqJ8LWx+ezMoSZT61ESQHfDoOwuSuC8pzn
-	 NKyJ8HCEBRpk8uijKMuApf7/Z6Lum3LE4eEcgpVj8Gpw/lPHn+eBO/qf5b68lPdTOF
-	 EHE0RalG/5HjrfQS0bH4gWJCUE++eg9T0hYYHFDCrKGH/bBfafXShd9YVjKgp0cwgA
-	 kKsNg0QK4updSpPjtzmGxj5jgBc8+QOCuzp68E06AXd3rhLobvNkxNK/p7KLlUQQcy
-	 CY1KJgASLARTw==
-Date: Thu, 1 Feb 2024 18:20:14 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Conor Dooley <conor.dooley@microchip.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Frank Wunderlich <linux@fw-web.de>,
-	Michael Turquette <mturquette@baylibre.com>,
+	id 1rVbjb-0000000906C-0SSa;
+	Thu, 01 Feb 2024 18:24:25 +0000
+Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
+	by mxout2.routing.net (Postfix) with ESMTP id 15933615E9;
+	Thu,  1 Feb 2024 18:24:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1706811856;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=FM4cDbc05aFm+s5YmM2e5LZAZcaagXIlqsb3avH/P4U=;
+	b=tt1qRTliyFFSUHcMcviRe+VcJNZonpH26E8dcYVWElrfwmBvJGErlNZWu9vcwvtc29m+ld
+	fR5Hj/0LQVl3HMVwY/cVXoz7qP3B5GC5yngrA0SoYtLeEawZL16MajOChDPaxfV48q8kDC
+	8n6YvCFuSVht9AX1E3/QJ/H+Ao8fK7M=
+Received: from frank-G5.. (fttx-pool-217.61.148.248.bambit.de [217.61.148.248])
+	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id F247440533;
+	Thu,  1 Feb 2024 18:24:14 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sam Shih <sam.shih@mediatek.com>,
-	Daniel Golle <daniel@makrotopia.org>, linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: Aw: Re:  Re: [PATCH v3 1/2] dt-bindings: reset: mediatek: add
- MT7988 reset IDs
-Message-ID: <20240201-gutless-rising-692b7fa45f65@spud>
-References: <20240117184111.62371-1-linux@fw-web.de>
- <20240117184111.62371-2-linux@fw-web.de>
- <20240118-calcium-krypton-3c787b8d1912@spud>
- <trinity-afc4f48e-65e1-46ee-a78b-1d670cc0f310-1705615200900@3c-app-gmx-bap21>
- <43f946cc-07e1-48c5-9b31-40fc9bc93037@collabora.com>
- <20240119-dupe-obligate-707b3a01b356@spud>
- <0EA6A126-DDC0-4E9F-BEBC-FD018B08CA84@public-files.de>
- <20240201-goes-passable-0ba841d36bc3@wendy>
- <trinity-2aef55db-42e0-4f58-9c43-696311a96eb8-1706797383340@3c-app-gmx-bap28>
+	Conor Dooley <conor+dt@kernel.org>
+Subject: [PATCH v4 0/2] Add reset controller to mt7988 infracfg
+Date: Thu,  1 Feb 2024 19:24:07 +0100
+Message-Id: <20240201182409.39878-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="W2Ee5I31/3TVyJ4S"
-Content-Disposition: inline
-In-Reply-To: <trinity-2aef55db-42e0-4f58-9c43-696311a96eb8-1706797383340@3c-app-gmx-bap28>
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: c0fd09d3-398d-40e5-b864-847111d8224c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_102022_807175_AA3DD8EA 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20240201_102423_493167_186D6BC0 
+X-CRM114-Status: UNSURE (   7.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,42 +72,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Frank Wunderlich <frank-w@public-files.de>
 
---W2Ee5I31/3TVyJ4S
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Infracfg on mt7988 supports reset controller function which is
+needed to get lvts thermal working.
 
-On Thu, Feb 01, 2024 at 03:23:03PM +0100, Frank Wunderlich wrote:
-> > Gesendet: Donnerstag, 01. Februar 2024 um 14:11 Uhr
-> > Von: "Conor Dooley" <conor.dooley@microchip.com>
-> > I suspect I was asking for a commit message that explains why these
-> > numbers don't continue in sequence. With that,
-> > Acked-by: Conor Dooley <conor.dooley@microchip.com>
-> >
-> > Cheers,
-> > Conor.
->=20
-> OK, i would add this to commit message:
->=20
-> "Value is starting again from 0 because resets are used in another driver
-> than existing constants."
+changes:
+ v4:
+   - changed commit message of dt-bindings patch to include information
+     about starting from 0 again suggested by Conor Dooley.
+ v3:
+   - start resets on RST0 offset (LVTS is RST1)
+   - rename offset constants with MT7988 prefix (else collision with reset.h)
+ v2:
+   - change value of constant to 0 from 9
+   - add missing SoB and commit-message for binding-patch
 
-s/driver/device/ and sure.
 
---W2Ee5I31/3TVyJ4S
-Content-Type: application/pgp-signature; name="signature.asc"
+Frank Wunderlich (2):
+  dt-bindings: reset: mediatek: add MT7988 infracfg reset IDs
+  clk: mediatek: add infracfg reset controller for mt7988
 
------BEGIN PGP SIGNATURE-----
+ drivers/clk/mediatek/clk-mt7988-infracfg.c    | 23 +++++++++++++++++++
+ .../reset/mediatek,mt7988-resets.h            |  6 +++++
+ 2 files changed, 29 insertions(+)
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZbvg3gAKCRB4tDGHoIJi
-0neOAP41G78/o62ed4G9kWo32xu5055qvUh0jEZVW3ivqp4iXwD/dXNffyuUL2Et
-q3Abdf9njDBMF+vEwjQbZoOQo11BgAs=
-=3tdX
------END PGP SIGNATURE-----
+-- 
+2.34.1
 
---W2Ee5I31/3TVyJ4S--
 
