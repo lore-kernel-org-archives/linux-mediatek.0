@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8925C48296
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 18:01:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22ADCC4829E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 18:01:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2TI8f8x/5Y4Kr2Vxqhq6Wi5Pu8tSR0ICKXsQgkmtu64=; b=B23+gsHPoLwz3r2uLHWbZh/Ht/
-	u/WFXtSGWKWfGeqPbrUdNNaGOpHPZ412lqmXxVLPmJuu7ztgJo8tQHSwHttSet4nhCHQPsIc99/w4
-	lQbDwXyg5PIVx10aRWzCpeDj7G43p5GENeUIz7M2a/b44R11IWyinbxqYChY6sIQn0NOGfEc2Ccxq
-	cfBtKkahaYNbJcnkrvChzSVnlqoQ7iv4APjx3zj5P5QOzZ68A4tfaFXGfTEMlG6bzK9m5G2FuTBFA
-	53oMurvOacF5X80UVOwzFbOFDG1/xt/anh0UvPoSmV1ZJcdD6siCrEljhCM3lI1SmBQH3b7CE0wZO
-	huHx9T/A==;
+	bh=b1ggeAlqOeW6cDM2I0g1Lrz7ya2O6mo0S8OfUg915BU=; b=dGNIUr68Ja6GiRSWVGQOMJKFc7
+	KF/nJDpOD+TBTm5gPYt6PH+4rPCAzHg4zLxvVTOG5DbveYhXEvFFiQJwslxdplgAF3eHsnvdQtwU+
+	a6iLCvjQMgRDCT/7SEYbjhn1SCdeYUGZsvzlFsOkA1X/HBETbw03C36vcvzE8PGgrHlZXdcaB1odF
+	X/C2HQsqVoYh1ePQffJG/qYc9F5cxL3xt+AkCl61v1b85P/YsV2DhZQmbQYfe9f9LMsOmbZaxhZeZ
+	mCIajacllmom9U9HsBjhITfRnIykgStj6w2iWDjZdiT6IZi/bVX381QdedxKlymn5eTVNoAdsA9DO
+	4AzhLHWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVbNf-00000008tjy-227D;
-	Thu, 01 Feb 2024 18:01:43 +0000
+	id 1rVbNk-00000008tny-0kux;
+	Thu, 01 Feb 2024 18:01:48 +0000
 Received: from fllv0015.ext.ti.com ([198.47.19.141])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVbNH-00000008tMs-3q6i;
-	Thu, 01 Feb 2024 18:01:22 +0000
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
-	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 411I18Cq049598;
-	Thu, 1 Feb 2024 12:01:08 -0600
+	id 1rVbNI-00000008tOs-3gxN;
+	Thu, 01 Feb 2024 18:01:23 +0000
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 411I17wO049584;
+	Thu, 1 Feb 2024 12:01:07 -0600
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1706810468;
-	bh=2TI8f8x/5Y4Kr2Vxqhq6Wi5Pu8tSR0ICKXsQgkmtu64=;
+	s=ti-com-17Q1; t=1706810467;
+	bh=b1ggeAlqOeW6cDM2I0g1Lrz7ya2O6mo0S8OfUg915BU=;
 	h=From:To:CC:Subject:Date:In-Reply-To:References;
-	b=eQYWuq+oUvJbHoGPrNtq5ir2oEU+L6SOYJqp9NBnd33fXSL4HVVqGRItaEb/8bljG
-	 eMA/EbEc+6q2xUmQllVAKB/7BvHQ0EGMpuQMXf2i/5DQoFh5Wfri4pJCxDQe1X6ht2
-	 El6qPNeH9O1v32iCzBKRC12kD+U2W2OYLu1U9+eM=
-Received: from DLEE108.ent.ti.com (dlee108.ent.ti.com [157.170.170.38])
-	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 411I18tF047528
+	b=BhjY8BIDCh34TqTsuxsNCp59BD1rh4Iiu3NvrhnJGpkouoZ0xzRgSAoNY4vAPZdPZ
+	 gs+ymMss+pkmQL/x6MLDYhVTdPO2FLT5r0jJqXPVt4NO3l0ep76M+kHielPchllER4
+	 fMTgVca4uiNbwX7Om2ggWGKxfTBw0mKtGGw4C28g=
+Received: from DFLE109.ent.ti.com (dfle109.ent.ti.com [10.64.6.30])
+	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 411I17n2029189
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 1 Feb 2024 12:01:08 -0600
-Received: from DLEE112.ent.ti.com (157.170.170.23) by DLEE108.ent.ti.com
- (157.170.170.38) with Microsoft SMTP Server (version=TLS1_2,
+	Thu, 1 Feb 2024 12:01:07 -0600
+Received: from DFLE108.ent.ti.com (10.64.6.29) by DFLE109.ent.ti.com
+ (10.64.6.30) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Thu, 1
  Feb 2024 12:01:07 -0600
-Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DLEE112.ent.ti.com
- (157.170.170.23) with Microsoft SMTP Server (version=TLS1_2,
+Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DFLE108.ent.ti.com
+ (10.64.6.29) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
  Frontend Transport; Thu, 1 Feb 2024 12:01:07 -0600
 Received: from lelvsmtp6.itg.ti.com ([10.249.42.149])
-	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 411I12Gl117221;
-	Thu, 1 Feb 2024 12:01:07 -0600
+	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 411I12Gk117221;
+	Thu, 1 Feb 2024 12:01:06 -0600
 From: Andrew Davis <afd@ti.com>
 To: Sebastian Reichel <sre@kernel.org>,
         Manivannan Sadhasivam
@@ -72,9 +72,9 @@ CC: <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-actions@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
         <linux-arm-kernel@lists.infradead.org>,
         <linux-mediatek@lists.infradead.org>, Andrew Davis <afd@ti.com>
-Subject: [PATCH 07/18] power: reset: axxia-reset: Use devm_register_sys_off_handler(RESTART)
-Date: Thu, 1 Feb 2024 12:00:51 -0600
-Message-ID: <20240201180102.70395-8-afd@ti.com>
+Subject: [PATCH 06/18] power: reset: brcm-kona-reset: Use devm_register_sys_off_handler(RESTART)
+Date: Thu, 1 Feb 2024 12:00:50 -0600
+Message-ID: <20240201180102.70395-7-afd@ti.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240201180102.70395-1-afd@ti.com>
 References: <20240201180102.70395-1-afd@ti.com>
@@ -83,8 +83,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_100120_180942_EBE6E4EA 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20240201_100121_064676_4648074C 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,54 +103,52 @@ Use device life-cycle managed register function to simplify probe.
 
 Signed-off-by: Andrew Davis <afd@ti.com>
 ---
- drivers/power/reset/axxia-reset.c | 16 ++++++----------
- 1 file changed, 6 insertions(+), 10 deletions(-)
+ drivers/power/reset/brcm-kona-reset.c | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/power/reset/axxia-reset.c b/drivers/power/reset/axxia-reset.c
-index 24946766760c3..797bf6773860e 100644
---- a/drivers/power/reset/axxia-reset.c
-+++ b/drivers/power/reset/axxia-reset.c
-@@ -26,11 +26,10 @@
- #define SC_EFUSE_INT_STATUS	0x180c
- #define   EFUSE_READ_DONE	(1<<31)
+diff --git a/drivers/power/reset/brcm-kona-reset.c b/drivers/power/reset/brcm-kona-reset.c
+index d05728b1db097..4bb956c8f24f8 100644
+--- a/drivers/power/reset/brcm-kona-reset.c
++++ b/drivers/power/reset/brcm-kona-reset.c
+@@ -13,11 +13,10 @@
+ #define RSTMGR_WR_PASSWORD_SHIFT	8
+ #define RSTMGR_WR_ACCESS_ENABLE		1
  
--static struct regmap *syscon;
+-static void __iomem *kona_reset_base;
 -
--static int axxia_restart_handler(struct notifier_block *this,
--				 unsigned long mode, void *cmd)
-+static int axxia_restart_handler(struct sys_off_data *data)
+-static int kona_reset_handler(struct notifier_block *this,
+-				unsigned long mode, void *cmd)
++static int kona_reset_handler(struct sys_off_data *data)
  {
-+	struct regmap *syscon = data->cb_data;
++	void __iomem *kona_reset_base = data->cb_data;
 +
- 	/* Access Key (0xab) */
- 	regmap_write(syscon, SC_CRIT_WRITE_KEY, 0xab);
- 	/* Select internal boot from 0xffff0000 */
-@@ -44,14 +43,10 @@ static int axxia_restart_handler(struct notifier_block *this,
+ 	/*
+ 	 * A soft reset is triggered by writing a 0 to bit 0 of the soft reset
+ 	 * register. To write to that register we must first write the password
+@@ -31,18 +30,17 @@ static int kona_reset_handler(struct notifier_block *this,
  	return NOTIFY_DONE;
  }
  
--static struct notifier_block axxia_restart_nb = {
--	.notifier_call = axxia_restart_handler,
+-static struct notifier_block kona_reset_nb = {
+-	.notifier_call = kona_reset_handler,
 -	.priority = 128,
 -};
 -
- static int axxia_reset_probe(struct platform_device *pdev)
+ static int kona_reset_probe(struct platform_device *pdev)
  {
- 	struct device *dev = &pdev->dev;
-+	struct regmap *syscon;
- 	int err;
++	void __iomem *kona_reset_base;
++
+ 	kona_reset_base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(kona_reset_base))
+ 		return PTR_ERR(kona_reset_base);
  
- 	syscon = syscon_regmap_lookup_by_phandle(dev->of_node, "syscon");
-@@ -60,7 +55,8 @@ static int axxia_reset_probe(struct platform_device *pdev)
- 		return PTR_ERR(syscon);
- 	}
+-	return register_restart_handler(&kona_reset_nb);
++	return devm_register_sys_off_handler(&pdev->dev, SYS_OFF_MODE_RESTART,
++					     128, kona_reset_handler,
++					     kona_reset_base);
+ }
  
--	err = register_restart_handler(&axxia_restart_nb);
-+	err = devm_register_sys_off_handler(&pdev->dev, SYS_OFF_MODE_RESTART,
-+					    128, axxia_restart_handler, syscon);
- 	if (err)
- 		dev_err(dev, "cannot register restart handler (err=%d)\n", err);
- 
+ static const struct of_device_id of_match[] = {
 -- 
 2.39.2
 
