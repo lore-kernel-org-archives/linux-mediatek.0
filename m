@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E3DDC4828C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3BBEC47DDB
 	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 12:53:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,37 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZJa2H8jgYSSCJoRUZEBOBXttRcKREalWI5p9DjRjg1c=; b=RiWcI0IpZlC3GHZnsPiaFWk0ai
-	iBMfClt1PfnSML1za+VM742zvNDU0nXvKsFZ3ZLwnkhY/TO4T73/SPYGCwYPMXdzKuRGHRw2JyOiG
-	mEOcdhmymD8zf1GikV3TrrmgJT+0nmdrXxItr4zYXwkcD0/xqROhjRrR4yU/gzKCNMZU+8SAc3Ib9
-	AfoapcEqkMKiq879+91vS8d4cn8WKk8CHkg8fSqQixe/po6dHWE+RuTSd9G7n1PTWKaw2DUIe1Q2b
-	dpm2MkNdjyqaK537beZ+OrRftNtCDJCJeWadtbgCtcx3/Osz/VLKzte6V5gRNW0VkpmIr3GOd9NYz
-	y/IdlKgg==;
+	bh=dF9i6doY1+qh+gEdfQ2z/z0KJz518IXRZfjpfWvwGxo=; b=uai6VlAJ1MR3aZdVcQ4X81yYjs
+	31CKOoo5eYtoXYhqnTJkD6V1cPccfsVjgLLAIKdAkUn5bwq3Ggd5b0EW2ZFSGXnJTad6abf2htNia
+	0p5uNeWhUrGua5lbv/NIufzFbHYN8ma0EMZ5PxnyZzAZHDEpkGsYGXjUj10VAUhJF3sXnVOLJNBBX
+	Vd2hr03dVvSXOw+b83QW8qs19joQrrceA8OGYaawRRIcbcWjT31A6cun2t9R07yAwcZ2WF+nL/t8S
+	WoUFcdVdPKRH9EDFa81cL00dQhLBd8PuebhmPKBDuZjhWwIldUFc2OWv6brRVn2JxbQHFBxDvyIy+
+	RVDU669A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVWZP-00000007qUq-2jji;
-	Thu, 01 Feb 2024 12:53:31 +0000
+	id 1rVWZQ-00000007qVN-0Uis;
+	Thu, 01 Feb 2024 12:53:32 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVWZA-00000007qFu-2ltn;
+	id 1rVWZA-00000007qFW-2l82;
 	Thu, 01 Feb 2024 12:53:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706791994;
-	bh=MYH+i/BtT+AMUARp16Q2uQJXlZ3LL8lZ/S/2XJY1/hY=;
+	s=mail; t=1706791992;
+	bh=NNwf1FU4iKYIcxafPzqdiApb/zXktJGn2dDrtHe6Qpw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=yI0OXJ0ThXQiHmKqKqrs85H1Pyh52sjE5BWediXGJgifnLTkgWwH9HOEUs9ahG3D6
-	 NJRhY9/awMkEDcptGzmnhtpVlGPgUru7Ot/2eg8qonpxgRlzlnXKCKM/KABHWXT/i8
-	 AM8td7pEJYZC23KvT0ER9gJyS5hDghc9CGdzVcolSOgCZIE3d0lG4o+mvng/br1P32
-	 4mmzRaQlZKyYKb5Ss4PxbElMbQoQb2t7ak673q8HB6PQMLmQ1DDT+7jzDadtadDsGa
-	 lXZYx3nVeXfsukdWIljxAhU8r/mFh4+fc1ojUGiL9qW0izyPlWgsqY/2YQNFeHt1cj
-	 GGQRNzSC4TIJw==
+	b=GdFp4wvJjncBQA1ogeJl0aGoGyBzQAiBITHtesgYh+D8i99YIOKoDHBN9JMOXYWrd
+	 XieFPVy9ILHGZxJKGMtBBNgbGvuZW5zNf2mSxyzXIWIfXh1o4ZjXFjM8k40qjAy7xU
+	 zhi8QdKx1Q8pZvl2pnB+gj45HUcDmWxD5Hj/zckFnXLc02XQFHxc4NpLOjSNetFXXg
+	 TBJa+uGUQlwZ8/XX3X741vIbuK2cqrpf9qpJXLbAkUyMgOqvQNnvxGrO4/1/KURz3g
+	 mHPQGHjrcCrmIkZUjN/ofAuiOMlpNqAbmPfMTs5d8xZbWCzmzYU7BlVu6qwkGJ7o3G
+	 FpO0XvB3xEBhQ==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 20AEA378208D;
-	Thu,  1 Feb 2024 12:53:13 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id EC492378208C;
+	Thu,  1 Feb 2024 12:53:11 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -59,17 +59,17 @@ Cc: p.zabel@pengutronix.de,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com,
 	wenst@chromium.org
-Subject: [PATCH 2/3] drm/mediatek: Perform iounmap on simple DDP component destruction
-Date: Thu,  1 Feb 2024 13:53:03 +0100
-Message-ID: <20240201125304.218467-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 1/3] drm/mediatek: drm_ddp_comp: Fix and cleanup DDP component CRTC search
+Date: Thu,  1 Feb 2024 13:53:02 +0100
+Message-ID: <20240201125304.218467-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240201125304.218467-1-angelogioacchino.delregno@collabora.com>
 References: <20240201125304.218467-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_045316_861501_FBCD8C21 
-X-CRM114-Status: GOOD (  15.01  )
+X-CRM114-CacheID: sfid-20240201_045316_866160_61FF3F3C 
+X-CRM114-Status: GOOD (  16.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,102 +84,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a new mtk_ddp_comp_destroy() function and call it in the teardown
-path of mtk_drm_drv to make sure that we unmap the iospace of the
-simple DDP components.
+Finding a possible CRTC by DDP component is done by first checking
+static routes in three paths (main, external, third/extra path) and
+then, if not found, we check for dynamic connection on a per-route
+basis because, for example, on some SoCs the main route may output
+to either a DSI display or DisplayPort and this is finally done by
+assigning a CRTC mask to `possible_crtcs`, found with function
+mtk_drm_find_comp_in_ddp_conn_path(): being that a mask the possible
+values are BIT(x) and, if no CRTC is possible, zero.
 
-While at it, also fix iounmapping on mtk_ddp_comp_init() error path.
+Problem is, both mtk_drm_find_possible_crtc_by_comp() and the
+aforementioned function are trying to return a negative error value
+(but it's unsigned int!) if no CRTC was found, which is wrong for
+multiple obvious reasons.
 
-Fixes: ff1395609e20 ("drm/mediatek: Move mtk_ddp_comp_init() from sub driver to DRM driver")
+Cleanup both functions, so that:
+ - mtk_drm_find_comp_in_ddp_conn_path() returns a signed integer
+   with a negative number for error, or a bit/bitmask of the found
+   possible CRTC; and
+ - mtk_drm_find_possible_crtc_by_comp() always returns either a
+   bitmask of the possible CRTC, or zero if none available.
+
+Fixes: 01389b324c97 ("drm/mediatek: Add connector dynamic selection capability")
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 38 ++++++++++++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  4 ++-
- 3 files changed, 41 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 44 ++++++++++-----------
+ 1 file changed, 21 insertions(+), 23 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index c13359eeb3cd..539b526a6b0a 100644
+index a9b5a21cde2d..c13359eeb3cd 100644
 --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
 +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -626,8 +626,11 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
- 
- 	priv->regs = of_iomap(node, 0);
- 	priv->clk = of_clk_get(node, 0);
--	if (IS_ERR(priv->clk))
-+	if (IS_ERR(priv->clk)) {
-+		iounmap(priv->regs);
-+		priv->regs = NULL;
- 		return PTR_ERR(priv->clk);
-+	}
- 
- #if IS_REACHABLE(CONFIG_MTK_CMDQ)
- 	ret = cmdq_dev_get_client_reg(comp->dev, &priv->cmdq_reg, 0);
-@@ -639,3 +642,36 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
- 
- 	return 0;
- }
-+
-+void mtk_ddp_comp_destroy(struct mtk_ddp_comp *comp)
-+{
-+	struct mtk_ddp_comp_dev *priv;
-+
-+	if (!comp || !comp->dev)
-+		return;
-+
-+	/* Complex components are destroyed with their own remove callback */
-+	if (type == MTK_DISP_AAL ||
-+	    type == MTK_DISP_BLS ||
-+	    type == MTK_DISP_CCORR ||
-+	    type == MTK_DISP_COLOR ||
-+	    type == MTK_DISP_GAMMA ||
-+	    type == MTK_DISP_MERGE ||
-+	    type == MTK_DISP_OVL ||
-+	    type == MTK_DISP_OVL_2L ||
-+	    type == MTK_DISP_PWM ||
-+	    type == MTK_DISP_RDMA ||
-+	    type == MTK_DPI ||
-+	    type == MTK_DP_INTF ||
-+	    type == MTK_DSI)
-+		return;
-+
-+	priv = dev_get_drvdata(comp->dev);
-+	if (!priv)
-+		return;
-+
-+	if (priv->regs) {
-+		iounmap(priv->regs);
-+		priv->regs = NULL;
-+	}
-+}
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index 15b2eafff438..43372b416a3f 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -318,6 +318,7 @@ unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
- 						struct device *dev);
- int mtk_ddp_comp_init(struct device_node *comp_node, struct mtk_ddp_comp *comp,
- 		      unsigned int comp_id);
-+void mtk_ddp_comp_destroy(struct mtk_ddp_comp *comp);
- enum mtk_ddp_comp_type mtk_ddp_comp_get_type(unsigned int comp_id);
- void mtk_ddp_write(struct cmdq_pkt *cmdq_pkt, unsigned int value,
- 		   struct cmdq_client_reg *cmdq_reg, void __iomem *regs,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 14a1e0157cc4..89b6c31a1511 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -944,8 +944,10 @@ static void mtk_drm_remove(struct platform_device *pdev)
- 	component_master_del(&pdev->dev, &mtk_drm_ops);
- 	pm_runtime_disable(&pdev->dev);
- 	of_node_put(private->mutex_node);
--	for (i = 0; i < DDP_COMPONENT_DRM_ID_MAX; i++)
-+	for (i = 0; i < DDP_COMPONENT_DRM_ID_MAX; i++) {
-+		mtk_ddp_comp_destroy(&private->ddp_comp[i]);
- 		of_node_put(private->comp_node[i]);
-+	}
+@@ -513,29 +513,25 @@ static bool mtk_drm_find_comp_in_ddp(struct device *dev,
+ 	return false;
  }
  
- static int mtk_drm_sys_prepare(struct device *dev)
+-static unsigned int mtk_drm_find_comp_in_ddp_conn_path(struct device *dev,
+-						       const struct mtk_drm_route *routes,
+-						       unsigned int num_routes,
+-						       struct mtk_ddp_comp *ddp_comp)
++static int mtk_drm_find_comp_in_ddp_conn_path(struct device *dev,
++					      const struct mtk_drm_route *routes,
++					      unsigned int num_routes,
++					      struct mtk_ddp_comp *ddp_comp)
+ {
+-	int ret;
+-	unsigned int i;
++	int i;
+ 
+-	if (!routes) {
+-		ret = -EINVAL;
+-		goto err;
++	if (!routes || !num_routes) {
++		DRM_ERROR("No connection routes specified!\n");
++		return -EINVAL;
+ 	}
+ 
+ 	for (i = 0; i < num_routes; i++)
+ 		if (dev == ddp_comp[routes[i].route_ddp].dev)
+ 			return BIT(routes[i].crtc_id);
+ 
+-	ret = -ENODEV;
+-err:
+-
+-	DRM_INFO("Failed to find comp in ddp table, ret = %d\n", ret);
++	DRM_ERROR("Failed to find component in ddp table\n");
+ 
+-	return 0;
++	return -ENODEV;
+ }
+ 
+ int mtk_ddp_comp_get_id(struct device_node *node,
+@@ -557,22 +553,24 @@ unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
+ 						struct device *dev)
+ {
+ 	struct mtk_drm_private *private = drm->dev_private;
+-	unsigned int ret = 0;
++	int ret;
+ 
+ 	if (mtk_drm_find_comp_in_ddp(dev, private->data->main_path, private->data->main_len,
+ 				     private->ddp_comp))
+-		ret = BIT(0);
++		return BIT(0);
+ 	else if (mtk_drm_find_comp_in_ddp(dev, private->data->ext_path,
+ 					  private->data->ext_len, private->ddp_comp))
+-		ret = BIT(1);
++		return BIT(1);
+ 	else if (mtk_drm_find_comp_in_ddp(dev, private->data->third_path,
+ 					  private->data->third_len, private->ddp_comp))
+-		ret = BIT(2);
+-	else
+-		ret = mtk_drm_find_comp_in_ddp_conn_path(dev,
+-							 private->data->conn_routes,
+-							 private->data->num_conn_routes,
+-							 private->ddp_comp);
++		return BIT(2);
++
++	ret = mtk_drm_find_comp_in_ddp_conn_path(dev, private->data->conn_routes,
++						 private->data->num_conn_routes,
++						 private->ddp_comp);
++	/* No CRTC is available: return a zero mask */
++	if (ret < 0)
++		return 0;
+ 
+ 	return ret;
+ }
 -- 
 2.43.0
 
