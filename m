@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E034EC47DDB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 10:46:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32CA3C47DDF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 10:46:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MZDJ75sVzQ1kzj2Ubxy3agW5oK/vRaK2nSMjmXE4Qxk=; b=FTukz+LdPP4hO+wFD5nfRXXVik
-	gG6x57rHCfxeUf5/A2EeFUGo8iRC6rFO80S+nwiJGmGdbIiEQa4JYZNAEFvNl/uQRbMuY1XZqsV6h
-	gP/aorqgzdsOQLW8r0rzdLCCQABGyDwmoFHc56O31Jd6Ptih7DyqpFDLPyUeAyzLTGNxWnXLVXmyA
-	/xgjCO9d2L+ccDPj/60YNo00Mx0M4EJWvr+SOX2w6IlRx09fW9kAEa04V430TGrH9VZ/r96Aieitm
-	ruRQo+sDofyhN34rFFuWvcxHjk20Y4fyzvo9GfCMfvJ7+36kdScrbllV+MwXWHLfLdL0oCxJH0eo9
-	+yI9uXVw==;
+	bh=y+QMyc8d2IYI8HbXEVtZ9JNutm9Ot2Ns0GOzAfSCuCM=; b=KK+EEftpaYio9rO5pAIp0GDc4u
+	KCcHplz1VadAkPzkAKC2M1WS0gady/ixqVzsvns7/qS6X+S4HeRIzFm8NirNNZmDSLtN3DbGur2N/
+	WMfHVetTk/qZzP2uWzLCNu+C9mto7/WKy/7rN2gu5EVyHBD62QCBzb7UjPoxc9WdFLRrlhQN60/Or
+	enOhuFZQTqjz3AxQmvELyn4J4B4/IPRG5DTmMtavnS/tYogawzGpGOl54KYPb/bZeZ75svZ47MFt9
+	MMVU79vaUFKB1/wmt8uJwnXMbDHRI3+bLik3Rq3jm7KZtZVeYqF72TxxG6g9USsrOuqDuS6vnVlMy
+	x6GasJrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVUan-00000007VYB-1SlJ;
-	Thu, 01 Feb 2024 10:46:49 +0000
+	id 1rVUaq-00000007VaT-3ZcH;
+	Thu, 01 Feb 2024 10:46:52 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVTcB-00000007K7W-0OAT;
-	Thu, 01 Feb 2024 09:44:12 +0000
+	id 1rVTcF-00000007KAM-128t;
+	Thu, 01 Feb 2024 09:44:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706780648;
-	bh=tgkduB+n8TnPBdHD34UzC0Y9amJQZ87VxYvXvbidh5s=;
+	s=mail; t=1706780654;
+	bh=C8AitdaoBIcKR44uJyMOG7G5OG2flvelnSS+vt/CmMQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=COkrPBTELEdgUUw1zxH8TCCZAhOECqgODg9ObmY/iHVrzT6zx+KGGFEnsIjwaFu3S
-	 /cYBHOSaqyO/t4llcmdYV3BW/FPuWOENxtY1V7viRuGd/Hay2xM0hibmap6YeEK5H7
-	 FJBltL1adkWbv9ZQj/YFD6Xl09evMBgNSWQR76/H1n66HGgO6ZVG2QDjInbZdgeWOn
-	 Ui4qRfyqcvTmaGBEmoRHZjjSCGjCPuKguHN0idawSqXAf3zcbxMi43Wge5czY8xqPZ
-	 UBaDOlWgv577avKafS5SqJ7OYlRYcp8Y0AkqavqQhyuDH+NtK/8fUkvETKrCasT7kZ
-	 nYmco7T+TGoQg==
+	b=aiMu/SrPTKm2kxhZRA6E9jWpsDX3XVEtQszdCaYdOt1e3PgBMcz7W2LBKZWW2NKsY
+	 fbBEFwmakwX8tJagXc/r9eVw3mFrJmTo97T5CYuZ2dPl7Jbvwy4yUe1BPeLP4+JmgQ
+	 PRHs+PkZo1yA6arQHYef+CWIOGnZDCsRSNIAj69ZReCmZuefM8r3RT7MN2kmx4NMKI
+	 2EhLS9kEP6W+Tv9KuyVugrQSZMqz4UbHV6o3dBVIFdrWQx1QoRFVTEewpTdUqzUwxW
+	 g2HA4IQX+CqOTgVqzB0LT1ARlRuWF2X+WLIvdzr6KmoCEonSQ/epZip6NaJu0/1qJF
+	 iT8/DaHH8/Buw==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0CAEB3782081;
-	Thu,  1 Feb 2024 09:44:06 +0000 (UTC)
-Message-ID: <c117f6a7-59ea-4291-aa70-7c363d928ff7@collabora.com>
-Date: Thu, 1 Feb 2024 10:44:06 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7C092378208F;
+	Thu,  1 Feb 2024 09:44:12 +0000 (UTC)
+Message-ID: <e43a6f6e-6e95-4cbd-9e73-49c129d5724e@collabora.com>
+Date: Thu, 1 Feb 2024 10:44:12 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 09/21] virt: geniezone: Add vcpu support
+Subject: Re: [PATCH v9 06/21] virt: geniezone: Add set_user_memory_region for
+ vm
 Content-Language: en-US
 To: Yi-De Wu <yi-de.wu@mediatek.com>,
  Yingshiuan Pan <yingshiuan.pan@mediatek.com>,
@@ -67,14 +68,14 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  Willix Yeh <chi-shen.yeh@mediatek.com>,
  Kevenny Hsieh <kevenny.hsieh@mediatek.com>
 References: <20240129083302.26044-1-yi-de.wu@mediatek.com>
- <20240129083302.26044-10-yi-de.wu@mediatek.com>
+ <20240129083302.26044-7-yi-de.wu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240129083302.26044-10-yi-de.wu@mediatek.com>
+In-Reply-To: <20240129083302.26044-7-yi-de.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_014411_357576_6645B25F 
-X-CRM114-Status: GOOD (  32.44  )
+X-CRM114-CacheID: sfid-20240201_014415_531861_21608FE3 
+X-CRM114-Status: GOOD (  32.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,393 +93,291 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 29/01/24 09:32, Yi-De Wu ha scritto:
 > From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
 > 
-> VMM use this interface to create vcpu instance which is a fd, and this
-> fd will be for any vcpu operations, such as setting vcpu registers and
-> accepts the most important ioctl GZVM_VCPU_RUN which requests GenieZone
-> hypervisor to do context switch to execute VM's vcpu context.
+> Direct use of physical memory from VMs is forbidden and designed to be
+> dictated to the privilege models managed by GenieZone hypervisor for
+> security reason. With the help of gzvm-ko, the hypervisor would be able
+> to manipulate memory as objects. And the memory management is highly
+> integrated with ARM 2-stage translation tables to convert VA to IPA to
+> PA under proper security measures required by protected VMs.
 > 
 > Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
 > Signed-off-by: Jerry Wang <ze-yu.wang@mediatek.com>
-> Signed-off-by: kevenny hsieh <kevenny.hsieh@mediatek.com>
 > Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
 > Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
 > ---
->   arch/arm64/geniezone/Makefile           |   2 +-
->   arch/arm64/geniezone/gzvm_arch_common.h |  30 +++
->   arch/arm64/geniezone/vcpu.c             |  80 ++++++++
->   arch/arm64/geniezone/vm.c               |  12 ++
->   drivers/virt/geniezone/Makefile         |   2 +-
->   drivers/virt/geniezone/gzvm_vcpu.c      | 251 ++++++++++++++++++++++++
->   drivers/virt/geniezone/gzvm_vm.c        |   5 +
->   include/linux/gzvm_drv.h                |  23 +++
->   include/uapi/linux/gzvm.h               | 163 +++++++++++++++
->   9 files changed, 566 insertions(+), 2 deletions(-)
->   create mode 100644 arch/arm64/geniezone/vcpu.c
->   create mode 100644 drivers/virt/geniezone/gzvm_vcpu.c
+>   arch/arm64/geniezone/gzvm_arch_common.h |   2 +
+>   arch/arm64/geniezone/vm.c               |   9 ++
+>   drivers/virt/geniezone/Makefile         |   1 -
+>   drivers/virt/geniezone/gzvm_vm.c        | 110 ++++++++++++++++++++++++
+>   include/linux/gzvm_drv.h                |  40 +++++++++
+>   include/uapi/linux/gzvm.h               |  26 ++++++
+>   6 files changed, 187 insertions(+), 1 deletion(-)
 > 
-> diff --git a/arch/arm64/geniezone/Makefile b/arch/arm64/geniezone/Makefile
-> index 2957898cdd05..69b0a4abeab0 100644
-> --- a/arch/arm64/geniezone/Makefile
-> +++ b/arch/arm64/geniezone/Makefile
-> @@ -4,6 +4,6 @@
->   #
->   include $(srctree)/drivers/virt/geniezone/Makefile
->   
-> -gzvm-y += vm.o
-> +gzvm-y += vm.o vcpu.o
->   
->   obj-$(CONFIG_MTK_GZVM) += gzvm.o
 > diff --git a/arch/arm64/geniezone/gzvm_arch_common.h b/arch/arm64/geniezone/gzvm_arch_common.h
-> index 383af0829f11..684c35e2d9bc 100644
+> index fdaa7849353d..2f66e496dfae 100644
 > --- a/arch/arm64/geniezone/gzvm_arch_common.h
 > +++ b/arch/arm64/geniezone/gzvm_arch_common.h
-> @@ -11,9 +11,15 @@
+> @@ -11,6 +11,7 @@
 >   enum {
 >   	GZVM_FUNC_CREATE_VM = 0,
 >   	GZVM_FUNC_DESTROY_VM = 1,
-> +	GZVM_FUNC_CREATE_VCPU = 2,
-> +	GZVM_FUNC_DESTROY_VCPU = 3,
->   	GZVM_FUNC_SET_MEMREGION = 4,
-> +	GZVM_FUNC_RUN = 5,
-> +	GZVM_FUNC_GET_ONE_REG = 8,
-> +	GZVM_FUNC_SET_ONE_REG = 9,
+> +	GZVM_FUNC_SET_MEMREGION = 4,
 >   	GZVM_FUNC_PROBE = 12,
->   	GZVM_FUNC_ENABLE_CAP = 13,
-> +	GZVM_FUNC_INFORM_EXIT = 14,
 >   	NR_GZVM_FUNC,
 >   };
->   
-> @@ -25,9 +31,15 @@ enum {
+> @@ -23,6 +24,7 @@ enum {
 >   
 >   #define MT_HVC_GZVM_CREATE_VM		GZVM_HCALL_ID(GZVM_FUNC_CREATE_VM)
 >   #define MT_HVC_GZVM_DESTROY_VM		GZVM_HCALL_ID(GZVM_FUNC_DESTROY_VM)
-> +#define MT_HVC_GZVM_CREATE_VCPU		GZVM_HCALL_ID(GZVM_FUNC_CREATE_VCPU)
-> +#define MT_HVC_GZVM_DESTROY_VCPU	GZVM_HCALL_ID(GZVM_FUNC_DESTROY_VCPU)
->   #define MT_HVC_GZVM_SET_MEMREGION	GZVM_HCALL_ID(GZVM_FUNC_SET_MEMREGION)
-> +#define MT_HVC_GZVM_RUN			GZVM_HCALL_ID(GZVM_FUNC_RUN)
-> +#define MT_HVC_GZVM_GET_ONE_REG		GZVM_HCALL_ID(GZVM_FUNC_GET_ONE_REG)
-> +#define MT_HVC_GZVM_SET_ONE_REG		GZVM_HCALL_ID(GZVM_FUNC_SET_ONE_REG)
+> +#define MT_HVC_GZVM_SET_MEMREGION	GZVM_HCALL_ID(GZVM_FUNC_SET_MEMREGION)
 >   #define MT_HVC_GZVM_PROBE		GZVM_HCALL_ID(GZVM_FUNC_PROBE)
->   #define MT_HVC_GZVM_ENABLE_CAP		GZVM_HCALL_ID(GZVM_FUNC_ENABLE_CAP)
-> +#define MT_HVC_GZVM_INFORM_EXIT		GZVM_HCALL_ID(GZVM_FUNC_INFORM_EXIT)
 >   
 >   /**
->    * gzvm_hypcall_wrapper() - the wrapper for hvc calls
-> @@ -54,4 +66,22 @@ static inline u16 get_vmid_from_tuple(unsigned int tuple)
->   	return (u16)(tuple >> 16);
->   }
->   
-> +static inline u16 get_vcpuid_from_tuple(unsigned int tuple)
-> +{
-> +	return (u16)(tuple & 0xffff);
-> +}
-> +
-> +static inline unsigned int
-> +assemble_vm_vcpu_tuple(u16 vmid, u16 vcpuid)
-> +{
-> +	return ((unsigned int)vmid << 16 | vcpuid);
-
-A union could be useful for this one too.
-
-> +}
-> +
-> +static inline void
-> +disassemble_vm_vcpu_tuple(unsigned int tuple, u16 *vmid, u16 *vcpuid)
-> +{
-> +	*vmid = get_vmid_from_tuple(tuple);
-> +	*vcpuid = get_vcpuid_from_tuple(tuple);
-> +}
-> +
->   #endif /* __GZVM_ARCH_COMMON_H__ */
-> diff --git a/arch/arm64/geniezone/vcpu.c b/arch/arm64/geniezone/vcpu.c
-> new file mode 100644
-> index 000000000000..f6670bd77ad6
-> --- /dev/null
-> +++ b/arch/arm64/geniezone/vcpu.c
-> @@ -0,0 +1,80 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2023 MediaTek Inc.
-> + */
-> +
-> +#include <linux/arm-smccc.h>
-> +#include <linux/err.h>
-> +#include <linux/uaccess.h>
-> +
-> +#include <linux/gzvm.h>
-> +#include <linux/gzvm_drv.h>
-> +#include "gzvm_arch_common.h"
-> +
-> +int gzvm_arch_vcpu_update_one_reg(struct gzvm_vcpu *vcpu, __u64 reg_id,
-> +				  bool is_write, __u64 *data)
-> +{
-> +	struct arm_smccc_res res;
-> +	unsigned long a1;
-> +	int ret;
-> +
-> +	a1 = assemble_vm_vcpu_tuple(vcpu->gzvm->vm_id, vcpu->vcpuid);
-
-	if (is_write)
-		return gzvm_hypcall_wrapper(MT_HVC_GZVM_GET_ONE_REG,
-					   a1, reg_id, *data, 0, 0, 0, 0, &res);
-
-	ret = gzvm_hypcall_wrapper(MT_HVC_GZVM_GET_ONE_REG,
-					   a1, reg_id, 0, 0, 0, 0, 0, &res);
-	if (ret)
-		return ret;
-
-	*data = res.a1;
-
-	return 0;
-}
-
-
-> +	if (!is_write) {
-> +		ret = gzvm_hypcall_wrapper(MT_HVC_GZVM_GET_ONE_REG,
-> +					   a1, reg_id, 0, 0, 0, 0, 0, &res);
-
-		if (ret)
-			return ret;
-		*data = res.a1;
-	}
-
-> +		if (ret == 0)
-> +			*data = res.a1;
-> +	} else {
-> +		ret = gzvm_hypcall_wrapper(MT_HVC_GZVM_SET_ONE_REG,
-> +					   a1, reg_id, *data, 0, 0, 0, 0, &res);
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +int gzvm_arch_vcpu_run(struct gzvm_vcpu *vcpu, __u64 *exit_reason)
-> +{
-> +	struct arm_smccc_res res;
-> +	unsigned long a1;
-> +	int ret;
-> +
-> +	a1 = assemble_vm_vcpu_tuple(vcpu->gzvm->vm_id, vcpu->vcpuid);
-> +	ret = gzvm_hypcall_wrapper(MT_HVC_GZVM_RUN, a1, 0, 0, 0, 0, 0,
-> +				   0, &res);
-> +	*exit_reason = res.a1;
-> +	return ret;
-> +}
-> +
-> +int gzvm_arch_destroy_vcpu(u16 vm_id, int vcpuid)
-> +{
-> +	struct arm_smccc_res res;
-> +	unsigned long a1;
-> +
-> +	a1 = assemble_vm_vcpu_tuple(vm_id, vcpuid);
-> +	gzvm_hypcall_wrapper(MT_HVC_GZVM_DESTROY_VCPU, a1, 0, 0, 0, 0, 0, 0,
-> +			     &res);
-> +
-> +	return 0;
-> +}
-> +
-> +/**
-> + * gzvm_arch_create_vcpu() - Call smc to gz hypervisor to create vcpu
-> + * @vm_id: vm id
-> + * @vcpuid: vcpu id
-> + * @run: Virtual address of vcpu->run
-> + *
-> + * Return: The wrapper helps caller to convert geniezone errno to Linux errno.
-> + */
-> +int gzvm_arch_create_vcpu(u16 vm_id, int vcpuid, void *run)
-> +{
-> +	struct arm_smccc_res res;
-> +	unsigned long a1, a2;
-> +	int ret;
-> +
-> +	a1 = assemble_vm_vcpu_tuple(vm_id, vcpuid);
-> +	a2 = (__u64)virt_to_phys(run);
-> +	ret = gzvm_hypcall_wrapper(MT_HVC_GZVM_CREATE_VCPU, a1, a2, 0, 0, 0, 0,
-> +				   0, &res);
-> +
-> +	return ret;
-> +}
 > diff --git a/arch/arm64/geniezone/vm.c b/arch/arm64/geniezone/vm.c
-> index b6a2bfa98b43..1fac10b98c11 100644
+> index a15bad13c2ee..998d6498ac5e 100644
 > --- a/arch/arm64/geniezone/vm.c
 > +++ b/arch/arm64/geniezone/vm.c
-> @@ -37,6 +37,18 @@ int gzvm_hypcall_wrapper(unsigned long a0, unsigned long a1,
->   	return gzvm_err_to_errno(res->a0);
+> @@ -49,6 +49,15 @@ int gzvm_arch_probe(void)
+>   	return 0;
 >   }
 >   
-> +int gzvm_arch_inform_exit(u16 vm_id)
+> +int gzvm_arch_set_memregion(u16 vm_id, size_t buf_size,
+> +			    phys_addr_t region)
 > +{
 > +	struct arm_smccc_res res;
-> +	int ret;
 > +
-> +	ret = gzvm_hypcall_wrapper(MT_HVC_GZVM_INFORM_EXIT, vm_id, 0, 0, 0, 0, 0, 0, &res);
-> +	if (ret)
-> +		return -ENXIO;
-> +
-> +	return 0;
+> +	return gzvm_hypcall_wrapper(MT_HVC_GZVM_SET_MEMREGION, vm_id,
+> +				    buf_size, region, 0, 0, 0, 0, &res);
 > +}
 > +
->   int gzvm_arch_probe(void)
->   {
->   	struct arm_smccc_res res;
+>   /**
+>    * gzvm_arch_create_vm() - create vm
+>    * @vm_type: VM type. Only supports Linux VM now.
 > diff --git a/drivers/virt/geniezone/Makefile b/drivers/virt/geniezone/Makefile
-> index 59fc4510a843..a630b919cda5 100644
+> index 066efddc0b9c..25614ea3dea2 100644
 > --- a/drivers/virt/geniezone/Makefile
 > +++ b/drivers/virt/geniezone/Makefile
-> @@ -7,4 +7,4 @@
+> @@ -7,4 +7,3 @@
 >   GZVM_DIR ?= ../../../drivers/virt/geniezone
 >   
->   gzvm-y := $(GZVM_DIR)/gzvm_main.o $(GZVM_DIR)/gzvm_vm.o \
-> -	  $(GZVM_DIR)/gzvm_mmu.o
-> +	  $(GZVM_DIR)/gzvm_mmu.o $(GZVM_DIR)/gzvm_vcpu.o
-> diff --git a/drivers/virt/geniezone/gzvm_vcpu.c b/drivers/virt/geniezone/gzvm_vcpu.c
-> new file mode 100644
-> index 000000000000..39c471d0d257
-> --- /dev/null
-> +++ b/drivers/virt/geniezone/gzvm_vcpu.c
-> @@ -0,0 +1,251 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2023 MediaTek Inc.
-> + */
-> +
-> +#include <asm/sysreg.h>
-> +#include <linux/anon_inodes.h>
-> +#include <linux/device.h>
-> +#include <linux/file.h>
-> +#include <linux/mm.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/slab.h>
-> +#include <linux/gzvm_drv.h>
-> +
-> +/* maximum size needed for holding an integer */
-> +#define ITOA_MAX_LEN 12
-> +
-> +static long gzvm_vcpu_update_one_reg(struct gzvm_vcpu *vcpu,
-> +				     void __user *argp,
-> +				     bool is_write)
+>   gzvm-y := $(GZVM_DIR)/gzvm_main.o $(GZVM_DIR)/gzvm_vm.o
+> -
+
+Don't remove this line here - actually, don't introduce it in the first place...
+
+> diff --git a/drivers/virt/geniezone/gzvm_vm.c b/drivers/virt/geniezone/gzvm_vm.c
+> index d5e850af924a..326cc9e93d92 100644
+> --- a/drivers/virt/geniezone/gzvm_vm.c
+> +++ b/drivers/virt/geniezone/gzvm_vm.c
+> @@ -15,6 +15,115 @@
+>   static DEFINE_MUTEX(gzvm_list_lock);
+>   static LIST_HEAD(gzvm_list);
+>   
+> +u64 gzvm_gfn_to_hva_memslot(struct gzvm_memslot *memslot, u64 gfn)
 > +{
-> +	struct gzvm_one_reg reg;
-> +	void __user *reg_addr;
-> +	u64 data = 0;
-> +	u64 reg_size;
-> +	long ret;
+> +	u64 offset = gfn - memslot->base_gfn;
+
+I'd check if `gfn` is less than `memslot->base_gfn` - that's a potential security
+issue.
+
+This means that this function should be
+
+int gzvm_gfn_to_hva_memslot(struct gzvm_memslot *memslot, u64 gfn, u64 *hva_memslot)
+
+if (gfn < memslot->base_gfn)
+	return -EINVAL
+
+offset = gfn - memslot->base_gfn;
+*hva_memslot = memslot->userspace_addr + offset * PAGE_SIZE:
+
+return 0;
+
 > +
-> +	if (copy_from_user(&reg, argp, sizeof(reg)))
+> +	return memslot->userspace_addr + offset * PAGE_SIZE;
+> +}
+> +
+> +/**
+> + * register_memslot_addr_range() - Register memory region to GenieZone
+> + * @gzvm: Pointer to struct gzvm
+> + * @memslot: Pointer to struct gzvm_memslot
+> + *
+> + * Return: 0 for success, negative number for error
+> + */
+> +static int
+> +register_memslot_addr_range(struct gzvm *gzvm, struct gzvm_memslot *memslot)
+> +{
+> +	struct gzvm_memory_region_ranges *region;
+> +	u32 buf_size = PAGE_SIZE * 2;
+> +	u64 gfn;
+> +
+> +	region = alloc_pages_exact(buf_size, GFP_KERNEL);
+> +	if (!region)
+> +		return -ENOMEM;
+> +
+> +	region->slot = memslot->slot_id;
+> +	region->total_pages = memslot->npages;
+> +	gfn = memslot->base_gfn;
+> +	region->gpa = PFN_PHYS(gfn);
+> +
+> +	if (gzvm_arch_set_memregion(gzvm->vm_id, buf_size,
+> +				    virt_to_phys(region))) {
+> +		pr_err("Failed to register memregion to hypervisor\n");
+> +		free_pages_exact(region, buf_size);
 > +		return -EFAULT;
-> +
-> +	reg_addr = (void __user *)reg.addr;
-> +	reg_size = (reg.id & GZVM_REG_SIZE_MASK) >> GZVM_REG_SIZE_SHIFT;
-> +	reg_size = BIT(reg_size);
-> +
-> +	if (reg_size != 1 && reg_size != 2 && reg_size != 4 && reg_size != 8)
-> +		return -EINVAL;
-> +
-
-	if (!is_write)
-		return -EOPNOTSUPP;
-
-	/* GZ hypervisor would filter out invalid vcpu register access */
-	if (copy_from_user(&data, reg_addr, reg_size))
-		return -EFAULT;
-
-> +	if (is_write) {
-> +		/* GZ hypervisor would filter out invalid vcpu register access */
-> +		if (copy_from_user(&data, reg_addr, reg_size))
-> +			return -EFAULT;
-> +	} else {
-> +		return -EOPNOTSUPP;
 > +	}
 > +
-> +	ret = gzvm_arch_vcpu_update_one_reg(vcpu, reg.id, is_write, &data);
-> +
-> +	if (ret)
-> +		return ret;
-> +
+> +	free_pages_exact(region, buf_size);
 > +	return 0;
 > +}
 > +
 > +/**
-> + * gzvm_vcpu_run() - Handle vcpu run ioctl, entry point to guest and exit
-> + *		     point from guest
-> + * @vcpu: Pointer to struct gzvm_vcpu
-> + * @argp: Pointer to struct gzvm_vcpu_run in userspace
+> + * gzvm_vm_ioctl_set_memory_region() - Set memory region of guest
+> + * @gzvm: Pointer to struct gzvm.
+> + * @mem: Input memory region from user.
 > + *
-> + * Return:
-> + * * 0			- Success.
-> + * * Negative		- Failure.
+> + * Return: 0 for success, negative number for error
+> + *
+> + * -EXIO		- The memslot is out-of-range
+> + * -EFAULT		- Cannot find corresponding vma
+> + * -EINVAL		- Region size and VMA size mismatch
 > + */
-> +static long gzvm_vcpu_run(struct gzvm_vcpu *vcpu, void __user *argp)
+> +static int
+> +gzvm_vm_ioctl_set_memory_region(struct gzvm *gzvm,
+> +				struct gzvm_userspace_memory_region *mem)
 > +{
-> +	bool need_userspace = false;
-> +	u64 exit_reason = 0;
+> +	struct vm_area_struct *vma;
+> +	struct gzvm_memslot *memslot;
+> +	unsigned long size;
+> +	__u32 slot;
 > +
-> +	if (copy_from_user(vcpu->run, argp, sizeof(struct gzvm_vcpu_run)))
+
+Remove __u32 slot.....
+
+	if (mem->slot >= GZVM_MAX_MEM_REGION)
+		return -ENXIO;
+
+	memslot = &gzvm->memslot[mem->slot];
+
+> +	slot = mem->slot;
+> +	if (slot >= GZVM_MAX_MEM_REGION)
+> +		return -ENXIO;
+> +	memslot = &gzvm->memslot[slot];
+> + > +	vma = vma_lookup(gzvm->mm, mem->userspace_addr);
+> +	if (!vma)
 > +		return -EFAULT;
 > +
-> +	for (int i = 0; i < ARRAY_SIZE(vcpu->run->padding1); i++) {
-> +		if (vcpu->run->padding1[i])
-> +			return -EINVAL;
-> +	}
+> +	size = vma->vm_end - vma->vm_start;
+> +	if (size != mem->memory_size)
+> +		return -EINVAL;
 > +
-> +	if (vcpu->run->immediate_exit == 1)
-> +		return -EINTR;
+> +	memslot->base_gfn = __phys_to_pfn(mem->guest_phys_addr);
+> +	memslot->npages = size >> PAGE_SHIFT;
+> +	memslot->userspace_addr = mem->userspace_addr;
+> +	memslot->vma = vma;
+> +	memslot->flags = mem->flags;
+> +	memslot->slot_id = mem->slot;
+> +	return register_memslot_addr_range(gzvm, memslot);
+> +}
 > +
-> +	while (!need_userspace && !signal_pending(current)) {
-> +		gzvm_arch_vcpu_run(vcpu, &exit_reason);
+> +/* gzvm_vm_ioctl() - Ioctl handler of VM FD */
+> +static long gzvm_vm_ioctl(struct file *filp, unsigned int ioctl,
+> +			  unsigned long arg)
+> +{
+> +	long ret;
+> +	void __user *argp = (void __user *)arg;
+> +	struct gzvm *gzvm = filp->private_data;
 > +
-> +		switch (exit_reason) {
-> +		case GZVM_EXIT_MMIO:
-> +			need_userspace = true;
-> +			break;
-> +		/**
-> +		 * it's geniezone's responsibility to fill corresponding data
-> +		 * structure
-> +		 */
-> +		case GZVM_EXIT_HYPERCALL:
-> +			fallthrough;
-> +		case GZVM_EXIT_EXCEPTION:
-> +			fallthrough;
-> +		case GZVM_EXIT_DEBUG:
-> +			fallthrough;
-> +		case GZVM_EXIT_FAIL_ENTRY:
-> +			fallthrough;
-> +		case GZVM_EXIT_INTERNAL_ERROR:
-> +			fallthrough;
-> +		case GZVM_EXIT_SYSTEM_EVENT:
-> +			fallthrough;
-> +		case GZVM_EXIT_SHUTDOWN:
-> +			need_userspace = true;
-> +			break;
-> +		case GZVM_EXIT_IRQ:
-> +			fallthrough;
-> +		case GZVM_EXIT_GZ:
-> +			break;
-> +		case GZVM_EXIT_UNKNOWN:
-> +			fallthrough;
-> +		default:
-> +			pr_err("vcpu unknown exit\n");
-> +			need_userspace = true;
+> +	switch (ioctl) {
+> +	case GZVM_SET_USER_MEMORY_REGION: {
+> +		struct gzvm_userspace_memory_region userspace_mem;
+> +
+> +		if (copy_from_user(&userspace_mem, argp, sizeof(userspace_mem))) {
+
+			return -EFAULT;
+
+> +			ret = -EFAULT;
 > +			goto out;
 > +		}
+> +		ret = gzvm_vm_ioctl_set_memory_region(gzvm, &userspace_mem);
+> +		break;
 > +	}
-> +
+> +	default:
+> +		ret = -ENOTTY;
+> +	}
 > +out:
-> +	if (copy_to_user(argp, vcpu->run, sizeof(struct gzvm_vcpu_run)))
-> +		return -EFAULT;
-> +	if (signal_pending(current)) {
-> +		// invoke hvc to inform gz to map memory
-
-/* invoke ... */
-
-> +		gzvm_arch_inform_exit(vcpu->gzvm->vm_id);
-> +		return -ERESTARTSYS;
-> +	}
-> +	return 0;
+> +	return ret;
 > +}
+> +
+>   static void gzvm_destroy_vm(struct gzvm *gzvm)
+>   {
+>   	pr_debug("VM-%u is going to be destroyed\n", gzvm->vm_id);
+> @@ -42,6 +151,7 @@ static int gzvm_vm_release(struct inode *inode, struct file *filp)
+>   
+>   static const struct file_operations gzvm_vm_fops = {
+>   	.release        = gzvm_vm_release,
+> +	.unlocked_ioctl = gzvm_vm_ioctl,
+>   	.llseek		= noop_llseek,
+>   };
+>   
+> diff --git a/include/linux/gzvm_drv.h b/include/linux/gzvm_drv.h
+> index f1dce23838e4..81696b7b67cc 100644
+> --- a/include/linux/gzvm_drv.h
+> +++ b/include/linux/gzvm_drv.h
+> @@ -7,9 +7,16 @@
+>   #define __GZVM_DRV_H__
+>   
+>   #include <linux/list.h>
+> +#include <linux/mm.h>
+>   #include <linux/mutex.h>
+>   #include <linux/gzvm.h>
+>   
+> +/*
+> + * For the normal physical address, the highest 12 bits should be zero, so we
+> + * can mask bit 62 ~ bit 52 to indicate the error physical address
+> + */
+> +#define GZVM_PA_ERR_BAD (0x7ffULL << 52)
+> +
+>   #define INVALID_VM_ID   0xffff
+>   
+>   /*
+> @@ -27,10 +34,39 @@
+>    * The following data structures are for data transferring between driver and
+>    * hypervisor, and they're aligned with hypervisor definitions
+>    */
+> +#define GZVM_MAX_MEM_REGION	10
+> +
+> +/* struct mem_region_addr_range - Identical to ffa memory constituent */
+> +struct mem_region_addr_range {
+> +	/* the base IPA of the constituent memory region, aligned to 4 kiB */
+> +	__u64 address;
+> +	/* the number of 4 kiB pages in the constituent memory region. */
+> +	__u32 pg_cnt;
+> +	__u32 reserved;
+> +};
+> +
+> +struct gzvm_memory_region_ranges {
+> +	__u32 slot;
+> +	__u32 constituent_cnt;
+> +	__u64 total_pages;
+> +	__u64 gpa;
+> +	struct mem_region_addr_range constituents[];
+> +};
+> +
+> +/* struct gzvm_memslot - VM's memory slot descriptor */
+> +struct gzvm_memslot {
+> +	u64 base_gfn;			/* begin of guest page frame */
+> +	unsigned long npages;		/* number of pages this slot covers */
+> +	unsigned long userspace_addr;	/* corresponding userspace va */
+> +	struct vm_area_struct *vma;	/* vma related to this userspace addr */
+
+kerneldoc please
+
+> +	u32 flags;
+> +	u32 slot_id;
+> +};
+>   
 
 Regards,
 Angelo
-
 
 
