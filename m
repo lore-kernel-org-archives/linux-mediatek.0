@@ -4,113 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17132C48286
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 21:47:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F248C48286
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 21:52:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:
-	Subject:Cc:To:From:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
-	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ONdXqAS27cKeOgWX4XGTKCxg4rE0mzWElHVnnYMMb0Y=; b=e3aqA/m/BtNsxylrzvP9Kb6Duu
-	SiYypq5HrVCgfzcXVZpiscb14WbX6pc8o/FShIpke1zXfRuck8K+xGmqvam6eBUfBQ/jVLN9a5sbx
-	iHLqy0J39u5Nh+s11d5cKAfh/KznjfzNmDShiOzZBpyiuSi/+K2oaW7DGmpA9Gw0eSzGRX7xCkSns
-	BtanZje7W1+zfRajU8iuIQh/Vbc5ZWjyKTZcYYgdyELSS9solqPnDUqX2U2NHjJQRV7flXfaoF1YF
-	k00tQDXQXxs6r7kcbjWqB2GrrArW0RLUZpYbAQMlDMTp4Qv3LgmizG91S3BWlpEsbA72gg0GDuIzf
-	m2VDL6yw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=sS1eE5byfPvULPUEvTd4F/Dpjur59sxc0vbJNDTJi90=; b=ProbtDRakg03+iVrEUHHm9bgw5
+	DN+2Jfx1I6OsnH/ka1Uc8EZlHIldcBDms4NFJapfb+b2n0BWBiDppywLKP3a0p2S4njmGMne3wlm5
+	UIqRvMoKo+s/ayHuZZN4GlwyEnKjlSLorVysgyGPKNYtShaJr4CkYzT+mHNkVE/TMiRCFlxwiRXBf
+	eR9PnqRihH1oBwc/h6sQzR3Z/CE9+kS38Sclnq/cR+l+w+zwRE0m8tLfBhJB15Q5sZILTRphvEGOs
+	Jcny+zFBbzZFE2veryQDf5JH43BMoY+pIYJAZNlMdDjt3SjFPqQND7rHML/LwGkwD3bZukCIZkaAO
+	GnvWRP5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVeuJ-00000009RX8-07nI;
-	Thu, 01 Feb 2024 21:47:39 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rVezK-00000009SNu-3tfG;
+	Thu, 01 Feb 2024 21:52:50 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVeuF-00000009RWA-09xh;
-	Thu, 01 Feb 2024 21:47:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 88A646218F;
-	Thu,  1 Feb 2024 21:47:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EEEB5C433C7;
-	Thu,  1 Feb 2024 21:47:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1706824052;
-	bh=ONdXqAS27cKeOgWX4XGTKCxg4rE0mzWElHVnnYMMb0Y=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KYhAJw//yARcM3TA6pVCkI4LUiBLE5XWbQdyIJ2IOE9XeeW9PXuRT0u1fpPxxrkwp
-	 Hurjt/dBf8xwi23T1FksMdv9e36XHyjvhrDNFhBSr1xRnTYLMYbJE3ILCL/Xokm/MD
-	 5zQO0eFXQidwjXeacacwmmo5pMdGivYcXVl5OsSlyzb4uDD6zF3QHkW/ipNCSyCrkX
-	 ruFySuh4tDJV4Rf4YFiYpBgTsdWdhvZKAcl5M+3wneiWVFJ2zo1QtBfWDecyRoxa73
-	 fETXEmGDyXWVSu/j1Xloaznpi7OcrAoyx70CgInqn+hTw2H52XDK3rA5SorsXzUwVT
-	 KByKrTZWMbAOA==
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-Date: Thu, 01 Feb 2024 23:47:13 +0200
-Message-Id: <CYU2MG4IOJ0Q.2UJOTK999FCCC@suppilovahvero>
-From: "Jarkko Sakkinen" <jarkko@kernel.org>
-To: "Mark Brown" <broonie@kernel.org>, "Greg Kroah-Hartman"
- <gregkh@linuxfoundation.org>
-Cc: =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- <kernel@pengutronix.de>, "Moritz Fischer" <mdf@kernel.org>, "Wu Hao"
- <hao.wu@intel.com>, "Xu Yilun" <yilun.xu@intel.com>, "Tom Rix"
- <trix@redhat.com>, <linux-fpga@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, "Alexander Aring" <alex.aring@gmail.com>,
- "Stefan Schmidt" <stefan@datenfreihafen.org>, "Miquel Raynal"
- <miquel.raynal@bootlin.com>, "David S. Miller" <davem@davemloft.net>, "Eric
- Dumazet" <edumazet@google.com>, "Jakub Kicinski" <kuba@kernel.org>, "Paolo
- Abeni" <pabeni@redhat.com>, <linux-wpan@vger.kernel.org>,
- <netdev@vger.kernel.org>, "Lars-Peter Clausen" <lars@metafoo.de>, "Michael
- Hennerich" <Michael.Hennerich@analog.com>, "Jonathan Cameron"
- <jic23@kernel.org>, <linux-iio@vger.kernel.org>, "Dmitry Torokhov"
- <dmitry.torokhov@gmail.com>, <linux-input@vger.kernel.org>, "Ulf Hansson"
- <ulf.hansson@linaro.org>, "Rayyan Ansari" <rayyan@ansari.sh>, "Andy
- Shevchenko" <andriy.shevchenko@linux.intel.com>, "Jonathan Cameron"
- <Jonathan.Cameron@huawei.com>, "Martin Tuma"
- <martin.tuma@digiteqautomotive.com>, "Mauro Carvalho Chehab"
- <mchehab@kernel.org>, <linux-media@vger.kernel.org>, "Sergey Kozlov"
- <serjk@netup.ru>, "Arnd Bergmann" <arnd@arndb.de>, "Yang Yingliang"
- <yangyingliang@huawei.com>, <linux-mmc@vger.kernel.org>, "Richard
- Weinberger" <richard@nod.at>, "Vignesh Raghavendra" <vigneshr@ti.com>, "Rob
- Herring" <robh@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, "Michal
- Simek" <michal.simek@amd.com>, "Amit Kumar Mahapatra via Alsa-devel"
- <alsa-devel@alsa-project.org>, <linux-mtd@lists.infradead.org>, "Martin
- Blumenstingl" <martin.blumenstingl@googlemail.com>, "Geert Uytterhoeven"
- <geert+renesas@glider.be>, =?utf-8?q?Pali_Roh=C3=A1r?= <pali@kernel.org>,
- "Simon Horman" <horms@kernel.org>, "Ronald Wahl" <ronald.wahl@raritan.com>,
- "Benson Leung" <bleung@chromium.org>, "Tzung-Bi Shih" <tzungbi@kernel.org>,
- "Guenter Roeck" <groeck@chromium.org>, <chrome-platform@lists.linux.dev>,
- "Max Filippov" <jcmvbkbc@gmail.com>, <linux-spi@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, "Bjorn Andersson"
- <andersson@kernel.org>, "Konrad Dybcio" <konrad.dybcio@linaro.org>,
- <linux-arm-msm@vger.kernel.org>, "Matthias Brugger"
- <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
- <angelogioacchino.delregno@collabora.com>,
- <linux-mediatek@lists.infradead.org>, "Thomas Zimmermann"
- <tzimmermann@suse.de>, "Javier Martinez Canillas" <javierm@redhat.com>,
- "Amit Kumar Mahapatra" <amit.kumar-mahapatra@amd.com>,
- <dri-devel@lists.freedesktop.org>, <linux-fbdev@vger.kernel.org>,
- <linux-staging@lists.linux.dev>, "Viresh Kumar" <vireshk@kernel.org>, "Rui
- Miguel Silva" <rmfrfs@gmail.com>, "Johan Hovold" <johan@kernel.org>, "Alex
- Elder" <elder@kernel.org>, <greybus-dev@lists.linaro.org>, "Peter Huewe"
- <peterhuewe@gmx.de>, "Jason Gunthorpe" <jgg@ziepe.ca>,
- <linux-integrity@vger.kernel.org>, "Herve Codina"
- <herve.codina@bootlin.com>, "Alan Stern" <stern@rowland.harvard.edu>, "Aaro
- Koskinen" <aaro.koskinen@iki.fi>, "Krzysztof Kozlowski"
- <krzysztof.kozlowski@linaro.org>, <linux-usb@vger.kernel.org>, "Helge
- Deller" <deller@gmx.de>, "Dario Binacchi"
- <dario.binacchi@amarulasolutions.com>, "Kalle Valo" <kvalo@kernel.org>,
- "Dmitry Antipov" <dmantipov@yandex.ru>, <libertas-dev@lists.infradead.org>,
- <linux-wireless@vger.kernel.org>, "Jonathan Corbet" <corbet@lwn.net>,
- "James Clark" <james.clark@arm.com>, "Bjorn Helgaas" <bhelgaas@google.com>,
- <linux-doc@vger.kernel.org>
-Subject: Re: [PATCH v2 00/33] spi: get rid of some legacy macros
-X-Mailer: aerc 0.15.2
-References: <cover.1705944943.git.u.kleine-koenig@pengutronix.de>
- <2024012417-prissy-sworn-bc55@gregkh>
- <c1e38a30-5075-4d01-af24-ac684e77cf29@sirena.org.uk>
-In-Reply-To: <c1e38a30-5075-4d01-af24-ac684e77cf29@sirena.org.uk>
+	id 1rVezH-00000009SLe-2gFo;
+	Thu, 01 Feb 2024 21:52:49 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1rVez0-0004CR-11;
+	Thu, 01 Feb 2024 21:52:30 +0000
+Date: Thu, 1 Feb 2024 21:52:20 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Bc-bocun Chen <bc-bocun.chen@mediatek.com>,
+	Steven Liu <steven.liu@mediatek.com>,
+	John Crispin <john@phrozen.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org
+Subject: [PATCH 1/2] dt-bindings: phy: mediatek,xfi-tphy: add new bindings
+Message-ID: <702afb0c1246d95c90b22e57105304028bdd3083.1706823233.git.daniel@makrotopia.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_134735_191223_BE637629 
-X-CRM114-Status: GOOD (  12.79  )
+X-CRM114-CacheID: sfid-20240201_135247_697538_8D6D8075 
+X-CRM114-Status: GOOD (  12.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,25 +75,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed Jan 24, 2024 at 7:22 PM EET, Mark Brown wrote:
-> On Wed, Jan 24, 2024 at 09:13:49AM -0800, Greg Kroah-Hartman wrote:
-> > On Mon, Jan 22, 2024 at 07:06:55PM +0100, Uwe Kleine-K=C3=B6nig wrote:
->
-> > > Note that Jonathan Cameron has already applied patch 3 to his tree, i=
-t
-> > > didn't appear in a public tree though yet. I still included it here t=
-o
-> > > make the kernel build bots happy.
->
-> > Are we supposed to take the individual changes in our different
-> > subsystem trees, or do you want them all to go through the spi tree?
->
-> Given that the final patch removes the legacy interfaces I'm expecting
-> to take them via SPI.
+Add bindings for the MediaTek XFI T-PHY Ethernet SerDes PHY found in the
+MediaTek MT7988 SoC which can operate at various interfaces modes:
 
-+1
+via USXGMII PCS:
+ * USXGMII
+ * 10GBase-R
+ * 5GBase-R
 
-least fuss approach
+via LynxI SGMII PCS:
+ * 2500Base-X
+ * 1000Base-X
+ * Cisco SGMII (MAC side)
 
-BR, Jarkko
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ .../bindings/phy/mediatek,xfi-tphy.yaml       | 80 +++++++++++++++++++
+ 1 file changed, 80 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,xfi-tphy.yaml
+
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,xfi-tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,xfi-tphy.yaml
+new file mode 100644
+index 0000000000000..e897118dcf7e6
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/mediatek,xfi-tphy.yaml
+@@ -0,0 +1,80 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/phy/mediatek,xfi-tphy.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek XFI T-PHY
++
++maintainers:
++  - Daniel Golle <daniel@makrotopia.org>
++
++description:
++  The MediaTek XFI SerDes T-PHY provides the physical SerDes lanes
++  used by the (10G/5G) USXGMII PCS and (1G/2.5G) LynxI PCS found in
++  MediaTek's 10G-capabale SoCs.
++
++properties:
++  $nodename:
++    pattern: "^phy@[0-9a-f]+$"
++
++  compatible:
++    const: mediatek,mt7988-xfi-tphy
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: XFI PHY clock
++      - description: XFI register clock
++
++  clock-names:
++    items:
++      - const: xfipll
++      - const: topxtal
++
++  resets:
++    items:
++      - description: PEXTP reset
++
++  mediatek,usxgmii-performance-errata:
++    $ref: /schemas/types.yaml#/definitions/flag
++    description:
++      One instance of the T-PHY on MT7988 suffers from a performance
++      problem in 10GBase-R mode which needs a work-around in the driver.
++      The work-around is enabled using this flag.
++
++  "#phy-cells":
++    const: 0
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - resets
++  - "#phy-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mediatek,mt7988-clk.h>
++    soc {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      phy@11f20000 {
++        compatible = "mediatek,mt7988-xfi-tphy";
++        reg = <0 0x11f20000 0 0x10000>;
++        clocks = <&xfi_pll CLK_XFIPLL_PLL_EN>,
++                 <&topckgen CLK_TOP_XFI_PHY_0_XTAL_SEL>;
++        clock-names = "xfipll", "topxtal";
++        resets = <&watchdog 14>;
++        mediatek,usxgmii-performance-errata;
++        #phy-cells = <0>;
++      };
++    };
++
++...
+-- 
+2.43.0
 
