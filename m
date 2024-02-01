@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2366C48286
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 22:59:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C89C4C4828D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 23:26:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nGL0/mr4ym7CKovzWGoI3YHsQx9lgpuDYhvCcxZjNiQ=; b=VNRuIuZlWHDYOeGJtyFVzB0aPW
-	mcFD/vdsFu9WGL+BLCbYcxChZK5N3UKtEGf+XaxCX6ymkLl9DZGZdgoCFy4lnYGn/lZ+SIbZ/qxOU
-	npXYutW+wN+8N+xPyp8rw901wWBJFrYVPfnXo9gf9rc5xesg7C6XmDGG8oOOjp9pQU195JW95P5h6
-	yw9BgzlYl9DXYqfIP8xCEDRyDVaAfLWVBoHn48gQu6Dl30ydw0DqfCdUSNCLF3Pq0xwCBAlvgJsYp
-	Tkjl5ZKldVYFKYKOhpp+4j+/OZZAMkx4kqM+og4cByF+7GE1jXah7V6WOmV1Ze4mcIM+G16brj3Kt
-	6PU79Q6A==;
+	bh=uqOCCFMzBcZ2VL5Z1Pts5v3IryEZHh1IG9XimJuKSKk=; b=U3Rr3QZB4cQ6Qwo5J3UFfMCxpD
+	m+XFX3k81rJ9b8H/3FM9w8jJMUmcY9dYiz1605q+x9/hiXizEkhArg1TiLUv9CnmUbWJ9ipQP9qkL
+	ZG7p87GfVUSGdmKGoB9OSo0EwODYctFfQfyGGR9MoovwdHrVhaQy9QBr/83ENYeHPjxf7CEF1WNoG
+	BlecWdeUt0BGDNhvyoDexHTH2eFPTgw2TcKUTi+JUt0chTuWsqNPsIkkodmOP6nsVgePQL0nSiKnX
+	yc9kTRsrZEwa42EI1LkDbPPMzZmY1L9k6Z0M/ki98dbpGgoQVjD0a1On1f7PsZsptFYzl4YxjG7Dg
+	9R/yN2qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVg2C-00000009bj2-3Owb;
-	Thu, 01 Feb 2024 22:59:52 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1rVgRw-00000009e5S-158r;
+	Thu, 01 Feb 2024 23:26:28 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVg29-00000009biG-2WJd;
-	Thu, 01 Feb 2024 22:59:50 +0000
-Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a3122b70439so211040266b.3;
-        Thu, 01 Feb 2024 14:59:47 -0800 (PST)
+	id 1rVgRt-00000009e4y-1Pzb;
+	Thu, 01 Feb 2024 23:26:26 +0000
+Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-a358ec50b7cso46370566b.0;
+        Thu, 01 Feb 2024 15:26:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706828386; x=1707433186; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1706829983; x=1707434783; darn=lists.infradead.org;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=nGL0/mr4ym7CKovzWGoI3YHsQx9lgpuDYhvCcxZjNiQ=;
-        b=iX1uELOXd/JcKLPWKgiRtwEVD82bsekQ5Nf80gKIqOxEQqqLKsqqvANJRb7RgtHytd
-         dyM5ZnEFkkseWKNF5BWdZMT+SdBHzzh38mHrag5kf4J02db1tPEgi8OjUM85/xkQQQlL
-         Gn+leOZwtjlwFbKK8dP4i94wdViGmpwMy6pVMRetlaq4U6eAXUCKLVjEzzgxEYLrz1Yn
-         SRLxs0fDa4dcJ2SGMqQtJHAcJREwToaqb4GCwI5rN6HDTP6DvjmHVirpGa5OjZx86SQT
-         zRcO/pkgoqqBuOytj47AML/rmKd/yD/GpMV1+W9R0jF9JvcEm43il3s9iXZrKsRhLExO
-         r/dA==
+        bh=uqOCCFMzBcZ2VL5Z1Pts5v3IryEZHh1IG9XimJuKSKk=;
+        b=M+wK9b8K98DYnaTUiayL/zsDlFt8LoLHKTnGjc7dHhC2KQdTc7Mi9J5tx2UiBbgMmu
+         xtcwgh0DxXaPgEQgkLHIPaLwMlHT/xuI+tgNRpAy3pKN68txsiKSd40qhQSjTE4sCgWI
+         EHHwQh5qFKUorPBok2OO/fRKbroz81O0o4iyWk+VMHFOyaRU+lrr/af/IthFopOxJpND
+         aMgu5FdTX2znPO+RVRMND6nlXJ819HG0CZP23Iso9vlzu0yfZJK891AA4MhFlk1sDM59
+         yO234GkKIB9OvpLQlu3+veWvFQ5gVhKM9bg5SMXnl/+WeA9wbEaGd5h78LGToaPBEiSo
+         q5Uw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706828386; x=1707433186;
+        d=1e100.net; s=20230601; t=1706829983; x=1707434783;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=nGL0/mr4ym7CKovzWGoI3YHsQx9lgpuDYhvCcxZjNiQ=;
-        b=B0Hq/MVNjYsH31mIDKzlnLK+2dXuQUzM0oDoZa93HgzGqs2KpGiBzJAjSuIKMfBmqs
-         tQGAhKhg4e2dtk+UR3n3v8X1iKvzA/gZ1prY1lwVjQw5shNc5eSSyWWF012xJc78nNeM
-         hCnGsOx+5FtatCydI9I41FMFZEm5pnWnOoMlMlr+JUbhtsQf7Bz+EWlo7TkWoMkB9m9u
-         BwZi5lQPHE6oscOV8tUULlKn+UWkrKZDCpeci9P+zfNH+odvzAC5SjxbSLylpv01JXIN
-         qpPbhl/E+p48t86n9YH30PXgY21jvO6hL7vHL0MsR13JKygcTfzuL24LHymcYY/pHpRh
-         1ssQ==
-X-Gm-Message-State: AOJu0YzT31WuKf9LoIpbDy5Ucz+Uhqf+5RZT8J1vfTm21F4Bgx7+1wG6
-	+pBTpl69oLp0af+wHhxG956yXOLRfxF+M4YGmoecnxM0o+N12OtiR7PT14eBNkc+uw==
-X-Google-Smtp-Source: AGHT+IGIXYoPWjcTqfZvpzrofTMgbbzDgUAvJiP+yvo3hM6OfjXVoirGeEBZC6wyxaP5AOcQDxoM3g==
-X-Received: by 2002:a17:906:f146:b0:a36:71d9:7986 with SMTP id gw6-20020a170906f14600b00a3671d97986mr4630299ejb.2.1706828386396;
-        Thu, 01 Feb 2024 14:59:46 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCWbexIJZO3KkOMU4Ka1YWj4w3ugV+tA5R1VgJOH4BlUoayo2dLNDWpCRqNZk5r25GjvhpbQAShdTHFhx1gN/d9Hf7JdhhoVJjyJb+HWNTyf54ofjWwnlUimXJ9xakFPLdNebQSSZVSAa/vy6HXZpBMlcZ/ASdR/VhXzHXtkeYNRqTiuE3HGbxE2Al1sF0cyIG0DsUcZX5hsbTNZAD16xHRyJuhofjJJStLnQmhv4Zh5twWmkFDMsWtH751O8G9hkuorvJd7iFysM7M7Ly9/kkpWb1CG8qowAixSPjNE+gUtL0V18XpOxBiTj90e8DPC+sF2q6sBf9D/FQwV/Ft00Y7Hc9w4ty+m+vXSvfedtIF8I1MDV+Ffv8wgnKRVzHzeXbSSVFTCNFjpDbuOGLN4HiayUU3AsbhxRVymlVPeLUxA+dA4FckyKtM6T0oDYQWejANfeAxIf6ZycjoGTqiSXX94B+pyXuAf3AczRTcmwZE80SDbO16U/Gn1p0zJ2haREHd7wTnmaILn31ob9V9MntQ1qXTMI7aXoWkk2WuhEYDpGGlsTg9sWl5HdffSxXxHHmAW1Ljh4apbskNwfV3KWXs7QWZkQHqkStjzSCO+navv2WpVic5BPvpO77iRQptK7uBxAWoHpf5cQ/BSBAaok8UJcrAbQk+vtd7CycRHO3RmCvIvALUX7OnUXDCHyePe
+        bh=uqOCCFMzBcZ2VL5Z1Pts5v3IryEZHh1IG9XimJuKSKk=;
+        b=vHvUFKeHjNftQSIZFOeuixNjMffAUXYXYgsW5YXn9yiI9ckzk5CPx7L3byGh+4WXDl
+         yeccbEZLPg0klW0ULvvNaON/34TI+WqFZCovmyDcRfHmWrSOeQUcfiHXzpHNw8NGR6NY
+         QYkiq2UsE7f4u6EW25jj5rWcUyw1gi5Gcuk+XmA1PDN7sxM7s0vkVrSpUYipguma4tn5
+         j6NIVHfKF4yCu2/z4Q1AYxQgBdlogNBy70PKGOe66TW9U7l31cqbUwRoPu+uFKJ9ZIp6
+         BGxONSuF56wpQ4Ro/lKHyKh11Es4f/Q4lfhMCQO5/cUk38c6kaTNye93rPiuImx8jOjt
+         yIIg==
+X-Gm-Message-State: AOJu0YxC1qRBISyO2PZO+Q1sev9s7MqOuWthStUuARBMd3Ol1xW+SR5b
+	cgTUXnB/iynD8v5TrvU6uouYn+sxjTGE70vyU/tY9NCiQO71c7y1
+X-Google-Smtp-Source: AGHT+IFlrCxvvGTG0ycgv+W52pIwYEVlf4h1Tfg/JJ6vHxl/5vIGyFMylIp7dWVzsKX6fEKWC/DX5Q==
+X-Received: by 2002:a17:906:553:b0:a36:f672:5dab with SMTP id k19-20020a170906055300b00a36f6725dabmr386277eja.16.1706829982626;
+        Thu, 01 Feb 2024 15:26:22 -0800 (PST)
+X-Forwarded-Encrypted: i=0; AJvYcCWf9289hy9yd1LiVZoV/ca+hZT4+cy+waP8Oy6do+fAz/MsGVbV6hbPTCBaKrvJGoSy+zYREmdkv+XfqXuB85+aaU+n8WHC2ieU/OdQ98Xr8/e1lXR4BgwBcO/biw67hjdzzzbRmcSh4GAnJ7uFmd/jSBe0XHg+neiXfNF2v/VunmEkb6CTDrW7FG9upTbyxLo9qnbt/wTDRYEDx99huRNMIQO3SkEX6092jqyOPcNYaC0sPOyUF0H4d3/zrxfSGOG96nMQc6zrnX+z7n/fbprIqM1sDp9i2UT6xnnr8MSZAeeEQfot4lx5J01me2Pm26lgyBuxCDKBveGhy7JIVo2qb3ESGE7HzCpFaf72OAH4CqasqkviUFaiHqkuF45mje0O51iouslEwIo4eDqIKKn3y0aFkq+ewLDxr8TbBJVR/XikgvclpPoZswh8B2CC/Pt9acUKY8owqJQeHsdr2PU5xOFlIueZaQ1Aqd5vQhC6BTP3gy0n+3a17UPlshj3v5o58Ca9lJQaRCsH1JWyOrGwuJR93mQSDU5wToSMBkgke57yaVQ2ppru1pR/27j0EgjhI+MD3v6VjsmHtUPCOaaNkPbn9b1Oo4XHf57wQgRojIlIqGczt8e3n/DWEMfiVqs/fUzuj3M1OEIn0m2uNNzyTIGRCWj+HXApPUIJNo3oPdtlY8qAy1O5t5vhsK3W
 Received: from skbuf ([188.25.173.195])
-        by smtp.gmail.com with ESMTPSA id h13-20020a17090634cd00b00a36ed37683fsm229705ejb.215.2024.02.01.14.59.45
+        by smtp.gmail.com with ESMTPSA id vi4-20020a170907d40400b00a3702ab71f6sm56765ejc.206.2024.02.01.15.26.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Feb 2024 14:59:46 -0800 (PST)
-Date: Fri, 2 Feb 2024 00:59:43 +0200
+        Thu, 01 Feb 2024 15:26:22 -0800 (PST)
+Date: Fri, 2 Feb 2024 01:26:19 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
 To: arinc.unal@arinc9.com
 Subject: Re: [PATCH net RFC] net: dsa: mt7530: fix link-local frames that
  ingress vlan filtering ports
-Message-ID: <20240201225943.abphuuavp7bkbrt6@skbuf>
+Message-ID: <20240201232619.nsmm7lvafuem2gou@skbuf>
 References: <65bbf40d.170a0220.a87f4.becdSMTPIN_ADDED_BROKEN@mx.google.com>
+ <65bbf40d.170a0220.a87f4.becdSMTPIN_ADDED_BROKEN@mx.google.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 In-Reply-To: <65bbf40d.170a0220.a87f4.becdSMTPIN_ADDED_BROKEN@mx.google.com>
+ <65bbf40d.170a0220.a87f4.becdSMTPIN_ADDED_BROKEN@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_145949_669866_9E00FA3C 
-X-CRM114-Status: UNSURE (   9.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240201_152625_403248_C115EF7B 
+X-CRM114-Status: GOOD (  17.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,12 +95,25 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On Thu, Feb 01, 2024 at 10:13:39PM +0300, Arınç ÜNAL via B4 Relay wrote:
-> base-commit: 4e192be1a225b7b1c4e315a44754312347628859
-> change-id: 20240201-b4-for-net-mt7530-fix-link-local-that-ingress-vlan-filtering-ports-6a2099e7ffb3
+> One remaining limitation is that the ingress port must have a PVID assigned
+> to it for the frame to be trapped to the CPU port. A PVID is set by default
+> on vlan aware and vlan unaware ports. However, when the network interface
+> that pertains to the ingress port is attached to a vlan_filtering enabled
+> bridge, the user can remove the PVID assignment from it which would prevent
+> the link-local frames from being trapped to the CPU port.
 > 
-> Best regards,
-> -- 
-> Arınç ÜNAL <arinc.unal@arinc9.com>
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> ---
+> I couldn't figure out a way to bypass VLAN table lookup for link-local
+> frames to directly trap them to the CPU port. The CPU port is hardcoded for
+> MT7530. For MT7531 and the switch on the MT7988 SoC, it depends on the port
+> matrix to choose the CPU port to trap the frames to. Port matrix and VLAN
+> table seem to go hand in hand so I don't know if this would even be
+> possible.
+> 
+> If possible to implement, link-local frames must not be influenced by the
+> VLAN table. They must always be trapped to the CPU port, and trapped
+> untagged.
 
-You sent this patch 3 times. What happened, b4 didn't work so well?
+Isn't this, in effect, what the "Leaky VLAN Enable" bit does?
 
