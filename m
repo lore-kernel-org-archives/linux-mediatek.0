@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69ADDC48286
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 18:01:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BA16C48BC4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 18:02:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2cm9ruqVmpJKRpRfi1ywbymPKB5JK0jfSdZffEo1IXY=; b=FB2FHaA5sSaeUanXIePRHUsWYM
-	PnD161ILC2CaFfqJxPFJr7WBYlbVHGC8g3h20hpZ6lsDsnumlpFLkN+fWdZuKmGwYbpnMfKWdc4i9
-	UIB+PmAM3phnPz3Jv2xC4jZKgttLtd7EIlTVGVxa3uBH6kxc2ScOwAMvIjwaEGY9e3ng74A4rNPPV
-	0Qys0m6S37RV9g6WfJKW4g9B3z8uiNo9lD9nqvoA2vpVP/NahsL+BwmR32qC0Y6r/2xucA8UG73fs
-	VpB81Li5qr3/eHZZEMpKK7+N30kqLNE3XeVtioO0vYJkJXnm66Pj8TFm3KIqPv+alGyxi/JIUC9lD
-	F7/+M/yQ==;
+	bh=+6oayEskVPsQjbi/C7/hq7hBkB4TpvJeAVLuE/xrEZs=; b=1Vj7AB8a8Z0IRjFcNBBdVya025
+	q6zF7If1mrQL3A+zkAdfWDtWtzfXsFAVrlmGRjThBO7fPjQS9UWf4liGurE3WJMdCFxVW/eqrNxUt
+	tf1BGB1atAIJx4egAL1nZWotzjjQb9bUExcy4zanE8Uv+jBcFMiTad87xULT8XfT3YmDful7Y9Ndf
+	LihsuJNmvibOvqNBROGPNseProWC8gfjEVFYl+gNArRO5+JI83QsMMqAJrsGP9R/OCqJHlwWj8vhe
+	wSN8ort+1FKp67QgMuxkg6U4TTnn7Hj8BJq4uxkF6r7xeoZplO1rOaq6vw4I8Y+k0Miazbxwr9ltr
+	d9lADi1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVbNs-00000008tvD-3nTD;
-	Thu, 01 Feb 2024 18:01:56 +0000
+	id 1rVbNx-00000008tyt-1q3d;
+	Thu, 01 Feb 2024 18:02:01 +0000
 Received: from lelv0143.ext.ti.com ([198.47.23.248])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVbNJ-00000008tNX-151C;
+	id 1rVbNJ-00000008tNY-14xC;
 	Thu, 01 Feb 2024 18:01:25 +0000
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
-	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 411I15eu051685;
-	Thu, 1 Feb 2024 12:01:05 -0600
+Received: from fllv0035.itg.ti.com ([10.64.41.0])
+	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 411I199X051703;
+	Thu, 1 Feb 2024 12:01:09 -0600
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1706810465;
-	bh=2cm9ruqVmpJKRpRfi1ywbymPKB5JK0jfSdZffEo1IXY=;
+	s=ti-com-17Q1; t=1706810469;
+	bh=+6oayEskVPsQjbi/C7/hq7hBkB4TpvJeAVLuE/xrEZs=;
 	h=From:To:CC:Subject:Date:In-Reply-To:References;
-	b=WFAKBpzZr8XH0UH/yTaauAenayP79B92nzcgKNGX5NHkoL2yMTLrJ0qHr72rYyQ4S
-	 vPO0s47dDljMp0FOjmXvrcQmQ9YtgfGhkEpf6upvRC7HV+gZNsPlAhNObawuyj41Uq
-	 6pRtn5qtcCXM3IqQVviwd1O2CbSj0ioAVPtZawJY=
-Received: from DLEE112.ent.ti.com (dlee112.ent.ti.com [157.170.170.23])
-	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 411I15UE029129
+	b=TkMHSo1BMyKoOIbCWU3HX8M28fj0T0x3o3StVz6DcodkPqNOgrTa8GWGnzto05G1T
+	 it5cLq9uOej23dW0hC4TOpK3HF215DWpczQB7yt0qw4HW/KjMOwQpPQ6MXblpItdsC
+	 gAMSfCetLVILORJaDa6kR2UokQIXzowQPIEi5RVI=
+Received: from DLEE113.ent.ti.com (dlee113.ent.ti.com [157.170.170.24])
+	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 411I19DL047540
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 1 Feb 2024 12:01:05 -0600
-Received: from DLEE101.ent.ti.com (157.170.170.31) by DLEE112.ent.ti.com
- (157.170.170.23) with Microsoft SMTP Server (version=TLS1_2,
+	Thu, 1 Feb 2024 12:01:09 -0600
+Received: from DLEE107.ent.ti.com (157.170.170.37) by DLEE113.ent.ti.com
+ (157.170.170.24) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Thu, 1
- Feb 2024 12:01:04 -0600
-Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DLEE101.ent.ti.com
- (157.170.170.31) with Microsoft SMTP Server (version=TLS1_2,
+ Feb 2024 12:01:09 -0600
+Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DLEE107.ent.ti.com
+ (157.170.170.37) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Thu, 1 Feb 2024 12:01:04 -0600
+ Frontend Transport; Thu, 1 Feb 2024 12:01:09 -0600
 Received: from lelvsmtp6.itg.ti.com ([10.249.42.149])
-	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 411I12Gg117221;
-	Thu, 1 Feb 2024 12:01:04 -0600
+	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 411I12Gn117221;
+	Thu, 1 Feb 2024 12:01:08 -0600
 From: Andrew Davis <afd@ti.com>
 To: Sebastian Reichel <sre@kernel.org>,
         Manivannan Sadhasivam
@@ -72,9 +72,9 @@ CC: <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-actions@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
         <linux-arm-kernel@lists.infradead.org>,
         <linux-mediatek@lists.infradead.org>, Andrew Davis <afd@ti.com>
-Subject: [PATCH 02/18] power: reset: atc260x-poweroff: Use devm_register_sys_off_handler(POWER_OFF)
-Date: Thu, 1 Feb 2024 12:00:46 -0600
-Message-ID: <20240201180102.70395-3-afd@ti.com>
+Subject: [PATCH 09/18] power: reset: rmobile-reset: Use devm_register_sys_off_handler(RESTART)
+Date: Thu, 1 Feb 2024 12:00:53 -0600
+Message-ID: <20240201180102.70395-10-afd@ti.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240201180102.70395-1-afd@ti.com>
 References: <20240201180102.70395-1-afd@ti.com>
@@ -83,8 +83,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_100121_455606_B084B099 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20240201_100121_449284_52F90A33 
+X-CRM114-Status: GOOD (  13.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,84 +104,75 @@ exit paths.
 
 Signed-off-by: Andrew Davis <afd@ti.com>
 ---
- drivers/power/reset/atc260x-poweroff.c | 38 ++++++++++----------------
- 1 file changed, 14 insertions(+), 24 deletions(-)
+ drivers/power/reset/rmobile-reset.c | 25 ++++++++-----------------
+ 1 file changed, 8 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/power/reset/atc260x-poweroff.c b/drivers/power/reset/atc260x-poweroff.c
-index ce2748d3282c3..e3e4621ccb1dd 100644
---- a/drivers/power/reset/atc260x-poweroff.c
-+++ b/drivers/power/reset/atc260x-poweroff.c
-@@ -19,9 +19,6 @@ struct atc260x_pwrc {
- 	int (*do_poweroff)(const struct atc260x_pwrc *pwrc, bool restart);
- };
+diff --git a/drivers/power/reset/rmobile-reset.c b/drivers/power/reset/rmobile-reset.c
+index 29c17ed2d4de9..41e98ff33a3c3 100644
+--- a/drivers/power/reset/rmobile-reset.c
++++ b/drivers/power/reset/rmobile-reset.c
+@@ -19,12 +19,9 @@
+ /* Reset Control Register 2 */
+ #define RESCNT2_PRES	0x80000000	/* Soft power-on reset */
  
--/* Global variable needed only for pm_power_off */
--static struct atc260x_pwrc *atc260x_pwrc_data;
+-static void __iomem *sysc_base2;
 -
- static int atc2603c_do_poweroff(const struct atc260x_pwrc *pwrc, bool restart)
+-static int rmobile_reset_handler(struct notifier_block *this,
+-				 unsigned long mode, void *cmd)
++static int rmobile_reset_handler(struct sys_off_data *data)
  {
- 	int ret, deep_sleep = 0;
-@@ -164,11 +161,15 @@ static int atc2609a_init(const struct atc260x_pwrc *pwrc)
- 	return ret;
+-	pr_debug("%s %lu\n", __func__, mode);
++	void __iomem *sysc_base2 = data->cb_data;
+ 
+ 	/* Let's assume we have acquired the HPB semaphore */
+ 	writel(RESCNT2_PRES, sysc_base2 + RESCNT2);
+@@ -32,20 +29,20 @@ static int rmobile_reset_handler(struct notifier_block *this,
+ 	return NOTIFY_DONE;
  }
  
--static void atc260x_pwrc_pm_handler(void)
-+static int atc260x_pwrc_pm_handler(struct sys_off_data *data)
- {
--	atc260x_pwrc_data->do_poweroff(atc260x_pwrc_data, false);
-+	struct atc260x_pwrc *pwrc = data->cb_data;
-+
-+	pwrc->do_poweroff(pwrc, false);
- 
- 	WARN_ONCE(1, "Unable to power off system\n");
-+
-+	return NOTIFY_DONE;
- }
- 
- static int atc260x_pwrc_restart_handler(struct sys_off_data *data)
-@@ -211,14 +212,14 @@ static int atc260x_pwrc_probe(struct platform_device *pdev)
- 	if (ret)
- 		return ret;
- 
--	platform_set_drvdata(pdev, priv);
+-static struct notifier_block rmobile_reset_nb = {
+-	.notifier_call = rmobile_reset_handler,
+-	.priority = 192,
+-};
 -
--	if (!pm_power_off) {
--		atc260x_pwrc_data = priv;
--		pm_power_off = atc260x_pwrc_pm_handler;
--	} else {
--		dev_warn(priv->dev, "Poweroff callback already assigned\n");
--	}
-+	ret = devm_register_sys_off_handler(priv->dev,
-+					    SYS_OFF_MODE_POWER_OFF,
-+					    SYS_OFF_PRIO_DEFAULT,
-+					    atc260x_pwrc_pm_handler,
-+					    priv);
-+	if (ret)
-+		dev_err(priv->dev, "failed to register power-off handler: %d\n",
-+			ret);
+ static int rmobile_reset_probe(struct platform_device *pdev)
+ {
++	void __iomem *sysc_base2;
+ 	int error;
  
- 	ret = devm_register_sys_off_handler(priv->dev,
- 					    SYS_OFF_MODE_RESTART,
-@@ -232,19 +233,8 @@ static int atc260x_pwrc_probe(struct platform_device *pdev)
- 	return ret;
+ 	sysc_base2 = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(sysc_base2))
+ 		return PTR_ERR(sysc_base2);
+ 
+-	error = register_restart_handler(&rmobile_reset_nb);
++	error = devm_register_sys_off_handler(&pdev->dev,
++					      SYS_OFF_MODE_RESTART,
++					      SYS_OFF_PRIO_HIGH,
++					      rmobile_reset_handler,
++					      sysc_base2);
+ 	if (error) {
+ 		dev_err(&pdev->dev,
+ 			"cannot register restart handler (err=%d)\n", error);
+@@ -55,11 +52,6 @@ static int rmobile_reset_probe(struct platform_device *pdev)
+ 	return 0;
  }
  
--static void atc260x_pwrc_remove(struct platform_device *pdev)
+-static void rmobile_reset_remove(struct platform_device *pdev)
 -{
--	struct atc260x_pwrc *priv = platform_get_drvdata(pdev);
--
--	if (atc260x_pwrc_data == priv) {
--		pm_power_off = NULL;
--		atc260x_pwrc_data = NULL;
--	}
+-	unregister_restart_handler(&rmobile_reset_nb);
 -}
 -
- static struct platform_driver atc260x_pwrc_driver = {
- 	.probe = atc260x_pwrc_probe,
--	.remove_new = atc260x_pwrc_remove,
+ static const struct of_device_id rmobile_reset_of_match[] = {
+ 	{ .compatible = "renesas,sysc-rmobile", },
+ 	{ /* sentinel */ }
+@@ -68,7 +60,6 @@ MODULE_DEVICE_TABLE(of, rmobile_reset_of_match);
+ 
+ static struct platform_driver rmobile_reset_driver = {
+ 	.probe = rmobile_reset_probe,
+-	.remove_new = rmobile_reset_remove,
  	.driver = {
- 		.name = "atc260x-pwrc",
- 	},
+ 		.name = "rmobile_reset",
+ 		.of_match_table = rmobile_reset_of_match,
 -- 
 2.39.2
 
