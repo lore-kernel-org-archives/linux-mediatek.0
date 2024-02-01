@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BA16C48BC4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 18:02:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CA7CC48BC1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 18:02:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+6oayEskVPsQjbi/C7/hq7hBkB4TpvJeAVLuE/xrEZs=; b=1Vj7AB8a8Z0IRjFcNBBdVya025
-	q6zF7If1mrQL3A+zkAdfWDtWtzfXsFAVrlmGRjThBO7fPjQS9UWf4liGurE3WJMdCFxVW/eqrNxUt
-	tf1BGB1atAIJx4egAL1nZWotzjjQb9bUExcy4zanE8Uv+jBcFMiTad87xULT8XfT3YmDful7Y9Ndf
-	LihsuJNmvibOvqNBROGPNseProWC8gfjEVFYl+gNArRO5+JI83QsMMqAJrsGP9R/OCqJHlwWj8vhe
-	wSN8ort+1FKp67QgMuxkg6U4TTnn7Hj8BJq4uxkF6r7xeoZplO1rOaq6vw4I8Y+k0Miazbxwr9ltr
-	d9lADi1g==;
+	bh=+iboSw0kHr/XQ2F6mUqPjCZdFfbDSD+ql6zjttiLFSU=; b=FE6Nl76X+OME3OxjcrTUfG3e+X
+	qygyx9yp58OyQVaDk1W2lk5pNblWspvnB6oYeU73yxV5qjn3oOxuL/blHL6BZ7MKvvluAbSSKJkjR
+	8/kInUG4/UtSxJYvT+C8YNXbcF65YC+XVICCvfkYVF+YuxBlRbQKpvsCqCoMGJsmjvb02HjWX5jtr
+	mciYIvlYdeWOzMmuPWom6sVXvMksrtAVnA3ZF7WnWjN4VkTK+fSvoinsCK0A4F8Ii8cl5/7DFsBRL
+	UmdJ0QQ74dFSP0OC+EhG19oLckstuXxW1Lg2q/ckGmHjsLZbSOG+LMMvYolvsJTH0pBAZfR/AjI5C
+	PyctQWLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVbNx-00000008tyt-1q3d;
-	Thu, 01 Feb 2024 18:02:01 +0000
-Received: from lelv0143.ext.ti.com ([198.47.23.248])
+	id 1rVbNw-00000008tyG-2Ubw;
+	Thu, 01 Feb 2024 18:02:00 +0000
+Received: from fllv0015.ext.ti.com ([198.47.19.141])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVbNJ-00000008tNY-14xC;
+	id 1rVbNK-00000008tQl-1sCS;
 	Thu, 01 Feb 2024 18:01:25 +0000
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
-	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 411I199X051703;
-	Thu, 1 Feb 2024 12:01:09 -0600
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 411I1Boq049613;
+	Thu, 1 Feb 2024 12:01:11 -0600
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1706810469;
-	bh=+6oayEskVPsQjbi/C7/hq7hBkB4TpvJeAVLuE/xrEZs=;
+	s=ti-com-17Q1; t=1706810471;
+	bh=+iboSw0kHr/XQ2F6mUqPjCZdFfbDSD+ql6zjttiLFSU=;
 	h=From:To:CC:Subject:Date:In-Reply-To:References;
-	b=TkMHSo1BMyKoOIbCWU3HX8M28fj0T0x3o3StVz6DcodkPqNOgrTa8GWGnzto05G1T
-	 it5cLq9uOej23dW0hC4TOpK3HF215DWpczQB7yt0qw4HW/KjMOwQpPQ6MXblpItdsC
-	 gAMSfCetLVILORJaDa6kR2UokQIXzowQPIEi5RVI=
-Received: from DLEE113.ent.ti.com (dlee113.ent.ti.com [157.170.170.24])
-	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 411I19DL047540
+	b=tyMEeCj1fPmmpSRTUugtA3JXIw2BLd3voyMAK+H1o1ri8TRYBSGil6K6Pph/3LzDr
+	 3B8RWfZGnEqLzaYhsUCFx3bbSEwjfowhTX7Ox25oF48u6IdQRLrobxcUM61Dr15ER4
+	 3OwoQL4VnZGHXtznw3cPfhjvTlLE4AywOaqNCDjA=
+Received: from DLEE110.ent.ti.com (dlee110.ent.ti.com [157.170.170.21])
+	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 411I1BuU004593
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 1 Feb 2024 12:01:09 -0600
-Received: from DLEE107.ent.ti.com (157.170.170.37) by DLEE113.ent.ti.com
- (157.170.170.24) with Microsoft SMTP Server (version=TLS1_2,
+	Thu, 1 Feb 2024 12:01:11 -0600
+Received: from DLEE110.ent.ti.com (157.170.170.21) by DLEE110.ent.ti.com
+ (157.170.170.21) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Thu, 1
- Feb 2024 12:01:09 -0600
-Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DLEE107.ent.ti.com
- (157.170.170.37) with Microsoft SMTP Server (version=TLS1_2,
+ Feb 2024 12:01:10 -0600
+Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DLEE110.ent.ti.com
+ (157.170.170.21) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Thu, 1 Feb 2024 12:01:09 -0600
+ Frontend Transport; Thu, 1 Feb 2024 12:01:10 -0600
 Received: from lelvsmtp6.itg.ti.com ([10.249.42.149])
-	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 411I12Gn117221;
-	Thu, 1 Feb 2024 12:01:08 -0600
+	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 411I12Gp117221;
+	Thu, 1 Feb 2024 12:01:09 -0600
 From: Andrew Davis <afd@ti.com>
 To: Sebastian Reichel <sre@kernel.org>,
         Manivannan Sadhasivam
@@ -72,9 +72,9 @@ CC: <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-actions@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
         <linux-arm-kernel@lists.infradead.org>,
         <linux-mediatek@lists.infradead.org>, Andrew Davis <afd@ti.com>
-Subject: [PATCH 09/18] power: reset: rmobile-reset: Use devm_register_sys_off_handler(RESTART)
-Date: Thu, 1 Feb 2024 12:00:53 -0600
-Message-ID: <20240201180102.70395-10-afd@ti.com>
+Subject: [PATCH 11/18] power: reset: msm-poweroff: Use devm_register_sys_off_handler(POWER_OFF)
+Date: Thu, 1 Feb 2024 12:00:55 -0600
+Message-ID: <20240201180102.70395-12-afd@ti.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240201180102.70395-1-afd@ti.com>
 References: <20240201180102.70395-1-afd@ti.com>
@@ -83,8 +83,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_100121_449284_52F90A33 
-X-CRM114-Status: GOOD (  13.39  )
+X-CRM114-CacheID: sfid-20240201_100122_713333_99F90D64 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,80 +99,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use device life-cycle managed register function to simplify probe and
-exit paths.
+Use this helper to register sys_off handler. Drivers should move away from
+setting pm_power_off directly as it only allows for one handler. The new
+way allows for trying multiple if the first one doesn't work.
 
 Signed-off-by: Andrew Davis <afd@ti.com>
 ---
- drivers/power/reset/rmobile-reset.c | 25 ++++++++-----------------
- 1 file changed, 8 insertions(+), 17 deletions(-)
+ drivers/power/reset/msm-poweroff.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/power/reset/rmobile-reset.c b/drivers/power/reset/rmobile-reset.c
-index 29c17ed2d4de9..41e98ff33a3c3 100644
---- a/drivers/power/reset/rmobile-reset.c
-+++ b/drivers/power/reset/rmobile-reset.c
-@@ -19,12 +19,9 @@
- /* Reset Control Register 2 */
- #define RESCNT2_PRES	0x80000000	/* Soft power-on reset */
+diff --git a/drivers/power/reset/msm-poweroff.c b/drivers/power/reset/msm-poweroff.c
+index d96d248a6e25b..bcf04491e7022 100644
+--- a/drivers/power/reset/msm-poweroff.c
++++ b/drivers/power/reset/msm-poweroff.c
+@@ -28,9 +28,11 @@ static struct notifier_block restart_nb = {
+ 	.priority = 128,
+ };
  
--static void __iomem *sysc_base2;
--
--static int rmobile_reset_handler(struct notifier_block *this,
--				 unsigned long mode, void *cmd)
-+static int rmobile_reset_handler(struct sys_off_data *data)
+-static void do_msm_poweroff(void)
++static int do_msm_poweroff(struct sys_off_data *data)
  {
--	pr_debug("%s %lu\n", __func__, mode);
-+	void __iomem *sysc_base2 = data->cb_data;
- 
- 	/* Let's assume we have acquired the HPB semaphore */
- 	writel(RESCNT2_PRES, sysc_base2 + RESCNT2);
-@@ -32,20 +29,20 @@ static int rmobile_reset_handler(struct notifier_block *this,
- 	return NOTIFY_DONE;
+ 	deassert_pshold(&restart_nb, 0, NULL);
++
++	return NOTIFY_DONE;
  }
  
--static struct notifier_block rmobile_reset_nb = {
--	.notifier_call = rmobile_reset_handler,
--	.priority = 192,
--};
--
- static int rmobile_reset_probe(struct platform_device *pdev)
- {
-+	void __iomem *sysc_base2;
- 	int error;
+ static int msm_restart_probe(struct platform_device *pdev)
+@@ -41,7 +43,9 @@ static int msm_restart_probe(struct platform_device *pdev)
  
- 	sysc_base2 = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(sysc_base2))
- 		return PTR_ERR(sysc_base2);
+ 	register_restart_handler(&restart_nb);
  
--	error = register_restart_handler(&rmobile_reset_nb);
-+	error = devm_register_sys_off_handler(&pdev->dev,
-+					      SYS_OFF_MODE_RESTART,
-+					      SYS_OFF_PRIO_HIGH,
-+					      rmobile_reset_handler,
-+					      sysc_base2);
- 	if (error) {
- 		dev_err(&pdev->dev,
- 			"cannot register restart handler (err=%d)\n", error);
-@@ -55,11 +52,6 @@ static int rmobile_reset_probe(struct platform_device *pdev)
+-	pm_power_off = do_msm_poweroff;
++	devm_register_sys_off_handler(&pdev->dev, SYS_OFF_MODE_POWER_OFF,
++				      SYS_OFF_PRIO_DEFAULT, do_msm_poweroff,
++				      msm_ps_hold);
+ 
  	return 0;
  }
- 
--static void rmobile_reset_remove(struct platform_device *pdev)
--{
--	unregister_restart_handler(&rmobile_reset_nb);
--}
--
- static const struct of_device_id rmobile_reset_of_match[] = {
- 	{ .compatible = "renesas,sysc-rmobile", },
- 	{ /* sentinel */ }
-@@ -68,7 +60,6 @@ MODULE_DEVICE_TABLE(of, rmobile_reset_of_match);
- 
- static struct platform_driver rmobile_reset_driver = {
- 	.probe = rmobile_reset_probe,
--	.remove_new = rmobile_reset_remove,
- 	.driver = {
- 		.name = "rmobile_reset",
- 		.of_match_table = rmobile_reset_of_match,
 -- 
 2.39.2
 
