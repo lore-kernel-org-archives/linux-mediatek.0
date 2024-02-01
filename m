@@ -4,72 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3BBEC47DDB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 12:53:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10A1CC4828C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 13:38:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dF9i6doY1+qh+gEdfQ2z/z0KJz518IXRZfjpfWvwGxo=; b=uai6VlAJ1MR3aZdVcQ4X81yYjs
-	31CKOoo5eYtoXYhqnTJkD6V1cPccfsVjgLLAIKdAkUn5bwq3Ggd5b0EW2ZFSGXnJTad6abf2htNia
-	0p5uNeWhUrGua5lbv/NIufzFbHYN8ma0EMZ5PxnyZzAZHDEpkGsYGXjUj10VAUhJF3sXnVOLJNBBX
-	Vd2hr03dVvSXOw+b83QW8qs19joQrrceA8OGYaawRRIcbcWjT31A6cun2t9R07yAwcZ2WF+nL/t8S
-	WoUFcdVdPKRH9EDFa81cL00dQhLBd8PuebhmPKBDuZjhWwIldUFc2OWv6brRVn2JxbQHFBxDvyIy+
-	RVDU669A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qvtQsVUpv6mrbOusIihe550/VZAo/qI5LTEF9Sr+vYc=; b=TpxkwVcXBJB7cmX5V6tzSyQEF5
+	BbWeiZMf4NB9Mupli7KdO4hE+CcVR2RZMhuK0Ipvif7pyd7hw0Wp6h9IiOKV5tCn2bfOP8mTyx+4Q
+	TXgkDK6vFyziPA3lNzhoHsUETV97V8yQ07vSrCErHx3zQoFxQbiFxc9M11Xf20osTrd7zedvOW7Gj
+	FLbZ2yiX3PtfZ5+NA5u0CONWutELOX1qvxDf9D94GuCqJcq/7ZWxBg2ZoajAlrE68ubUVvRDZGNFJ
+	++3oby6gRg3hrkpOms5InMYSl3QnmcZCUt1bANu/8JEkmBZtaK5YM9pqZ6hT7qR4yVUvNnjnlZCym
+	+4hbJKUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVWZQ-00000007qVN-0Uis;
-	Thu, 01 Feb 2024 12:53:32 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rVXHD-000000087e3-11oE;
+	Thu, 01 Feb 2024 13:38:47 +0000
+Received: from esa.microchip.iphmx.com ([68.232.153.233])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVWZA-00000007qFW-2l82;
-	Thu, 01 Feb 2024 12:53:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706791992;
-	bh=NNwf1FU4iKYIcxafPzqdiApb/zXktJGn2dDrtHe6Qpw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GdFp4wvJjncBQA1ogeJl0aGoGyBzQAiBITHtesgYh+D8i99YIOKoDHBN9JMOXYWrd
-	 XieFPVy9ILHGZxJKGMtBBNgbGvuZW5zNf2mSxyzXIWIfXh1o4ZjXFjM8k40qjAy7xU
-	 zhi8QdKx1Q8pZvl2pnB+gj45HUcDmWxD5Hj/zckFnXLc02XQFHxc4NpLOjSNetFXXg
-	 TBJa+uGUQlwZ8/XX3X741vIbuK2cqrpf9qpJXLbAkUyMgOqvQNnvxGrO4/1/KURz3g
-	 mHPQGHjrcCrmIkZUjN/ofAuiOMlpNqAbmPfMTs5d8xZbWCzmzYU7BlVu6qwkGJ7o3G
-	 FpO0XvB3xEBhQ==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id EC492378208C;
-	Thu,  1 Feb 2024 12:53:11 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunkuang.hu@kernel.org
-Cc: p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	ck.hu@mediatek.com,
-	nancy.lin@mediatek.com,
-	nathan.lu@mediatek.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com,
-	wenst@chromium.org
-Subject: [PATCH 1/3] drm/mediatek: drm_ddp_comp: Fix and cleanup DDP component CRTC search
-Date: Thu,  1 Feb 2024 13:53:02 +0100
-Message-ID: <20240201125304.218467-2-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240201125304.218467-1-angelogioacchino.delregno@collabora.com>
-References: <20240201125304.218467-1-angelogioacchino.delregno@collabora.com>
+	id 1rVWsF-00000007wzP-0fjF;
+	Thu, 01 Feb 2024 13:13:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+  t=1706793179; x=1738329179;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=qvtQsVUpv6mrbOusIihe550/VZAo/qI5LTEF9Sr+vYc=;
+  b=RY/quQg4c46fDxogoYiVZta7DZjsNB//Zd4VBbv9jct10AxImRSC79R8
+   oqsG/F+AteOYxhdf9SSMCTb9HAX1aC4n+2pKTing7YSlCu5brcBsxVSIn
+   xsrkH+E0bg7/k7PiMY6jEDUZi3tCVc8kJsaqAIlSGasqUKYkRQc2u5mjs
+   SOczBH44JxX8HN/eW2K8WHhFT0YPdd3zU/EjfsiMxvZmb2D+rxlVveE+G
+   r9Zx6zeWXT6mS9Q6RSuj9Nb7kXZZo60XdIeVhoDz491uRdBaRG2nURe4t
+   /bHzxJUXrfCGZzNf81UoOjNYjwmdSVsGUs7IZN9SazL1bXfQRzPN5ADlG
+   w==;
+X-CSE-ConnectionGUID: DojxIC2fROuGfno2oWJAig==
+X-CSE-MsgGUID: UGxvDEb7R5C65tm/xwNFig==
+X-IronPort-AV: E=Sophos;i="6.05,234,1701154800"; 
+   d="asc'?scan'208";a="15617257"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
+  by esa3.microchip.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 01 Feb 2024 06:12:42 -0700
+Received: from chn-vm-ex02.mchp-main.com (10.10.85.144) by
+ chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Thu, 1 Feb 2024 06:12:21 -0700
+Received: from wendy (10.10.85.11) by chn-vm-ex02.mchp-main.com (10.10.85.144)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35 via Frontend
+ Transport; Thu, 1 Feb 2024 06:12:18 -0700
+Date: Thu, 1 Feb 2024 13:11:39 +0000
+From: Conor Dooley <conor.dooley@microchip.com>
+To: Frank Wunderlich <frank-w@public-files.de>
+CC: Conor Dooley <conor@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Frank Wunderlich
+	<linux@fw-web.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+	<sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel
+	<p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+	<conor+dt@kernel.org>, Sam Shih <sam.shih@mediatek.com>, Daniel Golle
+	<daniel@makrotopia.org>, <linux-clk@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: Re: Aw: Re: [PATCH v3 1/2] dt-bindings: reset: mediatek: add MT7988
+ reset IDs
+Message-ID: <20240201-goes-passable-0ba841d36bc3@wendy>
+References: <20240117184111.62371-1-linux@fw-web.de>
+ <20240117184111.62371-2-linux@fw-web.de>
+ <20240118-calcium-krypton-3c787b8d1912@spud>
+ <trinity-afc4f48e-65e1-46ee-a78b-1d670cc0f310-1705615200900@3c-app-gmx-bap21>
+ <43f946cc-07e1-48c5-9b31-40fc9bc93037@collabora.com>
+ <20240119-dupe-obligate-707b3a01b356@spud>
+ <0EA6A126-DDC0-4E9F-BEBC-FD018B08CA84@public-files.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="7WXHEjVDjRcKaa45"
+Content-Disposition: inline
+In-Reply-To: <0EA6A126-DDC0-4E9F-BEBC-FD018B08CA84@public-files.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_045316_866160_61FF3F3C 
-X-CRM114-Status: GOOD (  16.00  )
+X-CRM114-CacheID: sfid-20240201_051259_422945_E814B7C7 
+X-CRM114-Status: GOOD (  24.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,112 +100,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Finding a possible CRTC by DDP component is done by first checking
-static routes in three paths (main, external, third/extra path) and
-then, if not found, we check for dynamic connection on a per-route
-basis because, for example, on some SoCs the main route may output
-to either a DSI display or DisplayPort and this is finally done by
-assigning a CRTC mask to `possible_crtcs`, found with function
-mtk_drm_find_comp_in_ddp_conn_path(): being that a mask the possible
-values are BIT(x) and, if no CRTC is possible, zero.
+--7WXHEjVDjRcKaa45
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Problem is, both mtk_drm_find_possible_crtc_by_comp() and the
-aforementioned function are trying to return a negative error value
-(but it's unsigned int!) if no CRTC was found, which is wrong for
-multiple obvious reasons.
+On Thu, Feb 01, 2024 at 12:40:17PM +0100, Frank Wunderlich wrote:
+> Am 19. Januar 2024 18:04:36 MEZ schrieb Conor Dooley <conor@kernel.org>:
+> >On Fri, Jan 19, 2024 at 10:28:30AM +0100, AngeloGioacchino Del Regno wro=
+te:
+> >>
+> >> The resets are organized on a per-reset-controller basis, so, the ETHW=
+ARP
+> >> reset controller's first reset is RST_SWITCH, the second one is RST_so=
+mething_else,
+> >> etc. while the first reset of the INFRA reset controller is PEXTP_MAC_=
+SWRST.
+> >>=20
+> >> That's why ETHWARP has a reset index 0 and INFRA also starts at 0.
+> >> I think that the numbering is good as it is, and having one driver sta=
+rt at index 5
+> >> while the other starts at index 12 would only overcomplicate registeri=
+ng the resets
+> >> in each driver, or waste bytes by making unnecessarily large arrays, f=
+or (imo) no
+> >> good reason.
+> >>=20
+> >> This is one header, but it should "in theory" be more than one... so w=
+e would have
+> >> one for each hardware block - but that'd make the reset directory over=
+-crowded, as
+> >> other MediaTek SoCs have got even more resets in even more hardware bl=
+ocks than the
+> >> MT7988. That'd be something like ~4 reset headers per SoC (and will in=
+crease with
+> >> newer ones)...
+> >> ...and this is why we have one binding header for resets.
+> >
+> >That's okay. The commit message leaves me, who clearly isn't a mediatek
+> >guy, with no information as to why these are not one contiguous set.
+> >IMO being for different reset controllers entirely is fine.
+> >
+> >> On the topic of leaving space to allow grouping RST0/RST1: -> No. <-
+> >> The indices have to start from zero and have to be sequential, with no=
+ holes.
+> >
+> >Agreed.
+>=20
+> Hi,
+>=20
+> Just a friendly reminder.
+>=20
+> As far as i understood, Patches are fine so far and do not need any rewor=
+k,right?
 
-Cleanup both functions, so that:
- - mtk_drm_find_comp_in_ddp_conn_path() returns a signed integer
-   with a negative number for error, or a bit/bitmask of the found
-   possible CRTC; and
- - mtk_drm_find_possible_crtc_by_comp() always returns either a
-   bitmask of the possible CRTC, or zero if none available.
+I suspect I was asking for a commit message that explains why these
+numbers don't continue in sequence. With that,
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-Fixes: 01389b324c97 ("drm/mediatek: Add connector dynamic selection capability")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 44 ++++++++++-----------
- 1 file changed, 21 insertions(+), 23 deletions(-)
+Cheers,
+Conor.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index a9b5a21cde2d..c13359eeb3cd 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -513,29 +513,25 @@ static bool mtk_drm_find_comp_in_ddp(struct device *dev,
- 	return false;
- }
- 
--static unsigned int mtk_drm_find_comp_in_ddp_conn_path(struct device *dev,
--						       const struct mtk_drm_route *routes,
--						       unsigned int num_routes,
--						       struct mtk_ddp_comp *ddp_comp)
-+static int mtk_drm_find_comp_in_ddp_conn_path(struct device *dev,
-+					      const struct mtk_drm_route *routes,
-+					      unsigned int num_routes,
-+					      struct mtk_ddp_comp *ddp_comp)
- {
--	int ret;
--	unsigned int i;
-+	int i;
- 
--	if (!routes) {
--		ret = -EINVAL;
--		goto err;
-+	if (!routes || !num_routes) {
-+		DRM_ERROR("No connection routes specified!\n");
-+		return -EINVAL;
- 	}
- 
- 	for (i = 0; i < num_routes; i++)
- 		if (dev == ddp_comp[routes[i].route_ddp].dev)
- 			return BIT(routes[i].crtc_id);
- 
--	ret = -ENODEV;
--err:
--
--	DRM_INFO("Failed to find comp in ddp table, ret = %d\n", ret);
-+	DRM_ERROR("Failed to find component in ddp table\n");
- 
--	return 0;
-+	return -ENODEV;
- }
- 
- int mtk_ddp_comp_get_id(struct device_node *node,
-@@ -557,22 +553,24 @@ unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
- 						struct device *dev)
- {
- 	struct mtk_drm_private *private = drm->dev_private;
--	unsigned int ret = 0;
-+	int ret;
- 
- 	if (mtk_drm_find_comp_in_ddp(dev, private->data->main_path, private->data->main_len,
- 				     private->ddp_comp))
--		ret = BIT(0);
-+		return BIT(0);
- 	else if (mtk_drm_find_comp_in_ddp(dev, private->data->ext_path,
- 					  private->data->ext_len, private->ddp_comp))
--		ret = BIT(1);
-+		return BIT(1);
- 	else if (mtk_drm_find_comp_in_ddp(dev, private->data->third_path,
- 					  private->data->third_len, private->ddp_comp))
--		ret = BIT(2);
--	else
--		ret = mtk_drm_find_comp_in_ddp_conn_path(dev,
--							 private->data->conn_routes,
--							 private->data->num_conn_routes,
--							 private->ddp_comp);
-+		return BIT(2);
-+
-+	ret = mtk_drm_find_comp_in_ddp_conn_path(dev, private->data->conn_routes,
-+						 private->data->num_conn_routes,
-+						 private->ddp_comp);
-+	/* No CRTC is available: return a zero mask */
-+	if (ret < 0)
-+		return 0;
- 
- 	return ret;
- }
--- 
-2.43.0
+>=20
+> But i have not seen them picked up yet in linux-next.
+> regards Frank
 
+--7WXHEjVDjRcKaa45
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZbuYiwAKCRB4tDGHoIJi
+0pvVAP93MxxzBvNZvtpY9olFpk98CWj6rUSSZNqZsc6xps/yEAD+Kke0OXNnExQZ
+iR3rlwQAtPweOolLZJS0LiATIRpshgQ=
+=wI+F
+-----END PGP SIGNATURE-----
+
+--7WXHEjVDjRcKaa45--
 
