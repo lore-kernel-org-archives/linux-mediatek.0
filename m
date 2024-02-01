@@ -4,66 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62AFAC47DDF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 11:25:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A5CDC47DDF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 11:40:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SdV/LqCXVrShA2leL/+z2pR9+YblzcrOQIk6KHEyCZA=; b=Bxuaa3ZtalqcecUn+sGAhLGJ3K
-	vvI2Jbwku+nl9JUcUzuDSVIUFrygVlJ2daHUll4iot7h7VHum3ShvxZHynnfMMSr2k4OpPFpLmHbq
-	IaINHVZ3L0trS0YPsm1uTiiSS5SaEokKUVkl1w+qFL6B/kQHqeHAMLWZEtErpv/VkLWmx0C7rav1D
-	pW4JBXNnG6G5geLQdXLYwnCbGiKwqoUGOwbFegYNklLRk4jdYJTQ5BpXYROGVbwBzboCjOjpdx8hH
-	oCYdOUs26fqS26Dh/380gsQSAsH0Y+h6BwgMS0NdjCEu/viyvG+zmIBr8kvhtpAUiFrX7kr1z58Ua
-	S9oLYpiw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0ml7viK80JH0Jva8+KAcBgTkHRB2cpSTmxKESK/H3VU=; b=MZBVgAmP6bK6W5
+	BTBUJ+9Vj+2IsI/nr2idCeL6/Hw2lrNrZat6K9O7AqsD6M7316rFZZlANlQ65p8HA+pdkVIpOagyt
+	PrgjziumtwPA/g1ImskL9+EJGKopBCVbDWdVWemCh0n65ZSR9+yBJ8K8Zp6sPTD/WnNSq+JobBYt/
+	8H7xdi3JP4SCNLc1OcPLpvGMy+DCWBZGTT+AAioP2DGE3EY4NwJHFA5qXF3gygPjWxB0/m0vqDYBu
+	tKWtfSs/0qnmcLvKUJgiinHiUDsQHsUjvv0hCnmDFxJkanHhc4eTn2kcS7IBY2ifBGpiJmDn2NMHe
+	fAXdGQlH+p7GILCpKlwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVVCR-00000007Zgz-14eV;
-	Thu, 01 Feb 2024 11:25:43 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rVVQv-00000007cBM-0NX1;
+	Thu, 01 Feb 2024 11:40:41 +0000
+Received: from mout.gmx.net ([212.227.17.20])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVVCN-00000007ZgG-46JJ;
-	Thu, 01 Feb 2024 11:25:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 1E826CE2298;
-	Thu,  1 Feb 2024 11:25:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E7EC9C433F1;
-	Thu,  1 Feb 2024 11:25:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1706786737;
-	bh=8FsMzGJfsM0aOcmxMpvBjhVsj+8VYxKWtsJcxs8GM5A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=OZz4QSq+RagaDlfjVVz5KtwyqN+z6+sFOtdgVwirtr8OUVEyjsqZmctO07hi8NI32
-	 7CXregjsqNFCRgNzAQC6LkIWzv5+FlZ5wptO3v4wdXf9QnO1eGpacIgLM+ofZOdYxj
-	 hAVJ2KjiNLCky+UQLUuEHvtkt1AjCPRNtR+Gf4R7opVdUrpjheRe1N1Z6Ile36juWk
-	 LyEHXJ1jGYRdeA/3Qd/ypbl0w5N5Zld3EkS/FrAXVZWt29xWDcW/7+Tb1+hdFwMFor
-	 epg+86jqzzvkzy+KV9xJKQ8Wb03jVceOWng1nGR8KT30YOw61WiY7hww8gsNtTPFGI
-	 B1ljn8Z04DlNA==
-Date: Thu, 1 Feb 2024 11:25:27 +0000
-From: Mark Brown <broonie@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: perex@perex.cz, tiwai@suse.com, matthias.bgg@gmail.com,
-	ribalda@chromium.org, nicolas.ferre@microchip.com,
-	u.kleine-koenig@pengutronix.de, kuninori.morimoto.gx@renesas.com,
-	nfraprado@collabora.com, alsa-devel@alsa-project.org,
-	trevor.wu@mediatek.com, linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, lgirdwood@gmail.com
-Subject: Re: [PATCH 0/7] ASoC: mediatek: AFE drivers cleanups
-Message-ID: <6f7a34b6-6f65-42c3-a92d-6b064bf9dee1@sirena.org.uk>
-References: <20240111105247.117766-1-angelogioacchino.delregno@collabora.com>
- <cace3472-7ee3-459b-ab2c-51764db99bd7@collabora.com>
+	id 1rVVQr-00000007c7U-0ll7;
+	Thu, 01 Feb 2024 11:40:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1706787620; x=1707392420; i=frank-w@public-files.de;
+	bh=0ml7viK80JH0Jva8+KAcBgTkHRB2cpSTmxKESK/H3VU=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References;
+	b=Gb/4rflUUnnLFGxlwx6g6lBB1v1L7/XE05d5gFvf5JXZD7yB752i0+4ejoMT8y30
+	 69ogzd1P38x2+Rc8ve5u6nMotZgucM57eRVVHJCa0cLPtKIce0/ROZlfNILk3zCRD
+	 OylAaGWJmzLcuRn2ZvwqsAmNkOQYQAIxObILRNe7juejwjKGanUqP4EK3dLIM2bzF
+	 YPWSx0CGQ+6GQODxfYQlaqsuK+b3u2nOoBQhII6+pJaRXciasb3c89dIDIakNUWDn
+	 XsEEZoitD5ZTN+76CAjLk/N/5TPARvNcZF/ipWTXmGWLcaWK/yQ4/aXCIzDyQhY/8
+	 c1tWUYoABVhf4CR8/g==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([217.61.148.248]) by mail.gmx.net (mrgmx105
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1Mw9UK-1rEwXw1fXg-00s97s; Thu, 01
+ Feb 2024 12:40:20 +0100
+Date: Thu, 01 Feb 2024 12:40:17 +0100
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Conor Dooley <conor@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: Frank Wunderlich <linux@fw-web.de>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Sam Shih <sam.shih@mediatek.com>,
+ Daniel Golle <daniel@makrotopia.org>, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: =?US-ASCII?Q?Re=3A_Aw=3A_Re=3A_=5BPATCH_v3_1/2=5D_dt-bindings?= =?US-ASCII?Q?=3A_reset=3A_mediatek=3A_add_MT7988_reset_IDs?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20240119-dupe-obligate-707b3a01b356@spud>
+References: <20240117184111.62371-1-linux@fw-web.de> <20240117184111.62371-2-linux@fw-web.de> <20240118-calcium-krypton-3c787b8d1912@spud> <trinity-afc4f48e-65e1-46ee-a78b-1d670cc0f310-1705615200900@3c-app-gmx-bap21> <43f946cc-07e1-48c5-9b31-40fc9bc93037@collabora.com> <20240119-dupe-obligate-707b3a01b356@spud>
+Message-ID: <0EA6A126-DDC0-4E9F-BEBC-FD018B08CA84@public-files.de>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="PVPGHszu86wFrqHg"
-Content-Disposition: inline
-In-Reply-To: <cace3472-7ee3-459b-ab2c-51764db99bd7@collabora.com>
-X-Cookie: You can't cheat the phone company.
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:y1z6Q7jXj+pqO1HZuYlxzuYbo5XGWT2nhBglJsaS3D/jXYPHO/E
+ fqQckoUFrqWOYtFnR0avV/83ZiKtvFzTv0jNqDkQ4JQkSYb1R4TamPDpKXNjN/ArOiiFzUw
+ zz54ZZENgvZguVYhLrfnI8TdVnyLp9SGIgiAOMryKrfSKWWH0/gDELEWzHvIOTEo1pVI+ZW
+ WyQJhWE01UcOjxOi5rADA==
+UI-OutboundReport: notjunk:1;M01:P0:pWne6h6kXCc=;pZaGvfKj0LTWoHMsy0FDDU4zrVI
+ CewLpa8CIG3a3PXERoJlwqw5wE5gAL0HhZsj4pEcxrPQvzVCVfQSNrL5EPhEoFZmJRbcplvbO
+ Cr4RQGG+PggquRYr3QnqvRhEEVsNfJ8blN83TiVomrrbUE3tDo4rfMOVLX+J9/QPtGxjP8KRG
+ X6sTL5tZgtMjmONbS3Tfusw12GL9d9uwaIj7kiWolOyx8dOozA4MGW10/cc0NECcImpwo1yrI
+ TgksSBZihpqet5jMBEa9imsZUFvGFEh3md2Bitg5AOQw0pr8AQ6dMlxasEC+ADew9ZTSSZmck
+ IwZGJCEkg5gK6DcwhV8JS/fnCNn5Pa6YF5Qa6Tnpa/VMzZVvVUY/PaxM/mOuL79OacrFDYkI3
+ co5g4gco8F/LJ4AuBIwUTlXWrWTL0Nsv0IHVXnOlvvQUP124TL6mMPoENzEu5oS+kKiW1kdZc
+ 4Dt4u/J3rW4/3ZGBLUeUF07OwXya0By3rfTCafR6UDBECjR7bLTD86S55bn9DrqmTblL/GjQY
+ a68XW1M7h0d6ifO/98UR2YXp2eqP6G9RJu3nV155M86fPK4vA/DZfn5EopIz653pDnT/QYm/m
+ nWFeupFQLb9JJuaH/GIhFjVJvpJhop7gU1Tc2vIt6S5iiAB6LZ6sSbJXw5ye/z8CeC/8XHC4s
+ yrDK6lXHTNF1F27cFzLy+g9fvkKb9dDCRHaWSL9SsO68hLAFJQCy2zQ3uAZP9GT9UuyI74oPU
+ X97C3XhX/ZKHMTvnfzMGtaQbu59TuCB5C/Rm2QQxZyXBZMuq+QrjQetUoOxTgU2GFJx3wSGbN
+ 8bo840wwR7QOQi3H0YvPAUJzHxtS6gyeYT+fooHIZAwYw=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_032540_219305_89C1A789 
-X-CRM114-Status: GOOD (  14.32  )
+X-CRM114-CacheID: sfid-20240201_034037_759066_4B46CBFF 
+X-CRM114-Status: GOOD (  14.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,50 +94,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Am 19=2E Januar 2024 18:04:36 MEZ schrieb Conor Dooley <conor@kernel=2Eorg>=
+:
+>On Fri, Jan 19, 2024 at 10:28:30AM +0100, AngeloGioacchino Del Regno wrot=
+e:
+>>
+>> The resets are organized on a per-reset-controller basis, so, the ETHWA=
+RP
+>> reset controller's first reset is RST_SWITCH, the second one is RST_som=
+ething_else,
+>> etc=2E while the first reset of the INFRA reset controller is PEXTP_MAC=
+_SWRST=2E
+>>=20
+>> That's why ETHWARP has a reset index 0 and INFRA also starts at 0=2E
+>> I think that the numbering is good as it is, and having one driver star=
+t at index 5
+>> while the other starts at index 12 would only overcomplicate registerin=
+g the resets
+>> in each driver, or waste bytes by making unnecessarily large arrays, fo=
+r (imo) no
+>> good reason=2E
+>>=20
+>> This is one header, but it should "in theory" be more than one=2E=2E=2E=
+ so we would have
+>> one for each hardware block - but that'd make the reset directory over-=
+crowded, as
+>> other MediaTek SoCs have got even more resets in even more hardware blo=
+cks than the
+>> MT7988=2E That'd be something like ~4 reset headers per SoC (and will i=
+ncrease with
+>> newer ones)=2E=2E=2E
+>> =2E=2E=2Eand this is why we have one binding header for resets=2E
+>
+>That's okay=2E The commit message leaves me, who clearly isn't a mediatek
+>guy, with no information as to why these are not one contiguous set=2E
+>IMO being for different reset controllers entirely is fine=2E
+>
+>> On the topic of leaving space to allow grouping RST0/RST1: -> No=2E <-
+>> The indices have to start from zero and have to be sequential, with no =
+holes=2E
+>
+>Agreed=2E
 
---PVPGHszu86wFrqHg
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Hi,
 
-On Thu, Feb 01, 2024 at 11:08:41AM +0100, AngeloGioacchino Del Regno wrote:
-> Il 11/01/24 11:52, AngeloGioacchino Del Regno ha scritto:
-> > This series converts MediaTek AFE drivers' probe functions to use
-> > dev_err_probe() and devm functions where possible and, in some
-> > cases, dropping the .remove_new() callback, reducing the size.
+Just a friendly reminder=2E
 
-> Gentle ping for this series, afraid that went out of the radar :-)
+As far as i understood, Patches are fine so far and do not need any rework=
+,right?
 
-Please don't send content free pings and please allow a reasonable time
-for review.  People get busy, go on holiday, attend conferences and so=20
-on so unless there is some reason for urgency (like critical bug fixes)
-please allow at least a couple of weeks for review.  If there have been
-review comments then people may be waiting for those to be addressed.
-
-Sending content free pings adds to the mail volume (if they are seen at
-all) which is often the problem and since they can't be reviewed
-directly if something has gone wrong you'll have to resend the patches
-anyway, so sending again is generally a better approach though there are
-some other maintainers who like them - if in doubt look at how patches
-for the subsystem are normally handled.
-
---PVPGHszu86wFrqHg
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmW7f6cACgkQJNaLcl1U
-h9CaHgf8CtVCkC6J116wxuSCyfeBTiCzoyj46PgrA3xwNRTTduzax3JoO/1grpq3
-5NlOg1xyh3YtqEDvxa2wBDCc6fM3zw9mAQPKiXCqHHI2A8WH8xMPSJzvlhfrC14S
-SDY7qm/mG8CiXyEI84YBRHdgoxBnBqECwRehV975FL3ZvrDYSQTFO4EbYI0I1oNI
-arokA5pQoEzgBMazkodUtmgDueOoBVtbT7HQMsMTjtn+iQ7dMAhf2wGc8uhMC3K1
-8jB9piZTC2sZHVRli3Rbzrs4TMYz8Ji5ey/zUMcsfKBO1/awWWGrYqm8eEZJiME4
-TtANCMujJdC2XSTWBBod6hXZGV07oQ==
-=z6oI
------END PGP SIGNATURE-----
-
---PVPGHszu86wFrqHg--
+But i have not seen them picked up yet in linux-next=2E
+regards Frank
 
