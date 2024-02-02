@@ -4,81 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39B89C4828F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Feb 2024 20:48:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27EDAC4828F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Feb 2024 21:25:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qtBio0v+ckZMVzHGE2f3mvS0x3BswvLsGLfBWxz1JVI=; b=gc42kGAecKy/yeUtiiyl5P9wwF
-	TXpzB/pbVTr5SHvrZ2Mm6lTlL/yHn4DvpLKGri2+fZzcqPA2IE2A6Lh8Z8y6VyLn03jh4rUVbHeHW
-	YLVFWrTHtTwCr+fpvM3z3Z3kp1NzsTn8V0ZZCyk2GOR8+xTA0PPat1yvUuj68mhMfgBrCd/z3BKBU
-	SjsR3QTEMcAcccrmOF2KIH1eFBM8xwTZg26upcr5IkIX1Vx92FSngG7OI3jTvQLAStLALBzDOdAry
-	9uc+Ghzfinzz2UZgRChQsGiXFyJ1qBqC0jESL57R6N0SphxzoAuo1uQYJyKh+mzycDWPNIPnTJLIK
-	kLL4gBNw==;
+	bh=Jq6t3qRI00lt3hTXfiVqODPCc3GSzE2vctQAc1IfJmc=; b=J1qatP7fcUAJAe03y9qzGXe6M6
+	ypcOAjNOyR6eR3UEVFZnscLM0FZUSqlo8fobRhA6THcQSbPERgkJ9ajkz4vQCmP8EbkMDPSIgNqOA
+	sLMI1c+f2J1mWlOl2qAP3yiCvkNHtyPs8D4O/CBB4J8ogFiB0z8p77cb6Bseo0z2mcXY/56mqeR3U
+	JiUGhNK+/Lsbd8KH9RcsdiJ5Qy54r64vMxoILG4++Garr3DnyiGYCxrLOONCyxv9H4xeDRETtAZB5
+	mScaXbCFIjxMPE83jJA5PHhEy0bELKxE/3m+EmSrggTbihjZMfT38Nu4NgqRsHwt+Z2+IOrTsJ0/h
+	L3oUHOYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rW0SB-0000000DPxd-2wGV;
-	Fri, 02 Feb 2024 20:48:03 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rW12N-0000000DWow-176y;
+	Fri, 02 Feb 2024 21:25:27 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVyS8-0000000Cvcs-0LBt;
-	Fri, 02 Feb 2024 18:39:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=qtBio0v+ckZMVzHGE2f3mvS0x3BswvLsGLfBWxz1JVI=; b=SNt8N0QRHTVp9FskAZzhtLOrAh
-	AEiPGmKmYC7RG5MuRIyGL4/V//gOmIgTq66gKgBvRKoT71kYrwj6SlPtKFWlSarkrZv3Z6o8JKRaS
-	4CfRC8qsqazrR/9U/bBJBazVtf4xRPPRglIUX0cpH+WYhv6OKuzMAq7MGbp1HewmynE2IvU3j76FR
-	SIFhXrhrpxrC5EOFV6Wh5ryM8zVk2fUy/A65iTdC7jdkqPf3NZuLeYCOJ596BmkN8aEKrNgNbTQS1
-	84HeGwANfOxemKiujPBbR1dgIa1fc9134u6w/Ybz0Ae2Z+F1KrGzoBXztpIk9eYhrGeLfa1RlQNxT
-	v/Li59/w==;
-Received: from pidgin.makrotopia.org ([185.142.180.65])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVyS3-0000000A9by-08tB;
-	Fri, 02 Feb 2024 18:39:50 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1rVyRe-0002Ew-3A;
-	Fri, 02 Feb 2024 18:39:23 +0000
-Date: Fri, 2 Feb 2024 18:39:18 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	id 1rW11y-0000000DWbw-2Jyi;
+	Fri, 02 Feb 2024 21:25:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 71700CE2D98;
+	Fri,  2 Feb 2024 21:24:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72D71C433C7;
+	Fri,  2 Feb 2024 21:24:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1706909062;
+	bh=UZ+yJRgsFPGKwSTDFBg0r03EZWgLZlspYa2WkFy5MiA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=teO9xkwHltv0T0lPtU2+7uxbSRQZXu6/REzvx0bSQvNw23ajHvQTtRrzcbKgqgcto
+	 Qz5I/ZL8Yae+1FbTMmiWOORN+yWt+6zMVotV2Omv2qFLh02dsTev+gZjT+02Xoj1Pa
+	 55RKD0O1gA/FcygEaO3shOHwz1wmfjact06vT2h7azz/dnW0UEq87+/ijVeqPz8sWU
+	 J1hcDtKIs0hN1bamIt4it/ivIsZN6b5KRfDv4eSuL89IMxiDOg45sxDHcZP8OyQG7M
+	 VB6q6WyV8NOavbjqr1LVh4oqfoz3W5hMd8t5KwIAtsdrnAhkvrW5+H4RC+e+uSeed+
+	 jX/JQcBYko2Xg==
+Date: Fri, 2 Feb 2024 15:24:20 -0600
+From: Rob Herring <robh@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Bc-bocun Chen <bc-bocun.chen@mediatek.com>,
+	Steven Liu <steven.liu@mediatek.com>,
+	John Crispin <john@phrozen.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
-	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Philipp Zabel <p.zabel@pengutronix.de>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v3 4/7] net: dsa: mt7530: move XTAL check to
- mt7530_setup()
-Message-ID: <Zb021ozEQSbU-gPd@makrotopia.org>
-References: <20240202-for-netnext-mt7530-improvements-2-v3-0-63d5adae99ca@arinc9.com>
- <20240202-for-netnext-mt7530-improvements-2-v3-4-63d5adae99ca@arinc9.com>
- <ZbzWpmZrukknMsYf@shell.armlinux.org.uk>
- <5b744f7f-2f63-4219-a0e9-8f08267b1fdd@arinc9.com>
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: phy: mediatek,xfi-tphy: add new bindings
+Message-ID: <20240202212420.GA1561174-robh@kernel.org>
+References: <702afb0c1246d95c90b22e57105304028bdd3083.1706823233.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <5b744f7f-2f63-4219-a0e9-8f08267b1fdd@arinc9.com>
+In-Reply-To: <702afb0c1246d95c90b22e57105304028bdd3083.1706823233.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240202_183947_168767_09DF2EB9 
-X-CRM114-Status: GOOD (  24.42  )
+X-CRM114-CacheID: sfid-20240202_132506_554281_CED7D862 
+X-CRM114-Status: GOOD (  16.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,36 +85,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 02, 2024 at 09:16:02PM +0300, Arınç ÜNAL wrote:
-> On 2.02.2024 14:48, Russell King (Oracle) wrote:
-> > On Fri, Feb 02, 2024 at 12:19:10PM +0300, Arınç ÜNAL via B4 Relay wrote:
-> > > From: Arınç ÜNAL <arinc.unal@arinc9.com>
-> > > 
-> > > The crystal frequency concerns the switch core. The frequency should be
-> > > checked when the switch is being set up so the driver can reject the
-> > > unsupported hardware earlier and without requiring port 6 to be used.
-> > > 
-> > > Move it to mt7530_setup(). Drop the unnecessary function printing.
-> > > 
-> > > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> > > Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-> > > Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
-> > 
-> > I would prefer this to be earlier in the series, before patch 2 which
-> > moves mt7530_setup_port6() to be called from mac_config(). mac_config()
-> > is supposed to be configuration error-free - in other words, all state
-> > should have been checked before hand.
-> 
-> I agree but mt7530_mac_config() is not a void function yet. The
-> mac_port_config member of the mt753x_info structure points to this
-> function. My next patch series gets rid of all useless error returns on the
-> phylink path and change mac_port_config to void. So I don't think working
-> on this patch series further will worth the effort. I'd rather have this
-> version applied as is.
+On Thu, Feb 01, 2024 at 09:52:20PM +0000, Daniel Golle wrote:
+> Add bindings for the MediaTek XFI T-PHY Ethernet SerDes PHY found in the
+> MediaTek MT7988 SoC which can operate at various interfaces modes:
 
-I agree regarding not changing the patch itself, but I also agree
-with Russell regarding the patch ordering. I know it's a 10-minute
-git headache to rebase the patches on top of each other in a different
-order, but you can easily compare the end result being identical to
-what you had before and hence don't need to retest.
+This is v4 unless I'm confused[1]. Where's the revision history?
+
+Rob
+
+[1] https://lore.kernel.org/all/b875f693f6d4367a610a12ef324584f3bf3a1c1c.1702352117.git.daniel@makrotopia.org/
+
+> 
+> via USXGMII PCS:
+>  * USXGMII
+>  * 10GBase-R
+>  * 5GBase-R
+> 
+> via LynxI SGMII PCS:
+>  * 2500Base-X
+>  * 1000Base-X
+>  * Cisco SGMII (MAC side)
+> 
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>  .../bindings/phy/mediatek,xfi-tphy.yaml       | 80 +++++++++++++++++++
+>  1 file changed, 80 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/mediatek,xfi-tphy.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/mediatek,xfi-tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,xfi-tphy.yaml
+> new file mode 100644
+> index 0000000000000..e897118dcf7e6
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/phy/mediatek,xfi-tphy.yaml
+> @@ -0,0 +1,80 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/phy/mediatek,xfi-tphy.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek XFI T-PHY
+> +
+> +maintainers:
+> +  - Daniel Golle <daniel@makrotopia.org>
+> +
+> +description:
+> +  The MediaTek XFI SerDes T-PHY provides the physical SerDes lanes
+> +  used by the (10G/5G) USXGMII PCS and (1G/2.5G) LynxI PCS found in
+> +  MediaTek's 10G-capabale SoCs.
+> +
+> +properties:
+> +  $nodename:
+> +    pattern: "^phy@[0-9a-f]+$"
+> +
+> +  compatible:
+> +    const: mediatek,mt7988-xfi-tphy
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: XFI PHY clock
+> +      - description: XFI register clock
+> +
+> +  clock-names:
+> +    items:
+> +      - const: xfipll
+> +      - const: topxtal
+> +
+> +  resets:
+> +    items:
+> +      - description: PEXTP reset
+
+What is PEXTP?
 
