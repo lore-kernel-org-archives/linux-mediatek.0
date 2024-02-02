@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE868C48286
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Feb 2024 23:57:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A1EBC4828D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Feb 2024 00:05:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=adT4iPkCMRDOEL5rMrtGnul/qErFA+76SbIs85UohKw=; b=eEr5u21TtUpwp6mOACiRHtMtNy
-	u5g8EuVV8Y1Tsmr5kfVu+xuqeDMYVuME3k3cpJtiYSn7WDNHAgZUloE76leAB08QWUPYX1Gui1t+W
-	gKzpXSEj9RlcJg8+GX6SJj730dbK3O5Vi/x31MQBk9q1lkMkqtOLowfnW/Xslxhvkgi9IbD4xva/d
-	BtFtBLrTuS0seIvxqZ5ZACzlfnCH/Whya3W5gsa0t+gSCZUqmHzwB/xvpJkg2xSokn+cVUCBnSjbx
-	xSZXTp0aYTzMFtENsDj868f9XDbUm9PbDVSFBdoXkKdYXfWnKzCkuDWlwFcyQGE2RTetseu30woEG
-	dwWKakAQ==;
+	bh=Kw5yCa7B5h6E5tqNELeCv4fqCVbEaQWT1fjUMOqoUrY=; b=cnRbu3Kdj+lkHdGUtvnBTpuMN2
+	y+OLZ9s/w6uqLjvK+qYYC01aNMKWhJZ2RxWAyF2tBA98sjqQI9SRJd3XF9ytXZIBixVXVAWbYA74h
+	VgYLW2XhXb59Ev1aJPVsm/b7rtRQxHrh8MP2ouyRSpSHmAsLutg03aOTetH8hAGZc0TNGqOJS9m5P
+	8MEciBBO9ItGR7dKyq8GTPClvsa0SQIAdGsklSJDpAEX3XoCnhWZJFXG6Pfbh/abXBwMwIdRmxdVO
+	2c2ZzyBD7EXEL91xlDSya6bRi84o8QH+enP0OEGvECGtYSef0uGbxUfiyt3mI0SNBWM4IKeibejnY
+	2F8h0Vzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVgvh-00000009hOT-1dPI;
-	Thu, 01 Feb 2024 23:57:13 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1rVh3o-00000009i9y-3q1o;
+	Fri, 02 Feb 2024 00:05:36 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVgve-00000009hNz-1O8V;
-	Thu, 01 Feb 2024 23:57:11 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-55ef0465507so1860853a12.3;
-        Thu, 01 Feb 2024 15:57:08 -0800 (PST)
+	id 1rVh3l-00000009i9N-0sZx;
+	Fri, 02 Feb 2024 00:05:34 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-a370315191dso11824266b.2;
+        Thu, 01 Feb 2024 16:05:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706831827; x=1707436627; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1706832331; x=1707437131; darn=lists.infradead.org;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=adT4iPkCMRDOEL5rMrtGnul/qErFA+76SbIs85UohKw=;
-        b=POzwGWYe37xty5jY3hjHyYp277LXD7G/n92q7d+wMvZKnu+jK7WzHaC00FQLK5r82s
-         mMcnfVFtUB4jtdUPGnvDK6qBOjeNoFC81zrrSgYbL92vF5fNJfyCvJHq/DwOb0yqjjMU
-         zG9/TqhgxBm6s2CUhd5bof6XUEr7U2jKKxQXeqjSpPxXN4eRZDk57N7Frr6H4lmPCvrJ
-         gNv2A1dqF57cDo2soOjqCPjoIoscaLd5wvIQSZP5Cj7rALChZw34m02QUG7VZHi5o8/u
-         n3IL8tXoHPhuozcyRi4gf2oOhr/748mpYuKUK8yV5wPgbXNGi9Etm8eCvCOyxwwWbSWd
-         Wxbg==
+        bh=Kw5yCa7B5h6E5tqNELeCv4fqCVbEaQWT1fjUMOqoUrY=;
+        b=B6EAblUNIg2/uHpHs/rOzExP2n3c2RBOGZlUKiiM427jnefFbhaZiPCAC3ei94Bad0
+         NZ0NvfTR5ZCWGHzUO9MvkZoWbF6EYL5+7EJIdi34rxjo5lTFW7jps7IFAEhUavgFf+Mv
+         JStVAQF/eS9XDZrPPutVaGkyOB2rd1Di9FoFkmxBfhN4h3tNth58B4HVsiMRcmaX8hkZ
+         zKFeICA4YhN0k+JWJO8+NB9Lnkdvnwl44Ky0T3YUwG3WCbpJ3FN4oKZqItxBafhXsXXt
+         VkyC3aZl+hI5dXLmHGllJaOSqdiwtTh8rnnGObIeuLyZneJi7C/Uqdnejs3LUo/yY50Q
+         vWgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706831827; x=1707436627;
+        d=1e100.net; s=20230601; t=1706832331; x=1707437131;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=adT4iPkCMRDOEL5rMrtGnul/qErFA+76SbIs85UohKw=;
-        b=DObLwi4qSgmyanHbgZws5LrxK2t9Ot+uBH9PI7fXXarh7ei8pzjrF5XUhUuw3Mfsna
-         PcRJTQQ0foeWl4Qj3Dw/JKSOlRV/Rk37Zuaa3RohlkHk8RZAwywk/u2PjAd3fHGOszQG
-         RlT/T8qLj/nWJBT1AiDyyd9ktz0gAUTi/NXfwyaLeqZfd90QDddTIcXCN6xkG8eGnsoq
-         lUG+XlQPCmc1CEqRRXGaIctCyRgjPT3/XZ7Au3YSRzUWNQGCeSgb5uBEmTsbIHPc/hhJ
-         H091JWmUe5PMcPgiu3rFLPYipYDWrW562JEhau3zrceRTX1qOAjIIsPFhHYpUx//pZwY
-         M7aQ==
-X-Gm-Message-State: AOJu0YxatnO5WX5W5l9vy/I0PFfUpoTw2tGm8ANGugX0OlsHpAaia4bR
-	+tysygOowuss6wJyzXjbaVcyqmsgyWluByxhY72N81hOpbHMbAMW
-X-Google-Smtp-Source: AGHT+IG3GRpEb6P3gOztp8VYIYCGF8w4fWoFWV2IqNBIPIZrFxFvH07VopDrgtziHJhcQ1hUKaZ8YA==
-X-Received: by 2002:a17:906:6d15:b0:a35:dd08:c7ab with SMTP id m21-20020a1709066d1500b00a35dd08c7abmr2828558ejr.26.1706831827348;
-        Thu, 01 Feb 2024 15:57:07 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCVUl2qS8vXJYPNH/8CEBWNcoQvNoq8VNnDC5tiT41ug2qx6eB9httdjpfEMwq1/GeIzcQFfDnW3mKXY65DN75xVqDEvnMTCerLFrxvvOyFvezJ1SON+S1aj+OhUPRy5gm4dnsAoxWxbguCFfELUikvKYxwh7Fcr1gnoXhwxt3Qpi+yimXcBy/NHWY6OkacFyjE3LVc+5BYunCYhLNDTgi6jmlRF5ptJ/o3bHHHs5GwoJHT2G1AkfPZfTZc8i81lYlkl8jgvVADxirW3Kj/YzYqlh8vSrib4k3VoeaowMo3ZwwctSD6YCLjjxsDPWoKkjRza8v67yIQkF3b5r4abMlmi/bdy4gxkwi2ztKapPBTNn+sdwGhPkBKbA0Hkd+euAyC/hJkb0py1E2qcBCT83Ui9yAHyx7F/1cvOtWfZ+Swdg1HgDRKxMPa2YrSWCBHSHoTH9ga/2USLPtDxdxmu/7PAuTQ/Yz6tnK+gr+5fn6GcT3i2WBj9PI9kFIr0EW0ouCqqmeGd/c5nAf3C5qV2nfj7hIWRe7RJYblxAEx4V7LNlXExsWhaJ++GSB3yTs2WXWHy5yiE4jPqNpfC1OFgvnvwdd9tIkutlR66JRpfuESHB5O2NSbFOsVVzZaBoHALpjeJeLKrtEJoP3mibkjDIbPtO/bvUY9F
+        bh=Kw5yCa7B5h6E5tqNELeCv4fqCVbEaQWT1fjUMOqoUrY=;
+        b=XF+0zu5ksxb8N6/MFPsELP9dw+ZOsRuzysGik6m5rZSFpBUzRbegE+ntMU5ZGf1Id8
+         ik3lUodY0YrWuTW52Lu/EndNpcspGX1u0TlRhM8ZRgl48Pq2KMd1Iw9fXr6PLQS8bmp4
+         yJDX/Puf6rg17MVUBnd4d111mxDE2ABN++Eghs0dz3holJcbIQBRNEQuv6SWeDE53IJ/
+         /9aU1cB/EcUMGon16f1d4jIxUdiCUUTjD3S5f+xTcm0xqLu9aN3lefZmbifZhJ3HADYq
+         k9wuF2D60h043aspEJ6YQqUvp5wKfZBteJN0DWfjBk80SESq+v17a2WMtZpueDdEtK7R
+         2r7Q==
+X-Gm-Message-State: AOJu0YyXg1A4+RAMFqCyGrvDcfsIUh0McZ4BTnSW1gyxViz0SUDSq4RQ
+	kbkDFJjrxVnE2ckvP8jn08JsPfGHxOEzvChno4XKaFQIvq5YOwDR
+X-Google-Smtp-Source: AGHT+IG3Oc+QVcDW1imSv28f6Wfd18UPkfs0THsoQFFMSm7GDFwNpyXEsoyc6JUAhBc82NDm4akIqQ==
+X-Received: by 2002:a17:906:6c8b:b0:a31:7aca:a429 with SMTP id s11-20020a1709066c8b00b00a317acaa429mr2525716ejr.4.1706832331143;
+        Thu, 01 Feb 2024 16:05:31 -0800 (PST)
+X-Forwarded-Encrypted: i=0; AJvYcCVqP+Ej+Py+JOKNXrBkFKszG2TQ5BitJp54lFM/ULnJrFAc1ThEwV37zImCs1V0f0eDefU0plz4nmA8YW3GvEpfgesqzJ8LlKKoG/cQTSLKgFdp4GlDVA7fbbENVVpIiX5Rglz9ADw69SHHTh8o8pghR4qkBmabwOP09SIfqUNUa8ziP3ewAGr/dVYf+2fuGLm0L3c0CWqnc4aV1+buL5BfYCzCDgyjKrqV783V7L21RduwjXpzinMDUJ+LzzD6P91YNrz88t0BrW2Homhh7ViZCsm+/NMsiFKs02EaAmqcDK99b02kw/c706SVeTz7P5E4LkNfp6eH0jUnieHOs9pHpLY8Mz3X3chY/UdnntiLMpAf/YRQMyMh1827YqyvR8fnU4n91AaOyZbXbV9QJWn02buVYKPHSno5klsYAemlYzsY8T87xFkGhfpNWQqgORiRY2+nBDIGQsGMzWqg7Rq1/X2g4A8WVFsaMmxp6mIE7O0z7+jKh3aSBpAjiYR3vbRqNBRr8Nta93M/1hAB9bog5PYudd/t6ezBNGXqJT3sCH12ovbVkKaAxftXTgekJMH97R6TbP+NFraj7y/peJ1wuakTP3fOXpvCtb4+ohGLj3+K38Jw/JNL7D0ns6yNLuV+l3K5DvAV3Wqho8pA7oSJ47CuZzI2
 Received: from skbuf ([188.25.173.195])
-        by smtp.gmail.com with ESMTPSA id vu12-20020a170907a64c00b00a31c5caa750sm277937ejc.177.2024.02.01.15.57.06
+        by smtp.gmail.com with ESMTPSA id cx7-20020a170907168700b00a3161adb239sm279824ejd.158.2024.02.01.16.05.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Feb 2024 15:57:07 -0800 (PST)
-Date: Fri, 2 Feb 2024 01:57:04 +0200
+        Thu, 01 Feb 2024 16:05:30 -0800 (PST)
+Date: Fri, 2 Feb 2024 02:05:28 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+To: arinc.unal@arinc9.com
 Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
 	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
 	Florian Fainelli <f.fainelli@gmail.com>,
@@ -79,20 +79,21 @@ Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
 	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v2 5/7] net: dsa: mt7530: simplify
- mt7530_setup_port6() and change to void
-Message-ID: <20240201235704.6wxbkpli3dk4pn4w@skbuf>
+Subject: Re: [PATCH net-next v2 6/7] net: dsa: mt7530: correct port
+ capabilities of MT7988
+Message-ID: <20240202000528.efgly2bpfhqxu332@skbuf>
 References: <20240130-for-netnext-mt7530-improvements-2-v2-0-ba06f5dd9eb0@arinc9.com>
- <20240130-for-netnext-mt7530-improvements-2-v2-5-ba06f5dd9eb0@arinc9.com>
- <Zbkc4BRORWYu79GZ@makrotopia.org>
- <77c38489-8a73-4b00-bd82-48174b4d620f@arinc9.com>
+ <20240130-for-netnext-mt7530-improvements-2-v2-0-ba06f5dd9eb0@arinc9.com>
+ <20240130-for-netnext-mt7530-improvements-2-v2-6-ba06f5dd9eb0@arinc9.com>
+ <20240130-for-netnext-mt7530-improvements-2-v2-6-ba06f5dd9eb0@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <77c38489-8a73-4b00-bd82-48174b4d620f@arinc9.com>
+In-Reply-To: <20240130-for-netnext-mt7530-improvements-2-v2-6-ba06f5dd9eb0@arinc9.com>
+ <20240130-for-netnext-mt7530-improvements-2-v2-6-ba06f5dd9eb0@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_155710_414509_E864BB07 
+X-CRM114-CacheID: sfid-20240201_160533_269975_E081CF8E 
 X-CRM114-Status: GOOD (  13.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,25 +109,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 30, 2024 at 08:46:04PM +0300, Arınç ÜNAL wrote:
-> would supposedly achieve 2 Gbps TX & 2 Gbps RX
+On Tue, Jan 30, 2024 at 06:20:52PM +0300, Arınç ÜNAL via B4 Relay wrote:
+> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> On the switch on the MT7988 SoC, as shown in Block Diagram 8.1.1.3 on page
+> 125 of "MT7988A Wi-Fi 7 Generation Router Platform: Datasheet (Open
+> Version) v0.1", there are only 4 PHYs. That's port 0 to 3. Set the case for
+> ports which connect to switch PHYs to '0 ... 3'.
+> 
+> Port 4 and 5 are not used at all in this design.
+> 
+> Link: https://wiki.banana-pi.org/Banana_Pi_BPI-R4#Documents [1]
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> Acked-by: Daniel Golle <daniel@makrotopia.org>
+> ---
 
-Source? Commit 8efaa653a8a5 ("net: ethernet: mediatek: Add MT7621 TRGMII
-mode support") says "TRGMII speed is 1200MBit.".
-
-> Unless the MediaTek SoC ethernet driver somehow caps TRGMII to 1 Gbps,
-> I consider this whole TRGMII shenanigans a scam
-
-I laughed :)
-
-You have to see whether the CPU isn't in fact at 100% already, becoming
-a bottleneck before the interface speed does.
-
-Also, mtk_eth_soc.c has an interesting comment "TRGMII is not permitted
-on MT7621 if using DDR2" - not sure if applicable to your setup or not.
-
-I just got myself an ASUS RT-AX1800U (uses the mt7621_asus_rt-ax53u.dts
-device tree AFAICT) which I'll be setting up with OpenWrt in the weeks
-to come, and on which I might also be able to run some tests from time
-to time.
+Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
 
