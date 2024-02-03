@@ -4,75 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89040C4828F
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Feb 2024 00:39:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A05DC4828F
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Feb 2024 06:48:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mHgRL79/hBiqk4St6zPJFt7ZpAdljnLawCcHONgZpZQ=; b=FMcbOnyqBrzNRW4fjrG2ui3jEa
-	hIux03XgGzuBgAsb1XE/acJF/XklwNlvsuQpNM6KdhK70qmoFsJKWH1dFwxtNTO+dr6YdvU6JxN3N
-	urotNcQ4eV+oNSUzMapJfquQL7+iEU6s54OMm98IcE8Y2GcCNwRF8k1OrACvwDLIR4whhUkMSVtKK
-	+pgpVMwLnpgDOTCsXO5dBBeK/2osmMobbnI8BV3O8kq/nnsAer+Cff8i5AgQvAN2duLjJJbQWTLS8
-	ZPsD+lhDW9Nw++Os8crVyzPxw6vuRS7tPdUtbYSabS0OXdNFh0BgTn3p+4A7e0uTRbmh0YPHrN8OL
-	CN3xI32w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GcXXYUgVSL9kjl2XrH/4D3QOseZ7ki/ehIxouq4tLTI=; b=0Sc4+FFc+qZax0XmG6qWP3bOAG
+	Z0hUVw06SxF+89NNMGR3C3ovxD3TghytI2+dgAs2HWQBRdfvkZAMsJN1uFNa/oRDu5cbOZrkjZxGc
+	whISfV2vpwpsSOMba1Wum2gNF4Xiv9STy3h2bvl3OFBLg12SrtGw4sdtNd6nbUvFzAl9NF7ZSEx9B
+	n2XXB2OBogSR+GX6oFipzDZFcGbfzumiLqI707xx2m3eE8K8MavBAGj4Db+AVp51GOoGKuFxRTn6j
+	CuxVmTck8R2fmZWsdP+KSZ9i1aG5zKDhEm/dCElLtl1dQipS1PFqJueLMGtFakQOUCasLx6yjB+6V
+	4lfXimeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rW43z-0000000Dyll-4298;
-	Sat, 03 Feb 2024 00:39:19 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rW9pM-0000000FgAx-3aLk;
+	Sat, 03 Feb 2024 06:48:36 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rW43x-0000000DylH-1Fdv
-	for linux-mediatek@lists.infradead.org;
-	Sat, 03 Feb 2024 00:39:18 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 40E44CE2E89
-	for <linux-mediatek@lists.infradead.org>; Sat,  3 Feb 2024 00:39:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8DD17C43394
-	for <linux-mediatek@lists.infradead.org>; Sat,  3 Feb 2024 00:39:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1706920753;
-	bh=CDhdZtJRM4I5jnsGxAP6SnwAa6RKbZAw/Fvw+maWkNY=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=Srn9foryvIJS0xs4P8A+nbDK/UMUPIPdIrEvrTmEmvXmJGrCd4aROuFdXJG0C9EWi
-	 W7X2HidnRAH5brgcd/78Y7FReHPk2xqwF6bsm8yQ0CW8JEkIjn1K5c3uxgrgPiovmS
-	 H+If+q12AMFYoxWPEaC5/pmN3bWRCeGpQn2PAFeuJX8kJyD7fYNqrxlnwWnDHotdbr
-	 pS3GlimcfeApUKGAZeSCq7m+sRLk5PzlKBpTmd57B4xi7KKSqpayq4JcQG9FWORJEf
-	 qsv4UC4Js35rhLdxVUM6y0GvVHsP/PERKPxyLTL51zMmPCyb5FPxt6aJprlpYzWDAy
-	 Uf1XThzoYDL5Q==
-Received: by mail-lj1-f169.google.com with SMTP id 38308e7fff4ca-2d08d9b9667so2258901fa.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 02 Feb 2024 16:39:13 -0800 (PST)
-X-Gm-Message-State: AOJu0Yyp1BGjw4HJljbxIEm6bQPoDQNLk93X5H6Y25jCbX9nS3E7cjI4
-	pMAjZjnCK8KXI+Wf/e8EIcXDbgSt9c1L2XQSyjYF4C0+JuN02mXW7wniXYipTg2awodfGcRnlK5
-	ndEZqLAMDrfOXIHxjaefNx+KGi58=
-X-Google-Smtp-Source: AGHT+IHa4ZO2VYWT1mFTKA5zcN1ID/fl9uj+ci0IbUmuSvFG2RP3o0Caq0GTCM9Bplwg/QtZJRfRCtjULrwGAZocaX8=
-X-Received: by 2002:a05:6512:313b:b0:511:4643:d913 with SMTP id
- p27-20020a056512313b00b005114643d913mr20056lfd.6.1706920751563; Fri, 02 Feb
- 2024 16:39:11 -0800 (PST)
+	id 1rW7Wy-0000000F4pv-37d9;
+	Sat, 03 Feb 2024 04:21:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=GcXXYUgVSL9kjl2XrH/4D3QOseZ7ki/ehIxouq4tLTI=; b=GEeKnyQbcVPFFnDnClIqK23MJx
+	dyXWsZiKEzBzHNzPYPKzupx8DlFL6jgOrbgrrIOzZWldQ2+C76Y3UCvcEEnlGcbUUS/lW+PnJlJi6
+	q6kBDiOhrZjv3j634rhDyhaXqgkHpuue3ZrlthpIar8Jk6ZvFTnVoZK1PS7Mq/+81aQ6jbIanm9cD
+	kVgRn7F6rLyMUE+yCWTFEgUAYkDkkUsXVHsLlkgmLgkRyM4QvzJ/x/6hTQV4oyhDw1DZhLRY2y/EW
+	0hwsmjwp9Z+FUiU2qMl8IZmU7wIVlBTngkrgeagkNOFqzawKh9eTh3nTjsHkE6nMyvVlNDoDTDVmM
+	BRiZvDfA==;
+Received: from mgamail.intel.com ([192.198.163.10])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rW7Wo-0000000AYzw-38Vz;
+	Sat, 03 Feb 2024 04:21:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1706934078; x=1738470078;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=l8fqb95s8syuE8Cx9UHSXoTZx0Bim/EsdxuGX0FstWM=;
+  b=dfEDpbfiJnqZ+bUbfsTPG5EO6yWgODe+VBDxP9XoHzGx4Z7ZFXzmpiWl
+   QeIcAsjMALFsrjwzZz258MZuiur2YV6hQeXAnS26APebtFov5U1q3+/PW
+   QqO5bN99i3ClM/wfmlLa7wGEW/2J37Fik1Hh6Vh/FlNVZJQoALnEfRI60
+   o36iZ/+Vq02aJmh7aMei/pE7Kud4EhxiqRz+Ddq2fOU+FCZxbYKwMWBdE
+   MPvVqvU4dz+pwu8931kwkJFXHt7TrVsQqidzaq0s/1GknPrJzsD0HdDeA
+   xhqHgsoNB224cl+9OvQx2B+80lkxmJ9/nr2zPEiG51dR3ghe80CvUVWtf
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10971"; a="11655562"
+X-IronPort-AV: E=Sophos;i="6.05,238,1701158400"; 
+   d="scan'208";a="11655562"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Feb 2024 20:21:09 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.05,238,1701158400"; 
+   d="scan'208";a="31047732"
+Received: from lkp-server02.sh.intel.com (HELO 59f4f4cd5935) ([10.239.97.151])
+  by orviesa002.jf.intel.com with ESMTP; 02 Feb 2024 20:21:04 -0800
+Received: from kbuild by 59f4f4cd5935 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1rW7WX-0004cQ-0G;
+	Sat, 03 Feb 2024 04:21:01 +0000
+Date: Sat, 3 Feb 2024 12:20:06 +0800
+From: kernel test robot <lkp@intel.com>
+To: Andrew Davis <afd@ti.com>, Sebastian Reichel <sre@kernel.org>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Cristian Ciocaltea <cristian.ciocaltea@gmail.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: oe-kbuild-all@lists.linux.dev, linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, Andrew Davis <afd@ti.com>
+Subject: Re: [PATCH 09/18] power: reset: rmobile-reset: Use
+ devm_register_sys_off_handler(RESTART)
+Message-ID: <202402031246.nZHDnDnf-lkp@intel.com>
+References: <20240201180102.70395-10-afd@ti.com>
 MIME-Version: 1.0
-References: <20240102124747.21644-1-hao.qin@mediatek.com> <20240102124747.21644-2-hao.qin@mediatek.com>
-In-Reply-To: <20240102124747.21644-2-hao.qin@mediatek.com>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Fri, 2 Feb 2024 18:39:00 -0600
-X-Gmail-Original-Message-ID: <CAGp9LzqejefGFLpuntAghHUsA58mN_2EQqKynBC-JCYXAEUSZg@mail.gmail.com>
-Message-ID: <CAGp9LzqejefGFLpuntAghHUsA58mN_2EQqKynBC-JCYXAEUSZg@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] Bluetooth: btusb: mediatek: add a recovery method
- for MT7922 and MT7925
-To: Hao Qin <hao.qin@mediatek.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
-	Luiz Von Dentz <luiz.dentz@gmail.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Deren Wu <deren.Wu@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>, 
-	Chris Lu <chris.lu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>, 
-	linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
-	linux-kernel <linux-kernel@vger.kernel.org>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240201180102.70395-10-afd@ti.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240202_163917_709066_D8AC727D 
-X-CRM114-Status: GOOD (  21.22  )
+X-CRM114-CacheID: sfid-20240203_042120_830090_3DAA13D4 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,125 +108,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 2, 2024 at 6:49=E2=80=AFAM Hao Qin <hao.qin@mediatek.com> wrote=
-:
->
-> From: "hao.qin" <hao.qin@mediatek.com>
->
-> For MT7922 and MT7925, add USB reset retry to recover from patch
-> download failure, and perform a reset before patch download to
-> avoid unexpected problems caused by unkonwn status of dongle.
->
-> Signed-off-by: hao.qin <hao.qin@mediatek.com>
-> ---
->  drivers/bluetooth/btusb.c | 29 ++++++++++++++++++++++++-----
->  1 file changed, 24 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> index abefcd1a089d..26ad4864d06c 100644
-> --- a/drivers/bluetooth/btusb.c
-> +++ b/drivers/bluetooth/btusb.c
-> @@ -3000,17 +3000,26 @@ static int btusb_mtk_subsys_reset(struct hci_dev =
-*hdev, u32 dev_id)
->         u32 val;
->         int err;
->
-> -       if (dev_id =3D=3D 0x7925) {
-> +       if (dev_id =3D=3D 0x7922) {
-> +               btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
-> +               val |=3D 0x00002020;
-> +               btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
-> +               btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, 0x00010001)=
-;
-> +               btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
-> +               val |=3D BIT(0);
-> +               btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
-> +               msleep(100);
-> +       } else if (dev_id =3D=3D 0x7925) {
->                 btusb_mtk_uhw_reg_read(data, MTK_BT_RESET_REG_CONNV3, &va=
-l);
-> -               val |=3D (1 << 5);
-> +               val |=3D BIT(5);
->                 btusb_mtk_uhw_reg_write(data, MTK_BT_RESET_REG_CONNV3, va=
-l);
->                 btusb_mtk_uhw_reg_read(data, MTK_BT_RESET_REG_CONNV3, &va=
-l);
->                 val &=3D 0xFFFF00FF;
-> -               val |=3D (1 << 13);
-> +               val |=3D BIT(13);
->                 btusb_mtk_uhw_reg_write(data, MTK_BT_RESET_REG_CONNV3, va=
-l);
->                 btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, 0x00010001)=
-;
->                 btusb_mtk_uhw_reg_read(data, MTK_BT_RESET_REG_CONNV3, &va=
-l);
-> -               val |=3D (1 << 0);
-> +               val |=3D BIT(0);
->                 btusb_mtk_uhw_reg_write(data, MTK_BT_RESET_REG_CONNV3, va=
-l);
->                 btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT, 0x0000=
-00FF);
->                 btusb_mtk_uhw_reg_read(data, MTK_UDMA_INT_STA_BT, &val);
-> @@ -3040,6 +3049,9 @@ static int btusb_mtk_subsys_reset(struct hci_dev *h=
-dev, u32 dev_id)
->         if (err < 0)
->                 bt_dev_err(hdev, "Reset timeout");
->
-> +       if (dev_id =3D=3D 0x7922)
-> +               btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT, 0x0000=
-00FF);
-> +
->         btusb_mtk_id_get(data, 0x70010200, &val);
->         if (!val)
->                 bt_dev_err(hdev, "Can't get device id, subsys reset fail.=
-");
-> @@ -3128,8 +3140,10 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
->                 fwname =3D FIRMWARE_MT7668;
->                 break;
->         case 0x7922:
-> -       case 0x7961:
->         case 0x7925:
-> +               btusb_mtk_subsys_reset(hdev, dev_id);
+Hi Andrew,
 
-Is there any reason we cannot perform a subsystem reset for 0x7961?
-I believe it would enhance robustness under any circumstance, such as
-cold reboot, warm reboot, or suspension,
-ensuring that the controller can be reset to its initial state
+kernel test robot noticed the following build warnings:
 
-> +               fallthrough;
-> +       case 0x7961:
->                 if (dev_id =3D=3D 0x7925)
->                         snprintf(fw_bin_name, sizeof(fw_bin_name),
->                                  "mediatek/mt%04x/BT_RAM_CODE_MT%04x_1_%x=
-_hdr.bin",
-> @@ -3143,6 +3157,11 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
->                                                 btusb_mtk_hci_wmt_sync);
->                 if (err < 0) {
->                         bt_dev_err(hdev, "Failed to set up firmware (%d)"=
-, err);
-> +                       if (dev_id =3D=3D 0x7922 || dev_id =3D=3D 0x7925)=
- {
+[auto build test WARNING on sre-power-supply/for-next]
+[also build test WARNING on mani-mhi/mhi-next soc/for-next linus/master v6.8-rc2 next-20240202]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Similarly, is there any reason we cannot apply the same approach for
-mt7961? Using a less specific condition would reduce maintenance
-effort in the future.
+url:    https://github.com/intel-lab-lkp/linux/commits/Andrew-Davis/power-reset-atc260x-poweroff-Use-devm_register_sys_off_handler-RESTART/20240202-020809
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/sre/linux-power-supply.git for-next
+patch link:    https://lore.kernel.org/r/20240201180102.70395-10-afd%40ti.com
+patch subject: [PATCH 09/18] power: reset: rmobile-reset: Use devm_register_sys_off_handler(RESTART)
+config: hexagon-randconfig-r122-20240202 (https://download.01.org/0day-ci/archive/20240203/202402031246.nZHDnDnf-lkp@intel.com/config)
+compiler: clang version 19.0.0git (https://github.com/llvm/llvm-project 7dd790db8b77c4a833c06632e903dc4f13877a64)
+reproduce: (https://download.01.org/0day-ci/archive/20240203/202402031246.nZHDnDnf-lkp@intel.com/reproduce)
 
-> +                               btusb_stop_traffic(data);
-> +                               usb_kill_anchored_urbs(&data->tx_anchor);
-> +                               usb_queue_reset_device(data->intf);
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202402031246.nZHDnDnf-lkp@intel.com/
 
-If an error occurs during firmware download, I guess we can
-subsequently attempt to download the firmware again through several
-retries.
-This helps the controller to autonomously recover from any potential
-errors and ensure we can complete the initialization process.
+sparse warnings: (new ones prefixed by >>)
+>> drivers/power/reset/rmobile-reset.c:24:40: sparse: sparse: incorrect type in initializer (different address spaces) @@     expected void [noderef] __iomem *sysc_base2 @@     got void *cb_data @@
+   drivers/power/reset/rmobile-reset.c:24:40: sparse:     expected void [noderef] __iomem *sysc_base2
+   drivers/power/reset/rmobile-reset.c:24:40: sparse:     got void *cb_data
+>> drivers/power/reset/rmobile-reset.c:45:47: sparse: sparse: incorrect type in argument 5 (different address spaces) @@     expected void *cb_data @@     got void [noderef] __iomem *[assigned] sysc_base2 @@
+   drivers/power/reset/rmobile-reset.c:45:47: sparse:     expected void *cb_data
+   drivers/power/reset/rmobile-reset.c:45:47: sparse:     got void [noderef] __iomem *[assigned] sysc_base2
 
-> +                       }
->                         return err;
->                 }
->
-> --
-> 2.18.0
->
->
+vim +24 drivers/power/reset/rmobile-reset.c
+
+    21	
+    22	static int rmobile_reset_handler(struct sys_off_data *data)
+    23	{
+  > 24		void __iomem *sysc_base2 = data->cb_data;
+    25	
+    26		/* Let's assume we have acquired the HPB semaphore */
+    27		writel(RESCNT2_PRES, sysc_base2 + RESCNT2);
+    28	
+    29		return NOTIFY_DONE;
+    30	}
+    31	
+    32	static int rmobile_reset_probe(struct platform_device *pdev)
+    33	{
+    34		void __iomem *sysc_base2;
+    35		int error;
+    36	
+    37		sysc_base2 = devm_platform_ioremap_resource(pdev, 0);
+    38		if (IS_ERR(sysc_base2))
+    39			return PTR_ERR(sysc_base2);
+    40	
+    41		error = devm_register_sys_off_handler(&pdev->dev,
+    42						      SYS_OFF_MODE_RESTART,
+    43						      SYS_OFF_PRIO_HIGH,
+    44						      rmobile_reset_handler,
+  > 45						      sysc_base2);
+    46		if (error) {
+    47			dev_err(&pdev->dev,
+    48				"cannot register restart handler (err=%d)\n", error);
+    49			return error;
+    50		}
+    51	
+    52		return 0;
+    53	}
+    54	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
