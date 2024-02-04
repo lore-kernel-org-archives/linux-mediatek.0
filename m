@@ -4,78 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8532DC4828F
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Feb 2024 09:32:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F213C48286
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Feb 2024 13:51:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DU6vtcfFzZ/B4nNoVmF1PV9lrYv6/YSabj6kRMyrKbw=; b=CAb9aXPiDEI4XTRTupH8Tt+C0S
-	Zf1lfmWHTAZ7eA9zfYrXQf7KShylzTIAl/Uuxz3OMMiAHPSZoTw+EVskrt+Pe9nSCvBX8o8mdmnWJ
-	Q52V6MuQfzelxBsqVM1XwsD8oxW3zzTPQaQy3h1l8W/Mzkxpik+Og6Km3QRuLr5D/epH5Cs4gOGLJ
-	oqT3Wu9E5QsojluDP4BCw6SJkChp3jJaKwzXPrHS4ozMQh1KuemxVeR3ybVh9k25mBI+s7qPeiqIe
-	WacZQMvw8j3NvlNZcEyP+aXJs/87Q+0HlCQeRXbHkmwnLufiG6f3P6HYgGJnZBXlykdYLB6/2oshc
-	QxugW1Yw==;
+	bh=3WPGYWENLz/sIakGt75SCkmHKLe09AJ2u1vWvmY+Csg=; b=oObciV7rMDjHqSg0B5NF72f7Et
+	clPr0ZV3SuWE/08dHN4qmWl8OTJTEz6PxZSFehZcciWaoou30fWB1Yp3Vcny/gwUMbO/iCge6Nz0M
+	FNydnXFcA/l4dwWDNizxzA6JBRpgUA7L63kP1/bEMtD7emqx3FBEFbepJDQPx5A3jfREaboZhQjof
+	mf5Ktdlx48397RJZkB3OfPpYm9zPnEKJesTijJ7QBQLfIG2z8OwRnQZ+Rn7BCxBBUrNRV88LMuoQQ
+	Nu96OUlIxaFJM9H02dfU8onSH5w7C3KBME06UkFoC78Xsbs2e+OYy17DrUl4jJMcbvqDSQVKpWUX7
+	8SLXXhDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWYrZ-00000000UxV-36HD;
-	Sun, 04 Feb 2024 09:32:33 +0000
-Received: from mgamail.intel.com ([198.175.65.11])
+	id 1rWctj-00000000tvU-24Y2;
+	Sun, 04 Feb 2024 13:51:03 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWYrW-00000000UwE-3M9Z;
-	Sun, 04 Feb 2024 09:32:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1707039151; x=1738575151;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=4HfFIjzTJXK5+dvzfP1F90fWe6JyO8lLx8Fekvj1EY4=;
-  b=T7Rr/dJxoxentm4WhreyhcYId1RR8GP8FCbj9EdiuVju3sE+j6Kp6vou
-   lWTq2Qp6LmkXJKhclgZF7457qMykQph2od537nXohtZhcWk+2E44I0P3N
-   nhAb29Q+53wRaJyxEPJuudlNrEFTJFaiVe06opDHqlR+eibjBLyPjyLrJ
-   41ucpUOS0Xg0v/TYLwnHugAFqMmgDYc5s8LsC3LRSI5uA29iIf1wmFuD+
-   95Ab5i8gKrG1rBpmoOQawEOA8lytE0fWL5k8W8LfkL9yWOnyuUpa9Tiph
-   ZrEMrjJVvDKjcEhU6KQCCburmBd5hS6OWKUtsn1/ruKWJsaPZSmAmdvrM
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10973"; a="10970040"
-X-IronPort-AV: E=Sophos;i="6.05,242,1701158400"; 
-   d="scan'208";a="10970040"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Feb 2024 01:32:23 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.05,242,1701158400"; 
-   d="scan'208";a="469101"
-Received: from lkp-server02.sh.intel.com (HELO 59f4f4cd5935) ([10.239.97.151])
-  by orviesa009.jf.intel.com with ESMTP; 04 Feb 2024 01:32:20 -0800
-Received: from kbuild by 59f4f4cd5935 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1rWYrJ-0006Cm-0X;
-	Sun, 04 Feb 2024 09:32:17 +0000
-Date: Sun, 4 Feb 2024 17:31:47 +0800
-From: kernel test robot <lkp@intel.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	wenst@chromium.org, hsinyi@chromium.org, nfraprado@collabora.com,
-	macpaul.lin@mediatek.com, sean.wang@mediatek.com,
+	id 1rWctg-00000000tuS-102b;
+	Sun, 04 Feb 2024 13:51:01 +0000
+Received: from pendragon.ideasonboard.com (unknown [151.216.142.210])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id E9F6C720;
+	Sun,  4 Feb 2024 14:49:33 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1707054574;
+	bh=4/u6c8A7HPqivSqSRYin51hS3p0zUCCOPF4PXCVBzYY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WFXe4dUJuMzaOEeLaWAsJL0smy/yif2Tw2PnsZJwJZ0fYQAKJsFHBBLkxOO8SOxAJ
+	 FLUVjjt/qc56Z5GGKRLMPL2MEeq/6pHs41aZU6UJx1idAkEaqURxI8C8Nweik+Ssb4
+	 3N2pN5Ch1jqlWKbR+g87QY5aTUTVAvPlY2I3AvMA=
+Date: Sun, 4 Feb 2024 15:50:56 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Zhi Mao <zhi.mao@mediatek.com>
+Cc: mchehab@kernel.org, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, sakari.ailus@linux.intel.com,
+	shengnan.wang@mediatek.com, yaya.chang@mediatek.com,
+	10572168@qq.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
+	yunkec@chromium.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	jacopo.mondi@ideasonboard.com, hverkuil-cisco@xs4all.nl,
+	heiko@sntech.de, jernej.skrabec@gmail.com, macromorgan@hotmail.com,
+	linus.walleij@linaro.org, hdegoede@redhat.com,
+	tomi.valkeinen@ideasonboard.com, gerald.loacker@wolfvision.net,
+	andy.shevchenko@gmail.com, bingbu.cao@intel.com,
+	dan.scally@ideasonboard.com, linux-media@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
-	stephen@radxa.com, tom@radxa.com
-Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: Introduce the MT8395 Radxa
- NIO 12L board
-Message-ID: <202402041754.SHJCpnEP-lkp@intel.com>
-References: <20240202114821.79227-3-angelogioacchino.delregno@collabora.com>
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v4 1/2] media: dt-bindings: i2c: add GalaxyCore GC08A3
+ image sensor
+Message-ID: <20240204135056.GA6804@pendragon.ideasonboard.com>
+References: <20240204061538.2105-1-zhi.mao@mediatek.com>
+ <20240204061538.2105-2-zhi.mao@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240202114821.79227-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240204061538.2105-2-zhi.mao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240204_013230_911340_6CA5E686 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20240204_055100_446028_7892E280 
+X-CRM114-Status: GOOD (  17.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,36 +81,145 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+Hi Zhi,
 
-kernel test robot noticed the following build errors:
+Thank you for the patch.
 
-[auto build test ERROR on robh/for-next]
-[also build test ERROR on linus/master v6.8-rc2 next-20240202]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+On Sun, Feb 04, 2024 at 02:15:37PM +0800, Zhi Mao wrote:
+> Add YAML device tree binding for GC08A3 CMOS image sensor,
+> and the relevant MAINTAINERS entries.
+> 
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
 
-url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/dt-bindings-arm64-mediatek-Add-MT8395-Radxa-NIO-12L-board-compatible/20240202-195207
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
-patch link:    https://lore.kernel.org/r/20240202114821.79227-3-angelogioacchino.delregno%40collabora.com
-patch subject: [PATCH v2 2/2] arm64: dts: mediatek: Introduce the MT8395 Radxa NIO 12L board
-config: arm64-defconfig (https://download.01.org/0day-ci/archive/20240204/202402041754.SHJCpnEP-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240204/202402041754.SHJCpnEP-lkp@intel.com/reproduce)
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202402041754.SHJCpnEP-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> Error: arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts:791.1-8 Label or path ssusb0 not found
->> Error: arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts:804.1-8 Label or path ssusb2 not found
-   FATAL ERROR: Syntax error parsing input tree
+> ---
+>  .../bindings/media/i2c/galaxycore,gc08a3.yaml | 112 ++++++++++++++++++
+>  1 file changed, 112 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
+> new file mode 100644
+> index 000000000000..8c09e8c121e5
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
+> @@ -0,0 +1,112 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +# Copyright (c) 2023 MediaTek Inc.
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/i2c/galaxycore,gc08a3.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: GalaxyCore gc08a3 1/4" 8M Pixel MIPI CSI-2 sensor
+> +
+> +maintainers:
+> +  - Zhi Mao <zhi.mao@mediatek.com>
+> +
+> +description:
+> +  The gc08a3 is a raw image sensor with an MIPI CSI-2 image data
+> +  interface and CCI (I2C compatible) control bus. The output format
+> +  is raw Bayer.
+> +
+> +properties:
+> +  compatible:
+> +    const: galaxycore,gc08a3
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  dovdd-supply: true
+> +
+> +  avdd-supply: true
+> +
+> +  dvdd-supply: true
+> +
+> +  reset-gpios:
+> +    description: Reference to the GPIO connected to the RESETB pin.
+> +    maxItems: 1
+> +
+> +  port:
+> +    $ref: /schemas/graph.yaml#/$defs/port-base
+> +    additionalProperties: false
+> +    description:
+> +      Output port node, single endpoint describing the CSI-2 transmitter.
+> +
+> +    properties:
+> +      endpoint:
+> +        $ref: /schemas/media/video-interfaces.yaml#
+> +        unevaluatedProperties: false
+> +
+> +        properties:
+> +          data-lanes:
+> +            oneOf:
+> +              - items:
+> +                  - const: 1
+> +                  - const: 2
+> +                  - const: 3
+> +                  - const: 4
+> +              - items:
+> +                  - const: 1
+> +                  - const: 2
+> +
+> +          link-frequencies: true
+> +
+> +        required:
+> +          - data-lanes
+> +          - link-frequencies
+> +
+> +    required:
+> +      - endpoint
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +  - dovdd-supply
+> +  - avdd-supply
+> +  - dvdd-supply
+> +  - reset-gpios
+> +  - port
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/gpio/gpio.h>
+> +
+> +    i2c {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        sensor@31 {
+> +            compatible = "galaxycore,gc08a3";
+> +            reg = <0x31>;
+> +
+> +            clocks = <&gc08a3_clk>;
+> +
+> +            reset-gpios = <&pio 19 GPIO_ACTIVE_HIGH>;
+> +
+> +            avdd-supply = <&gc08a3_avdd>;
+> +            dovdd-supply = <&gc08a3_dovdd>;
+> +            dvdd-supply = <&gc08a3_dvdd>;
+> +
+> +            port {
+> +                sensor_out: endpoint {
+> +                    data-lanes = <1 2 3 4>;
+> +                    link-frequencies = /bits/ 64 <336000000 207000000>;
+> +                    remote-endpoint = <&seninf_csi_port_0_in>;
+> +                };
+> +            };
+> +        };
+> +    };
+> +
+> +...
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Regards,
+
+Laurent Pinchart
 
