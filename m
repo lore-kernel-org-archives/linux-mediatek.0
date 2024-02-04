@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5EC7C48286
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Feb 2024 16:35:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB2ACC48298
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Feb 2024 16:35:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LkKg4pVfvfSZ5gP0jjr0Ckz8mKZ27XdT41XXz1Pi1Z8=; b=q98kPKJvJ4n9y4U7IUwknwClOq
-	ZRkSZjXPNzJLXyMm/XmMUfowcnQYBHpAqUBZzPEBzDXMaBT22VrdXCYM6N+vUfPAtF+EWOgkBAlcg
-	O5kAmgmY+DzL5aDic1DKPEh9+z/CZ9JDY5MHVqdOnly2bYLcxzqqG909oJtTzeeTfJ2gRXIPQwppP
-	er5Re7clLXxjvEnN6/QbCxvbES901nBfZG2BCh8EvY3B3PyV0tCefKNp/kjY2r3mzs4zQ02nwTKPh
-	R4jR67IXnBGw37QPNFCwzHqJTxzhPRYroriZjpuo2AKEkDwHtxAX+zjpj3FNUGP8mRilUigmxbN4B
-	gdx6KtOg==;
+	bh=Ac5nmLz68FDbroZdFHw/IRjP4O8w5nrpQv03m6PDXsg=; b=c7kK5eLlQh3gKjk0nrj2iQ6ggh
+	Z1F5eHf/xZgUpw590OTz79kqSedSVkJ4D3nqkq6QdsVcJi8Tf5MOOYBhk0HJL+MBj+u2pb0pAJ850
+	1D4FxY4h/IKJQYpfQ/tlhnl12+LpwrtxwqexVsuepyZZbiq34LbTubsoGuGg8AC0Dly23cLtPaDST
+	6HKQMQaXuRa4gTTfFGbKZi3mYUKM/txWGKnlRls1Dq7DzkUD2Jzx9S4eoF8W/hzMOqGBfdjLklPBR
+	JetnLgNYv35QXFGbe5ghIDMkARHr3PjTEbuOmBBKvkcyshGnsDHCMQGckbCcIR93SZSqrXllSlrmd
+	DlkZEGDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWfSN-000000018iW-3oXQ;
-	Sun, 04 Feb 2024 16:34:59 +0000
+	id 1rWfSQ-000000018kJ-085M;
+	Sun, 04 Feb 2024 16:35:02 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWfSI-000000018fH-2cLH;
-	Sun, 04 Feb 2024 16:34:56 +0000
+	id 1rWfSI-000000018fF-2cc5;
+	Sun, 04 Feb 2024 16:34:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4F64960EEA;
-	Sun,  4 Feb 2024 16:34:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 0FD03C43601;
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8D0FF60EE6;
 	Sun,  4 Feb 2024 16:34:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id E4C0EC433A6;
+	Sun,  4 Feb 2024 16:34:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1707064492;
-	bh=UiB7b9R8HzxacCmpjMHE6NnCO6Y1sX/piDLjud+k0Gw=;
+	bh=puE0H+0dxqk+kALrvio38D2+1eLpQM/MJiPG9L3BHjg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=tSwbfCeYQIu/7HpF2Q+RSx9vkkNg6ZVnHzMuFnNLvtD3PkMOxN32+Ad3HQqCU7m4d
-	 mJ1IkVFwtmi1yRCisA3krLiFnZitdjzsuqvN/Fywb18GI/Zt8z2huRP4z23iiGS77Z
-	 +g/NWWvM9R6sM0DXiV7WlyepKA5jITzzjy2SAPNKLCMRknyZYRZcqQzmbWeez559fy
-	 aZMHSBF+9c0zaryNDXIZ3rYeLMgWVezqRqPYiiKDJA4osA/IBTJLB2gC44KetlY5Sq
-	 gZcqNpNHMLOZrtUhPKvcCtXgFyzRInbo6QA3dXIkvXw073PpqUKRCzfXyf3FUlyrTp
-	 iBeavLp0Wm8Lg==
+	b=h07Rhw4qRDGgkMJrU1Xc1ZGl9lO3hyNleItqd/zpnYyOLj1H+9k2sETdMKkOhODVQ
+	 PD9/DUpuqdh9QIAZaM1cNGx+LKtLTAHR57z3cSbF8QKb7RDmls+qcBrn3wHI/1Y626
+	 NbMcgon37KI+yJ1cs4xyiMs3af2w3gdms/Twht8khA+ZGuf3qmEerg0fri1BO5FRF9
+	 p16JoqSAJTZn2Pmd5qdJzebdda8i0uEYv3xn9OJ8A6wh7PSJaD4EkcHUwvQCgDxxbN
+	 mW6Ul22Ctdcm44fZiFY7AD+dhyStNW7jqGPWtTO/r2P561cPe5Ryl/ntYwsWblltO3
+	 AkZ/m/tEC8jFQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0070C48286;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C53CAC4828F;
 	Sun,  4 Feb 2024 16:34:51 +0000 (UTC)
 From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
  <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Sun, 04 Feb 2024 19:34:24 +0300
-Subject: [PATCH net-next v4 6/7] net: dsa: mt7530: correct port
- capabilities of MT7988
+Date: Sun, 04 Feb 2024 19:34:21 +0300
+Subject: [PATCH net-next v4 3/7] net: dsa: mt7530: simplify
+ mt7530_pad_clk_setup()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240204-for-netnext-mt7530-improvements-2-v4-6-02bf0abaadb8@arinc9.com>
+Message-Id: <20240204-for-netnext-mt7530-improvements-2-v4-3-02bf0abaadb8@arinc9.com>
 References: <20240204-for-netnext-mt7530-improvements-2-v4-0-02bf0abaadb8@arinc9.com>
 In-Reply-To: <20240204-for-netnext-mt7530-improvements-2-v4-0-02bf0abaadb8@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
@@ -68,20 +68,21 @@ Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
  Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, 
- =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
+ =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, 
+ "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
 X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1707064489; l=1134;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1707064489; l=4954;
  i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
- bh=rcHiOfH2z15A2hleGudKrgg4oqBXeEUj1LqzdHrVmY0=;
- b=Yd7wt8CwbJbExv+irGL0enlVxMAxpjsbIq9VDwYorYK4Xkgy8+h1Psf83YuOCrTJKi0B9coJK
- XkKlNm81dZyA1E27s9tzSge0ekkZ0ZW3PUvbO4sHdRg7BHCPonAfYRj
+ bh=9/J2GD71ZKdoYnfGtT2kaa92CIVclpnfm7Vnc7HsKpg=;
+ b=ZVKzvpto9gb+0jhVVuEjsboUy0hB8B7l/tQy/WqE31KW22plC1Papds/RD+GCCiTVAw0mUPAH
+ 3VndNirdV+nAEJMEfkN0Pv817lQ2lbl8pRBn6R4QyBYeOnL1+i3vYwa
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt with auth_id=115
 X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240204_083454_779310_013BF9F3 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20240204_083454_785820_D3726B35 
+X-CRM114-Status: GOOD (  17.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,34 +100,142 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-On the switch on the MT7988 SoC, as shown in Block Diagram 8.1.1.3 on page
-125 of "MT7988A Wi-Fi 7 Generation Router Platform: Datasheet (Open
-Version) v0.1", there are only 4 PHYs. That's port 0 to 3. Set the case for
-ports which connect to switch PHYs to '0 ... 3'.
+This code is from before this driver was converted to phylink API. Phylink
+deals with the unsupported interface cases before mt7530_pad_clk_setup() is
+run. Therefore, the default case would never run. However, it must be
+defined nonetheless to handle all the remaining enumeration values, the
+phy-modes.
 
-Port 4 and 5 are not used at all in this design.
+Switch to if statement for RGMII and return which simplifies the code and
+saves an indent.
 
-Link: https://wiki.banana-pi.org/Banana_Pi_BPI-R4#Documents [1]
-Acked-by: Daniel Golle <daniel@makrotopia.org>
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+Set P6_INTF_MODE, which is the three least significant bits of the
+MT7530_P6ECR register, to 0 for RGMII even though it will already be 0
+after reset. This is to keep supporting dynamic reconfiguration of the port
+in the case the interface changes from TRGMII to RGMII.
+
+Disable the TRGMII clocks for all cases. They will be enabled if TRGMII is
+being used.
+
+Read XTAL after checking for RGMII as it's only needed for the TRGMII
+interface mode.
+
+Reviewed-by: Daniel Golle <daniel@makrotopia.org>
+Reviewed-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/dsa/mt7530.c | 91 +++++++++++++++++++++---------------------------
+ 1 file changed, 40 insertions(+), 51 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 8a6312b3bb06..08d5d7dd5969 100644
+index 8b8469eba863..82e90da1e52b 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -2577,7 +2577,7 @@ static void mt7988_mac_port_get_caps(struct dsa_switch *ds, int port,
+@@ -418,64 +418,53 @@ static int
+ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+ {
+ 	struct mt7530_priv *priv = ds->priv;
+-	u32 ncpo1, ssc_delta, trgint, xtal;
++	u32 ncpo1, ssc_delta, xtal;
  
- 	switch (port) {
- 	/* Ports which are connected to switch PHYs. There is no MII pinout. */
--	case 0 ... 4:
-+	case 0 ... 3:
- 		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
- 			  config->supported_interfaces);
- 		break;
+-	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
++	/* Disable the MT7530 TRGMII clocks */
++	core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
+ 
+-	switch (interface) {
+-	case PHY_INTERFACE_MODE_RGMII:
+-		trgint = 0;
+-		break;
+-	case PHY_INTERFACE_MODE_TRGMII:
+-		trgint = 1;
+-		if (xtal == HWTRAP_XTAL_25MHZ)
+-			ssc_delta = 0x57;
+-		else
+-			ssc_delta = 0x87;
+-		if (priv->id == ID_MT7621) {
+-			/* PLL frequency: 125MHz: 1.0GBit */
+-			if (xtal == HWTRAP_XTAL_40MHZ)
+-				ncpo1 = 0x0640;
+-			if (xtal == HWTRAP_XTAL_25MHZ)
+-				ncpo1 = 0x0a00;
+-		} else { /* PLL frequency: 250MHz: 2.0Gbit */
+-			if (xtal == HWTRAP_XTAL_40MHZ)
+-				ncpo1 = 0x0c80;
+-			if (xtal == HWTRAP_XTAL_25MHZ)
+-				ncpo1 = 0x1400;
+-		}
+-		break;
+-	default:
+-		dev_err(priv->dev, "xMII interface %d not supported\n",
+-			interface);
+-		return -EINVAL;
++	if (interface == PHY_INTERFACE_MODE_RGMII) {
++		mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
++			   P6_INTF_MODE(0));
++		return;
+ 	}
+ 
+-	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
+-		   P6_INTF_MODE(trgint));
++	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK, P6_INTF_MODE(1));
+ 
+-	if (trgint) {
+-		/* Disable the MT7530 TRGMII clocks */
+-		core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
++	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
+ 
+-		/* Setup the MT7530 TRGMII Tx Clock */
+-		core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
+-		core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
+-		core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
+-		core_write(priv, CORE_PLL_GROUP11, RG_LCDDS_SSC_DELTA1(ssc_delta));
+-		core_write(priv, CORE_PLL_GROUP4,
+-			   RG_SYSPLL_DDSFBK_EN | RG_SYSPLL_BIAS_EN |
+-			   RG_SYSPLL_BIAS_LPF_EN);
+-		core_write(priv, CORE_PLL_GROUP2,
+-			   RG_SYSPLL_EN_NORMAL | RG_SYSPLL_VODEN |
+-			   RG_SYSPLL_POSDIV(1));
+-		core_write(priv, CORE_PLL_GROUP7,
+-			   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
+-			   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
++	if (xtal == HWTRAP_XTAL_25MHZ)
++		ssc_delta = 0x57;
++	else
++		ssc_delta = 0x87;
+ 
+-		/* Enable the MT7530 TRGMII clocks */
+-		core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
+-	}
++	if (priv->id == ID_MT7621) {
++		/* PLL frequency: 125MHz: 1.0GBit */
++		if (xtal == HWTRAP_XTAL_40MHZ)
++			ncpo1 = 0x0640;
++		if (xtal == HWTRAP_XTAL_25MHZ)
++			ncpo1 = 0x0a00;
++	} else { /* PLL frequency: 250MHz: 2.0Gbit */
++		if (xtal == HWTRAP_XTAL_40MHZ)
++			ncpo1 = 0x0c80;
++		if (xtal == HWTRAP_XTAL_25MHZ)
++			ncpo1 = 0x1400;
++	}
++
++	/* Setup the MT7530 TRGMII Tx Clock */
++	core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
++	core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
++	core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
++	core_write(priv, CORE_PLL_GROUP11, RG_LCDDS_SSC_DELTA1(ssc_delta));
++	core_write(priv, CORE_PLL_GROUP4, RG_SYSPLL_DDSFBK_EN |
++		   RG_SYSPLL_BIAS_EN | RG_SYSPLL_BIAS_LPF_EN);
++	core_write(priv, CORE_PLL_GROUP2, RG_SYSPLL_EN_NORMAL |
++		   RG_SYSPLL_VODEN | RG_SYSPLL_POSDIV(1));
++	core_write(priv, CORE_PLL_GROUP7, RG_LCDDS_PCW_NCPO_CHG |
++		   RG_LCCDS_C(3) | RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
++
++	/* Enable the MT7530 TRGMII clocks */
++	core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
+ 
+ 	return 0;
+ }
 
 -- 
 2.40.1
