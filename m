@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE26AC48286
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Feb 2024 16:35:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CFB3C48295
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Feb 2024 16:35:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0YNcdj8542UGMsvtcXEgmVPGDUWvC911riaidh6fhRs=; b=4BOZXKLWottH1OMujV52cB07dZ
-	CleKb3b9k1UcZecKZHqsPefLfam6t8kor43bh4W8p6hwC+CnMsVN3N/+vqvyOqW/w4Mk/DzcAyQJV
-	pFqRjA7BuLUSm4N8tWPu32igU4VdCy5RL+kBWRw0gwjgLVlO0UMLLEctNQeMvtzF8zbjnXdAF0UZp
-	PfD2tSKev7erRw0wQu3fKHW8jWsZjtfyg4ZR6OJKxbESR4t0k/9Bgq10pLzNgyAONb5kkUH1ArCNt
-	M0496q1Qj9/IsbB20UjRO0YyMRbIXZcx+ZJl6I91B7kCYklNIbzSBQiEhWzRQ41duGUv0CkJNikG5
-	SncQqUaA==;
+	bh=OBGtxL2wM3ggkKMqyYZK4e4tJmIwHxrWlzdaLwanaV4=; b=FnxOWHEAigj8/aIygZ7gM8smN3
+	KPsskt75c08naFc+3mf5oYHVkfVFPyM5GrLA4rS+dKlGf8TGAYNeVQdNQGkqNnvGn0yl8zld8XmQU
+	nOjIMesybT+BO6+oVm0Zt60vhKq16N0FWNaL9JHh4bLnqm9yve4O2VEiGXnLdlgZfb3NDX4S3FvG3
+	R0I7XylF2D+VvxtB2puXQFQF+1xpIEVIHuMrIOm7s7LPsvlV6tFHygwvXaq92X+Bvek1cf/R1/s7t
+	N3DZHO9Rk0y9g/+o2M4rmyX48S1jiOSefZevCdivVEFkTRbcx2K4t+7PyTRzUt/ENe+g9uR9NTvih
+	rU2Zyanw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWfSd-000000018ud-2CIT;
-	Sun, 04 Feb 2024 16:35:15 +0000
+	id 1rWfSi-000000018yS-0OEs;
+	Sun, 04 Feb 2024 16:35:20 +0000
 Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWfSN-000000018gq-0tKO;
-	Sun, 04 Feb 2024 16:35:00 +0000
+	id 1rWfSN-000000018gd-0uVr;
+	Sun, 04 Feb 2024 16:35:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 0FC2DCE0AC9;
-	Sun,  4 Feb 2024 16:34:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 1C173C43141;
-	Sun,  4 Feb 2024 16:34:52 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 2D145CE0AC4;
+	Sun,  4 Feb 2024 16:34:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id BC121C433F1;
+	Sun,  4 Feb 2024 16:34:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707064492;
-	bh=QNJ/FUkek4zfpJCs3ALbQrDP6k/nsMeMTN9krAwrpS0=;
+	s=k20201202; t=1707064491;
+	bh=8EgBgwLLDbF/8jK7XPHzV7GGgAjVhqj4SpRaslo5nG4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=l54+HlClKDclISIpoGSFFfwupmj41otZ+Ct54j/DsI9VBtsl7eBSyNJDIzP/Edu1B
-	 RFa8zILbY/S+swFIVW0SwJqE7zC74k2apqiZlSNWEJ6i4CPwy5+pirP/H143rspyaM
-	 uq/zis8oqHbpRot13pkWJk4a6K07JYSgaDhJ4a/m+ty8Lj5AeK3RCK6cMjhcq77D6N
-	 EOhZXhGlRJcB6HkhZCrDark7L9U+jpxyBMp3D7sAo/EksG+4IQld2nxNn96VjHXZnV
-	 Bm+58DYWCIM1fjoS5zfnCfczee97NPjtnmwgM/w0WKJmeNU2VERuZp/TbBjQ9cmqPW
-	 lqnPicBULggYA==
+	b=PJ8saHCSzO+6RL4kpGkALu4B0h1MAqYUvOcdEdB+VR//k3d9tHdktY5ImOpCG5zIO
+	 6NPZYrXAO0/Vzp47646+KtLFEx/6jCf8sj24wSDdr6m5nomwLcfKh9S0ktZf0TV3Ng
+	 rSA7N1shLXA74WmIATnnm/4Lbbu08iE6AdEeqni7F+fbZngdjF5ZL6IoYxVGr83Eor
+	 ld39qyXOx3QphzMWbaHJhXeKU8FjGorqETv/JRgLU5lxqYu9NOApQWRaw+zy/i85qy
+	 Rk3CDa2gqvXSzQhNP6n56eurXuuorSxZca7hlJ579mob8+yTjOIABWR8Nep7yZO+HF
+	 6tNA7zNRAUp4g==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 09ADFC48295;
-	Sun,  4 Feb 2024 16:34:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BCD4C48295;
+	Sun,  4 Feb 2024 16:34:51 +0000 (UTC)
 From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
  <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Sun, 04 Feb 2024 19:34:25 +0300
-Subject: [PATCH net-next v4 7/7] net: dsa: mt7530: do not clear
- config->supported_interfaces
+Date: Sun, 04 Feb 2024 19:34:19 +0300
+Subject: [PATCH net-next v4 1/7] net: dsa: mt7530: empty default case on
+ mt7530_setup_port5()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240204-for-netnext-mt7530-improvements-2-v4-7-02bf0abaadb8@arinc9.com>
+Message-Id: <20240204-for-netnext-mt7530-improvements-2-v4-1-02bf0abaadb8@arinc9.com>
 References: <20240204-for-netnext-mt7530-improvements-2-v4-0-02bf0abaadb8@arinc9.com>
 In-Reply-To: <20240204-for-netnext-mt7530-improvements-2-v4-0-02bf0abaadb8@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
@@ -71,18 +71,18 @@ Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, 
  "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
 X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1707064489; l=1302;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1707064489; l=1626;
  i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
- bh=PehRtB3XZCHuW/U8urBTuyz7o46J8EJ0NxZ+pj2gVEw=;
- b=l9qsIaVo15nnVv8Z8wVDB9smKXlleuos9uaU31zcCJnya5rEbMkgJt3By0WLXmoAnBOVDQLlg
- bX4jVtZvx1ZAmfTQAd7/LSRbI6HcK/aVaaN5yt72t04mxg4JrmjRmM9
+ bh=w0AE+3vdRdnNAeZ4Rw1iuOmXQ/hQFv6Ji5v3rRgN9bg=;
+ b=s3Kw4c5/nutxv/vHbPVprWQPAVNL6qyc2M6KawDnizC4AIh+M9yZkWbxv7unh7nrk7qgOI8aq
+ YVNF9mgt7RVAwQqUJ0YC1HeE2t/3k8rXtvW0cKGWy6fy/WbMA8W8Xc4
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt with auth_id=115
 X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240204_083459_676866_B6E5952F 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20240204_083459_674232_C21FBD35 
+X-CRM114-Status: GOOD (  10.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,35 +100,55 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-There's no need to clear the config->supported_interfaces bitmap before
-reporting the supported interfaces as all bits in the bitmap will already
-be initialized to zero when the phylink_config structure is allocated. The
-"config" pointer points to &dp->phylink_config, and "dp" is allocated by
-dsa_port_touch() with kzalloc(), so all its fields are filled with zeroes.
+There're two code paths for setting up port 5:
 
-There's no code that would change the bitmap beforehand. Remove it.
+mt7530_setup()
+-> mt7530_setup_port5()
 
-Acked-by: Daniel Golle <daniel@makrotopia.org>
+mt753x_phylink_mac_config()
+-> mt753x_mac_config()
+   -> mt7530_mac_config()
+      -> mt7530_setup_port5()
+
+On the first code path, priv->p5_intf_sel is either set to
+P5_INTF_SEL_PHY_P0 or P5_INTF_SEL_PHY_P4 when mt7530_setup_port5() is run.
+
+On the second code path, priv->p5_intf_sel is set to P5_INTF_SEL_GMAC5 when
+mt7530_setup_port5() is run.
+
+Empty the default case which will never run but is needed nonetheless to
+handle all the remaining enumeration values.
+
 Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
 Reviewed-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/net/dsa/mt7530.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 08d5d7dd5969..c7e1af1ea4bb 100644
+index 68be38ae66e0..330e22abc076 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -2573,8 +2573,6 @@ static void mt7531_mac_port_get_caps(struct dsa_switch *ds, int port,
- static void mt7988_mac_port_get_caps(struct dsa_switch *ds, int port,
- 				     struct phylink_config *config)
- {
--	phy_interface_zero(config->supported_interfaces);
--
- 	switch (port) {
- 	/* Ports which are connected to switch PHYs. There is no MII pinout. */
- 	case 0 ... 3:
+@@ -943,9 +943,7 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+ 		val &= ~MHWTRAP_P5_DIS;
+ 		break;
+ 	default:
+-		dev_err(ds->dev, "Unsupported p5_intf_sel %d\n",
+-			priv->p5_intf_sel);
+-		goto unlock_exit;
++		break;
+ 	}
+ 
+ 	/* Setup RGMII settings */
+@@ -975,7 +973,6 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+ 	dev_dbg(ds->dev, "Setup P5, HWTRAP=0x%x, intf_sel=%s, phy-mode=%s\n",
+ 		val, p5_intf_modes(priv->p5_intf_sel), phy_modes(interface));
+ 
+-unlock_exit:
+ 	mutex_unlock(&priv->reg_mutex);
+ }
+ 
 
 -- 
 2.40.1
