@@ -4,59 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CAB4C48295
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Feb 2024 16:35:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE26AC48286
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Feb 2024 16:35:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JZoAWsbtdmlyL+v5l4YHVNA7QqmA2s50y08kEHQMbzY=; b=NoePD5FyoaB9lsdilI3u3aH6Kk
-	ga6BshbEvvS6LvCvM7dX8sMdaHR1YE8WUGJRkUizUO6BAA+LMZtnSK2VDcTO+3jx3bwciwORBZE/Y
-	rxFKXMabxWECawTpMw4TztUeVEL940ADvr5KV2k2E35JjRpAmI+MRz8ZivO1Jk/FuM2T0MeGgMPSe
-	YPo+kQdWOel9mJiIgIMAoE3VrjTEEnZixCjNi9+mn+vNwtiNQ+gv1mAycIMlQJMJaRanTyrbOUaMe
-	vR5ozRBVht8GiqyqKfaNcZzHhRc41He9WQ5A+WvbtXe3j+fb/QnZZTuJtCPHtxkmxu7baQyVFTIB1
-	rwuM72aA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0YNcdj8542UGMsvtcXEgmVPGDUWvC911riaidh6fhRs=; b=4BOZXKLWottH1OMujV52cB07dZ
+	CleKb3b9k1UcZecKZHqsPefLfam6t8kor43bh4W8p6hwC+CnMsVN3N/+vqvyOqW/w4Mk/DzcAyQJV
+	pFqRjA7BuLUSm4N8tWPu32igU4VdCy5RL+kBWRw0gwjgLVlO0UMLLEctNQeMvtzF8zbjnXdAF0UZp
+	PfD2tSKev7erRw0wQu3fKHW8jWsZjtfyg4ZR6OJKxbESR4t0k/9Bgq10pLzNgyAONb5kkUH1ArCNt
+	M0496q1Qj9/IsbB20UjRO0YyMRbIXZcx+ZJl6I91B7kCYklNIbzSBQiEhWzRQ41duGUv0CkJNikG5
+	SncQqUaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWfSc-000000018tq-2Nsf;
-	Sun, 04 Feb 2024 16:35:14 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rWfSd-000000018ud-2CIT;
+	Sun, 04 Feb 2024 16:35:15 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWfSN-000000018ge-0jFp;
-	Sun, 04 Feb 2024 16:35:01 +0000
+	id 1rWfSN-000000018gq-0tKO;
+	Sun, 04 Feb 2024 16:35:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 645E3CE01B6;
-	Sun,  4 Feb 2024 16:34:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id A1941C433C7;
-	Sun,  4 Feb 2024 16:34:51 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 0FC2DCE0AC9;
+	Sun,  4 Feb 2024 16:34:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 1C173C43141;
+	Sun,  4 Feb 2024 16:34:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707064491;
-	bh=GPRwEqhKu9uor7uol+Wpdzz8RAN3PePg13sdJEo9IOw=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=cfH2Txnovg7AkARKRp1B3aExKtamooGMH/SIWByU7IuQq8kf2kKUCpkR1SgApOM/I
-	 79b0ElzUa8YlXQFsO2szLIeroTaIis3DYT8WotDQRo9jP4g4wDa86O5oygyYfRHN37
-	 bmMYNTfvl9GPHK+tTDcbJw3dW8yVDCzXe2hC+NsA322SJNIGEqEMqBBWeqlnDm00Em
-	 DW0rBRWDEJVN3gzmFJEbmv1iCOjmibbUD9duXnX8i3F9naJXEFk1I+vyRCSY7NwSYg
-	 r/G9i05tVzEoZA2vP8IUImyIVcDmM/o7ZcDsPrgoyQsi75gkq58Wz2bDVB9kTo4ehG
-	 is4L0eaU82TXQ==
+	s=k20201202; t=1707064492;
+	bh=QNJ/FUkek4zfpJCs3ALbQrDP6k/nsMeMTN9krAwrpS0=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=l54+HlClKDclISIpoGSFFfwupmj41otZ+Ct54j/DsI9VBtsl7eBSyNJDIzP/Edu1B
+	 RFa8zILbY/S+swFIVW0SwJqE7zC74k2apqiZlSNWEJ6i4CPwy5+pirP/H143rspyaM
+	 uq/zis8oqHbpRot13pkWJk4a6K07JYSgaDhJ4a/m+ty8Lj5AeK3RCK6cMjhcq77D6N
+	 EOhZXhGlRJcB6HkhZCrDark7L9U+jpxyBMp3D7sAo/EksG+4IQld2nxNn96VjHXZnV
+	 Bm+58DYWCIM1fjoS5zfnCfczee97NPjtnmwgM/w0WKJmeNU2VERuZp/TbBjQ9cmqPW
+	 lqnPicBULggYA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 85618C4828F;
-	Sun,  4 Feb 2024 16:34:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 09ADFC48295;
+	Sun,  4 Feb 2024 16:34:52 +0000 (UTC)
 From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
  <devnull+arinc.unal.arinc9.com@kernel.org>
-Subject: [PATCH net-next v4 0/7] MT7530 DSA Subdriver Improvements Act II
-Date: Sun, 04 Feb 2024 19:34:18 +0300
-Message-Id: <20240204-for-netnext-mt7530-improvements-2-v4-0-02bf0abaadb8@arinc9.com>
+Date: Sun, 04 Feb 2024 19:34:25 +0300
+Subject: [PATCH net-next v4 7/7] net: dsa: mt7530: do not clear
+ config->supported_interfaces
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-B4-Tracking: v=1; b=H4sIAIq8v2UC/42OzW7CMBCEXwX5zEb+DZgT74F6cOJNsUTsyDYWF
- cq71zUHQD20l9WORvPN3EnC6DCRw+ZOIhaXXPBVyO2GjGfjPxGcrZpwyiVlnMEUInjMHm8Z5rx
- TgoKblxgKzuhzAg6DnKToezbIvSKVs0Sc3K11nEiNwk+WfFTn7FIO8auVF9b8Rw8TjHLFdbenY
- seAgYnOj93Vm8uxvbobw9wYhb/k6pi/9xUOFAZD+0lZq3Ggv5DiiaznP0hRkb2wyliDWo/mDbm
- u6zf+VdzmaAEAAA==
+Message-Id: <20240204-for-netnext-mt7530-improvements-2-v4-7-02bf0abaadb8@arinc9.com>
+References: <20240204-for-netnext-mt7530-improvements-2-v4-0-02bf0abaadb8@arinc9.com>
+In-Reply-To: <20240204-for-netnext-mt7530-improvements-2-v4-0-02bf0abaadb8@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
  Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
  Florian Fainelli <f.fainelli@gmail.com>, 
@@ -73,18 +71,18 @@ Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, 
  "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
 X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1707064489; l=3249;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1707064489; l=1302;
  i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
- bh=GPRwEqhKu9uor7uol+Wpdzz8RAN3PePg13sdJEo9IOw=;
- b=/up5bQUp91SPSdEI9oKko43R4KVNkg2s+V0zqwkjVMK9n89RQ9RdgL0n/k+dpRsudgRs14CS0
- /GDT3TJ7WBKDtqb1dKKxa1DxiKAq16lvhiBmZVU95d2yN1uG7FAt0LP
+ bh=PehRtB3XZCHuW/U8urBTuyz7o46J8EJ0NxZ+pj2gVEw=;
+ b=l9qsIaVo15nnVv8Z8wVDB9smKXlleuos9uaU31zcCJnya5rEbMkgJt3By0WLXmoAnBOVDQLlg
+ bX4jVtZvx1ZAmfTQAd7/LSRbI6HcK/aVaaN5yt72t04mxg4JrmjRmM9
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt with auth_id=115
 X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240204_083459_621641_1B15EF3C 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20240204_083459_676866_B6E5952F 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,86 +98,39 @@ Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello!
+From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-This is the second patch series with the goal of simplifying the MT7530 DSA
-subdriver and improving support for MT7530, MT7531, and the switch on the
-MT7988 SoC.
+There's no need to clear the config->supported_interfaces bitmap before
+reporting the supported interfaces as all bits in the bitmap will already
+be initialized to zero when the phylink_config structure is allocated. The
+"config" pointer points to &dp->phylink_config, and "dp" is allocated by
+dsa_port_touch() with kzalloc(), so all its fields are filled with zeroes.
 
-I have done a simple ping test to confirm basic communication on all switch
-ports on MCM and standalone MT7530, and MT7531 switch with this patch
-series applied.
+There's no code that would change the bitmap beforehand. Remove it.
 
-MT7621 Unielec, MCM MT7530:
-
-rgmii-only-gmac0-mt7621-unielec-u7621-06-16m.dtb
-gmac0-and-gmac1-mt7621-unielec-u7621-06-16m.dtb
-
-tftpboot 0x80008000 mips-uzImage.bin; tftpboot 0x83000000 mips-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootm 0x80008000 0x83000000 0x83f00000
-
-MT7622 Bananapi, MT7531:
-
-gmac0-and-gmac1-mt7622-bananapi-bpi-r64.dtb
-
-tftpboot 0x40000000 arm64-Image; tftpboot 0x45000000 arm64-rootfs.cpio.uboot; tftpboot 0x4a000000 $dtb; booti 0x40000000 0x45000000 0x4a000000
-
-MT7623 Bananapi, standalone MT7530:
-
-rgmii-only-gmac0-mt7623n-bananapi-bpi-r2.dtb
-gmac0-and-gmac1-mt7623n-bananapi-bpi-r2.dtb
-
-tftpboot 0x80008000 arm-zImage; tftpboot 0x83000000 arm-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootz 0x80008000 0x83000000 0x83f00000
-
-This patch series is the continuation of the patch series linked below.
-
-https://lore.kernel.org/r/20230522121532.86610-1-arinc.unal@arinc9.com
-
+Acked-by: Daniel Golle <daniel@makrotopia.org>
+Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+Reviewed-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
-Changes in v4:
-- Update the patches with the latest received trailers.
-- Leave no error returns on mt7530_pad_clk_setup() before renaming it to
-  mt7530_setup_port6() and moving it to under mt7530_mac_config().
-- Link to v3: https://lore.kernel.org/r/20240202-for-netnext-mt7530-improvements-2-v3-0-63d5adae99ca@arinc9.com
+ drivers/net/dsa/mt7530.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-Changes in v3:
-- Update the patches with the latest received trailers.
-- Patch 5
-  - Disable TRGMII clocks for all cases.
-- Link to v2: https://lore.kernel.org/r/20240130-for-netnext-mt7530-improvements-2-v2-0-ba06f5dd9eb0@arinc9.com
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 08d5d7dd5969..c7e1af1ea4bb 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2573,8 +2573,6 @@ static void mt7531_mac_port_get_caps(struct dsa_switch *ds, int port,
+ static void mt7988_mac_port_get_caps(struct dsa_switch *ds, int port,
+ 				     struct phylink_config *config)
+ {
+-	phy_interface_zero(config->supported_interfaces);
+-
+ 	switch (port) {
+ 	/* Ports which are connected to switch PHYs. There is no MII pinout. */
+ 	case 0 ... 3:
 
-Changes in v2:
-- Update the patches with the latest received trailers.
-- Remove 'net: dsa: mt7530: move enabling port 6 to mt7530_setup_port6()'
-  which was patch 5. I will bring a more appropriate change with a later
-  patch series.
-- Patch 5
-  - Set P6_INTF_MODE(0) and explain why on the patch log.
-- Patch 6
-  - Mention the MT7988 document and explain more on the patch log.
-- Patch 7
-  - Explain more on the patch log.
-- Link to v1: https://lore.kernel.org/r/20240113102529.80371-1-arinc.unal@arinc9.com
-
----
-Arınç ÜNAL (7):
-      net: dsa: mt7530: empty default case on mt7530_setup_port5()
-      net: dsa: mt7530: move XTAL check to mt7530_setup()
-      net: dsa: mt7530: simplify mt7530_pad_clk_setup()
-      net: dsa: mt7530: call port 6 setup from mt7530_mac_config()
-      net: dsa: mt7530: remove pad_setup function pointer
-      net: dsa: mt7530: correct port capabilities of MT7988
-      net: dsa: mt7530: do not clear config->supported_interfaces
-
- drivers/net/dsa/mt7530.c | 152 +++++++++++++++++------------------------------
- drivers/net/dsa/mt7530.h |   3 -
- 2 files changed, 53 insertions(+), 102 deletions(-)
----
-base-commit: 4acf4e62cd572b0c806035046b3698f5585ab821
-change-id: 20240121-for-netnext-mt7530-improvements-2-b4f43661b485
-
-Best regards,
 -- 
-Arınç ÜNAL <arinc.unal@arinc9.com>
+2.40.1
 
 
