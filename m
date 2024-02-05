@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E35B4C48292
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 16:17:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C967C4828D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 16:32:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mWs3XxIiekf4ykBqDshkGBWbwskUmdfaLl80WuHxcB4=; b=5Bxoi9Fbd0t/y/5sBXWN36PHQn
-	Xlw8YvcnJaQ35SfeFpenLQF9y2G9RzcKjH6senxmJg7sePVrJgBHEKQtATKH3VQXcAM0RF+O3WKP8
-	G89D5q7I9U95when7uxy2lJenAxGHgKPZdhTvew7/HULsmXQpLhd46AMhaXaQrrlXAgS6I6h5Vc3w
-	dgpOSU8tfTkQ3MaGpRFoloi7nguWQp5izxNWSFqr6eNcFT87ZMZNg8EZ3524X0i/zs97cW8UW63eS
-	e+QHqearBvYv/Q8qIHmotU3vLSUv5thL90GZ0fDvXqR7mj2sSLzMfvjnRDi/van3ZoCXys5As7Hy1
-	ByOiQuTw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jWR3pEGZO6v+mTFVY3DLgK4dPi2tH10vXkils1uXoOQ=; b=MN22rW3icTbFlzHEUM1Nrf8PG8
+	BVUU5eKFlWPvDJM7ngnuUlSTrgm6MMhVAdfViSUtXwHKJhllHRhdj2krbxCcdhGxchqoHAJTotjm5
+	hOffaVZ0DEqC1UAcfgrXaxLEEjxqvTMDpQk4kl5otJys5aZ//uHX779M0ZFV/A9pm76atHxEZQIFU
+	qd1xV8wQAKVZ7CdwSz+6iwT2gud4PiaPNtmPUSWU14OjmC87LU03Nn6L61wesiODQgReqJnpKx7fx
+	8KZ2xWyhsfdRvlxJoI9kA9C8DhWXr8RtfdCGNEYERk0h/f/hfveR2mArwgMQ8uBbGp0w0CssfjF/1
+	GD4hETRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX1fF-00000003xoI-1Ssj;
-	Mon, 05 Feb 2024 16:17:45 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1rX1tA-00000003zeR-07nD;
+	Mon, 05 Feb 2024 16:32:08 +0000
+Received: from mail-oi1-f182.google.com ([209.85.167.182])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX1f8-00000003xnS-3s7q;
-	Mon, 05 Feb 2024 16:17:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1707149859; x=1738685859;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=DNaO54IRI7/2oh1XNOcunI96AdtlbD9Mn82BtlCzBqA=;
-  b=J6XFbwqHZ+pqApQHXjgDTu2sLYSjkDePIggbwkcWOaGVXjwiwxyXbVje
-   DvAnnYkWqpQuYIrWgLZnkpbTio6S4v9RN50/UP1l9Cy1+hhf42pCtnUVK
-   lg+kPhY/BuLyRcO+NQ5YMtwCu+YWT8TZQbySGAaSDaukvnl8osNAhDifz
-   8FE9VME9pX++rpT3SpizvtuYbPH5qZ8hrObv01dgkvkGHbb7x6gS7ESy+
-   xd0qYO6zeMt6yCEdZzCQuJ9Dd7joR/ZiFTiRN5AIanxKRxP+mLnTIqZu2
-   456dQj1qD/VxobOlMbIaNgEOtJHda9AaolI53fGhTC3q3fLUaDj/Hvsst
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10975"; a="23033459"
-X-IronPort-AV: E=Sophos;i="6.05,245,1701158400"; 
-   d="scan'208";a="23033459"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Feb 2024 08:17:38 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.05,245,1701158400"; 
-   d="scan'208";a="24003295"
-Received: from lkp-server01.sh.intel.com (HELO 01f0647817ea) ([10.239.97.150])
-  by fmviesa002.fm.intel.com with ESMTP; 05 Feb 2024 08:17:33 -0800
-Received: from kbuild by 01f0647817ea with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1rX1f0-0000dm-3A;
-	Mon, 05 Feb 2024 16:17:30 +0000
-Date: Tue, 6 Feb 2024 00:17:01 +0800
-From: kernel test robot <lkp@intel.com>
-To: "mac.shen" <mac.shen@mediatek.com>, chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	jitao.shi@mediatek.com
-Cc: oe-kbuild-all@lists.linux.dev, mac.shen@mediatek.com,
-	shuijing.li@mediatek.com, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 1/3] Subject: [PATCH] drm/mediatek/dp: Add tee client
- application for HDCP feature
-Message-ID: <202402052342.Y5awT1T2-lkp@intel.com>
-References: <20240205055055.25340-2-mac.shen@mediatek.com>
+	id 1rX1sp-00000003zZ3-0qOn;
+	Mon, 05 Feb 2024 16:31:59 +0000
+Received: by mail-oi1-f182.google.com with SMTP id 5614622812f47-3bb9d54575cso3445833b6e.2;
+        Mon, 05 Feb 2024 08:31:41 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1707150699; x=1707755499;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=jWR3pEGZO6v+mTFVY3DLgK4dPi2tH10vXkils1uXoOQ=;
+        b=ff31WB7FT/88Pf1Fc5U6CqluUOY0ko2l4uMYFEtG0CRAJxu2u2tIkfUmL5aqW5J6+e
+         pMrvF79iQbJACJRGvx7i+pL2ajkih7OZFZbXbiagAm8v6tu0WIQHIUWNpY9Ux4kg+sVX
+         VGxv6pEhms23Pzx3EW6ad1heV49N+ukKPgb2iVofaWlVqjOdldeogr3/6z1+T93b8tjd
+         /qK3ZQDrF2CT7bkrYjufoUlVQ3GdE+8oIFQG/HQ+8KW4seiNkb3TRMIrRH1y77JDhQgq
+         +nDrq7OK9kt7DaTOYlSY1tg01gh8X3rtniCC9AyaEkqqhWiepyWDjb0BbRRENbRBmu8x
+         a71g==
+X-Gm-Message-State: AOJu0YwOpAcQo9JtOwez5k6duMeqQ5BuYcsQTix6PdXmUt3v7KcOFCqk
+	+A3MTcrMtqLuFk4q0Cm77K6ZhyqaKPUm8cJDGmltFVXoCShdSM7pbmA1vzQVa/c=
+X-Google-Smtp-Source: AGHT+IH/Y8Bu4v9GpF6IXqZGOpT6n49T3FIWxYdWr6pkrw+ZlQ62I6iBjTqzUUkC3dT6WfUHLFl8sQ==
+X-Received: by 2002:a05:6358:e49e:b0:176:a5f5:d266 with SMTP id by30-20020a056358e49e00b00176a5f5d266mr349294rwb.6.1707150699431;
+        Mon, 05 Feb 2024 08:31:39 -0800 (PST)
+X-Forwarded-Encrypted: i=0; AJvYcCURg/dekUfKNN8K+Ya7upB/LXMUh6EzFUSsNENQRd/JWR2tplnXDJsEN6dm11vyPjrEHB0b6q1wOIN+6NLkULqVqceF1N72IpQko5CffIX5yNi5HYo=
+Received: from mail-yw1-f170.google.com (mail-yw1-f170.google.com. [209.85.128.170])
+        by smtp.gmail.com with ESMTPSA id e79-20020a25d352000000b00dc36ad3af97sm25193ybf.50.2024.02.05.08.31.38
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 05 Feb 2024 08:31:38 -0800 (PST)
+Received: by mail-yw1-f170.google.com with SMTP id 00721157ae682-60412f65124so42523627b3.3;
+        Mon, 05 Feb 2024 08:31:38 -0800 (PST)
+X-Received: by 2002:a81:57d0:0:b0:603:e86b:cd81 with SMTP id
+ l199-20020a8157d0000000b00603e86bcd81mr61909ywb.31.1707150698427; Mon, 05 Feb
+ 2024 08:31:38 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240205055055.25340-2-mac.shen@mediatek.com>
+References: <da6af483-5ee9-45cd-922e-d9d5364674dc@web.de>
+In-Reply-To: <da6af483-5ee9-45cd-922e-d9d5364674dc@web.de>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 5 Feb 2024 17:31:26 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdUxn4Ne7kmEfONz8Uk3Why3m9r83GdM5RzTxm_4Gj_a6g@mail.gmail.com>
+Message-ID: <CAMuHMdUxn4Ne7kmEfONz8Uk3Why3m9r83GdM5RzTxm_4Gj_a6g@mail.gmail.com>
+Subject: Re: [PATCH] pmdomain: mediatek: Use devm_platform_get_and_ioremap_resource()
+ in init_scp()
+To: Markus Elfring <Markus.Elfring@web.de>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-pm@vger.kernel.org, kernel-janitors@vger.kernel.org, 
+	Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Rob Herring <robh@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, 
+	LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240205_081739_215997_565BA380 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20240205_083150_306675_7994DFB8 
+X-CRM114-Status: GOOD (  19.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,122 +91,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi mac.shen,
+Hi Markus,
 
-kernel test robot noticed the following build warnings:
+On Mon, Feb 5, 2024 at 3:23=E2=80=AFPM Markus Elfring <Markus.Elfring@web.d=
+e> wrote:
+> From: Markus Elfring <elfring@users.sourceforge.net>
+> Date: Mon, 5 Feb 2024 15:08:27 +0100
+>
+> A wrapper function is available since the commit 890cc39a879906b63912482d=
+fc41944579df2dc6
+> ("drivers: provide devm_platform_get_and_ioremap_resource()").
+> Thus reuse existing functionality instead of keeping duplicate source cod=
+e.
+>
+> This issue was detected by using the Coccinelle software.
+>
+> Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
 
-[auto build test WARNING on drm-misc/drm-misc-next]
-[also build test WARNING on pza/reset/next linus/master v6.8-rc3 next-20240205]
-[cannot apply to pza/imx-drm/next]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Thanks for your patch!
 
-url:    https://github.com/intel-lab-lkp/linux/commits/mac-shen/Subject-PATCH-drm-mediatek-dp-Add-tee-client-application-for-HDCP-feature/20240205-163727
-base:   git://anongit.freedesktop.org/drm/drm-misc drm-misc-next
-patch link:    https://lore.kernel.org/r/20240205055055.25340-2-mac.shen%40mediatek.com
-patch subject: [PATCH v2 1/3] Subject: [PATCH] drm/mediatek/dp: Add tee client application for HDCP feature
-config: arm64-defconfig (https://download.01.org/0day-ci/archive/20240205/202402052342.Y5awT1T2-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240205/202402052342.Y5awT1T2-lkp@intel.com/reproduce)
+> --- a/drivers/pmdomain/mediatek/mtk-scpsys.c
+> +++ b/drivers/pmdomain/mediatek/mtk-scpsys.c
+> @@ -441,8 +441,7 @@ static struct scp *init_scp(struct platform_device *p=
+dev,
+>
+>         scp->dev =3D &pdev->dev;
+>
+> -       res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> -       scp->base =3D devm_ioremap_resource(&pdev->dev, res);
+> +       scp->base =3D devm_platform_get_and_ioremap_resource(pdev, 0, &re=
+s);
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202402052342.Y5awT1T2-lkp@intel.com/
+Given res is further unused, please use devm_platform_ioremap_resource()
+instead, and remove the local variable res.
 
-All warnings (new ones prefixed by >>):
+>         if (IS_ERR(scp->base))
+>                 return ERR_CAST(scp->base);
+>
 
->> drivers/gpu/drm/mediatek/tlc_dp_hdcp.c:34: warning: Function parameter or struct member 'dp_tee_priv' not described in 'dp_tee_op_send'
->> drivers/gpu/drm/mediatek/tlc_dp_hdcp.c:34: warning: Function parameter or struct member 'cmd_id' not described in 'dp_tee_op_send'
+Gr{oetje,eeting}s,
 
+                        Geert
 
-vim +34 drivers/gpu/drm/mediatek/tlc_dp_hdcp.c
+--=20
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
 
-    13	
-    14	/*
-    15	 * TA_FTPM_UUID: 99975014-3c7c-54ea-8487-a80d215ea92c
-    16	 *
-    17	 * Randomly generated, and must correspond to the GUID on the TA side.
-    18	 * Defined here in the reference implementation:
-    19	 * https://github.com/microsoft/ms-tpm-20-ref/blob/master/Samples/ARM32-FirmwareTPM/optee_ta/fTPM/include/fTPM.h#L42
-    20	 */
-    21	static const uuid_t dp_ta_uuid =
-    22		UUID_INIT(0x99975014, 0x3c7c, 0x54ea,
-    23			  0x84, 0x87, 0xa8, 0x0d, 0x21, 0x5e, 0xa9, 0x2c);
-    24	
-    25	/**
-    26	 * dp_tee_op_send() - send dp commands through the TEE shared memory.
-    27	 * @len:	the number of bytes to send.
-    28	 *
-    29	 * Return:
-    30	 *	In case of success, returns 0.
-    31	 *	On failure, -errno
-    32	 */
-    33	static int dp_tee_op_send(struct dp_tee_private *dp_tee_priv, size_t len, u32 cmd_id)
-  > 34	{
-    35		int rc;
-    36		u8 *temp_buf;
-    37		struct tee_ioctl_invoke_arg transceive_args;
-    38		struct tee_param command_params[4];
-    39		struct tee_shm *shm = dp_tee_priv->shm;
-    40	
-    41		if (len > MAX_COMMAND_SIZE) {
-    42			TLCERR("%s: len=%zd exceeds MAX_COMMAND_SIZE supported by dp TA\n", __func__, len);
-    43			return -EIO;
-    44		}
-    45	
-    46		memset(&transceive_args, 0, sizeof(transceive_args));
-    47		memset(command_params, 0, sizeof(command_params));
-    48		dp_tee_priv->resp_len = 0;
-    49	
-    50		/* Invoke FTPM_OPTEE_TA_SUBMIT_COMMAND function of dp TA */
-    51		transceive_args = (struct tee_ioctl_invoke_arg) {
-    52			.func = cmd_id,
-    53			.session = dp_tee_priv->session,
-    54			.num_params = 4,
-    55		};
-    56	
-    57		/* Fill FTPM_OPTEE_TA_SUBMIT_COMMAND parameters */
-    58		command_params[0] = (struct tee_param) {
-    59			.attr = TEE_IOCTL_PARAM_ATTR_TYPE_MEMREF_INPUT,
-    60			.u.memref = {
-    61				.shm = shm,
-    62				.size = len,
-    63				.shm_offs = 0,
-    64			},
-    65		};
-    66	
-    67		command_params[1] = (struct tee_param) {
-    68			.attr = TEE_IOCTL_PARAM_ATTR_TYPE_MEMREF_INOUT,
-    69			.u.memref = {
-    70				.shm = shm,
-    71				.size = MAX_RESPONSE_SIZE,
-    72				.shm_offs = MAX_COMMAND_SIZE,
-    73			},
-    74		};
-    75	
-    76		rc = tee_client_invoke_func(dp_tee_priv->ctx, &transceive_args, command_params);
-    77		if (rc < 0 || transceive_args.ret != 0) {
-    78			TLCERR("%s: invoke error: 0x%x\n", __func__, transceive_args.ret);
-    79			return (rc < 0) ? rc : transceive_args.ret;
-    80		}
-    81	
-    82		temp_buf = tee_shm_get_va(shm, command_params[1].u.memref.shm_offs);
-    83		if (IS_ERR(temp_buf)) {
-    84			TLCERR("%s: tee_shm_get_va failed for receive\n", __func__);
-    85			return PTR_ERR(temp_buf);
-    86		}
-    87	
-    88		/* Sanity checks look good, cache the response */
-    89		memcpy(dp_tee_priv->resp_buf, temp_buf, MAX_RESPONSE_SIZE / 2);
-    90		dp_tee_priv->resp_len = MAX_RESPONSE_SIZE / 2;
-    91	
-    92		return 0;
-    93	}
-    94	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
