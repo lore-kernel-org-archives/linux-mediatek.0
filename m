@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83022C4828D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 19:10:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33722C4828D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 19:45:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a20qnw0GLumbuloJftibE3OVN8W8kYVkmwiQ3AXnu9c=; b=tLYaEfSlbK7aqvTxrXw/6goRmI
-	BW1Z60ILzSFEAaM+r2bdpgWZHaM1oCQlFYsZKt03e84gUNv4KvVKr0dfp2BZZUL5LefTsHNv/gwBZ
-	/IKkIPmqnZ1kGNVMYps7lkH0xyy5MzckTPqY0n0Ky536E/KVzRdkbRIkGCznpZ1D4OW2YsY0ODo2m
-	wsVOJtw4Y52Gdp41T+6/AvCyPqAQdfOk2/lpydrYg2PqXQknGMjlihKCBduD7RvE0bfsnl0dniZrG
-	degQB78fBA1ywkPacMxSnyINTNxJySMvCYlVWxkasEQ2+crD8wqnts5mTA4lxEn4Bq7xCJ3xrA1bU
-	677GmcXQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=I2VglAtdv1vuqLTP4/IxTbXu7umNiNc+hKIhHdGfH0E=; b=QOsU6/fklwcCl+09zprimf9yC6
+	FVhY5AilJyk1b/2ISp3LXpHTkkBzAMOla8+gYlGPThRu1y2hNFpqVXU/lz85YVXl/92BC4U4G5KXE
+	lnA5OBuqOeeEL66ljG9gBzEneWuN63vgyNWD9OA6AsKnbRfOq0WEukaLwXAnATiY12Q5w4/swsXP7
+	0ZU929VDLkg/snUEqmcvkUbqPhjTwfvxGVlI+mAHAGa7Q6b8+rL9l5tf0AWOjBPWlERjGRD/zbKZA
+	4oQZm2+QpGeRfsZgO8Nun4o+MzWrkLJrKy51X0LnycFsM8YQOxbwsl7fBoXi3X6EsOC5TFItjeK1l
+	HWkNHhbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX4MW-00000004WKS-3znL;
-	Mon, 05 Feb 2024 19:10:36 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1rX4tn-00000004qCD-19uW;
+	Mon, 05 Feb 2024 19:44:59 +0000
+Received: from lelv0143.ext.ti.com ([198.47.23.248])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX4MT-00000004WIx-3Enb
-	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Feb 2024 19:10:35 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-55f0b2c79cdso5793443a12.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Feb 2024 11:10:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1707160231; x=1707765031; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=a20qnw0GLumbuloJftibE3OVN8W8kYVkmwiQ3AXnu9c=;
-        b=aIU3lTfBI3LMhYYKk8iyixh+rJfb2+jXuinrcsN4K600vrBV19yXeAL8VQIsqMlVQc
-         ybmotuXeZq7C2ZYOcjNlD33hfP3+RSR2yDExK/dSMHMAmOXRYJcK+uAmFNn8YcmdxFda
-         e+gJm9NoIjxvuop3TE2JIxpv9xxd6rWzz+J6sHQJlJX0Az835qx3FA1BRgQf6p1bJw9o
-         Zd9vCPPlsbzPttcIDlQqPB9R4W4z3MlIdlGWJiByQWOB33RAwSs1g2IcERRDCU6+m9zg
-         cKGXL2ps/r4ibkimYUsnA1baw0cQH6+AKsQpZ1Z9flgwCXiM+2M2K5M7Ut3W202qTzPB
-         VWFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707160231; x=1707765031;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=a20qnw0GLumbuloJftibE3OVN8W8kYVkmwiQ3AXnu9c=;
-        b=Qc2eRKp5Y2DqfK8RXE4aJvPGIue6eTN+NyOGiXXqhME3gCoRmLCmEj5ohw8IAO3XUu
-         Ta93XplIeQ1VLLB5IVSOb3zNDI963wR/d84MuydQuIIYn+HU3J+TLnCjJz8ci4kvoiSy
-         8YktT/UUQoUc9ShVpVuf74cggZSF7CQR/X0bEsOnvKJr5oI5hiH8tjk9HtShqOQtC/Zs
-         zrGbUvT3+jGa8ATluhTumDYca5BYnZVwMo/9YYlF01ImMOd7wxPBeXPC8AwbuUELCjrJ
-         qSQrqFpqSVgx/6jjxuT9FLaX8X/ZejiNvvCcI2mMAw1YBQknWtGJT2vJOAZT4ZO1TxDY
-         ZK+Q==
-X-Gm-Message-State: AOJu0YyCDuU8Io4l2+yGs2/KKJy5i6LgrmJEVwWEXX5fw8nO/mGB267L
-	ocBVLoUklLLLqJ7dR2AzNIogNER92qqO29a9Be6z0fJm9icjeWxt
-X-Google-Smtp-Source: AGHT+IFVme9c/3/l94jUhlVm22vQ2iZ9mazNsnWQ0UPRXOehEAE+IFBgkJt6XwK65LdV+btJfzyKjA==
-X-Received: by 2002:a17:906:37d1:b0:a36:fdc8:34e9 with SMTP id o17-20020a17090637d100b00a36fdc834e9mr287924ejc.1.1707160230879;
-        Mon, 05 Feb 2024 11:10:30 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCUihPCVNBe7nssHwW+pyENceUcDGmXzFc4iWFWfZjrQNfR/s1Zt/bsmh0wrStUZ9jNRoKP7XTsMMsMW+obwraHrjaT3gH/fvnjBmECCd4/CchAxHZeG8+62Q/ERrBNs0gan+2eTiAVhKszoStRu8pWSlELa2qPU6lTB5m9Svh6iG752L02pxKFpDttwbwrYDl3X
-Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.googlemail.com with ESMTPSA id ks27-20020a170906f85b00b00a37dda5a3d1sm147766ejb.197.2024.02.05.11.10.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Feb 2024 11:10:30 -0800 (PST)
-Message-ID: <b3b72faf-46fe-48db-996c-5e7e4e7b47f1@gmail.com>
-Date: Mon, 5 Feb 2024 20:10:28 +0100
+	id 1rX4tg-00000004q4t-3wd2;
+	Mon, 05 Feb 2024 19:44:54 +0000
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 415JidWl016337;
+	Mon, 5 Feb 2024 13:44:39 -0600
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+	s=ti-com-17Q1; t=1707162279;
+	bh=I2VglAtdv1vuqLTP4/IxTbXu7umNiNc+hKIhHdGfH0E=;
+	h=From:To:CC:Subject:Date;
+	b=IVJ9WWflrLwutF++zW8zY7/bau/svLyN2jC85tuPzOzq42diYRXOKezzRDESQf90B
+	 nchO1ahoi+5DdZ4ig7eR1ci1IaQUFxEVZaJVi7tFUZXnowK35uo7odueLy94fxGxFw
+	 VEh19aVVQZuzEa+7kwhQogEIDcKBNVENO+Nih4sI=
+Received: from DLEE115.ent.ti.com (dlee115.ent.ti.com [157.170.170.26])
+	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 415JidJk073094
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Mon, 5 Feb 2024 13:44:39 -0600
+Received: from DLEE106.ent.ti.com (157.170.170.36) by DLEE115.ent.ti.com
+ (157.170.170.26) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Mon, 5
+ Feb 2024 13:44:39 -0600
+Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DLEE106.ent.ti.com
+ (157.170.170.36) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
+ Frontend Transport; Mon, 5 Feb 2024 13:44:39 -0600
+Received: from lelvsmtp5.itg.ti.com ([10.249.42.149])
+	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 415JicQN028467;
+	Mon, 5 Feb 2024 13:44:38 -0600
+From: Andrew Davis <afd@ti.com>
+To: Sebastian Reichel <sre@kernel.org>,
+        Manivannan Sadhasivam
+	<manivannan.sadhasivam@linaro.org>,
+        Cristian Ciocaltea
+	<cristian.ciocaltea@gmail.com>,
+        Florian Fainelli
+	<florian.fainelli@broadcom.com>,
+        Ray Jui <rjui@broadcom.com>, Scott Branden
+	<sbranden@broadcom.com>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Konrad
+ Dybcio <konrad.dybcio@linaro.org>,
+        Sean Wang <sean.wang@mediatek.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-actions@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>, Andrew Davis <afd@ti.com>
+Subject: [PATCH v2 00/19] Remove pm_power_off use in drivers/power/reset
+Date: Mon, 5 Feb 2024 13:44:18 -0600
+Message-ID: <20240205194437.180802-1-afd@ti.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC] aquantia-firmware: package MediaTek's Aquantia
- AQR113C firmware
-To: Robert Marko <robimarko@gmail.com>
-Cc: openwrt-devel@lists.openwrt.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
- <rafal@milecki.pl>, Christian Marangi <ansuelsmth@gmail.com>,
- Daniel Golle <daniel@makrotopia.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-References: <20240205132308.24015-1-zajec5@gmail.com>
- <CAOX2RU6pZb+WfZAj8+EZnye=uwcA0FTSpAspApXA90QLOb1ihQ@mail.gmail.com>
-Content-Language: en-US
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-In-Reply-To: <CAOX2RU6pZb+WfZAj8+EZnye=uwcA0FTSpAspApXA90QLOb1ihQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240205_111033_836851_D8539539 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20240205_114453_106366_8ECC6B82 
+X-CRM114-Status: UNSURE (   7.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,81 +98,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5.02.2024 15:15, Robert Marko wrote:
-> On Mon, 5 Feb 2024 at 14:23, Rafał Miłecki <zajec5@gmail.com> wrote:
->>
->> From: Rafał Miłecki <rafal@milecki.pl>
->>
->> Aquantia AQR113C is PHY that needs loading a firmware. Some devices may
->> have it stored on flash and some need filesystem to provide it.
->>
->> MediaTek holds its own AQR113C firmware file for its boards. Package it.
-> 
-> Hi Rafal, not going into details of this patch, but what is the
-> license situation with
-> redistributing the AQR firmware?
+Hello all,
 
-Good question. I don't know.
+Use of pm_power_off is considered legacy and should be replaced with
+register_sys_off*(). Same for register_restart_handler(). Do this
+for the drivers/power/reset subsystem for all trivial cases.
 
-Cc linux-mediatek@
-Can we get some licensing help, please?
+Thanks,
+Andrew
 
+Changes for v2:
+ - Fix sparse warning in 7/19 and 10/19
+ - Add new patch fixing an already existing sparse warning (3/19)
+ - Rebase on v6.8-rc3
 
+Andrew Davis (19):
+  power: reset: atc260x-poweroff: Use
+    devm_register_sys_off_handler(RESTART)
+  power: reset: atc260x-poweroff: Use
+    devm_register_sys_off_handler(POWER_OFF)
+  power: reset: xgene-reboot: Use devm_platform_ioremap_resource()
+    helper
+  power: reset: xgene-reboot: Use devm_register_sys_off_handler(RESTART)
+  power: reset: tps65086-restart: Use
+    devm_register_sys_off_handler(RESTART)
+  power: reset: tps65086-restart: Remove unneeded device data struct
+  power: reset: brcm-kona-reset: Use
+    devm_register_sys_off_handler(RESTART)
+  power: reset: axxia-reset: Use devm_register_sys_off_handler(RESTART)
+  power: reset: rmobile-reset: Use devm_platform_ioremap_resource()
+    helper
+  power: reset: rmobile-reset: Use
+    devm_register_sys_off_handler(RESTART)
+  power: reset: mt6323-poweroff: Use
+    devm_register_sys_off_handler(POWER_OFF)
+  power: reset: msm-poweroff: Use
+    devm_register_sys_off_handler(POWER_OFF)
+  power: reset: msm-poweroff: Use devm_register_sys_off_handler(RESTART)
+  power: reset: regulator-poweroff: Use
+    devm_register_sys_off_handler(POWER_OFF)
+  power: reset: as3722-poweroff: Use
+    devm_register_sys_off_handler(POWER_OFF)
+  power: reset: gemini-poweroff: Use
+    devm_register_sys_off_handler(POWER_OFF)
+  power: reset: restart-poweroff: Use
+    devm_register_sys_off_handler(POWER_OFF)
+  power: reset: syscon-poweroff: Move device data into a struct
+  power: reset: syscon-poweroff: Use
+    devm_register_sys_off_handler(POWER_OFF)
 
-Initial firmware file
-Rhe-05.06-Candidate7-AQR_Mediatek_23B_StartOff_ID45623_VER36657.cld was
-added in the commit:
+ drivers/power/reset/as3722-poweroff.c    | 30 ++++-------
+ drivers/power/reset/atc260x-poweroff.c   | 55 ++++++++------------
+ drivers/power/reset/axxia-reset.c        | 16 +++---
+ drivers/power/reset/brcm-kona-reset.c    | 11 ++--
+ drivers/power/reset/gemini-poweroff.c    | 16 +++---
+ drivers/power/reset/msm-poweroff.c       | 25 ++++-----
+ drivers/power/reset/mt6323-poweroff.c    | 28 +++++-----
+ drivers/power/reset/regulator-poweroff.c | 36 +++++--------
+ drivers/power/reset/restart-poweroff.c   | 25 +++------
+ drivers/power/reset/rmobile-reset.c      | 35 ++++---------
+ drivers/power/reset/syscon-poweroff.c    | 66 ++++++++++++------------
+ drivers/power/reset/tps65086-restart.c   | 58 ++++-----------------
+ drivers/power/reset/xgene-reboot.c       | 21 +++-----
+ 13 files changed, 154 insertions(+), 268 deletions(-)
 
-commit 24ba51c5be18613127b2d8407b0223174624b130
-Author: developer <developer@mediatek.com>
-Date:   Tue Nov 15 11:22:46 2022 +0800
-
-     [][kernel][mt7988][eth][Change AQR113C firmware download method to MDIO gangload]
-
-     [Description]
-     Change AQR113C firmware download method to MDIO gangload.
-
-     If without this patch, AQR113C cannot boot from MDIO gangload.
-
-     [Release-log]
-     N/A
-
-
-     Change-Id: Iddc29f5e1c73c772bcea9313938b6daccc10025a
-     Reviewed-on: https://gerrit.mediatek.inc/c/openwrt/feeds/mtk_openwrt_feeds/+/6781059
-
-with not licensing details.
-
-
-
-Later there was a firmware update update handled by adding file:
-Rhe-05.06-Candidate9-AQR_Mediatek_23B_P5_ID45824_LCLVER1.cld in the commit:
-
-commit 405b1e31f924b97d379719fb39f0d28c0fac43a9
-Author: developer <developer@mediatek.com>
-Date:   Tue Mar 28 17:00:41 2023 +0800
-
-     [][kernel][mt7988][eth][Fix AQR113C 5GBASE-T compliance test mode4 tone1 fail issue]
-
-     [Description]
-     Fix AQR113C 5GBASE-T compliance test mode4 tone1 fail issue by
-     updating firmware version to
-     Rhe-05.06-Candidate9-AQR_Mediatek_23B_P5_ID45824_LCLVER1.cld.
-
-     If without this patch, AQR113C might not pass the 5GBASE-T mode4 tone1
-     items for the compliance test.
-
-     [Release-log]
-     N/A
-
-
-     Change-Id: I3b2c6e6cf1a6ba8183daa7e30110ff2c839c5989
-     Reviewed-on: https://gerrit.mediatek.inc/c/openwrt/feeds/mtk_openwrt_feeds/+/7305781
-
-but again with not licensing info.
-
-
-
-I also can't find any readme file specifying licensing of those files.
+-- 
+2.39.2
 
 
