@@ -4,57 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2AA1C4829C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 22:08:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB3A3C4829B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 22:08:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iBAH3aawsVywEVbWoVzcM5jzPafpIP/QwG2nbsiBSUA=; b=UZUooao27d9unhCnHEII7xrN/9
-	WnR2AxPIeLWv6vP6b7HCUJSRHP+9qTrqpkXxlgAMYcOHakin67iD7wB2nig+rT/v/cDsRbZw7xocQ
-	5fZsZES4t0JZmRiSS0lX6Vw5druo7HrGTYZg4bR0U/nNTADjVvxYEsQwk8nCOHqlGRIAK7wxSYK1U
-	5Zqe7/aDZjEap3DX2WJg1K/iIbMsAIY0XN2QaBsLWdl+u+/z95GfHoGaaCPkavFgwhiq/+VifJCFW
-	9x6akoF2SmnS4Mf3iEeNF7eozkFbid0ScBFBfgXzoVUN2aT9yTrVk3/fyB8Yz4wuLK6BHZAPTeAcl
-	SMQmRCxw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mEfrlRSuuD6oMdAsso03LmkrW6PP+Ts+Xv0DQivYXPA=; b=lF/2SX0dIbL7ygks/dBT7pga+R
+	NHbjhAfYTXBFQabW34Guw5cL3JKXFlIXbraeYRMBEtn7B211nCCYfcGrGQfy0PZb5LDKO1M25ObvU
+	VdvNc6EEz04bMHBr/JP+6HSDKFwxSC6bUuiHLTmbfFX52+cnqKUECy+p+TKhoE3xrAT2jwazzCb/f
+	xQwR/FnYh0rQi9PY4wYPg6osVYzcs0CrMDdLnPYdlOpsft5ZdzH3jwktC0GkF5TjAxlVio+XYwhDQ
+	xn5xhvZZK5sFOhN+kqYe8urrtpt920InZcB9YcVx6UGh5jEFg/DX4J1chcR8m8J2ze1CuwDbAE1sY
+	BOcSOhqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX78h-00000005NGZ-0vS6;
-	Mon, 05 Feb 2024 22:08:31 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rX78j-00000005NJL-35ri;
+	Mon, 05 Feb 2024 22:08:33 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX78V-00000005N6T-1Fix;
-	Mon, 05 Feb 2024 22:08:21 +0000
+	id 1rX78V-00000005N6R-1pPT;
+	Mon, 05 Feb 2024 22:08:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 50802CE1169;
-	Mon,  5 Feb 2024 22:08:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 63B5FC43399;
+	by sin.source.kernel.org (Postfix) with ESMTP id F05F6CE0E20;
+	Mon,  5 Feb 2024 22:08:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 2EC62C433F1;
 	Mon,  5 Feb 2024 22:08:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1707170894;
-	bh=Ttjg7L6LSJIN/4qKBgyu688lh/DDe+hETjj4w09DuAw=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=oTOJOgFKg9f+TsQrSckDBPq481LGMf47Z9BHHB3SVSKy0s48mcvsDmD1vxxtJDe5x
-	 RWlLLO9sCMVhBpioPUYNaVmBXnHDtaljal5PRYEHzh1L0wE1ojltJiQb0C04XFN3wl
-	 C6ohJBnoXyueH5mpAmbfKSs7e+i8EzoGcddN4Z1naDWT9uMs/VpvvAKxsoL1A1fVpM
-	 2/LS9yd7JyOu2mUhadQ3u0+WbFHpsQGS6Prln6FaM+zVGr0jyac71hvxJ4w2eXEABG
-	 nZJ4L8ZQ0Rf4a9Gd4VYLCfbynWaQZMB1rdxy6mZiFsfV6Aik2BHT4nAvMr5HuQAw7V
-	 joNcm73KizN4Q==
+	bh=A+6R9ZDS9UjRyWJgxuvz/fapj4AM3nXOKkH2EGth9G0=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=J3O0rxD2Ygjsj700Pm6yV4AiE6xvD57357ifkYU+ieTDB8hkV461XMsO00tlHXqYi
+	 obOsJc42LU53liXxQ7P53JrKIu5XcpbuINvFG0y1aDmPYSqnXnUoJV+dMfzf0meUB7
+	 1qcjsz1xtsOtAYAbUyty5DepmOcAFOir/Voxp7sK7lM0bHVYTubjrRGVZEkxHO1YeM
+	 7LXLtLVc2HGPodplgcDHw/4lYtgesIoT2Yn2ncE9MW9fo+wo8TTjzZzOcqOYAa0Wiv
+	 hUSyMCfaIOrnZHfSrQvJ6qhySEe32iJJVx3YJwRQIqO+uehz3Flog1nybiejhBUxvl
+	 DmBmCLZYFBxsQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4CB58C48299;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 124B0C48298;
 	Mon,  5 Feb 2024 22:08:14 +0000 (UTC)
 From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
  <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Tue, 06 Feb 2024 01:08:04 +0300
-Subject: [PATCH net-next v5 3/7] net: dsa: mt7530: simplify
- mt7530_pad_clk_setup()
+Subject: [PATCH net-next v5 0/7] MT7530 DSA Subdriver Improvements Act II
+Date: Tue, 06 Feb 2024 01:08:01 +0300
+Message-Id: <20240206-for-netnext-mt7530-improvements-2-v5-0-d7d92a185cb1@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240206-for-netnext-mt7530-improvements-2-v5-3-d7d92a185cb1@arinc9.com>
-References: <20240206-for-netnext-mt7530-improvements-2-v5-0-d7d92a185cb1@arinc9.com>
-In-Reply-To: <20240206-for-netnext-mt7530-improvements-2-v5-0-d7d92a185cb1@arinc9.com>
+X-B4-Tracking: v=1; b=H4sIAEFcwWUC/43OTW7DIBAF4KtErDsWv46dVe8RZQFmaJBqiICiV
+ JHvXkoXTZVFs0GMRu97cyMZk8dMDrsbSVh99jG0Qb3syHLW4Q3B2zYTTrmkjDNwMUHAEvBaYC1
+ 7JSj49ZJixRVDycDBSCfFODIjJ0Wac0no/LV3HEmLwneWnNrm7HOJ6bOXV9b3Pz1MMMoVn4eJi
+ j0DBjr5sAwfQb+/9u88LHHtRuV3uXbM//dVDhSMpqNT1s5o6AMpfsn2PEOKRo7CKm01zvOiH0h
+ 5T8pnSNlIyo2j2mhtzfSH3LbtC79DbtO7AQAA
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
  Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
  Florian Fainelli <f.fainelli@gmail.com>, 
@@ -71,18 +73,18 @@ Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, 
  "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
 X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1707170890; l=4956;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1707170890; l=3529;
  i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
- bh=RRUQnNSPrRHOOZ/GFpvVNQgWdt14UbbbPAdZ3VLciVU=;
- b=CLij4/7/rsfFCF6JR/blPhD82B43gurgQ8+wRIPlvQ0mhrOwgPYXy+oDLcpsJ8mLWgKpIp7iV
- qyMGRhYFkz1DWBe/TmAjNNjqWy34cCVDQObwHn32tvcr5nZ6MZw9oMO
+ bh=A+6R9ZDS9UjRyWJgxuvz/fapj4AM3nXOKkH2EGth9G0=;
+ b=lMad3J70PLiCdiP2RqMA7W8I4o6zA0ejht2u6w5ckUlGJy2YN1gQn4f5EwDCdQphg/ouy3+dp
+ BWUoF08vFkSBD7U/W9T3fZ5Zd+bPGbdXnK/FCfXthlaTVPPhRXSkQzm
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt with auth_id=115
 X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240205_140819_755417_CCF096E0 
-X-CRM114-Status: GOOD (  17.74  )
+X-CRM114-CacheID: sfid-20240205_140819_992392_66D1E028 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,146 +100,94 @@ Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+Hello!
 
-This code is from before this driver was converted to phylink API. Phylink
-deals with the unsupported interface cases before mt7530_pad_clk_setup() is
-run. Therefore, the default case would never run. However, it must be
-defined nonetheless to handle all the remaining enumeration values, the
-phy-modes.
+This is the second patch series with the goal of simplifying the MT7530 DSA
+subdriver and improving support for MT7530, MT7531, and the switch on the
+MT7988 SoC.
 
-Switch to if statement for RGMII and return which simplifies the code and
-saves an indent.
+I have done a simple ping test to confirm basic communication on all switch
+ports on MCM and standalone MT7530, and MT7531 switch with this patch
+series applied.
 
-Set P6_INTF_MODE, which is the three least significant bits of the
-MT7530_P6ECR register, to 0 for RGMII even though it will already be 0
-after reset. This is to keep supporting dynamic reconfiguration of the port
-in the case the interface changes from TRGMII to RGMII.
+MT7621 Unielec, MCM MT7530:
 
-Disable the TRGMII clocks for all cases. They will be enabled if TRGMII is
-being used.
+rgmii-only-gmac0-mt7621-unielec-u7621-06-16m.dtb
+gmac0-and-gmac1-mt7621-unielec-u7621-06-16m.dtb
 
-Read XTAL after checking for RGMII as it's only needed for the TRGMII
-interface mode.
+tftpboot 0x80008000 mips-uzImage.bin; tftpboot 0x83000000 mips-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootm 0x80008000 0x83000000 0x83f00000
 
-Reviewed-by: Daniel Golle <daniel@makrotopia.org>
-Reviewed-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+MT7622 Bananapi, MT7531:
+
+gmac0-and-gmac1-mt7622-bananapi-bpi-r64.dtb
+
+tftpboot 0x40000000 arm64-Image; tftpboot 0x45000000 arm64-rootfs.cpio.uboot; tftpboot 0x4a000000 $dtb; booti 0x40000000 0x45000000 0x4a000000
+
+MT7623 Bananapi, standalone MT7530:
+
+rgmii-only-gmac0-mt7623n-bananapi-bpi-r2.dtb
+gmac0-and-gmac1-mt7623n-bananapi-bpi-r2.dtb
+
+tftpboot 0x80008000 arm-zImage; tftpboot 0x83000000 arm-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootz 0x80008000 0x83000000 0x83f00000
+
+This patch series is the continuation of the patch series linked below.
+
+https://lore.kernel.org/r/20230522121532.86610-1-arinc.unal@arinc9.com
+
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 91 +++++++++++++++++++++---------------------------
- 1 file changed, 40 insertions(+), 51 deletions(-)
+Changes in v5:
+- Update the patches with the latest received trailers.
+- Patch 3
+  - Replace "return;" with "return 0;".
+- Patch 4
+  - Remove the stray brace.
+- Link to v4: https://lore.kernel.org/r/20240204-for-netnext-mt7530-improvements-2-v4-0-02bf0abaadb8@arinc9.com
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 8b8469eba863..e13b9c9cb19f 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -418,64 +418,53 @@ static int
- mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
- {
- 	struct mt7530_priv *priv = ds->priv;
--	u32 ncpo1, ssc_delta, trgint, xtal;
-+	u32 ncpo1, ssc_delta, xtal;
- 
--	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
-+	/* Disable the MT7530 TRGMII clocks */
-+	core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
- 
--	switch (interface) {
--	case PHY_INTERFACE_MODE_RGMII:
--		trgint = 0;
--		break;
--	case PHY_INTERFACE_MODE_TRGMII:
--		trgint = 1;
--		if (xtal == HWTRAP_XTAL_25MHZ)
--			ssc_delta = 0x57;
--		else
--			ssc_delta = 0x87;
--		if (priv->id == ID_MT7621) {
--			/* PLL frequency: 125MHz: 1.0GBit */
--			if (xtal == HWTRAP_XTAL_40MHZ)
--				ncpo1 = 0x0640;
--			if (xtal == HWTRAP_XTAL_25MHZ)
--				ncpo1 = 0x0a00;
--		} else { /* PLL frequency: 250MHz: 2.0Gbit */
--			if (xtal == HWTRAP_XTAL_40MHZ)
--				ncpo1 = 0x0c80;
--			if (xtal == HWTRAP_XTAL_25MHZ)
--				ncpo1 = 0x1400;
--		}
--		break;
--	default:
--		dev_err(priv->dev, "xMII interface %d not supported\n",
--			interface);
--		return -EINVAL;
-+	if (interface == PHY_INTERFACE_MODE_RGMII) {
-+		mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
-+			   P6_INTF_MODE(0));
-+		return 0;
- 	}
- 
--	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK,
--		   P6_INTF_MODE(trgint));
-+	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK, P6_INTF_MODE(1));
- 
--	if (trgint) {
--		/* Disable the MT7530 TRGMII clocks */
--		core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
-+	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
- 
--		/* Setup the MT7530 TRGMII Tx Clock */
--		core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
--		core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
--		core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
--		core_write(priv, CORE_PLL_GROUP11, RG_LCDDS_SSC_DELTA1(ssc_delta));
--		core_write(priv, CORE_PLL_GROUP4,
--			   RG_SYSPLL_DDSFBK_EN | RG_SYSPLL_BIAS_EN |
--			   RG_SYSPLL_BIAS_LPF_EN);
--		core_write(priv, CORE_PLL_GROUP2,
--			   RG_SYSPLL_EN_NORMAL | RG_SYSPLL_VODEN |
--			   RG_SYSPLL_POSDIV(1));
--		core_write(priv, CORE_PLL_GROUP7,
--			   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
--			   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
-+	if (xtal == HWTRAP_XTAL_25MHZ)
-+		ssc_delta = 0x57;
-+	else
-+		ssc_delta = 0x87;
- 
--		/* Enable the MT7530 TRGMII clocks */
--		core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
--	}
-+	if (priv->id == ID_MT7621) {
-+		/* PLL frequency: 125MHz: 1.0GBit */
-+		if (xtal == HWTRAP_XTAL_40MHZ)
-+			ncpo1 = 0x0640;
-+		if (xtal == HWTRAP_XTAL_25MHZ)
-+			ncpo1 = 0x0a00;
-+	} else { /* PLL frequency: 250MHz: 2.0Gbit */
-+		if (xtal == HWTRAP_XTAL_40MHZ)
-+			ncpo1 = 0x0c80;
-+		if (xtal == HWTRAP_XTAL_25MHZ)
-+			ncpo1 = 0x1400;
-+	}
-+
-+	/* Setup the MT7530 TRGMII Tx Clock */
-+	core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
-+	core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
-+	core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
-+	core_write(priv, CORE_PLL_GROUP11, RG_LCDDS_SSC_DELTA1(ssc_delta));
-+	core_write(priv, CORE_PLL_GROUP4, RG_SYSPLL_DDSFBK_EN |
-+		   RG_SYSPLL_BIAS_EN | RG_SYSPLL_BIAS_LPF_EN);
-+	core_write(priv, CORE_PLL_GROUP2, RG_SYSPLL_EN_NORMAL |
-+		   RG_SYSPLL_VODEN | RG_SYSPLL_POSDIV(1));
-+	core_write(priv, CORE_PLL_GROUP7, RG_LCDDS_PCW_NCPO_CHG |
-+		   RG_LCCDS_C(3) | RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
-+
-+	/* Enable the MT7530 TRGMII clocks */
-+	core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_TRGMIICK_EN);
- 
- 	return 0;
- }
+Changes in v4:
+- Update the patches with the latest received trailers.
+- Leave no error returns on mt7530_pad_clk_setup() before renaming it to
+  mt7530_setup_port6() and moving it to under mt7530_mac_config().
+- Link to v3: https://lore.kernel.org/r/20240202-for-netnext-mt7530-improvements-2-v3-0-63d5adae99ca@arinc9.com
 
+Changes in v3:
+- Update the patches with the latest received trailers.
+- Patch 5
+  - Disable TRGMII clocks for all cases.
+- Link to v2: https://lore.kernel.org/r/20240130-for-netnext-mt7530-improvements-2-v2-0-ba06f5dd9eb0@arinc9.com
+
+Changes in v2:
+- Update the patches with the latest received trailers.
+- Remove 'net: dsa: mt7530: move enabling port 6 to mt7530_setup_port6()'
+  which was patch 5. I will bring a more appropriate change with a later
+  patch series.
+- Patch 5
+  - Set P6_INTF_MODE(0) and explain why on the patch log.
+- Patch 6
+  - Mention the MT7988 document and explain more on the patch log.
+- Patch 7
+  - Explain more on the patch log.
+- Link to v1: https://lore.kernel.org/r/20240113102529.80371-1-arinc.unal@arinc9.com
+
+---
+Arınç ÜNAL (7):
+      net: dsa: mt7530: empty default case on mt7530_setup_port5()
+      net: dsa: mt7530: move XTAL check to mt7530_setup()
+      net: dsa: mt7530: simplify mt7530_pad_clk_setup()
+      net: dsa: mt7530: call port 6 setup from mt7530_mac_config()
+      net: dsa: mt7530: remove pad_setup function pointer
+      net: dsa: mt7530: correct port capabilities of MT7988
+      net: dsa: mt7530: do not clear config->supported_interfaces
+
+ drivers/net/dsa/mt7530.c | 152 +++++++++++++++++------------------------------
+ drivers/net/dsa/mt7530.h |   3 -
+ 2 files changed, 53 insertions(+), 102 deletions(-)
+---
+base-commit: 4acf4e62cd572b0c806035046b3698f5585ab821
+change-id: 20240121-for-netnext-mt7530-improvements-2-b4f43661b485
+
+Best regards,
 -- 
-2.40.1
+Arınç ÜNAL <arinc.unal@arinc9.com>
 
 
