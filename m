@@ -4,86 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBB8FC4828D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 10:44:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50094C48291
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 10:49:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yngtOtBvapoYTS/QKGaZkBvYYOb+ZrD7vIE2iM2iYJo=; b=v0gN7u4REzlvfW2jH5hb2eaiT4
-	/v9XqMn5HsRoj8xZD1/7Tndh71d9oOFH9HaIZY1xOSFBFTTBdeZSoy/p6fDVa/w8YJOVwtw03Mziy
-	9WabjhRw+LUodH136SYZBFoapRphSoMdCXUGmr0bZTaCVQXpK/Xmlvl8ukSw5C7n87eZqi4z6pr6+
-	IL0nvaMaRl1YpZJLng9xBPQxaGmuo57iKTXZ1MnUOHdLZXxBx7a+oUr0gPu901FlWo4XXhWpvvpoV
-	1LB4UWFrPzRlYLyhO48Aa4FhMsI607yfDBQWa8BROs/JBEPNHweTOF8uarfKcW4ezRsshUcad6WYi
-	la4sgM7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fUeRA0Jda+Lyqu/i6W8IEQOOKZJBQt/IPjmrmBJEcYo=; b=y5CVfjh3+b8EnNbQFjxeMrn1/f
+	E1UJx4qfyBaZeCg6Dxb6TSg/yib1R3Gw0X9puQqxwvwjXPTMUHz1taTXrRqseZryTZgmUZjKMSC5Q
+	FP8j9wf4R0qbS5Hoia9FMgcPTCFvzlwMlnFG8FceBLiXLHH9QXt7dzf2+e2GJ47V9U0PfeOFfelzr
+	BhCrilZxZPX+upJNhWwDEEXowzkRv1G46KUij2Tg4IcBtuVps5bwwngbZWdOG2iTeV9kRALDzzHeV
+	QJIAXew40xoFMF7ypCbXGmAv/BBE7fRYkWOUWl60gzRWfA5z1KVWNsUX44z2yOZmUfivQLgFKW+98
+	df9z1rtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWwSk-00000002s7K-1bfF;
-	Mon, 05 Feb 2024 10:44:30 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rWwXP-00000002seN-2z6Z;
+	Mon, 05 Feb 2024 10:49:19 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWwSg-00000002s5P-2NMM;
-	Mon, 05 Feb 2024 10:44:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 2A71CCE0C7C;
-	Mon,  5 Feb 2024 10:44:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F21B2C433F1;
-	Mon,  5 Feb 2024 10:44:14 +0000 (UTC)
-Message-ID: <e565f8bd-19d2-4574-8c6d-5573733a8185@xs4all.nl>
-Date: Mon, 5 Feb 2024 11:44:13 +0100
+	id 1rWwXN-00000002sdr-0qhR;
+	Mon, 05 Feb 2024 10:49:18 +0000
+X-UUID: 31df5fd0c41411eea0bf134e88e6c2dc-20240205
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=fUeRA0Jda+Lyqu/i6W8IEQOOKZJBQt/IPjmrmBJEcYo=;
+	b=YIsXeHjux330gf2denmnvznBQxMRhpKW9FqauUIxZxwLTPkRK2sQjNP2yRp0h3P8fCnaA1cZrnyIS9U6UvuUJrrbDI9nu/5g1AKC2nPQqpwbiJr8F2xhw8+D3iNPbyHMLNqxhsuqjYDXU/fUNLwPPB1FE7kFbV5C3VtySqBLRL4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:7db58ec6-9eaf-49d3-a8d7-3287c234b59c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:641f0a8f-e2c0-40b0-a8fe-7c7e47299109,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 31df5fd0c41411eea0bf134e88e6c2dc-20240205
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <alice.chao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1498352782; Mon, 05 Feb 2024 03:49:11 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 5 Feb 2024 18:49:07 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 5 Feb 2024 18:49:07 +0800
+From: <alice.chao@mediatek.com>
+To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley"
+	<jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <wsd_upstream@mediatek.com>, <stanley.chu@mediatek.com>,
+	<peter.wang@mediatek.com>, <powen.kao@mediatek.com>,
+	<naomi.chu@mediatek.com>, <cc.chou@mediatek.com>, <tun-yu.yu@mediatek.com>,
+	<chun-hung.wu@mediatek.com>, <casper.li@mediatek.com>, Alice Chao
+	<alice.chao@mediatek.com>, <linux-scsi@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v1 1/1] ufs: core: fix shift issue in ufshcd_clear_cmd
+Date: Mon, 5 Feb 2024 18:49:04 +0800
+Message-ID: <20240205104905.24929-1-alice.chao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 17/17] linux: v4l2-vp9.h: Fix kerneldoc
-Content-Language: en-US, nl
-To: Randy Dunlap <rdunlap@infradead.org>,
- Ricardo Ribalda <ribalda@chromium.org>, Jonathan Corbet <corbet@lwn.net>
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Hans Verkuil <hverkuil@xs4all.nl>,
- Kieran Bingham <kieran.bingham@ideasonboard.com>,
- Bin Liu <bin.liu@mediatek.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
- Vikash Garodia <quic_vgarodia@quicinc.com>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>, Bingbu Cao <bingbu.cao@intel.com>,
- Tianshu Qiu <tian.shu.qiu@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev,
- linux-amlogic@lists.infradead.org, Sakari Ailus <sakari.ailus@iki.fi>
-References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
- <20240126-gix-mtk-warnings-v1-17-eed7865fce18@chromium.org>
- <ZbTTb-SdK-EubGdc@valkosipuli.retiisi.eu>
- <201ae1d1-1e03-40e2-9cc4-49df70abb8da@xs4all.nl>
- <8f3bab1f-8697-40c0-91f2-de934b4b9ddb@infradead.org>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <8f3bab1f-8697-40c0-91f2-de934b4b9ddb@infradead.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--4.721700-8.000000
+X-TMASE-MatchedRID: KISk8WdGcXBCI2iUrGleqpdc7I2df+ms2D9FbDg9BP42/UwdvFG5IpBn
+	0Y6NyRFo+hJFNJdQq3OnwZyfnQYxDBLekAZjy1WtdXu122+iJtrXAvRa0tfJGvuoLVXE/uWaDbI
+	Geo4FmxIppITnGCYXcdLS2IFgBJ3tVQ7O/4REy+v62mDKTRDEUkJfxXUWJFGS31GU/N5W5BB91D
+	unZtIaFuLzNWBegCW2xl8lw85EaVQLbigRnpKlKTpcQTtiHDgWu7FQYXTUmCAUzE8GbcbxJmrYG
+	6Z2cg1Fe4VlQFoik74zs1tzCvb5Hw==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--4.721700-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: CDD062A06CE60E35FB211DAD39DB59CF632CD39BD23F74EAC619151C171A39CD2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240205_024427_000726_441575BE 
-X-CRM114-Status: GOOD (  15.29  )
+X-CRM114-CacheID: sfid-20240205_024917_275196_3D0B505B 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,49 +102,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05/02/2024 11:39, Randy Dunlap wrote:
-> 
-> 
-> On 2/5/24 02:29, Hans Verkuil wrote:
->> On 27/01/2024 10:57, Sakari Ailus wrote:
->>> Hi Ricardo,
->>>
->>> On Fri, Jan 26, 2024 at 11:16:16PM +0000, Ricardo Ribalda wrote:
->>>> Kerneldoc cannot understand arrays defined like
->>>> v4l2_frame_symbol_counts.
->>>>
->>>> Adding an asterisk to the name does do the trick.
->>>>
->>>> Disable the kerneldoc notation for now, it is already ignored:
->>>> https://docs.kernel.org/search.html?q=v4l2_vp9_frame_symbol_counts
->>>
->>> Wouldn't it be nicer to fix kerneldoc instead? It might not be difficult at
->>> all.
->>>
->>> Feel free to, but I can also give it a try.
->>>
->>
->> It would be nice to have this fixed in kerneldoc itself. I'm holding this
->> patch back for two weeks to see if someone wants to work on kerneldoc.
->>
->> If not, then I'll take this anyway to fix the noise in our build.
->>
->> Note that while this header is indeed ignored in the documentation, that
->> is really more a bug and it would be nice to actually include this header
->> somewhere in our documentation. So fixing these kerneldoc warnings one way
->> or another is something that we should do.
->>
-> 
-> It's just waiting for Jon to apply it: (from Sakari)
-> 
-> https://lore.kernel.org/all/20240131084934.191226-1-sakari.ailus@linux.intel.com/
+From: Alice Chao <alice.chao@mediatek.com>
 
-Ah, that patch was CCed to me but not to linux-media, and I only searched linux-media
-for it so I missed it. Good news that this is fixed in the right place.
+When task_tag > 32 (in mcq mode), 1U << task_tag will out of bound
+for u32 mask. Fix this bug to prevent SHIFT_ISSUE (Bitwise shifts
+that are out of bounds for their data type).
 
-I marked this 17/17 patch as Obsoleted in patchwork.
+[name:debug_monitors&]Unexpected kernel BRK exception at EL1
+[name:traps&]Internal error: BRK handler: 00000000f2005514 [#1] PREEMPT SMP
+[name:mediatek_cpufreq_hw&]cpufreq stop DVFS log done
+[name:mrdump&]Kernel Offset: 0x1ba5800000 from 0xffffffc008000000
+[name:mrdump&]PHYS_OFFSET: 0x80000000
+[name:mrdump&]pstate: 22400005 (nzCv daif +PAN -UAO)
+[name:mrdump&]pc : [0xffffffdbaf52bb2c] ufshcd_clear_cmd+0x280/0x288
+[name:mrdump&]lr : [0xffffffdbaf52a774] ufshcd_wait_for_dev_cmd+0x3e4/0x82c
+[name:mrdump&]sp : ffffffc0081471b0
+<snip>
+Workqueue: ufs_eh_wq_0 ufshcd_err_handler
+Call trace:
+ dump_backtrace+0xf8/0x144
+ show_stack+0x18/0x24
+ dump_stack_lvl+0x78/0x9c
+ dump_stack+0x18/0x44
+ mrdump_common_die+0x254/0x480 [mrdump]
+ ipanic_die+0x20/0x30 [mrdump]
+ notify_die+0x15c/0x204
+ die+0x10c/0x5f8
+ arm64_notify_die+0x74/0x13c
+ do_debug_exception+0x164/0x26c
+ el1_dbg+0x64/0x80
+ el1h_64_sync_handler+0x3c/0x90
+ el1h_64_sync+0x68/0x6c
+ ufshcd_clear_cmd+0x280/0x288
+ ufshcd_wait_for_dev_cmd+0x3e4/0x82c
+ ufshcd_exec_dev_cmd+0x5bc/0x9ac
+ ufshcd_verify_dev_init+0x84/0x1c8
+ ufshcd_probe_hba+0x724/0x1ce0
+ ufshcd_host_reset_and_restore+0x260/0x574
+ ufshcd_reset_and_restore+0x138/0xbd0
+ ufshcd_err_handler+0x1218/0x2f28
+ process_one_work+0x5fc/0x1140
+ worker_thread+0x7d8/0xe20
+ kthread+0x25c/0x468
+ ret_from_fork+0x10/0x20
 
-Regards,
+Signed-off-by: Alice Chao <alice.chao@mediatek.com>
+---
+ drivers/ufs/core/ufshcd.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-	Hans
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 029d017fc1b6..c6cff4aa440a 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -3057,7 +3057,7 @@ bool ufshcd_cmd_inflight(struct scsi_cmnd *cmd)
+  */
+ static int ufshcd_clear_cmd(struct ufs_hba *hba, u32 task_tag)
+ {
+-	u32 mask = 1U << task_tag;
++	u32 mask;
+ 	unsigned long flags;
+ 	int err;
+ 
+@@ -3075,6 +3075,8 @@ static int ufshcd_clear_cmd(struct ufs_hba *hba, u32 task_tag)
+ 		return 0;
+ 	}
+ 
++	mask = 1U << task_tag;
++
+ 	/* clear outstanding transaction before retry */
+ 	spin_lock_irqsave(hba->host->host_lock, flags);
+ 	ufshcd_utrl_clear(hba, mask);
+-- 
+2.18.0
+
 
