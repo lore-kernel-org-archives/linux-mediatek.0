@@ -4,98 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49469C48292
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 20:29:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71167C4829A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 22:08:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V2vwy1xdN4YRuSNz0Zmeo13DlHz09nwHWjHo8V3zYIM=; b=xC/8FNQ+OZFjyhiSSnlLJmGqHK
-	whRALXC0tkM6CDYrbmDJlUl3UKBl5+E/8pO1GCUG1vwk+RuV7haCjf5TTtXWRHi9/jl1fMu8VFAe9
-	g0D1HHDnmK/z0i6uSazXfpG20JSGMO1VhEoOUKzytas1Dj7cjSr7UJWRARN5IO4uYVVyi5wQl37Iu
-	2TGF0WkrF/vxtLAmEiz3OaupJ/kT0p0sCJTfniDSqh9PQE3XXT8LE2goByyeuCRcuvUbgoTo4u8B6
-	rFp2744apz5qoTTNRjlINVbJ3mDcScL63p+wb+DRl5ZI/OjC0sHQY7vVB2xS+CYOpWNIjJoQezCfQ
-	61ab44Gg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QfaslHGNqvbJDCGDQhjQxlPRaepZFo9Chh3WH3wisGY=; b=pPKpPgnqjAULgyzMxkLqb4IH2O
+	eJOlD5Ur0ERkNTsD5oWK7Pigw24Td8XpwOBeBLbvugr5BQ1x/xDYCaaS2ReULskHs96QfsnwDi5Th
+	EWtUMkiwH5A///wfge0yIfU4tSWcD3+8tTwKqDEyzeARnIA+EsuWIM3sz9AOfq2zaWHiV5A8ThPJI
+	55zXCtqVQssyJoU3Qkc5M0Srl9C/GO6QCOr1LSXHx4a5pEFo0HOvHVg46RCm0dRpxflfv+4IaEUIp
+	cIJhBXq76FmjTeH9cHVqvCuZjMzTfmzQOgO8X9cY+VHTrFHG+V8fsmVPJsBFJ/m6t4xpiavRWbCjg
+	8iPmEZRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX5b5-000000052F6-3uIi;
-	Mon, 05 Feb 2024 20:29:43 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1rX78V-00000005N83-2AiO;
+	Mon, 05 Feb 2024 22:08:19 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX5b2-000000052Cp-2QgS;
-	Mon, 05 Feb 2024 20:29:41 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-55fe4534e9bso4603399a12.0;
-        Mon, 05 Feb 2024 12:29:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1707164978; x=1707769778; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=V2vwy1xdN4YRuSNz0Zmeo13DlHz09nwHWjHo8V3zYIM=;
-        b=KcKbDHDTrfXAtHgQs6Y2ipWAF0ht1XVEblZUL+Zucs38O/FFn/HlIog0Rao8u7/+hi
-         mRUwKgTgKcwhbhVRwD2XxldmewkSzEDErGf8fre+KCUngfdTAEKnpgIylrJAJ9681rYj
-         knsKXuSyeLh65+1k2QJzVhjRXf3CJ3+/2IgfpaPMeqYoQTlacNiPmjHUYHBvGBmJtxwH
-         4QIX80NCJysc/KT+OoeIJaHfApjQT4GzL3pAXwjQ3woIwBLlXDF7CcE978W9G8xid7b0
-         ImmIFeo/ciMUuUhQn9Q8HEGfquk0Rsgw8Os1+DuHEYqyydTZcdPz/QTQStV7YH1VRGOS
-         LbkA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707164978; x=1707769778;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=V2vwy1xdN4YRuSNz0Zmeo13DlHz09nwHWjHo8V3zYIM=;
-        b=eJj1j9yEvqwF20OGqK91G7EWXSMkgxlVLAcYyxTlFhJl0JtMheRa/OZWqhdJoo3baD
-         6oxyFB8Xc3KYTWlYN6gI9lFV3Z4AfDHc4/Kk7lzYjDQGC+ABHdouo0/rnUc/I0UjMAI1
-         lUg/Eof2LLgmAeClUIiq24rVRrcAGfif3kEEF12+4Vy56B1DEeFmMtthKZxKAHFgA1l9
-         W2zVhRfXo+wZ3O/tKSIRUWJBxrLRkfyFonfD2OOmb101UZmdbgdpdVC+kZuv+nX6L60n
-         O76NcFvdVKW30fjFwz8PiHlxMRp2W3WDcq9OwepJX4BSMpb03IFMWqcK7TZRegCXwa2f
-         gtEA==
-X-Gm-Message-State: AOJu0YxMpWbebu1BZt6CpDjdPF8ALA3j4e0sMmOGVEbIG5Rt+vtE76qp
-	QDrBeAV+RLumVSPEq4x+ZwuCxVRZ4OKbGns/mmWSOb8b0AQDDgRl
-X-Google-Smtp-Source: AGHT+IGLRUsRndFzILv8fnlMxBbqMi2GUbAGsIlK83rBGDc2eO+rtdn+PbtPCGEGLtUd6LttiUMHAQ==
-X-Received: by 2002:aa7:c991:0:b0:560:535:864c with SMTP id c17-20020aa7c991000000b005600535864cmr300965edt.12.1707164978034;
-        Mon, 05 Feb 2024 12:29:38 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCUKrZurXEx9W3ZB7XvtgoqXBVoDOIiHWDUK0OxcbnUi1TvQBb6CqHTrO9FkFWqz66OVwTWge1zAbOwH8Xay+GG1fnqHREU/Plac7osLVVNe6J3OcVcKFONw8vGiWGnoC5EX8eSLZO+l2x3/AUHgM0scbA/Y+kTy8Klw3oNqwsVrgYrgn1YMLoOToLYIMryx3gKzPaNhCAlqVe81we1X2/Dm0eh4DDolBncvdnRRzfO1KIDJnrkUiX3IcIhUWgYp0goyUqEdfCDrnYlGZPcmxmRcqfOPEYpQzz6voNLSFvkv2KcpQiSeDrYRGhBcf27Wb5GMh2OU+RSh49vfiSFw8OrsZJUZTF3VqZXtlMJZAcgnUD8JF8D/OKM/I8AseGdelA3Br/w05YzQYPg/xovo1JoT4oa/2NNvIFk2hQjLqHhq8ayZZ8BlCWY6aJxUHkUaw9YD0wD54PQROFgp2W1PK8yNWLiUA1tEWvLa35hwKk6RSWUTK5aEs3H1aJSQ7Bu1Tz1zivVLr240evdu2sOw16xquFGF42BbW73B4/0fMc10tOhz6VfU+CEBvYWYQpxYL18BkHQrZL3RSXCf16RtjFPiUPEVn440SQj0Xn9B9nVOjh/9FmCwW2+GRXYTFwQK3hrAvnZDnKPFAY6K+Hq1YqbJg8ClLLLw
-Received: from skbuf ([188.25.173.195])
-        by smtp.gmail.com with ESMTPSA id w13-20020aa7da4d000000b00560422bd11asm256428eds.30.2024.02.05.12.29.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Feb 2024 12:29:37 -0800 (PST)
-Date: Mon, 5 Feb 2024 22:29:35 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
-	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v3 1/7] net: dsa: mt7530: empty default case on
- mt7530_setup_port5()
-Message-ID: <20240205202935.tolbbwbtrig32jlj@skbuf>
-References: <20240202-for-netnext-mt7530-improvements-2-v3-0-63d5adae99ca@arinc9.com>
- <20240202-for-netnext-mt7530-improvements-2-v3-1-63d5adae99ca@arinc9.com>
- <ZbzUotyQm/FyKK7G@shell.armlinux.org.uk>
- <e3b4add6-425c-46ca-9da5-8713055fc422@arinc9.com>
- <Zb0u8NY0q6ay17j5@shell.armlinux.org.uk>
+	id 1rX78R-00000005N4n-2Qyq;
+	Mon, 05 Feb 2024 22:08:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id AAAEE61280;
+	Mon,  5 Feb 2024 22:08:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 599A8C43390;
+	Mon,  5 Feb 2024 22:08:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1707170894;
+	bh=jfOJQuDR5OnZ7kHdXBRWttLFE7HrqwrcF+PXQeKVXXc=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=Z3PzmIadOWga4CWm2g1HhmtZTRLsTHjvyhKbz+F6f4wOF60Kp/tqVe5HiKigpnBjX
+	 eGeZiA15hcBdZ+HZ/UlJL8gANtdsglI58I3L4AnP4P6XpqOMD75VENlVGF/JodU53T
+	 7sO34Kfw1cPjhj0vk3sD5k6usr922S1cG/PyldGykk9jS/5UjU3mQ2CIL81kEjeG5C
+	 M3E+sjcWHUNFC659+q3GlsWY+etJnotAmxftLvERSKmGq63jeDCcoGTyBP0K3eCZHw
+	 SYHJovUxIzDB8t2e83n7qW7sVEORIC2mFRKwoyhyELfDo7WV1Cbgrq1qvWYnLAjA9H
+	 AFdu68nLDcejA==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3AFA3C4829A;
+	Mon,  5 Feb 2024 22:08:14 +0000 (UTC)
+From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
+ <devnull+arinc.unal.arinc9.com@kernel.org>
+Date: Tue, 06 Feb 2024 01:08:03 +0300
+Subject: [PATCH net-next v5 2/7] net: dsa: mt7530: move XTAL check to
+ mt7530_setup()
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <Zb0u8NY0q6ay17j5@shell.armlinux.org.uk>
+Message-Id: <20240206-for-netnext-mt7530-improvements-2-v5-2-d7d92a185cb1@arinc9.com>
+References: <20240206-for-netnext-mt7530-improvements-2-v5-0-d7d92a185cb1@arinc9.com>
+In-Reply-To: <20240206-for-netnext-mt7530-improvements-2-v5-0-d7d92a185cb1@arinc9.com>
+To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
+ Florian Fainelli <f.fainelli@gmail.com>, 
+ Vladimir Oltean <olteanv@gmail.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Russell King <linux@armlinux.org.uk>
+Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com, 
+ Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, 
+ "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+X-Mailer: b4 0.12.4
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1707170890; l=1567;
+ i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
+ bh=Li/zn0Sv6n/UTyGYqwZm1/fdMf5SJvivtXipqKuvmqw=;
+ b=PqQAUUtRHGCt/lV01+GVWwSekPOmfNry2XRRS4QiXDOoR2bAruYfgFqkkJp3ICJiFkBv56kMf
+ VSM+341MMybDSzYWTU3CPks4jN1c/RnnTYxIrOPTHSiJvFz4WCe56n4
+X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
+ pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
+X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt with auth_id=115
+X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240205_122940_642444_0B692C9D 
-X-CRM114-Status: GOOD (  21.86  )
+X-CRM114-CacheID: sfid-20240205_140815_759370_0244967B 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,37 +94,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 02, 2024 at 06:05:36PM +0000, Russell King (Oracle) wrote:
-> > > Given everything I've said above, the only way to configure RGMII
-> > > delays is via the rx-internal-delay-ps and tx-internal-delay-ps
-> > > properties. So, DSA drivers should _not_ be configuring their ports
-> > > with RGMII delays based on the RGMII phy interface mode.
-> > > 
-> > > The above is my purely logically reasoned point of view on this
-> > > subject. Others may have other (to me completely illogical)
-> > > interpretations that can only lead to interoperability issues.
-> > 
-> > I will address this with the next patch series. Thank you for explaining it
-> > in detail.
-> 
-> This is a good time to point out not to rush with the next patch
-> series, as my email will _likely_ provoke some additional discussion
-> from Andrew and/or Vladimir. So please give it a few days (maybe
-> around the middle of next week) to give them time to consider my
-> email and respond.
+From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-I agree with everything you've said. The only problem is that
-Documentation/devicetree/bindings/net/ethernet-controller.yaml is
-ambiguous on this topic (to put it mildly).
+The crystal frequency concerns the switch core. The frequency should be
+checked when the switch is being set up so the driver can reject the
+unsupported hardware earlier and without requiring port 6 to be used.
 
-@Arınç, there are ways to handle the "tx-internal-delay-ps" in
-mt7530_setup_port5() in a way that is backwards compatible. I don't know
-about RX delays - the function doesn't handle them, and I don't have the
-time to open datasheets now. You can take inspiration from
-ksz_parse_rgmii_delay() and sja1105_parse_rgmii_delays() on how to only
-fall back to the current logic to set the tx_delay if the more specific
-OF properties are not present.
+Move it to mt7530_setup(). Drop the unnecessary function printing.
+
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+Reviewed-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+ drivers/net/dsa/mt7530.c | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 330e22abc076..8b8469eba863 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -422,13 +422,6 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+ 
+ 	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
+ 
+-	if (xtal == HWTRAP_XTAL_20MHZ) {
+-		dev_err(priv->dev,
+-			"%s: MT7530 with a 20MHz XTAL is not supported!\n",
+-			__func__);
+-		return -EINVAL;
+-	}
+-
+ 	switch (interface) {
+ 	case PHY_INTERFACE_MODE_RGMII:
+ 		trgint = 0;
+@@ -2259,6 +2252,12 @@ mt7530_setup(struct dsa_switch *ds)
+ 		return -ENODEV;
+ 	}
+ 
++	if ((val & HWTRAP_XTAL_MASK) == HWTRAP_XTAL_20MHZ) {
++		dev_err(priv->dev,
++			"MT7530 with a 20MHz XTAL is not supported!\n");
++		return -EINVAL;
++	}
++
+ 	/* Reset the switch through internal reset */
+ 	mt7530_write(priv, MT7530_SYS_CTRL,
+ 		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
+
+-- 
+2.40.1
+
 
