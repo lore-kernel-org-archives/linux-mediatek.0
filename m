@@ -4,80 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC096C4828D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 19:01:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83022C4828D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 19:10:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SeMl68ENlhZta5JKP4MegR68EKrrxCv2fGrCfnFczms=; b=4km54L7bnvpDvuSgNrGm6N0c9V
-	57ik/nwCDNRxSgsWbEp6ZNXSDp1x+yrTJe+Fd8KEUlIp83SlLCv38gAIDLm/mHRQUPVSxAeZKTqd3
-	h3wvL6aCpqseSubGTn6zIurY+TCGCW0T7gXP+IDr1AxMLTa9Yjr32XvsY854MFWOWzZXWZojdAGwp
-	vPVP0lzEKZOwSJ9MiNcSL0ApLF7wD4djXYpMc8j/CH85FMUWa0ywB2p4yxcMEX0GRjWoy/goEMiBk
-	ALdCW0PiqOhDEQEk2+f4CYHIGrcaHeav+On4Qk3fox9gtbM0n8SZ3lyoa5a3gRTqtSCCHSd36esGw
-	/WH+5G8Q==;
+	bh=a20qnw0GLumbuloJftibE3OVN8W8kYVkmwiQ3AXnu9c=; b=tLYaEfSlbK7aqvTxrXw/6goRmI
+	BW1Z60ILzSFEAaM+r2bdpgWZHaM1oCQlFYsZKt03e84gUNv4KvVKr0dfp2BZZUL5LefTsHNv/gwBZ
+	/IKkIPmqnZ1kGNVMYps7lkH0xyy5MzckTPqY0n0Ky536E/KVzRdkbRIkGCznpZ1D4OW2YsY0ODo2m
+	wsVOJtw4Y52Gdp41T+6/AvCyPqAQdfOk2/lpydrYg2PqXQknGMjlihKCBduD7RvE0bfsnl0dniZrG
+	degQB78fBA1ywkPacMxSnyINTNxJySMvCYlVWxkasEQ2+crD8wqnts5mTA4lxEn4Bq7xCJ3xrA1bU
+	677GmcXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX4Dn-00000004TEP-2KSb;
-	Mon, 05 Feb 2024 19:01:35 +0000
-Received: from mail-yw1-f172.google.com ([209.85.128.172])
+	id 1rX4MW-00000004WKS-3znL;
+	Mon, 05 Feb 2024 19:10:36 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX4Dk-00000004TCp-1n8W;
-	Mon, 05 Feb 2024 19:01:33 +0000
-Received: by mail-yw1-f172.google.com with SMTP id 00721157ae682-60412f65124so44004657b3.3;
-        Mon, 05 Feb 2024 11:01:31 -0800 (PST)
+	id 1rX4MT-00000004WIx-3Enb
+	for linux-mediatek@lists.infradead.org;
+	Mon, 05 Feb 2024 19:10:35 +0000
+Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-55f0b2c79cdso5793443a12.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Feb 2024 11:10:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1707160231; x=1707765031; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=a20qnw0GLumbuloJftibE3OVN8W8kYVkmwiQ3AXnu9c=;
+        b=aIU3lTfBI3LMhYYKk8iyixh+rJfb2+jXuinrcsN4K600vrBV19yXeAL8VQIsqMlVQc
+         ybmotuXeZq7C2ZYOcjNlD33hfP3+RSR2yDExK/dSMHMAmOXRYJcK+uAmFNn8YcmdxFda
+         e+gJm9NoIjxvuop3TE2JIxpv9xxd6rWzz+J6sHQJlJX0Az835qx3FA1BRgQf6p1bJw9o
+         Zd9vCPPlsbzPttcIDlQqPB9R4W4z3MlIdlGWJiByQWOB33RAwSs1g2IcERRDCU6+m9zg
+         cKGXL2ps/r4ibkimYUsnA1baw0cQH6+AKsQpZ1Z9flgwCXiM+2M2K5M7Ut3W202qTzPB
+         VWFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707159689; x=1707764489;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=SeMl68ENlhZta5JKP4MegR68EKrrxCv2fGrCfnFczms=;
-        b=XuSN04XEdpZ3/71tasAQ3/DToOeatlW6kpO3moRl23BoykWfCU3g2rtQJ3OWv5QXuQ
-         /z5usKwg4AAPsGOE88/DsstHNF0rxAQ5vu8CP6TWI41eCeTLwAB7QZ6cSLuN13G6fuKU
-         XsT8gxYnAhTQugFMlAlUFo823x3Xo2kcH2wwCGWAr8kPM3bJX03EA2SWISR8cWI+yU5J
-         lTjjO5cGFNi1Bsqs8hlAcerx4pDtUbBGXY35sDt4eqqUDeFce++haJDgac/n+ZU2M99c
-         WXkYu/jOJZN/+TcFjAtsYnJXSzCc1Yqn37xF+OjhhkJ825Scdd0N9aIyTR0CfvEsiKC+
-         WcVg==
-X-Gm-Message-State: AOJu0YwRLU0pzUcu5Y/llCHcl98JSTdZHEBmsABaK49s/NScvfWquPIO
-	1XwpG10Rp6lCG1vJOYJAsJq9pG5n0aug3gXnyxkaHR8sD1+kwdVeqjQlwbu2hog=
-X-Google-Smtp-Source: AGHT+IG2OyOELBr5p33U9prO3DwoZI2Ey6Rrj45XH/GP3VPQb1I4HnQf58mZecDW2vPuB6at3pOG3A==
-X-Received: by 2002:a05:690c:3382:b0:604:978:e76d with SMTP id fl2-20020a05690c338200b006040978e76dmr579167ywb.8.1707159688814;
-        Mon, 05 Feb 2024 11:01:28 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCXrKhmpbqnyi2GCscOWMmnnBGWC5dqLGYA4bx4onnMypBixbwf5f9OchIdwYjAKH21NOmflu4Y/WCj2en+ZVMB8OBK0pfbex3pMh8Cgj6hVaQSKGVQ=
-Received: from mail-yw1-f172.google.com (mail-yw1-f172.google.com. [209.85.128.172])
-        by smtp.gmail.com with ESMTPSA id do6-20020a05690c23c600b005ff8950ed82sm82385ywb.38.2024.02.05.11.01.27
+        d=1e100.net; s=20230601; t=1707160231; x=1707765031;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=a20qnw0GLumbuloJftibE3OVN8W8kYVkmwiQ3AXnu9c=;
+        b=Qc2eRKp5Y2DqfK8RXE4aJvPGIue6eTN+NyOGiXXqhME3gCoRmLCmEj5ohw8IAO3XUu
+         Ta93XplIeQ1VLLB5IVSOb3zNDI963wR/d84MuydQuIIYn+HU3J+TLnCjJz8ci4kvoiSy
+         8YktT/UUQoUc9ShVpVuf74cggZSF7CQR/X0bEsOnvKJr5oI5hiH8tjk9HtShqOQtC/Zs
+         zrGbUvT3+jGa8ATluhTumDYca5BYnZVwMo/9YYlF01ImMOd7wxPBeXPC8AwbuUELCjrJ
+         qSQrqFpqSVgx/6jjxuT9FLaX8X/ZejiNvvCcI2mMAw1YBQknWtGJT2vJOAZT4ZO1TxDY
+         ZK+Q==
+X-Gm-Message-State: AOJu0YyCDuU8Io4l2+yGs2/KKJy5i6LgrmJEVwWEXX5fw8nO/mGB267L
+	ocBVLoUklLLLqJ7dR2AzNIogNER92qqO29a9Be6z0fJm9icjeWxt
+X-Google-Smtp-Source: AGHT+IFVme9c/3/l94jUhlVm22vQ2iZ9mazNsnWQ0UPRXOehEAE+IFBgkJt6XwK65LdV+btJfzyKjA==
+X-Received: by 2002:a17:906:37d1:b0:a36:fdc8:34e9 with SMTP id o17-20020a17090637d100b00a36fdc834e9mr287924ejc.1.1707160230879;
+        Mon, 05 Feb 2024 11:10:30 -0800 (PST)
+X-Forwarded-Encrypted: i=0; AJvYcCUihPCVNBe7nssHwW+pyENceUcDGmXzFc4iWFWfZjrQNfR/s1Zt/bsmh0wrStUZ9jNRoKP7XTsMMsMW+obwraHrjaT3gH/fvnjBmECCd4/CchAxHZeG8+62Q/ERrBNs0gan+2eTiAVhKszoStRu8pWSlELa2qPU6lTB5m9Svh6iG752L02pxKFpDttwbwrYDl3X
+Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.googlemail.com with ESMTPSA id ks27-20020a170906f85b00b00a37dda5a3d1sm147766ejb.197.2024.02.05.11.10.30
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Feb 2024 11:01:28 -0800 (PST)
-Received: by mail-yw1-f172.google.com with SMTP id 00721157ae682-60412a23225so45136087b3.2;
-        Mon, 05 Feb 2024 11:01:27 -0800 (PST)
-X-Received: by 2002:a0d:e289:0:b0:604:66f1:35d2 with SMTP id
- l131-20020a0de289000000b0060466f135d2mr475419ywe.49.1707159687571; Mon, 05
- Feb 2024 11:01:27 -0800 (PST)
+        Mon, 05 Feb 2024 11:10:30 -0800 (PST)
+Message-ID: <b3b72faf-46fe-48db-996c-5e7e4e7b47f1@gmail.com>
+Date: Mon, 5 Feb 2024 20:10:28 +0100
 MIME-Version: 1.0
-References: <da6af483-5ee9-45cd-922e-d9d5364674dc@web.de> <CAMuHMdUxn4Ne7kmEfONz8Uk3Why3m9r83GdM5RzTxm_4Gj_a6g@mail.gmail.com>
- <8f011126-c95a-4c71-8bc9-a6b0a5823c96@web.de>
-In-Reply-To: <8f011126-c95a-4c71-8bc9-a6b0a5823c96@web.de>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 5 Feb 2024 20:01:17 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdUQLWBQemtgnCHj64wCYAET8J2-MgbisyMChSbh0k0L7w@mail.gmail.com>
-Message-ID: <CAMuHMdUQLWBQemtgnCHj64wCYAET8J2-MgbisyMChSbh0k0L7w@mail.gmail.com>
-Subject: Re: [PATCH] pmdomain: mediatek: Use devm_platform_get_and_ioremap_resource()
- in init_scp()
-To: Markus Elfring <Markus.Elfring@web.de>
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-pm@vger.kernel.org, kernel-janitors@vger.kernel.org, 
-	Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Rob Herring <robh@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, 
-	LKML <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RFC] aquantia-firmware: package MediaTek's Aquantia
+ AQR113C firmware
+To: Robert Marko <robimarko@gmail.com>
+Cc: openwrt-devel@lists.openwrt.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>, Christian Marangi <ansuelsmth@gmail.com>,
+ Daniel Golle <daniel@makrotopia.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <20240205132308.24015-1-zajec5@gmail.com>
+ <CAOX2RU6pZb+WfZAj8+EZnye=uwcA0FTSpAspApXA90QLOb1ihQ@mail.gmail.com>
+Content-Language: en-US
+From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+In-Reply-To: <CAOX2RU6pZb+WfZAj8+EZnye=uwcA0FTSpAspApXA90QLOb1ihQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240205_110132_505326_484A3A28 
-X-CRM114-Status: GOOD (  22.03  )
+X-CRM114-CacheID: sfid-20240205_111033_836851_D8539539 
+X-CRM114-Status: GOOD (  12.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,52 +98,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Markus,
+On 5.02.2024 15:15, Robert Marko wrote:
+> On Mon, 5 Feb 2024 at 14:23, Rafał Miłecki <zajec5@gmail.com> wrote:
+>>
+>> From: Rafał Miłecki <rafal@milecki.pl>
+>>
+>> Aquantia AQR113C is PHY that needs loading a firmware. Some devices may
+>> have it stored on flash and some need filesystem to provide it.
+>>
+>> MediaTek holds its own AQR113C firmware file for its boards. Package it.
+> 
+> Hi Rafal, not going into details of this patch, but what is the
+> license situation with
+> redistributing the AQR firmware?
 
-On Mon, Feb 5, 2024 at 6:28=E2=80=AFPM Markus Elfring <Markus.Elfring@web.d=
-e> wrote:
-> >> +++ b/drivers/pmdomain/mediatek/mtk-scpsys.c
-> >> @@ -441,8 +441,7 @@ static struct scp *init_scp(struct platform_device=
- *pdev,
-> >>
-> >>         scp->dev =3D &pdev->dev;
-> >>
-> >> -       res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> >> -       scp->base =3D devm_ioremap_resource(&pdev->dev, res);
-> >> +       scp->base =3D devm_platform_get_and_ioremap_resource(pdev, 0, =
-&res);
-> >
-> > Given res is further unused, please use devm_platform_ioremap_resource(=
-)
-> > instead, and remove the local variable res.
->
-> I got another idea after looking at the implementation of the function
-> =E2=80=9Cdevm_platform_get_and_ioremap_resource=E2=80=9D once more.
-> https://elixir.bootlin.com/linux/v6.8-rc3/source/drivers/base/platform.c#=
-L87
->
-> It seems that it is supported to pass a null pointer for the last paramet=
-er
-> (while this possibility is not mentioned in the interface description so =
-far).
-> How do you think about to benefit from such a design option any more
-> (instead of the determination of a corresponding platform device)?
+Good question. I don't know.
 
-Yes, you can pass a NULL pointer as the last parameter.
-And as this is very common, the wrapper devm_platform_ioremap_resource()
-exists.
+Cc linux-mediatek@
+Can we get some licensing help, please?
 
-Gr{oetje,eeting}s,
 
-                        Geert
 
---=20
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
-.org
+Initial firmware file
+Rhe-05.06-Candidate7-AQR_Mediatek_23B_StartOff_ID45623_VER36657.cld was
+added in the commit:
 
-In personal conversations with technical people, I call myself a hacker. Bu=
-t
-when I'm talking to journalists I just say "programmer" or something like t=
-hat.
-                                -- Linus Torvalds
+commit 24ba51c5be18613127b2d8407b0223174624b130
+Author: developer <developer@mediatek.com>
+Date:   Tue Nov 15 11:22:46 2022 +0800
+
+     [][kernel][mt7988][eth][Change AQR113C firmware download method to MDIO gangload]
+
+     [Description]
+     Change AQR113C firmware download method to MDIO gangload.
+
+     If without this patch, AQR113C cannot boot from MDIO gangload.
+
+     [Release-log]
+     N/A
+
+
+     Change-Id: Iddc29f5e1c73c772bcea9313938b6daccc10025a
+     Reviewed-on: https://gerrit.mediatek.inc/c/openwrt/feeds/mtk_openwrt_feeds/+/6781059
+
+with not licensing details.
+
+
+
+Later there was a firmware update update handled by adding file:
+Rhe-05.06-Candidate9-AQR_Mediatek_23B_P5_ID45824_LCLVER1.cld in the commit:
+
+commit 405b1e31f924b97d379719fb39f0d28c0fac43a9
+Author: developer <developer@mediatek.com>
+Date:   Tue Mar 28 17:00:41 2023 +0800
+
+     [][kernel][mt7988][eth][Fix AQR113C 5GBASE-T compliance test mode4 tone1 fail issue]
+
+     [Description]
+     Fix AQR113C 5GBASE-T compliance test mode4 tone1 fail issue by
+     updating firmware version to
+     Rhe-05.06-Candidate9-AQR_Mediatek_23B_P5_ID45824_LCLVER1.cld.
+
+     If without this patch, AQR113C might not pass the 5GBASE-T mode4 tone1
+     items for the compliance test.
+
+     [Release-log]
+     N/A
+
+
+     Change-Id: I3b2c6e6cf1a6ba8183daa7e30110ff2c839c5989
+     Reviewed-on: https://gerrit.mediatek.inc/c/openwrt/feeds/mtk_openwrt_feeds/+/7305781
+
+but again with not licensing info.
+
+
+
+I also can't find any readme file specifying licensing of those files.
+
 
