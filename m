@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BA84C48286
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Feb 2024 20:55:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7DADC4828D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 05:52:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5r8gZWB9PZBWbuM0o6LwBJ5QkUd6Z8cYpWt9Zy+KEwE=; b=2rse4U6Op+RHrnv2yyTFx6YPtr
-	MiZy8Gts0pJILq0GKzQEo+SEjN3VQf+6clDTvzQTnEBfgpKZQ1bziIv6iLPJ4BJmSE6/77HOYzhy6
-	OanG4Sgl0QDlB0Mm7+YK/86CVqizcFRlEOHeradOtZkEF2foB7SwzOGg3mFhrdxmUzDZmjCuybf7V
-	x6vpzE6NW5MJK7kNQSQSGqXO5Za+/SpgLF6WmbGiVRij4qxh9N+1CwbiXLSVF+3ve7oNrTEwhdv8w
-	8Hxm8KsMv9Idcw3ead6Ynt3JttmcWUvPVpFoAMrOFXLzdeNTQo9+OCj8wG06wbxtQWtUEWa5AiMiY
-	dUmZzTgA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yw30OqTt5AJHEMjDxcvTzl5oo4axO9cwqzp5IcfvIJk=; b=BA1h7b7OZJFeCtITmqRaRwfJmt
+	0eQRlyUpHY33b0Fs53jZiCDiQq/e35r/Nd+dS/2LwJYhMFgqyjoj9VEb5KddYpA48ymHdXHVJsRvU
+	pkFgpjKSOMMxmJNZf5GEEIEJx3csMiNe8eyt1L+LsjjixVvauD44D7/xZ+LFyE2msX7CLWIlZJHKx
+	lyjzYVFjrxT76PxAmFpgTcjdvmqZjTC6hXxgBZg/LueI5xsolsJyW8zBnh9anpG1jpBVF/C6tvy2Q
+	lJINUznTjTsIirW8dTO6oJukeHvnr2eQVvRNFItbEfhOL2Qxg1qmZ1r4Wn2Eu+fsRqG0vrdPGrASx
+	xU4kMsQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWjWv-00000001RTZ-0LmF;
-	Sun, 04 Feb 2024 20:55:57 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rWrtz-0000000270X-0ojz;
+	Mon, 05 Feb 2024 05:52:19 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWjWr-00000001RSg-2ZhC;
-	Sun, 04 Feb 2024 20:55:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 73F1660F16;
-	Sun,  4 Feb 2024 20:55:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2495DC433C7;
-	Sun,  4 Feb 2024 20:55:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707080152;
-	bh=nP25hJvCpMad5PlXLZIYw/Vb97I4Hz7shBB0Jia5HHc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WeVbqBWFFSYNvQZJAL+NQMcCXY6OwMBTTE+Q0NLY7n4AfnQOdXkGtZ6QLR+TdOvg7
-	 So+KSD+O4OYvex427MVujDNT+Nu77npRgycQ4IZu4JYgBNpdjM9U7+oTmWd2ge0VQQ
-	 0Cqjxcgd2J3x23LqZdBLVuOhdl69Yr4jKOPevXxG+EGAa0EkOQWYFqK0+xwa76gLRA
-	 n2Q4d8Jc+6lcIEfOiEy3fJtAP60haS0FrWxYfndFik7Z3/wUttXh3Rr6CYNvFShnbB
-	 VTB992+rERfbjt+b/wna+D6GvlFjJ75tXtGa921WcrznHj4NqQ1RRonAN0T5m3mvHo
-	 eJwyRTe+X3zkQ==
-Date: Sun, 4 Feb 2024 13:55:49 -0700
-From: Nathan Chancellor <nathan@kernel.org>
-To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sami Tolvanen <samitolvanen@google.com>,
-	Ricardo Ribalda <ribalda@chromium.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Nick Desaulniers <ndesaulniers@google.com>,
-	Bill Wendling <morbo@google.com>,
-	Justin Stitt <justinstitt@google.com>, Mike Isely <isely@pobox.com>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	llvm@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 3/3] media: mediatek: vcodedc: Fix
- Wcast-function-type-strict warnings
-Message-ID: <20240204205549.GA2892810@dev-fedora.aadp>
-References: <20240128-fix-clang-warnings-v1-0-1d946013a421@chromium.org>
- <20240128-fix-clang-warnings-v1-3-1d946013a421@chromium.org>
- <20240201221654.GC2240065@dev-arch.thelio-3990X>
- <CABCJKudd3SUy3Qor7Tc0zyJsSAWy0PavbbBFALuWEpBa32pBCQ@mail.gmail.com>
- <5658ec37-868f-454d-a149-467e6de139cd@collabora.com>
- <12d0c580-788d-4466-af8a-feb5ab3c6677@notapiano>
+	id 1rWrtu-000000026v6-2EEt;
+	Mon, 05 Feb 2024 05:52:15 +0000
+X-UUID: aea67424c3ea11ee9a263b4415211400-20240204
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=yw30OqTt5AJHEMjDxcvTzl5oo4axO9cwqzp5IcfvIJk=;
+	b=a21RSwvOU8gnqph+tTxW52QNND2T9phXD5hNO+lNa2XqbYwmEB3/43gAzqmDbh2Gq5VC0ew3jEtwpES50FyXQWm13uQwhs9VUYRt1pCAkE+8h3zqQ/NxxGknKn3eyOOfMtMJFaZZHdps+5hNRBHY15HAMNSWapYH0PtCtmePx1Y=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:8766ce3f-fb7c-492a-8c41-9eed9c475a9f,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:6f543d0,CLOUDID:d6b51f80-4f93-4875-95e7-8c66ea833d57,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: aea67424c3ea11ee9a263b4415211400-20240204
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <mac.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1806673218; Sun, 04 Feb 2024 22:52:01 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 5 Feb 2024 13:51:26 +0800
+Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 5 Feb 2024 13:51:25 +0800
+From: mac.shen <mac.shen@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>
+CC: <mac.shen@mediatek.com>, <shuijing.li@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH v2 0/3] Add HDCP feature for DisplayPort
+Date: Mon, 5 Feb 2024 13:50:35 +0800
+Message-ID: <20240205055055.25340-1-mac.shen@mediatek.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <12d0c580-788d-4466-af8a-feb5ab3c6677@notapiano>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240204_125553_765161_6846EBF0 
-X-CRM114-Status: GOOD (  30.86  )
+X-CRM114-CacheID: sfid-20240204_215214_591080_D8491D77 
+X-CRM114-Status: UNSURE (   7.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,67 +86,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 02, 2024 at 03:15:46PM -0500, Nícolas F. R. A. Prado wrote:
-> On Fri, Feb 02, 2024 at 01:58:05PM +0100, AngeloGioacchino Del Regno wrote:
-> > Il 01/02/24 23:25, Sami Tolvanen ha scritto:
-> > > On Thu, Feb 1, 2024 at 10:17 PM Nathan Chancellor <nathan@kernel.org> wrote:
-> > > > 
-> > > > On Sun, Jan 28, 2024 at 02:12:22AM +0000, Ricardo Ribalda wrote:
-> > > > > Building with LLVM=1 throws the following warning:
-> > > > > drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c:38:32: warning: cast from 'mtk_vcodec_ipi_handler' (aka 'void (*)(void *, unsigned int, void *)') to 'ipi_handler_t' (aka 'void (*)(const void *, unsigned int, void *)') converts to incompatible function type [-Wcast-function-type-strict]
-> > > > > 
-> > > > > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> > > > 
-> > > > I am not positive because I don't have any hardware to test this driver
-> > > > but I suspect this patch is just hiding the warning without actually
-> > > > addressing the issue that it is pointing out.
-> > > 
-> > > Agreed, this won't fix the issue. The correct solution is to drop the
-> > > cast and change the handler type to match the pointer type (i.e. use
-> > > const void* for the first argument).
-> > > 
-> > 
-> > Even though I agree that the correct solution is to change the handler's type,
-> > I think that having a test on the actual hardware done is still valuable.
-> > 
-> > We scheduled a job on KernelCI to test this commit on our integration kernel,
-> > you'll get results for ChromeOS' tast decoders (MT8195 only) and Fluster tests
-> > on MT8183/8186/8192/8195.
-> > 
-> > 
-> > The results should be available in a couple of hours here, relative to
-> > commit `49955a84129dbe1f94fedf729690efcf28513828` on our tree:
-> > https://chromeos.kernelci.org/job/collabora-chromeos-kernel/branch/for-kernelci/
-> > 
-> > P.S.: If they don't, feel free to ping me or Nicolas (added to the loop) about it.
-> 
-> Hi,
-> 
-> the results are available at 
-> 
-> https://chromeos.kernelci.org/test/job/collabora-chromeos-kernel/branch/for-kernelci/kernel/v6.8-rc2-3109-g49955a84129d/
-> 
-> (You need to type "decoder" into the search bar to limit the results to only the
-> decoder tests)
-> 
-> The only regressions I see are due to infrastructure error or broken test
-> unrelated to this change (v4l2-decoder-conformance-h264-frext test on
-> MT8195-Tomato, and cros-tast-decoder-v4l2-sl-h264 test on MT8183-Juniper)
-> 
-> Otherwise, all platforms (MT8183/8186/8192/8195) and video codecs
-> (VP8/VP9/H264/H265/AV1) seem unaffected.
-> 
-> Note that these are GCC builds.
+Add tee client application, HDCP 1.x and 2.x authentication for DisplayPort
+to support the HDCP feature.
 
-Thank you for running the tests to make sure this series does not
-regress anything. If possible, it would be good to try and build with
-LLVM and enable kernel Control Flow Integrity (kCFI, CONFIG_CFI_CLANG)
-to see if my theory that this is currently broken is correct. I have
-prebuilt LLVM toolchains on kernel.org but if it is too much of a
-hassle, I would not worry about it.
+mac.shen (3):
+  Subject: [PATCH] drm/mediatek/dp: Add tee client application for HDCP
+    feature
+  Subject: [PATCH] drm/mediatek/dp: Add HDCP2.x feature for DisplayPort
+  Subject: [PATCH] drm/mediatek/dp: Add HDCP1.x feature for DisplayPort
 
-https://mirrors.edge.kernel.org/pub/tools/llvm/
+ drivers/gpu/drm/mediatek/Makefile        |    7 +-
+ drivers/gpu/drm/mediatek/mtk_dp.c        |  324 +++++--
+ drivers/gpu/drm/mediatek/mtk_dp.h        |   99 +++
+ drivers/gpu/drm/mediatek/mtk_dp_hdcp1x.c |  589 +++++++++++++
+ drivers/gpu/drm/mediatek/mtk_dp_hdcp1x.h |   46 +
+ drivers/gpu/drm/mediatek/mtk_dp_hdcp2.c  | 1021 ++++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_dp_hdcp2.h  |   52 ++
+ drivers/gpu/drm/mediatek/mtk_dp_reg.h    |    7 +-
+ drivers/gpu/drm/mediatek/mtk_dpi.c       |    3 +
+ drivers/gpu/drm/mediatek/tci.h           |  156 ++++
+ drivers/gpu/drm/mediatek/tlc_dp_hdcp.c   |  598 +++++++++++++
+ drivers/gpu/drm/mediatek/tlc_dp_hdcp.h   |  414 +++++++++
+ 12 files changed, 3230 insertions(+), 86 deletions(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_dp.h
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_dp_hdcp1x.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_dp_hdcp1x.h
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_dp_hdcp2.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_dp_hdcp2.h
+ create mode 100644 drivers/gpu/drm/mediatek/tci.h
+ create mode 100644 drivers/gpu/drm/mediatek/tlc_dp_hdcp.c
+ create mode 100644 drivers/gpu/drm/mediatek/tlc_dp_hdcp.h
 
-Cheers,
-Nathan
+-- 
+2.43.0
+
 
