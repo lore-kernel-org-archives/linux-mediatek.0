@@ -4,80 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16C82C48295
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 14:23:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94042C4828D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 14:44:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=UmJfX4ifFyoqza9pVHdJvHUNvwJUIGNrvsh1A8U9mJQ=; b=Vqe6eeJPk4YimkVp+X7tAbwKhn
-	cAwO9Ob/AuAvX3onLqlgEVvp7IP8lMTE6Lht/VW1Rrmu7+i5HsDRUlvyjPfWwBmhLnBh+YNbgBai9
-	kMtbKGSeFRStQ1popEzdTADAYgv/qSstM4rcVVuwX+KOR5UEe343tm1EDGSEVfoE5PTiMQH9gZc9y
-	7Bo3Wvlp95LHIVQqPnrSTtx8umg8uka+5ZvtLoi5Ngq61HpMZTV271uw2sLPV8sAzVwFnAuqtK/us
-	wftMi46Czf2qOJH/5sKdxnLHuHAyHODatE01ObBdXXgFIkBbcu0d5QLZkkBLFSewYHn3neAKkBKh0
-	SQht8A/w==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bF+ioF4rU6hYdKskdmBXlkag6Ll/8Irxamnq5jEhMXI=; b=mCPjaxYOgk8BiC39kFtJ8TUqEE
+	LjcK30WXSusrnzZDJbSaPcDY1m/V3opbtKj1hJczVfruWOrqUNKQLTWTznDC/wn/LkAudhbtjgb9h
+	gzbESa1bjwQpzbuM/vqaxN2v8Wdrn8WUxqIyJE/lka45K7em7rbjsotcLHSiywZOcTltLKaiqVd8m
+	l7UQxUQbmRKtzx+jZSPZe6q1E/C8uRLJyzlrvSR0qmdqtRVnI9SD4EJiDO7JVAnK9NzurX1kUTUpN
+	pzZXX4W0doqgWphAcLuw3rTZPrkHa0zkNT97IVvVVb9muga1928qenoGsk1+LPbEN49p5I/mciw2X
+	M+qFnobQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWzso-00000003aZo-2pz5;
-	Mon, 05 Feb 2024 14:23:38 +0000
-Received: from mout.web.de ([212.227.15.14])
+	id 1rX0Cj-00000003ed3-06qp;
+	Mon, 05 Feb 2024 14:44:13 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWzsl-00000003aXK-0Gzw;
-	Mon, 05 Feb 2024 14:23:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de; s=s29768273;
-	t=1707143000; x=1707747800; i=markus.elfring@web.de;
-	bh=dnIBfbHB8ZPlHqVXA+eJYYPip2Nlrn+++FytfzTBiTM=;
-	h=X-UI-Sender-Class:Date:To:Cc:From:Subject;
-	b=KLm4V0blbSMIAGoBSC9mXB8FoGR1shqWQKuYJTqNaJfah9ZXy6C88xPezTwQZ7iZ
-	 o08IgUmVlAlGV7wN1RLyi+hIXUzlzlvQp35zt1qBJJQEBcNtcmHMBYgboazVK0emi
-	 dicoXgwXol3ylS9hXSZsTfwYnXp1cJjAMemJmTzsn6nUOLPYf9ageVqO//u1bg1k8
-	 qXNmlFfBe9xLHTag/LUC+J7H0nZjQ9oafUi3/ud7F8J4MrwwJG5X9VooDKviXMVEy
-	 L9NY5TYvDF5h041mtEuN0T/Wp9p0T7ItXjZAu93OzkOArdZowMiTtEnElDO+36wZQ
-	 mD6eftyehLbH38lLVw==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.85.95]) by smtp.web.de (mrweb006
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1MC0LJ-1rjK5d3GOr-00CNRJ; Mon, 05
- Feb 2024 15:23:20 +0100
-Message-ID: <da6af483-5ee9-45cd-922e-d9d5364674dc@web.de>
-Date: Mon, 5 Feb 2024 15:23:18 +0100
+	id 1rX0Cf-00000003ecL-2j53;
+	Mon, 05 Feb 2024 14:44:10 +0000
+Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-2d0512f6e32so53614781fa.1;
+        Mon, 05 Feb 2024 06:44:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1707144245; x=1707749045; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=bF+ioF4rU6hYdKskdmBXlkag6Ll/8Irxamnq5jEhMXI=;
+        b=RCRpJJxAZTCAJDc0gQla9Wcs4487X46SwjPQ+/wmYhGKsLt8zsDcCP8xrl08KXBWA0
+         YShKzQWCO0gM1188gVXOfnyW8FIeRfGGmWErw1wQWOw1QMoF38A1bT6Ez+jrnTuGWdWk
+         3W5nDxft9R/FYyM53azThvSnDu2F+7CjspXqnBkgJTvsG4W11q898dPOnMK9Ra30HPxN
+         XS+Fz/tJWGobpgEiQwJp+PjRC5NHColpvIOUHOSxdBdkGVPj356voooAtSTlISBXalph
+         ZGiaFRO/Is06vxaZ/h9bq5z+q33u1quxvfOpW044Dbr8Ll7/Xj9JXMETc7Jo5iWfesIA
+         8nhw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1707144245; x=1707749045;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=bF+ioF4rU6hYdKskdmBXlkag6Ll/8Irxamnq5jEhMXI=;
+        b=rgvD3wsJduLExVjvaLWuqOg7Gq0KsKT0nORVgMqY4vVfofE5PkEOADShTt3bmVVGTb
+         eXhGlUeGaijAQ4GrmedIqtsJoW0DiH/Jf93q2qlfmiDehVE11VAaxty9BEAYiky8HM10
+         lvuACKwUHyCYz8s+5MoDRsb4R3n/BembYYriZdKjpH4Rxl2lI9//rZigVRYjNIOqB9mD
+         /58M6DSKTtRDsLkQMgzFAbOv0zV+lq6sTRkAG/PcYQKUyr9BRr7XEcyS1Rh/zgWIfvnM
+         U3bu+76RWtVrxnodD6PYoBNBijbF1Hljb2fu70qMvPV8430wcor5R3OTwAZJ4byvk7iU
+         n2Kw==
+X-Gm-Message-State: AOJu0Yy8LuKa+rDnim/wOumZLvD0SzXmfR3gnawXamDYFvq/Qzhag4cf
+	QWVjqhaMQK6GsVMe54sEV21bBzcF9c+JEPqxOR6yKvVrUMUsz3P7vS/ovNoTNqEGqBZrNbyPAU/
+	x7No3PLxMGzYDL4KMCfHSlru+xw==
+X-Google-Smtp-Source: AGHT+IGmWKx8ItqhTYnDkpaf28i4Fx1v2apIgAI/fIL955Sgbj0u6jNf4TZdLG7QNW8CbT27NNtf1zL8vJxNXjynXgY=
+X-Received: by 2002:a05:651c:214:b0:2d0:aae6:bf2e with SMTP id
+ y20-20020a05651c021400b002d0aae6bf2emr2255789ljn.34.1707144244549; Mon, 05
+ Feb 2024 06:44:04 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-pm@vger.kernel.org, kernel-janitors@vger.kernel.org,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- Ulf Hansson <ulf.hansson@linaro.org>
-Content-Language: en-GB
-Cc: LKML <linux-kernel@vger.kernel.org>
-From: Markus Elfring <Markus.Elfring@web.de>
-Subject: [PATCH] pmdomain: mediatek: Use
- devm_platform_get_and_ioremap_resource() in init_scp()
-Content-Type: text/plain; charset=UTF-8
+References: <20240205104905.24929-1-alice.chao@mediatek.com>
+In-Reply-To: <20240205104905.24929-1-alice.chao@mediatek.com>
+From: Stanley Jhu <chu.stanley@gmail.com>
+Date: Mon, 5 Feb 2024 22:43:53 +0800
+Message-ID: <CAGaU9a8EQDdrrgzuaqBYk6h-r4u6spozH3cHeHO-98dNjEv-AA@mail.gmail.com>
+Subject: Re: [PATCH v1 1/1] ufs: core: fix shift issue in ufshcd_clear_cmd
+To: alice.chao@mediatek.com
+Cc: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>, 
+	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley" <jejb@linux.ibm.com>, 
+	"Martin K. Petersen" <martin.petersen@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, wsd_upstream@mediatek.com, 
+	stanley.chu@mediatek.com, peter.wang@mediatek.com, powen.kao@mediatek.com, 
+	naomi.chu@mediatek.com, cc.chou@mediatek.com, tun-yu.yu@mediatek.com, 
+	chun-hung.wu@mediatek.com, casper.li@mediatek.com, linux-scsi@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:Qk9+8YbmEYpkEKxu5CX80yzJiKq/O07RES/6VuICIr0ippZkpn4
- +r0wYvjgmLpZo3rV+cALSmNXrH8l2dLYM5uGCk9VINKHybD8mkHH5LUwB6ktuwG6Vkq5za9
- aXPi+9TgrBgoot1B4GWajqZcqGIPBDYJKMX4gIoappbK/MU0JA2+BYk/eyXr6jPsioXFmDd
- Tuaaz/TxM9fLDgzWwUqKA==
-UI-OutboundReport: notjunk:1;M01:P0:r9Z430C379U=;ilM33fD4v70mE6uWIXsWyXQKWCK
- dsXZDH6BvRcR7mUyDjiXmJM+hkrFdUWqXEQs0b90wl7rQDuhQt3LlEcSrGTCR6BAlhQ1E9GVD
- QEhX4KXDLu0RkEZC54ydlfMNFozgY4v5Pww5o+i3eOvabToBAR9KPl2RX9NPQNSX03JbX5MaC
- /Ch9a1Rc29+bNhZ2YwMEM8RdjvLXC8+xvXZle598Z3gV9R/U8FF+yATT3KbbI4aiB28yuxvzl
- 6kdlXxDSTF5uIv3XpfwTglBBLE2nQwewbptuwUoStSqUzjCOXuMsjDdRj32Y3zcEXxPWqH8pC
- CYltKfBrndxqR8q42dvy3jBuTjjbvR8wrLVQBxb0c/BjlTS2D9IvbaYCysY0E9SHgz+fse5LC
- Ydvv3SJ+JLmyd62OrYrS8SmTZwdKeFgqYptLQXK2IZ1Svxji7PQLePDBZc4/wIfBdyJiQ3yJC
- irmXwRVzLw7EinjgwxuRAijiutU6m9l4uSIOLBL3peBfvUlshrv4QwnY3JfJ0eEJ8+h2InKqh
- PEFKAft2NMmHWimsJQ192fxKgXUxc2k94s11+35g26/1e2U3q2OJaKPYK7pDy07v47AmW0l/O
- 6eRr2l0aI+hiIxPcXKg1BTOnBt6cX4odLRItGYCreOqp1Uyqdd2cADTfYVgN/KzQ43KplSqLp
- 6GpjXXDPmy1qN82nx3Ppz9jmdsbZwFUirV+3dJRORZzL7iKVpjXJLEhN3zhBDYMRBuaweivKt
- px89WBWS8u6KGQ4zcLICgaZUxS/7nMh+TlXziDHtozxpHw5d7KcwpNJjffvUYiIApEaBXJ6Mt
- 43yfxJPG/y4L1Sq0I0MepnInsU8wuAFV2EWGCnz+JVMJc=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240205_062335_493084_73AF3B07 
-X-CRM114-Status: UNSURE (   7.58  )
+X-CRM114-CacheID: sfid-20240205_064409_709113_8B9654BC 
+X-CRM114-Status: UNSURE (   9.04  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,39 +96,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Markus Elfring <elfring@users.sourceforge.net>
-Date: Mon, 5 Feb 2024 15:08:27 +0100
+On Mon, Feb 5, 2024 at 7:27=E2=80=AFPM <alice.chao@mediatek.com> wrote:
+>
+> From: Alice Chao <alice.chao@mediatek.com>
+>
+> When task_tag > 32 (in mcq mode), 1U << task_tag will out of bound
+> for u32 mask. Fix this bug to prevent SHIFT_ISSUE (Bitwise shifts
+> that are out of bounds for their data type).
+>
+> [name:debug_monitors&]Unexpected kernel BRK exception at EL1
+> [name:traps&]Internal error: BRK handler: 00000000f2005514 [#1] PREEMPT S=
+MP
+> [name:mediatek_cpufreq_hw&]cpufreq stop DVFS log done
+> [name:mrdump&]Kernel Offset: 0x1ba5800000 from 0xffffffc008000000
+> [name:mrdump&]PHYS_OFFSET: 0x80000000
+> [name:mrdump&]pstate: 22400005 (nzCv daif +PAN -UAO)
+> [name:mrdump&]pc : [0xffffffdbaf52bb2c] ufshcd_clear_cmd+0x280/0x288
+> [name:mrdump&]lr : [0xffffffdbaf52a774] ufshcd_wait_for_dev_cmd+0x3e4/0x8=
+2c
+> [name:mrdump&]sp : ffffffc0081471b0
+> <snip>
+> Workqueue: ufs_eh_wq_0 ufshcd_err_handler
+> Call trace:
+>  dump_backtrace+0xf8/0x144
+>  show_stack+0x18/0x24
+>  dump_stack_lvl+0x78/0x9c
+>  dump_stack+0x18/0x44
+>  mrdump_common_die+0x254/0x480 [mrdump]
+>  ipanic_die+0x20/0x30 [mrdump]
+>  notify_die+0x15c/0x204
+>  die+0x10c/0x5f8
+>  arm64_notify_die+0x74/0x13c
+>  do_debug_exception+0x164/0x26c
+>  el1_dbg+0x64/0x80
+>  el1h_64_sync_handler+0x3c/0x90
+>  el1h_64_sync+0x68/0x6c
+>  ufshcd_clear_cmd+0x280/0x288
+>  ufshcd_wait_for_dev_cmd+0x3e4/0x82c
+>  ufshcd_exec_dev_cmd+0x5bc/0x9ac
+>  ufshcd_verify_dev_init+0x84/0x1c8
+>  ufshcd_probe_hba+0x724/0x1ce0
+>  ufshcd_host_reset_and_restore+0x260/0x574
+>  ufshcd_reset_and_restore+0x138/0xbd0
+>  ufshcd_err_handler+0x1218/0x2f28
+>  process_one_work+0x5fc/0x1140
+>  worker_thread+0x7d8/0xe20
+>  kthread+0x25c/0x468
+>  ret_from_fork+0x10/0x20
+>
+> Signed-off-by: Alice Chao <alice.chao@mediatek.com>
 
-A wrapper function is available since the commit 890cc39a879906b63912482df=
-c41944579df2dc6
-("drivers: provide devm_platform_get_and_ioremap_resource()").
-Thus reuse existing functionality instead of keeping duplicate source code=
-.
-
-This issue was detected by using the Coccinelle software.
-
-Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
-=2D--
- drivers/pmdomain/mediatek/mtk-scpsys.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/pmdomain/mediatek/mtk-scpsys.c b/drivers/pmdomain/med=
-iatek/mtk-scpsys.c
-index b374d01fdac7..9e7f0771e7e4 100644
-=2D-- a/drivers/pmdomain/mediatek/mtk-scpsys.c
-+++ b/drivers/pmdomain/mediatek/mtk-scpsys.c
-@@ -441,8 +441,7 @@ static struct scp *init_scp(struct platform_device *pd=
-ev,
-
- 	scp->dev =3D &pdev->dev;
-
--	res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	scp->base =3D devm_ioremap_resource(&pdev->dev, res);
-+	scp->base =3D devm_platform_get_and_ioremap_resource(pdev, 0, &res);
- 	if (IS_ERR(scp->base))
- 		return ERR_CAST(scp->base);
-
-=2D-
-2.43.0
-
+Reviewed-by: Stanley Jhu <chu.stanley@gmail.com>
 
