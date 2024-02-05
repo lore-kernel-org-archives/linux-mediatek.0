@@ -4,78 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00525C4828D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 17:09:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFAF1C48292
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 17:28:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1kuiOuDoqUN+LX9cDleVQRc2hrmBbqV3FFSoOhvfn0k=; b=UljD583gPjQJRUfiaoHcja5yzd
-	cYiX2pJkzbjSSwAa1Q5X2Z8ZQM9xOoP+kkXwvmSNhPbHl2O9X+SCbGrPUKmsWrpNO/Mgqk7HBXepq
-	tRv53AaSiILwsPrxoSyWR7LESHZNaxbQ3AKeoIZNmiwbeFae5aWzxfr1rVLAyJR3dtQbTXdLGOZ5M
-	67V9kfMfisfYdkkx8+NHXLv5jJCZz5HwY8zGQZtJwVLBylorndi26cl7UXLPCohFUe2W/HKe99peR
-	De+yHyS+cHvB2xKtAZgj51BK4Qxfe/IyFcLiPqwwmKF7/2Ew93HyVgBkHhYiwVBKNCPo4XuEK7enj
-	UzO2WYaw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cJnc60gS+J7znT5nLyWKaMmA2nb4MeXbLJozAsUS+Oo=; b=nRr2DK9kS60bvmi5+kSr/WiWvS
+	WEcQfbYsiC0R+Rtg8/hBqHKs+iIHj79x2K8AMWK5gv98kmc2Rx/oo3lTsosBMoX++W49n0bm1DhI6
+	Pb4GKM/XwKEFmu9rb6oSmaMzr3e7CP1sycZftLTBzeAuhOeIoI58pQ4afVuKJaa9Q4L/aRgKBmh96
+	VZhqDB7oI8KQ8d6XcIvOgiUWSDyR2bl/XSS2Gt9jD0SAXX04wBvj38qpGWtpH5R4SFDGf90gj8d4N
+	qUwm9GMjas0IlqB42DClrv3CP5xoAVELjy/BEhKWFjkaO3A7Scjk7yMdo7K60JzDggOh3KdzghBfF
+	+DLsYI5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX2TB-000000045BB-24vT;
-	Mon, 05 Feb 2024 17:09:21 +0000
-Received: from mail-pf1-f176.google.com ([209.85.210.176])
+	id 1rX2ls-000000049YJ-1PiX;
+	Mon, 05 Feb 2024 17:28:40 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX2T7-0000000455Z-2y4x;
-	Mon, 05 Feb 2024 17:09:18 +0000
-Received: by mail-pf1-f176.google.com with SMTP id d2e1a72fcca58-6e053919b5cso207423b3a.2;
-        Mon, 05 Feb 2024 09:09:01 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707152940; x=1707757740;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=1kuiOuDoqUN+LX9cDleVQRc2hrmBbqV3FFSoOhvfn0k=;
-        b=bCjq0cNQL1HboCCAmf7yQJMsjEPZliY6HKHvMtWdEq2xicxhUMzME0xVUkd6ob+YX0
-         Mv+V+VYjVx7hiszATM2N1NbjZT0et73lg6SXruJZ4Z01kABU7O5T2e6SO+xGYJKZVyCk
-         Vg3vTU421Bmer6FSvRoGoE09f/63v1Ud0X2pZ3wHPCb8tpqRzbgHPBKOyFOBSBl44OaI
-         sIbmzmQjUvAaL3gSkfEyMq0nv3KcJ5XfIRPEj7oER8z0UB+h3loYH33P/Z6ajdQ9YOT4
-         Do9HEtUho9xnZYBbOjDh1gwWfwMbBYo83pwZLAhZ9dRaUYD5DPEdgi4DBoL/oy7x5KwH
-         H9tg==
-X-Gm-Message-State: AOJu0YxvMLsNxSe7NxPvexdt3JXGx2pLmxJo0OrCuqwuL+e4S+BylvKG
-	ZnrZ6GtTUocAdhC75mXzxsNd8A5UZDTch7Qkm7mNc1v1ApP6hlRy
-X-Google-Smtp-Source: AGHT+IGo8WjL/bdJNre0s9vbNXMioQJbq7p0P7eat1QWk+GpzjwXOG+PVh0O+BBrUAB/OnFm8hgfVg==
-X-Received: by 2002:a05:6a00:17a6:b0:6e0:3c66:cb7d with SMTP id s38-20020a056a0017a600b006e03c66cb7dmr237031pfg.3.1707152940419;
-        Mon, 05 Feb 2024 09:09:00 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCWu8XlNN/hkZ/9Zm2dU5w8AJcapRa4uNKA/c1kpyak8eUdL+cXsVcyJxRMGpC5CM71G75GPwFeDLeQ441Gw+UK5qkD00mvVvuRZ6KXXdfjQJQgg1VFURjpS3OQ9hRZTqTz2Z6n0bmgQac14QbCtItb5OPDToRBa0oSicntyXHe96ubYsyjFKaGauSqIF5zd8V/lFFi/5Yu8AvTXEMhfZgzisbMc8892fgG0BHO86Zk3lvkT35ACj0XCVRoThEYFSkEUOc01lMK0caNg1IEj5L3jtbIz4Exm+qoXYt4l7Z+V1je1qWGC77lp7d2Oqa7XSZf4wpqvj7hOKe4w2fd5E17VVsFXVgivQjIjXPyfaOXAbhs71NhY1UvbqeqHyWke52eT14ZfpDoUsHWk7pYMc4lWnZJhZ8KcJ9cAOut62wB2xDL8O4wFTNzLBBK538wgs5nSCetKQu4yzw3YZqjvDCZJc7K+XjsCEBoGUOMO0BSN024Dm2sUrCFjyvF15tyKW1PgyYeeaauFXdjsNBgajZVVMI/SqPX/WZrXE2tMh6L4yI7AySbghqGBNgFq81fnI0MslK2VvIMJmbr9QzN32Lz3BwP/YP9wXQ/vNlBPWqXD3Z6nkBvam9PcXYG17ibBWgV/3KjnuKRTsow+dctcDzNafxz79afwfzzd59FeB4QsbQhNc0qaQusNviw25q0dnh/nwS0wow==
-Received: from ?IPV6:2620:0:1000:8411:be2a:6ac0:4203:7316? ([2620:0:1000:8411:be2a:6ac0:4203:7316])
-        by smtp.gmail.com with ESMTPSA id x16-20020aa79a50000000b006e03be933cesm67976pfj.96.2024.02.05.09.08.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Feb 2024 09:08:27 -0800 (PST)
-Message-ID: <55fa1c14-87ef-46ef-8871-f7139f86e8b7@acm.org>
-Date: Mon, 5 Feb 2024 09:08:08 -0800
+	id 1rX2lo-000000049Wl-1c05;
+	Mon, 05 Feb 2024 17:28:38 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1rX2lZ-0000ND-05;
+	Mon, 05 Feb 2024 17:28:21 +0000
+Date: Mon, 5 Feb 2024 17:28:17 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org
+Subject: [PATCH v2 1/2] dt-bindings: phy: mediatek,mt7988-xfi-tphy: add new
+ bindings
+Message-ID: <3251ac3db1a739e0c18ded0a824edae981c1e2df.1707153425.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/1] ufs: core: fix shift issue in ufshcd_clear_cmd
-Content-Language: en-US
-To: alice.chao@mediatek.com, Alim Akhtar <alim.akhtar@samsung.com>,
- Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
- <jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: wsd_upstream@mediatek.com, stanley.chu@mediatek.com,
- peter.wang@mediatek.com, powen.kao@mediatek.com, naomi.chu@mediatek.com,
- cc.chou@mediatek.com, tun-yu.yu@mediatek.com, chun-hung.wu@mediatek.com,
- casper.li@mediatek.com, linux-scsi@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20240205104905.24929-1-alice.chao@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20240205104905.24929-1-alice.chao@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240205_090917_787990_011FAF6F 
-X-CRM114-Status: UNSURE (   6.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240205_092836_448644_E23F6FA7 
+X-CRM114-Status: GOOD (  12.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,15 +72,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/5/24 02:49, alice.chao@mediatek.com wrote:
-> When task_tag > 32 (in mcq mode), 1U << task_tag will out of bound
-        ^^^^^^^^^^^^^
-        task_tag >= 32 and sizeof(unsigned int) == 4
+Add bindings for the MediaTek XFI Ethernet SerDes T-PHY found in the
+MediaTek MT7988 SoC which can operate at various interfaces modes:
 
-> for u32 mask. Fix this bug to prevent SHIFT_ISSUE (Bitwise shifts
-> that are out of bounds for their data type).
+via USXGMII PCS:
+ * USXGMII
+ * 10GBase-R
+ * 5GBase-R
 
-Anyway:
+via LynxI SGMII PCS:
+ * 2500Base-X
+ * 1000Base-X
+ * Cisco SGMII (MAC side)
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+v2: unify filename and compatible as requested
+
+ .../phy/mediatek,mt7988-xfi-tphy.yaml         | 77 +++++++++++++++++++
+ 1 file changed, 77 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,mt7988-xfi-tphy.yaml
+
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,mt7988-xfi-tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,mt7988-xfi-tphy.yaml
+new file mode 100644
+index 0000000000000..e897118dcf7e6
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/mediatek,mt7988-xfi-tphy.yaml
+@@ -0,0 +1,77 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/phy/mediatek,mt7988-xfi-tphy.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek XFI T-PHY
++
++maintainers:
++  - Daniel Golle <daniel@makrotopia.org>
++
++description:
++  The MediaTek XFI SerDes T-PHY provides the physical SerDes lanes
++  used by the (10G/5G) USXGMII PCS and (1G/2.5G) LynxI PCS found in
++  MediaTek's 10G-capabale MT7988 SoC.
++
++properties:
++  compatible:
++    const: mediatek,mt7988-xfi-tphy
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: XFI PHY clock
++      - description: XFI register clock
++
++  clock-names:
++    items:
++      - const: xfipll
++      - const: topxtal
++
++  resets:
++    items:
++      - description: PEXTP reset
++
++  mediatek,usxgmii-performance-errata:
++    $ref: /schemas/types.yaml#/definitions/flag
++    description:
++      One instance of the T-PHY on MT7988 suffers from a performance
++      problem in 10GBase-R mode which needs a work-around in the driver.
++      The work-around is enabled using this flag.
++
++  "#phy-cells":
++    const: 0
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - resets
++  - "#phy-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mediatek,mt7988-clk.h>
++    soc {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      phy@11f20000 {
++        compatible = "mediatek,mt7988-xfi-tphy";
++        reg = <0 0x11f20000 0 0x10000>;
++        clocks = <&xfi_pll CLK_XFIPLL_PLL_EN>,
++                 <&topckgen CLK_TOP_XFI_PHY_0_XTAL_SEL>;
++        clock-names = "xfipll", "topxtal";
++        resets = <&watchdog 14>;
++        mediatek,usxgmii-performance-errata;
++        #phy-cells = <0>;
++      };
++    };
++
++...
+-- 
+2.43.0
 
