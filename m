@@ -4,54 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D8B0C48291
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 09:11:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1E2CC4828D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 09:32:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-Type:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tU7gEcO5Zgme5BifBIK2ckMTS7sI+kwhhQ7BvALV+BQ=; b=X9+XR10gwWWYuMRDDTv/rjWwMx
-	TxqHgort/kJAvG1ZzuBZahDMJNwpPEeqLwn2mavKV6oJp52z7Lpuusvynzlz3eVOGe6EFIXx/GXy0
-	TYEYU5q679ObgNndZ+OTD5TJJwFhBRSfQnlj+RR/bP0FIXNhdNAArsi8lQzefDIZjHEm9RIttLlqK
-	iDG8r4kY0RVSGt2/tF92+vq+AS81GlxW9JA9mswJ3DazpwaR6dkMtvfX57nw19DDKqJp1qcfCz8Z8
-	ia0ixfsYtQHC12AaH/nqw9HkxU8HzuNqYJgMXRq8mejE/dZ5uhJ5F0EbAcYFW9CMWkSfYnZ0kOvlA
-	brvh+Uow==;
+	bh=AwarvWj5WyHlzQ9gQlssZ3VM2E34GegAq9rLwrtR+YY=; b=by8MzD2nj1Q0s2TqGPY9D6Vz20
+	9J97K2qDEKhEBQdikHJ1sPOwDaTlmh8pZRHFsmsdiFaARxr3N01UIl7h7fUiVHbzFKrVfAm/MzuJ+
+	SYtNxGYJ5oxxEuIzLCN3sXxlEjraJ/WQqDiG2ADU2Gj5+xc+T+ZcGdi8k+W8Lx7MtoKeviGAEWiLm
+	PQN/ys0yXI/lRiF/uxsCQdUidIUkSDomXnAL2NaXyhwXSBwskgq0NWiNfBvgp/xmazASZ7PsHqoYk
+	iWGklTuqx1oXlG7wKY0B3KJt8bk6rLizjk+5YGmqliouncr1VbN7BxqQ5+eWhY3xcV4NNKsIvNbEt
+	051iaE8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWv0N-00000002Yd1-25wP;
-	Mon, 05 Feb 2024 09:11:07 +0000
-Received: from mail.synergyflux.pl ([51.38.99.212])
+	id 1rWvL2-00000002cey-1Zi8;
+	Mon, 05 Feb 2024 09:32:28 +0000
+Received: from mout.web.de ([212.227.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWv0L-00000002YcI-1Qal
-	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Feb 2024 09:11:06 +0000
-Received: by mail.synergyflux.pl (Postfix, from userid 1002)
-	id E72AA24F45; Mon,  5 Feb 2024 09:11:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=synergyflux.pl;
-	s=mail; t=1707124263;
-	bh=n9RRp8MlabRDJBtJNro49Rmci90RtotaZYZ8+xo6WI4=;
-	h=Date:From:To:Subject:From;
-	b=yYQNJBOw/54jzMpMzxPTOrp6AFdN9uFk5SJkVXdy4C2yH3Z1jiiWzDk7oyPi5VAlE
-	 sCbsoklB4ISGbXYSOBdxNj1vH3xz7dACrAXyf/sex4yWsr2YNYKlfC48CzrQn+R5pI
-	 NOpLCjrZpxjk3R7iumSTu2zG5Qzcxfl6E/efbHv97UrwTSYIyUfAMxVqrIs3zuygz0
-	 5Qpq2ZzwZqQ0QTtJxShx+Xa4Pt4777EXMtp8JgYJxQmJEgX8CyXeKyX4J42khD3eLm
-	 YmRh0DmFeFbAh62VPICb939/+Hd1uD0jy3cvyz7YrBW3KUDU2BzusT40Uk+kfitroa
-	 5CxaUUlCEbM0g==
-Received: by mail.synergyflux.pl for <linux-mediatek@lists.infradead.org>; Mon,  5 Feb 2024 09:10:51 GMT
-Message-ID: <20240205074500-0.1.9m.1w6pe.0.phm5f47oay@synergyflux.pl>
-Date: Mon,  5 Feb 2024 09:10:51 GMT
-From: =?UTF-8?Q?"Konrad_Zieli=C5=84ski_"?= <konrad.zielinski@synergyflux.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: Instalacja pv
-X-Mailer: mail.synergyflux.pl
+	id 1rWvKz-00000002cd5-0kuD;
+	Mon, 05 Feb 2024 09:32:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de; s=s29768273;
+	t=1707125533; x=1707730333; i=markus.elfring@web.de;
+	bh=GEntBRcn/VvV5CPwy8i6X54F9AV/5jvw0rbYXd4l4oQ=;
+	h=X-UI-Sender-Class:Date:To:Cc:From:Subject;
+	b=ovux59WTPEtWvqN8rRPh8tPJL/y2zUri9qeSupWxr7mTWII6DPCIXoTEnUM69zib
+	 gI7LPQUVxjvCIuXqiIsbOIy0AXB0J68XnavX67heKWA7I6Cp7BPEShIPb9rfGl279
+	 7bREACCY4YqZ99V84eGeX7J4QBZAqj0zdOHEUShVERwV8/qbQkMYYyT7zY/jdV2w8
+	 qUFu5DNT8qs1WvRLlq6XTnxN2TGAthDBdnemf5aX3BWdq4ktsu/FnlZ0YGLcr5Nzo
+	 6TjEtQQzu19Q3t8LJwBRIqV6xnsgDFpJVac8wpEuxi9xKWTtyYO5Ce1KthvfSUMyn
+	 tPTdXnXAQk0B2bbbrw==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.21] ([94.31.85.95]) by smtp.web.de (mrweb106
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1MRW2R-1rLBlo1cqj-00NcQg; Mon, 05
+ Feb 2024 10:32:13 +0100
+Message-ID: <2a4ecf78-20e7-4678-a67d-0d66956b07cc@web.de>
+Date: Mon, 5 Feb 2024 10:32:11 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, kernel-janitors@vger.kernel.org,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Content-Language: en-GB
+Cc: LKML <linux-kernel@vger.kernel.org>
+From: Markus Elfring <Markus.Elfring@web.de>
+Subject: [PATCH] drm/mediatek: Use devm_platform_get_and_ioremap_resource() in
+ mtk_hdmi_ddc_probe()
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:WNiOKf02rYQX2wRHyD+44vgsxq4gvfzYMMnvPUEMljK8TxTVSZE
+ crq19rcOVrfbBjGR4a2tr2LgwUdDKYHxZnfmOLYAwN7Q/U+6PCuurLhtYANurbla/ARGuuO
+ EJRLtucvVTbdVD2WNcaEYmUGQzl8VgZJMsJ57eCz2srWUjfkWUv1JTFX6zkmehC+72rjhJc
+ 1KLOLVClOJ33TGxdHXMcQ==
+UI-OutboundReport: notjunk:1;M01:P0:WOh8rUEyD44=;2uUXQdcmdakS8l1q5N6ORN+MzQd
+ PTEI2vpWHlHk1lzz5qPwlhQR30W8ymGIbUmylBV2BFLL0S9+0rcNjv7ZCziWx9bcp7FttBn9F
+ 8ZqjRa3EvtkSzT8JIVQjRcg7HIXr82VbWOYyqLbzgh3xCYNYnoEqD0S//M75LE0DGP6rMvTDS
+ 5efmaFuiDm4WUY5MQ7zpG2ro0E45Z5Svh5Z3OIiTH7VTrfhhKd00a2OsO5GRk84wppABZqMlX
+ c6AcmKZV1qPTW/IT736+BpZRSo/yWfv3YVvKfyqDszssPNBQV9+l11Qr228pF5W8B2YC3bck3
+ RscinEKcvO91A2MRNCzSNmYOkbQMkwlfepYHAZ1bNjPLepwrFcX2aqPw/HXxNwYmSyIxd8U/a
+ X3y1VaXg1z/qsw1KFry5vJeplw3izdgHnQG4h4Vs0ta5bnzITl+3JspE82oNSY4mdbfiJLiFo
+ haUnWxAJcXmm3nlpBKNkK0Q/9FnJK64GbT+HHTwGC33RSxmdI5nP0qjoyuFF+0c9z6mCudfDQ
+ vwxYXuFXqix6/VlVKuANKkNPdN6MRhQqltrGht+T2IxqfPYoECFQNotY5xEH5s3xlwX5UI9qG
+ xXiFRGtaBQXbx7XhOqd/B3Q5elC+G+8NSu0tlWVgiPmoHoDgHZUPaFkaO3SufpXUrH1x8WNy4
+ qzkOnMypTqSAz/jlt9YYBLgyqh9H6E/U5ZxOALCXYNxafNxJQxA1gJ8ShrMvNh8aVBLecyTPR
+ ITVGwM3ZqbrVSepwy105IemQUkZKzlcXlH4q8Iw0Za1lEAzp6rD881qoBssa6z8vJTifmgtAI
+ UE0lmtKqNNkpFxPzRSxAbUSEJWT5fgCDKH+H4LCarI6fU=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240205_011105_546682_F79F2CB1 
-X-CRM114-Status: UNSURE (   0.92  )
+X-CRM114-CacheID: sfid-20240205_013225_514368_5E6E4A71 
+X-CRM114-Status: UNSURE (   7.24  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -67,20 +92,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+From: Markus Elfring <elfring@users.sourceforge.net>
+Date: Mon, 5 Feb 2024 10:18:47 +0100
 
-czy s=C4=85 Pa=C5=84stwo otwarci na niezobowi=C4=85zuj=C4=85c=C4=85 rozmo=
-w=C4=99 na temat fotowoltaiki?
+A wrapper function is available since the commit 890cc39a879906b63912482df=
+c41944579df2dc6
+("drivers: provide devm_platform_get_and_ioremap_resource()").
+Thus reuse existing functionality instead of keeping duplicate source code=
+.
 
-Jako firma specjalizuj=C4=85ca si=C4=99 w instalacji i serwisie najlepszy=
-ch jako=C5=9Bciowo paneli s=C5=82onecznych na rynku chcia=C5=82bym przeds=
-tawi=C4=87 propozycj=C4=99, jak=C4=85 wsp=C3=B3lnie z zespo=C5=82em przyg=
-otowali=C5=9Bmy dla Pa=C5=84stwa obiektu.
+This issue was detected by using the Coccinelle software.
 
-B=C4=99d=C4=99 wdzi=C4=99czny za wiadomo=C5=9B=C4=87 od Pa=C5=84stwa czy =
-mo=C5=BCemy porozmawia=C4=87.
+Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
+=2D--
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c b/drivers/gpu/drm/med=
+iatek/mtk_hdmi_ddc.c
+index 54e46e440e0f..52d55861f954 100644
+=2D-- a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
+@@ -284,8 +284,7 @@ static int mtk_hdmi_ddc_probe(struct platform_device *=
+pdev)
+ 		return PTR_ERR(ddc->clk);
+ 	}
 
-Pozdrawiam
-Konrad Zieli=C5=84ski 
+-	mem =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	ddc->regs =3D devm_ioremap_resource(&pdev->dev, mem);
++	ddc->regs =3D devm_platform_get_and_ioremap_resource(pdev, 0, &mem);
+ 	if (IS_ERR(ddc->regs))
+ 		return PTR_ERR(ddc->regs);
+
+=2D-
+2.43.0
+
 
