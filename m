@@ -4,90 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF177C4828D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 17:50:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC096C4828D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 19:01:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i/5gYNDF0nkUKp5M5EY3mkMekMIIUthcO9+zxPUgVLc=; b=bovJ9peg8yKWtX3d43wh9w9DvZ
-	ZsNO9JDfj1Bp/nreZKSTYsgX0Cll34MkiQcOXPw4pgh5JKxkUIEL+0b/cGtE/gLPHcdJXbpgUrb7u
-	pBoLUyIht7N+jO1IlFty9boiwOMSQQRppisPssN1ux3P145YAztSk8W4poh9hWRE2ilXh1+Zu91O8
-	wOYavRNC+9KDNCA0ugHHocSfv5gSNrxM/xiPUDaeCoD5xWMuZB4TtmS/oVecASV7Ggpudz+DDqjv2
-	ubD4o3hRixEHfw8KZiD8odHNJQrR//iLtYUY0PsNb70WlOWREtXTVOUJW56NtQzRTluRevX1m+byA
-	EiuRYRfg==;
+	bh=SeMl68ENlhZta5JKP4MegR68EKrrxCv2fGrCfnFczms=; b=4km54L7bnvpDvuSgNrGm6N0c9V
+	57ik/nwCDNRxSgsWbEp6ZNXSDp1x+yrTJe+Fd8KEUlIp83SlLCv38gAIDLm/mHRQUPVSxAeZKTqd3
+	h3wvL6aCpqseSubGTn6zIurY+TCGCW0T7gXP+IDr1AxMLTa9Yjr32XvsY854MFWOWzZXWZojdAGwp
+	vPVP0lzEKZOwSJ9MiNcSL0ApLF7wD4djXYpMc8j/CH85FMUWa0ywB2p4yxcMEX0GRjWoy/goEMiBk
+	ALdCW0PiqOhDEQEk2+f4CYHIGrcaHeav+On4Qk3fox9gtbM0n8SZ3lyoa5a3gRTqtSCCHSd36esGw
+	/WH+5G8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX36g-00000004FGQ-2DFO;
-	Mon, 05 Feb 2024 17:50:10 +0000
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+	id 1rX4Dn-00000004TEP-2KSb;
+	Mon, 05 Feb 2024 19:01:35 +0000
+Received: from mail-yw1-f172.google.com ([209.85.128.172])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX36d-00000004FFi-3qbO
-	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Feb 2024 17:50:09 +0000
-Received: by mail-yw1-x1133.google.com with SMTP id 00721157ae682-6045db1b5a1so12268487b3.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Feb 2024 09:50:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1707155406; x=1707760206; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=i/5gYNDF0nkUKp5M5EY3mkMekMIIUthcO9+zxPUgVLc=;
-        b=S6mAZL4gmbi35PRyEexzdJ8/WY0KIlkn9NnmGgh1sBIlvoIWH/mGVFb5oKFjRo7f2s
-         Uk7aVAW/ioaUgZQZS1IjBJg1IidyrLRQYKH0XWUPn2o3/tBOsQyHp3qdIopdzl/TYXAw
-         K6+jwlKXdpJ1qipqQJ0BzFsbZHvNVWD89WINcdd+gbIEiYPIeBlSEwaa+M5AK5PKV7TS
-         0T26w8Uqku2+JjUDGdggVJHs9TVWZLdlxXutB5dGojeTj1vBqHLcUNrF1gxLOUoE5d+Q
-         B2OSBzh51u38f1ux1jLxiz7jB/vCeFiKg8cymYt6jUiqtYAWaGVEswkksgDYPFN2OJhD
-         7cig==
+	id 1rX4Dk-00000004TCp-1n8W;
+	Mon, 05 Feb 2024 19:01:33 +0000
+Received: by mail-yw1-f172.google.com with SMTP id 00721157ae682-60412f65124so44004657b3.3;
+        Mon, 05 Feb 2024 11:01:31 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707155406; x=1707760206;
+        d=1e100.net; s=20230601; t=1707159689; x=1707764489;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=i/5gYNDF0nkUKp5M5EY3mkMekMIIUthcO9+zxPUgVLc=;
-        b=X9PxeD1XSxjTNOv5dwAUkHnT06WYNztuhHZZ+T+l4VXHy34ZxUMwm/yFeLmd716lZX
-         Lu7Dg5io/d/dY3K7dfkBRQu1wOUoojeeBDyF1io388mzsHLduC33QLnkuU77rXQNtC+K
-         lgyg444crjIGiOoG0SunoetB0gHC4dDoT0fM+zB865G+KgqfsqW/+H31EVR7l/LAmWLA
-         2BKEqX6GGGRZtzXK9qpvT0ceaKvPdC6gk1s/0lprxBHQ0fOqRyMPWGzulJ+UU3wfDsCW
-         XmHjPQJZX0LXPUHIVgKfLai5hR3Uf5ISOeFJLvRMNmuRjG+TK/O3ncLyYEZvOMWcfPJf
-         sdGQ==
-X-Gm-Message-State: AOJu0YzNWqA72SPRm2Piv4ZXDHTpBnXhBs8JDsozzquAlHBc5Uj6hPAj
-	2bj5kJl828Fc1MFnqb1OGHV8OvBo7TFDWOO5w9Nm6A+Id0BBM83WjToZUSc1F3IAeRLnVGzZaio
-	5lhBXcmd+UqIqDaeLe1tvFVwnWjECWqyv3XwlWw==
-X-Google-Smtp-Source: AGHT+IHk5yq/jXGQCbTN9oiaw3qxJe+nFI2U1PdUPgItb1jUnBVqkaOpdjfeCkgO3RgvntvaJHN4Aox1RUdQzALx5WE=
-X-Received: by 2002:a25:6648:0:b0:dc2:1bc4:e06b with SMTP id
- z8-20020a256648000000b00dc21bc4e06bmr95682ybm.51.1707155406596; Mon, 05 Feb
- 2024 09:50:06 -0800 (PST)
+        bh=SeMl68ENlhZta5JKP4MegR68EKrrxCv2fGrCfnFczms=;
+        b=XuSN04XEdpZ3/71tasAQ3/DToOeatlW6kpO3moRl23BoykWfCU3g2rtQJ3OWv5QXuQ
+         /z5usKwg4AAPsGOE88/DsstHNF0rxAQ5vu8CP6TWI41eCeTLwAB7QZ6cSLuN13G6fuKU
+         XsT8gxYnAhTQugFMlAlUFo823x3Xo2kcH2wwCGWAr8kPM3bJX03EA2SWISR8cWI+yU5J
+         lTjjO5cGFNi1Bsqs8hlAcerx4pDtUbBGXY35sDt4eqqUDeFce++haJDgac/n+ZU2M99c
+         WXkYu/jOJZN/+TcFjAtsYnJXSzCc1Yqn37xF+OjhhkJ825Scdd0N9aIyTR0CfvEsiKC+
+         WcVg==
+X-Gm-Message-State: AOJu0YwRLU0pzUcu5Y/llCHcl98JSTdZHEBmsABaK49s/NScvfWquPIO
+	1XwpG10Rp6lCG1vJOYJAsJq9pG5n0aug3gXnyxkaHR8sD1+kwdVeqjQlwbu2hog=
+X-Google-Smtp-Source: AGHT+IG2OyOELBr5p33U9prO3DwoZI2Ey6Rrj45XH/GP3VPQb1I4HnQf58mZecDW2vPuB6at3pOG3A==
+X-Received: by 2002:a05:690c:3382:b0:604:978:e76d with SMTP id fl2-20020a05690c338200b006040978e76dmr579167ywb.8.1707159688814;
+        Mon, 05 Feb 2024 11:01:28 -0800 (PST)
+X-Forwarded-Encrypted: i=0; AJvYcCXrKhmpbqnyi2GCscOWMmnnBGWC5dqLGYA4bx4onnMypBixbwf5f9OchIdwYjAKH21NOmflu4Y/WCj2en+ZVMB8OBK0pfbex3pMh8Cgj6hVaQSKGVQ=
+Received: from mail-yw1-f172.google.com (mail-yw1-f172.google.com. [209.85.128.172])
+        by smtp.gmail.com with ESMTPSA id do6-20020a05690c23c600b005ff8950ed82sm82385ywb.38.2024.02.05.11.01.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 05 Feb 2024 11:01:28 -0800 (PST)
+Received: by mail-yw1-f172.google.com with SMTP id 00721157ae682-60412a23225so45136087b3.2;
+        Mon, 05 Feb 2024 11:01:27 -0800 (PST)
+X-Received: by 2002:a0d:e289:0:b0:604:66f1:35d2 with SMTP id
+ l131-20020a0de289000000b0060466f135d2mr475419ywe.49.1707159687571; Mon, 05
+ Feb 2024 11:01:27 -0800 (PST)
 MIME-Version: 1.0
-References: <20240126063500.2684087-1-wenst@chromium.org> <20240126063500.2684087-2-wenst@chromium.org>
- <74b9f249-fcb4-4338-bf7b-8477de6c935c@linaro.org> <CAGXv+5Hu+KsTBd1JtnKcaE3qUzPhHbunoVaH2++yfNopHtFf4g@mail.gmail.com>
- <21568334-b21f-429e-81cd-5ce77accaf3c@linaro.org> <CAGXv+5HxXzjigN3Bp96vkv71WfTJ1S2b7Wgafc4GxLmhu6+jMg@mail.gmail.com>
- <a4324473-e0c6-4d53-8de0-03b69480e40b@linaro.org> <CAGXv+5HAqmUizXztMH_nY6e+6oQh01hCtxEJXKtCn3_74-sOsQ@mail.gmail.com>
- <78241d63-3b9d-4c04-9ea5-11b45eac6f00@linaro.org> <20240130223856.GA2538998-robh@kernel.org>
- <CAGXv+5FwaNe7oesGwZ=yR0Pg82tEzEF3B0zjoex4qw+6zsSYbQ@mail.gmail.com>
-In-Reply-To: <CAGXv+5FwaNe7oesGwZ=yR0Pg82tEzEF3B0zjoex4qw+6zsSYbQ@mail.gmail.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 5 Feb 2024 18:49:30 +0100
-Message-ID: <CAPDyKFofy24N7ymzTF7wiADc17Tw9FiNTYMnbxgoioMBwDKVhA@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] dt-bindings: net: bluetooth: Add MediaTek MT7921S
- SDIO Bluetooth
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	Marcel Holtmann <marcel@holtmann.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Sean Wang <sean.wang@mediatek.com>, linux-bluetooth@vger.kernel.org, 
-	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+References: <da6af483-5ee9-45cd-922e-d9d5364674dc@web.de> <CAMuHMdUxn4Ne7kmEfONz8Uk3Why3m9r83GdM5RzTxm_4Gj_a6g@mail.gmail.com>
+ <8f011126-c95a-4c71-8bc9-a6b0a5823c96@web.de>
+In-Reply-To: <8f011126-c95a-4c71-8bc9-a6b0a5823c96@web.de>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 5 Feb 2024 20:01:17 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdUQLWBQemtgnCHj64wCYAET8J2-MgbisyMChSbh0k0L7w@mail.gmail.com>
+Message-ID: <CAMuHMdUQLWBQemtgnCHj64wCYAET8J2-MgbisyMChSbh0k0L7w@mail.gmail.com>
+Subject: Re: [PATCH] pmdomain: mediatek: Use devm_platform_get_and_ioremap_resource()
+ in init_scp()
+To: Markus Elfring <Markus.Elfring@web.de>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-pm@vger.kernel.org, kernel-janitors@vger.kernel.org, 
+	Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Rob Herring <robh@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, 
+	LKML <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240205_095008_005341_766807FF 
-X-CRM114-Status: GOOD (  39.68  )
+X-CRM114-CacheID: sfid-20240205_110132_505326_484A3A28 
+X-CRM114-Status: GOOD (  22.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,132 +92,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 31 Jan 2024 at 04:39, Chen-Yu Tsai <wenst@chromium.org> wrote:
->
-> (+CC Ulf Hansson)
->
-> On Wed, Jan 31, 2024 at 6:38=E2=80=AFAM Rob Herring <robh@kernel.org> wro=
-te:
+Hi Markus,
+
+On Mon, Feb 5, 2024 at 6:28=E2=80=AFPM Markus Elfring <Markus.Elfring@web.d=
+e> wrote:
+> >> +++ b/drivers/pmdomain/mediatek/mtk-scpsys.c
+> >> @@ -441,8 +441,7 @@ static struct scp *init_scp(struct platform_device=
+ *pdev,
+> >>
+> >>         scp->dev =3D &pdev->dev;
+> >>
+> >> -       res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> >> -       scp->base =3D devm_ioremap_resource(&pdev->dev, res);
+> >> +       scp->base =3D devm_platform_get_and_ioremap_resource(pdev, 0, =
+&res);
 > >
-> > On Tue, Jan 30, 2024 at 05:25:38PM +0100, Krzysztof Kozlowski wrote:
-> > > On 30/01/2024 08:47, Chen-Yu Tsai wrote:
-> > > > On Tue, Jan 30, 2024 at 3:37=E2=80=AFPM Krzysztof Kozlowski
-> > > > <krzysztof.kozlowski@linaro.org> wrote:
-> > > >>
-> > > >> On 30/01/2024 04:32, Chen-Yu Tsai wrote:
-> > > >>> On Mon, Jan 29, 2024 at 3:34=E2=80=AFPM Krzysztof Kozlowski
-> > > >>> <krzysztof.kozlowski@linaro.org> wrote:
-> > > >>>>
-> > > >>>> On 29/01/2024 04:38, Chen-Yu Tsai wrote:
-> > > >>>>
-> > > >>>>>>> +allOf:
-> > > >>>>>>> +  - $ref: bluetooth-controller.yaml#
-> > > >>>>>>> +
-> > > >>>>>>> +properties:
-> > > >>>>>>> +  compatible:
-> > > >>>>>>> +    enum:
-> > > >>>>>>> +      - mediatek,mt7921s-bluetooth
-> > > >>>>>>
-> > > >>>>>> Can it be also WiFi on separate bus? How many device nodes do =
-you need
-> > > >>>>>> for this device?
-> > > >>>>>
-> > > >>>>> For the "S" variant, WiFi is also on SDIO. For the other two va=
-riants,
-> > > >>>>> "U" and "E", WiFi goes over USB and PCIe respectively. On both =
-those
-> > > >>>>> variants, Bluetooth can either go over USB or UART. That is wha=
-t I
-> > > >>>>> gathered from the pinouts. There are a dozen GPIO pins which do=
-n't
-> > > >>>>> have detailed descriptions though. If you want a comprehensive
-> > > >>>>> binding of the whole chip and all its variants, I suggest we as=
-k
-> > > >>>>> MediaTek to provide it instead. My goal with the binding is to =
-document
-> > > >>>>> existing usage and allow me to upstream new device trees.
-> > > >>>>>
-> > > >>>>> For now we only need the Bluetooth node. The WiFi part is perfe=
-ctly
-> > > >>>>> detectable, and the driver doesn't seem to need the WiFi reset =
-pin.
-> > > >>>>> The Bluetooth driver only uses its reset pin to reset a hung co=
-ntroller.
-> > > >>>>
-> > > >>>> Then suffix "bluetooth" seems redundant.
-> > > >>>
-> > > >>> I think keeping the suffix makes more sense though. The chip is a=
- two
-> > > >>> function piece, and this only targets one of the functions. Also,=
- the
-> > > >>
-> > > >> That's why I asked and you said there is only one interface: SDIO.
-> > > >
-> > > > There's only one interface, SDIO, but two SDIO functions. The two
-> > > > functions, if both were to be described in the device tree, would
-> > > > be two separate nodes. We just don't have any use for the WiFi one
-> > > > right now. Does that make sense to keep the suffix?
-> > >
-> > > Number of functions does not really matter. Number of interfaces on t=
-he
-> > > bus would matter. Why would you have two separate nodes for the same
-> > > SDIO interface? Or do you want to say there are two interfaces?
+> > Given res is further unused, please use devm_platform_ioremap_resource(=
+)
+> > instead, and remove the local variable res.
 >
-> There is only one external interface. I don't know how the functions
-> are stitched together internally.
+> I got another idea after looking at the implementation of the function
+> =E2=80=9Cdevm_platform_get_and_ioremap_resource=E2=80=9D once more.
+> https://elixir.bootlin.com/linux/v6.8-rc3/source/drivers/base/platform.c#=
+L87
 >
-> It could be that the separate functions have nothing in common other
-> than sharing a standard external SDIO interface. Each function can be
-> individually controlled, and operations for different functions are
-> directed internally to the corresponding core.
->
-> > Right, one device at 2 addresses on a bus should be a node with 2 "reg"
-> > entries, not 2 nodes with 1 "reg" address each.
->
-> AFAICU that's not what the MMC controller binding, which I quote below,
-> says. It implies that each SDIO function shall be a separate node under
-> the MMC controller node.
+> It seems that it is supported to pass a null pointer for the last paramet=
+er
+> (while this possibility is not mentioned in the interface description so =
+far).
+> How do you think about to benefit from such a design option any more
+> (instead of the determination of a corresponding platform device)?
 
-Yes, that's what we decided to go with, a long time ago. At least in
-this particular case, I think it makes sense, as each function
-(child-node) may also describe additional resources routed to each
-function.
+Yes, you can pass a NULL pointer as the last parameter.
+And as this is very common, the wrapper devm_platform_ioremap_resource()
+exists.
 
-A typical description could be for a WiFi-Bluetooth combo-chip, where
-each function may have its own clocks, irqs and regulators being
-routed.
+Gr{oetje,eeting}s,
 
->
->
-> patternProperties:
->   "^.*@[0-9]+$":
->     type: object
->     description: |
->       On embedded systems the cards connected to a host may need
->       additional properties. These can be specified in subnodes to the
->       host controller node. The subnodes are identified by the
->       standard \'reg\' property. Which information exactly can be
->       specified depends on the bindings for the SDIO function driver
->       for the subnode, as specified by the compatible string.
->
->     properties:
->       compatible:
->         description: |
->           Name of SDIO function following generic names recommended
->           practice
->
->       reg:
->         items:
->           - minimum: 0
->             maximum: 7
->             description:
->               Must contain the SDIO function number of the function this
->               subnode describes. A value of 0 denotes the memory SD
->               function, values from 1 to 7 denote the SDIO functions.
->
->
-> ChenYu
+                        Geert
 
-Kind regards
-Uffe
+--=20
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
+
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
