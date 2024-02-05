@@ -4,60 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B10C5C48295
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 14:00:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16C82C48295
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 14:23:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=28RjVDft/98TMQUUS9NhZbm0EGVwR4CAOggw9/oOAAw=; b=VPW9UlhCKJ8RGi7x0ZTplJl/Ln
-	O8S6ckT0Cos7Pt+iyscP5p9zr/h1tngsJLH+oT3oKiuOL9qpEgJ1MAMqpFd33qg1iHJeF4HgOXH7W
-	E61BwBHrmNKBatHk/7DXnVk686bM1xXBxeb3j5TJUmnhWl7Bkpi5tpWFRzRiZ1x/Yi+coTy5srC/4
-	clAgngiW+heNxEHcaO9nnzaVuf4pIix4eyNINsvUY/btdSUhN2mB6MZM/MRpibAOlcwr79VWs7Sz5
-	iisZk4ga/GsjNTQJeG3lW4eQtczokKJ10VmIeD4xAWWEsNlqQ38QBB6pH0yskViVJJpiGdzAmRov8
-	tf0r/wjQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UmJfX4ifFyoqza9pVHdJvHUNvwJUIGNrvsh1A8U9mJQ=; b=Vqe6eeJPk4YimkVp+X7tAbwKhn
+	cAwO9Ob/AuAvX3onLqlgEVvp7IP8lMTE6Lht/VW1Rrmu7+i5HsDRUlvyjPfWwBmhLnBh+YNbgBai9
+	kMtbKGSeFRStQ1popEzdTADAYgv/qSstM4rcVVuwX+KOR5UEe343tm1EDGSEVfoE5PTiMQH9gZc9y
+	7Bo3Wvlp95LHIVQqPnrSTtx8umg8uka+5ZvtLoi5Ngq61HpMZTV271uw2sLPV8sAzVwFnAuqtK/us
+	wftMi46Czf2qOJH/5sKdxnLHuHAyHODatE01ObBdXXgFIkBbcu0d5QLZkkBLFSewYHn3neAKkBKh0
+	SQht8A/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWzWG-00000003VxX-0W7F;
-	Mon, 05 Feb 2024 14:00:20 +0000
-Received: from szxga04-in.huawei.com ([45.249.212.190])
+	id 1rWzso-00000003aZo-2pz5;
+	Mon, 05 Feb 2024 14:23:38 +0000
+Received: from mout.web.de ([212.227.15.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWyMO-00000003GTg-25dq;
-	Mon, 05 Feb 2024 12:46:10 +0000
-Received: from mail.maildlp.com (unknown [172.19.88.163])
-	by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4TT5fS6XRvz29gPR;
-	Mon,  5 Feb 2024 20:44:00 +0800 (CST)
-Received: from dggpemm500005.china.huawei.com (unknown [7.185.36.74])
-	by mail.maildlp.com (Postfix) with ESMTPS id CF306180060;
-	Mon,  5 Feb 2024 20:45:55 +0800 (CST)
-Received: from localhost.localdomain (10.69.192.56) by
- dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Mon, 5 Feb 2024 20:45:55 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
-	<linyunsheng@huawei.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Alexei
- Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper
- Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<bpf@vger.kernel.org>
-Subject: [PATCH net-next v5 0/5] remove page frag implementation in vhost_net
-Date: Mon, 5 Feb 2024 20:45:00 +0800
-Message-ID: <20240205124506.57670-1-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.33.0
+	id 1rWzsl-00000003aXK-0Gzw;
+	Mon, 05 Feb 2024 14:23:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de; s=s29768273;
+	t=1707143000; x=1707747800; i=markus.elfring@web.de;
+	bh=dnIBfbHB8ZPlHqVXA+eJYYPip2Nlrn+++FytfzTBiTM=;
+	h=X-UI-Sender-Class:Date:To:Cc:From:Subject;
+	b=KLm4V0blbSMIAGoBSC9mXB8FoGR1shqWQKuYJTqNaJfah9ZXy6C88xPezTwQZ7iZ
+	 o08IgUmVlAlGV7wN1RLyi+hIXUzlzlvQp35zt1qBJJQEBcNtcmHMBYgboazVK0emi
+	 dicoXgwXol3ylS9hXSZsTfwYnXp1cJjAMemJmTzsn6nUOLPYf9ageVqO//u1bg1k8
+	 qXNmlFfBe9xLHTag/LUC+J7H0nZjQ9oafUi3/ud7F8J4MrwwJG5X9VooDKviXMVEy
+	 L9NY5TYvDF5h041mtEuN0T/Wp9p0T7ItXjZAu93OzkOArdZowMiTtEnElDO+36wZQ
+	 mD6eftyehLbH38lLVw==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.21] ([94.31.85.95]) by smtp.web.de (mrweb006
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 1MC0LJ-1rjK5d3GOr-00CNRJ; Mon, 05
+ Feb 2024 15:23:20 +0100
+Message-ID: <da6af483-5ee9-45cd-922e-d9d5364674dc@web.de>
+Date: Mon, 5 Feb 2024 15:23:18 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.69.192.56]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- dggpemm500005.china.huawei.com (7.185.36.74)
+User-Agent: Mozilla Thunderbird
+To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-pm@vger.kernel.org, kernel-janitors@vger.kernel.org,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
+ Ulf Hansson <ulf.hansson@linaro.org>
+Content-Language: en-GB
+Cc: LKML <linux-kernel@vger.kernel.org>
+From: Markus Elfring <Markus.Elfring@web.de>
+Subject: [PATCH] pmdomain: mediatek: Use
+ devm_platform_get_and_ioremap_resource() in init_scp()
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:Qk9+8YbmEYpkEKxu5CX80yzJiKq/O07RES/6VuICIr0ippZkpn4
+ +r0wYvjgmLpZo3rV+cALSmNXrH8l2dLYM5uGCk9VINKHybD8mkHH5LUwB6ktuwG6Vkq5za9
+ aXPi+9TgrBgoot1B4GWajqZcqGIPBDYJKMX4gIoappbK/MU0JA2+BYk/eyXr6jPsioXFmDd
+ Tuaaz/TxM9fLDgzWwUqKA==
+UI-OutboundReport: notjunk:1;M01:P0:r9Z430C379U=;ilM33fD4v70mE6uWIXsWyXQKWCK
+ dsXZDH6BvRcR7mUyDjiXmJM+hkrFdUWqXEQs0b90wl7rQDuhQt3LlEcSrGTCR6BAlhQ1E9GVD
+ QEhX4KXDLu0RkEZC54ydlfMNFozgY4v5Pww5o+i3eOvabToBAR9KPl2RX9NPQNSX03JbX5MaC
+ /Ch9a1Rc29+bNhZ2YwMEM8RdjvLXC8+xvXZle598Z3gV9R/U8FF+yATT3KbbI4aiB28yuxvzl
+ 6kdlXxDSTF5uIv3XpfwTglBBLE2nQwewbptuwUoStSqUzjCOXuMsjDdRj32Y3zcEXxPWqH8pC
+ CYltKfBrndxqR8q42dvy3jBuTjjbvR8wrLVQBxb0c/BjlTS2D9IvbaYCysY0E9SHgz+fse5LC
+ Ydvv3SJ+JLmyd62OrYrS8SmTZwdKeFgqYptLQXK2IZ1Svxji7PQLePDBZc4/wIfBdyJiQ3yJC
+ irmXwRVzLw7EinjgwxuRAijiutU6m9l4uSIOLBL3peBfvUlshrv4QwnY3JfJ0eEJ8+h2InKqh
+ PEFKAft2NMmHWimsJQ192fxKgXUxc2k94s11+35g26/1e2U3q2OJaKPYK7pDy07v47AmW0l/O
+ 6eRr2l0aI+hiIxPcXKg1BTOnBt6cX4odLRItGYCreOqp1Uyqdd2cADTfYVgN/KzQ43KplSqLp
+ 6GpjXXDPmy1qN82nx3Ppz9jmdsbZwFUirV+3dJRORZzL7iKVpjXJLEhN3zhBDYMRBuaweivKt
+ px89WBWS8u6KGQ4zcLICgaZUxS/7nMh+TlXziDHtozxpHw5d7KcwpNJjffvUYiIApEaBXJ6Mt
+ 43yfxJPG/y4L1Sq0I0MepnInsU8wuAFV2EWGCnz+JVMJc=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240205_044605_306830_B6513D57 
-X-CRM114-Status: GOOD (  13.08  )
+X-CRM114-CacheID: sfid-20240205_062335_493084_73AF3B07 
+X-CRM114-Status: UNSURE (   7.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,110 +93,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently there are three implementations for page frag:
+From: Markus Elfring <elfring@users.sourceforge.net>
+Date: Mon, 5 Feb 2024 15:08:27 +0100
 
-1. mm/page_alloc.c: net stack seems to be using it in the
-   rx part with 'struct page_frag_cache' and the main API
-   being page_frag_alloc_align().
-2. net/core/sock.c: net stack seems to be using it in the
-   tx part with 'struct page_frag' and the main API being
-   skb_page_frag_refill().
-3. drivers/vhost/net.c: vhost seems to be using it to build
-   xdp frame, and it's implementation seems to be a mix of
-   the above two.
+A wrapper function is available since the commit 890cc39a879906b63912482df=
+c41944579df2dc6
+("drivers: provide devm_platform_get_and_ioremap_resource()").
+Thus reuse existing functionality instead of keeping duplicate source code=
+.
 
-This patchset tries to unfiy the page frag implementation a
-little bit by unifying gfp bit for order 3 page allocation
-and replacing page frag implementation in vhost.c with the
-one in page_alloc.c.
+This issue was detected by using the Coccinelle software.
 
-After this patchset, we are not only able to unify the page
-frag implementation a little, but also able to have about
-0.5% performance boost testing by using the vhost_net_test
-introduced in the last patch.
+Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
+=2D--
+ drivers/pmdomain/mediatek/mtk-scpsys.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Before this patchset:
-Performance counter stats for './vhost_net_test' (10 runs):
+diff --git a/drivers/pmdomain/mediatek/mtk-scpsys.c b/drivers/pmdomain/med=
+iatek/mtk-scpsys.c
+index b374d01fdac7..9e7f0771e7e4 100644
+=2D-- a/drivers/pmdomain/mediatek/mtk-scpsys.c
++++ b/drivers/pmdomain/mediatek/mtk-scpsys.c
+@@ -441,8 +441,7 @@ static struct scp *init_scp(struct platform_device *pd=
+ev,
 
-     305325.78 msec task-clock                       #    1.738 CPUs utilized               ( +-  0.12% )
-       1048668      context-switches                 #    3.435 K/sec                       ( +-  0.00% )
-            11      cpu-migrations                   #    0.036 /sec                        ( +- 17.64% )
-            33      page-faults                      #    0.108 /sec                        ( +-  0.49% )
-  244651819491      cycles                           #    0.801 GHz                         ( +-  0.43% )  (64)
-   64714638024      stalled-cycles-frontend          #   26.45% frontend cycles idle        ( +-  2.19% )  (67)
-   30774313491      stalled-cycles-backend           #   12.58% backend cycles idle         ( +-  7.68% )  (70)
-  201749748680      instructions                     #    0.82  insn per cycle
-                                              #    0.32  stalled cycles per insn     ( +-  0.41% )  (66.76%)
-   65494787909      branches                         #  214.508 M/sec                       ( +-  0.35% )  (64)
-    4284111313      branch-misses                    #    6.54% of all branches             ( +-  0.45% )  (66)
+ 	scp->dev =3D &pdev->dev;
 
-       175.699 +- 0.189 seconds time elapsed  ( +-  0.11% )
+-	res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	scp->base =3D devm_ioremap_resource(&pdev->dev, res);
++	scp->base =3D devm_platform_get_and_ioremap_resource(pdev, 0, &res);
+ 	if (IS_ERR(scp->base))
+ 		return ERR_CAST(scp->base);
 
-
-After this patchset:
-Performance counter stats for './vhost_net_test' (10 runs):
-
-     303974.38 msec task-clock                       #    1.739 CPUs utilized               ( +-  0.14% )
-       1048807      context-switches                 #    3.450 K/sec                       ( +-  0.00% )
-            14      cpu-migrations                   #    0.046 /sec                        ( +- 12.86% )
-            33      page-faults                      #    0.109 /sec                        ( +-  0.46% )
-  251289376347      cycles                           #    0.827 GHz                         ( +-  0.32% )  (60)
-   67885175415      stalled-cycles-frontend          #   27.01% frontend cycles idle        ( +-  0.48% )  (63)
-   27809282600      stalled-cycles-backend           #   11.07% backend cycles idle         ( +-  0.36% )  (71)
-  195543234672      instructions                     #    0.78  insn per cycle
-                                              #    0.35  stalled cycles per insn     ( +-  0.29% )  (69.04%)
-   62423183552      branches                         #  205.357 M/sec                       ( +-  0.48% )  (67)
-    4135666632      branch-misses                    #    6.63% of all branches             ( +-  0.63% )  (67)
-
-       174.764 +- 0.214 seconds time elapsed  ( +-  0.12% )
-
-Changelog:
-V5: Address the comment from jason in vhost_net_test.c and the
-    comment about leaving out the gfp change for page frag in
-    sock.c as suggested by Paolo.
-
-V4: Resend based on latest net-next branch.
-
-V3:
-1. Add __page_frag_alloc_align() which is passed with the align mask
-   the original function expected as suggested by Alexander.
-2. Drop patch 3 in v2 suggested by Alexander.
-3. Reorder patch 4 & 5 in v2 suggested by Alexander.
-
-Note that placing this gfp flags handing for order 3 page in an inline
-function is not considered, as we may be able to unify the page_frag
-and page_frag_cache handling.
-
-V2: Change 'xor'd' to 'masked off', add vhost tx testing for
-    vhost_net_test.
-
-V1: Fix some typo, drop RFC tag and rebase on latest net-next.
-
-
-Yunsheng Lin (5):
-  mm/page_alloc: modify page_frag_alloc_align() to accept align as an
-    argument
-  page_frag: unify gfp bits for order 3 page allocation
-  net: introduce page_frag_cache_drain()
-  vhost/net: remove vhost_net_page_frag_refill()
-  tools: virtio: introduce vhost_net_test
-
- drivers/net/ethernet/google/gve/gve_main.c |  11 +-
- drivers/net/ethernet/mediatek/mtk_wed_wo.c |  17 +-
- drivers/nvme/host/tcp.c                    |   7 +-
- drivers/nvme/target/tcp.c                  |   4 +-
- drivers/vhost/net.c                        |  91 ++--
- include/linux/gfp.h                        |  16 +-
- mm/page_alloc.c                            |  22 +-
- net/core/skbuff.c                          |   9 +-
- tools/virtio/.gitignore                    |   1 +
- tools/virtio/Makefile                      |   8 +-
- tools/virtio/linux/virtio_config.h         |   4 +
- tools/virtio/vhost_net_test.c              | 536 +++++++++++++++++++++
- 12 files changed, 613 insertions(+), 113 deletions(-)
- create mode 100644 tools/virtio/vhost_net_test.c
-
--- 
-2.33.0
+=2D-
+2.43.0
 
 
