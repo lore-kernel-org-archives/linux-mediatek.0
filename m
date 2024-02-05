@@ -4,84 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94042C4828D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 14:44:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8675C48295
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 14:53:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bF+ioF4rU6hYdKskdmBXlkag6Ll/8Irxamnq5jEhMXI=; b=mCPjaxYOgk8BiC39kFtJ8TUqEE
-	LjcK30WXSusrnzZDJbSaPcDY1m/V3opbtKj1hJczVfruWOrqUNKQLTWTznDC/wn/LkAudhbtjgb9h
-	gzbESa1bjwQpzbuM/vqaxN2v8Wdrn8WUxqIyJE/lka45K7em7rbjsotcLHSiywZOcTltLKaiqVd8m
-	l7UQxUQbmRKtzx+jZSPZe6q1E/C8uRLJyzlrvSR0qmdqtRVnI9SD4EJiDO7JVAnK9NzurX1kUTUpN
-	pzZXX4W0doqgWphAcLuw3rTZPrkHa0zkNT97IVvVVb9muga1928qenoGsk1+LPbEN49p5I/mciw2X
-	M+qFnobQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9zHX79RPMg5RLVK4+GuqGLGa9xXaUi61wt/y8wJ6YDY=; b=faRAJUciLG/QUbCNKWPvpIeepA
+	yokMHWY4hlO8fvV47A+vk8oFZDAXZipzPEHzPKeQjleC3dLKTINIyXI1MwhxOp3uAYoyV4uRI47tt
+	TglPnqpqnOwhhl+uc4ZgU3ZaCjqpLwA/1OmRFgCIMacG3oUT9peXujKQn5U76WhOVJnCs+r7Hg1WY
+	woQuNoD0nLzhBgIzxScx2sZqxZspm6T8Vw72d6bygY7PlK13P+e1x5ExIUo6A5HSCgGuKAc/l48Bj
+	eh1ID9F16us7vz6w+GggIUWdSc0fj8ET2Ck4lyLIvTP/8Ps2X8w98MkAURDB5CcYtf858ATa0++Zg
+	l80WrmNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX0Cj-00000003ed3-06qp;
-	Mon, 05 Feb 2024 14:44:13 +0000
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+	id 1rX0Ll-00000003gkk-0UxO;
+	Mon, 05 Feb 2024 14:53:33 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX0Cf-00000003ecL-2j53;
-	Mon, 05 Feb 2024 14:44:10 +0000
-Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-2d0512f6e32so53614781fa.1;
-        Mon, 05 Feb 2024 06:44:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1707144245; x=1707749045; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=bF+ioF4rU6hYdKskdmBXlkag6Ll/8Irxamnq5jEhMXI=;
-        b=RCRpJJxAZTCAJDc0gQla9Wcs4487X46SwjPQ+/wmYhGKsLt8zsDcCP8xrl08KXBWA0
-         YShKzQWCO0gM1188gVXOfnyW8FIeRfGGmWErw1wQWOw1QMoF38A1bT6Ez+jrnTuGWdWk
-         3W5nDxft9R/FYyM53azThvSnDu2F+7CjspXqnBkgJTvsG4W11q898dPOnMK9Ra30HPxN
-         XS+Fz/tJWGobpgEiQwJp+PjRC5NHColpvIOUHOSxdBdkGVPj356voooAtSTlISBXalph
-         ZGiaFRO/Is06vxaZ/h9bq5z+q33u1quxvfOpW044Dbr8Ll7/Xj9JXMETc7Jo5iWfesIA
-         8nhw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707144245; x=1707749045;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=bF+ioF4rU6hYdKskdmBXlkag6Ll/8Irxamnq5jEhMXI=;
-        b=rgvD3wsJduLExVjvaLWuqOg7Gq0KsKT0nORVgMqY4vVfofE5PkEOADShTt3bmVVGTb
-         eXhGlUeGaijAQ4GrmedIqtsJoW0DiH/Jf93q2qlfmiDehVE11VAaxty9BEAYiky8HM10
-         lvuACKwUHyCYz8s+5MoDRsb4R3n/BembYYriZdKjpH4Rxl2lI9//rZigVRYjNIOqB9mD
-         /58M6DSKTtRDsLkQMgzFAbOv0zV+lq6sTRkAG/PcYQKUyr9BRr7XEcyS1Rh/zgWIfvnM
-         U3bu+76RWtVrxnodD6PYoBNBijbF1Hljb2fu70qMvPV8430wcor5R3OTwAZJ4byvk7iU
-         n2Kw==
-X-Gm-Message-State: AOJu0Yy8LuKa+rDnim/wOumZLvD0SzXmfR3gnawXamDYFvq/Qzhag4cf
-	QWVjqhaMQK6GsVMe54sEV21bBzcF9c+JEPqxOR6yKvVrUMUsz3P7vS/ovNoTNqEGqBZrNbyPAU/
-	x7No3PLxMGzYDL4KMCfHSlru+xw==
-X-Google-Smtp-Source: AGHT+IGmWKx8ItqhTYnDkpaf28i4Fx1v2apIgAI/fIL955Sgbj0u6jNf4TZdLG7QNW8CbT27NNtf1zL8vJxNXjynXgY=
-X-Received: by 2002:a05:651c:214:b0:2d0:aae6:bf2e with SMTP id
- y20-20020a05651c021400b002d0aae6bf2emr2255789ljn.34.1707144244549; Mon, 05
- Feb 2024 06:44:04 -0800 (PST)
-MIME-Version: 1.0
-References: <20240205104905.24929-1-alice.chao@mediatek.com>
-In-Reply-To: <20240205104905.24929-1-alice.chao@mediatek.com>
-From: Stanley Jhu <chu.stanley@gmail.com>
-Date: Mon, 5 Feb 2024 22:43:53 +0800
-Message-ID: <CAGaU9a8EQDdrrgzuaqBYk6h-r4u6spozH3cHeHO-98dNjEv-AA@mail.gmail.com>
-Subject: Re: [PATCH v1 1/1] ufs: core: fix shift issue in ufshcd_clear_cmd
-To: alice.chao@mediatek.com
-Cc: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>, 
-	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley" <jejb@linux.ibm.com>, 
-	"Martin K. Petersen" <martin.petersen@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, wsd_upstream@mediatek.com, 
-	stanley.chu@mediatek.com, peter.wang@mediatek.com, powen.kao@mediatek.com, 
-	naomi.chu@mediatek.com, cc.chou@mediatek.com, tun-yu.yu@mediatek.com, 
-	chun-hung.wu@mediatek.com, casper.li@mediatek.com, linux-scsi@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	id 1rX0Lh-00000003gic-0L7e;
+	Mon, 05 Feb 2024 14:53:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1707144804;
+	bh=N5S3QB/YuiwuK74Hpcl5CcJl2TR2YgDRJk+uYMrvNzY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=v2iTjAGZGi/MpVLUpKPYp/8SRERGhHVyqe3ElC4kyxXzzrPfiPxjPRcAEpJL5vPHU
+	 PnjvCeAtUxwFEStbT4Hdgc7f0Jw/6C5XvNxK80Vjdgw49pvPMtpPnD2wPjEH64i6oo
+	 o4tGCMav+ms1zfmGy81weTr5FTcicH+nR5IbXOsrGuQAkLHCwoN6af4E9wlB1VfTAu
+	 pkSK5se92JKH66V7bMkmlwoUUBbLu/y5Eggh3sIseTlNEkfBuHLTnMXembqsnr5T1E
+	 HB4OWzJCN2JicnG2x1eIJgUJBPo2keCn9/nFd5fXRPV/G1ugUDLTy2fobGgmHmSsRt
+	 oF1tyzf0z2Bkg==
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3C7B537811CD;
+	Mon,  5 Feb 2024 14:53:21 +0000 (UTC)
+Date: Mon, 5 Feb 2024 09:53:19 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Nathan Chancellor <nathan@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sami Tolvanen <samitolvanen@google.com>,
+	Ricardo Ribalda <ribalda@chromium.org>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>, Mike Isely <isely@pobox.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	llvm@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 3/3] media: mediatek: vcodedc: Fix
+ Wcast-function-type-strict warnings
+Message-ID: <e75a0207-1f95-427c-8d72-e6a86505522e@notapiano>
+References: <20240128-fix-clang-warnings-v1-0-1d946013a421@chromium.org>
+ <20240128-fix-clang-warnings-v1-3-1d946013a421@chromium.org>
+ <20240201221654.GC2240065@dev-arch.thelio-3990X>
+ <CABCJKudd3SUy3Qor7Tc0zyJsSAWy0PavbbBFALuWEpBa32pBCQ@mail.gmail.com>
+ <5658ec37-868f-454d-a149-467e6de139cd@collabora.com>
+ <12d0c580-788d-4466-af8a-feb5ab3c6677@notapiano>
+ <20240204205549.GA2892810@dev-fedora.aadp>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240204205549.GA2892810@dev-fedora.aadp>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240205_064409_709113_8B9654BC 
-X-CRM114-Status: UNSURE (   9.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240205_065329_282181_96433A4D 
+X-CRM114-Status: GOOD (  37.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,55 +92,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 5, 2024 at 7:27=E2=80=AFPM <alice.chao@mediatek.com> wrote:
->
-> From: Alice Chao <alice.chao@mediatek.com>
->
-> When task_tag > 32 (in mcq mode), 1U << task_tag will out of bound
-> for u32 mask. Fix this bug to prevent SHIFT_ISSUE (Bitwise shifts
-> that are out of bounds for their data type).
->
-> [name:debug_monitors&]Unexpected kernel BRK exception at EL1
-> [name:traps&]Internal error: BRK handler: 00000000f2005514 [#1] PREEMPT S=
-MP
-> [name:mediatek_cpufreq_hw&]cpufreq stop DVFS log done
-> [name:mrdump&]Kernel Offset: 0x1ba5800000 from 0xffffffc008000000
-> [name:mrdump&]PHYS_OFFSET: 0x80000000
-> [name:mrdump&]pstate: 22400005 (nzCv daif +PAN -UAO)
-> [name:mrdump&]pc : [0xffffffdbaf52bb2c] ufshcd_clear_cmd+0x280/0x288
-> [name:mrdump&]lr : [0xffffffdbaf52a774] ufshcd_wait_for_dev_cmd+0x3e4/0x8=
-2c
-> [name:mrdump&]sp : ffffffc0081471b0
-> <snip>
-> Workqueue: ufs_eh_wq_0 ufshcd_err_handler
-> Call trace:
->  dump_backtrace+0xf8/0x144
->  show_stack+0x18/0x24
->  dump_stack_lvl+0x78/0x9c
->  dump_stack+0x18/0x44
->  mrdump_common_die+0x254/0x480 [mrdump]
->  ipanic_die+0x20/0x30 [mrdump]
->  notify_die+0x15c/0x204
->  die+0x10c/0x5f8
->  arm64_notify_die+0x74/0x13c
->  do_debug_exception+0x164/0x26c
->  el1_dbg+0x64/0x80
->  el1h_64_sync_handler+0x3c/0x90
->  el1h_64_sync+0x68/0x6c
->  ufshcd_clear_cmd+0x280/0x288
->  ufshcd_wait_for_dev_cmd+0x3e4/0x82c
->  ufshcd_exec_dev_cmd+0x5bc/0x9ac
->  ufshcd_verify_dev_init+0x84/0x1c8
->  ufshcd_probe_hba+0x724/0x1ce0
->  ufshcd_host_reset_and_restore+0x260/0x574
->  ufshcd_reset_and_restore+0x138/0xbd0
->  ufshcd_err_handler+0x1218/0x2f28
->  process_one_work+0x5fc/0x1140
->  worker_thread+0x7d8/0xe20
->  kthread+0x25c/0x468
->  ret_from_fork+0x10/0x20
->
-> Signed-off-by: Alice Chao <alice.chao@mediatek.com>
+On Sun, Feb 04, 2024 at 01:55:49PM -0700, Nathan Chancellor wrote:
+> On Fri, Feb 02, 2024 at 03:15:46PM -0500, Nícolas F. R. A. Prado wrote:
+> > On Fri, Feb 02, 2024 at 01:58:05PM +0100, AngeloGioacchino Del Regno wrote:
+> > > Il 01/02/24 23:25, Sami Tolvanen ha scritto:
+> > > > On Thu, Feb 1, 2024 at 10:17 PM Nathan Chancellor <nathan@kernel.org> wrote:
+> > > > > 
+> > > > > On Sun, Jan 28, 2024 at 02:12:22AM +0000, Ricardo Ribalda wrote:
+> > > > > > Building with LLVM=1 throws the following warning:
+> > > > > > drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c:38:32: warning: cast from 'mtk_vcodec_ipi_handler' (aka 'void (*)(void *, unsigned int, void *)') to 'ipi_handler_t' (aka 'void (*)(const void *, unsigned int, void *)') converts to incompatible function type [-Wcast-function-type-strict]
+> > > > > > 
+> > > > > > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> > > > > 
+> > > > > I am not positive because I don't have any hardware to test this driver
+> > > > > but I suspect this patch is just hiding the warning without actually
+> > > > > addressing the issue that it is pointing out.
+> > > > 
+> > > > Agreed, this won't fix the issue. The correct solution is to drop the
+> > > > cast and change the handler type to match the pointer type (i.e. use
+> > > > const void* for the first argument).
+> > > > 
+> > > 
+> > > Even though I agree that the correct solution is to change the handler's type,
+> > > I think that having a test on the actual hardware done is still valuable.
+> > > 
+> > > We scheduled a job on KernelCI to test this commit on our integration kernel,
+> > > you'll get results for ChromeOS' tast decoders (MT8195 only) and Fluster tests
+> > > on MT8183/8186/8192/8195.
+> > > 
+> > > 
+> > > The results should be available in a couple of hours here, relative to
+> > > commit `49955a84129dbe1f94fedf729690efcf28513828` on our tree:
+> > > https://chromeos.kernelci.org/job/collabora-chromeos-kernel/branch/for-kernelci/
+> > > 
+> > > P.S.: If they don't, feel free to ping me or Nicolas (added to the loop) about it.
+> > 
+> > Hi,
+> > 
+> > the results are available at 
+> > 
+> > https://chromeos.kernelci.org/test/job/collabora-chromeos-kernel/branch/for-kernelci/kernel/v6.8-rc2-3109-g49955a84129d/
+> > 
+> > (You need to type "decoder" into the search bar to limit the results to only the
+> > decoder tests)
+> > 
+> > The only regressions I see are due to infrastructure error or broken test
+> > unrelated to this change (v4l2-decoder-conformance-h264-frext test on
+> > MT8195-Tomato, and cros-tast-decoder-v4l2-sl-h264 test on MT8183-Juniper)
+> > 
+> > Otherwise, all platforms (MT8183/8186/8192/8195) and video codecs
+> > (VP8/VP9/H264/H265/AV1) seem unaffected.
+> > 
+> > Note that these are GCC builds.
+> 
+> Thank you for running the tests to make sure this series does not
+> regress anything. If possible, it would be good to try and build with
+> LLVM and enable kernel Control Flow Integrity (kCFI, CONFIG_CFI_CLANG)
+> to see if my theory that this is currently broken is correct. I have
+> prebuilt LLVM toolchains on kernel.org but if it is too much of a
+> hassle, I would not worry about it.
 
-Reviewed-by: Stanley Jhu <chu.stanley@gmail.com>
+We don't have a way in KernelCI to run a one-off test, instead we need to make a
+PR adding a build definition that will be triggered for every update on a given
+tree. The results I reported above were for configurations that we already had
+in place.
+
+That said, maybe we should be running with LLVM and CONFIG_CFI_CLANG enabled on
+a regular basis, if you think it is useful as a general tool for identifying
+issues. I'd also be interested in hearing more from you on what other kind of
+clang configs you think might be good to enable in CI to provide value to the
+community.
+
+Thanks,
+Nícolas
 
