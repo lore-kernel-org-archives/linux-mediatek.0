@@ -4,101 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD27DC48299
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 19:46:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16922C48292
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Feb 2024 20:21:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rjOs3HQelK8dD7ON+CKELNocYhGYtTpRb3RjtcpZp+M=; b=Y/ydaRpfpORtFdQBEudYToj7DZ
-	sVkayl5VubalSurofSDdSbu61RHieGnE+of6WIJoxtLBkaFnNjbq/Xgo38LFhYpP8bp2RJrZTNn9F
-	FkSr8leGWQn1FMkS/cj0SJZu7AnovgEKDvtfloVJyP4qm83i8omk3L4AFKFi1sPs/siDeIPz0wO0g
-	z2Vgoyu/Z7h4S7xYnVTfQDaZg/UL99ppT3Eq+AI0krHtqm6iZ7ut0insRdgkOCchxGXaGKihb8h4f
-	fzPMu1bOZkzIMJrcQqRfbw8KcpnKclR7Z+O9G93j8K7FUrKX4zXxBPNclGVIH1+5n4g6aG7lnGJD1
-	mhPet7Vg==;
+	bh=LKFh9rnkweKzloxQHq3SBWBIC88cuHMzzIyldCXqzxU=; b=HFR4Ba3Lxjiv+Jaw9yu646pXWF
+	70hcErDnfUBcs/TF5HXkO9hoQ4UHEEnMphGPZjdI2b3e/NLeyw/JxGr15GD7M1xppasCpaHsgLriJ
+	I6Urtw0AnGcQg7OhiA9iNQ1uHLrHbWqGZX0o2jvtmmcWBNtMhQ0kq81upeR9Us0wWXHSs4uerE0HD
+	5KXBL7f83ZVoRoOJUYJmuEyu+FID8fybMdgxXbyPddLNJ09LRLsoqiawizXshxLOD/H7VlhuUiNpE
+	DUaNEwjnKCi2Txq98yKeOVH7ZHiPAs0PugIgbsogfaBudPirQa7DnMRAl3BKfie7Sjcsd6cRpeSgW
+	fdMijJig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX4vT-00000004reZ-2wub;
-	Mon, 05 Feb 2024 19:46:43 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rX5TY-000000050HW-3YNV;
+	Mon, 05 Feb 2024 20:21:56 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX4tu-00000004qIY-2yJT;
-	Mon, 05 Feb 2024 19:45:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=rjOs3HQelK8dD7ON+CKELNocYhGYtTpRb3RjtcpZp+M=; b=Tf1CQP4R7BZ339flxECzO/KJy2
-	cy7UUkZcMjSLULCVMQ+KiLGR/Th7xVbtHLNGrdAQrbhn6Js36QCblxl2fgb5H52nHZZuUaijcu3UY
-	M9PuY3awyRk0UwJ9MpU2J9C1gBgQJ4BrnAJTbCY+FO6I7PXCOT/2FA9UH40XWiOJO+BCfbeWHiNAi
-	p2YsVXf4OXN3CgUwCnyuLkxFF2ByK5QU3xfXHwNlg8QM2PDr9FvY0LcWttg3AgEvevW2opvF4g+Pd
-	j4AIkqidTRsTw8vc61gkCQS7KgBdNyIuXfozHwzxLJQ4HTem/9DIpV58CCiToSjUaK7Q6V170AsMN
-	uJ7zqizg==;
-Received: from lelv0143.ext.ti.com ([198.47.23.248])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rX4to-0000000C7XN-3WiZ;
-	Mon, 05 Feb 2024 19:45:04 +0000
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
-	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 415Jip8j016374;
-	Mon, 5 Feb 2024 13:44:51 -0600
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1707162291;
-	bh=rjOs3HQelK8dD7ON+CKELNocYhGYtTpRb3RjtcpZp+M=;
-	h=From:To:CC:Subject:Date:In-Reply-To:References;
-	b=IvTDUc1AcaZKT3LzhAh3725W3cPc+vgKIt6Ifl23KPLJZBfkVCuePHss9pFGG2aEP
-	 Mel/MjKplcGrtmDsN+u+TjEMF4dXq5OsRWYTqUOsvfT3ejwSx/k6izAxxfmZrr52cG
-	 08uO0v4issu64ydcSdipSD5o/DKjtN5rwZULp6FA=
-Received: from DLEE115.ent.ti.com (dlee115.ent.ti.com [157.170.170.26])
-	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 415JipiG090728
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Mon, 5 Feb 2024 13:44:51 -0600
-Received: from DLEE108.ent.ti.com (157.170.170.38) by DLEE115.ent.ti.com
- (157.170.170.26) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Mon, 5
- Feb 2024 13:44:50 -0600
-Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DLEE108.ent.ti.com
- (157.170.170.38) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Mon, 5 Feb 2024 13:44:50 -0600
-Received: from lelvsmtp5.itg.ti.com ([10.249.42.149])
-	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 415JicQf028467;
-	Mon, 5 Feb 2024 13:44:50 -0600
-From: Andrew Davis <afd@ti.com>
-To: Sebastian Reichel <sre@kernel.org>,
-        Manivannan Sadhasivam
-	<manivannan.sadhasivam@linaro.org>,
-        Cristian Ciocaltea
-	<cristian.ciocaltea@gmail.com>,
-        Florian Fainelli
-	<florian.fainelli@broadcom.com>,
-        Ray Jui <rjui@broadcom.com>, Scott Branden
-	<sbranden@broadcom.com>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Konrad
- Dybcio <konrad.dybcio@linaro.org>,
-        Sean Wang <sean.wang@mediatek.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-actions@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>, Andrew Davis <afd@ti.com>
-Subject: [PATCH v2 18/19] power: reset: syscon-poweroff: Move device data into a struct
-Date: Mon, 5 Feb 2024 13:44:36 -0600
-Message-ID: <20240205194437.180802-19-afd@ti.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240205194437.180802-1-afd@ti.com>
-References: <20240205194437.180802-1-afd@ti.com>
+	id 1rX5TU-000000050FQ-3Ejd
+	for linux-mediatek@lists.infradead.org;
+	Mon, 05 Feb 2024 20:21:54 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-1d93b982761so72665ad.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Feb 2024 12:21:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1707164510; x=1707769310; darn=lists.infradead.org;
+        h=content-transfer-encoding:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LKFh9rnkweKzloxQHq3SBWBIC88cuHMzzIyldCXqzxU=;
+        b=n7eeBkx29aP3SGW6HbaKaZ+VGUK/mh31TpegaG2aMrfAUZ9jjvm4gE3oWFVlF+Zwlv
+         kZcyItBZ1LFrLRtG1feMuE0mDIzohlnZAz0WIw7V+Ji/+OUUH+5hv1m64I4T3xn+tse1
+         p1C8I7rRGxtCYkP0bFxFK0lKwqdeNBQpaXCa4mysib23RuDaFeR7/U9y/YhNeL7gRIsE
+         sJ8+lvFXto6w6usbqr2NCn40eUshVBeN8gGXZM6iAejn34y/KgHeKTAebzzObW0ibpVM
+         EWbuzfDlAqRE3U8uMOvuoPLN1Jv7zVXpIOZCHL68bkvRFgcrAmt/WFV9oNej6aBUZrp/
+         WfDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1707164510; x=1707769310;
+        h=content-transfer-encoding:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=LKFh9rnkweKzloxQHq3SBWBIC88cuHMzzIyldCXqzxU=;
+        b=wKMMFxfYdmfwV3v+JboEqwBgidJbwkLnEuYNl5wkuvW4ZefQcPbRn8aXazjsQzCxjr
+         lEkre/4nFqfDh/BgOeLre03IAlUD4ifR26KIfS4J6nyDllQK1//vT6tn57EvC556n6jg
+         P5PcctGxV3A74JZwalQBva9GTkCCRuDkVtrlBCvj0QjDK8KOkkImQqwWaUdisObBa62L
+         0dgNnFuNw67c75pkwgRGT3r7huvskyUGHZQu4T/51gMoIOHDbGZpHLR+xHEk8Bxz4mOg
+         xNiUvurQeB+52rw7aI8mOcdvZGceafhuUf11n0CQ12VtOALQvOYj7wEnK450IfBdw8Oz
+         W2vQ==
+X-Gm-Message-State: AOJu0YxzDsr6yGIznXfDbe5++znWcCUtY3YhXQVkHgk5fKRFrTHtkGLk
+	nkwqTGg2wknd6dE7SErcgBD0R/FFHghgRAkSAz0nHo/XahMgUj0S9e5ibpA7YdBLRUZvUxTILlW
+	nNfA4qlPl8JzBgYr+A65rFdBb+AlBYJWZKBA=
+X-Google-Smtp-Source: AGHT+IHdUw5rhJx9EbTnH8UjSSfrVWnL6pomrk4Rtk6Tzu/c30ilgR8XG8SxBti7PhLzqLPlyL0uWpoerEICRaMSZk4=
+X-Received: by 2002:a17:902:e84b:b0:1d6:ebf1:f8cf with SMTP id
+ t11-20020a170902e84b00b001d6ebf1f8cfmr68427plg.0.1707164509946; Mon, 05 Feb
+ 2024 12:21:49 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+References: <20231223182932.27683-1-jason-jh.lin@mediatek.com>
+ <20231223182932.27683-4-jason-jh.lin@mediatek.com> <ZaE6_I95IcxIUB4x@phenom.ffwll.local>
+In-Reply-To: <ZaE6_I95IcxIUB4x@phenom.ffwll.local>
+From: Jeffrey Kardatzke <jkardatzke@google.com>
+Date: Mon, 5 Feb 2024 12:21:38 -0800
+Message-ID: <CA+ddPcOw5tP+rz7f6ty3HXyRUg1ReC_BwyhVpzuVVViZSwx_zg@mail.gmail.com>
+Subject: Re: [PATCH v3 03/11] drm/mediatek: Add secure buffer control flow to mtk_drm_gem
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Jeffrey Kardatzke <jkardatzke@google.com>, 
+	devicetree@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
+	Jason-ch Chen <jason-ch.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, 
+	linux-mediatek@lists.infradead.org, Shawn Sung <shawn.sung@mediatek.com>, 
+	Johnson Wang <johnson.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-media@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240205_194501_476591_C08579E9 
-X-CRM114-Status: GOOD (  13.51  )
+X-CRM114-CacheID: sfid-20240205_122152_858703_35C3E686 
+X-CRM114-Status: GOOD (  46.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,92 +99,260 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently all these device data elements are top level global variables.
-Move these into a struct. This will be used in the next patch when
-the global variable usage is removed. Doing this in two steps makes
-the patches easier to read.
+On Fri, Jan 12, 2024 at 5:13=E2=80=AFAM Daniel Vetter <daniel@ffwll.ch> wro=
+te:
+>
+> On Sun, Dec 24, 2023 at 02:29:24AM +0800, Jason-JH.Lin wrote:
+> > Add secure buffer control flow to mtk_drm_gem.
+> >
+> > When user space takes DRM_MTK_GEM_CREATE_ENCRYPTED flag and size
+> > to create a mtk_drm_gem object, mtk_drm_gem will find a matched size
+> > dma buffer from secure dma-heap and bind it to mtk_drm_gem object.
+> >
+> > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+>
+> Apologies for jumping rather late, but last year was a mess here.
+>
+> There's the fundamental issue that this is new uapi, and it needs open
+> userspace, and I haven't seen that.
 
-Signed-off-by: Andrew Davis <afd@ti.com>
----
- drivers/power/reset/syscon-poweroff.c | 36 +++++++++++++++------------
- 1 file changed, 20 insertions(+), 16 deletions(-)
+The open userspace for it is currently in minigbm for ChromeOS here:
+https://chromium.googlesource.com/chromiumos/platform/minigbm/+/main/mediat=
+ek.c#322
 
-diff --git a/drivers/power/reset/syscon-poweroff.c b/drivers/power/reset/syscon-poweroff.c
-index 1b2ce7734260c..4899a019256e8 100644
---- a/drivers/power/reset/syscon-poweroff.c
-+++ b/drivers/power/reset/syscon-poweroff.c
-@@ -15,15 +15,19 @@
- #include <linux/pm.h>
- #include <linux/regmap.h>
- 
--static struct regmap *map;
--static u32 offset;
--static u32 value;
--static u32 mask;
-+struct syscon_poweroff_data {
-+	struct regmap *map;
-+	u32 offset;
-+	u32 value;
-+	u32 mask;
-+};
-+
-+static struct syscon_poweroff_data *data;
- 
- static void syscon_poweroff(void)
- {
- 	/* Issue the poweroff */
--	regmap_update_bits(map, offset, mask, value);
-+	regmap_update_bits(data->map, data->offset, data->mask, data->value);
- 
- 	mdelay(1000);
- 
-@@ -35,22 +39,22 @@ static int syscon_poweroff_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	int mask_err, value_err;
- 
--	map = syscon_regmap_lookup_by_phandle(dev->of_node, "regmap");
--	if (IS_ERR(map)) {
--		map = syscon_node_to_regmap(dev->parent->of_node);
--		if (IS_ERR(map)) {
-+	data->map = syscon_regmap_lookup_by_phandle(dev->of_node, "regmap");
-+	if (IS_ERR(data->map)) {
-+		data->map = syscon_node_to_regmap(dev->parent->of_node);
-+		if (IS_ERR(data->map)) {
- 			dev_err(dev, "unable to get syscon");
--			return PTR_ERR(map);
-+			return PTR_ERR(data->map);
- 		}
- 	}
- 
--	if (of_property_read_u32(dev->of_node, "offset", &offset)) {
-+	if (of_property_read_u32(dev->of_node, "offset", &data->offset)) {
- 		dev_err(dev, "unable to read 'offset'");
- 		return -EINVAL;
- 	}
- 
--	value_err = of_property_read_u32(dev->of_node, "value", &value);
--	mask_err = of_property_read_u32(dev->of_node, "mask", &mask);
-+	value_err = of_property_read_u32(dev->of_node, "value", &data->value);
-+	mask_err = of_property_read_u32(dev->of_node, "mask", &data->mask);
- 	if (value_err && mask_err) {
- 		dev_err(dev, "unable to read 'value' and 'mask'");
- 		return -EINVAL;
-@@ -58,11 +62,11 @@ static int syscon_poweroff_probe(struct platform_device *pdev)
- 
- 	if (value_err) {
- 		/* support old binding */
--		value = mask;
--		mask = 0xFFFFFFFF;
-+		data->value = data->mask;
-+		data->mask = 0xFFFFFFFF;
- 	} else if (mask_err) {
- 		/* support value without mask*/
--		mask = 0xFFFFFFFF;
-+		data->mask = 0xFFFFFFFF;
- 	}
- 
- 	if (pm_power_off) {
--- 
-2.39.2
+Does that satisfy that particular requirement?
+>
+> What's more, this is a pure kms api so there's no precedent at all for
+> adding special ioctl to those - all the existing support for
+> protected/restricted content buffers in upstream has used render nodes an=
+d
+> EGL_EXT_protected_content in mesa3d to enable this feature on the drm/kms
+> side. So I'm not exactly sure what your plan here is, but you need one,
+> and it needs to be more than a testcase/demo.
 
+I'm probably not understanding something here, but for the Intel
+protected content allocation there was a specific structure
+(drm_i915_gem_create_ext_protected_content) added to the
+DRM_IOCTL_I915_GEM_CREATE_EXT ioctl in order to enable allocation of
+protected buffers.  So wouldn't that be precedent for using an ioctl
+like this to allocate a GEM object?
+
+>
+> The other issue, and the reason I've looked into the mtk code, is that th=
+e
+> dma-buf implementation breaks the dma-buf api. So that needs to be
+> changed.
+Yeah, agreed here...I do see now that attaching dma_bufs for content
+that is completely inaccessible by the kernel will be a no-go.
+>
+> Finally I think the primary way to display a protected content buffer on =
+a
+> pure kms driver should be by using prime fd2handle buffer importing.
+> Because you're adding a dma-buf heap it's already possible for userspace
+> to use this path (or at least try), and so we have to make this path work
+> anyway.
+
+Is what you're getting at here having MTK implement their own
+gem_prime_import in order to work around having to do the dma_buf
+attach operation? (from looking at the code, this appears to be the
+only place in non-vendor specific code that dma_buf_attach is called)
+>
+> Once we have the prime import path working correctly for protected conten=
+t
+> buffers (which should shake out all the dma-api issues I've explained in
+> the dma-buf heaps thread), it should be possible to implement the direct
+> allocation function in a generic helper:
+>
+> struct drm_gem_object * drm_gem_create_object_from_heap(struct drm_device=
+ *dev,
+>                                                         struct drm_file *=
+file,
+>                                                         struct drm_buf_he=
+ap *heap);
+>
+> Which does roughly:
+>
+> - allocate a dma-buf from the desired heap
+> - import that dma-buf into the device using prime for the drm_file
+> - using the already implemented driver import code for special cases like
+>   protected content buffers
+>
+> There should be no need to hand-roll all this code here, and especially
+> not have any special-casing for the heap string name or things like that.
+> That all must be handled in the dma-buf prime import code.
+>
+> Cheers, Sima
+>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_drm_gem.c | 85 +++++++++++++++++++++++++-
+> >  drivers/gpu/drm/mediatek/mtk_drm_gem.h |  4 ++
+> >  2 files changed, 88 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/m=
+ediatek/mtk_drm_gem.c
+> > index 30e347adcbe9..858f34a735f8 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+> > @@ -4,6 +4,8 @@
+> >   */
+> >
+> >  #include <linux/dma-buf.h>
+> > +#include <linux/dma-heap.h>
+> > +#include <uapi/linux/dma-heap.h>
+> >  #include <drm/mediatek_drm.h>
+> >
+> >  #include <drm/drm.h>
+> > @@ -55,6 +57,81 @@ static struct mtk_drm_gem_obj *mtk_drm_gem_init(stru=
+ct drm_device *dev,
+> >       return mtk_gem_obj;
+> >  }
+> >
+> > +struct mtk_drm_gem_obj *mtk_drm_gem_create_from_heap(struct drm_device=
+ *dev,
+> > +                                                  const char *heap, si=
+ze_t size)
+> > +{
+> > +     struct mtk_drm_private *priv =3D dev->dev_private;
+> > +     struct mtk_drm_gem_obj *mtk_gem;
+> > +     struct drm_gem_object *obj;
+> > +     struct dma_heap *dma_heap;
+> > +     struct dma_buf *dma_buf;
+> > +     struct dma_buf_attachment *attach;
+> > +     struct sg_table *sgt;
+> > +     struct iosys_map map =3D {};
+> > +     int ret;
+> > +
+> > +     mtk_gem =3D mtk_drm_gem_init(dev, size);
+> > +     if (IS_ERR(mtk_gem))
+> > +             return ERR_CAST(mtk_gem);
+> > +
+> > +     obj =3D &mtk_gem->base;
+> > +
+> > +     dma_heap =3D dma_heap_find(heap);
+> > +     if (!dma_heap) {
+> > +             DRM_ERROR("heap find fail\n");
+> > +             goto err_gem_free;
+> > +     }
+> > +     dma_buf =3D dma_heap_buffer_alloc(dma_heap, size,
+> > +                                     O_RDWR | O_CLOEXEC, DMA_HEAP_VALI=
+D_HEAP_FLAGS);
+> > +     if (IS_ERR(dma_buf)) {
+> > +             DRM_ERROR("buffer alloc fail\n");
+> > +             dma_heap_put(dma_heap);
+> > +             goto err_gem_free;
+> > +     }
+> > +     dma_heap_put(dma_heap);
+> > +
+> > +     attach =3D dma_buf_attach(dma_buf, priv->dma_dev);
+> > +     if (IS_ERR(attach)) {
+> > +             DRM_ERROR("attach fail, return\n");
+> > +             dma_buf_put(dma_buf);
+> > +             goto err_gem_free;
+> > +     }
+> > +
+> > +     sgt =3D dma_buf_map_attachment(attach, DMA_BIDIRECTIONAL);
+> > +     if (IS_ERR(sgt)) {
+> > +             DRM_ERROR("map failed, detach and return\n");
+> > +             dma_buf_detach(dma_buf, attach);
+> > +             dma_buf_put(dma_buf);
+> > +             goto err_gem_free;
+> > +     }
+> > +     obj->import_attach =3D attach;
+> > +     mtk_gem->dma_addr =3D sg_dma_address(sgt->sgl);
+> > +     mtk_gem->sg =3D sgt;
+> > +     mtk_gem->size =3D dma_buf->size;
+> > +
+> > +     if (!strcmp(heap, "mtk_svp") || !strcmp(heap, "mtk_svp_cma")) {
+> > +             /* secure buffer can not be mapped */
+> > +             mtk_gem->secure =3D true;
+> > +     } else {
+> > +             ret =3D dma_buf_vmap(dma_buf, &map);
+> > +             mtk_gem->kvaddr =3D map.vaddr;
+> > +             if (ret) {
+> > +                     DRM_ERROR("map failed, ret=3D%d\n", ret);
+> > +                     dma_buf_unmap_attachment(attach, sgt, DMA_BIDIREC=
+TIONAL);
+> > +                     dma_buf_detach(dma_buf, attach);
+> > +                     dma_buf_put(dma_buf);
+> > +                     mtk_gem->kvaddr =3D NULL;
+> > +             }
+> > +     }
+> > +
+> > +     return mtk_gem;
+> > +
+> > +err_gem_free:
+> > +     drm_gem_object_release(obj);
+> > +     kfree(mtk_gem);
+> > +     return ERR_PTR(-ENOMEM);
+> > +}
+> > +
+> >  struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm_device *dev,
+> >                                          size_t size, bool alloc_kmap)
+> >  {
+> > @@ -225,7 +302,9 @@ struct drm_gem_object *mtk_gem_prime_import_sg_tabl=
+e(struct drm_device *dev,
+> >       if (IS_ERR(mtk_gem))
+> >               return ERR_CAST(mtk_gem);
+> >
+> > +     mtk_gem->secure =3D !sg_page(sg->sgl);
+> >       mtk_gem->dma_addr =3D sg_dma_address(sg->sgl);
+> > +     mtk_gem->size =3D attach->dmabuf->size;
+> >       mtk_gem->sg =3D sg;
+> >
+> >       return &mtk_gem->base;
+> > @@ -301,7 +380,11 @@ int mtk_gem_create_ioctl(struct drm_device *dev, v=
+oid *data,
+> >       struct drm_mtk_gem_create *args =3D data;
+> >       int ret;
+> >
+> > -     mtk_gem =3D mtk_drm_gem_create(dev, args->size, false);
+> > +     if (args->flags & DRM_MTK_GEM_CREATE_ENCRYPTED)
+> > +             mtk_gem =3D mtk_drm_gem_create_from_heap(dev, "mtk_svp_cm=
+a", args->size);
+> > +     else
+> > +             mtk_gem =3D mtk_drm_gem_create(dev, args->size, false);
+> > +
+> >       if (IS_ERR(mtk_gem))
+> >               return PTR_ERR(mtk_gem);
+> >
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.h b/drivers/gpu/drm/m=
+ediatek/mtk_drm_gem.h
+> > index 90f3d2916ec5..8fd5ce827d4f 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+> > @@ -27,9 +27,11 @@ struct mtk_drm_gem_obj {
+> >       void                    *cookie;
+> >       void                    *kvaddr;
+> >       dma_addr_t              dma_addr;
+> > +     size_t                  size;
+> >       unsigned long           dma_attrs;
+> >       struct sg_table         *sg;
+> >       struct page             **pages;
+> > +     bool                    secure;
+> >  };
+> >
+> >  #define to_mtk_gem_obj(x)    container_of(x, struct mtk_drm_gem_obj, b=
+ase)
+> > @@ -37,6 +39,8 @@ struct mtk_drm_gem_obj {
+> >  void mtk_drm_gem_free_object(struct drm_gem_object *gem);
+> >  struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm_device *dev, siz=
+e_t size,
+> >                                          bool alloc_kmap);
+> > +struct mtk_drm_gem_obj *mtk_drm_gem_create_from_heap(struct drm_device=
+ *dev,
+> > +                                                  const char *heap, si=
+ze_t size);
+> >  int mtk_drm_gem_dumb_create(struct drm_file *file_priv, struct drm_dev=
+ice *dev,
+> >                           struct drm_mode_create_dumb *args);
+> >  struct sg_table *mtk_gem_prime_get_sg_table(struct drm_gem_object *obj=
+);
+> > --
+> > 2.18.0
+> >
+>
+> --
+> Daniel Vetter
+> Software Engineer, Intel Corporation
+> http://blog.ffwll.ch
 
