@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB5C8C4829D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Feb 2024 15:09:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 923E8C48297
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Feb 2024 15:11:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WwVsqoGAIzE5l9Xu7dUQGRgCnLWg+E4gxnq7lDMjVy0=; b=ghSlwvSJKWditv
-	Vqxtyc65Yid2dA/LUrBeUNTXQXt5oBGKWjrU6x8LRHPw34qcCazpYB9u86cCCXCtwqGhLhkNc9Aq0
-	cWwHbif/QtXQM3fLoq39Oljkq0xzOqPFZW3vzgGbbEfU2yWKQXLwf7D0QzeQxXpytWpaqQFiIFoZv
-	WK+yhUOlF+utBdNRaMXV+BpdqIY9Zvxpw/6ojVqlodfMbpqXasTgQfAjFg9vD8nsUG7z79l042VuR
-	ZfK0/uAGnXz4UcBrBSqcCuWBeERgMJ5JDKX3jrynuvj8SBM3LZmQEDjsZFpI5+cx2CI8NtKlipWd/
-	oE0B//waE0B5eUUysuDg==;
+	List-Owner; bh=BjQKrJiqto5Ob+/v96nV9FtvyMGmkQizdinJfF9BpvA=; b=Rrqfk7mWTFENcx
+	ZyslkUbrGm7r2aU6gARZb4/y3sVp846dKuOa3YljVtBUPUB6I9rMgqXZtYE9cbyJCKhFn7tA3SpbD
+	mNFya4OJMuI/ur8lAz16NRYoreGcciVcqoa+FVk17M+eBrUNvEkgzrHiBGRRgG8IDaUr1Tem0ooPb
+	TSAn7i6n/eHZf5/Itk3KHWsV4+6reM6oHM7HhTMUfnzCzemSfNE19Z8ctJ9i19WJ3XW9kjHwooyGG
+	J48R+EZ8dsdlXuc/koImY7HwqSCDbIBkw2mJdyu7vxMhjKnX24VpcKLM1BZfXknyHiRYrMQE+p0Ue
+	QDJERVSIhwnreplLNyQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXN4y-000000080Mc-0wrU;
-	Tue, 06 Feb 2024 15:09:44 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1rXN6O-000000080oV-0w6c;
+	Tue, 06 Feb 2024 15:11:12 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXN4v-000000080KK-1dpJ
+	id 1rXN6M-000000080n9-0qlc
 	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Feb 2024 15:09:42 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-5112d5ab492so7971487e87.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Feb 2024 07:09:40 -0800 (PST)
+	Tue, 06 Feb 2024 15:11:11 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a2f22bfb4e6so753706666b.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Feb 2024 07:11:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1707232179; x=1707836979; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1707232267; x=1707837067; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=WwVsqoGAIzE5l9Xu7dUQGRgCnLWg+E4gxnq7lDMjVy0=;
-        b=OduvbltLQ4oUkKMqvxOfcX9gnE5pWvGQCMnP3gOTrAL1MTLzoDNJPJH4ahqN4gRZh4
-         swMyCDKKjX6k/oc7ZCe6ZDCSPf5lXVeKPqP1IGtSDahtO9Kcc5n3oOcBRh1RqiQGdnom
-         AHu9YhY5VsmnYeGKTPSjndCdtJIVUiqXWyt1LxhZlzUfrabZaEF+Bo6pdXXHyrKqz/nl
-         7OMFWRoO/4oPYD3MvAJO7ODzpFLoqqqjA1IH80TPb+z+tkvJWRzF9TPj7lyyMGLt20FR
-         Kcf23q0n81lex5QcaB9C592FdtGhCWgEoSWBJJkZhtkv3ZxK10TwHUHAYZpyiKaw5OZp
-         vhYA==
+        bh=BjQKrJiqto5Ob+/v96nV9FtvyMGmkQizdinJfF9BpvA=;
+        b=QB/1iKNTRpyH/Mka1Lkwji3VtNIpoSRQchJzUS54cWB+3t2tlQAOqHckRXiE43iTWH
+         WKKYnnn4fiwQQU0ARzhpMO9VXKA8pljb51ewzsbHET3Ejf5yg6eiXw4BS9ux8p2MpDEX
+         DAcyhWwM2M3qvvpYA3PjOSLB+31Jd2F04R5FwTorGb3cBUwVigYCf1CVbbf0P4Ry5GmD
+         rkdG1BIgZTcFqniCw+QVDg8FMwOgrPQ2TCjvH6NkTNUMPqlMYgPnmvTeRYG/RP1YXT3u
+         k6is99vj6hpIVVpnaDZTSrByPJV5Fr//ylCLIjX3U2qwLbR3GU/AIk5K80gdlCJ3cv66
+         gIEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707232179; x=1707836979;
+        d=1e100.net; s=20230601; t=1707232267; x=1707837067;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=WwVsqoGAIzE5l9Xu7dUQGRgCnLWg+E4gxnq7lDMjVy0=;
-        b=p6QMn8Hn65WijBS5aktbTcPHzaznr+N9lVLCdDnY8GPrdGYotg5vFxxc5Yw6uSHDWz
-         ambsHi9kWxBwPRYwEMQWkIiSfBafluT3IL17ulGWgrulpZt1IpMXIYlJBH+CWjNHT4TB
-         7YPIRR5gpWpEiVvEdlikevmL8k6cQSfvzUhi9SZTai8ZR4a9UKOSYGpEScmPZNyjhvgi
-         2424aZq76ntXXVo0pJAPU+ykJIAN+eisieIluoJq/6BoEd8W9/JyBI2wIFOJRRz1Mgck
-         Cq2uAWk8D4U7A91Fq6HdV+D+Usxg1s6TuOd0E6ZFpvbSGwKxCo6ykTPiIQg3mn0MX6ZT
-         rIzg==
-X-Gm-Message-State: AOJu0YzGDy2DkronOmarx+TNaGwPC0uuFJuPeeD5jZsMvICihhut4rSk
-	L9KGBjvqyfjMZ+OyhU9XreSdfeCZdg0Sb+qNxezv5aJKrOBqo0y5QJAbemAsCdc=
-X-Google-Smtp-Source: AGHT+IHIK03nqgzi0UIQjD/r5eQ2ej+6ZZNo5AQO8975rLcfk1byiQAQT6jFYjw/zsDV+iNnbg9VtQ==
-X-Received: by 2002:ac2:5147:0:b0:511:3bd4:6a97 with SMTP id q7-20020ac25147000000b005113bd46a97mr2159245lfd.7.1707232178665;
-        Tue, 06 Feb 2024 07:09:38 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCVGkNAqTncHn8u9NySFFtDQqD8pscjT/JrKzey5HdYBYNb9Vz4cfuYJr7DavYYjySH0mR6+iOdinYPmM90PzTNIRnozIZN09rANAAbPujFAAY77eZBTuNuh80moOl4xO1aEGGxkyrKIEMMkZbFVyfaXr7OR1pn8OMlHfFW5voh4+4ayQFTuW/ADqVzBD4GFghg/qcCiL2gi/kUGqBklehKOZ/R0xTI5FrR8HuNeBPimYzIU5g8d/5hDTmzeiq89/xIGjYKgh6YadASA8qRf00j4DMprLo64d/4xKv5aE+Dq4INDxNnV4o2jO0kucyFKF46JqsNL7flwfzbEvNHqKstOIlemSLSTf6ClwPVh/JZX2A4VOdYuacC0kjNiGhd2aoIH1RPcw2oej+1wkclZL4mdFWY44actr5ic6g==
+        bh=BjQKrJiqto5Ob+/v96nV9FtvyMGmkQizdinJfF9BpvA=;
+        b=Mr5bYW1J0XVfn4fPIrYA2U2AdYeTb9jhE2myYxjgm1ZR+knoOX9dcfSWGbbIVm0Rgf
+         FHgcJxKWKMf9TELoo0nl+WvzYi4dUyga+xzCjTC5Uvj9RKa2a6IktGiBAgogxK3/tViT
+         H/olZYOVCZcEnDbYA0yhMJDqbLU7aZ2t4s+2aRqU1VUTrQVk76wyG+UMzHB5Fz+PBC4D
+         ASVOvAeTGtlKbksygxSVhLcIligyE+RtjptxrRQFEeL2+viGLyp5QRrhVIZSsdNJ2OO9
+         bpDWpHpWjeYTfjQgKf/Bu+3ho51b8sD2qHvGJmoeDEVEw5ky0R2+bdVtjogvI5644ovd
+         7N2Q==
+X-Gm-Message-State: AOJu0Yxgc9mJuGBjUj0Zx/vl/nWa64QMHIbF1936ntkPg9TfOV3Vj0tL
+	uzOLWaAkmZ9BlfmUjdJIEzgDc6J0qhRk3wHNxmS0Gn8oiCNID6BElRY5ongAyi4=
+X-Google-Smtp-Source: AGHT+IEWuOCt8voz4u+MBpvA4hP3K9km7MbtGtHA6Mv+jBPk9rsHCMaPnCNkcUZWrixdQ7z0/q5ymA==
+X-Received: by 2002:a17:906:6d6:b0:a37:e8fb:1649 with SMTP id v22-20020a17090606d600b00a37e8fb1649mr1637365ejb.56.1707232267526;
+        Tue, 06 Feb 2024 07:11:07 -0800 (PST)
+X-Forwarded-Encrypted: i=0; AJvYcCUpfUWzNOin8Ev9feQsK28lEv8UY0ytQSJdQbrL0dFp3df/wU1rkIi0XWIR+aedXQuVIQ+IECaHKD3CF9ZI/qNZAqfN4Zf4BHDYckYLgx32eiSYvGe7YIk1fuuFSVizeqs7XgsZlVDMntB+zN0F1jtZVVgaYCdOVTviENfQlW4JMbuzm4iXFVqd8j/p98p+uTZWiUUUmPx+3sI+RySJ4tEDABdeq3H2ciFF4JAvcU6vmXN9YbRaTPAAwi2Lclnl9fgxtZhU61QLEBtclp2uGB85QDKPNL1CwAyUJTzFiCFXwO7e/2XpHKhsbqjtmb/yKrzL8qQNsYW6JS7VWBh5aoeW102u+H8B4WTJ2d6EfzI7+hFSdw1aLDw2Z+eBKdgP8sX04McHhz8ZNx39/2sG8carxkbv4HTmZQeD4Q==
 Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id f14-20020a170906048e00b00a378377030csm1252795eja.41.2024.02.06.07.09.37
+        by smtp.gmail.com with ESMTPSA id f14-20020a170906048e00b00a378377030csm1252795eja.41.2024.02.06.07.11.06
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 06 Feb 2024 07:09:38 -0800 (PST)
-Message-ID: <f5942f06-c4c5-4b5f-bcfb-10b7976d38be@baylibre.com>
-Date: Tue, 6 Feb 2024 16:09:37 +0100
+        Tue, 06 Feb 2024 07:11:07 -0800 (PST)
+Message-ID: <594a9b63-0e3d-4ab9-a1c4-bd25ee40d9c7@baylibre.com>
+Date: Tue, 6 Feb 2024 16:11:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 4/9] drm/mediatek: dsi: Use bitfield macros where
- useful
+Subject: Re: [PATCH v4 5/9] drm/mediatek: dsi: Replace open-coded instance of
+ HZ_PER_MHZ
 Content-Language: en-US
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  chunkuang.hu@kernel.org
 References: <20240206120748.136610-1-angelogioacchino.delregno@collabora.com>
- <20240206120748.136610-5-angelogioacchino.delregno@collabora.com>
+ <20240206120748.136610-6-angelogioacchino.delregno@collabora.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20240206120748.136610-5-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240206120748.136610-6-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240206_070941_436976_1ADC96F3 
-X-CRM114-Status: UNSURE (   9.24  )
+X-CRM114-CacheID: sfid-20240206_071110_255897_F299ECE4 
+X-CRM114-Status: UNSURE (   5.75  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,17 +100,9 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
 On 06/02/2024 13:07, AngeloGioacchino Del Regno wrote:
-> Instead of open coding bitshifting for various register fields,
-> use the bitfield macro FIELD_PREP(): this allows to enhance the
-> human readability, decrease likeliness of mistakes (and register
-> field overflowing) and also to simplify the code.
-> The latter is especially seen in mtk_dsi_rxtx_control(), where
-> it was possible to change a switch to a short for loop and to
-> also remove the need to check for maximum DSI lanes == 4 thanks
-> to the FIELD_PREP macro masking the value.
-> 
-> While at it, also add the missing DA_HS_SYNC bitmask, used in
-> mtk_dsi_phy_timconfig().
+> In mtk_dsi_phy_timconfig(), we're dividing the `data_rate` variable,
+> expressed in Hz to retrieve a value in MHz: instead of open-coding,
+> use the HZ_PER_MHZ definition, available in linux/units.h.
 
 -- 
 Regards,
