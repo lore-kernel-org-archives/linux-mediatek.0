@@ -4,83 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CA7BC4828D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Feb 2024 15:24:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2C33C4829D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Feb 2024 15:31:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c6oZEpefRF0Tyn24g9i4ewrS1OGMx8/CRX4tNeqvynA=; b=r80x0rh/M23rUp
-	svCmx78TXElgd8T4sy83PoqIsIJZ7jlopZFcoUwHiWhil4Ti45rqI2AiIcCPR575eAJdkZAQk8+g5
-	aPeL639RLkbJL1WZQzmbE6qvZRymxkRvKiwkvepSw9R1WHg9PKfoY3V6GJgnARtZ7P72Lf2gnQeg0
-	yVe3qdkVZ8Dit7OUYmsF/VlMMJwOFhZDRz7yE/Zj/RuU2v20qH7xmwmtPlcba6DmTybUaJDLG+8qe
-	hbNnj/4qtr9ijqYmqDeRiCZlszmBVyDoi7BHWmO9lcElPxOjZkJgzd+KBVMbRudJhWsy698UapdS3
-	kk9xbNmjT3EqDAz6I45Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JX4j9RnBKgSuymNFyXd63pbAcg6Ek7H0n0T5RTJyQUg=; b=dVWkE9mnfdKpBYJCJVC5h5zRqF
+	KKeekTbkcXt0pOco7oQdfKZ5fEgR9c2WYfofuchoLWTAv3YSnMYt7DZYfrB81q0jLWz4rl1DcT5j0
+	Pi2kWbns/Qt8KDIkx4OzXhMlUEkwKam8MT/OAQuBojqKPXBEVpNKIlE7Np8GSjJvaaQA0oRLQtpg0
+	R0A5aFVQKhOGzYOVxbsfn2aYbsKWkedYRtSyCxctxyTcNYUQgQsFqrhiK5bT4nn0Al2x/9LWiVTA9
+	1Z0jXCD88HNOUW+2yVRAn59PMB0XyU8yvj3YMNZHE22iETqpKr+AdMeG+3Jh4lPesa3hT5qzGjOmG
+	qSMQ5slQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXNJ4-0000000853D-1IGl;
-	Tue, 06 Feb 2024 15:24:18 +0000
-Received: from mail-ed1-f43.google.com ([209.85.208.43])
+	id 1rXNQK-000000086Xm-0gMY;
+	Tue, 06 Feb 2024 15:31:48 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXNJ1-0000000851O-1nIh
-	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Feb 2024 15:24:16 +0000
-Received: by mail-ed1-f43.google.com with SMTP id 4fb4d7f45d1cf-5606f2107ebso1419725a12.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Feb 2024 07:24:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1707233052; x=1707837852; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=c6oZEpefRF0Tyn24g9i4ewrS1OGMx8/CRX4tNeqvynA=;
-        b=dXnMYlVpVOrr9j1d0bjNfqoq9LghrkvIQrPplu4xb02NP5cmaLsqSWH/da5tTKQTv+
-         kQqiMJcP3C56j1xkWHUoa31pOBIgsCONaIiF5jt+My0fyZocQi4ygIGjY9Pf2EKrBUr3
-         lNiKDfgrYBikkDZix8uTwPPX15urPIYn4MoKwAcXsJZPx0ojXbxhQvw8PkD7ROQiZdQL
-         6O5MvMwNlIR3gnkWGJxf9HARwyMJQjUOV/DqOLwbmtRbP2tPiNTaZy2xc6QYr4DtHqBm
-         o/DcvIL9tCJu4eug0xRK1R8PozJmbVtqek8ODokML9tjDVARFKyeVRrKHfnWmAeryS9L
-         azgA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707233052; x=1707837852;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=c6oZEpefRF0Tyn24g9i4ewrS1OGMx8/CRX4tNeqvynA=;
-        b=KtnhJQvL6lEJim9XpRw4qy0LSnmCY18yj+SRFng5abJct1yrqsHGXJqFQWNezPaEAm
-         Ui2cFsdKgw/zNVygJLzVHo56AkgVr9n69pMXKV7JXVU9049Scr9ZUy/X0cxcduamUNGe
-         cYTcszQK70AD8Lo+wKvBT/4yPR50msyDFPwSioavdBKjRVxApVI63Ht9atHTMQ3P7+FL
-         O72pxdDvX5+o9hEZvp5wOQZ9NcdXBRenj2/7YidFY1lwS108x88K8YXiYCmIAmYFyQhN
-         QMuBOqGUGRmxpCE/ywyGSvWto8CRGuP5jY3Z2aME+ER6XKxwToTqGxFLiDtj4QqwatH+
-         Pm0w==
-X-Gm-Message-State: AOJu0YxtmbrqosQZWVyr+1PEoxqvO5U8XOfxhw5okJdfzlOO6G6W4oGi
-	RHTzMmTu/xMvlh8eLVn7CmZ+hanL0+RfBnATq7L29RiIu4bOUZhB1r7PJl6hw6I=
-X-Google-Smtp-Source: AGHT+IECn1jgZhlrG7/6jnwm37Zc7btXkbtdP+hBe0rhldbgW5nxFV90J4gPvjCdN1SPFQYj6LTRow==
-X-Received: by 2002:a17:906:f90f:b0:a36:f672:5dab with SMTP id lc15-20020a170906f90f00b00a36f6725dabmr3379018ejb.16.1707233052557;
-        Tue, 06 Feb 2024 07:24:12 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCUVPrzdjhB8UqYzeAqOPAW1mFIJ+nEKHTmOwLUcBxGgvscPTDBVF8z1qZTrHEFsvtpNhdImONs8V8ARS+FNS9Pxl/Zw05V/dFmhstQfk5/XNeatnegHKoIO8eR1DzgVzZmbqd+f/vpMbFtwGlxnFeIt5og1MDpqdLVxs5KvI3/tbpSZNzf+L7FDLSdRpGbYHqMLqCO7QvpK1YztVlBkmhJwKBjWsvDM2+8EDnTUw6gOR1aeT/oNfYbf6k5TvQH774/Z3iiBzAXBW5xd0IfA1fFHmPtyyYIibzTu5oi4A6ltGVhQBuQodgQIWk8RRq/g/Y2hN9cnFj/9gelQ2Bd8CeYa6ibQ6nt4SgxzeweuMR+KtddOS1Rns9BdHrLg1Uu6Ybhzo2N9SC7TeQCX7V5GP2TfdQvVEvVfnD/veg==
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id ca3-20020a170906a3c300b00a35d6482fdbsm1270170ejb.77.2024.02.06.07.24.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 06 Feb 2024 07:24:12 -0800 (PST)
-Message-ID: <282d07cf-97b4-423f-b148-42a5d5ff9d10@baylibre.com>
-Date: Tue, 6 Feb 2024 16:24:11 +0100
+	id 1rXNQF-000000086Wp-2tfI;
+	Tue, 06 Feb 2024 15:31:45 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1rXNQ4-0000nG-2R;
+	Tue, 06 Feb 2024 15:31:32 +0000
+Date: Tue, 6 Feb 2024 15:31:21 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Bc-bocun Chen <bc-bocun.chen@mediatek.com>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Qingfang Deng <dqfext@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org
+Subject: Re: [PATCH v2 1/2] dt-bindings: phy: mediatek,mt7988-xfi-tphy: add
+ new bindings
+Message-ID: <ZcJQyaTotW_bCWGU@makrotopia.org>
+References: <3251ac3db1a739e0c18ded0a824edae981c1e2df.1707153425.git.daniel@makrotopia.org>
+ <31d2c56a-5108-4265-a267-6733e1ba328e@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 9/9] drm/mediatek: dsi: Use
- mipi_dsi_pixel_format_to_bpp() helper function
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- chunkuang.hu@kernel.org
-References: <20240206120748.136610-1-angelogioacchino.delregno@collabora.com>
- <20240206120748.136610-10-angelogioacchino.delregno@collabora.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20240206120748.136610-10-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <31d2c56a-5108-4265-a267-6733e1ba328e@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240206_072415_475019_2265F6D0 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20240206_073143_750801_C2DE79E8 
+X-CRM114-Status: GOOD (  19.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,28 +74,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: p.zabel@pengutronix.de, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, daniel@ffwll.ch, matthias.bgg@gmail.com, kernel@collabora.com, airlied@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+Hi Krzysztof,
 
-On 06/02/2024 13:07, AngeloGioacchino Del Regno wrote:
-> Instead of open coding, use the mipi_dsi_pixel_format_to_bpp() helper
-> function from drm_mipi_dsi.h in mtk_dsi_poweron() and for validation
-> in mtk_dsi_bridge_mode_valid().
+On Tue, Feb 06, 2024 at 11:53:55AM +0100, Krzysztof Kozlowski wrote:
+> On 05/02/2024 18:28, Daniel Golle wrote:
+> > Add bindings for the MediaTek XFI Ethernet SerDes T-PHY found in the
+> > MediaTek MT7988 SoC which can operate at various interfaces modes:
+> > 
+> > via USXGMII PCS:
+> >  * USXGMII
+> >  * 10GBase-R
+> >  * 5GBase-R
+> > 
+> > via LynxI SGMII PCS:
+> >  * 2500Base-X
+> >  * 1000Base-X
+> >  * Cisco SGMII (MAC side)
+> > 
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > ---
+> > v2: unify filename and compatible as requested
 > 
-> Note that this function changes the behavior of this driver: previously,
-> in case of unknown formats, it would (wrongly) assume that it should
-> account for a 24-bits format - now it will return an error and refuse
-> to set clocks and/or enable the DSI.
-> 
-> This is done because setting the wrong data rate will only produce a
-> garbage output that the display will misinterpret both because this
-> driver doesn't actually provide any extra-spec format support and/or
-> because the data rate (hence, the HS clock) will be wrong.
+> Several comments, from me and Rob, were ignored. Please respond to them.
 
--- 
-Regards,
-Alexandre
+I'm sorry if I have missed something. I just checked again on
+patchwork, just in case I would have missed an email reply to this or
+any of the preceding posts of this patch as part of the old series
+going to netdev.
+
+Comments you have made which I have addressed:
+ - removed $nodename
+ - use compatible as filename
+
+And the only thing I found that I didn't either fix or reply to is this:
+> Can you explain what is this issue and errata about (except performance)?
+
+Not overwriting that (undocumented) value in that (undocumented)
+register results in 10GBase-R having performance issues according to a
+commit in MediaTek's SDK, see here:
+
+https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/a500d94cd%5E%21/#F0
+
+Maybe Bc or SkyLake of MediaTek (added to Cc) can explain this in more
+detail?
+
+
+What I did miss was Rob's comment at the very bottom of this reply:
+> What is PEXTP?
+
+I can again only answer by referencing to MediaTek's SDK sources:
+
+https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/21.02/files/target/linux/mediatek/files-5.4/drivers/net/ethernet/mediatek/mtk_sgmii.c#96
+
+Here this reset is called XFI_PEXTP0_GRST.
+
+I personally find that name confusing (as this PHY has nothing to do with
+_P_ci _EX_press) and have tried to get rid of it where it isn't either part
+of official documentation or already merged drivers (like Sam's clock driver).
+
+If there have been any other issues with this patch which I'm not aware
+of, please point them out to me.
+
+
+Thank you
+
+
+Best regards
+
+
+Daniel
 
