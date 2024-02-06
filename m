@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAE26C48297
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Feb 2024 14:58:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB5C8C4829D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Feb 2024 15:09:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VCL4zV/fY4TbR6w8G33YGfXgioFiEYO2kvyU3dpfMUw=; b=sXhoAxW8PPwCJ2
-	jyaTf/8xzuBy5uMfCfyZgwO1K2hih/DBPpCS6COYQWegQ/zBtoazSZknhkOdU2hHGpXL5Iw0TCRZq
-	W8WX4wbQk2z+QHjAjm8KQ+YvccokE9U1MWFBrE0r10dk2dXAKl11lxCYq3VR14wjqi4Mq7rFglGNN
-	edbFNxBGCrcZZk3Cz6iwgYo6C/E4XdU3G0CavsItiAHUxXZPW+q09cn9eaxVeiG6mgKzmmGt1aEPU
-	ETBwOIeRto5iWc9HFfsyd2vLMa2VrGMnwdv3is+oCr2CkgdDyRsV3nbQnwgr5DhOEPw8FYU1RIJAJ
-	nNVfHwxw7m4bG+P3WMgA==;
+	List-Owner; bh=WwVsqoGAIzE5l9Xu7dUQGRgCnLWg+E4gxnq7lDMjVy0=; b=ghSlwvSJKWditv
+	Vqxtyc65Yid2dA/LUrBeUNTXQXt5oBGKWjrU6x8LRHPw34qcCazpYB9u86cCCXCtwqGhLhkNc9Aq0
+	cWwHbif/QtXQM3fLoq39Oljkq0xzOqPFZW3vzgGbbEfU2yWKQXLwf7D0QzeQxXpytWpaqQFiIFoZv
+	WK+yhUOlF+utBdNRaMXV+BpdqIY9Zvxpw/6ojVqlodfMbpqXasTgQfAjFg9vD8nsUG7z79l042VuR
+	ZfK0/uAGnXz4UcBrBSqcCuWBeERgMJ5JDKX3jrynuvj8SBM3LZmQEDjsZFpI5+cx2CI8NtKlipWd/
+	oE0B//waE0B5eUUysuDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXMtg-00000007xo4-1koX;
-	Tue, 06 Feb 2024 14:58:04 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1rXN4y-000000080Mc-0wrU;
+	Tue, 06 Feb 2024 15:09:44 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXMtd-00000007xlG-27Yp
+	id 1rXN4v-000000080KK-1dpJ
 	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Feb 2024 14:58:02 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-56061ad3d3dso1363026a12.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Feb 2024 06:58:01 -0800 (PST)
+	Tue, 06 Feb 2024 15:09:42 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-5112d5ab492so7971487e87.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Feb 2024 07:09:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1707231480; x=1707836280; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1707232179; x=1707836979; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=VCL4zV/fY4TbR6w8G33YGfXgioFiEYO2kvyU3dpfMUw=;
-        b=g/I9FtwBac10yNJPGXiiNsmjesZhXhA8JfPzGzzevv3W52UHeSY40Lg9qFuCsaVjQH
-         ktL+8k6XtArkq+4B6ra6KMGhJs/dWtrTR8KcvcqOEJllIIv2pws+0mMllvQ9d4+kMFpv
-         dauLd3+Dx5z31JXHXdYk+5H/66zM+ucexJ+3/r4cKSVIxxFQqOeE47eot9n7dsQersti
-         B+7iTI1PSpT9gDMQAvxZ0W7/EeagBaUeyS1MMrBYzPIxbn7YdwqFMd0Inl6em5nF5FKn
-         vLjKrG7ZcWclh/qV+XW3nS03fnKnPAAzcwROZS7QO92QuwzPbdIk8YcBm8ZQUZ1eN2/L
-         37XA==
+        bh=WwVsqoGAIzE5l9Xu7dUQGRgCnLWg+E4gxnq7lDMjVy0=;
+        b=OduvbltLQ4oUkKMqvxOfcX9gnE5pWvGQCMnP3gOTrAL1MTLzoDNJPJH4ahqN4gRZh4
+         swMyCDKKjX6k/oc7ZCe6ZDCSPf5lXVeKPqP1IGtSDahtO9Kcc5n3oOcBRh1RqiQGdnom
+         AHu9YhY5VsmnYeGKTPSjndCdtJIVUiqXWyt1LxhZlzUfrabZaEF+Bo6pdXXHyrKqz/nl
+         7OMFWRoO/4oPYD3MvAJO7ODzpFLoqqqjA1IH80TPb+z+tkvJWRzF9TPj7lyyMGLt20FR
+         Kcf23q0n81lex5QcaB9C592FdtGhCWgEoSWBJJkZhtkv3ZxK10TwHUHAYZpyiKaw5OZp
+         vhYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707231480; x=1707836280;
+        d=1e100.net; s=20230601; t=1707232179; x=1707836979;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=VCL4zV/fY4TbR6w8G33YGfXgioFiEYO2kvyU3dpfMUw=;
-        b=SntCyvan6nFKXVR1uqfoCpPeIUTsiLsfC8uREiiWRFq/WAuXbKhHmlPwqo7SPOS6Cx
-         OxAP+w2qmTM6h2EMtkriXQqJi0vG+AQSivHYZEcxMdNl1cd2tKItaeK/iFFHv/MwGPcm
-         wBtwZJ+MjPUdyU+aELmAnc5oyNjGzVJjgDmdJk7JnTm5ZkoC9RJfAkBwp+P8KczxRQ2X
-         j9pXIkD8zUN8RGZdTJmT5jrzBkaYn0eHfEUOs9CC+j38jP8ZaAuVn++8xvd5kbVMQkD4
-         V/lB+tg9aUc/b198eJ4dfAHJOXat80d2fVRkk8dyDCWpOtiAyupZy5hAxwAem0cm+tRn
-         DpgA==
-X-Gm-Message-State: AOJu0YxpLsi2/fdwx7uI9pnyr6K64UKaFk6aI0/IsApIHI0+qhLExBR0
-	UMvkRk0WSjbrz1p7FQtFc0IhoWBmPkTRqvhEIQqlDvYdbbHLaxo3J8adAyKit74=
-X-Google-Smtp-Source: AGHT+IE/xkMN+vq5s766SYdEh9U5SinilVRtC+iNa3NXit0ZGBcC6EM87J5PH4nbqf7jKMIRuG73mw==
-X-Received: by 2002:a50:bac5:0:b0:560:bb98:6b7d with SMTP id x63-20020a50bac5000000b00560bb986b7dmr972125ede.10.1707231480008;
-        Tue, 06 Feb 2024 06:58:00 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCV2qU3BBiKmtKQKW+yzgCKFG+aWqLGGCGZ5OIYjaHTbPrBA4VcqyeA2tbkxDyqK6Uv8LGmGZPGVg/aF7sjjagiuwvo2enujdmA3klp0fgwUIN+gU1AzNmx4aroEb8uepPsd1ckdiGwcQLppJvKWeViTjAISYcxXJlRQNQobV1+h9N46OhD5XRfekGxm3mv6v+KkbSfEGnKXRve612YmHswTbkpE6Q8QEomA9mgR/4xdQh2ZQ/BypZUTAc3dypAI1dwEj/pjUdXaSZsxUqp3HXoriAHaLqyNWU7W8tr2n/zcCBqj87uGjm1hvswqATFsWZnCgOsQf/atT/OH4zWU+R0VND68NHY1JOs4JXbvrXFA1/20Bsofkh1KvYNu/bdPfyhikHRxpfWMAYDZ93zCfRYXOxRTclY7o89dMg==
+        bh=WwVsqoGAIzE5l9Xu7dUQGRgCnLWg+E4gxnq7lDMjVy0=;
+        b=p6QMn8Hn65WijBS5aktbTcPHzaznr+N9lVLCdDnY8GPrdGYotg5vFxxc5Yw6uSHDWz
+         ambsHi9kWxBwPRYwEMQWkIiSfBafluT3IL17ulGWgrulpZt1IpMXIYlJBH+CWjNHT4TB
+         7YPIRR5gpWpEiVvEdlikevmL8k6cQSfvzUhi9SZTai8ZR4a9UKOSYGpEScmPZNyjhvgi
+         2424aZq76ntXXVo0pJAPU+ykJIAN+eisieIluoJq/6BoEd8W9/JyBI2wIFOJRRz1Mgck
+         Cq2uAWk8D4U7A91Fq6HdV+D+Usxg1s6TuOd0E6ZFpvbSGwKxCo6ykTPiIQg3mn0MX6ZT
+         rIzg==
+X-Gm-Message-State: AOJu0YzGDy2DkronOmarx+TNaGwPC0uuFJuPeeD5jZsMvICihhut4rSk
+	L9KGBjvqyfjMZ+OyhU9XreSdfeCZdg0Sb+qNxezv5aJKrOBqo0y5QJAbemAsCdc=
+X-Google-Smtp-Source: AGHT+IHIK03nqgzi0UIQjD/r5eQ2ej+6ZZNo5AQO8975rLcfk1byiQAQT6jFYjw/zsDV+iNnbg9VtQ==
+X-Received: by 2002:ac2:5147:0:b0:511:3bd4:6a97 with SMTP id q7-20020ac25147000000b005113bd46a97mr2159245lfd.7.1707232178665;
+        Tue, 06 Feb 2024 07:09:38 -0800 (PST)
+X-Forwarded-Encrypted: i=0; AJvYcCVGkNAqTncHn8u9NySFFtDQqD8pscjT/JrKzey5HdYBYNb9Vz4cfuYJr7DavYYjySH0mR6+iOdinYPmM90PzTNIRnozIZN09rANAAbPujFAAY77eZBTuNuh80moOl4xO1aEGGxkyrKIEMMkZbFVyfaXr7OR1pn8OMlHfFW5voh4+4ayQFTuW/ADqVzBD4GFghg/qcCiL2gi/kUGqBklehKOZ/R0xTI5FrR8HuNeBPimYzIU5g8d/5hDTmzeiq89/xIGjYKgh6YadASA8qRf00j4DMprLo64d/4xKv5aE+Dq4INDxNnV4o2jO0kucyFKF46JqsNL7flwfzbEvNHqKstOIlemSLSTf6ClwPVh/JZX2A4VOdYuacC0kjNiGhd2aoIH1RPcw2oej+1wkclZL4mdFWY44actr5ic6g==
 Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id cz6-20020a0564021ca600b0055d312732dbsm1120026edb.5.2024.02.06.06.57.59
+        by smtp.gmail.com with ESMTPSA id f14-20020a170906048e00b00a378377030csm1252795eja.41.2024.02.06.07.09.37
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 06 Feb 2024 06:57:59 -0800 (PST)
-Message-ID: <74778dc1-1c36-4db8-9d5e-abdff9f8d8a5@baylibre.com>
-Date: Tue, 6 Feb 2024 15:57:58 +0100
+        Tue, 06 Feb 2024 07:09:38 -0800 (PST)
+Message-ID: <f5942f06-c4c5-4b5f-bcfb-10b7976d38be@baylibre.com>
+Date: Tue, 6 Feb 2024 16:09:37 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 3/9] drm/mediatek: dsi: Cleanup functions
- mtk_dsi_ps_control{_vact}()
+Subject: Re: [PATCH v4 4/9] drm/mediatek: dsi: Use bitfield macros where
+ useful
 Content-Language: en-US
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  chunkuang.hu@kernel.org
 References: <20240206120748.136610-1-angelogioacchino.delregno@collabora.com>
- <20240206120748.136610-4-angelogioacchino.delregno@collabora.com>
+ <20240206120748.136610-5-angelogioacchino.delregno@collabora.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20240206120748.136610-4-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240206120748.136610-5-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240206_065801_582632_A0F09758 
-X-CRM114-Status: UNSURE (   5.92  )
+X-CRM114-CacheID: sfid-20240206_070941_436976_1ADC96F3 
+X-CRM114-Status: UNSURE (   9.24  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,10 +100,17 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
 On 06/02/2024 13:07, AngeloGioacchino Del Regno wrote:
-> Function mtk_dsi_ps_control() is a subset of mtk_dsi_ps_control_vact():
-> merge the two in one mtk_dsi_ps_control() function by adding one
-> function parameter `config_vact` which, when true, writes the VACT
-> related registers.
+> Instead of open coding bitshifting for various register fields,
+> use the bitfield macro FIELD_PREP(): this allows to enhance the
+> human readability, decrease likeliness of mistakes (and register
+> field overflowing) and also to simplify the code.
+> The latter is especially seen in mtk_dsi_rxtx_control(), where
+> it was possible to change a switch to a short for loop and to
+> also remove the need to check for maximum DSI lanes == 4 thanks
+> to the FIELD_PREP macro masking the value.
+> 
+> While at it, also add the missing DA_HS_SYNC bitmask, used in
+> mtk_dsi_phy_timconfig().
 
 -- 
 Regards,
