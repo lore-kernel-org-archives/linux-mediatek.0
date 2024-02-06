@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5F48C4828D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Feb 2024 15:21:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CA7BC4828D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Feb 2024 15:24:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RIc4mpHkEyVhvzKbl3/CXTyhjyWRujcUA5n7Ow/N8Kc=; b=ohHsaphaAwjBeD
-	0Isem9yqm2wI2VTDHJpf0W8IcjPlmpUy/E5oKF11Lqs8ojASTI7uomxlQ5nR+H94S06oV7XSj1RMv
-	Xt3eUvn98uVAUWG1vgfmzoXMUMOzQUHWU2Obd9WKEwBOhSAbWPsUWbUAcrmzEqQLLx08PbgBzvCBJ
-	rqxd/DcHrz4GGZ2jQ9NAMjNRMcW1DwNPvwtDy6mqCp2giBRLAa3E2d2P7RbZIKUqgpA2riLhOFh3j
-	YySf9KoWyeFGnIfKDbRz9kdYPoJzP9ZCXfIWiyWh3gJ5XhwNvZbWfxqZR2pGKfBZqy7a9nFXDO4ty
-	/hUzTDKfz2JxXiQhiX1w==;
+	List-Owner; bh=c6oZEpefRF0Tyn24g9i4ewrS1OGMx8/CRX4tNeqvynA=; b=r80x0rh/M23rUp
+	svCmx78TXElgd8T4sy83PoqIsIJZ7jlopZFcoUwHiWhil4Ti45rqI2AiIcCPR575eAJdkZAQk8+g5
+	aPeL639RLkbJL1WZQzmbE6qvZRymxkRvKiwkvepSw9R1WHg9PKfoY3V6GJgnARtZ7P72Lf2gnQeg0
+	yVe3qdkVZ8Dit7OUYmsF/VlMMJwOFhZDRz7yE/Zj/RuU2v20qH7xmwmtPlcba6DmTybUaJDLG+8qe
+	hbNnj/4qtr9ijqYmqDeRiCZlszmBVyDoi7BHWmO9lcElPxOjZkJgzd+KBVMbRudJhWsy698UapdS3
+	kk9xbNmjT3EqDAz6I45Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXNG2-000000083vF-1J06;
-	Tue, 06 Feb 2024 15:21:10 +0000
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+	id 1rXNJ4-0000000853D-1IGl;
+	Tue, 06 Feb 2024 15:24:18 +0000
+Received: from mail-ed1-f43.google.com ([209.85.208.43])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXNFz-000000083st-1mQV
+	id 1rXNJ1-0000000851O-1nIh
 	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Feb 2024 15:21:08 +0000
-Received: by mail-lj1-x22a.google.com with SMTP id 38308e7fff4ca-2d09faadba5so36327451fa.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Feb 2024 07:21:06 -0800 (PST)
+	Tue, 06 Feb 2024 15:24:16 +0000
+Received: by mail-ed1-f43.google.com with SMTP id 4fb4d7f45d1cf-5606f2107ebso1419725a12.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Feb 2024 07:24:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1707232865; x=1707837665; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1707233052; x=1707837852; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=RIc4mpHkEyVhvzKbl3/CXTyhjyWRujcUA5n7Ow/N8Kc=;
-        b=wBiB+pdx9rhWOIg83J5ig9VcJtQ3rZUjAc00h5pBumf20rvHsBmdQM/64+rZKI9Nus
-         vt13uPuiEa6wdNQF4pRuXyAagGOosAzwIGxWgq8shNGD/sDKtJ74dT1hUF7Y07lg/Va/
-         v5M66YY/ifQe62zkm6CqJyTgyFE/IO6BHytRr8lFLqiFCtjioWMdhSWQRnMWuIA/zw4S
-         sMNXYRO7OOeXq4r2QYVSAZI5BUCePwwdL/ebfgpoTnM0flnaCKSu7u2lW1Be9UCuf/cC
-         asu1RIOmyf/9AMbLBEOOF9NEr5NwDAzCS8lkoQJuawMpU8b2U07FbqsQrqINJqCFtDp3
-         8VHQ==
+        bh=c6oZEpefRF0Tyn24g9i4ewrS1OGMx8/CRX4tNeqvynA=;
+        b=dXnMYlVpVOrr9j1d0bjNfqoq9LghrkvIQrPplu4xb02NP5cmaLsqSWH/da5tTKQTv+
+         kQqiMJcP3C56j1xkWHUoa31pOBIgsCONaIiF5jt+My0fyZocQi4ygIGjY9Pf2EKrBUr3
+         lNiKDfgrYBikkDZix8uTwPPX15urPIYn4MoKwAcXsJZPx0ojXbxhQvw8PkD7ROQiZdQL
+         6O5MvMwNlIR3gnkWGJxf9HARwyMJQjUOV/DqOLwbmtRbP2tPiNTaZy2xc6QYr4DtHqBm
+         o/DcvIL9tCJu4eug0xRK1R8PozJmbVtqek8ODokML9tjDVARFKyeVRrKHfnWmAeryS9L
+         azgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707232865; x=1707837665;
+        d=1e100.net; s=20230601; t=1707233052; x=1707837852;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=RIc4mpHkEyVhvzKbl3/CXTyhjyWRujcUA5n7Ow/N8Kc=;
-        b=iCIzsoQFjGuW+vxKZZ9XRdCpsyUanwGRMcSd89DnALRzHWr08Sr/sAf9ZTPXVQa3Kf
-         ST4cwGT8twGgel+X/JC78lf7arOfVaoh0jqcl+qmRDpSony+4B3pyqZR6OLR705PES7R
-         lYwm5twi6zTsifPbvGSzL/TUc2h01EisPvpVX3hXu5+bxKyigf8R1i1sSnnVbuy/BKU1
-         c703m+hcotvlqgE5Kck3OqVZ+8h47t5lmhrPYHKLnwZOExe5RyV5IG+74vL1diGdOlgF
-         tV/exlm+XnYIbsVL3FG75OYzgBUHFyBt0DYTGOKgDKAVDGlZcqbhjwQqNGXP4xCR5tpB
-         +ivQ==
-X-Gm-Message-State: AOJu0Yxe349hXFbH4soCTaHZ434FlFr5mawV/YuG8hNXYlBdDyQdzSE3
-	ttvpX2WlchZm8IFKrRWfMukw7/Reh/4BzGV8TA2m+9LVlQHrAXPJFkAm/vKeqLs=
-X-Google-Smtp-Source: AGHT+IH6B9hxtB51OAbCk+OHsZztqp+0HCBvlYX0qY5/9gpcQGkhT3ZpT3m/XchRQjfWgcgI6+PF/g==
-X-Received: by 2002:a2e:b24d:0:b0:2d0:908e:d825 with SMTP id n13-20020a2eb24d000000b002d0908ed825mr2135508ljm.21.1707232864903;
-        Tue, 06 Feb 2024 07:21:04 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCVzh2Ov2RC+YTsegCX0tzyIx3Lk6zKPQmeoT6oJ0BC1fRsrm0SsQBPV4G5d8jurnLVezvqIF0LxGaRRFkCFI6iVG7PryI+Fx5Oe9TfkG+BkF7qENEvsMcFd/Q1Xu5i6TEFk9m+ctOVtJ4C2UH//Ks/72ACsYssXDlbe8POsU4ku5swiJNOSS/SyLFcYEDlYSYiTtxZe4xgM59SlWwvKr2Geqojgb0jzz7f5bo7szkiMAUE2a36mnV6xHu8Hy8gbe1SRimKUMiOGO+dK6cV5NktlO4d5oAkXeV1fdDpQiBVe0LqysNOUyBTcTvKIH94M7GHJSyoMg63UjPR/ycon8igVEoL77TUZ/p4TAs7tLyD6Gdb1eoTC9+iSsX45I5B/nYCNucFr1SaFgoUJVTY7rYPRQQNmJbFu1rSlFQ==
+        bh=c6oZEpefRF0Tyn24g9i4ewrS1OGMx8/CRX4tNeqvynA=;
+        b=KtnhJQvL6lEJim9XpRw4qy0LSnmCY18yj+SRFng5abJct1yrqsHGXJqFQWNezPaEAm
+         Ui2cFsdKgw/zNVygJLzVHo56AkgVr9n69pMXKV7JXVU9049Scr9ZUy/X0cxcduamUNGe
+         cYTcszQK70AD8Lo+wKvBT/4yPR50msyDFPwSioavdBKjRVxApVI63Ht9atHTMQ3P7+FL
+         O72pxdDvX5+o9hEZvp5wOQZ9NcdXBRenj2/7YidFY1lwS108x88K8YXiYCmIAmYFyQhN
+         QMuBOqGUGRmxpCE/ywyGSvWto8CRGuP5jY3Z2aME+ER6XKxwToTqGxFLiDtj4QqwatH+
+         Pm0w==
+X-Gm-Message-State: AOJu0YxtmbrqosQZWVyr+1PEoxqvO5U8XOfxhw5okJdfzlOO6G6W4oGi
+	RHTzMmTu/xMvlh8eLVn7CmZ+hanL0+RfBnATq7L29RiIu4bOUZhB1r7PJl6hw6I=
+X-Google-Smtp-Source: AGHT+IECn1jgZhlrG7/6jnwm37Zc7btXkbtdP+hBe0rhldbgW5nxFV90J4gPvjCdN1SPFQYj6LTRow==
+X-Received: by 2002:a17:906:f90f:b0:a36:f672:5dab with SMTP id lc15-20020a170906f90f00b00a36f6725dabmr3379018ejb.16.1707233052557;
+        Tue, 06 Feb 2024 07:24:12 -0800 (PST)
+X-Forwarded-Encrypted: i=0; AJvYcCUVPrzdjhB8UqYzeAqOPAW1mFIJ+nEKHTmOwLUcBxGgvscPTDBVF8z1qZTrHEFsvtpNhdImONs8V8ARS+FNS9Pxl/Zw05V/dFmhstQfk5/XNeatnegHKoIO8eR1DzgVzZmbqd+f/vpMbFtwGlxnFeIt5og1MDpqdLVxs5KvI3/tbpSZNzf+L7FDLSdRpGbYHqMLqCO7QvpK1YztVlBkmhJwKBjWsvDM2+8EDnTUw6gOR1aeT/oNfYbf6k5TvQH774/Z3iiBzAXBW5xd0IfA1fFHmPtyyYIibzTu5oi4A6ltGVhQBuQodgQIWk8RRq/g/Y2hN9cnFj/9gelQ2Bd8CeYa6ibQ6nt4SgxzeweuMR+KtddOS1Rns9BdHrLg1Uu6Ybhzo2N9SC7TeQCX7V5GP2TfdQvVEvVfnD/veg==
 Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id p8-20020a056402074800b0056022d78141sm1124432edy.56.2024.02.06.07.21.03
+        by smtp.gmail.com with ESMTPSA id ca3-20020a170906a3c300b00a35d6482fdbsm1270170ejb.77.2024.02.06.07.24.11
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 06 Feb 2024 07:21:04 -0800 (PST)
-Message-ID: <07c825c7-5036-4b9a-946d-eaaaeb4c050b@baylibre.com>
-Date: Tue, 6 Feb 2024 16:21:03 +0100
+        Tue, 06 Feb 2024 07:24:12 -0800 (PST)
+Message-ID: <282d07cf-97b4-423f-b148-42a5d5ff9d10@baylibre.com>
+Date: Tue, 6 Feb 2024 16:24:11 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 8/9] drm/mediatek: dsi: Compress of_device_id entries
- and add sentinel
+Subject: Re: [PATCH v4 9/9] drm/mediatek: dsi: Use
+ mipi_dsi_pixel_format_to_bpp() helper function
 Content-Language: en-US
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  chunkuang.hu@kernel.org
 References: <20240206120748.136610-1-angelogioacchino.delregno@collabora.com>
- <20240206120748.136610-9-angelogioacchino.delregno@collabora.com>
+ <20240206120748.136610-10-angelogioacchino.delregno@collabora.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20240206120748.136610-9-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240206120748.136610-10-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240206_072107_496634_852C5790 
-X-CRM114-Status: UNSURE (   6.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240206_072415_475019_2265F6D0 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,10 +99,19 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
 On 06/02/2024 13:07, AngeloGioacchino Del Regno wrote:
-> All entries fit in 82 columns, which is acceptable: compress all of
-> the mtk_dsi_of_match[] entries to a single line for each.
+> Instead of open coding, use the mipi_dsi_pixel_format_to_bpp() helper
+> function from drm_mipi_dsi.h in mtk_dsi_poweron() and for validation
+> in mtk_dsi_bridge_mode_valid().
 > 
-> While at it, also add the usual sentinel comment to the last entry.
+> Note that this function changes the behavior of this driver: previously,
+> in case of unknown formats, it would (wrongly) assume that it should
+> account for a 24-bits format - now it will return an error and refuse
+> to set clocks and/or enable the DSI.
+> 
+> This is done because setting the wrong data rate will only produce a
+> garbage output that the display will misinterpret both because this
+> driver doesn't actually provide any extra-spec format support and/or
+> because the data rate (hence, the HS clock) will be wrong.
 
 -- 
 Regards,
