@@ -4,67 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D187C48297
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Feb 2024 19:12:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44FFFC4829B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Feb 2024 23:34:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D2OvECw22Q5BgjGgES2GE/cj2wE+wa6UeJvpJpV2/xA=; b=G4o6fIYvm0+8UnesN+ZAg6rqOV
-	6FJz7mSWETUWnx7F/Pl67O4uKvIy1I0+CmLikc+SluQT4qKiazx6gbckJU2+J01I5fOvGZqflcouw
-	xG37gC0mO8TsSAP4eDRMt9EJXERtjjSbZlcyln6Ub8651uDx7jvvr5BTFxF5HoWhNUypjhLInOJCu
-	E7Gp/dkKTKRY7A2mfSbI4f7kX5yX5JEUB39i05FsM8o8VYWQvY5LdvPEexDiH8NyjMjSfSAhivD8/
-	BXe66LeIuqNUA3V2v43yHBSbt0Vh+JeuMyrVIdgtm5wiFLR6MgyYNe19R/f7/2HAN2Ne2VIY4ygCS
-	rTDBI0Qg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=J3t/dCk69ENxLEtiFl6GrgXJweCO07ULmDgCmo0QZh4=; b=Mp/JUK4sFSH0A7
+	iAgHGc7iqbsd+Q5XG9FYacljKkCddLI7O23miA+uVlPe0Z+Q20vTeNE6jp4UKSmD9kNdasYvrSU7j
+	o6g2JE2A+nhVjjSBZ+zbzpYxvPoog07MVsVlm9GLUgM4NF/hilRGPbDmhhhpqfdVlhpZgNrCTxhJH
+	DEs9DsJYMYCTfme2NBrV4c3RnPTrIhvYQ4fRMSno+4kRTO4vmOhZyjXE57mUB0eDXkC3/nT6MNU0q
+	mlao1LM2aJBE0HQVMYQdZSrB7HfkKdV3cS4hC7MuW8ucDDc/EbdixYZDjc2oUMe7SUuZ1MGvMN/sV
+	RaITHJQyzeMeXa0/RtuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXQrt-00000008eWI-1eRB;
-	Tue, 06 Feb 2024 19:12:29 +0000
-Received: from relay8-d.mail.gandi.net ([217.70.183.201])
+	id 1rXUwy-00000009BxI-0qqe;
+	Tue, 06 Feb 2024 23:34:00 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXQrq-00000008eUv-0NPe
+	id 1rXUwt-00000009Bv8-0oIx
 	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Feb 2024 19:12:27 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 82F731BF207;
-	Tue,  6 Feb 2024 19:12:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1707246741;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=D2OvECw22Q5BgjGgES2GE/cj2wE+wa6UeJvpJpV2/xA=;
-	b=PkuBisEY6c4fyspRm7MgI4OZgeWLGfeUHFJc2NSejPhYd7i5x4k4jAYmFGhhe7q0sqryj4
-	sQ7Eom6w3g++5HWtxmvbJa1T3Tjyj+ywv2ipmZGq4meBIhNXDBmwldAZO1sOFZBJ3gOZgQ
-	Sw/DRJX36lPiYCBggPHiGXjv1OvA6CU+3aDJ8AyfIjuyNKWdN3l99TNE181SvYpChh0Mp8
-	D04fqY9A7SETFkYdaLWyw5YtMINnGCh47bn+TQ8nQoUtgvCHnkKMqZ/wKd5xJPROkB5TU7
-	6RA53ANELXnsyiPWlcGk3vsz39Qrd+pxmIdPHN1T97QvLMMwwd056MpVv7rYVw==
-Message-ID: <99ff1729-b076-4a58-b241-461d5425a4e5@arinc9.com>
-Date: Tue, 6 Feb 2024 22:12:17 +0300
+	Tue, 06 Feb 2024 23:33:57 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a36126ee41eso4340466b.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Feb 2024 15:33:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1707262432; x=1707867232; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=J3t/dCk69ENxLEtiFl6GrgXJweCO07ULmDgCmo0QZh4=;
+        b=n8K+fKZuvDU1/j9M4z+DOzJM5JKHHnAo2r2lcFjavu3C3/rHjarpp5d9R5jFvGP4D0
+         uwK9VQ+mKG9SgQbOe3DRShw5FIynVH95r1pTl/53XQen9OY5f4QfqrV16hgiVB4thUlD
+         AGJrsa8KyFqOpMlvlb7WaOW2ZJeDG86v2mMCSdRiGgX9+ftkemsRkQzZg/xRkaI9G6qN
+         Upf41lQCWISapwa6u87m7Ub8ncIb7LbX7cNV/gmUNrUGXDnmsuKAbKUNY9VRtpZ4Ogaw
+         r5XoW5tlm+R8ARYd/VSCUbVC0+NOBmo54Tyti5s7lCZIlcI/nB+VA/TGehpjiPj1EaYv
+         2syA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1707262432; x=1707867232;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=J3t/dCk69ENxLEtiFl6GrgXJweCO07ULmDgCmo0QZh4=;
+        b=gP2xs+E2txUVMJ2aBYjf9DIxsZIUp3gvv2Vh+2XJrBmJh+5jPMAEquJs8Z/u0ktbqw
+         G8rABdl1zzurVsRbQylidBjIUhxPQJCxRwmlTp4h7BRQSA27qLDgwBfsjKtefPPmyCH5
+         AQlXmyOO9BUKxSQt1mnvmEc6A3/p9IvyhEpLQdj4+Lqmpq0LcZw+sbDFOP8flGLfROYe
+         vO/4arR8z2SYBB1K1E6Ipyu6SaDJyrNx5hHq4q7HzABcRBxZOjjXodR7IGisJHJeixhN
+         gZ5ucuv2RSIwzxObktV6rJwwlJYjzlZG/4Tglk30puD/6U10+UN+J8sNcfJ6fosUs5Xh
+         9WBg==
+X-Gm-Message-State: AOJu0Yz/ki1FFEVPoOZ0qRwa4gMX/FITtZG265Ef+kwz9gHjuNhjuxLs
+	Zh0qvs2WTIWTRS63qk6XTIXPSbdb5DvUKptkO1giZyRuL4Oqeb3SgihggJiEjLw=
+X-Google-Smtp-Source: AGHT+IHChQ4b8HUl5ZWL3mUPsNr4TOqpEOvJqMc5tmddRtG1OJQD1z/pv6D8ttNAMEN6b8MIDkzaUA==
+X-Received: by 2002:a17:906:301b:b0:a38:2694:46f9 with SMTP id 27-20020a170906301b00b00a38269446f9mr2007544ejz.71.1707262432016;
+        Tue, 06 Feb 2024 15:33:52 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCVSQTuvLi1jJ2nPud0S4+sepdTgNa2Nigx8K+PbWd4I4nELkynhotStbXMK3XK4l1oPPAlzspPSo7I5EUjyxzeYGtsOJ446PZEfG6TICWzDQKVYHF1VPjs7PKAps+L4kNOzIyuyGyaZ7Xc57+/I6qhT5nID5ty6ydEM5ssVOgApdNVxl7Y8rANft9+lA27/gn52HSi25F5H3Cz0zd0sbjeoZXTXww/rlOJRjY99QCdElgPMIIvVFP/E5NbmYqpuDPsC2safVHqDZfZM6h4SB8+s5jzhIjCBIQ0O9zHgiVMsg+ARJkCDHpEpFo/E1cQlddUr8/SbuUxuAW5f3uBoZ896CZHmM4frx0S/o60mN3K11X9oTCU39WxHPWOneUWS
+Received: from [127.0.1.1] ([62.231.97.49])
+        by smtp.gmail.com with ESMTPSA id un9-20020a170907cb8900b00a36ed37683fsm72404ejc.215.2024.02.06.15.33.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 06 Feb 2024 15:33:51 -0800 (PST)
+From: Abel Vesa <abel.vesa@linaro.org>
+Subject: [PATCH RFC 0/2] spmi: Add multi master support
+Date: Wed, 07 Feb 2024 01:33:41 +0200
+Message-Id: <20240207-spmi-multi-master-support-v1-0-ce57f301c7fd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC] aquantia-firmware: package MediaTek's Aquantia
- AQR113C firmware
-Content-Language: en-US
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- Robert Marko <robimarko@gmail.com>
-Cc: openwrt-devel@lists.openwrt.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
- <rafal@milecki.pl>, Christian Marangi <ansuelsmth@gmail.com>,
- Daniel Golle <daniel@makrotopia.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-References: <20240205132308.24015-1-zajec5@gmail.com>
- <CAOX2RU6pZb+WfZAj8+EZnye=uwcA0FTSpAspApXA90QLOb1ihQ@mail.gmail.com>
- <b3b72faf-46fe-48db-996c-5e7e4e7b47f1@gmail.com>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <b3b72faf-46fe-48db-996c-5e7e4e7b47f1@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIANXBwmUC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIxMDIwNz3eKC3Ezd3NKcEiCZWFySWqRbXFpQkF9UomthbJRobmCSZG5umaQ
+ E1F9QlJqWWQE2O1opyM1ZKba2FgBmdoGrcAAAAA==
+To: Stephen Boyd <sboyd@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ Abel Vesa <abel.vesa@linaro.org>
+X-Mailer: b4 0.12.4
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1122; i=abel.vesa@linaro.org;
+ h=from:subject:message-id; bh=uUa/Ho3Wm4SxUj+BbGgsm/fyqzW+5eMAhtSXlwrvm0M=;
+ b=owEBbQKS/ZANAwAKARtfRMkAlRVWAcsmYgBlwsHXBTBDUHkw22LNTcEGnFGBZ3ed0WbfJnF1y
+ niQsAL7VQWJAjMEAAEKAB0WIQRO8+4RTnqPKsqn0bgbX0TJAJUVVgUCZcLB1wAKCRAbX0TJAJUV
+ VnnLD/9XlbcGQXYnjM2J4ynDwPwRpDPDYJJrZSrHKt8dkZozLK0uEUvFivSsgRF0Oa2MrJNyeh9
+ i4ixNnZwvFa4jB5SFVFJuFvwgja1dJwPLwCzdqIm+voss5v9XYt254D+N5uuCxcVcrfHQAPE78m
+ pTBy6rnrXPVYzDjp2jJByWbXPZwPp2GdCQeBGrffVWQOqVfpGQZuU1/MnuDOD/3Lwv6qukgVTHP
+ PrXx012Ts341rhufybu/z9dKotXDjg0kRPL0gdhoxxLpn2/lD3Dt/k2GSnHGutcTft2VPTRIzV2
+ IGBwztmXS/ACt2EqGFNqEYxnFwu16buKMsusbjPB0fd8pdhXCle+2yHTUGQ3lzcjeBk9i99o+cc
+ BD+dQqVlRWmpvTSmibrAbpGQWdc41TuOW+YAmE443hK3g1/mPrX6GQqooXF15+PMgYshkU0vPNE
+ xZmFp7ilYWRRH9MiuxZfELbYURWAyiFIRxYKhka6XvT1KFD018ttajfW1gqcgY4F1rCfuhIPobq
+ 5bvuBXl3cgQbH2baq5QmIVI0nu5EWjwtMoqIqcZR5xcrECQ4gRl1aLVM5k0iLwdpDdpdDWrLeRJ
+ SfmhNv233g7TsVX9ZE+Zffge/GXh6lfbb7vw8vbVBqEw+a1AfFEF0tGmven58863MIMLeJapq84
+ W2uCzVA1cmdE42A==
+X-Developer-Key: i=abel.vesa@linaro.org; a=openpgp;
+ fpr=6AFF162D57F4223A8770EF5AF7BF214136F41FAE
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240206_111226_427388_E33A666C 
-X-CRM114-Status: GOOD (  16.69  )
+X-CRM114-CacheID: sfid-20240206_153355_452914_54FCBFCE 
+X-CRM114-Status: UNSURE (   7.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,89 +115,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5.02.2024 22:10, Rafał Miłecki wrote:
-> On 5.02.2024 15:15, Robert Marko wrote:
->> On Mon, 5 Feb 2024 at 14:23, Rafał Miłecki <zajec5@gmail.com> wrote:
->>>
->>> From: Rafał Miłecki <rafal@milecki.pl>
->>>
->>> Aquantia AQR113C is PHY that needs loading a firmware. Some devices may
->>> have it stored on flash and some need filesystem to provide it.
->>>
->>> MediaTek holds its own AQR113C firmware file for its boards. Package it.
->>
->> Hi Rafal, not going into details of this patch, but what is the
->> license situation with
->> redistributing the AQR firmware?
-> 
-> Good question. I don't know.
-> 
-> Cc linux-mediatek@
-> Can we get some licensing help, please?
-> 
-> 
-> 
-> Initial firmware file
-> Rhe-05.06-Candidate7-AQR_Mediatek_23B_StartOff_ID45623_VER36657.cld was
-> added in the commit:
-> 
-> commit 24ba51c5be18613127b2d8407b0223174624b130
-> Author: developer <developer@mediatek.com>
-> Date:   Tue Nov 15 11:22:46 2022 +0800
-> 
->      [][kernel][mt7988][eth][Change AQR113C firmware download method to MDIO gangload]
-> 
->      [Description]
->      Change AQR113C firmware download method to MDIO gangload.
-> 
->      If without this patch, AQR113C cannot boot from MDIO gangload.
-> 
->      [Release-log]
->      N/A
-> 
-> 
->      Change-Id: Iddc29f5e1c73c772bcea9313938b6daccc10025a
->      Reviewed-on: https://gerrit.mediatek.inc/c/openwrt/feeds/mtk_openwrt_feeds/+/6781059
-> 
-> with not licensing details.
-> 
-> 
-> 
-> Later there was a firmware update update handled by adding file:
-> Rhe-05.06-Candidate9-AQR_Mediatek_23B_P5_ID45824_LCLVER1.cld in the commit:
-> 
-> commit 405b1e31f924b97d379719fb39f0d28c0fac43a9
-> Author: developer <developer@mediatek.com>
-> Date:   Tue Mar 28 17:00:41 2023 +0800
-> 
->      [][kernel][mt7988][eth][Fix AQR113C 5GBASE-T compliance test mode4 tone1 fail issue]
-> 
->      [Description]
->      Fix AQR113C 5GBASE-T compliance test mode4 tone1 fail issue by
->      updating firmware version to
->      Rhe-05.06-Candidate9-AQR_Mediatek_23B_P5_ID45824_LCLVER1.cld.
-> 
->      If without this patch, AQR113C might not pass the 5GBASE-T mode4 tone1
->      items for the compliance test.
-> 
->      [Release-log]
->      N/A
-> 
-> 
->      Change-Id: I3b2c6e6cf1a6ba8183daa7e30110ff2c839c5989
->      Reviewed-on: https://gerrit.mediatek.inc/c/openwrt/feeds/mtk_openwrt_feeds/+/7305781
-> 
-> but again with not licensing info.
-> 
-> 
-> 
-> I also can't find any readme file specifying licensing of those files.
+Newer SPMI controller (v7) found on Qualcomm platforms
+provide support for multiple bus master. So add support
+for multiple masters in both the generic framework and
+the Qualcomm SPMI PMIC Arbiter driver.
 
-Maybe these should be submitted to the linux-firmware repository (by
-MediaTek or with MediaTek's approval) and the license specified on the
-WHENCE file.
+Currently, the DT child nodes of the spmi controller node
+are the slave devices connected to the bus. This patchset
+proposes another layer of nodes in between. They would be
+the master bus nodes. They will not be populated as separate
+devices as they need to share register regions with the controller.
 
-https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/
+Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
+---
+Abel Vesa (2):
+      spmi: Add support for multi-master
+      spmi: pmic-arb: Add support for multi-master
 
-Arınç
+ drivers/spmi/spmi-mtk-pmif.c |   6 +-
+ drivers/spmi/spmi-pmic-arb.c | 711 +++++++++++++++++++++++++++----------------
+ drivers/spmi/spmi.c          |  76 +++--
+ include/linux/spmi.h         |  10 +-
+ 4 files changed, 506 insertions(+), 297 deletions(-)
+---
+base-commit: ac139fc7db67968e5061715508b5fc4aa7c40c56
+change-id: 20240207-spmi-multi-master-support-832a704b779b
+
+Best regards,
+-- 
+Abel Vesa <abel.vesa@linaro.org>
+
 
