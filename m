@@ -4,88 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D03EC4828D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Feb 2024 06:48:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB2CFC48286
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Feb 2024 09:36:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2lFZZPCNVNZhzbCa5T+MjLLbKaAPsyPoqZFZFvC6rVk=; b=Y9uNWQQQRwO1ItnHdPea1JEkSq
-	95c3tYGnUM44ZcGJDSYhS+rEgWluoB9Wcqe/IFSVEUt76rmtnPd1KnaLlzOfeSfxgGJrFf4czMQKd
-	eEZEsns6KxcNwCAMhBeLSEV2IWRwS+zYTXIf2UF0wbmUZISfmQCppnKICjkIx98IZBn+9SdgkskL5
-	VIK9NCtHFnupgZFt8oy6qDdWJNe7iYmcevn4+tcfM6z9QxPOWS1RU+9YcM8imM7fAVoGqrIb0bEUo
-	FnRGLO6CDO1/QJr8O+rha1lLxHAKSHHza4M+s1Pn9JQ/pp4T18TdqB0LWEeQHxhRkNLG8JuCptEuC
-	2OXEMalQ==;
+	bh=DAUPRVj2d36QHvauXsU80MNcpE6CDWuy71z4S1wK1mc=; b=wI6iFTEhJqOImyJsqPRQ1Lu9mH
+	TUrbP4WV/mZJD8YW6pALfeFOUkXcE0kjRG+ZDox+L9aaQjWxDdvMwvnq00aQYfW1f4sATWR5PGSia
+	heMPgi0SodlfCI3RUyETHgaUYkgIEURSRJO/gwn9gNrGaK6Jm8ylgrhJvYtTBSWosiUwGSPw8OtVE
+	CbpTFdL/XktuuVMecozjRZ8005pMUT9MuLajDQrp80mfkNpsNdwzQlyCjAlX4XvadoSQP4REXTtB/
+	0lRULK8BYWZguO0CLif2YuQYi5shbs2gH5jLPTR939dkO1YmUAO7k+CG1sLTccSg+eoxlXaoZIJQY
+	QG1MrY+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXFG5-00000006Doe-1Vkz;
-	Tue, 06 Feb 2024 06:48:41 +0000
-Received: from mout.web.de ([212.227.15.14])
+	id 1rXHsF-00000006kWM-48Ri;
+	Tue, 06 Feb 2024 09:36:15 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXFG1-00000006DoA-2nYJ
-	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Feb 2024 06:48:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de; s=s29768273;
-	t=1707202098; x=1707806898; i=markus.elfring@web.de;
-	bh=2lFZZPCNVNZhzbCa5T+MjLLbKaAPsyPoqZFZFvC6rVk=;
-	h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:
-	 In-Reply-To;
-	b=iuBBtHdqFjB2sYjgipc1iMpbV22LTAxj/3DgvdYl3uIEJWFxCcYew29Q7bHs/CmC
-	 ebgQQuQha25yh96Yogx11P2ij3Lb8McRD5dIRQK4ItDbAoGjFpa5WbPJI7DjPOg/1
-	 kNsm3eQarO7JkVjzZhvyA8wI9wFgESt0Y8aKqRGy/YVzRcEeLNPcZOMHqrKyWBjG0
-	 0YCkVCT6WtbbqkCazeJ/riTNzaUgSMQi4RYqLGQ+aWDjNToJfE6xtTzMlQxxmYBnu
-	 P6WYaRX6iRu84ODQ39o85UpHHDJ7DQabUN3opJP5eR3MpnSWzy9pzxQz2D7fCtjrT
-	 FLR68XxRgSCaWbQIpQ==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.85.95]) by smtp.web.de (mrweb006
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1N30ZN-1qs6gh0KuD-013NaD; Tue, 06
- Feb 2024 07:48:18 +0100
-Message-ID: <8ffda85d-8fc4-4329-ac7c-1afa6c1eaa2e@web.de>
-Date: Tue, 6 Feb 2024 07:48:07 +0100
+	id 1rXHsC-00000006kUe-3Yjj;
+	Tue, 06 Feb 2024 09:36:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1707212171;
+	bh=NhbpdPDBmnVFx0EVPpJONGSyWZuJoDuIStBqdre5bZA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=JpKBrn/1t6RP4RVGRisa9V+YNBr00tokMKCMNHNE2yFCUdViyJY71ZjW/LbG8ZwS1
+	 dSvr6OAlmkM3y54zH382SGdcS50P0Ka+KJkplyDKddVe4vLDXgUPtGTsPXPQR2qSsk
+	 fgO9UeNEsDuULd91k49NQdzj65LJAnPKG030v8cAnBD3Jb9LELJfyqMNO4XqCho1wg
+	 WjYHl+Ae50GJsHFkhP3OWb0WNskhJRe2X29tfsgA+24tCJyChAGOw0Xz2DXtgm/DV5
+	 esWe0vFvn4/IIcfk5LbzwiHAPruQRW3+0JOkS/CBNAk1pAcRUp6wgvO+er8ktl6fFx
+	 14UX3rsjxEyhQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 706E93782039;
+	Tue,  6 Feb 2024 09:36:10 +0000 (UTC)
+Message-ID: <736ee63e-a066-49e8-b1fd-62f0fc665389@collabora.com>
+Date: Tue, 6 Feb 2024 10:36:09 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] pmdomain: mediatek: Use
- devm_platform_get_and_ioremap_resource() in init_scp()
-To: Geert Uytterhoeven <geert@linux-m68k.org>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-pm@vger.kernel.org, kernel-janitors@vger.kernel.org,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- Ulf Hansson <ulf.hansson@linaro.org>
-Cc: LKML <linux-kernel@vger.kernel.org>
-References: <da6af483-5ee9-45cd-922e-d9d5364674dc@web.de>
- <CAMuHMdUxn4Ne7kmEfONz8Uk3Why3m9r83GdM5RzTxm_4Gj_a6g@mail.gmail.com>
- <8f011126-c95a-4c71-8bc9-a6b0a5823c96@web.de>
- <CAMuHMdUQLWBQemtgnCHj64wCYAET8J2-MgbisyMChSbh0k0L7w@mail.gmail.com>
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <CAMuHMdUQLWBQemtgnCHj64wCYAET8J2-MgbisyMChSbh0k0L7w@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:o/3aMV1nQUNLqPKmjne/+7bI2APDOaggdys0QHaQrW0+OKONMkj
- sbqB6ZmxIPsUzqviRRKqYrOo3CpGDTOwnTZMY0Y6r9FAOqGGz3hMJjedOanCNM0Gn6TS2u0
- sCfXkd+jN4WNZByF3kKzfTjMGNjfMfaMHrF9rAnF/Ys0KvHM42yTwzsTcgGerrfjFN6MqDZ
- PqQMjLlgpR61ZYKxM66tg==
-UI-OutboundReport: notjunk:1;M01:P0:7MxG6CeOe7w=;413LJvkTnNOJdKCs/lCykWnD2Kt
- BQT/UvQT71F5jO2KIRqATDo8w4RUIuLmDApmmtav+YMa3Ji20AeE3JMk1vJlau7eLC0kowAV4
- /8IRhk0BKXY+UmudkMp4AkAXEcO/sOCnsVJAHPlScYHgQA4fqMGlo5kKsm98BPLy8Zi+z3E00
- fFF2noJrZssdxBxxo54CTmSZ5NFukL5H1t48QwpFoYrAlfNAiiiisHPo1LwzUu4a5S73U++VC
- e3Tmv1VpghL2FEvxf5cy30cOzdTGIsHGWfieiBRd7HtnVyBEDn4F13kMK+G3SezR4vJv2X+rH
- DjhitoPaQkHncYR7tjral7yvnnVEdVyMuj7PIO19TpzsVcObV1aZg3ATqCuiup3aRzl/KxCM5
- RP8OAxbdLX3kRshzRs+D5RccfWOxbkrZUyqlHbs7cr2yDbjktuR5q8q3meiBLKOL3KsHGaaDM
- eGgo77a/UhN0Bwt2r3zcFwCIS8GVWKqUXx+ycJggwZN5uv51p9grMQpc4bTSNW6bEMjI6eH9o
- az2EmGRbt6Znsj2thyYziC7egRaYLBFKoRUKPvTHG8k+upFJUmvWWYs/87gXc34NzjfppYgV5
- NUJ5XG80ztfLvV4bP5qimen441rNJVSHLA7T06isu0DDd0KBJD6ytPxvJXDsx67STTDaT7XXL
- 0Jx5yG3N+4c8S8k/dHBwq6KxZe8ObazKVBbLHnrfFzhpyxauE/O/OxA2Rzle5Yia+MCwTrK6Z
- 1Z6tA9n4I5VcHcdWuBfuSveB8XqnHNiQSM4ovo1q1aO8lN6Bmzbx9erfx8Y2TVO0m3dWmAt/V
- HTjHOgUjvW1hi6+VUAz7ANL9DJdVtKEgZGsdeKIU7indI=
+Subject: Re: [PATCH v2 19/19] power: reset: syscon-poweroff: Use
+ devm_register_sys_off_handler(POWER_OFF)
+Content-Language: en-US
+To: Andrew Davis <afd@ti.com>, Sebastian Reichel <sre@kernel.org>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Cristian Ciocaltea <cristian.ciocaltea@gmail.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>, Ray Jui
+ <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Sean Wang
+ <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-actions@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240205194437.180802-1-afd@ti.com>
+ <20240205194437.180802-20-afd@ti.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240205194437.180802-20-afd@ti.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240205_224838_089113_286A7DC3 
-X-CRM114-Status: UNSURE (   6.38  )
+X-CRM114-CacheID: sfid-20240206_013613_051142_3D8AC0CD 
+X-CRM114-Status: UNSURE (   4.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,25 +85,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-=E2=80=A6
->> I got another idea after looking at the implementation of the function
->> =E2=80=9Cdevm_platform_get_and_ioremap_resource=E2=80=9D once more.
->> https://elixir.bootlin.com/linux/v6.8-rc3/source/drivers/base/platform.=
-c#L87
-=E2=80=A6
-> Yes, you can pass a NULL pointer as the last parameter.
+Il 05/02/24 20:44, Andrew Davis ha scritto:
+> Use device life-cycle managed register function to simplify probe and
+> exit paths.
+> 
+> Signed-off-by: Andrew Davis <afd@ti.com>
 
-Would you like to support any approaches which can make interface descript=
-ions clearer
-for such an implementation detail?
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-
-> And as this is very common, the wrapper devm_platform_ioremap_resource()=
- exists.
-
-I find further collateral evolution interesting for the involved parameter=
- reduction.
-
-Regards,
-Markus
 
