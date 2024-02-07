@@ -4,82 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71FDBC4828D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 09:44:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A2F2C4828F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 09:55:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6Qq9fKE0PbbyCrGJIA20pSw+ym9q88uvFFEEL0mTROA=; b=1XyssM2wV2RK4wSievgApvVDhi
-	5PQVpj7nIGDGTMwdG+QcXBvzGcfUfKdl9rGWfEjTW5izq4CrQv3kRGy2LM9CFxXj/u0LB3Q2yRUga
-	SA+oVe6n60jTNA1krWHl76v3SlMX+q23/FAEtE/MvF4fLNEpDp15JEqvrHns6kHOIgak45tHzgzv8
-	2WNwsrjjie83IFly/7v4E8ciAic6MhusAOmbOpQJH4xNTxYDN2SDoIiDSjEivdu7Om7OlT3AsWBvp
-	VPQ/aPOMv2umOd/EKHNxQ3pzRvW0sV86U14Zyxby5F9Sw4yQuju0xRaixP192ziiiieWBLxogCOAi
-	6yh6QEoA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fsRZs51W2huLngb3aSHYllyqQl8VP5fXmWHfrrQr+1k=; b=2kdDBUyrnYoLdt
+	4nn6lzm5Fjly0PUEA6NOvuRVAFcknc4if/d6d1iUzNOYoB56UCLeQ6wegO8NPsZd9VfpAApPncleY
+	ICPRLgrmXBlCHiwGTyaMZwOHCzt9Ko/u5jV37v1kg0vzafFcHZQ99EBejh553C8uWev7zF02uRAeM
+	Sq9Y0HrMg7SbLnpBgjuZKnNzjpJKsUTY84d4NB+PBgatDEo1plkwvqfHU9JCZe1CdrqBl1eynxTVA
+	0M/nagWBBJ3+eiH4uYtWHI5pnB50o1upHYsV5kMePDLxknx+ANg0RO7HJuHbEJnTOy5hEk3aao6Pu
+	D9ISK4ProcbuU0//c3eA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXeTr-0000000AEsE-15Z2;
-	Wed, 07 Feb 2024 09:44:35 +0000
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+	id 1rXeeB-0000000AGnV-4AHJ;
+	Wed, 07 Feb 2024 09:55:15 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXeTo-0000000AErG-0rTj
+	id 1rXee9-0000000AGlr-129H
 	for linux-mediatek@lists.infradead.org;
-	Wed, 07 Feb 2024 09:44:33 +0000
-Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-6049b3deee8so622137b3.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 07 Feb 2024 01:44:31 -0800 (PST)
+	Wed, 07 Feb 2024 09:55:15 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-40fe79f1aaaso3481235e9.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 07 Feb 2024 01:55:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1707299071; x=1707903871; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=6Qq9fKE0PbbyCrGJIA20pSw+ym9q88uvFFEEL0mTROA=;
-        b=mIa4k5OPjGwjfIkp+tYRdrsf8mAbvy4Rw0l0GCyg5qbzJYzArHjmCbNLpiQP5gVUd9
-         tjdyGBUMwpH4YXDmwOdZ/nUIJmAGLeHHFcKcYbjirrFNdOeLVdy+L0qFhs1UXewv8bzz
-         T8sCqHHEEmJWAbWMuHPkn+fa1dt2FNVNh0OwnQLou3VxKMCsYVT5L6sCSy8aTB5YJDdL
-         k14pcz/jfb/W3YnkKp9e01JlYmbgzBXs04bXXcIoDUCi3bqg/kMXTlLsbvZjWoSnNdni
-         xlkx4r1cr3toGJZRPvg/M/lrVyLOZ6ME0L0zd86lK2RP4KgVfVJlkWcCdzNp9SNGsFXB
-         KWpA==
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1707299710; x=1707904510; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=fsRZs51W2huLngb3aSHYllyqQl8VP5fXmWHfrrQr+1k=;
+        b=YCrhVCJppe2nMPq6pT6UOT5LIQ1gbi93gGPTafQs3oPo59R4wFb5qeMAxUwjAGOjo7
+         rJhKYJWcXO4pKhLPw8HLEdhn25VKnr6H+tQRvClS53I6DzCwZvn9D9+xqfpPWeJWMf8j
+         Sp1wWYvx7nnwo/raCjNHby6HFwBxuD9myYFVMYcQ7F+qUgbhcQSH3HqVor8Jw5C0PBeN
+         DNvUpAmPSyGWtTUQGuwAS6HYoBZ9KHRzzhoNYj4ZdZERJHplp/caETtHo5kdVddUqZHQ
+         qQNIm6TjdOp/mfBX8jyt1VMZZHR2HcGbwFYSVNDB/xXcSNxw5pZ0L77QhYzufkuesQs+
+         EagQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707299071; x=1707903871;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=6Qq9fKE0PbbyCrGJIA20pSw+ym9q88uvFFEEL0mTROA=;
-        b=VmGx3nNWgeGqlStoHJ41mDkSbumffeA9HrvGLNopaGGMdNspAoxE/oDU/iJmq1WOV/
-         YZAJPgBrsDJNjRS0hUz8VToswVSH45VDaZaEF+xCumH20+XpbL665S7RknUmCgYCaySs
-         QytG+AOHO8MJGl4pQ1HvFPpw47t/49xCcgb6V3ebfyxroakQNDeGMPXCUG42MCVFayv/
-         OjttvDKFEDKU7Ogf8mX0H58tgHoXt901vCjYHZQT2DBsgSTluzivQJnC0TLju9tnK521
-         VgZoi8l+wRbhdqvCLy44AdCEffHr5zCz6iK6kHBvEmyKXyAoxNgaOjPCh5IH6Ut5bo0i
-         2BAA==
-X-Gm-Message-State: AOJu0YwRJVk8vvdW1EE75H6XMgQpCJr/C16l6mPHINL/2K0qnR0z0zd1
-	ek0yhlYWCNvwOYrq3y5xrmS+sX8z9+bJy8avy342xuuMosUawZCL1LLKlcEuBX1zYQrd6B2bLxY
-	pWb0dAlkWNLMuIbB2uwGBPFgu2LBsz0Mc1S+lCA==
-X-Google-Smtp-Source: AGHT+IGnNsEbsmiOhjkKEnxryb14NGX6I9zOgtrEXZxh49eoiYIjEQ/Cu/1+CeZbgwi0SgrY+47qDSRAYACNAXYqpdQ=
-X-Received: by 2002:a81:4893:0:b0:5ff:7cca:a434 with SMTP id
- v141-20020a814893000000b005ff7ccaa434mr3711732ywa.51.1707299070789; Wed, 07
- Feb 2024 01:44:30 -0800 (PST)
+        d=1e100.net; s=20230601; t=1707299710; x=1707904510;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=fsRZs51W2huLngb3aSHYllyqQl8VP5fXmWHfrrQr+1k=;
+        b=EUG9YKrMBd3BbTnVpdNAoCEO/Lb2ezILXMwFduOwCVUkCQXfVm++3HPePXd2x6EYts
+         +UWsnEYPwZks+rwnmyGzwCuCu1qhLZSKsoLq8uvqbuiVoWehKxElJtlEByqJWG8G/+0H
+         GlJ5ixBFvmBUXqoqK1F2228TVgad+UOdpX9xh8XNNV5AhC8OR/n+TeZYnkIW/polk0lZ
+         YRoMRNMknHY92iIE+6h6A/ce+0Wv4KbO1pShB6ebC46oMfG9oMVS5y+USML/hpSYoP6m
+         m4WMQO9oDQkjErfD41tMgfGvNJYVEU9bGycEitaJH3sWZIGMSl+AR/vQ/U91DkANdzlj
+         /KQw==
+X-Gm-Message-State: AOJu0YyZTataeocGLBCB4tU4iVbbxg4o4wzN1FvFume1qWf3bxo04t9W
+	+jFlOqtac0vpcwi48EGkD9ksFnlFqYKSBNs24nVJ3/NDyzKKyHMPjr5IkJ+zldQ=
+X-Google-Smtp-Source: AGHT+IG7N3OfmAh54zPppxgxnipuAkjejir3UBYj6pe+R+53DlWxcD0lVN8Xy4HfG00GDYpT1e67lg==
+X-Received: by 2002:adf:ce8c:0:b0:33b:136a:95a3 with SMTP id r12-20020adfce8c000000b0033b136a95a3mr2875503wrn.28.1707299709759;
+        Wed, 07 Feb 2024 01:55:09 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCWomvasDY2y1JGYC41yi3XjKUcCAy+WjDD4t4v3x0Py0iVpS7KfDv1ihzcoSIGyJDs9LYYnSaZ9fVzQIbMxYSQddfp8BcaLQPOmNuHTxP0Iq3nKxKzxCYdg5Amf2xeEnKy64aN9m8kBu/Y+G8fqpLaCgUrbByqQO5y14+C2vcwkn906lbapgjN3P9YUIbT0CwDgRn4OxG9kOMqi2wJLn5digJZ2gLiWgHsG+LSTfjqwUg32N2xvJHUSKhjyYbeycS6tsV13hPkwZlniyYYpr+1XW9zDtc2Jk6XvtZUPvYjgT1Ovve5EMo9BDAjQT2jSLISuzRUJ/qWitiGBJqvLZXczHzEPtiShAn8QqCcU56rFp3agu6i3oSNL9XqzAS1I2ntzuQAt078dz8WPVcmbJz8L2srFCMgE2eVFDg==
+Received: from [10.101.1.8] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.gmail.com with ESMTPSA id f7-20020a5d4dc7000000b0033b51e2b9b8sm23808wru.23.2024.02.07.01.55.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 07 Feb 2024 01:55:09 -0800 (PST)
+Message-ID: <843e34a5-f175-4bda-a2f1-2ea3b56b68f5@baylibre.com>
+Date: Wed, 7 Feb 2024 10:55:07 +0100
 MIME-Version: 1.0
-References: <20240207-spmi-multi-master-support-v1-0-ce57f301c7fd@linaro.org>
- <20240207-spmi-multi-master-support-v1-1-ce57f301c7fd@linaro.org>
- <CAA8EJpqsJmv36=o1aTjVH6eMHXMg8BHNpiDvs+Q8YB23ezVGtQ@mail.gmail.com>
- <ZcMvFtAwQQjAZhk6@linaro.org> <CAA8EJprqWLX7_yWZzKp3FAKFGkSkk041f9hj1uXuRBrbH5APyQ@mail.gmail.com>
- <ZcNIddeG6VHxBEOQ@linaro.org>
-In-Reply-To: <ZcNIddeG6VHxBEOQ@linaro.org>
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Wed, 7 Feb 2024 11:44:19 +0200
-Message-ID: <CAA8EJprgkM9fO967Swrzjf4PYuVoSpmXLU-zadN4eKhjez30Gg@mail.gmail.com>
-Subject: Re: [PATCH RFC 1/2] spmi: Add support for multi-master
-To: Abel Vesa <abel.vesa@linaro.org>
-Cc: Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/9] drm/mediatek: dsi: Use GENMASK() for register mask
+ definitions
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ chunkuang.hu@kernel.org
+References: <20240206120748.136610-1-angelogioacchino.delregno@collabora.com>
+ <20240206120748.136610-2-angelogioacchino.delregno@collabora.com>
+ <f91db779-ad94-4c18-9a06-1029da4edaab@baylibre.com>
+ <c1e2c380-21b5-47c1-b83b-f7f2b481df21@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <c1e2c380-21b5-47c1-b83b-f7f2b481df21@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240207_014432_277730_E241AD74 
-X-CRM114-Status: GOOD (  31.66  )
+X-CRM114-CacheID: sfid-20240207_015513_308991_DDC16F36 
+X-CRM114-Status: UNSURE (   6.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,84 +95,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: p.zabel@pengutronix.de, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, daniel@ffwll.ch, matthias.bgg@gmail.com, kernel@collabora.com, airlied@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 7 Feb 2024 at 11:08, Abel Vesa <abel.vesa@linaro.org> wrote:
->
-> On 24-02-07 09:23:09, Dmitry Baryshkov wrote:
-> > On Wed, 7 Feb 2024 at 09:19, Abel Vesa <abel.vesa@linaro.org> wrote:
-> > >
-> > > On 24-02-07 01:55:39, Dmitry Baryshkov wrote:
-> > > > On Wed, 7 Feb 2024 at 01:34, Abel Vesa <abel.vesa@linaro.org> wrote:
-> > > > >
-> > > > > Some newer SPMI controllers support multiple bus masters.
-> > > > > Such a master can control multiple slave devices. The generic
-> > > > > framework needs to be able to pass on the master id to the
-> > > > > controller-specific driver. So do that. The framework will
-> > > > > check if the devicetree child nodes are actually bus masters
-> > > > > and will register the devices for each master. The legacy
-> > > > > approach will still be supported for backwards compatibility.
-> > > >
-> > > > Please remind me, are those two actual bus musters driving a single
-> > > > bus in parallel or two SPMI buses being handled by a single device? In
-> > > > the latter case this implementation is incorrect. There should be
-> > > > multiple spmi_controller instances, one for each bus. Allocate them in
-> > > > a loop and set ctrl->dev.of_node after allocating.
-> > >
-> > > It's two SPMI buses (two sets of wires) handled by the same controller,
-> > > HW-wise.
-> > >
-> > > If we register two spmi controllers with the kernel framework, it will
-> > > be HW inaccurate, because there is just one controller which has
-> > > multiple masters.
-> >
-> > struct spmi_controller is a controller for a single bus. Inside your
-> > device you have two SPMI buses, each can be controlled by its own
-> > struct spmi_controller. Just like devices that control multiple I2C,
-> > SPI or USB busses register a separate instance of the bus controller.
->
-> Well, this is what this patchset is trying to do in the generic part.
-> The SPMI controller supports multiple buses (HW-wise) and therefore SW
-> implementation shouldn't be tied to single bus requirement.
-
-SPMI controller doesn't support multiple buses. You have a device
-which has two SPMI controllers inside. Just like all multi-bus
-controllers.
-
->
-> >
-> > >
-> > > I'm not saying it might not work. But, to me, it looks more like a hack.
-> > >
-> > > Basically, we would be mapping HW bus masters to kernel controllers.
-> >
-> > Buses, not just masters.
-> >
-> > >
-> > > >
-> > > > >
-> > > > > Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
-> > > > > ---
-> > > > >  drivers/spmi/spmi-mtk-pmif.c |  6 ++--
-> > > > >  drivers/spmi/spmi-pmic-arb.c | 10 +++---
-> > > > >  drivers/spmi/spmi.c          | 76 ++++++++++++++++++++++++++++++--------------
-> > > > >  include/linux/spmi.h         | 10 +++---
-> > > > >  4 files changed, 67 insertions(+), 35 deletions(-)
-> > > >
-> > > > --
-> > > > With best wishes
-> > > > Dmitry
-> >
-> >
-> >
-> > --
-> > With best wishes
-> > Dmitry
 
 
+On 06/02/2024 16:53, AngeloGioacchino Del Regno wrote:
+>>>   #define DSI_PSCTRL        0x1c
+>>> -#define DSI_PS_WC            0x3fff
+>>> -#define DSI_PS_SEL            (3 << 16)
+>>> +#define DSI_PS_WC            GENMASK(14, 0)
+>>> +#define DSI_PS_SEL            GENMASK(19, 16)
+>>
+>> 0011 0000 0000 0000 0000 => GENMASK(17, 16)
+> 
+> Alexandre, the reason for that is in the commit description :-P
+> 
+> "While at it, also fix the DSI_PS_SEL mask to include all bits instead
+> of just a subset of them."
+
+Oh sorry...
+
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
 -- 
-With best wishes
-Dmitry
+Regards,
+Alexandre
 
