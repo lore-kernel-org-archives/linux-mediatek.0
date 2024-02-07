@@ -4,59 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A4E0C4828D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 14:53:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9972C4828D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 14:53:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wgAyo2Bh+Pp+nyHzp/ivVJ+qX01QQEUgj9liubamrS0=; b=reEG6C301GnIOv
-	2KTYUC32N55qXSnNUsgUznnQDO75MtvtMeuN5xAwZw7/iReXGeXjEIvI5Vvw76Ng+uAKsrYDMnkS4
-	mEUk/3bBFAWq6p19MNINfR5f+uhvxhut8rSPwv9PB/e/k3CahyFqiJZDRWJH9aDXAkB9eda7GVxeA
-	5VX3+XVSyBSVHofjQmpI4q6zo7yZu2XoyK9vKtKJN37WHbEeXgl/L22aY9s1GHpbtK2+bhAKsy3TX
-	GXXTJ+zrc2XEWasNhoTuq3NRWlsbWq2TjV/WozZS57VDPPxgsMwcoJUvneLRBe+R3b7hxeLD6R/8Y
-	H7hB8w++oQvEciJzT6bQ==;
+	List-Owner; bh=ELCSrMTC+6R9mP9c7xyf0kHK7dpZlmjrq/e2HJGHPjE=; b=wAAUgq9Stv/Ht0
+	7p9eJ8l/cMD8MfiTmoPg3/AvholVz1mOg9ijBqSx+/3yNO9NYouf8Co1tPp9ICwNIotgrIj8ocgXE
+	asw41UaFSgMzWlurblRQNXy7le3O98gGE0kkFQeHrtDIsoaBwB80m8gH5w49qsiue5p31B4jOFRun
+	8sumE/LgiPXOwt0pnduzLsQTaP6TFkKJkRCTZH1TsgT5pFdZO8fk4llJyQvpThV9VFP2cWbE7fOW+
+	4TjXHtr3E3VN+ZmhLfjjkxGQhcb2UDQVctEHxnkdFI8D7c3udZ3IBf3v4T+L59ne2UR3wAbTjaTxc
+	eiPDQ2tu/IPxyF6fp3Hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXjIh-0000000AymE-0i7U;
-	Wed, 07 Feb 2024 14:53:23 +0000
+	id 1rXjIj-0000000Ayog-1nr6;
+	Wed, 07 Feb 2024 14:53:25 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXjIa-0000000AyiB-2qF7;
-	Wed, 07 Feb 2024 14:53:17 +0000
+	id 1rXjIc-0000000Ayis-3ErG;
+	Wed, 07 Feb 2024 14:53:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1707317595;
-	bh=zBMjlcbiKu6XccSNoWq0I9ENCzJJnrNqKTV00u6JsDQ=;
+	s=mail; t=1707317597;
+	bh=jGk/KNxt01mLk7K8ftidsFFvgZjFPmjzURhw+205rOU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=VNbMQFrX6jTNVHuuClUk7k584JbBXYYd+vZrizo15qcTpqN07FiZv7XVuQ+eHFVeT
-	 bVrITgrPO4Lh4ysRatg6mn0ELY7DNsFnpOo0cdyDx/XH/yaj706H1/miyILqVijBFE
-	 KeOYA6xWzcen2OhHDdAtG2XQdYD8qQsT7O7cXsrSeQQMdn+zBZMPRpRMtSJyqWxTni
-	 zMroo4BXCH3I/e/PTvXfabFWk/KQgz92Tg5OLUMn7kAHJWd9E5+cWe883+X5fHqMLX
-	 VzT5/rwXpOyvSCIiY8XgIU5zJHTItHfJmFW6GYV7WLrRuSUuS4fyl6bavZhWTeUPnV
-	 GafJ4qlLOIBJw==
+	b=h1vJn5adtIQgUiJTXALxWctWQYA23NNfNQasSD9P+BAt94eWCdLeE1kvP+NnG7E6k
+	 FP4AAkZF+K57imDYePkOiH1c8dmtoYFjOalaSKTHFKE+8BHd21ENCLhEUOkQRBBdin
+	 STnPebQFCEf+uNV/SXMbQj9fLVgmmqnM5fStUGgdujLvxQXlNww8Nwe9B+7LMsC4an
+	 1J/YhYC9RoAPegTYsAyreWvtpiEJ9fgytLlvrMr98/+I05zHFyCkIOnD853s8rCt8+
+	 F2+VWNIk/4l9zvZ4IQuf2iE5RUOm+jDnrvuIQohVQEBPV17rA/lKZ/Ifq+QxKKy2Y/
+	 lASxIT3Bca8gg==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 84B013782072;
-	Wed,  7 Feb 2024 14:53:14 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B34A23782076;
+	Wed,  7 Feb 2024 14:53:16 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
-Subject: [PATCH v5 1/9] drm/mediatek: dsi: Use GENMASK() for register mask definitions
-Date: Wed,  7 Feb 2024 15:52:59 +0100
-Message-ID: <20240207145307.1626009-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v5 3/9] drm/mediatek: dsi: Cleanup functions mtk_dsi_ps_control{_vact}()
+Date: Wed,  7 Feb 2024 15:53:01 +0100
+Message-ID: <20240207145307.1626009-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240207145307.1626009-1-angelogioacchino.delregno@collabora.com>
 References: <20240207145307.1626009-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240207_065316_863709_CAEEE173 
-X-CRM114-Status: UNSURE (   7.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240207_065318_967868_82B4D87A 
+X-CRM114-Status: GOOD (  10.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,104 +71,139 @@ Cc: p.zabel@pengutronix.de, Alexandre Mergnat <amergnat@baylibre.com>, linux-ker
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change magic numerical masks with usage of the GENMASK() macro
-to improve readability.
+Function mtk_dsi_ps_control() is a subset of mtk_dsi_ps_control_vact():
+merge the two in one mtk_dsi_ps_control() function by adding one
+function parameter `config_vact` which, when true, writes the VACT
+related registers.
 
-This commit brings no functional changes.
-
+Reviewed-by: Fei Shao <fshao@chromium.org>
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 45 +++++++++++++++---------------
- 1 file changed, 23 insertions(+), 22 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 76 +++++++++---------------------
+ 1 file changed, 23 insertions(+), 53 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index a2fdfc8ddb15..c66e18006070 100644
+index 8af0afbe9e3d..7d38e9500700 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -58,18 +58,18 @@
+@@ -351,40 +351,6 @@ static void mtk_dsi_set_vm_cmd(struct mtk_dsi *dsi)
+ 	mtk_dsi_mask(dsi, DSI_VM_CMD_CON, TS_VFP_EN, TS_VFP_EN);
+ }
  
- #define DSI_TXRX_CTRL		0x18
- #define VC_NUM				BIT(1)
--#define LANE_NUM			(0xf << 2)
-+#define LANE_NUM			GENMASK(5, 2)
- #define DIS_EOT				BIT(6)
- #define NULL_EN				BIT(7)
- #define TE_FREERUN			BIT(8)
- #define EXT_TE_EN			BIT(9)
- #define EXT_TE_EDGE			BIT(10)
--#define MAX_RTN_SIZE			(0xf << 12)
-+#define MAX_RTN_SIZE			GENMASK(15, 12)
- #define HSTX_CKLP_EN			BIT(16)
+-static void mtk_dsi_ps_control_vact(struct mtk_dsi *dsi)
+-{
+-	struct videomode *vm = &dsi->vm;
+-	u32 dsi_buf_bpp, ps_wc;
+-	u32 ps_bpp_mode;
+-
+-	if (dsi->format == MIPI_DSI_FMT_RGB565)
+-		dsi_buf_bpp = 2;
+-	else
+-		dsi_buf_bpp = 3;
+-
+-	ps_wc = vm->hactive * dsi_buf_bpp;
+-	ps_bpp_mode = ps_wc;
+-
+-	switch (dsi->format) {
+-	case MIPI_DSI_FMT_RGB888:
+-		ps_bpp_mode |= PACKED_PS_24BIT_RGB888;
+-		break;
+-	case MIPI_DSI_FMT_RGB666:
+-		ps_bpp_mode |= LOOSELY_PS_24BIT_RGB666;
+-		break;
+-	case MIPI_DSI_FMT_RGB666_PACKED:
+-		ps_bpp_mode |= PACKED_PS_18BIT_RGB666;
+-		break;
+-	case MIPI_DSI_FMT_RGB565:
+-		ps_bpp_mode |= PACKED_PS_16BIT_RGB565;
+-		break;
+-	}
+-
+-	writel(vm->vactive, dsi->regs + DSI_VACT_NL);
+-	writel(ps_bpp_mode, dsi->regs + DSI_PSCTRL);
+-	writel(ps_wc, dsi->regs + DSI_HSTX_CKL_WC);
+-}
+-
+ static void mtk_dsi_rxtx_control(struct mtk_dsi *dsi)
+ {
+ 	u32 tmp_reg;
+@@ -416,36 +382,40 @@ static void mtk_dsi_rxtx_control(struct mtk_dsi *dsi)
+ 	writel(tmp_reg, dsi->regs + DSI_TXRX_CTRL);
+ }
  
- #define DSI_PSCTRL		0x1c
--#define DSI_PS_WC			0x3fff
--#define DSI_PS_SEL			(3 << 16)
-+#define DSI_PS_WC			GENMASK(13, 0)
-+#define DSI_PS_SEL			GENMASK(17, 16)
- #define PACKED_PS_16BIT_RGB565		(0 << 16)
- #define LOOSELY_PS_18BIT_RGB666		(1 << 16)
- #define PACKED_PS_18BIT_RGB666		(2 << 16)
-@@ -109,26 +109,26 @@
- #define LD0_WAKEUP_EN			BIT(2)
+-static void mtk_dsi_ps_control(struct mtk_dsi *dsi)
++static void mtk_dsi_ps_control(struct mtk_dsi *dsi, bool config_vact)
+ {
+-	u32 dsi_tmp_buf_bpp;
+-	u32 tmp_reg;
++	struct videomode *vm = &dsi->vm;
++	u32 dsi_buf_bpp, ps_wc;
++	u32 ps_bpp_mode;
++
++	if (dsi->format == MIPI_DSI_FMT_RGB565)
++		dsi_buf_bpp = 2;
++	else
++		dsi_buf_bpp = 3;
++
++	ps_wc = vm->hactive * dsi_buf_bpp;
++	ps_bpp_mode = ps_wc;
  
- #define DSI_PHY_TIMECON0	0x110
--#define LPX				(0xff << 0)
--#define HS_PREP				(0xff << 8)
--#define HS_ZERO				(0xff << 16)
--#define HS_TRAIL			(0xff << 24)
-+#define LPX				GENMASK(7, 0)
-+#define HS_PREP				GENMASK(15, 8)
-+#define HS_ZERO				GENMASK(23, 16)
-+#define HS_TRAIL			GENMASK(31, 24)
+ 	switch (dsi->format) {
+ 	case MIPI_DSI_FMT_RGB888:
+-		tmp_reg = PACKED_PS_24BIT_RGB888;
+-		dsi_tmp_buf_bpp = 3;
++		ps_bpp_mode |= PACKED_PS_24BIT_RGB888;
+ 		break;
+ 	case MIPI_DSI_FMT_RGB666:
+-		tmp_reg = LOOSELY_PS_24BIT_RGB666;
+-		dsi_tmp_buf_bpp = 3;
++		ps_bpp_mode |= LOOSELY_PS_24BIT_RGB666;
+ 		break;
+ 	case MIPI_DSI_FMT_RGB666_PACKED:
+-		tmp_reg = PACKED_PS_18BIT_RGB666;
+-		dsi_tmp_buf_bpp = 3;
++		ps_bpp_mode |= PACKED_PS_18BIT_RGB666;
+ 		break;
+ 	case MIPI_DSI_FMT_RGB565:
+-		tmp_reg = PACKED_PS_16BIT_RGB565;
+-		dsi_tmp_buf_bpp = 2;
+-		break;
+-	default:
+-		tmp_reg = PACKED_PS_24BIT_RGB888;
+-		dsi_tmp_buf_bpp = 3;
++		ps_bpp_mode |= PACKED_PS_16BIT_RGB565;
+ 		break;
+ 	}
  
- #define DSI_PHY_TIMECON1	0x114
--#define TA_GO				(0xff << 0)
--#define TA_SURE				(0xff << 8)
--#define TA_GET				(0xff << 16)
--#define DA_HS_EXIT			(0xff << 24)
-+#define TA_GO				GENMASK(7, 0)
-+#define TA_SURE				GENMASK(15, 8)
-+#define TA_GET				GENMASK(23, 16)
-+#define DA_HS_EXIT			GENMASK(31, 24)
+-	tmp_reg += dsi->vm.hactive * dsi_tmp_buf_bpp & DSI_PS_WC;
+-	writel(tmp_reg, dsi->regs + DSI_PSCTRL);
++	if (config_vact) {
++		writel(vm->vactive, dsi->regs + DSI_VACT_NL);
++		writel(ps_wc, dsi->regs + DSI_HSTX_CKL_WC);
++	}
++	writel(ps_bpp_mode, dsi->regs + DSI_PSCTRL);
+ }
  
- #define DSI_PHY_TIMECON2	0x118
--#define CONT_DET			(0xff << 0)
--#define CLK_ZERO			(0xff << 16)
--#define CLK_TRAIL			(0xff << 24)
-+#define CONT_DET			GENMASK(7, 0)
-+#define CLK_ZERO			GENMASK(23, 16)
-+#define CLK_TRAIL			GENMASK(31, 24)
+ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+@@ -521,7 +491,7 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+ 	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
+ 	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
  
- #define DSI_PHY_TIMECON3	0x11c
--#define CLK_HS_PREP			(0xff << 0)
--#define CLK_HS_POST			(0xff << 8)
--#define CLK_HS_EXIT			(0xff << 16)
-+#define CLK_HS_PREP			GENMASK(7, 0)
-+#define CLK_HS_POST			GENMASK(15, 8)
-+#define CLK_HS_EXIT			GENMASK(23, 16)
+-	mtk_dsi_ps_control(dsi);
++	mtk_dsi_ps_control(dsi, false);
+ }
  
- #define DSI_VM_CMD_CON		0x130
- #define VM_CMD_EN			BIT(0)
-@@ -138,13 +138,14 @@
- #define FORCE_COMMIT			BIT(0)
- #define BYPASS_SHADOW			BIT(1)
+ static void mtk_dsi_start(struct mtk_dsi *dsi)
+@@ -666,7 +636,7 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 	mtk_dsi_reset_engine(dsi);
+ 	mtk_dsi_phy_timconfig(dsi);
  
--#define CONFIG				(0xff << 0)
-+/* CMDQ related bits */
-+#define CONFIG				GENMASK(7, 0)
- #define SHORT_PACKET			0
- #define LONG_PACKET			2
- #define BTA				BIT(2)
--#define DATA_ID				(0xff << 8)
--#define DATA_0				(0xff << 16)
--#define DATA_1				(0xff << 24)
-+#define DATA_ID				GENMASK(15, 8)
-+#define DATA_0				GENMASK(23, 16)
-+#define DATA_1				GENMASK(31, 24)
- 
- #define NS_TO_CYCLE(n, c)    ((n) / (c) + (((n) % (c)) ? 1 : 0))
- 
+-	mtk_dsi_ps_control_vact(dsi);
++	mtk_dsi_ps_control(dsi, true);
+ 	mtk_dsi_set_vm_cmd(dsi);
+ 	mtk_dsi_config_vdo_timing(dsi);
+ 	mtk_dsi_set_interrupt_enable(dsi);
 -- 
 2.43.0
 
