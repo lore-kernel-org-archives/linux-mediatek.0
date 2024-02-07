@@ -4,85 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A2F2C4828F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 09:55:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49250C4828D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 10:48:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fsRZs51W2huLngb3aSHYllyqQl8VP5fXmWHfrrQr+1k=; b=2kdDBUyrnYoLdt
-	4nn6lzm5Fjly0PUEA6NOvuRVAFcknc4if/d6d1iUzNOYoB56UCLeQ6wegO8NPsZd9VfpAApPncleY
-	ICPRLgrmXBlCHiwGTyaMZwOHCzt9Ko/u5jV37v1kg0vzafFcHZQ99EBejh553C8uWev7zF02uRAeM
-	Sq9Y0HrMg7SbLnpBgjuZKnNzjpJKsUTY84d4NB+PBgatDEo1plkwvqfHU9JCZe1CdrqBl1eynxTVA
-	0M/nagWBBJ3+eiH4uYtWHI5pnB50o1upHYsV5kMePDLxknx+ANg0RO7HJuHbEJnTOy5hEk3aao6Pu
-	D9ISK4ProcbuU0//c3eA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GvnB5ueesQjpAOjR8nVz/seYPxt7xYcubH1vH2siBcI=; b=HoKH3MXqs3MRiOdoemOk+4jGXA
+	EWQPR3FKoovyVU9UdiTEnrAM3eNncmZrY+0Vlf44n5ZsLjfoEHwIcKx06mYAidZCb0Zy4u3XOZ60S
+	fJeETx9RZDYUeohJgBgChajZk+7rzllExkz3mtGoDvQTTwgXZwI1XgsOs/qoaaXj03uE/Vo7K+I7q
+	I/EoMb7h0WoSNJWr7pQdW7I7j/Ool9zQQ6LPjp03R4N/WulVMfy3KS4BqJ4OlOdP5KJucILzhb/ym
+	dnJxeiNHuNzJAkwBgX8lIzGaQqSyemTlxL/9IE8oGT55PX1Qfrwe3urZfajTgFS7fwlibvZMLriZ4
+	7hdWnz0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXeeB-0000000AGnV-4AHJ;
-	Wed, 07 Feb 2024 09:55:15 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1rXfTr-0000000AOmo-1qPj;
+	Wed, 07 Feb 2024 10:48:39 +0000
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXee9-0000000AGlr-129H
+	id 1rXfTo-0000000AOlK-0O8c
 	for linux-mediatek@lists.infradead.org;
-	Wed, 07 Feb 2024 09:55:15 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-40fe79f1aaaso3481235e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 07 Feb 2024 01:55:11 -0800 (PST)
+	Wed, 07 Feb 2024 10:48:37 +0000
+Received: by mail-yb1-xb36.google.com with SMTP id 3f1490d57ef6-dc6cbe1ac75so378060276.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 07 Feb 2024 02:48:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1707299710; x=1707904510; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=fsRZs51W2huLngb3aSHYllyqQl8VP5fXmWHfrrQr+1k=;
-        b=YCrhVCJppe2nMPq6pT6UOT5LIQ1gbi93gGPTafQs3oPo59R4wFb5qeMAxUwjAGOjo7
-         rJhKYJWcXO4pKhLPw8HLEdhn25VKnr6H+tQRvClS53I6DzCwZvn9D9+xqfpPWeJWMf8j
-         Sp1wWYvx7nnwo/raCjNHby6HFwBxuD9myYFVMYcQ7F+qUgbhcQSH3HqVor8Jw5C0PBeN
-         DNvUpAmPSyGWtTUQGuwAS6HYoBZ9KHRzzhoNYj4ZdZERJHplp/caETtHo5kdVddUqZHQ
-         qQNIm6TjdOp/mfBX8jyt1VMZZHR2HcGbwFYSVNDB/xXcSNxw5pZ0L77QhYzufkuesQs+
-         EagQ==
+        d=linaro.org; s=google; t=1707302914; x=1707907714; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=GvnB5ueesQjpAOjR8nVz/seYPxt7xYcubH1vH2siBcI=;
+        b=rzsbNFNJhp8frPi7l7jcWWgGUJ+h9jFW95JhtE37kfm4O4v5qL9SwXi7PFoOwEpINQ
+         s48FSIdaRMrCLjfxl1BR21kk9M4xhdYNLaU3hFGt7nWCprEYK331y9SkRGCH5xpHaDVd
+         WCHHWa1JXB5dyKLvrpVSvW7qSUoZLbnVCDWNkUcOyFOmsEOiM7Tk/xgD/e15Z1J6moZQ
+         2JoOZmqF4OmTboqhqmzMK1sg4aQIFo+n54kjTfY/AmtKASFpow6ej3/xpewbQ/JrdtgN
+         Oqbmvgzi2rkSOtVZ4O9QuJid6o5rrkFVGjdS6sHjcNRh2mrvO7X3WP9W6ANA65II7sVU
+         +2Aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707299710; x=1707904510;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=fsRZs51W2huLngb3aSHYllyqQl8VP5fXmWHfrrQr+1k=;
-        b=EUG9YKrMBd3BbTnVpdNAoCEO/Lb2ezILXMwFduOwCVUkCQXfVm++3HPePXd2x6EYts
-         +UWsnEYPwZks+rwnmyGzwCuCu1qhLZSKsoLq8uvqbuiVoWehKxElJtlEByqJWG8G/+0H
-         GlJ5ixBFvmBUXqoqK1F2228TVgad+UOdpX9xh8XNNV5AhC8OR/n+TeZYnkIW/polk0lZ
-         YRoMRNMknHY92iIE+6h6A/ce+0Wv4KbO1pShB6ebC46oMfG9oMVS5y+USML/hpSYoP6m
-         m4WMQO9oDQkjErfD41tMgfGvNJYVEU9bGycEitaJH3sWZIGMSl+AR/vQ/U91DkANdzlj
-         /KQw==
-X-Gm-Message-State: AOJu0YyZTataeocGLBCB4tU4iVbbxg4o4wzN1FvFume1qWf3bxo04t9W
-	+jFlOqtac0vpcwi48EGkD9ksFnlFqYKSBNs24nVJ3/NDyzKKyHMPjr5IkJ+zldQ=
-X-Google-Smtp-Source: AGHT+IG7N3OfmAh54zPppxgxnipuAkjejir3UBYj6pe+R+53DlWxcD0lVN8Xy4HfG00GDYpT1e67lg==
-X-Received: by 2002:adf:ce8c:0:b0:33b:136a:95a3 with SMTP id r12-20020adfce8c000000b0033b136a95a3mr2875503wrn.28.1707299709759;
-        Wed, 07 Feb 2024 01:55:09 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCWomvasDY2y1JGYC41yi3XjKUcCAy+WjDD4t4v3x0Py0iVpS7KfDv1ihzcoSIGyJDs9LYYnSaZ9fVzQIbMxYSQddfp8BcaLQPOmNuHTxP0Iq3nKxKzxCYdg5Amf2xeEnKy64aN9m8kBu/Y+G8fqpLaCgUrbByqQO5y14+C2vcwkn906lbapgjN3P9YUIbT0CwDgRn4OxG9kOMqi2wJLn5digJZ2gLiWgHsG+LSTfjqwUg32N2xvJHUSKhjyYbeycS6tsV13hPkwZlniyYYpr+1XW9zDtc2Jk6XvtZUPvYjgT1Ovve5EMo9BDAjQT2jSLISuzRUJ/qWitiGBJqvLZXczHzEPtiShAn8QqCcU56rFp3agu6i3oSNL9XqzAS1I2ntzuQAt078dz8WPVcmbJz8L2srFCMgE2eVFDg==
-Received: from [10.101.1.8] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.gmail.com with ESMTPSA id f7-20020a5d4dc7000000b0033b51e2b9b8sm23808wru.23.2024.02.07.01.55.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 07 Feb 2024 01:55:09 -0800 (PST)
-Message-ID: <843e34a5-f175-4bda-a2f1-2ea3b56b68f5@baylibre.com>
-Date: Wed, 7 Feb 2024 10:55:07 +0100
+        d=1e100.net; s=20230601; t=1707302914; x=1707907714;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=GvnB5ueesQjpAOjR8nVz/seYPxt7xYcubH1vH2siBcI=;
+        b=iP62x/JN6wWaT2RndOYkzt+Re6FsxUyeVn6sIqcNnclw+zr+OXBq8Ji7F3taXOFnYV
+         Ppamblt5XilX5PsFV1PZ8rlkRaaMW67HQOOkybElAOe84FE0XAzkipE3o6THoD8N43fZ
+         1VXeCFj8ZJvsCgcMum0lmns2AinLlXLaPtV4frZepzgjX6fBD8cJ1oqIQzbmp4A4UqnG
+         wzNkuUxk7Iq+hjEiZ0yBhJRpeQSmNsLOj/m+n2FOatsTu+eSpP9yH1ykC7qOkg53fzvl
+         QDNeKzF/9po8xahax14uJeSfGnKAhJcowVqrYu986HHEz5ICqaWbaaSXUdculYCVBB43
+         JOqw==
+X-Gm-Message-State: AOJu0YwHCoKciMwE64jxQBrzP/O3u+JxEBoCEyXbA+hdpCgVxoSvlziX
+	rS5I7M4CsW/U9nTDAyYBGnIT+unFc3nYvc8f3skpnWYyVF2QIxwZssODc0KXlO9onzi+eaPhSNw
+	K35sWJWqmP2ShHhMiZoa8DVU4UjDF/7RmxLB98Q==
+X-Google-Smtp-Source: AGHT+IEyeEd+YmW1ElXSMWlGNBIbSjnJ686ocEUtx/vkJsI/HbYPN0Ib4cxLvb7P2uWVdDqkJpUOfJUu6YpaPjdJ3OM=
+X-Received: by 2002:a05:6902:4cc:b0:dc2:58af:2af7 with SMTP id
+ v12-20020a05690204cc00b00dc258af2af7mr2987912ybs.22.1707302913682; Wed, 07
+ Feb 2024 02:48:33 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/9] drm/mediatek: dsi: Use GENMASK() for register mask
- definitions
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- chunkuang.hu@kernel.org
-References: <20240206120748.136610-1-angelogioacchino.delregno@collabora.com>
- <20240206120748.136610-2-angelogioacchino.delregno@collabora.com>
- <f91db779-ad94-4c18-9a06-1029da4edaab@baylibre.com>
- <c1e2c380-21b5-47c1-b83b-f7f2b481df21@collabora.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <c1e2c380-21b5-47c1-b83b-f7f2b481df21@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20240131071910.3950450-1-wenst@chromium.org>
+In-Reply-To: <20240131071910.3950450-1-wenst@chromium.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Wed, 7 Feb 2024 11:48:47 +0100
+Message-ID: <CACRpkdbRY70+Er-=Xv338j68NgjEKZeD5FYW9GqFY-68sCBvgA@mail.gmail.com>
+Subject: Re: [PATCH 1/2] pinctrl: mediatek: Drop bogus slew rate register
+ range for MT8186
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240207_015513_308991_DDC16F36 
-X-CRM114-Status: UNSURE (   6.40  )
+X-CRM114-CacheID: sfid-20240207_024836_166239_ED602A8E 
+X-CRM114-Status: UNSURE (   9.47  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,31 +90,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: p.zabel@pengutronix.de, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, daniel@ffwll.ch, matthias.bgg@gmail.com, kernel@collabora.com, airlied@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Jan 31, 2024 at 8:19=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> w=
+rote:
 
+> The MT8186 does not support configuring pin slew rate. This is evident
+> from both the datasheet, and the fact that the driver points the slew
+> rate register range at the GPIO direction register range.
+>
+> Drop the bogus setting.
+>
+> Fixes: 8b483bda1e46 ("pinctrl: add pinctrl driver on mt8186")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-On 06/02/2024 16:53, AngeloGioacchino Del Regno wrote:
->>>   #define DSI_PSCTRL        0x1c
->>> -#define DSI_PS_WC            0x3fff
->>> -#define DSI_PS_SEL            (3 << 16)
->>> +#define DSI_PS_WC            GENMASK(14, 0)
->>> +#define DSI_PS_SEL            GENMASK(19, 16)
->>
->> 0011 0000 0000 0000 0000 => GENMASK(17, 16)
-> 
-> Alexandre, the reason for that is in the commit description :-P
-> 
-> "While at it, also fix the DSI_PS_SEL mask to include all bits instead
-> of just a subset of them."
+Patches applied!
 
-Oh sorry...
-
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-
--- 
-Regards,
-Alexandre
+Yours,
+Linus Walleij
 
