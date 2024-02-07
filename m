@@ -4,78 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12AA2C4828D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Feb 2024 23:55:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 429B7C4828D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 01:29:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DtOrymEAdfT98LBNA0k140e2ceLpyomhr7hhmTPTgGQ=; b=v7PaNW+xrJqzGkNMKyz7185FLZ
-	+rB5WNDUMni8EggCDHsqgCTnK8h1xqu6RT3EICQZ/GN8UF4pyeArTrllTMn6/+zfWZcHIOpcMk/GX
-	/WzsMYurtVFtoOYr/J4PQRZE03I3ueEL76WPC95Nn5qUbKh0AFwvCi1UgydL3EXDL8dngzWZNblAK
-	6w0XnnVmTKfSVsudHr+wPBToeQ4Oq41WUV/TdGZwoyd53/cFoC6PyxmoHf1Q7lFd4f7rxUAPjWNTg
-	gFXWz3hNjIeJcDAKT08R9zau+OBy8JDrVAC89QpakSfNLM1E7lylp+mDpvesLk0TLcgCsXXReYwla
-	tlHe83hg==;
+	bh=Da/cbibdghj2NEz3FisfxXUKLq82O6H3toLfepBSixI=; b=YocZJ5/wx/ECSUVdOmzSqSt2Ta
+	2bQsAozGaOtu+0wXihE4O1RRx61ThFm5X1PbHySFbCAZCh1P/BIOzZUcDyQuLpaw0j3010EkpeMmm
+	4lpF4Bz/Cu3GRYEysnVZMPE68dJcDcTH/0B5gqjcnLYbJNEHiAji+ximTYDM28DCk6OMDdPDm3zHM
+	c3C6pTAyRx1k8tRscsfdQigG1w8yHgmRbAV0c5VmtswrgHDLBnoXs8JssH3cnXS+Ppg2iRLjeujyu
+	HQ5fa2A4RK0VWyn7G3gvLh/Z1UOJocAVv/nTQiKI+o1v8bXwVsgcMbIhd2loa/G8WYi1PqIAdFDo4
+	RkkIJW0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXVIB-00000009E27-24vP;
-	Tue, 06 Feb 2024 23:55:55 +0000
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+	id 1rXWlC-00000009MTg-0Cp7;
+	Wed, 07 Feb 2024 01:29:58 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXVI8-00000009E1P-30TL
-	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Feb 2024 23:55:54 +0000
-Received: by mail-yw1-x112f.google.com with SMTP id 00721157ae682-60485382886so563507b3.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Feb 2024 15:55:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1707263750; x=1707868550; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=DtOrymEAdfT98LBNA0k140e2ceLpyomhr7hhmTPTgGQ=;
-        b=f5+zedVKoYfucP6a8X5KUrvofRhxwyApEyDkF7+UHEwzyujiYJFgOg51ntbASSlTat
-         OouM7luiNOKzOnhRu+2xq+l/Bc6mA8YsZKvj49D8moXYGuPFrfl5g0ChJVE5wS2u/H/B
-         FgrDeOZgNUSGtJ7UA/9u7LHwpzqp5e/ec14H0ndovDnbFk53vIc4XbV+gpvuw1dITTvE
-         2+NRXbLh/S58Jxt6pY7607Sse8TjxXfKUprLKC2lRfNRoWE5fUY+Avkes3cAuEajeCsY
-         nI0inwVJrCcN4R8zzcssHs/jpGUBgWhX1TRfKaqu7EjuXkOMwCO3/gjIl1VO9zYJJ4Vn
-         TFqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707263750; x=1707868550;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=DtOrymEAdfT98LBNA0k140e2ceLpyomhr7hhmTPTgGQ=;
-        b=S4rbouKnN9j4hy2A3gKv9+1EwA6PcO2ZSgH9iRBoptvDrMzwCujisC5CgH7xEpjzUX
-         K0zB+9l1gPzRk9Q+RvyDcoXlXbp4zTHZbq+3+YIPovK41aUsiMFEusq+yn1IMHYw8El9
-         4yOpIlQ6PFZUUvNEoE+YroZQlNgSQjIQeAwoJogprVobxi5nWXL9Ti/LLvLzFNDwPkK2
-         JDhnOj17SPP2nMMZA18AOZw7pTM30HEW3d6DsKpcIQ7+HKEnkbG9Wb39yoXGpe64/dkz
-         odgwQEVCmUwlZPx1acT0K06VhsgPxiC0dagIe9Le5Nu3YgHI5osVdhuE90Dpiug8OfvA
-         5tGA==
-X-Gm-Message-State: AOJu0Yyv1p3fOETJoIZSw/8/rUFW+QtUODIK1pXNeaCoCpLo+VUOC2VA
-	nFk4UeKGjeEIin8lDA0bPFtJ0tsqLyQS3UK5O4Z8oFO77LtepO0S8+MjKZOU6X4v6D5s4ECA0qR
-	q5uTr5xhikzwo4QpF6r0WAGzIOO5NTutMcfUTLBpe5FJX/YD+
-X-Google-Smtp-Source: AGHT+IGISuFKG1k2BfAulBOJpI9EmvTpxTlFZrpNuJJtfFGYhSYF/J4K/1laI4Q+IHu9l22ZD8TtE9ZK7QeYlyatSnA=
-X-Received: by 2002:a81:f10e:0:b0:5ff:828e:20a with SMTP id
- h14-20020a81f10e000000b005ff828e020amr3418024ywm.48.1707263750656; Tue, 06
- Feb 2024 15:55:50 -0800 (PST)
+	id 1rXWl8-00000009MRn-1dRu;
+	Wed, 07 Feb 2024 01:29:55 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1rXWki-0004bF-0d;
+	Wed, 07 Feb 2024 01:29:28 +0000
+Date: Wed, 7 Feb 2024 01:29:18 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexander Couzens <lynxis@fe80.eu>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
+Subject: Re: [RFC PATCH net-next v3 3/8] net: pcs: pcs-mtk-lynxi: add
+ platform driver for MT7988
+Message-ID: <ZcLc7vJ4fPmRyuxn@makrotopia.org>
+References: <cover.1702352117.git.daniel@makrotopia.org>
+ <8aa905080bdb6760875d62cb3b2b41258837f80e.1702352117.git.daniel@makrotopia.org>
+ <ZXnV/Pk1PYxAm/jS@shell.armlinux.org.uk>
 MIME-Version: 1.0
-References: <20240207-spmi-multi-master-support-v1-0-ce57f301c7fd@linaro.org> <20240207-spmi-multi-master-support-v1-1-ce57f301c7fd@linaro.org>
-In-Reply-To: <20240207-spmi-multi-master-support-v1-1-ce57f301c7fd@linaro.org>
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Wed, 7 Feb 2024 01:55:39 +0200
-Message-ID: <CAA8EJpqsJmv36=o1aTjVH6eMHXMg8BHNpiDvs+Q8YB23ezVGtQ@mail.gmail.com>
-Subject: Re: [PATCH RFC 1/2] spmi: Add support for multi-master
-To: Abel Vesa <abel.vesa@linaro.org>
-Cc: Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZXnV/Pk1PYxAm/jS@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240206_155552_799777_9F01DA95 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20240206_172954_603742_EFFB5116 
+X-CRM114-Status: GOOD (  50.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,32 +86,205 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 7 Feb 2024 at 01:34, Abel Vesa <abel.vesa@linaro.org> wrote:
->
-> Some newer SPMI controllers support multiple bus masters.
-> Such a master can control multiple slave devices. The generic
-> framework needs to be able to pass on the master id to the
-> controller-specific driver. So do that. The framework will
-> check if the devicetree child nodes are actually bus masters
-> and will register the devices for each master. The legacy
-> approach will still be supported for backwards compatibility.
+Hi Russell,
 
-Please remind me, are those two actual bus musters driving a single
-bus in parallel or two SPMI buses being handled by a single device? In
-the latter case this implementation is incorrect. There should be
-multiple spmi_controller instances, one for each bus. Allocate them in
-a loop and set ctrl->dev.of_node after allocating.
+sorry for the extended time it took me to get back to this patch and
+the comments you made for it. Understanding the complete scope of the
+problem took a while (plus there were holidays and other fun things),
+and also brought up further questions which I hope you can help me
+find good answers for, see below:
 
->
-> Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
-> ---
->  drivers/spmi/spmi-mtk-pmif.c |  6 ++--
->  drivers/spmi/spmi-pmic-arb.c | 10 +++---
->  drivers/spmi/spmi.c          | 76 ++++++++++++++++++++++++++++++--------------
->  include/linux/spmi.h         | 10 +++---
->  4 files changed, 67 insertions(+), 35 deletions(-)
+On Wed, Dec 13, 2023 at 04:04:12PM +0000, Russell King (Oracle) wrote:
+> On Tue, Dec 12, 2023 at 03:47:18AM +0000, Daniel Golle wrote:
+> > Introduce a proper platform MFD driver for the LynxI (H)SGMII PCS which
+> > is going to initially be used for the MT7988 SoC.
+> > 
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> 
+> I made some specific suggestions about what I wanted to see for
+> "getting" PCS in the previous review, and I'm disappointed that this
+> patch set is still inventing its own solution.
+> 
+> > +struct phylink_pcs *mtk_pcs_lynxi_get(struct device *dev, struct device_node *np)
+> > +{
+> > +	struct platform_device *pdev;
+> > +	struct mtk_pcs_lynxi *mpcs;
+> > +
+> > +	if (!np)
+> > +		return NULL;
+> > +
+> > +	if (!of_device_is_available(np))
+> > +		return ERR_PTR(-ENODEV);
+> > +
+> > +	if (!of_match_node(mtk_pcs_lynxi_of_match, np))
+> > +		return ERR_PTR(-EINVAL);
+> > +
+> > +	pdev = of_find_device_by_node(np);
+> > +	if (!pdev || !platform_get_drvdata(pdev)) {
+> 
+> This is racy - as I thought I described before, userspace can unbind
+> the device in one thread, while another thread is calling this
+> function. With just the right timing, this check succeeds, but...
+> 
+> > +		if (pdev)
+> > +			put_device(&pdev->dev);
+> > +		return ERR_PTR(-EPROBE_DEFER);
+> > +	}
+> > +
+> > +	mpcs = platform_get_drvdata(pdev);
+> 
+> mpcs ends up being read as NULL here. Even if you did manage to get a
+> valid pointer, "mpcs" being devm-alloced could be freed from under
+> you at this point...
+> 
+> > +	device_link_add(dev, mpcs->dev, DL_FLAG_AUTOREMOVE_CONSUMER);
+> 
+> resulting in this accessing memory which has been freed.
+> 
+> The solution would be either to suppress the bind/unbind attributes
+> (provided the underlying struct device can't go away, which probably
+> also means ensuring the same of the MDIO bus. Aternatively, adding
+> a lock around the remove path and around the checking of
+> platform_get_drvdata() down to adding the device link would probably
+> solve it.
+> 
+> However, I come back to my general point - this kind of stuff is
+> hairy. Do we want N different implementations of it in various drivers
+> with subtle bugs, or do we want _one_ implemenatation.
+> 
+> If we go with the one implemenation approach, then we need to think
+> about whether we should be using device links or not. The problem
+> could be for network interfaces where one struct device is
+> associated with multiple network interfaces. Using device links has
+> the unfortunate side effect that if the PCS for one of those network
+> interfaces is removed, _all_ network interfaces disappear.
 
--- 
-With best wishes
-Dmitry
+I agree, esp. on this MT7988 removal of a PCS which may then not
+even be in use also impairs connectivity on the built-in gigE DSA
+switch. It would be nice to try to avoid this.
+
+> 
+> My original suggestion was to hook into phylink to cause that to
+> take the link down when an in-use PCS gets removed.
+
+I took a deep dive into how this could be done correctly and how
+similar things are done for other drivers. Apart from the PCS there
+often also is a muxing-PHY involved, eg. MediaTek's XFI T-PHY in this
+case (previously often called "pextp" for no apparent reason) or
+Marvell's comphy (mvebu-comphy).
+
+So let's try something simple on an already well-supported platform,
+I thought and grabbed Marvell Armada CN9131-DB running vanilla Linux,
+and it didn't even take some something racy, but plain:
+
+ip link set eth6 up
+cd /sys/bus/platform/drivers/mvebu-comphy
+echo f2120000.phy > unbind
+echo f4120000.phy > unbind
+echo f6120000.phy > unbind
+ip link set eth6 down
+
+
+That was enough. The result is a kernel crash, and the same should
+apply on popular platforms like the SolidRun MACCHIATOBin and other
+similar boards.
+
+So this gets me to think that there is a wider problem around
+non-phylink-managed resources which may disappear while in use by
+network drivers, and I guess that the same applies in many other
+places. I don't have a SATA drive connected to that Marvell board, but
+I can imagine what happens when suddenly removing the comphy instance
+in charge of the SATA link and then a subsequent SATA hotplug event
+happens or stuff like that...
+
+Anyway, back to network subsystem and phylink:
+
+Do you agree that we need a way to register (and unregister) PCS
+providers with phylink, so we don't need *_get_by_of_node implementations
+in each driver? If so, can you sketch out what the basic requirements
+for an acceptable solution would be?
+
+Also, do you agree that lack of handling of disappearing resources,
+such as PHYs (*not* network PHYs, but PHYs as in drivers/phy/*) or
+syscons, is already a problem right now which should be addressed?
+
+If you imagine phylink to take care of the life-cycle of all link-
+resources, what is vision about those things other than classic MDIO-
+connected PHYs?
+
+And well, of course, the easy fix for the example above would be:
+diff --git a/drivers/phy/marvell/phy-mvebu-cp110-comphy.c b/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
+index b0dd133665986..9517c96319595 100644
+--- a/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
++++ b/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
+@@ -1099,6 +1099,7 @@ static const struct of_device_id mvebu_comphy_of_match_table[] = {
+ MODULE_DEVICE_TABLE(of, mvebu_comphy_of_match_table);
+ 
+ static struct platform_driver mvebu_comphy_driver = {
++	.suppress_bind_attrs = true,
+ 	.probe	= mvebu_comphy_probe,
+ 	.driver	= {
+ 		.name = "mvebu-comphy",
+
+But that should then apply to every single driver in drivers/phy/...
+
+
+> 
+> > +
+> > +	return &mpcs->pcs;
+> > +}
+> > +EXPORT_SYMBOL(mtk_pcs_lynxi_get);
+> > +
+> > +void mtk_pcs_lynxi_put(struct phylink_pcs *pcs)
+> > +{
+> > +	struct mtk_pcs_lynxi *cur, *mpcs = NULL;
+> > +
+> > +	if (!pcs)
+> > +		return;
+> > +
+> > +	mutex_lock(&instance_mutex);
+> > +	list_for_each_entry(cur, &mtk_pcs_lynxi_instances, node)
+> > +		if (pcs == &cur->pcs) {
+> > +			mpcs = cur;
+> > +			break;
+> > +		}
+> > +	mutex_unlock(&instance_mutex);
+> 
+> I don't see what this loop gains us, other than checking that the "pcs"
+> is still on the list and hasn't already been removed. If that is all
+> that this is about, then I would suggest:
+> 
+> 	bool found = false;
+> 
+> 	if (!pcs)
+> 		return;
+> 
+> 	mpcs = pcs_to_mtk_pcs_lynxi(pcs);
+> 	mutex_lock(&instance_mutex);
+> 	list_for_each_entry(cur, &mtk_pcs_lynxi_instances, node)
+> 		if (cur == mpcs) {
+> 			found = true;
+> 			break;
+> 		}
+> 	mutex_unlock(&instance_mutex);
+> 
+> 	if (WARN_ON(!found))
+> 		return;
+> 
+> which makes it more obvious why this exists.
+
+The idea was not only to make sure it hasn't been removed, but also
+to be sure that what ever the private data pointer points to has
+actually been created by that very driver.
+
+But yes, doing it in the way you suggest will work in the same way,
+just when having my idea in mind it looks more fishy to use
+pcs_to_mtk_pcs_lynxi() before we are 100% sure that what we dealing
+with has previously been created by this driver.
+
+
+Cheers
+
+
+Daniel
 
