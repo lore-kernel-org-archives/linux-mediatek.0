@@ -4,56 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 983DFC4828F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 14:53:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A4E0C4828D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 14:53:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mE06ENnVWqBTCRJ6dk+NTA+VvH3d3TbOoqSEznAMgR8=; b=OxpKJOPDZ/uj9W
-	RoTT3Nt+NnoC6Jpv23RL4ZhFRKYQYqwZZxkwBn7eNEqa72h8OTeHQiumrGfaezw67X+0TRQXQG4iL
-	RcNNL0jwV8cvYQEJGLVRnn296r6gZOsEKvt4y0nMMbZyRcqL6FyqNc2ml3m8XzFyLxkDfJo61Hn5+
-	rI8Vhf9Nk9sHLzbp6Jvbg47Z53IVEUMpc00wWJyoEYaS+vT2Vw1J7Cn2HuzN5PqOMxWTjXuR11JFn
-	T2QAnNrblAdcdjidys6bm355SuTIkoaHElLM5pnzzqAgennIT5X35LLMtC9ZlyH6lr8NKW8TVoYTt
-	GzL1HQh7EVjiDDrJQVcQ==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wgAyo2Bh+Pp+nyHzp/ivVJ+qX01QQEUgj9liubamrS0=; b=reEG6C301GnIOv
+	2KTYUC32N55qXSnNUsgUznnQDO75MtvtMeuN5xAwZw7/iReXGeXjEIvI5Vvw76Ng+uAKsrYDMnkS4
+	mEUk/3bBFAWq6p19MNINfR5f+uhvxhut8rSPwv9PB/e/k3CahyFqiJZDRWJH9aDXAkB9eda7GVxeA
+	5VX3+XVSyBSVHofjQmpI4q6zo7yZu2XoyK9vKtKJN37WHbEeXgl/L22aY9s1GHpbtK2+bhAKsy3TX
+	GXXTJ+zrc2XEWasNhoTuq3NRWlsbWq2TjV/WozZS57VDPPxgsMwcoJUvneLRBe+R3b7hxeLD6R/8Y
+	H7hB8w++oQvEciJzT6bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXjIc-0000000Ayix-0SJs;
-	Wed, 07 Feb 2024 14:53:18 +0000
+	id 1rXjIh-0000000AymE-0i7U;
+	Wed, 07 Feb 2024 14:53:23 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXjIZ-0000000Ayi8-331F;
-	Wed, 07 Feb 2024 14:53:16 +0000
+	id 1rXjIa-0000000AyiB-2qF7;
+	Wed, 07 Feb 2024 14:53:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1707317594;
-	bh=7dhx+O2PyaDEDeGc1HBTFc5NQvFFIflUo1Mzmg6Ym7U=;
-	h=From:To:Cc:Subject:Date:From;
-	b=XFzFNkTFM1aH23cD74LkWG3zPLnD/HBJr9y4S6RvFGQimYbG20ztzBGPyq0S1HKw/
-	 Az8LXxflEtm+V9AK7gIAtY9M/PdzthysoHX0YBvtAiycfa8fXBIrENQn83KTRgSkH3
-	 eeUCLDrHrJWMiwm46p0w0uydiq2FYbKqIm5rYe/9FPi6lGza5N4QHinfYOZLNdHeP+
-	 pj/vP3wHY9lCUEN7LweLzugDIHXqpCQaYZkb10g77w5/E3uoH1mQxSDFtx7xcl6EcA
-	 eynQlhkUCiIOVJQj2D1McyAZPyh2285nXFJd7+c9fZi2NcXlkhTjubO5hxE5ZVSRjg
-	 PXDZv9bJKWSRg==
+	s=mail; t=1707317595;
+	bh=zBMjlcbiKu6XccSNoWq0I9ENCzJJnrNqKTV00u6JsDQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=VNbMQFrX6jTNVHuuClUk7k584JbBXYYd+vZrizo15qcTpqN07FiZv7XVuQ+eHFVeT
+	 bVrITgrPO4Lh4ysRatg6mn0ELY7DNsFnpOo0cdyDx/XH/yaj706H1/miyILqVijBFE
+	 KeOYA6xWzcen2OhHDdAtG2XQdYD8qQsT7O7cXsrSeQQMdn+zBZMPRpRMtSJyqWxTni
+	 zMroo4BXCH3I/e/PTvXfabFWk/KQgz92Tg5OLUMn7kAHJWd9E5+cWe883+X5fHqMLX
+	 VzT5/rwXpOyvSCIiY8XgIU5zJHTItHfJmFW6GYV7WLrRuSUuS4fyl6bavZhWTeUPnV
+	 GafJ4qlLOIBJw==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 778283782059;
-	Wed,  7 Feb 2024 14:53:13 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 84B013782072;
+	Wed,  7 Feb 2024 14:53:14 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
-Subject: [PATCH v5 0/9] MediaTek DRM - DSI driver cleanups
-Date: Wed,  7 Feb 2024 15:52:58 +0100
-Message-ID: <20240207145307.1626009-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v5 1/9] drm/mediatek: dsi: Use GENMASK() for register mask definitions
+Date: Wed,  7 Feb 2024 15:52:59 +0100
+Message-ID: <20240207145307.1626009-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240207145307.1626009-1-angelogioacchino.delregno@collabora.com>
+References: <20240207145307.1626009-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240207_065315_916857_F66E9111 
-X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-CacheID: sfid-20240207_065316_863709_CAEEE173 
+X-CRM114-Status: UNSURE (   7.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,50 +68,108 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: p.zabel@pengutronix.de, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, daniel@ffwll.ch, matthias.bgg@gmail.com, kernel@collabora.com, airlied@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
+Cc: p.zabel@pengutronix.de, Alexandre Mergnat <amergnat@baylibre.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, daniel@ffwll.ch, matthias.bgg@gmail.com, kernel@collabora.com, airlied@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v5:
- - Changed patch 1 to not fix the DSI_PS_SEL mask for newer SoCs
+Change magic numerical masks with usage of the GENMASK() macro
+to improve readability.
 
-Changes in v4:
- - Added a fix for RGB666 formats setting and for wrong register
-   definitions for packed vs loosely packed formats
- - Added a commit to make use of mipi_dsi_pixel_format_to_bpp() helper
-   instead of open coding the same
+This commit brings no functional changes.
 
-Changes in v3:
- - Rebased over next-20240131
- - Added bitfield.h inclusion in patch 3
- - Added three more cleanup commits to the mix to simplify
-   the probe function and remove gotos.
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 45 +++++++++++++++---------------
+ 1 file changed, 23 insertions(+), 22 deletions(-)
 
-Changes in v2:
- - Rebased over next-20231213
-
-This series performs some cleanups for mtk_dsi, enhancing human
-readability, using kernel provided macros where possible and
-also reducing code size.
-
-Tested on MT8173 and MT8192 Chromebooks (using a DSI<->DP bridge)
-and on MT6795 Sony Xperia M5 (DSI video mode panel).
-
-
-AngeloGioacchino Del Regno (9):
-  drm/mediatek: dsi: Use GENMASK() for register mask definitions
-  drm/mediatek: dsi: Fix DSI RGB666 formats and definitions
-  drm/mediatek: dsi: Cleanup functions mtk_dsi_ps_control{_vact}()
-  drm/mediatek: dsi: Use bitfield macros where useful
-  drm/mediatek: dsi: Replace open-coded instance of HZ_PER_MHZ
-  drm/mediatek: dsi: Register DSI host after acquiring clocks and PHY
-  drm/mediatek: dsi: Simplify with dev_err_probe and remove gotos
-  drm/mediatek: dsi: Compress of_device_id entries and add sentinel
-  drm/mediatek: dsi: Use mipi_dsi_pixel_format_to_bpp() helper function
-
- drivers/gpu/drm/mediatek/mtk_dsi.c | 310 ++++++++++++-----------------
- 1 file changed, 126 insertions(+), 184 deletions(-)
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index a2fdfc8ddb15..c66e18006070 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -58,18 +58,18 @@
+ 
+ #define DSI_TXRX_CTRL		0x18
+ #define VC_NUM				BIT(1)
+-#define LANE_NUM			(0xf << 2)
++#define LANE_NUM			GENMASK(5, 2)
+ #define DIS_EOT				BIT(6)
+ #define NULL_EN				BIT(7)
+ #define TE_FREERUN			BIT(8)
+ #define EXT_TE_EN			BIT(9)
+ #define EXT_TE_EDGE			BIT(10)
+-#define MAX_RTN_SIZE			(0xf << 12)
++#define MAX_RTN_SIZE			GENMASK(15, 12)
+ #define HSTX_CKLP_EN			BIT(16)
+ 
+ #define DSI_PSCTRL		0x1c
+-#define DSI_PS_WC			0x3fff
+-#define DSI_PS_SEL			(3 << 16)
++#define DSI_PS_WC			GENMASK(13, 0)
++#define DSI_PS_SEL			GENMASK(17, 16)
+ #define PACKED_PS_16BIT_RGB565		(0 << 16)
+ #define LOOSELY_PS_18BIT_RGB666		(1 << 16)
+ #define PACKED_PS_18BIT_RGB666		(2 << 16)
+@@ -109,26 +109,26 @@
+ #define LD0_WAKEUP_EN			BIT(2)
+ 
+ #define DSI_PHY_TIMECON0	0x110
+-#define LPX				(0xff << 0)
+-#define HS_PREP				(0xff << 8)
+-#define HS_ZERO				(0xff << 16)
+-#define HS_TRAIL			(0xff << 24)
++#define LPX				GENMASK(7, 0)
++#define HS_PREP				GENMASK(15, 8)
++#define HS_ZERO				GENMASK(23, 16)
++#define HS_TRAIL			GENMASK(31, 24)
+ 
+ #define DSI_PHY_TIMECON1	0x114
+-#define TA_GO				(0xff << 0)
+-#define TA_SURE				(0xff << 8)
+-#define TA_GET				(0xff << 16)
+-#define DA_HS_EXIT			(0xff << 24)
++#define TA_GO				GENMASK(7, 0)
++#define TA_SURE				GENMASK(15, 8)
++#define TA_GET				GENMASK(23, 16)
++#define DA_HS_EXIT			GENMASK(31, 24)
+ 
+ #define DSI_PHY_TIMECON2	0x118
+-#define CONT_DET			(0xff << 0)
+-#define CLK_ZERO			(0xff << 16)
+-#define CLK_TRAIL			(0xff << 24)
++#define CONT_DET			GENMASK(7, 0)
++#define CLK_ZERO			GENMASK(23, 16)
++#define CLK_TRAIL			GENMASK(31, 24)
+ 
+ #define DSI_PHY_TIMECON3	0x11c
+-#define CLK_HS_PREP			(0xff << 0)
+-#define CLK_HS_POST			(0xff << 8)
+-#define CLK_HS_EXIT			(0xff << 16)
++#define CLK_HS_PREP			GENMASK(7, 0)
++#define CLK_HS_POST			GENMASK(15, 8)
++#define CLK_HS_EXIT			GENMASK(23, 16)
+ 
+ #define DSI_VM_CMD_CON		0x130
+ #define VM_CMD_EN			BIT(0)
+@@ -138,13 +138,14 @@
+ #define FORCE_COMMIT			BIT(0)
+ #define BYPASS_SHADOW			BIT(1)
+ 
+-#define CONFIG				(0xff << 0)
++/* CMDQ related bits */
++#define CONFIG				GENMASK(7, 0)
+ #define SHORT_PACKET			0
+ #define LONG_PACKET			2
+ #define BTA				BIT(2)
+-#define DATA_ID				(0xff << 8)
+-#define DATA_0				(0xff << 16)
+-#define DATA_1				(0xff << 24)
++#define DATA_ID				GENMASK(15, 8)
++#define DATA_0				GENMASK(23, 16)
++#define DATA_1				GENMASK(31, 24)
+ 
+ #define NS_TO_CYCLE(n, c)    ((n) / (c) + (((n) % (c)) ? 1 : 0))
+ 
 -- 
 2.43.0
 
