@@ -4,69 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C125AC4828D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 20:09:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13CD2C4829A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 23:56:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=PUpe2Jbk4fy9t6F9qGtCajORXbieVm36DSqD2L9FrbQ=; b=j05EPBuZwckgTnk0YEah4RDZVt
-	pAlGaA8Y6WA5dk/b+mifgyJeXOPc6QXWJ2MZqEJoqceZ4QVJiUwYQSWXeK6h08FCjjjQLXnCatTTs
-	Jy0QvFlX+CbnoVvGywATns+OZPfCaDJ6HHaTrBMFJFT0TaqD6iHhkQvzbeKufMkgC1q9vR42UU1Uk
-	6EgvTWfBjJAhObLw31Gsdu0DA12Xg5f5hxPQ7fpI0Bc3ehCV2rk1LLnW9Vvq27OXVqQ+jF+B8WuRR
-	VQ79C7dq5l2mVYZxXuuq+9XfkHCe5FB7dpEtBtHbD5xfZO1GtFlOQQRuvsitEjj9bVsUniqd+GSMN
-	SaxGMhtw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C8MX8hAmbc+bXt3TVWxkcpF4cySt12sl3QQG2SCDKKI=; b=GFhQYBqtxDRghD96htxh2lsrLI
+	5POjD0SgY+9E1oLugYU0zVzQh7iUOKYSKo5Py+qz6xucPW5dsqkqkL9IDOy8nuqRcBmHD8ByOGV/u
+	f24hB3qqyxssY4H8bJIPcFbVbAwlO2kN+IQ/B3nhSEA24lwfoEK0tLQafLG4Mm3ICR5d2LqcsGyhY
+	IOjDr8vrmUSoLEmZmpv97VaeV/8auuXkh0g7kKJUdthw2/Lg2+VolORXZPvcRNoBSxm51kx8Z2WMe
+	muG7Z9JICuUsKlKkxHHrfmZ0Xi/Znsu4lX1ixbWXfoJl35ukHv4MpvX6Ms4sgOxKwjJrtkub0aq54
+	TSN8WmOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXoEN-0000000BfyQ-16Fo;
-	Wed, 07 Feb 2024 20:09:15 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rXrmH-0000000CGAZ-0Gdp;
+	Wed, 07 Feb 2024 23:56:29 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXoEJ-0000000BfwC-2hKq;
-	Wed, 07 Feb 2024 20:09:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1707336544;
-	bh=5PzECJm0CObzRT3GachtnhewUzsyt5UC6ouVCFeWJAo=;
-	h=From:Date:Subject:To:Cc:From;
-	b=vIkO2YUqLigxb5vwOJzXDLfScVqxvRhguAs0B1dAJ7rLb/rcNbiNjvTs8Tv1wKaaE
-	 h5VAlF++5pN6jSSQ/e4ga1ZKv4Vt2Iz0wGu8t5lpCMqvaqKbWWMbR7KF7TJvMNcpil
-	 uCo7h0rT93UulZKHU/JjTvPOCd+1Mmj/aBO9w0JX7qpzWIZzy2rBdaZm6P8KwK58Mb
-	 AzAX8c4FolpSu/8zj9PpX5/gUmibOwUrR/ICsgwR3juNNkdz0bv0e0+1BHyuvkBFz1
-	 qkRhXxwJHSp2wk2xOv6MEN5Uk7wstoiwrYA+f9DGAMxGtwEuH2QaDF+wSPBQ6DBYRd
-	 4SU3s4o3tu/WA==
-Received: from [192.168.1.249] (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4FA9937811CF;
-	Wed,  7 Feb 2024 20:09:02 +0000 (UTC)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Wed, 07 Feb 2024 15:08:42 -0500
-Subject: [PATCH RESEND] arm64: dts: mediatek: mt8192-asurada: Remove CrosEC
- base detection node
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20240207-mt8192-asurada-cbas-remove-v1-1-04cb65951975@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAEnjw2UC/zXNMQ+CMBCG4b9ibvZIW0TAyUFWBx2Nw1EOaQKUX
- JGYEP67jYnj+w3Pt0JgcRzgtFtBeHHB+TGG3u/AdjS+GF0TG4wyB2VUjsNc6NIghbdQQ2hrCig
- 8+IXRUsa6sUVZZwQRmIRb9/nhD7hV9+p6gWfcW/EDzp0w/elUK53qTOWmTPJMHVWJGsdWaIon/
- mx931PthRLrB9i2L+jnpzu2AAAA
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.12.4
+	id 1rXrmD-0000000CG9k-40Mc;
+	Wed, 07 Feb 2024 23:56:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 58A45617DB;
+	Wed,  7 Feb 2024 23:56:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B93AC433F1;
+	Wed,  7 Feb 2024 23:56:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
+	s=korg; t=1707350185;
+	bh=olXKOEtFICuarB+A1Plr5Q6pk9xJ3SBVVYmbulfIKPw=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=AP9MSno1xVJ7P5OcbiS3b8nLGkGyrV5wo314dvJCWaT2KIpEdrvqLt/o+Eb3lTMLF
+	 TyipGNpYwzssX6qnz2ncIymRZKejRRCYpTn6iFnhumkH/ZvSbfUFgfpk6XKrm6jm02
+	 JAEBRE+AZbMQGC6pFShPhx7GsjWPsYsaBOdXDAik=
+Date: Wed, 7 Feb 2024 15:56:23 -0800
+From: Andrew Morton <akpm@linux-foundation.org>
+To: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+Cc: Jan Kiszka <jan.kiszka@siemens.com>, Kieran Bingham
+ <kbingham@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ <casper.li@mediatek.com>, <chinwen.chang@mediatek.com>,
+ <qun-wei.lin@mediatek.com>, <linux-mm@kvack.org>, <urezki@gmail.com>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, "Uladzislau Rezki (Sony)"
+ <urezki@gmail.com>
+Subject: Re: [PATCH] scripts/gdb/vmalloc: fix vmallocinfo error
+Message-Id: <20240207155623.a943328ba0b77859246e0d9f@linux-foundation.org>
+In-Reply-To: <20240207085856.11190-1-Kuan-Ying.Lee@mediatek.com>
+References: <20240207085856.11190-1-Kuan-Ying.Lee@mediatek.com>
+X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240207_120911_870277_A98814CC 
-X-CRM114-Status: GOOD (  10.35  )
+X-CRM114-CacheID: sfid-20240207_155626_120469_8574E1C7 
+X-CRM114-Status: GOOD (  21.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,43 +74,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The commit adding the ChromeOS EC to the Asurada Devicetree mistakenly
-added a base detection node. While tablet mode detection is supported by
-CrosEC and used by Hayato, it is done through the cros-ec-keyb driver.
-The base detection node, which is handled by the hid-google-hammer
-driver, also provides tablet mode detection but by checking base
-attachment status on the CrosEC, which is not supported for Asurada.
+On Wed, 7 Feb 2024 16:58:51 +0800 Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com> wrote:
 
-Hence, remove the unused CrosEC base detection node for Asurada.
+> We met the gdb vmallocinfo issue as following.
+> 
+> (gdb) lx-vmallocinfo
+> Python Exception <class 'gdb.error'>: No symbol "vmap_area_list" in current context.
+> Error occurred in Python: No symbol "vmap_area_list" in current context.
+> 
+> Since Mitigate a vmap lock contention patchset [1], we
+> remove the vmap_area_list.
 
-Fixes: eb188a2aaa82 ("arm64: dts: mediatek: asurada: Add ChromeOS EC")
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 4 ----
- 1 file changed, 4 deletions(-)
+I don't think that's correct?
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index 6867c4ad04a9..9b738f6a5d21 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -1337,10 +1337,6 @@ cros_ec: ec@0 {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
- 
--		base_detection: cbas {
--			compatible = "google,cros-cbas";
--		};
--
- 		cros_ec_pwm: pwm {
- 			compatible = "google,cros-ec-pwm";
- 			#pwm-cells = <1>;
+> We need to use vmap_nodes to iterate all vmallocinfo.
+> 
+> [1] https://lore.kernel.org/linux-mm/20240102184633.748113-1-urezki@gmail.com/
 
----
-base-commit: 2ae0a045e6814c8c1d676d6153c605a65746aa29
-change-id: 20240207-mt8192-asurada-cbas-remove-ca5e1dc89b5a
+vmap_area_list was removed by https://lkml.kernel.org/r/20240102184633.748113-6-urezki@gmail.com
 
-Best regards,
--- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
+So I think this patch is actually a fix against mm.git:mm-unstable's
+mm-vmalloc-remove-vmap_area_list.patch?
 
+However this gdb function was probably probably broken earlier in that
+series, so perhaps this patch would be best staged as a predecessor to
+Ulad's vmalloc series.
+
+> Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+> Cc: Casper Li <casper.li@mediatek.com>
+> ---
+>  scripts/gdb/linux/vmalloc.py | 56 +++++++++++++++++++-----------------
+>  1 file changed, 29 insertions(+), 27 deletions(-)
+> 
+> diff --git a/scripts/gdb/linux/vmalloc.py b/scripts/gdb/linux/vmalloc.py
+> index d3c8a0274d1e..803f17371052 100644
+> --- a/scripts/gdb/linux/vmalloc.py
+> +++ b/scripts/gdb/linux/vmalloc.py
+> @@ -29,32 +29,34 @@ class LxVmallocInfo(gdb.Command):
+>          if not constants.LX_CONFIG_MMU:
+>              raise gdb.GdbError("Requires MMU support")
+>  
+> -        vmap_area_list = gdb.parse_and_eval('vmap_area_list')
+> -        for vmap_area in lists.list_for_each_entry(vmap_area_list, vmap_area_ptr_type, "list"):
+> -            if not vmap_area['vm']:
+> -                gdb.write("0x%x-0x%x %10d vm_map_ram\n" % (vmap_area['va_start'], vmap_area['va_end'],
+> -                    vmap_area['va_end'] - vmap_area['va_start']))
+> -                continue
+> -            v = vmap_area['vm']
+> -            gdb.write("0x%x-0x%x %10d" % (v['addr'], v['addr'] + v['size'], v['size']))
+> -            if v['caller']:
+> -                gdb.write(" %s" % str(v['caller']).split(' ')[-1])
+> -            if v['nr_pages']:
+> -                gdb.write(" pages=%d" % v['nr_pages'])
+> -            if v['phys_addr']:
+> -                gdb.write(" phys=0x%x" % v['phys_addr'])
+> -            if v['flags'] & constants.LX_VM_IOREMAP:
+> -                gdb.write(" ioremap")
+> -            if v['flags'] & constants.LX_VM_ALLOC:
+> -                gdb.write(" vmalloc")
+> -            if v['flags'] & constants.LX_VM_MAP:
+> -                gdb.write(" vmap")
+> -            if v['flags'] & constants.LX_VM_USERMAP:
+> -                gdb.write(" user")
+> -            if v['flags'] & constants.LX_VM_DMA_COHERENT:
+> -                gdb.write(" dma-coherent")
+> -            if is_vmalloc_addr(v['pages']):
+> -                gdb.write(" vpages")
+> -            gdb.write("\n")
+> +        nr_vmap_nodes = gdb.parse_and_eval('nr_vmap_nodes')
+> +        for i in range(0, nr_vmap_nodes):
+> +            vn = gdb.parse_and_eval('&vmap_nodes[%d]' % i)
+> +            for vmap_area in lists.list_for_each_entry(vn['busy']['head'], vmap_area_ptr_type, "list"):
+> +                if not vmap_area['vm']:
+> +                    gdb.write("0x%x-0x%x %10d vm_map_ram\n" % (vmap_area['va_start'], vmap_area['va_end'],
+> +                        vmap_area['va_end'] - vmap_area['va_start']))
+> +                    continue
+> +                v = vmap_area['vm']
+> +                gdb.write("0x%x-0x%x %10d" % (v['addr'], v['addr'] + v['size'], v['size']))
+> +                if v['caller']:
+> +                    gdb.write(" %s" % str(v['caller']).split(' ')[-1])
+> +                if v['nr_pages']:
+> +                    gdb.write(" pages=%d" % v['nr_pages'])
+> +                if v['phys_addr']:
+> +                    gdb.write(" phys=0x%x" % v['phys_addr'])
+> +                if v['flags'] & constants.LX_VM_IOREMAP:
+> +                    gdb.write(" ioremap")
+> +                if v['flags'] & constants.LX_VM_ALLOC:
+> +                    gdb.write(" vmalloc")
+> +                if v['flags'] & constants.LX_VM_MAP:
+> +                    gdb.write(" vmap")
+> +                if v['flags'] & constants.LX_VM_USERMAP:
+> +                    gdb.write(" user")
+> +                if v['flags'] & constants.LX_VM_DMA_COHERENT:
+> +                    gdb.write(" dma-coherent")
+> +                if is_vmalloc_addr(v['pages']):
+> +                    gdb.write(" vpages")
+> +                gdb.write("\n")
+>  
+>  LxVmallocInfo()
+> -- 
+> 2.18.0
 
