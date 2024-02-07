@@ -4,87 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B80D6C4828D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 09:09:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71FDBC4828D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 09:44:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=M+kTxpzDu2kDUAi4jAk/bznBJUbRFLEVKzbdXxscehs=; b=t1LH0UZRUqLuViISIgxSA0wZT8
-	yqbXYvl69yLuRndn35laFPiLd0veZJq4S9MULqO0VEZVspq0XjtXdVUqDhu5ZopQ09H3aRaXwlvpo
-	5aqx1befMquB0KVPubCUx83Qk+s60NGuTj8Gp+UG6WF5W9KgHqfRslPYzG7kqLfHJ1KqBrmCMhU/2
-	cnHXFcMyteYXkVNLPOK+O8Hv1Lt69S0qylp6bWsadiWQRrW1mLRvOQ1LaGPSMFhlgL2rpr7hMGI1J
-	zYMqcywZ/EM9Mvd1cNyCkRUd55je+LDkZUWyrdTqerm3sVxLSTEHXfVEXnu8oblyk9IbJbcplfJWG
-	+FmVSiGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6Qq9fKE0PbbyCrGJIA20pSw+ym9q88uvFFEEL0mTROA=; b=1XyssM2wV2RK4wSievgApvVDhi
+	5PQVpj7nIGDGTMwdG+QcXBvzGcfUfKdl9rGWfEjTW5izq4CrQv3kRGy2LM9CFxXj/u0LB3Q2yRUga
+	SA+oVe6n60jTNA1krWHl76v3SlMX+q23/FAEtE/MvF4fLNEpDp15JEqvrHns6kHOIgak45tHzgzv8
+	2WNwsrjjie83IFly/7v4E8ciAic6MhusAOmbOpQJH4xNTxYDN2SDoIiDSjEivdu7Om7OlT3AsWBvp
+	VPQ/aPOMv2umOd/EKHNxQ3pzRvW0sV86U14Zyxby5F9Sw4yQuju0xRaixP192ziiiieWBLxogCOAi
+	6yh6QEoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXdw9-0000000A8Lt-1bRV;
-	Wed, 07 Feb 2024 09:09:45 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rXeTr-0000000AEsE-15Z2;
+	Wed, 07 Feb 2024 09:44:35 +0000
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXdw6-0000000A8KS-4BeW;
-	Wed, 07 Feb 2024 09:09:44 +0000
-X-UUID: 9e5cc9cec59811eea0bf134e88e6c2dc-20240207
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=M+kTxpzDu2kDUAi4jAk/bznBJUbRFLEVKzbdXxscehs=;
-	b=lilmk+5/mLqqqHRjzMEs5kXL/gY7vxjYUbQ8CqLB8dplwmOZhNvdSdOgJLmqALKEGvgEMEuh2ahqQxf8SWisDPcGQORI8Iq1wZ99n3EaHcWVD3RWOH3jixKUS7qfoKMxicReaVZSXaJ1JxNrEn3EUGsHYG4lagQxF0NpJGjjOIU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:254ce7a8-6f72-4d5d-bbc3-d0afb3424c35,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:5bd8b783-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 9e5cc9cec59811eea0bf134e88e6c2dc-20240207
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <kuan-ying.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 788954509; Wed, 07 Feb 2024 02:09:37 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 7 Feb 2024 16:58:58 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 7 Feb 2024 16:58:58 +0800
-From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-To: Jan Kiszka <jan.kiszka@siemens.com>, Kieran Bingham <kbingham@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <casper.li@mediatek.com>, <chinwen.chang@mediatek.com>,
-	<qun-wei.lin@mediatek.com>, <linux-mm@kvack.org>,
-	<akpm@linux-foundation.org>, <urezki@gmail.com>, Kuan-Ying Lee
-	<Kuan-Ying.Lee@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] scripts/gdb/vmalloc: fix vmallocinfo error
-Date: Wed, 7 Feb 2024 16:58:51 +0800
-Message-ID: <20240207085856.11190-1-Kuan-Ying.Lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1rXeTo-0000000AErG-0rTj
+	for linux-mediatek@lists.infradead.org;
+	Wed, 07 Feb 2024 09:44:33 +0000
+Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-6049b3deee8so622137b3.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 07 Feb 2024 01:44:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1707299071; x=1707903871; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=6Qq9fKE0PbbyCrGJIA20pSw+ym9q88uvFFEEL0mTROA=;
+        b=mIa4k5OPjGwjfIkp+tYRdrsf8mAbvy4Rw0l0GCyg5qbzJYzArHjmCbNLpiQP5gVUd9
+         tjdyGBUMwpH4YXDmwOdZ/nUIJmAGLeHHFcKcYbjirrFNdOeLVdy+L0qFhs1UXewv8bzz
+         T8sCqHHEEmJWAbWMuHPkn+fa1dt2FNVNh0OwnQLou3VxKMCsYVT5L6sCSy8aTB5YJDdL
+         k14pcz/jfb/W3YnkKp9e01JlYmbgzBXs04bXXcIoDUCi3bqg/kMXTlLsbvZjWoSnNdni
+         xlkx4r1cr3toGJZRPvg/M/lrVyLOZ6ME0L0zd86lK2RP4KgVfVJlkWcCdzNp9SNGsFXB
+         KWpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1707299071; x=1707903871;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=6Qq9fKE0PbbyCrGJIA20pSw+ym9q88uvFFEEL0mTROA=;
+        b=VmGx3nNWgeGqlStoHJ41mDkSbumffeA9HrvGLNopaGGMdNspAoxE/oDU/iJmq1WOV/
+         YZAJPgBrsDJNjRS0hUz8VToswVSH45VDaZaEF+xCumH20+XpbL665S7RknUmCgYCaySs
+         QytG+AOHO8MJGl4pQ1HvFPpw47t/49xCcgb6V3ebfyxroakQNDeGMPXCUG42MCVFayv/
+         OjttvDKFEDKU7Ogf8mX0H58tgHoXt901vCjYHZQT2DBsgSTluzivQJnC0TLju9tnK521
+         VgZoi8l+wRbhdqvCLy44AdCEffHr5zCz6iK6kHBvEmyKXyAoxNgaOjPCh5IH6Ut5bo0i
+         2BAA==
+X-Gm-Message-State: AOJu0YwRJVk8vvdW1EE75H6XMgQpCJr/C16l6mPHINL/2K0qnR0z0zd1
+	ek0yhlYWCNvwOYrq3y5xrmS+sX8z9+bJy8avy342xuuMosUawZCL1LLKlcEuBX1zYQrd6B2bLxY
+	pWb0dAlkWNLMuIbB2uwGBPFgu2LBsz0Mc1S+lCA==
+X-Google-Smtp-Source: AGHT+IGnNsEbsmiOhjkKEnxryb14NGX6I9zOgtrEXZxh49eoiYIjEQ/Cu/1+CeZbgwi0SgrY+47qDSRAYACNAXYqpdQ=
+X-Received: by 2002:a81:4893:0:b0:5ff:7cca:a434 with SMTP id
+ v141-20020a814893000000b005ff7ccaa434mr3711732ywa.51.1707299070789; Wed, 07
+ Feb 2024 01:44:30 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--3.540600-8.000000
-X-TMASE-MatchedRID: BrNJR/3XBtYgNXYDo2rRhjTR2TFg0xG3MVx/3ZYby7+QxjD98JXG4+h5
-	+ziVqzh1jwQarLbSitQRs1kezRVUMnAd/ISL1gqdj1RGQOB2VvlMkOX0UoduuU4K0IMk2m3G9pj
-	ehf9ti8tk9BhA+RcEjMcIK6S4JS2iHN0r1kHymECjrlYm3WTU730tCKdnhB589yM15V5aWpj6C0
-	ePs7A07ba607moR85RnkXbdvwlTfPByDSHDuWGW2ASvsZfW+OWOo0k1o6+bTZ4Q/FXPcvQ5Xo3o
-	hZ25BJZsdQa7QcOV1BxvuJG1fpOeqHee+3ZfiRJSZrfNhP3sgUBh9AgBSEFrJm+YJspVvj2xkvr
-	HlT8euI+kK598Yf3Mg==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--3.540600-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 6999A9595D8F99E6A1C2B5598210605692699934082BAD3D5FB294C0F38FC4AA2000:8
-X-MTK: N
+References: <20240207-spmi-multi-master-support-v1-0-ce57f301c7fd@linaro.org>
+ <20240207-spmi-multi-master-support-v1-1-ce57f301c7fd@linaro.org>
+ <CAA8EJpqsJmv36=o1aTjVH6eMHXMg8BHNpiDvs+Q8YB23ezVGtQ@mail.gmail.com>
+ <ZcMvFtAwQQjAZhk6@linaro.org> <CAA8EJprqWLX7_yWZzKp3FAKFGkSkk041f9hj1uXuRBrbH5APyQ@mail.gmail.com>
+ <ZcNIddeG6VHxBEOQ@linaro.org>
+In-Reply-To: <ZcNIddeG6VHxBEOQ@linaro.org>
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Date: Wed, 7 Feb 2024 11:44:19 +0200
+Message-ID: <CAA8EJprgkM9fO967Swrzjf4PYuVoSpmXLU-zadN4eKhjez30Gg@mail.gmail.com>
+Subject: Re: [PATCH RFC 1/2] spmi: Add support for multi-master
+To: Abel Vesa <abel.vesa@linaro.org>
+Cc: Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240207_010943_052169_2FD3C0B4 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20240207_014432_277730_E241AD74 
+X-CRM114-Status: GOOD (  31.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,92 +94,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We met the gdb vmallocinfo issue as following.
+On Wed, 7 Feb 2024 at 11:08, Abel Vesa <abel.vesa@linaro.org> wrote:
+>
+> On 24-02-07 09:23:09, Dmitry Baryshkov wrote:
+> > On Wed, 7 Feb 2024 at 09:19, Abel Vesa <abel.vesa@linaro.org> wrote:
+> > >
+> > > On 24-02-07 01:55:39, Dmitry Baryshkov wrote:
+> > > > On Wed, 7 Feb 2024 at 01:34, Abel Vesa <abel.vesa@linaro.org> wrote:
+> > > > >
+> > > > > Some newer SPMI controllers support multiple bus masters.
+> > > > > Such a master can control multiple slave devices. The generic
+> > > > > framework needs to be able to pass on the master id to the
+> > > > > controller-specific driver. So do that. The framework will
+> > > > > check if the devicetree child nodes are actually bus masters
+> > > > > and will register the devices for each master. The legacy
+> > > > > approach will still be supported for backwards compatibility.
+> > > >
+> > > > Please remind me, are those two actual bus musters driving a single
+> > > > bus in parallel or two SPMI buses being handled by a single device? In
+> > > > the latter case this implementation is incorrect. There should be
+> > > > multiple spmi_controller instances, one for each bus. Allocate them in
+> > > > a loop and set ctrl->dev.of_node after allocating.
+> > >
+> > > It's two SPMI buses (two sets of wires) handled by the same controller,
+> > > HW-wise.
+> > >
+> > > If we register two spmi controllers with the kernel framework, it will
+> > > be HW inaccurate, because there is just one controller which has
+> > > multiple masters.
+> >
+> > struct spmi_controller is a controller for a single bus. Inside your
+> > device you have two SPMI buses, each can be controlled by its own
+> > struct spmi_controller. Just like devices that control multiple I2C,
+> > SPI or USB busses register a separate instance of the bus controller.
+>
+> Well, this is what this patchset is trying to do in the generic part.
+> The SPMI controller supports multiple buses (HW-wise) and therefore SW
+> implementation shouldn't be tied to single bus requirement.
 
-(gdb) lx-vmallocinfo
-Python Exception <class 'gdb.error'>: No symbol "vmap_area_list" in current context.
-Error occurred in Python: No symbol "vmap_area_list" in current context.
+SPMI controller doesn't support multiple buses. You have a device
+which has two SPMI controllers inside. Just like all multi-bus
+controllers.
 
-Since Mitigate a vmap lock contention patchset [1], we
-remove the vmap_area_list.
+>
+> >
+> > >
+> > > I'm not saying it might not work. But, to me, it looks more like a hack.
+> > >
+> > > Basically, we would be mapping HW bus masters to kernel controllers.
+> >
+> > Buses, not just masters.
+> >
+> > >
+> > > >
+> > > > >
+> > > > > Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
+> > > > > ---
+> > > > >  drivers/spmi/spmi-mtk-pmif.c |  6 ++--
+> > > > >  drivers/spmi/spmi-pmic-arb.c | 10 +++---
+> > > > >  drivers/spmi/spmi.c          | 76 ++++++++++++++++++++++++++++++--------------
+> > > > >  include/linux/spmi.h         | 10 +++---
+> > > > >  4 files changed, 67 insertions(+), 35 deletions(-)
+> > > >
+> > > > --
+> > > > With best wishes
+> > > > Dmitry
+> >
+> >
+> >
+> > --
+> > With best wishes
+> > Dmitry
 
-We need to use vmap_nodes to iterate all vmallocinfo.
 
-[1] https://lore.kernel.org/linux-mm/20240102184633.748113-1-urezki@gmail.com/
 
-Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-Cc: Casper Li <casper.li@mediatek.com>
----
- scripts/gdb/linux/vmalloc.py | 56 +++++++++++++++++++-----------------
- 1 file changed, 29 insertions(+), 27 deletions(-)
-
-diff --git a/scripts/gdb/linux/vmalloc.py b/scripts/gdb/linux/vmalloc.py
-index d3c8a0274d1e..803f17371052 100644
---- a/scripts/gdb/linux/vmalloc.py
-+++ b/scripts/gdb/linux/vmalloc.py
-@@ -29,32 +29,34 @@ class LxVmallocInfo(gdb.Command):
-         if not constants.LX_CONFIG_MMU:
-             raise gdb.GdbError("Requires MMU support")
- 
--        vmap_area_list = gdb.parse_and_eval('vmap_area_list')
--        for vmap_area in lists.list_for_each_entry(vmap_area_list, vmap_area_ptr_type, "list"):
--            if not vmap_area['vm']:
--                gdb.write("0x%x-0x%x %10d vm_map_ram\n" % (vmap_area['va_start'], vmap_area['va_end'],
--                    vmap_area['va_end'] - vmap_area['va_start']))
--                continue
--            v = vmap_area['vm']
--            gdb.write("0x%x-0x%x %10d" % (v['addr'], v['addr'] + v['size'], v['size']))
--            if v['caller']:
--                gdb.write(" %s" % str(v['caller']).split(' ')[-1])
--            if v['nr_pages']:
--                gdb.write(" pages=%d" % v['nr_pages'])
--            if v['phys_addr']:
--                gdb.write(" phys=0x%x" % v['phys_addr'])
--            if v['flags'] & constants.LX_VM_IOREMAP:
--                gdb.write(" ioremap")
--            if v['flags'] & constants.LX_VM_ALLOC:
--                gdb.write(" vmalloc")
--            if v['flags'] & constants.LX_VM_MAP:
--                gdb.write(" vmap")
--            if v['flags'] & constants.LX_VM_USERMAP:
--                gdb.write(" user")
--            if v['flags'] & constants.LX_VM_DMA_COHERENT:
--                gdb.write(" dma-coherent")
--            if is_vmalloc_addr(v['pages']):
--                gdb.write(" vpages")
--            gdb.write("\n")
-+        nr_vmap_nodes = gdb.parse_and_eval('nr_vmap_nodes')
-+        for i in range(0, nr_vmap_nodes):
-+            vn = gdb.parse_and_eval('&vmap_nodes[%d]' % i)
-+            for vmap_area in lists.list_for_each_entry(vn['busy']['head'], vmap_area_ptr_type, "list"):
-+                if not vmap_area['vm']:
-+                    gdb.write("0x%x-0x%x %10d vm_map_ram\n" % (vmap_area['va_start'], vmap_area['va_end'],
-+                        vmap_area['va_end'] - vmap_area['va_start']))
-+                    continue
-+                v = vmap_area['vm']
-+                gdb.write("0x%x-0x%x %10d" % (v['addr'], v['addr'] + v['size'], v['size']))
-+                if v['caller']:
-+                    gdb.write(" %s" % str(v['caller']).split(' ')[-1])
-+                if v['nr_pages']:
-+                    gdb.write(" pages=%d" % v['nr_pages'])
-+                if v['phys_addr']:
-+                    gdb.write(" phys=0x%x" % v['phys_addr'])
-+                if v['flags'] & constants.LX_VM_IOREMAP:
-+                    gdb.write(" ioremap")
-+                if v['flags'] & constants.LX_VM_ALLOC:
-+                    gdb.write(" vmalloc")
-+                if v['flags'] & constants.LX_VM_MAP:
-+                    gdb.write(" vmap")
-+                if v['flags'] & constants.LX_VM_USERMAP:
-+                    gdb.write(" user")
-+                if v['flags'] & constants.LX_VM_DMA_COHERENT:
-+                    gdb.write(" dma-coherent")
-+                if is_vmalloc_addr(v['pages']):
-+                    gdb.write(" vpages")
-+                gdb.write("\n")
- 
- LxVmallocInfo()
 -- 
-2.18.0
-
+With best wishes
+Dmitry
 
