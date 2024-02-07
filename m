@@ -4,88 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A07EFC4828D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 01:40:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3CD0C4828D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 02:15:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uDouN0pdbhwQRjTzuJpHQCJy8aUyeV2qZj7bI+J4528=; b=PskSIQQrTILIJTy6DOdV/WLJn2
-	dt6QIDFr/Zcswl4DrI0O+9UX6lIQsWeokiwBrhw/w03LqdGowbeUu9t3URVSfIKMH2fT2Vos4t7cz
-	MJRwfoZwItNmVJH3KIqfxiN9tPax9LLVfV3Fg3IULLRv/Ek5HfktWq7mAaPW3L64hfVh1AxIryPlt
-	W59COAH9hc41fkUgwFqfCBafwunCNrnGxWmB900Vlexy4NJtT+N5vKcIzHGeEi63v1q2UN12h87QR
-	PSdICCGnsR69JnsavPTgcnmpcYR8/QDRqV14sgkRjLLMtFBduznf6rqL5kiGGVWrtA519dD24vU3A
-	XYVa/Y7g==;
+	bh=/9iu+hMwKPmAX48lO9etKmHZlNn7fbipD6oy4YQb2Tg=; b=IVJOgXDqzNNnDlA2zwhY03lGjw
+	2qWBiJ5AhToHIc5qlOIuWwGPQHZn/CeaXb0if/DS7ZQktZFUNWvy9AnKSdNbBF56vFZkQYO3MsmPE
+	68aFh2lNJhFZmjTilsErQN+kdvSlyGZIqWLJymCD2dAsx1DLtKhO4ccB/ZpeKuzNS1qcwDf0u5kSj
+	4rcfUyTEC5MI53/fgFr+2ba3n9jRt/4UIDUFwm00GzTG1doQmORrqEYLWtrEy8qzeof9LNRG+kQKO
+	6gD4kkgltcp4kHoKiKZq1CxvpSxOv2YPL+Jl0xN9SiosA1uN9Kj2hG6Q4mb9sDWtgVMol2yHhgBNt
+	/AsrvOcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXWvW-00000009NY7-405W;
-	Wed, 07 Feb 2024 01:40:38 +0000
+	id 1rXXT9-00000009RSt-47Vl;
+	Wed, 07 Feb 2024 02:15:23 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXWvU-00000009NWN-1qIe
-	for linux-mediatek@lists.infradead.org;
-	Wed, 07 Feb 2024 01:40:37 +0000
-X-UUID: e041a68cc55911ee9a263b4415211400-20240206
+	id 1rXXT6-00000009RRp-3ofq;
+	Wed, 07 Feb 2024 02:15:22 +0000
+X-UUID: bb8b1166c55e11ee9a263b4415211400-20240206
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=uDouN0pdbhwQRjTzuJpHQCJy8aUyeV2qZj7bI+J4528=;
-	b=fgfwDmrpaqMez5Z9BkpGXFNZYLQDof9jjel6dunDkNgfvWyf1h10PN7uhIh5bGy55a8/A/0gPIy6qIkQXx88xdEUkqTX1xozjtd/YiEdgI1DBCesiylbyVe0Rq7UXGQ8fU3R9L0/ocEOBLR47SDFtJEgMMcLyNnpukVS5hMWwzs=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=/9iu+hMwKPmAX48lO9etKmHZlNn7fbipD6oy4YQb2Tg=;
+	b=HcW7hEqGBQufACMgjZNDoelGzZvYhcNUYpjsGV2WDbpTVKMtxLgdX4QjQaJ26GMAHkXE5lA0qPo6v1baMyIFCIuiSgZAfdEDpSS9WCQkq/n1ybbfwmVMlm0HysQ5rYJ8OkIYO7hIM3L7YD+IIuVV8VeI7BTDNCItfU5fNG+yRyc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:9816541b-5c23-44be-a15a-db572d3a187c,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:024ab383-8d4f-477b-89d2-1e3bdbef96d1,B
+X-CID-O-INFO: VERSION:1.1.37,REQID:0326bb80-4a51-45a8-8668-c0295b646416,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:6f543d0,CLOUDID:3eae1a8f-e2c0-40b0-a8fe-7c7e47299109,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: e041a68cc55911ee9a263b4415211400-20240206
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: bb8b1166c55e11ee9a263b4415211400-20240206
 Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 294686017; Tue, 06 Feb 2024 18:40:30 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+	with ESMTP id 1217579574; Tue, 06 Feb 2024 19:15:15 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 7 Feb 2024 09:39:54 +0800
+ 15.2.1118.26; Wed, 7 Feb 2024 10:15:12 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 7 Feb 2024 09:39:54 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Eric-SY.Chang@mediatek.com>, <km.lin@mediatek.com>,
-	<robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
-	<Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Michael Lo <michael.lo@mediatek.com>,
-	Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7921: fix suspend issue on MediaTek COB platform
-Date: Wed, 7 Feb 2024 09:39:45 +0800
-Message-ID: <20240207013945.23558-1-mingyen.hsieh@mediatek.com>
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 7 Feb 2024 10:15:12 +0800
+From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	"Hsiao Chien Sung" <shawn.sung@mediatek.corp-partner.google.com>
+Subject: [PATCH v2 0/1] Filter modes according to hardware capability
+Date: Wed, 7 Feb 2024 10:15:09 +0800
+Message-ID: <20240207021510.24035-1-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.150300-8.000000
-X-TMASE-MatchedRID: yZoAMijhO4c9S3IiQd+eNRNEPNwNrw/rieyBFTE1+ceIoW+1yT7Gw6UJ
-	mwqvEWihdAyEKWUq4v4C3sKcss0odmK6SHtwuj6rQpxiLlDD9FWusS9CiBzL8X5h6y4KCSJcZ10
-	wKXUWXnJirZ/FbBb+bqCF2qOQ8zIWVJTV35UngiMZXJLztZviXKxwr8rYOW+O0zabL4+/4csJSK
-	yYs8AD/ax4GQqkd00FumMCMwce1mUfE8yM4pjsDwtuKBGekqUpOlxBO2IcOBajycPov0YYz9FAH
-	qz04bFbXGumjTnZ3ElZZFJWUoXZhel/jnRe4WMsiMi52pBTvfk12WiR9TdDZ5UDrgLdu1TA4gKV
-	wGe6cHjBkGBTIlURuXoXDz8+lMxFpW+aIDJ4DaRzkxJ+SIkUjmncuUSUEdOX
+X-TM-AS-Result: No-10--4.759200-8.000000
+X-TMASE-MatchedRID: ATi5SS6xZln8rQJMqxBG8BlckvO1m+JccuFRT+prg4ZGL0g1nVmkYcDV
+	CJRGn8Ul9thk9nbRgmWNpw2JbH/pLNm0JHSAKf2wA9lly13c/gFKPIx+MJF9o5soi2XrUn/J8m+
+	hzBStansUGm4zriL0oQtuKBGekqUpnH7sbImOEBSNLjMwRubhFIJLAWlgYBj9j6bYDnm5z3RGIG
+	Ft1pWKyYS780tUCheZS3sQQCJQ7LTHajbg+Suzu1HfVNA9wjvktgZwSK5A7V1Jmt82E/eyBQGH0
+	CAFIQWsmb5gmylW+PbGS+seVPx64j6Qrn3xh/cy
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.150300-8.000000
+X-TMASE-Result: 10--4.759200-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: B575A5AC19A7385059901DA6BF1BFA2F5ED3C6E1A2C7CF06A57263B916AC3F032000:8
+X-TM-SNTS-SMTP: 1498373DF5AC87AD7C57785CDAB8BEF926E2F60C2A869894C2EAB08A0702ACA22000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240206_174036_510732_3F3FE492 
-X-CRM114-Status: GOOD (  10.57  )
+X-CRM114-CacheID: sfid-20240206_181520_983535_1043E010 
+X-CRM114-Status: UNSURE (   7.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,67 +97,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Michael Lo <michael.lo@mediatek.com>
+From: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
 
-MediaTek's controller driver on COB platform (e.g. MT8188) is
-capable of controlling power supplies and reset pin of a component
-(e.g. a WIFI chip) in power-on and power-off process.
+This series is based on mediatek-drm-next branch of
+kernel/git/chunkuang.hu/linux.git.
 
-Due to this optional feature, mt76 need to inform controller
-that mt76 need to keep power during suspend. Otherwise WIFI will be
-powered off when system enters suspend process.
+Changes in v2:
+- Refined the filtering formula
+- Add the .mode_valid hook to the hardware that causes the limitation
 
-The "wakeup-source" property was used for the device that need
-this to go into suspend mode so that mt76 suspend handler doesn't
-fail and the system is able to enter into a suspend state.
+Hsiao Chien Sung (1):
+  drm/mediatek: Filter modes according to hardware capability
 
-An example:
-wifi: mt7921@0 {
-	wifi0{
-		reg = <0x0000 0 0 0 0>;
-		wakeup-source;
-	};
-};
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  4 ++
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c     | 56 +++++++++++++++++++
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 17 ++++++
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c       | 17 ++++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |  1 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   | 12 ++++
+ 6 files changed, 107 insertions(+)
 
-Signed-off-by: Michael Lo <michael.lo@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index fabd24726f3e..e673a153d3cb 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -6,6 +6,7 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/pci.h>
-+#include <linux/of.h>
- 
- #include "mt7921.h"
- #include "../mt76_connac2_mac.h"
-@@ -369,6 +370,9 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 	if (ret)
- 		goto err_free_irq;
- 
-+	if (of_property_read_bool(dev->mt76.dev->of_node, "wakeup-source"))
-+		device_init_wakeup(dev->mt76.dev, true);
-+
- 	return 0;
- 
- err_free_irq:
-@@ -386,6 +390,9 @@ static void mt7921_pci_remove(struct pci_dev *pdev)
- 	struct mt76_dev *mdev = pci_get_drvdata(pdev);
- 	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
- 
-+	if (of_property_read_bool(dev->mt76.dev->of_node, "wakeup-source"))
-+		device_init_wakeup(dev->mt76.dev, false);
-+
- 	mt7921e_unregister_device(dev);
- 	set_bit(MT76_REMOVED, &mdev->phy.state);
- 	devm_free_irq(&pdev->dev, pdev->irq, dev);
--- 
+--
 2.18.0
 
 
