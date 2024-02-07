@@ -4,58 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA187C4828D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 14:54:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4951DC4829C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 14:54:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b4dA93jvf0KlgcvF+UQHWZ0AHav2xg8zQh8AZYfaEm4=; b=bpM1LyXYjgnLzP
-	ssZfxBk9P9KYEtjMbgrdMzGT4KiUcZx9gzyWE2wQFc62BmllqQvXBLL3vW1PPOt8PWw7D/dhOS4zb
-	wjq4xm3XQU+aRtuVho6SHaY7BbgoYkpJZ+m7sn8BH0rndJYSrv4mriIV4I6peqX0xo2mUeRUf8cUj
-	VddVEyJXspcY6QphtV8QtOnEgXpiwK5qGh6KoS5WVfEC6/mSLyk/aYqELv4HU+qdV3iQz5er56iMy
-	QjcugAPTmgiBIpw3FzlB1nLjzKFGdB2nYZWEbCxp2e8k2Lxb6hPPeDEod5S3n4rSJl/v7hpO+h8Wz
-	tzkqb4HmhINYriU5naNg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CeaVh/lnio4gc/XMvIeYWIMuMXXG24LyCbi+Ce3p0Z4=; b=bZ5vzsu5ZzDTxg/XXHrxCEh2X8
+	FcUdYPWiVBXUbFp73lQB8chkc+i8ztapwEhAxSi1GiA7VILHuFRb4Q+XHWHdzbi9nOO/+vOHW8cWd
+	C1WUH8rve4zehbYmRGhMBYFs0a2KYTwN9GV2msXl33ABn5CboglWQHfZQgT1xZ7ZHM64iXECNwXKL
+	l4g9WNkhzSNG/sVkBsZx6XONRLPlrumVGxDq/4vQeAj7WPX+kdfluLQuf8aeWYb3zG7urXr7/zaw9
+	ZtkaVBCJp4c5xEbegM7K8btsOTn4/iCLnyIdVWeniFI3HV1MV8g+UEqwUSio9xL2WoaLhkBV14HI5
+	A0cwM6LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXjJU-0000000AzSk-3fes;
-	Wed, 07 Feb 2024 14:54:12 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rXjJW-0000000AzTg-0Efi;
+	Wed, 07 Feb 2024 14:54:14 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXjIj-0000000Aynu-1pJZ;
-	Wed, 07 Feb 2024 14:53:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1707317604;
-	bh=t314JYLEkG/5o9HpK7I9qR3Mx0x17vEhEBxIxc/bWK0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=oF4PmVlLOMnmfRKhI8wyvjtZ3sH/fa/3SrHXuaP6e3Mt4yv/Q3OKS1J9GSOuywgM0
-	 vlsP197c+IMOPSCPdiQZGi+othum7S8Y+zr/jzNt+mc6SIYlp7LMCAFHrk4Uy72alm
-	 JNVaOwzNowWBeE4RtrbJ8MMMZl9ugfOBdLrh+USCt+AqLSk5DDw7OcZOBa80SuZeqQ
-	 m1oHMSMmts2NOcg+w5/igadWrpU/Wyt9JUnOrz6kve0ctieqPYyppGkvEqIICeG/T4
-	 sihnDa35bP8mRMYrRaCFF8b+AiP+ELenXwq5YKo4l0rNFPuMpZYVYZLSlIIOACS8rW
-	 OGAc9ncs4fqHA==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4A925378207B;
-	Wed,  7 Feb 2024 14:53:23 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunkuang.hu@kernel.org
-Subject: [PATCH v5 9/9] drm/mediatek: dsi: Use mipi_dsi_pixel_format_to_bpp() helper function
-Date: Wed,  7 Feb 2024 15:53:07 +0100
-Message-ID: <20240207145307.1626009-10-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240207145307.1626009-1-angelogioacchino.delregno@collabora.com>
-References: <20240207145307.1626009-1-angelogioacchino.delregno@collabora.com>
+	id 1rXjJE-0000000AzGE-0xmb;
+	Wed, 07 Feb 2024 14:53:57 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-33b535c5d0fso84431f8f.0;
+        Wed, 07 Feb 2024 06:53:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1707317634; x=1707922434; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=CeaVh/lnio4gc/XMvIeYWIMuMXXG24LyCbi+Ce3p0Z4=;
+        b=BJWq0BLFBKLm31EWIiUXYU625ecdDI553/auZX1mzNiHMHEwbZQlkeECvy0KBMDsUw
+         YRpQHko5roKnppxe8DLFCPd1Y+2u1JUgkEX0NpQ3c5DIQ+4eZXB2233tBxbm7/+FFh4v
+         2AgkmlYGithj43OkPkYN27yPveKaGGfUWFFsdy9zbzzdDvEbojz1E8TiQGkJqPFEAjgg
+         R0goF0ccIwwgzguF68iHgKDWFb87DD+LxBx17F+79uinuIaL9/SbvZZzBlS9AHiWbti6
+         Ni2f2SVtGYb4js6N3onH7JSZA6LIgh3uOdeUHXZozWUer9wTo2ujcvrIXfumyjvUjtVC
+         Xvjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1707317634; x=1707922434;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=CeaVh/lnio4gc/XMvIeYWIMuMXXG24LyCbi+Ce3p0Z4=;
+        b=AOT2di4vHlYEwRXvgJifRCpjjExaVncWFh3Xdb8VNJ+SxPdYFqQeeu9rf74B4eqvd1
+         JpjOKp9ka3IWrt7DDQRNEHy6sjf73Hs3aFHLu0HaEWbDq6dfQEpn3je+nFtBlyCgC4NC
+         JsyoEH1hkStqGG3pVzEW1klO/+hTUdSb+TFn6BSClvRlhPmALwLuAu1vc3o6rsOpyH1B
+         dmGotlvka1dUCnC3m3107tT2Dt0M2TEul2j/w1Wm6kev6hKQi7ady0sJwFbD1KJhD3L3
+         y1NQyOThfu5qRidIHZv2MpFhUCn4EWUtz9hMSZai+hcnlXH7c/nMVEN3vt2RMiXzQ+xU
+         qn0Q==
+X-Gm-Message-State: AOJu0YwZKOBuIGjFzMnUOymCUBFdlrGnCruZGo8D6zGCXE4MF7j3RQsE
+	6sIYb3jGLH9tQ4gXPobOmH2jvIctavzey7JZuG8LORq4CuMIihZbCqCOY1bIGu8=
+X-Google-Smtp-Source: AGHT+IEOQ9PUIelS9Up3Z2leC8+AjPwTxciDKQOF2tPtygDXxH5vKSWw8QMymkOzILSud2oeBvCkJQ==
+X-Received: by 2002:a5d:4750:0:b0:33b:274e:af5 with SMTP id o16-20020a5d4750000000b0033b274e0af5mr4000326wrs.60.1707317633607;
+        Wed, 07 Feb 2024 06:53:53 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUwEZeTZpLOUCuBBjOuuCPiaDg4fx3wo4eteNjPkY7pPmbXE257RElKiqFaWqGh19r6WiTQa3bHalYEHnoIvIiGYfD/RlDE62gzy4HyBq0t/x4K3RQpaUhnYf09YWrLx6+WybBjC7djl4Ib+nYT5ONxyYhEdYu3bOJh5et5C6WVjfJMtWAj8evl2hKsTx4BRcBc2hsWSHT5Nz3Unz4l909q6KADPQcUo9fAc/cK3cPXlODGHtbLODwrBEwyzhVChRUmlowGgB+e03KOH79Uit/1qDWiv3eEIa97//6SOtKUdeknV0whWZzJukADZYzZFz7525mcQb2gUoqtfuekjW2cRRlAv7IvIYw/RYbJ0OEdNNbwb8ftux/4GnuQm4YRZ5RKGhFE1OxioSy76oqqL1uhGH+XoI6+4MC9NZyg5x6aGuHsZAl+0MwGi6m+CxqlE+BdKOMyVBMaGF4kH09pQsCXuIS9tTx9YnXP3CmgGN1Oi4WW+1+LLQ==
+Received: from [192.168.0.101] (cpc154979-craw9-2-0-cust193.16-3.cable.virginm.net. [80.193.200.194])
+        by smtp.googlemail.com with ESMTPSA id d21-20020adfa415000000b0033b4fdea014sm1263624wra.92.2024.02.07.06.53.52
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 07 Feb 2024 06:53:53 -0800 (PST)
+Message-ID: <13e2f96c-2434-4266-8a5e-25b267d1fb0e@gmail.com>
+Date: Wed, 7 Feb 2024 14:53:51 +0000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH][next] mt76: Remove redundant assignment to variable tidno
+Content-Language: en-US
+To: Kalle Valo <kvalo@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20240207131113.2450297-1-colin.i.king@gmail.com>
+ <87il30h03n.fsf@kernel.org>
+From: "Colin King (gmail)" <colin.i.king@gmail.com>
+In-Reply-To: <87il30h03n.fsf@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240207_065325_787528_9EAC130E 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20240207_065356_369701_5B97EBE4 
+X-CRM114-Status: UNSURE (   8.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,77 +98,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: p.zabel@pengutronix.de, Alexandre Mergnat <amergnat@baylibre.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, daniel@ffwll.ch, matthias.bgg@gmail.com, kernel@collabora.com, airlied@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Instead of open coding, use the mipi_dsi_pixel_format_to_bpp() helper
-function from drm_mipi_dsi.h in mtk_dsi_poweron() and for validation
-in mtk_dsi_bridge_mode_valid().
-
-Note that this function changes the behavior of this driver: previously,
-in case of unknown formats, it would (wrongly) assume that it should
-account for a 24-bits format - now it will return an error and refuse
-to set clocks and/or enable the DSI.
-
-This is done because setting the wrong data rate will only produce a
-garbage output that the display will misinterpret both because this
-driver doesn't actually provide any extra-spec format support and/or
-because the data rate (hence, the HS clock) will be wrong.
-
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 26 +++++++++-----------------
- 1 file changed, 9 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index b644505de98a..9501f4019199 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -598,19 +598,12 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
- 	if (++dsi->refcount != 1)
- 		return 0;
- 
--	switch (dsi->format) {
--	case MIPI_DSI_FMT_RGB565:
--		bit_per_pixel = 16;
--		break;
--	case MIPI_DSI_FMT_RGB666_PACKED:
--		bit_per_pixel = 18;
--		break;
--	case MIPI_DSI_FMT_RGB666:
--	case MIPI_DSI_FMT_RGB888:
--	default:
--		bit_per_pixel = 24;
--		break;
-+	ret = mipi_dsi_pixel_format_to_bpp(dsi->format);
-+	if (ret < 0) {
-+		dev_err(dev, "Unknown MIPI DSI format %d\n", dsi->format);
-+		return ret;
- 	}
-+	bit_per_pixel = ret;
- 
- 	dsi->data_rate = DIV_ROUND_UP_ULL(dsi->vm.pixelclock * bit_per_pixel,
- 					  dsi->lanes);
-@@ -793,12 +786,11 @@ mtk_dsi_bridge_mode_valid(struct drm_bridge *bridge,
- 			  const struct drm_display_mode *mode)
- {
- 	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
--	u32 bpp;
-+	int bpp;
- 
--	if (dsi->format == MIPI_DSI_FMT_RGB565)
--		bpp = 16;
--	else
--		bpp = 24;
-+	bpp = mipi_dsi_pixel_format_to_bpp(dsi->format);
-+	if (bpp < 0)
-+		return MODE_ERROR;
- 
- 	if (mode->clock * bpp / dsi->lanes > 1500000)
- 		return MODE_CLOCK_HIGH;
--- 
-2.43.0
-
+On 07/02/2024 13:31, Kalle Valo wrote:
+> Colin Ian King <colin.i.king@gmail.com> writes:
+> 
+>> The variable tidno is being assigned a value that is not being read
+>> and is being re-assigned a new value a few statements later.
+>> The assignment is redundant and can be removed.
+>>
+>> Cleans up clang scan warning:
+>> drivers/net/wireless/mediatek/mt76/agg-rx.c:125:5: warning: Value stored
+>> to 'tidno' during its initialization is never read [deadcode.DeadStores]
+>>
+>> Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
+> 
+> "wifi:" missing from title.
+> 
+does this require a V2?
 
