@@ -4,65 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68E37C4828F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 13:31:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28BC3C4829B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 14:01:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zrLB4DfoJUMIJyEVWJU10TjwVwiLuOhN8KtRdWCdnRo=; b=hYmecM/e+918ZzLo6j5gtovvAp
-	/mZ7Gg8XaBtRNoS4Va8zDERVCTnJvtY7mwx4povoI1DEx2zXSt5OPFYfUNJm/5uH1aUcaC8EuHzjW
-	aHjT2buGkL9sL2y6XfYkcFyjC8cHk5wjImt1hWKkIOct9P50L7Rq8vFMwXzic4c0NftAleyj8ECzu
-	AzHViFYZ+7w4VwvMcUAVEJnNJ/tTc++4gNhZiFUZREO/fR+FjuUh/jp9bFDBli0PIYn4nVpQePxX9
-	5A7sucn2MlrDHVc+s14rf4zgOLX1N4Fp86oeASb1lS8M8E5YuzWZNk3yS+NyVmxYK7yy5FuBwEFkn
-	XVNnJKjw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DtEUvONWM++73ohDLBVcrhK1dI5+gJNwDx7rFh/0y3E=; b=TWigA//JG9HRPJKIlh/T5zYvEg
+	Mtb0yRJ6I8VRZuc4hGMDs/uNk+V9fjCe1pEFtp0ckghGgbGGRB038yjFz1PBpp7caeBIlKVbHsnNa
+	8wRfoZhJPgZfaJ/RS9btSNULo1TYY4Fp/CplC8HbKx/H+JcrSL1AdpXm+BFJ9/2sgjj5OCOZVxK1U
+	E/hLzskP2CD5bcOnwpARBwpZYTYcbrQ/JT86vYDJVmFm/MAksGjhsOodx7SxMaNOR/X1iYVGoIMxZ
+	E9+HmeS271KZ1wll39sZozk2I7WH9I6nL+1D15MaJixIW+smkb8LGx9UriI9J0I4hphS2qVGJU3wk
+	LolVd3EA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXi1k-0000000Am5w-3emV;
-	Wed, 07 Feb 2024 13:31:48 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rXiUd-0000000Aqsk-2dkl;
+	Wed, 07 Feb 2024 14:01:39 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXi1h-0000000Am5T-2Szo;
-	Wed, 07 Feb 2024 13:31:46 +0000
+	id 1rXiUZ-0000000Aqq8-1yPF;
+	Wed, 07 Feb 2024 14:01:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 16D2C617C6;
-	Wed,  7 Feb 2024 13:31:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59609C433F1;
-	Wed,  7 Feb 2024 13:31:42 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id D5445CE1903;
+	Wed,  7 Feb 2024 14:01:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E7FAC43399;
+	Wed,  7 Feb 2024 14:01:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707312704;
-	bh=yVT8Ti21+Ydu/gLRV+nkvBy86ZVYjXvrfoQlsX0IikM=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=bvd80gqtnAh9QaQeLtwQi0Gum8Txp2Nm7vBIYqfhptcXJSzpjF39+JWSq3TntZzWl
-	 iIGntqDvme3lVamm5KOROKRNUDdFJJC8iz1/+AlslfMQEWWfw2GWzWqF4j8BERymAD
-	 Y2kePZ3YIhx14mSA2PKw5Bk1eW/HuqP3DY2pYNOVSPxW92J0UyjhTrs7jHBYLxarhN
-	 SCvR/HMfj8KhJli2M4BDXs4R4KK45qUn+QVAvbo7tfSZ8klwA31cI9LzwvcBa17617
-	 IHYoNwEI6Ter56yajddED+zMlEuVFg5l08NN8W00WQXaFlOc/TYc6JnH8aX8GRrLGw
-	 4AOWvcIUW+MlA==
-From: Kalle Valo <kvalo@kernel.org>
-To: Colin Ian King <colin.i.king@gmail.com>
-Cc: Felix Fietkau <nbd@nbd.name>,  Lorenzo Bianconi <lorenzo@kernel.org>,
-  Ryder Lee <ryder.lee@mediatek.com>,  Shayne Chen
- <shayne.chen@mediatek.com>,  Sean Wang <sean.wang@mediatek.com>,  Matthias
- Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,
-  linux-wireless@vger.kernel.org,  linux-mediatek@lists.infradead.org,
-  kernel-janitors@vger.kernel.org,  linux-kernel@vger.kernel.org,
-  linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH][next] mt76: Remove redundant assignment to variable tidno
-References: <20240207131113.2450297-1-colin.i.king@gmail.com>
-Date: Wed, 07 Feb 2024 15:31:40 +0200
-In-Reply-To: <20240207131113.2450297-1-colin.i.king@gmail.com> (Colin Ian
-	King's message of "Wed, 7 Feb 2024 13:11:13 +0000")
-Message-ID: <87il30h03n.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+	s=k20201202; t=1707314493;
+	bh=g3Z88DUNdFcDu+TkPwpM/lXAN8LWu5w+gBGr1EpmKz8=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=JRulxDwtEBTvF/i1yphRDtxYZsJHZ3RoXyDmR0n20YayYd3ONvQFTdgJXhRAxzmGZ
+	 gy7IYcUWCGcjxAT9YcYGMYu3IT0be4Xt0Ye8/E/6JxJ7t40YjKGCSgwmQsLaMlHQLs
+	 UPWeFhafDy9VRlvQBtYE3hBGYj1aqYQqh+O1WERtnIG+TprXL/ih29DUpbrroPOb6k
+	 hJ0KVsG0fgj0CYAQrhScp5mdH3ZpXQTQrWaRIP6osmTy3FZ+VArt5vsPnNB8C2U0Rp
+	 YLnhKpBJClH5KwYXXFi52cG1cOhAKb+Lxj9+bfwUGtraZPN26DgOMngx/knYXongCD
+	 D8EvOFZVgV+xQ==
+From: Vinod Koul <vkoul@kernel.org>
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: Phi-bang Nguyen <pnguyen@baylibre.com>, 
+ Louis Kuo <louis.kuo@mediatek.com>, Andy Hsieh <andy.hsieh@mediatek.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+ devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>
+In-Reply-To: <20240111101738.468916-1-jstephan@baylibre.com>
+References: <20240111101738.468916-1-jstephan@baylibre.com>
+Subject: Re: [PATCH v5 2/2] phy: mtk-mipi-csi: add driver for CSI phy
+Message-Id: <170731448892.147119.12389092200889790020.b4-ty@kernel.org>
+Date: Wed, 07 Feb 2024 15:01:28 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240207_053145_685638_1FB31C8C 
-X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-CacheID: sfid-20240207_060135_723927_1EBFCC0B 
+X-CRM114-Status: UNSURE (   8.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,22 +82,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Colin Ian King <colin.i.king@gmail.com> writes:
 
-> The variable tidno is being assigned a value that is not being read
-> and is being re-assigned a new value a few statements later.
-> The assignment is redundant and can be removed.
->
-> Cleans up clang scan warning:
-> drivers/net/wireless/mediatek/mt76/agg-rx.c:125:5: warning: Value stored
-> to 'tidno' during its initialization is never read [deadcode.DeadStores]
->
-> Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
+On Thu, 11 Jan 2024 11:17:30 +0100, Julien Stephan wrote:
+> This is a new driver that supports the MIPI CSI CD-PHY version 0.5
+> 
+> The number of PHYs depend on the SoC.
+> Each PHY can support D-PHY only or CD-PHY configuration.
+> The driver supports only D-PHY mode, so CD-PHY
+> compatible PHY are configured in D-PHY mode.
+> 
+> [...]
 
-"wifi:" missing from title.
+Applied, thanks!
 
+[2/2] phy: mtk-mipi-csi: add driver for CSI phy
+      commit: 673d70cb3c652ad6d97594e03225bbdf20226216
+
+Best regards,
 -- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+~Vinod
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+
 
