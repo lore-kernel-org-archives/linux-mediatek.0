@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DAD9C4829E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 17:08:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F7F2C4828F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 17:08:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5a2BDxvry/mDEJhidMjtTRkucrmFZYMP54rfoZVMxFg=; b=n2TmTYhHbgexr6yz/cjo0Zhi7B
-	pava+T5Ix0pFIsoeuJuC5NqwISj+JtkB68RiUeZ170xXzfdyo7FJx5pt8W8bhWw9ukO25Gr2228+Q
-	2SJGovkHco+US0Oe+IYw3qfxkQjISkhVBqmQdvdDQLfd7erEqCcmjX0AuESE0EcWpkcHvaCGF1mNw
-	cM6wBX0fiWwDaKn1qjBbaAEIEgDeo2Zqy6zOI0BPmYgOfxT5hoQrvS1sYhwE1PfMxST8bj8gCDI6W
-	W7VAn5nho36iLxe5ZBx3qZ1ycY77116TnmbBL85/xvMbir5ler+fljaWw25bGYo0E/tTfeRZJqP86
-	Mpp27Yog==;
+	bh=+iboSw0kHr/XQ2F6mUqPjCZdFfbDSD+ql6zjttiLFSU=; b=BAb9nxe397lp5k5cvBvHBIvWF5
+	yi93K8adFLMJ7uUiXTKBbbo4w33Sow6zFgMP9IO0jH+FEtKH86kdZvM/8j25W1ErDoECrKfYfGNpE
+	73Tc102T4HCrTmvmKh2ez5QT2uNrFijI0hl7k8MMBzzlWkPcayvZDrpu7DZd1/HEbAYQpAEXlIr+A
+	6ZAK6B2lD+hcLU6uLeVBMAxP82tVN8u5H0XOYIulxYhw5uOyJa32mSW2ftEZTVqe3sriqN/asv/yD
+	JV9tMJIn6cyxTWborJtgZcqCtF+EQr5Dy8DB/lYp2cgePTX66xWG63y2YOi8kj1YtdP1sF2SRYRwv
+	LGYuxMZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rY7sk-0000000EQ2q-3qiq;
-	Thu, 08 Feb 2024 17:08:14 +0000
+	id 1rY7tE-0000000EQIL-0sjy;
+	Thu, 08 Feb 2024 17:08:44 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rY7pD-0000000EOjU-1foM;
-	Thu, 08 Feb 2024 17:04:35 +0000
+	id 1rY7pE-0000000EOkL-1tY1;
+	Thu, 08 Feb 2024 17:04:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
 	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=5a2BDxvry/mDEJhidMjtTRkucrmFZYMP54rfoZVMxFg=; b=Mx6xyRuWwpn8bX/mB13P57h6B4
-	o5aJwAWdd1NiJulNdtCoGNjMN0ug7BTSWo0hhEVwOH6/+bsIvxPbWr68DmDoT68pEyRgQ6JfVcsDX
-	KJju4u3mxrU5J245karqSndb7l9OcXtiCqF8lCSt7IcFRZt75R36Fy4dYAlUfk2Be6uWf/xo4gs3V
-	LtqeCPysHFhAyjf0J9VP5kt5I0uM1VKezlv1vLiMSQRoknXFF6ZfxmU1VVcuVdQr0osYvGDShX3Pi
-	f9dgAE+5EV2mypprJkNEzvt9ONSdJ9t6oGQvdISZmg6t95MPDjxWvIv0J32qCTtiykkcI/T3bEeKd
-	MFfC19MA==;
-Received: from fllv0016.ext.ti.com ([198.47.19.142])
+	bh=+iboSw0kHr/XQ2F6mUqPjCZdFfbDSD+ql6zjttiLFSU=; b=F6zbPiUq1jXrlAgYm7DQSTcSFZ
+	HPycQKkBKjNN/J5K4hrYz1NpKWLr0qsQ7/JKntnVb1IXbMikf78Etz5juHkyo97S9HLki3NWIK4ER
+	ipQoGYb11kfcNjQQZjoZ0gBtVgxeZkZy1dYbpt5pvIHpNhVWhvyDCE3dBAl2rbT1CWg24lKNNjBcK
+	/18sT0VFghjcZxxTGVzyTbMZvU+zGbDBB2PXQLoO+D18cEyVN+eGGgoXt0/aTY5GIoUA6Pj+OcWg/
+	7mUozz1/JgCZjZUu2o1+q1NCb53NoFJ3De5a+NU4jrwvD04P1w+3EwHJhhbE1Z/ybOoHoXHa7sftq
+	1KxNAG/Q==;
+Received: from lelv0143.ext.ti.com ([198.47.23.248])
 	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rY7p8-0000000DWpY-1Mma;
-	Thu, 08 Feb 2024 17:04:34 +0000
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
-	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 418H4LT3051777;
-	Thu, 8 Feb 2024 11:04:21 -0600
+	id 1rY7p8-0000000DWpW-1TBY;
+	Thu, 08 Feb 2024 17:04:35 +0000
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 418H4KtK018166;
+	Thu, 8 Feb 2024 11:04:20 -0600
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1707411861;
-	bh=5a2BDxvry/mDEJhidMjtTRkucrmFZYMP54rfoZVMxFg=;
+	s=ti-com-17Q1; t=1707411860;
+	bh=+iboSw0kHr/XQ2F6mUqPjCZdFfbDSD+ql6zjttiLFSU=;
 	h=From:To:CC:Subject:Date:In-Reply-To:References;
-	b=Nn2d1JqbkmwolD9eOlmJ4M35dV5MKx16BW64juGbDGBzox+jz/3tFBGxnbgSTI347
-	 WzBCV+ccNDq6AEUwDc7dEVy4iSHkctSWeMUawVFVF9IY7mV0pbUC8fiO8ClwkzgS5p
-	 Ita4IL7d/SmY/SbNqKgzvrfL89P0JKhNlCuE7gF8=
-Received: from DFLE114.ent.ti.com (dfle114.ent.ti.com [10.64.6.35])
-	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 418H4L8M054137
+	b=qFBzFgPWIfVCJ8td3HE0ND29xlvtSztIedeQtMbPqqnEICeRYcXaTDB5n343gjgoR
+	 FO11sZucI54YGwpQaPVN1q3UyqL/4Hti5PLDWgLPt8Z9rrrYixAWQkj+RGqHzAXICK
+	 rkas9W7QeLxV+qMyMpb3zGYTJ81oco9iTMgQZQjE=
+Received: from DLEE111.ent.ti.com (dlee111.ent.ti.com [157.170.170.22])
+	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 418H4Keg042444
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 8 Feb 2024 11:04:21 -0600
-Received: from DFLE113.ent.ti.com (10.64.6.34) by DFLE114.ent.ti.com
- (10.64.6.35) with Microsoft SMTP Server (version=TLS1_2,
+	Thu, 8 Feb 2024 11:04:20 -0600
+Received: from DLEE102.ent.ti.com (157.170.170.32) by DLEE111.ent.ti.com
+ (157.170.170.22) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Thu, 8
  Feb 2024 11:04:20 -0600
-Received: from lelvsmtp6.itg.ti.com (10.180.75.249) by DFLE113.ent.ti.com
- (10.64.6.34) with Microsoft SMTP Server (version=TLS1_2,
+Received: from lelvsmtp6.itg.ti.com (10.180.75.249) by DLEE102.ent.ti.com
+ (157.170.170.32) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
  Frontend Transport; Thu, 8 Feb 2024 11:04:20 -0600
 Received: from lelvsmtp5.itg.ti.com ([10.249.42.149])
-	by lelvsmtp6.itg.ti.com (8.15.2/8.15.2) with ESMTP id 418H4B6F091006;
-	Thu, 8 Feb 2024 11:04:20 -0600
+	by lelvsmtp6.itg.ti.com (8.15.2/8.15.2) with ESMTP id 418H4B6E091006;
+	Thu, 8 Feb 2024 11:04:19 -0600
 From: Andrew Davis <afd@ti.com>
 To: Sebastian Reichel <sre@kernel.org>,
         Manivannan Sadhasivam
@@ -86,9 +86,9 @@ CC: <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-actions@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
         <linux-arm-kernel@lists.infradead.org>,
         <linux-mediatek@lists.infradead.org>, Andrew Davis <afd@ti.com>
-Subject: [PATCH v3 13/19] power: reset: msm-poweroff: Use devm_register_sys_off_handler(RESTART)
-Date: Thu, 8 Feb 2024 11:04:04 -0600
-Message-ID: <20240208170410.67975-14-afd@ti.com>
+Subject: [PATCH v3 12/19] power: reset: msm-poweroff: Use devm_register_sys_off_handler(POWER_OFF)
+Date: Thu, 8 Feb 2024 11:04:03 -0600
+Message-ID: <20240208170410.67975-13-afd@ti.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240208170410.67975-1-afd@ti.com>
 References: <20240208170410.67975-1-afd@ti.com>
@@ -97,9 +97,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240208_170431_112178_F0D22E96 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240208_170431_273661_D3DB3746 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,59 +113,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use device life-cycle managed register function to simplify probe.
+Use this helper to register sys_off handler. Drivers should move away from
+setting pm_power_off directly as it only allows for one handler. The new
+way allows for trying multiple if the first one doesn't work.
 
 Signed-off-by: Andrew Davis <afd@ti.com>
 ---
- drivers/power/reset/msm-poweroff.c | 23 ++++++-----------------
- 1 file changed, 6 insertions(+), 17 deletions(-)
+ drivers/power/reset/msm-poweroff.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/power/reset/msm-poweroff.c b/drivers/power/reset/msm-poweroff.c
-index bcf04491e7022..c5831c46f69e2 100644
+index d96d248a6e25b..bcf04491e7022 100644
 --- a/drivers/power/reset/msm-poweroff.c
 +++ b/drivers/power/reset/msm-poweroff.c
-@@ -13,35 +13,24 @@
- #include <linux/reboot.h>
- #include <linux/pm.h>
+@@ -28,9 +28,11 @@ static struct notifier_block restart_nb = {
+ 	.priority = 128,
+ };
  
--static void __iomem *msm_ps_hold;
--static int deassert_pshold(struct notifier_block *nb, unsigned long action,
--			   void *data)
+-static void do_msm_poweroff(void)
 +static int do_msm_poweroff(struct sys_off_data *data)
  {
-+	void __iomem *msm_ps_hold = data->cb_data;
+ 	deassert_pshold(&restart_nb, 0, NULL);
 +
- 	writel(0, msm_ps_hold);
- 	mdelay(10000);
- 
- 	return NOTIFY_DONE;
++	return NOTIFY_DONE;
  }
  
--static struct notifier_block restart_nb = {
--	.notifier_call = deassert_pshold,
--	.priority = 128,
--};
--
--static int do_msm_poweroff(struct sys_off_data *data)
--{
--	deassert_pshold(&restart_nb, 0, NULL);
--
--	return NOTIFY_DONE;
--}
--
  static int msm_restart_probe(struct platform_device *pdev)
- {
--	msm_ps_hold = devm_platform_ioremap_resource(pdev, 0);
-+	void __iomem *msm_ps_hold = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(msm_ps_hold))
- 		return PTR_ERR(msm_ps_hold);
+@@ -41,7 +43,9 @@ static int msm_restart_probe(struct platform_device *pdev)
  
--	register_restart_handler(&restart_nb);
-+	devm_register_sys_off_handler(&pdev->dev, SYS_OFF_MODE_RESTART,
-+				      128, do_msm_poweroff, msm_ps_hold);
+ 	register_restart_handler(&restart_nb);
  
- 	devm_register_sys_off_handler(&pdev->dev, SYS_OFF_MODE_POWER_OFF,
- 				      SYS_OFF_PRIO_DEFAULT, do_msm_poweroff,
+-	pm_power_off = do_msm_poweroff;
++	devm_register_sys_off_handler(&pdev->dev, SYS_OFF_MODE_POWER_OFF,
++				      SYS_OFF_PRIO_DEFAULT, do_msm_poweroff,
++				      msm_ps_hold);
+ 
+ 	return 0;
+ }
 -- 
 2.39.2
 
