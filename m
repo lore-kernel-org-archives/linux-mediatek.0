@@ -4,62 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A580C4828F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Feb 2024 23:59:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 574D5C4828F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 03:10:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:To:From:
-	Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wRwatAouUKP/HArxs6kr4FFVoi9HYCWT5hfysfQf8wA=; b=tLGEDCXXUxihUgt8sWUSH6w/6g
-	xhx7a8GcFcsnUvNsjruC0TtSULm0kB4R7/sX1rq+GtX50B94JnUv3eB1DIeFxV7v28ZCFTtIjBJ03
-	8Bj/h4N9JDQcorUGHqlLVNlPv9UL01xq6AZpypTdDTYJEwAASZ63X63d/y5hAymDkqwknzzZ5QGc+
-	mA9gKNhN22XY1FbBR97WjL3aftQBKf9DgaKiP2zo0SpSvADaDlr7g4cUHi0nKmtwaq8Ji4BWEUYnx
-	9t2pgD+CyXPfH8Chpq6983SOyxWFpKH/Yoac7YkdwFTpcbXxDaWUiYCQfjFUM3AdRSYsivkLZG1+N
-	9lX95X3Q==;
+	bh=/doEa3H83519NW6iO9CMcuQJUvcYQ+Q17gzlDv+umFk=; b=rOxnV4UkQ1IEC9/s/n1rVDaAJ/
+	l5ep/3d0YyfjTZnVKacWjXOwU59kNz+mER9MiZT0SSuMFUds5BzYC1XxPc7TRd2A3xiZRCflg5sYC
+	xWbt0NtDqMUWJyXyDi2iFuhZMTRbk7Pxrmislffn3Rj0kNsonW7JNkEx7KiILOd51HBNpkMuAMi1s
+	Uk3cZ62rQoy6UQvq1GCABgG/TWSvF6kRr3uLVjvdHjVcooAplCgAKX5oDAyP3hTXpq8P0TSdwu1n5
+	JuccGgzIUKJ902tq/s2A/G++6Myn9ItlQpQ3BQtpIs16ioaxE3uD/sr+u1fav6a2faYllzrnBbam6
+	1coimSCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXrpG-0000000CGbF-3BZX;
-	Wed, 07 Feb 2024 23:59:34 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rXuoD-0000000CVlA-1SGO;
+	Thu, 08 Feb 2024 03:10:41 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXrpD-0000000CGaX-0wU8;
-	Wed, 07 Feb 2024 23:59:32 +0000
+	id 1rXuo9-0000000CVkW-3xKP;
+	Thu, 08 Feb 2024 03:10:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9B8DD611FA;
-	Wed,  7 Feb 2024 23:59:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0E73C433F1;
-	Wed,  7 Feb 2024 23:59:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
-	s=korg; t=1707350370;
-	bh=A2dMLCL0N8nSgdIq9wrTS7hQJhAGgTvpR/6aTe8uFIE=;
-	h=Date:From:To:Subject:In-Reply-To:References:From;
-	b=RskDEjDzdZBhZa7SBbcC/31F5gD7ozdd58YpBawaxicaz/F/zARPTXGW9xcekssbm
-	 LqpA1TA/KT8auYNR6HG7AyQh/ejCsWB/MmjvTF7hfwWXL/4THV1CF4RDZKZFFGu337
-	 eFUtIWOr6VLSjkEB+WNaxOeucC4fFlUTVpQC252A=
-Date: Wed, 7 Feb 2024 15:59:29 -0800
-From: Andrew Morton <akpm@linux-foundation.org>
-To: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>, Jan Kiszka
- <jan.kiszka@siemens.com>, Kieran Bingham <kbingham@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, <casper.li@mediatek.com>,
- <chinwen.chang@mediatek.com>, <qun-wei.lin@mediatek.com>,
- <linux-mm@kvack.org>, <urezki@gmail.com>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] scripts/gdb/vmalloc: fix vmallocinfo error
-Message-Id: <20240207155929.cc107bcc14b982789bdc9fab@linux-foundation.org>
-In-Reply-To: <20240207155623.a943328ba0b77859246e0d9f@linux-foundation.org>
-References: <20240207085856.11190-1-Kuan-Ying.Lee@mediatek.com>
-	<20240207155623.a943328ba0b77859246e0d9f@linux-foundation.org>
-X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+	by sin.source.kernel.org (Postfix) with ESMTP id 1700ECE1B77;
+	Thu,  8 Feb 2024 03:10:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 453E0C43394;
+	Thu,  8 Feb 2024 03:10:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1707361831;
+	bh=QPH1yr6VHuRyaB6xH/FtQKMvMHLE/l58r4MMmJTwfmo=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=gsMbSDfezpPDvaH2NSZJXCJjbnoFukNxn4keKuVYtZzd3ZZbWV4NKGYtqxx+ujeiE
+	 omGPpuHZtb/K1O6rZoESp9YcgrQ47/kZ6QWzcT/bjw/olF6td4Ia4DACQtJe8CxjZW
+	 a2erQRvQFpDlE7uJhSoZIaiMEULipED8ibrd211ppS8b4rbiWMz0vn0qULIAg1elLy
+	 vt2hUgmc2eO/a/zCeYgPKslzVR43JGZwxi1BuqHsxGJLu7c63xsatwTUkXSRIQG5TS
+	 ogya1HH+8DPWjHSRvMJrwsjYZB7ZeESUrr5CWEAE+jdmfo/vGy3QtBf/kELl11DOrE
+	 naz30cauu+0kA==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 1F27AD8C97D;
+	Thu,  8 Feb 2024 03:10:31 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v5 0/7] MT7530 DSA Subdriver Improvements Act II
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <170736183112.28016.638375642700204813.git-patchwork-notify@kernel.org>
+Date: Thu, 08 Feb 2024 03:10:31 +0000
+References: <20240206-for-netnext-mt7530-improvements-2-v5-0-d7d92a185cb1@arinc9.com>
+In-Reply-To: <20240206-for-netnext-mt7530-improvements-2-v5-0-d7d92a185cb1@arinc9.com>
+To: =?utf-8?b?QXLEsW7DpyDDnE5BTCB2aWEgQjQgUmVsYXkgPGRldm51bGwrYXJpbmMudW5hbC5h?=@ci.codeaurora.org,
+	=?utf-8?b?cmluYzkuY29tQGtlcm5lbC5vcmc+?=@ci.codeaurora.org
+Cc: daniel@makrotopia.org, dqfext@gmail.com, sean.wang@mediatek.com,
+ andrew@lunn.ch, f.fainelli@gmail.com, olteanv@gmail.com, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux@armlinux.org.uk, mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+ bartel.eerdekens@constell8.be, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, arinc.unal@arinc9.com,
+ rmk+kernel@armlinux.org.uk
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240207_155931_393284_F8D05D39 
-X-CRM114-Status: GOOD (  17.34  )
+X-CRM114-CacheID: sfid-20240207_191038_179485_5CD981B8 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,115 +81,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 7 Feb 2024 15:56:23 -0800 Andrew Morton <akpm@linux-foundation.org> wrote:
+Hello:
 
-> > [1] https://lore.kernel.org/linux-mm/20240102184633.748113-1-urezki@gmail.com/
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Tue, 06 Feb 2024 01:08:01 +0300 you wrote:
+> Hello!
 > 
-> vmap_area_list was removed by https://lkml.kernel.org/r/20240102184633.748113-6-urezki@gmail.com
+> This is the second patch series with the goal of simplifying the MT7530 DSA
+> subdriver and improving support for MT7530, MT7531, and the switch on the
+> MT7988 SoC.
 > 
-> So I think this patch is actually a fix against mm.git:mm-unstable's
-> mm-vmalloc-remove-vmap_area_list.patch?
+> I have done a simple ping test to confirm basic communication on all switch
+> ports on MCM and standalone MT7530, and MT7531 switch with this patch
+> series applied.
 > 
-> However this gdb function was probably probably broken earlier in that
-> series, so perhaps this patch would be best staged as a predecessor to
-> Ulad's vmalloc series.
+> [...]
 
-ie, this:
+Here is the summary with links:
+  - [net-next,v5,1/7] net: dsa: mt7530: empty default case on mt7530_setup_port5()
+    https://git.kernel.org/netdev/net-next/c/01fc42942e30
+  - [net-next,v5,2/7] net: dsa: mt7530: move XTAL check to mt7530_setup()
+    https://git.kernel.org/netdev/net-next/c/fd7929095a52
+  - [net-next,v5,3/7] net: dsa: mt7530: simplify mt7530_pad_clk_setup()
+    https://git.kernel.org/netdev/net-next/c/4eec447ef640
+  - [net-next,v5,4/7] net: dsa: mt7530: call port 6 setup from mt7530_mac_config()
+    https://git.kernel.org/netdev/net-next/c/4ea4c040ddc8
+  - [net-next,v5,5/7] net: dsa: mt7530: remove pad_setup function pointer
+    https://git.kernel.org/netdev/net-next/c/8c2703f55837
+  - [net-next,v5,6/7] net: dsa: mt7530: correct port capabilities of MT7988
+    https://git.kernel.org/netdev/net-next/c/c9d70a1d3d64
+  - [net-next,v5,7/7] net: dsa: mt7530: do not clear config->supported_interfaces
+    https://git.kernel.org/netdev/net-next/c/b43990bc552e
 
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-Subject: scripts/gdb/vmalloc: fix vmallocinfo error
-Date: Wed, 7 Feb 2024 16:58:51 +0800
-
-The patch series "Mitigate a vmap lock contention" removes vmap_area_list,
-which will break the gdb vmallocinfo command:
-
-(gdb) lx-vmallocinfo
-Python Exception <class 'gdb.error'>: No symbol "vmap_area_list" in current context.
-Error occurred in Python: No symbol "vmap_area_list" in current context.
-
-So we can instead use vmap_nodes to iterate all vmallocinfo.
-
-Link: https://lkml.kernel.org/r/20240207085856.11190-1-Kuan-Ying.Lee@mediatek.com
-Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-Cc: Casper Li <casper.li@mediatek.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chinwen Chang <chinwen.chang@mediatek.com>
-Cc: Jan Kiszka <jan.kiszka@siemens.com>
-Cc: Kieran Bingham <kbingham@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Qun-Wei Lin <qun-wei.lin@mediatek.com>
-Cc: Uladzislau Rezki (Sony) <urezki@gmail.com>
-Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
----
-
- scripts/gdb/linux/vmalloc.py |   56 +++++++++++++++++----------------
- 1 file changed, 29 insertions(+), 27 deletions(-)
-
---- a/scripts/gdb/linux/vmalloc.py~scripts-gdb-vmalloc-fix-vmallocinfo-error
-+++ a/scripts/gdb/linux/vmalloc.py
-@@ -29,32 +29,34 @@ class LxVmallocInfo(gdb.Command):
-         if not constants.LX_CONFIG_MMU:
-             raise gdb.GdbError("Requires MMU support")
- 
--        vmap_area_list = gdb.parse_and_eval('vmap_area_list')
--        for vmap_area in lists.list_for_each_entry(vmap_area_list, vmap_area_ptr_type, "list"):
--            if not vmap_area['vm']:
--                gdb.write("0x%x-0x%x %10d vm_map_ram\n" % (vmap_area['va_start'], vmap_area['va_end'],
--                    vmap_area['va_end'] - vmap_area['va_start']))
--                continue
--            v = vmap_area['vm']
--            gdb.write("0x%x-0x%x %10d" % (v['addr'], v['addr'] + v['size'], v['size']))
--            if v['caller']:
--                gdb.write(" %s" % str(v['caller']).split(' ')[-1])
--            if v['nr_pages']:
--                gdb.write(" pages=%d" % v['nr_pages'])
--            if v['phys_addr']:
--                gdb.write(" phys=0x%x" % v['phys_addr'])
--            if v['flags'] & constants.LX_VM_IOREMAP:
--                gdb.write(" ioremap")
--            if v['flags'] & constants.LX_VM_ALLOC:
--                gdb.write(" vmalloc")
--            if v['flags'] & constants.LX_VM_MAP:
--                gdb.write(" vmap")
--            if v['flags'] & constants.LX_VM_USERMAP:
--                gdb.write(" user")
--            if v['flags'] & constants.LX_VM_DMA_COHERENT:
--                gdb.write(" dma-coherent")
--            if is_vmalloc_addr(v['pages']):
--                gdb.write(" vpages")
--            gdb.write("\n")
-+        nr_vmap_nodes = gdb.parse_and_eval('nr_vmap_nodes')
-+        for i in range(0, nr_vmap_nodes):
-+            vn = gdb.parse_and_eval('&vmap_nodes[%d]' % i)
-+            for vmap_area in lists.list_for_each_entry(vn['busy']['head'], vmap_area_ptr_type, "list"):
-+                if not vmap_area['vm']:
-+                    gdb.write("0x%x-0x%x %10d vm_map_ram\n" % (vmap_area['va_start'], vmap_area['va_end'],
-+                        vmap_area['va_end'] - vmap_area['va_start']))
-+                    continue
-+                v = vmap_area['vm']
-+                gdb.write("0x%x-0x%x %10d" % (v['addr'], v['addr'] + v['size'], v['size']))
-+                if v['caller']:
-+                    gdb.write(" %s" % str(v['caller']).split(' ')[-1])
-+                if v['nr_pages']:
-+                    gdb.write(" pages=%d" % v['nr_pages'])
-+                if v['phys_addr']:
-+                    gdb.write(" phys=0x%x" % v['phys_addr'])
-+                if v['flags'] & constants.LX_VM_IOREMAP:
-+                    gdb.write(" ioremap")
-+                if v['flags'] & constants.LX_VM_ALLOC:
-+                    gdb.write(" vmalloc")
-+                if v['flags'] & constants.LX_VM_MAP:
-+                    gdb.write(" vmap")
-+                if v['flags'] & constants.LX_VM_USERMAP:
-+                    gdb.write(" user")
-+                if v['flags'] & constants.LX_VM_DMA_COHERENT:
-+                    gdb.write(" dma-coherent")
-+                if is_vmalloc_addr(v['pages']):
-+                    gdb.write(" vpages")
-+                gdb.write("\n")
- 
- LxVmallocInfo()
-_
 
 
