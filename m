@@ -4,91 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9E46C4828F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 21:59:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B57AC4828F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 23:46:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eeAmHmtuylGJLNzh3ueLyRJFJ1gmDfZc8JyHSqj91w8=; b=Dv8cgLARk+781cBDmfT1bvURVl
-	T+iszuyHLVPtuJ+4UyW4WR+VpNv08c/tpPY4ZLXGHGvgYAFj5eQl0qRzMd8m0+g6iZaOxN0j/TGHN
-	9Q98IGtW0SjabGw6Ds6PyIsdk3uKbnrz702dKPBNJC3bCtcfidcuSDi75HFhk/8ThiEyt9SbVlrfg
-	eGddHJeeSvtNc4t4k6mqQUCXiFmOIOiGB2jZNJC6iIAARq366Tkcx7sHCu95CEkCTX5LG4GfRbupE
-	kmZUNCgZ+Pjff+t70iOFA9GU9oplyjxLa5Umj7MthF/J+6PAxW9ByLlPkuy8U/N5d+UZJzQY+gi49
-	PLlND0CA==;
+	bh=zJvQuIC5nq4KIIakxWPQVjIDwHkKwlke0QTNJ0zZ9Q4=; b=C43s/5pHAqdnaJcMs3GkAL4peH
+	sYkarUqGfE0dOwhfPVtE++xyRqG3oirNIA3/A5IRvi/otFuELVgu3eS7GeNKNFp8K3YFuAVkBJBqD
+	/q3SaT5dwSC7qwpDFYwjwhK89yYl5JuMyMIfqk820LdTboC/yxJ7zTK5Gosiigwv0mCCnzY0yjG8e
+	WyfvUJBf+LKo55cIjlbauz2p4D6SPJuBYPZJAcNntf36/UYaISiME/yVW2r7xO/Q1CUGuMsg+eTYO
+	VGHSue2rAn9aK0fipS+Y+zOIhd/3zKcsFk0ZtSc9YjxoWaDU6yV1M8w++WJ/+3+ydwYH+uVbHoaIr
+	Hv+XU8Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYCQt-0000000F7iA-1kaR;
-	Thu, 08 Feb 2024 21:59:47 +0000
-Received: from mail-ej1-f47.google.com ([209.85.218.47])
+	id 1rYE6T-0000000FZTP-15if;
+	Thu, 08 Feb 2024 23:46:49 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYCQm-0000000F7dU-101j;
-	Thu, 08 Feb 2024 21:59:41 +0000
-Received: by mail-ej1-f47.google.com with SMTP id a640c23a62f3a-a2f22bfb4e6so41204466b.0;
-        Thu, 08 Feb 2024 13:59:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1707429578; x=1708034378; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=eeAmHmtuylGJLNzh3ueLyRJFJ1gmDfZc8JyHSqj91w8=;
-        b=D3pAWfWJ+A3IC7eNgBgn0PZthaiXp3C4ScOkJg8Y8BPp1mzPfSS1ue0afy0lLq5fKv
-         Je8lxTQ3zDYUZQ3B+d0YN/seC13yKNyLJ0VfIqpP5qXoAwKA8lFamWuDcv54LLXB0Nx1
-         b5a4eAefDEDIsXpohx5wheA+gAZiPrFkJ8Z+RmuDbjJtQUfsFMb8Jt/MjnKjciWVSZc7
-         otnGlY9WVtnpqDM0S7IGFHrnFgJRSVH7brNsPMoGoaGOG0qRn/aJCqoaIz2X3mjLjemk
-         Es8OvsjL3WWzAX1Dgh7fuvono9rLKAvSBJShLn6Or81qvypO9uIN6CpaSisLAmeCXIn6
-         7o+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707429578; x=1708034378;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=eeAmHmtuylGJLNzh3ueLyRJFJ1gmDfZc8JyHSqj91w8=;
-        b=ea4WTlztplPn3qx+sVQvfHdxloWTIW/PgDrXOkkVgdkMIdoURdk6mhYnVpKQaeDRhB
-         orMNed2DlOSp89L9jmN/KQu/a46AQMdY6kJTrMNVH1dvtF/PCTO5kcQuDEANNNivMuIS
-         pwa2Sw5GxUTnqr9JriAJTY1kkofyT2TtqBF4NL38MD9FAwIb9gGf4StAVpurWGHMRJDS
-         EAiVBevfZwx6UG1yEvb6wzYlFWx+LUTV3dZaZCOpA1/eyR4C+NlEhsqTUzo8AE+BoYUQ
-         3wrJDPgZplpc5LplQK1LUMMR8DJVNa07qsZ5UeG4wz9AyWrS8cmbznFBGKACRhDqJnki
-         zoQg==
-X-Gm-Message-State: AOJu0YyKj6/s5KU3xUwLdTswg3Pzyp+Wf6u4ZCpJcQG5WQVmLDg3+rjp
-	zlw569HEfNDMQP4rr4uJM9JwrnNRR7FX3862Er/HDlVn9wxOfVQ6
-X-Google-Smtp-Source: AGHT+IHmPgWSOLtLs+Nyfep3ErUyyxdizCanfCowfDUpJU2c+fXTJ3GLxnI7xq55RoFsVMrADvcnyA==
-X-Received: by 2002:a17:906:aed7:b0:a38:9fc3:3d8d with SMTP id me23-20020a170906aed700b00a389fc33d8dmr390460ejb.46.1707429577716;
-        Thu, 08 Feb 2024 13:59:37 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXhCgss0C0rgZFIaPdY59ajK1Bar3J5lmPTYtD0zsdtpziXQgWSvHS5QdaNLyzf8CNUKFtfF/hiu0t1mnTFwSi1AONqWfSWOCu0ZXMuWJUZDtH7848iAkj7/e+Sd4KMg3N05EA8gmc1p3eGAk9MpJRE7oOYI4oCIziNM/ria9zUh8JQHe7ZUNHpBtJ6pnWONzoacijysVTANphk2KRK/uxwVPQk1AB4X50jR2QENYL5cBDyaIEyqEdN55BR3Pd6fNw7s0P9E5uPE/hlfFXJ8BTacPUJDlUWvMW49NxtDqTUWWeewrg0/CagaqSQIT5dWwSf8txE/upsIt70Hp5W6sNRVqK3OE4xglY8ofJHyvSRke1vJctCu9si8SDTrATRoM0caRm7GrJiMRcBCZtbouqX5RkOu+jtHtkGgnBnQiiAUMy+VhyPJub3H7ANpm03X/gqO4y9Ps+dXar70BhEn0M/pd0ibOXevGoTZ7yq2dxUI62p9tNvmAjefEtlP3boFv7w96w=
-Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id rf19-20020a1709076a1300b00a3743142429sm108255ejc.39.2024.02.08.13.59.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 Feb 2024 13:59:37 -0800 (PST)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: Russell King <linux@armlinux.org.uk>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH V2 2/3] dt-bindings: arm: mediatek: convert PCIESYS to the json-schema clock
-Date: Thu,  8 Feb 2024 22:59:25 +0100
-Message-Id: <20240208215926.10085-3-zajec5@gmail.com>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20240208215926.10085-1-zajec5@gmail.com>
-References: <20240208215926.10085-1-zajec5@gmail.com>
+	id 1rYBqE-0000000ExSI-1wHx;
+	Thu, 08 Feb 2024 21:21:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9718260B33;
+	Thu,  8 Feb 2024 21:21:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 289CDC433F1;
+	Thu,  8 Feb 2024 21:21:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1707427313;
+	bh=oqvxtofftemHVkqCtUvTHWJMUcVkNerevyhL33rOVTg=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=L5BmvqcRkgnwQazmD6GNbT/V4WhBK5Jh6gNZcDqvZtq3vD3bjm4E5j4iLEoOGBSf2
+	 9F9jyrrWriCDl5Wu0BAXPhkb1g056buOTe2Ztq7rnNXkEo1LQlxR/MS5DrRDwOGECL
+	 PzXvkI3prpHFsJQ85rgk8WagJHAGPijl/nL+cwohJK5pgSdWN4EVlzkTj2GSjD78+U
+	 Do4/ScbKYtsrkZ/UX5X3+BMEO6gp6SsFMVnpleSnv3fJUOOdIaypIpDthmOW76tyzt
+	 Evsw5NI06O+Mh6/qIrxzDT3P++ocGhgYPwbeQwHydxaTl96OS/0UKdfbCWCgOU5q38
+	 wcv+IJzWFU9dQ==
+From: Mark Brown <broonie@kernel.org>
+To: =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: kernel@pengutronix.de, Moritz Fischer <mdf@kernel.org>, 
+ Wu Hao <hao.wu@intel.com>, Xu Yilun <yilun.xu@intel.com>, 
+ Tom Rix <trix@redhat.com>, linux-fpga@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, Alexander Aring <alex.aring@gmail.com>, 
+ Stefan Schmidt <stefan@datenfreihafen.org>, 
+ Miquel Raynal <miquel.raynal@bootlin.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ linux-wpan@vger.kernel.org, netdev@vger.kernel.org, 
+ Lars-Peter Clausen <lars@metafoo.de>, 
+ Michael Hennerich <Michael.Hennerich@analog.com>, 
+ Jonathan Cameron <jic23@kernel.org>, linux-iio@vger.kernel.org, 
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>, linux-input@vger.kernel.org, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+ Ulf Hansson <ulf.hansson@linaro.org>, 
+ Martin Tuma <martin.tuma@digiteqautomotive.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org, 
+ Sergey Kozlov <serjk@netup.ru>, Arnd Bergmann <arnd@arndb.de>, 
+ Yang Yingliang <yangyingliang@huawei.com>, linux-mmc@vger.kernel.org, 
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, 
+ Rob Herring <robh@kernel.org>, 
+ Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>, 
+ Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>, 
+ linux-mtd@lists.infradead.org, Simon Horman <horms@kernel.org>, 
+ Ronald Wahl <ronald.wahl@raritan.com>, Benson Leung <bleung@chromium.org>, 
+ Tzung-Bi Shih <tzungbi@kernel.org>, Guenter Roeck <groeck@chromium.org>, 
+ chrome-platform@lists.linux.dev, Michal Simek <michal.simek@amd.com>, 
+ Max Filippov <jcmvbkbc@gmail.com>, linux-spi@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>, linux-arm-msm@vger.kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-mediatek@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Javier Martinez Canillas <javierm@redhat.com>, 
+ Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org, 
+ linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev, 
+ Viresh Kumar <vireshk@kernel.org>, Rui Miguel Silva <rmfrfs@gmail.com>, 
+ Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>, 
+ greybus-dev@lists.linaro.org, Peter Huewe <peterhuewe@gmx.de>, 
+ Jarkko Sakkinen <jarkko@kernel.org>, Jason Gunthorpe <jgg@ziepe.ca>, 
+ linux-integrity@vger.kernel.org, Herve Codina <herve.codina@bootlin.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ linux-usb@vger.kernel.org, Helge Deller <deller@gmx.de>, 
+ Dario Binacchi <dario.binacchi@amarulasolutions.com>, 
+ Kalle Valo <kvalo@kernel.org>, Dmitry Antipov <dmantipov@yandex.ru>, 
+ libertas-dev@lists.infradead.org, linux-wireless@vger.kernel.org, 
+ Jonathan Corbet <corbet@lwn.net>, Bjorn Helgaas <bhelgaas@google.com>, 
+ James Clark <james.clark@arm.com>, linux-doc@vger.kernel.org
+In-Reply-To: <cover.1707324793.git.u.kleine-koenig@pengutronix.de>
+References: <cover.1707324793.git.u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH v3 00/32] spi: get rid of some legacy macros
+Message-Id: <170742729486.2266792.11643460714402047207.b4-ty@kernel.org>
+Date: Thu, 08 Feb 2024 21:21:34 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.13-dev-0438c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240208_135940_322062_80E47BEF 
-X-CRM114-Status: GOOD (  16.81  )
+X-CRM114-CacheID: sfid-20240208_132154_599360_47A38445 
+X-CRM114-Status: GOOD (  18.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,104 +120,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+On Wed, 07 Feb 2024 19:40:14 +0100, Uwe Kleine-König wrote:
+> Changes since v2
+> (https://lore.kernel.org/linux-spi/cover.1705944943.git.u.kleine-koenig@pengutronix.de):
+> 
+>  - Drop patch "mtd: rawnand: fsl_elbc: Let .probe retry if local bus is
+>    missing" which doesn't belong into this series.
+>  - Fix a build failure noticed by the kernel build bot in
+>    drivers/spi/spi-au1550.c. (I failed to catch this because this driver
+>    is mips only, but not enabled in a mips allmodconfig. That's a bit
+>    unfortunate, but not easily fixable.)
+>  - Add the Reviewed-by: and Acked-by: tags I received for v2.
+> 
+> [...]
 
-This helps validating DTS files. Introduced changes:
-1. Documented "reg" property
-2. Dropped "syscon" as it was incorrectly used
-3. Adjusted nodename, "compatible" and "reg" in example
+Applied to
 
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
----
- .../arm/mediatek/mediatek,pciesys.txt         | 25 -----------
- .../clock/mediatek,mt7622-pciesys.yaml        | 45 +++++++++++++++++++
- 2 files changed, 45 insertions(+), 25 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
- create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
-deleted file mode 100644
-index d179a61536f4..000000000000
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
-+++ /dev/null
-@@ -1,25 +0,0 @@
--MediaTek PCIESYS controller
--============================
--
--The MediaTek PCIESYS controller provides various clocks to the system.
--
--Required Properties:
--
--- compatible: Should be:
--	- "mediatek,mt7622-pciesys", "syscon"
--	- "mediatek,mt7629-pciesys", "syscon"
--- #clock-cells: Must be 1
--- #reset-cells: Must be 1
--
--The PCIESYS controller uses the common clk binding from
--Documentation/devicetree/bindings/clock/clock-bindings.txt
--The available clocks are defined in dt-bindings/clock/mt*-clk.h.
--
--Example:
--
--pciesys: pciesys@1a100800 {
--	compatible = "mediatek,mt7622-pciesys", "syscon";
--	reg = <0 0x1a100800 0 0x1000>;
--	#clock-cells = <1>;
--	#reset-cells = <1>;
--};
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
-new file mode 100644
-index 000000000000..27b19d5e3a85
---- /dev/null
-+++ b/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
-@@ -0,0 +1,45 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/clock/mediatek,mt7622-pciesys.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek PCIESYS controller
-+
-+description:
-+  The MediaTek PCIESYS controller provides various clocks to the system.
-+
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt7622-pciesys
-+      - mediatek,mt7629-pciesys
-+
-+  reg:
-+    maxItems: 1
-+
-+  "#clock-cells":
-+    const: 1
-+    description: The available clocks are defined in dt-bindings/clock/mt*-clk.h
-+
-+  "#reset-cells":
-+    const: 1
-+
-+required:
-+  - reg
-+  - "#clock-cells"
-+  - "#reset-cells"
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    clock-controller@1a100800 {
-+        compatible = "mediatek,mt7622-pciesys";
-+        reg = <0x1a100800 0x1000>;
-+        #clock-cells = <1>;
-+        #reset-cells = <1>;
-+    };
--- 
-2.35.3
+Thanks!
+
+[01/32] fpga: ice40-spi: Follow renaming of SPI "master" to "controller"
+        commit: 227ab73b89d66e3064b3c2bcb5fe382b1815763d
+[02/32] ieee802154: ca8210: Follow renaming of SPI "master" to "controller"
+        commit: 167b78446706bb4d19f7dd93ca320aed25ae1bbd
+[03/32] iio: adc: ad_sigma_delta: Follow renaming of SPI "master" to "controller"
+        commit: 2780e7b716a605781dbee753ef4983d775a65427
+[04/32] Input: pxspad - follow renaming of SPI "master" to "controller"
+        commit: a78acec53b8524593afeed7258a442adc3450818
+[05/32] Input: synaptics-rmi4 - follow renaming of SPI "master" to "controller"
+        commit: 1245633c61baf159fcc1303d7f0855f49831b9c1
+[06/32] media: mgb4: Follow renaming of SPI "master" to "controller"
+        commit: 2c2f93fbfba7186cc081e23120f169eac3b5b62a
+[07/32] media: netup_unidvb: Follow renaming of SPI "master" to "controller"
+        commit: cfa13a64bd631d8f04a1c385923706fcef9a63ed
+[08/32] media: usb/msi2500: Follow renaming of SPI "master" to "controller"
+        commit: dd868ae646d5770f80f90dc056d06eb2e6d39c62
+[09/32] media: v4l2-subdev: Follow renaming of SPI "master" to "controller"
+        commit: d920b3a672b7f79cd13b341234aebd49233f836c
+[10/32] misc: gehc-achc: Follow renaming of SPI "master" to "controller"
+        commit: 26dcf09ee5d9ceba2c627ae3ba174a229f25638f
+[11/32] mmc: mmc_spi: Follow renaming of SPI "master" to "controller"
+        commit: b0a6776e53403aa380411f2a43cdefb9f00ff50a
+[12/32] mtd: dataflash: Follow renaming of SPI "master" to "controller"
+        commit: 44ee998db9eef84bf005c39486566a67cb018354
+[13/32] net: ks8851: Follow renaming of SPI "master" to "controller"
+        commit: 1cc711a72ae7fd44e90839f0c8d3226664de55a2
+[14/32] net: vertexcom: mse102x: Follow renaming of SPI "master" to "controller"
+        commit: 7969b98b80c0332f940c547f84650a20aab33841
+[15/32] platform/chrome: cros_ec_spi: Follow renaming of SPI "master" to "controller"
+        commit: 85ad0ec049a771c4910c8aebb2d0bd9ce9311fd9
+[16/32] spi: bitbang: Follow renaming of SPI "master" to "controller"
+        commit: 2259233110d90059187c5ba75537eb93eba8417b
+[17/32] spi: cadence-quadspi: Don't emit error message on allocation error
+        commit: e71011dacc3413bed4118d2c42f10736ffcd762c
+[18/32] spi: cadence-quadspi: Follow renaming of SPI "master" to "controller"
+        commit: 28e59d8bf1ace0ddf05f989a48d6824d75731267
+[19/32] spi: cavium: Follow renaming of SPI "master" to "controller"
+        commit: 1747fbdedba8b6b3fd459895ed5d57e534549884
+[20/32] spi: geni-qcom: Follow renaming of SPI "master" to "controller"
+        commit: 14cea92338a0776c1615994150e738ac0f5fbb2c
+[21/32] spi: loopback-test: Follow renaming of SPI "master" to "controller"
+        commit: 2c2310c17fac13aa7e78756d7f3780c7891f9397
+[22/32] spi: slave-mt27xx: Follow renaming of SPI "master" to "controller"
+        commit: 8197b136bbbe64a7cab1020a4b067020e5977d98
+[23/32] spi: spidev: Follow renaming of SPI "master" to "controller"
+        commit: d934cd6f0e5d0052772612db4b07df60cb9da387
+[24/32] staging: fbtft: Follow renaming of SPI "master" to "controller"
+        commit: bbd25d7260eeeaef89f7371cbadcd33dd7f7bff9
+[25/32] staging: greybus: spi: Follow renaming of SPI "master" to "controller"
+        commit: ee3c668dda3d2783b0fff4091461356fe000e4d8
+[26/32] tpm_tis_spi: Follow renaming of SPI "master" to "controller"
+        commit: b6af14eacc8814b0986e20507df423cebe9fd859
+[27/32] usb: gadget: max3420_udc: Follow renaming of SPI "master" to "controller"
+        commit: 8c716f4a3d4fcbec976247e3443d36cbc24c0512
+[28/32] video: fbdev: mmp: Follow renaming of SPI "master" to "controller"
+        commit: b23031e730e72ec9067b7c38c25e776c5e27e116
+[29/32] wifi: libertas: Follow renaming of SPI "master" to "controller"
+        commit: 30060d57cee194d6b70283f2faf787e2fdc61b6e
+[30/32] spi: fsl-lib: Follow renaming of SPI "master" to "controller"
+        commit: 801185efa2402dce57828930e9684884fc8d62da
+[31/32] spi: Drop compat layer from renaming "master" to "controller"
+        commit: 620d269f29a569ba37419cc03cf1da2d55f6252a
+[32/32] Documentation: spi: Update documentation for renaming "master" to "controller"
+        commit: 76b31eb4c2da3ddb3195cc14f6aad24908adf524
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
