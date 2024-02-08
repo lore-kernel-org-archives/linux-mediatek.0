@@ -4,84 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24718C4829C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 05:52:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51FE8C4828F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 09:24:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LIiWlXRIU3G0zmIYQTSXX23iLh3cPetDENmkq2H1crM=; b=SzVz4chBV/+4ZKT0FBwMsofLSF
-	PgzF+6DI/4R+xT7V7v62ojikMFYX+vIrvn7dCwU+k0eELliOeKZ7A9n2PUB8imW4PpiYCqh76vmCZ
-	ZBjQEwE1xJWAB6CAlki4u5pgNgBQZRmStvK4gEGHFwjUc+AFxEi9mpcJkeXZl8HXOlPNkHn2TGuUO
-	trIuLWQOVb+Vh6QWnnBCOzYjRB7si5+/r/nAdXYnAlsUM5swwvwEAdl2K7kYx3SfWgIAU1ftu9T3E
-	oEtd8MjpXdVx46kR9FPzOO5poic5sgDOczX1tXP6gNaeaYebKGC81XTI9fkTZ1dkZe/cJHWmb+kxH
-	cn7fvPXw==;
+	bh=ClF1kcHsH8Q/55sIPMUNY08CPmP8TyHapE8bdnD9ijk=; b=BGutdZ8feWpz3inBS2jJ7X7vBs
+	2KZ/KJBMxTdWBnpvE7EBAPIoesVj4S6eAXKgDXKvpGM1W0VqE6gCy78yRqFdRwOBFS2MuMdswNfR+
+	TlPCUPLeiW4t4fnlnuscFJLi7c0DDbsarsEI1zERcpaYKpaGSGrC9hSXAElYo7bkHJRa9jVyWa5VN
+	19o32PFTbI1uKYOvxsH0QwIbTqXMcLxSKjuRrtOj8Esw6sOTkzbvCAumzc/Lw3+ECoKqEviZarD+v
+	EBDD67tuGdsQ/vP4G4+VVaClHtpcBCuisWMVv05fm9SwzLKumNWeZ+qZt+VZecNPI1sln9pBmFhJ1
+	AIWlVwaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXxKc-0000000Ci02-1iBY;
-	Thu, 08 Feb 2024 05:52:18 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rY0eH-0000000DBRV-1oyl;
+	Thu, 08 Feb 2024 09:24:49 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXxK0-0000000ChXS-0mdi;
-	Thu, 08 Feb 2024 05:51:42 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 0A860CE1B8E;
-	Thu,  8 Feb 2024 05:51:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 96F57C4166A;
-	Thu,  8 Feb 2024 05:51:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707371493;
-	bh=33itorBWyf5M6/pJLSa2Fmgkw5O7iOIvVpDVlFfasoM=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=ap5avz30RCJeSf1NT2fQRNBhyxv3IKpCXyTh3To1NGuebppqw9BjfWajTU1XsKIcg
-	 6C7YsK/uh+6dSuOzTe3p9Qjhh1lPVaQxBwd+Dd3vVyFoT6SPdBw45fKGvn5s/ZraFS
-	 wjMCz+FOu0oUmhCsbOYtNovKf2wR7HdF5rAKCPFQatIQiwcyOjVfldpGukfel1ksQt
-	 k86sckECQg5LEo4pT3gMxiJ2qNfnbvEVESsOZ23T0pDvuBoLAVSgEem1idPjLHuCQd
-	 N48S8dYn9krgw+hcf7baBsYxqKzUhY6YrdwG9++v1kv8r5Zz+n8fsU3xkGh7FXBH42
-	 4/j3h4WQHMswg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 84F56C48260;
-	Thu,  8 Feb 2024 05:51:33 +0000 (UTC)
-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
- <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Thu, 08 Feb 2024 08:51:36 +0300
-Subject: [PATCH netnext 8/8] net: dsa: mt7530: simplify link operations and
- force link down on all ports
+	id 1rY0eD-0000000DBOy-140L;
+	Thu, 08 Feb 2024 09:24:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1707384281;
+	bh=UZdJqhCQtQwpF5a+Fo/W3a9Nlw0OF08YtvZFS5DdUUk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=BzADfJlOlrjtaHuY5HCT+xn/qKjIgAbDRJ/yD24zKgILN9fPWJpRg2ICbble87MWy
+	 C9Zp1ZV5Wm1TmqmzfK/Zta8XV6pfZnkNTT/hnh1Je/G96CPsycm3S1q/BjIymIsvvF
+	 a/rSt8ixxPM/A8A1q0/UqdeZNHANXb9ygErkX63nTDjr4mZI4T7PCEBhH/kt67M3Ay
+	 y2GVNyTLKprOBAWfbjFeUWsJQSuolcJnSw9+2v/SlP+kSC5CnhZLVBmJXKXQDqoYJF
+	 VtG6NZ97dVUQA3WLrVpGNG6vwz3gRR1aRDXanR4Axpo6Ra9Z5e1g2oFa2ZZ4U8ennj
+	 rz2gFPrDTLM2w==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id ED1C33780624;
+	Thu,  8 Feb 2024 09:24:39 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	kernel@collabora.com,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH RESEND] arm64: dts: mediatek: mt8192-asurada: Remove CrosEC base detection node
+Date: Thu,  8 Feb 2024 10:24:24 +0100
+Message-ID: <170738399283.53206.14134622870926393347.b4-ty@collabora.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240207-mt8192-asurada-cbas-remove-v1-1-04cb65951975@collabora.com>
+References: <20240207-mt8192-asurada-cbas-remove-v1-1-04cb65951975@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240208-for-netnext-mt7530-improvements-3-v1-8-d7c1cfd502ca@arinc9.com>
-References: <20240208-for-netnext-mt7530-improvements-3-v1-0-d7c1cfd502ca@arinc9.com>
-In-Reply-To: <20240208-for-netnext-mt7530-improvements-3-v1-0-d7c1cfd502ca@arinc9.com>
-To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
- Florian Fainelli <f.fainelli@gmail.com>, 
- Vladimir Oltean <olteanv@gmail.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Russell King <linux@armlinux.org.uk>
-Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com, 
- Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1707371489; l=5224;
- i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
- bh=F8DQ0JkjBlyf4L4PkazDniJyaWulKX69bCZGZtD69sU=;
- b=tN8yIL5E+3fr+kuSvqN6xhIMheBGlRzbAcOb1knVHpcxMUz41gKRyXYb3IF8uzqOwLaMz3I/W
- jwgaXMr0qavBMBQyzJ/6ne8Wg/50fdI0Q33D1D5o7INE3qL+ZIORL+l
-X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
- pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
-X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt with auth_id=115
-X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240207_215140_626238_DC88C982 
-X-CRM114-Status: GOOD (  15.53  )
+X-CRM114-CacheID: sfid-20240208_012445_617965_FBE54FA6 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,146 +79,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Currently, the link operations for switch MACs are scattered across
-port_enable, port_disable, phylink_mac_config, phylink_mac_link_up, and
-phylink_mac_link_down.
+On Wed, 07 Feb 2024 15:08:42 -0500, Nícolas F. R. A. Prado wrote:
+> The commit adding the ChromeOS EC to the Asurada Devicetree mistakenly
+> added a base detection node. While tablet mode detection is supported by
+> CrosEC and used by Hayato, it is done through the cros-ec-keyb driver.
+> The base detection node, which is handled by the hid-google-hammer
+> driver, also provides tablet mode detection but by checking base
+> attachment status on the CrosEC, which is not supported for Asurada.
+> 
+> [...]
 
-port_enable and port_disable clears the link settings. Move that to
-mt7530_setup() and mt7531_setup_common() which set up the switches. This
-way, the link settings are cleared on all ports at setup, and then only
-once with phylink_mac_link_down() when a link goes down.
+Applied to v6.8-fixes/dts64, thanks!
 
-Enable force mode at setup to apply the force part of the link settings.
-This ensures that only active ports will have their link up.
+[1/1] arm64: dts: mediatek: mt8192-asurada: Remove CrosEC base detection node
+      https://git.kernel.org/mediatek/c/12356a73
 
-Now that the bit for setting the port on force mode is done on
-mt7530_setup() and mt7531_setup_common(), get rid of PMCR_FORCE_MODE_ID()
-which helped determine which bit to use for the switch model.
-
-The "MT7621 Giga Switch Programming Guide v0.3", "MT7531 Reference Manual
-for Development Board v1.0", and "MT7988A Wi-Fi 7 Generation Router
-Platform: Datasheet (Open Version) v0.1" documents show that these bits are
-enabled at reset:
-
-PMCR_IFG_XMIT(1) (not part of PMCR_LINK_SETTINGS_MASK)
-PMCR_MAC_MODE (not part of PMCR_LINK_SETTINGS_MASK)
-PMCR_TX_EN
-PMCR_RX_EN
-PMCR_BACKOFF_EN (not part of PMCR_LINK_SETTINGS_MASK)
-PMCR_BACKPR_EN (not part of PMCR_LINK_SETTINGS_MASK)
-PMCR_TX_FC_EN
-PMCR_RX_FC_EN
-
-These bits also don't exist on the MT7530_PMCR_P(6) register of the switch
-on the MT7988 SoC:
-
-PMCR_IFG_XMIT()
-PMCR_MAC_MODE
-PMCR_BACKOFF_EN
-PMCR_BACKPR_EN
-
-Remove the setting of the bits not part of PMCR_LINK_SETTINGS_MASK on
-phylink_mac_config as they're already set.
-
-Suggested-by: Vladimir Oltean <olteanv@gmail.com>
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
- drivers/net/dsa/mt7530.c | 26 +++++++++++++-------------
- drivers/net/dsa/mt7530.h |  2 --
- 2 files changed, 13 insertions(+), 15 deletions(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 5c8ad41ce8cd..f67db577d1c0 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -1018,7 +1018,6 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
- 	priv->ports[port].enable = true;
- 	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
- 		   priv->ports[port].pm);
--	mt7530_clear(priv, MT7530_PMCR_P(port), PMCR_LINK_SETTINGS_MASK);
- 
- 	mutex_unlock(&priv->reg_mutex);
- 
-@@ -1038,7 +1037,6 @@ mt7530_port_disable(struct dsa_switch *ds, int port)
- 	priv->ports[port].enable = false;
- 	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
- 		   PCR_MATRIX_CLR);
--	mt7530_clear(priv, MT7530_PMCR_P(port), PMCR_LINK_SETTINGS_MASK);
- 
- 	mutex_unlock(&priv->reg_mutex);
- }
-@@ -2257,6 +2255,12 @@ mt7530_setup(struct dsa_switch *ds)
- 	mt7530_mib_reset(ds);
- 
- 	for (i = 0; i < MT7530_NUM_PORTS; i++) {
-+		/* Clear link settings and enable force mode to force link down
-+		 * on all ports until they're enabled later.
-+		 */
-+		mt7530_clear(priv, MT7530_PMCR_P(i), PMCR_LINK_SETTINGS_MASK);
-+		mt7530_set(priv, MT7530_PMCR_P(i), PMCR_FORCE_MODE);
-+
- 		/* Disable forwarding by default on all ports */
- 		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
- 			   PCR_MATRIX_CLR);
-@@ -2359,6 +2363,12 @@ mt7531_setup_common(struct dsa_switch *ds)
- 		     UNU_FFP_MASK);
- 
- 	for (i = 0; i < MT7530_NUM_PORTS; i++) {
-+		/* Clear link settings and enable force mode to force link down
-+		 * on all ports until they're enabled later.
-+		 */
-+		mt7530_clear(priv, MT7530_PMCR_P(i), PMCR_LINK_SETTINGS_MASK);
-+		mt7530_set(priv, MT7530_PMCR_P(i), MT7531_FORCE_MODE);
-+
- 		/* Disable forwarding by default on all ports */
- 		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
- 			   PCR_MATRIX_CLR);
-@@ -2657,23 +2667,13 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 			  const struct phylink_link_state *state)
- {
- 	struct mt7530_priv *priv = ds->priv;
--	u32 mcr_cur, mcr_new;
- 
- 	if ((port == 5 || port == 6) && priv->info->mac_port_config)
- 		priv->info->mac_port_config(ds, port, mode, state->interface);
- 
--	mcr_cur = mt7530_read(priv, MT7530_PMCR_P(port));
--	mcr_new = mcr_cur;
--	mcr_new &= ~PMCR_LINK_SETTINGS_MASK;
--	mcr_new |= PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | PMCR_BACKOFF_EN |
--		   PMCR_BACKPR_EN | PMCR_FORCE_MODE_ID(priv->id);
--
- 	/* Are we connected to external phy */
- 	if (port == 5 && dsa_is_user_port(ds, 5))
--		mcr_new |= PMCR_EXT_PHY;
--
--	if (mcr_new != mcr_cur)
--		mt7530_write(priv, MT7530_PMCR_P(port), mcr_new);
-+		mt7530_set(priv, MT7530_PMCR_P(port), PMCR_EXT_PHY);
- }
- 
- static void mt753x_phylink_mac_link_down(struct dsa_switch *ds, int port,
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 8a8144868eaa..a71166e0a7fc 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -304,8 +304,6 @@ enum mt7530_vlan_port_acc_frm {
- 					 MT7531_FORCE_DPX | \
- 					 MT7531_FORCE_RX_FC | \
- 					 MT7531_FORCE_TX_FC)
--#define  PMCR_FORCE_MODE_ID(id)		((((id) == ID_MT7531) || ((id) == ID_MT7988)) ?	\
--					 MT7531_FORCE_MODE : PMCR_FORCE_MODE)
- #define  PMCR_LINK_SETTINGS_MASK	(PMCR_TX_EN | PMCR_FORCE_SPEED_1000 | \
- 					 PMCR_RX_EN | PMCR_FORCE_SPEED_100 | \
- 					 PMCR_TX_FC_EN | PMCR_RX_FC_EN | \
-
--- 
-2.40.1
+Cheers,
+Angelo
 
 
