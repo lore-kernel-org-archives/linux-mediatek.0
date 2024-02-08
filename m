@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDB02C4828F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 11:06:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E18E7C48260
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 13:35:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mFxUoEBZbzYkrMJW+PYUk5xiC11e9ORCsGgOReq2qw8=; b=pqA8dj7oJRX6cf844AdEVF8kbc
-	ZUmEmJlcgrDQtdNGbXFmm5hBb0l7HsMvw29gFmADPdQCcftGW+nY966heloyO939lwc/trhCocckS
-	eINpBWuzPyJPN+BhPiZvL4jfWZqJHxTzQxChF0e6nGGNg+kY2DOPrGkKmH+1fJQaQy65RshKPMDBG
-	FDePZX5Qqm8Xv+iLHqKriQmI15PmRdVkTbtliN4hCKGgBClHxY6yswTQtd0AyYOy16qIM9rS1tfHM
-	6imfqvzOf0EHzdYXBMuzOBzT30/9fFJuU7Ym6+uAwkMEaBH1dzAAnMt2RdT+aVspniUPBgv4MvGxT
-	MbLw7gPA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r17q1U4BSEBGcEVJq5z9iZi13EGZhxsJ18ERvTeuATs=; b=x/2B1OSfan1p598hdmA+HuPbTl
+	2ne2OfV7UqFAAjjpQ1ULW0wnEyvLKLM3r9W9tT5jTjBPFWwEW06vFS9rPjOLMVWyXU7CikolDPAIU
+	Oh2Y6vfo6xCvw0OqbglSXUn82K8o4EVgoByy/TmL21DrXpqvFXel2dnB5EocCphHpNSJHPzFDG3Al
+	QFHfxKVT5p5KvBJtUenwodBScraCKlCv+1IVKSZCliOGpRWmrVqNLJGQw7AGhEAsPVJjOYVmiN7Bv
+	vH3RvClZfBIPHQVBrJ4UsqyqDfqegdGHHWela8I6kwNS/emSYym7iKbfyNgES05J8WWI7biiChQiI
+	fp9Xh4pA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rY2EG-0000000DVtR-2t3g;
-	Thu, 08 Feb 2024 11:06:04 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rY4ZI-0000000DuiI-0Yt6;
+	Thu, 08 Feb 2024 13:35:56 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rY2ED-0000000DVrV-2N2v;
-	Thu, 08 Feb 2024 11:06:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1707390359;
-	bh=Cs6htXQD5fBG1zCUptzHGOkqKSyu+r7Da744Jigp1lk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=qRwNDPiay9bPu9taiyTfr3AV31bGiRL/Op9Ot3D+AuExTqb251f4JjplaWTVWNYvU
-	 aDind2pjljl2DpvSCkTrQXN3f8+RvV/Dn4dIZG92zqgFNgNqLX0GhLxEQU6+SCvCCo
-	 4AH9xerF2qTaEqgwaikGL2ULKsJWYkXT3SSS7HH8pci9a+3NkoQFwuNG5nl1T/FWUf
-	 z2ngE/s6zIKE5WQYUYbN57o1GnyRm+Y+h5JEFJe6YdQvuqsjbIv+vQPtMN/ovkhN6h
-	 apnY+rXdhTJdrw4IqOERKJ4nzR9EAgtGyWyBdLjLyPgnZ1dhKUmSiGUuCZsmuw5q1y
-	 FD6pMIaec+ANQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A82A1378134F;
-	Thu,  8 Feb 2024 11:05:58 +0000 (UTC)
-Message-ID: <7e834188-2838-40fb-961c-fc28bdfca169@collabora.com>
-Date: Thu, 8 Feb 2024 12:05:57 +0100
+	id 1rY4ZF-0000000DuhZ-1LWp
+	for linux-mediatek@lists.infradead.org;
+	Thu, 08 Feb 2024 13:35:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=r17q1U4BSEBGcEVJq5z9iZi13EGZhxsJ18ERvTeuATs=;
+	t=1707399350; x=1708608950; b=itHMInCZMb5lMxoLEziI9i6SKnf4WGP9ODqWOqLRYY7uN8e
+	78ygeK66oOKh6ocW7NXLo0pCZO8dyNlnDc2/4f3wiMAfBZciAwFbkPHNAY2lVnJt/L1BEIU01jfL/
+	+sOIj5EjYtbYo1fkhQGYom9c+blx6Jx7nmw5eWOLwV4QEEv6wencmGBRYbQTnJOOWFLZ0RrEveS1c
+	erelUzPswHX+XCuUzowmoqDt2hWKOjAaWYZVpZLWzUhYHjTHiOc2vtv38VlnIXr+V67iT6oRRVaGX
+	RbrCpWMBcATc6J03T70fokOeSLA7dL8xgRHXGl9sX6LzujOeO38uMQ3fP+gSyLwQ==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.97)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1rY4Z7-0000000HUJa-2rLW;
+	Thu, 08 Feb 2024 14:35:45 +0100
+Message-ID: <b74f21d22a41b2ca635e64f04c06d5db6d38d920.camel@sipsolutions.net>
+Subject: Re: [v4,2/2] wifi: mac80211: refactor STA CSA parsing flows
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Michael-CY Lee <michael-cy.lee@mediatek.com>, linux-wireless
+	 <linux-wireless@vger.kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Money Wang
+ <money.wang@mediatek.com>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>
+Date: Thu, 08 Feb 2024 14:35:44 +0100
+In-Reply-To: <20231222010914.6521-3-michael-cy.lee@mediatek.com>
+References: <20231222010914.6521-1-michael-cy.lee@mediatek.com>
+	 <20231222010914.6521-3-michael-cy.lee@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.50.3 (3.50.3-1.fc39) 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8186: Add video decoder device
- nodes
-Content-Language: en-US
-To: Eugen Hristev <eugen.hristev@collabora.com>,
- linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
- kernel@collabora.com, Yunfei Dong <yunfei.dong@mediatek.com>,
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>
-References: <20231220133302.39411-1-eugen.hristev@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20231220133302.39411-1-eugen.hristev@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240208_030601_780263_03A9E4A3 
-X-CRM114-Status: UNSURE (   5.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240208_053553_389578_8937756A 
+X-CRM114-Status: GOOD (  12.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,17 +77,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/12/23 14:33, Eugen Hristev ha scritto:
-> From: Yunfei Dong <yunfei.dong@mediatek.com>
-> 
-> Add mt8186 video decoder device nodes.
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Reviewed-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> [eugen.hristev@collabora.com: minor cleanup]
-> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
+Hi,
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+So ... I foolishly applied my other changes first, so I had to rebase
+this - please do check.
 
+Couple of questions/notes, if anything needs changing please send
+another patch.
+
+> +	he._oper.he_oper_params =3D cpu_to_le32(u32_encode_bits(1,
+> +					IEEE80211_HE_OPERATION_6GHZ_OP_INFO));
+
+(I changed this to le32_encode_bits, FWIW)
+
+> +	/* if data is there validate the bandwidth & use it */
+> +	if (new_chandef.chan) {
+> +		if (conn_flags & IEEE80211_CONN_DISABLE_320MHZ &&
+> +		    new_chandef.width =3D=3D NL80211_CHAN_WIDTH_320)
+> +			ieee80211_chandef_downgrade(&new_chandef);
+> =20
+>  		if (conn_flags & IEEE80211_CONN_DISABLE_80P80MHZ &&
+> -		    new_vht_chandef.width =3D=3D NL80211_CHAN_WIDTH_80P80)
+> -			ieee80211_chandef_downgrade(&new_vht_chandef);
+> +		    new_chandef.width =3D=3D NL80211_CHAN_WIDTH_80P80)
+> +			ieee80211_chandef_downgrade(&new_chandef);
+> +
+>  		if (conn_flags & IEEE80211_CONN_DISABLE_160MHZ &&
+> -		    new_vht_chandef.width =3D=3D NL80211_CHAN_WIDTH_160)
+> -			ieee80211_chandef_downgrade(&new_vht_chandef);
+> -	}
+> +		    new_chandef.width =3D=3D NL80211_CHAN_WIDTH_160)
+> +			ieee80211_chandef_downgrade(&new_chandef);
+> =20
+
+
+Shouldn't that have (had!) an 80 MHz handling case? Or maybe a loop a la
+the one in ieee80211_config_bw():
+
+        /*
+         * Downgrade the new channel if we associated with restricted
+         * bandwidth capabilities. For example, if we associated as a
+         * 20 MHz STA to a 40 MHz AP (due to regulatory, capabilities
+         * or config reasons) then switching to a 40 MHz channel now
+         * won't do us any good -- we couldn't use it with the AP.
+         */
+        while (link->u.mgd.conn.bw_limit <
+                        ieee80211_min_bw_limit_from_chandef(&chanreq.oper))
+                ieee80211_chandef_downgrade(&chanreq.oper, NULL);
+
+
+Feels like this should be the same here.
+
+Also note how this uses ieee80211_chandef_downgrade() - we really need
+to track the "chanreq.oper" vs. "chanreq.ap" in this code as well for
+puncturing - can I ask you to take a brief look at that? I'll anyway
+probably have to look at that soon though.
+
+johannes
 
