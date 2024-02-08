@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59DB6C4828F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 17:06:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 004C5C4828F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 17:07:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=72kVJOjDQJkrwjM0ZlAP/foyy3XhLgjfJ5M64CNka8E=; b=hSAj+mIClr61K8graYqfQA5flB
-	7xQqtBVCVAVlo7fqL6UZ3F1t9hgl7Njny8ZXF1pmk3TNEtSDLPNh9ttsY1ef538a330NZaoQJDTmA
-	46jZUl0lMoqoozMnj3tKVcA+q89WyKJCiSPkFDC7SgcYiZNhQWNdbB1MMX6/Qyr3OD6WTh6lHxsY1
-	5n4GPoibFQlGib7uLDrpGaDpLtkkUfgq4Roh8OER9bQFyBFRR7v0hdELBhCRc8O6KAUOD5bGSHkVE
-	rfQf37qCksGCCdtXkpiZzQW3Ia0FUkvxACb3irEguHplfoaPwSFCZRLbfoPH6lo4/yue+1n7C31JC
-	ZDTKGH+A==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2TI8f8x/5Y4Kr2Vxqhq6Wi5Pu8tSR0ICKXsQgkmtu64=; b=iJNFLLgVHNOsX3S1qjKMvEpC1c
+	2UJnqN7EoC9jwgHWPuPIVm7pAw+MIP0vk253RA/FpBXzY1esdVLL6g0+EQUA+GwTGATpytn0X8urc
+	Rra80gUPIQN8jMutryY422ko3MNOfYJuKYfNTJboPFuNryBZm3qMkpvlWauEq6Z0CxEeVQ/Uqu5Ok
+	zKN0SY/tCXg447nrbfg/KhLxhu1a7eGkYfbnT2miu2yfXH6zYg/TDk8kWPTomtO3GjdtL6jhYTr/p
+	ZAr1yxxP7qlf5IbWci/MluEwgBf2nWcFhblmF5tHhdyRyEHopoir1+0qa2bGF/10/a1QDUUAta/2l
+	Zs2lruYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rY7rR-0000000EPXd-25ds;
-	Thu, 08 Feb 2024 17:06:53 +0000
+	id 1rY7re-0000000EPcR-1jJ7;
+	Thu, 08 Feb 2024 17:07:17 +0000
 Received: from lelv0142.ext.ti.com ([198.47.23.249])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rY7p3-0000000EOd1-0G5b;
+	id 1rY7p3-0000000EOe0-2yQ1;
 	Thu, 08 Feb 2024 17:04:34 +0000
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
-	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 418H4CdW095444;
-	Thu, 8 Feb 2024 11:04:12 -0600
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 418H4Hj8095459;
+	Thu, 8 Feb 2024 11:04:17 -0600
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1707411852;
-	bh=72kVJOjDQJkrwjM0ZlAP/foyy3XhLgjfJ5M64CNka8E=;
-	h=From:To:CC:Subject:Date;
-	b=Q6LWPO6726DQWKoNr0ajun4Dqu1U2P5187Ko4KwBZrW/TR03Q1g85ZVEtaipsMH6Y
-	 k2i6J4XUeUHnhYXSOVJoWZ0rCGHRWCKWitoi7m5FZQSUFxWRJZIl5MiFsFYvSGXdnH
-	 +o+zKJ60NIm5t/ATewmTycO/GFi3qrsJ9OD4sml8=
-Received: from DLEE114.ent.ti.com (dlee114.ent.ti.com [157.170.170.25])
-	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 418H4ClS042364
+	s=ti-com-17Q1; t=1707411857;
+	bh=2TI8f8x/5Y4Kr2Vxqhq6Wi5Pu8tSR0ICKXsQgkmtu64=;
+	h=From:To:CC:Subject:Date:In-Reply-To:References;
+	b=lUW4NAlkPsJuI6D1P8bsYr+Ts/dbS0Y7PTS+OtwWD6hHYJpmfBG6gsZu0wTHJAF5x
+	 nUU8aMKtSTpEQBZCDN8vVDTdZFH/IxH5KpKkxKxbOIy1LMgWB6xDLTW2+CeFlup7n6
+	 XqVMPLUBwHSJOUplpIgNERCBALN4tL9UKlCU9y70=
+Received: from DLEE113.ent.ti.com (dlee113.ent.ti.com [157.170.170.24])
+	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 418H4HY1023350
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 8 Feb 2024 11:04:12 -0600
-Received: from DLEE104.ent.ti.com (157.170.170.34) by DLEE114.ent.ti.com
- (157.170.170.25) with Microsoft SMTP Server (version=TLS1_2,
+	Thu, 8 Feb 2024 11:04:17 -0600
+Received: from DLEE101.ent.ti.com (157.170.170.31) by DLEE113.ent.ti.com
+ (157.170.170.24) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Thu, 8
- Feb 2024 11:04:12 -0600
-Received: from lelvsmtp6.itg.ti.com (10.180.75.249) by DLEE104.ent.ti.com
- (157.170.170.34) with Microsoft SMTP Server (version=TLS1_2,
+ Feb 2024 11:04:17 -0600
+Received: from lelvsmtp6.itg.ti.com (10.180.75.249) by DLEE101.ent.ti.com
+ (157.170.170.31) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Thu, 8 Feb 2024 11:04:12 -0600
+ Frontend Transport; Thu, 8 Feb 2024 11:04:17 -0600
 Received: from lelvsmtp5.itg.ti.com ([10.249.42.149])
-	by lelvsmtp6.itg.ti.com (8.15.2/8.15.2) with ESMTP id 418H4B62091006;
-	Thu, 8 Feb 2024 11:04:11 -0600
+	by lelvsmtp6.itg.ti.com (8.15.2/8.15.2) with ESMTP id 418H4B6A091006;
+	Thu, 8 Feb 2024 11:04:16 -0600
 From: Andrew Davis <afd@ti.com>
 To: Sebastian Reichel <sre@kernel.org>,
         Manivannan Sadhasivam
@@ -72,18 +72,19 @@ CC: <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-actions@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
         <linux-arm-kernel@lists.infradead.org>,
         <linux-mediatek@lists.infradead.org>, Andrew Davis <afd@ti.com>
-Subject: [PATCH v3 00/19] Remove pm_power_off use in drivers/power/reset
-Date: Thu, 8 Feb 2024 11:03:51 -0600
-Message-ID: <20240208170410.67975-1-afd@ti.com>
+Subject: [PATCH v3 08/19] power: reset: axxia-reset: Use devm_register_sys_off_handler(RESTART)
+Date: Thu, 8 Feb 2024 11:03:59 -0600
+Message-ID: <20240208170410.67975-9-afd@ti.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240208170410.67975-1-afd@ti.com>
+References: <20240208170410.67975-1-afd@ti.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240208_090426_702879_7FB57240 
-X-CRM114-Status: UNSURE (   8.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240208_090426_690297_EBE42766 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,74 +99,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello all,
+Use device life-cycle managed register function to simplify probe.
 
-Use of pm_power_off is considered legacy and should be replaced with
-register_sys_off*(). Same for register_restart_handler(). Do this
-for the drivers/power/reset subsystem for all trivial cases.
+Signed-off-by: Andrew Davis <afd@ti.com>
+---
+ drivers/power/reset/axxia-reset.c | 16 ++++++----------
+ 1 file changed, 6 insertions(+), 10 deletions(-)
 
-Thanks,
-Andrew
-
-Changes for v3:
- - Use dev_err_probe() in patch [11/19]
- - Add review tags in patches [18/19] and [19/19]
-
-Changes for v2:
- - Fix sparse warning in 7/19 and 10/19
- - Add new patch fixing an already existing sparse warning (3/19)
- - Rebase on v6.8-rc3
-
-Andrew Davis (19):
-  power: reset: atc260x-poweroff: Use
-    devm_register_sys_off_handler(RESTART)
-  power: reset: atc260x-poweroff: Use
-    devm_register_sys_off_handler(POWER_OFF)
-  power: reset: xgene-reboot: Use devm_platform_ioremap_resource()
-    helper
-  power: reset: xgene-reboot: Use devm_register_sys_off_handler(RESTART)
-  power: reset: tps65086-restart: Use
-    devm_register_sys_off_handler(RESTART)
-  power: reset: tps65086-restart: Remove unneeded device data struct
-  power: reset: brcm-kona-reset: Use
-    devm_register_sys_off_handler(RESTART)
-  power: reset: axxia-reset: Use devm_register_sys_off_handler(RESTART)
-  power: reset: rmobile-reset: Use devm_platform_ioremap_resource()
-    helper
-  power: reset: rmobile-reset: Use
-    devm_register_sys_off_handler(RESTART)
-  power: reset: mt6323-poweroff: Use
-    devm_register_sys_off_handler(POWER_OFF)
-  power: reset: msm-poweroff: Use
-    devm_register_sys_off_handler(POWER_OFF)
-  power: reset: msm-poweroff: Use devm_register_sys_off_handler(RESTART)
-  power: reset: regulator-poweroff: Use
-    devm_register_sys_off_handler(POWER_OFF)
-  power: reset: as3722-poweroff: Use
-    devm_register_sys_off_handler(POWER_OFF)
-  power: reset: gemini-poweroff: Use
-    devm_register_sys_off_handler(POWER_OFF)
-  power: reset: restart-poweroff: Use
-    devm_register_sys_off_handler(POWER_OFF)
-  power: reset: syscon-poweroff: Move device data into a struct
-  power: reset: syscon-poweroff: Use
-    devm_register_sys_off_handler(POWER_OFF)
-
- drivers/power/reset/as3722-poweroff.c    | 30 ++++-------
- drivers/power/reset/atc260x-poweroff.c   | 55 ++++++++------------
- drivers/power/reset/axxia-reset.c        | 16 +++---
- drivers/power/reset/brcm-kona-reset.c    | 11 ++--
- drivers/power/reset/gemini-poweroff.c    | 16 +++---
- drivers/power/reset/msm-poweroff.c       | 25 ++++-----
- drivers/power/reset/mt6323-poweroff.c    | 26 +++++-----
- drivers/power/reset/regulator-poweroff.c | 36 +++++--------
- drivers/power/reset/restart-poweroff.c   | 25 +++------
- drivers/power/reset/rmobile-reset.c      | 35 ++++---------
- drivers/power/reset/syscon-poweroff.c    | 66 ++++++++++++------------
- drivers/power/reset/tps65086-restart.c   | 58 ++++-----------------
- drivers/power/reset/xgene-reboot.c       | 21 +++-----
- 13 files changed, 152 insertions(+), 268 deletions(-)
-
+diff --git a/drivers/power/reset/axxia-reset.c b/drivers/power/reset/axxia-reset.c
+index 24946766760c3..797bf6773860e 100644
+--- a/drivers/power/reset/axxia-reset.c
++++ b/drivers/power/reset/axxia-reset.c
+@@ -26,11 +26,10 @@
+ #define SC_EFUSE_INT_STATUS	0x180c
+ #define   EFUSE_READ_DONE	(1<<31)
+ 
+-static struct regmap *syscon;
+-
+-static int axxia_restart_handler(struct notifier_block *this,
+-				 unsigned long mode, void *cmd)
++static int axxia_restart_handler(struct sys_off_data *data)
+ {
++	struct regmap *syscon = data->cb_data;
++
+ 	/* Access Key (0xab) */
+ 	regmap_write(syscon, SC_CRIT_WRITE_KEY, 0xab);
+ 	/* Select internal boot from 0xffff0000 */
+@@ -44,14 +43,10 @@ static int axxia_restart_handler(struct notifier_block *this,
+ 	return NOTIFY_DONE;
+ }
+ 
+-static struct notifier_block axxia_restart_nb = {
+-	.notifier_call = axxia_restart_handler,
+-	.priority = 128,
+-};
+-
+ static int axxia_reset_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
++	struct regmap *syscon;
+ 	int err;
+ 
+ 	syscon = syscon_regmap_lookup_by_phandle(dev->of_node, "syscon");
+@@ -60,7 +55,8 @@ static int axxia_reset_probe(struct platform_device *pdev)
+ 		return PTR_ERR(syscon);
+ 	}
+ 
+-	err = register_restart_handler(&axxia_restart_nb);
++	err = devm_register_sys_off_handler(&pdev->dev, SYS_OFF_MODE_RESTART,
++					    128, axxia_restart_handler, syscon);
+ 	if (err)
+ 		dev_err(dev, "cannot register restart handler (err=%d)\n", err);
+ 
 -- 
 2.39.2
 
