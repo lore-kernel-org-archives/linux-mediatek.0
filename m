@@ -4,72 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 140A5C4828F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 19:36:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D364C48260
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 21:59:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ddz8Sv+QlYT5INqMFfFhMaDjWIdMDNTLjt/Wj7ITUr8=; b=08oXjygJkgIqgu2GNd5ADcMYsP
-	KrmfuuZYYiu7G0vLphu/M4iEia4pRCc0a7D0BhpOV9UsP5Apfg2dJwq8JFizrHDf/MUW6TtAgDBla
-	TA+akU5DuoUOjHKt3epW4dzpxUlEFei2602gwKGa6xf13qw/9G/EGZjCmudoWOc+kKiHDPjVaaXTv
-	UP/nQeKxuSlaWLb14jRryxRBHmuYr/tCAVw9nFE5kRJAGz3Df6SChlhdAK6IHxoL1LOvwuqN2hikm
-	RoEFKlBpa5iPMbrNRTWITrQXlPzKxno/RcJ+WIUcQdNyp+r7ey1KIjvaWtSpgon+BE3hf71IYnKCL
-	CaMn7iCQ==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=AVepR+rGi9qP7QecZrVNZGxlAacyZEcN1GI2ljcPknM=; b=A8HPQkAZ8NjrKTxbp3M9IHcfdL
+	5V3wPMXGmvT6EpIFd93sQRIrqZlZW6M+9/mXiEYqu12om86wZktj21zlUlLLwfDMzwsxQjkgmq+Hw
+	HnuyyO5BOdPrlAgox92pZOwJ/qz7yIWEewplB3L0a+FmRwc5aJSa4xkw0QdwhR1qMporfUdGG4Yw9
+	+t9NmtuRg7GiBTHfAYKd8ryDVSpinFPxXKD1ITkAbMqmlM83JovBqxyqhOX64C386UQPz9syVl1rv
+	PKGlPY5AzLE8k++inXgeBN2e6fe0h6F0AgrhUj/PcFY6HxdMLcfknOgZcmKKbiz1DdsZlosIG9Bup
+	RyC5B9/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYABq-0000000Emjn-3utQ;
-	Thu, 08 Feb 2024 19:36:06 +0000
-Received: from relay8-d.mail.gandi.net ([217.70.183.201])
+	id 1rYCQl-0000000F7do-28Cv;
+	Thu, 08 Feb 2024 21:59:39 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYABn-0000000Emj9-2Kpt;
-	Thu, 08 Feb 2024 19:36:04 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 3C11B1BF207;
-	Thu,  8 Feb 2024 19:35:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1707420958;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Ddz8Sv+QlYT5INqMFfFhMaDjWIdMDNTLjt/Wj7ITUr8=;
-	b=nghsWFaikliESs/fO8r46x5t8cVB/B+0wrV0kdwuHfqtdxFbxnOj36IIpcEDKDvErggVne
-	Qg4XiFACEowYkf02TO0897fWCBHQNG+iINuFD3b0wK0vQDM1Palyk4GdWK0P7yZaCiDgrt
-	hI5ScCCJZY88D3teO70p343rCtIYwizwh7Acj+kNv5MCO5LzNnNWq2udd2PrTSkWNO4YhD
-	dtFTnyavm/on7eUzWUjCv3LQWl8x8nJ5s+OAi5AXg04pBCunytKhBh52q3pv0YLk9uvTrJ
-	hPY/C8NtqMDBDyGuwg/IPcPFmfW8kUhMNpnvLz7nerfL55pQg8T93IC0XisgIQ==
-Message-ID: <2a6a8d93-beae-4bec-a792-0e093b4c4ecd@arinc9.com>
-Date: Thu, 8 Feb 2024 22:35:53 +0300
+	id 1rYCQi-0000000F7c9-2hs7;
+	Thu, 08 Feb 2024 21:59:37 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a29c4bbb2f4so37494566b.1;
+        Thu, 08 Feb 2024 13:59:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1707429574; x=1708034374; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=AVepR+rGi9qP7QecZrVNZGxlAacyZEcN1GI2ljcPknM=;
+        b=YiwzgRV7384CNoWf7k3u402KR8pvWezjQkLx7njVhfYs/IAxTW7uBeEVPBAuoOfb5h
+         CoJyGFEDeeAF5+bMQ9tpHvsG8WhBJp8ADdgi0mLIMWPSwtaN6NQEhJ02fbDzmitromrZ
+         pvVOJ/c+T9uegfyaJwGQVo9HFpLSuI0eghKmVHj4sB0wqLR1TgZ9DE8PHxjJoqFj7foP
+         6nPwNmVyzTstnnd90N0wqeh3QC0rJmUBEJxUM3cQNPePKIoDmRt5aI9jsdZeOqN4XPqD
+         /ZPwAvyxZSe2nLljIthPmFAqZzvDu2/y53s0yuYfX6QJQ8CWlxFjevvHqTo5BAKoivVL
+         1NcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1707429574; x=1708034374;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=AVepR+rGi9qP7QecZrVNZGxlAacyZEcN1GI2ljcPknM=;
+        b=pzHsbDFBJNJPLiPYKhljcQBjt0itPpEDM6UPE0Mx3WuquSm4Eb6sbtdLNZD1Z5JJak
+         llFSE1vAXygctTKgvGY1TiCY1FwZUdm3ul/nrlZWwkMebK5LcxMT1V8BSYMjXIZOtGCB
+         ODSPXDxqyRfiO+DQ4V4sG2jf7+6w2IKQt3svvdu3owTO0eY07Vw0c3smv3oB5P8JD0Os
+         /pw3Twg3UQyjjfdtZoi7GjIUEXFCP2p1mdrh3KvJw/u/TpM9XEpVQ6LxluB/ygPJgNeV
+         NWLvv68UmEReVCM4UJkCMEZCg204Uz+F29ODaUvKyL6R9mnKWHVqNN4j2oa+3WLALzY8
+         0HKA==
+X-Gm-Message-State: AOJu0YzeIujTc5Mtyq8rTihCVNIrXjCVHus7ZSi29EadnshavbxKUR0k
+	papbxPTRCZbO4fH6xhf6xpMpAAgonGaSyTGC8HGlLkOjxFoDQWL6
+X-Google-Smtp-Source: AGHT+IEVbsowZHNTpuOZoU601hiKKk3mWRkCBHnoXB13FY31HnF9RpvsMi6ycgM1IRowDJQTYenTMA==
+X-Received: by 2002:a17:906:4acf:b0:a38:350:bbdd with SMTP id u15-20020a1709064acf00b00a380350bbddmr425752ejt.48.1707429573863;
+        Thu, 08 Feb 2024 13:59:33 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCWqyCuLpoE7cM/3uLYgV4UJ6clpSsEYm9CsGZNT7AzfgdOIJKirfgJjt5TTDl9Q/ltRUhJeYTh5pPtgzcOrivc0ClfGBRijNGIHSuqKR4HnIgGQe1agfegzSFID9YemtwFA6UWyURUCozfrantbxlEyXTO0ZhQreQ2sbOsKiXTcvCZeBEJw5un3ygPl5uEOXbc9RNrRsQ+b5r6jUCPWfL6jYF2SfzkKLdK/2160WkZmrv1wV86qZ6fxVMJCNuTkAP9MaHtPuVe3uqARUqVhdnMo7CbEYVmcU3NC8IA6DmvC9cTUs1Cbt+k3HbKdFzNG3k0MVPD0hoRkCdqCPejsjfqU0yhIcOf/fdvAvJcY2uUVDbxnauh1Cy16FsAAoXwkNaq9Zmd5Fi9hDy5+kMfXAQJEXBTV0guJolL09hmmLAFsd8SsC9NKQc5ois0CmbWuzp5XGBa0zDwwfBGPIlXHdTbkq7ubFP8pAlicSYb5brBE745Ir5uiBAdNI2GuajblMfc3ZVo=
+Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.gmail.com with ESMTPSA id rf19-20020a1709076a1300b00a3743142429sm108255ejc.39.2024.02.08.13.59.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 08 Feb 2024 13:59:33 -0800 (PST)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: Russell King <linux@armlinux.org.uk>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH V2 0/3] dt-bindings: arm: mediatek: convert MT7622-related bindings to the json-schema
+Date: Thu,  8 Feb 2024 22:59:23 +0100
+Message-Id: <20240208215926.10085-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH netnext 8/8] net: dsa: mt7530: simplify link operations
- and force link down on all ports
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Russell King <linux@armlinux.org.uk>, mithat.guner@xeront.com,
- erkin.bozoglu@xeront.com, Bartel Eerdekens <bartel.eerdekens@constell8.be>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240208-for-netnext-mt7530-improvements-3-v1-0-d7c1cfd502ca@arinc9.com>
- <20240208-for-netnext-mt7530-improvements-3-v1-8-d7c1cfd502ca@arinc9.com>
- <ZcT_r68mStRAC3Uk@makrotopia.org>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <ZcT_r68mStRAC3Uk@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240208_113603_888677_C2FD70D2 
-X-CRM114-Status: GOOD (  18.33  )
+X-CRM114-CacheID: sfid-20240208_135936_718820_72705D33 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,95 +100,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8.02.2024 19:22, Daniel Golle wrote:
-> On Thu, Feb 08, 2024 at 08:51:36AM +0300, Arınç ÜNAL via B4 Relay wrote:
->> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>
->> Currently, the link operations for switch MACs are scattered across
->> port_enable, port_disable, phylink_mac_config, phylink_mac_link_up, and
->> phylink_mac_link_down.
->>
->> port_enable and port_disable clears the link settings. Move that to
->> mt7530_setup() and mt7531_setup_common() which set up the switches. This
->> way, the link settings are cleared on all ports at setup, and then only
->> once with phylink_mac_link_down() when a link goes down.
->>
->> Enable force mode at setup to apply the force part of the link settings.
->> This ensures that only active ports will have their link up.
->>
->> Now that the bit for setting the port on force mode is done on
->> mt7530_setup() and mt7531_setup_common(), get rid of PMCR_FORCE_MODE_ID()
->> which helped determine which bit to use for the switch model.
->>
->> The "MT7621 Giga Switch Programming Guide v0.3", "MT7531 Reference Manual
->> for Development Board v1.0", and "MT7988A Wi-Fi 7 Generation Router
->> Platform: Datasheet (Open Version) v0.1" documents show that these bits are
->> enabled at reset:
->>
->> PMCR_IFG_XMIT(1) (not part of PMCR_LINK_SETTINGS_MASK)
->> PMCR_MAC_MODE (not part of PMCR_LINK_SETTINGS_MASK)
->> PMCR_TX_EN
->> PMCR_RX_EN
->> PMCR_BACKOFF_EN (not part of PMCR_LINK_SETTINGS_MASK)
->> PMCR_BACKPR_EN (not part of PMCR_LINK_SETTINGS_MASK)
->> PMCR_TX_FC_EN
->> PMCR_RX_FC_EN
->>
->> These bits also don't exist on the MT7530_PMCR_P(6) register of the switch
->> on the MT7988 SoC:
->>
->> PMCR_IFG_XMIT()
->> PMCR_MAC_MODE
->> PMCR_BACKOFF_EN
->> PMCR_BACKPR_EN
->>
->> Remove the setting of the bits not part of PMCR_LINK_SETTINGS_MASK on
->> phylink_mac_config as they're already set.
->>
->> Suggested-by: Vladimir Oltean <olteanv@gmail.com>
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->> ---
->>   drivers/net/dsa/mt7530.c | 26 +++++++++++++-------------
->>   drivers/net/dsa/mt7530.h |  2 --
->>   2 files changed, 13 insertions(+), 15 deletions(-)
->>
->> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
->> index 5c8ad41ce8cd..f67db577d1c0 100644
->> --- a/drivers/net/dsa/mt7530.c
->> +++ b/drivers/net/dsa/mt7530.c
->> @@ -1018,7 +1018,6 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
->>   	priv->ports[port].enable = true;
->>   	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
->>   		   priv->ports[port].pm);
->> -	mt7530_clear(priv, MT7530_PMCR_P(port), PMCR_LINK_SETTINGS_MASK);
->>   
->>   	mutex_unlock(&priv->reg_mutex);
->>   
->> @@ -1038,7 +1037,6 @@ mt7530_port_disable(struct dsa_switch *ds, int port)
->>   	priv->ports[port].enable = false;
->>   	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
->>   		   PCR_MATRIX_CLR);
->> -	mt7530_clear(priv, MT7530_PMCR_P(port), PMCR_LINK_SETTINGS_MASK);
->>   
->>   	mutex_unlock(&priv->reg_mutex);
->>   }
->> @@ -2257,6 +2255,12 @@ mt7530_setup(struct dsa_switch *ds)
->>   	mt7530_mib_reset(ds);
->>   
->>   	for (i = 0; i < MT7530_NUM_PORTS; i++) {
->> +		/* Clear link settings and enable force mode to force link down
->> +		 * on all ports until they're enabled later.
->> +		 */
->> +		mt7530_clear(priv, MT7530_PMCR_P(i), PMCR_LINK_SETTINGS_MASK);
->> +		mt7530_set(priv, MT7530_PMCR_P(i), PMCR_FORCE_MODE);
-> 
-> Any reason to not combine the two lines above into a single call:
-> 
-> mt7530_rmw(priv, MT7530_PMCR_P(i),
-> 	   PMCR_LINK_SETTINGS_MASK | PMCR_FORCE_MODE,
-> 	   PMCR_FORCE_MODE);
+From: Rafał Miłecki <rafal@milecki.pl>
 
-No reason whatsoever, I'll do this. Thanks!
+There are more MediaTek bindings to convert but for now I focused on
+those used by MT7622.
 
-Arınç
+V2: Move bindings to /clock/
+    Use clock-controller@ nodenames
+    Drop incorrectly specified "syscon"
+
+Rafał Miłecki (3):
+  dt-bindings: arm: mediatek: convert hifsys to the json-schema clock
+  dt-bindings: arm: mediatek: convert PCIESYS to the json-schema clock
+  dt-bindings: arm: mediatek: convert SSUSBSYS to the json-schema clock
+
+ .../bindings/arm/mediatek/mediatek,hifsys.txt | 26 ----------
+ .../arm/mediatek/mediatek,pciesys.txt         | 25 ---------
+ .../arm/mediatek/mediatek,ssusbsys.txt        | 25 ---------
+ .../clock/mediatek,mt2701-hifsys.yaml         | 51 +++++++++++++++++++
+ .../clock/mediatek,mt7622-pciesys.yaml        | 45 ++++++++++++++++
+ .../clock/mediatek,mt7622-ssusbsys.yaml       | 45 ++++++++++++++++
+ 6 files changed, 141 insertions(+), 76 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
+ delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
+ delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ssusbsys.txt
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt2701-hifsys.yaml
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7622-ssusbsys.yaml
+
+-- 
+2.35.3
+
 
