@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9151BC4828F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 17:06:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB526C4828F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 17:06:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iOS81LCWivcsA7Ov+uMTe+f7Pr/kqVip8XQZGb4u/UM=; b=aNXJXrGALx8yRw7hNmznlZzzSe
-	MUvl7S9E1+KkmJdUtWbQsSO6/oBM7zvHWZtE6TjiF7SgNOz+96oWsb5bnH/eJEz4LlYyRILGpExJq
-	xg58Y4tvt0jQnOLsnKfDmSiH+UCxKTyE0tN/nOEigdwfXSSvNXgQnuaJC4MkqnysMNVRkBTgD1dpm
-	Cb4kxfqy8lgVb1ZUSW9fvOrPJT6zoZi1Rn89pMutZd+7fPh950V4n75Opf5lEoBeXvzz+SCWfs/MU
-	YxccX3YIrjeWe0jXrNnrKU2pIwHXDRtt+3eqWKAEq9GzCnFpaQCrHRutcj/0iT6JVVCDrfi9Bo6tv
-	38yo5sUQ==;
+	bh=WrDlA3MVIblMNMt/x1ENZcDUaj6UX9hq3LACckiD2VI=; b=GdRImgg7bK2U4Wo/GUnXoyAllO
+	AgHgH0CKqLgnS2BPxUmk+b8J8trfnmqQ3yRVNZUXC+9EquiMip1ExrmNIARpgVXsPLU0i6S0tOKh9
+	M+/RAenCv+YZxyX8U1qkz8PmOC39vvd+PSy+MYOTO3XjDgSb9daI85lwaaXhjk6Z2T/jvb87+aLT6
+	iJPOL0j5880sNbSI7zAFt6sTFMUstEe5QOo+rZkb4Z2SgBr6yzvuNT8MlhkpH8lO/JD2VMIIYiE5y
+	7/M1DwdsInXfS/7v7vSVrdoq9fsndjA1sH1DIDxilorN0shk7dTaKZeeJVezRS+wshkJDrteYTYC8
+	BX4ubJMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rY7qj-0000000EPBX-3p8V;
-	Thu, 08 Feb 2024 17:06:09 +0000
-Received: from lelv0143.ext.ti.com ([198.47.23.248])
+	id 1rY7rI-0000000EPRS-3Ygm;
+	Thu, 08 Feb 2024 17:06:44 +0000
+Received: from fllv0016.ext.ti.com ([198.47.19.142])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rY7p2-0000000EOdR-3VRb;
+	id 1rY7p1-0000000EOcx-24Q0;
 	Thu, 08 Feb 2024 17:04:32 +0000
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
-	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 418H4Hmg018151;
-	Thu, 8 Feb 2024 11:04:17 -0600
+Received: from fllv0034.itg.ti.com ([10.64.40.246])
+	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 418H4FXa051756;
+	Thu, 8 Feb 2024 11:04:15 -0600
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1707411857;
-	bh=iOS81LCWivcsA7Ov+uMTe+f7Pr/kqVip8XQZGb4u/UM=;
+	s=ti-com-17Q1; t=1707411856;
+	bh=WrDlA3MVIblMNMt/x1ENZcDUaj6UX9hq3LACckiD2VI=;
 	h=From:To:CC:Subject:Date:In-Reply-To:References;
-	b=aaDFaUJ5X7dqHsA2u6lxexH79wO6A5iNlyvbvHTVwOQCNNSAzqkUEZZyQjHekwOBi
-	 pkAGk3+lK2TALD448I9OWXwcaQzSTELh8IFkg5WdoruDZRD6WwLwYjcv+nnSQ2QJFm
-	 wv+6NWoTotqSoJBWhgjbMtEzRZXSKLaBuRJI2wRw=
-Received: from DLEE111.ent.ti.com (dlee111.ent.ti.com [157.170.170.22])
-	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 418H4HC4042403
+	b=Fu8d2p1Sefem4TwIQKrgN2gVrLjnyMWmo+jl/9sigcdvC4U7nnRA/cslNlpHCWjuy
+	 APwKkdKN4EPi/IXqcCzGyrO//R1Kme3nFQki/Uy4tFsd8hctkU0C5zd75sD1JPD1Yq
+	 V7TeYo7U5L/YAIS38oeAnM9ZjxIJxThkMnf+Ji+w=
+Received: from DFLE109.ent.ti.com (dfle109.ent.ti.com [10.64.6.30])
+	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 418H4F6I035248
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 8 Feb 2024 11:04:17 -0600
-Received: from DLEE102.ent.ti.com (157.170.170.32) by DLEE111.ent.ti.com
- (157.170.170.22) with Microsoft SMTP Server (version=TLS1_2,
+	Thu, 8 Feb 2024 11:04:15 -0600
+Received: from DFLE102.ent.ti.com (10.64.6.23) by DFLE109.ent.ti.com
+ (10.64.6.30) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Thu, 8
- Feb 2024 11:04:16 -0600
-Received: from lelvsmtp6.itg.ti.com (10.180.75.249) by DLEE102.ent.ti.com
- (157.170.170.32) with Microsoft SMTP Server (version=TLS1_2,
+ Feb 2024 11:04:15 -0600
+Received: from lelvsmtp6.itg.ti.com (10.180.75.249) by DFLE102.ent.ti.com
+ (10.64.6.23) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Thu, 8 Feb 2024 11:04:17 -0600
+ Frontend Transport; Thu, 8 Feb 2024 11:04:15 -0600
 Received: from lelvsmtp5.itg.ti.com ([10.249.42.149])
-	by lelvsmtp6.itg.ti.com (8.15.2/8.15.2) with ESMTP id 418H4B69091006;
-	Thu, 8 Feb 2024 11:04:16 -0600
+	by lelvsmtp6.itg.ti.com (8.15.2/8.15.2) with ESMTP id 418H4B67091006;
+	Thu, 8 Feb 2024 11:04:15 -0600
 From: Andrew Davis <afd@ti.com>
 To: Sebastian Reichel <sre@kernel.org>,
         Manivannan Sadhasivam
@@ -72,9 +72,9 @@ CC: <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-actions@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
         <linux-arm-kernel@lists.infradead.org>,
         <linux-mediatek@lists.infradead.org>, Andrew Davis <afd@ti.com>
-Subject: [PATCH v3 07/19] power: reset: brcm-kona-reset: Use devm_register_sys_off_handler(RESTART)
-Date: Thu, 8 Feb 2024 11:03:58 -0600
-Message-ID: <20240208170410.67975-8-afd@ti.com>
+Subject: [PATCH v3 05/19] power: reset: tps65086-restart: Use devm_register_sys_off_handler(RESTART)
+Date: Thu, 8 Feb 2024 11:03:56 -0600
+Message-ID: <20240208170410.67975-6-afd@ti.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240208170410.67975-1-afd@ti.com>
 References: <20240208170410.67975-1-afd@ti.com>
@@ -83,8 +83,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240208_090426_687688_5DF7DBCC 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20240208_090426_674661_3A8E0253 
+X-CRM114-Status: GOOD (  15.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,48 +99,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use device life-cycle managed register function to simplify probe.
+Use device life-cycle managed register function to simplify probe and
+exit paths.
 
 Signed-off-by: Andrew Davis <afd@ti.com>
 ---
- drivers/power/reset/brcm-kona-reset.c | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
+ drivers/power/reset/tps65086-restart.c | 35 ++++++--------------------
+ 1 file changed, 7 insertions(+), 28 deletions(-)
 
-diff --git a/drivers/power/reset/brcm-kona-reset.c b/drivers/power/reset/brcm-kona-reset.c
-index d05728b1db097..ee3f1bb976530 100644
---- a/drivers/power/reset/brcm-kona-reset.c
-+++ b/drivers/power/reset/brcm-kona-reset.c
-@@ -15,8 +15,7 @@
+diff --git a/drivers/power/reset/tps65086-restart.c b/drivers/power/reset/tps65086-restart.c
+index ee8e9f4b837ea..82d7a761a0385 100644
+--- a/drivers/power/reset/tps65086-restart.c
++++ b/drivers/power/reset/tps65086-restart.c
+@@ -10,15 +10,12 @@
+ #include <linux/reboot.h>
  
- static void __iomem *kona_reset_base;
+ struct tps65086_restart {
+-	struct notifier_block handler;
+ 	struct device *dev;
+ };
  
--static int kona_reset_handler(struct notifier_block *this,
--				unsigned long mode, void *cmd)
-+static int kona_reset_handler(struct sys_off_data *data)
+-static int tps65086_restart_notify(struct notifier_block *this,
+-				   unsigned long mode, void *cmd)
++static int tps65086_restart_notify(struct sys_off_data *data)
  {
- 	/*
- 	 * A soft reset is triggered by writing a 0 to bit 0 of the soft reset
-@@ -31,18 +30,14 @@ static int kona_reset_handler(struct notifier_block *this,
- 	return NOTIFY_DONE;
- }
+-	struct tps65086_restart *tps65086_restart =
+-		container_of(this, struct tps65086_restart, handler);
++	struct tps65086_restart *tps65086_restart = data->cb_data;
+ 	struct tps65086 *tps65086 = dev_get_drvdata(tps65086_restart->dev->parent);
+ 	int ret;
  
--static struct notifier_block kona_reset_nb = {
--	.notifier_call = kona_reset_handler,
--	.priority = 128,
--};
+@@ -46,13 +43,13 @@ static int tps65086_restart_probe(struct platform_device *pdev)
+ 	if (!tps65086_restart)
+ 		return -ENOMEM;
+ 
+-	platform_set_drvdata(pdev, tps65086_restart);
 -
- static int kona_reset_probe(struct platform_device *pdev)
- {
- 	kona_reset_base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(kona_reset_base))
- 		return PTR_ERR(kona_reset_base);
+-	tps65086_restart->handler.notifier_call = tps65086_restart_notify;
+-	tps65086_restart->handler.priority = 192;
+ 	tps65086_restart->dev = &pdev->dev;
  
--	return register_restart_handler(&kona_reset_nb);
-+	return devm_register_sys_off_handler(&pdev->dev, SYS_OFF_MODE_RESTART,
-+					     128, kona_reset_handler, NULL);
+-	ret = register_restart_handler(&tps65086_restart->handler);
++	ret = devm_register_sys_off_handler(&pdev->dev,
++					    SYS_OFF_MODE_RESTART,
++					    SYS_OFF_PRIO_HIGH,
++					    tps65086_restart_notify,
++					    tps65086_restart);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "%s: cannot register restart handler: %d\n",
+ 			__func__, ret);
+@@ -62,23 +59,6 @@ static int tps65086_restart_probe(struct platform_device *pdev)
+ 	return 0;
  }
  
- static const struct of_device_id of_match[] = {
+-static void tps65086_restart_remove(struct platform_device *pdev)
+-{
+-	struct tps65086_restart *tps65086_restart = platform_get_drvdata(pdev);
+-	int ret;
+-
+-	ret = unregister_restart_handler(&tps65086_restart->handler);
+-	if (ret) {
+-		/*
+-		 * tps65086_restart_probe() registered the restart handler. So
+-		 * unregistering should work fine. Checking the error code
+-		 * shouldn't be needed, still doing it for completeness.
+-		 */
+-		dev_err(&pdev->dev, "%s: cannot unregister restart handler: %d\n",
+-			__func__, ret);
+-	}
+-}
+-
+ static const struct platform_device_id tps65086_restart_id_table[] = {
+ 	{ "tps65086-reset", },
+ 	{ /* sentinel */ }
+@@ -90,7 +70,6 @@ static struct platform_driver tps65086_restart_driver = {
+ 		.name = "tps65086-restart",
+ 	},
+ 	.probe = tps65086_restart_probe,
+-	.remove_new = tps65086_restart_remove,
+ 	.id_table = tps65086_restart_id_table,
+ };
+ module_platform_driver(tps65086_restart_driver);
 -- 
 2.39.2
 
