@@ -4,89 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05CC9C4828F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 18:27:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 140A5C4828F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Feb 2024 19:36:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:Date:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MhiQCIizSoOoGlOJh1aEc+Kedwwy9bu+6Ox2q8gZmik=; b=Azc4Cp7Vvw8PeMigNl9dOikNaM
-	eaZAw9iuIR0Jy2KKZzXX0EcTWl1nyJYEQr4NY+/7N3H3hkovtrs/33V+tJr5ivZClmxpdOBoIFsAn
-	qogGg84nJo3+P0UAe2g7JF7LH9ZRJkzu4H3SpddZoCO95HOhwzWVLcekpfUWSQNy1QuW3q59NoGc1
-	h+JNr01hT940VCr9dP5bPYT/uxdJ+VtWPKRrReUNlat5UWcqQu3LbHZFYFNCokFb9Ogy9WeWWySEs
-	FeXj7cwIE/yWNHw824e6KYMr/ltUKD6ROZ7MwOOSVXvIybvS7WwzWlue3NZd4RfAgPbU2SxJHfp7T
-	lyqu/9Vw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ddz8Sv+QlYT5INqMFfFhMaDjWIdMDNTLjt/Wj7ITUr8=; b=08oXjygJkgIqgu2GNd5ADcMYsP
+	KrmfuuZYYiu7G0vLphu/M4iEia4pRCc0a7D0BhpOV9UsP5Apfg2dJwq8JFizrHDf/MUW6TtAgDBla
+	TA+akU5DuoUOjHKt3epW4dzpxUlEFei2602gwKGa6xf13qw/9G/EGZjCmudoWOc+kKiHDPjVaaXTv
+	UP/nQeKxuSlaWLb14jRryxRBHmuYr/tCAVw9nFE5kRJAGz3Df6SChlhdAK6IHxoL1LOvwuqN2hikm
+	RoEFKlBpa5iPMbrNRTWITrQXlPzKxno/RcJ+WIUcQdNyp+r7ey1KIjvaWtSpgon+BE3hf71IYnKCL
+	CaMn7iCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rY97k-0000000Ec24-28G8;
-	Thu, 08 Feb 2024 18:27:48 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1rYABq-0000000Emjn-3utQ;
+	Thu, 08 Feb 2024 19:36:06 +0000
+Received: from relay8-d.mail.gandi.net ([217.70.183.201])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rY97g-0000000Ec1W-2gqu;
-	Thu, 08 Feb 2024 18:27:45 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-5116588189aso148439e87.1;
-        Thu, 08 Feb 2024 10:27:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1707416863; x=1708021663; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=MhiQCIizSoOoGlOJh1aEc+Kedwwy9bu+6Ox2q8gZmik=;
-        b=lvd4MMjhC9djpydU213KtKQD5i2gTr3Wp97dMc4fxWFnsUGAQLGNG6jgZup34gNxOr
-         pjPDHFwZtSnBmI1zyx/gNxCczEMEQcRoiyylE6Ucn6x19zc6x2GilgCIsvCCNWKk0+yt
-         VAjjc84C+slxq/rE2aAQJMtIjRyMRIgenZZc5ZBbfiEzekg1pplgie13C8F2RjKI9Mw6
-         QQ9N33Wca1MZiicBP1VN0ma5XyzpZ5jD8D6ikYYuF/avx7TRE8WLOmyALlcQhHBOWh5O
-         1OqgMa40h1IOBccQ/KakLhIMptubqcL3ifkMN/YUAZ/WHpdpWUPg9XbwsIID5qv0HxaR
-         vzQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707416863; x=1708021663;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:date:from:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MhiQCIizSoOoGlOJh1aEc+Kedwwy9bu+6Ox2q8gZmik=;
-        b=NwIwPuLKacFol7RVKXjS29v0oj5ggn/BU3gB0Cjp/uVAvYhNW/Nrff7LInGII/TWPf
-         9pEi6UJ0R3I/RLXjE/EcD7cRzsGQuRLrBSDkkG8UosOYS/3uO8SOUVgiGXyGe++GObpD
-         sW1+OPuXuhf+9HSerJd79L+SG+fvLggXJjrzVi/T2hFbFrJB33Z/jyIFN++W9Xn33zHr
-         BkYp9gQ5qx0fWOGQhP7NoQlk7U2KYOXsH91xk/ANAgCFKaglYR9qaQoCXcVWkcsb5rCj
-         Iw+XaJEfWHhX9IaOUtSoPvmBGD9Ku54Bs1DG3ua5rjep674+iAizVTULYipm8AYgEOg8
-         FjcQ==
-X-Gm-Message-State: AOJu0YxlQ0hXuOikzJL3B/4/VD+LQAEVPJpKnhkFWlZL6hbMoXeNrcLv
-	mdPYCVrWkXFvknHfsGCEfidegnUJ/Fe3qvo2AYQSWXE17cItCVF27pqcGrwfL4k=
-X-Google-Smtp-Source: AGHT+IEt1TA9WaZV161QOsVJTKIO45dwFrmr5lsjYI1a2PuuFU/uotVfRvKIQ12At8iMiW8KxfJUKw==
-X-Received: by 2002:a05:6512:3ca3:b0:511:4fb4:94f4 with SMTP id h35-20020a0565123ca300b005114fb494f4mr46153lfv.53.1707416862702;
-        Thu, 08 Feb 2024 10:27:42 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCW73WLa6OSXt77bWdX/B/C6TGTeT1GCQPBjP9edjIgotYXUWF9+OyugsyGpxeAbsI1Qa7ibGuUaCMI1fgW7xbP2ZnhjXPqLApJwox89/312sbZI/9/NLizNPLJwj3ZJ7qTQfHZ3C/DvcYaVhsiZMSxEjwxHi6Vg3W7SNpMbGaOA4BbkPgSj2CSNDUi6fNWjYsOlNmTrmaStBrrLUBSKT6N3q6TJCXS6YrrazEBXzSXx46MjBkTdWPROUHw3RtSULg3F+BxX5hZKA7YLjAU8DoXj6jIh3vRvFW16i58N5fObGPpcrnuAu8xn8q+GSdLPfHQ9/JSm/x2PTLlMT5cjoDSZapNi+42P1EqwdgQBKeZUgUm2+6fIn3etemm1PgnaxJZN1pmnyr8TKZ/MR6X5B3m3Vst3IbIwODfIpuqdQsT62z9Ia/jNPnaRFfQTYATfWWVkfKzRSxw1jwYmPYKAzOzXVGBeFwmKmaL4tekmgheOOsROPWrQKW0e
-Received: from pc636 (host-90-233-221-0.mobileonline.telia.com. [90.233.221.0])
-        by smtp.gmail.com with ESMTPSA id w6-20020a05651204c600b0051151e07c01sm28780lfq.36.2024.02.08.10.27.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 Feb 2024 10:27:42 -0800 (PST)
-From: Uladzislau Rezki <urezki@gmail.com>
-X-Google-Original-From: Uladzislau Rezki <urezki@pc636>
-Date: Thu, 8 Feb 2024 19:27:39 +0100
-To: Andrew Morton <akpm@linux-foundation.org>,
-	Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-Cc: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>,
-	Jan Kiszka <jan.kiszka@siemens.com>,
-	Kieran Bingham <kbingham@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	casper.li@mediatek.com, chinwen.chang@mediatek.com,
-	qun-wei.lin@mediatek.com, linux-mm@kvack.org, urezki@gmail.com,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] scripts/gdb/vmalloc: fix vmallocinfo error
-Message-ID: <ZcUdG5snmTW1ldx3@pc636>
-References: <20240207085856.11190-1-Kuan-Ying.Lee@mediatek.com>
- <20240207155623.a943328ba0b77859246e0d9f@linux-foundation.org>
- <20240207155929.cc107bcc14b982789bdc9fab@linux-foundation.org>
+	id 1rYABn-0000000Emj9-2Kpt;
+	Thu, 08 Feb 2024 19:36:04 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 3C11B1BF207;
+	Thu,  8 Feb 2024 19:35:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1707420958;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Ddz8Sv+QlYT5INqMFfFhMaDjWIdMDNTLjt/Wj7ITUr8=;
+	b=nghsWFaikliESs/fO8r46x5t8cVB/B+0wrV0kdwuHfqtdxFbxnOj36IIpcEDKDvErggVne
+	Qg4XiFACEowYkf02TO0897fWCBHQNG+iINuFD3b0wK0vQDM1Palyk4GdWK0P7yZaCiDgrt
+	hI5ScCCJZY88D3teO70p343rCtIYwizwh7Acj+kNv5MCO5LzNnNWq2udd2PrTSkWNO4YhD
+	dtFTnyavm/on7eUzWUjCv3LQWl8x8nJ5s+OAi5AXg04pBCunytKhBh52q3pv0YLk9uvTrJ
+	hPY/C8NtqMDBDyGuwg/IPcPFmfW8kUhMNpnvLz7nerfL55pQg8T93IC0XisgIQ==
+Message-ID: <2a6a8d93-beae-4bec-a792-0e093b4c4ecd@arinc9.com>
+Date: Thu, 8 Feb 2024 22:35:53 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240207155929.cc107bcc14b982789bdc9fab@linux-foundation.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH netnext 8/8] net: dsa: mt7530: simplify link operations
+ and force link down on all ports
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Russell King <linux@armlinux.org.uk>, mithat.guner@xeront.com,
+ erkin.bozoglu@xeront.com, Bartel Eerdekens <bartel.eerdekens@constell8.be>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240208-for-netnext-mt7530-improvements-3-v1-0-d7c1cfd502ca@arinc9.com>
+ <20240208-for-netnext-mt7530-improvements-3-v1-8-d7c1cfd502ca@arinc9.com>
+ <ZcT_r68mStRAC3Uk@makrotopia.org>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <ZcT_r68mStRAC3Uk@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240208_102744_727216_02C32C50 
-X-CRM114-Status: GOOD (  23.50  )
+X-CRM114-CacheID: sfid-20240208_113603_888677_C2FD70D2 
+X-CRM114-Status: GOOD (  18.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,120 +84,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 07, 2024 at 03:59:29PM -0800, Andrew Morton wrote:
-> On Wed, 7 Feb 2024 15:56:23 -0800 Andrew Morton <akpm@linux-foundation.org> wrote:
+On 8.02.2024 19:22, Daniel Golle wrote:
+> On Thu, Feb 08, 2024 at 08:51:36AM +0300, Arınç ÜNAL via B4 Relay wrote:
+>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>
+>> Currently, the link operations for switch MACs are scattered across
+>> port_enable, port_disable, phylink_mac_config, phylink_mac_link_up, and
+>> phylink_mac_link_down.
+>>
+>> port_enable and port_disable clears the link settings. Move that to
+>> mt7530_setup() and mt7531_setup_common() which set up the switches. This
+>> way, the link settings are cleared on all ports at setup, and then only
+>> once with phylink_mac_link_down() when a link goes down.
+>>
+>> Enable force mode at setup to apply the force part of the link settings.
+>> This ensures that only active ports will have their link up.
+>>
+>> Now that the bit for setting the port on force mode is done on
+>> mt7530_setup() and mt7531_setup_common(), get rid of PMCR_FORCE_MODE_ID()
+>> which helped determine which bit to use for the switch model.
+>>
+>> The "MT7621 Giga Switch Programming Guide v0.3", "MT7531 Reference Manual
+>> for Development Board v1.0", and "MT7988A Wi-Fi 7 Generation Router
+>> Platform: Datasheet (Open Version) v0.1" documents show that these bits are
+>> enabled at reset:
+>>
+>> PMCR_IFG_XMIT(1) (not part of PMCR_LINK_SETTINGS_MASK)
+>> PMCR_MAC_MODE (not part of PMCR_LINK_SETTINGS_MASK)
+>> PMCR_TX_EN
+>> PMCR_RX_EN
+>> PMCR_BACKOFF_EN (not part of PMCR_LINK_SETTINGS_MASK)
+>> PMCR_BACKPR_EN (not part of PMCR_LINK_SETTINGS_MASK)
+>> PMCR_TX_FC_EN
+>> PMCR_RX_FC_EN
+>>
+>> These bits also don't exist on the MT7530_PMCR_P(6) register of the switch
+>> on the MT7988 SoC:
+>>
+>> PMCR_IFG_XMIT()
+>> PMCR_MAC_MODE
+>> PMCR_BACKOFF_EN
+>> PMCR_BACKPR_EN
+>>
+>> Remove the setting of the bits not part of PMCR_LINK_SETTINGS_MASK on
+>> phylink_mac_config as they're already set.
+>>
+>> Suggested-by: Vladimir Oltean <olteanv@gmail.com>
+>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>> ---
+>>   drivers/net/dsa/mt7530.c | 26 +++++++++++++-------------
+>>   drivers/net/dsa/mt7530.h |  2 --
+>>   2 files changed, 13 insertions(+), 15 deletions(-)
+>>
+>> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+>> index 5c8ad41ce8cd..f67db577d1c0 100644
+>> --- a/drivers/net/dsa/mt7530.c
+>> +++ b/drivers/net/dsa/mt7530.c
+>> @@ -1018,7 +1018,6 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
+>>   	priv->ports[port].enable = true;
+>>   	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
+>>   		   priv->ports[port].pm);
+>> -	mt7530_clear(priv, MT7530_PMCR_P(port), PMCR_LINK_SETTINGS_MASK);
+>>   
+>>   	mutex_unlock(&priv->reg_mutex);
+>>   
+>> @@ -1038,7 +1037,6 @@ mt7530_port_disable(struct dsa_switch *ds, int port)
+>>   	priv->ports[port].enable = false;
+>>   	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
+>>   		   PCR_MATRIX_CLR);
+>> -	mt7530_clear(priv, MT7530_PMCR_P(port), PMCR_LINK_SETTINGS_MASK);
+>>   
+>>   	mutex_unlock(&priv->reg_mutex);
+>>   }
+>> @@ -2257,6 +2255,12 @@ mt7530_setup(struct dsa_switch *ds)
+>>   	mt7530_mib_reset(ds);
+>>   
+>>   	for (i = 0; i < MT7530_NUM_PORTS; i++) {
+>> +		/* Clear link settings and enable force mode to force link down
+>> +		 * on all ports until they're enabled later.
+>> +		 */
+>> +		mt7530_clear(priv, MT7530_PMCR_P(i), PMCR_LINK_SETTINGS_MASK);
+>> +		mt7530_set(priv, MT7530_PMCR_P(i), PMCR_FORCE_MODE);
 > 
-> > > [1] https://lore.kernel.org/linux-mm/20240102184633.748113-1-urezki@gmail.com/
-> > 
-> > vmap_area_list was removed by https://lkml.kernel.org/r/20240102184633.748113-6-urezki@gmail.com
-> > 
-> > So I think this patch is actually a fix against mm.git:mm-unstable's
-> > mm-vmalloc-remove-vmap_area_list.patch?
-> > 
-> > However this gdb function was probably probably broken earlier in that
-> > series, so perhaps this patch would be best staged as a predecessor to
-> > Ulad's vmalloc series.
+> Any reason to not combine the two lines above into a single call:
 > 
-> ie, this:
-> 
-> 
-> From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-> Subject: scripts/gdb/vmalloc: fix vmallocinfo error
-> Date: Wed, 7 Feb 2024 16:58:51 +0800
-> 
-> The patch series "Mitigate a vmap lock contention" removes vmap_area_list,
-> which will break the gdb vmallocinfo command:
-> 
-> (gdb) lx-vmallocinfo
-> Python Exception <class 'gdb.error'>: No symbol "vmap_area_list" in current context.
-> Error occurred in Python: No symbol "vmap_area_list" in current context.
-> 
-> So we can instead use vmap_nodes to iterate all vmallocinfo.
-> 
-> Link: https://lkml.kernel.org/r/20240207085856.11190-1-Kuan-Ying.Lee@mediatek.com
-> Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-> Cc: Casper Li <casper.li@mediatek.com>
-> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Cc: Chinwen Chang <chinwen.chang@mediatek.com>
-> Cc: Jan Kiszka <jan.kiszka@siemens.com>
-> Cc: Kieran Bingham <kbingham@kernel.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Qun-Wei Lin <qun-wei.lin@mediatek.com>
-> Cc: Uladzislau Rezki (Sony) <urezki@gmail.com>
-> Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
-> ---
-> 
->  scripts/gdb/linux/vmalloc.py |   56 +++++++++++++++++----------------
->  1 file changed, 29 insertions(+), 27 deletions(-)
-> 
-> --- a/scripts/gdb/linux/vmalloc.py~scripts-gdb-vmalloc-fix-vmallocinfo-error
-> +++ a/scripts/gdb/linux/vmalloc.py
-> @@ -29,32 +29,34 @@ class LxVmallocInfo(gdb.Command):
->          if not constants.LX_CONFIG_MMU:
->              raise gdb.GdbError("Requires MMU support")
->  
-> -        vmap_area_list = gdb.parse_and_eval('vmap_area_list')
-> -        for vmap_area in lists.list_for_each_entry(vmap_area_list, vmap_area_ptr_type, "list"):
-> -            if not vmap_area['vm']:
-> -                gdb.write("0x%x-0x%x %10d vm_map_ram\n" % (vmap_area['va_start'], vmap_area['va_end'],
-> -                    vmap_area['va_end'] - vmap_area['va_start']))
-> -                continue
-> -            v = vmap_area['vm']
-> -            gdb.write("0x%x-0x%x %10d" % (v['addr'], v['addr'] + v['size'], v['size']))
-> -            if v['caller']:
-> -                gdb.write(" %s" % str(v['caller']).split(' ')[-1])
-> -            if v['nr_pages']:
-> -                gdb.write(" pages=%d" % v['nr_pages'])
-> -            if v['phys_addr']:
-> -                gdb.write(" phys=0x%x" % v['phys_addr'])
-> -            if v['flags'] & constants.LX_VM_IOREMAP:
-> -                gdb.write(" ioremap")
-> -            if v['flags'] & constants.LX_VM_ALLOC:
-> -                gdb.write(" vmalloc")
-> -            if v['flags'] & constants.LX_VM_MAP:
-> -                gdb.write(" vmap")
-> -            if v['flags'] & constants.LX_VM_USERMAP:
-> -                gdb.write(" user")
-> -            if v['flags'] & constants.LX_VM_DMA_COHERENT:
-> -                gdb.write(" dma-coherent")
-> -            if is_vmalloc_addr(v['pages']):
-> -                gdb.write(" vpages")
-> -            gdb.write("\n")
-> +        nr_vmap_nodes = gdb.parse_and_eval('nr_vmap_nodes')
-> +        for i in range(0, nr_vmap_nodes):
-> +            vn = gdb.parse_and_eval('&vmap_nodes[%d]' % i)
-> +            for vmap_area in lists.list_for_each_entry(vn['busy']['head'], vmap_area_ptr_type, "list"):
-> +                if not vmap_area['vm']:
-> +                    gdb.write("0x%x-0x%x %10d vm_map_ram\n" % (vmap_area['va_start'], vmap_area['va_end'],
-> +                        vmap_area['va_end'] - vmap_area['va_start']))
-> +                    continue
-> +                v = vmap_area['vm']
-> +                gdb.write("0x%x-0x%x %10d" % (v['addr'], v['addr'] + v['size'], v['size']))
-> +                if v['caller']:
-> +                    gdb.write(" %s" % str(v['caller']).split(' ')[-1])
-> +                if v['nr_pages']:
-> +                    gdb.write(" pages=%d" % v['nr_pages'])
-> +                if v['phys_addr']:
-> +                    gdb.write(" phys=0x%x" % v['phys_addr'])
-> +                if v['flags'] & constants.LX_VM_IOREMAP:
-> +                    gdb.write(" ioremap")
-> +                if v['flags'] & constants.LX_VM_ALLOC:
-> +                    gdb.write(" vmalloc")
-> +                if v['flags'] & constants.LX_VM_MAP:
-> +                    gdb.write(" vmap")
-> +                if v['flags'] & constants.LX_VM_USERMAP:
-> +                    gdb.write(" user")
-> +                if v['flags'] & constants.LX_VM_DMA_COHERENT:
-> +                    gdb.write(" dma-coherent")
-> +                if is_vmalloc_addr(v['pages']):
-> +                    gdb.write(" vpages")
-> +                gdb.write("\n")
->  
->  LxVmallocInfo()
-> _
-> 
-Thanks for fixing and helping!
+> mt7530_rmw(priv, MT7530_PMCR_P(i),
+> 	   PMCR_LINK_SETTINGS_MASK | PMCR_FORCE_MODE,
+> 	   PMCR_FORCE_MODE);
 
---
-Uladzislau Rezki
+No reason whatsoever, I'll do this. Thanks!
+
+Arınç
 
