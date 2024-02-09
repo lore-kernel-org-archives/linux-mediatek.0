@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D362C4828F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Feb 2024 07:49:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55262C48297
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Feb 2024 07:50:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RyfZaplS0CdOEyobkvBYVRoP/ZBGSD0HLa8+e8oH5HE=; b=wM4U4CyJOzWs4IiP9drsjzFHd/
-	ClZELW5kAOe8H1jxrdA8hqMeyBDyl0xhUk2U62asvcCLsbiBA1We95v6sJPdOJ600y2lvVQN+7FLC
-	7vhEXaxu8jVZFhicvlUC8sQCkSgpBXx4tMzT148kN6rXZLq8/2DjS3zzio1UKvuV4RUff8G/Nknwf
-	QBJlVOl8CSVyUDQKGuUQrOWtsVhsYNYeu2h81zX7EfYihZYfVrKvsXNEGt/aLXv0rU2fCk5+T0PJp
-	u24ANjMYiBrzcOL5eKhMrg9mj5+lbHwkfyv9dJF6cLoXcf1+9RxDHXBpF4na+v2cysKLFOCMU8Vbg
-	XDdASNHQ==;
+	bh=/tmPr4S1GA3wVBKp3I44e+CzH/GZVO7fOynDcglz+g4=; b=P75wHIPshygL+VucGnU94byHaU
+	6pGyU/CV2zHTCMQ+kREhTXvJe+EX1l0SJF6WqCQqn4osOiV4NiXr171VfVDhxMjZAVmjMIi8FwKVL
+	e9kNwi4lXoI3V2glGUxhzb0c4xvRsCmL54b7Io5/a1qMd0u8vUMCLgGgqKqcoVUTPjLW/C23QTfyQ
+	DmGscNGLE8dieDhZIEIuuInCbeEbf9HR1e5EokGG+IkckiNC8Phmm8XTV63S0tTEhwUtncYcHW80t
+	iD1upU0fYm2hv+qn6OoZSovLR9AdMWj0X8/5QTYX+eKRG+69ykalJS2+fg+Xe3IjGx/FkBa2MDsbf
+	bebWXVDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYLe0-0000000GNn5-0uRz;
-	Fri, 09 Feb 2024 07:49:56 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1rYLeX-0000000GNvZ-42PZ;
+	Fri, 09 Feb 2024 07:50:29 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYLdx-0000000GNlw-0WqJ
+	id 1rYLeU-0000000GNuH-1rC0
 	for linux-mediatek@lists.infradead.org;
-	Fri, 09 Feb 2024 07:49:54 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-410585542b3so5111305e9.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 08 Feb 2024 23:49:51 -0800 (PST)
+	Fri, 09 Feb 2024 07:50:27 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-410489e1a63so5354285e9.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 08 Feb 2024 23:50:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1707464990; x=1708069790; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1707465024; x=1708069824; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=RyfZaplS0CdOEyobkvBYVRoP/ZBGSD0HLa8+e8oH5HE=;
-        b=eTjVxkJtQfVrnGimsBlFJ7OD0+GcG48ThYwzFsIacqne44ftKgy3iwcDj7OhqAqWxZ
-         2GCWM0HxfbXu568HtP9Rdx+b/VkqfQxPAz5OweDhy7rFUlZ04DdvfmX4H4kwlNCiZWjy
-         zrGeYs9O89Iosm/oqLTX2R/dx50sH3/nj30OKZtAKJB5r5sGz+h/rvoS2nDBCcK3k0Vn
-         /mmERPPV3vB0PStrkKcppar67yzAYaZ7iBMI1lQKPpTP14/B+hIoyXZ542PaP+066R5C
-         a2bqwefgj+iO+xJrOqQRj69rP9OxHd4I4fF7S1BFvzhOs+Fkr/glYqSAOXhfbkZUcXA5
-         MZog==
+        bh=/tmPr4S1GA3wVBKp3I44e+CzH/GZVO7fOynDcglz+g4=;
+        b=VwtvVLZYUdNxe0M6R2nkJr2AqEU3EOOlr0j2z/Uqgg+qfrTLwFdF1SMacwGjzdiKxx
+         0L53/xiKG8s2WSbH0reRF4BqYfF1Mjb4TVTuml+G1RU6EtBloPTa/ehOuL9EYfdt1yp8
+         Hy4CDFzqfQEIO+8//UPEvFdd1fo0GJMExK5dYUeJG8ekCo+B7etjB077WhXQT5TzsUct
+         rSfulXpVD7GunK0IrwsTuQLfzxa1dvJD2mN+CnicO9t+N/NEv7uIZoyMDeVsLnMPS4qk
+         z0ndqoA3XVcwmbRd0voz6u3uUp57PMSztCU7YTxK8fpGOJtZ9c8Y134fKOCi66RvVFJ8
+         kqnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707464990; x=1708069790;
+        d=1e100.net; s=20230601; t=1707465024; x=1708069824;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=RyfZaplS0CdOEyobkvBYVRoP/ZBGSD0HLa8+e8oH5HE=;
-        b=Ldvx9QNvm6PLjuvuxaQsMbhonuZDYjFmiVNth7ISf3gni4oujaH6vgmggEsS53Q43h
-         o3/hI0vuvCS99Yu+e4eWW1MhlsuZMJw/JN9LX3lnag2dj9jVBUUP0hMrOHcZSUBlUVeh
-         GYzU/LuUqeuu0jvnu15vs9MJQ4WBAfgbqDTSqvW4FBZXgn6YsYV/6VdZwXDojuCrASaF
-         LT+h2oC8A6tLdeq361asbP+zIv5Z7J636VbufvbF3Ma3pme9rACUktYxXFdxdTuiOrxB
-         GEzlAXH7dSo4sQlwC9BenJc0KhusHVPJXWCl/eX4TXIh3bhD7zrgMqUZYr98uKBpSKAf
-         pr6Q==
-X-Gm-Message-State: AOJu0Yz2EFD5NqoFTH6NCvWEcNtQQzcT1EmAhZPy7wJuSrCuDlgar649
-	n9WNWLrNPfyaCUJhKo6/SOKCxSOyKbAwq9XcRaLNuQSMFa6mPu6in6HMrT3tFyo=
-X-Google-Smtp-Source: AGHT+IGsyf1YALZ5O3J2fnTeN/5YSH2v14+rxSX1FZuqmIPS+TfvysFQyLSJTphiSxM5NdgJTkU56g==
-X-Received: by 2002:a05:600c:4510:b0:40f:dd91:2d06 with SMTP id t16-20020a05600c451000b0040fdd912d06mr535847wmo.32.1707464990670;
-        Thu, 08 Feb 2024 23:49:50 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCUrgfUvvyDK1Xy52Un7DfaMmY/R8LwtFsG4oTxZ+0LZNx80Ybj8xJNsgtrQzgR0zPrFrsQlbHu+avYyrc4RuabYhkAn8tEo7LdSHgofs4z7COyXW/sGsE5bfSEC2YbQN5YPvIpYuQZ5hZxepUTSAgsNpNhJKDU+F1L0L93qgf1HC4S2Giwe2ypAyOjGRZB+Vt2BpbFdXAxSohIuB/eiakXoZztqFGCWfu5kYXdtf0WGlN3+FwQDtbHrrnQZBK1K8/rqeWl2HScjp4u7KE8orByXGH3Eic3GFLPSE0bi3EHei7zpTtAMphmiAV7T8MELPxN8n6q7xQd2cpkMxaUmwfsoxsAG6WySAqVxHY7bTgZ9JM5DT7Z7jqQv1p12ph8yeVf9ABhmIcp/ahi9e5XfuuxdiWDo6LYLHK5u/w+TUuC7rUgtGqyVduRdw/LzMBrZzO6wHldIVVM3yzHPzK10BIPMYA8Hh9QnFtpqo+GO3jNk+M3v13JhF8Spwh5xkvPyddEXRP/t1iPtR4hVcJ3syHV53IOPAVK2hW267A==
+        bh=/tmPr4S1GA3wVBKp3I44e+CzH/GZVO7fOynDcglz+g4=;
+        b=NdVfW2EvKyjjIaC4iemy20drmPTFh3J0MoT0knmO1HCD2LwZyKUejCesHJD/fQTsaH
+         BepJ1jZ1OXYuPLc5nOZBemhD6iPDomuP+bKz9IAxOaf1EpIwmY7t09D5wGBQSqP1hfIw
+         zQ0ombdp2rp36ogkbmkTFw4ommbVubLXUpr6bkeh49GgJ2mG4Unv8+4bw5KgDoavwocC
+         dTFfdm1FNiF2V0Hg+zIaFPUQliktjUZ+7YSfpCz4a1/dzmgO7KyzShB0He+mpM2Ib08+
+         sgz9EkcNBi75vONR2BJJ35kWBK9fwubrFfEGoYAHhFGSuuWIMXC0pcjDTMEP67Z1e3/P
+         TwJQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVtxB+i4Ld/i+5N+F4emg4efzRH/My1mDdxRpmPh6iKRtvYrxsYhKIwXiwDC29kN2kBFiyN06g47yiLRPoA5QSmatz15XddwXsqKZlGDEr+Gla7
+X-Gm-Message-State: AOJu0Yw4grHFMm+My8fcx7J3sffHZGvogTDIBObIPhp+k9woRKGAQg4Q
+	0kpXFU/UAmM7tt9IA9ByFGdQXnhorNuvJayDFWLavZutKTHOFrjVTO0UAL9JZ78=
+X-Google-Smtp-Source: AGHT+IHOTH5Q+xcX+xqUBWMcMjecND2EEmLkiiGclhrl41KMDNiKkrE+N+QlZFJWWZ/sd3FJXpQekg==
+X-Received: by 2002:a05:600c:1c89:b0:410:709e:f242 with SMTP id k9-20020a05600c1c8900b00410709ef242mr393812wms.2.1707465024069;
+        Thu, 08 Feb 2024 23:50:24 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCVnmmTYcSdPpmnWReAXzwGMvW8W+nmAgxrVmjBNQ+qnPUOMpauv19Kp5xb/zqawoZyJ3vgzAeU5wkjgUVZa/Rr9rZItlZAT7X4xMb/we6BdvTZCqmyJG+cOkw6Xsn6nj4yPrdg45gAZx0WFtzQ/r1egylwagP/bA7YU+s2ry2Ydsf/HfEkB3qj7rd5ilCH2Q+0IOE7JaV2F+LmjQLdU3F3Iojy26QK8HwluMd3aKnK+3euQeH4ajG5axPsiqqjCGqFi7jqLZMDafekVQ92H+zZHiR/l15xHfjUwUMe+Rq2Ez+eQ6DvIRYHm6GJJ/fZtKufjkvyLo0lzNSwTWbkFDPvtLhiDW1hIP2LLAqakVutM+nMYHMj1UVIPQRynDVt7RD+1x7vQy+ujGRcOVOq0uRJ6DIMp+RtbuMRpbg0FraMNphPBrK1xRz10ZIIvWNfInrfIsKNkx//OhFLMr/fUb2wDD9bQieW3kvY6PVUF3SnssJQO5HeFRSG1ndZl+5I1Zu3+rT8jfzpV+XhgFqGNKJcV1L0SF0AzET0fBw==
 Received: from [192.168.1.20] ([178.197.222.62])
-        by smtp.gmail.com with ESMTPSA id ay2-20020a05600c1e0200b0040fdc7f4fcdsm1791764wmb.4.2024.02.08.23.49.48
+        by smtp.gmail.com with ESMTPSA id ay2-20020a05600c1e0200b0040fdc7f4fcdsm1791764wmb.4.2024.02.08.23.50.22
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 08 Feb 2024 23:49:50 -0800 (PST)
-Message-ID: <40d5bb84-a65a-4ac3-a17c-062ad4b8ea4a@linaro.org>
-Date: Fri, 9 Feb 2024 08:49:48 +0100
+        Thu, 08 Feb 2024 23:50:23 -0800 (PST)
+Message-ID: <3746a7ff-0b27-47f1-b4e8-cb33f6cac12f@linaro.org>
+Date: Fri, 9 Feb 2024 08:50:22 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V2 2/3] dt-bindings: arm: mediatek: convert PCIESYS to the
- json-schema clock
+Subject: Re: [PATCH V2 3/3] dt-bindings: arm: mediatek: convert SSUSBSYS to
+ the json-schema clock
 Content-Language: en-US
 To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
  Russell King <linux@armlinux.org.uk>,
@@ -83,7 +84,7 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
  linux-kernel@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
  <rafal@milecki.pl>
 References: <20240208215926.10085-1-zajec5@gmail.com>
- <20240208215926.10085-3-zajec5@gmail.com>
+ <20240208215926.10085-4-zajec5@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -129,12 +130,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240208215926.10085-3-zajec5@gmail.com>
+In-Reply-To: <20240208215926.10085-4-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240208_234953_194314_A83F5735 
-X-CRM114-Status: UNSURE (   6.91  )
+X-CRM114-CacheID: sfid-20240208_235026_507163_E58ECE28 
+X-CRM114-Status: UNSURE (   7.13  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -159,6 +160,7 @@ On 08/02/2024 22:59, Rafał Miłecki wrote:
 > 3. Adjusted nodename, "compatible" and "reg" in example
 > 
 > Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> ---
 
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
