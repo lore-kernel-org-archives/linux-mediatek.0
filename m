@@ -4,74 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07D65C4828F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Feb 2024 09:17:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77792C48297
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Feb 2024 09:21:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GapI84HT0kfFvAt1Rf92RVH8aiJZyoBWU7byRRdSVL4=; b=MHVdCTb25XT6Hclwl70/dIwZqh
-	PwjyySWVphQpUJXE773+IsWKVzwwlzLDkte4Hp4FfFRRCF9+PQQ7xpf34XYhFvfDEoinJbPYc1urt
-	7tAdeN45+hkWr653Ai4p4ANQ41aSidNWAv9MIfSDIe8GhEhOJRHNXuGZ4gc1+6ospcX5JLAxULmIv
-	x6wTBUN9nwl+w3MW9BGQwLCyP/vXTyFXq4ATpR6FATst5fnbDtsZyIyxuz3w6t1hB02hkVjyIKU+k
-	5p718+RKxYu6SDcStd5tHn8ntNZlSGzICniLHLEs2J7p9tcOicrGY/aUjGzYJTHUHQ3ClJ/xt1QZz
-	7LHUKNdQ==;
+	bh=hYkJ5O5jRh27BYCAq26mhDQIPUAqJkb+sTuRSDzVCHY=; b=RjIy9nu8XUvWTFTF6vkZbhFm8e
+	XYSePEXi2uaGwIuLbefC+aNw87f2dA+UneBCVSRWi9ESIG7bSIZFNR/qEN9XN9BcLYMdUUZVyh2vu
+	wA4Vn/Z2CUieGzL2S0DizhqGIGvXVVDLuCaQVYtK8V1/l8rMI+20X8UyQD5cpT7YVtb1fVyjzei3j
+	fqLDJ1zy3cm12K9lDiemVRk+oVBCGQDvD576DD8i8kF4RkPnC4QW70TJm5xE7/TKnUSc/ks0a+Iqd
+	iLs70Y7bDBSzRk/CoG71ylPiv8pEMiZDs+Xsxz/XOIHrh9Ay1V6HEH4WwXZXA/F7dhXq8OawmCFz+
+	ynamP8Rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYN0P-0000000GYmf-2MR9;
-	Fri, 09 Feb 2024 09:17:09 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1rYN4y-0000000GZSO-41vl;
+	Fri, 09 Feb 2024 09:21:52 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYN0M-0000000GYjL-3cSk
-	for linux-mediatek@lists.infradead.org;
-	Fri, 09 Feb 2024 09:17:08 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4106ccf0effso2261345e9.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Feb 2024 01:17:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1707470224; x=1708075024; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=GapI84HT0kfFvAt1Rf92RVH8aiJZyoBWU7byRRdSVL4=;
-        b=z8oYMVA1JwVddaYE30Qv/1mZwG2O0BKwga8Lk6pq7ojVNi3ROUVE/3sVsBA45Dl1LX
-         vyGnSATp88o1bhbcQTDLm2BFXwExGqVgpQa6jSvoN/sEnFkbi6st/EtZ04u6kPisowsf
-         lhOFlGrEH1QG063OwA5s7+nJRvMwCqgSCK7ztmDiTagCYPRQhCosZtw5Dh4prKuJ5wDx
-         IhaUOhW9j20ytTORQccbzYpTxmfIyI2CS5aszC8tXQ+vXvQ8DjqVVJWJHBrexr46JZO/
-         olw+TtuvX6loudKIpXOjLX48HzdQzVPvwXRRObtufenqAfw9baTTudxMK3FRHcVVd7qn
-         DoJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707470224; x=1708075024;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=GapI84HT0kfFvAt1Rf92RVH8aiJZyoBWU7byRRdSVL4=;
-        b=aiyxJMNLqatZ4Mcqep2dgD6uXnpEwGPdohODkGT/WyXXcei4gHzzrmxJw2kCo+taT1
-         uGhIXvFyC0yffu/mkf+NNQZBFLb6n2A0y3JZg7VcBveaJz+cAZnyWqbB+V2BhabWaDsG
-         wBmrSFxSWJlJxL1j8q/OoVg0k9Gvv64GkXg2livPgrjr0NHl+veVLARs5iA5PKe7GrL5
-         5N8n4cQij0ps1/34t5RUvfrmgKON+svoXhTyhm311/xsbzwh6/Oa66GmtsQ9Q/FlPB+M
-         Auditc9POJl+iki4ExJ4Lb8cudqGklYvwRGnnd8qZdRy3lu+eCxIFPk2uiCs2n8NMwmR
-         OhOg==
-X-Forwarded-Encrypted: i=1; AJvYcCV6ydOPY6QECgekfrGxAW4WX1Nz4/SLQQ8LPFVNYo0Eawor2e/LMlOIDqWKLzNcQwmYKUO2/qExWBOiwpQ1PFS88PxYYh55TcATfdKd9NASXdpT
-X-Gm-Message-State: AOJu0Ywm2GJk1zy9rVB151M1iNgKQOQkjYPYlq7TxzrGX2Ktam1nK3Xb
-	VcfO4Su/5zKpx9UDwuUZGXYYSJEXYUjPguoJMscxYLbGEfsrJ4wE2XGfnRjsmeQ=
-X-Google-Smtp-Source: AGHT+IEL4+jKhNaGP83vx0SWElWtFB2cbFXYGfD6EAHSLUCSk7mYTBBciXJEACH0ENtx+YfCko8PCQ==
-X-Received: by 2002:a5d:65d1:0:b0:33b:28d5:f770 with SMTP id e17-20020a5d65d1000000b0033b28d5f770mr678531wrw.62.1707470224058;
-        Fri, 09 Feb 2024 01:17:04 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCX/FXELrq/Fj+qsSxl92K6wiwQP6yLjcFsYaF74KjlVu1kRajvd+6ifegcwwCEjGQTY7rBTzMli0i5BxSMz5iTyRbtGv19IGi3zWX5v7EzvxqA+LpDEpJ/JKb2g9Qc/1p7VemWvY+OpM+qdExSprIUYsCFt/BBoi9v+Y4jZMnm9q+oPtw6LZVm0e6fgItUDilE8gd/PvoLN4IsSKCO8DUAORUO7FnnIRBwLUBYlHTLTBWoAuAlImtI4lM+WSZIqWAC495SqCzddXLvnf7TLX/m/eKyA+jV0451k82HhyATvtjhWMDhJfOk0PYj5JPdhgbCv326vzDS7Y4klvtARgCcDFMsNtSL2W/w0vW7oCbvEDd/E2EwuZpmBxw4X9W3uetZyYhafB6TbPkS4FqgDfcIoOaoqLwcGE13l1agxbApPI7tVrsPJvCW7BErcxaTIOZ4Ql4yqjmzY1O9nDeOLMXs4swOi1yaytU2oF3cdklZwLG/MFsEKr0x+WRIG0Bmqj31/5uE=
-Received: from [192.168.1.20] ([178.197.222.62])
-        by smtp.gmail.com with ESMTPSA id e5-20020a5d5305000000b0033af5086c2dsm1295848wrv.58.2024.02.09.01.17.02
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Feb 2024 01:17:03 -0800 (PST)
-Message-ID: <502836d9-5a57-4614-b908-2adc0f01df33@linaro.org>
-Date: Fri, 9 Feb 2024 10:17:01 +0100
+	id 1rYN4u-0000000GZRg-3Oh7;
+	Fri, 09 Feb 2024 09:21:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1707470507;
+	bh=JbZ74A9tk2UWT+VrLIApBOpqqPN0+cze41j1I55Ge6Q=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=tFvDqK+klPRWkB14WAgjKKUsbzaEZMT8Qt6Dtt0PHCBG3BTF+I7tmwXivMImqGlqk
+	 DagdXAySSBDsAELUumgQ90DPTHZUHhKgAvW4sQhwhND6TX35JgguzCaOvyTb/SfDAP
+	 hzgf5v2gDCsFqLXznwjS9ZW+lqpCuF+wCsEzju29gDkwSlXO7xW/yMiMK682HUEM3j
+	 51/YLR51n2eL9Bqk8fWDMzddA4jsT1lCPwZqfwbvnn1HJVl1mK4isy5twQjsD3kdNn
+	 sWDtug2YaCF+E/e73GFO1BorESezwL7SbmGBcRem4+8YETBlEXTsXTgA5rB2tc2P2T
+	 VffYn3elHpc6A==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 74EE837811F4;
+	Fri,  9 Feb 2024 09:21:46 +0000 (UTC)
+Message-ID: <185865bb-983e-467f-be2d-4978c8f4d6dc@collabora.com>
+Date: Fri, 9 Feb 2024 10:21:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH V2 1/3] dt-bindings: arm: mediatek: convert hifsys to the
  json-schema clock
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
  =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
  Russell King <linux@armlinux.org.uk>,
  Daniel Lezcano <daniel.lezcano@linaro.org>,
@@ -85,58 +64,14 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
 References: <20240208215926.10085-1-zajec5@gmail.com>
  <20240208215926.10085-2-zajec5@gmail.com>
  <d4a4a468-4a81-413e-9de6-060c2ba9e0b6@collabora.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <d4a4a468-4a81-413e-9de6-060c2ba9e0b6@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+ <502836d9-5a57-4614-b908-2adc0f01df33@linaro.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <502836d9-5a57-4614-b908-2adc0f01df33@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240209_011706_943435_584A13F1 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20240209_012149_014253_B7D688F8 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,76 +86,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/02/2024 09:53, AngeloGioacchino Del Regno wrote:
-> Il 08/02/24 22:59, Rafał Miłecki ha scritto:
->> From: Rafał Miłecki <rafal@milecki.pl>
+Il 09/02/24 10:17, Krzysztof Kozlowski ha scritto:
+> On 09/02/2024 09:53, AngeloGioacchino Del Regno wrote:
+>> Il 08/02/24 22:59, Rafał Miłecki ha scritto:
+>>> From: Rafał Miłecki <rafal@milecki.pl>
+>>>
+>>> This helps validating DTS files. Introduced changes:
+>>> 1. Documented "reg" property
+>>> 2. Documented "#reset-cells" property
+>>> 3. Dropped "syscon" as it was incorrectly used
+>>> 4. Adjusted "compatible" and "reg" in example
+>>>
+>>> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+>>> ---
+>>>    .../bindings/arm/mediatek/mediatek,hifsys.txt | 26 ----------
+>>>    .../clock/mediatek,mt2701-hifsys.yaml         | 51 +++++++++++++++++++
+>>>    2 files changed, 51 insertions(+), 26 deletions(-)
+>>>    delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
+>>>    create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt2701-hifsys.yaml
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
+>>> deleted file mode 100644
+>>> index 323905af82c3..000000000000
+>>> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
+>>> +++ /dev/null
+>>> @@ -1,26 +0,0 @@
+>>> -Mediatek hifsys controller
+>>> -============================
+>>> -
+>>> -The Mediatek hifsys controller provides various clocks and reset
+>>> -outputs to the system.
+>>> -
+>>> -Required Properties:
+>>> -
+>>> -- compatible: Should be:
+>>> -	- "mediatek,mt2701-hifsys", "syscon"
+>>> -	- "mediatek,mt7622-hifsys", "syscon"
+>>> -	- "mediatek,mt7623-hifsys", "mediatek,mt2701-hifsys", "syscon"
+>>> -- #clock-cells: Must be 1
+>>> -
+>>> -The hifsys controller uses the common clk binding from
+>>> -Documentation/devicetree/bindings/clock/clock-bindings.txt
+>>> -The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+>>> -
+>>> -Example:
+>>> -
+>>> -hifsys: clock-controller@1a000000 {
+>>> -	compatible = "mediatek,mt2701-hifsys", "syscon";
+>>> -	reg = <0 0x1a000000 0 0x1000>;
+>>> -	#clock-cells = <1>;
+>>> -	#reset-cells = <1>;
+>>> -};
+>>> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt2701-hifsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt2701-hifsys.yaml
+>>> new file mode 100644
+>>> index 000000000000..eb429337cdf4
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt2701-hifsys.yaml
+>>> @@ -0,0 +1,51 @@
+>>> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: http://devicetree.org/schemas/clock/mediatek,mt2701-hifsys.yaml#
+>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>> +
+>>> +title: Mediatek hifsys controller
 >>
->> This helps validating DTS files. Introduced changes:
->> 1. Documented "reg" property
->> 2. Documented "#reset-cells" property
->> 3. Dropped "syscon" as it was incorrectly used
->> 4. Adjusted "compatible" and "reg" in example
->>
->> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
->> ---
->>   .../bindings/arm/mediatek/mediatek,hifsys.txt | 26 ----------
->>   .../clock/mediatek,mt2701-hifsys.yaml         | 51 +++++++++++++++++++
->>   2 files changed, 51 insertions(+), 26 deletions(-)
->>   delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
->>   create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt2701-hifsys.yaml
->>
->> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
->> deleted file mode 100644
->> index 323905af82c3..000000000000
->> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
->> +++ /dev/null
->> @@ -1,26 +0,0 @@
->> -Mediatek hifsys controller
->> -============================
->> -
->> -The Mediatek hifsys controller provides various clocks and reset
->> -outputs to the system.
->> -
->> -Required Properties:
->> -
->> -- compatible: Should be:
->> -	- "mediatek,mt2701-hifsys", "syscon"
->> -	- "mediatek,mt7622-hifsys", "syscon"
->> -	- "mediatek,mt7623-hifsys", "mediatek,mt2701-hifsys", "syscon"
->> -- #clock-cells: Must be 1
->> -
->> -The hifsys controller uses the common clk binding from
->> -Documentation/devicetree/bindings/clock/clock-bindings.txt
->> -The available clocks are defined in dt-bindings/clock/mt*-clk.h.
->> -
->> -Example:
->> -
->> -hifsys: clock-controller@1a000000 {
->> -	compatible = "mediatek,mt2701-hifsys", "syscon";
->> -	reg = <0 0x1a000000 0 0x1000>;
->> -	#clock-cells = <1>;
->> -	#reset-cells = <1>;
->> -};
->> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt2701-hifsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt2701-hifsys.yaml
->> new file mode 100644
->> index 000000000000..eb429337cdf4
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt2701-hifsys.yaml
->> @@ -0,0 +1,51 @@
->> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/clock/mediatek,mt2701-hifsys.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: Mediatek hifsys controller
+>> Please, "MediaTek HIFSYS controller"
 > 
-> Please, "MediaTek HIFSYS controller"
+> Them maybe "clock controller" or "clock and reset controller"?
 
-Them maybe "clock controller" or "clock and reset controller"?
+Yeah, that's right, let's prefer "clock and reset controller", as this binding does
+describe exactly only those two functionalities of the whole HIFSYS block.
+
+Cheers,
+Angelo
+
+> 
+> 
+> Best regards,
+> Krzysztof
+> 
 
 
-Best regards,
-Krzysztof
 
 
