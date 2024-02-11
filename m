@@ -4,89 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F503C4829B
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Feb 2024 09:17:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAC3FC4829B
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Feb 2024 11:51:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SZ+0o7xkNi5rmUoZSZmRzVG4JHr7UzcJcm2Xazcjz6I=; b=MHTVv/YkUtdXs3M2RSreQYgd7w
-	Cva6Tagud8p6b9oykEa7pynABlXc+aeQ7CDF8sWF2YpbciR1Q+5/CXAQrAz0JvyoJs//lDAGmvGle
-	owXl2nbOzzIAgIpr+yPTdHGN17ddnDZvauKirID0WPOQOFVDoOG/Kzy4yQeDcn17n3mEaa6G6+kVO
-	ZJu57T3yE2DlrfxPHPZsHB7agSkQFBDf3I74qJYccx8Le77hDcflvgbFW+tZyK0e2jnJ09YzQa3zL
-	YkPNRn4dQK5u3mVZUfUhzkSpcx1YTxrZcVdsRoVhisUJ+HZ8CLk6/qWQIGC6hEAcCyI0t6BIhdiA7
-	peXzhK3A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jSHp3AIkMido/N1X4JGox0Dbv0/5+C2LK7HMFQ5+iqE=; b=AooZFTQeEESMgMZiMhUZL/UUnQ
+	IHa4++/sHXUxz1Eb520e3SLFquj4jSKThkZpQsHzwQpvguCYcQCRVCgrCCKSmvMsMgPdRnXTDwa8i
+	KOImSBUFCk4/0V9I4tI06N5hvG65VpQ/2GHUTzEM0cUou79dWExCX1ip7SufbzI5XXBCu/En5NVwi
+	Yg0+Dalm6rqp52oHVtL6Pv+s4W33M8dVbSHFnV94Rjlb/oVYsDNVtQCJlQ3mXqSVBi4/aaty/lSGr
+	cm+tsgJl6WB5OreQo4iJUAQ02c9oY44244Ditxb4zbEaPYf6Qv1UjrmfHxJXS933z4cLMN6tyrdwb
+	9pbX7+yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZ5xk-00000002Yc5-18LD;
-	Sun, 11 Feb 2024 09:17:24 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1rZ8NH-00000002gO4-3a44;
+	Sun, 11 Feb 2024 11:51:55 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZ5xh-00000002Yav-2Uim;
-	Sun, 11 Feb 2024 09:17:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.com;
-	s=s31663417; t=1707643010; x=1708247810; i=erick.archer@gmx.com;
-	bh=rSHYS9qHk/jwImtw4+JVwsbnbAy0pXklABl265nds1E=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
-	b=P8Np99p/+p9ERHHFhS7PD/pOfT2dBBXJIHtsDOJ8QeWuiL8RS4wg58MC1tDUtF3I
-	 GIJgL1Qv1ogbXlkXsE3dLCbmWzBs5EYt8Dkotr82zFA2LN59zWfIoZ+t3loKmIc2U
-	 VM47LRH4J8VPJ4aBZaxmaFbDghDcda92em6l6ER4JIcQVsWgfIFUsA+Vg2oh/MRvA
-	 hDeJ0yHCkdzrL2Nml9oj9ophK1f/0V2WnyODJze/8qIdeHvm9ubBEGsZTEdOJrAjG
-	 ewiseXCZxU2EY5Lhqc/U8Akb5/fG1+xNt+UnWY/xBAAhkMkR2pZcFxX+1hFJTSzIL
-	 E4dl311syDfFl6Mc9g==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from localhost.localdomain ([79.157.194.183]) by mail.gmx.net
- (mrgmx004 [212.227.17.184]) with ESMTPSA (Nemesis) id
- 1MDQeK-1rjaLv3tI6-00ATNc; Sun, 11 Feb 2024 10:16:50 +0100
-From: Erick Archer <erick.archer@gmx.com>
-To: Miquel Raynal <miquel.raynal@bootlin.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Li Zetao <lizetao1@huawei.com>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
-	Kees Cook <keescook@chromium.org>
-Cc: Erick Archer <erick.archer@gmx.com>,
-	linux-mtd@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-hardening@vger.kernel.org
-Subject: [PATCH v2] mtd: rawnand: Prefer struct_size over open coded arithmetic
-Date: Sun, 11 Feb 2024 10:16:33 +0100
-Message-Id: <20240211091633.4545-1-erick.archer@gmx.com>
-X-Mailer: git-send-email 2.25.1
+	id 1rZ8NE-00000002gNS-2U1h
+	for linux-mediatek@lists.infradead.org;
+	Sun, 11 Feb 2024 11:51:54 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rZ8Mp-0000La-H1; Sun, 11 Feb 2024 12:51:27 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rZ8Mj-0005Ea-EX; Sun, 11 Feb 2024 12:51:21 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rZ8Mj-002Utq-17;
+	Sun, 11 Feb 2024 12:51:21 +0100
+Date: Sun, 11 Feb 2024 12:51:21 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Erick Archer <erick.archer@gmx.com>
+Cc: Miquel Raynal <miquel.raynal@bootlin.com>, 
+	Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
+	Rob Herring <robh@kernel.org>, Li Zetao <lizetao1@huawei.com>, 
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>, Kees Cook <keescook@chromium.org>, linux-mtd@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org
+Subject: Re: [PATCH v2] mtd: rawnand: Prefer struct_size over open coded
+ arithmetic
+Message-ID: <rep3323evfhxh5ctmyd2biqrpg2ifej2jei5rsqpei7vuvnmsc@krh3gihuyoox>
+References: <20240211091633.4545-1-erick.archer@gmx.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:T+hTP+nIP/OHyAruT5vbyzud6ys/lN69HGWrX4oTcE/i2FVhsLb
- KB1+1LMkHVn67DYnshciNkLlvXJBH7PrHaD6kPazuidAQ3uf7+ILEuHn5Zug3nf5IWR0uLP
- dQ8jOMugei9vxKq8tNZK0YEo3hnZmFtY2P9kqlssEl7RsuygsGmnYzSjBGSbzhdIDw837pK
- wZXnBXQy57CiHMIASp4JA==
-UI-OutboundReport: notjunk:1;M01:P0:NSjmnwszXxk=;Cbh7RAxypTb5l0v+Ku1wyOW3xX4
- 2FZLp9I9qGqFp+d8FikX8Mb/wxlht9YG9qt1CThsj//a/h5HF++hqJyWvp8s8bpQ1DCp7h2J4
- bvHP/orYTs1qm1TyPc2oSzxWu2lwQTwO0mIpQ17idfrdOcnVdOqp2Sj3uqtGa3p+aUEhdg7HR
- qyazQNUAnNw+Rm3a1izZTMDwjK//gpp9KwThVr/fd00ZMlO4KNWTEGzS2uYtqdwc+7k+0eskv
- TazVSmv5nzuEmGxT5/enrL9wluwpJzdudwgZEsnRs2vW5zxs4pR8JpaGQe2SwfPzxDehLsOWU
- Rz+m4X7qrsoUXkwjEqRDjwJc5/zyG28dABjemoW9LPKWaHnbfCqc20rAcT70EDjM9JSBOxdP7
- 8Suh84GDpLmXFSY2va1VIUEDWcAETfS5YhfsbmB+wMi5VMKlEYSLk1uJ58rVPfN1q+Zozz8Z5
- lpDMnHVIga52kjN1m+nj30z4AVhsXwE9R8ck/N3UuiLD+UOs8fIhAEcOjobLbu9KsJkPToVgR
- OQPs9w1hJn2lU+kVkpea+Q0aVOSDMQafkDwQu4RYWBH6D3IWTrFq724+a8uEb9cKRwLhTb/h8
- DTRKlGw0Z49mn5o3qdVIqL8zB0+hsAlN0MkjVoj8KuWQnZQUdODeeraM/8Gjjaq6b9+H8cUdO
- WVT8/ytmHjbeDcCSVNEp0qJyNCu9M/iaNm3bzGR37WcuSTqKA+15SX7YfHWv/nCjnLb1i5gr1
- MA0ctpGc1u24wlGJ4YCxupldxRrbxhpJJRKhweMz3StESKeJtnOiu5Q8YCuPL9mKzAMFa0nCg
- cINxvhCxkLxbckyyyVzNI/VQJHstAhTQpdn02cGmDVikI=
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="sfcqdcis3bm2zuuf"
+Content-Disposition: inline
+In-Reply-To: <20240211091633.4545-1-erick.archer@gmx.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240211_011721_937853_249541FC 
-X-CRM114-Status: GOOD (  13.67  )
+X-CRM114-CacheID: sfid-20240211_035152_648563_9931C280 
+X-CRM114-Status: GOOD (  17.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,53 +83,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an effort to get rid of all multiplications from allocation
-functions in order to prevent integer overflows [1].
 
-As the "chip" variable is a pointer to "struct mtk_nfc_nand_chip" and
-this structure ends in a flexible array:
+--sfcqdcis3bm2zuuf
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-struct mtk_nfc_nand_chip {
-	[...]
-	u8 sels[] __counted_by(nsels);
-};
+On Sun, Feb 11, 2024 at 10:16:33AM +0100, Erick Archer wrote:
+> This is an effort to get rid of all multiplications from allocation
+> functions in order to prevent integer overflows [1].
+>=20
+> As the "chip" variable is a pointer to "struct mtk_nfc_nand_chip" and
+> this structure ends in a flexible array:
+>=20
+> struct mtk_nfc_nand_chip {
+> 	[...]
+> 	u8 sels[] __counted_by(nsels);
+> };
+>=20
+> the preferred way in the kernel is to use the struct_size() helper to
+> do the arithmetic instead of the argument "size + count * size" in the
+> devm_kzalloc() function.
+>=20
+> This way, the code is more readable and safer.
+>=20
+> Link: https://www.kernel.org/doc/html/latest/process/deprecated.html#open=
+-coded-arithmetic-in-allocator-arguments [1]
+> Link: https://github.com/KSPP/linux/issues/160 [2]
+> Reviewed-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+> Signed-off-by: Erick Archer <erick.archer@gmx.com>
 
-the preferred way in the kernel is to use the struct_size() helper to
-do the arithmetic instead of the argument "size + count * size" in the
-devm_kzalloc() function.
+Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
 
-This way, the code is more readable and safer.
+Best regards
+Uwe
 
-Link: https://www.kernel.org/doc/html/latest/process/deprecated.html#open-=
-coded-arithmetic-in-allocator-arguments [1]
-Link: https://github.com/KSPP/linux/issues/160 [2]
-Reviewed-by: Gustavo A. R. Silva <gustavoars@kernel.org>
-Signed-off-by: Erick Archer <erick.archer@gmx.com>
-=2D--
-Changes in v2:
-- Add the "Reviewed-by:" tag.
-- Fix a spelling error in the commit message. Change "more safer" for
-  "safer" (Uwe Kleine-K=C3=B6nig)
-=2D--
- drivers/mtd/nand/raw/mtk_nand.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
 
-diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_na=
-nd.c
-index 60198e33d2d5..17477bb2d48f 100644
-=2D-- a/drivers/mtd/nand/raw/mtk_nand.c
-+++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -1356,7 +1356,7 @@ static int mtk_nfc_nand_chip_init(struct device *dev=
-, struct mtk_nfc *nfc,
- 		return -EINVAL;
- 	}
+--sfcqdcis3bm2zuuf
+Content-Type: application/pgp-signature; name="signature.asc"
 
--	chip =3D devm_kzalloc(dev, sizeof(*chip) + nsels * sizeof(u8),
-+	chip =3D devm_kzalloc(dev, struct_size(chip, sels, nsels),
- 			    GFP_KERNEL);
- 	if (!chip)
- 		return -ENOMEM;
-=2D-
-2.25.1
+-----BEGIN PGP SIGNATURE-----
 
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmXItLgACgkQj4D7WH0S
+/k5ikgf9F4/qTgtnox96aTKRccDzsaTgOw9Qi3pN71OjgluyHYlBZZuLkP5oxvMH
+1xtEtrRoArhwg8s5AISfkCSKbJG6D3uSXUf9HsjiHx2K2tK+RkQy1vFalheaw7V5
+E4xeT2nxo6jpRzzqeqs75p8KbDE1FdrEZZuarr3wqtfb+oapvNF8Fy9a82Yg1BZC
+DMVilJ/dMLxb6nLJ6V0fGGOzzio9S8AIFx0alMWvEzVu8i+yDDLBWbQDlQZTqzIn
+lfNs4OCNwrzqhNhlWD6V8lzYV8SaUtFW+1A6ZKJb19MwobAnXElAgIQJOWX0PSY1
+vASWpbUmeY9zm+JPlBvqvX/3KIcWew==
+=DQCU
+-----END PGP SIGNATURE-----
+
+--sfcqdcis3bm2zuuf--
 
