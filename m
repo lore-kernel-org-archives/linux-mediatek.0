@@ -4,140 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58C65C4829A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Feb 2024 13:43:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40C34C4829A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Feb 2024 18:23:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vNl2TNJJT9F/ECiKzGFxOoeb4VRRB8d6Ro6PERp/HBw=; b=4xxaoDnnbHeZM/vq1tuJw/jqHK
-	COdpaeY+kI+bK5Ls+56gQOT4D0dlvwSqtZZeXK9SSyjZKFyqAE4glqBTjNZ9a0CckcuK3TH9IF5Y7
-	cHCrZz0X98LQ9o00xuoAupYoBI+SjPqZew4+iz9i0f2DMTjFJBkv2gqSBixtakw78VY1lFA/GFO6m
-	hh+gSCnCzBhIF5mv11IjI61Y42g9+MiVEpVuEB3GRCM5OemwAzCRZKSbRrVk3UH5bABE3GrHHsJQo
-	3oPlvfij2vSmLfINvrNWxW0k0ZBoEWtGuXJCNVGhat99GDDdUC82DA+JxR8C8EJI2fX5VRy2/CVV0
-	eUgP+WAA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=733xAT+uIP6SiFPmK1QN8NNY+SDz96/8kvuvHcT3s4M=; b=ALk6UrFNlQY1wMoD8MAxUuHqYH
+	QjMzQ3GAIEZKdxvUVjlGp0PERmPy+aZwDAM10K/8C3kVkTJP5yguTjWNwuf1NyY6wNoliDuAI4LFC
+	zkfcBxmhksIjL3QAfsQVKRJZ9KaEYzKZWkFwG/CSLhRncqeAWhZhwU+W/EMQwkJy3pyaNPQPJJZaG
+	so4RqrNE9RnMmJHOJf5cVZhKV60ZzcCngY01zJExEySZ1JvyfGD8GukNcQQedEjPw/YrbSGu6OvlQ
+	cPu+NvxUC8DVKXpGV65zGdFNrJPbuur4hKsZHN5ZkJYWXMyPZo0fJXap1WffyMh70hfS3ckKi3VM/
+	+ElW6F+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZA6m-00000002ncx-1z1M;
-	Sun, 11 Feb 2024 13:43:00 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1rZEU2-000000038vY-1VXQ;
+	Sun, 11 Feb 2024 18:23:18 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZA6i-00000002nbz-47XK
-	for linux-mediatek@lists.infradead.org;
-	Sun, 11 Feb 2024 13:42:58 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-33b1d7f736bso1646777f8f.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 11 Feb 2024 05:42:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1707658971; x=1708263771; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=vNl2TNJJT9F/ECiKzGFxOoeb4VRRB8d6Ro6PERp/HBw=;
-        b=Fe81ICzRaWWMrQnX+X/Qvgg3F5aKrIdFMZSIK4jOSeUx4Goa/vogHvQKp+IV7/RkEq
-         BlZgiHDyVGS96kH1FDmTnOC6fI6YQP2LJ6ixfRLckZ0hqwiwyEWF8Ed/Vg3gu4RICO9Y
-         FwczXnFzu91vBrYMktT/aWzj04lGF8CKwTR0IkN/VVT/g7fdYAXhcqUUyG7GM2jzGEAO
-         i8xXviYRTwuLBasWRp9C/W1HmwDuuz819ORhWHChWg6OtRfbz04QYU4FMPQm04oNB43Q
-         xu+WgwsDUgPttu99tFOt9nXJNbyQhP8OtRKYEVs5v9NJCOn2BylCUox90O8C4FAzb9XP
-         8Dhg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707658971; x=1708263771;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vNl2TNJJT9F/ECiKzGFxOoeb4VRRB8d6Ro6PERp/HBw=;
-        b=Xeaf6jBQCAvcLzVK421KKHd+mkkxr8OdHR4P5K5AQAh4g0BRdKlWN5xj1kXslBYc1m
-         VWMbU6tGiGEsN0oCcvXXFynJDGa1ImhGC3z6XVfMtdiQofLZ0BEYTgeIsmp0hhVHitwi
-         0ocjia3ncgEVd0dvTkV0GsPmOZj/t2CBgVWZN4EIubHv2RjHSFa/lWb/fjPbuAgovr7d
-         dsfs3Tcsmjzp5BL11YFk0Iorz9LBoS8GL+ba+hSnlCX/RpG9lSY5oYkKrYWVHCS6kNIn
-         u4kgK4b3znW2P/9iXvTJIRyD1h6vg5+2Qbm3bnRXOE/6AltX5F+m3XRWhVCk6EeG2zQq
-         yXOg==
-X-Forwarded-Encrypted: i=1; AJvYcCUgGHCx6dCqPOXK4jN2p1/kDVrmHU3y+UCtXNJRXVU4+a0OKSeatF/wtn6JKawgJBBUZv2VCm86JV2qBFA4c0u//075jBiGm1kDFhSmst0qugyp
-X-Gm-Message-State: AOJu0YyNscRrw74uTYRvRs0d0HjxbSAvyt3mk0vRQWxoFWfHpx22Uo7x
-	7QFxIKaNF/TdxMzXTwmtdm9jT9RD129yFUd3buYPve4tXrNEmD9NZvkizvoJQls=
-X-Google-Smtp-Source: AGHT+IHZ/a5U6it5nOITDX6BVKRmPbh7X1afwcLmxuPyfMAqtYz3gHLXPT8ZIBqIsDnKSqR/+VJpqw==
-X-Received: by 2002:adf:d1ee:0:b0:33b:649a:1a12 with SMTP id g14-20020adfd1ee000000b0033b649a1a12mr4062726wrd.55.1707658970873;
-        Sun, 11 Feb 2024 05:42:50 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXp7r9BIoB/cXoY9YZQSb5jOs+5TxAm1QbngscDcGXCd3VYAoUurb6YMWRyhbxrbC+veqwNRiX3IEg0teXQRmJ9O5IrqtjGpLUvMe8I+cUuorrKAZkkqnlg13ImHzbjuHOohFgNigDuO9fkZk8EvWtoo3P1N11DjI+1rYdZ4Gj9ZUBW9LPKbrTJr79MY6smBKmfbE6SZk6oyB90L0uI2Ktv1nidF67JEpbi8TlWPUqGlr7G7GptZ/QUbFATm8orhvg3XIoLlPTaV/w6aJsrQgVLTqBUKIpaKb//h0htOhNGPC7L2r0mSe/s2HLum4ocKd6XaX+J0cf0Bb2MdRBsOD+QkOyJMBZKywmTPP9uN1iKQfDhJfanR38FYnS8Px0YktK5Ylrv2Bg6nSFmtgz3kbUDLzEYWtIGgMfoq+nFwKj3DmiQF1x861bpAN2YrrwOeTUH+cABU5AvZQa3K5jrZ3SjNKISVDW2yboZQoENTvBi+nX+3Llv5C1Pq8zgzqAB6ZY1uXAf1+creAgbla8QmK6ZrGZsDfgjMm93zET2WO9qPOEKrvUa99tf72xRllcPS/nVnrqatXmwvu1hNrSp+bEWxTDWHs16gSQ0+XdN/Qv5qaiJPkF4hCJVR50VfKfIVKsHD1wEIMAb5ikmsFl5L40iBwovmB97fTpnfW5L8xz5HwPe+6fDbHTTT25c4ntM6VjOO++CcvDxHYsiiIb3rgh9aawVU0qSA00iyHTu9mcIfsniZ8zMNdbtcOc+4jR8HVU=
-Received: from [192.168.1.20] ([178.197.223.6])
-        by smtp.gmail.com with ESMTPSA id dv5-20020a0560000d8500b0033b483d1abcsm4273462wrb.53.2024.02.11.05.42.49
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 11 Feb 2024 05:42:50 -0800 (PST)
-Message-ID: <b6c28118-a20c-46a5-b070-2306d4c0b2a1@linaro.org>
-Date: Sun, 11 Feb 2024 14:42:48 +0100
+	id 1rZETy-000000038v0-3Pnj;
+	Sun, 11 Feb 2024 18:23:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.com;
+	s=s31663417; t=1707675784; x=1708280584; i=erick.archer@gmx.com;
+	bh=8GQafSlGPnQY/t9m9DNP9+Zxh0hpH+K9l9+g+B8VtaY=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+	b=VX8k2fNxmrOmLLl6kJnUNUe8QuMMSL7iIvDI5o/x9P/MoP/HnUpjBpNbOhDfA9Jy
+	 jYwxQcxomiQJFiesUZHyP55Sh/A5nk+G4NQ4VKfvf9HMgtvpslCTSv/MKgDwbSpEA
+	 cf1mDqYBKHfTTwueURc8JRADZy51az7dafEEKUUucy8g2T1HQExyGq5/zX77V2X7l
+	 i3OKbwwtrx0qwFKTdfyiIrQVbNoCGzMWrd98PCm60RaUrxtIiI6gclXLZpUAAC0lD
+	 ynNdsmSh/t5l74FOFhA+otkcd5gFrl7eJ/x9oEBM3clufp3uewTtCxOVKnU384BVr
+	 wZmmxS4tsj+J0Teciw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from localhost.localdomain ([79.157.194.183]) by mail.gmx.net
+ (mrgmx104 [212.227.17.174]) with ESMTPSA (Nemesis) id
+ 1N49lJ-1qrCa90jg1-01043l; Sun, 11 Feb 2024 19:23:04 +0100
+From: Erick Archer <erick.archer@gmx.com>
+To: Yong Wu <yong.wu@mediatek.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
+	Kees Cook <keescook@chromium.org>
+Cc: Erick Archer <erick.archer@gmx.com>,
+	iommu@lists.linux.dev,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-hardening@vger.kernel.org
+Subject: [PATCH] iommu/mtk_iommu: Use devm_kcalloc() instead of devm_kzalloc()
+Date: Sun, 11 Feb 2024 19:22:50 +0100
+Message-Id: <20240211182250.12656-1-erick.archer@gmx.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/2] dt-bindings: phy: mediatek,mt7988-xfi-tphy: add
- new bindings
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>,
- Bc-bocun Chen <bc-bocun.chen@mediatek.com>,
- Steven Liu <steven.liu@mediatek.com>, John Crispin <john@phrozen.org>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
- <SkyLake.Huang@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org
-References: <745f8b46f676e94c1a396df8c46aefe0e8b4771c.1707530671.git.daniel@makrotopia.org>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <745f8b46f676e94c1a396df8c46aefe0e8b4771c.1707530671.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:bDSAOtg6FsNP9YYaZTSNaLZ2g5j8GZd3d2N4gKNDAwoTaPqmEod
+ 2bbeOM/6uy9fuP/3ydp8vmjLMvh0E85ERwQx9lpjAbvZ8TQk7+v5uILNY5ucI16I+Iq8XEq
+ 1s/8u1t0XapUv5XwfXWwJa1L8ntCg1A62CcRF9YEZORlVLh6jUTUNn5DT6NEeVYnE/LCljO
+ ucZ+YiM8crkWwB/xBhBCQ==
+UI-OutboundReport: notjunk:1;M01:P0:o3jWEHTQHVQ=;NCZwAbRYj8bmZU7ifsIQVagRrDl
+ Tm98TDTcEdnNg37iIFdp1PW65Sz3RWBhyyeXkZYVPqj6KzKWs5c8WiQ59S9zHFhI8XfEnBEzO
+ Zc7XhjHLuP/as7sY4NCJfkmjhPcol2e65/N9g2y4+8JCHT854AeUpz0WPw/CvkROf9MLYy1kD
+ OjqVwO/bBB/GZALtZilb+esHU/4vnrMaxYEmTcajPX74XOdfyvZUxp69MhlNA/JD9OvuZzrzB
+ XzTkY7YgrUZ8e6oC+x9okRNTK0U/nBYZFulZ/FtoomgKPBmGoJdJCDbun1Z36z46gdMRbEQRA
+ WV6UemSwg8hOydPISuwRToN9dGFwv08C159HwcL+cTs9s17UjrHybdv2/RXokXag9486slcbz
+ FN3xgjxztRN62gy3H0A+iqCnk6Q8dhfk7/ZG6BE0YVQavd6A69f2plhockcFzgbj5MBqzBKce
+ I16gPorwaxb5KCFQdzGoopvcQeMYfGzKsdDMECkzq2oa60WI/rz5nTEAzfeGVTPtl2cjD4XeY
+ lAZewgOhspCaybmQUfdyc6+FTka++zYUbSm9h3ri3Q19Cf7Jbi6Q5S0a6Ej1o/ULp2ftISodo
+ p9SMiOm+sUFg6ED+33cPJJn56MvZlHJNKGreh4gU54KIgV+C8CdEH5317swOuJNC/67fCAFe3
+ ryGrBW1BSi5c4pLr/Ca6Vlnmrk1DgpNVNCeY9ruIPjVRz1fdArCybjnJq10mWiXgAJQufxpOE
+ ebwNkc9m8ps//WM5oVULXqKR85GQpOUH3N0nCDoJCRHxBHMF/IXa5exAUcy699vUg+18+i3mG
+ cMzqFyvb1KThjs6UrHtYFl6UvKIjhxBm0zXucMXMEiZhs=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240211_054257_079980_39804195 
-X-CRM114-Status: UNSURE (   7.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240211_102315_171540_28865767 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,31 +95,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/02/2024 03:10, Daniel Golle wrote:
-> Add bindings for the MediaTek XFI Ethernet SerDes T-PHY found in the
-> MediaTek MT7988 SoC which can operate at various interfaces modes:
-> 
-> via USXGMII PCS:
->  * USXGMII
->  * 10GBase-R
->  * 5GBase-R
-> 
-> via LynxI SGMII PCS:
->  * 2500Base-X
->  * 1000Base-X
->  * Cisco SGMII (MAC side)
-> 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
-> v3: Add reference to MediaTek-internal "pextp" name, better explain reset as
->     well as 10GBase-R tuning work-around.
-> v2: unify filename and compatible as requested
-> 
+This is an effort to get rid of all multiplications from allocation
+functions in order to prevent integer overflows [1].
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Here the multiplication is obviously safe because MTK_PROTECT_PA_ALIGN
+is defined as a literal value of 256 or 128.
 
-Best regards,
-Krzysztof
+For the "mtk_iommu.c" file: 256
+For the "mtk_iommu_v1.c" file: 128
+
+However, using devm_kcalloc() is more appropriate [2] and improves
+readability. This patch has no effect on runtime behavior.
+
+Link: https://github.com/KSPP/linux/issues/162 [1]
+Link: https://www.kernel.org/doc/html/next/process/deprecated.html#open-co=
+ded-arithmetic-in-allocator-arguments [2]
+Signed-off-by: Erick Archer <erick.archer@gmx.com>
+=2D--
+ drivers/iommu/mtk_iommu.c    | 2 +-
+ drivers/iommu/mtk_iommu_v1.c | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 7abe9e85a570..9aae6eb604b1 100644
+=2D-- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -1264,7 +1264,7 @@ static int mtk_iommu_probe(struct platform_device *p=
+dev)
+ 	data->plat_data =3D of_device_get_match_data(dev);
+
+ 	/* Protect memory. HW will access here while translation fault.*/
+-	protect =3D devm_kzalloc(dev, MTK_PROTECT_PA_ALIGN * 2, GFP_KERNEL);
++	protect =3D devm_kcalloc(dev, 2, MTK_PROTECT_PA_ALIGN, GFP_KERNEL);
+ 	if (!protect)
+ 		return -ENOMEM;
+ 	data->protect_base =3D ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN=
+);
+diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+index 25b41222abae..45cd845d153f 100644
+=2D-- a/drivers/iommu/mtk_iommu_v1.c
++++ b/drivers/iommu/mtk_iommu_v1.c
+@@ -621,8 +621,8 @@ static int mtk_iommu_v1_probe(struct platform_device *=
+pdev)
+ 	data->dev =3D dev;
+
+ 	/* Protect memory. HW will access here while translation fault.*/
+-	protect =3D devm_kzalloc(dev, MTK_PROTECT_PA_ALIGN * 2,
+-			GFP_KERNEL | GFP_DMA);
++	protect =3D devm_kcalloc(dev, 2, MTK_PROTECT_PA_ALIGN,
++			       GFP_KERNEL | GFP_DMA);
+ 	if (!protect)
+ 		return -ENOMEM;
+ 	data->protect_base =3D ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN=
+);
+=2D-
+2.25.1
 
 
