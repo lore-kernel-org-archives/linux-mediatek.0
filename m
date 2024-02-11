@@ -4,71 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAC3FC4829B
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Feb 2024 11:51:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58C65C4829A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Feb 2024 13:43:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jSHp3AIkMido/N1X4JGox0Dbv0/5+C2LK7HMFQ5+iqE=; b=AooZFTQeEESMgMZiMhUZL/UUnQ
-	IHa4++/sHXUxz1Eb520e3SLFquj4jSKThkZpQsHzwQpvguCYcQCRVCgrCCKSmvMsMgPdRnXTDwa8i
-	KOImSBUFCk4/0V9I4tI06N5hvG65VpQ/2GHUTzEM0cUou79dWExCX1ip7SufbzI5XXBCu/En5NVwi
-	Yg0+Dalm6rqp52oHVtL6Pv+s4W33M8dVbSHFnV94Rjlb/oVYsDNVtQCJlQ3mXqSVBi4/aaty/lSGr
-	cm+tsgJl6WB5OreQo4iJUAQ02c9oY44244Ditxb4zbEaPYf6Qv1UjrmfHxJXS933z4cLMN6tyrdwb
-	9pbX7+yQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vNl2TNJJT9F/ECiKzGFxOoeb4VRRB8d6Ro6PERp/HBw=; b=4xxaoDnnbHeZM/vq1tuJw/jqHK
+	COdpaeY+kI+bK5Ls+56gQOT4D0dlvwSqtZZeXK9SSyjZKFyqAE4glqBTjNZ9a0CckcuK3TH9IF5Y7
+	cHCrZz0X98LQ9o00xuoAupYoBI+SjPqZew4+iz9i0f2DMTjFJBkv2gqSBixtakw78VY1lFA/GFO6m
+	hh+gSCnCzBhIF5mv11IjI61Y42g9+MiVEpVuEB3GRCM5OemwAzCRZKSbRrVk3UH5bABE3GrHHsJQo
+	3oPlvfij2vSmLfINvrNWxW0k0ZBoEWtGuXJCNVGhat99GDDdUC82DA+JxR8C8EJI2fX5VRy2/CVV0
+	eUgP+WAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZ8NH-00000002gO4-3a44;
-	Sun, 11 Feb 2024 11:51:55 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1rZA6m-00000002ncx-1z1M;
+	Sun, 11 Feb 2024 13:43:00 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZ8NE-00000002gNS-2U1h
+	id 1rZA6i-00000002nbz-47XK
 	for linux-mediatek@lists.infradead.org;
-	Sun, 11 Feb 2024 11:51:54 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rZ8Mp-0000La-H1; Sun, 11 Feb 2024 12:51:27 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rZ8Mj-0005Ea-EX; Sun, 11 Feb 2024 12:51:21 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rZ8Mj-002Utq-17;
-	Sun, 11 Feb 2024 12:51:21 +0100
-Date: Sun, 11 Feb 2024 12:51:21 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Erick Archer <erick.archer@gmx.com>
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>, 
-	Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
-	Rob Herring <robh@kernel.org>, Li Zetao <lizetao1@huawei.com>, 
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>, Kees Cook <keescook@chromium.org>, linux-mtd@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org
-Subject: Re: [PATCH v2] mtd: rawnand: Prefer struct_size over open coded
- arithmetic
-Message-ID: <rep3323evfhxh5ctmyd2biqrpg2ifej2jei5rsqpei7vuvnmsc@krh3gihuyoox>
-References: <20240211091633.4545-1-erick.archer@gmx.com>
+	Sun, 11 Feb 2024 13:42:58 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-33b1d7f736bso1646777f8f.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 11 Feb 2024 05:42:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1707658971; x=1708263771; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=vNl2TNJJT9F/ECiKzGFxOoeb4VRRB8d6Ro6PERp/HBw=;
+        b=Fe81ICzRaWWMrQnX+X/Qvgg3F5aKrIdFMZSIK4jOSeUx4Goa/vogHvQKp+IV7/RkEq
+         BlZgiHDyVGS96kH1FDmTnOC6fI6YQP2LJ6ixfRLckZ0hqwiwyEWF8Ed/Vg3gu4RICO9Y
+         FwczXnFzu91vBrYMktT/aWzj04lGF8CKwTR0IkN/VVT/g7fdYAXhcqUUyG7GM2jzGEAO
+         i8xXviYRTwuLBasWRp9C/W1HmwDuuz819ORhWHChWg6OtRfbz04QYU4FMPQm04oNB43Q
+         xu+WgwsDUgPttu99tFOt9nXJNbyQhP8OtRKYEVs5v9NJCOn2BylCUox90O8C4FAzb9XP
+         8Dhg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1707658971; x=1708263771;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=vNl2TNJJT9F/ECiKzGFxOoeb4VRRB8d6Ro6PERp/HBw=;
+        b=Xeaf6jBQCAvcLzVK421KKHd+mkkxr8OdHR4P5K5AQAh4g0BRdKlWN5xj1kXslBYc1m
+         VWMbU6tGiGEsN0oCcvXXFynJDGa1ImhGC3z6XVfMtdiQofLZ0BEYTgeIsmp0hhVHitwi
+         0ocjia3ncgEVd0dvTkV0GsPmOZj/t2CBgVWZN4EIubHv2RjHSFa/lWb/fjPbuAgovr7d
+         dsfs3Tcsmjzp5BL11YFk0Iorz9LBoS8GL+ba+hSnlCX/RpG9lSY5oYkKrYWVHCS6kNIn
+         u4kgK4b3znW2P/9iXvTJIRyD1h6vg5+2Qbm3bnRXOE/6AltX5F+m3XRWhVCk6EeG2zQq
+         yXOg==
+X-Forwarded-Encrypted: i=1; AJvYcCUgGHCx6dCqPOXK4jN2p1/kDVrmHU3y+UCtXNJRXVU4+a0OKSeatF/wtn6JKawgJBBUZv2VCm86JV2qBFA4c0u//075jBiGm1kDFhSmst0qugyp
+X-Gm-Message-State: AOJu0YyNscRrw74uTYRvRs0d0HjxbSAvyt3mk0vRQWxoFWfHpx22Uo7x
+	7QFxIKaNF/TdxMzXTwmtdm9jT9RD129yFUd3buYPve4tXrNEmD9NZvkizvoJQls=
+X-Google-Smtp-Source: AGHT+IHZ/a5U6it5nOITDX6BVKRmPbh7X1afwcLmxuPyfMAqtYz3gHLXPT8ZIBqIsDnKSqR/+VJpqw==
+X-Received: by 2002:adf:d1ee:0:b0:33b:649a:1a12 with SMTP id g14-20020adfd1ee000000b0033b649a1a12mr4062726wrd.55.1707658970873;
+        Sun, 11 Feb 2024 05:42:50 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCXp7r9BIoB/cXoY9YZQSb5jOs+5TxAm1QbngscDcGXCd3VYAoUurb6YMWRyhbxrbC+veqwNRiX3IEg0teXQRmJ9O5IrqtjGpLUvMe8I+cUuorrKAZkkqnlg13ImHzbjuHOohFgNigDuO9fkZk8EvWtoo3P1N11DjI+1rYdZ4Gj9ZUBW9LPKbrTJr79MY6smBKmfbE6SZk6oyB90L0uI2Ktv1nidF67JEpbi8TlWPUqGlr7G7GptZ/QUbFATm8orhvg3XIoLlPTaV/w6aJsrQgVLTqBUKIpaKb//h0htOhNGPC7L2r0mSe/s2HLum4ocKd6XaX+J0cf0Bb2MdRBsOD+QkOyJMBZKywmTPP9uN1iKQfDhJfanR38FYnS8Px0YktK5Ylrv2Bg6nSFmtgz3kbUDLzEYWtIGgMfoq+nFwKj3DmiQF1x861bpAN2YrrwOeTUH+cABU5AvZQa3K5jrZ3SjNKISVDW2yboZQoENTvBi+nX+3Llv5C1Pq8zgzqAB6ZY1uXAf1+creAgbla8QmK6ZrGZsDfgjMm93zET2WO9qPOEKrvUa99tf72xRllcPS/nVnrqatXmwvu1hNrSp+bEWxTDWHs16gSQ0+XdN/Qv5qaiJPkF4hCJVR50VfKfIVKsHD1wEIMAb5ikmsFl5L40iBwovmB97fTpnfW5L8xz5HwPe+6fDbHTTT25c4ntM6VjOO++CcvDxHYsiiIb3rgh9aawVU0qSA00iyHTu9mcIfsniZ8zMNdbtcOc+4jR8HVU=
+Received: from [192.168.1.20] ([178.197.223.6])
+        by smtp.gmail.com with ESMTPSA id dv5-20020a0560000d8500b0033b483d1abcsm4273462wrb.53.2024.02.11.05.42.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 11 Feb 2024 05:42:50 -0800 (PST)
+Message-ID: <b6c28118-a20c-46a5-b070-2306d4c0b2a1@linaro.org>
+Date: Sun, 11 Feb 2024 14:42:48 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="sfcqdcis3bm2zuuf"
-Content-Disposition: inline
-In-Reply-To: <20240211091633.4545-1-erick.archer@gmx.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/2] dt-bindings: phy: mediatek,mt7988-xfi-tphy: add
+ new bindings
+Content-Language: en-US
+To: Daniel Golle <daniel@makrotopia.org>,
+ Bc-bocun Chen <bc-bocun.chen@mediatek.com>,
+ Steven Liu <steven.liu@mediatek.com>, John Crispin <john@phrozen.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
+ <SkyLake.Huang@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org
+References: <745f8b46f676e94c1a396df8c46aefe0e8b4771c.1707530671.git.daniel@makrotopia.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzTRLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnp5c3p0b2Yua296bG93c2tpQGxpbmFyby5vcmc+wsGUBBMBCgA+FiEE
+ m9B+DgxR+NWWd7dUG5NDfTtBYpsFAmI+BxMCGwMFCRRfreEFCwkIBwIGFQoJCAsCBBYCAwEC
+ HgECF4AACgkQG5NDfTtBYptgbhAAjAGunRoOTduBeC7V6GGOQMYIT5n3OuDSzG1oZyM4kyvO
+ XeodvvYv49/ng473E8ZFhXfrre+c1olbr1A8pnz9vKVQs9JGVa6wwr/6ddH7/yvcaCQnHRPK
+ mnXyP2BViBlyDWQ71UC3N12YCoHE2cVmfrn4JeyK/gHCvcW3hUW4i5rMd5M5WZAeiJj3rvYh
+ v8WMKDJOtZFXxwaYGbvFJNDdvdTHc2x2fGaWwmXMJn2xs1ZyFAeHQvrp49mS6PBQZzcx0XL5
+ cU9ZjhzOZDn6Apv45/C/lUJvPc3lo/pr5cmlOvPq1AsP6/xRXsEFX/SdvdxJ8w9KtGaxdJuf
+ rpzLQ8Ht+H0lY2On1duYhmro8WglOypHy+TusYrDEry2qDNlc/bApQKtd9uqyDZ+rx8bGxyY
+ qBP6bvsQx5YACI4p8R0J43tSqWwJTP/R5oPRQW2O1Ye1DEcdeyzZfifrQz58aoZrVQq+innR
+ aDwu8qDB5UgmMQ7cjDSeAQABdghq7pqrA4P8lkA7qTG+aw8Z21OoAyZdUNm8NWJoQy8m4nUP
+ gmeeQPRc0vjp5JkYPgTqwf08cluqO6vQuYL2YmwVBIbO7cE7LNGkPDA3RYMu+zPY9UUi/ln5
+ dcKuEStFZ5eqVyqVoZ9eu3RTCGIXAHe1NcfcMT9HT0DPp3+ieTxFx6RjY3kYTGLOwU0EVUNc
+ NAEQAM2StBhJERQvgPcbCzjokShn0cRA4q2SvCOvOXD+0KapXMRFE+/PZeDyfv4dEKuCqeh0
+ hihSHlaxTzg3TcqUu54w2xYskG8Fq5tg3gm4kh1Gvh1LijIXX99ABA8eHxOGmLPRIBkXHqJY
+ oHtCvPc6sYKNM9xbp6I4yF56xVLmHGJ61KaWKf5KKWYgA9kfHufbja7qR0c6H79LIsiYqf92
+ H1HNq1WlQpu/fh4/XAAaV1axHFt/dY/2kU05tLMj8GjeQDz1fHas7augL4argt4e+jum3Nwt
+ yupodQBxncKAUbzwKcDrPqUFmfRbJ7ARw8491xQHZDsP82JRj4cOJX32sBg8nO2N5OsFJOcd
+ 5IE9v6qfllkZDAh1Rb1h6DFYq9dcdPAHl4zOj9EHq99/CpyccOh7SrtWDNFFknCmLpowhct9
+ 5ZnlavBrDbOV0W47gO33WkXMFI4il4y1+Bv89979rVYn8aBohEgET41SpyQz7fMkcaZU+ok/
+ +HYjC/qfDxT7tjKXqBQEscVODaFicsUkjheOD4BfWEcVUqa+XdUEciwG/SgNyxBZepj41oVq
+ FPSVE+Ni2tNrW/e16b8mgXNngHSnbsr6pAIXZH3qFW+4TKPMGZ2rZ6zITrMip+12jgw4mGjy
+ 5y06JZvA02rZT2k9aa7i9dUUFggaanI09jNGbRA/ABEBAAHCwXwEGAEKACYCGwwWIQSb0H4O
+ DFH41ZZ3t1Qbk0N9O0FimwUCYDzvagUJFF+UtgAKCRAbk0N9O0Fim9JzD/0auoGtUu4mgnna
+ oEEpQEOjgT7l9TVuO3Qa/SeH+E0m55y5Fjpp6ZToc481za3xAcxK/BtIX5Wn1mQ6+szfrJQ6
+ 59y2io437BeuWIRjQniSxHz1kgtFECiV30yHRgOoQlzUea7FgsnuWdstgfWi6LxstswEzxLZ
+ Sj1EqpXYZE4uLjh6dW292sO+j4LEqPYr53hyV4I2LPmptPE9Rb9yCTAbSUlzgjiyyjuXhcwM
+ qf3lzsm02y7Ooq+ERVKiJzlvLd9tSe4jRx6Z6LMXhB21fa5DGs/tHAcUF35hSJrvMJzPT/+u
+ /oVmYDFZkbLlqs2XpWaVCo2jv8+iHxZZ9FL7F6AHFzqEFdqGnJQqmEApiRqH6b4jRBOgJ+cY
+ qc+rJggwMQcJL9F+oDm3wX47nr6jIsEB5ZftdybIzpMZ5V9v45lUwmdnMrSzZVgC4jRGXzsU
+ EViBQt2CopXtHtYfPAO5nAkIvKSNp3jmGxZw4aTc5xoAZBLo0OV+Ezo71pg3AYvq0a3/oGRG
+ KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
+ fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <745f8b46f676e94c1a396df8c46aefe0e8b4771c.1707530671.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240211_035152_648563_9931C280 
-X-CRM114-Status: GOOD (  17.19  )
+X-CRM114-CacheID: sfid-20240211_054257_079980_39804195 
+X-CRM114-Status: UNSURE (   7.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,59 +152,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 10/02/2024 03:10, Daniel Golle wrote:
+> Add bindings for the MediaTek XFI Ethernet SerDes T-PHY found in the
+> MediaTek MT7988 SoC which can operate at various interfaces modes:
+> 
+> via USXGMII PCS:
+>  * USXGMII
+>  * 10GBase-R
+>  * 5GBase-R
+> 
+> via LynxI SGMII PCS:
+>  * 2500Base-X
+>  * 1000Base-X
+>  * Cisco SGMII (MAC side)
+> 
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+> v3: Add reference to MediaTek-internal "pextp" name, better explain reset as
+>     well as 10GBase-R tuning work-around.
+> v2: unify filename and compatible as requested
+> 
 
---sfcqdcis3bm2zuuf
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-On Sun, Feb 11, 2024 at 10:16:33AM +0100, Erick Archer wrote:
-> This is an effort to get rid of all multiplications from allocation
-> functions in order to prevent integer overflows [1].
->=20
-> As the "chip" variable is a pointer to "struct mtk_nfc_nand_chip" and
-> this structure ends in a flexible array:
->=20
-> struct mtk_nfc_nand_chip {
-> 	[...]
-> 	u8 sels[] __counted_by(nsels);
-> };
->=20
-> the preferred way in the kernel is to use the struct_size() helper to
-> do the arithmetic instead of the argument "size + count * size" in the
-> devm_kzalloc() function.
->=20
-> This way, the code is more readable and safer.
->=20
-> Link: https://www.kernel.org/doc/html/latest/process/deprecated.html#open=
--coded-arithmetic-in-allocator-arguments [1]
-> Link: https://github.com/KSPP/linux/issues/160 [2]
-> Reviewed-by: Gustavo A. R. Silva <gustavoars@kernel.org>
-> Signed-off-by: Erick Archer <erick.archer@gmx.com>
+Best regards,
+Krzysztof
 
-Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---sfcqdcis3bm2zuuf
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmXItLgACgkQj4D7WH0S
-/k5ikgf9F4/qTgtnox96aTKRccDzsaTgOw9Qi3pN71OjgluyHYlBZZuLkP5oxvMH
-1xtEtrRoArhwg8s5AISfkCSKbJG6D3uSXUf9HsjiHx2K2tK+RkQy1vFalheaw7V5
-E4xeT2nxo6jpRzzqeqs75p8KbDE1FdrEZZuarr3wqtfb+oapvNF8Fy9a82Yg1BZC
-DMVilJ/dMLxb6nLJ6V0fGGOzzio9S8AIFx0alMWvEzVu8i+yDDLBWbQDlQZTqzIn
-lfNs4OCNwrzqhNhlWD6V8lzYV8SaUtFW+1A6ZKJb19MwobAnXElAgIQJOWX0PSY1
-vASWpbUmeY9zm+JPlBvqvX/3KIcWew==
-=DQCU
------END PGP SIGNATURE-----
-
---sfcqdcis3bm2zuuf--
 
