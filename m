@@ -4,86 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12F94C4829B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Feb 2024 15:07:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA738C48297
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Feb 2024 15:33:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EC3i7WPMyRp3IYdvEIEGD0i8jh4jq28FmjUJ5nE720E=; b=4IUXknfF8Wafq3Aadao7D+JaVn
-	k6g/gJDlm+V2ZVHCYHJKx8yIXrzXAhD13CTv7v6QQIKj02FHczkfe+/TZFYq2ml1HiAKnfdq93dOs
-	ZzMwjGeQtb1++tRP2vzGhuc333U137XN2ScGTIe9+IgzvdlniJpcCDJ7z7SJujnlQmBty4wezOAFh
-	4P3nZUBPHbUlwbTpEEMAAWV/zlWq3iKi+FgcyD1Ud1BAnxGUPLz+DIoLeuiZBnXp44R5cSNJlUpDi
-	2ihlzhLvo4v/gjiM0IjmPyabyceZx3Z+wVvY1lGMlAv5Zbkn9jafA09GuNjeKWiVwnts/RxoQaOws
-	xbRso3aw==;
+	bh=tG5+mWlEpKIFxadadpcB3TJPcTV7Tbb2YmQrnUCl3Mc=; b=X3H89BIHustiALG5aRJDKtne1F
+	RzsBEdYeI/b23MlLlbvVIJJ+YZwWiLv+uDEt7REKzPyIWrMl3wg0uj3VcxQ+wqvAaZLHnwZAmIZl5
+	5TUl4DNwz3OUvrE/G798elxIWKmsgR2vsn9MxoYtHXYC75C92iclsHT4J4mr9+Qqyx7nHGd8C+dlA
+	mSV+j8rlkhvncJRrsH0wrXQBQg9FCdMPlTME9g6OD1huRlk5c0d8gLjopI9xo5amYV35TJeTECEwg
+	91QE3zXSK3T81t3LRrNqIQzrkX1MZZN4jVmtfShK4Mh9P3SH50iz2tWqi84BBDaJ7ucfhuVwbzSq8
+	kDyH5PDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZXtx-00000005u1I-2v9F;
-	Mon, 12 Feb 2024 15:07:21 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1rZYJE-00000005yf1-23Ch;
+	Mon, 12 Feb 2024 15:33:28 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZXtu-00000005tyF-3wHi
-	for linux-mediatek@lists.infradead.org;
-	Mon, 12 Feb 2024 15:07:20 +0000
-Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-5611e54a92dso4076466a12.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 12 Feb 2024 07:07:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1707750432; x=1708355232; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=EC3i7WPMyRp3IYdvEIEGD0i8jh4jq28FmjUJ5nE720E=;
-        b=eAJsZlGiI07mrYgnLJxiS0VXZjQNdfE28YDY8gIpEve0190ekYkFujfa2ugD88fI0+
-         YtfFXjboPu6or+MmOcFJT0He9u6quRg3VLP4gEwUHFKvXMFw2kTHv5te8iWM2f/u4W5e
-         C8etfSDsigxFkdsYBqchXEigSd3noH/sCguAcPXh1BbeRZcw2TAEEtvEnvK9RW+vyzf7
-         kPAFuel+q07Djrg367iGB3vO3pG4ATEbfTcIH1EIe4qTXE/5UF4LrzMUG37jRkwEbNb8
-         Efk8iEQnvRSDXPP6lb4l4XrnoNdyeTNI4EDSZIFNapJga/YwzJqeaOc705ncrCvkacNu
-         EJBg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707750432; x=1708355232;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=EC3i7WPMyRp3IYdvEIEGD0i8jh4jq28FmjUJ5nE720E=;
-        b=nGaxyLuAfPt1FVTIP9UjJmb//Asr7Y+5fTtyBRP0qBqAl/vdk/nLa8aqG1OhXEWVlP
-         SKH6oblSprELSpK/1I+3if4MMVUwpfm2mfpExi0mjFoFidIUfXX3Iqj2tAnqaFY1GUWP
-         ULl/OzJjRudQ5cDGGVsgrbAh+dm+HC3FdfmFMZhFRtluXiU1rGoMsnNkFqBpJkRwLlCx
-         GRfUsCO1Lr3RCc5yr5LazS2tbOYFI20sZb0FjX6geJOaXNB1ok1MR/G2aRsyTa2L7POJ
-         D42TaHA3UD4Xx8PY2KvsarLG7Nc58P/i0iILDiWT2u8zpKrONmmj2tJVrzjeYPiPg/9m
-         /35A==
-X-Gm-Message-State: AOJu0Yzdxg90EKBPbaGU8aYZGOqbD31U0f//3NIB2fFDXfbn4+rpxgFB
-	kSTkH4pz33fpUO6h4jJ3Qoay7yMPaP4oso0mHw4F9GzdcD6phm/2v7JELcV/1GFTd2AhyH7nh46
-	kPhEmEDL/H298xJ/xxXxZR17fq6HACyQkZo8Htg==
-X-Google-Smtp-Source: AGHT+IGOztcD6VUkwD3HWT6e1rn0+70jwBqA/VXoPNP45PWBLZM25XLMCH/NpPo2qWX16wJHIZztxtkKeA3vGhJSmGw=
-X-Received: by 2002:aa7:c393:0:b0:55e:ea35:1da4 with SMTP id
- k19-20020aa7c393000000b0055eea351da4mr4872130edq.4.1707750432529; Mon, 12 Feb
- 2024 07:07:12 -0800 (PST)
+	id 1rZYJA-00000005ydc-2Umt;
+	Mon, 12 Feb 2024 15:33:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id E07B860BAD;
+	Mon, 12 Feb 2024 15:33:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0CD66C433F1;
+	Mon, 12 Feb 2024 15:33:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1707752000;
+	bh=GFsfkdOmJKsuZtWQAq7OhjxHg4IKHiDCDNVd+Gd58aw=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=Co2aU8UOdKL4W8SUaaEqV0BTVAuiZ9niMqI5QuXmkWRQqRD+bsuUp32djuJPfJQ7M
+	 J0AdS/WqPhUm+WDhNwj0PIl1NFZPSx4kaz74w8AVaBO2niEWSvmitVVz0AuwMwTUcd
+	 8MtOvRT2s7ojnBMUpDpCQjuzEzxH0//zOgasqtDHJDU6fjIDBJFEa6lJkzge7aVnIn
+	 65sRlXZGfvNWKRj6hhoF+/MvmClp/yoVXWTT6Lqc/PTFBqTwhuA4fpNCA+K8uTOths
+	 DH2aamg+A5g3aeMmWit1ZUc4X0oSEYy8EtlcvJyPFhdziLYkgWINAXOkx2oWF2pGNL
+	 vlKQQFPbdC2Dw==
+From: Mark Brown <broonie@kernel.org>
+To: =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: kernel@pengutronix.de, Moritz Fischer <mdf@kernel.org>, 
+ Wu Hao <hao.wu@intel.com>, Xu Yilun <yilun.xu@intel.com>, 
+ Tom Rix <trix@redhat.com>, linux-fpga@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, Alexander Aring <alex.aring@gmail.com>, 
+ Stefan Schmidt <stefan@datenfreihafen.org>, 
+ Miquel Raynal <miquel.raynal@bootlin.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ linux-wpan@vger.kernel.org, netdev@vger.kernel.org, 
+ Lars-Peter Clausen <lars@metafoo.de>, 
+ Michael Hennerich <Michael.Hennerich@analog.com>, 
+ Jonathan Cameron <jic23@kernel.org>, linux-iio@vger.kernel.org, 
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-input@vger.kernel.org, 
+ Ulf Hansson <ulf.hansson@linaro.org>, Rayyan Ansari <rayyan@ansari.sh>, 
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>, 
+ Martin Tuma <martin.tuma@digiteqautomotive.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org, 
+ Sergey Kozlov <serjk@netup.ru>, Arnd Bergmann <arnd@arndb.de>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Yang Yingliang <yangyingliang@huawei.com>, linux-mmc@vger.kernel.org, 
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, 
+ Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Michal Simek <michal.simek@amd.com>, 
+ Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>, 
+ linux-mtd@lists.infradead.org, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ =?utf-8?q?Pali_Roh=C3=A1r?= <pali@kernel.org>, 
+ Simon Horman <horms@kernel.org>, Ronald Wahl <ronald.wahl@raritan.com>, 
+ Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+ Guenter Roeck <groeck@chromium.org>, chrome-platform@lists.linux.dev, 
+ Max Filippov <jcmvbkbc@gmail.com>, linux-spi@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>, linux-arm-msm@vger.kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-mediatek@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Javier Martinez Canillas <javierm@redhat.com>, 
+ Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>, 
+ dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org, 
+ linux-staging@lists.linux.dev, Viresh Kumar <vireshk@kernel.org>, 
+ Rui Miguel Silva <rmfrfs@gmail.com>, Johan Hovold <johan@kernel.org>, 
+ Alex Elder <elder@kernel.org>, greybus-dev@lists.linaro.org, 
+ Peter Huewe <peterhuewe@gmx.de>, Jarkko Sakkinen <jarkko@kernel.org>, 
+ Jason Gunthorpe <jgg@ziepe.ca>, linux-integrity@vger.kernel.org, 
+ Herve Codina <herve.codina@bootlin.com>, 
+ Alan Stern <stern@rowland.harvard.edu>, 
+ Aaro Koskinen <aaro.koskinen@iki.fi>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ linux-usb@vger.kernel.org, Helge Deller <deller@gmx.de>, 
+ Dario Binacchi <dario.binacchi@amarulasolutions.com>, 
+ Kalle Valo <kvalo@kernel.org>, Dmitry Antipov <dmantipov@yandex.ru>, 
+ libertas-dev@lists.infradead.org, linux-wireless@vger.kernel.org, 
+ Jonathan Corbet <corbet@lwn.net>, James Clark <james.clark@arm.com>, 
+ Bjorn Helgaas <bhelgaas@google.com>, linux-doc@vger.kernel.org
+In-Reply-To: <cover.1705944943.git.u.kleine-koenig@pengutronix.de>
+References: <cover.1705944943.git.u.kleine-koenig@pengutronix.de>
+Subject: Re: (subset) [PATCH v2 00/33] spi: get rid of some legacy macros
+Message-Id: <170775198078.46149.4700126128576800564.b4-ty@kernel.org>
+Date: Mon, 12 Feb 2024 15:33:00 +0000
 MIME-Version: 1.0
-References: <20240110141443.364655-1-jstephan@baylibre.com>
- <20240110141443.364655-4-jstephan@baylibre.com> <3c2bee40-3792-409c-b42f-f8b013ff641c@collabora.com>
-In-Reply-To: <3c2bee40-3792-409c-b42f-f8b013ff641c@collabora.com>
-From: Julien Stephan <jstephan@baylibre.com>
-Date: Mon, 12 Feb 2024 16:07:03 +0100
-Message-ID: <CAEHHSvaUSJTTQpUD0eX3dFw7rohRm6Z=_RO0Sknn9JxfH603UQ@mail.gmail.com>
-Subject: Re: [PATCH v4 3/5] media: platform: mediatek: isp_30: add mediatek
- ISP3.0 sensor interface
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Louis Kuo <louis.kuo@mediatek.com>, Phi-bang Nguyen <pnguyen@baylibre.com>, 
-	Florian Sylvestre <fsylvestre@baylibre.com>, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Andy Hsieh <andy.hsieh@mediatek.com>, 
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-media@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Paul Elder <paul.elder@ideasonboard.com>, 
-	Rob Herring <robh+dt@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.13-dev-a684c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240212_070719_115521_16F8FBA3 
-X-CRM114-Status: GOOD (  34.63  )
+X-CRM114-CacheID: sfid-20240212_073324_741799_982F05F2 
+X-CRM114-Status: GOOD (  16.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,478 +126,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+On Mon, 22 Jan 2024 19:06:55 +0100, Uwe Kleine-König wrote:
+> this is v2 of this patch set.
+> 
+> Changes since (implicit) v1, sent with Message-Id:
+> cover.1705348269.git.u.kleine-koenig@pengutronix.de:
+> 
+>  - Rebase to v6.8-rc1
+>  - Fix a build failure on sh
+>  - Added the tags received in (implicit) v1.
+> 
+> [...]
 
-Thank you for your comments. Few questions below.
+Applied to
 
-Cheers
-Julien
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-Le jeu. 11 janv. 2024 =C3=A0 13:04, AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> a =C3=A9crit :
- .. snip ..
->
-> > +             .code =3D MEDIA_BUS_FMT_S5C_UYVY_JPEG_1X8,
-> > +             .flags =3D MTK_SENINF_FORMAT_JPEG,
-> > +     },
-> > +     /* Keep the input-only formats last. */
->
-> Your comment doesn't make me understand why input-only formats shall be
-> placed last - and makes me think that having two arrays (one for both
-> and one for input only) would be easier and less error prone, other than
-> making you able to drop the MTK_SENINF_FORMAT_INPUT_ONLY flag entirely.
->
+Thanks!
 
-Not sure I agree with you on this... If I want to split into two I
-will have to duplicate
-the whole mtk_seninf_formats[] which is quite big because the first 26
-formats are
-for both input and source pad. Moreover it will introduce some check on the=
- pad
-before choosing the correct format structure..  or maybe I am missing
-your point?
+[01/33] fpga: ice40-spi: Follow renaming of SPI "master" to "controller"
+        commit: 227ab73b89d66e3064b3c2bcb5fe382b1815763d
+[02/33] ieee802154: ca8210: Follow renaming of SPI "master" to "controller"
+        commit: 167b78446706bb4d19f7dd93ca320aed25ae1bbd
+[03/33] iio: adc: ad_sigma_delta: Follow renaming of SPI "master" to "controller"
+        commit: 2780e7b716a605781dbee753ef4983d775a65427
+[04/33] Input: pxspad - follow renaming of SPI "master" to "controller"
+        commit: a78acec53b8524593afeed7258a442adc3450818
+[05/33] Input: synaptics-rmi4 - follow renaming of SPI "master" to "controller"
+        commit: 1245633c61baf159fcc1303d7f0855f49831b9c1
+[06/33] media: mgb4: Follow renaming of SPI "master" to "controller"
+        commit: 2c2f93fbfba7186cc081e23120f169eac3b5b62a
+[07/33] media: netup_unidvb: Follow renaming of SPI "master" to "controller"
+        commit: cfa13a64bd631d8f04a1c385923706fcef9a63ed
+[08/33] media: usb/msi2500: Follow renaming of SPI "master" to "controller"
+        commit: dd868ae646d5770f80f90dc056d06eb2e6d39c62
+[09/33] media: v4l2-subdev: Follow renaming of SPI "master" to "controller"
+        commit: d920b3a672b7f79cd13b341234aebd49233f836c
+[10/33] misc: gehc-achc: Follow renaming of SPI "master" to "controller"
+        commit: 26dcf09ee5d9ceba2c627ae3ba174a229f25638f
+[11/33] mmc: mmc_spi: Follow renaming of SPI "master" to "controller"
+        commit: b0a6776e53403aa380411f2a43cdefb9f00ff50a
+[12/33] mtd: dataflash: Follow renaming of SPI "master" to "controller"
+        commit: 44ee998db9eef84bf005c39486566a67cb018354
+[14/33] net: ks8851: Follow renaming of SPI "master" to "controller"
+        commit: 1cc711a72ae7fd44e90839f0c8d3226664de55a2
+[15/33] net: vertexcom: mse102x: Follow renaming of SPI "master" to "controller"
+        commit: 7969b98b80c0332f940c547f84650a20aab33841
+[16/33] platform/chrome: cros_ec_spi: Follow renaming of SPI "master" to "controller"
+        commit: 85ad0ec049a771c4910c8aebb2d0bd9ce9311fd9
+[17/33] spi: bitbang: Follow renaming of SPI "master" to "controller"
+        commit: 2259233110d90059187c5ba75537eb93eba8417b
+[18/33] spi: cadence-quadspi: Don't emit error message on allocation error
+        commit: e71011dacc3413bed4118d2c42f10736ffcd762c
+[19/33] spi: cadence-quadspi: Follow renaming of SPI "master" to "controller"
+        commit: 28e59d8bf1ace0ddf05f989a48d6824d75731267
+[20/33] spi: cavium: Follow renaming of SPI "master" to "controller"
+        commit: 1747fbdedba8b6b3fd459895ed5d57e534549884
+[21/33] spi: geni-qcom: Follow renaming of SPI "master" to "controller"
+        commit: 14cea92338a0776c1615994150e738ac0f5fbb2c
+[22/33] spi: loopback-test: Follow renaming of SPI "master" to "controller"
+        commit: 2c2310c17fac13aa7e78756d7f3780c7891f9397
+[23/33] spi: slave-mt27xx: Follow renaming of SPI "master" to "controller"
+        commit: 8197b136bbbe64a7cab1020a4b067020e5977d98
+[24/33] spi: spidev: Follow renaming of SPI "master" to "controller"
+        commit: d934cd6f0e5d0052772612db4b07df60cb9da387
+[25/33] staging: fbtft: Follow renaming of SPI "master" to "controller"
+        commit: bbd25d7260eeeaef89f7371cbadcd33dd7f7bff9
+[26/33] staging: greybus: spi: Follow renaming of SPI "master" to "controller"
+        commit: ee3c668dda3d2783b0fff4091461356fe000e4d8
+[27/33] tpm_tis_spi: Follow renaming of SPI "master" to "controller"
+        commit: b6af14eacc8814b0986e20507df423cebe9fd859
+[28/33] usb: gadget: max3420_udc: Follow renaming of SPI "master" to "controller"
+        commit: 8c716f4a3d4fcbec976247e3443d36cbc24c0512
+[29/33] video: fbdev: mmp: Follow renaming of SPI "master" to "controller"
+        commit: b23031e730e72ec9067b7c38c25e776c5e27e116
+[30/33] wifi: libertas: Follow renaming of SPI "master" to "controller"
+        commit: 30060d57cee194d6b70283f2faf787e2fdc61b6e
+[31/33] spi: fsl-lib: Follow renaming of SPI "master" to "controller"
+        commit: 801185efa2402dce57828930e9684884fc8d62da
+[32/33] spi: Drop compat layer from renaming "master" to "controller"
+        commit: 620d269f29a569ba37419cc03cf1da2d55f6252a
+[33/33] Documentation: spi: Update documentation for renaming "master" to "controller"
+        commit: 76b31eb4c2da3ddb3195cc14f6aad24908adf524
 
-> > +     {
-> > +             .code =3D MEDIA_BUS_FMT_SGRBG10_DPCM8_1X8,
-> > +             .flags =3D MTK_SENINF_FORMAT_DPCM | MTK_SENINF_FORMAT_INP=
-UT_ONLY,
-> > +     }, {
-> > +             .code =3D MEDIA_BUS_FMT_SRGGB10_DPCM8_1X8,
-> > +             .flags =3D MTK_SENINF_FORMAT_DPCM | MTK_SENINF_FORMAT_INP=
-UT_ONLY,
-> > +     }, {
-> > +             .code =3D MEDIA_BUS_FMT_SBGGR10_DPCM8_1X8,
-> > +             .flags =3D MTK_SENINF_FORMAT_DPCM | MTK_SENINF_FORMAT_INP=
-UT_ONLY,
-> > +     }, {
-> > +             .code =3D MEDIA_BUS_FMT_SGBRG10_DPCM8_1X8,
-> > +             .flags =3D MTK_SENINF_FORMAT_DPCM | MTK_SENINF_FORMAT_INP=
-UT_ONLY,
-> > +     }
-> > +};
-> > +
-> > +static const struct mtk_seninf_format_info *mtk_seninf_format_info(u32=
- code)
-> > +{
-> > +     unsigned int i;
-> > +
-> > +     for (i =3D 0; i < ARRAY_SIZE(mtk_seninf_formats); ++i) {
-> > +             if (mtk_seninf_formats[i].code =3D=3D code)
-> > +                     return &mtk_seninf_formats[i];
-> > +     }
-> > +
-> > +     return NULL;
-> > +}
-> > +
->
-> ..snip..
->
-> > +
-> > +static void mtk_seninf_input_setup_csi2(struct mtk_seninf_input *input=
-,
-> > +                                     struct v4l2_subdev_state *state)
-> > +{
-> > +     const struct mtk_seninf_format_info *fmtinfo;
-> > +     const struct v4l2_mbus_framefmt *format;
-> > +     unsigned int num_data_lanes =3D input->bus.num_data_lanes;
-> > +     unsigned int val =3D 0;
-> > +
-> > +     format =3D v4l2_subdev_state_get_stream_format(state, input->pad,=
- 0);
-> > +     fmtinfo =3D mtk_seninf_format_info(format->code);
-> > +
-> > +     /* Configure timestamp */
-> > +     writel(SENINF_TIMESTAMP_STEP, input->base + SENINF_TG1_TM_STP);
-> > +
-> > +     /* HQ */
-> > +     writel(0x0, input->base + SENINF_TG1_PH_CNT);
->
-> Zero means:
->   - Sensor master clock: ISP_CLK
->   - Sensor clock polarity: Rising edge
->   - Sensor reset deasserted
->   - Sensor powered up
->   - Pixel clock inversion disabled
->   - Sensor master clock polarity disabled
->   - Phase counter disabled
->
-> > +     writel(0x10001, input->base + SENINF_TG1_SEN_CK);
->
-> Unroll this one... this is the TG1 sensor clock divider.
->
-> CLKFL GENMASK(5, 0)
-> CLKRS GENMASK(13, 8)
-> CLKCNT GENMASK(21,16)
->
-> Like this, I don't get what you're trying to set, because you're using a =
-fixed
-> sensor clock rate, meaning that only a handful of camera sensors will be =
-usable.
->
-> Is this 8Mhz? 16? 24? what? :-)
->
-> Two hints:
->   - sensor_clk =3D clk_get_rate(isp_clk) / (tg1_sen_ck_clkcnt + 1);
->   - int mtk_seninf_set_sensor_clk(u8 rate_mhz);
->
-> Please :-)
->
-> > +
-> > +     /* First Enable Sensor interface and select pad (0x1a04_0200) */
-> > +     mtk_seninf_input_update(input, SENINF_CTRL, SENINF_EN, 1);
-> > +     mtk_seninf_input_update(input, SENINF_CTRL, PAD2CAM_DATA_SEL, SEN=
-INF_PAD_10BIT);
-> > +     mtk_seninf_input_update(input, SENINF_CTRL, SENINF_SRC_SEL, 0);
-> > +     mtk_seninf_input_update(input, SENINF_CTRL_EXT, SENINF_CSI2_IP_EN=
-, 1);
-> > +     mtk_seninf_input_update(input, SENINF_CTRL_EXT, SENINF_NCSI2_IP_E=
-N, 0);
-> > +
-> > +     /* DPCM Enable */
-> > +     if (fmtinfo->flags & MTK_SENINF_FORMAT_DPCM)
-> > +             val =3D SENINF_CSI2_DPCM_DI_2A_DPCM_EN;
-> > +     else
-> > +             val =3D SENINF_CSI2_DPCM_DI_30_DPCM_EN;
-> > +     writel(val, input->base + SENINF_CSI2_DPCM);
-> > +
-> > +     /* Settle delay */
-> > +     mtk_seninf_input_update(input, SENINF_CSI2_LNRD_TIMING,
-> > +                             DATA_SETTLE_PARAMETER, SENINF_SETTLE_DELA=
-Y);
-> > +
-> > +     /* HQ */
-> > +     writel(0x10, input->base + SENINF_CSI2_LNRC_FSM);
->
-> As far as I know, SENINF_CSI2_LNRC_FSM is a read-only register: this writ=
-e will do
-> exactly nothing...
->
-> > +
-> > +     /* CSI2 control */
-> > +     val =3D readl(input->base + SENINF_CSI2_CTL)
-> > +         | (FIELD_PREP(SENINF_CSI2_CTL_ED_SEL, DATA_HEADER_ORDER_DI_WC=
-L_WCH)
-> > +         | SENINF_CSI2_CTL_CLOCK_LANE_EN | (BIT(num_data_lanes) - 1));
-> > +     writel(val, input->base + SENINF_CSI2_CTL);
-> > +
-> > +     mtk_seninf_input_update(input, SENINF_CSI2_RESYNC_MERGE_CTL,
-> > +                             BYPASS_LANE_RESYNC, 0);
->
-> 93 columns: fits in one line (not only this one!).
->
-> > +     mtk_seninf_input_update(input, SENINF_CSI2_RESYNC_MERGE_CTL, CDPH=
-Y_SEL, 0);
-> > +     mtk_seninf_input_update(input, SENINF_CSI2_RESYNC_MERGE_CTL,
-> > +                             CPHY_LANE_RESYNC_CNT, 3);
-> > +     mtk_seninf_input_update(input, SENINF_CSI2_MODE, CSR_CSI2_MODE, 0=
-);
-> > +     mtk_seninf_input_update(input, SENINF_CSI2_MODE, CSR_CSI2_HEADER_=
-LEN, 0);
-> > +     mtk_seninf_input_update(input, SENINF_CSI2_DPHY_SYNC, SYNC_SEQ_MA=
-SK_0, 0xff00);
-> > +     mtk_seninf_input_update(input, SENINF_CSI2_DPHY_SYNC, SYNC_SEQ_PA=
-T_0, 0x001d);
-> > +
-> > +     mtk_seninf_input_update(input, SENINF_CSI2_CTL, CLOCK_HS_OPTION, =
-0);
-> > +     mtk_seninf_input_update(input, SENINF_CSI2_CTL, HSRX_DET_EN, 0);
-> > +     mtk_seninf_input_update(input, SENINF_CSI2_CTL, HS_TRAIL_EN, 1);
-> > +     mtk_seninf_input_update(input, SENINF_CSI2_HS_TRAIL, HS_TRAIL_PAR=
-AMETER,
-> > +                             SENINF_HS_TRAIL_PARAMETER);
-> > +
-> > +     /* Set debug port to output packet number */
-> > +     mtk_seninf_input_update(input, SENINF_CSI2_DGB_SEL, DEBUG_EN, 1);
-> > +     mtk_seninf_input_update(input, SENINF_CSI2_DGB_SEL, DEBUG_SEL, 0x=
-1a);
-> > +
-> > +     /* HQ */
-> > +     writel(0xfffffffe, input->base + SENINF_CSI2_SPARE0);
->
-> I have no idea what this SPARE0 does, but I think that this is something =
-that you
-> want to get from platform_data, as I guess this would be different on var=
-ious SoCs?
->
-> > +
-> > +     /* Enable CSI2 IRQ mask */
-> > +     /* Turn on all interrupt */
-> > +     writel(0xffffffff, input->base + SENINF_CSI2_INT_EN);
-> > +     /* Write clear CSI2 IRQ */
-> > +     writel(0xffffffff, input->base + SENINF_CSI2_INT_STATUS);
-> > +     /* Enable CSI2 Extend IRQ mask */
->
-> You missed:
->         writel(0xffffffff, input->base + SENINF_CSI2_INT_EN_EXT);
->
-> P.S.: #define SENINF_CSI2_INT_EN_EXT 0x0b10
->
->
-> > +     /* Turn on all interrupt */
->
-> /* Reset the CSI2 to commit changes */ <-- makes more sense, doesn't it?
->
-> > +     mtk_seninf_input_update(input, SENINF_CTRL, CSI2_SW_RST, 1);
-> > +     udelay(1);
-> > +     mtk_seninf_input_update(input, SENINF_CTRL, CSI2_SW_RST, 0);
-> > +}
-> > +
-> > +static void mtk_seninf_mux_setup(struct mtk_seninf_mux *mux,
-> > +                              struct mtk_seninf_input *input,
-> > +                              struct v4l2_subdev_state *state)
-> > +{
-> > +     const struct mtk_seninf_format_info *fmtinfo;
-> > +     const struct v4l2_mbus_framefmt *format;
-> > +     unsigned int pix_sel_ext;
-> > +     unsigned int pix_sel;
-> > +     unsigned int hs_pol =3D 0;
-> > +     unsigned int vs_pol =3D 0;
-> > +     unsigned int val;
-> > +     u32 rst_mask;
-> > +
-> > +     format =3D v4l2_subdev_state_get_stream_format(state, input->pad,=
- 0);
-> > +     fmtinfo =3D mtk_seninf_format_info(format->code);
-> > +
-> > +     /* Enable mux */
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, SENINF_MUX_EN, 1);
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, SENINF_SRC_SEL, SENIN=
-F_MIPI_SENSOR);
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL_EXT, SENINF_SRC_SEL_EX=
-T, SENINF_NORMAL_MODEL);
-> > +
-> > +     pix_sel_ext =3D 0;
-> > +     pix_sel =3D 1;
->
->
->         pixels_per_cycle =3D 1;
->         bus_width =3D pixels_per_cycle >> 1;
->
-> because:  0 =3D=3D 1pix/cyc, 1 =3D=3D 2pix/cyc, 2 =3D=3D 4pix/cyc, 3 =3D=
-=3D 8pix... etc
-> ...but the width of this register depends on the SoC, so you also want to=
- set
-> constraints to the bus width on a per-soc basis (platform data again, or =
-at
-> least leave a comment here).>
->         mtk_seninf_mux_update(....  PIX_SEL_EXT, bus_width);
->         mtk_seninf_mux_update(....  PIX_SEL, bus_width);
->
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-Again, not sure to get your point here. PIX_SEL_EXT and PIX_SEL are 1 bit e=
-ach
-and according to the datasheet 1pix/cycle is 0 in PIX_SEL_EXT and 0 in PIX_=
-SEL,
-2 pix/cycles is 0 in PIX_SEL_EXT and 1 in PIX_SEL
-and 4 pix/cycle is 1 in PIX_SEL_EXT and 0 in PIX_SEL
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL_EXT, SENINF_PIX_SEL_EX=
-T, pix_sel_ext);
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, SENINF_PIX_SEL, pix_s=
-el);
-> > +
-> > +     if (fmtinfo->flags & MTK_SENINF_FORMAT_JPEG) {
-> > +             mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, FIFO_FULL_WR_=
-EN, 0);
-> > +             mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, FIFO_FLUSH_EN=
-,
-> > +                                   FIFO_FLUSH_EN_JPEG_2_PIXEL_MODE);
-> > +             mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, FIFO_PUSH_EN,
-> > +                             FIFO_PUSH_EN_JPEG_2_PIXEL_MODE);
-> > +     } else {
-> > +             mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, FIFO_FULL_WR_=
-EN, 2);
-> > +             mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, FIFO_FLUSH_EN=
-,
-> > +                                  FIFO_FLUSH_EN_NORMAL_MODE);
-> > +             mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, FIFO_PUSH_EN,
-> > +                             FIFO_PUSH_EN_NORMAL_MODE);
-> > +     }
-> > +
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, SENINF_HSYNC_POL, hs_=
-pol);
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, SENINF_VSYNC_POL, vs_=
-pol);
-> > +
-> > +     val =3D mtk_seninf_mux_read(mux, SENINF_MUX_CTRL);
-> > +     rst_mask =3D SENINF_MUX_CTRL_SENINF_IRQ_SW_RST | SENINF_MUX_CTRL_=
-SENINF_MUX_SW_RST;
-> > +
-> > +     mtk_seninf_mux_write(mux, SENINF_MUX_CTRL, val | rst_mask);
->
-> Are you sure that you don't need any wait between assertion and deasserti=
-on of RST?
-> Looks strange, but I don't really know then.
->
-> > +     mtk_seninf_mux_write(mux, SENINF_MUX_CTRL, val & ~rst_mask);
-> > +
-> > +     /* HQ */
-> > +     mtk_seninf_mux_write(mux, SENINF_MUX_SPARE, 0xc2000);
->
-> val =3D SENINF_FIFO_FULL_SEL;
->
-> /* SPARE field meaning is unknown */
-> val |=3D 0xc0000;
->
->         mtk_seninf_mux_write(mux, SENINF_MUX_SPARE, val);
->
-> > +}
-> > +
-> > +static void mtk_seninf_top_mux_setup(struct mtk_seninf *priv,
-> > +                                  enum mtk_seninf_id seninf_id,
-> > +                                  struct mtk_seninf_mux *mux)
-> > +{
-> > +     unsigned int val;
-> > +
-> > +     /*
-> > +      * Use the top mux (from SENINF input to MUX) to configure routin=
-g, and
-> > +      * hardcode a 1:1 mapping from the MUX instances to the SENINF ou=
-tputs.
-> > +      */
-> > +     val =3D readl(priv->base + SENINF_TOP_MUX_CTRL)
-> > +             & ~(0xf << (mux->mux_id * 4));
-> > +     val |=3D (seninf_id & 0xf) << (mux->mux_id * 4);
-> > +     writel(val, priv->base + SENINF_TOP_MUX_CTRL);
-> > +
-> > +     writel(0x76541010, priv->base + SENINF_TOP_CAM_MUX_CTRL);
->
-> Each four bits of TOP_CAM_MUX_CTRL selects between seninf1 to seninf8 mux=
-es, and
-> TOP_MUX_CTRL is laid out in the very same way.
->
-> This means that if you're calculating a value for TOP_MUX_CTRL, you can d=
-o exactly
-> the same for TOP_CAM_MUX_CTRL.
->
-> > +}
-> > +
-> > +static void seninf_enable_test_pattern(struct mtk_seninf *priv,
-> > +                                    struct v4l2_subdev_state *state)
-> > +{
-> > +     struct mtk_seninf_input *input =3D &priv->inputs[CSI_PORT_0];
-> > +     struct mtk_seninf_mux *mux =3D &priv->muxes[0];
-> > +     const struct mtk_seninf_format_info *fmtinfo;
-> > +     const struct v4l2_mbus_framefmt *format;
-> > +     unsigned int val;
-> > +     unsigned int pix_sel_ext;
-> > +     unsigned int pix_sel;
-> > +     unsigned int hs_pol =3D 0;
-> > +     unsigned int vs_pol =3D 0;
-> > +     unsigned int seninf =3D 0;
-> > +     unsigned int tm_size =3D 0;
-> > +     unsigned int mux_id =3D mux->mux_id;
-> > +
-> > +     format =3D v4l2_subdev_state_get_stream_format(state, priv->conf-=
->nb_inputs, 0);
-> > +     fmtinfo =3D mtk_seninf_format_info(format->code);
-> > +
-> > +     mtk_seninf_update(priv, SENINF_TOP_CTRL, MUX_LP_MODE, 0);
-> > +
-> > +     mtk_seninf_update(priv, SENINF_TOP_CTRL, SENINF_PCLK_EN, 1);
-> > +     mtk_seninf_update(priv, SENINF_TOP_CTRL, SENINF2_PCLK_EN, 1);
-> > +
-> > +     mtk_seninf_input_update(input, SENINF_CTRL, SENINF_EN, 1);
-> > +     mtk_seninf_input_update(input, SENINF_CTRL, SENINF_SRC_SEL, 1);
-> > +     mtk_seninf_input_update(input, SENINF_CTRL_EXT,
-> > +                             SENINF_TESTMDL_IP_EN, 1);
-> > +
-> > +     mtk_seninf_input_update(input, SENINF_TG1_TM_CTL, TM_EN, 1);
-> > +     mtk_seninf_input_update(input, SENINF_TG1_TM_CTL, TM_PAT, 0xc);
-> > +     mtk_seninf_input_update(input, SENINF_TG1_TM_CTL, TM_VSYNC, 4);
-> > +     mtk_seninf_input_update(input, SENINF_TG1_TM_CTL, TM_DUMMYPXL, 0x=
-28);
-> > +
-> > +     if (fmtinfo->flags & MTK_SENINF_FORMAT_BAYER)
-> > +             mtk_seninf_input_update(input, SENINF_TG1_TM_CTL, TM_FMT,=
- 0x0);
-> > +     else
-> > +             mtk_seninf_input_update(input, SENINF_TG1_TM_CTL, TM_FMT,=
- 0x1);
-> > +
-> > +     tm_size =3D FIELD_PREP(SENINF_TG1_TM_SIZE_TM_LINE, format->height=
- + 8);
-> > +     switch (format->code) {
-> > +     case MEDIA_BUS_FMT_UYVY8_1X16:
-> > +     case MEDIA_BUS_FMT_VYUY8_1X16:
-> > +     case MEDIA_BUS_FMT_YUYV8_1X16:
-> > +     case MEDIA_BUS_FMT_YVYU8_1X16:
-> > +             tm_size |=3D FIELD_PREP(SENINF_TG1_TM_SIZE_TM_PXL, format=
-->width * 2);
-> > +             break;
-> > +     default:
-> > +             tm_size |=3D FIELD_PREP(SENINF_TG1_TM_SIZE_TM_PXL, format=
-->width);
-> > +             break;
-> > +     }
-> > +     writel(tm_size, input->base + SENINF_TG1_TM_SIZE);
-> > +
-> > +     writel(TEST_MODEL_CLK_DIVIDED_CNT, input->base + SENINF_TG1_TM_CL=
-K);
-> > +     writel(TIME_STAMP_DIVIDER, input->base + SENINF_TG1_TM_STP);
-> > +
-> > +     /* Set top mux */
-> > +     val =3D (readl(priv->base + SENINF_TOP_MUX_CTRL) & (~(0xf << (mux=
-_id * 4)))) |
-> > +             ((seninf & 0xf) << (mux_id * 4));
-> > +     writel(val, priv->base + SENINF_TOP_MUX_CTRL);
->
-> This is duplicated, and it is the same that you have in mtk_seninf_top_mu=
-x_setup()
->
-> > +
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, SENINF_MUX_EN, 1);
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL_EXT,
-> > +                           SENINF_SRC_SEL_EXT, SENINF_TEST_MODEL);
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, SENINF_SRC_SEL, 1);
-> > +
-> > +     pix_sel_ext =3D 0;
-> > +     pix_sel =3D 1;
-> > +
->
-> This is in mtk_seninf_mux_setup(), but if you apply my suggestion, it won=
-'t be in
-> there anymore, so you'll call a function here to set the right value :-)
->
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL_EXT,
-> > +                           SENINF_PIX_SEL_EXT, pix_sel_ext);
-> > +
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, SENINF_PIX_SEL, pix_s=
-el);
-> > +
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, FIFO_PUSH_EN, 0x1f);
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, FIFO_FLUSH_EN, 0x1b);
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, FIFO_FULL_WR_EN, 2);
-> > +
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, SENINF_HSYNC_POL, hs_=
-pol);
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, SENINF_VSYNC_POL, vs_=
-pol);
-> > +     mtk_seninf_mux_update(mux, SENINF_MUX_CTRL, SENINF_HSYNC_MASK, 1)=
-;
-> > +
-> > +     mtk_seninf_mux_write(mux, SENINF_MUX_INTEN,
-> > +                          SENINF_IRQ_CLR_SEL | SENINF_ALL_ERR_IRQ_EN);
-> > +
-> > +     mtk_seninf_mux_write(mux, SENINF_MUX_CTRL,
-> > +                          mtk_seninf_mux_read(mux, SENINF_MUX_CTRL) |
-> > +                          SENINF_MUX_CTRL_SENINF_IRQ_SW_RST |
-> > +                          SENINF_MUX_CTRL_SENINF_MUX_SW_RST);
-> > +     udelay(1);
-> > +     mtk_seninf_mux_write(mux, SENINF_MUX_CTRL,
-> > +                          mtk_seninf_mux_read(mux, SENINF_MUX_CTRL) &
-> > +                          ~(SENINF_MUX_CTRL_SENINF_IRQ_SW_RST |
-> > +                            SENINF_MUX_CTRL_SENINF_MUX_SW_RST));
-> > +
-> > +     //check this
-> > +     writel(0x76540010, priv->base + SENINF_TOP_CAM_MUX_CTRL);
-> > +
-> > +     dev_dbg(priv->dev, "%s: OK\n", __func__);
-> > +}
-> > +
->
-> Cheers,
-> Angelo
->
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
