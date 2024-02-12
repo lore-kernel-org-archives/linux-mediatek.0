@@ -4,163 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEC05C48297
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Feb 2024 12:07:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AADF2C4829B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Feb 2024 12:17:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=gflPAGqk2qHONdDDqEUHI+8m+VeNwYL+lLCI6FldUEk=; b=lpdg3/gG/dj3XS
-	/kyoiuu1jY8AMgXnEOZ9TdqV/KkqJkxuDwun7IReDZsJs/EcCN4BJBk960LVNsnk21DL3fxAJzuDA
-	51jl+MNyZxswn+JG9/aGOnEH6vLsl22yQDplNOyXC8cLfZX+BT68MNPjAg/c4++3Xcq7wEZm/Z7bO
-	4wh747cDPZKne1Qm+aylu1qM/19BG8kbBL1ix5HBJEhtuF4Gz6whXtukM3HTVoMZoYs3JAkmuZ768
-	aL7UYUmDMVh1jnZ+RNtLwyjkTRDat82dL9ONYb10noxpiJ5UpTHbsERtt/qWEYeIok0d7GMOBxnTi
-	2PTuMHEEaL3kI7xVqY1A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2IaPhTAEYUwdytg2N6Sa0MXZmbVZReaezPPENwmQqlE=; b=seAKU9kFahNAYGdSocvgJdBmOi
+	8SpcOOHHpltP+XrAJiw9fO7odpMDaqxqDw/D8NJ8YB72C/eKGeiQ1F/4bF6qZZ9zBPupVmo9BwiQe
+	h0qUWVJw6GIR+Bhm/vWisfuRHV41yruwRvpoIt2e/SPkp1ciK2azm+tNNSAG/de1j2v+GImrz3zEO
+	Svh2+NG5BYkwfY9sQAR5ice+87gmFL7tYEyi5hp6HVd6KkkSn3KSP2V5Bj7pxd09S7xkeAejIr0mS
+	SOUJwKaucOZ0BDx2FAqzQdENIquDE0LB1fRWA8LqEbelnHt0PXilxLyympTb6A1LF1J1B4vzZDWY/
+	aGlV7G8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZV5m-00000005C79-2cAb;
-	Mon, 12 Feb 2024 12:07:22 +0000
-Received: from mgamail.intel.com ([192.198.163.17])
+	id 1rZVF8-00000005Eyg-1ANo;
+	Mon, 12 Feb 2024 12:17:02 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZV5i-00000005C3y-1i2t;
-	Mon, 12 Feb 2024 12:07:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1707739638; x=1739275638;
-  h=date:from:to:cc:subject:message-id:in-reply-to:
-   mime-version;
-  bh=Mq7g6ETgf8RmZvRbrT0tTK+FDqyI+vfdIw9QDNtCV90=;
-  b=lHH1fJXPT2xqdUXFGm5mH7Z2DWJeDd/ZCWdMBqepfWw4bqVk7ei3u7Cw
-   eDnSYAHgpTodUjw6EM84qveWN6rHHxjGJgNSWpdSwG2P7UEJ3ELeUy6Tu
-   7i1QSuIizlqoCQhfgUFMptEWURtwt3xUr8qQrzRmDGfak3afsFD6ONWet
-   GoAMzlgJZXAsBaWAhj+YgGKPme/zWVBcez1/2Gt2TxHgQ36ciA0fwS1om
-   +SkHobLcEYO3IMbuANtyjnQlcetGowQlSJqkwzClbKNeTgO1aqPpGNQ9i
-   EqrFp4DQqLL2ktn6+qEsn9UAGZc4bMhpvT6SzNdLXajLnlnoARAaKfKxG
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10981"; a="1590249"
-X-IronPort-AV: E=Sophos;i="6.06,263,1705392000"; 
-   d="scan'208";a="1590249"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Feb 2024 04:07:14 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,263,1705392000"; 
-   d="scan'208";a="2870489"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
-  by orviesa007.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384; 12 Feb 2024 04:07:14 -0800
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Mon, 12 Feb 2024 04:07:13 -0800
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Mon, 12 Feb 2024 04:07:13 -0800
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Mon, 12 Feb 2024 04:07:13 -0800
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.169)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Mon, 12 Feb 2024 04:06:18 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XzEIxr9s8HJ4nu+xY/LR32hW2gP1BGhNmIlMirC3Cs0h1ChqW4sizzKnY6jpz0jaFJo30qXCww1Cwt1RBdYqA0oTr8+RAkQMtbFPbPfKSEyXyQz+Uj8gWMNBbEz9tfeUlC8pDOSwi2AwK3CYF81EHA4PHk8UYbImtu1UAGBZi5ustgpuZKbf6X+nlQ9IE4TBg/bxwuDliEtNDjKyNLN2kmT2XbWhINyC09a6uW9XBKwDgkY8Tdj0qNqAA40Quxv1XCMuEBNPTevRO7ae8qDuBjy0uceviqdmUKb7FDrS1aGaZ51c8wPIpNMqbboB3AZ+wwzKOm5boxfqwOcp4vyFjQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=gflPAGqk2qHONdDDqEUHI+8m+VeNwYL+lLCI6FldUEk=;
- b=l9NrRC3VvRmO4YOa4nO6EgxWxx/yB1Agib1SvIReAz/45R/tW3vojgv5Zoyz+epnQePpZr0iZIDG9hxHvIcRS2qcthpczUAgaYBZe8U3h1GUA2L2GyYXsui8PQlIxUJaAjsFWsgeUYW91TS5Zz2otYWJrRlbRmf5QpXYgwSpZS+KtxGrELyyfVExxsSepgdz05Z3atgdhmOMkK8e1eT/ye7NLFiZ0NOggWf/1YPyhLw4M7I4AkDX3fX1Af02nXN0POJdT4gHp80Gkoecb+xTVBOJhS21m0jBE0cOZUsTOM6hyURmdAEZ795huqmEqp2ypQr8fMzsN2TJ0xsnvJ3j0g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from CH3PR11MB8414.namprd11.prod.outlook.com (2603:10b6:610:17e::19)
- by SA0PR11MB4687.namprd11.prod.outlook.com (2603:10b6:806:96::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7270.35; Mon, 12 Feb
- 2024 12:06:15 +0000
-Received: from CH3PR11MB8414.namprd11.prod.outlook.com
- ([fe80::ed34:4cf2:df58:f708]) by CH3PR11MB8414.namprd11.prod.outlook.com
- ([fe80::ed34:4cf2:df58:f708%4]) with mapi id 15.20.7270.033; Mon, 12 Feb 2024
- 12:06:15 +0000
-Date: Mon, 12 Feb 2024 20:06:03 +0800
-From: kernel test robot <lkp@intel.com>
-To: Andrew Davis <afd@ti.com>, Sebastian Reichel <sre@kernel.org>, "Manivannan
- Sadhasivam" <manivannan.sadhasivam@linaro.org>, Cristian Ciocaltea
-	<cristian.ciocaltea@gmail.com>, Florian Fainelli
-	<florian.fainelli@broadcom.com>, Ray Jui <rjui@broadcom.com>, Scott Branden
-	<sbranden@broadcom.com>, Bjorn Andersson <andersson@kernel.org>, "Konrad
- Dybcio" <konrad.dybcio@linaro.org>, Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <oe-kbuild-all@lists.linux.dev>, <linux-pm@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-actions@lists.infradead.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Andrew Davis <afd@ti.com>
-Subject: Re: [PATCH v3 13/19] power: reset: msm-poweroff: Use
- devm_register_sys_off_handler(RESTART)
-Message-ID: <ZcoJq8o/ZeJEQjis@rli9-mobl>
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20240208170410.67975-14-afd@ti.com>
-X-ClientProxiedBy: SG2PR04CA0165.apcprd04.prod.outlook.com (2603:1096:4::27)
- To CH3PR11MB8414.namprd11.prod.outlook.com (2603:10b6:610:17e::19)
+	id 1rZVF4-00000005Evr-2QK1;
+	Mon, 12 Feb 2024 12:16:59 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-a271a28aeb4so388932166b.2;
+        Mon, 12 Feb 2024 04:16:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1707740216; x=1708345016; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=2IaPhTAEYUwdytg2N6Sa0MXZmbVZReaezPPENwmQqlE=;
+        b=Z76g6K7Q/pjkHn2IArEhPpyKIPSuPKW+YDP3FjeXN9Yl1UydI4+yFqan1eURjaIN7H
+         14fdY9hi8Cg2/qDv7/szD1wgfNZ8apLLGsv0oCRyhdux9liZaLPmWrAuRjy6VHEhSQ3R
+         k7VUHIZ0h6K0UjbEYmflpqFViLplUm9Y+CEJLBvFecSBFk5kMcvBncLfd1vt6htCOrfn
+         bdDOrWhXPaezjIY9eiQeMy5oAOEAsnfTNf8gEzGnK/iia1G/pGJTc4dLypnyx0RA3cs+
+         7jmQVgTrxNPEzjHBi5B6QMObHMX21ZXlvKpk5znbvt69D66oLiszzguELmVulHo2Tl57
+         WzEw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1707740216; x=1708345016;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=2IaPhTAEYUwdytg2N6Sa0MXZmbVZReaezPPENwmQqlE=;
+        b=iWEvmOpurzTNhyxuLhVgjecaol+2qOkAEquCJ6Q+tdY+XNk20pS4TKkNRZMCxFIKJZ
+         i9GPiWj7RhyL8kHH/yPzyjR3CYWXv5enofrIxx0x8WjpIdAoD1fjSTOf7dotRDIjAbYo
+         INBhPgd0AGBZYZLgjIu57mrMkjLuqcJcF+CSAuhPEziRwTuYbjMtFGT0tOGK3WFGwfzW
+         MgUJ/D6PPab6GWY2M5wBRWA52M4nJUqX+lmE+8G7cNDrV8xj+1Ad5ZRPYkea1ss9z5Nb
+         mdiWBXDr/Z3Rv6lfzdEqmAWfY/ttUU19vzItP53gaFZovlyCkdrKLsw9phDvtjQHEBQz
+         uzkw==
+X-Forwarded-Encrypted: i=1; AJvYcCVLumm6bUcyQ6ITFrHSUoo2/iOKzceW20fkzv901Lw6JSSg4a32Fr2oCrQL/jQPmU2pNuJAtFHj42ufrZW0fOlIoCsXac2A0gepSRo3YkQ19vNlcswrbIOz8t1MwQE8cVtpMLA98R1tedZso47Uwfenh+cOoNglG9c=
+X-Gm-Message-State: AOJu0YwRQkeoXB7D+M4xt9TW1DE9lDu7TaoS/x0zQwH5INGWUbkEw1MG
+	+dZOK0KRakh/ttlRS3LLsqT29OvTBhwJdGq532h3HwauSMv5dPZY
+X-Google-Smtp-Source: AGHT+IFTYempM7Llg0ES1sfr764RUYvl6IJ/3B9RjZklli4cu2kA60IZeQFuOhSpINiVoL+uXeU7LA==
+X-Received: by 2002:a17:906:a3c5:b0:a3c:c980:5936 with SMTP id ca5-20020a170906a3c500b00a3cc9805936mr983262ejb.24.1707740215771;
+        Mon, 12 Feb 2024 04:16:55 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCVOmnULA95O1M00mJG4OJhDdKkHROKCiWco/KyAfP1fR5XQuGe6aAIJBcZiKKbvIbgKBQ2xasPQuJXnXXgS0vQPHPKDEUyc2GdOLvynRPzPuSR09LSz7zrmu7AANX6seN6s58J08AmGX/QTixOkrdquNqZ8SGEFZw1/stE+D8vG7zPRaXfpzZ9gMVPaK2g1P+ZhO99Viq1Q9Ci/VuESvNEQlliTfktF8phE9wCLve5X76n2gafNA46+TDsfoao4YNz9WqNfcsOUOIxaH5NFpnCYtRFfaA64YSF34s+Lkc1mzZtZ2+PXktnEpHr2yljiaWerQ181CxQhwhqW11VcJe2PSVG0MmAeWg==
+Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.gmail.com with ESMTPSA id lu1-20020a170906fac100b00a3c97e49bc9sm147850ejb.218.2024.02.12.04.16.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Feb 2024 04:16:55 -0800 (PST)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH REBASED 1/2] arm64: dts: mediatek: mt7986: reorder properties
+Date: Mon, 12 Feb 2024 13:16:19 +0100
+Message-Id: <20240212121620.15035-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR11MB8414:EE_|SA0PR11MB4687:EE_
-X-MS-Office365-Filtering-Correlation-Id: fa08c101-2c65-40fa-2bf8-08dc2bc30358
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: D8+SWQr+jgp1rNf2Uni/XnrL5AmYEljBOm4lM8u/akuBaUZMYl2Uuxym8K7FsqSCkBFEG/gyiOKEOGc+3nHhOWVvhZPxC7k9neW/fXOkcbpLZnVxD1420S6BZ/znWVOwfCG2+H9++XafpZciXsFbDr5o5WJs+zh/h0FV58TVh9FZ9csM/Tc8gfcULEEdqRRUo+v+Ehzw7c543mnGVHEAM9cZluAlsXcFWTbUuo/CtdF9PeROjwZYuQ5hi2wchIXWwog9qpBOxhQfWpScPWkKcLp3Tjze/p0IFmghlwtijCYn7g2UkzIJC7aRU6mc+12snwj215iW0paIN38UobSef6bJKEzJna5ZvouDSrn9KQ66/J7QJmyuhDOCDTGiCr0+xhIwbZ3NSXIb3jFUKNC0S00VrGYEN8Xz9OTW5uJM9jDpTo5kWCDOIPJ4QPZQage9duvA9qZZ1J8UaEeqBYBsOmrxQ2fPmw+XkdyAH6le7JOOmJuDjaoUKSFssG2gxIQHLov5oEviMqz5AnVZ7ZS4MVV8hq8SO0N7PgKpMiC8fIPyc2ile2hfS/4WgNwshS2+yaHiegy4UiJzyL4IIh/UZzBVlAx94VOlANhPPqvmMjvFU4bcEcwoqcOmj0a+koIn
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR11MB8414.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(7916004)(39860400002)(136003)(396003)(346002)(376002)(366004)(230273577357003)(230922051799003)(186009)(1800799012)(64100799003)(451199024)(9686003)(478600001)(6512007)(6486002)(966005)(41300700001)(33716001)(7416002)(8936002)(4326008)(8676002)(2906002)(5660300002)(110136005)(66476007)(6506007)(6666004)(316002)(66946007)(66556008)(83380400001)(86362001)(921011)(82960400001)(26005)(38100700002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?5HPLLbewf0+f8bm9/rmfa+nUGm6T6xl0/yaV0U4xJY8vxgSdcFPQ84tusyMQ?=
- =?us-ascii?Q?n8J1iHrtgy0FpD64255Q1J1VH74ZCACad2c9MF7kYpsmGPAsot5xYfoOAws7?=
- =?us-ascii?Q?hwYTubDUuRIQzRIdv8pu8nYp3TXUujIuBk8PAbmbsKpLo4SgQQCx1NSpZWYm?=
- =?us-ascii?Q?+UyVML90czB7Vid6g6DmoHQMVn/v3+RnX5F+TygeViWFn5uQFwz7cMu9sida?=
- =?us-ascii?Q?T3FH1lxIe7yNnKZEEaolhZRjMTY2BtIOD81v+DqIjjQ2pTGCaEkYU3YdsM3d?=
- =?us-ascii?Q?UQNvkr7tPXji6Om22LN0CbEpYRrJknbPzn5os+ozoBtpz//jPHLyNMkEBuJW?=
- =?us-ascii?Q?Rh6P1zhdoSvEnVvs2DAOoD6ZMXaP3/s6C0iHacqLb495oRB8e60xyOEFvIaL?=
- =?us-ascii?Q?pzZ85hKFnG08rMglgi801TbiVp3o4gOaWEuXKXJrEmINij5PvS9Yg4XGgQpv?=
- =?us-ascii?Q?RV2tsxEqMnvysDY0xV3Lgem8tcKY4kK5lg+Bxh/Cg2wgsA4iTeYNBiTIUrlO?=
- =?us-ascii?Q?HOliCRPgJL5LQESeWSZ94x10TPcjLnJJr+Xe1zXxLzdDP2Zt4vwSd7bSrC+d?=
- =?us-ascii?Q?Kkp5TsGf4oPm17DFmfZdXKc4gnGzImsvAguU+inlk2G0xbh3cSEhbjBbFkZV?=
- =?us-ascii?Q?M9zNotqmZRoWcENr8BFpt8FspHJPrghtl5BUTOaqlFPCwIyH3Xwiujf7n0Wm?=
- =?us-ascii?Q?11yKN/+MLAa6iVVI6hPHaNLt5xJthGiXRV7PGXaEwN+8hBHWecsrVwd/wQBj?=
- =?us-ascii?Q?uDyG3QSU93EHEdYIZwTwzqWUQWlm3c4qi0lBB8CqdK8PqOq1iy/fj3JW+snc?=
- =?us-ascii?Q?irfkpocxexDYdy6sDX/UZ0mB4EEjKKu4xL4TK4RWgBpM4p7eJkrFr4+OSTQK?=
- =?us-ascii?Q?U/DU0Yx/Ob+avW3ntXk0B245rzD3RluZlO6Rg8gQEm6wOgXjodvmCg7BCY7C?=
- =?us-ascii?Q?7ZIcNFuCUAC2v5BPeILlpa2hbShEt+90f1bnACDKdhzXocHQhJHr1kN4LVE3?=
- =?us-ascii?Q?p9WGR2xBtyMX0EJgxISgjzSSyf3A+4RKiowuryG2fssFh7wofwWhD9TGrmi4?=
- =?us-ascii?Q?Jghl0hZiivngx71TobCq5bCGTStPk6KM3nA1cxtodHKED2tiQ4EkmmhFGLcz?=
- =?us-ascii?Q?SjPmr4/s4V7vhX8bNAUWMvXo0qZ841fpjXQ6bbEwp/PcrMdXKk+UcmsifLKv?=
- =?us-ascii?Q?vzLq4664c4Qp70+AWe/QLATumKe2uyHuCv3g7ICoy6s5Gv4pcFsjoV2uig/b?=
- =?us-ascii?Q?MQTO2zRxCXtKBjqLnhSfTuGitscOelZ60VQzjlaIBWfu12zP/ft85GkYzGvJ?=
- =?us-ascii?Q?YdGbmP1zSOjJ9f9GJVNlF3Kj/Tyh4RAM8074kDRTt2BE3ZqT+UyGnrtXl0j4?=
- =?us-ascii?Q?9unrF/Oxlvr8LAa/A2EEVGjCysIFLfpFriyKam1XS8q/bZS9hKU4SuB9rgYK?=
- =?us-ascii?Q?9WUDOzESBDYHnqGkSsrgenxj5IhahivYTX/BOIFIWELK1GE+EHcd8+AXqAXb?=
- =?us-ascii?Q?X2e4uyquhn3WPWu5j4VYt0Bw3YNB9JUs8736VBYqAwp+Ku0HCBOIfp0tbduO?=
- =?us-ascii?Q?ueQEmOXYoEeW7pKyQZ6L8jE5nJhnNJpZVENT6pCp2y8IRD5KZdB9OiUnFPCx?=
- =?us-ascii?Q?tA=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: fa08c101-2c65-40fa-2bf8-08dc2bc30358
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR11MB8414.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Feb 2024 12:06:15.7388
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: t9XLQe7DQk3fK/y0FayohSI2NjwPKBF2kqDCKbZ9HiHvSE8X5pZM/bElkVKo+yLCS2KFedRRCXZ2E9fmlBxU7Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR11MB4687
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240212_040718_595588_F49F72B4 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20240212_041658_649383_1A9F09DE 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -175,74 +96,239 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew,
+From: Rafał Miłecki <rafal@milecki.pl>
 
-kernel test robot noticed the following build warnings:
+Use order described as preferred in DTS Coding Style. Mostly just move
+"compatible", "reg" and "ranges" properties. In two nodes also move
+vendor-prefixed props down.
 
-[auto build test WARNING on sre-power-supply/for-next]
-[also build test WARNING on mani-mhi/mhi-next soc/for-next linus/master v6.8-rc4 next-20240209]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+---
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 67 ++++++++++++-----------
+ 1 file changed, 34 insertions(+), 33 deletions(-)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Andrew-Davis/power-reset-atc260x-poweroff-Use-devm_register_sys_off_handler-RESTART/20240209-011655
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/sre/linux-power-supply.git for-next
-patch link:    https://lore.kernel.org/r/20240208170410.67975-14-afd%40ti.com
-patch subject: [PATCH v3 13/19] power: reset: msm-poweroff: Use devm_register_sys_off_handler(RESTART)
-:::::: branch date: 4 days ago
-:::::: commit date: 4 days ago
-config: arm64-randconfig-r131-20240211 (https://download.01.org/0day-ci/archive/20240212/202402121342.7WgNqBu9-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 13.2.0
-reproduce: (https://download.01.org/0day-ci/archive/20240212/202402121342.7WgNqBu9-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/r/202402121342.7WgNqBu9-lkp@intel.com/
-
-sparse warnings: (new ones prefixed by >>)
->> drivers/power/reset/msm-poweroff.c:18:41: sparse: sparse: incorrect type in initializer (different address spaces) @@     expected void [noderef] __iomem *msm_ps_hold @@     got void *cb_data @@
-   drivers/power/reset/msm-poweroff.c:18:41: sparse:     expected void [noderef] __iomem *msm_ps_hold
-   drivers/power/reset/msm-poweroff.c:18:41: sparse:     got void *cb_data
->> drivers/power/reset/msm-poweroff.c:33:61: sparse: sparse: incorrect type in argument 5 (different address spaces) @@     expected void *cb_data @@     got void [noderef] __iomem *msm_ps_hold @@
-   drivers/power/reset/msm-poweroff.c:33:61: sparse:     expected void *cb_data
-   drivers/power/reset/msm-poweroff.c:33:61: sparse:     got void [noderef] __iomem *msm_ps_hold
-   drivers/power/reset/msm-poweroff.c:37:39: sparse: sparse: incorrect type in argument 5 (different address spaces) @@     expected void *cb_data @@     got void [noderef] __iomem *msm_ps_hold @@
-   drivers/power/reset/msm-poweroff.c:37:39: sparse:     expected void *cb_data
-   drivers/power/reset/msm-poweroff.c:37:39: sparse:     got void [noderef] __iomem *msm_ps_hold
-
-vim +18 drivers/power/reset/msm-poweroff.c
-
-78be3176c4335b Abhimanyu Kapur 2013-07-30  15  
-bc460fab0b719d Andrew Davis    2024-02-08  16  static int do_msm_poweroff(struct sys_off_data *data)
-78be3176c4335b Abhimanyu Kapur 2013-07-30  17  {
-bc460fab0b719d Andrew Davis    2024-02-08 @18  	void __iomem *msm_ps_hold = data->cb_data;
-bc460fab0b719d Andrew Davis    2024-02-08  19  
-78be3176c4335b Abhimanyu Kapur 2013-07-30  20  	writel(0, msm_ps_hold);
-78be3176c4335b Abhimanyu Kapur 2013-07-30  21  	mdelay(10000);
-18a702e0de9879 Pramod Gurav    2014-09-25  22  
-18a702e0de9879 Pramod Gurav    2014-09-25  23  	return NOTIFY_DONE;
-78be3176c4335b Abhimanyu Kapur 2013-07-30  24  }
-78be3176c4335b Abhimanyu Kapur 2013-07-30  25  
-78be3176c4335b Abhimanyu Kapur 2013-07-30  26  static int msm_restart_probe(struct platform_device *pdev)
-78be3176c4335b Abhimanyu Kapur 2013-07-30  27  {
-bc460fab0b719d Andrew Davis    2024-02-08  28  	void __iomem *msm_ps_hold = devm_platform_ioremap_resource(pdev, 0);
-78be3176c4335b Abhimanyu Kapur 2013-07-30  29  	if (IS_ERR(msm_ps_hold))
-78be3176c4335b Abhimanyu Kapur 2013-07-30  30  		return PTR_ERR(msm_ps_hold);
-78be3176c4335b Abhimanyu Kapur 2013-07-30  31  
-bc460fab0b719d Andrew Davis    2024-02-08  32  	devm_register_sys_off_handler(&pdev->dev, SYS_OFF_MODE_RESTART,
-bc460fab0b719d Andrew Davis    2024-02-08 @33  				      128, do_msm_poweroff, msm_ps_hold);
-18a702e0de9879 Pramod Gurav    2014-09-25  34  
-521ef776c49589 Andrew Davis    2024-02-08  35  	devm_register_sys_off_handler(&pdev->dev, SYS_OFF_MODE_POWER_OFF,
-521ef776c49589 Andrew Davis    2024-02-08  36  				      SYS_OFF_PRIO_DEFAULT, do_msm_poweroff,
-521ef776c49589 Andrew Davis    2024-02-08  37  				      msm_ps_hold);
-18a702e0de9879 Pramod Gurav    2014-09-25  38  
-78be3176c4335b Abhimanyu Kapur 2013-07-30  39  	return 0;
-78be3176c4335b Abhimanyu Kapur 2013-07-30  40  }
-78be3176c4335b Abhimanyu Kapur 2013-07-30  41  
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+index d974739eae1c..eba5e27a1bbe 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+@@ -27,34 +27,34 @@ cpus {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+ 		cpu0: cpu@0 {
+-			device_type = "cpu";
+ 			compatible = "arm,cortex-a53";
+-			enable-method = "psci";
+ 			reg = <0x0>;
++			device_type = "cpu";
++			enable-method = "psci";
+ 			#cooling-cells = <2>;
+ 		};
+ 
+ 		cpu1: cpu@1 {
+-			device_type = "cpu";
+ 			compatible = "arm,cortex-a53";
+-			enable-method = "psci";
+ 			reg = <0x1>;
++			device_type = "cpu";
++			enable-method = "psci";
+ 			#cooling-cells = <2>;
+ 		};
+ 
+ 		cpu2: cpu@2 {
+-			device_type = "cpu";
+ 			compatible = "arm,cortex-a53";
+-			enable-method = "psci";
+ 			reg = <0x2>;
++			device_type = "cpu";
++			enable-method = "psci";
+ 			#cooling-cells = <2>;
+ 		};
+ 
+ 		cpu3: cpu@3 {
+-			device_type = "cpu";
+-			enable-method = "psci";
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x3>;
++			device_type = "cpu";
++			enable-method = "psci";
+ 			#cooling-cells = <2>;
+ 		};
+ 	};
+@@ -131,22 +131,22 @@ timer {
+ 	};
+ 
+ 	soc {
+-		#address-cells = <2>;
+-		#size-cells = <2>;
+ 		compatible = "simple-bus";
+ 		ranges;
++		#address-cells = <2>;
++		#size-cells = <2>;
+ 
+ 		gic: interrupt-controller@c000000 {
+ 			compatible = "arm,gic-v3";
+-			#interrupt-cells = <3>;
+-			interrupt-parent = <&gic>;
+-			interrupt-controller;
+ 			reg = <0 0x0c000000 0 0x10000>,  /* GICD */
+ 			      <0 0x0c080000 0 0x80000>,  /* GICR */
+ 			      <0 0x0c400000 0 0x2000>,   /* GICC */
+ 			      <0 0x0c410000 0 0x1000>,   /* GICH */
+ 			      <0 0x0c420000 0 0x2000>;   /* GICV */
++			interrupt-parent = <&gic>;
+ 			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-controller;
++			#interrupt-cells = <3>;
+ 		};
+ 
+ 		infracfg: infracfg@10001000 {
+@@ -310,9 +310,9 @@ i2c0: i2c@11008000 {
+ 
+ 		spi0: spi@1100a000 {
+ 			compatible = "mediatek,mt7986-spi-ipm", "mediatek,spi-ipm";
++			reg = <0 0x1100a000 0 0x100>;
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+-			reg = <0 0x1100a000 0 0x100>;
+ 			interrupts = <GIC_SPI 140 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&topckgen CLK_TOP_MPLL_D2>,
+ 				 <&topckgen CLK_TOP_SPI_SEL>,
+@@ -324,9 +324,9 @@ spi0: spi@1100a000 {
+ 
+ 		spi1: spi@1100b000 {
+ 			compatible = "mediatek,mt7986-spi-ipm", "mediatek,spi-ipm";
++			reg = <0 0x1100b000 0 0x100>;
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+-			reg = <0 0x1100b000 0 0x100>;
+ 			interrupts = <GIC_SPI 141 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&topckgen CLK_TOP_MPLL_D2>,
+ 				 <&topckgen CLK_TOP_SPIM_MST_SEL>,
+@@ -388,7 +388,6 @@ mmc0: mmc@11230000 {
+ 		};
+ 
+ 		thermal: thermal@1100c800 {
+-			#thermal-sensor-cells = <1>;
+ 			compatible = "mediatek,mt7986-thermal";
+ 			reg = <0 0x1100c800 0 0x800>;
+ 			interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
+@@ -396,30 +395,30 @@ thermal: thermal@1100c800 {
+ 				 <&infracfg CLK_INFRA_ADC_26M_CK>,
+ 				 <&infracfg CLK_INFRA_ADC_FRC_CK>;
+ 			clock-names = "therm", "auxadc", "adc_32k";
+-			mediatek,auxadc = <&auxadc>;
+-			mediatek,apmixedsys = <&apmixedsys>;
+ 			nvmem-cells = <&thermal_calibration>;
+ 			nvmem-cell-names = "calibration-data";
++			#thermal-sensor-cells = <1>;
++			mediatek,auxadc = <&auxadc>;
++			mediatek,apmixedsys = <&apmixedsys>;
+ 		};
+ 
+ 		pcie: pcie@11280000 {
+ 			compatible = "mediatek,mt7986-pcie",
+ 				     "mediatek,mt8192-pcie";
++			reg = <0x00 0x11280000 0x00 0x4000>;
++			reg-names = "pcie-mac";
++			ranges = <0x82000000 0x00 0x20000000 0x00
++				  0x20000000 0x00 0x10000000>;
+ 			device_type = "pci";
+ 			#address-cells = <3>;
+ 			#size-cells = <2>;
+-			reg = <0x00 0x11280000 0x00 0x4000>;
+-			reg-names = "pcie-mac";
+ 			interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_HIGH>;
+ 			bus-range = <0x00 0xff>;
+-			ranges = <0x82000000 0x00 0x20000000 0x00
+-				  0x20000000 0x00 0x10000000>;
+ 			clocks = <&infracfg CLK_INFRA_IPCIE_PIPE_CK>,
+ 				 <&infracfg CLK_INFRA_IPCIE_CK>,
+ 				 <&infracfg CLK_INFRA_IPCIER_CK>,
+ 				 <&infracfg CLK_INFRA_IPCIEB_CK>;
+ 			clock-names = "pl_250m", "tl_26m", "peri_26m", "top_133m";
+-			status = "disabled";
+ 
+ 			phys = <&pcie_port PHY_TYPE_PCIE>;
+ 			phy-names = "pcie-phy";
+@@ -430,6 +429,8 @@ pcie: pcie@11280000 {
+ 					<0 0 0 2 &pcie_intc 1>,
+ 					<0 0 0 3 &pcie_intc 2>,
+ 					<0 0 0 4 &pcie_intc 3>;
++			status = "disabled";
++
+ 			pcie_intc: interrupt-controller {
+ 				#address-cells = <0>;
+ 				#interrupt-cells = <1>;
+@@ -440,9 +441,9 @@ pcie_intc: interrupt-controller {
+ 		pcie_phy: t-phy {
+ 			compatible = "mediatek,mt7986-tphy",
+ 				     "mediatek,generic-tphy-v2";
++			ranges;
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+-			ranges;
+ 			status = "disabled";
+ 
+ 			pcie_port: pcie-phy@11c00000 {
+@@ -467,9 +468,9 @@ thermal_calibration: calib@274 {
+ 		usb_phy: t-phy@11e10000 {
+ 			compatible = "mediatek,mt7986-tphy",
+ 				     "mediatek,generic-tphy-v2";
++			ranges = <0 0 0x11e10000 0x1700>;
+ 			#address-cells = <1>;
+ 			#size-cells = <1>;
+-			ranges = <0 0 0x11e10000 0x1700>;
+ 			status = "disabled";
+ 
+ 			u2port0: usb-phy@0 {
+@@ -497,11 +498,11 @@ u2port1: usb-phy@1000 {
+ 		};
+ 
+ 		ethsys: syscon@15000000 {
+-			 #address-cells = <1>;
+-			 #size-cells = <1>;
+ 			 compatible = "mediatek,mt7986-ethsys",
+ 				      "syscon";
+ 			 reg = <0 0x15000000 0 0x1000>;
++			 #address-cells = <1>;
++			 #size-cells = <1>;
+ 			 #clock-cells = <1>;
+ 			 #reset-cells = <1>;
+ 		};
+@@ -578,26 +579,26 @@ eth: ethernet@15100000 {
+ 					  <&topckgen CLK_TOP_SGM_325M_SEL>;
+ 			assigned-clock-parents = <&apmixedsys CLK_APMIXED_NET2PLL>,
+ 						 <&apmixedsys CLK_APMIXED_SGMPLL>;
++			#reset-cells = <1>;
++			#address-cells = <1>;
++			#size-cells = <0>;
+ 			mediatek,ethsys = <&ethsys>;
+ 			mediatek,sgmiisys = <&sgmiisys0>, <&sgmiisys1>;
+ 			mediatek,wed-pcie = <&wed_pcie>;
+ 			mediatek,wed = <&wed0>, <&wed1>;
+-			#reset-cells = <1>;
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+ 			status = "disabled";
+ 		};
+ 
+ 		wifi: wifi@18000000 {
+ 			compatible = "mediatek,mt7986-wmac";
++			reg = <0 0x18000000 0 0x1000000>,
++			      <0 0x10003000 0 0x1000>,
++			      <0 0x11d10000 0 0x1000>;
+ 			resets = <&watchdog MT7986_TOPRGU_CONSYS_SW_RST>;
+ 			reset-names = "consys";
+ 			clocks = <&topckgen CLK_TOP_CONN_MCUSYS_SEL>,
+ 				 <&topckgen CLK_TOP_AP2CNN_HOST_SEL>;
+ 			clock-names = "mcu", "ap2conn";
+-			reg = <0 0x18000000 0 0x1000000>,
+-			      <0 0x10003000 0 0x1000>,
+-			      <0 0x11d10000 0 0x1000>;
+ 			interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>,
+ 				     <GIC_SPI 214 IRQ_TYPE_LEVEL_HIGH>,
+ 				     <GIC_SPI 215 IRQ_TYPE_LEVEL_HIGH>,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.35.3
 
 
