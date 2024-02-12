@@ -4,82 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48367C48297
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Feb 2024 15:50:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAE29C4829B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Feb 2024 15:51:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gnijYrP15U15bxthLFyHlkGO+OlGFk98p9uD3CWT7wk=; b=DAHvkpX+41s88A6t9Iu1vAQFMv
-	D8/czY6vbn5zYKsghd0lrelFRRGnpi76FNjH49XpUPEeGRkn0j65K2BgyjQFZfG1PjVuifpWLCAew
-	lWDPwxI7HYW/iU4xl5U1Na/nr0NTmRM1oHKG2BovMtRy/Gk5MNwNDVVT3On5b+hRAKUWo+8NFlmZL
-	01QEdXpZlPWCOsrIn9oORdin1ITrUdx99Onow+Tp9HLgMIFHUXVc5zx/mX3lnVXEdZZ7hh2lW9DuT
-	JAeoccul1uCAWcymrFuXxsKsxG//NNcOSFcGoJe2rN6SG9sDHGKdXsaTkZelSuEQ+zYykUXc8NJyD
-	/I3W99Rw==;
+	bh=DKJbvwlkOP1SRi/Z77aD8twgFDCEOZM6sW2cKw9vfP8=; b=5GEgMwFw8Ek8Nys3Q+o+i/fgur
+	fDbytDCXFlDFs+gtCDmh4/SfIHa+YvdmjQ96a3xQIHXTepgfoiLUj4VVrhKL53KNlmb3E51upZtgT
+	H9Ab29aCEbz+7brUADoH9o0Z5gRwy2wqXrOfCb6YT3NYISavFr97GjsU/AGOXJjYqDlpdSM51yJjk
+	90O4DRWBkc/mVHeTU/dr4yBcyPwMWA7hlFKFFRe6c+fR2GnMKuQCK4y/PLVXqNuriR2YPhvXgaHGM
+	R0aGIaQLzsxywilTu/Fmae9kPFO9/10gx+tJkmmhxIEvnRGjK7Je4Fk+cY5rMewYfepgB5enyixdS
+	PGWV+icA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZYZY-000000061uY-3awa;
-	Mon, 12 Feb 2024 15:50:20 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1rZYaE-00000006281-2Wkt;
+	Mon, 12 Feb 2024 15:51:02 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZYZW-000000061td-2wtk;
-	Mon, 12 Feb 2024 15:50:20 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-5118290fcd8so1860565e87.3;
-        Mon, 12 Feb 2024 07:50:17 -0800 (PST)
+	id 1rZYaA-0000000625R-1aKv;
+	Mon, 12 Feb 2024 15:50:59 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-410ed9f8621so5530925e9.1;
+        Mon, 12 Feb 2024 07:50:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1707753016; x=1708357816; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1707753056; x=1708357856; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=gnijYrP15U15bxthLFyHlkGO+OlGFk98p9uD3CWT7wk=;
-        b=kQbwf/tLEowtVP3AzqL8XUp00or/iTM8JBfawLw4/rL5JQYVA1k/nWKCGUX0lAdqZq
-         5wRktmlJ4fHnn15y3d97Bl2fq0P3XsYJKgg0PEydKcctB1HiHb6Pep2JIKAbuquxNhkX
-         0eJxG2pkv/T5Pe8MqNgILOOr/0lc0Pw1NksGgt0HTZ28LCBgbNHx7B6HqSNbZFIb1eG0
-         FhZRNBXEzLjZ0jEfCoussC+M4jxQqQK9h4jEJytqirtCMBcU3VsFW5bhmP5XZ0/TVZlR
-         Fuh7VkexPX5hUvLkq+jC4boBZxiP7se2p/w0B7juBnJBVS2zEnEBzeEUxOpJ4IG3/M1o
-         AN/w==
+        bh=DKJbvwlkOP1SRi/Z77aD8twgFDCEOZM6sW2cKw9vfP8=;
+        b=nbyX++XWSM4kEEstLyRfrsrWHRKRcuvnxzgY6fzsHo8wl9pqwda2WDN6FaMlob+Tyo
+         phySttgzHDKuak3+oBKc3RiEIwDVHY8AZ4HYI9C7Wb3aGzXD9QxoSZZHG/4CDWmjrpk2
+         NGHqz49b4Dwu3yJOgyzxNIqwYs4KWXiaiYw8AuVHRY4DRavB4fMNfs6WYDERFSiGY2rA
+         Yw3/bO7M/Gjf3aS9p4r2oHAtDeNOMkeiNtHVnFeUdJMlckcBI6y2tvNch9xk84nLpQGe
+         LTRI9VK4fVaXb7SH2FiKMCFsarwN/E2q3oLsFe5fNgoloWXTpJKKKXrlK6n8/Mhj3b+z
+         s0yg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707753016; x=1708357816;
+        d=1e100.net; s=20230601; t=1707753056; x=1708357856;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gnijYrP15U15bxthLFyHlkGO+OlGFk98p9uD3CWT7wk=;
-        b=TlotLJD+XEZf7vVCG6CtkR9nT3idig+F5zudbJ2GG3iHA829Oeeq5mLflv1VlkIJ5K
-         EEhH9iiAO1i/eATZ+iL5A19kwq3j4R5hKDbY9+Qj9hu+/XSSrPSjbPmPRiw4MHyn4BJN
-         ad4lptgWv/vvZ0n6c4d8Lr9pLUE9fwgGkyHFaG1eIg08SxeK0BN6JGCt+RO/uCE6G3lo
-         mzawRYLFIGjMyVHBMV1KKTkLr+KIQEer1+IcUcT0W0sekJUtxsCmIW784k53mD9Qa8+x
-         S2bkf6iTTakV6W4GsnSDRRKVvvrIfzN0+mW5f/h6dvKJ3A8bvim7ltw+1qbrvVox/C2h
-         cUxg==
-X-Forwarded-Encrypted: i=1; AJvYcCWe4VV/o6hCF7OMUrziiCXC+JUIteZxxOcIiSgRlRuS74yD6LwxbUtNdVw/Rvgz2WtPj/ZTAvL3OYiPUOjCdQ7v24QtgMa44t0mliNHGOPK1dgt5u+WSHzB2vwdYMkxb8j/llIrpjZuMI5JftwCb0VanyMTSPAyYC8=
-X-Gm-Message-State: AOJu0Yw1CXumPk7yzWvIUvpkW/yN3KoRZCk7SCFmvOJiTVSlG1JMewbo
-	siviIOYNC61GC1CLNhdf7vtacdYqD7G3d/P9axbC2ceRRmnBgbcM
-X-Google-Smtp-Source: AGHT+IENL6GY2Fznvlg+fMFMPce7Fb5dfQbxexu+PqfSg5xMnC42WOOtwf6GkJocTKFB0C+xdkrF+g==
-X-Received: by 2002:ac2:43d5:0:b0:511:4ff0:5323 with SMTP id u21-20020ac243d5000000b005114ff05323mr4125491lfl.31.1707753016065;
-        Mon, 12 Feb 2024 07:50:16 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCURBnk92ZMeWtcXp1mspn3er8KAKaH9DRdAU5BS/AWPKAHYtG02JWqm0gMSnuzjq2mtk/8xGIb2JRfxzFZdxmxfpps3muDyh+ne4bV1XQ+jBKOTEWBoguqEePqw7UVYFkIrh8PTdQwlDnlVOrpbZzEVQwaATPwC7AUXUEfwitSg07QwnoLCtpYeg+ZBixe7T4VfN3BLKKwkjvzr6F4ALbKXAas4a9Vy7zeUFMQDixX6L91GH9C7MQ5LcKUZwpzYP3/Ll4MtqqxaUBAX6CSHTn+/zD0AXu9b6FEPHFQK9Db5eD0d25ykHUbrxmADC20UeQs/3VBI/mayec6lMc1ZB8CoyyWxNege7l2L7t8QqvEsIdxOadjQPe8j05GLIEny9M4XPs0miQY7uLujesQbFS6H11/LF3yVQ17D9Y+q1r3XxjRtFWw+2zL9jVfaXZcHAz/aRufvlYwWKi4Ijvg=
+        bh=DKJbvwlkOP1SRi/Z77aD8twgFDCEOZM6sW2cKw9vfP8=;
+        b=oKPFb2qQsg+gz+uxWFFgFTT2IBCuGfWrVdikeZSmBXOcat5d/D6QvZ8WcqsvuA+hcJ
+         SW7lVHJv9sOsxmIbsMGnUXGKpMEbTWP8zcPKDy906+5d5UWkjLrAleJ6es4ILO+APkgU
+         iCly/4mv/Tiy310I64AVBSJDeEByWSA0bhW4fkVYqw3F2vVloQ0Ua7Xaed+fXgkHm42g
+         z4TkOhcMtSu5wmLR2SqUP1Q9nB3vdi6DReDOrWzvWwCberWo9xkGCdj+78Yfhb8SJOel
+         ob34Xe8QEgjv03elGMtK/CZ3sCVIAGtZB8E8V612jBFHxgb3+9Vrt6jgXnU2s3KJRbHN
+         r+nA==
+X-Forwarded-Encrypted: i=1; AJvYcCX6R7UD2xsqUCHxoavD1uNtA6SLlO1QYmNI7osM86+a72Qpng6W4O+PD2YbnlA2D8xkLV7jNiPQz5+GL9GurxXu/SV6NFCbl5nOaGqdfB9gAZvWQb3+aV9beO/LWFIMFoMCpS/ClZl+uAJCl3GZp3Ix+8BQOqDv314=
+X-Gm-Message-State: AOJu0YzL1ldQy8tyhd/wc3LyRIWiFXlZOIsgUYnl4YpwgM7F0Kzcrjb2
+	7TeHQjWOV0enFMiGwvZ7pizYFZ3WzPOwqmzFg6OPxqdCzgcKJ+sF
+X-Google-Smtp-Source: AGHT+IEc+c8gZb2UL13KcPyzSt4NGhKYck2YJGye4943wMZe7LgW/jeKFsFr17NDmh3SEL0rg8X6Gg==
+X-Received: by 2002:a05:600c:4f8e:b0:410:7897:6c68 with SMTP id n14-20020a05600c4f8e00b0041078976c68mr5816893wmq.3.1707753056342;
+        Mon, 12 Feb 2024 07:50:56 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCXD8geSAWQRDN9wEm603b2P2I5b3hHLLwQxozbSbN9lQC3GeJ1rtH2ArXvmkp3fKlw5svrA2kzag1dDitt1chiYFYYX3/ScuD+vNzYTtZceStz9yc+uZQQUcSqUD4QbIkxT/xnW5F2FDIV/1+TZR8yqPfh3ZyX76+NeuMne3GylIBnKfnWvtuqLfjbUBQsYp8ZIrpGbBieEQ760H/W9k5dLtJWVtGxsMeaZWV+AAqO7eQexjgKwBTwyEG6SW70VB2GIjgL0Y5+7YjcwhWrdlupeCsVeyXHsVcO3jWJ5+kOhwBMYShVe6O7QjfUgjIO8oj7YOiNqtm16Ro3wG3hDmGzF8WBUj0rvGe8voETzjsYfm5cbaXYCY9qGW7XvnMsp3SQp+q5A0BerKef3Ugsq+wPxsB1ftqw48DL4VCiuuWwDfUFo5DvfAXbUt9Pi+QD8tw0E1oDbOw6nlZwrL1WOcNCQYkapgZzda8W/GkUv/uDIR1bjXlOyx1j6afEPPLP0B3Ow0UIkzH73CFIyOSfw+9QzTaRGIVXsmBPWMtfDX39CUh2a3FFHkX6QYNZ2tO7/WYtXgZ1tNK0zakRtRto20y0HXrJVOn8HIxl036q0xjzwI7BmsgWy7Kyt
 Received: from [192.168.1.135] ([207.188.161.188])
-        by smtp.gmail.com with ESMTPSA id j36-20020a05600c1c2400b00410833555d5sm8461390wms.21.2024.02.12.07.50.13
+        by smtp.gmail.com with ESMTPSA id j36-20020a05600c1c2400b00410833555d5sm8461390wms.21.2024.02.12.07.50.51
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Feb 2024 07:50:14 -0800 (PST)
-Message-ID: <826077f1-dc96-49be-961b-e9cfbed1fef5@gmail.com>
-Date: Mon, 12 Feb 2024 16:50:12 +0100
+        Mon, 12 Feb 2024 07:50:52 -0800 (PST)
+Message-ID: <f5ea54f4-9176-4fde-89bf-71b1771e47c3@gmail.com>
+Date: Mon, 12 Feb 2024 16:50:51 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] iommu/mtk_iommu: Use devm_kcalloc() instead of
- devm_kzalloc()
+Subject: Re: [PATCH v2] mtd: rawnand: Prefer struct_size over open coded
+ arithmetic
 Content-Language: en-US, ca-ES, es-ES
-To: Erick Archer <erick.archer@gmx.com>, Yong Wu <yong.wu@mediatek.com>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
+To: Erick Archer <erick.archer@gmx.com>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Heiko Stuebner <heiko@sntech.de>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Rob Herring <robh@kernel.org>,
+ Li Zetao <lizetao1@huawei.com>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
  "Gustavo A. R. Silva" <gustavoars@kernel.org>,
  Kees Cook <keescook@chromium.org>
-Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+Cc: linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-hardening@vger.kernel.org
-References: <20240211182250.12656-1-erick.archer@gmx.com>
+References: <20240211091633.4545-1-erick.archer@gmx.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  xsFNBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -124,12 +129,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240211182250.12656-1-erick.archer@gmx.com>
+In-Reply-To: <20240211091633.4545-1-erick.archer@gmx.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240212_075018_780482_DEB2FAC7 
-X-CRM114-Status: GOOD (  19.18  )
+X-CRM114-CacheID: sfid-20240212_075058_441252_84078614 
+X-CRM114-Status: GOOD (  20.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,58 +151,53 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 11/02/2024 19:22, Erick Archer wrote:
+On 11/02/2024 10:16, Erick Archer wrote:
 > This is an effort to get rid of all multiplications from allocation
 > functions in order to prevent integer overflows [1].
 > 
-> Here the multiplication is obviously safe because MTK_PROTECT_PA_ALIGN
-> is defined as a literal value of 256 or 128.
+> As the "chip" variable is a pointer to "struct mtk_nfc_nand_chip" and
+> this structure ends in a flexible array:
 > 
-> For the "mtk_iommu.c" file: 256
-> For the "mtk_iommu_v1.c" file: 128
+> struct mtk_nfc_nand_chip {
+> 	[...]
+> 	u8 sels[] __counted_by(nsels);
+> };
 > 
-> However, using devm_kcalloc() is more appropriate [2] and improves
-> readability. This patch has no effect on runtime behavior.
+> the preferred way in the kernel is to use the struct_size() helper to
+> do the arithmetic instead of the argument "size + count * size" in the
+> devm_kzalloc() function.
 > 
-> Link: https://github.com/KSPP/linux/issues/162 [1]
-> Link: https://www.kernel.org/doc/html/next/process/deprecated.html#open-coded-arithmetic-in-allocator-arguments [2]
+> This way, the code is more readable and safer.
+> 
+> Link: https://www.kernel.org/doc/html/latest/process/deprecated.html#open-coded-arithmetic-in-allocator-arguments [1]
+> Link: https://github.com/KSPP/linux/issues/160 [2]
+> Reviewed-by: Gustavo A. R. Silva <gustavoars@kernel.org>
 > Signed-off-by: Erick Archer <erick.archer@gmx.com>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
->   drivers/iommu/mtk_iommu.c    | 2 +-
->   drivers/iommu/mtk_iommu_v1.c | 4 ++--
->   2 files changed, 3 insertions(+), 3 deletions(-)
+> Changes in v2:
+> - Add the "Reviewed-by:" tag.
+> - Fix a spelling error in the commit message. Change "more safer" for
+>    "safer" (Uwe Kleine-König)
+> ---
+>   drivers/mtd/nand/raw/mtk_nand.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 7abe9e85a570..9aae6eb604b1 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -1264,7 +1264,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->   	data->plat_data = of_device_get_match_data(dev);
+> diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
+> index 60198e33d2d5..17477bb2d48f 100644
+> --- a/drivers/mtd/nand/raw/mtk_nand.c
+> +++ b/drivers/mtd/nand/raw/mtk_nand.c
+> @@ -1356,7 +1356,7 @@ static int mtk_nfc_nand_chip_init(struct device *dev, struct mtk_nfc *nfc,
+>   		return -EINVAL;
+>   	}
 > 
->   	/* Protect memory. HW will access here while translation fault.*/
-> -	protect = devm_kzalloc(dev, MTK_PROTECT_PA_ALIGN * 2, GFP_KERNEL);
-> +	protect = devm_kcalloc(dev, 2, MTK_PROTECT_PA_ALIGN, GFP_KERNEL);
->   	if (!protect)
+> -	chip = devm_kzalloc(dev, sizeof(*chip) + nsels * sizeof(u8),
+> +	chip = devm_kzalloc(dev, struct_size(chip, sels, nsels),
+>   			    GFP_KERNEL);
+>   	if (!chip)
 >   		return -ENOMEM;
->   	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
-> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> index 25b41222abae..45cd845d153f 100644
-> --- a/drivers/iommu/mtk_iommu_v1.c
-> +++ b/drivers/iommu/mtk_iommu_v1.c
-> @@ -621,8 +621,8 @@ static int mtk_iommu_v1_probe(struct platform_device *pdev)
->   	data->dev = dev;
-> 
->   	/* Protect memory. HW will access here while translation fault.*/
-> -	protect = devm_kzalloc(dev, MTK_PROTECT_PA_ALIGN * 2,
-> -			GFP_KERNEL | GFP_DMA);
-> +	protect = devm_kcalloc(dev, 2, MTK_PROTECT_PA_ALIGN,
-> +			       GFP_KERNEL | GFP_DMA);
->   	if (!protect)
->   		return -ENOMEM;
->   	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
 > --
 > 2.25.1
 > 
