@@ -4,104 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3815EC4829E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Feb 2024 20:41:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F796C4829E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Feb 2024 21:33:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bw54feNBMSUAWt9H1kUwQT6TtWMrX6VS0KfO9CyJw9E=; b=HeWSP6a65oPvI7fKEWgTw+7N9T
-	Peg7LxnIjSSlcBTDrp8MT7IpOIoDHWtAcrSOvSYzrmZm8pWNm1tapLGozZT+fQF2/zOKVY56BdwbV
-	SleJ7QUI72+65UhqUzZ77hrERltSyLF8l9iO5H0niX0GvQCdZdvRap0FHUXg7e0XoxzeUMY1EilT4
-	bv3zuDbKfWn6Lt2dqmjI87wq3SN9kdvU1Pw3fPA3xRpTvgKIz8PSwo3/OJXufQGs4ITujnptuCrWS
-	j4FfFHtwu/k6V1Hzg45JQ/FTjQuyJ4okekzB1zSQZpA9wS72xXiwNOyRXIxFyU980jATk3mN6ESr8
-	c1v3Usow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xLgB39N3TSdl3rr2Xu7xXsmbw+8nItqyRO4tusEPd7U=; b=buEbqW4nzrwF9w7zIeQD4mTKCn
+	hPuF94hG/1SWvKKDj/64XuiLGAFcs0pH7JR3qAUoVbE/wopmVFcVlltpV6/cPwzev/UruCKh0+5x6
+	3Q9ORpUdUD4lkqlJj40V8RiFWxdOpscXf9Cj+Z1TKdJmTbnNM+aDcm7t7b2u8hsNLXE25K2wtcvz7
+	d6PS4Q3cEa146UAyHfjX2A6jmtrDqyymnMgEfw05pFbFwCjF0VLYzFvLmxX70/Oi/TQNW2Yyyj5br
+	G8Cf0pAUboYpouuP5hAN3SClV181nzDC1eG7GUhwe5qzECBlprvWcWSDIs32TdKcHbtcRITdUd88K
+	roRdjSNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZd7O-00000006tk4-46yK;
-	Mon, 12 Feb 2024 20:41:34 +0000
-Received: from omta036.useast.a.cloudfilter.net ([44.202.169.35])
+	id 1rZdvL-00000006zZi-09Ap;
+	Mon, 12 Feb 2024 21:33:11 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZd7M-00000006tiM-1Qm8
-	for linux-mediatek@lists.infradead.org;
-	Mon, 12 Feb 2024 20:41:33 +0000
-Received: from eig-obgw-6003a.ext.cloudfilter.net ([10.0.30.151])
-	by cmsmtp with ESMTPS
-	id ZYXRrQcjX8uLRZd79rgU18; Mon, 12 Feb 2024 20:41:19 +0000
-Received: from gator4166.hostgator.com ([108.167.133.22])
-	by cmsmtp with ESMTPS
-	id Zd78r0V4zFWw5Zd79rN6gg; Mon, 12 Feb 2024 20:41:19 +0000
-X-Authority-Analysis: v=2.4 cv=C7tKyhP+ c=1 sm=1 tr=0 ts=65ca826f
- a=1YbLdUo/zbTtOZ3uB5T3HA==:117 a=VhncohosazJxI00KdYJ/5A==:17
- a=IkcTkHD0fZMA:10 a=k7vzHIieQBIA:10 a=wYkD_t78qR0A:10 a=NEAV23lmAAAA:8
- a=VwQbUJbxAAAA:8 a=7YfXLusrAAAA:8 a=ZyVk2ItIS7mYbqNWDTwA:9 a=QEXdDO2ut3YA:10
- a=9cHFzqQdt-sA:10 a=PUnBvhIW4WwA:10 a=AjGcO6oz07-iQ99wixmX:22
- a=SLz71HocmBbuEhFRYD3r:22
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=bw54feNBMSUAWt9H1kUwQT6TtWMrX6VS0KfO9CyJw9E=; b=XCpJ7ZjCAG/KP/VTwD4kYXi1K6
-	/TbC0ueZTpwPte6x1WspBWfomnu9CbJKxBlg8AEJUb6bYruRsKh3OO2vXtRvNlWkDxzDo2VFlYy3f
-	qSYbkP4Dq87K/EzMIfjT8nCoZF+MVL6JAojreH7zGZIG0ouO7a0Dcvr/liR1UWwMaOCAoExudUqpA
-	THXkXJWEjbVSnKGcXxVcmR6wQkBei74Dpwno4G8U4P1oRPOAZygKG7GlOwYpoL35YVeM6gy8CnNFF
-	HFNjBkxUkew9YfwsXFMbDVMdrqTG8mBK/rG56ejxDeAgvDakcbig5I9eWSpbucLebhmNuNIMOlBP+
-	cTZ2GOzg==;
-Received: from [201.172.172.225] (port=34544 helo=[192.168.15.10])
-	by gator4166.hostgator.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.96.2)
-	(envelope-from <gustavo@embeddedor.com>)
-	id 1rZd77-000F5z-0a;
-	Mon, 12 Feb 2024 14:41:17 -0600
-Message-ID: <0f3213d3-9010-45d5-8852-f0ab3ffc8f8b@embeddedor.com>
-Date: Mon, 12 Feb 2024 14:41:11 -0600
+	id 1rZdvG-00000006zYc-3pUT;
+	Mon, 12 Feb 2024 21:33:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1707773584;
+	bh=uL2VF2cuPmkBo5+K9BYWgnyBPmjt/fB97ck51Phazr0=;
+	h=From:Date:Subject:To:Cc:From;
+	b=eFEm9K9QpelSO+d7WVm/xhJd8+qlJVpl+tnlGZsb8vckGa1tyIHVKBBxNBVdg5h3g
+	 3xn2YJbATiyjnp+W1pamAs+m/yX7gjozx61rrNayDWpJYrw3Mm+FAxyt0f8gSibUTl
+	 qiGnQfhI+E8SQMHzYAK+vBlQHnYB7bbVTYnW9KGqXIytwVtQnB045arzq3sWOmOPKf
+	 +CP8ZGVO7vSS1mcVCImsZCKPeOTOOYrmVnN74ekEC0A65d7GaICBVkMBcLCKWe5rb4
+	 F3i/YS4CiM3Sm0Ddj0/LX3jrrkpA3LtymZwNI9RTJ2/HmANT99dOlTnnyrZmWQzK8R
+	 a1cANRtoq1K7Q==
+Received: from [192.168.1.38] (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9619237813D5;
+	Mon, 12 Feb 2024 21:33:01 +0000 (UTC)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Mon, 12 Feb 2024 16:32:44 -0500
+Subject: [PATCH] arm64: dts: mediatek: mt8186: Add missing clocks to ssusb
+ power domains
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] iommu/mtk_iommu: Use devm_kcalloc() instead of
- devm_kzalloc()
-Content-Language: en-US
-To: Erick Archer <erick.archer@gmx.com>, Yong Wu <yong.wu@mediatek.com>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Kees Cook <keescook@chromium.org>
-Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-hardening@vger.kernel.org
-References: <20240211182250.12656-1-erick.archer@gmx.com>
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-In-Reply-To: <20240211182250.12656-1-erick.archer@gmx.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - embeddedor.com
-X-BWhitelist: no
-X-Source-IP: 201.172.172.225
-X-Source-L: No
-X-Exim-ID: 1rZd77-000F5z-0a
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: ([192.168.15.10]) [201.172.172.225]:34544
-X-Source-Auth: gustavo@embeddedor.com
-X-Email-Count: 4
-X-Org: HG=hgshared;ORG=hostgator;
-X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
-X-Local-Domain: yes
-X-CMAE-Envelope: MS4xfJ1bORvNmGOoX3lZ/blo5OdYytk1mTQHoPDVMMIrkw3M7uEdmrh2pXDVhDTZC8Jg6rnqlrShtPzbjOXwUXcRT7CNpYF+Gb7RdqF/wtz2OrrN7cxk/7uk
- D8aNY3bcleXB49oNotpwtGohUiyq7S3bErUUtd5DCtL/Mt7D/yr7uRsEyNTgAhbzJ6RK0AGvjlBq7MqknwzX9Z9zMNbOmwL8D0ykhuF+xC5ev1nrkEGGNgy1
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20240212-mt8186-ssusb-domain-clk-fix-v1-1-26cb98746aa3@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAHuOymUC/x3MQQqDMBBA0avIrDuQRJHUq5QuYjLRoRpLRkUQ7
+ 25w+f7inyCUmQS66oRMOwsvqUC/KvCjSwMhh2IwyjTKaIPzarVtUWSTHsMyO07opx9GPtC1b03
+ kbd3EAOXwz1Tyc/98r+sGwYRV3W0AAAA=
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, 
+ Eugen Hristev <eugen.hristev@collabora.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>, kernel@collabora.com, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240212_124132_478373_9576FB65 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20240212_133307_271034_09A4E8D6 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,68 +82,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The ssusb power domains currently don't list any clocks, despite
+depending on some, and thus rely on the bootloader leaving the required
+clocks on in order to work.
 
+When booting with the upstream arm64 defconfig, the power domain
+controller will defer probe until modules have loaded since it has an
+indirect dependency on CONFIG_MTK_CMDQ, which is configured as a module.
+However at the point where modules are loaded, unused clocks are also
+disabled, causing the ssusb domains to fail to be enabled and
+consequently the controller to fail probe:
 
-On 2/11/24 12:22, Erick Archer wrote:
-> This is an effort to get rid of all multiplications from allocation
-> functions in order to prevent integer overflows [1].
-> 
-> Here the multiplication is obviously safe because MTK_PROTECT_PA_ALIGN
-> is defined as a literal value of 256 or 128.
-> 
-> For the "mtk_iommu.c" file: 256
-> For the "mtk_iommu_v1.c" file: 128
-> 
-> However, using devm_kcalloc() is more appropriate [2] and improves
-> readability. This patch has no effect on runtime behavior.
-> 
-> Link: https://github.com/KSPP/linux/issues/162 [1]
-> Link: https://www.kernel.org/doc/html/next/process/deprecated.html#open-coded-arithmetic-in-allocator-arguments [2]
-> Signed-off-by: Erick Archer <erick.archer@gmx.com>
+mtk-power-controller 10006000.syscon:power-controller: /soc/syscon@10006000/power-controller/power-domain@4: failed to power on domain: -110
+mtk-power-controller: probe of 10006000.syscon:power-controller failed with error -110
 
-LGTM:
+Add the missing clocks to the ssusb power domains so the power
+controller can boot without relying on bootloader state.
 
-Reviewed-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+Fixes: d9e43c1e7a38 ("arm64: dts: mt8186: Add power domains controller")
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-Thanks!
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+index adaf5e57fac5..02f33ec3cbd3 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+@@ -931,11 +931,19 @@ power-domain@MT8186_POWER_DOMAIN_CSIRX_TOP {
+ 
+ 				power-domain@MT8186_POWER_DOMAIN_SSUSB {
+ 					reg = <MT8186_POWER_DOMAIN_SSUSB>;
++					clocks = <&topckgen CLK_TOP_USB_TOP>,
++						 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_REF>,
++						 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_XHCI>;
++					clock-names = "sys_ck", "ref_ck", "xhci_ck";
+ 					#power-domain-cells = <0>;
+ 				};
+ 
+ 				power-domain@MT8186_POWER_DOMAIN_SSUSB_P1 {
+ 					reg = <MT8186_POWER_DOMAIN_SSUSB_P1>;
++					clocks = <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_SYS>,
++						 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_REF>,
++						 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_XHCI>;
++					clock-names = "sys_ck", "ref_ck", "xhci_ck";
+ 					#power-domain-cells = <0>;
+ 				};
+ 
+
+---
+base-commit: 2ae0a045e6814c8c1d676d6153c605a65746aa29
+change-id: 20240212-mt8186-ssusb-domain-clk-fix-a691eec834fd
+
+Best regards,
 -- 
-Gustavo
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-> ---
->   drivers/iommu/mtk_iommu.c    | 2 +-
->   drivers/iommu/mtk_iommu_v1.c | 4 ++--
->   2 files changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 7abe9e85a570..9aae6eb604b1 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -1264,7 +1264,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->   	data->plat_data = of_device_get_match_data(dev);
-> 
->   	/* Protect memory. HW will access here while translation fault.*/
-> -	protect = devm_kzalloc(dev, MTK_PROTECT_PA_ALIGN * 2, GFP_KERNEL);
-> +	protect = devm_kcalloc(dev, 2, MTK_PROTECT_PA_ALIGN, GFP_KERNEL);
->   	if (!protect)
->   		return -ENOMEM;
->   	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
-> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> index 25b41222abae..45cd845d153f 100644
-> --- a/drivers/iommu/mtk_iommu_v1.c
-> +++ b/drivers/iommu/mtk_iommu_v1.c
-> @@ -621,8 +621,8 @@ static int mtk_iommu_v1_probe(struct platform_device *pdev)
->   	data->dev = dev;
-> 
->   	/* Protect memory. HW will access here while translation fault.*/
-> -	protect = devm_kzalloc(dev, MTK_PROTECT_PA_ALIGN * 2,
-> -			GFP_KERNEL | GFP_DMA);
-> +	protect = devm_kcalloc(dev, 2, MTK_PROTECT_PA_ALIGN,
-> +			       GFP_KERNEL | GFP_DMA);
->   	if (!protect)
->   		return -ENOMEM;
->   	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
-> --
-> 2.25.1
-> 
-> 
 
