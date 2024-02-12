@@ -4,114 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA738C48297
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Feb 2024 15:33:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48367C48297
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Feb 2024 15:50:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tG5+mWlEpKIFxadadpcB3TJPcTV7Tbb2YmQrnUCl3Mc=; b=X3H89BIHustiALG5aRJDKtne1F
-	RzsBEdYeI/b23MlLlbvVIJJ+YZwWiLv+uDEt7REKzPyIWrMl3wg0uj3VcxQ+wqvAaZLHnwZAmIZl5
-	5TUl4DNwz3OUvrE/G798elxIWKmsgR2vsn9MxoYtHXYC75C92iclsHT4J4mr9+Qqyx7nHGd8C+dlA
-	mSV+j8rlkhvncJRrsH0wrXQBQg9FCdMPlTME9g6OD1huRlk5c0d8gLjopI9xo5amYV35TJeTECEwg
-	91QE3zXSK3T81t3LRrNqIQzrkX1MZZN4jVmtfShK4Mh9P3SH50iz2tWqi84BBDaJ7ucfhuVwbzSq8
-	kDyH5PDw==;
+	bh=gnijYrP15U15bxthLFyHlkGO+OlGFk98p9uD3CWT7wk=; b=DAHvkpX+41s88A6t9Iu1vAQFMv
+	D8/czY6vbn5zYKsghd0lrelFRRGnpi76FNjH49XpUPEeGRkn0j65K2BgyjQFZfG1PjVuifpWLCAew
+	lWDPwxI7HYW/iU4xl5U1Na/nr0NTmRM1oHKG2BovMtRy/Gk5MNwNDVVT3On5b+hRAKUWo+8NFlmZL
+	01QEdXpZlPWCOsrIn9oORdin1ITrUdx99Onow+Tp9HLgMIFHUXVc5zx/mX3lnVXEdZZ7hh2lW9DuT
+	JAeoccul1uCAWcymrFuXxsKsxG//NNcOSFcGoJe2rN6SG9sDHGKdXsaTkZelSuEQ+zYykUXc8NJyD
+	/I3W99Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZYJE-00000005yf1-23Ch;
-	Mon, 12 Feb 2024 15:33:28 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rZYZY-000000061uY-3awa;
+	Mon, 12 Feb 2024 15:50:20 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZYJA-00000005ydc-2Umt;
-	Mon, 12 Feb 2024 15:33:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E07B860BAD;
-	Mon, 12 Feb 2024 15:33:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0CD66C433F1;
-	Mon, 12 Feb 2024 15:33:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707752000;
-	bh=GFsfkdOmJKsuZtWQAq7OhjxHg4IKHiDCDNVd+Gd58aw=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Co2aU8UOdKL4W8SUaaEqV0BTVAuiZ9niMqI5QuXmkWRQqRD+bsuUp32djuJPfJQ7M
-	 J0AdS/WqPhUm+WDhNwj0PIl1NFZPSx4kaz74w8AVaBO2niEWSvmitVVz0AuwMwTUcd
-	 8MtOvRT2s7ojnBMUpDpCQjuzEzxH0//zOgasqtDHJDU6fjIDBJFEa6lJkzge7aVnIn
-	 65sRlXZGfvNWKRj6hhoF+/MvmClp/yoVXWTT6Lqc/PTFBqTwhuA4fpNCA+K8uTOths
-	 DH2aamg+A5g3aeMmWit1ZUc4X0oSEYy8EtlcvJyPFhdziLYkgWINAXOkx2oWF2pGNL
-	 vlKQQFPbdC2Dw==
-From: Mark Brown <broonie@kernel.org>
-To: =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: kernel@pengutronix.de, Moritz Fischer <mdf@kernel.org>, 
- Wu Hao <hao.wu@intel.com>, Xu Yilun <yilun.xu@intel.com>, 
- Tom Rix <trix@redhat.com>, linux-fpga@vger.kernel.org, 
- linux-kernel@vger.kernel.org, Alexander Aring <alex.aring@gmail.com>, 
- Stefan Schmidt <stefan@datenfreihafen.org>, 
- Miquel Raynal <miquel.raynal@bootlin.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- linux-wpan@vger.kernel.org, netdev@vger.kernel.org, 
- Lars-Peter Clausen <lars@metafoo.de>, 
- Michael Hennerich <Michael.Hennerich@analog.com>, 
- Jonathan Cameron <jic23@kernel.org>, linux-iio@vger.kernel.org, 
- Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-input@vger.kernel.org, 
- Ulf Hansson <ulf.hansson@linaro.org>, Rayyan Ansari <rayyan@ansari.sh>, 
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
- Jonathan Cameron <Jonathan.Cameron@huawei.com>, 
- Martin Tuma <martin.tuma@digiteqautomotive.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org, 
- Sergey Kozlov <serjk@netup.ru>, Arnd Bergmann <arnd@arndb.de>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Yang Yingliang <yangyingliang@huawei.com>, linux-mmc@vger.kernel.org, 
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, 
- Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Michal Simek <michal.simek@amd.com>, 
- Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>, 
- linux-mtd@lists.infradead.org, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- =?utf-8?q?Pali_Roh=C3=A1r?= <pali@kernel.org>, 
- Simon Horman <horms@kernel.org>, Ronald Wahl <ronald.wahl@raritan.com>, 
- Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
- Guenter Roeck <groeck@chromium.org>, chrome-platform@lists.linux.dev, 
- Max Filippov <jcmvbkbc@gmail.com>, linux-spi@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- Bjorn Andersson <andersson@kernel.org>, 
- Konrad Dybcio <konrad.dybcio@linaro.org>, linux-arm-msm@vger.kernel.org, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-mediatek@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>, 
- Javier Martinez Canillas <javierm@redhat.com>, 
- Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>, 
- dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org, 
- linux-staging@lists.linux.dev, Viresh Kumar <vireshk@kernel.org>, 
- Rui Miguel Silva <rmfrfs@gmail.com>, Johan Hovold <johan@kernel.org>, 
- Alex Elder <elder@kernel.org>, greybus-dev@lists.linaro.org, 
- Peter Huewe <peterhuewe@gmx.de>, Jarkko Sakkinen <jarkko@kernel.org>, 
- Jason Gunthorpe <jgg@ziepe.ca>, linux-integrity@vger.kernel.org, 
- Herve Codina <herve.codina@bootlin.com>, 
- Alan Stern <stern@rowland.harvard.edu>, 
- Aaro Koskinen <aaro.koskinen@iki.fi>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
- linux-usb@vger.kernel.org, Helge Deller <deller@gmx.de>, 
- Dario Binacchi <dario.binacchi@amarulasolutions.com>, 
- Kalle Valo <kvalo@kernel.org>, Dmitry Antipov <dmantipov@yandex.ru>, 
- libertas-dev@lists.infradead.org, linux-wireless@vger.kernel.org, 
- Jonathan Corbet <corbet@lwn.net>, James Clark <james.clark@arm.com>, 
- Bjorn Helgaas <bhelgaas@google.com>, linux-doc@vger.kernel.org
-In-Reply-To: <cover.1705944943.git.u.kleine-koenig@pengutronix.de>
-References: <cover.1705944943.git.u.kleine-koenig@pengutronix.de>
-Subject: Re: (subset) [PATCH v2 00/33] spi: get rid of some legacy macros
-Message-Id: <170775198078.46149.4700126128576800564.b4-ty@kernel.org>
-Date: Mon, 12 Feb 2024 15:33:00 +0000
+	id 1rZYZW-000000061td-2wtk;
+	Mon, 12 Feb 2024 15:50:20 +0000
+Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-5118290fcd8so1860565e87.3;
+        Mon, 12 Feb 2024 07:50:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1707753016; x=1708357816; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=gnijYrP15U15bxthLFyHlkGO+OlGFk98p9uD3CWT7wk=;
+        b=kQbwf/tLEowtVP3AzqL8XUp00or/iTM8JBfawLw4/rL5JQYVA1k/nWKCGUX0lAdqZq
+         5wRktmlJ4fHnn15y3d97Bl2fq0P3XsYJKgg0PEydKcctB1HiHb6Pep2JIKAbuquxNhkX
+         0eJxG2pkv/T5Pe8MqNgILOOr/0lc0Pw1NksGgt0HTZ28LCBgbNHx7B6HqSNbZFIb1eG0
+         FhZRNBXEzLjZ0jEfCoussC+M4jxQqQK9h4jEJytqirtCMBcU3VsFW5bhmP5XZ0/TVZlR
+         Fuh7VkexPX5hUvLkq+jC4boBZxiP7se2p/w0B7juBnJBVS2zEnEBzeEUxOpJ4IG3/M1o
+         AN/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1707753016; x=1708357816;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=gnijYrP15U15bxthLFyHlkGO+OlGFk98p9uD3CWT7wk=;
+        b=TlotLJD+XEZf7vVCG6CtkR9nT3idig+F5zudbJ2GG3iHA829Oeeq5mLflv1VlkIJ5K
+         EEhH9iiAO1i/eATZ+iL5A19kwq3j4R5hKDbY9+Qj9hu+/XSSrPSjbPmPRiw4MHyn4BJN
+         ad4lptgWv/vvZ0n6c4d8Lr9pLUE9fwgGkyHFaG1eIg08SxeK0BN6JGCt+RO/uCE6G3lo
+         mzawRYLFIGjMyVHBMV1KKTkLr+KIQEer1+IcUcT0W0sekJUtxsCmIW784k53mD9Qa8+x
+         S2bkf6iTTakV6W4GsnSDRRKVvvrIfzN0+mW5f/h6dvKJ3A8bvim7ltw+1qbrvVox/C2h
+         cUxg==
+X-Forwarded-Encrypted: i=1; AJvYcCWe4VV/o6hCF7OMUrziiCXC+JUIteZxxOcIiSgRlRuS74yD6LwxbUtNdVw/Rvgz2WtPj/ZTAvL3OYiPUOjCdQ7v24QtgMa44t0mliNHGOPK1dgt5u+WSHzB2vwdYMkxb8j/llIrpjZuMI5JftwCb0VanyMTSPAyYC8=
+X-Gm-Message-State: AOJu0Yw1CXumPk7yzWvIUvpkW/yN3KoRZCk7SCFmvOJiTVSlG1JMewbo
+	siviIOYNC61GC1CLNhdf7vtacdYqD7G3d/P9axbC2ceRRmnBgbcM
+X-Google-Smtp-Source: AGHT+IENL6GY2Fznvlg+fMFMPce7Fb5dfQbxexu+PqfSg5xMnC42WOOtwf6GkJocTKFB0C+xdkrF+g==
+X-Received: by 2002:ac2:43d5:0:b0:511:4ff0:5323 with SMTP id u21-20020ac243d5000000b005114ff05323mr4125491lfl.31.1707753016065;
+        Mon, 12 Feb 2024 07:50:16 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCURBnk92ZMeWtcXp1mspn3er8KAKaH9DRdAU5BS/AWPKAHYtG02JWqm0gMSnuzjq2mtk/8xGIb2JRfxzFZdxmxfpps3muDyh+ne4bV1XQ+jBKOTEWBoguqEePqw7UVYFkIrh8PTdQwlDnlVOrpbZzEVQwaATPwC7AUXUEfwitSg07QwnoLCtpYeg+ZBixe7T4VfN3BLKKwkjvzr6F4ALbKXAas4a9Vy7zeUFMQDixX6L91GH9C7MQ5LcKUZwpzYP3/Ll4MtqqxaUBAX6CSHTn+/zD0AXu9b6FEPHFQK9Db5eD0d25ykHUbrxmADC20UeQs/3VBI/mayec6lMc1ZB8CoyyWxNege7l2L7t8QqvEsIdxOadjQPe8j05GLIEny9M4XPs0miQY7uLujesQbFS6H11/LF3yVQ17D9Y+q1r3XxjRtFWw+2zL9jVfaXZcHAz/aRufvlYwWKi4Ijvg=
+Received: from [192.168.1.135] ([207.188.161.188])
+        by smtp.gmail.com with ESMTPSA id j36-20020a05600c1c2400b00410833555d5sm8461390wms.21.2024.02.12.07.50.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 12 Feb 2024 07:50:14 -0800 (PST)
+Message-ID: <826077f1-dc96-49be-961b-e9cfbed1fef5@gmail.com>
+Date: Mon, 12 Feb 2024 16:50:12 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.13-dev-a684c
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] iommu/mtk_iommu: Use devm_kcalloc() instead of
+ devm_kzalloc()
+Content-Language: en-US, ca-ES, es-ES
+To: Erick Archer <erick.archer@gmx.com>, Yong Wu <yong.wu@mediatek.com>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Kees Cook <keescook@chromium.org>
+Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-hardening@vger.kernel.org
+References: <20240211182250.12656-1-erick.archer@gmx.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Autocrypt: addr=matthias.bgg@gmail.com; keydata=
+ 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
+In-Reply-To: <20240211182250.12656-1-erick.archer@gmx.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240212_073324_741799_982F05F2 
-X-CRM114-Status: GOOD (  16.16  )
+X-CRM114-CacheID: sfid-20240212_075018_780482_DEB2FAC7 
+X-CRM114-Status: GOOD (  19.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,106 +144,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 22 Jan 2024 19:06:55 +0100, Uwe Kleine-König wrote:
-> this is v2 of this patch set.
+
+
+On 11/02/2024 19:22, Erick Archer wrote:
+> This is an effort to get rid of all multiplications from allocation
+> functions in order to prevent integer overflows [1].
 > 
-> Changes since (implicit) v1, sent with Message-Id:
-> cover.1705348269.git.u.kleine-koenig@pengutronix.de:
+> Here the multiplication is obviously safe because MTK_PROTECT_PA_ALIGN
+> is defined as a literal value of 256 or 128.
 > 
->  - Rebase to v6.8-rc1
->  - Fix a build failure on sh
->  - Added the tags received in (implicit) v1.
+> For the "mtk_iommu.c" file: 256
+> For the "mtk_iommu_v1.c" file: 128
 > 
-> [...]
+> However, using devm_kcalloc() is more appropriate [2] and improves
+> readability. This patch has no effect on runtime behavior.
+> 
+> Link: https://github.com/KSPP/linux/issues/162 [1]
+> Link: https://www.kernel.org/doc/html/next/process/deprecated.html#open-coded-arithmetic-in-allocator-arguments [2]
+> Signed-off-by: Erick Archer <erick.archer@gmx.com>
 
-Applied to
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
-
-Thanks!
-
-[01/33] fpga: ice40-spi: Follow renaming of SPI "master" to "controller"
-        commit: 227ab73b89d66e3064b3c2bcb5fe382b1815763d
-[02/33] ieee802154: ca8210: Follow renaming of SPI "master" to "controller"
-        commit: 167b78446706bb4d19f7dd93ca320aed25ae1bbd
-[03/33] iio: adc: ad_sigma_delta: Follow renaming of SPI "master" to "controller"
-        commit: 2780e7b716a605781dbee753ef4983d775a65427
-[04/33] Input: pxspad - follow renaming of SPI "master" to "controller"
-        commit: a78acec53b8524593afeed7258a442adc3450818
-[05/33] Input: synaptics-rmi4 - follow renaming of SPI "master" to "controller"
-        commit: 1245633c61baf159fcc1303d7f0855f49831b9c1
-[06/33] media: mgb4: Follow renaming of SPI "master" to "controller"
-        commit: 2c2f93fbfba7186cc081e23120f169eac3b5b62a
-[07/33] media: netup_unidvb: Follow renaming of SPI "master" to "controller"
-        commit: cfa13a64bd631d8f04a1c385923706fcef9a63ed
-[08/33] media: usb/msi2500: Follow renaming of SPI "master" to "controller"
-        commit: dd868ae646d5770f80f90dc056d06eb2e6d39c62
-[09/33] media: v4l2-subdev: Follow renaming of SPI "master" to "controller"
-        commit: d920b3a672b7f79cd13b341234aebd49233f836c
-[10/33] misc: gehc-achc: Follow renaming of SPI "master" to "controller"
-        commit: 26dcf09ee5d9ceba2c627ae3ba174a229f25638f
-[11/33] mmc: mmc_spi: Follow renaming of SPI "master" to "controller"
-        commit: b0a6776e53403aa380411f2a43cdefb9f00ff50a
-[12/33] mtd: dataflash: Follow renaming of SPI "master" to "controller"
-        commit: 44ee998db9eef84bf005c39486566a67cb018354
-[14/33] net: ks8851: Follow renaming of SPI "master" to "controller"
-        commit: 1cc711a72ae7fd44e90839f0c8d3226664de55a2
-[15/33] net: vertexcom: mse102x: Follow renaming of SPI "master" to "controller"
-        commit: 7969b98b80c0332f940c547f84650a20aab33841
-[16/33] platform/chrome: cros_ec_spi: Follow renaming of SPI "master" to "controller"
-        commit: 85ad0ec049a771c4910c8aebb2d0bd9ce9311fd9
-[17/33] spi: bitbang: Follow renaming of SPI "master" to "controller"
-        commit: 2259233110d90059187c5ba75537eb93eba8417b
-[18/33] spi: cadence-quadspi: Don't emit error message on allocation error
-        commit: e71011dacc3413bed4118d2c42f10736ffcd762c
-[19/33] spi: cadence-quadspi: Follow renaming of SPI "master" to "controller"
-        commit: 28e59d8bf1ace0ddf05f989a48d6824d75731267
-[20/33] spi: cavium: Follow renaming of SPI "master" to "controller"
-        commit: 1747fbdedba8b6b3fd459895ed5d57e534549884
-[21/33] spi: geni-qcom: Follow renaming of SPI "master" to "controller"
-        commit: 14cea92338a0776c1615994150e738ac0f5fbb2c
-[22/33] spi: loopback-test: Follow renaming of SPI "master" to "controller"
-        commit: 2c2310c17fac13aa7e78756d7f3780c7891f9397
-[23/33] spi: slave-mt27xx: Follow renaming of SPI "master" to "controller"
-        commit: 8197b136bbbe64a7cab1020a4b067020e5977d98
-[24/33] spi: spidev: Follow renaming of SPI "master" to "controller"
-        commit: d934cd6f0e5d0052772612db4b07df60cb9da387
-[25/33] staging: fbtft: Follow renaming of SPI "master" to "controller"
-        commit: bbd25d7260eeeaef89f7371cbadcd33dd7f7bff9
-[26/33] staging: greybus: spi: Follow renaming of SPI "master" to "controller"
-        commit: ee3c668dda3d2783b0fff4091461356fe000e4d8
-[27/33] tpm_tis_spi: Follow renaming of SPI "master" to "controller"
-        commit: b6af14eacc8814b0986e20507df423cebe9fd859
-[28/33] usb: gadget: max3420_udc: Follow renaming of SPI "master" to "controller"
-        commit: 8c716f4a3d4fcbec976247e3443d36cbc24c0512
-[29/33] video: fbdev: mmp: Follow renaming of SPI "master" to "controller"
-        commit: b23031e730e72ec9067b7c38c25e776c5e27e116
-[30/33] wifi: libertas: Follow renaming of SPI "master" to "controller"
-        commit: 30060d57cee194d6b70283f2faf787e2fdc61b6e
-[31/33] spi: fsl-lib: Follow renaming of SPI "master" to "controller"
-        commit: 801185efa2402dce57828930e9684884fc8d62da
-[32/33] spi: Drop compat layer from renaming "master" to "controller"
-        commit: 620d269f29a569ba37419cc03cf1da2d55f6252a
-[33/33] Documentation: spi: Update documentation for renaming "master" to "controller"
-        commit: 76b31eb4c2da3ddb3195cc14f6aad24908adf524
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+> ---
+>   drivers/iommu/mtk_iommu.c    | 2 +-
+>   drivers/iommu/mtk_iommu_v1.c | 4 ++--
+>   2 files changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 7abe9e85a570..9aae6eb604b1 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -1264,7 +1264,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>   	data->plat_data = of_device_get_match_data(dev);
+> 
+>   	/* Protect memory. HW will access here while translation fault.*/
+> -	protect = devm_kzalloc(dev, MTK_PROTECT_PA_ALIGN * 2, GFP_KERNEL);
+> +	protect = devm_kcalloc(dev, 2, MTK_PROTECT_PA_ALIGN, GFP_KERNEL);
+>   	if (!protect)
+>   		return -ENOMEM;
+>   	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
+> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+> index 25b41222abae..45cd845d153f 100644
+> --- a/drivers/iommu/mtk_iommu_v1.c
+> +++ b/drivers/iommu/mtk_iommu_v1.c
+> @@ -621,8 +621,8 @@ static int mtk_iommu_v1_probe(struct platform_device *pdev)
+>   	data->dev = dev;
+> 
+>   	/* Protect memory. HW will access here while translation fault.*/
+> -	protect = devm_kzalloc(dev, MTK_PROTECT_PA_ALIGN * 2,
+> -			GFP_KERNEL | GFP_DMA);
+> +	protect = devm_kcalloc(dev, 2, MTK_PROTECT_PA_ALIGN,
+> +			       GFP_KERNEL | GFP_DMA);
+>   	if (!protect)
+>   		return -ENOMEM;
+>   	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
+> --
+> 2.25.1
+> 
 
