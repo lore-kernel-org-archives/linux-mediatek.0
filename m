@@ -4,69 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5BEAC4829A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 15:03:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E129C48260
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 15:38:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FZ9gRGZ8IQjm6p3qMaCBKaHl+F4iXvzIGjyMSMvUllU=; b=wltMLHPqy88/Kdsm13J6F90ED4
-	6jevarf75cWD9+AudQHZKuDocccyFvzuUIpmJa/X3TvaPkwaBqT1ZvohmZi9jK2AgUXDuBvI7QIsD
-	6ld8qYfWM5s2tP0XeocvE63pdD0Z2Zy5jynUkTnF39muQCa1+n/2axMKeBKYRx50Fjuao+mrI1eN5
-	SYSB+viPuZx2QuenuQNikLl92r/J4d5xZqodi7wLY9RFQ+eRHqkp3cF8hEEGJ7cnI7Wjz1CZZpIs3
-	N+u4ASAw5YWPrd9tVmAvo9CynkIh/c4MsFoPx/ImpKN5i9n0MTsAZ4jB3HKAGb5cFg3fXcKAlOpQY
-	5IqKvsLw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZnXQ4qxGwQr7q5GWes7/A5mpaC/moLlsxNk7QmOMeyM=; b=CRkfozqPUDQLi9tjw1wNKMHnVd
+	Mg3lhKkr44IwKZep+Luhavvo+nvFibIT6XrmRo/RybW59rMFxeXSEXSjCfs6rKsxLeX5UgCCCN81z
+	l9becAZwTQOcU0Og+rKWsukydYhODGmZIjKwKRGoJ2FFNxYigSfM/g/eGEZ9hm8dNpIXy2RplcI23
+	ojWcO0EB+3gF8PPM5hLucGSGwdhrZjzC/bP6yU612H4b3CaInv+8rXEe3msvfEQjHLXSD1/cRbzKI
+	RzYX9nKkFWrnL8mzVpalHAcPXV0K3Vpy3s3CztsK7vpfz8+j2ojn0vj9wnRvT74UAgAvlrJvlPp1N
+	phhxyoGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZuJP-00000009euP-1Vxa;
-	Tue, 13 Feb 2024 15:03:07 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rZurW-00000009mf3-1irH;
+	Tue, 13 Feb 2024 15:38:22 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZuJ7-00000009ejM-1LCE;
-	Tue, 13 Feb 2024 15:02:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1707836568;
-	bh=H/NS1wz5MszGxQxdUf73HQI/xDuCHCwLKSnrFRWGIE8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=FMdph/Tfazefc6tQLDDjsOyJotzmOHrI6PRjS2Bqoj6POtkSkpRtye/VeeT74A6jo
-	 p2sxF4JcUa8uEAky/PuFY2s21pYfCa5HJhToGfcjS76/WxG8gXE5D3WMCGj0pBH7PD
-	 XUBtyMx6D4/rJ8uSs70pIjoviTtbcPvg9SEPQtBvSLohHODJjlJDkv/N6++vv8QIXa
-	 i1XVleHx6KfY+IrfXguG/4Tm0B1/T6AzFShqGQpMU0bgU94qoDERMDh7pLVUdTseD0
-	 jcDteJKEwVYFwx659jVHVGlzrzG3TOvF4jJyOMCRJv+O7JxAzK0RSJ5nbusjnkpaRV
-	 ATrSs9tl2f9cg==
-Received: from [192.168.1.42] (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B12B63782074;
-	Tue, 13 Feb 2024 15:02:45 +0000 (UTC)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Tue, 13 Feb 2024 10:02:38 -0500
-Subject: [PATCH v2 2/2] arm64: dts: mediatek: mt8186: Add missing xhci
- clock to usb controllers
+	id 1rZurT-00000009mde-3YVk
+	for linux-mediatek@lists.infradead.org;
+	Tue, 13 Feb 2024 15:38:21 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-a26f73732c5so627402366b.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 13 Feb 2024 07:38:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1707838698; x=1708443498; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZnXQ4qxGwQr7q5GWes7/A5mpaC/moLlsxNk7QmOMeyM=;
+        b=PT18dEthgq1LQsFVsaRbOlhSPUDwU3/4Eju1RYkG0e9MN4HdVB4nEfKTZ11cp+hSzS
+         7fQeW7IrH0m6EWzWg304tQJHplgC5GdRq+pRODVlIHoWlw6INSWeDjMjwBRpr23Jnl19
+         JF2MHkNAMr1f69MCPLE0S1ZtAuN1xpnbJoh25iVFsO7cMBSU8To96/vsZdnjoj3Lpj6y
+         az42dxQqBzm4up9FUZxNLIRryuxARq4KYPqjOExCuGnWS//thldlyPxm7xUXmMldKWxC
+         +OAf39/hazW6fkoZlDIJzAiLz1Ft7VHmCi/w0baEhEjyv63KECKJv7HP6AyW5702+fRG
+         FA0w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1707838698; x=1708443498;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ZnXQ4qxGwQr7q5GWes7/A5mpaC/moLlsxNk7QmOMeyM=;
+        b=NNih48rhg1yQ4wBwVd9gUa4U6pNofsebS5pD9oRtPrbMxPBzWD4vD4TLOgtDpVD24x
+         +8eicadOnhNhnibzmL1kRnkt54M+riPBTp18NCfoeGDvcv5dFHivMNJgfZgoZoxief93
+         FPsf1Nvw/6DWzb1m47lrSa9me/uML5kNnxeae3bQyea43WGz/1tLHjbF3qKZWJdAv5YS
+         Gj0N09LPeRCq1fGeic1pl6vttF2Fy1YWUoIEGAIWCDOWowtk3ZK50lHnKzaF8rfLgpRb
+         KkDfvsFk5WW8t+ThGq4GV3ZgT1IYbpC0oobG27N2p3nMLSCsl2xzTbTXr9RzB7BAGImx
+         kLww==
+X-Forwarded-Encrypted: i=1; AJvYcCX886GSrQGOVg6t6qUVvVRE42OdiO6eI5K8GZAcRjalfIaymR/3iw9i/xf45GklAy+/jjmHyysv8s40ml7Dpwz8EQ9YhEauWUQnHjB2YOLdt8hu
+X-Gm-Message-State: AOJu0YxXqXk8m1CJ9/hYeNdcP1GopkBYWuDP93DrwEiLR3Ckcecl0O1w
+	j4VO5urCa79HjfCN2yskUbnuYK7TLLZAY/STRQUiSRl31EBdS89c44NKmRNtskM=
+X-Google-Smtp-Source: AGHT+IFQPTEKE8GIeujTWJ+O7gJLgC7eeIg5F4CoqdCggtkdMtrG1xNaY7Am/TaD9442Xsd9gV9GdQ==
+X-Received: by 2002:a17:906:80d8:b0:a3c:d7a3:2eb5 with SMTP id a24-20020a17090680d800b00a3cd7a32eb5mr3320186ejx.13.1707838697905;
+        Tue, 13 Feb 2024 07:38:17 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCV/Jt54FkQUGvaJcgjM5EAn1v2bu/9jkN1Lj7ipBbd8b7vQr9GOqVEmhmnkf4cbsGZpY1XTQRUPRjPzVJOIuhUBC4O5pfQ8AsFP79gtsrG24IdttNeH8rAjoyrCJFXr6DOcwI/BkBKh4ORs4E48oXm2HjaNdLOENfJE5ZYRYsSoNWLi2Ndnfzng0SgaWdxjnkUdLb9HtTYLs+EXVJL5n+NyFJcW+/nvh0+a1f6Lk2w48tyDDCbIU75Bw1S8ASIMpdgmOUO14ndWZz8J8F9f0aQtQyJ2CT/DKqdevCXGcnvY1DEBXR7Zbicfpl2CpoEn5hMIjP9smT30sVxkLv4Zo1o8ZN5zuQasvrazBLjVfoWfiMYveQ77MIxTJYnw2Cq7qRM0PovQZ4Z/+chjXR//XwB68d+7WucPhdqEDfr8m6bkIy8VMs0JCDHTsxjZl3yt4oBYgBb4pxt2f4UK27GzOxGGmPRq
+Received: from linaro.org ([188.24.162.93])
+        by smtp.gmail.com with ESMTPSA id tx9-20020a1709078e8900b00a3d23a4e8fdsm169762ejc.90.2024.02.13.07.38.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 Feb 2024 07:38:17 -0800 (PST)
+Date: Tue, 13 Feb 2024 17:38:16 +0200
+From: Abel Vesa <abel.vesa@linaro.org>
+To: Neil Armstrong <neil.armstrong@linaro.org>
+Cc: Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Srini Kandagatla <srinivas.kandagatla@linaro.org>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH RFC v2] spmi: pmic-arb: Add support for multiple buses
+Message-ID: <ZcuM6ChFFN6pIlrf@linaro.org>
+References: <20240213-spmi-multi-master-support-v2-1-b3b102326906@linaro.org>
+ <3fcb9f16-61f8-4544-a319-20496d5eb106@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20240213-mt8186-ssusb-domain-clk-fix-v2-2-1f981d35f3fd@collabora.com>
-References: <20240213-mt8186-ssusb-domain-clk-fix-v2-0-1f981d35f3fd@collabora.com>
-In-Reply-To: <20240213-mt8186-ssusb-domain-clk-fix-v2-0-1f981d35f3fd@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, 
- Eugen Hristev <eugen.hristev@collabora.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>, kernel@collabora.com, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.12.4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <3fcb9f16-61f8-4544-a319-20496d5eb106@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_070249_567976_3932512D 
-X-CRM114-Status: GOOD (  10.79  )
+X-CRM114-CacheID: sfid-20240213_073819_931158_7E80E7B4 
+X-CRM114-Status: GOOD (  36.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,63 +100,218 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mtu3 usb controllers don't list the xhci clock, though they require
-it, and thus rely on the bootloader leaving it on in order to work.
+On 24-02-13 15:55:56, Neil Armstrong wrote:
+> On 13/02/2024 15:41, Abel Vesa wrote:
+> > The v7 HW supports currently 2 buses. So register each bus as a separate
+> > spmi controller and adapt all ops to use the bus instead of the
+> > arbitrator. Legacy mode is still supported as long as there is no child
+> > node that represents a bus, instead all nodes are expected to be actual
+> > slave devices.
+> > 
+> > Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
+> > ---
+> > Changes in v2:
+> > - Reworked it so that it registers a spmi controller for each bus
+> >    rather than relying on the generic framework to pass on the bus
+> >    (master) id.
+> 
+> Thanks, I think this is better.
+> 
+> > - Link to v1: https://lore.kernel.org/r/20240207-spmi-multi-master-support-v1-0-ce57f301c7fd@linaro.org
+> > ---
+> >   drivers/spmi/spmi-pmic-arb.c | 950 ++++++++++++++++++++++++++-----------------
+> >   1 file changed, 585 insertions(+), 365 deletions(-)
+> > 
+> > diff --git a/drivers/spmi/spmi-pmic-arb.c b/drivers/spmi/spmi-pmic-arb.c
+> > index 9ed1180fe31f..eced35b712b4 100644
+> > --- a/drivers/spmi/spmi-pmic-arb.c
+> > +++ b/drivers/spmi/spmi-pmic-arb.c
+> 
+> <snip>
+> 
+> 
+> > +static int spmi_pmic_arb_bus_init(struct platform_device *pdev,
+> > +				  struct device_node *node,
+> > +				  struct spmi_pmic_arb *pmic_arb)
+> > +{
+> > +	int bus_index = pmic_arb->buses_available;
+> > +	struct spmi_pmic_arb_bus *bus = &pmic_arb->buses[bus_index];
+> > +	struct device *dev = &pdev->dev;
+> > +	struct spmi_controller *ctrl;
+> > +	void __iomem *intr;
+> > +	void __iomem *cnfg;
+> > +	int index, ret;
+> > +	u32 irq;
+> > +
+> > +	ctrl = devm_spmi_controller_alloc(dev, sizeof(*ctrl));
+> > +	if (IS_ERR(ctrl))
+> > +		return PTR_ERR(ctrl);
+> > +
+> > +	ctrl->cmd = pmic_arb_cmd;
+> > +	ctrl->read_cmd = pmic_arb_read_cmd;
+> > +	ctrl->write_cmd = pmic_arb_write_cmd;
+> > +
+> > +	bus = spmi_controller_get_drvdata(ctrl);
+> > +	bus->spmic = ctrl;
+> > +
+> > +	bus->ppid_to_apid = devm_kcalloc(dev, PMIC_ARB_MAX_PPID,
+> > +					 sizeof(*bus->ppid_to_apid),
+> > +					 GFP_KERNEL);
+> > +	if (!bus->ppid_to_apid)
+> > +		return -ENOMEM;
+> > +
+> > +	bus->apid_data = devm_kcalloc(dev, pmic_arb->max_periphs,
+> > +				      sizeof(*bus->apid_data),
+> > +				      GFP_KERNEL);
+> > +	if (!bus->apid_data)
+> > +		return -ENOMEM;
+> > +
+> > +	/* Optional property for v7: */
+> > +	of_property_read_u32(node, "qcom,bus-id", &bus_index);
+> 
+> Not sure what bindings you plan to use, but this should be the reg property.
+> 
 
-When booting with the upstream arm64 defconfig, the usb controllers will
-defer probe until modules have loaded since they have an indirect
-dependency on CONFIG_MTK_CMDQ, which is configured as a module. However
-at the point where modules are loaded, unused clocks are also disabled,
-causing the usb controllers to probe without the xhci clock enabled and
-fail to probe:
+This is already part of the old bindings (and implementation) and it's
+only used for cases where some platforms would have two separate DT
+nodes (one for each bus, v7 only) as it would specify which bus id it
+is.
 
-mtu3 11201000.usb: clks of sts1 are not stable!
-mtu3 11201000.usb: device enable failed -110
-mtu3 11201000.usb: mtu3 hw init failed:-110
-mtu3 11201000.usb: failed to initialize gadget
-mtu3: probe of 11201000.usb failed with error -110
+None of the upstream platforms use the qcom,bus-id with any other value
+than 0, currently.
 
-(and same for the one at 11281000)
+TBH, I think it should be dropped entirely.
 
-Add the missing clock for the usb controllers so that they can
-successfully probe without relying on the bootloader state.
+Also, just realized that if any platforms is using two separate
+controller nodes for each bus, this new approach will break the second
+instance as it will expect the qcom,bus-id value to still be 0.
 
-Fixes: f6c3e61c5486 ("arm64: dts: mediatek: mt8186: Add MTU3 nodes")
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8186.dtsi | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+> > +	if (bus_index != pmic_arb->buses_available) {
+> > +		dev_err(dev, "wrong bus-id value");
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	index = of_property_match_string(node, "reg-names", "cnfg");
+> > +	if (index < 0) {
+> > +		dev_err(dev, "cnfg reg region missing");
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	cnfg = devm_of_iomap(dev, node, index, NULL);
+> > +	if (IS_ERR(cnfg))
+> > +		return PTR_ERR(cnfg);
+> > +
+> > +	index = of_property_match_string(node, "reg-names", "intr");
+> > +	if (index < 0) {
+> > +		dev_err(dev, "intr reg region missing");
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	intr = devm_of_iomap(dev, node, index, NULL);
+> > +	if (IS_ERR(intr))
+> > +		return PTR_ERR(intr);
+> > +
+> > +	irq = of_irq_get_byname(node, "periph_irq");
+> > +	if (irq < 0)
+> > +		return irq;
+> > +
+> > +	bus->pmic_arb = pmic_arb;
+> > +	bus->intr = intr;
+> > +	bus->cnfg = cnfg;
+> > +	bus->irq = irq;
+> > +	bus->id = bus_index;
+> > +
+> > +	ret = pmic_arb->ver_ops->init_apid(bus, index);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	dev_dbg(&pdev->dev, "adding irq domain for bus %d\n", bus_index);
+> > +
+> > +	bus->domain = irq_domain_add_tree(dev->of_node,
+> > +					  &pmic_arb_irq_domain_ops, bus);
+> > +	if (!bus->domain) {
+> > +		dev_err(&pdev->dev, "unable to create irq_domain\n");
+> > +		return -ENOMEM;
+> > +	}
+> > +
+> > +	irq_set_chained_handler_and_data(bus->irq,
+> > +					 pmic_arb_chained_irq, bus);
+> > +
+> > +	bus->spmic->dev.of_node = node;
+> > +	dev_set_name(&bus->spmic->dev, "spmi-%d", bus_index);
+> > +
+> > +	ret = devm_spmi_controller_add(dev, bus->spmic);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	pmic_arb->buses_available++;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int spmi_pmic_arb_register_buses(struct spmi_pmic_arb *pmic_arb,
+> > +					struct platform_device *pdev)
+> > +{
+> > +	struct device *dev = &pdev->dev;
+> > +	struct device_node *node = dev->of_node;
+> > +	struct device_node *child;
+> > +	int ret;
+> > +
+> > +	for_each_available_child_of_node(node, child)
+> > +		if (of_node_name_eq(child, "bus")) {
+> 
+> It seems you use "bus" subnodes, it seems you should also submit a new
+> bindings scheme for v7 controllers with subnodes
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-index e0e5721d6b53..8c55b7225cf6 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-@@ -1536,8 +1536,9 @@ ssusb0: usb@11201000 {
- 			clocks = <&topckgen CLK_TOP_USB_TOP>,
- 				 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_REF>,
- 				 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_HCLK>,
--				 <&infracfg_ao CLK_INFRA_AO_ICUSB>;
--			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck";
-+				 <&infracfg_ao CLK_INFRA_AO_ICUSB>,
-+				 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_XHCI>;
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck", "xhci_ck";
- 			interrupts = <GIC_SPI 303 IRQ_TYPE_LEVEL_HIGH 0>;
- 			phys = <&u2port0 PHY_TYPE_USB2>;
- 			power-domains = <&spm MT8186_POWER_DOMAIN_SSUSB>;
-@@ -1601,8 +1602,9 @@ ssusb1: usb@11281000 {
- 			clocks = <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_SYS>,
- 				 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_REF>,
- 				 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_HCLK>,
--				 <&clk26m>;
--			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck";
-+				 <&clk26m>,
-+				 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_XHCI>;
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck", "xhci_ck";
- 			interrupts = <GIC_SPI 331 IRQ_TYPE_LEVEL_HIGH 0>;
- 			phys = <&u2port1 PHY_TYPE_USB2>, <&u3port1 PHY_TYPE_USB3>;
- 			power-domains = <&spm MT8186_POWER_DOMAIN_SSUSB_P1>;
+Yep, will do that.
 
--- 
-2.43.0
+> 
+> > +			ret = spmi_pmic_arb_bus_init(pdev, child, pmic_arb);
+> > +			if (ret)
+> > +				return ret;
+> > +		}
+> > +
+> > +	if (!pmic_arb->buses_available)
+> > +		ret = spmi_pmic_arb_bus_init(pdev, node, pmic_arb);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static void spmi_pmic_arb_deregister_buses(struct spmi_pmic_arb *pmic_arb)
+> > +{
+> > +	int i;
+> > +
+> > +	for (i = 0; i < pmic_arb->buses_available; i++) {
+> > +		struct spmi_pmic_arb_bus *bus = &pmic_arb->buses[i];
+> > +
+> > +		irq_set_chained_handler_and_data(bus->irq,
+> > +						 NULL, NULL);
+> > +		irq_domain_remove(bus->domain);
+> > +	}
+> > +}
+> > +
+> 
+> <snip>
+> 
+> Overall the patch is __huge__, could you split it ? Like move the bus handling
+> then add the multi-bus support in separate patches ?
 
+Sure thing.
+
+> 
+> But first please add new bindings first so we know what you expect from DT.
+
+Yep, will add another example to the existing bindings schema.
+
+> 
+> Thanks,
+> Neil
+> 
+> > 
+> > ---
+> > base-commit: 445a555e0623387fa9b94e68e61681717e70200a
+> > change-id: 20240207-spmi-multi-master-support-832a704b779b
+> > 
+> > Best regards,
+> 
 
