@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0534C48260
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 17:49:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 093E9C4829A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 18:18:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jwK0ZRdw+ZZP+NmaRIfgCMzdM4hH0LCJ4MMtwdvGUQs=; b=EkSJIfdlGX+m0seQOGLhyBpLo5
-	t32D8iSkXO88ooaEgZvspIfhxPJgZcI8/5vOdUH8j+3EmMHNOLJaiHAtL/lEUlzeRvpVN0ILJPluN
-	yjjI1aqeHzq8EFQs8OpRfdcD4/wZDAYc/G7z2De9RpAvpsPfli+RVXIKmp3ZREtynTsK90di4h6FM
-	VQ52PuGUYdLQt0Q2ruemkcF9Z3kibXKJ8BObzAc4w5Zu9uGjAAOMnDpbY5CFBJ6hKlO5FZspfZHLT
-	0ttjyMH+kLQMXJoirAwiCktEyoYsRFwLrQ21VA4BZdvklxEFZD/rJ6h+SCpBq5qt1P+zY3Ioj0kyA
-	udzige3A==;
+	bh=cBFL/3PYVNz5qdVBVK4ezaluQB9BafitOXE3lH3QRaI=; b=EcRUztoSbb+kcPQU46GSlOfr12
+	W2Kqo55iLEsLL3P3VqsTb7bbAGoQqUw+D/vhxZeIQpNNM75+kLMeuIQ490+foGtXLeVHzpCqJ0jzM
+	dOzA3CwNp3pCMhMIR8dWS0laTHh2YhNQrO6IocDz2/1WLmro6NAxxipPBTeTZX0n+ZQV9FTVVumE3
+	jH2AkLkUL2SoP8pD1LTmXA1kWZxBnY3dJ7Q4dzVH40wuXXELlpmVZiJKf3khhmPS+OJbNWIm1uNq2
+	546qyXNAyFJzqQuf0XEP82fk0FEiUTqeSVio7tlQyI1hPdoI/ebTuPkuIxGi6l87zWTFbrQef52aG
+	eKf24LrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZwu8-0000000AC1c-2Cni;
-	Tue, 13 Feb 2024 17:49:12 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1rZxMk-0000000AI6g-2IUA;
+	Tue, 13 Feb 2024 18:18:46 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZwu5-0000000AC05-1GN8
-	for linux-mediatek@lists.infradead.org;
-	Tue, 13 Feb 2024 17:49:11 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rZwtm-0007eB-T1; Tue, 13 Feb 2024 18:48:50 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rZwtk-000Wtk-TI; Tue, 13 Feb 2024 18:48:48 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rZwtk-0046pb-2d;
-	Tue, 13 Feb 2024 18:48:48 +0100
-Date: Tue, 13 Feb 2024 18:48:48 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+	id 1rZxMh-0000000AI5u-2ZM0;
+	Tue, 13 Feb 2024 18:18:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id D6E56CE1A5C;
+	Tue, 13 Feb 2024 18:18:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57B2BC433C7;
+	Tue, 13 Feb 2024 18:18:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1707848321;
+	bh=SXLQ1pLcws2l0Xu0viSOaOO/O0DM9PSjTl8YaFye7O4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ad5JWAs5XvKh8//hxsQfl8sVNqHO31XPsh+ZF8+QSExCv6zGXvJzPT5IGPP9aRFeN
+	 0wjW8TZGBHZCHFSEVjr6P8iE+daTR0e8NnAluUKjvAT4adPufiTasPE+Uqdv0lbw8U
+	 d6gwYaWj1W00LAzE8ntx72wAfwn62hcHengKnCpS49gz2Jgy/IndIVhyMO7XFGq9E/
+	 xH6t91BnSH9I/tMgtoNLiYl8bA45jzuKULGxgMrEU/u/xgJ2WIkh9kB3oeLT22VJn6
+	 nvL6jqxyg6zvs4HTDRKb359KCTZEDNx4bYMNjFKRFU2MVTB0LH3kjxak2fyFPFRzae
+	 12mz6EtEUxCiw==
+Date: Tue, 13 Feb 2024 18:18:36 +0000
+From: Conor Dooley <conor@kernel.org>
 To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+	John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
 Subject: Re: [PATCH 1/2] dt-bindings: pwm: mediatek,mt2712: add compatible
  for MT7988
-Message-ID: <onnokyq7ciza7i7jzc74cun2khpst5iocuccks2cm433ux3za3@dou4oacrvuxj>
+Message-ID: <20240213-resource-evaluator-0754cfd5882d@spud>
 References: <20240213164633.25447-1-zajec5@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jhwaxkndpklwhxal"
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="IwSpqDfDVNcc7RLA"
 Content-Disposition: inline
 In-Reply-To: <20240213164633.25447-1-zajec5@gmail.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_094909_367390_1710C119 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20240213_101843_852275_D3EAE5C5 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,52 +82,57 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---jhwaxkndpklwhxal
+--IwSpqDfDVNcc7RLA
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-
-Hello Rafa=C5=82,
 
 On Tue, Feb 13, 2024 at 05:46:32PM +0100, Rafa=C5=82 Mi=C5=82ecki wrote:
 > From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
 >=20
 > MT7988 has on-SoC controller that can control up to 8 PWMs.
+
+I see a binding and a dts patch, but no driver patch, how come?
+
+Also, what makes this incompatibly different with the other devices in
+the binding, like the 8183?
+
+Cheers,
+Conor.
+
 >=20
 > Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
+> ---
+>  Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.ya=
+ml b/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
+> index 0fbe8a6469eb..a5c308801619 100644
+> --- a/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
+> +++ b/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
+> @@ -24,6 +24,7 @@ properties:
+>            - mediatek,mt7629-pwm
+>            - mediatek,mt7981-pwm
+>            - mediatek,mt7986-pwm
+> +          - mediatek,mt7988-pwm
+>            - mediatek,mt8183-pwm
+>            - mediatek,mt8365-pwm
+>            - mediatek,mt8516-pwm
+> --=20
+> 2.35.3
+>=20
 
-please make sure that the email address used for sending the patch
-matches the Signed-off-by line.
-
-(It depends on the pickyness of the relevant maintainer if that is a
-stopper or not.)
-
-Assuming this patch will go in via a mediatek tree:
-
-Acked-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
-
-Thanks
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=C3=B6nig         =
-   |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---jhwaxkndpklwhxal
+--IwSpqDfDVNcc7RLA
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmXLq38ACgkQj4D7WH0S
-/k5Yxgf+MGDk4UWSSThMXzK6DjwTQdURT3za9jTq2ls/OQIHoQfyaw902waKPjVr
-mPIVGTESq0AvIpQNcZQQH8WUjNfI7at0cWPaTA/iZD07h9nMOEztTp4wP3rYwBp5
-yicKjx5McHb1nR5poDAXFudd+7v/gOgXBLPxABfx4FiOLWqnNuDJF2xwmge8mKHp
-NKlYSZk+kiCbBwsZk3LBwLqKv45TnPI2yuayws+r1jYLnmXMyRUkVQqCpX2/CUGq
-wESqm70l9ty5FmyiE86YbJkgx+b5o9Z/nJt223FluL3Ftnxfc0sABjdCI9IxmFCg
-sWhDm4LJVkrMbtBmn8VK5huxt/BXmw==
-=o3gj
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZcuyewAKCRB4tDGHoIJi
+0uxEAQDGsfDNcKZx9Z0a6eodrNyCrahRr5IkdabX4h7AqUDWPAEA17xUt82LhKde
+tA7TZ/ft3fpvv0XodKAVGbutj7bELQA=
+=znwI
 -----END PGP SIGNATURE-----
 
---jhwaxkndpklwhxal--
+--IwSpqDfDVNcc7RLA--
 
