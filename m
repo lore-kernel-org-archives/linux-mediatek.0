@@ -4,80 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E832FC4829D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 00:21:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B13CEC4829E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 00:22:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zYLniFoauEZY5ovQTwfAHpGSFksUJ/A3aqHKvRWT0p4=; b=p8HAKApgxR6RlGVSzN1PTy+xfJ
-	QF1aZwxmZwYfbIbG9qgeMwzfTPbRgvyoMzgesBOTvk+rpzBlClGROovPQEtxkAee/HticNYq1RsJj
-	IpHAa2pv8PC2l6w3/Z0ETxZkRx23y877+2TM26LR85IGGJWrGQ1HsIPb4g+jznye+z/HO4kIpII9B
-	0SJSsdKoKturQs61O26bCvvXQOgJ8KfnGxmit873ja2U86hGHNVy8eQpBv9yoCXvXJgOI6gDqyRfk
-	kcqJ6pXFyg38Kk/jUSx53p/BpOyjZ8bnUOrrjRSy4t7s1VOY52GHI7DY7ZzI3dBxUhWSqfMgy+j68
-	ETWMfJ1g==;
+	bh=N0M3vlKgD3SZyqZ71tUL/aZqIFHzAsym3l7hB6fqaZY=; b=Ut8Tu8scuZiDz4a4qduAfqqbZx
+	wMnvw/sMw2CdpnRd/2x+/V6dUhDvqWnylYhrdC9dL7AgySX9bvQSqvNC3XpKuU8q63ZvsikfNLMwu
+	7Y+F0FHhsPaLJ0/MbyHxRfpGulh0MmQM/olswzb3EFuq+jvkTfTi2VzxJODwq6HKYxn0lVDnOw4oU
+	mb1Q0JjIF8sSDQ/vTvfxQp9/4MYfa5bPqXWM73i63CwK3vcgE9U7mbJ09vpUqCzhK/kryr2RqdAsD
+	5ArCOEX7uCgP1IwDeg1/suyMCuF8rwg6oOgEnRMawQGTYuuzLLYvuNgj5ACRL/kKK5tFV2+SqsJT8
+	s9a+OB5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZgYO-00000007NWq-25ie;
-	Tue, 13 Feb 2024 00:21:40 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rZgZV-00000007NwW-1VsO;
+	Tue, 13 Feb 2024 00:22:49 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZgYK-00000007NV4-3aQM;
-	Tue, 13 Feb 2024 00:21:38 +0000
+	id 1rZgZS-00000007NvQ-1GHX;
+	Tue, 13 Feb 2024 00:22:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 31DED611D9;
-	Tue, 13 Feb 2024 00:21:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 694A9C433F1;
-	Tue, 13 Feb 2024 00:21:33 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C6A6F611EE;
+	Tue, 13 Feb 2024 00:22:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF312C43399;
+	Tue, 13 Feb 2024 00:22:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707783695;
-	bh=g2u1j3aPbsPh2d5A6m5TpM+/8oeyM+LqEmkbciEdN4A=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=DLwVkvXdshJA++ULZAs+bWFdHGzN8rP9AyCYVFD6DPoPB2qY76GhZP5MYpadTPv4p
-	 D1758UrhWNzU3hyiqvvPyF0StSwc2NhgG3MPla7ug4xtIUwxlfjt53EM4AhKxEeYuj
-	 WZwU91sVqqbs/JBjdSAfPEdeC3fBduqw1lxLYUIfGYN6hzXwelwDecmIt6tF3Yq/WP
-	 0+sIPYqfQcOjPpScPOI7ysnaK5Oi/HVU1ngrFp9rkvuhvlyawSseoLbQm3mvSkQSYm
-	 r89wEyLTNs1uNItlN/90R/XEW22GGFa4dViGiYrG9N2xJToLalQDpBPpzZkDyhr2zt
-	 EnNoESKu7Ln6A==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Alice Chao <alice.chao@mediatek.com>,
-	Stanley Jhu <chu.stanley@gmail.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	"Martin K . Petersen" <martin.petersen@oracle.com>,
-	Sasha Levin <sashal@kernel.org>,
-	jejb@linux.ibm.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	stanley.chu@mediatek.com,
-	avri.altman@wdc.com,
-	quic_cang@quicinc.com,
-	quic_nguyenb@quicinc.com,
-	peter.wang@mediatek.com,
-	beanhuo@micron.com,
-	manivannan.sadhasivam@linaro.org,
-	quic_ziqichen@quicinc.com,
-	athierry@redhat.com,
-	linux-scsi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 31/51] scsi: ufs: core: Fix shift issue in ufshcd_clear_cmd()
-Date: Mon, 12 Feb 2024 19:20:08 -0500
-Message-ID: <20240213002052.670571-31-sashal@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240213002052.670571-1-sashal@kernel.org>
-References: <20240213002052.670571-1-sashal@kernel.org>
+	s=k20201202; t=1707783765;
+	bh=TuTEr8omUxfqM1O8DocELWTt9yAKpzvpGXNjHsPxxuc=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=O5jKDBM0g7YIMdQomXfz1EQQYXPp37dpkB4EONhCwaIyb0zjxJCTGjHrZ/5TroElx
+	 Bzp0e5kFbTmwK6t28wyoWt/fBp7Fixsbd6mWPSWid2Ore7tNbIwlNE7YT57QPQPzXM
+	 PZadVo5wKMlLuZTowenZP9hVkjfSqkcgCaESHfYXE7OlUXW66va3IUrGWFZd5cyM7T
+	 TIhWZx1SwFIgqa7Zo8rVTtomiFD7xJcdpfFm9ZXlH8pa9VIqtVWY7YWKYbOBUAECyR
+	 F8yL2UCW4RJ+hOggfVngUXf+prjvJuhXRGRQ0i6e1IkrNFRxAxeq6az9LQtZ+sawD8
+	 fMSgyCqhGKuEw==
+Date: Mon, 12 Feb 2024 16:22:44 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Elad Yifee <eladwf@gmail.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, Mark
+ Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Russell King
+ <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v3] net: ethernet: mtk_eth_soc: ppe: add
+ support for multiple PPEs
+Message-ID: <20240212162244.3c011072@kernel.org>
+In-Reply-To: <20240210135620.28368-1-eladwf@gmail.com>
+References: <Zcdtb-eyvxzX9yPe@makrotopia.org>
+	<20240210135620.28368-1-eladwf@gmail.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.16
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240212_162137_021128_93AAE695 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20240212_162246_418471_43470313 
+X-CRM114-Status: GOOD (  17.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,85 +79,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Alice Chao <alice.chao@mediatek.com>
+On Sat, 10 Feb 2024 15:56:07 +0200 Elad Yifee wrote:
+> Add the missing pieces to allow multiple PPEs units, one for each GMAC.
+> mtk_gdm_config has been modified to work on targted mac ID,
+> the inner loop moved outside of the function to allow unrelated
+> operations like setting the MAC's PPE index.
 
-[ Upstream commit b513d30d59bb383a6a5d6b533afcab2cee99a8f8 ]
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index a6e91573f8da..5d5cf73a5d5a 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -2010,6 +2010,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+>  	struct mtk_rx_dma_v2 *rxd, trxd;
+>  	int done = 0, bytes = 0;
+>  	dma_addr_t dma_addr = DMA_MAPPING_ERROR;
+> +	u8 ppe_index = 0;
 
-When task_tag >= 32 (in MCQ mode) and sizeof(unsigned int) == 4, 1U <<
-task_tag will out of bounds for a u32 mask. Fix this up to prevent
-SHIFT_ISSUE (bitwise shifts that are out of bounds for their data type).
+Please don't use u8 for basic on-stack variables unless it matches some
+HW field which is 8b.
 
-[name:debug_monitors&]Unexpected kernel BRK exception at EL1
-[name:traps&]Internal error: BRK handler: 00000000f2005514 [#1] PREEMPT SMP
-[name:mediatek_cpufreq_hw&]cpufreq stop DVFS log done
-[name:mrdump&]Kernel Offset: 0x1ba5800000 from 0xffffffc008000000
-[name:mrdump&]PHYS_OFFSET: 0x80000000
-[name:mrdump&]pstate: 22400005 (nzCv daif +PAN -UAO)
-[name:mrdump&]pc : [0xffffffdbaf52bb2c] ufshcd_clear_cmd+0x280/0x288
-[name:mrdump&]lr : [0xffffffdbaf52a774] ufshcd_wait_for_dev_cmd+0x3e4/0x82c
-[name:mrdump&]sp : ffffffc0081471b0
-<snip>
-Workqueue: ufs_eh_wq_0 ufshcd_err_handler
-Call trace:
- dump_backtrace+0xf8/0x144
- show_stack+0x18/0x24
- dump_stack_lvl+0x78/0x9c
- dump_stack+0x18/0x44
- mrdump_common_die+0x254/0x480 [mrdump]
- ipanic_die+0x20/0x30 [mrdump]
- notify_die+0x15c/0x204
- die+0x10c/0x5f8
- arm64_notify_die+0x74/0x13c
- do_debug_exception+0x164/0x26c
- el1_dbg+0x64/0x80
- el1h_64_sync_handler+0x3c/0x90
- el1h_64_sync+0x68/0x6c
- ufshcd_clear_cmd+0x280/0x288
- ufshcd_wait_for_dev_cmd+0x3e4/0x82c
- ufshcd_exec_dev_cmd+0x5bc/0x9ac
- ufshcd_verify_dev_init+0x84/0x1c8
- ufshcd_probe_hba+0x724/0x1ce0
- ufshcd_host_reset_and_restore+0x260/0x574
- ufshcd_reset_and_restore+0x138/0xbd0
- ufshcd_err_handler+0x1218/0x2f28
- process_one_work+0x5fc/0x1140
- worker_thread+0x7d8/0xe20
- kthread+0x25c/0x468
- ret_from_fork+0x10/0x20
+> @@ -3358,6 +3350,8 @@ static int mtk_open(struct net_device *dev)
+>  	struct mtk_mac *mac = netdev_priv(dev);
+>  	struct mtk_eth *eth = mac->hw;
+>  	int i, err;
+> +	struct mtk_mac *target_mac;
+> +	const u8 ppe_num = mtk_get_ppe_num(eth);
 
-Signed-off-by: Alice Chao <alice.chao@mediatek.com>
-Link: https://lore.kernel.org/r/20240205104905.24929-1-alice.chao@mediatek.com
-Reviewed-by: Stanley Jhu <chu.stanley@gmail.com>
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
-Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/ufs/core/ufshcd.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+nit: Please order variable decl lines longest to shortest.
+If the order breaks init, you should move the init to the body.
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 44e0437bd19d..f6c83dcff8a8 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -2949,7 +2949,7 @@ bool ufshcd_cmd_inflight(struct scsi_cmnd *cmd)
-  */
- static int ufshcd_clear_cmd(struct ufs_hba *hba, u32 task_tag)
- {
--	u32 mask = 1U << task_tag;
-+	u32 mask;
- 	unsigned long flags;
- 	int err;
- 
-@@ -2967,6 +2967,8 @@ static int ufshcd_clear_cmd(struct ufs_hba *hba, u32 task_tag)
- 		return 0;
- 	}
- 
-+	mask = 1U << task_tag;
-+
- 	/* clear outstanding transaction before retry */
- 	spin_lock_irqsave(hba->host->host_lock, flags);
- 	ufshcd_utrl_clear(hba, mask);
+It's a bit unclear what the difference between ppe_num, num_ppe and
+ppe_index, id and ppe_idx are. It'd be good to increase the naming
+consistency.
+
+> @@ -1311,6 +1313,7 @@ struct mtk_eth {
+>  struct mtk_mac {
+>  	int				id;
+>  	phy_interface_t			interface;
+> +	u8			ppe_idx;
+
+this looks misaligned
+
+>  	int				speed;
+>  	struct device_node		*of_node;
+>  	struct phylink			*phylink;
+
+When you repost please do not reply in the same thread.
+Start a new one. 
+
+https://www.kernel.org/doc/html/next/process/maintainer-netdev.html#resending-after-review
+
 -- 
-2.43.0
-
+pw-bot: cr
 
