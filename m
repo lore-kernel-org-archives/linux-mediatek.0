@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 093E9C4829A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 18:18:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 234C2C4829A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 18:27:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cBFL/3PYVNz5qdVBVK4ezaluQB9BafitOXE3lH3QRaI=; b=EcRUztoSbb+kcPQU46GSlOfr12
-	W2Kqo55iLEsLL3P3VqsTb7bbAGoQqUw+D/vhxZeIQpNNM75+kLMeuIQ490+foGtXLeVHzpCqJ0jzM
-	dOzA3CwNp3pCMhMIR8dWS0laTHh2YhNQrO6IocDz2/1WLmro6NAxxipPBTeTZX0n+ZQV9FTVVumE3
-	jH2AkLkUL2SoP8pD1LTmXA1kWZxBnY3dJ7Q4dzVH40wuXXELlpmVZiJKf3khhmPS+OJbNWIm1uNq2
-	546qyXNAyFJzqQuf0XEP82fk0FEiUTqeSVio7tlQyI1hPdoI/ebTuPkuIxGi6l87zWTFbrQef52aG
-	eKf24LrA==;
+	bh=EEomQul/5eCObV/qD4WM2mcnanKsiiwtICoSctvTsiI=; b=oiLct+33z6WGumnSNsPu4FA349
+	IYzFX7pta4vTqlelR9I1ZHfgsz8fXNiN4L2/72y7u30qvIw3GJy2AT5kbdBk/uo/g9CjSikT96taa
+	wIqnD5wSERJe6LHkws7H6rBpHQipORJY8SPNqearnH5gbXGkMmv3CnuNXQArUdWpfZNZaZpRfJk4v
+	2ukfgZd5D7Fkpe07hT6ClZdYB/wsSiB2GJGOhMJZPLi43fbqHikvwYsyLxPADxf2xX7B28kFEd4we
+	bBuQQOLZb6XLALCJZvSyka4CcKzBuj7lOTjnLPz7sf7OBnsFb5kdxPipaPI7RhFW0x89QUTXubw7b
+	VpATy+Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZxMk-0000000AI6g-2IUA;
-	Tue, 13 Feb 2024 18:18:46 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rZxV1-0000000AJfm-1TTE;
+	Tue, 13 Feb 2024 18:27:19 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZxMh-0000000AI5u-2ZM0;
-	Tue, 13 Feb 2024 18:18:44 +0000
+	id 1rZxUx-0000000AJeo-47y3;
+	Tue, 13 Feb 2024 18:27:17 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id D6E56CE1A5C;
-	Tue, 13 Feb 2024 18:18:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57B2BC433C7;
-	Tue, 13 Feb 2024 18:18:38 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 51DD66163F;
+	Tue, 13 Feb 2024 18:27:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F0996C433F1;
+	Tue, 13 Feb 2024 18:27:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707848321;
-	bh=SXLQ1pLcws2l0Xu0viSOaOO/O0DM9PSjTl8YaFye7O4=;
+	s=k20201202; t=1707848834;
+	bh=EEomQul/5eCObV/qD4WM2mcnanKsiiwtICoSctvTsiI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ad5JWAs5XvKh8//hxsQfl8sVNqHO31XPsh+ZF8+QSExCv6zGXvJzPT5IGPP9aRFeN
-	 0wjW8TZGBHZCHFSEVjr6P8iE+daTR0e8NnAluUKjvAT4adPufiTasPE+Uqdv0lbw8U
-	 d6gwYaWj1W00LAzE8ntx72wAfwn62hcHengKnCpS49gz2Jgy/IndIVhyMO7XFGq9E/
-	 xH6t91BnSH9I/tMgtoNLiYl8bA45jzuKULGxgMrEU/u/xgJ2WIkh9kB3oeLT22VJn6
-	 nvL6jqxyg6zvs4HTDRKb359KCTZEDNx4bYMNjFKRFU2MVTB0LH3kjxak2fyFPFRzae
-	 12mz6EtEUxCiw==
-Date: Tue, 13 Feb 2024 18:18:36 +0000
+	b=t9har22VlNjrYsAPs23QWx5F8JakOzwdFC/1lruS/tKrJ6yCdOKacC/pvKcHDz4Xz
+	 6a547DH5vES8zAB0+Ko3c4DV1ft+UNzaCM4D6spIfaDUQ1h/aPuGS8GYeyPgk6tg32
+	 rlR7/TpUrkBx0FKXGTeMjckIYwUa9s7YsPM6COPcWvtlCKj/ubPqjXtDePdZsirvde
+	 mY/lo93ZMjgCRU+pvuqePeywS2cVeHqY+3ji+wb/9rlI0a/fpehdZilUY0UnO3aIfp
+	 lzFcAhNF5MWxuBrSqHW2vyp6dJAmALqiOt1eVe140g3DjeiKBJV5ijVytal/2mA1AJ
+	 yeT1Lu9qurpqw==
+Date: Tue, 13 Feb 2024 18:27:09 +0000
 From: Conor Dooley <conor@kernel.org>
 To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>,
@@ -49,24 +49,25 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Daniel Golle <daniel@makrotopia.org>, linux-usb@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-Subject: Re: [PATCH 1/2] dt-bindings: pwm: mediatek,mt2712: add compatible
- for MT7988
-Message-ID: <20240213-resource-evaluator-0754cfd5882d@spud>
-References: <20240213164633.25447-1-zajec5@gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: usb: mtk-xhci: add compatible for MT7988
+Message-ID: <20240213-shortlist-unhook-7e7cc4e66c0a@spud>
+References: <20240213130044.1976-1-zajec5@gmail.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="IwSpqDfDVNcc7RLA"
+	protocol="application/pgp-signature"; boundary="pHlTLsj5De7/cwug"
 Content-Disposition: inline
-In-Reply-To: <20240213164633.25447-1-zajec5@gmail.com>
+In-Reply-To: <20240213130044.1976-1-zajec5@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_101843_852275_D3EAE5C5 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20240213_102716_094034_04659B9E 
+X-CRM114-Status: UNSURE (   8.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,57 +83,33 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---IwSpqDfDVNcc7RLA
+--pHlTLsj5De7/cwug
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Feb 13, 2024 at 05:46:32PM +0100, Rafa=C5=82 Mi=C5=82ecki wrote:
+On Tue, Feb 13, 2024 at 02:00:43PM +0100, Rafa=C5=82 Mi=C5=82ecki wrote:
 > From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
 >=20
-> MT7988 has on-SoC controller that can control up to 8 PWMs.
+> MT7988 SoC contains two on-SoC XHCI controllers. Add proper binding.
+>=20
+> Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
 
-I see a binding and a dts patch, but no driver patch, how come?
-
-Also, what makes this incompatibly different with the other devices in
-the binding, like the 8183?
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
 Cheers,
 Conor.
 
->=20
-> Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
-> ---
->  Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.ya=
-ml b/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
-> index 0fbe8a6469eb..a5c308801619 100644
-> --- a/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
-> +++ b/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
-> @@ -24,6 +24,7 @@ properties:
->            - mediatek,mt7629-pwm
->            - mediatek,mt7981-pwm
->            - mediatek,mt7986-pwm
-> +          - mediatek,mt7988-pwm
->            - mediatek,mt8183-pwm
->            - mediatek,mt8365-pwm
->            - mediatek,mt8516-pwm
-> --=20
-> 2.35.3
->=20
-
---IwSpqDfDVNcc7RLA
+--pHlTLsj5De7/cwug
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZcuyewAKCRB4tDGHoIJi
-0uxEAQDGsfDNcKZx9Z0a6eodrNyCrahRr5IkdabX4h7AqUDWPAEA17xUt82LhKde
-tA7TZ/ft3fpvv0XodKAVGbutj7bELQA=
-=znwI
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZcu0fQAKCRB4tDGHoIJi
+0rlwAP4zf4fOz8BYPdkqy1M5Qin5dK9+hRmGcVhgbwy2Ggv7jQD/V8NfIOo4BDHi
+iI7P2IJcaXKvELYNAQLya8Fj3+maVAQ=
+=fc+4
 -----END PGP SIGNATURE-----
 
---IwSpqDfDVNcc7RLA--
+--pHlTLsj5De7/cwug--
 
