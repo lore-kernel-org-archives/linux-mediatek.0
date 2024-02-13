@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82ACDC48260
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 09:11:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAFABC4829A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 09:11:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bOt8+bcmDSYQ3g9plGhzRK8jFRpez9YF24zMgIx2iIU=; b=R2SHtYQcbDJ8AC
-	ENWo1kw1XDPjb/cj9NvXxO2mVcr9QbHvi8FYim/GbGi8SiJJ7/73nGX+xcDVu9r6w25sWVptOqQAb
-	lh+KCYdZv1LyOYfnqnrzG/ASZ/ws628X5ugwadDzjWZkFdCUIyJ3SGlpjBDft0LvUGWeN/5cfI35c
-	zhcbgIiHRwg/J2QubqbX+JKHEtBDlxTPQH+T4UNqjMgq10xZ7KC7zTq/oI24YUzbiuXXc8r7LP3ys
-	6qwWSKDYfCr1LntD8vfT23JIHvHGvbisATYDkrPADNVFTaaQgelp1dijNqbNMUr7LFNQUZp1lxRkj
-	iyj3MZzJ54zmjaIeeg9A==;
+	List-Owner; bh=1KH6fXAJ0ecDV0A+59qPPqUMqXNUC50ZM/bFfijbgs0=; b=Im+IDb+0slCzEs
+	bdea/EE0oNmzcv9oMG3yG26DslWuLOvdOgjiMWwRinXtQsBSqsdddqTWI0ctrbLfFocxsDLditPhG
+	1RRIGPip/ZU+2gVwI9IuW2Q9pBiOrPSlZB+rC6uQ7TfdwwRPAz8kF9cUgrrXbSoJ8JnkcrKc4hJHz
+	kma+BuDzqiQ+T3MsfdOx5CcoUFVpAYnYyynrVAELC7Hj3C1v8ZSDB+vyCNSxMcn4Fz3RZTB8uAR2k
+	tOB/z14BUUry8Il6ZqnzU3q4KLsks/n9vbVBlNh+fQlQjGutXJ8glrV9hUv0I66FW+I0SI5oro59A
+	bOV1aUcdtWw1vZ8RnIhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZopF-00000008YmD-0tpg;
-	Tue, 13 Feb 2024 09:11:37 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rZopM-00000008Yps-1Z9a;
+	Tue, 13 Feb 2024 09:11:44 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZopB-00000008YlO-2b80;
-	Tue, 13 Feb 2024 09:11:35 +0000
+	id 1rZopI-00000008Ylr-09Iv;
+	Tue, 13 Feb 2024 09:11:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1707815492;
-	bh=9knv+ODPdDJCuZiyTJw6oxKEkgd2kVoris7GQl7tfmQ=;
+	s=mail; t=1707815495;
+	bh=ndqYmeV6A7b8wwtcMLEgfQaIjNxznoUbQ2OiauorsUQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=y3/SvmFTdf2l5qEhn9PHwYdshIWEor+YHOecyE4Dl1L60lJC3BmxG1wgZqYOB/C46
-	 FeTF8rFnpwEhTIFWyd2g+xZPI/VQYB+EYLUWw5Yv3ILrsQtSGT5+v8oOV18X8S7kyd
-	 C/K+rugmFEX2HkkNDUZUsbTKGPIekpUBl2hjCYlZdMVp1v4wLSKsJn6h44rgIMPIzT
-	 Krh/x0zxozFpfbufTtxxI8Uqt1BsWQUo5PHROhlx8SgabK4MURIzMfqI5uKEGkVoS0
-	 7XRxqCVrP4nNpnVcl23YJOR80Eds3xR1cEsyO8i1XSI9Jn47fbmg7V10QGIZKVn2//
-	 0Y+0bC8YPcoKQ==
+	b=VFNbAmdXYnSU7RJeTXfc2p0xK2QlMFrboEiAnzkmNckehmgpiOI3z6XEJrbzSHktf
+	 xpBl4hGBbpCayUB1XmPI4g2AKGvIWv/Y4QvNk+7Pc3LP25YlTWTZU7QGLmqNTVE7GQ
+	 HNSvsqD13ZZ+6Dl/dxXH/2a5YF9spIMEER4Bkn2AcaUbNFUlXEh8qjdSs40tECYw3U
+	 MGtzyyvZmz8NMeIAWUqI0pyEbA1bxEMWruGoaR3JwNrPt5R9iGQ6pwgDkI9myk8wF5
+	 pugekqlBqMovfS34ISfgoHxi7/uch1T98U98xgqi3hOyeoQVHUtpxF1EeyHeMQckSB
+	 PXuaDqUkrHkBg==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 5627B3781FEF;
-	Tue, 13 Feb 2024 09:11:31 +0000 (UTC)
-Message-ID: <a99af719-4b2c-4c38-830e-b49a89971cb1@collabora.com>
-Date: Tue, 13 Feb 2024 10:11:30 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1170C3782073;
+	Tue, 13 Feb 2024 09:11:34 +0000 (UTC)
+Message-ID: <af0bda0a-2c8c-49ea-8e62-b6674b671a2f@collabora.com>
+Date: Tue, 13 Feb 2024 10:11:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: mediatek: mt7986: drop invalid thermal
- block clock
+Subject: Re: [PATCH 1/3] arm64: dts: mediatek: mt7986: drop invalid properties
+ from ethsys
 Content-Language: en-US
 To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>
 References: <20240213053739.14387-1-zajec5@gmail.com>
- <20240213053739.14387-3-zajec5@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240213053739.14387-3-zajec5@gmail.com>
+In-Reply-To: <20240213053739.14387-1-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_011133_807692_0E12D9A5 
-X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-CacheID: sfid-20240213_011140_242134_70E53190 
+X-CRM114-Status: UNSURE (   8.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,21 +81,16 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 13/02/24 06:37, Rafał Miłecki ha scritto:
 > From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> Thermal block uses only two clocks. Its binding doesn't document or
-> allow "adc_32k". Also Linux driver doesn't support it.
-> 
-> It has been additionally verified by Angelo by his detailed research on
-> MT7981 / MT7986 clocks (thanks!).
+> Mediatek ethsys controller / syscon binding doesn't allow any subnodes
+> so "#address-cells" and "#size-cells" are redundant (actually:
+> disallowed).
 > 
 > This fixes:
-> arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtb: thermal@1100c800: clocks: [[4, 27], [4, 44], [4, 45]] is too long
->          from schema $id: http://devicetree.org/schemas/thermal/mediatek,thermal.yaml#
-> arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtb: thermal@1100c800: clock-names: ['therm', 'auxadc', 'adc_32k'] is too long
->          from schema $id: http://devicetree.org/schemas/thermal/mediatek,thermal.yaml#
+> arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtb: syscon@15000000: '#address-cells', '#size-cells' do not match any of the regexes: 'pinctrl-[0-9]+'
+>          from schema $id: http://devicetree.org/schemas/clock/mediatek,ethsys.yaml#
 > 
-> Fixes: 0a9615d58d04 ("arm64: dts: mt7986: add thermal and efuse")
-> Cc: Daniel Golle <daniel@makrotopia.org>
-> Link: https://lore.kernel.org/linux-devicetree/17d143aa-576e-4d67-a0ea-b79f3518b81c@collabora.com/
+> Fixes: 1f9986b258c2 ("arm64: dts: mediatek: add clock support for mt7986a")
+> Cc: Sam Shih <sam.shih@mediatek.com>
 > Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
