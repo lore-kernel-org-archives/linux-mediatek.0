@@ -4,68 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16590C4829A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 18:52:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77D3DC48260
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 19:35:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DjPr2WSWhtcrjXsWrqNBb2JLkYeHIe+jLmn2aStuatM=; b=3ZupagQDFD3FietY7YHixPbtc9
-	KoTC0zAV/fnxXcmWD13cHoS6VIe0ilLBiwOo6ZMYjgtt4/WxAXnwp7JGHSHGFAaVyrvXLZlgA0vu3
-	2g0r3lQEN2GB/TYyRHtWTVqEe+cUug8grvK1RYfpEzLL/bE0bI1jEnCuNGe12/eoFQXISMRQpITo9
-	O9Yu8MdhIWwmpaJ1wNZ8o1MDNAsWcsXBFYUWg5dQ8Bz0LX1lDPpld8pcQooO1plgXfjUp672njgAk
-	A+mmsti0ZfXAH3OJ5bfXL8JDY7Z/fjPh6HZSHpyvlL7edKnlOPCMIAmN1qQchV3j9fZeqNjfCeNwL
-	U/SJk63Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ct125B1CTazBLiRuMgNcIu2sIluvfGhNuDxs0IMOh2E=; b=W2IU8+HGBhHnhKZc6n88jNrtU2
+	rurawVuCZS4+d31jveenm5PA3Mz6oXZExCkCHDAy9qFR2soMSsjV5q7+oZiSvx+LrARbTClqI8Qlm
+	OeL+RtPME1nV24r3JF+ia61i55ILbOjPY7lAxs51WvQsbw2owIui+B48jaZTOKT6JOHzC7B36yhiq
+	egDnbpsy8+QnWlNi47eix7+IJ7PEGZVXJTT1aGgN8PjWAVpK37pbKJ3BdoA389jITWKidJIKRWoHb
+	8/3XsOxvnGwKENcPk7taXyl+hajSELTwQCdxtCuVbUkgoAG78S8F4/SwfyCFYENsZ8DXpWk8qn8hu
+	SKosVQug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZxt5-0000000ANaK-37VC;
-	Tue, 13 Feb 2024 18:52:11 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rZyYp-0000000AUD5-3R7Z;
+	Tue, 13 Feb 2024 19:35:19 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZxt3-0000000ANZa-0eOu;
-	Tue, 13 Feb 2024 18:52:10 +0000
+	id 1rZyYj-0000000AU9z-0oMg;
+	Tue, 13 Feb 2024 19:35:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E33E6CE1BC6;
-	Tue, 13 Feb 2024 18:52:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6B245C433F1;
-	Tue, 13 Feb 2024 18:52:03 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8B20A61465;
+	Tue, 13 Feb 2024 19:35:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C2DBBC433C7;
+	Tue, 13 Feb 2024 19:35:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707850326;
-	bh=xGBGp2KusBdHqpkbLi4LaLap+E1NX9EdzDd8gu2SmTE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=a7Z8QiWk0+h2LOMo4nEXq0PRd3wd+/VTYxqc5/Ef7pM3yq3UC2DgGFntmINrSNDSG
-	 M+PQq4HFiU4dUEm0wBQbCf+JHyjXc7wH3yAOkfIoKCQahUdTqvRLH8ke4G+7wvam16
-	 1ahC4VQMc0/0TqzNuJ6u2nYylngS39s+2dxJCIafYz9Ch0neW8qalXPgAHg+xIP7BN
-	 7duhEvOPlIEMDgGKF0KnqPjxZqgp87mtbGKA6fpMqURJ5QY7UQf8y+tHdr3HfThkRK
-	 /C1F15CgY98ME9AO65lN8SPJEIDaYQW1JfhW8mrJ3XlftNWEyKwnvfYWvOChuH3XNp
-	 Wo5Z89sqGlYYQ==
-Date: Tue, 13 Feb 2024 18:52:01 +0000
-From: Conor Dooley <conor@kernel.org>
-To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-Cc: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@mediatek.com>, dmaengine@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-Subject: Re: [PATCH] dt-bindings: dma: convert MediaTek High-Speed controller
- to the json-schema
-Message-ID: <20240213-dandy-snowflake-1dabe0e88b3a@spud>
-References: <20240213063919.20196-1-zajec5@gmail.com>
+	s=k20201202; t=1707852912;
+	bh=bkYKQG1KP4Jg+1rHds/d+NL5/Q2GcTheiJ1Ko1kkshU=;
+	h=From:Date:Subject:References:In-Reply-To:List-Id:To:Cc:From;
+	b=BkgfW4hzsDgjtV38/ZRTQhCKXJMfIgS5XKucIZc6ExOSac6lo+zOnAoa2Kr0jxiTZ
+	 ZUlcwMmkiM35sgbG25gp0K+wAevsuUszIRww+7ZKbRFcnbLpqaYRPyrTfWb3wW6A9I
+	 j7ioH9Z7d6mo2UzZ2oMrqmNm/WUgV5d8zIxsSdirRSBNgmNlsfGCgvh0io2gAUxeBY
+	 NEMGbHwauDnw7jimLWwwSejWgYpl56Gr40W2bVztvjFP8ZZK3g4p3qHS/P1E9wiB58
+	 Q41YRo3UZ9qTX0QFaW5qE0LdauIFe/ZjNG9vDUGaoBMZvYKo4Tfk/YLHiiScj/3SDg
+	 MdojCr99B2Giw==
+From: Rob Herring <robh@kernel.org>
+Date: Tue, 13 Feb 2024 13:34:25 -0600
+Subject: [PATCH 1/6] arm64: dts: freescale: Disable interrupt_map check
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="qjC9HOLp6OBijnn1"
-Content-Disposition: inline
-In-Reply-To: <20240213063919.20196-1-zajec5@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240213-arm-dt-cleanups-v1-1-f2dee1292525@kernel.org>
+References: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org>
+In-Reply-To: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org>
+To: soc@kernel.org, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+ Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Tsahee Zidenberg <tsahee@annapurnalabs.com>, 
+ Antoine Tenart <atenart@kernel.org>, Joel Stanley <joel@jms.id.au>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Ray Jui <rjui@broadcom.com>, 
+ Scott Branden <sbranden@broadcom.com>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+ Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, 
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, 
+ =?utf-8?q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, Stefan Agner <stefan@agner.ch>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ =?utf-8?q?Beno=C3=AEt_Cousson?= <bcousson@baylibre.com>, 
+ Tony Lindgren <tony@atomide.com>, Chanho Min <chanho.min@lge.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Magnus Damm <magnus.damm@gmail.com>, Linus Walleij <linusw@kernel.org>, 
+ Imre Kaloz <kaloz@openwrt.org>, Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>, 
+ Masahiro Yamada <masahiroy@kernel.org>, 
+ Nathan Chancellor <nathan@kernel.org>, Nicolas Schier <nicolas@fjasle.eu>
+Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-aspeed@lists.ozlabs.org, 
+ openbmc@lists.ozlabs.org, linux-tegra@vger.kernel.org, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-omap@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+ linux-arm-msm@vger.kernel.org, linux-kbuild@vger.kernel.org
+X-Mailer: b4 0.13-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_105209_388162_3745D5D7 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20240213_113513_350274_24B0FC5B 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,34 +104,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Several Freescale Layerscape platforms extirq binding use a malformed
+interrupt-map property missing parent address cells. These are
+documented in of_irq_imap_abusers list in drivers/of/irq.c. In order to
+enable dtc interrupt_map check tree wide, we need to disable it for
+these platforms which will not be fixed (as that would break
+compatibility).
 
---qjC9HOLp6OBijnn1
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+ arch/arm64/boot/dts/freescale/Makefile | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
-On Tue, Feb 13, 2024 at 07:39:19AM +0100, Rafa=C5=82 Mi=C5=82ecki wrote:
+diff --git a/arch/arm64/boot/dts/freescale/Makefile b/arch/arm64/boot/dts/freescale/Makefile
+index 2e027675d7bb..2cb0212b63c6 100644
+--- a/arch/arm64/boot/dts/freescale/Makefile
++++ b/arch/arm64/boot/dts/freescale/Makefile
+@@ -20,23 +20,41 @@ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1046a-frwy.dtb
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1046a-qds.dtb
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1046a-rdb.dtb
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1046a-tqmls1046a-mbls10xxa.dtb
++DTC_FLAGS_fsl-ls1088a-qds := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1088a-qds.dtb
++DTC_FLAGS_fsl-ls1088a-rdb := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1088a-rdb.dtb
++DTC_FLAGS_fsl-ls1088a-ten64 := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1088a-ten64.dtb
++DTC_FLAGS_fsl-ls1088a-tqmls1088a-mbls10xxa := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1088a-tqmls1088a-mbls10xxa.dtb
++DTC_FLAGS_fsl-ls2080a-qds := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls2080a-qds.dtb
++DTC_FLAGS_fsl-ls2080a-rdb := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls2080a-rdb.dtb
++DTC_FLAGS_fsl-ls2081a-rdb := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls2081a-rdb.dtb
++DTC_FLAGS_fsl-ls2080a-simu := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls2080a-simu.dtb
++DTC_FLAGS_fsl-ls2088a-qds := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls2088a-qds.dtb
++DTC_FLAGS_fsl-ls2088a-rdb := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls2088a-rdb.dtb
++DTC_FLAGS_fsl-lx2160a-bluebox3 := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2160a-bluebox3.dtb
++DTC_FLAGS_fsl-lx2160a-bluebox3-rev-a := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2160a-bluebox3-rev-a.dtb
++DTC_FLAGS_fsl-lx2160a-clearfog-cx := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2160a-clearfog-cx.dtb
++DTC_FLAGS_fsl-lx2160a-honeycomb := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2160a-honeycomb.dtb
++DTC_FLAGS_fsl-lx2160a-qds := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2160a-qds.dtb
++DTC_FLAGS_fsl-lx2160a-rdb := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2160a-rdb.dtb
++DTC_FLAGS_fsl-lx2162a-clearfog := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2162a-clearfog.dtb
++DTC_FLAGS_fsl-lx2162a-qds := -Wno-interrupt_map
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2162a-qds.dtb
+ 
+ fsl-ls1028a-qds-13bb-dtbs := fsl-ls1028a-qds.dtb fsl-ls1028a-qds-13bb.dtbo
+@@ -53,6 +71,7 @@ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1028a-qds-85bb.dtb
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1028a-qds-899b.dtb
+ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1028a-qds-9999.dtb
+ 
++DTC_FLAGS_fsl-lx2160a-tqmlx2160a-mblx2160a := -Wno-interrupt_map
+ fsl-lx2160a-tqmlx2160a-mblx2160a-12-11-x-dtbs := fsl-lx2160a-tqmlx2160a-mblx2160a.dtb \
+ 	fsl-lx2160a-tqmlx2160a-mblx2160a_12_x_x.dtbo \
+ 	fsl-lx2160a-tqmlx2160a-mblx2160a_x_11_x.dtbo
 
-> +  "#dma-cells":
-> +    description: Channel number
+-- 
+2.43.0
 
-I think you can just remove this description if you end up doing a
-resubmission for some reason, but this looks good to me.
-Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
-
-Cheers,
-Conor.
-
---qjC9HOLp6OBijnn1
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZcu6UQAKCRB4tDGHoIJi
-0qwfAQCsjz5wMsihMi/eDMkAKpOJlXsvSKeljSH3NgN3d+2jsgEA8lLln5Z/Wazx
-tEcnartUmmlaaPue4Um+naT4WLBBvQU=
-=4BX2
------END PGP SIGNATURE-----
-
---qjC9HOLp6OBijnn1--
 
