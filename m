@@ -4,80 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB2A0C4829A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 05:38:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EC34C4829A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 05:38:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=y6whheju3NN4BqY6LFcpmmPqXluoagcef/LFMHep7Sw=; b=XgzXKQFS2Sx2FC
-	LLFNcLZLFAM61wIgIUa52lEtKnFe72R3KbGBV3Kg17+8AkTHi9LB7esAbXE1sSH0Eoix6qVscoJ9w
-	IpiLxDkvKHiwkntdTnJTedviiZ+5aJiKD1zBi4vJVt1y6lL1qVg038jFsparovzSU6YTuthQOTswD
-	SvuIJ7t/5CdjIYT4Dlwu1MuvAzgTxhAGH5xBZreiNQ8cF/0Dv8lc7SyIauzN95CsL6SBuVsfeZNoB
-	IeEsoAJQmhWi6GOjioKYLj8e7o6ERz7qeKLEWjl787usgkHOiloIniyzHOX60mcA2RM84VVhqUZ90
-	lvXczXL9LydiAOTU+tDg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GJdBOYmZsXk7rIacYxoRlSXsJMiBHH2ge7UM4axIZqE=; b=t8eawaRXO5h33j
+	kO8YubjuXoQSBypnDhdM90KoLgdqdcKN/kbx23keAHwxlqxdo6JB9n1+rA5Tf3H5L6KRiMzRoIoPW
+	4tv9cIX5L1yE6wL5Iw//6+PGDMRQX2UWVsqm0DqY+LN9gZZxZ/QBO65ZExtE6DOn3JYI7/Qvb8B5z
+	C798UsRc3OY5agxChVsHJf0kwd5w8ecTomRs1E5cozsdQBmUbIx126OxdDGPgf5NrqXKBxG2WNeXj
+	PiPUJCGm1dGfcj3E3caUBS0Lou/hsvWQjRHWwpsQIP/XBGhtE2Zbxde6uViDFR6NjWKN0FO/3ibZx
+	yGYbrzpkMRF4YMIg47/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZlUe-000000080ex-0PEE;
-	Tue, 13 Feb 2024 05:38:08 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1rZlUh-000000080gf-44ix;
+	Tue, 13 Feb 2024 05:38:11 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZlUa-000000080dq-0HTM;
-	Tue, 13 Feb 2024 05:38:05 +0000
-Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2d0f1ec376bso24337911fa.1;
-        Mon, 12 Feb 2024 21:38:02 -0800 (PST)
+	id 1rZlUc-000000080e8-0Vcr;
+	Tue, 13 Feb 2024 05:38:07 +0000
+Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-a26f73732c5so542548566b.3;
+        Mon, 12 Feb 2024 21:38:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1707802681; x=1708407481; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=y6whheju3NN4BqY6LFcpmmPqXluoagcef/LFMHep7Sw=;
-        b=FL/Yjid846NAV0OftY/ropeI3PMEshZDDfUVT2VePc5iLnC8CJz/qlZ4/5ubOJuA74
-         TU8QxPsrlF/mHge9KPaxLKE0jvWG+NG45cOW9CQzbHGCTA/NE0D+EyWqDcectvf2kgsW
-         L4ujV15ou6Gq+LWAEt3YVkPvDiTXounKKx40jc6ytXPdCqNGHpmMT+uYVoXNxLyICKet
-         SI3inyYMv4fXDh3qXOQR2JpxE6+ON1hDzmFBBPQvPuwTnj8Ky6Tcmvwi8bM4LdGr3nkt
-         d0YX82rnmC/VQri+y1myKjWIeTxEe6chPJU4r7QSahpfNoku7e2jPmtm5lwxeIVqcwbT
-         vOfQ==
+        d=gmail.com; s=20230601; t=1707802684; x=1708407484; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=GJdBOYmZsXk7rIacYxoRlSXsJMiBHH2ge7UM4axIZqE=;
+        b=KxYH2g89OkRJCpY7bg6hC3uWbdGEjUh/0ur8j4QFPXN4Jzefa0/IJweZZaecqTrODl
+         Wz37Ct68kbCgbaEZX1ri9wp/jaqTZ1l5u19aMsvlpE84Cuoj5DaQ7/5GSgnuJfz89VWf
+         h+Wp3KxjqvEnRoC70NIuHPDPF5rJo7U5scQnWypbtqWNgfvCGDl/am++EHgFvyXLiImS
+         QhHXJenXwCC4CR1oHn7YwFcBLf2LxdnQIMyJQq8OncnrYS+eBgtZLGjn7RbYz8mG1iRR
+         qS3qfN/xp2pl8TTqJ3aru3wsqyL2v1RsriMcGInKoeMC6p/Pg6CAU+kktJiUaAUexS4q
+         z6pg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707802681; x=1708407481;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=y6whheju3NN4BqY6LFcpmmPqXluoagcef/LFMHep7Sw=;
-        b=gXa/ahXsI1juCvPmMY/QwgtPaM7OWqM3B5YP0aZSWHNuTQ5Z+e2YobX1ISrOGA1De3
-         qDCcztB3XZ1hHT0wqtu2Bi0bmK/NumjigG4wFulG90GHSB8aHxaY+bzaRWRkbIvj83cg
-         3RVa7eX+uxxSWIFrf1RrghFHuj7Ecn9jITJpwSGUGnNVgySgLVyPnLlM3lB0Zdza8j5F
-         WkQn7D6ac0xciDSWrA6XHpuZWPDvwR7QR4aGlxK+5LhBcSHKsXukzai/LIezxZxZnhPa
-         ggCLOolxZ3N6+IP2K8yF5N4HXK6APRLiqfVC+oEAO0ldDxGZHNKOiEnTAQtHHS4is+Uh
-         qt8Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWeOGl5y+bfeWwyk1aZv1Xxgms3AuOkRvOvm53+/WOLicHxUslssob6h4/EdISqELWq7WaCdoQu07uxEMfgc4NneUOYDKr8lruQAVrY0QWuXyPeNW0Ey7znZ+W5C9ssqPFAgVJYvluyGePXnTnQ79MiHs1kJCZM1JI=
-X-Gm-Message-State: AOJu0YwyzmR9t0AZ5Ev9Ex4OxTaedJdl5ynQ4p6tPjZ1I6jGa3ZIP+VO
-	jMMP6lJObXbCyVVeV8pScm3hQ2Gp7McaZu58HU3gT3uNbL8HGByN
-X-Google-Smtp-Source: AGHT+IEYv4/4ALvGa72xiNOOaY7e3dOG1YKfoXOw/ZHT+6/YMgv2cMGO57rgfPdiN9NDpTVQDjxNeQ==
-X-Received: by 2002:a05:6512:ac2:b0:511:4a01:2faa with SMTP id n2-20020a0565120ac200b005114a012faamr6840591lfu.32.1707802681119;
-        Mon, 12 Feb 2024 21:38:01 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCW2tGrtBOg8KcRwmQRPgHXd6qJA+pLVnJmF6/vU3yx1sVl0gNb0EESWJdYs5iEbETyMYMJBl6Al6rNlTUDRqhCxcJjy5Cl6u7RBSbr2avovnwBm56c4ec/Qm1b9mfEwYlUwwR6hZaac86g914HXwvV/3/nIZPVB9Y0gK46QVRH0/893u5tjOCudcyilGfAwfVktFhGV51sLOJntmdksuIut8aNbUu6V1k2oyr3ljjz9kQzDLmNVc2zWFQqipiODhNpV+LrUiQJz5PB7rGqxCEjbpBqG+/YQ7pB4V1zk+KTR8lZZv3g9Nh8vpaP8GYhHgVAudqydYEcoXgKD03duxB5NCMJStAF1SKZMyK9gTko2J+Kfq6ehhk0HRpqhkYLTI+ZvGY0Fo3Ri1eoppMJeWKoLGcmfgcye/7mbGltoZ98aken7lT24sao6c4Rm9UjXSnjL8YGRpmQ07fZcXtZ4cO7tfSw6I7hGi9RmcDPIbnd/PlEeh4YKPlMxuOt41fXCTJ5sXBXdkrsT1KDsMHFcKNE=
+        d=1e100.net; s=20230601; t=1707802684; x=1708407484;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=GJdBOYmZsXk7rIacYxoRlSXsJMiBHH2ge7UM4axIZqE=;
+        b=RlxToCDGvr384wZ/f3SYwFWTKbzkjrEpa049SS+gSADrOO4wcmQWltI8oa265bIFzS
+         +o6sinLp/AjwK0Zm/g3uF+co2+k3/kidq/PlF4K3gWttrdAGBwGUUuf9EYUszX9Kg5TR
+         LvvelVaZyjkC1cEIiiPQY91Y85zo6mdgOVn+81Tl1LV9Yn2lrIS2axoXm+9OAqsA/q+W
+         tQb88KAkEWO4sK31FOKEPKW0lJeefZikiIJu3Kicot1rU/0S0baBTPavvwPFLsI3CYpK
+         B3HoK6Ix/kvjeu/n8lsFy+8WM+qz1ifGYN3HZO4mMA2Hn4YNXeMB6/re2sO1PWhQAJ1W
+         LFxA==
+X-Gm-Message-State: AOJu0YxUmottTH88JM0n1gAVFyjrb3TGhrKGUKXaurhpI0UAtSEoF4G2
+	PY/QwG55bHiIvXbA9AxfjIe5UFUdeBmD8ryPVizJ1xcpr51tRSdW
+X-Google-Smtp-Source: AGHT+IHj8PDFm9WvfH0oJ9IoTIMd7KXeKjcwCsvHZaL5xYhNGkGHRD+cGv4D2a1Wq9OVPb7T4nwSbw==
+X-Received: by 2002:a17:906:80c:b0:a3b:a32e:93c7 with SMTP id e12-20020a170906080c00b00a3ba32e93c7mr6387043ejd.55.1707802683510;
+        Mon, 12 Feb 2024 21:38:03 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUeBCncLLmXxdM4x+qvGhYPF5dNohZQ7BvWWOgtW+ELCVfJwm2MTUADPrkSQBNMn0vSzoJGhSj7xNxw84HrTmHWN3tA1/096OtfW62HnnrhwmGksJ2Th9jbC9+ZcUF0X6wcZpLSWEs1J8/6DyDsma948zAPP7rea0/+XFYuLDbxDI+tI+ce9WbFP4Ki6AeWmWJNslZsxutvyOHd4axLhDIfFN06Ht18xaTI3aKO4ivnWflaCuIsVAtfnmTusBsF2F+73JCzu+PPUQPIsRLXmONqpfkBl1X003PAX/JjVxRfcMYg8S0PSn6272jurvrZpDQ1yFJVa41eaMcNz5L81yAS1wOWryAv1nR4mkG5c9smVAngEyC8zaoeTQKBz6aBU2qpm1lrOEtYNIrGuqZEkvyrTIBIcG356tUBE63GM+9v9XvTcQfK1Pc1yAaeMZTDCwkdkyB3FJExDpnhHO8WBFbI9XX810EgDsMLeZMxUIrO2UKq43pBcWCGhrcsgbD64SrGsOwy1MwX02KXDiMgVXo=
 Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id ll9-20020a170907190900b00a3d125b9c0asm16659ejc.81.2024.02.12.21.37.59
+        by smtp.gmail.com with ESMTPSA id ll9-20020a170907190900b00a3d125b9c0asm16659ejc.81.2024.02.12.21.38.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Feb 2024 21:38:00 -0800 (PST)
+        Mon, 12 Feb 2024 21:38:03 -0800 (PST)
 From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>
-Subject: [PATCH 1/3] arm64: dts: mediatek: mt7986: drop invalid properties from ethsys
-Date: Tue, 13 Feb 2024 06:37:37 +0100
-Message-Id: <20240213053739.14387-1-zajec5@gmail.com>
+Subject: [PATCH 2/3] arm64: dts: mediatek: mt7986: drop "#reset-cells" from Ethernet controller
+Date: Tue, 13 Feb 2024 06:37:38 +0100
+Message-Id: <20240213053739.14387-2-zajec5@gmail.com>
 X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20240213053739.14387-1-zajec5@gmail.com>
+References: <20240213053739.14387-1-zajec5@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240212_213804_149936_9A08E3F2 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20240212_213806_185495_9097BDA9 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,34 +97,32 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Rafał Miłecki <rafal@milecki.pl>
 
-Mediatek ethsys controller / syscon binding doesn't allow any subnodes
-so "#address-cells" and "#size-cells" are redundant (actually:
-disallowed).
+Ethernet block doesn't include or act as a reset controller.
+Documentation also doesn't document "#reset-cells" for it.
 
 This fixes:
-arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtb: syscon@15000000: '#address-cells', '#size-cells' do not match any of the regexes: 'pinctrl-[0-9]+'
-        from schema $id: http://devicetree.org/schemas/clock/mediatek,ethsys.yaml#
+arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtb: ethernet@15100000: Unevaluated properties are not allowed ('#reset-cells' was unexpected)
+        from schema $id: http://devicetree.org/schemas/net/mediatek,net.yaml#
 
-Fixes: 1f9986b258c2 ("arm64: dts: mediatek: add clock support for mt7986a")
-Cc: Sam Shih <sam.shih@mediatek.com>
+Fixes: 082ff36bd5c0 ("arm64: dts: mediatek: mt7986: introduce ethernet nodes")
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 ---
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 2 --
- 1 file changed, 2 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-index b3f416b9a7a4..228e02954e85 100644
+index 228e02954e85..f3a2a89fada4 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-@@ -492,8 +492,6 @@ ethsys: syscon@15000000 {
- 			 compatible = "mediatek,mt7986-ethsys",
- 				      "syscon";
- 			 reg = <0 0x15000000 0 0x1000>;
--			 #address-cells = <1>;
--			 #size-cells = <1>;
- 			 #clock-cells = <1>;
- 			 #reset-cells = <1>;
- 		};
+@@ -554,7 +554,6 @@ eth: ethernet@15100000 {
+ 					  <&topckgen CLK_TOP_SGM_325M_SEL>;
+ 			assigned-clock-parents = <&apmixedsys CLK_APMIXED_NET2PLL>,
+ 						 <&apmixedsys CLK_APMIXED_SGMPLL>;
+-			#reset-cells = <1>;
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+ 			mediatek,ethsys = <&ethsys>;
 -- 
 2.35.3
 
