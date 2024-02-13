@@ -4,87 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C58FC48260
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 13:07:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16475C4829A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 14:13:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gVxaJna0CX31UM9puZRZMf8QLphdGcrpZmzcpVwpquM=; b=zxPb87kZl2Nppxha3tM0SjFk3p
-	PRTm9A2OOTuFk8WkKKpO1qGAaoZqsG/XKJ+iGGprpYI9wFpliEReJ3yd9d8JhHcY5hKp2AAu+egTv
-	bsGMQ+XUt9sCR5GvUQCfpiYzRdJ0lR1D8TTArSkBZ8VfMClTi5mcxkXViBwmTLfaBX98FE97XFOyX
-	1wzqlADoQqfjD0hvMMavBQo5lhjUxstmJe78b/BaU9w0W40cjBqWhhVilObNNXtK40J3Lzq3UXMXP
-	ZtsPeC9fnk94tIIl3ySu+A1Le5wnDBQZzB0cKo624Yewvu7xsot4PtNU0eKfitWZucB/J81h8a/lL
-	7UdGbVRg==;
+	bh=Qmq2UPFRqaq5ws3fnqDxJqDcSha4yTKtswPkJsibWOY=; b=sMGviG8PVVAhkZyUn6S5YhnuH1
+	Mn0J7NAg1f7zfDWK1fe3MuXdKXOoxeNjMEI10qlGGGhYvL9hY5MbXhEpu5Kt7+52VeJJlsURd0n/K
+	BHoxQZGZFdoEOusy+LiaHT+Y44fgrVYt64eoZntVX1F93tGexvSiG0hW3oJigA2IHXOzeACXhs3n4
+	mPBwkI2Ei97qj3ojg9BBRI30YDUwsTgAi91Cw1/InnLKNSRQkEdMkv/rFoH7uJ4FVwb9uLC9P8Lbf
+	z/BSwqJjiMtuMoigBFw6YpAQ2R4W4wMSa5MYHPfhQhzImpVdWFOn/f8TniAyex8N4I6RGcCMuex6U
+	Bz+M6xdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZsVS-00000009HiP-44q1;
-	Tue, 13 Feb 2024 13:07:26 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1rZtXT-00000009SoD-0Prb;
+	Tue, 13 Feb 2024 14:13:35 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZsVP-00000009HgN-3mad
+	id 1rZtXP-00000009SlU-09Nr
 	for linux-mediatek@lists.infradead.org;
-	Tue, 13 Feb 2024 13:07:25 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a3ce9a33fd8so157020266b.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 13 Feb 2024 05:07:23 -0800 (PST)
+	Tue, 13 Feb 2024 14:13:33 +0000
+Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-5112bd13a4fso5714714e87.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 13 Feb 2024 06:13:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1707829642; x=1708434442; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=gVxaJna0CX31UM9puZRZMf8QLphdGcrpZmzcpVwpquM=;
-        b=p9BAWjsWvrlge/NAtH7CRHFrxCefB4ixmOZ4ohzx1BeZHnkAx/Cr7c7pfuugeGjuLD
-         ZLYUWtKn6CDv2TjkHYQ1b/IfWdwv8yBSWbXD1/AvAzjm/SxWiW2LcLzRrkuQacINjODR
-         LY2S8MYIPDLDLauRNnLGgES166WEh5CHkP1he3vyjiXqZh4cFlwoIZRe9H3k6zAqV/fu
-         WtbLDjgx4mTDU8YRhrem1R9N4BO+JRX3fDrXyUCletm5DPGKNClmrswl0SwioF0T57ld
-         pjKnHpaGScw8U45TZ3I8hapSJFE10rPRd6b8LzsapqKjElJpwcQMiwz/lYrD/C5NEf39
-         UYNg==
+        d=chromium.org; s=google; t=1707833608; x=1708438408; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Qmq2UPFRqaq5ws3fnqDxJqDcSha4yTKtswPkJsibWOY=;
+        b=Ab3QgPkjyMozVk5bn+534vx96t5b+NGZPCgOXzp2vEA9vnUjxItFPGoWjZ2n2BF7rp
+         RBdARX5sm7OYfZ5J9ydzHxLMeVMLjXj65xi7qU7kKcNqJ31e8T2WW422wKYnoxHjpbac
+         xKIHnosLtZh0zSns/qP2bfGOXTzqyUXpLwvH8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707829642; x=1708434442;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gVxaJna0CX31UM9puZRZMf8QLphdGcrpZmzcpVwpquM=;
-        b=s6+Tlo5oObeFuNcWcZHge17F85FByxdQn9NTrjouSQs27px4xe1NUK4JdOHimZvWO4
-         6lFUFl9oNZa8NozMBwJJJYAH7kIN9qfjKZRFCRC5zILjDNEnsIkgvjBBU+tHgHTIn/Gc
-         qBM2xhuJgEqlcaJEIJOZznrA+Nko97MDTH6RRtLmUZfLsSBKj0D2OVR457keeNexTkXm
-         8JMW5STJFSFQDPzCOifM1kX6b2j44iA85LC99ftTY+XW5b0zA08Rnu129PqkKJZG67VE
-         vcp2FtSN2TI5BPG3C7DlwhmRYwciwxsjtlbrm1kv2wLihIyzF3+wNFny4ZyZNlKsNRFd
-         SlPw==
-X-Forwarded-Encrypted: i=1; AJvYcCVgC2driTumaKidRTCPu4te44TtY6uRyB4Un901TJeJcNCNx8r2bZSn7m6eCLgUj64RFWm65FuxrkKs5dcyRf75KGHLmvQS+FzT0/kgFpjI04Ny
-X-Gm-Message-State: AOJu0YxbuJfrG6SpDQnL1oucsSFzoV0JW9bzPJxOfvKWe3v1ETA9HVID
-	lNXkxJe5qKRWrIcGZno/iDSnwmEhLEH8xzMO6vm0k9HPjCo4mrqGUA+vp7FZW8k=
-X-Google-Smtp-Source: AGHT+IFh1NVRDFsAmAeBfdnNCSRt5exaQnTNYHe6n1Mgo2czviZlZUmZ8bQ3e1yieENQ7rbKHkE7fg==
-X-Received: by 2002:a17:906:4acf:b0:a3c:9cc4:99a0 with SMTP id u15-20020a1709064acf00b00a3c9cc499a0mr2225129ejt.16.1707829642511;
-        Tue, 13 Feb 2024 05:07:22 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCX0Q3w5wC18ljb0qoHP4W0gjT5C9FMsg90LWcTcV3wkk7aNk2qADp+B3bmyfkFvwFeGmIUkwzJRGNdqvXKl0flkEHCueTi8o19epb5RlyDZdiUYDrNGQKAnWFhV19gto/smjWB6cdoMlPfDVfjm8Dj4D8djOjlfM2BeR3YAceEVjffs2f6R0cA/T1mrFgASwXsUp0q7cQAFTqrmZxdXR6g88hRCQVBmWunUsrH32lEZfqrM4xMlTGP3Hb+7+irz3MRkXzgs51V5foQ6DHVYRg225aLUGdw0
-Received: from [192.168.86.110] ([5.133.47.210])
-        by smtp.googlemail.com with ESMTPSA id vi13-20020a170907d40d00b00a3ce1bef210sm1130409ejc.28.2024.02.13.05.07.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 Feb 2024 05:07:22 -0800 (PST)
-Message-ID: <92d4d421-54a8-4a41-8b47-61ae39b55ebb@linaro.org>
-Date: Tue, 13 Feb 2024 13:07:20 +0000
+        d=1e100.net; s=20230601; t=1707833608; x=1708438408;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Qmq2UPFRqaq5ws3fnqDxJqDcSha4yTKtswPkJsibWOY=;
+        b=BHRp+hQGhgE24ChSmuPcfKoKUGyk+lH8TQYuxnH+aonNWIEe4W7dcExZERPBcH6Kww
+         oIp74uvNFVp9caL/ON7BD3VCCp4AU6dpHUbr2XNIiQk62PrEB8xynnIMLCH6bJ8yAX77
+         WJYD4Ta8uboEbfNsIKlMcy0/ZGCQPbTjgGCtTy7K1TIBRg96s5pu5SguKOV9ZIGWA3+5
+         dOayjLoQ6h29T+GMkluS36MtmiRYmZNtS6iaqSRp08iFIcc1qsL4y39JIpHwzALST1km
+         1R3wmn0rYA/LEKsAOAxzjFjJo635zJVRRme2B1bDXvFf8vn3BuPAfSQ09mF6s1Q+epiV
+         brrQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVT55grynXo8m2L5oU8oFNfyvduycBm6dBYYHzIVPSzWOkxJj9WCYgW03OPeiSGA+jysV9dRDwJXGbbHMr1mkQcUiB/8zSl/Hmtgc7dDCYozYtX
+X-Gm-Message-State: AOJu0YyE0W2qzMGg5b8sW6swPqeJC069vdufh7w0mc7sEvGtpsE7iG38
+	DTkvGinfr78BrqkNwolNtFQh66d5xb1lRnFVYw32VX5Zv6YU9EzCHjisdRR8+QtbX6iUbEu4vPU
+	PgOJiO7cIU8fa4x2bvDteUzGYdG3BaaS8qsKE
+X-Google-Smtp-Source: AGHT+IHBdt44ohe1WEmDJRwWk0PqMe3siXeot/wfISehMT/XqiceqCjXRIx22oyAYF8z9DxqrEN1z0sOsGsvydhzfN8=
+X-Received: by 2002:a05:6512:4db:b0:511:6ef0:33d1 with SMTP id
+ w27-20020a05651204db00b005116ef033d1mr949357lfq.13.1707833608459; Tue, 13 Feb
+ 2024 06:13:28 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+References: <20240130095656.3712469-1-wenst@chromium.org> <20240130095656.3712469-4-wenst@chromium.org>
+ <92d4d421-54a8-4a41-8b47-61ae39b55ebb@linaro.org>
+In-Reply-To: <92d4d421-54a8-4a41-8b47-61ae39b55ebb@linaro.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 13 Feb 2024 22:13:17 +0800
+Message-ID: <CAGXv+5Ej1cEiNegMEf9GOMYTiabiBU1DpfC7QkQAsHEjuNPCxA@mail.gmail.com>
 Subject: Re: [PATCH 3/3] nvmem: mtk-efuse: Drop NVMEM device name
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- William-tw Lin <william-tw.lin@mediatek.com>
-References: <20240130095656.3712469-1-wenst@chromium.org>
- <20240130095656.3712469-4-wenst@chromium.org>
-From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-In-Reply-To: <20240130095656.3712469-4-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	William-tw Lin <william-tw.lin@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_050723_977246_82B2B688 
-X-CRM114-Status: GOOD (  16.30  )
+X-CRM114-CacheID: sfid-20240213_061331_234702_0FD1BD2D 
+X-CRM114-Status: GOOD (  18.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,36 +90,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Feb 13, 2024 at 9:07=E2=80=AFPM Srinivas Kandagatla
+<srinivas.kandagatla@linaro.org> wrote:
+>
+>
+>
+> On 30/01/2024 09:56, Chen-Yu Tsai wrote:
+> > The MT8183 has not one but two efuse devices. The static name and ID
+> > causes the second efuse device to fail to probe, due to duplicate sysfs
+> > entries.
+>
+> have you considered using NVMEM_DEVID_AUTO?
+
+Yes, that was considered and what is actually implemented downstream.
+
+However, since the reason for using a custom name no longer exists, it
+seems simpler to just revert to the previous behavior, which is to let
+the nvmem core deal with naming.
 
 
-On 30/01/2024 09:56, Chen-Yu Tsai wrote:
-> The MT8183 has not one but two efuse devices. The static name and ID
-> causes the second efuse device to fail to probe, due to duplicate sysfs
-> entries.
+ChenYu
 
-have you considered using NVMEM_DEVID_AUTO?
-
---srini
-> 
-> With the rework of the mtk-socinfo driver, lookup by name is no longer
-> necessary. The custom name can simply be dropped.
-> 
-> Fixes: 4e6102d60d88 ("nvmem: mtk-efuse: Register MediaTek socinfo driver from efuse")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
->   drivers/nvmem/mtk-efuse.c | 1 -
->   1 file changed, 1 deletion(-)
-> 
-> diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
-> index f5bebcecf9bd..9caf04667341 100644
-> --- a/drivers/nvmem/mtk-efuse.c
-> +++ b/drivers/nvmem/mtk-efuse.c
-> @@ -86,7 +86,6 @@ static int mtk_efuse_probe(struct platform_device *pdev)
->   	econfig.size = resource_size(res);
->   	econfig.priv = priv;
->   	econfig.dev = dev;
-> -	econfig.name = "mtk-efuse";
->   	if (pdata->uses_post_processing)
->   		econfig.fixup_dt_cell_info = &mtk_efuse_fixup_dt_cell_info;
->   	nvmem = devm_nvmem_register(dev, &econfig);
+> --srini
+> >
+> > With the rework of the mtk-socinfo driver, lookup by name is no longer
+> > necessary. The custom name can simply be dropped.
+> >
+> > Fixes: 4e6102d60d88 ("nvmem: mtk-efuse: Register MediaTek socinfo drive=
+r from efuse")
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> > ---
+> >   drivers/nvmem/mtk-efuse.c | 1 -
+> >   1 file changed, 1 deletion(-)
+> >
+> > diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
+> > index f5bebcecf9bd..9caf04667341 100644
+> > --- a/drivers/nvmem/mtk-efuse.c
+> > +++ b/drivers/nvmem/mtk-efuse.c
+> > @@ -86,7 +86,6 @@ static int mtk_efuse_probe(struct platform_device *pd=
+ev)
+> >       econfig.size =3D resource_size(res);
+> >       econfig.priv =3D priv;
+> >       econfig.dev =3D dev;
+> > -     econfig.name =3D "mtk-efuse";
+> >       if (pdata->uses_post_processing)
+> >               econfig.fixup_dt_cell_info =3D &mtk_efuse_fixup_dt_cell_i=
+nfo;
+> >       nvmem =3D devm_nvmem_register(dev, &econfig);
 
