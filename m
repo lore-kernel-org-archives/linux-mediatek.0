@@ -4,52 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77D3DC48260
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1094C4829F
 	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 19:35:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ct125B1CTazBLiRuMgNcIu2sIluvfGhNuDxs0IMOh2E=; b=W2IU8+HGBhHnhKZc6n88jNrtU2
-	rurawVuCZS4+d31jveenm5PA3Mz6oXZExCkCHDAy9qFR2soMSsjV5q7+oZiSvx+LrARbTClqI8Qlm
-	OeL+RtPME1nV24r3JF+ia61i55ILbOjPY7lAxs51WvQsbw2owIui+B48jaZTOKT6JOHzC7B36yhiq
-	egDnbpsy8+QnWlNi47eix7+IJ7PEGZVXJTT1aGgN8PjWAVpK37pbKJ3BdoA389jITWKidJIKRWoHb
-	8/3XsOxvnGwKENcPk7taXyl+hajSELTwQCdxtCuVbUkgoAG78S8F4/SwfyCFYENsZ8DXpWk8qn8hu
-	SKosVQug==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5GWcYaWIrOS/mQ/dKMG0ZBgcx8J9TvQHTls2juucOTE=; b=pvxgycic/GztPQ
+	PJlCnpyLng9QCCTxkeiWgeSMPx4ATAdxQHRUsCCL4aoRV4Y25CaAqLcXBLsgD4EJExH1WEt5FOpd2
+	aqR94JNbuRaCgqTP0uHdLDzoERUDbam0I86z+ovnFSyWewF0miB4fcHZIJv0K4RMDKm3V7FgpWHk2
+	GDkg3cBFhCvTzXp7LueKaNWZfe25A33xWNhmNalfgwMpe1Iw1w6BCV2KNJWfJG0wJG0qr6jFgnhQ+
+	cpSQNdAY5hvW9O7I2Atm28r20W1TcVKgEPI/v15SXNQYWkigSvjkXwt7JuNJXWtIs0dwlJqymrGV1
+	Wzty8+BOKXRajAMkURiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZyYp-0000000AUD5-3R7Z;
-	Tue, 13 Feb 2024 19:35:19 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rZyYq-0000000AUDN-0jBx;
+	Tue, 13 Feb 2024 19:35:20 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZyYj-0000000AU9z-0oMg;
-	Tue, 13 Feb 2024 19:35:16 +0000
+	id 1rZyYi-0000000AU9A-1NED;
+	Tue, 13 Feb 2024 19:35:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8B20A61465;
-	Tue, 13 Feb 2024 19:35:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C2DBBC433C7;
-	Tue, 13 Feb 2024 19:35:11 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 6CA3ACE1DC6;
+	Tue, 13 Feb 2024 19:35:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70A66C433F1;
+	Tue, 13 Feb 2024 19:35:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707852912;
-	bh=bkYKQG1KP4Jg+1rHds/d+NL5/Q2GcTheiJ1Ko1kkshU=;
-	h=From:Date:Subject:References:In-Reply-To:List-Id:To:Cc:From;
-	b=BkgfW4hzsDgjtV38/ZRTQhCKXJMfIgS5XKucIZc6ExOSac6lo+zOnAoa2Kr0jxiTZ
-	 ZUlcwMmkiM35sgbG25gp0K+wAevsuUszIRww+7ZKbRFcnbLpqaYRPyrTfWb3wW6A9I
-	 j7ioH9Z7d6mo2UzZ2oMrqmNm/WUgV5d8zIxsSdirRSBNgmNlsfGCgvh0io2gAUxeBY
-	 NEMGbHwauDnw7jimLWwwSejWgYpl56Gr40W2bVztvjFP8ZZK3g4p3qHS/P1E9wiB58
-	 Q41YRo3UZ9qTX0QFaW5qE0LdauIFe/ZjNG9vDUGaoBMZvYKo4Tfk/YLHiiScj/3SDg
-	 MdojCr99B2Giw==
+	s=k20201202; t=1707852909;
+	bh=O2rijBlETPV1mvIsb2fGr/xbJahLcxzbFbT0uIUHBKg=;
+	h=From:Subject:Date:List-Id:To:Cc:From;
+	b=bAHFe5L7UR7xP/kCitee/iv9eS0lpinKuT9Yamt03CiuUYMC7YJ8S4Mo8zhHyvvXy
+	 smFxcN0KVo8KGPSRn74E/DsZvyDbmiOw9J/sMQczNXr1h5eq06vGIQiQ323cA/mjOD
+	 AIURazkAWZvo+DmAwMndDAtePLjU7O+a1JwaRdMswSLa8kkV8Wgnnqs61BPbbm8W4S
+	 nx4RoBLQByL4sGoYmlGrGvVSTBTl2O8sOskTgzgaAn+sk0Gwid6QOtaxruZKGNBVYx
+	 3JKFh3NMw7YVWEgSHzVc/H2bHWxr8Yk82Rih7f0/OmBlzs1hXYaWV6p4YCKCR0A8dm
+	 bDrQYULSGpk5Q==
 From: Rob Herring <robh@kernel.org>
-Date: Tue, 13 Feb 2024 13:34:25 -0600
-Subject: [PATCH 1/6] arm64: dts: freescale: Disable interrupt_map check
+Subject: [PATCH 0/6] dts: Fix dtc interrupt warnings
+Date: Tue, 13 Feb 2024 13:34:24 -0600
+Message-Id: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240213-arm-dt-cleanups-v1-1-f2dee1292525@kernel.org>
-References: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org>
-In-Reply-To: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAEDEy2UC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIxMDI0Nj3cSiXN2UEt3knNTEvNKCYl1zs6QkcyOzlFRLEwsloK6CotS0zAq
+ widGxtbUANsZJ1WEAAAA=
 To: soc@kernel.org, Shawn Guo <shawnguo@kernel.org>, 
  Sascha Hauer <s.hauer@pengutronix.de>, 
  Pengutronix Kernel Team <kernel@pengutronix.de>, 
@@ -87,9 +88,8 @@ Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-kbuild@vger.kernel.org
 X-Mailer: b4 0.13-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_113513_350274_24B0FC5B 
-X-CRM114-Status: UNSURE (   8.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240213_113512_761238_4EEE21B6 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,74 +104,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Several Freescale Layerscape platforms extirq binding use a malformed
-interrupt-map property missing parent address cells. These are
-documented in of_irq_imap_abusers list in drivers/of/irq.c. In order to
-enable dtc interrupt_map check tree wide, we need to disable it for
-these platforms which will not be fixed (as that would break
-compatibility).
+I had a branch with most of these changes sitting in my tree for some 
+time. Geert's asking about some errors not getting found prompted me to 
+clean it up and send it out. This series fixes all* interrupt related 
+warnings and enables the check by default. 
+
+SoC maintainers, Can you please take this series directly. 
+
+Rob
+
+*There's a few Renesas warnings still Geert said he would fix.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- arch/arm64/boot/dts/freescale/Makefile | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+Rob Herring (6):
+      arm64: dts: freescale: Disable interrupt_map check
+      arm: dts: Fix dtc interrupt_provider warnings
+      arm64: dts: Fix dtc interrupt_provider warnings
+      arm: dts: Fix dtc interrupt_map warnings
+      arm64: dts: qcom: Fix interrupt-map cell sizes
+      dtc: Enable dtc interrupt_provider check
 
-diff --git a/arch/arm64/boot/dts/freescale/Makefile b/arch/arm64/boot/dts/freescale/Makefile
-index 2e027675d7bb..2cb0212b63c6 100644
---- a/arch/arm64/boot/dts/freescale/Makefile
-+++ b/arch/arm64/boot/dts/freescale/Makefile
-@@ -20,23 +20,41 @@ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1046a-frwy.dtb
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1046a-qds.dtb
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1046a-rdb.dtb
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1046a-tqmls1046a-mbls10xxa.dtb
-+DTC_FLAGS_fsl-ls1088a-qds := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1088a-qds.dtb
-+DTC_FLAGS_fsl-ls1088a-rdb := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1088a-rdb.dtb
-+DTC_FLAGS_fsl-ls1088a-ten64 := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1088a-ten64.dtb
-+DTC_FLAGS_fsl-ls1088a-tqmls1088a-mbls10xxa := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1088a-tqmls1088a-mbls10xxa.dtb
-+DTC_FLAGS_fsl-ls2080a-qds := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls2080a-qds.dtb
-+DTC_FLAGS_fsl-ls2080a-rdb := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls2080a-rdb.dtb
-+DTC_FLAGS_fsl-ls2081a-rdb := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls2081a-rdb.dtb
-+DTC_FLAGS_fsl-ls2080a-simu := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls2080a-simu.dtb
-+DTC_FLAGS_fsl-ls2088a-qds := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls2088a-qds.dtb
-+DTC_FLAGS_fsl-ls2088a-rdb := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls2088a-rdb.dtb
-+DTC_FLAGS_fsl-lx2160a-bluebox3 := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2160a-bluebox3.dtb
-+DTC_FLAGS_fsl-lx2160a-bluebox3-rev-a := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2160a-bluebox3-rev-a.dtb
-+DTC_FLAGS_fsl-lx2160a-clearfog-cx := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2160a-clearfog-cx.dtb
-+DTC_FLAGS_fsl-lx2160a-honeycomb := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2160a-honeycomb.dtb
-+DTC_FLAGS_fsl-lx2160a-qds := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2160a-qds.dtb
-+DTC_FLAGS_fsl-lx2160a-rdb := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2160a-rdb.dtb
-+DTC_FLAGS_fsl-lx2162a-clearfog := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2162a-clearfog.dtb
-+DTC_FLAGS_fsl-lx2162a-qds := -Wno-interrupt_map
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2162a-qds.dtb
- 
- fsl-ls1028a-qds-13bb-dtbs := fsl-ls1028a-qds.dtb fsl-ls1028a-qds-13bb.dtbo
-@@ -53,6 +71,7 @@ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1028a-qds-85bb.dtb
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1028a-qds-899b.dtb
- dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-ls1028a-qds-9999.dtb
- 
-+DTC_FLAGS_fsl-lx2160a-tqmlx2160a-mblx2160a := -Wno-interrupt_map
- fsl-lx2160a-tqmlx2160a-mblx2160a-12-11-x-dtbs := fsl-lx2160a-tqmlx2160a-mblx2160a.dtb \
- 	fsl-lx2160a-tqmlx2160a-mblx2160a_12_x_x.dtbo \
- 	fsl-lx2160a-tqmlx2160a-mblx2160a_x_11_x.dtbo
+ arch/arm/boot/dts/amazon/alpine.dtsi                  |  1 -
+ arch/arm/boot/dts/aspeed/aspeed-g4.dtsi               | 14 --------------
+ arch/arm/boot/dts/aspeed/aspeed-g5.dtsi               | 15 +--------------
+ arch/arm/boot/dts/aspeed/aspeed-g6.dtsi               | 18 ++----------------
+ arch/arm/boot/dts/broadcom/bcm-cygnus.dtsi            |  3 +++
+ arch/arm/boot/dts/broadcom/bcm-hr2.dtsi               |  1 +
+ arch/arm/boot/dts/broadcom/bcm-nsp.dtsi               |  2 ++
+ .../boot/dts/intel/ixp/intel-ixp42x-gateway-7001.dts  |  2 ++
+ .../dts/intel/ixp/intel-ixp42x-goramo-multilink.dts   |  2 ++
+ arch/arm/boot/dts/marvell/kirkwood-l-50.dts           |  2 ++
+ arch/arm/boot/dts/nuvoton/nuvoton-wpcm450.dtsi        |  2 ++
+ arch/arm/boot/dts/nvidia/tegra30-apalis-v1.1.dtsi     |  1 -
+ arch/arm/boot/dts/nvidia/tegra30-apalis.dtsi          |  1 -
+ arch/arm/boot/dts/nvidia/tegra30-colibri.dtsi         |  1 -
+ arch/arm/boot/dts/nxp/imx/imx6q-b850v3.dts            |  3 ---
+ arch/arm/boot/dts/nxp/imx/imx6q-bx50v3.dtsi           |  2 +-
+ arch/arm/boot/dts/nxp/imx/imx6qdl-apalis.dtsi         |  1 -
+ arch/arm/boot/dts/nxp/imx/imx6qdl-colibri.dtsi        |  1 -
+ arch/arm/boot/dts/nxp/imx/imx6qdl-emcon.dtsi          |  1 -
+ arch/arm/boot/dts/nxp/imx/imx6qdl-phytec-pfla02.dtsi  |  1 +
+ .../boot/dts/nxp/imx/imx6qdl-phytec-phycore-som.dtsi  |  1 +
+ arch/arm/boot/dts/nxp/imx/imx7d-pico-dwarf.dts        |  1 +
+ arch/arm/boot/dts/nxp/vf/vf610-zii-dev-rev-b.dts      |  1 +
+ arch/arm/boot/dts/qcom/qcom-sdx55.dtsi                |  8 ++++----
+ arch/arm/boot/dts/st/stm32429i-eval.dts               |  1 -
+ arch/arm/boot/dts/st/stm32mp157c-dk2.dts              |  1 -
+ arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts     |  1 -
+ arch/arm64/boot/dts/amazon/alpine-v2.dtsi             |  1 -
+ arch/arm64/boot/dts/amazon/alpine-v3.dtsi             |  1 -
+ arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi      |  1 +
+ arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi   |  1 +
+ arch/arm64/boot/dts/freescale/Makefile                | 19 +++++++++++++++++++
+ arch/arm64/boot/dts/lg/lg1312.dtsi                    |  1 -
+ arch/arm64/boot/dts/lg/lg1313.dtsi                    |  1 -
+ arch/arm64/boot/dts/marvell/armada-ap80x.dtsi         |  1 -
+ arch/arm64/boot/dts/mediatek/mt8195-demo.dts          |  1 +
+ arch/arm64/boot/dts/qcom/ipq6018.dtsi                 |  8 ++++----
+ arch/arm64/boot/dts/qcom/ipq8074.dtsi                 | 16 ++++++++--------
+ arch/arm64/boot/dts/renesas/ulcb-kf.dtsi              |  4 ++++
+ scripts/Makefile.lib                                  |  3 +--
+ 40 files changed, 65 insertions(+), 81 deletions(-)
+---
+base-commit: 6613476e225e090cc9aad49be7fa504e290dd33d
+change-id: 20240213-arm-dt-cleanups-76bb726de948
 
+Best regards,
 -- 
-2.43.0
+Rob Herring <robh@kernel.org>
 
 
