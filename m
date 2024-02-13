@@ -4,50 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97561C4829A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 05:03:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB2A0C4829A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 05:38:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TtWttyee/5Vn7DkruIaUNFtX0dg5UyJYT71WtS68lvQ=; b=oFNuTrPLAqsHA87jAepoYbdA9o
-	6qL9R5Q2fEC1T6qd1bE9VIf2QIBE6TcX1GIngljXrqgPv8OFk1sw30pFfi8NJkfzwKM7cxuhelugo
-	DrqxY7cPHabH83EBiSDKcLlQ3lVcN9b4D9HE/vwCc6/NJSpL8Jzn1wcrbws5AhLtjAILIb9klg/ES
-	i3LPFCh7tM993yHtqctM4jSQtneOZ7oeg0dkRRumqvyrYM8tjshM8eL2RmR0NlQdxFAsbq5U8PBCG
-	NL9PBzGzh2V2KYr+b2OCagi4AB9iVDfElIMUoDs7WfPmVUKlFV2yTw0Gd45ue06akhztOoPYqX8KG
-	pxAh+J/w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=y6whheju3NN4BqY6LFcpmmPqXluoagcef/LFMHep7Sw=; b=XgzXKQFS2Sx2FC
+	LLFNcLZLFAM61wIgIUa52lEtKnFe72R3KbGBV3Kg17+8AkTHi9LB7esAbXE1sSH0Eoix6qVscoJ9w
+	IpiLxDkvKHiwkntdTnJTedviiZ+5aJiKD1zBi4vJVt1y6lL1qVg038jFsparovzSU6YTuthQOTswD
+	SvuIJ7t/5CdjIYT4Dlwu1MuvAzgTxhAGH5xBZreiNQ8cF/0Dv8lc7SyIauzN95CsL6SBuVsfeZNoB
+	IeEsoAJQmhWi6GOjioKYLj8e7o6ERz7qeKLEWjl787usgkHOiloIniyzHOX60mcA2RM84VVhqUZ90
+	lvXczXL9LydiAOTU+tDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZkwl-00000007xyt-1Pe1;
-	Tue, 13 Feb 2024 05:03:07 +0000
-Received: from [50.53.50.0] (helo=bombadil.infradead.org)
-	by bombadil.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZkwg-00000007xyA-0pHe;
-	Tue, 13 Feb 2024 05:03:02 +0000
-From: Randy Dunlap <rdunlap@infradead.org>
-To: linux-kernel@vger.kernel.org
-Cc: Randy Dunlap <rdunlap@infradead.org>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Eddie Huang <eddie.huang@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Alessandro Zummo <a.zummo@towertech.it>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	linux-rtc@vger.kernel.org,
-	Marc Zyngier <maz@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Peter Rosin <peda@axentia.se>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2] rtc: mt6397: select IRQ_DOMAIN instead of depending on it
-Date: Mon, 12 Feb 2024 21:02:58 -0800
-Message-ID: <20240213050258.6167-1-rdunlap@infradead.org>
-X-Mailer: git-send-email 2.43.0
+	id 1rZlUe-000000080ex-0PEE;
+	Tue, 13 Feb 2024 05:38:08 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rZlUa-000000080dq-0HTM;
+	Tue, 13 Feb 2024 05:38:05 +0000
+Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2d0f1ec376bso24337911fa.1;
+        Mon, 12 Feb 2024 21:38:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1707802681; x=1708407481; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=y6whheju3NN4BqY6LFcpmmPqXluoagcef/LFMHep7Sw=;
+        b=FL/Yjid846NAV0OftY/ropeI3PMEshZDDfUVT2VePc5iLnC8CJz/qlZ4/5ubOJuA74
+         TU8QxPsrlF/mHge9KPaxLKE0jvWG+NG45cOW9CQzbHGCTA/NE0D+EyWqDcectvf2kgsW
+         L4ujV15ou6Gq+LWAEt3YVkPvDiTXounKKx40jc6ytXPdCqNGHpmMT+uYVoXNxLyICKet
+         SI3inyYMv4fXDh3qXOQR2JpxE6+ON1hDzmFBBPQvPuwTnj8Ky6Tcmvwi8bM4LdGr3nkt
+         d0YX82rnmC/VQri+y1myKjWIeTxEe6chPJU4r7QSahpfNoku7e2jPmtm5lwxeIVqcwbT
+         vOfQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1707802681; x=1708407481;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=y6whheju3NN4BqY6LFcpmmPqXluoagcef/LFMHep7Sw=;
+        b=gXa/ahXsI1juCvPmMY/QwgtPaM7OWqM3B5YP0aZSWHNuTQ5Z+e2YobX1ISrOGA1De3
+         qDCcztB3XZ1hHT0wqtu2Bi0bmK/NumjigG4wFulG90GHSB8aHxaY+bzaRWRkbIvj83cg
+         3RVa7eX+uxxSWIFrf1RrghFHuj7Ecn9jITJpwSGUGnNVgySgLVyPnLlM3lB0Zdza8j5F
+         WkQn7D6ac0xciDSWrA6XHpuZWPDvwR7QR4aGlxK+5LhBcSHKsXukzai/LIezxZxZnhPa
+         ggCLOolxZ3N6+IP2K8yF5N4HXK6APRLiqfVC+oEAO0ldDxGZHNKOiEnTAQtHHS4is+Uh
+         qt8Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWeOGl5y+bfeWwyk1aZv1Xxgms3AuOkRvOvm53+/WOLicHxUslssob6h4/EdISqELWq7WaCdoQu07uxEMfgc4NneUOYDKr8lruQAVrY0QWuXyPeNW0Ey7znZ+W5C9ssqPFAgVJYvluyGePXnTnQ79MiHs1kJCZM1JI=
+X-Gm-Message-State: AOJu0YwyzmR9t0AZ5Ev9Ex4OxTaedJdl5ynQ4p6tPjZ1I6jGa3ZIP+VO
+	jMMP6lJObXbCyVVeV8pScm3hQ2Gp7McaZu58HU3gT3uNbL8HGByN
+X-Google-Smtp-Source: AGHT+IEYv4/4ALvGa72xiNOOaY7e3dOG1YKfoXOw/ZHT+6/YMgv2cMGO57rgfPdiN9NDpTVQDjxNeQ==
+X-Received: by 2002:a05:6512:ac2:b0:511:4a01:2faa with SMTP id n2-20020a0565120ac200b005114a012faamr6840591lfu.32.1707802681119;
+        Mon, 12 Feb 2024 21:38:01 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCW2tGrtBOg8KcRwmQRPgHXd6qJA+pLVnJmF6/vU3yx1sVl0gNb0EESWJdYs5iEbETyMYMJBl6Al6rNlTUDRqhCxcJjy5Cl6u7RBSbr2avovnwBm56c4ec/Qm1b9mfEwYlUwwR6hZaac86g914HXwvV/3/nIZPVB9Y0gK46QVRH0/893u5tjOCudcyilGfAwfVktFhGV51sLOJntmdksuIut8aNbUu6V1k2oyr3ljjz9kQzDLmNVc2zWFQqipiODhNpV+LrUiQJz5PB7rGqxCEjbpBqG+/YQ7pB4V1zk+KTR8lZZv3g9Nh8vpaP8GYhHgVAudqydYEcoXgKD03duxB5NCMJStAF1SKZMyK9gTko2J+Kfq6ehhk0HRpqhkYLTI+ZvGY0Fo3Ri1eoppMJeWKoLGcmfgcye/7mbGltoZ98aken7lT24sao6c4Rm9UjXSnjL8YGRpmQ07fZcXtZ4cO7tfSw6I7hGi9RmcDPIbnd/PlEeh4YKPlMxuOt41fXCTJ5sXBXdkrsT1KDsMHFcKNE=
+Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.gmail.com with ESMTPSA id ll9-20020a170907190900b00a3d125b9c0asm16659ejc.81.2024.02.12.21.37.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Feb 2024 21:38:00 -0800 (PST)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Subject: [PATCH 1/3] arm64: dts: mediatek: mt7986: drop invalid properties from ethsys
+Date: Tue, 13 Feb 2024 06:37:37 +0100
+Message-Id: <20240213053739.14387-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20240212_213804_149936_9A08E3F2 
+X-CRM114-Status: GOOD (  11.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,52 +89,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S . Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-IRQ_DOMAIN is a hidden (not user visible) symbol. Users cannot set
-it directly thru "make *config", so drivers should select it instead
-of depending on it if they need it.
-Relying on it being set for a dependency is risky.
+From: Rafał Miłecki <rafal@milecki.pl>
 
-Consistently using "select" or "depends on" can also help reduce
-Kconfig circular dependency issues.
+Mediatek ethsys controller / syscon binding doesn't allow any subnodes
+so "#address-cells" and "#size-cells" are redundant (actually:
+disallowed).
 
-Therefore, change the use of "depends on" for IRQ_DOMAIN to
-"select" for RTC_DRV_MT6397.
+This fixes:
+arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtb: syscon@15000000: '#address-cells', '#size-cells' do not match any of the regexes: 'pinctrl-[0-9]+'
+        from schema $id: http://devicetree.org/schemas/clock/mediatek,ethsys.yaml#
 
-Fixes: 04d3ba70a3c9 ("rtc: mt6397: add IRQ domain dependency")
-Cc: Arnd Bergmann <arnd@arndb.de>
-Cc: Eddie Huang <eddie.huang@mediatek.com>
-Cc: Sean Wang <sean.wang@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: Alessandro Zummo <a.zummo@towertech.it>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: linux-rtc@vger.kernel.org
-Cc: Marc Zyngier <maz@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Peter Rosin <peda@axentia.se>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
+Fixes: 1f9986b258c2 ("arm64: dts: mediatek: add clock support for mt7986a")
+Cc: Sam Shih <sam.shih@mediatek.com>
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 ---
-v2: add Rev-by: from AngeloGioacchino
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 2 --
+ 1 file changed, 2 deletions(-)
 
- drivers/rtc/Kconfig |    3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+index b3f416b9a7a4..228e02954e85 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+@@ -492,8 +492,6 @@ ethsys: syscon@15000000 {
+ 			 compatible = "mediatek,mt7986-ethsys",
+ 				      "syscon";
+ 			 reg = <0 0x15000000 0 0x1000>;
+-			 #address-cells = <1>;
+-			 #size-cells = <1>;
+ 			 #clock-cells = <1>;
+ 			 #reset-cells = <1>;
+ 		};
+-- 
+2.35.3
 
-diff -- a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
---- a/drivers/rtc/Kconfig
-+++ b/drivers/rtc/Kconfig
-@@ -1858,7 +1858,8 @@ config RTC_DRV_MT2712
- 
- config RTC_DRV_MT6397
- 	tristate "MediaTek PMIC based RTC"
--	depends on MFD_MT6397 || (COMPILE_TEST && IRQ_DOMAIN)
-+	depends on MFD_MT6397 || COMPILE_TEST
-+	select IRQ_DOMAIN
- 	help
- 	  This selects the MediaTek(R) RTC driver. RTC is part of MediaTek
- 	  MT6397 PMIC. You should enable MT6397 PMIC MFD before select
 
