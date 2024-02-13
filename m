@@ -4,53 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1094C4829F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 19:35:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1958C48260
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 19:35:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5GWcYaWIrOS/mQ/dKMG0ZBgcx8J9TvQHTls2juucOTE=; b=pvxgycic/GztPQ
-	PJlCnpyLng9QCCTxkeiWgeSMPx4ATAdxQHRUsCCL4aoRV4Y25CaAqLcXBLsgD4EJExH1WEt5FOpd2
-	aqR94JNbuRaCgqTP0uHdLDzoERUDbam0I86z+ovnFSyWewF0miB4fcHZIJv0K4RMDKm3V7FgpWHk2
-	GDkg3cBFhCvTzXp7LueKaNWZfe25A33xWNhmNalfgwMpe1Iw1w6BCV2KNJWfJG0wJG0qr6jFgnhQ+
-	cpSQNdAY5hvW9O7I2Atm28r20W1TcVKgEPI/v15SXNQYWkigSvjkXwt7JuNJXWtIs0dwlJqymrGV1
-	Wzty8+BOKXRajAMkURiQ==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xMPdbsPQlSIkmtJ8KB8cic+mkQ4li8jEKe9RRg6QJpg=; b=hXTFUiMvft8ihpJ4ItawYYY2ov
+	CuICG4oN3zGUO4tZJ4Mt1EptnHdgSNZq6vBBu3QIkvcXni2WnakOhwXE2ij2Gio2dym+AFDankbuu
+	MEvZyHbun6QKDtJ+sde8pnWSJPDqTvFD4Hd5ScnUd2NugpmgFbqcZXsfqtmzIf3PKfEnlqwdTtKCm
+	gHywG+xe2uE5DI/SsxW2JCByW5oISKCrJ9137iyMdxTSurr6HJXvDUQTGHV/NfywpUk4w/Ia91Z9N
+	9IdWtXYWqp/YT5VTQm2L0n5mhRIR76KyVfjq0uIZ5mjcixvHEz4xHSActjP8zlsYdx5tVpoSIWC+G
+	rRSriq3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZyYq-0000000AUDN-0jBx;
-	Tue, 13 Feb 2024 19:35:20 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rZyYt-0000000AUFv-1RBh;
+	Tue, 13 Feb 2024 19:35:23 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZyYi-0000000AU9A-1NED;
-	Tue, 13 Feb 2024 19:35:15 +0000
+	id 1rZyYn-0000000AUC1-3YsP;
+	Tue, 13 Feb 2024 19:35:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 6CA3ACE1DC6;
-	Tue, 13 Feb 2024 19:35:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70A66C433F1;
-	Tue, 13 Feb 2024 19:35:09 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0F1A161684;
+	Tue, 13 Feb 2024 19:35:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93676C43399;
+	Tue, 13 Feb 2024 19:35:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707852909;
-	bh=O2rijBlETPV1mvIsb2fGr/xbJahLcxzbFbT0uIUHBKg=;
-	h=From:Subject:Date:List-Id:To:Cc:From;
-	b=bAHFe5L7UR7xP/kCitee/iv9eS0lpinKuT9Yamt03CiuUYMC7YJ8S4Mo8zhHyvvXy
-	 smFxcN0KVo8KGPSRn74E/DsZvyDbmiOw9J/sMQczNXr1h5eq06vGIQiQ323cA/mjOD
-	 AIURazkAWZvo+DmAwMndDAtePLjU7O+a1JwaRdMswSLa8kkV8Wgnnqs61BPbbm8W4S
-	 nx4RoBLQByL4sGoYmlGrGvVSTBTl2O8sOskTgzgaAn+sk0Gwid6QOtaxruZKGNBVYx
-	 3JKFh3NMw7YVWEgSHzVc/H2bHWxr8Yk82Rih7f0/OmBlzs1hXYaWV6p4YCKCR0A8dm
-	 bDrQYULSGpk5Q==
+	s=k20201202; t=1707852916;
+	bh=Zyov/CbL4FCOpyDHaP8OAK4KgT5xKyMy3uzfNW5VFnM=;
+	h=From:Date:Subject:References:In-Reply-To:List-Id:To:Cc:From;
+	b=t2jStghoxs6mYGeVvO1LOvfGW/B4nvItwnP+9WkSXO4oplwoZGPaPgxWeubzRhoRX
+	 DPSUXr0kHv+Gtdq2vU0CLA5hTjjljvr8K9M3PkvkRS6Fq7UM8nRIT3q6dOxk7Zup1d
+	 PfFIlSOgWAvxWFWFJHuCVBwA5pe58ZW8UlKK2/xRJPwH7FmFGcpFQeL5imJf7Tlw0G
+	 jObYVE/nge5MISyxOk/nxv+0hRZN4LIEdqoHyJHamOuPp7ZFX4Ahu7G0cEjiSK9+hr
+	 Un+3ip/8PiH+31jqdgYHO8DgqbKeMJokn+WBxNz/ERhmQw5DOtTykZN8zmNKy95zku
+	 I9iF0d9IKShCg==
 From: Rob Herring <robh@kernel.org>
-Subject: [PATCH 0/6] dts: Fix dtc interrupt warnings
-Date: Tue, 13 Feb 2024 13:34:24 -0600
-Message-Id: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org>
+Date: Tue, 13 Feb 2024 13:34:27 -0600
+Subject: [PATCH 3/6] arm64: dts: Fix dtc interrupt_provider warnings
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAEDEy2UC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIxMDI0Nj3cSiXN2UEt3knNTEvNKCYl1zs6QkcyOzlFRLEwsloK6CotS0zAq
- widGxtbUANsZJ1WEAAAA=
+Message-Id: <20240213-arm-dt-cleanups-v1-3-f2dee1292525@kernel.org>
+References: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org>
+In-Reply-To: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org>
 To: soc@kernel.org, Shawn Guo <shawnguo@kernel.org>, 
  Sascha Hauer <s.hauer@pengutronix.de>, 
  Pengutronix Kernel Team <kernel@pengutronix.de>, 
@@ -88,8 +87,8 @@ Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-kbuild@vger.kernel.org
 X-Mailer: b4 0.13-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_113512_761238_4EEE21B6 
-X-CRM114-Status: GOOD (  11.41  )
+X-CRM114-CacheID: sfid-20240213_113518_104270_88D40259 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,74 +103,156 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I had a branch with most of these changes sitting in my tree for some 
-time. Geert's asking about some errors not getting found prompted me to 
-clean it up and send it out. This series fixes all* interrupt related 
-warnings and enables the check by default. 
-
-SoC maintainers, Can you please take this series directly. 
-
-Rob
-
-*There's a few Renesas warnings still Geert said he would fix.
+The dtc interrupt_provider warning is off by default. Fix all the warnings
+so it can be enabled.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
-Rob Herring (6):
-      arm64: dts: freescale: Disable interrupt_map check
-      arm: dts: Fix dtc interrupt_provider warnings
-      arm64: dts: Fix dtc interrupt_provider warnings
-      arm: dts: Fix dtc interrupt_map warnings
-      arm64: dts: qcom: Fix interrupt-map cell sizes
-      dtc: Enable dtc interrupt_provider check
+ arch/arm64/boot/dts/amazon/alpine-v2.dtsi           | 1 -
+ arch/arm64/boot/dts/amazon/alpine-v3.dtsi           | 1 -
+ arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi    | 1 +
+ arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi | 1 +
+ arch/arm64/boot/dts/lg/lg1312.dtsi                  | 1 -
+ arch/arm64/boot/dts/lg/lg1313.dtsi                  | 1 -
+ arch/arm64/boot/dts/marvell/armada-ap80x.dtsi       | 1 -
+ arch/arm64/boot/dts/mediatek/mt8195-demo.dts        | 1 +
+ arch/arm64/boot/dts/renesas/ulcb-kf.dtsi            | 4 ++++
+ 9 files changed, 7 insertions(+), 5 deletions(-)
 
- arch/arm/boot/dts/amazon/alpine.dtsi                  |  1 -
- arch/arm/boot/dts/aspeed/aspeed-g4.dtsi               | 14 --------------
- arch/arm/boot/dts/aspeed/aspeed-g5.dtsi               | 15 +--------------
- arch/arm/boot/dts/aspeed/aspeed-g6.dtsi               | 18 ++----------------
- arch/arm/boot/dts/broadcom/bcm-cygnus.dtsi            |  3 +++
- arch/arm/boot/dts/broadcom/bcm-hr2.dtsi               |  1 +
- arch/arm/boot/dts/broadcom/bcm-nsp.dtsi               |  2 ++
- .../boot/dts/intel/ixp/intel-ixp42x-gateway-7001.dts  |  2 ++
- .../dts/intel/ixp/intel-ixp42x-goramo-multilink.dts   |  2 ++
- arch/arm/boot/dts/marvell/kirkwood-l-50.dts           |  2 ++
- arch/arm/boot/dts/nuvoton/nuvoton-wpcm450.dtsi        |  2 ++
- arch/arm/boot/dts/nvidia/tegra30-apalis-v1.1.dtsi     |  1 -
- arch/arm/boot/dts/nvidia/tegra30-apalis.dtsi          |  1 -
- arch/arm/boot/dts/nvidia/tegra30-colibri.dtsi         |  1 -
- arch/arm/boot/dts/nxp/imx/imx6q-b850v3.dts            |  3 ---
- arch/arm/boot/dts/nxp/imx/imx6q-bx50v3.dtsi           |  2 +-
- arch/arm/boot/dts/nxp/imx/imx6qdl-apalis.dtsi         |  1 -
- arch/arm/boot/dts/nxp/imx/imx6qdl-colibri.dtsi        |  1 -
- arch/arm/boot/dts/nxp/imx/imx6qdl-emcon.dtsi          |  1 -
- arch/arm/boot/dts/nxp/imx/imx6qdl-phytec-pfla02.dtsi  |  1 +
- .../boot/dts/nxp/imx/imx6qdl-phytec-phycore-som.dtsi  |  1 +
- arch/arm/boot/dts/nxp/imx/imx7d-pico-dwarf.dts        |  1 +
- arch/arm/boot/dts/nxp/vf/vf610-zii-dev-rev-b.dts      |  1 +
- arch/arm/boot/dts/qcom/qcom-sdx55.dtsi                |  8 ++++----
- arch/arm/boot/dts/st/stm32429i-eval.dts               |  1 -
- arch/arm/boot/dts/st/stm32mp157c-dk2.dts              |  1 -
- arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts     |  1 -
- arch/arm64/boot/dts/amazon/alpine-v2.dtsi             |  1 -
- arch/arm64/boot/dts/amazon/alpine-v3.dtsi             |  1 -
- arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi      |  1 +
- arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi   |  1 +
- arch/arm64/boot/dts/freescale/Makefile                | 19 +++++++++++++++++++
- arch/arm64/boot/dts/lg/lg1312.dtsi                    |  1 -
- arch/arm64/boot/dts/lg/lg1313.dtsi                    |  1 -
- arch/arm64/boot/dts/marvell/armada-ap80x.dtsi         |  1 -
- arch/arm64/boot/dts/mediatek/mt8195-demo.dts          |  1 +
- arch/arm64/boot/dts/qcom/ipq6018.dtsi                 |  8 ++++----
- arch/arm64/boot/dts/qcom/ipq8074.dtsi                 | 16 ++++++++--------
- arch/arm64/boot/dts/renesas/ulcb-kf.dtsi              |  4 ++++
- scripts/Makefile.lib                                  |  3 +--
- 40 files changed, 65 insertions(+), 81 deletions(-)
----
-base-commit: 6613476e225e090cc9aad49be7fa504e290dd33d
-change-id: 20240213-arm-dt-cleanups-76bb726de948
+diff --git a/arch/arm64/boot/dts/amazon/alpine-v2.dtsi b/arch/arm64/boot/dts/amazon/alpine-v2.dtsi
+index dccbba6e7f98..dbf2dce8d1d6 100644
+--- a/arch/arm64/boot/dts/amazon/alpine-v2.dtsi
++++ b/arch/arm64/boot/dts/amazon/alpine-v2.dtsi
+@@ -145,7 +145,6 @@ pci@fbc00000 {
+ 		msix: msix@fbe00000 {
+ 			compatible = "al,alpine-msix";
+ 			reg = <0x0 0xfbe00000 0x0 0x100000>;
+-			interrupt-controller;
+ 			msi-controller;
+ 			al,msi-base-spi = <160>;
+ 			al,msi-num-spis = <160>;
+diff --git a/arch/arm64/boot/dts/amazon/alpine-v3.dtsi b/arch/arm64/boot/dts/amazon/alpine-v3.dtsi
+index 39481d7fd7d4..3ea178acdddf 100644
+--- a/arch/arm64/boot/dts/amazon/alpine-v3.dtsi
++++ b/arch/arm64/boot/dts/amazon/alpine-v3.dtsi
+@@ -355,7 +355,6 @@ pcie@fbd00000 {
+ 		msix: msix@fbe00000 {
+ 			compatible = "al,alpine-msix";
+ 			reg = <0x0 0xfbe00000 0x0 0x100000>;
+-			interrupt-controller;
+ 			msi-controller;
+ 			al,msi-base-spi = <336>;
+ 			al,msi-num-spis = <959>;
+diff --git a/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi b/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi
+index 9dcd25ec2c04..896d1f33b5b6 100644
+--- a/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi
++++ b/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi
+@@ -586,6 +586,7 @@ gpio_g: gpio@660a0000 {
+ 			#gpio-cells = <2>;
+ 			gpio-controller;
+ 			interrupt-controller;
++			#interrupt-cells = <2>;
+ 			interrupts = <GIC_SPI 400 IRQ_TYPE_LEVEL_HIGH>;
+ 		};
+ 
+diff --git a/arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi b/arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi
+index f049687d6b96..d8516ec0dae7 100644
+--- a/arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi
++++ b/arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi
+@@ -450,6 +450,7 @@ gpio_hsls: gpio@d0000 {
+ 			#gpio-cells = <2>;
+ 			gpio-controller;
+ 			interrupt-controller;
++			#interrupt-cells = <2>;
+ 			interrupts = <GIC_SPI 183 IRQ_TYPE_LEVEL_HIGH>;
+ 			gpio-ranges = <&pinmux 0 0 16>,
+ 					<&pinmux 16 71 2>,
+diff --git a/arch/arm64/boot/dts/lg/lg1312.dtsi b/arch/arm64/boot/dts/lg/lg1312.dtsi
+index 48ec4ebec0a8..b864ffa74ea8 100644
+--- a/arch/arm64/boot/dts/lg/lg1312.dtsi
++++ b/arch/arm64/boot/dts/lg/lg1312.dtsi
+@@ -126,7 +126,6 @@ eth0: ethernet@c1b00000 {
+ 	amba {
+ 		#address-cells = <2>;
+ 		#size-cells = <1>;
+-		#interrupt-cells = <3>;
+ 
+ 		compatible = "simple-bus";
+ 		interrupt-parent = <&gic>;
+diff --git a/arch/arm64/boot/dts/lg/lg1313.dtsi b/arch/arm64/boot/dts/lg/lg1313.dtsi
+index 3869460aa5dc..996fb39bb50c 100644
+--- a/arch/arm64/boot/dts/lg/lg1313.dtsi
++++ b/arch/arm64/boot/dts/lg/lg1313.dtsi
+@@ -126,7 +126,6 @@ eth0: ethernet@c3700000 {
+ 	amba {
+ 		#address-cells = <2>;
+ 		#size-cells = <1>;
+-		#interrupt-cells = <3>;
+ 
+ 		compatible = "simple-bus";
+ 		interrupt-parent = <&gic>;
+diff --git a/arch/arm64/boot/dts/marvell/armada-ap80x.dtsi b/arch/arm64/boot/dts/marvell/armada-ap80x.dtsi
+index 2c920e22cec2..7ec7c789d87e 100644
+--- a/arch/arm64/boot/dts/marvell/armada-ap80x.dtsi
++++ b/arch/arm64/boot/dts/marvell/armada-ap80x.dtsi
+@@ -138,7 +138,6 @@ pmu {
+ 
+ 			odmi: odmi@300000 {
+ 				compatible = "marvell,odmi-controller";
+-				interrupt-controller;
+ 				msi-controller;
+ 				marvell,odmi-frames = <4>;
+ 				reg = <0x300000 0x4000>,
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+index 69c7f3954ae5..4127cb84eba4 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+@@ -128,6 +128,7 @@ mt6360: pmic@34 {
+ 		compatible = "mediatek,mt6360";
+ 		reg = <0x34>;
+ 		interrupt-controller;
++		#interrupt-cells = <1>;
+ 		interrupts-extended = <&pio 101 IRQ_TYPE_EDGE_FALLING>;
+ 		interrupt-names = "IRQB";
+ 
+diff --git a/arch/arm64/boot/dts/renesas/ulcb-kf.dtsi b/arch/arm64/boot/dts/renesas/ulcb-kf.dtsi
+index 3885ef3454ff..50de17e4fb3f 100644
+--- a/arch/arm64/boot/dts/renesas/ulcb-kf.dtsi
++++ b/arch/arm64/boot/dts/renesas/ulcb-kf.dtsi
+@@ -234,6 +234,7 @@ gpio_exp_74: gpio@74 {
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
+ 		interrupt-controller;
++		#interrupt-cells = <2>;
+ 		interrupt-parent = <&gpio6>;
+ 		interrupts = <8 IRQ_TYPE_EDGE_FALLING>;
+ 
+@@ -294,6 +295,7 @@ gpio_exp_75: gpio@75 {
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
+ 		interrupt-controller;
++		#interrupt-cells = <2>;
+ 		interrupt-parent = <&gpio6>;
+ 		interrupts = <4 IRQ_TYPE_EDGE_FALLING>;
+ 	};
+@@ -314,6 +316,7 @@ gpio_exp_76: gpio@76 {
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
+ 		interrupt-controller;
++		#interrupt-cells = <2>;
+ 		interrupt-parent = <&gpio7>;
+ 		interrupts = <3 IRQ_TYPE_EDGE_FALLING>;
+ 	};
+@@ -324,6 +327,7 @@ gpio_exp_77: gpio@77 {
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
+ 		interrupt-controller;
++		#interrupt-cells = <2>;
+ 		interrupt-parent = <&gpio5>;
+ 		interrupts = <9 IRQ_TYPE_EDGE_FALLING>;
+ 	};
 
-Best regards,
 -- 
-Rob Herring <robh@kernel.org>
+2.43.0
 
 
