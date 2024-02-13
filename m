@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98CE8C48260
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 19:35:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1454C4829A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 19:35:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L97Lrlgt9I+NBl2d0k4UKCiGV2zyw5//lBuhEEepa1g=; b=1S90Yu7PUhJOOgSPSF6tQ9d13P
-	KIYb13EWVUoJ6JZGzpXWF9WzIAs9uunXWiRjmCyRW7L14/uf6z1/0OmRoMwIAGJTGqY1Wwyn94ovh
-	Riau9nAa10Nt70p5lfYe4eRR0TvL+YjS5Dfbiz45hQxDOQ3Dvw4hdVHOa1BWG6B50oz9q8sN3boUx
-	we8QTS3icVw5clhksKJW2jP199c9DMArAWJpO+pObKfoqDxafXg9Yu/fRV/Ocvst82Wsx6RMZBF3v
-	PhOiHDohncBgMNRpotGo+Mx34lR7It9TMDBJ4R2+E5G+T/ZNNp9SK1JHhE4w9xJJrBxXRvykl/rZr
-	cchofw4g==;
+	bh=ZzY6S4Cfb0oFqLeqP6hZWo4TjjDOJp/79WCgudfwQmo=; b=AD6bZAQf+NmgzrvU6+qbGRbm5M
+	532UIWRWTRTRLsA+I7Tzv60elqhYnIQbM5EIlyk3MukwREEvVoAxjVQv79YciuZzK3OVARvOFPpDU
+	fpDTKMHPa0ZqlJOtT5RjQQh83U9U/NnKuONh0Yh6kCNx8+rCjd9/obN3haITgq32aYXpE/4UvVTWO
+	MDUpEfL1K5L6ADAI4PrWJVUaDHw3KL2LHaEBXxTVBvT9wI9E+m2GOkOPmrWXN6ZnSX/Z8yXXVIrMs
+	9kIdYa08Gzi7jS2xg4fAxsNfyiJvF+ohN4Zdh3aEjQt2aVWjdh11jSViVKFbzxc2MVTxTkHIYXZua
+	+emXZpKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZyZ1-0000000AUKE-1Abm;
-	Tue, 13 Feb 2024 19:35:31 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rZyZ2-0000000AUL3-15je;
+	Tue, 13 Feb 2024 19:35:32 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZyYs-0000000AUEj-2roG;
-	Tue, 13 Feb 2024 19:35:24 +0000
+	id 1rZyYw-0000000AUH5-239m;
+	Tue, 13 Feb 2024 19:35:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D2D7B616A6;
-	Tue, 13 Feb 2024 19:35:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50698C43390;
-	Tue, 13 Feb 2024 19:35:21 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 9F7B0CE1E4F;
+	Tue, 13 Feb 2024 19:35:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3659C43390;
+	Tue, 13 Feb 2024 19:35:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707852921;
-	bh=sv88IujBpfHMPhVsbD/uX3vDJVDPR81+Zt14idlIRkk=;
+	s=k20201202; t=1707852923;
+	bh=io3IHUz4w8uho1fRTkKUDdRHdXN+FkOTbGUXes+HSwM=;
 	h=From:Date:Subject:References:In-Reply-To:List-Id:To:Cc:From;
-	b=DKizwqxcC7J4JqkJOz4xypNY2XQ16Bx9so9xQEHWNUmuyim/ksbKFT7GeurlKn61U
-	 ZhGBSZdZAmSA/oBYfhps5ZFr4FS3kJ8OcftkByrKfpB88DPxA1AKzh2leBwnhnOEbO
-	 FOEmlLg/SfKOaHw2WFs1vzRvUFS8y9YsPKjIpQaBZzGzbvPSPCyWpO9FjrD9Xnjae1
-	 xi3TkDKf+5JQfXIUkgIKtNwyTkWAoxNoax0phwZ0JXxlCqVV7s5V7CZrQJYasNI8Ji
-	 yRF+e1AKmXKJGQIKhoLY81kKst4bNdgbB7MmCC3TK1YxnOUsgpZGsm/+Ro5Yrj0EiJ
-	 0GeTkg36Zfucg==
+	b=nC5yv0wT3DgPAYxk67YpeyMCOPQkCYoByAe0P20ibCZ2ZwpRXd+xIv5AqQOnkRr62
+	 cxdPJbNSI9jT3FXpYwVYIOXR0ouq46nNz4TLHhI8H+vMT3ps6nVXceSfGHHKwtREYx
+	 Sbg3UPfGR/V5C3yWrSox+lIgE9ejNmJT1TANOBTxvAUGXTTudhW4ND1OOaXvjablDm
+	 Pq1vKqjSz6KCFP5XAlEcDdsbF21T3QakjhMnzYri2o5fnkDrsWQ6GuLtLe9bTHjiVY
+	 BZU+xASTGTnd1z8TXb/DlPot58ZDRaKwIT9h2dNK+T45l/LYEdnroleltXx5US+sPV
+	 GKvPP5SxiGlCg==
 From: Rob Herring <robh@kernel.org>
-Date: Tue, 13 Feb 2024 13:34:29 -0600
-Subject: [PATCH 5/6] arm64: dts: qcom: Fix interrupt-map cell sizes
+Date: Tue, 13 Feb 2024 13:34:30 -0600
+Subject: [PATCH 6/6] dtc: Enable dtc interrupt_provider check
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240213-arm-dt-cleanups-v1-5-f2dee1292525@kernel.org>
+Message-Id: <20240213-arm-dt-cleanups-v1-6-f2dee1292525@kernel.org>
 References: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org>
 In-Reply-To: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org>
 To: soc@kernel.org, Shawn Guo <shawnguo@kernel.org>, 
@@ -87,8 +87,9 @@ Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-kbuild@vger.kernel.org
 X-Mailer: b4 0.13-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_113522_958951_DE3D4ED9 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20240213_113526_921793_EFFF6B31 
+X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,77 +104,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The PCI node interrupt-map properties have the wrong size as #address-cells
-in the interrupt parent are not accounted for.
-
-The dtc interrupt_map check catches this, but the warning is off because
-its dependency, interrupt_provider, is off by default.
+Now that all the interrupt warnings have been fixed, enable
+'interrupt_provider' check by default. This will also enable
+'interrupt_map' check.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- arch/arm64/boot/dts/qcom/ipq6018.dtsi |  8 ++++----
- arch/arm64/boot/dts/qcom/ipq8074.dtsi | 16 ++++++++--------
- 2 files changed, 12 insertions(+), 12 deletions(-)
+ scripts/Makefile.lib | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/qcom/ipq6018.dtsi b/arch/arm64/boot/dts/qcom/ipq6018.dtsi
-index 5e1277fea725..61c8fd49c966 100644
---- a/arch/arm64/boot/dts/qcom/ipq6018.dtsi
-+++ b/arch/arm64/boot/dts/qcom/ipq6018.dtsi
-@@ -830,10 +830,10 @@ pcie0: pcie@20000000 {
+diff --git a/scripts/Makefile.lib b/scripts/Makefile.lib
+index cd5b181060f1..fce35e4657f5 100644
+--- a/scripts/Makefile.lib
++++ b/scripts/Makefile.lib
+@@ -340,7 +340,7 @@ quiet_cmd_gzip = GZIP    $@
+ # DTC
+ # ---------------------------------------------------------------------------
+ DTC ?= $(objtree)/scripts/dtc/dtc
+-DTC_FLAGS += -Wno-interrupt_provider \
++DTC_FLAGS += \
+ 	-Wno-unique_unit_address
  
- 			#interrupt-cells = <1>;
- 			interrupt-map-mask = <0 0 0 0x7>;
--			interrupt-map = <0 0 0 1 &intc 0 75 IRQ_TYPE_LEVEL_HIGH>, /* int_a */
--					<0 0 0 2 &intc 0 78 IRQ_TYPE_LEVEL_HIGH>, /* int_b */
--					<0 0 0 3 &intc 0 79 IRQ_TYPE_LEVEL_HIGH>, /* int_c */
--					<0 0 0 4 &intc 0 83 IRQ_TYPE_LEVEL_HIGH>; /* int_d */
-+			interrupt-map = <0 0 0 1 &intc 0 0 0 75 IRQ_TYPE_LEVEL_HIGH>, /* int_a */
-+					<0 0 0 2 &intc 0 0 0 78 IRQ_TYPE_LEVEL_HIGH>, /* int_b */
-+					<0 0 0 3 &intc 0 0 0 79 IRQ_TYPE_LEVEL_HIGH>, /* int_c */
-+					<0 0 0 4 &intc 0 0 0 83 IRQ_TYPE_LEVEL_HIGH>; /* int_d */
+ # Disable noisy checks by default
+@@ -358,7 +358,6 @@ endif
+ ifneq ($(findstring 2,$(KBUILD_EXTRA_WARN)),)
+ DTC_FLAGS += -Wnode_name_chars_strict \
+ 	-Wproperty_name_chars_strict \
+-	-Winterrupt_provider \
+ 	-Wunique_unit_address
+ endif
  
- 			clocks = <&gcc GCC_SYS_NOC_PCIE0_AXI_CLK>,
- 				 <&gcc GCC_PCIE0_AXI_M_CLK>,
-diff --git a/arch/arm64/boot/dts/qcom/ipq8074.dtsi b/arch/arm64/boot/dts/qcom/ipq8074.dtsi
-index cf295bed3299..26441447c866 100644
---- a/arch/arm64/boot/dts/qcom/ipq8074.dtsi
-+++ b/arch/arm64/boot/dts/qcom/ipq8074.dtsi
-@@ -814,13 +814,13 @@ pcie1: pcie@10000000 {
- 			interrupt-names = "msi";
- 			#interrupt-cells = <1>;
- 			interrupt-map-mask = <0 0 0 0x7>;
--			interrupt-map = <0 0 0 1 &intc 0 142
-+			interrupt-map = <0 0 0 1 &intc 0 0 142
- 					 IRQ_TYPE_LEVEL_HIGH>, /* int_a */
--					<0 0 0 2 &intc 0 143
-+					<0 0 0 2 &intc 0 0 143
- 					 IRQ_TYPE_LEVEL_HIGH>, /* int_b */
--					<0 0 0 3 &intc 0 144
-+					<0 0 0 3 &intc 0 0 144
- 					 IRQ_TYPE_LEVEL_HIGH>, /* int_c */
--					<0 0 0 4 &intc 0 145
-+					<0 0 0 4 &intc 0 0 145
- 					 IRQ_TYPE_LEVEL_HIGH>; /* int_d */
- 
- 			clocks = <&gcc GCC_SYS_NOC_PCIE1_AXI_CLK>,
-@@ -876,13 +876,13 @@ pcie0: pcie@20000000 {
- 			interrupt-names = "msi";
- 			#interrupt-cells = <1>;
- 			interrupt-map-mask = <0 0 0 0x7>;
--			interrupt-map = <0 0 0 1 &intc 0 75
-+			interrupt-map = <0 0 0 1 &intc 0 0 75
- 					 IRQ_TYPE_LEVEL_HIGH>, /* int_a */
--					<0 0 0 2 &intc 0 78
-+					<0 0 0 2 &intc 0 0 78
- 					 IRQ_TYPE_LEVEL_HIGH>, /* int_b */
--					<0 0 0 3 &intc 0 79
-+					<0 0 0 3 &intc 0 0 79
- 					 IRQ_TYPE_LEVEL_HIGH>, /* int_c */
--					<0 0 0 4 &intc 0 83
-+					<0 0 0 4 &intc 0 0 83
- 					 IRQ_TYPE_LEVEL_HIGH>; /* int_d */
- 
- 			clocks = <&gcc GCC_SYS_NOC_PCIE0_AXI_CLK>,
 
 -- 
 2.43.0
