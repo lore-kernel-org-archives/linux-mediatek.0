@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8E4CC4829D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 00:19:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E832FC4829D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Feb 2024 00:21:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hZ6EZgeNd+PAswDHK801i46+W/qcsp4t5pU5FJyB024=; b=lSit7VciZQW4glp5vAn8fRW4tj
-	pUUrixmJKvqqd0mwodETMD/YPHYLuNplIIwaKhQ7wH70qd+7AQNqskycJRHNcuNftFNUYpP5D/A06
-	81UGl2OuX0fYCy0W6eP/CSM75fb2h2phNbMrYJSwKe/YVOekrt8Bj+7IfnYfCY5q8x3WIm9dY5utd
-	hcLO0b503vUd4J7vhDHFCeDI5n35jX3AHfDe4P1HG0KlftNgVNDwYmNGSQPoQ57Zx6jay/PpDgOUQ
-	zbh8D19UcorWkAjj+t7Ume14/uBWoQI4FcH5WfgxA0xzysApSC9XKZqDhI7GP4ATWSbdDw8FoBx4q
-	jSrPYMwA==;
+	bh=zYLniFoauEZY5ovQTwfAHpGSFksUJ/A3aqHKvRWT0p4=; b=p8HAKApgxR6RlGVSzN1PTy+xfJ
+	QF1aZwxmZwYfbIbG9qgeMwzfTPbRgvyoMzgesBOTvk+rpzBlClGROovPQEtxkAee/HticNYq1RsJj
+	IpHAa2pv8PC2l6w3/Z0ETxZkRx23y877+2TM26LR85IGGJWrGQ1HsIPb4g+jznye+z/HO4kIpII9B
+	0SJSsdKoKturQs61O26bCvvXQOgJ8KfnGxmit873ja2U86hGHNVy8eQpBv9yoCXvXJgOI6gDqyRfk
+	kcqJ6pXFyg38Kk/jUSx53p/BpOyjZ8bnUOrrjRSy4t7s1VOY52GHI7DY7ZzI3dBxUhWSqfMgy+j68
+	ETWMfJ1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZgWT-00000007MoJ-3S9o;
-	Tue, 13 Feb 2024 00:19:41 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rZgYO-00000007NWq-25ie;
+	Tue, 13 Feb 2024 00:21:40 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZgWQ-00000007MmH-2EVs;
-	Tue, 13 Feb 2024 00:19:40 +0000
+	id 1rZgYK-00000007NV4-3aQM;
+	Tue, 13 Feb 2024 00:21:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id A7B16CE188D;
-	Tue, 13 Feb 2024 00:19:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 872EAC433C7;
-	Tue, 13 Feb 2024 00:19:33 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 31DED611D9;
+	Tue, 13 Feb 2024 00:21:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 694A9C433F1;
+	Tue, 13 Feb 2024 00:21:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707783575;
-	bh=tzPIC+m1fFB0Tzle2Z1fphOM1nuEa7uXJ0cjSIb3zHQ=;
+	s=k20201202; t=1707783695;
+	bh=g2u1j3aPbsPh2d5A6m5TpM+/8oeyM+LqEmkbciEdN4A=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=dg5s29QJaPpbhjSH621EMX94eHNe+cIAVSZ+ujGvGgzknNOthAn/xSqojNu0MvDoC
-	 MM1xwGnvWj7I334gy092WhG7eT07UOzxWToOt7y1EfQuQ0CM0NoQoNXKTdU2495MhT
-	 MoOfkRxFj/FAMdIQw5YJFU/TW4lJzUsw5Xh5RTWaJUQFB30dQFojJdCNdM9I6OD0sE
-	 icPe2OIEkv8+SCRvVEFx4PpBuVVGdKpMM31dtU746zlSdFObvtQ49KvZVf0+h4WvpX
-	 F1qp3dNLLBMV/qU3e9yVUOIpFDLXvvi+k9L+7VcN3NLpaUcz/cN6JC25e50kZNMAKW
-	 QFY6t83mmN0dA==
+	b=DLwVkvXdshJA++ULZAs+bWFdHGzN8rP9AyCYVFD6DPoPB2qY76GhZP5MYpadTPv4p
+	 D1758UrhWNzU3hyiqvvPyF0StSwc2NhgG3MPla7ug4xtIUwxlfjt53EM4AhKxEeYuj
+	 WZwU91sVqqbs/JBjdSAfPEdeC3fBduqw1lxLYUIfGYN6hzXwelwDecmIt6tF3Yq/WP
+	 0+sIPYqfQcOjPpScPOI7ysnaK5Oi/HVU1ngrFp9rkvuhvlyawSseoLbQm3mvSkQSYm
+	 r89wEyLTNs1uNItlN/90R/XEW22GGFa4dViGiYrG9N2xJToLalQDpBPpzZkDyhr2zt
+	 EnNoESKu7Ln6A==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -55,8 +55,8 @@ Cc: Alice Chao <alice.chao@mediatek.com>,
 	stanley.chu@mediatek.com,
 	avri.altman@wdc.com,
 	quic_cang@quicinc.com,
-	peter.wang@mediatek.com,
 	quic_nguyenb@quicinc.com,
+	peter.wang@mediatek.com,
 	beanhuo@micron.com,
 	manivannan.sadhasivam@linaro.org,
 	quic_ziqichen@quicinc.com,
@@ -64,19 +64,19 @@ Cc: Alice Chao <alice.chao@mediatek.com>,
 	linux-scsi@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.7 37/58] scsi: ufs: core: Fix shift issue in ufshcd_clear_cmd()
-Date: Mon, 12 Feb 2024 19:17:43 -0500
-Message-ID: <20240213001837.668862-37-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.6 31/51] scsi: ufs: core: Fix shift issue in ufshcd_clear_cmd()
+Date: Mon, 12 Feb 2024 19:20:08 -0500
+Message-ID: <20240213002052.670571-31-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240213001837.668862-1-sashal@kernel.org>
-References: <20240213001837.668862-1-sashal@kernel.org>
+In-Reply-To: <20240213002052.670571-1-sashal@kernel.org>
+References: <20240213002052.670571-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.7.4
+X-stable-base: Linux 6.6.16
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240212_161938_952903_0AB4E42C 
+X-CRM114-CacheID: sfid-20240212_162137_021128_93AAE695 
 X-CRM114-Status: GOOD (  10.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -149,10 +149,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 1f8d86b9c4fa..6f7cfecacd27 100644
+index 44e0437bd19d..f6c83dcff8a8 100644
 --- a/drivers/ufs/core/ufshcd.c
 +++ b/drivers/ufs/core/ufshcd.c
-@@ -3045,7 +3045,7 @@ bool ufshcd_cmd_inflight(struct scsi_cmnd *cmd)
+@@ -2949,7 +2949,7 @@ bool ufshcd_cmd_inflight(struct scsi_cmnd *cmd)
   */
  static int ufshcd_clear_cmd(struct ufs_hba *hba, u32 task_tag)
  {
@@ -161,7 +161,7 @@ index 1f8d86b9c4fa..6f7cfecacd27 100644
  	unsigned long flags;
  	int err;
  
-@@ -3063,6 +3063,8 @@ static int ufshcd_clear_cmd(struct ufs_hba *hba, u32 task_tag)
+@@ -2967,6 +2967,8 @@ static int ufshcd_clear_cmd(struct ufs_hba *hba, u32 task_tag)
  		return 0;
  	}
  
