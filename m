@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27E55C48BC1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Feb 2024 14:36:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8665C48BC1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Feb 2024 15:01:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ieRFgVX+l5qNLg5VWXa9Hrv9zNfV92pS7+FucPfjsp8=; b=4qQHbv37YjoV3+b3AsYOGq9ahJ
-	cGbX1uAzflBSEgNdzmzU+7eMSx9ZRtBFC8QJ1kSiHEKnuZANi3iHvMY6NuaPr12+zQVBRO9dp4/NY
-	7vUGpNPcUmueuao26ta/hU29iAg207lnEiNQrou8nkxaX1mkVrklg2QraGLE0irPPoB3bwl7aPOhK
-	B1daxgjOFiZxI9KHSALliDtx3hc+wCGAxcp9HEVitpkyE+QwrikDi9NgRWBzUW3JascIQHVnlBSKT
-	uyyyuwj5X4c6XzVR5smn4fJhwpOkbI/4DbMQZuvhxIvzyFJp4lcHjKl0DceyRXIkR+O4rElfu3UOP
-	P0utngLg==;
+	bh=h6upARWbXs1k8V4Vnc/YI44n6rxziwjW/OPtXVVY76s=; b=3mg/IsM3Bmg/X64pi+sykkBisY
+	xSMGm9ZCUeZA064337h52Qi5zP/1jzZLucVMaI/hVbo2TGYS2wfunypXkXQtiOL9B/1+3ARuAxoDL
+	W8zPXmEowHLzxQAaKFVyCzBrcOHN/MRgM3L0vbvWflutyp6qnJe1PMcOobyhK5L+3WnWplQ+jAocM
+	zdOYAnhQcmjgE03sukwZajkou8+USxyjMzcRgkfVVoDBMPsQkPjm0X0pAsafWfheLjHP7ggAAo+Ji
+	NZYv2zIO+0GSAXFMokoQxoJqbNYiWl3SStG9++Fv3+TQBML3WTmlVkJDhuPmUiUVb18D3lnWWkthb
+	vTB9QSqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raGNO-0000000DBV2-2DDG;
-	Wed, 14 Feb 2024 14:36:42 +0000
-Received: from mail-pl1-f181.google.com ([209.85.214.181])
+	id 1raGlT-0000000DEuL-0j3o;
+	Wed, 14 Feb 2024 15:01:35 +0000
+Received: from mail-oa1-f48.google.com ([209.85.160.48])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raGNJ-0000000DBSm-46VO;
-	Wed, 14 Feb 2024 14:36:39 +0000
-Received: by mail-pl1-f181.google.com with SMTP id d9443c01a7336-1d911c2103aso28655725ad.0;
-        Wed, 14 Feb 2024 06:36:37 -0800 (PST)
+	id 1raGlI-0000000DEn8-3jYh;
+	Wed, 14 Feb 2024 15:01:30 +0000
+Received: by mail-oa1-f48.google.com with SMTP id 586e51a60fabf-21a9bd0859cso645865fac.0;
+        Wed, 14 Feb 2024 07:01:24 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707921396; x=1708526196;
+        d=1e100.net; s=20230601; t=1707922881; x=1708527681;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ieRFgVX+l5qNLg5VWXa9Hrv9zNfV92pS7+FucPfjsp8=;
-        b=KaXwuuPuxN7C+22JpvS5MU97VsPLNpnUtWTbWozkKcls1KCXbqkpN0bG4yoXUqB/Lj
-         YDfi+S6n4yCwZgRm/0sZXGjX4srZ3F3wtcDGbufanG88NBGTpFRf277unIKJVEPPl3Tm
-         TZr4EE2D5b9/tYTVFGLme4VjETx62PKIWGUg8KO1uelfaAOu1QQHG2va1Aj570a+jEBl
-         NF+ob49Y2w8pkinCILC9KSbJhIJGLi42U0VZAFQJxC4Hgd3+dcTof+C1whnFOUThrwuA
-         OCajVse3f4INHII27wwKB9iBR9YvES37+9uFRdmxSJITDZy7nH9XJGAoqlMvQm+ZMwVZ
-         z36g==
-X-Forwarded-Encrypted: i=1; AJvYcCWA4tVzJYH7wenfMbIAkwj+MZ4K3wb5x1lan0ra+uYxUaijJbmGtDmGFl2ABGvakxlPWMV4tHt2KQNyERb1a7b2QLHBZqzoyn/4RfjxMaBl8K1wQvLrzwmzOCOBhe6Vpr50lpVqSllmLI/LH3jMAGvjVdxIcyqQ054=
-X-Gm-Message-State: AOJu0Yw+l8pWRhqswSfNKdaZu3eWkIEMMxqRVL4n8sIwwL3QUxzVb/Cz
-	+IXJaW8OzqLIhrLlTVR2bsRXXHmhW7eqwOVrLZ7lVfT3pd6O5Xg9l5NxlH6aGUY=
-X-Google-Smtp-Source: AGHT+IGpBFkTP3Wvq0WX3CRrnaUu9wSyPXjQ8CLwSdMCihf3zqzKuGFFnr3MECehPvMZeI3bG/RmOA==
-X-Received: by 2002:a17:902:be0b:b0:1d9:9921:504a with SMTP id r11-20020a170902be0b00b001d99921504amr2785190pls.33.1707921395859;
-        Wed, 14 Feb 2024 06:36:35 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXujOTizV15/yV2MptBFTW9VFqPIadPocnizmBck5aMgw99eVklcbXFXB32UMe0HG7+tIB16Q7DjMo+FrHVUvJPecJcijdsHed1C/ELJ34GVSb/PLdRsGGPptFRG9sa+111kklC9zpRzffrAVit+e+XNbGJ9lBHnxM=
-Received: from mail-pf1-f169.google.com (mail-pf1-f169.google.com. [209.85.210.169])
-        by smtp.gmail.com with ESMTPSA id jv3-20020a170903058300b001db339f409bsm3049441plb.289.2024.02.14.06.36.35
+        bh=h6upARWbXs1k8V4Vnc/YI44n6rxziwjW/OPtXVVY76s=;
+        b=uCSj1GCe/bNZrYAsjGHavCT4yj6PpGZuqH2LNSDJzpBGxj2VDmu0hMcNXNLmTgO86V
+         uKPcJMdBKhHtcXsBAkijM/iqrgenbmBbdRQe09UEVzuJBf5QL5mezXYOqIdAaciXftUx
+         EBpvOUklGX800cOPYIfMQWrcaI3b1qyRcxRnR76cfP5CpAgEF0idfJL6Lm90qQ4eewwe
+         f7Qf6bBiagRjmQnaQbKwZJNMKgEsPqPldP2ckgMdK7M+5lGgtuz4WYDjCJxK6c36Wpi8
+         gL2A4ZNCYSOhTUneT3mCiSy6hWs4SNiGVu7HvC/nWTlsgejvfXsjr+UELAxWUlW/BNgT
+         II+Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVBS0Cx2PKR5WTjEvLVylzPOIWOHdeBuNdbE49gZpgiNisUF31ar83R/ogV4jSWZK3Zc8Wdnl3wSi/Na+UbtoAqFaCWSbSwEmaeZhKilxPiltAwsnII+t578JO1c99SLzUALu/e/JUGsIa9LBSO2nwmqbgdCJIlovk=
+X-Gm-Message-State: AOJu0YwudXQyt/4sHW/DaZxM+Dz0IU7peeqYbKis0GYncV4hQACFHQUH
+	U0YfyF6giCPCCqfdh5KL63bKL9dkNq+ReTE13I2C7vjdL5i1PMW6caH7CFoVGBM=
+X-Google-Smtp-Source: AGHT+IFSaUNALEWlou7k5aaJR4Jt3P2cz+2w2XFEjPmUv0STTtMprFmO/vE6WlJoAaRGdfEjpBgMrw==
+X-Received: by 2002:a05:6870:a7a0:b0:21a:21a4:6f34 with SMTP id x32-20020a056870a7a000b0021a21a46f34mr2780977oao.8.1707922878449;
+        Wed, 14 Feb 2024 07:01:18 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCWwJH/MgqYuqhYCP12vTNb/asfeEz1LdbwsZxV1E7duNp8kVWITuUgCBkdD9gp6rxbbN4pnCYsUU9JyPsg9yZl49lzwCBdPYtKKhHUNtJ+jrjLJ0D3Yu5cnQN5XqDxCoJwR301q+CFP7gy7K4N4y5MLf8Fg5DRrNhw=
+Received: from mail-ot1-f44.google.com (mail-ot1-f44.google.com. [209.85.210.44])
+        by smtp.gmail.com with ESMTPSA id lf7-20020a0568700c4700b00219c95d6036sm2328448oab.28.2024.02.14.07.01.17
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Feb 2024 06:36:35 -0800 (PST)
-Received: by mail-pf1-f169.google.com with SMTP id d2e1a72fcca58-6e0eacc5078so1960998b3a.0;
-        Wed, 14 Feb 2024 06:36:35 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXbpn4HXdF+5vQZd/NubRdk5nr8tk2Cikd3oEFo4cDJqATfH6PE4HM61uHaGO4RZ+sdyy1hMA+z/KcLZN7HYe+B+UFmTZoWJ1o7RucjVrkHFYSfUuj5clRzRawKfJrto3uijSo72Lycm9Us7U1/ov7LNGO/7/1Vx6E=
-X-Received: by 2002:a25:8686:0:b0:dc7:4546:d107 with SMTP id
- z6-20020a258686000000b00dc74546d107mr2758581ybk.23.1707921374648; Wed, 14 Feb
- 2024 06:36:14 -0800 (PST)
+        Wed, 14 Feb 2024 07:01:18 -0800 (PST)
+Received: by mail-ot1-f44.google.com with SMTP id 46e09a7af769-6e2f990c8b5so647966a34.1;
+        Wed, 14 Feb 2024 07:01:17 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCWxbQ5uTp63czaJoZVNc4+v5+eFF5J2WbqyEgz4dXPC8gJQKQQArZ42WqhmeBSbgSxIyn9i9jZFgcNY2FqnxUt5/QZKG+g0M5vG7Y/Gw0nMHrzFaf/brYh2AEMHZzkJqKbGBQhHuNJQbqZIV6FjKoBRDeZQfoo8v4g=
+X-Received: by 2002:a25:84c9:0:b0:dc2:3fbd:82fe with SMTP id
+ x9-20020a2584c9000000b00dc23fbd82femr2322270ybm.46.1707922857034; Wed, 14 Feb
+ 2024 07:00:57 -0800 (PST)
 MIME-Version: 1.0
-References: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org> <20240213-arm-dt-cleanups-v1-3-f2dee1292525@kernel.org>
-In-Reply-To: <20240213-arm-dt-cleanups-v1-3-f2dee1292525@kernel.org>
+References: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org>
+In-Reply-To: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org>
 From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Wed, 14 Feb 2024 15:36:03 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdXjJcsFiusnBQmJg1p-oy-NPmr+qyt0znOk0n+wL8TrnA@mail.gmail.com>
-Message-ID: <CAMuHMdXjJcsFiusnBQmJg1p-oy-NPmr+qyt0znOk0n+wL8TrnA@mail.gmail.com>
-Subject: Re: [PATCH 3/6] arm64: dts: Fix dtc interrupt_provider warnings
+Date: Wed, 14 Feb 2024 16:00:45 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdWgvD9szXksK+jzyvwLQ8ufWWf1TPQ7s-5z4JWgrvXmkg@mail.gmail.com>
+Message-ID: <CAMuHMdWgvD9szXksK+jzyvwLQ8ufWWf1TPQ7s-5z4JWgrvXmkg@mail.gmail.com>
+Subject: Re: [PATCH 0/6] dts: Fix dtc interrupt warnings
 To: Rob Herring <robh@kernel.org>
 Cc: soc@kernel.org, Shawn Guo <shawnguo@kernel.org>, 
 	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
@@ -83,22 +83,21 @@ Cc: soc@kernel.org, Shawn Guo <shawnguo@kernel.org>,
 	Tony Lindgren <tony@atomide.com>, Chanho Min <chanho.min@lge.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	Linus Walleij <linusw@kernel.org>, Imre Kaloz <kaloz@openwrt.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Masahiro Yamada <masahiroy@kernel.org>, Nathan Chancellor <nathan@kernel.org>, 
-	Nicolas Schier <nicolas@fjasle.eu>, linux-arm-kernel@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
-	linux-tegra@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-renesas-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
-	linux-kbuild@vger.kernel.org
+	Magnus Damm <magnus.damm@gmail.com>, Linus Walleij <linusw@kernel.org>, 
+	Imre Kaloz <kaloz@openwrt.org>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Masahiro Yamada <masahiroy@kernel.org>, 
+	Nathan Chancellor <nathan@kernel.org>, Nicolas Schier <nicolas@fjasle.eu>, 
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-aspeed@lists.ozlabs.org, 
+	openbmc@lists.ozlabs.org, linux-tegra@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-omap@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, linux-kbuild@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240214_063638_051290_C7680C23 
-X-CRM114-Status: GOOD (  15.66  )
+X-CRM114-CacheID: sfid-20240214_070125_038521_F0AC9118 
+X-CRM114-Status: GOOD (  17.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,18 +112,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Rob,
+
 On Tue, Feb 13, 2024 at 8:35=E2=80=AFPM Rob Herring <robh@kernel.org> wrote=
 :
-> The dtc interrupt_provider warning is off by default. Fix all the warning=
-s
-> so it can be enabled.
->
-> Signed-off-by: Rob Herring <robh@kernel.org>
+> I had a branch with most of these changes sitting in my tree for some
+> time. Geert's asking about some errors not getting found prompted me to
+> clean it up and send it out. This series fixes all* interrupt related
+> warnings and enables the check by default.
 
->  arch/arm64/boot/dts/renesas/ulcb-kf.dtsi            | 4 ++++
+> *There's a few Renesas warnings still Geert said he would fix.
 
-Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
-Acked-by: Geert Uytterhoeven <geert+renesas@glider.be>
+Thanks, fix sent
+https://lore.kernel.org/r/a351e503ea97fb1af68395843f513925ff1bdf26.17079224=
+60.git.geert+renesas@glider.be
+
+>       dtc: Enable dtc interrupt_provider check
+
+>  scripts/Makefile.lib                                  |  3 +--
+
+Just wondering, can the remaining disabler be removed, too?
+
+Documentation/devicetree/bindings/Makefile:     -Wno-interrupt_provider \
 
 Gr{oetje,eeting}s,
 
