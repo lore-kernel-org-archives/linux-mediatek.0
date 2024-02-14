@@ -4,71 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8665C48BC1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Feb 2024 15:01:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED3BAC48BC1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Feb 2024 15:31:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h6upARWbXs1k8V4Vnc/YI44n6rxziwjW/OPtXVVY76s=; b=3mg/IsM3Bmg/X64pi+sykkBisY
-	xSMGm9ZCUeZA064337h52Qi5zP/1jzZLucVMaI/hVbo2TGYS2wfunypXkXQtiOL9B/1+3ARuAxoDL
-	W8zPXmEowHLzxQAaKFVyCzBrcOHN/MRgM3L0vbvWflutyp6qnJe1PMcOobyhK5L+3WnWplQ+jAocM
-	zdOYAnhQcmjgE03sukwZajkou8+USxyjMzcRgkfVVoDBMPsQkPjm0X0pAsafWfheLjHP7ggAAo+Ji
-	NZYv2zIO+0GSAXFMokoQxoJqbNYiWl3SStG9++Fv3+TQBML3WTmlVkJDhuPmUiUVb18D3lnWWkthb
-	vTB9QSqg==;
+	bh=3f3eO7AWKrMUXfn2g7yysKU/u59S3OfGVqhsP80atCw=; b=Jh2e3U6BpfdQWIIWHiYZSAQall
+	ppsDRGZMlpIeO/JwJKhC/dFYgZHWOF8smvQLJgjCnt/q81qJAiUy6WoiSD4A3wDHh7c1ZA+x32fP4
+	bJdNqBBsWr9g4o+3BrN4idkNEd3EfYgncCyG+hFfuVVl//WQkyemLsd5T3gXdSml1ZbH6ngDpV77/
+	adf0e8dc+GL2jBDgXVl0Lj1SBfi+X/SWB8rxhsb66Cul/RnBoXgXHUw8+cYQJU+L8fn4F2iEL6N7z
+	uSlIm+9XqNGiTwddDBuJi0p3Vju1ik/XAUgpgCt94Z4E1Gx/KeNU06gP+ijuL5goSe4nYF2ZabZ5f
+	jVG3GpuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raGlT-0000000DEuL-0j3o;
-	Wed, 14 Feb 2024 15:01:35 +0000
-Received: from mail-oa1-f48.google.com ([209.85.160.48])
+	id 1raHEa-0000000DKPC-0Wfa;
+	Wed, 14 Feb 2024 15:31:40 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raGlI-0000000DEn8-3jYh;
-	Wed, 14 Feb 2024 15:01:30 +0000
-Received: by mail-oa1-f48.google.com with SMTP id 586e51a60fabf-21a9bd0859cso645865fac.0;
-        Wed, 14 Feb 2024 07:01:24 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707922881; x=1708527681;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=h6upARWbXs1k8V4Vnc/YI44n6rxziwjW/OPtXVVY76s=;
-        b=uCSj1GCe/bNZrYAsjGHavCT4yj6PpGZuqH2LNSDJzpBGxj2VDmu0hMcNXNLmTgO86V
-         uKPcJMdBKhHtcXsBAkijM/iqrgenbmBbdRQe09UEVzuJBf5QL5mezXYOqIdAaciXftUx
-         EBpvOUklGX800cOPYIfMQWrcaI3b1qyRcxRnR76cfP5CpAgEF0idfJL6Lm90qQ4eewwe
-         f7Qf6bBiagRjmQnaQbKwZJNMKgEsPqPldP2ckgMdK7M+5lGgtuz4WYDjCJxK6c36Wpi8
-         gL2A4ZNCYSOhTUneT3mCiSy6hWs4SNiGVu7HvC/nWTlsgejvfXsjr+UELAxWUlW/BNgT
-         II+Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVBS0Cx2PKR5WTjEvLVylzPOIWOHdeBuNdbE49gZpgiNisUF31ar83R/ogV4jSWZK3Zc8Wdnl3wSi/Na+UbtoAqFaCWSbSwEmaeZhKilxPiltAwsnII+t578JO1c99SLzUALu/e/JUGsIa9LBSO2nwmqbgdCJIlovk=
-X-Gm-Message-State: AOJu0YwudXQyt/4sHW/DaZxM+Dz0IU7peeqYbKis0GYncV4hQACFHQUH
-	U0YfyF6giCPCCqfdh5KL63bKL9dkNq+ReTE13I2C7vjdL5i1PMW6caH7CFoVGBM=
-X-Google-Smtp-Source: AGHT+IFSaUNALEWlou7k5aaJR4Jt3P2cz+2w2XFEjPmUv0STTtMprFmO/vE6WlJoAaRGdfEjpBgMrw==
-X-Received: by 2002:a05:6870:a7a0:b0:21a:21a4:6f34 with SMTP id x32-20020a056870a7a000b0021a21a46f34mr2780977oao.8.1707922878449;
-        Wed, 14 Feb 2024 07:01:18 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCWwJH/MgqYuqhYCP12vTNb/asfeEz1LdbwsZxV1E7duNp8kVWITuUgCBkdD9gp6rxbbN4pnCYsUU9JyPsg9yZl49lzwCBdPYtKKhHUNtJ+jrjLJ0D3Yu5cnQN5XqDxCoJwR301q+CFP7gy7K4N4y5MLf8Fg5DRrNhw=
-Received: from mail-ot1-f44.google.com (mail-ot1-f44.google.com. [209.85.210.44])
-        by smtp.gmail.com with ESMTPSA id lf7-20020a0568700c4700b00219c95d6036sm2328448oab.28.2024.02.14.07.01.17
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Feb 2024 07:01:18 -0800 (PST)
-Received: by mail-ot1-f44.google.com with SMTP id 46e09a7af769-6e2f990c8b5so647966a34.1;
-        Wed, 14 Feb 2024 07:01:17 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCWxbQ5uTp63czaJoZVNc4+v5+eFF5J2WbqyEgz4dXPC8gJQKQQArZ42WqhmeBSbgSxIyn9i9jZFgcNY2FqnxUt5/QZKG+g0M5vG7Y/Gw0nMHrzFaf/brYh2AEMHZzkJqKbGBQhHuNJQbqZIV6FjKoBRDeZQfoo8v4g=
-X-Received: by 2002:a25:84c9:0:b0:dc2:3fbd:82fe with SMTP id
- x9-20020a2584c9000000b00dc23fbd82femr2322270ybm.46.1707922857034; Wed, 14 Feb
- 2024 07:00:57 -0800 (PST)
+	id 1raHEV-0000000DKLz-2E4H;
+	Wed, 14 Feb 2024 15:31:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C5A8661A27;
+	Wed, 14 Feb 2024 15:31:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6B46AC43390;
+	Wed, 14 Feb 2024 15:31:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1707924694;
+	bh=4JlFA01oQWdtvRaP+CnWQqdwr1cP142uEyw13TLrbN8=;
+	h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
+	b=REdAzMQNUKQthunqIYd1xXRZvyRazfzeeHO6U9IdkqpQocmGPZO0MqL1dce3y5y1b
+	 PFeEIPsWTolML15+QzASJcdeWR5n3IAnWbJf7gcLrasH+H8HI8o4G8CRjOmNuEAXXZ
+	 JPJN0CaZp3PLCjJjy61EfrhMHYHUHlJL+wd+mTzJYfZGvX6odSfmQZTFtUVb0aybMe
+	 ViowSODx6riqYuR9wKjBYsEm3o3VxzwN8Mp3sn9zRKC3cerkcEYU/VGXs0MoG5uQuI
+	 g6xuLSibBrZHt98G3dsRPMywRLrzlLMAc3Dp44/uxlOpcqrH3cKuiu41UkhGcoS0W2
+	 /cPQAX+TUIULg==
+Received: by mail-ej1-f53.google.com with SMTP id a640c23a62f3a-a34c5ca2537so725010666b.0;
+        Wed, 14 Feb 2024 07:31:34 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUsFs7KEU59o0kcDBLN7YaodW2oB7Oys2dITpQ46yve2CJL6xZidFQiEqK0LZOy9JcaurfhivBOUZ99V6zkyuyTExH3JOj3WieNIUDTcO+cryHd6kX+GJVCbOAtl2B49daOAzpeWMQynpzGWTlfdS8LSBkAXePyxtM=
+X-Gm-Message-State: AOJu0Yws3TFNr7hiXR/ahowWRes6k1pixVUZaQ6EFgZDxuS24G8DG63h
+	yTgGio6f9d/HiG0tvsQ03IAMtjtUozkkd+JklCVLohGBgEwOcg01gzveLUADolOehh+fEBsaieK
+	P5x0qeagxcOi+ZCVYaZDhiRmFJQ==
+X-Google-Smtp-Source: AGHT+IH8/isML9jhNTe8vUWU49jrNm4p0HUKpD8NeE7Izp0zgWowWPvoVR9vvZmOadC5fdJrnpVWN3J0XGbdjt6xmGE=
+X-Received: by 2002:a2e:b888:0:b0:2d0:dfad:2863 with SMTP id
+ r8-20020a2eb888000000b002d0dfad2863mr2522106ljp.46.1707924672118; Wed, 14 Feb
+ 2024 07:31:12 -0800 (PST)
 MIME-Version: 1.0
-References: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org>
-In-Reply-To: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Wed, 14 Feb 2024 16:00:45 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdWgvD9szXksK+jzyvwLQ8ufWWf1TPQ7s-5z4JWgrvXmkg@mail.gmail.com>
-Message-ID: <CAMuHMdWgvD9szXksK+jzyvwLQ8ufWWf1TPQ7s-5z4JWgrvXmkg@mail.gmail.com>
+References: <20240213-arm-dt-cleanups-v1-0-f2dee1292525@kernel.org> <CAMuHMdWgvD9szXksK+jzyvwLQ8ufWWf1TPQ7s-5z4JWgrvXmkg@mail.gmail.com>
+In-Reply-To: <CAMuHMdWgvD9szXksK+jzyvwLQ8ufWWf1TPQ7s-5z4JWgrvXmkg@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Date: Wed, 14 Feb 2024 15:30:57 +0000
+X-Gmail-Original-Message-ID: <CAL_JsqKbDdUzkuSBrBTYm0PF8KehK0DnUwTBHqJ6tZfaE=B2_w@mail.gmail.com>
+Message-ID: <CAL_JsqKbDdUzkuSBrBTYm0PF8KehK0DnUwTBHqJ6tZfaE=B2_w@mail.gmail.com>
 Subject: Re: [PATCH 0/6] dts: Fix dtc interrupt warnings
-To: Rob Herring <robh@kernel.org>
+To: Geert Uytterhoeven <geert@linux-m68k.org>
 Cc: soc@kernel.org, Shawn Guo <shawnguo@kernel.org>, 
 	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Rob Herring <robh+dt@kernel.org>, 
+	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
 	Tsahee Zidenberg <tsahee@annapurnalabs.com>, Antoine Tenart <atenart@kernel.org>, 
 	Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
@@ -96,8 +90,8 @@ Cc: soc@kernel.org, Shawn Guo <shawnguo@kernel.org>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240214_070125_038521_F0AC9118 
-X-CRM114-Status: GOOD (  17.74  )
+X-CRM114-CacheID: sfid-20240214_073135_713537_5ECC9DB1 
+X-CRM114-Status: GOOD (  16.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,40 +106,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+On Wed, Feb 14, 2024 at 9:01=E2=80=AFAM Geert Uytterhoeven <geert@linux-m68=
+k.org> wrote:
+>
+> Hi Rob,
+>
+> On Tue, Feb 13, 2024 at 8:35=E2=80=AFPM Rob Herring <robh@kernel.org> wro=
+te:
+> > I had a branch with most of these changes sitting in my tree for some
+> > time. Geert's asking about some errors not getting found prompted me to
+> > clean it up and send it out. This series fixes all* interrupt related
+> > warnings and enables the check by default.
+>
+> > *There's a few Renesas warnings still Geert said he would fix.
+>
+> Thanks, fix sent
+> https://lore.kernel.org/r/a351e503ea97fb1af68395843f513925ff1bdf26.170792=
+2460.git.geert+renesas@glider.be
+>
+> >       dtc: Enable dtc interrupt_provider check
+>
+> >  scripts/Makefile.lib                                  |  3 +--
+>
+> Just wondering, can the remaining disabler be removed, too?
+>
+> Documentation/devicetree/bindings/Makefile:     -Wno-interrupt_provider \
 
-On Tue, Feb 13, 2024 at 8:35=E2=80=AFPM Rob Herring <robh@kernel.org> wrote=
-:
-> I had a branch with most of these changes sitting in my tree for some
-> time. Geert's asking about some errors not getting found prompted me to
-> clean it up and send it out. This series fixes all* interrupt related
-> warnings and enables the check by default.
+I was too. Shockingly, that too will require some fixes. Though I
+remember when configuring the warnings for bindings, trying to make
+them stricter. So there must have been some case where
+no-interrupt_provider was needed. It may have been related to how we
+parse interrupts in examples, but that changed back when switching to
+validate dtbs directly.
 
-> *There's a few Renesas warnings still Geert said he would fix.
-
-Thanks, fix sent
-https://lore.kernel.org/r/a351e503ea97fb1af68395843f513925ff1bdf26.17079224=
-60.git.geert+renesas@glider.be
-
->       dtc: Enable dtc interrupt_provider check
-
->  scripts/Makefile.lib                                  |  3 +--
-
-Just wondering, can the remaining disabler be removed, too?
-
-Documentation/devicetree/bindings/Makefile:     -Wno-interrupt_provider \
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
---=20
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
-.org
-
-In personal conversations with technical people, I call myself a hacker. Bu=
-t
-when I'm talking to journalists I just say "programmer" or something like t=
-hat.
-                                -- Linus Torvalds
+Rob
 
