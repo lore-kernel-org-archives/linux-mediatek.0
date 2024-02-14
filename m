@@ -4,94 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D064C48BEB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Feb 2024 10:19:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A15BC48BEB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Feb 2024 10:39:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OLRj1mFJpl+9yLnpvglaJFB5v6n1ThidnnLPgjLs0yo=; b=DfRmoWJ3r7D88PTtVkWKDnd0d7
-	GvyM8/IttYH6dXt9pxc89RJiatYH+76Owfl0ZG317bQAunbXuz4AA3fG5gtQqa59GTzA3rVBmxbK9
-	VUmYr6yWSzBSUozntz+f2sZ0gM35L4s334aZU/LeAIzJgilNI017nofQOhR1WB4YTqFeDum/596Mt
-	7UGG6I5BZSM3oqQ/lYsS5PMYcOq73UcwBFvLjUlGOFZA6UczgWRuXgqVSJS9AEhAPMlA3Gx1118Fa
-	cmhu8+WJr4mpZf27T9+BhRTGSF6ZGDn/kPeUVTJfohaTDkuJipuAysZzoC+IxG6YBGtsZQtMavvSF
-	ETFiJszQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aB7AIqUQI98KNHzoy9W0cNWNVIjBskg1cCz+kipFny8=; b=Yu/oyQ6Hehf9r27ibyGWHngi2X
+	P9UeuatnHv/fa13aRY+388sv1+4QWY7H7NWnZZIPYD/aIisxHvyaZDw2UUyqRSWKwpv2iyoJ/gm0I
+	Ct5gO7Ga3Fz/AeAIe+cJup/uh8dkYeweOKZdYZuEDKVpf6Cky+dci32hZKIaqsJ2GPSqo99rrrNNg
+	V+LPBE6ugufpFe3EofpmP3aEOihPftg4iFohNIu4ODzRjRTvcV/7gJ/1rdf2XSGCMjNdmvA7K7SS4
+	o1B8MMbJovEH9wAxh0ravZJ02D+EncOmJQVhioAoBVZxene2wVw9+08uYOy79tsreu5iwm9aVJEmS
+	xSbwE6cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raCMG-0000000CVOR-47oU;
-	Wed, 14 Feb 2024 10:19:16 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1raCfv-0000000CYLV-3alK;
+	Wed, 14 Feb 2024 10:39:35 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raCME-0000000CVNm-1iQ9;
-	Wed, 14 Feb 2024 10:19:15 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a3832ef7726so642166566b.0;
-        Wed, 14 Feb 2024 02:19:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1707905953; x=1708510753; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=OLRj1mFJpl+9yLnpvglaJFB5v6n1ThidnnLPgjLs0yo=;
-        b=IshhdJJu73D4LEgL0Sg3deOA3fn3WTNCx1YhmXl3REkd1KkRM8LQzmVvhITIWNKCoW
-         I7WBeHdURJLAFMP3QtPFB2mLJJqPRWRp5BwS54gOBNYf66pKHj7fgo9Y4GcU5BqwcVph
-         J08hnKv2W7zl5nb3R+tXNE87qEmnIDBxoqkE6cRgIVpfUWMhvRUzX7fuoWVr8jnn62wI
-         o+owZFI0j1Yoy0Jn4HVTNz6zBC9Yk7DJNF/P4/5XIcaDRVKQbdObd/mo7H6FVprvUosT
-         +Y6N3h7cp2DdpYyPwSDTFpX1dMab4r8REmdElSM2KgqUtDuh3GfNxdqgbqdgtKpbiyqR
-         mj8g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707905953; x=1708510753;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=OLRj1mFJpl+9yLnpvglaJFB5v6n1ThidnnLPgjLs0yo=;
-        b=bpcrw9pzQtxTyibZukh8yztG4MeR1fvx3Hulk4lS/4/xzWsu/Yf2MZPD6ZdlNJiLp7
-         V4kTA+xsD+l2GiSxlLm/kInq/8KZ0kdKlzHw02VY3uq3otzrWyoH7RBqLsKyILQVCUv8
-         Gpgi3tPF6Lw7LDYYO74vE6WMQDkekEEHaXKIYphNQ7S4FUHUghIwTRA6s26Rgq97zb0p
-         wWMG1FmVijjqh2QQmfDrL+Vo+qSxbRAShZy7rzXv5nzr4oR5E+rikNvIXCz/GpAxN7Qu
-         9gnRlkvArPl3Ow+ExKwoyZd5QHAFcOn8nqqPrhjUELUn5PQPqpSQpud+FNAVr3BMxs6M
-         FXgw==
-X-Forwarded-Encrypted: i=1; AJvYcCWRkQEm0FrnvOpEVSu9UjeOYB8wHJevRchoh7twDCOBaCQz7tasl0+7c7+ruPmsxFYx5WlCqjV8xCfSyxRZpj22Hx38Gdpg3Y0lD0bp+99YZFN5xg2xlkk427NXn4WRjgB4xVP+Fa5zhfhRyuc+rPbREmU11c9jnOc=
-X-Gm-Message-State: AOJu0YzZXp+rmRlF+u5TPUmbRWe/UK2AyvtDk2K3bxvd8xMoDR8ytFKX
-	aJ0R3vaTymoUVicbHZsk4FjBTObynlFK+eoC2+UnWKnVgwBQLf6u/Go2s1E1
-X-Google-Smtp-Source: AGHT+IEl2Ag3bYgP/Z3P3BT488BPaO2IYQUkRcodC6FMIdU8fXJSacH/fwANZYS9xUDvQUcknqsHSw==
-X-Received: by 2002:a17:906:4f0a:b0:a3d:607b:a280 with SMTP id t10-20020a1709064f0a00b00a3d607ba280mr349986eju.59.1707905952758;
-        Wed, 14 Feb 2024 02:19:12 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCWOAx91eFcQOTulUqIbqfn4LyXCdEoTcC5Pncl3OX9Nh3Y4eCJSvYtv4fepI/t678chIot8cgWsOLyFXrLQqAOPHDpxX9Q/nqSucOiEXT7CQKSy9KVdZwTjtiSTBdA2puJ9YkN8pBi3EorRj/RBhLKdvQd8kvz+VSNzweM93AqP22Mv8Gz84kGcz/YfhKS2bWfYr13nQTskzh6dlIyq6HlMLvC/3KZDfE6rQ6hRInA2DUOBjUkAW+F4HVTPHb14OxJb0MBD2M80EendauhuZgrosIyicqRZDtL/f5eBVFVJMzqNAoNcH9/a55tMn/fh+0V+apL6py8P0xZKZSXz7Nn1eQf+0HlIC1PrjuFnViUzZh70KdJcgz1T8G2nW0goknTQQ4U9lCGW5Gcb0edyC1RcOSbiZeM/0XWmlVRijqqh9nAH3y5v086utpkgcKpnG6uVV/wbaneG4v+iCYsib1NRjBrkYcNaYUDw5W0prtE=
-Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.googlemail.com with ESMTPSA id hw20-20020a170907a0d400b00a3cf243de37sm1738164ejc.111.2024.02.14.02.19.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Feb 2024 02:19:12 -0800 (PST)
-Message-ID: <eb97a068-4de6-4500-993b-86737844de70@gmail.com>
-Date: Wed, 14 Feb 2024 11:19:10 +0100
+	id 1raCfs-0000000CYKT-1u4e;
+	Wed, 14 Feb 2024 10:39:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6E2BF618CD;
+	Wed, 14 Feb 2024 10:39:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD63EC433C7;
+	Wed, 14 Feb 2024 10:39:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1707907171;
+	bh=ve+usHpPiLeGFo9qGaUdJEB8rWWmsI433I+8nLrtPWA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=mMG2JxTY5r0JtemuhnLGxIkBv2vs9oCD8JbPETLCQD3yg2qQ4VKFDBUVSU7yIge4J
+	 4MrcD29ANaG2BIMVo3oS8op8fUmcTulSdxbxdcVYhZbgkqyOak9zrqsfNKhV+krgza
+	 xLBeJ68UbUTpFQO+ditMDCSTVbcpZujlhg7+2k6g=
+Date: Wed, 14 Feb 2024 11:39:25 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: linux-pwm@vger.kernel.org, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Benson Leung <bleung@chromium.org>, Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
+	kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Guenter Roeck <groeck@chromium.org>,
+	chrome-platform@lists.linux.dev, Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>, linux-mips@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	linux-amlogic@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	linux-samsung-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev, greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev
+Subject: Re: [PATCH v6 001/164] pwm: Provide an inline function to get the
+ parent device of a given chip
+Message-ID: <2024021414-sedan-banking-f6b5@gregkh>
+References: <cover.1707900770.git.u.kleine-koenig@pengutronix.de>
+ <cc30090d2f9762bed9854a55612144bccc910781.1707900770.git.u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: pwm: mediatek,mt2712: add compatible for
- MT7988
-To: Conor Dooley <conor@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20240213164633.25447-1-zajec5@gmail.com>
- <20240213-resource-evaluator-0754cfd5882d@spud>
- <d4391868-ddcd-4f66-b539-28d245fa83df@gmail.com>
- <e957b044-fe84-4b72-bdf1-cbc40c722019@collabora.com>
- <20240214-reversion-arguably-37bbee9caf78@spud>
-Content-Language: en-US
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-In-Reply-To: <20240214-reversion-arguably-37bbee9caf78@spud>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <cc30090d2f9762bed9854a55612144bccc910781.1707900770.git.u.kleine-koenig@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240214_021914_473518_AE766BE9 
-X-CRM114-Status: GOOD (  28.24  )
+X-CRM114-CacheID: sfid-20240214_023932_557077_F8F8AE41 
+X-CRM114-Status: GOOD (  13.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,74 +106,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14.02.2024 11:06, Conor Dooley wrote:
-> On Wed, Feb 14, 2024 at 10:27:54AM +0100, AngeloGioacchino Del Regno wrote:
->> Il 14/02/24 07:34, Rafał Miłecki ha scritto:
->>> On 13.02.2024 19:18, Conor Dooley wrote:
->>>> On Tue, Feb 13, 2024 at 05:46:32PM +0100, Rafał Miłecki wrote:
->>>>> From: Rafał Miłecki <rafal@milecki.pl>
->>>>>
->>>>> MT7988 has on-SoC controller that can control up to 8 PWMs.
->>>>
->>>> I see a binding and a dts patch, but no driver patch, how come?
->>>
->>> I believe that to avoid cross-trees patchsets (which are sometimes
->>> tricky for maintainers) there are two ways of submiting such changes:
->>> 1. dt-binding + driver; then (separately) DTS
->>> 2. dt-binding + DTS; then (separately) driver
->>>
->>> I chose later in this case as my personal priority right now is to deal
->>> with all MediaTek DTS files.
->>>
->>> Is that wrong or unacceptable?
->>>
->>
->> It's not wrong but it's partially unacceptable, at least on my side.
+On Wed, Feb 14, 2024 at 10:30:48AM +0100, Uwe Kleine-K�nig wrote:
+> Currently a pwm_chip stores in its struct device *dev member a pointer
+> to the parent device. Preparing a change that embeds a full struct
+> device in struct pwm_chip, this accessor function should be used in all
+> drivers directly accessing chip->dev now. This way struct pwm_chip and
+> this new function can be changed without having to touch all drivers in
+> the same change set.
 > 
->> I want to put emphasis on sending the binding with the driver, as this allows
->> for a better review on everyone's side because we do see the full picture and
->> we can give better advices: in this case, I'm not sure whether adding a new
->> compatible for MT7988 in an enum is a good idea, as the compatible string may
->> be shared with one of the *eleven* SoCs that are supported in the PWM driver,
->> meaning that (hardware speaking!) the PWM controller in 7988 might be the same
->> as the one in mt1234.
+> Make use of this function in the framework's core sources.
 > 
-> Re-ordering to make my reply make more sense...
-> 
->> In my opinion (and I believe many do agree with me), sending the binding along
->> with the driver is the right choice, and if you also want to include the dts
->> that is also appreciated: series can go through multiple maintainers applying
->> subsets - it's ok to do.
-> 
-> Ye, either of those two makes my life a lot easier. I can then at least
-> go and check the driver patch to see if things match up. In this case, I
-> would want to check that the driver requires changes to support this
-> device, given the commit message mentions nothing about the difference
-> between this device and others. I'd still probably request that the
-> commit message be improved to explain the lack of a fallback, but at
-> least I would be clear about what I want and could provide a conditional
-> Ack.
-> 
-> If you're not sending the bindings patch with the driver, there's an
-> extra onus on you to explain exactly what makes this device incompatible
-> with the other devices in the enum, although in an ideal world it'd make
-> no difference and every bindings patch would contain that information.
+> Signed-off-by: Uwe Kleine-K�nig <u.kleine-koenig@pengutronix.de>
 
-I understand, thanks guys for discussing this with me.
-
-I'll send V2 with Linux driver part.
-
-
->>>
->>>> Also, what makes this incompatibly different with the other devices in
->>>> the binding, like the 8183?
->>>
->>> It can control 8 PWMs unlike any other SoC block except for MT2712.
->>> It uses different registers than MT2712 thought.
-> 
-> Put this information in your commit message next time :)
-> 
-> Cheers,
-> Conor.
-
+Reviewed-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
