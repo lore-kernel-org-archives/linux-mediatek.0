@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75E6EC48BC1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Feb 2024 21:17:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B64F1C48BC1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Feb 2024 21:18:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vDG27qbGXDXotWt4r5BxMuF8Z5aqGlNS7zowiQwidN4=; b=skHW2x3baNkNaHfv6RB2JZpVgk
-	+JciXj75w8C1I3i5cVGBwrgCISZ5UBQcGbWI/021aE3k50SUyBZheK/HUFNFhiQqSl3UXJWU7z+jQ
-	5xpZcUsYe6PAmrMFuPp/UFTYjkcBVOe3hJWm61dchhUTOfkeN4XumIC5jJYAPkrdjPISn3L2p0c3i
-	f0+FF4wR9VjRif6NjuPwPtEE+xyVgtpWeWvKwm1t/ikHGJsGk5AgSNRkp1E6r5UX9FvK/K7ac3Nxj
-	PyjK1ML9ngCjgbg2MSJRjCuGURdt7TOA7tPRHWDiszQNb1+xIjkwJTX9LRSq1s+7VJdyatU28XJO9
-	FUoYSSiQ==;
+	bh=WRyBUtzXbW0kgRi+8+Ri/hdHNlvzaJxlrnrYNx31b84=; b=KIduDb3sZHjG0mrl4kAIqV2ZjM
+	zHp3Wv2+yYf/NvmZfaVBGGAR75ZX+gwz/AAqEbA0o/uGlH4j6r2uhTZ7u87AvQZOVC93vHmoZTZh/
+	/0waYrEP/plyP9qPrIoMUzZZw5s8m5VlcZ/IDeNHW3VNQTS2uVGkpLlkY+gjIuigqoEKutHT/b/WK
+	q+aMxcKYoOqOAO+FiFjQh/0gkdVMSOJJIwCi0edvEQTRS7nTQPpb+4pt9UCnAFEXi14lGbzGiY1Fy
+	y3nj8ahZJFLZs4n3tuDhbL2FIOONoRb9ljkCasEE9KFyvG14phCgLUskA7MyFmJ4MPnUyPg69pOy/
+	uac/+Rvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raMct-0000000EHPE-0O2y;
-	Wed, 14 Feb 2024 21:17:07 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1raMeN-0000000EHgf-1fNc;
+	Wed, 14 Feb 2024 21:18:39 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raMcp-0000000EHO6-3zIs
+	id 1raMeK-0000000EHff-2p5n
 	for linux-mediatek@lists.infradead.org;
-	Wed, 14 Feb 2024 21:17:05 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a3d6ea28d46so89694866b.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 14 Feb 2024 13:17:03 -0800 (PST)
+	Wed, 14 Feb 2024 21:18:37 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-51171c9f4c0so196796e87.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 14 Feb 2024 13:18:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1707945422; x=1708550222; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=vDG27qbGXDXotWt4r5BxMuF8Z5aqGlNS7zowiQwidN4=;
-        b=tG4rHkVnnXNIkIzv8qTyXoHr8iKID79X+xsCCS2jIkV5561mjq1UEhhhkoZ4GAwhbg
-         I8aGVqXXUQSkRUexQEEa/ms7ueC3SKc63B1M4G92LdALHzn5F97+Nv8H6m1731FItCJH
-         2fuux3OAn6mKbsD9j0aopjFHauhlk+ghVip2PmPHQAUdVI9HkfQDiATGRKlxdEBkbsU9
-         YUGakQ2Ct10UsXfV4JZINNZF+QcL1CT4J4ScSqsb32MWSNhmwh4SRHimhJR2ps6Epn+W
-         s3Ch1MEHNxX3BEAdfh3zkHQnOg+hxWRBSeAk/RTypZbZ/6jNUuGGAtSaFkgLbf800Uff
-         MA4A==
+        d=linaro.org; s=google; t=1707945515; x=1708550315; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=WRyBUtzXbW0kgRi+8+Ri/hdHNlvzaJxlrnrYNx31b84=;
+        b=sOMqUouzyEKYULmWrxasksHMP1Zt5iWvcXQePU7CgNnOaJaSqrFi+MeorfBxvH1OFI
+         3YEzIVk5HdeurUPrgHpFsNH7JYuPgFjo0UQMXFUOq5yxfUYrF3i96AcmWmmwUlA4yh9F
+         Xcrh7UIIuO8S9Gc3yo3/TjuWYlvh5qPQ1wqP5WG/qJIfNGn6tN9PX+z462+m3emTH2qN
+         Wfc6IiaihKOd4eQQQbWEHMC251SBhAMgqh10x+X8FokDjn8p2iY2N5UxCjOONyuJXhNS
+         iQ2hQSadopWeRKbBG9bQrgmtBuPBTeLdkC3WonRxHpk6flWfRf7f9INEz3S1+Lwc7RU+
+         9sbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707945422; x=1708550222;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vDG27qbGXDXotWt4r5BxMuF8Z5aqGlNS7zowiQwidN4=;
-        b=wVzNnQcPbTU9rfWLhA1/g3e+cSR6UV7H4coWbNECLW0eoM9LQwwqODwW32toFWczNd
-         IAh/srmYlKrCFmIerWVz7DpMvd/CtVrTnqjE3SfKf35SWltrk2e9SZIZY3k6pWKfbx27
-         lrpvtWD/K9Rrm7bXOZHzezdJAS3w99CKOnodRXZG5fc6EeQ7EYMvgRsuKdlBFfZPPKkL
-         ce7r2taWoEFAiWXahMEe7DPFuWC474afFvQeVDuc/fdoW/+VWNzD2ahYAkDyDArK5nwp
-         xtFK7OVd1WxtImjWrJ4K5hS13ZOW8K1UFphXfxw/PGq1rygofQR193JbjAY7MiMAYRmA
-         D7Rw==
-X-Forwarded-Encrypted: i=1; AJvYcCXjgSMBYUhaw8sy72ppEdN5JYKDZf8+UmeAplCltgfUdFON0hpLkglr1/pW4v7oEL/0wRothGDmljPR+ghwXn2Bq64HS2oB01/6K5vJddAiqhLU
-X-Gm-Message-State: AOJu0Yym71XqGNL6MTZFmY0CC7wWFqRGsJ3IKR0al45Y1zfWyvRX4bbf
-	BAFrVRDGfx7zfw/7LBcT7bnwTVeEIKn1Igg67UwZ8G8yssS6D5bR35EfnojQENY=
-X-Google-Smtp-Source: AGHT+IHghIYGSVV5nYIaOLJXpc5/fTKV6YwQnTrz41TL27HdJSrtwGoV0czzrSjRCJfQ0TEdc1kgBw==
-X-Received: by 2002:a17:906:1c59:b0:a37:30aa:3cf3 with SMTP id l25-20020a1709061c5900b00a3730aa3cf3mr2416808ejg.25.1707945420810;
-        Wed, 14 Feb 2024 13:17:00 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCU9JojA/QSHANBTn9Irw1tl3eWBE5j4Be+VBQKri52r1b7vefT6kTjhNI5Wx/tUpYayJ6v7qI3PoYYqmIqnvsxcTOKnoHUtKQfw7L6OBwB5/zEbTaCODiOHB8Sia5rG0EQmnTeZfHWo7cpfGfZUs+vLQADkyICJTWIh1ui+4CqWFcr9bQFgLxm+byuu4KDLns8/27Qwzc/JsZyBypk6Rk6BKbfQwz3snnfBATgpkif4C39+shswPLz49Ek9nQid1u98L0b4Tmd73h978/KLg4nDIMAxnZrCIWu6mfO9RcHV9dVFGFN5qqUvtPDP6oFCgm4LhpFGK6t5mNGbciGNys0e+a5aMC8RZcEoqZZazZRaqS6nxb0zEN8NZSXWhm0I8yb7opJ6aR2PWoU/F4MYqKPvQYZ8jTFZ/T62LTDOH9Ra/gffLvaAI9OMon/GStMHSC/1f6TTJTFhZwJ4WuZVCDKL8f/Roew9Nn4=
+        d=1e100.net; s=20230601; t=1707945515; x=1708550315;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=WRyBUtzXbW0kgRi+8+Ri/hdHNlvzaJxlrnrYNx31b84=;
+        b=O4FxeUmMxjmYTlCs77RUfvCAexKD64W2FMeQ6rlEdrQedScl2HECfYFJ3U5RKf6r07
+         bWqqWY2oG0TBOow7dpcpExoLabvc4LVvGfKmRVO99BHnXZOZtyVep4TX7YZhIsTfJO9S
+         MVo20djjVSxG8JIOAe1yFw+Np2ZbG0Bt11LmSPX1/z3Wu8GzjUSJsJf+YrXp9i+hSmon
+         SWfKWIiqIQmsZXAI3W33Wa7qTnbPN+cfGSWqNow5vHhUP64CHpaH1B1EvXAtgoi7xOEA
+         M6p0OB0yNXHYDi+52tVzkwWzNl2XL2m660CC80/174dzEtskm0sEsbJJ+G/GxkJqYzlZ
+         p1UA==
+X-Forwarded-Encrypted: i=1; AJvYcCWGoDBm8clY25LTSWVaNfRkto1K3d5jp0SkCca1vILKwkaGYd3cXvCr86TnETREvyOV5B6v+IjZEpUpZSnI6eMgw/wl7y9CvJMYhIiOwVOoiMB6
+X-Gm-Message-State: AOJu0YyCkh2qJxCy7gHxtzFK8PoQjQ9zM8hdWGuh3n9aR9LeU+bC/lXv
+	yFl0spS3Q3FrJSDi2jhN5o1VPRcq3v4rSZWM0R5VD4lOqIqicDEd0ycAKuscUuo=
+X-Google-Smtp-Source: AGHT+IEJzS+a/N0hEePfei4g8rF7eBX5FU0IitrV848R3OKkMmnBlNczo0RLXpoyy0ZZiZ3TvdWT2A==
+X-Received: by 2002:a19:c20c:0:b0:511:977b:3103 with SMTP id l12-20020a19c20c000000b00511977b3103mr7920lfc.15.1707945514686;
+        Wed, 14 Feb 2024 13:18:34 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCV0Xe7Z87iFYT+ScCrOZSQ2nZNL3AUE0yfC1zxuFl25IsRPLCQr74wTZ2Y+mW/tx//Hhm1LQGV1v67zal/mFt9D+kww4sCBkvOBbgNMY0I3k7N+QcvZCS0yRjFS/w51GBoLFB2ezPDfIy6fHb/1YzFUzWZY7nUkLGwyQ/6RfjyJktwt2Z8Pd+QNL/aK1ZW4FWGOKjp4k8Fb0MlBHBeXniKyQeFUiYkFJoDc+v8qEIM3WCRsW93a1xmWhCNHP5cCKO7Mr/XgVqeSEfhrZwHApg9SotLteadQWHNgOwmOGVq5d+9tp1c1d9KBJbncGviFDpygCO2BLaQcgnQ1/yJhKb/5gI7KRZhOOA6Z/eROdUvSywQNLhu6CyT5KspD+zAuYtwQLWXk1fMwNdBzBm9ya4y+iP42sEiJp9VMvfv2hwzqO0xRUVC7AgaIxAapeZdZC995RMHop2RbTMOUExs8I5LNntPkAiAV9bE=
 Received: from [192.168.192.135] (078088045141.garwolin.vectranet.pl. [78.88.45.141])
-        by smtp.gmail.com with ESMTPSA id mj18-20020a170906af9200b00a3d3fde216dsm1006846ejb.217.2024.02.14.13.16.59
+        by smtp.gmail.com with ESMTPSA id mj18-20020a170906af9200b00a3d3fde216dsm1006846ejb.217.2024.02.14.13.18.33
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Feb 2024 13:17:00 -0800 (PST)
-Message-ID: <d9f88786-abe3-4826-adbd-fee461a70c2c@linaro.org>
-Date: Wed, 14 Feb 2024 22:16:58 +0100
+        Wed, 14 Feb 2024 13:18:34 -0800 (PST)
+Message-ID: <d9d8e86b-a499-49d1-90ad-6fae5b7dcbb7@linaro.org>
+Date: Wed, 14 Feb 2024 22:18:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v3 2/4] spmi: pmic-arb: Make the APID init a version
- operation
+Subject: Re: [PATCH RFC v3 3/4] spmi: pmic-arb: Make core resources acquiring
+ a version operation
+Content-Language: en-US
 To: Abel Vesa <abel.vesa@linaro.org>, Stephen Boyd <sboyd@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Bjorn Andersson <andersson@kernel.org>,
@@ -82,8 +82,7 @@ Cc: Srini Kandagatla <srinivas.kandagatla@linaro.org>,
  linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
  linux-mediatek@lists.infradead.org
 References: <20240214-spmi-multi-master-support-v3-0-0bae0ef04faf@linaro.org>
- <20240214-spmi-multi-master-support-v3-2-0bae0ef04faf@linaro.org>
-Content-Language: en-US
+ <20240214-spmi-multi-master-support-v3-3-0bae0ef04faf@linaro.org>
 From: Konrad Dybcio <konrad.dybcio@linaro.org>
 Autocrypt: addr=konrad.dybcio@linaro.org; keydata=
  xsFNBF9ALYUBEADWAhxdTBWrwAgDQQzc1O/bJ5O7b6cXYxwbBd9xKP7MICh5YA0DcCjJSOum
@@ -120,13 +119,12 @@ Autocrypt: addr=konrad.dybcio@linaro.org; keydata=
  bGqMHex48FVZhexNPYOd58EY9/7mL5u0sJmo+jTeb4JBgIbFPJCFyng4HwbniWgQJZ1WqaUC
  nas9J77uICis2WH7N8Bs9jy0wQYezNzqS+FxoNXmDQg2jetX8en4bO2Di7Pmx0jXA4TOb9TM
  izWDgYvmBE8=
-In-Reply-To: <20240214-spmi-multi-master-support-v3-2-0bae0ef04faf@linaro.org>
+In-Reply-To: <20240214-spmi-multi-master-support-v3-3-0bae0ef04faf@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240214_131704_036101_821AC3AB 
-X-CRM114-Status: UNSURE (   9.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240214_131836_725653_38EBB4ED 
+X-CRM114-Status: GOOD (  17.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,29 +140,75 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 14.02.2024 22:13, Abel Vesa wrote:
-> Rather than using conditionals in probe function, add the APID init
-> as a version specific operation. Due to v7, which supports multiple
-> buses, pass on the bus index to be used for sorting out the apid base
-> and count.
+> Rather than setting up the core, obsrv and chnls in probe by using
+> version specific conditionals, add a dedicated "get_core_resources"
+> version specific op and move the acquiring in there.
 > 
 > Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
 > ---
-
-[...]
-
-
-> +
->  /*
->   * v5 offset per ee and per apid for observer channels and per apid for
->   * read/write channels.
-> @@ -1178,6 +1246,49 @@ static int pmic_arb_offset_v5(struct spmi_pmic_arb *pmic_arb, u8 sid, u16 addr,
->  	return offset;
+>  drivers/spmi/spmi-pmic-arb.c | 111 ++++++++++++++++++++++++++++++-------------
+>  1 file changed, 78 insertions(+), 33 deletions(-)
+> 
+> diff --git a/drivers/spmi/spmi-pmic-arb.c b/drivers/spmi/spmi-pmic-arb.c
+> index 23939c0d225f..489556467a4c 100644
+> --- a/drivers/spmi/spmi-pmic-arb.c
+> +++ b/drivers/spmi/spmi-pmic-arb.c
+> @@ -203,6 +203,7 @@ struct spmi_pmic_arb {
+>   */
+>  struct pmic_arb_ver_ops {
+>  	const char *ver_str;
+> +	int (*get_core_resources)(struct platform_device *pdev, void __iomem *core);
+>  	int (*init_apid)(struct spmi_pmic_arb *pmic_arb, int index);
+>  	int (*ppid_to_apid)(struct spmi_pmic_arb *pmic_arb, u16 ppid);
+>  	/* spmi commands (read_cmd, write_cmd, cmd) functionality */
+> @@ -956,6 +957,19 @@ static int pmic_arb_init_apid_min_max(struct spmi_pmic_arb *pmic_arb)
+>  	return 0;
 >  }
 >  
-> +/*
-> + * Only v7 supports 2 bus buses. Each bus will get a different apid count,
+> +static int pmic_arb_get_core_resources_v1(struct platform_device *pdev,
+> +					  void __iomem *core)
+> +{
+> +	struct spmi_pmic_arb *pmic_arb = platform_get_drvdata(pdev);
+> +
+> +	pmic_arb->wr_base = core;
+> +	pmic_arb->rd_base = core;
+> +
+> +	pmic_arb->max_periphs = PMIC_ARB_MAX_PERIPHS;
+> +
+> +	return 0;
+> +}
+> +
+>  static int pmic_arb_init_apid_v1(struct spmi_pmic_arb *pmic_arb, int index)
+>  {
+>  	u32 *mapping_table;
+> @@ -1063,6 +1077,41 @@ static u16 pmic_arb_find_apid(struct spmi_pmic_arb *pmic_arb, u16 ppid)
+>  	return apid;
+>  }
+>  
+> +static int pmic_arb_get_obsrvr_chnls_v2(struct platform_device *pdev)
+> +{
+> +	struct spmi_pmic_arb *pmic_arb = platform_get_drvdata(pdev);
+> +	struct device *dev = &pdev->dev;
+> +	struct resource *res;
+> +
+> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM,
 
-"bus buses"?
+It's no longer indented to deep, no need to keep such aggressive wrapping
+
+> +					   "obsrvr");
+> +	pmic_arb->rd_base = devm_ioremap(dev, res->start,
+> +					 resource_size(res));
+> +	if (IS_ERR(pmic_arb->rd_base))
+> +		return PTR_ERR(pmic_arb->rd_base);
+> +
+> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM,
+> +					   "chnls");
+> +	pmic_arb->wr_base = devm_ioremap(dev, res->start,
+> +					 resource_size(res));
+> +	if (IS_ERR(pmic_arb->wr_base))
+> +		return PTR_ERR(pmic_arb->wr_base);
+
+Could probably make it "devm_platform_get_and_ioremap_resource "
 
 Konrad
 
