@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE1E6C4829A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Feb 2024 06:13:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22B66C4829A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Feb 2024 06:13:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0EDbWqws9cGFaTSgQ7d/JTeQtcU5zOGhJZiE31yQ40s=; b=Djg5H3+JGKskI6/ZU3+QrOh/w8
-	OoA5Z7+ro57jC/z6a05vX8dVNEiQ6XaEnVSyMeiOUAmX3QZgUXsH1njbTHslUwIG7nocVnH/tpX5+
-	b+as8u0lA+PPBJup8Q+YepFuDtKIn1RjwANkoQglH6QqijhkwZUdw3OJ+lExk6nYmZmOoCKKKG3F1
-	fPKu2xdZMPX3tUDrV1E9+lU/oaTg4SHy4WAsw95NQ9tvffffAu6z7aUBD0S7flawldEImaLUxhswv
-	s1NOwx/eudCDhgOn8Bb5C3XFb6+IdNqZc2mvU0AD1fEVu7wmy4ASkFJAqWZ7nI1F+ajzbo4qX6tu6
-	FMS8cNww==;
+	bh=Fm7RlLurDkB9nfwalxlLQ2JW0yHxYihI8gdZfuipTWc=; b=XNrw8dvaVdTv+sy9yFjZgLtjNI
+	PO9eJNog8fqro6t8G4cgzrjVms3Jj8BVi1BroXJS1G6HRbAExikKhcCOuxphqFyMMDQmJwxHQdl9D
+	gugHb7lDB8OjqTYorDd8C1UI60NPqCGQ6Q4T6+/4dxitWLFfeCkiwlkjJc/L0LecbJ1RbOOdBwNQb
+	0QVWId5odPj8fkUkJFwnmoe3V6kF+EvvaEZYzDRSvqdXyp/Vq9tXBDD7VrBsYs7FOLN8CYXQVzqru
+	LD1L8niYvUJo6ziz+IhqmP9FpGfOeTY0uAIgneyN+4m6x/m8bUyBaz8b8Z81lp0RqegoxOo9+rzHN
+	eQ2KRd6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ra8WQ-0000000Bvo9-2LN8;
-	Wed, 14 Feb 2024 06:13:30 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1ra8WV-0000000BvqS-33nh;
+	Wed, 14 Feb 2024 06:13:35 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ra8WK-0000000Bvkj-0IkZ;
+	id 1ra8WK-0000000Bvki-1832;
 	Wed, 14 Feb 2024 06:13:25 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-a26ed1e05c7so246436866b.2;
-        Tue, 13 Feb 2024 22:13:20 -0800 (PST)
+Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-56386d7e7a9so75690a12.3;
+        Tue, 13 Feb 2024 22:13:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1707891199; x=1708495999; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1707891198; x=1708495998; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=0EDbWqws9cGFaTSgQ7d/JTeQtcU5zOGhJZiE31yQ40s=;
-        b=e9QjHDB55Cn4pQx/Q1fFys1LOB1WRaGCS7e/8iqHf9VKgzv0bQ4RyV9iFgY3GBTyYP
-         49hnq7HAzhEzIYRLXHK/OC9jLv+BBW34/mGmuFV93X1AKlwnmRc0VAzSns0bP8j5WQ0f
-         59t+wb/mAoi1q+unZkDVt+/5nnu51riJ8DkQ+YsQEqHAItjSUny9Goy0xTDbbKGwJ2Dv
-         Udnlzhmk+w8V9MjuktdPcns/u6R3fdnqNSYesngTNHWlD/9XZyGWYBzQR/nRZUxruWGP
-         uXDWJXM9FuDb7z0mwYRa5+RNwdQ1VIOqa9VqUQNvgrswVmbeAsa3/QnUICp0UWAWZz/c
-         UHhg==
+        bh=Fm7RlLurDkB9nfwalxlLQ2JW0yHxYihI8gdZfuipTWc=;
+        b=gGnS54DobXf+ZdCEUhlqTH6jMACkTQv7ENttuaKTNPcQTp1YuKt3tt3z8yUOOuIhJx
+         xWXfuXWxtNISN1/2zmwydlQJI800+FE+K+5eSS75dOuEy2+o9qvVlctQEw1uvtdqvSKP
+         uCcAsm0wglGDeGN0eJ9SPbMOK3PJKR5pbfQMfYfe4OgjQdYQcYq3SHOHXndvLTuZWogj
+         YVwhgY9kJVUi5sZrGsgc2e1EUvNjJwxc+DKuXdvyjLWfFuz8X4SwWjfOKFYPVc6WTGhv
+         sNypfsLUXV0PAROLZ5pFK2fETCDh7aDiD0cLSG8zqjgN3d/qZOMFRf5DKlyLWh6AFzZY
+         Mfgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707891199; x=1708495999;
+        d=1e100.net; s=20230601; t=1707891198; x=1708495998;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=0EDbWqws9cGFaTSgQ7d/JTeQtcU5zOGhJZiE31yQ40s=;
-        b=iSMFW8efDi0woLtJlJ0XdDsZ5BuTdoF9gGUAY6KEfakwFgfEu6FcEzYBRrQSpOsCK8
-         Zx9o8kBvJpZj1AU8ayKzBfyRVioQNHEY5Pcp/25/Pvjh7HXsk0bjF4rlg9fCesrQAB6C
-         LaWG4pYDAxlIXTN8K57UiNbweksi/ufvHfwbtfbfwoJdk09PtxKEgq30omgo45p7Qsk3
-         opYKitYQ2F1Wq6mB3EovRmu4DxcvC3mKUVnj+HEF7GSG8IdaaVaj18KIJ80qlhRy7iXZ
-         QFS8sey+ypeBFQaedIr68oBs7JGFvCOATvQFBBSpUQuNrq5yS3rIXuQ6Uld3Ig1JRjxg
-         5YQg==
-X-Forwarded-Encrypted: i=1; AJvYcCUFp0RrEDcE163p4bkCzBLZDy1HQUDh5S+sDTZJ/+U4QZrbfPynTPchI0WFNC48W/rvHzjXZznVJGxpCmM+WNsX+BVXYMGg6ApaZxNVdQKpTh7lch2PyiG0XLtTDNavVlBMVO2mqzH5VvnfvDx5KbM7xDw4efO8ZJw=
-X-Gm-Message-State: AOJu0YyjlPTSDJQWGeUq+1zXayjzDHdNyFMBcjdy03pvm0DjyKyj78mD
-	MS4XVYItl1NK6q2W6z5mjGmd+vZ5x8m4MbyKP39C5vfHVd3MjVd4
-X-Google-Smtp-Source: AGHT+IGcdc9MhMF2QCYXKDqgHAb2iQpgiSM62KSdnvoJCUvMTwnehra+UAazTEfsrpPrGHVZ7N5lZg==
-X-Received: by 2002:a17:906:4a8e:b0:a3d:4dec:26f7 with SMTP id x14-20020a1709064a8e00b00a3d4dec26f7mr338386eju.6.1707891199525;
-        Tue, 13 Feb 2024 22:13:19 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCWyN8G4qtIV202cD4o9ZwYJxigXomwvuwD44sYYENvf/P+NZwmHwC+mlVJd32ng0LnLOo9xX0nuFr/NU8vNqFrz1ovgcR8wX1qhe7TG0oBhaDIMxI72PveuU+FovLjBEjxV3p7D6LjZUGfZAOIJIQIPEu8V/Wnz6UiXHisSL5JdnwfTAWPeVR5p2K9YINIb6WWGS5OzzSRTBVmp6ss8jeiU17vEeY/gOX3eDR7DitLuGjk6NTbvX0dp8Mfz81Yy3mPEnBvnboRjx64eSXmpoB+euFmIldHnVa/qec9QCz6iZFrKRjAEWaOTMdRzTqDazEH5WhWuNxCUq9sFDPr6JWBdYcjY9dwaGRMViSQ9zfWsIo6BFWJY9iTUk9asxQuaKIvajlRHSiGuMbit17oxV64VTTIIQA64qPVNvfJzERtbiVXb/lg/rELNSmEr6XH6z7I0Fc3ceJOGl2CnlbCg4jGyjQhXih9QZn+YCd89S3vkyDOicm/XoFyHiPWvYhm/x3ARWvFaGc/0c5cJGlzD3xiGTlV3MhM6SgOkrGTB63eTTeZ2byCN5NMiG5/XH/28JI891Gy4FBixopGm17QS0EgZ1mMH/wFkjY/h
+        bh=Fm7RlLurDkB9nfwalxlLQ2JW0yHxYihI8gdZfuipTWc=;
+        b=WTAy/qMC4xUhIdO7Iy0hNs9s2CdbkkPBkKiqCgC0yCsUzAywtcmzlg+h5ch1XCBj+V
+         ALtmPV6XNQ8BEyJL4ncwKMcWsun6rniNaa6VuWSh2Mp0UV7imvf3dUiwDPMtH5TEVbQy
+         GGjBbdM/jmLkMTLju2jZQxJSKD0l/kG5N1tvXajdf8AsAyDR5QoASjEUoTyrzX1JzsRX
+         XLNq6UYEpbLbYVXhy0ItDqwzGQdNSP8DJ3zl5bwHazy9/kijLDGKy6ekXqKteRiL8dIL
+         zrWizzUC5I5vLPzs4OJrR8tFNMdt6tgYr1WlgQPrU7UjnJmmBjh2AX4qaYEgOA1MFxkO
+         /GEA==
+X-Forwarded-Encrypted: i=1; AJvYcCUx3UErS0+It+MZJPoj0JCvD4npJtXNbCYnERb1ntfTe44Fw2uvgVGNgAkYeGY7Q7jJi0FwLIjwDDqTTivZETgsAcJzRPuxiGVt3zwhIy8ZY3tj9EViC5t0qWnHMQPSP39BCSPOrIi6EH0ni2f6M36mOSur6q9R9mw=
+X-Gm-Message-State: AOJu0YxfIWMYhG5Yn6LCY6K9bhabcMMy4eQzbhy8x2u6heK9xB4QE+dG
+	uV3C26uFQhXcD48aO3JgQVkUeV7uU+s39oMrrplI3fzZlC4RofprEaWSeo4R
+X-Google-Smtp-Source: AGHT+IE6vAggKpthxxjybdmDgBEebRvguPc9ZiRq1zVHc9Ghzh2ZwyyLhUgUWwF+aT64O1YJHrAJgg==
+X-Received: by 2002:a17:906:e086:b0:a3b:ff1d:43a1 with SMTP id gh6-20020a170906e08600b00a3bff1d43a1mr1118210ejb.53.1707891197676;
+        Tue, 13 Feb 2024 22:13:17 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCWHguzWqGVn3ASuDOAp0rM46lm7SYe7FHG+PybMh2tpknnmhFcGzex29Mbwnueqj87nMN6va+oMQLeM4fi1wv7FI5tDe/6uOGjwn8p/wOUa1V0KMlm7MnOXnlwCeLKQwwoer3opr9Po2HPEpPtC+PZiYrWgMmk1LnyPJ6/zJ+5eg5+DyqBToRMPJYZnA41PbqOmDWpMJp3W174xSgzKbrVToOhWUS7AfroOacBZzARd4mVqtGHHnZBALrcdP6ruEoBmrYzje9uoT8Av2mO17LJ/agGuL82ybmLfNJ9yf5RqfAZcldNVmz1SaWWskV4euwbBaNl6Zyid42YUyswBdLWiLFt+zmaNxovv9HcFsC/aJ/DTkwRFLwniScEp27qVJf8TZJf4TzOhRc8rQ2Xv/NWhPk5khH/phtjQcPVFgZ4vP/nknheQnyfc/U0JbJo5Fc9T+3OQ50rNlqkpe2Y8MHdS2WtExiCs76zCCOYOR/Zwwq9Ba6j7pjbvBKS0WWpWvDj0J38uYBCjEi8seTvuFMUJw52ZYutZ9vQVfQ7lYNx71AEFbBgDwiPn8KnZJfAAMcsqxeW8T1MrVGm2QPDlIQz0kC/BiByo9C2T
 Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id ca23-20020a170906a3d700b00a3caccb8f66sm1980163ejb.44.2024.02.13.22.13.18
+        by smtp.gmail.com with ESMTPSA id ca23-20020a170906a3d700b00a3caccb8f66sm1980163ejb.44.2024.02.13.22.13.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Feb 2024 22:13:19 -0800 (PST)
+        Tue, 13 Feb 2024 22:13:17 -0800 (PST)
 From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
 To: Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>,
@@ -81,9 +81,9 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
 	linux-kernel@vger.kernel.org,
 	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH V4 3/3] dt-bindings: clock: mediatek: convert SSUSBSYS to the json-schema clock
-Date: Wed, 14 Feb 2024 07:12:33 +0100
-Message-Id: <20240214061233.24645-4-zajec5@gmail.com>
+Subject: [PATCH V4 2/3] dt-bindings: clock: mediatek: convert PCIESYS to the json-schema clock
+Date: Wed, 14 Feb 2024 07:12:32 +0100
+Message-Id: <20240214061233.24645-3-zajec5@gmail.com>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20240214061233.24645-1-zajec5@gmail.com>
 References: <20240214061233.24645-1-zajec5@gmail.com>
@@ -91,8 +91,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_221324_143811_EFAE3B1E 
-X-CRM114-Status: GOOD (  16.90  )
+X-CRM114-CacheID: sfid-20240213_221324_394348_BD888C84 
+X-CRM114-Status: GOOD (  16.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,59 +118,59 @@ Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../arm/mediatek/mediatek,ssusbsys.txt        | 25 -----------
- .../clock/mediatek,mt7622-ssusbsys.yaml       | 45 +++++++++++++++++++
+ .../arm/mediatek/mediatek,pciesys.txt         | 25 -----------
+ .../clock/mediatek,mt7622-pciesys.yaml        | 45 +++++++++++++++++++
  2 files changed, 45 insertions(+), 25 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ssusbsys.txt
- create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7622-ssusbsys.yaml
+ delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ssusbsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ssusbsys.txt
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
 deleted file mode 100644
-index 7cb02c930613..000000000000
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ssusbsys.txt
+index d179a61536f4..000000000000
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pciesys.txt
 +++ /dev/null
 @@ -1,25 +0,0 @@
--MediaTek SSUSBSYS controller
+-MediaTek PCIESYS controller
 -============================
 -
--The MediaTek SSUSBSYS controller provides various clocks to the system.
+-The MediaTek PCIESYS controller provides various clocks to the system.
 -
 -Required Properties:
 -
 -- compatible: Should be:
--	- "mediatek,mt7622-ssusbsys", "syscon"
--	- "mediatek,mt7629-ssusbsys", "syscon"
+-	- "mediatek,mt7622-pciesys", "syscon"
+-	- "mediatek,mt7629-pciesys", "syscon"
 -- #clock-cells: Must be 1
 -- #reset-cells: Must be 1
 -
--The SSUSBSYS controller uses the common clk binding from
+-The PCIESYS controller uses the common clk binding from
 -Documentation/devicetree/bindings/clock/clock-bindings.txt
 -The available clocks are defined in dt-bindings/clock/mt*-clk.h.
 -
 -Example:
 -
--ssusbsys: ssusbsys@1a000000 {
--	compatible = "mediatek,mt7622-ssusbsys", "syscon";
--	reg = <0 0x1a000000 0 0x1000>;
+-pciesys: pciesys@1a100800 {
+-	compatible = "mediatek,mt7622-pciesys", "syscon";
+-	reg = <0 0x1a100800 0 0x1000>;
 -	#clock-cells = <1>;
 -	#reset-cells = <1>;
 -};
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7622-ssusbsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7622-ssusbsys.yaml
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
 new file mode 100644
-index 000000000000..da93eccdcfc1
+index 000000000000..c77111d10f90
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/clock/mediatek,mt7622-ssusbsys.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
 @@ -0,0 +1,45 @@
 +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/clock/mediatek,mt7622-ssusbsys.yaml#
++$id: http://devicetree.org/schemas/clock/mediatek,mt7622-pciesys.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: MediaTek SSUSBSYS clock and reset controller
++title: MediaTek PCIESYS clock and reset controller
 +
 +description:
-+  The MediaTek SSUSBSYS controller provides various clocks to the system.
++  The MediaTek PCIESYS controller provides various clocks to the system.
 +
 +maintainers:
 +  - Matthias Brugger <matthias.bgg@gmail.com>
@@ -178,8 +178,8 @@ index 000000000000..da93eccdcfc1
 +properties:
 +  compatible:
 +    enum:
-+      - mediatek,mt7622-ssusbsys
-+      - mediatek,mt7629-ssusbsys
++      - mediatek,mt7622-pciesys
++      - mediatek,mt7629-pciesys
 +
 +  reg:
 +    maxItems: 1
@@ -200,9 +200,9 @@ index 000000000000..da93eccdcfc1
 +
 +examples:
 +  - |
-+    clock-controller@1a000000 {
-+        compatible = "mediatek,mt7622-ssusbsys";
-+        reg = <0x1a000000 0x1000>;
++    clock-controller@1a100800 {
++        compatible = "mediatek,mt7622-pciesys";
++        reg = <0x1a100800 0x1000>;
 +        #clock-cells = <1>;
 +        #reset-cells = <1>;
 +    };
