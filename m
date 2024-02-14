@@ -4,52 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12F34C48BEB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Feb 2024 09:03:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45EA1C48BEB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Feb 2024 09:03:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H3r23hFB8Hu62aWLOB2ekBZdGWf/39jWGP2Qo+ffKWw=; b=YhZKYE/lmeeawoR1XoXcgZOKQx
-	CQO6Wjvua6FWA/ep15siZDCqy+Y/twISQ3B2Cgj2CMOBF2fJdzqrRbHONlbFiZTyOBVW30HpzEIl0
-	eSh+sJkJqQbu4TuJy9a7VYL6HqKep+Q7co8ARCdVHCvjWio2ZHoV+3nSfX1jbqZFSg1SuQcxfdD91
-	vKGDa8y4YCUmE4OKZNH0a/5JWioDCg1ZNokh4QwM7es6MyWtlkMu9lkegjOoQcJ7tyngVuSfILb/s
-	w2N6VN8c1+6Dg+PM6/ew6f00D3E0pDgIj7AiEeVIxCPO5+fEesinEGYIUzzDF9s+6p9T82SJazqVX
-	kv6bqEFg==;
+	bh=oAhUVK24LxHpiC5ZANvk/ehlC39I8yphWBKqRbAs4ns=; b=LnPOHZORd6TAq2YW7ajePiauBL
+	/vNsoXC2NjQyIxWJBlSBwvNjA7CqKv+raqVcoI/jhvw7e3A1gFdLkktAVh6nnlLWpkRSdZggIpYEF
+	YEa3Pk6UOXAUZTujsMjvcbI1/n3sqZqa+QhLIGsHI0Bx7/fVBtbBOsB7BMU7NYfgpE4Pz6uyIq0Ak
+	iS389WXbrxejxsKZ8AGVbZ/kPyc+0Jbh6LUorYa2XPWhvjyolM0F2s2bVVSaV6/xBUEdKGxqyyVLf
+	ps1lLXt5r+v0/CnXNvBcUrAWjrx19ctAS70rv3jRu7AwOSIZUv9HHSasVCAVUHZNiVQCHUE+ea4Wm
+	rpMoJcrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raBB0-0000000CD1P-1mhn;
-	Wed, 14 Feb 2024 09:03:34 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1raBB6-0000000CD3z-3NdZ;
+	Wed, 14 Feb 2024 09:03:40 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raBAw-0000000CCzo-3FBa;
-	Wed, 14 Feb 2024 09:03:32 +0000
+	id 1raBAy-0000000CD04-0KE0;
+	Wed, 14 Feb 2024 09:03:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1707901408;
-	bh=IkMSx2GMsosJsuqeMCf9O8BI8a8CA/8JrvnoKOrX2hY=;
+	s=mail; t=1707901410;
+	bh=E4Fif1h9LAA837algbblMC/VbtR1NPcDBXt52yRm3WQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=X5rdKeXPeqAiyx6zTZSRHE9cio2suhjrDXXa3EKLg6fs5OJQQBTxzSS4xVRRG6kUi
-	 aSxL96RzvvF3u+Vyol2XGDkzF78R8k/EJrtlevDmoMA0zn+pOk1En1CTs25BEfz0c+
-	 JoPYq+x/n5GY4mghF7Pyj1kjwntdmBGgwix/7PAQ8uyBJj/GP5D3+5thYaKdD0JheH
-	 NxNfsZoqCccbX3RoaTE3jEEs1AiSM7LFKEaBPHw/10X2oKX5eiWIdrx22jdLxBa+hK
-	 UcPmIx++Zet9sP1+n2z8xElSAp85RldV5zKM4z1f0h3jxj1mdvXQEJH02010efGkmL
-	 hEQhqPHsLEdPQ==
+	b=r3X8VTjjoFJUcBdiXZ0v6uttY6TAs5Xt4/Ya0lWRAaqEmQ3u9e1RmD2eNiZ4I4h6m
+	 yB3BhPiRh3G1sOWARcawu3l8fQp/URU71ShBah7Bw44g7bT6W9rgYQmEW+X/i9RhHS
+	 r/q2AJYbvhP21Zx4Ci8vc9labXo96H8JIiFcCezw5zrf02EaN1ChS+dcHaG+g6RM2z
+	 EWWpUuWsxYPGZ9lFUKo4aGZWS2evYlR+WjcZ6a8kCeiyyRYlBkUtm8RDtpzuQCTor8
+	 7I3sd/byrRT5b/y98KLu0h5sjsofgI8wbGTcfMq33I6tzy8hPGGu4isOHSqkeydP6x
+	 axSIHwXWLwr8A==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A26113781FD9;
-	Wed, 14 Feb 2024 09:03:27 +0000 (UTC)
-Message-ID: <6fea6cd3-031b-4d5a-8bba-f01f6afa12b3@collabora.com>
-Date: Wed, 14 Feb 2024 10:03:26 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E01DA3782075;
+	Wed, 14 Feb 2024 09:03:28 +0000 (UTC)
+Message-ID: <c8878258-9f3b-4e2f-a022-3bd43bcfd02e@collabora.com>
+Date: Wed, 14 Feb 2024 10:03:28 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: mt8186: Add missing xhci
- clock to usb controllers
-Content-Language: en-US
+Subject: Re: [PATCH v2 1/2] arm64: dts: mediatek: mt8186: Add missing clocks
+ to ssusb power domains
 To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
  Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Chen-Yu Tsai <wenst@chromium.org>,
@@ -60,14 +59,15 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 References: <20240213-mt8186-ssusb-domain-clk-fix-v2-0-1f981d35f3fd@collabora.com>
- <20240213-mt8186-ssusb-domain-clk-fix-v2-2-1f981d35f3fd@collabora.com>
+ <20240213-mt8186-ssusb-domain-clk-fix-v2-1-1f981d35f3fd@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240213-mt8186-ssusb-domain-clk-fix-v2-2-1f981d35f3fd@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240213-mt8186-ssusb-domain-clk-fix-v2-1-1f981d35f3fd@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240214_010330_988462_244E0B8F 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20240214_010332_272094_5516FADD 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,28 +83,24 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 13/02/24 16:02, Nícolas F. R. A. Prado ha scritto:
-> The mtu3 usb controllers don't list the xhci clock, though they require
-> it, and thus rely on the bootloader leaving it on in order to work.
+> The ssusb power domains currently don't list any clocks, despite
+> depending on some, and thus rely on the bootloader leaving the required
+> clocks on in order to work.
 > 
-> When booting with the upstream arm64 defconfig, the usb controllers will
-> defer probe until modules have loaded since they have an indirect
-> dependency on CONFIG_MTK_CMDQ, which is configured as a module. However
-> at the point where modules are loaded, unused clocks are also disabled,
-> causing the usb controllers to probe without the xhci clock enabled and
-> fail to probe:
+> When booting with the upstream arm64 defconfig, the power domain
+> controller will defer probe until modules have loaded since it has an
+> indirect dependency on CONFIG_MTK_CMDQ, which is configured as a module.
+> However at the point where modules are loaded, unused clocks are also
+> disabled, causing the ssusb domains to fail to be enabled and
+> consequently the controller to fail probe:
 > 
-> mtu3 11201000.usb: clks of sts1 are not stable!
-> mtu3 11201000.usb: device enable failed -110
-> mtu3 11201000.usb: mtu3 hw init failed:-110
-> mtu3 11201000.usb: failed to initialize gadget
-> mtu3: probe of 11201000.usb failed with error -110
+> mtk-power-controller 10006000.syscon:power-controller: /soc/syscon@10006000/power-controller/power-domain@4: failed to power on domain: -110
+> mtk-power-controller: probe of 10006000.syscon:power-controller failed with error -110
 > 
-> (and same for the one at 11281000)
-> 
-> Add the missing clock for the usb controllers so that they can
+> Add the missing clocks for the ssusb power domains so that they can
 > successfully probe without relying on the bootloader state.
 > 
-> Fixes: f6c3e61c5486 ("arm64: dts: mediatek: mt8186: Add MTU3 nodes")
+> Fixes: d9e43c1e7a38 ("arm64: dts: mt8186: Add power domains controller")
 > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
