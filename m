@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D907C48BEB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Feb 2024 08:53:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90088C48BF0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Feb 2024 08:53:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3unjGpWrY6QN9l4sHyUVQfJLEVAbQi2p+dDnCWmYLCo=; b=lPotNv9L8Piu8q
-	7yKHFzUEnuEa/w7B1uoxnIdWwQN42gum3eTyYiwlNlFtl6HF3axkj/HQ2/oTBn6uwY6DQ8TNG6x6C
-	sT8bQ9YPSBMSyhgUr3hs3smCY0deAENRQ8qz/mnyHORzpZ8d/bPURYEyOppMsdxjVe/M2FDK5AtBH
-	hRJyRjdRrL5EL+zqpYhfrQrhS1mLQPoRvqLo4KHUPLRnxMcTxWAlOFfSztjHDKmRJ2ctQxgERcusx
-	Rm/B0fd8I6jGE6j8maPSYTEv3DeudKH3fWzr2e6zGpXZcKmgkrNGxZlc5wbpQR8HXtpynKazAXu7I
-	+0lmN9fEMlQDYt5lp9iw==;
+	List-Owner; bh=2dZ5EunJwAuX9w7HTOCTRzeuO3OmdqPTzwWpnOmJm9M=; b=pIANMsuv/KE4v/
+	FqbJcwGHC853uofoJTk16u76nswkDzX1wcD3TafhKJ7NbCzzssvDUBVaE3DBz6G5oyJurzOaU35sS
+	J7eUMPkUYExeThnATJK496Xtmx0muNgHKR55F6ok9AbbEmAgBsCOXXzL6L6jkFhVQ+o6R81vQjn/J
+	IUpenOfi6tQXQbb4bZZ1IZYJRd60Blnm6Q5l38C1mFYfTRI0cbz0bGbAHw4c/0a8qlsBrVRXUGeJB
+	maX8ZGffV+qJqF3ehV+pKLnX191r5/wnpX1k4/SE2cpGSHgzCwcJut8qlsevWVArNMrY/vZSGouId
+	JGQCBibM39De+CCxsqpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raXUt-0000000FOye-2AWG;
-	Thu, 15 Feb 2024 08:53:35 +0000
+	id 1raXUv-0000000FOzw-0OHT;
+	Thu, 15 Feb 2024 08:53:37 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raXUh-0000000FOpQ-2Vrl;
-	Thu, 15 Feb 2024 08:53:24 +0000
+	id 1raXUi-0000000FOq3-3NGh;
+	Thu, 15 Feb 2024 08:53:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1707987202;
-	bh=XSolIgr5FDe9KoB4OQ4H+QA/Yd/l3BaoCY5DEBJY/mo=;
+	s=mail; t=1707987203;
+	bh=exVehpvotFoH0Sv6VRJr2uGzlD2qhHspJg3kh+fUvws=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=zUMmTfvrYQcZ9VONv9rJXbrs31nlTcd98KlWPcu4JdrTAbIBz/fcsDmwYDaMjSay5
-	 nHld9nvDO7M9ODtd5MnnPsIlMnTEFCMhAAiU22suAbeh6+HnQqMiKH17VzZrbNmF7x
-	 pddKrrB6+7W57B+m6CQc8RDKFJM2YKOzFsPOHzBNSp6kiiHPuphOzmrHJB04pD+SGN
-	 urJuskKU/aTm0FBXwvd0Q3g3OgJDXoEU/1ps36BJOIAr6vqxyqRfqPOK6M/CCLqSOI
-	 D/iUGSbjUce2xrVZ4wC2/06VrQRh71VmrNsP+JvhefM1zpDkbdKxxdodoEFeeD9yPR
-	 ieQL1Wvid7YEA==
+	b=dBWcYT6THrHx5aRBgvzLstEQFhXNcwqP8cUGmxwXSCl23pCUIsrtrATe5+8UMTf6y
+	 oRym6vqxeeZhMoj1VJ4QjfFn476JICiDo2IvggLXXHucrZxgzmGDbcivz7H1iUkvH2
+	 hfTIxy/7zgwu24wM/AKediWm5t9W3RSJC196aPemrNAD0SdR4+t+oPwRfKvm2q1Vh2
+	 cKZvRAgt+u1kRZzvpwE4ZKKODOPwA3IMlDl35clGG1ss7EL9AevCaK1v9PmmjWcA8X
+	 mbb9WMXFlq4U2v2VsLoGvlLR1ErIQRZH/02IhiYNq2hvxP2Bcx0sUlad/O4leg3H+6
+	 dOn7I8EnA2SEg==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 5670D37820B1;
-	Thu, 15 Feb 2024 08:53:21 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 963F837820B2;
+	Thu, 15 Feb 2024 08:53:22 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
-Subject: [PATCH v6 2/9] drm/mediatek: dsi: Fix DSI RGB666 formats and definitions
-Date: Thu, 15 Feb 2024 09:53:09 +0100
-Message-ID: <20240215085316.56835-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v6 3/9] drm/mediatek: dsi: Cleanup functions mtk_dsi_ps_control{_vact}()
+Date: Thu, 15 Feb 2024 09:53:10 +0100
+Message-ID: <20240215085316.56835-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240215085316.56835-1-angelogioacchino.delregno@collabora.com>
 References: <20240215085316.56835-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240215_005323_791087_137A03F0 
-X-CRM114-Status: GOOD (  12.98  )
+X-CRM114-CacheID: sfid-20240215_005325_098490_EB82C8F5 
+X-CRM114-Status: GOOD (  10.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,69 +71,142 @@ Cc: p.zabel@pengutronix.de, Alexandre Mergnat <amergnat@baylibre.com>, linux-ker
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The register bits definitions for RGB666 formats are wrong in multiple
-ways: first, in the DSI_PS_SEL bits region, the Packed 18-bits RGB666
-format is selected with bit 1, while the Loosely Packed one is bit 2,
-and second - the definition name "LOOSELY_PS_18BIT_RGB666" is wrong
-because the loosely packed format is 24 bits instead!
+Function mtk_dsi_ps_control() is a subset of mtk_dsi_ps_control_vact():
+merge the two in one mtk_dsi_ps_control() function by adding one
+function parameter `config_vact` which, when true, writes the VACT
+related registers.
 
-Either way, functions mtk_dsi_ps_control_vact() and mtk_dsi_ps_control()
-do not even agree on the DSI_PS_SEL bit to set in DSI_PSCTRL: one sets
-loosely packed (24) on RGB666, the other sets packed (18), and the other
-way around for RGB666_PACKED.
-
-Fixing this entire stack of issues is done in one go:
- - Use the correct bit for the Loosely Packed RGB666 definition
- - Rename LOOSELY_PS_18BIT_RGB666 to LOOSELY_PS_24BIT_RGB666
- - Change ps_bpp_mode in mtk_dsi_ps_control_vact() to set:
-    - Loosely Packed, 24-bits for MIPI_DSI_FMT_RGB666
-    - Packed, 18-bits for MIPI_DSI_FMT_RGB666_PACKED
-
-Fixes: 2e54c14e310f ("drm/mediatek: Add DSI sub driver")
+Reviewed-by: Fei Shao <fshao@chromium.org>
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 78 ++++++++++--------------------
+ 1 file changed, 25 insertions(+), 53 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index c66e18006070..8af0afbe9e3d 100644
+index 8af0afbe9e3d..0a83875ec1ba 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -71,8 +71,8 @@
- #define DSI_PS_WC			GENMASK(13, 0)
- #define DSI_PS_SEL			GENMASK(17, 16)
- #define PACKED_PS_16BIT_RGB565		(0 << 16)
--#define LOOSELY_PS_18BIT_RGB666		(1 << 16)
--#define PACKED_PS_18BIT_RGB666		(2 << 16)
-+#define PACKED_PS_18BIT_RGB666		(1 << 16)
-+#define LOOSELY_PS_24BIT_RGB666		(2 << 16)
- #define PACKED_PS_24BIT_RGB888		(3 << 16)
+@@ -351,40 +351,6 @@ static void mtk_dsi_set_vm_cmd(struct mtk_dsi *dsi)
+ 	mtk_dsi_mask(dsi, DSI_VM_CMD_CON, TS_VFP_EN, TS_VFP_EN);
+ }
  
- #define DSI_VSA_NL		0x20
-@@ -370,10 +370,10 @@ static void mtk_dsi_ps_control_vact(struct mtk_dsi *dsi)
- 		ps_bpp_mode |= PACKED_PS_24BIT_RGB888;
+-static void mtk_dsi_ps_control_vact(struct mtk_dsi *dsi)
+-{
+-	struct videomode *vm = &dsi->vm;
+-	u32 dsi_buf_bpp, ps_wc;
+-	u32 ps_bpp_mode;
+-
+-	if (dsi->format == MIPI_DSI_FMT_RGB565)
+-		dsi_buf_bpp = 2;
+-	else
+-		dsi_buf_bpp = 3;
+-
+-	ps_wc = vm->hactive * dsi_buf_bpp;
+-	ps_bpp_mode = ps_wc;
+-
+-	switch (dsi->format) {
+-	case MIPI_DSI_FMT_RGB888:
+-		ps_bpp_mode |= PACKED_PS_24BIT_RGB888;
+-		break;
+-	case MIPI_DSI_FMT_RGB666:
+-		ps_bpp_mode |= LOOSELY_PS_24BIT_RGB666;
+-		break;
+-	case MIPI_DSI_FMT_RGB666_PACKED:
+-		ps_bpp_mode |= PACKED_PS_18BIT_RGB666;
+-		break;
+-	case MIPI_DSI_FMT_RGB565:
+-		ps_bpp_mode |= PACKED_PS_16BIT_RGB565;
+-		break;
+-	}
+-
+-	writel(vm->vactive, dsi->regs + DSI_VACT_NL);
+-	writel(ps_bpp_mode, dsi->regs + DSI_PSCTRL);
+-	writel(ps_wc, dsi->regs + DSI_HSTX_CKL_WC);
+-}
+-
+ static void mtk_dsi_rxtx_control(struct mtk_dsi *dsi)
+ {
+ 	u32 tmp_reg;
+@@ -416,36 +382,42 @@ static void mtk_dsi_rxtx_control(struct mtk_dsi *dsi)
+ 	writel(tmp_reg, dsi->regs + DSI_TXRX_CTRL);
+ }
+ 
+-static void mtk_dsi_ps_control(struct mtk_dsi *dsi)
++static void mtk_dsi_ps_control(struct mtk_dsi *dsi, bool config_vact)
+ {
+-	u32 dsi_tmp_buf_bpp;
+-	u32 tmp_reg;
++	struct videomode *vm = &dsi->vm;
++	u32 dsi_buf_bpp, ps_wc;
++	u32 ps_bpp_mode;
++
++	if (dsi->format == MIPI_DSI_FMT_RGB565)
++		dsi_buf_bpp = 2;
++	else
++		dsi_buf_bpp = 3;
++
++	ps_wc = vm->hactive * dsi_buf_bpp;
++	ps_bpp_mode = ps_wc;
+ 
+ 	switch (dsi->format) {
++	default:
++		fallthrough;
+ 	case MIPI_DSI_FMT_RGB888:
+-		tmp_reg = PACKED_PS_24BIT_RGB888;
+-		dsi_tmp_buf_bpp = 3;
++		ps_bpp_mode |= PACKED_PS_24BIT_RGB888;
  		break;
  	case MIPI_DSI_FMT_RGB666:
--		ps_bpp_mode |= PACKED_PS_18BIT_RGB666;
+-		tmp_reg = LOOSELY_PS_24BIT_RGB666;
+-		dsi_tmp_buf_bpp = 3;
 +		ps_bpp_mode |= LOOSELY_PS_24BIT_RGB666;
  		break;
  	case MIPI_DSI_FMT_RGB666_PACKED:
--		ps_bpp_mode |= LOOSELY_PS_18BIT_RGB666;
+-		tmp_reg = PACKED_PS_18BIT_RGB666;
+-		dsi_tmp_buf_bpp = 3;
 +		ps_bpp_mode |= PACKED_PS_18BIT_RGB666;
  		break;
  	case MIPI_DSI_FMT_RGB565:
- 		ps_bpp_mode |= PACKED_PS_16BIT_RGB565;
-@@ -427,7 +427,7 @@ static void mtk_dsi_ps_control(struct mtk_dsi *dsi)
- 		dsi_tmp_buf_bpp = 3;
+-		tmp_reg = PACKED_PS_16BIT_RGB565;
+-		dsi_tmp_buf_bpp = 2;
+-		break;
+-	default:
+-		tmp_reg = PACKED_PS_24BIT_RGB888;
+-		dsi_tmp_buf_bpp = 3;
++		ps_bpp_mode |= PACKED_PS_16BIT_RGB565;
  		break;
- 	case MIPI_DSI_FMT_RGB666:
--		tmp_reg = LOOSELY_PS_18BIT_RGB666;
-+		tmp_reg = LOOSELY_PS_24BIT_RGB666;
- 		dsi_tmp_buf_bpp = 3;
- 		break;
- 	case MIPI_DSI_FMT_RGB666_PACKED:
+ 	}
+ 
+-	tmp_reg += dsi->vm.hactive * dsi_tmp_buf_bpp & DSI_PS_WC;
+-	writel(tmp_reg, dsi->regs + DSI_PSCTRL);
++	if (config_vact) {
++		writel(vm->vactive, dsi->regs + DSI_VACT_NL);
++		writel(ps_wc, dsi->regs + DSI_HSTX_CKL_WC);
++	}
++	writel(ps_bpp_mode, dsi->regs + DSI_PSCTRL);
+ }
+ 
+ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+@@ -521,7 +493,7 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+ 	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
+ 	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
+ 
+-	mtk_dsi_ps_control(dsi);
++	mtk_dsi_ps_control(dsi, false);
+ }
+ 
+ static void mtk_dsi_start(struct mtk_dsi *dsi)
+@@ -666,7 +638,7 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 	mtk_dsi_reset_engine(dsi);
+ 	mtk_dsi_phy_timconfig(dsi);
+ 
+-	mtk_dsi_ps_control_vact(dsi);
++	mtk_dsi_ps_control(dsi, true);
+ 	mtk_dsi_set_vm_cmd(dsi);
+ 	mtk_dsi_config_vdo_timing(dsi);
+ 	mtk_dsi_set_interrupt_enable(dsi);
 -- 
 2.43.0
 
