@@ -4,69 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 081B7C4829E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Feb 2024 11:34:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0CC8C48BEB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Feb 2024 11:48:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SGaOR3JrvbNxdzYuljKQSDyegZUnjscSEhTYS3fW2Xc=; b=oEGwqNSBcDGpzgs7Ev3RrayHv3
-	TwEQwJXV626tXJokfZA8tEbGsLbKbwxinfovxkUDiNQIFq8uP+Z6PjpXktiJVlW62fdcNWc9wYzbX
-	xy9Z6dVn0b1M+1dIBvqH/MngeDBFTRzH6z0EM+15fyjCaWBkKqNWqlarqYB7PfzVsHOFeQz7ql0Jf
-	wvLaSJzrGLKLzY+PsoEPLkg7OncDbbFScskbnGaTMj8a/sGDlxVT318LBp4eYkimWVk1vsPXzi5N3
-	I0a15QDS6hxERWkkwPje6CDvoo+f3ikcl14mlp/Yy+6yI/vfZfqLbize51xto81qLFO2R3dpe6jfz
-	P2asE98A==;
+	bh=pvPEk8VZWB9MkN26eGmch0xXAt9TJao15ZSLRVkolb0=; b=NyetPVVm9kJ0cWl4CjuSRF2Z3S
+	dwe7UawZ/J1Oj/yOaj2OdokJMKkO8hMFMsg5A0U2Mf2Ewf97XkGi4Mf8QCHlUx8wruOxDehpTtOqR
+	uRNqpO+RmrEFZkRO5jKkFKY6CqGkhScu4k/D+LKSZuUSimK4nAveD6BkQ4lSfrejhdcxFzuHq4otq
+	2qfCDSref85b8bAicq4ybZslrXAnroqOhIadk60H7vskxkpmyzs73q/chNmzG7l9ZLLjEFJb/b3O0
+	0qR0iPjr6617w5+iPuFsIfLkKuqgdGb9PK2yb8L177VuACWpAbETkhNXg4PBycUMoBwQACSn3kwcx
+	VqVsxbFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raa0q-0000000G43J-3aUm;
-	Thu, 15 Feb 2024 11:34:44 +0000
+	id 1raaDo-0000000G72C-1hqP;
+	Thu, 15 Feb 2024 11:48:08 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raa0o-0000000G42F-1ent
+	id 1raaDl-0000000G6zp-1jr5
 	for linux-mediatek@lists.infradead.org;
-	Thu, 15 Feb 2024 11:34:43 +0000
+	Thu, 15 Feb 2024 11:48:07 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1raa0W-0006Oi-9q; Thu, 15 Feb 2024 12:34:24 +0100
+	id 1raaCf-0007ES-Uk; Thu, 15 Feb 2024 12:46:57 +0100
 Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1raa0V-000sFI-FZ; Thu, 15 Feb 2024 12:34:23 +0100
+	id 1raaCW-000sHg-HB; Thu, 15 Feb 2024 12:46:48 +0100
 Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1raa0V-005JyK-1D;
-	Thu, 15 Feb 2024 12:34:23 +0100
-Date: Thu, 15 Feb 2024 12:34:23 +0100
+	id 1raaCW-005KD7-12;
+	Thu, 15 Feb 2024 12:46:48 +0100
+Date: Thu, 15 Feb 2024 12:46:48 +0100
 From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+To: linux-pwm@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, 
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>, James Clark <james.clark@arm.com>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Mark Brown <broonie@kernel.org>, 
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Florian Fainelli <florian.fainelli@broadcom.com>, 
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+	Alexander Shiyan <shc_work@mail.ru>, Benson Leung <bleung@chromium.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Paul Cercueil <paul@crapouillou.net>, 
+	Vladimir Zapolskiy <vz@mleia.com>, Mika Westerberg <mika.westerberg@linux.intel.com>, 
+	Andy Shevchenko <andy@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
+	Hans de Goede <hdegoede@redhat.com>, Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-Subject: Re: [PATCH V2 1/2] dt-bindings: pwm: mediatek,mt2712: add compatible
- for MT7988
-Message-ID: <ive5ueu7oq4hdfzxjevalssaotfmq2jb47zxanwbscxdaldum2@3bpqogbuhbjs>
-References: <20240214140454.6438-1-zajec5@gmail.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Kevin Hilman <khilman@baylibre.com>, Conor Dooley <conor.dooley@microchip.com>, 
+	Daire McNamara <daire.mcnamara@microchip.com>, Jonathan =?utf-8?Q?Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
+	Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>, 
+	Michael Walle <mwalle@kernel.org>, Orson Zhai <orsonzhai@gmail.com>, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Fabrice Gasnier <fabrice.gasnier@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Hammer Hsieh <hammerh0314@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
+	Sean Anderson <sean.anderson@seco.com>, Michal Simek <michal.simek@amd.com>, 
+	Bartosz Golaszewski <brgl@bgdev.pl>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Robert Foss <rfoss@kernel.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Pavel Machek <pavel@ucw.cz>, 
+	Lee Jones <lee@kernel.org>, Anjelique Melendez <quic_amelende@quicinc.com>, 
+	Bjorn Andersson <quic_bjorande@quicinc.com>, Kees Cook <keescook@chromium.org>, Rob Herring <robh@kernel.org>, 
+	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Douglas Anderson <dianders@chromium.org>, linux-doc@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, platform-driver-x86@vger.kernel.org, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Guenter Roeck <groeck@chromium.org>, linux-riscv@lists.infradead.org, 
+	Fabio Estevam <festevam@gmail.com>, linux-stm32@st-md-mailman.stormreply.com, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Jerome Brunet <jbrunet@baylibre.com>, 
+	chrome-platform@lists.linux.dev, linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev, 
+	linux-rockchip@lists.infradead.org, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, NXP Linux Team <linux-imx@nxp.com>, linux-leds@vger.kernel.org, 
+	linux-sunxi@lists.linux.dev, Jonas Karlman <jonas@kwiboo.se>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, greybus-dev@lists.linaro.org, 
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>, linux-mips@vger.kernel.org, asahi@lists.linux.dev, 
+	kernel@pengutronix.de, linux-hardening@vger.kernel.org
+Subject: Re: [PATCH v6 000/164] pwm: Improve lifetime tracking for pwm_chips
+Message-ID: <frrn4vofjuskb67rxrgnwqrsqioonglp7nidoueumgw2hemhxq@6hrsnivgobuw>
+References: <cover.1707900770.git.u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="75b4mriap2dmrhji"
+	protocol="application/pgp-signature"; boundary="t4o747itgdnx5oup"
 Content-Disposition: inline
-In-Reply-To: <20240214140454.6438-1-zajec5@gmail.com>
+In-Reply-To: <cover.1707900770.git.u.kleine-koenig@pengutronix.de>
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
 X-SA-Exim-Mail-From: ukl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240215_033442_446907_3BB25AE6 
-X-CRM114-Status: GOOD (  13.74  )
+X-CRM114-CacheID: sfid-20240215_034805_637728_CA55B59C 
+X-CRM114-Status: GOOD (  27.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,53 +123,83 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---75b4mriap2dmrhji
-Content-Type: text/plain; charset=utf-8
+--t4o747itgdnx5oup
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
 Hello,
 
-On Wed, Feb 14, 2024 at 03:04:53PM +0100, Rafa=C5=82 Mi=C5=82ecki wrote:
-> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
+On Wed, Feb 14, 2024 at 10:30:47AM +0100, Uwe Kleine-K=F6nig wrote:
+> this is v6 of the series introducing better lifetime tracking for
+> pwmchips that addresses (for now theoretic) lifetime issues of pwm
+> chips. Addressing these is a necessary precondition to introduce chardev
+> support for PWMs.
 >=20
-> MT7988 has on-SoC controller that can control up to 8 PWM interfaces. It
-> differs from blocks on other SoCs (amount of PWMs & registers) so it
-> needs its own compatible string.
+> Locking got more complicated due to non-sleeping chips, so I dropped
+> the character device patch because it got still more incomplete now.
+> Also I'm not yet entirely sure about patches #162 and #163 and I expect
+> them to change before they can go in. My plan for the next merge window
+> is to get the patches in up to #160. After that the addition of chardev
+> support (including correct locking) can continue without having to touch
+> the lowlevel driver. So the idea of this series is to get the driver
+> adaptions out of the way as this requires some cross-tree coordination.
 >=20
-> Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
-> ---
-> V2: Explain new compatibility string reason in commit body
+> The patches that touch files outside of drivers/pwm include:
 >=20
->  Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml | 1 +
->  1 file changed, 1 insertion(+)
+>  - gpio: mvebu: Make use of devm_pwmchip_alloc() function
+>    It already has an Ack by Linus Walleij.
+>=20
+>  - drm/bridge: ti-sn65dsi86: Make use of pwmchip_parent() accessor
+>  - drm/bridge: ti-sn65dsi86: Make use of devm_pwmchip_alloc() function
+>    The 2nd already has an Ack by Douglas Anderson which I tend to assume
+>    good enough to merge this via my pwm tree, too. An Ack for the first
+>    patch would be nice.
+>=20
+>  - leds: qcom-lpg: Make use of devm_pwmchip_alloc() function
+>    Already has an Ack by Lee Jones.
+>=20
+>  - staging: greybus: pwm: Change prototype of helpers to prepare further =
+changes
+>  - staging: greybus: pwm: Make use of pwmchip_parent() accessor
+>  - staging: greybus: pwm: Rely on pwm framework to pass a valid hwpwm
+>  - staging: greybus: pwm: Drop unused gb_connection_set_data()
+>  - staging: greybus: pwm: Rework how the number of PWM lines is determined
+>  - staging: greybus: pwm: Make use of devm_pwmchip_alloc() function
+>    The greybus patches already got an Ack by Greg Kroah-Hartman in an
+>    earlier series, but I dropped it as the patches changed considerably.
 
-Applied both patches to
+After getting the needed acks, I pushed out this series in
+
 https://git.kernel.org/pub/scm/linux/kernel/git/ukleinek/linux.git pwm/for-=
 next
 
-Best regards and thanks
+up to patch #161.
+
+(But don't let you stop looking at the changes, reviews are still
+welcome.)
+
+Best regards
 Uwe
 
 --=20
-Pengutronix e.K.                           | Uwe Kleine-K=C3=B6nig         =
-   |
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
 Industrial Linux Solutions                 | https://www.pengutronix.de/ |
 
---75b4mriap2dmrhji
+--t4o747itgdnx5oup
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmXN9rgACgkQj4D7WH0S
-/k78SQgAhCV+r9LL9m8V3LBBqRSGqQoucfaii47kWo/cOi+uyoYCscPQQqP+1amS
-Nx8xPfxWcgPdrCoDuTIbBIgXcxaO33UqAhkVRQp+Hq9+u9ybN25CivUMQboc95gO
-3dzq6TTAjeXI44ydVhrVWwkMiYT4dpHGXkbNgKljSip6VPVZGNNccTVpxVA8ej5D
-3tAXnIjt7bPcowTywTq/EJL6xp1DdMpDkxVltcYG2jIL8oYy8FnfTsR2jnq6hPYX
-9RM9T32SoNZ+7aY+xGkG8p74AhZRPT2ctQeCwbRkHJNh1dYzlsVQqI+ZZgxCvyGL
-OJuORiHGhavkt84HtDj/x53M7jbMHw==
-=I2g8
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmXN+acACgkQj4D7WH0S
+/k6nrwf9Huw1P/RTRggrOHnHFRGpBXi+TWvCPbsOC65CPiHeI7iVxtq/vUtQ4A6L
+CNA0O2W96568TwCEnxxCI6Be+7t8/H/Xb+oTs0yb6hblYkDhxYrXz+wAtoCTWOM8
+MI6xhfufB/JvOhgeX0iVMIx/TOc7gDY0wnFCS7bE15PPxMTjb1yF9Uo3az97CIld
+AF8InyaA81p8dcTlhmHzMa59LEFqoPzmNoySKqTIII7UuHmQRXOqV1RuEmKxN9Ho
+yRvisZgaqoinb8K7tXdw6G8HErBcN1aHM4OQBkZWI0ufVRNzQ8gT1sfoaRlsilOv
+yc/xo9Wl8bLPEKrjcpb9Hv/C+LgzyQ==
+=hkRd
 -----END PGP SIGNATURE-----
 
---75b4mriap2dmrhji--
+--t4o747itgdnx5oup--
 
