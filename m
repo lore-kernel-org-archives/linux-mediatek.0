@@ -4,92 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4CFCC48BC4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Feb 2024 13:32:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86754C48BC4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Feb 2024 13:51:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=itPC4yjw+MZTTzalNg7Ob1FeA2iLjpKFIQ9B9VJV75g=; b=W99Y+EJzFWz5jYjVMRprd/o6dC
-	OB46DVV7/00a460KXtyVo3w5iFfmHt01GjfCen6KWuAa9Q29yuDKn16cMcO49meo+o/8H1ag1cuOY
-	UHw1x0FehzyQhCiFSXJqXKaoPJAytri87bnqNUbp05hEx/FkjFUMS0/TI87chCm8/sffXd7TyZxeS
-	/SxXsVj0JV/5GLg6nLYri9CXZq+4v5NMgK7Nr7K/woOtXeIyy7LLTJ7Id3vw+EssF28zBvZSXoXTe
-	6ZVBZt2/IzxZEy4l7ub0CrGZy07IE1pV8Zp7FOPRf1HlT+woFtjLcasqaLEJeW1dEv+KmR6xpZ7dV
-	30UK792Q==;
+	bh=5t9mkBRSLuX6Whm+p+USkACVg0A1ZTFUPoQmMKDP/ks=; b=B3PmhCZrRnQVYTal+T4vw0MOfv
+	H/V9SIYfc5Wg9v34S+oiMABY8yQGLwnyquAdAv9bIDbNkqCRt3mGoaj68Y2QatxwE6t1ldrYI3UCl
+	V6bs6I1pJukqAzlc26715IYxNGnoEP5g0n6J7e3JLzlJ4Coe70yB7Bs4E6H+Tq/GcXf6jL5cwfh1Z
+	4vqTEwPQdiVTuUkdZL7qzpEXE/Iv+ombpyiAF0Vx3XLs4UuhcazFkCMH8fBEz3C9Cu1CE1BClYuMQ
+	ocaQgjPwV7KCPUcDUmiHDvPZnu1mO6yYr/adxkTfMPqKgSuhtO0g4pgvP2zAGAtJsqiiWb3Ws8zOn
+	q/j4H6zA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rabqZ-0000000GORt-18W0;
-	Thu, 15 Feb 2024 13:32:15 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1rac9M-0000000GSQt-0HE7;
+	Thu, 15 Feb 2024 13:51:40 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rabqW-0000000GOQl-0qBr
-	for linux-mediatek@lists.infradead.org;
-	Thu, 15 Feb 2024 13:32:14 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-55f0b2c79cdso1360277a12.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 15 Feb 2024 05:32:11 -0800 (PST)
+	id 1rac9H-0000000GSPs-3wlj;
+	Thu, 15 Feb 2024 13:51:37 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-411a5b8765bso5293765e9.1;
+        Thu, 15 Feb 2024 05:51:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1708003930; x=1708608730; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=itPC4yjw+MZTTzalNg7Ob1FeA2iLjpKFIQ9B9VJV75g=;
-        b=lv4iX7k1gzLHpNuzZrJvh3ODarohCmhs+sCK3is9unsa7V/Y+BxiNbkAMFnEhTGrDz
-         dYBE42bEQX6T8t6DtWORK13du3N1ijcV2AEaiREuO13a86f6pHf5MZVXuPLIHQol9HIG
-         34Ch9cELjQjsY+1rweGpr2WaOtmBmBxGf0ENOqcpEhNVxPhpF4i023V3gqsFsxOgfDTz
-         zu482fDLtLMaAquDgWYscuqggAQH4vUocFZ+htJlgo7UBzZOt+g8vIdWfgegNS9hT0Py
-         Sg7KcxrZxz+lPMI4A9IP0kfyv/eTeRGsqMK5B86Az/Xm0/5UqAINywFdBcdpGQijXyl2
-         87gg==
+        d=gmail.com; s=20230601; t=1708005094; x=1708609894; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=5t9mkBRSLuX6Whm+p+USkACVg0A1ZTFUPoQmMKDP/ks=;
+        b=lOS6X2lM7Z0Ji0t0jnlx04RdLs68zFspL9JVSzJuEuO4bD7MWxLYhgGpJdFS/tIu6b
+         6ShFzqG9pWol2ck1YQRJIHcLWKdWlfbSp+Awm7BL+SYKUtcj02qrODaQdp6z3U1Zkzzu
+         ch6lwCJZlliPvTdG27wUq23bKsqhrUSM0ybEkRHS/CKP5KH6a6LCzXeaSSVIpLGy2gWF
+         c5EBnpY0GbcvyvSuMfLOUdd0F+B50RkBuUdL8JvjezoFjsdCGcrED2icOUptBXQBDlp0
+         sF/L+y9O0g/3gMoXbi5Deet3wJDqXeMH2gYhyVz5Es+H6epJUJC2cKLc0nzvbR0M7ilY
+         C3YA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708003930; x=1708608730;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=itPC4yjw+MZTTzalNg7Ob1FeA2iLjpKFIQ9B9VJV75g=;
-        b=AP7LiEOKttaBdHAOstJFh/Y5BV+bWrGVosgc+pH/h2Oo85LvX7/KRd5+1q/i1dbKEV
-         b5sAU6BIAC6RdKPIoOK4xI9S7MqoqZregQeBLGMq06e5x17j3rOy062a0kR0UIyEjLrt
-         +SEKK8ywriV1/ONxomrGjmsCgi+ndtGVU1TdWAU5YjNUr/6I7Co2byX8QciVlw1j/XY3
-         SlA1F1qOh4EL4UWsnupwq9LlbJ+b8/7aKrlch3191qRCIWDGvjUsPFtWabLloQk9s85/
-         iiZ6pOpbv2pE/KGFPiLd1oA9BnIrjQ7cqCkbbJ1NztBGF4Si1yHPZZebz/T42IrfVEGc
-         ePDw==
-X-Forwarded-Encrypted: i=1; AJvYcCXD6M32w9JX6Q1nTePTNRsi7mLOVo/BglCh0huGLS4imlwKnf1p/lVnZkHoddVGBvPW6B2INSAIQu4Ey34l+xJkBS0nVWQ6DJetABYtMlMPhAPK
-X-Gm-Message-State: AOJu0YwO/5qvypLJlUEB3FB6s+56huo/tQFz92lceG46ZSSvAtT/GgpY
-	AJjmHA0RJ7bupR1wkS1u0UKuxPyIYHbZt06x54tOdCOZUDUEJRrxgZ4/3iWCtOc=
-X-Google-Smtp-Source: AGHT+IE7pGrmIuos0u7FslcOP5vVFjySkiA6nt4+X/E67cQyceQ3AtGt6cC5RO+cNGVYo8uyVRvA8w==
-X-Received: by 2002:a05:6402:287:b0:561:4238:e6d3 with SMTP id l7-20020a056402028700b005614238e6d3mr1513003edv.2.1708003930158;
-        Thu, 15 Feb 2024 05:32:10 -0800 (PST)
-Received: from linaro.org ([188.24.162.93])
-        by smtp.gmail.com with ESMTPSA id p3-20020a05640243c300b00563c22abac2sm228295edc.61.2024.02.15.05.32.08
+        d=1e100.net; s=20230601; t=1708005094; x=1708609894;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=5t9mkBRSLuX6Whm+p+USkACVg0A1ZTFUPoQmMKDP/ks=;
+        b=b/YMijkqXobKrsekW3csN2+WbpFQTscWcUZMIPSpR3a5GieyjkJymsfbY29+pqM48k
+         IFmd2M5S9VWnimV39zeXQpR8NWs3WSWsVD9aqM/5lP8lNK6HC7V2w0EjGY0ylREST2QZ
+         gHQcgms72VNJ1W1rAxVbB967lVLPqNjsr6BhNUVyNYoDyxWxrTYxsHeHEaJYnkEWzzQb
+         98LdkSgB34CDi6M+G7sJZtjs6lXOZvPtetSXanz208Miaj6MvQDfPKWnsrJp+pbKc2C+
+         wZR0WahH1fLV/NGcR6RU8QVkwfmPx7wn0jO9Hg5wQzl0KhBwvnhV7n5pws81abJ0X8r0
+         eWNA==
+X-Forwarded-Encrypted: i=1; AJvYcCVrpNtI7fnVr1MbtOw7HnhLVGzqXFKomZXhfVkk9fTgd0uhXMxO0wraGHNLeWi92ZaWijQ3YJHmZ39ULpoj0sF/JG1V6l7gU14vH/BygrsS70O+u48WLCaAqVQPQCo35iYvG3W3Ih+hS7cz4jPfpdekwe474UuwGeCaImbznOjXkVFtFfEslm+GQCgxuTSTi971o4u6AW5z5PM+RcSPxYnxACLd7FCa4/sQsX36twlOta43MkIFwOusmLF+dgJrM4H9OmEOH8WdAkJs5zE5yPiiBq9XhKwzeke2D+byEn7wnRBxSPEEgPAOhCqUmra4ZVD7433LNHsU2/aeFWoDBMPsRt+t04bl
+X-Gm-Message-State: AOJu0Yz0i3E1IASMiY9618s/5brZl7R3MPn/osjklotJHGEwNT7Qd/W8
+	ZqNMHxNGaZYiFBwTJXjwQ8S61HF7scM3Bo+dCIfMZAnO8aMgEO7v
+X-Google-Smtp-Source: AGHT+IH7k9jN1LEPjklm49kSSJGmdKPhxpWNQecPQqPdKhvRMqEI/U195h3M4bWUY8DUrcLpEFVYaQ==
+X-Received: by 2002:a05:600c:3503:b0:412:7d0:d83 with SMTP id h3-20020a05600c350300b0041207d00d83mr1601111wmq.16.1708005093670;
+        Thu, 15 Feb 2024 05:51:33 -0800 (PST)
+Received: from ?IPv6:2001:a61:3456:4e01:6ae:b55a:bd1d:57fc? ([2001:a61:3456:4e01:6ae:b55a:bd1d:57fc])
+        by smtp.gmail.com with ESMTPSA id i7-20020a05600c290700b00410add3af79sm5061337wmd.23.2024.02.15.05.51.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Feb 2024 05:32:09 -0800 (PST)
-Date: Thu, 15 Feb 2024 15:32:08 +0200
-From: Abel Vesa <abel.vesa@linaro.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Srini Kandagatla <srinivas.kandagatla@linaro.org>,
-	Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH RFC v3 3/4] spmi: pmic-arb: Make core resources acquiring
- a version operation
-Message-ID: <Zc4SWIViTS0uf952@linaro.org>
-References: <20240214-spmi-multi-master-support-v3-0-0bae0ef04faf@linaro.org>
- <20240214-spmi-multi-master-support-v3-3-0bae0ef04faf@linaro.org>
- <d9d8e86b-a499-49d1-90ad-6fae5b7dcbb7@linaro.org>
- <Zc0yXR/fC2OcObLB@linaro.org>
- <CAA8EJpq=kYeZfNbFtfQ_oLS0Xi4imyEGV+dDNO+h6LZfqmpxZg@mail.gmail.com>
+        Thu, 15 Feb 2024 05:51:33 -0800 (PST)
+Message-ID: <63b248efcbd62a121610cbf37ea0339bd87c99e7.camel@gmail.com>
+Subject: Re: [PATCH v6 003/164] pwm: Provide pwmchip_alloc() function and a
+ devm variant of it
+From: Nuno =?ISO-8859-1?Q?S=E1?= <noname.nuno@gmail.com>
+To: Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>, Michael Walle
+ <mwalle@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ linux-doc@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Paul
+ Walmsley <paul.walmsley@sifive.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>, Paul Cercueil <paul@crapouillou.net>, 
+ linux-tegra@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, James Clark
+ <james.clark@arm.com>, Pavel Machek <pavel@ucw.cz>,  Broadcom internal
+ kernel review list <bcm-kernel-feedback-list@broadcom.com>, Guenter Roeck
+ <groeck@chromium.org>,  chrome-platform@lists.linux.dev, Nobuhiro Iwamatsu
+ <nobuhiro1.iwamatsu@toshiba.co.jp>, Fabio Estevam <festevam@gmail.com>, 
+ linux-riscv@lists.infradead.org, Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
+ Jerome Brunet <jbrunet@baylibre.com>, Rob Herring <robh@kernel.org>, Samuel
+ Holland <samuel@sholland.org>,  linux-samsung-soc@vger.kernel.org, Bjorn
+ Andersson <quic_bjorande@quicinc.com>,  Florian Fainelli
+ <florian.fainelli@broadcom.com>, Jonathan Corbet <corbet@lwn.net>, Sean
+ Anderson <sean.anderson@seco.com>, Benson Leung <bleung@chromium.org>,
+ Bartosz Golaszewski <brgl@bgdev.pl>, Lee Jones <lee@kernel.org>, Jernej
+ Skrabec <jernej.skrabec@gmail.com>,  Jonathan Hunter
+ <jonathanh@nvidia.com>, Hammer Hsieh <hammerh0314@gmail.com>,
+ linux-rockchip@lists.infradead.org,  Chen-Yu Tsai <wens@csie.org>, Michal
+ Simek <michal.simek@amd.com>, NXP Linux Team <linux-imx@nxp.com>,
+ linux-leds@vger.kernel.org, Ilpo =?ISO-8859-1?Q?J=E4rvinen?=
+ <ilpo.jarvinen@linux.intel.com>, Alim Akhtar <alim.akhtar@samsung.com>,
+ linux-mips@vger.kernel.org,  linux-sunxi@lists.linux.dev,
+ platform-driver-x86@vger.kernel.org,  linux-pwm@vger.kernel.org, Kees Cook
+ <keescook@chromium.org>, Sven Peter <sven@svenpeter.dev>, Martin
+ Blumenstingl <martin.blumenstingl@googlemail.com>,  Ray Jui
+ <rjui@broadcom.com>, Sascha Hauer <s.hauer@pengutronix.de>, Jonathan
+ =?ISO-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>, Vladimir Zapolskiy
+ <vz@mleia.com>, Hans de Goede <hdegoede@redhat.com>, Mark Brown
+ <broonie@kernel.org>,  linux-mediatek@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org,  Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-amlogic@lists.infradead.org, Orson Zhai <orsonzhai@gmail.com>, Mika
+ Westerberg <mika.westerberg@linux.intel.com>,  kernel@pengutronix.de,
+ linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Neil Armstrong
+ <neil.armstrong@linaro.org>,  Alexander Shiyan <shc_work@mail.ru>, Scott
+ Branden <sbranden@broadcom.com>,  linux-gpio@vger.kernel.org, Daire
+ McNamara <daire.mcnamara@microchip.com>,  Chunyan Zhang
+ <zhang.lyra@gmail.com>, Hector Martin <marcan@marcan.st>, 
+ linux-stm32@st-md-mailman.stormreply.com, Claudiu Beznea
+ <claudiu.beznea@tuxon.dev>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@linaro.org>,  Fabrice Gasnier
+ <fabrice.gasnier@foss.st.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ asahi@lists.linux.dev,  Maxime Coquelin <mcoquelin.stm32@gmail.com>, Kevin
+ Hilman <khilman@baylibre.com>, Shawn Guo <shawnguo@kernel.org>,  Anjelique
+ Melendez <quic_amelende@quicinc.com>
+Date: Thu, 15 Feb 2024 14:51:31 +0100
+In-Reply-To: <ws4ybgtvfxqz53vk3i67suipzyqpy5y5fqeee5uf3ua6ow222n@i4ktjuorq3nl>
+References: <cover.1707900770.git.u.kleine-koenig@pengutronix.de>
+	 <9577d6053a5a52536057dc8654ff567181c2da82.1707900770.git.u.kleine-koenig@pengutronix.de>
+	 <Zcy21tsntcK80hef@smile.fi.intel.com>
+	 <ws4ybgtvfxqz53vk3i67suipzyqpy5y5fqeee5uf3ua6ow222n@i4ktjuorq3nl>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.50.3 (3.50.3-1.fc39) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAA8EJpq=kYeZfNbFtfQ_oLS0Xi4imyEGV+dDNO+h6LZfqmpxZg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240215_053212_301078_A79B76AB 
-X-CRM114-Status: GOOD (  35.04  )
+X-CRM114-CacheID: sfid-20240215_055136_004044_845A055B 
+X-CRM114-Status: GOOD (  31.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,122 +146,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24-02-15 11:30:23, Dmitry Baryshkov wrote:
-> On Wed, 14 Feb 2024 at 23:36, Abel Vesa <abel.vesa@linaro.org> wrote:
-> >
-> > On 24-02-14 22:18:33, Konrad Dybcio wrote:
-> > > On 14.02.2024 22:13, Abel Vesa wrote:
-> > > > Rather than setting up the core, obsrv and chnls in probe by using
-> > > > version specific conditionals, add a dedicated "get_core_resources"
-> > > > version specific op and move the acquiring in there.
-> > > >
-> > > > Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
-> > > > ---
-> > > >  drivers/spmi/spmi-pmic-arb.c | 111 ++++++++++++++++++++++++++++++-------------
-> > > >  1 file changed, 78 insertions(+), 33 deletions(-)
-> > > >
-> > > > diff --git a/drivers/spmi/spmi-pmic-arb.c b/drivers/spmi/spmi-pmic-arb.c
-> > > > index 23939c0d225f..489556467a4c 100644
-> > > > --- a/drivers/spmi/spmi-pmic-arb.c
-> > > > +++ b/drivers/spmi/spmi-pmic-arb.c
-> > > > @@ -203,6 +203,7 @@ struct spmi_pmic_arb {
-> > > >   */
-> > > >  struct pmic_arb_ver_ops {
-> > > >     const char *ver_str;
-> > > > +   int (*get_core_resources)(struct platform_device *pdev, void __iomem *core);
-> > > >     int (*init_apid)(struct spmi_pmic_arb *pmic_arb, int index);
-> > > >     int (*ppid_to_apid)(struct spmi_pmic_arb *pmic_arb, u16 ppid);
-> > > >     /* spmi commands (read_cmd, write_cmd, cmd) functionality */
-> > > > @@ -956,6 +957,19 @@ static int pmic_arb_init_apid_min_max(struct spmi_pmic_arb *pmic_arb)
-> > > >     return 0;
-> > > >  }
-> > > >
-> > > > +static int pmic_arb_get_core_resources_v1(struct platform_device *pdev,
-> > > > +                                     void __iomem *core)
-> > > > +{
-> > > > +   struct spmi_pmic_arb *pmic_arb = platform_get_drvdata(pdev);
-> > > > +
-> > > > +   pmic_arb->wr_base = core;
-> > > > +   pmic_arb->rd_base = core;
-> > > > +
-> > > > +   pmic_arb->max_periphs = PMIC_ARB_MAX_PERIPHS;
-> > > > +
-> > > > +   return 0;
-> > > > +}
-> > > > +
-> > > >  static int pmic_arb_init_apid_v1(struct spmi_pmic_arb *pmic_arb, int index)
-> > > >  {
-> > > >     u32 *mapping_table;
-> > > > @@ -1063,6 +1077,41 @@ static u16 pmic_arb_find_apid(struct spmi_pmic_arb *pmic_arb, u16 ppid)
-> > > >     return apid;
-> > > >  }
-> > > >
-> > > > +static int pmic_arb_get_obsrvr_chnls_v2(struct platform_device *pdev)
-> > > > +{
-> > > > +   struct spmi_pmic_arb *pmic_arb = platform_get_drvdata(pdev);
-> > > > +   struct device *dev = &pdev->dev;
-> > > > +   struct resource *res;
-> > > > +
-> > > > +   res = platform_get_resource_byname(pdev, IORESOURCE_MEM,
-> > >
-> > > It's no longer indented to deep, no need to keep such aggressive wrapping
-> > >
-> >
-> > The pmic_arb_get_obsrvr_chnls_v2 is used by both:
-> > pmic_arb_get_core_resources_v2
-> > pmic_arb_get_core_resources_v7
-> >
-> > > > +                                      "obsrvr");
-> > > > +   pmic_arb->rd_base = devm_ioremap(dev, res->start,
-> > > > +                                    resource_size(res));
-> > > > +   if (IS_ERR(pmic_arb->rd_base))
-> > > > +           return PTR_ERR(pmic_arb->rd_base);
-> > > > +
-> > > > +   res = platform_get_resource_byname(pdev, IORESOURCE_MEM,
-> > > > +                                      "chnls");
-> > > > +   pmic_arb->wr_base = devm_ioremap(dev, res->start,
-> > > > +                                    resource_size(res));
-> > > > +   if (IS_ERR(pmic_arb->wr_base))
-> > > > +           return PTR_ERR(pmic_arb->wr_base);
-> > >
-> > > Could probably make it "devm_platform_get_and_ioremap_resource "
-> >
-> > The reason this needs to stay as is is because of reason explained by
-> > the following comment found in probe:
-> >
-> > /*
-> >  * Please don't replace this with devm_platform_ioremap_resource() or
-> >  * devm_ioremap_resource().  These both result in a call to
-> >  * devm_request_mem_region() which prevents multiple mappings of this
-> >  * register address range.  SoCs with PMIC arbiter v7 may define two
-> >  * arbiter devices, for the two physical SPMI interfaces, which  share
-> >  * some register address ranges (i.e. "core", "obsrvr", and "chnls").
-> >  * Ensure that both devices probe successfully by calling devm_ioremap()
-> >  * which does not result in a devm_request_mem_region() call.
-> >  */
-> >
-> > Even though, AFAICT, there is no platform that adds a second node for
-> > the second bus, currently, in mainline, we should probably allow the
-> > "legacy" approach to still work.
-> 
-> If there were no DT files which used two SPMI devices, I think we
-> should drop this comment and use existing helpers. We must keep
-> compatibility with the existing DTs, not with the _possible_ device
-> trees.
+On Thu, 2024-02-15 at 13:01 +0100, Uwe Kleine-K=C3=B6nig wrote:
+> On Wed, Feb 14, 2024 at 02:49:26PM +0200, Andy Shevchenko wrote:
+> > On Wed, Feb 14, 2024 at 10:30:50AM +0100, Uwe Kleine-K=C3=B6nig wrote:
+> > > This function allocates a struct pwm_chip and driver data. Compared t=
+o
+> > > the status quo the split into pwm_chip and driver data is new, otherw=
+ise
+> > > it doesn't change anything relevant (yet).
+> > >=20
+> > > The intention is that after all drivers are switched to use this
+> > > allocation function, its possible to add a struct device to struct
+> > > pwm_chip to properly track the latter's lifetime without touching all
+> > > drivers again. Proper lifetime tracking is a necessary precondition t=
+o
+> > > introduce character device support for PWMs (that implements atomic
+> > > setting and doesn't suffer from the sysfs overhead of the /sys/class/=
+pwm
+> > > userspace support).
+> > >=20
+> > > The new function pwmchip_priv() (obviously?) only works for chips
+> > > allocated with pwmchip_alloc().
+> >=20
+> > ...
+> >=20
+> > > +#define PWMCHIP_ALIGN ARCH_DMA_MINALIGN
+> > > +
+> > > +static void *pwmchip_priv(struct pwm_chip *chip)
+> > > +{
+> > > +	return (void *)chip + ALIGN(sizeof(*chip), PWMCHIP_ALIGN);
+> > > +}
+> >=20
+> > Why not use dma_get_cache_alignment() ?
+>=20
+> Hmm, that function returns 1 if ARCH_HAS_DMA_MINALIGN isn't defined. The
+> idea of using ARCH_DMA_MINALIGN was to ensure that the priv data has the
+> same minimal alignment as kmalloc(). Took my inspriration from
+> https://lore.kernel.org/r/20240209-counter-align-fix-v2-1-5777ea0a2722@an=
+alog.com
+> . The implementation of dma_get_cache_alignment suggests that not all
+> archs provide ARCH_DMA_MINALIGN? Also there is ARCH_KMALLOC_MINALIGN.
+> Hmm, don't know yet what to do here.
 
-Sure.
+Here it goes my 2 cents... AFAIK, ARCH_DMA_MINALIGN gives you the same alig=
+nment
+guarantees than devm_kmalloc() for instance. In some archs it will effectiv=
+ely be the
+same as ARCH_KMALLOC_MINALIGN. Now, I think it only matters if the owners o=
+f private
+data intend to have a DMA safe buffer in their structs. If that is the case=
+, we need
+to ensure a proper alignment for that structure. In IIO for example, the co=
+nstruct is
+like this:
 
-Should I drop the qcom,bus-id from the driver as well? It is optional
-after all.
+https://elixir.bootlin.com/linux/latest/source/drivers/iio/dac/ltc2688.c#L9=
+6
 
-> 
-> >
-> > >
-> > > Konrad
-> 
-> 
-> 
-> -- 
-> With best wishes
-> Dmitry
+The buffers should come last in the struct so they are alone in the line. I=
+n IIO,
+Jonathan has a strict policy for this. Like, even if you just want to trans=
+fer 2/4
+bytes via spi, we need to make the buffer safe (apparently there are some c=
+ontrollers
+only doing DMA - even for small transfers).
+
+I would say that if unsure, go with ARCH_DMA_MINALIGN. You just might waste=
+ some
+space in some archs. OTOH, if you think DMA is not really a thing for pwm c=
+hips, you
+might go ARCH_KMALLOC_MINALIGN. And since you already have your own PWMCHIP=
+_ALIGN, it
+should be easy to change the requirements down the road (if needed).
+
+That said, I'm not familiar with dma_get_cache_alignment().
+
+- Nuno S=C3=A1
+
 
