@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08252C4829E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Feb 2024 13:17:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A148AC4829E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Feb 2024 13:20:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8EtWy5qFI5oRuU1I+fKaErMEX+UpFapyqF06FXOaePw=; b=DsUPP35U6GP6Yv/TwhHM0w4TEo
-	XM5SjiZ/ycP6BHi8HvgICWeXM491PXrqM07IcsJzNAE8m0X/PSVwwOB4jgqIyBJXuGpXQfo3F7zbW
-	7uIlbDI3tv/dMUcM979m02X7PbuCTbw9N5zbRlBRVdblLWtBv6+BWV9EvoRuSzPknoxq5HN202Qzl
-	ZH5rFSCykSHygpCUbHJCcz91oZRaSymZZQFUkNufZZ64kUooySiCHCWSzfIj3RPxvhIYxv14Kq6Rl
-	+aVmTs/6aG5y8xRI2mGYFkWorUjeal0btC0Th2p39zaJ+4G+S5MQ0GpMRJn3qYZ1y89i7jNHmsyuj
-	VOYbY87g==;
+	bh=Dzio7S4OeudELWG7CihXhocPNN2iUbsaHjBxfwCY7d0=; b=MpYtAu2RJD495LKP6YGSMzXsFn
+	le2B57pokvPEgpVTBRl9m8O0ZrWVQz4qqnTwBBYnk55yhoBN4nb7xJPG5s9B2STGaC0ATsD20/PhY
+	dQjDVazZiDSRID5APnJce3LtTP+1siFTGw//CrRCTvF4/4K9mT5VCqu4HwCfq6aUjZ5/5CA35i6fD
+	VhAwerXfRmOrRJBwTgWn6Zz0kw/wKGqJ8JF1Yube1rB9Ej641yvW0oWfNOfaSski/NysMI3Hstp6C
+	XAHYlbKpjYmlNSOdZ6gKJ2jBwemUsvJSAsajWtGFzbviszfGBh145wSPnUlU5gpBBq71WcZSmmd6h
+	6NI11sXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rabcC-0000000GMIG-0qi3;
-	Thu, 15 Feb 2024 13:17:24 +0000
+	id 1rabfU-0000000GMXy-0MgX;
+	Thu, 15 Feb 2024 13:20:48 +0000
 Received: from laurent.telenet-ops.be ([2a02:1800:110:4::f00:19])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rabc8-0000000GMHP-3NnJ
+	id 1rabfR-0000000GMXH-0RNN
 	for linux-mediatek@lists.infradead.org;
-	Thu, 15 Feb 2024 13:17:23 +0000
+	Thu, 15 Feb 2024 13:20:46 +0000
 Received: from ramsan.of.borg ([IPv6:2a02:1810:ac12:ed40:ac52:3a54:2a84:d65a])
 	by laurent.telenet-ops.be with bizsmtp
-	id nRHE2B00H0LVNSS01RHE1J; Thu, 15 Feb 2024 14:17:15 +0100
+	id nRLh2B00F0LVNSS01RLhcS; Thu, 15 Feb 2024 14:20:41 +0100
 Received: from rox.of.borg ([192.168.97.57])
 	by ramsan.of.borg with esmtp (Exim 4.95)
 	(envelope-from <geert@linux-m68k.org>)
-	id 1rabbv-000gyU-CZ;
-	Thu, 15 Feb 2024 14:17:14 +0100
+	id 1rabfG-000gyf-6f;
+	Thu, 15 Feb 2024 14:20:41 +0100
 Received: from geert by rox.of.borg with local (Exim 4.95)
 	(envelope-from <geert@linux-m68k.org>)
-	id 1rabc2-00HZX2-OK;
-	Thu, 15 Feb 2024 14:17:14 +0100
+	id 1rabfN-00HZb3-G6;
+	Thu, 15 Feb 2024 14:20:41 +0100
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -46,15 +46,15 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH resend] arm64: dts: mediatek: mt8186: bpi-r3: Convert to sugar syntax
-Date: Thu, 15 Feb 2024 14:17:13 +0100
-Message-Id: <8c10c4bf701583d015506712ba9239dbc7547426.1708002920.git.geert+renesas@glider.be>
+Subject: [PATCH v2] arm64: dts: mediatek: mt8186: bpi-r3: Convert to sugar syntax
+Date: Thu, 15 Feb 2024 14:20:39 +0100
+Message-Id: <8c10c4bf701583d015506712ba9239dbc7547426.1708003159.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240215_051721_035353_0FAE3D84 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20240215_052045_291347_766B67C7 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,6 +78,11 @@ devicetree source files to sugar syntax, improving readability.
 Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 No changes in generated dtbo.
+
+v2:
+  - Rebase on top of commit e630c7b0b6a69f66 ("arm64: dts: mediatek:
+    replace underscores in node names") in next-20240215.
+
 ---
  .../mt7986a-bananapi-bpi-r3-emmc.dtso         | 28 +++---
  .../mt7986a-bananapi-bpi-r3-nand.dtso         | 74 ++++++++-------
@@ -137,7 +142,7 @@ index 543c13385d6e3f82..12ec15e3188de082 100644
 +	#address-cells = <1>;
 +	#size-cells = <0>;
 +
-+	spi_nand: spi_nand@0 {
++	spi_nand: flash@0 {
 +		compatible = "spi-nand";
 +		reg = <0>;
 +		spi-max-frequency = <10000000>;
@@ -151,7 +156,7 @@ index 543c13385d6e3f82..12ec15e3188de082 100644
 +			compatible = "fixed-partitions";
  			#address-cells = <1>;
 -			#size-cells = <0>;
--			spi_nand: spi_nand@0 {
+-			spi_nand: flash@0 {
 -				compatible = "spi-nand";
 -				reg = <0>;
 -				spi-max-frequency = <10000000>;
