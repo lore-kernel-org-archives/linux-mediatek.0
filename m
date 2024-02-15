@@ -4,104 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63088C4829E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Feb 2024 12:02:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08252C4829E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Feb 2024 13:17:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=47uTmntY6Ea2JuhZLOq/p/G+XUWipc9Yqx0Tljxn8Hk=; b=x+i0NH0gfxACwvpT0PHE0Ke0i/
-	KWAck31z/v9r7hN4jMKOhZmtuOzM7aDTo0NV24yz5N/BfMfcEPr1IMqiO5eiTvPD6Ci1V//lRwfzj
-	NmkEeukRA5qZ9ankdNHK9eynaG26wevcSuW9YZafwyhFOuEfijOSSJ1RNnGloveGDc9Oy947eN0j0
-	XeXlF17ibGsKJlu1+nQ3xsh9o40bblYMs4HS/W+31DTDJMzq5dH2zW4PI2MyPEUsWl+Xo9LEBvOZ7
-	90HHv5w+o0MjAAPRtGcXeWIqXaV41K3C2aC27kfF4S9v3Uhz/WNOEJdwJvu3XPdc2o54NYvJPGWtS
-	+eypN8gw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8EtWy5qFI5oRuU1I+fKaErMEX+UpFapyqF06FXOaePw=; b=DsUPP35U6GP6Yv/TwhHM0w4TEo
+	XM5SjiZ/ycP6BHi8HvgICWeXM491PXrqM07IcsJzNAE8m0X/PSVwwOB4jgqIyBJXuGpXQfo3F7zbW
+	7uIlbDI3tv/dMUcM979m02X7PbuCTbw9N5zbRlBRVdblLWtBv6+BWV9EvoRuSzPknoxq5HN202Qzl
+	ZH5rFSCykSHygpCUbHJCcz91oZRaSymZZQFUkNufZZ64kUooySiCHCWSzfIj3RPxvhIYxv14Kq6Rl
+	+aVmTs/6aG5y8xRI2mGYFkWorUjeal0btC0Th2p39zaJ+4G+S5MQ0GpMRJn3qYZ1y89i7jNHmsyuj
+	VOYbY87g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raaRn-0000000GA2k-3WYj;
-	Thu, 15 Feb 2024 12:02:35 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1rabcC-0000000GMIG-0qi3;
+	Thu, 15 Feb 2024 13:17:24 +0000
+Received: from laurent.telenet-ops.be ([2a02:1800:110:4::f00:19])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raaRk-0000000G9zs-23UL
+	id 1rabc8-0000000GMHP-3NnJ
 	for linux-mediatek@lists.infradead.org;
-	Thu, 15 Feb 2024 12:02:34 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1raaRB-0000Gm-6C; Thu, 15 Feb 2024 13:01:57 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1raaR5-000sKN-Ds; Thu, 15 Feb 2024 13:01:51 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1raaR5-005KpH-0o;
-	Thu, 15 Feb 2024 13:01:51 +0100
-Date: Thu, 15 Feb 2024 13:01:51 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Michael Walle <mwalle@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-doc@vger.kernel.org, 
-	Linus Walleij <linus.walleij@linaro.org>, Paul Walmsley <paul.walmsley@sifive.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Paul Cercueil <paul@crapouillou.net>, linux-tegra@vger.kernel.org, 
-	Conor Dooley <conor.dooley@microchip.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	James Clark <james.clark@arm.com>, Pavel Machek <pavel@ucw.cz>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Guenter Roeck <groeck@chromium.org>, 
-	chrome-platform@lists.linux.dev, Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
-	Fabio Estevam <festevam@gmail.com>, linux-riscv@lists.infradead.org, 
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Rob Herring <robh@kernel.org>, Samuel Holland <samuel@sholland.org>, 
-	linux-samsung-soc@vger.kernel.org, Bjorn Andersson <quic_bjorande@quicinc.com>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, Jonathan Corbet <corbet@lwn.net>, 
-	Sean Anderson <sean.anderson@seco.com>, Benson Leung <bleung@chromium.org>, 
-	Bartosz Golaszewski <brgl@bgdev.pl>, Lee Jones <lee@kernel.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Hammer Hsieh <hammerh0314@gmail.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, 
-	Michal Simek <michal.simek@amd.com>, NXP Linux Team <linux-imx@nxp.com>, linux-leds@vger.kernel.org, 
-	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	linux-mips@vger.kernel.org, linux-sunxi@lists.linux.dev, platform-driver-x86@vger.kernel.org, 
-	linux-pwm@vger.kernel.org, Kees Cook <keescook@chromium.org>, 
-	Sven Peter <sven@svenpeter.dev>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Ray Jui <rjui@broadcom.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Jonathan =?utf-8?Q?Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, Vladimir Zapolskiy <vz@mleia.com>, 
-	Hans de Goede <hdegoede@redhat.com>, Mark Brown <broonie@kernel.org>, 
-	linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org, 
-	Orson Zhai <orsonzhai@gmail.com>, Mika Westerberg <mika.westerberg@linux.intel.com>, 
-	kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Alexander Shiyan <shc_work@mail.ru>, Scott Branden <sbranden@broadcom.com>, 
-	linux-gpio@vger.kernel.org, Daire McNamara <daire.mcnamara@microchip.com>, 
-	Chunyan Zhang <zhang.lyra@gmail.com>, Hector Martin <marcan@marcan.st>, 
-	linux-stm32@st-md-mailman.stormreply.com, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Fabrice Gasnier <fabrice.gasnier@foss.st.com>, 
-	Palmer Dabbelt <palmer@dabbelt.com>, asahi@lists.linux.dev, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Kevin Hilman <khilman@baylibre.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Anjelique Melendez <quic_amelende@quicinc.com>
-Subject: Re: [PATCH v6 003/164] pwm: Provide pwmchip_alloc() function and a
- devm variant of it
-Message-ID: <ws4ybgtvfxqz53vk3i67suipzyqpy5y5fqeee5uf3ua6ow222n@i4ktjuorq3nl>
-References: <cover.1707900770.git.u.kleine-koenig@pengutronix.de>
- <9577d6053a5a52536057dc8654ff567181c2da82.1707900770.git.u.kleine-koenig@pengutronix.de>
- <Zcy21tsntcK80hef@smile.fi.intel.com>
+	Thu, 15 Feb 2024 13:17:23 +0000
+Received: from ramsan.of.borg ([IPv6:2a02:1810:ac12:ed40:ac52:3a54:2a84:d65a])
+	by laurent.telenet-ops.be with bizsmtp
+	id nRHE2B00H0LVNSS01RHE1J; Thu, 15 Feb 2024 14:17:15 +0100
+Received: from rox.of.borg ([192.168.97.57])
+	by ramsan.of.borg with esmtp (Exim 4.95)
+	(envelope-from <geert@linux-m68k.org>)
+	id 1rabbv-000gyU-CZ;
+	Thu, 15 Feb 2024 14:17:14 +0100
+Received: from geert by rox.of.borg with local (Exim 4.95)
+	(envelope-from <geert@linux-m68k.org>)
+	id 1rabc2-00HZX2-OK;
+	Thu, 15 Feb 2024 14:17:14 +0100
+From: Geert Uytterhoeven <geert+renesas@glider.be>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Geert Uytterhoeven <geert+renesas@glider.be>
+Subject: [PATCH resend] arm64: dts: mediatek: mt8186: bpi-r3: Convert to sugar syntax
+Date: Thu, 15 Feb 2024 14:17:13 +0100
+Message-Id: <8c10c4bf701583d015506712ba9239dbc7547426.1708002920.git.geert+renesas@glider.be>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="eo4pepuhkmuwjzg5"
-Content-Disposition: inline
-In-Reply-To: <Zcy21tsntcK80hef@smile.fi.intel.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240215_040232_572495_5459B55D 
-X-CRM114-Status: GOOD (  28.27  )
+X-CRM114-CacheID: sfid-20240215_051721_035353_0FAE3D84 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,87 +69,277 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Overlay syntactic sugar for generating target-path fragments is
+supported by the version of dtc supplied with the kernel since commit
+50aafd60898a8b3e ("scripts/dtc: Update to upstream version
+v1.4.6-21-g84e414b0b5bc").  Hence convert the Bananapi R3 overlay
+devicetree source files to sugar syntax, improving readability.
 
---eo4pepuhkmuwjzg5
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+---
+No changes in generated dtbo.
+---
+ .../mt7986a-bananapi-bpi-r3-emmc.dtso         | 28 +++---
+ .../mt7986a-bananapi-bpi-r3-nand.dtso         | 74 ++++++++-------
+ .../mediatek/mt7986a-bananapi-bpi-r3-nor.dtso | 90 +++++++++----------
+ .../mediatek/mt7986a-bananapi-bpi-r3-sd.dtso  | 16 ++--
+ 4 files changed, 98 insertions(+), 110 deletions(-)
 
-On Wed, Feb 14, 2024 at 02:49:26PM +0200, Andy Shevchenko wrote:
-> On Wed, Feb 14, 2024 at 10:30:50AM +0100, Uwe Kleine-K=F6nig wrote:
-> > This function allocates a struct pwm_chip and driver data. Compared to
-> > the status quo the split into pwm_chip and driver data is new, otherwise
-> > it doesn't change anything relevant (yet).
-> >=20
-> > The intention is that after all drivers are switched to use this
-> > allocation function, its possible to add a struct device to struct
-> > pwm_chip to properly track the latter's lifetime without touching all
-> > drivers again. Proper lifetime tracking is a necessary precondition to
-> > introduce character device support for PWMs (that implements atomic
-> > setting and doesn't suffer from the sysfs overhead of the /sys/class/pwm
-> > userspace support).
-> >=20
-> > The new function pwmchip_priv() (obviously?) only works for chips
-> > allocated with pwmchip_alloc().
->=20
-> ...
->=20
-> > +#define PWMCHIP_ALIGN ARCH_DMA_MINALIGN
-> > +
-> > +static void *pwmchip_priv(struct pwm_chip *chip)
-> > +{
-> > +	return (void *)chip + ALIGN(sizeof(*chip), PWMCHIP_ALIGN);
-> > +}
->=20
-> Why not use dma_get_cache_alignment() ?
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dtso b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dtso
+index 779dc6782bb1986f..047a8388811eb9c0 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dtso
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dtso
+@@ -9,21 +9,17 @@
+ 
+ / {
+ 	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
+-
+-	fragment@0 {
+-		target-path = "/soc/mmc@11230000";
+-		__overlay__ {
+-			bus-width = <8>;
+-			max-frequency = <200000000>;
+-			cap-mmc-highspeed;
+-			mmc-hs200-1_8v;
+-			mmc-hs400-1_8v;
+-			hs400-ds-delay = <0x14014>;
+-			non-removable;
+-			no-sd;
+-			no-sdio;
+-			status = "okay";
+-		};
+-	};
+ };
+ 
++&{/soc/mmc@11230000} {
++	bus-width = <8>;
++	max-frequency = <200000000>;
++	cap-mmc-highspeed;
++	mmc-hs200-1_8v;
++	mmc-hs400-1_8v;
++	hs400-ds-delay = <0x14014>;
++	non-removable;
++	no-sd;
++	no-sdio;
++	status = "okay";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso
+index 543c13385d6e3f82..12ec15e3188de082 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso
+@@ -9,46 +9,44 @@
+ 
+ / {
+ 	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
++};
++
++&{/soc/spi@1100a000} {
++	#address-cells = <1>;
++	#size-cells = <0>;
++
++	spi_nand: spi_nand@0 {
++		compatible = "spi-nand";
++		reg = <0>;
++		spi-max-frequency = <10000000>;
++		spi-tx-buswidth = <4>;
++		spi-rx-buswidth = <4>;
+ 
+-	fragment@0 {
+-		target-path = "/soc/spi@1100a000";
+-		__overlay__ {
++		partitions {
++			compatible = "fixed-partitions";
+ 			#address-cells = <1>;
+-			#size-cells = <0>;
+-			spi_nand: spi_nand@0 {
+-				compatible = "spi-nand";
+-				reg = <0>;
+-				spi-max-frequency = <10000000>;
+-				spi-tx-buswidth = <4>;
+-				spi-rx-buswidth = <4>;
+-
+-				partitions {
+-					compatible = "fixed-partitions";
+-					#address-cells = <1>;
+-					#size-cells = <1>;
+-
+-					partition@0 {
+-						label = "bl2";
+-						reg = <0x0 0x100000>;
+-						read-only;
+-					};
+-
+-					partition@100000 {
+-						label = "reserved";
+-						reg = <0x100000 0x280000>;
+-					};
+-
+-					partition@380000 {
+-						label = "fip";
+-						reg = <0x380000 0x200000>;
+-						read-only;
+-					};
+-
+-					partition@580000 {
+-						label = "ubi";
+-						reg = <0x580000 0x7a80000>;
+-					};
+-				};
++			#size-cells = <1>;
++
++			partition@0 {
++				label = "bl2";
++				reg = <0x0 0x100000>;
++				read-only;
++			};
++
++			partition@100000 {
++				label = "reserved";
++				reg = <0x100000 0x280000>;
++			};
++
++			partition@380000 {
++				label = "fip";
++				reg = <0x380000 0x200000>;
++				read-only;
++			};
++
++			partition@580000 {
++				label = "ubi";
++				reg = <0x580000 0x7a80000>;
+ 			};
+ 		};
+ 	};
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
+index e48881be4ed60c98..6a0d529b54aca5bd 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
+@@ -9,54 +9,52 @@
+ 
+ / {
+ 	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
++};
++
++&{/soc/spi@1100a000} {
++	#address-cells = <1>;
++	#size-cells = <0>;
+ 
+-	fragment@0 {
+-		target-path = "/soc/spi@1100a000";
+-		__overlay__ {
++	flash@0 {
++		compatible = "jedec,spi-nor";
++		reg = <0>;
++		spi-max-frequency = <10000000>;
++
++		partitions {
++			compatible = "fixed-partitions";
+ 			#address-cells = <1>;
+-			#size-cells = <0>;
+-			flash@0 {
+-				compatible = "jedec,spi-nor";
+-				reg = <0>;
+-				spi-max-frequency = <10000000>;
+-
+-				partitions {
+-					compatible = "fixed-partitions";
+-					#address-cells = <1>;
+-					#size-cells = <1>;
+-
+-					partition@0 {
+-						label = "bl2";
+-						reg = <0x0 0x40000>;
+-						read-only;
+-					};
+-
+-					partition@40000 {
+-						label = "u-boot-env";
+-						reg = <0x40000 0x40000>;
+-					};
+-
+-					partition@80000 {
+-						label = "reserved2";
+-						reg = <0x80000 0x80000>;
+-					};
+-
+-					partition@100000 {
+-						label = "fip";
+-						reg = <0x100000 0x80000>;
+-						read-only;
+-					};
+-
+-					partition@180000 {
+-						label = "recovery";
+-						reg = <0x180000 0xa80000>;
+-					};
+-
+-					partition@c00000 {
+-						label = "fit";
+-						reg = <0xc00000 0x1400000>;
+-					};
+-				};
++			#size-cells = <1>;
++
++			partition@0 {
++				label = "bl2";
++				reg = <0x0 0x40000>;
++				read-only;
++			};
++
++			partition@40000 {
++				label = "u-boot-env";
++				reg = <0x40000 0x40000>;
++			};
++
++			partition@80000 {
++				label = "reserved2";
++				reg = <0x80000 0x80000>;
++			};
++
++			partition@100000 {
++				label = "fip";
++				reg = <0x100000 0x80000>;
++				read-only;
++			};
++
++			partition@180000 {
++				label = "recovery";
++				reg = <0x180000 0xa80000>;
++			};
++
++			partition@c00000 {
++				label = "fit";
++				reg = <0xc00000 0x1400000>;
+ 			};
+ 		};
+ 	};
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dtso b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dtso
+index f623bce075ce6ea4..d9e01967acc471b8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dtso
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dtso
+@@ -9,15 +9,11 @@
+ 
+ / {
+ 	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
+-
+-	fragment@0 {
+-		target-path = "/soc/mmc@11230000";
+-		__overlay__ {
+-			bus-width = <4>;
+-			max-frequency = <52000000>;
+-			cap-sd-highspeed;
+-			status = "okay";
+-		};
+-	};
+ };
+ 
++&{/soc/mmc@11230000} {
++	bus-width = <4>;
++	max-frequency = <52000000>;
++	cap-sd-highspeed;
++	status = "okay";
++};
+-- 
+2.34.1
 
-Hmm, that function returns 1 if ARCH_HAS_DMA_MINALIGN isn't defined. The
-idea of using ARCH_DMA_MINALIGN was to ensure that the priv data has the
-same minimal alignment as kmalloc(). Took my inspriration from
-https://lore.kernel.org/r/20240209-counter-align-fix-v2-1-5777ea0a2722@anal=
-og.com
-=2E The implementation of dma_get_cache_alignment suggests that not all
-archs provide ARCH_DMA_MINALIGN? Also there is ARCH_KMALLOC_MINALIGN.
-Hmm, don't know yet what to do here.
-
-> > +/* This is the counterpart to pwmchip_alloc */
->=20
-> pwmchip_alloc()
-
-Ack.
-=20
-> > +EXPORT_SYMBOL_GPL(pwmchip_put);
->=20
-> > +EXPORT_SYMBOL_GPL(pwmchip_alloc);
->=20
-> > +EXPORT_SYMBOL_GPL(devm_pwmchip_alloc);
->=20
-> Are these exported via namespace? If no, can they be from day 1?
-
-I added that to my todo list for all pwm functions. Will address that
-separately.
-
-Thanks for your feedback
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---eo4pepuhkmuwjzg5
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmXN/SUACgkQj4D7WH0S
-/k7Wcgf+PH/0QpqNNV4Y2/FkmhtRuwoboRFbLUmPSdsZXmpktX2oCcZmzsdo7ECA
-hWfFTUYhOspa5kHVcw+nxqCLWdGrQfQ4C0LtsPicyPjTXPVpP8W09vwdeatCiqVr
-GxgvULwRl/HxZXMUXZhJ5ToJRT/yuN1CLjpyjnINyIczC+jZFclxgx43quAbXMIf
-SCUAlxTR/Jm/mjCmH2N7Fftk64+hCNWB2gsjkaQsDUwtAelt3/J9u4h2He4NPzPi
-GaEZ3tfrkKkBWoolaCIhY1LqXtT3nU+qiP5t/bPD00DRDM2XtKsjvAk526Lx/OAu
-y+6AtGBx3n9HzXzyJ+bdew1oAMND9g==
-=44B0
------END PGP SIGNATURE-----
-
---eo4pepuhkmuwjzg5--
 
