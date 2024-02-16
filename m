@@ -4,72 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B9F8C48260
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Feb 2024 17:23:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F9BBC48260
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Feb 2024 18:04:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RimLjOdN8rzQMpG0ae9IdH673ga5rpJ5Vs6DdQd0/gQ=; b=fImb0BnqtsugCRKbDQngXlFx0i
-	lgpdn/U0JD3KA42TmLsyBsQLSRGnTuiQA13I2hn15OqmXKMOw3NAj4YRT13vDQSFxrI+HIYYBEjiU
-	Xx8leyI1dbfJiuObZtNEzJtXs+JR/f45Vrm9Yk5kdOqanJjFIGaQR0W2zTHL0r5x5ywdhr5YLDN9F
-	8s+ga8h9KCV35SHNxl7lOMESCyATX/NKxvB2agNjZyYgT2qX68uIyJr6W5JcsV2EKI+PB5z2ALGzV
-	Ket22idpQ9T0LWOt+COnXVGF7ucMyygiZuJHu0wP+kucxk2IzuaIDEHSuKHTEqZN9h9uM+PbkjMk0
-	fsVQMv1g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KyByO6SWWK7yAuVBO07DPneVHJqjrvp8F0clZj4L87w=; b=Nf3v+/Nx9YUxQTueX6l3P2n1Sp
+	scHbSZ06intGRNeOAxTrWUswLYPkeIf7aLRFfQB0Jr3l+AB8Q1vR2CtxHXJRvsn/VL1Xhlt1j/LUt
+	SY6O5FAn+hjlZQ/00D+mtd/5Jo+zyUK+wP2iBpwg26NyZ7pWHSA1LplqjLNUR0ibK9J0ExTghbb4X
+	obS4FwPsY7A6MqVskpYFf3fhH580VnFrsSKU2M3Wn0h/I7kdn7QoTKzRM+dRzo6OGbU57DvF9v4IX
+	RaQAiwDNrNBd7eT35ctOFHBpzA1n3wPFBJYvKt+pYbRaM6CrRyIpZVYsVuqjEsKbNsHniQ5CASb79
+	Uu7KCv2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rb1vj-00000003BXV-3cZ0;
-	Fri, 16 Feb 2024 17:23:19 +0000
-Received: from relay7-d.mail.gandi.net ([2001:4b98:dc4:8::227])
+	id 1rb2ZN-00000003H5O-3NOs;
+	Fri, 16 Feb 2024 18:04:17 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rb1ve-00000003BVL-0Tok;
-	Fri, 16 Feb 2024 17:23:16 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 1304B2000E;
-	Fri, 16 Feb 2024 17:23:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1708104189;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=RimLjOdN8rzQMpG0ae9IdH673ga5rpJ5Vs6DdQd0/gQ=;
-	b=BzmQcEEMGCl+P5qGARHIVL1y4ADNuv8bQFuLLYUM4/lqqGfcpNFu8HWyOQ2A2GzE8/tujf
-	UdWhRocg/l4UUe5et5gtQBAgVrF+9ZwquMbxcE3A9fXfYokgnN2lO5n7jn9cmkJkNt5Bfj
-	Z3XEQF/p7R0XqIXTdm/O19LvG6YZkAXU8wtvI50pIW6S6P4He/7ayaQRFdsujG4PnqNC1w
-	9yDN2fWfqEQMQ/6KvImzgcEwtU9GeYgWcau+2qsYZVfxPvi2xhBRpBoHq+PWUgOF++yFwO
-	Mnt+zGFq4nDdn50+Gz6cOWfWNFE4Uj3bgAALObqxxiPVojQVFESnzXTA+GzbSg==
-Message-ID: <c8393e61-7c44-4aca-acce-10b5f6b34fdd@arinc9.com>
-Date: Fri, 16 Feb 2024 20:23:01 +0300
+	id 1rb2ZK-00000003H47-2icm;
+	Fri, 16 Feb 2024 18:04:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 62C4CCE2CAC;
+	Fri, 16 Feb 2024 18:04:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69298C433F1;
+	Fri, 16 Feb 2024 18:04:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1708106651;
+	bh=4zAkwFBwhltmz4rki5uzbVVp2kIHfC3lppNg/ef2oWk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=kvkKXLaspERoZLUmJ2GAqcBR63dKo2UQTuIIqNvBXjFHSMSZ7lF7RGFy5hsirkwOm
+	 0/GrwZWwgrkNDIIjE+5lwxVCQ1epEohR1N+PCIGaMupLm++hKwRuSA5D1GmW4R3/w7
+	 4DKCY4NIoRoIAOtjg12u/sDHyJ20lyFcq0Snwe/6sUYOdggh/KJDDe4MqhaUv8GiHG
+	 nlbxLgUTtnA6+DAjrkoVMOKEJx1j1K9sCxp5n6ImHZDiABHqXzx76ohxEAfgCoQ5pP
+	 RaVKxIO7N059zQSHEVe/mM00XqAWkB0uulSrjw1oQ1x0pTYfalg4reqJ39YGui342L
+	 KjkbtGqDm+xoA==
+Date: Fri, 16 Feb 2024 18:04:07 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Michael Walle <mwalle@kernel.org>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] dt-bindings: arm64: mediatek: add Kontron
+ 3.5"-SBC-i1200
+Message-ID: <20240216-unsettled-polygraph-e55f7f2dba90@spud>
+References: <20240216163406.1050929-1-mwalle@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH netnext 8/8] net: dsa: mt7530: simplify link operations
- and force link down on all ports
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
- Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20240208-for-netnext-mt7530-improvements-3-v1-0-d7c1cfd502ca@arinc9.com>
- <20240208-for-netnext-mt7530-improvements-3-v1-8-d7c1cfd502ca@arinc9.com>
- <Zc+ConfebmQdpCOF@shell.armlinux.org.uk>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <Zc+ConfebmQdpCOF@shell.armlinux.org.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="GfQPB3jyAyI//zwd"
+Content-Disposition: inline
+In-Reply-To: <20240216163406.1050929-1-mwalle@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240216_092314_485393_D658227D 
-X-CRM114-Status: GOOD (  16.01  )
+X-CRM114-CacheID: sfid-20240216_100414_879638_98922A7F 
+X-CRM114-Status: GOOD (  14.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,45 +78,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16.02.2024 18:43, Russell King (Oracle) wrote:
-> On Thu, Feb 08, 2024 at 08:51:36AM +0300, Arınç ÜNAL via B4 Relay wrote:
->> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>
->> Currently, the link operations for switch MACs are scattered across
->> port_enable, port_disable, phylink_mac_config, phylink_mac_link_up, and
->> phylink_mac_link_down.
->>
->> port_enable and port_disable clears the link settings. Move that to
->> mt7530_setup() and mt7531_setup_common() which set up the switches. This
->> way, the link settings are cleared on all ports at setup, and then only
->> once with phylink_mac_link_down() when a link goes down.
->>
->> Enable force mode at setup to apply the force part of the link settings.
->> This ensures that only active ports will have their link up.
-> 
-> I think we may have a different interpretation of what phylink's
-> mac_link_down() and mac_link_up() are supposed to be doing here.
-> Of course, you have read the documentation of these methods so are
-> fully aware of what they're supposed to do. So you are aware that
-> when inband mode is being used, forcing the link down may be
-> counter-productive depending on how the hardware works.
 
-No, I haven't read the documentation [1] until your response here. My patch
-here doesn't touch mt753x_phylink_mac_link_down(), it is already the case
-with the driver that falls short of not forcing link down when inband mode
-is being used.
+--GfQPB3jyAyI//zwd
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-That said, what I explain on the patch log does not properly describe the
-driver behaviour. This should explain it correctly:
+On Fri, Feb 16, 2024 at 05:34:05PM +0100, Michael Walle wrote:
+> Add the compatible string for the Kontron 3.5"-SBC-i1200 single board
+> computer.
+>=20
+> Signed-off-by: Michael Walle <mwalle@kernel.org>
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docume=
+ntation/devicetree/bindings/arm/mediatek.yaml
+> index 09f9ffd3ff7b..32896f91ea38 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -357,6 +357,12 @@ properties:
+>                - radxa,nio-12l
+>            - const: mediatek,mt8395
+>            - const: mediatek,mt8195
+> +      - description: Kontron 3.5"-SBC-i1200
+> +        items:
+> +          - enum:
+> +              - kontron,3-5-sbc-i1200
 
-Enable force mode at setup to apply the force part of the link settings.
-This ensures that the ports that were never active will have their link
-down.
+This is a specific SBC, why the enum?
 
-I could, in the future, study this thoroughly to make the driver fully
-conform to the documentation.
+> +          - const: mediatek,mt8395
+> +          - const: mediatek,mt8195
+>        - items:
+>            - enum:
+>                - mediatek,mt8516-pumpkin
+> --=20
+> 2.39.2
+>=20
 
-[1] https://docs.kernel.org/networking/kapi.html#phylink
+--GfQPB3jyAyI//zwd
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Arınç
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZc+jlwAKCRB4tDGHoIJi
+0v0vAQD7OvJN5P3h8A9HqT3/JRs2VwVOUaNZR+gQQJVOUQzUwwD9F/fbds1vFdQs
+K+oS3OF8Gtsl66sx2RY48OfHJTuTawY=
+=a4sf
+-----END PGP SIGNATURE-----
+
+--GfQPB3jyAyI//zwd--
 
