@@ -4,66 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7018C48BC4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Feb 2024 16:34:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47D2EC48BC4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Feb 2024 17:04:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1AxfX6q8VMskbIGUzhXRe3GMmWSC0CMvPbAaZEBWVkw=; b=O42UCfNcR+Kw6yWQdkY5DD9hC0
-	CkpaUUp1F50q5Md5BTiygLYYw5+Mpu6enFalYrkhCiC38/z84n45u4lxfbCUkHEVv3aeHfEP1gaFn
-	aFgP2EstykMTKk/uprA1KMpOIX5QHctQunifEKPTfoF9zQl3DhZznZE0YsTdHAE6Fyk5v0OJwpY6K
-	K2+WXA4lP6/qWu6Hmv7Ancuo1NnTYaHxkvTuPgjsGOeVGYCK+CUvM+cIEZ1lREXiXpMns0TZpbaAn
-	mFWtCmkN3nuJ0t2Fb4f0xxoyxipi4rz3Q7euwZbn/kVZJrdJV0ZiHQy+44F3nG8blGFbZmilcoWZ/
-	xOlUsCnw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ivwhLebdUuD1A5Otgnd7/ZhxAtbeQ+cN+CSubuJmL3g=; b=1U/+0HSyMxus3inJHZpUOuPfPs
+	H2JIQvESjyZUwOwif/U7hTyPt4NAm8VXBijn8i/Sd1+oNftThpifPipca/8LEvsa4QKtXiDKaoggg
+	Uil2hA1tnBeIm+Lmsx87tOk6FPgTsK7WDccFX8GXUnXWRve2oMA4IKXPcQrVBtg5jdEo5uirn5xWe
+	+WkGm0EgTyGkI5eP+oOIL39d0CK8k1gGWjEMSlqvaR1zDU55Yxodu1dRfnbzfq9kDIH1oAr4qJn+b
+	Z40cjAFHliEN2f6HqyVKKX3RFpSbWrBxtCy2aKFn/rE9tnHyHT2MV2wlHegxFVkMMVmyGz0T2pmhZ
+	KYpZTNgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rb1AT-000000030r0-1fkq;
-	Fri, 16 Feb 2024 16:34:29 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rb1dt-000000036JL-0QGK;
+	Fri, 16 Feb 2024 17:04:53 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rb1AI-000000030lp-3oCH;
-	Fri, 16 Feb 2024 16:34:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 18AF861FDA;
-	Fri, 16 Feb 2024 16:34:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F7C3C433A6;
-	Fri, 16 Feb 2024 16:34:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708101257;
-	bh=Ugg/J/J2JvmEVX563tIepvh+QVTNIVS1Z163m7/huBw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=F//Ebnv8DvYJR0A31jCxaRXIBp0NKasPpx7a9BUuRgksVBWwoLOlBtMRNMdClRBIz
-	 iTbeNLrCiHDyKtH1htkrAZool59jfhcsqEzZfEhJS3DeVAqe5+BzoK/HEFnie6d101
-	 40CNgo8Sy5pVAtccc2qMs/qpizE7m9oStasdNz4PdOC2r4l5Tk9zMkQ3lWtEUsj6PN
-	 10slWl4ScVmCMIo4rXpEcPgDam7B3o/9NE8a5FKbLpX7kuZmciBKylgWVIPOA6+T+O
-	 HNtbmJ9ZstQ5tiwoSCl/l5E2cQ91zjjfgRmAz2LA/8LiZdCky/ZizUPgwYXsVTPHbE
-	 20WXlbZxN1Fnw==
-From: Michael Walle <mwalle@kernel.org>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1rb1dq-000000036HV-0Yta
+	for linux-mediatek@lists.infradead.org;
+	Fri, 16 Feb 2024 17:04:51 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-412032b2aedso3054405e9.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 16 Feb 2024 09:04:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ffwll.ch; s=google; t=1708103087; x=1708707887; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ivwhLebdUuD1A5Otgnd7/ZhxAtbeQ+cN+CSubuJmL3g=;
+        b=UnVoOlOibTk3WOgzBSqdpMfHzPDbNI/2olkIvWNkTYnS+ibkJtKqNEHDQy77R7zkq1
+         H23IW5p1UEMQn7D20yK7PG70OjTiZo+pGFOEnKlwXjHakvsF5epfeyfj7HoJhe5y0YTm
+         +Bw3P+zSfipE1noTdYE0HvQYulk565cWr6Ut8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708103087; x=1708707887;
+        h=in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ivwhLebdUuD1A5Otgnd7/ZhxAtbeQ+cN+CSubuJmL3g=;
+        b=sBy5ODUS7YSy/CKwszHnYVZzzsHTkwzaPHl4cV7BPX51/G1YtsmOjnB4vLDbtSNDUl
+         ztwkVUVBlZCVyHj1cwuExGLr9uhzbLU9NjqvqSK0wMTpu3/zwGmRaKdkJGnbzk5s7cMJ
+         c4sgptKM2jJD4MdW5Sl1G6LdF6UnD2+HOTRQ2qC5fggDkbaFk/EEzHag1gRiH3VN9AKR
+         sgfcSFLD78AbG7NWjRAPbHXtt/4TUH9R/I+ZGJTmnapnuwck97uiZ+wV3+8bMTnDbD6K
+         mf+2LBE4GtQTv1ljnrD+Hj7arFsGgtj5ylVjIydDH7HO8PvgMGq/xR9slNN4AdQd6ynk
+         Bwow==
+X-Forwarded-Encrypted: i=1; AJvYcCUOKRU7Vh88Rbhwh4MaUcD2YWrkcuJJyAi9OEhmDNycN4td8mYxfR7TsOjBmSqN3vKRR4HEAPOy7/Ecvd0QfKU9teTIXHy/2DIrHW73b/uM4NJW
+X-Gm-Message-State: AOJu0Yy1MEXw2LOxEsGDNrXiOEOMRIPBcET9zSZhQfGw4W2JfcN1/oIt
+	Z7uWHjvQlgEOwdX+sMTRYbDDSh44afyjwsmltrdcHoNnSSVrGe7pRCAYAycF0Wk=
+X-Google-Smtp-Source: AGHT+IGxIbJQdotpNxoYDDuZqhrA0VU+pE2iwUZz2LV9N47mgjCflPHbe0NI9pdRvHAvhxRb9JEmlQ==
+X-Received: by 2002:a05:600c:4446:b0:412:cd2:2ce6 with SMTP id v6-20020a05600c444600b004120cd22ce6mr1930753wmn.3.1708103086789;
+        Fri, 16 Feb 2024 09:04:46 -0800 (PST)
+Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
+        by smtp.gmail.com with ESMTPSA id k10-20020a7bc40a000000b004101f27737asm2849571wmi.29.2024.02.16.09.04.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 16 Feb 2024 09:04:45 -0800 (PST)
+Date: Fri, 16 Feb 2024 18:04:43 +0100
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Hsiao Chien Sung <shawn.sung@mediatek.com>
+Subject: Re: [PATCH v5 10/13] drm/mediatek: Support CRC in display driver
+Message-ID: <Zc-Vq2MeG9X37JJe@phenom.ffwll.local>
+Mail-Followup-To: Hsiao Chien Sung <shawn.sung@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org,
-	Sean Wang <sean.wang@mediatek.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Michael Walle <mwalle@kernel.org>
-Subject: [PATCH 2/2] arm64: dts: mediatek: add Kontron 3.5"-SBC-i1200
-Date: Fri, 16 Feb 2024 17:34:06 +0100
-Message-Id: <20240216163406.1050929-2-mwalle@kernel.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240216163406.1050929-1-mwalle@kernel.org>
-References: <20240216163406.1050929-1-mwalle@kernel.org>
+	Bibby Hsieh <bibby.hsieh@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+	Sean Paul <seanpaul@chromium.org>, Fei Shao <fshao@chromium.org>,
+	Jason Chen <jason-ch.chen@mediatek.corp-partner.google.com>,
+	"Nancy . Lin" <nancy.lin@mediatek.com>,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20240215101119.12629-1-shawn.sung@mediatek.com>
+ <20240215101119.12629-11-shawn.sung@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240215101119.12629-11-shawn.sung@mediatek.com>
+X-Operating-System: Linux phenom 6.6.11-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240216_083419_096511_7C3F97CA 
-X-CRM114-Status: GOOD (  14.37  )
+X-CRM114-CacheID: sfid-20240216_090450_195249_F9745E25 
+X-CRM114-Status: GOOD (  40.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,1128 +98,402 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Jason Chen <jason-ch.chen@mediatek.corp-partner.google.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, CK Hu <ck.hu@mediatek.com>, "Nancy . Lin" <nancy.lin@mediatek.com>, Sean Paul <seanpaul@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Bibby Hsieh <bibby.hsieh@mediatek.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add basic support for the Kontron 3.5" single board computer featuring a
-Mediatek i1200 SoC (MT8395/MT8195).
+On Thu, Feb 15, 2024 at 06:11:16PM +0800, Hsiao Chien Sung wrote:
+> Register CRC related function pointers to support
+> CRC retrieval.
+> 
+> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 239 ++++++++++++++++++++
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  39 ++++
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   3 +
+>  3 files changed, 281 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> index 14cf75fa217f9..6cb1ed419dee7 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -68,6 +68,9 @@ struct mtk_drm_crtc {
+>  	/* lock for display hardware access */
+>  	struct mutex			hw_lock;
+>  	bool				config_updating;
+> +
+> +	struct mtk_ddp_comp		*crc_provider;
+> +	unsigned int			frames;
+>  };
+>  
+>  struct mtk_crtc_state {
+> @@ -635,6 +638,14 @@ static void mtk_crtc_ddp_irq(void *data)
+>  	struct drm_crtc *crtc = data;
+>  	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+>  	struct mtk_drm_private *priv = crtc->dev->dev_private;
+> +	struct mtk_ddp_comp *comp = mtk_crtc->crc_provider;
+> +
+> +	/*
+> +	 * crc providers should make sure the crc is always correct
+> +	 * by resetting it in .crc_read()
+> +	 */
+> +	if (crtc->crc.opened)
+> +		comp->funcs->crc_read(comp->dev);
+>  
+>  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+>  	if (!priv->data->shadow_register && !mtk_crtc->cmdq_client.chan)
+> @@ -646,6 +657,24 @@ static void mtk_crtc_ddp_irq(void *data)
+>  	if (!priv->data->shadow_register)
+>  		mtk_crtc_ddp_config(crtc, NULL);
+>  #endif
+> +
+> +	/*
+> +	 * drm_crtc_add_crc_entry() could take more than 50ms to finish
+> +	 * put it at the end of the isr
+> +	 */
 
-Signed-off-by: Michael Walle <mwalle@kernel.org>
----
- arch/arm64/boot/dts/mediatek/Makefile         |    1 +
- .../mediatek/mt8395-kontron-3-5-sbc-i1200.dts | 1091 +++++++++++++++++
- 2 files changed, 1092 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
+Uh this looks really scary, especially since you put this before the call
+to drm_crtc_handle_vblank in the function below, which really shouldn't be
+unecessarily delayed (because that's the one that takes the vblank
+timestamp).
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 37b4ca3a87c9..697b6b5de3cb 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -76,5 +76,6 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-demo.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8365-evk.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-genio-1200-evk.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-kontron-3-5-sbc-i1200.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-radxa-nio-12l.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
-new file mode 100644
-index 000000000000..0c634bc8776c
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
-@@ -0,0 +1,1091 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2024 Kontron Europe GmbH
-+ *
-+ * Author: Michael Walle <mwalle@kernel.org>
-+ */
-+/dts-v1/;
-+
-+#include "mt8195.dtsi"
-+#include "mt6359.dtsi"
-+
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/leds/common.h>
-+#include <dt-bindings/pinctrl/mt8195-pinfunc.h>
-+#include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
-+#include <dt-bindings/spmi/spmi.h>
-+
-+/ {
-+	model = "Kontron 3.5\"-SBC-i1200";
-+	compatible = "kontron,3-5-sbc-i1200", "mediatek,mt8395", "mediatek,mt8195";
-+
-+	aliases {
-+		mmc0 = &mmc0;
-+		mmc1 = &mmc1;
-+		serial0 = &uart1;
-+		serial1 = &uart2;
-+		serial2 = &uart3;
-+		serial3 = &uart4;
-+		serial4 = &uart0;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial0:115200n8";
-+	};
-+
-+	firmware {
-+		optee {
-+			compatible = "linaro,optee-tz";
-+			method = "smc";
-+		};
-+	};
-+
-+	gpio-keys {
-+		compatible = "gpio-keys";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&gpio_keys_pins>;
-+
-+		key-0 {
-+			gpios = <&pio 106 GPIO_ACTIVE_LOW>;
-+			label = "volume_up";
-+			linux,code = <KEY_VOLUMEUP>;
-+			wakeup-source;
-+			debounce-interval = <15>;
-+		};
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&led_pins>;
-+
-+		led-0 {
-+			gpios = <&pio 107 GPIO_ACTIVE_HIGH>;
-+			default-state = "keep";
-+			function = LED_FUNCTION_POWER;
-+			color = <LED_COLOR_ID_GREEN>;
-+		};
-+	};
-+
-+	memory@40000000 {
-+		device_type = "memory";
-+		reg = <0 0x40000000 0x0 0x80000000>;
-+	};
-+
-+	reserved-memory {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+
-+		/*
-+		 * 12 MiB reserved for OP-TEE (BL32)
-+		 * +-----------------------+ 0x43e0_0000
-+		 * |      SHMEM 2MiB       |
-+		 * +-----------------------+ 0x43c0_0000
-+		 * |        | TA_RAM  8MiB |
-+		 * + TZDRAM +--------------+ 0x4340_0000
-+		 * |        | TEE_RAM 2MiB |
-+		 * +-----------------------+ 0x4320_0000
-+		 */
-+		optee_reserved: optee@43200000 {
-+			no-map;
-+			reg = <0 0x43200000 0 0x00c00000>;
-+		};
-+
-+		scp_mem: memory@50000000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x50000000 0 0x2900000>;
-+			no-map;
-+		};
-+
-+		vpu_mem: memory@53000000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x53000000 0 0x1400000>; /* 20 MB */
-+		};
-+
-+		/* 2 MiB reserved for ARM Trusted Firmware (BL31) */
-+		bl31_secmon_mem: memory@54600000 {
-+			no-map;
-+			reg = <0 0x54600000 0x0 0x200000>;
-+		};
-+
-+		snd_dma_mem: memory@60000000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x60000000 0 0x1100000>;
-+			no-map;
-+		};
-+
-+		apu_mem: memory@62000000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x62000000 0 0x1400000>; /* 20 MB */
-+		};
-+	};
-+
-+	thermal_sensor0: thermal-sensor-0 {
-+		compatible = "generic-adc-thermal";
-+		#thermal-sensor-cells = <0>;
-+		io-channels = <&auxadc 0>;
-+		io-channel-names = "sensor-channel";
-+		temperature-lookup-table = <(-25000) 1474
-+					    (-20000) 1374
-+					    (-15000) 1260
-+					    (-10000) 1134
-+					     (-5000) 1004
-+						   0 874
-+						5000 750
-+					       10000 635
-+					       15000 532
-+					       20000 443
-+					       25000 367
-+					       30000 303
-+					       35000 250
-+					       40000 206
-+					       45000 170
-+					       50000 141
-+					       55000 117
-+					       60000 97
-+					       65000 81
-+					       70000 68
-+					       75000 57
-+					       80000 48
-+					       85000 41
-+					       90000 35
-+					       95000 30
-+					      100000 25
-+					      105000 22
-+					      110000 19
-+					      115000 16
-+					      120000 14
-+					      125000 12
-+					      130000 10
-+					      135000 9
-+					      140000 8
-+					      145000 7
-+					      150000 6>;
-+	};
-+
-+	thermal_sensor1: thermal-sensor-1 {
-+		compatible = "generic-adc-thermal";
-+		#thermal-sensor-cells = <0>;
-+		io-channels = <&auxadc 1>;
-+		io-channel-names = "sensor-channel";
-+		temperature-lookup-table = <(-25000) 1474
-+					    (-20000) 1374
-+					    (-15000) 1260
-+					    (-10000) 1134
-+					     (-5000) 1004
-+						   0 874
-+						5000 750
-+					       10000 635
-+					       15000 532
-+					       20000 443
-+					       25000 367
-+					       30000 303
-+					       35000 250
-+					       40000 206
-+					       45000 170
-+					       50000 141
-+					       55000 117
-+					       60000 97
-+					       65000 81
-+					       70000 68
-+					       75000 57
-+					       80000 48
-+					       85000 41
-+					       90000 35
-+					       95000 30
-+					      100000 25
-+					      105000 22
-+					      110000 19
-+					      115000 16
-+					      120000 14
-+					      125000 12
-+					      130000 10
-+					      135000 9
-+					      140000 8
-+					      145000 7
-+					      150000 6>;
-+	};
-+
-+	thermal_sensor2: thermal-sensor-2 {
-+		compatible = "generic-adc-thermal";
-+		#thermal-sensor-cells = <0>;
-+		io-channels = <&auxadc 2>;
-+		io-channel-names = "sensor-channel";
-+		temperature-lookup-table = <(-25000) 1474
-+					    (-20000) 1374
-+					    (-15000) 1260
-+					    (-10000) 1134
-+					     (-5000) 1004
-+						   0 874
-+						5000 750
-+					       10000 635
-+					       15000 532
-+					       20000 443
-+					       25000 367
-+					       30000 303
-+					       35000 250
-+					       40000 206
-+					       45000 170
-+					       50000 141
-+					       55000 117
-+					       60000 97
-+					       65000 81
-+					       70000 68
-+					       75000 57
-+					       80000 48
-+					       85000 41
-+					       90000 35
-+					       95000 30
-+					      100000 25
-+					      105000 22
-+					      110000 19
-+					      115000 16
-+					      120000 14
-+					      125000 12
-+					      130000 10
-+					      135000 9
-+					      140000 8
-+					      145000 7
-+					      150000 6>;
-+	};
-+};
-+
-+&auxadc {
-+	status = "okay";
-+};
-+
-+&eth {
-+	phy-mode ="rgmii-id";
-+	phy-handle = <&ethernet_phy0>;
-+	snps,reset-gpio = <&pio 93 GPIO_ACTIVE_HIGH>;
-+	snps,reset-delays-us = <0 10000 80000>;
-+	pinctrl-names = "default", "sleep";
-+	pinctrl-0 = <&eth_default_pins>;
-+	pinctrl-1 = <&eth_sleep_pins>;
-+	status = "okay";
-+
-+	mdio {
-+		ethernet_phy0: ethernet-phy@1 {
-+			reg = <0x1>;
-+			interrupts-extended = <&pio 94 IRQ_TYPE_LEVEL_LOW>;
-+		};
-+	};
-+};
-+
-+&gpu {
-+	status = "okay";
-+	mali-supply = <&mt6315_7_vbuck1>;
-+};
-+
-+&i2c2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c2_pins>;
-+	clock-frequency = <400000>;
-+	status = "okay";
-+};
-+
-+&i2c3 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c3_pins>;
-+	clock-frequency = <100000>;
-+	status = "okay";
-+};
-+
-+&i2c4 {
-+	clock-frequency = <100000>;
-+	pinctrl-0 = <&i2c4_pins>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+};
-+
-+&i2c6 {
-+	clock-frequency = <400000>;
-+	pinctrl-0 = <&i2c6_pins>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+
-+	mt6360: pmic@34 {
-+		compatible = "mediatek,mt6360";
-+		reg = <0x34>;
-+		interrupt-controller;
-+		interrupts-extended = <&pio 101 IRQ_TYPE_EDGE_FALLING>;
-+		interrupt-names = "IRQB";
-+
-+		charger {
-+			compatible = "mediatek,mt6360-chg";
-+			richtek,vinovp-microvolt = <14500000>;
-+
-+			otg_vbus_regulator: usb-otg-vbus-regulator {
-+				regulator-compatible = "usb-otg-vbus";
-+				regulator-name = "usb-otg-vbus";
-+				regulator-min-microvolt = <4425000>;
-+				regulator-max-microvolt = <5825000>;
-+			};
-+		};
-+
-+		regulator {
-+			compatible = "mediatek,mt6360-regulator";
-+			LDO_VIN3-supply = <&mt6360_buck2>;
-+
-+			mt6360_buck1: buck1 {
-+				regulator-compatible = "BUCK1";
-+				regulator-name = "mt6360,buck1";
-+				regulator-min-microvolt = <300000>;
-+				regulator-max-microvolt = <1300000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP
-+							   MT6360_OPMODE_ULP>;
-+				regulator-always-on;
-+			};
-+
-+			mt6360_buck2: buck2 {
-+				regulator-compatible = "BUCK2";
-+				regulator-name = "mt6360,buck2";
-+				regulator-min-microvolt = <300000>;
-+				regulator-max-microvolt = <1300000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP
-+							   MT6360_OPMODE_ULP>;
-+				regulator-always-on;
-+			};
-+
-+			mt6360_ldo1: ldo1 {
-+				regulator-compatible = "LDO1";
-+				regulator-name = "mt6360,ldo1";
-+				regulator-min-microvolt = <1200000>;
-+				regulator-max-microvolt = <3600000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP>;
-+			};
-+
-+			mt6360_ldo2: ldo2 {
-+				regulator-compatible = "LDO2";
-+				regulator-name = "mt6360,ldo2";
-+				regulator-min-microvolt = <1200000>;
-+				regulator-max-microvolt = <3600000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP>;
-+			};
-+
-+			mt6360_ldo3: ldo3 {
-+				regulator-compatible = "LDO3";
-+				regulator-name = "mt6360,ldo3";
-+				regulator-min-microvolt = <1200000>;
-+				regulator-max-microvolt = <3600000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP>;
-+			};
-+
-+			mt6360_ldo5: ldo5 {
-+				regulator-compatible = "LDO5";
-+				regulator-name = "mt6360,ldo5";
-+				regulator-min-microvolt = <2700000>;
-+				regulator-max-microvolt = <3600000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP>;
-+			};
-+
-+			mt6360_ldo6: ldo6 {
-+				regulator-compatible = "LDO6";
-+				regulator-name = "mt6360,ldo6";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <2100000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP>;
-+			};
-+
-+			mt6360_ldo7: ldo7 {
-+				regulator-compatible = "LDO7";
-+				regulator-name = "mt6360,ldo7";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <2100000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP>;
-+				regulator-always-on;
-+			};
-+		};
-+	};
-+};
-+
-+&mmc0 {
-+	pinctrl-names = "default", "state_uhs";
-+	pinctrl-0 = <&mmc0_default_pins>;
-+	pinctrl-1 = <&mmc0_uhs_pins>;
-+	bus-width = <8>;
-+	max-frequency = <200000000>;
-+	cap-mmc-highspeed;
-+	mmc-hs200-1_8v;
-+	mmc-hs400-1_8v;
-+	cap-mmc-hw-reset;
-+	no-sdio;
-+	no-sd;
-+	hs400-ds-delay = <0x14c11>;
-+	vmmc-supply = <&mt6359_vemc_1_ldo_reg>;
-+	vqmmc-supply = <&mt6359_vufs_ldo_reg>;
-+	non-removable;
-+	status = "okay";
-+};
-+
-+&mmc1 {
-+	pinctrl-names = "default", "state_uhs";
-+	pinctrl-0 = <&mmc1_default_pins>;
-+	pinctrl-1 = <&mmc1_uhs_pins>;
-+	cd-gpios = <&pio 129 GPIO_ACTIVE_LOW>;
-+	bus-width = <4>;
-+	max-frequency = <200000000>;
-+	cap-sd-highspeed;
-+	sd-uhs-sdr50;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&mt6360_ldo5>;
-+	vqmmc-supply = <&mt6360_ldo3>;
-+	status = "okay";
-+};
-+
-+&mt6359_vbbck_ldo_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vcore_buck_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vgpu11_buck_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vproc1_buck_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vproc2_buck_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vpu_buck_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vrf12_ldo_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vsram_md_ldo_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vsram_others_ldo_reg {
-+	regulator-always-on;
-+};
-+
-+&nor_flash {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&nor_pins_default>;
-+	status = "okay";
-+
-+	flash@0 {
-+		compatible = "jedec,spi-nor";
-+		reg = <0>;
-+		spi-max-frequency = <52000000>;
-+		spi-rx-bus-width = <2>;
-+		spi-tx-bus-width = <2>;
-+	};
-+};
-+
-+&pcie0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie0_pins_default>;
-+	status = "okay";
-+};
-+
-+&pcie1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie1_pins_default>;
-+	status = "okay";
-+};
-+
-+&pciephy {
-+	status = "okay";
-+};
-+
-+&pio {
-+	eth_default_pins: eth-default-pins {
-+		pins-txd {
-+			pinmux = <PINMUX_GPIO77__FUNC_GBE_TXD3>,
-+				 <PINMUX_GPIO78__FUNC_GBE_TXD2>,
-+				 <PINMUX_GPIO79__FUNC_GBE_TXD1>,
-+				 <PINMUX_GPIO80__FUNC_GBE_TXD0>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+		};
-+
-+		pins-rxd {
-+			pinmux = <PINMUX_GPIO81__FUNC_GBE_RXD3>,
-+				 <PINMUX_GPIO82__FUNC_GBE_RXD2>,
-+				 <PINMUX_GPIO83__FUNC_GBE_RXD1>,
-+				 <PINMUX_GPIO84__FUNC_GBE_RXD0>;
-+		};
-+
-+		pins-cc {
-+			pinmux = <PINMUX_GPIO85__FUNC_GBE_TXC>,
-+				 <PINMUX_GPIO86__FUNC_GBE_RXC>,
-+				 <PINMUX_GPIO87__FUNC_GBE_RXDV>,
-+				 <PINMUX_GPIO88__FUNC_GBE_TXEN>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+		};
-+
-+		pins-mdio {
-+			pinmux = <PINMUX_GPIO89__FUNC_GBE_MDC>,
-+				 <PINMUX_GPIO90__FUNC_GBE_MDIO>;
-+			input-enable;
-+		};
-+
-+		pins-power {
-+			pinmux = <PINMUX_GPIO91__FUNC_GPIO91>,
-+				 <PINMUX_GPIO92__FUNC_GPIO92>;
-+			output-high;
-+		};
-+
-+		pins-reset {
-+			pinmux = <PINMUX_GPIO93__FUNC_GPIO93>;
-+			output-high;
-+		};
-+
-+		pins-interrupt {
-+			pinmux = <PINMUX_GPIO94__FUNC_GPIO94>;
-+			input-enable;
-+		};
-+	};
-+
-+	eth_sleep_pins: eth-sleep-pins {
-+		pins-txd {
-+			pinmux = <PINMUX_GPIO77__FUNC_GPIO77>,
-+				 <PINMUX_GPIO78__FUNC_GPIO78>,
-+				 <PINMUX_GPIO79__FUNC_GPIO79>,
-+				 <PINMUX_GPIO80__FUNC_GPIO80>;
-+		};
-+		pins-cc {
-+			pinmux = <PINMUX_GPIO85__FUNC_GPIO85>,
-+				 <PINMUX_GPIO88__FUNC_GPIO88>,
-+				 <PINMUX_GPIO87__FUNC_GPIO87>,
-+				 <PINMUX_GPIO86__FUNC_GPIO86>;
-+		};
-+		pins-rxd {
-+			pinmux = <PINMUX_GPIO81__FUNC_GPIO81>,
-+				 <PINMUX_GPIO82__FUNC_GPIO82>,
-+				 <PINMUX_GPIO83__FUNC_GPIO83>,
-+				 <PINMUX_GPIO84__FUNC_GPIO84>;
-+		};
-+		pins-mdio {
-+			pinmux = <PINMUX_GPIO89__FUNC_GPIO89>,
-+				 <PINMUX_GPIO90__FUNC_GPIO90>;
-+			input-disable;
-+			bias-disable;
-+		};
-+	};
-+
-+	gpio_keys_pins: gpio-keys-pins {
-+		pins {
-+			pinmux = <PINMUX_GPIO106__FUNC_GPIO106>;
-+			input-enable;
-+		};
-+	};
-+
-+	i2c2_pins: i2c2-default-pins {
-+		pins-bus {
-+			pinmux = <PINMUX_GPIO12__FUNC_SDA2>,
-+				 <PINMUX_GPIO13__FUNC_SCL2>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	i2c3_pins: i2c3-pins {
-+		pins {
-+			pinmux = <PINMUX_GPIO14__FUNC_SDA3>,
-+				 <PINMUX_GPIO15__FUNC_SCL3>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	i2c4_pins: i2c4-pins {
-+		pins {
-+			pinmux = <PINMUX_GPIO16__FUNC_SDA4>,
-+				 <PINMUX_GPIO17__FUNC_SCL4>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	i2c6_pins: i2c6-pins {
-+		pins {
-+			pinmux = <PINMUX_GPIO25__FUNC_SDA6>,
-+				 <PINMUX_GPIO26__FUNC_SCL6>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	mmc0_default_pins: mmc0-default-pins {
-+		pins-clk {
-+			pinmux = <PINMUX_GPIO122__FUNC_MSDC0_CLK>;
-+			drive-strength = <MTK_DRIVE_6mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		pins-cmd-dat {
-+			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
-+				 <PINMUX_GPIO125__FUNC_MSDC0_DAT1>,
-+				 <PINMUX_GPIO124__FUNC_MSDC0_DAT2>,
-+				 <PINMUX_GPIO123__FUNC_MSDC0_DAT3>,
-+				 <PINMUX_GPIO119__FUNC_MSDC0_DAT4>,
-+				 <PINMUX_GPIO118__FUNC_MSDC0_DAT5>,
-+				 <PINMUX_GPIO117__FUNC_MSDC0_DAT6>,
-+				 <PINMUX_GPIO116__FUNC_MSDC0_DAT7>,
-+				 <PINMUX_GPIO121__FUNC_MSDC0_CMD>;
-+			input-enable;
-+			drive-strength = <MTK_DRIVE_6mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+
-+		pins-rst {
-+			pinmux = <PINMUX_GPIO120__FUNC_MSDC0_RSTB>;
-+			drive-strength = <MTK_DRIVE_6mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+	};
-+
-+	mmc0_uhs_pins: mmc0-uhs-pins {
-+		pins-clk {
-+			pinmux = <PINMUX_GPIO122__FUNC_MSDC0_CLK>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		pins-cmd-dat {
-+			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
-+				 <PINMUX_GPIO125__FUNC_MSDC0_DAT1>,
-+				 <PINMUX_GPIO124__FUNC_MSDC0_DAT2>,
-+				 <PINMUX_GPIO123__FUNC_MSDC0_DAT3>,
-+				 <PINMUX_GPIO119__FUNC_MSDC0_DAT4>,
-+				 <PINMUX_GPIO118__FUNC_MSDC0_DAT5>,
-+				 <PINMUX_GPIO117__FUNC_MSDC0_DAT6>,
-+				 <PINMUX_GPIO116__FUNC_MSDC0_DAT7>,
-+				 <PINMUX_GPIO121__FUNC_MSDC0_CMD>;
-+			input-enable;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+
-+		pins-ds {
-+			pinmux = <PINMUX_GPIO127__FUNC_MSDC0_DSL>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		pins-rst {
-+			pinmux = <PINMUX_GPIO120__FUNC_MSDC0_RSTB>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+	};
-+
-+	mmc1_default_pins: mmc1-default-pins {
-+		pins-clk {
-+			pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		pins-cmd-dat {
-+			pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
-+				 <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
-+				 <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
-+				 <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
-+				 <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
-+			input-enable;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+
-+		pins-insert {
-+			pinmux = <PINMUX_GPIO129__FUNC_GPIO129>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	mmc1_uhs_pins: mmc1-uhs-pins {
-+		pins-clk {
-+			pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		pins-cmd-dat {
-+			pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
-+				 <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
-+				 <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
-+				 <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
-+				 <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
-+			input-enable;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+	};
-+
-+	nor_pins_default: nor-default-pins {
-+		pins-ck-io {
-+			pinmux = <PINMUX_GPIO142__FUNC_SPINOR_IO0>,
-+				 <PINMUX_GPIO141__FUNC_SPINOR_CK>,
-+				 <PINMUX_GPIO143__FUNC_SPINOR_IO1>;
-+			drive-strength = <6>;
-+			bias-pull-down;
-+		};
-+
-+		pins-cs {
-+			pinmux = <PINMUX_GPIO140__FUNC_SPINOR_CS>;
-+			drive-strength = <6>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	pcie0_pins_default: pcie0-default-pins {
-+		pins-bus {
-+			pinmux = <PINMUX_GPIO19__FUNC_WAKEN>,
-+				 <PINMUX_GPIO20__FUNC_PERSTN>,
-+				 <PINMUX_GPIO21__FUNC_CLKREQN>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	pcie1_pins_default: pcie1-default-pins {
-+		pins-bus {
-+			pinmux = <PINMUX_GPIO0__FUNC_PERSTN_1>,
-+				 <PINMUX_GPIO1__FUNC_CLKREQN_1>,
-+				 <PINMUX_GPIO2__FUNC_WAKEN_1>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+	};
-+
-+	led_pins: led-pins {
-+		pins-power-en {
-+			pinmux = <PINMUX_GPIO107__FUNC_GPIO107>;
-+			output-high;
-+		};
-+	};
-+
-+	spi0_pins: spi0-default-pins {
-+		pins-cs-mosi-clk {
-+			pinmux = <PINMUX_GPIO132__FUNC_SPIM0_CSB>,
-+				 <PINMUX_GPIO134__FUNC_SPIM0_MO>,
-+				 <PINMUX_GPIO133__FUNC_SPIM0_CLK>;
-+			bias-disable;
-+		};
-+
-+		pins-miso {
-+			pinmux = <PINMUX_GPIO135__FUNC_SPIM0_MI>;
-+			bias-pull-down;
-+		};
-+	};
-+
-+	spi1_pins: spi1-default-pins {
-+		pins-cs-mosi-clk {
-+			pinmux = <PINMUX_GPIO136__FUNC_SPIM1_CSB>,
-+				 <PINMUX_GPIO138__FUNC_SPIM1_MO>,
-+				 <PINMUX_GPIO137__FUNC_SPIM1_CLK>;
-+			bias-disable;
-+		};
-+
-+		pins-miso {
-+			pinmux = <PINMUX_GPIO139__FUNC_SPIM1_MI>;
-+			bias-pull-down;
-+		};
-+	};
-+
-+	uart0_pins: uart0-pins {
-+		pins_rx {
-+			pinmux = <PINMUX_GPIO99__FUNC_URXD0>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+
-+		pins_tx {
-+			pinmux = <PINMUX_GPIO98__FUNC_UTXD0>;
-+		};
-+	};
-+
-+	uart1_pins: uart1-pins {
-+		pins_rx {
-+			pinmux = <PINMUX_GPIO103__FUNC_URXD1>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+
-+		pins_tx {
-+			pinmux = <PINMUX_GPIO102__FUNC_UTXD1>;
-+		};
-+
-+		pins_rts {
-+			pinmux = <PINMUX_GPIO100__FUNC_URTS1>;
-+			output-enable;
-+		};
-+
-+		pins_cts {
-+			pinmux = <PINMUX_GPIO101__FUNC_UCTS1>;
-+			input-enable;
-+		};
-+	};
-+
-+	uart2_pins: uart2-pins {
-+		pins_rx {
-+			pinmux = <PINMUX_GPIO68__FUNC_URXD2>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+
-+		pins_tx {
-+			pinmux = <PINMUX_GPIO67__FUNC_UTXD2>;
-+		};
-+
-+		pins_rts {
-+			pinmux = <PINMUX_GPIO66__FUNC_URTS2>;
-+			output-enable;
-+		};
-+
-+		pins_cts {
-+			pinmux = <PINMUX_GPIO65__FUNC_UCTS2>;
-+			input-enable;
-+		};
-+	};
-+
-+	uart3_pins: uart3-pins {
-+		pins_rx {
-+			pinmux = <PINMUX_GPIO5__FUNC_URXD3>;
-+			input-enable;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+
-+		pins_tx {
-+			pinmux = <PINMUX_GPIO4__FUNC_UTXD3>;
-+		};
-+	};
-+
-+	uart4_pins: uart4-pins {
-+		pins_rx {
-+			pinmux = <PINMUX_GPIO7__FUNC_URXD4>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+
-+		pins_tx {
-+			pinmux = <PINMUX_GPIO6__FUNC_UTXD4>;
-+		};
-+	};
-+};
-+
-+&pmic {
-+	interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
-+};
-+
-+&scp {
-+	memory-region = <&scp_mem>;
-+	status = "okay";
-+};
-+
-+&spmi {
-+	#address-cells = <2>;
-+	#size-cells = <0>;
-+
-+	mt6315@6 {
-+		compatible = "mediatek,mt6315-regulator";
-+		reg = <0x6 SPMI_USID>;
-+
-+		regulators {
-+			mt6315_6_vbuck1: vbuck1 {
-+				regulator-compatible = "vbuck1";
-+				regulator-name = "Vbcpu";
-+				regulator-min-microvolt = <300000>;
-+				regulator-max-microvolt = <1193750>;
-+				regulator-enable-ramp-delay = <256>;
-+				regulator-ramp-delay = <6250>;
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+		};
-+	};
-+
-+	mt6315@7 {
-+		compatible = "mediatek,mt6315-regulator";
-+		reg = <0x7 SPMI_USID>;
-+
-+		regulators {
-+			mt6315_7_vbuck1: vbuck1 {
-+				regulator-compatible = "vbuck1";
-+				regulator-name = "Vgpu";
-+				regulator-min-microvolt = <625000>;
-+				regulator-max-microvolt = <1193750>;
-+				regulator-enable-ramp-delay = <256>;
-+				regulator-ramp-delay = <6250>;
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+		};
-+	};
-+};
-+
-+&spi0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&spi0_pins>;
-+	mediatek,pad-select = <0>;
-+	status = "okay";
-+
-+	tpm: tpm@0 {
-+		compatible = "infineon,slb9670";
-+		reg = <0>;
-+		spi-max-frequency = <18500000>;
-+	};
-+};
-+
-+&spi1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&spi1_pins>;
-+	mediatek,pad-select = <0>;
-+	status = "okay";
-+};
-+
-+&thermal_zones {
-+	board0-thermal {
-+		polling-delay = <1000>; /* milliseconds */
-+		polling-delay-passive = <0>; /* milliseconds */
-+		thermal-sensors = <&thermal_sensor0>;
-+
-+		trips {
-+			trip-alert {
-+				temperature = <85000>;
-+				hysteresis = <2000>;
-+				type = "passive";
-+			};
-+
-+			trip-crit {
-+				temperature = <95000>;
-+				hysteresis = <2000>;
-+				type = "critical";
-+			};
-+		};
-+	};
-+
-+	board1-thermal {
-+		polling-delay = <1000>; /* milliseconds */
-+		polling-delay-passive = <0>; /* milliseconds */
-+		thermal-sensors = <&thermal_sensor1>;
-+
-+		trips {
-+			trip-alert {
-+				temperature = <75000>;
-+				hysteresis = <2000>;
-+				type = "passive";
-+			};
-+
-+			trip-crit {
-+				temperature = <85000>;
-+				hysteresis = <2000>;
-+				type = "critical";
-+			};
-+		};
-+	};
-+
-+	board2-thermal {
-+		polling-delay = <1000>; /* milliseconds */
-+		polling-delay-passive = <0>; /* milliseconds */
-+		thermal-sensors = <&thermal_sensor2>;
-+
-+		trips {
-+			trip-alert {
-+				temperature = <75000>;
-+				hysteresis = <2000>;
-+				type = "passive";
-+			};
-+
-+			trip-crit {
-+				temperature = <85000>;
-+				hysteresis = <2000>;
-+				type = "critical";
-+			};
-+		};
-+	};
-+};
-+
-+&uart0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart0_pins>;
-+	status = "okay";
-+};
-+
-+&uart1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart1_pins>;
-+	uart-has-rtscts;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart2_pins>;
-+	uart-has-rtscts;
-+	status = "okay";
-+};
-+
-+&uart3 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart3_pins>;
-+	status = "okay";
-+};
-+
-+&uart4 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart4_pins>;
-+	status = "okay";
-+};
-+
-+/* USB3 */
-+&u3phy0 {
-+	status = "okay";
-+};
-+
-+/* PCIe1/USB2 */
-+&u3phy1 {
-+	status = "okay";
-+};
-+
-+/* USB2 */
-+&u3phy2 {
-+	status = "okay";
-+};
-+
-+/* USB2 */
-+&u3phy3 {
-+	status = "okay";
-+};
-+
-+/* USB3 front port */
-+&xhci0 {
-+	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-+	vbus-supply = <&otg_vbus_regulator>;
-+	status = "okay";
-+};
-+
-+/* USB2 M.2 Key-B */
-+&xhci1 {
-+	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-+	mediatek,u3p-dis-msk = <0x01>;
-+	status = "okay";
-+};
-+
-+/* USB2 M.2 Key-E */
-+&xhci2 {
-+	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-+	status = "okay";
-+};
-+
-+/* USB2 to on-board usb hub */
-+&xhci3 {
-+	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-+	status = "okay";
-+};
+This sounds like the perfect application for a vblank worker though, so
+you please look into drm_vblank_work.h. And if that is not useable due to
+hardware constraint, then please explain in a comment here and in the
+commit message why you cannot use that and have to roll your own. vblank
+work really should be your first choice here, because:
+- it's designed for expensive vblank work
+- it gives you all the flush/cancel_sync functions you need for disabling
+  crc again, and in a race-free implementation. Much better to use common
+  code than to reinvent synchronization wheels in drivers :-)
+
+> +	if (crtc->crc.opened) {
+
+Because this is probably not race-free, so we need something solid here.
+
+Cheers, Sima
+
+
+> +		/*
+> +		 * skip the first crc because the first frame is configured by
+> +		 * mtk_crtc_ddp_hw_init() when atomic enable
+> +		 */
+> +		if (++mtk_crtc->frames > 1) {
+> +			drm_crtc_add_crc_entry(crtc, true,
+> +					       drm_crtc_vblank_count(crtc),
+> +					       comp->funcs->crc_entry(comp->dev));
+> +		}
+> +	} else {
+> +		mtk_crtc->frames = 0;
+> +	}
+>  	mtk_drm_finish_page_flip(mtk_crtc);
+>  }
+>  
+> @@ -704,6 +733,40 @@ static void mtk_drm_crtc_update_output(struct drm_crtc *crtc,
+>  	}
+>  }
+>  
+> +static int mtk_drm_crtc_set_crc_source(struct drm_crtc *crtc, const char *src)
+> +{
+> +	if (src && strcmp(src, "auto") != 0) {
+> +		DRM_ERROR("%s(crtc-%d): unknown source '%s'\n",
+> +			  __func__, drm_crtc_index(crtc), src);
+> +		return -EINVAL;
+> +	}
+> +	return 0;
+> +}
+> +
+> +static int mtk_drm_crtc_verify_crc_source(struct drm_crtc *crtc,
+> +					  const char *src,
+> +					  size_t *cnt)
+> +{
+> +	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+> +	struct mtk_ddp_comp *comp = mtk_crtc->crc_provider;
+> +
+> +	if (!comp) {
+> +		DRM_ERROR("%s(crtc-%d): no crc provider\n",
+> +			  __func__, drm_crtc_index(crtc));
+> +		return -ENOENT;
+> +	}
+> +
+> +	if (src && strcmp(src, "auto") != 0) {
+> +		DRM_ERROR("%s(crtc-%d): unknown source '%s'\n",
+> +			  __func__, drm_crtc_index(crtc), src);
+> +		return -EINVAL;
+> +	}
+> +
+> +	*cnt = comp->funcs->crc_cnt(comp->dev);
+> +
+> +	return 0;
+> +}
+> +
+>  int mtk_drm_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
+>  			     struct mtk_plane_state *state)
+>  {
+> @@ -841,6 +904,8 @@ static const struct drm_crtc_funcs mtk_crtc_funcs = {
+>  	.atomic_destroy_state	= mtk_drm_crtc_destroy_state,
+>  	.enable_vblank		= mtk_drm_crtc_enable_vblank,
+>  	.disable_vblank		= mtk_drm_crtc_disable_vblank,
+> +	.set_crc_source		= mtk_drm_crtc_set_crc_source,
+> +	.verify_crc_source	= mtk_drm_crtc_verify_crc_source,
+>  };
+>  
+>  static const struct drm_crtc_helper_funcs mtk_crtc_helper_funcs = {
+> @@ -1033,6 +1098,11 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+>  
+>  			if (comp->funcs->ctm_set)
+>  				has_ctm = true;
+> +
+> +			if (comp->funcs->crc_cnt &&
+> +			    comp->funcs->crc_entry &&
+> +			    comp->funcs->crc_read)
+> +				mtk_crtc->crc_provider = comp;
+>  		}
+>  
+>  		mtk_ddp_comp_register_vblank_cb(comp, mtk_crtc_ddp_irq,
+> @@ -1137,3 +1207,172 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+>  
+>  	return 0;
+>  }
+> +
+> +void mtk_drm_crc_init(struct mtk_drm_crc *crc,
+> +		      const u32 *crc_offset_table, size_t crc_count,
+> +		      u32 reset_offset, u32 reset_mask)
+> +{
+> +	crc->ofs = crc_offset_table;
+> +	crc->cnt = crc_count;
+> +	crc->rst_ofs = reset_offset;
+> +	crc->rst_msk = reset_mask;
+> +	crc->va = kcalloc(crc->cnt, sizeof(*crc->va), GFP_KERNEL);
+> +	if (!crc->va) {
+> +		DRM_ERROR("failed to allocate memory for crc\n");
+> +		crc->cnt = 0;
+> +	}
+> +}
+> +
+> +void mtk_drm_crc_read(struct mtk_drm_crc *crc, void __iomem *reg)
+> +{
+> +	if (!crc->cnt || !crc->ofs || !crc->va)
+> +		return;
+> +
+> +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
+> +	/* sync to see the most up-to-date copy of the DMA buffer */
+> +	dma_sync_single_for_cpu(crc->cmdq_client.chan->mbox->dev,
+> +				crc->pa, crc->cnt * sizeof(*crc->va),
+> +				DMA_FROM_DEVICE);
+> +#else
+> +	/* read crc with cpu for the platforms without cmdq */
+> +	{
+> +		u32 n;
+> +
+> +		for (n = 0; n < crc->cnt; n++)
+> +			crc->va[n] = readl(reg + crc->ofs[n]);
+> +
+> +		n = readl(reg + crc->rst_ofs);
+> +
+> +		/* pull reset bit */
+> +		n |= crc->rst_msk;
+> +		writel(n, reg + crc->rst_ofs);
+> +
+> +		/* release reset bit */
+> +		n &= ~crc->rst_msk;
+> +		writel(n, reg + crc->rst_ofs);
+> +	}
+> +#endif
+> +}
+> +
+> +void mtk_drm_crc_destroy(struct mtk_drm_crc *crc)
+> +{
+> +	if (!crc->cnt)
+> +		return;
+> +
+> +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
+> +	if (crc->pa) {
+> +		dma_unmap_single(crc->cmdq_client.chan->mbox->dev,
+> +				 crc->pa, crc->cnt * sizeof(*crc->va),
+> +				 DMA_TO_DEVICE);
+> +		crc->pa = 0;
+> +	}
+> +	if (crc->cmdq_client.chan) {
+> +		mtk_drm_cmdq_pkt_destroy(&crc->cmdq_handle);
+> +		mbox_free_channel(crc->cmdq_client.chan);
+> +		crc->cmdq_client.chan = NULL;
+> +	}
+> +#endif
+> +	kfree(crc->va);
+> +	crc->va = NULL;
+> +	crc->cnt = 0;
+> +}
+> +
+> +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
+> +void mtk_drm_crc_cmdq_create(struct device *dev, struct mtk_drm_crc *crc)
+> +{
+> +	int i;
+> +
+> +	if (!crc->cnt) {
+> +		dev_warn(dev, "%s: not support\n", __func__);
+> +		goto cleanup;
+> +	}
+> +
+> +	if (!crc->ofs) {
+> +		dev_warn(dev, "%s: not defined\n", __func__);
+> +		goto cleanup;
+> +	}
+> +
+> +	crc->cmdq_client.client.dev = dev;
+> +	crc->cmdq_client.client.tx_block = false;
+> +	crc->cmdq_client.client.knows_txdone = true;
+> +	crc->cmdq_client.client.rx_callback = NULL;
+> +	crc->cmdq_client.chan = mbox_request_channel(&crc->cmdq_client.client, 0);
+> +	if (IS_ERR(crc->cmdq_client.chan)) {
+> +		dev_warn(dev, "%s: failed to create mailbox client\n", __func__);
+> +		crc->cmdq_client.chan = NULL;
+> +		goto cleanup;
+> +	}
+> +
+> +	if (mtk_drm_cmdq_pkt_create(&crc->cmdq_client, &crc->cmdq_handle, PAGE_SIZE)) {
+> +		dev_warn(dev, "%s: failed to create cmdq packet\n", __func__);
+> +		goto cleanup;
+> +	}
+> +
+> +	if (!crc->va) {
+> +		dev_warn(dev, "%s: no memory\n", __func__);
+> +		goto cleanup;
+> +	}
+> +
+> +	/* map the entry to get a dma address for cmdq to store the crc */
+> +	crc->pa = dma_map_single(crc->cmdq_client.chan->mbox->dev,
+> +				 crc->va, crc->cnt * sizeof(*crc->va),
+> +				 DMA_FROM_DEVICE);
+> +
+> +	if (dma_mapping_error(crc->cmdq_client.chan->mbox->dev, crc->pa)) {
+> +		dev_err(dev, "%s: failed to map dma\n", __func__);
+> +		goto cleanup;
+> +	}
+> +
+> +	if (crc->cmdq_event)
+> +		cmdq_pkt_wfe(&crc->cmdq_handle, crc->cmdq_event, true);
+> +
+> +	for (i = 0; i < crc->cnt; i++) {
+> +		/* put crc to spr1 register */
+> +		cmdq_pkt_read_s(&crc->cmdq_handle, crc->cmdq_reg->subsys,
+> +				crc->cmdq_reg->offset + crc->ofs[i],
+> +				CMDQ_THR_SPR_IDX1);
+> +
+> +		/* copy spr1 register to physical address of the crc */
+> +		cmdq_pkt_assign(&crc->cmdq_handle, CMDQ_THR_SPR_IDX0,
+> +				CMDQ_ADDR_HIGH(crc->pa + i * sizeof(*crc->va)));
+> +		cmdq_pkt_write_s(&crc->cmdq_handle, CMDQ_THR_SPR_IDX0,
+> +				 CMDQ_ADDR_LOW(crc->pa + i * sizeof(*crc->va)),
+> +				 CMDQ_THR_SPR_IDX1);
+> +	}
+> +	/* reset crc */
+> +	mtk_ddp_write_mask(&crc->cmdq_handle, ~0, crc->cmdq_reg, 0,
+> +			   crc->rst_ofs, crc->rst_msk);
+> +
+> +	/* clear reset bit */
+> +	mtk_ddp_write_mask(&crc->cmdq_handle, 0, crc->cmdq_reg, 0,
+> +			   crc->rst_ofs, crc->rst_msk);
+> +
+> +	/* jump to head of the cmdq packet */
+> +	cmdq_pkt_jump(&crc->cmdq_handle, crc->cmdq_handle.pa_base);
+> +
+> +	return;
+> +cleanup:
+> +	mtk_drm_crc_destroy(crc);
+> +}
+> +
+> +void mtk_drm_crc_cmdq_start(struct mtk_drm_crc *crc)
+> +{
+> +	if (!crc->cmdq_client.chan)
+> +		return;
+> +
+> +	dma_sync_single_for_device(crc->cmdq_client.chan->mbox->dev,
+> +				   crc->cmdq_handle.pa_base,
+> +				   crc->cmdq_handle.cmd_buf_size,
+> +				   DMA_TO_DEVICE);
+> +	mbox_send_message(crc->cmdq_client.chan, &crc->cmdq_handle);
+> +	mbox_client_txdone(crc->cmdq_client.chan, 0);
+> +}
+> +
+> +void mtk_drm_crc_cmdq_stop(struct mtk_drm_crc *crc)
+> +{
+> +	if (!crc->cmdq_client.chan)
+> +		return;
+> +
+> +	mbox_flush(crc->cmdq_client.chan, 2000);
+> +}
+> +#endif
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> index 3c224595fa714..0683ec4bc26f6 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> @@ -15,6 +15,45 @@
+>  #define MTK_MAX_BPC	10
+>  #define MTK_MIN_BPC	3
+>  
+> +/**
+> + * struct mtk_drm_crc - crc related information
+> + * @ofs: register offset of crc
+> + * @rst_ofs: register offset of crc reset
+> + * @rst_msk: register mask of crc reset
+> + * @cnt: count of crc
+> + * @va: pointer to the start of crc array
+> + * @pa: physical address of the crc for gce to access
+> + * @cmdq_event: the event to trigger the cmdq
+> + * @cmdq_reg: address of the register that cmdq is going to access
+> + * @cmdq_client: handler to control cmdq (mbox channel, thread ...etc.)
+> + * @cmdq_handle: cmdq packet to store the commands
+> + */
+> +struct mtk_drm_crc {
+> +	const u32 *ofs;
+> +	u32 rst_ofs;
+> +	u32 rst_msk;
+> +	size_t cnt;
+> +	u32 *va;
+> +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
+> +	dma_addr_t pa;
+> +	u32 cmdq_event;
+> +	struct cmdq_client_reg *cmdq_reg;
+> +	struct cmdq_client cmdq_client;
+> +	struct cmdq_pkt cmdq_handle;
+> +#endif
+> +};
+> +
+> +void mtk_drm_crc_init(struct mtk_drm_crc *crc,
+> +		      const u32 *crc_offset_table, size_t crc_count,
+> +		      u32 reset_offset, u32 reset_mask);
+> +void mtk_drm_crc_read(struct mtk_drm_crc *crc, void __iomem *reg);
+> +void mtk_drm_crc_destroy(struct mtk_drm_crc *crc);
+> +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
+> +void mtk_drm_crc_cmdq_create(struct device *dev, struct mtk_drm_crc *crc);
+> +void mtk_drm_crc_cmdq_start(struct mtk_drm_crc *crc);
+> +void mtk_drm_crc_cmdq_stop(struct mtk_drm_crc *crc);
+> +#endif
+> +
+>  void mtk_drm_crtc_commit(struct drm_crtc *crtc);
+>  int mtk_drm_crtc_create(struct drm_device *drm_dev,
+>  			const unsigned int *path,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> index 215b7234ff13c..231017470607e 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> @@ -87,6 +87,9 @@ struct mtk_ddp_comp_funcs {
+>  	void (*remove)(struct device *dev, struct mtk_mutex *mutex);
+>  	unsigned int (*encoder_index)(struct device *dev);
+>  	enum drm_mode_status (*mode_valid)(struct device *dev, const struct drm_display_mode *mode);
+> +	size_t (*crc_cnt)(struct device *dev);
+> +	u32 *(*crc_entry)(struct device *dev);
+> +	void (*crc_read)(struct device *dev);
+>  };
+>  
+>  struct mtk_ddp_comp {
+> -- 
+> 2.18.0
+> 
+
 -- 
-2.39.2
-
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
