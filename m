@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FB29C48BF0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Feb 2024 11:06:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D61EBC48BEB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Feb 2024 11:06:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ne7hOGU2S5DStLf3lgxkOQSl3E4nSb1cKjrcJ4FWwQ0=; b=EfgQUlRqGhD+IJR0el4VLm0d5e
-	aJ9u3Jh/EUtjX21KCVU3ezJZ1NJc695mfeG4a6w9zCeQB64j9KrnBK40SFZw7cZ2tKjpnszIkA6t0
-	uhP1XDfftoCoJ9q8G5T38i0CPGeE7p4Oi6puPqSwgcx2qE2PXwkQ/J/OT69PJ4INDBln7l+6iL5eE
-	/vmKWuSnzBco6y2UcnHCeK9HJ/igUfe0JG8oNQ3MgWqC4iKUxE5bFjPxGWZUGWAz0Sa3gBI7Bmmn2
-	1nL0JxxmNS9DgBC2GEiY9TgSArOUVdiyXB8ht82eSeLkiK+w57Q9pxVUbNi8hGbN5uWtxn5nIBtrp
-	QrHXnDVA==;
+	bh=aAT6j+peXF1gkbFazeEWy+KKBa3S8oFGztCQAserssk=; b=oEkrTHNesnJQ6xMdX+2quFlfR/
+	PKBdqXOySh8Mtul5fBCmzMthxYgYFX4IhTa4tSLEs7ukeyUdshFahB6CL5aNZEXYTrge5l4z7gtnn
+	jr8SO9lUHO/b89/UCK1Dixxu1dmleBq1B4TOcLKV+kXuSPMnLe7QitjdjGyp8gMVo1WXcs/tmSrgY
+	5WlXNxXhbs0pJRRptOAaY53zyx+8YboHCMHziAEsw/AAmxrRQMoPufqLu/XgckqvFOwV6f76fiI6T
+	1ZknmCWWS+t1re5USqdFnCTd/UHH2qzj4tFP76TmdYYLdJR2RhbrXOC9GlazmjmlGSsK5moHL3nEW
+	fmQfz5cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raw2b-000000024TO-2yMA;
-	Fri, 16 Feb 2024 11:06:01 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1raw2l-000000024cT-0Ff4;
+	Fri, 16 Feb 2024 11:06:11 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raw2L-000000024H6-37Sp;
-	Fri, 16 Feb 2024 11:05:48 +0000
+	id 1raw2M-000000024H5-1vX4;
+	Fri, 16 Feb 2024 11:05:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0450B61F58;
-	Fri, 16 Feb 2024 11:05:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 4DB3CC43143;
+	by sin.source.kernel.org (Postfix) with ESMTP id C4B69CE2ADB;
+	Fri, 16 Feb 2024 11:05:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 14E9EC433C7;
 	Fri, 16 Feb 2024 11:05:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1708081544;
-	bh=bdj2sXbKKEcSVYU72hwdKppcUWhM0GPYmoe4dwmAPtA=;
+	bh=SU+tK2MlpgkdVnVhaHn0UQcoIzpj8l2UDGxN8QSA/B4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=htFUb9zThe06fB9dSe5DiN0YYbHjajfmIZ4WNIDfWuuf4Vo4aTRSGy2RmEZMuXOpr
-	 5nBQECNucVInJo6vOqWxVNfFj0Qn7kgD25ZpZGz+EWXx+kSfztzNAMq85Lg94+LeqD
-	 iyzdnprzW79S4JyJUwvIO+DWj8piHODqJVqLp986piJwwfnf5vwm7boFd6a4AA+fbX
-	 8XJj09Cg2c0ao2viXDbkfsr7IAYIRyAXnbBCQtcF6J6N6Vb4uJrGxRVY2yWQjwuJF+
-	 RF1rB8TyQm4m3aHvu5prTVwx4tGYiT4EknPQjEJ7m/94/RrXzSIkCU4v5GYlneCQMH
-	 WsfvLquRWebMw==
+	b=ow0XBnY2/curX1mUkAN/HvlQNn/LSrgxQeQPUomCYOreHLG77CbdaXzUZerVuYhIB
+	 Cg1tL6X8Lb3dUDqonxIDtPKwqYDs7++deINdPMGkGCdLW15Mt2xlGp0Bzvfzy1tuwW
+	 cJyIRC+bKwiZt3V2d8RTlf6RMpaXY5WsHiXuWJjNukFOSQFGJcbCfUHa6Mb8rJDsab
+	 hcvvqQXWmf5nxDl+NyYXlMtXNlbVNACQ5gzYCh9pifYZG6QYi3jh5ENdvHWDQFyMMR
+	 NicMiaEtgOBdGX2rEw62aqiUJm6ooDwc6i9UQ3xPWpWgtb+LpG219zLq4QqbGpqHWz
+	 ondUY353SvHeg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 38D6FC48BEB;
-	Fri, 16 Feb 2024 11:05:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EDD7BC48BF3;
+	Fri, 16 Feb 2024 11:05:43 +0000 (UTC)
 From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
  <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Fri, 16 Feb 2024 14:05:35 +0300
-Subject: [PATCH net-next v2 7/8] net: dsa: mt7530: put initialising PCS
- devices code back to original order
+Date: Fri, 16 Feb 2024 14:05:30 +0300
+Subject: [PATCH net-next v2 2/8] net: dsa: mt7530: set interrupt register
+ only for MT7530
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240216-for-netnext-mt7530-improvements-3-v2-7-094cae3ff23b@arinc9.com>
+Message-Id: <20240216-for-netnext-mt7530-improvements-3-v2-2-094cae3ff23b@arinc9.com>
 References: <20240216-for-netnext-mt7530-improvements-3-v2-0-094cae3ff23b@arinc9.com>
 In-Reply-To: <20240216-for-netnext-mt7530-improvements-3-v2-0-094cae3ff23b@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
@@ -70,18 +70,18 @@ Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
  linux-mediatek@lists.infradead.org, 
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1708081540; l=1570;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1708081540; l=921;
  i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
- bh=/2CkKGukm0R4V69WhBvbbIMKcr0CwYye/LAy2VcbSV0=;
- b=gLD9v0i9dFUejIo1sJCI8wV1V3CcfE+qQU/xr61ajW1ZUl9UhLXHegjcKIWDqlcBzpMgbxYo2
- q6z5knElAAgD8Wp8h1W9/NFY9clSilRPrWQ0Eq1vVIt2Dhl+ViuMCxU
+ bh=JV5lkSoAmKAO6vEQKKvFpHOlOFc0GQ6XMI05UOpapU0=;
+ b=6sLS2Fy8GCQ4bmQBQV4SoJUoEQEDgsCOSuj01R+oOJZUOGxZdZTvsIczW36eKnIEd4CoKj+lD
+ oXbDfaix77lBWRZS5Q4hzgZjQTvsUOlHXgUf2Y19WjieBgQHN4HM4Xp
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt with auth_id=115
 X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240216_030545_943959_F6D0BB7A 
-X-CRM114-Status: GOOD (  11.64  )
+X-CRM114-CacheID: sfid-20240216_030546_908785_00EB1BCD 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,55 +99,29 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-The commit fae463084032 ("net: dsa: mt753x: fix pcs conversion regression")
-fixes regression caused by cpu_port_config manually calling phylink
-operations. cpu_port_config was deemed useless and was removed. Therefore,
-put initialising PCS devices code back to its original order.
+Setting this register related to interrupts is only needed for the MT7530
+switch. Make an exclusive check to ensure this.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Acked-by: Daniel Golle <daniel@makrotopia.org>
+Tested-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/dsa/mt7530.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ drivers/net/dsa/mt7530.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index e353c03dd1db..5c8ad41ce8cd 100644
+index 94d4b2c87799..5cfd303b773f 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -2812,17 +2812,9 @@ static int
- mt753x_setup(struct dsa_switch *ds)
- {
- 	struct mt7530_priv *priv = ds->priv;
--	int i, ret;
--
--	/* Initialise the PCS devices */
--	for (i = 0; i < priv->ds->num_ports; i++) {
--		priv->pcs[i].pcs.ops = priv->info->pcs_ops;
--		priv->pcs[i].pcs.neg_mode = true;
--		priv->pcs[i].priv = priv;
--		priv->pcs[i].port = i;
--	}
-+	int ret = priv->info->sw_setup(ds);
-+	int i;
+@@ -2055,7 +2055,7 @@ mt7530_setup_irq(struct mt7530_priv *priv)
+ 	}
  
--	ret = priv->info->sw_setup(ds);
- 	if (ret)
- 		return ret;
+ 	/* This register must be set for MT7530 to properly fire interrupts */
+-	if (priv->id != ID_MT7531)
++	if (priv->id == ID_MT7530 || priv->id == ID_MT7621)
+ 		mt7530_set(priv, MT7530_TOP_SIG_CTRL, TOP_SIG_CTRL_NORMAL);
  
-@@ -2834,6 +2826,14 @@ mt753x_setup(struct dsa_switch *ds)
- 	if (ret && priv->irq)
- 		mt7530_free_irq_common(priv);
- 
-+	/* Initialise the PCS devices */
-+	for (i = 0; i < priv->ds->num_ports; i++) {
-+		priv->pcs[i].pcs.ops = priv->info->pcs_ops;
-+		priv->pcs[i].pcs.neg_mode = true;
-+		priv->pcs[i].priv = priv;
-+		priv->pcs[i].port = i;
-+	}
-+
- 	if (priv->create_sgmii) {
- 		ret = priv->create_sgmii(priv);
- 		if (ret && priv->irq)
+ 	ret = request_threaded_irq(priv->irq, NULL, mt7530_irq_thread_fn,
 
 -- 
 2.40.1
