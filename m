@@ -4,72 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DD33C48260
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Feb 2024 08:57:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6AA2C48BEB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Feb 2024 08:58:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h/coZVWzQlvY3NMZeenRUeOtdhcanI7zbWH7vE2q3YA=; b=Pm5WzSFVswNTS3KDxfPfNeiwyG
-	7gMSnIs1HVbAVoCZOg1KsNnfmDK2H6EN/PCfFAsYdaEHQiZFiJ7PrDJbuXLf2Tp5m6qB1FU+TwC9O
-	zN6Nqgj9iA36KXlPcxSOuh1RJp87f5i9NrqCkxPIP5y4YVeVe8LKBgs2FRfzD1DUKAIjeNVbPbllk
-	RCm7t45aEKzvNIvUEO5tAQgfFtMeHo6jx5PFV+b3dYjaPU3ZYfqR2NbsD7mR+kHKgCY8wd7MSOsDs
-	DeB9sIJy08fOIQDDJ0BwPefOe/5v5qDtuHI+og85Q1jm5/qRy4yoyEs+C/yhZAv2KVHQcsw0Kwqk6
-	BvDTNk6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=V4qwQGqC7KpJoyielzRpnopuINFIOvKXsSgJ3ZENIXU=; b=Tx/9o2heNYiZlGFNzs4qlPJdyt
+	MzLjKPGd1DBJxF2Ecsgt6zqSJsZPBcdImI1xe7FnFDUTebzSEtdIQgjZVUjoP8ithjLtn9khhIwG5
+	1Ng41RTd8kZRUx+TbBIIOCztvfn2Rreh4v0Iq+KvUpcflpuyWNEdqgX8q2kp0R9UcWGYtjti7ra1y
+	D8+TfuJo08fHMWgTh65stTY3zy4XBqXYL4Tdo9D2cJ6yn9ttdREl+IQzYIkrF5vye7DXCZQMX0rHC
+	GWkgVjEHUZVhF25o8u6/gTHzIARWRXRTfgOxOfuXMuCk4ZTn+jnQ9UW8X3q8yYdExJjDlcxidDnsE
+	/AImp0xQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rau1y-00000001dLz-2LAi;
-	Fri, 16 Feb 2024 08:57:14 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1rau3C-00000001dop-18TP;
+	Fri, 16 Feb 2024 08:58:30 +0000
+Received: from mail.quirkbyte.pl ([94.177.238.152])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rau1v-00000001dKC-34F0
+	id 1rau34-00000001diq-0ZT6
 	for linux-mediatek@lists.infradead.org;
-	Fri, 16 Feb 2024 08:57:13 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rau1c-0007VS-M6; Fri, 16 Feb 2024 09:56:52 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rau1b-0012eE-I9; Fri, 16 Feb 2024 09:56:51 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rau1b-005roU-1V;
-	Fri, 16 Feb 2024 09:56:51 +0100
-Date: Fri, 16 Feb 2024 09:56:51 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Conor Dooley <conor@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-Subject: Re: [PATCH 1/2] dt-bindings: pwm: mediatek,mt2712: add compatible
- for MT7988
-Message-ID: <crisnlcmsylgjbyikwj4it5oee46lrcneegt35rkh7f7irpjt4@au5h4owkl4s3>
-References: <20240213164633.25447-1-zajec5@gmail.com>
- <20240213-resource-evaluator-0754cfd5882d@spud>
- <d4391868-ddcd-4f66-b539-28d245fa83df@gmail.com>
- <e957b044-fe84-4b72-bdf1-cbc40c722019@collabora.com>
+	Fri, 16 Feb 2024 08:58:27 +0000
+Received: by mail.quirkbyte.pl (Postfix, from userid 1002)
+	id 6B2E388120; Fri, 16 Feb 2024 09:56:15 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=quirkbyte.pl; s=mail;
+	t=1708073789; bh=V4qwQGqC7KpJoyielzRpnopuINFIOvKXsSgJ3ZENIXU=;
+	h=Date:From:To:Subject:From;
+	b=yoQeGQzrpzHa03fvltj7PNruPzxrQ/kg2cpMhRvbEQFLZeR+86zL96eoVnBg3jsla
+	 60OCv0HYajLxHd1j6oWWAYs6o4itC22kKu1zifl8y2jXEe2TIgLxiiGeFSe3q67ODR
+	 1Y4+ni+JfcG34K42faOrl2hjWb83CII606bF386nZJ7r3fB6f342ukuQ5SW0N/rVxt
+	 W26ta3aD+1fFw4OAvJuc1FRJjXT5WsAXdTg2FZ0+8ZnA/0g83Hg9WbFn7IPy1RhbOb
+	 os6l+tDdRbpzbI6UP3NevHLmQHMlCdFgN6Sum774CL34vkrA81slLxkTyIWKR9v8y+
+	 FqjSgqZtvZqQQ==
+Received: by mail.quirkbyte.pl for <linux-mediatek@lists.infradead.org>; Fri, 16 Feb 2024 08:56:04 GMT
+Message-ID: <20240216084500-0.1.1c.qbq1.0.p0nrs3y5en@quirkbyte.pl>
+Date: Fri, 16 Feb 2024 08:56:04 GMT
+From: "Norbert Karecki" <norbert.karecki@quirkbyte.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: Fotowoltaika - propozycja instalacji
+X-Mailer: mail.quirkbyte.pl
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="x6fer6asqpvyqikq"
-Content-Disposition: inline
-In-Reply-To: <e957b044-fe84-4b72-bdf1-cbc40c722019@collabora.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240216_005711_781715_A31A8D5A 
-X-CRM114-Status: GOOD (  24.39  )
+X-CRM114-CacheID: sfid-20240216_005823_033413_389BB1D7 
+X-CRM114-Status: UNSURE (   1.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,77 +66,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Dzie=C5=84 dobry,
+=20
+Czy rozwa=C5=BCali Pa=C5=84stwo monta=C5=BC systemu fotowoltaicznego?
+=20
+Instalacja fotowoltaiczna jest najlepszym sposobem na obni=C5=BCenie wyso=
+ko=C5=9Bci rachunk=C3=B3w za pr=C4=85d (pozostaj=C4=85 tylko op=C5=82aty =
+sta=C5=82e) i zabezpieczenie si=C4=99 przed rosn=C4=85cymi cenami energii=
+ elektrycznej. Jest to w pe=C5=82ni odnawialne i bezemisyjne =C5=BAr=C3=B3=
+d=C5=82o energii, dzi=C4=99ki czemu przyczyniamy si=C4=99 do ochrony =C5=9B=
+rodowiska naturalnego.
+=20
+Dzia=C5=82amy od wielu lat na rynku energetycznym. Przygotujemy projekt, =
+wycen=C4=99 oraz kompleksowo wykonamy i zg=C5=82osimy realizacj=C4=99 do =
+zak=C5=82adu energetycznego.=20
+=20
+Czy chc=C4=85 Pa=C5=84stwo pozna=C4=87 nasz=C4=85 propozycj=C4=99? =20
 
---x6fer6asqpvyqikq
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-Hello,
-
-On Wed, Feb 14, 2024 at 10:27:54AM +0100, AngeloGioacchino Del Regno wrote:
-> Il 14/02/24 07:34, Rafa=C5=82 Mi=C5=82ecki ha scritto:
-> > On 13.02.2024 19:18, Conor Dooley wrote:
-> > > On Tue, Feb 13, 2024 at 05:46:32PM +0100, Rafa=C5=82 Mi=C5=82ecki wro=
-te:
-> > > > From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
-> > > >=20
-> > > > MT7988 has on-SoC controller that can control up to 8 PWMs.
-> > >=20
-> > > I see a binding and a dts patch, but no driver patch, how come?
-> >=20
-> > I believe that to avoid cross-trees patchsets (which are sometimes
-> > tricky for maintainers) there are two ways of submiting such changes:
-> > 1. dt-binding + driver; then (separately) DTS
-> > 2. dt-binding + DTS; then (separately) driver
-> >=20
-> > I chose later in this case as my personal priority right now is to deal
-> > with all MediaTek DTS files.
-> >=20
-> > Is that wrong or unacceptable?
-> >=20
->=20
-> It's not wrong but it's partially unacceptable, at least on my side.
->=20
-> In my opinion (and I believe many do agree with me), sending the binding =
-along
-> with the driver is the right choice, and if you also want to include the =
-dts
-> that is also appreciated: series can go through multiple maintainers appl=
-ying
-> subsets - it's ok to do.
-
-Just to put in my 2 =C2=A2:
-My preference is to not avoid cross-trees patchsets and put all three
-patches in a single series. This combines the advantages of 1. and 2.
-Given this happens often enough this is something that the maintainers
-are used to handle just fine, so the cross-tree issue isn't problematic
-most of the time. The conflicts that sometimes arise with cross-tree
-patches aren't bad enough to out-weight having binding, driver and dts
-changes all together.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=C3=B6nig         =
-   |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---x6fer6asqpvyqikq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmXPI1IACgkQj4D7WH0S
-/k50eggAl5AH/OVaXRqlBR+khwnAAggxgfwh/au8rZ5x8SWflhcLnzmbI5goBNP+
-QiVN6/885+APLBzrvTgeiEQAjlKGsc1Av9hy5x2gQy4U9rhPVikE3B8fE9pugDEr
-ZIhljDbUobwdsu08aGbAr2sggD9tI8eJDcssD9sOF6Gwn73LjYJ7AxYuph9MWHqJ
-Ztdiy+AjILaWSAq4jeCCmL6MFgXIGDq6Unb6w6lDFhAcjG6FKh09+gyjFkihNdsg
-Ib93vHAw+rnrzUfcHhmFNaIIiw5d5mediZDrLKqWXp5U10ipOhfocOoyFK3AqKVS
-9PS6i5I/jMerH5hRMqLY0+/3ZEjhlA==
-=TKTq
------END PGP SIGNATURE-----
-
---x6fer6asqpvyqikq--
+Pozdrawiam
+Norbert Karecki
 
