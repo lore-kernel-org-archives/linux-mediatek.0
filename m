@@ -4,81 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D270C4829E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Feb 2024 01:24:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1466C4829E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Feb 2024 01:34:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Oyqz5SQV7vsHMVsXkHmWHMS+rB/T1/CKYrZbsQOdOR8=; b=Glg2jtE7e4C0byyrJXxb48g1AC
-	iMpaEpCcst93LpQfBhIKZ60bVMkzwO+uJns69wdwya0vNwDCA3h1+wlLA5k2ePHL2Ope5043fQ+aJ
-	nQjp4XmiSzd9q0re5FZIoJYyoFayK2yTc/Qdov90gZ5f2TyC6Ia8CgmYsOKtjgBMmC55evwV3qnHD
-	N9zeSyUNMxk7rKhjy1AGqvZNTOfgZ17WVJmQqrxIuZytknLIyt25E9xZV/x2CW2XxPPQLXj+4x6/6
-	cQkq5jNLsV2T76P9dM05oS869ksqYY0L4z5g4tccnEo9Zjs85ng3TwccN7NPKCXMxgSAk2yXrgdOR
-	8sI87Ikg==;
+	bh=jzFjftUHCCCXFtG6EptiA3RMrTwV5kvtkepZmVTZewE=; b=vQC3WZfi51uH6TSfQae0hanSce
+	iQpSdYAGMzr7F0CDp/0urw/mguhp35iRW7geHTTRH8Xmu3PChI25T4VSwTWEGkyGJxRZW93yzbJP/
+	gDt4szMzvoTOdCZItaz+WIYg2gXLUA6okbR+eYEyjyiNPCIU5PO2NK198hZVQDoxXSqdqKsoqDnPC
+	g2ht8K+LQjtRZbd3v2uZW76KDz76weX/+IGsI9PBvES94Gn17PtidePaHp/568ZElYEqsOJ/ctS3q
+	rsDqdj5kFb41E4LD5p9Ibzd1K21VK0JjQDTTKuTpO43MpSauhBQR7dDrX3mAfMSFz3XdEru4WBNPU
+	JaTa2sxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ramyF-00000000jMc-00vT;
-	Fri, 16 Feb 2024 01:24:55 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1ran7o-00000000kpW-0bOm;
+	Fri, 16 Feb 2024 01:34:48 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ramyB-00000000jLj-0yMx;
-	Fri, 16 Feb 2024 01:24:52 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-41205e19660so10712455e9.2;
-        Thu, 15 Feb 2024 17:24:49 -0800 (PST)
+	id 1ran7k-00000000kp0-40Zv;
+	Fri, 16 Feb 2024 01:34:46 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-41205e19660so10752775e9.2;
+        Thu, 15 Feb 2024 17:34:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1708046688; x=1708651488; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1708047282; x=1708652082; darn=lists.infradead.org;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=Oyqz5SQV7vsHMVsXkHmWHMS+rB/T1/CKYrZbsQOdOR8=;
-        b=WFFPuroMt7BhEF/XSSZrOEObY6aYwnQcgXSOQleU0OiaQ5AGVjvQlvl4cX+kXbgExd
-         HfY+bwSk7dRwm4imVRP7giMD1ywSvGfcm/KEnhkFe3dnahg0kLss3BAKnJ15Mj/QH1ax
-         SYX8lo1rQJEH3leubEq28ZNddNlQA6iJucOIVuGgCA6BDMD7ywbc2HJgbx7iMXFpeTXP
-         7J+vUML4kk8uLcqmy48GdnBryPldFQIUHtlozlj5CrJjOoxIeMpfpQ7OB9ckekUHUjlj
-         ohd4LAeRhK0H3cEQmwdXT68d5PSpyc0Uxc8GGgP2zYDH5qnbVYTQknxFQBrgAdwVsEfV
-         AmEQ==
+        bh=jzFjftUHCCCXFtG6EptiA3RMrTwV5kvtkepZmVTZewE=;
+        b=S1y5qulTUakrtt9+OI2J5NNS53r81cB/J5OjWp1Wnw1OC14UAD2PSyttouN8vHsc4F
+         XTxakHn4/9y2low2ShQvr//1yo63mTpckqidIpmlmaDb72Tj3ug11GWs6vV+bdGuPaYk
+         c4svr6Wty4YZw9pLwns1RY7phZzb312kDWfA/wuou6Haw/OPS747Ti+CPjzTnD5npIB+
+         n1/s+WbtbzrL69o92JHITGf4mcdkhY33Cb+Zosi0i8uC8Ph9SF/mzW3JRqX3muTtAAhD
+         0OC7pApuoed8inJf1WUT0d1/omw0KRrQUazA/EAj7Hlf2YFYgYSdb9rqf2RWFEInre/0
+         SYGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708046688; x=1708651488;
+        d=1e100.net; s=20230601; t=1708047282; x=1708652082;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Oyqz5SQV7vsHMVsXkHmWHMS+rB/T1/CKYrZbsQOdOR8=;
-        b=wFeAi4d+KvqP9CyAK/zrX8+xSr4XFg/XukyuDVM4dODu0n9fGEamkwWgoAQbzx4trN
-         WIObQMol5NmfhkhEA0jJe+w2bt80gkD9hC/igDgXsvRvGGf0Nx5XAU5/vm6U+Pz1rCwv
-         0Nn39MVJLYEh/PQbxxMFvRzQhebPDY6Rw+QU6nOc/BCGFA3olHJysLXkRhQGwQ5p6nBt
-         RI66OA/DPdgLgUo1Yt2w9ZhODM1sj1qai/5ByTN+HjaRrDA6NftD8HyCaC3s1VGmxWWO
-         epWO9C+tFHIMaRTY18n0omJTUzEcAJQJsWsvY41i6ZAWPavAIjfC7lTWxiuWuKREkfiW
-         NuRw==
-X-Forwarded-Encrypted: i=1; AJvYcCU2eJ77FxHSKiG09iIM4kMXfKFu8F65w136PP6m3qICbuudhPWXr+AikPc2ZpmEvEyiyNzrO0Gk6uBEm+y1aLbKoXyiZe3aYdLEJcSbV85Xofi8kaSCsVOYSy3A40Oxq5A+dne5MKe45FcZzvOaB8j7ET8sO3bQyS4=
-X-Gm-Message-State: AOJu0YwiRAr8sfnqpvrEFMsAxuuYKyfS1mh7yc01ThiMUmXyIxvD6BD8
-	BAwkJgDGBmRef+tVpIEgfXAfvfOlWbw9rDlApN13OqtLOnFU883H
-X-Google-Smtp-Source: AGHT+IGBlunrq9zjEgxmNJ3CxTO0V4JQm3KyRRcIkUsnDoNn3Qeb0dixW54hlTXUhMgR3hYWRWylUw==
-X-Received: by 2002:a5d:4104:0:b0:33b:636e:c967 with SMTP id l4-20020a5d4104000000b0033b636ec967mr2010965wrp.1.1708046688150;
-        Thu, 15 Feb 2024 17:24:48 -0800 (PST)
+        bh=jzFjftUHCCCXFtG6EptiA3RMrTwV5kvtkepZmVTZewE=;
+        b=cZwUYFdC2KNt7GapXqaYJ5CI9VVlrc8aeexdOhJ2q4NYWshSoeZWingqR2Uq6OJtts
+         FpXrws1gzZijc130nt23HupgnOfHsx+hmUP2tjHemD6f3Yk2o0hAEpOI0b1l3y+wEcSV
+         Wt0536TBm0XVfWRDpi4GO7C137CXUXbgfsTsIJEJny5KYralSaeQdAGgkMP0fGWJ8QOL
+         NA1AgsUj7PQKB6XfOl77pBbdaS/JKDh3sKGGPazTxHHfcQrjhm2xSQZc8KkuzfBsG2c4
+         yUjak/e/Ja3E2O/HqZTcK7s7LDa3rNmYhEx/emz9Q1BGftJhL/3Zbt+Nq1U9etYAxVP8
+         aruw==
+X-Forwarded-Encrypted: i=1; AJvYcCV8yPkWjBJe9Tgrhe+AbNpVaGEuSCoZgyGTt8MAPaJnUNFvqLGAzCDUl9DniDD0TIYE6xqeWIru+f/wMtredr2cIKZFCrNnOJGh5tTxJJHLkAzuhdwET+DwqpGmUOlp7lWc51yI5hu+/sokc2rybPpid6dN1C3Vuus=
+X-Gm-Message-State: AOJu0YxNMURzEGZQKgGLkBO/V2NYDlMIvY1FzpRQDmjH8jf8cRjuMEn8
+	PW7alcGeDgO7DF+gJIEpFY6RU9cJuy5EtyllPWIoX8dELKcPgdh7
+X-Google-Smtp-Source: AGHT+IEKX4mPK8p3LVtgqAEYyCPcuWaiS7Wg/M61Uzh8Z2MrCR1EPMqWz1zamkiXHkPSe7lbjeYPxA==
+X-Received: by 2002:adf:f892:0:b0:33c:fb94:1e12 with SMTP id u18-20020adff892000000b0033cfb941e12mr2617815wrp.54.1708047282318;
+        Thu, 15 Feb 2024 17:34:42 -0800 (PST)
 Received: from skbuf ([188.25.173.195])
-        by smtp.gmail.com with ESMTPSA id co3-20020a0560000a0300b0033cf9e35b13sm660331wrb.72.2024.02.15.17.24.46
+        by smtp.gmail.com with ESMTPSA id b7-20020adfe647000000b0033b406bc689sm665199wrn.75.2024.02.15.17.34.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Feb 2024 17:24:47 -0800 (PST)
-Date: Fri, 16 Feb 2024 03:24:45 +0200
+        Thu, 15 Feb 2024 17:34:41 -0800 (PST)
+Date: Fri, 16 Feb 2024 03:34:39 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
 To: arinc.unal@arinc9.com
-Subject: Re: [PATCH net RFC] net: dsa: mt7530: fix link-local frames that
- ingress vlan filtering ports
-Message-ID: <20240216012445.em247rxfjnyufwm5@skbuf>
-References: <65bbf40d.170a0220.a87f4.becdSMTPIN_ADDED_BROKEN@mx.google.com>
- <65bbf40d.170a0220.a87f4.becdSMTPIN_ADDED_BROKEN@mx.google.com>
- <20240201232619.nsmm7lvafuem2gou@skbuf>
+Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>, mithat.guner@xeront.com,
+	erkin.bozoglu@xeront.com,
+	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH netnext 0/8] MT7530 DSA Subdriver Improvements Act III
+Message-ID: <20240216013439.dq7s5hp74mjahy4d@skbuf>
+References: <20240208-for-netnext-mt7530-improvements-3-v1-0-d7c1cfd502ca@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240201232619.nsmm7lvafuem2gou@skbuf>
+In-Reply-To: <20240208-for-netnext-mt7530-improvements-3-v1-0-d7c1cfd502ca@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240215_172451_297119_5C9BB940 
-X-CRM114-Status: GOOD (  21.68  )
+X-CRM114-CacheID: sfid-20240215_173445_019924_55D14D7E 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,34 +101,19 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, erkin.bozoglu@xeront.com, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, Alvin =?utf-8?Q?=C5=A0ipraga?= <ALSI@bang-olufsen.dk>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, mithat.guner@xeront.com, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 02, 2024 at 01:26:19AM +0200, Vladimir Oltean wrote:
-> On Thu, Feb 01, 2024 at 10:13:39PM +0300, Arınç ÜNAL via B4 Relay wrote:
-> > One remaining limitation is that the ingress port must have a PVID assigned
-> > to it for the frame to be trapped to the CPU port. A PVID is set by default
-> > on vlan aware and vlan unaware ports. However, when the network interface
-> > that pertains to the ingress port is attached to a vlan_filtering enabled
-> > bridge, the user can remove the PVID assignment from it which would prevent
-> > the link-local frames from being trapped to the CPU port.
-> > 
-> > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> > ---
-> > I couldn't figure out a way to bypass VLAN table lookup for link-local
-> > frames to directly trap them to the CPU port. The CPU port is hardcoded for
-> > MT7530. For MT7531 and the switch on the MT7988 SoC, it depends on the port
-> > matrix to choose the CPU port to trap the frames to. Port matrix and VLAN
-> > table seem to go hand in hand so I don't know if this would even be
-> > possible.
-> > 
-> > If possible to implement, link-local frames must not be influenced by the
-> > VLAN table. They must always be trapped to the CPU port, and trapped
-> > untagged.
+On Thu, Feb 08, 2024 at 08:51:28AM +0300, Arınç ÜNAL via B4 Relay wrote:
+> Hello!
 > 
-> Isn't this, in effect, what the "Leaky VLAN Enable" bit does?
+> This is the third patch series with the goal of simplifying the MT7530 DSA
+> subdriver and improving support for MT7530, MT7531, and the switch on the
+> MT7988 SoC.
 
-Hm? Any news on this? I suppose this was the reason for submitting the
-otherwise ok patch as RFC?
+There was an automation failure, you used the name "netnext" in the
+subject prefix and patchwork reacted with "Patch does not apply to net"...
+
+Please resend to get some build testing. I gave a quick look over the
+patches and I didn't see anything obviously objectionable.
 
