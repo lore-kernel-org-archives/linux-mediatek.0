@@ -4,55 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8F32C48BC4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Feb 2024 19:54:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A95CC48BC4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Feb 2024 22:22:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wrLeVjW0ciuJszz4zjPY8G3BJ5RGtt3yEGrW/DSBE6s=; b=r8CiCywz9qRpEibdM+cfKhJRYd
-	zy1clFtfj9cplL223fb8CldLZhqvU52yYlZfXjj15AlSMA2sFZDMDV8fTg0FthskHu+e3btvIN1oS
-	Wlu0XEC9YYX1EmfwbL01uMak0t2XrJl4fThkGuPnoeKU9fFcs7tt8KTdHw+iGbFnJM0jWagmK1hF+
-	KIqPA1oXyXAU1c4FVShVOLjUNdt0ZsGCmnKd9YB57JA/kiO05fsd2oBihPSqgBQpOUEUgF6dCNFFm
-	dGGkTcXfU18j7Atc1Rni42zIv4gFO7mYdu63/1nsN79IdBe8ET4ixiYPs0JdsCA91WCJcHr1v3WP6
-	veIAf4AQ==;
+	bh=d/y5qpq3uF2po3jkaK8CtNhWm1biK0mglGlG7nCOk+Q=; b=pwUsBo+KD+JLsYz3v7gWtYY3Du
+	2quF3VozK9+4rG7zR6WeIfu7w0QYktGGCBLb7YPdfug+tmRwSW5cblZclGQpfQBAeKNrzG/g+gjGC
+	lEYVLT+5Vh0UzHu9Sjj5U5paoO0uOb9kgQDMnyLXsKzhDpionPOkZ68U1vlDe9bK95A3Uy1iik7/C
+	Gak0zGDWHg3SgFFsMilOC9SWnHp4ZLyEuBwxX4PNXbLBq6FEkvnDjhrYZwYMmDpWvhOTu2N+Sactw
+	/Ot7U9gLF5iBnzBbeqJxgJFWycaHg9p6F3bndO6ecLjlSCol/t54YO0UscVvAg2ZSb2p+P34Hu/pQ
+	vvWS7Z0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbQld-00000006GrB-0nfM;
-	Sat, 17 Feb 2024 19:54:33 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1rbT4b-00000006VhJ-1x2P;
+	Sat, 17 Feb 2024 22:22:17 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbQlY-00000006Gq5-0ruN;
-	Sat, 17 Feb 2024 19:54:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=wrLeVjW0ciuJszz4zjPY8G3BJ5RGtt3yEGrW/DSBE6s=; b=MRU7aZcE2NM7dNQziM3PQNJsnH
-	Ky1yXYghGe0xrGkHqqC34Lq74gMVRokiF+u13tk9DIaBxx+dL5y1u/9B1bMTOCxUnlzhMA/3Eb2XN
-	PyubFSsl5G++haDa/a6L8VQBQBTO7LKBnr0z5y0fRYPzSXO4o90EciWf3dnqGo2AL3EvTn6/kPpex
-	gyYjvZ+OrGkD3a3pxQUD8byvavOYL2OTaFZwD/1ATO+N01uyn60PuOMyulb6Q/F61I65NMYr0CmPp
-	N1r5JxCcahrParQlxVKDsIzLQcbnM+bls8Tm4Hn62mHdnpTfQyj0+ep6OX4MzIFaUi7LTljqyfvPk
-	rABGBg8w==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:38274)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1rbQkT-0008E1-2M;
-	Sat, 17 Feb 2024 19:53:21 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1rbQkG-0006lB-8R; Sat, 17 Feb 2024 19:53:08 +0000
-Date: Sat, 17 Feb 2024 19:53:08 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+	id 1rbT4X-00000006Vg4-0g7F;
+	Sat, 17 Feb 2024 22:22:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=d/y5qpq3uF2po3jkaK8CtNhWm1biK0mglGlG7nCOk+Q=; b=IGuZAJv46IilCO1EOeTEdr/OKc
+	Ekt8q/pK20nszsr5XQFOS0VjbUq9e84AIARYog7v8zSxVav9pnVXl/Qsc1FGCRLAka6kjqQx1zysx
+	oN5p07q8ZALxEMPQ0kZHo4sazDApO7BcIzOcHiw/nJ7IQVZqcErgi7xkp7DsrgSE7eR0=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1rbT44-0085gT-3i; Sat, 17 Feb 2024 23:21:44 +0100
+Date: Sat, 17 Feb 2024 23:21:44 +0100
+From: Andrew Lunn <andrew@lunn.ch>
 To: Christian Marangi <ansuelsmth@gmail.com>
 Cc: Michael Hennerich <michael.hennerich@analog.com>,
-	Andrew Lunn <andrew@lunn.ch>,
 	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
@@ -88,6 +78,7 @@ Cc: Michael Hennerich <michael.hennerich@analog.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Robert Marko <robimarko@gmail.com>,
+	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
 	Vladimir Oltean <vladimir.oltean@nxp.com>,
 	David Epping <david.epping@missinglinkelectronics.com>,
 	Harini Katakam <harini.katakam@amd.com>,
@@ -98,15 +89,15 @@ Cc: Michael Hennerich <michael.hennerich@analog.com>,
 	linux-mediatek@lists.infradead.org
 Subject: Re: [net-next RFC PATCH 0/3] net: phy: detach PHY driver OPs from
  phy_driver struct
-Message-ID: <ZdEOpB1oVDE8+Qhq@shell.armlinux.org.uk>
+Message-ID: <a804e21d-fe1d-41e8-90fd-64b260c9bcc7@lunn.ch>
 References: <20240217194116.8565-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20240217194116.8565-1-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240217_115428_274761_F901CBD2 
-X-CRM114-Status: GOOD (  22.07  )
+X-CRM114-CacheID: sfid-20240217_142213_246006_E8570F1D 
+X-CRM114-Status: GOOD (  16.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,32 +131,17 @@ On Sat, Feb 17, 2024 at 08:41:11PM +0100, Christian Marangi wrote:
 > adding tabs as this would have resulted in a massive patch.
 > Also to have patch bisectable, this change has to be in one go
 > hence I had to use this trick to reduce patch delta.
-> 
-> Other solution to this problem were to introduce additional
-> variables to phy_driver struct but that would have resulted
-> in having 2 different way to do the same thing and that is not O.K.
-> 
-> I took care to compile-test all the PHY, only exception is the unique
-> RUST driver, where I still have to learn that funny language and
-> I didn't had time to update it, so that is the only driver that
-> I think require some fixup.
-> 
-> I posted 2 example that would benefits from this change, but I can
-> find much more in other PHY driver.
 
-Would it make more sense instead of this big churn, to instead
-introduce into struct phy_driver:
+To me, this makes the code look ugly. I also expect many text editors
+which understand indentation will be unhappy, saying the indentation is
+wrong.
 
-	struct mdio_device_id	*ids;
+>  64 files changed, 737 insertions(+), 291 deletions(-)
 
-which would then allow a phy_driver structure to be matched by
-several device IDs?
+These statistics are not good. If you had deleted more lines than you
+added, then maybe it might be an O.K. idea.
 
-We then would not need to touch any of the existing drivers initially,
-and a later cleanup could be to identify those where all the ops are
-the same for several phy_driver structures, and convert them over.
+Sometimes KISS is best.
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+	Andrew
 
