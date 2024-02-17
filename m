@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65EB1C48BC3
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Feb 2024 23:23:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC944C48BC4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Feb 2024 23:28:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cbH9uymS/8c7/s6JqpxYO8BrELFkxi0FtyBb1T3F1as=; b=uMWawBxBdmtSoh1ccbw9CYxFnl
-	ktQM5Y0TCz2MU08P5FR969KRwHIuUPTelXS3Vv90Us9fbiQnDL0A8pjPzM+7tVxmSwixLgMvcFV7V
-	lt6zT1mqW/lYwLPo8rYRqHs9+g8TcL78GIsO9ooXu3gViQWsEPt/mNZRECz4YSRxzIdIBoF0sNF07
-	GsGSOS5DGdbLtnvxXPtFPPDVnM8FSVOHpwGcpN9ArntqVGHq0W6KZAdl65UwCpO80EhHTw3/0rFxG
-	5yusuTpPm0dyQx3aKohVHr/maXUrJCwFqGqTF+90zV5hKH20ppmAXowbrTht+DeLItybK1rtz29E0
-	JF9fXoUQ==;
+	bh=yMrVfGL8XXE/jIciEU8DHBE7OsIbpwslFPo8E5272EE=; b=fr8nCTy3UIoL48t3MdSNlSx8SM
+	MI94syqe340utLNywKWtYW6TaluARa1RvjFU9ifQmTBcX13zo5YA5ZYvtcYd4Puw+OMsiilZ7zj2E
+	TP2Da/FCUvdF/mC2Y4966DG4g/O7h+ra0D8CRRG796aquWeSBAqp3t6QYF7ZSIxowGgp6CXkLzLN0
+	1K9P/9DKFuOMg/v0qWripkHAQ6LcC3fpnio1hZPULsF7e9D7UuO/cLjCzrf6e5uxRU15yRN4xvlIh
+	aIBlosrelZyiifc/VKNaqiet6VzGVbSoOfnEhzfDb1CrUVlhgEI9pND9/zMTAeUaea2g6sMirLnWK
+	Hoox/QvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbU1M-00000006aLD-35k4;
-	Sat, 17 Feb 2024 23:23:00 +0000
-Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229])
+	id 1rbU6H-00000006bSo-0rFP;
+	Sat, 17 Feb 2024 23:28:05 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbU1H-00000006aKJ-1K4g;
-	Sat, 17 Feb 2024 23:22:56 +0000
-Received: by mail-oi1-x229.google.com with SMTP id 5614622812f47-3c1333b0974so2490235b6e.1;
-        Sat, 17 Feb 2024 15:22:54 -0800 (PST)
+	id 1rbU6B-00000006bQp-3TAn;
+	Sat, 17 Feb 2024 23:28:01 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-33d3b43c492so137351f8f.3;
+        Sat, 17 Feb 2024 15:27:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1708212174; x=1708816974; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1708212476; x=1708817276; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:subject:cc
          :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=cbH9uymS/8c7/s6JqpxYO8BrELFkxi0FtyBb1T3F1as=;
-        b=nK8Q15xIn2PDk4uR+igDEujzWsLRrpQX+y3xYrmm5Y8xlzaYOUpgNHyGSU2A8jma4+
-         rjBDiI5u+Rdwux8dS6vw8tpoHcV+m+8Yin9DRUZc5ko05EE4+Caz9bjx34tFq+qaKoTe
-         405dZZkzoHs6xBt/lnfU0t1Gz6+nPvche/dAUmnWdRYhW7MMg8Z3SaMqWDZ39cjsWCj0
-         PqnyMtKgbgR1sWZ1NtHUkC7907uEvg8FQ+ARb8ZCbNtKWJIdJqSZLUEQzZxSI5MBdWws
-         0lN1Ny7C5ocsv4LONtYjZIsX0YKc1dTJ01qvkFJdrQQatUZQz1tqXNGCxx/AIro/Sm9S
-         eMSA==
+        bh=yMrVfGL8XXE/jIciEU8DHBE7OsIbpwslFPo8E5272EE=;
+        b=Yt62JUjglZNFWk1RiRFfTI1UeZ+YUI2lMD3f4UCTFKCdPIo9dXQUgl2wDoyHHoKsx1
+         mRZaprf16mKJCEXmWcoUjyXAltb8LQXLu/p5ko6LLDF5BcrOR1glHcTGqlPVC4BcgjeH
+         KCFgK3f+n1YFAkxBPn42KfNn/m9Zh1mMKwVBJDVSmk7VAo74p+Kiiict8Xgxp+sVEBMZ
+         6Cm/1p4NzN8r1VKMe9ZeNMXe0UadljxAMjkDdhtTqimi+n+VTWozUI5oNUoPP+YMbW9i
+         G/uBn73C9tulGThrZTmESsh+GBccka2sjTeGHByCk36MbRjCXPrD+BNPj3Ebzfv/eFTK
+         erww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708212174; x=1708816974;
+        d=1e100.net; s=20230601; t=1708212476; x=1708817276;
         h=in-reply-to:content-disposition:mime-version:references:subject:cc
          :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=cbH9uymS/8c7/s6JqpxYO8BrELFkxi0FtyBb1T3F1as=;
-        b=McPRPe27b1+iQBGZdA/7WVQXhogRYGTPxbpPRuHC1VmllPzs7m4ZBQWPpcGfE0kzjQ
-         +j8UyrSdCFmIYsiwU/9dr9lVDYQG+HA7n+47Q6iah9lmlnavt//eygr3UIe4e5Fz3Oao
-         PwLoPZ8FXS0fvPqz039y21WMAy6M2mNiH5oxqJXYrgoMR3rikb22JiEpd4LrG6yPmg33
-         3ohqrCfM1GBefRXJYs3DcyMzWHQmiU+yBQmIJEQB+4z6szXB+Shj5K/oBHzw9JWSWxHA
-         evcPaPGKjSn16ce3kb1xFUOXmOoEprv4Ri4+OoOtjTGGyYhoDdeKpUCEcpBDwleCg6zm
-         lx4w==
-X-Forwarded-Encrypted: i=1; AJvYcCXjo2ApCshBRXfnWY4y+gkz/xM8qN1oS3upM7ygHtQacj2auoH1YKP5mfsVCNdkz3maoY6ZW0cG/8vACryUVeOl/iogk9AFOob6MGQwDmpcg5+W2N1G3t+seWUd9lKxrK7JU2GzJSgKtSoxUNx131Y1VsZe2Db8Nj0Mwcr0uYGncbgDBbeBsOlQYGvydp6jImueJXimpCwUqeyd4os24JMb7PXTVBJ9hZLgO7rBfKdwhp52gL0gMRW3CfNcVsaTLg==
-X-Gm-Message-State: AOJu0YxZfKNK7WbxIatp+9+m1WrYagq3LLOSs6/6V3dqeZGrovMmLyOp
-	gFRDqJcBT9H5PNwqgfBlNJWHK+EQs5pwa/wDLS+8zghX6oprr5Lo
-X-Google-Smtp-Source: AGHT+IGQKGBOkmuDc5gI2jIBVXWXAkHQ3X9wz3V5z8Dx1FdEbbwkWxIBFI2JRf0mUeEdUoy2E0VubQ==
-X-Received: by 2002:a05:6808:2a4f:b0:3c0:3b90:ae1f with SMTP id fa15-20020a0568082a4f00b003c03b90ae1fmr7196758oib.49.1708212173842;
-        Sat, 17 Feb 2024 15:22:53 -0800 (PST)
+        bh=yMrVfGL8XXE/jIciEU8DHBE7OsIbpwslFPo8E5272EE=;
+        b=Sfg8DqIjppWyF2DnwX/eVDp/QHvR4mJykTB/w408AB2vQDyBuTmMmbA1AJWXwl5c0Z
+         lVKaLQ3IA2NXPs4/2ZCtoHiU6MZOcFZIpng6FRpvNLFoUpRg0eSygrYXd2UvhzxFdShP
+         bqWJc3UM2QQ90AbBhLLdiyfEblkG3l8GlHC9TiVQwDTXOsnD9u+NFfAjU4pMRhUoODMQ
+         n7I6F6XT7a3io3D+c/yeVSwkd8Gre4KwEsg80k6uOmsupC2saVkrONwZ+7WUZTERNBbP
+         A4kB0WZrmu8sGFNppFIE3uvi4A7pPBmyy5Z2RY3R8qp0GNd8JZM2Ox+uqs7A5whV1kka
+         AMbw==
+X-Forwarded-Encrypted: i=1; AJvYcCU30VJxZW8r1qiAUmdPW6lZrHMl1jDCQlV/KLKH93vTLH0S5o8eicmv4OjXJ/mja1lzup1rBqeBBUp2UcsIAuZSFwCAnIitEhWpi6wCC6XGCgwIaDspby1BgrrAmAhA4zpfNmE4VsgwwRI1Ip0CGJZI5k1gSc7F2+FDboy1GPQovMMeXxpEmz+F/cl86yHsQc16gkQkJ26Q/uRt0Ckoc5dnfV5oFQ28uMHYQSCxX+YGN7r6mF/U7jiqRM9cOb028Q==
+X-Gm-Message-State: AOJu0Yx+fb+bv4jZk4uEjNUbo1FfUDqIU8yHLtmjEYvIuL2H1lQqyYBD
+	JmyOMbripKHjZxLsq86p01zIhFUPrLMNMhqHWMryk4UhX1V+bEFl
+X-Google-Smtp-Source: AGHT+IG06jEr4fsAxNzMuyQQWttNohqo0lQwW0nhEwlH4qFAtb/RroN/efm+DbY1uKKfB0jPXgmHPQ==
+X-Received: by 2002:a5d:588f:0:b0:33d:2b3d:a02e with SMTP id n15-20020a5d588f000000b0033d2b3da02emr2093502wrf.46.1708212476161;
+        Sat, 17 Feb 2024 15:27:56 -0800 (PST)
 Received: from Ansuel-XPS. (93-34-89-13.ip49.fastwebnet.it. [93.34.89.13])
-        by smtp.gmail.com with ESMTPSA id qm12-20020a056214568c00b0068c88a31f1bsm1518837qvb.89.2024.02.17.15.22.46
+        by smtp.gmail.com with ESMTPSA id m2-20020a5d6a02000000b0033d071c0477sm5962470wru.59.2024.02.17.15.27.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 17 Feb 2024 15:22:53 -0800 (PST)
-Message-ID: <65d13fcd.050a0220.88fe3.665f@mx.google.com>
-X-Google-Original-Message-ID: <ZdE_xfQcwQ6hninK@Ansuel-XPS.>
-Date: Sun, 18 Feb 2024 00:22:45 +0100
+        Sat, 17 Feb 2024 15:27:55 -0800 (PST)
+Message-ID: <65d140fb.5d0a0220.81be3.7138@mx.google.com>
+X-Google-Original-Message-ID: <ZdFA-ehmbYzM3DvW@Ansuel-XPS.>
+Date: Sun, 18 Feb 2024 00:27:53 +0100
 From: Christian Marangi <ansuelsmth@gmail.com>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>
 Cc: Michael Hennerich <michael.hennerich@analog.com>,
-	Andrew Lunn <andrew@lunn.ch>,
 	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
@@ -104,6 +104,7 @@ Cc: Michael Hennerich <michael.hennerich@analog.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Robert Marko <robimarko@gmail.com>,
+	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
 	Vladimir Oltean <vladimir.oltean@nxp.com>,
 	David Epping <david.epping@missinglinkelectronics.com>,
 	Harini Katakam <harini.katakam@amd.com>,
@@ -115,14 +116,14 @@ Cc: Michael Hennerich <michael.hennerich@analog.com>,
 Subject: Re: [net-next RFC PATCH 0/3] net: phy: detach PHY driver OPs from
  phy_driver struct
 References: <20240217194116.8565-1-ansuelsmth@gmail.com>
- <ZdEOpB1oVDE8+Qhq@shell.armlinux.org.uk>
+ <a804e21d-fe1d-41e8-90fd-64b260c9bcc7@lunn.ch>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZdEOpB1oVDE8+Qhq@shell.armlinux.org.uk>
+In-Reply-To: <a804e21d-fe1d-41e8-90fd-64b260c9bcc7@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240217_152255_387344_650E407A 
-X-CRM114-Status: GOOD (  30.97  )
+X-CRM114-CacheID: sfid-20240217_152759_896089_8E35001B 
+X-CRM114-Status: GOOD (  27.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,7 +138,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Feb 17, 2024 at 07:53:08PM +0000, Russell King (Oracle) wrote:
+On Sat, Feb 17, 2024 at 11:21:44PM +0100, Andrew Lunn wrote:
 > On Sat, Feb 17, 2024 at 08:41:11PM +0100, Christian Marangi wrote:
 > > Posting as RFC due to the massive change to a fundamental struct.
 > > 
@@ -157,40 +158,35 @@ On Sat, Feb 17, 2024 at 07:53:08PM +0000, Russell King (Oracle) wrote:
 > > adding tabs as this would have resulted in a massive patch.
 > > Also to have patch bisectable, this change has to be in one go
 > > hence I had to use this trick to reduce patch delta.
-> > 
-> > Other solution to this problem were to introduce additional
-> > variables to phy_driver struct but that would have resulted
-> > in having 2 different way to do the same thing and that is not O.K.
-> > 
-> > I took care to compile-test all the PHY, only exception is the unique
-> > RUST driver, where I still have to learn that funny language and
-> > I didn't had time to update it, so that is the only driver that
-> > I think require some fixup.
-> > 
-> > I posted 2 example that would benefits from this change, but I can
-> > find much more in other PHY driver.
 > 
-> Would it make more sense instead of this big churn, to instead
-> introduce into struct phy_driver:
+> To me, this makes the code look ugly. I also expect many text editors
+> which understand indentation will be unhappy, saying the indentation is
+> wrong.
+>
+
+Yes, it was done to limit the patch delta, if I had to account for the
+tab for each new section we would be in the order of 2000+ changes I
+think.
+
+> >  64 files changed, 737 insertions(+), 291 deletions(-)
 > 
-> 	struct mdio_device_id	*ids;
+> These statistics are not good. If you had deleted more lines than you
+> added, then maybe it might be an O.K. idea.
 > 
-> which would then allow a phy_driver structure to be matched by
-> several device IDs?
+> Sometimes KISS is best.
+>
 
-Yes that was an alternative idea, but is it good to then have 2 way to
-declare PHY ID?
+Well IMHO these stats are a bit flawed, the additional code is really
+just extra check if ops is defined and the new .ops variable in each
+phy_driver.
 
-Also the name should be changed... Maybe an array of a struct PHY_ID,
-name that ends with a sentinel?
+If you check patch 2 and 3 you can already see some code is removed.
+Also while minimal the final .o produced results in bcm7xxx going from
+53kb to 45kb and the aquantia driver from 48kb to 45kb.
 
-> 
-> We then would not need to touch any of the existing drivers initially,
-> and a later cleanup could be to identify those where all the ops are
-> the same for several phy_driver structures, and convert them over.
-
-We have many PHY that already have macro to define the same OPs and
-change only name PHY ID and mask.
+I understand that this major rework might be too much, so I think the
+only way to handle this is with introducing support for declaring
+multiple PHY ID for one phy_driver struct.
 
 -- 
 	Ansuel
