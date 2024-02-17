@@ -4,62 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EBFAC48BC4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Feb 2024 19:41:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AE24C48BF6
+	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Feb 2024 19:41:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FoNJd93UYhml9Ujt4XegNPtQpjqvmz00PoAt/mJ9soA=; b=mIzlAf/l4kJdfZISeEe0Cwco0r
-	sPY0klv8S2BX/wuiDF7ZsJxfcHx+n56icJjPgyOzabsssdFOqv04/aZirj82Jjsobtx127VJnrWQA
-	Hq8xuVIyjKq0pIrY9JunWS8p4Y9gx3KLzTiC38nwBbPDcw4jyDrWJPnmMbtZ9migRqKia+euJrtoS
-	0QsOF/TbWAQR1Y+Jn5cu3VEVuorrjHaNvUHmp2iVReEsJ31sTJjePWXFvsXZHT3hRdD866cqx0aAI
-	4im5YF+LV1VuxQqtC0+NC54hDg1UwO19a81kLNVLEoQjfT+Wk7MCCAGrQw1NlwRfyvrYRS8PZ2zoV
-	t7awNJUQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pZEviv2teb4NzkCVrP/1Qc+rjhnubLMND2DwU0Wh17A=; b=WerkzbnllifYxy+w32KY2YVrI5
+	WhNnGhYCdHieI65ePda235ZyC8ub3CiaMlStc3QDmXo35n/jfg4ZBVR2TW03jadNY8ZDUNto67iab
+	ub4mVddgLHdsuM0fIx5wPd1zYEDTPLma1Okjkf4zl0GXFp2MlG3Z57xcfivVIRUtqDC+05YGo6SCe
+	hbEEzmT7gz6U894mC/IgvP63P4V4ZtKketT4jpQd0G7KZALtp2FwhIvE0+ceLUJTSrq2cdTH6Wrte
+	qscKKLrpqbGjbO5Cpz6yfCnbMVq9WiUR3HxMkIY1PbYDght4wp4WTWYa8HAkTwRKRaxapMAlAECKL
+	o0n6FnzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbQZ6-00000006Fh8-1E31;
-	Sat, 17 Feb 2024 19:41:36 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1rbQZC-00000006Fkp-4B6v;
+	Sat, 17 Feb 2024 19:41:43 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbQZ0-00000006FfS-2OHg;
-	Sat, 17 Feb 2024 19:41:31 +0000
-Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-33d3f0ed7b5so13278f8f.0;
-        Sat, 17 Feb 2024 11:41:30 -0800 (PST)
+	id 1rbQZ6-00000006Fgg-0MrC;
+	Sat, 17 Feb 2024 19:41:37 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-33d2b354c72so471060f8f.1;
+        Sat, 17 Feb 2024 11:41:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1708198889; x=1708803689; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=FoNJd93UYhml9Ujt4XegNPtQpjqvmz00PoAt/mJ9soA=;
-        b=ecZ/HZtn3ql5l6u41X4TV+jPWzCNyb/4bxsiC/g89rag/1mfKQBFLfbucqQu6p1SJ5
-         tPtfihpgyrbXXM5+ii3/bJdtIW8QyFs5qnwklbPt88EFAYMTAcuExcdq6BkRGkp6U4ki
-         A+0L+7ha+qNL5tD3+5j2DZdDRP8FlOmOJTu8gM2XSiBsFSJ2b+c7MuTbyixkAcH15bbN
-         y9KRno2lcjqhV0PIb1+YTs/2a5Yt9hoMhNHmgvQGLSsd+dND+1gdHW/Tq6ISN/FknKUF
-         6rj8xVIeLRMJqttQYXcqFIxfAjOOqdCQqjk+TWb/IgzOSZJ+55LLWomN5LX7hONWijJH
-         CFYQ==
+        d=gmail.com; s=20230601; t=1708198894; x=1708803694; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=pZEviv2teb4NzkCVrP/1Qc+rjhnubLMND2DwU0Wh17A=;
+        b=IODMg2+owoqHiox7xabwAnwFUfzzsXoOUj5fVMcGdxbVKscEAkbGbAA274pUAqJYeT
+         rDllOuZ1QE2+UyeZR+Pw3SFJNXpNtvGAnxrAu3AWtrNWtP8LzZ6OOSG+NpsBhKJGdE6E
+         ZM3VfqofpaIfoaR3IT2x0jGGG7rcICgk3jUmscir63SORZW/ErnS3CKBfpIi8qL5h61s
+         QhX0D1U0pLA6fi91+Lgr0PV643QAmMVRj+tLvFkpHzTmxq7k1fDZzphWorPRID35St24
+         8zZCOf5StQ+adchMN9KYigoWx/ZtybYAv0U5LdTGJK+nYroUx6Ae08kyT61iIWfY2pUf
+         bJGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708198889; x=1708803689;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=FoNJd93UYhml9Ujt4XegNPtQpjqvmz00PoAt/mJ9soA=;
-        b=wwVsorqozchIFoPaXPUxPb4OvwziTSnRQiJjVA9GWhZvQQEm4gy7ThjulFlNwGT3+0
-         nUHI5oAWdaGezwhQe7vzsL3c6I+yYlVScqSlnqDlCworpk1ej2sEyO6MZAcEAp7/4KHO
-         /Iu6XXuf51loZqYNhyxASEpvklKLzIB/xMSZIBJq4ShDopn6Hyqyn1rtuB/xr2Pa6HcW
-         mB5/wgFzkMnzk52Krk3AgwCI6mzkJlDJhlGliECktkt+Ty2w841Lp7F6vzMWxwWzkxUt
-         pkZ6LLD0f3irbBQ7Q2MQhPM6sFvn6bDoB3c51k+Q86ZHLyDZdR+3JtisLuqT97Kxfiho
-         MAbw==
-X-Forwarded-Encrypted: i=1; AJvYcCVGPURYXVx0VtxyT9CLHyrT2zlwdTe/7SYqfGkvyeTqGGSAuEh7CATz+6N7WYWGGrC5iZynP9rfh3mVKgkFVTrsZvHHCclFOCv+4ew9LAlheH7gy9jR3G4KGQKdEEDrIuYZGUw6eT0znxvs654D44Z6jvBYtTG6ysyItSRFj8XDiotiVVy69cO38fNdKdkSvQAEaKnMBsdGGSqHvPVZ9l6KpIjTBxLOBkUtGlEAJdz/tpB334q4p6HJT6J0NIoW9g==
-X-Gm-Message-State: AOJu0YwsbplUDDQJNGHK2GaVkKWevemSViIGkXFXCRqfABw5j5Qs5e+n
-	niEEHhoGbaxPO6/4GIdWjfQsXUoh8jR4cVoJc2ijxTObIn8tflo6
-X-Google-Smtp-Source: AGHT+IEMhpVotyrQM8FDDo2tYf/RWQ1+Gqe/hReAQZwCqW+WAIvjwxMBlc9fE/sBf+dXkJMnsRz3oA==
-X-Received: by 2002:adf:fe46:0:b0:33d:29c1:c28c with SMTP id m6-20020adffe46000000b0033d29c1c28cmr1969393wrs.66.1708198888366;
-        Sat, 17 Feb 2024 11:41:28 -0800 (PST)
+        d=1e100.net; s=20230601; t=1708198894; x=1708803694;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=pZEviv2teb4NzkCVrP/1Qc+rjhnubLMND2DwU0Wh17A=;
+        b=LdXRQ3RYrPxvJI/WmiGzDwPYlUXOGXOk11KOIYvLohat82hPsrbNp7ITKg0H5ghDUq
+         h0mJx5BJBZuDwahItGhEmqXhA2qjv6RPtGmHdd564Iqwpn1ztIs3dqcZyiOduQeonN28
+         9pvUmiienc6EDsos/KfY3RWQWCe5XzZ0ab/OZEUhW1AYkvBsCsT3WOnzmE2+bhwRoPmA
+         97y8iAIm930aewV36D3+zCzkk+2nRcR6gAVwCEoIxuLpZutRYGYOv5tTMJ3x8KQ0FFov
+         v+TrX50wDpVIiroARArtSj0uHiM1olk0vbasY5jpkw5U/AIRJjf57FhMeNs8qCmIWmZM
+         KZVg==
+X-Forwarded-Encrypted: i=1; AJvYcCWVNGiftTM6cDpWlTPWGOWMRJCgu8SPU/m1cTQXsaYH6NTgiH/qW1kwqQaGtTYW5lQqUYyL6tqKwKgRQvm+HLUUzZSTxXCNaqNe8ZLoTSnEXQRuDGS2NlmXMF/r6XqQYdAYI31sbg8SOK9vVZ5EksBlBkt5HyG/suECFeKewIR19qZW1ZRSnymbpUD2O2VXWkNmxcKw7gHUzEDPL7sWz2Cj6qBE6WGc2q21JaXAddmetdnjotpIpSD2a//HqGKXjQ==
+X-Gm-Message-State: AOJu0YxoJvsAXnwyvmkF6Vvrwl9N/Ujf9e/uomltDY4Ne4rRgtNGZS+3
+	Gexr8G4O5PpcHUErz5wyrKmwVUooyfjW89ol+9WeTjPUFazp/d1f
+X-Google-Smtp-Source: AGHT+IH5z0lQxM8SWKlZjhmYQZswVu+KcjSTCP84/EW6jYLGcTWFQHxT2+612mD4BXGNG14DlFINyw==
+X-Received: by 2002:a05:6000:24a:b0:33d:3b44:aaa6 with SMTP id m10-20020a056000024a00b0033d3b44aaa6mr339545wrz.58.1708198893894;
+        Sat, 17 Feb 2024 11:41:33 -0800 (PST)
 Received: from localhost.localdomain (93-34-89-13.ip49.fastwebnet.it. [93.34.89.13])
-        by smtp.googlemail.com with ESMTPSA id b10-20020a5d40ca000000b0033ceca3a3dbsm5661169wrq.2.2024.02.17.11.41.25
+        by smtp.googlemail.com with ESMTPSA id b10-20020a5d40ca000000b0033ceca3a3dbsm5661169wrq.2.2024.02.17.11.41.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 17 Feb 2024 11:41:27 -0800 (PST)
+        Sat, 17 Feb 2024 11:41:33 -0800 (PST)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Michael Hennerich <michael.hennerich@analog.com>,
 	Andrew Lunn <andrew@lunn.ch>,
@@ -119,15 +121,17 @@ To: Michael Hennerich <michael.hennerich@analog.com>,
 	linux-rockchip@lists.infradead.org,
 	rust-for-linux@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [net-next RFC PATCH 0/3] net: phy: detach PHY driver OPs from phy_driver struct
-Date: Sat, 17 Feb 2024 20:41:11 +0100
-Message-ID: <20240217194116.8565-1-ansuelsmth@gmail.com>
+Subject: [net-next RFC PATCH 2/3] net: phy: aquantia: use common OPs for PHYs where possible
+Date: Sat, 17 Feb 2024 20:41:13 +0100
+Message-ID: <20240217194116.8565-3-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240217194116.8565-1-ansuelsmth@gmail.com>
+References: <20240217194116.8565-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240217_114130_637239_CB5B737A 
-X-CRM114-Status: GOOD (  16.04  )
+X-CRM114-CacheID: sfid-20240217_114136_173286_75AE417C 
+X-CRM114-Status: GOOD (  13.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,108 +146,292 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Posting as RFC due to the massive change to a fundamental struct.
+Group common OPs for PHY, make them static and reference these
+statically link OPs table instead of duplicating them for each PHY.
 
-While adding some PHY ID for Aquantia, I notice that there is a
-big problem with duplicating OPs with each PHY.
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ drivers/net/phy/aquantia/aquantia_main.c | 207 ++++++++---------------
+ 1 file changed, 69 insertions(+), 138 deletions(-)
 
-The original idea to prevent this was to use mask on the PHY ID
-and identify PHY Family. Problem is that OEM started to use all
-kind of PHY ID and this is not doable, hence for PHY that have
-the same OPs, we have to duplicate all of them.
-
-This is present in Aquantia PHY, but is much more present in
-other PHY, especially in the BCM7XXX where they use a big macro
-for common PHYs.
-
-To reduce patch delta, I added the additional variable without
-adding tabs as this would have resulted in a massive patch.
-Also to have patch bisectable, this change has to be in one go
-hence I had to use this trick to reduce patch delta.
-
-Other solution to this problem were to introduce additional
-variables to phy_driver struct but that would have resulted
-in having 2 different way to do the same thing and that is not O.K.
-
-I took care to compile-test all the PHY, only exception is the unique
-RUST driver, where I still have to learn that funny language and
-I didn't had time to update it, so that is the only driver that
-I think require some fixup.
-
-I posted 2 example that would benefits from this change, but I can
-find much more in other PHY driver.
-
-Christian Marangi (3):
-  net: phy: detach PHY driver OPs from phy_driver struct
-  net: phy: aquantia: use common OPs for PHYs where possible
-  net: phy: bcm7xxx: use common OPs for PHYs where possible
-
- drivers/net/phy/adin.c                   |   4 +
- drivers/net/phy/adin1100.c               |   2 +
- drivers/net/phy/amd.c                    |   4 +
- drivers/net/phy/aquantia/aquantia_main.c | 189 +++++++++--------------
- drivers/net/phy/ax88796b.c               |   6 +
- drivers/net/phy/bcm-cygnus.c             |   4 +
- drivers/net/phy/bcm54140.c               |   2 +
- drivers/net/phy/bcm63xx.c                |   4 +
- drivers/net/phy/bcm7xxx.c                |  72 +++++----
- drivers/net/phy/bcm84881.c               |   2 +
- drivers/net/phy/bcm87xx.c                |   4 +
- drivers/net/phy/broadcom.c               |  42 +++++
- drivers/net/phy/cicada.c                 |   4 +
- drivers/net/phy/cortina.c                |   2 +
- drivers/net/phy/davicom.c                |   8 +
- drivers/net/phy/dp83640.c                |   2 +
- drivers/net/phy/dp83822.c                |   8 +-
- drivers/net/phy/dp83848.c                |   2 +
- drivers/net/phy/dp83867.c                |   2 +
- drivers/net/phy/dp83869.c                |   2 +
- drivers/net/phy/dp83tc811.c              |   2 +
- drivers/net/phy/dp83td510.c              |   2 +
- drivers/net/phy/dp83tg720.c              |   2 +
- drivers/net/phy/et1011c.c                |   2 +
- drivers/net/phy/icplus.c                 |   8 +
- drivers/net/phy/intel-xway.c             |  20 +++
- drivers/net/phy/lxt.c                    |   8 +
- drivers/net/phy/marvell-88q2xxx.c        |   2 +
- drivers/net/phy/marvell-88x2222.c        |   2 +
- drivers/net/phy/marvell.c                |  44 +++++-
- drivers/net/phy/marvell10g.c             |  16 +-
- drivers/net/phy/mediatek-ge-soc.c        |   4 +
- drivers/net/phy/mediatek-ge.c            |   4 +
- drivers/net/phy/meson-gxl.c              |   4 +
- drivers/net/phy/micrel.c                 |  54 ++++++-
- drivers/net/phy/microchip.c              |   2 +
- drivers/net/phy/microchip_t1.c           |   4 +
- drivers/net/phy/microchip_t1s.c          |   4 +
- drivers/net/phy/motorcomm.c              |   8 +
- drivers/net/phy/mscc/mscc_main.c         |  30 ++++
- drivers/net/phy/mxl-gpy.c                |  24 +++
- drivers/net/phy/national.c               |   2 +
- drivers/net/phy/ncn26000.c               |   2 +
- drivers/net/phy/nxp-c45-tja11xx.c        |   8 +-
- drivers/net/phy/nxp-cbtx.c               |   2 +
- drivers/net/phy/nxp-tja11xx.c            |  16 +-
- drivers/net/phy/phy-c45.c                |   2 +
- drivers/net/phy/phy-core.c               |  18 ++-
- drivers/net/phy/phy.c                    |  85 +++++-----
- drivers/net/phy/phy_device.c             |  79 +++++-----
- drivers/net/phy/qcom/at803x.c            |  18 ++-
- drivers/net/phy/qcom/qca807x.c           |   4 +
- drivers/net/phy/qcom/qca808x.c           |   2 +
- drivers/net/phy/qcom/qca83xx.c           |  12 +-
- drivers/net/phy/qsemi.c                  |   2 +
- drivers/net/phy/realtek.c                |  46 +++++-
- drivers/net/phy/rockchip.c               |   2 +
- drivers/net/phy/smsc.c                   |  14 ++
- drivers/net/phy/ste10Xp.c                |   4 +
- drivers/net/phy/teranetics.c             |   2 +
- drivers/net/phy/uPD60620.c               |   2 +
- drivers/net/phy/vitesse.c                |  22 +++
- drivers/net/phy/xilinx_gmii2rgmii.c      |  16 +-
- include/linux/phy.h                      |  57 ++++---
- 64 files changed, 737 insertions(+), 291 deletions(-)
-
+diff --git a/drivers/net/phy/aquantia/aquantia_main.c b/drivers/net/phy/aquantia/aquantia_main.c
+index 2166370ccc82..5720ceda303f 100644
+--- a/drivers/net/phy/aquantia/aquantia_main.c
++++ b/drivers/net/phy/aquantia/aquantia_main.c
+@@ -768,53 +768,14 @@ static int aqr111_config_init(struct phy_device *phydev)
+ 	return aqr107_config_init(phydev);
+ }
+ 
+-static struct phy_driver aqr_driver[] = {
+-{
+-	PHY_ID_MATCH_MODEL(PHY_ID_AQ1202),
+-	.name		= "Aquantia AQ1202",
+-	.ops		= &(const struct phy_driver_ops){
+-	.config_aneg    = aqr_config_aneg,
+-	.config_intr	= aqr_config_intr,
+-	.handle_interrupt = aqr_handle_interrupt,
+-	.read_status	= aqr_read_status,
+-	},
+-},
+-{
+-	PHY_ID_MATCH_MODEL(PHY_ID_AQ2104),
+-	.name		= "Aquantia AQ2104",
+-	.ops		= &(const struct phy_driver_ops){
+-	.config_aneg    = aqr_config_aneg,
+-	.config_intr	= aqr_config_intr,
+-	.handle_interrupt = aqr_handle_interrupt,
+-	.read_status	= aqr_read_status,
+-	},
+-},
+-{
+-	PHY_ID_MATCH_MODEL(PHY_ID_AQR105),
+-	.name		= "Aquantia AQR105",
+-	.ops		= &(const struct phy_driver_ops){
+-	.config_aneg    = aqr_config_aneg,
+-	.config_intr	= aqr_config_intr,
+-	.handle_interrupt = aqr_handle_interrupt,
+-	.read_status	= aqr_read_status,
+-	.suspend	= aqr107_suspend,
+-	.resume		= aqr107_resume,
+-	},
+-},
+-{
+-	PHY_ID_MATCH_MODEL(PHY_ID_AQR106),
+-	.name		= "Aquantia AQR106",
+-	.ops		= &(const struct phy_driver_ops){
++static const struct phy_driver_ops aqr106_ops = {
+ 	.config_aneg    = aqr_config_aneg,
+ 	.config_intr	= aqr_config_intr,
+ 	.handle_interrupt = aqr_handle_interrupt,
+ 	.read_status	= aqr_read_status,
+-	},
+-},
+-{
+-	PHY_ID_MATCH_MODEL(PHY_ID_AQR107),
+-	.name		= "Aquantia AQR107",
+-	.ops		= &(const struct phy_driver_ops){
++};
++
++static const struct phy_driver_ops aqr107_ops = {
+ 	.probe		= aqr107_probe,
+ 	.get_rate_matching = aqr107_get_rate_matching,
+ 	.config_init	= aqr107_config_init,
+@@ -830,15 +791,12 @@ static struct phy_driver aqr_driver[] = {
+ 	.get_strings	= aqr107_get_strings,
+ 	.get_stats	= aqr107_get_stats,
+ 	.link_change_notify = aqr107_link_change_notify,
+-	},
+-},
+-{
+-	PHY_ID_MATCH_MODEL(PHY_ID_AQCS109),
+-	.name		= "Aquantia AQCS109",
+-	.ops		= &(const struct phy_driver_ops){
++};
++
++static const struct phy_driver_ops aqr111_ops = {
+ 	.probe		= aqr107_probe,
+ 	.get_rate_matching = aqr107_get_rate_matching,
+-	.config_init	= aqcs109_config_init,
++	.config_init	= aqr111_config_init,
+ 	.config_aneg    = aqr_config_aneg,
+ 	.config_intr	= aqr_config_intr,
+ 	.handle_interrupt = aqr_handle_interrupt,
+@@ -851,36 +809,66 @@ static struct phy_driver aqr_driver[] = {
+ 	.get_strings	= aqr107_get_strings,
+ 	.get_stats	= aqr107_get_stats,
+ 	.link_change_notify = aqr107_link_change_notify,
+-	},
++};
++
++static const struct phy_driver_ops aqr113_ops = {
++	.probe          = aqr107_probe,
++	.get_rate_matching = aqr107_get_rate_matching,
++	.config_init    = aqr113c_config_init,
++	.config_aneg    = aqr_config_aneg,
++	.config_intr    = aqr_config_intr,
++	.handle_interrupt       = aqr_handle_interrupt,
++	.read_status    = aqr107_read_status,
++	.get_tunable    = aqr107_get_tunable,
++	.set_tunable    = aqr107_set_tunable,
++	.suspend        = aqr107_suspend,
++	.resume         = aqr107_resume,
++	.get_sset_count = aqr107_get_sset_count,
++	.get_strings    = aqr107_get_strings,
++	.get_stats      = aqr107_get_stats,
++	.link_change_notify = aqr107_link_change_notify,
++};
++
++static struct phy_driver aqr_driver[] = {
++{
++	PHY_ID_MATCH_MODEL(PHY_ID_AQ1202),
++	.name		= "Aquantia AQ1202",
++	.ops		= &aqr106_ops,
+ },
+ {
+-	PHY_ID_MATCH_MODEL(PHY_ID_AQR111),
+-	.name		= "Aquantia AQR111",
++	PHY_ID_MATCH_MODEL(PHY_ID_AQ2104),
++	.name		= "Aquantia AQ2104",
++	.ops		= &aqr106_ops,
++},
++{
++	PHY_ID_MATCH_MODEL(PHY_ID_AQR105),
++	.name		= "Aquantia AQR105",
+ 	.ops		= &(const struct phy_driver_ops){
+-	.probe		= aqr107_probe,
+-	.get_rate_matching = aqr107_get_rate_matching,
+-	.config_init	= aqr111_config_init,
+ 	.config_aneg    = aqr_config_aneg,
+ 	.config_intr	= aqr_config_intr,
+ 	.handle_interrupt = aqr_handle_interrupt,
+-	.read_status	= aqr107_read_status,
+-	.get_tunable    = aqr107_get_tunable,
+-	.set_tunable    = aqr107_set_tunable,
++	.read_status	= aqr_read_status,
+ 	.suspend	= aqr107_suspend,
+ 	.resume		= aqr107_resume,
+-	.get_sset_count	= aqr107_get_sset_count,
+-	.get_strings	= aqr107_get_strings,
+-	.get_stats	= aqr107_get_stats,
+-	.link_change_notify = aqr107_link_change_notify,
+ 	},
+ },
+ {
+-	PHY_ID_MATCH_MODEL(PHY_ID_AQR111B0),
+-	.name		= "Aquantia AQR111B0",
++	PHY_ID_MATCH_MODEL(PHY_ID_AQR106),
++	.name		= "Aquantia AQR106",
++	.ops		= &aqr106_ops,
++},
++{
++	PHY_ID_MATCH_MODEL(PHY_ID_AQR107),
++	.name		= "Aquantia AQR107",
++	.ops		= &aqr107_ops,
++},
++{
++	PHY_ID_MATCH_MODEL(PHY_ID_AQCS109),
++	.name		= "Aquantia AQCS109",
+ 	.ops		= &(const struct phy_driver_ops){
+ 	.probe		= aqr107_probe,
+ 	.get_rate_matching = aqr107_get_rate_matching,
+-	.config_init	= aqr111_config_init,
++	.config_init	= aqcs109_config_init,
+ 	.config_aneg    = aqr_config_aneg,
+ 	.config_intr	= aqr_config_intr,
+ 	.handle_interrupt = aqr_handle_interrupt,
+@@ -895,97 +883,40 @@ static struct phy_driver aqr_driver[] = {
+ 	.link_change_notify = aqr107_link_change_notify,
+ 	},
+ },
++{
++	PHY_ID_MATCH_MODEL(PHY_ID_AQR111),
++	.name		= "Aquantia AQR111",
++	.ops		= &aqr111_ops,
++},
++{
++	PHY_ID_MATCH_MODEL(PHY_ID_AQR111B0),
++	.name		= "Aquantia AQR111B0",
++	.ops		= &aqr111_ops,
++},
+ {
+ 	PHY_ID_MATCH_MODEL(PHY_ID_AQR405),
+ 	.name		= "Aquantia AQR405",
+-	.ops		= &(const struct phy_driver_ops){
+-	.config_aneg    = aqr_config_aneg,
+-	.config_intr	= aqr_config_intr,
+-	.handle_interrupt = aqr_handle_interrupt,
+-	.read_status	= aqr_read_status,
+-	},
++	.ops		= &aqr106_ops,
+ },
+ {
+ 	PHY_ID_MATCH_MODEL(PHY_ID_AQR112),
+ 	.name		= "Aquantia AQR112",
+-	.ops		= &(const struct phy_driver_ops){
+-	.probe		= aqr107_probe,
+-	.config_aneg    = aqr_config_aneg,
+-	.config_intr	= aqr_config_intr,
+-	.handle_interrupt = aqr_handle_interrupt,
+-	.get_tunable    = aqr107_get_tunable,
+-	.set_tunable    = aqr107_set_tunable,
+-	.suspend	= aqr107_suspend,
+-	.resume		= aqr107_resume,
+-	.read_status	= aqr107_read_status,
+-	.get_rate_matching = aqr107_get_rate_matching,
+-	.get_sset_count = aqr107_get_sset_count,
+-	.get_strings	= aqr107_get_strings,
+-	.get_stats	= aqr107_get_stats,
+-	.link_change_notify = aqr107_link_change_notify,
+-	},
++	.ops		= &aqr107_ops,
+ },
+ {
+ 	PHY_ID_MATCH_MODEL(PHY_ID_AQR412),
+ 	.name		= "Aquantia AQR412",
+-	.ops		= &(const struct phy_driver_ops){
+-	.probe		= aqr107_probe,
+-	.config_aneg    = aqr_config_aneg,
+-	.config_intr	= aqr_config_intr,
+-	.handle_interrupt = aqr_handle_interrupt,
+-	.get_tunable    = aqr107_get_tunable,
+-	.set_tunable    = aqr107_set_tunable,
+-	.suspend	= aqr107_suspend,
+-	.resume		= aqr107_resume,
+-	.read_status	= aqr107_read_status,
+-	.get_rate_matching = aqr107_get_rate_matching,
+-	.get_sset_count = aqr107_get_sset_count,
+-	.get_strings	= aqr107_get_strings,
+-	.get_stats	= aqr107_get_stats,
+-	.link_change_notify = aqr107_link_change_notify,
+-	},
++	.ops		= &aqr107_ops,
+ },
+ {
+ 	PHY_ID_MATCH_MODEL(PHY_ID_AQR113),
+ 	.name		= "Aquantia AQR113",
+-	.ops		= &(const struct phy_driver_ops){
+-	.probe          = aqr107_probe,
+-	.get_rate_matching = aqr107_get_rate_matching,
+-	.config_init    = aqr113c_config_init,
+-	.config_aneg    = aqr_config_aneg,
+-	.config_intr    = aqr_config_intr,
+-	.handle_interrupt       = aqr_handle_interrupt,
+-	.read_status    = aqr107_read_status,
+-	.get_tunable    = aqr107_get_tunable,
+-	.set_tunable    = aqr107_set_tunable,
+-	.suspend        = aqr107_suspend,
+-	.resume         = aqr107_resume,
+-	.get_sset_count = aqr107_get_sset_count,
+-	.get_strings    = aqr107_get_strings,
+-	.get_stats      = aqr107_get_stats,
+-	.link_change_notify = aqr107_link_change_notify,
+-	},
++	.ops		= &aqr113_ops,
+ },
+ {
+ 	PHY_ID_MATCH_MODEL(PHY_ID_AQR113C),
+ 	.name           = "Aquantia AQR113C",
+-	.ops		= &(const struct phy_driver_ops){
+-	.probe          = aqr107_probe,
+-	.get_rate_matching = aqr107_get_rate_matching,
+-	.config_init    = aqr113c_config_init,
+-	.config_aneg    = aqr_config_aneg,
+-	.config_intr    = aqr_config_intr,
+-	.handle_interrupt       = aqr_handle_interrupt,
+-	.read_status    = aqr107_read_status,
+-	.get_tunable    = aqr107_get_tunable,
+-	.set_tunable    = aqr107_set_tunable,
+-	.suspend        = aqr107_suspend,
+-	.resume         = aqr107_resume,
+-	.get_sset_count = aqr107_get_sset_count,
+-	.get_strings    = aqr107_get_strings,
+-	.get_stats      = aqr107_get_stats,
+-	.link_change_notify = aqr107_link_change_notify,
+-	},
++	.ops		= &aqr113_ops,
+ },
+ };
+ 
 -- 
 2.43.0
 
