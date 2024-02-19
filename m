@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B70BC48BF8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Feb 2024 13:35:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 300D1C48BC3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Feb 2024 13:59:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=88/17/NSh+PiHel3GvVFrXocKTB1FBJIOIYEc6ocNCQ=; b=DWZRtejZWQ+Wq82sZd44OOe5Po
-	TEiopw6Jzj1k/Pu1BR5N9n67jQSfwAL3l3gnyluQjf6G/Q4v6it0MQdSg75MaQXp+1I/U+lWyeYuZ
-	xCSenK6EvY4n/gfHUs4EB/TWXIowIEIPtAmIru5ECgbjD2QTTL9krhQmNbZUK1gbXyJ7Fz9qyoMmm
-	XuoTWLVTHk7vSOhqwCv1Irj1sjFbGy84zt9ZGoDXuQ0KAobuPtvQIXTDG3IsgS2VIKadQbpPuQa8o
-	nOVxwlXSIKG1H1n9/0mlkhGixXoAKbbhn3gDpWyf6GLbL09JPXSTOTV+cGzsohbDlqASBPFq9xF6C
-	h2tsE/XA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:
+	Subject:To:From:Cc:Message-Id:Date:Content-Type:Reply-To:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RqpOwN+kn9cr1LlyebcGphr1AkQwEnE+hqV2CZnCaZA=; b=YpBtG8gQnDi54zOEvOEl09y2Rq
+	6HCWxk4MBgqhMUAJzdsU+wBhfdh9pv2Aq9ZivXu0horc2sASISphntMCvxd6woKXm43uOwzHytJgD
+	J5zgEsRoVi2Mrm4QeHBJ1N3kPCDOwFlYy0EXFQv2OVByf59BuIjO7lPxvFs6fknDub/z6AXOlPXYF
+	0bMTKwjsB8/eijAzYBVi4WhN54TvuU5Bj5m0utmKnSx09/U8qPQh2zTOwQOVb7Y1cQWv5AfdxXgEb
+	GpO+wnSkkpsc3b9WDei9kVGTaPKgFkNIjL3kuD7suCZY26Z3eFt+0GReLKEjFVnISTytsI86YoKf+
+	tH0gLwmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rc3nz-0000000AePU-13WQ;
-	Mon, 19 Feb 2024 13:35:35 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rc4B6-0000000AkDQ-2UxU;
+	Mon, 19 Feb 2024 13:59:28 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rc3nv-0000000AeMo-3wpQ;
-	Mon, 19 Feb 2024 13:35:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708349728;
-	bh=H+UegT4BE+l/Z0xlxbb/7nPi5qpmwmDLNcLFfpCwUQg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=3mGxzeMtAtJnOMk/f0rnl5QqoOUEOpXpEQaxNMOK7/4eAuCPchAACkvTY7gIPgb0s
-	 +hp6Ku/nzt5szkdIZBqexS32JKrzx5my+G7WCwZ4d3x6s8stLbEuVcpqO7+l1u4v+l
-	 LsjH5Ka+K+sBUGvQCA9deontJ75oV/y+zQK1HsuH9IHZXSEG0gfqOP5DhJvUolMAu6
-	 8KYZbPb6QTG6VXcvGxUA7CRh7ZBIacEwZqmEKaLitkPxv8C3v9JQiNKyPECnoI9VgO
-	 wFIJFHNKKIEZsjWvGHVQdTIX9qYSfaI2Wj0ZMhMagAfNJMi2YNMSs+5fBEUDz/qSjd
-	 FPrJbhiGlWxzA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 86C053780C22;
-	Mon, 19 Feb 2024 13:35:27 +0000 (UTC)
-Message-ID: <b50d49fd-2976-46fc-9f35-354fb39720ad@collabora.com>
-Date: Mon, 19 Feb 2024 14:35:26 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1rc4B3-0000000AkCf-0yRg;
+	Mon, 19 Feb 2024 13:59:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9F84B60C26;
+	Mon, 19 Feb 2024 13:59:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE2B6C433F1;
+	Mon, 19 Feb 2024 13:59:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1708351164;
+	bh=z+LUHVxMNuaZaB3RCn8D1OAdSMF663IBq3JaYmth/Bs=;
+	h=Date:Cc:From:To:Subject:References:In-Reply-To:From;
+	b=m8AyvZQ5Ohu1atbf96hEHaz9Pokq2daWbrJfLUgMLQRFIQOa8lbFCHhtlvYjRGY9z
+	 06b32rtvxL7d6gRwUBpsxeOEmqEAJ5d/KTCEySs+UllYH7K+aFq3CYUdpfjDTXWjb3
+	 tJzaua0YMTlQdyeTxdG//DX6ASbplDq34q+E0r2xXNiDFjkDkONTbDHFhTMqdN89Kn
+	 BFkpTMPq8gMzGRPMozKDC5B2oDqY3A0FgrYe5BUCSrUVbQGhIkFftwOd28g8YhpdF6
+	 iVoutFNaee+xsY+50Glo4NZWSMT1nffJXJMtFPeePcb9YDxwuTdvETsj7zdUPG6nef
+	 ow43dtJLGgh9g==
+Content-Type: multipart/signed;
+ boundary=99d1e3bae09ed9ca9f76a08dd12da8ba24b3a631d884834e984f62944198;
+ micalg=pgp-sha256; protocol="application/pgp-signature"
+Date: Mon, 19 Feb 2024 14:59:16 +0100
+Message-Id: <CZ93XYV3MB10.YRCFWLLHIICY@kernel.org>
+Cc: <devicetree@vger.kernel.org>, "Sean Wang" <sean.wang@mediatek.com>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+From: "Michael Walle" <mwalle@kernel.org>
+To: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
+ <krzysztof.kozlowski+dt@linaro.org>, "Conor Dooley" <conor+dt@kernel.org>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>
 Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: add Kontron 3.5"-SBC-i1200
-Content-Language: en-US
-To: Michael Walle <mwalle@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+X-Mailer: aerc 0.16.0
 References: <20240219084456.1075445-1-mwalle@kernel.org>
  <20240219084456.1075445-2-mwalle@kernel.org>
  <2ad6bda8-a457-421b-b35d-dc005fb00ae9@collabora.com>
  <CZ92W3VSYV1A.1693O76GY1XDP@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CZ92W3VSYV1A.1693O76GY1XDP@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ <b50d49fd-2976-46fc-9f35-354fb39720ad@collabora.com>
+In-Reply-To: <b50d49fd-2976-46fc-9f35-354fb39720ad@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240219_053532_162736_779AD856 
-X-CRM114-Status: GOOD (  54.49  )
+X-CRM114-CacheID: sfid-20240219_055925_381448_5EA7F5C5 
+X-CRM114-Status: GOOD (  26.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,312 +79,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/02/24 14:09, Michael Walle ha scritto:
-> Hi,
-> 
-> thanks for the extensive review!
-> 
-> On Mon Feb 19, 2024 at 11:00 AM CET, AngeloGioacchino Del Regno wrote:
-> 
->>> +&eth {
->>> +	phy-mode ="rgmii-id";
->>> +	phy-handle = <&ethernet_phy0>;
->>> +	snps,reset-gpio = <&pio 93 GPIO_ACTIVE_HIGH>;
->>> +	snps,reset-delays-us = <0 10000 80000>;
->>
->> snps,reset-delays-us and snps,reset-gpio are deprecated.
->>
->>> +	pinctrl-names = "default", "sleep";
->>> +	pinctrl-0 = <&eth_default_pins>;
->>> +	pinctrl-1 = <&eth_sleep_pins>;
->>> +	status = "okay";
->>> +
->>> +	mdio {
->>> +		ethernet_phy0: ethernet-phy@1 {
->>
->> compatible = "is there any applicable compatible?"
->> P.S.: if you've got the usual rtl8211f, should be "ethernet-phy-id001c.c916"
-> 
-> I'd rather not have a compatible here. First, it's auto discoverable
-> and IIRC it's frowned upon adding any compatible if you ask the PHY
-> maintainers. And second, if we change the PHY (maybe due to a second
-> chip shortage or whatever), there is a chance you don't have to
-> update this in the DT.
-> 
+--99d1e3bae09ed9ca9f76a08dd12da8ba24b3a631d884834e984f62944198
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-Okay then, I'm fine with leaving the compatible out.
+On Mon Feb 19, 2024 at 2:35 PM CET, AngeloGioacchino Del Regno wrote:
+> >> vbus is always supplied by something, as otherwise USB won't work - wh=
+ether this
+> >> is an always-on regulator or a passthrough from external supply this d=
+oesn't really
+> >> matter - you should model a regulator-fixed that provides the 5V VBUS =
+line.
+> >=20
+> > I don't think this is correct, though. Think of an on-board USB
+> > hub. There only D+/D- are connected (and maybe the USB3.2 SerDes
+> > lanes). Or have a look at the M.2 pinout. There is no Vbus.
+> >=20
+>
+> Yes but the MediaTek MTU3 and/or controllers do have it ;-)
 
->> reg = <0x1>;
->> interrupts-extended = <&pio 94 IRQ_TYPE_LEVEL_LOW>;
->> reset-assert-us = <10000>;
->> reset-deassert-us = <80000>;
->> reset-gpios = <&pio 93 GPIO_ACTIVE_HIGH>;
->>
->>
->>> +			reg = <0x1>;
->>> +			interrupts-extended = <&pio 94 IRQ_TYPE_LEVEL_LOW>;
->>> +		};
->>> +	};
->>> +};
->>> +
->>> +&gpu {
->>> +	status = "okay";
->>> +	mali-supply = <&mt6315_7_vbuck1>;
->>> +};
->>> +
->>> +&i2c2 {
->>> +	pinctrl-names = "default";
->>> +	pinctrl-0 = <&i2c2_pins>;
->>> +	clock-frequency = <400000>;
->>> +	status = "okay";
->>
->> Are i2c2,3,4 exposed as pins somewhere? If they are, can you please put a
->> comment saying so?
-> 
-> This is only a basic device tree. On one i2c controller, there is
-> the LVDS bridge for example. My plan is to get the support for this
-> bridge upstream first and then adding the appropriate device nodes
-> here.
-> 
-> That being said, some are exposed to connectors. I'll add a comment
-> then.
+.. and ..
 
-In that case, could be nice to read something like
+> >> For example:
+> >> 	vbus_fixed: regulator-vbus {
+> >> 		compatible =3D "regulator-fixed";
+> >> 		regulator-name =3D "usb-vbus";
+> >> 		regulator-always-on;
+> >> 		regulator-boot-on;
+> >> 		regulator-min-microvolt =3D <5000000>;
+> >> 		regulator-max-microvolt =3D <5000000>;
+> >> 	};
+> >=20
+> > As mentioned above, I don't think this will make sense in my case.
+> >  >> P.S.: If the rail has a different name, please use that different n=
+ame. Obviously
+> >> that requires you to have schematics at hand, and I don't know if you =
+do: if you
+> >> don't, then that regulator-vbus name is just fine.
+> >=20
+> > I do have the schematics.
+>
+> In that case, you should model the power tree with the fixed power lines,
+> check mt8195-cherry (and/or cherry-tomato) and radxa-nio-12l; even though
+> those are technically "doing nothing", this is device tree, so it should
+> provide a description of the hardware ... and the board does have fixed
+> power lines.
+> It has at least one: DC-IN (typec, barrel jack or whatever, the board nee=
+ds
+> power, doesn't it?!).
 
-&i2c(x) {
-	properties
-	blahblah
-	status
+Mh, maybe I don't get it. But within the hardware there is simply no
+Vbus. Thus I'd argue it doesn't make sense to have a vbus-supply
+property. Besides, the mediatek,mtu3.yaml binding lists it as
+deprecated anyway and it should rather be on the connector. There,
+it makes perfectly sense (at least if it's a USB connector).
 
-	/* (model, if available) LVDS bridge at 0x10 */
-}
-
-it's again not mandatory, but I like seeing clear messages implying "this should be
-there" as those implicitly mean "...yeah but it's not supported yet for reasons".
-
-It's down to preferences though, and this is not a *strong* opinion, nor a strong
-suggestion - your call here.
-
-> 
->>> +&mmc1 {
->>> +	pinctrl-names = "default", "state_uhs";
->>> +	pinctrl-0 = <&mmc1_default_pins>;
->>> +	pinctrl-1 = <&mmc1_uhs_pins>;
->>> +	cd-gpios = <&pio 129 GPIO_ACTIVE_LOW>;
->>> +	bus-width = <4>;
->>> +	max-frequency = <200000000>;
->>> +	cap-sd-highspeed;
->>> +	sd-uhs-sdr50;
->>> +	sd-uhs-sdr104;
->>> +	vmmc-supply = <&mt6360_ldo5>;
->>> +	vqmmc-supply = <&mt6360_ldo3>;
->>
->> Does mmc1 support eMMC and SDIO?
-> 
-> No eMMC, but I'd guess it will support SDIO as in you can just plug
-> an SDIO card in the SD slot, right? Oh, it's a micro SD socket. So
-> uhm, I'm not sure if we should restrict it, though. Someone might
-> come up with a microsd to sd card adapter. I have one right in front
-> of me ;)
-> 
-
-Honestly ... I even forgot the existance of those adapters!!!
-In that case, yes, since the controller should support SDIO on that slot, and since
-there effectively are ways to add a SDIO card on there, obviously no-sdio shall be
-omitted.
-
-I agree.
-
->> If not, no-mmc; no-sdio;
-> 
-> So no-mmc;
-
-Yes, agreed.
-
-> 
->>> +			drive-strength = <MTK_DRIVE_8mA>;
->>
->> s/MTK_DRIVE//g
->> s/mA//g
->>
->> drive-strength = <8>;
->>
->> Please, here and everywhere else, for all values - let's stop using those
->> MTK_DRIVE_(x)mA definitions, they're just defined as (x), where anyway
->> the drive-strength property is in milliamps by default.
->>
->> We don't need these definitions.
-> 
-> Sure, the mt8195-demo was the blueprint for this. So maybe you should
-> get rid of it there to prevent any copying ;) (btw the same goes for
-> the regulator-compatible property).
-> 
-
-Yeah, that's right. You can imagine that my backlog is rather huge... :-)
-
-> Speaking of pinctrl, I find the R0R1 bias-pull-down values really
-
-If it was only pull-down it would be one problem, but it's also pull-up so
-we can sum that up to *two* problems :-P
-
-> hard to grasp. The DT binding documentation didn't really help here.
-> What is R0 and R1, I presume some resistors which can be enabled.
-
-You got it right
-
-> Also are they in parallel or in series. I'd have assumed, the DT
-
-I'm not sure, and it depends on the SoC most probably... but does that really
-matter?
-
-I mean, on the practical side, imo, it doesn't, but I am also a curious person
-so I can understand why you're eager to know :-)
-
-> binding should have hid this by giving the user a choice for the
-> resistance instead. Also I had a quick search in the RM and
-> couldn't find anything, I probably looked at the wrong place ;)
-> 
-
-I'm not sure you looked at mediatek,mt8195-pinctrl.yaml, but anyway, as you
-can read in there, we're deprecating the MTK_PULL_SET_RSEL_xxx in favor of...
-
-.... the right thing to do :-)
-
-Look for "mediatek,rsel-resistance-in-si-unit": that'll allow you to specify
-the PU/PD values in ohms, and that's what should be used.
-
-Those RSEL definitions in the devicetree should disappear. Forever.
-
->>> +	uart1_pins: uart1-pins {
->>> +		pins_rx {
->>> +			pinmux = <PINMUX_GPIO103__FUNC_URXD1>;
->>> +			input-enable;
->>> +			bias-pull-up;
->>> +		};
->>> +
->>> +		pins_tx {
->>> +			pinmux = <PINMUX_GPIO102__FUNC_UTXD1>;
->>> +		};
->>> +
->>> +		pins_rts {
->>> +			pinmux = <PINMUX_GPIO100__FUNC_URTS1>;
->>> +			output-enable;
->>
->> Are you really sure that you need output-enable here?!
->> RTS is not an output buffer....
->>
->> I don't think you do. Please double check.
-> 
-> Ahh, good catch, it's a leftover from mt8183-kukui.dts. There is
-> probably wrong, too.
-> 
-
-Probably. I don't really know either.
-
->>> +		};
->>> +
->>> +		pins_cts {
->>> +			pinmux = <PINMUX_GPIO101__FUNC_UCTS1>;
->>> +			input-enable;
->>> +		};
->>> +	};
->>> +
-> 
-> 
->>> +/* USB3 front port */
->>> +&xhci0 {
->>
->> It's not gonna work like this. I recently fixed the USB nodes in MT8195 by adding
->> MTU3 where necessary...
-> 
-> Uhm, seems like I've missed that.
-> 
-
-No worries!
-
->> Check mt8195.dtsi - only one XHCI controller isn't placed behind MTU3, and that is
->> XHCI1 (11290000), while the others are MTU3.
->>
->> As far as I can see from this DT, it should now instead look like..
->>
->> &ssusb0 {
->> 	dr_mode = "host";
->> 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
->> 	status = "okay";
->> };
->>
->> &ssusb2 {
->> 	dr_mode = "host";
->> 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
->> 	status = "okay";
->> };
->>
->> &ssusb3 {
->> 	dr_mode = "host";
->> 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
->> 	status = "okay";
->> };
->>
->> &xhci0 {
->> 	vbus-supply = <&otg_vbus_regulator>;
->> 	status = "okay";
->> };
->>
->> &xhci1 {
->> 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
->>
->> vbus is always supplied by something, as otherwise USB won't work - whether this
->> is an always-on regulator or a passthrough from external supply this doesn't really
->> matter - you should model a regulator-fixed that provides the 5V VBUS line.
-> 
-> I don't think this is correct, though. Think of an on-board USB
-> hub. There only D+/D- are connected (and maybe the USB3.2 SerDes
-> lanes). Or have a look at the M.2 pinout. There is no Vbus.
-> 
-
-Yes but the MediaTek MTU3 and/or controllers do have it ;-)
-
-> Also it seems I need the "mediatek,u3p-dis-msk = <0x01>;". At least
-> the last time I've tested it. I'll test it again, with and without.
-> The SerDes Line of the corresponding USB3.2 port is used for PCIe in
-> this case.
-> 
-
-Have I missed it in my example? If I missed it, that was unintentional.
-
-Anyway, for the u3p-dis-msk, I'll spare you the time to check:
-  - If the controller lies behind MTU3, that property goes to &ssusb(x)
-  - If it is a standalone XHCI controller, it goes to &xhci(x)
-    - The property never goes to both, and always goes to the *outer* node
-      (this is why it goes to mtu3 if there's a mtu3 behind).
-
->> For example:
->> 	vbus_fixed: regulator-vbus {
->> 		compatible = "regulator-fixed";
->> 		regulator-name = "usb-vbus";
->> 		regulator-always-on;
->> 		regulator-boot-on;
->> 		regulator-min-microvolt = <5000000>;
->> 		regulator-max-microvolt = <5000000>;
->> 	};
-> 
-> As mentioned above, I don't think this will make sense in my case.
->  >> P.S.: If the rail has a different name, please use that different name. Obviously
->> that requires you to have schematics at hand, and I don't know if you do: if you
->> don't, then that regulator-vbus name is just fine.
-> 
-> I do have the schematics.
-
-In that case, you should model the power tree with the fixed power lines,
-check mt8195-cherry (and/or cherry-tomato) and radxa-nio-12l; even though
-those are technically "doing nothing", this is device tree, so it should
-provide a description of the hardware ... and the board does have fixed
-power lines.
-It has at least one: DC-IN (typec, barrel jack or whatever, the board needs
-power, doesn't it?!).
-
-Cheers,
-Angelo
+Thus in my case, the xhci for the front port has a vbus-supply
+property (but it should rather have a connector node, as I've just
+learned). But the internal port which connects to the USB hub
+shouldn't have one.
 
 
+  +-----+           +-----+                  +------+
+  |     |<--Dp/Dn-->|     |<------Dp/Dn----->| USB  |
+  | SoC |           |     |                  | Conn |
+  |     |           |     |   +-----+        |      |
+  +-----+           | USB |   | PWR |--Vbus->|      |
+                    | Hub |   | SW  |        +------+
+                    |     |   +-----+
+                    |     |     ^
+                    |     |     | PRTPWR
+                    |     |-----'
+                    +-----+
+
+"PWR SW" is a power switch, the input (+5V) isn't shown here. The
+power will be enabled by the USB Hub.
+
+-michael
+
+--99d1e3bae09ed9ca9f76a08dd12da8ba24b3a631d884834e984f62944198
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iIgEABYIADAWIQQCnWSOYTtih6UXaxvNyh2jtWxG+wUCZdNetBIcbXdhbGxlQGtl
+cm5lbC5vcmcACgkQzcodo7VsRvudvgEAyZCGdO77Pxmrm6K+phBbI5ki8C3j8JDu
+SRao0N5psZUBAJZpI2DCkGN2QIvMqVrxwVuZpy7mA4Hbal7hl7rlF3gH
+=UXiX
+-----END PGP SIGNATURE-----
+
+--99d1e3bae09ed9ca9f76a08dd12da8ba24b3a631d884834e984f62944198--
 
