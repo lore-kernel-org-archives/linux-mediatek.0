@@ -4,70 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9940CC48260
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Feb 2024 08:52:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57BF1C48260
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Feb 2024 09:06:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jptOHjKnPOtssWc3w753HRvs9k0jbK1ODAkSwXhNeBI=; b=Ek8biKc7IqBFQKXtJooGAeMMOz
-	w1+XluTFMvwIircD/ueMruMPdUsXKMgThSsVckUVTTor2bdTyyuKs7X/aumhPxQ9tZBNrZgtyok5U
-	a6e+FUlaRT29nRYPRzo1HcnvyvrxDGkNkVDZIsXdlWnsjshtZ70ewfYaS0W2j/uppUVLOh4oLGXVb
-	b1ywzu2gNVRrEc4Q2u8Xjr0p7MESWi6fjRhKhU6GP6+CRogF90dVlZAXDEK4Xp0sAI885/HxKuCcq
-	/7pkPdPuX0bUxXDFVFIVdRmYMB+mhvLKILoo+iARTU3v8+ysXhna/CHcHQZdYlMLYsVof7TErdqKF
-	J1Iebblw==;
+	bh=hfO0qqe3wWMOTMMAVQM2mr03BWRL4if8K5v6ah+tKAg=; b=nWHYQsOEWipVP5GcT5fbIpNkZe
+	uVGErWxKuA2T1LX7nObEAxfkwRsUy0s5n69jg2bRk5SEMWHy+1dFqNE357gVRfQT5oUuQWb6dmn1z
+	grAS8Tyb/PcHAP/c4u/DFsaM7v3W1d7Gj3Zi5CAjhKkIjOHALm5u+j1k6YO2rmSl0cEXNFM6xxO7A
+	4zoiWP57HN+Y4JEJ+L8NRMkyK2+/wZH33I33FuNPIe3LQL8wV7WYbGWjM6jxDCszLQpB+OaIOUZu+
+	ROTRRJX5mvwaYOoAGHkY7PynlO8novdtR2H7/pLDyh3HP/G1jthlA9pu1GWwCGKh4kN4Q3BUaCy7E
+	FOiMdTVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbzOO-00000009fyL-49w4;
-	Mon, 19 Feb 2024 08:52:53 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rbzbj-00000009jU9-3Iqg;
+	Mon, 19 Feb 2024 09:06:39 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbzOL-00000009fww-3mlx;
-	Mon, 19 Feb 2024 08:52:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708332766;
-	bh=4X90vGi+S3GMD8xcunMsqdnSAQ5bq0oM8thgSR31da0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=c1+wIJB9dLAkFFYkLTsVtGo2Or1NO0CJwUEHlS8GwLHyT9hnJGRE9px9PHnthYq2a
-	 XOuT1I79SybuczGIRRiJu2VegJUKqo/qpckhL+4Ze4fpu1PXiL2ypsMASzj/9A8bER
-	 p3K3LddVkPhsm0xRfNmPDd+eEH3qf1Wbzd8JTRYey0LxDZ7KU8oo8qzlQwNXdroJpA
-	 gjt2OFWM1ENlTG/ggT6h+l+aOQh3k1vUlLnz6BE6cQrcxF02ufERfuW7qjETqRAJFy
-	 /dDV501hps75ck2b29IKbXCk82qu1Ju7gla2X3XGfYbMibxVhoQuj4f7VaW0ENycD3
-	 sDWRU+FszXeWA==
-Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D764D37820BF;
-	Mon, 19 Feb 2024 08:52:43 +0000 (UTC)
-Message-ID: <e1f56317-b70d-0b81-75f0-fef50616e026@collabora.com>
-Date: Mon, 19 Feb 2024 14:22:41 +0530
+	id 1rbzbg-00000009jS1-2Edw
+	for linux-mediatek@lists.infradead.org;
+	Mon, 19 Feb 2024 09:06:37 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-33d146737e6so2392075f8f.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 19 Feb 2024 01:06:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1708333595; x=1708938395; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=hfO0qqe3wWMOTMMAVQM2mr03BWRL4if8K5v6ah+tKAg=;
+        b=noX754WDa9NWVq2y4fRp22fSQJSaf3wM5TrN0dkgmqMwD4v/SRm+sHsLyr7l1ER1Da
+         68+/OMT5S0e42+8T1pkIUyCy46yt+1NNOJtfH/88M8vl23UkbIs+iTht/m06VPXsL3Gs
+         rfobC9r3FsC7xd6YK8oru8iObaN8M7NuPMZGWCp6LGWDYxs+bYxrOexRuLiXriUhNe2w
+         TyFq/k65ee/oafROOMgqZOV+Qc7VrRUMrLIjStUbvQbTqytTrbQWxodM4Y8TV79fEJXU
+         q7/XNLv3wKPfugdUzi/S5JxRq20xiIwT2UbWENRT7qozzbp9GBo6GenOGXvK2ZmisTNp
+         5VCQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708333595; x=1708938395;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=hfO0qqe3wWMOTMMAVQM2mr03BWRL4if8K5v6ah+tKAg=;
+        b=KF+s+5jwZwmxg2oP6mtPBiUalmt+DmRI/TK238pxcdYktIcZkI4FbHtF3hxbHt1HCi
+         jycE/njzdlWTEpq85dlTU55tgv8jlrfibQlBb/aCIOxbw+0AEPpF2ZlDv9wddGt5b60W
+         NuMgCDKs1QBBG+di827bAWRVBTtgPZfWD52cDM42mri4B0/sKtcYqlfAYSBSzxcbU0zw
+         /l2DHbUvublXXXF8ora1AEHLytbgz1zxfE/D/UzvI9BkGw8iw/+DIcdH3w7Gp1wiOX3i
+         I9I1StaAKg7n2iv0oAaOyx9IYGdZvgU1HwYmaN1LY9ZS/GaCsRHRnQp6esLxlNmXbNix
+         N78w==
+X-Forwarded-Encrypted: i=1; AJvYcCUdhukk9fFc+wag41u6c4Wf4x57/hnExN6uVbM+s5IADRGsZaxuLdXGOdlBBZcA4TiFSIf4XvPmupM/cZmla3r2W2/Rqm5i/+X02Mkub63WBain
+X-Gm-Message-State: AOJu0Yxh9cisVY3p7bLrqv2QJ+4vyFZIgd/KTqyC5dbejtBxATkrvQFN
+	lWTtfa36k4YZdd0R/6Zj3PXZzWJoqWG4NGD15Ev0fec8eZ/qItXIjENTRrU4scM=
+X-Google-Smtp-Source: AGHT+IHAhI2sUb2Mudtx+wU42TiWUKdglMF3z2hN/Yb/7ARoaTlARAaRqy2hH5hUhrZlS2FwV0X2Ig==
+X-Received: by 2002:a5d:56c3:0:b0:33d:32fe:1978 with SMTP id m3-20020a5d56c3000000b0033d32fe1978mr4025388wrw.17.1708333595155;
+        Mon, 19 Feb 2024 01:06:35 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.222.116])
+        by smtp.gmail.com with ESMTPSA id z2-20020a5d4c82000000b0033d07edbaa6sm9725160wrs.110.2024.02.19.01.06.34
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 19 Feb 2024 01:06:34 -0800 (PST)
+Message-ID: <72fffc25-33f0-4394-b7c1-8dbc2d23a4a4@linaro.org>
+Date: Mon, 19 Feb 2024 10:06:33 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v3 9/9] drm/ci: uprev IGT and update testlist
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm64: mediatek: add Kontron
+ 3.5"-SBC-i1200
 Content-Language: en-US
-To: =?UTF-8?Q?Ma=c3=adra_Canal?= <mcanal@igalia.com>,
- dri-devel@lists.freedesktop.org
-Cc: linux-rockchip@lists.infradead.org, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, linux-kernel@vger.kernel.org,
- david.heidelberg@collabora.com, helen.koike@collabora.com,
- linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- daniel@ffwll.ch, linux-amlogic@lists.infradead.org, airlied@gmail.com
-References: <20240130150340.687871-1-vignesh.raman@collabora.com>
- <20240130150340.687871-10-vignesh.raman@collabora.com>
- <26f6426d-dcb6-4b14-b031-368b2248e9e7@igalia.com>
- <799653a3-e079-4e17-9d68-c0e384a216b0@igalia.com>
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <799653a3-e079-4e17-9d68-c0e384a216b0@igalia.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+To: Michael Walle <mwalle@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240219084456.1075445-1-mwalle@kernel.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20240219084456.1075445-1-mwalle@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240219_005250_257768_113E6B8E 
-X-CRM114-Status: GOOD (  16.15  )
+X-CRM114-CacheID: sfid-20240219_010636_610118_ECEB02EC 
+X-CRM114-Status: GOOD (  12.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,96 +144,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maíra,
+On 19/02/2024 09:44, Michael Walle wrote:
+> Add the compatible string for the Kontron 3.5"-SBC-i1200 single board
+> computer.
+> 
+> Signed-off-by: Michael Walle <mwalle@kernel.org>
+> ---
+> v2:
+>  - convert enum to const as there is only one specific board
+> 
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> index 09f9ffd3ff7b..add167d8b8da 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -357,6 +357,11 @@ properties:
+>                - radxa,nio-12l
+>            - const: mediatek,mt8395
+>            - const: mediatek,mt8195
+> +      - description: Kontron 3.5"-SBC-i1200
+> +        items:
+> +          - const: kontron,3-5-sbc-i1200
 
-On 10/02/24 23:50, Maíra Canal wrote:
-> On 2/10/24 15:17, Maíra Canal wrote:
->> On 1/30/24 12:03, Vignesh Raman wrote:
->>> Uprev IGT and add amd, v3d, vc4 and vgem specific
->>> tests to testlist. Have testlist.txt per driver
->>> and include a base testlist so that the driver
->>> specific tests will run only on those hardware.
->>>
->>> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
->>> ---
->>>
->>> v3:
->>>    - New patch in series to uprev IGT and update testlist.
->>>
->>> ---
->>>   drivers/gpu/drm/ci/gitlab-ci.yml              |   2 +-
->>>   drivers/gpu/drm/ci/igt_runner.sh              |  12 +-
->>>   drivers/gpu/drm/ci/testlist-amdgpu.txt        | 151 ++++++++++++++++++
->>>   drivers/gpu/drm/ci/testlist-msm.txt           |  50 ++++++
->>>   drivers/gpu/drm/ci/testlist-panfrost.txt      |  17 ++
->>>   drivers/gpu/drm/ci/testlist-v3d.txt           |  73 +++++++++
->>>   drivers/gpu/drm/ci/testlist-vc4.txt           |  49 ++++++
->>>   drivers/gpu/drm/ci/testlist.txt               | 100 ++++--------
->>>   .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |  24 ++-
->>>   .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |   9 +-
->>>   .../gpu/drm/ci/xfails/amdgpu-stoney-skips.txt |  10 +-
->>>   11 files changed, 427 insertions(+), 70 deletions(-)
->>>   create mode 100644 drivers/gpu/drm/ci/testlist-amdgpu.txt
->>>   create mode 100644 drivers/gpu/drm/ci/testlist-msm.txt
->>>   create mode 100644 drivers/gpu/drm/ci/testlist-panfrost.txt
->>>   create mode 100644 drivers/gpu/drm/ci/testlist-v3d.txt
->>>   create mode 100644 drivers/gpu/drm/ci/testlist-vc4.txt
->>>
->>> diff --git a/drivers/gpu/drm/ci/gitlab-ci.yml 
->>> b/drivers/gpu/drm/ci/gitlab-ci.yml
->>> index bc8cb3420476..e2b021616a8e 100644
->>> --- a/drivers/gpu/drm/ci/gitlab-ci.yml
->>> +++ b/drivers/gpu/drm/ci/gitlab-ci.yml
->>> @@ -5,7 +5,7 @@ variables:
->>>     UPSTREAM_REPO: git://anongit.freedesktop.org/drm/drm
->>>     TARGET_BRANCH: drm-next
->>> -  IGT_VERSION: d2af13d9f5be5ce23d996e4afd3e45990f5ab977
->>> +  IGT_VERSION: b0cc8160ebdc87ce08b7fd83bb3c99ff7a4d8610
->>>     DEQP_RUNNER_GIT_URL: 
->>> https://gitlab.freedesktop.org/anholt/deqp-runner.git
->>>     DEQP_RUNNER_GIT_TAG: v0.15.0
->>> diff --git a/drivers/gpu/drm/ci/igt_runner.sh 
->>> b/drivers/gpu/drm/ci/igt_runner.sh
->>> index f001e015d135..2fd09b9b7cf6 100755
->>> --- a/drivers/gpu/drm/ci/igt_runner.sh
->>> +++ b/drivers/gpu/drm/ci/igt_runner.sh
->>> @@ -64,10 +64,20 @@ if ! grep -q "core_getversion" 
->>> /install/testlist.txt; then
->>>   fi
->>>   set +e
->>> +if [ "$DRIVER_NAME" = "amdgpu" ]; then
->>> +    TEST_LIST="/install/testlist-amdgpu.txt"
->>> +elif [ "$DRIVER_NAME" = "msm" ]; then
->>> +    TEST_LIST="/install/testlist-msm.txt"
->>> +elif [ "$DRIVER_NAME" = "panfrost" ]; then
->>> +    TEST_LIST="/install/testlist-panfrost.txt"
->>> +else
->>> +    TEST_LIST="/install/testlist.txt"
->>> +fi
->>> +
->>
->> Isn't V3D and VC4 testlists missing?
+And then it should be part of earlier entry. Just take a look there in
+the file...
 
-Yes. We need to add ci jobs to test v3d/vc4. The initial idea was just 
-to split the testlist per driver and add vc4/v3d tests so that it can be 
-used in future. I will add the jobs as part of v4.
+Best regards,
+Krzysztof
 
->> It would be nice if you could provide us a link to a working pipeline.
-
-Will provide the working pipeline link in next series.
-
->> Also, if possible, I would like to be CCed on the next version of this
->> patch, as I have interest in the V3D/VC4 tests.
-
-Sure, will do.
-
-> Ah, one thing: it would be nice to add the testlists to the MAINTAINERS
-> file. This way, maintainers can keep track of any changes.
-
-Yes, will add the testlists to MAINTAINERS file.
-
-Thanks for the review and feedback.
-
-Regards,
-Vignesh
 
