@@ -4,67 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 300D1C48BC3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Feb 2024 13:59:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D54C7C48BF8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Feb 2024 15:58:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:
-	Subject:To:From:Cc:Message-Id:Date:Content-Type:Reply-To:MIME-Version:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:
+	From:Subject:Message-Id:Date:Mime-Version:Content-Type:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RqpOwN+kn9cr1LlyebcGphr1AkQwEnE+hqV2CZnCaZA=; b=YpBtG8gQnDi54zOEvOEl09y2Rq
-	6HCWxk4MBgqhMUAJzdsU+wBhfdh9pv2Aq9ZivXu0horc2sASISphntMCvxd6woKXm43uOwzHytJgD
-	J5zgEsRoVi2Mrm4QeHBJ1N3kPCDOwFlYy0EXFQv2OVByf59BuIjO7lPxvFs6fknDub/z6AXOlPXYF
-	0bMTKwjsB8/eijAzYBVi4WhN54TvuU5Bj5m0utmKnSx09/U8qPQh2zTOwQOVb7Y1cQWv5AfdxXgEb
-	GpO+wnSkkpsc3b9WDei9kVGTaPKgFkNIjL3kuD7suCZY26Z3eFt+0GReLKEjFVnISTytsI86YoKf+
-	tH0gLwmA==;
+	bh=tiqLc5KdCmtjYQt/eIFsjHHh0iB3V/zgzPhPHivKtAs=; b=kZDE2bNktHY5WDSGYu4Ogloy/D
+	uc2bcmooyyfsxB2UU4US9X6PNYkmwvb/cFA/LCrXOVfKe5fwafLHWo0JaYcnW9ZW0SHjs8emZ4k3l
+	+lN+QcCwNLnztfsW941yOG1NvlVM6KJmxtBfhFzsMIlNLASqUyryxHwEMBFerm/YIYM6lW+TxkXaW
+	vdnbL6MPkDFr1znT+9oGhwG82bZ1gilBaTmQSbdJxU6FvE33R18D7MreP/UtzE50c2mzPWUSnLG3+
+	jLJRBxnnno3zGDhmfQVQMeXilnwXm+3dxg+tbm1JXS4IKhwbR1wwRSVK2gk1nRBpziOu9q3ncKRlC
+	xHPWo83Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rc4B6-0000000AkDQ-2UxU;
-	Mon, 19 Feb 2024 13:59:28 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rc62L-0000000BEYd-3p5u;
+	Mon, 19 Feb 2024 15:58:33 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rc4B3-0000000AkCf-0yRg;
-	Mon, 19 Feb 2024 13:59:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9F84B60C26;
-	Mon, 19 Feb 2024 13:59:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE2B6C433F1;
-	Mon, 19 Feb 2024 13:59:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708351164;
-	bh=z+LUHVxMNuaZaB3RCn8D1OAdSMF663IBq3JaYmth/Bs=;
-	h=Date:Cc:From:To:Subject:References:In-Reply-To:From;
-	b=m8AyvZQ5Ohu1atbf96hEHaz9Pokq2daWbrJfLUgMLQRFIQOa8lbFCHhtlvYjRGY9z
-	 06b32rtvxL7d6gRwUBpsxeOEmqEAJ5d/KTCEySs+UllYH7K+aFq3CYUdpfjDTXWjb3
-	 tJzaua0YMTlQdyeTxdG//DX6ASbplDq34q+E0r2xXNiDFjkDkONTbDHFhTMqdN89Kn
-	 BFkpTMPq8gMzGRPMozKDC5B2oDqY3A0FgrYe5BUCSrUVbQGhIkFftwOd28g8YhpdF6
-	 iVoutFNaee+xsY+50Glo4NZWSMT1nffJXJMtFPeePcb9YDxwuTdvETsj7zdUPG6nef
-	 ow43dtJLGgh9g==
+	id 1rc62H-0000000BEVn-0Y3f;
+	Mon, 19 Feb 2024 15:58:30 +0000
+Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-563d56ee65cso3956372a12.2;
+        Mon, 19 Feb 2024 07:58:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1708358307; x=1708963107; darn=lists.infradead.org;
+        h=in-reply-to:references:to:from:subject:message-id:date:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=tiqLc5KdCmtjYQt/eIFsjHHh0iB3V/zgzPhPHivKtAs=;
+        b=c+PPF1D6kbyAFAvHpE9KoiVY6WzOTCadGla2QtCuQdBNl0zv5ubOZmIz9CphfZst5+
+         J2ue31TE9f9CxqBouriUiu3OR1u2ehqH76W85Yw7nw9AdoXPqgqc3KHtLtmWfHkNp3cJ
+         zTn5RTwrhCOB78rKWmKmcAni87k/0nOndR/TLGunuznjPPS5Th4+GXz8uBC5Qk+dnifN
+         tA6WcSwdGjKO2iIqAtCxmz0aFVAQ5BHOofeY6bRRhT0ELlqF+CoaEU2w78PxHhVmcLft
+         tUipe5l4+YWOD6RzaQjcuQ7tEPC3wGXagf2LmhZDlI2bO2NMS2Z8VshhlaO1gdf3JWxs
+         xiIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708358307; x=1708963107;
+        h=in-reply-to:references:to:from:subject:message-id:date:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tiqLc5KdCmtjYQt/eIFsjHHh0iB3V/zgzPhPHivKtAs=;
+        b=cd17skTmlqcKf+Cs/EhA3yvF+FqbYQYTyaXXdtx5uarE1MaT1Vl3pOMOw5cLJS77KS
+         UaOkr0kSn1lctyDRgqAUX3tJo2BXGuAdBx9boDHbdzJJ5lOv692HyQ67P7HufnbsuKhn
+         oMpZBy39Hu6dNA+1KyAcqT/seOyPKUeO4J7RUFCsObErkM7yWHheo5NA71jsnRZoKOO7
+         IteSsU1XEiRRtu2OVk1xHOfD84n9H9HS+0tuzamGXNk+BMLogXc6QgsNVTIdFpaP5o8N
+         t+NPw84koKy/LAQq9JA97vwpsc+967HHMofvSgNmDbSKq5UBSzf6S1sfcdh/9e3zKpuu
+         IPXg==
+X-Forwarded-Encrypted: i=1; AJvYcCWKTpQd8Af/Q7SQ/1CbQhwPRMVlSJfkMKZtVGiF2f1dhNwrDeKQJV87gQpXi9v7fsTLAto1X3pwHq76/wqMhFSHl7KFu2/deZ1X3cnKTIuNYY0/Gig6YNmtKt/mopicLoehzPD39MPorDsSXb1z+OCEKrosMywbuNt+aJxivyR0iobK+FMJ+3wh8R5Czb1BoD+PMRUz1bCKzXq4vBKp90ci6P2XM72UCDEhqxOAQLB69030C5iprGYn+fW2KKLxHpZ8vQZmzrSzf2LUoiOxWRENL7l025P7Itwwh65BWXc=
+X-Gm-Message-State: AOJu0Ywi/MvUpjGKUnFud/DCBDoj6JTH5OMgH2nx446H7Xc+mhzaGcZs
+	+ElO84Ql6aJYko9Kh0NgKYuBiv+A/I78lLqv2eVxdzTPS3oHZS4U
+X-Google-Smtp-Source: AGHT+IFtwqfaW9gJsxLy3j5F49CYy1xFjRlT0RRadI4Z0IOCUNhh1itGGGOPl5tKEJMCv67TBumOMw==
+X-Received: by 2002:a17:906:851:b0:a3d:80d7:d1e3 with SMTP id f17-20020a170906085100b00a3d80d7d1e3mr7428154ejd.77.1708358306585;
+        Mon, 19 Feb 2024 07:58:26 -0800 (PST)
+Received: from localhost (p200300e41f2d4600f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f2d:4600:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id rf23-20020a1709076a1700b00a3da5bf6aa5sm3076542ejc.211.2024.02.19.07.58.25
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 19 Feb 2024 07:58:26 -0800 (PST)
 Content-Type: multipart/signed;
- boundary=99d1e3bae09ed9ca9f76a08dd12da8ba24b3a631d884834e984f62944198;
+ boundary=f0caf17c841197981a0b66a2ac604de0b745306e0ba899959bfe0165d31f;
  micalg=pgp-sha256; protocol="application/pgp-signature"
-Date: Mon, 19 Feb 2024 14:59:16 +0100
-Message-Id: <CZ93XYV3MB10.YRCFWLLHIICY@kernel.org>
-Cc: <devicetree@vger.kernel.org>, "Sean Wang" <sean.wang@mediatek.com>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-From: "Michael Walle" <mwalle@kernel.org>
-To: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
- <krzysztof.kozlowski+dt@linaro.org>, "Conor Dooley" <conor+dt@kernel.org>,
- "Matthias Brugger" <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: add Kontron 3.5"-SBC-i1200
-X-Mailer: aerc 0.16.0
-References: <20240219084456.1075445-1-mwalle@kernel.org>
- <20240219084456.1075445-2-mwalle@kernel.org>
- <2ad6bda8-a457-421b-b35d-dc005fb00ae9@collabora.com>
- <CZ92W3VSYV1A.1693O76GY1XDP@kernel.org>
- <b50d49fd-2976-46fc-9f35-354fb39720ad@collabora.com>
-In-Reply-To: <b50d49fd-2976-46fc-9f35-354fb39720ad@collabora.com>
+Mime-Version: 1.0
+Date: Mon, 19 Feb 2024 16:58:25 +0100
+Message-Id: <CZ96H72GI4Z0.SZJBZXA1VXJZ@gmail.com>
+Subject: Re: [PATCH] phy: constify of_phandle_args in xlate
+From: "Thierry Reding" <thierry.reding@gmail.com>
+To: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>, "Vinod Koul"
+ <vkoul@kernel.org>, "Kishon Vijay Abraham I" <kishon@kernel.org>,
+ "Chun-Kuang Hu" <chunkuang.hu@kernel.org>, "Philipp Zabel"
+ <p.zabel@pengutronix.de>, "Jonathan Hunter" <jonathanh@nvidia.com>,
+ "Laurent Pinchart" <laurent.pinchart@ideasonboard.com>, "Linus Walleij"
+ <linus.walleij@linaro.org>, <linux-phy@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-sunxi@lists.linux.dev>,
+ <linux-kernel@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
+ <netdev@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
+ <linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-samsung-soc@vger.kernel.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>, <linux-tegra@vger.kernel.org>,
+ <linux-gpio@vger.kernel.org>
+X-Mailer: aerc 0.16.0-1-0-g560d6168f0ed-dirty
+References: <20240217093937.58234-1-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20240217093937.58234-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240219_055925_381448_5EA7F5C5 
-X-CRM114-Status: GOOD (  26.85  )
+X-CRM114-CacheID: sfid-20240219_075829_201019_870F0EC7 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,95 +103,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---99d1e3bae09ed9ca9f76a08dd12da8ba24b3a631d884834e984f62944198
+--f0caf17c841197981a0b66a2ac604de0b745306e0ba899959bfe0165d31f
 Mime-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset=UTF-8
 
-On Mon Feb 19, 2024 at 2:35 PM CET, AngeloGioacchino Del Regno wrote:
-> >> vbus is always supplied by something, as otherwise USB won't work - wh=
-ether this
-> >> is an always-on regulator or a passthrough from external supply this d=
-oesn't really
-> >> matter - you should model a regulator-fixed that provides the 5V VBUS =
-line.
-> >=20
-> > I don't think this is correct, though. Think of an on-board USB
-> > hub. There only D+/D- are connected (and maybe the USB3.2 SerDes
-> > lanes). Or have a look at the M.2 pinout. There is no Vbus.
-> >=20
+On Sat Feb 17, 2024 at 10:39 AM CET, Krzysztof Kozlowski wrote:
+> The xlate callbacks are supposed to translate of_phandle_args to proper
+> provider without modifying the of_phandle_args.  Make the argument
+> pointer to const for code safety and readability.
 >
-> Yes but the MediaTek MTU3 and/or controllers do have it ;-)
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>  drivers/phy/allwinner/phy-sun4i-usb.c              |  2 +-
+>  drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c     |  2 +-
+>  drivers/phy/broadcom/phy-bcm-sr-pcie.c             |  2 +-
+>  drivers/phy/broadcom/phy-bcm-sr-usb.c              |  2 +-
+>  drivers/phy/broadcom/phy-bcm63xx-usbh.c            |  2 +-
+>  drivers/phy/broadcom/phy-brcm-usb.c                |  2 +-
+>  drivers/phy/freescale/phy-fsl-imx8qm-lvds-phy.c    |  2 +-
+>  drivers/phy/freescale/phy-fsl-lynx-28g.c           |  2 +-
+>  drivers/phy/hisilicon/phy-histb-combphy.c          |  2 +-
+>  drivers/phy/intel/phy-intel-lgm-combo.c            |  2 +-
+>  drivers/phy/lantiq/phy-lantiq-vrx200-pcie.c        |  2 +-
+>  drivers/phy/marvell/phy-armada375-usb2.c           |  2 +-
+>  drivers/phy/marvell/phy-armada38x-comphy.c         |  2 +-
+>  drivers/phy/marvell/phy-berlin-sata.c              |  2 +-
+>  drivers/phy/marvell/phy-mvebu-a3700-comphy.c       |  2 +-
+>  drivers/phy/marvell/phy-mvebu-cp110-comphy.c       |  2 +-
+>  drivers/phy/mediatek/phy-mtk-mipi-csi-0-5.c        |  2 +-
+>  drivers/phy/mediatek/phy-mtk-tphy.c                |  2 +-
+>  drivers/phy/mediatek/phy-mtk-xsphy.c               |  2 +-
+>  drivers/phy/microchip/lan966x_serdes.c             |  2 +-
+>  drivers/phy/microchip/sparx5_serdes.c              |  2 +-
+>  drivers/phy/mscc/phy-ocelot-serdes.c               |  2 +-
+>  drivers/phy/phy-core.c                             |  8 ++++----
+>  drivers/phy/phy-xgene.c                            |  2 +-
+>  drivers/phy/qualcomm/phy-qcom-qmp-combo.c          |  2 +-
+>  drivers/phy/ralink/phy-mt7621-pci.c                |  2 +-
+>  drivers/phy/renesas/phy-rcar-gen2.c                |  2 +-
+>  drivers/phy/renesas/phy-rcar-gen3-usb2.c           |  2 +-
+>  drivers/phy/renesas/r8a779f0-ether-serdes.c        |  2 +-
+>  drivers/phy/rockchip/phy-rockchip-naneng-combphy.c |  2 +-
+>  drivers/phy/rockchip/phy-rockchip-pcie.c           |  2 +-
+>  drivers/phy/samsung/phy-exynos-mipi-video.c        |  2 +-
+>  drivers/phy/samsung/phy-exynos5-usbdrd.c           |  2 +-
+>  drivers/phy/samsung/phy-samsung-usb2.c             |  2 +-
+>  drivers/phy/socionext/phy-uniphier-usb2.c          |  2 +-
+>  drivers/phy/st/phy-miphy28lp.c                     |  2 +-
+>  drivers/phy/st/phy-spear1310-miphy.c               |  2 +-
+>  drivers/phy/st/phy-spear1340-miphy.c               |  2 +-
+>  drivers/phy/st/phy-stm32-usbphyc.c                 |  2 +-
+>  drivers/phy/tegra/xusb.c                           |  2 +-
+>  drivers/phy/ti/phy-am654-serdes.c                  |  2 +-
+>  drivers/phy/ti/phy-da8xx-usb.c                     |  2 +-
+>  drivers/phy/ti/phy-gmii-sel.c                      |  2 +-
+>  drivers/phy/xilinx/phy-zynqmp.c                    |  2 +-
+>  drivers/pinctrl/tegra/pinctrl-tegra-xusb.c         |  2 +-
+>  include/linux/phy/phy.h                            | 14 +++++++-------
+>  46 files changed, 55 insertions(+), 55 deletions(-)
 
-.. and ..
+Makes sense:
 
-> >> For example:
-> >> 	vbus_fixed: regulator-vbus {
-> >> 		compatible =3D "regulator-fixed";
-> >> 		regulator-name =3D "usb-vbus";
-> >> 		regulator-always-on;
-> >> 		regulator-boot-on;
-> >> 		regulator-min-microvolt =3D <5000000>;
-> >> 		regulator-max-microvolt =3D <5000000>;
-> >> 	};
-> >=20
-> > As mentioned above, I don't think this will make sense in my case.
-> >  >> P.S.: If the rail has a different name, please use that different n=
-ame. Obviously
-> >> that requires you to have schematics at hand, and I don't know if you =
-do: if you
-> >> don't, then that regulator-vbus name is just fine.
-> >=20
-> > I do have the schematics.
->
-> In that case, you should model the power tree with the fixed power lines,
-> check mt8195-cherry (and/or cherry-tomato) and radxa-nio-12l; even though
-> those are technically "doing nothing", this is device tree, so it should
-> provide a description of the hardware ... and the board does have fixed
-> power lines.
-> It has at least one: DC-IN (typec, barrel jack or whatever, the board nee=
-ds
-> power, doesn't it?!).
+Acked-by: Thierry Reding <treding@nvidia.com>
 
-Mh, maybe I don't get it. But within the hardware there is simply no
-Vbus. Thus I'd argue it doesn't make sense to have a vbus-supply
-property. Besides, the mediatek,mtu3.yaml binding lists it as
-deprecated anyway and it should rather be on the connector. There,
-it makes perfectly sense (at least if it's a USB connector).
-
-Thus in my case, the xhci for the front port has a vbus-supply
-property (but it should rather have a connector node, as I've just
-learned). But the internal port which connects to the USB hub
-shouldn't have one.
-
-
-  +-----+           +-----+                  +------+
-  |     |<--Dp/Dn-->|     |<------Dp/Dn----->| USB  |
-  | SoC |           |     |                  | Conn |
-  |     |           |     |   +-----+        |      |
-  +-----+           | USB |   | PWR |--Vbus->|      |
-                    | Hub |   | SW  |        +------+
-                    |     |   +-----+
-                    |     |     ^
-                    |     |     | PRTPWR
-                    |     |-----'
-                    +-----+
-
-"PWR SW" is a power switch, the input (+5V) isn't shown here. The
-power will be enabled by the USB Hub.
-
--michael
-
---99d1e3bae09ed9ca9f76a08dd12da8ba24b3a631d884834e984f62944198
+--f0caf17c841197981a0b66a2ac604de0b745306e0ba899959bfe0165d31f
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iIgEABYIADAWIQQCnWSOYTtih6UXaxvNyh2jtWxG+wUCZdNetBIcbXdhbGxlQGtl
-cm5lbC5vcmcACgkQzcodo7VsRvudvgEAyZCGdO77Pxmrm6K+phBbI5ki8C3j8JDu
-SRao0N5psZUBAJZpI2DCkGN2QIvMqVrxwVuZpy7mA4Hbal7hl7rlF3gH
-=UXiX
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmXTeqIACgkQ3SOs138+
+s6GdEBAAsZtqIRL7k6ZV5nu5N0juG6RO7Sm34o9+isHlbNUAhmDQeIXxdlWIF3qc
+ap2W/H4jLtQnrDaCtdFWa5oPx8Ud41AKoeOQRlZq6goHZemt2JbUyB5IzsMIL0KN
+FUGwvVEZdDnJbhe2+8YX0fN8WG4qpAYo7vrb1XsgP4RzGwgkwH64LbCOtoAoYtYl
+rOc7hn6eNJrIYlW1LaU37BApWV0KgdMiI1YSILAT5YJK24fYst7j//8UxyEQP4aO
+S+3uPr8/1K1JifAihpgqu7w5kyDcMW1ncoAamilKe2xDzz7wJ8wxtYcdypnwBSpd
+/+rhMybnEj2kgbDrSbY+LVlczSU6Wf/SEtZzB+DOCE4+CZrtFyMVsSgAeVXFT1n0
+L5vTh0182skHEAm97GXHwoQOmLND8wJJVZR+Sw1OApxEYI1Y8hTx33NrbA+5hiVq
+15m0Jq8NXvpd237p5obNfFNuDmK/BlMhlq3x+3/aWGqT+pRlavF1i0HP/wEV9YoC
+6zleWWkx9BAonksD76uhrk/LBnYnc3wb9O5B4KS6dp+tYE3ekIWauHxzhg4tpOcg
+FqcY6ObCs+Jjtplo4vtrTBR6A4jdvunJQcp4WqSO/5RkZd/ySVdSbpvCdK1yy/JM
+j7SSnUWV03IbkbGoBduin/a8YT84GAn3seVzxO0ik5dpZHGbAPM=
+=Z186
 -----END PGP SIGNATURE-----
 
---99d1e3bae09ed9ca9f76a08dd12da8ba24b3a631d884834e984f62944198--
+--f0caf17c841197981a0b66a2ac604de0b745306e0ba899959bfe0165d31f--
 
