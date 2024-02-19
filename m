@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C50A3C48BF8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Feb 2024 13:12:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B70BC48BF8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Feb 2024 13:35:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+eSPpfGlwXyWalRDsSpTEwa9MX6+7C6fVWH8uuDIaes=; b=gi9pXHPhEskaEvg0UJdsq4yDGs
-	XnkxpO8h5Np0cT/6IuJxnXSpzGyOb/z+KWyq811jncI+8qEaPf2Fwkr2VQqdyPb7E7n6M50X0T+kS
-	7O8QYlQBfAveQhBiWlUjGcQSrnOLy1dY5HxQdNTA7H6ydcgJXBLlAwcQPYvYIzqgoEYMB5Yf90KMC
-	arbAUp5QByqAjQzQPLHtJSJBQKOzbR50uvP7f4JsvLk5qhhspdMFPIQkteYS3tDVskhE2bqmedO7q
-	Eco5Gf6Qf0TK7FDRCHbo53EbNwtCG3Y+DUh4i6IJqMfSJlcfGn3gLUCSqZguJyZA41oSQmr+DBpHO
-	xvnS+Vag==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=88/17/NSh+PiHel3GvVFrXocKTB1FBJIOIYEc6ocNCQ=; b=DWZRtejZWQ+Wq82sZd44OOe5Po
+	TEiopw6Jzj1k/Pu1BR5N9n67jQSfwAL3l3gnyluQjf6G/Q4v6it0MQdSg75MaQXp+1I/U+lWyeYuZ
+	xCSenK6EvY4n/gfHUs4EB/TWXIowIEIPtAmIru5ECgbjD2QTTL9krhQmNbZUK1gbXyJ7Fz9qyoMmm
+	XuoTWLVTHk7vSOhqwCv1Irj1sjFbGy84zt9ZGoDXuQ0KAobuPtvQIXTDG3IsgS2VIKadQbpPuQa8o
+	nOVxwlXSIKG1H1n9/0mlkhGixXoAKbbhn3gDpWyf6GLbL09JPXSTOTV+cGzsohbDlqASBPFq9xF6C
+	h2tsE/XA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rc3Rp-0000000AZvf-1wik;
-	Mon, 19 Feb 2024 13:12:41 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rc3nz-0000000AePU-13WQ;
+	Mon, 19 Feb 2024 13:35:35 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rc3Rk-0000000AZtu-3J8c;
-	Mon, 19 Feb 2024 13:12:38 +0000
+	id 1rc3nv-0000000AeMo-3wpQ;
+	Mon, 19 Feb 2024 13:35:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708348355;
-	bh=Z3j3MYfDfaYZ+6bnOqQf9P1k31aixEwrgoJ74rNBZes=;
-	h=From:To:Cc:Subject:Date:From;
-	b=VLYkKuJRt8iLG8IMjha1zTnIqJt7nLGSxDnwaXE6xJZ2WhBY8jsdO33O7xmtszgyJ
-	 jApIk/q4PsUD3J54B9E2OSCI7BWNaKi6AsDsjSNWBB8Ao3HjyvHEn4xetJ7+yVQWjH
-	 RVUzQ4jKkbxThhcwE/XK50bEmyIeiyW4tRenU8BheDwLYA0aLUST92/QBKtKDF9hFi
-	 G4p9r7MAyigMTEc16mCNgPwze+jx2Lova0iBGvykJ2wOs00vi4IRoVgE1G0sSRb083
-	 dLhkbEN589dnl00BvQbPCKmx5MQftzpdsBaJuEgmZQhdY1f+dJFKHWp0B5axO6aZvO
-	 Zqv40AMDyeQuA==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1708349728;
+	bh=H+UegT4BE+l/Z0xlxbb/7nPi5qpmwmDLNcLFfpCwUQg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=3mGxzeMtAtJnOMk/f0rnl5QqoOUEOpXpEQaxNMOK7/4eAuCPchAACkvTY7gIPgb0s
+	 +hp6Ku/nzt5szkdIZBqexS32JKrzx5my+G7WCwZ4d3x6s8stLbEuVcpqO7+l1u4v+l
+	 LsjH5Ka+K+sBUGvQCA9deontJ75oV/y+zQK1HsuH9IHZXSEG0gfqOP5DhJvUolMAu6
+	 8KYZbPb6QTG6VXcvGxUA7CRh7ZBIacEwZqmEKaLitkPxv8C3v9JQiNKyPECnoI9VgO
+	 wFIJFHNKKIEZsjWvGHVQdTIX9qYSfaI2Wj0ZMhMagAfNJMi2YNMSs+5fBEUDz/qSjd
+	 FPrJbhiGlWxzA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id CD3F837820C1;
-	Mon, 19 Feb 2024 13:12:34 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: arm-soc <arm@kernel.org>,
-	soc <soc@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com
-Subject: [GIT,PULL,1/2] MediaTek ARM64 Device Tree updates for v6.9
-Date: Mon, 19 Feb 2024 14:12:25 +0100
-Message-ID: <20240219131230.157792-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.43.0
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 86C053780C22;
+	Mon, 19 Feb 2024 13:35:27 +0000 (UTC)
+Message-ID: <b50d49fd-2976-46fc-9f35-354fb39720ad@collabora.com>
+Date: Mon, 19 Feb 2024 14:35:26 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: add Kontron 3.5"-SBC-i1200
+Content-Language: en-US
+To: Michael Walle <mwalle@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240219084456.1075445-1-mwalle@kernel.org>
+ <20240219084456.1075445-2-mwalle@kernel.org>
+ <2ad6bda8-a457-421b-b35d-dc005fb00ae9@collabora.com>
+ <CZ92W3VSYV1A.1693O76GY1XDP@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CZ92W3VSYV1A.1693O76GY1XDP@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240219_051237_144057_B6E99E12 
-X-CRM114-Status: GOOD (  12.81  )
+X-CRM114-CacheID: sfid-20240219_053532_162736_779AD856 
+X-CRM114-Status: GOOD (  54.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,186 +80,312 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 6613476e225e090cc9aad49be7fa504e290dd33d:
+Il 19/02/24 14:09, Michael Walle ha scritto:
+> Hi,
+> 
+> thanks for the extensive review!
+> 
+> On Mon Feb 19, 2024 at 11:00 AM CET, AngeloGioacchino Del Regno wrote:
+> 
+>>> +&eth {
+>>> +	phy-mode ="rgmii-id";
+>>> +	phy-handle = <&ethernet_phy0>;
+>>> +	snps,reset-gpio = <&pio 93 GPIO_ACTIVE_HIGH>;
+>>> +	snps,reset-delays-us = <0 10000 80000>;
+>>
+>> snps,reset-delays-us and snps,reset-gpio are deprecated.
+>>
+>>> +	pinctrl-names = "default", "sleep";
+>>> +	pinctrl-0 = <&eth_default_pins>;
+>>> +	pinctrl-1 = <&eth_sleep_pins>;
+>>> +	status = "okay";
+>>> +
+>>> +	mdio {
+>>> +		ethernet_phy0: ethernet-phy@1 {
+>>
+>> compatible = "is there any applicable compatible?"
+>> P.S.: if you've got the usual rtl8211f, should be "ethernet-phy-id001c.c916"
+> 
+> I'd rather not have a compatible here. First, it's auto discoverable
+> and IIRC it's frowned upon adding any compatible if you ask the PHY
+> maintainers. And second, if we change the PHY (maybe due to a second
+> chip shortage or whatever), there is a chance you don't have to
+> update this in the DT.
+> 
 
-  Linux 6.8-rc1 (2024-01-21 14:11:32 -0800)
+Okay then, I'm fine with leaving the compatible out.
 
-are available in the Git repository at:
+>> reg = <0x1>;
+>> interrupts-extended = <&pio 94 IRQ_TYPE_LEVEL_LOW>;
+>> reset-assert-us = <10000>;
+>> reset-deassert-us = <80000>;
+>> reset-gpios = <&pio 93 GPIO_ACTIVE_HIGH>;
+>>
+>>
+>>> +			reg = <0x1>;
+>>> +			interrupts-extended = <&pio 94 IRQ_TYPE_LEVEL_LOW>;
+>>> +		};
+>>> +	};
+>>> +};
+>>> +
+>>> +&gpu {
+>>> +	status = "okay";
+>>> +	mali-supply = <&mt6315_7_vbuck1>;
+>>> +};
+>>> +
+>>> +&i2c2 {
+>>> +	pinctrl-names = "default";
+>>> +	pinctrl-0 = <&i2c2_pins>;
+>>> +	clock-frequency = <400000>;
+>>> +	status = "okay";
+>>
+>> Are i2c2,3,4 exposed as pins somewhere? If they are, can you please put a
+>> comment saying so?
+> 
+> This is only a basic device tree. On one i2c controller, there is
+> the LVDS bridge for example. My plan is to get the support for this
+> bridge upstream first and then adding the appropriate device nodes
+> here.
+> 
+> That being said, some are exposed to connectors. I'll add a comment
+> then.
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git tags/mtk-dts64-for-v6.9
+In that case, could be nice to read something like
 
-for you to fetch changes up to ef569d5db50e7edd709e482157769a5b3c367e22:
+&i2c(x) {
+	properties
+	blahblah
+	status
 
-  arm64: dts: mt8195-cherry-tomato: change watchdog reset boot flow (2024-02-19 13:35:24 +0100)
+	/* (model, if available) LVDS bridge at 0x10 */
+}
 
-----------------------------------------------------------------
-MediaTek ARM64 DeviceTree updates for v6.9
+it's again not mandatory, but I like seeing clear messages implying "this should be
+there" as those implicitly mean "...yeah but it's not supported yet for reasons".
 
-This adds support for the following new machines:
- - MT7981B: Xiaomi AX3000T
- - MT7986A: Acelink EW-7886CAX
- - MT7988A: BananaPi BPI-R4
- - MT8186 Chromebooks: Tentacruel, Tentacool, Steelix, Rusty, Magneton
- - MT8395/MT8195: Radxa NIO 12L
+It's down to preferences though, and this is not a *strong* opinion, nor a strong
+suggestion - your call here.
 
-Also adds more support for the MediaTek MT8186 SoC's Video and JPEG
-encoders and for MT7988 clocks, enables wakeup support for the CrOS
-EC on SPI in all MediaTek Chromebooks, performs some cleanups and
-includes some spare fixes.
+> 
+>>> +&mmc1 {
+>>> +	pinctrl-names = "default", "state_uhs";
+>>> +	pinctrl-0 = <&mmc1_default_pins>;
+>>> +	pinctrl-1 = <&mmc1_uhs_pins>;
+>>> +	cd-gpios = <&pio 129 GPIO_ACTIVE_LOW>;
+>>> +	bus-width = <4>;
+>>> +	max-frequency = <200000000>;
+>>> +	cap-sd-highspeed;
+>>> +	sd-uhs-sdr50;
+>>> +	sd-uhs-sdr104;
+>>> +	vmmc-supply = <&mt6360_ldo5>;
+>>> +	vqmmc-supply = <&mt6360_ldo3>;
+>>
+>> Does mmc1 support eMMC and SDIO?
+> 
+> No eMMC, but I'd guess it will support SDIO as in you can just plug
+> an SDIO card in the SD slot, right? Oh, it's a micro SD socket. So
+> uhm, I'm not sure if we should restrict it, though. Someone might
+> come up with a microsd to sd card adapter. I have one right in front
+> of me ;)
+> 
 
-----------------------------------------------------------------
-Alexander Stein (1):
-      arm64: dts: mediatek: Replace deprecated extcon-usb-gpio id-gpio/vbus-gpio properties
+Honestly ... I even forgot the existance of those adapters!!!
+In that case, yes, since the controller should support SDIO on that slot, and since
+there effectively are ways to add a SDIO card on there, obviously no-sdio shall be
+omitted.
 
-Allen-KH Cheng (1):
-      arm64: dts: mediatek: mt8186: Add jpgenc node
+I agree.
 
-AngeloGioacchino Del Regno (3):
-      arm64: dts: mediatek: mt8195: Add MTU3 nodes and correctly describe USB
-      dt-bindings: arm64: mediatek: Add MT8395 Radxa NIO 12L board compatible
-      arm64: dts: mediatek: Introduce the MT8395 Radxa NIO 12L board
+>> If not, no-mmc; no-sdio;
+> 
+> So no-mmc;
 
-Arınç ÜNAL (2):
-      arm64: dts: mt7622: add port@5 as CPU port
-      arm64: dts: mt7986: add port@5 as CPU port
+Yes, agreed.
 
-Chen-Yu Tsai (9):
-      dt-bindings: arm: mediatek: Sort entries by SoC then board compatibles
-      dt-bindings: arm: mediatek: Add MT8186 Tentacruel / Tentacool Chromebooks
-      dt-bindings: arm: mediatek: Add MT8186 Steelix Chromebook
-      dt-bindings: arm: mediatek: Add MT8186 Rusty Chromebook
-      dt-bindings: arm: mediatek: Add MT8186 Magneton Chromebooks
-      arm64: dts: mediatek: Add MT8186 Krabby platform based Tentacruel / Tentacool
-      arm64: dts: mediatek: Introduce MT8186 Steelix
-      arm64: dts: mediatek: Add MT8186 Steelix platform based Rusty
-      arm64: dts: mediatek: Add MT8186 Magneton Chromebooks
+> 
+>>> +			drive-strength = <MTK_DRIVE_8mA>;
+>>
+>> s/MTK_DRIVE//g
+>> s/mA//g
+>>
+>> drive-strength = <8>;
+>>
+>> Please, here and everywhere else, for all values - let's stop using those
+>> MTK_DRIVE_(x)mA definitions, they're just defined as (x), where anyway
+>> the drive-strength property is in milliamps by default.
+>>
+>> We don't need these definitions.
+> 
+> Sure, the mt8195-demo was the blueprint for this. So maybe you should
+> get rid of it there to prevent any copying ;) (btw the same goes for
+> the regulator-compatible property).
+> 
 
-Eugen Hristev (5):
-      dt-bindings: media: mtk-vcodec-encoder: fix non-vp8 clock name
-      arm64: dts: mediatek: mt8192: fix vencoder clock name
-      dt-bindings: media: mtk-vcodec-encoder: add compatible for mt8186
-      arm64: dts: mediatek: mt8186: fix VENC power domain clocks
-      dt-bindings: media: mediatek-jpeg-encoder: change max iommus count
+Yeah, that's right. You can imagine that my backlog is rather huge... :-)
 
-Hsin-Te Yuan (1):
-      arm64: dts: mt8195-cherry-tomato: change watchdog reset boot flow
+> Speaking of pinctrl, I find the R0R1 bias-pull-down values really
 
-Krzysztof Kozlowski (1):
-      arm64: dts: mediatek: replace underscores in node names
+If it was only pull-down it would be one problem, but it's also pull-up so
+we can sum that up to *two* problems :-P
 
-Kyrie Wu (1):
-      arm64: dts: mediatek: mt8186: Add venc node
+> hard to grasp. The DT binding documentation didn't really help here.
+> What is R0 and R1, I presume some resistors which can be enabled.
 
-Mark Hasemeyer (4):
-      arm64: dts: mediatek: mt8173: Enable cros-ec-spi as wake source
-      arm64: dts: mediatek: mt8183: Enable cros-ec-spi as wake source
-      arm64: dts: mediatek: mt8192: Enable cros-ec-spi as wake source
-      arm64: dts: mediatek: mt8195: Enable cros-ec-spi as wake source
+You got it right
 
-Nícolas F. R. A. Prado (4):
-      arm64: dts: mt8183: Move CrosEC base detection node to kukui-based DTs
-      arm64: dts: mediatek: mt8192-asurada: Remove CrosEC base detection node
-      arm64: dts: mediatek: mt8186: Add missing clocks to ssusb power domains
-      arm64: dts: mediatek: mt8186: Add missing xhci clock to usb controllers
+> Also are they in parallel or in series. I'd have assumed, the DT
 
-Rafał Miłecki (17):
-      arm64: dts: mediatek: mt7986: fix reference to PWM in fan node
-      arm64: dts: mediatek: mt7986: drop crypto's unneeded/invalid clock name
-      arm64: dts: mediatek: mt7986: fix SPI bus width properties
-      arm64: dts: mediatek: mt7986: fix SPI nodename
-      arm64: dts: mediatek: mt7986: drop "#clock-cells" from PWM
-      arm64: dts: mediatek: mt7986: add "#reset-cells" to infracfg
-      dt-bindings: arm64: mediatek: Add MT7981B and Xiaomi AX3000T
-      arm64: dts: mediatek: Add initial MT7981B and Xiaomi AX3000T
-      dt-bindings: arm64: mediatek: Add MT7988A and BPI-R4
-      arm64: dts: mediatek: Add initial MT7988A and BPI-R4
-      arm64: dts: mediatek: mt7988: add clock controllers
-      dt-bindings: vendor-prefixes: add acelink
-      dt-bindings: arm64: dts: mediatek: Add Acelink EW-7886CAX access point
-      arm64: dts: mediatek: Add Acelink EW-7886CAX
-      arm64: dts: mediatek: mt7986: reorder properties
-      arm64: dts: mediatek: mt7986: reorder nodes
-      arm64: dts: mediatek: mt7622: add missing "device_type" to memory nodes
+I'm not sure, and it depends on the SoC most probably... but does that really
+matter?
 
-William-tw Lin (1):
-      arm64: dts: mediatek: Add socinfo efuses to MT8173/83/96/92/95 SoCs
+I mean, on the practical side, imo, it doesn't, but I am also a curious person
+so I can understand why you're eager to know :-)
 
-Yunfei Dong (1):
-      arm64: dts: mediatek: mt8186: Add video decoder device nodes
+> binding should have hid this by giving the user a choice for the
+> resistance instead. Also I had a quick search in the RM and
+> couldn't find anything, I probably looked at the wrong place ;)
+> 
 
- Documentation/devicetree/bindings/arm/mediatek.yaml                  |  198 ++++--
- Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml |   31 +-
- Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml   |    3 +-
- Documentation/devicetree/bindings/vendor-prefixes.yaml               |    2 +
- arch/arm64/boot/dts/mediatek/Makefile                                |   14 +
- arch/arm64/boot/dts/mediatek/mt2712-evb.dts                          |    4 +-
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi                            |    2 +-
- arch/arm64/boot/dts/mediatek/mt6797.dtsi                             |    8 +-
- arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts             |   13 +
- arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts                         |   25 +
- arch/arm64/boot/dts/mediatek/mt7981b-xiaomi-ax3000t.dts              |   15 +
- arch/arm64/boot/dts/mediatek/mt7981b.dtsi                            |  105 ++++
- arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts          |  173 ++++++
- arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso       |    2 +-
- arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts             |    2 +-
- arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts                         |   31 +-
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi                            |  180 +++---
- arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts                         |   31 +-
- arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts             |   11 +
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi                            |  136 ++++
- arch/arm64/boot/dts/mediatek/mt8173-elm-hana-rev7.dts                |    2 +-
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi                         |    3 +-
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts                          |    2 +-
- arch/arm64/boot/dts/mediatek/mt8173.dtsi                             |   19 +-
- arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi                |    4 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi                |    4 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi                 |    4 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi                       |    5 +-
- arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts                      |    2 +-
- arch/arm64/boot/dts/mediatek/mt8183.dtsi                             |   11 +-
- arch/arm64/boot/dts/mediatek/mt8186-corsola-krabby.dtsi              |  129 ++++
- arch/arm64/boot/dts/mediatek/mt8186-corsola-magneton-sku393216.dts   |   39 ++
- arch/arm64/boot/dts/mediatek/mt8186-corsola-magneton-sku393217.dts   |   39 ++
- arch/arm64/boot/dts/mediatek/mt8186-corsola-magneton-sku393218.dts   |   26 +
- arch/arm64/boot/dts/mediatek/mt8186-corsola-rusty-sku196608.dts      |   26 +
- arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131072.dts    |   18 +
- arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131073.dts    |   18 +
- arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi             |  199 ++++++
- arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327681.dts  |   57 ++
- arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327683.dts  |   24 +
- arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262144.dts |   44 ++
- arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262148.dts |   26 +
- arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi                     | 1681 ++++++++++++++++++++++++++++++++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8186.dtsi                             |   93 ++-
- arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi                     |    5 +-
- arch/arm64/boot/dts/mediatek/mt8192.dtsi                             |   10 +-
- arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts             |    4 +
- arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts             |    4 +
- arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts             |    4 +
- arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi                      |   27 +-
- arch/arm64/boot/dts/mediatek/mt8195-demo.dts                         |   18 +-
- arch/arm64/boot/dts/mediatek/mt8195-evb.dts                          |   12 +
- arch/arm64/boot/dts/mediatek/mt8195.dtsi                             |  128 ++--
- arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts               |   17 +-
- arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts                |  825 +++++++++++++++++++++++++
- 55 files changed, 4247 insertions(+), 268 deletions(-)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7981b-xiaomi-ax3000t.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7981b.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-acelink-ew-7886cax.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-krabby.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-magneton-sku393216.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-magneton-sku393217.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-magneton-sku393218.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-rusty-sku196608.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131072.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131073.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327681.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327683.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262144.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262148.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+I'm not sure you looked at mediatek,mt8195-pinctrl.yaml, but anyway, as you
+can read in there, we're deprecating the MTK_PULL_SET_RSEL_xxx in favor of...
+
+.... the right thing to do :-)
+
+Look for "mediatek,rsel-resistance-in-si-unit": that'll allow you to specify
+the PU/PD values in ohms, and that's what should be used.
+
+Those RSEL definitions in the devicetree should disappear. Forever.
+
+>>> +	uart1_pins: uart1-pins {
+>>> +		pins_rx {
+>>> +			pinmux = <PINMUX_GPIO103__FUNC_URXD1>;
+>>> +			input-enable;
+>>> +			bias-pull-up;
+>>> +		};
+>>> +
+>>> +		pins_tx {
+>>> +			pinmux = <PINMUX_GPIO102__FUNC_UTXD1>;
+>>> +		};
+>>> +
+>>> +		pins_rts {
+>>> +			pinmux = <PINMUX_GPIO100__FUNC_URTS1>;
+>>> +			output-enable;
+>>
+>> Are you really sure that you need output-enable here?!
+>> RTS is not an output buffer....
+>>
+>> I don't think you do. Please double check.
+> 
+> Ahh, good catch, it's a leftover from mt8183-kukui.dts. There is
+> probably wrong, too.
+> 
+
+Probably. I don't really know either.
+
+>>> +		};
+>>> +
+>>> +		pins_cts {
+>>> +			pinmux = <PINMUX_GPIO101__FUNC_UCTS1>;
+>>> +			input-enable;
+>>> +		};
+>>> +	};
+>>> +
+> 
+> 
+>>> +/* USB3 front port */
+>>> +&xhci0 {
+>>
+>> It's not gonna work like this. I recently fixed the USB nodes in MT8195 by adding
+>> MTU3 where necessary...
+> 
+> Uhm, seems like I've missed that.
+> 
+
+No worries!
+
+>> Check mt8195.dtsi - only one XHCI controller isn't placed behind MTU3, and that is
+>> XHCI1 (11290000), while the others are MTU3.
+>>
+>> As far as I can see from this DT, it should now instead look like..
+>>
+>> &ssusb0 {
+>> 	dr_mode = "host";
+>> 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
+>> 	status = "okay";
+>> };
+>>
+>> &ssusb2 {
+>> 	dr_mode = "host";
+>> 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
+>> 	status = "okay";
+>> };
+>>
+>> &ssusb3 {
+>> 	dr_mode = "host";
+>> 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
+>> 	status = "okay";
+>> };
+>>
+>> &xhci0 {
+>> 	vbus-supply = <&otg_vbus_regulator>;
+>> 	status = "okay";
+>> };
+>>
+>> &xhci1 {
+>> 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
+>>
+>> vbus is always supplied by something, as otherwise USB won't work - whether this
+>> is an always-on regulator or a passthrough from external supply this doesn't really
+>> matter - you should model a regulator-fixed that provides the 5V VBUS line.
+> 
+> I don't think this is correct, though. Think of an on-board USB
+> hub. There only D+/D- are connected (and maybe the USB3.2 SerDes
+> lanes). Or have a look at the M.2 pinout. There is no Vbus.
+> 
+
+Yes but the MediaTek MTU3 and/or controllers do have it ;-)
+
+> Also it seems I need the "mediatek,u3p-dis-msk = <0x01>;". At least
+> the last time I've tested it. I'll test it again, with and without.
+> The SerDes Line of the corresponding USB3.2 port is used for PCIe in
+> this case.
+> 
+
+Have I missed it in my example? If I missed it, that was unintentional.
+
+Anyway, for the u3p-dis-msk, I'll spare you the time to check:
+  - If the controller lies behind MTU3, that property goes to &ssusb(x)
+  - If it is a standalone XHCI controller, it goes to &xhci(x)
+    - The property never goes to both, and always goes to the *outer* node
+      (this is why it goes to mtu3 if there's a mtu3 behind).
+
+>> For example:
+>> 	vbus_fixed: regulator-vbus {
+>> 		compatible = "regulator-fixed";
+>> 		regulator-name = "usb-vbus";
+>> 		regulator-always-on;
+>> 		regulator-boot-on;
+>> 		regulator-min-microvolt = <5000000>;
+>> 		regulator-max-microvolt = <5000000>;
+>> 	};
+> 
+> As mentioned above, I don't think this will make sense in my case.
+>  >> P.S.: If the rail has a different name, please use that different name. Obviously
+>> that requires you to have schematics at hand, and I don't know if you do: if you
+>> don't, then that regulator-vbus name is just fine.
+> 
+> I do have the schematics.
+
+In that case, you should model the power tree with the fixed power lines,
+check mt8195-cherry (and/or cherry-tomato) and radxa-nio-12l; even though
+those are technically "doing nothing", this is device tree, so it should
+provide a description of the hardware ... and the board does have fixed
+power lines.
+It has at least one: DC-IN (typec, barrel jack or whatever, the board needs
+power, doesn't it?!).
+
+Cheers,
+Angelo
+
+
 
