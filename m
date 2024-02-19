@@ -4,69 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6824CC48BC3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Feb 2024 10:23:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C671C54764
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Feb 2024 10:51:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AfmTt1YgdvemtHKOt3Et9VDk9GiGKMBFMpKBf9Oc8HE=; b=DFWW9rra4V90jLIz/OK3ZlAPjR
-	M64f+qHh2jKFEZc7jm6k3o4HFXugsQ5Hhjp/gsDY+8/8vNqE291k0M1rYZ2+Cf83DercxdBf6cSfE
-	cyDcCypI75jm8s9GDiSGvrcRl0BxDZhBc11+9q9fQJ5/eSFyYOAq88Rz2fV5odDar5mzRnbQLbjs8
-	G1QsSa3UsdEm7urbaNHMxyjs5yVPkvU1OVeFlfYwsNoLYrsJxykOhCIgRK2fBXfcAneRA2ulq5ejM
-	sJtRcB+q8shI57178ggB9uUOLRzviTy2qCfPL6jabpE0MqZcHGhP+M0xf0EqUFbNLtXd5wsyTP3av
-	sUd5R1TQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/L4TPn2Q4JShJP0yVub7epn9w+mmtxiJMbsQbqv5v8k=; b=N2HNs8W3dIe/EnxrUOw+M8x+Ew
+	7ctyxzrY/zViIIQcSKdPqkB8AGRxocg9YrzG9V5YB5khhuacku8+hQVP4BYeoaTEyDGcrlIOaUuzf
+	BrBRAU5Ul6pN4l9uOY4Ak1agoZVHonSGKHjqOECfvtjR01N4g9bFxJXn6W4Mh8t4Xh12EToM7Ki0y
+	KsDhm9+9EcXTuZz9RjK9BkpmXfpf+uE6aAHM/WRrYcV6DbOzBx1MV+gnygok5dQHDo2Ob83ISoioi
+	tdMbqJcDhDDdJhaVCfpN7FU9QjZq0a/zA0nKeWRclzYtwRycxLmVpPCSQNhPvV6jbqnrKrjO7pT/K
+	hQllpBBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rc0o4-0000000A17V-3U8i;
-	Mon, 19 Feb 2024 10:23:28 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rc1FH-0000000A6do-0jcy;
+	Mon, 19 Feb 2024 10:51:35 +0000
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rc0nz-0000000A15R-1h1n;
-	Mon, 19 Feb 2024 10:23:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id A8625CE111C;
-	Mon, 19 Feb 2024 10:23:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49292C433A6;
-	Mon, 19 Feb 2024 10:23:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708338200;
-	bh=dKJLsTHvNevwcvhcDeaXvz7IVccXObxg2f+AAqsJdY8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qOHrTtsZRDJFlYS2TF/KtO3C+utLQAvQG0V8QTeNVMmn5vaBWkl9tORwHW31s9441
-	 2A2s/rKkqm6libyRc1Axf0Ota85WGg70bsnC5HliD8c5cYPBvzxJa1G44V3fyskWDt
-	 svMOPRGTpIY5Q6mDmfyuWjfeEIKikxHnW57xBQHbhJP+1iuIvYsIy2WR9k0SpplnWQ
-	 LP1aETY/g8udTWzf0SvsNt05iQtYCPaddm0fxsXn/rlVHVVQ09IwdXWgFj/P+wcnRr
-	 JceaxsrzkrEyrcJczephzSPq1d5eYD7eXQLASOuhrDSnYAbhdlZ3Su2hvD2YrYitOk
-	 9vKRVmMRp+Aqw==
-Date: Mon, 19 Feb 2024 11:23:13 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-Cc: Damien Le Moal <dlemoal@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1rc1FD-0000000A6cw-3mps
+	for linux-mediatek@lists.infradead.org;
+	Mon, 19 Feb 2024 10:51:33 +0000
+Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-1d94323d547so26676535ad.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 19 Feb 2024 02:51:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1708339890; x=1708944690; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=/L4TPn2Q4JShJP0yVub7epn9w+mmtxiJMbsQbqv5v8k=;
+        b=XGuQ1EH59Rize4bsMRiR94Yq0zI5oJ6M/Bs11UjDN9z6qk3LOeoXfsek3UjooF62GN
+         84KvdFzYedMVRZVLT1wR/KJuxBxEug4od9hYDgATmdTf5ALXhRxOiHr63EIU9iEU1FAU
+         amx0Uobow4rSitTrOTtlTIFSbJ9RKSqGJvoBM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708339890; x=1708944690;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=/L4TPn2Q4JShJP0yVub7epn9w+mmtxiJMbsQbqv5v8k=;
+        b=fgF2YiYPDVP3zPFIgj2DBRGIZE/0p3RbT6Qd6W4X4bJkQnhI2DMFKbLYOD7vQZPGeN
+         f37U3+0xECA6D+34tEPcuSQZIWlGqpAV49lDqxdffborb5WVmOAXQxY9h6KLJsAVAy5x
+         IcVZuiVPPWAe8SEFwAaRcy23awGFEU05+Uj6muGOvYENtcV167z+L5BOPrJ2UJ6O3x88
+         vUeEVu5JBsLDpba5rTxTy8QOFjuuphaExEAX2A1JoR6d0TXlOgzyGuqSgQUqZ7RMleRP
+         PkNa9EbaQMVgnSH8ywOyu5PqgP7/N6o9qMUctCeCcpz8xkwaegPcSIApH4KYVLEkzf8c
+         mPtw==
+X-Forwarded-Encrypted: i=1; AJvYcCWlD5bwhrF8Tj0VRvtPD6PnE4F8ZhFax6B016tfGNVRcPi0Lv5oQ4Q9f8tt1BIyP9bseIIpe6PQzRLVS98aSc4pMi0LwKf5XdduV6rz2Q0kHRex
+X-Gm-Message-State: AOJu0Yw9W1JQKxOky8Rwr/vOMpQRPt5pNJKFjGeH+vbmQd6rNBnY5c78
+	iZuyi9Fahc8RExG6Tc3qwkDAJWMToT/XC1YZZFgANuk14yxGe5bg8z3HHbW1Lg==
+X-Google-Smtp-Source: AGHT+IHPxsNk8CcRBmex8+7iHAv2rbVy7LnqzC7zcg3vEHr8P63/RN+y2pbr/3u9rT1dt5y2Af/XIg==
+X-Received: by 2002:a17:902:f542:b0:1d5:dac4:5015 with SMTP id h2-20020a170902f54200b001d5dac45015mr13208265plf.11.1708339890465;
+        Mon, 19 Feb 2024 02:51:30 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:36aa:521a:5948:9614])
+        by smtp.gmail.com with ESMTPSA id jh19-20020a170903329300b001d8edfec673sm4112281plb.214.2024.02.19.02.51.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 19 Feb 2024 02:51:30 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Stephen Boyd <sboyd@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <ryder.lee@mediatek.com>, linux-ide@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-clk@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-Subject: Re: [PATCH] dt-bindings: ata: convert MediaTek controller to the
- json-schema
-Message-ID: <ZdMsEW2AnYVAB7Qf@x1-carbon>
-References: <20240213074747.26151-1-zajec5@gmail.com>
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] clk: mediatek: mt8183: Correct parent of CLK_INFRA_SSPM_32K_SELF
+Date: Mon, 19 Feb 2024 18:51:24 +0800
+Message-ID: <20240219105125.956278-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.44.0.rc0.258.g7320e95886-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240213074747.26151-1-zajec5@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240219_022323_646916_C319E7E6 
-X-CRM114-Status: UNSURE (   9.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240219_025131_975376_3B6ED3B0 
+X-CRM114-Status: GOOD (  12.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,20 +91,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 13, 2024 at 08:47:47AM +0100, Rafał Miłecki wrote:
-> From: Rafał Miłecki <rafal@milecki.pl>
-> 
-> This helps validating DTS files.
-> 
-> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
-> ---
->  .../devicetree/bindings/ata/ahci-mtk.txt      | 51 ----------
->  .../bindings/ata/mediatek,mtk-ahci.yaml       | 98 +++++++++++++++++++
->  2 files changed, 98 insertions(+), 51 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/ata/ahci-mtk.txt
->  create mode 100644 Documentation/devicetree/bindings/ata/mediatek,mtk-ahci.yaml
-> 
+CLK_INFRA_SSPM_32K_SELF has the "f_f26m_ck" clock assigned as its parent.
+This is inconsistent as the clock is part of a group that are all gates
+without dividers, and this makes the kernel think it runs at 26 MHz.
 
-Applied:
-https://git.kernel.org/pub/scm/linux/kernel/git/libata/linux.git/log/?h=for-6.9
+After clarification from MediaTek engineers, the correct parent is
+actually the system 32 KHz clock.
+
+Fixes: 1eb8d61ac5c9 ("clk: mediatek: mt8183: Add back SSPM related clocks")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/clk/mediatek/clk-mt8183.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
+index 6e23461a0455..934d5a15acfc 100644
+--- a/drivers/clk/mediatek/clk-mt8183.c
++++ b/drivers/clk/mediatek/clk-mt8183.c
+@@ -790,7 +790,7 @@ static const struct mtk_gate infra_clks[] = {
+ 	/* infra_sspm_26m_self is main clock in co-processor, should not be closed in Linux. */
+ 	GATE_INFRA3_FLAGS(CLK_INFRA_SSPM_26M_SELF, "infra_sspm_26m_self", "f_f26m_ck", 3, CLK_IS_CRITICAL),
+ 	/* infra_sspm_32k_self is main clock in co-processor, should not be closed in Linux. */
+-	GATE_INFRA3_FLAGS(CLK_INFRA_SSPM_32K_SELF, "infra_sspm_32k_self", "f_f26m_ck", 4, CLK_IS_CRITICAL),
++	GATE_INFRA3_FLAGS(CLK_INFRA_SSPM_32K_SELF, "infra_sspm_32k_self", "clk32k", 4, CLK_IS_CRITICAL),
+ 	GATE_INFRA3(CLK_INFRA_UFS_AXI, "infra_ufs_axi", "axi_sel", 5),
+ 	GATE_INFRA3(CLK_INFRA_I2C6, "infra_i2c6", "i2c_sel", 6),
+ 	GATE_INFRA3(CLK_INFRA_AP_MSDC0, "infra_ap_msdc0", "msdc50_hclk_sel", 7),
+-- 
+2.44.0.rc0.258.g7320e95886-goog
+
 
