@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10CEEC48260
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Feb 2024 09:23:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 816DDC48260
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Feb 2024 09:25:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ra8WD5K0VnvhN8xSfSomMxJuokDvv4rOWUUdvEyX8/M=; b=oFHkE3zZQnI6d0DFE/1VP1wNJh
-	8dWJrRECd2x040YTU1b89YzK3uVQ6hJGxPMnj6aMLoUWoHmRci7J3kkThxLx5bPotNmpGFjoeDMd7
-	BOJN7qHSSDh0hE2xs1WegUzLGomFGlCryGIHxmYgz61AIt+3zUKqMO0q+AyGXWH/lbeZU/gWLciBf
-	3nDPzQs0++yNQxGBvef8NFohfNfcKM+U2/zRmyZ69XQayva9EGsnYsW08j6X35tcjyScr89yZG3wT
-	m7Mt1XNXXWWQtjHAo0/00qT2lCdbx6Z5bWDnnsCh5NeVtHmRPnZz5gGdJ+HVqX7lOp2hT9zcxvPR+
-	WYXFIwxg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:
+	From:Cc:Subject:Message-Id:Date:Content-Type:Reply-To:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W4g++qAu9s83QY5fsc9Ntl+9n0HBMe2GL63Zj+YO4cs=; b=yfjGD+vqZIueAyiBJnrTjn+Sk6
+	QLObkHIii0yszBROhI0Dx5J5ihY/mJMoF/B70BfIT5HQPmMg/PVpy2kmzbHaBTeNGaZBdXCIQqjea
+	IAfnOySthjT4Up2QnVse6yDyYNmn6rO23sH5pBMdZO1RzIFyfrklbd2izPABAY4vsPN7S5uB2cbhx
+	/JHZQ3gJ47IR26ag5k/+7LyiU8i74sI8PUsMFhtV9i653jdWF+vzTLHQg51swaN+IgeKhd//DEUSX
+	dfd01Z5ySEzXy3aAqsle6uXsHIi/OEF8sW+X+y3LJeFXtFfKGnlFUFU5zK3GKR4XRWmqXmXFf6pUj
+	qwQVpxaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbzsR-00000009nkF-2ktt;
-	Mon, 19 Feb 2024 09:23:55 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rbzuE-00000009o2R-0mmc;
+	Mon, 19 Feb 2024 09:25:46 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbzsO-00000009nig-2ncX;
-	Mon, 19 Feb 2024 09:23:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708334631;
-	bh=UNsW7w0/prR9kEhx1s+cnIpM0a+lTKIVqrn9LfPCP0k=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=IipeBgPi2Q3alaj6bk4wzwdIqZ1Hiq+F9wD9hfBZkeNBxaZFLlI4qoNZDdWRpu78O
-	 oqSRPWF/IiymNW8hkstukElxe+zdWXeJEI9ChW2DSJXgollH2k661a3Em7iD052EIb
-	 poytKQ+o9Bn3ap8yXP8/d+VVJose5jutlvmDYhxPZfQuhSxKVxsmDnD8flSIj524xI
-	 xIRBame5zjen3wMdosL36LZzZ2ALIy7izGU44BxFd8q4v1o9FFRzsKw4gopcc+rWrh
-	 pbo+QauykbEB9ODMDpCcVo7PmiVY7R2gCUjOFmp9YnFK23owWbntq7G7C/IDdLMr9B
-	 UWO9BgSwxbASQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 5A7EB3781123;
-	Mon, 19 Feb 2024 09:23:50 +0000 (UTC)
-Message-ID: <ed3530f0-227a-47f2-938c-28eba90dd6eb@collabora.com>
-Date: Mon, 19 Feb 2024 10:23:49 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1rbzuA-00000009o1r-1Eb9;
+	Mon, 19 Feb 2024 09:25:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 4F489CE0E0E;
+	Mon, 19 Feb 2024 09:25:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0DBB4C433C7;
+	Mon, 19 Feb 2024 09:25:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1708334739;
+	bh=TQgJ/dUEc4sWbXoGbmu4Gc1ioWBXLv4l0BknLPBgqHs=;
+	h=Date:Subject:Cc:From:To:References:In-Reply-To:From;
+	b=J8rTnnHg2jq4qSe9wkaheaQRnHYTStPOBliPhPlu9XMSyAH/7SWcw+hwCnAZQuBSp
+	 pm85XhsSaDbD3Ax/bBjkrBzKoGoM97KCZVs+0q4D+rQpV9WLmtf6ALdW7f1weaxPWX
+	 hUkEjEuIcTAbHDt0k5zo9PBiRn5YxkbIEq/aOHbAqSW2zcQ+CfhX2HiHZ6IrEozmnh
+	 3rvO22UujnQ20i4N0rOlQYbTujhp3PfZSEJpQNk6QJco5j6aRrlcWtzj6n//wPkNP3
+	 1FRCRfBoNY7g6cPGsxCE3z14MBM+xLVjYz/VIudpFQG2XclvUj+yxuHmgWviMY07UN
+	 2r/5zPMQ89atw==
+Content-Type: multipart/signed;
+ boundary=03803a3ba4b4ec418cf5496082e438ace4bc390993da25f1c1c6651408c6;
+ micalg=pgp-sha256; protocol="application/pgp-signature"
+Date: Mon, 19 Feb 2024 10:25:31 +0100
+Message-Id: <CZ8Y4DFQNLM9.3GIGATDIAXBR5@kernel.org>
 Subject: Re: [PATCH v2 1/2] dt-bindings: arm64: mediatek: add Kontron
  3.5"-SBC-i1200
-Content-Language: en-US
-To: Michael Walle <mwalle@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Cc: <devicetree@vger.kernel.org>, "Sean Wang" <sean.wang@mediatek.com>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+From: "Michael Walle" <mwalle@kernel.org>
+To: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>, "Rob Herring"
+ <robh@kernel.org>, "Krzysztof Kozlowski"
+ <krzysztof.kozlowski+dt@linaro.org>, "Conor Dooley" <conor+dt@kernel.org>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
+ <angelogioacchino.delregno@collabora.com>
+X-Mailer: aerc 0.16.0
 References: <20240219084456.1075445-1-mwalle@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240219084456.1075445-1-mwalle@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ <72fffc25-33f0-4394-b7c1-8dbc2d23a4a4@linaro.org>
+In-Reply-To: <72fffc25-33f0-4394-b7c1-8dbc2d23a4a4@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240219_012352_878576_4C6BA302 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20240219_012542_711325_D306D6B8 
+X-CRM114-Status: GOOD (  17.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,53 +78,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/02/24 09:44, Michael Walle ha scritto:
-> Add the compatible string for the Kontron 3.5"-SBC-i1200 single board
-> computer.
-> 
-> Signed-off-by: Michael Walle <mwalle@kernel.org>
-> ---
-> v2:
->   - convert enum to const as there is only one specific board
-> 
->   Documentation/devicetree/bindings/arm/mediatek.yaml | 5 +++++
->   1 file changed, 5 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> index 09f9ffd3ff7b..add167d8b8da 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -357,6 +357,11 @@ properties:
->                 - radxa,nio-12l
->             - const: mediatek,mt8395
->             - const: mediatek,mt8195
-> +      - description: Kontron 3.5"-SBC-i1200
-> +        items:
-> +          - const: kontron,3-5-sbc-i1200
-> +          - const: mediatek,mt8395
-> +          - const: mediatek,mt8195
->         - items:
->             - enum:
->                 - mediatek,mt8516-pumpkin
+--03803a3ba4b4ec418cf5496082e438ace4bc390993da25f1c1c6651408c6
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-I understand that you took inspiration from the Google Chromebooks entries, but
-those are separated only because they've got "a bunch of revisions".
+On Mon Feb 19, 2024 at 10:06 AM CET, Krzysztof Kozlowski wrote:
+> On 19/02/2024 09:44, Michael Walle wrote:
+> > Add the compatible string for the Kontron 3.5"-SBC-i1200 single board
+> > computer.
+> >=20
+> > Signed-off-by: Michael Walle <mwalle@kernel.org>
+> > ---
+> > v2:
+> >  - convert enum to const as there is only one specific board
+> >=20
+> >  Documentation/devicetree/bindings/arm/mediatek.yaml | 5 +++++
+> >  1 file changed, 5 insertions(+)
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docu=
+mentation/devicetree/bindings/arm/mediatek.yaml
+> > index 09f9ffd3ff7b..add167d8b8da 100644
+> > --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> > +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> > @@ -357,6 +357,11 @@ properties:
+> >                - radxa,nio-12l
+> >            - const: mediatek,mt8395
+> >            - const: mediatek,mt8195
+> > +      - description: Kontron 3.5"-SBC-i1200
+> > +        items:
+> > +          - const: kontron,3-5-sbc-i1200
+>
+> And then it should be part of earlier entry. Just take a look there in
+> the file...
 
-For machines that don't have a billion compatible strings, I would suggest to
-add the compatible under a single big entry: like this, the binding is (imo) a
-bit more readable .. and cleaner.
+FWIW I did and all the entries with descriptions are by there own
+(that's also true for fsl.yaml and sunxi.yaml).
 
-Eventually, the machine name is in the devicetree so we're not losing any kind
-of information anyway... :-)
+mediatek.yaml seems to have both, either boards without description
+like the "radxa,nio-12l" which you are probably referring to. Or
+boards which has the same sub compatibles but still have individual
+entries, like google,burnet, google,cozmo, google,damu.
 
-       - items:
-           - enum:
-               - kontron,3-5-sbc-i1200
-               - mediatek,mt8395-evk
-               - radxa,nio-12l
-           - const: mediatek,mt8395
-           - const: mediatek,mt8195
+Therefore, what is the rule of thumb here? Drop the description?
+If so, why it it there in the first place?
 
-Cheers,
-Angelo
+-michael
+
+--03803a3ba4b4ec418cf5496082e438ace4bc390993da25f1c1c6651408c6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iIgEABYIADAWIQQCnWSOYTtih6UXaxvNyh2jtWxG+wUCZdMeixIcbXdhbGxlQGtl
+cm5lbC5vcmcACgkQzcodo7VsRvus0wEA961xASC5sQxgLl7D2sdBs8vZGbpKm2xY
+5IGGz3L8+T8A+gJrDnh9avI1bglxsEP4pVy4KSuErmUiYYw9/g58FPgO
+=LoCQ
+-----END PGP SIGNATURE-----
+
+--03803a3ba4b4ec418cf5496082e438ace4bc390993da25f1c1c6651408c6--
 
