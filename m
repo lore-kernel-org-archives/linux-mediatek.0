@@ -4,66 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 816DDC48260
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Feb 2024 09:25:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D30D6C54766
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Feb 2024 09:36:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:
-	From:Cc:Subject:Message-Id:Date:Content-Type:Reply-To:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W4g++qAu9s83QY5fsc9Ntl+9n0HBMe2GL63Zj+YO4cs=; b=yfjGD+vqZIueAyiBJnrTjn+Sk6
-	QLObkHIii0yszBROhI0Dx5J5ihY/mJMoF/B70BfIT5HQPmMg/PVpy2kmzbHaBTeNGaZBdXCIQqjea
-	IAfnOySthjT4Up2QnVse6yDyYNmn6rO23sH5pBMdZO1RzIFyfrklbd2izPABAY4vsPN7S5uB2cbhx
-	/JHZQ3gJ47IR26ag5k/+7LyiU8i74sI8PUsMFhtV9i653jdWF+vzTLHQg51swaN+IgeKhd//DEUSX
-	dfd01Z5ySEzXy3aAqsle6uXsHIi/OEF8sW+X+y3LJeFXtFfKGnlFUFU5zK3GKR4XRWmqXmXFf6pUj
-	qwQVpxaw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=IZ5kCpth54bGNWqN9eH9wLT+ZGwJ/cPlh5fKkrpDnZM=; b=iW7IDlzvnGu6+7jbH3RETwfk/g
+	ddE7srj01IRVH0y0gc5WJiJAqNZVj6hHXglyiSujByCW5l/GJQrtWJH9PYYhVGY5/+RQtpFvrHJ/8
+	UTF76sMF3MgrePZO6Sbzb445ERN3o+IjzDoJEGMGumspbDgAZgYojWR3ohxchmKFSHbfJZNbyB7IC
+	odCb1nzBZ7Jpqs6pk34QEKLm2BPimY6V281gFtD4aW3kQZqwydvQCJ0aDc51cOIGbWhb89Z4coOWN
+	jAG6gT4x017ud98GFM4N7oZtE/bmOYM1Gla9o8IppIdc6Iyth5BKJqDyIj+NfhPBZ9Gy7x6gvoINu
+	pDhOtn6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbzuE-00000009o2R-0mmc;
-	Mon, 19 Feb 2024 09:25:46 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rc04c-00000009qOE-3IDm;
+	Mon, 19 Feb 2024 09:36:30 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbzuA-00000009o1r-1Eb9;
-	Mon, 19 Feb 2024 09:25:43 +0000
+	id 1rc04Z-00000009qM1-01Nj;
+	Mon, 19 Feb 2024 09:36:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 4F489CE0E0E;
-	Mon, 19 Feb 2024 09:25:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0DBB4C433C7;
-	Mon, 19 Feb 2024 09:25:38 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0E32860C2F;
+	Mon, 19 Feb 2024 09:36:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id A9F13C433F1;
+	Mon, 19 Feb 2024 09:36:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708334739;
-	bh=TQgJ/dUEc4sWbXoGbmu4Gc1ioWBXLv4l0BknLPBgqHs=;
-	h=Date:Subject:Cc:From:To:References:In-Reply-To:From;
-	b=J8rTnnHg2jq4qSe9wkaheaQRnHYTStPOBliPhPlu9XMSyAH/7SWcw+hwCnAZQuBSp
-	 pm85XhsSaDbD3Ax/bBjkrBzKoGoM97KCZVs+0q4D+rQpV9WLmtf6ALdW7f1weaxPWX
-	 hUkEjEuIcTAbHDt0k5zo9PBiRn5YxkbIEq/aOHbAqSW2zcQ+CfhX2HiHZ6IrEozmnh
-	 3rvO22UujnQ20i4N0rOlQYbTujhp3PfZSEJpQNk6QJco5j6aRrlcWtzj6n//wPkNP3
-	 1FRCRfBoNY7g6cPGsxCE3z14MBM+xLVjYz/VIudpFQG2XclvUj+yxuHmgWviMY07UN
-	 2r/5zPMQ89atw==
-Content-Type: multipart/signed;
- boundary=03803a3ba4b4ec418cf5496082e438ace4bc390993da25f1c1c6651408c6;
- micalg=pgp-sha256; protocol="application/pgp-signature"
-Date: Mon, 19 Feb 2024 10:25:31 +0100
-Message-Id: <CZ8Y4DFQNLM9.3GIGATDIAXBR5@kernel.org>
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm64: mediatek: add Kontron
- 3.5"-SBC-i1200
-Cc: <devicetree@vger.kernel.org>, "Sean Wang" <sean.wang@mediatek.com>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-From: "Michael Walle" <mwalle@kernel.org>
-To: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>, "Rob Herring"
- <robh@kernel.org>, "Krzysztof Kozlowski"
- <krzysztof.kozlowski+dt@linaro.org>, "Conor Dooley" <conor+dt@kernel.org>,
- "Matthias Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
- <angelogioacchino.delregno@collabora.com>
-X-Mailer: aerc 0.16.0
-References: <20240219084456.1075445-1-mwalle@kernel.org>
- <72fffc25-33f0-4394-b7c1-8dbc2d23a4a4@linaro.org>
-In-Reply-To: <72fffc25-33f0-4394-b7c1-8dbc2d23a4a4@linaro.org>
+	s=k20201202; t=1708335385;
+	bh=uIeslGUrMiIxBs3Hoekn0ZFqBZXLWeLXlSxJlmij2aA=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=ovNiocm6Kq7R4LaLhsLq/KTqT4WL9WMPEGi8i1KIRQzpN4KC97F9VRrR6CKQpmFF1
+	 M1K4WeiK7phEk9O//9QpDA8p1u7FOhLt3RbEC6cRYGMQvdiLkHj1lbHUVLzHbjISWM
+	 aW4abDBqPlzIJtbUCXhbkUyMaqq7MouHKrgp4w2+736lGAUzx1y00sHNZ1R6r/Yl2M
+	 AN4fEhQDIRYKChx7GCzccAY2kLhM4WwCpjirYp1Op6wldbXA6Nk9Dn0dH3hG+BN72m
+	 qaSKoHYXc78h4kgLma+Buk+yUN2F/v7RzEaugbM43UFKAhEfUAr/+kRNh+lZRFTIcO
+	 8KXRTkAt5/R+Q==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8373CC54764;
+	Mon, 19 Feb 2024 09:36:25 +0000 (UTC)
+From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
+ <devnull+arinc.unal.arinc9.com@kernel.org>
+Subject: [PATCH 0/2] Add port@5 as CPU port on certain MT7622 and MT7986
+ boards
+Date: Mon, 19 Feb 2024 12:36:12 +0300
+Message-Id: <20240219-for-mediatek-v1-0-7078f23eab82@arinc9.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAAwh02UC/x3MQQqAIBBA0avIrBNUJLCrRAvLsYZIY4wIpLsnL
+ d/i/woFmbDAICow3lQopwbdCVg2n1aUFJrBKGOV0U7GzPLAQP7CXfbOea3UjMFZaMnJGOn5d+P
+ 0vh8YuMC9XgAAAA==
+To: Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: erkin.bozoglu@xeront.com, mithat.guner@xeront.com, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1708335384; l=788;
+ i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
+ bh=uIeslGUrMiIxBs3Hoekn0ZFqBZXLWeLXlSxJlmij2aA=;
+ b=9uiTEjuJ0SLjCwgUYlLom+wD/ujYeEnWm/KJsVTE+Bh7pTohkdiTPePxKWgDoJVTjX+EIy7Z0
+ bSBrioBNM6ZDlzzUI3u2/EnJYuC7kcnws6qJWI68ukjjY8GKNzaoiDn
+X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
+ pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
+X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt with auth_id=115
+X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240219_012542_711325_D306D6B8 
-X-CRM114-Status: GOOD (  17.41  )
+X-CRM114-CacheID: sfid-20240219_013627_119227_5EC47892 
+X-CRM114-Status: UNSURE (   6.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,66 +90,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---03803a3ba4b4ec418cf5496082e438ace4bc390993da25f1c1c6651408c6
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+Hi.
 
-On Mon Feb 19, 2024 at 10:06 AM CET, Krzysztof Kozlowski wrote:
-> On 19/02/2024 09:44, Michael Walle wrote:
-> > Add the compatible string for the Kontron 3.5"-SBC-i1200 single board
-> > computer.
-> >=20
-> > Signed-off-by: Michael Walle <mwalle@kernel.org>
-> > ---
-> > v2:
-> >  - convert enum to const as there is only one specific board
-> >=20
-> >  Documentation/devicetree/bindings/arm/mediatek.yaml | 5 +++++
-> >  1 file changed, 5 insertions(+)
-> >=20
-> > diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docu=
-mentation/devicetree/bindings/arm/mediatek.yaml
-> > index 09f9ffd3ff7b..add167d8b8da 100644
-> > --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> > +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> > @@ -357,6 +357,11 @@ properties:
-> >                - radxa,nio-12l
-> >            - const: mediatek,mt8395
-> >            - const: mediatek,mt8195
-> > +      - description: Kontron 3.5"-SBC-i1200
-> > +        items:
-> > +          - const: kontron,3-5-sbc-i1200
->
-> And then it should be part of earlier entry. Just take a look there in
-> the file...
+This patch series adds port@5 as CPU port on certain MT7622 and MT7986
+boards.
 
-FWIW I did and all the entries with descriptions are by there own
-(that's also true for fsl.yaml and sunxi.yaml).
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+Arınç ÜNAL (2):
+      arm64: dts: mt7622: add port@5 as CPU port
+      arm64: dts: mt7986: add port@5 as CPU port
 
-mediatek.yaml seems to have both, either boards without description
-like the "radxa,nio-12l" which you are probably referring to. Or
-boards which has the same sub compatibles but still have individual
-entries, like google,burnet, google,cozmo, google,damu.
+ .../boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts  | 12 +++++++++++
+ arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts       | 24 ++++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts       | 24 ++++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts       | 24 ++++++++++++++++++++++
+ 4 files changed, 84 insertions(+)
+---
+base-commit: 5b6df373ec95cf051264f655be0dbe1d6caa173c
+change-id: 20240219-for-mediatek-699a100bed94
 
-Therefore, what is the rule of thumb here? Drop the description?
-If so, why it it there in the first place?
+Best regards,
+-- 
+Arınç ÜNAL <arinc.unal@arinc9.com>
 
--michael
-
---03803a3ba4b4ec418cf5496082e438ace4bc390993da25f1c1c6651408c6
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iIgEABYIADAWIQQCnWSOYTtih6UXaxvNyh2jtWxG+wUCZdMeixIcbXdhbGxlQGtl
-cm5lbC5vcmcACgkQzcodo7VsRvus0wEA961xASC5sQxgLl7D2sdBs8vZGbpKm2xY
-5IGGz3L8+T8A+gJrDnh9avI1bglxsEP4pVy4KSuErmUiYYw9/g58FPgO
-=LoCQ
------END PGP SIGNATURE-----
-
---03803a3ba4b4ec418cf5496082e438ace4bc390993da25f1c1c6651408c6--
 
