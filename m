@@ -4,87 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5E14C48BC4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Feb 2024 11:34:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A30D4C5475B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Feb 2024 12:59:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+QxxzZLK77uop3c9oawidI46vMLzFAmM3R/Jc/f/t6g=; b=liWaojQ0sik6y4DpnAzhyxFaOI
-	b5wGhPUFLaZezhwgAggWA159RsW4C+OxES3t7SkrBSPtot4wAfmnZNGS/Yav2InpEdioS3m2MsTH4
-	XIMHgYJ7oRrZO9DrmevVUvKpxIOAmys6M9Yzx09McPa6i7siuFmfO8iwWar6dZXLgWpOgnlquRkbk
-	FDIweF/3mtLClK2FMAleWZ86IEWr1yvAHP0HuUGWuUXAsi5SHOk8hT7657AyZo8MpNE35LECSHQsu
-	SDbOalqiRWm8J7FF5SM6QYuZe4LN5IDZQpqSonQsNgF4GKfD6tzllJS9rTnnDF5AhjdpLw5BhbKG/
-	gVx8X8Ew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sjEaHSfzaAp92cc1QcNapWfjcTbk7tItlWQ+9zi3zaQ=; b=0VGQMpaWVTP/L7dt+bOf/VlfLA
+	O2zxKx7K/1Nq7+5qepEyC77/jIGgreT9uaQOHfD+K1OLf13lWKotPdyvzywt1EqEUAQtqwAD+Qbih
+	maMJPmqGA0F+KsaGDSlh2p25t/8hjbl/xyb2asEkS+Z0Mz9Z7M9i9vBCM4Z0iTgkJZ4EJY1HjI6vN
+	MJo9JEBewcht4RC4anLlqg6oJRAu8pnDiSugcFZlFXiHfQfJaTVKBtRKd0lbTItKH/p7ahHnHt09R
+	JHY4G8ZYy/WlY0iZxw3+AKBRpc7J6Iq5p/8tbEqNzeY7UzMFsJ5iuPxjdsYTlyGpIrZOzdM+w9q0L
+	HyLDLvAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcOO5-0000000ETWT-02cM;
-	Tue, 20 Feb 2024 11:34:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rcPip-0000000ElZ4-1QPb;
+	Tue, 20 Feb 2024 12:59:43 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcOO2-0000000ETW0-0Xi7;
-	Tue, 20 Feb 2024 11:34:11 +0000
-X-UUID: f2958044cfe311eea0bf134e88e6c2dc-20240220
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+QxxzZLK77uop3c9oawidI46vMLzFAmM3R/Jc/f/t6g=;
-	b=Dnza6CPqJjywHPFra5TqQTJQ1LeG6/ImxaeVwOUAh7wP87eFzF4Tz3anfYMVuNjphik1hM59YfOkGPsPflxDu7r9J4yZNydDuIhJe4uaCkteKxra66Ih4M7/gRVwvbUcsNt+92DN3FK9yCA/GpR5LZ3Qrt8Spgwaj+oafP8Tk/w=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:cc392ea6-e7f7-4de9-abbb-dda273fff1ff,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:fe4afffe-c16b-4159-a099-3b9d0558e447,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: f2958044cfe311eea0bf134e88e6c2dc-20240220
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <haibo.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1898438236; Tue, 20 Feb 2024 04:34:02 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 20 Feb 2024 19:33:59 +0800
-Received: from mszsdtlt102.gcn.mediatek.inc (10.16.4.142) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 20 Feb 2024 19:33:59 +0800
-From: Haibo Li <haibo.li@mediatek.com>
-To: <linux-kernel@vger.kernel.org>
-CC: Russell King <linux@armlinux.org.uk>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Arnd Bergmann <arnd@arndb.de>,
-	Kees Cook <keescook@chromium.org>, 'Russell King '
-	<rmk+kernel@armlinux.org.uk>, Haibo Li <haibo.li@mediatek.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<xiaoming.yu@mediatek.com>
-Subject: [PATCH] arm:dump the stack usage after stack overflows
-Date: Tue, 20 Feb 2024 19:33:41 +0800
-Message-ID: <20240220113341.24523-1-haibo.li@mediatek.com>
-X-Mailer: git-send-email 2.34.3
+	id 1rcPil-0000000ElWz-40ze
+	for linux-mediatek@lists.infradead.org;
+	Tue, 20 Feb 2024 12:59:42 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a3ddc13bbb3so740721266b.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 20 Feb 2024 04:59:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1708433978; x=1709038778; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=sjEaHSfzaAp92cc1QcNapWfjcTbk7tItlWQ+9zi3zaQ=;
+        b=Ru0+mCdSc/nB70k0HbIiKXqjjqicOvI74RZEw9EeaFAD+c9wczRpKZbk4f5lFbLfPl
+         07S57Z9aA/xD7UNjKJql6JJYa/dCb9Ki+k0IPA8WDmEcfpwzECSvo+T1RQ7izWRs5KU2
+         T+451YZGGfrXMeG1IQ7UM/bPFt/EEU4SeJOCwrdILr3g24tV7KSxCvxzMM2od16edevv
+         AgpnNmtW6/YNvDjtqgKiyjQeV876pWCVB0FI86sFGZEGIsCsu3o0vxLbDy6LWbn9VgzN
+         R+bgu+WaphOe0lT3zdg4V3UR5jw8GRy1bOlQvk7GV001LLoDZjRdvLhxUm1PAgOkPRdf
+         B4lw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708433978; x=1709038778;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=sjEaHSfzaAp92cc1QcNapWfjcTbk7tItlWQ+9zi3zaQ=;
+        b=VEKCopsBT0yXEY1v2WARGOY9Hb4FHEjbfwArw7TLrruDivrnKi2H7hek7M4L1Ppfv6
+         j4g6iuME7lvWB5XHAMaCuS/dJJJQRMcqhH4Z9EP5U9TLflGSbwEELPaTscc81UMz7vcV
+         8Mlo9HH88Xmn5Eh1SouRIJKqPlhBlNj8QTY1WT8Yv0dOJ/UNM7iY10DqjjRl5GKmSjf4
+         xJI02Vo0qaCqgxnX55MzWmyUeTn9DrAqS90T2+oGguzHaN1VjVrRIoFzbj3DTyLEAG8r
+         l8HMV/b6eGawZNYwC2XKOAw1QhNkAYrd6LINHC2Sumu0C5j7cqjicYer2mh9r+65vSC8
+         ZSjg==
+X-Forwarded-Encrypted: i=1; AJvYcCVJyb8EdBCI7vNdAR2qi/946i4DijDS+TsOK4zRK6TEyetEhq12CYdXx2LSAhpbGWlAe2PhukgfQ+33e7NeAqxC1ZbIKvfZMJvlKtaTpOe3lkFd
+X-Gm-Message-State: AOJu0Yyoqf0Klsk9cGHzNwgiMkSL831QuL1D8eq5WB4oKNmBqNv8lKVH
+	7S31wLGojDDg3OWi/KwQ62cuq4Q+SSfC2auu2H1/qzUdfCbIMMOrLM9JctBF8NQ=
+X-Google-Smtp-Source: AGHT+IEb4Cm5uVF+9tBq0GgVnU8zP7htuazyc7HAMuiist+/EysRahieUcUeX89Q1qGq5lLzBJ7phg==
+X-Received: by 2002:a17:906:816:b0:a3c:5e17:1635 with SMTP id e22-20020a170906081600b00a3c5e171635mr13747344ejd.30.1708433978257;
+        Tue, 20 Feb 2024 04:59:38 -0800 (PST)
+Received: from [127.0.1.1] ([188.24.162.93])
+        by smtp.gmail.com with ESMTPSA id rf23-20020a1709076a1700b00a3ce36ce4f9sm3948802ejc.83.2024.02.20.04.59.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Feb 2024 04:59:37 -0800 (PST)
+From: Abel Vesa <abel.vesa@linaro.org>
+Date: Tue, 20 Feb 2024 14:59:21 +0200
+Subject: [PATCH RFC v4 1/4] dt-bindings: spmi: Add PMIC ARB v7 schema
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--5.259300-8.000000
-X-TMASE-MatchedRID: 8+gsAlLbNEF+7Gr2hULRCqKa0xB73sAA+XUEs7n10vKJPgzJn7/hAGb6
-	PphVtfZgGeqWAcGRXwp6n3hIvN5dLfJMF6pylZNWvbFZsqMF9Y+7nrAU9KQxUWHZ+cd7VyKXDZ/
-	b5zl6q6ZvvvRcuB/rD3QeHo/CecVW4En2Lqvhr2JIcJTn2HkqsRQc4z1hNYyAIGcJoOzI5aejxY
-	yRBa/qJcFwgTvxipFa9xS3mVzWUuCgZHIBpyeFpsZXc7x4uVfJF6jjf600DUaQhh+9h/pw1sXZP
-	5r1GmcmftwZ3X11IV0=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--5.259300-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 0DD9B401C1862381109C0AAE87F93DB93AFC9C71464106ED3F9A0360F3580B692000:8
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240220-spmi-multi-master-support-v4-1-dc813c878ba8@linaro.org>
+References: <20240220-spmi-multi-master-support-v4-0-dc813c878ba8@linaro.org>
+In-Reply-To: <20240220-spmi-multi-master-support-v4-0-dc813c878ba8@linaro.org>
+To: Stephen Boyd <sboyd@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>, 
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: Srini Kandagatla <srinivas.kandagatla@linaro.org>, 
+ Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ Abel Vesa <abel.vesa@linaro.org>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3681; i=abel.vesa@linaro.org;
+ h=from:subject:message-id; bh=ThFF7MydSq7GIulN2BiuLPta4fGlEnJTyb85puKw6/Y=;
+ b=owEBbQKS/ZANAwAKARtfRMkAlRVWAcsmYgBl1KIyzs8YVUgvE5dRf6d5suxJZ7odVJwulay/g
+ YQbLKVqXNOJAjMEAAEKAB0WIQRO8+4RTnqPKsqn0bgbX0TJAJUVVgUCZdSiMgAKCRAbX0TJAJUV
+ VoouD/94NOL0UK2zX/jQmWLQ96DxsMJTSYNtK4mKLvnQhjogZQ6OxWw60gq5iyQEIiozWWpvZKJ
+ GXcIsHO4ohx1JJeyJRLHchnwKfqWY/BnbeCu/Dso678WaufCI5Ge3KxycE0C5NVeiiAAvVO90tb
+ aXCozh3DCo1T10Vok+XdB0hJ/iRC+q/8jwLVgoAgQO6H4LnRw5B4QoINeg4utoWMk9pFlwzGoTa
+ wW1QVlMwRjUH6/LtYCWEaZjOVkoqdtWzWB51TGHoOjYKW5N/JOHHuOorLd7G2/Lgw5WrGX2FZ/Z
+ 07OilFw2R1gVb++I7nyLEM199hBgl7T8nKeTwgHPmjpKFE1t7pBto8SQXPnctCOQUUPsVRsL/Gj
+ RMhseYUa787BuqJdrTvGD6uQcsjJ7tmIHRlDc45/ZUAhQlnXsrRRz2H9OjzMK6usuj3dPx3Jurt
+ 5dTlHJ3fW3RQqCm7bYlAGzjMzbL8VxKevcEKjMRfxJeFb8TIjNtHrcjAmlrWfE17DxSahbZAxwk
+ hGsi/6KMqDFiveuOcWdZ6Ks8iCInBufdS68QXScpUJDB9IvB6xTieoMQecFW4aZFVnmAKpY4UD3
+ zFUVvifa8G55DHkvRkiVRgR0d+h1bK1c4v8eDXD0lTWszfWAFuF+qDUgrMOEyVciSi4uv15NqlL
+ 4CCgtIkWWnH7tig==
+X-Developer-Key: i=abel.vesa@linaro.org; a=openpgp;
+ fpr=6AFF162D57F4223A8770EF5AF7BF214136F41FAE
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240220_033410_202760_3A3B6098 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20240220_045940_044183_200DE124 
+X-CRM114-Status: GOOD (  12.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,94 +121,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-With the help of vmap stack,it is able to detect stack overflow.
+Add dedicated schema for PMIC ARB v7 as it allows multiple
+buses by declaring them as child nodes. These child nodes
+will follow the generic spmi bus bindings.
 
-To make it easy to debug stack overflow,dump the stack usage of
-each frame by walking the stack.
-
-After this patch,the log after stack overflows like below:
-
-Insufficient stack space to handle exception!
-Task stack:     [0xf4a70000..0xf4a72000]
-IRQ stack:      [0xf0800000..0xf0802000]
-Overflow stack: [0x818c1000..0x818c2000]
-Depth   usage   size   Location
-  0      8232     96   _prb_read_valid
-  1      8136     24   prb_read_valid
-  2      8112    200   printk_get_next_message
-  3      7912    104   console_flush_all
-  4      7808     64   console_unlock
-  5      7744     40   vprintk_emit
-  6      7704     16   vprintk_default
-  7      7688     32   _printk
-  8      7656   1048   do_circle_loop
-  9      6608   1048   do_circle_loop
- 10      5560   1048   do_circle_loop
- 11      4512   1048   do_circle_loop
- 12      3464   1048   do_circle_loop
- 13      2416   1048   do_circle_loop
- 14      1368   1048   do_circle_loop
- 15       320      8   stack_ovf_selftest
- 16       312     24   param_attr_store
- 17       288     40   kernfs_fop_write_iter
- 18       248    112   vfs_write
- 19       136     48   ksys_write
------    -----  -----   ------
-Internal error: kernel stack overflow: 0 [#1] SMP ARM
-...
-
-Signed-off-by: Haibo Li <haibo.li@mediatek.com>
+Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
 ---
- arch/arm/kernel/traps.c | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+ .../bindings/spmi/qcom,spmi-pmic-arb-v7.yaml       | 119 +++++++++++++++++++++
+ 1 file changed, 119 insertions(+)
 
-diff --git a/arch/arm/kernel/traps.c b/arch/arm/kernel/traps.c
-index 3bad79db5d6e..641ca68b44ba 100644
---- a/arch/arm/kernel/traps.c
-+++ b/arch/arm/kernel/traps.c
-@@ -921,6 +921,33 @@ static int __init allocate_overflow_stacks(void)
- }
- early_initcall(allocate_overflow_stacks);
- 
-+static void dump_stack_usage(struct pt_regs *regs)
-+{
-+	struct stackframe frame;
-+	unsigned int depth = 0;
-+	unsigned long prev_pc;
-+	unsigned long prev_sp;
-+	unsigned long stack_high = (unsigned long)current->stack + THREAD_SIZE;
+diff --git a/Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb-v7.yaml b/Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb-v7.yaml
+new file mode 100644
+index 000000000000..8a93d2145aa5
+--- /dev/null
++++ b/Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb-v7.yaml
+@@ -0,0 +1,119 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/spmi/qcom,spmi-pmic-arb-v7.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	arm_get_current_stackframe(regs, &frame);
-+	pr_emerg("Depth   usage   size   Location\n");
-+	while (1) {
-+		prev_pc = frame.pc;
-+		prev_sp = frame.sp;
-+#if defined(CONFIG_FRAME_POINTER) && !defined(CONFIG_ARM_UNWIND)
-+		//meet the requirement of frame_pointer_check
-+		if (frame.sp < (unsigned long)current->stack)
-+			frame.sp = (unsigned long)current->stack + 4;
-+#endif
-+		if (unwind_frame(&frame) < 0)
-+			break;
-+		pr_emerg("%3d     %5ld  %5ld   %ps\n",
-+			 depth++, stack_high - prev_sp,
-+			 frame.sp - prev_sp, (void *)prev_pc);
-+	}
-+	pr_emerg("-----    -----  -----   ------\n");
-+}
++title: Qualcomm SPMI Controller v7 (PMIC Arbiter)
 +
- asmlinkage void handle_bad_stack(struct pt_regs *regs)
- {
- 	unsigned long tsk_stk = (unsigned long)current->stack;
-@@ -940,6 +967,7 @@ asmlinkage void handle_bad_stack(struct pt_regs *regs)
- #endif
- 	pr_emerg("Overflow stack: [0x%08lx..0x%08lx]\n",
- 		 ovf_stk - OVERFLOW_STACK_SIZE, ovf_stk);
-+	dump_stack_usage(regs);
- 
- 	die("kernel stack overflow", regs, 0);
- }
++maintainers:
++  - Stephen Boyd <sboyd@kernel.org>
++
++description: |
++  The SPMI PMIC Arbiter v7 is found on Snapdragon chipsets. It is an SPMI
++  controller with wrapping arbitration logic to allow for multiple on-chip
++  devices to control up to 2 SPMI separate buses.
++
++  The PMIC Arbiter can also act as an interrupt controller, providing interrupts
++  to slave devices.
++
++properties:
++  compatible:
++    const: qcom,spmi-pmic-arb-v7
++
++  reg:
++    items:
++      - description: core registers
++      - description: tx-channel per virtual slave regosters
++      - description: rx-channel (called observer) per virtual slave registers
++
++  reg-names:
++    items:
++      - const: core
++      - const: chnls
++      - const: obsrvr
++
++  ranges: true
++
++  '#address-cells':
++    const: 2
++
++  '#size-cells':
++    const: 2
++
++  qcom,ee:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    minimum: 0
++    maximum: 5
++    description: >
++      indicates the active Execution Environment identifier
++
++  qcom,channel:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    minimum: 0
++    maximum: 5
++    description: >
++      which of the PMIC Arb provided channels to use for accesses
++
++patternProperties:
++  "spmi@[0-1]$":
++    type: object
++    $ref: /schemas/spmi/spmi.yaml
++
++required:
++  - compatible
++  - reg-names
++  - qcom,ee
++  - qcom,channel
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++
++    spmi: arbiter@c400000 {
++      compatible = "qcom,spmi-pmic-arb-v7";
++      reg = <0x0c400000 0x3000>,
++            <0x0c500000 0x4000000>,
++            <0x0c440000 0x80000>;
++      reg-names = "core", "chnls", "obsrvr";
++
++      qcom,ee = <0>;
++      qcom,channel = <0>;
++
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      spmi_bus0: spmi@0 {
++        reg = <0 0x0c42d000 0 0x4000>,
++              <0 0x0c4c0000 0 0x10000>;
++        reg-names = "cnfg", "intr";
++
++        interrupt-names = "periph_irq";
++        interrupts-extended = <&pdc 1 IRQ_TYPE_LEVEL_HIGH>;
++        interrupt-controller;
++        #interrupt-cells = <4>;
++
++        qcom,bus-id = <0>;
++
++        #address-cells = <2>;
++        #size-cells = <0>;
++      };
++
++      spmi_bus1: spmi@1 {
++        reg = <0 0x0c432000 0 0x4000>,
++              <0 0x0c4d0000 0 0x10000>;
++        reg-names = "cnfg", "intr";
++
++        interrupt-names = "periph_irq";
++        interrupts-extended = <&pdc 3 IRQ_TYPE_LEVEL_HIGH>;
++        interrupt-controller;
++        #interrupt-cells = <4>;
++
++        qcom,bus-id = <1>;
++
++        #address-cells = <2>;
++        #size-cells = <0>;
++      };
++    };
+
 -- 
-2.18.0
+2.34.1
 
 
