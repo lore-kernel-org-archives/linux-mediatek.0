@@ -4,102 +4,186 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 234E3C48BC3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Feb 2024 07:26:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EF2BC48BC4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Feb 2024 07:54:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zwX8JySnJMcT/KPe+NiuuWrvPhB1On1Jx0n4UcS+ypo=; b=kYdaohn4yEPSaQlCAJ6L4IHeZb
-	oqehXTt8gYSJ2LeafLvWaZgVu9VZ/X/gofmDVv1vYsnTPGenru6E6KJsJAzagiYDXko9fNrI6n9Ph
-	DbhLnxrKEksJXGZfH7i7XkD1q7BMv9Mesh8VEDgkuxIAPbCJspIekcyo0ziVYX+l8mNOuoxZGHMqm
-	f6fWkjYi6DfOuSoUCt+U52Jh6g5FwWPMbbNEzTejRj3JVp6ms9ztrcsEHdaOZDGBjUhS0i6Yjd+IS
-	wFlaFTPC8YGY4ywpsjleobvu3BpQOepy8qDUWGR23xLcylG8ljC4WNj8PJmRs6sEerioQVGrKkxse
-	voq+kWgA==;
+	bh=AU99aj+tc/EoXnYuy8d1LbsX60oVqkjY+Tw7/iiXduA=; b=BCkhbGbLQQsDMZE196HPAt9y42
+	hNXbA7x1D+fIVIoflwiSvx64kToKIl+Q6wmzWT7ISLy6JYD5IiLFsJfjCrrTwSYvdrZqBrrW8riOM
+	A3f0LI522he/nhzghil7C4d5NAd7ElTzHXkxpLSqJ7Ter1XS1bkV4L9pgjDz7dh3cpH6HC67/lUGi
+	wnicZgetKRIq4WCDoxkIMEP8jVXatH8usgtZRuUvYzBu9SJaY6dawaaxfGkwHwa/UQz35XBPVxS4/
+	1twDY4XXsb1MPwgLsZfu/iE8rw+mZq8lbmv3mSO0W30PGKAQf5cREyRA0rM1ntDFBYl47YenBYshQ
+	zZi90y/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcKW5-0000000DVtv-0TYQ;
-	Tue, 20 Feb 2024 07:26:13 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1rcKxZ-0000000DaUm-0P7M;
+	Tue, 20 Feb 2024 07:54:37 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcKW2-0000000DVsj-0y8E;
-	Tue, 20 Feb 2024 07:26:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1708413971; x=1739949971;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=4ZdxL7Umt/9O+UgZJKJOr1w06aqDDKOF2canpC9dDOM=;
-  b=ls8BbGdFMTVu9BSlDfmctGyFTS/8satWZigx55rkwZ9TPSR9jKa+qJVy
-   GvHZnvwAsiUr893JJ0/OKDi7UmgKasSI9OBhvv7NkzYdBMLO3mA7EO3+u
-   HtVwMOxUr6yTu7eMOtW39PLaqIUNMyYDwqqK2u1ldosbcJQMwGnaMOdWa
-   ILZTro3ISA7WcxCeCesRvsDJcZobnBZAb/PlpBzteieB+V1oPCkmZwDeP
-   FoOFg6+zvQBxHI+svMmki+1GCEvusA6iki0aOTRcuhBzywuqnOvH8wRWT
-   +95d/PUWoi4CwVT7jf8fTseG/1TS0rmmWdjvgWttuO+SvltaXps+ag3oc
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10989"; a="2629620"
-X-IronPort-AV: E=Sophos;i="6.06,172,1705392000"; 
-   d="scan'208";a="2629620"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Feb 2024 23:26:09 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,172,1705392000"; 
-   d="scan'208";a="9386547"
-Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
-  by orviesa005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Feb 2024 23:26:02 -0800
-Received: from kekkonen.localdomain (localhost [127.0.0.1])
-	by kekkonen.fi.intel.com (Postfix) with ESMTP id 63F5B11F7E1;
-	Tue, 20 Feb 2024 09:25:59 +0200 (EET)
-Date: Tue, 20 Feb 2024 07:25:59 +0000
-From: "sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>
-To: Zhi Mao =?utf-8?B?KOavm+aZuik=?= <zhi.mao@mediatek.com>
-Cc: "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>,
-	"heiko@sntech.de" <heiko@sntech.de>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"robh+dt@kernel.org" <robh+dt@kernel.org>,
-	"yunkec@chromium.org" <yunkec@chromium.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"dan.scally@ideasonboard.com" <dan.scally@ideasonboard.com>,
-	"gerald.loacker@wolfvision.net" <gerald.loacker@wolfvision.net>,
-	Shengnan Wang =?utf-8?B?KOeOi+Wco+eUtyk=?= <shengnan.wang@mediatek.com>,
-	"hdegoede@redhat.com" <hdegoede@redhat.com>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"linus.walleij@linaro.org" <linus.walleij@linaro.org>,
-	"andy.shevchenko@gmail.com" <andy.shevchenko@gmail.com>,
-	Yaya Chang =?utf-8?B?KOW8tembhea4hSk=?= <Yaya.Chang@mediatek.com>,
-	"mchehab@kernel.org" <mchehab@kernel.org>,
-	"jacopo.mondi@ideasonboard.com" <jacopo.mondi@ideasonboard.com>,
-	"jernej.skrabec@gmail.com" <jernej.skrabec@gmail.com>,
-	"bingbu.cao@intel.com" <bingbu.cao@intel.com>,
-	"tomi.valkeinen@ideasonboard.com" <tomi.valkeinen@ideasonboard.com>,
-	"10572168@qq.com" <10572168@qq.com>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
+	id 1rcKxV-0000000DaSm-44UH;
+	Tue, 20 Feb 2024 07:54:35 +0000
+X-UUID: 46a3872ccfc511ee9a263b4415211400-20240220
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=AU99aj+tc/EoXnYuy8d1LbsX60oVqkjY+Tw7/iiXduA=;
+	b=UIuos9h8kE9A81Awo1S73rqOMDnPyjHVzXAZNUKuvxev96Z3r0KZnNe6GtKw9B+PPX7zEXHpOD6dZvapkmUULzHVUts1Q9H7cXqYbb48HwLpZpUWbMIo8OF0pGVFkGm9a1cVTILL9t2PUubjwzbMxpOyObKKKLH7geWhdnAwQyc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:aac3d229-4870-4845-b304-e05b4899ed3f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:f62dfdfe-c16b-4159-a099-3b9d0558e447,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 46a3872ccfc511ee9a263b4415211400-20240220
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 649875612; Tue, 20 Feb 2024 00:54:29 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 20 Feb 2024 15:53:58 +0800
+Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 20 Feb 2024 15:53:58 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=DUnHD/tD69cffze0U6mHkik9eSXacxje8+sKSuGsqdLn35s2JS39RW3I+pqVL7wwzdJCiWodgYB7FT83cwRbEsUsnpOHpMCB+3HaqxWwlyIDUsjf5M+uDI2hmrRnIo1jj9ehD0NQnwZqYSf5YxCqxV2r9hIIUmKJzQqZVuMPgQ9/v1xlOvvYWL85mGUU/qMdoVqjpIPryvreIDqAutUNINcgr+E1YBZPjAXcRrpToUF3seP7vImQ1/A6B0AhnBzFrjjRyDuPHZFLdpCevsVVyfP5+qgwXgIiKCPO5+qEzn2KJ5bV9ckQW5Pmy8MVV5vWYr2hTnIIDbFmf8bXHxMGLg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=AU99aj+tc/EoXnYuy8d1LbsX60oVqkjY+Tw7/iiXduA=;
+ b=EET8QlJkjBqm1qnjPiCoMxBuXNtnMou2H4pv+pA71Xxbulu0R8kaHcgfoSgdmPGgZhzqjAHCuKGBUvIbahmV/qlodrTr9gpJSxDkDQJv75FtQTRcCuzPwG3QdK+C48H/QRZFQKECB4t+Ea3UCYx/07HtVTQUD3beyWAcoOabUc6RyK8DoNcHA101YvSXM8ZX/KSuVf2l5qnUjW0xEm+q3/5PITPK4kdq3qEhEL6TFnSU8HB46lCywDEOKpPEtmIbvgRd/aOd6mG8/MKAGO37eSohTuoacfwM/paOXzlRNJUHeTEAYAvUsz5Zeo+3RDscjVxa/nX5H5vu60MDLINnmg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=AU99aj+tc/EoXnYuy8d1LbsX60oVqkjY+Tw7/iiXduA=;
+ b=PL5Dp+otS87Rh42DGpKOg8EVDw/nHEuz424TGcpN5nJNuHmRSHctkO98rwX/hRnaVQkLYxo0arRR6VSjt8aqkfCpWqPHEpXYYW7dShGjhcISymrqbK3+8kk+78y/UVi1VSrD+XCJ0S/cQpu8q8b5r0rFHvkLU0rTXa8aYTtnVag=
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
+ by KL1PR03MB7174.apcprd03.prod.outlook.com (2603:1096:820:c9::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7292.32; Tue, 20 Feb
+ 2024 07:53:56 +0000
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::b705:ea58:46d:e98d]) by TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::b705:ea58:46d:e98d%4]) with mapi id 15.20.7292.029; Tue, 20 Feb 2024
+ 07:53:56 +0000
+From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
+To: =?utf-8?B?TWFjIFNoZW4gKOayiOS/iik=?= <Mac.Shen@mediatek.com>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+	=?utf-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
+	"daniel@ffwll.ch" <daniel@ffwll.ch>, "p.zabel@pengutronix.de"
+	<p.zabel@pengutronix.de>, "airlied@gmail.com" <airlied@gmail.com>,
 	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"macromorgan@hotmail.com" <macromorgan@hotmail.com>
-Subject: Re: [PATCH v4 2/2] media: i2c: Add GC08A3 image sensor driver
-Message-ID: <ZdRUB92gkbRGPyr_@kekkonen.localdomain>
-References: <20240204061538.2105-1-zhi.mao@mediatek.com>
- <20240204061538.2105-3-zhi.mao@mediatek.com>
- <20240206184542.GE2827@pendragon.ideasonboard.com>
- <598f62bbb55157eec1e23dd1dbc307fea3851b21.camel@mediatek.com>
- <20240220030104.GF20376@pendragon.ideasonboard.com>
- <115698c0c549e747026cc8841a3bd571533f8e6f.camel@mediatek.com>
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+CC: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>,
+	=?utf-8?B?U2h1aWppbmcgTGkgKOadjuawtOmdmSk=?= <Shuijing.Li@mediatek.com>
+Subject: Re: [PATCH v2 1/3] Subject: [PATCH] drm/mediatek/dp: Add tee client
+ application for HDCP feature
+Thread-Topic: [PATCH v2 1/3] Subject: [PATCH] drm/mediatek/dp: Add tee client
+ application for HDCP feature
+Thread-Index: AQHaV/ePwyvGD4XnJkOIaHAXSCsAzLES8/iA
+Date: Tue, 20 Feb 2024 07:53:56 +0000
+Message-ID: <e06c53745d18eb2b275e677e61cbd258b96f7ebf.camel@mediatek.com>
+References: <20240205055055.25340-1-mac.shen@mediatek.com>
+	 <20240205055055.25340-2-mac.shen@mediatek.com>
+In-Reply-To: <20240205055055.25340-2-mac.shen@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|KL1PR03MB7174:EE_
+x-ms-office365-filtering-correlation-id: 3ce7fef9-c09e-419a-a01c-08dc31e916e1
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: WzvrGr5mQtVuSiSmH0CsTFIrvBxdXHkZEjWQpZ0yQWdgaQME+q3151+uocVNLnC2BzDJFpWnKSCXznwlEZBj6r+yoma3B3Du2+Gh/+p7rPpc4Aa/7TCiZv2RsTTYt2zXNErwV5b5cRREZW2XoxNdR/c3jhJY/8Y19SodlgKbPUkzRYZNnnc8aaFqG0OTire7t7HWceUVfI/XB21GLMOA9hAyHVCwdetvNZIb0iZy77OVg7NrTjt/6HVcnKUeKhXshsIyaoK9AyOQOhIMeMSxFb6fiOBjFeFPuuuinJd0ztrEGVbVsro9h75I80Xu8uwuJ3kfHJQ9nsVFnMNvjxn5HnApJlebu1N0dQ9u27eKtRro2vyNQFvwQouQJXDDhr0SohxMR7pv6QVzE6sBqMCvLcRCjptdOO7ZTWKkcm4nW1brcDjt/01KA2OAp3fDeiovdz9XvmjxEh35+xZW+NA3qqF8CeHW9bx4RTRC4GH13/nGw/kEe7slbGDTWAUiwBK7QMfWg0hdfJ+6aPRrEPPivyDWTaW5iOR8RimqF+Yk/zHd0Qj3rbjFpXz+rzv1qy0WxGQ5yoai0ginyUqWMNYOvhoTiy/CQoc1skK9brWvKew=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(38070700009);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?TFlJK2JGTXpqTUxpTzZjd0xNRGRUU2dpbE4wYURxYmhnWHhPVGZYcHhVd0Z0?=
+ =?utf-8?B?aTNnNW9CWk9LeUw1M0dhZ1B5RE8xZ3hINnNJY21xallmNEdnMG5BaGJiYlh5?=
+ =?utf-8?B?K0RVdzltVC9NS3BWRitqS0R4VHhyTGdEMS8yTW85M1pKSlJ1aUgxYkFhQlVL?=
+ =?utf-8?B?ampOdWZrV2NxNktubWloWUc2NXdRV0NlSmREVWN0KzFnSG15Wm1JR2dNblN4?=
+ =?utf-8?B?TWxDQ1BKRXRYdGFtTGhLQmZUMTFJaUNBVjNQUnpJdmlLeFNiWElDOFJmTGQw?=
+ =?utf-8?B?Z2RvaW11amswb1dFdlFzMmJyVGlOaW5UWTFhK0pGbGdvTzJlNjdXU3ZucUZx?=
+ =?utf-8?B?dW9pTzU2WGxydWNTYWt5cjlsdmV0QmdzRWYxeEZEVU1ONEtLNjVsdHo3bzYz?=
+ =?utf-8?B?U0hWYjIwUlpPTDN1Y0VyT204SXkveHVOY1dEdGlxTm5OeXFxK3pyL2V4ajAv?=
+ =?utf-8?B?dzFpdlhJYlMrV2xWTHRON1B5cUtuM2loU291THRIbzViRWxLUnA3RlFDanpJ?=
+ =?utf-8?B?V1oybnR2Szd3NHluRFowQWc5Wmk3NFdUUzN2THdUSnU1bDZsZ2lscXM5Tkpv?=
+ =?utf-8?B?TnR1N2I5Z3BEV2NNWWN2V1hoOVluT0JzUTFHQ0Z6cFZxdjQrR2E3Y0VndnJG?=
+ =?utf-8?B?cUxHb3VBWUtNemtrV3pyS0dSSzFnL0dHSXRwakdlZG96ZkFDVGwyWE9pY3JU?=
+ =?utf-8?B?Z1FSRStEUlR5YUpjOUZXTFltcFZ3YndGZjdDdEowWGdIYVY1ZXArY3dvNm91?=
+ =?utf-8?B?QmVnK1F6UCtNbHNwcVFCY2ZGZGJrK3F5L01Ga1l5RnJWRGRRVE9VREppVGdk?=
+ =?utf-8?B?d0l1dXBIcTFIRWJXaVhWb015d3NmM3FPOCtkcFlDMmZBS0lDVTF1a3RyL25k?=
+ =?utf-8?B?Sk05OWtYVnZVUDVEQ0FyY2lUNjJreXlsaExBRkpsUjljcFFKaERCMGE2RXRK?=
+ =?utf-8?B?RmVrZEVYWjc4RmovN0ZCc1dmTVNNTGozbGN6VDJQd1BxeUY2bFdNTTFHdlk2?=
+ =?utf-8?B?OEtzZ1h0YUJhWEVFSUQvbUdTbStGUjhqRUtnYXdqZEZXSWJLUGxsZE9vUFhE?=
+ =?utf-8?B?T2lBKzNwTjJtNEpoZHRseEJvdkFYaVhHT3NFSHpmUUh3enl2cG1EbmRkT3My?=
+ =?utf-8?B?dGVMWUNFTldXa2kzTDBFeGFvYjF1MCtuT2dCRWhEdHJwazQybm9nZU5ialdl?=
+ =?utf-8?B?c1o1NklPdDBFTm9PNTdCL0VoSU1GRTNwN3lNSStrelRPVDZCT1dTeHdNVkRz?=
+ =?utf-8?B?dFpldmcyaitwQUNnNGlIQXd0Um5ud0VCMldkakRBdmR6a1A2QjJOejVjeG5m?=
+ =?utf-8?B?Mng3NmpITE9sdXNkL2RoaXJBS0w1QjMwbVJkcGlZWHp5UXIvblhsaFZtSVE2?=
+ =?utf-8?B?ejBxdkdROTJHN1k2eUJqMENqZkxSRWRIQTEycTBEcTM1KzkzTkdnVVBRT3hN?=
+ =?utf-8?B?MlRzSURZVXZZRHVEeWRCUnMveDdmcE14SkVFSGZzUXBpTDBkaTdtTWZ4aEor?=
+ =?utf-8?B?OU45MDNqSVd0YWZzL3psZE9FVFJaa1BMREs0L3p3ZGpzSk9GekJGSzMzeWlZ?=
+ =?utf-8?B?R0xHcnVoVHlKUmdWcTc0KzVPMmNOaFY1b052UnNGdlFRUHVncmI3ZGY1N3hx?=
+ =?utf-8?B?M2ZBclNmUWdzVG9qSFpMUWgwcVQ4U1ZPMFE4R2ZlTkhhUU9ic1J2Q2JudVFs?=
+ =?utf-8?B?cVJzd3lrckNDUDdXZmgzL1dpaEJhT2JwMk9ka0Q1bDlNZlNpZzI3NnFzamlW?=
+ =?utf-8?B?UW5zWTFjY1U5S2lkUU9SQWRaMGdhZ2tPMjkwMVFnYW1yOEYrcGFydFVtbXJz?=
+ =?utf-8?B?UHJpOHZMY2E3ZVlqVkxIc1Z3NmZNSEVlVldGZDBsdmRIM1k5THhKMkJEd2NZ?=
+ =?utf-8?B?OWlVeExPZXdESDlZUXBSUGpSU2dMQk42QkFiY09DaW1mdGIwM3NQQ2RHVjNy?=
+ =?utf-8?B?QUVGS1hkWFhsOW1icmJPOTh5dlZPSTVBUHpsaXFVZ2RIZlNLTG4vR0lwdys5?=
+ =?utf-8?B?eFpYK29yYW52c3A5ZVdVamhxZ2Z1aEJwZ0RJN2ZRZGl0WTVMVnJ3dFZmQUFF?=
+ =?utf-8?B?UFBYaEtmckcvdTBid1BIeURuRlkxc2ZBa3pjZmVZMWNqVitKU1k5dFJXMVVC?=
+ =?utf-8?Q?Far3T5YQySMv7potfbeqm4cZ4?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <CA2105620555954E9A8F4EB196BC0FDF@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <115698c0c549e747026cc8841a3bd571533f8e6f.camel@mediatek.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3ce7fef9-c09e-419a-a01c-08dc31e916e1
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Feb 2024 07:53:56.0745
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: U3lHZmS339M823LWSc1L+IOL4JUXz8OovmFQ1W6Icj4wtUUpvHggfwSaiyptuiJIA9y7CkmnqPb45Mi8ZTxr+w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB7174
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--8.810500-8.000000
+X-TMASE-MatchedRID: scwq2vQP8OH4OiVTWoD8RNOdGz1/8ORmjLOy13Cgb4+qvcIF1TcLYJsn
+	GP/L/vuk2tzxWRuOm/cRfF2ohY7CQYdM1kFwmWfIfxzygoxuBhgpWss5kPUFdBL6MU7t349bxUD
+	TxL3vuSCrOei4RDEWn7wnrf2ISN+oH0nltmolsgldtN+hx8BZv/5KjtsWKl+WYdHWCsGFCe0/H4
+	pb4un6/UtMHXSjYB7Ng2n1XHjucgwM8jMXjBF+sNIFVVzYGjNKWQy9YC5qGvz6APa9i04WGCq2r
+	l3dzGQ1aA1+IVCU7MQUpVEztVaD8SL5bIwVEU8Z91EzlyY9jskZE7kGza2v4qiyCHlYu4e2kGjq
+	8KBlWkaSeseYs5sfQiElRDXuZJmeEaI2E6JbeiQ9XGVRM/cag7sCWxFv9DtZChiU+c//xP8WW1i
+	V/cL+I0MMprcbiest
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--8.810500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: E6C0AC878B2EF361E61CA1DDE399A315D449E7807F026E9B8C94D5DBE4E4E1DE2000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240219_232610_471324_A1772102 
-X-CRM114-Status: GOOD (  40.73  )
+X-CRM114-CacheID: sfid-20240219_235434_059837_B28271F5 
+X-CRM114-Status: GOOD (  13.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,164 +198,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Zhi,
-
-On Tue, Feb 20, 2024 at 05:45:54AM +0000, Zhi Mao (毛智) wrote:
-> Hi Laurent,
-> 
-> Thanks for you reply.
-> I'd like to ask for advice about how to contrl "reset-pin", please
-> check the below comments.
-> 
-> On Tue, 2024-02-20 at 05:01 +0200, Laurent Pinchart wrote:
-> >  	 
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >  Hi Zhi,
-> > 
-> > On Tue, Feb 20, 2024 at 02:12:26AM +0000, Zhi Mao (毛智) wrote:
-> > > On Tue, 2024-02-06 at 20:45 +0200, Laurent Pinchart wrote:
-> > > > On Sun, Feb 04, 2024 at 02:15:38PM +0800, Zhi Mao wrote:
-> > > > > Add a V4L2 sub-device driver for Galaxycore GC08A3 image
-> > sensor.
-> > > > >
-> > > > > Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
-> > > > > ---
-> > > > >  drivers/media/i2c/Kconfig  |   10 +
-> > > > >  drivers/media/i2c/Makefile |    1 +
-> > > > >  drivers/media/i2c/gc08a3.c | 1448
-> > ++++++++++++++++++++++++++++++++++++
-> > > > >  3 files changed, 1459 insertions(+)
-> > > > >  create mode 100644 drivers/media/i2c/gc08a3.c
-> > 
-> > [snip]
-> > 
-> > > > > diff --git a/drivers/media/i2c/gc08a3.c
-> > b/drivers/media/i2c/gc08a3.c
-> > > > > new file mode 100644
-> > > > > index 000000000000..3fc7fffb815c
-> > > > > --- /dev/null
-> > > > > +++ b/drivers/media/i2c/gc08a3.c
-> > > > > @@ -0,0 +1,1448 @@
-> > 
-> > [snip]
-> > 
-> > > > > +static int gc08a3_power_on(struct device *dev)
-> > > > > +{
-> > > > > +struct i2c_client *client = to_i2c_client(dev);
-> > > > > +struct v4l2_subdev *sd = i2c_get_clientdata(client);
-> > > > > +struct gc08a3 *gc08a3 = to_gc08a3(sd);
-> > > > > +int ret;
-> > > > > +
-> > > > > +ret = regulator_bulk_enable(ARRAY_SIZE(gc08a3_supply_name),
-> > > > > +    gc08a3->supplies);
-> > > > > +if (ret < 0) {
-> > > > > +dev_err(gc08a3->dev, "failed to enable regulators: %d\n",
-> > ret);
-> > > > > +return ret;
-> > > > > +}
-> > > > > +
-> > > > > +ret = clk_prepare_enable(gc08a3->xclk);
-> > > > > +if (ret < 0) {
-> > > > > +regulator_bulk_disable(ARRAY_SIZE(gc08a3_supply_name),
-> > > > > +       gc08a3->supplies);
-> > > > > +dev_err(gc08a3->dev, "clk prepare enable failed\n");
-> > > > > +return ret;
-> > > > > +}
-> > > > > +
-> > > > > +usleep_range(GC08A3_MIN_SLEEP_US, GC08A3_MAX_SLEEP_US);
-> > > > > +
-> > > > > +gpiod_set_value_cansleep(gc08a3->reset_gpio, 1);
-> > > >
-> > > > Are you asserting reset when powering on ? That sounds wrong, you
-> > should
-> > > > de-assert reset here (and acquire the reset gpio in probe() with
-> > > > GPIOD_OUT_HIGH). Drivers should use logical levels for GPIOs,
-> > setting a
-> > > > GPIO named "reset" to 1 should assert the reset signal, even if
-> > the
-> > > > physical signal is active low. You may have the wrong polarity in
-> > the
-> > > > device tree.
-> > >
-> > > According to the sensor power sequence sepc, "reset" pin should be
-> > pull
-> > > from low to high after "dovdd/dvdd/avdd" power on, so I follow this
-> > > power sequece to pull "reset" pin high in software flow.
-> > 
-> > From a hardware point of view that's right, but the Linux kernel
-> > handles
-> > logical level of GPIOs. If a GPIO is named "reset", it is expected
-> > that
-> > calling
-> > 
-> > gpiod_set_value_cansleep(gc08a3->reset_gpio, 1);
-> > 
-> > will "assert" the reset signal, setting it to a logical "reset =
-> > true"
-> > level. This maps to the hardware 0V output level, as the signal is
-> > active-low. To achieve this, define the reset GPIO as active low in
-> > DT,
-> > and the GPIO framework will invert the signal for you. You should
-> > then
-> > call
-> > 
-> > gpiod_set_value_cansleep(gc08a3->reset_gpio, 1);
-> > 
-> > in the driver when you want to assert reset (set it to 0V), and
-> > 
-> > gpiod_set_value_cansleep(gc08a3->reset_gpio, 0);
-> > 
-> > when you want to deassert it (set it to 3.3V, or whatever the I/O
-> > voltage for the signal is).
-> > 
-> > This way all driver use logical states, and the inversion is handled
-> > in
-> > DT.
-> > 
-> 
-> Sensor power sequence as below:
->                       ------------------
->                      | | |
->                      | | | 
-> dvdd/avdd/dovdd  --------
->                                ---------
->                               |
->                               |
-> reset-pin        -------------
-> 
-> In order to match this power sequece, "reset-pin" contrl flow is below:
-> 1. config the "reset-pin" is "active-high" in DTS:
->     reset-gpios = <&pio 19 GPIO_ACTIVE_HIGH>;
-> 
-> 2. image sensor driver probe function:
-> gc08a3->reset_gpio = devm_gpiod_get(dev, "reset",
-> GPIOD_OUT_LOW);  //init "reset-pin" is low
-> 
-> 3. image sensor driver power_on function:
-> gpiod_set_value_cansleep(gc08a3->reset_gpio, 1); //pull "reset-pin"
-> high 
-> 
-> so, the expect state of "reset-pin" is from low to high.
-> If I am wrong, please correct me.
-
-
-From Documentation/driver-api/gpio/consumer.rst:
-
-	As a consumer should not have to care about the physical line
-	level, all of the gpiod_set_value_xxx() or
-	gpiod_set_array_value_xxx() functions operate with the *logical*
-	value. With this they take the active low property into account.
-	This means that they check whether the GPIO is configured to be
-	active low, and if so, they manipulate the passed value before the
-	physical line level is driven.
-
-I.e. when you want to enable reset, you set the value to 1 in the driver. I
-think you're now setting the value to 0 in that case. The opposite for
-disabling it of course.
-
--- 
-Regards,
-
-Sakari Ailus
+SGksIE1hYzoNCg0KT24gTW9uLCAyMDI0LTAyLTA1IGF0IDEzOjUwICswODAwLCBtYWMuc2hlbiB3
+cm90ZToNCj4gQWRkIHRlZSBjbGllbnQgYXBwbGljYXRpb24gd2hpY2ggd2lsbCBiZSB1c2VkIGZv
+cg0KPiBIRENQIDEueCBhbmQgMi54IGF1dGhlbnRpY2F0aW9uIGluIERpc3BsYXlQb3J0Lg0KPiAN
+Cj4gQ2hhbmdlcyBpbiB2MjoNCj4gLSByZW1vdmUgY2EgZm9sZGVyLCBhbmQgY2hhbmdlIGZpbGUg
+bmFtZSB3aXRoIGxvd2VyIGNhc2UNCj4gLSByZWZpbmUgdGhlIHRjaV90IHN0cnVjdHVyZSB0byBt
+YWtlIHRoZSBkYXRhIHRvIHRlZSBjYW4NCj4gICB0aHJvdWdoIHRoaXMgc3RydWN0dXJlDQo+IC0g
+cmVtb3ZlIGF1eCBhbmQgcmVncyBmcm9tIG10a19oZGNwX2luZm8gc3RydWN0dXJlDQo+IC0gcmVt
+b3ZlIHNvbWUgZGVmaW5pdGlvbnMsIGFuZCB1c2UgdGhlIGRlZmluaXRpb25zIGluDQo+ICAgaW5j
+bHVkZS9kcm0vZHJtX2hkY3AuaA0KPiAtIHJlbW92ZSB1c2VsZXNzIGNvZGUNCj4gcGVyIHN1Z2dl
+c3Rpb24gZnJvbSB0aGUgcHJldmlvdXMgdGhyZWFkOg0KPiBodHRwczovL2xvcmUua2VybmVsLm9y
+Zy9hbGwvOGZmZjU5YjU1Njc0NDlkODIwMWRkMTEzOGM4ZmENCj4gOTIxOGE1NDVjNDYuY2FtZWxA
+bWVkaWF0ZWsuY29tLw0KPiANCj4gU2lnbmVkLW9mZi1ieTogbWFjLnNoZW4gPG1hYy5zaGVuQG1l
+ZGlhdGVrLmNvbT4NCj4gLS0tDQoNCltzbmlwXQ0KDQo+ICsNCj4gK3N0cnVjdCBoZGNwMl9oYW5k
+bGVyIHsNCj4gKwl1OCBtYWluX3N0YXRlOw0KPiArCXU4IHN1Yl9zdGF0ZTsNCj4gKwl1OCBkb3du
+X3N0cmVhbV9kZXZfY250Ow0KDQpVc2VsZXNzLCBkcm9wIGl0Lg0KDQo+ICsJdTggaGRjcF9yeF92
+ZXI7DQoNCkRpdHRvLg0KDQo+ICsJYm9vbCBzZW5kX2FrZV9pbml0OjE7DQoNCllvdSBzZXQgc2Vu
+ZF9ha2VfaW5pdCB0byB0dXJlLCBidXQgbmV2ZXIgY2hlY2sgaXQsIHNvIGl0J3MgdXNlbGVzcywN
+CmRyb3AgaXQuDQoNCj4gKwlib29sIGdldF9yZWN2X2lkX2xpc3Q6MTsNCg0KVXNlbGVzcywgZHJv
+cCBpdC4NCg0KPiArCWJvb2wgc3RvcmVkX2ttOjE7DQo+ICsJYm9vbCBzZW5kX2xjX2luaXQ6MTsN
+Cg0KWW91IHNldCBzZW5kX2xjX2luaXQgdG8gdHVyZSwgYnV0IG5ldmVyIGNoZWNrIGl0LCBzbyBp
+dCdzIHVzZWxlc3MsIGRyb3ANCml0Lg0KDQo+ICsJYm9vbCBzZW5kX2FjazoxOw0KDQpVc2VsZXNz
+LCBkcm9wIGl0Lg0KDQo+ICsJYm9vbCBzaW5rX2lzX3JlcGVhdGVyOjE7DQoNCkRpdHRvLg0KDQo+
+ICsJYm9vbCByZWN2X21zZzoxOw0KPiArCWJvb2wgc2VuZF9wYWlyOjE7DQoNCllvdSBzZXQgc2Vu
+ZF9wYWlyIHRvIHR1cmUsIGJ1dCBuZXZlciBjaGVjayBpdCwgc28gaXQncyB1c2VsZXNzLCBkcm9w
+DQppdC4NCg0KUmVnYXJkcywNCkNLDQoNCj4gKwl1MzIgc2VxX251bV92X2NudDsNCj4gKwl1MzIg
+cmV0cnlfY250Ow0KPiArfTsNCj4gKw0K
 
