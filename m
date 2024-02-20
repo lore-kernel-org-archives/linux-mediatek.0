@@ -4,185 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BC6EC48BC3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Feb 2024 09:31:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 721A6C48BC4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Feb 2024 09:37:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SmS2R2/xnNzkZ+l4nJwwVa0vHnWAUHSzNi1JWY6oJR4=; b=mlyjRGSOuLagZ0zacbr2ZnIuu8
-	vfjJCKv4cdvt8MSaZNZ/zKI2L7nIjAVsPiC8QpEb8PxCECvUwz/qESrBx40gVMn7x3x5B5syT5X/u
-	8dk0gPSys6J+sJGTu/YhDoXXYGg6QuP7IfwSd/FbgLP/abwjwA/bETUukl3MD51bWNFfKNJlfpOaH
-	mepGaWg4zhMCJqCQZjCUlrJxAorti/75fFBJLCehc1apY+veqMgMlPn2XjOzMd/C3qswXxrBvCDVR
-	8kyY/lu6IOHLNx2VE+/YDb/mY7Z7qFFKY0CJM2rh5GOs7JsjM4mhrjhRKCNroBs32yUeILr/g9e3X
-	Y9KIILPA==;
+	bh=/+VjVeu6YW5cdiWhf4xJoF6pgv0RKnyjDr8r/B5h97o=; b=l4Et0bckS9S7je9fPYE/ARx2QR
+	78zh40pOzBDbzt3k8JKqAWwaMSMoBiHgknWA/QCsNQcJ8mcFI/bMvpiFI+hXiW4JusFJ06cW4PV5G
+	eXO3tXmxFvAOzazCH067vbFmPEu/B440xGOUIQNDMMb7jCcoQOtK48Pa3wjemOyruFnGfSpYe/gZZ
+	XnwXFE3PAybiV7j6jc3ZXJarli0UHB7c7h1pM/S3/eHpC7DAp8Yvbjy4xsjFy1sRXETCZXIbwRp99
+	SYGlYJENHR6HYPOyfbWx07HlqOKNQsbtMJKY8OWb/aHYHpQ7ZeuD2o1N6ssAc6sslmvT3c177fMnf
+	SmANxVTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcMTF-0000000E00W-0Lj0;
-	Tue, 20 Feb 2024 09:31:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rcMZ3-0000000E1c9-0gMd;
+	Tue, 20 Feb 2024 09:37:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcMT1-0000000DzoF-1plb;
-	Tue, 20 Feb 2024 09:31:14 +0000
-X-UUID: c533edaecfd211eea0bf134e88e6c2dc-20240220
+	id 1rcMYz-0000000E1aH-1hBq;
+	Tue, 20 Feb 2024 09:37:22 +0000
+X-UUID: a2474ce0cfd311ee9a263b4415211400-20240220
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=SmS2R2/xnNzkZ+l4nJwwVa0vHnWAUHSzNi1JWY6oJR4=;
-	b=Q91zewUPq5/Vj0R0pn0k+tIrgrt5+AHQKh43PPwFQXLzFKziNdbC/KgkcyzC/Fm+1pvSx4ya22yP4NeU3ECDb+YSsjLPghTqsRZiNoQ9qmGGB7i26NmudiEAFyHmvU/FnDubmsLAz7wdX+BYcm9uxqmxenkpC8rDvpLMTdgZTIQ=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=/+VjVeu6YW5cdiWhf4xJoF6pgv0RKnyjDr8r/B5h97o=;
+	b=U6ULFgyvSS5sMKuUnHeQgB+BV8HQ8mgRLQJUUbaob/kAHsrgxGWZ84WY2UFeb0Xug34T9ep9tw4rBjOo7p2f5DmuLVzA2fb5adicuel6wKkDDG0k6j6ZybhEEi2Dv3LxqU4ki4GFv9kgBOvNXWqOtgXVLn5wnhko6wy1HZVMPf8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:c3d4bbd4-d850-4204-898d-8ffeaad5def2,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:c6589980-4f93-4875-95e7-8c66ea833d57,B
+X-CID-O-INFO: VERSION:1.1.37,REQID:6d7bcf0c-d5b2-4752-9be8-3d8115d0b9b9,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6f543d0,CLOUDID:3864fefe-c16b-4159-a099-3b9d0558e447,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: c533edaecfd211eea0bf134e88e6c2dc-20240220
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: a2474ce0cfd311ee9a263b4415211400-20240220
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 562947875; Tue, 20 Feb 2024 02:31:05 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+	with ESMTP id 2125340792; Tue, 20 Feb 2024 02:37:16 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 20 Feb 2024 17:30:30 +0800
-Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 20 Feb 2024 17:30:30 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YhnvIbaJivbB6GtHBmrI7b6LFTmxBPqEqa7w0jkXu+le5pmbYLbYrefXfRAtY0I2cDFJ+fCFBr5JuuZKvXs0c/8ctTLANpyyvzrKrXIvWbQdog73yXbIEm35KjST5PR6KB0b8gotOJuUdm5FxKyE4qeUh52L8B6taQqVG7M0zpzgCBFtoONlulB0bodd5Yyi//BnkJbM/C4d/Q3wT8EssrgWym1JR4aWk8eNbJuHxD4f4YKOQLAbpLdW+Ndan4VOdHX32hkjcUFTIsfxRdYQYj7sxvuHFWsXk+VH2Rrir4WOYzLPCrg4Xzuembq+liGmsXafsrPOji07xloROo9iGw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=SmS2R2/xnNzkZ+l4nJwwVa0vHnWAUHSzNi1JWY6oJR4=;
- b=SdBzCoCPAsvYUPU7QDcfyzQT85GRbMaVX+01A4mzlQJQ5s9guZrSkre4XJibEIJhW2L7KwkOIT2/77uJHKUav9160Rit4Zb8QlLvSem4A4HKA72eqwH454gKj02ZVtAZWXJ/V+g9QL4O5//r5XBxJEMY58bB0+pv3YXwd1zb4JScgKDsa3Xo8u6OIADLMk73G9VzulwPaAIVWPy8gKIl9GWOfBKP6bnC/APC0pT7liToHn8iuLnjvZLBWxOytPtuj98S85COzvF+MHIjXW8j6ZiXAn4dpYdYGNCkG/OheBYjqF7Dl2xjwC++Qee4ToIaIAcThp0pa/1yNXzd6MAt9w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SmS2R2/xnNzkZ+l4nJwwVa0vHnWAUHSzNi1JWY6oJR4=;
- b=CSUAog8O5oLuyE0EuQWdYAobb/miSiP48T9uslTwbZhF3/2NZMgf6FPpnfTYdyXtYAc5wC+TBo8eJIIDHmAofbQpdzreLm2l1C2VdOvT+fAEqH8be2tj5ncuoE6pYNcWeugwRgDJo1PUqbqnevLmV6uHtp6Ugjnr8ybGzcgX1o4=
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
- by SEZPR03MB8313.apcprd03.prod.outlook.com (2603:1096:101:19c::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7292.39; Tue, 20 Feb
- 2024 09:30:27 +0000
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::b705:ea58:46d:e98d]) by TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::b705:ea58:46d:e98d%4]) with mapi id 15.20.7292.029; Tue, 20 Feb 2024
- 09:30:27 +0000
-From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-To: =?utf-8?B?TWFjIFNoZW4gKOayiOS/iik=?= <Mac.Shen@mediatek.com>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
-	=?utf-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "p.zabel@pengutronix.de"
-	<p.zabel@pengutronix.de>, "airlied@gmail.com" <airlied@gmail.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-CC: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-	=?utf-8?B?U2h1aWppbmcgTGkgKOadjuawtOmdmSk=?= <Shuijing.Li@mediatek.com>
-Subject: Re: [PATCH v2 2/3] Subject: [PATCH] drm/mediatek/dp: Add HDCP2.x
- feature for DisplayPort
-Thread-Topic: [PATCH v2 2/3] Subject: [PATCH] drm/mediatek/dp: Add HDCP2.x
- feature for DisplayPort
-Thread-Index: AQHaV/eVzqRhxdMZlkypH21h174pubETDu6A
-Date: Tue, 20 Feb 2024 09:30:27 +0000
-Message-ID: <40e68d74c0bb0df15f610fde017116357b40560d.camel@mediatek.com>
-References: <20240205055055.25340-1-mac.shen@mediatek.com>
-	 <20240205055055.25340-3-mac.shen@mediatek.com>
-In-Reply-To: <20240205055055.25340-3-mac.shen@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|SEZPR03MB8313:EE_
-x-ms-office365-filtering-correlation-id: e412ba42-e129-4ecf-9149-08dc31f692b0
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: FUNo8beYLdb0IcaSfmupKBtUsB8aj8Bca5K+dZn06NJ7lbiqPc+k96MVNDAngx5uyMS2cj/RomhjPbtaQknksrRcarHy3bjRm80yVd95E0ONydvP0ymVdbZSuTuqNHNoah24cwcyriObCwmczbk+FI37Wv3b/cycdfgkEa8QXKFNG+JumyBJvzP2PLaxkmgT8/ZCQBfpbkSPrVU8jlXXkb0J/2bhaazTHMc7rJHbQr9BATimJYuPfm3tVpHORjqQKYAVHdJhH3jOWbMLcVFkBiuVkJI2fhjDTKMx6tPp86LIx++YHalh6dtQMlXMgNUJE3qhznnKzVsenmsZWIdLVaRXLLdnKj1jJfQSs43vusFMxrFPbE4Z0goaJ3dKDiw0yBbppZq0KjmvJvJMB6WrG8yuMHlPgQZgBci0COPDcNRC8FMOGoprgvlY2g/+tz+EX8kBz1Pz8CwNCBcHLNib+kelL7OtevCegZcYcly8vpR6zNSbFJbqlj/iC0hNtSBys8ma9iGkfdrfX2d2edpYaHdfTnsjrEKzswu/RToIyeKpFlrmVsnLSTCPy/+q0Dm+8Bp6HNMGV3ZLMB6qeS16v4ICPeQTvgIEY5KTsE51U+s=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(38070700009);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZzFpa1R1L3p5MTBiVXdzUG84Rkl6b0dLTUlnK2pWUDJqZEVmNG9sTkw5SGVq?=
- =?utf-8?B?ZmFCTFpIRVdjMEZpU21TaFAwNUUraXhKbnVrUzhpdHBtN3VOUGtRbUdIMGJL?=
- =?utf-8?B?MURpVHAxNERydkV4V0VHZmF6SGhZOE5YZTFYUzlmVXJOY1VtVElxK0xPS3Ry?=
- =?utf-8?B?ditUUkhDY1hGdVVZV09DaW9rT1BPMFdLSit5NXNDR0IrcnIyTXlLcjNkWXJo?=
- =?utf-8?B?K0g2NVlyd3NYVzVIY05tVjRRbUtJdUI5dnA2L3VrNytEY3V0azNjdGhtcXVQ?=
- =?utf-8?B?WDFRUDFLOVJJaEtZNlluNWRGaW1ROHE5WXRmUzJ0OXZKV1FpUG10dzJSdVc4?=
- =?utf-8?B?eklkVjBlMXEzdHQ3QUxEcEJMTXc2RWNoNjdlcVJLczRCd3dFQTJNRUJkVmdh?=
- =?utf-8?B?TnAzYkhBVXdiQm5DNGllcGN2UWdoQ2Yza253NytWdjF6M0gxMHlVM3pXSk9E?=
- =?utf-8?B?MTRFZ0plRWYyd0JjTFIyQThhbTM3a0dGRmZYcFpGL2EzUmVVTHArQnUzY1RK?=
- =?utf-8?B?ZVE4cTJsbkVseE0rMThLNXdZems0Nkx6ZXIvYTJWSUVPRndtRGd2cjloWFJw?=
- =?utf-8?B?TnoybzZkdnlIZi9yaVdhWDFwNnBKNGJtYldmbW95WklDSXZ2WEo5bTE5aU11?=
- =?utf-8?B?Sm9UL0F0Z281NldBWVhkS2VyT205QzlRZzVwbklTOHExNDNQOERLTFVyWE9n?=
- =?utf-8?B?ZGtWZ3FyQ2NQRnhjT0ErbXFDQis4OWZlbGFBSE1aVkxvOUdyUUh6djJ0U3pj?=
- =?utf-8?B?SDN1TkJLZHA0aVNoTmtsQTAwMGN3djJwbm9pQ3prRG1EMlFkeUNJSzF2QkhY?=
- =?utf-8?B?TWh4ZVJldUdveXFOOGMyMDJBQllrNGUxdktJOXo0L1lKdDI1dzhyS2xZODB5?=
- =?utf-8?B?S2VXU3VlRFkxTW1Ia3ZlTEk2SWpKeHdsQnhCSGZuc1dLNmFGYVV1Y0RHakJu?=
- =?utf-8?B?SXlua3VYeElpR256YS9CMXcrMGx5TXlhZkpJQXNuVGVsN3lJekYzSVlSN0FP?=
- =?utf-8?B?NEtLaTh0S1ZBQTNxQXVGRXFYQzN5Q3ltZi9ObFpTOUdLakJnbzZqK3JEQnNZ?=
- =?utf-8?B?Rjk0TmZQUTdsZ2wvQi9uR0RSU0pXejczUldQY1dkSUhncnBIK1MxSWVFeTdL?=
- =?utf-8?B?VTFac2tQcW9JQzQ4M0JkME9MRk5xMWRVTXh3bjVDcFBGVlp6T2J6MXNFTUVh?=
- =?utf-8?B?bXQwL1ZtQVFnR05Sdzg4VmZXcnlvY0xsYURvb1pDVk51UXpZK2dRdTRINTFG?=
- =?utf-8?B?WmZvK2RMSk1QTTV0UnRjYWxWdkpGc3Vod1dFWWdxci9IUHB5eU1TWGhROUw5?=
- =?utf-8?B?UFZmUGI4dGgrZlJsOXhFalJBQlo5S29GS1JXN3kwaE9JSDNOY3NxcjBKbVps?=
- =?utf-8?B?bGNSZExrVUV6Rm5YWW83bVQ4THZmUDNIdnR1UTZQSk9YQTZqZ1pwK25nM3k5?=
- =?utf-8?B?OTVvT3JJLzFRd2hGQzVpY3AydjY1eWdrQ1lIaXhaa0xtWHlHTzZUVko0YlFo?=
- =?utf-8?B?ejBaeHcwUmpKaVBUNkljc1B6bmVjbzRJZUtjQTZVdUpWYTh4MG1ZUU4rZUZN?=
- =?utf-8?B?cyttRGNoYVpEWE1uOXpCSmh5ODcxNlpSeHZhdk9PaTFseFNiYTJoUnQzbUhM?=
- =?utf-8?B?NVJJWW9Fb1RkdlRUZE1adHZDaXBDTE9IT20xcjVmVXNuSWlFNXZwTGJyYnp5?=
- =?utf-8?B?Y0hkYzVBaDhubno5OHdSWW0zaGdUa1JiRTNFWEptWmdnTE1ZWmord3pIMGxa?=
- =?utf-8?B?SDloSU5mWmtpeVp4ZXdjVmgvVStTa055VlJoeGJxNEtuRUIwdkY1d2RpSWpr?=
- =?utf-8?B?cEVUZDJrNFFNWHFya0Z3cXplWDdITVh1V3hmK0tGMklINjBuSlNSSWJzdENV?=
- =?utf-8?B?S0xiOFd6QmVWK2R5VFM1Mkd3bm1BaGg1c0E2TERld0dDZ1lPaWxQdEppcDV3?=
- =?utf-8?B?TzNQQ08vZkJDcDMxRDF2RTR4R2FzRmNxV2I4U3dpcXJrU3VhK2dUWUNWZkV5?=
- =?utf-8?B?TUdrQ0JpempXWWhlVEdpRHBtcDh0Y0ZzMzZ4UWFZdjlwcVNzL0o4bm5RS3hq?=
- =?utf-8?B?ZHpJMml4em5JUkFXc3MvTm5QS3l2Z21CUU53TjhVeVlIQmRBZnUwenZXeGpq?=
- =?utf-8?Q?C3UKe4LyfoTbPEtebii1Z8lfd?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <9C2174EC44B74A4DA9C490BF9BF55C67@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ 15.2.1118.26; Tue, 20 Feb 2024 17:37:12 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 20 Feb 2024 17:37:12 +0800
+From: Shawn Sung <shawn.sung@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	"Hsiao Chien Sung" <shawn.sung@mediatek.corp-partner.google.com>
+Subject: [PATCH v3 1/1] drm/mediatek: Filter modes according to hardware capability
+Date: Tue, 20 Feb 2024 17:37:11 +0800
+Message-ID: <20240220093711.20546-2-shawn.sung@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240220093711.20546-1-shawn.sung@mediatek.com>
+References: <20240220093711.20546-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e412ba42-e129-4ecf-9149-08dc31f692b0
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Feb 2024 09:30:27.2214
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: cALnKKg6pF9dpkAYiGDwwYMRV6aQLP/+KaP5KnxHc8JWN9BQZv3bSatNDB3d3/8E2Pdx5mfR/twgqJ5WmXNQNA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB8313
+Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--14.545800-8.000000
-X-TMASE-MatchedRID: hls5oAVArl/4OiVTWoD8RNOdGz1/8ORmjLOy13Cgb4+qvcIF1TcLYPFN
-	etD9U62QbRtsJGVmCs+NsQYXWuFqRHAvdl/gU+kW4T0EFRcNxxSP/EshoNKyEQKCOvtvTK0ZJD8
-	PHc/p2HKxMJ5xZ0J5p43/d0NuPcI1YnWYuJfXlIaWLCkl1lq7B5l/lu28zzkB+Cckfm+bb6AAKi
-	VXSMAOPZg52AtDX+UKWr10g8+tn8khpU+BT6ShURWCVBr+Ay98SoCG4sefl8RV1D0dmUzw/Gpmv
-	Ls8NP1PKdA/AzTgJLIy2ii2lrm+D0L9tcyTZdAsgxsfzkNRlfKx5amWK2anSPoLR4+zsDTtX28x
-	NpU0U3OlGgOhjRbnBxN3zSL68WzhmqXm/GSXhci+JzihxrEf9A==
+X-TM-AS-Result: No-10--9.699400-8.000000
+X-TMASE-MatchedRID: OqZPkXNGKDf8rQJMqxBG8Izb2GR6Ttd3Kx5ICGp/WtG7qpOHKudqc61l
+	cDruwbtbIkxDXi0u/CvJgrDniXuCV0JF8hwyENQ8nIGynr5ObIa4vBuE2X0HlU00Gfbn1vTVPlA
+	WwfVA2w4hax9eXp8NDBKqjdlR+seHJjR5Quw0FeUVglQa/gMvfJKLNrbpy/A01yGUyFK3oV4wKY
+	tIU69m3V+2TZ8bogGeASo1XNPhrPrsz8PwlGcGDaKa0xB73sAABcsh1y6QslbYCfmDULr78j3n7
+	3EfAgPtHa1OFK8PqLpfSNXDXIBWnv6sIX4Dc0fpBNs0AUqdiH1NedaYR0zWEeIpRqgiF5rtlOts
+	73NQ5aOv/ywMrWTE9jowbcM3oyOGI6RtAg4ny/ltD1qg9KZYkfQ7szeVKdNbJLfQYoCQHFYtFkD
+	k0067+UfSb/e+ISPMsu3nPiE1MDPlRxm3A2wKuhRFJJyf5BJe3QfwsVk0UbuGrPnef/I+eo0HAc
+	mov1aJasRtmtDFJ+oc79OKiiFbkBpNIfhEsVgiSUt3T068WM8=
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--14.545800-8.000000
+X-TMASE-Result: 10--9.699400-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 5B590F293C9835E81AD84D31DC551F88E6740E8AB0F23A61DAB6D839B9AE8EDA2000:8
+X-TM-SNTS-SMTP: D3C9A7EE4B5BDF73D4A9861D36F9E43181267D69474E656C93DBE5E9F467E0712000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240220_013111_601739_75C72CF0 
-X-CRM114-Status: GOOD (  18.00  )
+X-CRM114-CacheID: sfid-20240220_013721_469376_2745E73B 
+X-CRM114-Status: GOOD (  23.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -197,30 +101,250 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIE1hYzoNCg0KT24gTW9uLCAyMDI0LTAyLTA1IGF0IDEzOjUwICswODAwLCBtYWMuc2hlbiB3
-cm90ZToNCj4gQWRkIEhEQ1AyLnggZmVhdHVyZSBmb3IgRGlzcGxheVBvcnQuDQo+IFdoZW4gdXNl
-cnNwYWNlIHJlcXVlc3QgdGhlIGtlcm5lbCBwcm90ZWN0IGZ1dHVyZSBjb250ZW50IGNvbW11bmlj
-YXRlZA0KPiBvdmVyIHRoZSBsaW5rIHdpdGggQ29udGVudF9Qcm90ZWN0aW9uIHByb3BlcnR5LCB0
-aGUgZmVhdHVyZSB3aWxsIGRvDQo+IEhEQ1AyLnggYXV0aGVudGljYXRpb24gaWYgdGhlIHNpbmsg
-c3VwcG9ydCBIRENQMi5YLg0KPiANCj4gQ2hhbmdlcyBpbiB2MjoNCj4gLSByZW1vdmUgc3dpdGNo
-IGNhc2UsIGFuZCByZWZpbmUgY29kZSB0byBtYWtlIG1vcmUgY2xlYXINCj4gLSByZW1vdmUgc29t
-ZSBkZWZpbml0aW9ucywgYW5kIHVzZSB0aGUgZGVmaW5pdGlvbnMgaW4NCj4gICBpbmNsdWRlL2Ry
-bS9kcm1faGRjcC5oDQo+IC0gdXNlIHRoZSBzdHJ1Y3Qgd2hpY2ggZGVmaW5lZCBpbiBpbmNsdWRl
-L2RybS9kcm1faGRjcC5oDQo+IC0gZG8gSERDUDIueCBhdXRoZW50aWNhdGlvbiB3aGVuIHVzZXJz
-cGFjZSByZXF1ZXN0IHRoZQ0KPiAgIGtlcm5lbCBwcm90ZWN0IGZ1dHVyZSBjb250ZW50IGNvbW11
-bmljYXRlZA0KPiBwZXIgc3VnZ2VzdGlvbiBmcm9tIHRoZSBwcmV2aW91cyB0aHJlYWQ6DQo+IGh0
-dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC84ZmZmNTliNTU2NzQ0OWQ4MjAxZGQxMTM4YzhmYQ0K
-PiA5MjE4YTU0NWM0Ni5jYW1lbEBtZWRpYXRlay5jb20vDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBt
-YWMuc2hlbiA8bWFjLnNoZW5AbWVkaWF0ZWsuY29tPg0KPiAtLS0NCg0KW3NuaXBdDQoNCj4gIA0K
-PiArdm9pZCBtdGtfZHBfY2hlY2tfaGRjcF92ZXJzaW9uKHN0cnVjdCBtdGtfZHAgKm10a19kcCwg
-Ym9vbA0KPiBvbmx5X2hkY3AxeCkNCj4gK3sNCj4gKwlpZiAoIW9ubHlfaGRjcDF4ICYmIGRwX3R4
-X2hkY3AyX3N1cHBvcnQoJm10a19kcC0+aGRjcF9pbmZvKSkNCj4gKwkJcmV0dXJuOw0KPiArDQo+
-ICsJaWYgKHRlZV9hZGRfZGV2aWNlKCZtdGtfZHAtPmhkY3BfaW5mbywgSERDUF9OT05FKSAhPQ0K
-PiBSRVRfU1VDQ0VTUykNCg0KRG9lcyB0aGlzIG1lYW4gdGhhdCBpZiByeCBkb2VzIG5vdCBzdXBw
-b3J0IGhkY3AsIGRwIHR4IGRyaXZlciBzdGlsbA0KbmVlZCB0byBjcmVhdGUgdGVlIGRldmljZSB0
-byB3b3JrIGZvciBubyBoZGNwPyBJZiBzbywgSSB0aGluayB0aGlzDQpzaG91bGQgYmUgc2VwYXJh
-dGVkIHRvIGFuIGluZGVwZW5kZW50IHBhdGNoLiBJIGxpa2UgdGhlIHBhdGNoIHNlcXVlbmNlDQp0
-byBiZToNCg0KMS4gU3VwcG9ydCBOTyBIRENQDQoyLiBTdXBwb3J0IEhEQ1AgMXgNCjMuIFN1cHBv
-cnQgSERDUCAyeA0KDQpSZWdhcmRzLA0KQ0sNCg0KPiArCQltdGtfZHAtPmhkY3BfaW5mby5hdXRo
-X3N0YXR1cyA9IEFVVEhfRkFJTDsNCj4gK30NCj4gKw0K
+From: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
+
+We found a stability issue on MT8188 when connecting an external monitor
+in 2560x1440@144Hz mode. Checked with the designer, there is a function
+called "prefetch" which is working during VBP (triggered by VSYNC).
+If the duration of VBP is too short, the throughput requirement could
+increase more than 3 times and lead to stability issues.
+
+The mode settings that VDOSYS supports are mainly affected by clock
+rate and throughput, display driver should filter these settings
+according to the SoC's limitation to avoid unstable conditions.
+
+Since currently the mode filter is only available on MT8195 and MT8188
+and they share the same compatible name, the reference number (8250)
+is hard coded instead of in the driver data.
+
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  4 ++
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c     | 65 +++++++++++++++++++
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 17 +++++
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c       | 17 +++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |  1 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   | 12 ++++
+ 6 files changed, 116 insertions(+)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index eb738f14f09e3..4a5661334fb1a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -72,6 +72,8 @@ void mtk_merge_advance_config(struct device *dev, unsigned int l_w, unsigned int
+ 			      struct cmdq_pkt *cmdq_pkt);
+ void mtk_merge_start_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt);
+ void mtk_merge_stop_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt);
++enum drm_mode_status mtk_merge_mode_valid(struct device *dev,
++					  const struct drm_display_mode *mode);
+ 
+ void mtk_ovl_bgclr_in_on(struct device *dev);
+ void mtk_ovl_bgclr_in_off(struct device *dev);
+@@ -130,6 +132,8 @@ unsigned int mtk_ovl_adaptor_layer_nr(struct device *dev);
+ struct device *mtk_ovl_adaptor_dma_dev_get(struct device *dev);
+ const u32 *mtk_ovl_adaptor_get_formats(struct device *dev);
+ size_t mtk_ovl_adaptor_get_num_formats(struct device *dev);
++enum drm_mode_status mtk_ovl_adaptor_mode_valid(struct device *dev,
++						const struct drm_display_mode *mode);
+ 
+ void mtk_rdma_bypass_shadow(struct device *dev);
+ int mtk_rdma_clk_enable(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+index c19fb1836034d..80953b3e8ace6 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+@@ -223,6 +223,71 @@ void mtk_merge_clk_disable(struct device *dev)
+ 	clk_disable_unprepare(priv->clk);
+ }
+ 
++enum drm_mode_status mtk_merge_mode_valid(struct device *dev,
++					  const struct drm_display_mode *mode)
++{
++	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++	unsigned long rate = 0;
++
++	rate = clk_get_rate(priv->clk);
++
++	/* Convert to KHz and round the number */
++	rate = (rate + 500) / 1000;
++
++	if (rate && mode->clock > rate) {
++		dev_dbg(dev, "invalid clock: %d (>%lu)\n", mode->clock, rate);
++		return MODE_CLOCK_HIGH;
++	}
++
++	/*
++	 * Measure the bandwidth requirement of hardware prefetch (per frame)
++	 *
++	 * let N = prefetch buffer size in lines
++	 *         (ex. N=3, then prefetch buffer size = 3 lines)
++	 *
++	 * prefetch size = htotal * N (pixels)
++	 * time per line = 1 / fps / vtotal (seconds)
++	 * duration      = vbp * time per line
++	 *               = vbp / fps / vtotal
++	 *
++	 * data rate = prefetch size / duration
++	 *           = htotal * N / (vbp / fps / vtotal)
++	 *           = htotal * vtotal * fps * N / vbp
++	 *           = clk * N / vbp (pixels per second)
++	 *
++	 * Say 4K60 (CEA-861) is the maximum mode supported by the SoC
++	 * data rate = 594000K * N / 72 = 8250 (standard)
++	 * (remove K * N due to the same unit)
++	 *
++	 * For 2560x1440@144 (clk=583600K, vbp=17):
++	 * data rate = 583600 / 17 ~= 34329 > 8250 (NG)
++	 *
++	 * For 2560x1440@120 (clk=497760K, vbp=77):
++	 * data rate = 497760 / 77 ~= 6464 < 8250 (OK)
++	 *
++	 * A non-standard 4K60 timing (clk=521280K, vbp=54)
++	 * data rate = 521280 / 54 ~= 9653 > 8250 (NG)
++	 *
++	 * Bandwidth requirement of hardware prefetch increases significantly
++	 * when the VBP decreases (more than 4x in this example).
++	 *
++	 * The proposed formula is only one way to estimate whether our SoC
++	 * supports the mode setting. The basic idea behind it is just to check
++	 * if the data rate requirement is too high (directly proportional to
++	 * pixel clock, inversely proportional to vbp). Please adjust the
++	 * function if it doesn't fit your situation in the future.
++	 */
++	rate = mode->clock / (mode->vtotal - mode->vsync_end);
++
++	if (rate > 8250) {
++		dev_dbg(dev, "invalid rate: %lu (>8250): " DRM_MODE_FMT "\n",
++			rate, DRM_MODE_ARG(mode));
++		return MODE_BAD;
++	}
++
++	return MODE_OK;
++}
++
+ static int mtk_disp_merge_bind(struct device *dev, struct device *master,
+ 			       void *data)
+ {
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+index 10d23e76acaa9..6d4334955e3d3 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+@@ -88,6 +88,7 @@ static const struct mtk_ddp_comp_funcs ethdr = {
+ static const struct mtk_ddp_comp_funcs merge = {
+ 	.clk_enable = mtk_merge_clk_enable,
+ 	.clk_disable = mtk_merge_clk_disable,
++	.mode_valid = mtk_merge_mode_valid,
+ };
+ 
+ static const struct mtk_ddp_comp_funcs padding = {
+@@ -341,6 +342,22 @@ void mtk_ovl_adaptor_clk_disable(struct device *dev)
+ 	}
+ }
+ 
++enum drm_mode_status mtk_ovl_adaptor_mode_valid(struct device *dev,
++						const struct drm_display_mode *mode)
++
++{
++	int i;
++	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
++
++	for (i = 0; i < OVL_ADAPTOR_ID_MAX; i++) {
++		dev = ovl_adaptor->ovl_adaptor_comp[i];
++		if (!dev || !comp_matches[i].funcs->mode_valid)
++			continue;
++		return comp_matches[i].funcs->mode_valid(dev, mode);
++	}
++	return MODE_OK;
++}
++
+ unsigned int mtk_ovl_adaptor_layer_nr(struct device *dev)
+ {
+ 	return MTK_OVL_ADAPTOR_LAYER_NUM;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 1dac8d0fbc669..14cf75fa217f9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -212,6 +212,22 @@ static void mtk_drm_crtc_destroy_state(struct drm_crtc *crtc,
+ 	kfree(to_mtk_crtc_state(state));
+ }
+ 
++static enum drm_mode_status
++mtk_drm_crtc_mode_valid(struct drm_crtc *crtc,
++			const struct drm_display_mode *mode)
++{
++	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
++	enum drm_mode_status status = MODE_OK;
++	int i;
++
++	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
++		status = mtk_ddp_comp_mode_valid(mtk_crtc->ddp_comp[i], mode);
++		if (status != MODE_OK)
++			break;
++	}
++	return status;
++}
++
+ static bool mtk_drm_crtc_mode_fixup(struct drm_crtc *crtc,
+ 				    const struct drm_display_mode *mode,
+ 				    struct drm_display_mode *adjusted_mode)
+@@ -830,6 +846,7 @@ static const struct drm_crtc_funcs mtk_crtc_funcs = {
+ static const struct drm_crtc_helper_funcs mtk_crtc_helper_funcs = {
+ 	.mode_fixup	= mtk_drm_crtc_mode_fixup,
+ 	.mode_set_nofb	= mtk_drm_crtc_mode_set_nofb,
++	.mode_valid	= mtk_drm_crtc_mode_valid,
+ 	.atomic_begin	= mtk_drm_crtc_atomic_begin,
+ 	.atomic_flush	= mtk_drm_crtc_atomic_flush,
+ 	.atomic_enable	= mtk_drm_crtc_atomic_enable,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index 9633e860cc3ce..94590227c56a9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -416,6 +416,7 @@ static const struct mtk_ddp_comp_funcs ddp_ovl_adaptor = {
+ 	.remove = mtk_ovl_adaptor_remove_comp,
+ 	.get_formats = mtk_ovl_adaptor_get_formats,
+ 	.get_num_formats = mtk_ovl_adaptor_get_num_formats,
++	.mode_valid = mtk_ovl_adaptor_mode_valid,
+ };
+ 
+ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index f8c7e8d8ddc12..215b7234ff13c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -12,6 +12,8 @@
+ #include <linux/soc/mediatek/mtk-mmsys.h>
+ #include <linux/soc/mediatek/mtk-mutex.h>
+ 
++#include <drm/drm_modes.h>
++
+ struct device;
+ struct device_node;
+ struct drm_crtc;
+@@ -84,6 +86,7 @@ struct mtk_ddp_comp_funcs {
+ 	void (*add)(struct device *dev, struct mtk_mutex *mutex);
+ 	void (*remove)(struct device *dev, struct mtk_mutex *mutex);
+ 	unsigned int (*encoder_index)(struct device *dev);
++	enum drm_mode_status (*mode_valid)(struct device *dev, const struct drm_display_mode *mode);
+ };
+ 
+ struct mtk_ddp_comp {
+@@ -125,6 +128,15 @@ static inline void mtk_ddp_comp_clk_disable(struct mtk_ddp_comp *comp)
+ 		comp->funcs->clk_disable(comp->dev);
+ }
+ 
++static inline
++enum drm_mode_status mtk_ddp_comp_mode_valid(struct mtk_ddp_comp *comp,
++					     const struct drm_display_mode *mode)
++{
++	if (comp && comp->funcs && comp->funcs->mode_valid)
++		return comp->funcs->mode_valid(comp->dev, mode);
++	return MODE_OK;
++}
++
+ static inline void mtk_ddp_comp_config(struct mtk_ddp_comp *comp,
+ 				       unsigned int w, unsigned int h,
+ 				       unsigned int vrefresh, unsigned int bpc,
+-- 
+2.18.0
+
 
