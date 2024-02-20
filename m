@@ -4,93 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 733FBC48BC3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Feb 2024 21:10:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4218DC48BF8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Feb 2024 01:26:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HCbkaHP288a5yrdhun50bmJZYdjOw3WPCZ9sfVUzD6g=; b=IrDvPXK/IV+KwHCPijxA3A/0JL
-	q0nqGqOLoy6XYnZFLvSiHgKBgBIks5yZJB81w8UtTAPFPChet5DMCYhKY/oekJNDfWIAH0AudGpT6
-	sJwReChDGZ6xOAA0t8gyerkFBGwoqVn4vx1aqCSMjkIrNmBxWH02nrhifcrOx3g6ayo/JvhkVR9qX
-	37Nj69S7w9G245VrcfFq/qrNkLVxxxLWu9joPkv3+E/o+rwJ+heTncFBVPCBziwxOoExFkpyGEtOr
-	JfT0i9w/Vb6rz/6ni0FtDfNGO/TKqBzPbieHt7tc2Wv0xkhHkalO0NpJ28e2kGHb8y1Gzu+SgUe4n
-	xq3Tyz1Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Jb79y2cBHS/ycIILNhbC/ey3i5o/CHC+FKzuHKR7Wf8=; b=XaYtLBqlf2BkGA4Afzt39nkKmp
+	TMuxWW1B0L8YoeHIJrx4dbTgi/NXtdYQdeL1CCTkYeJ/ycNCu1i4mvp3QzXh/++Wv4NTnNyQoX2lF
+	BL+L5Q6XGh/T8QyAbJ5XM2viI7QjBAHMFWeP3LS7imxp5PI+r8sQ6SFAwMm9y29t1n+dtN3xThL+v
+	BTo6lhWANLQBQbkxemTr7L50IhiHVSVLc7y04lteeAzafY67jeggYnjX6xpPcCJrXJw5BwE30JqGi
+	20Cwohqw8KwThO46NmIB08tojVHYCjJh5PJIRdkI25L7KfPs6MgHs9JTNOwEtnlbLoxOOWsR8gSMP
+	qBcoEdbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcAto-0000000CBai-1gCf;
-	Mon, 19 Feb 2024 21:10:04 +0000
-Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a])
+	id 1rcEtb-0000000CkA9-0yrY;
+	Tue, 20 Feb 2024 01:26:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcAtj-0000000CBZa-0IuT
-	for linux-mediatek@lists.infradead.org;
-	Mon, 19 Feb 2024 21:10:00 +0000
-Received: by mail-qv1-xf2a.google.com with SMTP id 6a1803df08f44-6868823be58so14514326d6.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 19 Feb 2024 13:09:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1708376997; x=1708981797; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:autocrypt
-         :references:in-reply-to:date:cc:to:from:subject:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=HCbkaHP288a5yrdhun50bmJZYdjOw3WPCZ9sfVUzD6g=;
-        b=VFU7soF3SoY+z01O2aSbyCJgC1C1mq5f0jY921hMRTF9gSDRV1h/Hed0lkao0dJtx0
-         vP3xax6qToPhKgGvITnNQiBOpMS7wmlfK/Aq7BiJxIQqN98rw6lw1pga2u7Y2De4UyeA
-         6bBwoT373bbvaQ1Q8BYoK10x0nqqXchyJcy8I8FVCQ+StTpXncSkNY3xTX33TUfTdxZk
-         8yN3cKJyLHtF7u2KARbS+ec+Ccg5DaQcYaRtWM9h5PIHFADkr4LbEdqva3/gmGF/N93A
-         gXPfrqCaEbtoMNrNE8W+tPu5om7gKTTY7a9rAmIxjpjgbyklY4tN/uK/THgTSSGaiDQf
-         0knw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708376997; x=1708981797;
-        h=mime-version:user-agent:content-transfer-encoding:autocrypt
-         :references:in-reply-to:date:cc:to:from:subject:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=HCbkaHP288a5yrdhun50bmJZYdjOw3WPCZ9sfVUzD6g=;
-        b=rVBu9JDLwwWpzIwaaRNZD9vRS4L8D4qCKRwfOenrn6LZXUxIvKfRCIJRfG/tp5G8og
-         yD8oggXxR3/JQJOcG4p3u3qb6RoWaSFnJE2JNDoWkWNR/DcEiBs9plIvYau/l1CmvX+w
-         nTUIGcLWazZD3QxJ3LxzAHnN+Xrn3uhVDVtjCNvIz0Lnw+K10rCRrjUvgQdGYDFy5r9q
-         rYXSfSB4qDfdXYkHSD2tJJv+YRWRFUM1tXGZw/1IJhnAQ4jzZEuF2EuPAyfYjQqm+mFc
-         9ruQFRewln8RQD54LJIfWb/OgXgdBu6CAMD/EXx/9DLSTcw9+lle9/c7Nzol5BDSHnZU
-         tnlg==
-X-Forwarded-Encrypted: i=1; AJvYcCW0SvjLwOdYpvx/JLXoymc+IYTM7O2QlGwdOuCd3dGkb7MwHV9lhj+O0eFWlTcSUusB4VHuJDfJ7IglCHcyy4JrOWlPhAcEY31MdOOVJFMBju+r
-X-Gm-Message-State: AOJu0YwXc0J+RJvOHvVXfx/6Td0tqzOwTcQkoQkcE3XLbqs6l2ME2tuA
-	XedB0GcQaFNLQBRzwTsQZrVGU/am8ujm7q3k3eOK93MmGpoPpx6TKZwvMJhTC4RV4J7NLpSM4YZ
-	H
-X-Google-Smtp-Source: AGHT+IE4nG1woNYcCJfdWwaumNGm4a6aorUD4KZhgabmwl0ONqKwgzR9HsQOTqEqXF6MlUwntWWu4Q==
-X-Received: by 2002:a0c:db0c:0:b0:68c:7f24:efdc with SMTP id d12-20020a0cdb0c000000b0068c7f24efdcmr15617434qvk.53.1708376997287;
-        Mon, 19 Feb 2024 13:09:57 -0800 (PST)
-Received: from nicolas-tpx395.localdomain ([2606:6d00:11:3354::7a9])
-        by smtp.gmail.com with ESMTPSA id t5-20020a05620a004500b007876fd0b878sm666361qkt.53.2024.02.19.13.09.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Feb 2024 13:09:57 -0800 (PST)
-Message-ID: <6bed645bc3ddd51092ed8f6e49672af40735c83d.camel@ndufresne.ca>
-Subject: Re: [PATCH] media: mediatek: vcodec: Handle VP9 superframe
- bitstream with 8 sub-frames
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Irui Wang <irui.wang@mediatek.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>,  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- angelogioacchino.delregno@collabora.com, Tiffany Lin
- <tiffany.lin@mediatek.com>,  Yunfei Dong <yunfei.dong@mediatek.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>, Longfei Wang
- <longfei.wang@mediatek.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Date: Mon, 19 Feb 2024 16:09:54 -0500
-In-Reply-To: <20240218115954.4038-1-irui.wang@mediatek.com>
-References: <20240218115954.4038-1-irui.wang@mediatek.com>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual; keydata=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
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.50.3 (3.50.3-1.fc39) 
+	id 1rcEtZ-0000000Ck6e-1E8Q;
+	Tue, 20 Feb 2024 01:26:06 +0000
+X-UUID: fed120fccf8e11ee9a263b4415211400-20240219
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Jb79y2cBHS/ycIILNhbC/ey3i5o/CHC+FKzuHKR7Wf8=;
+	b=N0NKRQKJsmOPcs9m0Jx5NX2yxKh5SMTss3VPhwvjO/S1g2jpD8okHChrZJA91T97LqjEELjHalZf5O5bqD7GOFPlU7Zk2mcfnSN82SLD54+kA14gSgdCmnoerp8tXZc7MYtpVdKGuUruS2sfsQAcqsJ3peKmcLnMY7lkGl0gfvo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:35d9cd58-624d-4576-8ad1-d2355582a1e6,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6f543d0,CLOUDID:71a9f8fe-c16b-4159-a099-3b9d0558e447,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: fed120fccf8e11ee9a263b4415211400-20240219
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <zhi.mao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2010616459; Mon, 19 Feb 2024 18:25:56 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 20 Feb 2024 09:25:52 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 20 Feb 2024 09:25:50 +0800
+From: Zhi Mao <zhi.mao@mediatek.com>
+To: <mchehab@kernel.org>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <sakari.ailus@linux.intel.com>
+CC: <laurent.pinchart@ideasonboard.com>, <shengnan.wang@mediatek.com>,
+	<yaya.chang@mediatek.com>, <10572168@qq.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <yunkec@chromium.org>,
+	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <jacopo.mondi@ideasonboard.com>,
+	<zhi.mao@mediatek.com>, <hverkuil-cisco@xs4all.nl>, <heiko@sntech.de>,
+	<jernej.skrabec@gmail.com>, <macromorgan@hotmail.com>,
+	<linus.walleij@linaro.org>, <hdegoede@redhat.com>,
+	<tomi.valkeinen@ideasonboard.com>, <gerald.loacker@wolfvision.net>,
+	<andy.shevchenko@gmail.com>, <bingbu.cao@intel.com>,
+	<dan.scally@ideasonboard.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v5 0/2] media: i2c: Add support for GC08A3 sensor 
+Date: Tue, 20 Feb 2024 09:25:38 +0800
+Message-ID: <20240220012540.10607-1-zhi.mao@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240219_130959_331704_8E9AF95F 
-X-CRM114-Status: GOOD (  17.72  )
+X-CRM114-CacheID: sfid-20240219_172605_370766_740B0384 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,69 +94,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+This series adds YAML DT binding and V4L2 sub-device driver for Galaxycore's
+GC08A3 8-megapixel 10-bit RAW CMOS 1/4" sensor, with an MIPI CSI-2 image data
+interface and the I2C control bus.
 
-Le dimanche 18 f=C3=A9vrier 2024 =C3=A0 19:59 +0800, Irui Wang a =C3=A9crit=
-=C2=A0:
-> The VP9 bitstream has 8 sub-frames into one superframe, the superframe
-> index validate failed when reach 8, modify the index checking so that the
-> last sub-frame can be decoded normally.
+The driver is implemented with V4L2 framework.
+ - Async registered as a V4L2 sub-device.
+ - As the first component of camera system including Seninf, ISP pipeline.
+ - A media entity that provides one source pad in common.
+ - Used in camera features on ChromeOS application.
 
-When I first saw this patch I was concerned, since we don't allow bundling =
-super
-frame into the stateless API, but now I realize that this is for the statef=
-ul
-decoder. Perhaps you can help me and possibly other reviewers with simply
-stating that this is for stateful decoders.
+Also this driver supports following features:
+ - manual exposure and analog gain control support
+ - vertical blanking control support
+ - test pattern support
+ - media controller support
+ - runtime PM support
+ - support resolution: 3264x2448@30fps, 1920x1080@60fps
 
->=20
-> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
-> ---
->  .../media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9=
-_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
-> index 55355fa70090..4a9ced7348ee 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
-> @@ -526,7 +526,7 @@ static void vp9_swap_frm_bufs(struct vdec_vp9_inst *i=
-nst)
->  	/* if this super frame and it is not last sub-frame, get next fb for
->  	 * sub-frame decode
->  	 */
-> -	if (vsi->sf_frm_cnt > 0 && vsi->sf_frm_idx !=3D vsi->sf_frm_cnt - 1)
-> +	if (vsi->sf_frm_cnt > 0 && vsi->sf_frm_idx !=3D vsi->sf_frm_cnt)
->  		vsi->sf_next_ref_fb_idx =3D vp9_get_sf_ref_fb(inst);
->  }
-> =20
-> @@ -735,7 +735,7 @@ static void get_free_fb(struct vdec_vp9_inst *inst, s=
-truct vdec_fb **out_fb)
-> =20
->  static int validate_vsi_array_indexes(struct vdec_vp9_inst *inst,
->  		struct vdec_vp9_vsi *vsi) {
-> -	if (vsi->sf_frm_idx >=3D VP9_MAX_FRM_BUF_NUM - 1) {
-> +	if (vsi->sf_frm_idx >=3D VP9_MAX_FRM_BUF_NUM) {
+Previous versions of this patch-set can be found here:
+v4: https://lore.kernel.org/linux-media/20240204061538.2105-1-zhi.mao@mediatek.com/
+v3: https://lore.kernel.org/linux-media/20240109022715.30278-1-zhi.mao@mediatek.com/
+v2: https://lore.kernel.org/linux-media/20231207052016.25954-1-zhi.mao@mediatek.com/
+v1: https://lore.kernel.org/linux-media/20231123115104.32094-1-zhi.mao@mediatek.com/
 
-nit: I'd propose to define a new maximum (contractions allowed):
+This series is based on linux-next, tag: next-20240219
+Changes in v5:
+- gc08a3 sensor driver：
+-- sort the header files alphabetically in driver code
+-- refine the register define and some macros, fix some typo 
+-- drop variable：“clinet/streaming” in struct gc08a3
+-- refine "ret" flow in function:gc08a3_test_pattern()
+-- drop the gc08a3_link_freq_config structure
+-- rename some function and variable with a "gc08a3_" prefix
+-- refine function:gc08a3_identify_module()/gc08a3_power_on()/gc08a3_power_off()/gc08a3_update_pad_format()
+-- use stored crop rectangle in funcion:gc08a3_get_selectoin()
+-- use cci_update_bits() in function:gc08a3_set_ctrl_hflip()/gc08a3_set_ctrl_vflip()
+-- put the HFLIP and VFLIP controls in a cluster to make it efficiently set in an atomic operation
+-- use "fwnode_graph_get_endpoint_by_id" in function: gc08a3_parse_fwnode()
+-- remove function:gc08a3_enum_frame_interval()
+-- enable autosuspend in function:probe()
 
-  #define VP9_MAX_NUM_SUPER_FRAMES 8
+Thanks
 
-This way you can revisit bunch of `VP9_MAX_FRM_BUF_NUM-1`, and make the ove=
-rall
-code a bit more human readable. There is no relation between VP9_MAX_FRM_BU=
-F_NUM
-and this maximum. The limits simply comes from the fact
-frames_in_superframe_minus_1 is expressed with 3 bits.
+Zhi Mao (2):
+  media: dt-bindings: i2c: add GalaxyCore GC08A3 image sensor
+  media: i2c: Add GC08A3 image sensor driver
 
-regards,
-Nicolas
+ .../bindings/media/i2c/galaxycore,gc08a3.yaml |  112 ++
+ drivers/media/i2c/Kconfig                     |   10 +
+ drivers/media/i2c/Makefile                    |    1 +
+ drivers/media/i2c/gc08a3.c                    | 1335 +++++++++++++++++
+ 4 files changed, 1458 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/i2c/galaxycore,gc08a3.yaml
+ create mode 100644 drivers/media/i2c/gc08a3.c
 
-p.s. your change looks good otherwise.
+-- 
+2.25.1
 
->  		mtk_vdec_err(inst->ctx, "Invalid vsi->sf_frm_idx=3D%u.", vsi->sf_frm_i=
-dx);
->  		return -EIO;
->  	}
+
 
 
