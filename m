@@ -4,65 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 767D6C48BC4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Feb 2024 08:56:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46AA9C48BC4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Feb 2024 08:59:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JqxWaUwPoW3NQVWuwD2m9C19qwV3DwfPJhOURF6bWhM=; b=O9O/5AAYAchAOtAVMnOg8Kho9v
-	lmChXyVFswQGgWd/3Xbxisb0K9sAjxrJ8OILzEFUinSXfbZXxUW/MvN+wsF4pSwWnaIPbto/i1/nn
-	BgK2g/Zxt7EXGXtmzYvrJXkZzTnobkoM5My+j9WQW145FAmbCFDhcgXVSMDlOdNbgD5Nt2P1KJ7QD
-	MugdteNuBBjlsbFIAtIIFYUVmS8AVRd7O8WMxNqteHLBl4d2q35yM8sm+2aFRtvZSNElmTi1P6KyL
-	m6UBuzCeCRjfbLgaSvz2SgoG+S0e0DlArlP8F2d2ZJKi7Rn3qDcI4HYw20tvBz6o6YAyuafkifbrr
-	y+5S8CPQ==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bxKTBsN27scYI+0D63SrBS8H6thL+ZhoGE+WHGb0/OA=; b=Ob99MVziM+NnKMdtFpCAg6D+XW
+	0aa8B7xfwX0lrYZfCSThkn45UCboE+QCZN4Lnto16TIJ0xZfx9qirdOphQLlvKnj0wSzRwLnA/HU5
+	C5E2J8lFhoBCNvptNheNkdoZjchFU5/J9/oc206z5KFC8BtlvnzJD75DiV81gVzqvrTqQ1qhbKn41
+	cY9BGL22XUsD4ENuFtg/fpMp5LFYnNnM48EEmB0Yu/0KNJ/jcKfgr/PlLqO6GyHD8LRookDtTbaLY
+	+DYVK4axhmOu2GcvgGXiuIru3qldOB7fXjBYoFVFMvbYvrtnDiJQKzOEjLReVTqkrsi7LDtKCzrLn
+	mlvr9thQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcLv9-0000000DpcB-45n6;
-	Tue, 20 Feb 2024 08:56:12 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rcLyT-0000000Dqpe-3mK4;
+	Tue, 20 Feb 2024 08:59:37 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcLv6-0000000DpaA-1Qex;
-	Tue, 20 Feb 2024 08:56:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708419367;
-	bh=6LN+anVhIs46gCoUM3PrXmdfnXZO8f3moMRt0c1d/S8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ECln5RxCydHLZFsD2Msh8x4Dpp5/8+AsnlAH0tcpHO7bRU+fcbo2MQ0mQm3WhJPtk
-	 4K6OcR3vjMYPZ70GlSdExViGFtnCRHYa/kMFq7qGfBcm8HW+qlz8UUcXBKKIx1RJnq
-	 igS+6xw/qUZ5UtAvj2jCW6iLIlPOWvGZVqfpOUYIbo5B9wRQuFpglpVMrJWITbY5wd
-	 72E5OtOLbA6qTVUrkMH9fJAXNVXEgypOEdnOSNw9RAkaJzMw9OIL9GjD96DTjjWdbB
-	 JZLkPe8Rni+AoB2nLwS7ZjKkyE+6NOCruKMk3F/HmR+HlsESwS/+ajnbLFJibOqUBE
-	 tLFSwdFA23f3g==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 8897C3781FD9;
-	Tue, 20 Feb 2024 08:56:06 +0000 (UTC)
-Message-ID: <f1fc67d4-f979-4c3e-988f-a803b7b11c46@collabora.com>
-Date: Tue, 20 Feb 2024 09:56:05 +0100
+	id 1rcLyQ-0000000Dqnr-2yn2;
+	Tue, 20 Feb 2024 08:59:36 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-4127077ee20so992895e9.1;
+        Tue, 20 Feb 2024 00:59:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1708419572; x=1709024372; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=bxKTBsN27scYI+0D63SrBS8H6thL+ZhoGE+WHGb0/OA=;
+        b=iNCDiQcQM18Sc+R552u4BTxuTj5OdePMZCdatr+O9HsuRJsF/fCGcfcGebY3wsiyuU
+         0tgrwrzJJ+3gIDhVSTjhMyNdaau4RqIcEBMgpDcHpMBWDU1pOr6Wwpx50TkaKlxQ4K8l
+         N5j7WBpQntQIJAG8kBNljw9sxf6nn5d9p9T5aLJbb7zcLACXI9Za53I9F4ircDAA5Ay0
+         NErgvN4os8bTVNllkmsoGqF/HmQGjw9sTUCH29J0w22oNWu7EtFFKtvYyuOVVHjGNkXT
+         lZ7zUKp0q8mE8U8hQglMET0CIiPjuo1t+ysdjE3Hzemc6k8REfNOlTwXwb6h93BiqTjk
+         lXcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708419572; x=1709024372;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=bxKTBsN27scYI+0D63SrBS8H6thL+ZhoGE+WHGb0/OA=;
+        b=O8H5xU/Dm7ZrxKe8uHI6Saa9s/68cykGM5fSlOAnpo6rtjLmDkciLBh57c3I3aQ9Ab
+         uIjLR9sMbmXKTwZT968tSIFn+TZZiGiyRpJ0JQ3tKKjvhdLE8mcvfNZrQxJO3WO1Lmho
+         /ytwk4ffeLLtjVfDshgy726BbrDnGJ2CyBOzQk1RPCyFWnHeTqKOfiLr44DsaF36KPnq
+         rPeNJSNKlCBteRFDBj8Z4+sNG3Sa0K6TgCIfdQouxndLmwwRIDVH0SikqSSdS/VGhmbZ
+         si3MSS0ZqXgiH2oV7PvcbExkH7wnr22aurL3EUtQptCg7BPeardSpWKRix2Dowvl39Uq
+         fYfw==
+X-Forwarded-Encrypted: i=1; AJvYcCU8uVdZCZhiFUk6RelNubsUgjeBN+SSnDOxHEhWzmqf0lrskYiapzjcfa5I7ydzILdII5TCdcFFkpJg7W3fp2j3YCDCPjZdUShBHjtgHmD8hAMRtDRA9OhBJN6669mVZqYTdGP2qj+eCCZm2E6nN6snVfbZHHacM6A=
+X-Gm-Message-State: AOJu0Yzih2deNYUW1iuNOZjZVKwrb899olNzYsVoV7IEsQctIZRNJMyL
+	tJYNGBF9F28bcj2Q6PZgWmMu38flVG9xycj4n7ujxGSZWmdCqWWZ
+X-Google-Smtp-Source: AGHT+IHtjnl8bomtyrFu1WGbD5XCu34yNOF8wdTXQzjo8fNmCTyrjszG5QL8BZBpHmsU3dOYq7xzNg==
+X-Received: by 2002:a05:600c:3545:b0:412:65e7:3639 with SMTP id i5-20020a05600c354500b0041265e73639mr3747396wmq.27.1708419572368;
+        Tue, 20 Feb 2024 00:59:32 -0800 (PST)
+Received: from [192.168.2.177] ([207.188.161.188])
+        by smtp.gmail.com with ESMTPSA id ba20-20020a0560001c1400b0033d640c8942sm2196669wrb.10.2024.02.20.00.59.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 20 Feb 2024 00:59:31 -0800 (PST)
+Message-ID: <d7c1569b-30b3-45eb-bf41-44c1e9d0659f@gmail.com>
+Date: Tue, 20 Feb 2024 09:59:30 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] soc: mediatek: mtk-socinfo: depends on CONFIG_SOC_BUS
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Daniel Golle <daniel@makrotopia.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
+To: Daniel Golle <daniel@makrotopia.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  William-tw Lin <william-tw.lin@mediatek.com>, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 References: <cc8f7f7da5bdccce514a320e0ae7468659cf7346.1707327680.git.daniel@makrotopia.org>
- <CAGXv+5EKCrvsvZwc2zYiMWAeT9vqvU0JnDrz=WBoebBBbcgp0g@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5EKCrvsvZwc2zYiMWAeT9vqvU0JnDrz=WBoebBBbcgp0g@mail.gmail.com>
+Content-Language: en-US, ca-ES, es-ES
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Autocrypt: addr=matthias.bgg@gmail.com; keydata=
+ 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
+In-Reply-To: <cc8f7f7da5bdccce514a320e0ae7468659cf7346.1707327680.git.daniel@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240220_005608_543674_0266BD03 
-X-CRM114-Status: GOOD (  16.71  )
+X-CRM114-CacheID: sfid-20240220_005934_785839_0822C1A2 
+X-CRM114-Status: GOOD (  16.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,52 +138,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/02/24 07:40, Chen-Yu Tsai ha scritto:
-> On Thu, Feb 8, 2024 at 1:43 AM Daniel Golle <daniel@makrotopia.org> wrote:
->>
->> The mtk-socinfo driver uses symbols 'soc_device_register' and
->> 'soc_device_unregister' which are part of the bus driver for
->> System-on-Chip devices.
->>
->> Select SOC_BUS to make sure that driver is built and the symbols are
->> available.
->>
->> Fixes: 423a54da3c7e ("soc: mediatek: mtk-socinfo: Add driver for getting chip information")
->> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+
+
+On 07/02/2024 18:42, Daniel Golle wrote:
+> The mtk-socinfo driver uses symbols 'soc_device_register' and
+> 'soc_device_unregister' which are part of the bus driver for
+> System-on-Chip devices.
 > 
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> Select SOC_BUS to make sure that driver is built and the symbols are
+> available.
 > 
-> Angelo, I believe this should be picked up for -next?
+> Fixes: 423a54da3c7e ("soc: mediatek: mtk-socinfo: Add driver for getting chip information")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+> ---
+>   drivers/soc/mediatek/Kconfig | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-
-I'll pick this up for fixes, as I've already sent the PRs for v6.9.
-
-> Also, mediatek/v6.8-next/soc is missing from mediatek/for-next in today's
-> linux-next.
-> 
-
-Fixing immediately.
-
->> ---
->>   drivers/soc/mediatek/Kconfig | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
->> index 50c664b65f4d4..1b7afb19ccd63 100644
->> --- a/drivers/soc/mediatek/Kconfig
->> +++ b/drivers/soc/mediatek/Kconfig
->> @@ -72,6 +72,7 @@ config MTK_SOCINFO
->>          tristate "MediaTek SoC Information"
->>          default y
->>          depends on NVMEM_MTK_EFUSE
->> +       select SOC_BUS
->>          help
->>            The MediaTek SoC Information (mtk-socinfo) driver provides
->>            information about the SoC to the userspace including the
->> --
->> 2.43.0
->>
->>
-
-
+> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+> index 50c664b65f4d4..1b7afb19ccd63 100644
+> --- a/drivers/soc/mediatek/Kconfig
+> +++ b/drivers/soc/mediatek/Kconfig
+> @@ -72,6 +72,7 @@ config MTK_SOCINFO
+>   	tristate "MediaTek SoC Information"
+>   	default y
+>   	depends on NVMEM_MTK_EFUSE
+> +	select SOC_BUS
+>   	help
+>   	  The MediaTek SoC Information (mtk-socinfo) driver provides
+>   	  information about the SoC to the userspace including the
 
