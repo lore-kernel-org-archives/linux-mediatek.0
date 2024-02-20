@@ -4,76 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31D71C48BC4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Feb 2024 06:41:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 234E3C48BC3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Feb 2024 07:26:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A/5CK/+MMawYXzgUqe9nAD7tYKluMjye+ze/3Lc+fRc=; b=TvUyvBozsKID4c0x1nJ48nxMSW
-	blqtusPRGTTZ18ntpg45C9rklWQfEYMUj/9v6AEkqOra4eGZkc3/dxom0U4DS6A3IJoOTyTaDTN1U
-	NPtDtAZFmFoSxg3UrKTlU4DeC3uM8uP5X8WSo+IJyqEXefLXxaMESWrnLtZcH/8HnrlGJnHDb6IuS
-	0vwy/66a5osTNFRp2t2tIQ7v48RiB143xTpipPQQ+1v2dE9ZWhZfMMraFfyP+rX6gBoObVbY+R+R/
-	ZEiz7sOkk+pRTZrqsm9FY/nEuejlFbRR29SIiFhzaMcLl8QsiBvn8pjHxzCL6pJ7GRQp2tAiNZVHG
-	OZ725Iew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zwX8JySnJMcT/KPe+NiuuWrvPhB1On1Jx0n4UcS+ypo=; b=kYdaohn4yEPSaQlCAJ6L4IHeZb
+	oqehXTt8gYSJ2LeafLvWaZgVu9VZ/X/gofmDVv1vYsnTPGenru6E6KJsJAzagiYDXko9fNrI6n9Ph
+	DbhLnxrKEksJXGZfH7i7XkD1q7BMv9Mesh8VEDgkuxIAPbCJspIekcyo0ziVYX+l8mNOuoxZGHMqm
+	f6fWkjYi6DfOuSoUCt+U52Jh6g5FwWPMbbNEzTejRj3JVp6ms9ztrcsEHdaOZDGBjUhS0i6Yjd+IS
+	wFlaFTPC8YGY4ywpsjleobvu3BpQOepy8qDUWGR23xLcylG8ljC4WNj8PJmRs6sEerioQVGrKkxse
+	voq+kWgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcJoR-0000000DOSu-35Uy;
-	Tue, 20 Feb 2024 06:41:07 +0000
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+	id 1rcKW5-0000000DVtv-0TYQ;
+	Tue, 20 Feb 2024 07:26:13 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcJoM-0000000DOS9-14zu
-	for linux-mediatek@lists.infradead.org;
-	Tue, 20 Feb 2024 06:41:05 +0000
-Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-2d22fa5c822so30719211fa.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 19 Feb 2024 22:41:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1708411258; x=1709016058; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=A/5CK/+MMawYXzgUqe9nAD7tYKluMjye+ze/3Lc+fRc=;
-        b=LesMhka2eYIlCIXMtb9I7TvIxycRd2uzi2W37ZoRAoskoI5n3TwmL40SDfdgUVgqJX
-         0B+AC3jZNxIxyjUzJz65tc5N3+URX2tjSIDZvTJm0GwErYWhbK4CzLQg/B6fUJq8UtbS
-         Bd8e2Zg8o+XdQZfNGUomT+VTsFU0uhwxfZl5c=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708411258; x=1709016058;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=A/5CK/+MMawYXzgUqe9nAD7tYKluMjye+ze/3Lc+fRc=;
-        b=QmCBLl/jd2lI7gLs1MaZYcWGyTHrIBwjegmro/vxlkGfGYL48kozQpd5xrcZ1ALRxd
-         MSZTIZfWpMsWcmRg7eXlBf7/kO07XUKhQaNxBIMgiFufX6ZsH+XVg9OoTG3ZG4sr0zWM
-         HJ+EfR8huPom8KcR6yjUf+ojv9V8HagUDWIN4scSS6Xfg8sA22I5/zDvWKLaE8t9R8yN
-         t9xSEZO9lcBachkt2TZIP7955Z0ffk5+c7O14hY+McrzGnX9EV/fEKvLm8JicsSWnAwu
-         QQxszvM25yVpO6eUimIrbJeqfgkda9vwHKRRNx+en6D9DR8V7jXeEjp/O6QK3KP+xRye
-         rRXQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWyOknIHooHKe2Geb9JvkQ2gWV1iQLywq/h6hllIF0r6Azm1k/3f3HJzhp+/X43bvqQpCyITKKsCuXNdddcVggUrJbeiPKK3eSDk0XHOsIP+6in
-X-Gm-Message-State: AOJu0YyUNwXBpGpPSTH1f+Rk7VTRy7/WQQMlL5HtI2N8NTZPbTVsI08i
-	yEvFjEqthSh7rZ+tWo9aU61BCwIzTPe3JFsY5OrgYIDSfWBh1taXJ15o9Cx27wmEehDCPmwhsSh
-	iicrjTJEeUos7P8rpTYB8Snp6iplSLvGYR6Dg
-X-Google-Smtp-Source: AGHT+IFAvIfiLLEefmtgMPYY07Aqu1hwGfMKyTgdkfDKmAASXhQwN2PXQaCsktOFc75kGcOj9WcbRcx14GnXb0fm0fY=
-X-Received: by 2002:a05:651c:b21:b0:2d2:360a:2810 with SMTP id
- b33-20020a05651c0b2100b002d2360a2810mr7133668ljr.22.1708411258681; Mon, 19
- Feb 2024 22:40:58 -0800 (PST)
+	id 1rcKW2-0000000DVsj-0y8E;
+	Tue, 20 Feb 2024 07:26:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1708413971; x=1739949971;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=4ZdxL7Umt/9O+UgZJKJOr1w06aqDDKOF2canpC9dDOM=;
+  b=ls8BbGdFMTVu9BSlDfmctGyFTS/8satWZigx55rkwZ9TPSR9jKa+qJVy
+   GvHZnvwAsiUr893JJ0/OKDi7UmgKasSI9OBhvv7NkzYdBMLO3mA7EO3+u
+   HtVwMOxUr6yTu7eMOtW39PLaqIUNMyYDwqqK2u1ldosbcJQMwGnaMOdWa
+   ILZTro3ISA7WcxCeCesRvsDJcZobnBZAb/PlpBzteieB+V1oPCkmZwDeP
+   FoOFg6+zvQBxHI+svMmki+1GCEvusA6iki0aOTRcuhBzywuqnOvH8wRWT
+   +95d/PUWoi4CwVT7jf8fTseG/1TS0rmmWdjvgWttuO+SvltaXps+ag3oc
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10989"; a="2629620"
+X-IronPort-AV: E=Sophos;i="6.06,172,1705392000"; 
+   d="scan'208";a="2629620"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Feb 2024 23:26:09 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,172,1705392000"; 
+   d="scan'208";a="9386547"
+Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
+  by orviesa005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Feb 2024 23:26:02 -0800
+Received: from kekkonen.localdomain (localhost [127.0.0.1])
+	by kekkonen.fi.intel.com (Postfix) with ESMTP id 63F5B11F7E1;
+	Tue, 20 Feb 2024 09:25:59 +0200 (EET)
+Date: Tue, 20 Feb 2024 07:25:59 +0000
+From: "sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>
+To: Zhi Mao =?utf-8?B?KOavm+aZuik=?= <zhi.mao@mediatek.com>
+Cc: "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>,
+	"heiko@sntech.de" <heiko@sntech.de>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>,
+	"yunkec@chromium.org" <yunkec@chromium.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"dan.scally@ideasonboard.com" <dan.scally@ideasonboard.com>,
+	"gerald.loacker@wolfvision.net" <gerald.loacker@wolfvision.net>,
+	Shengnan Wang =?utf-8?B?KOeOi+Wco+eUtyk=?= <shengnan.wang@mediatek.com>,
+	"hdegoede@redhat.com" <hdegoede@redhat.com>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	"linus.walleij@linaro.org" <linus.walleij@linaro.org>,
+	"andy.shevchenko@gmail.com" <andy.shevchenko@gmail.com>,
+	Yaya Chang =?utf-8?B?KOW8tembhea4hSk=?= <Yaya.Chang@mediatek.com>,
+	"mchehab@kernel.org" <mchehab@kernel.org>,
+	"jacopo.mondi@ideasonboard.com" <jacopo.mondi@ideasonboard.com>,
+	"jernej.skrabec@gmail.com" <jernej.skrabec@gmail.com>,
+	"bingbu.cao@intel.com" <bingbu.cao@intel.com>,
+	"tomi.valkeinen@ideasonboard.com" <tomi.valkeinen@ideasonboard.com>,
+	"10572168@qq.com" <10572168@qq.com>,
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"macromorgan@hotmail.com" <macromorgan@hotmail.com>
+Subject: Re: [PATCH v4 2/2] media: i2c: Add GC08A3 image sensor driver
+Message-ID: <ZdRUB92gkbRGPyr_@kekkonen.localdomain>
+References: <20240204061538.2105-1-zhi.mao@mediatek.com>
+ <20240204061538.2105-3-zhi.mao@mediatek.com>
+ <20240206184542.GE2827@pendragon.ideasonboard.com>
+ <598f62bbb55157eec1e23dd1dbc307fea3851b21.camel@mediatek.com>
+ <20240220030104.GF20376@pendragon.ideasonboard.com>
+ <115698c0c549e747026cc8841a3bd571533f8e6f.camel@mediatek.com>
 MIME-Version: 1.0
-References: <cc8f7f7da5bdccce514a320e0ae7468659cf7346.1707327680.git.daniel@makrotopia.org>
-In-Reply-To: <cc8f7f7da5bdccce514a320e0ae7468659cf7346.1707327680.git.daniel@makrotopia.org>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 20 Feb 2024 14:40:47 +0800
-Message-ID: <CAGXv+5EKCrvsvZwc2zYiMWAeT9vqvU0JnDrz=WBoebBBbcgp0g@mail.gmail.com>
-Subject: Re: [PATCH] soc: mediatek: mtk-socinfo: depends on CONFIG_SOC_BUS
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	William-tw Lin <william-tw.lin@mediatek.com>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <115698c0c549e747026cc8841a3bd571533f8e6f.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240219_224102_348092_30C688AB 
-X-CRM114-Status: GOOD (  19.22  )
+X-CRM114-CacheID: sfid-20240219_232610_471324_A1772102 
+X-CRM114-Status: GOOD (  40.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,45 +114,164 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 8, 2024 at 1:43=E2=80=AFAM Daniel Golle <daniel@makrotopia.org>=
- wrote:
->
-> The mtk-socinfo driver uses symbols 'soc_device_register' and
-> 'soc_device_unregister' which are part of the bus driver for
-> System-on-Chip devices.
->
-> Select SOC_BUS to make sure that driver is built and the symbols are
-> available.
->
-> Fixes: 423a54da3c7e ("soc: mediatek: mtk-socinfo: Add driver for getting =
-chip information")
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Hi Zhi,
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+On Tue, Feb 20, 2024 at 05:45:54AM +0000, Zhi Mao (毛智) wrote:
+> Hi Laurent,
+> 
+> Thanks for you reply.
+> I'd like to ask for advice about how to contrl "reset-pin", please
+> check the below comments.
+> 
+> On Tue, 2024-02-20 at 05:01 +0200, Laurent Pinchart wrote:
+> >  	 
+> > External email : Please do not click links or open attachments until
+> > you have verified the sender or the content.
+> >  Hi Zhi,
+> > 
+> > On Tue, Feb 20, 2024 at 02:12:26AM +0000, Zhi Mao (毛智) wrote:
+> > > On Tue, 2024-02-06 at 20:45 +0200, Laurent Pinchart wrote:
+> > > > On Sun, Feb 04, 2024 at 02:15:38PM +0800, Zhi Mao wrote:
+> > > > > Add a V4L2 sub-device driver for Galaxycore GC08A3 image
+> > sensor.
+> > > > >
+> > > > > Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+> > > > > ---
+> > > > >  drivers/media/i2c/Kconfig  |   10 +
+> > > > >  drivers/media/i2c/Makefile |    1 +
+> > > > >  drivers/media/i2c/gc08a3.c | 1448
+> > ++++++++++++++++++++++++++++++++++++
+> > > > >  3 files changed, 1459 insertions(+)
+> > > > >  create mode 100644 drivers/media/i2c/gc08a3.c
+> > 
+> > [snip]
+> > 
+> > > > > diff --git a/drivers/media/i2c/gc08a3.c
+> > b/drivers/media/i2c/gc08a3.c
+> > > > > new file mode 100644
+> > > > > index 000000000000..3fc7fffb815c
+> > > > > --- /dev/null
+> > > > > +++ b/drivers/media/i2c/gc08a3.c
+> > > > > @@ -0,0 +1,1448 @@
+> > 
+> > [snip]
+> > 
+> > > > > +static int gc08a3_power_on(struct device *dev)
+> > > > > +{
+> > > > > +struct i2c_client *client = to_i2c_client(dev);
+> > > > > +struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> > > > > +struct gc08a3 *gc08a3 = to_gc08a3(sd);
+> > > > > +int ret;
+> > > > > +
+> > > > > +ret = regulator_bulk_enable(ARRAY_SIZE(gc08a3_supply_name),
+> > > > > +    gc08a3->supplies);
+> > > > > +if (ret < 0) {
+> > > > > +dev_err(gc08a3->dev, "failed to enable regulators: %d\n",
+> > ret);
+> > > > > +return ret;
+> > > > > +}
+> > > > > +
+> > > > > +ret = clk_prepare_enable(gc08a3->xclk);
+> > > > > +if (ret < 0) {
+> > > > > +regulator_bulk_disable(ARRAY_SIZE(gc08a3_supply_name),
+> > > > > +       gc08a3->supplies);
+> > > > > +dev_err(gc08a3->dev, "clk prepare enable failed\n");
+> > > > > +return ret;
+> > > > > +}
+> > > > > +
+> > > > > +usleep_range(GC08A3_MIN_SLEEP_US, GC08A3_MAX_SLEEP_US);
+> > > > > +
+> > > > > +gpiod_set_value_cansleep(gc08a3->reset_gpio, 1);
+> > > >
+> > > > Are you asserting reset when powering on ? That sounds wrong, you
+> > should
+> > > > de-assert reset here (and acquire the reset gpio in probe() with
+> > > > GPIOD_OUT_HIGH). Drivers should use logical levels for GPIOs,
+> > setting a
+> > > > GPIO named "reset" to 1 should assert the reset signal, even if
+> > the
+> > > > physical signal is active low. You may have the wrong polarity in
+> > the
+> > > > device tree.
+> > >
+> > > According to the sensor power sequence sepc, "reset" pin should be
+> > pull
+> > > from low to high after "dovdd/dvdd/avdd" power on, so I follow this
+> > > power sequece to pull "reset" pin high in software flow.
+> > 
+> > From a hardware point of view that's right, but the Linux kernel
+> > handles
+> > logical level of GPIOs. If a GPIO is named "reset", it is expected
+> > that
+> > calling
+> > 
+> > gpiod_set_value_cansleep(gc08a3->reset_gpio, 1);
+> > 
+> > will "assert" the reset signal, setting it to a logical "reset =
+> > true"
+> > level. This maps to the hardware 0V output level, as the signal is
+> > active-low. To achieve this, define the reset GPIO as active low in
+> > DT,
+> > and the GPIO framework will invert the signal for you. You should
+> > then
+> > call
+> > 
+> > gpiod_set_value_cansleep(gc08a3->reset_gpio, 1);
+> > 
+> > in the driver when you want to assert reset (set it to 0V), and
+> > 
+> > gpiod_set_value_cansleep(gc08a3->reset_gpio, 0);
+> > 
+> > when you want to deassert it (set it to 3.3V, or whatever the I/O
+> > voltage for the signal is).
+> > 
+> > This way all driver use logical states, and the inversion is handled
+> > in
+> > DT.
+> > 
+> 
+> Sensor power sequence as below:
+>                       ------------------
+>                      | | |
+>                      | | | 
+> dvdd/avdd/dovdd  --------
+>                                ---------
+>                               |
+>                               |
+> reset-pin        -------------
+> 
+> In order to match this power sequece, "reset-pin" contrl flow is below:
+> 1. config the "reset-pin" is "active-high" in DTS:
+>     reset-gpios = <&pio 19 GPIO_ACTIVE_HIGH>;
+> 
+> 2. image sensor driver probe function:
+> gc08a3->reset_gpio = devm_gpiod_get(dev, "reset",
+> GPIOD_OUT_LOW);  //init "reset-pin" is low
+> 
+> 3. image sensor driver power_on function:
+> gpiod_set_value_cansleep(gc08a3->reset_gpio, 1); //pull "reset-pin"
+> high 
+> 
+> so, the expect state of "reset-pin" is from low to high.
+> If I am wrong, please correct me.
 
-Angelo, I believe this should be picked up for -next?
 
-Also, mediatek/v6.8-next/soc is missing from mediatek/for-next in today's
-linux-next.
+From Documentation/driver-api/gpio/consumer.rst:
 
-> ---
->  drivers/soc/mediatek/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-> index 50c664b65f4d4..1b7afb19ccd63 100644
-> --- a/drivers/soc/mediatek/Kconfig
-> +++ b/drivers/soc/mediatek/Kconfig
-> @@ -72,6 +72,7 @@ config MTK_SOCINFO
->         tristate "MediaTek SoC Information"
->         default y
->         depends on NVMEM_MTK_EFUSE
-> +       select SOC_BUS
->         help
->           The MediaTek SoC Information (mtk-socinfo) driver provides
->           information about the SoC to the userspace including the
-> --
-> 2.43.0
->
->
+	As a consumer should not have to care about the physical line
+	level, all of the gpiod_set_value_xxx() or
+	gpiod_set_array_value_xxx() functions operate with the *logical*
+	value. With this they take the active low property into account.
+	This means that they check whether the GPIO is configured to be
+	active low, and if so, they manipulate the passed value before the
+	physical line level is driven.
+
+I.e. when you want to enable reset, you set the value to 1 in the driver. I
+think you're now setting the value to 0 in that case. The opposite for
+disabling it of course.
+
+-- 
+Regards,
+
+Sakari Ailus
 
