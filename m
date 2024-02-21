@@ -4,90 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C4B4C5478A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Feb 2024 18:01:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18DE9C48BEB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Feb 2024 19:03:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t/XUwk5TS9Ky2HqKC3MvObSVQS4x92SJn+KRK0ItMuw=; b=mxf73xAJrKckt8/3xF7QfLocEN
-	ifQxP4tflWJ6dwJl1T90vMYNtbFh70TFLBZom1IU7rgQ2nEG+fUE/SZn8GNRkGDt43cX+4E5jO0jy
-	ivV3R2w2ngesUxfyRe1WldJGcrHRtCTrcI67wpI9zFKA0KdytMHer94/KV0mp6lMfgHcNTyDFrKT1
-	ZAzylBnOlwFdzZdiEJVobK34umR+shH0wMs2iPG5CqSdEIU+1/l8bQP+rKGOoOuyHskw1mqXtpJGu
-	7GktqpuBDcwz5iU13qJ5TF0OzmEMhHH1i79ch9VfdTOE4COBJRZi9KHN95UjrcCodTngkWAnGpchA
-	SaJypxYg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TjyaAdr0RWDRi17pb5az9zJvvQa3IZRo8sIgePHLAAg=; b=u0yiEBxiNOC6GkVfKQ23pRRIl7
+	c4rAIzgu9KjxFA9OyKXMNBs3YVTzQf08pPPPsNoLmXjSshun72lyDIHN/b50oh0GG/Wv2wdzRCMlZ
+	bzpADqpckaJW9DC6+cBy2t8B5r3kOGhSIgb1IOynLGL/I8lXDVtM91PQmAaZMUplKa5E4RglNszRs
+	y9RFYwoxhzyIf7ffD1Bvg1Qa9bdWTDb7htwARFalPI/tbLagBOnqlfIP91kgpQw+ixNTOLSog1Y2H
+	ICgMtVcY2EW3Xcp69c0I1UpzrgTygG72BjMTQBtQB2lhuyLzgsbZ8xIwAgIsxmjJPdShyMb0UxJax
+	IoVWJ1aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcquH-000000020gA-2tBe;
-	Wed, 21 Feb 2024 18:01:21 +0000
-Received: from mail-ot1-f48.google.com ([209.85.210.48])
+	id 1rcrsQ-00000002D3p-0MtB;
+	Wed, 21 Feb 2024 19:03:30 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcquF-000000020fY-0ono
-	for linux-mediatek@lists.infradead.org;
-	Wed, 21 Feb 2024 18:01:20 +0000
-Received: by mail-ot1-f48.google.com with SMTP id 46e09a7af769-6e2e44aad03so3874577a34.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 21 Feb 2024 10:01:17 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708538477; x=1709143277;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=t/XUwk5TS9Ky2HqKC3MvObSVQS4x92SJn+KRK0ItMuw=;
-        b=a4qIiX+sZMz6FZzxIryDDfg4+fu80xIwJm3Z2f5qw6etc1ngXXiUbvwV0HXMmBFHgN
-         o2k+AlJK5Jy6GxRxb+zaeLa0F1VR9yfgtfXiLKMJP4UGyXrrGix79m6iocisrnHp4hP7
-         xiNO3Vmx4WapSE9X79kXJGWoztUSU1aprbnb3ka2jWu225eZdaub46WNMXK+DIfbGbE9
-         11zDp8UhB6f5Z9Pu142XTBnPfhs+M14x2oEC7e/g4HDso6Sw86N5HlD56/NTZvkOzfem
-         8OHCsWyrRZzjjfodcCZqT/AD478bEH5hn66vD7IV6309DYzaZJKGs0aDCDphB0wpmPXe
-         +vaw==
-X-Gm-Message-State: AOJu0YyIE1MzF0421RU8XR2xCl7gKrOMtxlPv9t/OTmm0z003pXLIOO0
-	N3+FAzcT4BkZJTkCwhVPbQCMYduzEf7zYj6rY3pA/OkKblb4pS4L
-X-Google-Smtp-Source: AGHT+IEh/kOMQRAU+4zZdRPprsjAmt/ymq/739JlgxltzcC9dG6jrCZCKTzw88pz8itZR4vjQoIR4g==
-X-Received: by 2002:a05:6359:4125:b0:17b:759:65c2 with SMTP id kh37-20020a056359412500b0017b075965c2mr21933881rwc.10.1708538476753;
-        Wed, 21 Feb 2024 10:01:16 -0800 (PST)
-Received: from ?IPV6:2620:0:1000:8411:d74f:a168:a26a:d7fe? ([2620:0:1000:8411:d74f:a168:a26a:d7fe])
-        by smtp.gmail.com with ESMTPSA id ka36-20020a056a0093a400b006e48e0499dfsm1815313pfb.39.2024.02.21.10.01.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 21 Feb 2024 10:01:15 -0800 (PST)
-Message-ID: <923e2241-ab08-4cf6-a614-91da4b3575b8@acm.org>
-Date: Wed, 21 Feb 2024 10:01:13 -0800
+	id 1rcrrw-00000002CyW-1n56;
+	Wed, 21 Feb 2024 19:03:09 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 14006CE1F7A;
+	Wed, 21 Feb 2024 19:02:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD80AC433C7;
+	Wed, 21 Feb 2024 19:02:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1708542164;
+	bh=Kq56kAG03QGNn+CX3JoT3D4J50nG3wBXsto8joaj6nA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=W0GKN4uzj/+puIOtsCFZuLrHJTzQ0jyTBfwk23twnDP9l6LLMEt0g1HJpcz5Ai13s
+	 t383J/cZ8fQM4ntz6Paz/Y4EnD4j6RbyqnBi4/jPnaH6Be6iBJjFW+kf5sDZxNVADn
+	 7GUyC44M1Bl6GDGo2v2DVoAtmZAU9BdV9kg76H92SrbM2UPqIto0x6H3WWFU5NvA4h
+	 fpY5G95mIX/QimLAWQsW9N8Mg+Cjb2vJV2S1kPMT69H++A4UofxxstphFuUdF6zrL7
+	 H2ibVLF8FqygO9iv3+9rHdmGhdyAO59ZTdXuTmhNj2/ihmv44lWrzbX9tG0TzLdccq
+	 a77NM5l6jjb/Q==
+Date: Wed, 21 Feb 2024 19:02:38 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Michael Walle <mwalle@kernel.org>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3 1/2] dt-bindings: arm64: mediatek: add Kontron
+ 3.5"-SBC-i1200
+Message-ID: <20240221-trance-handheld-59c5066aeca6@spud>
+References: <20240221155905.1217340-1-mwalle@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] ufs: core: adjust config_scsi_dev usage
-Content-Language: en-US
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>
-Cc: "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
- =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
- =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
- =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>, =?UTF-8?B?TGluIEd1aSAo5qGC5p6X?=
- =?UTF-8?Q?=29?= <Lin.Gui@mediatek.com>,
- =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
- =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
- "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
- =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
- <Chaotian.Jing@mediatek.com>, =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
- <Powen.Kao@mediatek.com>, =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
- <Naomi.Chu@mediatek.com>, =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
- <Qilin.Tan@mediatek.com>
-References: <20240220094211.20678-1-peter.wang@mediatek.com>
- <46d0c5b7-7158-405d-ba38-cece4030e2bd@acm.org>
- <0874377d564ceb63efd62df3757c6e5f3a0dd03c.camel@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <0874377d564ceb63efd62df3757c6e5f3a0dd03c.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="vjJZp3HexdVYJTnL"
+Content-Disposition: inline
+In-Reply-To: <20240221155905.1217340-1-mwalle@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240221_100119_253399_B3749A2F 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20240221_110300_813238_4BE1612F 
+X-CRM114-Status: GOOD (  16.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,24 +78,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/20/24 18:44, Peter Wang (王信友) wrote:
-> This help function is designed to assist users eliminating the check.
-> Formalize the usage can make the code more concise and easier to read.
-> Such as ufshcd_vops_init/ufshcd_vops_exit is also only one caller.
-> Besides, it also need a comment of config_scsi_dev in ufshcd.h
 
-My personal opinion is that the helper function makes code harder to
-read because the definition of a helper function needs to be looked up
-to understand the code. There are many examples in the changelog of the
-kernel tree that show that there is a preference in the Linux kernel
-code base to inline short functions rather than keeping or introducing
-short helper functions.
+--vjJZp3HexdVYJTnL
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Regarding the config_scsi_dev comment, shouldn't that be a separate
-patch since that change is unrelated to the introduction of a helper
-function?
+On Wed, Feb 21, 2024 at 04:59:04PM +0100, Michael Walle wrote:
+> Add the compatible string for the Kontron 3.5"-SBC-i1200 single board
+> computer.
+>=20
+> Signed-off-by: Michael Walle <mwalle@kernel.org>
 
-Thanks,
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-Bart.
+Cheers,
+Conor.
+
+> ---
+> v3:
+>  - drop description and add to mt8395 existing entry
+>=20
+> v2:
+>  - convert enum to const as there is only one specific board
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docume=
+ntation/devicetree/bindings/arm/mediatek.yaml
+> index 09f9ffd3ff7b..29ebe1f9c1d2 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -353,6 +353,7 @@ properties:
+>            - const: mediatek,mt8365
+>        - items:
+>            - enum:
+> +              - kontron,3-5-sbc-i1200
+>                - mediatek,mt8395-evk
+>                - radxa,nio-12l
+>            - const: mediatek,mt8395
+> --=20
+> 2.39.2
+>=20
+
+--vjJZp3HexdVYJTnL
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZdZIzgAKCRB4tDGHoIJi
+0hdYAPsEFG/2oLEhg2asBC0ZJ9IOZ+gngGyXIlvYt2JvKSi4xgEA+D+t9lQSCW7p
+Fgg/S4QdArJbqce3ktlR/KlQUrx6SAw=
+=8mZJ
+-----END PGP SIGNATURE-----
+
+--vjJZp3HexdVYJTnL--
 
