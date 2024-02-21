@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08315C48BF6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Feb 2024 07:36:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D9B4C48BF6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Feb 2024 07:36:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5K+LPUTpDWl7CTSQ7wwWQlCqZnBOjCKam3sPzq3LFCk=; b=hSriplBmqZLz4QrlRmr2algOvm
-	JfjRJZl+LyGRdRat0QNQDgGJ4W0E8PEI4ptzQCsJ2Or7OcbXZm1bwEXw6vSwuAOJCnax2hVcLCjOx
-	50z1w96oHMySdwRx050UNzCDgBa0b9hZiMx2r72RCe+KDxlbOy2aeHihtOB0JG788vQ1Bf2lv8IFb
-	38yd4AQp1N3TK4a+Ar3aRdILRKcDI39LXLTByOU7fGD3QUYXkw8kywAlQMPgbdDO1LNYvIkiRxjdr
-	NlY0t+6veejbkgKOXD7bPCyaAkFFCzmjfxk5cBrX+adNaPQYcpErCtaGbkuE3evRUwnWVcsdYVcZP
-	Rrpc3eTA==;
+	bh=NbLgMoZR4t08q5k+O843alwk/f3OePOmG2WLruO1CqU=; b=wm6dZACxr9quSV1DFr+BM2hHjt
+	xcRBEkpbXqHn5uWPVmnAst25PiG9FaWVPMeTeCVDcFfkde+Ljwy7zSxYl9mDZ3O10LUWST9QtQUI8
+	MhG/9sl5R9QwFVcucO2zwHNRXYvCL/6P2NRMYfjUNQcvGC8nb8tPHgL9jiIN5XC7Zvqxg8ETMBHWE
+	jqzEKBUYRd5/ORs/VWrjUFRLWAGrtgYBr8Mke/WnVnGdZusxtnX6I/mTQZeJVYM/I8DhIEQLtrlOW
+	mzdN8rGBrMsgUnR1wu0dR5s/msFvfuE0GtQheAfwTffe3zgRG7QphJt5d3oiOUNqoQSW6On93iZHj
+	EDgmVwkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rch9e-0000000HVt0-2lYN;
-	Wed, 21 Feb 2024 07:36:34 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1rch9p-0000000HW1j-4Aa4;
+	Wed, 21 Feb 2024 07:36:46 +0000
+Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rch9G-0000000HVd5-3mBK;
-	Wed, 21 Feb 2024 07:36:12 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2d2305589a2so3456351fa.1;
-        Tue, 20 Feb 2024 23:36:10 -0800 (PST)
+	id 1rch9H-0000000HVeC-42rC;
+	Wed, 21 Feb 2024 07:36:13 +0000
+Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-2d228a132acso54348091fa.0;
+        Tue, 20 Feb 2024 23:36:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1708500969; x=1709105769; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1708500970; x=1709105770; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=5K+LPUTpDWl7CTSQ7wwWQlCqZnBOjCKam3sPzq3LFCk=;
-        b=lOZbmmRYfjSpkTCqBp6qP7Hep4ocFWYGQF6Xgy17Qym/fcHUR8U8N1frXm/4Vnns3H
-         tSoyNIGbFOYytPrQ+6ZAZIj/D8ka+4N/k/W+dVvJeqtV1+i9Y1LARWzqZzheGF0UvwZs
-         Irf1+8UoMoHDyyPQNK4njV5TQPT+58h44pMUNaOWovDmoJhIEOJpkPeZsvLw8EFGmwRy
-         fKYQFtj3fsMDavBJhu8sfuWqc6xuNALE7BLRwjcMyEtS8y8mFPXLXOyuLw1gex+mcyQR
-         maKLRXWDS48t2p9dfNkKkd3ObZ7aXR6pAyEgNg6jsoeF0f2twhO3z92ETye5mYuJkzbm
-         Z8Yw==
+        bh=NbLgMoZR4t08q5k+O843alwk/f3OePOmG2WLruO1CqU=;
+        b=j4mDRYRQWAUH6W+hKt8K1dr8QNluvAV8lSS5dfvKp9Atj0m86SqfAhZi6kMIQ+dG0t
+         7nDAPVYUKX1jsy9ndNR4dtEVbCu3lQ0uYKV/3JEISfJSWezAOjA4PNDPkrBt+xKqUN5a
+         nba6FaY35dVc3SAMz8Hy+caYqYBXYn2SYpDsYgtxPscLzQywBVte29NaT4MAhMEtcoUS
+         l4JMUmxL2YtSQQGsbXDhPwgMB+V25rlPKhvc9kJLO/opEAU9RYcpfGDkQV/LNpNKVsWc
+         hkgVQXUSlxlpXKB6VKUjd/QweFKlKndZd+yWh6vEZVRk5mq24n42J9RyTdYz5jkTLS46
+         luUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708500969; x=1709105769;
+        d=1e100.net; s=20230601; t=1708500970; x=1709105770;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=5K+LPUTpDWl7CTSQ7wwWQlCqZnBOjCKam3sPzq3LFCk=;
-        b=a6xFS+5uk8WPEfCoxOfu0CzDARyTbGDQpGRcntf4vdrsOzK1XlyQ0LJP2yU5wqbpGI
-         x8GqTgBQp7VmdbClGqeeV35L6P5LYJ5lGPxANcDoqHWXvXnavRfLbjd7Y2hMHFYjJ2xX
-         Mn6H/qFfusdZz7XMvccOtU0PNRlZy2zAeODIWnkzp4UI4pkRNe8EC03gscLAnb+fewoJ
-         GHv8eQWZmYV0EvSaJJCf6HrfwcSvdeg2soTNAhUNm1L5CAB6utnSqPgfL/SxzccupRYv
-         fb3ljmGVMb5dRcwvFflXD3xoaQLEXreZ+z6vPwZTu5o2NO14NdUkqUUVArCgFt44EoIN
-         qD8A==
-X-Forwarded-Encrypted: i=1; AJvYcCUzp4zoxFLF0h6uC8+KwW4wU9Jt4EAASEyvC0uPxMc3P7KBoLaBHl11hdecyOpzS57XB5DFfRamS8gbefKXeyDnmBRDKj5wHvPaW+Gi1Yhn+ZSxZeoXTfe3PO4EUFc5V1+2988dm4/eSUM3Ul6gdeoPhBhR6V9G+Rk=
-X-Gm-Message-State: AOJu0YyOEL90LEAR8D3Jawg5u0ZfuQy+f42moUHBobqGVMFpTDG457rf
-	n5rL8XGslJG95b+tQFeB8KaVqnKpTuIjl1a1p5N0pWjGO1yYXqQ0
-X-Google-Smtp-Source: AGHT+IFCRIUB71wvbXRhTRzpy+rQD1aWwOBIh3hXm5/xx0yOSjW8vja0s/q45MUSdS0SGtkyDZ9S2A==
-X-Received: by 2002:a2e:854d:0:b0:2d2:3a2d:d2fa with SMTP id u13-20020a2e854d000000b002d23a2dd2famr4765275ljj.28.1708500968737;
-        Tue, 20 Feb 2024 23:36:08 -0800 (PST)
+        bh=NbLgMoZR4t08q5k+O843alwk/f3OePOmG2WLruO1CqU=;
+        b=b2U5SBc5F/sy7pRHgrtPJqL/1FCyEduNbLht3lWoIL6+kgdNjzTx/qUzR4MtZEkTTQ
+         2IP3Aum2oEdRgw9aa+EhBV2+0Bxbs3KFOVRVXAmRYq486/H2dy5oijeDlHs5hBpEoCl4
+         zT5/mPI8XoAsnDgHGhYbcRRQcA48VM9vhl6cxn2SNtqVSx6ZDkAn59NUlf7QJ+1vPWvy
+         h7fpFPJUKHMiZaX4bqqeqgE6wMDD2/eaNfRfdGnmr8sN7KXR0E9M0dB24jdR8JpeOUpn
+         glhURmLqksp0hrI3bPBcPMVVgPzy0qBZ7w/QAK8EUmCfk7kwKarTCG5D8SGHNfCiZBiV
+         yJ1Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWva0ht1tI0epdKlyiu3SS9hsCbl6s+RFoqLkorQbUKKixpupcgqGsOS7UZMPmFVr8zmDawa0pcQQe7HKg5c60XU+9UHKQXRBdECdOGc6ch8ay6JfWaUggvAWRJi4xeSRLpF6vx9qEIJx7MUSgpiD0QSAxo92zRRQY=
+X-Gm-Message-State: AOJu0Yx+WrkBR4d76/b7NQQ3g9PHItbZ7UmvAANElJEWgRXuR8E/4Hbs
+	M58tgeL2FnfXYnqVh+wJyC2l1+Fb38vxwCB20nIIJEpzVOtD3n+j
+X-Google-Smtp-Source: AGHT+IGbhTXvfJwY454gP9jL76eAJGY29TsXCEdiPrgqL7hjr4TGYQ2YlFcD/47YCPPm1w0ctPzyyA==
+X-Received: by 2002:a2e:c49:0:b0:2d2:40cb:8182 with SMTP id o9-20020a2e0c49000000b002d240cb8182mr3976818ljd.49.1708500970465;
+        Tue, 20 Feb 2024 23:36:10 -0800 (PST)
 Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id z3-20020a2e7e03000000b002d0f99a7fc4sm1722330ljc.79.2024.02.20.23.36.07
+        by smtp.gmail.com with ESMTPSA id z3-20020a2e7e03000000b002d0f99a7fc4sm1722330ljc.79.2024.02.20.23.36.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 Feb 2024 23:36:08 -0800 (PST)
+        Tue, 20 Feb 2024 23:36:10 -0800 (PST)
 From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -81,9 +81,9 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH 3/4] arm64: dts: mediatek: mt7981: add pinctrl
-Date: Wed, 21 Feb 2024 08:35:23 +0100
-Message-Id: <20240221073524.20947-4-zajec5@gmail.com>
+Subject: [PATCH 4/4] arm64: dts: mediatek: Add Cudy WR3000 V1
+Date: Wed, 21 Feb 2024 08:35:24 +0100
+Message-Id: <20240221073524.20947-5-zajec5@gmail.com>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20240221073524.20947-1-zajec5@gmail.com>
 References: <20240221073524.20947-1-zajec5@gmail.com>
@@ -91,8 +91,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240220_233611_030728_006A9951 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20240220_233612_037979_F951E1D7 
+X-CRM114-Status: GOOD (  15.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,61 +109,109 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Rafał Miłecki <rafal@milecki.pl>
 
-MT7981 contains on-SoC PIN controller that is also a GPIO provider.
+Cudy WR3000 V1 is an MT7981B (AKA Filogic 820) based wireless router. It
+has 256 MiB of RAM, some LEDs & buttons and (not described yet) 4
+Ethernet ports.
 
 Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 ---
- arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 37 +++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
+ arch/arm64/boot/dts/mediatek/Makefile         |  1 +
+ .../dts/mediatek/mt7981b-cudy-wr3000-v1.dts   | 74 +++++++++++++++++++
+ 2 files changed, 75 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-index 4feff3d1c5f4..fdd5c22cfc9c 100644
---- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-@@ -86,6 +86,43 @@ pwm@10048000 {
- 			#pwm-cells = <2>;
- 		};
- 
-+		pio: pinctrl@11d00000 {
-+			compatible = "mediatek,mt7981-pinctrl";
-+			reg = <0 0x11d00000 0 0x1000>,
-+			      <0 0x11c00000 0 0x1000>,
-+			      <0 0x11c10000 0 0x1000>,
-+			      <0 0x11d20000 0 0x1000>,
-+			      <0 0x11e00000 0 0x1000>,
-+			      <0 0x11e20000 0 0x1000>,
-+			      <0 0x11f00000 0 0x1000>,
-+			      <0 0x11f10000 0 0x1000>,
-+			      <0 0x1000b000 0 0x1000>;
-+			reg-names = "gpio", "iocfg_rt", "iocfg_rm", "iocfg_rb", "iocfg_lb",
-+				    "iocfg_bl", "iocfg_tm", "iocfg_tl", "eint";
-+			interrupt-controller;
-+			interrupts = <GIC_SPI 225 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-parent = <&gic>;
-+			gpio-ranges = <&pio 0 0 56>;
-+			gpio-controller;
-+			#gpio-cells = <2>;
-+			#interrupt-cells = <2>;
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index 37b4ca3a87c9..96da4ad640aa 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt7981b-cudy-wr3000-v1.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7981b-xiaomi-ax3000t.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-acelink-ew-7886cax.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts b/arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts
+new file mode 100644
+index 000000000000..cb36a089518a
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts
+@@ -0,0 +1,74 @@
++// SPDX-License-Identifier: GPL-2.0-only OR MIT
 +
-+			mdio-pins {
-+				mux {
-+					function = "eth";
-+					groups = "smi_mdc_mdio";
-+				};
-+			};
++/dts-v1/;
++#include <dt-bindings/input/input.h>
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/leds/common.h>
 +
-+			spi0-pins {
-+				mux {
-+					function = "spi";
-+					groups = "spi0", "spi0_wp_hold";
-+				};
-+			};
++#include "mt7981b.dtsi"
 +
++/ {
++	compatible = "cudy,wr3000-v1", "mediatek,mt7981b";
++	model = "Cudy WR3000 V1";
++
++	memory@40000000 {
++		reg = <0 0x40000000 0 0x10000000>;
++		device_type = "memory";
++	};
++
++	keys {
++		compatible = "gpio-keys";
++
++		key-wps {
++			label = "WPS";
++			gpios = <&pio 0 GPIO_ACTIVE_LOW>;
++			linux,code = <KEY_WPS_BUTTON>;
 +		};
 +
- 		clock-controller@15000000 {
- 			compatible = "mediatek,mt7981-ethsys", "syscon";
- 			reg = <0 0x15000000 0 0x1000>;
++		key-reset {
++			label = "RESET";
++			gpios = <&pio 1 GPIO_ACTIVE_LOW>;
++			linux,code = <KEY_RESTART>;
++		};
++	};
++
++	leds {
++		compatible = "gpio-leds";
++
++		led-0 {
++			function = LED_FUNCTION_WAN;
++			color = <LED_COLOR_ID_BLUE>;
++			gpios = <&pio 5 GPIO_ACTIVE_LOW>;
++		};
++
++		led-1 {
++			function = LED_FUNCTION_WLAN_2GHZ;
++			color = <LED_COLOR_ID_BLUE>;
++			gpios = <&pio 6 GPIO_ACTIVE_LOW>;
++		};
++
++		led-2 {
++			function = LED_FUNCTION_WLAN_5GHZ;
++			color = <LED_COLOR_ID_BLUE>;
++			gpios = <&pio 7 GPIO_ACTIVE_LOW>;
++		};
++
++		led-3 {
++			function = LED_FUNCTION_LAN;
++			color = <LED_COLOR_ID_BLUE>;
++			gpios = <&pio 9 GPIO_ACTIVE_LOW>;
++		};
++
++		led-4 {
++			function = LED_FUNCTION_STATUS;
++			color = <LED_COLOR_ID_BLUE>;
++			gpios = <&pio 10 GPIO_ACTIVE_LOW>;
++		};
++
++		led-5 {
++			function = "online";
++			color = <LED_COLOR_ID_BLUE>;
++			gpios = <&pio 11 GPIO_ACTIVE_LOW>;
++		};
++	};
++};
 -- 
 2.35.3
 
