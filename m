@@ -4,76 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85509C48BF6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Feb 2024 10:52:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F4D8C48BC3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Feb 2024 12:52:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zhQQeZP+BgS9eLPHnfgN4EVrVEqKC3Adqs2ueOoEhC8=; b=yaU2ZoA59b36WPpnsRSZ60Nezu
-	OtI5uCUGjNzkOd6rRCYgQcyJ6RRauB/wcA2KukiH41cjII6V/THypBmHCtozCU35KJK6y0F31YL+I
-	fYC53hzpJS5oOPAoCEDLAdHhaoTlsdH5HZM+9u/crXmt8qDBcHAfrutFL2gePYC+qjFqmflrreBxF
-	ovO+wQCMW+ydgD75px3/8makRx+dvnKEtyanyR/YoRx7yZSmgF/VoGEC0Gs75OoAFtbvZaPjh/IKe
-	DgyjV5qYygeRVrDenHeqeznHIR7bNCv0AzxlKNO2w36YHTAoSpuSPMLzPgsWQi6oENvSHjN0j3G9I
-	KxasOC6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yU16TocWugH7F4lfHsPz28YesZel7rWXS48tKsMAJ5g=; b=bynhEcyvnqUKLC
+	P4yj20pSEP52veMDQ7XnS3sFT2+qplK755Y8rD0uvCRDDXiBc4ddtlI7+bEsI9RAWk7wm2TKRRWJy
+	mVHNKVI5HnxCb7qo8EHjHrD7pD7iRYROErc2eBjenHutSE7shYJrWbIvMD4yy1ogmaneQNK4G2NgS
+	gJTNORQJ3J7Uxspkv3XrPo00NT0dC0hNgLefklC8VnzjgYm1fnfxUSwUj3GI3ws4v1Vmyjnd0f1rD
+	qIpOvorVLV0P7Kk47GnBsRKibhwiQp74897HMUUc/lAMm9F+hp/L0xi1hNspr9WS86KuGq7P0JYEb
+	tuAhHLEV3hTY5rrz9NIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rckDg-00000000abJ-48gW;
-	Wed, 21 Feb 2024 10:52:56 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rcm5n-00000000uW4-1d5X;
+	Wed, 21 Feb 2024 12:52:55 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rckDd-00000000aZH-0mV9;
-	Wed, 21 Feb 2024 10:52:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708512771;
-	bh=mANM8Mj17utuO74C4GVIckTC6XGo+k2ahYlLtoQ2An8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iGVFLfoU0uUorDxu3xhcQFffIKP/1Er5IQxtwGNk0oHmftuGr6UCNYN7hWJebCQp1
-	 j3ba1suU3gSQB0kF80g3wM36DZ1J0CNnCmVnjBubm9WCNkEVDFkrZLrCcb5FbuqZd2
-	 3K8rI79Ykphdi0n0BmKrRecjFRVlbBV0ofRwC2MfO749TCG0xxK4aSivhuJBUjSQnq
-	 /fCbnGsmLoSw8iK8SFzAtXKLfkJehv+Zr/OA6dti0mf3FVhuk66E9sOnnN1kW4L/Ly
-	 k0Vn4HuuCB7Lo9PqEop5KOz/G3EJTGFzGDgV6pMFJze05+fXsWGxmQc+M5DZ543CN0
-	 IEFXA7afZcfLw==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 54CFF3781FE6;
-	Wed, 21 Feb 2024 10:52:50 +0000 (UTC)
-Message-ID: <80e92209-5578-44e7-bd4b-603a29053ddf@collabora.com>
-Date: Wed, 21 Feb 2024 11:52:49 +0100
+	id 1rcm5j-00000000uT5-3JWq
+	for linux-mediatek@lists.infradead.org;
+	Wed, 21 Feb 2024 12:52:53 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a26fa294e56so1035988066b.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 21 Feb 2024 04:52:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1708519969; x=1709124769; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=yU16TocWugH7F4lfHsPz28YesZel7rWXS48tKsMAJ5g=;
+        b=xWR57j18f0GEdJG3Du6qukDPA6T6gg6KaG8TkyF4qCIHTmxnfSfvYFHhLKrhHMq/Xw
+         IkW/4pq+PF7AkZtPWP8QZKV6FVxRtnRk9sagBVzvCe0ZYzaL29W9psKfm21QhpzM+WAJ
+         a69MlzT4eMy3nyl7k+dDO3eKN3yM+kk9wKg8Z3dCTCMOQYZTeBbe+Qge+fTsXl+sq3/U
+         oKhtOcoy/i5B8ZtCTcX6SokgGm8Irr9+ZZEYUZJW/hDGEq0VIiF1Q+A0XEdp54IBbde0
+         7r7HoTQEd6dr3pI4/0jgaO8L+SW0/C89P1g1p4cXKJCP/Kmm5Gqzae32rwZQNC9h97jE
+         Bkzg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708519969; x=1709124769;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=yU16TocWugH7F4lfHsPz28YesZel7rWXS48tKsMAJ5g=;
+        b=a0I4Tk1nw+eIz9Vr9qYYfpX/HNj4VjVKTD+13aay0fNBa3Es0nYvl3U/4ocCOf1ZYo
+         NCiTrxVxE8QGectIPxyJIYrdLCs/oV05+bSBkYooNff4QTQ3VM2i6Oiprf5rQN9I2SL6
+         0QpmFDL0Z5LO38tmQ3qC6LAE9LwPiwuMNuj0LHDNT1X/pdlALxLLfE7p22IHKJ+Xo9sY
+         tLHkEbAuszVsC7yFiQ3RTlH3ZemObusAIO7h8iIR53w4NZbNtbJ0oyuFq9DLztk3Xo6u
+         8kHFE3s2tbOlVaOuTOQ21Qb/CekR9KaZ7SpsHIl6L9Fj8X4G9Fax+KDCw9vd4ruFLjoU
+         zNHw==
+X-Forwarded-Encrypted: i=1; AJvYcCXFnolN2Y/JhXVIqfw7WmG8vczumb5Yvjg8rQLfjvfa8UNc1+sR9tAXfhYDB4hzkhx9b+vYv0WJrbwKwRlWRr2JxzE51ekAIFsLHKYHNZqxrseP
+X-Gm-Message-State: AOJu0YybFganxwMeUKqi1INxlvxdhlxi26m8POk59rzUhzNgFoOHlIay
+	Dn/ikbcydG4IWFJsZvtFYveLPZgMbYJLxfioKGx8zWfwhGaFPCypyBbY2VljqOM=
+X-Google-Smtp-Source: AGHT+IFcB2F2zitmluQ/uveI8ML8aEnCYgJw0KcvTusx9XgiFPDOV8i9/APzWecwPwmV0bI5C/T6gg==
+X-Received: by 2002:a17:906:d78b:b0:a3e:bd4e:c87e with SMTP id pj11-20020a170906d78b00b00a3ebd4ec87emr7103630ejb.36.1708519969563;
+        Wed, 21 Feb 2024 04:52:49 -0800 (PST)
+Received: from [127.0.1.1] ([188.24.162.93])
+        by smtp.gmail.com with ESMTPSA id tl23-20020a170907c31700b00a3da5bf34absm4930392ejc.207.2024.02.21.04.52.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 21 Feb 2024 04:52:49 -0800 (PST)
+From: Abel Vesa <abel.vesa@linaro.org>
+Subject: [PATCH v5 0/4] spmi: pmic-arb: Add support for multiple buses
+Date: Wed, 21 Feb 2024 14:52:36 +0200
+Message-Id: <20240221-spmi-multi-master-support-v5-0-3255ca413a0b@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/4] arm64: dts: mediatek: Add Cudy WR3000 V1
-Content-Language: en-US
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIABTy1WUC/43OwWrDMAwG4FcpPk9Dlt3a7WnvMXqwHbk1tHGw0
+ 9BR8u5ze8oohF0Ev+D/pIeoXBJXcdg8ROEp1ZT7FrYfGxHOrj8xpK5lQUgaCQ3U4ZrgeruMbbo
+ 6coF6G4ZcRrCKnEHtjdl70fpD4ZjuL/v72PI51TGXn9epST63/1EnCQiBtyYqlMHE7uuSelfyZ
+ y4n8WQnWlBSrVEEErzyEknRbo+7N0otKb1GqfYVesfIEXV08Y3SC4pwjdKN6oKVKlhjvbN/qHm
+ efwE5yJ1JpAEAAA==
+To: Stephen Boyd <sboyd@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>, 
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
  Conor Dooley <conor+dt@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
- =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
- Heiko Stuebner <heiko.stuebner@cherry.de>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Chris Morgan <macromorgan@hotmail.com>,
- Linus Walleij <linus.walleij@linaro.org>, Sean Wang
- <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
- <rafal@milecki.pl>
-References: <20240221073524.20947-1-zajec5@gmail.com>
- <20240221073524.20947-5-zajec5@gmail.com>
- <2fdf724e-4994-4873-971a-56c19b9fc471@collabora.com>
- <b4e8d3c6-5113-4324-9af5-c4e89cd89349@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <b4e8d3c6-5113-4324-9af5-c4e89cd89349@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Cc: Srini Kandagatla <srinivas.kandagatla@linaro.org>, 
+ Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ Abel Vesa <abel.vesa@linaro.org>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2489; i=abel.vesa@linaro.org;
+ h=from:subject:message-id; bh=Q34MGmLpDzn2sDXIy+KyEQYaT3QoNxwJZUKti5Td7pk=;
+ b=owEBbQKS/ZANAwAKARtfRMkAlRVWAcsmYgBl1fIWhbMbxfrM0al5B9dNOsjis3EumNU0q+W3M
+ w9TeiNRFgWJAjMEAAEKAB0WIQRO8+4RTnqPKsqn0bgbX0TJAJUVVgUCZdXyFgAKCRAbX0TJAJUV
+ VgSeEAC8iMXfJrtVgyn4QtEOKV6l5nLLS/EAEzrn513ua+9qM9RzXwshMgMJylvTBc43IGLTMGY
+ vGJX/W0O/tcgtzs2qx7PrngIdAtMp1h/deuF0bXr1M3Xb9fdePoiqXWD/hdziP1bGezL2tmig54
+ A4UIEMMDedGCpDANSB9v3wlU7db7p7Y51YR5ufCUZ/fmPK696jAzzhCQ3Cycrh616hEnAAsFI1i
+ n+EShGTjGsK4b5WZqeJBwuIFSdfKcvjQvR888qXn9Un2oNstYd2h51vu1IMFcE5OnMXLk2enK8K
+ 0knFZycXr5LuSv3m9Tt0uyxCBmAXG7tpd8u3IplcoPNEZ8LhPA6UihTMfrGC9bjRPe76gC+dYqp
+ 4GI07UuYE+Hv4V2ZMpkz1bXnJ3rlZ0+AnvPT5PHluNJt3M0R0q3riT3fez/EK8ftPKt54fvgSs+
+ tVPG1YkoPcfHSk880GeVWAZajciPviQlpXekRFArhuHq3Urg2SUhXMtsaZNTPX/xzhuRh+Feibh
+ jkFrx67gs3KcrT2xCmu2FmsKHQQa27Y+TstufqB0Ex1eQbNxy8lwEPdFDZ8vZiuqGjgfX9Bmkkn
+ r2d8PBO3uMVhVjNVdiIHabM0/iYfW4+5mwSWmovnNb2LfwXKrLBUV2Qgv5l+KIqDVFc1hiGlMx8
+ fM5ifTQUbAw7q5w==
+X-Developer-Key: i=abel.vesa@linaro.org; a=openpgp;
+ fpr=6AFF162D57F4223A8770EF5AF7BF214136F41FAE
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240221_025253_385639_FCDC9955 
-X-CRM114-Status: GOOD (  26.81  )
+X-CRM114-CacheID: sfid-20240221_045251_868554_2BA03BBD 
+X-CRM114-Status: GOOD (  11.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,178 +123,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/02/24 11:18, Rafał Miłecki ha scritto:
-> On 21.02.2024 11:11, AngeloGioacchino Del Regno wrote:
->> Il 21/02/24 08:35, Rafał Miłecki ha scritto:
->>> From: Rafał Miłecki <rafal@milecki.pl>
->>>
->>> Cudy WR3000 V1 is an MT7981B (AKA Filogic 820) based wireless router. It
->>> has 256 MiB of RAM, some LEDs & buttons and (not described yet) 4
->>> Ethernet ports.
->>>
->>> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
->>> ---
->>>   arch/arm64/boot/dts/mediatek/Makefile         |  1 +
->>>   .../dts/mediatek/mt7981b-cudy-wr3000-v1.dts   | 74 +++++++++++++++++++
->>>   2 files changed, 75 insertions(+)
->>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts
->>>
->>> diff --git a/arch/arm64/boot/dts/mediatek/Makefile 
->>> b/arch/arm64/boot/dts/mediatek/Makefile
->>> index 37b4ca3a87c9..96da4ad640aa 100644
->>> --- a/arch/arm64/boot/dts/mediatek/Makefile
->>> +++ b/arch/arm64/boot/dts/mediatek/Makefile
->>> @@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
->>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
->>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
->>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
->>> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7981b-cudy-wr3000-v1.dtb
->>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7981b-xiaomi-ax3000t.dtb
->>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-acelink-ew-7886cax.dtb
->>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
->>> diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts 
->>> b/arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts
->>> new file mode 100644
->>> index 000000000000..cb36a089518a
->>> --- /dev/null
->>> +++ b/arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts
->>> @@ -0,0 +1,74 @@
->>> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
->>> +
->>> +/dts-v1/;
->>> +#include <dt-bindings/input/input.h>
->>> +#include <dt-bindings/gpio/gpio.h>
->>> +#include <dt-bindings/leds/common.h>
->>> +
->>> +#include "mt7981b.dtsi"
->>> +
->>> +/ {
->>> +    compatible = "cudy,wr3000-v1", "mediatek,mt7981b";
->>> +    model = "Cudy WR3000 V1";
->>> +
->>> +    memory@40000000 {
->>> +        reg = <0 0x40000000 0 0x10000000>;
->>> +        device_type = "memory";
->>> +    };
->>> +
->>> +    keys {
->>> +        compatible = "gpio-keys";
->>> +
->>> +        key-wps {
->>> +            label = "WPS";
->>> +            gpios = <&pio 0 GPIO_ACTIVE_LOW>;
->>> +            linux,code = <KEY_WPS_BUTTON>;
->>> +        };
->>> +
->>> +        key-reset {
->>> +            label = "RESET";
->>> +            gpios = <&pio 1 GPIO_ACTIVE_LOW>;
->>> +            linux,code = <KEY_RESTART>;
->>> +        };
->>> +    };
->>> +
->>> +    leds {
->>> +        compatible = "gpio-leds";
->>> +
->>> +        led-0 {
->>> +            function = LED_FUNCTION_WAN;
->>> +            color = <LED_COLOR_ID_BLUE>;
->>> +            gpios = <&pio 5 GPIO_ACTIVE_LOW>;
->>
->> Can we please order those properties alphabetically, as it doesn't impact
->> on human readability in any way?
->> Just a nitpick, anyway.
->>
->> color = <LED_COLOR_ID_BLUE>;
->> function = LED_FUNCTION_WAN;
->> gpios = <&pio 5 GPIO_ACTIVE_LOW>;
-> 
-> If I understand [1] correctly alphabetical / alpha-numerical order
-> applies to non-addresses nodes only.
-> 
-> Here I put "function" first as that seemed more important than a color.
-> 
-> Perhaps you could suggest an addition to Devicetree Sources (DTS) Coding
-> Style or point me to the missed part, please?
-> 
-> [1] 
-> https://www.kernel.org/doc/html/next/devicetree/bindings/dts-coding-style.html#order-of-properties-in-device-node
-> 
-> 
+This RFC prepares for and adds support for 2 buses, which is supported
+in HW starting with version 7. Until now, none of the currently
+supported platforms in upstream have used the second bus. The X1E80100
+platform, on the other hand, needs the second bus for the USB2.0 to work
+as there are 3 SMB2360 PMICs which provide eUSB2 repeaters and they are
+all found on the second bus.
 
-I didn't say that this was *mandatory*, but since alphanumeric ordering in device
-trees is actually a thing for nodes, this could be as well applied to properties
-inside when this doesn't impact on human readability.
+Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
+---
+Changes in v5:
+- Dropped the RFC as there aren't any concerns about the approach anymore
+- Dropped the unused dev and res variables from pmic_arb_get_obsrvr_chnls_v2
+- Link to v4: https://lore.kernel.org/r/20240220-spmi-multi-master-support-v4-0-dc813c878ba8@linaro.org
 
-As far as I'm aware, I'm not the only maintainer asking for that (am I?!)
+Changes in v4:
+- Fixed comment above pmic_arb_init_apid_v7 by dropping the extra "bus" word
+- Swicthed to devm_platform_ioremap_resource_byname for obsrvr and chnls.
+  The core remains with platform_get_resource_byname as we need the core size.
+- Dropped comment from probe related to the need of platform_get_resource_byname
+  as it not true anymore.
+- Dropped the qcom,bus-id optional property.
+- Link to v3: https://lore.kernel.org/r/20240214-spmi-multi-master-support-v3-0-0bae0ef04faf@linaro.org
 
-If you've got any *strong opinion* about having `function` as the first property,
-I'm full ears, and I will be okay with that. No problem on my side, I'm open for
-alternatives when those make sense.
+Changes in v3:
+- Split the change into 3 separate patches. First 2 patches are moving
+  apid init and core resources into version specific ops. Third one is
+  adding the support for 2 buses and dedicated compatible.
+- Added separate bindings patch
+- Link to v2: https://lore.kernel.org/r/20240213-spmi-multi-master-support-v2-1-b3b102326906@linaro.org
 
-> 
->>> +        };
->>> +
->>> +        led-1 {
->>> +            function = LED_FUNCTION_WLAN_2GHZ;
->>> +            color = <LED_COLOR_ID_BLUE>;
->>> +            gpios = <&pio 6 GPIO_ACTIVE_LOW>;
->>> +        };
->>> +
->>> +        led-2 {
->>> +            function = LED_FUNCTION_WLAN_5GHZ;
->>> +            color = <LED_COLOR_ID_BLUE>;
->>> +            gpios = <&pio 7 GPIO_ACTIVE_LOW>;
->>> +        };
->>> +
->>> +        led-3 {
->>> +            function = LED_FUNCTION_LAN;
->>> +            color = <LED_COLOR_ID_BLUE>;
->>> +            gpios = <&pio 9 GPIO_ACTIVE_LOW>;
->>> +        };
->>> +
->>> +        led-4 {
->>> +            function = LED_FUNCTION_STATUS;
->>> +            color = <LED_COLOR_ID_BLUE>;
->>> +            gpios = <&pio 10 GPIO_ACTIVE_LOW>;
->>> +        };
->>> +
->>> +        led-5 {
->>> +            function = "online";
->>
->> Uhm, what does "online" mean?
->>
->> Are you sure that you can't use any of the LED_FUNCTION_XXX standard definitions?
-> 
-> This device has:
-> 1. "WAN Port" LED that indicates "WAN Port has connection" state
+Changes in v2:
+- Reworked it so that it registers a spmi controller for each bus
+  rather than relying on the generic framework to pass on the bus
+  (master) id.
+- Link to v1: https://lore.kernel.org/r/20240207-spmi-multi-master-support-v1-0-ce57f301c7fd@linaro.org
 
-Just a curiosity: is the WAN port ethernet, fiber or what?
-(to entirely clarify in my brain if that LED is a carrier detect indicator,
-but doesn't matter for this patch, it's really just a personal curiosity and
-nothing else)
+---
+Abel Vesa (4):
+      dt-bindings: spmi: Add PMIC ARB v7 schema
+      spmi: pmic-arb: Make the APID init a version operation
+      spmi: pmic-arb: Make core resources acquiring a version operation
+      spmi: pmic-arb: Add multi bus support
 
-> 2. "Internet" LED that indicates "Connected to the Internet" state
-> 
-> I couldn't find any define that would fit Internet access LED case.
+ .../bindings/spmi/qcom,spmi-pmic-arb-v7.yaml       | 119 +++
+ drivers/spmi/spmi-pmic-arb.c                       | 949 +++++++++++++--------
+ 2 files changed, 698 insertions(+), 370 deletions(-)
+---
+base-commit: 4893c639cc3659cefaa675bf1e59f4e7571afb5c
+change-id: 20240207-spmi-multi-master-support-832a704b779b
 
-I was imagining something like that, but wasn't sure, so asking you was the best
-choice.
-
-I wonder if it makes sense to add a "wan-online" or "wan-connected" or .. I don't
-know, some definition that makes common sense, to dt-bindings/leds/common.h to
-somewhat standardize the function for that usecase?
-
-One thing I'm (mostly) sure of, it makes sense to have the "wan-" prefix before
-any word (because you can have sorts of authenticated LANs as well).
-
-I don't think that there's anything hugely restrictive that would prevent you
-from doing that: there are even "player-[1-5]" definitions for game controllers,
-and yours is not the first router that I physically see with my own eyes that
-has such a LED for that state.
-
-After all, what's going to turn on that LED is userspace, and if we can get one
-that works for all (without custom functions for each router), why not :-)
-
+Best regards,
+-- 
+Abel Vesa <abel.vesa@linaro.org>
 
 
