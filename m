@@ -4,84 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43B80C48BC3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Feb 2024 08:56:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B94A5C48BC3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Feb 2024 09:02:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lWgzr9qm2ixV3STt2Qq+/qGSNGS+7XQCw88w5N997QU=; b=2RB4hCLbhOqkHYpDszcu+Bt5Ck
-	qWjV00VwkqMNDxto4+1ykl2C3WsmEp9M/BDJhrxkyde9EKw5G+byJBTvm1z3QiAGcQXGpS+Et75FZ
-	xAlSU2eamf20PyPVcRrVIqfG2qI9XkWxuoTp5pFHQeC1NN0lfaC77eNHm8nSP2OSCOUrxWRKtqIm+
-	dAAWGJVkWjPhGRiaQ0zxJDzUNjZdjzTLUsb+UhUtCyYrhcQi84/so1NxhhlTx+OCksfE50NljWsgb
-	g8BOFgdY2JaLZnazq7uFm7lg0BbaB0FjxErjJkdO48V2h/X0EaDPlAC4jZHNQNVVWvsxwCHdK9uzr
-	qTGoGKng==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HVh1cYv4twhxZ2ER7C+Bz1CnG1o81R69G1bhEnGU42w=; b=PVE31/IBuOtLDICW1fsU+zhhid
+	HEX6CUFCc/Sn5U8nd2M9xj6C42bKEQ8LTGtuLpvW2jmED4WOf8ky77iX1RzDmx+o2WPn0wcSOiHki
+	4F7UbC0yi+acdOlC+cRMFWshWU8tBl65oS3e/Lm47ZwkFJXc9uMCkCMb0jEq1pPQm0wcssVwnHl1+
+	cJbu2Lnm3wafl2UHh9RhQZvzo6NyxEBMSbNoVF6KU/F3GsVjiMM0jTBGDYguTsWVhxf5tMrBj8DEx
+	SmH7gS244aXVHqTgayEXZhgJD0a/XR2hSbTra/hjC+Vb2sQNtihFsCMr8J+W9frJyf8HN+I7jhFP9
+	4UVDdVzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rciOi-000000008ub-2KsX;
-	Wed, 21 Feb 2024 08:56:12 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1rciUX-000000009ur-0zla;
+	Wed, 21 Feb 2024 09:02:13 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rciOU-000000008q4-1Kky;
-	Wed, 21 Feb 2024 08:55:59 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-512cca90f38so1464220e87.2;
-        Wed, 21 Feb 2024 00:55:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1708505756; x=1709110556; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=lWgzr9qm2ixV3STt2Qq+/qGSNGS+7XQCw88w5N997QU=;
-        b=DYfxiIaeqy6UIjj/ylSRAy0qVZubVpVnGOnv5hHm8bANEdXjc8/SGKKnKHPJpWnU8q
-         brUCa7RNBo4/hhOL4hE3oNW2ZliWWDDjOVBY/UUY3q6a/HvKCYJLgyP34xyY/4d8fvZy
-         jVwK4CuWke7GeIWynp8EYm5Jjgp8fZmuGGXwO8XhJp4HdA7L9ENd/pK9G0Lwg8UCwY0+
-         2Qn6XKWrxu/pUXpaQQydmbkFC86kDulll5Xobgp7/ISSfJOxGEmY6nUKuQot+E++SRof
-         vFe1JbFDFWBgJ4y8H5NajRRkS1pnc6N0hJ/qqbN0I1kCZqIiiASO2OyZmXoeN/G4Orlz
-         yJ6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708505756; x=1709110556;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=lWgzr9qm2ixV3STt2Qq+/qGSNGS+7XQCw88w5N997QU=;
-        b=JhqXAmGfQ0azDlgVYir7GCX6kVgxkTWueHMLCMHhqCCLQncT3iCxAjy4Z0gP6H+9/0
-         ptYh81csQSeYLaztExclCbhCwSrSlkazjqpbT3m+IJxuvloJOW5VgjMfu/ed2/n1BCNR
-         ftrGgQx74KGkifqzKw7E+TfACDTL3Q+YrGriz80Tcx/vKRhPAebXl1EYEI1Qe4jAVbWw
-         HepqRwMqmcgdWjlwJC3uhpwz04zcPzdbuS0WfhPVrO5OpDfty3+pGBamAmK7MfWVewiX
-         ZA3Hn3zg7whPpxijpYpXsNps4SMmw4PscE/e6S+R8sqRVY/nV9AQzV+7h/DfOeSy2BXh
-         72kA==
-X-Forwarded-Encrypted: i=1; AJvYcCUpupDcsb4aUfoWhI2dgN6JdAYH2TfIp58KFWCCZq/qputxFJhsuE2Fu7nnu9l/7sy22n+eBY9CwkEjzO7CsyVOWB3XMmkGGigkmq+pbfAdgveQyfRrge/XgryOj2tkaHcZ+JrDwFdJuAJZ2bXQ56P4ON1pjse0Vko=
-X-Gm-Message-State: AOJu0YzRCj3bkNwA+l2vlsgISDk5nJ78QVYxH0c0+YLGwXEeB7Q42LKi
-	2wr1uzchjux7ZWVnoOW3uBYu0DLIhNOUK9q3t59p22nXHHX9TZK1jpeWD1EI
-X-Google-Smtp-Source: AGHT+IEsgZ5ECXJwsdJ2M1bEqD60lRnejSLvsJzQJfvw5APeIUFuGL5UdWpxBrtnmYuAEfEJSWsKHg==
-X-Received: by 2002:ac2:593b:0:b0:512:b366:6c42 with SMTP id v27-20020ac2593b000000b00512b3666c42mr5168372lfi.32.1708505755809;
-        Wed, 21 Feb 2024 00:55:55 -0800 (PST)
-Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id p13-20020ac246cd000000b00511570772f1sm1578415lfo.303.2024.02.21.00.55.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 Feb 2024 00:55:55 -0800 (PST)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH] arm64: dts: mediatek: mt7981: add watchdog & WiFi controllers
-Date: Wed, 21 Feb 2024 09:55:47 +0100
-Message-Id: <20240221085547.27840-1-zajec5@gmail.com>
-X-Mailer: git-send-email 2.35.3
+	id 1rciUU-000000009uF-0i1W;
+	Wed, 21 Feb 2024 09:02:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 16AA4CE19B3;
+	Wed, 21 Feb 2024 09:02:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3D60CC433F1;
+	Wed, 21 Feb 2024 09:02:05 +0000 (UTC)
+Message-ID: <852dea56-336a-4484-8754-ee735af7bdaf@xs4all.nl>
+Date: Wed, 21 Feb 2024 10:02:01 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] media: cec: core: remove length check of Timer Status
+To: =?UTF-8?B?TmluaSBTb25nICjlrovlrpvlpq4p?= <Nini.Song@mediatek.com>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ =?UTF-8?B?Q0kgV3UgKOS8jeWAieWEhCk=?= <ci.wu@mediatek.com>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,
+ "stable@vger.kernel.org" <stable@vger.kernel.org>,
+ "nicolas@fjasle.eu" <nicolas@fjasle.eu>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>,
+ "jani.nikula@intel.com" <jani.nikula@intel.com>
+References: <20240125132850.10430-1-nini.song@mediatek.com>
+ <8a4447ba-d4ac-40ac-9d6b-796db37f3100@xs4all.nl>
+ <089a5abf85fb3aaa57cb9436193b09eea47a03d2.camel@mediatek.com>
+Content-Language: en-US, nl
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <089a5abf85fb3aaa57cb9436193b09eea47a03d2.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240221_005558_393468_63F637CD 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20240221_010210_569808_4285C9B0 
+X-CRM114-Status: GOOD (  26.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,74 +76,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+Dear Nini,
 
-MT7981 (Filogic 820) is a low cost version of MT7986 (Filogic 830) with
-the same watchdog controller. It also comes with on-SoC 802.11ax
-wireless.
+Unfortunately I forgot to add a 'Fixes' tag to the patch, if I had, then it would
+have happened automatically.
 
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
----
- arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 26 ++++++++++++++++++++++-
- 1 file changed, 25 insertions(+), 1 deletion(-)
+Please remind me of this once kernel 6.9-rc1 is released since that will contain
+the fix. Then I can post the same patch to the stable mailinglist for inclusion in
+older kernels.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-index 2f89b18bab17..0dc49c47dfc2 100644
---- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-@@ -2,6 +2,7 @@
- 
- #include <dt-bindings/clock/mediatek,mt7981-clk.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
-+#include <dt-bindings/reset/mt7986-resets.h>
- 
- / {
- 	compatible = "mediatek,mt7981b";
-@@ -62,12 +63,19 @@ infracfg: clock-controller@10001000 {
- 			#clock-cells = <1>;
- 		};
- 
--		clock-controller@1001b000 {
-+		topckgen: clock-controller@1001b000 {
- 			compatible = "mediatek,mt7981-topckgen", "syscon";
- 			reg = <0 0x1001b000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
- 
-+		watchdog: watchdog@1001c000 {
-+			compatible = "mediatek,mt7986-wdt";
-+			reg = <0 0x1001c000 0 0x1000>;
-+			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
-+			#reset-cells = <1>;
-+		};
-+
- 		clock-controller@1001e000 {
- 			compatible = "mediatek,mt7981-apmixedsys";
- 			reg = <0 0x1001e000 0 0x1000>;
-@@ -142,6 +150,22 @@ clock-controller@15000000 {
- 			#clock-cells = <1>;
- 			#reset-cells = <1>;
- 		};
-+
-+		wifi@18000000 {
-+			compatible = "mediatek,mt7981-wmac";
-+			reg = <0 0x18000000 0 0x1000000>,
-+			      <0 0x10003000 0 0x1000>,
-+			      <0 0x11d10000 0 0x1000>;
-+			interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 214 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 215 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 216 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&topckgen CLK_TOP_NETSYS_MCU_SEL>,
-+				 <&topckgen CLK_TOP_AP2CNN_HOST_SEL>;
-+			clock-names = "mcu", "ap2conn";
-+			resets = <&watchdog MT7986_TOPRGU_CONSYS_SW_RST>;
-+			reset-names = "consys";
-+		};
- 	};
- 
- 	timer {
--- 
-2.35.3
+It has to wait until 6.9-rc1 is release though, patches need to be in mainline first
+before they can be backported.
+
+Regards,
+
+	Hans
+
+On 21/02/2024 07:30, Nini Song (宋宛妮) wrote:
+> Dear Hans,
+> 
+> Thank your reply.
+> Could you also help to marge solution into v5.15? Our customer used v5.15 for MP production, which requires this solution.
+> 
+> 
+> BR,
+> Nini Song
+> On Mon, 2024-02-05 at 13:00 +0100, Hans Verkuil wrote:
+>> 	
+>>
+>> External email : Please do not click links or open attachments until you have verified the sender or the content.
+>>
+>> On 25/01/2024 14:28, nini.song@mediatek.com wrote:
+>> > From: "nini.song" <nini.song@mediatek.com>
+>> > 
+>> > The valid_la is used to check the length requirements,
+>> > including special cases of Timer Status. If the length is
+>> > shorter than 5, that means no Duration Available is returned,
+>> > the message will be forced to be invalid.
+>> > 
+>> > However, the description of Duration Available in the spec
+>> > is that this parameter may be returned when these cases, or
+>> > that it can be optionally return when these cases. The key
+>> > words in the spec description are flexible choices.
+>>
+>> Good catch, the spec indeed says 'may', so dropping the check
+>> in this patch is the correct thing to do.
+>>
+>> It's merged in our staging tree and it will appear in v6.9.
+>>
+>> Regards,
+>>
+>> Hans
+>>
+>> > 
+>> > Remove the special length check of Timer Status to fit the
+>> > spec which is not compulsory about that.
+>> > 
+>> > Signed-off-by: Nini Song <nini.song@mediatek.com>
+>> > ---
+>> >  drivers/media/cec/core/cec-adap.c | 14 --------------
+>> >  1 file changed, 14 deletions(-)
+>> > 
+>> > diff --git a/drivers/media/cec/core/cec-adap.c b/drivers/media/cec/core/cec-adap.c
+>> > index 5741adf09a2e..559a172ebc6c 100644
+>> > --- a/drivers/media/cec/core/cec-adap.c
+>> > +++ b/drivers/media/cec/core/cec-adap.c
+>> > @@ -1151,20 +1151,6 @@ void cec_received_msg_ts(struct cec_adapter *adap,
+>> >  if (valid_la && min_len) {
+>> >  /* These messages have special length requirements */
+>> >  switch (cmd) {
+>> > -case CEC_MSG_TIMER_STATUS:
+>> > -if (msg->msg[2] & 0x10) {
+>> > -switch (msg->msg[2] & 0xf) {
+>> > -case CEC_OP_PROG_INFO_NOT_ENOUGH_SPACE:
+>> > -case CEC_OP_PROG_INFO_MIGHT_NOT_BE_ENOUGH_SPACE:
+>> > -if (msg->len < 5)
+>> > -valid_la = false;
+>> > -break;
+>> > -}
+>> > -} else if ((msg->msg[2] & 0xf) == CEC_OP_PROG_ERROR_DUPLICATE) {
+>> > -if (msg->len < 5)
+>> > -valid_la = false;
+>> > -}
+>> > -break;
+>> >  case CEC_MSG_RECORD_ON:
+>> >  switch (msg->msg[2]) {
+>> >  case CEC_OP_RECORD_SRC_OWN:
+>>
+>>
 
 
