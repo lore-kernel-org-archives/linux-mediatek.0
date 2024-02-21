@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C2D6C48BC3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Feb 2024 10:00:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D745BC48BF6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Feb 2024 10:11:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wFoz+JIm+wOI1jU20aqziiihRvXpUGSavPhSu65tPw0=; b=1fDwjmBI9uHpzZUBihmRIZ4BjB
-	MerH9JeKLuNES79WcXN9y3M88IZ/5NEvsFXeMI6i8VAT+RAA64THYQ83QcRzI2TVzbpwYEtjVIMBv
-	v9ianb6I1JjKzW87FK6Y4WHByZnoUdJ9TchuqiFgRK1xDxyt9hXbb1HJDylWrkdkq+wUhxtJfAtG5
-	yHrX+B+1Q4Xh95aegXIy2YBfINtkndkd1rLb6gsLLbwrmiCtt2ignsLc1NHbmvhbsrn9eSuj0Fy8j
-	RkpVeI19nAZkBYx+ZDOTCk4wdegZdncYStgM0EiFm38utd/xY6QVrVhqf7aBMcavbVCipRxpQPvHk
-	0QpSPPzA==;
+	bh=HZkk+VifwTVhwQXd5JCWCyfB6CF9OiAs/R8LFPJZnu4=; b=yU8epedZ4s/Jn9E7ulUEZ5pdrA
+	RmnBE3chaPF7daGoiFFnTVf0sGa7dSydNpQZuqmwww9JMdRrL40kOj1Y691WrcLMQiomK+JQGhH8s
+	HjKF9f+hGIsdKJ3hMUGMyydo93vKBj7GvzKFMWMrH1ktjYqgPjdQvsXm189VBmTu66jyVA2fnQ9f2
+	djyIQeATGPcJEAraGK5073KApSw23OthTJE6UGWfkarlQwYP1RlCp+TO4LdvlFdjckC8djYnt57f+
+	GWSMvK4tGzCpzrHibIwSrizS94j5fFjSu3qTU180SxcGToKQ+yj5VYrBAxkVfMvEG8eoOogc1uVhd
+	gDFx7M9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcjPI-00000000PPT-07Oi;
-	Wed, 21 Feb 2024 10:00:52 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rcjZQ-00000000Ram-1Om4;
+	Wed, 21 Feb 2024 10:11:20 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcjPE-00000000PNw-0jES;
-	Wed, 21 Feb 2024 10:00:49 +0000
+	id 1rcjZN-00000000RZC-1fGT;
+	Wed, 21 Feb 2024 10:11:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708509646;
-	bh=wcF4f8oB66/zilBylgZvCVlgJPjo9n+Rs862VHuPPtE=;
+	s=mail; t=1708510276;
+	bh=PQ4awJ6u0XbeOr9tOY44kUabcmxQpFzwRQS1dKIQKTE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ibcIOx9khG/HibZOQuADQzzX0BqkCDivppWffmnMYxNslmqkpFm4o7N7PSjEXpZ+G
-	 Xkdg1M6DbzGGnluOboEfBBz6dgGonmZt8Vz6i/lpF+UaPao1G5aEhqUTAp5CqpLBFC
-	 7ZcopzX8/GZGhqzB3/JNcM/Ti4BS7Giq6lr0tyuK1sQiYXvUNwENPtHCChZn3Z0pDr
-	 Y4UCiCgo/6gwEHwz07zjY5tP+23KdmbN3DX/rLDIA8EN4lDzOdo6kj1EIZXPHmy5nm
-	 8Jj09w1Yn8pqWutpt+q4W1c5Tkjc3MRHBeHMIejmpoh37n7En5xTC0aMcKkauIjoku
-	 kr1ftJPjRQhtg==
+	b=Du87FHdkJ/XW+3K5x6dd3zCH92Bw9hgZVorVoMzH/4EegYAWh1H67UQNi9rUtSotL
+	 NPqVL6lW0d2iIHN8/OKwf9RR2fB8tIkDSHQCERSzVpxYIcn7ktN5Kw80mmkw8oTKsX
+	 NxaeSqV+LWm+fslV/0TURzqVr8hwuab/Y+NObBfOqwxljwaDKIyN5bPg17Oh4XVKEc
+	 vmcZPgwQ5N7Jai2SIamTtxJG7OBb2wFv8enNqwoyByFsoaU587dkvS+4bJozzhY+SG
+	 u6cE4QRUurQhRTJOG0mZB3lX/r20xyHmE9oEG22E5GLnJbi3l2Ji9N80dhIOKgM/US
+	 7M3mC2oINYOvQ==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7292237820C8;
-	Wed, 21 Feb 2024 10:00:45 +0000 (UTC)
-Message-ID: <770b23ec-7199-4202-888d-6a22b7f4af74@collabora.com>
-Date: Wed, 21 Feb 2024 11:00:44 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id BB8FD378107C;
+	Wed, 21 Feb 2024 10:11:14 +0000 (UTC)
+Message-ID: <2fdf724e-4994-4873-971a-56c19b9fc471@collabora.com>
+Date: Wed, 21 Feb 2024 11:11:14 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/4] arm64: dts: mediatek: mt7981: add pinctrl
+Subject: Re: [PATCH 4/4] arm64: dts: mediatek: Add Cudy WR3000 V1
 Content-Language: en-US
 To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
@@ -64,14 +64,14 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
  linux-kernel@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
  <rafal@milecki.pl>
 References: <20240221073524.20947-1-zajec5@gmail.com>
- <20240221073524.20947-4-zajec5@gmail.com>
+ <20240221073524.20947-5-zajec5@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240221073524.20947-4-zajec5@gmail.com>
+In-Reply-To: <20240221073524.20947-5-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240221_020048_365035_B5F26D49 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20240221_021117_589700_1609652D 
+X-CRM114-Status: GOOD (  16.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,69 +89,119 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 21/02/24 08:35, Rafał Miłecki ha scritto:
 > From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> MT7981 contains on-SoC PIN controller that is also a GPIO provider.
+> Cudy WR3000 V1 is an MT7981B (AKA Filogic 820) based wireless router. It
+> has 256 MiB of RAM, some LEDs & buttons and (not described yet) 4
+> Ethernet ports.
 > 
 > Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 > ---
->   arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 37 +++++++++++++++++++++++
->   1 file changed, 37 insertions(+)
+>   arch/arm64/boot/dts/mediatek/Makefile         |  1 +
+>   .../dts/mediatek/mt7981b-cudy-wr3000-v1.dts   | 74 +++++++++++++++++++
+>   2 files changed, 75 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-> index 4feff3d1c5f4..fdd5c22cfc9c 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-> @@ -86,6 +86,43 @@ pwm@10048000 {
->   			#pwm-cells = <2>;
->   		};
->   
-> +		pio: pinctrl@11d00000 {
-> +			compatible = "mediatek,mt7981-pinctrl";
-> +			reg = <0 0x11d00000 0 0x1000>,
-> +			      <0 0x11c00000 0 0x1000>,
-> +			      <0 0x11c10000 0 0x1000>,
-> +			      <0 0x11d20000 0 0x1000>,
-> +			      <0 0x11e00000 0 0x1000>,
-> +			      <0 0x11e20000 0 0x1000>,
-> +			      <0 0x11f00000 0 0x1000>,
-> +			      <0 0x11f10000 0 0x1000>,
-> +			      <0 0x1000b000 0 0x1000>;
-> +			reg-names = "gpio", "iocfg_rt", "iocfg_rm", "iocfg_rb", "iocfg_lb",
-> +				    "iocfg_bl", "iocfg_tm", "iocfg_tl", "eint";
-> +			interrupt-controller;
-> +			interrupts = <GIC_SPI 225 IRQ_TYPE_LEVEL_HIGH>;
-> +			interrupt-parent = <&gic>;
-> +			gpio-ranges = <&pio 0 0 56>;
-> +			gpio-controller;
-> +			#gpio-cells = <2>;
-> +			#interrupt-cells = <2>;
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index 37b4ca3a87c9..96da4ad640aa 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7981b-cudy-wr3000-v1.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7981b-xiaomi-ax3000t.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-acelink-ew-7886cax.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts b/arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts
+> new file mode 100644
+> index 000000000000..cb36a089518a
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts
+> @@ -0,0 +1,74 @@
+> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
 > +
-> +			mdio-pins {
-> +				mux {
+> +/dts-v1/;
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/leds/common.h>
+> +
+> +#include "mt7981b.dtsi"
+> +
+> +/ {
+> +	compatible = "cudy,wr3000-v1", "mediatek,mt7981b";
+> +	model = "Cudy WR3000 V1";
+> +
+> +	memory@40000000 {
+> +		reg = <0 0x40000000 0 0x10000000>;
+> +		device_type = "memory";
+> +	};
+> +
+> +	keys {
+> +		compatible = "gpio-keys";
+> +
+> +		key-wps {
+> +			label = "WPS";
+> +			gpios = <&pio 0 GPIO_ACTIVE_LOW>;
+> +			linux,code = <KEY_WPS_BUTTON>;
+> +		};
+> +
+> +		key-reset {
+> +			label = "RESET";
+> +			gpios = <&pio 1 GPIO_ACTIVE_LOW>;
+> +			linux,code = <KEY_RESTART>;
+> +		};
+> +	};
+> +
+> +	leds {
+> +		compatible = "gpio-leds";
+> +
+> +		led-0 {
+> +			function = LED_FUNCTION_WAN;
+> +			color = <LED_COLOR_ID_BLUE>;
+> +			gpios = <&pio 5 GPIO_ACTIVE_LOW>;
 
-That's board specific. MDIO and SPI0 pins can be used as GPIO instead of,
-respectively, ETH and SPI.
+Can we please order those properties alphabetically, as it doesn't impact
+on human readability in any way?
+Just a nitpick, anyway.
 
-Must go to your board devicetree, not here: please move both.
+color = <LED_COLOR_ID_BLUE>;
+function = LED_FUNCTION_WAN;
+gpios = <&pio 5 GPIO_ACTIVE_LOW>;
+
+> +		};
+> +
+> +		led-1 {
+> +			function = LED_FUNCTION_WLAN_2GHZ;
+> +			color = <LED_COLOR_ID_BLUE>;
+> +			gpios = <&pio 6 GPIO_ACTIVE_LOW>;
+> +		};
+> +
+> +		led-2 {
+> +			function = LED_FUNCTION_WLAN_5GHZ;
+> +			color = <LED_COLOR_ID_BLUE>;
+> +			gpios = <&pio 7 GPIO_ACTIVE_LOW>;
+> +		};
+> +
+> +		led-3 {
+> +			function = LED_FUNCTION_LAN;
+> +			color = <LED_COLOR_ID_BLUE>;
+> +			gpios = <&pio 9 GPIO_ACTIVE_LOW>;
+> +		};
+> +
+> +		led-4 {
+> +			function = LED_FUNCTION_STATUS;
+> +			color = <LED_COLOR_ID_BLUE>;
+> +			gpios = <&pio 10 GPIO_ACTIVE_LOW>;
+> +		};
+> +
+> +		led-5 {
+> +			function = "online";
+
+Uhm, what does "online" mean?
+
+Are you sure that you can't use any of the LED_FUNCTION_XXX standard definitions?
 
 Cheers,
 Angelo
-
-> +					function = "eth";
-> +					groups = "smi_mdc_mdio";
-> +				};
-> +			};
-> +
-> +			spi0-pins {
-> +				mux {
-> +					function = "spi";
-> +					groups = "spi0", "spi0_wp_hold";
-> +				};
-> +			};
-> +
-> +		};
-> +
->   		clock-controller@15000000 {
->   			compatible = "mediatek,mt7981-ethsys", "syscon";
->   			reg = <0 0x15000000 0 0x1000>;
 
 
