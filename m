@@ -4,77 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 067E1C48BEB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Feb 2024 16:57:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C4B4C5478A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Feb 2024 18:01:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ewyp4ShvXsbsTKDV/y4IDRAf0uOqZ7IN5JGP+ziUOHo=; b=R2VArTtFJHxn8AZW6thzTxMYqH
-	XchQ1nQpZOz4JH1YeUIOsdgMlgetQCTqYp3DntCXTp0PgIA/SdA+sI7VMPTuvnAkX+3MN0aFvQE44
-	I0lqgyzUGyNY30dQn7CO+J2t1vyPM/2Z9HH2pmJQyaNUegZK/rwgDJpOfuOHxEJKa8BY7mf1gR8Lh
-	1dPkjIqqj+H0XdB2gzQFj0kNuths21lfNKS9WDtaje1xQCVH9zyVKlO+oH6lE2aVMGgs8dJ57/jVm
-	uLdOfSGQloAcdmouWqm0FdJji1YG7bcBNIpGBqWP5DHHZt90jsHP4Kesxd+KxGpDHoDc+SS0pIjhy
-	iY8Xxcag==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=t/XUwk5TS9Ky2HqKC3MvObSVQS4x92SJn+KRK0ItMuw=; b=mxf73xAJrKckt8/3xF7QfLocEN
+	ifQxP4tflWJ6dwJl1T90vMYNtbFh70TFLBZom1IU7rgQ2nEG+fUE/SZn8GNRkGDt43cX+4E5jO0jy
+	ivV3R2w2ngesUxfyRe1WldJGcrHRtCTrcI67wpI9zFKA0KdytMHer94/KV0mp6lMfgHcNTyDFrKT1
+	ZAzylBnOlwFdzZdiEJVobK34umR+shH0wMs2iPG5CqSdEIU+1/l8bQP+rKGOoOuyHskw1mqXtpJGu
+	7GktqpuBDcwz5iU13qJ5TF0OzmEMhHH1i79ch9VfdTOE4COBJRZi9KHN95UjrcCodTngkWAnGpchA
+	SaJypxYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcpu9-00000001oWC-2scN;
-	Wed, 21 Feb 2024 16:57:09 +0000
-Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
+	id 1rcquH-000000020gA-2tBe;
+	Wed, 21 Feb 2024 18:01:21 +0000
+Received: from mail-ot1-f48.google.com ([209.85.210.48])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcpu7-00000001oUP-29u9
+	id 1rcquF-000000020fY-0ono
 	for linux-mediatek@lists.infradead.org;
-	Wed, 21 Feb 2024 16:57:08 +0000
-Received: by mail-qt1-x82a.google.com with SMTP id d75a77b69052e-42a4516ec5dso52155801cf.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 21 Feb 2024 08:57:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1708534621; x=1709139421; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ewyp4ShvXsbsTKDV/y4IDRAf0uOqZ7IN5JGP+ziUOHo=;
-        b=ipqPEs8pqsfP8NLZwdRpjFfEuQQvBczUy9IJzlrk5Qi3fbtvTybuF3L5l3YwhQRn/l
-         jJgUazRULrIfJrKtvY9rIgk02RblfutmHaOjSOhml0g4F1xAiEZvFwzvTxISmA1rgQzi
-         F21I8cWFE+M0BzVv8Hyl0YtyuqkyI1DSftgKg=
+	Wed, 21 Feb 2024 18:01:20 +0000
+Received: by mail-ot1-f48.google.com with SMTP id 46e09a7af769-6e2e44aad03so3874577a34.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 21 Feb 2024 10:01:17 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708534621; x=1709139421;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ewyp4ShvXsbsTKDV/y4IDRAf0uOqZ7IN5JGP+ziUOHo=;
-        b=cHlCeaxL+Wp2imQADnMMdT+TCecSwFDBw/OeMyOWed7/U+Ow/Z2+3wCJ+9B1QhsRq/
-         hXO4keiAKzYSjTZbqmDI0SuiIHL4SpuAtXFxjXTm+XjQRA65cSRavqBSj+fpWFws1dLX
-         E4Kz7RhpWEhZ4OaHAa+U7745UI8ckRVV7uS78pthYpKVdNYOrEKwAolHWXghsglnM+JM
-         5eEnxTQd9OyeQVuokhMt4f1weScxi2GTs5ZTqRW/udzLVeODgs5WlplTx+GE0TJrrVlm
-         egy6Uuau4jT+5Z64tpaUqlDCQU3KbH6YiTpP7ZhoSGArtEQE5cj+ElPD2vYfaAyN/IFI
-         kWCQ==
-X-Gm-Message-State: AOJu0YyG9GElyWCoIhiGyfdHp1hz5UQmJGVkus9XSBvIIa/HE4Y6zP+3
-	LmnTdzZsbgOI4jXCn+7fLgHRPfwoMdM6rxNdznOOrVZ9RHgiYnHDCrWzpdeGkSV2ScGPEan/Q3Y
-	=
-X-Google-Smtp-Source: AGHT+IEbyz9aRDr/D+FpIRtgYgTiDDpbYo6DXckvIkS81Eh+NamO3vbl1XBfN15Ja88kFLe04Tc1Dg==
-X-Received: by 2002:ac8:5841:0:b0:42e:3d12:8c81 with SMTP id h1-20020ac85841000000b0042e3d128c81mr1556148qth.64.1708534621045;
-        Wed, 21 Feb 2024 08:57:01 -0800 (PST)
-Received: from greenjustin3.nyc.corp.google.com ([2620:0:1003:314:5e8a:4a60:7390:1fc9])
-        by smtp.gmail.com with ESMTPSA id x23-20020ac87317000000b0042dff5e7c3fsm3811639qto.1.2024.02.21.08.57.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 Feb 2024 08:57:00 -0800 (PST)
-From: Justin Green <greenjustin@chromium.org>
-To: linux-mediatek@lists.infradead.org
-Cc: dri-devel@lists.freedesktop.org,
-	chunkuang.hu@kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	Justin Green <greenjustin@chromium.org>
-Subject: [PATCH] drm/mediatek: Add MT8188 Overlay Driver Data
-Date: Wed, 21 Feb 2024 11:56:43 -0500
-Message-ID: <20240221165643.1679073-1-greenjustin@chromium.org>
-X-Mailer: git-send-email 2.44.0.rc0.258.g7320e95886-goog
+        d=1e100.net; s=20230601; t=1708538477; x=1709143277;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=t/XUwk5TS9Ky2HqKC3MvObSVQS4x92SJn+KRK0ItMuw=;
+        b=a4qIiX+sZMz6FZzxIryDDfg4+fu80xIwJm3Z2f5qw6etc1ngXXiUbvwV0HXMmBFHgN
+         o2k+AlJK5Jy6GxRxb+zaeLa0F1VR9yfgtfXiLKMJP4UGyXrrGix79m6iocisrnHp4hP7
+         xiNO3Vmx4WapSE9X79kXJGWoztUSU1aprbnb3ka2jWu225eZdaub46WNMXK+DIfbGbE9
+         11zDp8UhB6f5Z9Pu142XTBnPfhs+M14x2oEC7e/g4HDso6Sw86N5HlD56/NTZvkOzfem
+         8OHCsWyrRZzjjfodcCZqT/AD478bEH5hn66vD7IV6309DYzaZJKGs0aDCDphB0wpmPXe
+         +vaw==
+X-Gm-Message-State: AOJu0YyIE1MzF0421RU8XR2xCl7gKrOMtxlPv9t/OTmm0z003pXLIOO0
+	N3+FAzcT4BkZJTkCwhVPbQCMYduzEf7zYj6rY3pA/OkKblb4pS4L
+X-Google-Smtp-Source: AGHT+IEh/kOMQRAU+4zZdRPprsjAmt/ymq/739JlgxltzcC9dG6jrCZCKTzw88pz8itZR4vjQoIR4g==
+X-Received: by 2002:a05:6359:4125:b0:17b:759:65c2 with SMTP id kh37-20020a056359412500b0017b075965c2mr21933881rwc.10.1708538476753;
+        Wed, 21 Feb 2024 10:01:16 -0800 (PST)
+Received: from ?IPV6:2620:0:1000:8411:d74f:a168:a26a:d7fe? ([2620:0:1000:8411:d74f:a168:a26a:d7fe])
+        by smtp.gmail.com with ESMTPSA id ka36-20020a056a0093a400b006e48e0499dfsm1815313pfb.39.2024.02.21.10.01.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 21 Feb 2024 10:01:15 -0800 (PST)
+Message-ID: <923e2241-ab08-4cf6-a614-91da4b3575b8@acm.org>
+Date: Wed, 21 Feb 2024 10:01:13 -0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] ufs: core: adjust config_scsi_dev usage
+Content-Language: en-US
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
+ =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
+ =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
+ =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
+ wsd_upstream <wsd_upstream@mediatek.com>, =?UTF-8?B?TGluIEd1aSAo5qGC5p6X?=
+ =?UTF-8?Q?=29?= <Lin.Gui@mediatek.com>,
+ =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
+ =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
+ "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
+ =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+ <Chaotian.Jing@mediatek.com>, =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
+ <Powen.Kao@mediatek.com>, =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
+ <Naomi.Chu@mediatek.com>, =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
+ <Qilin.Tan@mediatek.com>
+References: <20240220094211.20678-1-peter.wang@mediatek.com>
+ <46d0c5b7-7158-405d-ba38-cece4030e2bd@acm.org>
+ <0874377d564ceb63efd62df3757c6e5f3a0dd03c.camel@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <0874377d564ceb63efd62df3757c6e5f3a0dd03c.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240221_085707_563676_5E3A07E5 
-X-CRM114-Status: UNSURE (   8.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240221_100119_253399_B3749A2F 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,50 +102,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 overlay driver configuration data. This change consequently
-enables 10-bit overlay support on MT8188 devices.
+On 2/20/24 18:44, Peter Wang (王信友) wrote:
+> This help function is designed to assist users eliminating the check.
+> Formalize the usage can make the code more concise and easier to read.
+> Such as ufshcd_vops_init/ufshcd_vops_exit is also only one caller.
+> Besides, it also need a comment of config_scsi_dev in ufshcd.h
 
-Tested by running ChromeOS UI on MT8188 and using modetest -P. AR30 and
-BA30 overlays are confirmed to work from modetest.
+My personal opinion is that the helper function makes code harder to
+read because the definition of a helper function needs to be looked up
+to understand the code. There are many examples in the changelog of the
+kernel tree that show that there is a preference in the Linux kernel
+code base to inline short functions rather than keeping or introducing
+short helper functions.
 
-Signed-off-by: Justin Green <greenjustin@chromium.org>
-Tested-by: Justin Green <greenjustin@chromium.org>
----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+Regarding the config_scsi_dev comment, shouldn't that be a separate
+patch since that change is unrelated to the introduction of a helper
+function?
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 2bffe4245466..696aabe124c2 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -635,6 +635,17 @@ static const struct mtk_disp_ovl_data mt8195_ovl_driver_data = {
- 	.supports_clrfmt_ext = true,
- };
- 
-+static const struct mtk_disp_ovl_data mt8188_ovl_driver_data = {
-+	.addr = DISP_REG_OVL_ADDR_MT8173,
-+	.gmc_bits = 10,
-+	.layer_nr = 4,
-+	.fmt_rgb565_is_0 = true,
-+	.smi_id_en = true,
-+	.formats = mt8195_formats,
-+	.num_formats = ARRAY_SIZE(mt8195_formats),
-+	.supports_clrfmt_ext = true,
-+};
-+
- static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt2701-disp-ovl",
- 	  .data = &mt2701_ovl_driver_data},
-@@ -650,6 +661,8 @@ static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
- 	  .data = &mt8192_ovl_2l_driver_data},
- 	{ .compatible = "mediatek,mt8195-disp-ovl",
- 	  .data = &mt8195_ovl_driver_data},
-+	{ .compatible = "mediatek,mt8188-disp-ovl",
-+	  .data = &mt8188_ovl_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_ovl_driver_dt_match);
--- 
-2.44.0.rc0.258.g7320e95886-goog
+Thanks,
 
+Bart.
 
