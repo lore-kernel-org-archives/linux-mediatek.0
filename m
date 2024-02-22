@@ -4,63 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA399C48BF8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Feb 2024 08:42:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBDDCC48BF8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Feb 2024 09:26:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WY7ACvPne560CZyJg+MeJkJtzjngPdujvSlLPIYq2Lc=; b=K4BQ+NoP/CcjIoAgJ511dNijpM
-	SvPYuUA+mm4wc401pMfz1i3fAq34+UxUEdTF2vBgnqGH15qc6BR74osDj01Q/ql5+akQma0F/Dfda
-	rZvqiVakgXxFcolQgq7z2JsQuEpnhiB6d+PisnMg1NGFvW88ThTEyBKD7OwXmcbrWpe4RCF2V0Vnt
-	ogKUi26VSH81SZ+UeS00Uow8CPa0gK3ia/uoTNihf0/+gPomf/PBlKoOyFWty6Jd5U6IoSt/gDWX6
-	U2sC31W1YD3GiN0ktu5MFWQtXgE5EDfJenSnYPE3NK/NR0hKZl62w3xhKb2+o4GQJtJfVK9fY1L9P
-	clegpu/w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8Z6fmaYt8GqnHbucfKF/eS5GrvWtuMMfLRUtjCK0qkM=; b=sSOXcFhzCRyxpocFj8nzDqIqVG
+	Wj9p+9tSHzkB+DPDMorzmvO/BrcIoL6wej0Ao+mD+wbLwwBM9gIZuVHPCHSAHuqMuEedTEj4ED7tz
+	DQI+svmfNkHswN7KfnUxujVxzKIObYLsCgZZa13P5FieXyQHLJgzycW9DLO8TYGORE9hHdjwF8fbK
+	XiybrdKbF9/1iyNXWhibvUpAscV5gklGzOfNe6s5cR6ikvSN4FoEUUv0Umwedin6vtlrk5jWLX19D
+	TiZW4cXCcSaYp6xkLUVu2CgCBQRJDGU88SJe5i6/0GJIVd3x/s4gi+in2hSEONE3acDaaobeQk4R0
+	7PdaQmKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rd4fS-000000045ep-0nUe;
-	Thu, 22 Feb 2024 08:42:58 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rd5M1-00000004EGQ-2Xgx;
+	Thu, 22 Feb 2024 09:26:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rd4fO-000000045bb-1bV5
-	for linux-mediatek@lists.infradead.org;
-	Thu, 22 Feb 2024 08:42:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708591372;
-	bh=IlWMpflOFQxVolb8BXrh83pIlZC28esiOhVlOKompcM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=0gnn0brfDNAz8+NazsOsMmfBjoG0Vc/JX2rRI/7PXRGXtgR9R2Q7K9sgqIW2owBms
-	 IelW6tIAFLFXElsSNwGflW94vsS6GalJENUJ3ztMHwbZibdIalvwmoTm+cWIAexUQr
-	 8V+y/zFFG/TL/6BY1xaefdKWlu08WwC2pRSiMcv7X5I3NIu4fV2g8JHN32+AnjknIl
-	 oO7XNzjPZbGzoRBAQYMw+8UOzq7fpEEOd1UxIkkOGETTnyrxes5UYfrmROCEpdbmOe
-	 ciDeKbBxXRtJwDjPlI6v1TWHvEjFUWMzyZ9vuOAPBhLiltDzqGHxckyQfODg5RpJqv
-	 V+Fcn72I2JyYg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B91B337813DF;
-	Thu, 22 Feb 2024 08:42:51 +0000 (UTC)
-Message-ID: <c7d6259b-90e7-41a3-998f-a12edf7c1554@collabora.com>
-Date: Thu, 22 Feb 2024 09:42:50 +0100
+	id 1rd5Ly-00000004EDK-0wBc;
+	Thu, 22 Feb 2024 09:26:55 +0000
+X-UUID: 7f625dccd16411eeb017d5921c808e14-20240222
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=8Z6fmaYt8GqnHbucfKF/eS5GrvWtuMMfLRUtjCK0qkM=;
+	b=fcb0AFN6gYw8dwIbOjg8Sul6Ct/AXqBcIj4xoEHqttVS1+7za5uPM7m9vwRsWSLK1sXAxIVgeZT37qJitEhjsJArcNi6wSvEFXEKhPpIhaWJAoFv+72B6hMX4dgxgxeBfJsJbtFXK2OL3ByYhumcrzOs5CAImVwzMcEK2Hb7D3g=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:7b292778-0211-4de4-85cf-ad7e01455822,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:-55
+X-CID-META: VersionHash:6f543d0,CLOUDID:7ffd968f-e2c0-40b0-a8fe-7c7e47299109,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
+	L:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
+	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 7f625dccd16411eeb017d5921c808e14-20240222
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2102088630; Thu, 22 Feb 2024 02:26:45 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 22 Feb 2024 17:26:11 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 22 Feb 2024 17:26:10 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Irui
+ Wang <irui.wang@mediatek.com>
+CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei
+ Dong <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v3,1/2] media: mediatek: vcodec: adding lock to protect decoder context list
+Date: Thu, 22 Feb 2024 17:26:08 +0800
+Message-ID: <20240222092609.31382-2-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240222092609.31382-1-yunfei.dong@mediatek.com>
+References: <20240222092609.31382-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/mediatek: Add MT8188 Overlay Driver Data
-To: Justin Green <greenjustin@chromium.org>,
- linux-mediatek@lists.infradead.org
-Cc: dri-devel@lists.freedesktop.org, chunkuang.hu@kernel.org
-References: <20240221165643.1679073-1-greenjustin@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240221165643.1679073-1-greenjustin@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240222_004254_868858_91936A78 
-X-CRM114-Status: GOOD (  13.21  )
+X-CRM114-CacheID: sfid-20240222_012654_282229_7F73C61C 
+X-CRM114-Status: GOOD (  18.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,61 +93,151 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/02/24 17:56, Justin Green ha scritto:
-> Add MT8188 overlay driver configuration data. This change consequently
-> enables 10-bit overlay support on MT8188 devices.
-> 
-> Tested by running ChromeOS UI on MT8188 and using modetest -P. AR30 and
-> BA30 overlays are confirmed to work from modetest.
-> 
-> Signed-off-by: Justin Green <greenjustin@chromium.org>
-> Tested-by: Justin Green <greenjustin@chromium.org>
+The ctx_list will be deleted when scp getting unexpected behavior, then the
+ctx_list->next will be NULL, the kernel driver maybe access NULL pointer in
+function vpu_dec_ipi_handler when going through each context, then reboot.
 
-Hello Justin,
+Need to add lock to protect the ctx_list to make sure the ctx_list->next isn't
+NULL pointer.
 
-I'm 99.9% sure that you don't need this, you can just use compatibles
+Hardware name: Google juniper sku16 board (DT)
+pstate: 20400005 (nzCv daif +PAN -UAO -TCO BTYPE=--)
+pc : vpu_dec_ipi_handler+0x58/0x1f8 [mtk_vcodec_dec]
+lr : scp_ipi_handler+0xd0/0x194 [mtk_scp]
+sp : ffffffc0131dbbd0
+x29: ffffffc0131dbbd0 x28: 0000000000000000
+x27: ffffff9bb277f348 x26: ffffff9bb242ad00
+x25: ffffffd2d440d3b8 x24: ffffffd2a13ff1d4
+x23: ffffff9bb7fe85a0 x22: ffffffc0133fbdb0
+x21: 0000000000000010 x20: ffffff9b050ea328
+x19: ffffffc0131dbc08 x18: 0000000000001000
+x17: 0000000000000000 x16: ffffffd2d461c6e0
+x15: 0000000000000242 x14: 000000000000018f
+x13: 000000000000004d x12: 0000000000000000
+x11: 0000000000000001 x10: fffffffffffffff0
+x9 : ffffff9bb6e793a8 x8 : 0000000000000000
+x7 : 0000000000000000 x6 : 000000000000003f
+x5 : 0000000000000040 x4 : fffffffffffffff0
+x3 : 0000000000000020 x2 : ffffff9bb6e79080
+x1 : 0000000000000010 x0 : ffffffc0131dbc08
+Call trace:
+vpu_dec_ipi_handler+0x58/0x1f8 [mtk_vcodec_dec (HASH:6c3f 2)]
+scp_ipi_handler+0xd0/0x194 [mtk_scp (HASH:7046 3)]
+mt8183_scp_irq_handler+0x44/0x88 [mtk_scp (HASH:7046 3)]
+scp_irq_handler+0x48/0x90 [mtk_scp (HASH:7046 3)]
+irq_thread_fn+0x38/0x94
+irq_thread+0x100/0x1c0
+kthread+0x140/0x1fc
+ret_from_fork+0x10/0x30
+Code: 54000088 f94ca50a eb14015f 54000060 (f9400108)
+---[ end trace ace43ce36cbd5c93 ]---
+Kernel panic - not syncing: Oops: Fatal exception
+SMP: stopping secondary CPUs
+Kernel Offset: 0x12c4000000 from 0xffffffc010000000
+PHYS_OFFSET: 0xffffffe580000000
+CPU features: 0x08240002,2188200c
+Memory Limit: none
 
-compatible = "mediatek,mt8188-disp-ovl", "mediatek,mt8195-disp-ovl";
+Fixes: 655b86e52eac ("media: mediatek: vcodec: Fix possible invalid memory access for decoder")
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ .../platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c      | 4 ++--
+ .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c    | 5 +++++
+ .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h    | 2 ++
+ drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c | 2 ++
+ 4 files changed, 11 insertions(+), 2 deletions(-)
 
-as they *are* indeed compatible, and MT8188 does support AFBC as well.
-
-Cheers,
-Angelo
-
-> ---
->   drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 13 +++++++++++++
->   1 file changed, 13 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> index 2bffe4245466..696aabe124c2 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -635,6 +635,17 @@ static const struct mtk_disp_ovl_data mt8195_ovl_driver_data = {
->   	.supports_clrfmt_ext = true,
->   };
->   
-> +static const struct mtk_disp_ovl_data mt8188_ovl_driver_data = {
-> +	.addr = DISP_REG_OVL_ADDR_MT8173,
-> +	.gmc_bits = 10,
-> +	.layer_nr = 4,
-> +	.fmt_rgb565_is_0 = true,
-> +	.smi_id_en = true,
-> +	.formats = mt8195_formats,
-> +	.num_formats = ARRAY_SIZE(mt8195_formats),
-> +	.supports_clrfmt_ext = true,
-> +};
-> +
->   static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
->   	{ .compatible = "mediatek,mt2701-disp-ovl",
->   	  .data = &mt2701_ovl_driver_data},
-> @@ -650,6 +661,8 @@ static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
->   	  .data = &mt8192_ovl_2l_driver_data},
->   	{ .compatible = "mediatek,mt8195-disp-ovl",
->   	  .data = &mt8195_ovl_driver_data},
-> +	{ .compatible = "mediatek,mt8188-disp-ovl",
-> +	  .data = &mt8188_ovl_driver_data},
->   	{},
->   };
->   MODULE_DEVICE_TABLE(of, mtk_disp_ovl_driver_dt_match);
+diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
+index 9f6e4b59455da..9a11a2c248045 100644
+--- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
++++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
+@@ -58,12 +58,12 @@ static void mtk_vcodec_vpu_reset_dec_handler(void *priv)
+ 
+ 	dev_err(&dev->plat_dev->dev, "Watchdog timeout!!");
+ 
+-	mutex_lock(&dev->dev_mutex);
++	mutex_lock(&dev->dev_ctx_lock);
+ 	list_for_each_entry(ctx, &dev->ctx_list, list) {
+ 		ctx->state = MTK_STATE_ABORT;
+ 		mtk_v4l2_vdec_dbg(0, ctx, "[%d] Change to state MTK_STATE_ABORT", ctx->id);
+ 	}
+-	mutex_unlock(&dev->dev_mutex);
++	mutex_unlock(&dev->dev_ctx_lock);
+ }
+ 
+ static void mtk_vcodec_vpu_reset_enc_handler(void *priv)
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+index ad9b68380692f..d69c9fe2af6f3 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+@@ -267,7 +267,9 @@ static int fops_vcodec_open(struct file *file)
+ 
+ 	ctx->dev->vdec_pdata->init_vdec_params(ctx);
+ 
++	mutex_lock(&dev->dev_ctx_lock);
+ 	list_add(&ctx->list, &dev->ctx_list);
++	mutex_unlock(&dev->dev_ctx_lock);
+ 	mtk_vcodec_dbgfs_create(ctx);
+ 
+ 	mutex_unlock(&dev->dev_mutex);
+@@ -310,7 +312,9 @@ static int fops_vcodec_release(struct file *file)
+ 	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+ 
+ 	mtk_vcodec_dbgfs_remove(dev, ctx->id);
++	mutex_lock(&dev->dev_ctx_lock);
+ 	list_del_init(&ctx->list);
++	mutex_unlock(&dev->dev_ctx_lock);
+ 	kfree(ctx);
+ 	mutex_unlock(&dev->dev_mutex);
+ 	return 0;
+@@ -403,6 +407,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	for (i = 0; i < MTK_VDEC_HW_MAX; i++)
+ 		mutex_init(&dev->dec_mutex[i]);
+ 	mutex_init(&dev->dev_mutex);
++	mutex_init(&dev->dev_ctx_lock);
+ 	spin_lock_init(&dev->irqlock);
+ 
+ 	snprintf(dev->v4l2_dev.name, sizeof(dev->v4l2_dev.name), "%s",
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+index 849b89dd205c2..85b2c0d3d8bcd 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+@@ -241,6 +241,7 @@ struct mtk_vcodec_dec_ctx {
+  *
+  * @dec_mutex: decoder hardware lock
+  * @dev_mutex: video_device lock
++ * @dev_ctx_lock: the lock of context list
+  * @decode_workqueue: decode work queue
+  *
+  * @irqlock: protect data access by irq handler and work thread
+@@ -282,6 +283,7 @@ struct mtk_vcodec_dec_dev {
+ 	/* decoder hardware mutex lock */
+ 	struct mutex dec_mutex[MTK_VDEC_HW_MAX];
+ 	struct mutex dev_mutex;
++	struct mutex dev_ctx_lock;
+ 	struct workqueue_struct *decode_workqueue;
+ 
+ 	spinlock_t irqlock;
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+index 82e57ae983d55..da6be556727bb 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+@@ -77,12 +77,14 @@ static bool vpu_dec_check_ap_inst(struct mtk_vcodec_dec_dev *dec_dev, struct vde
+ 	struct mtk_vcodec_dec_ctx *ctx;
+ 	int ret = false;
+ 
++	mutex_lock(&dec_dev->dev_ctx_lock);
+ 	list_for_each_entry(ctx, &dec_dev->ctx_list, list) {
+ 		if (!IS_ERR_OR_NULL(ctx) && ctx->vpu_inst == vpu) {
+ 			ret = true;
+ 			break;
+ 		}
+ 	}
++	mutex_unlock(&dec_dev->dev_ctx_lock);
+ 
+ 	return ret;
+ }
+-- 
+2.18.0
 
 
