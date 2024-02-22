@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96FFCC54788
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Feb 2024 15:42:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC933C48BF8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Feb 2024 15:42:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QPqXgewCfZe0W2aD2P/HGNDKtXkbfRHvg6TYmGgfd8I=; b=N1coVk3WZyi36VJCya45Ij9GXA
-	PCHscE8i5H3cqEyIudO23g6TXO2uHbt5+LiIeBSWynr0DDqDA9lMXdXoO8PGbTxSIEKwLETtP2tou
-	xas5cRVXeKCstPsdp+SXu6F+jRKd7y+8l3rTXmccMGjxfQ/htfEp9K8t6ivKT6L5YXPodk9+XscDg
-	GlFMznjL4CqqRirprb2e0WZwiFQ88DeXyh8TJoxGO6Ik15sMoe7hQ8LEHfUTBQPtwp/H+O239wyZd
-	ZPosiy446/WyBbbrt5eXvi6a0uW/ZoHALmgHfvJo6DQePJEXpxIW+tzgUzUSWmUgtS7P8314lxsPi
-	RHCY4Vhw==;
+	bh=5gDlZsYzSYffdtx1la/FNhRlTDlkb5YIvVty12LIpcE=; b=ySGHLBUhhSC4x1xhqBcLzTPi4F
+	TYt3VN9NJ7Jnff6MBsqqTsVGm8UvyVZwuT2pYn8rqUNU5Qvk5fQ+Q76frH3Srh2W9tPJx6CtZpZ2v
+	Jk4ICFyV2YIk94H6Y13Wei3Ro9WlWX+ADvX8bViEEzDBSJwRnXjUveh0HA05Mnq6AtuY+l3logcfz
+	CGv9bB3H5ZF+AN1+j2U6FkFNNGNq60KwD1dCvLTSTUX5VPNI/SzPvtI/UM486U8Qr6+VtOd5UOPgR
+	nWH3sN4fS3BY81pS+aXD0/0noA7CWdAMGJG2uplILXT+TAfJMBYFo3p9L58vy+b+5lMC9PMQcayWX
+	GzbdS1AA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdBDS-00000005S8i-0bSI;
-	Thu, 22 Feb 2024 15:42:30 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rdBDc-00000005SFH-10ll;
+	Thu, 22 Feb 2024 15:42:40 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdBCl-00000005RbW-0Vu7;
-	Thu, 22 Feb 2024 15:41:49 +0000
+	id 1rdBCn-00000005Rd4-0TyY;
+	Thu, 22 Feb 2024 15:41:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 618DECE2808;
-	Thu, 22 Feb 2024 15:41:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1EB1C433C7;
-	Thu, 22 Feb 2024 15:41:41 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 813DE618F5;
+	Thu, 22 Feb 2024 15:41:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A070C43394;
+	Thu, 22 Feb 2024 15:41:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708616504;
-	bh=nDJV3H5ien5JKkaRFl6YIw977BIcRyhSssibdZZbNS0=;
+	s=k20201202; t=1708616508;
+	bh=nGIP2vJqkcuTspXXlk6nKjt5v1e19Z7ObipqHsmxyZM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=SX0BMFOx6A7QuL23OjGPgrhtp4wl94MOyaFh5GXEeo2EooTQMADyzw49eslKGwAhN
-	 3EB8LW7Bu0Nlwqew+qd2UPkhMWeJYO4Ty8PxJ51VhXGfyCrQ/11COqa0l0GTGZe8eE
-	 XeAwwP4EVI/6I7hUjU/Dak0EBzOD5BNLevXL/Sd86iOhFzmmzKLKqUd0wxhpYCN2tF
-	 7wzImDW7aud3DtY69Xs4Xd+e590SV7485TjKcQ148H5VK2LgencYiHnv4rE/XQxbQg
-	 j3ps7o0ECniy5n2qHhn7SiKZK9Wuzpyau6Wjup4wsjqVa5LGLpbCgJEyf6VSBgrnZl
-	 B8EmhyPJDJw2w==
+	b=jqhMuhuMr3ZVz+g+vLndCqRLYsyQZ4IinHR1grM3SGkXk45xdHov7i6pbWL1tNzC7
+	 ytz8QU3K6Q8kVwdoQJpx01oWPHIIQ8S3+lz9k1QGQ1qhy9Xz+chv3XLLm+pq4YUA2z
+	 7m9plYDKkAc53EjNpO6qtn2WsZJBIYtB58RkgZ5cW8ouNZRjR7aOCVCs5iB8/lyGEq
+	 1sp8GncUj0cT5w2oga4GHKDdONNXrwk2yZtsKNlEht08xZtyjjwZLbN2WyQNTugeN5
+	 TriCyLboxKdX/bgFn6GItjoW3pQUoEupiVACgnfU+CtbJBYQ5kbqA5oN31Fi4/SAG4
+	 y0fKqeK49d0ZA==
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -53,17 +53,17 @@ To: Matthias Brugger <matthias.bgg@gmail.com>,
 	linux-kernel@vger.kernel.org,
 	linux-media@vger.kernel.org
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: [PATCH v2 05/12] soc: mediatek: cmdq: Add cmdq_pkt_eoc() helper function
-Date: Thu, 22 Feb 2024 15:41:13 +0000
-Message-Id: <20240222154120.16959-6-chunkuang.hu@kernel.org>
+Subject: [PATCH v2 06/12] soc: mediatek: cmdq: Remove cmdq_pkt_flush_async() helper function
+Date: Thu, 22 Feb 2024 15:41:14 +0000
+Message-Id: <20240222154120.16959-7-chunkuang.hu@kernel.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240222154120.16959-1-chunkuang.hu@kernel.org>
 References: <20240222154120.16959-1-chunkuang.hu@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240222_074147_546516_AF5A0BEB 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20240222_074149_463285_6DED172C 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,75 +78,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-cmdq_pkt_eoc() append eoc command to CMDQ packet. eoc command
-would ask GCE to generate IRQ. It's usually appended to the end
-of packet to notify all command in the packet is done.
+cmdq_pkt_flush_async() is not used by all client drivers (MediaTek
+drm driver and MediaTek mdp3 driver), so remove it.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 ---
- drivers/soc/mediatek/mtk-cmdq-helper.c | 10 ++++++++++
- include/linux/soc/mediatek/mtk-cmdq.h  | 19 +++++++++++++++++++
- 2 files changed, 29 insertions(+)
+ drivers/soc/mediatek/mtk-cmdq-helper.c | 15 ---------------
+ include/linux/soc/mediatek/mtk-cmdq.h  | 18 ------------------
+ 2 files changed, 33 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-index 678db09983d4..766dbafaef62 100644
+index 766dbafaef62..bbe41302210a 100644
 --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
 +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-@@ -414,6 +414,16 @@ int cmdq_pkt_jump_rel(struct cmdq_pkt *pkt, s32 offset, u8 shift_pa)
+@@ -446,19 +446,4 @@ int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
  }
- EXPORT_SYMBOL(cmdq_pkt_jump_rel);
+ EXPORT_SYMBOL(cmdq_pkt_finalize);
  
-+int cmdq_pkt_eoc(struct cmdq_pkt *pkt)
-+{
-+	struct cmdq_instruction inst = { {0} };
-+
-+	inst.op = CMDQ_CODE_EOC;
-+	inst.value = CMDQ_EOC_IRQ_EN;
-+	return cmdq_pkt_append_command(pkt, inst);
-+}
-+EXPORT_SYMBOL(cmdq_pkt_eoc);
-+
- int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
- {
- 	struct cmdq_instruction inst = { {0} };
+-int cmdq_pkt_flush_async(struct cmdq_pkt *pkt)
+-{
+-	int err;
+-	struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
+-
+-	err = mbox_send_message(client->chan, pkt);
+-	if (err < 0)
+-		return err;
+-	/* We can send next packet immediately, so just call txdone. */
+-	mbox_client_txdone(client->chan, 0);
+-
+-	return 0;
+-}
+-EXPORT_SYMBOL(cmdq_pkt_flush_async);
+-
+ MODULE_LICENSE("GPL v2");
 diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-index a935cd69d80f..45110494ee9d 100644
+index 45110494ee9d..f82e789550ae 100644
 --- a/include/linux/soc/mediatek/mtk-cmdq.h
 +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-@@ -275,6 +275,20 @@ int cmdq_pkt_jump_abs(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa);
+@@ -297,19 +297,6 @@ int cmdq_pkt_eoc(struct cmdq_pkt *pkt);
   */
- int cmdq_pkt_jump_rel(struct cmdq_pkt *pkt, s32 offset, u8 shift_pa);
+ int cmdq_pkt_finalize(struct cmdq_pkt *pkt);
  
-+/**
-+ * cmdq_pkt_eoc() - Append EOC and ask GCE to generate an IRQ at end of execution
-+ * @pkt:	The CMDQ packet
-+ *
-+ * Appends an End Of Code (EOC) command to the CMDQ packet and asks the GCE
-+ * to generate an interrupt at the end of the execution of all commands in
-+ * the pipeline.
-+ * The EOC command is usually appended to the end of the pipeline to notify
-+ * that all commands are done.
-+ *
-+ * Return: 0 for success or negative error number
-+ */
-+int cmdq_pkt_eoc(struct cmdq_pkt *pkt);
-+
- /**
-  * cmdq_pkt_finalize() - Append EOC and jump command to pkt.
-  * @pkt:	the CMDQ packet
-@@ -401,6 +415,11 @@ static inline int cmdq_pkt_jump_rel(struct cmdq_pkt *pkt, s32 offset, u8 shift_p
+-/**
+- * cmdq_pkt_flush_async() - trigger CMDQ to asynchronously execute the CMDQ
+- *                          packet and call back at the end of done packet
+- * @pkt:	the CMDQ packet
+- *
+- * Return: 0 for success; else the error code is returned
+- *
+- * Trigger CMDQ to asynchronously execute the CMDQ packet and call back
+- * at the end of done packet. Note that this is an ASYNC function. When the
+- * function returned, it may or may not be finished.
+- */
+-int cmdq_pkt_flush_async(struct cmdq_pkt *pkt);
+-
+ #else /* IS_ENABLED(CONFIG_MTK_CMDQ) */
+ 
+ static inline int cmdq_dev_get_client_reg(struct device *dev,
+@@ -425,11 +412,6 @@ static inline int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
  	return -EINVAL;
  }
  
-+static inline int cmdq_pkt_eoc(struct cmdq_pkt *pkt)
-+{
-+	return -EINVAL;
-+}
-+
- static inline int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
- {
- 	return -EINVAL;
+-static inline int cmdq_pkt_flush_async(struct cmdq_pkt *pkt)
+-{
+-	return -EINVAL;
+-}
+-
+ #endif /* IS_ENABLED(CONFIG_MTK_CMDQ) */
+ 
+ #endif	/* __MTK_CMDQ_H__ */
 -- 
 2.34.1
 
