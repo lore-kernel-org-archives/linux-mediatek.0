@@ -4,84 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4A38C54788
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Feb 2024 14:58:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD01C54798
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Feb 2024 15:11:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ENt+JdKCnHluvh/tKznmPYLYJcPxpbN8Mt8wED/VTqA=; b=NlM1fNQr9tXV4tT69WSt3SGT+d
-	xjW0Eb+hPEdJWcDwb+yxztYk1NG37S7lFv0lCj9FTTA/FW6rZzKCWN4wP3o0ivy9/vsek9UxtB0IF
-	BuYXl5ABUVAdQJu+FELy3TWtVQqpd8DfMZt4YCv4T6reJWpFamvnq0F/uiibfDAf6ppCNASiHNywh
-	z89MSO2UbB7n/IDvjPzUnZzCjelTbY6yewUj8cnjsAuS050JYg7Azq5UiD+ah8M7wHzNhhRm+B53V
-	MR0fjqe+QS1bIxZUg8QgZt6QttVv/n2Xd8zku+aAYOsNJ1ZITGWwDTcGlfvXg8WRdzuk/rwd5/lOA
-	0tFEDi5g==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+1MyTAa9W6rwmrz4X17WTkjYYC8wuvxkD+qfkCmD8gA=; b=AejLwH/1mSxFK/ZT33NtDHBHjy
+	IMabrXfImJMipu+hgO8PsYXmcW1RaiIkqxQZw01LXZsBIgYSRw/+uXv28oV4C9aqM3p3lzOCOyBdF
+	jku94GfZld7GTU4SEe+BKc554DsQj45Apo1epP3PkjGyUsFleO5TeWrJlwP1P4u1CyqXdNLmdvRyv
+	2+iN/CBRYjm0dCbLMizxcgmEbZ9a1N2SEofzvfi0ByJxlDcZf0b/ojGHL8+TexrX1g3wGs8pOR3Va
+	Gy56L7QT09YrFq/R9iiXynYV7XdaqKpkZHwyNwr0X/uLaeq9yfKHg1S/KEzFOc8M4weZ7VC7O0gJA
+	hW/z8+og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdAXH-00000005J3v-3abX;
-	Thu, 22 Feb 2024 14:58:55 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rdAjR-00000005Klv-1PPU;
+	Thu, 22 Feb 2024 15:11:29 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdAXE-00000005J1I-1ujZ;
-	Thu, 22 Feb 2024 14:58:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 88528CE2804;
-	Thu, 22 Feb 2024 14:58:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32C29C433F1;
-	Thu, 22 Feb 2024 14:58:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708613928;
-	bh=95qPQ4pyLbqmGifCgN9f24/iMYMKuT0p0puI4cqB+hE=;
-	h=From:To:Cc:Subject:Date:From;
-	b=ln2qRtYfLfs0kXHxuqnP8up9ncd9l1czd3XZZFhRJT3/3ilzggShkUxwRJtuGES3D
-	 Gr11XHaa1rWV9lqiyVw1sfMyZTAsGG/TXkPx6mA7KPpcoJD5fdKHqzqP5VfwNAXhzc
-	 pTb380CNPZSStK9QDyjU7HRiWbr6LTgJdhwxExFBWgf+jmwMhRPecjVebW7HQB7TX/
-	 39OsGu3Pq404RCI3CGT+QXsLOzqe6zYg+vfPaECFpUucXFWG7dJwwWAL5cBRKZ87PI
-	 Nawf6R1xME9bUmX9K37c69v4uByPyuwlQ8Yla0UlxAuOHq+5SNJf7AonMmK+KOmdox
-	 OKGLFxo3nwNIg==
-From: =?UTF-8?q?Marek=20Beh=C3=BAn?= <kabel@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	Hans de Goede <hdegoede@redhat.com>,
-	Matti Vaittinen <mazziesaccount@gmail.com>
-Cc: =?UTF-8?q?Marek=20Beh=C3=BAn?= <kabel@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <brgl@bgdev.pl>,
-	Lucas De Marchi <lucas.demarchi@intel.com>,
-	Oded Gabbay <ogabbay@kernel.org>,
-	=?UTF-8?q?Thomas=20Hellstr=C3=B6m?= <thomas.hellstrom@linux.intel.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Aleksandr Mezin <mezin.alexander@gmail.com>,
-	Jean Delvare <jdelvare@suse.com>,
-	Guenter Roeck <linux@roeck-us.net>,
-	Pavel Machek <pavel@ucw.cz>,
-	Lee Jones <lee@kernel.org>,
-	Sebastian Reichel <sre@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-gpio@vger.kernel.org,
-	intel-xe@lists.freedesktop.org,
-	dri-devel@lists.freedesktop.org,
-	linux-hwmon@vger.kernel.org,
-	linux-leds@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 1/2] devm-helpers: Add resource managed version of mutex init
-Date: Thu, 22 Feb 2024 15:58:37 +0100
-Message-ID: <20240222145838.12916-1-kabel@kernel.org>
-X-Mailer: git-send-email 2.43.0
+	id 1rdAjO-00000005Kk4-1fIk
+	for linux-mediatek@lists.infradead.org;
+	Thu, 22 Feb 2024 15:11:27 +0000
+Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-2d2505352e6so35529701fa.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 22 Feb 2024 07:11:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1708614684; x=1709219484; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+1MyTAa9W6rwmrz4X17WTkjYYC8wuvxkD+qfkCmD8gA=;
+        b=IfkavVjQ1gDdmjf+fATdrdQbLmO3+TPhV7U8Ydta1SUltuSQnsmfSmd3EhRqdw8DS2
+         /XlxEsnctTWASArYyAyP0K33/HPhEZKRufWrFRTk0V7bZjB+/Pkih7f33mylz74ws6yx
+         1qULHJBxsmNRZEaSfB4Cu0Zcz0FobVyo+flH3Ae1YvRHMIu9KWpo56QeFqoKKsgyo0Nj
+         jx3Tar+JO/ZzMcG8lce9+JKebneL9TTRezQNFChSicTqL5+QxhE/yvvma7Y6SQlwpXnN
+         yW5Q91J5P4khDtPrh7n5FnDt38IRUtB+3XZuHswyOh6vdYQStKBNh9tCoA56/vDA/5aP
+         Z3eg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708614684; x=1709219484;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=+1MyTAa9W6rwmrz4X17WTkjYYC8wuvxkD+qfkCmD8gA=;
+        b=icRtWjXIM3FjZzDuTc4/gV+RMxFGBD+Jw0lsd0vUQyv8p2V6Sz5hU+Mgo4S+1brF1t
+         dQQaXvHrDUBtkn/QYVL5vEu2lwU7jeO3zq2Oo+v6ZR3ekRG71i4fheb0dBWpKSE/IIB9
+         1L7YZP3DtI0VGpuRSzBonia05qBYU5hN1Xn1A8XEk2HeDIkdQRWf1EMTP3Y0AEOtii96
+         9MWxreoI6W7OcMS6rfWT3kQIy7iFT6VEXh8i+xZLF5EG7Qh7AvemOgr2ntwd9lzV8uYS
+         MPWRpI39dBOZCQyPdu4b3RbfAjODClBK8W9nqCjR2v62E8iMWhjb+DGAFTAttvsBIOGw
+         27VA==
+X-Forwarded-Encrypted: i=1; AJvYcCV4lHPeWY9eAo84ttlJx/EdTqn4Mn0THhzhP3Qadhms0dG6jxvfGc7pnIa03YfeLF2uCKY2WYlPqEOrNNnVQhLwWUUej06V+ARDx9y1jmcUNzH9
+X-Gm-Message-State: AOJu0Yxp+29iUOu6DjcGS7XXsOE++9tvv1kYs9YW7PFTOILdLAUGqhQe
+	AGiNHSKsqTk2jPqdHBfl23Mc8mzdfDbQNpXOBfLKQ/cjb54u+sC7QbuYE964/3uzn5cPJV+TAM/
+	hMh5WF2lJSwgV59Xbu4mjrJrwl2IBTW8BS8e6ZA==
+X-Google-Smtp-Source: AGHT+IGw3hbqPWYN/3vfhhQBFzrTvi1PbeoR9WvH0886TzS1KyGrr602I8E8lLCB6pIuc8bHxZF8tDM1xPYr0gG8zd8=
+X-Received: by 2002:a2e:b166:0:b0:2d2:6002:c239 with SMTP id
+ a6-20020a2eb166000000b002d26002c239mr1510902ljm.3.1708614684451; Thu, 22 Feb
+ 2024 07:11:24 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <20240222145838.12916-1-kabel@kernel.org>
+In-Reply-To: <20240222145838.12916-1-kabel@kernel.org>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Thu, 22 Feb 2024 16:11:11 +0100
+Message-ID: <CAMRc=McWhC0ZdR55TMkkdVov=dwT0=H-4_c4J-bq0quRpvyoBw@mail.gmail.com>
+Subject: Re: [PATCH 1/2] devm-helpers: Add resource managed version of mutex init
+To: =?UTF-8?B?TWFyZWsgQmVow7pu?= <kabel@kernel.org>
+Cc: linux-kernel@vger.kernel.org, Hans de Goede <hdegoede@redhat.com>, 
+	Matti Vaittinen <mazziesaccount@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, 
+	Lucas De Marchi <lucas.demarchi@intel.com>, Oded Gabbay <ogabbay@kernel.org>, 
+	=?UTF-8?Q?Thomas_Hellstr=C3=B6m?= <thomas.hellstrom@linux.intel.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	Aleksandr Mezin <mezin.alexander@gmail.com>, Jean Delvare <jdelvare@suse.com>, 
+	Guenter Roeck <linux@roeck-us.net>, Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, 
+	Sebastian Reichel <sre@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-gpio@vger.kernel.org, 
+	intel-xe@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
+	linux-hwmon@vger.kernel.org, linux-leds@vger.kernel.org, 
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240222_065852_891435_8364B738 
-X-CRM114-Status: GOOD (  20.04  )
+X-CRM114-CacheID: sfid-20240222_071126_684945_8538D472 
+X-CRM114-Status: UNSURE (   9.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,350 +103,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A few drivers are doing resource-managed mutex initialization by
-implementing ad-hoc one-liner mutex dropping functions and using them
-with devm_add_action_or_reset(). Help drivers avoid these repeated
-one-liners by adding managed version of mutex initialization.
+On Thu, Feb 22, 2024 at 3:58=E2=80=AFPM Marek Beh=C3=BAn <kabel@kernel.org>=
+ wrote:
+>
+> A few drivers are doing resource-managed mutex initialization by
+> implementing ad-hoc one-liner mutex dropping functions and using them
+> with devm_add_action_or_reset(). Help drivers avoid these repeated
+> one-liners by adding managed version of mutex initialization.
+>
+> Use the new function devm_mutex_init() in the following drivers:
+>   drivers/gpio/gpio-pisosr.c
+>   drivers/gpio/gpio-sim.c
 
-Use the new function devm_mutex_init() in the following drivers:
-  drivers/gpio/gpio-pisosr.c
-  drivers/gpio/gpio-sim.c
-  drivers/gpu/drm/xe/xe_hwmon.c
-  drivers/hwmon/nzxt-smart2.c
-  drivers/leds/leds-is31fl319x.c
-  drivers/power/supply/mt6370-charger.c
-  drivers/power/supply/rt9467-charger.c
+Yes, please!
 
-Signed-off-by: Marek Behún <kabel@kernel.org>
----
- drivers/gpio/gpio-pisosr.c            |  9 ++-----
- drivers/gpio/gpio-sim.c               | 12 ++--------
- drivers/gpu/drm/xe/xe_hwmon.c         | 11 ++-------
- drivers/hwmon/nzxt-smart2.c           |  9 ++-----
- drivers/leds/leds-is31fl319x.c        |  9 ++-----
- drivers/power/supply/mt6370-charger.c | 11 +--------
- drivers/power/supply/rt9467-charger.c | 34 ++++-----------------------
- include/linux/devm-helpers.h          | 32 +++++++++++++++++++++++++
- 8 files changed, 47 insertions(+), 80 deletions(-)
+For GPIO part:
 
-diff --git a/drivers/gpio/gpio-pisosr.c b/drivers/gpio/gpio-pisosr.c
-index e3013e778e15..dddbf37e855f 100644
---- a/drivers/gpio/gpio-pisosr.c
-+++ b/drivers/gpio/gpio-pisosr.c
-@@ -7,6 +7,7 @@
- #include <linux/bitmap.h>
- #include <linux/bitops.h>
- #include <linux/delay.h>
-+#include <linux/devm-helpers.h>
- #include <linux/gpio/consumer.h>
- #include <linux/gpio/driver.h>
- #include <linux/module.h>
-@@ -116,11 +117,6 @@ static const struct gpio_chip template_chip = {
- 	.can_sleep		= true,
- };
- 
--static void pisosr_mutex_destroy(void *lock)
--{
--	mutex_destroy(lock);
--}
--
- static int pisosr_gpio_probe(struct spi_device *spi)
- {
- 	struct device *dev = &spi->dev;
-@@ -147,8 +143,7 @@ static int pisosr_gpio_probe(struct spi_device *spi)
- 		return dev_err_probe(dev, PTR_ERR(gpio->load_gpio),
- 				     "Unable to allocate load GPIO\n");
- 
--	mutex_init(&gpio->lock);
--	ret = devm_add_action_or_reset(dev, pisosr_mutex_destroy, &gpio->lock);
-+	ret = devm_mutex_init(dev, &gpio->lock);
- 	if (ret)
- 		return ret;
- 
-diff --git a/drivers/gpio/gpio-sim.c b/drivers/gpio/gpio-sim.c
-index c4106e37e6db..fcfcaa4efe70 100644
---- a/drivers/gpio/gpio-sim.c
-+++ b/drivers/gpio/gpio-sim.c
-@@ -12,6 +12,7 @@
- #include <linux/completion.h>
- #include <linux/configfs.h>
- #include <linux/device.h>
-+#include <linux/devm-helpers.h>
- #include <linux/err.h>
- #include <linux/gpio/consumer.h>
- #include <linux/gpio/driver.h>
-@@ -307,13 +308,6 @@ static ssize_t gpio_sim_sysfs_pull_store(struct device *dev,
- 	return len;
- }
- 
--static void gpio_sim_mutex_destroy(void *data)
--{
--	struct mutex *lock = data;
--
--	mutex_destroy(lock);
--}
--
- static void gpio_sim_put_device(void *data)
- {
- 	struct device *dev = data;
-@@ -457,9 +451,7 @@ static int gpio_sim_add_bank(struct fwnode_handle *swnode, struct device *dev)
- 	if (ret)
- 		return ret;
- 
--	mutex_init(&chip->lock);
--	ret = devm_add_action_or_reset(dev, gpio_sim_mutex_destroy,
--				       &chip->lock);
-+	ret = devm_mutex_init(dev, &chip->lock);
- 	if (ret)
- 		return ret;
- 
-diff --git a/drivers/gpu/drm/xe/xe_hwmon.c b/drivers/gpu/drm/xe/xe_hwmon.c
-index 174ed2185481..bb88ae1c196c 100644
---- a/drivers/gpu/drm/xe/xe_hwmon.c
-+++ b/drivers/gpu/drm/xe/xe_hwmon.c
-@@ -3,6 +3,7 @@
-  * Copyright © 2023 Intel Corporation
-  */
- 
-+#include <linux/devm-helpers.h>
- #include <linux/hwmon-sysfs.h>
- #include <linux/hwmon.h>
- #include <linux/types.h>
-@@ -729,13 +730,6 @@ xe_hwmon_get_preregistration_info(struct xe_device *xe)
- 		xe_hwmon_energy_get(hwmon, &energy);
- }
- 
--static void xe_hwmon_mutex_destroy(void *arg)
--{
--	struct xe_hwmon *hwmon = arg;
--
--	mutex_destroy(&hwmon->hwmon_lock);
--}
--
- void xe_hwmon_register(struct xe_device *xe)
- {
- 	struct device *dev = xe->drm.dev;
-@@ -751,8 +745,7 @@ void xe_hwmon_register(struct xe_device *xe)
- 
- 	xe->hwmon = hwmon;
- 
--	mutex_init(&hwmon->hwmon_lock);
--	if (devm_add_action_or_reset(dev, xe_hwmon_mutex_destroy, hwmon))
-+	if (devm_mutex_init(dev, &hwmon->hwmon_lock))
- 		return;
- 
- 	/* primary GT to access device level properties */
-diff --git a/drivers/hwmon/nzxt-smart2.c b/drivers/hwmon/nzxt-smart2.c
-index 7aa586eb74be..00bc89607673 100644
---- a/drivers/hwmon/nzxt-smart2.c
-+++ b/drivers/hwmon/nzxt-smart2.c
-@@ -5,6 +5,7 @@
-  * Copyright (c) 2021 Aleksandr Mezin
-  */
- 
-+#include <linux/devm-helpers.h>
- #include <linux/hid.h>
- #include <linux/hwmon.h>
- #include <linux/math.h>
-@@ -721,11 +722,6 @@ static int __maybe_unused nzxt_smart2_hid_reset_resume(struct hid_device *hdev)
- 	return init_device(drvdata, drvdata->update_interval);
- }
- 
--static void mutex_fini(void *lock)
--{
--	mutex_destroy(lock);
--}
--
- static int nzxt_smart2_hid_probe(struct hid_device *hdev,
- 				 const struct hid_device_id *id)
- {
-@@ -741,8 +737,7 @@ static int nzxt_smart2_hid_probe(struct hid_device *hdev,
- 
- 	init_waitqueue_head(&drvdata->wq);
- 
--	mutex_init(&drvdata->mutex);
--	ret = devm_add_action_or_reset(&hdev->dev, mutex_fini, &drvdata->mutex);
-+	ret = devm_mutex_init(&hdev->dev, &drvdata->mutex);
- 	if (ret)
- 		return ret;
- 
-diff --git a/drivers/leds/leds-is31fl319x.c b/drivers/leds/leds-is31fl319x.c
-index 66c65741202e..e9d7cf6a386c 100644
---- a/drivers/leds/leds-is31fl319x.c
-+++ b/drivers/leds/leds-is31fl319x.c
-@@ -8,6 +8,7 @@
-  * effect LEDs.
-  */
- 
-+#include <linux/devm-helpers.h>
- #include <linux/err.h>
- #include <linux/i2c.h>
- #include <linux/leds.h>
-@@ -495,11 +496,6 @@ static inline int is31fl3196_db_to_gain(u32 dezibel)
- 	return dezibel / IS31FL3196_AUDIO_GAIN_DB_STEP;
- }
- 
--static void is31f1319x_mutex_destroy(void *lock)
--{
--	mutex_destroy(lock);
--}
--
- static int is31fl319x_probe(struct i2c_client *client)
- {
- 	struct is31fl319x_chip *is31;
-@@ -515,8 +511,7 @@ static int is31fl319x_probe(struct i2c_client *client)
- 	if (!is31)
- 		return -ENOMEM;
- 
--	mutex_init(&is31->lock);
--	err = devm_add_action_or_reset(dev, is31f1319x_mutex_destroy, &is31->lock);
-+	err = devm_mutex_init(dev, &is31->lock);
- 	if (err)
- 		return err;
- 
-diff --git a/drivers/power/supply/mt6370-charger.c b/drivers/power/supply/mt6370-charger.c
-index e24fce087d80..fa0517d0352d 100644
---- a/drivers/power/supply/mt6370-charger.c
-+++ b/drivers/power/supply/mt6370-charger.c
-@@ -766,13 +766,6 @@ static int mt6370_chg_init_psy(struct mt6370_priv *priv)
- 	return PTR_ERR_OR_ZERO(priv->psy);
- }
- 
--static void mt6370_chg_destroy_attach_lock(void *data)
--{
--	struct mutex *attach_lock = data;
--
--	mutex_destroy(attach_lock);
--}
--
- static void mt6370_chg_destroy_wq(void *data)
- {
- 	struct workqueue_struct *wq = data;
-@@ -900,9 +893,7 @@ static int mt6370_chg_probe(struct platform_device *pdev)
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Failed to init psy\n");
- 
--	mutex_init(&priv->attach_lock);
--	ret = devm_add_action_or_reset(dev, mt6370_chg_destroy_attach_lock,
--				       &priv->attach_lock);
-+	ret = devm_mutex_init(dev, &priv->attach_lock);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Failed to init attach lock\n");
- 
-diff --git a/drivers/power/supply/rt9467-charger.c b/drivers/power/supply/rt9467-charger.c
-index fdfdc83ab045..84f07c22077f 100644
---- a/drivers/power/supply/rt9467-charger.c
-+++ b/drivers/power/supply/rt9467-charger.c
-@@ -10,6 +10,7 @@
- #include <linux/bitfield.h>
- #include <linux/completion.h>
- #include <linux/delay.h>
-+#include <linux/devm-helpers.h>
- #include <linux/gpio/consumer.h>
- #include <linux/i2c.h>
- #include <linux/interrupt.h>
-@@ -1149,27 +1150,6 @@ static int rt9467_reset_chip(struct rt9467_chg_data *data)
- 	return regmap_field_write(data->rm_field[F_RST], 1);
- }
- 
--static void rt9467_chg_destroy_adc_lock(void *data)
--{
--	struct mutex *adc_lock = data;
--
--	mutex_destroy(adc_lock);
--}
--
--static void rt9467_chg_destroy_attach_lock(void *data)
--{
--	struct mutex *attach_lock = data;
--
--	mutex_destroy(attach_lock);
--}
--
--static void rt9467_chg_destroy_ichg_ieoc_lock(void *data)
--{
--	struct mutex *ichg_ieoc_lock = data;
--
--	mutex_destroy(ichg_ieoc_lock);
--}
--
- static void rt9467_chg_complete_aicl_done(void *data)
- {
- 	struct completion *aicl_done = data;
-@@ -1222,21 +1202,15 @@ static int rt9467_charger_probe(struct i2c_client *i2c)
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Failed to add irq chip\n");
- 
--	mutex_init(&data->adc_lock);
--	ret = devm_add_action_or_reset(dev, rt9467_chg_destroy_adc_lock,
--				       &data->adc_lock);
-+	ret = devm_mutex_init(dev, &data->adc_lock);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Failed to init ADC lock\n");
- 
--	mutex_init(&data->attach_lock);
--	ret = devm_add_action_or_reset(dev, rt9467_chg_destroy_attach_lock,
--				       &data->attach_lock);
-+	ret = devm_mutex_init(dev, &data->attach_lock);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Failed to init attach lock\n");
- 
--	mutex_init(&data->ichg_ieoc_lock);
--	ret = devm_add_action_or_reset(dev, rt9467_chg_destroy_ichg_ieoc_lock,
--				       &data->ichg_ieoc_lock);
-+	ret = devm_mutex_init(dev, &data->ichg_ieoc_lock);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Failed to init ICHG/IEOC lock\n");
- 
-diff --git a/include/linux/devm-helpers.h b/include/linux/devm-helpers.h
-index 74891802200d..70640fb96117 100644
---- a/include/linux/devm-helpers.h
-+++ b/include/linux/devm-helpers.h
-@@ -24,6 +24,8 @@
-  */
- 
- #include <linux/device.h>
-+#include <linux/kconfig.h>
-+#include <linux/mutex.h>
- #include <linux/workqueue.h>
- 
- static inline void devm_delayed_work_drop(void *res)
-@@ -76,4 +78,34 @@ static inline int devm_work_autocancel(struct device *dev,
- 	return devm_add_action(dev, devm_work_drop, w);
- }
- 
-+static inline void devm_mutex_drop(void *res)
-+{
-+	mutex_destroy(res);
-+}
-+
-+/**
-+ * devm_mutex_init - Resource managed mutex initialization
-+ * @dev:	Device which lifetime mutex is bound to
-+ * @lock:	Mutex to be initialized (and automatically destroyed)
-+ *
-+ * Initialize mutex which is automatically destroyed when driver is detached.
-+ * A few drivers initialize mutexes which they want destroyed before driver is
-+ * detached, for debugging purposes.
-+ * devm_mutex_init() can be used to omit the explicit mutex_destroy() call when
-+ * driver is detached.
-+ */
-+static inline int devm_mutex_init(struct device *dev, struct mutex *lock)
-+{
-+	mutex_init(lock);
-+
-+	/*
-+	 * mutex_destroy() is an empty function if CONFIG_DEBUG_MUTEXES is
-+	 * disabled. No need to allocate an action in that case.
-+	 */
-+	if (IS_ENABLED(CONFIG_DEBUG_MUTEXES))
-+		return devm_add_action_or_reset(dev, devm_mutex_drop, lock);
-+	else
-+		return 0;
-+}
-+
- #endif
--- 
-2.43.0
-
+Acked-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
