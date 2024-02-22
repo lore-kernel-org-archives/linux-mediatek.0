@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59A1EC54788
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Feb 2024 15:41:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C69DEC5479F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Feb 2024 15:42:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Uy9W0eC2DM+jsJntcnJJQTqaXwEfCNzBzC9jlP8GIlk=; b=zOzeI41AnZu28TppCWKWZ7hSS6
-	kLXyoXIOWIR/AoEjVggmN225eiZqBJxkNn4flRg2DzXFTRAZ4rvQNm/tsWya660GhsUe6BXKuSDNL
-	eAfv/LPhuRq8ecGz1c9Cmp1t9azYjg1Ru282iRwuC7e6tSxoXIi/8cnh8TGdOsvImm3gTVy3Jn2p8
-	nj2lFF7GNv0VO83OVeDu0/2z3TS1MBovpnJKYCTPMvaDkUxiPULnw4pJXkbDXgP6zyxjMpDL3SZW9
-	QLw5sXE+O5zhQE5zU0YUBoWEPYTwiC2omPr4W6agoAB8P0Ap/DJ3ukg7xrC6OaK2dGEUWdX6TSOo/
-	Ho9JUnyQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8ZJXXIO/Z27DdKF+R5z0BjskZvjom9IOxtjPx4sT9Wo=; b=QlDpGViFM6t3PF3whjnbJsj95D
+	MX9C9+HonDX2JqTiLhbJQiZe4cFM+5ZTN2WjpNa7NqX/0/vSlUKWzCWXoO39ZZ0pMLPbfKtSCBhog
+	Weh8lt4U5FGdSx7PctP/AkvMv7pKCPi9coc7oqrMdmUQN4XlRwl5DV8pchgTDCN0G3ysd/e8Q6/6c
+	70d+SoZZ0EWmrTItNsunljWg94qPbH4+sJFvO+f3PcegF8bsA8NTmnUnUFhsm2gopnfyAwX0izClE
+	UHkpKeZe7GcTg4+Ozc4Lgk7F/VGpRMxoo0a52j/o5ZcdIvhRrjLvBVTqyks4HyE5mmNBrvyhyYJV6
+	4ZUCjBDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdBCm-00000005RdB-3NzR;
-	Thu, 22 Feb 2024 15:41:48 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rdBD0-00000005Rpr-0oma;
+	Thu, 22 Feb 2024 15:42:02 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdBCa-00000005RTC-0Dkk;
+	id 1rdBCY-00000005RQc-0ixB;
 	Thu, 22 Feb 2024 15:41:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8E524618EA;
-	Thu, 22 Feb 2024 15:41:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5700C43394;
-	Thu, 22 Feb 2024 15:41:32 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id E899ECE21A0;
+	Thu, 22 Feb 2024 15:41:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35792C433F1;
+	Thu, 22 Feb 2024 15:41:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708616495;
-	bh=RuWY1cv8Dhz18Wxup/ZL/5dm4lWX9+YTDfCxalcnNUo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=tiBlVyOCYtJPgJOPH/yQz3yHhsu5izAVu0rXFmi6w6IQTdn8PtsC8zim0x2V6KkLn
-	 gFG1gOFuwAKXl+Rp3793LnwLN268Tqmd38WhnUKQL0CrQN59BgC49LbtWhMxfYs87B
-	 TAYruJfJ/809V40bGe6y4NHi/Cf8AwxlYazgBLacAuyNQDdUjXyRF22XftDqeekqjV
-	 e02JE4zBp0nyDnjUCLKau6xDlPHsswTho8YevEGNB5ABJy/T7UO8Fib5hKNBMidEha
-	 SWDtS3AHAMQfcThlt1R1u6kw9JwECb30RwkQkRwT0EfAFBVTOR1yv3cOoKHKRX5kdU
-	 pmzIdAqmVsXiw==
+	s=k20201202; t=1708616489;
+	bh=pjixf3oXo63dg7qf7lXjwZCTLnX0p47lkDin0H4I8LU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=jTvQ8XMWDulUTguO1lrSEX+LInOIjmnQhNbrGk7y8o2w699XXvhWZcAgJYmiY2KON
+	 0sUvlq7/4FDFHEw8Lvn78gWeubpi7fVJjcaZjgo/G4hGOoROEwq2pdFXbSkyvp2ae+
+	 did0penN8Xd26Y30/5mxSFS6CecVq7wdM3tmRn/SWunNkeqziWhj4ifCN6MH8kQSn2
+	 D577EuZiKtmQf4eXSgqWqV8AbzBJILrLIX+L9/RF5T//HavbM3WEHnEOhSczsLy9Ax
+	 xunLJqrFaYar7GJrBEGLTpu0AFUnbHdGp7c40xhoWAqs9NGuOM4uh6NgCL2fudjoPQ
+	 2fi/Mp1krDFVA==
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -53,17 +53,16 @@ To: Matthias Brugger <matthias.bgg@gmail.com>,
 	linux-kernel@vger.kernel.org,
 	linux-media@vger.kernel.org
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: [PATCH v2 02/12] soc: mediatek: cmdq: Add parameter shift_pa to cmdq_pkt_jump()
-Date: Thu, 22 Feb 2024 15:41:10 +0000
-Message-Id: <20240222154120.16959-3-chunkuang.hu@kernel.org>
+Subject: [PATCH v2 00/12] Remove cl in struct cmdq_pkt
+Date: Thu, 22 Feb 2024 15:41:08 +0000
+Message-Id: <20240222154120.16959-1-chunkuang.hu@kernel.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240222154120.16959-1-chunkuang.hu@kernel.org>
-References: <20240222154120.16959-1-chunkuang.hu@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240222_074136_205883_6C4CFC40 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20240222_074134_421403_067B0067 
+X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,66 +77,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In original design, cmdq_pkt_jump() call cmdq_get_shift_pa() every
-time to get shift_pa. But the shift_pa is constant value for each
-SoC, so client driver just need to call cmdq_get_shift_pa() once
-and pass shift_pa to cmdq_pkt_jump() to prevent frequent function
-call.
+cl in struct cmdq_pkt is used to store struct cmdq_client, but every client
+driver has the struct cmdq_client information, so it's not necessary to
+store struct cmdq_client in struct cmdq_pkt. Because mailbox maintainer
+do not like to mix mailbox patch with other patches in a series, so
+mailbox patch [1] would be sent independently.
 
-Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
----
- drivers/soc/mediatek/mtk-cmdq-helper.c | 5 ++---
- include/linux/soc/mediatek/mtk-cmdq.h  | 6 ++++--
- 2 files changed, 6 insertions(+), 5 deletions(-)
+Changes in v2:
+1. Fix typo of CMDQ_JUMP_RELATIVE
+2. Refine cmdq_pkt_create() and cmdq_pkt_destroy()
+3. Rename cmdq_pkt_jump() to cmdq_pkt_jump_abs()
+4. Add cmdq_pkt_jump_rel() helper function
+5. drm/mediatek: Use cmdq_pkt_create() and cmdq_pkt_destroy()
+6. mtk-mdp3: Get fine-grain control of cmdq_pkt_finalize()
+7. mtk-mdp3: Use cmdq_pkt_create() and cmdq_pkt_destroy()
 
-diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-index 0b2e5690dacf..3380e56dd69b 100644
---- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-+++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-@@ -393,14 +393,13 @@ int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value)
- }
- EXPORT_SYMBOL(cmdq_pkt_assign);
- 
--int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr)
-+int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa)
- {
- 	struct cmdq_instruction inst = {};
- 
- 	inst.op = CMDQ_CODE_JUMP;
- 	inst.offset = CMDQ_JUMP_ABSOLUTE;
--	inst.value = addr >>
--		cmdq_get_shift_pa(((struct cmdq_client *)pkt->cl)->chan);
-+	inst.value = addr >> shift_pa;
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_jump);
-diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-index 649955d2cf5c..72adfd867cd9 100644
---- a/include/linux/soc/mediatek/mtk-cmdq.h
-+++ b/include/linux/soc/mediatek/mtk-cmdq.h
-@@ -253,10 +253,12 @@ int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value);
-  *		     a physical address which should contains more instruction.
-  * @pkt:        the CMDQ packet
-  * @addr:       physical address of target instruction buffer
-+ * @shift_pa:	shift bits of physical address in CMDQ instruction. This value
-+ *		is got by cmdq_get_shift_pa().
-  *
-  * Return: 0 for success; else the error code is returned
-  */
--int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr);
-+int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa);
- 
- /**
-  * cmdq_pkt_finalize() - Append EOC and jump command to pkt.
-@@ -374,7 +376,7 @@ static inline int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value)
- 	return -EINVAL;
- }
- 
--static inline int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr)
-+static inline int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa)
- {
- 	return -EINVAL;
- }
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/commit/?h=mediatek-cmdq8&id=a1b2f7a7488285975c1f439086f1c4cc51a13bb9
+
+Chun-Kuang Hu (12):
+  soc: mediatek: cmdq: Fix typo of CMDQ_JUMP_RELATIVE
+  soc: mediatek: cmdq: Add parameter shift_pa to cmdq_pkt_jump()
+  soc: mediatek: cmdq: Rename cmdq_pkt_jump() to cmdq_pkt_jump_abs()
+  soc: mediatek: cmdq: Add cmdq_pkt_jump_rel() helper function
+  soc: mediatek: cmdq: Add cmdq_pkt_eoc() helper function
+  soc: mediatek: cmdq: Remove cmdq_pkt_flush_async() helper function
+  soc: mediatek: cmdq: Refine cmdq_pkt_create() and cmdq_pkt_destroy()
+  drm/mediatek: Use cmdq_pkt_eoc() instead of cmdq_pkt_finalize()
+  drm/mediatek: Use cmdq_pkt_create() and cmdq_pkt_destroy()
+  media: platform: mtk-mdp3: Get fine-grain control of
+    cmdq_pkt_finalize()
+  media: platform: mtk-mdp3: Use cmdq_pkt_create() and
+    cmdq_pkt_destroy()
+  soc: mediatek: cmdq: Remove cmdq_pkt_finalize() helper function
+
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c       | 48 ++----------
+ .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 48 ++----------
+ .../platform/mediatek/mdp3/mtk-mdp3-core.c    |  2 +
+ .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  1 +
+ drivers/soc/mediatek/mtk-cmdq-helper.c        | 73 ++++++-------------
+ include/linux/soc/mediatek/mtk-cmdq.h         | 60 +++++++++------
+ 6 files changed, 73 insertions(+), 159 deletions(-)
+
 -- 
 2.34.1
 
