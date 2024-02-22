@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A90F2C5479F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Feb 2024 15:42:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6927C48BF8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Feb 2024 15:42:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tibavudpFNMz4Vu/p5JkrX7wcDRf9WI90wwL3kzLuxM=; b=cLLB00DOe3HMLXVq5++z071NOu
-	gvYroMf1NjNRACGSky/pJm70e+Q3emTYKyvMeSXJGZv7iil1i/ZmjKGqSnrTMv6HqBxXGgLmtzY9m
-	qylkldD/UaQSmMGpgVh+CbGYH1gtByvOF6PH6HCNBIXGD0dCcfz3f/5ZQ++k5BFwsp0YKAkz99qp+
-	Jo7TiH/zgcxc/uPpx8dsF42ehqPaTpS8YT/IZLlcA0IofKZ0uXnYaL/sGOCp2ARG0l3Xr18JNZZc+
-	ysdYb7dJ1HodMkWmZwYAGew8zqXYiuTr5OQEEedd/yYHDi13Jp73QY4JXEEMjBgUkZc7HJgZtwVVT
-	fTXCycJA==;
+	bh=xVypYhEl//jcDfWledVQzkB9459uKJFxxdtmQaBkJfY=; b=t9JfDBwz9S97bIB2SjNfUBtB7B
+	woiYR9lyyHx0hb9jkTbA1x0Tt1lUkexpiqtBorWubwPmV2n50QHSsiCKTEYEt4vvuGDqoWf3rc1T6
+	Kuo3qmVmOWk7XLZBaFVyT097ROnIgKdiR02qRfUnPGNzd2J3G8Tie7Do1Qz+eLQ2FRwKUCktGoyuZ
+	HFP1EKjQAtsdHM2dd60fDQVuf5U3XpJMypEhEOoxyj4gC01MrwR+/57hd1uNdmF908nRbiO0Zotjx
+	yoAM4lvHA17pc9pwqZzGrgoPMABiQYk+XacJnGMdny8/TO34UEXg6zp1eOWl9qaAnvLwTeLTjwz4r
+	Ei8Dvlug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdBD9-00000005RxK-1JMy;
-	Thu, 22 Feb 2024 15:42:11 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rdBDI-00000005S3c-11pJ;
+	Thu, 22 Feb 2024 15:42:20 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdBCe-00000005RWQ-2thM;
-	Thu, 22 Feb 2024 15:41:42 +0000
+	id 1rdBCh-00000005RZ3-2Ako;
+	Thu, 22 Feb 2024 15:41:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 7FEC4CE282E;
+	by sin.source.kernel.org (Postfix) with ESMTP id 8DC0CCE2808;
+	Thu, 22 Feb 2024 15:41:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 964D0C43390;
 	Thu, 22 Feb 2024 15:41:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A7D8EC43399;
-	Thu, 22 Feb 2024 15:41:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708616498;
-	bh=76oWXYBZv2prDrLhgaX7zuBp9oiheXSqhINTrAxFSR4=;
+	s=k20201202; t=1708616501;
+	bh=rK1krWLb7shm5l17Ae3PYsFAPIxWE0/hDUOnRbU8Hms=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OlgSv9Wa5S0L2u5ow7ycezogfX4uqzAYLRTpryMDSktjrYQUbEZyLX6IcEYb4enmF
-	 xXr3lMYIj5V/BPZy1PzXBoEWf3LePahwi67LfmVgs6HHwxrYlWXMxh425+yAReLR7j
-	 patZ/IuMbHYFz/Gf/axHJdGpRHHTdLgVdkTLFUqSfxLeWoUN9dHFtrxh5lVN6IU5cW
-	 mFiiZV3u+5LAOU1JSlmD83m7BxJwWr/rFm0z6JLXbC02PWWXgZ9GeZrr1jbVIQl1cG
-	 1WE35nA/eHBB6Bmv3yMoDrLh2oxjTek86CFPhmvSTu6JYyJVhmklSP/qGM+o3AsN2l
-	 lL1H7ZR5We9Uw==
+	b=jZVVBKw2J1qlidIBDZKh0L7B2jAWgRX+55M0yA4RfXh4LLvWlCqc5FBcwKdjKNO8g
+	 tYR5GfRnfvTuGqV4g03wJmYteJn09cG8IkNyGyawEMGf3EeLapDhpNp4lrik9xS3eH
+	 5tpzH2woRsubrZ7fHY9HR+o4wamHPJXB3VIFDeHSd12N54XTsrmvh/5AymtyhwKWUe
+	 mEs7qqZmxk1jDQWIwhCw6wvCTYZzzxjho5a83m3uLpfpkhXDQZv6bzy+9Jc/GscTOF
+	 f+mvwe6MbfC614OuDsa4+eAKBZnwM5fTP0opxQaj/vu9bAFFu7+HT0v2+2bJ9jq748
+	 GXS1chuI2eyIQ==
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -53,17 +53,17 @@ To: Matthias Brugger <matthias.bgg@gmail.com>,
 	linux-kernel@vger.kernel.org,
 	linux-media@vger.kernel.org
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: [PATCH v2 03/12] soc: mediatek: cmdq: Rename cmdq_pkt_jump() to cmdq_pkt_jump_abs()
-Date: Thu, 22 Feb 2024 15:41:11 +0000
-Message-Id: <20240222154120.16959-4-chunkuang.hu@kernel.org>
+Subject: [PATCH v2 04/12] soc: mediatek: cmdq: Add cmdq_pkt_jump_rel() helper function
+Date: Thu, 22 Feb 2024 15:41:12 +0000
+Message-Id: <20240222154120.16959-5-chunkuang.hu@kernel.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240222154120.16959-1-chunkuang.hu@kernel.org>
 References: <20240222154120.16959-1-chunkuang.hu@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240222_074141_211031_4F240F07 
-X-CRM114-Status: GOOD (  12.04  )
+X-CRM114-CacheID: sfid-20240222_074143_920008_2A8770B2 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,75 +78,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to distinguish absolute jump and relative jump,
-cmdq_pkt_jump() append absolute jump command, so rename it to
-cmdq_pkt_jump_abs().
+cmdq_pkt_jump_rel() append relative jump command to the packet.
+Relative jump change PC to the target address with offset from
+current PC.
 
 Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 ---
- drivers/soc/mediatek/mtk-cmdq-helper.c |  4 ++--
- include/linux/soc/mediatek/mtk-cmdq.h  | 13 +++++++------
- 2 files changed, 9 insertions(+), 8 deletions(-)
+ drivers/soc/mediatek/mtk-cmdq-helper.c | 10 ++++++++++
+ include/linux/soc/mediatek/mtk-cmdq.h  | 19 +++++++++++++++++++
+ 2 files changed, 29 insertions(+)
 
 diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-index 3380e56dd69b..38d9077725d2 100644
+index 38d9077725d2..678db09983d4 100644
 --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
 +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-@@ -393,7 +393,7 @@ int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value)
+@@ -404,6 +404,16 @@ int cmdq_pkt_jump_abs(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa)
  }
- EXPORT_SYMBOL(cmdq_pkt_assign);
+ EXPORT_SYMBOL(cmdq_pkt_jump_abs);
  
--int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa)
-+int cmdq_pkt_jump_abs(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa)
- {
- 	struct cmdq_instruction inst = {};
- 
-@@ -402,7 +402,7 @@ int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa)
- 	inst.value = addr >> shift_pa;
- 	return cmdq_pkt_append_command(pkt, inst);
- }
--EXPORT_SYMBOL(cmdq_pkt_jump);
-+EXPORT_SYMBOL(cmdq_pkt_jump_abs);
- 
++int cmdq_pkt_jump_rel(struct cmdq_pkt *pkt, s32 offset, u8 shift_pa)
++{
++	struct cmdq_instruction inst = { {0} };
++
++	inst.op = CMDQ_CODE_JUMP;
++	inst.value = (u32)offset >> shift_pa;
++	return cmdq_pkt_append_command(pkt, inst);
++}
++EXPORT_SYMBOL(cmdq_pkt_jump_rel);
++
  int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
  {
+ 	struct cmdq_instruction inst = { {0} };
 diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-index 72adfd867cd9..f9b8608cb5d9 100644
+index f9b8608cb5d9..a935cd69d80f 100644
 --- a/include/linux/soc/mediatek/mtk-cmdq.h
 +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-@@ -248,17 +248,18 @@ int cmdq_pkt_poll_mask(struct cmdq_pkt *pkt, u8 subsys,
- int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value);
- 
- /**
-- * cmdq_pkt_jump() - Append jump command to the CMDQ packet, ask GCE
-- *		     to execute an instruction that change current thread PC to
-- *		     a physical address which should contains more instruction.
-+ * cmdq_pkt_jump_abs() - Append jump command to the CMDQ packet, ask GCE
-+ *			 to execute an instruction that change current thread
-+ *			 PC to a absolute physical address which should
-+ *			 contains more instruction.
-  * @pkt:        the CMDQ packet
-- * @addr:       physical address of target instruction buffer
-+ * @addr:       absolute physical address of target instruction buffer
-  * @shift_pa:	shift bits of physical address in CMDQ instruction. This value
-  *		is got by cmdq_get_shift_pa().
-  *
-  * Return: 0 for success; else the error code is returned
+@@ -261,6 +261,20 @@ int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value);
   */
--int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa);
-+int cmdq_pkt_jump_abs(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa);
+ int cmdq_pkt_jump_abs(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa);
  
++/**
++ * cmdq_pkt_jump_rel() - Append jump command to the CMDQ packet, ask GCE
++ *			 to execute an instruction that change current thread
++ *			 PC to a physical address with relative offset. The
++ *			 target address should contains more instruction.
++ * @pkt:	the CMDQ packet
++ * @offset:	relative offset of target instruction buffer from current PC.
++ * @shift_pa:	shift bits of physical address in CMDQ instruction. This value
++ *		is got by cmdq_get_shift_pa().
++ *
++ * Return: 0 for success; else the error code is returned
++ */
++int cmdq_pkt_jump_rel(struct cmdq_pkt *pkt, s32 offset, u8 shift_pa);
++
  /**
   * cmdq_pkt_finalize() - Append EOC and jump command to pkt.
-@@ -376,7 +377,7 @@ static inline int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value)
+  * @pkt:	the CMDQ packet
+@@ -382,6 +396,11 @@ static inline int cmdq_pkt_jump_abs(struct cmdq_pkt *pkt, dma_addr_t addr, u8 sh
  	return -EINVAL;
  }
  
--static inline int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa)
-+static inline int cmdq_pkt_jump_abs(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa)
++static inline int cmdq_pkt_jump_rel(struct cmdq_pkt *pkt, s32 offset, u8 shift_pa)
++{
++	return -EINVAL;
++}
++
+ static inline int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
  {
  	return -EINVAL;
- }
 -- 
 2.34.1
 
