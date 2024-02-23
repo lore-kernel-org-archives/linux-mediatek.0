@@ -4,73 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A163AC5478C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Feb 2024 08:32:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1EFAC5478C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Feb 2024 09:12:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4Wd93sxhlc2idLAjLLVbndwGvcSKmsFYIZ+zl1bK0sc=; b=00xaff0kY3MOZISNSzlNTHHHAH
-	GnWf44eRxvVTetZe3Q7fgVWtp0wHd1RtNp54+6yyLusK+ltok5hgyfvornzxm5JCCkSr49K/JJUQv
-	gQe7lcIOyoj0vCCpnpAlhXgLVxQ2W22B/U41XKLXPwMhQEAZgUk1JdOdnp/sutSxjiTXIuQQ3zK0X
-	Am9Gsd6GtQM1a0F9z05cRgZRGn9wXGb0NHV4kaOfhG8Ie2h71enuvoLk14vNDgrodpkkydJjUMp5e
-	+zWKEWbL6yIdD8mB0tEjSbk84H24HV5vciSuqaIdt6sXpRllcvCfWQ9Kqp3Rv7UHRnh5roacf2xiZ
-	DQitOl2Q==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DXXgc5ooBuiJ0rd83JBNXgx7wSQOERYhBcUIH8zsNHg=; b=cFFVa7GZLT4+beiEPd4aRrHmud
+	bq5aTQ50XLrg61xpZ0AIrfEvmr804cPIUvEuylG0wqQW2J5MGwJC5k2KM0lt1VBPtrG8ct+ur+Rqi
+	sXo0I5Jjv01y9PPlBAhLErZRrFz2NZz3pL6w+a/NGzHuK2YxjDGXRzBKC4mBDdwzJH9zyMAaRS4AY
+	dboJvzPj4f8xWeZh9As+52X8NAzj4WTwNhBZtKnvZR/KAohUzkeNCKgA5Mttn9nUmhl5F3ouo8Yos
+	bCDUZoolgpJDtaBB+i/EfporSybPemfr7htKssOgSZ9T6aNkv6polqAfiI0Yk/bQa+YePeWSYEAwY
+	GltYO/IQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdQym-00000008Ua7-0mCz;
-	Fri, 23 Feb 2024 08:32:27 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rdRay-00000008cYF-2kOJ;
+	Fri, 23 Feb 2024 09:11:59 +0000
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdQvF-00000008TVw-36bM;
-	Fri, 23 Feb 2024 08:29:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708676912;
-	bh=VQInuZKD4QOobr1zpp5OXgZQ5KFOiImoN91p7A5r86s=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=5i0bsycN0PEShA+rSD7rUGII8bzQSP3VSj0KK8cROouRiefY5QXB/DqldGoZe7HDk
-	 gjz+fV+mS+ihmUABzdz7b1RViYN8yTo7R3ygSU6Wq5cxkePYKr8qdouRWIpGr4/Rvt
-	 yquGPG2IACjwKAkfW4JYJLFkectwCRnqBOliXHq7pT3jdx2agOFRs+8dX1SsAnYnBZ
-	 HtynFoRDgUFBCdF5b5fcAORbXQipp7YYHKKyWdQ+3PbDtGG0FUlobpk8ppnPm90UNF
-	 2wo9NZfv6WEOc4OBQWsC/g3pmo4I9P2PhqzyI2/nXaiaogAiAIrr3drEq6wcYoyn6z
-	 iYLH2fEfFCC+g==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 595C237820DB;
-	Fri, 23 Feb 2024 08:28:31 +0000 (UTC)
-Message-ID: <a7e30fbe-6a82-4c26-afef-e7b75c1c0102@collabora.com>
-Date: Fri, 23 Feb 2024 09:28:30 +0100
+	id 1rdRaf-00000008cTJ-27rl
+	for linux-mediatek@lists.infradead.org;
+	Fri, 23 Feb 2024 09:11:38 +0000
+Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-53fbf2c42bfso534931a12.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 23 Feb 2024 01:11:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1708679486; x=1709284286; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=DXXgc5ooBuiJ0rd83JBNXgx7wSQOERYhBcUIH8zsNHg=;
+        b=mJWj/eZ/ot8Vm5wDBhQwwFnd6w4RgzqL8HB8piGqSrSl6kDM5bOMi29QHABVtA+sn2
+         FNRGGd8/F0w8127hogQ7t7uklboIXuctGljyEDKYGOW668fNd9IwEMgO0PrV63Kje1b2
+         QrhPUg3gaIubAG+d6hAfzVcwI1jvyConpM01A=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708679486; x=1709284286;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=DXXgc5ooBuiJ0rd83JBNXgx7wSQOERYhBcUIH8zsNHg=;
+        b=vksS4ZjLTvpH+QSufsz4E4PNCmCfW53Klq+VQ/DPtWuqaXVMSoa0D1ZGJw/9mY4Dcw
+         ZbNjOFPToEO983zsfNc+VQ3kUc6zUon4Tnps0ahrYEDf6sSktwRHkWsID8XuaSoMqZGJ
+         0lFS3HynWgzyhOvpUXerr0Y/uakK0sevlQHZsDdx54efHQMoMqT6+YYAWYQo7PeAOaXC
+         b39ntuFqu04mamOAL43HdUGxU3NaQLyUkQIruaa2GsZbK5ylnAmsPqolOhTLgyaVhdcx
+         maCpLhXSiuDrRNl/XLKJPzaM68JG2Srdy0CJgzy7MQGzVcSyVaFT3c0DWCf9vogdT0/+
+         l6sA==
+X-Forwarded-Encrypted: i=1; AJvYcCU7Mb1UGtu7iXQogKL9K8+f09yEXEt530i/ZbAUsOLqWscfZzAQHy6SjNzDhmwsDzqEAHdCDMDEmNfFZnsualId1YkH/dd/+PBxsfVNq/LD6qDV
+X-Gm-Message-State: AOJu0YzT1URYfxm8BgEHK9YZOMdvltY3sLvH8uhC7/DFdZlA9RJKtkyc
+	hqgr5pixFymWIDMXlhAGbWzO2qQQmFHMysOliv3xedV8BqKVcS5D9Zw72UF+tA==
+X-Google-Smtp-Source: AGHT+IFM39/h0EdoH38mYvLsCTE5nkHkOj5XRH9crL4wqF6Cl8jNvanWO7s0CrDHOhySEbflpAoyvQ==
+X-Received: by 2002:a05:6a20:244e:b0:19b:673d:824d with SMTP id t14-20020a056a20244e00b0019b673d824dmr1490319pzc.46.1708679486692;
+        Fri, 23 Feb 2024 01:11:26 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:e0c9:81eb:a87f:e8e7])
+        by smtp.gmail.com with ESMTPSA id y15-20020a170902b48f00b001dc05535632sm7800365plr.170.2024.02.23.01.11.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 23 Feb 2024 01:11:26 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Ikjoon Jang <ikjn@chromium.org>,
+	devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Weiyi Lu <weiyi.lu@mediatek.com>,
+	Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>
+Subject: [PATCH] arm64: dts: mediatek: mt8183: Add power-domains properity to mfgcfg
+Date: Fri, 23 Feb 2024 17:11:21 +0800
+Message-ID: <20240223091122.2430037-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.44.0.rc0.258.g7320e95886-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3,1/2] media: mediatek: vcodec: adding lock to protect
- decoder context list
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
- =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Nathan Hebert <nhebert@chromium.org>, Irui Wang <irui.wang@mediatek.com>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
- Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20240222092609.31382-1-yunfei.dong@mediatek.com>
- <20240222092609.31382-2-yunfei.dong@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240222092609.31382-2-yunfei.dong@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240223_002847_924123_84CBFC2D 
-X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-CacheID: sfid-20240223_011134_319613_9CD5681C 
+X-CRM114-Status: UNSURE (   9.45  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,55 +94,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/02/24 10:26, Yunfei Dong ha scritto:
-> The ctx_list will be deleted when scp getting unexpected behavior, then the
-> ctx_list->next will be NULL, the kernel driver maybe access NULL pointer in
-> function vpu_dec_ipi_handler when going through each context, then reboot.
-> 
-> Need to add lock to protect the ctx_list to make sure the ctx_list->next isn't
-> NULL pointer.
-> 
-> Hardware name: Google juniper sku16 board (DT)
-> pstate: 20400005 (nzCv daif +PAN -UAO -TCO BTYPE=--)
-> pc : vpu_dec_ipi_handler+0x58/0x1f8 [mtk_vcodec_dec]
-> lr : scp_ipi_handler+0xd0/0x194 [mtk_scp]
-> sp : ffffffc0131dbbd0
-> x29: ffffffc0131dbbd0 x28: 0000000000000000
-> x27: ffffff9bb277f348 x26: ffffff9bb242ad00
-> x25: ffffffd2d440d3b8 x24: ffffffd2a13ff1d4
-> x23: ffffff9bb7fe85a0 x22: ffffffc0133fbdb0
-> x21: 0000000000000010 x20: ffffff9b050ea328
-> x19: ffffffc0131dbc08 x18: 0000000000001000
-> x17: 0000000000000000 x16: ffffffd2d461c6e0
-> x15: 0000000000000242 x14: 000000000000018f
-> x13: 000000000000004d x12: 0000000000000000
-> x11: 0000000000000001 x10: fffffffffffffff0
-> x9 : ffffff9bb6e793a8 x8 : 0000000000000000
-> x7 : 0000000000000000 x6 : 000000000000003f
-> x5 : 0000000000000040 x4 : fffffffffffffff0
-> x3 : 0000000000000020 x2 : ffffff9bb6e79080
-> x1 : 0000000000000010 x0 : ffffffc0131dbc08
-> Call trace:
-> vpu_dec_ipi_handler+0x58/0x1f8 [mtk_vcodec_dec (HASH:6c3f 2)]
-> scp_ipi_handler+0xd0/0x194 [mtk_scp (HASH:7046 3)]
-> mt8183_scp_irq_handler+0x44/0x88 [mtk_scp (HASH:7046 3)]
-> scp_irq_handler+0x48/0x90 [mtk_scp (HASH:7046 3)]
-> irq_thread_fn+0x38/0x94
-> irq_thread+0x100/0x1c0
-> kthread+0x140/0x1fc
-> ret_from_fork+0x10/0x30
-> Code: 54000088 f94ca50a eb14015f 54000060 (f9400108)
-> ---[ end trace ace43ce36cbd5c93 ]---
-> Kernel panic - not syncing: Oops: Fatal exception
-> SMP: stopping secondary CPUs
-> Kernel Offset: 0x12c4000000 from 0xffffffc010000000
-> PHYS_OFFSET: 0xffffffe580000000
-> CPU features: 0x08240002,2188200c
-> Memory Limit: none
-> 
-> Fixes: 655b86e52eac ("media: mediatek: vcodec: Fix possible invalid memory access for decoder")
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+From: Ikjoon Jang <ikjn@chromium.org>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+mfgcfg clock is under MFG_ASYNC power domain.
+
+Fixes: e526c9bc11f8 ("arm64: dts: Add Mediatek SoC MT8183 and evaluation board dts and Makefile")
+Fixes: 37fb78b9aeb7 ("arm64: dts: mediatek: Add mt8183 power domains controller")
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+This patch is long overdue. Could we merge it for fixes for this or the
+next release?
+
+Changes since v2:
+- Rebased onto current tree
+- Added Fixes tags
+- Fix up subject prefix
+
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 93dfbf130231..774ae5d9143f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1637,6 +1637,7 @@ mfgcfg: syscon@13000000 {
+ 			compatible = "mediatek,mt8183-mfgcfg", "syscon";
+ 			reg = <0 0x13000000 0 0x1000>;
+ 			#clock-cells = <1>;
++			power-domains = <&spm MT8183_POWER_DOMAIN_MFG_ASYNC>;
+ 		};
+ 
+ 		gpu: gpu@13040000 {
+-- 
+2.44.0.rc0.258.g7320e95886-goog
 
 
