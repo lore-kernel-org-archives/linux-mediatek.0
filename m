@@ -4,76 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6794EC54E4A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Feb 2024 18:12:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99DB2C54798
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Feb 2024 21:24:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ILefxtgAPagsTFbbHGD101YE056RAQ+yWYa4OkntnYs=; b=gELAnwumrkUoVSWH30bho8dc6I
-	3f4j9hY+biJLNvEeO8cm1cSkyFhG3EAph+kA4PA669vCAMvuE2erGf55CrO26FIrA7H7JjaiYXBIx
-	JFYq43y8YNUq8SqTEkOM52MUJeGvAIOnFGGvErhbaZZ2QljVP3tqsN4SFhmKJDRt7eELFQ0vOAzhy
-	MqYJN8oW21jffmgT5EtewjqZu2zWbaWoBNd1QCH+LWs5JP+9CxCPCVmaH70DIGXqnVo3gBzlcTUps
-	uDeliZxWw1I8cRQjtqs9zaLFGzSB9eqacGDVwkJ1/87EnNkjRZUslUdIqndHxqc6db5wc7U9yv7Dn
-	tHwssS9w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0M8Ho4hghHsHT9QadaKTfyu0riwtgTi9mQkpLqOU5Dg=; b=UNs1Z9pq29iBs8zopb4luxFtKk
+	FErh/nbbc/+SVRcKdbUVFvX2G2NcVcnFgYXrBelKmlLJdCqmfYsv65u1cCDGvr9uNcez2dephiu9p
+	yYl2QLDHUEh80slMe5XqhtLJhgXvATAy7mven6XQi3LbjYRog54AicwaefaZ0+DZkpFCTptIgD/jE
+	LX8IPDDSKArdilKDs0I9XOt5cw5fDlRQ2WT5BFx5vIZlYBiPtEVbc7C7C0QBzfrpbpAClhfSQr3LI
+	LmnTnFqQ7oYW8uHrIA5rHLJGZ6ydBw0E/7RjrralBrveN5Sl4QY83EEHvR1mTQUC37kCEcFqpT8tw
+	g8ZDC8uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rda28-0000000Aln6-2wh1;
-	Fri, 23 Feb 2024 18:12:29 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rdd1w-0000000BKBt-47mW;
+	Fri, 23 Feb 2024 21:24:30 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rda1a-0000000AlcR-075X;
-	Fri, 23 Feb 2024 18:11:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708711898;
-	bh=L4tt6x3R1Bj+GEMVgCO8O7Sp0dNZ/KFpCcL3E8B8s2Y=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=zQXCBHZPh7mu5cqATdQZMEpfu03nZ0cxfs/33QRKuYevVD3XePgEFuEnyDdPQuI3z
-	 uXenWNl+xWNLfrIJUvYUEKuKCoHO4tP9WTokWFWTVTzULDxTgSxaqsltOCStxmK1HC
-	 Qrg5jBgAo4Kti3VZieI2i4Nr/c1o1IleXvqaSgM3TvJL7ZTr/qoBZgKXMQvyEzPAdL
-	 4O9X0asl6bpxnN/icu7M8oDjQLq1aaZqqXKoL1LDuOCqiRSvOAYnL/Aax3VDtTmrYS
-	 qUl5Ezt0hlgPlqpaX8uLl8giNtIbsiXtTgLabIgOEaZrczDugsl1NTl09wbVq/gWO/
-	 BpTPk6Q60CJiQ==
-Received: from nicolas-tpx395.localdomain (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 604E237820E3;
-	Fri, 23 Feb 2024 18:11:36 +0000 (UTC)
-Message-ID: <176094a180c0535119d487e6cf7c886c376b7d60.camel@collabora.com>
-Subject: Re: [PATCH v3,2/2] media: mediatek: vcodec: adding lock to protect
- encoder context list
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, =?ISO-8859-1?Q?N=EDcolas?= "F .
- R . A . Prado" <nfraprado@collabora.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>, 
- Irui Wang <irui.wang@mediatek.com>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
- <frkoenig@chromium.org>,  Daniel Vetter <daniel@ffwll.ch>, Steve Cho
- <stevecho@chromium.org>, linux-media@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Date: Fri, 23 Feb 2024 13:11:32 -0500
-In-Reply-To: <20240222092609.31382-3-yunfei.dong@mediatek.com>
-References: <20240222092609.31382-1-yunfei.dong@mediatek.com>
-	 <20240222092609.31382-3-yunfei.dong@mediatek.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=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
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.50.4 (3.50.4-1.fc39) 
+	id 1rdd1k-0000000BK5W-1e4T
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 23 Feb 2024 21:24:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=0M8Ho4hghHsHT9QadaKTfyu0riwtgTi9mQkpLqOU5Dg=; b=Rs9PgNkUidlLIj+i0PgtsGJ8G3
+	76stOhbHwh6DFz8kW3+ZP1hXvOeJfvtpsGKhEZFxNiREpnzL+h4fzaxd0LNRyfIg/ufk2x14cjkdx
+	GFpdedpdiu+WvduOSnzXyZv/v/QvM9ymKAylmT3zbdBeStwVodq6dG8ioaEqnBJacSntZ/aKGx+07
+	jdwIlbrMz2XKXeRctUk7sidC5fQZAZaooeRjxGvaidcVgrdav6yWv4uYpfXrFyHtB/tFKb+kXbe7a
+	upoV9E+ehaQByI5iuirw/S0apd9G/nuGEXgb/J3t5l1o8nK8CD4Bcg8AFvN8BOoC3MkSbUi9BmPJx
+	dOIYBNLA==;
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rdd1f-000000008bG-17OU
+	for linux-mediatek@lists.infradead.org;
+	Fri, 23 Feb 2024 21:24:14 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-6e4ea90762aso528039b3a.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 23 Feb 2024 13:24:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1708723449; x=1709328249; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=0M8Ho4hghHsHT9QadaKTfyu0riwtgTi9mQkpLqOU5Dg=;
+        b=QdPwiH55TJH40aMrYMsUN2zKMhmSZjm6X0psW2HmpSPZhZtRNM9dEbsrWVymxz1G9b
+         a/OLGu0WmX/CWOPyMz6sBFx24oQke6yk9qIReM9YIqyX+btGFgKGDek6rYninr5vTtY5
+         mGDnJkgYQ4Qu2bRnrzwbZ35Zau65UiQqmgO2g=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708723449; x=1709328249;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=0M8Ho4hghHsHT9QadaKTfyu0riwtgTi9mQkpLqOU5Dg=;
+        b=fT0bzJ/Y8K3dJJBlIqjiwCFvonDSx0ciav3mz6HEtw5+HFE9UZQW1+QUhxWY3akt5l
+         9ct24mDk9tLxK4+upveZubrHb+POGHiyq4wNovWNMHoM3P0FrBuhvL4w50DEYiESeelB
+         A2edkr/3gzMgDGb1tnSWMD03kjon9BYNlNXRNhvL3JODrT471jg1bxOpUbg8faxJi7LP
+         6iaylVRFrVsMGeMsDjN8ntGyIxFmESf7ohNxcFPbGSMUezCj/bUfgn/BCnd62cbyQwTn
+         S3vV/gbQUdCh8xYlG1dnsCAbgzZMfE2En24/Pv0/FcbXdys6dBKMDORGFn8DyLeo+tVB
+         pLhQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWJXsf/ziT4tLEMsaSYeEiUkc54NrO/s1eeiJxg12xBsNubPqmH4pazkvyaLLNqPJMbdZnxzV8GY9J5ApDX9CfJpKfxBn0j7tKSnOO1/4aPtyRA
+X-Gm-Message-State: AOJu0Yy7XdGWJ9nh7b/Jt6Kx/2dF+9tH5WSIXCRcOhQHhSI3bsjzlGS7
+	63R0BeCvSfuNrqncD34YOpC6eGdG3+ioZ488F/kDzWH5QKZanKSoC6sXvVywn2VrjkYEu78n0cY
+	=
+X-Google-Smtp-Source: AGHT+IF/iOCf8G84HtjaG5OPfPAZChzYV76riZA2G3uYSX6UcLKBg0B+sc+slfUuIZE19uyFrsPkxw==
+X-Received: by 2002:a17:902:7b87:b0:1d9:a2b1:8693 with SMTP id w7-20020a1709027b8700b001d9a2b18693mr1106969pll.23.1708723449437;
+        Fri, 23 Feb 2024 13:24:09 -0800 (PST)
+Received: from hsinyi.sjc.corp.google.com ([2620:15c:9d:2:8ff9:a089:c05c:9af])
+        by smtp.gmail.com with ESMTPSA id b15-20020a170902d50f00b001db4b3769f6sm11970413plg.280.2024.02.23.13.24.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 23 Feb 2024 13:24:09 -0800 (PST)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] drm/mediatek: Fix a null pointer crash in mtk_drm_crtc_finish_page_flip
+Date: Fri, 23 Feb 2024 13:23:29 -0800
+Message-ID: <20240223212404.3709690-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.44.0.rc0.258.g7320e95886-goog
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240223_101154_277690_C98FE085 
-X-CRM114-Status: GOOD (  19.02  )
+X-CRM114-CacheID: sfid-20240223_212412_839102_3AD96C1E 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,132 +109,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le jeudi 22 f=C3=A9vrier 2024 =C3=A0 17:26 +0800, Yunfei Dong a =C3=A9crit=
-=C2=A0:
-> The ctx_list will be deleted when scp getting unexpected behavior, then t=
-he
-> ctx_list->next will be NULL, the kernel driver maybe access NULL pointer =
-in
-> function vpu_enc_ipi_handler when going through each context, then reboot=
-.
->=20
-> Need to add lock to protect the ctx_list to make sure the ctx_list->next =
-isn't
-> NULL pointer.
->=20
-> Fixes: 1972e32431ed ("media: mediatek: vcodec: Fix possible invalid memor=
-y access for encoder")
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+It's possible that mtk_crtc->event is NULL in
+mtk_drm_crtc_finish_page_flip().
 
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+pending_needs_vblank value is set by mtk_crtc->event, but in
+mtk_drm_crtc_atomic_flush(), it's is not guarded by the same
+lock in mtk_drm_finish_page_flip(), thus a race condition happens.
 
-> ---
->  .../platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c      | 4 ++--
->  .../platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c    | 5 +++++
->  .../platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h    | 2 ++
->  drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c | 2 ++
->  4 files changed, 11 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_=
-vpu.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-> index 9a11a2c248045..8d578b6902148 100644
-> --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-> +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-> @@ -73,12 +73,12 @@ static void mtk_vcodec_vpu_reset_enc_handler(void *pr=
-iv)
-> =20
->  	dev_err(&dev->plat_dev->dev, "Watchdog timeout!!");
-> =20
-> -	mutex_lock(&dev->dev_mutex);
-> +	mutex_lock(&dev->dev_ctx_lock);
->  	list_for_each_entry(ctx, &dev->ctx_list, list) {
->  		ctx->state =3D MTK_STATE_ABORT;
->  		mtk_v4l2_vdec_dbg(0, ctx, "[%d] Change to state MTK_STATE_ABORT", ctx-=
->id);
->  	}
-> -	mutex_unlock(&dev->dev_mutex);
-> +	mutex_unlock(&dev->dev_ctx_lock);
->  }
-> =20
->  static const struct mtk_vcodec_fw_ops mtk_vcodec_vpu_msg =3D {
-> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_en=
-c_drv.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv=
-.c
-> index 5db2bf3db4c54..29524cd59ce8b 100644
-> --- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-> +++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-> @@ -177,7 +177,9 @@ static int fops_vcodec_open(struct file *file)
->  	mtk_v4l2_venc_dbg(2, ctx, "Create instance [%d]@%p m2m_ctx=3D%p ",
->  			  ctx->id, ctx, ctx->m2m_ctx);
-> =20
-> +	mutex_lock(&dev->dev_ctx_lock);
->  	list_add(&ctx->list, &dev->ctx_list);
-> +	mutex_unlock(&dev->dev_ctx_lock);
-> =20
->  	mutex_unlock(&dev->dev_mutex);
->  	mtk_v4l2_venc_dbg(0, ctx, "%s encoder [%d]", dev_name(&dev->plat_dev->d=
-ev),
-> @@ -212,7 +214,9 @@ static int fops_vcodec_release(struct file *file)
->  	v4l2_fh_exit(&ctx->fh);
->  	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
-> =20
-> +	mutex_lock(&dev->dev_ctx_lock);
->  	list_del_init(&ctx->list);
-> +	mutex_unlock(&dev->dev_ctx_lock);
->  	kfree(ctx);
->  	mutex_unlock(&dev->dev_mutex);
->  	return 0;
-> @@ -294,6 +298,7 @@ static int mtk_vcodec_probe(struct platform_device *p=
-dev)
-> =20
->  	mutex_init(&dev->enc_mutex);
->  	mutex_init(&dev->dev_mutex);
-> +	mutex_init(&dev->dev_ctx_lock);
->  	spin_lock_init(&dev->irqlock);
-> =20
->  	snprintf(dev->v4l2_dev.name, sizeof(dev->v4l2_dev.name), "%s",
-> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_en=
-c_drv.h b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv=
-.h
-> index a042f607ed8d1..0bd85d0fb379a 100644
-> --- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-> +++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-> @@ -178,6 +178,7 @@ struct mtk_vcodec_enc_ctx {
->   *
->   * @enc_mutex: encoder hardware lock.
->   * @dev_mutex: video_device lock
-> + * @dev_ctx_lock: the lock of context list
->   * @encode_workqueue: encode work queue
->   *
->   * @enc_irq: h264 encoder irq resource
-> @@ -205,6 +206,7 @@ struct mtk_vcodec_enc_dev {
->  	/* encoder hardware mutex lock */
->  	struct mutex enc_mutex;
->  	struct mutex dev_mutex;
-> +	struct mutex dev_ctx_lock;
->  	struct workqueue_struct *encode_workqueue;
-> =20
->  	int enc_irq;
-> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c=
- b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-> index 84ad1cc6ad171..51bb7ee141b9e 100644
-> --- a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-> @@ -47,12 +47,14 @@ static bool vpu_enc_check_ap_inst(struct mtk_vcodec_e=
-nc_dev *enc_dev, struct ven
->  	struct mtk_vcodec_enc_ctx *ctx;
->  	int ret =3D false;
-> =20
-> +	mutex_lock(&enc_dev->dev_ctx_lock);
->  	list_for_each_entry(ctx, &enc_dev->ctx_list, list) {
->  		if (!IS_ERR_OR_NULL(ctx) && ctx->vpu_inst =3D=3D vpu) {
->  			ret =3D true;
->  			break;
->  		}
->  	}
-> +	mutex_unlock(&enc_dev->dev_ctx_lock);
-> =20
->  	return ret;
->  }
+Consider the following case:
+
+CPU1                              CPU2
+step 1:
+mtk_drm_crtc_atomic_begin()
+mtk_crtc->event is not null,
+                                  step 1:
+                                  mtk_drm_crtc_atomic_flush:
+                                  mtk_drm_crtc_update_config(
+                                      !!mtk_crtc->event)
+step 2:
+mtk_crtc_ddp_irq ->
+mtk_drm_finish_page_flip:
+lock
+mtk_crtc->event set to null,
+pending_needs_vblank set to false
+unlock
+                                  pending_needs_vblank set to true,
+
+                                  step 2:
+                                  mtk_crtc_ddp_irq ->
+                                  mtk_drm_finish_page_flip called again,
+                                  pending_needs_vblank is still true
+                                  //null pointer
+
+Instead of guarding the entire mtk_drm_crtc_atomic_flush(), it's more
+efficient to just check if mtk_crtc->event is null before use.
+
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
+---
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index db43f9dff912..d645b85f9721 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -95,11 +95,13 @@ static void mtk_drm_crtc_finish_page_flip(struct mtk_drm_crtc *mtk_crtc)
+ 	struct drm_crtc *crtc = &mtk_crtc->base;
+ 	unsigned long flags;
+ 
+-	spin_lock_irqsave(&crtc->dev->event_lock, flags);
+-	drm_crtc_send_vblank_event(crtc, mtk_crtc->event);
+-	drm_crtc_vblank_put(crtc);
+-	mtk_crtc->event = NULL;
+-	spin_unlock_irqrestore(&crtc->dev->event_lock, flags);
++	if (mtk_crtc->event) {
++		spin_lock_irqsave(&crtc->dev->event_lock, flags);
++		drm_crtc_send_vblank_event(crtc, mtk_crtc->event);
++		drm_crtc_vblank_put(crtc);
++		mtk_crtc->event = NULL;
++		spin_unlock_irqrestore(&crtc->dev->event_lock, flags);
++	}
+ }
+ 
+ static void mtk_drm_finish_page_flip(struct mtk_drm_crtc *mtk_crtc)
+-- 
+2.44.0.rc0.258.g7320e95886-goog
 
 
