@@ -4,76 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABDA2C54E41
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Feb 2024 12:27:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B43AC54798
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Feb 2024 14:32:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wCpS/jUTYLOZ0fDcQmJIwIBOst6krKf4KWBNveRLQuU=; b=dFMnWR/Qs/86E1rhDGyb+x9rFk
-	/kkrGVA3shpT94ala3ui7D2ZvLxIs2w1rLSDOrYzz14NJJDHsWygzDiFEYZr6X/tatAEAsG0EIV43
-	iOcsCkwRnwDiRjon/3NOVXQsLkBbKzOvn72mD3jUBxHB5iV0S3LTFj5FQHcwuLgazAjzSTBNs9Yyy
-	YQ98o5lpUNQdJLDcTgaYsBI1jvBpWAqJCfHsPhCCdZkEqbIklinZ1fHwBkgqTNJ+IT76crpN9R1lk
-	o3o8hmQan1Of5JuQEueozKcHWFEheC6ZzRFqQpOCXukkdv9iemWpYfrmCvQxhox+71SOwqB2yqALB
-	CFLLI+Og==;
+	bh=igE7RetRUozVhxZmLANY7vcB5fZZoXzt8fVMjisZk9M=; b=op/1WqAsTJuSoIDtdpr1xSVEaT
+	pfEfLmBULNuk0wRvuSyjvVjSHt/VCwO+Wg8xsHHmWJ06PsKMrAQYhBM2b4eLZ0Ae6jsU9W0qFuqgC
+	9XPO2cdlOLxb10MzG57tT9EGY3H554AvMao+Le8D5QwcuaNqp3THdZnusvKSFCrV/5Bg9og0vgitf
+	QHOLsOzNq4eXJ3ATZf7QZRKlBmjxTaorHYsCGruhBB3cV2F5y6csO+omOfxmDjVKIWxgJxLyMhDJ/
+	EG8/yw61sq0OxnPp3YW3GXLFGsX2ZP5TnxNTR+37hc07L3d9Qy8p3ETo4rox1ZpsJ/0K9g4aUufQr
+	E2pC7bJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdUdo-00000009JU0-3ene;
-	Fri, 23 Feb 2024 12:27:00 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rdWap-00000009lUr-1SiP;
+	Fri, 23 Feb 2024 14:32:03 +0000
+Received: from mx3.molgen.mpg.de ([141.14.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdUdj-00000009JOS-2lUs;
-	Fri, 23 Feb 2024 12:26:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id A51CBCE2B9D;
-	Fri, 23 Feb 2024 12:26:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7BB87C433C7;
-	Fri, 23 Feb 2024 12:26:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708691212;
-	bh=m//cWAePIv4cTZDYri/URPe8qx3PAjrr8Fa4bEJ/jYw=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=iZSQ/HTX2hNdNLIy3vkQ2Mhcy7B3AcZ4GJzTIslwj7FQ9QGqb8MtlDta23N9Vwe3y
-	 lrts2nTwptGS/hOtaF7+eA6l3i8xvLLu6d2mb9F1zdiv+n1cHntDc/nedbnOWYAeuB
-	 01Ncv/gZk50JdISyyt5DYanwA69wt70ASDNE7D21By/0wkVq8FBhYVnPDaioShYGTT
-	 ln5E16eNjwSVj0tLN6ftkdewOjFQZiPXKGfRPY3lmXnP/RZL27ltagxjwOgUiJUg0D
-	 SOg1MY5nYbXlOq/NQKd0Zr7V5psWedQv0i0fHhCIfcRvzKR9DryEmp+ZWCkAftnTkP
-	 jlPDUqkd21I/w==
-Date: Fri, 23 Feb 2024 13:26:41 +0100
-From: Marek =?UTF-8?B?QmVow7pu?= <kabel@kernel.org>
-To: andy.shevchenko@gmail.com, George Stark <gnstark@salutedevices.com>
-Cc: linux-kernel@vger.kernel.org, Hans de Goede <hdegoede@redhat.com>, Matti
- Vaittinen <mazziesaccount@gmail.com>, Linus Walleij
- <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, Lucas De
- Marchi <lucas.demarchi@intel.com>, Oded Gabbay <ogabbay@kernel.org>, Thomas
- =?UTF-8?B?SGVsbHN0csO2bQ==?= <thomas.hellstrom@linux.intel.com>, Maarten
- Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
- <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Aleksandr Mezin
- <mezin.alexander@gmail.com>, Jean Delvare <jdelvare@suse.com>, Guenter
- Roeck <linux@roeck-us.net>, Pavel Machek <pavel@ucw.cz>, Lee Jones
- <lee@kernel.org>, Sebastian Reichel <sre@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, linux-gpio@vger.kernel.org,
- intel-xe@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- linux-hwmon@vger.kernel.org, linux-leds@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] devm-helpers: Add resource managed version of mutex
- init
-Message-ID: <20240223132641.3e2ba16c@dellmb>
-In-Reply-To: <Zde_s8iecR2ArKjC@surfacebook.localdomain>
-References: <20240222145838.12916-1-kabel@kernel.org>
-	<Zde_s8iecR2ArKjC@surfacebook.localdomain>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.39; x86_64-pc-linux-gnu)
+	id 1rdWaS-00000009lPz-39G8
+	for linux-mediatek@lists.infradead.org;
+	Fri, 23 Feb 2024 14:31:49 +0000
+Received: from [141.14.220.34] (g34.guest.molgen.mpg.de [141.14.220.34])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: pmenzel)
+	by mx.molgen.mpg.de (Postfix) with ESMTPSA id D53F261E5FE05;
+	Fri, 23 Feb 2024 15:30:34 +0100 (CET)
+Message-ID: <de2d4d3c-1a4e-4399-aa96-9e8217621fa7@molgen.mpg.de>
+Date: Fri, 23 Feb 2024 15:30:34 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] linux-firmware: update firmware for mediatek bluetooth
+ chip (MT7921)
+Content-Language: en-US
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: Josh Boyer <jwboyer@kernel.org>, David Woodhouse <dwmw2@infradead.org>,
+ Ben Hutchings <ben@decadent.org.uk>, Marcel Holtmann <marcel@holtmann.org>,
+ Johan Hedberg <johan.hedberg@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Deren Wu <deren.Wu@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
+ KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
+ Steve Lee <steve.lee@mediatek.com>, linux-bluetooth@vger.kernel.org,
+ linux-firmware@kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20240223095044.7824-1-chris.lu@mediatek.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20240223095044.7824-1-chris.lu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240223_042655_923674_AFB28A6B 
-X-CRM114-Status: GOOD (  13.05  )
+X-CRM114-CacheID: sfid-20240223_063147_042489_CC5DB010 
+X-CRM114-Status: GOOD (  15.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,34 +72,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 22 Feb 2024 23:42:11 +0200
-andy.shevchenko@gmail.com wrote:
+Dear Chris,
 
-> Thu, Feb 22, 2024 at 03:58:37PM +0100, Marek Beh=C3=BAn kirjoitti:
-> > A few drivers are doing resource-managed mutex initialization by
-> > implementing ad-hoc one-liner mutex dropping functions and using them
-> > with devm_add_action_or_reset(). Help drivers avoid these repeated
-> > one-liners by adding managed version of mutex initialization.
-> >=20
-> > Use the new function devm_mutex_init() in the following drivers:
-> >   drivers/gpio/gpio-pisosr.c
-> >   drivers/gpio/gpio-sim.c
-> >   drivers/gpu/drm/xe/xe_hwmon.c
-> >   drivers/hwmon/nzxt-smart2.c
-> >   drivers/leds/leds-is31fl319x.c
-> >   drivers/power/supply/mt6370-charger.c
-> >   drivers/power/supply/rt9467-charger.c =20
->=20
-> Pardon me, but why?
->=20
-> https://lore.kernel.org/linux-leds/20231214173614.2820929-1-gnstark@salut=
-edevices.com/
->=20
-> Can you cooperate, folks, instead of doing something independently?
 
-Thanks Andy for pointing to George's patch series.
+Thank you for your patch. Some nits.
 
-I can drop the mutex_init() part and add just the debugfs part.
+Am 23.02.24 um 10:50 schrieb Chris Lu:
+> Update binary firmware for MT7921 BT devices.
+> 
+> File: mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin
+> Version: 20240219111427
 
-Marek
+The title is very unspecific for `git log --oneline`. Could you mention 
+the version number in there? Maybe:
+
+linux-firmware: Update MediaTek MT7921 Bluetooth chip FW to 20240219111427
+
+Also, could you please add a change-log of what changed between version 
+20231109191416 and 20240219111427?
+
+> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+> ---
+>   WHENCE                                  |   2 +-
+>   mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin | Bin 532206 -> 530926 bytes
+>   2 files changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/WHENCE b/WHENCE
+> index 576f8d73..f7dcc6db 100644
+> --- a/WHENCE
+> +++ b/WHENCE
+> @@ -5645,7 +5645,7 @@ Licence: Redistributable. See LICENCE.mediatek for details.
+>   Driver: mt7921 - MediaTek MT7921 bluetooth chipset
+>   
+>   File: mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin
+> -Version: 20231109191416
+> +Version: 20240219111427
+>   
+>   Licence: Redistributable. See LICENCE.mediatek for details.
+>   
+> diff --git a/mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin b/mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin
+> index c7a96755b122ef7aa601eb40fbd7abb9ca85a545..34b791b7cc66780a80a18a631a9d578b2a744546 100644
+> GIT binary patch
+> literal 530926
+
+[…]
+
+
+Kind regards,
+
+Paul
 
