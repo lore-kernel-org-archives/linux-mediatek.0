@@ -4,67 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB987C48BF6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 11:16:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BC34C54E49
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 11:32:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xf4b9AvRUDXnujMAQaJtLtfqbUshCF5QycvaFtGdBY4=; b=199eQPPKSLwc8ymvpmkB6X/3eg
-	U74ErsZ4IzQkKeMPiJ8wLJ6IKiWMHviOzLwx0RZ2rMiyVj9Y/9+6gBHDGpEgInoIIVgEu9tY/zxtl
-	ttU3GZsQytKDRr8/ytZw1xmlaLAnub9BM9JSUA4a+3ZXIT7R7MVTS46B1llWkmXOoUxcCQQLAscdY
-	vlz19LJeDOq4KnerQq76P9XiIwcmW6KWNHWttZ27TLZdZqe7h3vskTge79HQvrZrGZeXcoJ1jxvAu
-	2/+lJoc4rXrqUASCFqNUHhy82dOfZNg3v1f/f0TgP6x7Rid+D/h5UWceXIpdn/iO85qQbzpq1hyVA
-	fTwSMCOg==;
+	bh=59M376lOs4RpQY+QsNbUdwZI7JBMTstkeh/+AItoW50=; b=MWM2u7bqaCnTW0f2eL26xP7u3w
+	eGhbEB9jrgKCyOaxiA4TEBVYtSXpdQ67rjzK5Juyq/E8r03goDUDN3kDsRWfmxKgeMFm5eCwF+swj
+	SIhmkKIatvbzPMcdx9y9tS+9Lor781hXGNK56X0jxNPpyh8xjp8OxKq8FYYNafkr5HeHtBwbYj59B
+	ACKEKCj2nODlTd5mM2UphGp0ArDPQ4CnoVpPaOCQdsJxDo0ekSJfSG+xodBZT9nVcb2odChd+I7Gv
+	71Rr49SBdQvtccefrzvYrCxw9G/1SkYLjP0kfVl/jlIe2BsUyUpY1fvfRgGseSVNgxzRf06FeBuvj
+	YIQCyFFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reYy2-00000000J2Q-3LZh;
-	Mon, 26 Feb 2024 11:16:18 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1reZDe-00000000LJr-35F5;
+	Mon, 26 Feb 2024 11:32:26 +0000
+Received: from mail-ua1-x92f.google.com ([2607:f8b0:4864:20::92f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reYxy-00000000Izm-1kCG;
-	Mon, 26 Feb 2024 11:16:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708946172;
-	bh=rbz5V7dAp9UKMWAJ4NGuXVlKWd6zmgzIZmH1IQn+dU8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fYY39ux/ltUowjNs1wv42h9v43ezzKaVupXe98joJu0hgeKUs2czrOscxzdORgCdZ
-	 IFV2243rdAeXgBtotTPscvVH86qVHBtgVOyrdb7VUtkxPwT1q5ziFR0+NIb+IDcfU1
-	 4pZI6L8JJXikYDsbh1UwI/xr5S8wKKkQNq8/+z/g6o5pN1IBjBqOidmvvFv5Ropu96
-	 U+NEySA/0sP1Yid5WGkDCObo/XSg/lgrppi5LNCPTtP3vOJ7HGmBN2wbzVsf+PKOOQ
-	 km5Xvo3XaTW5FeD6o5AIdhFZnVi4mfNrI4pDL4A/iPLCEewonNNCtzpsFFr4vZfNk5
-	 8ZqdJ9Nktpmrg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 53D663780022;
-	Mon, 26 Feb 2024 11:16:11 +0000 (UTC)
-Message-ID: <e0e6febf-1045-49f8-a200-8bc095b0fa50@collabora.com>
-Date: Mon, 26 Feb 2024 12:16:10 +0100
+	id 1reZDZ-00000000LHk-44wz
+	for linux-mediatek@lists.infradead.org;
+	Mon, 26 Feb 2024 11:32:24 +0000
+Received: by mail-ua1-x92f.google.com with SMTP id a1e0cc1a2514c-7ce55932330so1502449241.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Feb 2024 03:32:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1708947140; x=1709551940; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=59M376lOs4RpQY+QsNbUdwZI7JBMTstkeh/+AItoW50=;
+        b=bWJVQHQx5grWk1ojDo0R/PnguT6XX0IPIlrAk6XhHA1/70/XGyg16Qr/REO2oNAo/L
+         zz1486iOrB85hlOZ3tj+wxA2i9Z8bMAYfHWO/rOphaZ6VYNkU7cD/GdI3y1uqzevnMTV
+         yhhx5gTOUq1YJau7vpyrqhRa0IEGIsSeCpiOU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708947140; x=1709551940;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=59M376lOs4RpQY+QsNbUdwZI7JBMTstkeh/+AItoW50=;
+        b=kTi3pCgt4OCyeG6CR0lOgh/begQFbrxj//nZKd8T3T/Jp81rUCxNGEQJK/SeISuvS2
+         3nl6OUddbkN9gCxhT2MISMu+3ZY9qo8azY1qTwn6MDsaJxClJFIulPagFUMjKnS4oos7
+         RNWxhJ5ux7aQAFK3m9NTFlp1X8nNh+MR3EGrDqXBCVtpArW0yW4OW8r5RyWzlOKLBLdT
+         jBnyObbbYoKJMtXos/iFiW4qWrjJJSHtESKYBVlN35C1LChSqpc9EbLoZAqQFWEhefxc
+         wgWfuW4dkiN8QhTzhvs14Z5X9mG41gknO3bz6PDvGLXCyAbcHa9S+B/6aB7aO4j+JkEz
+         PZYg==
+X-Forwarded-Encrypted: i=1; AJvYcCWlS5LIRJTogHeFJqS1nHTpKg9Pe2KtwwDF/fOlqngKa2MITIb3RpVeHv6CigpD+meq4Y90DNf2g9FSSag099iEm/Ztky6PHyxh+iSPu4fuW2pv
+X-Gm-Message-State: AOJu0Yw4wtLhqXBQSCA89V7kDQF7e76qsWdL0j38Q6k4TfDuw14htW8v
+	dcQ+drVUtv3+EndavD3BQrwtzX58zL95HXFMOtha0BDTWuC1IBYBrcZhSL4kcca2p40LonIf2Iy
+	N7w==
+X-Google-Smtp-Source: AGHT+IE6aWVrqzA8T8gKm2Xx32jUFj8RqG7EoSN5K8erpfZdUjZsLbLJHUWVGkCZB5kmiSJHnXFN9Q==
+X-Received: by 2002:a05:6102:9ba:b0:471:bee4:4ff0 with SMTP id f26-20020a05610209ba00b00471bee44ff0mr3183368vsb.32.1708947140386;
+        Mon, 26 Feb 2024 03:32:20 -0800 (PST)
+Received: from mail-ua1-f41.google.com (mail-ua1-f41.google.com. [209.85.222.41])
+        by smtp.gmail.com with ESMTPSA id ij9-20020a0561025e8900b0046d2b34617bsm891399vsb.28.2024.02.26.03.32.19
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 26 Feb 2024 03:32:19 -0800 (PST)
+Received: by mail-ua1-f41.google.com with SMTP id a1e0cc1a2514c-7d5cbc4a585so923179241.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Feb 2024 03:32:19 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUJ753Q4n/Z8A8fGT72cJ9LLzNO7S2Svf625GtUHropVAEzrvgBMip2xl1iT9yhxjMQ9qv+pI17fRsIhKxjnzC6P9TJbxqSDC9Gvn80+9Z5pPcv
+X-Received: by 2002:a05:6102:3a0f:b0:471:e2ca:4023 with SMTP id
+ b15-20020a0561023a0f00b00471e2ca4023mr2137374vsu.25.1708947138994; Mon, 26
+ Feb 2024 03:32:18 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/2] clk: mediatek: Introduce need_pm_runtime to
- mtk_clk_desc
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>, Pin-yen Lin <treapking@chromium.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Weiyi Lu <weiyi.lu@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-References: <20240108081834.408403-1-treapking@chromium.org>
- <CAGXv+5EnBt+7WrNb-QyziEaCihvjhFVf2tpzk=XyAoeELqucaw@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5EnBt+7WrNb-QyziEaCihvjhFVf2tpzk=XyAoeELqucaw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20240226080721.3331649-1-fshao@chromium.org>
+In-Reply-To: <20240226080721.3331649-1-fshao@chromium.org>
+From: Fei Shao <fshao@chromium.org>
+Date: Mon, 26 Feb 2024 19:31:42 +0800
+X-Gmail-Original-Message-ID: <CAC=S1niCFgbNjbnHmUD46N-9gSagYuExeQ+nUHvKOvNbS-jz1A@mail.gmail.com>
+Message-ID: <CAC=S1niCFgbNjbnHmUD46N-9gSagYuExeQ+nUHvKOvNbS-jz1A@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: Support MT8195 OVL compatible in mtk_drm_drv
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240226_031614_664482_2283E597 
-X-CRM114-Status: GOOD (  22.22  )
+X-CRM114-CacheID: sfid-20240226_033222_046299_D494E97B 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,116 +101,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/02/24 05:27, Chen-Yu Tsai ha scritto:
-> On Mon, Jan 8, 2024 at 4:18 PM Pin-yen Lin <treapking@chromium.org> wrote:
->>
->> Introduce a new need_pm_runtime variable to mtk_clk_desc to indicate
->> this clock controller needs runtime PM for its operations.
->> Also do a runtime PM get on the clock controller during the
->> probing stage to workaround a possible deadlock.
->>
->> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> 
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-> 
-> The patch itself looks fine.
-> 
-> Besides the MT8183 MFG clock issues, we do actually need this for the
-> MT8192 ADSP clock. Its power domain is not enabled by default.
-> 
+On Mon, Feb 26, 2024 at 4:07=E2=80=AFPM Fei Shao <fshao@chromium.org> wrote=
+:
+>
+> Specify the component type for mediatek,mt8195-disp-ovl in the MediaTek
+> DRM driver on top of commit 76cdcb87d391 ("drm/mediatek: Add MT8195 ovl
+> driver support").
+>
+> With this, the compatible can function as an independent fallback for
+> other display overlays without relying on MT8192.
+>
+> Signed-off-by: Fei Shao <fshao@chromium.org>
 
-...but on MT8195 the ADSP clock works - because the ADSP node exists.
+Please disregard this patch.
 
-This poses a question: should we make clock controllers depend on power domains,
-or should we keep everything powered off (hence clocks down - no power consumption)
-*unless* the user exists?
+With the feedback in [1], I can also fix the issue from within the
+SoC's device tree.
+Even taking a step back, I just learned that this is a duplicate of
+[2], so it makes no sense to merge mine in any case.
+Sorry for the noise.
 
-For the second one, this means that the *device* gets the power domain (adsp), and
-not the clock controller (which clocks are effectively useless if there's no user).
+[1]: https://lore.kernel.org/all/c4814e25-42c9-4604-b86a-8ef0bd634f78@colla=
+bora.com/
+[2]: https://lore.kernel.org/all/20240215101119.12629-3-shawn.sung@mediatek=
+.com/
 
-Angelo
-
->> ---
->>
->> Changes in v3:
->> - Update the commit message and the comments before runtime PM call
->>
->> Changes in v2:
->> - Fix the order of error handling
->> - Update the commit message and add a comment before the runtime PM call
->>
->>   drivers/clk/mediatek/clk-mtk.c | 19 +++++++++++++++++++
->>   drivers/clk/mediatek/clk-mtk.h |  2 ++
->>   2 files changed, 21 insertions(+)
->>
->> diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
->> index 2e55368dc4d8..ba1d1c495bc2 100644
->> --- a/drivers/clk/mediatek/clk-mtk.c
->> +++ b/drivers/clk/mediatek/clk-mtk.c
->> @@ -13,6 +13,7 @@
->>   #include <linux/of.h>
->>   #include <linux/of_address.h>
->>   #include <linux/platform_device.h>
->> +#include <linux/pm_runtime.h>
->>   #include <linux/slab.h>
->>
->>   #include "clk-mtk.h"
->> @@ -494,6 +495,18 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
->>                          return IS_ERR(base) ? PTR_ERR(base) : -ENOMEM;
->>          }
->>
->> +
->> +       if (mcd->need_runtime_pm) {
->> +               devm_pm_runtime_enable(&pdev->dev);
->> +               /*
->> +                * Do a pm_runtime_resume_and_get() to workaround a possible
->> +                * deadlock between clk_register() and the genpd framework.
->> +                */
->> +               r = pm_runtime_resume_and_get(&pdev->dev);
->> +               if (r)
->> +                       return r;
->> +       }
->> +
->>          /* Calculate how many clk_hw_onecell_data entries to allocate */
->>          num_clks = mcd->num_clks + mcd->num_composite_clks;
->>          num_clks += mcd->num_fixed_clks + mcd->num_factor_clks;
->> @@ -574,6 +587,9 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
->>                          goto unregister_clks;
->>          }
->>
->> +       if (mcd->need_runtime_pm)
->> +               pm_runtime_put(&pdev->dev);
->> +
->>          return r;
->>
->>   unregister_clks:
->> @@ -604,6 +620,9 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
->>   free_base:
->>          if (mcd->shared_io && base)
->>                  iounmap(base);
->> +
->> +       if (mcd->need_runtime_pm)
->> +               pm_runtime_put(&pdev->dev);
->>          return r;
->>   }
->>
->> diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
->> index 22096501a60a..c17fe1c2d732 100644
->> --- a/drivers/clk/mediatek/clk-mtk.h
->> +++ b/drivers/clk/mediatek/clk-mtk.h
->> @@ -237,6 +237,8 @@ struct mtk_clk_desc {
->>
->>          int (*clk_notifier_func)(struct device *dev, struct clk *clk);
->>          unsigned int mfg_clk_idx;
->> +
->> +       bool need_runtime_pm;
->>   };
->>
->>   int mtk_clk_pdev_probe(struct platform_device *pdev);
->> --
->> 2.43.0.472.g3155946c3a-goog
->>
-
-
-
+Regards,
+Fei
 
