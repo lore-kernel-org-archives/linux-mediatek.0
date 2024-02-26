@@ -4,86 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62D7FC5478C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 08:22:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DA8DC5478C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 08:43:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ROMdbNXWMhqi1ayUbIsWpqVi7lBvC0ES/SbDCLZCZz8=; b=AIKy22sygnSQZVm9IBoK7DY3oy
-	ScPoVddD4XgheEyFM102aCTxJ3av1c04BirICmO0M2N1lHXXdDyN+pw/QDvNO400a9mDZieg6X4/O
-	jnpmtCi8L7n9fIqEdDKrBO7aScLgRjc9+ANHcOsDJ1c7noMdMkixU6kRe2Ci+xNj8DM1In/ZZio4b
-	cF/r/lnLLK4QuWR/Vx+bN+c7zPtIfGRllKupdv+YFvWSfGZcBFOZA1hrmNhpT1ThY8SF/+rXRmtr8
-	QaedfRns4jG6LJ4UImnY/1GlU35KvnkzyKBwI0DmdyXnGPyL39QljhvPv8vH59YsNdyk9ukfHYK5+
-	GrwKpAvQ==;
+	bh=lDzCUGUParppw3zjkX5sSJU2pD+QJRLVWATxFEVY+QA=; b=2BG5UUTG+Z8bQDReOw6xEa+LDo
+	sZ39CTmnjwneKYlkJYvl0oje9VLFAOXtfcFlcciFhPDaOxX4l0vBIVv8G0OKEcbl0E+/qzFvrQ08G
+	A3gn90ETe7vndE408uuNASUhiNddZLJZ/B5HUENEfHqgYxUhBhEFApBG04j8/wW0J698DgCFWx1KB
+	1iTjV8PKMB83B5HayQribGOfTTkqdbxJv16HbP6RVy+I4x7dZXfuzKsvB1RGB7URIwPJ6WL4/ifxa
+	p25fek8nL4RatEXZNuRNx8IA4FJ/lsbrBXqzcvxHlr8vLN1xWC1yY4gzhIby92qHFO0S3RnOaaBa/
+	cKiZJZ9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reWFb-0000000Gy7y-3aFt;
-	Mon, 26 Feb 2024 08:22:15 +0000
-Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
+	id 1reWaA-0000000H4vY-3YyQ;
+	Mon, 26 Feb 2024 08:43:30 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reWFW-0000000Gy5Z-0BDJ
+	id 1reWa4-0000000H4sP-2PcU
 	for linux-mediatek@lists.infradead.org;
-	Mon, 26 Feb 2024 08:22:14 +0000
-Received: by mail-ua1-x92a.google.com with SMTP id a1e0cc1a2514c-7ce4512d308so1451038241.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Feb 2024 00:22:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1708935728; x=1709540528; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ROMdbNXWMhqi1ayUbIsWpqVi7lBvC0ES/SbDCLZCZz8=;
-        b=EXZ1coo+kggY8a/5vfRlfclb+QPHpXINITshaHr+ITvUNidcSRX3BARq14llxNgeq6
-         SZoZ4QoPt9x6gX7gV1M9oiwTklvlBVKI+lzqTE7KGuvXpFyekFx6GZals+/GI1rxMAqJ
-         wfUZbziehykz0kHGtLMZeO4OLa5Aq57Omgzs8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708935728; x=1709540528;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ROMdbNXWMhqi1ayUbIsWpqVi7lBvC0ES/SbDCLZCZz8=;
-        b=FtAZ24HoTwLfhXmV6++AksFXdx507wR+KoT6ErTMXNGsGO4433VD0Someg2YKJvDS+
-         FtNQRCGdR3+iwKO2ij62M/R5JR6s8CqmVLdwqYJRqf2HyzwgLQ3t/cXO1CtXl+tLwu5Y
-         Nm9Dhq4E0tZ1Xm9P8aPGYVekTHSnD3jZlnlQIscxoUdI8n8oWXTJC5BUtmz07XrlHoaI
-         rwc4LPg3GLDs2btY7zabTu0dMVsyJRKwOVkzGZFIXa6j4NOLPY+6cBFVtsjgzin/YleH
-         WpR6YgBeP5JIdo/1Nl8Zs/D5KTDsMDx5Q4pPfH38EEP96yN+JmQIn7r7IQwplbi51/zD
-         EBGQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVDTsZy4pDLkvZNZNYIIR4KGkcGBFerge9MSue2I/JEBCTr+Gy1jYb3hD7lfMZKierkw6Ci2hGV2F/O2AaAxcpYM1cEMWNjeWZCiEzGA6NAj1Od
-X-Gm-Message-State: AOJu0Yya2N7TTSF+YjOt2E19O8sJnNmPCGAUnPSW5UhUhvf9wDmS9mFn
-	+VqsmcdiNmQ7PM2s+djpV/41xVc9W5PSoguGhJxlCDAyXlVJUraS1kvhutyg5Wfk79hW6SHjM2L
-	gLg==
-X-Google-Smtp-Source: AGHT+IHMBnCf0WozhJWLz07MjHsZ2n5EyldBXx99A8Dws5Y6zZDDFmtOfHJYX639isb3KekCLeNCqA==
-X-Received: by 2002:a67:f5d8:0:b0:470:3a61:8f9 with SMTP id t24-20020a67f5d8000000b004703a6108f9mr3748599vso.14.1708935728364;
-        Mon, 26 Feb 2024 00:22:08 -0800 (PST)
-Received: from mail-vk1-f182.google.com (mail-vk1-f182.google.com. [209.85.221.182])
-        by smtp.gmail.com with ESMTPSA id c12-20020a67ce8c000000b0046eb7f99601sm794374vse.20.2024.02.26.00.22.07
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 26 Feb 2024 00:22:07 -0800 (PST)
-Received: by mail-vk1-f182.google.com with SMTP id 71dfb90a1353d-4caabc3f941so1339745e0c.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Feb 2024 00:22:07 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCX+guNy4TLESmUtklVOVuR/AWV/r/ggdHr4JfLRf9B6Nn8F+3TnWpyDObwgX936Z70nHvXYDFSQaCfHjzybos+NXR/UZLZuLTX63yEEcNF5siS/
-X-Received: by 2002:a05:6122:4c10:b0:4c9:4816:8d90 with SMTP id
- ff16-20020a0561224c1000b004c948168d90mr4101592vkb.4.1708935727242; Mon, 26
- Feb 2024 00:22:07 -0800 (PST)
+	Mon, 26 Feb 2024 08:43:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1708937001;
+	bh=7tWk0zhZOW2AyHeE8JN2hmS9AUeGcPyEShuN2Nk8GSc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cjNQTnUGWeXLKtjG32spXHpy9A7jLY9HdhXy6zZARpW+f90xV0zkxfsHgC8Ix5Ygv
+	 xZ0/fSF5kOpWfz3INhZO/yKEHjP93N8jl6/lTRvhO0Ki16AnsNdZHpXlfvH7Foktb8
+	 JYHFVTkUb0DW/KLDf3eoMGDpnM6/h1iC/b+rnbZjL2UuGr1iUoPf+GWVD3M4ncsHkI
+	 9r9BQdpIS8oPDAWZs12IANBFXuX2HsCFMMsreXBZQxmvMmgo3cU29/KrmoIgVxKZiy
+	 Y+gV/tAYmmbZ41iy9r/bnffpLKroJ21Hrzw6gOEM+DEH1WFUC+rGKBokwzPw8SyVkE
+	 gSyrzBdrBMCVQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A97523781183;
+	Mon, 26 Feb 2024 08:43:20 +0000 (UTC)
+Message-ID: <c4814e25-42c9-4604-b86a-8ef0bd634f78@collabora.com>
+Date: Mon, 26 Feb 2024 09:43:19 +0100
 MIME-Version: 1.0
-References: <20240221165643.1679073-1-greenjustin@chromium.org> <c7d6259b-90e7-41a3-998f-a12edf7c1554@collabora.com>
-In-Reply-To: <c7d6259b-90e7-41a3-998f-a12edf7c1554@collabora.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Mon, 26 Feb 2024 16:21:30 +0800
-X-Gmail-Original-Message-ID: <CAC=S1njw4JM++D4kYyi4Z2rcDTsvqD1b0VtpQ5A071dgvtVGdg@mail.gmail.com>
-Message-ID: <CAC=S1njw4JM++D4kYyi4Z2rcDTsvqD1b0VtpQ5A071dgvtVGdg@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] drm/mediatek: Add MT8188 Overlay Driver Data
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Justin Green <greenjustin@chromium.org>, linux-mediatek@lists.infradead.org, 
-	dri-devel@lists.freedesktop.org, chunkuang.hu@kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: Fei Shao <fshao@chromium.org>
+Cc: Justin Green <greenjustin@chromium.org>,
+ linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ chunkuang.hu@kernel.org
+References: <20240221165643.1679073-1-greenjustin@chromium.org>
+ <c7d6259b-90e7-41a3-998f-a12edf7c1554@collabora.com>
+ <CAC=S1njw4JM++D4kYyi4Z2rcDTsvqD1b0VtpQ5A071dgvtVGdg@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <CAC=S1njw4JM++D4kYyi4Z2rcDTsvqD1b0VtpQ5A071dgvtVGdg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240226_002210_566530_57FF58E0 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20240226_004324_791776_C9134257 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,42 +78,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 22, 2024 at 4:43=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 21/02/24 17:56, Justin Green ha scritto:
-> > Add MT8188 overlay driver configuration data. This change consequently
-> > enables 10-bit overlay support on MT8188 devices.
-> >
-> > Tested by running ChromeOS UI on MT8188 and using modetest -P. AR30 and
-> > BA30 overlays are confirmed to work from modetest.
-> >
-> > Signed-off-by: Justin Green <greenjustin@chromium.org>
-> > Tested-by: Justin Green <greenjustin@chromium.org>
->
-> Hello Justin,
->
-> I'm 99.9% sure that you don't need this, you can just use compatibles
->
-> compatible =3D "mediatek,mt8188-disp-ovl", "mediatek,mt8195-disp-ovl";
->
-> as they *are* indeed compatible, and MT8188 does support AFBC as well.
+Il 26/02/24 09:21, Fei Shao ha scritto:
+> On Thu, Feb 22, 2024 at 4:43 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Il 21/02/24 17:56, Justin Green ha scritto:
+>>> Add MT8188 overlay driver configuration data. This change consequently
+>>> enables 10-bit overlay support on MT8188 devices.
+>>>
+>>> Tested by running ChromeOS UI on MT8188 and using modetest -P. AR30 and
+>>> BA30 overlays are confirmed to work from modetest.
+>>>
+>>> Signed-off-by: Justin Green <greenjustin@chromium.org>
+>>> Tested-by: Justin Green <greenjustin@chromium.org>
+>>
+>> Hello Justin,
+>>
+>> I'm 99.9% sure that you don't need this, you can just use compatibles
+>>
+>> compatible = "mediatek,mt8188-disp-ovl", "mediatek,mt8195-disp-ovl";
+>>
+>> as they *are* indeed compatible, and MT8188 does support AFBC as well.
+> 
+> Hi,
+> 
+> I confirmed that I can lit up the MT8188 display with that plus a
+> follow-up patch [1].
+> Otherwise a compatible sequence of mt8188, mt8195 and mt8192 would be
+> needed, but that would be somewhat redundant.
+> 
 
-Hi,
+Actually, that wouldn't be MT8192, but MT8183 - following MT8195's devicetree,
 
-I confirmed that I can lit up the MT8188 display with that plus a
-follow-up patch [1].
-Otherwise a compatible sequence of mt8188, mt8195 and mt8192 would be
-needed, but that would be somewhat redundant.
+so it would be
 
-[1]: https://lore.kernel.org/all/20240226080721.3331649-1-fshao@chromium.or=
-g/
+compatible = "mediatek,mt8188-disp-ovl", "mediatek,mt8195-disp-ovl",
+              "mediatek,mt8183-disp-ovl";
 
-Regards,
-Fei
+And yes that could be redundant, but I'm not sure that adding a compatible
+string to the mtk_drm_drv matches is a good idea.
 
->
-> Cheers,
-> Angelo
->
+I'd be more for using the triple compatible strings in there instead, as it'd
+be like that for only *one* node and not more than that - IMO, that is totally
+acceptable and it's also the best (and lightest) solution.
+
+Cheers,
+Angelo
+
+> [1]: https://lore.kernel.org/all/20240226080721.3331649-1-fshao@chromium.org/
+> 
+> Regards,
+> Fei
+> 
+
 
