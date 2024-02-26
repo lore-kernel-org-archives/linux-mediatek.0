@@ -4,53 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC56DC5478C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 15:26:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21106C5478C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 15:30:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yr+w0GCjn3RCMsUgoz5dondiCAgCKXIQvha9j337KCM=; b=fCwE9ogjGMFHhYWdsH6m/uLCwA
-	RIjKCzxl3XdpfhpsyROu4feC/S3GYoMRle45OAlRf4un8B7lKytVl5iIGwEhWRcx1OH7aYNQnOFl+
-	pgbnnyfwek087TjbT1WDR70pF/UAfqQyG5AmZwPc2pk90jsUY+mVyh0mAylSQlA8aNANo4xf4ytu/
-	SjNNbYJsGNNGMHizmfGeDAB2LLruRsslryjg8xh3OkptOKWKJLWfwKesEKB33VhIdQJc3VyYfyKEm
-	Yj44gP7RWPFG0Z/CCTKb4pzm8t9ZwKDT8TzWptajQAsAUjJrK3AyFNF2vrNR9Wb2QI96kwSJoDAaY
-	0VkX6epQ==;
+	bh=3kJSSxsfpYMomtYWWTMVBu9buBXGQqPothU3LzUijmI=; b=TuSTb2fKpg0Ffb5JJOipK+z4GZ
+	RdVf0Axo8Zux2Zws/ZNED7wqG7QPWjcom1PBueRK7+Cne8ZuSIPyCX15j5QCBVZ2nGav9giPSWMBs
+	9mbaKBfw2n9155CkA5rwV8hGZ8rcx0FfOSqxYtZswo4QBxa6uX+0kQ0CScnLJ3PaAYmhObOYtMDUS
+	KrfHMJZ4ft8pwUSjs+edNQUrDzcnNlutR/TF+WRpfpolk/xeIH15iheDkgcNWayvi98+EKVkrk+2N
+	eahZTtgzvBH6ZFrmYY0BJ02/qTlSJLXaIo5Ce5Pv5DfRCcpxcc6tRNjqpvzKiz4tyVtz8vZbgPQul
+	PNWfnBKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1recrw-00000001QDZ-3t6m;
-	Mon, 26 Feb 2024 15:26:16 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1recvg-00000001RMq-2hKM;
+	Mon, 26 Feb 2024 15:30:08 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1recrr-00000001Q9j-12nh;
-	Mon, 26 Feb 2024 15:26:13 +0000
+	id 1recvc-00000001RKS-1aGb;
+	Mon, 26 Feb 2024 15:30:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708961170;
-	bh=BGtrotZCxe9YdvKz5MvCySGTf7PW9GlLNALwLZ9BjU4=;
+	s=mail; t=1708961402;
+	bh=1dPT6v1I08Wyw5hcrN7bcgojMxnYVXIX2j0GluKbE6Y=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=wpAj+S2VxraYD5Zf+Qnw39b+gY+qm4td3h7VT+Kh1Vh1Y/7BFOu+qrrLXIKmFpuP4
-	 19HVXvZj6iDi1LJq234qe98XlAqHxRfv/yuh1U0AP9HuvNxc9ld3EoaqalxOWmoN2H
-	 dCo/Rowu/7xtCH8JuIBkU2+2EU4RdM8J9uObf7/NwvKGqeXQk98fDZOWmmP+TCN2HE
-	 3/X2Cwf+ESqbNpQFwJcvAFiLZsQL15yABc4eYLI1qKV7HS/OvvhyH31iMjZUWeeLBP
-	 9Penc6a61I5BbJItAStwVigwq/Iv5c21SwBI1z6lBbBq5L5MCEiGoVjolaitui7pPb
-	 8Asf93ze/gB5w==
+	b=Y68N6UCuVbVFFasJj+ySVlHijeOnuqq7y8A5tsZ0r2I5+eHsdn6kGbuIQEhK7g7eh
+	 9xrlqCRvZTuDtW8PiCKK+RnlkYifQubrxK/ifQjhcDxUuEeLgqnHmMYB3ARUCjhxJj
+	 T5OONjkP2MYwvgu1TBRjX6KjEImlNeFxDuUqGdrT+ZyldQzxawK2jN3Y/MEAGVgYnx
+	 iks6DyEZIRF4HSGtkr11rFZq481N2a7ZUThufV2fpbjtNHSXZWAQnBSuXZA94ggtor
+	 G7R8S41pEbfY3rseYnbtvq4FdHetz7E2Pyy6OTkjE7TP5umlIbZUyaorLZuFMZad8Z
+	 u5JPfnYhZgszw==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 862E737820CB;
-	Mon, 26 Feb 2024 15:26:08 +0000 (UTC)
-Message-ID: <31c732dd-21cf-4961-afb8-6c757eef0eeb@collabora.com>
-Date: Mon, 26 Feb 2024 16:26:08 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 591A237820C3;
+	Mon, 26 Feb 2024 15:30:01 +0000 (UTC)
+Message-ID: <e15fdb18-d4de-495f-b90b-ba0e787cbef4@collabora.com>
+Date: Mon, 26 Feb 2024 16:30:00 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 13/18] mfd: mt6397-core: register mt6357 sound codec
+Subject: Re: [PATCH 02/18] ASoC: dt-bindings: mediatek,mt8365-mt6357: Add
+ audio sound card document
 Content-Language: en-US
-To: amergnat@baylibre.com, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Lee Jones <lee@kernel.org>,
@@ -61,17 +63,16 @@ To: amergnat@baylibre.com, Liam Girdwood <lgirdwood@gmail.com>,
 Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
- Fabien Parent <fparent@baylibre.com>
+ dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org
 References: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
- <20240226-audio-i350-v1-13-4fa1cea1667f@baylibre.com>
+ <20240226-audio-i350-v1-2-4fa1cea1667f@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240226-audio-i350-v1-13-4fa1cea1667f@baylibre.com>
+In-Reply-To: <20240226-audio-i350-v1-2-4fa1cea1667f@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240226_072611_561003_621A68A0 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20240226_073004_589494_5A23CB06 
+X-CRM114-Status: GOOD (  19.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,35 +87,170 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/02/24 15:01, amergnat@baylibre.com ha scritto:
-> From: Fabien Parent <fparent@baylibre.com>
+Il 26/02/24 15:01, Alexandre Mergnat ha scritto:
+> Add soundcard bindings for the MT8365 SoC with the MT6357 audio codec.
 > 
-> Add MT6357 codec entry in the MFD driver.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
 > ---
->   drivers/mfd/mt6397-core.c | 3 +++
->   1 file changed, 3 insertions(+)
+>   .../bindings/sound/mediatek,mt8365-mt6357.yaml     | 127 +++++++++++++++++++++
+>   1 file changed, 127 insertions(+)
 > 
-> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> index 4449dde05021..4fd4a2da5ad7 100644
-> --- a/drivers/mfd/mt6397-core.c
-> +++ b/drivers/mfd/mt6397-core.c
-> @@ -141,6 +141,9 @@ static const struct mfd_cell mt6357_devs[] = {
->   		.num_resources = ARRAY_SIZE(mt6357_rtc_resources),
->   		.resources = mt6357_rtc_resources,
->   		.of_compatible = "mediatek,mt6357-rtc",
-> +	}, {
-> +		.name = "mt6357-sound",
-> +		.of_compatible = "mediatek,mt6357-sound"
->   	}, {
->   		.name = "mtk-pmic-keys",
->   		.num_resources = ARRAY_SIZE(mt6357_keys_resources),
-> 
+> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8365-mt6357.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8365-mt6357.yaml
+> new file mode 100644
+> index 000000000000..f469611ec6b6
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8365-mt6357.yaml
+> @@ -0,0 +1,127 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/sound/mediatek,mt8365-mt6357.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek MT8365 sound card with MT6357 sound codec.
+> +
+> +maintainers:
+> +  - Alexandre Mergnat <amergnat@baylibre.com>
+> +
+> +description:
+> +  This binding describes the MT8365 sound card.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt8365-mt6357
+> +
+> +  mediatek,hp-pull-down:
+> +    description:
+> +      Earphone driver positive output stage short to the
+> +      audio reference ground.
+> +      Default value is false.
+> +    type: boolean
+> +
+> +  mediatek,micbias0-microvolt:
+> +    description: |
 
+description: Selects MIC Bias 0 output voltage
+
+> +      Selects MIC Bias 0 output voltage.
+> +      [1.7v, 1.8v, 1.9v, 2.0v, 2.1v, 2.5v, 2.6v, 2.7v]
+> +    enum: [0, 1, 2, 3, 4, 5, 6, 7]
+
+No, you don't say 0 1 2 3 4 to a property that says "microvolt", that's simply
+wrong.
+
+mediatek,micbias0-microvolt = <2100000>;
+
+...so you want a binding that says
+enum: [ 1700000, 1800000, this, that, 2700000]
+
+> +
+> +  mediatek,micbias1-microvolt:
+> +    description: |
+> +      Selects MIC Bias 1 output voltage.
+> +      [1.7v, 1.8v, 1.9v, 2.0v, 2.1v, 2.5v, 2.6v, 2.7v]
+> +    enum: [0, 1, 2, 3, 4, 5, 6, 7]
+
+same here.
+
+> +
+> +  mediatek,platform:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: The phandle of MT8365 ASoC platform.
+> +
+> +  pinctrl-names:
+> +    minItems: 1
+> +    items:
+> +      - const: aud_default
+> +      - const: aud_dmic
+> +      - const: aud_miso_off
+> +      - const: aud_miso_on
+> +      - const: aud_mosi_off
+> +      - const: aud_mosi_on
+> +
+> +  vaud28-supply:
+> +    description:
+> +      2.8 volt supply for the audio codec
+> +
+> +patternProperties:
+> +  "^dai-link-[0-9]+$":
+> +    type: object
+> +    description:
+> +      Container for dai-link level properties and CODEC sub-nodes.
+> +
+> +    properties:
+> +      codec:
+> +        type: object
+> +        description: Holds subnode which indicates codec dai.
+> +
+> +        properties:
+> +          sound-dai:
+> +            maxItems: 1
+> +            description: phandle of the codec DAI
+> +
+> +        additionalProperties: false
+> +
+> +      link-name:
+> +        description:
+> +          This property corresponds to the name of the BE dai-link to which
+> +          we are going to update parameters in this node.
+> +        items:
+> +          const: 2ND I2S BE
+> +
+> +      sound-dai:
+> +        maxItems: 1
+> +        description: phandle of the CPU DAI
+> +
+> +    additionalProperties: false
+> +
+> +    required:
+> +      - link-name
+> +      - sound-dai
+> +
+> +additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - mediatek,platform
+> +  - pinctrl-names
+> +  - vaud28-supply
+> +
+> +examples:
+> +  - |
+> +    sound {
+> +        compatible = "mediatek,mt8365-mt6357";
+> +        mediatek,platform = <&afe>;
+
+Please:
+
+https://docs.kernel.org/devicetree/bindings/dts-coding-style.html
+
+Regards,
+Angelo
+
+> +        pinctrl-names = "aud_default",
+> +            "aud_dmic",
+> +            "aud_miso_off",
+> +            "aud_miso_on",
+> +            "aud_mosi_off",
+> +            "aud_mosi_on";
+> +        pinctrl-0 = <&aud_default_pins>;
+> +        pinctrl-1 = <&aud_dmic_pins>;
+> +        pinctrl-2 = <&aud_miso_off_pins>;
+> +        pinctrl-3 = <&aud_miso_on_pins>;
+> +        pinctrl-4 = <&aud_mosi_off_pins>;
+> +        pinctrl-5 = <&aud_mosi_on_pins>;
+> +        vaud28-supply = <&mt6357_vaud28_reg>;
+> +
+> +        /* hdmi interface */
+> +        dai-link-0 {
+> +            sound-dai = <&afe>;
+> +            link-name = "2ND I2S BE";
+> +
+> +            codec {
+> +                sound-dai = <&it66121hdmitx>;
+> +            };
+> +        };
+> +    };
+> 
 
 
