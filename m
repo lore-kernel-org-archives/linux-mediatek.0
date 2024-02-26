@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DAB8C54E49
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 12:40:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40083C48BF6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 12:40:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=24jvptLKV0DwEc/h+GAcCT5f8TDpmmEDOzzthJ2sM2Y=; b=oo6Jj4lDaL0lTo8VaMXHPm3lRb
-	5ebkwoCzD81qhh2LqPSd08NvJriHRhz4ow8af0Q9Z4guY+DMVjR5byrjmMpGe4f+XEJ4mMmBgjwCJ
-	/9T8Xa1E1JoKyFUpbzjZMiB9US2NAkzdh/IpuRF+cRcZWM2ovKcshOdIyG1e0gfWqbLfZxlktm/hS
-	yLcB4Iy/o2NC2plrXsbwaQ3XCPgGZSy6OMadWOCthmVdLH8DsaDWsUEx74yHxEz8tmXnJB0PfYlNd
-	B6tZPH/CUvDdeweVs5Zkwh9nD51JZoS8xWO97y47XPsi0cvO+T+kMIDRtnXyZsQYadnlxnYIbC/Zq
-	VpWotFmg==;
+	bh=z5P8l7Cd3Y/wWkjJuja4LJqkDOZjX1NySd1c5P3BDrU=; b=W+1q7cKHvey4ALYJBnCzqfKZ3J
+	oIVaehvNqfA2byJISyF6hc7z1073Cp5/vaREGJDzzapTvdoJLhSG8JpVtIR6OxIa3SWRPIxmSfdu3
+	crot0h2MhWqV8Gf2CigO4EZP+xKqB0709pRzn7KoXgDmj1D2+HcZFE7fym+2NRG7hGYUfvVXlQpbK
+	DROBMCQbiY20e0+ACjJRs+kJnn4W5TcBa51RI/noz+qDI28oiR23F7WAuyp6QoNm5hDukJDf5/Bkb
+	jF7Wvho2W55i2UGsie7jzm0uQ1I5a86KCHQw3mrDM66RYEfOroHcFHL+/XL2K56Ys6pQrz+Pq/LFp
+	7AxdSBrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reaH6-00000000czL-3Ha5;
-	Mon, 26 Feb 2024 12:40:04 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1reaHA-00000000d2U-2Ulq;
+	Mon, 26 Feb 2024 12:40:08 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reaGP-00000000cdW-1Q8y;
-	Mon, 26 Feb 2024 12:39:23 +0000
+	id 1reaGQ-00000000cds-0UDI;
+	Mon, 26 Feb 2024 12:39:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1708951160;
-	bh=H5QQImwOVHK1yLhVZI5bmy2YvP4j6L75vwOdjG6Q7oE=;
+	bh=VoXuXhySGOksbT1xym2WPiq8oAm2dY6RplpAjMSYhvs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Zy8VC/57BMNIPNXUT2cL5Qr7lu3GSVNO9ouoQxQBANXhc6sbDDre0NLPY6wbz1wPo
-	 8i4NxClv9zVNgyubH6p/bG6DVg3ZqXjFbm0b+wjh79z0RpgcD4V+qPgGUMyiKQMwLK
-	 C342WjnONyqwfm9C1otr4kAWvPpVF1ATZR8KQ3MkpNTH2vSWNVGzQAMcaYSUVba7PV
-	 F8rvMBgGuQnwFLsVNGSSM+6h1qF8K7htswWlhn51wBTooN1jPXx1phFln5oBvcoaBL
-	 a6d25Zwl+/wHqJe7DMhRgMqwsNWYAoLS2PrM6i+5/FfNo2USp5fX/LPuAK937E/HPz
-	 aA+rj2AZ/j+DQ==
+	b=rLiNDjNx8Hs4QeG6rGy6XbCKNrMo2V3PPDTU6JaXH5nT/SaXyF+3hgJHyHsYJeZ6F
+	 5BnODhrejnmwpC7wqEyflB3EDNgWctAa9rDQkBeaETc0AYCrrJcVXpgKHS6I8CcES+
+	 qwQpgtybhIKDO78tUSmIELb9nPooNGIQldiV9MVdhuSQYCveM9Uk30mO0ZuZb5IREr
+	 0h0L9kDoL4ZgLkUDYwdWzLvDBKXON3RBPDR071Af3dK/6QLTPqfZP5C9n4uKvcPJkF
+	 fimg84YFozirSMHR8UJQA8DgOKwLrVVvdaNwFbER0V9LfWwS5sgE5A49CfPo2I7Nhq
+	 UfrKYIu+vARdw==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2448137820D2;
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E178237820D3;
 	Mon, 26 Feb 2024 12:39:19 +0000 (UTC)
-Message-ID: <ad23e108-85f2-4f0c-b281-99140e6f20a0@collabora.com>
+Message-ID: <ab0e22c5-3ee3-40c5-8bef-313ec7a28a50@collabora.com>
 Date: Mon, 26 Feb 2024 13:39:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 07/11] drm/mediatek: Rename files "mtk_drm_ddp_comp.*" to
- "mtk_ddp_comp.*"
+Subject: Re: [PATCH 06/11] drm/mediatek: Rename files "mtk_drm_crtc.*" to
+ "mtk_crtc.*"
 Content-Language: en-US
 To: Shawn Sung <shawn.sung@mediatek.com>,
  Chun-Kuang Hu <chunkuang.hu@kernel.org>
@@ -61,14 +61,14 @@ Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
  linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
  Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
 References: <20240226085059.26850-1-shawn.sung@mediatek.com>
- <20240226085059.26850-8-shawn.sung@mediatek.com>
+ <20240226085059.26850-7-shawn.sung@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240226085059.26850-8-shawn.sung@mediatek.com>
+In-Reply-To: <20240226085059.26850-7-shawn.sung@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240226_043921_568841_35AF4682 
-X-CRM114-Status: UNSURE (   5.14  )
+X-CRM114-CacheID: sfid-20240226_043922_581716_6C33060E 
+X-CRM114-Status: UNSURE (   5.15  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,10 +87,11 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 26/02/24 09:50, Shawn Sung ha scritto:
 > From: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
 > 
-> Rename files mtk_drm_ddp_comp.* to mtk_ddp_comp.*.
+> Rename files mtk_drm_crtc.* to mtk_crtc.*.
 > 
 > Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
 
 Reviewed-by: AngeloGiaocchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
