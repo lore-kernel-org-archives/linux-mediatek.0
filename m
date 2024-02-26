@@ -4,74 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2B59C5478C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 08:07:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62D7FC5478C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 08:22:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=kBcIHteoHnr9Cz5N/WAN5bt6cpSYHYQ7aU0W3fZEze8=; b=ZjoawtN0m96j7Y
-	5Rl8F1SlWc/7ezLGpSp8YydqWBxXFV+18g4vy9YSfCoxn3Dk+Rs5FSrOSsh71TUL5tYFV6XrUCMl6
-	mHSH1nY9Zb6fH2SiQkk3Z4Xgrg85JNP/QCwnLZe6G0gjgCX6Xp3wBzA4uM5McPEEtG4JQp4GAGHp4
-	geIYamIyW07K7qRWRSpoa6XHXPhPYlT/q0F6Q2Z/nqzyK0w79XBOyy+qMEMuYjGPMcgS3q2wr/39L
-	cNYN9n2XBMFZ+Vojvi01AGQXS0xW9eh1l7VUegrtxMzxjfd+NsR9qnFDkfEAnogERMOypO06Hu50Z
-	jF2H+vsPNRZmyAeqOk+Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ROMdbNXWMhqi1ayUbIsWpqVi7lBvC0ES/SbDCLZCZz8=; b=AIKy22sygnSQZVm9IBoK7DY3oy
+	ScPoVddD4XgheEyFM102aCTxJ3av1c04BirICmO0M2N1lHXXdDyN+pw/QDvNO400a9mDZieg6X4/O
+	jnpmtCi8L7n9fIqEdDKrBO7aScLgRjc9+ANHcOsDJ1c7noMdMkixU6kRe2Ci+xNj8DM1In/ZZio4b
+	cF/r/lnLLK4QuWR/Vx+bN+c7zPtIfGRllKupdv+YFvWSfGZcBFOZA1hrmNhpT1ThY8SF/+rXRmtr8
+	QaedfRns4jG6LJ4UImnY/1GlU35KvnkzyKBwI0DmdyXnGPyL39QljhvPv8vH59YsNdyk9ukfHYK5+
+	GrwKpAvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reW1S-0000000GvOV-2ug5;
-	Mon, 26 Feb 2024 08:07:38 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1reWFb-0000000Gy7y-3aFt;
+	Mon, 26 Feb 2024 08:22:15 +0000
+Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reW1O-0000000GvKa-09Vl
+	id 1reWFW-0000000Gy5Z-0BDJ
 	for linux-mediatek@lists.infradead.org;
-	Mon, 26 Feb 2024 08:07:35 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-1dc0e5b223eso22250395ad.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Feb 2024 00:07:29 -0800 (PST)
+	Mon, 26 Feb 2024 08:22:14 +0000
+Received: by mail-ua1-x92a.google.com with SMTP id a1e0cc1a2514c-7ce4512d308so1451038241.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Feb 2024 00:22:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1708934849; x=1709539649; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=kBcIHteoHnr9Cz5N/WAN5bt6cpSYHYQ7aU0W3fZEze8=;
-        b=kcn2WZ+P/zcpU4yZxSMAYgxoSw47680gll7Xog7bLPvDt+1ePeGUHSGBJdFd9pBCxd
-         uiy3quW9Q+i1qaVpUsLELvvcZPuwXSqpqO3R0AmwkLTdW1mh8WXTE+kKTwDieruVo2aJ
-         2fHu7N5WnYHJlKU4EjZw0+4eOuYFRJaXLyMew=
+        d=chromium.org; s=google; t=1708935728; x=1709540528; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ROMdbNXWMhqi1ayUbIsWpqVi7lBvC0ES/SbDCLZCZz8=;
+        b=EXZ1coo+kggY8a/5vfRlfclb+QPHpXINITshaHr+ITvUNidcSRX3BARq14llxNgeq6
+         SZoZ4QoPt9x6gX7gV1M9oiwTklvlBVKI+lzqTE7KGuvXpFyekFx6GZals+/GI1rxMAqJ
+         wfUZbziehykz0kHGtLMZeO4OLa5Aq57Omgzs8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708934849; x=1709539649;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=kBcIHteoHnr9Cz5N/WAN5bt6cpSYHYQ7aU0W3fZEze8=;
-        b=PecxE5UpW7Ss+vcSPbEwXwApYXlzg7CkzncQxLpLyghel0gx6UWDjiuuVjPrGUwfsA
-         ad2tPjBmpdzsZTh0tIrEge8KIACmFjoXcTahumw2Ml9FM9Sm1mp9024IHuKBtSLQTasv
-         7ruShi3d/ywRLFlh7OVCpX+j5EzHDfncsLAznY7OWrgXCOh6esSRrjCJp6bLxs0HRutj
-         npi2DwCo8OkJbWoW2EDE1pvvmtwv90kOYSBMLNSUHf5oHmSfjfX5BCIUNUTT+uJ4iZ8E
-         S9ltCLnxLyIqyYMlfwYrMfO1h8NX8OnbJR6bCNo2SU+nCoeduKftGxsJ02PCsvIEybir
-         wPZA==
-X-Forwarded-Encrypted: i=1; AJvYcCVfuPmw6tzuTFOnfxm/R+G5AIkdWJN54iUJHHCQ2+YiowSg5c1cYaJdSFFFXwz+Pqxu6c1eB1X5IhX9f86Rwf1Kqje61bpY25OGDNgjzsqDDHdI
-X-Gm-Message-State: AOJu0Yx9WTekjK+ndC2opK9FXjCmzOExHM75olIDFkRdciJS2AoYEYiY
-	RD8vjArjWHtEgxID8YB0KuAmgKj629dTAVpchOWVWokkTxBq3oAzNcohBnLg5w==
-X-Google-Smtp-Source: AGHT+IExiQnb+rRMNDHWEdTGrSJHafd60Czmd6wFeh8GaiNgF/iSjktfRAWY7nO1Q8GFmSikhhho1g==
-X-Received: by 2002:a17:903:548:b0:1db:bd6b:d1fb with SMTP id jo8-20020a170903054800b001dbbd6bd1fbmr5145701plb.63.1708934849429;
-        Mon, 26 Feb 2024 00:07:29 -0800 (PST)
-Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:e3f5:67aa:a8f3:8179])
-        by smtp.gmail.com with ESMTPSA id le6-20020a170902fb0600b001dc95cded74sm1953660plb.233.2024.02.26.00.07.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Feb 2024 00:07:29 -0800 (PST)
-From: Fei Shao <fshao@chromium.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: [PATCH] drm/mediatek: Support MT8195 OVL compatible in mtk_drm_drv
-Date: Mon, 26 Feb 2024 16:06:47 +0800
-Message-ID: <20240226080721.3331649-1-fshao@chromium.org>
-X-Mailer: git-send-email 2.44.0.rc0.258.g7320e95886-goog
+        d=1e100.net; s=20230601; t=1708935728; x=1709540528;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ROMdbNXWMhqi1ayUbIsWpqVi7lBvC0ES/SbDCLZCZz8=;
+        b=FtAZ24HoTwLfhXmV6++AksFXdx507wR+KoT6ErTMXNGsGO4433VD0Someg2YKJvDS+
+         FtNQRCGdR3+iwKO2ij62M/R5JR6s8CqmVLdwqYJRqf2HyzwgLQ3t/cXO1CtXl+tLwu5Y
+         Nm9Dhq4E0tZ1Xm9P8aPGYVekTHSnD3jZlnlQIscxoUdI8n8oWXTJC5BUtmz07XrlHoaI
+         rwc4LPg3GLDs2btY7zabTu0dMVsyJRKwOVkzGZFIXa6j4NOLPY+6cBFVtsjgzin/YleH
+         WpR6YgBeP5JIdo/1Nl8Zs/D5KTDsMDx5Q4pPfH38EEP96yN+JmQIn7r7IQwplbi51/zD
+         EBGQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVDTsZy4pDLkvZNZNYIIR4KGkcGBFerge9MSue2I/JEBCTr+Gy1jYb3hD7lfMZKierkw6Ci2hGV2F/O2AaAxcpYM1cEMWNjeWZCiEzGA6NAj1Od
+X-Gm-Message-State: AOJu0Yya2N7TTSF+YjOt2E19O8sJnNmPCGAUnPSW5UhUhvf9wDmS9mFn
+	+VqsmcdiNmQ7PM2s+djpV/41xVc9W5PSoguGhJxlCDAyXlVJUraS1kvhutyg5Wfk79hW6SHjM2L
+	gLg==
+X-Google-Smtp-Source: AGHT+IHMBnCf0WozhJWLz07MjHsZ2n5EyldBXx99A8Dws5Y6zZDDFmtOfHJYX639isb3KekCLeNCqA==
+X-Received: by 2002:a67:f5d8:0:b0:470:3a61:8f9 with SMTP id t24-20020a67f5d8000000b004703a6108f9mr3748599vso.14.1708935728364;
+        Mon, 26 Feb 2024 00:22:08 -0800 (PST)
+Received: from mail-vk1-f182.google.com (mail-vk1-f182.google.com. [209.85.221.182])
+        by smtp.gmail.com with ESMTPSA id c12-20020a67ce8c000000b0046eb7f99601sm794374vse.20.2024.02.26.00.22.07
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 26 Feb 2024 00:22:07 -0800 (PST)
+Received: by mail-vk1-f182.google.com with SMTP id 71dfb90a1353d-4caabc3f941so1339745e0c.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Feb 2024 00:22:07 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCX+guNy4TLESmUtklVOVuR/AWV/r/ggdHr4JfLRf9B6Nn8F+3TnWpyDObwgX936Z70nHvXYDFSQaCfHjzybos+NXR/UZLZuLTX63yEEcNF5siS/
+X-Received: by 2002:a05:6122:4c10:b0:4c9:4816:8d90 with SMTP id
+ ff16-20020a0561224c1000b004c948168d90mr4101592vkb.4.1708935727242; Mon, 26
+ Feb 2024 00:22:07 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20240221165643.1679073-1-greenjustin@chromium.org> <c7d6259b-90e7-41a3-998f-a12edf7c1554@collabora.com>
+In-Reply-To: <c7d6259b-90e7-41a3-998f-a12edf7c1554@collabora.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Mon, 26 Feb 2024 16:21:30 +0800
+X-Gmail-Original-Message-ID: <CAC=S1njw4JM++D4kYyi4Z2rcDTsvqD1b0VtpQ5A071dgvtVGdg@mail.gmail.com>
+Message-ID: <CAC=S1njw4JM++D4kYyi4Z2rcDTsvqD1b0VtpQ5A071dgvtVGdg@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: Add MT8188 Overlay Driver Data
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Justin Green <greenjustin@chromium.org>, linux-mediatek@lists.infradead.org, 
+	dri-devel@lists.freedesktop.org, chunkuang.hu@kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240226_000734_135269_C798E77F 
-X-CRM114-Status: UNSURE (   9.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240226_002210_566530_57FF58E0 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,37 +95,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Vetter <daniel@ffwll.ch>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Specify the component type for mediatek,mt8195-disp-ovl in the MediaTek
-DRM driver on top of commit 76cdcb87d391 ("drm/mediatek: Add MT8195 ovl
-driver support").
+On Thu, Feb 22, 2024 at 4:43=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 21/02/24 17:56, Justin Green ha scritto:
+> > Add MT8188 overlay driver configuration data. This change consequently
+> > enables 10-bit overlay support on MT8188 devices.
+> >
+> > Tested by running ChromeOS UI on MT8188 and using modetest -P. AR30 and
+> > BA30 overlays are confirmed to work from modetest.
+> >
+> > Signed-off-by: Justin Green <greenjustin@chromium.org>
+> > Tested-by: Justin Green <greenjustin@chromium.org>
+>
+> Hello Justin,
+>
+> I'm 99.9% sure that you don't need this, you can just use compatibles
+>
+> compatible =3D "mediatek,mt8188-disp-ovl", "mediatek,mt8195-disp-ovl";
+>
+> as they *are* indeed compatible, and MT8188 does support AFBC as well.
 
-With this, the compatible can function as an independent fallback for
-other display overlays without relying on MT8192.
+Hi,
 
-Signed-off-by: Fei Shao <fshao@chromium.org>
----
+I confirmed that I can lit up the MT8188 display with that plus a
+follow-up patch [1].
+Otherwise a compatible sequence of mt8188, mt8195 and mt8192 would be
+needed, but that would be somewhat redundant.
 
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 ++
- 1 file changed, 2 insertions(+)
+[1]: https://lore.kernel.org/all/20240226080721.3331649-1-fshao@chromium.or=
+g/
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 14a1e0157cc4..703caba48420 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -739,6 +739,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_OVL },
- 	{ .compatible = "mediatek,mt8192-disp-ovl",
- 	  .data = (void *)MTK_DISP_OVL },
-+	{ .compatible = "mediatek,mt8195-disp-ovl",
-+	  .data = (void *)MTK_DISP_OVL },
- 	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
- 	  .data = (void *)MTK_DISP_OVL_2L },
- 	{ .compatible = "mediatek,mt8192-disp-ovl-2l",
--- 
-2.44.0.rc0.258.g7320e95886-goog
+Regards,
+Fei
 
+>
+> Cheers,
+> Angelo
+>
 
