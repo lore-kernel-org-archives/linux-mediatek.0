@@ -4,95 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D81DC48BF6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 17:36:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B7A3C48BF6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 19:39:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0TJDpiQS0mzwh7myIO+xWtjFUw057mz9Kw5WxBUdIdQ=; b=i37gvj7aUyAOiEXrj39u26x5ti
-	SJsoxiKHzlpULnPp+D23bZYdb8qyaDK77reBLebsolZ/RhMBoMixrsuLLk8WI7CRg/K+VEu6T0tDa
-	ELZmJbxOXbIDGNYPgk4nsBEFncE+0U4ghg//gYJVdyhiBRoy9yUvgjlgkBm88jEamAN7LnbTTT4UE
-	6xbsn0IS+vyLglLQLHHPjvUIevwD3LfnBC/U9W6234jpnXxeDZIGpWkzlWJMg+U7+f3YqBsj3LrXf
-	OFt7ngdVFPHQpYiWaSHbrhqlVooBP+NnrQ+NXiAPuhE+X23i/pfqmHmlQJyhE4pydnjbHOEriufLo
-	gM25Rwig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7Ga79xnQkzeNUJqU8sMQVmgBON8lEoQTMNj0VZSQoCI=; b=lE+T7wEzT4D4t8P5weyI8q3E4W
+	lVcB3Z9VtfGqKB+GlHibRhI5R0wcBes1ik8HDH6y7EM5J2h/JWLIehbHzCYtrWmIn0Hku0XChRnqr
+	glR2q52xe3R27gIcvmCUg94ppPYd+RrgDchHvFC1Q2GZjFskn+L5kIflnbONVcQs5UOxAssc2GN/b
+	zjW0m8Q8aVFX6TJW3xPSs1OJcV5ikk7JBeMbEp2XbV7qEjKHA6yshIC25V4fJiAwbQoJTNn5zrulm
+	Hms/j2z+yPZBV1arfyX8HbMi1KTyaCJP2IP0ceR9yYWtv6/9u4W2yQJWXq2RNxFtbzVPfpemEKCzV
+	FQ0FyyJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reets-000000020pM-2ak1;
-	Mon, 26 Feb 2024 17:36:24 +0000
-Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
+	id 1regoj-00000002Pas-2xW2;
+	Mon, 26 Feb 2024 19:39:13 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reetp-000000020nY-1150
-	for linux-mediatek@lists.infradead.org;
-	Mon, 26 Feb 2024 17:36:22 +0000
-Received: by mail-qk1-x72f.google.com with SMTP id af79cd13be357-7810827e54eso269671385a.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Feb 2024 09:36:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1708968979; x=1709573779; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0TJDpiQS0mzwh7myIO+xWtjFUw057mz9Kw5WxBUdIdQ=;
-        b=kbatbZAIBXsPROn0t4X1zcFM69k+zq1MYR4Vw8QEjCfaVUTrnbWOzu4VCDHQlYMYJB
-         1qeewf6cEE+h7Gf3qvn/KyhDklBdk0xA///GrAo1ntTmJKrGDN57Ft8ihIk1ZUtbnbLq
-         SOl4CSmxacQSQDqs7mXAgNzDK9x/zm68hLtv0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708968979; x=1709573779;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=0TJDpiQS0mzwh7myIO+xWtjFUw057mz9Kw5WxBUdIdQ=;
-        b=KVcN3iFdYK5UQ76Llx7ldo1Wgonh+GGunos9HT0+1CKtvUViBPJlCKJ9J2gYSLCVMY
-         vKg8UH1/rejUuzHoIL16KHHOQIgiv7za5mbTbNlTZhbL5p22hzFENSdeCLfsLZZfAFcZ
-         MDWVw9hNo9rdAn06ihW0/RucKFP+NFGJoTtw1NuSoadtNHleJMcr5yqDMuVBqcaYNKl3
-         b45qeoM/QMzD0cxuJt5FZ4iXaYkUPdjLZEUzx00wEaUgkd9eqmRVJirTo8XlpfNVbA+h
-         apv67UkquP9fnk/uTAvHmV2K8/JUX3qzFyUKXP4zEQMaeeIJynZJt2WwFB65JLRvekPR
-         oexQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU9BvfWNwZ/T0OX/dWh7kcY4oK+ETapglwWU/vt/8XVfGWukLFoe3q6gg+TtFsjjBh+IrjtDpTb/8tU0WCUdGAlRQOYgM3B1wIJ6GgKfMQ9IdV/
-X-Gm-Message-State: AOJu0YwuVCA+xBnwMmk2kH3Vl57gA/nDkuj3CBuxPziXzGW6aopkpvBG
-	xemSIuCGGlle+03QeoWteZc3FK0MfaFHJNdt1GMEqaNfE/oU2lD8u2+p68sKuqqNcbTrqGvVkDk
-	=
-X-Google-Smtp-Source: AGHT+IE1SrOW3EIhJrvvCxLl9qECQH6W2ClsZPlZ25oyo/ygp2lDNgKSnd9CPSL7FsdfjbLVRaY+jA==
-X-Received: by 2002:ae9:e117:0:b0:787:a901:ecb4 with SMTP id g23-20020ae9e117000000b00787a901ecb4mr7439891qkm.71.1708968978800;
-        Mon, 26 Feb 2024 09:36:18 -0800 (PST)
-Received: from mail-qv1-f44.google.com (mail-qv1-f44.google.com. [209.85.219.44])
-        by smtp.gmail.com with ESMTPSA id d3-20020a05620a204300b00787ad324b83sm2668616qka.120.2024.02.26.09.36.17
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 26 Feb 2024 09:36:17 -0800 (PST)
-Received: by mail-qv1-f44.google.com with SMTP id 6a1803df08f44-68f748cdc8bso15604926d6.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Feb 2024 09:36:17 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXASHZcPUofzvUaSKkORJF8NjKBSIaU2b876AnxyQSKwByrx6kiuY4iKAxTrjtCl16KhejJkzPCwqN+Uln3t874muCblRPnJotVw8ONPlM+GTQr
-X-Received: by 2002:a05:6214:1c8a:b0:68f:5fce:66f1 with SMTP id
- ib10-20020a0562141c8a00b0068f5fce66f1mr8157094qvb.46.1708968976685; Mon, 26
- Feb 2024 09:36:16 -0800 (PST)
-MIME-Version: 1.0
-References: <20240226-fix-clang-warnings-v2-0-fa1bc931d17e@chromium.org> <20240226-fix-clang-warnings-v2-3-fa1bc931d17e@chromium.org>
-In-Reply-To: <20240226-fix-clang-warnings-v2-3-fa1bc931d17e@chromium.org>
-From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 26 Feb 2024 18:35:59 +0100
-X-Gmail-Original-Message-ID: <CANiDSCtvLkWJ=-DgnAGFmHSuXy_ZCcgxfccQQ3cK_6y+WkML6A@mail.gmail.com>
-Message-ID: <CANiDSCtvLkWJ=-DgnAGFmHSuXy_ZCcgxfccQQ3cK_6y+WkML6A@mail.gmail.com>
-Subject: Re: [PATCH v2 3/3] media: mediatek: vcodedc: Fix Wcast-function-type-strict
- warnings
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Nathan Chancellor <nathan@kernel.org>, 
-	Nick Desaulniers <ndesaulniers@google.com>, Bill Wendling <morbo@google.com>, 
-	Justin Stitt <justinstitt@google.com>, Mike Isely <isely@pobox.com>, 
-	Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
-	Yunfei Dong <yunfei.dong@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier <mathieu.poirier@linaro.org>, 
-	nfraprado@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	llvm@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-remoteproc@vger.kernel.org
+	id 1regog-00000002PaA-0On4;
+	Mon, 26 Feb 2024 19:39:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1708976346;
+	bh=LbcZ6qWq9CdIRdNMvzTM4cnq43tnvnfCY02gSxkWg6o=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=TbT37zpYPH5KAbLLpe855oKrwwrgqsQTCy4TiemFVOyKXSaJiWz2opdr8Nv6I6pkI
+	 qO3j1L259B+bCL8rDsIhIqIiihW5PBHv6znH/zNcJDLcP5yyW57KeIQ+4n9CyFUvyg
+	 HCOyP5tEaNXgn8x21wTBF9E0cUmGyxqbuaxj3GxdqYUo/d0ysHemRo0SiEndbYmygl
+	 4Syxih5KS0pDrQN5FvJoeaFcxuIjUy4SydreT2KygZe/yltMuEoQG196PuWEgdV4i/
+	 ezujIPTzItOBSZuly5GkFggB0LRyPIqhImuFe8NGtVEAUSndzLro9pNgBfyL9wLzb0
+	 i1dEGh3rUiIgQ==
+Received: from nicolas-tpx395.localdomain (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 5165937820AF;
+	Mon, 26 Feb 2024 19:39:04 +0000 (UTC)
+Message-ID: <a50530974d05fb9a625b4bf6fbf531035161f443.camel@collabora.com>
+Subject: Re: [PATCH v3,1/2] media: mediatek: vcodec: adding lock to protect
+ decoder context list
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, =?ISO-8859-1?Q?N=EDcolas?= "F .
+ R . A . Prado" <nfraprado@collabora.com>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>, 
+ Irui Wang <irui.wang@mediatek.com>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+ <frkoenig@chromium.org>,  Daniel Vetter <daniel@ffwll.ch>, Steve Cho
+ <stevecho@chromium.org>, linux-media@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, Steve Cho
+ <stevecho@google.com>
+Date: Mon, 26 Feb 2024 14:39:00 -0500
+In-Reply-To: <20240222092609.31382-2-yunfei.dong@mediatek.com>
+References: <20240222092609.31382-1-yunfei.dong@mediatek.com>
+	 <20240222092609.31382-2-yunfei.dong@mediatek.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvkoOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+gozpr/lUW15QqT6v68RYe0zRdtwGZqeLzX2LVuukGwCg4AISzswrrYHNV7vQLcbaUhPgIl0D+gILYT9TJgAEK4YHW+bFRcY+cgUFoLQqQayECMlctKoLOE69nIYOc/hDr9uih1wxrQ/yL0NJvQCohSPyoyLF9b2EuIGhQVp05XP7FzlTxhYvGO/DtO08ec85+bTfVBMV6eeY4MS3ZU+1z7ObD7Pf29YjyTehN2Dan6w1g2rBk5MoA/9nDocSlk4pbFpsYSFmVHsDiAOFje3+iY4ftVDKunKYWMhwRVBjAREOByBagmRau0cLEcElpf4hX5f978GoxSGIsiKoDAlXX+ICDOWC1/EXhEEmBR1gL0QJgiVviNyLfGJlZWnPjw6xhhmtHYWTDxBOP5peztyc2PqeKsLsLWzAr7RDTmljb2xhcyBEdWZyZXNuZSAoQi4gU2MuIEluZm9ybWF0aXF1ZSkgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPohgBBMRAgAgBQJFlCyOAhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AACgkQcVMCLawGqBwhLQCgzYlrLBj6KIAZ4gmsfjXD6ZtddT8AoIeGDicVq5WvMHNWign6ApQcZUihtElOaWNvbGFzIER1ZnJlc25lIChCLiBTYy4gSW5mb3JtYXRpcXVlKSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY28udWs+iGIEExECACIFAkuzca8CGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sBqgcQX8An2By6LDEeMxi4B9hUbpvRnzaaeNqA
+	J9Rox8rfqHZnSErw9bCHiBwvwJZ77QxTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPohiBBMRAgAiBQJNzZzPAhsDBgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRBxUwItrAaoHLlxAKCYAGf4JL7DYDLs/188CPMGuwLypwCfWKc9DorA9f5pyYlD5pQo6SgSoiC0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPohiBBMRAgAiBQJVwNwgAhsDBgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRBxUwItrAaoHCZ4AJ0QwU6/G4c7h9CkMBT9ZxGLX4KSnQCgq0P7CX7hv/M7HeyfMFZe8t3vAEW0RE5pY29sYXMgRHVmcmVzbmUgKEIuIFNjLiBJbmZvcm1hdGlxdWUpIDxuaWNvbGFzZEBibHVlc3RyZWFrdGVjaC5jb20+iGAEExECACAFAkZjGzoCGwMGCwkIBwMCBBUCCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHBl7AJ0d2lrzshMmJaik/EaDEakzEwqgxQCg0JVZMZm9gRfEou1FvinuZxwf/mu0R05pY29sYXMgRHVmcmVzbmUgKEIgU2MuIEluZm9ybWF0aXF1ZSkgPG5pY29sYXMuZHVmcmVzbmVAdXNoZXJicm9va2UuY2E+iGAEExECACAFAkUQN0MCGwMGCwkIBwMCBBUCCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHPTnAJ0WGgJJVspoctAvEcI00mtp5WAFGgCgr+E7ItOqZEHAs+xabBgknYZIFPW5Ag0ERRA3UhAIAJ0rxl2HsVg/nSOAUt7U/T/W+RKzVAlD9orCB0pRVvyWNxSr8MHcHmWCxykLuB34ouM4GuDVRKfGnqLzJRBfjs7Ax9K2FI3Odund9xpviLCt1jFC0K
+	XL04RebrFT7xjDfocDaSLFvgxMVs/Jr2/ckKPId1oKvgYgt/o+MzUabKyFB8wIvq4GMtj3LoBKLCie2nCaSt7uVUt6q2t5bNWrd3lO6/mWn7YMc5Hsn33H9pS0+9szw6m3dG08eMKNueDlt72QxiYl2rhjzkT4ltKEkFgYBdyrtIj1UO6eX+YXb4E1rCMJrdjBSgqDPK1sWHC7gliy+izr+XTHuFwlfy8gBpsAAwUIAJJNus64gri4HAL632eqVpza83EphX1IuHzLi1LlMnQ9Tm7XKag46NhmJbOByMG33LwBsBdLjjHQSVkYZFWUifq+NWSFC/kqlb72vW8rBAv64+i3QdfxK9FWbweiRsPpvuHjJQuecbPDJpubLaxKbu2aqLCN5LuHXvdQr6KiXwabT+OJ9AJAqHG7q4IEzg4RNUVn9AS6L8bxqMSocjqpWNBCY2efCVd/c6k4Acv6jXu+wDAZEbWXK+71uaUHExhigBYBpiHGrobe32YlTVE/XEIzKKywhm/Hkn5YKWzumLte6xiD9JhKabmD7uqIvLt2twUpz4BdPzj0dvGlSmvFcaaISQQYEQIACQUCRRA3UgIbDAAKCRBxUwItrAaoHJLyAKDeS3AFowM3f1Y3OFU6XRCTKK2ZhwCfT/7P9WDjkkmiq5AfeOiwVlpuHtM=
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.50.4 (3.50.4-1.fc39) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240226_093621_301696_20EA908C 
-X-CRM114-Status: GOOD (  23.06  )
+X-CRM114-CacheID: sfid-20240226_113910_361334_02DD2F2B 
+X-CRM114-Status: UNSURE (   8.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,221 +90,132 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+Hi,
 
-On Mon, 26 Feb 2024 at 18:32, Ricardo Ribalda <ribalda@chromium.org> wrote:
->
-> Building with LLVM=3D1 throws the following warning:
-> drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c:38:32: =
-warning: cast from 'mtk_vcodec_ipi_handler' (aka 'void (*)(void *, unsigned=
- int, void *)') to 'ipi_handler_t' (aka 'void (*)(const void *, unsigned in=
-t, void *)') converts to incompatible function type [-Wcast-function-type-s=
-trict]
->
-> Constify the types to avoid the warning.
+Le jeudi 22 f=C3=A9vrier 2024 =C3=A0 17:26 +0800, Yunfei Dong a =C3=A9crit=
+=C2=A0:
+> The ctx_list will be deleted when scp getting unexpected behavior, then t=
+he
+> ctx_list->next will be NULL, the kernel driver maybe access NULL pointer =
+in
+> function vpu_dec_ipi_handler when going through each context, then reboot=
+.
+>=20
+> Need to add lock to protect the ctx_list to make sure the ctx_list->next =
+isn't
+> NULL pointer.
 
-Please note that this has only been compile tested.
+The cited crash no longer occurs for me, but it still sometimes crashes whi=
+le
+the SCP being rebooted. I think this patch can still go in, as it overall
+improves the situation.
 
+Meanwhile, here's my stress test using GStreamer and stream downloaded by
+fluster. I call this script few times this way as it does not always crash.=
+ The
+test just keep starting decode sessions and terminate them after 2 seconds.=
+ It
+is highly parallel. Using too low number does not reproduce the crash, usin=
+g too
+high number leads to alloc failure, which wasn't the goal of this test.
 
->
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> ---
->  drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c          | 12 ++++++=
-------
->  .../media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h    |  2 +-
->  .../platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c      | 10 +-----=
-----
->  drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c |  2 +-
->  drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c |  2 +-
->  drivers/remoteproc/mtk_scp.c                                 |  4 ++--
->  include/linux/remoteproc/mtk_scp.h                           |  2 +-
->  include/linux/rpmsg/mtk_rpmsg.h                              |  2 +-
->  8 files changed, 14 insertions(+), 22 deletions(-)
->
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c b/driver=
-s/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
-> index 49fc2e9d45dd5..c4f1c49b9d52a 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
-> @@ -77,10 +77,10 @@ void mdp_vpu_shared_mem_free(struct mdp_vpu_dev *vpu)
->                 dma_free_wc(dev, vpu->config_size, vpu->config, vpu->conf=
-ig_addr);
->  }
->
-> -static void mdp_vpu_ipi_handle_init_ack(void *data, unsigned int len,
-> +static void mdp_vpu_ipi_handle_init_ack(const void *data, unsigned int l=
-en,
->                                         void *priv)
->  {
-> -       struct mdp_ipi_init_msg *msg =3D (struct mdp_ipi_init_msg *)data;
-> +       const struct mdp_ipi_init_msg *msg =3D data;
->         struct mdp_vpu_dev *vpu =3D
->                 (struct mdp_vpu_dev *)(unsigned long)msg->drv_data;
->
-> @@ -91,10 +91,10 @@ static void mdp_vpu_ipi_handle_init_ack(void *data, u=
-nsigned int len,
->         complete(&vpu->ipi_acked);
->  }
->
-> -static void mdp_vpu_ipi_handle_deinit_ack(void *data, unsigned int len,
-> +static void mdp_vpu_ipi_handle_deinit_ack(const void *data, unsigned int=
- len,
->                                           void *priv)
->  {
-> -       struct mdp_ipi_deinit_msg *msg =3D (struct mdp_ipi_deinit_msg *)d=
-ata;
-> +       const struct mdp_ipi_deinit_msg *msg =3D data;
->         struct mdp_vpu_dev *vpu =3D
->                 (struct mdp_vpu_dev *)(unsigned long)msg->drv_data;
->
-> @@ -102,10 +102,10 @@ static void mdp_vpu_ipi_handle_deinit_ack(void *dat=
-a, unsigned int len,
->         complete(&vpu->ipi_acked);
->  }
->
-> -static void mdp_vpu_ipi_handle_frame_ack(void *data, unsigned int len,
-> +static void mdp_vpu_ipi_handle_frame_ack(const void *data, unsigned int =
-len,
->                                          void *priv)
->  {
-> -       struct img_sw_addr *addr =3D (struct img_sw_addr *)data;
-> +       const struct img_sw_addr *addr =3D data;
->         struct img_ipi_frameparam *param =3D
->                 (struct img_ipi_frameparam *)(unsigned long)addr->va;
->         struct mdp_vpu_dev *vpu =3D
-> diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.=
-h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
-> index 300363a40158c..2561b99c95871 100644
-> --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
-> +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
-> @@ -23,7 +23,7 @@ enum mtk_vcodec_fw_use {
->
->  struct mtk_vcodec_fw;
->
-> -typedef void (*mtk_vcodec_ipi_handler) (void *data,
-> +typedef void (*mtk_vcodec_ipi_handler) (const void *data,
->         unsigned int len, void *priv);
->
->  struct mtk_vcodec_fw *mtk_vcodec_fw_select(void *priv, enum mtk_vcodec_f=
-w_type type,
-> diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_=
-vpu.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-> index 9f6e4b59455da..4c34344dc7dcb 100644
-> --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-> +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-> @@ -29,15 +29,7 @@ static int mtk_vcodec_vpu_set_ipi_register(struct mtk_=
-vcodec_fw *fw, int id,
->                                            mtk_vcodec_ipi_handler handler=
-,
->                                            const char *name, void *priv)
->  {
-> -       /*
-> -        * The handler we receive takes a void * as its first argument. W=
-e
-> -        * cannot change this because it needs to be passed down to the r=
-proc
-> -        * subsystem when SCP is used. VPU takes a const argument, which =
-is
-> -        * more constrained, so the conversion below is safe.
-> -        */
-> -       ipi_handler_t handler_const =3D (ipi_handler_t)handler;
-> -
-> -       return vpu_ipi_register(fw->pdev, id, handler_const, name, priv);
-> +       return vpu_ipi_register(fw->pdev, id, handler, name, priv);
->  }
->
->  static int mtk_vcodec_vpu_ipi_send(struct mtk_vcodec_fw *fw, int id, voi=
-d *buf,
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c=
- b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-> index 82e57ae983d55..a840dd2a48d0e 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-> @@ -97,7 +97,7 @@ static bool vpu_dec_check_ap_inst(struct mtk_vcodec_dec=
-_dev *dec_dev, struct vde
->   * This function runs in interrupt context and it means there's an IPI M=
-SG
->   * from VPU.
->   */
-> -static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv=
-)
-> +static void vpu_dec_ipi_handler(const void *data, unsigned int len, void=
- *priv)
->  {
->         struct mtk_vcodec_dec_dev *dec_dev;
->         const struct vdec_vpu_ipi_ack *msg =3D data;
-> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c=
- b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-> index 84ad1cc6ad171..ea0c4a281d1a1 100644
-> --- a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-> @@ -57,7 +57,7 @@ static bool vpu_enc_check_ap_inst(struct mtk_vcodec_enc=
-_dev *enc_dev, struct ven
->         return ret;
->  }
->
-> -static void vpu_enc_ipi_handler(void *data, unsigned int len, void *priv=
-)
-> +static void vpu_enc_ipi_handler(const void *data, unsigned int len, void=
- *priv)
->  {
->         struct mtk_vcodec_enc_dev *enc_dev;
->         const struct venc_vpu_ipi_msg_common *msg =3D data;
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index a35409eda0cf2..b508136b416a8 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -78,10 +78,10 @@ static void scp_wdt_handler(struct mtk_scp *scp, u32 =
-scp_to_host)
->                 rproc_report_crash(scp_node->rproc, RPROC_WATCHDOG);
->  }
->
-> -static void scp_init_ipi_handler(void *data, unsigned int len, void *pri=
-v)
-> +static void scp_init_ipi_handler(const void *data, unsigned int len, voi=
-d *priv)
->  {
->         struct mtk_scp *scp =3D priv;
-> -       struct scp_run *run =3D data;
-> +       const struct scp_run *run =3D data;
->
->         scp->run.signaled =3D run->signaled;
->         strscpy(scp->run.fw_ver, run->fw_ver, SCP_FW_VER_LEN);
-> diff --git a/include/linux/remoteproc/mtk_scp.h b/include/linux/remotepro=
-c/mtk_scp.h
-> index 7c2b7cc9fe6c1..84e579940b8e5 100644
-> --- a/include/linux/remoteproc/mtk_scp.h
-> +++ b/include/linux/remoteproc/mtk_scp.h
-> @@ -8,7 +8,7 @@
->
->  #include <linux/platform_device.h>
->
-> -typedef void (*scp_ipi_handler_t) (void *data,
-> +typedef void (*scp_ipi_handler_t) (const void *data,
->                                    unsigned int len,
->                                    void *priv);
->  struct mtk_scp;
-> diff --git a/include/linux/rpmsg/mtk_rpmsg.h b/include/linux/rpmsg/mtk_rp=
-msg.h
-> index 363b60178040b..9d67507471fba 100644
-> --- a/include/linux/rpmsg/mtk_rpmsg.h
-> +++ b/include/linux/rpmsg/mtk_rpmsg.h
-> @@ -9,7 +9,7 @@
->  #include <linux/platform_device.h>
->  #include <linux/remoteproc.h>
->
-> -typedef void (*ipi_handler_t)(void *data, unsigned int len, void *priv);
-> +typedef void (*ipi_handler_t)(const void *data, unsigned int len, void *=
-priv);
->
->  /*
->   * struct mtk_rpmsg_info - IPI functions tied to the rpmsg device.
->
-> --
-> 2.44.0.rc0.258.g7320e95886-goog
->
+./mtk-vcodec-crash.sh 100
 
+Script code:
+***
+#!/bin/bash
 
---=20
-Ricardo Ribalda
+test() {
+	gst-launch-1.0 --no-fault filesrc location=3DTILES_B_Cisco_1.bin ! h265par=
+se ! v4l2slh265dec ! fakevideosink &
+	pid=3D$!
+
+	sleep 2
+	kill $pid
+}
+
+for i in $(seq 1 $1)
+do
+	test &
+done
+
+wait
+***
+
+The kernel Crash:
+[   93.261248] Unable to handle kernel NULL pointer dereference at virtual
+address 0000000000000008
+[   93.270056] Mem abort info:
+[   93.272880]   ESR =3D 0x0000000096000004
+[   93.276804]   EC =3D 0x25: DABT (current EL), IL =3D 32 bits
+[   93.282233]   SET =3D 0, FnV =3D 0
+[   93.285372]   EA =3D 0, S1PTW =3D 0
+[   93.288561]   FSC =3D 0x04: level 0 translation fault
+[   93.293493] Data abort info:
+[   93.296424]   ISV =3D 0, ISS =3D 0x00000004, ISS2 =3D 0x00000000
+[   93.301920]   CM =3D 0, WnR =3D 0, TnD =3D 0, TagAccess =3D 0
+[   93.306977]   GCS =3D 0, Overlay =3D 0, DirtyBit =3D 0, Xs =3D 0
+[   93.312321] user pgtable: 4k pages, 48-bit VAs, pgdp=3D0000000168daf000
+[   93.318790] [0000000000000008] pgd=3D0000000000000000, p4d=3D00000000000=
+00000
+[   93.325588] Internal error: Oops: 0000000096000004 [#1] PREEMPT SMP
+[   93.331842] Modules linked in: mt7921e mt7921_common mt792x_lib
+mt76_connac_lib mt76 mac80211 btusb btintel mtk_vcodec_dec_hw btmtk btrtl
+mtk_vcodec_dec btbcm cfg80211 bluetooth snd_sof_mt8195 mtk_vcodec_enc
+mtk_adsp_common uvcvideo v4l2_vp9 snd_sof_xtensa_dsp v4l2_h264 mtk_vcodec_d=
+bgfs
+snd_sof_of snd_sof ecdh_generic mtk_vcodec_common ecc uvc elan_i2c
+videobuf2_vmalloc crct10dif_ce cros_ec_lid_angle cros_ec_sensors snd_sof_ut=
+ils
+cros_ec_sensors_core cros_usbpd_logger cros_usbpd_charger fuse ip_tables ip=
+v6
+[   93.376652] CPU: 5 PID: 3210 Comm: h265parse0:sink Tainted: G        W  =
+   =20
+6.8.0-rc4-next-20240212+ #14
+[   93.386463] Hardware name: Acer Tomato (rev3 - 4) board (DT)
+[   93.392107] pstate: 80400009 (Nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=
+=3D--)
+[   93.399054] pc : vcodec_vpu_send_msg+0x4c/0x190 [mtk_vcodec_dec]
+[   93.405058] lr : vcodec_send_ap_ipi+0x78/0x170 [mtk_vcodec_dec]
+[   93.410968] sp : ffff80008750bc20
+[   93.414269] x29: ffff80008750bc20 x28: ffff1299f6d70000 x27: 00000000000=
+00000
+[   93.421391] x26: 0000000000000000 x25: 0000000000000000 x24: 00000000000=
+00000
+[   93.428512] x23: ffff80008750bc98 x22: 000000000000a003 x21: ffffd45c4cf=
+ae000
+[   93.435632] x20: 0000000000000010 x19: ffff1299fd668310 x18: 00000000000=
+0001a
+[   93.442753] x17: 000000040044ffff x16: ffffd45cb15dc648 x15: 00000000000=
+00000
+[   93.449874] x14: ffff1299c08da1c0 x13: ffffd45cb1f87a10 x12: ffffd45cb2f=
+5fe80
+[   93.456995] x11: 0000000000000001 x10: 0000000000001b30 x9 : ffffd45c4d1=
+2b488
+[   93.464116] x8 : 1fffe25339380d81 x7 : 0000000000000001 x6 : ffff1299c9c=
+06c00
+[   93.471236] x5 : 0000000000000132 x4 : 0000000000000000 x3 : 00000000000=
+00000
+[   93.478358] x2 : 0000000000000010 x1 : ffff80008750bc98 x0 : 00000000000=
+00000
+[   93.485479] Call trace:
+[   93.487914]  vcodec_vpu_send_msg+0x4c/0x190 [mtk_vcodec_dec]
+[   93.493563]  vcodec_send_ap_ipi+0x78/0x170 [mtk_vcodec_dec]
+[   93.499125]  vpu_dec_deinit+0x1c/0x30 [mtk_vcodec_dec]
+[   93.504254]  vdec_hevc_slice_deinit+0x30/0x98 [mtk_vcodec_dec]
+[   93.510076]  vdec_if_deinit+0x38/0x68 [mtk_vcodec_dec]
+[   93.515205]  mtk_vcodec_dec_release+0x20/0x40 [mtk_vcodec_dec]
+[   93.521027]  fops_vcodec_release+0x64/0x118 [mtk_vcodec_dec]
+[   93.526677]  v4l2_release+0x7c/0x100
+[   93.530245]  __fput+0x80/0x2d8
+[   93.533292]  __fput_sync+0x58/0x70
+[   93.536681]  __arm64_sys_close+0x40/0x90
+[   93.540590]  invoke_syscall+0x50/0x128
+[   93.544329]  el0_svc_common.constprop.0+0x48/0xf0
+[   93.549020]  do_el0_svc+0x24/0x38
+[   93.552323]  el0_svc+0x38/0xd8
+[   93.555367]  el0t_64_sync_handler+0xc0/0xc8
+[   93.559537]  el0t_64_sync+0x1a8/0x1b0
+[   93.563189] Code: d503201f f9401660 b900127f b900227f (f9400400)=20
+[   93.569268] ---[ end trace 0000000000000000 ]---
 
