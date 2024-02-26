@@ -4,70 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD8C2C54E49
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Feb 2024 12:11:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2B59C5478C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 08:07:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=U9giDF/64ltL75T58+e/0tM6lDyrQeRyQ2KV8p/jU40=; b=rPxZzMEs4v26OTnwGg1pM/UZTN
-	1cJqn+y8aEoFWpAz+v12rtQZzo69avztTqtUWiuPSovfUbHlljPT8NG/5Do/+cU1wc6Kk+b9Ubmih
-	y+6FeCV21yxzhrrKlU7JXBus3eOnz3rYw6WBdVrehU5mi7AYABph0542NxprAR+DrqtMTUt3A6OF8
-	V6HGrK256bAq9H571Fb2NtVyhV6Y/HceCFHKiZz0RE7av83e+AB/sFMWm/DJ2KuafvGM1ktM5ar20
-	jdfxnL1PXcKtNMGNAJ8pT6/2mNGmb1wmYQ4bZQipBhGkU5K6SVFHyMb3WYNb/qVE19z7c7qf+FTip
-	KKkFJzVw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kBcIHteoHnr9Cz5N/WAN5bt6cpSYHYQ7aU0W3fZEze8=; b=ZjoawtN0m96j7Y
+	5Rl8F1SlWc/7ezLGpSp8YydqWBxXFV+18g4vy9YSfCoxn3Dk+Rs5FSrOSsh71TUL5tYFV6XrUCMl6
+	mHSH1nY9Zb6fH2SiQkk3Z4Xgrg85JNP/QCwnLZe6G0gjgCX6Xp3wBzA4uM5McPEEtG4JQp4GAGHp4
+	geIYamIyW07K7qRWRSpoa6XHXPhPYlT/q0F6Q2Z/nqzyK0w79XBOyy+qMEMuYjGPMcgS3q2wr/39L
+	cNYN9n2XBMFZ+Vojvi01AGQXS0xW9eh1l7VUegrtxMzxjfd+NsR9qnFDkfEAnogERMOypO06Hu50Z
+	jF2H+vsPNRZmyAeqOk+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdqs6-0000000Cpgw-3JEt;
-	Sat, 24 Feb 2024 12:11:14 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1reW1S-0000000GvOV-2ug5;
+	Mon, 26 Feb 2024 08:07:38 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdqs3-0000000Cpek-05HH;
-	Sat, 24 Feb 2024 12:11:13 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 8FCDCCE2825;
-	Sat, 24 Feb 2024 12:11:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 58343C433C7;
-	Sat, 24 Feb 2024 12:11:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708776666;
-	bh=Pu6N//eyTGdqifeP3OJ4ufRMcGGxcldi31zFNRd6ipY=;
-	h=From:To:Cc:Subject:Date:From;
-	b=hSt7BXxugFK7a6uTMtUsydYhZeyQvuf31BUXhaJ2r+XvwbmhPWMF92aOdJnU6cG6e
-	 5fGPGAVUGUD0xRtCmMLGWzVHrGLJgLB5KO7QDq9Wn3U/+6m5gB3mIVGgR98q7n0hW3
-	 Ckej0H/uKk8yTVnBKL4d1qpGph+i7TDUchqkZxTpLRr4XT0S4XkaVtx0LklqDNgy+0
-	 7PhsF4w26CAE0nuKrrzrDwx4jgQt14gxjnTEF0HpAzAC0OyXBikS5sOTCQz3G4Z9vM
-	 7CHJZXoYKz1aTO+X5Yv+DeZ+WsRxtrpkoFpM7LvmQlc9E4N1x0FW9Ex3t0XgcsXGa0
-	 U+TM8UY7Z4QWg==
-From: Arnd Bergmann <arnd@kernel.org>
-To: Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Alexandre Courbot <acourbot@chromium.org>,
-	Pi-Hsun Shih <pihsun@chromium.org>,
-	linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] media: mediatek: vcodec: avoid -Wcast-function-type-strict warning
-Date: Sat, 24 Feb 2024 13:10:22 +0100
-Message-Id: <20240224121059.1806691-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.39.2
+	id 1reW1O-0000000GvKa-09Vl
+	for linux-mediatek@lists.infradead.org;
+	Mon, 26 Feb 2024 08:07:35 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-1dc0e5b223eso22250395ad.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Feb 2024 00:07:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1708934849; x=1709539649; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=kBcIHteoHnr9Cz5N/WAN5bt6cpSYHYQ7aU0W3fZEze8=;
+        b=kcn2WZ+P/zcpU4yZxSMAYgxoSw47680gll7Xog7bLPvDt+1ePeGUHSGBJdFd9pBCxd
+         uiy3quW9Q+i1qaVpUsLELvvcZPuwXSqpqO3R0AmwkLTdW1mh8WXTE+kKTwDieruVo2aJ
+         2fHu7N5WnYHJlKU4EjZw0+4eOuYFRJaXLyMew=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708934849; x=1709539649;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=kBcIHteoHnr9Cz5N/WAN5bt6cpSYHYQ7aU0W3fZEze8=;
+        b=PecxE5UpW7Ss+vcSPbEwXwApYXlzg7CkzncQxLpLyghel0gx6UWDjiuuVjPrGUwfsA
+         ad2tPjBmpdzsZTh0tIrEge8KIACmFjoXcTahumw2Ml9FM9Sm1mp9024IHuKBtSLQTasv
+         7ruShi3d/ywRLFlh7OVCpX+j5EzHDfncsLAznY7OWrgXCOh6esSRrjCJp6bLxs0HRutj
+         npi2DwCo8OkJbWoW2EDE1pvvmtwv90kOYSBMLNSUHf5oHmSfjfX5BCIUNUTT+uJ4iZ8E
+         S9ltCLnxLyIqyYMlfwYrMfO1h8NX8OnbJR6bCNo2SU+nCoeduKftGxsJ02PCsvIEybir
+         wPZA==
+X-Forwarded-Encrypted: i=1; AJvYcCVfuPmw6tzuTFOnfxm/R+G5AIkdWJN54iUJHHCQ2+YiowSg5c1cYaJdSFFFXwz+Pqxu6c1eB1X5IhX9f86Rwf1Kqje61bpY25OGDNgjzsqDDHdI
+X-Gm-Message-State: AOJu0Yx9WTekjK+ndC2opK9FXjCmzOExHM75olIDFkRdciJS2AoYEYiY
+	RD8vjArjWHtEgxID8YB0KuAmgKj629dTAVpchOWVWokkTxBq3oAzNcohBnLg5w==
+X-Google-Smtp-Source: AGHT+IExiQnb+rRMNDHWEdTGrSJHafd60Czmd6wFeh8GaiNgF/iSjktfRAWY7nO1Q8GFmSikhhho1g==
+X-Received: by 2002:a17:903:548:b0:1db:bd6b:d1fb with SMTP id jo8-20020a170903054800b001dbbd6bd1fbmr5145701plb.63.1708934849429;
+        Mon, 26 Feb 2024 00:07:29 -0800 (PST)
+Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:e3f5:67aa:a8f3:8179])
+        by smtp.gmail.com with ESMTPSA id le6-20020a170902fb0600b001dc95cded74sm1953660plb.233.2024.02.26.00.07.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 Feb 2024 00:07:29 -0800 (PST)
+From: Fei Shao <fshao@chromium.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: [PATCH] drm/mediatek: Support MT8195 OVL compatible in mtk_drm_drv
+Date: Mon, 26 Feb 2024 16:06:47 +0800
+Message-ID: <20240226080721.3331649-1-fshao@chromium.org>
+X-Mailer: git-send-email 2.44.0.rc0.258.g7320e95886-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240224_041111_425578_6E7250D6 
-X-CRM114-Status: GOOD (  15.63  )
+X-CRM114-CacheID: sfid-20240226_000734_135269_C798E77F 
+X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,90 +83,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Daniel Vetter <daniel@ffwll.ch>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
+Specify the component type for mediatek,mt8195-disp-ovl in the MediaTek
+DRM driver on top of commit 76cdcb87d391 ("drm/mediatek: Add MT8195 ovl
+driver support").
 
-The ipi handler here tries hard to maintain const-ness of its argument,
-but by doing that causes a warning about function type casts:
+With this, the compatible can function as an independent fallback for
+other display overlays without relying on MT8192.
 
-drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c:38:32: error: cast from 'mtk_vcodec_ipi_handler' (aka 'void (*)(void *, unsigned int, void *)') to 'ipi_handler_t' (aka 'void (*)(const void *, unsigned int, void *)') converts to incompatible function type [-Werror,-Wcast-function-type-strict]
-   38 |         ipi_handler_t handler_const = (ipi_handler_t)handler;
-      |                                       ^~~~~~~~~~~~~~~~~~~~~~
-
-Remove the hack and just use a non-const argument.
-
-Fixes: bf1d556ad4e0 ("media: mtk-vcodec: abstract firmware interface")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Signed-off-by: Fei Shao <fshao@chromium.org>
 ---
- drivers/media/platform/mediatek/mdp/mtk_mdp_vpu.c      |  2 +-
- .../mediatek/vcodec/common/mtk_vcodec_fw_vpu.c         | 10 +---------
- drivers/media/platform/mediatek/vpu/mtk_vpu.c          |  2 +-
- drivers/media/platform/mediatek/vpu/mtk_vpu.h          |  2 +-
- 4 files changed, 4 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_vpu.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_vpu.c
-index b065ccd06914..378a1cba0144 100644
---- a/drivers/media/platform/mediatek/mdp/mtk_mdp_vpu.c
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_vpu.c
-@@ -26,7 +26,7 @@ static void mtk_mdp_vpu_handle_init_ack(const struct mdp_ipi_comm_ack *msg)
- 	vpu->inst_addr = msg->vpu_inst_addr;
- }
- 
--static void mtk_mdp_vpu_ipi_handler(const void *data, unsigned int len,
-+static void mtk_mdp_vpu_ipi_handler(void *data, unsigned int len,
- 				    void *priv)
- {
- 	const struct mdp_ipi_comm_ack *msg = data;
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-index 9f6e4b59455d..4c34344dc7dc 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-@@ -29,15 +29,7 @@ static int mtk_vcodec_vpu_set_ipi_register(struct mtk_vcodec_fw *fw, int id,
- 					   mtk_vcodec_ipi_handler handler,
- 					   const char *name, void *priv)
- {
--	/*
--	 * The handler we receive takes a void * as its first argument. We
--	 * cannot change this because it needs to be passed down to the rproc
--	 * subsystem when SCP is used. VPU takes a const argument, which is
--	 * more constrained, so the conversion below is safe.
--	 */
--	ipi_handler_t handler_const = (ipi_handler_t)handler;
--
--	return vpu_ipi_register(fw->pdev, id, handler_const, name, priv);
-+	return vpu_ipi_register(fw->pdev, id, handler, name, priv);
- }
- 
- static int mtk_vcodec_vpu_ipi_send(struct mtk_vcodec_fw *fw, int id, void *buf,
-diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.c b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-index 7243604a82a5..724ae7c2ab3b 100644
---- a/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-+++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-@@ -635,7 +635,7 @@ int vpu_load_firmware(struct platform_device *pdev)
- }
- EXPORT_SYMBOL_GPL(vpu_load_firmware);
- 
--static void vpu_init_ipi_handler(const void *data, unsigned int len, void *priv)
-+static void vpu_init_ipi_handler(void *data, unsigned int len, void *priv)
- {
- 	struct mtk_vpu *vpu = priv;
- 	const struct vpu_run *run = data;
-diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.h b/drivers/media/platform/mediatek/vpu/mtk_vpu.h
-index a56053ff135a..da05f3e74081 100644
---- a/drivers/media/platform/mediatek/vpu/mtk_vpu.h
-+++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.h
-@@ -17,7 +17,7 @@
-  * VPU interfaces with other blocks by share memory and interrupt.
-  */
- 
--typedef void (*ipi_handler_t) (const void *data,
-+typedef void (*ipi_handler_t) (void *data,
- 			       unsigned int len,
- 			       void *priv);
- 
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 14a1e0157cc4..703caba48420 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -739,6 +739,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DISP_OVL },
+ 	{ .compatible = "mediatek,mt8192-disp-ovl",
+ 	  .data = (void *)MTK_DISP_OVL },
++	{ .compatible = "mediatek,mt8195-disp-ovl",
++	  .data = (void *)MTK_DISP_OVL },
+ 	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
+ 	  .data = (void *)MTK_DISP_OVL_2L },
+ 	{ .compatible = "mediatek,mt8192-disp-ovl-2l",
 -- 
-2.39.2
+2.44.0.rc0.258.g7320e95886-goog
 
 
