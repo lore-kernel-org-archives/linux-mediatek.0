@@ -4,71 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19252C48BF6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 14:14:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D1EEC54E41
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 14:54:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dbjmA3CiLRroXlURNen2Q9heOG0oE8s68Au04uxxO0s=; b=TrlJO2LkzaxhQ/SmRHF6mJK9AX
-	/KTKkyx+k4CXx5eT3oJKmBOsQxFx4qIeEFAY8Y0IpxPe2yfo1tjUqh9U4b4RN/PQrXW8COxcnVGRg
-	lXNkxl2u3yOiwT2iOtiazfmeAK0PDv6Vjhw0vNvXJU/f8701Me0B6vY58cboWB/GK1WNZ1e4e3t/M
-	XwbP6+g8m8HxOsfIld+n1FC+L5vhIdZBdfPrXbFbtjEVKJf9d2R4DncVjHvAkkVaT3zLpuvTaOr/1
-	8a+pGRly3KqkT1ytPQU5sbHF9ZnFd80LGFb+iP2fEdSwrBUwbVMKic+fX7ArktCgAqIlPL3BM2gmX
-	zLGgLiNg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NzhRJIZMMstWHaUjfoekOiC82gsHL8xqZOUKQz5hIHY=; b=VJovT7EQDZ6z2BPldaLVFjy4xz
+	mC8nqi1iYCYoPmxN6Vr/mKjEYqw5SYxz5+Y1nyx58lutsILV3zuI/PLFcGH0cmwfc2br3rM881+w0
+	7tRdzDHHwSOCHiF5S0bjv+SC7w6YrGHprhXoj9Nh+HrnxpnKRhI0Yt3pfPlyXXx+xb489TwA8FUm1
+	fXh1NeYioCpdqws/hiLfRzySgHbFPjWiBZ2qNbq6iq0MhKKS19YW0FpC8AfNERG6tQpurFywKg53j
+	H8+uDkByAzItJv9mxfa4KPrdS6niFYAKwFHs+BoLWVi3T+XFtkuyMx6PXO0e/AOcwzQZyyET5WywZ
+	yyb50FhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rebkq-000000013u7-1DX0;
-	Mon, 26 Feb 2024 14:14:52 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
+	id 1recNE-00000001Gck-2H5Q;
+	Mon, 26 Feb 2024 14:54:32 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rebkk-000000013o6-3pP1
-	for linux-mediatek@lists.infradead.org;
-	Mon, 26 Feb 2024 14:14:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=dbjmA3CiLRroXlURNen2Q9heOG0oE8s68Au04uxxO0s=;
-	t=1708956884; x=1710166484; b=AWLiT9VDskC1NY5dKnXsbASRI2zCziUM6IBy9JQCw8GxmHM
-	H2ZsLp23rVC0iKs94kk/4GxHwxE8gmFC0HTn2am4Oc3Wwc2zGiZcHnud+fwN51IAYvAf/Cjl1xqzb
-	VehEhb2hp7aNGPzs5bxp7rEPAtXFbEsv2761dwAZGGQ48z8MZbtbsft6wwFdKSvLWdRmptviGPb1k
-	6hmgOwLPaW/wdWRW1uoTUQ2JWLKktjtbyVfmBFcNG0MrBaI+8vx2t130Ar/YpjAZe+KthHg+orKve
-	34mQEOqL0tVNsZJtZU4AIDlpXUKGi0QTB7IccnPclEPiIQDS0+th9sYuZVUIIydA==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.97)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1rebke-00000009Hch-0bZB;
-	Mon, 26 Feb 2024 15:14:40 +0100
-Message-ID: <51cad25c273b27885f5387f995db48ef97df2996.camel@sipsolutions.net>
-Subject: Re: [v4,2/2] wifi: mac80211: refactor STA CSA parsing flows
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Michael-cy Lee =?UTF-8?Q?=28=E6=9D=8E=E5=B3=BB=E5=AE=87=29?=
-	 <Michael-cy.Lee@mediatek.com>, "linux-wireless@vger.kernel.org"
-	 <linux-wireless@vger.kernel.org>
-Cc: "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>,  "nbd@nbd.name" <nbd@nbd.name>,
- Evelyn Tsai =?UTF-8?Q?=28=E8=94=A1=E7=8F=8A=E9=88=BA=29?=
- <Evelyn.Tsai@mediatek.com>, "lorenzo@kernel.org" <lorenzo@kernel.org>,
- Money Wang =?UTF-8?Q?=28=E7=8E=8B=E4=BF=A1=E5=AE=89=29?=
- <Money.Wang@mediatek.com>
-Date: Mon, 26 Feb 2024 15:14:39 +0100
-In-Reply-To: <765fb43a372825f6063894809f204150d87d4d18.camel@mediatek.com>
-References: <20231222010914.6521-1-michael-cy.lee@mediatek.com>
-	 <20231222010914.6521-3-michael-cy.lee@mediatek.com>
-	 <b74f21d22a41b2ca635e64f04c06d5db6d38d920.camel@sipsolutions.net>
-	 <765fb43a372825f6063894809f204150d87d4d18.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.50.4 (3.50.4-1.fc39) 
+	id 1recN9-00000001Gb2-3pxM;
+	Mon, 26 Feb 2024 14:54:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1708959265;
+	bh=lgkB/ejSf4q1D6g3ACK0ytRcy3yE2UMi3BpNvE8ZFzk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=m594B+PoBP+t/5toUSZNM5KZJCDjrVdr+i4xaIPhIC93UAUl+hEy49GX2kAhZBeI3
+	 yeXyrtxtIhPWQ9s2v6rnMq6uhEZ6RkAR9yxHZzyn4trQpaXrr4V3ZBVsOsCnXfosLX
+	 4OBPRYmqs6J1Tqhvm64WWBucM7qa8PrG6VClj08RbRBYwxcFdsL5nmjArVkxZ4adW/
+	 2SUHJdcCRQEd1sMsLbQhMWd50lGDlBy++4T/8r1gvSNUGIBPNW5BkHdiVtXSyXgEyo
+	 4MsKCg+YTSypS4I7Bsu/LV17QcvRRiBJGklejkP3xmfmVx2QEOjxmrvO9DEjH5OHf5
+	 OTtb2XXhg0aUg==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 17CAB37820CF;
+	Mon, 26 Feb 2024 14:54:24 +0000 (UTC)
+Message-ID: <53671deb-9c11-43c1-8deb-93fe4708651a@collabora.com>
+Date: Mon, 26 Feb 2024 15:54:23 +0100
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/18] Add audio support for the MediaTek Genio 350-evk
+ board
+Content-Language: en-US
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Lee Jones <lee@kernel.org>,
+ Flora Fu <flora.fu@mediatek.com>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Sumit Semwal <sumit.semwal@linaro.org>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
+ Nicolas Belin <nbelin@baylibre.com>, Fabien Parent <fparent@baylibre.com>
+References: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240226_061447_281766_17B116DA 
-X-CRM114-Status: UNSURE (   9.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240226_065428_219358_F8FAA7EE 
+X-CRM114-Status: GOOD (  18.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,30 +87,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi again,
+Il 26/02/24 15:01, Alexandre Mergnat ha scritto:
+> This serie aim to add the following audio support for the Genio 350-evk:
+> - Playback
+>    - 2ch Headset Jack (Earphone)
+>    - 1ch Line-out Jack (Speaker)
+>    - 8ch HDMI Tx
+> - Capture
+>    - 1ch DMIC (On-board Digital Microphone)
+>    - 1ch AMIC (On-board Analogic Microphone)
+>    - 1ch Headset Jack (External Analogic Microphone)
+> 
+> Of course, HDMI playback need the MT8365 display patches [1] and a DTS
+> change documented in "mediatek,mt8365-mt6357.yaml".
+> 
+> [1]: https://lore.kernel.org/all/20231023-display-support-v1-0-5c860ed5c33b@baylibre.com/
+> 
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 
->=20
-> In fact, we have plans to study and implement puncturing on our MT76
-> driver. We're currently working on the AP side, and we expect to start
-> the STA side maybe three months later.
+Actually, I am cooking a series (I'm finishing the testing....) that brings quite
+a bit of cleanups in MTK ASoC, including the commonization of the machine driver
+probe, with the dai-link DT nodes, and which also modernizes most of the existing
+drivers to use that instead.
 
-Unrelated to puncturing, but if you're working on the AP side now - also
-perhaps on the AP side wrt. partner/other link on MLD, i.e. one link
-doing CSA another advertising it in the MLE per-STA profile?
+If you wait for a day or two, your mt8365-mt6357.c driver's probe function can be
+shrunk to ~3 lines or something like that.. very easily :-)
 
-I'd really love to have your input on that in this thread:
+Cheers,
+Angelo
 
-https://lore.kernel.org/linux-wireless/3c550ae335a9762a9cbd0c8109b6dd99faeb=
-8f6f.camel@sipsolutions.net/
+> ---
+> Alexandre Mergnat (15):
+>        ASoC: dt-bindings: mediatek,mt8365-afe: Add audio afe document
+>        ASoC: dt-bindings: mediatek,mt8365-mt6357: Add audio sound card document
+>        dt-bindings: mfd: mediatek: Add codec property for MT6357 PMIC
+>        ASoC: mediatek: mt8365: Add common header
+>        SoC: mediatek: mt8365: support audio clock control
+>        ASoC: mediatek: mt8365: Add I2S DAI support
+>        ASoC: mediatek: mt8365: Add ADDA DAI support
+>        ASoC: mediatek: mt8365: Add DMIC DAI support
+>        ASoC: mediatek: mt8365: Add PCM DAI support
+>        ASoC: mediatek: mt8365: Add platform driver
+>        ASoC: mediatek: Add MT8365 support
+>        arm64: defconfig: enable mt8365 sound
+>        arm64: dts: mediatek: add mt6357 audio codec support
+>        arm64: dts: mediatek: add afe support for mt8365 SoC
+>        arm64: dts: mediatek: add audio support for mt8365-evk
+> 
+> Fabien Parent (1):
+>        mfd: mt6397-core: register mt6357 sound codec
+> 
+> Nicolas Belin (2):
+>        ASoc: mediatek: mt8365: Add a specific soundcard for EVK
+>        ASoC: codecs: mt6357: add MT6357 codec
+> 
+>   .../devicetree/bindings/mfd/mediatek,mt6357.yaml   |   11 +
+>   .../bindings/sound/mediatek,mt8365-afe.yaml        |  164 ++
+>   .../bindings/sound/mediatek,mt8365-mt6357.yaml     |  127 ++
+>   arch/arm64/boot/dts/mediatek/mt6357.dtsi           |    6 +-
+>   arch/arm64/boot/dts/mediatek/mt8365-evk.dts        |   95 +-
+>   arch/arm64/boot/dts/mediatek/mt8365.dtsi           |   47 +-
+>   arch/arm64/configs/defconfig                       |    2 +
+>   drivers/mfd/mt6397-core.c                          |    3 +
+>   sound/soc/codecs/Kconfig                           |    7 +
+>   sound/soc/codecs/Makefile                          |    2 +
+>   sound/soc/codecs/mt6357.c                          | 1805 +++++++++++++++
+>   sound/soc/codecs/mt6357.h                          |  674 ++++++
+>   sound/soc/mediatek/Kconfig                         |   20 +
+>   sound/soc/mediatek/Makefile                        |    1 +
+>   sound/soc/mediatek/mt8365/Makefile                 |   15 +
+>   sound/soc/mediatek/mt8365/mt8365-afe-clk.c         |  455 ++++
+>   sound/soc/mediatek/mt8365/mt8365-afe-clk.h         |   55 +
+>   sound/soc/mediatek/mt8365/mt8365-afe-common.h      |  495 +++++
+>   sound/soc/mediatek/mt8365/mt8365-afe-pcm.c         | 2347 ++++++++++++++++++++
+>   sound/soc/mediatek/mt8365/mt8365-dai-adda.c        |  355 +++
+>   sound/soc/mediatek/mt8365/mt8365-dai-dmic.c        |  475 ++++
+>   sound/soc/mediatek/mt8365/mt8365-dai-i2s.c         |  901 ++++++++
+>   sound/soc/mediatek/mt8365/mt8365-dai-pcm.c         |  298 +++
+>   sound/soc/mediatek/mt8365/mt8365-mt6357.c          |  379 ++++
+>   sound/soc/mediatek/mt8365/mt8365-reg.h             |  987 ++++++++
+>   25 files changed, 9718 insertions(+), 8 deletions(-)
+> ---
+> base-commit: 6613476e225e090cc9aad49be7fa504e290dd33d
+> change-id: 20240226-audio-i350-4e11da088e55
+> 
+> Best regards,
 
-But also - if you're working on AP side for this, I have some changes
-I'm working on for mac80211 to parse the per-STA profile for CSA on the
-other links, to e.g. track CSA on currently disabled links, or if one
-link just didn't have beacons received for a few beacons, or so...
 
-Would you be willing/interested in testing any of this code? I'm
-currently not really able to test it, so not sure if I should push it
-out.
-
-johannes
 
