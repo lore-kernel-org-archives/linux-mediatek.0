@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FD73C54E41
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 14:04:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4993C54E4A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 14:04:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SySgkOA9ajctfeHUQUrSz/Q4p2erm6cXVxuAkOBlkZA=; b=nBRLWT8jxfM8rNH7uXZFQyVbgu
-	DRCVqYisSfNpaRw0DF0m5xjUQCNps0lHinT96d5M/UHrV+O/CdZMb/ZZG3QnLsMGmj+NJXztiyZY6
-	5wZ9LB0XvToHtTEsSTOSl5ZsPUCTwalk/1BAObqC9SoP6hH6NAiY0KEYiMM7UgonYpeIjaqFSmBxr
-	Yot6QJtEQ4DBCgHlaxopXTPq/zk/hnfix2Ng0n8/y+ktP5WTSr4mk8oYDt9AgYNQeYcfaEQGKsFUY
-	1ZJZFvteCsHLf8xvwdIC9a0dSGest6YDa37qzkDMW6a8ZX4mTNNbTpnzJ4ACLMfnn0pJaHK0omjEi
-	pA8WUBhA==;
+	bh=H5MtUL1IabuadPQ+i4gp25hXm9l+Ixi169pISzOeLTg=; b=YR19RFJ2lqXMyXOIf5146v6pKe
+	8IhaHugCyG8u8mm/4y4jHaM6/7GxYy0m3n4Za9wgGXNeQN83R+LfWreO6DpA3EovOjFwC7OhhCQkr
+	EPPfKdUc/gqpyF34kjhXn/9peuCw9GUj4WrE1+1hqcaewyuXRSrvA0e+M9vZqBm1XmDJ0WAGX7wZV
+	XEU0Gv6Cl8hVxrgkREfyfHiODsWixqKMWrK7wAu5RbXtLrJ5G4HC6T1aYTfeyxYqxxCmpy4M4zUR2
+	Ib9kX+n2v7AmahDmdUpt6QokrzpRyTPQT6XFZ1NYru4XWy/14Vs5Xcb7/2BfjUK3gmijUpwIo0qXO
+	oziFMLGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rebb5-00000000zga-3nMu;
-	Mon, 26 Feb 2024 14:04:47 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1rebb7-00000000zhf-1c1A;
+	Mon, 26 Feb 2024 14:04:50 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rebYz-00000000ylT-2n71
+	id 1rebYz-00000000ylc-3UyI
 	for linux-mediatek@bombadil.infradead.org;
 	Mon, 26 Feb 2024 14:02:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
-	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=SySgkOA9ajctfeHUQUrSz/Q4p2erm6cXVxuAkOBlkZA=; b=S4ZGNaQGJm2W7jW8JWafLGIjgg
-	W27CSJp+zqv7q+zp4ZsKTXaCp0BDAnEq5i95lnSVZYYWm85cD2vjPS6WurBAX8sCXZcRGQzmnOPtk
-	D+iXU6+U1Gve+ytfPRqXtoBiybpJYi1HIZ6PcxqvJ4WYGFK1xYdpli7QF9hFAHYjQeHiARoz+hogq
-	nwqJL3p2wBq/gr51FPQpsIw9R8CWQP8F/7jky4wneAiAQb5P5F+cqwC2YD61ZPkepxyqiIJUHv/kE
-	xcnVel6xEg7WQOvhm4271+oPTJvR6UFigGPazNyVT96v1jsEOJnmTXu5oSeK1gBmd+x+aRTNr6Mco
-	hK1FZrUA==;
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
-	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rebYo-0000000HKHR-1yRn
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=H5MtUL1IabuadPQ+i4gp25hXm9l+Ixi169pISzOeLTg=; b=iBBqsWFGM6g2wUWtkbXDrSbZIc
+	gGGIypRWFI32AFckK3Ono7UbblBFcMXwi1u/dPvU0AmR0sXUYih+2fUi13QwnPKuNHnW1VXKoF+eX
+	rD09Yjo7PIHLWG43C6vVqvJxdTUp7sqDjnGAhplxrSHjJQWIDJi+Z8eyVUlOWLdG27dj0p47QweID
+	U66tlsqx3KKu171p6BXen1CIhTvR/7P5SJK3VMwLFB/XfYS57QmoajdDvYm4qu8kU1kiyWC6+8GcL
+	qjvw/FSiy914y09e6qz2uuD9+/ZCsaRjyvEO5td6UT7Zar6MhvBjMp3mbVVNguDs4ftjaJvEFc4/3
+	6nwjLqig==;
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rebYh-00000001EWf-0SGj
 	for linux-mediatek@lists.infradead.org;
 	Mon, 26 Feb 2024 14:02:36 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-412949fd224so15376445e9.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Feb 2024 06:02:26 -0800 (PST)
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-512bc0e8ce1so3062602e87.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Feb 2024 06:02:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1708956145; x=1709560945; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1708956136; x=1709560936; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=SySgkOA9ajctfeHUQUrSz/Q4p2erm6cXVxuAkOBlkZA=;
-        b=yUnsL+Zucwqg4jgqqdkRLL6A81sH/mzOcbHgEgP2gK5ofRKa9qibWhWLfBqY7xMUjW
-         GTIJapc7E+RRTsXOwq6UayV0yi/3e+oiu997UYyIQKFnvbOReI7IpT62VLjwD4TUtp14
-         f97eEa0EuuJSjmAnL9noLIvq6SWAVJU4x9IY7qqDaUpG+Q4OCJuQsRZU6UE+JrcmM+Be
-         vm24DLOUmerwQs29vWeNUX7Q6f/Xnb/WkKLQODfUf1LBHIFD5RVAoRa2QXaJZnOSZaX0
-         59zDeR0X63o2Ve86YWr8syKYpDW4BxfHuu786+gOHk2pK+XhfHkw9g+sN9hn58kcext1
-         mzig==
+        bh=H5MtUL1IabuadPQ+i4gp25hXm9l+Ixi169pISzOeLTg=;
+        b=wtzjpNDh7wziuLn8TkUYqsMIvfX3gl5Pg9oWYuXKl+XUdZDxY+R06NTh3YcPhY8pk/
+         TGySv1AjKTehll8b/yPotA13DgDb/kA0YraLNjxApZr8HaO0Gky34H7py0UKkEJQC4L+
+         AeiWZch3WyVrcBz8uPvx8nYD1PujoR6sA+IumZtZBbFznwudLEiF3uPWaFrwizQhFydz
+         1C9DoVNQzYi/eLbYwU++MwrksEW+69AZrqXnOTbg3WZtqD93VMPQMIFyV7YRIkt6C0rB
+         he6TMMH1SxfUpDZ/PB6mSg65pux9hd2teXj+umJiZuAGXuVfKGXoZmYTjX6gSWxfqeX2
+         6gUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708956145; x=1709560945;
+        d=1e100.net; s=20230601; t=1708956136; x=1709560936;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=SySgkOA9ajctfeHUQUrSz/Q4p2erm6cXVxuAkOBlkZA=;
-        b=kqPA27b2CxAkaiCHtTgk3mrpTO6sZuBDNVvxB8vi+2CoOTNjq/Oo1lmfhJ/W38gEe4
-         4wVIdSXSPAgolPO6VH8rv+9rYzogcRAx8rYwvtPi8wwUoGdefS4vc0IoBG5fSKY4/ndb
-         K4J0rVK7r17kijVJzbIg2yJUiXynBEVzKZXtPfuYi4nMTEwICxR41eyMtO1MXby9zk8A
-         6ZXVd3CYeNZvx4960Pnu6kTMcVMjFl6DLlfcgE4OsAXwJmnt+dlLn+u5y951c3Q9EUNV
-         4tRdR4UKrXpfISRKshStrVA7+Zb0+y1QVkx6x9cMwhyU6g45WFN7/9+UlNbMiWrvm8FW
-         Ql6w==
-X-Forwarded-Encrypted: i=1; AJvYcCUNgg0yHCFanYLgw7CY4Ycq30W0QlUqs1qovV+XXpiZPXJH/UQ9cTUCl4IiBcV1W37XOP4u6JLv+uaZ0QXX65nzVzENv+21WIZPdZUQYJsHTVcQ
-X-Gm-Message-State: AOJu0YxXLx4es4jGudiQwi8/3VCroTKwPI90TAUaGOW/AOV2n/UOR455
-	lP6sgcM2vOUsLWzV/SlpiQhonu3y9fJwfUATEGwi6/UO4eD4Z7+oPtRlqq1NjCU=
-X-Google-Smtp-Source: AGHT+IFpPbUmGpG6D2Hoin2ceyPisB2LdcV6AvfN2i4Rn5hUTug6ar6jNqO3ftEZKEadq+9sS5ybAA==
-X-Received: by 2002:a05:600c:1d07:b0:412:9739:717a with SMTP id l7-20020a05600c1d0700b004129739717amr6883151wms.12.1708956144187;
-        Mon, 26 Feb 2024 06:02:24 -0800 (PST)
+        bh=H5MtUL1IabuadPQ+i4gp25hXm9l+Ixi169pISzOeLTg=;
+        b=gIAC/65HYd5X4GpNgifoYvhQ08yzpBi+mhaQRlY5YTesP7tuF7YbLzq7b5ihgWE46A
+         pIS4nHCDSfCb0FNGNuupB3nMT4tUaGZj8fSQ+/pREUA2rBbpl/04PufoezX8Ix9Jo1Oi
+         3gxIo2O3JEft1rn0L33AAtRT8JBdgjV8engtA1FWdAoq4hlrpN/gfUPjs9f58z48gW92
+         zn/mwkNuHpgKzJmKX9VIFx8KK9lTWuGf/1DEVrvPLIuNN/FXUC0kjidNBhYIYUc2L8co
+         5OpcUkIlAdKLVil/4EyAa0q7BJAFKb8EmsupBTQr1hL/nE3g7gQb3mq/mNWxaqns4Rtm
+         V9Zg==
+X-Forwarded-Encrypted: i=1; AJvYcCUfC8uGs3PMGjrIV685ysqUgmrmVaDPJiH0QYqE60tNyx6kxhYP4cdo5LIdY+j8LPaCuO+43/QXD+qfV0OAp3c2B7RuMoqc9DDYP4OWgjUmHE7w
+X-Gm-Message-State: AOJu0Yw7zhjUWSW9SQP/Lr93qom1I7LTMJ1Qif6vSaDoQVqDF2634xCT
+	QmkdoE/nXoUtDx7G86GuIVhUrNlcBn7QWowVs2DT808IyssCwHC0kOo3dUEAKX8=
+X-Google-Smtp-Source: AGHT+IFlW3G64wf7NuW2/owU8CEOGn8aLNQE8HkSUSVugItFkWe2FGhb/Sv9IvRVsGRugIOPZuvAmQ==
+X-Received: by 2002:a05:6512:3692:b0:512:f84b:b4f2 with SMTP id d18-20020a056512369200b00512f84bb4f2mr2108587lfs.52.1708956135099;
+        Mon, 26 Feb 2024 06:02:15 -0800 (PST)
 Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id d33-20020a05600c4c2100b004129f87a2c6sm2838475wmp.1.2024.02.26.06.02.22
+        by smtp.googlemail.com with ESMTPSA id d33-20020a05600c4c2100b004129f87a2c6sm2838475wmp.1.2024.02.26.06.02.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Feb 2024 06:02:23 -0800 (PST)
-From: amergnat@baylibre.com
-Date: Mon, 26 Feb 2024 15:01:50 +0100
-Subject: [PATCH 12/18] ASoC: codecs: mt6357: add MT6357 codec
+        Mon, 26 Feb 2024 06:02:14 -0800 (PST)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Mon, 26 Feb 2024 15:01:44 +0100
+Subject: [PATCH 06/18] ASoC: mediatek: mt8365: Add I2S DAI support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240226-audio-i350-v1-12-4fa1cea1667f@baylibre.com>
+Message-Id: <20240226-audio-i350-v1-6-4fa1cea1667f@baylibre.com>
 References: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
 In-Reply-To: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
@@ -102,28 +102,27 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
- Alexandre Mergnat <amergnat@baylibre.com>, 
- Nicolas Belin <nbelin@baylibre.com>
+ Alexandre Mergnat <amergnat@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=94206;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=28849;
  i=amergnat@baylibre.com; h=from:subject:message-id;
- bh=UkKAqImy7tHDkXXNV2Qr5xxBGnGpGfQViX689G2/yY0=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBl3JncOx/TIszpmie7oVNYutb1QtG1fA2P8qdaJAIA
- AzMwCtyJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZdyZ3AAKCRArRkmdfjHURfQDD/
- 9g9pNvLycrIqroN3B8ENWdPTLrxPvyZRjK5w/ys85XDDFKkyPPqyFkW0i3HedOtxxIjvqulOG0+n4b
- lh2WnG5a9zGLtz91CvXhXEU/0GnKtvvANd7BLnp3b6D5BitbkFJ8pepWTv12CY0nr7XdiIiPC2CV7w
- 43WqojAg2nuVt9YyXMkJHHpJj9ptQKauEuwpO5+7R7/tfSOwNhJXIECzR7QfMPyZozzg0j/do41Hur
- dokivp6Qu1PKzpRi0b6PIncr5Vth64LVoPXWYGUtQCsQ2tjVnzt/cWRi3CQIC3m0wMG6FOyzoNnMF1
- ioQP5Ry6Z4Du4EhAp+fwuChj+SdeemeS1PY9rwWtRMH53Or4va3yb2xliHg1G5E17N3Wqc/j5uwXJY
- uXRdwTkyKxiItBE+LtlyrJhSqINXbZj2yYL63qQJ/KOK99OJVuoN3uz9z+ebyr4h44nE0PdtyUX7Xb
- bwKa+yuUmuxJiH4UlYJ7OaeurnHA2kQm7+J119WAybW5Lr1ETwDIHMgkfalWGsZlTM0gSal2WRL3jn
- MTnGBDAb0mDR2f9c3fY5JAYh4ccwyJm7/C3kYITs+n0ksIUvl2E2EOkYT1NG5kz7FVDFJHa5BINGgg
- 8mB6pQQG2I9Cnj1099IWGIfsc9Cz5yC3mJ0V/iayH3M/AB1Ewy2QvilHHExw==
+ bh=OW3LG3VxX57dLshaBcXcYIEO0k2g7jycb4s6LabjFk8=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBl3Jnc1lr3pJ/6Kv8d0qD54Bu2VtssBU6fZeaZCzK4
+ zu/ti96JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZdyZ3AAKCRArRkmdfjHURfO/D/
+ 9qEvxq/DBz1sdfkvd6JlGFkCXUy4wEHOwyuitM3cr5Xap8hZprcO/+asD64OLkS4onnrgc5Ue2zzJp
+ 4u0M2wHhKdbD4MNWl6yhLby9C/M1ppjkhvf6NT5I//aq3E21Mdsam0nkHyzADRe+qOJpQcjDitMjA7
+ BhJb2UvciZAuHTeFDcaKAKm3MxFBuANRb+uReEenxwccv07T5idQv4qdqqaUb2ghBiIkaHfeIOJ3Fa
+ eSXgOWa9rlk1HHEvvLMCVNkXNENsQuXJfh/oSxy1XecFIQcEt2/MZB3z90xE+PaXQibebYSWmPDi/5
+ h3giyj/Vl/iyiv0/TZ4x9oZfYpnP8iE+BkP+kwyYTQw0Y5HZocXeusIM/f6N6RjOeylGaWSlAAXlxh
+ no3NEzJUydOBh7gTsu+BU9dyN2dIx6frVPDnNGvsM9Z3rHx7pSIoY+1A5+OWbMWEAtKDboI16efa7D
+ NGV4RMUb5vuntde/9+uGP4Ew3MAc+GkNJ2JSWT44P4xxY3sW/3NWAJn2ALHLSmjrG6peF8wi58fEQ9
+ E32CHwuPQCvLN8DqV0FGtP5hgkU2z/Gsvx+7FTQmBbg7hTLgx88onqvRFOohRdeTxEGguHryfYr/Qg
+ aPJGnHJTVJsQHqtYEoCJ0fdws1+OrgpQkVAFCIrSBEihHdiLDKFTk3qBgKyA==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240226_140226_677850_7144E861 
-X-CRM114-Status: GOOD (  21.27  )
+X-CRM114-CacheID: sfid-20240226_140223_371669_1C5D4C46 
+X-CRM114-Status: GOOD (  18.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,2555 +137,920 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Nicolas Belin <nbelin@baylibre.com>
+Add I2S Device Audio Interface support for MT8365 SoC.
 
-Add the support of MT6357 PMIC audio codec.
-
-Signed-off-by: Nicolas Belin <nbelin@baylibre.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- sound/soc/codecs/Kconfig  |    7 +
- sound/soc/codecs/Makefile |    2 +
- sound/soc/codecs/mt6357.c | 1805 +++++++++++++++++++++++++++++++++++++++++++++
- sound/soc/codecs/mt6357.h |  674 +++++++++++++++++
- 4 files changed, 2488 insertions(+)
+ sound/soc/mediatek/mt8365/mt8365-dai-i2s.c | 901 +++++++++++++++++++++++++++++
+ 1 file changed, 901 insertions(+)
 
-diff --git a/sound/soc/codecs/Kconfig b/sound/soc/codecs/Kconfig
-index 59f9742e9ff4..9cf2b9b70472 100644
---- a/sound/soc/codecs/Kconfig
-+++ b/sound/soc/codecs/Kconfig
-@@ -153,6 +153,7 @@ config SND_SOC_ALL_CODECS
- 	imply SND_SOC_MC13783
- 	imply SND_SOC_ML26124
- 	imply SND_SOC_MT6351
-+	imply SND_SOC_MT6357
- 	imply SND_SOC_MT6358
- 	imply SND_SOC_MT6359
- 	imply SND_SOC_MT6660
-@@ -2361,6 +2362,12 @@ config SND_SOC_ML26124
- config SND_SOC_MT6351
- 	tristate "MediaTek MT6351 Codec"
- 
-+config SND_SOC_MT6357
-+	tristate "MediaTek MT6357 Codec"
-+	help
-+	  Enable support for the platform which uses MT6357 as
-+	  external codec device.
-+
- config SND_SOC_MT6358
- 	tristate "MediaTek MT6358 Codec"
- 	help
-diff --git a/sound/soc/codecs/Makefile b/sound/soc/codecs/Makefile
-index f53baa2b9565..33e27612867e 100644
---- a/sound/soc/codecs/Makefile
-+++ b/sound/soc/codecs/Makefile
-@@ -169,6 +169,7 @@ snd-soc-ml26124-objs := ml26124.o
- snd-soc-msm8916-analog-objs := msm8916-wcd-analog.o
- snd-soc-msm8916-digital-objs := msm8916-wcd-digital.o
- snd-soc-mt6351-objs := mt6351.o
-+snd-soc-mt6357-objs := mt6357.o
- snd-soc-mt6358-objs := mt6358.o
- snd-soc-mt6359-objs := mt6359.o
- snd-soc-mt6359-accdet-objs := mt6359-accdet.o
-@@ -554,6 +555,7 @@ obj-$(CONFIG_SND_SOC_ML26124)	+= snd-soc-ml26124.o
- obj-$(CONFIG_SND_SOC_MSM8916_WCD_ANALOG) +=snd-soc-msm8916-analog.o
- obj-$(CONFIG_SND_SOC_MSM8916_WCD_DIGITAL) +=snd-soc-msm8916-digital.o
- obj-$(CONFIG_SND_SOC_MT6351)	+= snd-soc-mt6351.o
-+obj-$(CONFIG_SND_SOC_MT6357)	+= snd-soc-mt6357.o
- obj-$(CONFIG_SND_SOC_MT6358)	+= snd-soc-mt6358.o
- obj-$(CONFIG_SND_SOC_MT6359)	+= snd-soc-mt6359.o
- obj-$(CONFIG_SND_SOC_MT6359_ACCDET) += mt6359-accdet.o
-diff --git a/sound/soc/codecs/mt6357.c b/sound/soc/codecs/mt6357.c
+diff --git a/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c b/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c
 new file mode 100644
-index 000000000000..13e95c227114
+index 000000000000..ba704d92094b
 --- /dev/null
-+++ b/sound/soc/codecs/mt6357.c
-@@ -0,0 +1,1805 @@
++++ b/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c
+@@ -0,0 +1,901 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
-+ * MT6357 ALSA SoC audio codec driver
++ * Mediatek 8365 ALSA SoC Audio DAI I2S Control
 + *
-+ * Copyright (c) 2024 Baylibre
-+ * Author: Nicolas Belin <nbelin@baylibre.com>
++ * Copyright (c) 2024 MediaTek Inc.
++ * Authors: Jia Zeng <jia.zeng@mediatek.com>
++ *          Alexandre Mergnat <amergnat@baylibre.com>
 + */
 +
-+#include <linux/dma-mapping.h>
-+#include <sound/soc.h>
-+#include <sound/tlv.h>
-+#include <linux/mfd/mt6397/core.h>
-+#include <linux/regulator/consumer.h>
++#include <linux/bitops.h>
++#include <linux/regmap.h>
++#include <sound/pcm_params.h>
++#include "mt8365-afe-clk.h"
++#include "mt8365-afe-common.h"
 +
-+#include "mt6357.h"
-+
-+static void set_playback_gpio(struct mt6357_priv *priv, bool enable)
-+{
-+	if (enable) {
-+		/* set gpio mosi mode */
-+		regmap_write(priv->regmap, MT6357_GPIO_MODE2_CLR, GPIO_MODE2_CLEAR_ALL);
-+		regmap_write(priv->regmap, MT6357_GPIO_MODE2_SET, GPIO8_MODE_SET_AUD_CLK_MOSI |
-+								  GPIO9_MODE_SET_AUD_DAT_MOSI0 |
-+								  GPIO10_MODE_SET_AUD_DAT_MOSI1 |
-+								  GPIO11_MODE_SET_AUD_SYNC_MOSI);
-+		regmap_write(priv->regmap, MT6357_GPIO_MODE2, GPIO8_MODE_AUD_CLK_MOSI |
-+							      GPIO9_MODE_AUD_DAT_MOSI0 |
-+							      GPIO10_MODE_AUD_DAT_MOSI1 |
-+							      GPIO11_MODE_AUD_SYNC_MOSI);
-+	} else {
-+		/* set pad_aud_*_mosi to GPIO mode and dir input
-+		 * reason:
-+		 * pad_aud_dat_mosi*, because the pin is used as boot strap
-+		 */
-+		regmap_write(priv->regmap, MT6357_GPIO_MODE2_CLR, GPIO_MODE2_CLEAR_ALL);
-+		regmap_write(priv->regmap, MT6357_GPIO_MODE2, GPIO8_MODE_GPIO |
-+							      GPIO9_MODE_GPIO |
-+							      GPIO10_MODE_GPIO |
-+							      GPIO11_MODE_GPIO);
-+		regmap_update_bits(priv->regmap, MT6357_GPIO_DIR0, GPIO8_DIR_MASK |
-+								   GPIO9_DIR_MASK |
-+								   GPIO10_DIR_MASK |
-+								   GPIO11_DIR_MASK,
-+								   GPIO8_DIR_INPUT |
-+								   GPIO9_DIR_INPUT |
-+								   GPIO10_DIR_INPUT |
-+								   GPIO11_DIR_INPUT);
-+	}
-+}
-+
-+static void set_capture_gpio(struct mt6357_priv *priv, bool enable)
-+{
-+	if (enable) {
-+		/* set gpio miso mode */
-+		regmap_write(priv->regmap, MT6357_GPIO_MODE3_CLR, GPIO_MODE3_CLEAR_ALL);
-+		regmap_write(priv->regmap, MT6357_GPIO_MODE3_SET, GPIO12_MODE_SET_AUD_CLK_MISO |
-+								  GPIO13_MODE_SET_AUD_DAT_MISO0 |
-+								  GPIO14_MODE_SET_AUD_DAT_MISO1 |
-+								  GPIO15_MODE_SET_AUD_SYNC_MISO);
-+		regmap_write(priv->regmap, MT6357_GPIO_MODE3, GPIO12_MODE_AUD_CLK_MISO |
-+							      GPIO13_MODE_AUD_DAT_MISO0 |
-+							      GPIO14_MODE_AUD_DAT_MISO1 |
-+							      GPIO15_MODE_AUD_SYNC_MISO);
-+	} else {
-+		/* set pad_aud_*_miso to GPIO mode and dir input
-+		 * reason:
-+		 * pad_aud_clk_miso, because when playback only the miso_clk
-+		 * will also have 26m, so will have power leak
-+		 * pad_aud_dat_miso*, because the pin is used as boot strap
-+		 */
-+		regmap_write(priv->regmap, MT6357_GPIO_MODE3_CLR, GPIO_MODE3_CLEAR_ALL);
-+		regmap_write(priv->regmap, MT6357_GPIO_MODE3, GPIO12_MODE_GPIO |
-+							      GPIO13_MODE_GPIO |
-+							      GPIO14_MODE_GPIO |
-+							      GPIO15_MODE_GPIO);
-+		regmap_update_bits(priv->regmap, MT6357_GPIO_DIR0, GPIO12_DIR_MASK |
-+								   GPIO13_DIR_MASK |
-+								   GPIO14_DIR_MASK |
-+								   GPIO15_DIR_MASK,
-+								   GPIO12_DIR_INPUT |
-+								   GPIO13_DIR_INPUT |
-+								   GPIO14_DIR_INPUT |
-+								   GPIO15_DIR_INPUT);
-+	}
-+}
-+
-+static void hp_main_output_ramp(struct mt6357_priv *priv, bool up)
-+{
-+	int i = 0, stage = 0;
-+	int target = 7;
-+	/* Enable/Reduce HPL/R main output stage step by step */
-+	for (i = 0; i <= target; i++) {
-+		stage = up ? i : target - i;
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPLOUT_STG_CTRL_VAUDP15_MASK,
-+				   stage << HPLOUT_STG_CTRL_VAUDP15_SFT);
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPROUT_STG_CTRL_VAUDP15_MASK,
-+				   stage << HPROUT_STG_CTRL_VAUDP15_SFT);
-+		usleep_range(600, 700);
-+	}
-+}
-+
-+static void hp_aux_feedback_loop_gain_ramp(struct mt6357_priv *priv, bool up)
-+{
-+	int i = 0, stage = 0;
-+	/* Reduce HP aux feedback loop gain step by step */
-+	for (i = 0; i <= 0xf; i++) {
-+		stage = up ? i : 0xf - i;
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON6,
-+				   HP_AUX_LOOP_GAIN_MASK, stage << HP_AUX_LOOP_GAIN_SFT);
-+		usleep_range(600, 700);
-+	}
-+}
-+
-+static void hp_pull_down(struct mt6357_priv *priv, bool enable)
-+{
-+	if (enable)
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON2,
-+				   HPP_SHORT_2VCM_VAUDP15_MASK, HPP_SHORT_2VCM_VAUDP15_ENABLE);
-+	else
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON2,
-+				   HPP_SHORT_2VCM_VAUDP15_MASK, HPP_SHORT_2VCM_VAUDP15_DISABLE);
-+}
-+
-+static bool is_valid_hp_pga_idx(int reg_idx)
-+{
-+	return (reg_idx >= DL_GAIN_8DB && reg_idx <= DL_GAIN_N_12DB) || reg_idx == DL_GAIN_N_40DB;
-+}
-+
-+static void volume_ramp(struct mt6357_priv *priv, int lfrom, int lto,
-+			int rfrom, int rto, unsigned int reg_addr)
-+{
-+	int lcount, rcount, sleep = 0;
-+
-+	if (!is_valid_hp_pga_idx(lfrom) || !is_valid_hp_pga_idx(lto))
-+		pr_debug("%s(), invalid left volume index, from %d, to %d\n",
-+			 __func__, lfrom, lto);
-+
-+	if (!is_valid_hp_pga_idx(rfrom) || !is_valid_hp_pga_idx(rto))
-+		pr_debug("%s(), invalid right volume index, from %d, to %d\n",
-+			 __func__, rfrom, rto);
-+
-+	if (lto > lfrom)
-+		lcount = 1;
-+	else
-+		lcount = -1;
-+
-+	if (rto > rfrom)
-+		rcount = 1;
-+	else
-+		rcount = -1;
-+
-+	while ((lto != lfrom) || (rto != rfrom)) {
-+		if (lto != lfrom) {
-+			lfrom += lcount;
-+			if (is_valid_hp_pga_idx(lfrom)) {
-+				regmap_update_bits(priv->regmap, reg_addr, DL_GAIN_REG_LEFT_MASK,
-+						   lfrom << DL_GAIN_REG_LEFT_SHIFT);
-+				sleep = 1;
-+			}
-+		}
-+		if (rto != rfrom) {
-+			rfrom += rcount;
-+			if (is_valid_hp_pga_idx(rfrom)) {
-+				regmap_update_bits(priv->regmap, reg_addr, DL_GAIN_REG_RIGHT_MASK,
-+						   rfrom << DL_GAIN_REG_RIGHT_SHIFT);
-+				sleep = 1;
-+			}
-+		}
-+		if (sleep)
-+			usleep_range(200, 300);
-+	}
-+}
-+
-+static void lo_volume_ramp(struct mt6357_priv *priv, int lfrom, int lto, int rfrom, int rto)
-+{
-+	volume_ramp(priv, lfrom, lto, rfrom, rto, MT6357_ZCD_CON1);
-+}
-+
-+static void hp_volume_ramp(struct mt6357_priv *priv, int lfrom, int lto, int rfrom, int rto)
-+{
-+	volume_ramp(priv, lfrom, lto, rfrom, rto, MT6357_ZCD_CON2);
-+}
-+
-+static void hs_volume_ramp(struct mt6357_priv *priv, int from, int to)
-+{
-+	volume_ramp(priv, from, to, 0, 0, MT6357_ZCD_CON3);
-+}
-+
-+static int mt6357_put_volsw(struct snd_kcontrol *kcontrol, struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_component *component = snd_soc_kcontrol_component(kcontrol);
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(component);
-+	struct soc_mixer_control *mc = (struct soc_mixer_control *)kcontrol->private_value;
-+	unsigned int reg;
-+	int ret;
-+
-+	ret = snd_soc_put_volsw(kcontrol, ucontrol);
-+	if (ret < 0)
-+		return ret;
-+
-+	switch (mc->reg) {
-+	case MT6357_ZCD_CON2:
-+		regmap_read(priv->regmap, MT6357_ZCD_CON2, &reg);
-+		priv->ana_gain[ANALOG_VOLUME_HPOUTL] =
-+			(reg & AUD_HPL_GAIN_MASK) >> AUD_HPL_GAIN_SFT;
-+		priv->ana_gain[ANALOG_VOLUME_HPOUTR] =
-+			(reg & AUD_HPR_GAIN_MASK) >> AUD_HPR_GAIN_SFT;
-+		break;
-+	case MT6357_ZCD_CON1:
-+		regmap_read(priv->regmap, MT6357_ZCD_CON1, &reg);
-+		priv->ana_gain[ANALOG_VOLUME_LINEOUTL] =
-+			(reg & AUD_LOL_GAIN_MASK) >> AUD_LOL_GAIN_SFT;
-+		priv->ana_gain[ANALOG_VOLUME_LINEOUTR] =
-+			(reg & AUD_LOR_GAIN_MASK) >> AUD_LOR_GAIN_SFT;
-+		break;
-+	case MT6357_ZCD_CON3:
-+		regmap_read(priv->regmap, MT6357_ZCD_CON3, &reg);
-+		priv->ana_gain[ANALOG_VOLUME_HSOUT] =
-+			(reg & AUD_HS_GAIN_MASK) >> AUD_HS_GAIN_SFT;
-+		break;
-+	case MT6357_AUDENC_ANA_CON0:
-+	case MT6357_AUDENC_ANA_CON1:
-+		regmap_read(priv->regmap, MT6357_AUDENC_ANA_CON0, &reg);
-+		priv->ana_gain[ANALOG_VOLUME_MIC1] =
-+			(reg & AUDPREAMPLGAIN_MASK) >> AUDPREAMPLGAIN_SFT;
-+		regmap_read(priv->regmap, MT6357_AUDENC_ANA_CON1, &reg);
-+		priv->ana_gain[ANALOG_VOLUME_MIC2] =
-+			(reg & AUDPREAMPRGAIN_MASK) >> AUDPREAMPRGAIN_SFT;
-+		break;
-+	}
-+
-+	return ret;
-+}
-+
-+/* Volume and channel swap controls */
-+static const DECLARE_TLV_DB_SCALE(playback_tlv, -1000, 100, 0);
-+static const DECLARE_TLV_DB_SCALE(capture_tlv, 0, 600, 0);
-+static const DECLARE_TLV_DB_SCALE(hp_degain_tlv, -1200, 1200, 0);
-+
-+static const struct snd_kcontrol_new mt6357_controls[] = {
-+	/* dl pga gain */
-+	SOC_DOUBLE_EXT_TLV("Headphone Volume",
-+			   MT6357_ZCD_CON2, AUD_HPL_GAIN_SFT, AUD_HPR_GAIN_SFT, AUD_HP_GAIN_MAX, 1,
-+			   snd_soc_get_volsw, mt6357_put_volsw, playback_tlv),
-+	SOC_SINGLE_EXT_TLV("Headphone Vin Volume",
-+			   MT6357_AUDDEC_ANA_CON7, HP_IVBUF_DEGAIN_SFT, HP_IVBUF_DEGAIN_MAX, 1,
-+			   snd_soc_get_volsw, mt6357_put_volsw, hp_degain_tlv),
-+	SOC_DOUBLE_EXT_TLV("Lineout Volume",
-+			   MT6357_ZCD_CON1, AUD_LOL_GAIN_SFT, AUD_LOR_GAIN_SFT, AUD_LO_GAIN_MAX, 1,
-+			   snd_soc_get_volsw, mt6357_put_volsw, playback_tlv),
-+	SOC_SINGLE_EXT_TLV("Handset Volume",
-+			   MT6357_ZCD_CON3, AUD_HS_GAIN_SFT, AUD_HS_GAIN_MAX, 1,
-+			   snd_soc_get_volsw, mt6357_put_volsw, playback_tlv),
-+	/* ul pga gain */
-+	SOC_DOUBLE_R_EXT_TLV("Mic Volume",
-+			     MT6357_AUDENC_ANA_CON0, MT6357_AUDENC_ANA_CON1,
-+			     AUDPREAMPLGAIN_SFT, AUDPREAMPLGAIN_MAX, 0,
-+			     snd_soc_get_volsw, mt6357_put_volsw, capture_tlv),
-+	/* ul channel swap */
-+	SOC_SINGLE("UL LR Swap", MT6357_AFE_UL_DL_CON0, AFE_UL_LR_SWAP_SFT, 1, 0),
++struct mtk_afe_i2s_priv {
++	bool adda_link;
++	bool shared_clk;
++	int i2s_out_on_ref_cnt;
++	int id;
++	int low_jitter_en;
++	int mclk_id;
++	int share_i2s_id;
++	unsigned int clk_id_in;
++	unsigned int clk_id_in_m_sel;
++	unsigned int clk_id_out;
++	unsigned int clk_id_out_m_sel;
++	unsigned int clk_in_mult;
++	unsigned int clk_out_mult;
++	unsigned int config_val_in;
++	unsigned int config_val_out;
++	unsigned int dynamic_bck;
++	unsigned int reg_off_in;
++	unsigned int reg_off_out;
 +};
 +
-+/* Uplink controls */
-+#define IS_DCC_BASE(type) ((type) == MIC_TYPE_MUX_DCC || \
-+			(type) == MIC_TYPE_MUX_DCC_ECM_DIFF || \
-+			(type) == MIC_TYPE_MUX_DCC_ECM_SINGLE)
-+
-+static const char * const mic_type_mux_map[] = {
-+	"Idle",
-+	"ACC",
-+	"DMIC",
-+	"DCC",
-+	"DCC_ECM_DIFF",
-+	"DCC_ECM_SINGLE",
-+	"Loopback",
-+	"Sine Generator",
-+};
-+
++/* This enum is merely for mtk_afe_i2s_priv declare */
 +enum {
-+	MIC_TYPE_MUX_IDLE = 0,
-+	MIC_TYPE_MUX_ACC,
-+	MIC_TYPE_MUX_DMIC,
-+	MIC_TYPE_MUX_DCC,
-+	MIC_TYPE_MUX_DCC_ECM_DIFF,
-+	MIC_TYPE_MUX_DCC_ECM_SINGLE,
-+	MIC_TYPE_MUX_LPBK,
-+	MIC_TYPE_MUX_SGEN,
-+	MIC_TYPE_MUX_MASK = 0x7,
++	DAI_I2S0 = 0,
++	DAI_I2S3,
++	DAI_I2S_NUM,
 +};
 +
-+static int mic_type_mux_map_value[] = {
-+	MIC_TYPE_MUX_IDLE,
-+	MIC_TYPE_MUX_ACC,
-+	MIC_TYPE_MUX_DMIC,
-+	MIC_TYPE_MUX_DCC,
-+	MIC_TYPE_MUX_DCC_ECM_DIFF,
-+	MIC_TYPE_MUX_DCC_ECM_SINGLE,
-+	MIC_TYPE_MUX_LPBK,
-+	MIC_TYPE_MUX_SGEN,
-+};
-+
-+static SOC_VALUE_ENUM_SINGLE_DECL(mic_type_mux_map_enum, SND_SOC_NOPM, 0, MIC_TYPE_MUX_MASK,
-+				  mic_type_mux_map, mic_type_mux_map_value);
-+
-+static const struct snd_kcontrol_new mic_type_mux_control =
-+	SOC_DAPM_ENUM("Mic Type Select", mic_type_mux_map_enum);
-+
-+enum {
-+	PGA_MUX_NONE = 0,
-+	PGA_MUX_AIN0,
-+	PGA_MUX_AIN1,
-+	PGA_MUX_AIN2,
-+	PGA_MUX_MASK = 0x3,
-+};
-+
-+static const char * const pga_mux_map[] = {
-+	"None", "AIN0", "AIN1", "AIN2"
-+};
-+
-+static int pga_mux_map_value[] = {
-+	PGA_MUX_NONE,
-+	PGA_MUX_AIN0,
-+	PGA_MUX_AIN1,
-+	PGA_MUX_AIN2,
-+};
-+
-+static SOC_VALUE_ENUM_SINGLE_DECL(pga_left_mux_map_enum,
-+				  MT6357_AUDENC_ANA_CON0,
-+				  AUDPREAMPLINPUTSEL_SFT, AUDPREAMPLINPUTSEL_MASK_NOSFT,
-+				  pga_mux_map, pga_mux_map_value);
-+
-+static const struct snd_kcontrol_new pga_left_mux_control =
-+	SOC_DAPM_ENUM("PGA L Select", pga_left_mux_map_enum);
-+
-+static SOC_VALUE_ENUM_SINGLE_DECL(pga_right_mux_map_enum,
-+				  MT6357_AUDENC_ANA_CON1,
-+				  AUDPREAMPRINPUTSEL_SFT, AUDPREAMPRINPUTSEL_MASK_NOSFT,
-+				  pga_mux_map, pga_mux_map_value);
-+
-+static const struct snd_kcontrol_new pga_right_mux_control =
-+	SOC_DAPM_ENUM("PGA R Select", pga_right_mux_map_enum);
-+
-+/* Downlink controls */
-+static const char * const hslo_mux_map[] = {
-+	"Open", "DACR", "Playback", "Test mode"
-+};
-+
-+static int hslo_mux_map_value[] = {
-+	0x0, 0x1, 0x2, 0x3,
-+};
-+
-+static SOC_VALUE_ENUM_SINGLE_DECL(lo_mux_map_enum,
-+				  MT6357_AUDDEC_ANA_CON4,
-+				  AUD_LOL_MUX_INPUT_VAUDP15_SFT,
-+				  AUD_LOL_MUX_INPUT_VAUDP15_MASK_NOSFT,
-+				  hslo_mux_map, hslo_mux_map_value);
-+
-+static const struct snd_kcontrol_new lo_mux_control =
-+	SOC_DAPM_ENUM("Line out source", lo_mux_map_enum);
-+
-+static SOC_VALUE_ENUM_SINGLE_DECL(hs_mux_map_enum, MT6357_AUDDEC_ANA_CON3,
-+				  AUD_HS_MUX_INPUT_VAUDP15_SFT,
-+				  AUD_HS_MUX_INPUT_VAUDP15_MASK_NOSFT,
-+				  hslo_mux_map, hslo_mux_map_value);
-+
-+static const struct snd_kcontrol_new hs_mux_control =
-+	SOC_DAPM_ENUM("Handset source", hs_mux_map_enum);
-+
-+static const char * const hplr_mux_map[] = {
-+	"Open", "Line Out", "DAC", "Handset"
-+};
-+
-+static int hplr_mux_map_value[] = {
-+	0x0, 0x1, 0x2, 0x3,
-+};
-+
-+static SOC_VALUE_ENUM_SINGLE_DECL(hpr_mux_map_enum, MT6357_AUDDEC_ANA_CON0,
-+				  AUD_HPR_MUX_INPUT_VAUDP15_SFT,
-+				  AUD_HPR_MUX_INPUT_VAUDP15_MASK_NOSFT,
-+				  hplr_mux_map, hplr_mux_map_value);
-+
-+static const struct snd_kcontrol_new hpr_mux_control =
-+	SOC_DAPM_ENUM("Headphone Right source", hpr_mux_map_enum);
-+
-+static SOC_VALUE_ENUM_SINGLE_DECL(hpl_mux_map_enum, MT6357_AUDDEC_ANA_CON0,
-+				  AUD_HPL_MUX_INPUT_VAUDP15_SFT,
-+				  AUD_HPL_MUX_INPUT_VAUDP15_MASK_NOSFT,
-+				  hplr_mux_map, hplr_mux_map_value);
-+
-+static const struct snd_kcontrol_new hpl_mux_control =
-+	SOC_DAPM_ENUM("Headphone Left source", hpl_mux_map_enum);
-+
-+static const char * const dac_mux_map[] = {
-+	"Normal Path", "Sine Generator"
-+};
-+
-+static int dac_mux_map_value[] = {
-+	0x0, 0x1,
-+};
-+
-+static SOC_VALUE_ENUM_SINGLE_DECL(dac_mux_map_enum,
-+				  MT6357_AFE_TOP_CON0, DL_SINE_ON_SFT, DL_SINE_ON_MASK,
-+				  dac_mux_map, dac_mux_map_value);
-+
-+static const struct snd_kcontrol_new dac_mux_control =
-+	SOC_DAPM_ENUM("DAC Select", dac_mux_map_enum);
-+
-+static int mt6357_set_dmic(struct mt6357_priv *priv, bool enable)
-+{
-+	if (enable) {
-+		/* DMIC enable */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON7,
-+				   AUDDIGMICBIAS_MASK | AUDDIGMICEN_MASK,
-+				   AUDDIGMICBIAS_DEFAULT_VALUE | AUDDIGMICEN_ENABLE);
-+		/* enable aud_pad TX fifos */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_AUD_PAD_TOP,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_MASK,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_ENABLE);
-+		/* UL dmic setting: dual mode */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_UL_SRC_CON0_H,
-+				   C_TWO_DIGITAL_MIC_CTL_MASK, C_TWO_DIGITAL_MIC_ENABLE);
-+		/* UL turn on SDM 3 level mode */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_UL_SRC_CON0_L,
-+				   UL_SDM_3_LEVEL_CTL_MASK, UL_SDM_3_LEVEL_SELECT);
-+		/* UL turn on */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_UL_SRC_CON0_L,
-+				   UL_SRC_ON_TMP_CTL_MASK, UL_SRC_ENABLE);
-+		/* Wait to avoid any pop noises */
-+		msleep(100);
-+	} else {
-+		/* UL turn off */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_UL_SRC_CON0_L,
-+				   UL_SRC_ON_TMP_CTL_MASK, UL_SRC_DISABLE);
-+		/* UL turn on SDM 3 level mode */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_UL_SRC_CON0_L,
-+				   UL_SDM_3_LEVEL_CTL_MASK, UL_SDM_3_LEVEL_DESELECT);
-+		/* disable aud_pad TX fifos */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_AUD_PAD_TOP,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_MASK,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_DISABLE);
-+		/* UL dmic setting: dual mode */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_UL_SRC_CON0_H,
-+				   C_TWO_DIGITAL_MIC_CTL_MASK, C_TWO_DIGITAL_MIC_DISABLE);
-+		/* DMIC disable */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON7,
-+				   AUDDIGMICBIAS_MASK | AUDDIGMICEN_MASK,
-+				   AUDDIGMICBIAS_OFF | AUDDIGMICEN_DISABLE);
-+	}
-+	return 0;
-+}
-+
-+static int mt6357_set_amic(struct mt6357_priv *priv, bool enable, unsigned int mic_type)
-+{
-+	dev_dbg(priv->dev, "%s(), mic %u\n", __func__, mic_type);
-+	if (enable) {
-+		if (IS_DCC_BASE(mic_type)) {
-+			regmap_update_bits(priv->regmap, MT6357_AFE_DCCLK_CFG0,
-+					   DCCLK_DIV_MASK, DCCLK_DIV_RUN_VALUE);
-+			regmap_update_bits(priv->regmap, MT6357_AFE_DCCLK_CFG0,
-+					   DCCLK_PDN_MASK, DCCLK_OUTPUT);
-+			regmap_update_bits(priv->regmap, MT6357_AFE_DCCLK_CFG0,
-+					   DCCLK_GEN_ON_MASK, DCCLK_GEN_ON);
-+			regmap_update_bits(priv->regmap, MT6357_AFE_DCCLK_CFG1,
-+					   DCCLK_RESYNC_BYPASS_MASK, DCCLK_RESYNC_BYPASS);
-+
-+			/* mic bias 0: set the correct DC couple*/
-+			switch (mic_type) {
-+			case MIC_TYPE_MUX_DCC_ECM_DIFF:
-+				regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON8,
-+						   AUD_MICBIAS0_DC_MASK,
-+						   AUD_MICBIAS0_DC_ENABLE_ALL);
-+				break;
-+			case MIC_TYPE_MUX_DCC_ECM_SINGLE:
-+				regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON8,
-+						   AUD_MICBIAS0_DC_MASK,
-+						   AUD_MICBIAS0_DC_ENABLE_P1);
-+				break;
-+			default:
-+				regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON8,
-+						   AUD_MICBIAS0_DC_MASK,
-+						   AUD_MICBIAS0_DC_DISABLE_ALL);
-+				break;
-+			}
-+
-+			/* mic bias 1: set the correct DC couple */
-+			if (mic_type == MIC_TYPE_MUX_DCC_ECM_SINGLE)
-+				regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON9,
-+						   AUD_MICBIAS1_DCSW1P_EN_MASK,
-+						   AUD_MICBIAS1_DCSW1P_ENABLE);
-+
-+			/* Audio L/R preamplifier DCC precharge */
-+			regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0,
-+					   AUDPREAMPLDCPRECHARGE_MASK,
-+					   AUDPREAMPLDCPRECHARGE_ENABLE);
-+			regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON1,
-+					   AUDPREAMPRDCPRECHARGE_MASK,
-+					   AUDPREAMPRDCPRECHARGE_ENABLE);
-+			/* L preamplifier DCCEN */
-+			regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0,
-+					   AUDPREAMPLDCCEN_MASK,
-+					   AUDPREAMPLDCCEN_DC);
-+			/* R preamplifier DCCEN */
-+			regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON1,
-+					   AUDPREAMPRDCCEN_MASK,
-+					   AUDPREAMPRDCCEN_DC);
-+		} else {
-+			/* Audio L preamplifier DCC precharge disable */
-+			regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0,
-+					   AUDPREAMPLDCPRECHARGE_MASK,
-+					   AUDPREAMPLDCPRECHARGE_DISABLE);
-+			/* L preamplifier ACC */
-+			regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0,
-+					   AUDPREAMPLDCCEN_MASK,
-+					   AUDPREAMPLDCCEN_AC);
-+			/* Audio R preamplifier DCC precharge disable */
-+			regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON1,
-+					   AUDPREAMPRDCPRECHARGE_MASK,
-+					   AUDPREAMPRDCPRECHARGE_DISABLE);
-+			/* R preamplifier ACC */
-+			regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON1,
-+					   AUDPREAMPRDCCEN_MASK,
-+					   AUDPREAMPRDCCEN_AC);
-+		}
-+	} else {
-+		/* disable any Mic Bias 0 DC couple */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON8,
-+				   AUD_MICBIAS0_DC_MASK, AUD_MICBIAS0_DC_DISABLE_ALL);
-+		/* disable any Mic Bias 1 DC couple */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON9,
-+				   AUD_MICBIAS1_DCSW1P_EN_MASK, AUD_MICBIAS1_DCSW1P_DISABLE);
-+		if (IS_DCC_BASE(mic_type)) {
-+			regmap_update_bits(priv->regmap, MT6357_AFE_DCCLK_CFG0,
-+					   DCCLK_GEN_ON_MASK, DCCLK_GEN_OFF);
-+			regmap_update_bits(priv->regmap, MT6357_AFE_DCCLK_CFG0,
-+					   DCCLK_PDN_MASK, DCCLK_PDN);
-+			regmap_update_bits(priv->regmap, MT6357_AFE_DCCLK_CFG0,
-+					   DCCLK_DIV_MASK, DCCLK_DIV_STOP_VALUE);
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt6357_set_loopback(struct mt6357_priv *priv, bool enable)
-+{
-+	if (enable) {
-+		/* enable aud_pad TX fifos */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_AUD_PAD_TOP,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_MASK,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_ENABLE);
-+		/* enable aud_pad lpk TX fifos */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_AUD_PAD_TOP,
-+				   AUD_PAD_TX_FIFO_LPBK_MASK, AUD_PAD_TX_FIFO_LPBK_ENABLE);
-+		/* Set UL Part: enable new lpbk 2 */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_ADDA_MTKAIF_CFG0,
-+				   ADDA_MTKAIF_LPBK_CTL_MASK, ADDA_MTKAIF_LPBK_ENABLE);
-+		/* UL turn on */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_UL_SRC_CON0_L,
-+				   UL_SRC_ON_TMP_CTL_MASK, UL_SRC_ENABLE);
-+	} else {
-+		/* UL turn off */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_UL_SRC_CON0_L,
-+				   UL_SRC_ON_TMP_CTL_MASK, UL_SRC_DISABLE);
-+		/* disable new lpbk 2 */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_ADDA_MTKAIF_CFG0,
-+				   ADDA_MTKAIF_LPBK_CTL_MASK, ADDA_MTKAIF_LPBK_DISABLE);
-+		/* disable aud_pad lpbk TX fifos */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_AUD_PAD_TOP,
-+				   AUD_PAD_TX_FIFO_LPBK_MASK, AUD_PAD_TX_FIFO_LPBK_DISABLE);
-+		/* disable aud_pad TX fifos */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_AUD_PAD_TOP,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_MASK,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_DISABLE);
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt6357_set_ul_sine_gen(struct mt6357_priv *priv, bool enable)
-+{
-+	if (enable) {
-+		/* enable aud_pad TX fifos */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_AUD_PAD_TOP,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_MASK,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_ENABLE);
-+		/* UL turn on */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_UL_SRC_CON0_L,
-+				   UL_SRC_ON_TMP_CTL_MASK, UL_SRC_ENABLE);
-+	} else {
-+		/* UL turn off */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_UL_SRC_CON0_L,
-+				   UL_SRC_ON_TMP_CTL_MASK, UL_SRC_DISABLE);
-+		/* disable aud_pad TX fifos */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_AUD_PAD_TOP,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_MASK,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_DISABLE);
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt_aif_out_event(struct snd_soc_dapm_widget *w,
-+			    struct snd_kcontrol *kcontrol,
-+			    int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-+
-+	dev_dbg(priv->dev, "%s(), event 0x%x\n", __func__, event);
-+	switch (event) {
-+	case SND_SOC_DAPM_PRE_PMU:
-+		set_capture_gpio(priv, true);
-+		break;
-+	case SND_SOC_DAPM_POST_PMD:
-+		set_capture_gpio(priv, false);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt_adc_supply_event(struct snd_soc_dapm_widget *w,
-+			       struct snd_kcontrol *kcontrol,
-+			       int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-+
-+	dev_dbg(priv->dev, "%s(), event 0x%x\n", __func__, event);
-+	switch (event) {
-+	case SND_SOC_DAPM_PRE_PMU:
-+		/* Enable audio ADC CLKGEN  */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON11,
-+				   RSTB_ENCODER_VA28_MASK, RSTB_ENCODER_VA28_ENABLE);
-+		/* Enable  LCLDO_ENC 2P8V */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON12,
-+				   LCLDO_ENC_EN_VA28_MASK, LCLDO_ENC_EN_VA28_ENABLE);
-+		/* LCLDO_ENC remote sense */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON12,
-+				   VA28REFGEN_EN_VA28_MASK | LCLDO_ENC_REMOTE_SENSE_VA28_MASK,
-+				   VA28REFGEN_EN_VA28_ENABLE | LCLDO_ENC_REMOTE_SENSE_VA28_ENABLE);
-+		break;
-+	case SND_SOC_DAPM_POST_PMD:
-+		/* LCLDO_ENC remote sense off */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON12,
-+				   VA28REFGEN_EN_VA28_MASK | LCLDO_ENC_REMOTE_SENSE_VA28_MASK,
-+				   VA28REFGEN_EN_VA28_DISABLE |
-+				   LCLDO_ENC_REMOTE_SENSE_VA28_DISABLE);
-+		/* disable LCLDO_ENC 2P8V */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON12,
-+				   LCLDO_ENC_EN_VA28_MASK, LCLDO_ENC_EN_VA28_DISABLE);
-+		/* disable audio ADC CLKGEN  */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON11,
-+				   RSTB_ENCODER_VA28_MASK, RSTB_ENCODER_VA28_DISABLE);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt_mic_type_event(struct snd_soc_dapm_widget *w,
-+			     struct snd_kcontrol *kcontrol,
-+			     int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-+	unsigned int mic_type = dapm_kcontrol_get_value(w->kcontrols[0]);
-+
-+	dev_dbg(priv->dev, "%s(), event 0x%x, mic_type %u\n", __func__, event, mic_type);
-+	switch (event) {
-+	case SND_SOC_DAPM_PRE_PMU:
-+		switch (mic_type) {
-+		case MIC_TYPE_MUX_DMIC:
-+			mt6357_set_dmic(priv, true);
-+			break;
-+		case MIC_TYPE_MUX_LPBK:
-+			mt6357_set_loopback(priv, true);
-+			break;
-+		case MIC_TYPE_MUX_SGEN:
-+			mt6357_set_ul_sine_gen(priv, true);
-+			break;
-+		default:
-+			mt6357_set_amic(priv, true, mic_type);
-+			break;
-+		}
-+		break;
-+	case SND_SOC_DAPM_POST_PMD:
-+		switch (mic_type) {
-+		case MIC_TYPE_MUX_DMIC:
-+			mt6357_set_dmic(priv, false);
-+			break;
-+		case MIC_TYPE_MUX_LPBK:
-+			mt6357_set_loopback(priv, false);
-+			break;
-+		case MIC_TYPE_MUX_SGEN:
-+			mt6357_set_ul_sine_gen(priv, false);
-+			break;
-+		default:
-+			mt6357_set_amic(priv, false, mic_type);
-+			break;
-+		}
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt_pga_left_event(struct snd_soc_dapm_widget *w,
-+			     struct snd_kcontrol *kcontrol,
-+			     int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-+
-+	dev_dbg(priv->dev, "%s(), event = 0x%x\n", __func__, event);
-+	switch (event) {
-+	case SND_SOC_DAPM_POST_PMU:
-+		/* L preamplifier enable */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0,
-+				   AUDPREAMPLON_MASK, AUDPREAMPLON_ENABLE);
-+		/* L ADC input sel : L PGA. Enable audio L ADC */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0, AUDADCLINPUTSEL_MASK,
-+				   AUDADCLINPUTSEL_PREAMPLIFIER);
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0,
-+				   AUDADCLPWRUP_MASK, AUDADCLPWRUP);
-+		/* Audio L preamplifier DCC precharge off */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0,
-+				   AUDPREAMPLDCPRECHARGE_MASK, AUDPREAMPLDCPRECHARGE_DISABLE);
-+		break;
-+	case SND_SOC_DAPM_PRE_PMD:
-+		/* Audio L ADC input sel : off, disable audio L ADC */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0,
-+				   AUDADCLPWRUP_MASK, AUDADCLPWRDOWN);
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0, AUDADCLINPUTSEL_MASK,
-+				   AUDADCLINPUTSEL_IDLE);
-+		/* L PGA 0 dB gain */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0, AUDPREAMPLGAIN_MASK,
-+				   UL_GAIN_0DB << AUDPREAMPLGAIN_SFT);
-+		/* L preamplifier ACC */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0,
-+				   AUDPREAMPLDCCEN_MASK, AUDPREAMPLDCCEN_AC);
-+		/* L preamplifier disable */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0,
-+				   AUDPREAMPLON_MASK, AUDPREAMPLON_DISABLE);
-+		/* disable Audio L preamplifier DCC precharge */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0,
-+				   AUDPREAMPLDCPRECHARGE_MASK, AUDPREAMPLDCPRECHARGE_DISABLE);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt_pga_right_event(struct snd_soc_dapm_widget *w,
-+			      struct snd_kcontrol *kcontrol,
-+			      int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-+
-+	dev_dbg(priv->dev, "%s(), event = 0x%x\n", __func__, event);
-+	switch (event) {
-+	case SND_SOC_DAPM_POST_PMU:
-+		/* R preamplifier enable */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON1,
-+				   AUDPREAMPRON_MASK, AUDPREAMPRON_ENABLE);
-+		/* R ADC input sel : R PGA. Enable audio R ADC */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON1, AUDADCRINPUTSEL_MASK,
-+				   AUDADCRINPUTSEL_PREAMPLIFIER);
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON1,
-+				   AUDADCRPWRUP_MASK, AUDADCRPWRUP);
-+		/* Audio R preamplifier DCC precharge off */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON1,
-+				   AUDPREAMPRDCPRECHARGE_MASK, AUDPREAMPRDCPRECHARGE_DISABLE);
-+		break;
-+	case SND_SOC_DAPM_PRE_PMD:
-+		/* Audio R ADC input sel : off, disable audio R ADC */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON1,
-+				   AUDADCRPWRUP_MASK, AUDADCRPWRDOWN);
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0, AUDADCRINPUTSEL_MASK,
-+				   AUDADCRINPUTSEL_IDLE);
-+		/* R PGA 0 dB gain */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON1, AUDPREAMPRGAIN_MASK,
-+				   UL_GAIN_0DB << AUDPREAMPRGAIN_SFT);
-+		/* R preamplifier ACC */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON1,
-+				   AUDPREAMPRDCCEN_MASK, AUDPREAMPRDCCEN_AC);
-+		/* R preamplifier disable */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON1,
-+				   AUDPREAMPRON_MASK, AUDPREAMPRON_DISABLE);
-+		/* disable Audio R preamplifier DCC precharge */
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON1,
-+				   AUDPREAMPRDCPRECHARGE_MASK, AUDPREAMPRDCPRECHARGE_DISABLE);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int adc_enable_event(struct snd_soc_dapm_widget *w,
-+			    struct snd_kcontrol *kcontrol,
-+			    int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-+
-+	dev_dbg(priv->dev, "%s(), event = 0x%x\n", __func__, event);
-+	switch (event) {
-+	case SND_SOC_DAPM_PRE_PMU:
-+		/* enable aud_pad TX fifos */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_AUD_PAD_TOP,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_MASK,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_ENABLE);
-+		/* UL turn on */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_UL_SRC_CON0_L,
-+				   UL_SRC_ON_TMP_CTL_MASK, UL_SRC_ENABLE);
-+		/* Wait to avoid any pop noises */
-+		msleep(100);
-+		//set the mic gains to the stored values
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0, AUDPREAMPLGAIN_MASK,
-+				   priv->ana_gain[ANALOG_VOLUME_MIC1] << AUDPREAMPLGAIN_SFT);
-+		regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON1, AUDPREAMPRGAIN_MASK,
-+				   priv->ana_gain[ANALOG_VOLUME_MIC2] << AUDPREAMPRGAIN_SFT);
-+		break;
-+	case SND_SOC_DAPM_POST_PMD:
-+		/* UL turn off */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_UL_SRC_CON0_L,
-+				   UL_SRC_ON_TMP_CTL_MASK, UL_SRC_DISABLE);
-+		/* disable aud_pad TX fifos */
-+		regmap_update_bits(priv->regmap, MT6357_AFE_AUD_PAD_TOP,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_MASK,
-+				   AUD_PAD_TX_FIFO_NORMAL_PATH_DISABLE);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static void configure_downlinks(struct mt6357_priv *priv, bool enable)
-+{
-+	if (enable) {
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ELR_0,
-+				   AUD_HP_TRIM_EN_VAUDP15_MASK, AUD_HP_TRIM_EN_VAUDP15_ENABLE);
-+		/* Disable headphone short-circuit protection */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON0,
-+				   AUD_HPR_SC_VAUDP15_MASK | AUD_HPL_SC_VAUDP15_MASK,
-+				   AUD_HPR_SC_VAUDP15_DISABLE | AUD_HPL_SC_VAUDP15_DISABLE);
-+		/* Disable handset short-circuit protection */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON3,
-+				   AUD_HS_SC_VAUDP15_MASK, AUD_HS_SC_VAUDP15_DISABLE);
-+		/* Disable lineout short-circuit protection */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON4,
-+				   AUD_LOL_SC_VAUDP15_MASK, AUD_LOL_SC_VAUDP15_DISABLE);
-+		/* Reduce ESD resistance of AU_REFN */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON2,
-+				   AUD_REFN_DERES_VAUDP15_MASK, AUD_REFN_DERES_VAUDP15_ENABLE);
-+		/* Set HPR/HPL gain as minimum (~ -40dB) */
-+		regmap_write(priv->regmap, MT6357_ZCD_CON2, DL_GAIN_N_40DB_REG);
-+		/* Set LOL gain as minimum (~ -40dB) */
-+		regmap_write(priv->regmap, MT6357_ZCD_CON1, DL_GAIN_N_40DB_REG);
-+		/* Set HS gain as minimum (~ -40dB) */
-+		regmap_write(priv->regmap, MT6357_ZCD_CON3, DL_GAIN_N_40DB);
-+		/* Turn on DA_600K_NCP_VA18 */
-+		regmap_write(priv->regmap, MT6357_AUDNCP_CLKDIV_CON1, DIVCKS_ON);
-+		/* Set NCP clock as 604kHz // 26MHz/43 = 604KHz */
-+		regmap_write(priv->regmap, MT6357_AUDNCP_CLKDIV_CON2, 0x002c);
-+		/* Toggle DIVCKS_CHG */
-+		regmap_write(priv->regmap, MT6357_AUDNCP_CLKDIV_CON0, DIVCKS_CHG);
-+		/* Set NCP soft start mode as default mode: 150us */
-+		regmap_write(priv->regmap, MT6357_AUDNCP_CLKDIV_CON4, DIVCKS_PWD_NCP_ST_150US);
-+		/* Enable NCP */
-+		regmap_write(priv->regmap, MT6357_AUDNCP_CLKDIV_CON3, DIVCKS_PWD_NCP_ENABLE);
-+		usleep_range(250, 270);
-+		/* Enable cap-less LDOs (1.5V) */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON12,
-+				   VA33REFGEN_EN_VA18_MASK |
-+				   LCLDO_REMOTE_SENSE_VA18_MASK | LCLDO_EN_VA18_MASK |
-+				   HCLDO_REMOTE_SENSE_VA18_MASK | HCLDO_EN_VA18_MASK,
-+				   VA33REFGEN_EN_VA18_ENABLE |
-+				   LCLDO_REMOTE_SENSE_VA18_ENABLE | LCLDO_EN_VA18_ENABLE |
-+				   HCLDO_REMOTE_SENSE_VA18_ENABLE | HCLDO_EN_VA18_ENABLE);
-+		/* Enable NV regulator (-1.2V) */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON13,
-+				   NVREG_EN_VAUDP15_MASK, NVREG_EN_VAUDP15_ENABLE);
-+		usleep_range(100, 120);
-+		/* Enable IBIST */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON10,
-+				   AUD_IBIAS_PWRDN_VAUDP15_MASK, AUD_IBIAS_PWRDN_VAUDP15_ENABLE);
-+		/* Enable AUD_CLK */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON11,
-+				   RSTB_DECODER_VA28_MASK, RSTB_DECODER_VA28_ENABLE);
-+		/* Enable low-noise mode of DAC */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON6,
-+				   DAC_LOW_NOISE_MODE_MASK, DAC_LOW_NOISE_MODE_ENABLE);
-+		usleep_range(100, 120);
-+	} else {
-+		/* Disable low-noise mode of DAC */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON6,
-+				   DAC_LOW_NOISE_MODE_MASK, DAC_LOW_NOISE_MODE_DISABLE);
-+		/* Disable AUD_CLK */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON11,
-+				   RSTB_DECODER_VA28_MASK, RSTB_DECODER_VA28_DISABLE);
-+		/* Enable linout short-circuit protection */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON4,
-+				   AUD_LOL_SC_VAUDP15_MASK, AUD_LOL_SC_VAUDP15_ENABLE);
-+		/* Enable handset short-circuit protection */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON3,
-+				   AUD_HS_SC_VAUDP15_MASK, AUD_HS_SC_VAUDP15_ENABLE);
-+		/* Enable headphone short-circuit protection */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON0,
-+				   AUD_HPR_SC_VAUDP15_MASK | AUD_HPL_SC_VAUDP15_MASK,
-+				   AUD_HPR_SC_VAUDP15_ENABLE | AUD_HPL_SC_VAUDP15_ENABLE);
-+		/* Disable IBIST */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON10,
-+				   AUD_IBIAS_PWRDN_VAUDP15_MASK, AUD_IBIAS_PWRDN_VAUDP15_DISABLE);
-+		/* Disable NV regulator (-1.2V) */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON13,
-+				   NVREG_EN_VAUDP15_MASK, NVREG_EN_VAUDP15_DISABLE);
-+		/* Disable cap-less LDOs (1.5V) */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON12,
-+				   VA33REFGEN_EN_VA18_MASK |
-+				   LCLDO_REMOTE_SENSE_VA18_MASK | LCLDO_EN_VA18_MASK |
-+				   HCLDO_REMOTE_SENSE_VA18_MASK | HCLDO_EN_VA18_MASK,
-+				   VA33REFGEN_EN_VA18_DISABLE |
-+				   LCLDO_REMOTE_SENSE_VA18_DISABLE | LCLDO_EN_VA18_DISABLE |
-+				   HCLDO_REMOTE_SENSE_VA18_DISABLE | HCLDO_EN_VA18_DISABLE);
-+		/* Disable NCP */
-+		regmap_update_bits(priv->regmap, MT6357_AUDNCP_CLKDIV_CON3, DIVCKS_PWD_NCP_MASK,
-+				   DIVCKS_PWD_NCP_DISABLE);
-+	}
-+}
-+
-+static int mt_audio_in_event(struct snd_soc_dapm_widget *w,
-+			     struct snd_kcontrol *kcontrol,
-+			     int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-+
-+	dev_dbg(priv->dev, "%s(), event 0x%x\n", __func__, event);
-+	switch (event) {
-+	case SND_SOC_DAPM_PRE_PMU:
-+		set_playback_gpio(priv, true);
-+
-+		/* Pull-down HPL/R to AVSS28_AUD */
-+		if (priv->pull_down_needed)
-+			hp_pull_down(priv, true);
-+
-+		/* Disable HP main CMFB Switch */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON6,
-+				   HPRL_MAIN_CMFB_LOOP_MASK, HPRL_MAIN_CMFB_LOOP_DISABLE);
-+		/* Audio system digital clock power down release */
-+		regmap_write(priv->regmap, MT6357_AFUNC_AUD_CON2, CCI_AUDIO_FIFO_DISABLE |
-+								  CCI_ACD_MODE_NORMAL_PATH |
-+								  CCI_AFIFO_CLK_PWDB_ON |
-+								  CCI_ACD_FUNC_RSTB_RESET);
-+		/* sdm audio fifo clock power on */
-+		regmap_write(priv->regmap, MT6357_AFUNC_AUD_CON0, CCI_AUD_ANACK_INVERT |
-+								  (4 << CCI_AUDIO_FIFO_WPTR_SFT) |
-+								  CCI_SCRAMBLER_CG_ENABLE |
-+								  CCI_RAND_ENABLE |
-+								  CCI_SPLT_SCRMB_CLK_ON |
-+								  CCI_SPLT_SCRMB_ON |
-+								  CCI_ZERO_PADDING_DISABLE |
-+								  CCI_SCRAMBLER_ENABLE);
-+		/* scrambler clock on enable */
-+		regmap_write(priv->regmap, MT6357_AFUNC_AUD_CON2, CCI_AUDIO_FIFO_DISABLE |
-+								  CCI_ACD_MODE_TEST_PATH |
-+								  CCI_AFIFO_CLK_PWDB_ON |
-+								  CCI_ACD_FUNC_RSTB_RELEASE);
-+		/* sdm power on */
-+		regmap_write(priv->regmap, MT6357_AFUNC_AUD_CON2, CCI_AUDIO_FIFO_ENABLE |
-+								  CCI_ACD_MODE_TEST_PATH |
-+								  CCI_AFIFO_CLK_PWDB_ON |
-+								  CCI_ACD_FUNC_RSTB_RELEASE);
-+
-+		configure_downlinks(priv, true);
-+		break;
-+	case SND_SOC_DAPM_POST_PMD:
-+		configure_downlinks(priv, false);
-+		/* DL scrambler disabling sequence */
-+		regmap_write(priv->regmap, MT6357_AFUNC_AUD_CON2, CCI_AUDIO_FIFO_DISABLE |
-+								  CCI_ACD_MODE_TEST_PATH |
-+								  CCI_AFIFO_CLK_PWDB_DOWN |
-+								  CCI_ACD_FUNC_RSTB_RESET);
-+		regmap_write(priv->regmap, MT6357_AFUNC_AUD_CON0, CCI_AUD_ANACK_INVERT |
-+								  (4 << CCI_AUDIO_FIFO_WPTR_SFT) |
-+								  CCI_SCRAMBLER_CG_ENABLE |
-+								  CCI_RAND_ENABLE |
-+								  CCI_SPLT_SCRMB_CLK_ON |
-+								  CCI_SPLT_SCRMB_ON |
-+								  CCI_ZERO_PADDING_DISABLE |
-+								  CCI_SCRAMBLER_DISABLE);
-+
-+		set_playback_gpio(priv, false);
-+
-+		/* disable Pull-down HPL/R to AVSS28_AUD */
-+		if (priv->pull_down_needed)
-+			hp_pull_down(priv, false);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt_delay_250_event(struct snd_soc_dapm_widget *w,
-+			      struct snd_kcontrol *kcontrol,
-+			      int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-+
-+	dev_dbg(priv->dev, "%s(), event 0x%x\n", __func__, event);
-+	switch (event) {
-+	case SND_SOC_DAPM_POST_PMU:
-+		usleep_range(250, 270);
-+		break;
-+	case SND_SOC_DAPM_PRE_PMD:
-+		usleep_range(250, 270);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int lol_mux_event(struct snd_soc_dapm_widget *w,
-+			 struct snd_kcontrol *kcontrol,
-+			 int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-+
-+	dev_dbg(priv->dev, "%s(), event 0x%x\n", __func__, event);
-+	switch (event) {
-+	case SND_SOC_DAPM_POST_PMU:
-+		/* Set LO STB enhance circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON4,
-+				   AUD_LOLOUT_STB_ENH_VAUDP15_MASK,
-+				   AUD_LOLOUT_STB_ENH_VAUDP15_ENABLE);
-+		/* Enable LO driver bias circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON4,
-+				   AUD_LOL_PWRUP_BIAS_VAUDP15_MASK,
-+				   AUD_LOL_PWRUP_BIAS_VAUDP15_ENABLE);
-+		/* Enable LO driver core circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON4,
-+				   AUD_LOL_PWRUP_VAUDP15_MASK, AUD_LOL_PWRUP_VAUDP15_ENABLE);
-+		/* Set LOL gain to normal gain step by step */
-+		lo_volume_ramp(priv, DL_GAIN_N_40DB, priv->ana_gain[ANALOG_VOLUME_LINEOUTL],
-+			       DL_GAIN_N_40DB, priv->ana_gain[ANALOG_VOLUME_LINEOUTR]);
-+		break;
-+	case SND_SOC_DAPM_PRE_PMD:
-+
-+		/* decrease LOL gain to minimum gain step by step */
-+		lo_volume_ramp(priv, priv->ana_gain[ANALOG_VOLUME_LINEOUTL], DL_GAIN_N_40DB,
-+			       priv->ana_gain[ANALOG_VOLUME_LINEOUTR], DL_GAIN_N_40DB);
-+		/* Disable LO driver core circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON4,
-+				   AUD_LOL_PWRUP_VAUDP15_MASK, AUD_LOL_PWRUP_VAUDP15_DISABLE);
-+		/* Disable LO driver bias circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON4,
-+				   AUD_LOL_PWRUP_BIAS_VAUDP15_MASK,
-+				   AUD_LOL_PWRUP_BIAS_VAUDP15_DISABLE);
-+		/* Clear LO STB enhance circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON4,
-+				   AUD_LOLOUT_STB_ENH_VAUDP15_MASK,
-+				   AUD_LOLOUT_STB_ENH_VAUDP15_DISABLE);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int hs_mux_event(struct snd_soc_dapm_widget *w,
-+			struct snd_kcontrol *kcontrol,
-+			int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-+
-+	dev_dbg(priv->dev, "%s(), event 0x%x\n", __func__, event);
-+	switch (event) {
-+	case SND_SOC_DAPM_POST_PMU:
-+
-+		/* Set HS STB enhance circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON3,
-+				   AUD_HSOUT_STB_ENH_VAUDP15_MASK,
-+				   AUD_HSOUT_STB_ENH_VAUDP15_ENABLE);
-+		/* Enable HS driver bias circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON3,
-+				   AUD_HS_PWRUP_BIAS_VAUDP15_MASK,
-+				   AUD_HS_PWRUP_BIAS_VAUDP15_ENABLE);
-+		/* Enable HS driver core circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON3,
-+				   AUD_HS_PWRUP_VAUDP15_MASK, AUD_HS_PWRUP_VAUDP15_ENABLE);
-+		/* Set HS gain to normal gain step by step */
-+		hs_volume_ramp(priv, DL_GAIN_N_40DB, priv->ana_gain[ANALOG_VOLUME_HSOUT]);
-+		break;
-+	case SND_SOC_DAPM_PRE_PMD:
-+
-+		/* decrease HS gain to minimum gain step by step */
-+		hs_volume_ramp(priv,  priv->ana_gain[ANALOG_VOLUME_HSOUT], DL_GAIN_N_40DB);
-+		/* Disable HS driver core circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON3,
-+				   AUD_HS_PWRUP_VAUDP15_MASK, AUD_HS_PWRUP_VAUDP15_DISABLE);
-+		/* Disable HS driver bias circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON3,
-+				   AUD_HS_PWRUP_BIAS_VAUDP15_MASK,
-+				   AUD_HS_PWRUP_BIAS_VAUDP15_ENABLE);
-+		/* Clear HS STB enhance circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON3,
-+				   AUD_HSOUT_STB_ENH_VAUDP15_MASK,
-+				   AUD_HSOUT_STB_ENH_VAUDP15_DISABLE);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int hp_main_mux_event(struct snd_soc_dapm_widget *w,
-+			     struct snd_kcontrol *kcontrol,
-+			     int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-+
-+	dev_dbg(priv->dev, "%s(), event 0x%x\n", __func__, event);
-+	switch (event) {
-+	case SND_SOC_DAPM_POST_PMU:
-+		priv->hp_channel_number++;
-+		if (priv->hp_channel_number > 1)
-+			break;
-+		/* Set HPP/N STB enhance circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON2,
-+				   HPROUT_STB_ENH_VAUDP15_MASK | HPLOUT_STB_ENH_VAUDP15_MASK,
-+				   HPROUT_STB_ENH_VAUDP15_N470_P250 |
-+				   HPLOUT_STB_ENH_VAUDP15_N470_P250);
-+		/* Enable HP aux output stage */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPROUT_AUX_PWRUP_VAUDP15_MASK | HPLOUT_AUX_PWRUP_VAUDP15_MASK,
-+				   HPROUT_AUX_PWRUP_VAUDP15_ENABLE |
-+				   HPLOUT_AUX_PWRUP_VAUDP15_ENABLE);
-+		/* Enable HP aux feedback loop */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPR_AUX_FBRSW_VAUDP15_MASK | HPL_AUX_FBRSW_VAUDP15_MASK,
-+				   HPR_AUX_FBRSW_VAUDP15_ENABLE | HPL_AUX_FBRSW_VAUDP15_ENABLE);
-+		/* Enable HP aux CMFB loop */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON6,
-+				   HP_CMFB_RST_MASK |
-+				   HPL_AUX_CMFB_LOOP_MASK | HPR_AUX_CMFB_LOOP_MASK,
-+				   HP_CMFB_RST_NORMAL |
-+				   HPL_AUX_CMFB_LOOP_ENABLE | HPR_AUX_CMFB_LOOP_ENABLE);
-+		/* Enable HP driver bias circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON0,
-+				   AUD_HPR_BIAS_VAUDP15_MASK | AUD_HPL_BIAS_VAUDP15_MASK,
-+				   AUD_HPR_BIAS_VAUDP15_ENABLE | AUD_HPL_BIAS_VAUDP15_ENABLE);
-+		/* Enable HP driver core circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON0,
-+				   AUD_HPR_PWRUP_VAUDP15_MASK | AUD_HPL_PWRUP_VAUDP15_MASK,
-+				   AUD_HPR_PWRUP_VAUDP15_ENABLE | AUD_HPL_PWRUP_VAUDP15_ENABLE);
-+		/* Short HP main output to HP aux output stage */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPR_SHORT2HPR_AUX_VAUDP15_MASK | HPL_SHORT2HPR_AUX_VAUDP15_MASK,
-+				   HPR_SHORT2HPR_AUX_VAUDP15_ENABLE |
-+				   HPL_SHORT2HPR_AUX_VAUDP15_ENABLE);
-+		/* Enable HP main CMFB loop */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON6,
-+				   HPRL_MAIN_CMFB_LOOP_MASK, HPRL_MAIN_CMFB_LOOP_ENABLE);
-+		/* Disable HP aux CMFB loop */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON6,
-+				   HPR_AUX_CMFB_LOOP_MASK | HPL_AUX_CMFB_LOOP_MASK,
-+				   HPR_AUX_CMFB_LOOP_DISABLE | HPL_AUX_CMFB_LOOP_DISABLE);
-+		/* Enable HP main output stage */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPROUT_PWRUP_VAUDP15_MASK | HPLOUT_PWRUP_VAUDP15_MASK,
-+				   HPROUT_PWRUP_VAUDP15_ENABLE | HPLOUT_PWRUP_VAUDP15_ENABLE);
-+		/* Enable HPR/L main output stage step by step */
-+		hp_main_output_ramp(priv, true);
-+		usleep_range(1000, 1200);
-+		/* Reduce HP aux feedback loop gain */
-+		hp_aux_feedback_loop_gain_ramp(priv, true);
-+		/* Disable HP aux feedback loop */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPR_AUX_FBRSW_VAUDP15_MASK | HPL_AUX_FBRSW_VAUDP15_MASK,
-+				   HPR_AUX_FBRSW_VAUDP15_DISABLE | HPL_AUX_FBRSW_VAUDP15_DISABLE);
-+		/* apply volume setting */
-+		hp_volume_ramp(priv, DL_GAIN_N_40DB, priv->ana_gain[ANALOG_VOLUME_HPOUTL],
-+			       DL_GAIN_N_40DB, priv->ana_gain[ANALOG_VOLUME_HPOUTR]);
-+		/* Disable HP aux output stage */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPROUT_AUX_PWRUP_VAUDP15_MASK | HPLOUT_AUX_PWRUP_VAUDP15_MASK,
-+				   HPROUT_AUX_PWRUP_VAUDP15_DISABLE |
-+				   HPLOUT_AUX_PWRUP_VAUDP15_DISABLE);
-+		/* Unshort HP main output to HP aux output stage */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPR_SHORT2HPR_AUX_VAUDP15_MASK | HPL_SHORT2HPR_AUX_VAUDP15_MASK,
-+				   HPR_SHORT2HPR_AUX_VAUDP15_DISABLE |
-+				   HPL_SHORT2HPR_AUX_VAUDP15_DISABLE);
-+		usleep_range(100, 120);
-+		break;
-+	case SND_SOC_DAPM_PRE_PMD:
-+		priv->hp_channel_number--;
-+		if (priv->hp_channel_number > 0)
-+			break;
-+		/* Short HP main output to HP aux output stage */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPR_SHORT2HPR_AUX_VAUDP15_MASK | HPL_SHORT2HPR_AUX_VAUDP15_MASK,
-+				   HPR_SHORT2HPR_AUX_VAUDP15_ENABLE |
-+				   HPL_SHORT2HPR_AUX_VAUDP15_ENABLE);
-+		/* Enable HP aux output stage */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPROUT_AUX_PWRUP_VAUDP15_MASK | HPLOUT_AUX_PWRUP_VAUDP15_MASK,
-+				   HPROUT_AUX_PWRUP_VAUDP15_ENABLE |
-+				   HPLOUT_AUX_PWRUP_VAUDP15_ENABLE);
-+		/* decrease HPL/R gain to normal gain step by step */
-+		hp_volume_ramp(priv, priv->ana_gain[ANALOG_VOLUME_HPOUTL], DL_GAIN_N_40DB,
-+			       priv->ana_gain[ANALOG_VOLUME_HPOUTR], DL_GAIN_N_40DB);
-+		/* Enable HP aux feedback loop */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPR_AUX_FBRSW_VAUDP15_MASK | HPL_AUX_FBRSW_VAUDP15_MASK,
-+				   HPR_AUX_FBRSW_VAUDP15_ENABLE | HPL_AUX_FBRSW_VAUDP15_ENABLE);
-+		/* Reduce HP aux feedback loop gain */
-+		hp_aux_feedback_loop_gain_ramp(priv, false);
-+		/* decrease HPR/L main output stage step by step */
-+		hp_main_output_ramp(priv, false);
-+		/* Disable HP main output stage */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPROUT_PWRUP_VAUDP15_MASK | HPLOUT_PWRUP_VAUDP15_MASK,
-+				   HPROUT_PWRUP_VAUDP15_DISABLE | HPLOUT_PWRUP_VAUDP15_DISABLE);
-+		/* Enable HP aux CMFB loop */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON6,
-+				   HP_CMFB_RST_MASK |
-+				   HPL_AUX_CMFB_LOOP_MASK | HPR_AUX_CMFB_LOOP_MASK,
-+				   HP_CMFB_RST_RESET |
-+				   HPL_AUX_CMFB_LOOP_ENABLE | HPR_AUX_CMFB_LOOP_ENABLE);
-+		/* Disable HP main CMFB loop */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON6,
-+				   HPRL_MAIN_CMFB_LOOP_MASK, HPRL_MAIN_CMFB_LOOP_DISABLE);
-+		/* Unshort HP main output to HP aux output stage */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPR_SHORT2HPR_AUX_VAUDP15_MASK | HPL_SHORT2HPR_AUX_VAUDP15_MASK,
-+				   HPR_SHORT2HPR_AUX_VAUDP15_DISABLE |
-+				   HPL_SHORT2HPR_AUX_VAUDP15_DISABLE);
-+		/* Disable HP driver core circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON0,
-+				   AUD_HPR_PWRUP_VAUDP15_MASK | AUD_HPL_PWRUP_VAUDP15_MASK,
-+				   AUD_HPR_PWRUP_VAUDP15_DISABLE | AUD_HPL_PWRUP_VAUDP15_DISABLE);
-+		/* Disable HP driver bias circuits */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON0,
-+				   AUD_HPR_BIAS_VAUDP15_MASK | AUD_HPL_BIAS_VAUDP15_MASK,
-+				   AUD_HPR_BIAS_VAUDP15_DISABLE | AUD_HPL_BIAS_VAUDP15_DISABLE);
-+		/* Disable HP aux CMFB loop,
-+		 * Enable HP main CMFB for HP off state
-+		 */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON6,
-+				   HPRL_MAIN_CMFB_LOOP_MASK |
-+				   HPR_AUX_CMFB_LOOP_MASK | HPL_AUX_CMFB_LOOP_MASK,
-+				   HPRL_MAIN_CMFB_LOOP_ENABLE |
-+				   HPR_AUX_CMFB_LOOP_DISABLE | HPL_AUX_CMFB_LOOP_DISABLE);
-+		/* Disable HP aux feedback loop */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPR_AUX_FBRSW_VAUDP15_MASK | HPL_AUX_FBRSW_VAUDP15_MASK,
-+				   HPR_AUX_FBRSW_VAUDP15_DISABLE | HPL_AUX_FBRSW_VAUDP15_DISABLE);
-+		/* Disable HP aux output stage */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON1,
-+				   HPROUT_AUX_PWRUP_VAUDP15_MASK | HPLOUT_AUX_PWRUP_VAUDP15_MASK,
-+				   HPROUT_AUX_PWRUP_VAUDP15_DISABLE |
-+				   HPLOUT_AUX_PWRUP_VAUDP15_DISABLE);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int right_dac_event(struct snd_soc_dapm_widget *w,
-+			   struct snd_kcontrol *kcontrol,
-+			   int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-+
-+	dev_dbg(priv->dev, "%s(), event 0x%x\n", __func__, event);
-+	switch (event) {
-+	case SND_SOC_DAPM_PRE_PMU:
-+		/* Enable Audio DAC and control audio bias gen */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON0,
-+				   AUD_DACR_PWRUP_VA28_MASK | AUD_DACR_PWRUP_VAUDP15_MASK,
-+				   AUD_DACR_PWRUP_VA28_ENABLE | AUD_DACR_PWRUP_VAUDP15_ENABLE);
-+		break;
-+	case SND_SOC_DAPM_POST_PMU:
-+		/* disable Pull-down HPL/R to AVSS28_AUD */
-+		if (priv->pull_down_needed)
-+			hp_pull_down(priv, false);
-+		break;
-+	case SND_SOC_DAPM_PRE_PMD:
-+		/* Pull-down HPL/R to AVSS28_AUD */
-+		if (priv->pull_down_needed)
-+			hp_pull_down(priv, true);
-+		/* Disable Audio DAC and control audio bias gen  */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON0,
-+				   AUD_DACR_PWRUP_VA28_MASK | AUD_DACR_PWRUP_VAUDP15_MASK,
-+				   AUD_DACR_PWRUP_VA28_DISABLE | AUD_DACR_PWRUP_VAUDP15_DISABLE);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int left_dac_event(struct snd_soc_dapm_widget *w,
-+			  struct snd_kcontrol *kcontrol,
-+			  int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(cmpnt);
-+
-+	dev_dbg(priv->dev, "%s(), event 0x%x\n", __func__, event);
-+	switch (event) {
-+	case SND_SOC_DAPM_PRE_PMU:
-+		/* Enable Audio DAC and control audio bias gen  */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON0,
-+				   AUD_DACL_PWRUP_VA28_MASK | AUD_DACL_PWRUP_VAUDP15_MASK,
-+				   AUD_DACL_PWRUP_VA28_ENABLE | AUD_DACL_PWRUP_VAUDP15_ENABLE);
-+		break;
-+	case SND_SOC_DAPM_POST_PMU:
-+		/* disable Pull-down HPL/R to AVSS28_AUD */
-+		if (priv->pull_down_needed)
-+			hp_pull_down(priv, false);
-+		break;
-+	case SND_SOC_DAPM_PRE_PMD:
-+		/* Pull-down HPL/R to AVSS28_AUD */
-+		if (priv->pull_down_needed)
-+			hp_pull_down(priv, true);
-+		/* Disable Audio DAC and control audio bias gen  */
-+		regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON0,
-+				   AUD_DACL_PWRUP_VA28_MASK | AUD_DACL_PWRUP_VAUDP15_MASK,
-+				   AUD_DACL_PWRUP_VA28_DISABLE | AUD_DACL_PWRUP_VAUDP15_DISABLE);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+/* Supply widgets subsequence */
-+enum {
-+	/* common */
-+	SUPPLY_SEQ_CLK_BUF,
-+	SUPPLY_SEQ_AUD_GLB,
-+	SUPPLY_SEQ_CLKSQ,
-+	SUPPLY_SEQ_VOW_AUD_LPW,
-+	SUPPLY_SEQ_AUD_VOW,
-+	SUPPLY_SEQ_VOW_CLK,
-+	SUPPLY_SEQ_VOW_LDO,
-+	SUPPLY_SEQ_TOP_CK,
-+	SUPPLY_SEQ_TOP_CK_LAST,
-+	SUPPLY_SEQ_AUD_TOP,
-+	SUPPLY_SEQ_AUD_TOP_LAST,
-+	SUPPLY_SEQ_AFE,
-+	/* capture */
-+	SUPPLY_SEQ_ADC_SUPPLY,
-+};
-+
-+/* DAPM Widgets */
-+static const struct snd_soc_dapm_widget mt6357_dapm_widgets[] = {
-+	/* Analog Clocks */
-+	SND_SOC_DAPM_SUPPLY_S("CLK_BUF", SUPPLY_SEQ_CLK_BUF,
-+			      MT6357_DCXO_CW14,
-+			      XO_AUDIO_EN_M_SFT, 0, NULL, 0),
-+	SND_SOC_DAPM_SUPPLY_S("AUDGLB", SUPPLY_SEQ_AUD_GLB,
-+			      MT6357_AUDDEC_ANA_CON11,
-+			      AUDGLB_PWRDN_VA28_SFT, 1, NULL, 0),
-+	SND_SOC_DAPM_SUPPLY_S("CLKSQ Audio", SUPPLY_SEQ_CLKSQ,
-+			      MT6357_AUDENC_ANA_CON6,
-+			      CLKSQ_EN_SFT, 0, NULL, 0),
-+	SND_SOC_DAPM_SUPPLY_S("AUDNCP_CK", SUPPLY_SEQ_TOP_CK,
-+			      MT6357_AUD_TOP_CKPDN_CON0,
-+			      AUDNCP_CK_PDN_SFT, 1, NULL, 0),
-+	SND_SOC_DAPM_SUPPLY_S("ZCD13M_CK", SUPPLY_SEQ_TOP_CK,
-+			      MT6357_AUD_TOP_CKPDN_CON0,
-+			      ZCD13M_CK_PDN_SFT, 1, NULL, 0),
-+	SND_SOC_DAPM_SUPPLY_S("AUD_CK", SUPPLY_SEQ_TOP_CK_LAST,
-+			      MT6357_AUD_TOP_CKPDN_CON0,
-+			      AUD_CK_PDN_SFT, 1,
-+			      mt_delay_250_event,
-+			      SND_SOC_DAPM_POST_PMU | SND_SOC_DAPM_PRE_PMD),
-+	SND_SOC_DAPM_SUPPLY_S("AUDIF_CK", SUPPLY_SEQ_TOP_CK,
-+			      MT6357_AUD_TOP_CKPDN_CON0,
-+			      AUDIF_CK_PDN_SFT, 1, NULL, 0),
-+
-+	/* Digital Clocks */
-+	SND_SOC_DAPM_SUPPLY_S("AUDIO_TOP_AFE_CTL", SUPPLY_SEQ_AUD_TOP_LAST,
-+			      MT6357_AUDIO_TOP_CON0,
-+			      PDN_AFE_CTL_SFT, 1,
-+			      mt_delay_250_event,
-+			      SND_SOC_DAPM_POST_PMU | SND_SOC_DAPM_PRE_PMD),
-+	SND_SOC_DAPM_SUPPLY_S("AUDIO_TOP_DAC_CTL", SUPPLY_SEQ_AUD_TOP,
-+			      MT6357_AUDIO_TOP_CON0,
-+			      PDN_DAC_CTL_SFT, 1, NULL, 0),
-+	SND_SOC_DAPM_SUPPLY_S("AUDIO_TOP_ADC_CTL", SUPPLY_SEQ_AUD_TOP,
-+			      MT6357_AUDIO_TOP_CON0,
-+			      PDN_ADC_CTL_SFT, 1, NULL, 0),
-+	SND_SOC_DAPM_SUPPLY_S("AUDIO_TOP_I2S_DL", SUPPLY_SEQ_AUD_TOP,
-+			      MT6357_AUDIO_TOP_CON0,
-+			      PDN_I2S_DL_CTL_SFT, 1, NULL, 0),
-+	SND_SOC_DAPM_SUPPLY_S("AUDIO_TOP_PWR_CLK", SUPPLY_SEQ_AUD_TOP,
-+			      MT6357_AUDIO_TOP_CON0,
-+			      PWR_CLK_DIS_CTL_SFT, 1, NULL, 0),
-+	SND_SOC_DAPM_SUPPLY_S("AUDIO_TOP_PDN_AFE_TESTMODEL", SUPPLY_SEQ_AUD_TOP,
-+			      MT6357_AUDIO_TOP_CON0,
-+			      PDN_AFE_TESTMODEL_CTL_SFT, 1, NULL, 0),
-+	SND_SOC_DAPM_SUPPLY_S("AUDIO_TOP_PDN_RESERVED", SUPPLY_SEQ_AUD_TOP,
-+			      MT6357_AUDIO_TOP_CON0,
-+			      PDN_RESERVED_SFT, 1, NULL, 0),
-+	SND_SOC_DAPM_SUPPLY_S("AUDIO_TOP_LPBK", SUPPLY_SEQ_AUD_TOP,
-+			      MT6357_AUDIO_TOP_CON0,
-+			      PDN_LPBK_CTL_SFT, 1, NULL, 0),
-+
-+	/* General */
-+	SND_SOC_DAPM_SUPPLY_S("AFE_ON", SUPPLY_SEQ_AFE,
-+			      MT6357_AFE_UL_DL_CON0, AFE_ON_SFT, 0,
-+			      NULL, 0),
-+
-+	/* Uplinks */
-+	SND_SOC_DAPM_AIF_OUT_E("AIF1TX", "MT6357 Capture", 0,
-+			       SND_SOC_NOPM, 0, 0,
-+			       mt_aif_out_event,
-+			       SND_SOC_DAPM_PRE_PMU | SND_SOC_DAPM_POST_PMD),
-+	SND_SOC_DAPM_SUPPLY_S("ADC Supply", SUPPLY_SEQ_ADC_SUPPLY,
-+			      SND_SOC_NOPM, 0, 0,
-+			      mt_adc_supply_event,
-+			      SND_SOC_DAPM_PRE_PMU | SND_SOC_DAPM_POST_PMD),
-+	SND_SOC_DAPM_ADC_E("ADC", NULL, SND_SOC_NOPM, 0, 0, adc_enable_event,
-+			   SND_SOC_DAPM_PRE_PMU | SND_SOC_DAPM_POST_PMD),
-+	SND_SOC_DAPM_MUX_E("PGA L Mux", SND_SOC_NOPM, 0, 0,
-+			   &pga_left_mux_control,
-+			   mt_pga_left_event,
-+			   SND_SOC_DAPM_POST_PMU | SND_SOC_DAPM_PRE_PMD),
-+	SND_SOC_DAPM_MUX_E("PGA R Mux", SND_SOC_NOPM, 0, 0,
-+			   &pga_right_mux_control,
-+			   mt_pga_right_event,
-+			   SND_SOC_DAPM_POST_PMU | SND_SOC_DAPM_PRE_PMD),
-+	SND_SOC_DAPM_PGA("PGA L", SND_SOC_NOPM, 0, 0, NULL, 0),
-+	SND_SOC_DAPM_PGA("PGA R", SND_SOC_NOPM, 0, 0, NULL, 0),
-+	SND_SOC_DAPM_MUX_E("Mic Type Mux", SND_SOC_NOPM, 0, 0,
-+			   &mic_type_mux_control,
-+			   mt_mic_type_event,
-+			   SND_SOC_DAPM_PRE_PMU | SND_SOC_DAPM_POST_PMD),
-+	SND_SOC_DAPM_SUPPLY("MICBIAS0", MT6357_AUDENC_ANA_CON8, AUD_MICBIAS0_PWD_SFT, 0, NULL, 0),
-+	SND_SOC_DAPM_SUPPLY("MICBIAS1", MT6357_AUDENC_ANA_CON9, AUD_MICBIAS1_PWD_SFT, 0, NULL, 0),
-+
-+	/* UL inputs */
-+	SND_SOC_DAPM_INPUT("AIN0"),
-+	SND_SOC_DAPM_INPUT("AIN1"),
-+	SND_SOC_DAPM_INPUT("AIN2"),
-+	SND_SOC_DAPM_INPUT("LPBK"),
-+	SND_SOC_DAPM_INPUT("SGEN UL"),
-+
-+	/* Downlinks */
-+	SND_SOC_DAPM_AIF_IN_E("AIF_RX", "MT6357 Playback", 0,
-+			      SND_SOC_NOPM, 0, 0,
-+			      mt_audio_in_event,
-+			      SND_SOC_DAPM_PRE_PMU | SND_SOC_DAPM_POST_PMD),
-+	SND_SOC_DAPM_INPUT("SGEN DL"),
-+	SND_SOC_DAPM_MUX("DAC Mux", SND_SOC_NOPM, 0, 0, &dac_mux_control),
-+
-+	SND_SOC_DAPM_DAC_E("DACR", NULL, SND_SOC_NOPM, 0, 0, right_dac_event,
-+			   SND_SOC_DAPM_PRE_PMU | SND_SOC_DAPM_POST_PMU | SND_SOC_DAPM_PRE_PMD),
-+	SND_SOC_DAPM_DAC_E("DACL", NULL, SND_SOC_NOPM, 0, 0, left_dac_event,
-+			   SND_SOC_DAPM_PRE_PMU | SND_SOC_DAPM_POST_PMU | SND_SOC_DAPM_PRE_PMD),
-+
-+	SND_SOC_DAPM_SUPPLY("DL Digital Supply", SND_SOC_NOPM, 0, 0, NULL, 0),
-+	SND_SOC_DAPM_SUPPLY("DL Analog Supply", SND_SOC_NOPM, 0, 0, NULL, 0),
-+	SND_SOC_DAPM_SUPPLY("DL SRC", MT6357_AFE_DL_SRC2_CON0_L,
-+			    DL_2_SRC_ON_TMP_CTL_PRE_SFT, 0, NULL, 0),
-+
-+	SND_SOC_DAPM_MUX_E("Line Out Source", SND_SOC_NOPM, 0, 0, &lo_mux_control,
-+			   lol_mux_event,
-+			   SND_SOC_DAPM_POST_PMU | SND_SOC_DAPM_PRE_PMD),
-+
-+	SND_SOC_DAPM_MUX_E("Handset Source", SND_SOC_NOPM, 0, 0, &hs_mux_control,
-+			   hs_mux_event,
-+			   SND_SOC_DAPM_POST_PMU | SND_SOC_DAPM_PRE_PMD),
-+
-+	SND_SOC_DAPM_MUX_E("Headphone Right Source", SND_SOC_NOPM, 0, 0, &hpr_mux_control,
-+			   hp_main_mux_event,
-+			   SND_SOC_DAPM_POST_PMU | SND_SOC_DAPM_PRE_PMD),
-+
-+	SND_SOC_DAPM_MUX_E("Headphone Left Source", SND_SOC_NOPM, 0, 0, &hpl_mux_control,
-+			   hp_main_mux_event,
-+			   SND_SOC_DAPM_POST_PMU | SND_SOC_DAPM_PRE_PMD),
-+	/* DL outputs */
-+	SND_SOC_DAPM_OUTPUT("Headphones"),
-+	SND_SOC_DAPM_OUTPUT("Hansdet"),
-+	SND_SOC_DAPM_OUTPUT("Line out"),
-+
-+	/* Sine generator */
-+	SND_SOC_DAPM_SUPPLY("SGEN UL Enable",
-+			    MT6357_AFE_TOP_CON0, UL_SINE_ON_SFT, 0, NULL, 0),
-+	SND_SOC_DAPM_SUPPLY("SGEN Enable",
-+			    MT6357_AFE_SGEN_CFG0,
-+			    SGEN_DAC_EN_CTL_SFT, 0, mt_audio_in_event,
-+			    SND_SOC_DAPM_PRE_PMU | SND_SOC_DAPM_POST_PMD),
-+	SND_SOC_DAPM_SUPPLY("SGEN MUTE",
-+			    MT6357_AFE_SGEN_CFG0,
-+			    SGEN_MUTE_SW_CTL_SFT, 1, NULL, 0)
-+};
-+
-+static const struct snd_soc_dapm_route mt6357_dapm_routes[] = {
-+	/* Capture */
-+	{"AIF1TX", NULL, "Mic Type Mux"},
-+	{"AIF1TX", NULL, "CLK_BUF"},
-+	{"AIF1TX", NULL, "AUDGLB"},
-+	{"AIF1TX", NULL, "CLKSQ Audio"},
-+	{"AIF1TX", NULL, "AUD_CK"},
-+	{"AIF1TX", NULL, "AUDIF_CK"},
-+
-+	{"AIF1TX", NULL, "AUDIO_TOP_AFE_CTL"},
-+	{"AIF1TX", NULL, "AUDIO_TOP_ADC_CTL"},
-+	{"AIF1TX", NULL, "AUDIO_TOP_PWR_CLK"},
-+	{"AIF1TX", NULL, "AUDIO_TOP_PDN_RESERVED"},
-+	{"AIF1TX", NULL, "AUDIO_TOP_I2S_DL"},
-+	{"AIF1TX", NULL, "AFE_ON"},
-+
-+	{"Mic Type Mux", "ACC", "ADC"},
-+	{"Mic Type Mux", "DCC", "ADC"},
-+	{"Mic Type Mux", "DCC_ECM_DIFF", "ADC"},
-+	{"Mic Type Mux", "DCC_ECM_SINGLE", "ADC"},
-+	{"Mic Type Mux", "DMIC", "AIN0"},
-+	{"Mic Type Mux", "DMIC", "AIN2"},
-+	{"Mic Type Mux", "Loopback", "LPBK"},
-+	{"Mic Type Mux", "Sine Generator", "SGEN UL"},
-+
-+	{"SGEN UL", NULL, "AUDIO_TOP_PDN_AFE_TESTMODEL"},
-+	{"SGEN UL", NULL, "SGEN UL Enable"},
-+	{"SGEN UL", NULL, "SGEN MUTE"},
-+	{"SGEN UL", NULL, "SGEN Enable"},
-+
-+	{"ADC", NULL, "PGA L Mux"},
-+	{"ADC", NULL, "PGA R Mux"},
-+	{"ADC", NULL, "ADC Supply"},
-+
-+	{"PGA L Mux", "AIN0", "AIN0"},
-+	{"PGA L Mux", "AIN1", "AIN1"},
-+	{"PGA L Mux", "AIN2", "AIN2"},
-+
-+	{"PGA R Mux", "AIN0", "AIN0"},
-+	{"PGA R Mux", "AIN1", "AIN1"},
-+	{"PGA R Mux", "AIN2", "AIN2"},
-+
-+	{"AIN0", NULL, "MICBIAS0"},
-+	{"AIN1", NULL, "MICBIAS1"},
-+	{"AIN2", NULL, "MICBIAS0"},
-+	{"LPBK", NULL, "AUDIO_TOP_LPBK"},
-+
-+	/* Playback */
-+	{"DAC Mux", "Normal Path", "AIF_RX"},
-+	{"DAC Mux", "Sine Generator", "SGEN DL"},
-+
-+	{"AIF_RX", NULL, "DL SRC"},
-+
-+	{"SGEN DL", NULL, "DL SRC"},
-+	{"SGEN DL", NULL, "SGEN MUTE"},
-+	{"SGEN DL", NULL, "SGEN Enable"},
-+	{"SGEN DL", NULL, "DL Digital Supply"},
-+	{"SGEN DL", NULL, "AUDIO_TOP_PDN_AFE_TESTMODEL"},
-+
-+	{"DACL", NULL, "DAC Mux"},
-+	{"DACR", NULL, "DAC Mux"},
-+
-+	{"DL Analog Supply", NULL, "CLK_BUF"},
-+	{"DL Analog Supply", NULL, "AUDGLB"},
-+	{"DL Analog Supply", NULL, "CLKSQ Audio"},
-+	{"DL Analog Supply", NULL, "AUDNCP_CK"},
-+	{"DL Analog Supply", NULL, "ZCD13M_CK"},
-+	{"DL Analog Supply", NULL, "AUD_CK"},
-+	{"DL Analog Supply", NULL, "AUDIF_CK"},
-+
-+	{"DL Digital Supply", NULL, "AUDIO_TOP_AFE_CTL"},
-+	{"DL Digital Supply", NULL, "AUDIO_TOP_DAC_CTL"},
-+	{"DL Digital Supply", NULL, "AUDIO_TOP_PWR_CLK"},
-+	{"DL Digital Supply", NULL, "AFE_ON"},
-+
-+	{"DACR", NULL, "DL Digital Supply"},
-+	{"DACR", NULL, "DL Analog Supply"},
-+	{"DACL", NULL, "DL Digital Supply"},
-+	{"DACL", NULL, "DL Analog Supply"},
-+
-+	{"Line Out Source", "DACR", "DACR"},
-+	{"Line Out Source", "Playback", "DACL"},
-+	{"Line Out Source", "Test mode", "DACL"},
-+
-+	{"Handset Source", "DACR", "DACR"},
-+	{"Handset Source", "Playback", "DACL"},
-+	{"Handset Source", "Test mode", "DACL"},
-+
-+	{"Headphone Right Source", "DAC", "DACR"},
-+	{"Headphone Right Source", "Line Out", "Line Out Source"},
-+	{"Headphone Right Source", "Handset", "Handset Source"},
-+
-+	{"Headphone Left Source", "DAC", "DACL"},
-+	{"Headphone Left Source", "Line Out", "Line Out Source"},
-+	{"Headphone Left Source", "Handset", "Handset Source"},
-+
-+	{"Line out", NULL, "Line Out Source"},
-+	{"Hansdet", NULL, "Handset Source"},
-+
-+	{"Headphones", NULL, "Headphone Right Source"},
-+	{"Headphones", NULL, "Headphone Left Source"},
-+};
-+
-+static struct snd_soc_dai_driver mtk_6357_dai_codecs[] = {
-+	{
-+		.name = "mt6357-snd-codec-aif1",
-+		.playback = {
-+			.stream_name = "MT6357 Playback",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = SNDRV_PCM_RATE_8000_192000,
-+			.formats = SND_SOC_ADV_MT_FMTS,
-+			},
-+		.capture = {
-+			.stream_name = "MT6357 Capture",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = SOC_HIGH_USE_RATE,
-+			.formats = SND_SOC_ADV_MT_FMTS,
-+			},
++static const struct mtk_afe_i2s_priv mt8365_i2s_priv[DAI_I2S_NUM] = {
++	[DAI_I2S0] = {
++		.id = MT8365_AFE_IO_I2S,
++		.mclk_id = MT8365_I2S0_MCK,
++		.share_i2s_id = -1,
++		.clk_id_in = MT8365_CLK_AUD_I2S2_M,
++		.clk_id_out = MT8365_CLK_AUD_I2S1_M,
++		.clk_id_in_m_sel = MT8365_CLK_I2S2_M_SEL,
++		.clk_id_out_m_sel = MT8365_CLK_I2S1_M_SEL,
++		.clk_in_mult = 256,
++		.clk_out_mult = 256,
++		.adda_link = true,
++		.config_val_out = AFE_I2S_CON1_I2S2_TO_PAD,
++		.reg_off_in = AFE_I2S_CON2,
++		.reg_off_out = AFE_I2S_CON1,
++	},
++	[DAI_I2S3] = {
++		.id = MT8365_AFE_IO_2ND_I2S,
++		.mclk_id = MT8365_I2S3_MCK,
++		.share_i2s_id = -1,
++		.clk_id_in = MT8365_CLK_AUD_I2S0_M,
++		.clk_id_out = MT8365_CLK_AUD_I2S3_M,
++		.clk_id_in_m_sel = MT8365_CLK_I2S0_M_SEL,
++		.clk_id_out_m_sel = MT8365_CLK_I2S3_M_SEL,
++		.clk_in_mult = 256,
++		.clk_out_mult = 256,
++		.adda_link = false,
++		.config_val_in = AFE_I2S_CON_FROM_IO_MUX,
++		.reg_off_in = AFE_I2S_CON,
++		.reg_off_out = AFE_I2S_CON3,
 +	},
 +};
 +
-+static void mt6357_codec_init(struct mt6357_priv *priv)
++static const u32 *get_iir_coef(unsigned int input_fs,
++	unsigned int output_fs, unsigned int *count)
 +{
-+	/* Enable audio part */
-+	regmap_update_bits(priv->regmap, MT6357_DCXO_CW14,
-+			   XO_AUDIO_EN_M_MASK, XO_AUDIO_EN_M_ENABLE);
-+	/* Disable HeadphoneL/HeadphoneR short circuit protection */
-+	regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON0,
-+			   AUD_HPR_SC_VAUDP15_MASK | AUD_HPL_SC_VAUDP15_MASK,
-+			   AUD_HPR_SC_VAUDP15_DISABLE | AUD_HPL_SC_VAUDP15_DISABLE);
-+	/* Disable voice short circuit protection */
-+	regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON3,
-+			   AUD_HS_SC_VAUDP15_MASK, AUD_HS_SC_VAUDP15_DISABLE);
-+	/* disable LO buffer left short circuit protection */
-+	regmap_update_bits(priv->regmap, MT6357_AUDDEC_ANA_CON4,
-+			   AUD_LOL_SC_VAUDP15_MASK, AUD_LOL_SC_VAUDP15_DISABLE);
-+	/* set gpio */
-+	set_playback_gpio(priv, false);
-+	set_capture_gpio(priv, false);
-+	/* Disable audio part */
-+	regmap_update_bits(priv->regmap, MT6357_DCXO_CW14,
-+			   XO_AUDIO_EN_M_MASK, XO_AUDIO_EN_M_DISABLE);
++#define RATIOVER 9
++#define INV_COEF 10
++#define NO_NEED 11
 +
-+	/* gain default values*/
-+	priv->ana_gain[ANALOG_VOLUME_MIC1] = UL_GAIN_0DB;
-+	priv->ana_gain[ANALOG_VOLUME_MIC2] = UL_GAIN_0DB;
-+	priv->ana_gain[ANALOG_VOLUME_HPOUTR] = DL_GAIN_0DB;
-+	priv->ana_gain[ANALOG_VOLUME_HSOUT] = DL_GAIN_0DB;
++	static const u32 IIR_COEF_48_TO_44p1[30] = {
++		0x061fb0, 0x0bd256, 0x061fb0, 0xe3a3e6, 0xf0a300, 0x000003,
++		0x0e416d, 0x1bb577, 0x0e416d, 0xe59178, 0xf23637, 0x000003,
++		0x0c7d72, 0x189060, 0x0c7d72, 0xe96f09, 0xf505b2, 0x000003,
++		0x126054, 0x249143, 0x126054, 0xe1fc0c, 0xf4b20a, 0x000002,
++		0x000000, 0x323c85, 0x323c85, 0xf76d4e, 0x000000, 0x000002,
++	};
++
++	static const u32 IIR_COEF_44p1_TO_32[42] = {
++		0x0a6074, 0x0d237a, 0x0a6074, 0xdd8d6c, 0xe0b3f6, 0x000002,
++		0x0e41f8, 0x128d48, 0x0e41f8, 0xefc14e, 0xf12d7a, 0x000003,
++		0x0cfa60, 0x11e89c, 0x0cfa60, 0xf1b09e, 0xf27205, 0x000003,
++		0x15b69c, 0x20e7e4, 0x15b69c, 0xea799a, 0xe9314a, 0x000002,
++		0x0f79e2, 0x1a7064, 0x0f79e2, 0xf65e4a, 0xf03d8e, 0x000002,
++		0x10c34f, 0x1ffe4b, 0x10c34f, 0x0bbecb, 0xf2bc4b, 0x000001,
++		0x000000, 0x23b063, 0x23b063, 0x07335f, 0x000000, 0x000002,
++	};
++
++	static const u32 IIR_COEF_48_TO_32[42] = {
++		0x0a2a9b, 0x0a2f05, 0x0a2a9b, 0xe73873, 0xe0c525, 0x000002,
++		0x0dd4ad, 0x0e765a, 0x0dd4ad, 0xf49808, 0xf14844, 0x000003,
++		0x18a8cd, 0x1c40d0, 0x18a8cd, 0xed2aab, 0xe542ec, 0x000002,
++		0x13e044, 0x1a47c4, 0x13e044, 0xf44aed, 0xe9acc7, 0x000002,
++		0x1abd9c, 0x2a5429, 0x1abd9c, 0xff3441, 0xe0fc5f, 0x000001,
++		0x0d86db, 0x193e2e, 0x0d86db, 0x1a6f15, 0xf14507, 0x000001,
++		0x000000, 0x1f820c, 0x1f820c, 0x0a1b1f, 0x000000, 0x000002,
++	};
++
++	static const u32 IIR_COEF_32_TO_16[48] = {
++		0x122893, 0xffadd4, 0x122893, 0x0bc205, 0xc0ee1c, 0x000001,
++		0x1bab8a, 0x00750d, 0x1bab8a, 0x06a983, 0xe18a5c, 0x000002,
++		0x18f68e, 0x02706f, 0x18f68e, 0x0886a9, 0xe31bcb, 0x000002,
++		0x149c05, 0x054487, 0x149c05, 0x0bec31, 0xe5973e, 0x000002,
++		0x0ea303, 0x07f24a, 0x0ea303, 0x115ff9, 0xe967b6, 0x000002,
++		0x0823fd, 0x085531, 0x0823fd, 0x18d5b4, 0xee8d21, 0x000002,
++		0x06888e, 0x0acbbb, 0x06888e, 0x40b55c, 0xe76dce, 0x000001,
++		0x000000, 0x2d31a9, 0x2d31a9, 0x23ba4f, 0x000000, 0x000001,
++	};
++
++	static const u32 IIR_COEF_96_TO_44p1[48] = {
++		0x08b543, 0xfd80f4, 0x08b543, 0x0e2332, 0xe06ed0, 0x000002,
++		0x1b6038, 0xf90e7e, 0x1b6038, 0x0ec1ac, 0xe16f66, 0x000002,
++		0x188478, 0xfbb921, 0x188478, 0x105859, 0xe2e596, 0x000002,
++		0x13eff3, 0xffa707, 0x13eff3, 0x13455c, 0xe533b7, 0x000002,
++		0x0dc239, 0x03d458, 0x0dc239, 0x17f120, 0xe8b617, 0x000002,
++		0x0745f1, 0x05d790, 0x0745f1, 0x1e3d75, 0xed5f18, 0x000002,
++		0x05641f, 0x085e2b, 0x05641f, 0x48efd0, 0xe3e9c8, 0x000001,
++		0x000000, 0x28f632, 0x28f632, 0x273905, 0x000000, 0x000001,
++	};
++
++	static const u32 IIR_COEF_44p1_TO_16[48] = {
++		0x0998fb, 0xf7f925, 0x0998fb, 0x1e54a0, 0xe06605, 0x000002,
++		0x0d828e, 0xf50f97, 0x0d828e, 0x0f41b5, 0xf0a999, 0x000003,
++		0x17ebeb, 0xee30d8, 0x17ebeb, 0x1f48ca, 0xe2ae88, 0x000002,
++		0x12fab5, 0xf46ddc, 0x12fab5, 0x20cc51, 0xe4d068, 0x000002,
++		0x0c7ac6, 0xfbd00e, 0x0c7ac6, 0x2337da, 0xe8028c, 0x000002,
++		0x060ddc, 0x015b3e, 0x060ddc, 0x266754, 0xec21b6, 0x000002,
++		0x0407b5, 0x04f827, 0x0407b5, 0x52e3d0, 0xe0149f, 0x000001,
++		0x000000, 0x1f9521, 0x1f9521, 0x2ac116, 0x000000, 0x000001,
++	};
++
++	static const u32 IIR_COEF_48_TO_16[48] = {
++		0x0955ff, 0xf6544a, 0x0955ff, 0x2474e5, 0xe062e6, 0x000002,
++		0x0d4180, 0xf297f4, 0x0d4180, 0x12415b, 0xf0a3b0, 0x000003,
++		0x0ba079, 0xf4f0b0, 0x0ba079, 0x1285d3, 0xf1488b, 0x000003,
++		0x12247c, 0xf1033c, 0x12247c, 0x2625be, 0xe48e0d, 0x000002,
++		0x0b98e0, 0xf96d1a, 0x0b98e0, 0x27e79c, 0xe7798a, 0x000002,
++		0x055e3b, 0xffed09, 0x055e3b, 0x2a2e2d, 0xeb2854, 0x000002,
++		0x01a934, 0x01ca03, 0x01a934, 0x2c4fea, 0xee93ab, 0x000002,
++		0x000000, 0x1c46c5, 0x1c46c5, 0x2d37dc, 0x000000, 0x000001,
++	};
++
++	static const u32 IIR_COEF_96_TO_16[48] = {
++		0x0805a1, 0xf21ae3, 0x0805a1, 0x3840bb, 0xe02a2e, 0x000002,
++		0x0d5dd8, 0xe8f259, 0x0d5dd8, 0x1c0af6, 0xf04700, 0x000003,
++		0x0bb422, 0xec08d9, 0x0bb422, 0x1bfccc, 0xf09216, 0x000003,
++		0x08fde6, 0xf108be, 0x08fde6, 0x1bf096, 0xf10ae0, 0x000003,
++		0x0ae311, 0xeeeda3, 0x0ae311, 0x37c646, 0xe385f5, 0x000002,
++		0x044089, 0xfa7242, 0x044089, 0x37a785, 0xe56526, 0x000002,
++		0x00c75c, 0xffb947, 0x00c75c, 0x378ba3, 0xe72c5f, 0x000002,
++		0x000000, 0x0ef76e, 0x0ef76e, 0x377fda, 0x000000, 0x000001,
++	};
++
++	static const struct {
++		const u32 *coef;
++		unsigned int cnt;
++	} iir_coef_tbl_list[8] = {
++		/* 0: 0.9188 */
++		{ IIR_COEF_48_TO_44p1, ARRAY_SIZE(IIR_COEF_48_TO_44p1) },
++		/* 1: 0.7256 */
++		{ IIR_COEF_44p1_TO_32, ARRAY_SIZE(IIR_COEF_44p1_TO_32) },
++		/* 2: 0.6667 */
++		{ IIR_COEF_48_TO_32, ARRAY_SIZE(IIR_COEF_48_TO_32) },
++		/* 3: 0.5 */
++		{ IIR_COEF_32_TO_16, ARRAY_SIZE(IIR_COEF_32_TO_16) },
++		/* 4: 0.4594 */
++		{ IIR_COEF_96_TO_44p1, ARRAY_SIZE(IIR_COEF_96_TO_44p1) },
++		/* 5: 0.3628 */
++		{ IIR_COEF_44p1_TO_16, ARRAY_SIZE(IIR_COEF_44p1_TO_16) },
++		/* 6: 0.3333 */
++		{ IIR_COEF_48_TO_16, ARRAY_SIZE(IIR_COEF_48_TO_16) },
++		/* 7: 0.1667 */
++		{ IIR_COEF_96_TO_16, ARRAY_SIZE(IIR_COEF_96_TO_16) },
++	};
++
++	static const u32 freq_new_index[16] = {
++		0, 1, 2, 99, 3, 4, 5, 99, 6, 7, 8, 9, 10, 11, 12, 99
++	};
++
++	static const u32 iir_coef_tbl_matrix[13][13] = {
++		{/*0*/
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*1*/
++			1, NO_NEED, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*2*/
++			2, 0, NO_NEED, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*3*/
++			3, INV_COEF, INV_COEF, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*4*/
++			5, 3, INV_COEF, 2, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*5*/
++			6, 4, 3, 2, 0, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED
++		},
++		{/*6*/
++			INV_COEF, INV_COEF, INV_COEF, 3, INV_COEF,
++			INV_COEF, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*7*/
++			INV_COEF, INV_COEF, INV_COEF, 5, 3,
++			INV_COEF, 1, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*8*/
++			7, INV_COEF, INV_COEF, 6, 4, 3, 2, 0, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*9*/
++			INV_COEF, INV_COEF, INV_COEF, INV_COEF,
++			INV_COEF, INV_COEF, 5, 3, INV_COEF,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*10*/
++			INV_COEF, INV_COEF, INV_COEF, 7, INV_COEF,
++			INV_COEF, 6, 4, 3, 0,
++			NO_NEED, NO_NEED, NO_NEED
++		},
++		{ /*11*/
++			RATIOVER, INV_COEF, INV_COEF, INV_COEF,
++			INV_COEF, INV_COEF, INV_COEF, INV_COEF,
++			INV_COEF, 3, INV_COEF, NO_NEED, NO_NEED
++		},
++		{/*12*/
++			RATIOVER, RATIOVER, INV_COEF, INV_COEF,
++			INV_COEF, INV_COEF, 7, INV_COEF,
++			INV_COEF, 4, 3, 0, NO_NEED
++		},
++	};
++
++	const u32 *coef = NULL;
++	unsigned int cnt = 0;
++	u32 i = freq_new_index[input_fs];
++	u32 j = freq_new_index[output_fs];
++
++	if (i >= 13 || j >= 13) {
++	} else {
++		u32 k = iir_coef_tbl_matrix[i][j];
++
++		if (k >= NO_NEED) {
++		} else if (k == RATIOVER) {
++		} else if (k == INV_COEF) {
++		} else {
++			coef = iir_coef_tbl_list[k].coef;
++			cnt = iir_coef_tbl_list[k].cnt;
++		}
++	}
++	*count = cnt;
++	return coef;
 +}
 +
-+static int mt6357_codec_probe(struct snd_soc_component *codec)
++int mt8365_dai_set_config(struct mtk_base_afe *afe,
++	struct mtk_afe_i2s_priv *i2s_data, bool is_input,
++	unsigned int rate, int bit_width)
 +{
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(codec);
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++	struct mt8365_be_dai_data *be =
++	&afe_priv->be_data[i2s_data->id - MT8365_AFE_BACKEND_BASE];
++	unsigned int val, reg_off;
++	int fs = mt8365_afe_fs_timing(rate);
 +
-+	mt6357_codec_init(priv);
++	if (fs < 0)
++		return -EINVAL;
++
++	val = AFE_I2S_CON_LOW_JITTER_CLK |
++	      FIELD_PREP(AFE_I2S_CON_RATE_MASK, fs) |
++	      AFE_I2S_CON_FORMAT_I2S;
++
++	if (is_input) {
++		reg_off = i2s_data->reg_off_in;
++		if (i2s_data->adda_link)
++			val |= i2s_data->config_val_in;
++	} else {
++		reg_off = i2s_data->reg_off_out;
++		val |= i2s_data->config_val_in;
++	}
++
++	/* 1:bck=32lrck(16bit) or bck=64lrck(32bit) 0:fix bck=64lrck */
++	if (i2s_data->dynamic_bck) {
++		if (bit_width > 16)
++			val |= AFE_I2S_CON_WLEN_32BIT;
++		else
++			val &= ~(u32)AFE_I2S_CON_WLEN_32BIT;
++	} else
++		val |= AFE_I2S_CON_WLEN_32BIT;
++
++	if ((be->fmt_mode & SND_SOC_DAIFMT_MASTER_MASK)
++		== SND_SOC_DAIFMT_CBM_CFM) {
++		val |= AFE_I2S_CON_SRC_SLAVE;
++		val &= ~(u32)AFE_I2S_CON_FROM_IO_MUX;//from consys
++	}
++
++	regmap_update_bits(afe->regmap, reg_off,
++		~(u32)AFE_I2S_CON_EN, val);
++
++	if (i2s_data->adda_link && is_input)
++		regmap_update_bits(afe->regmap, AFE_ADDA_TOP_CON0, 0x1, 0x1);
++
 +	return 0;
 +}
 +
-+static unsigned int mt6357_read(struct snd_soc_component *codec, unsigned int reg)
++int mt8365_afe_set_i2s_out(struct mtk_base_afe *afe, unsigned int rate,
++	int bit_width)
 +{
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(codec);
-+	unsigned int val;
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_afe_i2s_priv *i2s_data =
++		afe_priv->dai_priv[MT8365_AFE_IO_I2S];
 +
-+	pr_debug("%s() reg = 0x%x", __func__, reg);
-+	regmap_read(priv->regmap, reg, &val);
-+	return val;
++	return mt8365_dai_set_config(afe, i2s_data, false, rate, bit_width);
 +}
 +
-+static int mt6357_write(struct snd_soc_component *codec, unsigned int reg, unsigned int value)
++static int mt8365_afe_set_2nd_i2s_asrc(struct mtk_base_afe *afe,
++	unsigned int rate_in,
++	unsigned int rate_out, unsigned int width,
++	unsigned int mono, int o16bit, int tracking)
 +{
-+	struct mt6357_priv *priv = snd_soc_component_get_drvdata(codec);
++	int ifs, ofs = 0;
++	unsigned int val = 0;
++	unsigned int mask = 0;
++	const u32 *coef;
++	u32 iir_stage;
++	unsigned int coef_count = 0;
 +
-+	pr_debug("%s() reg = 0x%x  value= 0x%x\n", __func__, reg, value);
-+	regmap_update_bits(priv->regmap, reg, 0xffff, value);
++	ifs = mt8365_afe_fs_timing(rate_in);
++
++	if (ifs < 0)
++		return -EINVAL;
++
++	ofs = mt8365_afe_fs_timing(rate_out);
++
++	if (ofs < 0)
++		return -EINVAL;
++
++	val = FIELD_PREP(O16BIT, o16bit) | FIELD_PREP(IS_MONO, mono);
++	regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON2,
++			   O16BIT | IS_MONO, val);
++
++	coef = get_iir_coef(ifs, ofs, &coef_count);
++	iir_stage = ((u32)coef_count / 6) - 1;
++
++	if (coef) {
++		unsigned int i;
++
++		/* CPU control IIR coeff SRAM */
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON0,
++		COEFF_SRAM_CTRL, COEFF_SRAM_CTRL);
++
++		/* set to 0, IIR coeff SRAM addr */
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON13,
++		0xffffffff, 0x0);
++
++		for (i = 0; i < coef_count; ++i)
++			regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON12,
++			0xffffffff, coef[i]);
++
++		/* disable IIR coeff SRAM access */
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON0,
++			COEFF_SRAM_CTRL, ~COEFF_SRAM_CTRL);
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON2,
++			CLR_IIR_HISTORY | IIR_EN | IIR_STAGE_MASK,
++			CLR_IIR_HISTORY | IIR_EN | FIELD_PREP(IIR_STAGE_MASK, iir_stage));
++	} else {
++		/* disable IIR */
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON2, IIR_EN, ~IIR_EN);
++	}
++
++	/* CON3 setting (RX OFS) */
++	regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON3,
++	0x00FFFFFF, rx_frequency_palette(ofs));
++	/* CON4 setting (RX IFS) */
++	regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON4,
++	0x00FFFFFF, rx_frequency_palette(ifs));
++
++	/* CON5 setting */
++	if (tracking) {
++		val = CALI_64_CYCLE |
++		      CALI_AUTORST |
++		      AUTO_TUNE_FREQ5 |
++		      COMP_FREQ_RES |
++		      CALI_BP_DGL |
++		      CALI_AUTO_RESTART |
++		      CALI_USE_FREQ_OUT |
++		      CALI_SEL_01;
++
++		mask = CALI_CYCLE_MASK |
++		       CALI_AUTORST |
++		       AUTO_TUNE_FREQ5 |
++		       COMP_FREQ_RES |
++		       CALI_SEL_MASK |
++		       CALI_BP_DGL |
++		       AUTO_TUNE_FREQ4 |
++		       CALI_AUTO_RESTART |
++		       CALI_USE_FREQ_OUT|
++		       CALI_ON;
++
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON5,
++			mask, val);
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON5,
++			CALI_ON, CALI_ON);
++	} else {
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON5,
++			0xffffffff, 0x0);
++	}
++	/* CON6 setting fix 8125 */
++	regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON6,
++		0x0000ffff, 0x1FBD);
++	/* CON9 setting (RX IFS) */
++	regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON9,
++		0x000fffff, AutoRstThHi(ifs));
++	/* CON10 setting (RX IFS) */
++	regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON10,
++		0x000fffff, AutoRstThLo(ifs));
++	regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON0,
++		CHSET_STR_CLR, CHSET_STR_CLR);
++
 +	return 0;
 +}
 +
-+static const struct snd_soc_component_driver mt6357_soc_component_driver = {
-+	.probe = mt6357_codec_probe,
-+	.read = mt6357_read,
-+	.write = mt6357_write,
-+	.controls = mt6357_controls,
-+	.num_controls = ARRAY_SIZE(mt6357_controls),
-+	.dapm_widgets = mt6357_dapm_widgets,
-+	.num_dapm_widgets = ARRAY_SIZE(mt6357_dapm_widgets),
-+	.dapm_routes = mt6357_dapm_routes,
-+	.num_dapm_routes = ARRAY_SIZE(mt6357_dapm_routes),
-+};
-+
-+static void mt6357_parse_dt(struct mt6357_priv *priv)
++static int mt8365_afe_set_2nd_i2s_asrc_enable(
++	struct mtk_base_afe *afe, bool enable)
 +{
-+	int ret, voltage_index;
-+	u32 micbias_voltage_index = 0;
-+	struct device *dev = priv->dev;
++	if (enable)
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON0,
++			ASM_ON, ASM_ON);
++	else
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON0,
++			ASM_ON, ~ASM_ON);
 +
-+	priv->pull_down_needed = false;
-+	if (of_property_read_bool(dev->of_node, "mediatek,hp-pull-down"))
-+		priv->pull_down_needed =  true;
-+
-+	micbias_voltage_index = MT6357_MICBIAS0_DEFAULT_VOLTAGE_INDEX;
-+	ret = of_property_read_u32(dev->of_node, "mediatek,micbias0-microvolt",  &voltage_index);
-+	if (!ret)
-+		micbias_voltage_index = voltage_index;
-+
-+	regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON8, AUD_MICBIAS0_VREF_MASK,
-+			   micbias_voltage_index << AUD_MICBIAS0_VREF_SFT);
-+
-+	micbias_voltage_index = MT6357_MICBIAS1_DEFAULT_VOLTAGE_INDEX;
-+	ret = of_property_read_u32(dev->of_node, "mediatek,micbias1-microvolt",  &voltage_index);
-+	if (!ret)
-+		micbias_voltage_index = voltage_index;
-+
-+	regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON9, AUD_MICBIAS1_VREF_MASK,
-+			   micbias_voltage_index << AUD_MICBIAS1_VREF_SFT);
++	return 0;
 +}
 +
-+static int mt6357_platform_driver_probe(struct platform_device *pdev)
++void mt8365_afe_set_i2s_out_enable(struct mtk_base_afe *afe, bool enable)
 +{
-+	struct mt6357_priv *priv;
-+	struct mt6397_chip *mt6397 = dev_get_drvdata(pdev->dev.parent);
++	int i;
++	unsigned long flags;
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_afe_i2s_priv *i2s_data;
++
++	for (i = 0; i < DAI_I2S_NUM; i++) {
++		if (mt8365_i2s_priv[i].adda_link)
++			i2s_data = afe_priv->dai_priv[mt8365_i2s_priv[i].id];
++	}
++
++	spin_lock_irqsave(&afe_priv->afe_ctrl_lock, flags);
++
++	if (enable) {
++		i2s_data->i2s_out_on_ref_cnt++;
++		if (i2s_data->i2s_out_on_ref_cnt == 1)
++			regmap_update_bits(afe->regmap,
++			AFE_I2S_CON1, 0x1, enable);
++	} else {
++		i2s_data->i2s_out_on_ref_cnt--;
++		if (i2s_data->i2s_out_on_ref_cnt == 0)
++			regmap_update_bits(afe->regmap,
++			AFE_I2S_CON1, 0x1, enable);
++		else if (i2s_data->i2s_out_on_ref_cnt < 0)
++			i2s_data->i2s_out_on_ref_cnt = 0;
++	}
++
++	spin_unlock_irqrestore(&afe_priv->afe_ctrl_lock, flags);
++}
++
++static void mt8365_dai_set_enable(struct mtk_base_afe *afe,
++	struct mtk_afe_i2s_priv *i2s_data, bool is_input, bool enable)
++{
++	unsigned int reg_off;
++
++	if (is_input) {
++		reg_off = i2s_data->reg_off_in;
++	} else {
++		if (i2s_data->adda_link) {
++			mt8365_afe_set_i2s_out_enable(afe, enable);
++			return;
++		} else {
++			reg_off = i2s_data->reg_off_out;
++		}
++	}
++	regmap_update_bits(afe->regmap, reg_off, 0x1, enable);
++}
++
++static int mt8365_dai_i2s_startup(struct snd_pcm_substream *substream,
++	struct snd_soc_dai *dai)
++{
++	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_afe_i2s_priv *i2s_data = afe_priv->dai_priv[dai->id];
++	const bool shared_clk = i2s_data->shared_clk;
++	struct mt8365_be_dai_data *be =
++		&afe_priv->be_data[dai->id - MT8365_AFE_BACKEND_BASE];
++	const bool i2s_in_slave = (substream->stream
++		== SNDRV_PCM_STREAM_CAPTURE)
++		&& ((be->fmt_mode & SND_SOC_DAIFMT_MASTER_MASK)
++			== SND_SOC_DAIFMT_CBM_CFM);
++
++	dev_dbg(afe->dev, "%s '%s'\n",
++		__func__, snd_pcm_stream_str(substream));
++
++	if (shared_clk && snd_soc_dai_active(dai))
++		return 0;
++
++	mt8365_afe_enable_main_clk(afe);
++
++	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK || shared_clk)
++		mt8365_afe_enable_clk(afe,
++		afe_priv->clocks[i2s_data->clk_id_out]);
++
++	if ((substream->stream == SNDRV_PCM_STREAM_CAPTURE || shared_clk)
++	    && !i2s_in_slave)
++		mt8365_afe_enable_clk(afe,
++		afe_priv->clocks[i2s_data->clk_id_in]);
++
++	if (i2s_in_slave)
++		mt8365_afe_enable_top_cg(afe, MT8365_TOP_CG_I2S_IN);
++
++	return 0;
++}
++
++static void mt8365_dai_i2s_shutdown(struct snd_pcm_substream *substream,
++	struct snd_soc_dai *dai)
++{
++	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_afe_i2s_priv *i2s_data = afe_priv->dai_priv[dai->id];
++	struct mt8365_be_dai_data *be =
++		&afe_priv->be_data[dai->id - MT8365_AFE_BACKEND_BASE];
++	const unsigned int rate = substream->runtime->rate;
++	const unsigned int stream = substream->stream;
++	const bool shared_clk =
++		i2s_data->shared_clk;
++	const bool reset_i2s_out_change =
++		(stream == SNDRV_PCM_STREAM_PLAYBACK) || shared_clk;
++	const bool reset_i2s_in_change =
++		(stream == SNDRV_PCM_STREAM_CAPTURE) || shared_clk;
++	const bool i2s_in_slave = (substream->stream
++		== SNDRV_PCM_STREAM_CAPTURE)
++		&& ((be->fmt_mode & SND_SOC_DAIFMT_MASTER_MASK)
++			== SND_SOC_DAIFMT_CBM_CFM);
++
++	dev_dbg(afe->dev, "%s '%s'\n",
++		__func__, snd_pcm_stream_str(substream));
++
++	if (shared_clk && snd_soc_dai_active(dai))
++		return;
++
++	if (be->prepared[stream]) {
++		if (reset_i2s_out_change)
++			mt8365_dai_set_enable(afe, i2s_data, false, false);
++
++		if (reset_i2s_in_change)
++			mt8365_dai_set_enable(afe, i2s_data, true, false);
++
++		if (rate % 8000)
++			mt8365_afe_disable_apll_associated_cfg(afe,
++			MT8365_AFE_APLL1);
++		else
++			mt8365_afe_disable_apll_associated_cfg(afe,
++			MT8365_AFE_APLL2);
++
++		if (reset_i2s_out_change)
++			be->prepared[SNDRV_PCM_STREAM_PLAYBACK] = false;
++
++		if (reset_i2s_in_change)
++			be->prepared[SNDRV_PCM_STREAM_CAPTURE] = false;
++	}
++
++	if (reset_i2s_out_change)
++		mt8365_afe_disable_clk(afe,
++		afe_priv->clocks[i2s_data->clk_id_out]);
++
++	if (reset_i2s_in_change && !i2s_in_slave)
++		mt8365_afe_disable_clk(afe,
++		afe_priv->clocks[i2s_data->clk_id_in]);
++
++	if (i2s_in_slave)
++		mt8365_afe_disable_top_cg(afe, MT8365_TOP_CG_I2S_IN);
++
++	mt8365_afe_disable_main_clk(afe);
++}
++
++static int mt8365_dai_i2s_prepare(struct snd_pcm_substream *substream,
++	struct snd_soc_dai *dai)
++{
++	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_afe_i2s_priv *i2s_data = afe_priv->dai_priv[dai->id];
++	struct mt8365_be_dai_data *be =
++		&afe_priv->be_data[dai->id - MT8365_AFE_BACKEND_BASE];
++	struct snd_soc_dapm_widget *p = snd_soc_dai_get_widget_playback(dai);
++	struct snd_soc_dapm_widget *c = snd_soc_dai_get_widget_capture(dai);
++	const unsigned int rate = substream->runtime->rate;
++	const int bit_width = snd_pcm_format_width(substream->runtime->format);
++	const unsigned int stream = substream->stream;
++	const bool shared_clk = i2s_data->shared_clk;
++	const bool apply_i2s_out_change =
++		(stream == SNDRV_PCM_STREAM_PLAYBACK) || shared_clk;
++	const bool apply_i2s_in_change =
++		(stream == SNDRV_PCM_STREAM_CAPTURE) || shared_clk;
 +	int ret;
 +
-+	ret = devm_regulator_get_enable(&pdev->dev, "vaud28");
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret, "failed to enable vaud28 regulator\n");
++	if (shared_clk && (p->power || c->power)) {
++		dev_dbg(afe->dev, "%s '%s' widget powered(%u-%u) already\n",
++			__func__, snd_pcm_stream_str(substream),
++			p->power,
++			c->power);
++		return 0;
++	}
 +
-+	priv = devm_kzalloc(&pdev->dev,
-+			    sizeof(struct mt6357_priv),
-+			    GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
++	if (be->prepared[stream]) {
++		dev_info(afe->dev, "%s '%s' prepared already\n",
++			 __func__, snd_pcm_stream_str(substream));
++		return 0;
++	}
 +
-+	dev_set_drvdata(&pdev->dev, priv);
-+	priv->dev = &pdev->dev;
++	if (apply_i2s_out_change) {
++		ret = mt8365_dai_set_config(afe, i2s_data,
++			false, rate, bit_width);
++		if (ret)
++			return ret;
++	}
 +
-+	priv->regmap = mt6397->regmap;
-+	if (IS_ERR(priv->regmap))
-+		return PTR_ERR(priv->regmap);
++	if (apply_i2s_in_change) {
++		if ((be->fmt_mode & SND_SOC_DAIFMT_MASTER_MASK)
++			== SND_SOC_DAIFMT_CBM_CFM) {
++			ret = mt8365_afe_set_2nd_i2s_asrc(afe, 32000, rate,
++					(unsigned int)bit_width, 0, 0, 1);
++			if (ret < 0)
++				return ret;
++		}
++		ret = mt8365_dai_set_config(afe, i2s_data,
++			true, rate, bit_width);
++		if (ret)
++			return ret;
++	}
 +
-+	mt6357_parse_dt(priv);
++	if (rate % 8000)
++		mt8365_afe_enable_apll_associated_cfg(afe, MT8365_AFE_APLL1);
++	else
++		mt8365_afe_enable_apll_associated_cfg(afe, MT8365_AFE_APLL2);
 +
-+	pdev->dev.coherent_dma_mask = DMA_BIT_MASK(64);
-+	if (!pdev->dev.dma_mask)
-+		pdev->dev.dma_mask = &pdev->dev.coherent_dma_mask;
++	if (apply_i2s_out_change) {
++		mt8365_afe_set_clk_parent(afe,
++			afe_priv->clocks[i2s_data->clk_id_out_m_sel],
++			((rate % 8000) ?
++			afe_priv->clocks[MT8365_CLK_AUD1] :
++			afe_priv->clocks[MT8365_CLK_AUD2]));
 +
-+	return devm_snd_soc_register_component(&pdev->dev,
-+					       &mt6357_soc_component_driver,
-+					       mtk_6357_dai_codecs,
-+					       ARRAY_SIZE(mtk_6357_dai_codecs));
++		mt8365_afe_set_clk_rate(afe,
++			afe_priv->clocks[i2s_data->clk_id_out],
++			rate * i2s_data->clk_out_mult);
++
++		mt8365_dai_set_enable(afe, i2s_data, false, true);
++		be->prepared[SNDRV_PCM_STREAM_PLAYBACK] = true;
++	}
++
++	if (apply_i2s_in_change) {
++		mt8365_afe_set_clk_parent(afe,
++			afe_priv->clocks[i2s_data->clk_id_in_m_sel],
++			((rate % 8000) ?
++			afe_priv->clocks[MT8365_CLK_AUD1] :
++			afe_priv->clocks[MT8365_CLK_AUD2]));
++
++		mt8365_afe_set_clk_rate(afe,
++			afe_priv->clocks[i2s_data->clk_id_in],
++			rate * i2s_data->clk_in_mult);
++
++		mt8365_dai_set_enable(afe, i2s_data, true, true);
++
++		if ((be->fmt_mode & SND_SOC_DAIFMT_MASTER_MASK)
++			== SND_SOC_DAIFMT_CBM_CFM)
++			mt8365_afe_set_2nd_i2s_asrc_enable(afe, true);
++
++		be->prepared[SNDRV_PCM_STREAM_CAPTURE] = true;
++	}
++	return 0;
 +}
 +
-+static const struct of_device_id mt6357_of_match[] = {
-+	{.compatible = "mediatek,mt6357-sound",},
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, mt6357_of_match);
++static int mt8365_afe_2nd_i2s_hw_params(struct snd_pcm_substream *substream,
++			  struct snd_pcm_hw_params *params,
++			  struct snd_soc_dai *dai)
++{
++	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++	unsigned int width_val = params_width(params) > 16 ?
++		(AFE_CONN_24BIT_O00 | AFE_CONN_24BIT_O01) : 0;
 +
-+static struct platform_driver mt6357_platform_driver = {
-+	.driver = {
-+		   .name = "mt6357-sound",
-+		   .of_match_table = mt6357_of_match,
-+		   },
-+	.probe = mt6357_platform_driver_probe,
-+};
++	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK)
++		regmap_update_bits(afe->regmap, AFE_CONN_24BIT,
++			   AFE_CONN_24BIT_O00 | AFE_CONN_24BIT_O01, width_val);
 +
-+module_platform_driver(mt6357_platform_driver)
++	return 0;
++}
 +
-+MODULE_DESCRIPTION("MT6357 ALSA SoC codec driver");
-+MODULE_AUTHOR("Nicolas Belin <nbelin@baylibre.com>");
-+MODULE_LICENSE("GPL");
-diff --git a/sound/soc/codecs/mt6357.h b/sound/soc/codecs/mt6357.h
-new file mode 100644
-index 000000000000..9d55f2f97a1d
---- /dev/null
-+++ b/sound/soc/codecs/mt6357.h
-@@ -0,0 +1,674 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * mt6357.h  --  mt6357 ALSA SoC audio codec driver
-+ *
-+ * Copyright (c) 2024 Baylibre
-+ * Author: Nicolas Belin <nbelin@baylibre.com>
-+ */
++static int mt8365_afe_2nd_i2s_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
++{
++	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_afe_i2s_priv *i2s_data = afe_priv->dai_priv[dai->id];
++	struct mt8365_be_dai_data *be =
++		&afe_priv->be_data[dai->id - MT8365_AFE_BACKEND_BASE];
++	const bool shared_clk = i2s_data->shared_clk;
 +
-+#ifndef __MT6357_H__
-+#define __MT6357_H__
++	be->fmt_mode = 0;
 +
-+#include <linux/types.h>
++	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
++	case SND_SOC_DAIFMT_I2S:
++		be->fmt_mode |= SND_SOC_DAIFMT_I2S;
++		break;
++	case SND_SOC_DAIFMT_LEFT_J:
++		be->fmt_mode |= SND_SOC_DAIFMT_LEFT_J;
++		break;
++	default:
++		dev_info(afe->dev, "invalid audio format for 2nd i2s!\n");
++		return -EINVAL;
++	}
 +
-+/* Reg bit defines */
-+/* MT6357_GPIO_DIR0 */
-+#define GPIO8_DIR_MASK				BIT(8)
-+#define GPIO8_DIR_INPUT				0
-+#define GPIO8_DIR_OUTPUT			BIT(8)
-+#define GPIO9_DIR_MASK				BIT(9)
-+#define GPIO9_DIR_INPUT				0
-+#define GPIO9_DIR_OUTPUT			BIT(9)
-+#define GPIO10_DIR_MASK				BIT(10)
-+#define GPIO10_DIR_INPUT			0
-+#define GPIO10_DIR_OUTPUT			BIT(10)
-+#define GPIO11_DIR_MASK				BIT(11)
-+#define GPIO11_DIR_INPUT			0
-+#define GPIO11_DIR_OUTPUT			BIT(11)
-+#define GPIO12_DIR_MASK				BIT(12)
-+#define GPIO12_DIR_INPUT			0
-+#define GPIO12_DIR_OUTPUT			BIT(12)
-+#define GPIO13_DIR_MASK				BIT(13)
-+#define GPIO13_DIR_INPUT			0
-+#define GPIO13_DIR_OUTPUT			BIT(13)
-+#define GPIO14_DIR_MASK				BIT(14)
-+#define GPIO14_DIR_INPUT			0
-+#define GPIO14_DIR_OUTPUT			BIT(14)
-+#define GPIO15_DIR_MASK				BIT(15)
-+#define GPIO15_DIR_INPUT			0
-+#define GPIO15_DIR_OUTPUT			BIT(15)
++	if (((fmt & SND_SOC_DAIFMT_INV_MASK) != SND_SOC_DAIFMT_NB_NF) &&
++		((fmt & SND_SOC_DAIFMT_INV_MASK) != SND_SOC_DAIFMT_NB_IF) &&
++		((fmt & SND_SOC_DAIFMT_INV_MASK) != SND_SOC_DAIFMT_IB_NF) &&
++		((fmt & SND_SOC_DAIFMT_INV_MASK) != SND_SOC_DAIFMT_IB_IF)) {
++		dev_info(afe->dev, "invalid audio format for 2nd i2s!\n");
++		return -EINVAL;
++	}
 +
-+/* MT6357_GPIO_MODE2 */
-+#define GPIO8_MODE_MASK				GENMASK(2, 0)
-+#define GPIO8_MODE_AUD_CLK_MOSI			BIT(0)
-+#define GPIO8_MODE_GPIO				0
-+#define GPIO9_MODE_MASK				GENMASK(5, 3)
-+#define GPIO9_MODE_AUD_DAT_MOSI0		BIT(3)
-+#define GPIO9_MODE_GPIO				0
-+#define GPIO10_MODE_MASK			GENMASK(8, 6)
-+#define GPIO10_MODE_AUD_DAT_MOSI1		BIT(6)
-+#define GPIO10_MODE_GPIO			0
-+#define GPIO11_MODE_MASK			GENMASK(11, 9)
-+#define GPIO11_MODE_AUD_SYNC_MOSI		BIT(9)
-+#define GPIO11_MODE_GPIO			0
++	be->fmt_mode |= (fmt & SND_SOC_DAIFMT_INV_MASK);
 +
-+/* MT6357_GPIO_MODE2_SET */
-+#define GPIO8_MODE_SET_MASK			GENMASK(2, 0)
-+#define GPIO8_MODE_SET_AUD_CLK_MOSI		BIT(0)
-+#define GPIO9_MODE_SET_MASK			GENMASK(5, 3)
-+#define GPIO9_MODE_SET_AUD_DAT_MOSI0		BIT(3)
-+#define GPIO10_MODE_SET_MASK			GENMASK(8, 6)
-+#define GPIO10_MODE_SET_AUD_DAT_MOSI1		BIT(6)
-+#define GPIO11_MODE_SET_MASK			GENMASK(11, 9)
-+#define GPIO11_MODE_SET_AUD_SYNC_MOSI		BIT(9)
++	if (((fmt & SND_SOC_DAIFMT_MASTER_MASK) == SND_SOC_DAIFMT_CBM_CFM) &&
++	    !shared_clk)
++		be->fmt_mode |= (fmt & SND_SOC_DAIFMT_MASTER_MASK);
 +
-+/* MT6357_GPIO_MODE2_CLR */
-+#define GPIO_MODE2_CLEAR_ALL			GENMASK(15, 0)
++	return 0;
++}
 +
-+/* MT6357_GPIO_MODE3 */
-+#define GPIO12_MODE_MASK			GENMASK(2, 0)
-+#define GPIO12_MODE_AUD_CLK_MISO		BIT(0)
-+#define GPIO12_MODE_GPIO			0
-+#define GPIO13_MODE_MASK			GENMASK(5, 3)
-+#define GPIO13_MODE_AUD_DAT_MISO0		BIT(3)
-+#define GPIO13_MODE_GPIO			0
-+#define GPIO14_MODE_MASK			GENMASK(8, 6)
-+#define GPIO14_MODE_AUD_DAT_MISO1		BIT(6)
-+#define GPIO14_MODE_GPIO			0
-+#define GPIO15_MODE_MASK			GENMASK(11, 9)
-+#define GPIO15_MODE_AUD_SYNC_MISO		BIT(9)
-+#define GPIO15_MODE_GPIO			0
-+
-+/* MT6357_GPIO_MODE3_SET */
-+#define GPIO12_MODE_SET_MASK			GENMASK(2, 0)
-+#define GPIO12_MODE_SET_AUD_CLK_MISO		BIT(0)
-+#define GPIO13_MODE_SET_MASK			GENMASK(5, 3)
-+#define GPIO13_MODE_SET_AUD_DAT_MISO0		BIT(3)
-+#define GPIO14_MODE_SET_MASK			GENMASK(8, 6)
-+#define GPIO14_MODE_SET_AUD_DAT_MISO1		BIT(6)
-+#define GPIO15_MODE_SET_MASK			GENMASK(11, 9)
-+#define GPIO15_MODE_SET_AUD_SYNC_MISO		BIT(9)
-+
-+/* MT6357_GPIO_MODE3_CLR */
-+#define GPIO_MODE3_CLEAR_ALL			GENMASK(15, 0)
-+
-+/* MT6357_DCXO_CW14 */
-+#define XO_AUDIO_EN_M_SFT			13
-+#define XO_AUDIO_EN_M_MASK			BIT(13)
-+#define XO_AUDIO_EN_M_ENABLE			BIT(13)
-+#define XO_AUDIO_EN_M_DISABLE			0
-+
-+/* MT6357_AUD_TOP_CKPDN_CON0 */
-+#define AUDNCP_CK_PDN_SFT			6
-+#define ZCD13M_CK_PDN_SFT			5
-+#define AUDIF_CK_PDN_SFT			2
-+#define AUD_CK_PDN_SFT				1
-+
-+/* MT6357_AUDNCP_CLKDIV_CON0 */
-+#define DIVCKS_CHG				BIT(0)
-+
-+/* MT6357_AUDNCP_CLKDIV_CON1 */
-+#define DIVCKS_ON				BIT(0)
-+
-+/* MT6357_AUDNCP_CLKDIV_CON3 */
-+#define DIVCKS_PWD_NCP_MASK			BIT(0)
-+#define DIVCKS_PWD_NCP_DISABLE			BIT(0)
-+#define DIVCKS_PWD_NCP_ENABLE			0
-+
-+/* MT6357_AUDNCP_CLKDIV_CON4 */
-+#define DIVCKS_PWD_NCP_ST_SEL_MASK		GENMASK(1, 0)
-+#define DIVCKS_PWD_NCP_ST_50US			0
-+#define DIVCKS_PWD_NCP_ST_100US			1
-+#define DIVCKS_PWD_NCP_ST_150US			2
-+#define DIVCKS_PWD_NCP_ST_200US			3
-+
-+/* MT6357_AFE_UL_DL_CON0 */
-+#define AFE_UL_LR_SWAP_SFT			15
-+#define AFE_ON_SFT				0
-+
-+/* MT6357_AFE_DL_SRC2_CON0_L */
-+#define DL_2_SRC_ON_TMP_CTL_PRE_SFT		0
-+
-+/* MT6357_AFE_UL_SRC_CON0_H */
-+#define C_TWO_DIGITAL_MIC_CTL_MASK		BIT(7)
-+#define C_TWO_DIGITAL_MIC_ENABLE		BIT(7)
-+#define C_TWO_DIGITAL_MIC_DISABLE		0
-+
-+/* MT6357_AFE_UL_SRC_CON0_L */
-+#define UL_SDM_3_LEVEL_CTL_MASK			BIT(1)
-+#define UL_SDM_3_LEVEL_SELECT			BIT(1)
-+#define UL_SDM_3_LEVEL_DESELECT			0
-+#define UL_SRC_ON_TMP_CTL_MASK			BIT(0)
-+#define UL_SRC_ENABLE				BIT(0)
-+#define UL_SRC_DISABLE				0
-+
-+/* MT6357_AFE_TOP_CON0 */
-+#define UL_SINE_ON_SFT				1
-+#define UL_SINE_ON_MASK				BIT(1)
-+#define DL_SINE_ON_SFT				0
-+#define DL_SINE_ON_MASK				BIT(0)
-+
-+/* MT6357_AUDIO_TOP_CON0 */
-+#define PDN_LPBK_CTL_SFT			15
-+#define PDN_AFE_CTL_SFT				7
-+#define PDN_DAC_CTL_SFT				6
-+#define PDN_ADC_CTL_SFT				5
-+#define PDN_I2S_DL_CTL_SFT			3
-+#define PWR_CLK_DIS_CTL_SFT			2
-+#define PDN_AFE_TESTMODEL_CTL_SFT		1
-+#define PDN_RESERVED_SFT			0
-+
-+/* MT6357_AFUNC_AUD_CON0 */
-+#define CCI_AUD_ANACK_INVERT			BIT(15)
-+#define CCI_AUD_ANACK_NORMAL			0
-+#define CCI_AUDIO_FIFO_WPTR_SFT			12
-+#define CCI_SCRAMBLER_CG_ENABLE			BIT(11)
-+#define CCI_SCRAMBLER_CG_DISABLE		0
-+#define CCI_LCK_INV_OUT_OF_PHASE		BIT(10)
-+#define CCI_LCK_INV_IN_PHASE			0
-+#define CCI_RAND_ENABLE				BIT(9)
-+#define CCI_RAND_DISABLE			0
-+#define CCI_SPLT_SCRMB_CLK_ON			BIT(8)
-+#define CCI_SPLT_SCRMB_CLK_OFF			0
-+#define CCI_SPLT_SCRMB_ON			BIT(7)
-+#define CCI_SPLT_SCRMB_OFF			0
-+#define CCI_AUD_IDAC_TEST_EN_FROM_TEST_IN	BIT(6)
-+#define CCI_AUD_IDAC_TEST_EN_NORMAL_PATH	0
-+#define CCI_ZERO_PADDING_DISABLE		BIT(5)
-+#define CCI_ZERO_PADDING_ENABLE			0
-+#define CCI_AUD_SPLIT_TEST_EN_FROM_TEST_IN	BIT(4)
-+#define CCI_AUD_SPLIT_TEST_EN_NORMAL_PATH	0
-+#define CCI_AUD_SDM_MUTE_L_REG_CTL		BIT(3)
-+#define CCI_AUD_SDM_MUTE_L_NO_CTL		0
-+#define CCI_AUD_SDM_MUTE_R_REG_CTL		BIT(2)
-+#define CCI_AUD_SDM_MUTE_R_NO_CTL		0
-+#define CCI_AUD_SDM_7BIT_FROM_SPLITTER3		BIT(1)
-+#define CCI_AUD_SDM_7BIT_FROM_SPLITTER1		0
-+#define CCI_SCRAMBLER_ENABLE			BIT(0)
-+#define CCI_SCRAMBLER_DISABLE			0
-+
-+/* MT6357_AFUNC_AUD_CON2 */
-+#define CCI_AUDIO_FIFO_ENABLE			BIT(3)
-+#define CCI_AUDIO_FIFO_DISABLE			0
-+#define CCI_ACD_MODE_NORMAL_PATH		BIT(2)
-+#define CCI_ACD_MODE_TEST_PATH			0
-+#define CCI_AFIFO_CLK_PWDB_ON			BIT(1)
-+#define CCI_AFIFO_CLK_PWDB_DOWN			0
-+#define CCI_ACD_FUNC_RSTB_RELEASE		BIT(0)
-+#define CCI_ACD_FUNC_RSTB_RESET			0
-+
-+/* MT6357_AFE_ADDA_MTKAIF_CFG0 */
-+#define ADDA_MTKAIF_LPBK_CTL_MASK		BIT(1)
-+#define ADDA_MTKAIF_LPBK_ENABLE			BIT(1)
-+#define ADDA_MTKAIF_LPBK_DISABLE		0
-+
-+/* MT6357_AFE_SGEN_CFG0 */
-+#define SGEN_DAC_EN_CTL_SFT			7
-+#define SGEN_DAC_ENABLE				BIT(7)
-+#define SGEN_MUTE_SW_CTL_SFT			6
-+#define SGEN_MUTE_SW_DISABLE			0
-+
-+/* MT6357_AFE_DCCLK_CFG0 */
-+#define DCCLK_DIV_MASK				GENMASK(15, 5)
-+#define DCCLK_DIV_SFT				5
-+#define DCCLK_DIV_RUN_VALUE			(32 << DCCLK_DIV_SFT)
-+#define DCCLK_DIV_STOP_VALUE			(259 << DCCLK_DIV_SFT)
-+#define DCCLK_PDN_MASK				BIT(1)
-+#define DCCLK_PDN				BIT(1)
-+#define DCCLK_OUTPUT				0
-+#define DCCLK_GEN_ON_MASK			BIT(0)
-+#define DCCLK_GEN_ON				BIT(0)
-+#define DCCLK_GEN_OFF				0
-+
-+/* MT6357_AFE_DCCLK_CFG1 */
-+#define DCCLK_RESYNC_BYPASS_MASK		BIT(8)
-+#define DCCLK_RESYNC_BYPASS			BIT(8)
-+
-+/* MT6357_AFE_AUD_PAD_TOP */
-+#define AUD_PAD_TX_FIFO_NORMAL_PATH_MASK	GENMASK(15, 8)
-+#define AUD_PAD_TX_FIFO_NORMAL_PATH_ENABLE	(BIT(13) | BIT(12) | BIT(8))
-+#define AUD_PAD_TX_FIFO_NORMAL_PATH_DISABLE	(BIT(13) | BIT(12))
-+#define AUD_PAD_TX_FIFO_LPBK_MASK		GENMASK(7, 0)
-+#define AUD_PAD_TX_FIFO_LPBK_ENABLE		(BIT(5) | BIT(4) | BIT(0))
-+#define AUD_PAD_TX_FIFO_LPBK_DISABLE		0
-+
-+/* MT6357_AUDENC_ANA_CON0 */
-+#define AUDADCLINPUTSEL_MASK			GENMASK(14, 13)
-+#define AUDADCLINPUTSEL_PREAMPLIFIER		BIT(14)
-+#define AUDADCLINPUTSEL_IDLE			0
-+#define AUDADCLPWRUP_SFT			12
-+#define AUDADCLPWRUP_MASK			BIT(12)
-+#define AUDADCLPWRUP				BIT(12)
-+#define AUDADCLPWRDOWN				0
-+#define AUDPREAMPLGAIN_SFT			8
-+#define AUDPREAMPLGAIN_MASK			GENMASK(10, 8)
-+#define AUDPREAMPLGAIN_MAX			4
-+#define AUDPREAMPLINPUTSEL_SFT			6
-+#define AUDPREAMPLINPUTSEL_MASK_NOSFT		GENMASK(1, 0)
-+#define AUDPREAMPLDCPRECHARGE_MASK		BIT(2)
-+#define AUDPREAMPLDCPRECHARGE_ENABLE		BIT(2)
-+#define AUDPREAMPLDCPRECHARGE_DISABLE		0
-+#define AUDPREAMPLDCCEN_MASK			BIT(1)
-+#define AUDPREAMPLDCCEN_DC			BIT(1)
-+#define AUDPREAMPLDCCEN_AC			0
-+#define AUDPREAMPLON_MASK			BIT(0)
-+#define AUDPREAMPLON_ENABLE			BIT(0)
-+#define AUDPREAMPLON_DISABLE			0
-+
-+/* MT6357_AUDENC_ANA_CON1 */
-+#define AUDADCRINPUTSEL_MASK			GENMASK(14, 13)
-+#define AUDADCRINPUTSEL_PREAMPLIFIER		BIT(14)
-+#define AUDADCRINPUTSEL_IDLE			0
-+#define AUDADCRPWRUP_SFT			12
-+#define AUDADCRPWRUP_MASK			BIT(12)
-+#define AUDADCRPWRUP				BIT(12)
-+#define AUDADCRPWRDOWN				0
-+#define AUDPREAMPRGAIN_SFT			8
-+#define AUDPREAMPRGAIN_MASK			GENMASK(10, 8)
-+#define AUDPREAMPRGAIN_MAX			4
-+#define AUDPREAMPRINPUTSEL_SFT			6
-+#define AUDPREAMPRINPUTSEL_MASK_NOSFT		GENMASK(1, 0)
-+#define AUDPREAMPRDCPRECHARGE_MASK		BIT(2)
-+#define AUDPREAMPRDCPRECHARGE_ENABLE		BIT(2)
-+#define AUDPREAMPRDCPRECHARGE_DISABLE		0
-+#define AUDPREAMPRDCCEN_MASK			BIT(1)
-+#define AUDPREAMPRDCCEN_DC			BIT(1)
-+#define AUDPREAMPRDCCEN_AC			0
-+#define AUDPREAMPRON_MASK			BIT(0)
-+#define AUDPREAMPRON_ENABLE			BIT(0)
-+#define AUDPREAMPRON_DISABLE			0
-+
-+/* MT6357_AUDENC_ANA_CON6 */
-+#define CLKSQ_EN_SFT				0
-+
-+/* MT6357_AUDENC_ANA_CON7 */
-+#define AUDDIGMICBIAS_MASK			GENMASK(2, 1)
-+#define AUDDIGMICBIAS_DEFAULT_VALUE		BIT(2)
-+#define AUDDIGMICBIAS_OFF			0
-+#define AUDDIGMICEN_MASK			BIT(0)
-+#define AUDDIGMICEN_ENABLE			BIT(0)
-+#define AUDDIGMICEN_DISABLE			0
-+
-+/* MT6357_AUDENC_ANA_CON8 */
-+#define AUD_MICBIAS0_DCSW2N_EN_MASK		BIT(14)
-+#define AUD_MICBIAS0_DCSW2N_ENABLE		BIT(14)
-+#define AUD_MICBIAS0_DCSW2N_DISABLE		0
-+#define AUD_MICBIAS0_DCSW2P2_EN_MASK		BIT(13)
-+#define AUD_MICBIAS0_DCSW2P2_ENABLE		BIT(13)
-+#define AUD_MICBIAS0_DCSW2P2_DISABLE		0
-+#define AUD_MICBIAS0_DCSW2P1_EN_MASK		BIT(12)
-+#define AUD_MICBIAS0_DCSW2P1_ENABLE		BIT(12)
-+#define AUD_MICBIAS0_DCSW2P1_DISABLE		0
-+#define AUD_MICBIAS0_DCSW0N_EN_MASK		BIT(10)
-+#define AUD_MICBIAS0_DCSW0N_ENABLE		BIT(10)
-+#define AUD_MICBIAS0_DCSWN_DISABLE		0
-+#define AUD_MICBIAS0_DCSW0P2_EN_MASK		BIT(9)
-+#define AUD_MICBIAS0_DCSW0P2_ENABLE		BIT(9)
-+#define AUD_MICBIAS0_DCSW0P2_DISABLE		0
-+#define AUD_MICBIAS0_DCSW0P1_EN_MASK		BIT(8)
-+#define AUD_MICBIAS0_DCSW0P1_ENABLE		BIT(8)
-+#define AUD_MICBIAS0_DCSW0P1_DISABLE		0
-+#define AUD_MICBIAS0_VREF_MASK			GENMASK(6, 4)
-+#define AUD_MICBIAS0_VREF_SFT			4
-+#define AUD_MICBIAS0_PWD_SFT			0
-+
-+#define AUD_MICBIAS0_DC_MASK			(AUD_MICBIAS0_DCSW2N_EN_MASK | \
-+						 AUD_MICBIAS0_DCSW2P2_EN_MASK | \
-+						 AUD_MICBIAS0_DCSW2P1_EN_MASK | \
-+						 AUD_MICBIAS0_DCSW0N_EN_MASK | \
-+						 AUD_MICBIAS0_DCSW0P2_EN_MASK | \
-+						 AUD_MICBIAS0_DCSW0P1_EN_MASK)
-+
-+#define AUD_MICBIAS0_DC_ENABLE_ALL		(AUD_MICBIAS0_DCSW2N_ENABLE | \
-+						 AUD_MICBIAS0_DCSW2P2_ENABLE | \
-+						 AUD_MICBIAS0_DCSW2P1_ENABLE | \
-+						 AUD_MICBIAS0_DCSW0N_ENABLE | \
-+						 AUD_MICBIAS0_DCSW0P2_ENABLE | \
-+						 AUD_MICBIAS0_DCSW0P1_ENABLE)
-+
-+#define AUD_MICBIAS0_DC_ENABLE_P1		(AUD_MICBIAS0_DCSW2P1_ENABLE | \
-+						 AUD_MICBIAS0_DCSW0P1_ENABLE)
-+
-+#define AUD_MICBIAS0_DC_DISABLE_ALL		0
-+
-+/* MT6357_AUDENC_ANA_CON9 */
-+#define AUD_MICBIAS1_DCSW1P_EN_MASK		BIT(8)
-+#define AUD_MICBIAS1_DCSW1P_ENABLE		BIT(8)
-+#define AUD_MICBIAS1_DCSW1P_DISABLE		0
-+#define AUD_MICBIAS1_VREF_MASK			GENMASK(6, 4)
-+#define AUD_MICBIAS1_VREF_SFT			4
-+#define AUD_MICBIAS1_PWD_SFT			0
-+
-+/* MT6357_AUDDEC_ANA_CON0 */
-+#define AUD_HPR_SC_VAUDP15_MASK			BIT(13)
-+#define AUD_HPR_SC_VAUDP15_DISABLE		BIT(13)
-+#define AUD_HPR_SC_VAUDP15_ENABLE		0
-+#define AUD_HPL_SC_VAUDP15_MASK			BIT(12)
-+#define AUD_HPL_SC_VAUDP15_DISABLE		BIT(12)
-+#define AUD_HPL_SC_VAUDP15_ENABLE		0
-+#define AUD_HPR_MUX_INPUT_VAUDP15_MASK_NOSFT	GENMASK(1, 0)
-+#define AUD_HPR_MUX_INPUT_VAUDP15_SFT		10
-+#define AUD_HPL_MUX_INPUT_VAUDP15_MASK_NOSFT	GENMASK(1, 0)
-+#define AUD_HPL_MUX_INPUT_VAUDP15_SFT		8
-+#define AUD_HPR_BIAS_VAUDP15_MASK		BIT(7)
-+#define AUD_HPR_BIAS_VAUDP15_ENABLE		BIT(7)
-+#define AUD_HPR_BIAS_VAUDP15_DISABLE		0
-+#define AUD_HPL_BIAS_VAUDP15_MASK		BIT(6)
-+#define AUD_HPL_BIAS_VAUDP15_ENABLE		BIT(6)
-+#define AUD_HPL_BIAS_VAUDP15_DISABLE		0
-+#define AUD_HPR_PWRUP_VAUDP15_MASK		BIT(5)
-+#define AUD_HPR_PWRUP_VAUDP15_ENABLE		BIT(5)
-+#define AUD_HPR_PWRUP_VAUDP15_DISABLE		0
-+#define AUD_HPL_PWRUP_VAUDP15_MASK		BIT(4)
-+#define AUD_HPL_PWRUP_VAUDP15_ENABLE		BIT(4)
-+#define AUD_HPL_PWRUP_VAUDP15_DISABLE		0
-+#define AUD_DACL_PWRUP_VA28_MASK		BIT(3)
-+#define AUD_DACL_PWRUP_VA28_ENABLE		BIT(3)
-+#define AUD_DACL_PWRUP_VA28_DISABLE		0
-+#define AUD_DACR_PWRUP_VA28_MASK		BIT(2)
-+#define AUD_DACR_PWRUP_VA28_ENABLE		BIT(2)
-+#define AUD_DACR_PWRUP_VA28_DISABLE		0
-+#define AUD_DACR_PWRUP_VAUDP15_MASK		BIT(1)
-+#define AUD_DACR_PWRUP_VAUDP15_ENABLE		BIT(1)
-+#define AUD_DACR_PWRUP_VAUDP15_DISABLE		0
-+#define AUD_DACL_PWRUP_VAUDP15_MASK		BIT(0)
-+#define AUD_DACL_PWRUP_VAUDP15_ENABLE		BIT(0)
-+#define AUD_DACL_PWRUP_VAUDP15_DISABLE		0
-+
-+/* MT6357_AUDDEC_ANA_CON1 */
-+#define HPROUT_STG_CTRL_VAUDP15_MASK		GENMASK(14, 12)
-+#define HPROUT_STG_CTRL_VAUDP15_SFT		12
-+#define HPLOUT_STG_CTRL_VAUDP15_MASK		GENMASK(10, 8)
-+#define HPLOUT_STG_CTRL_VAUDP15_SFT		8
-+#define HPR_SHORT2HPR_AUX_VAUDP15_MASK		BIT(7)
-+#define HPR_SHORT2HPR_AUX_VAUDP15_ENABLE	BIT(7)
-+#define HPR_SHORT2HPR_AUX_VAUDP15_DISABLE	0
-+#define HPL_SHORT2HPR_AUX_VAUDP15_MASK		BIT(6)
-+#define HPL_SHORT2HPR_AUX_VAUDP15_ENABLE	BIT(6)
-+#define HPL_SHORT2HPR_AUX_VAUDP15_DISABLE	0
-+#define HPR_AUX_FBRSW_VAUDP15_MASK		BIT(5)
-+#define HPR_AUX_FBRSW_VAUDP15_ENABLE		BIT(5)
-+#define HPR_AUX_FBRSW_VAUDP15_DISABLE		0
-+#define HPL_AUX_FBRSW_VAUDP15_MASK		BIT(4)
-+#define HPL_AUX_FBRSW_VAUDP15_ENABLE		BIT(4)
-+#define HPL_AUX_FBRSW_VAUDP15_DISABLE		0
-+#define HPROUT_AUX_PWRUP_VAUDP15_MASK		BIT(3)
-+#define HPROUT_AUX_PWRUP_VAUDP15_ENABLE		BIT(3)
-+#define HPROUT_AUX_PWRUP_VAUDP15_DISABLE	0
-+#define HPLOUT_AUX_PWRUP_VAUDP15_MASK		BIT(2)
-+#define HPLOUT_AUX_PWRUP_VAUDP15_ENABLE		BIT(2)
-+#define HPLOUT_AUX_PWRUP_VAUDP15_DISABLE	0
-+#define HPROUT_PWRUP_VAUDP15_MASK		BIT(1)
-+#define HPROUT_PWRUP_VAUDP15_ENABLE		BIT(1)
-+#define HPROUT_PWRUP_VAUDP15_DISABLE		0
-+#define HPLOUT_PWRUP_VAUDP15_MASK		BIT(0)
-+#define HPLOUT_PWRUP_VAUDP15_ENABLE		BIT(0)
-+#define HPLOUT_PWRUP_VAUDP15_DISABLE		0
-+
-+/* MT6357_AUDDEC_ANA_CON2 */
-+#define HPP_SHORT_2VCM_VAUDP15_MASK		BIT(10)
-+#define HPP_SHORT_2VCM_VAUDP15_ENABLE		BIT(10)
-+#define HPP_SHORT_2VCM_VAUDP15_DISABLE		0
-+#define AUD_REFN_DERES_VAUDP15_MASK		BIT(9)
-+#define AUD_REFN_DERES_VAUDP15_ENABLE		BIT(9)
-+#define AUD_REFN_DERES_VAUDP15_DISABLE		0
-+#define HPROUT_STB_ENH_VAUDP15_MASK		GENMASK(6, 4)
-+#define HPROUT_STB_ENH_VAUDP15_OPEN		0
-+#define HPROUT_STB_ENH_VAUDP15_NOPEN_P250	BIT(4)
-+#define HPROUT_STB_ENH_VAUDP15_N470_POPEN	BIT(5)
-+#define HPROUT_STB_ENH_VAUDP15_N470_P250	(BIT(4) | BIT(5))
-+#define HPROUT_STB_ENH_VAUDP15_NOPEN_P470	(BIT(4) | BIT(6))
-+#define HPROUT_STB_ENH_VAUDP15_N470_P470	(BIT(4) | BIT(5) | BIT(6))
-+#define HPLOUT_STB_ENH_VAUDP15_MASK		GENMASK(2, 0)
-+#define HPLOUT_STB_ENH_VAUDP15_OPEN		0
-+#define HPLOUT_STB_ENH_VAUDP15_NOPEN_P250	BIT(0)
-+#define HPLOUT_STB_ENH_VAUDP15_N470_POPEN	BIT(1)
-+#define HPLOUT_STB_ENH_VAUDP15_N470_P250	(BIT(0) | BIT(1))
-+#define HPLOUT_STB_ENH_VAUDP15_NOPEN_P470	(BIT(0) | BIT(2))
-+#define HPLOUT_STB_ENH_VAUDP15_N470_P470	(BIT(0) | BIT(1) | BIT(2))
-+
-+/* MT6357_AUDDEC_ANA_CON3 */
-+#define AUD_HSOUT_STB_ENH_VAUDP15_MASK		BIT(7)
-+#define AUD_HSOUT_STB_ENH_VAUDP15_ENABLE	BIT(7)
-+#define AUD_HSOUT_STB_ENH_VAUDP15_DISABLE	0
-+#define AUD_HS_SC_VAUDP15_MASK			BIT(4)
-+#define AUD_HS_SC_VAUDP15_DISABLE		BIT(4)
-+#define AUD_HS_SC_VAUDP15_ENABLE		0
-+#define AUD_HS_MUX_INPUT_VAUDP15_MASK_NOSFT	GENMASK(1, 0)
-+#define AUD_HS_MUX_INPUT_VAUDP15_SFT		2
-+#define AUD_HS_PWRUP_BIAS_VAUDP15_MASK		BIT(1)
-+#define AUD_HS_PWRUP_BIAS_VAUDP15_ENABLE	BIT(1)
-+#define AUD_HS_PWRUP_BIAS_VAUDP15_DISABLE	0
-+#define AUD_HS_PWRUP_VAUDP15_MASK		BIT(0)
-+#define AUD_HS_PWRUP_VAUDP15_ENABLE		BIT(0)
-+#define AUD_HS_PWRUP_VAUDP15_DISABLE		0
-+
-+/* MT6357_AUDDEC_ANA_CON4 */
-+#define AUD_LOLOUT_STB_ENH_VAUDP15_MASK		BIT(8)
-+#define AUD_LOLOUT_STB_ENH_VAUDP15_ENABLE	BIT(8)
-+#define AUD_LOLOUT_STB_ENH_VAUDP15_DISABLE	0
-+#define AUD_LOL_SC_VAUDP15_MASK			BIT(4)
-+#define AUD_LOL_SC_VAUDP15_DISABLE		BIT(4)
-+#define AUD_LOL_SC_VAUDP15_ENABLE		0
-+#define AUD_LOL_MUX_INPUT_VAUDP15_MASK_NOSFT	GENMASK(1, 0)
-+#define AUD_LOL_MUX_INPUT_VAUDP15_SFT		2
-+#define AUD_LOL_PWRUP_BIAS_VAUDP15_MASK		BIT(1)
-+#define AUD_LOL_PWRUP_BIAS_VAUDP15_ENABLE	BIT(1)
-+#define AUD_LOL_PWRUP_BIAS_VAUDP15_DISABLE	0
-+#define AUD_LOL_PWRUP_VAUDP15_MASK		BIT(0)
-+#define AUD_LOL_PWRUP_VAUDP15_ENABLE		BIT(0)
-+#define AUD_LOL_PWRUP_VAUDP15_DISABLE		0
-+
-+/* MT6357_AUDDEC_ANA_CON6 */
-+#define HP_AUX_LOOP_GAIN_MASK			GENMASK(15, 12)
-+#define HP_AUX_LOOP_GAIN_SFT			12
-+#define HPR_AUX_CMFB_LOOP_MASK			BIT(11)
-+#define HPR_AUX_CMFB_LOOP_ENABLE		BIT(11)
-+#define HPR_AUX_CMFB_LOOP_DISABLE		0
-+#define HPL_AUX_CMFB_LOOP_MASK			BIT(10)
-+#define HPL_AUX_CMFB_LOOP_ENABLE		BIT(10)
-+#define HPL_AUX_CMFB_LOOP_DISABLE		0
-+#define HPRL_MAIN_CMFB_LOOP_MASK		BIT(9)
-+#define HPRL_MAIN_CMFB_LOOP_ENABLE		BIT(9)
-+#define HPRL_MAIN_CMFB_LOOP_DISABLE		0
-+#define HP_CMFB_RST_MASK			BIT(7)
-+#define HP_CMFB_RST_NORMAL			BIT(7)
-+#define HP_CMFB_RST_RESET			0
-+#define DAC_LOW_NOISE_MODE_MASK			BIT(0)
-+#define DAC_LOW_NOISE_MODE_ENABLE		BIT(0)
-+#define DAC_LOW_NOISE_MODE_DISABLE		0
-+
-+/* MT6357_AUDDEC_ANA_CON7 */
-+#define HP_IVBUF_DEGAIN_SFT			2
-+#define HP_IVBUF_DEGAIN_MAX			1
-+
-+/* MT6357_AUDDEC_ANA_CON10 */
-+#define AUD_IBIAS_PWRDN_VAUDP15_MASK		BIT(8)
-+#define AUD_IBIAS_PWRDN_VAUDP15_DISABLE		BIT(8)
-+#define AUD_IBIAS_PWRDN_VAUDP15_ENABLE		0
-+
-+/* MT6357_AUDDEC_ANA_CON11 */
-+#define RSTB_ENCODER_VA28_MASK			BIT(5)
-+#define RSTB_ENCODER_VA28_ENABLE		BIT(5)
-+#define RSTB_ENCODER_VA28_DISABLE		0
-+#define AUDGLB_PWRDN_VA28_SFT			4
-+#define RSTB_DECODER_VA28_MASK			BIT(0)
-+#define RSTB_DECODER_VA28_ENABLE		BIT(0)
-+#define RSTB_DECODER_VA28_DISABLE		0
-+
-+/* MT6357_AUDDEC_ANA_CON12 */
-+#define VA28REFGEN_EN_VA28_MASK			BIT(13)
-+#define VA28REFGEN_EN_VA28_ENABLE		BIT(13)
-+#define VA28REFGEN_EN_VA28_DISABLE		0
-+#define VA33REFGEN_EN_VA18_MASK			BIT(12)
-+#define VA33REFGEN_EN_VA18_ENABLE		BIT(12)
-+#define VA33REFGEN_EN_VA18_DISABLE		0
-+#define LCLDO_ENC_REMOTE_SENSE_VA28_MASK	BIT(10)
-+#define LCLDO_ENC_REMOTE_SENSE_VA28_ENABLE	BIT(10)
-+#define LCLDO_ENC_REMOTE_SENSE_VA28_DISABLE	0
-+#define LCLDO_ENC_EN_VA28_MASK			BIT(8)
-+#define LCLDO_ENC_EN_VA28_ENABLE		BIT(8)
-+#define LCLDO_ENC_EN_VA28_DISABLE		0
-+#define LCLDO_REMOTE_SENSE_VA18_MASK		BIT(6)
-+#define LCLDO_REMOTE_SENSE_VA18_ENABLE		BIT(6)
-+#define LCLDO_REMOTE_SENSE_VA18_DISABLE		0
-+#define LCLDO_EN_VA18_MASK			BIT(4)
-+#define LCLDO_EN_VA18_ENABLE			BIT(4)
-+#define LCLDO_EN_VA18_DISABLE			0
-+#define HCLDO_REMOTE_SENSE_VA18_MASK		BIT(2)
-+#define HCLDO_REMOTE_SENSE_VA18_ENABLE		BIT(2)
-+#define HCLDO_REMOTE_SENSE_VA18_DISABLE		0
-+#define HCLDO_EN_VA18_MASK			BIT(0)
-+#define HCLDO_EN_VA18_ENABLE			BIT(0)
-+#define HCLDO_EN_VA18_DISABLE			0
-+
-+/* MT6357_AUDDEC_ANA_CON13 */
-+#define NVREG_EN_VAUDP15_MASK			BIT(0)
-+#define NVREG_EN_VAUDP15_ENABLE			BIT(0)
-+#define NVREG_EN_VAUDP15_DISABLE		0
-+
-+/* MT6357_AUDDEC_ELR_0 */
-+#define AUD_HP_TRIM_EN_VAUDP15_MASK		BIT(12)
-+#define AUD_HP_TRIM_EN_VAUDP15_ENABLE		BIT(12)
-+#define AUD_HP_TRIM_EN_VAUDP15_DISABLE		0
-+
-+/* MT6357_ZCD_CON1 */
-+#define AUD_LOL_GAIN_MASK			GENMASK(4, 0)
-+#define AUD_LOL_GAIN_SFT			0
-+#define AUD_LOR_GAIN_MASK			GENMASK(11, 7)
-+#define AUD_LOR_GAIN_SFT			7
-+#define AUD_LO_GAIN_MAX				0x12
-+
-+/* MT6357_ZCD_CON2 */
-+#define AUD_HPL_GAIN_MASK			GENMASK(4, 0)
-+#define AUD_HPL_GAIN_SFT			0
-+#define AUD_HPR_GAIN_MASK			GENMASK(11, 7)
-+#define AUD_HPR_GAIN_SFT			7
-+#define AUD_HP_GAIN_MAX				0x12
-+
-+/* MT6357_ZCD_CON3 */
-+#define AUD_HS_GAIN_MASK			GENMASK(4, 0)
-+#define AUD_HS_GAIN_SFT				0
-+#define AUD_HS_GAIN_MAX				0x12
-+
-+/* Registers list */
-+/* gpio direction */
-+#define MT6357_GPIO_DIR0			0x0088
-+/* mosi */
-+#define MT6357_GPIO_MODE2			0x00B6
-+#define MT6357_GPIO_MODE2_SET			0x00B8
-+#define MT6357_GPIO_MODE2_CLR			0x00BA
-+/* miso */
-+#define MT6357_GPIO_MODE3			0x00BC
-+#define MT6357_GPIO_MODE3_SET			0x00BE
-+#define MT6357_GPIO_MODE3_CLR			0x00C0
-+
-+#define MT6357_DCXO_CW14			0x07AC
-+
-+#define MT6357_AUD_TOP_CKPDN_CON0		0x208C
-+#define MT6357_AUDNCP_CLKDIV_CON0		0x20B4
-+#define MT6357_AUDNCP_CLKDIV_CON1		0x20B6
-+#define MT6357_AUDNCP_CLKDIV_CON2		0x20B8
-+#define MT6357_AUDNCP_CLKDIV_CON3		0x20BA
-+#define MT6357_AUDNCP_CLKDIV_CON4		0x20BC
-+#define MT6357_AFE_UL_DL_CON0			0x2108
-+#define MT6357_AFE_DL_SRC2_CON0_L		0x210A
-+#define MT6357_AFE_UL_SRC_CON0_H		0x210C
-+#define MT6357_AFE_UL_SRC_CON0_L		0x210E
-+#define MT6357_AFE_TOP_CON0			0x2110
-+#define MT6357_AUDIO_TOP_CON0			0x2112
-+#define MT6357_AFUNC_AUD_CON0			0x2116
-+#define MT6357_AFUNC_AUD_CON2			0x211A
-+#define MT6357_AFE_ADDA_MTKAIF_CFG0		0x2134
-+#define MT6357_AFE_SGEN_CFG0			0x2140
-+#define MT6357_AFE_DCCLK_CFG0			0x2146
-+#define MT6357_AFE_DCCLK_CFG1			0x2148
-+#define MT6357_AFE_AUD_PAD_TOP			0x214C
-+#define MT6357_AUDENC_ANA_CON0			0x2188
-+#define MT6357_AUDENC_ANA_CON1			0x218A
-+#define MT6357_AUDENC_ANA_CON6			0x2194
-+#define MT6357_AUDENC_ANA_CON7			0x2196
-+#define MT6357_AUDENC_ANA_CON8			0x2198
-+#define MT6357_AUDENC_ANA_CON9			0x219A
-+#define MT6357_AUDDEC_ANA_CON0			0x2208
-+#define MT6357_AUDDEC_ANA_CON1			0x220A
-+#define MT6357_AUDDEC_ANA_CON2			0x220C
-+#define MT6357_AUDDEC_ANA_CON3			0x220E
-+#define MT6357_AUDDEC_ANA_CON4			0x2210
-+#define MT6357_AUDDEC_ANA_CON6			0x2214
-+#define MT6357_AUDDEC_ANA_CON7			0x2216
-+#define MT6357_AUDDEC_ANA_CON10			0x221C
-+#define MT6357_AUDDEC_ANA_CON11			0x221E
-+#define MT6357_AUDDEC_ANA_CON12			0x2220
-+#define MT6357_AUDDEC_ANA_CON13			0x2222
-+#define MT6357_AUDDEC_ELR_0			0x2226
-+#define MT6357_ZCD_CON1				0x228A
-+#define MT6357_ZCD_CON2				0x228C
-+#define MT6357_ZCD_CON3				0x228E
-+
-+/* enums and other defines */
-+enum analog_volume_type {
-+	ANALOG_VOLUME_HSOUT = 0,
-+	ANALOG_VOLUME_HPOUTL,
-+	ANALOG_VOLUME_HPOUTR,
-+	ANALOG_VOLUME_LINEOUTL,
-+	ANALOG_VOLUME_LINEOUTR,
-+	ANALOG_VOLUME_MIC1,
-+	ANALOG_VOLUME_MIC2,
-+	ANALOG_VOLUME_TYPE_MAX
++static const struct snd_soc_dai_ops mt8365_afe_i2s_ops = {
++	.startup	= mt8365_dai_i2s_startup,
++	.shutdown	= mt8365_dai_i2s_shutdown,
++	.prepare	= mt8365_dai_i2s_prepare,
 +};
 +
-+enum {
-+	DL_GAIN_8DB = 0,
-+	DL_GAIN_0DB = 8,
-+	DL_GAIN_N_1DB = 9,
-+	DL_GAIN_N_10DB = 18,
-+	DL_GAIN_N_12DB = 20,
-+	DL_GAIN_N_40DB = 0x1f,
++static const struct snd_soc_dai_ops mt8365_afe_2nd_i2s_ops = {
++	.startup	= mt8365_dai_i2s_startup,
++	.shutdown	= mt8365_dai_i2s_shutdown,
++	.hw_params	= mt8365_afe_2nd_i2s_hw_params,
++	.prepare	= mt8365_dai_i2s_prepare,
++	.set_fmt	= mt8365_afe_2nd_i2s_set_fmt,
 +};
 +
-+enum {
-+	UL_GAIN_0DB = 0,
-+	UL_GAIN_6DB,
-+	UL_GAIN_12DB,
-+	UL_GAIN_18DB,
-+	UL_GAIN_24DB,
++static struct snd_soc_dai_driver mtk_dai_i2s_driver[] = {
++	{
++		.name = "I2S",
++		.id = MT8365_AFE_IO_I2S,
++		.playback = {
++			.stream_name = "I2S Playback",
++			.channels_min = 1,
++			.channels_max = 2,
++			.rates = SNDRV_PCM_RATE_8000_192000,
++			.formats = SNDRV_PCM_FMTBIT_S16_LE |
++				   SNDRV_PCM_FMTBIT_S24_LE |
++				   SNDRV_PCM_FMTBIT_S32_LE,
++		},
++		.capture = {
++			.stream_name = "I2S Capture",
++			.channels_min = 1,
++			.channels_max = 2,
++			.rates = SNDRV_PCM_RATE_8000_192000,
++			.formats = SNDRV_PCM_FMTBIT_S16_LE |
++				   SNDRV_PCM_FMTBIT_S24_LE |
++				   SNDRV_PCM_FMTBIT_S32_LE,
++		},
++		.ops = &mt8365_afe_i2s_ops,
++	}, {
++		.name = "2ND I2S",
++		.id = MT8365_AFE_IO_2ND_I2S,
++		.playback = {
++			.stream_name = "2ND I2S Playback",
++			.channels_min = 1,
++			.channels_max = 2,
++			.rates = SNDRV_PCM_RATE_8000_192000,
++			.formats = SNDRV_PCM_FMTBIT_S16_LE |
++				   SNDRV_PCM_FMTBIT_S24_LE |
++				   SNDRV_PCM_FMTBIT_S32_LE,
++		},
++		.capture = {
++			.stream_name = "2ND I2S Capture",
++			.channels_min = 1,
++			.channels_max = 2,
++			.rates = SNDRV_PCM_RATE_8000_192000,
++			.formats = SNDRV_PCM_FMTBIT_S16_LE |
++				   SNDRV_PCM_FMTBIT_S24_LE |
++				   SNDRV_PCM_FMTBIT_S32_LE,
++		},
++		.ops = &mt8365_afe_2nd_i2s_ops,
++	}
 +};
 +
-+#define DL_GAIN_N_40DB_REG			(DL_GAIN_N_40DB << 7 | DL_GAIN_N_40DB)
-+#define DL_GAIN_REG_LEFT_MASK			0x001f
-+#define DL_GAIN_REG_LEFT_SHIFT			0
-+#define DL_GAIN_REG_RIGHT_MASK			0x0f80
-+#define DL_GAIN_REG_RIGHT_SHIFT			7
-+#define DL_GAIN_REG_MASK			0x0f9f
-+
-+#define SND_SOC_ADV_MT_FMTS (\
-+				SNDRV_PCM_FMTBIT_S16_LE |\
-+				SNDRV_PCM_FMTBIT_S16_BE |\
-+				SNDRV_PCM_FMTBIT_U16_LE |\
-+				SNDRV_PCM_FMTBIT_U16_BE |\
-+				SNDRV_PCM_FMTBIT_S24_LE |\
-+				SNDRV_PCM_FMTBIT_S24_BE |\
-+				SNDRV_PCM_FMTBIT_U24_LE |\
-+				SNDRV_PCM_FMTBIT_U24_BE |\
-+				SNDRV_PCM_FMTBIT_S32_LE |\
-+				SNDRV_PCM_FMTBIT_S32_BE |\
-+				SNDRV_PCM_FMTBIT_U32_LE |\
-+				SNDRV_PCM_FMTBIT_U32_BE)
-+
-+#define SOC_HIGH_USE_RATE (\
-+				SNDRV_PCM_RATE_CONTINUOUS |\
-+				SNDRV_PCM_RATE_8000_192000)
-+
-+#define MT6357_MICBIAS0_DEFAULT_VOLTAGE_INDEX	2 /* 1.9 Volt */
-+#define MT6357_MICBIAS1_DEFAULT_VOLTAGE_INDEX	0 /* 1.7 Volt */
-+
-+/* codec private structure */
-+struct mt6357_priv {
-+	struct device *dev;
-+	struct regmap *regmap;
-+	int ana_gain[ANALOG_VOLUME_TYPE_MAX];
-+	bool pull_down_needed;
-+	int hp_channel_number;
++/* low jitter control */
++static const char * const mt8365_i2s_hd_str[] = {
++	"Normal", "Low_Jitter"
 +};
-+#endif
++
++static SOC_ENUM_SINGLE_EXT_DECL(mt8365_i2s_enum, mt8365_i2s_hd_str);
++
++static const char * const fmi2sin_text[] = {
++	"OPEN", "FM_2ND_I2S_IN"
++};
++
++static SOC_ENUM_SINGLE_VIRT_DECL(fmi2sin_enum, fmi2sin_text);
++
++static const struct snd_kcontrol_new fmi2sin_mux =
++	SOC_DAPM_ENUM("FM 2ND I2S Source", fmi2sin_enum);
++
++static const struct snd_kcontrol_new i2s_o03_o04_enable_ctl =
++	SOC_DAPM_SINGLE_VIRT("Switch", 1);
++
++static const struct snd_soc_dapm_widget mtk_dai_i2s_widgets[] = {
++	SND_SOC_DAPM_SWITCH("I2S O03_O04", SND_SOC_NOPM, 0, 0,
++			   &i2s_o03_o04_enable_ctl),
++	SND_SOC_DAPM_MUX("FM 2ND I2S Mux", SND_SOC_NOPM, 0, 0, &fmi2sin_mux),
++	SND_SOC_DAPM_INPUT("2ND I2S In"),
++};
++
++static const struct snd_soc_dapm_route mtk_dai_i2s_routes[] = {
++	{"I2S O03_O04", "Switch", "O03"},
++	{"I2S O03_O04", "Switch", "O04"},
++	{"I2S Playback", NULL, "I2S O03_O04"},
++	{"2ND I2S Playback", NULL, "O00"},
++	{"2ND I2S Playback", NULL, "O01"},
++	{"2ND I2S Capture", NULL, "2ND I2S In"},
++	{"FM 2ND I2S Mux", "FM_2ND_I2S_IN", "2ND I2S Capture"},
++};
++
++static int mt8365_dai_i2s_set_priv(struct mtk_base_afe *afe)
++{
++	int i, ret;
++	bool tmp;
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++
++	tmp = of_property_read_bool(afe->dev->of_node,
++		"mediatek,i2s-shared-clock");
++
++	for (i = 0; i < DAI_I2S_NUM; i++) {
++		ret = mt8365_dai_set_priv(afe, mt8365_i2s_priv[i].id,
++					  sizeof(struct mtk_afe_i2s_priv),
++					  &mt8365_i2s_priv[i]);
++		if (ret)
++			return ret;
++		((struct mtk_afe_i2s_priv *)afe_priv->dai_priv[mt8365_i2s_priv[i].id])->
++			shared_clk = tmp;
++	}
++	return 0;
++}
++
++int mt8365_dai_i2s_register(struct mtk_base_afe *afe)
++{
++	struct mtk_base_afe_dai *dai;
++
++	dev_dbg(afe->dev, "%s()\n", __func__);
++
++	dai = devm_kzalloc(afe->dev, sizeof(*dai), GFP_KERNEL);
++	if (!dai)
++		return -ENOMEM;
++
++	list_add(&dai->list, &afe->sub_dais);
++
++	dai->dai_drivers = mtk_dai_i2s_driver;
++	dai->num_dai_drivers = ARRAY_SIZE(mtk_dai_i2s_driver);
++	dai->dapm_widgets = mtk_dai_i2s_widgets;
++	dai->num_dapm_widgets = ARRAY_SIZE(mtk_dai_i2s_widgets);
++	dai->dapm_routes = mtk_dai_i2s_routes;
++	dai->num_dapm_routes = ARRAY_SIZE(mtk_dai_i2s_routes);
++
++	/* set all dai i2s private data */
++	return mt8365_dai_i2s_set_priv(afe);
++}
 
 -- 
 2.25.1
