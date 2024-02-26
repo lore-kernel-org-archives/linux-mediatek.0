@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ED0DC54E49
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 08:56:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45F24C48BF6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 08:58:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PKsIiNTxKMkAPSXgrOozd+3ExiL3qHY75tKWlAbWsWo=; b=B0N0IoUZydpRPTQwvwd0BvCGkz
-	JDxwwlF/szxpXop3L2ywVffQk/tsI7hGIEF11K9AzOZo0RqsNmsITKM785Sb/mCtZhwUHVfmxPoLv
-	8VFEPyHlaPunRNXilE5MWPiKNuh6R6p8pCz3aGYZGpeEJrhxT+0Y0QgcgY8azhjgxWlYRt3Ts3kxb
-	9rJYM908W+eShgOjCg/jjm4gFoBcYZYFqpThFRsXvf5HVTUf0vm/9iNrcceC4K+m0qJz4HpOK5pNf
-	VGsmeAoUDx0EEo2qt2VQBJunm5xBV79Ux+8Q/0KT22o3pNPSa+YTPj5tKUFKQgenEpT2z8eanq88e
-	g+7zM/Vw==;
+	bh=q+ae70ui4knLi6kAYPUO4j19/h+H7XhJaacL3fOH/Qk=; b=WlyT9rCAgLFlpbW8kODd3f4Y3Z
+	n9UvOcbJQENP3tLSfoO68duINZLpXE1G/7PG1NlwBPH4Vds9Md0Ka5JPKOEW+3HVyI9H9QeQlXTd6
+	tFBuSB1l4Fx3nNT0Fk/lizrhwxjCRLGTi2EOn8kpAPIbCdMOIQ7hFJYXTYu0t5cZB5mEDlzeAAkTr
+	kBJpQy2pLEEcTW4pxOhINBTYje2ML7rKC3FmJJPl2xcKvqHtmuTFX8gy1hJvJXvzDLiYle6uqQp9D
+	v3weS5lFPaiYMwqG0dkg0wcFAmu6jDirakQ3mj/4BfStwPBzu3O8914yvdqaCCCkT3iIWbBZ6c0/4
+	qGZNi4CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reWmv-0000000HAfe-3eTd;
-	Mon, 26 Feb 2024 08:56:41 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1reWp7-0000000HBKH-2kZY;
+	Mon, 26 Feb 2024 08:58:57 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reWmp-0000000HAbQ-3EXf;
-	Mon, 26 Feb 2024 08:56:37 +0000
+	id 1reWp4-0000000HBIV-0FpV;
+	Mon, 26 Feb 2024 08:58:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708937794;
-	bh=NtluJuvOx4HWb8QYTDVkRwb3/l9Jxvrl3zQKPftAdX4=;
+	s=mail; t=1708937932;
+	bh=zA+oV5eE+DmShaJT1CXXXguSc4DEhYwAp7s4CFKkF0o=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=1GZ852FNOMnr/PS0M0RdA4DNl2DVu0NYwUjbmRcrgfff5YshOTxkSKY2zYA4GouuZ
-	 es/4h7tohQjegewUxeHx1JpC6WBEPT5hAUKvzQd2a4k4THNfyXsANv8FrcMTEfKGWl
-	 CiZ1KrBlrEXKpL/zZZJagNlB765etcchPShYmkGMfLwPbL2+C80k4KyqbMuwuAne1z
-	 m63StaV6/JofaEcUCPnBtA14i3MrzInzyPqsFPEb8VbuvE7ej/eguKFHsPZO6VgtD/
-	 1uBgXzelU/H2gBKGgt+ciIGEWA50gc+yR5mOeoFEi+WZWML5bNaR1y85I+SeufRgZl
-	 m8G+WtvW7uazg==
+	b=aA8uGwp869N8HPs53Dbrhv5TAOQyPWeletOZpIgGJej5mp2Z/Rac/vS0W3UADwGUY
+	 xM2sRbgvAqkOQATrLpIY3jmEdc7/lpMXhzBojYi18xxS/O1KrxA5EcXipyVs0iMXA/
+	 4j5reS+ZPazRQL3Ae/mCUGNz/DWkCGQSJdxaypTUNL0wTMXCiNhpOoZpLdCbYB8b6N
+	 EEPh0CoSBf5LX52E5torJD9FdTfPwZaqTpxP9yZeLXeG2GYevQfku14TcJb4mj66pi
+	 w9dB4CWHMGlPRXh30bOgI8HNrI3gf/MCugUZ2NSpPoaY/asafk2JC+DYs5aV8/ZjX/
+	 cL3vrJRP4DsbQ==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0B6973781183;
-	Mon, 26 Feb 2024 08:56:32 +0000 (UTC)
-Message-ID: <70cda6ba-b6d4-4343-9afd-2a1978150f84@collabora.com>
-Date: Mon, 26 Feb 2024 09:56:32 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7BBF6378207B;
+	Mon, 26 Feb 2024 08:58:51 +0000 (UTC)
+Message-ID: <9c114a61-ad19-4852-96c8-dbcbe8d8e38c@collabora.com>
+Date: Mon, 26 Feb 2024 09:58:50 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V2 3/4] arm64: dts: mediatek: mt7981: add pinctrl
+Subject: Re: [PATCH V2 4/4] arm64: dts: mediatek: Add Cudy WR3000 V1
 Content-Language: en-US
 To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
@@ -64,15 +64,14 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
  linux-kernel@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
  <rafal@milecki.pl>
 References: <20240223101709.30072-1-zajec5@gmail.com>
- <20240223101709.30072-4-zajec5@gmail.com>
+ <20240223101709.30072-5-zajec5@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240223101709.30072-4-zajec5@gmail.com>
+In-Reply-To: <20240223101709.30072-5-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240226_005635_967977_A088DF65 
-X-CRM114-Status: UNSURE (   6.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240226_005854_288938_8F05358C 
+X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,11 +89,28 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 23/02/24 11:17, Rafał Miłecki ha scritto:
 > From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> MT7981 contains on-SoC PIN controller that is also a GPIO provider.
+> Cudy WR3000 V1 is an MT7981B (AKA Filogic 820) based wireless router. It
+> has 256 MiB of RAM, some LEDs & buttons and (not described yet) 4
+> Ethernet ports.
 > 
-> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> There is one slightly uncommon LED with a label of globe icon described
+> in the Quick Installation Guide as having 2 meanings:
+> 1. "Not connected to the Internet"
+> 2. "Connected to the Internet"
+> 
+> Vendor designed it to light up when some Internet-accessible IP can be
+> reached. This change will be follow by an attempt to define some
+> predefined FUNCTION for it.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Can we please try to add that predefined function before adding this devicetree
+which would anyway be modified again to use that new definition?
 
+That just makes more sense...
+
+...if you can't get the new definition picked, I will take this one as is, but
+please try that first.
+
+Cheers,
+Angelo
 
 
