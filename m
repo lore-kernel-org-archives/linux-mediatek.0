@@ -4,75 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38C2CC54E41
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 15:10:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E967C54E41
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 15:16:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qLBdICGIkJwqaTF/oJgcGyadDeFPfY25qKy0S1BGtZQ=; b=FEM9gcNhRSWnJVrngeo+myJpUC
-	sfGwYnXnyluJ1ME93+4UFefEfXlTztLBL3QGOKNPWfx9uIeWR8dLQpERCee/2LBUHHsBOZmbBye/h
-	SpuS5aZn48dhIEdXGyS/KZPI3f/VXc4HQPtqUIby6bZoLcl5EY52pXIv4aZeRHl2XCgz1BbqpIlVt
-	sWvd5nAwQdcjO3vebWj8u6PhKwJMasOQqGoRJh9JZQHfKvB0CKJ8ZMs+iMq5zjfCvWOgKwibcDHuO
-	SvO/atWvJ3aFtfkwPnb5uMBffjDnjB4Ce84bC8JN1v4/uqxvMwEQi1hlw7744QI06KnM21piIqBYj
-	7lUInthw==;
+	bh=ytleufDfW156KK594Ruui+vLo5tX3ovRIKKvPCU4Yc8=; b=Zk4OyhZmvcUD0BXhpF+XuDcJ5e
+	DxDfUOqaxiDlZXFIeLdvrfXQAIQznOc0utaAbhQ5Yc3e4es5skZ44zJkNj0IfnBkLLwucZYZsTITP
+	4oxr2ChK+IRTddw6uYkeOD4BZr53rmazo/zp2osDt1ZxSV8BtEIVC1UiW1kgd6zsparQ/9A4+mnqW
+	5ZTJxB53Lzl6ceznlzk1DyHJjcTb6e//6NA/p1UyLQdn/ZJ56x8/rwfeB3mTJGSmtpPBewzDPVy7X
+	9dIGL4hUVbZTRMIAaVMF+6TAOvkqzpSOKG0c7dLQA/+ci3Bzhelt276gO/sVUomuiX9wssdHSFTAf
+	LiuaArZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reccx-00000001LA3-2aIR;
-	Mon, 26 Feb 2024 15:10:47 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1reciR-00000001N88-2QQz;
+	Mon, 26 Feb 2024 15:16:27 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1recct-00000001L8C-1hW0;
-	Mon, 26 Feb 2024 15:10:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708960240;
-	bh=rjsAG19LadGQiXwIsDuk3RWW7tqLr3AaqRurQrCjI74=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Y6m59/iKcLeDX15trf+2b++fknskJ4Y0BjG/DYDeb3AUT62y+f+AbO6SlmwBLIwjo
-	 cqmLSnTDIU1bGRMY2gDLoEJAS3Va9jCm++dB5s+FD02iCLPDiPR2Qp5VJTgpjCF4Oa
-	 bcVkEIIdPmX58dMIPJEokGY8fZQ6Zt7LSeuGigVTYd/q/JRyJO0bwD8aVESpDw0MHo
-	 fyRh/9kAQzd7Y7YBoKCYG9OXTEE+nz1WkeybAse6qCAmwgCI7hR5zax5M+SB+Tp9pC
-	 He4lXk9VwlRmTgQDBXV1VgcVpm/Iwy4WZA/yew5hhBmmMNUG8zzPP0RpFitZtyJGdo
-	 ofuCNPA4/SjNQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D17523780BFE;
-	Mon, 26 Feb 2024 15:10:38 +0000 (UTC)
-Message-ID: <007956a2-605d-425e-9b3d-aef90c8e6821@collabora.com>
-Date: Mon, 26 Feb 2024 16:10:38 +0100
+	id 1rebYm-00000000ybZ-1HXT
+	for linux-mediatek@bombadil.infradead.org;
+	Mon, 26 Feb 2024 14:02:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=ytleufDfW156KK594Ruui+vLo5tX3ovRIKKvPCU4Yc8=; b=Qj7v9v3PmAbMTbBvGed3quRsHY
+	c29i0co3bG/lyVPROS6/9n82+nvr+wD1Zqh+RFI2kMsEkATgED7bULEAJgngahqZrW/l6L+x9AVVU
+	c8Ac4D+ZD4xzs9voIJVQzbQbc7VkYb9+/irX8V9gSPYho6YHRJgOsxuExeHdl9/ZFGeBhQUKR3Ydp
+	Mc0RyARElFrujQlWcy5zDP+YjUTei+WH1ye/WCpVckgLn0fzVrThG2L5F8kUY9n5AXiPIxv/unEMt
+	k03DSiObarnR8tL/mSQmXTC4rMNCB3vhDu09oVsgyih/sYsB7bHt/CHKnwAoZdfGq7wMLNLIT6nmL
+	d/z0s/uQ==;
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rebYZ-00000001ETY-2lsM
+	for linux-mediatek@lists.infradead.org;
+	Mon, 26 Feb 2024 14:02:21 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-412a9457b2eso1809865e9.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Feb 2024 06:02:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1708956128; x=1709560928; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ytleufDfW156KK594Ruui+vLo5tX3ovRIKKvPCU4Yc8=;
+        b=LNsAwVfbFtn24s4PGE8viqc1/Z3Wnk/IbRp/0bbcwNsnjTyHNDGrOXvTAizMYfrYoK
+         7Q0tTbg0DEolY0Mkhf17X9C1EIJ2tt1AmBk2SKvoITM3kS4P2Ew7f+0BRPEA7NcBo2/C
+         lTF7pvxCcACD4NuFN1hgYy3A+2jtSuVwOeLPfLmqgLsF8jSSTTMmWmEWSodS1SvkJB/Z
+         RArMoi48wDXs2YeaLETCzukXG0fC1zfcbGzZNEFWv3eAnlsye01aad1trzTQcCRgE1Lf
+         qY6ppR5u7dRcrtG1aYqbk9k+KmJ6TVQncGkM7X3NIW2/q+b4UE624B+OcKuHdvp4rBJo
+         rShw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708956128; x=1709560928;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ytleufDfW156KK594Ruui+vLo5tX3ovRIKKvPCU4Yc8=;
+        b=fL9my6Eo3CnZfgy/v0YpqUxs6c8Z+JqZNal+JCPADehFg4Nl/e4hGHfweJkKMuqjF6
+         WV9LGHOpDCAOgKFyl4r+BJg8iZerp2pUG7sEWfXPcFBmLR3CV/rXQ8lS80ZflvMQbr5b
+         kxaeICuhfJ3x88zaOkrU/is2LBpZACA52bS9dth3MWX81bVlfvRhjAyw8A6CcDpD87bn
+         hTRkE4ZFETcBTdljCMcKUau8Ioe46xEnRUmiRFiIJlYIrRQyilUQRVJcGh0Y7Qf/aNVR
+         IjKnw/Vii6uhcdFnT39QnE81UQssTfH/k/Dyx65YecQZdhnfynPVJpy4PsdfkXCAcXTV
+         fYaA==
+X-Forwarded-Encrypted: i=1; AJvYcCVZk4FiJ4MxYiLwkHVSTytM+rvZ5+/VXALs9vB9MmYCgQ4HmoWBelCBo0ixt0RYWcnvnDs+di9xftRR/LIhdLUbLnISB5hfRofH3CkcrPrTrQL8
+X-Gm-Message-State: AOJu0YxxwvvtCSDrPh9NVRGtz8WDoTPz1uKOYTzVrg7MoeYyXrNnPU/w
+	XHtI2wTV9WocPxMwkbyIgCbd6egB331E5y95W7RqRqNPvgTXClv48DtnblZ23mI=
+X-Google-Smtp-Source: AGHT+IFKQGufEHWXBUu9F0HZgi/6g4V1k8Axa81ufjmly7iPNiTWJ446aEOcRP2RTw2v1K+EZMJ4Lg==
+X-Received: by 2002:a05:600c:4f46:b0:412:9434:fa38 with SMTP id m6-20020a05600c4f4600b004129434fa38mr5678803wmq.7.1708956127984;
+        Mon, 26 Feb 2024 06:02:07 -0800 (PST)
+Received: from [127.0.1.1] ([93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id d33-20020a05600c4c2100b004129f87a2c6sm2838475wmp.1.2024.02.26.06.02.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 Feb 2024 06:02:07 -0800 (PST)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Mon, 26 Feb 2024 15:01:39 +0100
+Subject: [PATCH 01/18] ASoC: dt-bindings: mediatek,mt8365-afe: Add audio
+ afe document
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 10/18] ASoc: mediatek: mt8365: Add a specific soundcard
- for EVK
-Content-Language: en-US
-To: amergnat@baylibre.com, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Lee Jones <lee@kernel.org>,
- Flora Fu <flora.fu@mediatek.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Sumit Semwal <sumit.semwal@linaro.org>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
- Nicolas Belin <nbelin@baylibre.com>
-References: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
- <20240226-audio-i350-v1-10-4fa1cea1667f@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240226-audio-i350-v1-10-4fa1cea1667f@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20240226-audio-i350-v1-1-4fa1cea1667f@baylibre.com>
+References: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
+In-Reply-To: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Sumit Semwal <sumit.semwal@linaro.org>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org, 
+ dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
+ Alexandre Mergnat <amergnat@baylibre.com>
+X-Mailer: b4 0.12.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5536; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=0kCH2S+hyKAqspnQK264eeLgQIfJopJ1XswPK6oxmVg=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBl3JncMTn7Pva3qSLlaPLg/cPnluAh0ub2unqFS4aw
+ o/sUWTKJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZdyZ3AAKCRArRkmdfjHURSduEA
+ CPJ+/cDO21Vbv6JavXGbRfwQV42UFIsvpm9Tzg2PmE+GXSHwFoKdkB1mOZZFCDgbG2dW3Xs2HZhJiR
+ +iI8NDm41ZA+2C0KIcd7qH6JsZ7N/fuBCRpf8tXC3TfjEbJ15U8mM4PRosdsFFtaKBHG2qWantz4bW
+ ZFnck6avImi7OjOmwaaAnmsyPuLk9W2w1y320VyqsMzidfwFvedimCwQj03Tif9DfJXwuoXd8gqg4h
+ Nk1RyfaW6Ha8n7NJW6T8GowjEqfTtJr2UxhBxQYE4z9lk2s8/wB3Wp4ZwA+UQv2V/B4WLYq6BlKeh5
+ I71FsGrbbU3I37US9rMAqv6ADDBfHeHcfRA32w0RyeUFR4l/TaWyMDJtbCRTCz4lYS6ni3EDwN72jq
+ G4wubcsZi4uJiFK/3syTEeZKj11NrJyb6EGo6j9jhSU9eor4bTbq+jS4LyITxulj3/pIS8xSclGoN+
+ ALOfjFYcEVuBNpMyfWQOfQaKCchoceUQUym53JxkCHrmfhcpyIjXG+GcY5BWFq9j1wTuH0s30EzSli
+ DZS89EOLdXA42pQ9DZkFE3/DSlHiMaF+Lg/Jl48BnPgVIXRRHrCYvWaUqlax6BpcEAy5CpScngO1ut
+ 3kmJ6PyADi5zVLfxqJWYEI8F9O8YvyzaTjvPbjClBHZ5mK2eW53ia46Wzgfw==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240226_071043_752785_19907EE7 
-X-CRM114-Status: GOOD (  27.91  )
+X-CRM114-CacheID: sfid-20240226_140212_610182_6AA43959 
+X-CRM114-Status: GOOD (  15.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,415 +137,185 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/02/24 15:01, amergnat@baylibre.com ha scritto:
-> From: Nicolas Belin <nbelin@baylibre.com>
-> 
-> Add a specific soundcard for mt8365-evk. It supports audio jack
-> in/out, dmics, the amic and lineout.
-> 
-> Signed-off-by: Nicolas Belin <nbelin@baylibre.com>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> ---
->   sound/soc/mediatek/mt8365/mt8365-mt6357.c | 379 ++++++++++++++++++++++++++++++
->   1 file changed, 379 insertions(+)
-> 
-> diff --git a/sound/soc/mediatek/mt8365/mt8365-mt6357.c b/sound/soc/mediatek/mt8365/mt8365-mt6357.c
-> new file mode 100644
-> index 000000000000..5192b35458e6
-> --- /dev/null
-> +++ b/sound/soc/mediatek/mt8365/mt8365-mt6357.c
-> @@ -0,0 +1,379 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Mediatek MT8365 Sound Card driver
-> + *
-> + * Copyright (c) 2024 MediaTek Inc.
-> + * Authors: Nicolas Belin <nbelin@baylibre.com>
-> + */
-> +
-> +#include <linux/module.h>
-> +#include <linux/of_gpio.h>
-> +#include <sound/soc.h>
-> +#include <sound/pcm_params.h>
-> +#include "mt8365-afe-common.h"
-> +#include <linux/pinctrl/consumer.h>
-> +#include "../common/mtk-soundcard-driver.h"
-> +
-> +enum PINCTRL_PIN_STATE {
+Add MT8365 audio front-end bindings
 
-Aren't those supposed to be AFE pin states?
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+ .../bindings/sound/mediatek,mt8365-afe.yaml        | 164 +++++++++++++++++++++
+ 1 file changed, 164 insertions(+)
 
-Anyway, lower case name for enums please, and no zero initializer for the first
-entry.
+diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8365-afe.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8365-afe.yaml
+new file mode 100644
+index 000000000000..1d7eb2532ad2
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/mediatek,mt8365-afe.yaml
+@@ -0,0 +1,164 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/mediatek,mt8365-afe.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek AFE PCM controller for MT8365
++
++maintainers:
++  - Alexandre Mergnat <amergnat@baylibre.com>
++
++properties:
++  compatible:
++    const: mediatek,mt8365-afe-pcm
++
++  reg:
++    maxItems: 2
++
++  interrupts:
++    maxItems: 1
++
++  mediatek,topckgen:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: The phandle of the mediatek topckgen controller
++
++  power-domains:
++    maxItems: 1
++
++  "#sound-dai-cells":
++    const: 0
++
++  clocks:
++    items:
++      - description: 26M clock
++      - description: mux for audio clock
++      - description: audio i2s0 mck
++      - description: audio i2s1 mck
++      - description: audio i2s2 mck
++      - description: audio i2s3 mck
++      - description: engen 1 clock
++      - description: engen 2 clock
++      - description: audio 1 clock
++      - description: audio 2 clock
++      - description: mux for i2s0
++      - description: mux for i2s1
++      - description: mux for i2s2
++      - description: mux for i2s3
++
++  clock-names:
++    items:
++      - const: top_clk26m_clk
++      - const: top_audio_sel
++      - const: audio_i2s0_m
++      - const: audio_i2s1_m
++      - const: audio_i2s2_m
++      - const: audio_i2s3_m
++      - const: engen1
++      - const: engen2
++      - const: aud1
++      - const: aud2
++      - const: i2s0_m_sel
++      - const: i2s1_m_sel
++      - const: i2s2_m_sel
++      - const: i2s3_m_sel
++
++  mediatek,i2s-shared-clock:
++    description:
++      i2s modules can share the same external clock pin.
++      If this property is not present the clock mode is separrate.
++    type: boolean
++
++  mediatek,dmic-iir-on:
++    description:
++      Boolean which specifies whether the DMIC IIR is enabled.
++      If this property is not present the IIR is disabled.
++    type: boolean
++
++  mediatek,dmic-irr-mode:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description:
++      Selects stop band of IIR DC-removal filter.
++      0 = Software programmable custom coeff loaded by the driver.
++      1 = 5Hz if 48KHz mode.
++      2 = 10Hz if 48KHz mode.
++      3 = 25Hz if 48KHz mode.
++      4 = 50Hz if 48KHz mode.
++      5 = 65Hz if 48KHz mode.
++    enum:
++      - 0
++      - 1
++      - 2
++      - 3
++      - 4
++      - 5
++
++  mediatek,dmic-two-wire-mode:
++    description:
++      Boolean which turns on digital microphone for two wire mode.
++      If this property is not present the two wire mode is disabled.
++    type: boolean
++
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - power-domains
++  - mediatek,topckgen
++  - clocks
++  - clock-names
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mediatek,mt8365-clk.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/power/mediatek,mt8365-power.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        afe@11220000 {
++            compatible = "mediatek,mt8365-afe-pcm";
++            reg = <0 0x11220000 0 0x1000>,
++                  <0 0x11221000 0 0xA000>;
++            interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_LOW>;
++            power-domains = <&spm MT8365_POWER_DOMAIN_AUDIO>;
++            mediatek,topckgen = <&topckgen>;
++            #sound-dai-cells = <0>;
++            clocks = <&clk26m>,
++                     <&topckgen CLK_TOP_AUDIO_SEL>,
++                     <&topckgen CLK_TOP_AUD_I2S0_M>,
++                     <&topckgen CLK_TOP_AUD_I2S1_M>,
++                     <&topckgen CLK_TOP_AUD_I2S2_M>,
++                     <&topckgen CLK_TOP_AUD_I2S3_M>,
++                     <&topckgen CLK_TOP_AUD_ENGEN1_SEL>,
++                     <&topckgen CLK_TOP_AUD_ENGEN2_SEL>,
++                     <&topckgen CLK_TOP_AUD_1_SEL>,
++                     <&topckgen CLK_TOP_AUD_2_SEL>,
++                     <&topckgen CLK_TOP_APLL_I2S0_SEL>,
++                     <&topckgen CLK_TOP_APLL_I2S1_SEL>,
++                     <&topckgen CLK_TOP_APLL_I2S2_SEL>,
++                     <&topckgen CLK_TOP_APLL_I2S3_SEL>;
++            clock-names = "top_clk26m_clk",
++                          "top_audio_sel",
++                          "audio_i2s0_m",
++                          "audio_i2s1_m",
++                          "audio_i2s2_m",
++                          "audio_i2s3_m",
++                          "engen1",
++                          "engen2",
++                          "aud1",
++                          "aud2",
++                          "i2s0_m_sel",
++                          "i2s1_m_sel",
++                          "i2s2_m_sel",
++                          "i2s3_m_sel";
++        };
++    };
++
++...
 
-enum mt8365_pin_state {
-	PIN_STATE_DEFAULT,
-	....
-};
-
-> +	PIN_STATE_DEFAULT = 0,
-> +	PIN_STATE_DMIC,
-> +	PIN_STATE_MISO_OFF,
-> +	PIN_STATE_MISO_ON,
-> +	PIN_STATE_MOSI_OFF,
-> +	PIN_STATE_MOSI_ON,
-> +	PIN_STATE_MAX
-> +};
-> +
-> +static const char * const mt8365_mt6357_pin_str[PIN_STATE_MAX] = {
-> +	"aud_default",
-> +	"aud_dmic",
-> +	"aud_miso_off",
-> +	"aud_miso_on",
-> +	"aud_mosi_off",
-> +	"aud_mosi_on",
-> +};
-> +
-> +struct mt8365_mt6357_priv {
-> +	struct pinctrl *pinctrl;
-> +	struct pinctrl_state *pin_states[PIN_STATE_MAX];
-> +};
-> +
-> +struct mt8365_dai_link_prop {
-> +	char *name;
-> +	unsigned int link_id;
-> +};
-
-This structure is unused.
-
-> +
-> +enum {
-> +	/* FE */
-> +	DAI_LINK_DL1_PLAYBACK = 0,
-> +	DAI_LINK_DL2_PLAYBACK,
-> +	DAI_LINK_AWB_CAPTURE,
-> +	DAI_LINK_VUL_CAPTURE,
-> +	/* BE */
-> +	DAI_LINK_2ND_I2S_INTF,
-> +	DAI_LINK_DMIC,
-> +	DAI_LINK_INT_ADDA,
-> +	DAI_LINK_NUM
-> +};
-> +
-> +static const struct snd_soc_dapm_widget mt8365_mt6357_widgets[] = {
-> +	SND_SOC_DAPM_OUTPUT("HDMI Out"),
-> +};
-> +
-> +static const struct snd_soc_dapm_route mt8365_mt6357_routes[] = {
-> +	{"HDMI Out", NULL, "2ND I2S Playback"},
-> +	{"DMIC In", NULL, "MICBIAS0"},
-> +};
-> +
-> +static int mt8365_mt6357_int_adda_startup(struct snd_pcm_substream *substream)
-> +{
-> +	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-> +	struct mt8365_mt6357_priv *priv = snd_soc_card_get_drvdata(rtd->card);
-> +	int ret = 0;
-> +
-> +	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
-> +		if (IS_ERR(priv->pin_states[PIN_STATE_MOSI_ON]))
-> +			return ret;
-> +
-> +		ret = pinctrl_select_state(priv->pinctrl,
-> +					priv->pin_states[PIN_STATE_MOSI_ON]);
-> +		if (ret)
-> +			dev_err(rtd->card->dev, "%s failed to select state %d\n",
-> +				__func__, ret);
-> +	}
-> +
-> +	if (substream->stream == SNDRV_PCM_STREAM_CAPTURE) {
-> +		if (IS_ERR(priv->pin_states[PIN_STATE_MISO_ON]))
-> +			return ret;
-> +
-> +		ret = pinctrl_select_state(priv->pinctrl,
-> +					priv->pin_states[PIN_STATE_MISO_ON]);
-> +		if (ret)
-> +			dev_err(rtd->card->dev, "%s failed to select state %d\n",
-> +				__func__, ret);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static void mt8365_mt6357_int_adda_shutdown(struct snd_pcm_substream *substream)
-> +{
-> +	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-> +	struct mt8365_mt6357_priv *priv = snd_soc_card_get_drvdata(rtd->card);
-> +	int ret = 0;
-> +
-> +	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
-> +		if (IS_ERR(priv->pin_states[PIN_STATE_MOSI_OFF]))
-> +			return;
-> +
-> +		ret = pinctrl_select_state(priv->pinctrl,
-> +					priv->pin_states[PIN_STATE_MOSI_OFF]);
-> +		if (ret)
-> +			dev_err(rtd->card->dev, "%s failed to select state %d\n",
-> +				__func__, ret);
-> +	}
-> +
-> +	if (substream->stream == SNDRV_PCM_STREAM_CAPTURE) {
-> +		if (IS_ERR(priv->pin_states[PIN_STATE_MISO_OFF]))
-> +			return;
-> +
-> +		ret = pinctrl_select_state(priv->pinctrl,
-> +					priv->pin_states[PIN_STATE_MISO_OFF]);
-> +		if (ret)
-> +			dev_err(rtd->card->dev, "%s failed to select state %d\n",
-> +				__func__, ret);
-> +	}
-> +
-> +}
-> +
-> +static const struct snd_soc_ops mt8365_mt6357_int_adda_ops = {
-> +	.startup = mt8365_mt6357_int_adda_startup,
-> +	.shutdown = mt8365_mt6357_int_adda_shutdown,
-> +};
-> +
-> +SND_SOC_DAILINK_DEFS(playback1,
-> +	DAILINK_COMP_ARRAY(COMP_CPU("DL1")),
-> +	DAILINK_COMP_ARRAY(COMP_DUMMY()),
-> +	DAILINK_COMP_ARRAY(COMP_EMPTY()));
-> +SND_SOC_DAILINK_DEFS(playback2,
-> +	DAILINK_COMP_ARRAY(COMP_CPU("DL2")),
-> +	DAILINK_COMP_ARRAY(COMP_DUMMY()),
-> +	DAILINK_COMP_ARRAY(COMP_EMPTY()));
-> +SND_SOC_DAILINK_DEFS(awb_capture,
-> +	DAILINK_COMP_ARRAY(COMP_CPU("AWB")),
-> +	DAILINK_COMP_ARRAY(COMP_DUMMY()),
-> +	DAILINK_COMP_ARRAY(COMP_EMPTY()));
-> +SND_SOC_DAILINK_DEFS(vul,
-> +	DAILINK_COMP_ARRAY(COMP_CPU("VUL")),
-> +	DAILINK_COMP_ARRAY(COMP_DUMMY()),
-> +	DAILINK_COMP_ARRAY(COMP_EMPTY()));
-> +
-> +SND_SOC_DAILINK_DEFS(i2s3,
-> +	DAILINK_COMP_ARRAY(COMP_CPU("2ND I2S")),
-> +	DAILINK_COMP_ARRAY(COMP_DUMMY()),
-> +	DAILINK_COMP_ARRAY(COMP_EMPTY()));
-> +SND_SOC_DAILINK_DEFS(dmic,
-> +	DAILINK_COMP_ARRAY(COMP_CPU("DMIC")),
-> +	DAILINK_COMP_ARRAY(COMP_DUMMY()),
-> +	DAILINK_COMP_ARRAY(COMP_EMPTY()));
-> +SND_SOC_DAILINK_DEFS(primary_codec,
-> +	DAILINK_COMP_ARRAY(COMP_CPU("INT ADDA")),
-> +	DAILINK_COMP_ARRAY(COMP_CODEC("mt6357-sound", "mt6357-snd-codec-aif1")),
-> +	DAILINK_COMP_ARRAY(COMP_EMPTY()));
-> +
-> +/* Digital audio interface glue - connects codec <---> CPU */
-> +static struct snd_soc_dai_link mt8365_mt6357_dais[] = {
-> +	/* Front End DAI links */
-> +	[DAI_LINK_DL1_PLAYBACK] = {
-> +		.name = "DL1_FE",
-> +		.stream_name = "MultiMedia1_PLayback",
-> +		.id = DAI_LINK_DL1_PLAYBACK,
-> +		.trigger = {
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +			SND_SOC_DPCM_TRIGGER_POST
-> +		},
-> +		.dynamic = 1,
-> +		.dpcm_playback = 1,
-> +		.dpcm_merged_rate = 1,
-> +		SND_SOC_DAILINK_REG(playback1),
-> +	},
-> +	[DAI_LINK_DL2_PLAYBACK] = {
-> +		.name = "DL2_FE",
-> +		.stream_name = "MultiMedia2_PLayback",
-> +		.id = DAI_LINK_DL2_PLAYBACK,
-> +		.trigger = {
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +			SND_SOC_DPCM_TRIGGER_POST
-> +		},
-> +		.dynamic = 1,
-> +		.dpcm_playback = 1,
-> +		.dpcm_merged_rate = 1,
-> +		SND_SOC_DAILINK_REG(playback2),
-> +	},
-> +	[DAI_LINK_AWB_CAPTURE] = {
-> +		.name = "AWB_FE",
-> +		.stream_name = "DL1_AWB_Record",
-> +		.id = DAI_LINK_AWB_CAPTURE,
-> +		.trigger = {
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +			SND_SOC_DPCM_TRIGGER_POST
-> +		},
-> +		.dynamic = 1,
-> +		.dpcm_capture = 1,
-> +		.dpcm_merged_rate = 1,
-> +		SND_SOC_DAILINK_REG(awb_capture),
-> +	},
-> +	[DAI_LINK_VUL_CAPTURE] = {
-> +		.name = "VUL_FE",
-> +		.stream_name = "MultiMedia1_Capture",
-> +		.id = DAI_LINK_VUL_CAPTURE,
-> +		.trigger = {
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +			SND_SOC_DPCM_TRIGGER_POST
-> +		},
-> +		.dynamic = 1,
-> +		.dpcm_capture = 1,
-> +		.dpcm_merged_rate = 1,
-> +		SND_SOC_DAILINK_REG(vul),
-> +	},
-> +	/* Back End DAI links */
-> +	[DAI_LINK_2ND_I2S_INTF] = {
-> +		.name = "2ND I2S BE",
-> +		.no_pcm = 1,
-> +		.id = DAI_LINK_2ND_I2S_INTF,
-> +		.dai_fmt = SND_SOC_DAIFMT_I2S |
-> +				SND_SOC_DAIFMT_NB_NF |
-> +				SND_SOC_DAIFMT_CBS_CFS,
-> +		.dpcm_playback = 1,
-> +		.dpcm_capture = 1,
-> +		SND_SOC_DAILINK_REG(i2s3),
-> +	},
-> +	[DAI_LINK_DMIC] = {
-> +		.name = "DMIC BE",
-> +		.no_pcm = 1,
-> +		.id = DAI_LINK_DMIC,
-> +		.dpcm_capture = 1,
-> +		SND_SOC_DAILINK_REG(dmic),
-> +	},
-> +	[DAI_LINK_INT_ADDA] = {
-> +		.name = "MTK Codec",
-> +		.no_pcm = 1,
-> +		.id = DAI_LINK_INT_ADDA,
-> +		.dpcm_playback = 1,
-> +		.dpcm_capture = 1,
-> +		.ops = &mt8365_mt6357_int_adda_ops,
-> +		SND_SOC_DAILINK_REG(primary_codec),
-> +	},
-> +};
-> +
-> +static int pinctrl_setup(struct snd_soc_card *card,
-> +			 struct mt8365_mt6357_priv *priv,
-> +			 unsigned int pin_id)
-> +{
-> +	int ret = 0;
-> +	/* if pin exist */
-> +	if (!IS_ERR(priv->pin_states[pin_id])) {
-> +		ret = pinctrl_select_state(priv->pinctrl,
-> +				priv->pin_states[pin_id]);
-> +		if (ret)
-> +			dev_err(card->dev,
-> +				"%s failed to select state %d\n",
-> +				__func__, ret);
-> +	}
-> +	return ret;
-> +}
-> +
-> +static int mt8365_mt6357_gpio_probe(struct snd_soc_card *card)
-> +{
-> +	struct mt8365_mt6357_priv *priv = snd_soc_card_get_drvdata(card);
-> +	int ret = 0;
-> +	int i;
-> +
-> +	priv->pinctrl = devm_pinctrl_get(card->dev);
-> +	if (IS_ERR(priv->pinctrl)) {
-> +		ret = PTR_ERR(priv->pinctrl);
-> +		dev_err(card->dev, "%s devm_pinctrl_get failed %d\n",
-> +			__func__, ret);
-> +		return ret;
-> +	}
-> +
-> +	for (i = 0 ; i < PIN_STATE_MAX ; i++) {
-> +		priv->pin_states[i] = pinctrl_lookup_state(priv->pinctrl,
-> +			mt8365_mt6357_pin_str[i]);
-> +		if (IS_ERR(priv->pin_states[i])) {
-> +			ret = PTR_ERR(priv->pin_states[i]);
-> +			dev_err(card->dev, "%s Can't find pin state %s %d\n",
-> +				 __func__, mt8365_mt6357_pin_str[i], ret);
-> +		}
-> +	}
-> +
-> +	/* Setup pins */
-
-	for (i = PIN_STATE_DEFAULT; i < PIN_STATE_MAX; i++) {
-		/* Are you sure about that?!?! */
-		if (IS_ERR(priv->pin_states[i]))
-			continue;
-
-		ret = pinctrl_select_state(...)
-		if (ret) {
-			/* Should you go back to default? */
-			pinctrl_select_state(card, priv, PIN_STATE_DEFAULT);
-			return dev_err_probe(card->dev, ret, "ARGH!\n"); /* :-) */
-		}
-	};
-
-> +	ret |= pinctrl_setup(card, priv, PIN_STATE_DEFAULT);
-
-....because OR'in return values is a big no.
-
-> +	ret |= pinctrl_setup(card, priv, PIN_STATE_DMIC);
-> +	ret |= pinctrl_setup(card, priv, PIN_STATE_MISO_OFF);
-> +	ret |= pinctrl_setup(card, priv, PIN_STATE_MOSI_OFF);
-> +
-
-	return 0;
-
-> +	return ret;
-> +}
-> +
-> +static struct snd_soc_card mt8365_mt6357_card = {
-> +	.name = "mt8365-evk",
-> +	.owner = THIS_MODULE,
-> +	.dai_link = mt8365_mt6357_dais,
-> +	.num_links = ARRAY_SIZE(mt8365_mt6357_dais),
-> +	.dapm_widgets = mt8365_mt6357_widgets,
-> +	.num_dapm_widgets = ARRAY_SIZE(mt8365_mt6357_widgets),
-> +	.dapm_routes = mt8365_mt6357_routes,
-> +	.num_dapm_routes = ARRAY_SIZE(mt8365_mt6357_routes),
-> +};
-> +
-> +static int mt8365_mt6357_dev_probe(struct platform_device *pdev)
-> +{
-> +	struct snd_soc_card *card = &mt8365_mt6357_card;
-> +	struct device *dev = &pdev->dev;
-> +	struct device_node *platform_node;
-> +	struct mt8365_mt6357_priv *priv;
-> +	int i, ret;
-> +
-> +	card->dev = dev;
-> +	ret = parse_dai_link_info(card);
-> +	if (ret)
-> +		goto err;
-> +
-> +	platform_node = of_parse_phandle(dev->of_node, "mediatek,platform", 0);
-> +	if (!platform_node) {
-> +		dev_err(dev, "Property 'platform' missing or invalid\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	for (i = 0; i < card->num_links; i++) {
-> +		if (mt8365_mt6357_dais[i].platforms->name)
-> +			continue;
-> +		mt8365_mt6357_dais[i].platforms->of_node = platform_node;
-> +	}
-> +
-> +	priv = devm_kzalloc(dev, sizeof(struct mt8365_mt6357_priv),
-> +			    GFP_KERNEL);
-> +	if (!priv) {
-> +		ret = -ENOMEM;
-> +		dev_err(dev, "%s allocate card private data fail %d\n",
-> +			__func__, ret);
-> +		return ret;
-> +	}
-> +
-> +	snd_soc_card_set_drvdata(card, priv);
-> +
-> +	mt8365_mt6357_gpio_probe(card);
-
-P.S.: with my cleanup this function would not need any parse_dai_link_info() call,
-nor phandle parsing, nor platform_node assignment, nor any call to
-devm_snd_soc_register_card(), nor....
-
-...practically you'd need to only allocate your priv (granted that you are not
-moving the gpio_probe() to the AFE driver) and the actual gpio_probe() call.
-
-But I'm not pressing to wait, anyway.
-
-Cheers,
-Angelo
+-- 
+2.25.1
 
 
