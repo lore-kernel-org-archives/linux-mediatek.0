@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CD8FC5478C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 17:32:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50AFDC5478C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Feb 2024 17:33:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NPhOUUbGfyPt95d+thIFpKzftMVi7roAfhqv80cpO4Q=; b=jl1OMTa4iZFK2g
-	Ey2qRPf7flf6XOLm339Hcd14Y2wF1skTlhvl4GW7YyK0hsucn1V7mk5PLSL5dAPyxQOA2G4cEENNk
-	Kxa6wKL3cBldCHQQVuWOymAdfRJe7h7N8mDFkBL6tiFn3qgqCpLd4OnuH+GDI/QOhfRkg7Jxy2aME
-	Ix17Kuhny5sXEea0VTiVi+vC4XaKD1YXDDt75uyNz9jCAYKesAOh1t4m2DW8hA1S9LwQp+LWI5WTi
-	d4BNK1zhAs0q4ikT6Pduj+zhR6kJZy4DVi4H9LYzn3sKvesWr127NnG6PWXcrpI6znoFwyacpjcLB
-	jZqj2lFja44306PVspKQ==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZotKd2o47/oKAtdV1I26QivtjRepugTGHOJDDp/ZM4g=; b=QWXw+kfJ3gUYVFdP4YHl8tfKNL
+	idJymfHi1Zo59dWIFvD7uYR218tW3f4HOzml3OoETiIP/D7xdwgY8T060YH6d6V3sAryf3lt+4BMr
+	oHtoG1wh0YI467gDU1UIMaSxvguQTJTXmLDSXdfDPOJHAzfthYmtXvwjwCvlyasbB8quDgSaPjgxW
+	OS/pk7TkZBT0Y+xe4+VxwkYqj3n6Pc+1LxSIK13rK0eCAFkABfj/alsjNG0ZXqpn1+52o/Hof7M2n
+	kgcy2DEHotM0uAxpXQSnWWni2y4kwVpyOsS5awpJg5H1kJ1AXfGal5x++DpRvZW6LqOpO7PJB2LJ6
+	hfTLhkRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reeqW-00000001zem-1MGD;
-	Mon, 26 Feb 2024 17:32:56 +0000
-Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b])
+	id 1reeqc-00000001ziw-3QAF;
+	Mon, 26 Feb 2024 17:33:02 +0000
+Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reeqQ-00000001zYa-3a32
+	id 1reeqT-00000001zZ8-21LU
 	for linux-mediatek@lists.infradead.org;
-	Mon, 26 Feb 2024 17:32:54 +0000
-Received: by mail-qk1-x72b.google.com with SMTP id af79cd13be357-787bb013422so230159285a.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Feb 2024 09:32:49 -0800 (PST)
+	Mon, 26 Feb 2024 17:32:56 +0000
+Received: by mail-qk1-x729.google.com with SMTP id af79cd13be357-783045e88a6so291996885a.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Feb 2024 09:32:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1708968769; x=1709573569; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=NPhOUUbGfyPt95d+thIFpKzftMVi7roAfhqv80cpO4Q=;
-        b=OGKFiBGYRYRIXkuukrGwC44mJOxp5LZqCjrd0dG6R+H5q60K+lbWqiFBxWzgshmEkJ
-         ae5VTlrkwDWMuP32sx48U7vvIMAq18aG62PSpLX8Io5R/ZfFXFDu+zBNfmk3MK6CljFr
-         INTkcf3RYLb/dtVY4O5q2TZztebbtR1Uc+dOE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708968769; x=1709573569;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=chromium.org; s=google; t=1708968770; x=1709573570; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=NPhOUUbGfyPt95d+thIFpKzftMVi7roAfhqv80cpO4Q=;
-        b=EnjwzcepcHz1d8O0Isbuwz0ZhFkZo8CDuhQr9w8xKe5vWfmeyg+pNhw5TWYKfxM9mT
-         5qK9kJOY672wB733NYPS5opHX0RkqoHKaM8bXAcyIdJURhpekYlBvV99fTsV2k6o0SKC
-         Gl+4eYq2FjHmJeg4L5rBSB8pTknmKDOiXgJOa0xTrAoMwPnUqJqfdLtfuDii6gzQB7rL
-         IrBJ4PEunR6GU/CWz7HHUg63jKSGCcB+j+AevZdP0hmxBUIne4smaR1vXAeIUpk/KELE
-         7SJAjspZalwLP0Q12EJZJUn1WwNnXv7bBqJoEY0r7nmBjC24ADp0oggaIX+E5+tdAJtI
-         QPuw==
-X-Forwarded-Encrypted: i=1; AJvYcCWBKCZqbLOjjPlyFMhzvJwyUo6eBKiXTmKMIZ03EBMJg2YuTurfwtfRRN72rvuPCPN+WwxV8cWlHh3qs5bCfMoOTmy2GUW1j24YUCJLgpkq6hLD
-X-Gm-Message-State: AOJu0YzbMe2dlTRN85zBmzh8znxbKIBo7utajcmhEBjNjGZMHOhJMTjA
-	Gsv8dnKowHJZnn/z7bGDNGrdjikip1Vq1XU4wxjio4p4OsgPTvZJf6M6RqzId59+Ln2aXREhEgo
-	=
-X-Google-Smtp-Source: AGHT+IHvLZz0JMsMLxrxZ5LeCz16I0q4crWk7ffwcs10kKwH096y5KdYOmJIsU/8SW+PQA+90LYoog==
-X-Received: by 2002:a37:e113:0:b0:785:c9d1:8636 with SMTP id c19-20020a37e113000000b00785c9d18636mr6773215qkm.59.1708968768956;
-        Mon, 26 Feb 2024 09:32:48 -0800 (PST)
+        bh=ZotKd2o47/oKAtdV1I26QivtjRepugTGHOJDDp/ZM4g=;
+        b=XHvLVG5KcdLR++bTT70XlA07bxTFT7gb0mxQ1Vb+cZ5ql8IxJ/zGEgPdGWCGkP236T
+         7hhPrErA3TnK2B1r8K16clLIdDaBXdjldN27E/hk2Zl4B2kCJQUAjgW+jY2PPT/G08Vl
+         HzIxD5lsn09/0dB6gD2xRp2TM1avVqsF9HT/E=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708968770; x=1709573570;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ZotKd2o47/oKAtdV1I26QivtjRepugTGHOJDDp/ZM4g=;
+        b=WLRmGdF3pRz1ZK95zsITFqLUV2M1Kpr8Ud+JoLSwh0LFV0vuzRoJMicJ7VH3VCo0xf
+         +FX+//zl7O2+5TtAtkfNHT8uFvQYjt/4MTbD0vD/hcdJCaBXSH4zs6v8nj33EQiNF50e
+         EelhJ61iFsWuC+P8m2p/vTvzbWM1VqvdDHQgQrQIFDoYKRVzrQi5yvj2MWjYe5LnoHDi
+         l4KE138dKl58l1crVWGSAZ6EPKFYBianbKa/RwAtzGDi23SZnDdZfQV98ob862C4lWtO
+         BBnLWRZDqaO2MGAAZM3gVAAG9IxGP1FhIL44ciyRJKizIpjg3M3oaty+efCf0YkWxH+/
+         qaWA==
+X-Forwarded-Encrypted: i=1; AJvYcCVNy5p3TM/4nMgVxgWkvNL0dabnjAWId220gbQYJ3iOFv1NYnUtZsjvg8A2igxBf4IR1OE+7reh1AJD+UYGnBtTGaqyEG7/pan5BOfzzPIlKhOl
+X-Gm-Message-State: AOJu0YwLe2diNGa69m5GL78yumcvRqLitYbjSzEhaHWKFB9UEBDLmZuK
+	JDwcQn+AOjq6W5soPT7udsbtH5yxSuChTmS21Z4vpvMMYlTS2IAdMC7nG2Sp9Q==
+X-Google-Smtp-Source: AGHT+IH3rAwgd0NXJq8G/TBWJ93nsJy2+AmuJ1+7I538QjgTdtVQQDhSqF/spxCAW7zvWaoaCpSjOA==
+X-Received: by 2002:a05:620a:9d7:b0:787:9a1c:fb32 with SMTP id y23-20020a05620a09d700b007879a1cfb32mr8021996qky.2.1708968769789;
+        Mon, 26 Feb 2024 09:32:49 -0800 (PST)
 Received: from denia.c.googlers.com (115.25.199.35.bc.googleusercontent.com. [35.199.25.115])
-        by smtp.gmail.com with ESMTPSA id b11-20020a05620a04eb00b0078725d0345dsm2672669qkh.2.2024.02.26.09.32.48
+        by smtp.gmail.com with ESMTPSA id b11-20020a05620a04eb00b0078725d0345dsm2672669qkh.2.2024.02.26.09.32.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Feb 2024 09:32:48 -0800 (PST)
+        Mon, 26 Feb 2024 09:32:49 -0800 (PST)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Subject: [PATCH v2 0/3] media: Fix warnings building with LLVM=1
-Date: Mon, 26 Feb 2024 17:32:43 +0000
-Message-Id: <20240226-fix-clang-warnings-v2-0-fa1bc931d17e@chromium.org>
+Date: Mon, 26 Feb 2024 17:32:44 +0000
+Subject: [PATCH v2 1/3] media: pci: sta2x11: Fix Wcast-function-type-strict
+ warnings
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIADvL3GUC/32NSw6CMBCGr0Jm7ZjO2KC48h6GRS0VJpHWTBU1h
- LtbOYDL73/OkINKyHCsZtAwSZYUC/CmAj+42AeUrjCwYWuID3iVN/pbcfDlNErsM9aeuGFj672
- /QCneNZTUOnpuCw+SH0k/68dEP/Xv3ERokLrG1oZ2zjKd/KBplOe4TdpDuyzLF1e5fQq3AAAA
+Message-Id: <20240226-fix-clang-warnings-v2-1-fa1bc931d17e@chromium.org>
+References: <20240226-fix-clang-warnings-v2-0-fa1bc931d17e@chromium.org>
+In-Reply-To: <20240226-fix-clang-warnings-v2-0-fa1bc931d17e@chromium.org>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
  Nathan Chancellor <nathan@kernel.org>, 
  Nick Desaulniers <ndesaulniers@google.com>, 
@@ -87,9 +87,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240226_093250_942747_0E7CBA22 
-X-CRM114-Status: UNSURE (   9.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240226_093253_567848_79363661 
+X-CRM114-Status: GOOD (  12.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,41 +103,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-LLVM does check -Wcast-function-type-sctrict, which is triggered in a
-couple of places in the media subsystem.
+Building with LLVM=1 throws the following warning:
+drivers/media/pci/sta2x11/sta2x11_vip.c:1057:6: warning: cast from 'irqreturn_t (*)(int, struct sta2x11_vip *)' (aka 'enum irqreturn (*)(int, struct sta2x11_vip *)') to 'irq_handler_t' (aka 'enum irqreturn (*)(int, void *)') converts to incompatible function type [-Wcast-function-type-strict]
 
+Reviewed-by: Nathan Chancellor <nathan@kernel.org>
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
-Changes in v2:
-- Refactor media: mediatek patchset
-- sta2x11: Fix Christmas tree order
-- Link to v1: https://lore.kernel.org/r/20240128-fix-clang-warnings-v1-0-1d946013a421@chromium.org
+ drivers/media/pci/sta2x11/sta2x11_vip.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
----
-Ricardo Ribalda (3):
-      media: pci: sta2x11: Fix Wcast-function-type-strict warnings
-      media: usb: pvrusb2: Fix Wcast-function-type-strict warnings
-      media: mediatek: vcodedc: Fix Wcast-function-type-strict warnings
+diff --git a/drivers/media/pci/sta2x11/sta2x11_vip.c b/drivers/media/pci/sta2x11/sta2x11_vip.c
+index e4cf9d63e926d..a6456673be3f6 100644
+--- a/drivers/media/pci/sta2x11/sta2x11_vip.c
++++ b/drivers/media/pci/sta2x11/sta2x11_vip.c
+@@ -757,7 +757,7 @@ static const struct video_device video_dev_template = {
+ /**
+  * vip_irq - interrupt routine
+  * @irq: Number of interrupt ( not used, correct number is assumed )
+- * @vip: local data structure containing all information
++ * @data: local data structure containing all information
+  *
+  * check for both frame interrupts set ( top and bottom ).
+  * check FIFO overflow, but limit number of log messages after open.
+@@ -767,8 +767,9 @@ static const struct video_device video_dev_template = {
+  *
+  * IRQ_HANDLED, interrupt done.
+  */
+-static irqreturn_t vip_irq(int irq, struct sta2x11_vip *vip)
++static irqreturn_t vip_irq(int irq, void *data)
+ {
++	struct sta2x11_vip *vip = data;
+ 	unsigned int status;
+ 
+ 	status = reg_read(vip, DVP_ITS);
 
- drivers/media/pci/sta2x11/sta2x11_vip.c                      |  5 +++--
- drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c          | 12 ++++++------
- .../media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h    |  2 +-
- .../platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c      | 10 +---------
- drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c |  2 +-
- drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c |  2 +-
- drivers/media/usb/pvrusb2/pvrusb2-context.c                  |  5 +++--
- drivers/media/usb/pvrusb2/pvrusb2-dvb.c                      |  7 ++++---
- drivers/media/usb/pvrusb2/pvrusb2-v4l2.c                     |  7 ++++---
- drivers/remoteproc/mtk_scp.c                                 |  4 ++--
- include/linux/remoteproc/mtk_scp.h                           |  2 +-
- include/linux/rpmsg/mtk_rpmsg.h                              |  2 +-
- 12 files changed, 28 insertions(+), 32 deletions(-)
----
-base-commit: d206a76d7d2726f3b096037f2079ce0bd3ba329b
-change-id: 20240128-fix-clang-warnings-6c12920467cb
-
-Best regards,
 -- 
-Ricardo Ribalda <ribalda@chromium.org>
+2.44.0.rc0.258.g7320e95886-goog
 
 
