@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C9DDC54798
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Feb 2024 18:07:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B94BAC5478C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Feb 2024 18:38:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S6+MUuGb2zmEv5DAM4fS96IcXlW7pM5/kqGwRmxcUuE=; b=YIu0BQGmnyK8uMDxkD481CFwgt
-	tDo11Yt1QfTtONzJMTJz+QwrqpofP0AVcmFKKUVs41zjRd2OUdMyUxfVlykHkCf8Rj8bxBgP3BdRM
-	Hn+E3BEUJ2xhjLp7ELOnTv/XNRDfESxSAZ4i3RIn3ZWx6mb8z6cyJuMEBlkEHeP3LWVZ2ua6K6l45
-	0rxl/TKnZ1qBzNKME+flgeeqRtgKt7zMsxdiwRH0BTkHXYdmGc49LkgdxyGjI9T92yFzT4zMuHP5w
-	SlmH3Grnqio0vDmhBztEvuY7L7gH/WOtIu/0KGCSMQOv4i2R0mT4H19y8W4BEVPXK+vWvCQC7QdUN
-	V6u6QfZA==;
+	bh=zaG4Gr4Kx+0i0zsq6oXYlyOK6u158LHOb5Hpg9y9dtA=; b=hhWUOnsMKc9HGT6Chg0KF6ir7K
+	KAWjhzimhsEk4IpQonVmGY+TEp7Oh4znIdjQTMOfMStd9JVqe3mGmedYFlW9HLp0I9ai/PxsBAujy
+	ZijC9SfF+hyhQlLjjiIe8TTFlKQOa8YhWLfohpRYqIbQckmpfQYIXBlpvPCPtjRBS0cjj5/ctDKsr
+	lxvDCP4Gg3XlAC8HKhuI8LnwFl1NiOilGKZha0izA5ZPElxslud7OTouH3nFuZWN7WhQF4sNCWNGE
+	0nYDAgunZdar0mbiyAkimu3dMIivfZ0qph0z1UsFfwp3ZBAXgDqBTkT5wTvhDC+mZTP1634HmvNOQ
+	WgiMo/ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rf1rT-00000006MB2-19o7;
-	Tue, 27 Feb 2024 18:07:27 +0000
-Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d])
+	id 1rf2LB-00000006T4g-0oeA;
+	Tue, 27 Feb 2024 18:38:09 +0000
+Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rf1rQ-00000006M8d-1xoz
+	id 1rf2L7-00000006T3f-40XI
 	for linux-mediatek@lists.infradead.org;
-	Tue, 27 Feb 2024 18:07:26 +0000
-Received: by mail-io1-xd2d.google.com with SMTP id ca18e2360f4ac-7c48fc56752so147122639f.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 27 Feb 2024 10:07:17 -0800 (PST)
+	Tue, 27 Feb 2024 18:38:07 +0000
+Received: by mail-io1-xd33.google.com with SMTP id ca18e2360f4ac-7c7ba25e7fcso2201839f.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 27 Feb 2024 10:38:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1709057237; x=1709662037; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1709059084; x=1709663884; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=S6+MUuGb2zmEv5DAM4fS96IcXlW7pM5/kqGwRmxcUuE=;
-        b=OY0O+gwIV5KyDsqkktVJjFaU9Y9A83xnwOjSRUWWXh/syCHyPaWNoa6T2qcauSGlj4
-         gtiQ2h+HIhyRvaEgsLC9CwD1BmoOSumRocA6O7xow4d3iteboj9fNkerGBo+2IshdSUk
-         s7LxsgQxVOOr4mnrcg7jUhnfJ7ATWVe3N8hd8=
+        bh=zaG4Gr4Kx+0i0zsq6oXYlyOK6u158LHOb5Hpg9y9dtA=;
+        b=ENGeCk1gl9woh56KVEmoQclT3UGF9lwfzFr4nxdpEXxfTw7mckrNQpbD3t3Ry9pPPZ
+         GH4u0AHMVuz6F8vL9c6JYAWYbnfh/iLjUpaxYIYVWBVYMe6Uo49uEVovRBD4XzEcXdpB
+         5QFuDIpx0mxecn22cznIQNTrpcEeHquwyarJk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709057237; x=1709662037;
+        d=1e100.net; s=20230601; t=1709059084; x=1709663884;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=S6+MUuGb2zmEv5DAM4fS96IcXlW7pM5/kqGwRmxcUuE=;
-        b=Y+/8GLVN4gHg86JWoyX02osvMf1syCxCEzI4frKjpB3oArikQHw8CHVPnneYvtSQIn
-         JVp9cQVAB3SxWnTbCrrxKJNZI+PWqg1pUBDNNLRq3SlYJjHIol205GfwSFeEkex4beZv
-         D5hSiLEAlOZ8ehfHCTHpAaIts8adXVuW2l8xIlN4A6tooc3IDc4Mp/e2JAMJF/JMWlNn
-         l4QEvIpP6VJdblOeTrH7NP9+cJSI28c4dZpOoZj7G1EAsnnExZcNO0MJjCE6ukBeXRKA
-         LIfIFbQ2VHJt/sGOoj/URIDcpBswPSD29iMBrrPZURcI+0dOctlA945gQ+L7Wj15joko
-         r7sQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXgc8+ZsqHxy+mqmSDpkvcJErhexd7L3B14SGolzi2aDCZfTcpy8oaz7nf2th3kITdUtpEsIMyQUd/D1aOBLXCNRxa5pvfWBdJJWdql+YL5BqqR
-X-Gm-Message-State: AOJu0YwB6LyfJaYYyjyczvaMoTqiZXqY0P3px62JygnAnC4qzFLppRGR
-	ToHa0+7s+MSwdLAIhXbenhUAcmkdGDGtS7ZOhdU2B5Cso7wuaHaK/OOLttmB7g==
-X-Google-Smtp-Source: AGHT+IEQdgN+oxQVY2WhNXlBaGf5tUG6zmnED4R2Bd3ZjsSu6BIoJ+KVjm1A4HgbPn4YL/9IXDzhfA==
-X-Received: by 2002:a05:6602:25d5:b0:7c7:c6fe:d216 with SMTP id d21-20020a05660225d500b007c7c6fed216mr6816933iop.15.1709057236921;
-        Tue, 27 Feb 2024 10:07:16 -0800 (PST)
+        bh=zaG4Gr4Kx+0i0zsq6oXYlyOK6u158LHOb5Hpg9y9dtA=;
+        b=IjVJunBPf6yIB3A95+2qUwVN1RyPomtqYtRAgWNr8X0tIzo39TGJ+655eC5imFhr4o
+         wYzVP81PigMsL3cth1s/Iof7q7Os7EQyARiS1RYrmOjEiffLPaqcGBlYkKOM4CJKnPwJ
+         JxKIORsGnn6ijTzw3oatShI/GPQ9Lj995pw3kD/PAI8iBxb0/c4ZJ6WkTfC5MdNt1dPb
+         Kb1fzmstPulXhCyxKHGb2zOHY5L8ly4KIMVYFKhFrNeAfLYsGO5Pii9vQvz6nolONvPB
+         OYV9wK9eoxXlX85PwGdjK2wRemZqhw4jCCD43ITVW/jcAG0gcNb2uQelcSe8vCx+stgs
+         g68Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUmU69gwTB32DW93mX47+ModSxLGx1+JG9ujLpcPwhZw47lg2DMgOJGj3iC+7oC4KAKjHU+R6fj8vh13Dgo++q6dVhg1qVN17eInywzA3KDB/Im
+X-Gm-Message-State: AOJu0YxqGrwXzpoyJQ2GVfeHUmQD8pzeYU2tSmBOMEhUIbEuFurp9W9/
+	EysT6E3dZwY6087E+d9hbJG5RSgYYcZI9Ap/7twz/iKJMTc64Ona+we+7NgGIA==
+X-Google-Smtp-Source: AGHT+IEeZR7+1yyy7wcg6Jz8cOZdq5xTguaXhSCIcOHuTDOZFBcHwqro5Caz+F2LmDujB9cHZH+DyQ==
+X-Received: by 2002:a92:cb0b:0:b0:365:616a:72da with SMTP id s11-20020a92cb0b000000b00365616a72damr143131ilo.7.1709059084386;
+        Tue, 27 Feb 2024 10:38:04 -0800 (PST)
 Received: from localhost (147.220.222.35.bc.googleusercontent.com. [35.222.220.147])
-        by smtp.gmail.com with UTF8SMTPSA id b18-20020a026f52000000b0047477ee4899sm1878140jae.147.2024.02.27.10.07.16
+        by smtp.gmail.com with UTF8SMTPSA id f5-20020a056e0212a500b00363ea1209basm2294457ilr.11.2024.02.27.10.38.03
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 27 Feb 2024 10:07:16 -0800 (PST)
-Date: Tue, 27 Feb 2024 18:07:16 +0000
+        Tue, 27 Feb 2024 10:38:03 -0800 (PST)
+Date: Tue, 27 Feb 2024 18:38:03 +0000
 From: Matthias Kaehlcke <mka@chromium.org>
 To: Macpaul Lin <macpaul.lin@mediatek.com>
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -76,19 +76,19 @@ Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Chunfeng Yun <chunfeng.yun@mediatek.com>,
 	Yow-shin Liou <yow-shin.liou@mediatek.com>,
 	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Javier Carrasco <javier.carrasco@wolfvision.net>
-Subject: Re: [PATCH 1/2] dt-bindings: usb: Add binding for TI USB8020B hub
- controller
-Message-ID: <Zd4k1BlWDz7nmc6o@google.com>
+	Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH 2/2] usb: misc: onboard_usb_hub: Add support for TI
+ TUSB8020B
+Message-ID: <Zd4sCyPNNjzB5Gre@google.com>
 References: <20240227090228.22156-1-macpaul.lin@mediatek.com>
+ <20240227090228.22156-2-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240227090228.22156-1-macpaul.lin@mediatek.com>
+In-Reply-To: <20240227090228.22156-2-macpaul.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_100724_543800_8925D900 
-X-CRM114-Status: GOOD (  19.61  )
+X-CRM114-CacheID: sfid-20240227_103806_028392_A325940B 
+X-CRM114-Status: GOOD (  11.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,58 +103,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 27, 2024 at 05:02:27PM +0800, Macpaul Lin wrote:
-> The TI USB8020B is a USB 3.0 hub controller with 2 ports.
+On Tue, Feb 27, 2024 at 05:02:28PM +0800, Macpaul Lin wrote:
+> The TI TUSB8020B is a 2-port USB 3.0 hub. Add support for
+> this hub in the driver in order to bring up reset, and supply
+> dependencies.
 > 
-> This initial version of the binding only describes USB related aspects
-> of the USB8020B, it does not cover the option of connecting the controller
-> as an i2c slave.
+> Power-up: Issue a GPIO reset (GRSTz) 3ms after VDD and VDD33 stabilize.
 > 
 > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> ---
->  .../devicetree/bindings/usb/ti,usb8020b.yaml  | 69 +++++++++++++++++++
->  1 file changed, 69 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/usb/ti,usb8020b.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/usb/ti,usb8020b.yaml b/Documentation/devicetree/bindings/usb/ti,usb8020b.yaml
-> new file mode 100644
-> index 000000000000..8ef117793e11
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/usb/ti,usb8020b.yaml
-> @@ -0,0 +1,69 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/usb/ti,usb8020b.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: TI USB8020B USB 3.0 hub controller
-> +
-> +maintainers:
-> +  - Macpaul Lin <macpaul.lin@mediatek.com>
-> +
-> +allOf:
-> +  - $ref: usb-device.yaml#
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - usb451,8025
-> +      - usb451,8027
-> +
-> +  reg: true
-> +
-> +  reset-gpios:
-> +    items:
-> +      - description: GPIO specifier for GRST# pin.
-> +
-> +  vdd-supply:
 
-There is currently a rework of the onboard_usb_hub driver ongoing to
-support the actual names of the supplies, instead of the generic 'vdd-supply':
+Generally this looks good to me, but it should probably wait for
+"usb: misc: onboard_dev: use device supply names" [1] to land and
+use a device specific supply name instead of 'vdd'.
 
-https://lore.kernel.org/linux-usb/20240220-onboard_xvf3500-v4-0-dc1617cc5dd4@wolfvision.net/
-
-I think for new bindings we should wait until this rework is done and the binding
-should have the hub specific supply name.
+[1] https://lore.kernel.org/linux-usb/20240220-onboard_xvf3500-v4-6-dc1617cc5dd4@wolfvision.net/
 
