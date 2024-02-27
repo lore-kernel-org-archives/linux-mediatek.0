@@ -4,96 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A03BC5478C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Feb 2024 12:14:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45399C5478C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Feb 2024 12:30:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Subject:Cc:To:From:Date:References:In-Reply-To:Message-Id:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Sjxk+G0JXaulLp0Gsjtb2mSL2FrjZisK0OaKlVbjzRk=; b=1BBgAKe1/fuP8PN6/7FIVTClLb
-	DYTqwJjeZ8rD9hjQNkRVIU81TwbgYx3eLBi2d5EsPr99ZIPh/wvoCs2QsCrT1P7M0CeXQP2bsGAyx
-	XbCEQiZ+gcoqywjbVS6CYUAVnS0zmhCxZu8yxPkAXD0aFxwONP+LapE8wSHjup7dw9dxGYQOgMruq
-	Hp/peJTle+FYbX20/cEbZ3HuYETpGnJGlf1FAr4aMsctwXKpad/5GzX/PJPdgBZ11JCaVeso7z4ak
-	BWb7PXv8BOE3hK4XOBLmXivfsv6YHQl/s6TmG6y3oFOXG0KZZjH3l/bYHCFqIFKuLIFLhq89kfsy8
-	34z6j8ZA==;
+	bh=qqBbSmicccEaZRWFjxZw2zuynONkC517ooPIyNNTL0M=; b=CEvQtLnA9YfHjBhjTJPWZ5sBUm
+	jvZQH4+KQwwrPIY3N+Yt85KLbYKrQOvUhVn6XrzXC/GXRJDvsyXTirZ6gJ1+cOEo1KoIrUufuhmE9
+	RhsRcGFUy0y8bwnoWdJ9Ev6P7kr7viQ4O22WyoyoVbtz/Wf6FAn2BCqJa/prNqSx0U8RdL1A3Ieir
+	obNsXg250XoBEN/Nham2JgKyJNBODfjBusu9K85XT3GH6DUL8k4VLhfEH3T+/IlW93wNum0Y2xo/n
+	/+gjIJVr2JodfnxQgq9DlTr/EnkpKcGSS8X2EhB/HiPRMDfmnhHHOzOb1Supaow5hU2FfmlBp0yCU
+	XMhlD0SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rewLQ-000000056ij-1Tsz;
-	Tue, 27 Feb 2024 12:14:00 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rewbW-00000005CFA-3FO6;
+	Tue, 27 Feb 2024 12:30:38 +0000
+Received: from fhigh5-smtp.messagingengine.com ([103.168.172.156])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rewIZ-000000054uN-1gw3;
-	Tue, 27 Feb 2024 12:11:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709035861;
-	bh=Jpx8HKm9BGBUo/aktxdkRyrJGYDFjXNdMQ+YMjx31sA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=dfWbwXxJigyS5KeGUp9zCavzOTOxtYMxTZ1iXIUFADnqos5jbqkwfgbYPC8PRlH9c
-	 LlKO4XxnXvrfrF+f8343Rw/AV7w8ekHjDZsOMrJdllEvM0H2tT+UxKJ7mRtmX1Qprj
-	 GXgNLDtFzB0d3Hb5Ihyx26zaF2O7orkFTnn0B7LI73AC1PHp1BRZgMWSzyscrltTCc
-	 whV3tXz1DAC4+rkEKaIlf4UQBqVMWBAdfHZ64KGr1xLC0gYJlRTidDqQkCG0s1EDgw
-	 PhKid+mptZtDIx8Bijk8vRZBQi0WweGr7j/J+9R3FXnQvdlZwcvT4pmYKNMXoPeI9n
-	 QKNSHr7y3enkQ==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9DAD037820EC;
-	Tue, 27 Feb 2024 12:10:59 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: broonie@kernel.org
-Cc: wenst@chromium.org,
-	lgirdwood@gmail.com,
-	robh@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	perex@perex.cz,
-	tiwai@suse.com,
-	trevor.wu@mediatek.com,
-	maso.huang@mediatek.com,
-	xiazhengqiao@huaqin.corp-partner.google.com,
-	arnd@arndb.de,
-	kuninori.morimoto.gx@renesas.com,
-	shraash@google.com,
-	amergnat@baylibre.com,
-	nicolas.ferre@microchip.com,
-	u.kleine-koenig@pengutronix.de,
-	dianders@chromium.org,
-	frank.li@vivo.com,
-	allen-kh.cheng@mediatek.com,
-	eugen.hristev@collabora.com,
-	claudiu.beznea@tuxon.dev,
-	jarkko.nikula@bitmer.com,
-	jiaxin.yu@mediatek.com,
-	alpernebiyasak@gmail.com,
-	ckeepax@opensource.cirrus.com,
-	zhourui@huaqin.corp-partner.google.com,
-	nfraprado@collabora.com,
-	alsa-devel@alsa-project.org,
-	shane.chien@mediatek.com,
-	linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 21/22] arm64: dts: mediatek: mt8195-cherry: Specify sound DAI links and routing
-Date: Tue, 27 Feb 2024 13:09:38 +0100
-Message-ID: <20240227120939.290143-22-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240227120939.290143-1-angelogioacchino.delregno@collabora.com>
-References: <20240227120939.290143-1-angelogioacchino.delregno@collabora.com>
+	id 1rewbS-00000005CBe-04Tj;
+	Tue, 27 Feb 2024 12:30:36 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailfhigh.nyi.internal (Postfix) with ESMTP id E68EE11400A9;
+	Tue, 27 Feb 2024 07:30:29 -0500 (EST)
+Received: from imap51 ([10.202.2.101])
+  by compute5.internal (MEProxy); Tue, 27 Feb 2024 07:30:29 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to; s=fm3; t=1709037029;
+	 x=1709123429; bh=qqBbSmicccEaZRWFjxZw2zuynONkC517ooPIyNNTL0M=; b=
+	X1WNMj8wIOYFRikCCsz3IU1UGw2DKfQ0DJPDKbnHZlK5tHnX8qbCozMmTIJs+aXu
+	Am/BlxIaJbJJ0LDhF2rYv5UogVyhUmh9CC7NJl8ZnfkfLxVM5+nKn55vp9lTzW+T
+	qmlMOHCMWvmgkk0MB2Iae0noHgw1SqAiWqHY8OON3oEcpEwrKZJKMx39mwSx9M9L
+	D11SMOPR0vtLGq9TPdeLynMlBAGwEx/KyWb5s9x9Ye7Ad+IwE/ZUibJPHVhJ7C0j
+	+z1mQ9BgUmAGQvjJ1oB53TZ52jlo2mU90ucSjsDPTuQKBHh3qs7W2a15IOfMCDtl
+	s95KgLaozxSrul1wqQUsLg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1709037029; x=
+	1709123429; bh=qqBbSmicccEaZRWFjxZw2zuynONkC517ooPIyNNTL0M=; b=o
+	srzw/mX7WXnjAgKeNzPP433kfhGPkXCmwFf2I73FKKK3iJGK7lXHwYX6yHnXnD8P
+	jcBtj25AcerNoFqgemRYfYqkPxVh30F0SJmvETrvzULtn9p5T1o7y5MIyyP/Jlxz
+	kJ23iZUJeUQK3I+4z8VzqNnN4p71m/vslr+DiOMpArU7owtGyq57THJ/2MU+TSU4
+	HSwcy8ePAh6SGxHNUMzpeRd1/fSKNE3ubYwq5YhMoKgrkusoeJ3iOl3FMyuctKa8
+	3TQatt8xjdAwEsCLTpzc036rjH2AVJgk12MJhKxNch61cgwSEeChbhg0Dy/AUVvg
+	0kXcIPQ4JQ9dDeXnDC2HA==
+X-ME-Sender: <xms:5NXdZT2MBgoXvaNAO9ObgCC4iI0Xr08k_sVC9QoRvJbDVbiLHhNh2g>
+    <xme:5NXdZSGg-pyDKEzBtrcXyE0RL3JG_imVe1eb8gQFmpi5PuSps6gYX95t_rIbcD87F
+    h7burAudw3nrw45EFU>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrgeehgddujecutefuodetggdotefrodftvf
+    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+    fjughrpefofgggkfgjfhffhffvvefutgfgsehtqhertderreejnecuhfhrohhmpedftehr
+    nhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrth
+    htvghrnhepfeevgfdtueetuddugfeuiedvtddtvdefhedtgffgteektdevkeeljeekhedu
+    feeunecuffhomhgrihhnpehlihhnuhigthhvrdhorhhgnecuvehluhhsthgvrhfuihiivg
+    eptdenucfrrghrrghmpehmrghilhhfrhhomheprghrnhgusegrrhhnuggsrdguvg
+X-ME-Proxy: <xmx:5NXdZT4sYDb1UBkZ8j1J1Uuxlcgi7hno6AQSkrh_G5nX8smYDLooWw>
+    <xmx:5NXdZY32vWCgblML1DeEoAzPb6g9ZcgBUHZ9j4O4AsMBNkBNb3D4uA>
+    <xmx:5NXdZWFspKj32wwy0o6rtCe_klNmvM7ZclTGrLe5-EOMe7ffGSxSpQ>
+    <xmx:5dXdZTIyRC3Z90rby6PGRowdyc3Cy7ZWkq2vuKRWTT2EUa1Mh0X7hA>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id 7BD38B6008F; Tue, 27 Feb 2024 07:30:28 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.11.0-alpha0-153-g7e3bb84806-fm-20240215.007-g7e3bb848
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Message-Id: <54dcfb0c-9861-4abb-8a1f-83b5d1722ca8@app.fastmail.com>
+In-Reply-To: <CAPybu_2JoNfr158FXqYGUV=JuTW8i85XM6cf7K40_xZe9m2qyg@mail.gmail.com>
+References: <20240224121059.1806691-1-arnd@kernel.org>
+ <CAPybu_2JoNfr158FXqYGUV=JuTW8i85XM6cf7K40_xZe9m2qyg@mail.gmail.com>
+Date: Tue, 27 Feb 2024 13:30:07 +0100
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Ricardo Ribalda Delgado" <ricardo.ribalda@gmail.com>,
+ "Arnd Bergmann" <arnd@kernel.org>
+Cc: "Minghsiu Tsai" <minghsiu.tsai@mediatek.com>,
+ "Houlong Wei" <houlong.wei@mediatek.com>,
+ "Andrew-CT Chen" <andrew-ct.chen@mediatek.com>,
+ "Mauro Carvalho Chehab" <mchehab@kernel.org>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Tiffany Lin" <tiffany.lin@mediatek.com>,
+ "Yunfei Dong" <yunfei.dong@mediatek.com>,
+ "Hans Verkuil" <hverkuil-cisco@xs4all.nl>,
+ "Nicolas Dufresne" <nicolas.dufresne@collabora.com>,
+ "Alexandre Courbot" <acourbot@chromium.org>,
+ "Pi-Hsun Shih" <pihsun@chromium.org>, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] media: mediatek: vcodec: avoid -Wcast-function-type-strict warning
+Content-Type: text/plain;charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_041103_759690_2AEE7116 
-X-CRM114-Status: UNSURE (   9.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240227_043034_346662_6EFF1E31 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,93 +118,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The drivers and bindings acquired support for specifying audio hardware
-and links in device tree: describe and link the sound related HW of this
-machine.
+On Tue, Feb 27, 2024, at 12:38, Ricardo Ribalda Delgado wrote:
+> On Sat, Feb 24, 2024 at 1:11=E2=80=AFPM Arnd Bergmann <arnd@kernel.org=
+> wrote:
+>>
+>> From: Arnd Bergmann <arnd@arndb.de>
+>>
+>> The ipi handler here tries hard to maintain const-ness of its argumen=
+t,
+>> but by doing that causes a warning about function type casts:
+>
+> I worked on the same issue, but in instead of removing the const, I
+> tried to constify everything:
+> https://patchwork.linuxtv.org/project/linux-media/patch/20240226-fix-c=
+lang-warnings-v2-3-fa1bc931d17e@chromium.org/
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../boot/dts/mediatek/mt8195-cherry.dtsi      | 45 +++++++++++++++++++
- 1 file changed, 45 insertions(+)
+I had almost the same patch originally but ended up not sending
+it because I could not figure out what to do about
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index f94c07f8b933..e405e226e449 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -240,6 +240,7 @@ adsp_device_mem: memory@60e80000 {
- 	spk_amplifier: rt1019p {
- 		compatible = "realtek,rt1019p";
- 		label = "rt1019p";
-+		#sound-dai-cells = <0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&rt1019p_pins_default>;
- 		sdb-gpios = <&pio 100 GPIO_ACTIVE_HIGH>;
-@@ -334,6 +335,7 @@ &disp_pwm0 {
- &dp_tx {
- 	status = "okay";
- 
-+	#sound-dai-cells = <0>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&dptx_pin>;
- 
-@@ -404,6 +406,7 @@ audio_codec: codec@1a {
- 		/* Realtek RT5682i or RT5682s, sharing the same configuration */
- 		reg = <0x1a>;
- 		interrupts-extended = <&pio 89 IRQ_TYPE_EDGE_BOTH>;
-+		#sound-dai-cells = <0>;
- 		realtek,jd-src = <1>;
- 
- 		AVDD-supply = <&mt6359_vio18_ldo_reg>;
-@@ -1130,6 +1133,48 @@ &sound {
- 		"AFE_SOF_DL2", "AFE_SOF_DL3", "AFE_SOF_UL4", "AFE_SOF_UL5";
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&aud_pins_default>;
-+
-+	audio-routing =
-+		"Headphone", "HPOL",
-+		"Headphone", "HPOR",
-+		"IN1P", "Headset Mic",
-+		"Ext Spk", "Speaker";
-+
-+	mm-dai-link {
-+		link-name = "ETDM1_IN_BE";
-+		mediatek,clk-provider = "cpu";
-+	};
-+
-+	hs-playback-dai-link {
-+		link-name = "ETDM1_OUT_BE";
-+		mediatek,clk-provider = "cpu";
-+		codec {
-+			sound-dai = <&audio_codec>;
-+		};
-+	};
-+
-+	hs-capture-dai-link {
-+		link-name = "ETDM2_IN_BE";
-+		mediatek,clk-provider = "cpu";
-+		codec {
-+			sound-dai = <&audio_codec>;
-+		};
-+	};
-+
-+	spk-playback-dai-link {
-+		link-name = "ETDM2_OUT_BE";
-+		mediatek,clk-provider = "cpu";
-+		codec {
-+			sound-dai = <&spk_amplifier>;
-+		};
-+	};
-+
-+	displayport-dai-link {
-+		link-name = "DPTX_BE";
-+		codec {
-+			sound-dai = <&dp_tx>;
-+		};
-+	};
- };
- 
- &spi0 {
--- 
-2.44.0
+typedef int (*rpmsg_rx_cb_t)(struct rpmsg_device *, void *, int, void *,=
+ u32);
 
+which is a generic part of rpmsg that takes a non-const pointer
+and gets called by mtk_rpmsg_ipi_handler(), which would now
+get a const pointer.
+
+     Arnd
 
