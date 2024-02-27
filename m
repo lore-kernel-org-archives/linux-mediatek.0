@@ -4,86 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F9B1C5478C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Feb 2024 11:38:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FC90C5478C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Feb 2024 12:10:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e1EveZVEiSMMMB6fnTuGZVP/gmbDHNaPcEtW3gx8n28=; b=BQoeEeTfBZAdhUSzyLX5mNOppC
-	/KgR06t6E+v2gpn+LHoD1uqNFx0oZ5vn9SveAiE7HUwsNbWDIqbQqXi7hhCczlDjaHhoHpOStCCSu
-	5ycu6byPCv8reQON3AY1HEQygQdRbYoHycVUF97wO/QhxVTeTjcPk8OaESNyvmYZLu8Mxn/mkQXMc
-	CgV9xhVieOXFjAtvsrqJcx/C9xrwbGy2PapsI8+BBPlsOtgEiCFzktLDVrgZf8go4H4LCY9N42c5G
-	rcJucxqmy5VqIOX/hj9PZYsrUzCcPGZPkqeQ5h8tF39YhO9d7qq4iXNzW6dCiGOxifYOHggTg3inS
-	kurNeKMQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9xFcc5UWI51YjILf4gsqbcyw6yqIAm/xEIDRBLL4ruQ=; b=PRnStXa2l6sej8opAOHe3pgxyS
+	z22t7zg08/cDpiSMyxOu6YW6/0PP4U5LgcWOR1XuXJ4WbckcL7vFatC+VfhZKorY1QXT98G7cSOLo
+	xWPNyg5ZfsAh2dnoPHcCAhJ0xlzqsJfCHlXYRfHrK3pdtrcvQ+Nbd/7TJSCoGbfKjFZnd5bmZ02dA
+	WiIESlvrP0LjmTZqwqBD9SgjhYuKEh3VWwrfeM+G+AdymZA0ZL8DXX/xQqfYgvgW8A5SC2m/kus7+
+	i4TeBpFeQxGV5CAd2c5y6lqLfec88JE4IHENXCV7RfZSoQEnimeVmhCTnsoLsQNrdPbgzpj3RzGpO
+	34+Y4M6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1revnO-00000004xwD-37zp;
-	Tue, 27 Feb 2024 11:38:50 +0000
-Received: from mail-vk1-xa2f.google.com ([2607:f8b0:4864:20::a2f])
+	id 1rewHp-000000054ME-151W;
+	Tue, 27 Feb 2024 12:10:17 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1revnK-00000004xuW-3lGB;
-	Tue, 27 Feb 2024 11:38:48 +0000
-Received: by mail-vk1-xa2f.google.com with SMTP id 71dfb90a1353d-4cb26623dc1so752857e0c.2;
-        Tue, 27 Feb 2024 03:38:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1709033924; x=1709638724; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=e1EveZVEiSMMMB6fnTuGZVP/gmbDHNaPcEtW3gx8n28=;
-        b=UBURMxz7C1ujZeRci57Zfflc4+hkEZVduaNRPzdtFeyivelc6jwFmGFDlvVhsbT8aK
-         2iyrxnhrCLPDF6uQlyqRlwt9UFvpYndZSoWW/VEWdNacxiuwuo/+HnCBZr12xGM2ojMf
-         hQkiAxxdnqtJ1VlqhSjT6XE1CD+a0JKm3z6/dzoPLbRil33PXNLiE5e769HMxfFsAlAR
-         bfTkGOTbTue6AInLjrTLlZARTIQZTlHIgg12/aSP+KUhNVlDpFxq5OTIVyLMrrgpTVjz
-         HbHQ62gKlUMmib0Wt60zHcBy3QRy3iZuPFqDzJ35Dsbhq1+knSUTOLKOCrEb7MNbau6H
-         g3pA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709033924; x=1709638724;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=e1EveZVEiSMMMB6fnTuGZVP/gmbDHNaPcEtW3gx8n28=;
-        b=ZS41cVPNU3nNm2ryh4xU/mqIiZt7u18h4SS+g41OlHC5GhZG1MBTZVQsGP5mzRmYnf
-         Ub3ueQEj8n3yl1/V7R+kMwk4izNEzjLFpask3yWQE1X49RrsBq1qK9bGTkgMJAOuydH9
-         KJXAxmTPd2jW6uSyklumV6uUcWqFXNpLHR9Qkya3uFRfMEv8wls9ulnGXn6AOa29lait
-         tduTWJVZ5TG0LbvsEHrkrIFa2nsX/ICs4iRvvJf5jt/QQBQaYLW/PoySPK9rlSXepOmc
-         mXq6l8N03FBvxSXOCC3l3X8KiGFn/I8PGyCy9JrdM3pihqXG0Xv11YT+03c2Ylptfy+R
-         jPZQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU94CBBnxc6ST3vQiwsCQfRu0g9Dw5Gx07R90CxzjPQrO7Wx7TLiSctFJwEPBJFtaXYaN4LkJ39tfWZpgbXqHcx7kgvl7VP3XKCFLswP8YQSQLgyUddgHtVWYqvSqV4L1mEovdYo6ngRGRsChih5mP6JnznMzy01mY=
-X-Gm-Message-State: AOJu0Yyu9pwzSIFfYWtW5fSsfPuyKPzlgM4nQgeBL8Z8kAneQb08ZCz8
-	Ds7YFNvJYskx6VbTxKOIXibx8VPCwqpxTwuDSSFCPKWfNAlRE+dwABodQBHssPgE8GuD/U/YQdr
-	TcN6nzXB4KC8bDrkXGfSwOnDc4iY=
-X-Google-Smtp-Source: AGHT+IFY5rIW4R7AnsOo+2KkC+7Q4PqHRUzXLysCU3Xts5MAHbKEy5X0OQfVK+hv44PSmKVkOQ8vOWnw8p15f/5mIVs=
-X-Received: by 2002:a1f:ca47:0:b0:4c9:b8a8:78d4 with SMTP id
- a68-20020a1fca47000000b004c9b8a878d4mr7019527vkg.3.1709033924366; Tue, 27 Feb
- 2024 03:38:44 -0800 (PST)
+	id 1rewHl-000000054Jh-1d7p;
+	Tue, 27 Feb 2024 12:10:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1709035809;
+	bh=lC8iX2KU7tRIxTdsRwIKJVpK8yVv7zPRfikH6dLURbE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ljMaw76LQ2rUG/CVAwHU3rcYo7/G6YqsiB4NCcjtxG7iZGosTH0mnBTK3jbHNVryc
+	 KqIQJ0+DTZvT1ehtJy2kaMH2ujoMuLpxKOpEsHFADO3YOImf4arICn7DJ+FOThak/8
+	 KQSoQT/GxAE81k4VMh8giMMtqjZtX5Nb2Ai6HQBlvJv8fe0I0JLHZ6KgBCiznLaVdv
+	 u6HBaMIN0UvOTBA9JMFS1p9izblk7bODgSvbRBuN0QTHDrOEiK+81zYhXz0CvVhatR
+	 7FZfxb71Q08/3Mf2x0JguUyzimgAYCzoTTLWbdAfZSwdTuk0lqShwoTFtq4XqD4pIm
+	 GiF8NiUPzpmTw==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E4B4537820CC;
+	Tue, 27 Feb 2024 12:10:06 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: broonie@kernel.org
+Cc: wenst@chromium.org,
+	lgirdwood@gmail.com,
+	robh@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	perex@perex.cz,
+	tiwai@suse.com,
+	trevor.wu@mediatek.com,
+	maso.huang@mediatek.com,
+	xiazhengqiao@huaqin.corp-partner.google.com,
+	arnd@arndb.de,
+	kuninori.morimoto.gx@renesas.com,
+	shraash@google.com,
+	amergnat@baylibre.com,
+	nicolas.ferre@microchip.com,
+	u.kleine-koenig@pengutronix.de,
+	dianders@chromium.org,
+	frank.li@vivo.com,
+	allen-kh.cheng@mediatek.com,
+	eugen.hristev@collabora.com,
+	claudiu.beznea@tuxon.dev,
+	jarkko.nikula@bitmer.com,
+	jiaxin.yu@mediatek.com,
+	alpernebiyasak@gmail.com,
+	ckeepax@opensource.cirrus.com,
+	zhourui@huaqin.corp-partner.google.com,
+	nfraprado@collabora.com,
+	alsa-devel@alsa-project.org,
+	shane.chien@mediatek.com,
+	linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 00/22] ASoC: Cleanup MediaTek soundcard machine drivers
+Date: Tue, 27 Feb 2024 13:09:17 +0100
+Message-ID: <20240227120939.290143-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.44.0
 MIME-Version: 1.0
-References: <20240224121059.1806691-1-arnd@kernel.org>
-In-Reply-To: <20240224121059.1806691-1-arnd@kernel.org>
-From: Ricardo Ribalda Delgado <ricardo.ribalda@gmail.com>
-Date: Tue, 27 Feb 2024 12:38:26 +0100
-Message-ID: <CAPybu_2JoNfr158FXqYGUV=JuTW8i85XM6cf7K40_xZe9m2qyg@mail.gmail.com>
-Subject: Re: [PATCH] media: mediatek: vcodec: avoid -Wcast-function-type-strict
- warning
-To: Arnd Bergmann <arnd@kernel.org>
-Cc: Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, 
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Arnd Bergmann <arnd@arndb.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Tiffany Lin <tiffany.lin@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, 
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, 
-	Pi-Hsun Shih <pihsun@chromium.org>, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_033846_962213_841B3FD2 
-X-CRM114-Status: GOOD (  24.97  )
+X-CRM114-CacheID: sfid-20240227_041013_587727_E73C9C12 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,126 +105,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd
+This series performs a cleanup of most of the MediaTek AFE drivers and
+soundcard machine drivers, reducing code duplication and setting a base
+to be consistent with their devicetree bindings, as many of those are
+using different properties and nodes for no good reason.
 
-Thanks for the patch
+Summarizing:
+ - Commonizes functions and ops where possible
+ - Adds a common probe mechanism, increasing maintainability of
+   soundcard drivers for older MediaTek SoCs
+ - Migrates all drivers to support the new bindings
+   - Obviously retains compatibility with old device trees
+ - Reduces machine-specific parameters hardcoding in drivers
+   - Can now set machine-specific params in device tree
+   - Uses the `audio-routing` and `dai-link` nodes like some
+     other non-MediaTek SoC sound drivers
+ - Imposes consistency between MediaTek ASoC machine soundcard
+   drivers bindings
+ - Reduces code size and greatly reduces the amount of code that
+   will be required for newer drivers (retaining compatibility with
+   the old bindings was costly in terms of code size, otherwise
+   this series would've removed ~1000 more lines, or something
+   along that line).
 
-On Sat, Feb 24, 2024 at 1:11=E2=80=AFPM Arnd Bergmann <arnd@kernel.org> wro=
-te:
->
-> From: Arnd Bergmann <arnd@arndb.de>
->
-> The ipi handler here tries hard to maintain const-ness of its argument,
-> but by doing that causes a warning about function type casts:
+This series was (manually) tested on MT8173, MT8192, MT8195 and MT8186
+Chromebooks.
 
-I worked on the same issue, but in instead of removing the const, I
-tried to constify everything:
-https://patchwork.linuxtv.org/project/linux-media/patch/20240226-fix-clang-=
-warnings-v2-3-fa1bc931d17e@chromium.org/
+AngeloGioacchino Del Regno (22):
+  ASoC: mediatek: mt8192-afe-pcm: Convert to devm_pm_runtime_enable()
+  ASoC: mediatek: mt8192-afe-pcm: Simplify with dev_err_probe()
+  ASoC: mediatek: Commonize ADDA rate transform functions and enums
+  ASoC: mediatek: Assign dummy when codec not specified for a DAI link
+  ASoC: mediatek: Add common machine soundcard driver probe mechanism
+  ASoC: mediatek: common: Constify struct mtk_sof_priv
+  ASoC: mediatek: mt8188: Migrate to mtk_soundcard_common_probe
+  ASoC: mediatek: mt8195: Migrate to mtk_soundcard_common_probe
+  ASoC: mediatek: mt8192: Migrate to mtk_soundcard_common_probe
+  ASoC: mediatek: mt8186: Migrate to mtk_soundcard_common_probe
+  ASoC: mediatek: Add common snd_soc_ops .startup() callback
+  ASoC: mediatek: mt8195: Migrate to the common mtk_soundcard_startup
+  ASoC: mediatek: mt8192: Migrate to the common mtk_soundcard_startup
+  ASoC: mediatek: mt8186-rt1019: Migrate to the common
+    mtk_soundcard_startup
+  ASoC: mediatek: Add common mtk_afe_component_probe callback
+  ASoC: mediatek: Use common mtk_afe_pcm_platform with common probe cb
+  ASoC: mediatek: mt8186: Unify mt8186-mt6366 machine drivers
+  ASoC: dt-bindings: mt8195: Document audio-routing and dai-link subnode
+  ASoC: dt-bindings: mt8192: Document audio-routing and dai-link subnode
+  ASoC: dt-bindings: mt8186: Document audio-routing and dai-link subnode
+  arm64: dts: mediatek: mt8195-cherry: Specify sound DAI links and
+    routing
+  arm64: dts: mediatek: mt8186-corsola: Specify sound DAI links and
+    routing
 
-My main goal is to remove the warning, so any patch is OK for me ;)
+ .../sound/mt8186-mt6366-da7219-max98357.yaml  |  112 +-
+ .../sound/mt8186-mt6366-rt1019-rt5682s.yaml   |  112 +-
+ .../sound/mt8192-mt6359-rt1015-rt5682.yaml    |  129 +-
+ .../bindings/sound/mt8195-mt6359.yaml         |  123 ++
+ .../boot/dts/mediatek/mt8186-corsola.dtsi     |   42 +-
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      |   45 +
+ sound/soc/mediatek/Kconfig                    |   24 +-
+ sound/soc/mediatek/common/Makefile            |    2 +
+ .../mediatek/common/mtk-afe-platform-driver.c |   18 +
+ .../soc/mediatek/common/mtk-dai-adda-common.c |   70 +
+ .../soc/mediatek/common/mtk-dai-adda-common.h |   45 +
+ .../soc/mediatek/common/mtk-dsp-sof-common.c  |   15 +-
+ .../soc/mediatek/common/mtk-dsp-sof-common.h  |    1 -
+ sound/soc/mediatek/common/mtk-soc-card.h      |    7 +-
+ .../mediatek/common/mtk-soundcard-driver.c    |  205 ++-
+ .../mediatek/common/mtk-soundcard-driver.h    |   42 +
+ sound/soc/mediatek/mt6797/mt6797-afe-pcm.c    |   14 +-
+ sound/soc/mediatek/mt6797/mt6797-dai-adda.c   |   85 +-
+ sound/soc/mediatek/mt7986/mt7986-afe-pcm.c    |   14 +-
+ sound/soc/mediatek/mt8183/mt8183-afe-pcm.c    |   14 +-
+ sound/soc/mediatek/mt8183/mt8183-dai-adda.c   |   90 +-
+ sound/soc/mediatek/mt8186/Makefile            |    3 +-
+ sound/soc/mediatek/mt8186/mt8186-afe-pcm.c    |   19 +-
+ sound/soc/mediatek/mt8186/mt8186-dai-adda.c   |   94 +-
+ .../mt8186/mt8186-mt6366-da7219-max98357.c    | 1189 -----------------
+ ...t6366-rt1019-rt5682s.c => mt8186-mt6366.c} |  578 ++++----
+ sound/soc/mediatek/mt8188/mt8188-afe-pcm.c    |   21 +-
+ sound/soc/mediatek/mt8188/mt8188-dai-adda.c   |   89 +-
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c     |  203 +--
+ sound/soc/mediatek/mt8192/mt8192-afe-pcm.c    |  114 +-
+ sound/soc/mediatek/mt8192/mt8192-dai-adda.c   |   90 +-
+ .../mt8192/mt8192-mt6359-rt1015-rt5682.c      |  301 ++---
+ sound/soc/mediatek/mt8195/mt8195-afe-pcm.c    |   21 +-
+ sound/soc/mediatek/mt8195/mt8195-dai-adda.c   |   90 +-
+ sound/soc/mediatek/mt8195/mt8195-mt6359.c     |  487 +++----
+ 35 files changed, 1739 insertions(+), 2769 deletions(-)
+ create mode 100644 sound/soc/mediatek/common/mtk-dai-adda-common.c
+ create mode 100644 sound/soc/mediatek/common/mtk-dai-adda-common.h
+ delete mode 100644 sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c
+ rename sound/soc/mediatek/mt8186/{mt8186-mt6366-rt1019-rt5682s.c => mt8186-mt6366.c} (72%)
 
->
-> drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c:38:32: =
-error: cast from 'mtk_vcodec_ipi_handler' (aka 'void (*)(void *, unsigned i=
-nt, void *)') to 'ipi_handler_t' (aka 'void (*)(const void *, unsigned int,=
- void *)') converts to incompatible function type [-Werror,-Wcast-function-=
-type-strict]
->    38 |         ipi_handler_t handler_const =3D (ipi_handler_t)handler;
->       |                                       ^~~~~~~~~~~~~~~~~~~~~~
->
-> Remove the hack and just use a non-const argument.
->
-> Fixes: bf1d556ad4e0 ("media: mtk-vcodec: abstract firmware interface")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+-- 
+2.44.0
 
-Reviewed-by: Ricardo Ribalda <ribalda@chromium.org>
-> ---
->  drivers/media/platform/mediatek/mdp/mtk_mdp_vpu.c      |  2 +-
->  .../mediatek/vcodec/common/mtk_vcodec_fw_vpu.c         | 10 +---------
->  drivers/media/platform/mediatek/vpu/mtk_vpu.c          |  2 +-
->  drivers/media/platform/mediatek/vpu/mtk_vpu.h          |  2 +-
->  4 files changed, 4 insertions(+), 12 deletions(-)
->
-> diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_vpu.c b/drivers/=
-media/platform/mediatek/mdp/mtk_mdp_vpu.c
-> index b065ccd06914..378a1cba0144 100644
-> --- a/drivers/media/platform/mediatek/mdp/mtk_mdp_vpu.c
-> +++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_vpu.c
-> @@ -26,7 +26,7 @@ static void mtk_mdp_vpu_handle_init_ack(const struct md=
-p_ipi_comm_ack *msg)
->         vpu->inst_addr =3D msg->vpu_inst_addr;
->  }
->
-> -static void mtk_mdp_vpu_ipi_handler(const void *data, unsigned int len,
-> +static void mtk_mdp_vpu_ipi_handler(void *data, unsigned int len,
->                                     void *priv)
->  {
->         const struct mdp_ipi_comm_ack *msg =3D data;
-> diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_=
-vpu.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-> index 9f6e4b59455d..4c34344dc7dc 100644
-> --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-> +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-> @@ -29,15 +29,7 @@ static int mtk_vcodec_vpu_set_ipi_register(struct mtk_=
-vcodec_fw *fw, int id,
->                                            mtk_vcodec_ipi_handler handler=
-,
->                                            const char *name, void *priv)
->  {
-> -       /*
-> -        * The handler we receive takes a void * as its first argument. W=
-e
-> -        * cannot change this because it needs to be passed down to the r=
-proc
-> -        * subsystem when SCP is used. VPU takes a const argument, which =
-is
-> -        * more constrained, so the conversion below is safe.
-> -        */
-> -       ipi_handler_t handler_const =3D (ipi_handler_t)handler;
-> -
-> -       return vpu_ipi_register(fw->pdev, id, handler_const, name, priv);
-> +       return vpu_ipi_register(fw->pdev, id, handler, name, priv);
->  }
->
->  static int mtk_vcodec_vpu_ipi_send(struct mtk_vcodec_fw *fw, int id, voi=
-d *buf,
-> diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.c b/drivers/medi=
-a/platform/mediatek/vpu/mtk_vpu.c
-> index 7243604a82a5..724ae7c2ab3b 100644
-> --- a/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-> +++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-> @@ -635,7 +635,7 @@ int vpu_load_firmware(struct platform_device *pdev)
->  }
->  EXPORT_SYMBOL_GPL(vpu_load_firmware);
->
-> -static void vpu_init_ipi_handler(const void *data, unsigned int len, voi=
-d *priv)
-> +static void vpu_init_ipi_handler(void *data, unsigned int len, void *pri=
-v)
->  {
->         struct mtk_vpu *vpu =3D priv;
->         const struct vpu_run *run =3D data;
-> diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.h b/drivers/medi=
-a/platform/mediatek/vpu/mtk_vpu.h
-> index a56053ff135a..da05f3e74081 100644
-> --- a/drivers/media/platform/mediatek/vpu/mtk_vpu.h
-> +++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.h
-> @@ -17,7 +17,7 @@
->   * VPU interfaces with other blocks by share memory and interrupt.
->   */
->
-> -typedef void (*ipi_handler_t) (const void *data,
-> +typedef void (*ipi_handler_t) (void *data,
->                                unsigned int len,
->                                void *priv);
->
-> --
-> 2.39.2
->
->
-
-
---=20
-Ricardo Ribalda
 
