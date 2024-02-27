@@ -4,85 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84397C54798
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Feb 2024 13:27:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0886BC54798
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Feb 2024 15:07:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v52uno4cAyHm+/aF5q+som1Xwk1TTlVsieUH5YPySzk=; b=qGyWoRyIMwCvmVMdAauzuHoFW/
-	t6NOJzjNHeTz8yOFNXXeAHiEq9UGbJIcDKjuX2z8dK0XKktueHRGEblB8aOinvP1PLrr68E+wOPoo
-	WcWg98O5/xqg+JTgDS5iysvzou7OJpUwxjwjaNU9Km2PA8+8tV0SAHg/6IUEF7YdTdxquWZRS9Xv7
-	i+EUISwoLOtLM61O6Vs7KWJ2KlurzqMlPs3WOUkX5CDoPEUcRP3pqp0zlxpqzcsCE1ZM3vfrDlBBL
-	PTBCQBPQXflms8aqUziyTV3xiFbwVStYml8IL8RzRF8tK+hUkkvVWmj+lgGLdzyZ8oQNE+YyjADq8
-	7PIvNgJw==;
+	bh=H3D4xRZMC0yQwYg0k8TI69T+UK0TZgamquLZlrSqBIg=; b=nW5WbcvbyhHBS+mxcjGmtuR/KR
+	nmk2oR5M8nYwKFsztZ63Bo1hrcowhrJwoJkJT2QYj5Llf63teF12mJ4UVbS4Vtv/GbwV5/33KoA2M
+	V9WNgiI+39oB3Eb0HajSYZUITGTjFW6kiUyqo1WcnrcB1uS62o6CJdU0eUYGMwvobsCcZ95WnvETU
+	u8F6BpW+tHI7rASlMvVBHkEiwWFTlix3Pm0hCNWfMbLs788abKhArkoH3MjcVfL5USPxWjmh78Pt/
+	o9qThZOSSAcQtEXuye6kF5790YJfCkeiURLmjwh56ajhLK+Ir7PMiHMEUcNvXI35Mr3IrZpWLtzLW
+	pxAsyJmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rexUD-00000005NXW-0Fc6;
-	Tue, 27 Feb 2024 13:27:09 +0000
-Received: from mgamail.intel.com ([198.175.65.16])
+	id 1rez30-00000005iQn-0F7G;
+	Tue, 27 Feb 2024 15:07:10 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rexU9-00000005NVJ-3Yc6;
-	Tue, 27 Feb 2024 13:27:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1709040426; x=1740576426;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=yYxg/i0g4KAnPdT2UJlvna1xTvMCnP9hCbmuoj80UwA=;
-  b=aKZkoIq4d0zi1Kt57LE9nObCzO3nb9H9fT/R5z5lxmMRgt5kl5NmElyv
-   +1C6Ky5fBpMfLuPjcMW7kHZdd+BFPfvbq1rBF8rmz5NLPoKUVHCGidkKU
-   s7J9r1GSXKKMPq+9VD+xcD1VvdDEmunY3Np5L0DzH/hKfVPhxyrIs1Ydt
-   LwGJGBDQxZpmGksdaskQcCe+sWeFXX3YRSZZfdoJaBpM79XhMKDHAsIio
-   327V6H6BwuFwj9RX196OJ1MgKlMiJahlUaNhLbWonhpCf0/Qb0v/SU2JF
-   vuTtrmz32sRs/PTZO2KYEALjDnDpiKv343XAN/ZRfpCSlCgdhR6TUnW8C
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10996"; a="3507310"
-X-IronPort-AV: E=Sophos;i="6.06,187,1705392000"; 
-   d="scan'208";a="3507310"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Feb 2024 05:27:02 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,187,1705392000"; 
-   d="scan'208";a="38075100"
-Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Feb 2024 05:26:55 -0800
-Received: from kekkonen.localdomain (localhost [127.0.0.1])
-	by kekkonen.fi.intel.com (Postfix) with ESMTP id 031C511F855;
-	Tue, 27 Feb 2024 15:26:52 +0200 (EET)
-Date: Tue, 27 Feb 2024 13:26:51 +0000
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Zhi Mao <zhi.mao@mediatek.com>, mchehab@kernel.org, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	laurent.pinchart@ideasonboard.com, shengnan.wang@mediatek.com,
-	yaya.chang@mediatek.com, 10572168@qq.com,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	yunkec@chromium.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	jacopo.mondi@ideasonboard.com, hverkuil-cisco@xs4all.nl,
-	heiko@sntech.de, jernej.skrabec@gmail.com, macromorgan@hotmail.com,
-	linus.walleij@linaro.org, hdegoede@redhat.com,
-	tomi.valkeinen@ideasonboard.com, gerald.loacker@wolfvision.net,
-	bingbu.cao@intel.com, dan.scally@ideasonboard.com,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v6 2/2] media: i2c: Add GC08A3 image sensor driver
-Message-ID: <Zd3jG2HC3mR0dQR3@kekkonen.localdomain>
-References: <20240227013221.21512-1-zhi.mao@mediatek.com>
- <20240227013221.21512-3-zhi.mao@mediatek.com>
- <CAHp75VciCJuoOwC8ozanWYqSCM=vWpiaqymJ2-gQfrSt5Ts6fQ@mail.gmail.com>
+	id 1rez2w-00000005iOQ-0CHP;
+	Tue, 27 Feb 2024 15:07:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 784D861228;
+	Tue, 27 Feb 2024 15:07:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ADE7EC433C7;
+	Tue, 27 Feb 2024 15:06:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1709046421;
+	bh=me+PaR02OqhyQDVfheZnctQBFyoYjMvRYEUCFZryMNo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=UgLCqJl5Tjup29jLQDrfmHzJGcqm6Vn0A8QXbh+nlYBzo2ztnaVO69jw/ROGGmueY
+	 Q9CPhg0EF4DmsduPBINCvhKNEiGUEtH2sTIg7deV+MJ6/U8qYhCiUAdMgk8XbPVToj
+	 9wtNHmraZWYT1fxgj94MCWn8gj21ORbqXgMnPCijB49ft1u4dQcyICfaz2g+vmNMMs
+	 rZZsVNAfiQZ0jA3ObE7SKMxvTqvsNl4f5z1q0W1ZwJwQ5UCk+f8WCRJyArGfEyJdrh
+	 OINmmHKU5aIdMSwoD6cUeaIBcBAd4w8YASgdaCcJMogfF+vg1YgDVX3fDIbOTvokyG
+	 yiquWurwJIAEA==
+Date: Tue, 27 Feb 2024 15:06:53 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>, linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
+	Nicolas Belin <nbelin@baylibre.com>,
+	Fabien Parent <fparent@baylibre.com>
+Subject: Re: [PATCH 00/18] Add audio support for the MediaTek Genio 350-evk
+ board
+Message-ID: <4ffde184-cf68-4b71-b81d-9b5894529926@sirena.org.uk>
+References: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Z6rJHLYKeV1xaopM"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAHp75VciCJuoOwC8ozanWYqSCM=vWpiaqymJ2-gQfrSt5Ts6fQ@mail.gmail.com>
+In-Reply-To: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
+X-Cookie: Please go away.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_052706_024226_9852E372 
-X-CRM114-Status: GOOD (  18.48  )
+X-CRM114-CacheID: sfid-20240227_070706_175297_9C9E5D8C 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,47 +88,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
 
-On Tue, Feb 27, 2024 at 02:46:54PM +0200, Andy Shevchenko wrote:
-> On Tue, Feb 27, 2024 at 3:33 AM Zhi Mao <zhi.mao@mediatek.com> wrote:
-> >
-> > Add a V4L2 sub-device driver for Galaxycore GC08A3 image sensor.
-> 
-> ...
-> 
-> > +/*
-> > + * gc08a3.c - gc08a3 sensor driver
-> 
-> Drop the filename from the file, it's impractical (esp. if the file
-> will be renamed for some reason in the future).
-> 
-> > + *
-> > + * Copyright 2023 MediaTek
+--Z6rJHLYKeV1xaopM
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-You could update the year.
+On Mon, Feb 26, 2024 at 03:01:38PM +0100, Alexandre Mergnat wrote:
+> This serie aim to add the following audio support for the Genio 350-evk:
+> - Playback
+>   - 2ch Headset Jack (Earphone)
+>   - 1ch Line-out Jack (Speaker)
+>   - 8ch HDMI Tx
+> - Capture
+>   - 1ch DMIC (On-board Digital Microphone)
+>   - 1ch AMIC (On-board Analogic Microphone)
+>   - 1ch Headset Jack (External Analogic Microphone)=20
+>=20
+> Of course, HDMI playback need the MT8365 display patches [1] and a DTS
+> change documented in "mediatek,mt8365-mt6357.yaml".
 
-...
+Given the number of custom controls here could you please post the
+output of mixer-test and pcm-test from a system with this driver running
+next time you post, this will help with review since it checks a bunch
+of things around the new controls.
 
-> 
-> > +       endpoint =
-> > +               fwnode_graph_get_endpoint_by_id(dev_fwnode(dev), 0, 0,
-> > +                                               FWNODE_GRAPH_ENDPOINT_NEXT);
-> > +       if (!endpoint) {
-> 
-> Strictly speaking dev_fwnode(dev) might be NULL or an error pointer. I
-> dunno how the graph is implemented there and if it's possible to get
-> an error pointer out of it. At least this probably needs to be aligned
-> there at some point.
+--Z6rJHLYKeV1xaopM
+Content-Type: application/pgp-signature; name="signature.asc"
 
-This is fine---the fwnode API returns errors (for functions that can) for
-NULL or error pointer fwnodes.
+-----BEGIN PGP SIGNATURE-----
 
-The patches are in my tree already, please post a patch on top of this that
-I can squash.
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmXd+o0ACgkQJNaLcl1U
+h9D7bgf9HvLTv1/D7ibf9xpiO/7Y8mdR7blZxSERHC0VJyzegzQI6g+LO1qHYqc3
+w9Kt0UwtxRgeVFwzBejVVYpZ72d9DoqN3nS4osApKoOChjapCsvasw+uqAodEk5j
+he8RYvVZ5UJWO6P1D5+DkvesptWMDXHFbcoASdlGpEURjMBSLgIOZPnhsZumU0tf
+AzDfDa1BwQwuIS/hg7ebHpzFlevB7SEUANSppMJ3Jp7/SbgTPt9w+/+lERnOiAh1
+G86yCidp9TlgUpb92TVwFyOcdnXT13VmhCwZ/7xwye2IVNnv4CXmFgPk8C4TyNdW
+s1HkIR6EuDYgEsxPOSQt7+eWhweHYg==
+=/HK9
+-----END PGP SIGNATURE-----
 
--- 
-Regards,
-
-Sakari Ailus
+--Z6rJHLYKeV1xaopM--
 
