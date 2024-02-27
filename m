@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B1BBC5478C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Feb 2024 12:10:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F063C54798
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Feb 2024 12:10:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G0PGcRwlZmfr0MWHcozlQ+u0gJ6SnQtl/al+rHBE6m0=; b=kVUQ+8YgCtqnUH/6EAtEkBnNFC
-	3H6jr9G9CAKqI8XwegqGVxxHuj1pHZXNRutpzuh4jwIQ6t+T9jr+3mo1T54kGMxkAX+BRee2F6E1/
-	uTudR5apadgTHOE1fVp4AatxUAZonsuk3jrVWgf0bJstvlPQy+I6I0yTNKLXwemZXIw8pUPptL6Z6
-	1d0SoZ29epWG5PxIfhpAoChuGx/90cADB+ezb+9I+0vwiu8SIHNVc0KyYgJsgUMQY2Jv1AL1mt2i+
-	+uFCjNdwTVlCw40gEozMK+SCWzVVW/Csf4K3cyyI6Qe4i2oJmnzi/blqG03lTn9mEtnDGwIBjeRX2
-	1na3yBUg==;
+	bh=XGLVYlK9wEHRNmQOr7io1lRFJRyPZ4VG0nWcmBIX/dk=; b=wSUMgeyKRYow8e7u3aYeOZ36qP
+	Ptpi0tDovz9z7+a/VTYakwySSRoIxVMRE/K1iP2pGaLq1pYvnUfO90BSI07u9iD/mepWgjavJ/TOD
+	h2u228DMbBSfZkjVez4gI6jeJWTtTJH05wFUD9cmLKTsOTLmU+bPFoS/ahBlumoLwh7zwMLKuB12Z
+	3IVWpxQ6DvNVzHVs8S4sf5hUypZ2ahwBldg4GPVSSE6GlIXKSS7tpkuL9c7Hb1xi2o6NSY0ElUdru
+	8gWcforQguPEvld1WCQVbehKATDYEr5t5ihwPDuALqPkk90f7a06kzFKrlj8llEANneIyDuoMSHgU
+	Jx/0s2+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rewIH-000000054ii-3goF;
-	Tue, 27 Feb 2024 12:10:45 +0000
+	id 1rewIU-000000054qq-0WNV;
+	Tue, 27 Feb 2024 12:10:58 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rewHu-000000054OO-1GiN;
-	Tue, 27 Feb 2024 12:10:24 +0000
+	id 1rewHv-000000054Pt-0VPh;
+	Tue, 27 Feb 2024 12:10:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709035819;
-	bh=/pS8nnncjy2TDDWZ2CUchnxDIc/k7Kdx/uqwdwe7Xs0=;
+	s=mail; t=1709035821;
+	bh=QN26t0rrc+NSqCdkkiNG9yykGnvaBYqQoqHRENbyT90=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kcmZurdLnb4NEeZOVMoPq/n8gPZAqhxwuwBD8VPzFg0oWVwIufkSxFD6aQ0pyHAJd
-	 fj7YijGOi8P2qG+qlY9fyK94FRrqQFD0RPcuwlnLiSCrS66q/47ZUSwqNFeenUR5S7
-	 I0KxZUODXTW7uGFiIbMBVF5Woz/A6rICBd8j0SFSccC0fbyNGOrRx5+Ooh9iMtYdjx
-	 QYP0SETzpxQ8ipsxKTutuSjHhtcGpiD9ts/N2Fo31fHlWAuYWa4GSoPF5jLBzZtcz4
-	 TMWWK3d8pHRZKm8LrXg8A8R1fhU6VT7FXDXtd1RmQ01ft2/iXm3easJHEPZcl+VkAk
-	 lB6qzluGyiNpA==
+	b=g9KvYlR2cSC9tcDF4hulWv+o8DLnFWaWStQWii1g75ridXJyNzWV7G2wyR74CCvEJ
+	 jP2sKo4hLJ7Fjrdsl1+IqrU3v0ttXdgkyM1vKmbHAys1QQEmn43K6h2CNJXrFMaZae
+	 jn5vycqfzLhX0l7dOMA16RESMBwnYZS3S7ipe1fqcVF3tA+ftSwnqA7Za65OfBGixS
+	 913/ZA7gWPRd74wGOnSFKlHEJFsVQespvkvdel9/vEkGHCRhEsjHgzVUYtQf3ToKeD
+	 FPhZzubIG5r2JSoAcrg28IGiYuH0zlp3Ejp6jY0eb1VdUHhy/I6elXj/AabSNgYAWQ
+	 byX86kGBXsj1g==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 00F2A37820D0;
-	Tue, 27 Feb 2024 12:10:16 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7A70937820D3;
+	Tue, 27 Feb 2024 12:10:19 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: broonie@kernel.org
 Cc: wenst@chromium.org,
@@ -82,17 +82,17 @@ Cc: wenst@chromium.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 04/22] ASoC: mediatek: Assign dummy when codec not specified for a DAI link
-Date: Tue, 27 Feb 2024 13:09:21 +0100
-Message-ID: <20240227120939.290143-5-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 05/22] ASoC: mediatek: Add common machine soundcard driver probe mechanism
+Date: Tue, 27 Feb 2024 13:09:22 +0100
+Message-ID: <20240227120939.290143-6-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240227120939.290143-1-angelogioacchino.delregno@collabora.com>
 References: <20240227120939.290143-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_041022_581728_C5763626 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20240227_041023_416437_3E8E4E06 
+X-CRM114-Status: GOOD (  20.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,36 +107,239 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek sound card drivers are checking whether a DAI link is present
-and used on a board to assign the correct parameters and this is done
-by checking the codec DAI names at probe time.
+Add a common machine soundcard driver probe function that supports both
+DSP and AFE-direct usecases and also provides a hook for legacy machine
+soundcard driver probe mechanisms.
 
-If no real codec is present, assign the dummy codec to the DAI link
-to avoid NULL pointer during string comparison.
+Note that the hook is there because, even for legacy probe, a lot of the
+actual code can still be commonized, hence still reducing duplication
+for the legacy devicetree retrocompatibility cases.
 
-Fixes: 4302187d955f ("ASoC: mediatek: common: add soundcard driver common code")
+This common probe function deprecates all of the inconsistent previous
+probe mechanisms and aims to settle all of the MediaTek card drivers on
+consistent and common devicetree properties describing wanted DAIs,
+device specific DAI configuration and DAI links to codecs found on
+each device/board.
+
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- sound/soc/mediatek/common/mtk-soundcard-driver.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ sound/soc/mediatek/common/mtk-soc-card.h      |   7 +-
+ .../mediatek/common/mtk-soundcard-driver.c    | 148 ++++++++++++++++++
+ .../mediatek/common/mtk-soundcard-driver.h    |  18 +++
+ 3 files changed, 172 insertions(+), 1 deletion(-)
 
+diff --git a/sound/soc/mediatek/common/mtk-soc-card.h b/sound/soc/mediatek/common/mtk-soc-card.h
+index eeda79370049..3f6e24dd22df 100644
+--- a/sound/soc/mediatek/common/mtk-soc-card.h
++++ b/sound/soc/mediatek/common/mtk-soc-card.h
+@@ -9,9 +9,14 @@
+ #ifndef _MTK_SOC_CARD_H_
+ #define _MTK_SOC_CARD_H_
+ 
++struct mtk_platform_card_data;
++struct mtk_sof_priv;
++
+ struct mtk_soc_card_data {
++	const struct mtk_sof_priv *sof_priv;
++	struct list_head sof_dai_link_list;
++	struct mtk_platform_card_data *card_data;
+ 	void *mach_priv;
+-	void *sof_priv;
+ };
+ 
+ #endif
 diff --git a/sound/soc/mediatek/common/mtk-soundcard-driver.c b/sound/soc/mediatek/common/mtk-soundcard-driver.c
-index a58e1e3674de..000a086a8cf4 100644
+index 000a086a8cf4..b1db17e392d5 100644
 --- a/sound/soc/mediatek/common/mtk-soundcard-driver.c
 +++ b/sound/soc/mediatek/common/mtk-soundcard-driver.c
-@@ -22,7 +22,11 @@ static int set_card_codec_info(struct snd_soc_card *card,
+@@ -10,6 +10,8 @@
+ #include <linux/of.h>
+ #include <sound/soc.h>
  
- 	codec_node = of_get_child_by_name(sub_node, "codec");
- 	if (!codec_node) {
--		dev_dbg(dev, "%s no specified codec\n", dai_link->name);
-+		dev_dbg(dev, "%s no specified codec: setting dummy.\n", dai_link->name);
++#include "mtk-dsp-sof-common.h"
++#include "mtk-soc-card.h"
+ #include "mtk-soundcard-driver.h"
+ 
+ static int set_card_codec_info(struct snd_soc_card *card,
+@@ -136,3 +138,149 @@ void clean_card_reference(struct snd_soc_card *card)
+ 		snd_soc_of_put_dai_link_codecs(dai_link);
+ }
+ EXPORT_SYMBOL_GPL(clean_card_reference);
 +
-+		dai_link->codecs = &snd_soc_dummy_dlc;
-+		dai_link->num_codecs = 1;
-+		dai_link->dynamic = 1;
- 		return 0;
- 	}
++int mtk_soundcard_common_probe(struct platform_device *pdev)
++{
++	struct device_node *platform_node, *adsp_node;
++	const struct mtk_soundcard_pdata *pdata;
++	struct mtk_soc_card_data *soc_card_data;
++	struct snd_soc_dai_link *orig_dai_link, *dai_link;
++	struct snd_soc_jack *jacks;
++	struct snd_soc_card *card;
++	int i, orig_num_links, ret;
++	bool needs_legacy_probe;
++
++	pdata = device_get_match_data(&pdev->dev);
++	if (!pdata)
++		return -EINVAL;
++
++	card = pdata->card_data->card;
++	card->dev = &pdev->dev;
++	orig_dai_link = card->dai_link;
++	orig_num_links = card->num_links;
++
++	ret = snd_soc_of_parse_card_name(card, "model");
++	if (ret)
++		return ret;
++
++	if (!card->name) {
++		if (!pdata->card_name)
++			return -EINVAL;
++
++		card->name = pdata->card_name;
++	}
++
++	needs_legacy_probe = !of_property_read_bool(pdev->dev.of_node, "audio-routing");
++	if (needs_legacy_probe) {
++		/*
++		 * If we have no .soc_probe() callback there's no way of using
++		 * any legacy probe mechanism, as that cannot not be generic.
++		 */
++		if (!pdata->soc_probe)
++			return -EINVAL;
++
++		dev_info_once(&pdev->dev, "audio-routing not found: using legacy probe\n");
++	} else {
++		ret = snd_soc_of_parse_audio_routing(card, "audio-routing");
++		if (ret)
++			return ret;
++	}
++
++	soc_card_data = devm_kzalloc(&pdev->dev, sizeof(*soc_card_data), GFP_KERNEL);
++	if (!soc_card_data)
++		return -ENOMEM;
++
++	soc_card_data->card_data = pdata->card_data;
++
++	jacks = devm_kcalloc(card->dev, soc_card_data->card_data->num_jacks,
++			     sizeof(*jacks), GFP_KERNEL);
++	if (!jacks)
++		return -ENOMEM;
++
++	soc_card_data->card_data->jacks = jacks;
++
++	platform_node = of_parse_phandle(pdev->dev.of_node, "mediatek,platform", 0);
++	if (!platform_node)
++		return dev_err_probe(&pdev->dev, -EINVAL,
++				     "Property mediatek,platform missing or invalid\n");
++
++	/* Check if this SoC has an Audio DSP */
++	if (pdata->sof_priv)
++		adsp_node = of_parse_phandle(pdev->dev.of_node, "mediatek,adsp", 0);
++	else
++		adsp_node = NULL;
++
++	if (adsp_node) {
++		if (of_property_read_bool(pdev->dev.of_node, "mediatek,dai-link")) {
++			ret = mtk_sof_dailink_parse_of(card, pdev->dev.of_node,
++						       "mediatek,dai-link",
++						       card->dai_link, card->num_links);
++			if (ret) {
++				of_node_put(adsp_node);
++				of_node_put(platform_node);
++				return dev_err_probe(&pdev->dev, ret,
++						     "Cannot parse mediatek,dai-link\n");
++			}
++		}
++
++		soc_card_data->sof_priv = pdata->sof_priv;
++		card->probe = mtk_sof_card_probe;
++		card->late_probe = mtk_sof_card_late_probe;
++		if (!card->topology_shortname_created) {
++			snprintf(card->topology_shortname, 32, "sof-%s", card->name);
++			card->topology_shortname_created = true;
++		}
++		card->name = card->topology_shortname;
++	}
++
++	/*
++	 * Regardless of whether the ADSP is wanted and/or present in a machine
++	 * specific device tree or not and regardless of whether any AFE_SOF
++	 * link is present, we have to make sure that the platforms->of_node
++	 * is not NULL, and set to either ADSP (adsp_node) or AFE (platform_node).
++	 */
++	for_each_card_prelinks(card, i, dai_link) {
++		if (adsp_node && !strncmp(dai_link->name, "AFE_SOF", strlen("AFE_SOF")))
++			dai_link->platforms->of_node = adsp_node;
++		else if (!dai_link->platforms->name && !dai_link->platforms->of_node)
++			dai_link->platforms->of_node = platform_node;
++	}
++
++	if (!needs_legacy_probe) {
++		ret = parse_dai_link_info(card);
++		if (ret)
++			goto err_restore_dais;
++	} else {
++		if (adsp_node)
++			of_node_put(adsp_node);
++		of_node_put(platform_node);
++	}
++
++	if (pdata->soc_probe) {
++		ret = pdata->soc_probe(soc_card_data, needs_legacy_probe);
++		if (ret) {
++			if (!needs_legacy_probe)
++				clean_card_reference(card);
++			goto err_restore_dais;
++		}
++	}
++	snd_soc_card_set_drvdata(card, soc_card_data);
++
++	ret = devm_snd_soc_register_card(&pdev->dev, card);
++
++	if (!needs_legacy_probe)
++		clean_card_reference(card);
++
++	if (ret) {
++		dev_err_probe(&pdev->dev, ret, "Cannot register card\n");
++		goto err_restore_dais;
++	}
++
++	return 0;
++
++err_restore_dais:
++	card->dai_link = orig_dai_link;
++	card->num_links = orig_num_links;
++	return ret;
++}
++EXPORT_SYMBOL_GPL(mtk_soundcard_common_probe);
+diff --git a/sound/soc/mediatek/common/mtk-soundcard-driver.h b/sound/soc/mediatek/common/mtk-soundcard-driver.h
+index d92cac1d7b72..44320efff5f8 100644
+--- a/sound/soc/mediatek/common/mtk-soundcard-driver.h
++++ b/sound/soc/mediatek/common/mtk-soundcard-driver.h
+@@ -9,6 +9,24 @@
+ #ifndef _MTK_SOUNDCARD_DRIVER_H_
+ #define _MTK_SOUNDCARD_DRIVER_H_
  
++struct mtk_sof_priv;
++struct mtk_soc_card_data;
++
++struct mtk_platform_card_data {
++	struct snd_soc_card *card;
++	struct snd_soc_jack *jacks;
++	u8 num_jacks;
++	u8 flags;
++};
++
++struct mtk_soundcard_pdata {
++	const char *card_name;
++	struct mtk_platform_card_data *card_data;
++	struct mtk_sof_priv *sof_priv;
++	int (*soc_probe)(struct mtk_soc_card_data *card_data, bool legacy);
++};
++
+ int parse_dai_link_info(struct snd_soc_card *card);
+ void clean_card_reference(struct snd_soc_card *card);
++int mtk_soundcard_common_probe(struct platform_device *pdev);
+ #endif
 -- 
 2.44.0
 
