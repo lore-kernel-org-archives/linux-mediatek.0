@@ -4,68 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91C9AC47DD9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Feb 2024 09:32:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80C9DC47DD9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Feb 2024 09:41:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gHFfDnJk45UEHuXmxXtzvJNbjxSIT6xCDWqw9xVfWpM=; b=lCNsJuXXUqI0ztKkD+pPKza3nD
-	8Zay57bYJyVvvADKoaTy7bdqylEEm9a2xaKGBRwxmhs48JR4Ejpt0OTw+hQCefc2Bv0RjnTsNvDLl
-	Slh86Gmt4qf3+gun6LIJBCb8kDZv80GxESfWL3ONDjR+v2QaSfBu1Um41boo1M/r2Q/K7POGMFkSU
-	bEWLjiWQmGPpMCLfTrMN3lK7vrOtsccGLkmmj1JRCGJa0aDJKppwsOYiKY+zCPK0mml1T1pz2Z2Hd
-	X4Hpk7/RDMofXlcghGmzLmQTht/BLk83CklBtduNXSNVty2yB6ICW5XZ0fB47S47SYUfOcbueaTiH
-	zG6b2Eyg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vIlc3PQZfKg1TKtz70bkITr4NIWkepEBZaQFeSM9C5k=; b=tTrxjboN+72f+AEi03DkLuKNCl
+	AVBdZm4vLLksvITg4InP4t03KfFGCMnr26ZbhkZFdEZorkRPA6nvwxWs6AHNfeOCYSyu3WsSzXtIA
+	MUiNLv40xF/vo2qLPsVSo1ochls8nnQsE5kBONAozvk2zxI/wO0y7nCCpzEJQaye9xKBEGUwJNf0M
+	7yePqwBYCPiTapXE8YliA7fI9bPQPRp6+x3nJbmKuq+U1kRAhBsG6ApPLztdKA7YUCTHu+Dpt5A+g
+	sI6fEOiDtICRg2oXNzN2jQTYxOYBKXlRi7qp85G6uzwkCeLJXmXb17O9rKcVaUg2NbNVfuOq7jk1W
+	dP1hfPLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfGIV-00000008gAA-0w8r;
-	Wed, 28 Feb 2024 09:32:19 +0000
-Received: from szxga06-in.huawei.com ([45.249.212.32])
+	id 1rfGRG-00000008igY-1nau;
+	Wed, 28 Feb 2024 09:41:22 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfGIP-00000008g66-345g;
-	Wed, 28 Feb 2024 09:32:15 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.44])
-	by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4Tl8Hc5Rb5zqhtb;
-	Wed, 28 Feb 2024 17:31:24 +0800 (CST)
-Received: from dggpemm500005.china.huawei.com (unknown [7.185.36.74])
-	by mail.maildlp.com (Postfix) with ESMTPS id E74F71402CC;
-	Wed, 28 Feb 2024 17:32:01 +0800 (CST)
-Received: from localhost.localdomain (10.69.192.56) by
- dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Wed, 28 Feb 2024 17:32:01 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
-	<linyunsheng@huawei.com>, Jason Wang <jasowang@redhat.com>, Alexander Duyck
-	<alexanderduyck@fb.com>, Jeroen de Borst <jeroendb@google.com>, Praveen
- Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>,
-	Eric Dumazet <edumazet@google.com>, Felix Fietkau <nbd@nbd.name>, Sean Wang
-	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith
- Busch <kbusch@kernel.org>, Jens Axboe <axboe@kernel.dk>, Christoph Hellwig
-	<hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, Chaitanya Kulkarni
-	<kch@nvidia.com>, Andrew Morton <akpm@linux-foundation.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-nvme@lists.infradead.org>, <linux-mm@kvack.org>
-Subject: [PATCH net-next v6 3/5] net: introduce page_frag_cache_drain()
-Date: Wed, 28 Feb 2024 17:30:10 +0800
-Message-ID: <20240228093013.8263-4-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20240228093013.8263-1-linyunsheng@huawei.com>
-References: <20240228093013.8263-1-linyunsheng@huawei.com>
+	id 1rfGRD-00000008iff-06da;
+	Wed, 28 Feb 2024 09:41:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1709113276;
+	bh=ea/qP8lceQObB4VFfj13TaUrQWQXFF34TOPECYoDbjc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=u0FaIgGjtWn77xSxsMdY7Ah7fN6y8vAVkMqFAT2IWrS1T+235RFKhCM0cijnDPWxt
+	 E6vcuSp4/A0vd2CcChADwEtGX3V8x36vDQJ2mtPAIJn/wQCxr7pM1OKs6+z9pSYiPk
+	 yNAn97gtlMyGfATz13onnIYLSsy5u+QMKoE8H8iAXouQbXDzkFeYi2DQ9NtFZxA/IH
+	 8hroDEY842dmV2ViuFxDfAliGElxrzrS636j5odIIkNipeO3tG0GT7LPxqv246h7UE
+	 iBFIctQhaDwiJ6ubBDEcxYwDJ/2RX6Gxu2cJP08Hv5Zlim3j8pFycKuxxUAkeEp0C9
+	 moGZv+eLV0HSg==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 724F53780029;
+	Wed, 28 Feb 2024 09:41:16 +0000 (UTC)
+Message-ID: <6389f1e3-57b2-453a-af6f-6bc7f725ad31@collabora.com>
+Date: Wed, 28 Feb 2024 10:41:15 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] soc: mediatek: cmdq: Don't log an error when
+ gce-client-reg is not found
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240226-gce-client-reg-log-dbg-v1-1-f0fff97c30c7@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240226-gce-client-reg-log-dbg-v1-1-f0fff97c30c7@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.69.192.56]
-X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
- dggpemm500005.china.huawei.com (7.185.36.74)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240228_013214_175070_10E67B45 
-X-CRM114-Status: GOOD (  14.99  )
+X-CRM114-CacheID: sfid-20240228_014119_312702_FAF92066 
+X-CRM114-Status: GOOD (  22.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,174 +76,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When draining a page_frag_cache, most user are doing
-the similar steps, so introduce an API to avoid code
-duplication.
+Il 26/02/24 22:31, Nícolas F. R. A. Prado ha scritto:
+> Most of the callers to this function do not require CMDQ support, it is
+> optional, so the missing property shouldn't cause an error message.
+> Furthermore, the callers that do require CMDQ support already log at the
+> error level when an error is returned.
+> 
+> Change the log message in this helper to be printed at the debug level
+> instead.
 
-Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
-Acked-by: Jason Wang <jasowang@redhat.com>
-Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>
----
- drivers/net/ethernet/google/gve/gve_main.c | 11 ++---------
- drivers/net/ethernet/mediatek/mtk_wed_wo.c | 17 ++---------------
- drivers/nvme/host/tcp.c                    |  7 +------
- drivers/nvme/target/tcp.c                  |  4 +---
- include/linux/gfp.h                        |  1 +
- mm/page_alloc.c                            | 10 ++++++++++
- 6 files changed, 17 insertions(+), 33 deletions(-)
+CMDQ is optional, yes. At least, for some devices it is.
 
-diff --git a/drivers/net/ethernet/google/gve/gve_main.c b/drivers/net/ethernet/google/gve/gve_main.c
-index db6d9ae7cd78..dec6458bb8d7 100644
---- a/drivers/net/ethernet/google/gve/gve_main.c
-+++ b/drivers/net/ethernet/google/gve/gve_main.c
-@@ -1276,17 +1276,10 @@ static void gve_unreg_xdp_info(struct gve_priv *priv)
- 
- static void gve_drain_page_cache(struct gve_priv *priv)
- {
--	struct page_frag_cache *nc;
- 	int i;
- 
--	for (i = 0; i < priv->rx_cfg.num_queues; i++) {
--		nc = &priv->rx[i].page_cache;
--		if (nc->va) {
--			__page_frag_cache_drain(virt_to_page(nc->va),
--						nc->pagecnt_bias);
--			nc->va = NULL;
--		}
--	}
-+	for (i = 0; i < priv->rx_cfg.num_queues; i++)
-+		page_frag_cache_drain(&priv->rx[i].page_cache);
- }
- 
- static void gve_qpls_get_curr_alloc_cfg(struct gve_priv *priv,
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-index d58b07e7e123..7063c78bd35f 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-@@ -286,7 +286,6 @@ mtk_wed_wo_queue_free(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- static void
- mtk_wed_wo_queue_tx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- {
--	struct page *page;
- 	int i;
- 
- 	for (i = 0; i < q->n_desc; i++) {
-@@ -301,19 +300,12 @@ mtk_wed_wo_queue_tx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- 		entry->buf = NULL;
- 	}
- 
--	if (!q->cache.va)
--		return;
--
--	page = virt_to_page(q->cache.va);
--	__page_frag_cache_drain(page, q->cache.pagecnt_bias);
--	memset(&q->cache, 0, sizeof(q->cache));
-+	page_frag_cache_drain(&q->cache);
- }
- 
- static void
- mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- {
--	struct page *page;
--
- 	for (;;) {
- 		void *buf = mtk_wed_wo_dequeue(wo, q, NULL, true);
- 
-@@ -323,12 +315,7 @@ mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- 		skb_free_frag(buf);
- 	}
- 
--	if (!q->cache.va)
--		return;
--
--	page = virt_to_page(q->cache.va);
--	__page_frag_cache_drain(page, q->cache.pagecnt_bias);
--	memset(&q->cache, 0, sizeof(q->cache));
-+	page_frag_cache_drain(&q->cache);
- }
- 
- static void
-diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index a6d596e05602..3692b56cb58d 100644
---- a/drivers/nvme/host/tcp.c
-+++ b/drivers/nvme/host/tcp.c
-@@ -1344,7 +1344,6 @@ static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
- 
- static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
- {
--	struct page *page;
- 	struct nvme_tcp_ctrl *ctrl = to_tcp_ctrl(nctrl);
- 	struct nvme_tcp_queue *queue = &ctrl->queues[qid];
- 	unsigned int noreclaim_flag;
-@@ -1355,11 +1354,7 @@ static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
- 	if (queue->hdr_digest || queue->data_digest)
- 		nvme_tcp_free_crypto(queue);
- 
--	if (queue->pf_cache.va) {
--		page = virt_to_head_page(queue->pf_cache.va);
--		__page_frag_cache_drain(page, queue->pf_cache.pagecnt_bias);
--		queue->pf_cache.va = NULL;
--	}
-+	page_frag_cache_drain(&queue->pf_cache);
- 
- 	noreclaim_flag = memalloc_noreclaim_save();
- 	/* ->sock will be released by fput() */
-diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
-index c8655fc5aa5b..2aa5762e9f50 100644
---- a/drivers/nvme/target/tcp.c
-+++ b/drivers/nvme/target/tcp.c
-@@ -1591,7 +1591,6 @@ static void nvmet_tcp_free_cmd_data_in_buffers(struct nvmet_tcp_queue *queue)
- 
- static void nvmet_tcp_release_queue_work(struct work_struct *w)
- {
--	struct page *page;
- 	struct nvmet_tcp_queue *queue =
- 		container_of(w, struct nvmet_tcp_queue, release_work);
- 
-@@ -1615,8 +1614,7 @@ static void nvmet_tcp_release_queue_work(struct work_struct *w)
- 	if (queue->hdr_digest || queue->data_digest)
- 		nvmet_tcp_free_crypto(queue);
- 	ida_free(&nvmet_tcp_queue_ida, queue->idx);
--	page = virt_to_head_page(queue->pf_cache.va);
--	__page_frag_cache_drain(page, queue->pf_cache.pagecnt_bias);
-+	page_frag_cache_drain(&queue->pf_cache);
- 	kfree(queue);
- }
- 
-diff --git a/include/linux/gfp.h b/include/linux/gfp.h
-index 28aea17fa59b..6cef1c241180 100644
---- a/include/linux/gfp.h
-+++ b/include/linux/gfp.h
-@@ -311,6 +311,7 @@ extern void __free_pages(struct page *page, unsigned int order);
- extern void free_pages(unsigned long addr, unsigned int order);
- 
- struct page_frag_cache;
-+void page_frag_cache_drain(struct page_frag_cache *nc);
- extern void __page_frag_cache_drain(struct page *page, unsigned int count);
- void *__page_frag_alloc_align(struct page_frag_cache *nc, unsigned int fragsz,
- 			      gfp_t gfp_mask, unsigned int align_mask);
-diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 636145c29f70..06aa1ebbd21c 100644
---- a/mm/page_alloc.c
-+++ b/mm/page_alloc.c
-@@ -4699,6 +4699,16 @@ static struct page *__page_frag_cache_refill(struct page_frag_cache *nc,
- 	return page;
- }
- 
-+void page_frag_cache_drain(struct page_frag_cache *nc)
-+{
-+	if (!nc->va)
-+		return;
-+
-+	__page_frag_cache_drain(virt_to_head_page(nc->va), nc->pagecnt_bias);
-+	nc->va = NULL;
-+}
-+EXPORT_SYMBOL(page_frag_cache_drain);
-+
- void __page_frag_cache_drain(struct page *page, unsigned int count)
- {
- 	VM_BUG_ON_PAGE(page_ref_count(page) == 0, page);
--- 
-2.33.0
+Full story, though, wants that if you use the CPU for register manipulation
+instead of programming the GCE (even with threading, fantastic!) you will
+trigger various performance issues.
+
+In the end, you *don't want* to use the CPU if GCE is available!
+
+The reasons why the CMDQ/GCE is optional are:
+  - You can check register-by-register r/w for debugging scenarios by using
+    the CPU to manipulate them instead of having something magically doing
+    that for you at a certain (pre-set, yes, but still!) point;
+  - Not all SoCs have the same amount of GCE threads and channels, some may
+    support writing to IP block X through the GCE, some may not, but both
+    may support writing for IP block Y through this mailbox;
+  - MediaTek chose to support both ways, enabling means to debug stuff upstream,
+    the other choice would've been to never support CPU register R/W on some IPs
+
+    ... and btw - about the last part: Kudos, MediaTek.
+
+Now, I also get why you're raising this, but we have to find an agreement here
+on a different way to proceed that satisfies all of us.
+
+First of all..
+
+Which device on which SoC is missing the GCE client register DT property?
+Do said SoC really not have a GCE client register for that device?
+
+Is any upstream supported SoC really lacking a GCE register for the upstream
+supported IPs?
+
+I'm not sure.... :-)
+
+P.S.: I guess that the alternative (that I somewhat dislike, and you can probably
+       understand why after reading the reasons above) would be to turn that into a
+       dev_info() instead...
+
+P.P.S.: Having no GCE usually means that there's a performance issue! In that case,
+         it's ... a mistake, so, an error, kind-of.... :-)
+
+Cheers,
+Angelo
+
+> 
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> ---
+>   drivers/soc/mediatek/mtk-cmdq-helper.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> index b0cd071c4719..2130ff3aac9e 100644
+> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> @@ -55,7 +55,7 @@ int cmdq_dev_get_client_reg(struct device *dev,
+>   					       "mediatek,gce-client-reg",
+>   					       3, idx, &spec);
+>   	if (err < 0) {
+> -		dev_err(dev,
+> +		dev_dbg(dev,
+>   			"error %d can't parse gce-client-reg property (%d)",
+>   			err, idx);
+>   
+> 
+> ---
+> base-commit: 41913bcddc83b131649ee8ff0d9ff29e01731398
+> change-id: 20240226-gce-client-reg-log-dbg-5ae9637a08ed
+> 
+> Best regards,
+
 
 
