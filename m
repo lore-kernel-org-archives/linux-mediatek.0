@@ -4,51 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFF8CC47DD9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Feb 2024 09:31:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91C9AC47DD9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Feb 2024 09:32:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Lj4ZV1KXXFcbcgj2xJ8FqsFyL/6ecLDUxE0ee1RPZS4=; b=GguBdvyuqjBF36rZzSaohC0uYt
-	3Gb1K0Oe0jiv5t48NLudIO899jDlA9PUX1Kd3hIQcym0GDMZC7pW7680teqiKJEN9P/mLxUgYEvwq
-	rXLedW4A/kGHgVnqNT4HU9yKDViL/IA6bsy251D2TKu+tOAdynPBZKHYjbyM1iRwWelA4qMCVz1Q2
-	n54VddYQyqgCAGG1/ryzOgACNjRVbJ6tsPOo8JYecMq73cXOWTgvo/FBd3Ha/B54YoppoCjOlbaRb
-	jNjlFFXG5ks72w9l1W8DgrB20OiXhlsOVMw7zp+U/YpwHYDYCwLhCCdsnkiBwxTLwUMyP4arRf1QT
-	64W2eOjg==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gHFfDnJk45UEHuXmxXtzvJNbjxSIT6xCDWqw9xVfWpM=; b=lCNsJuXXUqI0ztKkD+pPKza3nD
+	8Zay57bYJyVvvADKoaTy7bdqylEEm9a2xaKGBRwxmhs48JR4Ejpt0OTw+hQCefc2Bv0RjnTsNvDLl
+	Slh86Gmt4qf3+gun6LIJBCb8kDZv80GxESfWL3ONDjR+v2QaSfBu1Um41boo1M/r2Q/K7POGMFkSU
+	bEWLjiWQmGPpMCLfTrMN3lK7vrOtsccGLkmmj1JRCGJa0aDJKppwsOYiKY+zCPK0mml1T1pz2Z2Hd
+	X4Hpk7/RDMofXlcghGmzLmQTht/BLk83CklBtduNXSNVty2yB6ICW5XZ0fB47S47SYUfOcbueaTiH
+	zG6b2Eyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfGI8-00000008g0l-1fA1;
-	Wed, 28 Feb 2024 09:31:56 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1rfGIV-00000008gAA-0w8r;
+	Wed, 28 Feb 2024 09:32:19 +0000
+Received: from szxga06-in.huawei.com ([45.249.212.32])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfGI5-00000008fzo-0oGn;
-	Wed, 28 Feb 2024 09:31:54 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.252])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4Tl8Fy1k70z1Q99X;
-	Wed, 28 Feb 2024 17:29:58 +0800 (CST)
+	id 1rfGIP-00000008g66-345g;
+	Wed, 28 Feb 2024 09:32:15 +0000
+Received: from mail.maildlp.com (unknown [172.19.163.44])
+	by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4Tl8Hc5Rb5zqhtb;
+	Wed, 28 Feb 2024 17:31:24 +0800 (CST)
 Received: from dggpemm500005.china.huawei.com (unknown [7.185.36.74])
-	by mail.maildlp.com (Postfix) with ESMTPS id B377E18005C;
-	Wed, 28 Feb 2024 17:31:46 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id E74F71402CC;
+	Wed, 28 Feb 2024 17:32:01 +0800 (CST)
 Received: from localhost.localdomain (10.69.192.56) by
  dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Wed, 28 Feb 2024 17:31:46 +0800
+ 15.1.2507.35; Wed, 28 Feb 2024 17:32:01 +0800
 From: Yunsheng Lin <linyunsheng@huawei.com>
 To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
 CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
-	<linyunsheng@huawei.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Alexei
- Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper
- Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+	<linyunsheng@huawei.com>, Jason Wang <jasowang@redhat.com>, Alexander Duyck
+	<alexanderduyck@fb.com>, Jeroen de Borst <jeroendb@google.com>, Praveen
+ Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>,
+	Eric Dumazet <edumazet@google.com>, Felix Fietkau <nbd@nbd.name>, Sean Wang
+	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith
+ Busch <kbusch@kernel.org>, Jens Axboe <axboe@kernel.dk>, Christoph Hellwig
+	<hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, Chaitanya Kulkarni
+	<kch@nvidia.com>, Andrew Morton <akpm@linux-foundation.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<bpf@vger.kernel.org>
-Subject: [PATCH net-next v6 0/5] remove page frag implementation in vhost_net
-Date: Wed, 28 Feb 2024 17:30:07 +0800
-Message-ID: <20240228093013.8263-1-linyunsheng@huawei.com>
+	<linux-nvme@lists.infradead.org>, <linux-mm@kvack.org>
+Subject: [PATCH net-next v6 3/5] net: introduce page_frag_cache_drain()
+Date: Wed, 28 Feb 2024 17:30:10 +0800
+Message-ID: <20240228093013.8263-4-linyunsheng@huawei.com>
 X-Mailer: git-send-email 2.33.0
+In-Reply-To: <20240228093013.8263-1-linyunsheng@huawei.com>
+References: <20240228093013.8263-1-linyunsheng@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -56,8 +64,8 @@ X-Originating-IP: [10.69.192.56]
 X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
  dggpemm500005.china.huawei.com (7.185.36.74)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240228_013153_624068_3F5B3FC9 
-X-CRM114-Status: GOOD (  13.70  )
+X-CRM114-CacheID: sfid-20240228_013214_175070_10E67B45 
+X-CRM114-Status: GOOD (  14.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,111 +80,173 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently there are three implementations for page frag:
+When draining a page_frag_cache, most user are doing
+the similar steps, so introduce an API to avoid code
+duplication.
 
-1. mm/page_alloc.c: net stack seems to be using it in the
-   rx part with 'struct page_frag_cache' and the main API
-   being page_frag_alloc_align().
-2. net/core/sock.c: net stack seems to be using it in the
-   tx part with 'struct page_frag' and the main API being
-   skb_page_frag_refill().
-3. drivers/vhost/net.c: vhost seems to be using it to build
-   xdp frame, and it's implementation seems to be a mix of
-   the above two.
+Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
+Acked-by: Jason Wang <jasowang@redhat.com>
+Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>
+---
+ drivers/net/ethernet/google/gve/gve_main.c | 11 ++---------
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c | 17 ++---------------
+ drivers/nvme/host/tcp.c                    |  7 +------
+ drivers/nvme/target/tcp.c                  |  4 +---
+ include/linux/gfp.h                        |  1 +
+ mm/page_alloc.c                            | 10 ++++++++++
+ 6 files changed, 17 insertions(+), 33 deletions(-)
 
-This patchset tries to unfiy the page frag implementation a
-little bit by unifying gfp bit for order 3 page allocation
-and replacing page frag implementation in vhost.c with the
-one in page_alloc.c.
-
-After this patchset, we are not only able to unify the page
-frag implementation a little, but also able to have about
-0.5% performance boost testing by using the vhost_net_test
-introduced in the last patch.
-
-Before this patchset:
-Performance counter stats for './vhost_net_test' (10 runs):
-
-     305325.78 msec task-clock                       #    1.738 CPUs utilized               ( +-  0.12% )
-       1048668      context-switches                 #    3.435 K/sec                       ( +-  0.00% )
-            11      cpu-migrations                   #    0.036 /sec                        ( +- 17.64% )
-            33      page-faults                      #    0.108 /sec                        ( +-  0.49% )
-  244651819491      cycles                           #    0.801 GHz                         ( +-  0.43% )  (64)
-   64714638024      stalled-cycles-frontend          #   26.45% frontend cycles idle        ( +-  2.19% )  (67)
-   30774313491      stalled-cycles-backend           #   12.58% backend cycles idle         ( +-  7.68% )  (70)
-  201749748680      instructions                     #    0.82  insn per cycle
-                                              #    0.32  stalled cycles per insn     ( +-  0.41% )  (66.76%)
-   65494787909      branches                         #  214.508 M/sec                       ( +-  0.35% )  (64)
-    4284111313      branch-misses                    #    6.54% of all branches             ( +-  0.45% )  (66)
-
-       175.699 +- 0.189 seconds time elapsed  ( +-  0.11% )
-
-
-After this patchset:
-Performance counter stats for './vhost_net_test' (10 runs):
-
-     303974.38 msec task-clock                       #    1.739 CPUs utilized               ( +-  0.14% )
-       1048807      context-switches                 #    3.450 K/sec                       ( +-  0.00% )
-            14      cpu-migrations                   #    0.046 /sec                        ( +- 12.86% )
-            33      page-faults                      #    0.109 /sec                        ( +-  0.46% )
-  251289376347      cycles                           #    0.827 GHz                         ( +-  0.32% )  (60)
-   67885175415      stalled-cycles-frontend          #   27.01% frontend cycles idle        ( +-  0.48% )  (63)
-   27809282600      stalled-cycles-backend           #   11.07% backend cycles idle         ( +-  0.36% )  (71)
-  195543234672      instructions                     #    0.78  insn per cycle
-                                              #    0.35  stalled cycles per insn     ( +-  0.29% )  (69.04%)
-   62423183552      branches                         #  205.357 M/sec                       ( +-  0.48% )  (67)
-    4135666632      branch-misses                    #    6.63% of all branches             ( +-  0.63% )  (67)
-
-       174.764 +- 0.214 seconds time elapsed  ( +-  0.12% )
-
-Changelog:
-V6: Add timeout for poll() and simplify some logic as suggested
-    by Jason.
-
-V5: Address the comment from jason in vhost_net_test.c and the
-    comment about leaving out the gfp change for page frag in
-    sock.c as suggested by Paolo.
-
-V4: Resend based on latest net-next branch.
-
-V3:
-1. Add __page_frag_alloc_align() which is passed with the align mask
-   the original function expected as suggested by Alexander.
-2. Drop patch 3 in v2 suggested by Alexander.
-3. Reorder patch 4 & 5 in v2 suggested by Alexander.
-
-Note that placing this gfp flags handing for order 3 page in an inline
-function is not considered, as we may be able to unify the page_frag
-and page_frag_cache handling.
-
-V2: Change 'xor'd' to 'masked off', add vhost tx testing for
-    vhost_net_test.
-
-V1: Fix some typo, drop RFC tag and rebase on latest net-next.
-
-Yunsheng Lin (5):
-  mm/page_alloc: modify page_frag_alloc_align() to accept align as an
-    argument
-  page_frag: unify gfp bits for order 3 page allocation
-  net: introduce page_frag_cache_drain()
-  vhost/net: remove vhost_net_page_frag_refill()
-  tools: virtio: introduce vhost_net_test
-
- drivers/net/ethernet/google/gve/gve_main.c |  11 +-
- drivers/net/ethernet/mediatek/mtk_wed_wo.c |  17 +-
- drivers/nvme/host/tcp.c                    |   7 +-
- drivers/nvme/target/tcp.c                  |   4 +-
- drivers/vhost/net.c                        |  91 ++--
- include/linux/gfp.h                        |  16 +-
- mm/page_alloc.c                            |  22 +-
- net/core/skbuff.c                          |   9 +-
- tools/virtio/.gitignore                    |   1 +
- tools/virtio/Makefile                      |   8 +-
- tools/virtio/linux/virtio_config.h         |   4 +
- tools/virtio/vhost_net_test.c              | 532 +++++++++++++++++++++
- 12 files changed, 609 insertions(+), 113 deletions(-)
- create mode 100644 tools/virtio/vhost_net_test.c
-
+diff --git a/drivers/net/ethernet/google/gve/gve_main.c b/drivers/net/ethernet/google/gve/gve_main.c
+index db6d9ae7cd78..dec6458bb8d7 100644
+--- a/drivers/net/ethernet/google/gve/gve_main.c
++++ b/drivers/net/ethernet/google/gve/gve_main.c
+@@ -1276,17 +1276,10 @@ static void gve_unreg_xdp_info(struct gve_priv *priv)
+ 
+ static void gve_drain_page_cache(struct gve_priv *priv)
+ {
+-	struct page_frag_cache *nc;
+ 	int i;
+ 
+-	for (i = 0; i < priv->rx_cfg.num_queues; i++) {
+-		nc = &priv->rx[i].page_cache;
+-		if (nc->va) {
+-			__page_frag_cache_drain(virt_to_page(nc->va),
+-						nc->pagecnt_bias);
+-			nc->va = NULL;
+-		}
+-	}
++	for (i = 0; i < priv->rx_cfg.num_queues; i++)
++		page_frag_cache_drain(&priv->rx[i].page_cache);
+ }
+ 
+ static void gve_qpls_get_curr_alloc_cfg(struct gve_priv *priv,
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
+index d58b07e7e123..7063c78bd35f 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
+@@ -286,7 +286,6 @@ mtk_wed_wo_queue_free(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
+ static void
+ mtk_wed_wo_queue_tx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
+ {
+-	struct page *page;
+ 	int i;
+ 
+ 	for (i = 0; i < q->n_desc; i++) {
+@@ -301,19 +300,12 @@ mtk_wed_wo_queue_tx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
+ 		entry->buf = NULL;
+ 	}
+ 
+-	if (!q->cache.va)
+-		return;
+-
+-	page = virt_to_page(q->cache.va);
+-	__page_frag_cache_drain(page, q->cache.pagecnt_bias);
+-	memset(&q->cache, 0, sizeof(q->cache));
++	page_frag_cache_drain(&q->cache);
+ }
+ 
+ static void
+ mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
+ {
+-	struct page *page;
+-
+ 	for (;;) {
+ 		void *buf = mtk_wed_wo_dequeue(wo, q, NULL, true);
+ 
+@@ -323,12 +315,7 @@ mtk_wed_wo_queue_rx_clean(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
+ 		skb_free_frag(buf);
+ 	}
+ 
+-	if (!q->cache.va)
+-		return;
+-
+-	page = virt_to_page(q->cache.va);
+-	__page_frag_cache_drain(page, q->cache.pagecnt_bias);
+-	memset(&q->cache, 0, sizeof(q->cache));
++	page_frag_cache_drain(&q->cache);
+ }
+ 
+ static void
+diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
+index a6d596e05602..3692b56cb58d 100644
+--- a/drivers/nvme/host/tcp.c
++++ b/drivers/nvme/host/tcp.c
+@@ -1344,7 +1344,6 @@ static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
+ 
+ static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
+ {
+-	struct page *page;
+ 	struct nvme_tcp_ctrl *ctrl = to_tcp_ctrl(nctrl);
+ 	struct nvme_tcp_queue *queue = &ctrl->queues[qid];
+ 	unsigned int noreclaim_flag;
+@@ -1355,11 +1354,7 @@ static void nvme_tcp_free_queue(struct nvme_ctrl *nctrl, int qid)
+ 	if (queue->hdr_digest || queue->data_digest)
+ 		nvme_tcp_free_crypto(queue);
+ 
+-	if (queue->pf_cache.va) {
+-		page = virt_to_head_page(queue->pf_cache.va);
+-		__page_frag_cache_drain(page, queue->pf_cache.pagecnt_bias);
+-		queue->pf_cache.va = NULL;
+-	}
++	page_frag_cache_drain(&queue->pf_cache);
+ 
+ 	noreclaim_flag = memalloc_noreclaim_save();
+ 	/* ->sock will be released by fput() */
+diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
+index c8655fc5aa5b..2aa5762e9f50 100644
+--- a/drivers/nvme/target/tcp.c
++++ b/drivers/nvme/target/tcp.c
+@@ -1591,7 +1591,6 @@ static void nvmet_tcp_free_cmd_data_in_buffers(struct nvmet_tcp_queue *queue)
+ 
+ static void nvmet_tcp_release_queue_work(struct work_struct *w)
+ {
+-	struct page *page;
+ 	struct nvmet_tcp_queue *queue =
+ 		container_of(w, struct nvmet_tcp_queue, release_work);
+ 
+@@ -1615,8 +1614,7 @@ static void nvmet_tcp_release_queue_work(struct work_struct *w)
+ 	if (queue->hdr_digest || queue->data_digest)
+ 		nvmet_tcp_free_crypto(queue);
+ 	ida_free(&nvmet_tcp_queue_ida, queue->idx);
+-	page = virt_to_head_page(queue->pf_cache.va);
+-	__page_frag_cache_drain(page, queue->pf_cache.pagecnt_bias);
++	page_frag_cache_drain(&queue->pf_cache);
+ 	kfree(queue);
+ }
+ 
+diff --git a/include/linux/gfp.h b/include/linux/gfp.h
+index 28aea17fa59b..6cef1c241180 100644
+--- a/include/linux/gfp.h
++++ b/include/linux/gfp.h
+@@ -311,6 +311,7 @@ extern void __free_pages(struct page *page, unsigned int order);
+ extern void free_pages(unsigned long addr, unsigned int order);
+ 
+ struct page_frag_cache;
++void page_frag_cache_drain(struct page_frag_cache *nc);
+ extern void __page_frag_cache_drain(struct page *page, unsigned int count);
+ void *__page_frag_alloc_align(struct page_frag_cache *nc, unsigned int fragsz,
+ 			      gfp_t gfp_mask, unsigned int align_mask);
+diff --git a/mm/page_alloc.c b/mm/page_alloc.c
+index 636145c29f70..06aa1ebbd21c 100644
+--- a/mm/page_alloc.c
++++ b/mm/page_alloc.c
+@@ -4699,6 +4699,16 @@ static struct page *__page_frag_cache_refill(struct page_frag_cache *nc,
+ 	return page;
+ }
+ 
++void page_frag_cache_drain(struct page_frag_cache *nc)
++{
++	if (!nc->va)
++		return;
++
++	__page_frag_cache_drain(virt_to_head_page(nc->va), nc->pagecnt_bias);
++	nc->va = NULL;
++}
++EXPORT_SYMBOL(page_frag_cache_drain);
++
+ void __page_frag_cache_drain(struct page *page, unsigned int count)
+ {
+ 	VM_BUG_ON_PAGE(page_ref_count(page) == 0, page);
 -- 
 2.33.0
 
