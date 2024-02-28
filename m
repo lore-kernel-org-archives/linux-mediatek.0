@@ -4,74 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3051AC47DD9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Feb 2024 07:53:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D2F3C47DD9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Feb 2024 07:55:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6ieR/zEKf2T/mkPnmZNu342qzL0+86b6tQM2bieJG+w=; b=B/YEvPZ6O1CRCYtDNSS4hGITXK
-	rH4lnFW84diSHtWQizAhZ2A/a2HeGn78l13frxfZw/8P95ElhZK9CMn/H/s1X5/mVQACjasS3mcTC
-	0ST5l3VP1N5zn4LNswksu41/rTjlFQfgHLyjAb9jmVJji2gr/jfMZCPxWECKmhraapV2arMgnOCeS
-	3i964gQhG7RFJNnE5yOixNBpBAnvSRhh4QC8nS4ILojCiVuRXCHQcPNlG5+iX8mZwLCEOgGaIJlTH
-	L2LMnS4Zhetm9gs1QcLPwN4kanLAPBMeMIDty/WEU8wBinMhqoboPnHZZSUNzNZjAr1iTwxCp29os
-	OIN9xgMg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3mBkcrJ2DMdRExjkqX7NVMCWrBDE3iCoGNKHwvMzPTA=; b=392snwzdajJYj9FD6Da9ohdKYS
+	W6o7mX8PflLGfTLfSUXagJirBzjXHIVFllzH/KJkf8IZWZesBVZdEhKsV57fA282mGGWFVwNpt3NA
+	ul+tb7EAeYLSxiHqjeU/0eq/Ukm0QalIuCLXW24BpK9W5MCMhEqHA2sCEiTp9jLtGyW2qiXLMDxCm
+	YMtwiMMMAeM6ng88Q83n6Vv7/R10dQfoACaQ6+Q2f9tiVkmdz0Kqgi4X8+yfjnz9AzloIc9fDRb88
+	gjY65U5dZbgHgHTWsWrky3fapUSckU2WSpAEihvg6lov8PKdPbj47Op99+abE2CUENKPj23Wk8qDv
+	azAPbqWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfEkw-00000008N5K-2FQm;
-	Wed, 28 Feb 2024 07:53:34 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rfEmO-00000008NRn-2yRO;
+	Wed, 28 Feb 2024 07:55:04 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfEku-00000008N4T-0osu;
-	Wed, 28 Feb 2024 07:53:33 +0000
-X-UUID: 7352a844d60e11eea40fa5ac21cdad35-20240228
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6ieR/zEKf2T/mkPnmZNu342qzL0+86b6tQM2bieJG+w=;
-	b=hJrndjlcxOwhSNbn51R2sHlrwXVEWaoDbycUx1xyYTZ7xarHMqjYY+WCG8H2wYLy6lFaLxmw+Pjl7i7p3sT/Xk9rLhb7EWLxn+BKErd8rkdwoyXDBzvjarmQHQywu7qYPp/ydA9Gqj7X/OFk9t9zsS52rJi+HPkrKz6TbMPZxTw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:0eec903d-495b-4473-b8cd-1ce34cbd5394,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
-	ION:release,TS:-55
-X-CID-META: VersionHash:6f543d0,CLOUDID:46ae4bff-c16b-4159-a099-3b9d0558e447,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
-	L:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
-	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 7352a844d60e11eea40fa5ac21cdad35-20240228
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <haibo.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 592862741; Wed, 28 Feb 2024 00:53:24 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 28 Feb 2024 15:32:49 +0800
-Received: from mszsdtlt102.gcn.mediatek.inc (10.16.4.142) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 28 Feb 2024 15:32:49 +0800
-From: Haibo Li <haibo.li@mediatek.com>
-To: Russell King <linux@armlinux.org.uk>, Alexandre Mergnat
-	<amergnat@baylibre.com>, Linus Walleij <linus.walleij@linaro.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Haibo Li <haibo.li@mediatek.com>,
-	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <xiaoming.yu@mediatek.com>
-Subject: [PATCH] ARM: unwind: fix unwind started from IRQ stack in THUMB2 kernel
-Date: Wed, 28 Feb 2024 15:32:47 +0800
-Message-ID: <20240228073247.13102-1-haibo.li@mediatek.com>
-X-Mailer: git-send-email 2.34.3
+	id 1rfEmK-00000008NQB-3Txr;
+	Wed, 28 Feb 2024 07:55:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 0C052CE1C08;
+	Wed, 28 Feb 2024 07:54:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44095C433F1;
+	Wed, 28 Feb 2024 07:54:53 +0000 (UTC)
+Message-ID: <de48fffa-4b1c-465a-aa63-b2b6372ac5e6@xs4all.nl>
+Date: Wed, 28 Feb 2024 08:54:51 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/3] media: pci: sta2x11: Fix
+ Wcast-function-type-strict warnings
+To: Ricardo Ribalda <ribalda@chromium.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <ndesaulniers@google.com>, Bill Wendling
+ <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
+ Mike Isely <isely@pobox.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ llvm@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-remoteproc@vger.kernel.org
+References: <20240226-fix-clang-warnings-v2-0-fa1bc931d17e@chromium.org>
+ <20240226-fix-clang-warnings-v2-1-fa1bc931d17e@chromium.org>
+Content-Language: en-US, nl
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Autocrypt: addr=hverkuil@xs4all.nl; keydata=
+ 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
+In-Reply-To: <20240226-fix-clang-warnings-v2-1-fa1bc931d17e@chromium.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_235332_258822_CDFE4B32 
-X-CRM114-Status: GOOD (  13.23  )
+X-CRM114-CacheID: sfid-20240227_235501_263956_3DBE2DF6 
+X-CRM114-Status: GOOD (  16.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,66 +119,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When unwinds started from IRQ stack,call_with_stack is the only
-place to do stack switch.
-It need to identify call_with_stack when unwinding.
+On 26/02/2024 18:32, Ricardo Ribalda wrote:
+> Building with LLVM=1 throws the following warning:
+> drivers/media/pci/sta2x11/sta2x11_vip.c:1057:6: warning: cast from 'irqreturn_t (*)(int, struct sta2x11_vip *)' (aka 'enum irqreturn (*)(int, struct sta2x11_vip *)') to 'irq_handler_t' (aka 'enum irqreturn (*)(int, void *)') converts to incompatible function type [-Wcast-function-type-strict]
+> 
+> Reviewed-by: Nathan Chancellor <nathan@kernel.org>
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
-In thumb2 kernel,it fails to identify call_with_stack.
-In practice,(u32)&call_with_stack has bit 0 set.
+Arnd's patch for this has already been merged:
 
-	prel31_to_addr(&idx->addr_offset) is 0x806ed518,
-	while (u32)&call_with_stack is 0x806ed519.
-So it is impossible to do stack switch.
+https://lore.kernel.org/linux-media/20240213095451.454142-1-arnd@kernel.org/
 
-dump_stack from IRQ stack gets below result:
-...
- call_timer_fn from __run_timers+0x163/0x25c
- __run_timers from run_timer_softirq+0x15/0x24
- run_timer_softirq from __do_softirq+0xe3/0x232
- __do_softirq from __irq_exit_rcu+0x3f/0xac
- __irq_exit_rcu from irq_exit+0x7/0xe
- irq_exit from call_with_stack+0xd/0x10
-...
-The stacktrace ends with call_with_stack.
+So I'm marking your patch as 'Obsolete' in patchwork.
 
-Since bit 0 of pc in thumb2 is always 0,skip bit 0 when do compraing.
-Then we get expected stacktrace:
-...
- call_timer_fn from __run_timers+0x163/0x25c
- __run_timers from run_timer_softirq+0x15/0x24
- run_timer_softirq from __do_softirq+0xe3/0x232
- __do_softirq from __irq_exit_rcu+0x3f/0xac
- __irq_exit_rcu from irq_exit+0x7/0xe
- irq_exit from call_with_stack+0xd/0x10
- call_with_stack from __irq_svc+0x93/0xb6
-Exception stack(0xf0875f60 to 0xf0875fa8)
-5f60: ****
-5f80: ****
-5fa0: ****
- __irq_svc from arch_local_irq_enable+0x2/0x4
- arch_local_irq_enable from do_idle+0xad/0x1f6
-...
+Regards,
 
-Signed-off-by: Haibo Li <haibo.li@mediatek.com>
----
- arch/arm/kernel/unwind.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+	Hans
 
-diff --git a/arch/arm/kernel/unwind.c b/arch/arm/kernel/unwind.c
-index 9d2192156087..89e1f440082c 100644
---- a/arch/arm/kernel/unwind.c
-+++ b/arch/arm/kernel/unwind.c
-@@ -482,7 +482,8 @@ int unwind_frame(struct stackframe *frame)
- 
- 	ctrl.check_each_pop = 0;
- 
--	if (prel31_to_addr(&idx->addr_offset) == (u32)&call_with_stack) {
-+	if (prel31_to_addr(&idx->addr_offset) ==
-+		((u32)&call_with_stack & (~0x01))) {
- 		/*
- 		 * call_with_stack() is the only place where we permit SP to
- 		 * jump from one stack to another, and since we know it is
--- 
-2.18.0
+> ---
+>  drivers/media/pci/sta2x11/sta2x11_vip.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/media/pci/sta2x11/sta2x11_vip.c b/drivers/media/pci/sta2x11/sta2x11_vip.c
+> index e4cf9d63e926d..a6456673be3f6 100644
+> --- a/drivers/media/pci/sta2x11/sta2x11_vip.c
+> +++ b/drivers/media/pci/sta2x11/sta2x11_vip.c
+> @@ -757,7 +757,7 @@ static const struct video_device video_dev_template = {
+>  /**
+>   * vip_irq - interrupt routine
+>   * @irq: Number of interrupt ( not used, correct number is assumed )
+> - * @vip: local data structure containing all information
+> + * @data: local data structure containing all information
+>   *
+>   * check for both frame interrupts set ( top and bottom ).
+>   * check FIFO overflow, but limit number of log messages after open.
+> @@ -767,8 +767,9 @@ static const struct video_device video_dev_template = {
+>   *
+>   * IRQ_HANDLED, interrupt done.
+>   */
+> -static irqreturn_t vip_irq(int irq, struct sta2x11_vip *vip)
+> +static irqreturn_t vip_irq(int irq, void *data)
+>  {
+> +	struct sta2x11_vip *vip = data;
+>  	unsigned int status;
+>  
+>  	status = reg_read(vip, DVP_ITS);
+> 
 
 
