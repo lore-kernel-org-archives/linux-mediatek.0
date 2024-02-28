@@ -4,39 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D2F3C47DD9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Feb 2024 07:55:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6A8EC54E41
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Feb 2024 08:01:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3mBkcrJ2DMdRExjkqX7NVMCWrBDE3iCoGNKHwvMzPTA=; b=392snwzdajJYj9FD6Da9ohdKYS
-	W6o7mX8PflLGfTLfSUXagJirBzjXHIVFllzH/KJkf8IZWZesBVZdEhKsV57fA282mGGWFVwNpt3NA
-	ul+tb7EAeYLSxiHqjeU/0eq/Ukm0QalIuCLXW24BpK9W5MCMhEqHA2sCEiTp9jLtGyW2qiXLMDxCm
-	YMtwiMMMAeM6ng88Q83n6Vv7/R10dQfoACaQ6+Q2f9tiVkmdz0Kqgi4X8+yfjnz9AzloIc9fDRb88
-	gjY65U5dZbgHgHTWsWrky3fapUSckU2WSpAEihvg6lov8PKdPbj47Op99+abE2CUENKPj23Wk8qDv
-	azAPbqWg==;
+	bh=sPKIuVtFexHAbo9sS0eGT4+s1fe6hV6MnIzd1K8XeLE=; b=sqx+qj1twFE2D/fOuFjd5oVgbP
+	2z90dcld7+6p9s/BdXcVFs0aqXzeq+D3h/NdLzSZpDF1XwpAhPnHy2m9h0M3E32QNPGZ7k4Pk0apw
+	2+vBjKomQ5bW+GU5b3MhhS3iYbrZQsM7C4OZ3JZOqnLCZJXUQn/yUJdaKzPXfkk6JN1O1CPT0wHHK
+	2JDcMGr9KDrlUdzoqjJV9D5fBXoDXJhKrU6eihkpoIy/+H3D58kzbSsU/QmDR8ufPQJIiH54QlujY
+	szprBnnxfxB8ojq6bwF9Rq7EwgZ3AAQhSPXqfTo4gJ4ALUo1iIz0kd9lPo6OWd56ZI0CCj62b6K/J
+	Q1VFhDVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfEmO-00000008NRn-2yRO;
-	Wed, 28 Feb 2024 07:55:04 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rfEsW-00000008OTs-1wr9;
+	Wed, 28 Feb 2024 08:01:24 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfEmK-00000008NQB-3Txr;
-	Wed, 28 Feb 2024 07:55:02 +0000
+	id 1rfEsS-00000008OSg-47gd;
+	Wed, 28 Feb 2024 08:01:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 0C052CE1C08;
-	Wed, 28 Feb 2024 07:54:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44095C433F1;
-	Wed, 28 Feb 2024 07:54:53 +0000 (UTC)
-Message-ID: <de48fffa-4b1c-465a-aa63-b2b6372ac5e6@xs4all.nl>
-Date: Wed, 28 Feb 2024 08:54:51 +0100
+	by sin.source.kernel.org (Postfix) with ESMTP id 19AD9CE1FA9;
+	Wed, 28 Feb 2024 08:01:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67F6BC433C7;
+	Wed, 28 Feb 2024 08:01:14 +0000 (UTC)
+Message-ID: <ab5e7379-8a55-43d1-b784-8d89aae250c3@xs4all.nl>
+Date: Wed, 28 Feb 2024 09:01:12 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] media: pci: sta2x11: Fix
+Subject: Re: [PATCH v2 2/3] media: usb: pvrusb2: Fix
  Wcast-function-type-strict warnings
+Content-Language: en-US, nl
 To: Ricardo Ribalda <ribalda@chromium.org>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  Nathan Chancellor <nathan@kernel.org>,
@@ -53,8 +54,7 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  llvm@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-remoteproc@vger.kernel.org
 References: <20240226-fix-clang-warnings-v2-0-fa1bc931d17e@chromium.org>
- <20240226-fix-clang-warnings-v2-1-fa1bc931d17e@chromium.org>
-Content-Language: en-US, nl
+ <20240226-fix-clang-warnings-v2-2-fa1bc931d17e@chromium.org>
 From: Hans Verkuil <hverkuil@xs4all.nl>
 Autocrypt: addr=hverkuil@xs4all.nl; keydata=
  xsFNBFQ84W0BEAC7EF1iL4s3tY8cRTVkJT/297h0Hz0ypA+ByVM4CdU9sN6ua/YoFlr9k0K4
@@ -99,12 +99,12 @@ Autocrypt: addr=hverkuil@xs4all.nl; keydata=
  gYmkrmv0duG1FStpY+IIQn1TOkuXrciTVfZY1cZD0aVxwlxXBnUNZZNslldvXFtndxR0SFat
  sflovhDxKyhFwXOP0Rv8H378/+14TaykknRBIKEc0+lcr+EMOSUR5eg4aURb8Gc3Uc7fgQ6q
  UssTXzHPyj1hAyDpfu8DzAwlh4kKFTodxSsKAjI45SLjadSc94/5Gy8645Y1KgBzBPTH7Q==
-In-Reply-To: <20240226-fix-clang-warnings-v2-1-fa1bc931d17e@chromium.org>
+In-Reply-To: <20240226-fix-clang-warnings-v2-2-fa1bc931d17e@chromium.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_235501_263956_3DBE2DF6 
-X-CRM114-Status: GOOD (  16.55  )
+X-CRM114-CacheID: sfid-20240228_000121_409062_E124DEC4 
+X-CRM114-Status: GOOD (  16.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,49 +121,104 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On 26/02/2024 18:32, Ricardo Ribalda wrote:
 > Building with LLVM=1 throws the following warning:
-> drivers/media/pci/sta2x11/sta2x11_vip.c:1057:6: warning: cast from 'irqreturn_t (*)(int, struct sta2x11_vip *)' (aka 'enum irqreturn (*)(int, struct sta2x11_vip *)') to 'irq_handler_t' (aka 'enum irqreturn (*)(int, void *)') converts to incompatible function type [-Wcast-function-type-strict]
-> 
-> Reviewed-by: Nathan Chancellor <nathan@kernel.org>
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> drivers/media/usb/pvrusb2/pvrusb2-context.c:110:6: warning: cast from 'void (*)(struct pvr2_context *)' to 'void (*)(void *)' converts to incompatible function type [-Wcast-function-type-strict]
+> drivers/media/usb/pvrusb2/pvrusb2-v4l2.c:1070:30: warning: cast from 'void (*)(struct pvr2_v4l2_fh *)' to 'pvr2_stream_callback' (aka 'void (*)(void *)') converts to incompatible function type [-Wcast-function-type-strict] drivers/media/usb/pvrusb2/pvrusb2-dvb.c:152:6: warning: cast from 'void (*)(struct pvr2_dvb_adapter *)' to 'pvr2_stream_callback' (aka 'void (*)(void *)') converts to incompatible function type [-Wcast-function-type-strict]
 
-Arnd's patch for this has already been merged:
+This patch from Arnd has already been merged, superseding your patch:
 
-https://lore.kernel.org/linux-media/20240213095451.454142-1-arnd@kernel.org/
+https://lore.kernel.org/linux-media/20240213100439.457403-1-arnd@kernel.org/
 
-So I'm marking your patch as 'Obsolete' in patchwork.
+Marking your patch as Obsolete in patchwork.
 
 Regards,
 
 	Hans
 
-> ---
->  drivers/media/pci/sta2x11/sta2x11_vip.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/media/pci/sta2x11/sta2x11_vip.c b/drivers/media/pci/sta2x11/sta2x11_vip.c
-> index e4cf9d63e926d..a6456673be3f6 100644
-> --- a/drivers/media/pci/sta2x11/sta2x11_vip.c
-> +++ b/drivers/media/pci/sta2x11/sta2x11_vip.c
-> @@ -757,7 +757,7 @@ static const struct video_device video_dev_template = {
->  /**
->   * vip_irq - interrupt routine
->   * @irq: Number of interrupt ( not used, correct number is assumed )
-> - * @vip: local data structure containing all information
-> + * @data: local data structure containing all information
->   *
->   * check for both frame interrupts set ( top and bottom ).
->   * check FIFO overflow, but limit number of log messages after open.
-> @@ -767,8 +767,9 @@ static const struct video_device video_dev_template = {
->   *
->   * IRQ_HANDLED, interrupt done.
->   */
-> -static irqreturn_t vip_irq(int irq, struct sta2x11_vip *vip)
-> +static irqreturn_t vip_irq(int irq, void *data)
->  {
-> +	struct sta2x11_vip *vip = data;
->  	unsigned int status;
+> Reviewed-by: Nathan Chancellor <nathan@kernel.org>
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> ---
+>  drivers/media/usb/pvrusb2/pvrusb2-context.c | 5 +++--
+>  drivers/media/usb/pvrusb2/pvrusb2-dvb.c     | 7 ++++---
+>  drivers/media/usb/pvrusb2/pvrusb2-v4l2.c    | 7 ++++---
+>  3 files changed, 11 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/media/usb/pvrusb2/pvrusb2-context.c b/drivers/media/usb/pvrusb2/pvrusb2-context.c
+> index 1764674de98bc..16edabda191c4 100644
+> --- a/drivers/media/usb/pvrusb2/pvrusb2-context.c
+> +++ b/drivers/media/usb/pvrusb2/pvrusb2-context.c
+> @@ -90,8 +90,9 @@ static void pvr2_context_destroy(struct pvr2_context *mp)
+>  }
 >  
->  	status = reg_read(vip, DVP_ITS);
+>  
+> -static void pvr2_context_notify(struct pvr2_context *mp)
+> +static void pvr2_context_notify(void *data)
+>  {
+> +	struct pvr2_context *mp = data;
+>  	pvr2_context_set_notify(mp,!0);
+>  }
+>  
+> @@ -107,7 +108,7 @@ static void pvr2_context_check(struct pvr2_context *mp)
+>  			   "pvr2_context %p (initialize)", mp);
+>  		/* Finish hardware initialization */
+>  		if (pvr2_hdw_initialize(mp->hdw,
+> -					(void (*)(void *))pvr2_context_notify,
+> +					pvr2_context_notify,
+>  					mp)) {
+>  			mp->video_stream.stream =
+>  				pvr2_hdw_get_video_stream(mp->hdw);
+> diff --git a/drivers/media/usb/pvrusb2/pvrusb2-dvb.c b/drivers/media/usb/pvrusb2/pvrusb2-dvb.c
+> index 26811efe0fb58..8b9f1a09bd53d 100644
+> --- a/drivers/media/usb/pvrusb2/pvrusb2-dvb.c
+> +++ b/drivers/media/usb/pvrusb2/pvrusb2-dvb.c
+> @@ -88,8 +88,9 @@ static int pvr2_dvb_feed_thread(void *data)
+>  	return stat;
+>  }
+>  
+> -static void pvr2_dvb_notify(struct pvr2_dvb_adapter *adap)
+> +static void pvr2_dvb_notify(void *data)
+>  {
+> +	struct pvr2_dvb_adapter *adap = data;
+>  	wake_up(&adap->buffer_wait_data);
+>  }
+>  
+> @@ -148,8 +149,8 @@ static int pvr2_dvb_stream_do_start(struct pvr2_dvb_adapter *adap)
+>  		if (!(adap->buffer_storage[idx])) return -ENOMEM;
+>  	}
+>  
+> -	pvr2_stream_set_callback(pvr->video_stream.stream,
+> -				 (pvr2_stream_callback) pvr2_dvb_notify, adap);
+> +	pvr2_stream_set_callback(pvr->video_stream.stream, pvr2_dvb_notify,
+> +				 adap);
+>  
+>  	ret = pvr2_stream_set_buffer_count(stream, PVR2_DVB_BUFFER_COUNT);
+>  	if (ret < 0) return ret;
+> diff --git a/drivers/media/usb/pvrusb2/pvrusb2-v4l2.c b/drivers/media/usb/pvrusb2/pvrusb2-v4l2.c
+> index c04ab7258d645..590f80949bbfc 100644
+> --- a/drivers/media/usb/pvrusb2/pvrusb2-v4l2.c
+> +++ b/drivers/media/usb/pvrusb2/pvrusb2-v4l2.c
+> @@ -1032,9 +1032,10 @@ static int pvr2_v4l2_open(struct file *file)
+>  	return 0;
+>  }
+>  
+> -
+> -static void pvr2_v4l2_notify(struct pvr2_v4l2_fh *fhp)
+> +static void pvr2_v4l2_notify(void *data)
+>  {
+> +	struct pvr2_v4l2_fh *fhp = data;
+> +
+>  	wake_up(&fhp->wait_data);
+>  }
+>  
+> @@ -1067,7 +1068,7 @@ static int pvr2_v4l2_iosetup(struct pvr2_v4l2_fh *fh)
+>  
+>  	hdw = fh->channel.mc_head->hdw;
+>  	sp = fh->pdi->stream->stream;
+> -	pvr2_stream_set_callback(sp,(pvr2_stream_callback)pvr2_v4l2_notify,fh);
+> +	pvr2_stream_set_callback(sp, pvr2_v4l2_notify, fh);
+>  	pvr2_hdw_set_stream_type(hdw,fh->pdi->config);
+>  	if ((ret = pvr2_hdw_set_streaming(hdw,!0)) < 0) return ret;
+>  	return pvr2_ioread_set_enabled(fh->rhp,!0);
 > 
 
 
