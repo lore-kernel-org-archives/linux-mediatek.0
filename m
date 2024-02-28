@@ -4,101 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE186C5478C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Feb 2024 13:01:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12B3AC5478C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Feb 2024 14:44:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zu3ewqCG+5EQn7RzZWf4wxjkdVeCPYXJSPVh/ZEGpuY=; b=so8yjtAUAOD1dkCOtgonGJGbtS
-	ONvMC2qLNyN372tXxrfi5hUShOlrRMRjkNzDNBxaqaz7GH7HzBugcXYuImlZm2gSvTLxR+pOBcfrE
-	j+GINDIlI8xwHdnA/vZB5mSrXj/0W4NeViFvn1zluHJ7SdNfVfXI4cfKsa51+Fau8v0FMNURHMhs4
-	eBAD4TaJzq5YPvQ4tqtMD4HkKjkTZNykfapzdu8YX7qVWs5WBM11FzJD6mwhm0Zchm+slzgRSi866
-	LdYNkcx1PXd+g/zxbHC06jjQAyl7pzeNUNZRWngJaEz+aqhUoNRSLKxi73O+EYzUjU5dYolwHqk1G
-	EwhorITQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WnxSJQc1V/KtCTRg5FKAy2Dj8dMHG7PYdGj89T97msQ=; b=PXbBNMef7jU8Mml4acRPF8ekNA
+	f3pB+32sw/ZrKYx2Jjg5FerJ3dWhCT5zSZiC1zv0IOuY05+NhLMMZhRQYUkmf9udCe+Pcxq0sz34v
+	pTPe6xEcPWrDavpS6lmBMxE5BkMUk5VGV4PQsIme5ttF9Fn+PUGModKdTDzdRBdpSMrxeAMEAu8jT
+	3vxGwDR20RshdwaPwDglHsUGUI6F0iumKvsITM30XrNKZBAw4PE5J1Oq7sgkQf/ctzQrq/4DvM8wI
+	4vAGvD14wSmO+LZ5bsopYsPVxomjNV17u0q+99Z06RXKfo/MDLMdKvCAOGpq3/kxTcbF/vpU3wWuy
+	6OBg8uPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfJZK-00000009MuU-2UxU;
-	Wed, 28 Feb 2024 13:01:54 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1rfLAO-00000009kMd-0lUl;
+	Wed, 28 Feb 2024 14:44:16 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfIPw-000000095rZ-44FN
-	for linux-mediatek@lists.infradead.org;
-	Wed, 28 Feb 2024 11:48:20 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-33d32f74833so2956719f8f.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 28 Feb 2024 03:48:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1709120886; x=1709725686; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=zu3ewqCG+5EQn7RzZWf4wxjkdVeCPYXJSPVh/ZEGpuY=;
-        b=UBDSL2HaHtfhTLxF7rM5TkU4KM9iE058vs1qoIUWENDRPHr6jKsfcqAOagwHM6Rs/E
-         6ZLntB2jOX4NsGedtZd3nhf4UERSPhzf4X+3ZPT/ORhlCvTDndinf9pXQzFD+L9NFSYV
-         zXtft77tQt9FITNBant12tjHSJ/3GBBTIHmxq2LCILh6r3tEPzh7/CFFCCFLs2rkfBrv
-         vcHMqaO5Y708G925iq2zCbS1+8J9cK84YACtEGvrLeN2rvTFa1mvBQpk76a5k2ShVI34
-         +G48iwjljQWLB8wKWEe/qqL56/9oJplV3BccEAg6D99ujF7fPu/OCxxdq48OEYRWIBfz
-         p3hg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709120886; x=1709725686;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=zu3ewqCG+5EQn7RzZWf4wxjkdVeCPYXJSPVh/ZEGpuY=;
-        b=lq7DVvsyr9rcrhj4FYzYU5NOJU2zOPGwQvn8cYyvyjKuh6YJX64gQeKvQAboLuIcgh
-         78v7+plwTdxNxwu/MpOL+XTLQtrTpxtYxAAwP2eymZxYk3JFfeXZ5pi3b5DXZ60YNJJM
-         nVU8IDYtyRoJlp2gLNzMfbNBuABUVPoygDHBAv0e0ADIamSMQ+W4UPEaWZiIzvISoKPe
-         o7+z4j6gnuVjfzNYKEB8D959sjXTwhMmtZWJudnhvmBPsl/iBFQo2cfd9FVx9qkZ8io/
-         nyjJRSM+aSqG0IFRza4vCDwVvIzNBkCel5/xru3Q24BGp3fnK7h58x/+aponO0p7GPxb
-         TCDg==
-X-Forwarded-Encrypted: i=1; AJvYcCXAZyUPyySbActpvIwT55NIg6/y6Fw+tSnPHLnvPS7KPCgwVTFKFGqXyCiHzMdX8ld/q4zEClAuhZXNrXzyH/+4X3nS8MJQ26vI+y24vcNYx7jB
-X-Gm-Message-State: AOJu0YwSP1g1aPvaCvBvHejzX4pOPLLvyqcDAua5igEDMWZh1SCLmLd1
-	9rDiHsfBf3q9G1iGxn2hBOTR86qszGO59FZpYG6RL5Lm48X/ZCR3ksEjQJHytNY=
-X-Google-Smtp-Source: AGHT+IEB/UQwleJbf7XKW6dc1tBjhAXHjTKhYWiBK169zurfst+bdJvN4ZyFBulks3zB3QHX3zW7pQ==
-X-Received: by 2002:adf:fd44:0:b0:33d:277d:a2c7 with SMTP id h4-20020adffd44000000b0033d277da2c7mr7855219wrs.16.1709120886505;
-        Wed, 28 Feb 2024 03:48:06 -0800 (PST)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id bo14-20020a056000068e00b0033d6bc17d0esm15009877wrb.74.2024.02.28.03.48.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 28 Feb 2024 03:48:06 -0800 (PST)
-Message-ID: <a4ba6a35-cfb4-4c3d-a9c7-ccd47d4c32d8@baylibre.com>
-Date: Wed, 28 Feb 2024 12:48:04 +0100
+	id 1rfLAL-00000009kKc-0s1w;
+	Wed, 28 Feb 2024 14:44:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1709131448;
+	bh=rgyFRb2qJ/LTVeYOGlUVm9UR8z2N1d7h6w79Dmp9Ppg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Dst0ycDrdetbBG5Wnte7R6a20PkjM4HySfNehnxSczktkhVi7nQFMFnSZPOUDyoXq
+	 YNbrqS412UlF/fOzoT11/dQi9I1tA9syE72Fw1oeT3dqa+9nV6cZss1Iu/yq1jITGx
+	 W+/0hrQN4gSC3F/XCb2Snlpy+GESeJj21ZXX6yeA4zDNzjlFWcYXnpvFd5ZLmnu3Gg
+	 5l5zdloEiM05JmznCcWiKuL3mTJAkgBDhz5T73ljZpLtb/9rQ+r4maUmUD6nJE0gK1
+	 Iok4PQA+IqJFsMFLSfiKclw8ZxgMVBnwuHN2cehlud74SqG08clxHyIrE4x2fnTl2z
+	 wmMOZHZBBaJkg==
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 50252378204B;
+	Wed, 28 Feb 2024 14:44:06 +0000 (UTC)
+Date: Wed, 28 Feb 2024 09:44:04 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] soc: mediatek: cmdq: Don't log an error when
+ gce-client-reg is not found
+Message-ID: <957b44d3-ef48-4682-8db5-3261e582ac8f@notapiano>
+References: <20240226-gce-client-reg-log-dbg-v1-1-f0fff97c30c7@collabora.com>
+ <6389f1e3-57b2-453a-af6f-6bc7f725ad31@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/18] ASoC: dt-bindings: mediatek,mt8365-afe: Add audio
- afe document
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Lee Jones <lee@kernel.org>,
- Flora Fu <flora.fu@mediatek.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Sumit Semwal <sumit.semwal@linaro.org>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org
-References: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
- <20240226-audio-i350-v1-1-4fa1cea1667f@baylibre.com>
- <ce5f71a9-1b5f-4724-89db-dae2f64e8008@linaro.org>
- <eeb3329b-0558-4237-8343-4e11f65a6a35@baylibre.com>
- <bd4bf6ae-350e-4ee6-a924-7dd31b2c6034@linaro.org>
- <66e527af-0253-4565-9822-04ed84e5817c@baylibre.com>
- <bb86b986-ecd7-416a-9036-082a3cff2176@collabora.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <bb86b986-ecd7-416a-9036-082a3cff2176@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <6389f1e3-57b2-453a-af6f-6bc7f725ad31@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240228_034809_444509_945601EF 
-X-CRM114-Status: GOOD (  29.11  )
+X-CRM114-CacheID: sfid-20240228_064413_424239_C1E31C16 
+X-CRM114-Status: GOOD (  28.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,196 +76,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Feb 28, 2024 at 10:41:15AM +0100, AngeloGioacchino Del Regno wrote:
+> Il 26/02/24 22:31, N�colas F. R. A. Prado ha scritto:
+> > Most of the callers to this function do not require CMDQ support, it is
+> > optional, so the missing property shouldn't cause an error message.
+> > Furthermore, the callers that do require CMDQ support already log at the
+> > error level when an error is returned.
+> > 
+> > Change the log message in this helper to be printed at the debug level
+> > instead.
+> 
+> CMDQ is optional, yes. At least, for some devices it is.
+> 
+> Full story, though, wants that if you use the CPU for register manipulation
+> instead of programming the GCE (even with threading, fantastic!) you will
+> trigger various performance issues.
+> 
+> In the end, you *don't want* to use the CPU if GCE is available!
+> 
+> The reasons why the CMDQ/GCE is optional are:
+>  - You can check register-by-register r/w for debugging scenarios by using
+>    the CPU to manipulate them instead of having something magically doing
+>    that for you at a certain (pre-set, yes, but still!) point;
+>  - Not all SoCs have the same amount of GCE threads and channels, some may
+>    support writing to IP block X through the GCE, some may not, but both
+>    may support writing for IP block Y through this mailbox;
+>  - MediaTek chose to support both ways, enabling means to debug stuff upstream,
+>    the other choice would've been to never support CPU register R/W on some IPs
+> 
+>    ... and btw - about the last part: Kudos, MediaTek.
 
-
-On 28/02/2024 11:25, AngeloGioacchino Del Regno wrote:
-> Il 28/02/24 10:57, Alexandre Mergnat ha scritto:
->> I think I got it.
->>
->> - mediatek,i2s-shared-clock: will be remove from DT
->> - mediatek,dmic-iir-on: will be remove from DT
->> - mediatek,dmic-irr-mode: will be remove from DT
->> - mediatek,dmic-two-wire-mode: rephrase description needed
->>
->> I've did abstraction (despite me) that IIR settings are runtime config 
->> because the driver implement its usage like a one-time-setup -_-'
->>
-> 
-> Yes but just one more thing I just noticed: 
-> `mediatek,dmic-two-wire-mode` - can we
-> please rename this to `mediatek,dmic-mode` ?
-
-Sure, I wasn't aware of this property. I will do it.
-
-Note: the description isn't consistent with the enum comments
-"
-0 means two wires, 1 means one wire.
-...
-        - 0 # one wire
-        - 1 # two wires
-"
+Thank you for all the insight! :)
 
 > 
-> That'd be for consistency check mt6359.yaml and mt6358.txt
+> Now, I also get why you're raising this, but we have to find an agreement here
+> on a different way to proceed that satisfies all of us.
 > 
->    mediatek,dmic-mode:
->      $ref: /schemas/types.yaml#/definitions/uint32
->      description: |
->        Indicates how many data pins are used to transmit two channels of 
-> PDM
->        signal. 0 means two wires, 1 means one wire. Default value is 0.
->      enum:
->        - 0 # one wire
->        - 1 # two wires
+> First of all..
 > 
-> Cheers,
-> Angelo
-> 
-> 
-> 
->> Thanks for the explanations, that help.
->>
->> Regards,
->> Alexandre
->>
->> On 28/02/2024 08:28, Krzysztof Kozlowski wrote:
->>> On 27/02/2024 16:18, Alexandre Mergnat wrote:
->>>>>
->>>>>> +    type: boolean
->>>>>> +
->>>>>> +  mediatek,dmic-iir-on:
->>>>>> +    description:
->>>>>> +      Boolean which specifies whether the DMIC IIR is enabled.
->>>>>> +      If this property is not present the IIR is disabled.
->>>>>
->>>>> "is enabled" or "enable it"?
->>>>>
->>>>> You described the desired Linux feature or behavior, not the actual
->>>>> hardware. The bindings are about the latter, so instead you need to
->>>>> rephrase the property and its description to match actual hardware
->>>>> capabilities/features/configuration etc.
->>>>
->>>> I will rephrase:
->>>>
->>>> True to enable the Infinite Impulse Response (IIR) filter
->>>> on the digital microphone inputs.
->>>
->>> I still don't know why this is DT-specific. You still tell driver what
->>> to do...
->>>
->>>>
->>>>>
->>>>>> +    type: boolean
->>>>>> +
->>>>>> +  mediatek,dmic-irr-mode:
->>>>>> +    $ref: /schemas/types.yaml#/definitions/uint32
->>>>>> +    description:
->>>>>> +      Selects stop band of IIR DC-removal filter.
->>>>>> +      0 = Software programmable custom coeff loaded by the driver.
->>>>>
->>>>> Bindings are for hardware, not drivers. Why is this a property of 
->>>>> board DTS?
->>>>
->>>> Actually this is a hardware feature. Mode 1 t 5 are predefined filters.
->>>> Mode 0, the HW will read some "coef filter registers" to setup the
->>>> custom filter. the "coef filter regs" are written by the driver.
->>>> Currently the coef values are hardcoded in the driver.
->>>
->>> You don't get the point. Just because you choose some mode it does not
->>> mean is hardware feature for DT. Sampling frequency done by hardware is
->>> also "hardware feature", but do you put it to DT? No.
->>>
->>> Explain why this is board-specific, not runtime configuration.
->>>
->>>>
->>>>>
->>>>>> +      1 = 5Hz if 48KHz mode.
->>>>>> +      2 = 10Hz if 48KHz mode.
->>>>>> +      3 = 25Hz if 48KHz mode.
->>>>>> +      4 = 50Hz if 48KHz mode.
->>>>>> +      5 = 65Hz if 48KHz mode.
->>>>>
->>>>> Use proper unit suffixes - hz.
->>>>>
->>>>>
->>>>>> +    enum:
->>>>>> +      - 0
->>>>>> +      - 1
->>>>>> +      - 2
->>>>>> +      - 3
->>>>>> +      - 4
->>>>>> +      - 5
->>>>>> +
->>>>>> +  mediatek,dmic-two-wire-mode:
->>>>>> +    description:
->>>>>> +      Boolean which turns on digital microphone for two wire mode.
->>>>>> +      If this property is not present the two wire mode is disabled.
->>>>>
->>>>> This looks like hardware property, but the naming looks like SW. Again
->>>>> you instruct what driver should do. Standard disclaimer:
->>>>>
->>>>> You described the desired Linux feature or behavior, not the actual
->>>>> hardware. The bindings are about the latter, so instead you need to
->>>>> rephrase the property and its description to match actual hardware
->>>>> capabilities/features/configuration etc.
->>>>
->>>> Actually this is a hardware feature. This is ALL I have to describe the
->>>> HW behavior from the datasheet:
->>>> "
->>>> bit name: ul_dmic_two_wire_ctl
->>>> Turns on digital microphone for two wire mode.
->>>> 0: Turn off
->>>> 1: Turn on
->>>
->>> That's rather suggestion it is not a description of hardware but you
->>> want driver to do something...
->>>
->>>> "
->>>>
->>>> On the board schematic, SoC and DMIC and linked by 3 pins:
->>>> - clk
->>>> - data0
->>>> - data1
->>>>
->>>> IMHO, "two-wire-mode" means the HW use 2 pins for data, and the SoC 
->>>> must
->>>> be aware of that by reading the register value written by the driver,
->>>> using the value found in the DTS.
->>>
->>> So this depends on type of connection of DMIC? Then rephrase description
->>> property like this.
->>>
->>>>
->>>> I don't get why you think it wouldn't be hardware behavior.
->>>
->>> Because telling what to write to the registers which is typical sign of
->>> people stuffing to DT whatever they need to configure the hardware.
->>>
->>>>
->>>> Rephrase description:
->>>> "True to enable the two wire mode of the digital microphone"
->>>> Is it better ?
->>>
->>> No, because again you describe some sort of mode. If you insist on such
->>> description, then my answer is: it's runtime, so not suitable for DT.
->>> Instead describe what is the hardware problem/configuration, e.g. "DMIC
->>> is connected with only CLK and DATA0, without third pin" etc.
->>>
->>>>
->>>> About the property name, "mediatek,dmic-two-wire-ctl" sound better 
->>>> for you ?
->>>
->>> To sound more like a register less like physical characteristic of the
->>> board? No. The name can stay, I don't have better ideas.
->>>
->>>
->>> Best regards,
->>> Krzysztof
->>>
->>
-> 
+> Which device on which SoC is missing the GCE client register DT property?
+> Do said SoC really not have a GCE client register for that device?
 
--- 
-Regards,
-Alexandre
+This is what I see:
+
+On mt8192-asurada-spherion:
+mediatek-mutex 14001000.mutex: error -2 can't parse gce-client-reg property (0)
+
+On mt8195-cherry-tomato:
+mtk-mmsys 14000000.syscon: error -2 can't parse gce-client-reg property (0)
+mtk-mmsys 14f00000.syscon: error -2 can't parse gce-client-reg property (0)
+mediatek-mutex 1c016000.mutex: error -2 can't parse gce-client-reg property (0)
+mtk-mmsys 1c01a000.syscon: error -2 can't parse gce-client-reg property (0)
+mediatek-mutex 1c101000.mutex: error -2 can't parse gce-client-reg property (0)
+
+So yes, there are a few missing. I will send patches adding them so we can get
+the best performance possible upstream.
+
+> 
+> Is any upstream supported SoC really lacking a GCE register for the upstream
+> supported IPs?
+> 
+> I'm not sure.... :-)
+> 
+> P.S.: I guess that the alternative (that I somewhat dislike, and you can probably
+>       understand why after reading the reasons above) would be to turn that into a
+>       dev_info() instead...
+> 
+> P.P.S.: Having no GCE usually means that there's a performance issue! In that case,
+>         it's ... a mistake, so, an error, kind-of.... :-)
+
+Given the performance impact, I agree that debug, and even info level is not a
+good option. At the same time, the hardware still works correctly without the
+GCE (as we have been running it so far without even realizing!), so I think
+calling it an error is too much, and a warning would be the most suitable level,
+as we just want to warn userspace: "Hey user, be advised that you're missing
+GCE, so you'll get worse performance! It will still work though". What do you
+think?
+
+Thanks,
+N�colas
 
