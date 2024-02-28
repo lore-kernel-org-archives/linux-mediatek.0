@@ -4,103 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C552C47DD9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Feb 2024 09:22:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFF8CC47DD9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Feb 2024 09:31:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w94IJo1kay0f/xc+3V75vT4mCcz7+PjX1XmawfCqo0k=; b=zYnyiV4AO3S9t+poLA1TkkY9r8
-	jcP6zXApxoQ+rS3tEt6msOLI/p66CqQG3R/bkzBkwPxbPA47WDrgxainFXLY8kj6UpNIr1z27UmUj
-	8mcQtn+ya+Y6nd+VE5uzbW2fOGxuWQaL5d9wMB81e+HL145eBX62kT28gpF/8h2oYs+r0ySdMCA7B
-	EYEJgisDChVSWzUqUcsYjNXoAZUp7cadiEYC9O/ugR6lgPk3w6O5OByUnewGwt6RJfJjXZh7QeQlo
-	Gmuz4fq86Da0V5ADFrPk7ctRZExGNo7rZPCJNbg5zaLwqU0HfC5W5A78fVbdWHY/vrqo8mfMV3ojl
-	xltKbc6g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Lj4ZV1KXXFcbcgj2xJ8FqsFyL/6ecLDUxE0ee1RPZS4=; b=GguBdvyuqjBF36rZzSaohC0uYt
+	3Gb1K0Oe0jiv5t48NLudIO899jDlA9PUX1Kd3hIQcym0GDMZC7pW7680teqiKJEN9P/mLxUgYEvwq
+	rXLedW4A/kGHgVnqNT4HU9yKDViL/IA6bsy251D2TKu+tOAdynPBZKHYjbyM1iRwWelA4qMCVz1Q2
+	n54VddYQyqgCAGG1/ryzOgACNjRVbJ6tsPOo8JYecMq73cXOWTgvo/FBd3Ha/B54YoppoCjOlbaRb
+	jNjlFFXG5ks72w9l1W8DgrB20OiXhlsOVMw7zp+U/YpwHYDYCwLhCCdsnkiBwxTLwUMyP4arRf1QT
+	64W2eOjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfG9Q-00000008efu-2NEG;
-	Wed, 28 Feb 2024 09:22:56 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1rfGI8-00000008g0l-1fA1;
+	Wed, 28 Feb 2024 09:31:56 +0000
+Received: from szxga08-in.huawei.com ([45.249.212.255])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfG9N-00000008eeJ-2ODl;
-	Wed, 28 Feb 2024 09:22:54 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-a43488745bcso456538066b.3;
-        Wed, 28 Feb 2024 01:22:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1709112171; x=1709716971; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=w94IJo1kay0f/xc+3V75vT4mCcz7+PjX1XmawfCqo0k=;
-        b=ImEHy6NYa7Atl7vxqaO1Eezku5Mgo2J6Tk9DBaBvx8liUbN7EP4goOyUjn5pSl6Shi
-         yUivrr/tD0ixP3v+zvMahi4QFOyO8VK8J4+se2yDPZJmt3mXSd6r3k1cO2+YaJcdm92y
-         vo4DTiWLpwzkygY2e4jB1fVdzNS88X52nmfbjTAHZMuE0fxmr2cQ/7gsTpuWo+w8LHoj
-         eiTfIik1tuHLOOEfsqQsXPj/8yigASpPMSqtzKQyLXvIlWxPdXT40jBPx0lQBHzjfF7A
-         rcvvthDVQcuq0+e83J8j+LzMvNphNc8ZnQkyUzt+n5DAXEuBLtQuqcOH0Ycxp3IYZlsr
-         EFEA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709112171; x=1709716971;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=w94IJo1kay0f/xc+3V75vT4mCcz7+PjX1XmawfCqo0k=;
-        b=ZPbltDOznADV5z5NEFQax+inEEk929b0jy+h1ZnwUh9a7tSX8/p46KIQUhTlbdQlMR
-         cPTRJom17TTPdtZbfHKkJz3Q32vmM/V52fwLwY4aXk6M51AaI3doCiSgsxuA06Mtphwt
-         9NUQTM80FmyAFMLjxW1+bTUgVOej4jvfH6t8YKkJg/9ehfW596Esl1yOjyNB44A3C+io
-         XCjNAp2EnyVfdX4daWWddBH+Xk2IJg00BNVCMHxrL574xxcLTa4TeoWR6zzNlUp+NVwm
-         Bhr6zZ7O2gFEqIAzqCKNETyQmKT6APh3UvE9l2tf03nKwR2beGuT4tgFe7a7CbXfuC0R
-         DR1Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWut+kWse6Nvqz0vZfI3pKmYjMV2HDuOA8R7qgsop1rErQHa7EHg4b20yA4wfcF78eic+8IoLJNv0OwN+j/sfJoKU7I8p8op5KTyPw5dAxWjxHuIdygj2JVtn9dlnrRvjymmcR+/EAMaYEQJ9PPY7XNp0ripkWHptA=
-X-Gm-Message-State: AOJu0YxuWGiLEGlSd96TX14kNINxJkhXpQXVdrKvarKWNT5I2231qGaq
-	FOAhbDC8AQZSFMWogajx+Mm+iduZdu0wZuxmwTXQwtePw5eoesJE3ZC1KrqMlgHX7pG17Hpn/Z3
-	9nYQhNYOfQ61IhQCEBv4IJ4n1W+4=
-X-Google-Smtp-Source: AGHT+IHJjODq1VsNvfrzm9ytWJM7dmnIy0B+0j31P5FxvcVxR8iMf8r56oiXY2gOUy0fbeosoKE9yzk8Daa4z6NCrTM=
-X-Received: by 2002:a17:906:3c05:b0:a3f:db30:8999 with SMTP id
- h5-20020a1709063c0500b00a3fdb308999mr9409719ejg.4.1709112170579; Wed, 28 Feb
- 2024 01:22:50 -0800 (PST)
+	id 1rfGI5-00000008fzo-0oGn;
+	Wed, 28 Feb 2024 09:31:54 +0000
+Received: from mail.maildlp.com (unknown [172.19.163.252])
+	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4Tl8Fy1k70z1Q99X;
+	Wed, 28 Feb 2024 17:29:58 +0800 (CST)
+Received: from dggpemm500005.china.huawei.com (unknown [7.185.36.74])
+	by mail.maildlp.com (Postfix) with ESMTPS id B377E18005C;
+	Wed, 28 Feb 2024 17:31:46 +0800 (CST)
+Received: from localhost.localdomain (10.69.192.56) by
+ dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Wed, 28 Feb 2024 17:31:46 +0800
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
+	<linyunsheng@huawei.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Alexei
+ Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper
+ Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<bpf@vger.kernel.org>
+Subject: [PATCH net-next v6 0/5] remove page frag implementation in vhost_net
+Date: Wed, 28 Feb 2024 17:30:07 +0800
+Message-ID: <20240228093013.8263-1-linyunsheng@huawei.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
-References: <20240227013221.21512-1-zhi.mao@mediatek.com> <20240227013221.21512-3-zhi.mao@mediatek.com>
- <CAHp75VciCJuoOwC8ozanWYqSCM=vWpiaqymJ2-gQfrSt5Ts6fQ@mail.gmail.com> <b4889fad324ec88eb3a22f51b0aa512cc93bd2cb.camel@mediatek.com>
-In-Reply-To: <b4889fad324ec88eb3a22f51b0aa512cc93bd2cb.camel@mediatek.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Wed, 28 Feb 2024 11:22:13 +0200
-Message-ID: <CAHp75Vd=X9e4rOJabF4AbzGRZAF4BiNJa-C4ivOoQb7kAMy3vQ@mail.gmail.com>
-Subject: Re: [PATCH v6 2/2] media: i2c: Add GC08A3 image sensor driver
-To: =?UTF-8?B?WmhpIE1hbyAo5q+b5pm6KQ==?= <zhi.mao@mediatek.com>
-Cc: "heiko@sntech.de" <heiko@sntech.de>, 
-	"tomi.valkeinen@ideasonboard.com" <tomi.valkeinen@ideasonboard.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>, 
-	"yunkec@chromium.org" <yunkec@chromium.org>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"dan.scally@ideasonboard.com" <dan.scally@ideasonboard.com>, 
-	"gerald.loacker@wolfvision.net" <gerald.loacker@wolfvision.net>, 
-	=?UTF-8?B?U2hlbmduYW4gV2FuZyAo546L5Zyj55S3KQ==?= <shengnan.wang@mediatek.com>, 
-	"hdegoede@redhat.com" <hdegoede@redhat.com>, 
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, 
-	"linus.walleij@linaro.org" <linus.walleij@linaro.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	=?UTF-8?B?WWF5YSBDaGFuZyAo5by16ZuF5riFKQ==?= <Yaya.Chang@mediatek.com>, 
-	"mchehab@kernel.org" <mchehab@kernel.org>, 
-	"jacopo.mondi@ideasonboard.com" <jacopo.mondi@ideasonboard.com>, 
-	"jernej.skrabec@gmail.com" <jernej.skrabec@gmail.com>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"bingbu.cao@intel.com" <bingbu.cao@intel.com>, 
-	"sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>, 
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
-	"10572168@qq.com" <10572168@qq.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>, 
-	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>, 
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
-	"laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>, 
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
-	"macromorgan@hotmail.com" <macromorgan@hotmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.69.192.56]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ dggpemm500005.china.huawei.com (7.185.36.74)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240228_012253_632754_E31B3292 
-X-CRM114-Status: GOOD (  23.19  )
+X-CRM114-CacheID: sfid-20240228_013153_624068_3F5B3FC9 
+X-CRM114-Status: GOOD (  13.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,77 +72,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 28, 2024 at 5:19=E2=80=AFAM Zhi Mao (=E6=AF=9B=E6=99=BA) <zhi.m=
-ao@mediatek.com> wrote:
-> On Tue, 2024-02-27 at 14:46 +0200, Andy Shevchenko wrote:
-> >  On Tue, Feb 27, 2024 at 3:33=E2=80=AFAM Zhi Mao <zhi.mao@mediatek.com>
-> > wrote:
+Currently there are three implementations for page frag:
 
-...
+1. mm/page_alloc.c: net stack seems to be using it in the
+   rx part with 'struct page_frag_cache' and the main API
+   being page_frag_alloc_align().
+2. net/core/sock.c: net stack seems to be using it in the
+   tx part with 'struct page_frag' and the main API being
+   skb_page_frag_refill().
+3. drivers/vhost/net.c: vhost seems to be using it to build
+   xdp frame, and it's implementation seems to be a mix of
+   the above two.
 
-> > > +#include <linux/clk.h>
-> > > +#include <linux/delay.h>
-> > > +#include <linux/gpio/consumer.h>
-> > > +#include <linux/pm_runtime.h>
-> > > +#include <linux/regulator/consumer.h>
-> > > +#include <linux/units.h>
-> >
-> > This is a semi-random list of inclusions. Please, follow the IWYU
-> > (Include What You Use) principle. *At least* this list misses the
-> > following:  array_size.h, bits.h, container_of.h, device.h, err.h,
-> > i2c.h, math64.h, module.h, mod_devicetable.h, property.h, types.h.
+This patchset tries to unfiy the page frag implementation a
+little bit by unifying gfp bit for order 3 page allocation
+and replacing page frag implementation in vhost.c with the
+one in page_alloc.c.
 
-> After checking these header files, we find:
-> 1."container_of.h" is included by "media-entity.h", while "media-
-> entity.h" is inculded by "v4l2-subdev.h"
-> 2."device.h" is included by v4l2-dev.h, while "v4l2-dev.h" is inculded
-> by "v4l2-subdev.h"
-> 3."types.h" is inclded by "v4l2-cci.h"
-> 4.remaining header files which mentioned above are also similar, they
-> by some other header files
-> I think we just need include those necessary header files(such as
-> "v4l2-subdev.h"/"v4l2-cci.h"...) in sensor driver.
+After this patchset, we are not only able to unify the page
+frag implementation a little, but also able to have about
+0.5% performance boost testing by using the vhost_net_test
+introduced in the last patch.
 
-That's bad. You should read again what the IWYU principle means.
+Before this patchset:
+Performance counter stats for './vhost_net_test' (10 runs):
 
-> If we add these header files which mentioned above, I am afraid it will
-> cause "repeated inclusion header file" issue.
+     305325.78 msec task-clock                       #    1.738 CPUs utilized               ( +-  0.12% )
+       1048668      context-switches                 #    3.435 K/sec                       ( +-  0.00% )
+            11      cpu-migrations                   #    0.036 /sec                        ( +- 17.64% )
+            33      page-faults                      #    0.108 /sec                        ( +-  0.49% )
+  244651819491      cycles                           #    0.801 GHz                         ( +-  0.43% )  (64)
+   64714638024      stalled-cycles-frontend          #   26.45% frontend cycles idle        ( +-  2.19% )  (67)
+   30774313491      stalled-cycles-backend           #   12.58% backend cycles idle         ( +-  7.68% )  (70)
+  201749748680      instructions                     #    0.82  insn per cycle
+                                              #    0.32  stalled cycles per insn     ( +-  0.41% )  (66.76%)
+   65494787909      branches                         #  214.508 M/sec                       ( +-  0.35% )  (64)
+    4284111313      branch-misses                    #    6.54% of all branches             ( +-  0.45% )  (66)
 
-How would it be possible? Are some headers broken?
+       175.699 +- 0.189 seconds time elapsed  ( +-  0.11% )
 
-> As this driver code can be compiled pass, so there is not miss any
-> header files.
 
-There are _a lot_ of missing headers. Your compilation works by luck.
+After this patchset:
+Performance counter stats for './vhost_net_test' (10 runs):
 
-> Another, I also reviewed some other sensor driver code(such as
-> gc0a08/gc2145 and imx/ov), they are all the same.
+     303974.38 msec task-clock                       #    1.739 CPUs utilized               ( +-  0.14% )
+       1048807      context-switches                 #    3.450 K/sec                       ( +-  0.00% )
+            14      cpu-migrations                   #    0.046 /sec                        ( +- 12.86% )
+            33      page-faults                      #    0.109 /sec                        ( +-  0.46% )
+  251289376347      cycles                           #    0.827 GHz                         ( +-  0.32% )  (60)
+   67885175415      stalled-cycles-frontend          #   27.01% frontend cycles idle        ( +-  0.48% )  (63)
+   27809282600      stalled-cycles-backend           #   11.07% backend cycles idle         ( +-  0.36% )  (71)
+  195543234672      instructions                     #    0.78  insn per cycle
+                                              #    0.35  stalled cycles per insn     ( +-  0.29% )  (69.04%)
+   62423183552      branches                         #  205.357 M/sec                       ( +-  0.48% )  (67)
+    4135666632      branch-misses                    #    6.63% of all branches             ( +-  0.63% )  (67)
 
-They are also problematic. So what?
+       174.764 +- 0.214 seconds time elapsed  ( +-  0.12% )
 
-> Can we keep this coding style and follow with most of those
-> image sensor driver?
+Changelog:
+V6: Add timeout for poll() and simplify some logic as suggested
+    by Jason.
 
-Why? We do NOT want to continue developers to avoid decreasing their
-technical debts.
+V5: Address the comment from jason in vhost_net_test.c and the
+    comment about leaving out the gfp change for page frag in
+    sock.c as suggested by Paolo.
 
-...
+V4: Resend based on latest net-next branch.
 
-> > > +static const struct dev_pm_ops gc08a3_pm_ops =3D {
-> > > +       RUNTIME_PM_OPS(gc08a3_power_off, gc08a3_power_on, NULL)
-> > > +};
-> >
-> > There is a DEFINE_* PM macro, use it.
-> >
-> static DEFINE_SIMPLE_DEV_PM_OPS(gc08a3_pm_ops,
-> gc08a3_power_off,
-> gc08a3_power_on);
-> Do you mean, we shoule use this Macro?
+V3:
+1. Add __page_frag_alloc_align() which is passed with the align mask
+   the original function expected as suggested by Alexander.
+2. Drop patch 3 in v2 suggested by Alexander.
+3. Reorder patch 4 & 5 in v2 suggested by Alexander.
 
-It depends on what type of sleep you want to provide. There are
-different types of DEFINE_*() macros in the PM headers.
+Note that placing this gfp flags handing for order 3 page in an inline
+function is not considered, as we may be able to unify the page_frag
+and page_frag_cache handling.
 
---=20
-With Best Regards,
-Andy Shevchenko
+V2: Change 'xor'd' to 'masked off', add vhost tx testing for
+    vhost_net_test.
+
+V1: Fix some typo, drop RFC tag and rebase on latest net-next.
+
+Yunsheng Lin (5):
+  mm/page_alloc: modify page_frag_alloc_align() to accept align as an
+    argument
+  page_frag: unify gfp bits for order 3 page allocation
+  net: introduce page_frag_cache_drain()
+  vhost/net: remove vhost_net_page_frag_refill()
+  tools: virtio: introduce vhost_net_test
+
+ drivers/net/ethernet/google/gve/gve_main.c |  11 +-
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c |  17 +-
+ drivers/nvme/host/tcp.c                    |   7 +-
+ drivers/nvme/target/tcp.c                  |   4 +-
+ drivers/vhost/net.c                        |  91 ++--
+ include/linux/gfp.h                        |  16 +-
+ mm/page_alloc.c                            |  22 +-
+ net/core/skbuff.c                          |   9 +-
+ tools/virtio/.gitignore                    |   1 +
+ tools/virtio/Makefile                      |   8 +-
+ tools/virtio/linux/virtio_config.h         |   4 +
+ tools/virtio/vhost_net_test.c              | 532 +++++++++++++++++++++
+ 12 files changed, 609 insertions(+), 113 deletions(-)
+ create mode 100644 tools/virtio/vhost_net_test.c
+
+-- 
+2.33.0
+
 
