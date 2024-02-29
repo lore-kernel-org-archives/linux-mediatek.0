@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44F87C54E49
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 19:45:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41C84C54798
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 19:45:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t6Jf0rWy51NbWTpR4wbp37bUthkm7iYjcAV3sZuF+2k=; b=SmFvxLU5cZQ7tMWLNOLkxvWMGZ
-	AKlPm7WGJ1oRNKbuLsfGCSwRNX+CaklpSvzv+ilOApu35efbOnUKKz32I0ZpKxlcKP5t6NbF0QscW
-	BK6BtgqT0g96eCYzNvIiUZw2aZfcdM2sqQgcT0vjOQ5FNabSqTNqw4CW0J4TtE931NIOL7UR+Qkop
-	IGtsDQzzPMmS4B7MNgo4kiub+zgdjL+QTSGQwe9wap/SFQ2nHsRQ5KQd9mcpegO0OQMeBFWs81UIk
-	8xhzD+0e8xqmUXN7aua4FVIyvD0Td+jycxVkvZznl6TeSX6MNF/rkSXdZM8mRwSUcPv9dA0+K1Yh6
-	LGNqifIg==;
+	bh=MMm8Egc0i/uXXRHq7J2E/e5hrHjB5yo+K0ec+4m18oY=; b=f2offPHj2RLc85SRN2R7dkdJ9E
+	E5HBxr91UZl3eXSFbcLxNCkgAXfXC4zTVtEjTR0LKaUpd3uHJzVYcbb/eSz5djAnmlpPuZsuf5xn5
+	2gYuc0dwRetX06zeTYw1a18gf16JAlF2I+aTXAle3k55UOC/cVLYuPgG1Uv8UiG08BCRT6Bq9nf0P
+	UXMob8yVjP/rNueg16QeoLV1ciiz2cHfgDjbjrl+D3fwYk1nrRuzgQ/jGHb7R6W0n91GSDLqxIsrT
+	dm5Q27X+hDwhv6oG3UcZDSTBKm7KT18mkjzgyRUFhaAWVT7dSYqMRNH895SkLun4aVb8v2REGmHpt
+	pBRVp1dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfmL6-0000000EwhV-3EHn;
-	Thu, 29 Feb 2024 19:45:08 +0000
+	id 1rfmLO-0000000Ewn3-2KYB;
+	Thu, 29 Feb 2024 19:45:26 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfmKr-0000000EwZp-08Fb;
-	Thu, 29 Feb 2024 19:44:54 +0000
+	id 1rfmKt-0000000Ewaq-0ImS;
+	Thu, 29 Feb 2024 19:44:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709235891;
-	bh=F1D1XQqErUovgpFctyBZ7KqIwFh5WtFb7Zk4L6KVxzg=;
+	s=mail; t=1709235893;
+	bh=EyvPm0SXhcvriUDncncMFebQg0lQMcMsL/UTspQPx/I=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=FDr5PBv6c3BVvZlQWA7aOyKl4J9EVE3XNcBKU+AUNuiB/nwb2E/jYcv+uxENeYIO2
-	 mRlJUJE3m8QFZL4I+YEx9CTg6hlwozJDNJvPXzT8WDmCexsJkIeL6tgFMpdqADvMSi
-	 YYv2/Rq+yiVJxcxVO+SJwOxh6rudQ+WiFXO+Ir4M+vQEr/BhFgd3R3bSWon48CJT3N
-	 Jtb1V/7DogQu+TxsnggdteqFRYTEGzGEKHVFSBqdBtP3JThekf2BTEnBGd/uVOiizs
-	 xq2vWk9kIklQGGtJN5VdBRGrbgtgZuq2yKpDJHkGT1VdUGVjAGyfL9mTuy2AEzK7m3
-	 7zVHKalN73BQA==
+	b=u9Z5W72Hfbqdc4elUBeUYU8z3Q7CvyoJ0tkniAgRzd2Jyc6YZmaGYlrObvcR9I8Fz
+	 lGfz5GHesiPMNEgb1TyiEoFhT8b37z2dN7GtAPddYLDb/yYsaB1wxwOrwfO1fCvWyH
+	 0O8znoqy3Zu+gNkir+fMos8bu5lsPnti4RzTP+eEcfD5LrxRbs4N+e9HoYT247+Qd2
+	 1+DaK8iZxDAeU93QVhXCUwidCQaJEPTqCpZe1q5JV5X/nTD02QEwQYAGYDhjC1O/zy
+	 5+CivC5a6kc70UmJsMMqzaFDEAWNdOWLrFvv7gS6I7W8w21COc2RwYcbI0TP8v9Coj
+	 6UjdJXAtpZd9Q==
 Received: from [192.168.1.200] (zone.collabora.co.uk [167.235.23.81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 25C8637820E2;
-	Thu, 29 Feb 2024 19:44:49 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9554237820EE;
+	Thu, 29 Feb 2024 19:44:51 +0000 (UTC)
 From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Thu, 29 Feb 2024 14:44:28 -0500
-Subject: [PATCH 1/4] arm64: dts: mediatek: mt8192: Add missing
- gce-client-reg to mutex
+Date: Thu, 29 Feb 2024 14:44:29 -0500
+Subject: [PATCH 2/4] arm64: dts: mediatek: mt8195: Add missing
+ gce-client-reg to vpp/vdosys
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240229-gce-client-reg-add-missing-mt8192-95-v1-1-b12c233a8a33@collabora.com>
+Message-Id: <20240229-gce-client-reg-add-missing-mt8192-95-v1-2-b12c233a8a33@collabora.com>
 References: <20240229-gce-client-reg-add-missing-mt8192-95-v1-0-b12c233a8a33@collabora.com>
 In-Reply-To: <20240229-gce-client-reg-add-missing-mt8192-95-v1-0-b12c233a8a33@collabora.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
@@ -67,8 +67,8 @@ Cc: Rob Herring <robh@kernel.org>,
  =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
 X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240229_114453_254844_42A2E7E3 
-X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-CacheID: sfid-20240229_114455_325858_555E6B83 
+X-CRM114-Status: UNSURE (   8.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,30 +84,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the missing mediatek,gce-client-reg property to the mutex node to
-allow it to use the GCE. This prevents the "can't parse gce-client-reg
-property" error from being printed and should result in better
-performance.
+Add the missing mediatek,gce-client-reg property to the vppsys and
+vdosys nodes to allow them to use the GCE. This prevents the "can't
+parse gce-client-reg property" error from being printed and should
+result in better performance.
 
-Fixes: b4b75bac952b ("arm64: dts: mt8192: Add display nodes")
+Fixes: 6aa5b46d1755 ("arm64: dts: mt8195: Add vdosys and vppsys clock nodes")
 Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 05e401670bce..84cbdf6e9eb0 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -1464,6 +1464,7 @@ mutex: mutex@14001000 {
- 			reg = <0 0x14001000 0 0x1000>;
- 			interrupts = <GIC_SPI 252 IRQ_TYPE_LEVEL_HIGH 0>;
- 			clocks = <&mmsys CLK_MM_DISP_MUTEX0>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>;
- 			mediatek,gce-events = <CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_0>,
- 					      <CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_1>;
- 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index ea6dc220e1cc..f2912e1a0e49 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -2028,6 +2028,7 @@ vppsys0: syscon@14000000 {
+ 			compatible = "mediatek,mt8195-vppsys0", "syscon";
+ 			reg = <0 0x14000000 0 0x1000>;
+ 			#clock-cells = <1>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0 0x1000>;
+ 		};
+ 
+ 		dma-controller@14001000 {
+@@ -2251,6 +2252,7 @@ vppsys1: syscon@14f00000 {
+ 			compatible = "mediatek,mt8195-vppsys1", "syscon";
+ 			reg = <0 0x14f00000 0 0x1000>;
+ 			#clock-cells = <1>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0 0x1000>;
+ 		};
+ 
+ 		mutex@14f01000 {
+@@ -3080,6 +3082,7 @@ vdosys0: syscon@1c01a000 {
+ 			reg = <0 0x1c01a000 0 0x1000>;
+ 			mboxes = <&gce0 0 CMDQ_THR_PRIO_4>;
+ 			#clock-cells = <1>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1c01XXXX 0xa000 0x1000>;
+ 		};
+ 
+ 
 
 -- 
 2.44.0
