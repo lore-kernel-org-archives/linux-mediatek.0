@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1B30C54E41
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 14:52:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CD9AC48BF6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 16:20:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jxc7rNcgRmg0ea2Z4hUKuYtXLmQ3BDoVcH4+SGI/Ik0=; b=lZBq85I9vWHhSp
-	XOBCALPV89R/d1Bn2lz5No0L1GWj8hmnbjoYgoXCdQquwDmjPrAnrnWmFGG4UFDj+5JFpM4Djx9Ih
-	2iwzgPo5OL92qNr/29Ssc7OmPSRgcBTy9EOcQkFVE8Tot/6oZ4wET6QhP6NsTCWRXD6IqSHz+STBO
-	2MOROIvEs865Z8Zu3QAQfKGjQFWUstulOLQ+/yMM08Jb7cdQ1NIG8BZPy+1IpsCCA8gjop3y7RREV
-	Op75cLSSClLwYXBTm4tLAw1C2hmnPLeM9EZuNJwVJErvKIqUwdGmWrDSiF5zkHdBqT6aIFjO1IcXD
-	7rfJVANIp3jAYDEDAafw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=S/AJuI1oSfPQ0LA9yvudELzVMUIIFfUVRY1Cw8WuV1Y=; b=m/ie/fDTT36MSXm3eHXotSWRp5
+	RbojPwRr8vwBkJxf4m8pkrUK7xCXOa25wvp3J4CHds7UX2KdL3OyfHCmf7CTfISbTO2sm7n5AH3wt
+	ASnAwVLzYD/0ArPbjCzZzQG/Q3RGk4jJ5bNCDTym7DIzEsje74mFc3/YY2A3qROUz8zdOnm5om5x3
+	EmTIxpRZtX03nUXRlf+lpKzY6cFQp/NR8RHTNnboa230jK8di3xR4cYwQi8EaOSkhjWGqFi0hDexg
+	tCaEuH/w6rPrhAgQrLHcIs3sNUQ1s+62BiJyzm2eKeSs5jBuJo0lWmGzCwTYhPjq6658yvLkbfwjR
+	yxuxeHMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfhlR-0000000Dwy8-20ea;
-	Thu, 29 Feb 2024 14:52:01 +0000
+	id 1rfj90-0000000EGDp-3voY;
+	Thu, 29 Feb 2024 16:20:26 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfhlM-0000000DwvB-2Dlf;
-	Thu, 29 Feb 2024 14:51:57 +0000
+	id 1rfj8x-0000000EGAX-2dIE;
+	Thu, 29 Feb 2024 16:20:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709218311;
-	bh=wrjX1gCWYg6nSC7PmaC6lhYpHs6jGe36eMWuYBSxilk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=plEqwVnxYxepv2JEG/f9Bg/Gb93C9CmKhxp5jfucjO/sbNALZYICMpViFrBJ4r7xd
-	 gnFN14JTKU2IOG3sbHdI0Az0Ckzapl0TEFAGw0oWyTtn8QdGUGmCMFvBdn8tvbPGQR
-	 7JH4fOCOY4CkTB+0plwtFdBKVIVPMeKTa38Z6C8zBmXYXzK5BqBbTPAzDn+WXy0Caw
-	 d4G5IXOdhVR/6XJy9Vie+p60BEEB02y7OTFGcWZugI0+83J3IHMPU7nzaG084tda0e
-	 rLkJ7My88caQ6FW27ofQF45v6mM3g3wHuSj5EnOx+V5hkW/pWhRjmNSnPboOUzLOKp
-	 ZZnJgmSZ8gb8Q==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1709223618;
+	bh=EG0AQMhvajtRtj7h37GNmIv5kRJfqZmGy40sXuFridE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=v87BRxfSazLj7SyYlAEei17Nshjcn1N/7j/le0FQKvKyn9t1w2mlSvIJyECKconh2
+	 RjSMpnq374Gzpm1BbKC5mPYhUibBC5OlBVlKG61EMd9gx+u2koByF3KXndn6DJKiFe
+	 p4rrd6vMfCPyd0zQHf7DItjKcA74Frp1INQEkAyQe+wnB/gdQ3fTel4zHvpDDHzLG2
+	 tH1uHCZvZEO5+gJftGYLxRSYWlgJWmm1EvWF/1UYJ3I/yS0jA8UEiML7QyNm6K6+Bf
+	 n19mw1ODQiItTyfDgpJUfsS1JagKYT/E+qDprAGxuyAHFnrarbAXXkeY14zyaPwSso
+	 +MIfSuYq3vpdQ==
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1EDE33782079;
-	Thu, 29 Feb 2024 14:51:50 +0000 (UTC)
-Message-ID: <9e7e840d-59bf-42fb-8e7b-224afb9f27d8@collabora.com>
-Date: Thu, 29 Feb 2024 15:51:49 +0100
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 643CC3782066;
+	Thu, 29 Feb 2024 16:20:15 +0000 (UTC)
+Date: Thu, 29 Feb 2024 11:20:13 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-pci@vger.kernel.org, ryder.lee@mediatek.com,
+	jianjun.wang@mediatek.com, lpieralisi@kernel.org, kw@linux.com,
+	robh@kernel.org, bhelgaas@google.com, p.zabel@pengutronix.de,
+	matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com, wenst@chromium.org
+Subject: Re: [PATCH v2] PCI: mediatek-gen3: Assert MAC reset only if PHY
+ reset also present
+Message-ID: <27b54e13-35da-44cd-9f02-a48a84c63e79@notapiano>
+References: <20240229092449.580971-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] dt-bindings: display: mediatek: gamma: Change
- MT8195 to single enum group
-Content-Language: en-US
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
-References: <20240229144844.1688-1-jason-jh.lin@mediatek.com>
- <20240229144844.1688-2-jason-jh.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240229144844.1688-2-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240229092449.580971-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240229_065156_806977_BFF25FD3 
-X-CRM114-Status: UNSURE (   8.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240229_082023_819998_B1AF4D68 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,21 +75,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, Jason-ch Chen <jason-ch.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Shawn Sung <shawn.sung@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/02/24 15:48, Jason-JH.Lin ha scritto:
-> Since MT8195 gamma has multiple bank for 12 bits LUT and it is
-> different from any other SoC LUT setting.
+On Thu, Feb 29, 2024 at 10:24:49AM +0100, AngeloGioacchino Del Regno wrote:
+> Some SoCs have two PCI-Express controllers: in the case of MT8195,
+> one of them is using a dedicated PHY, but the other uses a combo PHY
+> that is shared with USB and in that case the PHY cannot be reset
+> from the PCIe driver, or USB functionality will be unable to resume.
 > 
-> So we add MT8195 compatible to the single enum group to make its
-> driver data settings can be reused by other SoC.
+> Resetting the PCIe MAC without also resetting the PHY will result in
+> a full system lockup at PCIe resume time and the only option to
+> resume operation is to hard reboot the system (with a PMIC cut-off).
 > 
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> To resolve this issue, check if we've got both a PHY and a MAC reset
+> and, if not, never assert resets at PM suspend time: in that case,
+> the link is still getting powered down as both the clocks and the
+> power domains will go down anyway.
+> 
+> Fixes: d537dc125f07 ("PCI: mediatek-gen3: Add system PM support")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+With this applied resume finally works on MT8195-Tomato! And I no longer see the
+errors I mentioned in [1]. So,
 
+Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
+Thanks,
+Nícolas
+
+[1] https://lore.kernel.org/all/d8cfb804-e47a-471c-8bc0-e974ee045655@notapiano/
 
