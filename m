@@ -4,90 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E938BC5475B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 03:25:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB1D0C54798
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 07:13:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=URSVAvnamrUIMZvqYHj/KzfXDvU7CZtyXmsItvlHW/g=; b=S1oGD6xpcXX7aQBa+2+r5WLn30
-	M4k/mxx6ThFomqeOCW7se8Ms13q+HF6O8Q7zBFnHolYeiCKN8ZAtRh+0XJpndRqfqEtPy9Bu6XV9j
-	6LLca+T5anryb8wd+lSPexoEfdPHxxZsxuBwnOQBXP3AMyCOrn1szYbHH2hgBcq63rXgWigtr6hga
-	Tq2yXT3czpSlvANylK9eNzlDjxlpuK4F8dmr/ZeAKiXOa5LujUvdQI0DvOB8R6jwGgINIic08BEVX
-	ML3yWsQdlDtocnNMq1vmuoMSMe93h9705KtcCmIB1CJ752jVFVw8jXRxyBAZjylhO5/LUgLGnFV3p
-	CWlVVxKg==;
+	bh=sW1HtD6+QhlshBfo2O8TyLUxF3XBhVUqFEhPUgz1nks=; b=CYI6YgyZwpyAnQToHPFN9cH91l
+	Y3AiyPJTyppMRAixeQz/WtrbxJE+wM3mpmE5G0baUb9jQg/0Mijuke6jHe8GA2zPy+n4HhY4Rw0R7
+	eNXkpUEda67912zWSvCFdwY/kDZJYpl1WVP6AqnMimJ3VBjcfHlhNAYrc/O2rktl/wxoICxagZjji
+	4S04gZxoINzRmvZ2iRyYQ2vI9M2ZyiEZHHT1K2/ia539LwWvgGihZrKPfFNlV63tZrKpBRmlOrC/M
+	Etb3BwMm/WN1PNpSrpebSovfYcaJt/zCr2flKGH6SU0OObd+Mp7u8GEv4IvOgFxGfqYDpUloOsR7y
+	iewZVGYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfX3L-0000000Bsl8-2Lte;
-	Thu, 29 Feb 2024 03:25:47 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1rfac4-0000000CQP2-2pY6;
+	Thu, 29 Feb 2024 07:13:52 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfX3I-0000000BskB-3bw5
+	id 1rfac0-0000000CQKh-3z2a
 	for linux-mediatek@lists.infradead.org;
-	Thu, 29 Feb 2024 03:25:46 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2d2305589a2so4758711fa.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 28 Feb 2024 19:25:43 -0800 (PST)
+	Thu, 29 Feb 2024 07:13:50 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-512e39226efso460835e87.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 28 Feb 2024 23:13:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1709177142; x=1709781942; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1709190826; x=1709795626; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=URSVAvnamrUIMZvqYHj/KzfXDvU7CZtyXmsItvlHW/g=;
-        b=Kkxh8+rZKYo/GOYPb+rnFH0fTJMxJMVR7N8fgKDs2vkbzthtCP8cLnTUaNIVMqis9S
-         p7mery8qQNPUN/pdpxVHbnVpX+IjNvWm7AVprUJ3DPIS3NKaCV0szYmhn5b8pjZxcxgI
-         PE9aUJzmSyQIoS+Ej8pCQgjoj98aCWOY3XPUc=
+        bh=sW1HtD6+QhlshBfo2O8TyLUxF3XBhVUqFEhPUgz1nks=;
+        b=eCFcS3y/nq1aV3eOdjJm8ZYLpMPJDWKfSuhwcwOlBVwmoDwzY/m+sX+dgayPFvAJcJ
+         wYHP7xGytU72kWF85iMoU+0WCdTz7WkCqxRcaJ7waoeW/1veA9iYnRq1R+SInb1Pn+Uy
+         2C41hFyQiQMoT+tKonOJxy/zj///lL3vU4hd0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709177142; x=1709781942;
+        d=1e100.net; s=20230601; t=1709190826; x=1709795626;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=URSVAvnamrUIMZvqYHj/KzfXDvU7CZtyXmsItvlHW/g=;
-        b=P/NVdEke8UYoX+jgWnm9HNdOjHJUMEmS1MZh5zpOPzDFo8xHqU61+4SyzxUEjhKNVu
-         jVWl0NO04NEadoaiizHy5bLzziyLb22nM5Jj9aZekgiro1vtHL1UQTQZBxrf/vsTz+Se
-         eDQ9MsJ74JU6TJ7NR6xHgkN6aYfPkrBIe8OoqLiP2NbnvIckzwpZSjcUCjgZ8TOgNyp1
-         gdOMJfoCmQaJCeh6ih99SZK+XNUi9rBakvtA2Q07h1nvZ9usegpvi8qEml6Yxp9RaILB
-         J7jlTa7PzfUeFQRBIYjZEhPvne2CBgkuQhEHspfW9hs5tt1LhohzyB5rifdBRkUAJXNA
-         1Hkw==
-X-Forwarded-Encrypted: i=1; AJvYcCUgRjykXOyytiOgeisf17V9JKzlOuP2nbpwRFnyrCEVLADqTs1Sxv6LkXquO8T3Qz59FSH2Y3IjxjqftYV23NVYWsPRzhTIJ6bHZXHlA/zNkvfF
-X-Gm-Message-State: AOJu0YxJiyVrAfYEZ/qC3LZrF97mrNBA/HYJTLNWr1BjG2dtSLRxq5f8
-	G0aecTsnzpjeA9gvrZLehpNVfBey90SRL1/KyB6kGLELR1pH718/lUF8CU/FomSv56WZC+gvbl1
-	doZ+xoCP+mlmzDqwBdtFVZg/0NOaG5bqnP8xs
-X-Google-Smtp-Source: AGHT+IF6HtrFqiF4ILXIhOeoglLnKyYMIt97o4GxwpCNIyH7ScABce8rbUiq2DMajV+r4BPBHpxVsoL7H4u3odSmJ9Q=
-X-Received: by 2002:ac2:597b:0:b0:512:ba41:51f with SMTP id
- h27-20020ac2597b000000b00512ba41051fmr425568lfp.50.1709177142115; Wed, 28 Feb
- 2024 19:25:42 -0800 (PST)
+        bh=sW1HtD6+QhlshBfo2O8TyLUxF3XBhVUqFEhPUgz1nks=;
+        b=X88oFglBKcA3zIUAXb75Wi8/BeNxVUTRijiVLHrTWRdCBxLecLKqTAM8fl6+tVnTGG
+         3D8+lns53NShw1nSSEt7T9aorBe8WqPW3NqOzWGs6+XSM+Rlpgd6N8jBwToGnem9DSPU
+         P5Y05LOEqXOscGORwMKPiDtUByB9/a1oL82pE75T/8QpsOSKylTn2b7g94JDxCeGYBHe
+         6TBclUR3ZwyhsWb1tTgNU+sTBvCyv4GEz/2hctGXuLIS+5y4Wf81TrM3M1cQVEdW228+
+         t3uNMQdEP0DDuaEgJxFR5gwVylA8/h1CXdosThRrCJbZ25SC6WK3nIPO5E5M+PL3k5AN
+         bYMA==
+X-Forwarded-Encrypted: i=1; AJvYcCWKSWZ7ZZTFI7XVIZmPwPymRHOW1KhdxGnBNVL3qZpwH72Nddg0yQTxyddd1dsnIH60Kvpx1Axv7KJmkDsExP/Bct96GfP+NBsbzoJl3UCIiV5L
+X-Gm-Message-State: AOJu0YzV82g3agCm7uPkqbSIBAs4d3jTNn809HNHthkQx8WeF3MDnIpC
+	V4yksGKwf4mHG4qhPOdAPH4ejYebD0D6QORNdLyXQbNs+I5LXnSnE9IUW6DC1dxvfdYmdVg7u0+
+	XkZIVSXRI9zsHn7fi8j+wqimT5Wc/ftDuxKLE
+X-Google-Smtp-Source: AGHT+IHYP2zEhw8fwOpmvt31M+HZmbYGEsHZBSayotV4ShVjz9H7wVGQo4fCF7t4FZe3rQUT6hsM0aXuVn25hgznTb0=
+X-Received: by 2002:ac2:5145:0:b0:513:1e22:1f17 with SMTP id
+ q5-20020ac25145000000b005131e221f17mr779797lfd.29.1709190825888; Wed, 28 Feb
+ 2024 23:13:45 -0800 (PST)
 MIME-Version: 1.0
-References: <20240227120939.290143-1-angelogioacchino.delregno@collabora.com> <20240227120939.290143-3-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240227120939.290143-3-angelogioacchino.delregno@collabora.com>
+References: <20240223091122.2430037-1-wenst@chromium.org> <feab2039-5745-41a4-87c3-44fa266efc1d@collabora.com>
+In-Reply-To: <feab2039-5745-41a4-87c3-44fa266efc1d@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 29 Feb 2024 11:25:31 +0800
-Message-ID: <CAGXv+5Hpv323oGAr_t6C=akNybypPUYO31ez2rFD2oCRs3O8GQ@mail.gmail.com>
-Subject: Re: [PATCH 02/22] ASoC: mediatek: mt8192-afe-pcm: Simplify with dev_err_probe()
+Date: Thu, 29 Feb 2024 15:13:34 +0800
+Message-ID: <CAGXv+5GpTJzMHxY+J6PshW6-xLfc5G3DTuAG4d9eCc+=WWRd9A@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8183: Add power-domains properity
+ to mfgcfg
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: broonie@kernel.org, lgirdwood@gmail.com, robh@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.com, 
-	trevor.wu@mediatek.com, maso.huang@mediatek.com, 
-	xiazhengqiao@huaqin.corp-partner.google.com, arnd@arndb.de, 
-	kuninori.morimoto.gx@renesas.com, shraash@google.com, amergnat@baylibre.com, 
-	nicolas.ferre@microchip.com, u.kleine-koenig@pengutronix.de, 
-	dianders@chromium.org, frank.li@vivo.com, allen-kh.cheng@mediatek.com, 
-	eugen.hristev@collabora.com, claudiu.beznea@tuxon.dev, 
-	jarkko.nikula@bitmer.com, jiaxin.yu@mediatek.com, alpernebiyasak@gmail.com, 
-	ckeepax@opensource.cirrus.com, zhourui@huaqin.corp-partner.google.com, 
-	nfraprado@collabora.com, alsa-devel@alsa-project.org, 
-	shane.chien@mediatek.com, linux-sound@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	kernel@collabora.com
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Ikjoon Jang <ikjn@chromium.org>, 
+	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Weiyi Lu <weiyi.lu@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240228_192544_939945_3689130F 
-X-CRM114-Status: UNSURE (   8.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240228_231349_043685_AF40E1F0 
+X-CRM114-Status: GOOD (  25.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,16 +90,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 27, 2024 at 8:10=E2=80=AFPM AngeloGioacchino Del Regno
+On Mon, Feb 26, 2024 at 4:54=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Simplify the probe function by switching error prints to return
-> dev_err_probe(), lowering the lines count; while at it, also
-> beautify some messages and change some others' level from warn
-> to error.
+> Il 23/02/24 10:11, Chen-Yu Tsai ha scritto:
+> > From: Ikjoon Jang <ikjn@chromium.org>
+> >
+> > mfgcfg clock is under MFG_ASYNC power domain.
+> >
+> > Fixes: e526c9bc11f8 ("arm64: dts: Add Mediatek SoC MT8183 and evaluatio=
+n board dts and Makefile")
+> > Fixes: 37fb78b9aeb7 ("arm64: dts: mediatek: Add mt8183 power domains co=
+ntroller")
+> > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> > Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+> > Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> > ---
+> > This patch is long overdue. Could we merge it for fixes for this or the
+> > next release?
+> >
 >
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
+> A clock controller that needs a power domain? Can you please describe the=
+ issue
+> that you're trying to solve with this?
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Our issue tracker doesn't have much on this. But this was part of the initi=
+al
+submission for MT8183, but somehow got left out. The clk driver patch to
+enable runtime PM was even merged, but was effectively reverted following
+the clk driver rework.
+
+> It's not very uncommon but I'm not entirely convinced that this is right,=
+ because
+> the MFG_BG3D is a gate - and it's *not* outputting a clock rate on its ow=
+n: the
+> mfgcfg is entirely GPU related and if there is no GPU support this clock =
+is not
+> even ever needed.
+
+It could be just a gate, or could be a buffer. Either way, the registers to
+control said device could be in a power domain that is not always on. I don=
+'t
+think this can be ruled out.
+
+And if the registers are in a powered down domain, then either the readout
+would be bogus (if access isolation is implemented) or just hang the system=
+.
+
+ChenYu
+
+> MediaTek, can you please clarify if (and why) this gate clock needs a MTC=
+MOS to
+> be ungated?
+>
+> Thanks,
+> Angelo
+>
+> > Changes since v2:
+> > - Rebased onto current tree
+> > - Added Fixes tags
+> > - Fix up subject prefix
+> >
+> >   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 1 +
+> >   1 file changed, 1 insertion(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot=
+/dts/mediatek/mt8183.dtsi
+> > index 93dfbf130231..774ae5d9143f 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > @@ -1637,6 +1637,7 @@ mfgcfg: syscon@13000000 {
+> >                       compatible =3D "mediatek,mt8183-mfgcfg", "syscon"=
+;
+> >                       reg =3D <0 0x13000000 0 0x1000>;
+> >                       #clock-cells =3D <1>;
+> > +                     power-domains =3D <&spm MT8183_POWER_DOMAIN_MFG_A=
+SYNC>;
+> >               };
+> >
+> >               gpu: gpu@13040000 {
+>
+>
 
