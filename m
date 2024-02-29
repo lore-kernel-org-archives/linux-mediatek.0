@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C820DC5478C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 03:23:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E938BC5475B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 03:25:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YnhjCqHLFxHzCoP56tcAkpXqMN7ULXn2w3/bj8hdCI8=; b=UcDA54kZse2f6SgUQUbn4H5Ghs
-	4s2gIcm0I/QoHpi5wOwHE0UFkHo3VXz99r2Z+t1dvrk1sKCoVu7LBbK7oOMoOTl7gUt1eOiM8Kq0H
-	jwB1yrI7a2kLJxuvsK1WAj+i1DJotf0q8WVqpge2uu3/pd/7uEY3OwXofARA0URMh89xHcwKmbp0B
-	6W1y+au0hWkiGRYKu0Ue53mU9Ih5JjpPC+wgPGJdxtXxB7X/Ll0O5ggmaqrTenBT/obMJ04gxuBth
-	FmY1A6SUl/nFOdjTLwX3/vIIiPUsTQdRGiNvEhfxDP9QNg+4Qnkx4xkw67Qc+6glHul3xOgVry8/N
-	qArdcAqw==;
+	bh=URSVAvnamrUIMZvqYHj/KzfXDvU7CZtyXmsItvlHW/g=; b=S1oGD6xpcXX7aQBa+2+r5WLn30
+	M4k/mxx6ThFomqeOCW7se8Ms13q+HF6O8Q7zBFnHolYeiCKN8ZAtRh+0XJpndRqfqEtPy9Bu6XV9j
+	6LLca+T5anryb8wd+lSPexoEfdPHxxZsxuBwnOQBXP3AMyCOrn1szYbHH2hgBcq63rXgWigtr6hga
+	Tq2yXT3czpSlvANylK9eNzlDjxlpuK4F8dmr/ZeAKiXOa5LujUvdQI0DvOB8R6jwGgINIic08BEVX
+	ML3yWsQdlDtocnNMq1vmuoMSMe93h9705KtcCmIB1CJ752jVFVw8jXRxyBAZjylhO5/LUgLGnFV3p
+	CWlVVxKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfX1O-0000000BsPp-0ZJ7;
-	Thu, 29 Feb 2024 03:23:46 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1rfX3L-0000000Bsl8-2Lte;
+	Thu, 29 Feb 2024 03:25:47 +0000
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfX1K-0000000BsMy-3AjQ
+	id 1rfX3I-0000000BskB-3bw5
 	for linux-mediatek@lists.infradead.org;
-	Thu, 29 Feb 2024 03:23:44 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-512bde3d197so352024e87.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 28 Feb 2024 19:23:40 -0800 (PST)
+	Thu, 29 Feb 2024 03:25:46 +0000
+Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2d2305589a2so4758711fa.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 28 Feb 2024 19:25:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1709177019; x=1709781819; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1709177142; x=1709781942; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=YnhjCqHLFxHzCoP56tcAkpXqMN7ULXn2w3/bj8hdCI8=;
-        b=IKIdY2jJLLIa02zpdYNtRO2lL9IY4iMdijNoP6IeOVmAw5ChUFQsHrivTOVXH7OIi3
-         o5MG5b2KfXyI+30rje4lgZnY3PgciUFTxyaXXZWsfREl+pXzDaGoie39L6zPz1Auw8HL
-         iMMcHUS9wGIWVxak4bo5rZI3MfmN4o771YpKY=
+        bh=URSVAvnamrUIMZvqYHj/KzfXDvU7CZtyXmsItvlHW/g=;
+        b=Kkxh8+rZKYo/GOYPb+rnFH0fTJMxJMVR7N8fgKDs2vkbzthtCP8cLnTUaNIVMqis9S
+         p7mery8qQNPUN/pdpxVHbnVpX+IjNvWm7AVprUJ3DPIS3NKaCV0szYmhn5b8pjZxcxgI
+         PE9aUJzmSyQIoS+Ej8pCQgjoj98aCWOY3XPUc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709177019; x=1709781819;
+        d=1e100.net; s=20230601; t=1709177142; x=1709781942;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=YnhjCqHLFxHzCoP56tcAkpXqMN7ULXn2w3/bj8hdCI8=;
-        b=XppHctTlNhWCC6TguKjeheG2G0GBm+qM9H5nDdOE7Gvw1Yu5sdksmNGYuOzFImzKvL
-         NjntqQ9Uk1p5fj1Knm+oE5UuHbgYTobX//lvh7UFoX8pM/f5cqTj9ozssmOamjI5KNaw
-         T644CpS3x+pQVD3ocZXLIWDFACuC4tBJS9tg652FXMIvExMmNs+FCH93mXf0mK36Mq53
-         +rbdvnCb4sF01e52M8K21hbfHsnyTAYgQde6ZvN6kjaVpxORglcj7f57BPC6/HfkSEwQ
-         Nb0P9eg8K94RsaL0ex5tTn9n0ePSUBew9q8AlR9QAQfEtOv3BCaRHlLecqeUnh6GpVCS
-         9FtA==
-X-Forwarded-Encrypted: i=1; AJvYcCV6oqsh7kkokfsx8IzvB9B3S8iAQIJbuqpKhF7Jm2h+kcDSZb+jiyfE4viu54aA/xS7mF6MT26SBkbGa64q/sd+Gu1Ui0pMvS6Ay8eLbTV0auiO
-X-Gm-Message-State: AOJu0YyS0VBjNEcFf9FJxaJsOX/5mwwlCbMFSTJ0qdgP0hS1ke5fsvlT
-	OKxn3Iabriwi49sgejAvgFN7G4pMxWV8MYgLn3UpJgH4eb0Iag5vIJdAaGNJGA8Sj0ec4M+QWIs
-	hqYZjHEom+XouPXqPvIEy/A1zUC4KypOpq9Z4
-X-Google-Smtp-Source: AGHT+IGoyjlA5d3MJxIU0XjajX2pLjnv5bjpGNpsYoZpp5aPB53ISOzz1U7B/7xmRxLHgmDVXHiCd+RpSMsLvGtFTsY=
-X-Received: by 2002:a05:6512:3d04:b0:513:25b9:6cf8 with SMTP id
- d4-20020a0565123d0400b0051325b96cf8mr294868lfv.19.1709177019347; Wed, 28 Feb
- 2024 19:23:39 -0800 (PST)
+        bh=URSVAvnamrUIMZvqYHj/KzfXDvU7CZtyXmsItvlHW/g=;
+        b=P/NVdEke8UYoX+jgWnm9HNdOjHJUMEmS1MZh5zpOPzDFo8xHqU61+4SyzxUEjhKNVu
+         jVWl0NO04NEadoaiizHy5bLzziyLb22nM5Jj9aZekgiro1vtHL1UQTQZBxrf/vsTz+Se
+         eDQ9MsJ74JU6TJ7NR6xHgkN6aYfPkrBIe8OoqLiP2NbnvIckzwpZSjcUCjgZ8TOgNyp1
+         gdOMJfoCmQaJCeh6ih99SZK+XNUi9rBakvtA2Q07h1nvZ9usegpvi8qEml6Yxp9RaILB
+         J7jlTa7PzfUeFQRBIYjZEhPvne2CBgkuQhEHspfW9hs5tt1LhohzyB5rifdBRkUAJXNA
+         1Hkw==
+X-Forwarded-Encrypted: i=1; AJvYcCUgRjykXOyytiOgeisf17V9JKzlOuP2nbpwRFnyrCEVLADqTs1Sxv6LkXquO8T3Qz59FSH2Y3IjxjqftYV23NVYWsPRzhTIJ6bHZXHlA/zNkvfF
+X-Gm-Message-State: AOJu0YxJiyVrAfYEZ/qC3LZrF97mrNBA/HYJTLNWr1BjG2dtSLRxq5f8
+	G0aecTsnzpjeA9gvrZLehpNVfBey90SRL1/KyB6kGLELR1pH718/lUF8CU/FomSv56WZC+gvbl1
+	doZ+xoCP+mlmzDqwBdtFVZg/0NOaG5bqnP8xs
+X-Google-Smtp-Source: AGHT+IF6HtrFqiF4ILXIhOeoglLnKyYMIt97o4GxwpCNIyH7ScABce8rbUiq2DMajV+r4BPBHpxVsoL7H4u3odSmJ9Q=
+X-Received: by 2002:ac2:597b:0:b0:512:ba41:51f with SMTP id
+ h27-20020ac2597b000000b00512ba41051fmr425568lfp.50.1709177142115; Wed, 28 Feb
+ 2024 19:25:42 -0800 (PST)
 MIME-Version: 1.0
-References: <20240227120939.290143-1-angelogioacchino.delregno@collabora.com> <20240227120939.290143-2-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240227120939.290143-2-angelogioacchino.delregno@collabora.com>
+References: <20240227120939.290143-1-angelogioacchino.delregno@collabora.com> <20240227120939.290143-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240227120939.290143-3-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 29 Feb 2024 11:23:28 +0800
-Message-ID: <CAGXv+5Edk5tCmE87DCOjVmMsiMcKeRw50=mx8=z1ZacJYd6L1Q@mail.gmail.com>
-Subject: Re: [PATCH 01/22] ASoC: mediatek: mt8192-afe-pcm: Convert to devm_pm_runtime_enable()
+Date: Thu, 29 Feb 2024 11:25:31 +0800
+Message-ID: <CAGXv+5Hpv323oGAr_t6C=akNybypPUYO31ez2rFD2oCRs3O8GQ@mail.gmail.com>
+Subject: Re: [PATCH 02/22] ASoC: mediatek: mt8192-afe-pcm: Simplify with dev_err_probe()
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: broonie@kernel.org, lgirdwood@gmail.com, robh@kernel.org, 
 	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, 
@@ -85,8 +85,9 @@ Cc: broonie@kernel.org, lgirdwood@gmail.com, robh@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240228_192342_811955_6D6C7B08 
-X-CRM114-Status: GOOD (  19.88  )
+X-CRM114-CacheID: sfid-20240228_192544_939945_3689130F 
+X-CRM114-Status: UNSURE (   8.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,169 +105,13 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Tue, Feb 27, 2024 at 8:10=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Switch from pm_runtime_enable() to devm_pm_runtime_enable(), allowing
-> to remove all gotos from the probe function.
+> Simplify the probe function by switching error prints to return
+> dev_err_probe(), lowering the lines count; while at it, also
+> beautify some messages and change some others' level from warn
+> to error.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
 
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-
-This also fixes the unwinding order during driver unbinding.
-
-
-> ---
->  sound/soc/mediatek/mt8192/mt8192-afe-pcm.c | 46 ++++++++--------------
->  1 file changed, 17 insertions(+), 29 deletions(-)
->
-> diff --git a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c b/sound/soc/media=
-tek/mt8192/mt8192-afe-pcm.c
-> index bdd1e91824d9..794419d16b01 100644
-> --- a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-> +++ b/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-> @@ -2217,21 +2217,20 @@ static int mt8192_afe_pcm_dev_probe(struct platfo=
-rm_device *pdev)
->                 return ret;
->         }
->
-> -       pm_runtime_enable(&pdev->dev);
-> -       if (!pm_runtime_enabled(&pdev->dev))
-> -               goto err_pm_disable;
-> +       ret =3D devm_pm_runtime_enable(&pdev->dev);
-> +       if (ret)
-> +               return ret;
->
->         /* regmap init */
->         afe->regmap =3D syscon_node_to_regmap(dev->parent->of_node);
->         if (IS_ERR(afe->regmap)) {
->                 dev_err(dev, "could not get regmap from parent\n");
-> -               ret =3D PTR_ERR(afe->regmap);
-> -               goto err_pm_disable;
-> +               return PTR_ERR(afe->regmap);
->         }
->         ret =3D regmap_attach_dev(dev, afe->regmap, &mt8192_afe_regmap_co=
-nfig);
->         if (ret) {
->                 dev_warn(dev, "regmap_attach_dev fail, ret %d\n", ret);
-> -               goto err_pm_disable;
-> +               return ret;
->         }
->
->         /* enable clock for regcache get default value from hw */
-> @@ -2241,7 +2240,7 @@ static int mt8192_afe_pcm_dev_probe(struct platform=
-_device *pdev)
->         ret =3D regmap_reinit_cache(afe->regmap, &mt8192_afe_regmap_confi=
-g);
->         if (ret) {
->                 dev_err(dev, "regmap_reinit_cache fail, ret %d\n", ret);
-> -               goto err_pm_disable;
-> +               return ret;
->         }
->
->         pm_runtime_put_sync(&pdev->dev);
-> @@ -2254,10 +2253,8 @@ static int mt8192_afe_pcm_dev_probe(struct platfor=
-m_device *pdev)
->         afe->memif_size =3D MT8192_MEMIF_NUM;
->         afe->memif =3D devm_kcalloc(dev, afe->memif_size, sizeof(*afe->me=
-mif),
->                                   GFP_KERNEL);
-> -       if (!afe->memif) {
-> -               ret =3D -ENOMEM;
-> -               goto err_pm_disable;
-> -       }
-> +       if (!afe->memif)
-> +               return -ENOMEM;
->
->         for (i =3D 0; i < afe->memif_size; i++) {
->                 afe->memif[i].data =3D &memif_data[i];
-> @@ -2271,26 +2268,22 @@ static int mt8192_afe_pcm_dev_probe(struct platfo=
-rm_device *pdev)
->         afe->irqs_size =3D MT8192_IRQ_NUM;
->         afe->irqs =3D devm_kcalloc(dev, afe->irqs_size, sizeof(*afe->irqs=
-),
->                                  GFP_KERNEL);
-> -       if (!afe->irqs) {
-> -               ret =3D -ENOMEM;
-> -               goto err_pm_disable;
-> -       }
-> +       if (!afe->irqs)
-> +               return -ENOMEM;
->
->         for (i =3D 0; i < afe->irqs_size; i++)
->                 afe->irqs[i].irq_data =3D &irq_data[i];
->
->         /* request irq */
->         irq_id =3D platform_get_irq(pdev, 0);
-> -       if (irq_id < 0) {
-> -               ret =3D irq_id;
-> -               goto err_pm_disable;
-> -       }
-> +       if (irq_id < 0)
-> +               return irq_id;
->
->         ret =3D devm_request_irq(dev, irq_id, mt8192_afe_irq_handler,
->                                IRQF_TRIGGER_NONE, "asys-isr", (void *)afe=
-);
->         if (ret) {
->                 dev_err(dev, "could not request_irq for Afe_ISR_Handle\n"=
-);
-> -               goto err_pm_disable;
-> +               return ret;
->         }
->
->         /* init sub_dais */
-> @@ -2301,7 +2294,7 @@ static int mt8192_afe_pcm_dev_probe(struct platform=
-_device *pdev)
->                 if (ret) {
->                         dev_warn(afe->dev, "dai register i %d fail, ret %=
-d\n",
->                                  i, ret);
-> -                       goto err_pm_disable;
-> +                       return ret;
->                 }
->         }
->
-> @@ -2310,7 +2303,7 @@ static int mt8192_afe_pcm_dev_probe(struct platform=
-_device *pdev)
->         if (ret) {
->                 dev_warn(afe->dev, "mtk_afe_combine_sub_dai fail, ret %d\=
-n",
->                          ret);
-> -               goto err_pm_disable;
-> +               return ret;
->         }
->
->         /* others */
-> @@ -2329,7 +2322,7 @@ static int mt8192_afe_pcm_dev_probe(struct platform=
-_device *pdev)
->                                               &mt8192_afe_component, NULL=
-, 0);
->         if (ret) {
->                 dev_warn(dev, "err_platform\n");
-> -               goto err_pm_disable;
-> +               return ret;
->         }
->
->         ret =3D devm_snd_soc_register_component(&pdev->dev,
-> @@ -2338,15 +2331,10 @@ static int mt8192_afe_pcm_dev_probe(struct platfo=
-rm_device *pdev)
->                                               afe->num_dai_drivers);
->         if (ret) {
->                 dev_warn(dev, "err_dai_component\n");
-> -               goto err_pm_disable;
-> +               return ret;
->         }
->
->         return 0;
-> -
-> -err_pm_disable:
-> -       pm_runtime_disable(&pdev->dev);
-> -
-> -       return ret;
->  }
->
->  static void mt8192_afe_pcm_dev_remove(struct platform_device *pdev)
-> --
-> 2.44.0
->
 
