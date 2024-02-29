@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D97FC5475B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 01:49:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B9ACC5478C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 02:35:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EGWZ0cD7x136SOPcqoeVdzgHJ9mzEsKOD+NIhP/2Vmc=; b=hsqee9Uymg6UT+Pki3SKY6RS+Y
-	0gqBxsEMdvcB73QdOKoLJ4tYsx5IuzEyG8zUokFGnjt2P642Sx61XgAzS63TJbY0vHNdqJBFCW2M/
-	eU00l0DpYuRjiaLO1H2WwsuMqfaTGROQa2hv90KYpClst6kbD4XTvsP86OFi4HplZtUkE9SFYAWRX
-	Pn36dMd1S/7xRMx1zJc1AjXXTRQOKVu7MO/s1++jQizauVS306J/rzW+HE4W7EQHR9mSikiLi36ui
-	cEb/PByhvPqNc1l/Ks1VaW0unR9/VLvw3BrM772whCrT2epT2qF7SabnBenLNHGy07HNrRRv49Qfo
-	dxao+uQg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yY3BIsvyZurSoEka72INcoDoWgUOVqa0yYbaYp9hEmY=; b=TnNKAvlNjreEqqY4fpyPCrkaAv
+	J/zlfu0RzX1KPbkGYYpRMQrVOVtzjoEd9gzPYez94hI1unTiz+JQeKGFZ0984sGbBAMOIHZHFpTJ4
+	tftZeGOMARM0L5CUhqZKaeC+/Uoz/2rM+mZuE0XBjpM7e5SWQMv6YqgMwqi+OJm+lQ7Pf6XVVXmtV
+	xb/MzK2aktemm8GwxtpTWlk5FC97cTlU+lzG3phDuOHE4mzJ6c6tLIrijx7KQonmUrQU0asV0PJ53
+	n+EIbEw0qni0j/5XvHD42GOIfJTKb+J1hFYXfgZRltQOT6S9AtSWQppFFc2WOqCyy9ImvqXNzgQrO
+	6GgTXBeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfVYI-0000000Bf0j-1n7X;
-	Thu, 29 Feb 2024 01:49:38 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rfWGm-0000000Bl7R-2fM5;
+	Thu, 29 Feb 2024 02:35:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfVYE-0000000Bezp-3Ufk;
-	Thu, 29 Feb 2024 01:49:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 12DBA61336;
-	Thu, 29 Feb 2024 01:49:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 180F9C433C7;
-	Thu, 29 Feb 2024 01:49:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1709171373;
-	bh=Z9+ZItlUKOOugftEXhTeLovJnwPdw0FTe0BJHEfOUvc=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=fZ7/Asn9fee487a/DT2NBXMTgVevreMAjByrP3R1pgFm9XrySx0/QyxylioN5kg5Q
-	 TlwAvaCqHNJ9nApguOtuNYt7xw99FnQL2zA5atAfdE6+UIzSd/S8iG5oGfg9hT5Sni
-	 vw9NPfzwVYHt1SRGTKCzA67NNWSWIuteEwRPt/nVU03sLVxK+ghXoP4K11IT9AsGnS
-	 VH5PacwR99K0WLfN/ev/9lfrooz9Lmsvl6njq1qH5uC9VegOL2nv6XEaXatKfVJ1AS
-	 iuWH0zSNCCzfHZUIlT8U2rH8EnHyL3u7oLpUn4WEa/ZhD5t5LtZZZ6JkUyVw1zLNST
-	 ka3MCb83MttpA==
-Date: Wed, 28 Feb 2024 17:49:32 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
- <devnull+arinc.unal.arinc9.com@kernel.org>
-Cc: <arinc.unal@arinc9.com>, Daniel Golle <daniel@makrotopia.org>, DENG
- Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Andrew
- Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Vladimir
- Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Russell King
- <linux@armlinux.org.uk>, mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
- Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v2 8/8] net: dsa: mt7530: simplify link
- operations and force link down on all ports
-Message-ID: <20240228174932.2500653d@kernel.org>
-In-Reply-To: <20240216-for-netnext-mt7530-improvements-3-v2-8-094cae3ff23b@arinc9.com>
-References: <20240216-for-netnext-mt7530-improvements-3-v2-0-094cae3ff23b@arinc9.com>
-	<20240216-for-netnext-mt7530-improvements-3-v2-8-094cae3ff23b@arinc9.com>
+	id 1rfWGk-0000000Bl5u-0FKF;
+	Thu, 29 Feb 2024 02:35:35 +0000
+X-UUID: 33324254d6ab11ee999fed2339b27864-20240228
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=yY3BIsvyZurSoEka72INcoDoWgUOVqa0yYbaYp9hEmY=;
+	b=EjBimrhvosm8I/WBvPLzz4EJ0lHGyj1vm70dK4xTfQc3cUk1se/dZvD7bw2KPG3ynHyVb3bS6mR36VwwAUCEx6dhY4ely6C6JMzqyWPBeNKa6VhAS3KCzfWEpK42oeBviDWllTJKpCFZSsAjXhnP25/w+UlztFCpWbF8NxNhzh4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:5db653c6-ce64-45cb-8e82-18eba06bda37,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:f2016e84-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 33324254d6ab11ee999fed2339b27864-20240228
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 230469980; Wed, 28 Feb 2024 19:35:28 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 29 Feb 2024 10:35:24 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 29 Feb 2024 10:35:24 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>
+Subject: [PATCH 2/3] dt-bindings: display: mediatek: gamma: Add support for MT8188
+Date: Thu, 29 Feb 2024 10:35:21 +0800
+Message-ID: <20240229023522.15870-3-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240229023522.15870-1-jason-jh.lin@mediatek.com>
+References: <20240229023522.15870-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--3.030200-8.000000
+X-TMASE-MatchedRID: gGgbIWz4XUwD2WXLXdz+ASoTaU3L23VCmyiLZetSf8mfop0ytGwvXiq2
+	rl3dzGQ1GpeevGsoI5fcD83U+dJo519LOuIDKPNTwMMuFiQfpYqAQ6d7hpjcailGPFab7EIscBQ
+	IwYJlxh1stWZHOrXdY8IxO3dsYhCHohuAb6vFA34XRoPmWO3jekxwdkPqCq7vDEyN+J8hd+jCS9
+	WgDXVPCn7cGd19dSFd
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--3.030200-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: EF87E081E3C75DD9D52C5825BF7CF7DEA606A74AAE7419520C7D4768CB7EB3E22000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240228_174934_987821_75F99CC4 
-X-CRM114-Status: GOOD (  18.31  )
+X-CRM114-CacheID: sfid-20240228_183534_135512_0C6378A2 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,75 +94,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, Jason-ch Chen <jason-ch.chen@mediatek.com>, Nancy
+ Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Shawn Sung <shawn.sung@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 16 Feb 2024 14:05:36 +0300 Ar=C4=B1n=C3=A7 =C3=9CNAL via B4 Relay w=
-rote:
-> From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
->=20
-> Currently, the link operations for switch MACs are scattered across
-> port_enable, port_disable, phylink_mac_config, phylink_mac_link_up, and
-> phylink_mac_link_down.
->=20
-> port_enable and port_disable clears the link settings. Move that to
-> mt7530_setup() and mt7531_setup_common() which set up the switches. This
-> way, the link settings are cleared on all ports at setup, and then only
-> once with phylink_mac_link_down() when a link goes down.
->=20
-> Enable force mode at setup to apply the force part of the link settings.
-> This ensures that only active ports will have their link up.
+The gamma LUT setting of MT8188 and MT8195 are the same, so we create
+a one of items for MT8188 to reuse the driver data settings of MT8195.
 
-I don't know phylink so some basic questions..
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+---
+ .../devicetree/bindings/display/mediatek/mediatek,gamma.yaml  | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-What's "mode" in this case?
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+index 3e6cb8f48bcc..90c454eea06f 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+@@ -29,6 +29,10 @@ properties:
+           - enum:
+               - mediatek,mt6795-disp-gamma
+           - const: mediatek,mt8173-disp-gamma
++      - items:
++          - enum:
++              - mediatek,mt8188-disp-gamma
++          - const: mediatek,mt8195-disp-gamma
+       - items:
+           - enum:
+               - mediatek,mt8186-disp-gamma
+-- 
+2.18.0
 
-> Now that the bit for setting the port on force mode is done on
-> mt7530_setup() and mt7531_setup_common(), get rid of PMCR_FORCE_MODE_ID()
-> which helped determine which bit to use for the switch model.
-
-MT7531_FORCE_MODE also includes MT7531_FORCE_LNK, doesn't that mean=20
-the link will be up?
-
-> The "MT7621 Giga Switch Programming Guide v0.3", "MT7531 Reference Manual
-> for Development Board v1.0", and "MT7988A Wi-Fi 7 Generation Router
-> Platform: Datasheet (Open Version) v0.1" documents show that these bits a=
-re
-> enabled at reset:
->=20
-> PMCR_IFG_XMIT(1) (not part of PMCR_LINK_SETTINGS_MASK)
-> PMCR_MAC_MODE (not part of PMCR_LINK_SETTINGS_MASK)
-> PMCR_TX_EN
-> PMCR_RX_EN
-> PMCR_BACKOFF_EN (not part of PMCR_LINK_SETTINGS_MASK)
-> PMCR_BACKPR_EN (not part of PMCR_LINK_SETTINGS_MASK)
-> PMCR_TX_FC_EN
-> PMCR_RX_FC_EN
->=20
-> These bits also don't exist on the MT7530_PMCR_P(6) register of the switch
-> on the MT7988 SoC:
->=20
-> PMCR_IFG_XMIT()
-> PMCR_MAC_MODE
-> PMCR_BACKOFF_EN
-> PMCR_BACKPR_EN
->=20
-> Remove the setting of the bits not part of PMCR_LINK_SETTINGS_MASK on
-> phylink_mac_config as they're already set.
-
-This should be a separate change.
-
-> Suggested-by: Vladimir Oltean <olteanv@gmail.com>
-> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
-
-> @@ -2257,6 +2255,12 @@ mt7530_setup(struct dsa_switch *ds)
->  	mt7530_mib_reset(ds);
-> =20
->  	for (i =3D 0; i < MT7530_NUM_PORTS; i++) {
-> +		/* Clear link settings and enable force mode to force link down
-
-"Clear link settings to force link down" makes sense.
-Since I don't know what the mode is, the "and enable force mode"
-sounds possibly out of place. If you're only combining this
-for the convenience of RMW, keep the reasoning separate.
 
