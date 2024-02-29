@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ED4DC54798
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 20:40:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C54FAC48BF6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 20:41:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iQJeM6ag5khHewHjTbwo7xXqRvGtr+MUgx08yMgvTmM=; b=ckil+bYSEmF1Y2hm/oMUUsXU/J
-	kpJqJ+oUpesOGpP3CSZOdEPFe9YAsV2EDmebNc8VqsCqoABU7fl5JVdljtMBcJPk0Ha3yRDc7f3W5
-	YJrOHqELBateCfWCrEjFCLWahUwvzal6gN54iXQWJIcX5YCiyJy1lt4n7ZJFWbM/7o5pw/FCw/FS+
-	9kwF8q2RXjE1X3DAnlvQMy615uVeuvrGTqbGR2uUT0+J4bQ6AOieA2DhVReMeFavehjzVQ7eZ0pLo
-	4ZSxOC2+zkCcfiu2NZrs+Epg5C6D2+qfnhyD+biNrDwuL04eVKEkAsshvNf/f1oInwEAyFCJvAZBf
-	Td96M1kg==;
+	bh=x6zXTae6nucjeAo5cqBj+xiJ4JuTrcqJzKoAhdEEMUs=; b=Xh1ydk1eMdDAH0fgaaZGqsc+0r
+	oEzTrlPNcIxS/UCskYoAXMgZnxcIKs99osVnx0Vz4k+nlLr2PiO8TKKfyGFnn8vDmxxmbe+vklv0b
+	4FIbLcVHxNXQRcWt+PL4vj1HpczW1AS0FsAibrKhDg/D2vBXCVpM0rwEzKXPCinLPUphi27HUA8Ow
+	9Z/jAU83xGxHdlPoupJirKb75T255ByIV1VBg17sMUJ3ueh3VsKOBHJBN53Wi5gMnRVsxv0TKxWqb
+	UA6AAjB6CqEklIz6m9+MwqENM+ujXL724hIsfupJOen3vvolerwzraB1HYk/rVFS34xQhhjMHQO8C
+	6YegXDPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfnD2-0000000F7gf-3MuU;
-	Thu, 29 Feb 2024 20:40:53 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rfnDm-0000000F85W-1wXe;
+	Thu, 29 Feb 2024 20:41:38 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfnCd-0000000F7U1-46RU;
-	Thu, 29 Feb 2024 20:40:30 +0000
+	id 1rfnDE-0000000F7kD-2u1G;
+	Thu, 29 Feb 2024 20:41:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 0A228CE0A0D;
-	Thu, 29 Feb 2024 20:40:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68C96C43330;
-	Thu, 29 Feb 2024 20:40:22 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 74695613E9;
+	Thu, 29 Feb 2024 20:41:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4335C433B2;
+	Thu, 29 Feb 2024 20:40:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1709239225;
-	bh=v72yR9TvJL75rbdEOwqmwC5IEhpmO5X238jNeAFXJaU=;
+	s=k20201202; t=1709239262;
+	bh=9VfXSt1NiGcVAed46Ql4jw8lhSZWuC2t0JpuV/8gLi0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RogbHVy2ewpx6oYzwsYA7t3aYhUsA36K9G70LPYPI5OfHSnN2HB6Bv/+XuNE9k265
-	 7hJNgLGrWN00FCXQTwKpKEgUtktl5ps0+gTYMgvAxMZ17h1nta/YM3LQklzrNT7tQ+
-	 ZNBD5oB5bSkuNzDuyp2jzFEZ6k/596pUdO+pQd39mvjRrIc/ZnVi9geQINLJEtrNAa
-	 grAlya4gAR1kUweVvCpTlixSdYCsmx1hjFdT61twcErdk9PL3LfALS2T/0ra7LQFPg
-	 4IS5+wiUfJndIjAIE4yoSabFgNIsc048nvSsznns/9BE2cChU8aY3on1wQ7b+F5qcr
-	 cyicPOUU7icJg==
+	b=N4NIXlG0u+//DwEfRDxevCUowifQ4nagwkvnzT7lYSDchWstTX0Hgt4z8uQrWUJii
+	 WHvIWkNLrDv969uBksT1X1kR6me2ROrDgzNjTyU3KNLnSEhvD6g3s8fPt7I4ohJtU3
+	 QjadssFCXBLTUpeYE9Ru6aYNua7wZF/kaaEjBpzyPxFNxjrtzPA+oEeW1zmWo/kTGk
+	 YmTqc2QEDiHJXRwn+C9uwhHiyxxkSkzKAwroURYHxzlT6ipdnSdxSdvQJ4vQC6ewle
+	 zyTloDkERCK/whdq0sX9gBU0vVcAsuzge0eOwhhfb0zaYxHns87auaBZHVETCOm+OQ
+	 A7JNNKC3TcmQg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -67,20 +67,20 @@ Cc: Rob Herring <robh@kernel.org>,
 	devicetree@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-renesas-soc@vger.kernel.org
-Subject: [PATCH AUTOSEL 6.6 19/22] arm64: dts: Fix dtc interrupt_provider warnings
-Date: Thu, 29 Feb 2024 15:39:12 -0500
-Message-ID: <20240229203933.2861006-19-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 12/12] arm64: dts: Fix dtc interrupt_provider warnings
+Date: Thu, 29 Feb 2024 15:40:34 -0500
+Message-ID: <20240229204039.2861519-12-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240229203933.2861006-1-sashal@kernel.org>
-References: <20240229203933.2861006-1-sashal@kernel.org>
+In-Reply-To: <20240229204039.2861519-1-sashal@kernel.org>
+References: <20240229204039.2861519-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.18
+X-stable-base: Linux 6.1.79
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240229_124028_534487_A941E53D 
-X-CRM114-Status: GOOD (  10.82  )
+X-CRM114-CacheID: sfid-20240229_124105_175099_9AD7555A 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,7 +124,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  9 files changed, 7 insertions(+), 5 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/amazon/alpine-v2.dtsi b/arch/arm64/boot/dts/amazon/alpine-v2.dtsi
-index dccbba6e7f98e..dbf2dce8d1d68 100644
+index 4eb2cd14e00b0..9b6da84deae7a 100644
 --- a/arch/arm64/boot/dts/amazon/alpine-v2.dtsi
 +++ b/arch/arm64/boot/dts/amazon/alpine-v2.dtsi
 @@ -145,7 +145,6 @@ pci@fbc00000 {
@@ -136,10 +136,10 @@ index dccbba6e7f98e..dbf2dce8d1d68 100644
  			al,msi-base-spi = <160>;
  			al,msi-num-spis = <160>;
 diff --git a/arch/arm64/boot/dts/amazon/alpine-v3.dtsi b/arch/arm64/boot/dts/amazon/alpine-v3.dtsi
-index 39481d7fd7d4d..3ea178acdddfe 100644
+index 73a352ea8fd5c..b30014d4dc29c 100644
 --- a/arch/arm64/boot/dts/amazon/alpine-v3.dtsi
 +++ b/arch/arm64/boot/dts/amazon/alpine-v3.dtsi
-@@ -355,7 +355,6 @@ pcie@fbd00000 {
+@@ -351,7 +351,6 @@ pcie@fbd00000 {
  		msix: msix@fbe00000 {
  			compatible = "al,alpine-msix";
  			reg = <0x0 0xfbe00000 0x0 0x100000>;
@@ -148,10 +148,10 @@ index 39481d7fd7d4d..3ea178acdddfe 100644
  			al,msi-base-spi = <336>;
  			al,msi-num-spis = <959>;
 diff --git a/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi b/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi
-index 9dcd25ec2c041..896d1f33b5b61 100644
+index fda97c47f4e97..d5778417455c0 100644
 --- a/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi
 +++ b/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi
-@@ -586,6 +586,7 @@ gpio_g: gpio@660a0000 {
+@@ -584,6 +584,7 @@ gpio_g: gpio@660a0000 {
  			#gpio-cells = <2>;
  			gpio-controller;
  			interrupt-controller;
@@ -160,10 +160,10 @@ index 9dcd25ec2c041..896d1f33b5b61 100644
  		};
  
 diff --git a/arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi b/arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi
-index f049687d6b96d..d8516ec0dae74 100644
+index 8f8c25e51194d..473d7d0ddf369 100644
 --- a/arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi
 +++ b/arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi
-@@ -450,6 +450,7 @@ gpio_hsls: gpio@d0000 {
+@@ -442,6 +442,7 @@ gpio_hsls: gpio@d0000 {
  			#gpio-cells = <2>;
  			gpio-controller;
  			interrupt-controller;
@@ -172,10 +172,10 @@ index f049687d6b96d..d8516ec0dae74 100644
  			gpio-ranges = <&pinmux 0 0 16>,
  					<&pinmux 16 71 2>,
 diff --git a/arch/arm64/boot/dts/lg/lg1312.dtsi b/arch/arm64/boot/dts/lg/lg1312.dtsi
-index 48ec4ebec0a83..b864ffa74ea8b 100644
+index 78ae73d0cf365..98ff17b14b2a5 100644
 --- a/arch/arm64/boot/dts/lg/lg1312.dtsi
 +++ b/arch/arm64/boot/dts/lg/lg1312.dtsi
-@@ -126,7 +126,6 @@ eth0: ethernet@c1b00000 {
+@@ -124,7 +124,6 @@ eth0: ethernet@c1b00000 {
  	amba {
  		#address-cells = <2>;
  		#size-cells = <1>;
@@ -184,10 +184,10 @@ index 48ec4ebec0a83..b864ffa74ea8b 100644
  		compatible = "simple-bus";
  		interrupt-parent = <&gic>;
 diff --git a/arch/arm64/boot/dts/lg/lg1313.dtsi b/arch/arm64/boot/dts/lg/lg1313.dtsi
-index 3869460aa5dcb..996fb39bb50c1 100644
+index 2173316573bee..8e9410d8f46c0 100644
 --- a/arch/arm64/boot/dts/lg/lg1313.dtsi
 +++ b/arch/arm64/boot/dts/lg/lg1313.dtsi
-@@ -126,7 +126,6 @@ eth0: ethernet@c3700000 {
+@@ -124,7 +124,6 @@ eth0: ethernet@c3700000 {
  	amba {
  		#address-cells = <2>;
  		#size-cells = <1>;
@@ -196,10 +196,10 @@ index 3869460aa5dcb..996fb39bb50c1 100644
  		compatible = "simple-bus";
  		interrupt-parent = <&gic>;
 diff --git a/arch/arm64/boot/dts/marvell/armada-ap80x.dtsi b/arch/arm64/boot/dts/marvell/armada-ap80x.dtsi
-index 2c920e22cec2b..7ec7c789d87ef 100644
+index a06a0a889c43f..73d8803b54d8b 100644
 --- a/arch/arm64/boot/dts/marvell/armada-ap80x.dtsi
 +++ b/arch/arm64/boot/dts/marvell/armada-ap80x.dtsi
-@@ -138,7 +138,6 @@ pmu {
+@@ -133,7 +133,6 @@ pmu {
  
  			odmi: odmi@300000 {
  				compatible = "marvell,odmi-controller";
@@ -208,10 +208,10 @@ index 2c920e22cec2b..7ec7c789d87ef 100644
  				marvell,odmi-frames = <4>;
  				reg = <0x300000 0x4000>,
 diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-index 5d635085fe3fd..9079e48aea23e 100644
+index 5117b2e7985af..998c2e78168a6 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
 +++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-@@ -128,6 +128,7 @@ mt6360: pmic@34 {
+@@ -111,6 +111,7 @@ mt6360: pmic@34 {
  		compatible = "mediatek,mt6360";
  		reg = <0x34>;
  		interrupt-controller;
@@ -220,10 +220,10 @@ index 5d635085fe3fd..9079e48aea23e 100644
  		interrupt-names = "IRQB";
  
 diff --git a/arch/arm64/boot/dts/renesas/ulcb-kf.dtsi b/arch/arm64/boot/dts/renesas/ulcb-kf.dtsi
-index 3885ef3454ff6..50de17e4fb3f2 100644
+index 588b14b66b6fb..f37abfc13fe59 100644
 --- a/arch/arm64/boot/dts/renesas/ulcb-kf.dtsi
 +++ b/arch/arm64/boot/dts/renesas/ulcb-kf.dtsi
-@@ -234,6 +234,7 @@ gpio_exp_74: gpio@74 {
+@@ -251,6 +251,7 @@ gpio_exp_74: gpio@74 {
  		gpio-controller;
  		#gpio-cells = <2>;
  		interrupt-controller;
@@ -231,7 +231,7 @@ index 3885ef3454ff6..50de17e4fb3f2 100644
  		interrupt-parent = <&gpio6>;
  		interrupts = <8 IRQ_TYPE_EDGE_FALLING>;
  
-@@ -294,6 +295,7 @@ gpio_exp_75: gpio@75 {
+@@ -311,6 +312,7 @@ gpio_exp_75: gpio@75 {
  		gpio-controller;
  		#gpio-cells = <2>;
  		interrupt-controller;
@@ -239,7 +239,7 @@ index 3885ef3454ff6..50de17e4fb3f2 100644
  		interrupt-parent = <&gpio6>;
  		interrupts = <4 IRQ_TYPE_EDGE_FALLING>;
  	};
-@@ -314,6 +316,7 @@ gpio_exp_76: gpio@76 {
+@@ -331,6 +333,7 @@ gpio_exp_76: gpio@76 {
  		gpio-controller;
  		#gpio-cells = <2>;
  		interrupt-controller;
@@ -247,7 +247,7 @@ index 3885ef3454ff6..50de17e4fb3f2 100644
  		interrupt-parent = <&gpio7>;
  		interrupts = <3 IRQ_TYPE_EDGE_FALLING>;
  	};
-@@ -324,6 +327,7 @@ gpio_exp_77: gpio@77 {
+@@ -341,6 +344,7 @@ gpio_exp_77: gpio@77 {
  		gpio-controller;
  		#gpio-cells = <2>;
  		interrupt-controller;
