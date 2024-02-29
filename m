@@ -4,71 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5466CC48BF6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 19:45:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAE4BC48BF6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 19:46:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QO+f/OuAPWGAgqqw/D8SoDwJhazuOmlJ2HSRxuZdTIo=; b=zqSapcWtSUOsZL8k0VOdUs116P
-	DINMymfBhLt86dZ03rZAupnGG9HB46PpvBVE1qYfIJSHVrfdsZbzkGCIKOmVJdfLUBzyiMiwzU1dw
-	V1hoo7NZb0orWxtkwirvCcqSiVaQHXeFEHxoWtPn4GhAZODGy9a8CFnEos/VFYOpKE/RSoYxtZhhY
-	yNPm1E9dmsWzK4LYXTm02tQPjpOdt+aRmF9t4hIE/wvXOtoM/rOOqSxa4p9A1S4i9ofXNZouW43nt
-	RGNsrBbZBa8Tvk2PyxW3L4GS5K/gSB/WjBxhtrp0fKcDaefC5ZRkuKDmmqxFYckYOBgpsgcMK8G5i
-	jRR+eUMw==;
+	bh=xFPAPp6UStUF0X9AgREgxRH5IXXuxO+VLcg4M+cur8U=; b=qvGjOy3VqmF+gSZ9f6LRxQtZjH
+	I7YnCHXuIS3M+fEPqpGOXO+7NXsPTdzxYo3IA517ux5sJnZca4+yHwNWmNpwgE59zJQRRbiacQIyh
+	CfsIqnOT6ZJkPL+/9WoBQ9EtEhN+fb5mHtpylem2O9ySqsrexzWWvQs0B26mUMSYGvC2hqcdQHFp8
+	/rshAaHOf6ypUKxPOm07jvXqEVUv0WXgu6aBvWYX0KdGhMo7oUZ9MoByTPnyCM+pZwnwuQhtGfsjO
+	inGIUGObaZzDbnM5LVY9wct6YuwRiYYGdWhRR/Z3cpSSS8WmaWZX8wRBMKcdfrZh7fYghuRgdBjxO
+	Tn3O1m0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfmLh-0000000EwxG-3jce;
-	Thu, 29 Feb 2024 19:45:45 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rfmMY-0000000ExKq-1GzU;
+	Thu, 29 Feb 2024 19:46:38 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfmKz-0000000Ewdk-3YFr;
-	Thu, 29 Feb 2024 19:45:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709235900;
-	bh=SG+BNB9V12ilA2yy6/wOnUl0q+5MszvwNnI3Q2lsT4o=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=JyRjACOtVwRIDyFZBlm2b3Sl2LfyksB2Ms9fxLyNNItBrhnxr34d180RyVl6uUdfP
-	 MhUQEdIH8Cg/gACRmnYYCkMPfc73kArD+znNzA0eG4+FpwxvapbgBJS9uPdy7xGrPk
-	 u0YCMYSSUk9ymTM2pID6BI+mVpkTKowhhbzaiR//U2xl4Bu9uxErv734g+ABfwo/nd
-	 X0PCPJ2m30eahQCpLxtRqqgzpjWZ/5iUSFSVXvQ8VKisJ6OlsKiTi9MUdmq5waCJ7/
-	 I8aO8mGRrY64EuxqlGIzROi8GqdcN1bLw/qp0yT0tOBjsb1D0hasoy7ak6FPL+Jlcf
-	 XIWu9Ak9T3Avw==
-Received: from [192.168.1.200] (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9F1BF37820E2;
-	Thu, 29 Feb 2024 19:44:57 +0000 (UTC)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Thu, 29 Feb 2024 14:44:31 -0500
-Subject: [PATCH 4/4] arm64: dts: mediatek: mt8195: Add missing
- gce-client-reg to mutex1
+	id 1rfmMK-0000000ExDM-0K7n
+	for linux-mediatek@lists.infradead.org;
+	Thu, 29 Feb 2024 19:46:26 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-563bb51c36eso2001552a12.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 29 Feb 2024 11:46:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1709235982; x=1709840782; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=xFPAPp6UStUF0X9AgREgxRH5IXXuxO+VLcg4M+cur8U=;
+        b=NdbgZX94XDsLMayQI+pPC64h/PyHMVuNXsmzWEIMUVv41dh0MiSK/8VF/YHT5HnRO7
+         m9HYvQEG5mVOokWlSQndc0h4xUkmpB+E+gvXBzjeHgT4E1Y+xbFgp0s4lJU4oGjhXsTP
+         y2+yPjIsRaamnffskK7RDEVrVZ1BVdTexEExmEG7kzxjRLLRHuuDzCgwSBD43vck1EY4
+         kVKzAm9T0tx9Eyxii685gUkxmoA9+PuNcvLhWyf8HV8r5wjSVUwJYlBZr3dLn3y9NUq6
+         grOiZUTrgVflQQjf3C2P/lNO3rHJk2ZSxaYoJZ2ffzOcswFS9p4lnGEnZo3KwxdlJMaa
+         ALvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1709235982; x=1709840782;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=xFPAPp6UStUF0X9AgREgxRH5IXXuxO+VLcg4M+cur8U=;
+        b=jhrOfb2yBMzVSlEa8T6BM3mEKwDUWpuF+xHeeu/YYTVB1obhd1COgzSNnWmSgrYgO5
+         SUrSgSqS8Yuy61hf0/sT9XNUQbip1zu+0FV5OP8maL0a11s1lPBbjGWtNRnMyZDXbOII
+         bNKsCSbaUEltz5ghJsWufQcF3DH4BtPstiAR3z/G9XSnGoepQZTURavRXSJLSd0cbMhv
+         pt8+mg2X4ruo+xskE5djeSfzHs/SXmuC217KUWdbJYRgK9F/mAIDzWzBy62TrF/NBZW9
+         XTU3zxuohRKtGaRgmax3/TgJh7GJYk6OM0DcEs3cWR1XG/ST4MOkd+lBCfU2uq5nAPTB
+         aNDg==
+X-Forwarded-Encrypted: i=1; AJvYcCWo7pnlhCvxAP0QZdOUO894xPm4FeVHPKnWusBWYaU/8evthwyLZcZai915HjT2fzTc0qOF7/B/ZS9dHtGJ3Ozjvz9xHBRPrXF0OWxZrRw1RNeJ
+X-Gm-Message-State: AOJu0YzT3mi9wkP9PsNBnm7bxpYCTJzg80DuGHnzQTdm5U59GYq1Dmun
+	g62TYI5Pq8kcL7agdBCS4GRVWhg5fGcnVhTZ1/CfVS0dOEYI6OpVw6ZE0MnCgKE=
+X-Google-Smtp-Source: AGHT+IHW1++A7Gl/dr7vZ4ae+Ut29HBTzuYss8RzgmlsY9stjRo7Q+rXWsg9buYQPNERZMUzDVB9RA==
+X-Received: by 2002:a05:6402:520c:b0:566:1795:86bf with SMTP id s12-20020a056402520c00b00566179586bfmr2451737edd.34.1709235982347;
+        Thu, 29 Feb 2024 11:46:22 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.222.97])
+        by smtp.gmail.com with ESMTPSA id q33-20020a05640224a100b00565ba75a739sm886654eda.95.2024.02.29.11.46.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 29 Feb 2024 11:46:21 -0800 (PST)
+Message-ID: <f27a1375-59d4-4c1c-b56e-2d37013cf6a4@linaro.org>
+Date: Thu, 29 Feb 2024 20:46:19 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20240229-gce-client-reg-add-missing-mt8192-95-v1-4-b12c233a8a33@collabora.com>
-References: <20240229-gce-client-reg-add-missing-mt8192-95-v1-0-b12c233a8a33@collabora.com>
-In-Reply-To: <20240229-gce-client-reg-add-missing-mt8192-95-v1-0-b12c233a8a33@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>, 
- Tinghan Shen <tinghan.shen@mediatek.com>, 
- "Jason-JH.Lin" <jason-jh.lin@mediatek.com>, 
- "Nancy.Lin" <nancy.lin@mediatek.com>, kernel@collabora.com, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.13.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 1/5] dt-bindings: spmi: Add X1E80100 SPMI PMIC ARB
+ schema
+Content-Language: en-US
+To: Abel Vesa <abel.vesa@linaro.org>, Stephen Boyd <sboyd@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Cc: Srini Kandagatla <srinivas.kandagatla@linaro.org>,
+ Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+References: <20240222-spmi-multi-master-support-v6-0-bc34ea9561da@linaro.org>
+ <20240222-spmi-multi-master-support-v6-1-bc34ea9561da@linaro.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20240222-spmi-multi-master-support-v6-1-bc34ea9561da@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240229_114502_177566_055B9C32 
-X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-CacheID: sfid-20240229_114624_179945_316C8040 
+X-CRM114-Status: UNSURE (   7.05  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,32 +152,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the missing mediatek,gce-client-reg property to the mutex1 node to
-allow it to use the GCE. This prevents the "can't parse gce-client-reg
-property" error from being printed and should result in better
-performance.
+On 22/02/2024 14:52, Abel Vesa wrote:
+> Add dedicated schema for X1E80100 PMIC ARB (v7) as it allows multiple
+> buses by declaring them as child nodes.
+> 
+> Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
+> ---
+>  .../bindings/spmi/qcom,x1e80100-spmi-pmic-arb.yaml | 136 +++++++++++++++++++++
+>  1 file changed, 136 insertions(+)
+> 
 
-Fixes: 92d2c23dc269 ("arm64: dts: mt8195: add display node for vdosys1")
-Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index fd074103979c..5d8b68f86ce4 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -3335,6 +3335,7 @@ mutex1: mutex@1c101000 {
- 			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
- 			clocks = <&vdosys1 CLK_VDO1_DISP_MUTEX>;
- 			clock-names = "vdo1_mutex";
-+			mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0x1000 0x1000>;
- 			mediatek,gce-events = <CMDQ_EVENT_VDO1_STREAM_DONE_ENG_0>;
- 		};
- 
-
--- 
-2.44.0
+Best regards,
+Krzysztof
 
 
