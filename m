@@ -4,92 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05796C54798
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 08:25:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92EC8C48BF6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 08:27:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PNXNtXezdPiz6WQwvH9xjCDeUeGJKj/mjFzziiI0LNM=; b=ykryugpRO8gO+64IShnelaMocF
-	L3Kz7tVB1Z7ZSMHVo7ndk6oYFzw1oderpnsXI2OyBrsw4NL5w5l5fHCZVgkFhicdZPhdWjP2ym7YZ
-	MiXtPgbsOEmviv1hem651NvcOzMIWEyIZOLDjv9Cnw/1aZ4VQiUbxjOCWeVtFTAqeHjyZ75azcrqW
-	3NjAacz0Nmg6YWtd8buaB6uexHR+W3JXnDOM2RcQlYbjy/KveT5i0qfUBvphmPEznNrfFdf0AXkYR
-	zoMVRjVV/uuBxxCW2IyYJiholMTwV8brP6nQnD/yaEVR3PIQGyQIdrEA+wi88vGQV7qvbVDhMKS2U
-	6BmBnzaQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+jC9NU+Sr0rM0Ox02DOM4ORkqse489i4dWP/gSCDCTs=; b=tLhYnisZ8spNxU
+	hX5f086V/9EKAVbCM8O7OMytMhsPSUt9I9OOwJRdZ3stH66pNXOegvca+vRzlf32Z0QoQT1+IDpOp
+	J1qxIoNlOTDw8pntsf8N/IcW6U81KLSDaGxHB7olJRYAPlEuevdYeCVZmNW3URE0ytuptEPb05IuY
+	uudaoaRdeRjYhiRQuwyHk7BwOxJS7srKhvFMTBx0gevqKh/+j3ecVE0oOCt/vtnGhYszyh5B5OqJz
+	AnmyfD+dD2wnjoD/l66sbuI2mPIEH+z10J1bCyaB4nwDWI7erU6JYz8/ohx0593lPlHHojzt1Eiud
+	/sE9l9H4IuyMuexrPliw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfbjg-0000000CdiN-2ZI5;
-	Thu, 29 Feb 2024 08:25:48 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1rfblI-0000000Ce9g-0GPH;
+	Thu, 29 Feb 2024 08:27:28 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfbjd-0000000Cdgm-0fL0
+	id 1rfblE-0000000Ce8i-2Mv5
 	for linux-mediatek@lists.infradead.org;
-	Thu, 29 Feb 2024 08:25:46 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a441d7c6125so76175266b.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 29 Feb 2024 00:25:44 -0800 (PST)
+	Thu, 29 Feb 2024 08:27:25 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a3e706f50beso97242166b.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 29 Feb 2024 00:27:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1709195143; x=1709799943; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1709195243; x=1709800043; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=PNXNtXezdPiz6WQwvH9xjCDeUeGJKj/mjFzziiI0LNM=;
-        b=N4wxy9rcYKuJW9gsfEUE7GyvloBzH2AItuNdJ8ptpKbO3K8s/IxrYk57VTREPqOcA2
-         S1nN0aNW9AcU3Uku7jhCzccSVVlpcK6I8ubSPrvE3d+Bv8TRbwIxZY/W+NYfsgBaWIyS
-         bwzy+/Ziu+U7F+rSRpysjqVJeMBiV+IxoM0Nxd45cPYko65LMjjBRGlSIYg4dlxu+eIx
-         oP9xfrJPZJaK9LedUnhNxjwXxaLgl9LQBYIaD19/z0qVFQc1aC/4U7BHCpExG9nc54Qq
-         0tuNhJ8d0O7Tg5yaDCzLoNzv4sglmHfTMwJl21Mofy3Gms9wa+vo10XfdWHLWURUo/OW
-         TPNw==
+        bh=+jC9NU+Sr0rM0Ox02DOM4ORkqse489i4dWP/gSCDCTs=;
+        b=vp2vnHTsiK+xrxJsnfnRMMLxD+XetPuJXkXizIj65c6qNISD+Va0rIKJjCb4VNi0Uk
+         sAWupICHpNryrqgdzbd332VhdUI1ng7Vszpemc2CGaOlAPvWifVBbbb27ROkkRCwTzHy
+         MVWIJimmrfxawY/THEDe4n0jZNiadBdr/eq2MIEwh6CVAiFxjXawfLkR3YwFnmoNIm0S
+         zxByjpxoMX1mArGfQ41kl82P/PoVfOUVBI0t3ArZyHGTVwXGWuK64UG5xlaxSTwxerYE
+         lGRfWYfZrsyrMmJJWCJXYQ0PAb/q0BFam7dBpMwjLL2vPKlRx2UURcF6CW14Fc7kbtmy
+         Ul9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709195143; x=1709799943;
+        d=1e100.net; s=20230601; t=1709195243; x=1709800043;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=PNXNtXezdPiz6WQwvH9xjCDeUeGJKj/mjFzziiI0LNM=;
-        b=mEILITnNOAAvsHh46rVMmNoo0tKfRqTpC8v9K7VgwlPj5w69XRN4kmC+j2jfcJAc2y
-         NWgjXpSUs3HUSb8C6coZglDafkGCorYKxaD7I0RBb02P7wfBD8sSi4hpGbfKVhTd29wB
-         XGX+WTlxIYU0DO+Uiwjm1kvSJ52DhRs6PQXlkRACcsQ5f/SN2NryZEBx9aLI6EqTEiL5
-         26TnRusSFJzOXPgUaghXC7dc5X0MbRHZQMZExJsUy60k1Y5NajAphHLrVyLUYm8nq3xq
-         /9gE4N+KzLlOBXCXv+dJF68Ql+QN94zo8neZl+OohugItRPwp0GEEV1d7x4uIPZ/eue8
-         OtvQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVAg0XAwBzJPlQ+Wf7Ep0cHtcFmONPPlLY/LGHusHeAMlGwXlA47sYK2CvKjZgZxOzR0vswggt4PREuxnziUGea3lvTpD4e/0D+r373nD+PKKls
-X-Gm-Message-State: AOJu0Yyw5pTo1xs2fqJAVNoUesuXlOy9vOmVrEQKzKkYleXM0aEaKVsw
-	6mmT6iIayPEQKTvW1yVO3iedAK/RInd77sQtE8mEXDwsHiWv5qnmgYVlTNQasbw=
-X-Google-Smtp-Source: AGHT+IEdRFYEnX4kAM1kYEF58dkyCyyKP45xIa7ZLp2VZd7u2TobvUB+aubfigdaalNJ9d2eEa2QgA==
-X-Received: by 2002:a17:906:56d0:b0:a43:f22e:57a6 with SMTP id an16-20020a17090656d000b00a43f22e57a6mr715486ejc.67.1709195143177;
-        Thu, 29 Feb 2024 00:25:43 -0800 (PST)
+        bh=+jC9NU+Sr0rM0Ox02DOM4ORkqse489i4dWP/gSCDCTs=;
+        b=AQ19OyPbw3OCp64jnw/kAfFUXp6rcI1sti/hPQWjD8I4Ipud6Y2QIUR0+TskR7YCW6
+         6ibgwr/bULHh5PkOOW+rYAI58RFS6rHJn790VVGzCT8z6Z+1uagitbh76t5s39e6CXoP
+         sgAyrDDgw0q0bwUqp65sEL516juxisUaZhmnVuGb7xXhkF90iPfzd/mdGF+v9YVkAQ6e
+         2kpsgKh73tsw7zE7YjchPe7mjHvmkOn3pYM349sQ16H8xfGEzvKDaR3SZk540IdTLpL7
+         GU1r9Z+EZ7Y1Nt9CTVwqZXYgZyGEKJbh7wi2gT+AWPbu/Dy91SM4lShPDp5uiPEt+rtS
+         bfUA==
+X-Forwarded-Encrypted: i=1; AJvYcCXn0VkQKt87ByiG9/q6zq3BcV0fCSHZfhsP2Hzp4IHWMi8WIBfXbDVXwanhFvT/fz2Pf3qUF5MCNjFXrF8rKv/CUP/VY6N8cj5fT0fUXAmILa1A
+X-Gm-Message-State: AOJu0YxMV1CsxkUGbwSirjR7xB5/LXwHDPC+HdA0OsYz2XIbUJBoooxT
+	Tvd0HI7SSDP1VnSaAG253jlueVQGriz5pCegzjzMZm8vUKH1XqKT+iIYYIbD8kc=
+X-Google-Smtp-Source: AGHT+IHtFnTGokxus4yJA0VW8KJfoHKca5tzjEOBUp5rScvISxrFcHYTgLMG8YRVsaFj8MwttJR4fQ==
+X-Received: by 2002:a17:906:dd4:b0:a44:f88:323b with SMTP id p20-20020a1709060dd400b00a440f88323bmr967443eji.54.1709195242806;
+        Thu, 29 Feb 2024 00:27:22 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.222.116])
-        by smtp.gmail.com with ESMTPSA id vg9-20020a170907d30900b00a4439b7756bsm434508ejc.6.2024.02.29.00.25.38
+        by smtp.gmail.com with ESMTPSA id vg9-20020a170907d30900b00a4439b7756bsm434508ejc.6.2024.02.29.00.27.20
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 29 Feb 2024 00:25:41 -0800 (PST)
-Message-ID: <32ff2f66-7a94-41ed-b77b-f78da2e57446@linaro.org>
-Date: Thu, 29 Feb 2024 09:25:37 +0100
+        Thu, 29 Feb 2024 00:27:22 -0800 (PST)
+Message-ID: <23a99e13-fe45-4cb7-8e1c-f6c85d70becc@linaro.org>
+Date: Thu, 29 Feb 2024 09:27:20 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 18/22] ASoC: dt-bindings: mt8195: Document audio-routing
- and dai-link subnode
+Subject: Re: [PATCH 2/3] dt-bindings: display: mediatek: gamma: Add support
+ for MT8188
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- broonie@kernel.org
-Cc: wenst@chromium.org, lgirdwood@gmail.com, robh@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.com,
- trevor.wu@mediatek.com, maso.huang@mediatek.com,
- xiazhengqiao@huaqin.corp-partner.google.com, arnd@arndb.de,
- kuninori.morimoto.gx@renesas.com, shraash@google.com, amergnat@baylibre.com,
- nicolas.ferre@microchip.com, u.kleine-koenig@pengutronix.de,
- dianders@chromium.org, frank.li@vivo.com, allen-kh.cheng@mediatek.com,
- eugen.hristev@collabora.com, claudiu.beznea@tuxon.dev,
- jarkko.nikula@bitmer.com, jiaxin.yu@mediatek.com, alpernebiyasak@gmail.com,
- ckeepax@opensource.cirrus.com, zhourui@huaqin.corp-partner.google.com,
- nfraprado@collabora.com, alsa-devel@alsa-project.org,
- shane.chien@mediatek.com, linux-sound@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20240227120939.290143-1-angelogioacchino.delregno@collabora.com>
- <20240227120939.290143-19-angelogioacchino.delregno@collabora.com>
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+References: <20240229023522.15870-1-jason-jh.lin@mediatek.com>
+ <20240229023522.15870-3-jason-jh.lin@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -135,12 +124,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240227120939.290143-19-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240229023522.15870-3-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240229_002545_218992_F144E502 
-X-CRM114-Status: GOOD (  14.83  )
+X-CRM114-CacheID: sfid-20240229_002724_663819_782F26C5 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,122 +141,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, Jason-ch Chen <jason-ch.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Shawn Sung <shawn.sung@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/02/2024 13:09, AngeloGioacchino Del Regno wrote:
-> Document the dai-link subnodes and the audio-routing property, allowing
-> to describe machine specific audio hardware and links in device tree.
+On 29/02/2024 03:35, Jason-JH.Lin wrote:
+> The gamma LUT setting of MT8188 and MT8195 are the same, so we create
+> a one of items for MT8188 to reuse the driver data settings of MT8195.
 > 
-> While at it, also deprecate the old properties which were previously
-> used with driver hardcoded configuration.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 > ---
+>  .../devicetree/bindings/display/mediatek/mediatek,gamma.yaml  | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+> index 3e6cb8f48bcc..90c454eea06f 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+> @@ -29,6 +29,10 @@ properties:
+>            - enum:
+>                - mediatek,mt6795-disp-gamma
+>            - const: mediatek,mt8173-disp-gamma
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8188-disp-gamma
+> +          - const: mediatek,mt8195-disp-gamma
+>        - items:
+>            - enum:
+>                - mediatek,mt8186-disp-gamma
 
-
->  
->    mediatek,adsp:
->      $ref: /schemas/types.yaml#/definitions/phandle
-> @@ -45,12 +56,75 @@ properties:
->        A list of the desired dai-links in the sound card. Each entry is a
->        name defined in the machine driver.
->  
-> +patternProperties:
-> +  ".*-dai-link$":
-> +    type: object
-> +    description:
-> +      Container for dai-link level properties and CODEC sub-nodes.
-> +
-> +    properties:
-> +      link-name:
-> +        description: Indicates dai-link name and PCM stream name
-> +        items:
-
-That's not a list, but just enum.
-
-> +          enum:
-> +            - DPTX_BE
-> +            - ETDM1_IN_BE
-> +            - ETDM2_IN_BE
-> +            - ETDM1_OUT_BE
-> +            - ETDM2_OUT_BE
-> +            - ETDM3_OUT_BE
-> +            - PCM1_BE
-> +
-> +      codec:
-> +        description: Holds subnode which indicates codec dai.
-> +        type: object
-> +        additionalProperties: false
-> +        properties:
-> +          sound-dai:
-> +            minItems: 1
-> +            maxItems: 2
-> +        required:
-> +          - sound-dai
-> +
-> +      dai-format:
-> +        description: audio format
-> +        items:
-
-Ditto
-
-> +          enum:
-> +            - i2s
-> +            - right_j
-> +            - left_j
-> +            - dsp_a
-> +            - dsp_b
-> +
-> +      mediatek,clk-provider:
-> +        $ref: /schemas/types.yaml#/definitions/string
-> +        description: Indicates dai-link clock master.
-> +        items:
-
-Ditto
-
-> +          enum:
-> +            - cpu
-> +            - codec
-> +
-> +    additionalProperties: false
-
-This goes either to the top of the section (after type:object) for
-readability or after required: block below.
-
-> +
-> +    required:
-> +      - link-name
-> +
->  additionalProperties: false
-
->  
->  required:
->    - compatible
->    - mediatek,platform
->  
-> +# Disallow legacy properties if dai-link-xxx nodes are specified
-> +if:
-> +  not:
-
-I don't think this works. To test if node is present or node, you would
-need to use required.
-https://elixir.bootlin.com/linux/v6.4-rc7/source/Documentation/devicetree/bindings/net/qcom,ipa.yaml#L174
-
-Are you sure this if:then: works as expected?
-
-
-> +    patternProperties:
-> +      ".*-dai-link$": false
-> +then:
-> +  properties:
-> +    mediatek,dptx-codec: false
-> +    mediatek,hdmi-codec: false
-> +
->  examples:
->    - |
->  
-
+Please keep this ordered by fallback compatible, so your list with 8195
+fallback should go below the list here.
 
 Best regards,
 Krzysztof
