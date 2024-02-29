@@ -4,70 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04F69C54798
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 20:23:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC333C48BF6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Feb 2024 20:38:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yGWdIP2mIoJvYT7QfXJMrtb4MB0ryzQCZUOiLrpwBvU=; b=n7McNo0Kz389koHnIT/evfmrEA
-	izFhgRI561fMGTRC4Gnr4U4hABiyPgg/jVRXeDjdRb7noxTSK+KC7Ciada4rMZHHPC+DrgebpDIOt
-	ZBdXSw+2ZtP/ZtaswIrRNZU9b0+5bSF5Ni3T6T1ysLRv/VUuL+m0hExh0BcqTNiWG0e2wb1U3fEXu
-	pLitl3GccceusEou/WJvaOV1yAJid+agkSvj5SMDtBWwWG9Ib9RCybr4IVTMyjbppNu2ljPKOecWG
-	a8RaZbrM47Ktxyj5sNLQCZlAfSrbO89fHlmGaxwRqrpiV8WiQzamjuoR5b1C0YK1f5P1wboUfOMMG
-	LIZ6jvLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FdO/5N4RHO/tcc1a4vZa3qUwkUWks0SXpWHOQS14Qgo=; b=lsKbjT5HuVXmA3+bzVVjknWNWI
+	KwAtoCd7VPKp5qdxl9oPQxUE3q9oo+kTRAwhSq0MK6jXaO3LSA752KApMo9ycT973X7NpQlFmCMWN
+	qF+VJbsQVZmfybK7QKuppbW90O5GH00YmU1P5K/1H7Om2oyp4BJj9mUd5RRl2m1VHsmxC3dkPZJwr
+	4e6+qFRqOguiaZYm4PGk4j3IDFErxOhPu47dGDcoZxFTrg9SppGzbnt4+mIrhxnCzKnk8q5RgtXGG
+	Cu3YxG6pug4XbFWZcmo7JLW0qM+5gvKIloDvX4bkoiMkrlUwouS3Q9tkHCrlJ4PPL0cZeFxb6poa6
+	iSfoDv6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfmw3-0000000F3Xz-2HqV;
-	Thu, 29 Feb 2024 20:23:19 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rfnAv-0000000F6fk-2x0m;
+	Thu, 29 Feb 2024 20:38:41 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfmw0-0000000F3X1-30wS;
-	Thu, 29 Feb 2024 20:23:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709238195;
-	bh=eypfRWduOTtxVcXy1CeP9vCXIlJPyx+8mSFU5oBXO/M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Caz0h/CLWd1f0XuHIlATCpzDZQEDROu3iAqJPbZ/Bm3Zal5kqJIikrrCn/kgFWaLX
-	 R5o7GDzqLG7Ec5TZkZgMdkVxoFNyUPSNq/TRjXjB7d8IcZw6V85PCu8uhtW1EALC0j
-	 rP2BYIZFgPihSOd2AbuLKoc34DnoUN2Ppd6QdjS+Iun67N9R9/gx3UBBGkGN4pkFp4
-	 hce4IgmCsFQ9K0HhYqygEfZF4NKUVjejOPmjTkQJjN8bXEkMTlBZi9ZyIFKbkacjGd
-	 B3wa78mo2zvkbDownlHap21AYbvmNR7RKO0y9R2FZEW5sGNrEESL+HQBFBfV/uGiQS
-	 rpuMK96Cj+TDg==
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4153137820E4;
-	Thu, 29 Feb 2024 20:23:12 +0000 (UTC)
-Date: Thu, 29 Feb 2024 15:23:09 -0500
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>,
-	"Rafael J . Wysocki" <rafael@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 1/2] arm64: dts: mediatek: cherry: Describe CPU
- supplies
-Message-ID: <8a45151a-1d51-4001-b0f9-9cfb0027232a@notapiano>
-References: <20240110142305.755367-1-nfraprado@collabora.com>
- <20240110142305.755367-2-nfraprado@collabora.com>
- <e325a4d4-0df7-499c-9d55-7da093b744ea@collabora.com>
+	id 1rfnAe-0000000F6Vh-28S9;
+	Thu, 29 Feb 2024 20:38:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 9018ACE218E;
+	Thu, 29 Feb 2024 20:38:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7C848C43394;
+	Thu, 29 Feb 2024 20:38:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1709239101;
+	bh=x7MLU62vI7O1d2eyk4IUEW2gd5l0YWD/HIw5tn3Wglg=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=QZ/FQxA/y/l0f9AHvDyUg5rrYRe4wCIAfl/xkd6L1PhVfbXYSNhN00opRygNNzZFK
+	 Rz+Tn6JcR4XmbFTaaJAOSen4wNw8GCVP31h3Oem1BQuyTVwUKKEUsZS1hSomdE3k0L
+	 EVxkdDCZ+OZbf+doMl802Mm68dEsoLtJZ7nXMq8VBAUBQJCIILicv5Hon6948S/NOt
+	 dRQ3PoSfmXjwbV1Fh04ofqwMT3pDovWM77mIoaLPESIKkKPwhzPSuSIR5RwOL1nU0D
+	 bpD5BQp2PEOJmNmkh83J3qWqVhbHx/PTq+ZUviIu9AwL2yNPLK2wSjUpqedZpKS4gF
+	 xwsQkotaHnBfQ==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Rob Herring <robh@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Chanho Min <chanho.min@lge.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Sasha Levin <sashal@kernel.org>,
+	tsahee@annapurnalabs.com,
+	atenart@kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	rjui@broadcom.com,
+	sbranden@broadcom.com,
+	andrew@lunn.ch,
+	gregory.clement@bootlin.com,
+	sebastian.hesselbarth@gmail.com,
+	matthias.bgg@gmail.com,
+	magnus.damm@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org
+Subject: [PATCH AUTOSEL 6.7 20/24] arm64: dts: Fix dtc interrupt_provider warnings
+Date: Thu, 29 Feb 2024 15:37:00 -0500
+Message-ID: <20240229203729.2860356-20-sashal@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240229203729.2860356-1-sashal@kernel.org>
+References: <20240229203729.2860356-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.7.6
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <e325a4d4-0df7-499c-9d55-7da093b744ea@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240229_122317_015576_6BF7805E 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20240229_123825_379617_DF95A856 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,22 +95,167 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 10, 2024 at 03:32:02PM +0100, AngeloGioacchino Del Regno wrote:
-> Il 10/01/24 15:23, Nícolas F. R. A. Prado ha scritto:
-> > Describe in each CPU node the regulator supplying it.
-> > 
-> > Fixes: 260c04d425eb ("arm64: dts: mediatek: cherry: Enable MT6315 regulators on SPMI bus")
-> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> > 
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: Rob Herring <robh@kernel.org>
 
-Hello,
+[ Upstream commit 91adecf911e5df78ea3e8f866e69db2c33416a5c ]
 
-looks like this patch was never picked up, while the cpufreq part has been
-merged for a while, so I'm still getting the mentioned hangs on linux-next.
-Could this be queued? :)
+The dtc interrupt_provider warning is off by default. Fix all the warnings
+so it can be enabled.
 
-Thanks,
-Nícolas
+Signed-off-by: Rob Herring <robh@kernel.org>
+Reviewed-By: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> #
+Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+Acked-by: Geert Uytterhoeven <geert+renesas@glider.be>
+Acked-by: Florian Fainelli <florian.fainelli@broadcom.com> #Broadcom
+Acked-by: Chanho Min <chanho.min@lge.com>
+Link: https://lore.kernel.org/r/20240213-arm-dt-cleanups-v1-3-f2dee1292525@kernel.org
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ arch/arm64/boot/dts/amazon/alpine-v2.dtsi           | 1 -
+ arch/arm64/boot/dts/amazon/alpine-v3.dtsi           | 1 -
+ arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi    | 1 +
+ arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi | 1 +
+ arch/arm64/boot/dts/lg/lg1312.dtsi                  | 1 -
+ arch/arm64/boot/dts/lg/lg1313.dtsi                  | 1 -
+ arch/arm64/boot/dts/marvell/armada-ap80x.dtsi       | 1 -
+ arch/arm64/boot/dts/mediatek/mt8195-demo.dts        | 1 +
+ arch/arm64/boot/dts/renesas/ulcb-kf.dtsi            | 4 ++++
+ 9 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/amazon/alpine-v2.dtsi b/arch/arm64/boot/dts/amazon/alpine-v2.dtsi
+index dccbba6e7f98e..dbf2dce8d1d68 100644
+--- a/arch/arm64/boot/dts/amazon/alpine-v2.dtsi
++++ b/arch/arm64/boot/dts/amazon/alpine-v2.dtsi
+@@ -145,7 +145,6 @@ pci@fbc00000 {
+ 		msix: msix@fbe00000 {
+ 			compatible = "al,alpine-msix";
+ 			reg = <0x0 0xfbe00000 0x0 0x100000>;
+-			interrupt-controller;
+ 			msi-controller;
+ 			al,msi-base-spi = <160>;
+ 			al,msi-num-spis = <160>;
+diff --git a/arch/arm64/boot/dts/amazon/alpine-v3.dtsi b/arch/arm64/boot/dts/amazon/alpine-v3.dtsi
+index 39481d7fd7d4d..3ea178acdddfe 100644
+--- a/arch/arm64/boot/dts/amazon/alpine-v3.dtsi
++++ b/arch/arm64/boot/dts/amazon/alpine-v3.dtsi
+@@ -355,7 +355,6 @@ pcie@fbd00000 {
+ 		msix: msix@fbe00000 {
+ 			compatible = "al,alpine-msix";
+ 			reg = <0x0 0xfbe00000 0x0 0x100000>;
+-			interrupt-controller;
+ 			msi-controller;
+ 			al,msi-base-spi = <336>;
+ 			al,msi-num-spis = <959>;
+diff --git a/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi b/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi
+index 9dcd25ec2c041..896d1f33b5b61 100644
+--- a/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi
++++ b/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi
+@@ -586,6 +586,7 @@ gpio_g: gpio@660a0000 {
+ 			#gpio-cells = <2>;
+ 			gpio-controller;
+ 			interrupt-controller;
++			#interrupt-cells = <2>;
+ 			interrupts = <GIC_SPI 400 IRQ_TYPE_LEVEL_HIGH>;
+ 		};
+ 
+diff --git a/arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi b/arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi
+index f049687d6b96d..d8516ec0dae74 100644
+--- a/arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi
++++ b/arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi
+@@ -450,6 +450,7 @@ gpio_hsls: gpio@d0000 {
+ 			#gpio-cells = <2>;
+ 			gpio-controller;
+ 			interrupt-controller;
++			#interrupt-cells = <2>;
+ 			interrupts = <GIC_SPI 183 IRQ_TYPE_LEVEL_HIGH>;
+ 			gpio-ranges = <&pinmux 0 0 16>,
+ 					<&pinmux 16 71 2>,
+diff --git a/arch/arm64/boot/dts/lg/lg1312.dtsi b/arch/arm64/boot/dts/lg/lg1312.dtsi
+index 48ec4ebec0a83..b864ffa74ea8b 100644
+--- a/arch/arm64/boot/dts/lg/lg1312.dtsi
++++ b/arch/arm64/boot/dts/lg/lg1312.dtsi
+@@ -126,7 +126,6 @@ eth0: ethernet@c1b00000 {
+ 	amba {
+ 		#address-cells = <2>;
+ 		#size-cells = <1>;
+-		#interrupt-cells = <3>;
+ 
+ 		compatible = "simple-bus";
+ 		interrupt-parent = <&gic>;
+diff --git a/arch/arm64/boot/dts/lg/lg1313.dtsi b/arch/arm64/boot/dts/lg/lg1313.dtsi
+index 3869460aa5dcb..996fb39bb50c1 100644
+--- a/arch/arm64/boot/dts/lg/lg1313.dtsi
++++ b/arch/arm64/boot/dts/lg/lg1313.dtsi
+@@ -126,7 +126,6 @@ eth0: ethernet@c3700000 {
+ 	amba {
+ 		#address-cells = <2>;
+ 		#size-cells = <1>;
+-		#interrupt-cells = <3>;
+ 
+ 		compatible = "simple-bus";
+ 		interrupt-parent = <&gic>;
+diff --git a/arch/arm64/boot/dts/marvell/armada-ap80x.dtsi b/arch/arm64/boot/dts/marvell/armada-ap80x.dtsi
+index 2c920e22cec2b..7ec7c789d87ef 100644
+--- a/arch/arm64/boot/dts/marvell/armada-ap80x.dtsi
++++ b/arch/arm64/boot/dts/marvell/armada-ap80x.dtsi
+@@ -138,7 +138,6 @@ pmu {
+ 
+ 			odmi: odmi@300000 {
+ 				compatible = "marvell,odmi-controller";
+-				interrupt-controller;
+ 				msi-controller;
+ 				marvell,odmi-frames = <4>;
+ 				reg = <0x300000 0x4000>,
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+index 69c7f3954ae59..4127cb84eba41 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+@@ -128,6 +128,7 @@ mt6360: pmic@34 {
+ 		compatible = "mediatek,mt6360";
+ 		reg = <0x34>;
+ 		interrupt-controller;
++		#interrupt-cells = <1>;
+ 		interrupts-extended = <&pio 101 IRQ_TYPE_EDGE_FALLING>;
+ 		interrupt-names = "IRQB";
+ 
+diff --git a/arch/arm64/boot/dts/renesas/ulcb-kf.dtsi b/arch/arm64/boot/dts/renesas/ulcb-kf.dtsi
+index 3885ef3454ff6..50de17e4fb3f2 100644
+--- a/arch/arm64/boot/dts/renesas/ulcb-kf.dtsi
++++ b/arch/arm64/boot/dts/renesas/ulcb-kf.dtsi
+@@ -234,6 +234,7 @@ gpio_exp_74: gpio@74 {
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
+ 		interrupt-controller;
++		#interrupt-cells = <2>;
+ 		interrupt-parent = <&gpio6>;
+ 		interrupts = <8 IRQ_TYPE_EDGE_FALLING>;
+ 
+@@ -294,6 +295,7 @@ gpio_exp_75: gpio@75 {
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
+ 		interrupt-controller;
++		#interrupt-cells = <2>;
+ 		interrupt-parent = <&gpio6>;
+ 		interrupts = <4 IRQ_TYPE_EDGE_FALLING>;
+ 	};
+@@ -314,6 +316,7 @@ gpio_exp_76: gpio@76 {
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
+ 		interrupt-controller;
++		#interrupt-cells = <2>;
+ 		interrupt-parent = <&gpio7>;
+ 		interrupts = <3 IRQ_TYPE_EDGE_FALLING>;
+ 	};
+@@ -324,6 +327,7 @@ gpio_exp_77: gpio@77 {
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
+ 		interrupt-controller;
++		#interrupt-cells = <2>;
+ 		interrupt-parent = <&gpio5>;
+ 		interrupts = <9 IRQ_TYPE_EDGE_FALLING>;
+ 	};
+-- 
+2.43.0
+
 
