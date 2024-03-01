@@ -4,72 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5AAEC5478C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 15:13:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DC65C5475B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 20:12:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s1/3J+TPUGV+qRCrsUK4pHSmDe6bCMc8bf4L/tyoPRI=; b=jdUlHJmalqsx2/5cfPEZ2Q6yD2
-	3kLbpqyFV0DFDFKFtJhq9OMb/vjiX+32+7lkxFjbcQdBb37MnrxOeuDh7BDYTcxvYF6Nd/Suiw1NZ
-	awR1C/287OqH3P7tYjoGPkLdl0U64X0SgFE1uL4aSiOMM3R/T3n2irjHPlLtWTD3eSfSbLRKpjwwR
-	N9HFlIoCKJXf2PFFwz/e539lZXrE4a1KX1/p3i575U/K3iQwcpN/CDtVoHEc0PzozcL2mtQoApkgJ
-	ONUD0+Uh4qvSHxLBymRhmmnQhisvXPLtXTBRs5cwlWSYAMOFFsjmLPY4TrVtiEobLOen81YO/pWyf
-	dVcBeqzg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sbT0sCGSlxR/NGHg+JjqgR5/I1EpyG0mpiqSTeptmMw=; b=wnmRraHl2EkugZCNBlRKt30JIg
+	JEdzrKQA8XGDgDjKxB6sA8B0kJrTI6D66uIhU/YaCKottaL7OhiuDjGOZDluUGf6JKPDvvv1PuNzx
+	oZRsVPtE2LpR89K5uCLO3oNA8nJWV+jF+PpCyG5RYTnKe44JwePmKn4YLIEkMa3kLTZ0/04md05JC
+	+N9WsTrLK+PiZi6y+UVq7bogIM5R88xXRK1n+Qs04lMMFfblpe1MDxZpM1e57DWLyLBM2dqjeU66a
+	F0BQ0XoY4363cH1QbSWyTQjV2pBUZvCQe6Fe7+YjwiD9Pw8Hc/ye7KFH1nv4uWqAFZjdHUqn/iWQu
+	WbijSrrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rg4a7-00000000qyp-0AIK;
-	Fri, 01 Mar 2024 15:13:51 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rg9F9-00000001pxt-3r9i;
+	Fri, 01 Mar 2024 20:12:31 +0000
+Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.48])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rg4a2-00000000qwD-3iBd;
-	Fri, 01 Mar 2024 15:13:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709306025;
-	bh=4rZ9IbsP+jzXlyf93oCqikrl4goIvycpLqfPlaupifE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cFr943yljX1l29kjUPcrBU5FIpLB198EJMjLvS/ryE6Ezqbx+OR9RUYD7cFXVaTsy
-	 eKe5Undn9T2NKbYG4IyGD5kPHTNaJx+DjzDYPcJZzmYYyi2SrK0b9xPkU41enEk5Jz
-	 Qtezyhl+v/PPqcKZez9sNs/GCjZ4QW6qhH4t5OUZxQgTilW00/9uUsa73MIgfAD3jB
-	 HGgsE+kt8PlKqC9YeYh1QUJvSJAo0b3vzP/ZYmL+VStaMcL9NqZPkWFjhusC7w/BCJ
-	 uyPf/p9mYObaazGC1OdSdU2vo6N1qn+sNFYUMqRG+HWtBTZfqYbHqaWbIBHZD0LaGI
-	 imZWsQW0Jag9w==
-Received: from localhost (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1rg9F6-00000001pwT-3l3q
+	for linux-mediatek@lists.infradead.org;
+	Fri, 01 Mar 2024 20:12:30 +0000
+X-Virus-Scanned: Proofpoint Essentials engine
+Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
+	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id EBA7FAC006C;
+	Fri,  1 Mar 2024 20:12:24 +0000 (UTC)
+Received: from [192.168.100.159] (unknown [50.251.239.81])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	(Authenticated sender: sebastianfricke)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1253437803EE;
-	Fri,  1 Mar 2024 15:13:45 +0000 (UTC)
-Date: Fri, 1 Mar 2024 16:13:44 +0100
-From: Sebastian Fricke <sebastian.fricke@collabora.com>
-To: Irui Wang <irui.wang@mediatek.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	angelogioacchino.delregno@collabora.com,
-	nicolas.dufresne@collabora.com,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Longfei Wang <longfei.wang@mediatek.com>,
-	Maoguang Meng <maoguang.meng@mediatek.com>,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] media: mediatek: vcodec: Handle VP9 superframe
- bitstream with 8 sub-frames
-Message-ID: <20240301151344.o7khwhbasnncw2cc@basti-XPS-13-9310>
-References: <20240229030249.3404-1-irui.wang@mediatek.com>
+	by mail3.candelatech.com (Postfix) with ESMTPSA id 49B8913C2B0;
+	Fri,  1 Mar 2024 12:12:24 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 49B8913C2B0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
+	s=default; t=1709323944;
+	bh=dEGmIX7+F45zEXukvxpEm9wduTqTEmMcRTAtk1TaXFQ=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=oyKR7Y5gIr+6WTY4TACrqFA0exCWALPtbBrcX9AhKeJeEJqHXyVCFcN+XPCETlz6H
+	 RCNxRimNV9sFL4krAn7KzsRga5M0Z2JES53BnuBBre1FG2kJ0ugp+gpJ4yHRjY1w+s
+	 XL8BGktcjqk8aaiPhP2DMS2ddXskcJQiDM5tun4I=
+Message-ID: <64286e79-4612-9601-138d-e08aa8217857@candelatech.com>
+Date: Fri, 1 Mar 2024 12:12:23 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Disposition: inline
-In-Reply-To: <20240229030249.3404-1-irui.wang@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: ***Spam*** [PATCH 2/8] wifi: mt76: mt7996: add txpower setting
+ support
+Content-Language: en-US
+From: Ben Greear <greearb@candelatech.com>
+To: shayne.chen@mediatek.com, "nbd@nbd.name" <nbd@nbd.name>
+Cc: "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+ =?UTF-8?B?QWxsZW4gWWUgKOiRieiKt+WLsyk=?= <Allen.Ye@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?RXZlbHluIFRzYWkgKOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
+ "lorenzo@kernel.org" <lorenzo@kernel.org>, Ryder Lee
+ <Ryder.Lee@mediatek.com>, =?UTF-8?B?U3RhbmxleVlQIFdhbmcgKOeOi+S+kemCpik=?=
+ <StanleyYP.Wang@mediatek.com>
+References: <20231102100302.22160-1-shayne.chen@mediatek.com>
+ <20231102100302.22160-2-shayne.chen@mediatek.com>
+ <bbf8fe7e-1098-5b33-8ed6-dee38329edf6@candelatech.com>
+ <8c5fbe88bcc5b55e6d80247144e4f890fd68ef27.camel@mediatek.com>
+ <487ef0bb-5930-e998-7daa-6f57d09d682c@candelatech.com>
+Organization: Candela Technologies
+In-Reply-To: <487ef0bb-5930-e998-7daa-6f57d09d682c@candelatech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-MDID: 1709323946-CQm1pUjvZtyU
+X-MDID-O: us5;ut7;1709323946;CQm1pUjvZtyU;<greearb@candelatech.com>;0a87ce8853dfc5be48bfe846d29ed5d9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240301_071347_159598_C815E0E6 
-X-CRM114-Status: GOOD (  16.01  )
+X-CRM114-CacheID: sfid-20240301_121229_012320_E3CC5D35 
+X-CRM114-Status: GOOD (  22.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,84 +89,153 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hey Irui,
+On 12/7/23 13:01, Ben Greear wrote:
+> On 12/7/23 09:15, shayne.chen@mediatek.com wrote:
+>> On Fri, 2023-12-01 at 15:40 -0800, Ben Greear wrote:
+>>>
+>>> External email : Please do not click links or open attachments until
+>>> you have verified the sender or the content.
+>>>   On 11/2/23 03:02, Shayne Chen wrote:
+>>>> Add support for setting txpower from upper layer and configuring
+>>> per-rate
+>>>> txpower limit table.
+>>>
+>>> Hello Shayne,
+>>
+>> Hi Ben,
+>>>
+>>>   From what I can tell, this patch causes STA vdevs to no longer send
+>>> probe
+>>> requests when trying to associate.  I bisected to this in Felix's
+>>> tree that holds
+>>> this patch.
+>>>
+>>> Tested on x86-64, mtk7996 radio.  Specifically
+>>> debugged on 2.4Ghz radio, but I think it affects 5Ghz too.
+>>>
+>> I have done some tests but didn't face this issue. Could you also use
+>> the newer firmware to test if it still happens?
 
-On 29.02.2024 11:02, Irui Wang wrote:
->The VP9 bitstream has 8 sub-frames into one superframe, the superframe
->index validate failed when reach 8, modify the index checking so that the
->last sub-frame can be decoded normally with stateful vp9 decoder.
+Hello Shayne,
 
-I find this commit message a bit confusing, you say that you couldn't
-index the last superframe, but then you say that you modify the index
-checking so that you can access the last sub-frame.
+I rebased on 6.8, and started adding some debugging around this issue.
 
-I would reword this section, here is my suggestion:
+I am using the MTK 7996 developer radio board on this system, in an x86-64 pc.  It is not able
+to find the 'node', so the per mode power tables are not populated and left at
+0x0.  Then, when this 0x0 data is sent to the firmware, the firmware gives
+back a failure response 0xc00000bb
 
-The VP9 bitstream uses superframes, which each contain 8 sub-frames,
-enable accessing the last superframe by increasing the range of the
-index validation as the maximum number of superframes is 8 and not 7.
+[ 8658.340984] mt7996e 0000:03:00.0: get-rate-power-limits:  Could not find node.
+[ 8658.340988] mt7996e 0000:03:00.0: set-txpower-sku, tx_power: 36
+[ 8658.341127] mt7996e 0000:03:00.0: mcu-parse-response, firmware returned failure code: 0xc00000bb.
 
-The rest looks good as already mentioned by Nicolas.
+Do we need to add code to not even send the mcu command if the per-mode txpower tables
+cannot be found?
 
-Greetings,
-Sebastian
+Or can we calculate the values to some useful default in that case?
 
->
->Signed-off-by: Irui Wang <irui.wang@mediatek.com>
->---
->changed with v1:
-> - add a new define 'VP9_MAX_SUPER_FRAMES_NUM' for superframes.
->---
-> .../mediatek/vcodec/decoder/vdec/vdec_vp9_if.c        | 11 ++++++-----
-> 1 file changed, 6 insertions(+), 5 deletions(-)
->
->diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
->index 55355fa70090..039082f600c8 100644
->--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
->+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
->@@ -16,6 +16,7 @@
-> #include "../vdec_drv_base.h"
-> #include "../vdec_vpu_if.h"
->
->+#define VP9_MAX_SUPER_FRAMES_NUM 8
-> #define VP9_SUPER_FRAME_BS_SZ 64
-> #define MAX_VP9_DPB_SIZE	9
->
->@@ -133,11 +134,11 @@ struct vp9_sf_ref_fb {
->  */
-> struct vdec_vp9_vsi {
-> 	unsigned char sf_bs_buf[VP9_SUPER_FRAME_BS_SZ];
->-	struct vp9_sf_ref_fb sf_ref_fb[VP9_MAX_FRM_BUF_NUM-1];
->+	struct vp9_sf_ref_fb sf_ref_fb[VP9_MAX_SUPER_FRAMES_NUM];
-> 	int sf_next_ref_fb_idx;
-> 	unsigned int sf_frm_cnt;
->-	unsigned int sf_frm_offset[VP9_MAX_FRM_BUF_NUM-1];
->-	unsigned int sf_frm_sz[VP9_MAX_FRM_BUF_NUM-1];
->+	unsigned int sf_frm_offset[VP9_MAX_SUPER_FRAMES_NUM];
->+	unsigned int sf_frm_sz[VP9_MAX_SUPER_FRAMES_NUM];
-> 	unsigned int sf_frm_idx;
-> 	unsigned int sf_init;
-> 	struct vdec_fb fb;
->@@ -526,7 +527,7 @@ static void vp9_swap_frm_bufs(struct vdec_vp9_inst *inst)
-> 	/* if this super frame and it is not last sub-frame, get next fb for
-> 	 * sub-frame decode
-> 	 */
->-	if (vsi->sf_frm_cnt > 0 && vsi->sf_frm_idx != vsi->sf_frm_cnt - 1)
->+	if (vsi->sf_frm_cnt > 0 && vsi->sf_frm_idx != vsi->sf_frm_cnt)
-> 		vsi->sf_next_ref_fb_idx = vp9_get_sf_ref_fb(inst);
-> }
->
->@@ -735,7 +736,7 @@ static void get_free_fb(struct vdec_vp9_inst *inst, struct vdec_fb **out_fb)
->
-> static int validate_vsi_array_indexes(struct vdec_vp9_inst *inst,
-> 		struct vdec_vp9_vsi *vsi) {
->-	if (vsi->sf_frm_idx >= VP9_MAX_FRM_BUF_NUM - 1) {
->+	if (vsi->sf_frm_idx > VP9_MAX_SUPER_FRAMES_NUM) {
-> 		mtk_vdec_err(inst->ctx, "Invalid vsi->sf_frm_idx=%u.", vsi->sf_frm_idx);
-> 		return -EIO;
-> 	}
->-- 
->2.18.0
->
->
+For reference, here is my debug patch:
+
+
+diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+index 0c5c664de6b3..cf48073783b8 100644
+--- a/drivers/net/wireless/mediatek/mt76/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+@@ -419,12 +422,16 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
+
+         memset(dest, target_power, sizeof(*dest));
+
+-       if (!IS_ENABLED(CONFIG_OF))
++       if (!IS_ENABLED(CONFIG_OF)) {
++               mtk_dbg(dev, CFG, "get-rate-power-limits:  CONFIG_OF not enabled.\n");
+                 return target_power;
++       }
+
+         np = mt76_find_power_limits_node(dev);
+-       if (!np)
++       if (!np) {
++               mtk_dbg(dev, CFG, "get-rate-power-limits:  Could not find node.\n");
+                 return target_power;
++       }
+
+         switch (chan->band) {
+         case NL80211_BAND_2GHZ:
+@@ -442,12 +449,17 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
+
+         snprintf(name, sizeof(name), "txpower-%cg", band);
+         np = of_get_child_by_name(np, name);
+-       if (!np)
++       if (!np) {
++               mtk_dbg(dev, CFG, "get-rate-power-limits:  Could not find band node: %s\n",
++                       name);
+                 return target_power;
++       }
+
+         np = mt76_find_channel_node(np, chan);
+-       if (!np)
++       if (!np) {
++               mtk_dbg(dev, CFG, "get-rate-power-limits:  Could not find chan node\n");
+                 return target_power;
++       }
+
+         txs_delta = mt76_get_txs_delta(np, hweight16(phy->chainmask));
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 2c19b537feec..8f4774c4b1d5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -1114,6 +1114,7 @@ enum MTK_DEUBG {
+         MTK_DEBUG_FATAL         = 0x00000004,
+         MTK_DEBUG_WRN           = 0x00000008,
+         MTK_DEBUG_MSG           = 0x00000010, /* messages to/from firmware */
++       MTK_DEBUG_CFG           = 0x00000020, /* Configuration related */
+         MTK_DEBUG_ANY           = 0xffffffff
+  };
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index e89a06464651..c7042c3a905b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -422,8 +422,11 @@ static int mt7996_config(struct ieee80211_hw *hw, u32 changed)
+         if (changed & (IEEE80211_CONF_CHANGE_POWER |
+                        IEEE80211_CONF_CHANGE_CHANNEL)) {
+                 ret = mt7996_mcu_set_txpower_sku(phy);
+-               if (ret)
+-                       return ret;
++               if (ret) {
++                       dev_err(dev->mt76.dev,
++                               "config:  Failed to set txpower: %d\n", ret);
++                       //return ret;
++               }
+         }
+
+         mutex_lock(&dev->mt76.mutex);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index d709d26eacd1..9dc896cd04e6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -281,6 +281,10 @@ mt7996_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+                 /* skip invalid event */
+                 if (mcu_cmd != event->cid)
+                         ret = -EAGAIN;
++               if (ret) {
++                       mtk_dbg(mdev, CFG, "mcu-parse-response, firmware returned failure code: 0x%x.\n",
++                               ret);
++               }
+         } else {
+                 skb_pull(skb, sizeof(struct mt7996_mcu_rxd));
+         }
+@@ -4571,6 +4575,7 @@ int mt7996_mcu_set_txpower_sku(struct mt7996_phy *phy)
+         tx_power = mt76_get_rate_power_limits(mphy, mphy->chandef.chan,
+                                               &la, tx_power);
+         mphy->txpower_cur = tx_power;
++       mtk_dbg(&dev->mt76, CFG, "set-txpower-sku, tx_power: %d\n", tx_power);
+
+         skb = mt76_mcu_msg_alloc(&dev->mt76, NULL,
+                                  sizeof(req) + MT7996_SKU_RATE_NUM);
+
+Thanks,
+Ben
+
+
 
