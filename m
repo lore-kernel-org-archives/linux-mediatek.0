@@ -4,84 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6080C54E41
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 10:43:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0342C5475B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 11:11:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ne7hOGU2S5DStLf3lgxkOQSl3E4nSb1cKjrcJ4FWwQ0=; b=GcOb3TiGGTOCYzbhAi3ZAk1fkm
-	NBOuTaXH2flth452YRH142cePnR/POy/E4B2JW9IEzVnbkk2Kxb8Erfy981ceC3TuzvJeIYLj3lr9
-	F0FoxSuZ78qSV7aa7ERIQYYH/f1OhTq4T1iy0MrKUYqgkMMFHISMVT6AZos+wwivQ8UV9mFCZlRnj
-	AMRanTdlZpg6hSh4XjdSqNo9daS917rRYA7CxLF08CqV+3yhFBv9Ws8LHj4K8l6HrNubfqxuJ+9vm
-	625J+2UxnSM9a+HRgYhCoN3Ws1Yrmv/E62xM6/8z8gMS6TefA26Fl1HfEyeNzEzlQeEtgcC0tOCQM
-	GmJeGWkQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+NCPfiqHkGekZ2gLLAx7CBphrzwi9/58aQ7Jf2wXq3o=; b=vp8uz6kbs0TkAOube0zeivLZfY
+	DfY3IYFLbo03pY0nl5b1gqH4wrcOOgAoZNFqT+ziNOsi7iIkbisSorUm6EngqhYUejv9qm1lkWFlF
+	TjTOpFf3sU1pj2tZ0Ku3hkmOaBt+7We4Rb2z7LQ77r/qafzXZ+SFfACKyXWTmAUJGpJHTs6Xhw4+W
+	GrJnQwdvKtZ6rJ40SN6G+5XXOo9vLEun+NFVv3HsD7fFenHK/1gNQfbiHaRxcC6zQ6BaOd+kMmNVu
+	E/Eutg9yRC9E9ijm5IoqzcFrzyBs6hjTBnFsku3lanL8JQAmI6XXvgd04HR43J+//rlXF9zi1SFzk
+	CoaYH7rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rg0Mg-0000000HPl8-3W78;
-	Fri, 01 Mar 2024 10:43:42 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rg0nu-0000000HV3j-40qf;
+	Fri, 01 Mar 2024 11:11:50 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rg0M2-0000000HPCL-0WS0;
-	Fri, 01 Mar 2024 10:43:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 1F361CE13B2;
-	Fri,  1 Mar 2024 10:43:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 19053C43142;
-	Fri,  1 Mar 2024 10:42:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1709289779;
-	bh=bdj2sXbKKEcSVYU72hwdKppcUWhM0GPYmoe4dwmAPtA=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=I8pnK0O6SunHZxJiOSjoPzu6eLrP/erBBlrYjVIt9YA+hIs1pPWabn56SSzh5DK8Q
-	 W6yfvcM+9gWMXKH3rWOIXjrgPxzbcIS4LrnPdUZu9Y+Mt1Hfjq12APfcJAKIlz4RBk
-	 akfIgkZBR/6ZW0KotndncFGPKuSCKA6YcX2km6VPMVu0CgYrA+hFxKxv0JpgvYq6Io
-	 mwybjn1zxwhkAE1xw/hbpn87cmULjWhfqtxMEaBX3cJQhJmnneYUSASgMyOFqD0gJV
-	 ig2I7GdDEuN8npR8zGWBITMZhseJlbZdtGG7RJGsAnTMqo1/M5qA3N3n47o211KcPC
-	 t+/9UCEEgT15g==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 05C52C54E41;
-	Fri,  1 Mar 2024 10:42:59 +0000 (UTC)
-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
- <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Fri, 01 Mar 2024 12:43:03 +0200
-Subject: [PATCH net-next v3 7/9] net: dsa: mt7530: put initialising PCS
- devices code back to original order
+	id 1rg0ns-0000000HV1y-0aC9;
+	Fri, 01 Mar 2024 11:11:49 +0000
+X-UUID: 7b78d098d7bc11eeb5c2bb47f3c01139-20240301
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=+NCPfiqHkGekZ2gLLAx7CBphrzwi9/58aQ7Jf2wXq3o=;
+	b=hYPOTii8jrjdvnUKC+u4n3BPeNXIc7BKOwLM3+9rvmLqlCtc4vH+dw67Le1Vwg3UXKIrF3psRMtJLPjUZxuP/206YkE6wBcHhiMfwxItue7x/Y90QwELJNwMRgt0Kl7b3BuJzfBphf/NVaCYgecZ1+bVIsdCMl1zMLX7jXMYAP8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:048157ee-b90f-4fc9-be1a-4c8f66fe95fe,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:6f543d0,CLOUDID:6df664ff-c16b-4159-a099-3b9d0558e447,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 7b78d098d7bc11eeb5c2bb47f3c01139-20240301
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 290476785; Fri, 01 Mar 2024 04:11:42 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 1 Mar 2024 19:11:39 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 1 Mar 2024 19:11:39 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jason-ch Chen <jason-ch.chen@mediatek.com>, "Jason-JH . Lin"
+	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Nancy
+ Lin <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH 1/5] soc: mediatek: mtk-cmdq: Add specific purpose register definitions for GCE
+Date: Fri, 1 Mar 2024 19:11:22 +0800
+Message-ID: <20240301111126.22035-2-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240301111126.22035-1-jason-jh.lin@mediatek.com>
+References: <20240301111126.22035-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20240301-for-netnext-mt7530-improvements-3-v3-7-449f4f166454@arinc9.com>
-References: <20240301-for-netnext-mt7530-improvements-3-v3-0-449f4f166454@arinc9.com>
-In-Reply-To: <20240301-for-netnext-mt7530-improvements-3-v3-0-449f4f166454@arinc9.com>
-To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
- Florian Fainelli <f.fainelli@gmail.com>, 
- Vladimir Oltean <olteanv@gmail.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Russell King <linux@armlinux.org.uk>
-Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com, 
- Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1709289776; l=1570;
- i=arinc.unal@arinc9.com; s=arinc9-Xeront; h=from:subject:message-id;
- bh=/2CkKGukm0R4V69WhBvbbIMKcr0CwYye/LAy2VcbSV0=;
- b=jhj5rpVeLTk6pp6nZ74IqJOF62xtP/gZRjxzV6gmsJ/mCB/nP34kSs028tQQ0/2WrX6tvkMGJ
- ykUTxIRPKOhARn1bax3sYOsUZQsHfG6i6H4204OyFLMD8QH9wvCic4L
-X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
- pk=z49tLn29CyiL4uwBTrqH9HO1Wu3sZIuRp4DaLZvtP9M=
-X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-Xeront with auth_id=137
-X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240301_024302_648792_8334C2A5 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20240301_031148_206595_9A72DFA6 
+X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,63 +87,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+Add specific purpose register definitions for GCE, so CMDQ users can
+use them as a buffer to store data.
 
-The commit fae463084032 ("net: dsa: mt753x: fix pcs conversion regression")
-fixes regression caused by cpu_port_config manually calling phylink
-operations. cpu_port_config was deemed useless and was removed. Therefore,
-put initialising PCS devices code back to its original order.
-
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Change-Id: Ie72dd86d6ccfb60761461ad128b02d32adaacbc0
 ---
- drivers/net/dsa/mt7530.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ include/linux/soc/mediatek/mtk-cmdq.h | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index e353c03dd1db..5c8ad41ce8cd 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2812,17 +2812,9 @@ static int
- mt753x_setup(struct dsa_switch *ds)
- {
- 	struct mt7530_priv *priv = ds->priv;
--	int i, ret;
--
--	/* Initialise the PCS devices */
--	for (i = 0; i < priv->ds->num_ports; i++) {
--		priv->pcs[i].pcs.ops = priv->info->pcs_ops;
--		priv->pcs[i].pcs.neg_mode = true;
--		priv->pcs[i].priv = priv;
--		priv->pcs[i].port = i;
--	}
-+	int ret = priv->info->sw_setup(ds);
-+	int i;
+diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+index 649955d2cf5c..1dae80185f9f 100644
+--- a/include/linux/soc/mediatek/mtk-cmdq.h
++++ b/include/linux/soc/mediatek/mtk-cmdq.h
+@@ -14,6 +14,15 @@
+ #define CMDQ_ADDR_HIGH(addr)	((u32)(((addr) >> 16) & GENMASK(31, 0)))
+ #define CMDQ_ADDR_LOW(addr)	((u16)(addr) | BIT(1))
  
--	ret = priv->info->sw_setup(ds);
- 	if (ret)
- 		return ret;
- 
-@@ -2834,6 +2826,14 @@ mt753x_setup(struct dsa_switch *ds)
- 	if (ret && priv->irq)
- 		mt7530_free_irq_common(priv);
- 
-+	/* Initialise the PCS devices */
-+	for (i = 0; i < priv->ds->num_ports; i++) {
-+		priv->pcs[i].pcs.ops = priv->info->pcs_ops;
-+		priv->pcs[i].pcs.neg_mode = true;
-+		priv->pcs[i].priv = priv;
-+		priv->pcs[i].port = i;
-+	}
++/*
++ * Every cmdq thread has its own SPRs (Specific Purpose Registers),
++ * so there are 4 * N (threads) SPRs in GCE that shares the same indexes below.
++ */
++#define CMDQ_THR_SPR_IDX0	(0)
++#define CMDQ_THR_SPR_IDX1	(1)
++#define CMDQ_THR_SPR_IDX2	(2)
++#define CMDQ_THR_SPR_IDX3	(3)
 +
- 	if (priv->create_sgmii) {
- 		ret = priv->create_sgmii(priv);
- 		if (ret && priv->irq)
-
+ struct cmdq_pkt;
+ 
+ struct cmdq_client_reg {
 -- 
-2.40.1
+2.18.0
 
 
