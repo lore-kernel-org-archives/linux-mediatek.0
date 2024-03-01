@@ -4,70 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72421C5475B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 14:29:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE723C5475B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 14:39:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tVU5TBBuvXaA/GKkeGvNB9RMdnsg1B5l3lZdDd8/v3M=; b=J6a+noVfp6+LnB4u1dBXeYesKg
-	bsxFKvyZHzpvdQgMFQMCQSwrt+q0mOoTzqKnmDHhzNHrxemAdozfsOyUC8YKC+G4IYzg2BwZDGlIg
-	YVHTMQ0dui9hM5tROZWGvQRMyBtS5sfRL2ZTQWvMeX3tRvQCkxU/OVIisZbxdTheXBAJ4AEhrvzDl
-	dSJKwI47kqbHKD89gi3QEFNHq3so9+P0ndzLbaf8MHGsPlaO+A4P0jMq3HdfjTrMmlgh3hXoX55KG
-	kYPaALl1IoSQ/FLpZs/KVphNcz9VhoFFg3yTa/Vipg1uPmNvkd82f5O5udYDId5dZlDnzD+Zu2L6j
-	qIyGkd/w==;
+	bh=GK/fz8mOfibf9OqDJ1HFU49LqCFoeHGl8/k7j9p2t+g=; b=hVNLknbKKaM/5Jn2jaNlyHyjuN
+	2kt2LUftbVeyOR74kG0MYIznn563ximG5gkF7LQGerLZv4yDvx6dd7OMRjzMeqnbtF0N9um/jZoHD
+	Vf+69nSa8ZZohXRELI+pjaRKspeLC9SxHrvRsnfIAxwO3UgntCQ3ql89EPwCZ+cv/rPQPmo9JPoop
+	65hKwywRL7lB6HVUuLD1T84E/WAxzp9v6CeWq9NY9N0KUTqLCIK9w6uLmHaRaX5rhk8twKdnT64/a
+	fQRZAk7y8yywtH8xtgCIIHHA/SU0jT3V+z0XRh+IF1GdQM6ZTsfXsCDXGK0Y8xXyPh0r0q9IdqoVJ
+	08xwb2kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rg3tP-00000000iNB-2QDm;
-	Fri, 01 Mar 2024 14:29:43 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rg42g-00000000jpi-0WVV;
+	Fri, 01 Mar 2024 14:39:18 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rg3tM-00000000iLb-3Cr0;
-	Fri, 01 Mar 2024 14:29:42 +0000
+	id 1rg42c-00000000jnH-3A2b;
+	Fri, 01 Mar 2024 14:39:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709303376;
-	bh=nvJnYNYyucBPeQr/nVGXVi1XuD8qdFqM2n7ZyMnuH2s=;
+	s=mail; t=1709303952;
+	bh=rkisMHBNxL4woYqHRgn2zX3YF+vvPbgLoCprtb5HDEo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=wUo3hmm2q3+B1Uo6imzzhxD0/dknlOteIL3PKRiEDs6phs4YxTT94I9OikTFIYiAg
-	 zxnEAnBzipMkhh7lpBZivCrdb8RPiuYBuApDBzp6oMIGYwhDdWyZaTKCqfIyBB8GS3
-	 6bJ4w9L+f2h1WGp+ijiepRUkzDbLim+gXSG6rE5IRu0KoOIqzIOtOOGx0YhgiPENxJ
-	 J8KDugMpceDKF4jCHJ3WRmP6C77TOwsfX7e0PK9qfFk89fr3iY0b/ASPmDM+1IhsHr
-	 coUZteLM2TEZlPROEHJWCKmcSB5kN7f6vcg8xfQ3PN/pjHP7izjlEPzXdfVhZiSi/D
-	 gpFDmzJxaVDGA==
+	b=qwGrbyiD3HL1uxENJtlW1aR0CSg+dtCmKxfw7fKvI86HzSzTqnUVSs/Gu2QrD4FAa
+	 f14OdmNBFA9sMQfzEHVbEh7XAtGJgKW9aqiSSR4yPEkFzgszcLTsY/MdKXqcJDl5Va
+	 VSP05hlU0O1sP0OWD+RAGXHS3DKe8d2m4YMmgtjLNIM6Qkkp5JKHhe5YYr4hRwJE4S
+	 7G76+xf+JhIJ+F93lcOCU1DcdotbJmBLmt0nlPbUr1QScpN7rGUtJn1jal4WdpiLDM
+	 XG5WQkxTcA5diXb0YCdG7SvxUoF3m+HqsG9CDYaeTUl4npVtbtFnzdclY1dCSpwZoE
+	 9oZBxUyxrEAfQ==
 Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id BC4553782076;
-	Fri,  1 Mar 2024 14:29:33 +0000 (UTC)
-Date: Fri, 1 Mar 2024 09:29:20 -0500
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 14B0437803EE;
+	Fri,  1 Mar 2024 14:39:09 +0000 (UTC)
+Date: Fri, 1 Mar 2024 09:39:07 -0500
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Viresh Kumar <viresh.kumar@linaro.org>,
-	"Rafael J . Wysocki" <rafael@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel@collabora.com, Conor Dooley <conor+dt@kernel.org>,
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Subject: Re: [PATCH v2 1/2] arm64: dts: mediatek: cherry: Describe CPU
- supplies
-Message-ID: <d18d9397-37d1-45b0-ad1e-239d64360e38@notapiano>
-References: <20240110142305.755367-1-nfraprado@collabora.com>
- <20240110142305.755367-2-nfraprado@collabora.com>
+	Conor Dooley <conor+dt@kernel.org>,
+	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+	Tinghan Shen <tinghan.shen@mediatek.com>,
+	"Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+	"Nancy.Lin" <nancy.lin@mediatek.com>, kernel@collabora.com,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/4] arm64: dts: mediatek: mt8195: Add missing
+ gce-client-reg to vpp/vdosys
+Message-ID: <40ae06f4-0cbe-40f0-84c8-9b57dfbeb91f@notapiano>
+References: <20240229-gce-client-reg-add-missing-mt8192-95-v1-0-b12c233a8a33@collabora.com>
+ <20240229-gce-client-reg-add-missing-mt8192-95-v1-2-b12c233a8a33@collabora.com>
+ <22e2cf1b-9560-4f4b-b08b-a112e8e272a8@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240110142305.755367-2-nfraprado@collabora.com>
+In-Reply-To: <22e2cf1b-9560-4f4b-b08b-a112e8e272a8@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240301_062940_957645_F5BC47EC 
-X-CRM114-Status: GOOD (  13.42  )
+X-CRM114-CacheID: sfid-20240301_063915_001309_531B5BC1 
+X-CRM114-Status: GOOD (  14.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,69 +85,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-+CC Nicolas Dufresne <nicolas.dufresne@collabora.com>
+On Fri, Mar 01, 2024 at 09:50:31AM +0100, AngeloGioacchino Del Regno wrote:
+> Il 29/02/24 20:44, Nícolas F. R. A. Prado ha scritto:
+> > Add the missing mediatek,gce-client-reg property to the vppsys and
+> > vdosys nodes to allow them to use the GCE. This prevents the "can't
+> > parse gce-client-reg property" error from being printed and should
+> > result in better performance.
+> > 
+> > Fixes: 6aa5b46d1755 ("arm64: dts: mt8195: Add vdosys and vppsys clock nodes")
+> > Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+> Can you please squash patches 2,3,4 in a single one?
+> 
+> It doesn't make a lot of sense to have them separated in this case, only
+> generates commit noise for no practical reason imo.
+> 
+> arm64: dts: mediatek: mt8195: Add missing gce-client-reg to vpp/vdo/mutex
 
-As he told me he was experiencing the hangs fixed in this series too.
+I split them like this so that each has its own fixes tag and can all be easily
+backported (as mentioned in the cover letter). That said, the commits fixed in 2
+and 3 both landed in v6.1-rc1, so they could be squashed and still easily
+backported. But the commit fixed in patch 4 only landed in v6.4-rc1, so if we
+squash them all together, the first two won't be backported to v6.1.
 
-On Wed, Jan 10, 2024 at 11:23:01AM -0300, Nícolas F. R. A. Prado wrote:
-> Describe in each CPU node the regulator supplying it.
-> 
-> Fixes: 260c04d425eb ("arm64: dts: mediatek: cherry: Enable MT6315 regulators on SPMI bus")
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> 
-> ---
-> 
-> Changes in v2:
-> - Moved supplies to CPU nodes
-> - Added fixes tag
-> 
->  .../boot/dts/mediatek/mt8195-cherry.dtsi      | 32 +++++++++++++++++++
->  1 file changed, 32 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> index 3c6079edda19..1f3a6755f155 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> @@ -264,6 +264,38 @@ &auxadc {
->  	status = "okay";
->  };
->  
-> +&cpu0 {
-> +	cpu-supply = <&mt6359_vcore_buck_reg>;
-> +};
-> +
-> +&cpu1 {
-> +	cpu-supply = <&mt6359_vcore_buck_reg>;
-> +};
-> +
-> +&cpu2 {
-> +	cpu-supply = <&mt6359_vcore_buck_reg>;
-> +};
-> +
-> +&cpu3 {
-> +	cpu-supply = <&mt6359_vcore_buck_reg>;
-> +};
-> +
-> +&cpu4 {
-> +	cpu-supply = <&mt6315_6_vbuck1>;
-> +};
-> +
-> +&cpu5 {
-> +	cpu-supply = <&mt6315_6_vbuck1>;
-> +};
-> +
-> +&cpu6 {
-> +	cpu-supply = <&mt6315_6_vbuck1>;
-> +};
-> +
-> +&cpu7 {
-> +	cpu-supply = <&mt6315_6_vbuck1>;
-> +};
-> +
->  &dp_intf0 {
->  	status = "okay";
->  
-> -- 
-> 2.43.0
-> 
+Let me know how you want to proceed.
+
+Thanks,
+Nícolas
 
