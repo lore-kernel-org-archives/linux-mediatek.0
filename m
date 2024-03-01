@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 471F0C54E41
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 10:43:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BDF5C54E55
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 10:43:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aAT6j+peXF1gkbFazeEWy+KKBa3S8oFGztCQAserssk=; b=CnXlLhMkuMnh4QWC143mze3V8m
-	2VroIXacztOymLcTC+hRHP90mfpcD74iEL6g/Ilm3xKoWv2zj+4gAck+Fv+5xqLKvS3vZi2URRYHF
-	lKpeEx8bzwhqjtXO95zX3we6Ba5hrNSy9LshOXGT2ddrub3nSvh6+7uU96/QeX3dhjxRwUPZOJpb/
-	7yTVoWFT2RyHAB7dS8miULQLq4hBEkeVG8rVG944B00Pv8rButuopsdHQlh7E4yy1VhhEF7hnSwj5
-	OMgOEOUevkVGIitB2XMv5smQ74pgIZA19bdgZ7eRyU864kK6Ft7LCuanUexzIgq9G3epERxSCZZov
-	8U44khAg==;
+	bh=lPPx7vfVnrE3GcfPF0PsLAFB4j4KX9yu/ze2LZ9YWdc=; b=KdxRo/0QKSyyHLEPjE1aLfnzaI
+	sT1PgikbvtAaZuxm69WhodpQAAcJ2NCzVbq+9nedDdsDa03syxdeoOI7PEWSrk2qche/JR8UV/95m
+	Ls6YtoL1v6ul5jyUisRSomP8YJYYGOLqs5JFkyNKJp2gSRQ+tIs26Hw1cQMP339Yf8eORtk9NisFI
+	+V6dK9g0Ybn1lq6e8ckXGOhCFbAVadJs5eHQpIfEd7zYp37pZEXg3QMlODdlKVlg2pXu5WByjKf68
+	3R/1Zv7eUGFlFazcn9cM2bF3T3iQDLkISO9QEekpsfYcjkRxGlP0O//FhHZOST55LzharlzlusQFY
+	dfLn//kQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rg0MC-0000000HPKq-2WTD;
-	Fri, 01 Mar 2024 10:43:12 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rg0MD-0000000HPLX-0v0N;
+	Fri, 01 Mar 2024 10:43:13 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rg0M1-0000000HPBp-2BNN;
+	id 1rg0M0-0000000HPBG-1vX0;
 	Fri, 01 Mar 2024 10:43:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id A8821CE104D;
+	by dfw.source.kernel.org (Postfix) with ESMTP id 64F2D60FF8;
 	Fri,  1 Mar 2024 10:42:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id CF0FEC43390;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id EF1A7C433B1;
 	Fri,  1 Mar 2024 10:42:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1709289778;
-	bh=SU+tK2MlpgkdVnVhaHn0UQcoIzpj8l2UDGxN8QSA/B4=;
+	s=k20201202; t=1709289779;
+	bh=DR53Fwp6HNZjxK1JVF84xhxkGcyxADr/AxiABLJCtN8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=WpEW0BK0JGXMO1idR1AAt80adqw95t3pmM5o39e5bqpFB9gcAE5BGHO01sFPl+2Nr
-	 OQfyup1xMyM/nN/2xw6r+ddrQqMaMstJvGMv5vHaNyHF/w3gIBx5N5jTAlC/1s7f/O
-	 C1VfhxYlqq9xQH0rtOUuQ5EGherYq9515+u8EJ+Q9GPxtMIruS+AYIBX1AkXZcu6ea
-	 cl1rAXSMsPDim5WHkFK4cLK/W28CDb6ASNoHmFfERNq4eebR1huk1IOX2LAwSDtZPG
-	 dJiMgDRj2Tz/irDnawrM4vcDeXibEMAn5RrMvgwvRBRxFLl8ynxdT3idbmH2qeXWBw
-	 8ralK9Wn2QNbw==
+	b=I8bHXvF3o7elVJA8BKugGEBG9vcZROdGoj3r1naAd9HleeL7O6SbjJUmzOBLE/QgE
+	 e7SxM7A5ZidFlnePB2b1j5R/lAfR++SFINXOmenRyRSa2Tgesehstqj5Vyse4mFIu2
+	 PXFFM9XvTYGIr2Zk2MI5EJ9AZIfeqkw9Um9ibpO3q34oJMPA5fwEUopkQXWnbESxnU
+	 wnDSYHDrAipfy8xQcus0BTG5syuWyAnMR5qrURc3KZcHQHrW6aaJvkNimLAt1PHaLY
+	 YjmkT3TDmK/4Bm1b56LPZitqi4O8fP8eaONr01sbgpK3W3ob4vtqVNXNZ2Um0NlWOe
+	 MslhUHQTPVu6Q==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B7037C54E55;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DC232C5478C;
 	Fri,  1 Mar 2024 10:42:58 +0000 (UTC)
 From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
  <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Fri, 01 Mar 2024 12:42:58 +0200
-Subject: [PATCH net-next v3 2/9] net: dsa: mt7530: set interrupt register
- only for MT7530
+Date: Fri, 01 Mar 2024 12:43:01 +0200
+Subject: [PATCH net-next v3 5/9] net: dsa: mt7530: get rid of
+ priv->info->cpu_port_config()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240301-for-netnext-mt7530-improvements-3-v3-2-449f4f166454@arinc9.com>
+Message-Id: <20240301-for-netnext-mt7530-improvements-3-v3-5-449f4f166454@arinc9.com>
 References: <20240301-for-netnext-mt7530-improvements-3-v3-0-449f4f166454@arinc9.com>
 In-Reply-To: <20240301-for-netnext-mt7530-improvements-3-v3-0-449f4f166454@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
@@ -70,18 +70,18 @@ Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
  linux-mediatek@lists.infradead.org, 
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1709289776; l=921;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1709289776; l=10123;
  i=arinc.unal@arinc9.com; s=arinc9-Xeront; h=from:subject:message-id;
- bh=JV5lkSoAmKAO6vEQKKvFpHOlOFc0GQ6XMI05UOpapU0=;
- b=sDN29cEjzp83tM7un6A21yIeFo9LYgnjVC4Xk7q+Zp0J0suaNg8FyIx/eXQTAZUBFsTqh/YNe
- O2TMg3uZy9UDrLLFlOEDdkBqwyN4G4HFBOIdLa+sYPrKWohmmjWu2VF
+ bh=Y1TCfcdqvG7M9i52Rn8kNxeSZjlmBTTpQoxELLR7z1I=;
+ b=urv+2TWJiwr6/poCf0c7I1eYy8HybNgPMsKXd6ydEaiPkVeGLvtPSD9Q+yEe3+X2jfxizX3zB
+ XoCFRjgdNvxBockuvSY19J+iad7K+se9fkEC4w3P3dkiGjx/wIqRw7t
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=z49tLn29CyiL4uwBTrqH9HO1Wu3sZIuRp4DaLZvtP9M=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-Xeront with auth_id=137
 X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240301_024302_057449_0CC13A24 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20240301_024300_630650_837ECEE0 
+X-CRM114-Status: GOOD (  24.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,29 +99,305 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Setting this register related to interrupts is only needed for the MT7530
-switch. Make an exclusive check to ensure this.
+priv->info->cpu_port_config() is used for MT7531 and the switch on the
+MT7988 SoC. It sets up the ports described as a CPU port earlier than the
+phylink code path would do.
 
+This function is useless as:
+- Configuring the MACs can be done from the phylink_mac_config code path
+  instead.
+- All the link configuration it does on the CPU ports are later undone with
+  the port_enable, phylink_mac_config, and then phylink_mac_link_up code
+  path [1].
+
+priv->p5_interface and priv->p6_interface were being used to prevent
+configuring the MACs from the phylink_mac_config code path. Remove them now
+that they hold no purpose.
+
+Remove priv->info->cpu_port_config(). On mt753x_phylink_mac_config, switch
+to if statements to simplify the code.
+
+Remove the overwriting of the speed and duplex interfaces for certain
+interface modes. Phylink already provides the speed and duplex variables
+with proper values. Phylink already sets the max speed of TRGMII to
+SPEED_1000. Add SPEED_2500 for PHY_INTERFACE_MODE_2500BASEX to where the
+speed and EEE bits are set instead.
+
+On the switch on the MT7988 SoC, PHY_INTERFACE_MODE_INTERNAL is being used
+to describe the interface mode of the 10G MAC, which is of port 6. On
+mt7988_cpu_port_config() PMCR_FORCE_SPEED_1000 was set via the
+PMCR_CPU_PORT_SETTING() mask. Add SPEED_10000 case to where the speed bits
+are set to cover this. No need to add it to where the EEE bits are set as
+the "MT7988A Wi-Fi 7 Generation Router Platform: Datasheet (Open Version)
+v0.1" document shows that these bits don't exist on the MT7530_PMCR_P(6)
+register.
+
+Remove the definition of PMCR_CPU_PORT_SETTING() now that it holds no
+purpose.
+
+Change mt753x_cpu_port_enable() to void now that there're no error cases
+left.
+
+Link: https://lore.kernel.org/netdev/ZHy2jQLesdYFMQtO@shell.armlinux.org.uk/ [1]
+Suggested-by: Russell King (Oracle) <linux@armlinux.org.uk>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-Acked-by: Daniel Golle <daniel@makrotopia.org>
-Tested-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/dsa/mt7530.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/dsa/mt7530.c | 114 +++--------------------------------------------
+ drivers/net/dsa/mt7530.h |  11 -----
+ 2 files changed, 7 insertions(+), 118 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 94d4b2c87799..5cfd303b773f 100644
+index c069bf273733..80b65f064310 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -2055,7 +2055,7 @@ mt7530_setup_irq(struct mt7530_priv *priv)
- 	}
+@@ -966,18 +966,10 @@ mt753x_trap_frames(struct mt7530_priv *priv)
+ 		   MT753X_R0E_PORT_FW(MT753X_BPDU_CPU_ONLY));
+ }
  
- 	/* This register must be set for MT7530 to properly fire interrupts */
--	if (priv->id != ID_MT7531)
-+	if (priv->id == ID_MT7530 || priv->id == ID_MT7621)
- 		mt7530_set(priv, MT7530_TOP_SIG_CTRL, TOP_SIG_CTRL_NORMAL);
+-static int
++static void
+ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
+ {
+ 	struct mt7530_priv *priv = ds->priv;
+-	int ret;
+-
+-	/* Setup max capability of CPU port at first */
+-	if (priv->info->cpu_port_config) {
+-		ret = priv->info->cpu_port_config(ds, port);
+-		if (ret)
+-			return ret;
+-	}
  
- 	ret = request_threaded_irq(priv->irq, NULL, mt7530_irq_thread_fn,
+ 	/* Enable Mediatek header mode on the cpu port */
+ 	mt7530_write(priv, MT7530_PVC_P(port),
+@@ -1003,8 +995,6 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
+ 	/* Set to fallback mode for independent VLAN learning */
+ 	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
+ 		   MT7530_PORT_FALLBACK_MODE);
+-
+-	return 0;
+ }
+ 
+ static int
+@@ -2261,8 +2251,6 @@ mt7530_setup(struct dsa_switch *ds)
+ 	val |= MHWTRAP_MANUAL;
+ 	mt7530_write(priv, MT7530_MHWTRAP, val);
+ 
+-	priv->p6_interface = PHY_INTERFACE_MODE_NA;
+-
+ 	mt753x_trap_frames(priv);
+ 
+ 	/* Enable and reset MIB counters */
+@@ -2277,9 +2265,7 @@ mt7530_setup(struct dsa_switch *ds)
+ 		mt7530_set(priv, MT7530_PSC_P(i), SA_DIS);
+ 
+ 		if (dsa_is_cpu_port(ds, i)) {
+-			ret = mt753x_cpu_port_enable(ds, i);
+-			if (ret)
+-				return ret;
++			mt753x_cpu_port_enable(ds, i);
+ 		} else {
+ 			mt7530_port_disable(ds, i);
+ 
+@@ -2383,9 +2369,7 @@ mt7531_setup_common(struct dsa_switch *ds)
+ 		mt7530_set(priv, MT7531_DBG_CNT(i), MT7531_DIS_CLR);
+ 
+ 		if (dsa_is_cpu_port(ds, i)) {
+-			ret = mt753x_cpu_port_enable(ds, i);
+-			if (ret)
+-				return ret;
++			mt753x_cpu_port_enable(ds, i);
+ 		} else {
+ 			mt7530_port_disable(ds, i);
+ 
+@@ -2474,10 +2458,6 @@ mt7531_setup(struct dsa_switch *ds)
+ 	mt7530_rmw(priv, MT7531_GPIO_MODE0, MT7531_GPIO0_MASK,
+ 		   MT7531_GPIO0_INTERRUPT);
+ 
+-	/* Let phylink decide the interface later. */
+-	priv->p5_interface = PHY_INTERFACE_MODE_NA;
+-	priv->p6_interface = PHY_INTERFACE_MODE_NA;
+-
+ 	/* Enable PHY core PLL, since phy_device has not yet been created
+ 	 * provided for phy_[read,write]_mmd_indirect is called, we provide
+ 	 * our own mt7531_ind_mmd_phy_[read,write] to complete this
+@@ -2689,26 +2669,9 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+ 	struct mt7530_priv *priv = ds->priv;
+ 	u32 mcr_cur, mcr_new;
+ 
+-	switch (port) {
+-	case 5:
+-		if (priv->p5_interface == state->interface)
+-			break;
+-
++	if (port == 5 || port == 6)
+ 		mt753x_mac_config(ds, port, mode, state);
+ 
+-		if (priv->p5_intf_sel != P5_DISABLED)
+-			priv->p5_interface = state->interface;
+-		break;
+-	case 6:
+-		if (priv->p6_interface == state->interface)
+-			break;
+-
+-		mt753x_mac_config(ds, port, mode, state);
+-
+-		priv->p6_interface = state->interface;
+-		break;
+-	}
+-
+ 	mcr_cur = mt7530_read(priv, MT7530_PMCR_P(port));
+ 	mcr_new = mcr_cur;
+ 	mcr_new &= ~PMCR_LINK_SETTINGS_MASK;
+@@ -2744,17 +2707,10 @@ static void mt753x_phylink_mac_link_up(struct dsa_switch *ds, int port,
+ 
+ 	mcr = PMCR_RX_EN | PMCR_TX_EN | PMCR_FORCE_LNK;
+ 
+-	/* MT753x MAC works in 1G full duplex mode for all up-clocked
+-	 * variants.
+-	 */
+-	if (interface == PHY_INTERFACE_MODE_TRGMII ||
+-	    (phy_interface_mode_is_8023z(interface))) {
+-		speed = SPEED_1000;
+-		duplex = DUPLEX_FULL;
+-	}
+-
+ 	switch (speed) {
+ 	case SPEED_1000:
++	case SPEED_2500:
++	case SPEED_10000:
+ 		mcr |= PMCR_FORCE_SPEED_1000;
+ 		break;
+ 	case SPEED_100:
+@@ -2772,6 +2728,7 @@ static void mt753x_phylink_mac_link_up(struct dsa_switch *ds, int port,
+ 	if (mode == MLO_AN_PHY && phydev && phy_init_eee(phydev, false) >= 0) {
+ 		switch (speed) {
+ 		case SPEED_1000:
++		case SPEED_2500:
+ 			mcr |= PMCR_FORCE_EEE1G;
+ 			break;
+ 		case SPEED_100:
+@@ -2783,61 +2740,6 @@ static void mt753x_phylink_mac_link_up(struct dsa_switch *ds, int port,
+ 	mt7530_set(priv, MT7530_PMCR_P(port), mcr);
+ }
+ 
+-static int
+-mt7531_cpu_port_config(struct dsa_switch *ds, int port)
+-{
+-	struct mt7530_priv *priv = ds->priv;
+-	phy_interface_t interface;
+-	int speed;
+-
+-	switch (port) {
+-	case 5:
+-		if (!priv->p5_sgmii)
+-			interface = PHY_INTERFACE_MODE_RGMII;
+-		else
+-			interface = PHY_INTERFACE_MODE_2500BASEX;
+-
+-		priv->p5_interface = interface;
+-		break;
+-	case 6:
+-		interface = PHY_INTERFACE_MODE_2500BASEX;
+-
+-		priv->p6_interface = interface;
+-		break;
+-	default:
+-		return -EINVAL;
+-	}
+-
+-	if (interface == PHY_INTERFACE_MODE_2500BASEX)
+-		speed = SPEED_2500;
+-	else
+-		speed = SPEED_1000;
+-
+-	mt7531_mac_config(ds, port, MLO_AN_FIXED, interface);
+-
+-	mt7530_write(priv, MT7530_PMCR_P(port),
+-		     PMCR_CPU_PORT_SETTING(priv->id));
+-	mt753x_phylink_mac_link_up(ds, port, MLO_AN_FIXED, interface, NULL,
+-				   speed, DUPLEX_FULL, true, true);
+-
+-	return 0;
+-}
+-
+-static int
+-mt7988_cpu_port_config(struct dsa_switch *ds, int port)
+-{
+-	struct mt7530_priv *priv = ds->priv;
+-
+-	mt7530_write(priv, MT7530_PMCR_P(port),
+-		     PMCR_CPU_PORT_SETTING(priv->id));
+-
+-	mt753x_phylink_mac_link_up(ds, port, MLO_AN_FIXED,
+-				   PHY_INTERFACE_MODE_INTERNAL, NULL,
+-				   SPEED_10000, DUPLEX_FULL, true, true);
+-
+-	return 0;
+-}
+-
+ static void mt753x_phylink_get_caps(struct dsa_switch *ds, int port,
+ 				    struct phylink_config *config)
+ {
+@@ -3096,7 +2998,6 @@ const struct mt753x_info mt753x_table[] = {
+ 		.phy_write_c22 = mt7531_ind_c22_phy_write,
+ 		.phy_read_c45 = mt7531_ind_c45_phy_read,
+ 		.phy_write_c45 = mt7531_ind_c45_phy_write,
+-		.cpu_port_config = mt7531_cpu_port_config,
+ 		.mac_port_get_caps = mt7531_mac_port_get_caps,
+ 		.mac_port_config = mt7531_mac_config,
+ 	},
+@@ -3108,7 +3009,6 @@ const struct mt753x_info mt753x_table[] = {
+ 		.phy_write_c22 = mt7531_ind_c22_phy_write,
+ 		.phy_read_c45 = mt7531_ind_c45_phy_read,
+ 		.phy_write_c45 = mt7531_ind_c45_phy_write,
+-		.cpu_port_config = mt7988_cpu_port_config,
+ 		.mac_port_get_caps = mt7988_mac_port_get_caps,
+ 	},
+ };
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index b1665de7f640..8a8144868eaa 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -311,13 +311,6 @@ enum mt7530_vlan_port_acc_frm {
+ 					 PMCR_TX_FC_EN | PMCR_RX_FC_EN | \
+ 					 PMCR_FORCE_FDX | PMCR_FORCE_LNK | \
+ 					 PMCR_FORCE_EEE1G | PMCR_FORCE_EEE100)
+-#define  PMCR_CPU_PORT_SETTING(id)	(PMCR_FORCE_MODE_ID((id)) | \
+-					 PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | \
+-					 PMCR_BACKOFF_EN | PMCR_BACKPR_EN | \
+-					 PMCR_TX_EN | PMCR_RX_EN | \
+-					 PMCR_TX_FC_EN | PMCR_RX_FC_EN | \
+-					 PMCR_FORCE_SPEED_1000 | \
+-					 PMCR_FORCE_FDX | PMCR_FORCE_LNK)
+ 
+ #define MT7530_PMEEECR_P(x)		(0x3004 + (x) * 0x100)
+ #define  WAKEUP_TIME_1000(x)		(((x) & 0xFF) << 24)
+@@ -724,7 +717,6 @@ struct mt753x_info {
+ 			    int regnum);
+ 	int (*phy_write_c45)(struct mt7530_priv *priv, int port, int devad,
+ 			     int regnum, u16 val);
+-	int (*cpu_port_config)(struct dsa_switch *ds, int port);
+ 	void (*mac_port_get_caps)(struct dsa_switch *ds, int port,
+ 				  struct phylink_config *config);
+ 	void (*mac_port_validate)(struct dsa_switch *ds, int port,
+@@ -750,7 +742,6 @@ struct mt753x_info {
+  * @ports:		Holding the state among ports
+  * @reg_mutex:		The lock for protecting among process accessing
+  *			registers
+- * @p6_interface	Holding the current port 6 interface
+  * @p5_intf_sel:	Holding the current port 5 interface select
+  * @p5_sgmii:		Flag for distinguishing if port 5 of the MT7531 switch
+  *			has got SGMII
+@@ -772,8 +763,6 @@ struct mt7530_priv {
+ 	const struct mt753x_info *info;
+ 	unsigned int		id;
+ 	bool			mcm;
+-	phy_interface_t		p6_interface;
+-	phy_interface_t		p5_interface;
+ 	enum p5_interface_select p5_intf_sel;
+ 	bool			p5_sgmii;
+ 	u8			mirror_rx;
 
 -- 
 2.40.1
