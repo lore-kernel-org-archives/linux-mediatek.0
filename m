@@ -4,79 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70956C5478C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 14:53:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5AAEC5478C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 15:13:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AT6eJ8FbJZluUkWHSqnmRN5cAns9tdGhp7LuFi8TsNQ=; b=YK/62e4xFMEYgcv3xuGL0mumP8
-	Ex2gHc0C/0lEy2ACvOHF+iN8GxdsVnbN/SXkdtXqvLkoSBGDBcYb1b3LyU55yEIdg/Ucw05VskkEj
-	rOJM3FRTRyKfswHCdKlLmsxn9egIEFhBjmW5jlZRswDe+ldA/L8nyObXpYduWejO3r66RstI7CfG2
-	GfRb0wHI0O0k11Imy31oEC4Mbo+kCyzop/+/0ky8UvZKgt+EZYZs8DhQw9bp3b9rHv0MqTcGJxMr1
-	tQwUXNRhXlloN62f0jdfspmRWF+GA8K8DeSGLYDqvSiV/531lb4JEciFaNco+8qAZMUPfp8JReZEP
-	xXoN3vLA==;
+	bh=s1/3J+TPUGV+qRCrsUK4pHSmDe6bCMc8bf4L/tyoPRI=; b=jdUlHJmalqsx2/5cfPEZ2Q6yD2
+	3kLbpqyFV0DFDFKFtJhq9OMb/vjiX+32+7lkxFjbcQdBb37MnrxOeuDh7BDYTcxvYF6Nd/Suiw1NZ
+	awR1C/287OqH3P7tYjoGPkLdl0U64X0SgFE1uL4aSiOMM3R/T3n2irjHPlLtWTD3eSfSbLRKpjwwR
+	N9HFlIoCKJXf2PFFwz/e539lZXrE4a1KX1/p3i575U/K3iQwcpN/CDtVoHEc0PzozcL2mtQoApkgJ
+	ONUD0+Uh4qvSHxLBymRhmmnQhisvXPLtXTBRs5cwlWSYAMOFFsjmLPY4TrVtiEobLOen81YO/pWyf
+	dVcBeqzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rg4GA-00000000nTp-0Yd1;
-	Fri, 01 Mar 2024 14:53:14 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1rg4a7-00000000qyp-0AIK;
+	Fri, 01 Mar 2024 15:13:51 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rg4G6-00000000nSz-1Nvc;
-	Fri, 01 Mar 2024 14:53:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=AT6eJ8FbJZluUkWHSqnmRN5cAns9tdGhp7LuFi8TsNQ=; b=Tx+ZUBH7Yrwr3nkLWDaTULDEJ3
-	ICj4TMORGivcz/D+6rFRv5mH5+pZsJVWjKSi5ZPeIcRFRHmYaLc+JzlCMZrOrlB3fjOJjUkhB8B/t
-	4Ia2B54fKKGPXCUbg+S+KtQfXYxCVeqlX/u+C/XSSrbCyLCS8F5OVkEqqT8zK/qZPBLgAOQLg87ow
-	Z+S536rHtuUMoKK/WlknGstZu/xZlOfdpLWHVhfVDFD3jBPasQ8BmYHdUadVSP1B/TivhV+g6F3bC
-	QNpfCRso7XT9B6QB5nFN4fLMsNWefbIsWTMmgBgso9/EMjj+MJErx+ngaTpu/MLwKlKYrWUhLiDHk
-	nGA4riYg==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:51756)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1rg4Fv-0001jG-2K;
-	Fri, 01 Mar 2024 14:52:59 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1rg4Fu-0001pG-Ac; Fri, 01 Mar 2024 14:52:58 +0000
-Date: Fri, 1 Mar 2024 14:52:58 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: arinc.unal@arinc9.com
-Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	id 1rg4a2-00000000qwD-3iBd;
+	Fri, 01 Mar 2024 15:13:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1709306025;
+	bh=4rZ9IbsP+jzXlyf93oCqikrl4goIvycpLqfPlaupifE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=cFr943yljX1l29kjUPcrBU5FIpLB198EJMjLvS/ryE6Ezqbx+OR9RUYD7cFXVaTsy
+	 eKe5Undn9T2NKbYG4IyGD5kPHTNaJx+DjzDYPcJZzmYYyi2SrK0b9xPkU41enEk5Jz
+	 Qtezyhl+v/PPqcKZez9sNs/GCjZ4QW6qhH4t5OUZxQgTilW00/9uUsa73MIgfAD3jB
+	 HGgsE+kt8PlKqC9YeYh1QUJvSJAo0b3vzP/ZYmL+VStaMcL9NqZPkWFjhusC7w/BCJ
+	 uyPf/p9mYObaazGC1OdSdU2vo6N1qn+sNFYUMqRG+HWtBTZfqYbHqaWbIBHZD0LaGI
+	 imZWsQW0Jag9w==
+Received: from localhost (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sebastianfricke)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1253437803EE;
+	Fri,  1 Mar 2024 15:13:45 +0000 (UTC)
+Date: Fri, 1 Mar 2024 16:13:44 +0100
+From: Sebastian Fricke <sebastian.fricke@collabora.com>
+To: Irui Wang <irui.wang@mediatek.com>
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
-	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	nicolas.dufresne@collabora.com,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Longfei Wang <longfei.wang@mediatek.com>,
+	Maoguang Meng <maoguang.meng@mediatek.com>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v3 4/9] net: dsa: mt7530: get rid of useless
- error returns on phylink code path
-Message-ID: <ZeHrykYQd1SWJIN/@shell.armlinux.org.uk>
-References: <20240301-for-netnext-mt7530-improvements-3-v3-0-449f4f166454@arinc9.com>
- <20240301-for-netnext-mt7530-improvements-3-v3-4-449f4f166454@arinc9.com>
+Subject: Re: [PATCH v2] media: mediatek: vcodec: Handle VP9 superframe
+ bitstream with 8 sub-frames
+Message-ID: <20240301151344.o7khwhbasnncw2cc@basti-XPS-13-9310>
+References: <20240229030249.3404-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240301-for-netnext-mt7530-improvements-3-v3-4-449f4f166454@arinc9.com>
+In-Reply-To: <20240229030249.3404-1-irui.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240301_065310_392981_9D7650FE 
-X-CRM114-Status: GOOD (  13.62  )
+X-CRM114-CacheID: sfid-20240301_071347_159598_C815E0E6 
+X-CRM114-Status: GOOD (  16.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,35 +84,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 01, 2024 at 12:43:00PM +0200, Arınç ÜNAL via B4 Relay wrote:
-> From: Arınç ÜNAL <arinc.unal@arinc9.com>
-> 
-> Remove error returns on the cases where they are already handled with the
-> function the mac_port_get_caps member in mt753x_table points to.
-> 
-> mt7531_mac_config() is also called from mt7531_cpu_port_config() outside of
-> phylink but the port and interface modes are already handled there.
-> 
-> Change the functions and the mac_port_config function pointer to void now
-> that there're no error returns anymore.
-> 
-> Remove mt753x_is_mac_port() that used to help the said error returns.
-> 
-> On mt7531_mac_config(), switch to if statements to simplify the code.
-> 
-> Remove internal phy cases from mt753x_phylink_mac_config(), there is no
-> need to check the interface mode as that's already handled with the
-> function the mac_port_get_caps member in mt753x_table points to.
-> 
-> Acked-by: Daniel Golle <daniel@makrotopia.org>
-> Tested-by: Daniel Golle <daniel@makrotopia.org>
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Hey Irui,
 
-Reviewed-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+On 29.02.2024 11:02, Irui Wang wrote:
+>The VP9 bitstream has 8 sub-frames into one superframe, the superframe
+>index validate failed when reach 8, modify the index checking so that the
+>last sub-frame can be decoded normally with stateful vp9 decoder.
 
-Thanks!
+I find this commit message a bit confusing, you say that you couldn't
+index the last superframe, but then you say that you modify the index
+checking so that you can access the last sub-frame.
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+I would reword this section, here is my suggestion:
+
+The VP9 bitstream uses superframes, which each contain 8 sub-frames,
+enable accessing the last superframe by increasing the range of the
+index validation as the maximum number of superframes is 8 and not 7.
+
+The rest looks good as already mentioned by Nicolas.
+
+Greetings,
+Sebastian
+
+>
+>Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+>---
+>changed with v1:
+> - add a new define 'VP9_MAX_SUPER_FRAMES_NUM' for superframes.
+>---
+> .../mediatek/vcodec/decoder/vdec/vdec_vp9_if.c        | 11 ++++++-----
+> 1 file changed, 6 insertions(+), 5 deletions(-)
+>
+>diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
+>index 55355fa70090..039082f600c8 100644
+>--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
+>+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
+>@@ -16,6 +16,7 @@
+> #include "../vdec_drv_base.h"
+> #include "../vdec_vpu_if.h"
+>
+>+#define VP9_MAX_SUPER_FRAMES_NUM 8
+> #define VP9_SUPER_FRAME_BS_SZ 64
+> #define MAX_VP9_DPB_SIZE	9
+>
+>@@ -133,11 +134,11 @@ struct vp9_sf_ref_fb {
+>  */
+> struct vdec_vp9_vsi {
+> 	unsigned char sf_bs_buf[VP9_SUPER_FRAME_BS_SZ];
+>-	struct vp9_sf_ref_fb sf_ref_fb[VP9_MAX_FRM_BUF_NUM-1];
+>+	struct vp9_sf_ref_fb sf_ref_fb[VP9_MAX_SUPER_FRAMES_NUM];
+> 	int sf_next_ref_fb_idx;
+> 	unsigned int sf_frm_cnt;
+>-	unsigned int sf_frm_offset[VP9_MAX_FRM_BUF_NUM-1];
+>-	unsigned int sf_frm_sz[VP9_MAX_FRM_BUF_NUM-1];
+>+	unsigned int sf_frm_offset[VP9_MAX_SUPER_FRAMES_NUM];
+>+	unsigned int sf_frm_sz[VP9_MAX_SUPER_FRAMES_NUM];
+> 	unsigned int sf_frm_idx;
+> 	unsigned int sf_init;
+> 	struct vdec_fb fb;
+>@@ -526,7 +527,7 @@ static void vp9_swap_frm_bufs(struct vdec_vp9_inst *inst)
+> 	/* if this super frame and it is not last sub-frame, get next fb for
+> 	 * sub-frame decode
+> 	 */
+>-	if (vsi->sf_frm_cnt > 0 && vsi->sf_frm_idx != vsi->sf_frm_cnt - 1)
+>+	if (vsi->sf_frm_cnt > 0 && vsi->sf_frm_idx != vsi->sf_frm_cnt)
+> 		vsi->sf_next_ref_fb_idx = vp9_get_sf_ref_fb(inst);
+> }
+>
+>@@ -735,7 +736,7 @@ static void get_free_fb(struct vdec_vp9_inst *inst, struct vdec_fb **out_fb)
+>
+> static int validate_vsi_array_indexes(struct vdec_vp9_inst *inst,
+> 		struct vdec_vp9_vsi *vsi) {
+>-	if (vsi->sf_frm_idx >= VP9_MAX_FRM_BUF_NUM - 1) {
+>+	if (vsi->sf_frm_idx > VP9_MAX_SUPER_FRAMES_NUM) {
+> 		mtk_vdec_err(inst->ctx, "Invalid vsi->sf_frm_idx=%u.", vsi->sf_frm_idx);
+> 		return -EIO;
+> 	}
+>-- 
+>2.18.0
+>
+>
 
