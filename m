@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFC46C54E41
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 11:12:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E0AFC5478C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 11:12:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UVxmeYbrzMU+8yaEOX4EPOp0wcGdCd6eVhh5zyZPpKs=; b=EcpUhAInomsElrGRUKl5rCyhEX
-	3js4zzD6Mtyq8IEqUo0agdyKfg4d8r6EdzQSuoSyJ6S/2OryxrT0rc2hQcs2eDt3WJAoKChiOuYyL
-	YsoK/sUCvYN8EqRQnKXNV+NqOVJi0ita85Fj8/4WrIEcVF0p3Md+IxWuH3g9AYypLNf+14ST+TbOK
-	NY3zUyycyyhTulaO+RAFGtbaetScywDlCLJk7eZ7wotql+zIyaQrpDPsmraKdKSVbBIvi/qqu2TPq
-	CGyOKb2uqG20G0YegN72ttLVGelBBFtZwcjIWmMHdzeVRFF6P4Xqh76njtd7Wvt+hlyN2ZKXDGeKF
-	x8jGh+jQ==;
+	bh=qA7Fa8xFKt4h1LbtbejWn8H0L71pbaHZe8bM38M5K3Q=; b=46ebku+T9loCqay+82NIg9loqb
+	Tp9TWlQo+QhjHmVnYnHCwChcSku9Fq09cRN8nv5AT0DAVaJa1WMW5CgHxflpkg9S3aratrMf2VWsC
+	q6FN+haE0rpLDBp8zXC9E7picX7DDZraCOB9ct1Odde6USzrf8ymyr0imrPSbbP4e6dhkO5VfDfTV
+	yn6tQs9XJy+ksBquz8ZrIYtfYcHMtpZAX13aVFUlwmk9qVI1lzkDhMB87/eZtYzAEDcdkri8i+Yp4
+	UAWXzPMMaXSm9oXBX3+N55r7/VvfTrMxRIMzGTafoTBS21pZLywFU8a6zGxK1VcSnvcLQQcMbMkSE
+	4CpVg1nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rg0oS-0000000HVHy-1jPO;
-	Fri, 01 Mar 2024 11:12:24 +0000
+	id 1rg0oU-0000000HVJr-49nG;
+	Fri, 01 Mar 2024 11:12:27 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rg0oO-0000000HVEr-0h3y;
-	Fri, 01 Mar 2024 11:12:21 +0000
-X-UUID: 8edad456d7bc11eeb5c2bb47f3c01139-20240301
+	id 1rg0oO-0000000HVEV-2RYR;
+	Fri, 01 Mar 2024 11:12:22 +0000
+X-UUID: 8f64e4f2d7bc11eeb5c2bb47f3c01139-20240301
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=UVxmeYbrzMU+8yaEOX4EPOp0wcGdCd6eVhh5zyZPpKs=;
-	b=QuCxVogU8g0tm5AMeDYPOh7HuiaLMvaQS1/Ihs+QgYPRyjX+d6/Rtc7xwOlWQTTdlABNIO8mTc73fni+tYinjiqYdBGjmBRFH1N3sbJzrg+nW8E3Fhf8v5QDwvX6mXGuUq9Ym7LzizzuHBDxLQNnA4nddg8GI0t/FafUlnStJPc=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=qA7Fa8xFKt4h1LbtbejWn8H0L71pbaHZe8bM38M5K3Q=;
+	b=UiZIe6qHGTxxmL1cXJ6RsF0YKbd7VF0lhFF3iWt+0S7ostsUBsDgG20RKB5yJMsj3zkcm5+4cO3qxgTrx5sakRDnGhU7uDC4dfoKFCXtyE1OFZ/6I2Bvuuok3J/kEzXwa7oz4LXrnPjoqwzKgTrHW7A7w0QWXNXlk2RTwiPyu+U=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:95d77a9c-7515-425a-93e7-e6f0acbc9f43,IP:0,U
+X-CID-O-INFO: VERSION:1.1.37,REQID:0ee976b6-878a-4a6e-9004-18273eb3832b,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:7ef764ff-c16b-4159-a099-3b9d0558e447,B
+X-CID-META: VersionHash:6f543d0,CLOUDID:ef010081-4f93-4875-95e7-8c66ea833d57,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 8edad456d7bc11eeb5c2bb47f3c01139-20240301
+X-UUID: 8f64e4f2d7bc11eeb5c2bb47f3c01139-20240301
 Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1488917812; Fri, 01 Mar 2024 04:12:14 -0700
+	with ESMTP id 894463882; Fri, 01 Mar 2024 04:12:15 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -63,31 +63,31 @@ CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 4/5] soc: mediatek: mtk-cmdq: Add cmdq_pkt_acquire_event() function
-Date: Fri, 1 Mar 2024 19:11:25 +0800
-Message-ID: <20240301111126.22035-5-jason-jh.lin@mediatek.com>
+Subject: [PATCH 3/5] soc: mediatek: mtk-cmdq: Add cmdq_pkt_poll_addr() function
+Date: Fri, 1 Mar 2024 19:11:24 +0800
+Message-ID: <20240301111126.22035-4-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240301111126.22035-1-jason-jh.lin@mediatek.com>
 References: <20240301111126.22035-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--2.904900-8.000000
-X-TMASE-MatchedRID: llTo18AJfvFYXTxImR5ZvLmIzqGFh/g8Xru95hSuhjQGW3hFnC9N1ayR
-	DZpBnTnXX7ScFOAZsbSZymPU+pWEZ6Q4hw3fFG5zXSKcwPTzq/IhotH7bEpEMkYvSDWdWaRhcHj
-	giTON9jLAsw00iUcvQv0h3e0v6EXCUBXVAm5W8RAbmaDSnOqZfsSgMQYKGHsJM6179UxzfjlCFt
-	xLdA8EDuLzNWBegCW2wgn7iDBesS0nRE+fI6etkqQVJm8UX/I+1PbVTvjrX7SVbf5EccAu3cf5t
-	cGdPaGDfONGJh0XykOuFgtX4tvltd/n8sBhKmAMw26jNhXEhXHyyMgM8a+L0YCE5xpCtDRTUbJF
-	yh4XXyqYo/TPOlMB4bCh3zE4wqa8DUCRr8oin+k=
+X-TM-AS-Result: No-10--0.772500-8.000000
+X-TMASE-MatchedRID: 8X2PBhRYyqJYXTxImR5ZvFVN8laWo90MYu7s3QSSN+Tfc2Xd6VJ+ysxF
+	Qxp3PhHyz4sGsPGzdli46TLvlH7amuHxFb2pjr4bhK8o4aoss8pKPIx+MJF9o99RlPzeVuQQXVC
+	mjmk3KwwDvKUzYsUZK1fsuOSPFWFcKYkG37rHS8Xzh2yKdnl7WPSEh8AqyHUv/rvU1dGgVf76au
+	5bveuHjHhYmQFcXfkdgDLqnrRlXrZ8nn9tnqel2K6NVEWSRWybLIRvJZxdOT8ccxlO3vDdFnpRb
+	6jaaE2WB4xikmzQuji9mcsT4mLfgePF7+QNf5yPgesk0PKcIwDLcleArf7N1eS8xlf5yikEjofs
+	MjQaxVwyYjbiqIQ3CsykhtyXcigD6rVdgBjDT2r1nXJavJVNag==
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--2.904900-8.000000
+X-TMASE-Result: 10--0.772500-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 5A2AF9094C510743033CB018B974CC720722A3FB2D7EA8B6E88EA28690F1A4362000:8
+X-TM-SNTS-SMTP: F66502118867CD93F42C699C31E1482D3047D14864830B5BC5BAD1E4B63B00072000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240301_031220_249030_74CD07F8 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20240301_031220_719311_7D14BA22 
+X-CRM114-Status: GOOD (  16.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,66 +102,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add cmdq_pkt_acquire_event() function to support CMDQ user making
-an instruction for acquiring event.
+Add cmdq_pkt_poll_addr function to support CMDQ user making
+an instruction for polling a specific address of hardware rigster
+to check the value with or without mask.
 
-CMDQ users can use cmdq_pkt_acquire_event() and cmdq_pkt_clear_event()
-to acquire GCE event and release GCE event and achieve the MUTEX_LOCK
-protection between GCE threads.
+POLL is an old operation in GCE, so it does not support SPR and
+CMDQ_CODE_LOGIC. CMDQ users need to use GPR and CMDQ_CODE_MASK
+to move polling register address to GPR to make an instruction.
+This will be done in cmdq_pkt_poll_addr().
 
 Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-Change-Id: Icdae6b60345c7ec1d7541ac76d1f06da56959cde
+Change-Id: I91ff98e06570dc4501187eb29de64aaa65b1cf13
 ---
- drivers/soc/mediatek/mtk-cmdq-helper.c | 15 +++++++++++++++
- include/linux/soc/mediatek/mtk-cmdq.h  |  9 +++++++++
- 2 files changed, 24 insertions(+)
+ drivers/soc/mediatek/mtk-cmdq-helper.c | 38 ++++++++++++++++++++++++++
+ include/linux/soc/mediatek/mtk-cmdq.h  | 16 +++++++++++
+ 2 files changed, 54 insertions(+)
 
 diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-index 2e9fc9bb1183..0183b40a0eff 100644
+index 3a1e47ad8a41..2e9fc9bb1183 100644
 --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
 +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-@@ -342,6 +342,21 @@ int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear)
- }
- EXPORT_SYMBOL(cmdq_pkt_wfe);
+@@ -12,6 +12,7 @@
  
-+int cmdq_pkt_acquire_event(struct cmdq_pkt *pkt, u16 event)
+ #define CMDQ_WRITE_ENABLE_MASK	BIT(0)
+ #define CMDQ_POLL_ENABLE_MASK	BIT(0)
++#define CMDQ_POLL_HIGH_ADDR_GPR	(14)
+ #define CMDQ_EOC_IRQ_EN		BIT(0)
+ #define CMDQ_REG_TYPE		1
+ #define CMDQ_JUMP_RELATIVE	1
+@@ -406,6 +407,43 @@ int cmdq_pkt_poll_mask(struct cmdq_pkt *pkt, u8 subsys,
+ }
+ EXPORT_SYMBOL(cmdq_pkt_poll_mask);
+ 
++int cmdq_pkt_poll_addr(struct cmdq_pkt *pkt, dma_addr_t addr, u32 value, u32 mask)
 +{
-+	struct cmdq_instruction inst = {};
++	struct cmdq_instruction inst = { {0} };
++	int err;
++	u8 use_mask = 0;
 +
-+	if (event >= CMDQ_MAX_EVENT)
-+		return -EINVAL;
++	if (mask != U32_MAX) {
++		inst.op = CMDQ_CODE_MASK;
++		inst.mask = ~mask;
++		err = cmdq_pkt_append_command(pkt, inst);
++		if (err != 0)
++			return err;
++		use_mask = CMDQ_POLL_ENABLE_MASK;
++	}
 +
-+	inst.op = CMDQ_CODE_WFE;
-+	inst.value = CMDQ_WFE_UPDATE | CMDQ_WFE_UPDATE_VALUE | CMDQ_WFE_WAIT;
-+	inst.event = event;
++	/*
++	 * POLL is an old operation in GCE and it does not support SPR and CMDQ_CODE_LOGIC,
++	 * so it can not use cmdq_pkt_assign to keep polling register address to SPR.
++	 * It needs to use GPR and CMDQ_CODE_MASK to move polling register address to GPR.
++	 */
++	inst.op = CMDQ_CODE_MASK;
++	inst.dst_t = CMDQ_REG_TYPE;
++	inst.sop = CMDQ_POLL_HIGH_ADDR_GPR;
++	inst.mask = addr;
++	err = cmdq_pkt_append_command(pkt, inst);
++	if (err < 0)
++		return err;
 +
++	inst.op = CMDQ_CODE_POLL;
++	inst.dst_t = CMDQ_REG_TYPE;
++	inst.sop = CMDQ_POLL_HIGH_ADDR_GPR;
++	inst.offset = use_mask;
++	inst.value = value;
 +	return cmdq_pkt_append_command(pkt, inst);
 +}
-+EXPORT_SYMBOL(cmdq_pkt_acquire_event);
++EXPORT_SYMBOL(cmdq_pkt_poll_addr);
 +
- int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event)
+ int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value)
  {
- 	struct cmdq_instruction inst = { {0} };
+ 	struct cmdq_instruction inst = {};
 diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-index 2fe9be240fbc..de93c0a8e8a9 100644
+index b6dbe2d8f16a..2fe9be240fbc 100644
 --- a/include/linux/soc/mediatek/mtk-cmdq.h
 +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-@@ -202,6 +202,15 @@ int cmdq_pkt_mem_move(struct cmdq_pkt *pkt, dma_addr_t src_addr, dma_addr_t dst_
-  */
- int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear);
+@@ -253,6 +253,22 @@ int cmdq_pkt_poll(struct cmdq_pkt *pkt, u8 subsys,
+ int cmdq_pkt_poll_mask(struct cmdq_pkt *pkt, u8 subsys,
+ 		       u16 offset, u32 value, u32 mask);
  
 +/**
-+ * cmdq_pkt_acquire_event() - append acquire event command to the CMDQ packet
++ * cmdq_pkt_poll_addr() - Append polling command to the CMDQ packet, ask GCE to
++ *			 execute an instruction that wait for a specified
++ *			 address of hardware register to check for the value
++ *			 w/ or w/o mask.
++ *			 All GCE hardware threads will be blocked by this
++ *			 instruction.
 + * @pkt:	the CMDQ packet
-+ * @event:	the desired event to be acquired
++ * @addr:	the hardware register address
++ * @value:	the specified target register value
++ * @mask:	the specified target register mask
 + *
 + * Return: 0 for success; else the error code is returned
 + */
-+int cmdq_pkt_acquire_event(struct cmdq_pkt *pkt, u16 event);
++int cmdq_pkt_poll_addr(struct cmdq_pkt *pkt, dma_addr_t addr, u32 value, u32 mask);
 +
  /**
-  * cmdq_pkt_clear_event() - append clear event command to the CMDQ packet
-  * @pkt:	the CMDQ packet
+  * cmdq_pkt_assign() - Append logic assign command to the CMDQ packet, ask GCE
+  *		       to execute an instruction that set a constant value into
 -- 
 2.18.0
 
