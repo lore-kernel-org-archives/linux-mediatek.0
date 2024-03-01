@@ -4,73 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE723C5475B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 14:39:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 914B8C5478C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 14:43:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GK/fz8mOfibf9OqDJ1HFU49LqCFoeHGl8/k7j9p2t+g=; b=hVNLknbKKaM/5Jn2jaNlyHyjuN
-	2kt2LUftbVeyOR74kG0MYIznn563ximG5gkF7LQGerLZv4yDvx6dd7OMRjzMeqnbtF0N9um/jZoHD
-	Vf+69nSa8ZZohXRELI+pjaRKspeLC9SxHrvRsnfIAxwO3UgntCQ3ql89EPwCZ+cv/rPQPmo9JPoop
-	65hKwywRL7lB6HVUuLD1T84E/WAxzp9v6CeWq9NY9N0KUTqLCIK9w6uLmHaRaX5rhk8twKdnT64/a
-	fQRZAk7y8yywtH8xtgCIIHHA/SU0jT3V+z0XRh+IF1GdQM6ZTsfXsCDXGK0Y8xXyPh0r0q9IdqoVJ
-	08xwb2kw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zyCBaXUAE5a5edh6bvFxtATvJHIPBJYNND68hadfLf0=; b=2x/3DLgFineK9vawQ+4eY1Z19O
+	VN2WWEu9abAdepWM4rArsbdYk6K1aF0hn1TxxzigRnUoXqfLH3G5GtIwRYhhpvBKEAA5tGLEVnskz
+	z6SSFH6tS/hVaLG4pGQal6JWHSil7GAAAfDXd3WUhl6YDkXXmOYcZSDln/xHwUA2FA8KA+CV1ellB
+	CS4HlDdLUQYiV2s/gSXlodjhZCxkZU0wTg6utyzu6uGn13ZWik0ZMajMhC3u5i4U4cy9pBYpecdGy
+	of0FH0NOEd6XK1coqY1iTFtdQN6FDnVCYU+w7jjLSUEBO8+XwDL89+gcBsUkyjBYv/OhhfFK9tyTT
+	cdDoQFCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rg42g-00000000jpi-0WVV;
-	Fri, 01 Mar 2024 14:39:18 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rg479-00000000l4r-0fza;
+	Fri, 01 Mar 2024 14:43:55 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rg42c-00000000jnH-3A2b;
-	Fri, 01 Mar 2024 14:39:16 +0000
+	id 1rg474-00000000l2A-2K2v;
+	Fri, 01 Mar 2024 14:43:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709303952;
-	bh=rkisMHBNxL4woYqHRgn2zX3YF+vvPbgLoCprtb5HDEo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qwGrbyiD3HL1uxENJtlW1aR0CSg+dtCmKxfw7fKvI86HzSzTqnUVSs/Gu2QrD4FAa
-	 f14OdmNBFA9sMQfzEHVbEh7XAtGJgKW9aqiSSR4yPEkFzgszcLTsY/MdKXqcJDl5Va
-	 VSP05hlU0O1sP0OWD+RAGXHS3DKe8d2m4YMmgtjLNIM6Qkkp5JKHhe5YYr4hRwJE4S
-	 7G76+xf+JhIJ+F93lcOCU1DcdotbJmBLmt0nlPbUr1QScpN7rGUtJn1jal4WdpiLDM
-	 XG5WQkxTcA5diXb0YCdG7SvxUoF3m+HqsG9CDYaeTUl4npVtbtFnzdclY1dCSpwZoE
-	 9oZBxUyxrEAfQ==
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	s=mail; t=1709304229;
+	bh=g/5FdFmANw8vfKyQblOhb3dPtLnfPxgu5rTqDPLM/k0=;
+	h=From:To:Cc:Subject:Date:From;
+	b=xxNTTc97xWYp4JHtRwbQppAyuiFMXatZr52S8x9U/4TFPZ1ascmVK8vAU4mjYEzBq
+	 Ykt+7E/MR8BSvG9PeoGYfiaOMmtqXUhN/4DXG6vrhD+soagLQbiuEmmdy+4r0lrAZO
+	 RAkqLMeNDa2bZHflQJJ6NLEfW2xGoyaR/9g0V7Ag1l3STfFDbmhVYpNDer3cyPAwAX
+	 pxzr8htRsrWFkVP7HF37kkPIkduT3wUHBMbuyru+2XH4Qwl94k/OkkvE6cjznHaxCa
+	 be6nP4OuhB7n7xer/eWCg3+KKmNflNZMbl9Xo6uoH8Ej7o265Ya7KFGXe+NvmujkLp
+	 7TQEbUwPHkSdg==
+Received: from localhost.localdomain (broslavsky.collaboradmins.com [68.183.210.73])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 14B0437803EE;
-	Fri,  1 Mar 2024 14:39:09 +0000 (UTC)
-Date: Fri, 1 Mar 2024 09:39:07 -0500
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
-	Tinghan Shen <tinghan.shen@mediatek.com>,
-	"Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
-	"Nancy.Lin" <nancy.lin@mediatek.com>, kernel@collabora.com,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	(Authenticated sender: usama.anjum)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A6DB837803EE;
+	Fri,  1 Mar 2024 14:43:42 +0000 (UTC)
+From: Muhammad Usama Anjum <usama.anjum@collabora.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Kalle Valo <kvalo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Muhammad Usama Anjum <usama.anjum@collabora.com>,
+	kernel@collabora.com,
+	kernel-janitors@vger.kernel.org,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/4] arm64: dts: mediatek: mt8195: Add missing
- gce-client-reg to vpp/vdosys
-Message-ID: <40ae06f4-0cbe-40f0-84c8-9b57dfbeb91f@notapiano>
-References: <20240229-gce-client-reg-add-missing-mt8192-95-v1-0-b12c233a8a33@collabora.com>
- <20240229-gce-client-reg-add-missing-mt8192-95-v1-2-b12c233a8a33@collabora.com>
- <22e2cf1b-9560-4f4b-b08b-a112e8e272a8@collabora.com>
+Subject: [PATCH] wifi: mt76: connac: check for null before dereferencing
+Date: Fri,  1 Mar 2024 19:44:06 +0500
+Message-Id: <20240301144406.2808307-1-usama.anjum@collabora.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <22e2cf1b-9560-4f4b-b08b-a112e8e272a8@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240301_063915_001309_531B5BC1 
-X-CRM114-Status: GOOD (  14.91  )
+X-CRM114-CacheID: sfid-20240301_064350_760671_A7F5F8C3 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,32 +82,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 01, 2024 at 09:50:31AM +0100, AngeloGioacchino Del Regno wrote:
-> Il 29/02/24 20:44, Nícolas F. R. A. Prado ha scritto:
-> > Add the missing mediatek,gce-client-reg property to the vppsys and
-> > vdosys nodes to allow them to use the GCE. This prevents the "can't
-> > parse gce-client-reg property" error from being printed and should
-> > result in better performance.
-> > 
-> > Fixes: 6aa5b46d1755 ("arm64: dts: mt8195: Add vdosys and vppsys clock nodes")
-> > Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> 
-> Can you please squash patches 2,3,4 in a single one?
-> 
-> It doesn't make a lot of sense to have them separated in this case, only
-> generates commit noise for no practical reason imo.
-> 
-> arm64: dts: mediatek: mt8195: Add missing gce-client-reg to vpp/vdo/mutex
+The wcid can be NULL. It should be checked for validity before
+dereferencing it to avoid crash.
 
-I split them like this so that each has its own fixes tag and can all be easily
-backported (as mentioned in the cover letter). That said, the commits fixed in 2
-and 3 both landed in v6.1-rc1, so they could be squashed and still easily
-backported. But the commit fixed in patch 4 only landed in v6.4-rc1, so if we
-squash them all together, the first two won't be backported to v6.1.
+Fixes: 098428c400ff ("wifi: mt76: connac: set correct muar_idx for mt799x chipsets")
+Signed-off-by: Muhammad Usama Anjum <usama.anjum@collabora.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Let me know how you want to proceed.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index af0c2b2aacb00..7af60eebe517a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -283,7 +283,7 @@ __mt76_connac_mcu_alloc_sta_req(struct mt76_dev *dev, struct mt76_vif *mvif,
+ 	};
+ 	struct sk_buff *skb;
+ 
+-	if (is_mt799x(dev) && !wcid->sta)
++	if (is_mt799x(dev) && wcid && !wcid->sta)
+ 		hdr.muar_idx = 0xe;
+ 
+ 	mt76_connac_mcu_get_wlan_idx(dev, wcid, &hdr.wlan_idx_lo,
+-- 
+2.39.2
 
-Thanks,
-Nícolas
 
