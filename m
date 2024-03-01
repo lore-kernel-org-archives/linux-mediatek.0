@@ -4,78 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D906C5475B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 09:55:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F54AC5475B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Mar 2024 10:43:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vDfr0yp6C7xDyyNdToZD3gwq3T9ELQ+xwGdPREZ00cI=; b=oXAW49QY37gCGxrG7zt7BJVRbF
-	x2Tesdn1zgAS26N9QA7FTEzwKL8B3xgWtX0GXuyB39wTsHxfF3YkUfD+CNIlsTXOmfaXYK760afNB
-	UDs8ISi3H/YmSs1CJTseOw/OaP3kNr2oibTh3P5csbq7RPA9Nu9ImjwAeTthXqyF0r3ei/L/ydTKP
-	GdrRSDRCa9gxuXoJqoczCkqpNEmjPHcxzxeZ64YDS08u2l09I0lPiZs+/x6fb7s64nt+q66lliMdm
-	2owz0yF/p28VHyjXNtaED+HXRpqNG1L7fCwD5adZVixfUxZBvpp6zseJwk1HHjxM9uftfgJPhnd9y
-	gl+SnUxg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=q4xs9eIg0hnXycziu5ETV0h1BvdbtUPQkrfIsCbVGEA=; b=dWKx0tMlGDQi0i0HGOVzLkx0od
+	Vfq4RlHiKcsVc9W5nm73FYjmcB6pTY5H8FcK4bDygsxSANx0GbpX/ChLNFGs/uqmxSXaxUUKBfzNJ
+	lMPFE9MQzSYoULw5vPwyIBJOjHP8YrOPJqir5PAV8TNFe3TkqfrqpoXzifk/GencPiYLDrqH5i2Y3
+	MQRSpeLaUClahCS/HigBYgnVZ7ZnM6cQlNo8Hz4yJlR1hwfSDI1YHcOVrMQe+TcVhcpziwYyVEvQv
+	TL0dYCvoXADLHt86VRfNhgjYSzIq3vuHD0HYoT7TwnWgcdEny+VfMFNPQRySx19FauGDWiOXkn1s9
+	HdE1cvxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfzcO-0000000HGHp-073o;
-	Fri, 01 Mar 2024 09:55:52 +0000
-Received: from lelv0142.ext.ti.com ([198.47.23.249])
+	id 1rg0M4-0000000HPF0-38V2;
+	Fri, 01 Mar 2024 10:43:04 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfzcL-0000000HGGw-01EA;
-	Fri, 01 Mar 2024 09:55:50 +0000
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
-	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 4219tPbo107280;
-	Fri, 1 Mar 2024 03:55:25 -0600
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1709286925;
-	bh=vDfr0yp6C7xDyyNdToZD3gwq3T9ELQ+xwGdPREZ00cI=;
-	h=Date:From:To:CC:Subject:References:In-Reply-To;
-	b=xrGghXaBtr4kZR8rMV6MgYmVuHmN8laIPpUPrIMjve/sWCx81rBH5N+YejowBj9jm
-	 DKbiwOaExltjW7e/GsZb9g7IyAcZTlBGGCRekCYzmnr99kmNibTC0mEMaKbCP5f5to
-	 BXd62pdCoIX0i4N8uUR0WAcNwR8cnBRG9KOjIkoM=
-Received: from DFLE101.ent.ti.com (dfle101.ent.ti.com [10.64.6.22])
-	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 4219tPHt027170
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Fri, 1 Mar 2024 03:55:25 -0600
-Received: from DFLE112.ent.ti.com (10.64.6.33) by DFLE101.ent.ti.com
- (10.64.6.22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Fri, 1
- Mar 2024 03:55:25 -0600
-Received: from lelvsmtp6.itg.ti.com (10.180.75.249) by DFLE112.ent.ti.com
- (10.64.6.33) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Fri, 1 Mar 2024 03:55:25 -0600
-Received: from localhost (uda0492258.dhcp.ti.com [172.24.227.9])
-	by lelvsmtp6.itg.ti.com (8.15.2/8.15.2) with ESMTP id 4219tOE6119278;
-	Fri, 1 Mar 2024 03:55:25 -0600
-Date: Fri, 1 Mar 2024 15:25:24 +0530
-From: Siddharth Vadapalli <s-vadapalli@ti.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: Siddharth Vadapalli <s-vadapalli@ti.com>, <linux-pci@vger.kernel.org>,
-        <ryder.lee@mediatek.com>, <jianjun.wang@mediatek.com>,
-        <lpieralisi@kernel.org>, <kw@linux.com>, <robh@kernel.org>,
-        <bhelgaas@google.com>, <p.zabel@pengutronix.de>,
-        <matthias.bgg@gmail.com>, <linux-mediatek@lists.infradead.org>,
-        <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <kernel@collabora.com>, <wenst@chromium.org>,
-        <nfraprado@collabora.com>
-Subject: Re: [PATCH v2] PCI: mediatek-gen3: Assert MAC reset only if PHY
- reset also present
-Message-ID: <9920b298-4627-4323-b367-13ee94a83869@ti.com>
-References: <20240229092449.580971-1-angelogioacchino.delregno@collabora.com>
- <a55428b8-27b3-42f7-8154-ccc7dde469df@ti.com>
- <2b2effdd-0b9d-40fd-a88d-ab364f2b0668@collabora.com>
+	id 1rg0M0-0000000HPBA-0Ifu;
+	Fri, 01 Mar 2024 10:43:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0D79760FE8;
+	Fri,  1 Mar 2024 10:42:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id AFAD5C433F1;
+	Fri,  1 Mar 2024 10:42:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1709289778;
+	bh=ZJKLgZ4Q+W8RC6y4mRrQuRCA9QBqTIit+Yam4i3YxuY=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=ZG7xcID6XznKMNSRiAc8WHXKKIM2FJGHSIaYWolY7h4F3uncVrz0hkW5WAd4TTlwk
+	 4Ih4uYsr9+oCVRf8pdBjwcQ94kCXHJqAe0IzCb1aL5iuyIOOdgNlJkfiq/g5ETXBmR
+	 +I3HW0JGTLIuJYVyOKmAGYgoguejSkTC44IvDo+uvmGjKsg2sw5ZI2m7DWHLreTEn+
+	 HKccR6EaiJ3xDcKMsUJECIxin30Fh15ncfkHWE54lOijh0NAOVeOkzumjsw720jhUn
+	 hMFsJQBuE7SUbjXTOZl5D2aCidgbJ1JuG3gGSYs+8CDEUZEx/ngRFWhTCnfdfbrKSj
+	 ODfrrcpi5Oupw==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 92B5EC5478C;
+	Fri,  1 Mar 2024 10:42:58 +0000 (UTC)
+From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
+ <devnull+arinc.unal.arinc9.com@kernel.org>
+Subject: [PATCH net-next v3 0/9] MT7530 DSA Subdriver Improvements Act III
+Date: Fri, 01 Mar 2024 12:42:56 +0200
+Message-Id: <20240301-for-netnext-mt7530-improvements-3-v3-0-449f4f166454@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <2b2effdd-0b9d-40fd-a88d-ab364f2b0668@collabora.com>
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIADCx4WUC/42NvQ7CIBRGX8Uwew1/tdbJ9zAOeHtRhkIDhNQ0f
+ XeRSTfHLyffOStLFB0ldt6tLFJxyQVfh9rvGD6NfxC4sW4mudRcKAE2RPCUPS0Zptx3ioOb5hg
+ KTeRzAgXmZFAPo7Y9SlY9cyTrlta4snqFz5fdKnm6lEN8tXgRjbeO5Kc/OkUAh7FHgXbsuERzM
+ dF5HA4YpqYv8kspjv8oZVXyQaMhZa1U9x/ltm1vtty9ajABAAA=
+To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
+ Florian Fainelli <f.fainelli@gmail.com>, 
+ Vladimir Oltean <olteanv@gmail.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Russell King <linux@armlinux.org.uk>
+Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com, 
+ Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1709289776; l=2904;
+ i=arinc.unal@arinc9.com; s=arinc9-Xeront; h=from:subject:message-id;
+ bh=ZJKLgZ4Q+W8RC6y4mRrQuRCA9QBqTIit+Yam4i3YxuY=;
+ b=ZjlR+JK6Wc12fpxCA0Z/UmD0nT/C3mkcQQ+Tv284Gx7ntuu0OjsWGUmA+Sd7h72x3BjBCTzXz
+ buk1reF6htoDmrx3gmAhh3y41FPGdaDJeoGS1YvwrKMBxHsB4L+60zu
+X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
+ pk=z49tLn29CyiL4uwBTrqH9HO1Wu3sZIuRp4DaLZvtP9M=
+X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-Xeront with auth_id=137
+X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240301_015549_278708_72FF75BD 
-X-CRM114-Status: GOOD (  30.74  )
+X-CRM114-CacheID: sfid-20240301_024300_242260_99A3C9D0 
+X-CRM114-Status: UNSURE (   9.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,90 +95,81 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 01, 2024 at 10:06:33AM +0100, AngeloGioacchino Del Regno wrote:
-> Il 01/03/24 07:42, Siddharth Vadapalli ha scritto:
-> > On Thu, Feb 29, 2024 at 10:24:49AM +0100, AngeloGioacchino Del Regno wrote:
-> > > Some SoCs have two PCI-Express controllers: in the case of MT8195,
-> > > one of them is using a dedicated PHY, but the other uses a combo PHY
-> > > that is shared with USB and in that case the PHY cannot be reset
-> > > from the PCIe driver, or USB functionality will be unable to resume.
-> > > 
-> > > Resetting the PCIe MAC without also resetting the PHY will result in
-> > > a full system lockup at PCIe resume time and the only option to
-> > > resume operation is to hard reboot the system (with a PMIC cut-off).
-> > > 
-> > > To resolve this issue, check if we've got both a PHY and a MAC reset
-> > > and, if not, never assert resets at PM suspend time: in that case,
-> > > the link is still getting powered down as both the clocks and the
-> > > power domains will go down anyway.
-> > > 
-> > > Fixes: d537dc125f07 ("PCI: mediatek-gen3: Add system PM support")
-> > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > ---
-> > > 
-> > > Changes in v2:
-> > >   - Rebased over next-20240229
-> > > 
-> > >   drivers/pci/controller/pcie-mediatek-gen3.c | 25 ++++++++++++++-------
-> > >   1 file changed, 17 insertions(+), 8 deletions(-)
-> > > 
-> > > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > > index 975b3024fb08..99b5d7a49be1 100644
-> > > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> > > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > > @@ -874,17 +874,26 @@ static int mtk_pcie_power_up(struct mtk_gen3_pcie *pcie)
-> > >   	return err;
-> > >   }
-> > > -static void mtk_pcie_power_down(struct mtk_gen3_pcie *pcie)
-> > > +static void mtk_pcie_power_down(struct mtk_gen3_pcie *pcie, bool is_suspend)
-> > >   {
-> > > +	bool suspend_reset_supported = pcie->mac_reset && pcie->phy_reset;
-> > > +
-> > >   	clk_bulk_disable_unprepare(pcie->num_clks, pcie->clks);
-> > >   	pm_runtime_put_sync(pcie->dev);
-> > >   	pm_runtime_disable(pcie->dev);
-> > > -	reset_control_assert(pcie->mac_reset);
-> > > +
-> > > +	/*
-> > > +	 * Assert MAC reset only if we also got a PHY reset, otherwise
-> > > +	 * the system will lockup at PM resume time.
-> > > +	 */
-> > > +	if (is_suspend && suspend_reset_supported)
-> > > +		reset_control_assert(pcie->mac_reset);
-> > >   	phy_power_off(pcie->phy);
-> > >   	phy_exit(pcie->phy);
-> > 
-> > Wouldn't this power off the shared PHY? Or will the PHY driver make this
-> > NO-OP if the PHY is shared, in which case the above two statements could
-> > be combined with the other statements in the:
-> > if (is_suspend && suspend_reset_supported)
-> > condition to get a single block of code that also combines the
-> > reset_control_assert(pcie->phy_reset)
-> > present below.
-> > 
-> 
-> No, that'd be fine:
-> 
-> static int mtk_phy_power_off(struct phy *phy)
-> {
-> 	struct mtk_phy_instance *instance = phy_get_drvdata(phy);
-> 	struct mtk_tphy *tphy = dev_get_drvdata(phy->dev.parent);
-> 
-> 	if (instance->type == PHY_TYPE_USB2)
-> 		u2_phy_instance_power_off(tphy, instance);
-> 	else if (instance->type == PHY_TYPE_PCIE)
-> 		pcie_phy_instance_power_off(tphy, instance);
-> 
-> 	return 0;
-> }
-> 
-> ...it's two different PHY instances that we're dealing with, here :-)
+Hello!
 
-I didn't realize that it is handled separately. Thank you for clarifying!
+This is the third patch series with the goal of simplifying the MT7530 DSA
+subdriver and improving support for MT7530, MT7531, and the switch on the
+MT7988 SoC.
 
-Regards,
-Siddharth.
+I have done a simple ping test to confirm basic communication on all switch
+ports on MCM and standalone MT7530, and MT7531 switch with this patch
+series applied.
+
+MT7621 Unielec, MCM MT7530:
+
+rgmii-only-gmac0-mt7621-unielec-u7621-06-16m.dtb
+gmac0-and-gmac1-mt7621-unielec-u7621-06-16m.dtb
+
+tftpboot 0x80008000 mips-uzImage.bin; tftpboot 0x83000000 mips-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootm 0x80008000 0x83000000 0x83f00000
+
+MT7622 Bananapi, MT7531:
+
+gmac0-and-gmac1-mt7622-bananapi-bpi-r64.dtb
+
+tftpboot 0x40000000 arm64-Image; tftpboot 0x45000000 arm64-rootfs.cpio.uboot; tftpboot 0x4a000000 $dtb; booti 0x40000000 0x45000000 0x4a000000
+
+MT7623 Bananapi, standalone MT7530:
+
+rgmii-only-gmac0-mt7623n-bananapi-bpi-r2.dtb
+gmac0-and-gmac1-mt7623n-bananapi-bpi-r2.dtb
+
+tftpboot 0x80008000 arm-zImage; tftpboot 0x83000000 arm-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootz 0x80008000 0x83000000 0x83f00000
+
+This patch series is the continuation of the patch series linked below.
+
+https://lore.kernel.org/r/20230522121532.86610-1-arinc.unal@arinc9.com
+
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+Changes in v3:
+- Patch 8
+  - Explain properly the behaviour of setting link down on all ports at
+    setup.
+  - Split the changes for simplifying the link settings operations out to
+    another patch.
+- Link to v2: https://lore.kernel.org/r/20240216-for-netnext-mt7530-improvements-3-v2-0-094cae3ff23b@arinc9.com
+
+Changes in v2:
+- Patch 8
+  - Use a single mt7530_rmw() instead of two mt7530_clear() and
+    mt7530_set() commands.
+- Link to v1: https://lore.kernel.org/r/20240208-for-netnext-mt7530-improvements-3-v1-0-d7c1cfd502ca@arinc9.com
+
+---
+Arınç ÜNAL (9):
+      net: dsa: mt7530: remove .mac_port_config for MT7988 and make it optional
+      net: dsa: mt7530: set interrupt register only for MT7530
+      net: dsa: mt7530: do not use SW_PHY_RST to reset MT7531 switch
+      net: dsa: mt7530: get rid of useless error returns on phylink code path
+      net: dsa: mt7530: get rid of priv->info->cpu_port_config()
+      net: dsa: mt7530: get rid of mt753x_mac_config()
+      net: dsa: mt7530: put initialising PCS devices code back to original order
+      net: dsa: mt7530: sort link settings ops and force link down on all ports
+      net: dsa: mt7530: simplify link operations
+
+ drivers/net/dsa/mt7530.c | 259 ++++++++---------------------------------------
+ drivers/net/dsa/mt7530.h |  19 +---
+ 2 files changed, 47 insertions(+), 231 deletions(-)
+---
+base-commit: b6b614558ed5b2ca50edacc0f2fbf5f52158c86c
+change-id: 20240131-for-netnext-mt7530-improvements-3-a8ac49d4f7c2
+
+Best regards,
+-- 
+Arınç ÜNAL <arinc.unal@arinc9.com>
+
 
