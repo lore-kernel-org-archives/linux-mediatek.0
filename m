@@ -4,76 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED9B1C48BF6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Mar 2024 21:29:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35C08C48BF6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Mar 2024 21:30:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ueu/6JLu6V1sRM/DIHRQASjRIZis0cew/mqtKtyCxHg=; b=Cs9W7R9jUHmAA7fZp1DtSO6omI
-	40HUxlWRfIlVdBNVJ9Ek69/dvDsOVFHVLKHH4AONeDw64aA5yUS4BJ0wfhfjHAt7WrQhnJKwPWulA
-	zmQOZLiofvd1pbVNQS4uBuSo0EJu77UIKJmErx/Mlrd7VKgyj/p3/sIvlrbCkqGTZj0STl5C8n+He
-	WV2POuP45St0tuIqevPvLY8Re2EfFAbgmz5nM5fxeXUubX3/YP4y1nBD5DN8UVwT3AXSvdsXtbm4M
-	ra0uVGCXUIHP/QGU5ODejqEqpSsNGRL6EQp0HhH8+yVowRSEqPO7vhT9lqX2N/YqksLSa4AFDJEj2
-	/pMNZkVg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VkekcNUBMQj5wDEoO64O14NY8MI+HCEMoXgH3bnWZQo=; b=d7dEOHXZ4O7okeGU7C5PcYT5Ve
+	nwf2h+/CDNsNR5cMFaeBOLPxggGOsSwGUNphYBasoTpLgzJj0fEkWvmofO8qfp92TYv3n+dQ3VKnt
+	OoRGcp027ITRiN9581u5VE1W7mQ1SZCNvCtByt/xEI0ZNqMPpbFhSwZF/1G05QICiEj4QAf3nIo7m
+	o7KapW6KXNplNyMbAS9o2PsfqPkGa/955H1ulkPpOZGNl7LrAlanOADg3y1BZlqd1kLoplR9NN6OA
+	05aE8QkuUozLRPtjONK3syWqqbNdoYcUQFa3cAk1nITImubJZ3FmE8F8UemYXqHnszH5EC3tfNm1A
+	KKqh61yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhFs5-0000000Alz1-46Xc;
-	Mon, 04 Mar 2024 21:29:17 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1rhFtI-0000000AmYz-3R9p;
+	Mon, 04 Mar 2024 21:30:32 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhFry-0000000AlwB-2DpD
+	id 1rhFtF-0000000AmWo-1p3K
 	for linux-mediatek@lists.infradead.org;
-	Mon, 04 Mar 2024 21:29:12 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rhFrm-0002ha-4c; Mon, 04 Mar 2024 22:28:58 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rhFrj-004QhJ-Rw; Mon, 04 Mar 2024 22:28:55 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rhFrj-00H4uB-2S;
-	Mon, 04 Mar 2024 22:28:55 +0100
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Chanwoo Choi <cw00.choi@samsung.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	kernel@pengutronix.de,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	linux-sunxi@lists.linux.dev
-Subject: [PATCH 0/5] PM / devfreq: Convert to platform remove callback returning void
-Date: Mon,  4 Mar 2024 22:28:38 +0100
-Message-ID: <cover.1709587301.git.u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.43.0
+	Mon, 04 Mar 2024 21:30:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id F25D4611FC;
+	Mon,  4 Mar 2024 21:30:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 7155CC43330;
+	Mon,  4 Mar 2024 21:30:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1709587827;
+	bh=W27zYtNAsaurBFbAYeVJtWJ3xNO1se3Yby7vpbfIx2g=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=GKg6MDaw9KQctlTOAoYPW0xR33Wh575vjxUKNmIWsFhx1XVxU+wJFaUwzjcA2XwyE
+	 aqBeIWpeOYsUoagOetbysEWODn0JkZKaKfJbdKy9SJL2oa7kpN8rX1+IinMijUI1Q7
+	 dlfibqPUP/IjYBH0yfqT8986zMlBjWYlSYroYg/MtvpOV6wb5Kk7zUaTQBzAZ9ZIu4
+	 CRo9tqUSDAPLBSG++k/McODuy5qROJm4L33MTgk2fOJFvv5TezVMlzFEgj3yMW7Hws
+	 plzCUH+9/MjpGSfFO48kAgLWFeQF8oDssavLAkunTvje1VjMFBvgiNatWjA0Yqn6WT
+	 3gk8vCuVEC0dA==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 54421D9A4BB;
+	Mon,  4 Mar 2024 21:30:27 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1345; i=u.kleine-koenig@pengutronix.de; h=from:subject:message-id; bh=I8FrXbA0yYPCBU7whuLuGnZASBBwSsmETYGw/S5pQmY=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBl5j0HnQ9HbZZ2kPQg87lTw1l0aHXNyWwhnhsnF Ze2WEkKiWiJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZeY9BwAKCRCPgPtYfRL+ TpwtB/9gDVqajzBWr6Yq2hzHvcBIPncZICpIow1WLn3frJrifgVnMYr8KCoL2Syo+Wp1V/UkKLo Ys1yqZP7AnZh6IKp78Npuk7YMFgidKtO3Vhx+zzIirOxSTs1tGnhmaYy2SFs6NGUjQsIZGg8FSm b/PPvk0shfxxxVbfryhvsZLHJ+VXY7kyZgZpsv4YlbPRJRuadTF9GyZskOy542wl5jvE0F9UI/X XeoQIioJNbpQWlflc3xqke4/O83jhaQs8b0ofFGKNZ5Ei6btSXes5WNOHP3tM1EOU8rkPm794OA 6xJ96LXSxqWLgYXcg6lHBlIttaq6IRp40Rau9hrup3/gPFLE
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] [PATCH] Bluetooth: btusb: Add support Mediatek MT7920
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <170958782734.29902.13888163732970633114.git-patchwork-notify@kernel.org>
+Date: Mon, 04 Mar 2024 21:30:27 +0000
+References: <20240304144844.2042-1-peter.tsao@mediatek.com>
+In-Reply-To: <20240304144844.2042-1-peter.tsao@mediatek.com>
+To: Peter Tsao <peter.tsao@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ sean.wang@mediatek.com, deren.Wu@mediatek.com, chris.lu@mediatek.com,
+ aaron.hou@mediatek.com, steve.lee@mediatek.com,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240304_132910_580497_86CBF0DE 
-X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-CacheID: sfid-20240304_133029_537273_D80BB1A8 
+X-CRM114-Status: UNSURE (   9.52  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,39 +78,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+Hello:
 
-this series converts all drivers below drivers/devfreq to struct
-platform_driver::remove_new(). See commit 5c5a7680e67b ("platform: Provide a
-remove callback that returns no value") for an extended explanation and the
-eventual goal.
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-All conversations are trivial, because their .remove() callbacks
-returned zero unconditionally.
+On Mon, 4 Mar 2024 22:48:44 +0800 you wrote:
+> This patch is added support Mediatek MT7920
+> The firmware location of MT7920 will set to
+> /lib/firmware/mediatek/
+> 
+> The information in /sys/kernel/debug/usb/devices about MT7920U
+> Bluetooth device is listed as the below
+> 
+> [...]
 
-There are no interdependencies between these patches, so they could be
-picked up individually. But I'd hope that they get picked up all
-together by the devfreq maintainers.
+Here is the summary with links:
+  - Bluetooth: btusb: Add support Mediatek MT7920
+    https://git.kernel.org/bluetooth/bluetooth-next/c/2ea671b17896
 
-Best regards
-Uwe
-
-Uwe Kleine-König (5):
-  PM / devfreq: exynos-nocp: Convert to platform remove callback returning void
-  PM / devfreq: exynos-ppmu: Convert to platform remove callback returning void
-  PM / devfreq: mtk-cci: Convert to platform remove callback returning void
-  PM / devfreq: rk3399_dmc: Convert to platform remove callback returning void
-  PM / devfreq: sun8i-a33-mbus: Convert to platform remove callback returning void
-
- drivers/devfreq/event/exynos-nocp.c | 6 ++----
- drivers/devfreq/event/exynos-ppmu.c | 6 ++----
- drivers/devfreq/mtk-cci-devfreq.c   | 6 ++----
- drivers/devfreq/rk3399_dmc.c        | 6 ++----
- drivers/devfreq/sun8i-a33-mbus.c    | 6 ++----
- 5 files changed, 10 insertions(+), 20 deletions(-)
-
-base-commit: 67908bf6954b7635d33760ff6dfc189fc26ccc89
+You are awesome, thank you!
 -- 
-2.43.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
