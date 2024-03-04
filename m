@@ -4,176 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 045D5C48BF6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Mar 2024 16:15:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A96FEC5478C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Mar 2024 16:46:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wYhchrZlT6HJeC6nOzMlZmR21VqXny3Hs3ad695beXM=; b=TMfwq19YpN8SYKl751U4y0gQo0
-	NX2Ftotx6wX4W4YC3ReXVLxeohBjVFgJ7mIFkgA47emqOI0Sw2cjUqem148dLn8fE9dVTdi/5Tx2H
-	ae8fBz2GFKQ2n4tDZAU4ib9RCDcR2GeTcTBNzcBE/VIWVQR0+mHEf1Cc6BtUW6HCo28NUevAVVoK3
-	qkalAut9CXeX9I2qwpoQKZunafGKCOrR7iU7YjYNNNuoONiP2PY4OXA+LeD5NutjLVkC7NnvJb8Zf
-	G8vIw1yQBt/Pv2EM+QdcDCbVrzU4cbCu8DIknmZzI3/1Cbsn1nHY9+NPXqmr6QBOzh8XtfdKLf8tI
-	Zxhw84WQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DM0j3vZth8wUkFdIp7pDbg9rCL+atUFScO9LcM5/4io=; b=amHee+eZADDrkEPahfD1TV6IpC
+	TjD4zVlUL0RwMd7y5Ll2A0FHzfGUQB27ipoxL+oMCPFXiIwOcns+1NdMOiJN1VnVBxb1mccfj7NKH
+	ag+3QzSKYFOcPHvGu5PlI0V4BZJqiJ/oBnAIAIRbIPjunu2VjztTUSuCpe8CKhTtDfVzMWuLSVpka
+	i4c3bKnKxd6pjyBWJ7yY3Oxd6MIr+642yvsBOvqiWcJJgtIAcpJe8N4C2UwuvfelggiczTRkba4mt
+	shnIJQlDgjUfI5jmOp08ucl/sjA5dXiovr39pOUNmOcuWGzEHaufgSb5B5kuOU9soBDDs1asWojlO
+	lh8jd4vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhAyl-00000009mo3-1UZV;
-	Mon, 04 Mar 2024 16:15:51 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rhBSU-00000009sbJ-2vMf;
+	Mon, 04 Mar 2024 16:46:34 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhAyh-00000009mlS-3uW9;
-	Mon, 04 Mar 2024 16:15:49 +0000
-X-UUID: 715d0dd0da4211eea02f8f741df46c3e-20240304
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=wYhchrZlT6HJeC6nOzMlZmR21VqXny3Hs3ad695beXM=;
-	b=idSkj+3o5NqHaMtW9x3RLHaTaKVksFMRBQhsDgypsgXnxRYlj/HXA+epVVP7U7BNKN/cdBYDeEznJe3z7d+etLW0hjRL/OpTdBePEbVcp9DV8bw7LieGktSvW4uRt5nXiLy5gS1iU3kqAVnedqx+ItYa45bsVTxQf/i39Xns1fQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:5255e789-dd12-4785-b0a2-9c74f1ffe4e1,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:4faa7dff-c16b-4159-a099-3b9d0558e447,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 715d0dd0da4211eea02f8f741df46c3e-20240304
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1632113289; Mon, 04 Mar 2024 09:15:39 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 5 Mar 2024 00:05:02 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 5 Mar 2024 00:05:02 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ZbzN13RffaNK7HcOOvbsljZtP8RKcI+OPRuzjbzYQ2M3V5+Gzbz5rMLJt/Q5KHs696mYA6ELRSBdetGC+0uZjo+vccnqYeFk3RIsEnxUSkTpk7j5QTzRBWBjwFDcjqPrHtH0x4lzp3Xjt5yiZdv6hg+yqZhhfkMN9il+u3Eg2+Pr0GmvnbSDMr8wJhtO6gtF5L0PknFpw0XuQJuTyE/YMjPcwLKHFytdZPiRBlPQ1HhdWYsawDV4xSzpiBDQ2MQ7C5klnlyCgf78gst2PrM0R8sFg0ytc534aIUmlrn+b2JefW4Co0dc71oxB87kYBlCYNELOPSG2M5PahGsrXU6eg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=wYhchrZlT6HJeC6nOzMlZmR21VqXny3Hs3ad695beXM=;
- b=SAIn57za5Vp+6YiRIRg/Dl/AGfbDQYIfHcFMEfrUJSj1F2BAmG3LhYkmCzS7Vt+eN0ZYh3ByzRNdaI+pL6uTECmR3EXlASkfZtvi2W+MZ9StfT5e7HxnlYtT6XvVgIOWLgOYoYZDOFuoeH1j0OOalTuzAdIKFGtySuOZyeXEY/GvH6sVYwAuBIbW1dhhpy0U6V3mag0RPbHg2HD1rl0zFmOj5VGuIfbKW8AqhkN60C2Gh5mAWNIugKD1uj2lXN0Id4dVLykh7TqGUxeKL+CX1+S5iEzTJIcKU5SOSY2hTM5sDp6XM4m1mmOtNmcfBd2Kptz/i/U8PD7ggHpcb++ncQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wYhchrZlT6HJeC6nOzMlZmR21VqXny3Hs3ad695beXM=;
- b=DXT8sVI2mjWBBZ8o6pMfHT2O/rT2HdXqwPCNYdyqHW14vGFV/nQxgd+yTeslLcFRABC3Nt2jSBY51rsUxkBtjwmbzq3URvaxSBMBzaQf2927L5OFTLuY1AazhFQjkO9+rjbjjU8uLGdkZG4sSDx2cpJ6lDn1FDQ34Qfump49Zpo=
-Received: from SEYPR03MB7682.apcprd03.prod.outlook.com (2603:1096:101:149::11)
- by SI2PR03MB6860.apcprd03.prod.outlook.com (2603:1096:4:1f9::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7339.39; Mon, 4 Mar
- 2024 16:04:59 +0000
-Received: from SEYPR03MB7682.apcprd03.prod.outlook.com
- ([fe80::bc7c:deed:ae:ed4c]) by SEYPR03MB7682.apcprd03.prod.outlook.com
- ([fe80::bc7c:deed:ae:ed4c%4]) with mapi id 15.20.7339.033; Mon, 4 Mar 2024
- 16:04:59 +0000
-From: =?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
-To: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
-	"jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "chunkuang.hu@kernel.org"
-	<chunkuang.hu@kernel.org>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
-	=?utf-8?B?SmFzb24tY2ggQ2hlbiAo6Zmz5bu66LGqKQ==?=
-	<Jason-ch.Chen@mediatek.com>, =?utf-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?=
-	<Shawn.Sung@mediatek.com>, =?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?=
-	<Nancy.Lin@mediatek.com>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-Subject: Re: [RESEND, PATCH 3/5] soc: mediatek: mtk-cmdq: Add
- cmdq_pkt_poll_addr() function
-Thread-Topic: [RESEND, PATCH 3/5] soc: mediatek: mtk-cmdq: Add
- cmdq_pkt_poll_addr() function
-Thread-Index: AQHaa+cLJ6J47YqzE0edY2v/hhyrU7Em65gAgADYAYA=
-Date: Mon, 4 Mar 2024 16:04:59 +0000
-Message-ID: <ec598de2d5012206fe3c3335bfede85100c8f7c5.camel@mediatek.com>
-References: <20240301144403.2977-1-jason-jh.lin@mediatek.com>
-	 <20240301144403.2977-4-jason-jh.lin@mediatek.com>
-	 <d33fc25f014785d21ff7bac3f00a48e7621b810e.camel@mediatek.com>
-In-Reply-To: <d33fc25f014785d21ff7bac3f00a48e7621b810e.camel@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEYPR03MB7682:EE_|SI2PR03MB6860:EE_
-x-ms-office365-filtering-correlation-id: 9ff4a9f7-b442-49de-08d3-08dc3c64d792
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: y3g+IJTQpsdESmeS6kykldeSQIpYaoZy5T1ryo3XmH2Z51eCcA41nFZIzRToDExexlt2XmOGrZftr9VcybNhA1nJwagkbfDRc0vQ50Q5CXxIXSiGdNRFDpg1c7/5jbH3pcIEubpzB7ZBBBx3DuIvTfTA2Qu/I5IX+Ppfl1v9hAHPUQGamOu0ba1v0ASOLIommzEK6ltTTNtpgt23X4q+9CFsFL94dqfoCVOgH0BlTUiUPnhhg5E1e7Wlxv4uXgSXCddQKzbEqN8mQiAvlM9bZzMLu42x80DPTNjavw6uvNI7YwsIU+vs+CJ0KlkMXwPNUK70hd4MVr7SQ+flCyrxZMh6v9K1QyxPNLBV3rRTiUV73CqV5Sp9cI+oFvh5q9wiwW7q0Mt3l023NYgEuQWNPAtaK09pyFfVuLzmI/r60N2PsDpkYnSAv61rtujFrF7bp0UZiwTt8dDddbbGHlnLbq1qru2a2z1q2mKzCZKjrjB7wKahB2RSFdBkcJYFvuMFP1FfZF8IfoNNmAE95KR9YlK/G/Ah6RDJNAyguBBaELEmBu+3VBBdTn6gg8bNklvpnGC8oknAB5zsSezAZQF39mg712eVXeZxyAvCGgZUrFxVmB3s3XVV24Yo8Hz+GUPH2aR2zGASVbzPzjjGBzyZvsABabXpwKHg84RaADYojCMeQ/PnDsP6ilaPv1iF63LKikrmZWI4PrRNE2sag4lEw+l6QQheUGpJBT7q4/M0BEU=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEYPR03MB7682.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376005)(38070700009);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?bEZ4MlBEck1RY2VPZ2lxVjFQK0s1TUFpdDUzSk5SNUxabTdsZnNKcEZhd2wy?=
- =?utf-8?B?bHdFMWZRRXlROFIzYnhLUDl4Zis4a3ROWlo0QkVuS2dlTnFtTTNvWVBwL2RS?=
- =?utf-8?B?bTBZZHVXREd0N2M2YjBTd1FQaW9rT2VTWkZxSVJId0N5TUs2Rll4cXlueVg1?=
- =?utf-8?B?a1hSRTJtRzN3b3ZMd1FRNjd0c2tqWnFuTG9GTFlNOEhwOGdoWnpjSlk4TUJm?=
- =?utf-8?B?NFJYRnFaUVZwWm1hL3lnN3ZhbHZVYTVSK2JPRzQ2bGMzT1J2L0VLeE91dHZF?=
- =?utf-8?B?dkVZZ2xINXo1ekNqdXJIdy9jc25sbFFCUStIN0NsUVJPT1pwRUpPL3FrTm4w?=
- =?utf-8?B?MjV2c2VOWnZIVmE2ZUtVRGNzN2x1TmVyNUtFMFNxSEtucVVzcHczWFZPWVVt?=
- =?utf-8?B?SE9pVlpjOGJpRGlEM2dUVFJWK2E4eUtLc29TN003dmEvOUp5TWZ6UkNKakt5?=
- =?utf-8?B?OVEvZWV4bS8rMGZKcTFyamtSUkh3ckNUb1p5UkFUdks5UzV6elcrcXhIRTRW?=
- =?utf-8?B?dFpGdmR6Z3Q0ZENDTFVQSUVuMWg3L3BlK0c2aXhYQXB6S0lDZXRiOHdHWGJK?=
- =?utf-8?B?WlUraWtBRTExbzRISlowNWtYZmF6V1dZYVpzdDAySDR3ZW13aFFOakw4T3RB?=
- =?utf-8?B?ZWtJdFRZY1lSeWNOTCthc3NlSnRJT0pLSGM2c09VR0lvU3ZTSktQUDJ4LzJ1?=
- =?utf-8?B?TXNSNnJPaDFXZStaMy9TKzFvQkxnVTFCTW9kNDIxUm5uNEMyL2wzcVVleHlD?=
- =?utf-8?B?dU9rVVdCNElpbzhTQkh3ZXNycUFyYnFrR0JvdDRDRTJOUUJMWTFwUm9WZDZv?=
- =?utf-8?B?T0h0VVlQRDJFNE03NU9KVFNDMWJUWGh6alE4bjVkSVhNejZ3TUFxamhjYVl5?=
- =?utf-8?B?dWQ0YXFldmczbkdnZjZCajh3cVRkVmRhb211L1pqZlFlQ2gzVktwVHpHTHpl?=
- =?utf-8?B?TTBDYTBNblF0YXM0ZG1iL1o0czdPdUZyVXRSL09MRFMvc1RDS1YyZk8vMFY2?=
- =?utf-8?B?T2hsbU5ZdDlQQ0lXbW9GcGMxTHgvMXlnWmxDekk5S1ZOZkxwT3RVWUc1RGxS?=
- =?utf-8?B?bHF2V0NXOHFwZDc5SENPcE05VDU2dk9DTlBnUHNqcDB3RXU5OGZJRWg1K3NH?=
- =?utf-8?B?c1dzdVNMSVFzR25zNHk2anhEaWFQR2c2bCtmTjJSdFhnanVvOGUzZjNTNXkw?=
- =?utf-8?B?elE5WTJuUGhuUmpKbWs2bTRNcFFWcmNWV0dRU2xUVFVURE9TNnEveXVGQ1F4?=
- =?utf-8?B?ZVQ1eGJ6dmlEaUJkVERUN2NxZ1ZGZFVvRG5WNEd0dHhKWEZvcWh6TzYvVVVT?=
- =?utf-8?B?VFRCb2pNYmlNem1DWE5kU3VpZVE1d3FWZ1Y5VkQ2TFNkYkpZakFCZ24rUFAw?=
- =?utf-8?B?MFMzNjlwMHE0bnhSOE5rY1ZPemNoSlZtekhmU1NLbTBWa0xhZXoyV0JpNHo5?=
- =?utf-8?B?VkdES3BYbFVvTGRjVjYxd0VFV2Y1VXEzSEhnQnpuL0RWQjZIR2dnMUtlUytp?=
- =?utf-8?B?Z1c2aDJTY21tMmJ4SVpRbzBCaGdqNnltN255YjBaZ0pzYXZjL0xqK1dmN2gw?=
- =?utf-8?B?N0FTS3gzU0EwblZuWEVvaDNYR21jYXFpOXQ3cXl1NVRlTU4rTGgvQ01SVU1T?=
- =?utf-8?B?TC9zTmpic0J3NURmMk55WmlYNDVmMmtJSDdvUERsbzV3bWY5cnlzU1NjS2g5?=
- =?utf-8?B?dlBjQVlEQWpIQ1V0cHNxUWZuOFpWdmpHbmk4a3BkWSs4bXlMNEp2dlovUHlq?=
- =?utf-8?B?RkFzSHIybmNoL2hJMGJmdStTZ3l0T3pFK3JYdTA2dXNhcG8wZ1ZrdWV2dlh0?=
- =?utf-8?B?aFN1R1E0VzVKNTYwYUVBNyszNWl5bE5jUmJtWGVQTy9YcFN2UkNucUJZa1JT?=
- =?utf-8?B?dzJ0VDEyM1o0MTdpUDBBckVwQmQ0UVN5WDRxQldyZ0pJS0VoTGIwcG9DVDJ3?=
- =?utf-8?B?ZkxwUEJjMys0eEJLb2RlbWZiK2JBT2VNS21Xam40SS8vOGRuVHphN0dRd1VX?=
- =?utf-8?B?RXNZejlwU211WDNLU0lwaWR4bGNIS0I5YzRyWVF0MCs1OWVObGZCcTB1RUJr?=
- =?utf-8?B?VWJGS0Y2OVdQTURrTDJUN2JGKzNneUkxWTh6bFh5bTlEM2hOYW9NeXY2UUVl?=
- =?utf-8?B?ZlBURERTVnlMR2lDbTdySDB2WUdCam9hWmdQWmZqQlVSQ3BYNmx3NHVTVVEx?=
- =?utf-8?B?clE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <BB309F0EEA130F48840A5FB4577E40E0@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1rhBSR-00000009sYa-0itm;
+	Mon, 04 Mar 2024 16:46:33 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 424GfV1B008684;
+	Mon, 4 Mar 2024 16:46:12 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	message-id:date:mime-version:subject:to:cc:references:from
+	:in-reply-to:content-type:content-transfer-encoding; s=
+	qcppdkim1; bh=DM0j3vZth8wUkFdIp7pDbg9rCL+atUFScO9LcM5/4io=; b=eY
+	JE78iWYar1X4XX4MHFatTACXD1Q2aNeXDIdm7AdoWtbj75pZfifvbijjbYIt9jMH
+	m8jJ+WgBtsFtfi9dJ5RrTYFTLxpmnbbCMFEzk29uQWOyysN3SqSg5LE0oyzxSLsu
+	60admCrQY4n2yZMwkalQUiKf3rLzh9q06mjyGWiK7myO158E6xjOMzcGMoD3YIvi
+	NB7d4OgtiCK30/JY4yiUmmLwPw2NNqGwfwgC08CgyoH6H3ehSkOscM/ZSiZp7v3b
+	pR3hl9/pt+FLZSCasTtuH5rET5QG3VxGIlYeLT1XrhMnG7ABZIPWfDovPSXKD1Fb
+	98gdpRTuWMFdMfhZh+VQ==
+Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3wnarj10b3-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 04 Mar 2024 16:46:12 +0000 (GMT)
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
+	by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 424GkBlZ004937
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 4 Mar 2024 16:46:11 GMT
+Received: from [10.216.35.58] (10.80.80.8) by nasanex01c.na.qualcomm.com
+ (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Mon, 4 Mar
+ 2024 08:45:59 -0800
+Message-ID: <4b0c0b57-7c74-cd17-cd48-03c50409b853@quicinc.com>
+Date: Mon, 4 Mar 2024 22:15:55 +0530
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SEYPR03MB7682.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9ff4a9f7-b442-49de-08d3-08dc3c64d792
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Mar 2024 16:04:59.0384
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: zwSl8FniwHwh+J9XWx94ovpcC+n7gQdP12APlacQcqA8y+s8Js3nDjJwGCGMM1q1vN6NvdqVb2elPi4ZWjefUJrji0fNagrrpaIHx3WXvLY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB6860
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v8 00/10] Add Qualcomm APSS Minidump driver related
+ support
+Content-Language: en-US
+To: <corbet@lwn.net>, <andersson@kernel.org>, <konrad.dybcio@linaro.org>,
+        <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+        <conor+dt@kernel.org>, <keescook@chromium.org>, <tony.luck@intel.com>,
+        <gpiccoli@igalia.com>, <mathieu.poirier@linaro.org>, <vigneshr@ti.com>,
+        <nm@ti.com>, <matthias.bgg@gmail.com>, <kgene@kernel.org>,
+        <alim.akhtar@samsung.com>, <bmasney@redhat.com>
+CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-msm@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
+        <linux-remoteproc@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>,
+        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
+References: <20240131110837.14218-1-quic_mojha@quicinc.com>
+From: Mukesh Ojha <quic_mojha@quicinc.com>
+In-Reply-To: <20240131110837.14218-1-quic_mojha@quicinc.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: EGPeKdMxZdhVZnXpvCR1wLK5P2ptaGz1
+X-Proofpoint-GUID: EGPeKdMxZdhVZnXpvCR1wLK5P2ptaGz1
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-03-04_12,2024-03-04_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxlogscore=999 adultscore=0
+ spamscore=0 impostorscore=0 mlxscore=0 malwarescore=0 phishscore=0
+ suspectscore=0 bulkscore=0 priorityscore=1501 clxscore=1011
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2402120000 definitions=main-2403040128
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240304_081548_031430_13FBC85B 
-X-CRM114-Status: GOOD (  35.90  )
+X-CRM114-CacheID: sfid-20240304_084631_273516_6F384540 
+X-CRM114-Status: GOOD (  46.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -188,65 +108,210 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQ0ssDQoNClRoYW5rcyBmb3IgdGhlIHJldmlld3MuDQoNCk9uIE1vbiwgMjAyNC0wMy0wNCBh
-dCAwMzoxMSArMDAwMCwgQ0sgSHUgKOiDoeS/iuWFiSkgd3JvdGU6DQo+IEhpLCBKYXNvbjoNCj4g
-DQo+IE9uIEZyaSwgMjAyNC0wMy0wMSBhdCAyMjo0NCArMDgwMCwgSmFzb24tSkguTGluIHdyb3Rl
-Og0KPiA+IEFkZCBjbWRxX3BrdF9wb2xsX2FkZHIgZnVuY3Rpb24gdG8gc3VwcG9ydCBDTURRIHVz
-ZXIgbWFraW5nDQo+ID4gYW4gaW5zdHJ1Y3Rpb24gZm9yIHBvbGxpbmcgYSBzcGVjaWZpYyBhZGRy
-ZXNzIG9mIGhhcmR3YXJlIHJpZ3N0ZXINCj4gPiB0byBjaGVjayB0aGUgdmFsdWUgd2l0aCBvciB3
-aXRob3V0IG1hc2suDQo+ID4gDQo+ID4gUE9MTCBpcyBhbiBvbGQgb3BlcmF0aW9uIGluIEdDRSwg
-c28gaXQgZG9lcyBub3Qgc3VwcG9ydCBTUFIgYW5kDQo+ID4gQ01EUV9DT0RFX0xPR0lDLiBDTURR
-IHVzZXJzIG5lZWQgdG8gdXNlIEdQUiBhbmQgQ01EUV9DT0RFX01BU0sNCj4gPiB0byBtb3ZlIHBv
-bGxpbmcgcmVnaXN0ZXIgYWRkcmVzcyB0byBHUFIgdG8gbWFrZSBhbiBpbnN0cnVjdGlvbi4NCj4g
-PiBUaGlzIHdpbGwgYmUgZG9uZSBpbiBjbWRxX3BrdF9wb2xsX2FkZHIoKS4NCj4gPiANCj4gPiBT
-aWduZWQtb2ZmLWJ5OiBKYXNvbi1KSC5MaW4gPGphc29uLWpoLmxpbkBtZWRpYXRlay5jb20+DQo+
-ID4gLS0tDQo+ID4gIGRyaXZlcnMvc29jL21lZGlhdGVrL210ay1jbWRxLWhlbHBlci5jIHwgMzgN
-Cj4gPiArKysrKysrKysrKysrKysrKysrKysrKysrKw0KPiA+ICBpbmNsdWRlL2xpbnV4L3NvYy9t
-ZWRpYXRlay9tdGstY21kcS5oICB8IDE2ICsrKysrKysrKysrDQo+ID4gIDIgZmlsZXMgY2hhbmdl
-ZCwgNTQgaW5zZXJ0aW9ucygrKQ0KPiA+IA0KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3NvYy9t
-ZWRpYXRlay9tdGstY21kcS1oZWxwZXIuYw0KPiA+IGIvZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRr
-LWNtZHEtaGVscGVyLmMNCj4gPiBpbmRleCAzYTFlNDdhZDhhNDEuLjJlOWZjOWJiMTE4MyAxMDA2
-NDQNCj4gPiAtLS0gYS9kcml2ZXJzL3NvYy9tZWRpYXRlay9tdGstY21kcS1oZWxwZXIuYw0KPiA+
-ICsrKyBiL2RyaXZlcnMvc29jL21lZGlhdGVrL210ay1jbWRxLWhlbHBlci5jDQo+ID4gQEAgLTEy
-LDYgKzEyLDcgQEANCj4gPiAgDQo+ID4gICNkZWZpbmUgQ01EUV9XUklURV9FTkFCTEVfTUFTSwlC
-SVQoMCkNCj4gPiAgI2RlZmluZSBDTURRX1BPTExfRU5BQkxFX01BU0sJQklUKDApDQo+ID4gKyNk
-ZWZpbmUgQ01EUV9QT0xMX0hJR0hfQUREUl9HUFIJKDE0KQ0KPiANCj4gSSB0aGluayB0aGVyZSBh
-cmUgbXVsdGlwbGUgR1BSIGFuZCB5b3UgdXNlICMxNCB0byBzdG9yZSBoaWdoIGFkZHIuIEkNCj4g
-d291bGQgbGlrZSB5b3UgdG8gbGlzdCBhbGwgR1BSIGFuZCBkbyBub3QgbGltaXQgdGhlIHVzYWdl
-IG9mIGVhY2gNCj4gR1BSLg0KPiBUaGUgcXVlc3Rpb24gaXMsIHdoeSBsaW1pdCAjMTQgdG8gYmUg
-aGlnaCBhZGRyPyBJZiB0aGUgR1BSIGlzIHNoYXJlZA0KPiBieQ0KPiBhbGwgdGhyZWFkcywgdGhl
-cmUgc2hvdWxkIGJlIGEgbWVjaGFuaXNtIHRvIG1hbmFnZSBHUFIgdXNhZ2UgZm9yDQo+IGNsaWVu
-dA0KPiBkcml2ZXIgdG8gYWxsb2NhdGUvZnJlZSBHUFIuDQoNClllcywgdGhlcmUgYXJlIDE2IEdQ
-UiwgZnJvbSBHUFJfUjAgfiBHUFJfUjE1IGFuZCB0aGV5IGFyZSBzaGFyZWQgYnkgYWxsDQp0aHJl
-YWRzLCBidXQgR1BSX1IwIGFuZCBHUFJfUjEgaXMgdXNlZCBieSBHQ0UgSFcgaXRzZWxmLg0KDQpJ
-IHRoaW5rIHVzZXIgbWF5IG5vdCBrbm93IHdoaWNoIEdQUiBpcyBhdmFpbGFibGUsIHNvIEkgdGhp
-bmsgQ01EUQ0KZHJpdmVyIHNob3VsZCBtYW5hZ2UgdGhlIHVzYWdlIG9mIEdQUiBpbnN0ZWFkIG9m
-IGNvbmZpZ3VyZSBieSB0aGUgdXNlci4NCg0KQ3VycmVudGx5LCB3ZSBvbmx5IHVzZSAxIGRlZGlj
-YXRlZCBHUFIgaW4gcG9sbCwgc28gSSBkZWZpbmVkIGl0IGluIENNRFENCmRyaXZlciB0byBtYWtl
-IGl0IHNpbXBsZXIuDQoNCj4gDQo+ID4gICNkZWZpbmUgQ01EUV9FT0NfSVJRX0VOCQlCSVQoMCkN
-Cj4gPiAgI2RlZmluZSBDTURRX1JFR19UWVBFCQkxDQo+ID4gICNkZWZpbmUgQ01EUV9KVU1QX1JF
-TEFUSVZFCTENCj4gPiBAQCAtNDA2LDYgKzQwNyw0MyBAQCBpbnQgY21kcV9wa3RfcG9sbF9tYXNr
-KHN0cnVjdCBjbWRxX3BrdCAqcGt0LA0KPiA+IHU4DQo+ID4gc3Vic3lzLA0KPiA+ICB9DQo+ID4g
-IEVYUE9SVF9TWU1CT0woY21kcV9wa3RfcG9sbF9tYXNrKTsNCj4gPiAgDQo+ID4gK2ludCBjbWRx
-X3BrdF9wb2xsX2FkZHIoc3RydWN0IGNtZHFfcGt0ICpwa3QsIGRtYV9hZGRyX3QgYWRkciwgdTMy
-DQo+ID4gdmFsdWUsIHUzMiBtYXNrKQ0KPiA+ICt7DQo+ID4gKwlzdHJ1Y3QgY21kcV9pbnN0cnVj
-dGlvbiBpbnN0ID0geyB7MH0gfTsNCj4gPiArCWludCBlcnI7DQo+ID4gKwl1OCB1c2VfbWFzayA9
-IDA7DQo+ID4gKw0KPiA+ICsJaWYgKG1hc2sgIT0gVTMyX01BWCkgew0KPiA+ICsJCWluc3Qub3Ag
-PSBDTURRX0NPREVfTUFTSzsNCj4gPiArCQlpbnN0Lm1hc2sgPSB+bWFzazsNCj4gPiArCQllcnIg
-PSBjbWRxX3BrdF9hcHBlbmRfY29tbWFuZChwa3QsIGluc3QpOw0KPiA+ICsJCWlmIChlcnIgIT0g
-MCkNCj4gPiArCQkJcmV0dXJuIGVycjsNCj4gPiArCQl1c2VfbWFzayA9IENNRFFfUE9MTF9FTkFC
-TEVfTUFTSzsNCj4gPiArCX0NCj4gPiArDQo+ID4gKwkvKg0KPiA+ICsJICogUE9MTCBpcyBhbiBv
-bGQgb3BlcmF0aW9uIGluIEdDRSBhbmQgaXQgZG9lcyBub3Qgc3VwcG9ydCBTUFINCj4gPiBhbmQg
-Q01EUV9DT0RFX0xPR0lDLA0KPiA+ICsJICogc28gaXQgY2FuIG5vdCB1c2UgY21kcV9wa3RfYXNz
-aWduIHRvIGtlZXAgcG9sbGluZyByZWdpc3Rlcg0KPiA+IGFkZHJlc3MgdG8gU1BSLg0KPiA+ICsJ
-ICogSXQgbmVlZHMgdG8gdXNlIEdQUiBhbmQgQ01EUV9DT0RFX01BU0sgdG8gbW92ZSBwb2xsaW5n
-DQo+ID4gcmVnaXN0ZXIgYWRkcmVzcyB0byBHUFIuDQo+ID4gKwkgKi8NCj4gPiArCWluc3Qub3Ag
-PSBDTURRX0NPREVfTUFTSzsNCj4gPiArCWluc3QuZHN0X3QgPSBDTURRX1JFR19UWVBFOw0KPiA+
-ICsJaW5zdC5zb3AgPSBDTURRX1BPTExfSElHSF9BRERSX0dQUjsNCj4gPiArCWluc3QubWFzayA9
-IGFkZHI7DQo+IA0KPiBUaGlzIGlzIGZ1bGwgYWRkcmVzcywgbm90IGhpZ2ggYWRkcmVzcy4gV2h5
-IG5hbWUgdGhlIEdQUiB0bw0KPiBDTURRX1BPTExfSElHSF9BRERSX0dQUj8NCj4gDQpNeSBtaXN0
-YWtlLCBJJ2xsIHJlbW92ZSB0aGF0ICdISUdIJyB3b3JkLg0KDQo+IFRoZSBhZGRyIGlzIG5vdCBt
-YXNrLCBzbyBJIHdvdWxkIGxpa2UgaW5zdC52YWx1ZSA9IGFkZHIuDQoNCk9LLCBJJ2xsIGNoYW5n
-ZSBpdC4NCg0KUmVnYXJkcywNCkphc29uLUpILkxpbg0KDQo+IA0KPiBSZWdhcmRzLA0KPiBDSw0K
-PiANCg==
+I would really appreciate if i get review on this series..
+Thank you..
+
+-Mukesh
+
+On 1/31/2024 4:38 PM, Mukesh Ojha wrote:
+> Abstract and PDF here:
+> https://lpc.events/event/17/contributions/1468/
+> 
+> Video:
+> https://www.youtube.com/watch?v=3vL3gtAu84s
+> 
+> Patch 1 deals in detail documentation on minidump.
+> Patch 2-4 refactors minidump existing layout and separate it from remoteproc files.
+> Patch 6 is the Qualcomm APSS minidump driver.
+> Patch 7-10 Enable support to reserve dynamic ramoops and the support to
+>    register ramoops region with minidump.
+> 
+> Detail about Minidump is discussed in documentation patch (1/10) and also briefly
+> discussed after below changelog.
+> 
+> Changes in v8:
+>   - Addressed documentation comment made by Randy Dunlap.
+>   - Rebased on linux-next tag next-20240130
+> 
+> Changes in v7:
+>   - Addressed comment made by [Pavan.K] to use generic notifiers.
+>   - Addresses comment made on Dynamic ramoops about error handling.
+>   - Significant change minidump documentation suggested by [Bryan O'Donoghue]
+>   - Added Reviewed by from [Bagas]
+>   - Renamed ramoops notifiers.
+> 
+> Changes in v6: https://lore.kernel.org/lkml/1700864395-1479-1-git-send-email-quic_mojha@quicinc.com/
+>   - Accumalated the feedback received on v5 and rebase v5 versions in v6.
+>   - Removed the exported function as there is no current users of them.
+>   - Applied [Pavan.K] suggestion on caller/callee placement of dynamic ramoops reserve memory.
+>   - Addressed [krzysztof] comment on sizeof() and to have qcom_apss_md_table_exit().
+>   - Addressed [Bagas.S] comment on minidump doc.
+>   - Tried to implement [Kees] suggestion in slight different way with callback registration
+>     with ramoops instead of pstore core.
+> 
+> Change in rebase v5: https://lore.kernel.org/lkml/1694429639-21484-1-git-send-email-quic_mojha@quicinc.com/
+>   - Rebased it on latest tag available on linux-next
+>   - Added missed Poovendhan sign-off on 15/17 and tested-by tag from
+>     Kathiravan. Thanks to him for testing and reminding me of missing sign-off.
+> 
+> Changes in v5: https://lore.kernel.org/lkml/1694290578-17733-1-git-send-email-quic_mojha@quicinc.com/
+>   - On suggestion from Pavan.k, to have single function call for minidump collection
+>     from remoteproc driver, separated the logic to have separate minidump file called
+>     qcom_rproc_minidump.c and also renamed the function from qcom_minidump() to
+>     qcom_rproc_minidump(); however, dropped his suggestion about rework on lazy deletion
+>     during region unregister in this series, will pursue it in next series.
+> 
+>   - To simplify the minidump driver, removed the complication for frontend and different
+>     backend from Greg suggestion, will pursue this once main driver gets mainlined.
+> 
+>   - Move the dynamic ramoops region allocation from Device tree approach to command line
+>     approch with the introduction command line parsing and memblock reservation during
+>     early boot up; Not added documentation about it yet, will add if it gets positive
+>     response.
+> 
+>   - Exporting linux banner from kernel to make minidump build also as module, however,
+>     minidump is a debug module and should be kernel built to get most debug information
+>     from kernel.
+> 
+>   - Tried to address comments given on dload patch series.
+> 
+> Changes in v4: https://lore.kernel.org/lkml/1687955688-20809-1-git-send-email-quic_mojha@quicinc.com/
+>   - Redesigned the driver and divided the driver into front end and backend (smem) so
+>     that any new backend can be attached easily to avoid code duplication.
+>   - Patch reordering as per the driver and subsystem to easier review of the code.
+>   - Removed minidump specific code from remoteproc to minidump smem based driver.
+>   - Enabled the all the driver as modules.
+>   - Address comments made on documentation and yaml and Device tree file [Krzysztof/Konrad]
+>   - Address comments made qcom_pstore_minidump driver and given its Device tree
+>     same set of properties as ramoops. [Luca/Kees]
+>   - Added patch for MAINTAINER file.
+>   - Include defconfig change as one patch as per [Krzysztof] suggestion.
+>   - Tried to remove the redundant file scope variables from the module as per [Krzysztof] suggestion.
+>   - Addressed comments made on dload mode patch v6 version
+>     https://lore.kernel.org/lkml/1680076012-10785-1-git-send-email-quic_mojha@quicinc.com/
+> 
+> Changes in v3: https://lore.kernel.org/lkml/1683133352-10046-1-git-send-email-quic_mojha@quicinc.com/
+>   - Addressed most of the comments by Srini on v2 and refactored the minidump driver.
+>      - Added platform device support
+>      - Unregister region support.
+>   - Added update region for clients.
+>   - Added pending region support.
+>   - Modified the documentation guide accordingly.
+>   - Added qcom_pstore_ramdump client driver which happen to add ramoops platform
+>     device and also registers ramoops region with minidump.
+>   - Added download mode patch series with this minidump series.
+>      https://lore.kernel.org/lkml/1680076012-10785-1-git-send-email-quic_mojha@quicinc.com/
+> 
+> Changes in v2: https://lore.kernel.org/lkml/1679491817-2498-1-git-send-email-quic_mojha@quicinc.com/
+>   - Addressed review comment made by [quic_tsoni/bmasney] to add documentation.
+>   - Addressed comments made by [srinivas.kandagatla]
+>   - Dropped pstore 6/6 from the last series, till i get conclusion to get pstore
+>     region in minidump.
+>   - Fixed issue reported by kernel test robot.
+> 
+> Changes in v1: https://lore.kernel.org/lkml/1676978713-7394-1-git-send-email-quic_mojha@quicinc.com/
+> 
+> Minidump is a best effort mechanism to collect useful and predefined data
+> for first level of debugging on end user devices running on Qualcomm SoCs.
+> It is built on the premise that System on Chip (SoC) or subsystem part of
+> SoC crashes, due to a range of hardware and software bugs.
+> 
+> Qualcomm devices in engineering mode provides a mechanism for generating
+> full system ramdumps for post mortem debugging. But in some cases it's
+> however not feasible to capture the entire content of RAM. The minidump
+> mechanism provides the means for selecting which snippets should be
+> included in the ramdump.
+> 
+> The core of SMEM based minidump feature is part of Qualcomm's boot
+> firmware code. It initializes shared memory (SMEM), which is a part of
+> DDR and allocates a small section of SMEM to minidump table i.e also
+> called global table of content (G-ToC). Each subsystem (APSS, ADSP, ...)
+> has their own table of segments to be included in the minidump and all
+> get their reference from G-ToC. Each segment/region has some details
+> like name, physical address and it's size etc. and it could be anywhere
+> scattered in the DDR.
+> 
+> Existing upstream Qualcomm remoteproc driver[1] already supports SMEM
+> based minidump feature for remoteproc instances like ADSP, MODEM, ...
+> where predefined selective segments of subsystem region can be dumped
+> as part of coredump collection which generates smaller size artifacts
+> compared to complete coredump of subsystem on crash.
+> 
+> [1]
+> https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/drivers/remoteproc/qcom_common.c#n142
+> 
+> In addition to managing and querying the APSS minidump description,
+> the Linux driver maintains a ELF header in a segment. This segment
+> gets updated with section/program header whenever a new entry gets
+> registered.
+> 
+> Support for Minidump enablement on Qualcomm SoCs is pursued separately and
+> can be done via below series of changes. For testing, these patches can be
+> applied
+> 
+> https://lore.kernel.org/lkml/1704727654-13999-1-git-send-email-quic_mojha@quicinc.com/
+> 
+> https://lore.kernel.org/lkml/20240109153200.12848-12-quic_mojha@quicinc.com/
+> https://lore.kernel.org/lkml/20240109153200.12848-13-quic_mojha@quicinc.com/
+> 
+> Testing of these patches has been done on sm8450 target after enabling kernel
+> config like CONFIG_PSTORE_RAM/CONFIG_PSTORE_CONSOLE and once the device boots
+> up. Below command can be executed from sysfs to enable minidump in the firmware.
+> 
+>   echo mini > /sys/module/qcom_scm/parameters/download_mode
+> 
+> Try crashing it via devmem2 0xf11c000(this is known command to create xpu violation
+> and put the device crash dump mode) on command prompt.
+> 
+> Default storage type is set to via USB, so Minidump would be downloaded with the
+> help of x86_64 machine (running PCAT tool) attached to Qualcomm product which has
+> backed Minidump boot firmware support.
+> 
+> After that we will see a bunch of predefined registered region as binary blobs files
+> starts with md_* downloaded on the x86 machine at configured/default location in PCAT
+> tool from the product, more about this can be found in qualcomm minidump guide
+> patch.
+> 
+> Mukesh Ojha (10):
+>    docs: qcom: Add qualcomm minidump guide
+>    soc: qcom: Add qcom_rproc_minidump module
+>    remoteproc: qcom_q6v5_pas: Use qcom_rproc_minidump()
+>    remoteproc: qcom: Remove minidump related data from qcom_common.c
+>    init: export linux_banner data variable
+>    soc: qcom: Add Qualcomm APSS minidump kernel driver
+>    MAINTAINERS: Add entry for minidump related files
+>    pstore/ram: Add dynamic ramoops region support through commandline
+>    pstore/ram: Add ramoops information notifier support
+>    soc: qcom: register ramoops region with APSS minidump
+> 
+>   Documentation/admin-guide/index.rst         |   1 +
+>   Documentation/admin-guide/qcom_minidump.rst | 318 +++++++++
+>   Documentation/admin-guide/ramoops.rst       |  23 +-
+>   MAINTAINERS                                 |  10 +
+>   drivers/remoteproc/Kconfig                  |   1 +
+>   drivers/remoteproc/qcom_common.c            | 160 -----
+>   drivers/remoteproc/qcom_q6v5_pas.c          |   3 +-
+>   drivers/soc/qcom/Kconfig                    |  23 +
+>   drivers/soc/qcom/Makefile                   |   2 +
+>   drivers/soc/qcom/qcom_minidump.c            | 690 ++++++++++++++++++++
+>   drivers/soc/qcom/qcom_minidump_internal.h   |  74 +++
+>   drivers/soc/qcom/qcom_rproc_minidump.c      | 111 ++++
+>   drivers/soc/qcom/smem.c                     |  20 +
+>   fs/pstore/Kconfig                           |  15 +
+>   fs/pstore/ram.c                             | 180 ++++-
+>   include/linux/init.h                        |   3 +
+>   include/linux/pstore_ram.h                  |  20 +
+>   include/linux/soc/qcom/smem.h               |   2 +
+>   include/soc/qcom/qcom_minidump.h            |  41 ++
+>   init/main.c                                 |   3 +
+>   init/version-timestamp.c                    |   3 +
+>   21 files changed, 1538 insertions(+), 165 deletions(-)
+>   create mode 100644 Documentation/admin-guide/qcom_minidump.rst
+>   create mode 100644 drivers/soc/qcom/qcom_minidump.c
+>   create mode 100644 drivers/soc/qcom/qcom_minidump_internal.h
+>   create mode 100644 drivers/soc/qcom/qcom_rproc_minidump.c
+>   create mode 100644 include/soc/qcom/qcom_minidump.h
+> 
+> 
+> base-commit: 41d66f96d0f15a0a2ad6fa2208f6bac1a66cbd52
 
