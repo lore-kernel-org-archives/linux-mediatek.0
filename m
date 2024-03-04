@@ -4,70 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92935C54E41
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Mar 2024 11:35:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA58BC48BF6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Mar 2024 14:23:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R+hp66j9++WZliCmwpp0zPELdiJp82Q+Ev10B3zAD8c=; b=vpjQNXUUUAhQaH1w2CgJpLj4F5
-	CeXjYZKXmKyJ1XbGmMwxYfrg1S0cqJBn/vCoB5huKI3xsWIDKlHu645aRtzQAdWIUhz8lVTL2uye9
-	stxYhBVKXBmWDSFo406wmly+NLg0kpNjWKfr/IaHhccwFHbZiV6sfT0SRJHP+H6c7w2IYm2D9Ir6M
-	B6GsrvyCqWjz84jfkfHOenkfJpZsHNQLTF1IUs3Ak5vL/jibXe0xDNVPVDUhdt+RcF44/W1CWPfE6
-	IVztwaaI5yAgbnYTbyPCU8ApV52CMbhdTEmxs/qhjc0IFXIbXejszyjNBFpSymwZu2nJSsm8cddBH
-	S6GppzlQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hZ2JVEDgmiFzKsuSYxpzr/7KrPRAfX7wF19HQuPSEm0=; b=bEjDS5N/tOXF4yQd7T0kmxTFt0
+	I5k9gi3NliTvenyVwvhY4KTPz4NvlIcF1tDODZHPRItYKnP2TZ4t8LBeWCI+RVpQLgIv/C5FL/rN4
+	GXf+6jO3J/Y79dibQgWNAP+kWEGrG/ZGN52kUDLR9/SA122B2LhvMP45tDwnGDM0fbokNm+LKdTlS
+	LaDiBr13R1ude2HYmUVaTSgUajg0lbTTp27Fo3fgJLP8sv5JWEBD/DlCfAzT3wfPARkilDb0dqrQp
+	ID6TKQ3dIP+YaFAr6NZhFcGK8FexLROcV/+vjP3mNXy6t+jQhCZqkIToCNdQ73OrByhOhj4DVDGX6
+	6lmat1Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rh6b7-00000008q5x-40IT;
-	Mon, 04 Mar 2024 11:35:10 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rh9EO-00000009M2Z-2NiP;
+	Mon, 04 Mar 2024 14:23:52 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rh5Ct-00000008X8w-1pJk;
-	Mon, 04 Mar 2024 10:06:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709546750;
-	bh=lEVGehSBFjA/oLsvuBM7tDdI4uNapzzSDtjugpkUM1E=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=u648iBALFnbEregncZZ5/ZV7XZFR61wPlXgXehGOrGlVtWgfP+paEkV89he4qoqLb
-	 0lPbMaDLlnftYQWfPlqMnuioFJ4dnrD/UWsuI9C8Targm7H9+6WkIq0lac1odESx4o
-	 +yGwu81yVrUkh9BoyfRdxYX/RivPa/3420rlBzS5d5qMgAnPXpZqL7rugIkBJJ1ZlC
-	 zZd51qRCuThyQz86ag2om49x6hI3nsgbrxV6MX0cA6MPabE76+UIP7wQhZpXnzVcE1
-	 rWqodqh6P3K5ssyJxKnQHbCwMmxGuJr67WsfV3/4WjDZcZZa5mam7T+XcH7Z3ficBq
-	 bRid2umc47ZMw==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id BEA5837803EE;
-	Mon,  4 Mar 2024 10:05:49 +0000 (UTC)
-Message-ID: <41a2017f-5627-42fe-a624-642c3c47f436@collabora.com>
-Date: Mon, 4 Mar 2024 11:05:48 +0100
+	id 1rh9EK-00000009M1E-2TaE;
+	Mon, 04 Mar 2024 14:23:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id A84D6CE1386;
+	Mon,  4 Mar 2024 14:23:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90565C43390;
+	Mon,  4 Mar 2024 14:23:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1709562223;
+	bh=XXxnvR6/7pWjgGR4OrSNwADlQ09xHuL0Usz9cO3xdU4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=AsPt8hoDUStklKvbr9l5y2fCjUGifbeJjU76gbjhnARANwQXeq28a2bR771tR8nGT
+	 noq991Wu1u/PCmt4GmXY7fDKquRwzL5iof/dZkzUfh9seVFkRx739pgn8PWheEu6SG
+	 UWs0JrRh19UszyusQy3QxyfcQm8/sMHN5c88pWXSH+PdSW3/3avE5HPVXoLb9tKBdF
+	 TTIhXfxcJX8lBh50VfYt0ukdtiFqg/8esZM4/Etf2qaOf17eYQFv2EsnRZg7uqsvSu
+	 YR364dIhms7VAjpVoZ2rKs1VYiEaI6QPd6KwtY0QFiCXusYMaYeO3bErFJyEXF+YuE
+	 Zek//seAJQ1FA==
+Date: Mon, 4 Mar 2024 08:23:41 -0600
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: broonie@kernel.org, wenst@chromium.org, lgirdwood@gmail.com,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.com,
+	trevor.wu@mediatek.com, maso.huang@mediatek.com,
+	xiazhengqiao@huaqin.corp-partner.google.com, arnd@arndb.de,
+	kuninori.morimoto.gx@renesas.com, shraash@google.com,
+	amergnat@baylibre.com, nicolas.ferre@microchip.com,
+	u.kleine-koenig@pengutronix.de, dianders@chromium.org,
+	frank.li@vivo.com, allen-kh.cheng@mediatek.com,
+	eugen.hristev@collabora.com, claudiu.beznea@tuxon.dev,
+	jarkko.nikula@bitmer.com, jiaxin.yu@mediatek.com,
+	alpernebiyasak@gmail.com, ckeepax@opensource.cirrus.com,
+	zhourui@huaqin.corp-partner.google.com, nfraprado@collabora.com,
+	alsa-devel@alsa-project.org, shane.chien@mediatek.com,
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH 19/22] ASoC: dt-bindings: mt8192: Document audio-routing
+ and dai-link subnode
+Message-ID: <20240304142341.GA156846-robh@kernel.org>
+References: <20240227120939.290143-1-angelogioacchino.delregno@collabora.com>
+ <20240227120939.290143-20-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] soc: mediatek: mtk-cmdq: Add cmdq_pkt_mem_move()
- function
-Content-Language: en-US
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Jassi Brar <jassisinghbrar@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Jason-ch Chen <jason-ch.chen@mediatek.com>,
- Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
- Shawn Sung <shawn.sung@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20240301111126.22035-1-jason-jh.lin@mediatek.com>
- <20240301111126.22035-3-jason-jh.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240301111126.22035-3-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240227120939.290143-20-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240304_020604_747370_3CF728FF 
-X-CRM114-Status: GOOD (  18.62  )
+X-CRM114-CacheID: sfid-20240304_062349_025314_26FCE250 
+X-CRM114-Status: GOOD (  19.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,93 +87,219 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/03/24 12:11, Jason-JH.Lin ha scritto:
-> Add cmdq_pkt_mem_move() function to support CMDQ user making
-> an instruction for moving a value from a source address to a
-> destination address.
+On Tue, Feb 27, 2024 at 01:09:36PM +0100, AngeloGioacchino Del Regno wrote:
+> Document the dai-link subnodes and the audio-routing property, allowing
+> to describe machine specific audio hardware and links in device tree.
 > 
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> Change-Id: I0128db6a3412303fc6da61f8a57a0c08e0c0067e
-
-Drop Change-id please
-
+> While at it, also deprecate the old properties which were previously
+> used with the driver's partially hardcoded configuration.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->   drivers/soc/mediatek/mtk-cmdq-helper.c | 26 ++++++++++++++++++++++++++
->   include/linux/soc/mediatek/mtk-cmdq.h  | 10 ++++++++++
->   2 files changed, 36 insertions(+)
+>  .../sound/mt8192-mt6359-rt1015-rt5682.yaml    | 129 ++++++++++++++++--
+>  1 file changed, 121 insertions(+), 8 deletions(-)
 > 
-> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index b0cd071c4719..3a1e47ad8a41 100644
-> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -299,6 +299,32 @@ int cmdq_pkt_write_s_mask_value(struct cmdq_pkt *pkt, u8 high_addr_reg_idx,
->   }
->   EXPORT_SYMBOL(cmdq_pkt_write_s_mask_value);
->   
-> +s32 cmdq_pkt_mem_move(struct cmdq_pkt *pkt, dma_addr_t src_addr, dma_addr_t dst_addr)
-> +{
-> +	s32 err;
-> +	const u16 tmp_reg_idx = CMDQ_THR_SPR_IDX0;
-> +	const u16 swap_reg_idx = CMDQ_THR_SPR_IDX1;
+> diff --git a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
+> index 7e50f5d65c8f..78e221003750 100644
+> --- a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
+> +++ b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
+> @@ -20,6 +20,15 @@ properties:
+>        - mediatek,mt8192_mt6359_rt1015p_rt5682
+>        - mediatek,mt8192_mt6359_rt1015p_rt5682s
+>  
+> +  audio-routing:
+> +    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
 
-s32 err at the end please
+Already defined in sound-card-common.yaml. Add a $ref.
+
+> +    description:
+> +      A list of the connections between audio components. Each entry is a
+> +      pair of strings, the first being the connection's sink, the second
+> +      being the connection's source.
+> +      Valid names could be the input or output widgets of audio components,
+> +      power supplies, MicBias of codec and the software switch.
+
+Generally the names are defined here.
 
 > +
-> +	/* read the value of src_addr into swap_reg_idx */
-> +	err = cmdq_pkt_assign(pkt, tmp_reg_idx, CMDQ_ADDR_HIGH(src_addr));
-> +	if (err < 0)
-> +		return err;
-> +	err = cmdq_pkt_read_s(pkt, tmp_reg_idx, CMDQ_ADDR_LOW(src_addr), swap_reg_idx);
-> +	if (err < 0)
-> +		return err;
+>    mediatek,platform:
+>      $ref: /schemas/types.yaml#/definitions/phandle
+>      description: The phandle of MT8192 ASoC platform.
+> @@ -27,10 +36,12 @@ properties:
+>    mediatek,hdmi-codec:
+>      $ref: /schemas/types.yaml#/definitions/phandle
+>      description: The phandle of HDMI codec.
+> +    deprecated: true
+>  
+>    headset-codec:
+>      type: object
+>      additionalProperties: false
+> +    deprecated: true
+>  
+>      properties:
+>        sound-dai:
+> @@ -41,6 +52,7 @@ properties:
+>    speaker-codecs:
+>      type: object
+>      additionalProperties: false
+> +    deprecated: true
+>  
+>      properties:
+>        sound-dai:
+> @@ -51,13 +63,83 @@ properties:
+>      required:
+>        - sound-dai
+>  
+> +patternProperties:
+> +  ".*-dai-link$":
+> +    type: object
+> +    description:
+> +      Container for dai-link level properties and CODEC sub-nodes.
 > +
-> +	/* write the value of swap_reg_idx into dst_addr */
-> +	err = cmdq_pkt_assign(pkt, tmp_reg_idx, CMDQ_ADDR_HIGH(dst_addr));
-> +	if (err < 0)
-> +		return err;
-> +	err = cmdq_pkt_write_s(pkt, tmp_reg_idx, CMDQ_ADDR_LOW(dst_addr), swap_reg_idx);
-> +	if (err < 0)
-> +		return err;
+> +    properties:
+> +      link-name:
+> +        description: Indicates dai-link name and PCM stream name
+> +        items:
+> +          enum:
+> +            - I2S0
+> +            - I2S1
+> +            - I2S2
+> +            - I2S3
+> +            - I2S4
+> +            - I2S5
+> +            - I2S6
+> +            - I2S7
+> +            - I2S8
+> +            - I2S9
+> +            - TDM
 > +
-> +	return err;
-
-In the documentation, you say "0 for success", so...
-
-return 0; here :-)
-
-> +}
-> +EXPORT_SYMBOL(cmdq_pkt_mem_move);
+> +      codec:
+> +        description: Holds subnode which indicates codec dai.
+> +        type: object
+> +        additionalProperties: false
+> +        properties:
+> +          sound-dai:
+> +            minItems: 1
+> +            maxItems: 2
+> +        required:
+> +          - sound-dai
 > +
->   int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear)
->   {
->   	struct cmdq_instruction inst = { {0} };
-> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-> index 1dae80185f9f..b6dbe2d8f16a 100644
-> --- a/include/linux/soc/mediatek/mtk-cmdq.h
-> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-> @@ -182,6 +182,16 @@ int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u8 high_addr_reg_idx,
->   int cmdq_pkt_write_s_mask_value(struct cmdq_pkt *pkt, u8 high_addr_reg_idx,
->   				u16 addr_low, u32 value, u32 mask);
->   
-> +/**
-> + * cmdq_pkt_mem_move() - append memory move command to the CMDQ packet
-> + * @pkt:	the CMDQ packet
-> + * @src_addr:	source address
-> + * @dma_addr_t: destination address
-> + *
-
-  * @dst_addr: destination address
-  *
-  * Appends a CMDQ command to copy the value found in `src_addr` to `dst_addr`
-  *
-  * Return ....
-
-> + * Return: 0 for success; else the error code is returned
-> + */
-> +int cmdq_pkt_mem_move(struct cmdq_pkt *pkt, dma_addr_t src_addr, dma_addr_t dst_addr);
+> +      dai-format:
+> +        description: audio format
+> +        items:
+> +          enum:
+> +            - i2s
+> +            - right_j
+> +            - left_j
+> +            - dsp_a
+> +            - dsp_b
 > +
->   /**
->    * cmdq_pkt_wfe() - append wait for event command to the CMDQ packet
->    * @pkt:	the CMDQ packet
+> +      mediatek,clk-provider:
+> +        $ref: /schemas/types.yaml#/definitions/string
+> +        description: Indicates dai-link clock master.
+> +        items:
+> +          enum:
+> +            - cpu
+> +            - codec
+> +
+> +    additionalProperties: false
 
+Move this before properties.
+
+> +
+> +    required:
+> +      - link-name
+> +
+>  additionalProperties: false
+>  
+>  required:
+>    - compatible
+>    - mediatek,platform
+> -  - headset-codec
+> -  - speaker-codecs
+> +
+> +allOf:
+> +  # Disallow dai-link-xxx nodes if the legacy properties are specified
+
+xxx-dai-link?
+
+> +  - if:
+> +      patternProperties:
+> +        ".*-dai-link$": false
+> +    then:
+> +      required:
+> +        - headset-codec
+> +        - speaker-codecs
+> +    else:
+> +      properties:
+> +        headset-codec: false
+> +        speaker-codecs: false
+> +        mediatek,hdmi-codec: false
+
+Allowing both would preserve compatibility. That's not needed? If so, 
+say why in the commit msg.
+
+>  
+>  examples:
+>    - |
+> @@ -65,19 +147,50 @@ examples:
+>      sound: mt8192-sound {
+>          compatible = "mediatek,mt8192_mt6359_rt1015_rt5682";
+>          mediatek,platform = <&afe>;
+> -        mediatek,hdmi-codec = <&anx_bridge_dp>;
+>          pinctrl-names = "aud_clk_mosi_off",
+>                          "aud_clk_mosi_on";
+>          pinctrl-0 = <&aud_clk_mosi_off>;
+>          pinctrl-1 = <&aud_clk_mosi_on>;
+>  
+> -        headset-codec {
+> -            sound-dai = <&rt5682>;
+> +        audio-routing =
+> +                "Headphone Jack", "HPOL",
+> +                "Headphone Jack", "HPOR",
+> +                "IN1P", "Headset Mic",
+> +                "Speakers", "Speaker";
+> +
+> +        spk-playback-dai-link {
+> +                link-name = "I2S3";
+> +                dai-format = "i2s";
+> +                mediatek,clk-provider = "cpu";
+> +                codec {
+> +                        sound-dai = <&rt1015p>;
+> +                };
+> +        };
+> +
+> +        hs-playback-dai-link {
+> +                link-name = "I2S8";
+> +                dai-format = "i2s";
+> +                mediatek,clk-provider = "cpu";
+> +                codec {
+> +                        sound-dai = <&rt5682 0>;
+> +                };
+> +        };
+> +
+> +        hs-capture-dai-link {
+> +                link-name = "I2S9";
+> +                dai-format = "i2s";
+> +                mediatek,clk-provider = "cpu";
+> +                codec {
+> +                        sound-dai = <&rt5682 0>;
+> +                };
+>          };
+>  
+> -        speaker-codecs {
+> -            sound-dai = <&rt1015_l>,
+> -                        <&rt1015_r>;
+> +        displayport-dai-link {
+> +                link-name = "TDM";
+> +                dai-format = "dsp_a";
+> +                codec {
+> +                        sound-dai = <&anx_bridge_dp>;
+> +                };
+>          };
+>      };
+>  
+> -- 
+> 2.44.0
+> 
 
