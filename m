@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B8C7C48BF6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92935C54E41
 	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Mar 2024 11:35:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,42 +12,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QmKyHMZR7wrNWPvO0paIqA+LLrOahggQb4Qz1CB3MXU=; b=fHwWun6AWYiqU5Xd8+VL/glblW
-	61lgXZ0kcKwwG1VaBymOi6UvUqmvJbA40XeSYUqbuF5AopQDwsk+SkZXzXmazmZ99cfPl4b6NJSKn
-	5qyGCUqKvL6flRfjo6cB2ij+ZwqGydLgmNPXYrm8peyliohinhgTv0KmYQv9dBzeMVp4BicDtsCn5
-	S8hCHHDr5U9NwHyaZpQ5ypGZp3ZoCOpDBD8INAf0hL37KAiBxiLkr0yaCqCKdCqb5THBKCpnVt7lK
-	kb1TASZnuYjc7Jevl2xD0XK2Vo277Tr5qKjgjaD37J3zZTx+oZY6jnjejWypVEJq+D2NrY1LbBWLf
-	esV2woTQ==;
+	bh=R+hp66j9++WZliCmwpp0zPELdiJp82Q+Ev10B3zAD8c=; b=vpjQNXUUUAhQaH1w2CgJpLj4F5
+	CeXjYZKXmKyJ1XbGmMwxYfrg1S0cqJBn/vCoB5huKI3xsWIDKlHu645aRtzQAdWIUhz8lVTL2uye9
+	stxYhBVKXBmWDSFo406wmly+NLg0kpNjWKfr/IaHhccwFHbZiV6sfT0SRJHP+H6c7w2IYm2D9Ir6M
+	B6GsrvyCqWjz84jfkfHOenkfJpZsHNQLTF1IUs3Ak5vL/jibXe0xDNVPVDUhdt+RcF44/W1CWPfE6
+	IVztwaaI5yAgbnYTbyPCU8ApV52CMbhdTEmxs/qhjc0IFXIbXejszyjNBFpSymwZu2nJSsm8cddBH
+	S6GppzlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rh6b7-00000008q5S-0DQa;
-	Mon, 04 Mar 2024 11:35:09 +0000
+	id 1rh6b7-00000008q5x-40IT;
+	Mon, 04 Mar 2024 11:35:10 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rh5Ct-00000008XA9-1qVM;
+	id 1rh5Ct-00000008X8w-1pJk;
 	Mon, 04 Mar 2024 10:06:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709546757;
-	bh=RWN2Ea3qOUjs6zLtAAXLBFQstrOSR//0aV6xqRJRRoM=;
+	s=mail; t=1709546750;
+	bh=lEVGehSBFjA/oLsvuBM7tDdI4uNapzzSDtjugpkUM1E=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GqrZRx2uqquFaYJnQ+ZQZ4Z5duNI4garPorJYbWGIcwBXVtikqwGmsSv+TSPAg24/
-	 RXtRy6utMLXjpXYUgoqYIi3/d9O+yDEDdapjK8iyOOQWm95lkCw9vP+pqVAYSvaQD8
-	 2MeMrgwT075yFyFqbgrhlhUourXnkm0DYcWti2SKsj7qwmwpzr5NkdzCU723O1qGkl
-	 hsm+FVUUP+eKRI3nVfLaQw+qnAQ2d+V7KV28h+QT9kSsPpO37FbQ9Z+39g4eJeebS6
-	 BZl01pEvqkNz72VepmGyH3Z82Mge3rfc4KlUMUxuOyG3FMtsearuwQFdR9Dq5xmou0
-	 Zf8TRylfj2Qtw==
+	b=u648iBALFnbEregncZZ5/ZV7XZFR61wPlXgXehGOrGlVtWgfP+paEkV89he4qoqLb
+	 0lPbMaDLlnftYQWfPlqMnuioFJ4dnrD/UWsuI9C8Targm7H9+6WkIq0lac1odESx4o
+	 +yGwu81yVrUkh9BoyfRdxYX/RivPa/3420rlBzS5d5qMgAnPXpZqL7rugIkBJJ1ZlC
+	 zZd51qRCuThyQz86ag2om49x6hI3nsgbrxV6MX0cA6MPabE76+UIP7wQhZpXnzVcE1
+	 rWqodqh6P3K5ssyJxKnQHbCwMmxGuJr67WsfV3/4WjDZcZZa5mam7T+XcH7Z3ficBq
+	 bRid2umc47ZMw==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D61573782091;
-	Mon,  4 Mar 2024 10:05:56 +0000 (UTC)
-Message-ID: <3dab3afd-7d0c-4bf1-b4f6-984f8d5d2d02@collabora.com>
-Date: Mon, 4 Mar 2024 11:05:56 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id BEA5837803EE;
+	Mon,  4 Mar 2024 10:05:49 +0000 (UTC)
+Message-ID: <41a2017f-5627-42fe-a624-642c3c47f436@collabora.com>
+Date: Mon, 4 Mar 2024 11:05:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/5] soc: mediatek: mtk-cmdq: Add cmdq_pkt_acquire_event()
+Subject: Re: [PATCH 2/5] soc: mediatek: mtk-cmdq: Add cmdq_pkt_mem_move()
  function
 Content-Language: en-US
 To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
@@ -60,14 +60,14 @@ Cc: Jason-ch Chen <jason-ch.chen@mediatek.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20240301111126.22035-1-jason-jh.lin@mediatek.com>
- <20240301111126.22035-5-jason-jh.lin@mediatek.com>
+ <20240301111126.22035-3-jason-jh.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240301111126.22035-5-jason-jh.lin@mediatek.com>
+In-Reply-To: <20240301111126.22035-3-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240304_020607_820989_92C1F296 
-X-CRM114-Status: GOOD (  19.29  )
+X-CRM114-CacheID: sfid-20240304_020604_747370_3CF728FF 
+X-CRM114-Status: GOOD (  18.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,72 +83,92 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 01/03/24 12:11, Jason-JH.Lin ha scritto:
-> Add cmdq_pkt_acquire_event() function to support CMDQ user making
-> an instruction for acquiring event.
-> 
-> CMDQ users can use cmdq_pkt_acquire_event() and cmdq_pkt_clear_event()
-> to acquire GCE event and release GCE event and achieve the MUTEX_LOCK
-> protection between GCE threads.
+> Add cmdq_pkt_mem_move() function to support CMDQ user making
+> an instruction for moving a value from a source address to a
+> destination address.
 > 
 > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> Change-Id: Icdae6b60345c7ec1d7541ac76d1f06da56959cde
+> Change-Id: I0128db6a3412303fc6da61f8a57a0c08e0c0067e
 
-Drop Change-Id please.
+Drop Change-id please
 
 > ---
->   drivers/soc/mediatek/mtk-cmdq-helper.c | 15 +++++++++++++++
->   include/linux/soc/mediatek/mtk-cmdq.h  |  9 +++++++++
->   2 files changed, 24 insertions(+)
+>   drivers/soc/mediatek/mtk-cmdq-helper.c | 26 ++++++++++++++++++++++++++
+>   include/linux/soc/mediatek/mtk-cmdq.h  | 10 ++++++++++
+>   2 files changed, 36 insertions(+)
 > 
 > diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index 2e9fc9bb1183..0183b40a0eff 100644
+> index b0cd071c4719..3a1e47ad8a41 100644
 > --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
 > +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -342,6 +342,21 @@ int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear)
+> @@ -299,6 +299,32 @@ int cmdq_pkt_write_s_mask_value(struct cmdq_pkt *pkt, u8 high_addr_reg_idx,
 >   }
->   EXPORT_SYMBOL(cmdq_pkt_wfe);
+>   EXPORT_SYMBOL(cmdq_pkt_write_s_mask_value);
 >   
-> +int cmdq_pkt_acquire_event(struct cmdq_pkt *pkt, u16 event)
+> +s32 cmdq_pkt_mem_move(struct cmdq_pkt *pkt, dma_addr_t src_addr, dma_addr_t dst_addr)
 > +{
-> +	struct cmdq_instruction inst = {};
+> +	s32 err;
+> +	const u16 tmp_reg_idx = CMDQ_THR_SPR_IDX0;
+> +	const u16 swap_reg_idx = CMDQ_THR_SPR_IDX1;
+
+s32 err at the end please
+
 > +
-> +	if (event >= CMDQ_MAX_EVENT)
-> +		return -EINVAL;
+> +	/* read the value of src_addr into swap_reg_idx */
+> +	err = cmdq_pkt_assign(pkt, tmp_reg_idx, CMDQ_ADDR_HIGH(src_addr));
+> +	if (err < 0)
+> +		return err;
+> +	err = cmdq_pkt_read_s(pkt, tmp_reg_idx, CMDQ_ADDR_LOW(src_addr), swap_reg_idx);
+> +	if (err < 0)
+> +		return err;
 > +
-> +	inst.op = CMDQ_CODE_WFE;
-> +	inst.value = CMDQ_WFE_UPDATE | CMDQ_WFE_UPDATE_VALUE | CMDQ_WFE_WAIT;
-> +	inst.event = event;
+> +	/* write the value of swap_reg_idx into dst_addr */
+> +	err = cmdq_pkt_assign(pkt, tmp_reg_idx, CMDQ_ADDR_HIGH(dst_addr));
+> +	if (err < 0)
+> +		return err;
+> +	err = cmdq_pkt_write_s(pkt, tmp_reg_idx, CMDQ_ADDR_LOW(dst_addr), swap_reg_idx);
+> +	if (err < 0)
+> +		return err;
 > +
-> +	return cmdq_pkt_append_command(pkt, inst);
+> +	return err;
+
+In the documentation, you say "0 for success", so...
+
+return 0; here :-)
+
 > +}
-> +EXPORT_SYMBOL(cmdq_pkt_acquire_event);
+> +EXPORT_SYMBOL(cmdq_pkt_mem_move);
 > +
->   int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event)
+>   int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear)
 >   {
 >   	struct cmdq_instruction inst = { {0} };
 > diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-> index 2fe9be240fbc..de93c0a8e8a9 100644
+> index 1dae80185f9f..b6dbe2d8f16a 100644
 > --- a/include/linux/soc/mediatek/mtk-cmdq.h
 > +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-> @@ -202,6 +202,15 @@ int cmdq_pkt_mem_move(struct cmdq_pkt *pkt, dma_addr_t src_addr, dma_addr_t dst_
->    */
->   int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear);
+> @@ -182,6 +182,16 @@ int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u8 high_addr_reg_idx,
+>   int cmdq_pkt_write_s_mask_value(struct cmdq_pkt *pkt, u8 high_addr_reg_idx,
+>   				u16 addr_low, u32 value, u32 mask);
 >   
 > +/**
-> + * cmdq_pkt_acquire_event() - append acquire event command to the CMDQ packet
+> + * cmdq_pkt_mem_move() - append memory move command to the CMDQ packet
 > + * @pkt:	the CMDQ packet
-> + * @event:	the desired event to be acquired
-
-What you wrote in the commit message is good documentation for this function,
-please also put it here in kerneldoc format as a documentation paragraph.
-
+> + * @src_addr:	source address
+> + * @dma_addr_t: destination address
 > + *
+
+  * @dst_addr: destination address
+  *
+  * Appends a CMDQ command to copy the value found in `src_addr` to `dst_addr`
+  *
+  * Return ....
+
 > + * Return: 0 for success; else the error code is returned
 > + */
-> +int cmdq_pkt_acquire_event(struct cmdq_pkt *pkt, u16 event);
+> +int cmdq_pkt_mem_move(struct cmdq_pkt *pkt, dma_addr_t src_addr, dma_addr_t dst_addr);
 > +
 >   /**
->    * cmdq_pkt_clear_event() - append clear event command to the CMDQ packet
+>    * cmdq_pkt_wfe() - append wait for event command to the CMDQ packet
 >    * @pkt:	the CMDQ packet
 
 
