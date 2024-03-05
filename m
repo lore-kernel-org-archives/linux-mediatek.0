@@ -4,96 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CDE9C54798
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Mar 2024 10:26:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 230F6C54798
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Mar 2024 11:20:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=io1my3dx5VcMiNJUZUsb740tl0108EWYfuMDY6G7mng=; b=Hd7OL3CcrG5QKM1mU0ZWS4u1yB
-	v730oje2O7ubIMQKaicwM85X7RsLhOdJJLaOz89IrL1WOXlPlSqCGR+OdntGYOZ9HKCUG2SPCy8zC
-	nhhXlOpn9iYTgzJvKpOf3abwazSq5pvuKO8zI1drc7XSP8pRLlLbAl9WSJEvis9m6x1kfDJzXxkGj
-	1k+tg/LSEkMnuz7dTYU1WhKKpfyUFaucymIpLVxRBrUCFolK2ktlLG5Xhe4QrfvqTM2p/AM0j1PNP
-	QAsZHqCyzDTixGnLMijHXoOMwfHzDiAqctU/urDKrGb0aCnIxt4chXPrEvJ5QMiDRdarYTMG9mHvL
-	tWlfTkCQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=t7IkjFQlwgM0OaZZoHhD2eigosPx7eQuvldXbGWZZ88=; b=DkxbdG771inLzQdgnUG6KP7MpD
+	9rWmZDdpvBmVDbD329dj6wgrFh8VYDWl4yMlapRrfyvsS5iHwkPdbFg1g7rl90f+x9R+JhvM7qnLK
+	g5ELGC9QYX4ZmdR/r7GHsDvuyCadbdKC559eiAEmb9WHywWcA2nJ7MeC3Pp+xgjcaVkewcbMvKUXy
+	0lOB1q05RK6U6HjlwVdez5Ax6smL6nn2a+N1Suy5P8Tb8Vc9dgbkT3LPTSyzuns6VgvO/AmWsGVWx
+	LlS5oJK1QvOanLNDQ+++jfQ6K07wRSCxYN8KCAw/OmxNRpNEyB2KowkTKnzozqG/rpYAIjVitrQqR
+	9tx6y2kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhS0d-0000000D2cI-3HbV;
-	Tue, 05 Mar 2024 10:26:55 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1rhSqf-0000000DJMK-3ga4;
+	Tue, 05 Mar 2024 11:20:46 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhS0a-0000000D2a3-1h8T
-	for linux-mediatek@lists.infradead.org;
-	Tue, 05 Mar 2024 10:26:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1709634411;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=io1my3dx5VcMiNJUZUsb740tl0108EWYfuMDY6G7mng=;
-	b=gMNjsDZK7bB7erXfHgS1+X2Wh/GqXv/zy4EP3Nkc6oTTnAkm8YwwjCnKYjr/pxUYn+kfFI
-	twx4ak8gOTqvRv5Bmq3e5t0PfnSnZlp4TE8Vi7pU6vwUKWAYFrAVkHGc+yirCILnVQ7PVo
-	XHG/l74AaYB31X2hnKs2IkiLH5dkq6g=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-17-cCLoFU8wOIa2-Tiy6pwrzQ-1; Tue, 05 Mar 2024 05:26:49 -0500
-X-MC-Unique: cCLoFU8wOIa2-Tiy6pwrzQ-1
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-40e4478a3afso28111285e9.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 05 Mar 2024 02:26:49 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709634406; x=1710239206;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=io1my3dx5VcMiNJUZUsb740tl0108EWYfuMDY6G7mng=;
-        b=MTBD2I4Tl1OqgF+9CtvJwlR8PVK7w3gv7AlzMOEzm9hR1TybNX1JU4ccgKrGj/QShQ
-         m6Y4q2g8Trypy4WDxbR5IYKa74M+5PPf8Aqx89ATuXFwW78bQ4YX6vD5zRFrKLHnPkIx
-         19er/8qwBQQR+MiQdyQN5TEVXMAwP2jG6ZWxFhVAJn5hZ+Kedd913bPKuJRBNl1nQf7E
-         LycRWJN3MNfQ44picU0dTEV/g2eNMMZs71pihuOA4uMKy8ZST86YLSochazJa4Qn8xEE
-         v8DogQRmAnYrRauKa4rFoRqYIxiH4Jva/PhqGABf89v5rN3rWVFjy5QAEK/4OBlkpyrz
-         fB8g==
-X-Forwarded-Encrypted: i=1; AJvYcCUuMQg+1+7aMjxemO7qTy+REA01NZCsDYPymFKddo+7uCNyVgwHinoeLR8MRiR9Bh18cu0rler6VPJ/eJC9YAEsqYxwBTX/n5uhX8guKET5GFUD
-X-Gm-Message-State: AOJu0YzUHzWRfIyCRgQ2K22Umex7Ailegis4SWWJ551ONHTyihvv9rt8
-	gggvx+OeNcMy9SqAGjkQd3onmgOzMOOM+ij5Cqx5bg6rCgo8Su/54ixzCGvlIRx3ZCL8PjWyjN5
-	2B9U9fDJp2k5nfO366oTiMk0svFigVbpPPkhOosawzmXWzMgEyHstb1SIz6VyZ3K/zDLWew==
-X-Received: by 2002:a05:600c:4ec9:b0:412:ee33:db93 with SMTP id g9-20020a05600c4ec900b00412ee33db93mr853626wmq.3.1709634406071;
-        Tue, 05 Mar 2024 02:26:46 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IETtaPEq/Qiw+Ak7Pg+x0crtRFqpR6UCq3Qm4vjMmZUeWkXfZK6yUWGGPZ7vt3r6znJAUy1tA==
-X-Received: by 2002:a05:600c:4ec9:b0:412:ee33:db93 with SMTP id g9-20020a05600c4ec900b00412ee33db93mr853610wmq.3.1709634405718;
-        Tue, 05 Mar 2024 02:26:45 -0800 (PST)
-Received: from redhat.com ([2.52.130.198])
-        by smtp.gmail.com with ESMTPSA id fm5-20020a05600c0c0500b00412e6513639sm4585523wmb.23.2024.03.05.02.26.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 Mar 2024 02:26:45 -0800 (PST)
-Date: Tue, 5 Mar 2024 05:26:41 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Yunsheng Lin <linyunsheng@huawei.com>
-Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Alexei Starovoitov <ast@kernel.org>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	Jesper Dangaard Brouer <hawk@kernel.org>,
-	John Fastabend <john.fastabend@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, bpf@vger.kernel.org
-Subject: Re: [PATCH net-next v6 0/5] remove page frag implementation in
- vhost_net
-Message-ID: <20240305052625-mutt-send-email-mst@kernel.org>
-References: <20240228093013.8263-1-linyunsheng@huawei.com>
+	id 1rhSqQ-0000000DJGW-486C;
+	Tue, 05 Mar 2024 11:20:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1709637624;
+	bh=GXsOiAtv6TjNhMlnQXhWlrYVpj/iqWoURTS8NBhzIFs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TnYwIv7JyXG+1tKJY1L6QFhBK6hLNXIqXnVmCOWEAOQdyPpnpkH5LPB+kuT2LVCG/
+	 Fj5f7vQbFC94/wLeTSHyQ3BNyuNUJQ8SHB1e5B7Uezm00IVPVQTOJr11SGWf4HqtzB
+	 EYUbJxHjOQgVEGBpkDYQRtw08lcQvjiG8H1BAu5Px3MK3YNUxGvdqwQGUPtac5/l7P
+	 aX9+cqGioGIisgyXez/GeONzviu8jgT1hqL6+wy0j9M3x4lpyfZYoTUlyh49nfc9mj
+	 LkY/NUiCWcQ5e+Ljb4uHWVVR7xNtq1rkq/51wjcy2bq6zTvIahX2HEu+a2BYIIqyzs
+	 /S9Y+DAD6lG+A==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E69093780029;
+	Tue,  5 Mar 2024 11:20:21 +0000 (UTC)
+Message-ID: <0aa3dc07-67c8-40a4-9e83-f702979765c5@collabora.com>
+Date: Tue, 5 Mar 2024 12:20:21 +0100
 MIME-Version: 1.0
-In-Reply-To: <20240228093013.8263-1-linyunsheng@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 19/22] ASoC: dt-bindings: mt8192: Document audio-routing
+ and dai-link subnode
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>
+Cc: broonie@kernel.org, wenst@chromium.org, lgirdwood@gmail.com,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.com,
+ trevor.wu@mediatek.com, maso.huang@mediatek.com,
+ xiazhengqiao@huaqin.corp-partner.google.com, arnd@arndb.de,
+ kuninori.morimoto.gx@renesas.com, shraash@google.com, amergnat@baylibre.com,
+ nicolas.ferre@microchip.com, u.kleine-koenig@pengutronix.de,
+ dianders@chromium.org, frank.li@vivo.com, allen-kh.cheng@mediatek.com,
+ eugen.hristev@collabora.com, claudiu.beznea@tuxon.dev,
+ jarkko.nikula@bitmer.com, jiaxin.yu@mediatek.com, alpernebiyasak@gmail.com,
+ ckeepax@opensource.cirrus.com, zhourui@huaqin.corp-partner.google.com,
+ nfraprado@collabora.com, alsa-devel@alsa-project.org,
+ shane.chien@mediatek.com, linux-sound@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20240227120939.290143-1-angelogioacchino.delregno@collabora.com>
+ <20240227120939.290143-20-angelogioacchino.delregno@collabora.com>
+ <20240304142341.GA156846-robh@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240304142341.GA156846-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240305_022652_636464_15F3A8EB 
-X-CRM114-Status: GOOD (  23.19  )
+X-CRM114-CacheID: sfid-20240305_032027_455325_5898818B 
+X-CRM114-Status: GOOD (  28.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,120 +91,217 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 28, 2024 at 05:30:07PM +0800, Yunsheng Lin wrote:
-> Currently there are three implementations for page frag:
+Il 04/03/24 15:23, Rob Herring ha scritto:
+> On Tue, Feb 27, 2024 at 01:09:36PM +0100, AngeloGioacchino Del Regno wrote:
+>> Document the dai-link subnodes and the audio-routing property, allowing
+>> to describe machine specific audio hardware and links in device tree.
+>>
+>> While at it, also deprecate the old properties which were previously
+>> used with the driver's partially hardcoded configuration.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   .../sound/mt8192-mt6359-rt1015-rt5682.yaml    | 129 ++++++++++++++++--
+>>   1 file changed, 121 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
+>> index 7e50f5d65c8f..78e221003750 100644
+>> --- a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
+>> +++ b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
+>> @@ -20,6 +20,15 @@ properties:
+>>         - mediatek,mt8192_mt6359_rt1015p_rt5682
+>>         - mediatek,mt8192_mt6359_rt1015p_rt5682s
+>>   
+>> +  audio-routing:
+>> +    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
 > 
-> 1. mm/page_alloc.c: net stack seems to be using it in the
->    rx part with 'struct page_frag_cache' and the main API
->    being page_frag_alloc_align().
-> 2. net/core/sock.c: net stack seems to be using it in the
->    tx part with 'struct page_frag' and the main API being
->    skb_page_frag_refill().
-> 3. drivers/vhost/net.c: vhost seems to be using it to build
->    xdp frame, and it's implementation seems to be a mix of
->    the above two.
+> Already defined in sound-card-common.yaml. Add a $ref.
 > 
-> This patchset tries to unfiy the page frag implementation a
-> little bit by unifying gfp bit for order 3 page allocation
-> and replacing page frag implementation in vhost.c with the
-> one in page_alloc.c.
 
-Looks good
+Right. Done for v2.
 
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
+>> +    description:
+>> +      A list of the connections between audio components. Each entry is a
+>> +      pair of strings, the first being the connection's sink, the second
+>> +      being the connection's source.
+>> +      Valid names could be the input or output widgets of audio components,
+>> +      power supplies, MicBias of codec and the software switch.
+> 
+> Generally the names are defined here.
+> 
+
+...but those drivers want to support multiple codecs and multiple boards, so
+for each board we would maybe have to add (software defined) names in here
+which don't always correspond to a HW pin name (but that's not really a problem).
+
+Sure a subset of the names can't change but, on the other hand, some others
+can (as in, may be added).
+
+Hence the question:
+
+Is it mandatory to define the names in an enum here, or can that be avoided?
+If it is, I can add them no problem.
+
+>> +
+>>     mediatek,platform:
+>>       $ref: /schemas/types.yaml#/definitions/phandle
+>>       description: The phandle of MT8192 ASoC platform.
+>> @@ -27,10 +36,12 @@ properties:
+>>     mediatek,hdmi-codec:
+>>       $ref: /schemas/types.yaml#/definitions/phandle
+>>       description: The phandle of HDMI codec.
+>> +    deprecated: true
+>>   
+>>     headset-codec:
+>>       type: object
+>>       additionalProperties: false
+>> +    deprecated: true
+>>   
+>>       properties:
+>>         sound-dai:
+>> @@ -41,6 +52,7 @@ properties:
+>>     speaker-codecs:
+>>       type: object
+>>       additionalProperties: false
+>> +    deprecated: true
+>>   
+>>       properties:
+>>         sound-dai:
+>> @@ -51,13 +63,83 @@ properties:
+>>       required:
+>>         - sound-dai
+>>   
+>> +patternProperties:
+>> +  ".*-dai-link$":
+>> +    type: object
+>> +    description:
+>> +      Container for dai-link level properties and CODEC sub-nodes.
+>> +
+>> +    properties:
+>> +      link-name:
+>> +        description: Indicates dai-link name and PCM stream name
+>> +        items:
+>> +          enum:
+>> +            - I2S0
+>> +            - I2S1
+>> +            - I2S2
+>> +            - I2S3
+>> +            - I2S4
+>> +            - I2S5
+>> +            - I2S6
+>> +            - I2S7
+>> +            - I2S8
+>> +            - I2S9
+>> +            - TDM
+>> +
+>> +      codec:
+>> +        description: Holds subnode which indicates codec dai.
+>> +        type: object
+>> +        additionalProperties: false
+>> +        properties:
+>> +          sound-dai:
+>> +            minItems: 1
+>> +            maxItems: 2
+>> +        required:
+>> +          - sound-dai
+>> +
+>> +      dai-format:
+>> +        description: audio format
+>> +        items:
+>> +          enum:
+>> +            - i2s
+>> +            - right_j
+>> +            - left_j
+>> +            - dsp_a
+>> +            - dsp_b
+>> +
+>> +      mediatek,clk-provider:
+>> +        $ref: /schemas/types.yaml#/definitions/string
+>> +        description: Indicates dai-link clock master.
+>> +        items:
+>> +          enum:
+>> +            - cpu
+>> +            - codec
+>> +
+>> +    additionalProperties: false
+> 
+> Move this before properties.
+> 
+
+Done for v2.
+
+>> +
+>> +    required:
+>> +      - link-name
+>> +
+>>   additionalProperties: false
+>>   
+>>   required:
+>>     - compatible
+>>     - mediatek,platform
+>> -  - headset-codec
+>> -  - speaker-codecs
+>> +
+>> +allOf:
+>> +  # Disallow dai-link-xxx nodes if the legacy properties are specified
+> 
+> xxx-dai-link?
+> 
+
+Oh! Yes, thanks for catching this.
+
+That's what I initially wanted to do, but then I opted for xxx-dai-link and
+forgot to update this comment.
+
+Fixed for v2.
+
+>> +  - if:
+>> +      patternProperties:
+>> +        ".*-dai-link$": false
+>> +    then:
+>> +      required:
+>> +        - headset-codec
+>> +        - speaker-codecs
+>> +    else:
+>> +      properties:
+>> +        headset-codec: false
+>> +        speaker-codecs: false
+>> +        mediatek,hdmi-codec: false
+> 
+> Allowing both would preserve compatibility. That's not needed? If so,
+> say why in the commit msg.
+> 
+
+I'm thinking of writing:
+
+"Since describing machine specific audio hardware and links replaces the
+now deprecated old logic doing the same in a driver hardcoded fashion,
+it is not allowed to have both the old and new properties together."
+
+...but in short - both the old and the new can do exactly the same, but
+imo it doesn't make any sense to actually rely on both as:
+  1. It's redundant (and one set of them makes the other useless);
+  2. I want to avoid confusion (as the other set won't be parsed);
+  3. I'm trying to *enforce* consistency as MTK cards have different
+     bindings for .. really, no good reason;
+  4. I want to see custom stuff disappear completely (and/or as much as
+     possible anyway) and use something that is (at least somewhat) common
+     between all MTK and non-MTK or anyway as a start at least consistent
+     between MTK cards.
+
+In theory, though, speaking of the driver side, there's nothing preventing
+you from specifying both audio-routing xxx-dai-link and mediatek,hdmi-codec,
+as the drivers' action will be, in short
+    if (new_bindings)
+      forget_about_old_bindings_use_the_new_ones();
+    else
+      use_old_hardcoded_stuff(); /* and be sad */
 
 
+For that, I really don't want to allow both sets of properties - please, please,
+tell me that I don't *have to* remove this block :-)
 
-> After this patchset, we are not only able to unify the page
-> frag implementation a little, but also able to have about
-> 0.5% performance boost testing by using the vhost_net_test
-> introduced in the last patch.
-> 
-> Before this patchset:
-> Performance counter stats for './vhost_net_test' (10 runs):
-> 
->      305325.78 msec task-clock                       #    1.738 CPUs utilized               ( +-  0.12% )
->        1048668      context-switches                 #    3.435 K/sec                       ( +-  0.00% )
->             11      cpu-migrations                   #    0.036 /sec                        ( +- 17.64% )
->             33      page-faults                      #    0.108 /sec                        ( +-  0.49% )
->   244651819491      cycles                           #    0.801 GHz                         ( +-  0.43% )  (64)
->    64714638024      stalled-cycles-frontend          #   26.45% frontend cycles idle        ( +-  2.19% )  (67)
->    30774313491      stalled-cycles-backend           #   12.58% backend cycles idle         ( +-  7.68% )  (70)
->   201749748680      instructions                     #    0.82  insn per cycle
->                                               #    0.32  stalled cycles per insn     ( +-  0.41% )  (66.76%)
->    65494787909      branches                         #  214.508 M/sec                       ( +-  0.35% )  (64)
->     4284111313      branch-misses                    #    6.54% of all branches             ( +-  0.45% )  (66)
-> 
->        175.699 +- 0.189 seconds time elapsed  ( +-  0.11% )
-> 
-> 
-> After this patchset:
-> Performance counter stats for './vhost_net_test' (10 runs):
-> 
->      303974.38 msec task-clock                       #    1.739 CPUs utilized               ( +-  0.14% )
->        1048807      context-switches                 #    3.450 K/sec                       ( +-  0.00% )
->             14      cpu-migrations                   #    0.046 /sec                        ( +- 12.86% )
->             33      page-faults                      #    0.109 /sec                        ( +-  0.46% )
->   251289376347      cycles                           #    0.827 GHz                         ( +-  0.32% )  (60)
->    67885175415      stalled-cycles-frontend          #   27.01% frontend cycles idle        ( +-  0.48% )  (63)
->    27809282600      stalled-cycles-backend           #   11.07% backend cycles idle         ( +-  0.36% )  (71)
->   195543234672      instructions                     #    0.78  insn per cycle
->                                               #    0.35  stalled cycles per insn     ( +-  0.29% )  (69.04%)
->    62423183552      branches                         #  205.357 M/sec                       ( +-  0.48% )  (67)
->     4135666632      branch-misses                    #    6.63% of all branches             ( +-  0.63% )  (67)
-> 
->        174.764 +- 0.214 seconds time elapsed  ( +-  0.12% )
-> 
-> Changelog:
-> V6: Add timeout for poll() and simplify some logic as suggested
->     by Jason.
-> 
-> V5: Address the comment from jason in vhost_net_test.c and the
->     comment about leaving out the gfp change for page frag in
->     sock.c as suggested by Paolo.
-> 
-> V4: Resend based on latest net-next branch.
-> 
-> V3:
-> 1. Add __page_frag_alloc_align() which is passed with the align mask
->    the original function expected as suggested by Alexander.
-> 2. Drop patch 3 in v2 suggested by Alexander.
-> 3. Reorder patch 4 & 5 in v2 suggested by Alexander.
-> 
-> Note that placing this gfp flags handing for order 3 page in an inline
-> function is not considered, as we may be able to unify the page_frag
-> and page_frag_cache handling.
-> 
-> V2: Change 'xor'd' to 'masked off', add vhost tx testing for
->     vhost_net_test.
-> 
-> V1: Fix some typo, drop RFC tag and rebase on latest net-next.
-> 
-> Yunsheng Lin (5):
->   mm/page_alloc: modify page_frag_alloc_align() to accept align as an
->     argument
->   page_frag: unify gfp bits for order 3 page allocation
->   net: introduce page_frag_cache_drain()
->   vhost/net: remove vhost_net_page_frag_refill()
->   tools: virtio: introduce vhost_net_test
-> 
->  drivers/net/ethernet/google/gve/gve_main.c |  11 +-
->  drivers/net/ethernet/mediatek/mtk_wed_wo.c |  17 +-
->  drivers/nvme/host/tcp.c                    |   7 +-
->  drivers/nvme/target/tcp.c                  |   4 +-
->  drivers/vhost/net.c                        |  91 ++--
->  include/linux/gfp.h                        |  16 +-
->  mm/page_alloc.c                            |  22 +-
->  net/core/skbuff.c                          |   9 +-
->  tools/virtio/.gitignore                    |   1 +
->  tools/virtio/Makefile                      |   8 +-
->  tools/virtio/linux/virtio_config.h         |   4 +
->  tools/virtio/vhost_net_test.c              | 532 +++++++++++++++++++++
->  12 files changed, 609 insertions(+), 113 deletions(-)
->  create mode 100644 tools/virtio/vhost_net_test.c
-> 
-> -- 
-> 2.33.0
-> 
+Cheers,
+Angelo
 
 
