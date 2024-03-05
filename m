@@ -4,69 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F63FC54E41
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Mar 2024 12:51:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD457C54E41
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Mar 2024 17:56:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y0v7RjgmO/yDuWlF3/kTo+sHgoivtGNOWfDVn+nq/Ik=; b=e/rPIFjfuQjx8c8akr0s+GsH/r
-	pv1LruYMGKwDKMte6XANl3Xulyojkab1ChVd2oHvfySO9nlaOnpViPWvOm9xggHmyUF3PSH8jfp4l
-	VBVEHgjt96F73Olw0FvF/isQjToa7h7Vlv9riakZIkiOIwKGQyX8MFDPTW8EIR0jUh1DM0tT544AB
-	6aaE8+DbVS32L0Inpmwlp59BagJxYmeK20HzziLdXeZDVSGHUe7MhsgFtK5bXVZvflPp+qzp6PTt1
-	PdEKLuKS3PU5sUcn1cwWfBXIWD63zfv16SSK37dfKkbrb2FrZs6JFf9W/IeVgwGEkMC+XBFwJe5Pu
-	5FmJ9i0g==;
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:From:To:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LCfHSJif2IzTulfiAhxVZDIoy9aDonUR7qQ6uLz691o=; b=JlYuyrin8fxRA0eN5VovFJdErl
+	MErlmS3DZeFull8C1OhMAIHF55W5q1USTpRwpjYm1MVT7VFX5p6t4/8ZY0V55nT4M9LVK8ya0T3Q4
+	uRvVqdbPTKexvjEzO7BS+XFGsheqAmh3kHQ5ZR50+nUiXvieNt/dNqO7LDHnUbrsGi/v+mcf3kXJ5
+	dy1YvK0c0h+YYBK0I8drMszqBZQIUnPv0DfT0AXvNh6895eowVoUkkkgAjolyoaqOiOYkT2/14h9H
+	+Q+L14zfBqVPh5R/2TKm+n2zqimXRH0IcPOJGMqpG7znhVcdSP1X2I+fhUV97X8PhTANZbRbReScb
+	YTyDscvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhUG8-0000000DdLr-29Yu;
-	Tue, 05 Mar 2024 12:51:04 +0000
-Received: from mail-oo1-f54.google.com ([209.85.161.54])
+	id 1rhZ1O-0000000Elfn-2UQB;
+	Tue, 05 Mar 2024 17:56:10 +0000
+Received: from mail-4317.proton.ch ([185.70.43.17])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhTAo-0000000DPo7-0fl5;
-	Tue, 05 Mar 2024 11:41:34 +0000
-Received: by mail-oo1-f54.google.com with SMTP id 006d021491bc7-5a1358e7e16so546545eaf.0;
-        Tue, 05 Mar 2024 03:41:28 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709638888; x=1710243688;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=y0v7RjgmO/yDuWlF3/kTo+sHgoivtGNOWfDVn+nq/Ik=;
-        b=iW4sHhflxedaKCBqvYhYOD+k1ACQL7QLlbK0KoOsR6dvRxQxnSg1Xqv0AG3Ba1DbnL
-         QDKzPGF3nUzf9iIoAl++VOj5E+vKbgsjzyeODhrN/LkuSLdIl8sF0Xg8EidvqD/pb0dH
-         RHVitnySydspnD8DV0S1KDmLJIJ8//uIzXOWDLC3BG1nFq5JnkaDff7BZiaBrY+1YGDD
-         CdfV3pvZodLJPUT9uHp/iBjePI7GwzJhZQcsS1V9ENWlfZFAg3GsE/UX94W6fH9duY5m
-         fptJ7f42Olt/9HZ0bxypSwuJ7t7dObP8+U7sa9WpJhb10tgkfWOJO8SGzdH17Wy3HBdy
-         Wu6A==
-X-Forwarded-Encrypted: i=1; AJvYcCVUpofcar8UNfDckQT4MJnN7mKd0LFgKTSLVg3ks1G80TVBveUyI6tP5O7kJ83nxmWQA/I1bn9TPU24lKTz5uBtoXi0JzERCHu1E5jHk6R7het1zc+t9Vw3fPePm8w/TDfbRRk0WmS6xsbi+lFjyJaH9fp6VWtzcnc=
-X-Gm-Message-State: AOJu0Yxj4E+HX8k4WIsDJUHSdNaCxGjpFI0vwkMPfg1uFJH9KNhJYcx8
-	VVyJxFNN5w58ejTyFzyk+DenlTSTrjduuXOZTfSnbyiZu79ZKmsXTncaCfb5Xw6IkQ+sEZceVxT
-	Slg/EHQw4hil3RId4TsmcIipk8M8=
-X-Google-Smtp-Source: AGHT+IHF4dBKyk4hRdjM6vf7T079M6yi9lKk8JmaNs0S9UveuRzmmaiok7o5fr454KPibdMqlJlfLpZYpB8AMdLmm0k=
-X-Received: by 2002:a4a:d4d4:0:b0:5a1:31a1:7f75 with SMTP id
- r20-20020a4ad4d4000000b005a131a17f75mr154574oos.1.1709638888053; Tue, 05 Mar
- 2024 03:41:28 -0800 (PST)
+	id 1rhZ1K-0000000Elep-2jyv
+	for linux-mediatek@lists.infradead.org;
+	Tue, 05 Mar 2024 17:56:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=monroe.io;
+	s=protonmail2; t=1709661359; x=1709920559;
+	bh=LCfHSJif2IzTulfiAhxVZDIoy9aDonUR7qQ6uLz691o=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=lYTe0B4HlEQUx4SQEzJDZQaKmxugpsW4T4zNt82JJM8zaQoLmxHbfVyuopBecSDzJ
+	 nSvcOj7m58LPqiIvx5ByUIZRUXyiLYs0wzRevJoNdTylj9GBCTBZ6rG+C5tbwrm5WW
+	 M5ZrUnAJDVNlwrwPoG00sW7w5EALbtQde9WpGOUx5tCZDVlsgMjVetyc7nbbzi2y5W
+	 Qo0auFI7EVGvSuWESyom0ltI+YwK2OPWs6qoll+VJEBg73U/s1PZiGDrYfp2x8SePl
+	 oWH8DTrKabi7jhspVJWDTeCuCnNA6U3A02X85jrpeIhZEN6bnN3bAz+Xq1lXasEWK0
+	 fbt4gFZf9nshQ==
+Date: Tue, 05 Mar 2024 17:55:35 +0000
+To: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>
+From: Chad Monroe <chad@monroe.io>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, Chad Monroe <chad@monroe.io>
+Subject: [PATCH] wifi: mt76: mt7996: fix size of txpower MCU command
+Message-ID: <301ef7cfecc47fa488fdf172596c9ed75719410e.1709657969.git.chad@monroe.io>
+Feedback-ID: 9731019:user:proton
 MIME-Version: 1.0
-References: <20240301092657.15528-1-qingliang.li@mediatek.com> <ZeXmcl4ngEm1RccW@hovoldconsulting.com>
-In-Reply-To: <ZeXmcl4ngEm1RccW@hovoldconsulting.com>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Tue, 5 Mar 2024 12:41:16 +0100
-Message-ID: <CAJZ5v0ifq_ZsrQnq3b4LSUJxAVMO55=m7tL+L3nNP7ixBb9yHA@mail.gmail.com>
-Subject: Re: [PATCH v2] PM: sleep: wakeirq: fix wake irq warning in system suspend
-To: Johan Hovold <johan@kernel.org>, Qingliang Li <qingliang.li@mediatek.com>
-Cc: Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Johan Hovold <johan+linaro@kernel.org>, Tony Lindgren <tony@atomide.com>, linux-pm@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Dhruva Gole <d-gole@ti.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240305_034130_767364_0FF3A817 
-X-CRM114-Status: GOOD (  16.03  )
+X-CRM114-CacheID: sfid-20240305_095607_416201_50A1B64A 
+X-CRM114-Status: UNSURE (   6.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,51 +66,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 4, 2024 at 4:19=E2=80=AFPM Johan Hovold <johan@kernel.org> wrot=
-e:
->
-> On Fri, Mar 01, 2024 at 05:26:57PM +0800, Qingliang Li wrote:
-> > When driver uses pm_runtime_force_suspend() as the system suspend callb=
-ack
-> > function and registers the wake irq with reverse enable ordering, the w=
-ake
-> > irq will be re-enabled when entering system suspend, triggering an
-> > 'Unbalanced enable for IRQ xxx' warning. In this scenario, the call
-> > sequence during system suspend is as follows:
-> >   suspend_devices_and_enter()
-> >     -> dpm_suspend_start()
-> >       -> dpm_run_callback()
-> >         -> pm_runtime_force_suspend()
-> >           -> dev_pm_enable_wake_irq_check()
-> >           -> dev_pm_enable_wake_irq_complete()
-> >
-> >     -> suspend_enter()
-> >       -> dpm_suspend_noirq()
-> >         -> device_wakeup_arm_wake_irqs()
-> >           -> dev_pm_arm_wake_irq()
-> >
-> > To fix this issue, complete the setting of WAKE_IRQ_DEDICATED_ENABLED f=
-lag
-> > in dev_pm_enable_wake_irq_complete() to avoid redundant irq enablement.
-> >
-> > Reviewed-by: Dhruva Gole <d-gole@ti.com>
-> > Signed-off-by: Qingliang Li <qingliang.li@mediatek.com>
->
-> Thanks for the fix. Looks correct to me:
->
-> Reviewed-by: Johan Hovold <johan+linaro@kernel.org>
->
-> I think you should add back the Fixes tag from v1 and CC stable as well:
->
-> Fixes: 8527beb12087 ("PM: sleep: wakeirq: fix wake irq arming")
-> Cc: stable@vger.kernel.org      # 5.16
->
-> Note that WAKE_IRQ_DEDICATED_REVERSE was added in 5.16 by commit
-> 259714100d98 ("PM / wakeirq: support enabling wake-up irq after
-> runtime_suspend called") so no need to try to backport any further than
-> that.
+Fixes issues with scanning and low power output at some rates.
 
-Applied as 6.9 material, tags added as suggested above.
+Fixes: f75e4779d215 ("wifi: mt76: mt7996: add txpower setting support")
+Signed-off-by: Chad Monroe <chad@monroe.io>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    | 7 +++++--
+ drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h | 1 +
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
-Thanks!
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/=
+wireless/mediatek/mt76/mt7996/mcu.c
+index b44abe2acc81..cfb5a7d348eb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -4464,7 +4464,7 @@ int mt7996_mcu_set_txpower_sku(struct mt7996_phy *phy=
+)
+ =09=09u8 band_idx;
+ =09} __packed req =3D {
+ =09=09.tag =3D cpu_to_le16(UNI_TXPOWER_POWER_LIMIT_TABLE_CTRL),
+-=09=09.len =3D cpu_to_le16(sizeof(req) + MT7996_SKU_RATE_NUM - 4),
++=09=09.len =3D cpu_to_le16(sizeof(req) + MT7996_SKU_PATH_NUM - 4),
+ =09=09.power_ctrl_id =3D UNI_TXPOWER_POWER_LIMIT_TABLE_CTRL,
+ =09=09.power_limit_type =3D TX_POWER_LIMIT_TABLE_RATE,
+ =09=09.band_idx =3D phy->mt76->band_idx,
+@@ -4479,7 +4479,7 @@ int mt7996_mcu_set_txpower_sku(struct mt7996_phy *phy=
+)
+ =09mphy->txpower_cur =3D tx_power;
+=20
+ =09skb =3D mt76_mcu_msg_alloc(&dev->mt76, NULL,
+-=09=09=09=09 sizeof(req) + MT7996_SKU_RATE_NUM);
++=09=09=09=09 sizeof(req) + MT7996_SKU_PATH_NUM);
+ =09if (!skb)
+ =09=09return -ENOMEM;
+=20
+@@ -4503,6 +4503,9 @@ int mt7996_mcu_set_txpower_sku(struct mt7996_phy *phy=
+)
+ =09/* eht */
+ =09skb_put_data(skb, &la.eht[0], sizeof(la.eht));
+=20
++=09/* padding */
++=09skb_put_zero(skb, MT7996_SKU_PATH_NUM - MT7996_SKU_RATE_NUM);
++
+ =09return mt76_mcu_skb_send_msg(&dev->mt76, skb,
+ =09=09=09=09     MCU_WM_UNI_CMD(TXPOWER), true);
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/n=
+et/wireless/mediatek/mt76/mt7996/mt7996.h
+index 36d1f247d55a..ddeb40d522c5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+@@ -50,6 +50,7 @@
+ #define MT7996_CFEND_RATE_11B=09=090x03=09/* 11B LP, 11M */
+=20
+ #define MT7996_SKU_RATE_NUM=09=09417
++#define MT7996_SKU_PATH_NUM=09=09494
+=20
+ #define MT7996_MAX_TWT_AGRT=09=0916
+ #define MT7996_MAX_STA_TWT_AGRT=09=098
+--=20
+2.39.2
+
+
 
