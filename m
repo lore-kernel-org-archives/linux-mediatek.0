@@ -4,78 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9A2AC54798
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Mar 2024 10:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CDE9C54798
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Mar 2024 10:26:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Uz0yh26pJyI2lgavpFBHtkwa48gqP1n9gYCBFbz4nG8=; b=uhcZWtqkHmGy/m1ANiTg3CTtg5
-	qrbk55sE8WIMWO2aqSpZnyzL49oupm8EKXT0vtEXX/rqrM4Mal68WYHjxQ6tqLayNiqlxatqI7gmP
-	BQpS/SkVY2+mn2mYQrtS0FRk8IKGcHqc8PwcVSq7k9vwRpm2CvkSqTCq5OAz8uy/lZIm7mZ0A38dv
-	LxuEEzhCFRj/DAa1ACpSGSuGt/JyE41RYxAI2utrb+gOgkQ86yO5bkwnrNpOhjIu8PJ5YPGZROgej
-	lSz9FIzxjAAIQHPW636iMQZ3cccxpNHkTEJLupucSzEew696s4qbNrEXfeQMJXMq8xjAhaMJgxiAK
-	OdTdV0QQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=io1my3dx5VcMiNJUZUsb740tl0108EWYfuMDY6G7mng=; b=Hd7OL3CcrG5QKM1mU0ZWS4u1yB
+	v730oje2O7ubIMQKaicwM85X7RsLhOdJJLaOz89IrL1WOXlPlSqCGR+OdntGYOZ9HKCUG2SPCy8zC
+	nhhXlOpn9iYTgzJvKpOf3abwazSq5pvuKO8zI1drc7XSP8pRLlLbAl9WSJEvis9m6x1kfDJzXxkGj
+	1k+tg/LSEkMnuz7dTYU1WhKKpfyUFaucymIpLVxRBrUCFolK2ktlLG5Xhe4QrfvqTM2p/AM0j1PNP
+	QAsZHqCyzDTixGnLMijHXoOMwfHzDiAqctU/urDKrGb0aCnIxt4chXPrEvJ5QMiDRdarYTMG9mHvL
+	tWlfTkCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhRv4-0000000D08K-2PDo;
-	Tue, 05 Mar 2024 10:21:10 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rhS0d-0000000D2cI-3HbV;
+	Tue, 05 Mar 2024 10:26:55 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhRux-0000000D01t-35vw;
-	Tue, 05 Mar 2024 10:21:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709634057;
-	bh=BPEtYfyFZ3zIsSSumymVBNXkt5kDgI1A4gqsNs7DMws=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LORY2kHfPljuF+0IEJo7vcxZLDuh04Xff+jT8HMdMATwYiBtkRza0yRd8FyyGZiFM
-	 p5gvq5ogsQXlg/lmCBt5CzgSn0fZf4xVOeDoPW0D2RLDvEMV0ZCdgr+4JK21oB3q9p
-	 Z9GXN1NnPDKMHAf+eYAvGjZebFZxH+GHa++fOEQbAli5Ru/kw3j4sulrvcW9Urhziu
-	 m+NWsTW5F6DZwTMgAXopF8zxMiOX7D42fBMAV0E+rtRNfNNMPZHMWuZ6/jYK/fB/8z
-	 YfLeRF4nFcTxgDFOqeUt8I2HDFyiXwxxfglxCt7P82RDEaKMpriqI3VxOhie906WX6
-	 3ZZ/G8lWD827w==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 70FC23781FEF;
-	Tue,  5 Mar 2024 10:20:56 +0000 (UTC)
-Message-ID: <e9cc42d7-db7f-4bd8-978e-72b97cfa8d41@collabora.com>
-Date: Tue, 5 Mar 2024 11:20:55 +0100
+	id 1rhS0a-0000000D2a3-1h8T
+	for linux-mediatek@lists.infradead.org;
+	Tue, 05 Mar 2024 10:26:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1709634411;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=io1my3dx5VcMiNJUZUsb740tl0108EWYfuMDY6G7mng=;
+	b=gMNjsDZK7bB7erXfHgS1+X2Wh/GqXv/zy4EP3Nkc6oTTnAkm8YwwjCnKYjr/pxUYn+kfFI
+	twx4ak8gOTqvRv5Bmq3e5t0PfnSnZlp4TE8Vi7pU6vwUKWAYFrAVkHGc+yirCILnVQ7PVo
+	XHG/l74AaYB31X2hnKs2IkiLH5dkq6g=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-17-cCLoFU8wOIa2-Tiy6pwrzQ-1; Tue, 05 Mar 2024 05:26:49 -0500
+X-MC-Unique: cCLoFU8wOIa2-Tiy6pwrzQ-1
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-40e4478a3afso28111285e9.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 05 Mar 2024 02:26:49 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1709634406; x=1710239206;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=io1my3dx5VcMiNJUZUsb740tl0108EWYfuMDY6G7mng=;
+        b=MTBD2I4Tl1OqgF+9CtvJwlR8PVK7w3gv7AlzMOEzm9hR1TybNX1JU4ccgKrGj/QShQ
+         m6Y4q2g8Trypy4WDxbR5IYKa74M+5PPf8Aqx89ATuXFwW78bQ4YX6vD5zRFrKLHnPkIx
+         19er/8qwBQQR+MiQdyQN5TEVXMAwP2jG6ZWxFhVAJn5hZ+Kedd913bPKuJRBNl1nQf7E
+         LycRWJN3MNfQ44picU0dTEV/g2eNMMZs71pihuOA4uMKy8ZST86YLSochazJa4Qn8xEE
+         v8DogQRmAnYrRauKa4rFoRqYIxiH4Jva/PhqGABf89v5rN3rWVFjy5QAEK/4OBlkpyrz
+         fB8g==
+X-Forwarded-Encrypted: i=1; AJvYcCUuMQg+1+7aMjxemO7qTy+REA01NZCsDYPymFKddo+7uCNyVgwHinoeLR8MRiR9Bh18cu0rler6VPJ/eJC9YAEsqYxwBTX/n5uhX8guKET5GFUD
+X-Gm-Message-State: AOJu0YzUHzWRfIyCRgQ2K22Umex7Ailegis4SWWJ551ONHTyihvv9rt8
+	gggvx+OeNcMy9SqAGjkQd3onmgOzMOOM+ij5Cqx5bg6rCgo8Su/54ixzCGvlIRx3ZCL8PjWyjN5
+	2B9U9fDJp2k5nfO366oTiMk0svFigVbpPPkhOosawzmXWzMgEyHstb1SIz6VyZ3K/zDLWew==
+X-Received: by 2002:a05:600c:4ec9:b0:412:ee33:db93 with SMTP id g9-20020a05600c4ec900b00412ee33db93mr853626wmq.3.1709634406071;
+        Tue, 05 Mar 2024 02:26:46 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IETtaPEq/Qiw+Ak7Pg+x0crtRFqpR6UCq3Qm4vjMmZUeWkXfZK6yUWGGPZ7vt3r6znJAUy1tA==
+X-Received: by 2002:a05:600c:4ec9:b0:412:ee33:db93 with SMTP id g9-20020a05600c4ec900b00412ee33db93mr853610wmq.3.1709634405718;
+        Tue, 05 Mar 2024 02:26:45 -0800 (PST)
+Received: from redhat.com ([2.52.130.198])
+        by smtp.gmail.com with ESMTPSA id fm5-20020a05600c0c0500b00412e6513639sm4585523wmb.23.2024.03.05.02.26.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 05 Mar 2024 02:26:45 -0800 (PST)
+Date: Tue, 5 Mar 2024 05:26:41 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Yunsheng Lin <linyunsheng@huawei.com>
+Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alexei Starovoitov <ast@kernel.org>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Fastabend <john.fastabend@gmail.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, bpf@vger.kernel.org
+Subject: Re: [PATCH net-next v6 0/5] remove page frag implementation in
+ vhost_net
+Message-ID: <20240305052625-mutt-send-email-mst@kernel.org>
+References: <20240228093013.8263-1-linyunsheng@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/5] mailbox: mtk-cmdq: Add support runtime get and set
- GCE event
-Content-Language: en-US
-To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
- "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?SmFzb24tY2ggQ2hlbiAo6Zmz5bu66LGqKQ==?=
- <Jason-ch.Chen@mediatek.com>, =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?=
- <Shawn.Sung@mediatek.com>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?=
- <Nancy.Lin@mediatek.com>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-References: <20240301111126.22035-1-jason-jh.lin@mediatek.com>
- <20240301111126.22035-6-jason-jh.lin@mediatek.com>
- <298c13ff-25a7-4d9c-ab51-4c22c07c245d@collabora.com>
- <35b6915dd195abba009dab64dc6002362292351c.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <35b6915dd195abba009dab64dc6002362292351c.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240228093013.8263-1-linyunsheng@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240305_022104_168994_3F67D5B5 
-X-CRM114-Status: GOOD (  17.38  )
+X-CRM114-CacheID: sfid-20240305_022652_636464_15F3A8EB 
+X-CRM114-Status: GOOD (  23.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,90 +108,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/03/24 04:09, Jason-JH Lin (林睿祥) ha scritto:
-> Hi Angelo,
+On Wed, Feb 28, 2024 at 05:30:07PM +0800, Yunsheng Lin wrote:
+> Currently there are three implementations for page frag:
 > 
-> Thanks for the reviews.
+> 1. mm/page_alloc.c: net stack seems to be using it in the
+>    rx part with 'struct page_frag_cache' and the main API
+>    being page_frag_alloc_align().
+> 2. net/core/sock.c: net stack seems to be using it in the
+>    tx part with 'struct page_frag' and the main API being
+>    skb_page_frag_refill().
+> 3. drivers/vhost/net.c: vhost seems to be using it to build
+>    xdp frame, and it's implementation seems to be a mix of
+>    the above two.
 > 
-> On Mon, 2024-03-04 at 11:06 +0100, AngeloGioacchino Del Regno wrote:
->> Il 01/03/24 12:11, Jason-JH.Lin ha scritto:
->>> ISP drivers need to get and set GCE event in their runtime contorl
->>> flow.
->>> So add these functions to support get and set GCE by CPU.
->>>
->>> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
->>> Change-Id: I494c34ebc5ec26c82213f2bc03d2033d60652523
->>
->> Change-Id makes no sense upstream. Please drop.
-> 
-> OK, I'll drop it.
-> 
->>
->>> ---
->>>    drivers/mailbox/mtk-cmdq-mailbox.c       | 37
->>> ++++++++++++++++++++++++
->>>    include/linux/mailbox/mtk-cmdq-mailbox.h |  2 ++
->>>    2 files changed, 39 insertions(+)
->>>
->>> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
->>> b/drivers/mailbox/mtk-cmdq-mailbox.c
->>> index ead2200f39ba..d7c08249c898 100644
->>> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
->>> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
->>> @@ -25,7 +25,11 @@
->>>    #define CMDQ_GCE_NUM_MAX		(2)
->>>    
->>>    #define CMDQ_CURR_IRQ_STATUS		0x10
->>> +#define CMDQ_SYNC_TOKEN_ID		0x60
->>> +#define CMDQ_SYNC_TOKEN_VALUE		0x64
->>> +#define CMDQ_TOKEN_ID_MASK			GENMASK(9, 0)
->>>    #define CMDQ_SYNC_TOKEN_UPDATE		0x68
->>> +#define CMDQ_TOKEN_UPDATE_VALUE			BIT(16)
->>>    #define CMDQ_THR_SLOT_CYCLES		0x30
->>>    #define CMDQ_THR_BASE			0x100
->>>    #define CMDQ_THR_SIZE			0x80
->>> @@ -83,6 +87,7 @@ struct cmdq {
->>>    	struct cmdq_thread	*thread;
->>>    	struct clk_bulk_data	clocks[CMDQ_GCE_NUM_MAX];
->>>    	bool			suspended;
->>> +	spinlock_t		event_lock; /* lock for gce event */
->>>    };
->>>    
->>>    struct gce_plat {
->>> @@ -113,6 +118,38 @@ u8 cmdq_get_shift_pa(struct mbox_chan *chan)
->>>    }
->>>    EXPORT_SYMBOL(cmdq_get_shift_pa);
->>>    
->>> +void cmdq_set_event(void *chan, u16 event_id)
->>> +{
->>> +	struct cmdq *cmdq = container_of(((struct mbox_chan *)chan)-
->>>> mbox,
->>> +		typeof(*cmdq), mbox);
->>
->> struct mbox_chan *mbc = chan;
->> struct cmdq *cmdq = container_of(mbc->mbox, ... etc); (and this fits
->> in one line)
->>
-> OK, I'll change it.
-> 
->>> +	unsigned long flags;
->>> +
->>> +	spin_lock_irqsave(&cmdq->event_lock, flags);
->>
->> Why do you need irqsave/irqrestore? I think I know, but please
->> explain.
->>
-> Because ISP driver may call cmdq_get_event() first than use
-> cmdq_set_event() to update the event status in one
-> mtk_imgsys_setevent() function frequently.
-> 
-> And mtk_imgsys_setevent() will be called in SW multi-thread after cmdq
-> callback from cmdq_irq_handler, so we use the spin_lock_irqsave to
-> avoid the race condition.
+> This patchset tries to unfiy the page frag implementation a
+> little bit by unifying gfp bit for order 3 page allocation
+> and replacing page frag implementation in vhost.c with the
+> one in page_alloc.c.
 
-I was imagining something like that, yes - thank you for explaining.
+Looks good
 
-Cheers,
-Angelo
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+
+
+
+> After this patchset, we are not only able to unify the page
+> frag implementation a little, but also able to have about
+> 0.5% performance boost testing by using the vhost_net_test
+> introduced in the last patch.
+> 
+> Before this patchset:
+> Performance counter stats for './vhost_net_test' (10 runs):
+> 
+>      305325.78 msec task-clock                       #    1.738 CPUs utilized               ( +-  0.12% )
+>        1048668      context-switches                 #    3.435 K/sec                       ( +-  0.00% )
+>             11      cpu-migrations                   #    0.036 /sec                        ( +- 17.64% )
+>             33      page-faults                      #    0.108 /sec                        ( +-  0.49% )
+>   244651819491      cycles                           #    0.801 GHz                         ( +-  0.43% )  (64)
+>    64714638024      stalled-cycles-frontend          #   26.45% frontend cycles idle        ( +-  2.19% )  (67)
+>    30774313491      stalled-cycles-backend           #   12.58% backend cycles idle         ( +-  7.68% )  (70)
+>   201749748680      instructions                     #    0.82  insn per cycle
+>                                               #    0.32  stalled cycles per insn     ( +-  0.41% )  (66.76%)
+>    65494787909      branches                         #  214.508 M/sec                       ( +-  0.35% )  (64)
+>     4284111313      branch-misses                    #    6.54% of all branches             ( +-  0.45% )  (66)
+> 
+>        175.699 +- 0.189 seconds time elapsed  ( +-  0.11% )
+> 
+> 
+> After this patchset:
+> Performance counter stats for './vhost_net_test' (10 runs):
+> 
+>      303974.38 msec task-clock                       #    1.739 CPUs utilized               ( +-  0.14% )
+>        1048807      context-switches                 #    3.450 K/sec                       ( +-  0.00% )
+>             14      cpu-migrations                   #    0.046 /sec                        ( +- 12.86% )
+>             33      page-faults                      #    0.109 /sec                        ( +-  0.46% )
+>   251289376347      cycles                           #    0.827 GHz                         ( +-  0.32% )  (60)
+>    67885175415      stalled-cycles-frontend          #   27.01% frontend cycles idle        ( +-  0.48% )  (63)
+>    27809282600      stalled-cycles-backend           #   11.07% backend cycles idle         ( +-  0.36% )  (71)
+>   195543234672      instructions                     #    0.78  insn per cycle
+>                                               #    0.35  stalled cycles per insn     ( +-  0.29% )  (69.04%)
+>    62423183552      branches                         #  205.357 M/sec                       ( +-  0.48% )  (67)
+>     4135666632      branch-misses                    #    6.63% of all branches             ( +-  0.63% )  (67)
+> 
+>        174.764 +- 0.214 seconds time elapsed  ( +-  0.12% )
+> 
+> Changelog:
+> V6: Add timeout for poll() and simplify some logic as suggested
+>     by Jason.
+> 
+> V5: Address the comment from jason in vhost_net_test.c and the
+>     comment about leaving out the gfp change for page frag in
+>     sock.c as suggested by Paolo.
+> 
+> V4: Resend based on latest net-next branch.
+> 
+> V3:
+> 1. Add __page_frag_alloc_align() which is passed with the align mask
+>    the original function expected as suggested by Alexander.
+> 2. Drop patch 3 in v2 suggested by Alexander.
+> 3. Reorder patch 4 & 5 in v2 suggested by Alexander.
+> 
+> Note that placing this gfp flags handing for order 3 page in an inline
+> function is not considered, as we may be able to unify the page_frag
+> and page_frag_cache handling.
+> 
+> V2: Change 'xor'd' to 'masked off', add vhost tx testing for
+>     vhost_net_test.
+> 
+> V1: Fix some typo, drop RFC tag and rebase on latest net-next.
+> 
+> Yunsheng Lin (5):
+>   mm/page_alloc: modify page_frag_alloc_align() to accept align as an
+>     argument
+>   page_frag: unify gfp bits for order 3 page allocation
+>   net: introduce page_frag_cache_drain()
+>   vhost/net: remove vhost_net_page_frag_refill()
+>   tools: virtio: introduce vhost_net_test
+> 
+>  drivers/net/ethernet/google/gve/gve_main.c |  11 +-
+>  drivers/net/ethernet/mediatek/mtk_wed_wo.c |  17 +-
+>  drivers/nvme/host/tcp.c                    |   7 +-
+>  drivers/nvme/target/tcp.c                  |   4 +-
+>  drivers/vhost/net.c                        |  91 ++--
+>  include/linux/gfp.h                        |  16 +-
+>  mm/page_alloc.c                            |  22 +-
+>  net/core/skbuff.c                          |   9 +-
+>  tools/virtio/.gitignore                    |   1 +
+>  tools/virtio/Makefile                      |   8 +-
+>  tools/virtio/linux/virtio_config.h         |   4 +
+>  tools/virtio/vhost_net_test.c              | 532 +++++++++++++++++++++
+>  12 files changed, 609 insertions(+), 113 deletions(-)
+>  create mode 100644 tools/virtio/vhost_net_test.c
+> 
+> -- 
+> 2.33.0
+> 
 
 
