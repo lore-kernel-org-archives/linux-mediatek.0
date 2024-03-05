@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 000E3C54798
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Mar 2024 12:00:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F63FC54E41
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Mar 2024 12:51:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8e5FIg8w3E12OTvq56AdNesyQh6/A2ARyDUQytEKmEY=; b=OzhjJbgjkw65LRFk2R2niUzGLx
-	MXDmT7yUyVTAW8gmbtSfx8kLBWZDVQM3bs6/3EnIkfWfFJOQXDiNWONk6GG0KAPqsRvHBWaz9MQhm
-	pICvdoZuxR6Skb1uweky6YT1wqJMGGv15K7gn6Mi41qXKLAjTVVK06Ygxd/i5WGqBwYJ1UFmnSW9q
-	ztZ8Fq3u8WcdprJnIYVF8TQ1o1i/0sw6tNgtUXBGT97HeZ36kxShTSFGD1tzymcag7O3ONrzjtWvj
-	qJzSl4IsJCOHpO+Z0H1ESSX4H0TsdKJARl8S1ShtJ7JBan5WYT0QfOuJvaDOVN6WQp9ncmXLjpe9q
-	FhjLA71Q==;
+	bh=y0v7RjgmO/yDuWlF3/kTo+sHgoivtGNOWfDVn+nq/Ik=; b=e/rPIFjfuQjx8c8akr0s+GsH/r
+	pv1LruYMGKwDKMte6XANl3Xulyojkab1ChVd2oHvfySO9nlaOnpViPWvOm9xggHmyUF3PSH8jfp4l
+	VBVEHgjt96F73Olw0FvF/isQjToa7h7Vlv9riakZIkiOIwKGQyX8MFDPTW8EIR0jUh1DM0tT544AB
+	6aaE8+DbVS32L0Inpmwlp59BagJxYmeK20HzziLdXeZDVSGHUe7MhsgFtK5bXVZvflPp+qzp6PTt1
+	PdEKLuKS3PU5sUcn1cwWfBXIWD63zfv16SSK37dfKkbrb2FrZs6JFf9W/IeVgwGEkMC+XBFwJe5Pu
+	5FmJ9i0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhTTM-0000000DTEL-0SNt;
-	Tue, 05 Mar 2024 12:00:40 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rhUG8-0000000DdLr-29Yu;
+	Tue, 05 Mar 2024 12:51:04 +0000
+Received: from mail-oo1-f54.google.com ([209.85.161.54])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhTTG-0000000DTBY-29lO;
-	Tue, 05 Mar 2024 12:00:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id D82CFCE19FD;
-	Tue,  5 Mar 2024 12:00:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 195C8C43390;
-	Tue,  5 Mar 2024 12:00:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1709640032;
-	bh=dksLaDVSy6nq7bP4e4YeQwSAmypjMREMKHNjaEVWxwQ=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=iX+Nvu4f89MlkCTlP8LkvOL+xzTIElbLQkK1ES/qoNu9WG6d8FTflxfdESs2PSYcb
-	 WGzbhP6RIvkRXlqX/D6Tj82ZCceKF/ZGDRqYI+fCoOV52NXAMQaeWB+TqBtbHaVWPz
-	 R2DMiRBj5AreLzi9BOOhaRNqMP3owHpMvcEhp+TysDU39AWRBCsJ46aCIptK7IE87A
-	 lchgT9n01mEeXfx32D7JBZxCn1TH5LY3Ujppkfnss0DAt/z9H7iftkExyoC21Tpmvt
-	 nzPRVf8Bf+ApB0kou3XaqEH71w++ZrBPtAnEuJSdtrLoDGWF3ycurkILxu/iYkdrwr
-	 Z770SFr6giXLg==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id E7A59D84BDF;
-	Tue,  5 Mar 2024 12:00:31 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1rhTAo-0000000DPo7-0fl5;
+	Tue, 05 Mar 2024 11:41:34 +0000
+Received: by mail-oo1-f54.google.com with SMTP id 006d021491bc7-5a1358e7e16so546545eaf.0;
+        Tue, 05 Mar 2024 03:41:28 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1709638888; x=1710243688;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=y0v7RjgmO/yDuWlF3/kTo+sHgoivtGNOWfDVn+nq/Ik=;
+        b=iW4sHhflxedaKCBqvYhYOD+k1ACQL7QLlbK0KoOsR6dvRxQxnSg1Xqv0AG3Ba1DbnL
+         QDKzPGF3nUzf9iIoAl++VOj5E+vKbgsjzyeODhrN/LkuSLdIl8sF0Xg8EidvqD/pb0dH
+         RHVitnySydspnD8DV0S1KDmLJIJ8//uIzXOWDLC3BG1nFq5JnkaDff7BZiaBrY+1YGDD
+         CdfV3pvZodLJPUT9uHp/iBjePI7GwzJhZQcsS1V9ENWlfZFAg3GsE/UX94W6fH9duY5m
+         fptJ7f42Olt/9HZ0bxypSwuJ7t7dObP8+U7sa9WpJhb10tgkfWOJO8SGzdH17Wy3HBdy
+         Wu6A==
+X-Forwarded-Encrypted: i=1; AJvYcCVUpofcar8UNfDckQT4MJnN7mKd0LFgKTSLVg3ks1G80TVBveUyI6tP5O7kJ83nxmWQA/I1bn9TPU24lKTz5uBtoXi0JzERCHu1E5jHk6R7het1zc+t9Vw3fPePm8w/TDfbRRk0WmS6xsbi+lFjyJaH9fp6VWtzcnc=
+X-Gm-Message-State: AOJu0Yxj4E+HX8k4WIsDJUHSdNaCxGjpFI0vwkMPfg1uFJH9KNhJYcx8
+	VVyJxFNN5w58ejTyFzyk+DenlTSTrjduuXOZTfSnbyiZu79ZKmsXTncaCfb5Xw6IkQ+sEZceVxT
+	Slg/EHQw4hil3RId4TsmcIipk8M8=
+X-Google-Smtp-Source: AGHT+IHF4dBKyk4hRdjM6vf7T079M6yi9lKk8JmaNs0S9UveuRzmmaiok7o5fr454KPibdMqlJlfLpZYpB8AMdLmm0k=
+X-Received: by 2002:a4a:d4d4:0:b0:5a1:31a1:7f75 with SMTP id
+ r20-20020a4ad4d4000000b005a131a17f75mr154574oos.1.1709638888053; Tue, 05 Mar
+ 2024 03:41:28 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v3 0/9] MT7530 DSA Subdriver Improvements Act III
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <170964003194.11081.15831016567274956859.git-patchwork-notify@kernel.org>
-Date: Tue, 05 Mar 2024 12:00:31 +0000
-References: <20240301-for-netnext-mt7530-improvements-3-v3-0-449f4f166454@arinc9.com>
-In-Reply-To: <20240301-for-netnext-mt7530-improvements-3-v3-0-449f4f166454@arinc9.com>
-To: =?utf-8?b?QXLEsW7DpyDDnE5BTCB2aWEgQjQgUmVsYXkgPGRldm51bGwrYXJpbmMudW5hbC5h?=@ci.codeaurora.org,
-	=?utf-8?b?cmluYzkuY29tQGtlcm5lbC5vcmc+?=@ci.codeaurora.org
-Cc: daniel@makrotopia.org, dqfext@gmail.com, sean.wang@mediatek.com,
- andrew@lunn.ch, f.fainelli@gmail.com, olteanv@gmail.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux@armlinux.org.uk, mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
- bartel.eerdekens@constell8.be, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, arinc.unal@arinc9.com
+References: <20240301092657.15528-1-qingliang.li@mediatek.com> <ZeXmcl4ngEm1RccW@hovoldconsulting.com>
+In-Reply-To: <ZeXmcl4ngEm1RccW@hovoldconsulting.com>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Tue, 5 Mar 2024 12:41:16 +0100
+Message-ID: <CAJZ5v0ifq_ZsrQnq3b4LSUJxAVMO55=m7tL+L3nNP7ixBb9yHA@mail.gmail.com>
+Subject: Re: [PATCH v2] PM: sleep: wakeirq: fix wake irq warning in system suspend
+To: Johan Hovold <johan@kernel.org>, Qingliang Li <qingliang.li@mediatek.com>
+Cc: Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Johan Hovold <johan+linaro@kernel.org>, Tony Lindgren <tony@atomide.com>, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Dhruva Gole <d-gole@ti.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240305_040034_948240_30161E07 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20240305_034130_767364_0FF3A817 
+X-CRM114-Status: GOOD (  16.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,48 +81,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Mon, Mar 4, 2024 at 4:19=E2=80=AFPM Johan Hovold <johan@kernel.org> wrot=
+e:
+>
+> On Fri, Mar 01, 2024 at 05:26:57PM +0800, Qingliang Li wrote:
+> > When driver uses pm_runtime_force_suspend() as the system suspend callb=
+ack
+> > function and registers the wake irq with reverse enable ordering, the w=
+ake
+> > irq will be re-enabled when entering system suspend, triggering an
+> > 'Unbalanced enable for IRQ xxx' warning. In this scenario, the call
+> > sequence during system suspend is as follows:
+> >   suspend_devices_and_enter()
+> >     -> dpm_suspend_start()
+> >       -> dpm_run_callback()
+> >         -> pm_runtime_force_suspend()
+> >           -> dev_pm_enable_wake_irq_check()
+> >           -> dev_pm_enable_wake_irq_complete()
+> >
+> >     -> suspend_enter()
+> >       -> dpm_suspend_noirq()
+> >         -> device_wakeup_arm_wake_irqs()
+> >           -> dev_pm_arm_wake_irq()
+> >
+> > To fix this issue, complete the setting of WAKE_IRQ_DEDICATED_ENABLED f=
+lag
+> > in dev_pm_enable_wake_irq_complete() to avoid redundant irq enablement.
+> >
+> > Reviewed-by: Dhruva Gole <d-gole@ti.com>
+> > Signed-off-by: Qingliang Li <qingliang.li@mediatek.com>
+>
+> Thanks for the fix. Looks correct to me:
+>
+> Reviewed-by: Johan Hovold <johan+linaro@kernel.org>
+>
+> I think you should add back the Fixes tag from v1 and CC stable as well:
+>
+> Fixes: 8527beb12087 ("PM: sleep: wakeirq: fix wake irq arming")
+> Cc: stable@vger.kernel.org      # 5.16
+>
+> Note that WAKE_IRQ_DEDICATED_REVERSE was added in 5.16 by commit
+> 259714100d98 ("PM / wakeirq: support enabling wake-up irq after
+> runtime_suspend called") so no need to try to backport any further than
+> that.
 
-This series was applied to netdev/net-next.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
+Applied as 6.9 material, tags added as suggested above.
 
-On Fri, 01 Mar 2024 12:42:56 +0200 you wrote:
-> Hello!
-> 
-> This is the third patch series with the goal of simplifying the MT7530 DSA
-> subdriver and improving support for MT7530, MT7531, and the switch on the
-> MT7988 SoC.
-> 
-> I have done a simple ping test to confirm basic communication on all switch
-> ports on MCM and standalone MT7530, and MT7531 switch with this patch
-> series applied.
-> 
-> [...]
-
-Here is the summary with links:
-  - [net-next,v3,1/9] net: dsa: mt7530: remove .mac_port_config for MT7988 and make it optional
-    https://git.kernel.org/netdev/net-next/c/6ebe414b48cf
-  - [net-next,v3,2/9] net: dsa: mt7530: set interrupt register only for MT7530
-    https://git.kernel.org/netdev/net-next/c/804cd5f7059e
-  - [net-next,v3,3/9] net: dsa: mt7530: do not use SW_PHY_RST to reset MT7531 switch
-    https://git.kernel.org/netdev/net-next/c/a565f98d7d25
-  - [net-next,v3,4/9] net: dsa: mt7530: get rid of useless error returns on phylink code path
-    https://git.kernel.org/netdev/net-next/c/adf4ae24ba42
-  - [net-next,v3,5/9] net: dsa: mt7530: get rid of priv->info->cpu_port_config()
-    https://git.kernel.org/netdev/net-next/c/22fa10170af5
-  - [net-next,v3,6/9] net: dsa: mt7530: get rid of mt753x_mac_config()
-    https://git.kernel.org/netdev/net-next/c/1192ed898c97
-  - [net-next,v3,7/9] net: dsa: mt7530: put initialising PCS devices code back to original order
-    https://git.kernel.org/netdev/net-next/c/3a87131e3d72
-  - [net-next,v3,8/9] net: dsa: mt7530: sort link settings ops and force link down on all ports
-    https://git.kernel.org/netdev/net-next/c/6324230b3b67
-  - [net-next,v3,9/9] net: dsa: mt7530: simplify link operations
-    https://git.kernel.org/netdev/net-next/c/b04097c7a745
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+Thanks!
 
