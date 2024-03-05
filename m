@@ -4,79 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 230F6C54798
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Mar 2024 11:20:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8CBCC54798
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Mar 2024 11:30:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t7IkjFQlwgM0OaZZoHhD2eigosPx7eQuvldXbGWZZ88=; b=DkxbdG771inLzQdgnUG6KP7MpD
-	9rWmZDdpvBmVDbD329dj6wgrFh8VYDWl4yMlapRrfyvsS5iHwkPdbFg1g7rl90f+x9R+JhvM7qnLK
-	g5ELGC9QYX4ZmdR/r7GHsDvuyCadbdKC559eiAEmb9WHywWcA2nJ7MeC3Pp+xgjcaVkewcbMvKUXy
-	0lOB1q05RK6U6HjlwVdez5Ax6smL6nn2a+N1Suy5P8Tb8Vc9dgbkT3LPTSyzuns6VgvO/AmWsGVWx
-	LlS5oJK1QvOanLNDQ+++jfQ6K07wRSCxYN8KCAw/OmxNRpNEyB2KowkTKnzozqG/rpYAIjVitrQqR
-	9tx6y2kA==;
+	bh=VTSl2wdf4yJetzl7H9Gvd1vCLYSt9TtuKh93OEuuwYo=; b=jfNAI3+vpP82XWlH1nfclgy/Z1
+	0qlO+wuL6oeUz5owfoUyKXgPoS76H78rFVu+/bQ8v7Y30T4jYPNisDaGNGGDrAEnv2DPvw/vcK1pX
+	Ge1zqA3cvb1R85mEOy+4XtUe8Ic7iHS6HRSEsdCgwCJ4sxxssUt7eZlxg/W3ztQvVEXKPak7qC8Rl
+	+NnaWc7uFU1lbZOGMnqx0bJiqDOjc8luepQEYImTudOVDrw54Luw9ggBJDFT9iypsPWHty+zAGhZx
+	BmRu37apPAdNgXvopCe7i7sKya1Z12401FA49WVKMgFcu1oRAb3UpuJVebwzSrEdb1o1l9WsXbfTM
+	DBZ3VJ9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhSqf-0000000DJMK-3ga4;
-	Tue, 05 Mar 2024 11:20:46 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rhT0D-0000000DMi3-1TdV;
+	Tue, 05 Mar 2024 11:30:33 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhSqQ-0000000DJGW-486C;
-	Tue, 05 Mar 2024 11:20:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709637624;
-	bh=GXsOiAtv6TjNhMlnQXhWlrYVpj/iqWoURTS8NBhzIFs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TnYwIv7JyXG+1tKJY1L6QFhBK6hLNXIqXnVmCOWEAOQdyPpnpkH5LPB+kuT2LVCG/
-	 Fj5f7vQbFC94/wLeTSHyQ3BNyuNUJQ8SHB1e5B7Uezm00IVPVQTOJr11SGWf4HqtzB
-	 EYUbJxHjOQgVEGBpkDYQRtw08lcQvjiG8H1BAu5Px3MK3YNUxGvdqwQGUPtac5/l7P
-	 aX9+cqGioGIisgyXez/GeONzviu8jgT1hqL6+wy0j9M3x4lpyfZYoTUlyh49nfc9mj
-	 LkY/NUiCWcQ5e+Ljb4uHWVVR7xNtq1rkq/51wjcy2bq6zTvIahX2HEu+a2BYIIqyzs
-	 /S9Y+DAD6lG+A==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E69093780029;
-	Tue,  5 Mar 2024 11:20:21 +0000 (UTC)
-Message-ID: <0aa3dc07-67c8-40a4-9e83-f702979765c5@collabora.com>
-Date: Tue, 5 Mar 2024 12:20:21 +0100
+	id 1rhT09-0000000DMfi-133L
+	for linux-mediatek@lists.infradead.org;
+	Tue, 05 Mar 2024 11:30:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1709638228;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=VTSl2wdf4yJetzl7H9Gvd1vCLYSt9TtuKh93OEuuwYo=;
+	b=AHH2beoWp6GbZWryycDUdT18dhI25aK9AAYYBLuwLpC1PIePP2hE2ADQZMSuqZo7WyiC9J
+	qPgvWa6fUjAu9zAb4/aOVdOAjd9J/qZhMOy5f3nCVftVYAvtIilcQfMQmzA+UW6Z+lgkZR
+	JCvCmy+EYiwzHFXkutGxlziCN7T5dfY=
+Received: from mail-lf1-f69.google.com (mail-lf1-f69.google.com
+ [209.85.167.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-374-lVtRxQgMNqCU2fWM9Q-sHw-1; Tue, 05 Mar 2024 06:30:27 -0500
+X-MC-Unique: lVtRxQgMNqCU2fWM9Q-sHw-1
+Received: by mail-lf1-f69.google.com with SMTP id 2adb3069b0e04-512dfa1ff28so1033716e87.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 05 Mar 2024 03:30:24 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1709638223; x=1710243023;
+        h=mime-version:user-agent:content-transfer-encoding:autocrypt
+         :references:in-reply-to:date:cc:to:from:subject:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=VTSl2wdf4yJetzl7H9Gvd1vCLYSt9TtuKh93OEuuwYo=;
+        b=npfkO9nKSUG5ey6FPdYl5yxRjQU6VtZgo+JXXXXav+Q/sx0GAxe61uLkOxY255Ue3/
+         aNb/Mmy7PG2du4QysTS96D69pxqWiknGqf4MDiGy7sFTpf9X6IJLE9QkLTnZ6bGPP77m
+         jM+cfk2AiTI5WipkjcbXD2GOlImDrXyzSJlQxsoT1OIJTzFUY2CRMl/0lepws2Qcjoxh
+         MONqeCjw5GcddQMu8uBCUXO1M7Fb21V7AoOEuX/G2XWuFRSqqr7/1v7LWxVaoFqYXsVP
+         Lh8g+w+Tk+vcHQuwcTY1AKZgkATMLmPEypA/1WEJaTjHgaj7Bo5rdB/4TJu3xCtnZgCe
+         DMWQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXvH2Lggr0sVEXyAJXHM2afr4+MxjDNWKB6H6O/4A61gjsZAe/ZGCdbJPAvHqo55b/SRN7/NoErj7k/DG367IadHK4IbEI30KAUxJI6FnWkM7cU
+X-Gm-Message-State: AOJu0YyKdt/1AwJml0pM8uyhzaWmXZ8HIHW6GpLgYAcBmKByv+vhe7MA
+	yjnQxXYgG74l0+6CWa1UtwY1/RS6B3ItaYurLXf5wkXMqFRaQhTUsLLoSERXtbWarjfkjVY5a5O
+	hAqb/fd/zywBiNFNYP2J2LELGbIf7yVU3uW21lGkYKJwXoKKsQ8I46rEi+89ExCm6T9X6bg==
+X-Received: by 2002:a05:6512:747:b0:513:2cf8:8a19 with SMTP id c7-20020a056512074700b005132cf88a19mr5167110lfs.5.1709638222935;
+        Tue, 05 Mar 2024 03:30:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF3DygI6KTM/Ds0/4ckxbgxJalqBOCQG/QN+wZROW+qfifPd2gOD/p9aL2y5etU7mMYrUHzjA==
+X-Received: by 2002:a05:6512:747:b0:513:2cf8:8a19 with SMTP id c7-20020a056512074700b005132cf88a19mr5167089lfs.5.1709638222476;
+        Tue, 05 Mar 2024 03:30:22 -0800 (PST)
+Received: from gerbillo.redhat.com (146-241-235-19.dyn.eolo.it. [146.241.235.19])
+        by smtp.gmail.com with ESMTPSA id t16-20020a05600c451000b00412ee12d4absm1291426wmo.31.2024.03.05.03.30.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 05 Mar 2024 03:30:22 -0800 (PST)
+Message-ID: <81a5d191894e6a7741d3c266079f3404def2bb07.camel@redhat.com>
+Subject: Re: [PATCH net-next v3 0/9] MT7530 DSA Subdriver Improvements Act
+ III
+From: Paolo Abeni <pabeni@redhat.com>
+To: Russell King <linux@armlinux.org.uk>
+Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com, Bartel Eerdekens
+ <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?=
+ <arinc.unal@arinc9.com>, Daniel Golle <daniel@makrotopia.org>, DENG
+ Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Andrew
+ Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Vladimir
+ Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>
+Date: Tue, 05 Mar 2024 12:30:20 +0100
+In-Reply-To: <20240301-for-netnext-mt7530-improvements-3-v3-0-449f4f166454@arinc9.com>
+References: <20240301-for-netnext-mt7530-improvements-3-v3-0-449f4f166454@arinc9.com>
+Autocrypt: addr=pabeni@redhat.com; prefer-encrypt=mutual; keydata=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
+User-Agent: Evolution 3.50.4 (3.50.4-1.fc39)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 19/22] ASoC: dt-bindings: mt8192: Document audio-routing
- and dai-link subnode
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>
-Cc: broonie@kernel.org, wenst@chromium.org, lgirdwood@gmail.com,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.com,
- trevor.wu@mediatek.com, maso.huang@mediatek.com,
- xiazhengqiao@huaqin.corp-partner.google.com, arnd@arndb.de,
- kuninori.morimoto.gx@renesas.com, shraash@google.com, amergnat@baylibre.com,
- nicolas.ferre@microchip.com, u.kleine-koenig@pengutronix.de,
- dianders@chromium.org, frank.li@vivo.com, allen-kh.cheng@mediatek.com,
- eugen.hristev@collabora.com, claudiu.beznea@tuxon.dev,
- jarkko.nikula@bitmer.com, jiaxin.yu@mediatek.com, alpernebiyasak@gmail.com,
- ckeepax@opensource.cirrus.com, zhourui@huaqin.corp-partner.google.com,
- nfraprado@collabora.com, alsa-devel@alsa-project.org,
- shane.chien@mediatek.com, linux-sound@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20240227120939.290143-1-angelogioacchino.delregno@collabora.com>
- <20240227120939.290143-20-angelogioacchino.delregno@collabora.com>
- <20240304142341.GA156846-robh@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240304142341.GA156846-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240305_032027_455325_5898818B 
-X-CRM114-Status: GOOD (  28.80  )
+X-CRM114-CacheID: sfid-20240305_033029_371288_D1AF9824 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,217 +115,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/03/24 15:23, Rob Herring ha scritto:
-> On Tue, Feb 27, 2024 at 01:09:36PM +0100, AngeloGioacchino Del Regno wrote:
->> Document the dai-link subnodes and the audio-routing property, allowing
->> to describe machine specific audio hardware and links in device tree.
->>
->> While at it, also deprecate the old properties which were previously
->> used with the driver's partially hardcoded configuration.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   .../sound/mt8192-mt6359-rt1015-rt5682.yaml    | 129 ++++++++++++++++--
->>   1 file changed, 121 insertions(+), 8 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
->> index 7e50f5d65c8f..78e221003750 100644
->> --- a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
->> +++ b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
->> @@ -20,6 +20,15 @@ properties:
->>         - mediatek,mt8192_mt6359_rt1015p_rt5682
->>         - mediatek,mt8192_mt6359_rt1015p_rt5682s
->>   
->> +  audio-routing:
->> +    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
-> 
-> Already defined in sound-card-common.yaml. Add a $ref.
-> 
+On Fri, 2024-03-01 at 12:42 +0200, Ar=C4=B1n=C3=A7 =C3=9CNAL wrote:
+> This is the third patch series with the goal of simplifying the MT7530 DS=
+A
+> subdriver and improving support for MT7530, MT7531, and the switch on the
+> MT7988 SoC.
+>=20
+> I have done a simple ping test to confirm basic communication on all swit=
+ch
+> ports on MCM and standalone MT7530, and MT7531 switch with this patch
+> series applied.
+>=20
+> MT7621 Unielec, MCM MT7530:
+>=20
+> rgmii-only-gmac0-mt7621-unielec-u7621-06-16m.dtb
+> gmac0-and-gmac1-mt7621-unielec-u7621-06-16m.dtb
+>=20
+> tftpboot 0x80008000 mips-uzImage.bin; tftpboot 0x83000000 mips-rootfs.cpi=
+o.uboot; tftpboot 0x83f00000 $dtb; bootm 0x80008000 0x83000000 0x83f00000
+>=20
+> MT7622 Bananapi, MT7531:
+>=20
+> gmac0-and-gmac1-mt7622-bananapi-bpi-r64.dtb
+>=20
+> tftpboot 0x40000000 arm64-Image; tftpboot 0x45000000 arm64-rootfs.cpio.ub=
+oot; tftpboot 0x4a000000 $dtb; booti 0x40000000 0x45000000 0x4a000000
+>=20
+> MT7623 Bananapi, standalone MT7530:
+>=20
+> rgmii-only-gmac0-mt7623n-bananapi-bpi-r2.dtb
+> gmac0-and-gmac1-mt7623n-bananapi-bpi-r2.dtb
+>=20
+> tftpboot 0x80008000 arm-zImage; tftpboot 0x83000000 arm-rootfs.cpio.uboot=
+; tftpboot 0x83f00000 $dtb; bootz 0x80008000 0x83000000 0x83f00000
+>=20
+> This patch series is the continuation of the patch series linked below.
+>=20
+> https://lore.kernel.org/r/20230522121532.86610-1-arinc.unal@arinc9.com
+>=20
+> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
 
-Right. Done for v2.
-
->> +    description:
->> +      A list of the connections between audio components. Each entry is a
->> +      pair of strings, the first being the connection's sink, the second
->> +      being the connection's source.
->> +      Valid names could be the input or output widgets of audio components,
->> +      power supplies, MicBias of codec and the software switch.
-> 
-> Generally the names are defined here.
-> 
-
-...but those drivers want to support multiple codecs and multiple boards, so
-for each board we would maybe have to add (software defined) names in here
-which don't always correspond to a HW pin name (but that's not really a problem).
-
-Sure a subset of the names can't change but, on the other hand, some others
-can (as in, may be added).
-
-Hence the question:
-
-Is it mandatory to define the names in an enum here, or can that be avoided?
-If it is, I can add them no problem.
-
->> +
->>     mediatek,platform:
->>       $ref: /schemas/types.yaml#/definitions/phandle
->>       description: The phandle of MT8192 ASoC platform.
->> @@ -27,10 +36,12 @@ properties:
->>     mediatek,hdmi-codec:
->>       $ref: /schemas/types.yaml#/definitions/phandle
->>       description: The phandle of HDMI codec.
->> +    deprecated: true
->>   
->>     headset-codec:
->>       type: object
->>       additionalProperties: false
->> +    deprecated: true
->>   
->>       properties:
->>         sound-dai:
->> @@ -41,6 +52,7 @@ properties:
->>     speaker-codecs:
->>       type: object
->>       additionalProperties: false
->> +    deprecated: true
->>   
->>       properties:
->>         sound-dai:
->> @@ -51,13 +63,83 @@ properties:
->>       required:
->>         - sound-dai
->>   
->> +patternProperties:
->> +  ".*-dai-link$":
->> +    type: object
->> +    description:
->> +      Container for dai-link level properties and CODEC sub-nodes.
->> +
->> +    properties:
->> +      link-name:
->> +        description: Indicates dai-link name and PCM stream name
->> +        items:
->> +          enum:
->> +            - I2S0
->> +            - I2S1
->> +            - I2S2
->> +            - I2S3
->> +            - I2S4
->> +            - I2S5
->> +            - I2S6
->> +            - I2S7
->> +            - I2S8
->> +            - I2S9
->> +            - TDM
->> +
->> +      codec:
->> +        description: Holds subnode which indicates codec dai.
->> +        type: object
->> +        additionalProperties: false
->> +        properties:
->> +          sound-dai:
->> +            minItems: 1
->> +            maxItems: 2
->> +        required:
->> +          - sound-dai
->> +
->> +      dai-format:
->> +        description: audio format
->> +        items:
->> +          enum:
->> +            - i2s
->> +            - right_j
->> +            - left_j
->> +            - dsp_a
->> +            - dsp_b
->> +
->> +      mediatek,clk-provider:
->> +        $ref: /schemas/types.yaml#/definitions/string
->> +        description: Indicates dai-link clock master.
->> +        items:
->> +          enum:
->> +            - cpu
->> +            - codec
->> +
->> +    additionalProperties: false
-> 
-> Move this before properties.
-> 
-
-Done for v2.
-
->> +
->> +    required:
->> +      - link-name
->> +
->>   additionalProperties: false
->>   
->>   required:
->>     - compatible
->>     - mediatek,platform
->> -  - headset-codec
->> -  - speaker-codecs
->> +
->> +allOf:
->> +  # Disallow dai-link-xxx nodes if the legacy properties are specified
-> 
-> xxx-dai-link?
-> 
-
-Oh! Yes, thanks for catching this.
-
-That's what I initially wanted to do, but then I opted for xxx-dai-link and
-forgot to update this comment.
-
-Fixed for v2.
-
->> +  - if:
->> +      patternProperties:
->> +        ".*-dai-link$": false
->> +    then:
->> +      required:
->> +        - headset-codec
->> +        - speaker-codecs
->> +    else:
->> +      properties:
->> +        headset-codec: false
->> +        speaker-codecs: false
->> +        mediatek,hdmi-codec: false
-> 
-> Allowing both would preserve compatibility. That's not needed? If so,
-> say why in the commit msg.
-> 
-
-I'm thinking of writing:
-
-"Since describing machine specific audio hardware and links replaces the
-now deprecated old logic doing the same in a driver hardcoded fashion,
-it is not allowed to have both the old and new properties together."
-
-...but in short - both the old and the new can do exactly the same, but
-imo it doesn't make any sense to actually rely on both as:
-  1. It's redundant (and one set of them makes the other useless);
-  2. I want to avoid confusion (as the other set won't be parsed);
-  3. I'm trying to *enforce* consistency as MTK cards have different
-     bindings for .. really, no good reason;
-  4. I want to see custom stuff disappear completely (and/or as much as
-     possible anyway) and use something that is (at least somewhat) common
-     between all MTK and non-MTK or anyway as a start at least consistent
-     between MTK cards.
-
-In theory, though, speaking of the driver side, there's nothing preventing
-you from specifying both audio-routing xxx-dai-link and mediatek,hdmi-codec,
-as the drivers' action will be, in short
-    if (new_bindings)
-      forget_about_old_bindings_use_the_new_ones();
-    else
-      use_old_hardcoded_stuff(); /* and be sad */
-
-
-For that, I really don't want to allow both sets of properties - please, please,
-tell me that I don't *have to* remove this block :-)
+@Russell, I see you went through some patches; my understanding is that
+there are no objection to this series in the current form. The series
+LGTM, so I'm going to apply it: I think it would a pity if it should
+miss this cycle.
 
 Cheers,
-Angelo
+
+Paolo
 
 
