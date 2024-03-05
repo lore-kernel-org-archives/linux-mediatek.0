@@ -4,66 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA07BC54798
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Mar 2024 11:30:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2127AC54E41
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Mar 2024 11:37:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3esC+LuqtUsYxxSajK660sP30Y0zz/w3lgW0ufQEIIA=; b=C3ymuy2F+qdNHM5wuRHkNWTpJw
-	0aU906Si4alR2Nkp1SgRCt1G3i6PY7CzV7gqWd06yn2i6KUOZKIMJiZUbTRR9uRN+cP+qWetE0IcE
-	7n17JYZtl4qzkV697GF0aac2Fdvmvv2qK22u95M85n4lQQ+pQcKCybRMuVNj/osk4saD9fmdsQFms
-	mjL7ekewbKpcI2D2ZhEwHFtKaodqPfyG/a+oG2DcQpywcgSw49UhIxbjv/MrPvQ2L+tuxu2/ns8cw
-	E7ivU0cXWOvgV4fLB1boHvcCqawx4L6pr2NF1jU9edFRNb8L0mBjDjwnWyNXIsdXbZ/TXV4T8R23k
-	8VH57h6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IrDqOCAVFnIywCjY1vOYOH9E3WkzoSBd6y1AwGw2QPk=; b=Zg/XTg4qJpeagXKi/iPL5QlZx5
+	lZHLUwq2wm4QrluwuAPjQGIE1oMNx82jqxESsy24hPts8fUwQHvP5Ma1/+AvkW1RjJuM8QzMYO0tN
+	DKua1ptzs50OxQ0o94J04D73lKUcCNjJsQXWSwSsacLQZqMyia4OviKLcE66Ubf4IhvDd/1hXqHM2
+	p6raWcF6g+b2JmgTmLJaT39XztNYFScGOWX8UdzQe1rgcqXtlPpwsNSvpXys1V4SxYr8x67bwht7+
+	AN2c1XmztoPhAEFB/S3A1yr+2+rpcM8pGEOhvIHAhWWwYg/D/9JK09GvtWLMx5lA5vLmK+bSGKO04
+	cObPtZYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhT0L-0000000DMmR-0wOT;
-	Tue, 05 Mar 2024 11:30:41 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rhT6X-0000000DOdi-2GJV;
+	Tue, 05 Mar 2024 11:37:05 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhT0B-0000000DMgj-3CmT;
-	Tue, 05 Mar 2024 11:30:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id D856ECE19FB;
-	Tue,  5 Mar 2024 11:30:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 1E37DC43390;
-	Tue,  5 Mar 2024 11:30:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1709638229;
-	bh=EpD9Di9FVmc5SbLTT9/ApRiFR+/80ke9uLaAp5KtFRk=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=ilYCxJ2A1C1M+7cJ95lI6fiGam9N7P2kHMcDlcJgmFgXs5tgq3hufzZTOINWuJpfV
-	 KR/7erFe1ku/Dw2j8Hbnwzjgc3qaT1KxrY9mZsZwzZ+M2moPpc0dJ271hRhh0CKY5F
-	 t3QFszw6cGtEJz5jeHVAgRvc3lfJYWme9NWLXubifgFh0k+Qtac775GGEK+mSwpKTw
-	 6lBX29dE6bFb8zAkU7Ws+xNmmdTBIcRzz6xpjewq6y3iGPnOIc9mg8TjyPHqoYzlOC
-	 VhDCNDR1cs85GNNLN7ObyEm8r/SHb8x0vOQ33Ofe1ZXUjVKatdf2vayz2NCZNTfW5X
-	 R0XfTXI/3o3yA==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 0044BC3274B;
-	Tue,  5 Mar 2024 11:30:29 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1rhT6U-0000000DOcQ-0EEP;
+	Tue, 05 Mar 2024 11:37:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=IrDqOCAVFnIywCjY1vOYOH9E3WkzoSBd6y1AwGw2QPk=; b=z70saEw0Uyr9DpMfHt0qmGvV1r
+	IOgrK0UzVt4WJkKKwAMA6Z+nNottmESro61dl/j3LTnq31i1c+asqMGnwzPAvYM72RaYzTTEbC3yb
+	lTUOsmvv2A3qnseBp+jV3aRZ0ZBtoU4We8+GxzKqDQtZguiRW3k53w60f8sbwQflPkz/Dj2E5bh/O
+	o/gQMWYUgydc8kAI++cxof0gKS0uuMSLzTM6nhNeyQJy1J7nTLoSuBjJ+KeF7Zv8sF9hGnxj37P7H
+	tct7YVX5TePcXBQ2NDbPInfBNBTBvsZiQ8DOJK287YDCFLkUml+LdV4SmIO7NyF6+oKRs5pXeoTtf
+	Ux9MzmpQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:43258)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1rhT6J-00073t-1k;
+	Tue, 05 Mar 2024 11:36:51 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1rhT6D-0005NL-BL; Tue, 05 Mar 2024 11:36:45 +0000
+Date: Tue, 5 Mar 2024 11:36:45 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Paolo Abeni <pabeni@redhat.com>
+Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH net-next v3 0/9] MT7530 DSA Subdriver Improvements Act III
+Message-ID: <ZecDzbAMrXgMG72Z@shell.armlinux.org.uk>
+References: <20240301-for-netnext-mt7530-improvements-3-v3-0-449f4f166454@arinc9.com>
+ <81a5d191894e6a7741d3c266079f3404def2bb07.camel@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v6 0/5] remove page frag implementation in vhost_net
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <170963822899.25227.16966361429378501531.git-patchwork-notify@kernel.org>
-Date: Tue, 05 Mar 2024 11:30:28 +0000
-References: <20240228093013.8263-1-linyunsheng@huawei.com>
-In-Reply-To: <20240228093013.8263-1-linyunsheng@huawei.com>
-To: Yunsheng Lin <linyunsheng@huawei.com>
-Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, ast@kernel.org,
- daniel@iogearbox.net, hawk@kernel.org, john.fastabend@gmail.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- bpf@vger.kernel.org
+In-Reply-To: <81a5d191894e6a7741d3c266079f3404def2bb07.camel@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240305_033032_006247_6F6BC2F8 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240305_033702_123652_87D79EBB 
+X-CRM114-Status: GOOD (  20.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,42 +92,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net-next.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
-
-On Wed, 28 Feb 2024 17:30:07 +0800 you wrote:
-> Currently there are three implementations for page frag:
+On Tue, Mar 05, 2024 at 12:30:20PM +0100, Paolo Abeni wrote:
+> On Fri, 2024-03-01 at 12:42 +0200, Arınç ÜNAL wrote:
+> > This is the third patch series with the goal of simplifying the MT7530 DSA
+> > subdriver and improving support for MT7530, MT7531, and the switch on the
+> > MT7988 SoC.
+> > 
+> > I have done a simple ping test to confirm basic communication on all switch
+> > ports on MCM and standalone MT7530, and MT7531 switch with this patch
+> > series applied.
+> > 
+> > MT7621 Unielec, MCM MT7530:
+> > 
+> > rgmii-only-gmac0-mt7621-unielec-u7621-06-16m.dtb
+> > gmac0-and-gmac1-mt7621-unielec-u7621-06-16m.dtb
+> > 
+> > tftpboot 0x80008000 mips-uzImage.bin; tftpboot 0x83000000 mips-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootm 0x80008000 0x83000000 0x83f00000
+> > 
+> > MT7622 Bananapi, MT7531:
+> > 
+> > gmac0-and-gmac1-mt7622-bananapi-bpi-r64.dtb
+> > 
+> > tftpboot 0x40000000 arm64-Image; tftpboot 0x45000000 arm64-rootfs.cpio.uboot; tftpboot 0x4a000000 $dtb; booti 0x40000000 0x45000000 0x4a000000
+> > 
+> > MT7623 Bananapi, standalone MT7530:
+> > 
+> > rgmii-only-gmac0-mt7623n-bananapi-bpi-r2.dtb
+> > gmac0-and-gmac1-mt7623n-bananapi-bpi-r2.dtb
+> > 
+> > tftpboot 0x80008000 arm-zImage; tftpboot 0x83000000 arm-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootz 0x80008000 0x83000000 0x83f00000
+> > 
+> > This patch series is the continuation of the patch series linked below.
+> > 
+> > https://lore.kernel.org/r/20230522121532.86610-1-arinc.unal@arinc9.com
+> > 
+> > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
-> 1. mm/page_alloc.c: net stack seems to be using it in the
->    rx part with 'struct page_frag_cache' and the main API
->    being page_frag_alloc_align().
-> 2. net/core/sock.c: net stack seems to be using it in the
->    tx part with 'struct page_frag' and the main API being
->    skb_page_frag_refill().
-> 3. drivers/vhost/net.c: vhost seems to be using it to build
->    xdp frame, and it's implementation seems to be a mix of
->    the above two.
-> 
-> [...]
+> @Russell, I see you went through some patches; my understanding is that
+> there are no objection to this series in the current form. The series
+> LGTM, so I'm going to apply it: I think it would a pity if it should
+> miss this cycle.
 
-Here is the summary with links:
-  - [net-next,v6,1/5] mm/page_alloc: modify page_frag_alloc_align() to accept align as an argument
-    https://git.kernel.org/netdev/net-next/c/411c5f36805c
-  - [net-next,v6,2/5] page_frag: unify gfp bits for order 3 page allocation
-    https://git.kernel.org/netdev/net-next/c/4bc0d63a2395
-  - [net-next,v6,3/5] net: introduce page_frag_cache_drain()
-    https://git.kernel.org/netdev/net-next/c/a0727489ac22
-  - [net-next,v6,4/5] vhost/net: remove vhost_net_page_frag_refill()
-    https://git.kernel.org/netdev/net-next/c/4051bd8129ac
-  - [net-next,v6,5/5] tools: virtio: introduce vhost_net_test
-    https://git.kernel.org/netdev/net-next/c/c5d3705cfd93
+That's fine - I did read through the entire series, but only gave my
+r-b on the ones I felt I'd done a good enough job on. You may have
+noticed I haven't submitted much network stuff this cycle... I have
+limited bandwidth at the moment.
 
-You are awesome, thank you!
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
