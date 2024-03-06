@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 535C0C54798
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Mar 2024 03:08:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 800B9C54E49
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Mar 2024 03:08:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mGYhO4LjR0bbyVwB5HpL/8iI+l0u+a0yzjyASGT0YLI=; b=zXuUEHQzT6yNq4qw/OyEzqg+k9
-	YXaEHycLAvefncpJEbKAq+CA3RiwZa1JY5xFdcfJDFvbucIe0znirFoo8MN2BDQsFUwtyUM0M2PFc
-	H5vuELZmri8nqz24/zZpDmMRSks58BqadlfPOMhkNyqNB4yW1Igh8v+DIDppvT2LRsHoRsze6XDOm
-	+qAw0Myb6mXPTwat/C5Rx7JAKTzyvn5GluDX4/hAUv/tF5CljF7wXYP+EmiJnFDCh6Kaq+xo435Hw
-	lYPGyoFgObv0XUiRxWrB2K2cHqh6A/aPKk6tZKWCsRYULQPvS95n++M7cFHLthuEwf/OE+fJbesHK
-	zoYTou3w==;
+	bh=zTSvXZZM4ZQVWUHvcDHhgmsw/WKdbUNzw+pjSYkQd2E=; b=fGDewkrjudEWKC1BoJu9gP415f
+	5PlHTwUQkly8rNdtIB13/dFjyiW+6y85BTzkJVJdpaejrSHvwcmeJTRR8f7+1z/uums2a6CxKXs+u
+	F+EDDgN72QFFOuDJmyNYp2gs5JiXrOhE0JE5eTzYJ7H2l01SgYlDElSwJbZWY6CNn2RxJ0XCsgWdp
+	WRjvwk9nMD4k+U73TWza+rtwVGPtSBb3irQFoXW9YqsS7tbus/YLtBwkZ9NaQ4NL+FkUFMhRGiI6N
+	JNE/xF597XXOKGkzjHrq0npL47pI2bOdgY/WEOuzlo0gP1xmXRE2s71pg57l8lE4H5sQCa/4+QLGH
+	uktLgRng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhhe5-0000000G5ZP-3UI9;
-	Wed, 06 Mar 2024 03:08:41 +0000
+	id 1rhheA-0000000G5f9-3BH3;
+	Wed, 06 Mar 2024 03:08:46 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhhdk-0000000G5Fe-20yd;
-	Wed, 06 Mar 2024 03:08:28 +0000
+	id 1rhhdp-0000000G5Jt-0agr;
+	Wed, 06 Mar 2024 03:08:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709694499;
-	bh=ZKVm2EEro0twvk7ZrKgD0JwVVO0iBbsdkqUjhD2/Zh4=;
+	s=mail; t=1709694503;
+	bh=WrPzrnol5F76rUH/mCw3AKr49uKqT5kpb9joX4owG+8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hxSPIOO4Fd61/uN3kLv120LrOR+6ogsGF9uad8VKQ+hNTxdFt0eQ1faTaLUqG7isZ
-	 mLu8f4WM3XGrGnjteHZI6TiYU+ffg/qJktIypRoXoSwRuV27S52qEzTxP++BsFgrHL
-	 SIrFFhY/ciUMtbyO6pOIGYUpYygxAUStJSi8o0/P7l/gthvr0FqPgKcm5KKwECHX+8
-	 Og8gl7KE7bv/LXVQs1BopXfCuqsbYTOliInFr6BWc5WB3xR3iy5UTEdBoMFugiUeBI
-	 YRVa6PfWnrGRoNbP8G5Q+8HAnUS6/+tNAMlpJIWw81ymJYhkx5RdWvTag5g7AGHdu3
-	 CQCbom4JVpy5g==
+	b=raCF6Mf6XNvcbIo2js1OPjlcSQBgbrd5ikm/VipSzvi5gJMqJJG9yhu7CyFWpyJZa
+	 6EYDZnYDkDTCdxyhiuhpndJLdmrd5i7qquF0ooZf4mffmHscbeITUl4+nQXIWJBKMF
+	 OSoN1t0vwYIj9EYbuFLa5Jh5qkdAEyhXAWmWcc5dgW4XjmtRx7FeHdQt+REYVirATv
+	 0nJwSx/Ut739rin++CFUhFJNVhQtPk/KyxcuTh5zcRIzYor3AaYVjpLQA/QFEuhr2n
+	 8fLQ6SYI7cpqh9rYTa5wL53Bo1TGjiRoScahRUeELK0aZTBLfv0nKeGXP2Gt7LioIF
+	 MmDb3QOVzVZTw==
 Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 72C1037820DA;
-	Wed,  6 Mar 2024 03:08:15 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7E98A3780624;
+	Wed,  6 Mar 2024 03:08:19 +0000 (UTC)
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: dri-devel@lists.freedesktop.org
 Cc: daniels@collabora.com,
@@ -63,17 +63,18 @@ Cc: daniels@collabora.com,
 	linux-amlogic@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v4 06/11] drm/ci: mediatek: Add job to test panfrost and powervr GPU driver
-Date: Wed,  6 Mar 2024 08:36:44 +0530
-Message-Id: <20240306030649.60269-7-vignesh.raman@collabora.com>
+Subject: [PATCH v4 07/11] drm/ci: meson: Refactor existing meson jobs
+Date: Wed,  6 Mar 2024 08:36:45 +0530
+Message-Id: <20240306030649.60269-8-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20240306030649.60269-1-vignesh.raman@collabora.com>
 References: <20240306030649.60269-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240305_190820_966263_B05232A9 
-X-CRM114-Status: GOOD (  17.75  )
+X-CRM114-CacheID: sfid-20240305_190825_612828_CD4A4F52 
+X-CRM114-Status: UNSURE (   9.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,123 +89,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For mediatek mt8173, the GPU driver is powervr and for mediatek
-mt8183, the GPU driver is panfrost. So add support in drm-ci to
-test panfrost and powervr GPU driver for mediatek SOCs and update
-xfails. Powervr driver was merged in linux kernel, but there's no
-mediatek support yet. So disable the mt8173-gpu job which uses
-powervr driver.
-
-Add panfrost specific tests to testlist and skip KMS tests for
-panfrost driver since it is not a not a KMS driver. Also update
-the MAINTAINERS file to include xfails for panfrost driver.
+For Amlogic Meson SOC the display driver is meson. Currently,
+in drm-ci for meson, only the display driver is tested.
+Refactor the existing meson jobs so that gpu driver testing
+jobs can be added later and update xfails accordingly.
 
 Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 ---
 
 v2:
-  - Add panfrost and PVR GPU jobs for mediatek SOC with new xfails, add xfail
-    entry to MAINTAINERS.
+  - Refactor the patch to rename job to indicate display driver testing,
+    rename the existing xfail files.
 
 v3:
-  - Add panfrost specific tests to testlist and skip KMS tests for
-    panfrost driver since it is not a not a KMS driver and update xfails.
-    Update the MAINTAINERS file to include xfails for panfrost driver.
-    Add the job name in GPU_VERSION and use it for xfail file names instead
+  - Add the job name in GPU_VERSION and use it for xfail file names instead
     of using DRIVER_NAME.
 
 v4:
-  - Remove the gpu suffix in job and rename xfails accordingly.
-    Update the MAINTAINERS file to include xfails for panfrost driver.
+  - Remove the display suffix in job and rename xfails accordingly.
+    Remove the change adding job name in GPU_VERSION.
 
 ---
- MAINTAINERS                                   |  1 +
- drivers/gpu/drm/ci/gitlab-ci.yml              |  2 ++
- drivers/gpu/drm/ci/test.yml                   | 20 +++++++++++++++++++
- .../drm/ci/xfails/panfrost-mt8183-fails.txt   |  1 +
- .../drm/ci/xfails/panfrost-mt8183-skips.txt   |  2 ++
- 5 files changed, 26 insertions(+)
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-mt8183-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-mt8183-skips.txt
+ drivers/gpu/drm/ci/test.yml                    | 11 ++++++++---
+ drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt |  5 -----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 4da66ca92f1a..264b23108847 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1667,6 +1667,7 @@ T:	git git://anongit.freedesktop.org/drm/drm-misc
- F:	Documentation/gpu/panfrost.rst
- F:	drivers/gpu/drm/ci/testlist-panfrost.txt
- F:	drivers/gpu/drm/ci/testlist.txt
-+F:	drivers/gpu/drm/ci/xfails/panfrost*
- F:	drivers/gpu/drm/panfrost/
- F:	include/uapi/drm/panfrost_drm.h
- 
-diff --git a/drivers/gpu/drm/ci/gitlab-ci.yml b/drivers/gpu/drm/ci/gitlab-ci.yml
-index e2b021616a8e..9dae74465ce1 100644
---- a/drivers/gpu/drm/ci/gitlab-ci.yml
-+++ b/drivers/gpu/drm/ci/gitlab-ci.yml
-@@ -107,6 +107,8 @@ stages:
-   - meson
-   - msm
-   - rockchip
-+  - panfrost
-+  - powervr
-   - virtio-gpu
- 
- # YAML anchors for rule conditions
 diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index f8f48523ada3..99fd101ce2fe 100644
+index 99fd101ce2fe..951a44bf9d19 100644
 --- a/drivers/gpu/drm/ci/test.yml
 +++ b/drivers/gpu/drm/ci/test.yml
-@@ -309,6 +309,18 @@ mediatek:mt8173:
-     GPU_VERSION: mt8173
-     DRIVER_NAME: mediatek
+@@ -351,20 +351,25 @@ panfrost:mt8183:
+     - .lava-igt:arm64
+   stage: meson
+   variables:
+-    DRIVER_NAME: meson
+     DTB: ${DEVICE_TYPE}
+     BOOT_METHOD: u-boot
+     KERNEL_IMAGE_TYPE: "image"
  
-+powervr:mt8173:
-+  extends:
-+    - .mt8173
-+  stage: powervr
-+  variables:
-+    GPU_VERSION: mt8173
-+    DRIVER_NAME: powervr
-+  rules:
-+    # TODO: powervr driver was merged in linux kernel, but there's no mediatek support yet
-+    # Remove the rule once mediatek support is added for powervr
-+    - when: never
-+
- mediatek:mt8183:
+-meson:g12b:
++.g12b:
    extends:
-     - .mt8183
-@@ -316,6 +328,14 @@ mediatek:mt8183:
-     GPU_VERSION: mt8183
-     DRIVER_NAME: mediatek
+     - .meson
+   parallel: 3
+   variables:
+     DEVICE_TYPE: meson-g12b-a311d-khadas-vim3
+-    GPU_VERSION: g12b
+     RUNNER_TAG: mesa-ci-x86-64-lava-meson-g12b-a311d-khadas-vim3
  
-+panfrost:mt8183:
++meson:g12b:
 +  extends:
-+    - .mt8183
-+  stage: panfrost
++    - .g12b
 +  variables:
-+    GPU_VERSION: mt8183
-+    DRIVER_NAME: panfrost
++    GPU_VERSION: g12b
++    DRIVER_NAME: meson
 +
- # drm-mtk doesn't even probe yet in mainline for mt8192
- .mediatek:mt8192:
-   extends:
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-mt8183-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-mt8183-fails.txt
-new file mode 100644
-index 000000000000..6f5e760d5ec0
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-mt8183-fails.txt
-@@ -0,0 +1 @@
-+panfrost_prime@gem-prime-import,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-mt8183-skips.txt b/drivers/gpu/drm/ci/xfails/panfrost-mt8183-skips.txt
-new file mode 100644
-index 000000000000..2ea09d1648bc
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-mt8183-skips.txt
-@@ -0,0 +1,2 @@
-+# Panfrost is not a KMS driver, so skip the KMS tests
-+kms_.*
+ virtio_gpu:none:
+   stage: virtio-gpu
+   variables:
+diff --git a/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt b/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt
+index 56a2ae7047b4..029b4ade21f6 100644
+--- a/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt
+@@ -5,11 +5,6 @@ kms_cursor_legacy@single-bo,Fail
+ kms_cursor_legacy@single-move,Fail
+ kms_cursor_legacy@torture-bo,Fail
+ kms_cursor_legacy@torture-move,Fail
+-kms_force_connector_basic@force-edid,Fail
+-kms_hdmi_inject@inject-4k,Fail
+-kms_plane_cursor@overlay,Fail
+-kms_plane_cursor@primary,Fail
+-kms_plane_cursor@viewport,Fail
+ kms_properties@connector-properties-atomic,Fail
+ kms_properties@connector-properties-legacy,Fail
+ kms_properties@get_properties-sanity-atomic,Fail
 -- 
 2.40.1
 
