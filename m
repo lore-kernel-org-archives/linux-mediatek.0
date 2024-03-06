@@ -4,76 +4,184 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44373C5475B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Mar 2024 04:21:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E857C54E41
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Mar 2024 06:14:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wa+vksHc/xPf2lCgg9zGRTGIW9fGL3BafFgdR4g1Swg=; b=42OwYVaAIuJnuzUosQE7ikb6WB
-	/tt3pn4JJ9shv7Qo45ATlSheXMqHQGQJSqNOdxqaAMaAMz7ljILcVdgzWk5CF03hPASt4w15le4EX
-	moVdzbVmpCmELuz75HH8UwPDWs7WB2AJhrij6HFOeh6u7dar2ZHnUUkNb9x9WDKMgBY9Kx1qY9Pzs
-	x9hW0nPNmjdS5ObZ/el4olCIZHhZj22s2n2Un/DbvmQFwwDWGzpnW6srqmHcr83f70+AKjb/mogeq
-	yAT6hgrkd+dhbapfHjlLgOPs8Qym3lzVh4z5sSdxtqiAo96Fg8ZyqtISUxfK4af6bqoXgcPcXRuWE
-	+v2zs76w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9r1EQFVq71yCgADMc+4LrCMAEsI8rmG38N765yiLeC0=; b=A/U4R5LJGU42tzKRVAo+oKFGTI
+	WSCS2gPYcc3l8oBN/ByoW8jG42+R+iPLBgJCfNDXqcXMm0A9yoZIZssUvlvPku0Y6KJxlcPMeLMm5
+	avskllW39K+4zRnxnYMLmJ+BjZ/EMKGhGqaXPS8furYBjzn7cMMV6KB17eFjDGtQ3CfOIk6mzldLJ
+	baxPPMIrVVHD/3opgnQIr1G8zMdKrOE+17XFEYpT9iskJGcFXvf8QfFb3Xo399ojxlLkjSmHq/1ud
+	rAJ4NQ4c4fzuCruNiI/6YL9y2DBt609M5jPoMBRcsNAXO4cvh1nbeBZ2tbZu7jCn1YICEpNG14n9s
+	guXuVDZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhimP-0000000GFfo-0RZG;
-	Wed, 06 Mar 2024 04:21:21 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rhkY1-0000000GW8c-3NUA;
+	Wed, 06 Mar 2024 06:14:37 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhhdy-0000000G5SE-1UNh;
-	Wed, 06 Mar 2024 03:08:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709694512;
-	bh=IyOF7zbWgKjz2D54u6TrGoKoAjHbfelWWorWmFZMDR4=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=PBNK+Xo2X4Ao99odgmheJOw2k4HtcWr0DRWrBpRmAr4BaJZsdGKMTVGIFaqWIANFR
-	 3g5B/INw5YjsiRh1ONb5/GlnYZjSDiJgO7Bm86jKT7kSzLhDgABKVCvHVC8gPDEsPG
-	 7PCOYpLuPWiu/Ckt/UvKR4XZnTZDaCG22jGYl1eXoGaEs9QHFqLHPaJn2ZhdjiUxfC
-	 JN3J65GWBs39qsc6hM80V8/tIzvOH0dscXZRkMmaZu+Fd5YTe2l800pecA4uIkbpjN
-	 hRTJ/acEDEkt7Xy4mNT3cwgZBGDZwvbCZBXkt5UsF2QrrBUeJo4H6Ow2a7KTmxLqpI
-	 ZhgDv6ph3CdKg==
-Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B168B37820D0;
-	Wed,  6 Mar 2024 03:08:28 +0000 (UTC)
-From: Vignesh Raman <vignesh.raman@collabora.com>
-To: dri-devel@lists.freedesktop.org
-Cc: daniels@collabora.com,
-	helen.koike@collabora.com,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	emma@anholt.net,
-	robdclark@gmail.com,
-	david.heidelberg@collabora.com,
-	guilherme.gallo@collabora.com,
-	sergi.blanch.torne@collabora.com,
-	hamohammed.sa@gmail.com,
-	rodrigosiqueiramelo@gmail.com,
-	melissa.srw@gmail.com,
-	mairacanal@riseup.net,
-	mcanal@igalia.com,
-	linux-mediatek@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v4 09/11] drm/ci: rockchip: Refactor existing rockchip jobs
-Date: Wed,  6 Mar 2024 08:36:47 +0530
-Message-Id: <20240306030649.60269-10-vignesh.raman@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20240306030649.60269-1-vignesh.raman@collabora.com>
-References: <20240306030649.60269-1-vignesh.raman@collabora.com>
+	id 1rhkXz-0000000GW7U-1g1P
+	for linux-mediatek@lists.infradead.org;
+	Wed, 06 Mar 2024 06:14:36 +0000
+X-UUID: c9215352db8011eebe6b57d01cc416d2-20240305
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=9r1EQFVq71yCgADMc+4LrCMAEsI8rmG38N765yiLeC0=;
+	b=QrdLszITViwMn9pRmAwIRYcRalTMDdoCiwGXNupwLv2rq8+wlR5BbOTzbBQtLulJ8V/PwZoBYqjqYoFnfVyeXWRCSSmdda8Dpj9U1k6ziz8WliTEK+LZ2jwntieN2qG8fOWcohNVr766r18ojNCMKlkVJ0u2SCW2iSrSo2DBwz4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:86d04b84-cb27-4f5e-b950-6e33194711b6,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:2e9c90ff-c16b-4159-a099-3b9d0558e447,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: c9215352db8011eebe6b57d01cc416d2-20240305
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <flash.liu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1184452137; Tue, 05 Mar 2024 23:14:27 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 6 Mar 2024 14:13:50 +0800
+Received: from HK3PR03CU002.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 6 Mar 2024 14:13:50 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=R7PLF9Oda+jUu4gNTGqFNvKHfGmmlTnYQfOyit+0NtcrOZT/jyheNoSmYTfCGPAGgnDXx7E9ZBh7GDsIcACz1mRM/LMbz6OXfWFdzvtslEg6rc0xkib0RNU3OOzb7K2Po+byYNg8qe7wPpE/ih/GCLA4RRT2NGQaGCav5E/QZ3dRJiP17Hi2FGYUjSbqlYLI2iizymf9FW+CtQfEJeABtiLnvRZ5xVpzuieai3edmvQdujxLkWHC5+jhbOpT4DU+7blILxGGOZLQguzypsr2Pp60FPQ5HSx6XhO+xvb22+OxSZQAgZbS9OPpHBJJmHtRUufsleypQPzdvT9oZyOJJg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=9r1EQFVq71yCgADMc+4LrCMAEsI8rmG38N765yiLeC0=;
+ b=O8OgWVixdpl3+Z0HGKDRwxsw3FyDNPHjjCTYkcJEf0M+9SxcDhQdqV0Flo9fEBG661DiFI+ebCP5Pd4h8yl11D1afEBv93/FgBUdX98BuuTlSXiMY4bAStJObzVs9RVoLbuD23uvIL2GrK3Pw74PdAv9vp7qM47fxIMN/8xgr1BaakzZQ2hoQo8p5Iu0ATI4CFbn85nhz3B0YMRs3PIi6Oqfoq6GNjgemmHhwAIwsAMwsAHGUZQxKwVnvmOtt92TygSSOnIcz0PlTPrpe4FL1UQWffm6bFqMXPTTWAYC089KduZIMRlRwgbM1hf6C22fcCs3oZRx0vy2Th9HU4PvCQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=9r1EQFVq71yCgADMc+4LrCMAEsI8rmG38N765yiLeC0=;
+ b=pcV6o3XyAJdJmq2CHxUvRElaa9zwBROHKKC15WtxVipt/48tUETqrV/Rd5HbIquiwldsyjzfbvT88DklkjkOqfpXIimj+gBfF2V6CT/gQlHGOSCAcmCokk0k9oUh6Xo65G9VihURX9gMGNJDO7BgsKzzWiSVzaQsa507XhZyytg=
+Received: from SG2PR03MB7279.apcprd03.prod.outlook.com (2603:1096:4:1d4::14)
+ by TYZPR03MB6421.apcprd03.prod.outlook.com (2603:1096:400:1cf::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7339.36; Wed, 6 Mar
+ 2024 06:13:48 +0000
+Received: from SG2PR03MB7279.apcprd03.prod.outlook.com
+ ([fe80::9a30:9de4:c31d:2bae]) by SG2PR03MB7279.apcprd03.prod.outlook.com
+ ([fe80::9a30:9de4:c31d:2bae%7]) with mapi id 15.20.7339.035; Wed, 6 Mar 2024
+ 06:13:48 +0000
+From: =?utf-8?B?Rmxhc2ggTGl1ICjlionngrPlgrMp?= <Flash.Liu@mediatek.com>
+To: "cristian.marussi@arm.com" <cristian.marussi@arm.com>
+CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, wsd_upstream
+	<wsd_upstream@mediatek.com>, =?utf-8?B?Q3lsZW4gWWFvICjlp5rnq4vkuIkp?=
+	<cylen.yao@mediatek.com>, "sudeep.holla@arm.com" <sudeep.holla@arm.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2] firmware: arm_scmi: Avoid to call mbox_client_txdone
+ on txdone_irq mode
+Thread-Topic: [PATCH v2] firmware: arm_scmi: Avoid to call mbox_client_txdone
+ on txdone_irq mode
+Thread-Index: AQHaVPVIVsXO+7KbOka+qKoEb18oerD24yEAgAAb7gCAM3HsgA==
+Date: Wed, 6 Mar 2024 06:13:48 +0000
+Message-ID: <56e1b2f5adbca437a14b738e1c58a054f6302fcd.camel@mediatek.com>
+References: <20240201095754.25374-1-flash.liu@mediatek.com>
+	 <ZbzKckIhn8HQv5pW@pluto>
+	 <053cb4a2edfe576412942daed2f7055b2ba9e207.camel@mediatek.com>
+In-Reply-To: <053cb4a2edfe576412942daed2f7055b2ba9e207.camel@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SG2PR03MB7279:EE_|TYZPR03MB6421:EE_
+x-ms-office365-filtering-correlation-id: 61831c3f-c881-46db-9792-08dc3da49656
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 37DfzB1BJa1GWM0c8n6fw6zEfuWZz6ClIGcNd1DrSjQUf1CrnftpsHBT2RnBwzKKTzONC1zvPcbTYtRcrgKHDUuy3qTViHeranBhSSv5fWBWlBYyC4/BLnKaAqJEG2xb/EH+VE+0jSnYbZKDUEyD/fHg3bzD1WLFUax4PG6szfsWqnZzfirvoFnHq4ZNvgVLU3O0Z3ObXlNa0A//EIzaXldPz6xRD/9kPtseX3+j4bmpxK+XyUuIYz6KNctBAQ9WBGFEfM9tOuGeplFFW+lS1TPAnd/g3bplUlm+QJo27wsDIGWriexordHQXNcUxWoWDNQJu8JQaljxgjh0XdAH3UtWj8O774N/aiqf6I3q+qalwkIs0xh6mPyd0C7Bg+xuKJDCeDGyYPzWyxR1va9vAXxlzCTgoqj2cvNRbTOu+kM3rrgozEY+zc1bPSJctmEzuW2sDBHjsJ7KBWejixuQKoPSL9oWUrq00SGQcssjfWBxM0KUn2lnLRDnNRISmK38uR6tl4brfvOgeY5dnTMXau7RDrd9la+kKqpsB8z0DYKdOVeaUQ4LD8ddYi4sJloyO5Vq1Eq1SM7RuhdqI1tgm0wkS2SXJ76W032gqqwdaMQrj/0lzUmGN7L+qQXOBbxrJTkdfxSajaug3HVKxDdrQGlmBxX3rxXzaeYy2MR1fAeCxGfUTjzLFJTzUt5kg0ZFQ4G9ulugnTzoAo08nc1+LGPci33Ho9/wjT5Ybzs4iGY=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SG2PR03MB7279.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376005)(38070700009);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?dEZadG8vYmZZa1BUN2J3eEoxb0VpM1JNUlBCckpWdlZRR2lsN21EbjVsemRM?=
+ =?utf-8?B?YnhDOEdpNVB6R09ESVlpWXRZSFRqU0lYQTRoZ2xzM1MxSjVCNUZaNnRHV2VH?=
+ =?utf-8?B?b3pRbGZnY2FTS3NRZU1rMCtqUS9GN0pCMkFWSzlRMDVVdUhUQ3RQK2lYVThY?=
+ =?utf-8?B?bm1Xc01RK3NIRTljNVhBenVKdm4wNFhua2YvcVk3V2s1SnBqU2twSHRpUWFh?=
+ =?utf-8?B?UFgwajZXeFFqa3I5MnNHcTVJWHFKRUdrcXdBTHROanp4bk5YclRLYkJvRXJJ?=
+ =?utf-8?B?SHVQOVN2S1dqZjFMdUgrUE11UndpSDRQcXEyT0NpaVZMbXc2T29sK2EySVhK?=
+ =?utf-8?B?Q1YvTjNmemIvQVNLL2l2aElUNWQxU1hVTGtwRDVOS0VrUXMzckcxL0FhYncy?=
+ =?utf-8?B?SnZBRWE3cFlWQ0w1UU9WWlZuMEFWRCswOEZXYk81NHo5RDk5UHBRNjVIYWV5?=
+ =?utf-8?B?V2o0MEFIZ2hzSnRzV3hDRWpwZCtub3h1L1kwRnhTTFlJSndGQi8wc1NDcnls?=
+ =?utf-8?B?TGFaZzVubmFkeWlRMjZBM0k0Qi9EeGlGUVN1YzQ4SDNPYkh5V0liNmtJcVN6?=
+ =?utf-8?B?L3BxWWtwVEhDL0l6OFVjTytoWFVqWHgwdzdGT3BLTzA0S2g0eG5Rc2FMWldo?=
+ =?utf-8?B?NDZDbENkakEyVkxyTkJvTHUvRVJmcy9jWG4zeUdJaTZrNEh4bGozcFVSQXdE?=
+ =?utf-8?B?YU5uT0FKL21OM2NzNzd6ejJUR1MrZ2ZacXZSL1JxZytvaUdNWmZ0VWlNT2Yr?=
+ =?utf-8?B?ODBrUGVhTkdWUXM2VnEzbjFFa3BSQmc4UlVSKzRxWnpTVUtmRHkyWUN0THo2?=
+ =?utf-8?B?aC9vNncyaFVqS0FEejNjbmtLck9MWkpLakJOeUt1ZlAzajcrMjBram5JSEdY?=
+ =?utf-8?B?YjY0TU9OMjRmL0MzL0wxYWswOUt2Q2RoRjhtaHBOZWZJdnBxK2crOCswQzYr?=
+ =?utf-8?B?Z2IyamlsbEdCd1FsSHZib3hPcHFsZUprK0R6UHM5SDRhV0Z1alVYM200dFBQ?=
+ =?utf-8?B?aG5FQ2wwWTk1Y2hJVFZ4UkF2amkvd3pKdGw1S2dObVl6bmVvTzRrZ1NnNDVx?=
+ =?utf-8?B?emxhcmNFMHRIR3E5azFPSk11S3FFNkxtZmJYaEVvN283ZlR4UFdzSUxZYnFx?=
+ =?utf-8?B?blV5U1J1THhhTWdpL1lIS0g5bE1UTXVpTy9xRk83MzZVMkFaUjRTV3Y0Mllo?=
+ =?utf-8?B?VU5rRXc3V3FxM2ZyR3hZaGNHaVdHWVhUbmNFTGErc2wyOTkrNHR2dUhzOUNR?=
+ =?utf-8?B?TWRPUGUzbzNxbk1BQmxlOUN1aXNlVG1ucmxta2hKeUdzdFBkM2I5dkIvd1Vq?=
+ =?utf-8?B?MU5kS29ETEloZkNKWkdJSC80WXVCSjhMN0MvMTEzNXpDaE1mV3hvVHV3dkE2?=
+ =?utf-8?B?OXp5dnFiMy8xNURhZUg2L1F1aTNNc2VEcWY4NWZzNVhFZDl6TVBCNUdXWmYr?=
+ =?utf-8?B?Mm1lc0RqVzlEK2VHMVZ3cnhYMzNqU1c5cFArVDBnWFROek4xQkthcU5zVHFl?=
+ =?utf-8?B?cTcrSWxPWDBsWWg4WjNObkx6bkxtVjdVRlBhNms2SHM3SEtoRWV2M3FCWGVr?=
+ =?utf-8?B?aEtJdWE0dlBJQ3FPZkpCMDFRTXlRQzdYMTVZV3g2M2VIbHB0N09QQ1BEWlJl?=
+ =?utf-8?B?YWVjQkpySFNLd3FZelpKc0ROOUkxSmtzZVZKMFBKN3FHaTQxak1zUFlCUml0?=
+ =?utf-8?B?Z3A3Q2RJdHc5Qms1WFNGTjY3S3RWdC9DbnM3NXNpUUNMdFR0VmQ3TE5jY0VT?=
+ =?utf-8?B?a1RBZXlzSzY5c2RjS3cvR1lEMGFZL0E5NFFqRWtScW5HSWZraS93ZDZRWjNv?=
+ =?utf-8?B?dThEQjVydmJXWDBzbUlvcGZwZC9INzB4b282cTlCRUNMUWRYRDVXQ2dkeHRl?=
+ =?utf-8?B?aEZqMUQrZHRRbkNWcHdCTWhhSStIemVJZ1MrZTVXMFlYYTUrY3RYNkxCeTBr?=
+ =?utf-8?B?NzgrSG9MS1NSazJWZ0NUV0c5aWo3dFlhUEc5SE9WbUpvWGlNN0djbnJnZ05T?=
+ =?utf-8?B?WVJpZXIwR1IxdllIK3NIRktneDFCTXlJWm5KUEJiMVNHd1JWWlFxTGtIZVFh?=
+ =?utf-8?B?WnJpYkovUkdxbXJwTDVyRVJSTXNiWEV4SHdyUXRSVEhyVldkNkJCUUhLUDR2?=
+ =?utf-8?B?Ymk3dk1tZ2FyTEZEUDhaRGdIRHFnWGMzaVlaMFVIOWdJc2t0TllmMng0Lysz?=
+ =?utf-8?B?SFE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <6C2EDCBB01E01B44BB44E632BC2EA12B@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SG2PR03MB7279.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 61831c3f-c881-46db-9792-08dc3da49656
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Mar 2024 06:13:48.5681
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 9QZChHwemw1k5FDgmdW+wpfSQIUv86yDXeIsuKDOae3Ixj+s4gWbbJUIKXYS7L3GoL6ae+Bi51xYxWczKavHUw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB6421
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--3.887500-8.000000
+X-TMASE-MatchedRID: h20DFeLkM8/UL3YCMmnG4lIwtTtvyT1CEtdrY/Wb3fOexfb7PJMB4/CW
+	RBMIiZDW1Fc61VCGvh1+bI1Hl8sHV+D2Gw854pMrF6z9HGHKwNu+JGWINXafLE1KG1YrOQW/MwR
+	yrAxy6J+RKof4pz0GQm9yZj3aufb5Qv21zJNl0CyDGx/OQ1GV8qffT5A0am5mZsCGLUmGln7kwj
+	HXXC/4I8prJP8FBOIapAOLCM9z3owd2TSl+s/BiT9QhduzuLecUbzbsj1y5Sb86Nbt8bRf81r/V
+	RGx0IR2+Uo4vXq+qmzIizeCsI6wA0LUmjyL3DZSqHzcKNbZb2s=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--3.887500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 27FD298076FC52448E345A30CF0C51435586DB5566F394A1390D750E3B62B9A12000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240305_190835_162004_5261DAC4 
-X-CRM114-Status: GOOD (  16.76  )
+X-CRM114-CacheID: sfid-20240305_221435_588332_03498091 
+X-CRM114-Status: UNSURE (   9.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,400 +196,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For rockchip rk3288 and rk3399, the display driver is rockchip.
-Currently, in drm-ci for rockchip, only the display driver is
-tested. Refactor the existing rockchip jobs so that gpu driver
-testing jobs can be added later and update xfails accordingly.
-
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
----
-
-v2:
-  - Refactor the patch to rename job to indicate display driver testing,
-    rename the existing xfail files.
-
-v3:
-  - Add the job name in GPU_VERSION and use it for xfail file names
-    instead of using DRIVER_NAME. Also update xfails.
-
-v4:
-  - Remove the display suffix in job and rename xfails accordingly.
-    Remove the change adding job name in GPU_VERSION.
-
----
- drivers/gpu/drm/ci/test.yml                   | 36 ++++++++----
- .../drm/ci/xfails/rockchip-rk3288-fails.txt   | 58 ++++++-------------
- .../drm/ci/xfails/rockchip-rk3288-flakes.txt  | 20 +++++++
- .../drm/ci/xfails/rockchip-rk3288-skips.txt   | 54 ++---------------
- .../drm/ci/xfails/rockchip-rk3399-fails.txt   | 38 ++++++------
- .../drm/ci/xfails/rockchip-rk3399-flakes.txt  | 28 +++++++--
- .../drm/ci/xfails/rockchip-rk3399-skips.txt   |  5 +-
- 7 files changed, 110 insertions(+), 129 deletions(-)
- create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
-
-diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index 6ae6398b3d88..831e580e6dfd 100644
---- a/drivers/gpu/drm/ci/test.yml
-+++ b/drivers/gpu/drm/ci/test.yml
-@@ -153,33 +153,45 @@ msm:sdm845:
-   script:
-     - ./install/bare-metal/cros-servo.sh
- 
--rockchip:rk3288:
--  extends:
--    - .lava-igt:arm32
-+.rockchip:
-   stage: rockchip
-   variables:
--    DRIVER_NAME: rockchip
--    DEVICE_TYPE: rk3288-veyron-jaq
-     DTB: ${DEVICE_TYPE}
-     BOOT_METHOD: depthcharge
-+
-+.rk3288:
-+  extends:
-+    - .lava-igt:arm32
-+    - .rockchip
-+  variables:
-+    DEVICE_TYPE: rk3288-veyron-jaq
-     KERNEL_IMAGE_TYPE: "zimage"
--    GPU_VERSION: rk3288
-     RUNNER_TAG: mesa-ci-x86-64-lava-rk3288-veyron-jaq
- 
--rockchip:rk3399:
-+.rk3399:
-   extends:
-     - .lava-igt:arm64
--  stage: rockchip
-+    - .rockchip
-   parallel: 2
-   variables:
--    DRIVER_NAME: rockchip
-     DEVICE_TYPE: rk3399-gru-kevin
--    DTB: ${DEVICE_TYPE}
--    BOOT_METHOD: depthcharge
-     KERNEL_IMAGE_TYPE: ""
--    GPU_VERSION: rk3399
-     RUNNER_TAG: mesa-ci-x86-64-lava-rk3399-gru-kevin
- 
-+rockchip:rk3288:
-+  extends:
-+    - .rk3288
-+  variables:
-+    GPU_VERSION: rk3288
-+    DRIVER_NAME: rockchip
-+
-+rockchip:rk3399:
-+  extends:
-+    - .rk3399
-+  variables:
-+    GPU_VERSION: rk3399
-+    DRIVER_NAME: rockchip
-+
- .i915:
-   extends:
-     - .lava-igt:x86_64
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
-index 90c63f519e9e..c16e0a06cc8f 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
-@@ -1,54 +1,30 @@
--kms_3d,Crash
--kms_bw@linear-tiling-2-displays-1920x1080p,Fail
- kms_bw@linear-tiling-2-displays-2560x1440p,Fail
--kms_bw@linear-tiling-2-displays-3840x2160p,Fail
- kms_bw@linear-tiling-3-displays-1920x1080p,Fail
--kms_bw@linear-tiling-3-displays-2560x1440p,Fail
--kms_bw@linear-tiling-3-displays-3840x2160p,Fail
-+kms_cursor_crc@cursor-onscreen-32x10,Crash
-+kms_cursor_crc@cursor-onscreen-64x21,Crash
-+kms_cursor_crc@cursor-onscreen-64x64,Crash
-+kms_cursor_crc@cursor-random-32x10,Crash
-+kms_cursor_crc@cursor-random-64x21,Crash
-+kms_cursor_crc@cursor-random-64x64,Crash
-+kms_cursor_crc@cursor-sliding-32x10,Crash
-+kms_cursor_crc@cursor-sliding-32x32,Crash
-+kms_cursor_crc@cursor-sliding-64x64,Crash
-+kms_cursor_legacy@basic-flip-before-cursor-atomic,Fail
-+kms_cursor_legacy@basic-flip-before-cursor-legacy,Fail
-+kms_cursor_legacy@cursor-vs-flip-atomic,Fail
-+kms_cursor_legacy@cursor-vs-flip-atomic-transitions,Fail
-+kms_cursor_legacy@cursor-vs-flip-toggle,Fail
-+kms_cursor_legacy@flip-vs-cursor-crc-atomic,Crash
-+kms_cursor_legacy@flip-vs-cursor-crc-legacy,Crash
- kms_flip@flip-vs-modeset-vs-hang,Crash
- kms_flip@flip-vs-panning-vs-hang,Crash
--kms_force_connector_basic@force-load-detect,Fail
- kms_invalid_mode@int-max-clock,Crash
--kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Crash
--kms_pipe_crc_basic@nonblocking-crc-frame-sequence,Crash
- kms_pipe_crc_basic@read-crc-frame-sequence,Crash
- kms_plane@pixel-format,Crash
--kms_plane@pixel-format-source-clamping,Crash
--kms_plane@plane-position-hole,Crash
--kms_plane@plane-position-hole-dpms,Crash
- kms_plane_cursor@overlay,Crash
--kms_plane_cursor@pipe-A-overlay-size-128,Fail
--kms_plane_cursor@pipe-A-overlay-size-256,Fail
--kms_plane_cursor@pipe-A-overlay-size-64,Fail
--kms_plane_cursor@pipe-A-primary-size-128,Fail
--kms_plane_cursor@pipe-A-primary-size-256,Fail
--kms_plane_cursor@pipe-A-primary-size-64,Fail
--kms_plane_cursor@pipe-A-viewport-size-128,Fail
--kms_plane_cursor@pipe-A-viewport-size-256,Fail
--kms_plane_cursor@pipe-A-viewport-size-64,Fail
--kms_plane_cursor@pipe-B-overlay-size-128,Fail
--kms_plane_cursor@pipe-B-overlay-size-256,Fail
--kms_plane_cursor@pipe-B-overlay-size-64,Fail
--kms_plane_cursor@pipe-B-primary-size-128,Fail
--kms_plane_cursor@pipe-B-primary-size-256,Fail
--kms_plane_cursor@pipe-B-primary-size-64,Fail
--kms_plane_cursor@pipe-B-viewport-size-128,Fail
--kms_plane_cursor@pipe-B-viewport-size-256,Fail
--kms_plane_cursor@pipe-B-viewport-size-64,Fail
- kms_plane_cursor@primary,Crash
--kms_plane_cursor@viewport,Crash
--kms_plane_lowres@tiling-none,Fail
--kms_plane_scaling@downscale-with-modifier-factor-0-25,Fail
--kms_plane_scaling@downscale-with-rotation-factor-0-25,Fail
--kms_plane_scaling@upscale-with-modifier-20x20,Fail
--kms_plane_scaling@upscale-with-modifier-factor-0-25,Fail
--kms_plane_scaling@upscale-with-pixel-format-20x20,Fail
--kms_plane_scaling@upscale-with-pixel-format-factor-0-25,Fail
--kms_plane_scaling@upscale-with-rotation-20x20,Fail
--kms_prime@basic-crc,Fail
--kms_properties@connector-properties-atomic,Crash
-+kms_prop_blob@invalid-set-prop,Crash
- kms_properties@connector-properties-legacy,Crash
- kms_properties@get_properties-sanity-atomic,Crash
- kms_properties@get_properties-sanity-non-atomic,Crash
- kms_rmfb@close-fd,Crash
--kms_setmode@invalid-clone-single-crtc,Crash
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
-new file mode 100644
-index 000000000000..de13bac3a5bc
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
-@@ -0,0 +1,20 @@
-+# Board Name: rk3288-veyron-jaq.dtb
-+# Bug Report: https://lore.kernel.org/dri-devel/bdb53650-1888-30b8-93ee-2290d020af4a@collabora.com/T/#u
-+# Failure Rate: 50
-+# IGT Version: 1.28-gd2af13d9f
-+# Linux Version: 6.7.0-rc3
-+
-+# Reported by deqp-runner
-+kms_cursor_crc@cursor-offscreen-64x21
-+kms_cursor_legacy@flip-vs-cursor-legacy
-+kms_cursor_legacy@flip-vs-cursor-atomic
-+kms_plane@plane-panning-top-left
-+kms_cursor_crc@cursor-alpha-opaque
-+kms_flip@dpms-vs-vblank-race-interruptible
-+kms_universal_plane@universal-plane-functional
-+
-+# The below test shows inconsistency across multiple runs, giving
-+# results of Pass and Crash alternately.
-+kms_cursor_crc@cursor-size-change
-+core_setmaster_vs_auth
-+kms_flip@modeset-vs-vblank-race
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt
-index f20c3574b75a..627bf03f3c78 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt
-@@ -1,52 +1,8 @@
- # Suspend to RAM seems to be broken on this machine
- .*suspend.*
- 
--# Too unstable, machine ends up hanging after lots of Oopses
--kms_cursor_legacy.*
--
--# Started hanging the machine on Linux 5.19-rc2:
--#
--# [IGT] kms_plane_lowres: executing
--# [IGT] kms_plane_lowres: starting subtest pipe-F-tiling-y
--# [IGT] kms_plane_lowres: exiting, ret=77
--# Console: switching to colour frame buffer device 170x48
--# rockchip-drm display-subsystem: [drm] *ERROR* flip_done timed out
--# rockchip-drm display-subsystem: [drm] *ERROR* [CRTC:35:crtc-0] commit wait timed out
--# BUG: spinlock bad magic on CPU#3, kms_plane_lowre/482
--# 8<--- cut here ---
--# Unable to handle kernel paging request at virtual address 7812078e
--# [7812078e] *pgd=00000000
--# Internal error: Oops: 5 [#1] SMP ARM
--# Modules linked in:
--# CPU: 3 PID: 482 Comm: kms_plane_lowre Tainted: G        W         5.19.0-rc2-323596-g00535de92171 #1
--# Hardware name: Rockchip (Device Tree)
--# Process kms_plane_lowre (pid: 482, stack limit = 0x1193ac2b)
--#  spin_dump from do_raw_spin_lock+0xa4/0xe8
--#  do_raw_spin_lock from wait_for_completion_timeout+0x2c/0x120
--#  wait_for_completion_timeout from drm_crtc_commit_wait+0x18/0x7c
--#  drm_crtc_commit_wait from drm_atomic_helper_wait_for_dependencies+0x44/0x168
--#  drm_atomic_helper_wait_for_dependencies from commit_tail+0x34/0x180
--#  commit_tail from drm_atomic_helper_commit+0x164/0x18c
--#  drm_atomic_helper_commit from drm_atomic_commit+0xac/0xe4
--#  drm_atomic_commit from drm_client_modeset_commit_atomic+0x23c/0x284
--#  drm_client_modeset_commit_atomic from drm_client_modeset_commit_locked+0x60/0x1c8
--#  drm_client_modeset_commit_locked from drm_client_modeset_commit+0x24/0x40
--#  drm_client_modeset_commit from drm_fbdev_client_restore+0x58/0x94
--#  drm_fbdev_client_restore from drm_client_dev_restore+0x70/0xbc
--#  drm_client_dev_restore from drm_release+0xf4/0x114
--#  drm_release from __fput+0x74/0x240
--#  __fput from task_work_run+0x84/0xb4
--#  task_work_run from do_exit+0x34c/0xa20
--#  do_exit from do_group_exit+0x34/0x98
--#  do_group_exit from __wake_up_parent+0x0/0x18
--# Code: e595c008 12843d19 03e00000 03093168 (15940508)
--# ---[ end trace 0000000000000000 ]---
--# note: kms_plane_lowre[482] exited with preempt_count 1
--# Fixing recursive fault but reboot is needed!
--kms_plane_lowres@pipe-F-tiling-y
--
--# Take too long, we have only two machines, and these are very flaky
--kms_cursor_crc.*
--
--# Machine is hanging in this test, so skip it
--kms_pipe_crc_basic@disable-crc-after-crtc
-\ No newline at end of file
-+# Machine is hanging in this test with linux kernel version 6.7.0-rc4, so skip it
-+kms_cursor_crc@cursor-onscreen-32x32
-+kms_pipe_crc_basic@disable-crc-after-crtc
-+kms_pipe_crc_basic@pipe-A-eDP-1
-+kms_bw@linear-tiling-3-displays-2560x1440
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
-index d516d9c1d546..ace0d6ed6f2f 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
-@@ -1,12 +1,13 @@
--kms_color@gamma,Fail
-+kms_atomic_transition@modeset-transition,Fail
-+kms_atomic_transition@modeset-transition-fencing,Fail
-+kms_atomic_transition@plane-toggle-modeset-transition,Fail
- kms_color@legacy-gamma,Fail
--kms_color@pipe-A-legacy-gamma,Fail
--kms_color@pipe-B-legacy-gamma,Fail
- kms_cursor_crc@cursor-alpha-opaque,Fail
- kms_cursor_crc@cursor-alpha-transparent,Fail
- kms_cursor_crc@cursor-dpms,Fail
- kms_cursor_crc@cursor-offscreen-32x10,Fail
- kms_cursor_crc@cursor-offscreen-32x32,Fail
-+kms_cursor_crc@cursor-offscreen-64x21,Fail
- kms_cursor_crc@cursor-offscreen-64x64,Fail
- kms_cursor_crc@cursor-onscreen-32x10,Fail
- kms_cursor_crc@cursor-onscreen-32x32,Fail
-@@ -16,6 +17,7 @@ kms_cursor_crc@cursor-random-32x10,Fail
- kms_cursor_crc@cursor-random-32x32,Fail
- kms_cursor_crc@cursor-random-64x21,Fail
- kms_cursor_crc@cursor-random-64x64,Fail
-+kms_cursor_crc@cursor-rapid-movement-32x10,Fail
- kms_cursor_crc@cursor-rapid-movement-32x32,Fail
- kms_cursor_crc@cursor-rapid-movement-64x21,Fail
- kms_cursor_crc@cursor-rapid-movement-64x64,Fail
-@@ -24,23 +26,33 @@ kms_cursor_crc@cursor-sliding-32x10,Fail
- kms_cursor_crc@cursor-sliding-32x32,Fail
- kms_cursor_crc@cursor-sliding-64x21,Fail
- kms_cursor_crc@cursor-sliding-64x64,Fail
-+kms_cursor_legacy@basic-flip-before-cursor-atomic,Fail
-+kms_cursor_legacy@basic-flip-before-cursor-legacy,Fail
-+kms_cursor_legacy@cursor-vs-flip-atomic,Fail
-+kms_cursor_legacy@cursor-vs-flip-legacy,Fail
-+kms_cursor_legacy@cursor-vs-flip-toggle,Fail
-+kms_cursor_legacy@flip-vs-cursor-atomic,Fail
-+kms_cursor_legacy@flip-vs-cursor-crc-atomic,Fail
-+kms_cursor_legacy@flip-vs-cursor-crc-legacy,Fail
-+kms_cursor_legacy@flip-vs-cursor-legacy,Fail
-+kms_cursor_legacy@long-nonblocking-modeset-vs-cursor-atomic,Fail
- kms_flip@basic-flip-vs-wf_vblank,Fail
- kms_flip@blocking-wf_vblank,Fail
- kms_flip@dpms-vs-vblank-race,Fail
-+kms_flip@dpms-vs-vblank-race-interruptible,Fail
- kms_flip@flip-vs-absolute-wf_vblank,Fail
--kms_flip@flip-vs-absolute-wf_vblank-interruptible,Fail
- kms_flip@flip-vs-blocking-wf-vblank,Fail
- kms_flip@flip-vs-modeset-vs-hang,Fail
- kms_flip@flip-vs-panning,Fail
- kms_flip@flip-vs-panning-interruptible,Fail
- kms_flip@flip-vs-panning-vs-hang,Fail
- kms_flip@modeset-vs-vblank-race,Fail
-+kms_flip@modeset-vs-vblank-race-interruptible,Fail
- kms_flip@plain-flip-fb-recreate,Fail
- kms_flip@plain-flip-fb-recreate-interruptible,Fail
- kms_flip@plain-flip-ts-check,Fail
- kms_flip@plain-flip-ts-check-interruptible,Fail
- kms_flip@wf_vblank-ts-check,Fail
--kms_flip@wf_vblank-ts-check-interruptible,Fail
- kms_invalid_mode@int-max-clock,Fail
- kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
- kms_pipe_crc_basic@compare-crc-sanitycheck-xr24,Fail
-@@ -56,20 +68,6 @@ kms_plane@plane-panning-top-left,Fail
- kms_plane@plane-position-covered,Fail
- kms_plane@plane-position-hole,Fail
- kms_plane@plane-position-hole-dpms,Fail
--kms_plane_cursor@overlay,Fail
--kms_plane_cursor@pipe-B-overlay-size-128,Fail
--kms_plane_cursor@pipe-B-overlay-size-256,Fail
--kms_plane_cursor@pipe-B-overlay-size-64,Fail
--kms_plane_cursor@pipe-B-primary-size-128,Fail
--kms_plane_cursor@pipe-B-primary-size-256,Fail
--kms_plane_cursor@pipe-B-primary-size-64,Fail
--kms_plane_cursor@pipe-B-viewport-size-128,Fail
--kms_plane_cursor@pipe-B-viewport-size-256,Fail
--kms_plane_cursor@pipe-B-viewport-size-64,Fail
--kms_plane_cursor@primary,Fail
--kms_plane_cursor@viewport,Fail
--kms_plane_multiple@atomic-pipe-B-tiling-none,Fail
- kms_plane_multiple@tiling-none,Fail
--kms_prime@basic-crc,Fail
- kms_rmfb@close-fd,Fail
--kms_universal_plane@universal-plane-pipe-B-functional,Fail
-+kms_universal_plane@universal-plane-functional,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-index c9fdc623ab91..5126a849bf4a 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-@@ -1,7 +1,25 @@
--kms_bw@linear-tiling-2-displays-1920x1080p
--kms_cursor_crc@cursor-offscreen-64x21
-+# Board Name: rk3399-gru-kevin.dtb
-+# Bug Report: https://lore.kernel.org/dri-devel/bdb53650-1888-30b8-93ee-2290d020af4a@collabora.com/T/#u
-+# IGT Version: 1.28-gd2af13d9f
-+# Failure Rate: 50
-+# Linux Version: 6.7.0-rc3
-+
-+# Reported by deqp-runner
-+kms_bw@linear-tiling-1-displays-1920x1080p
-+kms_color@gamma
-+kms_cursor_legacy@cursorA-vs-flipA-toggle
-+kms_cursor_legacy@nonblocking-modeset-vs-cursor-atomic
-+kms_flip@dpms-vs-vblank-race
- kms_flip@dpms-vs-vblank-race-interruptible
-+kms_flip@flip-vs-absolute-wf_vblank-interruptible
- kms_flip@flip-vs-wf_vblank-interruptible
--kms_plane_cursor@overlay
--kms_plane_cursor@primary
--kms_plane_cursor@viewport
-+kms_flip@modeset-vs-vblank-race-interruptible
-+kms_pipe_crc_basic@compare-crc-sanitycheck-xr24
-+kms_setmode@basic
-+
-+# The below test shows inconsistency across multiple runs, giving
-+# results of Pass and Crash alternately.
-+kms_bw@linear-tiling-2-displays-1920x1080p
-+kms_bw@linear-tiling-3-displays-2560x1440p
-+kms_cursor_crc@cursor-rapid-movement-32x10
-+kms_flip@wf_vblank-ts-check-interruptible
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt
-index 10c3d81a919a..cf5577b7720c 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt
-@@ -1,5 +1,6 @@
- # Suspend to RAM seems to be broken on this machine
- .*suspend.*
- 
--# Too unstable, machine ends up hanging after lots of Oopses
--kms_cursor_legacy.*
-+# Machine ends up hanging after lots of Oopses with linux version 6.7.0-rc4
-+# rockchip-dp ff970000.dp: AUX CH error happened: 0x2
-+kms_plane_multiple.*
--- 
-2.40.1
-
+SGkgQ3Jpc3RpYW4sDQoNCktpbmRseSBwaW5nIDopDQoNClRoYW5rcy4NClBpbi1DaHVhbg0KDQpP
+biBGcmksIDIwMjQtMDItMDIgYXQgMjA6MzYgKzA4MDAsIFBpbi1DaHVhbiBMaXUgd3JvdGU6DQo+
+IEhpIENyaXN0aWFuLCANCj4gDQo+IFRoYW5rcyBmb3Iga2luZGx5IHJldmlldyBhbmQgZXhwbGFp
+bnMuIFllYWgsIEkgaGF2ZSBldmVyIHRyaWVkDQo+IGFub3RoZXINCj4gd2F5IHRvIHNraXAgdGhl
+IGNhbGwgKGkuZS4gbGV0IG1hcmtfdHhkb25lIGJlIG51bGwpLiBIb3dldmVyLCBpdA0KPiBsb29r
+cw0KPiBub3QgZWFzeSBhbmQgYWxzbyB0byBiYWNrcG9ydC4NCj4gDQo+IEF3YWl0aW5nIHlvdXIg
+dGVzdCByZXN1bHRzIGFuZCBmdXJ0aGVyIHN1Z2dlc3Rpb25zLCB0aGFua3MuDQo+IA0KPiBSZWdh
+cmRzLA0KPiBQaW4tQ2h1YW4NCj4gDQo=
 
