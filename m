@@ -4,63 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5473FC5475B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Mar 2024 19:40:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6954CC5475B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Mar 2024 20:11:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aJQbdgZKjt3hC5Lxf1ZMX53czAKc6KU0YHiAPB7jJT8=; b=uv7COfsJ78/UA8TvAxzvtjQAJG
-	fW/LJDL9iaicrj04jP2PryKNXICdDXMmbSjQQiH6uvN38e+v/iyQNC1/GBk6cwXkXWg0yPARiSkcS
-	JTUv5+m9C/ECEN3fIDKCF/yU/LjGcHTVeOvOQlK/sbLM0sfmVKoIv5Zc8ejZS8F4S/IXTRIKcW+1p
-	bb6RlOLCtPNCyeu0IIEFfyp0POLo5xrB1nNFS2TYM6IT+Lz4i2PezuJtTuenr1D0YoVk8Bqro8AMX
-	dpO00TVjzADI2sNXFxGWN6r7QlfJAACp4C1Wr5heR4/ryKtf+OgJyK0uDIhRqoLPucRud6uIu4Y21
-	xdj9sFFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VpSsgGhBR4FyYxEHKoURzmKgm4LkFv8WoyeKAG8oCW8=; b=d40bsmkcp+gVs8RY1p6g2wKuce
+	f1vdfWlMhaiJJ9D5VMFOL46ssGszE+lSyfXmlF5tOORW5WYIBIdkWgm12n6fFyat3ktcBzMnnLG49
+	JK6kHzvIiMEubjciqCv94QjGc2kQv+AvmkyHYApjOkQYqhpGlOnvmxh1OCbU4jXIfZD9V7kVwWcqL
+	zLJVaLT7sL6yV2zNs5s8/19+E7NJAQJf/9DxXsV85OVChhUdQDW2RfxKHPM+ddxDnhUQg7YbAqCQX
+	2ahwEGqOiIWrbpjv6FO8MnvczXvElIj+M9sBWCu46c5P2Fo1ytRbWX9yk34h9UyBXxKZlhZBSuqnL
+	Z6+zVrrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhx7s-00000001ezo-1Lqx;
-	Wed, 06 Mar 2024 19:40:28 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rhxcE-00000001m2b-474m;
+	Wed, 06 Mar 2024 20:11:50 +0000
+Received: from outgoing6.flk.host-h.net ([188.40.0.77])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhx7o-00000001exG-0z0f;
-	Wed, 06 Mar 2024 19:40:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9DC8761A15;
-	Wed,  6 Mar 2024 19:40:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A15D6C433C7;
-	Wed,  6 Mar 2024 19:40:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1709754023;
-	bh=5/Zn7NHW1uTwkwELhBiHm6Z/dCQjigrm4gBqAaJY9Ho=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JKLC432oMy/qlvpf9vVwvVrMXSu9agkHKeeO3zV41CO6dZ20Sm+V1eNXj22cNLo5Z
-	 G+5sWuR3L6AmhazuPitHyEI9Q62kI8Foz0g935QQYo5vAzrjZ8nDxoXm0R/Wr/9CFG
-	 vPXG+0e+XKAtpxEOR49vSMOYzsg0x7aSvwcfzAYphXrOpC1eDjwtgQjdyTDVvoqQSC
-	 SuqdIW6aNwut2F9YETPd7sXXRv9mmM45omYm/5wkTilQZD9GK9SEX1YNN/R2vmh6sP
-	 W8ymyxZAaL1dbgbc4v+T12pja5MoSTS/EQylltQZ+i5r84F3qO2rQpqaPUmf0jdR02
-	 kkHwk+XGSsg9Q==
-Date: Wed, 6 Mar 2024 12:40:20 -0700
-From: Nathan Chancellor <nathan@kernel.org>
-To: Chunhui Li <chunhui.li@mediatek.com>
-Cc: Petr Mladek <pmladek@suse.com>, Steven Rostedt <rostedt@goodmis.org>,
-	John Ogness <john.ogness@linutronix.de>,
-	Sergey Senozhatsky <senozhatsky@chromium.org>,
+	id 1rhxcB-00000001m1J-197q;
+	Wed, 06 Mar 2024 20:11:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=risingedge.co.za; s=xneelo; h=Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:reply-to:sender:bcc
+	:content-type; bh=VpSsgGhBR4FyYxEHKoURzmKgm4LkFv8WoyeKAG8oCW8=; b=UsPsRiTvYIn
+	ONbx1DqucGDf7Chz692IAbQp8V9Bl519eP2W4rVQVL0a7P2kiYUdeaC29BCW3kCxo+y/AFMp72mMq
+	K+LlWXSJziXzZg1hFqVNtSep8PQAeYNg+vAyvqU1LTbA8AXtRmPd/+jgEmGVmuVthbXCN5+/l8nYo
+	w87JnPyZOMXid3mB71NXsD6awQZKkNOwdL6JzFhyemSW6u4P2/Sye88T1eYD/Y8yOeBbyKxH79RIf
+	q9jhvFddz0waPbWqHr4ynUn+6BPApoV5ztTpUdH320fTntyURH8QCp1jw1sonrE15sEBBuR2pq/h9
+	BceqntpkkD6+EUXNInookCA==;
+Received: from www31.flk1.host-h.net ([188.40.1.173])
+	by antispam2-flk1.host-h.net with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <justin.swartz@risingedge.co.za>)
+	id 1rhxc4-0088az-M9; Wed, 06 Mar 2024 22:11:41 +0200
+Received: from [41.144.0.96] (helo=localhost.localdomain)
+	by www31.flk1.host-h.net with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <justin.swartz@risingedge.co.za>)
+	id 1rhxc3-0005PR-QU; Wed, 06 Mar 2024 22:11:40 +0200
+From: Justin Swartz <justin.swartz@risingedge.co.za>
+To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
-Subject: Re: [PATCH] printk: fix _entry_ptr build warning
-Message-ID: <20240306194020.GA3711543@dev-arch.thelio-3990X>
-References: <20240306092647.16010-1-chunhui.li@mediatek.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Justin Swartz <justin.swartz@risingedge.co.za>,
+	linux-mips@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 2/2] mips: dts: ralink: mt7621: add serial1 and serial2 nodes
+Date: Wed,  6 Mar 2024 22:10:44 +0200
+Message-Id: <20240306201045.1475-2-justin.swartz@risingedge.co.za>
+In-Reply-To: <20240306201045.1475-1-justin.swartz@risingedge.co.za>
+References: <20240306201045.1475-1-justin.swartz@risingedge.co.za>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240306092647.16010-1-chunhui.li@mediatek.com>
+Content-Transfer-Encoding: 8bit
+X-Authenticated-Sender: justin.swartz@risingedge.co.za
+X-Virus-Scanned: Clear
+X-Originating-IP: 188.40.1.173
+X-SpamExperts-Domain: risingedge.co.za
+X-SpamExperts-Username: 
+Authentication-Results: host-h.net; auth=pass (login) smtp.auth=@risingedge.co.za
+X-SpamExperts-Outgoing-Class: ham
+X-SpamExperts-Outgoing-Evidence: SB/global_tokens (0.00758473274125)
+X-Recommended-Action: accept
+X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT8C6SK0vybqcYHmQCnhqJHcPUtbdvnXkggZ
+ 3YnVId/Y5jcf0yeVQAvfjHznO7+bT5wCPRB8bAzJcv2cv+UqiTTc2+CpNcmBnO4XM3Sck4bwNogU
+ WCl1nkLBzZX0KuJ9bXiS85Z42w/+2OBolTNFbPomXFWCX8oNdggW7HE9XDTdSejrkEpbuUvwMvHx
+ 3T+KSG//gbuP7hnUK8NQdLwsVWKIFDZRrTGv3rxiw9tFrqFSCFNiLZt/QXQnOBRD+jq1HsKsDh/6
+ Srgk2K3gr1VBfJbChkYH6fbrypLNrde+UooQVNLReLErukdelEOHUIpaBbp5GdnsN8+UvimwMinK
+ 0+Txhz2u9qvrL2PODYgMZQApJXOjDLkqunZ9NcY2bHZn7CfFscMZZf3sCkN20I5vMh4akiObI7Kj
+ vK7X04QEin24qbfMFd8eGjnYW8aSH5qj4ujh/13psIvqSqJFa1CcANErDW/w69saM9prk3jNnHtn
+ nuEt/J9wDZeQfiNOYsLDFBdwYt2XtlLzy7G7T4kla0JNnAWQx3FS11bhwUa9HCIwKB+TroNcRY33
+ oNmH4nRQzHQazgY7lmveanvOdQzf6IMJ3345q/s6ySNrGnXycmhg3BNVdpEcm8g/6PJN7TvsruKC
+ n3oZFShGuGVczvnnMQuyLtBcNrQxKZYuPe8bdCyw79zlPbqLQkZr26Lcxdvj8cqI+CogZdOhX7v3
+ ClXzrmMECwtAGwNe0eOvXAXd2nqZdzIUka7Uq615Mik1qzcz30/jNv+A51L2swh0gYW0eVWShle6
+ F/kpBdN+oWjoATjEFDwcaiz0R34rhTN+GTbl4uS+pZovX9cex7Ac4fawcerGI7TrGXpM/B/M0BZd
+ PfIU1BX7pZc1sE3vsz58auH/srM2fgZ9JmgLbj7sqoEiwv7LCxIiAE5ODMnmwjvj2589zjbyZCiM
+ WpBpW8YvoIIqmZcWhL/r/eFjMjJnMHeiAPOVK0T+c9pM0FteOLwuqFxkZtxbXpCgbiKBsA+Ddi6m
+ awd1jemntr2PrMOTF1fDnHo5A9JQxMw0XtBqT5kbx7zuprmKeJENT1oiQUtfU17WEZPRHu1+r6ov
+ Q/IKaojN7gdb+Glhdb8DP7Iz3Z0Qa+VGiF/lfNRtaK1t4SnssY938wKgOC3c9GkW+OmRHU05XGuW
+ g+VcQ3bZb7F7k2CvWvw8dbdRONqsj33t0is+SdoOwsk2luZvMBiCgALm/XUigxDlb5qgpERsDkCX
+ BgcGBwKlYailDNhe7w2QIanZ/NegoJ79AXUnIiEEoyCaZXMG8LAkbJoO2tY/Mg5ClXd30oBm8U++
+ JlmpaolH3tK93iPfP9/LMV7rNH+khni30uZSXlsmCOj6IY0UX9+ySU70SxRmHXLYM3A6BXfvel8O
+ EFDbU51Q2S43vcWL3lM20b9wQESc+PquLiZOpxiedGbqX4nzL9MgCv99rrli2UQdOGeuQqV2IVXB
+ o/3R5VqqcOmERbjE+D5FzT0EaduWMjGSdmMR5Ch1HY0a4RW7JP9zvdSGB9tIDxuFtg36jUhUk8/b
+ P2/Mw1j9lmNQqiIAMR1SEszVdPY4ocfmWv3Fe9Iziczdq+A=
+X-Report-Abuse-To: spam@antispamquarantine.host-h.net
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240306_114024_416440_AF5F6E6F 
-X-CRM114-Status: GOOD (  20.02  )
+X-CRM114-CacheID: sfid-20240306_121147_458433_93584517 
+X-CRM114-Status: UNSURE (   7.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,65 +117,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 06, 2024 at 05:26:47PM +0800, Chunhui Li wrote:
-> We build with Werror and suffer build error when
-> enable CONFIG_PRINTK_INDEX, such as
-> gfp.h:223:2: error: unused variable '_entry_ptr'
-> ratelimit.h:31:3: error: unused variable '_entry_ptr'
-> kallsyms.h:172:2: error: unused variable '_entry_ptr'
-> [-Werror,-Wunused-variable]
-> 
-> Fix the warning by appending __attribute__((unused)).
-> 
-> Signed-off-by: Chunhui Li <chunhui.li@mediatek.com>
+Add serial1 and serial2 nodes to define the existence of
+UART1 and UART2.
 
-Are these warnings being emitted from an Android version of clang,
-specifically 18.0.0 with the build ID of 11209041 (you should be able to
-tell this from the "bid" field in the BUILD_INFO file in the clang
-toolchain folder)? This seems remarkably similar to
-https://github.com/ClangBuiltLinux/linux/issues/1977, which was a report
-using that version of Android clang.
+Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+---
+ arch/mips/boot/dts/ralink/mt7621.dtsi | 38 +++++++++++++++++++++++++++
+ 1 file changed, 38 insertions(+)
 
-Ultimately, this warning is a bug in a clang change that was quickly
-found and reverted upstream
+diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
+index dca415fdd..2069249c8 100644
+--- a/arch/mips/boot/dts/ralink/mt7621.dtsi
++++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
+@@ -128,6 +128,44 @@ serial0: serial@c00 {
+ 			pinctrl-0 = <&uart1_pins>;
+ 		};
+ 
++		serial1: serial@d00 {
++			status = "disabled";
++
++			compatible = "ns16550a";
++			reg = <0xd00 0x100>;
++
++			clocks = <&sysc MT7621_CLK_UART2>;
++
++			interrupt-parent = <&gic>;
++			interrupts = <GIC_SHARED 27 IRQ_TYPE_LEVEL_HIGH>;
++
++			reg-shift = <2>;
++			reg-io-width = <4>;
++			no-loopback-test;
++
++			pinctrl-names = "default";
++			pinctrl-0 = <&uart2_pins>;
++		};
++
++		serial2: serial@e00 {
++			status = "disabled";
++
++			compatible = "ns16550a";
++			reg = <0xe00 0x100>;
++
++			clocks = <&sysc MT7621_CLK_UART3>;
++
++			interrupt-parent = <&gic>;
++			interrupts = <GIC_SHARED 28 IRQ_TYPE_LEVEL_HIGH>;
++
++			reg-shift = <2>;
++			reg-io-width = <4>;
++			no-loopback-test;
++
++			pinctrl-names = "default";
++			pinctrl-0 = <&uart3_pins>;
++		};
++
+ 		spi0: spi@b00 {
+ 			status = "disabled";
+ 
+-- 
 
-  https://github.com/llvm/llvm-project/commit/f0f395e00e2ec3f1f20ca9021d1554fde73d56c9
-  https://github.com/llvm/llvm-project/commit/cfa578cde0314935c6eb5d7fa19ec26390d431dd
-
-but unfortunately, Android picked a revision for the 11209041 build that
-was between the landing of the broken commit and its revert. It was
-quickly fixed with the 11368308 build
-
-  https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+/42d100b025eb5f4a41781348016c148e9e912cf9
-
-so you should just be able to update to that version to resolve this.
-
-Cheers,
-Nathan
-
-> ---
->  include/linux/printk.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/include/linux/printk.h b/include/linux/printk.h
-> index 8ef499ab3c1e..749c1c4257f1 100644
-> --- a/include/linux/printk.h
-> +++ b/include/linux/printk.h
-> @@ -392,7 +392,7 @@ struct pi_entry {
->  				.level = __builtin_constant_p(_level) ? (_level) : NULL, \
->  				.subsys_fmt_prefix = _subsys_fmt_prefix,\
->  			};						\
-> -			static const struct pi_entry *_entry_ptr	\
-> +			static const struct pi_entry *_entry_ptr __attribute__((unused)) \
->  			__used __section(".printk_index") = &_entry;	\
->  		}							\
->  	} while (0)
-> -- 
-> 2.18.0
-> 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 
