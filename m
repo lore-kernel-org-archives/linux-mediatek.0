@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6954CC5475B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF9BAC54E49
 	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Mar 2024 20:11:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VpSsgGhBR4FyYxEHKoURzmKgm4LkFv8WoyeKAG8oCW8=; b=d40bsmkcp+gVs8RY1p6g2wKuce
-	f1vdfWlMhaiJJ9D5VMFOL46ssGszE+lSyfXmlF5tOORW5WYIBIdkWgm12n6fFyat3ktcBzMnnLG49
-	JK6kHzvIiMEubjciqCv94QjGc2kQv+AvmkyHYApjOkQYqhpGlOnvmxh1OCbU4jXIfZD9V7kVwWcqL
-	zLJVaLT7sL6yV2zNs5s8/19+E7NJAQJf/9DxXsV85OVChhUdQDW2RfxKHPM+ddxDnhUQg7YbAqCQX
-	2ahwEGqOiIWrbpjv6FO8MnvczXvElIj+M9sBWCu46c5P2Fo1ytRbWX9yk34h9UyBXxKZlhZBSuqnL
-	Z6+zVrrA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mak2gQmK+LcOZJ7gNnWxgFo/kAW7G7Xhm701qVAMVe8=; b=RvRKfgDrI9CFpMifqEkRPrx2Ch
+	RCO6uwcFKl0CHyZipa6XVNeHNmm3XBsHSfR+5fOYi+rI/zZBQrbYgpb0s66vlhCvhSmLjVwriheBz
+	Yb0OrUswIJX9Dqq4L8iLffBdeQmuhxCyAreeNfcqONxZD3J6kJegXHrZjan3rnW5yXu5c+QjWeoVJ
+	YnuZiQvH/K18qmLI63852bfA2CZiDSuRAEzY4WoFXHWUXWcFm8UNOAhtX9zBm15zmwr+O+5K2IMLP
+	A9I+bMlN8wzXbOSjS3tbhs1i/mmWHaB0jGV00fSs66oGi/6NzWOo9RkdgMw2gSKw9B/27J1QrmoI5
+	961TSKxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhxcE-00000001m2b-474m;
-	Wed, 06 Mar 2024 20:11:50 +0000
+	id 1rhxcF-00000001m2h-1D5u;
+	Wed, 06 Mar 2024 20:11:51 +0000
 Received: from outgoing6.flk.host-h.net ([188.40.0.77])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhxcB-00000001m1J-197q;
+	id 1rhxcA-00000001m0z-0pM5;
 	Wed, 06 Mar 2024 20:11:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=risingedge.co.za; s=xneelo; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:reply-to:sender:bcc
-	:content-type; bh=VpSsgGhBR4FyYxEHKoURzmKgm4LkFv8WoyeKAG8oCW8=; b=UsPsRiTvYIn
-	ONbx1DqucGDf7Chz692IAbQp8V9Bl519eP2W4rVQVL0a7P2kiYUdeaC29BCW3kCxo+y/AFMp72mMq
-	K+LlWXSJziXzZg1hFqVNtSep8PQAeYNg+vAyvqU1LTbA8AXtRmPd/+jgEmGVmuVthbXCN5+/l8nYo
-	w87JnPyZOMXid3mB71NXsD6awQZKkNOwdL6JzFhyemSW6u4P2/Sye88T1eYD/Y8yOeBbyKxH79RIf
-	q9jhvFddz0waPbWqHr4ynUn+6BPApoV5ztTpUdH320fTntyURH8QCp1jw1sonrE15sEBBuR2pq/h9
-	BceqntpkkD6+EUXNInookCA==;
+	Message-Id:Date:Subject:Cc:To:From:reply-to:sender:bcc:in-reply-to:references
+	:content-type; bh=mak2gQmK+LcOZJ7gNnWxgFo/kAW7G7Xhm701qVAMVe8=; b=kBghQjttvxm
+	dwWS3arJHDONeKeLjYw0eO/2qv5oR/KK65mkXjcHMjs1VvH5m0XAHm3zkqeE/qC+G6S+k1xlgndXO
+	dXqra7geZqcBEnAWcsraL1MR55JtAksQUVf0LpzabhdtyjS+DvVClF+YNILJ6C+r4RDzbDlip6uhI
+	HLj+2zUzE7rNbYgBxJurZRvxE/S++KcrUOFpvnujR62vA3UJFMb0GsogcYE9QGcHVMRsZP0YaIFaV
+	pny13aafe91lerZmMGm2Pdzcuuk7qttKjAWzTGunEFWTzXmt8piAjLdC8LkYm6gowFBqOvWg8Gc2X
+	OOfEyn/LU63DBMTFH7BU2OQ==;
 Received: from www31.flk1.host-h.net ([188.40.1.173])
 	by antispam2-flk1.host-h.net with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1rhxc4-0088az-M9; Wed, 06 Mar 2024 22:11:41 +0200
+	id 1rhxbw-0088Wt-At; Wed, 06 Mar 2024 22:11:35 +0200
 Received: from [41.144.0.96] (helo=localhost.localdomain)
 	by www31.flk1.host-h.net with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1rhxc3-0005PR-QU; Wed, 06 Mar 2024 22:11:40 +0200
+	id 1rhxbt-0005PR-Mb; Wed, 06 Mar 2024 22:11:30 +0200
 From: Justin Swartz <justin.swartz@risingedge.co.za>
 To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
 	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
@@ -60,11 +60,9 @@ Cc: Justin Swartz <justin.swartz@risingedge.co.za>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 2/2] mips: dts: ralink: mt7621: add serial1 and serial2 nodes
-Date: Wed,  6 Mar 2024 22:10:44 +0200
-Message-Id: <20240306201045.1475-2-justin.swartz@risingedge.co.za>
-In-Reply-To: <20240306201045.1475-1-justin.swartz@risingedge.co.za>
-References: <20240306201045.1475-1-justin.swartz@risingedge.co.za>
+Subject: [PATCH 1/2] mips: dts: ralink: mt7621: associate uart1_pins with serial0
+Date: Wed,  6 Mar 2024 22:10:43 +0200
+Message-Id: <20240306201045.1475-1-justin.swartz@risingedge.co.za>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Authenticated-Sender: justin.swartz@risingedge.co.za
@@ -74,9 +72,9 @@ X-SpamExperts-Domain: risingedge.co.za
 X-SpamExperts-Username: 
 Authentication-Results: host-h.net; auth=pass (login) smtp.auth=@risingedge.co.za
 X-SpamExperts-Outgoing-Class: ham
-X-SpamExperts-Outgoing-Evidence: SB/global_tokens (0.00758473274125)
+X-SpamExperts-Outgoing-Evidence: Combined (0.02)
 X-Recommended-Action: accept
-X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT8C6SK0vybqcYHmQCnhqJHcPUtbdvnXkggZ
+X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT+1hD2aVajAIUWnLadiDDRQPUtbdvnXkggZ
  3YnVId/Y5jcf0yeVQAvfjHznO7+bT5wCPRB8bAzJcv2cv+UqiTTc2+CpNcmBnO4XM3Sck4bwNogU
  WCl1nkLBzZX0KuJ9bXiS85Z42w/+2OBolTNFbPomXFWCX8oNdggW7HE9XDTdSejrkEpbuUvwMvHx
  3T+KSG//gbuP7hnUK8NQdLwsVWKIFDZRrTGv3rxiw9tFrqFSCFNiLZt/QXQnOBRD+jq1HsKsDh/6
@@ -84,24 +82,24 @@ X-Filter-ID: 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
- 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
+ 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
- WpBpW8YvoIIqmZcWhL/r/eFjMjJnMHeiAPOVK0T+c9pM0FteOLwuqFxkZtxbXpCgbiKBsA+Ddi6m
- awd1jemntr2PrMOTF1fDnHo5A9JQxMw0XtBqT5kbx7zuprmKeJENT1oiQUtfU17WEZPRHu1+r6ov
- Q/IKaojN7gdb+Glhdb8DP7Iz3Z0Qa+VGiF/lfNRtaK1t4SnssY938wKgOC3c9GkW+OmRHU05XGuW
- g+VcQ3bZb7F7k2CvWvw8dbdRONqsj33t0is+SdoOwsk2luZvMBiCgALm/XUigxDlb5qgpERsDkCX
- BgcGBwKlYailDNhe7w2QIanZ/NegoJ79AXUnIiEEoyCaZXMG8LAkbJoO2tY/Mg5ClXd30oBm8U++
- JlmpaolH3tK93iPfP9/LMV7rNH+khni30uZSXlsmCOj6IY0UX9+ySU70SxRmHXLYM3A6BXfvel8O
- EFDbU51Q2S43vcWL3lM20b9wQESc+PquLiZOpxiedGbqX4nzL9MgCv99rrli2UQdOGeuQqV2IVXB
- o/3R5VqqcOmERbjE+D5FzT0EaduWMjGSdmMR5Ch1HY0a4RW7JP9zvdSGB9tIDxuFtg36jUhUk8/b
- P2/Mw1j9lmNQqiIAMR1SEszVdPY4ocfmWv3Fe9Iziczdq+A=
+ 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
+ qo05MS+4ayUpOtEhdxekWDmK9g==
 X-Report-Abuse-To: spam@antispamquarantine.host-h.net
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240306_121147_458433_93584517 
-X-CRM114-Status: UNSURE (   7.89  )
+X-CRM114-CacheID: sfid-20240306_121146_881600_A826E579 
+X-CRM114-Status: UNSURE (   7.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -117,63 +115,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add serial1 and serial2 nodes to define the existence of
-UART1 and UART2.
+Add pinctrl-name and pinctrl-0 properties to declare
+that the uart1_pins group is associated with serial0.
 
 Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
 ---
- arch/mips/boot/dts/ralink/mt7621.dtsi | 38 +++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
+ arch/mips/boot/dts/ralink/mt7621.dtsi | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
-index dca415fdd..2069249c8 100644
+index 35a10258f..dca415fdd 100644
 --- a/arch/mips/boot/dts/ralink/mt7621.dtsi
 +++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
-@@ -128,6 +128,44 @@ serial0: serial@c00 {
- 			pinctrl-0 = <&uart1_pins>;
+@@ -123,6 +123,9 @@ serial0: serial@c00 {
+ 			reg-shift = <2>;
+ 			reg-io-width = <4>;
+ 			no-loopback-test;
++
++			pinctrl-names = "default";
++			pinctrl-0 = <&uart1_pins>;
  		};
  
-+		serial1: serial@d00 {
-+			status = "disabled";
-+
-+			compatible = "ns16550a";
-+			reg = <0xd00 0x100>;
-+
-+			clocks = <&sysc MT7621_CLK_UART2>;
-+
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SHARED 27 IRQ_TYPE_LEVEL_HIGH>;
-+
-+			reg-shift = <2>;
-+			reg-io-width = <4>;
-+			no-loopback-test;
-+
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&uart2_pins>;
-+		};
-+
-+		serial2: serial@e00 {
-+			status = "disabled";
-+
-+			compatible = "ns16550a";
-+			reg = <0xe00 0x100>;
-+
-+			clocks = <&sysc MT7621_CLK_UART3>;
-+
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SHARED 28 IRQ_TYPE_LEVEL_HIGH>;
-+
-+			reg-shift = <2>;
-+			reg-io-width = <4>;
-+			no-loopback-test;
-+
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&uart3_pins>;
-+		};
-+
  		spi0: spi@b00 {
- 			status = "disabled";
- 
 -- 
 
 
