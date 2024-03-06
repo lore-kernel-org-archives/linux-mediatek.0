@@ -4,77 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1A22C54E49
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Mar 2024 08:50:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F28BC5475B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Mar 2024 09:40:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Cb1kpBv41y8D0mhV+p29ExFCa4an5Uns1TrrF3DEesg=; b=Plnl2iYj7Hq6/EjZnEPfbO83+E
-	DwfEnIOpU1PqTFcFEP//dxre/W2rBe9D1LN2XfdSu9z2nH43VvESK3PonS7cJwBNUji6uApSXcmEw
-	s2C31AOs8fhZbC0jf7WYFJut+S9wsvZ7vzhBMuGHMQX1jWzo1nraqXRXB3ydScsRVJYHJY2b9tjwl
-	Jdj9DSIHTeNIEx4mQbe82j9BGNCeyrhEHtgjVPUQWB7VA85Q17jAyuj4qUZchVTq0ccJA8Ddd08t0
-	WT5zltJdDZWnhuS/4xhBWUsCUVNJKiSd/8I+B6WzeJCxSqWE231V/Dr49Wu/Lo3RPMPpDlUHIkO2I
-	NIepJrKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ekRAdx9PacrM+v9N8B7aPw62g80zVfoirlx+37NhmtQ=; b=S1MTRP8YTKRiaBHHLJAMg+8E7x
+	/hrzDXZNYu216jIDDA6+uspAZETqUst//2ijRYxlxAp8OuLwBLznLvVf0o+VZKXPguhvPrp3ZrmQX
+	1xj0FHo9CcVlAObFntKi/VsfWvK0hIw78pNXSTgF0pSCGKKpk0wqqFfwaaGLjYqmeZ44hEF9spWMY
+	4Jyf4Em1BQVIocqYr5NfunRAHpDK8cxWkpVxet8n9MzP4p+V8RkKt1rnM73rYSjeYCTwXk7570IIj
+	uIzJPy1VNYR+4nWT7WigGndmpSg5dvEIlnmCf79DAkWRxBpaiZ0T2v9sXKupPoso2hq7FWn6ZXrnE
+	1dmqfYFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhmyf-0000000GyYJ-1YtZ;
-	Wed, 06 Mar 2024 08:50:17 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rhnlW-0000000HCjH-36x5;
+	Wed, 06 Mar 2024 09:40:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhmyc-0000000GyXV-0LKa;
-	Wed, 06 Mar 2024 08:50:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709715012;
-	bh=HateX3LLeZdB/hmGCbPu2UTVKn/rmhpctmgFXc6UpcY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Eatb8JibbQ25Fe1nNtOgWaSZR8QMC68IIenGsNhQVHyvWG2ygFqPZ1j5xv2zcSNfF
-	 EBn5q2K0SltAHws33YmDk4s2xHIzv0YICGp+WMp2PAcwHREBASOq2xupjYN88k6ThM
-	 EHcf2Gf8NETrkwAzs5zJBQPMTbpvqMNR91DF45uuxZ1QQdwy9nlKMjpQqH3N12EmAj
-	 +TJ0F+BYzMkC6YVmOZQMqvnn9QjHr5TcI5UmD6zf0UtJpEpArgrp2AJw/4XZvjLcOV
-	 5xkxLryihLPLN4H7Kuy250EAROxDScp0XFtCW+Xxqncrl7oGvqJnk0V/FV2QB0rEiI
-	 rK/sEN34+Yynw==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id EDD8B37820D0;
-	Wed,  6 Mar 2024 08:50:10 +0000 (UTC)
-Message-ID: <c55f2c6e-1de8-4248-a52a-d6c9e49b565a@collabora.com>
-Date: Wed, 6 Mar 2024 09:50:10 +0100
+	id 1rhnlT-0000000HCeb-3EAc;
+	Wed, 06 Mar 2024 09:40:44 +0000
+X-UUID: 917e3c5edb9d11eea8a22560583bddef-20240306
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ekRAdx9PacrM+v9N8B7aPw62g80zVfoirlx+37NhmtQ=;
+	b=DNO8QwTPESmv3TC7DhSCetbJHh8NTV5szUqFOiz29AZ1rDP0131XamuPaU9zpHM+8zMp82ffHL2lvL3fCSGo9fcuSK3XhIF11aMiuq+uLww+ah7nBVCkdU0nowZgXR5C52PVvWEqWFImev05cJfZoNCcvr0ohPZLg8ECFbyw2so=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:6a4b5271-7a04-41c5-b1c7-9517c8ccb50f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:242f93ff-c16b-4159-a099-3b9d0558e447,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 917e3c5edb9d11eea8a22560583bddef-20240306
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <chunhui.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 814359245; Wed, 06 Mar 2024 02:40:29 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 6 Mar 2024 17:40:25 +0800
+Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 6 Mar 2024 17:40:24 +0800
+From: Chunhui Li <chunhui.li@mediatek.com>
+To: Petr Mladek <pmladek@suse.com>, Steven Rostedt <rostedt@goodmis.org>, John
+ Ogness <john.ogness@linutronix.de>, Sergey Senozhatsky
+	<senozhatsky@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>, Chunhui Li
+	<chunhui.li@mediatek.com>
+Subject: [PATCH] printk: fix _entry_ptr build warning
+Date: Wed, 6 Mar 2024 17:26:47 +0800
+Message-ID: <20240306092647.16010-1-chunhui.li@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] PCI: mediatek-gen3: Assert MAC reset only if PHY reset
- also present
-To: =?UTF-8?B?Smlhbmp1biBXYW5nICjnjovlu7rlhpsp?= <Jianjun.Wang@mediatek.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>
-Cc: "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "wenst@chromium.org" <wenst@chromium.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "bhelgaas@google.com" <bhelgaas@google.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
- Ryder Lee <Ryder.Lee@mediatek.com>,
- "nfraprado@collabora.com" <nfraprado@collabora.com>
-References: <20240229092449.580971-1-angelogioacchino.delregno@collabora.com>
- <30824df32636dec25b9a5972b1ee8de76b295feb.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <30824df32636dec25b9a5972b1ee8de76b295feb.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--0.708200-8.000000
+X-TMASE-MatchedRID: Z2f9DQPf1tkE7MuQrZP2o5dc7I2df+ms75oFMklhrnhGL0g1nVmkYVO4
+	BD7nLMxnlTJXKqh1ne2/LclmUK1hkobzTO6asfbjyDp+jSvEtWv0O7M3lSnTW5soi2XrUn/Jn6K
+	dMrRsL14qtq5d3cxkNRqXnrxrKCOXFcwn/U1iS4dD30h1PAU6P6/GTBhLbUgDqhGWfuPUaq93ob
+	md2bsjHipWuuOW0EtOvAgHKzqJDgOL28eWhdXbLK92atjiJrAoF0aD5ljt43pMcHZD6gqu7wxMj
+	fifIXfowkvVoA11Twp+3BndfXUhXQ==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--0.708200-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 1CE3B773FBAD0C22075C8D3E0E295523F7348289C887245A523E5D76D60A61202000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240306_005014_395312_9DF9E88E 
-X-CRM114-Status: GOOD (  23.34  )
+X-CRM114-CacheID: sfid-20240306_014043_819053_8D2F093F 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,143 +97,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/03/24 03:48, Jianjun Wang (王建军) ha scritto:
-> Hi Angelo,
-> 
-> Thanks for your patch.
-> 
-> On Thu, 2024-02-29 at 10:24 +0100, AngeloGioacchino Del Regno wrote:
->> Some SoCs have two PCI-Express controllers: in the case of MT8195,
->> one of them is using a dedicated PHY, but the other uses a combo PHY
->> that is shared with USB and in that case the PHY cannot be reset
->> from the PCIe driver, or USB functionality will be unable to resume.
->>
->> Resetting the PCIe MAC without also resetting the PHY will result in
->> a full system lockup at PCIe resume time and the only option to
->> resume operation is to hard reboot the system (with a PMIC cut-off).
->>
->> To resolve this issue, check if we've got both a PHY and a MAC reset
->> and, if not, never assert resets at PM suspend time: in that case,
->> the link is still getting powered down as both the clocks and the
->> power domains will go down anyway.
->>
->> Fixes: d537dc125f07 ("PCI: mediatek-gen3: Add system PM support")
->> Signed-off-by: AngeloGioacchino Del Regno <
->> angelogioacchino.delregno@collabora.com>
->> ---
->>
->> Changes in v2:
->>   - Rebased over next-20240229
->>
->>   drivers/pci/controller/pcie-mediatek-gen3.c | 25 ++++++++++++++-----
->> --
->>   1 file changed, 17 insertions(+), 8 deletions(-)
->>
->> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c
->> b/drivers/pci/controller/pcie-mediatek-gen3.c
->> index 975b3024fb08..99b5d7a49be1 100644
->> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
->> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
->> @@ -874,17 +874,26 @@ static int mtk_pcie_power_up(struct
->> mtk_gen3_pcie *pcie)
->>   	return err;
->>   }
->>   
->> -static void mtk_pcie_power_down(struct mtk_gen3_pcie *pcie)
->> +static void mtk_pcie_power_down(struct mtk_gen3_pcie *pcie, bool
->> is_suspend)
->>   {
->> +	bool suspend_reset_supported = pcie->mac_reset && pcie-
->>> phy_reset;
->> +
->>   	clk_bulk_disable_unprepare(pcie->num_clks, pcie->clks);
->>   
->>   	pm_runtime_put_sync(pcie->dev);
->>   	pm_runtime_disable(pcie->dev);
->> -	reset_control_assert(pcie->mac_reset);
->> +
->> +	/*
->> +	 * Assert MAC reset only if we also got a PHY reset, otherwise
->> +	 * the system will lockup at PM resume time.
->> +	 */
->> +	if (is_suspend && suspend_reset_supported)
->> +		reset_control_assert(pcie->mac_reset);
->>   
->>   	phy_power_off(pcie->phy);
->>   	phy_exit(pcie->phy);
->> -	reset_control_assert(pcie->phy_reset);
->> +	if (is_suspend && suspend_reset_supported)
->> +		reset_control_assert(pcie->phy_reset);
->>   }
->>   
->>   static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
->> @@ -920,7 +929,7 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie
->> *pcie)
->>   	return 0;
->>   
->>   err_setup:
->> -	mtk_pcie_power_down(pcie);
->> +	mtk_pcie_power_down(pcie, false);
->>   
->>   	return err;
->>   }
->> @@ -951,7 +960,7 @@ static int mtk_pcie_probe(struct platform_device
->> *pdev)
->>   	err = pci_host_probe(host);
->>   	if (err) {
->>   		mtk_pcie_irq_teardown(pcie);
->> -		mtk_pcie_power_down(pcie);
->> +		mtk_pcie_power_down(pcie, false);
->>   		return err;
->>   	}
->>   
->> @@ -969,7 +978,7 @@ static void mtk_pcie_remove(struct
->> platform_device *pdev)
->>   	pci_unlock_rescan_remove();
->>   
->>   	mtk_pcie_irq_teardown(pcie);
->> -	mtk_pcie_power_down(pcie);
->> +	mtk_pcie_power_down(pcie, false);
-> 
-> Is there any reason not to reset the MAC and PHY when probe fails and
-> driver removing? Some SoCs may not have MTCMOS to cut off their power,
-> we need to assert the reset signal to save power in that case.
-> 
+We build with Werror and suffer build error when
+enable CONFIG_PRINTK_INDEX, such as
+gfp.h:223:2: error: unused variable '_entry_ptr'
+ratelimit.h:31:3: error: unused variable '_entry_ptr'
+kallsyms.h:172:2: error: unused variable '_entry_ptr'
+[-Werror,-Wunused-variable]
 
-Sorry for the late reply - yes, there is a reason.
+Fix the warning by appending __attribute__((unused)).
 
-On platforms needing this quirk, resetting at .remove() time will hang the
-machine if the module is reinserted later (hence, .probe() called at a later
-time).
+Signed-off-by: Chunhui Li <chunhui.li@mediatek.com>
+---
+ include/linux/printk.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Regards,
-Angelo
-
-> Thanks.
-> 
->>   }
->>   
->>   static void mtk_pcie_irq_save(struct mtk_gen3_pcie *pcie)
->> @@ -1044,7 +1053,7 @@ static int mtk_pcie_suspend_noirq(struct device
->> *dev)
->>   	dev_dbg(pcie->dev, "entered L2 states successfully");
->>   
->>   	mtk_pcie_irq_save(pcie);
->> -	mtk_pcie_power_down(pcie);
->> +	mtk_pcie_power_down(pcie, true);
->>   
->>   	return 0;
->>   }
->> @@ -1060,7 +1069,7 @@ static int mtk_pcie_resume_noirq(struct device
->> *dev)
->>   
->>   	err = mtk_pcie_startup_port(pcie);
->>   	if (err) {
->> -		mtk_pcie_power_down(pcie);
->> +		mtk_pcie_power_down(pcie, false);
->>   		return err;
->>   	}
->>   
-
+diff --git a/include/linux/printk.h b/include/linux/printk.h
+index 8ef499ab3c1e..749c1c4257f1 100644
+--- a/include/linux/printk.h
++++ b/include/linux/printk.h
+@@ -392,7 +392,7 @@ struct pi_entry {
+ 				.level = __builtin_constant_p(_level) ? (_level) : NULL, \
+ 				.subsys_fmt_prefix = _subsys_fmt_prefix,\
+ 			};						\
+-			static const struct pi_entry *_entry_ptr	\
++			static const struct pi_entry *_entry_ptr __attribute__((unused)) \
+ 			__used __section(".printk_index") = &_entry;	\
+ 		}							\
+ 	} while (0)
+-- 
+2.18.0
 
 
