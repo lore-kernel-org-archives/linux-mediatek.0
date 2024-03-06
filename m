@@ -4,188 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20F4DC5475B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Mar 2024 08:28:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1A22C54E49
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Mar 2024 08:50:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t/ZPVMZXD6y5M0jruRy73ObNEM2nkuiII75rrLVzyPU=; b=YXUPO9FsUJDnJYSdtyynHZohK4
-	lZCpXbIKbH8FWy6lykzsuA9we68umM/m5gipl6iVAsiQJIyf2phqxYRsTCu8qinSTHXfAKLlKhnRN
-	ycBBmUbKerzR2gw4XyoAum838CMbJpd3tkL3O5ilA/SijyhQSKSrEAV+CWGLFZFCzYfGBIm3r/t4E
-	mf+5hkImEOWzjC47o/QltVemxtGTzHgep+OwG17dSFGdyZ9vrakRClCcnlfqg2ughfyIkOss4Wzf9
-	l8JtG7pDcNrsHhq5S74/4ixZMW3Nck+fygUSSz5O7dghJETwWMFh9Wogph5JdA9AaOCHIKUyFUEVf
-	fgpbuT5g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Cb1kpBv41y8D0mhV+p29ExFCa4an5Uns1TrrF3DEesg=; b=Plnl2iYj7Hq6/EjZnEPfbO83+E
+	DwfEnIOpU1PqTFcFEP//dxre/W2rBe9D1LN2XfdSu9z2nH43VvESK3PonS7cJwBNUji6uApSXcmEw
+	s2C31AOs8fhZbC0jf7WYFJut+S9wsvZ7vzhBMuGHMQX1jWzo1nraqXRXB3ydScsRVJYHJY2b9tjwl
+	Jdj9DSIHTeNIEx4mQbe82j9BGNCeyrhEHtgjVPUQWB7VA85Q17jAyuj4qUZchVTq0ccJA8Ddd08t0
+	WT5zltJdDZWnhuS/4xhBWUsCUVNJKiSd/8I+B6WzeJCxSqWE231V/Dr49Wu/Lo3RPMPpDlUHIkO2I
+	NIepJrKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhmdL-0000000GtkV-3EzE;
-	Wed, 06 Mar 2024 08:28:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rhmyf-0000000GyYJ-1YtZ;
+	Wed, 06 Mar 2024 08:50:17 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhmdH-0000000Gtix-3wdI;
-	Wed, 06 Mar 2024 08:28:13 +0000
-X-UUID: 73c2d9d6db9311eea8a22560583bddef-20240306
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=t/ZPVMZXD6y5M0jruRy73ObNEM2nkuiII75rrLVzyPU=;
-	b=bXMA23n6qrmFrh3H/wHwkS4bym496XH3VEvycOYMeCd0Qvp5ICpoDBDJybqL277H55FEu9YOZbFRyRh4cx39TYwysDdy+LQThgm6tUp674TjGZRnnJ+9x/7V9/LY23AJLVb78BruynuxjHbeCvfGNAk0b6cMIa97Zoee9XA4N34=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:c901543a-11c3-4c90-903f-1db767590e2c,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:b74e92ff-c16b-4159-a099-3b9d0558e447,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 73c2d9d6db9311eea8a22560583bddef-20240306
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 586290362; Wed, 06 Mar 2024 01:28:04 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 6 Mar 2024 16:08:00 +0800
-Received: from HK3PR03CU002.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 6 Mar 2024 16:08:00 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Q1J7+RI+Upk4+s+jF89JjWr0TqMIp/risduqYObiIVPV8oIfnM09ilFRDCU6Uuqhzr9RvbPLRwkUH/0Z2k3ILkL0OymavxO19aDkp4ZSIOiGXmXVgU5S1l/IcnYLg2cmppM7goJZgfMhQTqUSe88Ryk/F2zjWFP+Zesh1TesRzw8MtBe8fM7P58nAmt0CmkahRTkzvyG4kUMqtXdQQAP7CzYCeintzLh/IHN5di97444SrNqvWNuInknFob7RCjqEyngkA9ht4/1r+cv25UQkUEp/UdkRVTaSIDDCE0XI1kTOAPvhNVMf/+IBzoxVT/hTeNbuUL6/hnRgeBv5l4pZA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=t/ZPVMZXD6y5M0jruRy73ObNEM2nkuiII75rrLVzyPU=;
- b=Xaz4ywCLm34hpvrNzY1c1jhYk5w9fNe2Qwq+0kY38ZobTnRCFCQUPJJWlhDPD7vn1nLlynPh8MsqzBqi/96zehEJw5BFwW0uFw8976vhEEPBQJk27h1kypUD3PPJYlnP1gdOwr62rAzSrwju+SU1umARtuPfbLNaRV1OBjaPF98vzGk1eezs/y2t2ecTPdcq9ZB/rVOORvtVv2rQu3ch861NsJg5I0M2RIgA3eMry5AeL6jdHQdutpXCnIb3WFD8y/Sm0wEhpHnJUZ7IH2QU2N7lTHr+oU6Sm5AX06ex4aWaXiP5CBDnKuW7IatxynyjkF3xg8vFPiiRuY9aUaLvsQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=t/ZPVMZXD6y5M0jruRy73ObNEM2nkuiII75rrLVzyPU=;
- b=FwwsGA9A1URKIi+Fuq2B7RVKilfgVtkGhz3GsM0f8ekizW1RihmrCxm83hzNJqszAH3+txJmWGY1daYNXz6hNmkYULdWTcawISNy9Xgmb3Fz4FysNz6ffYfk9VccSR6v5PbbEFu13qwhgQ6O95UJStRrh53cy/R4jyD3X/ljKUk=
-Received: from OSQPR03MB8697.apcprd03.prod.outlook.com (2603:1096:604:292::8)
- by SEYPR03MB7628.apcprd03.prod.outlook.com (2603:1096:101:13d::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7339.39; Wed, 6 Mar
- 2024 08:07:58 +0000
-Received: from OSQPR03MB8697.apcprd03.prod.outlook.com
- ([fe80::9e99:12:7cbe:1294]) by OSQPR03MB8697.apcprd03.prod.outlook.com
- ([fe80::9e99:12:7cbe:1294%3]) with mapi id 15.20.7339.035; Wed, 6 Mar 2024
- 08:07:58 +0000
-From: =?utf-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>
-To: "sebastian.fricke@collabora.com" <sebastian.fricke@collabora.com>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"frkoenig@chromium.org" <frkoenig@chromium.org>, "stevecho@chromium.org"
-	<stevecho@chromium.org>, "nhebert@chromium.org" <nhebert@chromium.org>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
-	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "hsinyi@chromium.org"
-	<hsinyi@chromium.org>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "nfraprado@collabora.com"
-	<nfraprado@collabora.com>
-Subject: Re: [PATCH] media: mediatek: vcodec: support 36bit physical address
-Thread-Topic: [PATCH] media: mediatek: vcodec: support 36bit physical address
-Thread-Index: AQHaa3xzr7P+z/OFNEClVpf2N0kmjbEipVGAgAe+gYA=
-Date: Wed, 6 Mar 2024 08:07:58 +0000
-Message-ID: <a8c9ec95ace5b6749d28b7e81151b371700bcc03.camel@mediatek.com>
-References: <20240301020126.11539-1-yunfei.dong@mediatek.com>
-	 <20240301095217.bmsnizobpb736fgg@basti-XPS-13-9310>
-In-Reply-To: <20240301095217.bmsnizobpb736fgg@basti-XPS-13-9310>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: OSQPR03MB8697:EE_|SEYPR03MB7628:EE_
-x-ms-office365-filtering-correlation-id: eb0c5781-a65a-4996-9343-08dc3db4893d
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: y/bfKMqYsdc0PlBBC4SEM27/h0C90y6j/TdxvDa0NEYyQd/GuisBFF/iq2A5eZpv03CfIGJEFrRO+AxgLQJC4zNPEkQNSBBSgNsGs2chv5Sdf5hxIKTyvem2HjUkNGk4e/4enraeBbmnBW6pGOQLtf/+C1eYUMYkByKP4ldjaD9bObA8oZrTI3TNA+hUUe7nReK5d4b0FQvJtfhIJEtixauvkYkkdTrdpq0kBefrA2Vx4j5I2nMup3NFkc2MXD4tFO3+va3Ledpeb3UDTyiVhTprpUA2IbKoxvHS/FkvrC3FyCsWG25OvPwlxBtWov4n3k1/R37ro7adMarrj/NlUDtVLeT0fLdPSuUiwkoJ9o5TuEnUDEcx/CBGg+OMf2DTRLdGoZmgLDQ0AfwwxHbOxFM/s+1uyZ+x5LOZUVKmJSbMfQEQL+RvkTr5iWOF3zStbpyuKRSPHPL6J9uJx8tUVqoARCvrJ9tn1kS8gNWJls78AKU/A4WmvrHc0LJvRkd5T1Ah9bGULzy2oIzgaj7oGhXk6mFhubkfHHTiFLt8BO/gvY0o+CUydHfqJP9P8R+103n1ZlefisllC7pxQPsn1Jmzy5xSiZAaZ6L79+83nUlskqCISOyBhYBlHBZci41XL9NebJdgZxMAXH9vmgKrqr6ovmwE9GvZh5+AS0AZvW5jZDpOeo1Ab+HH4/Z1r+mcihhPyJSjqC7LQg6e/MOzFIcy4gS1bRMy0r37K/5XD+w=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:OSQPR03MB8697.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376005)(38070700009);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?NzdWdFFRQ3ExeUlUZ0FnY1lLRnl4MmExNW9oK3lhRHh5emNFSS9HcEFkelVj?=
- =?utf-8?B?N0s1eGhRQ3lnQXNrYW5TR0dCcnBHOUFITWlxVEtQaGpMQ056akpTTHppdllm?=
- =?utf-8?B?cWtsM2hNakVrWjczV0o1TXVlcElPd1ZoZC9ERG9BWkp5MThYSzZ4bkQ5aWNE?=
- =?utf-8?B?cGM1cUNXbkJOdkQ5c3ZhYzcyenYzTlJDMkhNUDlpT3BuTEtSMGw5K3FGcFFE?=
- =?utf-8?B?TWRsK0tGa1B4OTE5K2U2b1I0QW9NRERPV0V3ejUwaEhVa0hneUd3bzRqTTFE?=
- =?utf-8?B?dkNBMU9zS0lueDNKQ0FEcHgwaXhqY0VLRVhaQ2Q3a3hDekJNcm9hT1cxTGJH?=
- =?utf-8?B?aG5hWWFIdWwwc2dzWDV2YTlGQU5xalN6bXJlZ205NDh6NVVHVWNKeGsyeVVH?=
- =?utf-8?B?MEYzM29NYm1OY1JERUNYSm5wYVZzdkVOTXQwVVBCKzBBbEFvNklLa3Zla29U?=
- =?utf-8?B?aW9idmVRZnNkUVEyOGg4dnBDUXlvaWRaTWRxWmcvUy91bmswdHVwWWtYSnk0?=
- =?utf-8?B?RGhkT1JtTk1hQVpBcFp5alRsQzFNelVrejdDYUhjUjY0UFFTL01XcjlzTCtO?=
- =?utf-8?B?YTVBQmNRZnNMbThRUkdhbVJaMFRvZ0JzVEVCRStEUWM3dXEvZ1BtNloyeTU2?=
- =?utf-8?B?Z1JWaHcxK0pHeCtnRUVLKzFxaHZGRDg3NzRhKzY3MEVrbXJjejdqNU53aXBh?=
- =?utf-8?B?czAyUjRvMXhGWmZOS28yWEJWRXBBd0hOUlhPV3d1TEVGQ0NQQW1IWUlVbFZp?=
- =?utf-8?B?QUZFVEY5WmNDYlFsc1hYZVpLc3dMTS82YndVQkRmNmNNeE9zRExsMmdBUitH?=
- =?utf-8?B?Z2VxSURwbUFwQ2NvKzRyQmE1WjR3YTgzbmlhZzZlamMrN1lCU1JSWDArM1Qr?=
- =?utf-8?B?dkdmeTA2eWdRcnByQW1FRnVGd1VHbGIyWU1uak45U0FKYy9vUkFtaVhrblJ0?=
- =?utf-8?B?Zk5OZjZ6MHdMaVIzb0tXZWhBZkluNHpYZFZBRm1NZ0NTREpIbnJONWh3OEQ3?=
- =?utf-8?B?MGMrMFNVMjRLWTZ5eUNManpzQi9ET2x1WHFlOUU4cVh4QXp6R082Q0ZrTldj?=
- =?utf-8?B?T3l0aE90Uzk4NmpTczJheFNlRmhCUkQ5Y0U4TVc2bUhiZFVKOTRFZExPci9p?=
- =?utf-8?B?ZkU5U3lQQ0ZKM1ZldmxGZDh6SVNaRkdacmltVjZNQ1dhaUpoS29pZmR2b1Jr?=
- =?utf-8?B?M1orS3grYkdKTjFEMUl2eWIxdDRXSGc5L2hZTlJLbStvYS81N2dQQzRRTkpi?=
- =?utf-8?B?Um56V3c5WWQzZTB6Tndhd1VPbjBnOU8vR2pMcEMweDQzc1I0ZDBzNHc0YTFS?=
- =?utf-8?B?Z1p6dE1JOTA3WlNwNnZvMlZVOTZEVFJScXhhcnU2UnZVWCtDSmJERjdtU2hL?=
- =?utf-8?B?RkRiNWlMYkhCQ0RFWE4rNjdYbmlkOVBYSFhiT2poSWtCeDR3MHRLeTBpa3FX?=
- =?utf-8?B?R3FJUFhTUnFDb21rTDYxbk5OeC95NnFEWEdheEtPRUJDRTZMV1BYTEdmNzY5?=
- =?utf-8?B?a0ZicTRLNHBUSys5Nm5ZaFY2cUZacittM0JaU3BxYXhDdHU2ZTR3TmN5Qy9W?=
- =?utf-8?B?M2hWd3REWVNKVmw0eVJVdGl1aVJXRWQvcUt1VzU3aWl0OWpiM1BlSlg0dERW?=
- =?utf-8?B?MFMxdllybzJCQ3F3cU1MWitsOWJMWENxekViS1BPMWNwYWlaU0V0UHlSSlY2?=
- =?utf-8?B?dHhNekh5T2JIcVRSZlZ2UFYwM0hGci9BMkh6dlVCdmVxb3ZKZUZNdmIzOWh2?=
- =?utf-8?B?STM3OUJzV2IyUlRiQXJhSFViRXk1NVRTclVpY3Q2bmxSdVpVb2RmeDJwUHV0?=
- =?utf-8?B?WU9PZk9QcUh0bUloSGwxVUx4eGdmUVFPcGpzbENIRkZvTWs4Y3RWdkNXTFo0?=
- =?utf-8?B?cFdqZ3pSSnZWTkNqTHB4dGRPSTZuR3NGMjBrY3U5akJwc25TSjZzZGxDeVRJ?=
- =?utf-8?B?K25rRzFFSkR2K05iV2tNT0tiRTU4ZUpKRWpDdEZtUEtLUG8zNjZOWmVFQ3Bw?=
- =?utf-8?B?Rm9zTmJaNWF5ZnFuRjU2bzExR2dMMTkyRy9JRnk0SGhteEd0dlZsZ3VYVWxD?=
- =?utf-8?B?SXgwNkJNM2g1UEdJQkl6cHR1QU9hMEZPYVBETHo4djBNVXFkWktzUzJDTzBU?=
- =?utf-8?B?azJlNjIwdXhMemZCdTdyV2RSYmJzZm5BZXBnUG5kM3MxaWQzOVlvTDhxVGRn?=
- =?utf-8?B?VHc9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <9B1D9A9C37C3EC44AC53BBC103E4AAA3@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1rhmyc-0000000GyXV-0LKa;
+	Wed, 06 Mar 2024 08:50:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1709715012;
+	bh=HateX3LLeZdB/hmGCbPu2UTVKn/rmhpctmgFXc6UpcY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Eatb8JibbQ25Fe1nNtOgWaSZR8QMC68IIenGsNhQVHyvWG2ygFqPZ1j5xv2zcSNfF
+	 EBn5q2K0SltAHws33YmDk4s2xHIzv0YICGp+WMp2PAcwHREBASOq2xupjYN88k6ThM
+	 EHcf2Gf8NETrkwAzs5zJBQPMTbpvqMNR91DF45uuxZ1QQdwy9nlKMjpQqH3N12EmAj
+	 +TJ0F+BYzMkC6YVmOZQMqvnn9QjHr5TcI5UmD6zf0UtJpEpArgrp2AJw/4XZvjLcOV
+	 5xkxLryihLPLN4H7Kuy250EAROxDScp0XFtCW+Xxqncrl7oGvqJnk0V/FV2QB0rEiI
+	 rK/sEN34+Yynw==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id EDD8B37820D0;
+	Wed,  6 Mar 2024 08:50:10 +0000 (UTC)
+Message-ID: <c55f2c6e-1de8-4248-a52a-d6c9e49b565a@collabora.com>
+Date: Wed, 6 Mar 2024 09:50:10 +0100
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: OSQPR03MB8697.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: eb0c5781-a65a-4996-9343-08dc3db4893d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Mar 2024 08:07:58.5336
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 2h3HLuf+NlA1recicpjRE9UIwoLxElfUH8CrOYlJbSKpokcVDqiLsi0PUkVH0t4b0y587yb9iq2Ma2Vt0s2fPBBLnVDPpWRpMr1VUx5GEB8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB7628
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--23.328100-8.000000
-X-TMASE-MatchedRID: L8tZF6zWW2q5lTsHJBA0keYAh37ZsBDC1kqyrcMalqUNcckEPxfz2D6h
-	VXnKDh9XtdqVep+vHB6TnOeejF/wC3976qbiQKm/EdFsavUQKAdt3qsaFY4DBKkWpjwkfPsw+Vi
-	hXqn9xLE8VyRVdn8owLh2A/eCGwbIr1U+m35BVv6Pnpohp8ng0V87n+gjBxQbLBJYfEYh1PU8a1
-	q4OK4oC5bemgZX71GBH5VvilZUGGS+7XBcDCQqkF6VRCJSU7j9ndls9F9zmi2bKItl61J/yfmS+
-	aPr0Ve8oTCA5Efyn8CNo+PRbWqfRJBlLa6MK1y4
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--23.328100-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 1DCB63F52D174889DADE7BB7D6005A8A72728AD6F54915787CEBF7C086D792D32000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] PCI: mediatek-gen3: Assert MAC reset only if PHY reset
+ also present
+To: =?UTF-8?B?Smlhbmp1biBXYW5nICjnjovlu7rlhpsp?= <Jianjun.Wang@mediatek.com>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "bhelgaas@google.com" <bhelgaas@google.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
+ Ryder Lee <Ryder.Lee@mediatek.com>,
+ "nfraprado@collabora.com" <nfraprado@collabora.com>
+References: <20240229092449.580971-1-angelogioacchino.delregno@collabora.com>
+ <30824df32636dec25b9a5972b1ee8de76b295feb.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <30824df32636dec25b9a5972b1ee8de76b295feb.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240306_002812_184141_A5608227 
-X-CRM114-Status: GOOD (  28.16  )
+X-CRM114-CacheID: sfid-20240306_005014_395312_9DF9E88E 
+X-CRM114-Status: GOOD (  23.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -200,61 +89,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgU2ViYXN0aWFuLA0KDQpUaGFua3MgZm9yIHlvdXIgYWR2aWNlLg0KT24gRnJpLCAyMDI0LTAz
-LTAxIGF0IDEwOjUyICswMTAwLCBTZWJhc3RpYW4gRnJpY2tlIHdyb3RlOg0KPiBIZXkgWXVuZmVp
-LA0KPiANCj4gT24gMDEuMDMuMjAyNCAxMDowMSwgWXVuZmVpIERvbmcgd3JvdGU6DQo+ID4gVGhl
-IHBoeXNpY2FsIGFkZHJlc3MgaXMgYmV5b25kIDMyYml0IGZvciBtdDgxODggcGxhdGZvcm0sIG5l
-ZWQNCj4gPiB0byBjaGFuZ2UgdGhlIHR5cGUgZnJvbSB1bnNpZ25lZCBpbnQgdG8gdW5zaWduZWQg
-bG9uZyBpbiBjYXNlIG9mDQo+ID4gdGhlIGhpZ2ggYml0IG1pc3NpbmcuDQo+IA0KPiBJIHdvdWxk
-IHJld29yZCB0aGlzIGEgYml0LCB0aGUgYWRkcmVzcyBpcyBub3QgYmV5b25kIDMyIGJpdCwgd2hp
-Y2gNCj4gd291bGQNCj4gY291bGQgYmUgaW50ZXJwcmV0IGFzIGlmIHRoZSBhZGRyZXNzIHN0YXJ0
-cyBhZnRlciAzMm5kIGJpdCwgaW5zdGVhZA0KPiBpdA0KPiBpcyBsYXJnZXIgdGhhbiAzMmJpdHMu
-IFNlY29uZGx5LCB3ZSBkb24ndCBjaGFuZ2UgdGhlIHR5cGUgaW4gY2FzZSB0aGUNCj4gaGlnaCBi
-aXQgaXMgbWlzc2luZywgd2UgY2hhbmdlIHRoZSB0eXBlIHVuY29uZGl0aW9uYWxseSwgd2UgZG8g
-Y2hhbmdlDQo+IHRoZSB0eXBlIHNvIHRoYXQgdGhlIGhpZ2ggYml0IGlzbid0IG1pc3NpbmcuDQo+
-IA0KPiBNeSBzdWdnZXN0aW9uOg0KPiANCj4gVGhlIHBoeXNpY2FsIGFkZHJlc3Mgb24gdGhlIE1U
-ODE4OCBwbGF0Zm9ybSBpcyBsYXJnZXIgdGhhbiAzMiBiaXRzLA0KPiBjaGFuZ2UgdGhlIHR5cGUg
-ZnJvbSB1bnNpZ25lZCBpbnQgdG8gdW5zaWduZWQgbG9uZyB0byBiZSBhYmxlIHRvDQo+IGFjY2Vz
-cw0KPiB0aGUgaGlnaCBiaXRzIG9mIHRoZSBhZGRyZXNzLg0KPiANCkkgd2lsbCByZXdyaXRlIHRo
-ZSBjb21taXQgbWVzc2FnZSBhY2NvcmRpbmcgdG8geW91ciBhZHZpY2UuDQo+IE9uZSBtb3JlIHF1
-ZXN0aW9uIGJlbG93Li4uDQo+IA0KPiA+IA0KPiA+IFNpZ25lZC1vZmYtYnk6IFl1bmZlaSBEb25n
-IDx5dW5mZWkuZG9uZ0BtZWRpYXRlay5jb20+DQo+ID4gLS0tDQo+ID4gLi4uL21lZGlhdGVrL3Zj
-b2RlYy9kZWNvZGVyL3ZkZWMvdmRlY192cDlfcmVxX2xhdF9pZi5jICAgICAgICB8IDQNCj4gPiAr
-Ky0tDQo+ID4gMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkN
-Cj4gPiANCj4gPiBkaWZmIC0tZ2l0DQo+ID4gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlh
-dGVrL3Zjb2RlYy9kZWNvZGVyL3ZkZWMvdmRlY192cDlfcmVxXw0KPiA+IGxhdF9pZi5jDQo+ID4g
-Yi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy9kZWNvZGVyL3ZkZWMvdmRl
-Y192cDlfcmVxXw0KPiA+IGxhdF9pZi5jDQo+ID4gaW5kZXggY2Y0OGQwOWI3OGQ3Li44NWRmM2U3
-YzI5ODMgMTAwNjQ0DQo+ID4gLS0tDQo+ID4gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlh
-dGVrL3Zjb2RlYy9kZWNvZGVyL3ZkZWMvdmRlY192cDlfcmVxXw0KPiA+IGxhdF9pZi5jDQo+ID4g
-KysrDQo+ID4gYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy9kZWNvZGVy
-L3ZkZWMvdmRlY192cDlfcmVxXw0KPiA+IGxhdF9pZi5jDQo+ID4gQEAgLTEwNzQsNyArMTA3NCw3
-IEBAIHN0YXRpYyBpbnQNCj4gPiB2ZGVjX3ZwOV9zbGljZV9zZXR1cF90aWxlX2J1ZmZlcihzdHJ1
-Y3QgdmRlY192cDlfc2xpY2VfaW5zdGFuY2UNCj4gPiAqaW5zdA0KPiA+IAl1bnNpZ25lZCBpbnQg
-bWlfcm93Ow0KPiA+IAl1bnNpZ25lZCBpbnQgbWlfY29sOw0KPiA+IAl1bnNpZ25lZCBpbnQgb2Zm
-c2V0Ow0KPiA+IC0JdW5zaWduZWQgaW50IHBhOw0KPiA+ICsJdW5zaWduZWQgbG9uZyBwYTsNCj4g
-PiAJdW5zaWduZWQgaW50IHNpemU7DQo+ID4gCXN0cnVjdCB2ZGVjX3ZwOV9zbGljZV90aWxlcyAq
-dGlsZXM7DQo+ID4gCXVuc2lnbmVkIGNoYXIgKnBvczsNCj4gPiBAQCAtMTEwOSw3ICsxMTA5LDcg
-QEAgc3RhdGljIGludA0KPiA+IHZkZWNfdnA5X3NsaWNlX3NldHVwX3RpbGVfYnVmZmVyKHN0cnVj
-dCB2ZGVjX3ZwOV9zbGljZV9pbnN0YW5jZQ0KPiA+ICppbnN0DQo+ID4gCXBvcyA9IHZhICsgb2Zm
-c2V0Ow0KPiA+IAllbmQgPSB2YSArIGJzLT5zaXplOw0KPiA+IAkvKiB0cnVuY2F0ZWQgKi8NCj4g
-PiAtCXBhID0gKHVuc2lnbmVkIGludClicy0+ZG1hX2FkZHIgKyBvZmZzZXQ7DQo+ID4gKwlwYSA9
-ICh1bnNpZ25lZCBsb25nKWJzLT5kbWFfYWRkciArIG9mZnNldDsNCj4gDQo+IEkgY2FuIHNlZSBp
-biBvdGhlciBwYXJ0cyBvZiB0aGUgZHJpdmVyIHRoYXQgYnMtPmRtYV9hZGRyIGlzIGNvbnZlcnRl
-ZA0KPiB0bw0KPiB1NjQgb3IgdWludDY0X3QuIElzIHVuc2lnbmVkIGxvbmcgYWx3YXlzIDY0LWJp
-dCBvbiB0aGUgZGlmZmVyZW50DQo+IE1lZGlhdGVrIHBsYXRmb3Jtcz8gSWYgc28sIHdoeSBkbyB5
-b3UgcHJlZmVyIHVuc2lnbmVkIGxvbmcgb3ZlciB1NjQ/DQo+IChXaGljaCBkZXNjcmliZXMgdGhl
-IHR5cGUgbW9yZSBwcmVjaXNlbHkpDQo+IA0KRm9yIDY0LWJpdCBzeXN0ZW0sIHVuc2lnbmVkIGxv
-bmcgaXMgdTY0IG9yIHVpbnQ2NF90Lg0KVGhlIHBhIGlzIG92ZXIgMzJiaXQgZm9yIG10ODE4OCg2
-NGJpdCBzeXN0ZW0pLg0KVGhlIHBhIGlzIDMyYml0IGZvciBtdDgxOTUvbXQ4MTkyL210ODE4NiBl
-dGMoNjRiaXQgc3lzdGVtKS4NCg0KcGEgPSAodW5zaWduZWQgbG9uZylicy0+ZG1hX2FkZHIgKyBv
-ZmZzZXQ7DQoNCi0+IEkgbmVlZCB0byByZW1vdmUgJ3Vuc2lnbmVkIGxvbmcnIGJlZm9yZSBicy0+
-ZG1hX2FkZHIuDQpGb3IgMzJiaXQgcGEsIHRoZSBoaWdoIGJpdCBpcyB6ZXJvLCB3b24ndCBpbmZs
-dWVuY2UgdGhlIGhhcmR3YXJlDQpkZWNvZGVyLg0KDQpCZXN0IFJlZ2FyZHMsDQpZdW5mZWkgRG9u
-Zw0KPiAoU2FtZSBhcHBsaWVzIGZvcjoNCj4gZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tZWRpYXRl
-ay92Y29kZWMvZGVjb2Rlci92ZGVjL3ZkZWNfdnA4X2lmLmM6NDUyDQo+ICkNCj4gDQpPaywgSSB3
-aWxsIGNoYW5nZSBpdCBpbiBuZXh0IHBhdGNoLg0KPiBHcmVldGluZ3MsDQo+IFNlYmFzdGlhbg0K
-PiANCj4gPiAJdGIgPSBpbnN0YW5jZS0+dGlsZS52YTsNCj4gPiAJZm9yIChpID0gMDsgaSA8IHJv
-d3M7IGkrKykgew0KPiA+IAkJZm9yIChqID0gMDsgaiA8IGNvbHM7IGorKykgew0KPiA+IC0tIA0K
-PiA+IDIuMTguMA0KPiA+IA0KPiA+IA0K
+Il 01/03/24 03:48, Jianjun Wang (王建军) ha scritto:
+> Hi Angelo,
+> 
+> Thanks for your patch.
+> 
+> On Thu, 2024-02-29 at 10:24 +0100, AngeloGioacchino Del Regno wrote:
+>> Some SoCs have two PCI-Express controllers: in the case of MT8195,
+>> one of them is using a dedicated PHY, but the other uses a combo PHY
+>> that is shared with USB and in that case the PHY cannot be reset
+>> from the PCIe driver, or USB functionality will be unable to resume.
+>>
+>> Resetting the PCIe MAC without also resetting the PHY will result in
+>> a full system lockup at PCIe resume time and the only option to
+>> resume operation is to hard reboot the system (with a PMIC cut-off).
+>>
+>> To resolve this issue, check if we've got both a PHY and a MAC reset
+>> and, if not, never assert resets at PM suspend time: in that case,
+>> the link is still getting powered down as both the clocks and the
+>> power domains will go down anyway.
+>>
+>> Fixes: d537dc125f07 ("PCI: mediatek-gen3: Add system PM support")
+>> Signed-off-by: AngeloGioacchino Del Regno <
+>> angelogioacchino.delregno@collabora.com>
+>> ---
+>>
+>> Changes in v2:
+>>   - Rebased over next-20240229
+>>
+>>   drivers/pci/controller/pcie-mediatek-gen3.c | 25 ++++++++++++++-----
+>> --
+>>   1 file changed, 17 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c
+>> b/drivers/pci/controller/pcie-mediatek-gen3.c
+>> index 975b3024fb08..99b5d7a49be1 100644
+>> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+>> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+>> @@ -874,17 +874,26 @@ static int mtk_pcie_power_up(struct
+>> mtk_gen3_pcie *pcie)
+>>   	return err;
+>>   }
+>>   
+>> -static void mtk_pcie_power_down(struct mtk_gen3_pcie *pcie)
+>> +static void mtk_pcie_power_down(struct mtk_gen3_pcie *pcie, bool
+>> is_suspend)
+>>   {
+>> +	bool suspend_reset_supported = pcie->mac_reset && pcie-
+>>> phy_reset;
+>> +
+>>   	clk_bulk_disable_unprepare(pcie->num_clks, pcie->clks);
+>>   
+>>   	pm_runtime_put_sync(pcie->dev);
+>>   	pm_runtime_disable(pcie->dev);
+>> -	reset_control_assert(pcie->mac_reset);
+>> +
+>> +	/*
+>> +	 * Assert MAC reset only if we also got a PHY reset, otherwise
+>> +	 * the system will lockup at PM resume time.
+>> +	 */
+>> +	if (is_suspend && suspend_reset_supported)
+>> +		reset_control_assert(pcie->mac_reset);
+>>   
+>>   	phy_power_off(pcie->phy);
+>>   	phy_exit(pcie->phy);
+>> -	reset_control_assert(pcie->phy_reset);
+>> +	if (is_suspend && suspend_reset_supported)
+>> +		reset_control_assert(pcie->phy_reset);
+>>   }
+>>   
+>>   static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
+>> @@ -920,7 +929,7 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie
+>> *pcie)
+>>   	return 0;
+>>   
+>>   err_setup:
+>> -	mtk_pcie_power_down(pcie);
+>> +	mtk_pcie_power_down(pcie, false);
+>>   
+>>   	return err;
+>>   }
+>> @@ -951,7 +960,7 @@ static int mtk_pcie_probe(struct platform_device
+>> *pdev)
+>>   	err = pci_host_probe(host);
+>>   	if (err) {
+>>   		mtk_pcie_irq_teardown(pcie);
+>> -		mtk_pcie_power_down(pcie);
+>> +		mtk_pcie_power_down(pcie, false);
+>>   		return err;
+>>   	}
+>>   
+>> @@ -969,7 +978,7 @@ static void mtk_pcie_remove(struct
+>> platform_device *pdev)
+>>   	pci_unlock_rescan_remove();
+>>   
+>>   	mtk_pcie_irq_teardown(pcie);
+>> -	mtk_pcie_power_down(pcie);
+>> +	mtk_pcie_power_down(pcie, false);
+> 
+> Is there any reason not to reset the MAC and PHY when probe fails and
+> driver removing? Some SoCs may not have MTCMOS to cut off their power,
+> we need to assert the reset signal to save power in that case.
+> 
+
+Sorry for the late reply - yes, there is a reason.
+
+On platforms needing this quirk, resetting at .remove() time will hang the
+machine if the module is reinserted later (hence, .probe() called at a later
+time).
+
+Regards,
+Angelo
+
+> Thanks.
+> 
+>>   }
+>>   
+>>   static void mtk_pcie_irq_save(struct mtk_gen3_pcie *pcie)
+>> @@ -1044,7 +1053,7 @@ static int mtk_pcie_suspend_noirq(struct device
+>> *dev)
+>>   	dev_dbg(pcie->dev, "entered L2 states successfully");
+>>   
+>>   	mtk_pcie_irq_save(pcie);
+>> -	mtk_pcie_power_down(pcie);
+>> +	mtk_pcie_power_down(pcie, true);
+>>   
+>>   	return 0;
+>>   }
+>> @@ -1060,7 +1069,7 @@ static int mtk_pcie_resume_noirq(struct device
+>> *dev)
+>>   
+>>   	err = mtk_pcie_startup_port(pcie);
+>>   	if (err) {
+>> -		mtk_pcie_power_down(pcie);
+>> +		mtk_pcie_power_down(pcie, false);
+>>   		return err;
+>>   	}
+>>   
+
+
 
