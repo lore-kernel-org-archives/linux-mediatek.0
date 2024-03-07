@@ -4,68 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C214C48BF6
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 14:03:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6B5DC54798
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 14:04:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q0dasIn+kzLnrv4WkxfY0RJScpmejNpP5draoj8MyN8=; b=B+wnQ47rXmVXhoKB/onWDhyD+z
-	yuFUBTvtX2UoaU9e6q3QFBrHWy60KZMCzohiJHe1u51EHER6pQfbzeB4dLJwe6qTZwmUj1q4YBLTv
-	ZjI8Ez4dtpLvzKnUdK/+wIZ6jsxbURB2F2Y64meIR7bxCr8UROsw1LMNxNOUap+Xj1vzmq8aK8/Gw
-	NCDIP0ZSDT/dfBkc6ddumpvSVGMKbekfjDwPkswG+LVLn3rnvDQpKSxdnoY3Peg63Ext9HQbGjdZc
-	7XrmEikhF9qTMVz8CRnDIwjbXeHuLZ2DrgmVwYNWmccQAg+lHLvw3GcwyJYLzqk07jU0tZu3Cu5Ph
-	GWxmwiNQ==;
+	bh=SJuRg5dBPHDssKNN2XXPIJ06dQB/lJmZPWtKBdhinLo=; b=xvrGDqkLs9L+wM/BbCchgua4de
+	OMgLtE3srwb3dMdsf5vcJWIoaUqQ4QxWjzdKJiNpQRu/B9Fl78ANwEAsbKH36UzG89TmZeMrMeAS0
+	HeKg2TwyfBJ8gEZX5OPQL2/Dtjk0/Y7J/Tf1n3mcyAstWNGgajnuv71v17yCSG+UBO7gf0pqk8yVH
+	liZ9/3hOmGvF0GB0BRdg9f2S2uCf/eolKYbf3p5NbDhzxQs2CgIQRjzslWZlYlJW62LLyV6qpsinI
+	aybPv3adkgJquEWfFQy0YGGr3zVgeLZPr4428WRK6kAn2chFfPrpi5Br1jN5XAbRMMGnJ9Hs7ZjBj
+	J40OX15A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riELA-00000004vNp-2LlB;
-	Thu, 07 Mar 2024 14:03:20 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1riELr-00000004vuu-3HbZ;
+	Thu, 07 Mar 2024 14:04:03 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riEKp-00000004v7x-2xre;
-	Thu, 07 Mar 2024 14:03:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709820177;
-	bh=d5ZrSPOMf8VZYJPnucyZwra5gETQB13G5oByO6C2mU8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=caoii48lwHcK1xcG+TAPUzL/eS5HeSb/LsgWexTktJAixdiQI16cuK6nevouFsAZ8
-	 pEXTZJAW7btyAXaakdrdUJI2WL/ah3ATANAeGsM/YkG6EdyitYXV1u8jmzWXzNsTac
-	 lpnIIoCajGPywjQDOqbvDiHN8GXUCsgvw80NHYV8tHSg3uLOdG7hqKonus1cHB9Ugn
-	 KEj2XZZBxf6ryRhOSysQDbxypgoaC+PeEzGxXYn9ZY+uD2yyZXAJ8eZwZI8mkeq2Oh
-	 +U918b9ptRJR989V6LeSKmktnIjN5//YsNQS77nY9rR7mZ9JhEy0I68pJf88D4JnSO
-	 q//F4HvUnGNnw==
-Received: from [100.95.196.25] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: koike)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id CBABB3780624;
-	Thu,  7 Mar 2024 14:02:51 +0000 (UTC)
-Message-ID: <5559672d-4f62-4ad1-95b7-94f69b8bb9ac@collabora.com>
-Date: Thu, 7 Mar 2024 11:02:51 -0300
+	id 1riELX-00000004vco-1QPL;
+	Thu, 07 Mar 2024 14:03:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A1DD461803;
+	Thu,  7 Mar 2024 14:03:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76D0FC43390;
+	Thu,  7 Mar 2024 14:03:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1709820222;
+	bh=BT6wZ8BkYsfqnC5k7BF68W2twgRaf3YZsPmPjxc0vlo=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=ILYfLqv6AdPmF8HKRsSyjdF8gEF+6ZbG9ncnMQ9J9FOqXbT3wrHjj8dBiJbShKWya
+	 YMtlJMOChfzz+ZW2bZYBbKzfo0aF3tlK4nMr2hHltakqhddL/ci7yH175k4DFaYfOd
+	 zJ1CfuuzJlEQfuJy1iOWsErkhdJbm3eEP2KZ9DGtoXWULXpjGu2+aIQybusyNZvwcC
+	 gtDLmQ1hB5/0faXfl/eg2uiFZUvYywt/JtCQBR73nG4iAmMkZ1z7V4ncUiOtKKCYZu
+	 N3bwr/oC7GVd7z4VqW6VazSZYvpP0lQzx6On7bPAwcoak+SPNwHIcJlOh/5hDEggm6
+	 GH7I5icGHgGiA==
+Received: by mail-lj1-f175.google.com with SMTP id 38308e7fff4ca-2d109e82bd0so11685431fa.3;
+        Thu, 07 Mar 2024 06:03:42 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCU2v18k9kksEYlwyXtHqKoiRwg5Gn8/uPjeuLIZ6KwB1CG0EYoEwgsrEF/061ST5ePdclDSfiiVdwrtMQ1AjrvYwEWLyvf0bqxMEsnj2eAO0MG2YeZxHVhdgGsM+hddSzoP82bWmuEXFSuBWaGKSA6hnXvAoIX4KfQ=
+X-Gm-Message-State: AOJu0Yz7lMhoz8E4nJBdSNyyOXdxneusi/YHckN2Qc82V7Aimbv3ea6z
+	GMzmqun7w5SE31ZhTxWxG3NjgyAx2Ugrl9dM6aIU0gcVKJjNytCloEkji6VBDIg37zNQxRmN3B1
+	HHQ3H/YFJWXQwSkclVC7iP/Uv+w==
+X-Google-Smtp-Source: AGHT+IF5Dc5jk0XZHS0IhbnbHN0DQ1ZhYnHDMr7Hbwtb+vashJF0QYaWL7v2IywW1l6pNzIj3tTpk4NskZfQ4ky22lQ=
+X-Received: by 2002:a05:6512:1094:b0:513:30fb:d64 with SMTP id
+ j20-20020a056512109400b0051330fb0d64mr1862716lfg.44.1709820199915; Thu, 07
+ Mar 2024 06:03:19 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 00/11] drm/ci: Add support for GPU and display testing
-Content-Language: en-US
-To: Vignesh Raman <vignesh.raman@collabora.com>,
- dri-devel@lists.freedesktop.org
-Cc: daniels@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- emma@anholt.net, robdclark@gmail.com, david.heidelberg@collabora.com,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- hamohammed.sa@gmail.com, rodrigosiqueiramelo@gmail.com,
- melissa.srw@gmail.com, mairacanal@riseup.net, mcanal@igalia.com,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20240306030649.60269-1-vignesh.raman@collabora.com>
-From: Helen Koike <helen.koike@collabora.com>
-In-Reply-To: <20240306030649.60269-1-vignesh.raman@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20240227120939.290143-1-angelogioacchino.delregno@collabora.com>
+ <20240227120939.290143-20-angelogioacchino.delregno@collabora.com>
+ <20240304142341.GA156846-robh@kernel.org> <0aa3dc07-67c8-40a4-9e83-f702979765c5@collabora.com>
+In-Reply-To: <0aa3dc07-67c8-40a4-9e83-f702979765c5@collabora.com>
+From: Rob Herring <robh@kernel.org>
+Date: Thu, 7 Mar 2024 08:03:06 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqLNsS_Rx5z5F1vrYbr2g+5-wGYOq6mhtfUd7Db11F0W+Q@mail.gmail.com>
+Message-ID: <CAL_JsqLNsS_Rx5z5F1vrYbr2g+5-wGYOq6mhtfUd7Db11F0W+Q@mail.gmail.com>
+Subject: Re: [PATCH 19/22] ASoC: dt-bindings: mt8192: Document audio-routing
+ and dai-link subnode
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: broonie@kernel.org, wenst@chromium.org, lgirdwood@gmail.com, 
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, 
+	matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.com, 
+	trevor.wu@mediatek.com, maso.huang@mediatek.com, 
+	xiazhengqiao@huaqin.corp-partner.google.com, arnd@arndb.de, 
+	kuninori.morimoto.gx@renesas.com, shraash@google.com, amergnat@baylibre.com, 
+	nicolas.ferre@microchip.com, u.kleine-koenig@pengutronix.de, 
+	dianders@chromium.org, frank.li@vivo.com, allen-kh.cheng@mediatek.com, 
+	eugen.hristev@collabora.com, claudiu.beznea@tuxon.dev, 
+	jarkko.nikula@bitmer.com, jiaxin.yu@mediatek.com, alpernebiyasak@gmail.com, 
+	ckeepax@opensource.cirrus.com, zhourui@huaqin.corp-partner.google.com, 
+	nfraprado@collabora.com, alsa-devel@alsa-project.org, 
+	shane.chien@mediatek.com, linux-sound@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240307_060301_098894_E584A54F 
-X-CRM114-Status: GOOD (  22.51  )
+X-CRM114-CacheID: sfid-20240307_060343_725221_F67EBF5B 
+X-CRM114-Status: GOOD (  43.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,126 +98,264 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Mar 5, 2024 at 5:20=E2=80=AFAM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 04/03/24 15:23, Rob Herring ha scritto:
+> > On Tue, Feb 27, 2024 at 01:09:36PM +0100, AngeloGioacchino Del Regno wr=
+ote:
+> >> Document the dai-link subnodes and the audio-routing property, allowin=
+g
+> >> to describe machine specific audio hardware and links in device tree.
+> >>
+> >> While at it, also deprecate the old properties which were previously
+> >> used with the driver's partially hardcoded configuration.
+> >>
+> >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@c=
+ollabora.com>
+> >> ---
+> >>   .../sound/mt8192-mt6359-rt1015-rt5682.yaml    | 129 ++++++++++++++++=
+--
+> >>   1 file changed, 121 insertions(+), 8 deletions(-)
+> >>
+> >> diff --git a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1=
+015-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1=
+015-rt5682.yaml
+> >> index 7e50f5d65c8f..78e221003750 100644
+> >> --- a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5=
+682.yaml
+> >> +++ b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5=
+682.yaml
+> >> @@ -20,6 +20,15 @@ properties:
+> >>         - mediatek,mt8192_mt6359_rt1015p_rt5682
+> >>         - mediatek,mt8192_mt6359_rt1015p_rt5682s
+> >>
+> >> +  audio-routing:
+> >> +    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
+> >
+> > Already defined in sound-card-common.yaml. Add a $ref.
+> >
+>
+> Right. Done for v2.
+>
+> >> +    description:
+> >> +      A list of the connections between audio components. Each entry =
+is a
+> >> +      pair of strings, the first being the connection's sink, the sec=
+ond
+> >> +      being the connection's source.
+> >> +      Valid names could be the input or output widgets of audio compo=
+nents,
+> >> +      power supplies, MicBias of codec and the software switch.
+> >
+> > Generally the names are defined here.
+> >
+>
+> ...but those drivers want to support multiple codecs and multiple boards,=
+ so
+> for each board we would maybe have to add (software defined) names in her=
+e
+> which don't always correspond to a HW pin name (but that's not really a p=
+roblem).
+>
+> Sure a subset of the names can't change but, on the other hand, some othe=
+rs
+> can (as in, may be added).
+>
+> Hence the question:
+>
+> Is it mandatory to define the names in an enum here, or can that be avoid=
+ed?
+> If it is, I can add them no problem.
 
+Does the OS depend on what the names are? As-in if a name was "bar"
+and it changed to "baz" in either the DT or the kernel, would that
+break things? If yes, then yes, you need them defined here.
 
-On 06/03/2024 00:06, Vignesh Raman wrote:
-> Some ARM SOCs have a separate display controller and GPU, each with
-> different drivers. For mediatek mt8173, the GPU driver is powervr,
-> and the display driver is mediatek. In the case of mediatek mt8183,
-> the GPU driver is panfrost, and the display driver is mediatek.
-> With rockchip rk3288/rk3399, the GPU driver is panfrost, while the
-> display driver is rockchip. For amlogic meson, the GPU driver is
-> panfrost, and the display driver is meson.
-> 
-> IGT tests run various tests with different xfails and can test both
-> GPU devices and KMS/display devices. Currently, in drm-ci for MediaTek,
-> Rockchip, and Amlogic Meson platforms, only the GPU driver is tested.
-> This leads to incomplete coverage since the display is never tested on
-> these platforms. This commit series adds support in drm-ci to run tests
-> for both GPU and display drivers for MediaTek, Rockchip, and Amlogic
-> Meson platforms.
-> 
-> Uprev mesa and IGT in drm-ci and add amd, v3d, vc4 and vgem specific
-> tests to testlist. Have testlist.txt per driver and include a base
-> testlist so that the driver specific tests will run only on those hardware
-> and add testlists to the MAINTAINERS file.
-> 
-> This series also includes patch to add vkms testing to drm-ci.
-> 
-> Working pipeline link,
-> https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1119859
+>
+> >> +
+> >>     mediatek,platform:
+> >>       $ref: /schemas/types.yaml#/definitions/phandle
+> >>       description: The phandle of MT8192 ASoC platform.
+> >> @@ -27,10 +36,12 @@ properties:
+> >>     mediatek,hdmi-codec:
+> >>       $ref: /schemas/types.yaml#/definitions/phandle
+> >>       description: The phandle of HDMI codec.
+> >> +    deprecated: true
+> >>
+> >>     headset-codec:
+> >>       type: object
+> >>       additionalProperties: false
+> >> +    deprecated: true
+> >>
+> >>       properties:
+> >>         sound-dai:
+> >> @@ -41,6 +52,7 @@ properties:
+> >>     speaker-codecs:
+> >>       type: object
+> >>       additionalProperties: false
+> >> +    deprecated: true
+> >>
+> >>       properties:
+> >>         sound-dai:
+> >> @@ -51,13 +63,83 @@ properties:
+> >>       required:
+> >>         - sound-dai
+> >>
+> >> +patternProperties:
+> >> +  ".*-dai-link$":
+> >> +    type: object
+> >> +    description:
+> >> +      Container for dai-link level properties and CODEC sub-nodes.
+> >> +
+> >> +    properties:
+> >> +      link-name:
+> >> +        description: Indicates dai-link name and PCM stream name
+> >> +        items:
+> >> +          enum:
+> >> +            - I2S0
+> >> +            - I2S1
+> >> +            - I2S2
+> >> +            - I2S3
+> >> +            - I2S4
+> >> +            - I2S5
+> >> +            - I2S6
+> >> +            - I2S7
+> >> +            - I2S8
+> >> +            - I2S9
+> >> +            - TDM
+> >> +
+> >> +      codec:
+> >> +        description: Holds subnode which indicates codec dai.
+> >> +        type: object
+> >> +        additionalProperties: false
+> >> +        properties:
+> >> +          sound-dai:
+> >> +            minItems: 1
+> >> +            maxItems: 2
+> >> +        required:
+> >> +          - sound-dai
+> >> +
+> >> +      dai-format:
+> >> +        description: audio format
+> >> +        items:
+> >> +          enum:
+> >> +            - i2s
+> >> +            - right_j
+> >> +            - left_j
+> >> +            - dsp_a
+> >> +            - dsp_b
+> >> +
+> >> +      mediatek,clk-provider:
+> >> +        $ref: /schemas/types.yaml#/definitions/string
+> >> +        description: Indicates dai-link clock master.
+> >> +        items:
+> >> +          enum:
+> >> +            - cpu
+> >> +            - codec
+> >> +
+> >> +    additionalProperties: false
+> >
+> > Move this before properties.
+> >
+>
+> Done for v2.
+>
+> >> +
+> >> +    required:
+> >> +      - link-name
+> >> +
+> >>   additionalProperties: false
+> >>
+> >>   required:
+> >>     - compatible
+> >>     - mediatek,platform
+> >> -  - headset-codec
+> >> -  - speaker-codecs
+> >> +
+> >> +allOf:
+> >> +  # Disallow dai-link-xxx nodes if the legacy properties are specifie=
+d
+> >
+> > xxx-dai-link?
+> >
+>
+> Oh! Yes, thanks for catching this.
+>
+> That's what I initially wanted to do, but then I opted for xxx-dai-link a=
+nd
+> forgot to update this comment.
+>
+> Fixed for v2.
+>
+> >> +  - if:
+> >> +      patternProperties:
+> >> +        ".*-dai-link$": false
+> >> +    then:
+> >> +      required:
+> >> +        - headset-codec
+> >> +        - speaker-codecs
+> >> +    else:
+> >> +      properties:
+> >> +        headset-codec: false
+> >> +        speaker-codecs: false
+> >> +        mediatek,hdmi-codec: false
+> >
+> > Allowing both would preserve compatibility. That's not needed? If so,
+> > say why in the commit msg.
+> >
+>
+> I'm thinking of writing:
+>
+> "Since describing machine specific audio hardware and links replaces the
+> now deprecated old logic doing the same in a driver hardcoded fashion,
+> it is not allowed to have both the old and new properties together."
 
-Hi Vignesh, thanks for this patchset.
+What happened to that. Instead you just sent a new version with
+nothing about this.
 
-Just to confirm, the new convention is:
+> ...but in short - both the old and the new can do exactly the same, but
+> imo it doesn't make any sense to actually rely on both as:
+>   1. It's redundant (and one set of them makes the other useless);
+>   2. I want to avoid confusion (as the other set won't be parsed);
+>   3. I'm trying to *enforce* consistency as MTK cards have different
+>      bindings for .. really, no good reason;
+>   4. I want to see custom stuff disappear completely (and/or as much as
+>      possible anyway) and use something that is (at least somewhat) commo=
+n
+>      between all MTK and non-MTK or anyway as a start at least consistent
+>      between MTK cards.
+>
+> In theory, though, speaking of the driver side, there's nothing preventin=
+g
+> you from specifying both audio-routing xxx-dai-link and mediatek,hdmi-cod=
+ec,
+> as the drivers' action will be, in short
+>     if (new_bindings)
+>       forget_about_old_bindings_use_the_new_ones();
+>     else
+>       use_old_hardcoded_stuff(); /* and be sad */
 
-stages are named per DRIVER_NAME
+That works for newer kernels with this change, but existing kernels
+will only have:
 
-jobs are named DRIVER_NAME:GPU_VERSION
+use_old_hardcoded_stuff(); /* and not know it's sad */
 
-xfails files and testlist files are named DRIVER_NAME-<xfails-suffix>.txt
+If you want to support a new DT and old kernel, you need to populate
+both properties.
 
-Looks good.
+> For that, I really don't want to allow both sets of properties - please, =
+please,
+> tell me that I don't *have to* remove this block :-)
 
-I just have some minor comments/questions in the series, please check.
+Ultimately it is your decision as Mediatek maintainer, not mine. My
+only requirement is the commit message explain why the above
+combination is not important for these platforms.
 
-Regards,
-Helen
+You could leave it, but keep both in the dts files for some time
+period. That will cause warnings, but what's a few more. The ABI
+doesn't have to be a forever thing. Things evolve and there will be
+other reasons to upgrade.
 
-> 
-> Vignesh Raman (11):
->    drm/ci: arm64.config: Enable CONFIG_DRM_ANALOGIX_ANX7625
->    drm/ci: uprev mesa version
->    drm/ci: uprev IGT and update testlist
->    drm/ci: amdgpu: update xfails
->    drm/ci: mediatek: Refactor existing mediatek jobs
->    drm/ci: mediatek: Add job to test panfrost and powervr GPU driver
->    drm/ci: meson: Refactor existing meson jobs
->    drm/ci: meson: Add job to test panfrost GPU driver
->    drm/ci: rockchip: Refactor existing rockchip jobs
->    drm/ci: rockchip: Add job to test panfrost GPU driver
->    drm/ci: add tests on vkms
-> 
->   MAINTAINERS                                   |  14 ++
->   drivers/gpu/drm/ci/arm64.config               |   1 +
->   drivers/gpu/drm/ci/build.sh                   |   1 -
->   drivers/gpu/drm/ci/container.yml              |   6 +-
->   drivers/gpu/drm/ci/gitlab-ci.yml              |  13 +-
->   drivers/gpu/drm/ci/igt_runner.sh              |  28 ++--
->   drivers/gpu/drm/ci/image-tags.yml             |   5 +-
->   drivers/gpu/drm/ci/test.yml                   | 136 +++++++++++++---
->   drivers/gpu/drm/ci/testlist-amdgpu.txt        | 151 ++++++++++++++++++
->   drivers/gpu/drm/ci/testlist-msm.txt           |  50 ++++++
->   drivers/gpu/drm/ci/testlist-panfrost.txt      |  17 ++
->   drivers/gpu/drm/ci/testlist-v3d.txt           |  73 +++++++++
->   drivers/gpu/drm/ci/testlist-vc4.txt           |  49 ++++++
->   drivers/gpu/drm/ci/testlist.txt               |  84 ++++------
->   drivers/gpu/drm/ci/x86_64.config              |   1 +
->   .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |  26 ++-
->   .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |  10 +-
->   .../gpu/drm/ci/xfails/amdgpu-stoney-skips.txt |  17 +-
->   .../drm/ci/xfails/mediatek-mt8173-fails.txt   |  15 --
->   .../drm/ci/xfails/mediatek-mt8173-flakes.txt  |  13 ++
->   .../drm/ci/xfails/mediatek-mt8183-fails.txt   |  21 ++-
->   .../drm/ci/xfails/mediatek-mt8183-flakes.txt  |   8 +
->   .../gpu/drm/ci/xfails/meson-g12b-fails.txt    |   5 -
->   .../gpu/drm/ci/xfails/panfrost-g12b-fails.txt |   1 +
->   .../gpu/drm/ci/xfails/panfrost-g12b-skips.txt |   2 +
->   .../drm/ci/xfails/panfrost-mt8183-fails.txt   |   1 +
->   .../drm/ci/xfails/panfrost-mt8183-skips.txt   |   2 +
->   .../drm/ci/xfails/panfrost-rk3288-fails.txt   |   1 +
->   .../drm/ci/xfails/panfrost-rk3288-skips.txt   |   2 +
->   .../drm/ci/xfails/panfrost-rk3399-fails.txt   |   1 +
->   .../drm/ci/xfails/panfrost-rk3399-skips.txt   |   2 +
->   .../drm/ci/xfails/rockchip-rk3288-fails.txt   |  58 ++-----
->   .../drm/ci/xfails/rockchip-rk3288-flakes.txt  |  20 +++
->   .../drm/ci/xfails/rockchip-rk3288-skips.txt   |  54 +------
->   .../drm/ci/xfails/rockchip-rk3399-fails.txt   |  38 +++--
->   .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |  28 +++-
->   .../drm/ci/xfails/rockchip-rk3399-skips.txt   |   5 +-
->   .../drm/ci/xfails/virtio_gpu-none-fails.txt   |   1 -
->   drivers/gpu/drm/ci/xfails/vkms-none-fails.txt |  33 ++++
->   .../gpu/drm/ci/xfails/vkms-none-flakes.txt    |  20 +++
->   drivers/gpu/drm/ci/xfails/vkms-none-skips.txt |  16 ++
->   41 files changed, 784 insertions(+), 245 deletions(-)
->   create mode 100644 drivers/gpu/drm/ci/testlist-amdgpu.txt
->   create mode 100644 drivers/gpu/drm/ci/testlist-msm.txt
->   create mode 100644 drivers/gpu/drm/ci/testlist-panfrost.txt
->   create mode 100644 drivers/gpu/drm/ci/testlist-v3d.txt
->   create mode 100644 drivers/gpu/drm/ci/testlist-vc4.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-flakes.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-g12b-skips.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-mt8183-fails.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-mt8183-skips.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-skips.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/vkms-none-fails.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/vkms-none-flakes.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/vkms-none-skips.txt
-> 
+Rob
 
