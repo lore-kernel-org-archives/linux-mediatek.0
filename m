@@ -4,71 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11FF2C54798
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 18:16:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DC42C54E4A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 19:05:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CgDyYN4gqhMpyCBDK9N6WOirh+vNkj7cCYbnXyp9xlY=; b=Kwi6tN7zKjs6ejCIPpb0f9Y/QZ
-	DoOVeujCK7nciThJ60RXS9maHh3a6u96OLa7w8hfjVQfVZmyIHYsuW3P1FGZDYEB9dVZiPKe+CLdq
-	Abe3N6lSXig+pPfuMKd+8s2fw/preyN5BJu1wO0Hx6ruRYrZ0ApSPTiCiLOrx/v8pQFUFo5XIz6hk
-	FlzOHI8yu9IYYL0NSwNyKws4TzVjvy8ZmJrumyQ5FpgDP+k/QYsf6YDTs63yLL7Na7mVOnYoqdJov
-	dQ3ueO2sTMJC+PinOsU1ZBZ0w4G3au0MGiXnmhB5AqfgSGFevLD1a4qMSkigM3+Qka3jQZjeApkEX
-	IBf9g9nQ==;
+	bh=uNgnMVsULIy7vFE3ILTyIURmP3dMNjG/ZGbjuQtikzw=; b=ZUviCRw3OxoSb7PVXqdZJVeybA
+	K19igLuWgzjdmQP9cutf0sTyWXXKxwlCIx8uYteZoUFjcNCW+rNi1kjSm18D3+m7Ga0Z6b8OZEfKE
+	E7FZWeDgF8Td7OINI9iWJS/p0wqm+vnCWqDLOX2KIcGTwMRGxmfvSYyHCi4modargEDs/TNPjSU6v
+	+4zCBhM145IZJOOiKzUOKLbExZUagg+1T2GSEJk1IEPNBbU5tXhSPJi1D+97FHERiabvc6PEKrDcO
+	1WCyxkzc57HWrc44oINCryPcsmg3S2yidpoDcWTrmRtyPYrZLZMrRvJ8hExpo/NkUQrVaeChseviP
+	KebI4aGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riIHp-00000005qC2-2dkF;
-	Thu, 07 Mar 2024 18:16:09 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1riJ3M-00000005y82-20q7;
+	Thu, 07 Mar 2024 19:05:16 +0000
+Received: from outgoing1.flk.host-h.net ([188.40.0.86])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riIHm-00000005qAc-0tbe;
-	Thu, 07 Mar 2024 18:16:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E28BFCE222F;
-	Thu,  7 Mar 2024 18:16:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2EBBEC433A6;
-	Thu,  7 Mar 2024 18:16:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1709835363;
-	bh=dPTPHjpCRLgFm/lxnmSiKFph90OqA6fCyXoBFtp7HgI=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=cbZ6kMNFOkqi+7zE5sc/Pm/lwZqYTLfDaqQhaj5pW8MtTwucVP5YmR1AI7k6Ne9K9
-	 JF1MEO8ho44ojQvrGTotYT+v8JVtyxY5cIdkxj+PafS1ucT4/mopGa/TP+bOkkCos5
-	 WUK263hl8RH7XSBatFCN9LEX7M0QkziThw8SWmjM7t4ZnjXUAM6KYOE3a3dERknIz5
-	 5cS43qeFOkK+pFb23/H5NKciBwgsqwjM2PBQV7yPnRW6WmafhGkkTe+eaw0Td0ZJFm
-	 f9N2a2PxwIuS+SSQKqIg5/pFdUCeaFNgxP/2mpA23OYbdFUc9f8it6c+IbudqBIT3G
-	 /d1f0QizmEvOQ==
-Received: by mail-lj1-f174.google.com with SMTP id 38308e7fff4ca-2d382a78c38so13683431fa.1;
-        Thu, 07 Mar 2024 10:16:03 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCUsajwO/cJZxz2VtbZktdkoBDDFUR74puC9sw2Y02e61HgV0ECRwOZloGYHJS9drjmPQGvTP6rJUNNZpU8X7MLqJFvu+qrNbQUmTZblQuBURJSHFukpbhmkMDaqwt/k9yLLhKgGVd9AL3SfYv5nA+5g0A1fhCwLU5k=
-X-Gm-Message-State: AOJu0YwxbHwkncuSCG6p8UkVaimTEc7MKLAfu2e9D+BPja+NKoP6K9G1
-	l1M4u78BZnbh+uTU8GFTYK090mlgZJL5FaANEOMh9lzS1L92EuB+qzZeuw6PCgAPSbdbHoAfed1
-	UIm9Qeuks+D6QWIUze9eRALUzlw==
-X-Google-Smtp-Source: AGHT+IHSczJ87wbSLjyRnbI+ltnna+Ea2X/Todom8MfI6gfwI0NKJYZDpNsic5AtpHJXDE7KYe9zt3aMQkOjFiGtHhs=
-X-Received: by 2002:a2e:3317:0:b0:2d2:4637:63f with SMTP id
- d23-20020a2e3317000000b002d24637063fmr1814686ljc.45.1709835361141; Thu, 07
- Mar 2024 10:16:01 -0800 (PST)
+	id 1riJ3H-00000005y79-1Z7G;
+	Thu, 07 Mar 2024 19:05:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=risingedge.co.za; s=xneelo; h=Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:reply-to:sender:bcc
+	:content-type; bh=uNgnMVsULIy7vFE3ILTyIURmP3dMNjG/ZGbjuQtikzw=; b=RUnSDqyl7+r
+	qakUnibDug6JA7EsMfSwcvkkpgmHhWUHr9yNIdu987R1ReBgjLL4tdzpuJkdGUGo1pfaWyex2A4yr
+	j7SC/uUXVyEWA+U3OSCw2g5Br69PWQy7IhE2XGmaJtxIhENJy/C71PeMUXUtr5YWgY2JYDbLwm1+z
+	a5GGpyPLH6GKrXtS95c37/KrwWlsiFOP3vSqoOaMpu0cf4gXzjAQvYuRefq9ed1duoInA7DMlnW2F
+	9RJNOm8AJoYVo/Zm/3E2v7Un8fWXrQzX31vHA8WhsxTkJgNC3kcEjfYlFkrFIxe7IwrVbaprAxRhI
+	pjpg4VuHeeFR8EAYQGmqtiQ==;
+Received: from www31.flk1.host-h.net ([188.40.1.173])
+	by antispam3-flk1.host-h.net with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <justin.swartz@risingedge.co.za>)
+	id 1riJ37-00Cs1y-CW; Thu, 07 Mar 2024 21:05:06 +0200
+Received: from [41.144.0.96] (helo=localhost.localdomain)
+	by www31.flk1.host-h.net with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <justin.swartz@risingedge.co.za>)
+	id 1riJ35-0007Za-Ju; Thu, 07 Mar 2024 21:05:00 +0200
+From: Justin Swartz <justin.swartz@risingedge.co.za>
+To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Justin Swartz <justin.swartz@risingedge.co.za>,
+	linux-mips@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 1/3] mips: dts: ralink: mt7621: associate uart1_pins with serial0
+Date: Thu,  7 Mar 2024 21:04:05 +0200
+Message-Id: <20240307190408.23443-1-justin.swartz@risingedge.co.za>
+In-Reply-To: <CAMhs-H_eUKm7C40oCzuKwwEMZAcOJ-g4MghAfkGAmxRM0AXPUw@mail.gmail.com>
+References: <CAMhs-H_eUKm7C40oCzuKwwEMZAcOJ-g4MghAfkGAmxRM0AXPUw@mail.gmail.com>
 MIME-Version: 1.0
-References: <20220929122901.614315-1-angelogioacchino.delregno@collabora.com> <20220929122901.614315-3-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220929122901.614315-3-angelogioacchino.delregno@collabora.com>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Thu, 7 Mar 2024 12:15:48 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqKrad8JndQhxHAYjFXPkj7eaJ0GXqkSJy=xrfa=EHvOwA@mail.gmail.com>
-Message-ID: <CAL_JsqKrad8JndQhxHAYjFXPkj7eaJ0GXqkSJy=xrfa=EHvOwA@mail.gmail.com>
-Subject: Re: [PATCH 2/2] dt-bindings: timer: mediatek: Convert to json-schema
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: daniel.lezcano@linaro.org, tglx@linutronix.de, 
-	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, 
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-Authenticated-Sender: justin.swartz@risingedge.co.za
+X-Virus-Scanned: Clear
+X-Originating-IP: 188.40.1.173
+X-SpamExperts-Domain: risingedge.co.za
+X-SpamExperts-Username: 
+Authentication-Results: host-h.net; auth=pass (login) smtp.auth=@risingedge.co.za
+X-SpamExperts-Outgoing-Class: ham
+X-SpamExperts-Outgoing-Evidence: Combined (0.02)
+X-Recommended-Action: accept
+X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT+2dkIiVgdeIwrfJZUlzfSoPUtbdvnXkggZ
+ 3YnVId/Y5jcf0yeVQAvfjHznO7+bT5wCPRB8bAzJcv2cv+UqiTTc2+CpNcmBnO4XM3Sck4bwNogU
+ WCl1nkLBzZX0KuJ9bXiS85Z42w/+2OBolTNFbPomXFWCX8oNdggW7HE9XDTdSejrkEpbuUvwMvHx
+ 3T+KSG//gbuP7hnUK8NQdLwsVWKIFDZRrTGv3rxiw9tFrqFSCFNiLZt/QXQnOBRD+jq1HsKsDh/6
+ Srgk2K3gr1VBfJbChkYH6fbrypLNrde+UooQVNLReLErukdelEOHUIpaBbp5GdnsN8+UvimwMinK
+ 0+Txhz2u9qvrL2PODYgMZQApJXOjDLkqunZ9NcY2bHZn7CfFscMZZf3sCkN20I5vMh4akiObI7Kj
+ vK7X04QEin24qbfMFd8eGjnYW8aSH5qj4ujh/13psIvqSqJFa1CcANErDW/w69saM9prk3jNnHtn
+ nuEt/J9wDZeQfiNOYsLDFBdwYt2XtlLzy7G7T4kla0JNnAWQx3FS11bhwUa9HCIwKB+TroNcRY33
+ oNmH4nRQzHQazgY7lmveanvOdQzf6IMJ3345q/s6ySNrGnXycmhg3DrczAD1WVolgcSeHb4aFR6o
+ naNQbqJUPRwZtKOTN8gOLtBcNrQxKZYuPe8bdCyw79zlPbqLQkZr26Lcxdvj8cqI+CogZdOhX7v3
+ ClXzrmMENhJLl6MBfhzHVBR0wHQZxzIUka7Uq615Mik1qzcz30+tdk6yIuh9K7v+Nq0Cm3JVhle6
+ F/kpBdN+oWjoATjEFDwcaiz0R34rhTN+GTbl4uS+pZovX9cex7Ac4fawcerGI7TrGXpM/B/M0BZd
+ PfIU1BX7pZc1sE3vsz58auH/srM2fgZ9JmgLbj7sqoEiwv7LCxIiAE5ODMnmwjvj2589zjbyZCiM
+ WpBpW8YvoIIqmZcWhL/r/eFjMjJnMHeiAPOVAT1rE1/vP68Bb4z3v3h3gCdXrv2+9GnNX30LKqXb
+ fwFKgm/rnYBl+Mj5KqOl6Jzub/f3QhLRbOgisvi5VU9eNBtgo6zjiatjNO/pnMCjuIvXs/AyV/Ns
+ URB/R+FlEHyAzksgfaRvdgw0WK34QWnzHHMcN6qoXPjenLhIOF1oeRYbjF1Hp647mOWoQlc3hL3c
+ dBMSQgQtiTUcJp5roVy0aUu4QpSck7G+GMKyAf/5Ohx4u/m4iBmYb1/LCV4/EuVHup06w3Vwxf9C
+ F7D6LKKRTfdjzQ6YC7Heg3Xf7O1TOd6RcY/MXB8eEq3bCN2QohZvyS03iBmgsz450Kmjd3fGV1W8
+ G8QuHm3zVXLA16qJoSUoBquXd20U5QRJeq08E+NlIbtf63VNbf0lrvssY+k7AHGi1NevGWTo2+h8
+ Lhk4HCeZR7ymlGVRtthBJ2y8A5arx6JItKpFaUNPGMMlvbMX0nyK1NiAJ0y2Qvvn6ds6mor35w4f
+ SfHzQbABJfgy21HclcZkPRq7NhoxyMwqi8Q23Rgadfh5T5n5D4OHHpbEIgsllZKWnzc5M5WlNtVJ
+ qo05MS+4ayUpOtEhdxekWDmK9g==
+X-Report-Abuse-To: spam@antispamquarantine.host-h.net
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240307_101606_477930_DFB02EE5 
-X-CRM114-Status: GOOD (  10.97  )
+X-CRM114-CacheID: sfid-20240307_110512_114001_03E11EFA 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,27 +117,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 29, 2022 at 7:29=E2=80=AFAM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Convert the MediaTek SoC timer txt binding to json-schema.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> ---
->  .../bindings/timer/mediatek,mtk-timer.txt     | 47 ----------
->  .../bindings/timer/mediatek,timer.yaml        | 86 +++++++++++++++++++
->  2 files changed, 86 insertions(+), 47 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/timer/mediatek,mtk-=
-timer.txt
->  create mode 100644 Documentation/devicetree/bindings/timer/mediatek,time=
-r.yaml
+Add missing pinctrl-name and pinctrl-0 properties to declare
+that the uart1_pins group is associated with serial0.
 
-Looks like this never got applied. I've applied it now and added 8365
-which got added to the .txt binding in the mean time. I'm not sure
-it's right though. The txt binding says it was CPUX timer, but the dts
-says otherwise. The 6795 dts looks wrong. It says the timer is CPUX
-and GPT timer. That warning remains.
+Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+---
+ arch/mips/boot/dts/ralink/mt7621.dtsi | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Rob
+diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
+index 35a10258f..dca415fdd 100644
+--- a/arch/mips/boot/dts/ralink/mt7621.dtsi
++++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
+@@ -123,6 +123,9 @@ serial0: serial@c00 {
+ 			reg-shift = <2>;
+ 			reg-io-width = <4>;
+ 			no-loopback-test;
++
++			pinctrl-names = "default";
++			pinctrl-0 = <&uart1_pins>;
+ 		};
+ 
+ 		spi0: spi@b00 {
+-- 
+
 
