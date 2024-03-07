@@ -4,95 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2284FC54E49
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 12:51:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2788CC48BF6
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 13:35:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cGo2EnveMYisxsUB+qd8H3w61iWaL5V1pE+MhwGMyWU=; b=Ns8CjdsyFu2sgNcNioazGFrLVz
-	lM/MIWDVo+Smwc+qWlSkmWeLbiZ9KhwwkH+GgjJsuCmwQAUtvzh5DMXjh6WoTw8kvWfpeRqhCn/YQ
-	3qIfOEO5Wn4hoZqb18eDpMSL/Y6FhBsGQ3eyKpG+GjV2jleDkSc+noUcM/myD38Il6pg8Ncu4cXLS
-	fzEXJUlhJ29WYFHxo6R+24i5EVb9z/FOx4i5v2ufhTmwBnzSjZ6mpOv79Ey5L/0/aV+ImxRyzGjJi
-	qkXvZXoAVmHA0VNdB9jYeORsA1SLEXPoRNeN8QbKRTWeKHxFWiUMwoguTS7zYTTuwOiqmZiVIwpWV
-	B5CM56RA==;
+	bh=IKeU/Jp5uxAJrgj3QSBIFMRxIIqtJYGwFDCQhG+dZfc=; b=fEbNRyNoj7GPWIWiH3wKtTVPQW
+	Wf2L2jd96hgyYV8uM/VaWs9Arcrz5499PzoNxL+XgsTCzEOxDP2OI/kT6CpOnVmIVjxB+8wXlR2yR
+	wNRZLHRBbWLtomOsF5Gu6KX95/TuMnOzTY5qPLRpOEm4368z4+tkMCXy01AB5UkIjem2ME7ZO2YyP
+	DQltoiFXd4MxBihdInK0kulaK0xOj3xvZx4juIpf0YDr875AaV6lgqqm1sSX/96l2kinsR9Tsfim2
+	ZYi3WSiSbBRVWvQlPo2TiCpfMS4b2V7whFC5XhNSfogi+WnrhlXiP/zQ2ehIX/rGBZWirRe7TmUnz
+	d4cebWSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riDDm-00000004d4W-3PN6;
-	Thu, 07 Mar 2024 12:51:38 +0000
+	id 1riDud-00000004lS1-0Zcb;
+	Thu, 07 Mar 2024 13:35:55 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riCBh-00000004Nql-44X6;
-	Thu, 07 Mar 2024 11:45:39 +0000
+	id 1riDuX-00000004lL6-1gCd;
+	Thu, 07 Mar 2024 13:35:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709811924;
-	bh=7dwcW721xQhnjT05thzylbyuJsM5PYC/qaTz/86b5ls=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kYIfXTjlRkUNdVuGt0xbID6lL/fpzhhzrc87nYUKsSMytp4g2oGB8YldFPE9oJvZy
-	 WNX/lV30D/XkSMRTlrF6VaYTTKKmUY8rG9HmPwxvarqzU8V7V0HuaTSp2x8oKz8SeK
-	 MohAMO/93C97AjGWBKOvsJmdCJYeTdUS3qmp+8T5keLjazKKk+YZT/qC8ztshll4Nj
-	 HvNaRapjp6dIFne0L/mSvN67lykse9a40rPnPFdYCjrCgKD0mbUvIy4SKUDhF2vYYG
-	 sgw/kKzhDERD94aIqgkl96WW52FencmqpjB/UhBefofPNMuLAYamkzxXueeLTCYzTF
-	 DJ2ZKsJm+pQAw==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1709818545;
+	bh=yJP/7iXYGTXtCetl/s5JdFVY3VfriXvZsF4XeIim0M0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=tBQjMU87qe5jCl2C+zdTdhdh7t0yDM8aOgJHO8jGgM8emXDFFNd9rAWl3ps1+/bco
+	 y68F+SqpzdCj91Pgkmet7dJ4bOo4JZgOXMfNq+JbiRPJaEleahoPkH+DEAfIIsM7tF
+	 MWmq+5P7XRF1AVhyHtegsJT1Ps0KqXN/yeOSEV07dPzH3oKnK154TY/lN5GJl2tu0S
+	 fT16QQjJHTxKaC+phUdIDZAjuph9rLOznVC4Kp7OaGO1F3V58AwFHEzaA4Ejk59gt4
+	 Wf0GFI8VhMzrGn6ne36ZStBybICVwChX6pe1hMdRw6MGNUM2zaRIySFX/gQheJiX3S
+	 tJteXZOOrXgbg==
+Received: from [100.95.196.25] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D528637820EF;
-	Thu,  7 Mar 2024 11:45:21 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: broonie@kernel.org
-Cc: wenst@chromium.org,
-	lgirdwood@gmail.com,
-	robh@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	perex@perex.cz,
-	tiwai@suse.com,
-	trevor.wu@mediatek.com,
-	maso.huang@mediatek.com,
-	xiazhengqiao@huaqin.corp-partner.google.com,
-	arnd@arndb.de,
-	kuninori.morimoto.gx@renesas.com,
-	shraash@google.com,
-	amergnat@baylibre.com,
-	nicolas.ferre@microchip.com,
-	u.kleine-koenig@pengutronix.de,
-	dianders@chromium.org,
-	frank.li@vivo.com,
-	allen-kh.cheng@mediatek.com,
-	eugen.hristev@collabora.com,
-	claudiu.beznea@tuxon.dev,
-	jarkko.nikula@bitmer.com,
-	jiaxin.yu@mediatek.com,
-	alpernebiyasak@gmail.com,
-	ckeepax@opensource.cirrus.com,
-	zhourui@huaqin.corp-partner.google.com,
-	nfraprado@collabora.com,
-	alsa-devel@alsa-project.org,
-	shane.chien@mediatek.com,
-	linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 13/22] ASoC: mediatek: mt8192: Migrate to the common mtk_soundcard_startup
-Date: Thu,  7 Mar 2024 12:44:36 +0100
-Message-ID: <20240307114445.196981-14-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240307114445.196981-1-angelogioacchino.delregno@collabora.com>
-References: <20240307114445.196981-1-angelogioacchino.delregno@collabora.com>
+	(Authenticated sender: koike)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 415F13780B5F;
+	Thu,  7 Mar 2024 13:35:38 +0000 (UTC)
+Message-ID: <db39d0cb-71d3-48b2-87b7-f2716c72e1a1@collabora.com>
+Date: Thu, 7 Mar 2024 10:35:37 -0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 02/11] drm/ci: uprev mesa version
+Content-Language: en-US
+To: Vignesh Raman <vignesh.raman@collabora.com>,
+ dri-devel@lists.freedesktop.org
+Cc: daniels@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
+ emma@anholt.net, robdclark@gmail.com, david.heidelberg@collabora.com,
+ guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
+ hamohammed.sa@gmail.com, rodrigosiqueiramelo@gmail.com,
+ melissa.srw@gmail.com, mairacanal@riseup.net, mcanal@igalia.com,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20240306030649.60269-1-vignesh.raman@collabora.com>
+ <20240306030649.60269-3-vignesh.raman@collabora.com>
+From: Helen Koike <helen.koike@collabora.com>
+In-Reply-To: <20240306030649.60269-3-vignesh.raman@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240307_034527_006853_E7477D1A 
-X-CRM114-Status: GOOD (  13.70  )
+X-CRM114-CacheID: sfid-20240307_053549_934406_3F85FE85 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,221 +81,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a const mtk_pcm_constraints_data struct array with all of the
-(again, constant) constraints for all of the supported usecases,
-remove the duplicated functions and call mtk_soundcard_startup()
-instead in all of the .startup() callbacks.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../mt8192/mt8192-mt6359-rt1015-rt5682.c      | 139 ++++++------------
- 1 file changed, 41 insertions(+), 98 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
-index 645bc1aa67c7..5fb34a4834d2 100644
---- a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
-+++ b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
-@@ -389,100 +389,6 @@ static int mt8192_i2s_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
- 	return 0;
- }
- 
--static int
--mt8192_mt6359_cap1_startup(struct snd_pcm_substream *substream)
--{
--	static const unsigned int channels[] = {
--		1, 2, 4
--	};
--	static const struct snd_pcm_hw_constraint_list constraints_channels = {
--		.count = ARRAY_SIZE(channels),
--		.list = channels,
--		.mask = 0,
--	};
--	static const unsigned int rates[] = {
--		8000, 16000, 32000, 48000, 96000, 192000
--	};
--	static const struct snd_pcm_hw_constraint_list constraints_rates = {
--		.count = ARRAY_SIZE(rates),
--		.list  = rates,
--		.mask = 0,
--	};
--
--	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
--	struct snd_pcm_runtime *runtime = substream->runtime;
--	int ret;
--
--	ret = snd_pcm_hw_constraint_list(runtime, 0,
--					 SNDRV_PCM_HW_PARAM_CHANNELS,
--					 &constraints_channels);
--	if (ret < 0) {
--		dev_err(rtd->dev, "hw_constraint_list channels failed\n");
--		return ret;
--	}
--
--	ret = snd_pcm_hw_constraint_list(runtime, 0,
--					 SNDRV_PCM_HW_PARAM_RATE,
--					 &constraints_rates);
--	if (ret < 0) {
--		dev_err(rtd->dev, "hw_constraint_list rate failed\n");
--		return ret;
--	}
--
--	return 0;
--}
--
--static const struct snd_soc_ops mt8192_mt6359_capture1_ops = {
--	.startup = mt8192_mt6359_cap1_startup,
--};
--
--static int
--mt8192_mt6359_rt5682_startup(struct snd_pcm_substream *substream)
--{
--	static const unsigned int channels[] = {
--		1, 2
--	};
--	static const struct snd_pcm_hw_constraint_list constraints_channels = {
--		.count = ARRAY_SIZE(channels),
--		.list = channels,
--		.mask = 0,
--	};
--	static const unsigned int rates[] = {
--		48000
--	};
--	static const struct snd_pcm_hw_constraint_list constraints_rates = {
--		.count = ARRAY_SIZE(rates),
--		.list  = rates,
--		.mask = 0,
--	};
--
--	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
--	struct snd_pcm_runtime *runtime = substream->runtime;
--	int ret;
--
--	ret = snd_pcm_hw_constraint_list(runtime, 0,
--					 SNDRV_PCM_HW_PARAM_CHANNELS,
--					 &constraints_channels);
--	if (ret < 0) {
--		dev_err(rtd->dev, "hw_constraint_list channels failed\n");
--		return ret;
--	}
--
--	ret = snd_pcm_hw_constraint_list(runtime, 0,
--					 SNDRV_PCM_HW_PARAM_RATE,
--					 &constraints_rates);
--	if (ret < 0) {
--		dev_err(rtd->dev, "hw_constraint_list rate failed\n");
--		return ret;
--	}
--
--	return 0;
--}
--
--static const struct snd_soc_ops mt8192_mt6359_rt5682_ops = {
--	.startup = mt8192_mt6359_rt5682_startup,
--};
--
- /* FE */
- SND_SOC_DAILINK_DEFS(playback1,
- 		     DAILINK_COMP_ARRAY(COMP_CPU("DL1")),
-@@ -720,7 +626,7 @@ static struct snd_soc_dai_link mt8192_mt6359_dai_links[] = {
- 			    SND_SOC_DPCM_TRIGGER_PRE},
- 		.dynamic = 1,
- 		.dpcm_playback = 1,
--		.ops = &mt8192_mt6359_rt5682_ops,
-+		.ops = &mtk_soundcard_common_playback_ops,
- 		SND_SOC_DAILINK_REG(playback3),
- 	},
- 	{
-@@ -784,7 +690,7 @@ static struct snd_soc_dai_link mt8192_mt6359_dai_links[] = {
- 			    SND_SOC_DPCM_TRIGGER_PRE},
- 		.dynamic = 1,
- 		.dpcm_capture = 1,
--		.ops = &mt8192_mt6359_capture1_ops,
-+		.ops = &mtk_soundcard_common_capture_ops,
- 		SND_SOC_DAILINK_REG(capture1),
- 	},
- 	{
-@@ -794,7 +700,7 @@ static struct snd_soc_dai_link mt8192_mt6359_dai_links[] = {
- 			    SND_SOC_DPCM_TRIGGER_PRE},
- 		.dynamic = 1,
- 		.dpcm_capture = 1,
--		.ops = &mt8192_mt6359_rt5682_ops,
-+		.ops = &mtk_soundcard_common_playback_ops,
- 		SND_SOC_DAILINK_REG(capture2),
- 	},
- 	{
-@@ -1146,7 +1052,7 @@ static int mt8192_mt6359_legacy_probe(struct mtk_soc_card_data *soc_card_data)
- 	struct device *dev = card->dev;
- 	struct device_node *hdmi_codec, *headset_codec, *speaker_codec;
- 	struct snd_soc_dai_link *dai_link;
--	int ret, i;
-+	int i, ret = 0;
- 
- 	hdmi_codec = of_parse_phandle(dev->of_node, "mediatek,hdmi-codec", 0);
- 	if (!hdmi_codec)
-@@ -1235,11 +1141,44 @@ static int mt8192_mt6359_soc_card_probe(struct mtk_soc_card_data *soc_card_data,
- 	return 0;
- }
- 
-+static const unsigned int mt8192_pcm_playback_channels[] = { 1, 2 };
-+static const unsigned int mt8192_pcm_playback_rates[] = { 48000 };
-+
-+static const unsigned int mt8192_pcm_capture_channels[] = { 1, 2, 4 };
-+static const unsigned int mt8192_pcm_capture_rates[] = {
-+	8000, 16000, 32000, 48000, 96000, 192000
-+};
-+
-+static const struct mtk_pcm_constraints_data mt8192_pcm_constraints[MTK_CONSTRAINT_CAPTURE + 1] = {
-+	[MTK_CONSTRAINT_PLAYBACK] = {
-+		.channels = {
-+			.list = mt8192_pcm_playback_channels,
-+			.count = ARRAY_SIZE(mt8192_pcm_playback_channels)
-+		},
-+		.rates = {
-+			.list = mt8192_pcm_playback_rates,
-+			.count = ARRAY_SIZE(mt8192_pcm_playback_rates)
-+		}
-+	},
-+	[MTK_CONSTRAINT_CAPTURE] = {
-+		.channels = {
-+			.list = mt8192_pcm_capture_channels,
-+			.count = ARRAY_SIZE(mt8192_pcm_capture_channels)
-+		},
-+		.rates = {
-+			.list = mt8192_pcm_capture_rates,
-+			.count = ARRAY_SIZE(mt8192_pcm_capture_rates)
-+		}
-+	}
-+};
-+
- static const struct mtk_soundcard_pdata mt8192_mt6359_rt1015_rt5682_pdata = {
- 	.card_name = RT1015_RT5682_CARD_NAME,
- 	.card_data = &(struct mtk_platform_card_data) {
- 		.card = &mt8192_mt6359_rt1015_rt5682_card,
- 		.num_jacks = MT8192_JACK_MAX,
-+		.pcm_constraints = mt8192_pcm_constraints,
-+		.num_pcm_constraints = ARRAY_SIZE(mt8192_pcm_constraints),
- 	},
- 	.soc_probe = mt8192_mt6359_soc_card_probe
- };
-@@ -1249,6 +1188,8 @@ static const struct mtk_soundcard_pdata mt8192_mt6359_rt1015p_rt5682_pdata = {
- 	.card_data = &(struct mtk_platform_card_data) {
- 		.card = &mt8192_mt6359_rt1015p_rt5682x_card,
- 		.num_jacks = MT8192_JACK_MAX,
-+		.pcm_constraints = mt8192_pcm_constraints,
-+		.num_pcm_constraints = ARRAY_SIZE(mt8192_pcm_constraints),
- 	},
- 	.soc_probe = mt8192_mt6359_soc_card_probe
- };
-@@ -1258,6 +1199,8 @@ static const struct mtk_soundcard_pdata mt8192_mt6359_rt1015p_rt5682s_pdata = {
- 	.card_data = &(struct mtk_platform_card_data) {
- 		.card = &mt8192_mt6359_rt1015p_rt5682x_card,
- 		.num_jacks = MT8192_JACK_MAX,
-+		.pcm_constraints = mt8192_pcm_constraints,
-+		.num_pcm_constraints = ARRAY_SIZE(mt8192_pcm_constraints),
- 	},
- 	.soc_probe = mt8192_mt6359_soc_card_probe
- };
--- 
-2.44.0
+On 06/03/2024 00:06, Vignesh Raman wrote:
+> zlib.net is not allowing tarball download anymore and results
+> in below error in kernel+rootfs_arm32 container build,
+> urllib.error.HTTPError: HTTP Error 403: Forbidden
+> urllib.error.HTTPError: HTTP Error 415: Unsupported Media Type
+> 
+> Uprev mesa which includes a fix for this issue.
+> https://gitlab.freedesktop.org/mesa/mesa/-/commit/908f444e
+> 
+> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 
+Acked-by: Helen Koike <helen.koike@collabora.com>
+
+Thanks
+Helen
+
+> ---
+> 
+> v3:
+>    - New patch in series to uprev mesa.
+> 
+> v4:
+>    - Fix checkpatch warning.
+> 
+> ---
+>   drivers/gpu/drm/ci/container.yml  | 6 +++---
+>   drivers/gpu/drm/ci/gitlab-ci.yml  | 6 +++---
+>   drivers/gpu/drm/ci/image-tags.yml | 3 ++-
+>   3 files changed, 8 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/ci/container.yml b/drivers/gpu/drm/ci/container.yml
+> index 9764e7921a4f..1060eb380b02 100644
+> --- a/drivers/gpu/drm/ci/container.yml
+> +++ b/drivers/gpu/drm/ci/container.yml
+> @@ -40,11 +40,11 @@ debian/x86_64_test-android:
+>     rules:
+>       - when: never
+>   
+> -windows_build_vs2019:
+> +windows_build_msvc:
+>     rules:
+>       - when: never
+>   
+> -windows_test_vs2019:
+> +windows_test_msvc:
+>     rules:
+>       - when: never
+>   
+> @@ -56,7 +56,7 @@ rustfmt:
+>      rules:
+>       - when: never
+>   
+> -windows_vs2019:
+> +windows_msvc:
+>      rules:
+>       - when: never
+>   
+> diff --git a/drivers/gpu/drm/ci/gitlab-ci.yml b/drivers/gpu/drm/ci/gitlab-ci.yml
+> index 084e3ff8e3f4..bc8cb3420476 100644
+> --- a/drivers/gpu/drm/ci/gitlab-ci.yml
+> +++ b/drivers/gpu/drm/ci/gitlab-ci.yml
+> @@ -1,6 +1,6 @@
+>   variables:
+>     DRM_CI_PROJECT_PATH: &drm-ci-project-path mesa/mesa
+> -  DRM_CI_COMMIT_SHA: &drm-ci-commit-sha 9d162de9a05155e1c4041857a5848842749164cf
+> +  DRM_CI_COMMIT_SHA: &drm-ci-commit-sha c4b32f9e90b7204735e6adf1f60c178bf85752e7
+>   
+>     UPSTREAM_REPO: git://anongit.freedesktop.org/drm/drm
+>     TARGET_BRANCH: drm-next
+> @@ -26,7 +26,7 @@ variables:
+>     JOB_ARTIFACTS_BASE: ${PIPELINE_ARTIFACTS_BASE}/${CI_JOB_ID}
+>     # default kernel for rootfs before injecting the current kernel tree
+>     KERNEL_REPO: "gfx-ci/linux"
+> -  KERNEL_TAG: "v6.6.4-for-mesa-ci-e4f4c500f7fb"
+> +  KERNEL_TAG: "v6.6.13-mesa-9916"
+>     KERNEL_IMAGE_BASE: https://${S3_HOST}/mesa-lava/${KERNEL_REPO}/${KERNEL_TAG}
+>     LAVA_TAGS: subset-1-gfx
+>     LAVA_JOB_PRIORITY: 30
+> @@ -98,6 +98,7 @@ include:
+>   stages:
+>     - sanity
+>     - container
+> +  - code-validation
+>     - git-archive
+>     - build
+>     - amdgpu
+> @@ -107,7 +108,6 @@ stages:
+>     - msm
+>     - rockchip
+>     - virtio-gpu
+> -  - lint
+>   
+>   # YAML anchors for rule conditions
+>   # --------------------------------
+> diff --git a/drivers/gpu/drm/ci/image-tags.yml b/drivers/gpu/drm/ci/image-tags.yml
+> index 7ab4f2514da8..cf07c3e09b8c 100644
+> --- a/drivers/gpu/drm/ci/image-tags.yml
+> +++ b/drivers/gpu/drm/ci/image-tags.yml
+> @@ -1,5 +1,5 @@
+>   variables:
+> -   CONTAINER_TAG: "2023-10-11-mesa-uprev"
+> +   CONTAINER_TAG: "2022-01-29-mesa-uprev"
+>      DEBIAN_X86_64_BUILD_BASE_IMAGE: "debian/x86_64_build-base"
+>      DEBIAN_BASE_TAG: "${CONTAINER_TAG}"
+>   
+> @@ -7,6 +7,7 @@ variables:
+>      DEBIAN_BUILD_TAG: "2023-10-08-config"
+>   
+>      KERNEL_ROOTFS_TAG: "2023-10-06-amd"
+> +   PKG_REPO_REV: "67f2c46b"
+>   
+>      DEBIAN_X86_64_TEST_BASE_IMAGE: "debian/x86_64_test-base"
+>      DEBIAN_X86_64_TEST_IMAGE_GL_PATH: "debian/x86_64_test-gl"
 
