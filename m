@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19706C54E58
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 11:45:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACFE0C54E49
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 11:45:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s7LGHGr2Wp71bsFfX1o/4ts7SBmKrZJaWPOGb4Pt9Ro=; b=QyFFqmwV7SpxA/DrlhxJZigYAi
-	KsuFxVwx/P69zPNvOcGQJdyRg4/VT2DUnjqtKosoPzOf27i35aYtfL7eQ/KhHfhzKp0PV6JEB1ke0
-	3KkrAVvMaGBkbE41o7MthbSRItd6WwChQr52Gatu4xUOxAxqY+g6bpkrNJYf5kMvtid7exgz/a1e+
-	LvcQbOSrPaV7NcQCAO5BO7z2nQSqwOBuVYBZRLojHExzQVc7/ij/ZZ7bysZIl/JR/okzvAq32/4qi
-	wxLrIHm9I/CaYX/3h66IC9BAvY5/UGPmFEQMPpcrDywjXRPcrAREKQB9ZvAScChr40466oxyC7jz4
-	niPR6n+w==;
+	bh=G0PGcRwlZmfr0MWHcozlQ+u0gJ6SnQtl/al+rHBE6m0=; b=bXu4kD+vZNcXHOopXncSsVYXb3
+	pjPvWutKblM8+P+qonOk+v6DvLM2koSbIqE2BpC2+y1EyZROTmoPPoQe2hTYh4fKKAkZxbvoTxa7U
+	KXmozyljYLQuF6xbg4q3GAqtZmv0C8vOiz4UAqjesNCOd+gz44w13ZBIFOrL+ce2GWv6o3Jy5Efbs
+	DhQFLCyCUkOBdP9lx4Czs/ZniNV7UlILNk2PRZ4pbQgmJrClS6WNH3Uaxu/uWwo36bQCFt11eniQG
+	5E0Lh2ONK5tVlQdXtDxDSWQ3ztOOu0CLDzs0IstEbqN2YB3FtPcb8LUGK2W60DkjJMbjzjhLJ9wyp
+	gE7qMkvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riCBZ-00000004Nlh-2FCe;
-	Thu, 07 Mar 2024 11:45:17 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1riCBf-00000004Npu-1iRm;
+	Thu, 07 Mar 2024 11:45:23 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riCBH-00000004NWb-0K3w;
-	Thu, 07 Mar 2024 11:45:03 +0000
+	id 1riCBL-00000004Nag-4BEF;
+	Thu, 07 Mar 2024 11:45:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709811897;
-	bh=BDE29d7L8T5qLbPM3CF8LepTtXCFcdT0QPMlGf+kalQ=;
+	s=mail; t=1709811902;
+	bh=/pS8nnncjy2TDDWZ2CUchnxDIc/k7Kdx/uqwdwe7Xs0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=VWeQHQsMfKZf+sUjL30BERQe+U2dcsmaY5HmYmHzh3fO1BNeno8UgBlfSMwRCnMt9
-	 wFLVDoFECd8g8YlEy+MrEhhjYXnKiaBc3CXnpIXxg2MyM0nK8QUk7dYzym/Dlzsp21
-	 cbc9poqjv/QSsOcNTnrevWCqbFoamT1iYR6p30N6ecCcVOHR45dbAYhVLqT9mE9+Rf
-	 AG4kqGg9Lf80JWmqVw1l+4/QGeCJ4mU/sZ5D5NrbEF+IYArB05KjcLwehzwdrBERO+
-	 HD6bTgq/x6dvgW+gtovXg7/qrfuJL/XUpxZcbpSvswSzCMCWOYbPVAeNZx8wA1MxiB
-	 oRxIZTzf6cbIg==
+	b=SFka2ONl+IW1KD+u2U5you9zacfumzJ0PTggp7r10/VXjdt/m6dS9N6ShYk6Nyh55
+	 M1lQcQwPyAswbBsyhozWMpKjf0OQ+0F5YUR2TXgdJGkuqxgivzxXxN8rXojVhTV8Vc
+	 bew0iaiL5+jBDdbDdNoXDVwkp08EQBSqmSC3VVQBN3dDpTFmopQtB0pKvC814O8pEr
+	 1DtWA+9cdNU6B5wyEC8RT+tBlXXcHK1vB0qQ0G+OyCyJn9NCyNrwBaAFdI7Le5Bj//
+	 9/MTe/uk1uYMSZ7BqyprEHrk2Lq7m0dggzVB/qd/2wZqzjUzn2uDjiNJN0kOWMlEsD
+	 7ZJGp3+p6kosQ==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B9D7D37820EC;
-	Thu,  7 Mar 2024 11:44:55 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7279C37820ED;
+	Thu,  7 Mar 2024 11:45:00 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: broonie@kernel.org
 Cc: wenst@chromium.org,
@@ -82,17 +82,17 @@ Cc: wenst@chromium.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 02/22] ASoC: mediatek: mt8192-afe-pcm: Simplify with dev_err_probe()
-Date: Thu,  7 Mar 2024 12:44:25 +0100
-Message-ID: <20240307114445.196981-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 04/22] ASoC: mediatek: Assign dummy when codec not specified for a DAI link
+Date: Thu,  7 Mar 2024 12:44:27 +0100
+Message-ID: <20240307114445.196981-5-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240307114445.196981-1-angelogioacchino.delregno@collabora.com>
 References: <20240307114445.196981-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240307_034459_448689_22F51283 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20240307_034504_611610_4C53BF0D 
+X-CRM114-Status: GOOD (  11.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,138 +107,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Simplify the probe function by switching error prints to return
-dev_err_probe(), lowering the lines count; while at it, also
-beautify some messages and change some others' level from warn
-to error.
+MediaTek sound card drivers are checking whether a DAI link is present
+and used on a board to assign the correct parameters and this is done
+by checking the codec DAI names at probe time.
 
+If no real codec is present, assign the dummy codec to the DAI link
+to avoid NULL pointer during string comparison.
+
+Fixes: 4302187d955f ("ASoC: mediatek: common: add soundcard driver common code")
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- sound/soc/mediatek/mt8192/mt8192-afe-pcm.c | 65 ++++++++--------------
- 1 file changed, 22 insertions(+), 43 deletions(-)
+ sound/soc/mediatek/common/mtk-soundcard-driver.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c b/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-index 794419d16b01..aed22baef9fb 100644
---- a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-@@ -2205,17 +2205,12 @@ static int mt8192_afe_pcm_dev_probe(struct platform_device *pdev)
+diff --git a/sound/soc/mediatek/common/mtk-soundcard-driver.c b/sound/soc/mediatek/common/mtk-soundcard-driver.c
+index a58e1e3674de..000a086a8cf4 100644
+--- a/sound/soc/mediatek/common/mtk-soundcard-driver.c
++++ b/sound/soc/mediatek/common/mtk-soundcard-driver.c
+@@ -22,7 +22,11 @@ static int set_card_codec_info(struct snd_soc_card *card,
  
- 	/* reset controller to reset audio regs before regmap cache */
- 	rstc = devm_reset_control_get_exclusive(dev, "audiosys");
--	if (IS_ERR(rstc)) {
--		ret = PTR_ERR(rstc);
--		dev_err(dev, "could not get audiosys reset:%d\n", ret);
--		return ret;
--	}
-+	if (IS_ERR(rstc))
-+		return dev_err_probe(dev, PTR_ERR(rstc), "could not get audiosys reset\n");
- 
- 	ret = reset_control_reset(rstc);
--	if (ret) {
--		dev_err(dev, "failed to trigger audio reset:%d\n", ret);
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to trigger audio reset\n");
- 
- 	ret = devm_pm_runtime_enable(&pdev->dev);
- 	if (ret)
-@@ -2223,25 +2218,21 @@ static int mt8192_afe_pcm_dev_probe(struct platform_device *pdev)
- 
- 	/* regmap init */
- 	afe->regmap = syscon_node_to_regmap(dev->parent->of_node);
--	if (IS_ERR(afe->regmap)) {
--		dev_err(dev, "could not get regmap from parent\n");
--		return PTR_ERR(afe->regmap);
--	}
-+	if (IS_ERR(afe->regmap))
-+		return dev_err_probe(dev, PTR_ERR(afe->regmap),
-+				     "could not get regmap from parent");
+ 	codec_node = of_get_child_by_name(sub_node, "codec");
+ 	if (!codec_node) {
+-		dev_dbg(dev, "%s no specified codec\n", dai_link->name);
++		dev_dbg(dev, "%s no specified codec: setting dummy.\n", dai_link->name);
 +
- 	ret = regmap_attach_dev(dev, afe->regmap, &mt8192_afe_regmap_config);
--	if (ret) {
--		dev_warn(dev, "regmap_attach_dev fail, ret %d\n", ret);
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(dev, ret, "regmap_attach_dev fail\n");
- 
- 	/* enable clock for regcache get default value from hw */
- 	afe_priv->pm_runtime_bypass_reg_ctl = true;
- 	pm_runtime_get_sync(&pdev->dev);
- 
- 	ret = regmap_reinit_cache(afe->regmap, &mt8192_afe_regmap_config);
--	if (ret) {
--		dev_err(dev, "regmap_reinit_cache fail, ret %d\n", ret);
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(dev, ret, "regmap_reinit_cache fail\n");
- 
- 	pm_runtime_put_sync(&pdev->dev);
- 	afe_priv->pm_runtime_bypass_reg_ctl = false;
-@@ -2281,30 +2272,22 @@ static int mt8192_afe_pcm_dev_probe(struct platform_device *pdev)
- 
- 	ret = devm_request_irq(dev, irq_id, mt8192_afe_irq_handler,
- 			       IRQF_TRIGGER_NONE, "asys-isr", (void *)afe);
--	if (ret) {
--		dev_err(dev, "could not request_irq for Afe_ISR_Handle\n");
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(dev, ret, "could not request_irq for Afe_ISR_Handle\n");
- 
- 	/* init sub_dais */
- 	INIT_LIST_HEAD(&afe->sub_dais);
- 
- 	for (i = 0; i < ARRAY_SIZE(dai_register_cbs); i++) {
- 		ret = dai_register_cbs[i](afe);
--		if (ret) {
--			dev_warn(afe->dev, "dai register i %d fail, ret %d\n",
--				 i, ret);
--			return ret;
--		}
-+		if (ret)
-+			return dev_err_probe(afe->dev, ret, "dai %d register fail", i);
++		dai_link->codecs = &snd_soc_dummy_dlc;
++		dai_link->num_codecs = 1;
++		dai_link->dynamic = 1;
+ 		return 0;
  	}
  
- 	/* init dai_driver and component_driver */
- 	ret = mtk_afe_combine_sub_dai(afe);
--	if (ret) {
--		dev_warn(afe->dev, "mtk_afe_combine_sub_dai fail, ret %d\n",
--			 ret);
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(afe->dev, ret, "mtk_afe_combine_sub_dai fail\n");
- 
- 	/* others */
- 	afe->mtk_afe_hardware = &mt8192_afe_hardware;
-@@ -2320,19 +2303,15 @@ static int mt8192_afe_pcm_dev_probe(struct platform_device *pdev)
- 	/* register platform */
- 	ret = devm_snd_soc_register_component(&pdev->dev,
- 					      &mt8192_afe_component, NULL, 0);
--	if (ret) {
--		dev_warn(dev, "err_platform\n");
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Couldn't register AFE component\n");
- 
- 	ret = devm_snd_soc_register_component(&pdev->dev,
- 					      &mt8192_afe_pcm_component,
- 					      afe->dai_drivers,
- 					      afe->num_dai_drivers);
--	if (ret) {
--		dev_warn(dev, "err_dai_component\n");
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Couldn't register AFE-PCM component\n");
- 
- 	return 0;
- }
 -- 
 2.44.0
 
