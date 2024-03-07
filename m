@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AFE1C48BF6
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 11:47:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3571CC54E49
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 11:47:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tFSJwcz5k3psK6wQn9vHAxcjXrXfl1v982u8Lf3cp2U=; b=KIrjPYC7C188Pgt4APfuULdg+Z
-	pPft7UmlyWgSgEDgNBzkVNPHfkpxbWpb4qGBzlWQZhCv8BZ6gQHQ17hWjHODnIlykNn8SGBWIBxHE
-	BnniLuGA5fudfbQ0z6DbZ+R8xDJAtdfeJK/+NNegUZ4lUlyA+74xUHx/H+Pd4xxT3o7Qsk0b5ctkp
-	WUwsERGUMUAB9yF0rJyBb7KD9ByOR7dWXpQmCcrkNFLGJ84xLEK1bifrfRqYTjqzeO5PJgPkHSCRl
-	BXJGEg6Z4229p1RHGjN1qQ8pibhAMAVZai5/AYUqtxTkT6f+ey2tBhBtZkdvfD4ve1XmUL30hMHO/
-	5tCYiVUw==;
+	bh=5avw0bxbotM0m3N7FJG3wIsNtju2z+YF7knmyauJnvI=; b=kgS4ELnkbpsm5rdJ68AnjnnifG
+	efMI5y1t66YmU74aK/wWKq8lMPYDpxoiSizwn+AQiPW4bZd7wutT/UEyvq7WG+GeLOlLfddlEeLTo
+	gG//gPHUBe/JCnnCfzCDjq/H5JXuGBzGw80BzHrQdLQCDqMrrBhG/0jD/C6EL0FF/rDVRd3R8MqYd
+	VEioY2mHdBloHb99jANDWbpoFbcT0iOSLLkh8TVoGg2dD3J1E6/RSPLNkZ3l+za7cxx/WTB8+nsWx
+	FgwvfBciDLUT9NNghAlf1JEIyR4zKUvp+KmFYEJ6KwIPW6GoDROJTNpIHjpV6dfnNXzIBFS8EE8cy
+	CfgiQP3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riCDN-00000004P7T-3ghx;
-	Thu, 07 Mar 2024 11:47:09 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1riCDO-00000004P7y-2Hjh;
+	Thu, 07 Mar 2024 11:47:10 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riCBt-00000004O0j-15OJ;
-	Thu, 07 Mar 2024 11:45:51 +0000
+	id 1riCC8-00000004OCw-0ifG;
+	Thu, 07 Mar 2024 11:45:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=5avw0bxbotM0m3N7FJG3wIsNtju2z+YF7knmyauJnvI=; b=ksa9yE3Kz20TpympoSF5i7CLr/
+	ZgW/MEdxm+cuSja3CWmB/uaWXhq+K93qusm2NGWZjFruGShA7ZS91PmfgUPMNzxX2pV8mCjK4JMzE
+	PkE4tE6QKk5Iy5Baj5Bxj1b48n/Qf65kbfmSe2QOrZfnUhcl9KzZN8xT9yGt4R8Hf2BMQVZFiK/Ot
+	yJCNfAKebQ0rY9m50pkksu9X5tQI8cTUvZVCNWx8eHb22cdzmkXuaghkz9wpfRda1KSoaQDC2xVQ5
+	eGC6cDYCsxiHDhTlH/iFr8dwAqUggE+5oaF3q1P6WSa0sSpi9e32o190t0ZDh/wdYYWPoNROstK1v
+	hfT9P1TA==;
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1riCC3-00000006atV-057m;
+	Thu, 07 Mar 2024 11:45:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709811935;
-	bh=IBBs8wsWLVP6Y6LCDKxs6KnJVjZKYs0pi1oC6afZdDg=;
+	s=mail; t=1709811945;
+	bh=8bxWkdHWjuivwKz8TBybuK02NLszyCe4cZF3c/Vh6Zg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=VMLHOpi8HO3X1y/V0VmnYZCb1fHKBWd925C6HvZOlchCNfCFBPUlrK9FN1B/hv9C5
-	 GxkdIhiBS+PepU/wyAXGdpCHre5xzD8z75CFQn6gtLOiqDe8SfbDjVUFtwLJXp7rtq
-	 zrhiSAUiQ8EdBIyhB5MJNsz4D0YCzj1V1Cc56c7Bw6uh4FD5xlOwSXRx+tNOcdhLWh
-	 YN12PusIM0Z9Vdv2xZ6hMqWnjTQqGv7qCyNo0Clt/hnNwtg2B1dEN8wYp16e1aipHy
-	 NyM+RPicXgkitW4GvB4ZJLl9pIMlw+BnYpskGTUxOO5s/T2nA8hivl0ZcdnGqT53UZ
-	 5UOhwN3a/J+BQ==
+	b=KeT64IIEUmDtx6ONnrK70cAlu1NnYKqwBoVDZemg5fugfpHTO5lxbn3aaOd/IHMI/
+	 QIBd2Mp3tUQWpPsZ47yKYRRbd8tU2r1FaOiEDUNI1c/OIFZzZvRIsV4x/B0k01w8QS
+	 3WZu0WQdNHM5flp8LFloIgZMfJt0zcBqawOXVzIJ/2YqrlyIqWgN5JPRyeGUrhhQz8
+	 LNWx4t2ybOXZud75GNZaWxyhv2U4WIFf5LJmu2oDm8E7ESmio2Y6Bj9C2E5CUQDx/W
+	 zrfYNqBS9r5uVhawrolCsZjcLfQz9xPTJ9WPDNvRk9ji2Gu0A9G/CV9/F1RYC2Lgj7
+	 d2tKTVLMbzOqg==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id BE55737820F5;
-	Thu,  7 Mar 2024 11:45:33 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2E3E237820F9;
+	Thu,  7 Mar 2024 11:45:43 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: broonie@kernel.org
 Cc: wenst@chromium.org,
@@ -82,17 +96,17 @@ Cc: wenst@chromium.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 18/22] ASoC: dt-bindings: mt8195: Document audio-routing and dai-link subnode
-Date: Thu,  7 Mar 2024 12:44:41 +0100
-Message-ID: <20240307114445.196981-19-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 22/22] arm64: dts: mediatek: mt8186-corsola: Specify sound DAI links and routing
+Date: Thu,  7 Mar 2024 12:44:45 +0100
+Message-ID: <20240307114445.196981-23-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240307114445.196981-1-angelogioacchino.delregno@collabora.com>
 References: <20240307114445.196981-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240307_034537_721333_38786B4F 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20240307_114547_508224_C02D1F91 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,182 +121,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the dai-link subnodes and the audio-routing property, allowing
-to describe machine specific audio hardware and links in device tree.
-
-While at it, also deprecate the old properties which were previously
-used with driver hardcoded configuration.
+The drivers and bindings acquired support for specifying audio hardware
+and links in device tree: describe and link the sound related HW of this
+machine.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../bindings/sound/mt8195-mt6359.yaml         | 115 ++++++++++++++++++
- 1 file changed, 115 insertions(+)
+ .../boot/dts/mediatek/mt8186-corsola.dtsi     | 42 ++++++++++++++++---
+ 1 file changed, 37 insertions(+), 5 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8195-mt6359.yaml b/Documentation/devicetree/bindings/sound/mt8195-mt6359.yaml
-index c1ddbf672ca3..dfd6e61935ab 100644
---- a/Documentation/devicetree/bindings/sound/mt8195-mt6359.yaml
-+++ b/Documentation/devicetree/bindings/sound/mt8195-mt6359.yaml
-@@ -12,6 +12,9 @@ maintainers:
- description:
-   This binding describes the MT8195 sound card.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
+index 3dea28f1d806..0bdb83c3e560 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
+@@ -42,7 +42,7 @@ backlight_lcd0: backlight-lcd0 {
+ 		default-brightness-level = <576>;
+ 	};
  
-+allOf:
-+  - $ref: sound-card-common.yaml#
-+
- properties:
-   compatible:
-     enum:
-@@ -23,6 +26,14 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/string
-     description: User specified audio sound card name
+-	bt-sco-codec {
++	bt-sco {
+ 		compatible = "linux,bt-sco";
+ 		#sound-dai-cells = <0>;
+ 	};
+@@ -223,12 +223,44 @@ sound: sound {
+ 		mediatek,adsp = <&adsp>;
+ 		mediatek,platform = <&afe>;
  
-+  audio-routing:
-+    description:
-+      A list of the connections between audio components. Each entry is a
-+      pair of strings, the first being the connection's sink, the second
-+      being the connection's source.
-+      Valid names could be the input or output widgets of audio components,
-+      power supplies, MicBias of codec and the software switch.
+-		playback-codecs {
+-			sound-dai = <&it6505dptx>, <&rt1019p>;
++		audio-routing =
++			"Headphone", "HPOL",
++			"Headphone", "HPOR",
++			"IN1P", "Headset Mic",
++			"Speakers", "Speaker",
++			"HDMI1", "TX";
 +
-   mediatek,platform:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description: The phandle of MT8195 ASoC platform.
-@@ -30,10 +41,12 @@ properties:
-   mediatek,dptx-codec:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description: The phandle of MT8195 Display Port Tx codec node.
-+    deprecated: true
++		hs-playback-dai-link {
++			link-name = "I2S0";
++			dai-format = "i2s";
++			mediatek,clk-provider = "cpu";
++			codec {
++				sound-dai = <&rt5682s 0>;
++			};
++		};
++
++		hs-capture-dai-link {
++			link-name = "I2S1";
++			dai-format = "i2s";
++			mediatek,clk-provider = "cpu";
++			codec {
++				sound-dai = <&rt5682s 0>;
++			};
+ 		};
  
-   mediatek,hdmi-codec:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description: The phandle of MT8195 HDMI codec node.
-+    deprecated: true
+-		headset-codec {
+-			sound-dai = <&rt5682s 0>;
++		spk-share-dai-link {
++			link-name = "I2S2";
++			mediatek,clk-provider = "cpu";
++		};
++
++		spk-hdmi-playback-dai-link {
++			link-name = "I2S3";
++			dai-format = "i2s";
++			mediatek,clk-provider = "cpu";
++			/* RT1019P and IT6505 connected to the same I2S line */
++			codec {
++				sound-dai = <&it6505dptx>, <&rt1019p>;
++			};
+ 		};
+ 	};
  
-   mediatek,adsp:
-     $ref: /schemas/types.yaml#/definitions/phandle
-@@ -45,20 +58,122 @@ properties:
-       A list of the desired dai-links in the sound card. Each entry is a
-       name defined in the machine driver.
- 
-+patternProperties:
-+  ".*-dai-link$":
-+    type: object
-+    additionalProperties: false
-+    description:
-+      Container for dai-link level properties and CODEC sub-nodes.
-+
-+    properties:
-+      link-name:
-+        description: Indicates dai-link name and PCM stream name
-+        enum:
-+          - DPTX_BE
-+          - ETDM1_IN_BE
-+          - ETDM2_IN_BE
-+          - ETDM1_OUT_BE
-+          - ETDM2_OUT_BE
-+          - ETDM3_OUT_BE
-+          - PCM1_BE
-+
-+      codec:
-+        description: Holds subnode which indicates codec dai.
-+        type: object
-+        additionalProperties: false
-+        properties:
-+          sound-dai:
-+            minItems: 1
-+            maxItems: 2
-+        required:
-+          - sound-dai
-+
-+      dai-format:
-+        description: audio format
-+        enum: [ i2s, right_j, left_j, dsp_a, dsp_b ]
-+
-+      mediatek,clk-provider:
-+        $ref: /schemas/types.yaml#/definitions/string
-+        description: Indicates dai-link clock master.
-+        enum: [ cpu, codec ]
-+
-+    required:
-+      - link-name
-+
- additionalProperties: false
- 
- required:
-   - compatible
-   - mediatek,platform
- 
-+# Disallow legacy properties if xxx-dai-link nodes are specified
-+if:
-+  not:
-+    patternProperties:
-+      ".*-dai-link$": false
-+then:
-+  properties:
-+    mediatek,dptx-codec: false
-+    mediatek,hdmi-codec: false
-+
- examples:
-   - |
- 
-     sound: mt8195-sound {
-         compatible = "mediatek,mt8195_mt6359_rt1019_rt5682";
-+        model = "mt8195_r1019_5682";
-         mediatek,platform = <&afe>;
-         pinctrl-names = "default";
-         pinctrl-0 = <&aud_pins_default>;
-+
-+        audio-routing =
-+                "Headphone", "HPOL",
-+                "Headphone", "HPOR",
-+                "IN1P", "Headset Mic",
-+                "Ext Spk", "Speaker";
-+
-+        mm-dai-link {
-+                link-name = "ETDM1_IN_BE";
-+                mediatek,clk-provider = "cpu";
-+        };
-+
-+        hs-playback-dai-link {
-+                link-name = "ETDM1_OUT_BE";
-+                mediatek,clk-provider = "cpu";
-+                codec {
-+                        sound-dai = <&headset_codec>;
-+                };
-+        };
-+
-+        hs-capture-dai-link {
-+                link-name = "ETDM2_IN_BE";
-+                mediatek,clk-provider = "cpu";
-+                codec {
-+                        sound-dai = <&headset_codec>;
-+                };
-+        };
-+
-+        spk-playback-dai-link {
-+                link-name = "ETDM2_OUT_BE";
-+                mediatek,clk-provider = "cpu";
-+                codec {
-+                        sound-dai = <&spk_amplifier>;
-+                };
-+        };
-+
-+        hdmi-dai-link {
-+                link-name = "ETDM3_OUT_BE";
-+                codec {
-+                        sound-dai = <&hdmi_tx>;
-+                };
-+        };
-+
-+        displayport-dai-link {
-+                link-name = "DPTX_BE";
-+                codec {
-+                        sound-dai = <&dp_tx>;
-+                };
-+        };
-     };
- 
- ...
 -- 
 2.44.0
 
