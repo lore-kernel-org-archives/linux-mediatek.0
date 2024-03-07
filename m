@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C043DC54798
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 12:51:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88A99C54E4A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 12:51:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MT2oJ70XS2TzXqU6VSiIBTYwy8nZ7xTtQbsYtwXrI64=; b=fUhm5MZba/NWyUeX8BqD5PWaio
-	Dh+/pVCOpVZ96Pk4LP0/QfcEUw+gVDtWJRcLOfrYhK+0q1w4sU5sOt3/IehoxOKi+O1+4SntW934o
-	gUkphp66+YGiQgVU75SvLWzDkhsUe0GV1Cf/1E3Y5cp2YnoirW6axk33Tx6zbdqk2H9pbg3T0QQ+Y
-	nVcBLVMIFwIDydEsfTB5qUED3sm+6nO91Vhe7v+X7VmAocMa3iWDe78LRkgyRr2Zee/LaQ8CKxCjW
-	hRL2XQ/wNmEM3K0WO+63KN37IhBxDUOZ9Q/wbJpGNjM5l/otbI5e8u3yq42kSmzZzlonYCjKRMOsW
-	SLVAWTIg==;
+	bh=BAo8/1oxu6s9wH4/etuK70Xx17uNN5ftCLQdXl8l3Fw=; b=EoGln675Xjgf1sLaiY97r4vdw3
+	2qI2PVAw2HW3GEDRUFjPH2RC9lu1kyh7Da7tj+xxxmZGk2tM1n3e2gBaPWGDEkm2LsPkt5+Cdz2wC
+	N83xAGIZQn4gyjPAKD83YlMcec1MTr7/vJ+Bu1yI08H1g1fp/ymsBMlqZE1tw5JG2+QohPoEWab3I
+	IgFgyDow9TMCZaeIeiwYzKGOuPEL0YejOtYJCSjFIfhlSCdwjReoAbFeeYQDxYXbmBZEni18jtlxi
+	Yeb84Edjih4HrZxljlLSLTeDr+mb9IiL4VVM/WBz9J80miAjcZhQq09pEKpvikXceAXwkAfw/M6yj
+	u2vhGVyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riDDm-00000004d4D-1tKH;
-	Thu, 07 Mar 2024 12:51:38 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1riDDn-00000004d4v-0g5z;
+	Thu, 07 Mar 2024 12:51:39 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riCBf-00000004NpE-0YxO;
-	Thu, 07 Mar 2024 11:45:39 +0000
+	id 1riCBo-00000004Nwk-2gX9;
+	Thu, 07 Mar 2024 11:45:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709811921;
-	bh=J1cLn1ZkiMj/nqWHv8FW9Fb4kGxB9xQ83ourhgps8rk=;
+	s=mail; t=1709811931;
+	bh=0HO5qRG7yEUzOGGRdhqoIYa/lL7AlbvV2yD89QdBpT4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=MAdMVrtcTCXx5wsZ1ME4xkowWo4ETERQJsy8xRxSRpuiMrezj8MrLK1G6NQ0PyfZC
-	 mHK1M/qy26a+SH1ryw9pV3rv0tFWarzYSwWKYpk/2Injc4Kdwq09rPArxhMjmYuaIO
-	 3JNktiklm+OiNiH9/7TWujHNnWuZp+cadeWcOoEIMS9qzL956bdOw8gYPDaLswVi9G
-	 FK5SE0KnOyiCBesxQxmugTjkQR+x//L4q+3I7Vt466RoEicGpbeyiABQ1DL0u8kRf6
-	 B1aauKxUPZDw4tWg12CKakFxyxGECs8un91tqHa/BsCilGHLNqibvRehJpT/wCDdvN
-	 8ly46UEJaYdTg==
+	b=4gngkFCSp3dWi3eGOjoyRHhDjdsZ8P8up9R39kORvgFn2O07thu5/BAx09CZo9Stk
+	 K7qMsAkXXNkBpjMYvbjVBYxR+VlasRqeXlgz6gPo9BlCuPS9XQdEN+GNXUQmx3lq0q
+	 7oSqIunhZybPgpDlSaJm/h+ZVsFEZUpMHifMMpeKqdtEpuE/u3ELdHlUul6flVhLon
+	 Vog7qm6vCmjdFAAfnWh2nbLMAxqRxRdhlrspdD+Sevf8A1Pmu15XwSeNCnhaFzj3yI
+	 Cj6VcMhqSZYGlD6sL6HTKHCDIMhFJRSoYMakafjTXlmunz/J73aKuLVqrpoa66a6N8
+	 mbPts1L/JHRyw==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7706D37820BB;
-	Thu,  7 Mar 2024 11:45:19 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 069FF37820F3;
+	Thu,  7 Mar 2024 11:45:28 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: broonie@kernel.org
 Cc: wenst@chromium.org,
@@ -82,17 +82,17 @@ Cc: wenst@chromium.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 12/22] ASoC: mediatek: mt8195: Migrate to the common mtk_soundcard_startup
-Date: Thu,  7 Mar 2024 12:44:35 +0100
-Message-ID: <20240307114445.196981-13-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 16/22] ASoC: mediatek: Use common mtk_afe_pcm_platform with common probe cb
+Date: Thu,  7 Mar 2024 12:44:39 +0100
+Message-ID: <20240307114445.196981-17-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240307114445.196981-1-angelogioacchino.delregno@collabora.com>
 References: <20240307114445.196981-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240307_034523_845929_B6EAA55B 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20240307_034533_106233_05DEC873 
+X-CRM114-Status: GOOD (  13.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,341 +107,245 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a const mtk_pcm_constraints_data struct array with all of the
-(again, constant) constraints for all of the supported usecases,
-remove the duplicated functions and call mtk_soundcard_startup()
-instead in all of the .startup() callbacks.
+Since the mtk-afe-platform-driver generic mtk_afe_pcm_platform now has
+a common .probe() callback, there is no reason to keep duplicating this
+function over and over in the SoC specific AFE-PCM drivers: switch over
+to register with the common bits instead.
+
+Note that MT8186 was left out of this because it is registering some
+extra sinegen controls in the AFE-PCM probe callback and needs extra
+cleanups to be able to use the common bits.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- sound/soc/mediatek/mt8195/mt8195-mt6359.c | 195 ++++++----------------
- 1 file changed, 53 insertions(+), 142 deletions(-)
+ sound/soc/mediatek/mt6797/mt6797-afe-pcm.c | 14 +-----------
+ sound/soc/mediatek/mt7986/mt7986-afe-pcm.c | 14 +-----------
+ sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 14 +-----------
+ sound/soc/mediatek/mt8188/mt8188-afe-pcm.c | 21 +-----------------
+ sound/soc/mediatek/mt8192/mt8192-afe-pcm.c | 25 ++--------------------
+ sound/soc/mediatek/mt8195/mt8195-afe-pcm.c | 21 +-----------------
+ 6 files changed, 7 insertions(+), 102 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359.c b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-index f694618e7635..d143ce3406fe 100644
---- a/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-@@ -328,44 +328,7 @@ static int mt8195_mt6359_init(struct snd_soc_pcm_runtime *rtd)
- 
- static int mt8195_hdmitx_dptx_startup(struct snd_pcm_substream *substream)
- {
--	static const unsigned int rates[] = {
--		48000
--	};
--	static const unsigned int channels[] = {
--		2, 4, 6, 8
--	};
--	static const struct snd_pcm_hw_constraint_list constraints_rates = {
--		.count = ARRAY_SIZE(rates),
--		.list  = rates,
--		.mask = 0,
--	};
--	static const struct snd_pcm_hw_constraint_list constraints_channels = {
--		.count = ARRAY_SIZE(channels),
--		.list  = channels,
--		.mask = 0,
--	};
--
--	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
--	struct snd_pcm_runtime *runtime = substream->runtime;
--	int ret;
--
--	ret = snd_pcm_hw_constraint_list(runtime, 0,
--					 SNDRV_PCM_HW_PARAM_RATE,
--					 &constraints_rates);
--	if (ret < 0) {
--		dev_err(rtd->dev, "hw_constraint_list rate failed\n");
--		return ret;
--	}
--
--	ret = snd_pcm_hw_constraint_list(runtime, 0,
--					 SNDRV_PCM_HW_PARAM_CHANNELS,
--					 &constraints_channels);
--	if (ret < 0) {
--		dev_err(rtd->dev, "hw_constraint_list channel failed\n");
--		return ret;
--	}
--
--	return 0;
-+	return mtk_soundcard_startup(substream, MTK_CONSTRAINT_HDMIDP);
- }
- 
- static const struct snd_soc_ops mt8195_hdmitx_dptx_playback_ops = {
-@@ -428,98 +391,6 @@ static int mt8195_dptx_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
+diff --git a/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c b/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
+index da7267c684b1..c1dee119e93a 100644
+--- a/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
++++ b/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
+@@ -704,18 +704,6 @@ static int mt6797_afe_runtime_resume(struct device *dev)
  	return 0;
  }
  
--static int mt8195_playback_startup(struct snd_pcm_substream *substream)
+-static int mt6797_afe_component_probe(struct snd_soc_component *component)
 -{
--	static const unsigned int rates[] = {
--		48000
--	};
--	static const unsigned int channels[] = {
--		2
--	};
--	static const struct snd_pcm_hw_constraint_list constraints_rates = {
--		.count = ARRAY_SIZE(rates),
--		.list  = rates,
--		.mask = 0,
--	};
--	static const struct snd_pcm_hw_constraint_list constraints_channels = {
--		.count = ARRAY_SIZE(channels),
--		.list  = channels,
--		.mask = 0,
--	};
--
--	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
--	struct snd_pcm_runtime *runtime = substream->runtime;
--	int ret;
--
--	ret = snd_pcm_hw_constraint_list(runtime, 0,
--					 SNDRV_PCM_HW_PARAM_RATE,
--					 &constraints_rates);
--	if (ret < 0) {
--		dev_err(rtd->dev, "hw_constraint_list rate failed\n");
--		return ret;
--	}
--
--	ret = snd_pcm_hw_constraint_list(runtime, 0,
--					 SNDRV_PCM_HW_PARAM_CHANNELS,
--					 &constraints_channels);
--	if (ret < 0) {
--		dev_err(rtd->dev, "hw_constraint_list channel failed\n");
--		return ret;
--	}
--
--	return 0;
+-	return mtk_afe_add_sub_dai_control(component);
 -}
 -
--static const struct snd_soc_ops mt8195_playback_ops = {
--	.startup = mt8195_playback_startup,
+-static const struct snd_soc_component_driver mt6797_afe_component = {
+-	.name		= AFE_PCM_NAME,
+-	.probe		= mt6797_afe_component_probe,
+-	.pointer	= mtk_afe_pcm_pointer,
+-	.pcm_construct	= mtk_afe_pcm_new,
 -};
 -
--static int mt8195_capture_startup(struct snd_pcm_substream *substream)
--{
--	static const unsigned int rates[] = {
--		48000
--	};
--	static const unsigned int channels[] = {
--		1, 2
--	};
--	static const struct snd_pcm_hw_constraint_list constraints_rates = {
--		.count = ARRAY_SIZE(rates),
--		.list  = rates,
--		.mask = 0,
--	};
--	static const struct snd_pcm_hw_constraint_list constraints_channels = {
--		.count = ARRAY_SIZE(channels),
--		.list  = channels,
--		.mask = 0,
--	};
--
--	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
--	struct snd_pcm_runtime *runtime = substream->runtime;
--	int ret;
--
--	ret = snd_pcm_hw_constraint_list(runtime, 0,
--					 SNDRV_PCM_HW_PARAM_RATE,
--					 &constraints_rates);
--	if (ret < 0) {
--		dev_err(rtd->dev, "hw_constraint_list rate failed\n");
--		return ret;
--	}
--
--	ret = snd_pcm_hw_constraint_list(runtime, 0,
--					 SNDRV_PCM_HW_PARAM_CHANNELS,
--					 &constraints_channels);
--	if (ret < 0) {
--		dev_err(rtd->dev, "hw_constraint_list channel failed\n");
--		return ret;
--	}
--
--	return 0;
--}
--
--static const struct snd_soc_ops mt8195_capture_ops = {
--	.startup = mt8195_capture_startup,
--};
--
- static int mt8195_rt5682_etdm_hw_params(struct snd_pcm_substream *substream,
- 					struct snd_pcm_hw_params *params)
+ static int mt6797_dai_memif_register(struct mtk_base_afe *afe)
  {
-@@ -1042,7 +913,7 @@ static struct snd_soc_dai_link mt8195_mt6359_dai_links[] = {
- 		},
- 		.dynamic = 1,
- 		.dpcm_playback = 1,
--		.ops = &mt8195_playback_ops,
-+		.ops = &mtk_soundcard_common_playback_ops,
- 		SND_SOC_DAILINK_REG(DL2_FE),
- 	},
- 	[DAI_LINK_DL3_FE] = {
-@@ -1054,7 +925,7 @@ static struct snd_soc_dai_link mt8195_mt6359_dai_links[] = {
- 		},
- 		.dynamic = 1,
- 		.dpcm_playback = 1,
--		.ops = &mt8195_playback_ops,
-+		.ops = &mtk_soundcard_common_playback_ops,
- 		SND_SOC_DAILINK_REG(DL3_FE),
- 	},
- 	[DAI_LINK_DL6_FE] = {
-@@ -1066,7 +937,7 @@ static struct snd_soc_dai_link mt8195_mt6359_dai_links[] = {
- 		},
- 		.dynamic = 1,
- 		.dpcm_playback = 1,
--		.ops = &mt8195_playback_ops,
-+		.ops = &mtk_soundcard_common_playback_ops,
- 		SND_SOC_DAILINK_REG(DL6_FE),
- 	},
- 	[DAI_LINK_DL7_FE] = {
-@@ -1089,7 +960,7 @@ static struct snd_soc_dai_link mt8195_mt6359_dai_links[] = {
- 		},
- 		.dynamic = 1,
- 		.dpcm_playback = 1,
--		.ops = &mt8195_playback_ops,
-+		.ops = &mtk_soundcard_common_playback_ops,
- 		SND_SOC_DAILINK_REG(DL8_FE),
- 	},
- 	[DAI_LINK_DL10_FE] = {
-@@ -1113,7 +984,7 @@ static struct snd_soc_dai_link mt8195_mt6359_dai_links[] = {
- 		},
- 		.dynamic = 1,
- 		.dpcm_playback = 1,
--		.ops = &mt8195_playback_ops,
-+		.ops = &mtk_soundcard_common_playback_ops,
- 		SND_SOC_DAILINK_REG(DL11_FE),
- 	},
- 	[DAI_LINK_UL1_FE] = {
-@@ -1136,7 +1007,7 @@ static struct snd_soc_dai_link mt8195_mt6359_dai_links[] = {
- 		},
- 		.dynamic = 1,
- 		.dpcm_capture = 1,
--		.ops = &mt8195_capture_ops,
-+		.ops = &mtk_soundcard_common_capture_ops,
- 		SND_SOC_DAILINK_REG(UL2_FE),
- 	},
- 	[DAI_LINK_UL3_FE] = {
-@@ -1148,7 +1019,7 @@ static struct snd_soc_dai_link mt8195_mt6359_dai_links[] = {
- 		},
- 		.dynamic = 1,
- 		.dpcm_capture = 1,
--		.ops = &mt8195_capture_ops,
-+		.ops = &mtk_soundcard_common_capture_ops,
- 		SND_SOC_DAILINK_REG(UL3_FE),
- 	},
- 	[DAI_LINK_UL4_FE] = {
-@@ -1160,7 +1031,7 @@ static struct snd_soc_dai_link mt8195_mt6359_dai_links[] = {
- 		},
- 		.dynamic = 1,
- 		.dpcm_capture = 1,
--		.ops = &mt8195_capture_ops,
-+		.ops = &mtk_soundcard_common_capture_ops,
- 		SND_SOC_DAILINK_REG(UL4_FE),
- 	},
- 	[DAI_LINK_UL5_FE] = {
-@@ -1172,7 +1043,7 @@ static struct snd_soc_dai_link mt8195_mt6359_dai_links[] = {
- 		},
- 		.dynamic = 1,
- 		.dpcm_capture = 1,
--		.ops = &mt8195_capture_ops,
-+		.ops = &mtk_soundcard_common_capture_ops,
- 		SND_SOC_DAILINK_REG(UL5_FE),
- 	},
- 	[DAI_LINK_UL6_FE] = {
-@@ -1195,7 +1066,7 @@ static struct snd_soc_dai_link mt8195_mt6359_dai_links[] = {
- 		},
- 		.dynamic = 1,
- 		.dpcm_capture = 1,
--		.ops = &mt8195_capture_ops,
-+		.ops = &mtk_soundcard_common_capture_ops,
- 		SND_SOC_DAILINK_REG(UL8_FE),
- 	},
- 	[DAI_LINK_UL9_FE] = {
-@@ -1207,7 +1078,7 @@ static struct snd_soc_dai_link mt8195_mt6359_dai_links[] = {
- 		},
- 		.dynamic = 1,
- 		.dpcm_capture = 1,
--		.ops = &mt8195_capture_ops,
-+		.ops = &mtk_soundcard_common_capture_ops,
- 		SND_SOC_DAILINK_REG(UL9_FE),
- 	},
- 	[DAI_LINK_UL10_FE] = {
-@@ -1219,7 +1090,7 @@ static struct snd_soc_dai_link mt8195_mt6359_dai_links[] = {
- 		},
- 		.dynamic = 1,
- 		.dpcm_capture = 1,
--		.ops = &mt8195_capture_ops,
-+		.ops = &mtk_soundcard_common_capture_ops,
- 		SND_SOC_DAILINK_REG(UL10_FE),
- 	},
- 	/* BE */
-@@ -1561,6 +1432,40 @@ static int mt8195_mt6359_soc_card_probe(struct mtk_soc_card_data *soc_card_data,
+ 	struct mtk_base_afe_dai *dai;
+@@ -852,7 +840,7 @@ static int mt6797_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	pm_runtime_get_sync(&pdev->dev);
+ 
+ 	/* register component */
+-	ret = devm_snd_soc_register_component(dev, &mt6797_afe_component,
++	ret = devm_snd_soc_register_component(dev, &mtk_afe_pcm_platform,
+ 					      NULL, 0);
+ 	if (ret) {
+ 		dev_warn(dev, "err_platform\n");
+diff --git a/sound/soc/mediatek/mt7986/mt7986-afe-pcm.c b/sound/soc/mediatek/mt7986/mt7986-afe-pcm.c
+index d497e1129889..c1c486e275b9 100644
+--- a/sound/soc/mediatek/mt7986/mt7986-afe-pcm.c
++++ b/sound/soc/mediatek/mt7986/mt7986-afe-pcm.c
+@@ -429,18 +429,6 @@ static int mt7986_afe_runtime_resume(struct device *dev)
  	return 0;
  }
  
-+static const unsigned int mt8195_pcm_playback_channels[] = { 2 };
-+static const unsigned int mt8195_pcm_capture_channels[] = { 1, 2 };
-+static const unsigned int mt8195_pcm_hdmidp_channels[] = { 2, 4, 6, 8 };
-+static const unsigned int mt8195_pcm_rates[] = { 48000 };
-+
-+static const struct snd_pcm_hw_constraint_list mt8195_rate_constraint = {
-+	.list = mt8195_pcm_rates,
-+	.count = ARRAY_SIZE(mt8195_pcm_rates)
-+};
-+
-+static const struct mtk_pcm_constraints_data mt8195_pcm_constraints[MTK_CONSTRAINT_HDMIDP + 1] = {
-+	[MTK_CONSTRAINT_PLAYBACK] = {
-+		.channels = {
-+			.list = mt8195_pcm_playback_channels,
-+			.count = ARRAY_SIZE(mt8195_pcm_playback_channels)
-+		},
-+		.rates = mt8195_rate_constraint,
-+	},
-+	[MTK_CONSTRAINT_CAPTURE] = {
-+		.channels = {
-+			.list = mt8195_pcm_capture_channels,
-+			.count = ARRAY_SIZE(mt8195_pcm_capture_channels)
-+		},
-+		.rates = mt8195_rate_constraint,
-+	},
-+	[MTK_CONSTRAINT_HDMIDP] = {
-+		.channels = {
-+			.list = mt8195_pcm_hdmidp_channels,
-+			.count = ARRAY_SIZE(mt8195_pcm_hdmidp_channels)
-+		},
-+		.rates = mt8195_rate_constraint,
-+	},
-+};
-+
- static const struct mtk_sof_priv mt8195_sof_priv = {
- 	.conn_streams = g_sof_conn_streams,
- 	.num_streams = ARRAY_SIZE(g_sof_conn_streams),
-@@ -1572,6 +1477,8 @@ static const struct mtk_soundcard_pdata mt8195_mt6359_rt1019_rt5682_card = {
- 	.card_data = &(struct mtk_platform_card_data) {
- 		.card = &mt8195_mt6359_soc_card,
- 		.num_jacks = MT8195_JACK_MAX,
-+		.pcm_constraints = mt8195_pcm_constraints,
-+		.num_pcm_constraints = ARRAY_SIZE(mt8195_pcm_constraints),
- 		.flags = RT1019_SPEAKER_AMP_PRESENT
- 	},
- 	.sof_priv = &mt8195_sof_priv,
-@@ -1583,6 +1490,8 @@ static const struct mtk_soundcard_pdata mt8195_mt6359_rt1011_rt5682_card = {
- 	.card_data = &(struct mtk_platform_card_data) {
- 		.card = &mt8195_mt6359_soc_card,
- 		.num_jacks = MT8195_JACK_MAX,
-+		.pcm_constraints = mt8195_pcm_constraints,
-+		.num_pcm_constraints = ARRAY_SIZE(mt8195_pcm_constraints),
- 		.flags = RT1011_SPEAKER_AMP_PRESENT
- 	},
- 	.sof_priv = &mt8195_sof_priv,
-@@ -1594,6 +1503,8 @@ static const struct mtk_soundcard_pdata mt8195_mt6359_max98390_rt5682_card = {
- 	.card_data = &(struct mtk_platform_card_data) {
- 		.card = &mt8195_mt6359_soc_card,
- 		.num_jacks = MT8195_JACK_MAX,
-+		.pcm_constraints = mt8195_pcm_constraints,
-+		.num_pcm_constraints = ARRAY_SIZE(mt8195_pcm_constraints),
- 		.flags = MAX98390_SPEAKER_AMP_PRESENT
- 	},
- 	.sof_priv = &mt8195_sof_priv,
+-static int mt7986_afe_component_probe(struct snd_soc_component *component)
+-{
+-	return mtk_afe_add_sub_dai_control(component);
+-}
+-
+-static const struct snd_soc_component_driver mt7986_afe_component = {
+-	.name = AFE_PCM_NAME,
+-	.probe = mt7986_afe_component_probe,
+-	.pointer	= mtk_afe_pcm_pointer,
+-	.pcm_construct	= mtk_afe_pcm_new,
+-};
+-
+ static int mt7986_dai_memif_register(struct mtk_base_afe *afe)
+ {
+ 	struct mtk_base_afe_dai *dai;
+@@ -573,7 +561,7 @@ static int mt7986_afe_pcm_dev_probe(struct platform_device *pdev)
+ 
+ 	/* register component */
+ 	ret = devm_snd_soc_register_component(&pdev->dev,
+-					      &mt7986_afe_component,
++					      &mtk_afe_pcm_platform,
+ 					      NULL, 0);
+ 	if (ret)
+ 		return dev_err_probe(dev, ret, "Cannot register AFE component\n");
+diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+index 9e432ed9124b..25348fdf75fa 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
++++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+@@ -1042,18 +1042,6 @@ static int mt8183_afe_runtime_resume(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int mt8183_afe_component_probe(struct snd_soc_component *component)
+-{
+-	return mtk_afe_add_sub_dai_control(component);
+-}
+-
+-static const struct snd_soc_component_driver mt8183_afe_component = {
+-	.name		= AFE_PCM_NAME,
+-	.probe		= mt8183_afe_component_probe,
+-	.pointer	= mtk_afe_pcm_pointer,
+-	.pcm_construct	= mtk_afe_pcm_new,
+-};
+-
+ static int mt8183_dai_memif_register(struct mtk_base_afe *afe)
+ {
+ 	struct mtk_base_afe_dai *dai;
+@@ -1232,7 +1220,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
+ 
+ 	/* register component */
+ 	ret = devm_snd_soc_register_component(&pdev->dev,
+-					      &mt8183_afe_component,
++					      &mtk_afe_pcm_platform,
+ 					      NULL, 0);
+ 	if (ret) {
+ 		dev_warn(dev, "err_platform\n");
+diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+index 46d6a5540403..9647fe133dc8 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
++++ b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+@@ -3030,25 +3030,6 @@ static int mt8188_afe_runtime_resume(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int mt8188_afe_component_probe(struct snd_soc_component *component)
+-{
+-	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
+-	int ret;
+-
+-	snd_soc_component_init_regmap(component, afe->regmap);
+-
+-	ret = mtk_afe_add_sub_dai_control(component);
+-
+-	return ret;
+-}
+-
+-static const struct snd_soc_component_driver mt8188_afe_component = {
+-	.name = AFE_PCM_NAME,
+-	.pointer       = mtk_afe_pcm_pointer,
+-	.pcm_construct = mtk_afe_pcm_new,
+-	.probe         = mt8188_afe_component_probe,
+-};
+-
+ static int init_memif_priv_data(struct mtk_base_afe *afe)
+ {
+ 	struct mt8188_afe_private *afe_priv = afe->platform_priv;
+@@ -3350,7 +3331,7 @@ static int mt8188_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	/* register component */
+-	ret = devm_snd_soc_register_component(dev, &mt8188_afe_component,
++	ret = devm_snd_soc_register_component(dev, &mtk_afe_pcm_platform,
+ 					      afe->dai_drivers, afe->num_dai_drivers);
+ 	if (ret) {
+ 		dev_warn(dev, "err_platform\n");
+diff --git a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c b/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
+index aed22baef9fb..424c5c68f78a 100644
+--- a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
++++ b/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
+@@ -2125,22 +2125,6 @@ static int mt8192_afe_runtime_resume(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int mt8192_afe_component_probe(struct snd_soc_component *component)
+-{
+-	return mtk_afe_add_sub_dai_control(component);
+-}
+-
+-static const struct snd_soc_component_driver mt8192_afe_component = {
+-	.name = AFE_PCM_NAME,
+-	.probe = mt8192_afe_component_probe,
+-	.pointer = mtk_afe_pcm_pointer,
+-	.pcm_construct = mtk_afe_pcm_new,
+-};
+-
+-static const struct snd_soc_component_driver mt8192_afe_pcm_component = {
+-	.name = "mt8192-afe-pcm-dai",
+-};
+-
+ static int mt8192_dai_memif_register(struct mtk_base_afe *afe)
+ {
+ 	struct mtk_base_afe_dai *dai;
+@@ -2302,16 +2286,11 @@ static int mt8192_afe_pcm_dev_probe(struct platform_device *pdev)
+ 
+ 	/* register platform */
+ 	ret = devm_snd_soc_register_component(&pdev->dev,
+-					      &mt8192_afe_component, NULL, 0);
+-	if (ret)
+-		return dev_err_probe(dev, ret, "Couldn't register AFE component\n");
+-
+-	ret = devm_snd_soc_register_component(&pdev->dev,
+-					      &mt8192_afe_pcm_component,
++					      &mtk_afe_pcm_platform,
+ 					      afe->dai_drivers,
+ 					      afe->num_dai_drivers);
+ 	if (ret)
+-		return dev_err_probe(dev, ret, "Couldn't register AFE-PCM component\n");
++		return dev_err_probe(dev, ret, "Couldn't register AFE component\n");
+ 
+ 	return 0;
+ }
+diff --git a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
+index 620d7ade1992..64af9bf363fd 100644
+--- a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
++++ b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
+@@ -2944,25 +2944,6 @@ static int mt8195_afe_runtime_resume(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int mt8195_afe_component_probe(struct snd_soc_component *component)
+-{
+-	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
+-	int ret = 0;
+-
+-	snd_soc_component_init_regmap(component, afe->regmap);
+-
+-	ret = mtk_afe_add_sub_dai_control(component);
+-
+-	return ret;
+-}
+-
+-static const struct snd_soc_component_driver mt8195_afe_component = {
+-	.name = AFE_PCM_NAME,
+-	.pointer = mtk_afe_pcm_pointer,
+-	.pcm_construct = mtk_afe_pcm_new,
+-	.probe = mt8195_afe_component_probe,
+-};
+-
+ static int init_memif_priv_data(struct mtk_base_afe *afe)
+ {
+ 	struct mt8195_afe_private *afe_priv = afe->platform_priv;
+@@ -3164,7 +3145,7 @@ static int mt8195_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	/* register component */
+-	ret = devm_snd_soc_register_component(dev, &mt8195_afe_component,
++	ret = devm_snd_soc_register_component(dev, &mtk_afe_pcm_platform,
+ 					      afe->dai_drivers, afe->num_dai_drivers);
+ 	if (ret) {
+ 		dev_warn(dev, "err_platform\n");
 -- 
 2.44.0
 
