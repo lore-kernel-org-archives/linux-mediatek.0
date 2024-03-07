@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 902CAC5475B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADE86C54E4A
 	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 01:35:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,42 +12,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RYqqPtBkvbJiWQfMZfCGLp/muLNA09FqpLZb1hc35bA=; b=3tIIHT8NhxrtihwyKrb9O79lnu
-	uzpmq99wmo1p/r1YKbvinZii04TxeGq96AnKotkT/ZUotBqj0MyW3YI4KKeDBWKtor2SBmB0yoKQ1
-	My9IWBs8tXBPLc0a8v35wfP8KQyfIsEIp7Uo/LQaFJV/F34kX38FR0P7vsc73akW7xWnt36QWCl+p
-	OEWOE2QNDmYyZriO8nPQ8CVcX+y2o5/aVts91oriO898s1h2xKfdK1SXqY5UyvrV/fTMomb54FfZi
-	EMKoQv32XFR9ky1fthF0uuyHUQBP3l6oztXqHtJMjAVmmeueEKllaJ4o2gCkar23OoNZaVTCja02G
-	DyC7Iqyw==;
+	bh=iVlDUuKVmuA7JnvVmCn0d4WsSJI5tUjOae/sjyXi08c=; b=iV64zHplhS89P7zJ92eQ+846oQ
+	z+hhDaYBV7W5zY3z3zT4nRhMroTn7FfyCDsiWViFwY7Z5RI+3QdM9xxPGGGPx6Ykl7cwB9UtsXAvK
+	GBGj5ltznNp09Y9Gto4fPXmNlSAI5UNMt0fQCwoF+DUZLfRHdcm5B/7LAhvSKBQCgyYG44deFpeYd
+	YHBO7kO/Tc5smrvabCDFQrA9KBnVi+QYl2HC2Tf4WrvZdddKvx1mVJmxII406TgNRFXuHliUSrxW+
+	gw8RjEAQ8Qcys2hW5ye9a9gOyE24ueXLHIObP6w5Pk2HaZK5gdTuNs6mvViRlsXnhF21hem9GIKl7
+	U1gIb4+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ri2fE-00000002XOZ-1Pyu;
-	Thu, 07 Mar 2024 01:35:16 +0000
+	id 1ri2fC-00000002XNW-3Mj5;
+	Thu, 07 Mar 2024 01:35:14 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ri2f9-00000002XJz-0Wqu;
+	id 1ri2f8-00000002XKV-3LPq;
 	Thu, 07 Mar 2024 01:35:13 +0000
-X-UUID: ec0912b8dc2211eea8a22560583bddef-20240306
+X-UUID: eb5febe8dc2211eea8a22560583bddef-20240306
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RYqqPtBkvbJiWQfMZfCGLp/muLNA09FqpLZb1hc35bA=;
-	b=DMfWKxIarVDWAxlENUELc0nIYLFXRtyOtzjWz23Ybo6aYfkmg8QHtqDTJ5UbTAtID2h4oeVp762s2S55mY6vOPPsqfqeQiny7du6yMQrp8C4unvL5mevm3MmpdqyCK46ozu6/Sq4O8IbALQYw9ShHT33zAI2FsQSMNDJ3S3huLs=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=iVlDUuKVmuA7JnvVmCn0d4WsSJI5tUjOae/sjyXi08c=;
+	b=QuW23RSoYuSmsY3VKcJ+n15ExFsEOn4Lh6WVA5CtMPEv0z8lk79MYcvakJWIBE4B8bUqL/IKlRLo37xcLGTi7TecdcB3BiGRsTG1wyAhQpaaphZOdZuxa9vbaopqYOY4BQXK7Qm0nIX3KmUErUx1ydkCcnwhao4TGky3NaLChTM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:30af0125-7483-48cd-9c52-aaa440e39876,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:3c491b90-e2c0-40b0-a8fe-7c7e47299109,B
+X-CID-O-INFO: VERSION:1.1.37,REQID:73086e8c-89a9-4593-aa82-ca009ae799b4,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:6f543d0,CLOUDID:8f7bb484-8d4f-477b-89d2-1e3bdbef96d1,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: ec0912b8dc2211eea8a22560583bddef-20240306
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+X-UUID: eb5febe8dc2211eea8a22560583bddef-20240306
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2055807031; Wed, 06 Mar 2024 18:35:04 -0700
+	with ESMTP id 761717181; Wed, 06 Mar 2024 18:35:03 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Thu, 7 Mar 2024 09:35:00 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -58,36 +58,24 @@ To: Jassi Brar <jassisinghbrar@gmail.com>, Chun-Kuang Hu
 	<chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Jason-ch Chen <jason-ch.chen@mediatek.com>, "Jason-JH . Lin"
-	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, "Nancy
- Lin" <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>,
+	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Nancy
+ Lin <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2 4/4] soc: mediatek: mtk-cmdq: Add cmdq_pkt_acquire_event() function
-Date: Thu, 7 Mar 2024 09:34:58 +0800
-Message-ID: <20240307013458.23550-5-jason-jh.lin@mediatek.com>
+Subject: [PATCH v2 1/4] soc: mediatek: mtk-cmdq: Add specific purpose register definitions for GCE
+Date: Thu, 7 Mar 2024 09:34:55 +0800
+Message-ID: <20240307013458.23550-2-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240307013458.23550-1-jason-jh.lin@mediatek.com>
 References: <20240307013458.23550-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.190000-8.000000
-X-TMASE-MatchedRID: tjEGPsGKY1JYXTxImR5ZvLmIzqGFh/g8Xru95hSuhjQGW3hFnC9N1ayR
-	DZpBnTnXX7ScFOAZsbSZymPU+pWEZyZ/E6AE4WkioS0guoV6SZcIYICTzfK2geOxOq7LQlGLEXF
-	HklABLo7T01A2vEikVhDmbwdZ+OOfn/UkTj3EvcbhuXUWQoMQty6GDroi1vrlwDR44lliPu0bSl
-	ebxhFF4jSbvF4uwAVxd6AheSID9qkfE8yM4pjsDwtuKBGekqUpnH7sbImOEBSxQ8vJIdbM4nTgE
-	k8+6RMtbhjW7XFm5idqOdkqmO7+hgrJ3mkvzPSnPdI/7BAgjh+tEClvIxjOUeE71tGkbKASh5sU
-	2Hf8T1pJmt82E/eyBQGH0CAFIQWsmb5gmylW+PbGS+seVPx64j6Qrn3xh/cy
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.190000-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: A380A694E5424FE041146DD541B7A1E4D8A5BF088CCF76C4B401026939EB66892000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240306_173511_256423_E9C38420 
-X-CRM114-Status: GOOD (  12.68  )
+X-CRM114-CacheID: sfid-20240306_173510_924099_C2502489 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,85 +90,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add cmdq_pkt_acquire_event() function to support CMDQ user making
-an instruction for acquiring event.
-
-CMDQ users can use cmdq_pkt_acquire_event() as `mutex_lock`
-and cmdq_pkt_clear_event() as `mutex_unlock` to protect the global
-resource modified instructions between them.
-
-cmdq_pkt_acquire_event() would wait for event to be cleared.
-After event is cleared by cmdq_pkt_clear_event() in other GCE threads,
-cmdq_pkt_acquire_event() would set event and keep executing next
-instruction. So the mutex would work like this:
-
-    cmdq_pkt_acquire_event() /* mutex lock */
-
-    /* critical secton instructions that modified global resource */
-
-    cmdq_pkt_clear_event() /* mutex unlock */
-
-Prevent the critical section instructions from being affected by other
-GCE threads.
+Add specific purpose register definitions for GCE, so CMDQ users can
+use them as a buffer to store data.
 
 Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-cmdq-helper.c | 15 +++++++++++++++
- include/linux/soc/mediatek/mtk-cmdq.h  | 15 +++++++++++++++
- 2 files changed, 30 insertions(+)
+ include/linux/soc/mediatek/mtk-cmdq.h | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-index 4f69df743505..8acd8e38283e 100644
---- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-+++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-@@ -343,6 +343,21 @@ int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear)
- }
- EXPORT_SYMBOL(cmdq_pkt_wfe);
- 
-+int cmdq_pkt_acquire_event(struct cmdq_pkt *pkt, u16 event)
-+{
-+	struct cmdq_instruction inst = {};
-+
-+	if (event >= CMDQ_MAX_EVENT)
-+		return -EINVAL;
-+
-+	inst.op = CMDQ_CODE_WFE;
-+	inst.value = CMDQ_WFE_UPDATE | CMDQ_WFE_UPDATE_VALUE | CMDQ_WFE_WAIT;
-+	inst.event = event;
-+
-+	return cmdq_pkt_append_command(pkt, inst);
-+}
-+EXPORT_SYMBOL(cmdq_pkt_acquire_event);
-+
- int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event)
- {
- 	struct cmdq_instruction inst = { {0} };
 diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-index b0004d097e23..f708bcfebdd8 100644
+index 649955d2cf5c..1dae80185f9f 100644
 --- a/include/linux/soc/mediatek/mtk-cmdq.h
 +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-@@ -204,6 +204,21 @@ int cmdq_pkt_mem_move(struct cmdq_pkt *pkt, dma_addr_t src_addr, dma_addr_t dst_
-  */
- int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear);
+@@ -14,6 +14,15 @@
+ #define CMDQ_ADDR_HIGH(addr)	((u32)(((addr) >> 16) & GENMASK(31, 0)))
+ #define CMDQ_ADDR_LOW(addr)	((u16)(addr) | BIT(1))
  
-+/**
-+ * cmdq_pkt_acquire_event() - append acquire event command to the CMDQ packet
-+ * @pkt:	the CMDQ packet
-+ * @event:	the desired event to be acquired
-+ *
-+ * User can use cmdq_pkt_acquire_event() as `mutex_lock` and cmdq_pkt_clear_event()
-+ * as `mutex_unlock` to protect some `critical section` instructions between them.
-+ * cmdq_pkt_acquire_event() would wait for event to be cleared.
-+ * After event is cleared by cmdq_pkt_clear_event in other GCE threads,
-+ * cmdq_pkt_acquire_event() would set event and keep executing next instruction.
-+ *
-+ * Return: 0 for success; else the error code is returned
++/*
++ * Every cmdq thread has its own SPRs (Specific Purpose Registers),
++ * so there are 4 * N (threads) SPRs in GCE that shares the same indexes below.
 + */
-+int cmdq_pkt_acquire_event(struct cmdq_pkt *pkt, u16 event);
++#define CMDQ_THR_SPR_IDX0	(0)
++#define CMDQ_THR_SPR_IDX1	(1)
++#define CMDQ_THR_SPR_IDX2	(2)
++#define CMDQ_THR_SPR_IDX3	(3)
 +
- /**
-  * cmdq_pkt_clear_event() - append clear event command to the CMDQ packet
-  * @pkt:	the CMDQ packet
+ struct cmdq_pkt;
+ 
+ struct cmdq_client_reg {
 -- 
 2.18.0
 
