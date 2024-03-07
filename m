@@ -4,72 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3799C54E41
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Mar 2024 20:37:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 902CAC5475B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 01:35:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=awa1dQXZmpY5VwV6yZnL1TS+1i6+6YFAvsCFb4B//5A=; b=Gv+nxmz2gHVlDG
-	+4PmuHBUALTrY3EZ+mC7MEOb0tLQE9YRL4MJHkN7b3fXUBeo96R4bPxFFzgxnonhkwQXKJ+x/820g
-	dzKSl6Q5CzsuaTw0RX3UQHYApwe0gEGDDMmM83Z3t/+fqh8Ja8SOmQaNOWgQYmusjxrSy93CeSs7R
-	Q14wvF0Xs4DrdLdEf6dLW2Ba7POTcovAwlvSwEy0M4jjJZqV6/GGYOeYHksVWR3EUGSwOS58nwRKa
-	MVTMW3ZuSXHAQzvxbbJYdI5/aJk0CJawaXvNYIFtua1fswSKV6x3SBRsoLusl0YYqkIdD45yXLXSJ
-	b1ZcB1fNdeUpjRiAfP2A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RYqqPtBkvbJiWQfMZfCGLp/muLNA09FqpLZb1hc35bA=; b=3tIIHT8NhxrtihwyKrb9O79lnu
+	uzpmq99wmo1p/r1YKbvinZii04TxeGq96AnKotkT/ZUotBqj0MyW3YI4KKeDBWKtor2SBmB0yoKQ1
+	My9IWBs8tXBPLc0a8v35wfP8KQyfIsEIp7Uo/LQaFJV/F34kX38FR0P7vsc73akW7xWnt36QWCl+p
+	OEWOE2QNDmYyZriO8nPQ8CVcX+y2o5/aVts91oriO898s1h2xKfdK1SXqY5UyvrV/fTMomb54FfZi
+	EMKoQv32XFR9ky1fthF0uuyHUQBP3l6oztXqHtJMjAVmmeueEKllaJ4o2gCkar23OoNZaVTCja02G
+	DyC7Iqyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhy0r-00000001pih-002Y;
-	Wed, 06 Mar 2024 20:37:17 +0000
-Received: from mail-oo1-xc33.google.com ([2607:f8b0:4864:20::c33])
+	id 1ri2fE-00000002XOZ-1Pyu;
+	Thu, 07 Mar 2024 01:35:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhy0n-00000001phf-1zr8
-	for linux-mediatek@lists.infradead.org;
-	Wed, 06 Mar 2024 20:37:15 +0000
-Received: by mail-oo1-xc33.google.com with SMTP id 006d021491bc7-5a14dfa68eeso60821eaf.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 06 Mar 2024 12:37:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1709757431; x=1710362231; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=awa1dQXZmpY5VwV6yZnL1TS+1i6+6YFAvsCFb4B//5A=;
-        b=d8QFlgoA0jUFSYPfDen1q6LNF6TjphpFSH2u890rD9X459tJkFeEcnVftESqyzYvvA
-         b/2iWRESt3Lf8j/xJPxRuvGTRhwnOBzT+y0K7CkGC0/gED4cBktN5KczWp+PpJZS8utg
-         g/7nRZ8SEG9t8ZO+HtLKU92pbKiram2RqU/yo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709757431; x=1710362231;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=awa1dQXZmpY5VwV6yZnL1TS+1i6+6YFAvsCFb4B//5A=;
-        b=MweYAx8GcL7NQ9nt3+eGNiL2P3/pdiAJnPKRyKN3b+r4Mxy/1eOlvdAbAiNRvfbuJ8
-         I6PkQUPrXEMFjMzELDl3Glal9IOE8DTcNdN1lsPZYY4Zq35aQulukxYS9bum0VbWnrxM
-         ZNXOp4STuPF8cRBvpNKAttdRGntDMOtMhA41f0ZiqrVbFTzOXFlLlr32JNp9k6nKEgr2
-         UW6itOWJLKQqUg9NmsIzFqmAKIp7DcxLpaPQojU4qI7s5910O4ndGGdU3EqlxVtLtjv3
-         rw+V9HKuS0gDHhnzM4YCZdy6kIO69/MiNo5K5jqB/D0/CrsHdTHwrC/Oxos2N1Q3hPIe
-         TkMQ==
-X-Gm-Message-State: AOJu0Yw5G6bFFQzEDRPEF5AazfZyVVqWf1giKr259ghpSTSCxB26H/QK
-	9ATrbCoj7SNljBNS9a7RSmz6cNf/0/kjvx+U4MMTOwKMam8drPDwY4uFqG7hhWlgejCFzMyhHXw
-	=
-X-Google-Smtp-Source: AGHT+IHN/Wg36ruErxYWj1YUE8/W5ZbCAiEK4i9KqiK0BiH5Rh+ZCVJOegwQRIXPbUka2mryiijX0A==
-X-Received: by 2002:a05:6358:649d:b0:17c:1b81:136f with SMTP id g29-20020a056358649d00b0017c1b81136fmr7025517rwh.32.1709757430926;
-        Wed, 06 Mar 2024 12:37:10 -0800 (PST)
-Received: from greenjustin3.nyc.corp.google.com ([2620:0:1003:314:259f:7f7f:41a:9afb])
-        by smtp.gmail.com with ESMTPSA id ay12-20020a05620a178c00b007884435812csm337535qkb.54.2024.03.06.12.37.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Mar 2024 12:37:10 -0800 (PST)
-From: Justin Green <greenjustin@chromium.org>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH] drm/mediatek: Add 0 size check to mtk_drm_gem_obj
-Date: Wed,  6 Mar 2024 15:37:02 -0500
-Message-ID: <20240306203702.3924719-1-greenjustin@chromium.org>
-X-Mailer: git-send-email 2.44.0.278.ge034bb2e1d-goog
+	id 1ri2f9-00000002XJz-0Wqu;
+	Thu, 07 Mar 2024 01:35:13 +0000
+X-UUID: ec0912b8dc2211eea8a22560583bddef-20240306
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RYqqPtBkvbJiWQfMZfCGLp/muLNA09FqpLZb1hc35bA=;
+	b=DMfWKxIarVDWAxlENUELc0nIYLFXRtyOtzjWz23Ybo6aYfkmg8QHtqDTJ5UbTAtID2h4oeVp762s2S55mY6vOPPsqfqeQiny7du6yMQrp8C4unvL5mevm3MmpdqyCK46ozu6/Sq4O8IbALQYw9ShHT33zAI2FsQSMNDJ3S3huLs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:30af0125-7483-48cd-9c52-aaa440e39876,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:3c491b90-e2c0-40b0-a8fe-7c7e47299109,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: ec0912b8dc2211eea8a22560583bddef-20240306
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2055807031; Wed, 06 Mar 2024 18:35:04 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 7 Mar 2024 09:35:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 7 Mar 2024 09:35:00 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jason-ch Chen <jason-ch.chen@mediatek.com>, "Jason-JH . Lin"
+	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, "Nancy
+ Lin" <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v2 4/4] soc: mediatek: mtk-cmdq: Add cmdq_pkt_acquire_event() function
+Date: Thu, 7 Mar 2024 09:34:58 +0800
+Message-ID: <20240307013458.23550-5-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240307013458.23550-1-jason-jh.lin@mediatek.com>
+References: <20240307013458.23550-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--4.190000-8.000000
+X-TMASE-MatchedRID: tjEGPsGKY1JYXTxImR5ZvLmIzqGFh/g8Xru95hSuhjQGW3hFnC9N1ayR
+	DZpBnTnXX7ScFOAZsbSZymPU+pWEZyZ/E6AE4WkioS0guoV6SZcIYICTzfK2geOxOq7LQlGLEXF
+	HklABLo7T01A2vEikVhDmbwdZ+OOfn/UkTj3EvcbhuXUWQoMQty6GDroi1vrlwDR44lliPu0bSl
+	ebxhFF4jSbvF4uwAVxd6AheSID9qkfE8yM4pjsDwtuKBGekqUpnH7sbImOEBSxQ8vJIdbM4nTgE
+	k8+6RMtbhjW7XFm5idqOdkqmO7+hgrJ3mkvzPSnPdI/7BAgjh+tEClvIxjOUeE71tGkbKASh5sU
+	2Hf8T1pJmt82E/eyBQGH0CAFIQWsmb5gmylW+PbGS+seVPx64j6Qrn3xh/cy
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--4.190000-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: A380A694E5424FE041146DD541B7A1E4D8A5BF088CCF76C4B401026939EB66892000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240306_123713_777927_1698C058 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20240306_173511_256423_E9C38420 
+X-CRM114-Status: GOOD (  12.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,37 +99,89 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: chunkuang.hu@kernel.org, angelogioacchino.delregno@collabora.com, Justin Green <greenjustin@chromium.org>, dri-devel@lists.freedesktop.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a check to mtk_drm_gem_init if we attempt to allocate a GEM object
-of 0 bytes. Currently, no such check exists and the kernel will panic if
-a userspace application attempts to allocate a 0x0 GBM buffer.
+Add cmdq_pkt_acquire_event() function to support CMDQ user making
+an instruction for acquiring event.
 
-Tested by attempting to allocate a 0x0 GBM buffer on an MT8188 and
-verifying that we now return EINVAL.
+CMDQ users can use cmdq_pkt_acquire_event() as `mutex_lock`
+and cmdq_pkt_clear_event() as `mutex_unlock` to protect the global
+resource modified instructions between them.
 
-Signed-off-by: Justin green <greenjustin@chromium.org>
+cmdq_pkt_acquire_event() would wait for event to be cleared.
+After event is cleared by cmdq_pkt_clear_event() in other GCE threads,
+cmdq_pkt_acquire_event() would set event and keep executing next
+instruction. So the mutex would work like this:
+
+    cmdq_pkt_acquire_event() /* mutex lock */
+
+    /* critical secton instructions that modified global resource */
+
+    cmdq_pkt_clear_event() /* mutex unlock */
+
+Prevent the critical section instructions from being affected by other
+GCE threads.
+
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_gem.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/soc/mediatek/mtk-cmdq-helper.c | 15 +++++++++++++++
+ include/linux/soc/mediatek/mtk-cmdq.h  | 15 +++++++++++++++
+ 2 files changed, 30 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-index 4f2e3feabc0f..ee49367b6138 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-@@ -38,6 +38,9 @@ static struct mtk_drm_gem_obj *mtk_drm_gem_init(struct drm_device *dev,
+diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+index 4f69df743505..8acd8e38283e 100644
+--- a/drivers/soc/mediatek/mtk-cmdq-helper.c
++++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+@@ -343,6 +343,21 @@ int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear)
+ }
+ EXPORT_SYMBOL(cmdq_pkt_wfe);
  
- 	size = round_up(size, PAGE_SIZE);
- 
-+        if (size == 0)
-+		return ERR_PTR(-EINVAL);
++int cmdq_pkt_acquire_event(struct cmdq_pkt *pkt, u16 event)
++{
++	struct cmdq_instruction inst = {};
 +
- 	mtk_gem_obj = kzalloc(sizeof(*mtk_gem_obj), GFP_KERNEL);
- 	if (!mtk_gem_obj)
- 		return ERR_PTR(-ENOMEM);
++	if (event >= CMDQ_MAX_EVENT)
++		return -EINVAL;
++
++	inst.op = CMDQ_CODE_WFE;
++	inst.value = CMDQ_WFE_UPDATE | CMDQ_WFE_UPDATE_VALUE | CMDQ_WFE_WAIT;
++	inst.event = event;
++
++	return cmdq_pkt_append_command(pkt, inst);
++}
++EXPORT_SYMBOL(cmdq_pkt_acquire_event);
++
+ int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event)
+ {
+ 	struct cmdq_instruction inst = { {0} };
+diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+index b0004d097e23..f708bcfebdd8 100644
+--- a/include/linux/soc/mediatek/mtk-cmdq.h
++++ b/include/linux/soc/mediatek/mtk-cmdq.h
+@@ -204,6 +204,21 @@ int cmdq_pkt_mem_move(struct cmdq_pkt *pkt, dma_addr_t src_addr, dma_addr_t dst_
+  */
+ int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear);
+ 
++/**
++ * cmdq_pkt_acquire_event() - append acquire event command to the CMDQ packet
++ * @pkt:	the CMDQ packet
++ * @event:	the desired event to be acquired
++ *
++ * User can use cmdq_pkt_acquire_event() as `mutex_lock` and cmdq_pkt_clear_event()
++ * as `mutex_unlock` to protect some `critical section` instructions between them.
++ * cmdq_pkt_acquire_event() would wait for event to be cleared.
++ * After event is cleared by cmdq_pkt_clear_event in other GCE threads,
++ * cmdq_pkt_acquire_event() would set event and keep executing next instruction.
++ *
++ * Return: 0 for success; else the error code is returned
++ */
++int cmdq_pkt_acquire_event(struct cmdq_pkt *pkt, u16 event);
++
+ /**
+  * cmdq_pkt_clear_event() - append clear event command to the CMDQ packet
+  * @pkt:	the CMDQ packet
 -- 
-2.44.0.278.ge034bb2e1d-goog
+2.18.0
 
 
