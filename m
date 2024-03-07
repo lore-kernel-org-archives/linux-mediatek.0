@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C28F4C54E49
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 10:33:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B746DC48BF6
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 10:33:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CiuFY13fgixWUbPKp5/6RtABKC3h9yvYyVmqJiK8CNU=; b=ZkXlCTrEm4GJhJRYmBiwxnmQMg
-	TyqFX0XWMmJ760btpcTRiYUPgAAyHbgmHu64bUAwHlIyOFRONDvZMZyZsg5a+jezeD6ZVFo2p08pD
-	F/XnkmZY411MrYIAUOfFnqUFcLdUx7L3pVhW3P6ZHWWFTJRN4fTxUITJPt4h+BLChUuiFSOShv3y+
-	suKu4nF7p95mZaG8h6hQOGq6QASeQep38SpAYN7lI02bJyC/Iw9Esav5/Re1bBMzzScswt/XpvJI2
-	CzXm+wTLS2XaUPZUzRVKqRoCAA9cpyZhSikzYrDBdzRkRqKyTuEabkDyzZOacMdRZ1kZNnv9cuWAF
-	riEnvnmA==;
+	bh=LSrbJw341Av1wy4jD97zYx0fGXicPFSN24bVfnjo+O0=; b=I24jEm1P1GobbcpZEII2IWNXiA
+	tnvuy3mZkjjhqHCoMSBdBx+CCZyvKLf860pz/nxT7V1aAcwFJQMOJlp/VnYNuZGkhsF6G9b+JsZXq
+	R59lvuNsP0Xa+QuO+CfgajerpjTn8R6H3vevaIpHeQWdp+JaOUchdvQB6q4t6Opa1K/+jsijXkUXv
+	ntlfULNQqREa25PXFRxLXGdjmw6oDDfYNZ3OhoXqX4J6p+9Zmnvl8CVJ9gFszMHnDCkxdcCPUDQ4j
+	6jlxlt13hWzMDAGZu56AerQYFIlI2Yih4xrw6kTYiPAT62snHaWxoNQhSuqFGzS+bk99T55PKbjjI
+	aWMCF+Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riB3v-000000046Lb-0sF3;
+	id 1riB3v-000000046M4-3hdH;
 	Thu, 07 Mar 2024 10:33:19 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riB3m-000000046FN-1WtQ;
+	id 1riB3m-000000046FQ-3uKp;
 	Thu, 07 Mar 2024 10:33:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1709807589;
-	bh=L8L1t6vR3+FIcUH9lsp8UHwMW9LCHOizjMz2kHHqd/k=;
+	bh=bBunPHKSmHGf8l/+2/CVYxGsnfGs5hi7pWNxqAObtxU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NwAQ1Wvm8vG6dt/M8t5FWhxZwSttfRhLhkS3Daza1zhVkAgyqxNE8iJmqh9ncTuut
-	 yXTY7y66lAviwCcFPbTw8cBq2QTJpCAS/HWCZ/owCEhs7aPTGlZdm2gUiXFSICyYxU
-	 91QqJRDcxtEwoPRndoNYMyI7NZs64C1FUG1cu2Z5kemIJT5StYPxW1W1+NIsLcZZdM
-	 9Gu7lgMqP0XrQTxGa/YSPWLyVRHRbcxGiH7oon/RGNOYJCu8f2DPlsV3WenHukFUb1
-	 Dlr8F/lD5K/lfceDEF9ZmqH4bQjd+PdXNKVEgTNRm8VqlNR+fhN6JaHiPl9AAatlNz
-	 RmCRDsonNg+sA==
+	b=euxAtePErViPvAXDPjS/CT8y1c0eP4O2jbOK+Ntj2k+uP3KihT8Y9T8Ph9mWIEzVS
+	 k1DL5I2VnPAlIguTwBTqNeVSAaASO2ecbbmmwUiFH6QMD02RIjuiZFqLRE52byf4LQ
+	 nBymRvsQ+WNlKibzp3IyPP5xFoTPjWkbQUBKTNtW4llrB2yBx/1z0RjHBthDPNn/Cr
+	 dJHTZfHLKVeB+KbbQQnAw387zZ6XhYn17J0jWWnLLUt9XnxrM2Vl6xnhwsyX7XAvE+
+	 F3RY0KKrlArY0Au6jemtGEigfU3xXQ+WpO46TJXaUNCvY5mNCDSp3auKSaLPa/mKBD
+	 5pHk4+yPOx1gQ==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4489637820E9;
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D98C837820EA;
 	Thu,  7 Mar 2024 10:33:08 +0000 (UTC)
-Message-ID: <54d746b5-a27b-4076-98cf-51c887741c68@collabora.com>
-Date: Thu, 7 Mar 2024 11:33:07 +0100
+Message-ID: <a0d01d84-60de-4728-9b36-c66fb2561ba9@collabora.com>
+Date: Thu, 7 Mar 2024 11:33:08 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/4] soc: mediatek: mtk-cmdq: Add cmdq_pkt_poll_addr()
+Subject: Re: [PATCH v2 2/4] soc: mediatek: mtk-cmdq: Add cmdq_pkt_mem_move()
  function
 Content-Language: en-US
 To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
@@ -60,14 +60,15 @@ Cc: Jason-ch Chen <jason-ch.chen@mediatek.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20240307013458.23550-1-jason-jh.lin@mediatek.com>
- <20240307013458.23550-4-jason-jh.lin@mediatek.com>
+ <20240307013458.23550-3-jason-jh.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240307013458.23550-4-jason-jh.lin@mediatek.com>
+In-Reply-To: <20240307013458.23550-3-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240307_023310_628477_0533028C 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20240307_023311_139466_230DF976 
+X-CRM114-Status: UNSURE (   6.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,16 +84,9 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 07/03/24 02:34, Jason-JH.Lin ha scritto:
-> Add cmdq_pkt_poll_addr function to support CMDQ user making
-> an instruction for polling a specific address of hardware rigster
-> to check the value with or without mask.
-> 
-> POLL is a legacy operation in GCE, so it does not support SPR and
-> CMDQ_CODE_LOGIC. To support polling the register address which doesn't
-> have the subsys id, CMDQ users need to make an instruction with GPR and
-> CMDQ_CODE_MASK operation to move the register address to be poll into GPR.
-> Then users can make an POLL instruction with GPR to poll the register
-> address assigned in previous instruction.
+> Add cmdq_pkt_mem_move() function to support CMDQ user making
+> an instruction for moving a value from a source address to a
+> destination address.
 > 
 > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 
