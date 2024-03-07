@@ -4,88 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96A63C54E49
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 09:47:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FBEAC48BF6
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Mar 2024 10:04:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cDwewr94viCP0HwMbysx6bAqUHjnkE31vXLiSH3xJjU=; b=MAul4og05ds+U21pZmT3JLWire
-	5tE+WnmbQ/PPG2TFPsUFrXtDbp8u2DV0ODrLH9r4i9UFudZQr59FfPnn2kSYOhZmi+LWJx5wHpS7Y
-	ZsUmFVoA0Vt1A9+FEB42QOceaVfExJqUNgUmSd2KDfPulskBj3ELFKc/J9yNtTTmRIf2qbMl1M2P9
-	04uAFmD+71j8CjXuS1JKqYz86SeYqdLQyZqDhuDcjEsbiXUE7SJE09O7fIHdnxnW4+4/rcu+hLyiz
-	2sZEVrHdWyftnCM7iynSQmHbjWGdCBzhTqbYd1pDBLuMKPA0ay4qJ0Lu3EnYIcI98OqPGG1+SKYvI
-	wm3zXZHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xx95w56RGEnqgt7Xz0ZlhIHC5BxWGFuvJi0FDnmldPs=; b=u+yJa5UiZ2PxmcMBAHH8BjG5yb
+	5w0WVGdyJ9NgxXIiifxohJ5fColbTgrq4EShcIOvn2ZnwFcSUL5f+fe4Qe854v/S65sZMTaBKhELo
+	Jtt7tpexUnwlQazypLfKmX+umGVlO419fjpIN2FrqyewnGRhq515za6EAvBBL5IyuLIzV2xc/oDsk
+	7lblSWzgABFKhukpAEkUgTADWh62WYNLKwtZxfICqoQ6PP4sH+wgYqSs1R6pZCT/U/7e+HtDy+miH
+	b9ExEj1c6Tojr42d1EiQJ/cH+JHtUV5ZGeLIsbNm4mkW1zK8Nb97N4p5gXnKAv3UkZHHg9qbix08I
+	qn+XtuDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riALT-00000003vLp-28C8;
-	Thu, 07 Mar 2024 09:47:23 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1riAcK-000000040Ru-3Spm;
+	Thu, 07 Mar 2024 10:04:48 +0000
+Received: from mail-oo1-xc2f.google.com ([2607:f8b0:4864:20::c2f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riALR-00000003vL2-3BDf
-	for linux-mediatek@lists.infradead.org;
-	Thu, 07 Mar 2024 09:47:23 +0000
-X-UUID: aca30ff8dc6711eebe6b57d01cc416d2-20240307
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=cDwewr94viCP0HwMbysx6bAqUHjnkE31vXLiSH3xJjU=;
-	b=cDL8lAj6M1wA/54a5xV24ra5uZN6OGf/24TUlBpS3pCrH446/ALLu1gNluJtiotlj5aOYzGNZ28PPMo+mVN93aGBk94RN8VeY80MZiiOF0ns6074XQj8NEYyA/b2CUWKX2I8Ndt8LWvNzn6Y5nNbTIUHqV880SrAZdyXNIAkoB4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:412ee55b-2fae-439e-9daa-a5a880d0d135,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:ccf63981-4f93-4875-95e7-8c66ea833d57,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: aca30ff8dc6711eebe6b57d01cc416d2-20240307
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1313063084; Thu, 07 Mar 2024 02:47:13 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 7 Mar 2024 17:46:35 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 7 Mar 2024 17:46:35 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Eric-SY.Chang@mediatek.com>, <km.lin@mediatek.com>,
-	<robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
-	<Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Leon Yen <leon.yen@mediatek.com>, "Ming
- Yen Hsieh" <MingYen.Hsieh@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7921s: fix potential hung tasks during chip recovery
-Date: Thu, 7 Mar 2024 17:46:32 +0800
-Message-ID: <20240307094632.21638-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1riAcH-000000040Q3-0fHB;
+	Thu, 07 Mar 2024 10:04:46 +0000
+Received: by mail-oo1-xc2f.google.com with SMTP id 006d021491bc7-59fc2d22cfaso231973eaf.3;
+        Thu, 07 Mar 2024 02:04:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1709805883; x=1710410683; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xx95w56RGEnqgt7Xz0ZlhIHC5BxWGFuvJi0FDnmldPs=;
+        b=UhAbS99uNXrJb8t+N+tf1+RI9b8UwsFnqNpro4USPp32eV4E0et/+fxcdKo2kQF/eA
+         i1i8sD1gWXFTd3T9Ufcmsh/zIfSY/WorMT/gM57wwojF1hGYO4XGZNOgDumUg2M8yZKG
+         NIZ7K+Wnvk9bwZ6iIBxiuru6fP8JytBGaMqTJIab1K7gwxcb2RlBvrMQQ3iF2K5OKGyI
+         cdDwJcNwXYEVyRtlKTOUJTCNqbT1srIkji+bsjxBiyOD32Ui0y5/ChHifYkUGTw+yGmq
+         wNhzqKatLeFpYiXtg9bB0Vcr56Y9BB0BAId5ogpTvpzAy4GbwXLm9YcvPFJmosX+K4ls
+         9fmQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1709805883; x=1710410683;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=xx95w56RGEnqgt7Xz0ZlhIHC5BxWGFuvJi0FDnmldPs=;
+        b=kd73uz9ChDoNS8Q37p1a+jZ3zlvh5J6paiBQQotlTAmq8GyOD1dMYokiDSZTuzSSfc
+         W8aismHEvWosIdm0g7Fg+X5/ZHrWM94fjCA/aEQ0+JM/SN1vEaaXhKospHXbO24BIJ5c
+         /J4/y8AlE68xq5KFBOQmdg+YvHlEoJV4IlIt/FqCpf6MtmRwl41vrJKLRxJwuz30uuqM
+         kUC670/uFq/pu2wmx2m52BfgC1zMlmfucMdiUO1KETdo5WOxUQr4fJE1msRA7I4rQkdY
+         kCPvxmHgsQSDLu2JdMsg4YEKJ02c2oeQNCnEtoW0FxuL9EPdT3tF8kLBZvbPPm44R1tQ
+         mVhg==
+X-Forwarded-Encrypted: i=1; AJvYcCWt5Fyvtx8saSWiR7qXorUWDHV3u3ATMZmapAPCnaUhrxUBG2eMNIW69l8YQQTGpwKpO4jWa8q/cPsCVbaXv9gmmjH6xstnRws3EJsSflbGU+InXM6rrepwX2NjbakO2aWh4OjQ/0VWCHjWGj5EaU4mt79/BvypouI=
+X-Gm-Message-State: AOJu0YzQxahg5gjy2NfXMRFtiI5i2Qsch1GJobJnOTL/pjKhD/zpCXTK
+	aUUcqYqobUQWqAgJBVkrNGFJ/HpK+HCfUkENPp9k/9OAtzgjIWjCvbjo95I5w5Hkqm3gkOTY040
+	oKFypcoLZLJSKlz7KEWgEmC70V/k=
+X-Google-Smtp-Source: AGHT+IGVD3wzaX3Yt+FvOko++C+SVpoj1sdjPBxPgVYX2N06XjupwxcD0RKYjgL/jX1N4ZEi5q0aWnVeEtCsn4tGWZY=
+X-Received: by 2002:a05:6870:1c7:b0:220:cf76:a9b7 with SMTP id
+ n7-20020a05687001c700b00220cf76a9b7mr8692531oad.44.1709805883490; Thu, 07 Mar
+ 2024 02:04:43 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--5.482200-8.000000
-X-TMASE-MatchedRID: BF/mp1RsF79X3cGZowF380hEDfw/93BugQP483M95wFh2fnHe1cil3pt
-	C95MCcU350LRIq48WpLvKOYqns9K5YdO+dHJdtOqH5YQyOg71ZZUENBIMyKD0Z6fSoF3Lt+MIA6
-	D0Tft3i8SOLmgpsr0im5D1dJNZVNGYf4+ATMa0GuHZXNSWjgdU273ma3jsPM2ta3+iMLLdN8glz
-	H/IwfDMcIXl3iP70Q4bmFMcyfDfoAoeQN21jrIqUZakoam9+aeMVx/3ZYby7/uxO+ZKScKRqPFj
-	JEFr+olwXCBO/GKkVr3FLeZXNZS4KBkcgGnJ4WmW0jeEK7aWWMHt/b3mOdz0U+DGfGDEvNRwOxN
-	ZGMpQrh+3BndfXUhXQ==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--5.482200-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 77BCF30B649236999228776849688CE98C0BA8729BAB87AB2E8F4A171FC22AF32000:8
+References: <20240306201045.1475-1-justin.swartz@risingedge.co.za> <20240306201045.1475-2-justin.swartz@risingedge.co.za>
+In-Reply-To: <20240306201045.1475-2-justin.swartz@risingedge.co.za>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Thu, 7 Mar 2024 11:04:31 +0100
+Message-ID: <CAMhs-H9WyQZsvEvCfUcZ0_eU8--EzxEmaxR50wdRFDGP3E64ZQ@mail.gmail.com>
+Subject: Re: [PATCH 2/2] mips: dts: ralink: mt7621: add serial1 and serial2 nodes
+To: Justin Swartz <justin.swartz@risingedge.co.za>
+Cc: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mips@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240307_014721_865682_A1A9C92E 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20240307_020445_224686_F392A397 
+X-CRM114-Status: GOOD (  14.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,101 +94,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Leon Yen <leon.yen@mediatek.com>
+Hi Justin,
 
-During chip recovery (e.g. chip reset), there is a possible situation that
-kernel worker reset_work is holding the lock and waiting for kernel thread
-stat_worker to be parked, while stat_worker is waiting for the release of
-the same lock.
-It causes a deadlock resulting in the dumping of hung tasks messages and
-possible rebooting of the device.
+On Wed, Mar 6, 2024 at 9:11=E2=80=AFPM Justin Swartz
+<justin.swartz@risingedge.co.za> wrote:
+>
+> Add serial1 and serial2 nodes to define the existence of
+> UART1 and UART2.
+>
+> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+> ---
+>  arch/mips/boot/dts/ralink/mt7621.dtsi | 38 +++++++++++++++++++++++++++
+>  1 file changed, 38 insertions(+)
+>
+> diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/r=
+alink/mt7621.dtsi
+> index dca415fdd..2069249c8 100644
+> --- a/arch/mips/boot/dts/ralink/mt7621.dtsi
+> +++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
+> @@ -128,6 +128,44 @@ serial0: serial@c00 {
+>                         pinctrl-0 =3D <&uart1_pins>;
+>                 };
+>
+> +               serial1: serial@d00 {
+> +                       status =3D "disabled";
+> +
+> +                       compatible =3D "ns16550a";
+> +                       reg =3D <0xd00 0x100>;
+> +
+> +                       clocks =3D <&sysc MT7621_CLK_UART2>;
+> +
+> +                       interrupt-parent =3D <&gic>;
+> +                       interrupts =3D <GIC_SHARED 27 IRQ_TYPE_LEVEL_HIGH=
+>;
+> +
+> +                       reg-shift =3D <2>;
+> +                       reg-io-width =3D <4>;
+> +                       no-loopback-test;
+> +
+> +                       pinctrl-names =3D "default";
+> +                       pinctrl-0 =3D <&uart2_pins>;
+> +               };
+> +
+> +               serial2: serial@e00 {
+> +                       status =3D "disabled";
+> +
+> +                       compatible =3D "ns16550a";
+> +                       reg =3D <0xe00 0x100>;
+> +
+> +                       clocks =3D <&sysc MT7621_CLK_UART3>;
+> +
+> +                       interrupt-parent =3D <&gic>;
+> +                       interrupts =3D <GIC_SHARED 28 IRQ_TYPE_LEVEL_HIGH=
+>;
+> +
+> +                       reg-shift =3D <2>;
+> +                       reg-io-width =3D <4>;
+> +                       no-loopback-test;
+> +
+> +                       pinctrl-names =3D "default";
+> +                       pinctrl-0 =3D <&uart3_pins>;
+> +               };
+> +
 
-This patch prevents the execution of stat_worker during the chip recovery.
+Please follow the preferred order for properties described in dts
+coding style [0]. I know that there is some mess around the properties
+order in some nodes with the current dtsi file but we did not have
+coding style before and now we have it, so I think we should follow it
+at least for new additions.
 
-Signed-off-by: Leon Yen <leon.yen@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/mac.c      | 2 ++
- drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c  | 2 --
- drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c | 2 --
- drivers/net/wireless/mediatek/mt76/sdio.c            | 3 ++-
- 4 files changed, 4 insertions(+), 5 deletions(-)
+Best regards,
+    Sergio Paracuellos
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index 867e14f6b93a..73e42ef42983 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -663,6 +663,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
- 	int i, ret;
- 
- 	dev_dbg(dev->mt76.dev, "chip reset\n");
-+	set_bit(MT76_RESET, &dev->mphy.state);
- 	dev->hw_full_reset = true;
- 	ieee80211_stop_queues(hw);
- 
-@@ -691,6 +692,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
- 	}
- 
- 	dev->hw_full_reset = false;
-+	clear_bit(MT76_RESET, &dev->mphy.state);
- 	pm->suspended = false;
- 	ieee80211_wake_queues(hw);
- 	ieee80211_iterate_active_interfaces(hw,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-index c866144ff061..031ba9aaa4e2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-@@ -64,7 +64,6 @@ int mt7921e_mac_reset(struct mt792x_dev *dev)
- 	mt76_wr(dev, dev->irq_map->host_irq_enable, 0);
- 	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0x0);
- 
--	set_bit(MT76_RESET, &dev->mphy.state);
- 	set_bit(MT76_MCU_RESET, &dev->mphy.state);
- 	wake_up(&dev->mt76.mcu.wait);
- 	skb_queue_purge(&dev->mt76.mcu.res_q);
-@@ -115,7 +114,6 @@ int mt7921e_mac_reset(struct mt792x_dev *dev)
- 
- 	err = __mt7921_start(&dev->phy);
- out:
--	clear_bit(MT76_RESET, &dev->mphy.state);
- 
- 	local_bh_disable();
- 	napi_enable(&dev->mt76.tx_napi);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
-index 389eb0903807..1f77cf71ca70 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
-@@ -98,7 +98,6 @@ int mt7921s_mac_reset(struct mt792x_dev *dev)
- 	mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
- 	mt76_txq_schedule_all(&dev->mphy);
- 	mt76_worker_disable(&dev->mt76.tx_worker);
--	set_bit(MT76_RESET, &dev->mphy.state);
- 	set_bit(MT76_MCU_RESET, &dev->mphy.state);
- 	wake_up(&dev->mt76.mcu.wait);
- 	skb_queue_purge(&dev->mt76.mcu.res_q);
-@@ -135,7 +134,6 @@ int mt7921s_mac_reset(struct mt792x_dev *dev)
- 
- 	err = __mt7921_start(&dev->phy);
- out:
--	clear_bit(MT76_RESET, &dev->mphy.state);
- 
- 	mt76_worker_enable(&dev->mt76.tx_worker);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/sdio.c b/drivers/net/wireless/mediatek/mt76/sdio.c
-index 3e88798df017..a4ed00eebc48 100644
---- a/drivers/net/wireless/mediatek/mt76/sdio.c
-+++ b/drivers/net/wireless/mediatek/mt76/sdio.c
-@@ -499,7 +499,8 @@ static void mt76s_tx_status_data(struct mt76_worker *worker)
- 	dev = container_of(sdio, struct mt76_dev, sdio);
- 
- 	while (true) {
--		if (test_bit(MT76_REMOVED, &dev->phy.state))
-+		if (test_bit(MT76_RESET, &dev->phy.state) ||
-+		    test_bit(MT76_REMOVED, &dev->phy.state))
- 			break;
- 
- 		if (!dev->drv->tx_status_data(dev, &update))
--- 
-2.18.0
-
+[0]: https://docs.kernel.org/devicetree/bindings/dts-coding-style.html
 
