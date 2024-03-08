@@ -4,66 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A0D1C5475B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 09:27:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCA32C54E4A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 09:32:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mSEtccGpbMc4sCa2xkEROqW4zVfAr2YIkXXhq3tk/8E=; b=MYEl7u2YZNCANxQ6WzaQ/Sg9Ix
-	X7r37njDy5Yrp6J4azIa9eI0c6np/oBgQy6VoQtCVue4EuAN4isn0IUIdJYucpAEavrFviCRb/csL
-	mscqYfQ5I3rICLgoIcIozMWlkNoXplPMN4OQi6NDbNvPkDHy9OqecKzVePZ8KNiGjiPeywlbr3q3e
-	HBc/Yrpg4da1OJ5HUiniyqF0vICW/f94jNSNRGaINNiklQTJUik46F7hkWLwsPIKw9iJeTe+kDpWA
-	zgQ1S7O8nlR6HKGyej6FwOV0ssHjzHJ/qMMACMb0Edy8OLcKOhfRNVipEeDg8Ypu02Kr0HiMmUlfY
-	3HuG4zYw==;
+	bh=e7wrWKLckR9dwH/ul31j0XrWIjQzUvip9OZaiMJtVGs=; b=zXhk+gToVhcnj+PNwwAcE99Lm2
+	GRIjk3yroPKSR19EKAB4B4aGVBDq9hCY8VDPyWWzRxK5JOj7lLHudf+d+i20fm+XoRcf2rfEyHvOT
+	rPWcEN5vyV959SG/Z6zhwWssIRT2j6+A5q++4WfBIH+Xen+/J/nJx0kfOb4zgTErFc41Yw5wWuvXd
+	KgKAj8V9N7Xu65LLuCRbJHPcDKbNVfcFpIuexBxivVl8fOQy5ClUTgQ9nNS5HPih48sKzAobKyz+4
+	adfvNahb9EeKAYDTEgGnZMH5tWXkzukvBmidAnA3c9OmBktHbt/gA2JwTpZ24gb5czkfanJC24jcM
+	zJeAEaSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riWVf-00000008ZG3-2bzP;
-	Fri, 08 Mar 2024 09:27:23 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1riWac-00000008aEH-1HDE;
+	Fri, 08 Mar 2024 09:32:30 +0000
+Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riWVc-00000008ZF3-3BTz;
-	Fri, 08 Mar 2024 09:27:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709890039;
-	bh=Hk0oseGNqngUA5Ryai/7LoOmEnDwbx2brLZDTUEwJYk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OXGX5psaWoyzTVVTM+4gWxnnOSt4DGK16dDRK5oYsBYEkjClepJ9RsVV0Fmf6sX0a
-	 2g1NaWC56V3D8HPX25CvEF9xHnmc6G0cxKIUdJUuGaGQ/LfJsTP2yzDXeYqUheds5l
-	 pL6ITAub1TTK3guyroG6BUEI5vZLsGvgT1lQFAHETc1zYXj37NJMgeRoH+jqz7Xbvr
-	 Yj8wKwlGdDgk0bW7bXySo6J+VQ9s72TSmITRNPsej0rScKG7/GM/ZhCdaTs2cKwO2h
-	 /sI8DR2nSShstbb9nt9IGWgG2GjA+76AJWFyq/JhTqNXB4DseZ8pFeHxJnRr0vDojE
-	 0Pr5n8ppiYi3Q==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B9A653780480;
-	Fri,  8 Mar 2024 09:27:18 +0000 (UTC)
-Message-ID: <86ec5896-8498-49fe-9d1b-546f5ed26006@collabora.com>
-Date: Fri, 8 Mar 2024 10:27:18 +0100
+	id 1riWaW-00000008aCq-3iTR;
+	Fri, 08 Mar 2024 09:32:26 +0000
+Received: by mail-oa1-x30.google.com with SMTP id 586e51a60fabf-221a37a29f5so114811fac.3;
+        Fri, 08 Mar 2024 01:32:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1709890343; x=1710495143; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=e7wrWKLckR9dwH/ul31j0XrWIjQzUvip9OZaiMJtVGs=;
+        b=Af7/BpucGbHuj+2WLMC4tyywO/no5tBbBmd6zJ+2J51i4ZFrIdBWzlxFUvPHbgDGNs
+         Dk3mGpNjiBV5w8+/8tZC5rvQ+OoHqnOsFZQ/QGki8llq672gDT42po0B+DB6PA/2csd8
+         lyigND36v74YhM0oJ4X03yn383jY79oqI+h+W90FAjE9umSWgYGdd/12dI4Gzmp+B5d1
+         I9AioggfmwpedAlXmtpMdBpDtS5C0UPjxBkEDM/kg/ccqMKUD/YdK2yh7gXY7Hl7svQ9
+         TbDmupp6eHbz3cNOMbk/K/c+YsSPrOrOMHe5JLQISWn/7xD8CXsn8KDBIhh4sN81vO7u
+         Kumw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1709890343; x=1710495143;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=e7wrWKLckR9dwH/ul31j0XrWIjQzUvip9OZaiMJtVGs=;
+        b=GMOuEaubM4JSLnHcKTxS8TZZsP012wISFjeEGNY2M8AYaOzFDSddGIRtko/UtERyrt
+         DgEZgRVgXDilnv3ETJVwUN69XOjLp/+hLqsx43ITY4DQI2zJVFlw6yv1dChEOpCVb9Cx
+         90erQw1d2A9wgV/mHo7QnDydx7nn1HhBAk/1q+BJtw/dkCD3mlozxot+I6BZiyr7NwyQ
+         AE1vnjuESPx1SlZvZexeUfh4dB7ZidLPJqqU/VM7x8nQ1ZUwv3lEyfwCf4jNxljp/fga
+         i4otv6mTBPJKvhssBl7jXpgT7D+2vbLdtdChhDk94mV3lNaozfCcWXhEKgjRYIjnCm4h
+         UOFg==
+X-Forwarded-Encrypted: i=1; AJvYcCWO3yn+nrCw+xm4nm2CuRp1wBHwQJ0pIJuo+ZIR1gYJa164RrXlG8CR6UJSFy8yNfcvQjyyBWQwLARvA2Muv3eBIguJI/BBxM1VIf9KX9LdGCftUG5VsFpT+zyG8u+JGwhHL89iQ47O7hnDiMaXMGtAIfpNnpvZZgQ=
+X-Gm-Message-State: AOJu0YxI6i+qV0WJwgmD0AUugqCX6VERwblt3qINZJ9lPkcCJ/qapC+g
+	JVQqHYWllao3CDI+kEON7ilCYaksrPH/f6XUoXncdb9/qfxr3FXsorHJ9b9GbQbRmUVck8pPd1N
+	tAJ5w100b3xJi6dMHZ20DkYuenck=
+X-Google-Smtp-Source: AGHT+IGacdulsw0UFb3sV/FTp+egnN/XnS6ykv5Ng+mKb56dZEwnb3aIMac6MUYw3XaqOLGnIGe4ULUlcpk37CqqAVk=
+X-Received: by 2002:a05:6870:819e:b0:221:96fb:9ca5 with SMTP id
+ k30-20020a056870819e00b0022196fb9ca5mr1765584oae.33.1709890342746; Fri, 08
+ Mar 2024 01:32:22 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/1] mmc: mtk-sd: Remove unused of_gpio.h
-Content-Language: en-US
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Axe Yang <axe.yang@mediatek.com>,
- linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20240307114348.3643034-1-andriy.shevchenko@linux.intel.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240307114348.3643034-1-andriy.shevchenko@linux.intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20240307223756.31643-1-justin.swartz@risingedge.co.za>
+In-Reply-To: <20240307223756.31643-1-justin.swartz@risingedge.co.za>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Fri, 8 Mar 2024 10:32:10 +0100
+Message-ID: <CAMhs-H_W7WL1ss6Htk8zCxuerF4EzsQR95FfVvdBai1rSCthKg@mail.gmail.com>
+Subject: Re: [PATCH v2] mips: dts: ralink: mt7621: add cell count properties
+ to usb
+To: Justin Swartz <justin.swartz@risingedge.co.za>
+Cc: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mips@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240308_012720_975592_232F9E1B 
-X-CRM114-Status: UNSURE (   5.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240308_013224_952466_E6CCF638 
+X-CRM114-Status: GOOD (  14.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,13 +95,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/03/24 12:43, Andy Shevchenko ha scritto:
-> of_gpio.h is deprecated and subject to remove.
-> The driver doesn't use it, simply remove the unused header.
-> 
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+On Thu, Mar 7, 2024 at 11:39=E2=80=AFPM Justin Swartz
+<justin.swartz@risingedge.co.za> wrote:
+>
+> Add default #address-cells and #size-cells properties to the
+> usb node, which should be suitable for hubs and devices without
+> explicitly declared interface nodes, as:
+>
+>   "#address-cells":
+>     description: should be 1 for hub nodes with device nodes,
+>       should be 2 for device nodes with interface nodes.
+>     enum: [1, 2]
+>
+>   "#size-cells":
+>     const: 0
+>
+> -- Documentation/devicetree/bindings/usb/usb-device.yaml
+>
+> This version of the patch places the properties according to
+> the order recommended by:
+>
+>    Documentation/devicetree/bindings/dts-coding-style.rst
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Drop these three lines, this explanation would be after --- line as
+information about the changes from v1.
 
+>
+> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+> ---
+>  arch/mips/boot/dts/ralink/mt7621.dtsi | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
+With the three lines removal addressed:
+Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+
+Best regards,
+    Sergio Paracuellos
 
