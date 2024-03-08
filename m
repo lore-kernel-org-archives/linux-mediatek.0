@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53C5FC5475B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 14:32:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45DEAC54E4A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 14:47:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6coLGN2o7T+HnhsIJpqB1H4NYRqhiPGnAgEfWaOCrxo=; b=c9oOEzzMxALVmf+Tl9aqHF1GYl
-	yobDRIrswiKfP4J+5rjM0mWba/fflkR71iwefSFa0P0EHy/zEiweHG2dWpDl79DrAYcD2s+uWc8T0
-	RrD2Ox95CQYJ794tSy+jmybejNRsLKh3H45urr6cLlUiAp1kU2kEO7x1KsLVugZ9D3Aopw9Ijqn5I
-	L39edwSBgn+STNF1eLKYL2zkcr8i5FfCyn8QuLygXJNj8BJ0+01n+MXaHzd8PKBeXYNSkVjpaz5yT
-	GoNhIFOY19lO3S1xhbb5wII7KA49RQkREoz55B1XrsitmIG7DnozLKgHXzTnmMaNqKnhnIpK/cgw0
-	eNdCfYXQ==;
+	bh=xT4i6PWtcF2FTdAWlP3cUk5y60XrX1sqI6b7YtGd8qY=; b=ANl9KqYFE2Q7I/+45Q1GfFrGxv
+	cxIlJ5rTNE3VM0IreTIpIfA+VZaZFLbkFki/KWtJrUARYRHr89CGxM7Fn9m+2ZbF9T5dLPnXbwga8
+	UFLjWKef6bhHoOEn3BQAvRNmKFCSmXRCOM4xtC8cYUW8c3TJCR7Jo2XSEhiXtf+KbsYJ42EG3pLcG
+	MBwoJHCQ5jFFqMYLzfjKfvWSNG4WBnyNL6cdxiRnoT1MTVeTnkNBaycHeffuTvl8qGSA2cIA3YQ2u
+	Y9ZZmUhmUuoB7gR1eAS94hobKk6WEfaJrh1xZW6frVvcN8SK/C2kDVIZ3C+U+VJ7l0oRToXvIPRhw
+	/rOGx1zA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ribGW-00000009aQK-1ohk;
-	Fri, 08 Mar 2024 14:32:04 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1ribV9-00000009eav-38Bi;
+	Fri, 08 Mar 2024 14:47:11 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ribGS-00000009aNS-14da;
-	Fri, 08 Mar 2024 14:32:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709908317;
-	bh=wdtYuwWx8ORQMwU47Qj5g2L7s2yOzijaUjNod58MtHc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WOV78bzOtFgbkclVF1IHUAojPBKxxPeMbLzSqAkg93ILAG1TPRonZhHVToLUUKerl
-	 OBGMcXxyT9ozJdaCYQcLI1absu/0fJ3VL3mG6siOMAWwkbpRvVbJaNwx5xzDIMWj4o
-	 t8B8DrXILMB+OgyhVvbTHlFGQL4VOQk/zQXdTpRpaulErM4EcQsj1N6wePREhWHlQk
-	 KkqXUCBn8BPY/urVHoe+xqOBr+6+gu9eGWu2ky2tDZOdyQ8GBDPgNMyDn9n4AZGExc
-	 lg3p2EFHPey7EMKIJu7kOVhofva1YqpBdgsxYASnZst/+wCQgYrWGyjn/PafgWZ8Mo
-	 Dsi/vkQHKarig==
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A282D37820C3;
-	Fri,  8 Mar 2024 14:31:54 +0000 (UTC)
-Date: Fri, 8 Mar 2024 09:31:52 -0500
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	id 1ribV5-00000009eZE-3Yad;
+	Fri, 08 Mar 2024 14:47:09 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1ribUk-0000Uk-1r;
+	Fri, 08 Mar 2024 14:46:46 +0000
+Date: Fri, 8 Mar 2024 14:46:33 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: Justin Swartz <justin.swartz@risingedge.co.za>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Chen-Yu Tsai <wenst@chromium.org>
-Cc: regressions@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: Probe regression of efuse@11f10000 on
- mt8183-kukui-jacuzzi-juniper-sku16 running next-20240202
-Message-ID: <c4416256-eedc-4c9b-b968-3a02490c4c09@notapiano>
-References: <47cdeac1-121d-4b1a-a3ac-e2affc7a2fc3@notapiano>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] net: dsa: mt7530: disable LEDs before reset
+Message-ID: <ZeskyfVuKECkZB1I@makrotopia.org>
+References: <20240305043952.21590-1-justin.swartz@risingedge.co.za>
+ <6064ba52-2470-4c56-958c-35632187f148@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <47cdeac1-121d-4b1a-a3ac-e2affc7a2fc3@notapiano>
+In-Reply-To: <6064ba52-2470-4c56-958c-35632187f148@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240308_063200_488512_36C7C137 
-X-CRM114-Status: GOOD (  17.60  )
+X-CRM114-CacheID: sfid-20240308_064707_981657_1F147E29 
+X-CRM114-Status: GOOD (  39.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,82 +74,163 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 06, 2024 at 11:11:00AM -0500, Nícolas F. R. A. Prado wrote:
-> Hi,
+On Fri, Mar 08, 2024 at 12:51:15PM +0300, ArÄ±nÃ§ ÃœNAL wrote:
+> Hey Justin.
 > 
-> KernelCI has identified a regression [1] on the
-> mt8183-kukui-jacuzzi-juniper-sku16 machine running on next-20240202 compared to
-> next-20240118:
+> I couldn't find anything on the MT7621 Giga Switch Programming Guide v0.3
+> document regarding which pin corresponds to which bit on the HWTRAP
+> register. There's only this mention on the LED controller section,
+> "hardware traps and LEDs share the same pins in GSW". But page 16 of the
+> schematics document for Banana Pi BPI-R2 [1] fully documents this.
 > 
-> <4>[    0.627077] sysfs: cannot create duplicate filename '/bus/nvmem/devices/mtk-efuse0'
-> <4>[    0.634945] CPU: 7 PID: 1 Comm: swapper/0 Not tainted 6.8.0-rc2-next-20240202 #1
-> <4>[    0.642542] Hardware name: Google juniper sku16 board (DT)
-> <4>[    0.648237] Call trace:
-> <4>[    0.650917]  dump_backtrace+0x94/0xec
-> <4>[    0.654815]  show_stack+0x18/0x24
-> <4>[    0.658359]  dump_stack_lvl+0x48/0x60
-> <4>[    0.662252]  dump_stack+0x18/0x24
-> <4>[    0.665796]  sysfs_warn_dup+0x64/0x80
-> <4>[    0.669688]  sysfs_do_create_link_sd+0xf0/0xf8
-> <4>[    0.674353]  sysfs_create_link+0x20/0x40
-> <4>[    0.678500]  bus_add_device+0x64/0x104
-> <4>[    0.682475]  device_add+0x33c/0x778
-> <4>[    0.686193]  nvmem_register+0x514/0x714
-> <4>[    0.690256]  devm_nvmem_register+0x1c/0x6c
-> <4>[    0.694577]  mtk_efuse_probe+0xe8/0x170
-> <4>[    0.698637]  platform_probe+0x68/0xd8
-> <4>[    0.702525]  really_probe+0x148/0x2b4
-> <4>[    0.706413]  __driver_probe_device+0x78/0x12c
-> <4>[    0.710990]  driver_probe_device+0xdc/0x160
-> <4>[    0.715394]  __driver_attach+0x94/0x19c
-> <4>[    0.719453]  bus_for_each_dev+0x74/0xd4
-> <4>[    0.723512]  driver_attach+0x24/0x30
-> <4>[    0.727312]  bus_add_driver+0xe4/0x1e8
-> <4>[    0.731284]  driver_register+0x60/0x128
-> <4>[    0.735343]  __platform_driver_register+0x28/0x34
-> <4>[    0.740265]  mtk_efuse_init+0x20/0x5c
-> <4>[    0.744155]  do_one_initcall+0x6c/0x1b0
-> <4>[    0.748214]  kernel_init_freeable+0x1c8/0x290
-> <4>[    0.752795]  kernel_init+0x20/0x1dc
-> <4>[    0.756512]  ret_from_fork+0x10/0x20
-> <4>[    0.760353] mediatek,efuse: probe of 11f10000.efuse failed with error -17
+> The HWTRAP register is populated right after power comes back after the
+> switch chip is reset [2]. This means any active link before the reset will
+> go away so the high/low state of the pins will go back to being dictated by
+> the bootstrapping design of the board. The HWTRAP register will be
+> populated before a link can be set up.
 > 
-> This efuse probe failure causes the probe failure of other components that
-> depend on it, including the display pipeline:
+> In conclusion, I don't see any need to disable the LED controller before
+> resetting the switch chip.
 > 
-> /soc/dsi-phy@11e50000
-> /soc/dsi@14014000
-> /soc/efuse@11f10000
-> /soc/i2c@11008000/anx7625@58
-> /soc/i2c@11008000/anx7625@58/aux-bus/panel
-> /soc/thermal@1100b000
+> [1] https://wiki.banana-pi.org/Banana_Pi_BPI-R2#Documents
 > 
-> There is a series already addressing the issue [2]. The first two patches have
-> been merged into the mediatek tree, but that tree isn't currently being
-> integrated into linux-next. Besides that, patch 3 hasn't been merged into the
-> nvmem tree yet, and it is required in order to solve the issue.
-> 
-> I'm sending this regression report so we can properly track the regression while
-> the fixes don't land on linux-next.
-> 
-> Thanks,
-> Nícolas
-> 
-> [1] https://linux.kernelci.org/test/plan/id/65bd63c3f12d8a95e200a225/
-> [2] https://lore.kernel.org/linux-mediatek/20240130095656.3712469-1-wenst@chromium.org/
-> 
-> #regzbot introduced next-20240118..next-20240202
+> [2] I've tested it on my MT7621AT board with a 40MHz XTAL frequency and a
+> board with standalone MT7530 with 25MHz XTAL frequency.
 
-Not sure why this got filed by regzbot under the mainline tab rather than next.
-Maybe it was the missing collon? Let me try again:
+How many times did you repeat this test to conclude that there is no
+need to disable LEDs before reset?
 
-#regzbot introduced: next-20240118..next-20240202
+As Justin is decribing a probabilistic phenomenon ("[...] chance of an
+unintended HT_XTAL_FSEL value is reduced.") I believe running a single
+test is not enough to conlcude anything.
 
-In any case, the fix has already made it to linux-next, so this should close the
-regression:
+I have a hard time believing that he was working on this patch without
+any reason to do so...
 
-#regzbot fix: nvmem: mtk-efuse: Drop NVMEM device name
 
-Thanks,
-Nícolas
+> 
+> While the kernel was booting, before the DSA subdriver kicks in:
+> - For the board with 40 MHz XTAL: I've connected a Vcc pin to ESW_P3_LED_0
+>   to set it high.
+> - For the board with 25 MHz XTAL: I've connected a GND pin to ESW_P3_LED_0
+>   to set it low.
+> 
+> Board with 40 MHz XTAL:
+> [    2.359428] mt7530-mdio mdio-bus:1f: MT7530 adapts as multi-chip module
+> [    2.374918] mt7530-mdio mdio-bus:1f: xtal is 25MHz
+> 
+> Board with 25 MHz XTAL:
+> [    4.324672] mt7530-mdio mdio-bus:1f: xtal is 40MHz
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 51d7b816dd02..beab5e5558d0 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -2216,6 +2216,15 @@ mt7530_setup(struct dsa_switch *ds)
+>  		return ret;
+>  	}
+> +	if ((val & HWTRAP_XTAL_MASK) == HWTRAP_XTAL_25MHZ)
+> +		dev_info(priv->dev, "xtal is 25MHz\n");
+> +
+> +	if ((val & HWTRAP_XTAL_MASK) == HWTRAP_XTAL_40MHZ)
+> +		dev_info(priv->dev, "xtal is 40MHz\n");
+> +
+> +	if ((val & HWTRAP_XTAL_MASK) == HWTRAP_XTAL_20MHZ)
+> +		dev_info(priv->dev, "xtal is 20MHz\n");
+> +
+>  	id = mt7530_read(priv, MT7530_CREV);
+>  	id >>= CHIP_NAME_SHIFT;
+>  	if (id != MT7530_ID) {
+> 
+> ArÄ±nÃ§
+> 
+> On 5.03.2024 07:39, Justin Swartz wrote:
+> > Disable LEDs just before resetting the MT7530 to avoid
+> > situations where the ESW_P4_LED_0 and ESW_P3_LED_0 pin
+> > states may cause an unintended external crystal frequency
+> > to be selected.
+> > 
+> > The HT_XTAL_FSEL (External Crystal Frequency Selection)
+> > field of HWTRAP (the Hardware Trap register) stores a
+> > 2-bit value that represents the state of the ESW_P4_LED_0
+> > and ESW_P4_LED_0 pins (seemingly) sampled just after the
+> > MT7530 has been reset, as:
+> > 
+> >      ESW_P4_LED_0    ESW_P3_LED_0    Frequency
+> >      -----------------------------------------
+> >      0               1               20MHz
+> >      1               0               40MHz
+> >      1               1               25MHz
+> > 
+> > The value of HT_XTAL_FSEL is bootstrapped by pulling
+> > ESW_P4_LED_0 and ESW_P3_LED_0 up or down accordingly,
+> > but:
+> > 
+> >    if a 40MHz crystal has been selected and
+> >    the ESW_P3_LED_0 pin is high during reset,
+> > 
+> >    or a 20MHz crystal has been selected and
+> >    the ESW_P4_LED_0 pin is high during reset,
+> > 
+> >    then the value of HT_XTAL_FSEL will indicate
+> >    that a 25MHz crystal is present.
+> > 
+> > By default, the state of the LED pins is PHY controlled
+> > to reflect the link state.
+> > 
+> > To illustrate, if a board has:
+> > 
+> >    5 ports with active low LED control,
+> >    and HT_XTAL_FSEL bootstrapped for 40MHz.
+> > 
+> > When the MT7530 is powered up without any external
+> > connection, only the LED associated with Port 3 is
+> > illuminated as ESW_P3_LED_0 is low.
+> > 
+> > In this state, directly after mt7530_setup()'s reset
+> > is performed, the HWTRAP register (0x7800) reflects
+> > the intended HT_XTAL_FSEL (HWTRAP bits 10:9) of 40MHz:
+> > 
+> >    mt7530-mdio mdio-bus:1f: mt7530_read: 00007800 == 00007dcf
+> > 
+> >    >>> bin(0x7dcf >> 9 & 0b11)
+> >    '0b10'
+> > 
+> > But if a cable is connected to Port 3 and the link
+> > is active before mt7530_setup()'s reset takes place,
+> > then HT_XTAL_FSEL seems to be set for 25MHz:
+> > 
+> >    mt7530-mdio mdio-bus:1f: mt7530_read: 00007800 == 00007fcf
+> > 
+> >    >>> bin(0x7fcf >> 9 & 0b11)
+> >    '0b11'
+> > 
+> > Once HT_XTAL_FSEL reflects 25MHz, none of the ports
+> > are functional until the MT7621 (or MT7530 itself)
+> > is reset.
+> > 
+> > By disabling the LED pins just before reset, the chance
+> > of an unintended HT_XTAL_FSEL value is reduced.
+> > 
+> > Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+> > ---
+> >   drivers/net/dsa/mt7530.c | 6 ++++++
+> >   1 file changed, 6 insertions(+)
+> > 
+> > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> > index 3c1f65759..8fa113126 100644
+> > --- a/drivers/net/dsa/mt7530.c
+> > +++ b/drivers/net/dsa/mt7530.c
+> > @@ -2238,6 +2238,12 @@ mt7530_setup(struct dsa_switch *ds)
+> >   		}
+> >   	}
+> > +	/* Disable LEDs before reset to prevent the MT7530 sampling a
+> > +	 * potentially incorrect HT_XTAL_FSEL value.
+> > +	 */
+> > +	mt7530_write(priv, MT7530_LED_EN, 0);
+> > +	usleep_range(1000, 1100);
+> > +
+> >   	/* Reset whole chip through gpio pin or memory-mapped registers for
+> >   	 * different type of hardware
+> >   	 */
 
