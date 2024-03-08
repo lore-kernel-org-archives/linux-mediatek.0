@@ -4,62 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45DEAC54E4A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 14:47:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77063C54E58
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 15:57:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xT4i6PWtcF2FTdAWlP3cUk5y60XrX1sqI6b7YtGd8qY=; b=ANl9KqYFE2Q7I/+45Q1GfFrGxv
-	cxIlJ5rTNE3VM0IreTIpIfA+VZaZFLbkFki/KWtJrUARYRHr89CGxM7Fn9m+2ZbF9T5dLPnXbwga8
-	UFLjWKef6bhHoOEn3BQAvRNmKFCSmXRCOM4xtC8cYUW8c3TJCR7Jo2XSEhiXtf+KbsYJ42EG3pLcG
-	MBwoJHCQ5jFFqMYLzfjKfvWSNG4WBnyNL6cdxiRnoT1MTVeTnkNBaycHeffuTvl8qGSA2cIA3YQ2u
-	Y9ZZmUhmUuoB7gR1eAS94hobKk6WEfaJrh1xZW6frVvcN8SK/C2kDVIZ3C+U+VJ7l0oRToXvIPRhw
-	/rOGx1zA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=m6/3nM23S39S4pKJZmkeak1zOnrkQc/Yy2F/fMuG/HQ=; b=c4P3VtAUrGeRGhewpFEMmYWxDE
+	qoaGvKs8+bKwFs5/dCUARcS9NwW5sUT0KfQYcJUIbrGCPDQSzu6f7zR6JvHj+qgVhaX4jvRyuQ/6V
+	1OYXeNs4d38htFIjj2Ql7zLh3yLdYLRt1ujNbipHi5cGGSkwmj4X3SJtB7r1DA+7jhoNVAIhhFzqv
+	jaBs2AkF25lb9mUGJx1oNjUydX75egiGKg7lWNEvm/CH7MYvoJe1wle9Hh3a5u3NrF9pVCNr3xBP4
+	dK2ggHzqGDGGWFm4tX6ePcSji4XQLvqvOT/Sv4kJYueaF9r0I5DMu3NI66jj1u9+zDiLtN6G+pTwm
+	ZFm+iQCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ribV9-00000009eav-38Bi;
-	Fri, 08 Mar 2024 14:47:11 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1ricbF-0000000A1Cv-101O;
+	Fri, 08 Mar 2024 15:57:33 +0000
+Received: from outgoing1.flk.host-h.net ([188.40.0.86])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ribV5-00000009eZE-3Yad;
-	Fri, 08 Mar 2024 14:47:09 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1ribUk-0000Uk-1r;
-	Fri, 08 Mar 2024 14:46:46 +0000
-Date: Fri, 8 Mar 2024 14:46:33 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: Justin Swartz <justin.swartz@risingedge.co.za>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	id 1ricbB-0000000A1BT-2Btc;
+	Fri, 08 Mar 2024 15:57:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=risingedge.co.za; s=xneelo; h=Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:reply-to:sender:bcc
+	:content-type; bh=m6/3nM23S39S4pKJZmkeak1zOnrkQc/Yy2F/fMuG/HQ=; b=qubvanf5etn
+	vqLx3msSz7cpBTEk8e/pfdiCMKhRwJgzuGIeZ4bmpMEpa7z3pXr1FJFntXLDk1ANyIRcr/ljdwSyq
+	s9cPbyGsmerCO+r9vVgE1t3MvSH0aj3S8OcBhOSlhUoeQwb6cqqNJqg8+C7q9Z7ePOCN/3ZMQvU48
+	kD3+h+la6XV21cv3o7Y3ZlmiWlqvMuUGEGYRUC/PI0VfBkJLlQvGJvqzSamgsPauLPpgoKjfhYOWo
+	4WEtIBmV7UkZKM4IFc1vXxIlWOPpKIy6ZTHWNE3xJ8Xq+BAmtJGSfY4TCCeOyY5reMtiWu3fgKmEw
+	M5mRdZiPV3dFMZ48I3WZiXw==;
+Received: from www31.flk1.host-h.net ([188.40.1.173])
+	by antispam3-flk1.host-h.net with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <justin.swartz@risingedge.co.za>)
+	id 1ricb9-0066J7-DZ; Fri, 08 Mar 2024 17:57:28 +0200
+Received: from [41.144.0.96] (helo=localhost.localdomain)
+	by www31.flk1.host-h.net with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <justin.swartz@risingedge.co.za>)
+	id 1ricb8-0007Wk-IG; Fri, 08 Mar 2024 17:57:27 +0200
+From: Justin Swartz <justin.swartz@risingedge.co.za>
+To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mips@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] net: dsa: mt7530: disable LEDs before reset
-Message-ID: <ZeskyfVuKECkZB1I@makrotopia.org>
-References: <20240305043952.21590-1-justin.swartz@risingedge.co.za>
- <6064ba52-2470-4c56-958c-35632187f148@arinc9.com>
+	linux-mediatek@lists.infradead.org,
+	Justin Swartz <justin.swartz@risingedge.co.za>
+Subject: [PATCH v3 2/3] mips: dts: ralink: mt7621: reorder serial0 properties
+Date: Fri,  8 Mar 2024 17:56:15 +0200
+Message-Id: <20240308155616.11742-3-justin.swartz@risingedge.co.za>
+In-Reply-To: <20240308155616.11742-1-justin.swartz@risingedge.co.za>
+References: <20240308155616.11742-1-justin.swartz@risingedge.co.za>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <6064ba52-2470-4c56-958c-35632187f148@arinc9.com>
+X-Authenticated-Sender: justin.swartz@risingedge.co.za
+X-Virus-Scanned: Clear
+X-Originating-IP: 188.40.1.173
+X-SpamExperts-Domain: risingedge.co.za
+X-SpamExperts-Username: 
+Authentication-Results: host-h.net; auth=pass (login) smtp.auth=@risingedge.co.za
+X-SpamExperts-Outgoing-Class: ham
+X-SpamExperts-Outgoing-Evidence: SB/global_tokens (0.00324362289198)
+X-Recommended-Action: accept
+X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT/gYL8GsDbJ0s3NZ0K970DgPUtbdvnXkggZ
+ 3YnVId/Y5jcf0yeVQAvfjHznO7+bT5wCPRB8bAzJcv2cv+UqiTTc2+CpNcmBnO4XM3Sck4bwNogU
+ WCl1nkLBzZX0KuJ9bXiS85Z42w/+2OBolTNFbPomXFWCX8oNdggW7HE9XDTdSejrkEpbuUvwMvHx
+ 3T+KSG//gbuP7hnUK8NQdLwsVWKIFDZRrTGv3rxiw9tFrqFSCFNiLZt/QXQnOBRD+jq1HsKsDh/6
+ Srgk2K3gr1VBfJbChkYH6fbrypLNrde+UooQVNLReLErukdelEOHUIpaBbp5GdnsN8+UvimwMinK
+ 0+Txhz2u9qvrL2PODYgMZQApJXOjDLkqunZ9NcY2bHZn7CfFscMZZf3sCkN20I5vMh4akiObI7Kj
+ vK7X04QEin24qbfMFd8eGjnYW8aSH5qj4ujh/13psIvqSqJFa1CcANErDW/w69saM9prk3jNnHtn
+ nuEt/J9wDZeQfiNOYsLDFBdwYt2XtlLzy7G7T4kla0JNnAWQx3FS11bhwUa9HCIwKB+TroNcRY33
+ oNmH4nRQzHQazgY7lmveanvOdQzf6IMJ3345q/s6ySNrGnXycmhg3MW3Cu62CB3+QcEeXee7EsSr
+ AP5R/Cae/ZemygD++WnmLtBcNrQxKZYuPe8bdCyw79zlPbqLQkZr26Lcxdvj8cqI+CogZdOhX7v3
+ ClXzrmMENhJLl6MBfhzHVBR0wHQZxzIUka7Uq615Mik1qzcz30+tdk6yIuh9K7v+Nq0Cm3JVhle6
+ F/kpBdN+oWjoATjEFDwcaiz0R34rhTN+GTbl4uS+pZovX9cex7Ac4fawcerGI7TrGXpM/B/M0BZd
+ PfIU1BX7pZc1sE3vsz58auH/srM2fgZ9JmgLbj7sqoEiwv7LCxIiAE5ODMnmwjvj2589zjbyZCiM
+ WpBpW8YvoIIqmZcWhL/r/eFjMjJnMHeiAPOVK0T+c9pM0FteOLwuqFxkZtxbXpCgbiKBsA+Ddi6m
+ awd1jemntr2PrMOTF1fDnHo5A9JQxMw0XtBqT5kbx7zuprmKeJENT1oiQUtfU17WEZPRHu1+r6ov
+ Q/IKaojN7gdb+Glhdb8DP7Iz3Z0Qa+VGiF/lfNRtaK1t4SnssY938wKgOC3c9GkW+OmRHU05XGuW
+ g+VcQ3bZb7F7k2CvWvw8dU3nESJ28XTJU7Gvp0Y54KonFw5sW14IaL2ava+lW1lib5qgpERsDkCX
+ BgcGBwKlYailDNhe7w2QIanZ/NegoJ79AXUnIiEEoyCaZXMG8LAkbJoO2tY/Mg5ClXd30oBm8U++
+ JlmpaolH3tK93iPfP9/Yw4kOlmVPmT/LKBEbhIqMTH2addfJvMIao3tdMh3eFHLYM3A6BXfvel8O
+ EFDbU51Q2S43vcWL3lM20b9wQESc+PquLiZOpxiedGbqX4nzL9MgCv99rrli2UQdOGeuQqV2IVXB
+ o/3R5VqqcOmERbjE+D5FzT0EaduWMjGSdmMR5Ch1HY0a4RW7JP9zvdSGB9tIDxuFtg36jUhUk8/b
+ P2/Mw1j9lmNQqiIAMR1SEszVdPY4ocfmWv3Fe9Iziczdq+A=
+X-Report-Abuse-To: spam@antispamquarantine.host-h.net
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240308_064707_981657_1F147E29 
-X-CRM114-Status: GOOD (  39.05  )
+X-CRM114-CacheID: sfid-20240308_075729_583389_4BD44F76 
+X-CRM114-Status: UNSURE (   9.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,163 +117,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 08, 2024 at 12:51:15PM +0300, Arınç ÜNAL wrote:
-> Hey Justin.
-> 
-> I couldn't find anything on the MT7621 Giga Switch Programming Guide v0.3
-> document regarding which pin corresponds to which bit on the HWTRAP
-> register. There's only this mention on the LED controller section,
-> "hardware traps and LEDs share the same pins in GSW". But page 16 of the
-> schematics document for Banana Pi BPI-R2 [1] fully documents this.
-> 
-> The HWTRAP register is populated right after power comes back after the
-> switch chip is reset [2]. This means any active link before the reset will
-> go away so the high/low state of the pins will go back to being dictated by
-> the bootstrapping design of the board. The HWTRAP register will be
-> populated before a link can be set up.
-> 
-> In conclusion, I don't see any need to disable the LED controller before
-> resetting the switch chip.
-> 
-> [1] https://wiki.banana-pi.org/Banana_Pi_BPI-R2#Documents
-> 
-> [2] I've tested it on my MT7621AT board with a 40MHz XTAL frequency and a
-> board with standalone MT7530 with 25MHz XTAL frequency.
+Reorder serial0 properties according to the guidelines laid
+out in Documentation/devicetree/bindings/dts-coding-style.rst
 
-How many times did you repeat this test to conclude that there is no
-need to disable LEDs before reset?
+Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+---
+ arch/mips/boot/dts/ralink/mt7621.dtsi | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-As Justin is decribing a probabilistic phenomenon ("[...] chance of an
-unintended HT_XTAL_FSEL value is reduced.") I believe running a single
-test is not enough to conlcude anything.
+diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
+index dca415fdd..68467fca3 100644
+--- a/arch/mips/boot/dts/ralink/mt7621.dtsi
++++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
+@@ -115,13 +115,14 @@ serial0: serial@c00 {
+ 			compatible = "ns16550a";
+ 			reg = <0xc00 0x100>;
+ 
++			reg-io-width = <4>;
++			reg-shift = <2>;
++
+ 			clocks = <&sysc MT7621_CLK_UART1>;
+ 
+ 			interrupt-parent = <&gic>;
+ 			interrupts = <GIC_SHARED 26 IRQ_TYPE_LEVEL_HIGH>;
+ 
+-			reg-shift = <2>;
+-			reg-io-width = <4>;
+ 			no-loopback-test;
+ 
+ 			pinctrl-names = "default";
+-- 
 
-I have a hard time believing that he was working on this patch without
-any reason to do so...
-
-
-> 
-> While the kernel was booting, before the DSA subdriver kicks in:
-> - For the board with 40 MHz XTAL: I've connected a Vcc pin to ESW_P3_LED_0
->   to set it high.
-> - For the board with 25 MHz XTAL: I've connected a GND pin to ESW_P3_LED_0
->   to set it low.
-> 
-> Board with 40 MHz XTAL:
-> [    2.359428] mt7530-mdio mdio-bus:1f: MT7530 adapts as multi-chip module
-> [    2.374918] mt7530-mdio mdio-bus:1f: xtal is 25MHz
-> 
-> Board with 25 MHz XTAL:
-> [    4.324672] mt7530-mdio mdio-bus:1f: xtal is 40MHz
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 51d7b816dd02..beab5e5558d0 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -2216,6 +2216,15 @@ mt7530_setup(struct dsa_switch *ds)
->  		return ret;
->  	}
-> +	if ((val & HWTRAP_XTAL_MASK) == HWTRAP_XTAL_25MHZ)
-> +		dev_info(priv->dev, "xtal is 25MHz\n");
-> +
-> +	if ((val & HWTRAP_XTAL_MASK) == HWTRAP_XTAL_40MHZ)
-> +		dev_info(priv->dev, "xtal is 40MHz\n");
-> +
-> +	if ((val & HWTRAP_XTAL_MASK) == HWTRAP_XTAL_20MHZ)
-> +		dev_info(priv->dev, "xtal is 20MHz\n");
-> +
->  	id = mt7530_read(priv, MT7530_CREV);
->  	id >>= CHIP_NAME_SHIFT;
->  	if (id != MT7530_ID) {
-> 
-> Arınç
-> 
-> On 5.03.2024 07:39, Justin Swartz wrote:
-> > Disable LEDs just before resetting the MT7530 to avoid
-> > situations where the ESW_P4_LED_0 and ESW_P3_LED_0 pin
-> > states may cause an unintended external crystal frequency
-> > to be selected.
-> > 
-> > The HT_XTAL_FSEL (External Crystal Frequency Selection)
-> > field of HWTRAP (the Hardware Trap register) stores a
-> > 2-bit value that represents the state of the ESW_P4_LED_0
-> > and ESW_P4_LED_0 pins (seemingly) sampled just after the
-> > MT7530 has been reset, as:
-> > 
-> >      ESW_P4_LED_0    ESW_P3_LED_0    Frequency
-> >      -----------------------------------------
-> >      0               1               20MHz
-> >      1               0               40MHz
-> >      1               1               25MHz
-> > 
-> > The value of HT_XTAL_FSEL is bootstrapped by pulling
-> > ESW_P4_LED_0 and ESW_P3_LED_0 up or down accordingly,
-> > but:
-> > 
-> >    if a 40MHz crystal has been selected and
-> >    the ESW_P3_LED_0 pin is high during reset,
-> > 
-> >    or a 20MHz crystal has been selected and
-> >    the ESW_P4_LED_0 pin is high during reset,
-> > 
-> >    then the value of HT_XTAL_FSEL will indicate
-> >    that a 25MHz crystal is present.
-> > 
-> > By default, the state of the LED pins is PHY controlled
-> > to reflect the link state.
-> > 
-> > To illustrate, if a board has:
-> > 
-> >    5 ports with active low LED control,
-> >    and HT_XTAL_FSEL bootstrapped for 40MHz.
-> > 
-> > When the MT7530 is powered up without any external
-> > connection, only the LED associated with Port 3 is
-> > illuminated as ESW_P3_LED_0 is low.
-> > 
-> > In this state, directly after mt7530_setup()'s reset
-> > is performed, the HWTRAP register (0x7800) reflects
-> > the intended HT_XTAL_FSEL (HWTRAP bits 10:9) of 40MHz:
-> > 
-> >    mt7530-mdio mdio-bus:1f: mt7530_read: 00007800 == 00007dcf
-> > 
-> >    >>> bin(0x7dcf >> 9 & 0b11)
-> >    '0b10'
-> > 
-> > But if a cable is connected to Port 3 and the link
-> > is active before mt7530_setup()'s reset takes place,
-> > then HT_XTAL_FSEL seems to be set for 25MHz:
-> > 
-> >    mt7530-mdio mdio-bus:1f: mt7530_read: 00007800 == 00007fcf
-> > 
-> >    >>> bin(0x7fcf >> 9 & 0b11)
-> >    '0b11'
-> > 
-> > Once HT_XTAL_FSEL reflects 25MHz, none of the ports
-> > are functional until the MT7621 (or MT7530 itself)
-> > is reset.
-> > 
-> > By disabling the LED pins just before reset, the chance
-> > of an unintended HT_XTAL_FSEL value is reduced.
-> > 
-> > Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
-> > ---
-> >   drivers/net/dsa/mt7530.c | 6 ++++++
-> >   1 file changed, 6 insertions(+)
-> > 
-> > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> > index 3c1f65759..8fa113126 100644
-> > --- a/drivers/net/dsa/mt7530.c
-> > +++ b/drivers/net/dsa/mt7530.c
-> > @@ -2238,6 +2238,12 @@ mt7530_setup(struct dsa_switch *ds)
-> >   		}
-> >   	}
-> > +	/* Disable LEDs before reset to prevent the MT7530 sampling a
-> > +	 * potentially incorrect HT_XTAL_FSEL value.
-> > +	 */
-> > +	mt7530_write(priv, MT7530_LED_EN, 0);
-> > +	usleep_range(1000, 1100);
-> > +
-> >   	/* Reset whole chip through gpio pin or memory-mapped registers for
-> >   	 * different type of hardware
-> >   	 */
 
