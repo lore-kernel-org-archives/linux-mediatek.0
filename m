@@ -4,105 +4,154 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5687EC54E4A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 17:02:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 048B7C5475B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 17:14:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Content-Transfer-Encoding:Content-Type:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sRjl7XYl/PGRpGuJTyM07HHols00JQDh+d7SIJ99lF4=; b=yG4fPn7YlS4e2NQhj8S2qOpDZn
-	ua1FWNKOekYUxWy6nT4XQ95NX72BwDx9cIlk1JlvqiXeo/83kPpBVi/AKz7cybQyPB6A6t7N/Fdxm
-	hZGe/Uy5DcIBD74cU2BRVBAapHfHqFiWkuk8hT0b2z3/RtGyapDH0+B+Gm2Z7QV5yBA2vp3Ioy5M6
-	zGIkbBoViZznfemtubf8gpaEwYVqz2x1XQvcq29Ls3Mqfu7PqdpKt5NNQjkkpUSJLFT88hsi2UIlb
-	A2ZPznPNR34lCnQ9Oj5KbRVFcMGAx6YrpbYHJsIAlecT6vjIBu+jLU5B2yNfDROUUKoKcVbpDAwgo
-	uUoak9MQ==;
+	bh=qK1jns3vULEJfy8OFDSsNxpR6piVHIAeHp2yPIJZNeQ=; b=jfOvuRYmFsfSi5KsR6fiYx1UOZ
+	dqYMS9k08OjZ1tmOPTmQ/onq9yxGCftXpCiTdhhKSYTCxpkm8Vj29rVc07yqAylCkWhNOroVFFTR8
+	+jSxC2bAA2z7CvTztJoamRpPmbVChELLqRudN4UjiFUryTJc/kApjcuXGgPyjrcwKiZ4yM1oC0E55
+	F/9fDsZDcMfuKMZGmeLbIeCSQK59JmW5VjYaQpdmwYEggtVhpyx3NgzRMupEGr9hP/UVA581AAPSn
+	LNo7HjigDH5mOpBknr6Jw3KSxIf+cOg/m4AB4VPYXyCGE4A9G9YGSchMGdBfFfKL+fllsMW/cWv3M
+	zGAvVtvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ridbg-0000000AMJ2-2u4y;
-	Fri, 08 Mar 2024 17:02:04 +0000
-Received: from outgoing1.flk.host-h.net ([188.40.0.86])
+	id 1ridnG-0000000AQkV-2Rha;
+	Fri, 08 Mar 2024 17:14:11 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ridbc-0000000AMES-0VgF;
-	Fri, 08 Mar 2024 17:02:03 +0000
+	id 1ridnB-0000000AQip-2LWo
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 08 Mar 2024 17:13:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=risingedge.co.za; s=xneelo; h=Message-ID:References:In-Reply-To:Subject:Cc:
-	To:From:Date:Content-Transfer-Encoding:Content-Type:MIME-Version:reply-to:
-	sender:bcc; bh=sRjl7XYl/PGRpGuJTyM07HHols00JQDh+d7SIJ99lF4=; b=s3msyLbEuJDiD1
-	EvIiS5TeOy8LnDzzJMrgZgRlGKJcKbYV2AgR2Y/bu1JpOUYQ++L5Z08crYWeXefo5mALmVz1Lh56p
-	I/cnm3vaL6qCuU9wmTEajKS+/UezYTYsCmAPozFvMhO6E4AvXQhMupgvWykQRI6WdM8oMgi0PHvU7
-	BEptilxZhFeJg1Wtlz21ZnK8vRks+0805gFAxv8/dQ9JaDNZ7JpC+BeaCOl/fl/EPuAh1O2era/+S
-	MMiPzkjZO1ovOdgkrDlQD+tS4Qisrny0YECCPKW6bCrVqzTIbMtxqKmOawvmt26tXoyBM+pguUihr
-	B0+QRQx8JB9pCiEorWSw==;
-Received: from www31.flk1.host-h.net ([188.40.1.173])
-	by antispam3-flk1.host-h.net with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1ridbU-006Zrv-Gq; Fri, 08 Mar 2024 19:01:54 +0200
-Received: from roundcubeweb1.flk1.host-h.net ([138.201.244.33] helo=webmail9.konsoleh.co.za)
-	by www31.flk1.host-h.net with esmtpa (Exim 4.92)
-	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1ridbT-0003Fr-KO; Fri, 08 Mar 2024 19:01:51 +0200
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=qK1jns3vULEJfy8OFDSsNxpR6piVHIAeHp2yPIJZNeQ=; b=BC0zQX1ICUYPhn4AN8Tcjx2rS0
+	Hh+1ihRE0RubRW+fB/+v0g4lQLnXB4arvy8IAnMOlIp9S4TixRLP7HfFUMP2yGOAH+96zWQSr9hmf
+	pOvDLDmTGm6nVyHLbjmvLjd2gzN2N+iqmY45BSDmeA7RZ6dsHV8rqQQNmEhZ331XozQAB9W0r7YDh
+	f7cP5ClJV2J2nOdOw8ErsLWu9wxKiYoQxFn4OY/WAvd5NWj2KtXaDVi/q/p0jRlWjpRjinBQbewID
+	6+R4IUM7+k52xTjWJFB+BZYYNViPuRGSNPweW9keoSizXOgw0pfz4VkLpB01n6s/XAVKWRq0yoXmP
+	PSwQ4iYw==;
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1ridn7-00000007N2r-1S90
+	for linux-mediatek@lists.infradead.org;
+	Fri, 08 Mar 2024 17:13:55 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-5683093ffbbso1245057a12.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 08 Mar 2024 09:13:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1709918029; x=1710522829; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=qK1jns3vULEJfy8OFDSsNxpR6piVHIAeHp2yPIJZNeQ=;
+        b=utWWTguWQB7ahvDfJSdtAlZiJw/4bUJZc8hO+NxSSzfzenTasep3SBjqU/GV7QGjlO
+         DLWQZx0DQMy2noaXjAvRC47FMZ3kTxGi5Q1A01iD6q9XUTGtBLnODK7KVh9yDFLVN0Sz
+         yqTvqyYoYJQvvX33P5FmOZSaNnxHJ+Wxd7vrgzw2ax1ZCwIhvt391gQAx1i3xpn+s5MF
+         u8noU/jtMq/R/c1E5EY46QMGH3cxmMkt1JjYf+5Ly/gk4xKsFZ8cZdtfRJI3zvyu4eFv
+         JRqD5Gpwn8bMW+T4C8jLDv/I0mECH0W/hEzd6K0AHeMs1KPtEzKx5P0AtNwvR5Ricc7D
+         Rldw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1709918029; x=1710522829;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=qK1jns3vULEJfy8OFDSsNxpR6piVHIAeHp2yPIJZNeQ=;
+        b=svydTOYB7KquCDgidH4xg8hnI00LGxmVacHDtYIy0XIdvHLiTPVWrsr8m28u6yhDqW
+         /mkojZBULNP7cXaA9CLRH+A1W5H5aeQ1Eoo/D7vMQDXbq8CJZybUZl/RipgQqlPXdb5o
+         9rhLSpvzGMjmxnHeuuPJpZeNq9sZv3YfuOFHsiJvKFg1WXfpFXf5BwrLbuN7l3w4UrCR
+         /mgMl6YWtcPrVY/90BLmgrHhNRpfxs4cdHm2e6SYC49dfCUmPf3qAMYDCcjHIITpzrz/
+         9gOBbopB9XvN8TGMvJzzd3H1vBvi2x2DEWEdWrYafqT7nyTOKRKQIH56cigOFmjTHg7A
+         CluQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU8qtQnp/hDu3O+MaeC0XRga694H5PYSh4GKwiOzRZFZ/2fjMDwV81fGZnRcfqY0xCp5lmMEKjbrYqiZY/9r7NTrmoTH/9YXSqklgNa4KZ091m8
+X-Gm-Message-State: AOJu0YxyO+12+Smo8tFMDrCH2D2T+nxVtfsZK1ZJtuKy+rrplTEo77ts
+	jcCIVWcYM+AavxJQef6pANYhyQ6KVl1J5CO2Qxy43D4Tt00JuzvXUQg58/bJADU=
+X-Google-Smtp-Source: AGHT+IHh+jGBt7zZqrF3tzGe26VHugYZd2UpdNjYXqM3HAwtD74nVS84faIgE5NU8u/wZqzcHLtbuw==
+X-Received: by 2002:a50:9505:0:b0:568:1b1b:e221 with SMTP id u5-20020a509505000000b005681b1be221mr2397645eda.25.1709918029169;
+        Fri, 08 Mar 2024 09:13:49 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.222.97])
+        by smtp.gmail.com with ESMTPSA id c21-20020aa7df15000000b005682dfd9182sm725756edy.61.2024.03.08.09.13.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 08 Mar 2024 09:13:48 -0800 (PST)
+Message-ID: <eec5be72-e27f-4068-ac7a-566605f3256c@linaro.org>
+Date: Fri, 8 Mar 2024 18:13:46 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
-Content-Transfer-Encoding: 8bit
-Date: Fri, 08 Mar 2024 19:01:51 +0200
-From: Justin Swartz <justin.swartz@risingedge.co.za>
-To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, linux-mips@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 1/3] mips: dts: ralink: mt7621: associate uart1_pins
  with serial0
-In-Reply-To: <70822db4-d642-4180-9db8-eb0aa5728ef1@arinc9.com>
+Content-Language: en-US
+To: Justin Swartz <justin.swartz@risingedge.co.za>,
+ =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mips@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 References: <20240308155616.11742-1-justin.swartz@risingedge.co.za>
  <20240308155616.11742-2-justin.swartz@risingedge.co.za>
  <70822db4-d642-4180-9db8-eb0aa5728ef1@arinc9.com>
-Message-ID: <bec06da5c4099898d9e531181d0797ca@risingedge.co.za>
-X-Sender: justin.swartz@risingedge.co.za
-User-Agent: Roundcube Webmail/1.3.17
-X-Authenticated-Sender: justin.swartz@risingedge.co.za
-X-Virus-Scanned: Clear
-X-Originating-IP: 188.40.1.173
-X-SpamExperts-Domain: risingedge.co.za
-X-SpamExperts-Username: 
-Authentication-Results: host-h.net; auth=pass (login) smtp.auth=@risingedge.co.za
-X-SpamExperts-Outgoing-Class: ham
-X-SpamExperts-Outgoing-Evidence: Combined (0.03)
-X-Recommended-Action: accept
-X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT+Ii1571bF7nYhcAwAFtCT5PUtbdvnXkggZ
- 3YnVId/Y5jcf0yeVQAvfjHznO7+bT5wCPRB8bAzJcv2cv+UqiTTc2+CpNcmBnO4XM3Sck4bwNogU
- WCl1nkLBzZX0KuJ9bXiS85Z42w/+2OBolTNFbPomXFWCX8oNdggW7HE9XDTdSejrkEpbuUvwMvHx
- 3T+KSG//gbuP7hnUK8NQdLwsVWKIFDZRrTGv3rxiw9tFrqFSCFNiLZt/QXQnOBRD+jq1HsKsDh/6
- Srgk2K3gr1VBfJbChkYH6fbrypLNrde+UooQVNLReLErukdelEOHUIpaBbp5GdnsN8+UvimwMinK
- 0+Txhz2u9qvrL2PODYgMZQApJXOjDLkqunZ9NcY2bHZn7CfFscMZZf3sCkN20I5vMh4akiObI7Kj
- vK7X04QEin24qbfMFd8eGjnYW8aSH5qj4ujh/13psIvqSqJFa1CcANErDW/w69saM9prk3jNnHtn
- nuEt/J9wDZeQfiNOYsLDFBdwYt2XtlLzy7G7T4kla0JNnAWQx3FS11bhwUa9HCIwKB+TroNcRY33
- oNmH4nRQzHQazgY7lmveanvOdQzf6IMJ3345q/s6ySNrGnXycmhg3NT7e1QHD5IMWQJA50ktgR2o
- naNQbqJUPRwZtKOTN8gOLtBcNrQxKZYuPe8bdCyw79zlPbqLQkZr26Lcxdvj8cqI+CogZdOhX7v3
- ClXzrmMENhJLl6MBfhzHVBR0wHQZxzIUka7Uq615Mik1qzcz30+tdk6yIuh9K7v+Nq0Cm3JVhle6
- F/kpBdN+oWjoATjEFDwcaiz0R34rhTN+GTbl4uS+pZovX9cex7Ac4fawcerGI7TrGXpM/B/M0BZd
- PfIU1BX7pZc1sE3vsz58auH/srM2fgZ9JmgLbj7sqoEiwv7LCxIiAE5ODMnmwjvj2589zjbyZCiM
- WpBpW8YvoIIqmZcWhL/r/eFjMjJnMHeiAPOVAT1rE1/vP68Bb4z3v3h3gCdXrv2+9GnNX30LKqXb
- fwFKgm/rnYBl+Mj5KqOl6Jzub/f3QhLRbOgisvi5VU9eNBtgo6zjiatjNO/pnMCjuIvXs/AyV/Ns
- URB/R+FlEHyAzksgfaRvdgw0WK34QWnzHHMcN6qoXPjenLhIOF1oeRYbjF1Hp647mOWoQlc3hL3c
- dBMSQgQtiTUcJp5roVy0aRtSNV8PU3+FWuyIQnbx8eB4u/m4iBmYb1/LCV4/EuVHup06w3Vwxf9C
- F7D6LKKRTfdjzQ6YC7Heg3Xf7O1TOd6RcY/MXB8eEq3bCN2QohZvyS03iBmgsz450Kmjd3fGV2Jt
- unc/A+T40yFOxOeH+1yxtZHZOXSNzt6etGjYKTk8Ibtf63VNbf0lrvssY+k7AHGi1NevGWTo2+h8
- Lhk4HCeZR7ymlGVRtthBJ2y8A5arx6JItKpFaUNPGMMlvbMX0nyK1NiAJ0y2Qvvn6ds6mor35w4f
- SfHzQbABJfgy21HclcZkPRq7NhoxyMwqi8Q23Rgadfh5T5n5D4OHHpbEIgsllZKWnzc5M5WlNtVJ
- qo05MS+4ayUpOtEhdxekWDmK9g==
-X-Report-Abuse-To: spam@antispamquarantine.host-h.net
+ <bec06da5c4099898d9e531181d0797ca@risingedge.co.za>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <bec06da5c4099898d9e531181d0797ca@risingedge.co.za>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240308_090200_248615_D4663B13 
-X-CRM114-Status: UNSURE (   6.68  )
+X-CRM114-CacheID: sfid-20240308_171353_604428_ED63B2C6 
+X-CRM114-Status: UNSURE (   8.63  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -118,20 +167,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024-03-08 18:14, Arınç ÜNAL wrote:
-> On 08/03/2024 18:56, Justin Swartz wrote:
->> Add missing pinctrl-name and pinctrl-0 properties to declare
->> that the uart1_pins group is associated with serial0.
->> 
->> Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
->> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+On 08/03/2024 18:01, Justin Swartz wrote:
+> On 2024-03-08 18:14, Arınç ÜNAL wrote:
+>> On 08/03/2024 18:56, Justin Swartz wrote:
+>>> Add missing pinctrl-name and pinctrl-0 properties to declare
+>>> that the uart1_pins group is associated with serial0.
+>>>
+>>> Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+>>> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+>>
+>> Reviewed-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>
+>> Please add the trailers from previous patch versions from now on.
 > 
-> Reviewed-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> 
-> Please add the trailers from previous patch versions from now on.
+> What do you mean by trailers?
 
-What do you mean by trailers?
+https://elixir.bootlin.com/linux/v6.5-rc3/source/Documentation/process/submitting-patches.rst#L577
 
-Regards
-Justin
+Best regards,
+Krzysztof
+
 
