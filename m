@@ -4,78 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D520EC5475B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 13:02:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32B5CC54E4A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 13:22:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Content-Transfer-Encoding:Content-Type:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tS/fUblKGmkjElmKOeg0k72aXdwBWcqJOUzZmrTMGZY=; b=4VMgFJinTnNIYYwXi9vUSE7el/
-	TbL9VqoDepbVuAFBMOAvAg3MzBvpcVRVv3Wq6AYQXEnuyzDClqma7E66UWeVgjzofg8jUQqqhmE91
-	mwGHkPfUNilY7vpaMtgA8uYHhfUxyNDmhHIO6eMWm/xu+pWNm/naMiWq65u968qr28MWbgwN1YB+n
-	0DlwyLVMvJ3S/5XwVI+ngnsfuIH21yr5JD3l20qgQ2cPqtLTbzj5b4ValfRIuKfAUEXTqE3nFyTLr
-	OZUSwQeX6ow9WuGTOIg92gKfvxG/cFQGGLIW30Z/zKqFi5iRmb9jdo6shGAwd7icjYHF/lGodQdnM
-	ruC26mWA==;
+	bh=ObvZZnhqWGMMI4j2NDLft9bUQX4DpsXHSeMG4OORKkw=; b=i3+qdQXrtdiIsBeT6tEIA3n1+W
+	MDp2WlePZ3EN0iWE8vHiUDB8LAQ1M7hEBA+L9thRSdncku/3SfYLdqImq/pyF1U9/TyldI7VXWCYR
+	n5ikV2rcqJGky7FMVDDXf4EAoXLYyREeQ++7jHnKwBsXTnMy58NipX+mNF8XTYQ7obJHKd5FUZ62T
+	E+X7AvufuN3WGMBRBZLuL0Y0HxtuV6EBJJjEI1Wfm/04E+dwcmtOlJxrgDMD4RCTKpbBWpBgYU9a2
+	ly1fc8anPua3tLjwBZ32vfT8eHh9nLkfcOUOkgcNBZgR6m3sYJnL39QB4inodUCDbyCJrAW1fu1sg
+	hUH/Xabg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riZs5-00000009Ctx-0rby;
-	Fri, 08 Mar 2024 13:02:45 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1riaAj-00000009GuK-2Ab4;
+	Fri, 08 Mar 2024 13:22:01 +0000
+Received: from outgoing1.flk.host-h.net ([188.40.0.86])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riZs0-00000009CtB-2GF0;
-	Fri, 08 Mar 2024 13:02:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709902958;
-	bh=I5YqwpsiX0KclggNHlj9WYV+KI4BcMpB3JvbIPa7aE8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=r9xrE2nabgTtZAH/PPwUSYXsCuq1IRkOzlpGXqpMVx5LSMT05p6H/i88jyvzyB6Wh
-	 PE7EdHwWohUfzABm8rD5N1ghF0/MjwxqPN5aBBOW5dIlUm/F/aLWGOqEWqnGQHLVo7
-	 ULBh85CVs3dXCZOxihT5QadU54uug8BnLDGprKySAr3NvgO6ztAGYi7BOkRqk1HyC4
-	 adRXIcKRw8ZvpLpWhciUs+rAi8kUB1HAcULzUrZmcXbKi6Lgu3bxdd9LzKRF6LQ6m/
-	 BarzvfjjTD9u4Vxk1afjkPHnrdodV0RKzhsNAv0HvQQNbuHE2iZb29zOiNgR2v9BsX
-	 fbYrdehduz7vQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 50CC937813CA;
-	Fri,  8 Mar 2024 13:02:37 +0000 (UTC)
-Message-ID: <fb9d4791-73e2-491a-8117-e8e5f811fe7a@collabora.com>
-Date: Fri, 8 Mar 2024 14:02:36 +0100
+	id 1riaAf-00000009Gs2-23c2;
+	Fri, 08 Mar 2024 13:22:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=risingedge.co.za; s=xneelo; h=Message-ID:References:In-Reply-To:Subject:Cc:
+	To:From:Date:Content-Transfer-Encoding:Content-Type:MIME-Version:reply-to:
+	sender:bcc; bh=ObvZZnhqWGMMI4j2NDLft9bUQX4DpsXHSeMG4OORKkw=; b=Z4ifZzY7EFOSBl
+	bfNwVlfUzqlHP03HuxgoOCSCCl48qdE9/Ah2FQxCue3ZJbiJ37e4wOro0gYTKoXY9vk9CISeT1aAY
+	vVC62HCa5+G5FRinzgL/kYqFCKf5TESpoL3Wz80oQ5q3c4X2pEsW+QS4pQICN5rfl8b1BigPAI6D5
+	+k7VO2Ensq0vUZBxlAPKm++oMmnwk8slRia+WEpmMYxsoJUg24MzvFv3kytpz3vw4ROjB3EKebJiR
+	9rfyBbCo1eNf+Lpz7VNqOi8D4PFvjo1FlOijNII1qXfaQAEMjHAUFLZydPVxinWJddty6o4Cf45Q1
+	42HAVyVxPoJy3RiR4/4A==;
+Received: from www31.flk1.host-h.net ([188.40.1.173])
+	by antispam3-flk1.host-h.net with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <justin.swartz@risingedge.co.za>)
+	id 1riaAT-004l26-AV; Fri, 08 Mar 2024 15:21:48 +0200
+Received: from roundcubeweb1.flk1.host-h.net ([138.201.244.33] helo=webmail9.konsoleh.co.za)
+	by www31.flk1.host-h.net with esmtpa (Exim 4.92)
+	(envelope-from <justin.swartz@risingedge.co.za>)
+	id 1riaAS-0000N5-92; Fri, 08 Mar 2024 15:21:44 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] PCI: mediatek-gen3: Assert MAC reset only if PHY reset
- also present
-Content-Language: en-US
-To: =?UTF-8?B?Smlhbmp1biBXYW5nICjnjovlu7rlhpsp?= <Jianjun.Wang@mediatek.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "wenst@chromium.org" <wenst@chromium.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "bhelgaas@google.com" <bhelgaas@google.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
- Ryder Lee <Ryder.Lee@mediatek.com>,
- "nfraprado@collabora.com" <nfraprado@collabora.com>
-References: <20240229092449.580971-1-angelogioacchino.delregno@collabora.com>
- <30824df32636dec25b9a5972b1ee8de76b295feb.camel@mediatek.com>
- <c55f2c6e-1de8-4248-a52a-d6c9e49b565a@collabora.com>
- <8a5a695ccbc4401954f7df5a9690af726fc59173.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <8a5a695ccbc4401954f7df5a9690af726fc59173.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
 Content-Transfer-Encoding: 8bit
+Date: Fri, 08 Mar 2024 15:21:44 +0200
+From: Justin Swartz <justin.swartz@risingedge.co.za>
+To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
+Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, linux-mips@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] mips: dts: ralink: mt7621: add cell count properties
+ to usb
+In-Reply-To: <c445fd12-f8a8-41df-bee8-8b126b26110b@arinc9.com>
+References: <0001-mips-dts-ralink-mt7621-add-cell-count-properties-to-.patch>
+ <20240307223756.31643-1-justin.swartz@risingedge.co.za>
+ <c445fd12-f8a8-41df-bee8-8b126b26110b@arinc9.com>
+Message-ID: <067071a9d57ffb09f437718cf905b121@risingedge.co.za>
+X-Sender: justin.swartz@risingedge.co.za
+User-Agent: Roundcube Webmail/1.3.17
+X-Authenticated-Sender: justin.swartz@risingedge.co.za
+X-Virus-Scanned: Clear
+X-Originating-IP: 188.40.1.173
+X-SpamExperts-Domain: risingedge.co.za
+X-SpamExperts-Username: 
+Authentication-Results: host-h.net; auth=pass (login) smtp.auth=@risingedge.co.za
+X-SpamExperts-Outgoing-Class: ham
+X-SpamExperts-Outgoing-Evidence: Combined (0.02)
+X-Recommended-Action: accept
+X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT+eZKPMCAkNhsVy7Wze5JuSPUtbdvnXkggZ
+ 3YnVId/Y5jcf0yeVQAvfjHznO7+bT5wCPRB8bAzJcv2cv+UqiTTc2+CpNcmBnO4XM3Sck4bwNogU
+ WCl1nkLBzZX0KuJ9bXiS85Z42w/+2OBolTNFbPomXFWCX8oNdggW7HE9XDTdSejrkEpbuUvwMvHx
+ 3T+KSG//gbuP7hnUK8NQdLwsVWKIFDZRrTGv3rxiw9tFrqFSCFNiLZt/QXQnOBRD+jq1HsKsDh/6
+ Srgk2K3gr1VBfJbChkYH6fbrypLNrde+UooQVNLReLErukdelEOHUIpaBbp5GdnsN8+UvimwMinK
+ 0+Txhz2u9qvrL2PODYgMZQApJXOjDLkqunZ9NcY2bHZn7CfFscMZZf3sCkN20I5vMh4akiObI7Kj
+ vK7X04QEin24qbfMFd8eGjnYW8aSH5qj4ujh/13psIvqSqJFa1CcANErDW/w69saM9prk3jNnHtn
+ nuEt/J9wDZeQfiNOYsLDFBdwYt2XtlLzy7G7T4kla0JNnAWQx3FS11bhwUa9HCIwKB+TroNcRY33
+ oNmH4nRQzHQazgY7lmveanvOdQzf6IMJ3345q/s6ySNrGnXycmhg3OV3zLgvFM9V92BlAE9xGCJ0
+ xYCHwzEoZpUBagq+YQPMLtBcNrQxKZYuPe8bdCyw79zlPbqLQkZr26Lcxdvj8cqI+CogZdOhX7v3
+ ClXzrmMENhJLl6MBfhzHVBR0wHQZxzIUka7Uq615Mik1qzcz30+tdk6yIuh9K7v+Nq0Cm3JVhle6
+ F/kpBdN+oWjoATjEFDwcaiz0R34rhTN+GTbl4uS+pZovX9cex7Ac4fawcerGI7TrGXpM/B/M0BZd
+ PfIU1BX7pZc1sE3vsz58auH/srM2fgZ9JmgLbj7sqoEiwv7LCxIiAE5ODMnmwjvj2589zjbyZCiM
+ WpBpW8YvoIIqmZcWhL/r/eFjMjJnMHeiAPOVAT1rE1/vP68Bb4z3v3h3gCdXrv2+9GnNX30LKqXb
+ fwFKgm/rnYBl+Mj5KqOl6Jzub/f3QhLRbOgisvi5VU9eNBtgo6zjiatjNO/pnMCjuIvXs/AyV/Ns
+ URB/R+FlEHyAzksgfaRvdgw0WK34QWnzHHMcN6qoXPjenLhIOF1oeRYbjF1Hp647mOWoQlc3hL3c
+ dBMSQgQtiTUcJp5roVy0aeRaEElbOe2fP+D3ZzQfg594u/m4iBmYb1/LCV4/EuVHup06w3Vwxf9C
+ F7D6LKKRTfdjzQ6YC7Heg3Xf7O1TOd6RcY/MXB8eEq3bCN2QohZvyS03iBmgsz450Kmjd3fGV9di
+ 8pECEDQlq6/G7i+xG+VFX/95gERVFH1TbKdKoLY3Ibtf63VNbf0lrvssY+k7AHGi1NevGWTo2+h8
+ Lhk4HCeZR7ymlGVRtthBJ2y8A5arx6JItKpFaUNPGMMlvbMX0nyK1NiAJ0y2Qvvn6ds6mor35w4f
+ SfHzQbABJfgy21HclcZkPRq7NhoxyMwqi8Q23Rgadfh5T5n5D4OHHpbEIgsllZKWnzc5M5WlNtVJ
+ qo05MS+4ayUpOtEhdxekWDmK9g==
+X-Report-Abuse-To: spam@antispamquarantine.host-h.net
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240308_050240_786769_1934F578 
-X-CRM114-Status: GOOD (  22.43  )
+X-CRM114-CacheID: sfid-20240308_052157_573986_3FF7B673 
+X-CRM114-Status: GOOD (  18.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,186 +117,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/03/24 10:44, Jianjun Wang (王建军) ha scritto:
-> On Wed, 2024-03-06 at 09:50 +0100, AngeloGioacchino Del Regno wrote:
->> Il 01/03/24 03:48, Jianjun Wang (王建军) ha scritto:
->>> Hi Angelo,
->>>
->>> Thanks for your patch.
->>>
->>> On Thu, 2024-02-29 at 10:24 +0100, AngeloGioacchino Del Regno
->>> wrote:
->>>> Some SoCs have two PCI-Express controllers: in the case of
->>>> MT8195,
->>>> one of them is using a dedicated PHY, but the other uses a combo
->>>> PHY
->>>> that is shared with USB and in that case the PHY cannot be reset
->>>> from the PCIe driver, or USB functionality will be unable to
->>>> resume.
->>>>
->>>> Resetting the PCIe MAC without also resetting the PHY will result
->>>> in
->>>> a full system lockup at PCIe resume time and the only option to
->>>> resume operation is to hard reboot the system (with a PMIC cut-
->>>> off).
->>>>
->>>> To resolve this issue, check if we've got both a PHY and a MAC
->>>> reset
->>>> and, if not, never assert resets at PM suspend time: in that
->>>> case,
->>>> the link is still getting powered down as both the clocks and the
->>>> power domains will go down anyway.
->>>>
->>>> Fixes: d537dc125f07 ("PCI: mediatek-gen3: Add system PM support")
->>>> Signed-off-by: AngeloGioacchino Del Regno <
->>>> angelogioacchino.delregno@collabora.com>
->>>> ---
->>>>
->>>> Changes in v2:
->>>>    - Rebased over next-20240229
->>>>
->>>>    drivers/pci/controller/pcie-mediatek-gen3.c | 25
->>>> ++++++++++++++-----
->>>> --
->>>>    1 file changed, 17 insertions(+), 8 deletions(-)
->>>>
->>>> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c
->>>> b/drivers/pci/controller/pcie-mediatek-gen3.c
->>>> index 975b3024fb08..99b5d7a49be1 100644
->>>> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
->>>> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
->>>> @@ -874,17 +874,26 @@ static int mtk_pcie_power_up(struct
->>>> mtk_gen3_pcie *pcie)
->>>>    	return err;
->>>>    }
->>>>    
->>>> -static void mtk_pcie_power_down(struct mtk_gen3_pcie *pcie)
->>>> +static void mtk_pcie_power_down(struct mtk_gen3_pcie *pcie, bool
->>>> is_suspend)
->>>>    {
->>>> +	bool suspend_reset_supported = pcie->mac_reset && pcie-
->>>>> phy_reset;
->>>>
->>>> +
->>>>    	clk_bulk_disable_unprepare(pcie->num_clks, pcie->clks);
->>>>    
->>>>    	pm_runtime_put_sync(pcie->dev);
->>>>    	pm_runtime_disable(pcie->dev);
->>>> -	reset_control_assert(pcie->mac_reset);
->>>> +
->>>> +	/*
->>>> +	 * Assert MAC reset only if we also got a PHY reset, otherwise
->>>> +	 * the system will lockup at PM resume time.
->>>> +	 */
->>>> +	if (is_suspend && suspend_reset_supported)
->>>> +		reset_control_assert(pcie->mac_reset);
->>>>    
->>>>    	phy_power_off(pcie->phy);
->>>>    	phy_exit(pcie->phy);
->>>> -	reset_control_assert(pcie->phy_reset);
->>>> +	if (is_suspend && suspend_reset_supported)
->>>> +		reset_control_assert(pcie->phy_reset);
->>>>    }
->>>>    
->>>>    static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
->>>> @@ -920,7 +929,7 @@ static int mtk_pcie_setup(struct
->>>> mtk_gen3_pcie
->>>> *pcie)
->>>>    	return 0;
->>>>    
->>>>    err_setup:
->>>> -	mtk_pcie_power_down(pcie);
->>>> +	mtk_pcie_power_down(pcie, false);
->>>>    
->>>>    	return err;
->>>>    }
->>>> @@ -951,7 +960,7 @@ static int mtk_pcie_probe(struct
->>>> platform_device
->>>> *pdev)
->>>>    	err = pci_host_probe(host);
->>>>    	if (err) {
->>>>    		mtk_pcie_irq_teardown(pcie);
->>>> -		mtk_pcie_power_down(pcie);
->>>> +		mtk_pcie_power_down(pcie, false);
->>>>    		return err;
->>>>    	}
->>>>    
->>>> @@ -969,7 +978,7 @@ static void mtk_pcie_remove(struct
->>>> platform_device *pdev)
->>>>    	pci_unlock_rescan_remove();
->>>>    
->>>>    	mtk_pcie_irq_teardown(pcie);
->>>> -	mtk_pcie_power_down(pcie);
->>>> +	mtk_pcie_power_down(pcie, false);
->>>
->>> Is there any reason not to reset the MAC and PHY when probe fails
->>> and
->>> driver removing? Some SoCs may not have MTCMOS to cut off their
->>> power,
->>> we need to assert the reset signal to save power in that case.
->>>
->>
->> Sorry for the late reply - yes, there is a reason.
->>
->> On platforms needing this quirk, resetting at .remove() time will
->> hang the
->> machine if the module is reinserted later (hence, .probe() called at
->> a later
->> time).
+
+On 2024-03-08 14:01, Arınç ÜNAL wrote:
+> On 8.03.2024 01:37, Justin Swartz wrote:
+>> Add default #address-cells and #size-cells properties to the
+>> usb node, which should be suitable for hubs and devices without
+>> explicitly declared interface nodes, as:
+>> 
+>>    "#address-cells":
+>>      description: should be 1 for hub nodes with device nodes,
+>>        should be 2 for device nodes with interface nodes.
+>>      enum: [1, 2]
+>> 
+>>    "#size-cells":
+>>      const: 0
+>> 
+>> -- Documentation/devicetree/bindings/usb/usb-device.yaml
+>> 
+>> This version of the patch places the properties according to
+>> the order recommended by:
+>> 
+>>     Documentation/devicetree/bindings/dts-coding-style.rst
+>> 
+>> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+>> ---
+>>   arch/mips/boot/dts/ralink/mt7621.dtsi | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>> 
+>> diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi 
+>> b/arch/mips/boot/dts/ralink/mt7621.dtsi
+>> index 5a89f0b8c..7532e17dd 100644
+>> --- a/arch/mips/boot/dts/ralink/mt7621.dtsi
+>> +++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
+>> @@ -289,10 +289,10 @@ usb: usb@1e1c0000 {
+>>   		reg = <0x1e1c0000 0x1000
+>>   		       0x1e1d0700 0x0100>;
+>>   		reg-names = "mac", "ippc";
+>> -
+>> +		#address-cells = <1>;
+>> +		#size-cells = <0>;
+>>   		clocks = <&sysc MT7621_CLK_XTAL>;
+>>   		clock-names = "sys_ck";
+>> -
 > 
-> Does this only happen when the PCIe MAC is reset without resetting the
-> PHY? Is it related to the reset framework?
-> 
+> Please keep the empty lines. It's easier to read. I don't see anything 
+> on
+> the Devicetree Sources (DTS) Coding Style that would restrict this.
 
-Happens only when MAC is reset without resetting the PHY after calling
-phy_power_off(); phy_exit();
+The reason I removed them was due to the SoC DTSI example shown in [1]
+lacking empty lines between properties, but then using them instead as
+visual separation between properties and child nodes, or at least that's
+how I understood it when I looked at it.
 
-It's not a reset framework issue, that's for sure.
+Personally, I prefer the look of the SoC DTSI example - but I don't mind
+recreating the patch set with the empty lines between the properties 
+left
+entact.
 
-Angelo
+As there is a mix of property spacing and ordering styles in mt7621.dtsi
+already - what is the consensus on what a node in this file should look
+like?
 
-> Thanks.
->>
->> Regards,
->> Angelo
->>
->>> Thanks.
->>>
->>>>    }
->>>>    
->>>>    static void mtk_pcie_irq_save(struct mtk_gen3_pcie *pcie)
->>>> @@ -1044,7 +1053,7 @@ static int mtk_pcie_suspend_noirq(struct
->>>> device
->>>> *dev)
->>>>    	dev_dbg(pcie->dev, "entered L2 states successfully");
->>>>    
->>>>    	mtk_pcie_irq_save(pcie);
->>>> -	mtk_pcie_power_down(pcie);
->>>> +	mtk_pcie_power_down(pcie, true);
->>>>    
->>>>    	return 0;
->>>>    }
->>>> @@ -1060,7 +1069,7 @@ static int mtk_pcie_resume_noirq(struct
->>>> device
->>>> *dev)
->>>>    
->>>>    	err = mtk_pcie_startup_port(pcie);
->>>>    	if (err) {
->>>> -		mtk_pcie_power_down(pcie);
->>>> +		mtk_pcie_power_down(pcie, false);
->>>>    		return err;
->>>>    	}
->>>>    
->>
->>
->>
+I also don't mind following that pattern and cleaning up the whole dtsi
+according to that if it'll save us all time and energy in future.
 
--- 
-AngeloGioacchino Del Regno
-Senior Software Engineer
+Regards
+Justin
 
-Collabora Ltd.
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
-Registered in England & Wales, no. 5513718
-
+[1] https://docs.kernel.org/devicetree/bindings/dts-coding-style.html
 
