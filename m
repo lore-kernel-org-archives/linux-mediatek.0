@@ -4,66 +4,160 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AA67C5475B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 08:38:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB1E8C5475B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 08:41:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q9+qPHkMLozkGbSHmqvMLLk98n1LQLLDqZWufi8WqE8=; b=i6WDO9FQPNMELAl7eLN5g1IT7p
-	Dnq32R/mSAdsl4ovDxICtw4a57u3wU1aFp0WKQ3cI/V7nP63aPwNLcANqlPXbOQrtR8iVPGWbbC/+
-	tFiFQU2WV+pMSf+zQB3auBdOZp4B52JIXujIuN2Q4XB02uMkQwbrT0JhqbQHDmft4WxSQeXCqv/Wy
-	Uiq/qcssfdxRz+PebUoKt2crnYb+75kJTush1OsyuL7sjUn/NepoFAATieXEEzWLeRyb7v+dYDlnu
-	6DhE+vZAMa7m3cmDekgGPbtPUk0eN5d04ZL6198BOIb7gtuKl6eJldFkHexBZiMDOO3NhEEQhJrdG
-	lrdTqTMw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W/tU78b3cQ2nHoXzrFz0p4lDm12FbH+qSwTO55F2efI=; b=x4EWETVLRMj1KL5hxJEDX7jr6i
+	odRrBuw8oVM92N7SgYsarEAMBBI87isX8Dtv/M+ziLDwbgkXiUmiAOnOd/ruIrnVJg7Q38T6eY9gt
+	TAzOYgM4o/cd1K1VlWcJebx198wUPpZZzegAjO75PxL+zyYdx5yetLMCGQm8bOywQ4+uteVZOx1nw
+	7jAwQgbUYhjAPxg6HdhWBIQmBey1JA0Eiv+eo2gBiP7dkGVbtN3HAsL2F1TDbZ6S1F4MxnyLScxR5
+	UfHqDc2wStMzpUlHcdY3CKATvfFARj3XG0WKCVHf4jl8ixAfFtI6rLQi3qkytBlFwetZ5AIa0retV
+	jmTmvSVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riVkA-00000008M0P-2Ic4;
-	Fri, 08 Mar 2024 08:38:18 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1riVnM-00000008NA5-1H6Y;
+	Fri, 08 Mar 2024 08:41:36 +0000
+Received: from esa1.hgst.iphmx.com ([68.232.141.245])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riVk7-00000008LyB-0gCh;
-	Fri, 08 Mar 2024 08:38:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709887092;
-	bh=x/iJ/njqsFro++xvJFXW2s3sHRF1jcLiv3ix3nVesq8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=v9NtW7BedkJvfuiL7yLJL7SveyiayjRZzA62fg0l/uLog+i05oBxPbaIDGmI9/IoQ
-	 2Ti8emiQYx98Q2cY5JQ1zkE6IuklbIpDSQL0rWTNta/a90cBsPHbDX72AC1/KH8zvj
-	 /ccP/Q5HX53OdIUBw95nwy60kIBeK5nPLHwOgTMkwbOohkmapQ1FlIcjabl57rhUcF
-	 VSDoz8kkZGFLRDLadN2rRWOVCFsas3F3q0VGeFL7ITlr5a7gZHMezCaqs/BbZF1MWZ
-	 7RupJ3NQaV7ZFSPnP38iF+niUSlhW1Y4RPqKMqPx6R5nNCeeHTTyYAY6qBFVa3xFzV
-	 FXjDwzVhAB+3w==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 6903337813CA;
-	Fri,  8 Mar 2024 08:38:11 +0000 (UTC)
-Message-ID: <89d6a820-d510-4549-8097-76670fa36e6a@collabora.com>
-Date: Fri, 8 Mar 2024 09:38:10 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] dt-bindings: timer: mediatek: Convert to json-schema
+	id 1riVnJ-00000008N7e-2Dg6
+	for linux-mediatek@lists.infradead.org;
+	Fri, 08 Mar 2024 08:41:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+  t=1709887293; x=1741423293;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=i8v6S6oGZ7WliTMyCZ2B2Edwil4TkrpL8LnXU5YkHNs=;
+  b=WErJ80fnymp1LAmL773VANBOicdrjCUaNDXSsAz0UrNQ9F/CuK+qIKaW
+   2wolG6Dzoo3VoOPAlXRyz/vSnbvT2BFW9mmkCHHTmbsSljF53v03v0cH3
+   XFoaF9pqkIu593pVVVx5JNQNgUHohYU1n53griE55Ko8yf70Jcb/gd/KN
+   SW+UfcdtHrgteZvXKYZm1Iep2OaSeFqSKlzA+sUBwWZNjl7/9MxI6w3FA
+   oLucbzxYt/FZY/SYnVDb1RgOgmF4hy7V9hwza+vjRhhfH0mkhGg1YSp/z
+   vXTx/1+0P8pCbWYr8pY4urZ9VclhxodBeGuvgmax5NfK4YXokKN720h5E
+   w==;
+X-CSE-ConnectionGUID: YvNFypSdQZ2PAmF5M6fNcw==
+X-CSE-MsgGUID: EPqiZYFvTeuCz8sWGsFCNA==
+X-IronPort-AV: E=Sophos;i="6.07,109,1708358400"; 
+   d="scan'208";a="11358316"
+Received: from mail-dm6nam11lp2169.outbound.protection.outlook.com (HELO NAM11-DM6-obe.outbound.protection.outlook.com) ([104.47.57.169])
+  by ob1.hgst.iphmx.com with ESMTP; 08 Mar 2024 16:41:28 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=YcuWi+gA2eaW7XT6M1e4npZmGE31x+d2rMPrBdwKrxU/XFVaRBBWHd8mS3DkF3rBlqJ02Jvel3SQTpQgUnVRM/G5HzMT50Ke6ySbjAEEwbi0jUs+geg8t+BWA8p6MXM7Hia5+CGRDSHU3jHckucWVA4ZMUQY77hu/61ZuX8pA+zHqgMh2wwQBvzwgUDRKgOXRvDEUQRQfhNGkqYfYRnzAplHW30z91lpB08h9kXye/OhoVcoL5XUj0HYWDhwRAmijhzc4UyUnncH2IIpBkkWMiUM1JCyJ/PQ5clFY8lkGD8L4TsefoMyXeGzEOob7/TNstLN1OoILUESx8Rur1w4mQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=W/tU78b3cQ2nHoXzrFz0p4lDm12FbH+qSwTO55F2efI=;
+ b=k5/LCY452/6C3NC0Re06hJhhTLCzRHs8pU2riB442o3V1JS/vqZPkfLK5GMaBfO/VQeuBwa6EjhtbWHpfa3SzhTk8PjkIIFiXXlJtNFjVQ0hsIZREqRryaZ5kF+UR3rIMQSAB9tL5iXdVCtMoMJ/bIX783QrpqK3fuS5bWkz8VeUf5DJ9HgOCaRXM4DkSQZW7YAMlKGVzGIz61A9nu6fqY0SIdG4liEewkfCpQ9uRWLkZoJAYHb/n4GYdyRE1N1H3CmraRZ9bkWTsiijFMO4TaWN2ZG0Mj029ogOLFy+qA0i5IaauZ+wBYc3YUujcXsuVxIwAs6dpcevA+c0nOvmAw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=W/tU78b3cQ2nHoXzrFz0p4lDm12FbH+qSwTO55F2efI=;
+ b=Ud4O07jU5J0N0fy0VFL69TefnceDGXTgDSAAwPbV4lIqrOVPIe3XFqqr7/hgjeqxTGT25oGaEkWX/YoFgTVow9WMH4icUH9wgqarEXdmg+dxCjW81vJIpWI2ToX6YtNsWtJRWeiBO8fkYtOKx/cJIZla5pQC3Tpx8BCOJGsIcfo=
+Received: from DM6PR04MB6575.namprd04.prod.outlook.com (2603:10b6:5:1b7::7) by
+ MW6PR04MB8819.namprd04.prod.outlook.com (2603:10b6:303:23b::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7362.26; Fri, 8 Mar
+ 2024 08:41:25 +0000
+Received: from DM6PR04MB6575.namprd04.prod.outlook.com
+ ([fe80::5395:f1:f080:8605]) by DM6PR04MB6575.namprd04.prod.outlook.com
+ ([fe80::5395:f1:f080:8605%3]) with mapi id 15.20.7362.024; Fri, 8 Mar 2024
+ 08:41:25 +0000
+From: Avri Altman <Avri.Altman@wdc.com>
+To: "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+	"linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+	"martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+	"alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "jejb@linux.ibm.com"
+	<jejb@linux.ibm.com>
+CC: "wsd_upstream@mediatek.com" <wsd_upstream@mediatek.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
+	"alice.chao@mediatek.com" <alice.chao@mediatek.com>, "cc.chou@mediatek.com"
+	<cc.chou@mediatek.com>, "chaotian.jing@mediatek.com"
+	<chaotian.jing@mediatek.com>, "jiajie.hao@mediatek.com"
+	<jiajie.hao@mediatek.com>, "powen.kao@mediatek.com" <powen.kao@mediatek.com>,
+	"qilin.tan@mediatek.com" <qilin.tan@mediatek.com>, "lin.gui@mediatek.com"
+	<lin.gui@mediatek.com>, "tun-yu.yu@mediatek.com" <tun-yu.yu@mediatek.com>,
+	"eddie.huang@mediatek.com" <eddie.huang@mediatek.com>,
+	"naomi.chu@mediatek.com" <naomi.chu@mediatek.com>, "chu.stanley@gmail.com"
+	<chu.stanley@gmail.com>
+Subject: RE: [PATCH v1 2/7] ufs: host: mediatek: tx skew fix
+Thread-Topic: [PATCH v1 2/7] ufs: host: mediatek: tx skew fix
+Thread-Index: AQHacSaqoUvce3CwLU249nWufxiG37EthdrQ
+Date: Fri, 8 Mar 2024 08:41:25 +0000
+Message-ID: <DM6PR04MB6575155021E474B0A5CF4642FC272@DM6PR04MB6575.namprd04.prod.outlook.com>
+References: <20240308070241.9163-1-peter.wang@mediatek.com>
+ <20240308070241.9163-3-peter.wang@mediatek.com>
+In-Reply-To: <20240308070241.9163-3-peter.wang@mediatek.com>
+Accept-Language: en-US
 Content-Language: en-US
-To: Rob Herring <robh+dt@kernel.org>
-Cc: daniel.lezcano@linaro.org, tglx@linutronix.de,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20220929122901.614315-1-angelogioacchino.delregno@collabora.com>
- <20220929122901.614315-3-angelogioacchino.delregno@collabora.com>
- <CAL_JsqKrad8JndQhxHAYjFXPkj7eaJ0GXqkSJy=xrfa=EHvOwA@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAL_JsqKrad8JndQhxHAYjFXPkj7eaJ0GXqkSJy=xrfa=EHvOwA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wdc.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DM6PR04MB6575:EE_|MW6PR04MB8819:EE_
+x-ms-office365-filtering-correlation-id: 607a7236-0374-4d83-daa8-08dc3f4b8a1c
+wdcipoutbound: EOP-TRUE
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: qd9Z2/GHvTX/5HD4VDDNr0gOOe5fAXqo+gmn00t8kiwPuVg8e5pR1s9UY4QiH4nsByhQI3Re7mqhlECUazcYnqQR+YojFSzkkUr04WHQeSZg8IykhUp8w7k7F6fTOcCk5858Lem0P+JGiaCY3m+Vxe5JO9lbJFJZ2Rqn9klpurzE5W9br/kpT7I//3+oeuDJ9dOcUYlqs0GAN2ivjXCpMrMOsj7EWX4A4SiM0QQro/hxJzmn0yIX0TASnRSqRJsxmu2iCTvHy05DuH3oNnPaLAzVJ32JVI2L1527TsFwJ5PSuctl2GrjLQpDrrx3XqHmO4tLy7naHB0yj4zRlj/RClpNPXu6orP/e3DsuLkckCC7VHurnQUzF6MXZByRfLpMH8jbLzUR04jiGOfIP8DDaiq5+5UMSPIZqWZDSLXL6+RtyxeBNj3exG2RJBNkZPPmETWcsxI8MK+L8YF/haRc7LE63MtziCwlPVA/EKGsq06lbfUeApvEpcEeelHVQERB2yn4+1Sjmj93n7GhgIzAMWgOd1X88G1ZEIN89IcOtBEgw+DC8SQTxo5zacdLcueYOFH1DiHLYHlXGU4mdejfE2rilZjct2xM1IZqZlXTwP9vTsDJkaMVuDyT0VlUOV31q8gdqghtt/WZPz9pXOluDyMDvkkgZWZiMTdlwejEJSCJVs7bfP6Zn9ex2fJNMuzA8LwhhdET7gwt6uhSEjwBp6kliWFD8RqrT5tCKmgA8dg=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM6PR04MB6575.namprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(1800799015)(7416005)(376005)(38070700009);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?jt7w+cHcWC61yq05R7cBjU+35sfDxlIo649eOApLux9QXpK0wcXOgSoNxHIC?=
+ =?us-ascii?Q?xL0x4k6Epj2xzgzvqCsliNZ28jik7lJ2xH1eJHkGfRMXy/H6xTQKC4zng0ni?=
+ =?us-ascii?Q?RswIahDrBH9WZ0sYzywLwqZZt4XXlWCMV2D54ZZjMPOu7w0Y3kPXMv+IEs3F?=
+ =?us-ascii?Q?5dGOJ1fgS5JL/0eyxiQOqI2tvdDvSKNxwBRvD9r4TMzd3qS9Vud6vPXzfqWQ?=
+ =?us-ascii?Q?GDHyhKspS8epE8EdSbrn1St2pW385SlVwBngcssRKwzNOtBzTv4E48OugLXR?=
+ =?us-ascii?Q?EGADAtufnqCKfv9zu7Aeb5QkmMgemEiAqSYsxZ+FOeerbQjyYPPo1/9uoBEU?=
+ =?us-ascii?Q?DJLUYM9VvwMjgCpoF5b/vSTIdAb+OcXZaixJIz/Jj07h8KaEJuudQx8S4Lal?=
+ =?us-ascii?Q?m9rK44757i+tdX/u10Pg1OLSQQ/SHIUvVTNwsKGvoALdXwRGx0YrHY9JLDsk?=
+ =?us-ascii?Q?PPbrbyLw4t9kLEYm6MSyYfgQVBCzwt+fLOKfNF9DDUgDMLYkiQTvyUROOih7?=
+ =?us-ascii?Q?tSZDZKoxvaoysZ2EgiJOTIhM5PDHFuxqOOQOT7OZUZiARqG6voHdREWRTebC?=
+ =?us-ascii?Q?WgeVHUQeF1sduTVDsLIWg/HJhEATrzXZHAKXtLwhei7duCUdoqoGhSIB1kSL?=
+ =?us-ascii?Q?7hnlp7WHtBrMWG6w7s5pJqRZoX9+RBEv04zSiJTz7Gezxnv0iozQ3OOAcGIS?=
+ =?us-ascii?Q?FdNNQnAaRZheCqBmI4NQrEWUp9EcEjZxCxWlJo2dZ7QY5SLmb/oTxBp32Jwt?=
+ =?us-ascii?Q?MaE/uqFiVhLMcqvjnCticdqtMhaHP/J/Jf462zY50GzZDgkNM+Q02yZdEnfj?=
+ =?us-ascii?Q?6Pxd/jfFh7FB2cRgxM24mEHkHNkWdISJgGpuj0bC9O8a3UiErybJAEkx2pBh?=
+ =?us-ascii?Q?yX/65olLwnoYxvmMhQIABgE0L/xUR289uKQi4LKdwQkHTvrL8XnTP9KMO/m0?=
+ =?us-ascii?Q?U+HAdrkLFg1XYkJr2RMGFUCbrP3h/iOCta43fp8W0MMudt/CC3R6HSolvEnh?=
+ =?us-ascii?Q?6kyDTFcvl9VeOZMIdXD8kfRtjaPyCIDgEJjlvW7PHgZlqT1RT0xGmFi3M8dL?=
+ =?us-ascii?Q?bLMYc8nDXY/fM2WRQK99M7qJU6WBQC+hXuUi4TFwUfZQ78XmWLxesohU5zXU?=
+ =?us-ascii?Q?gelN+ARr8TU3BliSM8gyzTdRdmixo/S4MIMtzk7Bs8WpHSdCZC4hqB82dwtR?=
+ =?us-ascii?Q?zLW80QIpoiTJ2bORwCghd7nwH9QiebpcNnSceJnn/4CjCkAzjqUvsnv+BxQO?=
+ =?us-ascii?Q?fv1NSJ30Ln32wfJnvDL66JbdrWdkKDJxJ1dyMOivGw/IKhERIKYjSUiKdRPR?=
+ =?us-ascii?Q?VYq01x2j2Bnq/y+PwbsldaUuiCfurzTCOA02Gz/5H32omL/RwZG3E+JF/cwi?=
+ =?us-ascii?Q?lyS4Zjxd/9qKk4J+ryYS1bDKUuEm5ObB9sfGqDXZg7sRpefGcVDN82hlCitG?=
+ =?us-ascii?Q?JfPAh4Aj7860E0x2oVkfhsNBp5UU4fdV536gYkb0sGyoRpkKswjj41as/TuH?=
+ =?us-ascii?Q?VdLXr7vje572Gssh/5Hb7He1D80eEkRRf80mPAfu3E6w74YW3pg3uB9xvPR+?=
+ =?us-ascii?Q?YveWxqAW3pcsVOndKLQiv8CUMP6epTYqxf5JXFP8?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: VjDfJyMe/uqV2nyAeknZ+MhewTcWKDVItoInXY1lazQBigzG6AaAo9WcDqwsNDEGjaUra+1L4iicVgKocM+kLfVkiPnw9qUa3GPJRHr1WRmhMRqqwNf2Erf3H5o9PAD80tjx4fN/HH4ty/r5+wkfsIvdfvDF1VzLHec60ADU5odmK+dqRdCK+HepdJdTxVp0fInItrcsExtwq8WziXOCA261iovmrRYVEydJUdNRWPN4NoG5oSbBNKW4d9mQxgSoMFuxjYVCW4VZj/VNJdoyN4zsB6x+OiarSG+X1CrAUHsbUV2bRMJ+jVgk8vz3bDHJruI6yyuw4dJtI8R7oWQqd7ROirXJImW/IS20KLI94suWpTj007XEaqGHUdIs2Z0tpGb23V3sb+O6Q98z5MAmPrM+e5sRjuuWdO+61N+UBIllUn6fVqlMOd9eqdcv+mDGDaCnFT8aPt/ddPtJvcb5sl6YFVBJot0VZaQVUSVWcGqwG+6SH+dzLL8AgdidHMaVHm44vpCs5kcvZPkhQDnZ1fPAare4CZEtUDQAn1yXqdh+HGTfsb3ivNIirs7/MuVpIvKi2LuR0tOkDb1NZVWg9pXjbrTvCseBgiK+qHxHJAW3jVdRf2lfkWjhw4DUyhKp
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR04MB6575.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 607a7236-0374-4d83-daa8-08dc3f4b8a1c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Mar 2024 08:41:25.1611
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: afiBsDt9geNLUDvylKmljLYnbZpJiDVgLEEgOxzJUM1e02Y2kn0cxMD9WZx8sXB3wC2MlN8LjbXSbj5CvLy5aQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW6PR04MB8819
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240308_003815_360952_6C7A0539 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20240308_004133_678328_3D470E28 
+X-CRM114-Status: GOOD (  18.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,32 +172,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/03/24 19:15, Rob Herring ha scritto:
-> On Thu, Sep 29, 2022 at 7:29 AM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Convert the MediaTek SoC timer txt binding to json-schema.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   .../bindings/timer/mediatek,mtk-timer.txt     | 47 ----------
->>   .../bindings/timer/mediatek,timer.yaml        | 86 +++++++++++++++++++
->>   2 files changed, 86 insertions(+), 47 deletions(-)
->>   delete mode 100644 Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
->>   create mode 100644 Documentation/devicetree/bindings/timer/mediatek,timer.yaml
-> 
-> Looks like this never got applied. I've applied it now and added 8365
-> which got added to the .txt binding in the mean time. I'm not sure
-> it's right though. The txt binding says it was CPUX timer, but the dts
-> says otherwise. The 6795 dts looks wrong. It says the timer is CPUX
-> and GPT timer. That warning remains.
-> 
+=20
+> From: Peter Wang <peter.wang@mediatek.com>
+>=20
+> Mediatek tx skew issue fix by check dts setting and vendor/model.
+> Then set PA_TACTIVATE set 8
+>=20
+> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+> ---
+>  drivers/ufs/host/ufs-mediatek.c | 21 +++++++++++++++++++++
+> drivers/ufs/host/ufs-mediatek.h |  1 +
+>  2 files changed, 22 insertions(+)
+>=20
+> diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-media=
+tek.c
+> index 6fc6fa2ea5bd..0262e8994236 100644
+> --- a/drivers/ufs/host/ufs-mediatek.c
+> +++ b/drivers/ufs/host/ufs-mediatek.c
+> @@ -119,6 +119,13 @@ static bool ufs_mtk_is_pmc_via_fastauto(struct
+> ufs_hba *hba)
+>         return !!(host->caps & UFS_MTK_CAP_PMC_VIA_FASTAUTO);  }
+>=20
+> +static bool ufs_mtk_is_tx_skew_fix(struct ufs_hba *hba) {
+> +       struct ufs_mtk_host *host =3D ufshcd_get_variant(hba);
+> +
+> +       return !!(host->caps & UFS_MTK_CAP_TX_SKEW_FIX); }
+> +
+>  static bool ufs_mtk_is_allow_vccqx_lpm(struct ufs_hba *hba)  {
+>         struct ufs_mtk_host *host =3D ufshcd_get_variant(hba); @@ -630,6 =
++637,9
+> @@ static void ufs_mtk_init_host_caps(struct ufs_hba *hba)
+>         if (of_property_read_bool(np, "mediatek,ufs-pmc-via-fastauto"))
+>                 host->caps |=3D UFS_MTK_CAP_PMC_VIA_FASTAUTO;
+>=20
+> +       if (of_property_read_bool(np, "mediatek,ufs-tx-skew-fix"))
+> +               host->caps |=3D UFS_MTK_CAP_TX_SKEW_FIX;
+> +
+>         dev_info(hba->dev, "caps: 0x%x", host->caps);  }
+>=20
+> @@ -1423,6 +1433,17 @@ static int ufs_mtk_apply_dev_quirks(struct ufs_hba
+> *hba)
+>         if (mid =3D=3D UFS_VENDOR_SAMSUNG) {
+>                 ufshcd_dme_set(hba, UIC_ARG_MIB(PA_TACTIVATE), 6);
+>                 ufshcd_dme_set(hba, UIC_ARG_MIB(PA_HIBERN8TIME), 10);
+> +       } else if (mid =3D=3D UFS_VENDOR_MICRON) {
+Is this a quirk for micron? Why not implemented as a quirk?
+And go for all this trouble setting it in the dt etc.
 
-Thanks. This one got totally forgotten, yes.
+Thanks,
+Avri
 
-By the way, I'll recheck the 6795 DT as soon as possible.
-
-Cheers!
-Angelo
+> +               /* Only for the host which have TX skew issue */
+> +               if (ufs_mtk_is_tx_skew_fix(hba) &&
+> +                       (STR_PRFX_EQUAL("MT128GBCAV2U31", dev_info->model=
+) ||
+> +                       STR_PRFX_EQUAL("MT256GBCAV4U31", dev_info->model)=
+ ||
+> +                       STR_PRFX_EQUAL("MT512GBCAV8U31", dev_info->model)=
+ ||
+> +                       STR_PRFX_EQUAL("MT256GBEAX4U40", dev_info->model)=
+ ||
+> +                       STR_PRFX_EQUAL("MT512GAYAX4U40", dev_info->model)=
+ ||
+> +                       STR_PRFX_EQUAL("MT001TAYAX8U40", dev_info->model)=
+)) {
+> +                       ufshcd_dme_set(hba, UIC_ARG_MIB(PA_TACTIVATE), 8)=
+;
+> +               }
+>         }
+>=20
+>         /*
+> diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-media=
+tek.h
+> index 0720da2f1402..146c25080599 100644
+> --- a/drivers/ufs/host/ufs-mediatek.h
+> +++ b/drivers/ufs/host/ufs-mediatek.h
+> @@ -142,6 +142,7 @@ enum ufs_mtk_host_caps {
+>          */
+>         UFS_MTK_CAP_ALLOW_VCCQX_LPM            =3D 1 << 5,
+>         UFS_MTK_CAP_PMC_VIA_FASTAUTO           =3D 1 << 6,
+> +       UFS_MTK_CAP_TX_SKEW_FIX                =3D 1 << 7,
+>  };
+>=20
+>  struct ufs_mtk_crypt_cfg {
+> --
+> 2.18.0
 
 
