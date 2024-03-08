@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE93CC54E4A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 16:14:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D2F5C54E4A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 16:18:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s9boYP/5tEQVN2T62hC7F0bllwTHzNcG33ukkaklSbI=; b=olFrMD7/ZAtjpQdKKn/PIb+m08
-	lq4FDYVZg6dB6TMUH+hVznSE5djQzyIOCkyBmEJNkhft2HA3WzH0KiaR7r+RhipFCEy6iN/aOhbGh
-	q2V8FJYj6ye7eq0N7b05Q8fTH+85/jNoHPLkI6k9Jqbf1XdrTc8BVWaEluBRTiDhL5mcnYjSHHVko
-	+InOl5d5oVqGENL65ahHtAgSFjk9BEY9nQR2AwqglxeARWTBXxzPIcZeUaNO8+5tZyVbLai7F3Gdu
-	DV3LeH84c7TVvMi2byRfx167gpWYfAbljnKohqOgXC0Z+TE6eaVRbgMV9Pkh10gzwW2T8c94lIpeW
-	Hhd/ATBw==;
+	bh=0S6dSKiB8zFSBf1O2VOcQH4KdQm9Wkws/HG1/AEyaY8=; b=s+S7629UUHnRHC0qq4jGFMcozR
+	T42WkcK1kmbp1RcXV8z5LY5tH4yH3LNVGEPuEV7qOdduodSRDV2lxDUcdPFoe6ppqEvqMBu5zhzNN
+	u7TmAzkvNp09uDqjjhi6uPz1Gco5tc8eyhdqCZM+UOwCUrzuC8kJRtOmsKj/N4NvyQAw+IWQmVFbp
+	NwPloOqo08hVX2AoTTdl8GaDTkzZReZPBdyPdQkUjOPLfjxmNOLlBPqc0LsaSFEmSbXDj+3U/+Lep
+	f9YcT3Xi2NiLbhAmVleGe4Zu3GwkR7T6+4ipaw5enqfBDfOce1Pj1euxKyqIQn5vgTLUuZZocOd8M
+	suiaEdCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ricrt-0000000A6U4-2e3A;
-	Fri, 08 Mar 2024 16:14:45 +0000
-Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
+	id 1ricvL-0000000A7SK-1yhW;
+	Fri, 08 Mar 2024 16:18:19 +0000
+Received: from relay9-d.mail.gandi.net ([217.70.183.199])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ricrq-0000000A6Rh-13fo;
-	Fri, 08 Mar 2024 16:14:43 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 332B140003;
-	Fri,  8 Mar 2024 16:14:33 +0000 (UTC)
+	id 1ricvH-0000000A7QZ-3hrL;
+	Fri, 08 Mar 2024 16:18:17 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 43189FF807;
+	Fri,  8 Mar 2024 16:18:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1709914477;
+	t=1709914691;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=s9boYP/5tEQVN2T62hC7F0bllwTHzNcG33ukkaklSbI=;
-	b=OHsI/YvN5hiSrUh+JkszMXQy+YjSD0Rojo3kF6fyCKx5Zzphn0M9IN7Tt9X5vm4y041UNn
-	lAB2eLe0+JNyD+OfR94tOMaGUIh/a22OFfJ5l8091aLMxl3lU2UxrcMOJr1DfcEA8sN3Y6
-	4wVXO7Mivc3b4lJsp2qC+eyMU5DVkAxP4LdaDmNkIuQeQmNPIYVv8GXFH+mU66uvZ3BSw8
-	DNVYEh8CTvF+6HbUD7iAvF49EtMz73wfDbRHSHyMwAm3YZcqrKTbEYicnz+sedHM9lS+TO
-	M/Gav5wOWDM7EWyiyPQA7bIiHdmSSih/4HZy3OQGKONnr8edA9o11YkWr+NB5w==
-Message-ID: <70822db4-d642-4180-9db8-eb0aa5728ef1@arinc9.com>
-Date: Fri, 8 Mar 2024 19:14:25 +0300
+	bh=0S6dSKiB8zFSBf1O2VOcQH4KdQm9Wkws/HG1/AEyaY8=;
+	b=dl/SRWriu4aZz/xXON+51qcKE3Wa9xX44fyBVTqwjx62WLp2cPcwmcB4rol6BG9SDlZCgu
+	qb5/tY0+A100U8vav/gMSdEYGamy5nYAZq66AiSAj9iZfH/uMBvjTTF75H/YVGOfupO2rF
+	iT6ITCb4MA6mGilxDFIiM74BCTaz4aUE5rKWQ5/5LAV0yfIvQuLlt3orv6ptTlKtnffZOm
+	nayMa5MdBxBTLMpEIzB9MwlFgE8eCPaCrBMuC/2mJBaR+yk346cuP5S/u5pMvi/6534opV
+	PcR92F3GD/hg5OA3MLlRduW9Oi11a8kLJStD5Fcu2fIQevrAg7uy4aA+Rv7pZQ==
+Message-ID: <1a76dc7d-d0d2-4f11-8408-f60d7fd8b6d6@arinc9.com>
+Date: Fri, 8 Mar 2024 19:18:01 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/3] mips: dts: ralink: mt7621: associate uart1_pins
- with serial0
+Subject: Re: [PATCH v3 2/3] mips: dts: ralink: mt7621: reorder serial0
+ properties
+Content-Language: en-GB
 To: Justin Swartz <justin.swartz@risingedge.co.za>,
  Sergio Paracuellos <sergio.paracuellos@gmail.com>,
  Rob Herring <robh+dt@kernel.org>,
@@ -58,18 +59,17 @@ Cc: linux-mips@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20240308155616.11742-1-justin.swartz@risingedge.co.za>
- <20240308155616.11742-2-justin.swartz@risingedge.co.za>
-Content-Language: en-GB
+ <20240308155616.11742-3-justin.swartz@risingedge.co.za>
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20240308155616.11742-2-justin.swartz@risingedge.co.za>
+In-Reply-To: <20240308155616.11742-3-justin.swartz@risingedge.co.za>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-GND-Spam-Score: 400
 X-GND-Status: SPAM
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240308_081442_452639_87FEB72E 
-X-CRM114-Status: UNSURE (   6.07  )
+X-CRM114-CacheID: sfid-20240308_081816_173451_FE0B5B9F 
+X-CRM114-Status: UNSURE (   5.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,15 +86,14 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 08/03/2024 18:56, Justin Swartz wrote:
-> Add missing pinctrl-name and pinctrl-0 properties to declare
-> that the uart1_pins group is associated with serial0.
+> Reorder serial0 properties according to the guidelines laid
+> out in Documentation/devicetree/bindings/dts-coding-style.rst
 > 
 > Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
 
 Reviewed-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-
-Please add the trailers from previous patch versions from now on.
 
 Arınç
 
