@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 112ECC54E5C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 07:29:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC2B3C5475B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 07:30:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+nXejeh4l9H+06qZGldlEJ+T5glCtHAjj6L+4wjA2ME=; b=bprYGAjc1WfXnpjzqmfNoiiPiF
-	QPsIqEOcZCFaTmlfGp5vpP8XE5qht+LiVuyhxHWUyoa8Zu8aWi3gs3hBDru54k12RPJ9/74ZSaqAb
-	TSp2z8I0l8X/vbNeNHkXJT8dFugfE/sGLuhQhUlnXoZCAPSVDEyCp1iXLrffHtW5zQEsio9VOtk9V
-	M2EzpOrKIutOim7B+14PGrZTHiuwMvvscdQUAjqWNzW+JLbkzV6G2U1DYOhq4zxR21BRNCaiPQftP
-	oY2XPB0iUJmB19hTTPtXjZTovXrO10AiCw5LmdLMdks1S3m0JCvtX5FglbyE5aNcIANq2IHzCnHar
-	YEN7CtcQ==;
+	bh=haniZwft4cKI4inX+PJG9Yqt5S7i74415SjH5HntUuo=; b=1G1ZUAr6MbbrisBPofUjRX1oZ4
+	4SRVN78Iml7NaevQsjECg/vEO7XCyVRgJpd7dIq4lz5Lk9bN9R1KVma1N+bqoNEmAadGhQT5KhJ3m
+	2tkRfGYOVTG+w3mTuedwNvQCyR68dgEGXlzfu9CdZIQuSFdIvdPXaj+sulzPSVGcsChKPBE3IKPKQ
+	Apa75iQMbofG0zyAFD1eIfUbpWqvg6epbuX9Hg+sjdz2D1zEZBUU18HDyScQUW1HSQmz3RdiYJgyA
+	nmtTEV39tpYJ7rsvF3wcrAaeI69p21pVhl13w9ug76Ofh8Wnw4HwTB4DU7UbgEINFxB/o9XqdRXO8
+	dzAjqQLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riUfp-0000000894J-30dS;
-	Fri, 08 Mar 2024 07:29:45 +0000
-Received: from mail-oo1-xc31.google.com ([2607:f8b0:4864:20::c31])
+	id 1riUgv-000000089M0-1FZ6;
+	Fri, 08 Mar 2024 07:30:53 +0000
+Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riUfm-0000000892t-07zj;
-	Fri, 08 Mar 2024 07:29:43 +0000
-Received: by mail-oo1-xc31.google.com with SMTP id 006d021491bc7-5a1be5dbc52so476780eaf.1;
-        Thu, 07 Mar 2024 23:29:41 -0800 (PST)
+	id 1riUgq-000000089Je-2mu6;
+	Fri, 08 Mar 2024 07:30:50 +0000
+Received: by mail-oa1-x30.google.com with SMTP id 586e51a60fabf-21f5ab945e9so696203fac.0;
+        Thu, 07 Mar 2024 23:30:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1709882980; x=1710487780; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1709883047; x=1710487847; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=+nXejeh4l9H+06qZGldlEJ+T5glCtHAjj6L+4wjA2ME=;
-        b=At//5x1y8mthOnjQEh4O9ax6iIbZnB9pyniO4aiPY883up6qDAg53U076ehj5BVET4
-         i0KGS3d8CIRVZYSa8TTv3smp6TWhI6oxdThWfsvI92f9AuFmSx4fmw785SxKExEu071r
-         thgabXB+0OkRvVtV5wLNPiWZtjjWmVNhF7AmNPq3JeHSiKAzyoQ/aQb/BfnnzcSNde2N
-         UDFeYVcPnWnzk66KBR/pPqjwxTq8hboLTHQqnVw64zYgn+N+lc7+xzr0FUqb2tDHFYe1
-         soQosSQkpiINFlcloimW5oyU96zSTc0ObET9Ci+GRa9rZNiS+viRLXs0+NLqAP6bGfYS
-         6vzw==
+        bh=haniZwft4cKI4inX+PJG9Yqt5S7i74415SjH5HntUuo=;
+        b=J4zG2KfSzQCTywI+DYdLN7HSsu7/uSNtmpnxeDYSYVcK8d7jhXkR80D3woZfFGPCqj
+         hSR+odh++L2ysj3wMVavQ4Kbc0/CBSDjRnBjFXirtBXGf2OQ6tsChs+momORBmzrbJk+
+         kYGANuZ19G/0BtMnTRiDount7+g1/Qx9+C9EVCLDfNS0YCLQ/5pnm+F+h24KFeMFnkXq
+         d2SHGuISn/M9zYeEbTuK5eKmgdhCDb2aC+ksFBAj4yO9vJOphD3wIim9kfUmHd8/i3Bc
+         0PBcwbvbOgwtZIvlH1yrKq54Wts0Hb+IYANcg7HhoT1FZaFhgEchq2T1iU5TaU2S0fWd
+         2h/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709882980; x=1710487780;
+        d=1e100.net; s=20230601; t=1709883047; x=1710487847;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=+nXejeh4l9H+06qZGldlEJ+T5glCtHAjj6L+4wjA2ME=;
-        b=BBLEQBjG51+pw7MY8hzuk0XuoKWs6asoxKtHgFcq7Oy/ubcps0IsLOI1Syzv9ypBjr
-         IbAmDkRNxP36icmU0YA8A2Eh0kBnkGBrNiEapP0z8j8jx8614ct/ZnHL9+A16EgusnRX
-         u/+JFgyWFp0+0JJyonvcpaiEq/uo2fNXp6vI7swQ2p/MIVxM2SdG7QeRgeE6ZbBtTeN8
-         uZigzrCtNFdCpNpIVji/nK9L93B1aETozhZHbOaEwqobKtdD1F/iw2PRXeQsdXZFjA4A
-         a6grRgrgjmYFU1khoXNyZGuiisDm8roEU4U0AEvyZ90lBI4XNIZxhzcxrnIRHUnPYDND
-         9jhw==
-X-Forwarded-Encrypted: i=1; AJvYcCUq1P5HDNB7ZLaCh3nO8x/A/0UivfNu37atHMVNn7zlcCfWeBZjJXAtZA84/bKuJI51paeTtjPVL3WnckRD37Jdmngyms4PPhQOpGvJzzwLEhkdGxsMkCrGl3bwuOLWcvEKKTed73ZVydfdBiS8CFti8UpwMk817Y8=
-X-Gm-Message-State: AOJu0YzVRjV64SZXFp9EdLTsbdfLS8PKYtwM8NE1GBvTdR0ZtUWc0hNU
-	EL9Tk1BgyIn2Tt/BBzCHGjBikMB55cuR3qXoAhzO3TKowIP1R//ug/0SOyUZVTPIY9wpW9/VfH8
-	dSxbc7XySIDRZPou4LzLgtTSC28k=
-X-Google-Smtp-Source: AGHT+IGfPKC1vAGMMd+/KzXy2O0/LixaCY+jyT/LJJSJQrZ6JoQiRQvUj1Su1Dj3OW3cPC0bKw+srckL7pOTKUdmbd8=
-X-Received: by 2002:a05:6871:620f:b0:220:a34d:d26c with SMTP id
- rd15-20020a056871620f00b00220a34dd26cmr909873oab.14.1709882980664; Thu, 07
- Mar 2024 23:29:40 -0800 (PST)
+        bh=haniZwft4cKI4inX+PJG9Yqt5S7i74415SjH5HntUuo=;
+        b=JZpyHCUq/L/FZaK0QQ0PsjGwKIQZW5RntWK5IxqpDzH/4LUHb9A7/ZktPmQuJ9Oqy+
+         xhbXPU9Ewpt6tw30VuUln8SkkqnOyAxf76yH4AzuENpCWf6W6QsaUAwiKfODFz5paskG
+         qS3KaaC2hogdTMq9z2VODSKNEFtcn1WeJOfBoI0ipQ51o8KSDdIFiar7rL8wivat9g3l
+         rqHWb5yTTur8rcx/KAbYDiVblUADeXwRvb/wqIjg7AP6lk4kv4ypKXoJTuCz7CUSNsMx
+         EKLQRsFcviLbDD4fukK24t+mqOdMQDk7IEI0lW0D/aYZBJY9dHzjwY7nOvpIhYp+wSci
+         CGjg==
+X-Forwarded-Encrypted: i=1; AJvYcCVWkv6ZpAWgqn5nHrmaqDSevmCT/zMqMxmJDtNYPAjXrYEAIDTfi00dddupGfZdGrNmJM4x9v1CGmTUJLEwl1rn/cEtE7uupizjTBYF7VAMiR4Cgu6NdzqT1CUUhM9BZ6jY6xd/DmN+guH/KNs0ot/Pin6HIKQ9cE4=
+X-Gm-Message-State: AOJu0YzO9VSGPZUoiIzmFVCBY6q6GBGO1gpINSHTooHZZLOf8c5caRsl
+	SKFM095pJUaNAOuV86xnAHY0n5y1H2yjZrgBsU96sPsPUw70KDQmldZQaQgr3wkJsWd+JqvnUcV
+	l8HCPFSQIhTZowVD1i0QT41QdAzJmVkf6Qb0=
+X-Google-Smtp-Source: AGHT+IGZiX9XYKiUBp+8l+Pz8MJ931cWf8obPtigppTRXErCR0+r4FF+RoS1m/WY/W7uarevs4qbHcVRWUViLmQcbVA=
+X-Received: by 2002:a05:6870:a108:b0:221:88a7:d8a5 with SMTP id
+ m8-20020a056870a10800b0022188a7d8a5mr1051515oae.7.1709883047312; Thu, 07 Mar
+ 2024 23:30:47 -0800 (PST)
 MIME-Version: 1.0
 References: <CAMhs-H_eUKm7C40oCzuKwwEMZAcOJ-g4MghAfkGAmxRM0AXPUw@mail.gmail.com>
- <20240307190408.23443-1-justin.swartz@risingedge.co.za> <20240307190408.23443-2-justin.swartz@risingedge.co.za>
-In-Reply-To: <20240307190408.23443-2-justin.swartz@risingedge.co.za>
+ <20240307190408.23443-1-justin.swartz@risingedge.co.za> <CAMhs-H-qHGEpjJqMu4J2SxBo1Sq3+yy74v-j=oH=P9sSt-19zg@mail.gmail.com>
+In-Reply-To: <CAMhs-H-qHGEpjJqMu4J2SxBo1Sq3+yy74v-j=oH=P9sSt-19zg@mail.gmail.com>
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Fri, 8 Mar 2024 08:29:28 +0100
-Message-ID: <CAMhs-H9Z4iB-MA4_CwsJAee5CUDNFynT0nLoBz_3A-ToJzJ_xg@mail.gmail.com>
-Subject: Re: [PATCH v2 2/3] mips: dts: ralink: mt7621: reorder serial0 properties
+Date: Fri, 8 Mar 2024 08:30:35 +0100
+Message-ID: <CAMhs-H-S3DSaBbkRWpDEiKB=M2GjJE3xfsRXCJPWsz-YU58uRQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] mips: dts: ralink: mt7621: associate uart1_pins
+ with serial0
 To: Justin Swartz <justin.swartz@risingedge.co.za>
 Cc: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
 	Rob Herring <robh+dt@kernel.org>, 
@@ -79,9 +80,8 @@ Cc: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240307_232942_087881_1DEC0610 
-X-CRM114-Status: UNSURE (   9.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240307_233048_732281_348078BB 
+X-CRM114-Status: GOOD (  16.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,16 +96,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 7, 2024 at 8:05=E2=80=AFPM Justin Swartz
-<justin.swartz@risingedge.co.za> wrote:
+On Fri, Mar 8, 2024 at 8:27=E2=80=AFAM Sergio Paracuellos
+<sergio.paracuellos@gmail.com> wrote:
 >
-> Reorder serial0 properties according to the guidelines laid
-> out in Documentation/devicetree/bindings/dts-coding-style.rst
+> On Thu, Mar 7, 2024 at 8:05=E2=80=AFPM Justin Swartz
+> <justin.swartz@risingedge.co.za> wrote:
+> >
+> > Add missing pinctrl-name and pinctrl-0 properties to declare
+> > that the uart1_pins group is associated with serial0.
+> >
+> > Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+> > ---
+> >  arch/mips/boot/dts/ralink/mt7621.dtsi | 3 +++
+> >  1 file changed, 3 insertions(+)
+> >
+> > diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts=
+/ralink/mt7621.dtsi
+> > index 35a10258f..dca415fdd 100644
+> > --- a/arch/mips/boot/dts/ralink/mt7621.dtsi
+> > +++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
+> > @@ -123,6 +123,9 @@ serial0: serial@c00 {
+> >                         reg-shift =3D <2>;
+> >                         reg-io-width =3D <4>;
+> >                         no-loopback-test;
+> > +
+> > +                       pinctrl-names =3D "default";
+> > +                       pinctrl-0 =3D <&uart1_pins>;
+> >                 };
+> >
+> >                 spi0: spi@b00 {
+> > --
+> >
 >
-> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
-> ---
->  arch/mips/boot/dts/ralink/mt7621.dtsi | 8 ++------
->  1 file changed, 2 insertions(+), 6 deletions(-)
+>  Please add Acked-by/Reviewed-by tags when posting new versions.
+>
+> Thanks,
+>     Sergio Paracuellos
+
+Anyway:
 
 Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 
