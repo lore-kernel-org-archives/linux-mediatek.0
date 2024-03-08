@@ -4,109 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57A50C5475B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 17:19:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76A18C54E41
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 20:30:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Content-Transfer-Encoding:Content-Type:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a/vpHfNPzt7TGK8d8dpGB4WwTK9WQCuP3uAyqQISEGU=; b=V20rUxsI6GIRe/f/6w1lux8DH2
-	v/n42tTv6kje4Ks+OcE36Qzrsxw9wvCf9+x+CnWLINGYH7W9MpeyH5hpIIpubO+JEiTiUH2UtdkVt
-	C1236OSMAl/8helz6l3bz0T5DN8/P06ZB+ZqzQ+cp0B6GzksG2D9o2QacoRJJROlKMZSQnm6f05RX
-	rVbqhTTeE7+Yl6wr8FEIgR8SFQUshEleZn6ag9uhMZr5/pF0gV8oIuzXxCeEnq9v1Hqpmf3d3Usbj
-	tpl316oGVDmYh/TuKMm9KhTt8qfF85oeQHLkIdXLadZ48KbSBsP0E7V/0YbhQXaAyrQsxK6gIoz9K
-	OBsC1VQQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yIHasFc6QDJakomTVw0AEw51lF0LsJnl5XPBrfNl5nQ=; b=Y7r9lKRao9xVG8sXS7bt13IPn2
+	K6Ypfm66nNuNJws72uPbTUdvApQFQBA7KiueFod3AbPi56nmXEIDZRhpNJTqgCJZIegrBMlm3EGnG
+	9yJ+KbEdLtJF66nAV+qOIyROL+eEM7KWO5EkT6nzyYjDUA3dvNDe42fjQUGB1djFbi1ISo9iC6E13
+	N1D1V9ji84fOG4I8xYOqN5S4e+Rqh17vuaBGc5BDl8+ozZyajO5UQVaxbRInEYN/pVdZGXfjLvsXN
+	w8zcTCeSpIHxy/Uql6tpxQyzg2tGQ7ootk/6wAmpVIe2SP2DpuHKwX3qFND8JaCF7m4SVA00X8tlJ
+	es2aXcCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ridsn-0000000ASic-2nT8;
-	Fri, 08 Mar 2024 17:19:45 +0000
-Received: from outgoing6.flk.host-h.net ([188.40.0.77])
+	id 1rigrB-0000000BE55-3LN8;
+	Fri, 08 Mar 2024 20:30:17 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ridsj-0000000ASfX-3CzD;
-	Fri, 08 Mar 2024 17:19:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=risingedge.co.za; s=xneelo; h=Message-ID:References:In-Reply-To:Subject:Cc:
-	To:From:Date:Content-Transfer-Encoding:Content-Type:MIME-Version:reply-to:
-	sender:bcc; bh=a/vpHfNPzt7TGK8d8dpGB4WwTK9WQCuP3uAyqQISEGU=; b=dBaP8mSRxS4lEh
-	GjSu90TDy9meTMekBLoEETSGJKVQBi0b/AW97xPPf57MxSW3J5rxw9NCeTPn1JaIT2HNHhtsr0KtF
-	Gk6aloHiLLFM6fFHsFS4ztSXtFk6SMBsVQcVoLnPBfDWsT9nUbneatAR/jesh+fdBPtFhereWT17F
-	qdQV4Ot2qVtE+C5bc1ZNbWD+iOrDN60fWpcUpYmFME4ONWJVjiKXJo075hI30XK4NFf8UnkTEi5HC
-	Ynyu3URiYC8wievULGd5b3QG93hU/Nx8WE/RuhnlHOpTrXZTE3oQChFfbdRUDjFuc9H9BRYxMBdKT
-	c8+/MvAjLZWq6NYA0URA==;
-Received: from www31.flk1.host-h.net ([188.40.1.173])
-	by antispam2-flk1.host-h.net with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1ridsc-00EpVe-3q; Fri, 08 Mar 2024 19:19:36 +0200
-Received: from roundcubeweb1.flk1.host-h.net ([138.201.244.33] helo=webmail9.konsoleh.co.za)
-	by www31.flk1.host-h.net with esmtpa (Exim 4.92)
-	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1ridsa-0007Bk-MV; Fri, 08 Mar 2024 19:19:32 +0200
+	id 1rigr8-0000000BE4C-05Zd;
+	Fri, 08 Mar 2024 20:30:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1709929809;
+	bh=/adHs8UdVF6eIv76YbhCdGPFqVNfYolXsQeI4oZE9uw=;
+	h=From:Date:Subject:To:Cc:From;
+	b=RQQeO/Wkn6o2TdtidpJsJiobZy7eLnnr6sKKmHgzHO0Zb0Y+A4plHRqg1EgRL3PFj
+	 1ekGdr53uZC0Lhxg5V9x+62b0f/NLHyZJ8MPseS6h5zrlcfTMzHha3PF03vly4T9zG
+	 qfEEjmwO+SEZJSFdkrH4kiC4qy+dOSmZ5WHZRAHKe1DKAqnwvPHrS9s/KcdjDMK5wS
+	 4vcohAKqFfITslM8mP63r8EbsN74W8TiDR348XfO2R8mBGH2ABeB/WDtcIzLTHMAqB
+	 F4owS2OSZB8I0Nq4d3MMZ/w47OVX+HAZfIxs0WnVnncMPpw5o1HDUiAVz87CWA5IJU
+	 WfT1iTxJzUSjw==
+Received: from [192.168.1.26] (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9A09237820F2;
+	Fri,  8 Mar 2024 20:30:07 +0000 (UTC)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Fri, 08 Mar 2024 15:29:56 -0500
+Subject: [PATCH] clk: mediatek: pllfh: Don't log error for missing fhctl
+ node
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Date: Fri, 08 Mar 2024 19:19:32 +0200
-From: Justin Swartz <justin.swartz@risingedge.co.za>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, Sergio
- Paracuellos <sergio.paracuellos@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, linux-mips@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 1/3] mips: dts: ralink: mt7621: associate uart1_pins
- with serial0
-In-Reply-To: <eec5be72-e27f-4068-ac7a-566605f3256c@linaro.org>
-References: <20240308155616.11742-1-justin.swartz@risingedge.co.za>
- <20240308155616.11742-2-justin.swartz@risingedge.co.za>
- <70822db4-d642-4180-9db8-eb0aa5728ef1@arinc9.com>
- <bec06da5c4099898d9e531181d0797ca@risingedge.co.za>
- <eec5be72-e27f-4068-ac7a-566605f3256c@linaro.org>
-Message-ID: <0ad4df2896fe0a3db06d3bcacbcf5931@risingedge.co.za>
-X-Sender: justin.swartz@risingedge.co.za
-User-Agent: Roundcube Webmail/1.3.17
-X-Authenticated-Sender: justin.swartz@risingedge.co.za
-X-Virus-Scanned: Clear
-X-Originating-IP: 188.40.1.173
-X-SpamExperts-Domain: risingedge.co.za
-X-SpamExperts-Username: 
-Authentication-Results: host-h.net; auth=pass (login) smtp.auth=@risingedge.co.za
-X-SpamExperts-Outgoing-Class: ham
-X-SpamExperts-Outgoing-Evidence: Combined (0.06)
-X-Recommended-Action: accept
-X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT8Wv6VWwHFMFDV5KaGg4k2APUtbdvnXkggZ
- 3YnVId/Y5jcf0yeVQAvfjHznO7+bT5wCPRB8bAzJcv2cv+UqiTTc2+CpNcmBnO4XM3Sck4bwNogU
- WCl1nkLBzZX0KuJ9bXiS85Z42w/+2OBolTNFbPomXFWCX8oNdggW7HE9XDTdSejrkEpbuUvwMvHx
- 3T+KSG//gbuP7hnUK8NQdLwsVWKIFDZRrTGv3rxiw9tFrqFSCFNiLZt/QXQnOBRD+jq1HsKsDh/6
- Srgk2K3gr1VBfJbChkYH6fbrypLNrde+UooQVNLReLErukdelEOHUIpaBbp5GdnsN8+UvimwMinK
- 0+Txhz2u9qvrL2PODYgMZQApJXOjDLkqunZ9NcY2bHZn7CfFscMZZf3sCkN20I5vMh4akiObI7Kj
- vK7X04QEin24qbfMFd8eGjnYW8aSH5qj4ujh/13psIvqSqJFa1CcANErDW/w69saM9prk3jNnHtn
- nuEt/J9wDZeQfiNOYsLDFBdwYt2XtlLzy7G7T4kla0JNnAWQx3FS11bhwUa9HCIwKB+TroNcRY33
- oNmH4nRQzHQazgY7lmveanvOdQzf6IMJvXeR9sWP3X7B861DTGeXmiBZB5ABM5ibrJKBc41fzX2f
- c4dPBW7pWChw4uEjGhn8NxWJwjYpP3+Q3/7iG2wtXpUcDQ6SyB7RUHhtw6evVjjgo+5B/jmqOvZj
- iTeRCozF+pjfbFrzHCaFHgNTrYhVbBAqR8ZRvY88PgTw/yJlftBcHX6tS8NW54gm54VAvfk9VDzu
- 2DWvs648c5Z9erCJvQs7NHJCRvPPwtX/YZRy1/6kBVM18TehOmSn2kZRt3z8CHTZnKdQqcB0QMMU
- IPF3mL0sZmYqDqSi6Ubx7BN0H0IaZOsZnP36dPZwQWhvr8FGGENbqE9x654AXkUfGHPAHnWD1MEm
- 8zNnsSuSxjl6RVTXva2Jl4AHe5oTGEWuK7wQuHiJKcf5Sqd6P3zHxU4Ham35bIM7+pzQRR2+p5za
- 8H1gUaDJZGpg6c2oigrh+YcF3SeOS5epce2vBFQn8BLQG4wdJz5OZPl/85ViK8Ea0fe5iniRDU9a
- IkFLX1Ne1hGTitUHsPftyxriH1hAvmSO1crrLwiF2BozUnkjKLcelPzx2oqVYjg7pBU6N7n2Xnf9
- ORWrllgKtBSNx6xUC0rhukb6/HI5FFTbPOoZF9qxZ4vf24IFf3S/QstrsvmHry2RQMdJZ93srF2r
- +35mEt2FC3cXutruHTpS87YkskBoFo6eZ5Uv5yUh4sH+KRvQOJ2675fcuW/3lDmDZZ7XgBhunFdj
- VYxKH3qWyoySMt2NXQeSeCQL64BFVPTx/kcAi/BxxCuBHKZE9WCF1zdBVVT8jZUewdfxHtr3FaH+
- eXAry2dy2DNwOgV373pfDhBQ21Od8BCsodKtWDQizmRHoSVjKnexcCkQ+p5zWKzxeWKxLCyS8776
- l4RSwc4z5cqDb97hdiFVwaP90eVaqnDphEW4xEWnj3iKGpP30awjRzKpQ4kPl+3D1YhNMZlGTB68
- YWMe6VM9RYQVmV8q7nN/oibcn491jt+pt12gBHaGoo19huz2OKHH5lr9xXvSM4nM3avg
-X-Report-Abuse-To: spam@antispamquarantine.host-h.net
+Message-Id: <20240308-mtk-fhctl-no-node-error-v1-1-51e446eb149a@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAEN162UC/x2MSQqAMAwAvyI5G6gLVP2KeNA21aC2kooI4t8tw
+ lzmMPNAJGGK0GUPCF0cOfgkRZ6BWUY/E7JNDqUqa1WpBvdzRbeYc0MfEpaQRIKgVa7Rk65bqw2
+ k+hByfP/nfnjfD2fV3KxpAAAA
+To: Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Johnson Wang <johnson.wang@mediatek.com>, 
+ Edward-JW Yang <edward-jw.yang@mediatek.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: kernel@collabora.com, linux-clk@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240308_091941_838604_879605B1 
-X-CRM114-Status: UNSURE (   7.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240308_123014_329091_98D58815 
+X-CRM114-Status: GOOD (  12.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,29 +82,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024-03-08 19:13, Krzysztof Kozlowski wrote:
-> On 08/03/2024 18:01, Justin Swartz wrote:
->> On 2024-03-08 18:14, Arınç ÜNAL wrote:
->>> On 08/03/2024 18:56, Justin Swartz wrote:
->>>> Add missing pinctrl-name and pinctrl-0 properties to declare
->>>> that the uart1_pins group is associated with serial0.
->>>> 
->>>> Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
->>>> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
->>> 
->>> Reviewed-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->>> 
->>> Please add the trailers from previous patch versions from now on.
->> 
->> What do you mean by trailers?
-> 
-> https://elixir.bootlin.com/linux/v6.5-rc3/source/Documentation/process/submitting-patches.rst#L577
+Support for fhctl clocks in apmixedsys was introduced at a later point
+and to this moment only one mt6795 based platform has a fhctl DT node
+present. Therefore the fhctl support in apmixedsys should be seen as
+optional and not cause an error when it is missing.
 
-Thanks, Krzysztof.
+Change the message's log level to warning. The warning level is chosen
+so that it will still alert the fact that fhctl support might be
+unintentionally missing, but without implying that this is necessarily
+an issue.
 
-I thought I had done this with this patchset on all three patches,
-but if I've accidentally left anyone out - sorry about that.
+Even if the FHCTL DT nodes are added to all current platforms moving
+forward, since those changes won't be backported, this ensures stable
+kernel releases won't have live with this error.
 
-Regards
-Justin
+Fixes: d7964de8a8ea ("clk: mediatek: Add new clock driver to handle FHCTL hardware")
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ drivers/clk/mediatek/clk-pllfh.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/clk/mediatek/clk-pllfh.c b/drivers/clk/mediatek/clk-pllfh.c
+index 3a2b3f90be25..094ec8a26d66 100644
+--- a/drivers/clk/mediatek/clk-pllfh.c
++++ b/drivers/clk/mediatek/clk-pllfh.c
+@@ -68,7 +68,7 @@ void fhctl_parse_dt(const u8 *compatible_node, struct mtk_pllfh_data *pllfhs,
+ 
+ 	node = of_find_compatible_node(NULL, NULL, compatible_node);
+ 	if (!node) {
+-		pr_err("cannot find \"%s\"\n", compatible_node);
++		pr_warn("cannot find \"%s\"\n", compatible_node);
+ 		return;
+ 	}
+ 
+
+---
+base-commit: 11afac187274a6177a7ac82997f8691c0f469e41
+change-id: 20240308-mtk-fhctl-no-node-error-d0f87b749d7c
+
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
 
