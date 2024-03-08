@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7BF0C5475B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 13:24:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64AA5C54E4A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 13:49:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E4h7ZiQXl6RCyjokpJIQcZhTaIjok855YoEQWGnJoYg=; b=RfXIp0HlIwhocDLU1uoFrHPkiK
-	Tz69Xk7KvnXOFpAF86ds0fGdlMtyIxaNroR8zgPIe/MdnI8RakNFuJzrv9LRkNjC9snf3+nwvPmfZ
-	85W9bwQKlNKrY7fcSp3QMNjozZG7b3MhSBH6zWDiCnI8LAFOvRHVFjDLFZQGOLAGhcYr+uurA6x4C
-	SdS6nfQqInT3xXgwoaTeEwrOBwJHMHe96rRQLYV7rbCFd5usJjDgkG4Jz9iaiE3yofPbYT/pxNqJS
-	5wwQl3irb595pr/eSnGI0pOrub1wgHZsXnAA7BP47BBPgVI38S1VNND7qFTSuZZlkvE0DWHExFY77
-	m5TpDvmw==;
+	bh=m1W1uIW1yTRjaOWSrRZn4XPwWcs/FMebFW0j769IDic=; b=XkhCOO+iQOw/lax+IxFDfnxd9R
+	V87wd35HzGMesqBbTbGbqkQbBzrfvQlFwHwk9MnQg7ynXMAuTG0j/r2bao8dKy7JCWZFwgD+GArGt
+	b4JsTD38kqnd6vaWQALXpbRkEfM4HgZFFhQTExYrEX8LCoi6fIJS5r8cDiN5wXy+GJdcB2s/yQZO+
+	kV919wlviTXwY0rlUVyH89IuOS2nxhK9Lo5WD0BMH66U0qD9fG/twISOb7rY6l9Lka4nCV6Djun25
+	MaydZ62ezu6GbC+FmvY9PI7LJTVEghDPhgYgZVz80J8z267Sn5pk7cG/TFxvRpHj+pX3Ya6FcPqsa
+	qniOrCZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riaDR-00000009Hcy-1HLw;
-	Fri, 08 Mar 2024 13:24:49 +0000
-Received: from relay5-d.mail.gandi.net ([2001:4b98:dc4:8::225])
+	id 1riaaq-00000009MpK-26pw;
+	Fri, 08 Mar 2024 13:49:00 +0000
+Received: from relay7-d.mail.gandi.net ([217.70.183.200])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riaDK-00000009HZZ-46Ga;
-	Fri, 08 Mar 2024 13:24:46 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 3F7811C0007;
-	Fri,  8 Mar 2024 13:24:35 +0000 (UTC)
+	id 1riaal-00000009MmF-1wlp;
+	Fri, 08 Mar 2024 13:48:58 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 599A620004;
+	Fri,  8 Mar 2024 13:48:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1709904279;
+	t=1709905733;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=E4h7ZiQXl6RCyjokpJIQcZhTaIjok855YoEQWGnJoYg=;
-	b=opr5oXJBfybVfKVKwrzmnp0nnEJpggoJJi0wgSdWcFgu5j+KPI3rcFVERj0wB3R1yN9tOZ
-	+RZugGTlp4hQ3iPKqqnhSxm0LKsdxbJQuWWh4mHjcQ2iiyNE+4hoRylXbhuRyAg6OAzpBz
-	V5pcc9lD/oXssVovG/oK/obsnqmEPmZ3NeJUK8sE0PSiowG/N2eLA3MAORqyEDXwkMMgfo
-	3BECecOJbTi0jTWV7N8fiMnv2p61p9dApLlp8bWggpIicwOrWwdmVyFMHlANg2jCgCfTJ2
-	ptCKtIOgWlpUFOTkNCbF1nv5NEKjkfRG1ZXVcaO3Yn37vVuJffpZ/uzdQ0/H/w==
-Message-ID: <cbbbe5f8-6505-4f0f-80ce-77759e03235b@arinc9.com>
-Date: Fri, 8 Mar 2024 16:24:28 +0300
+	bh=m1W1uIW1yTRjaOWSrRZn4XPwWcs/FMebFW0j769IDic=;
+	b=mdafCrbE238vktgOYBwyLl+3RD4vjLBbljQ4Wwj1cCVBr0Ytaw2p8D5AuTJRDZ2bILdkuM
+	bzt0LDOrWPwlprR1NDCSGxokr/h7bz0UPV7wFn6WjyiQpW6yloK+NJA9sa8H5bUY6v+kA4
+	MWRmEN/M5BLjRQXyJY5Lde9i8LWlF7B0J3CbhGMYb8XmWcZnLVRHKaqMbLgTA80g3JLs47
+	5S+8E8cD4i2KeK431KaxiiwPR9YfR4VAFd0aRWxM4V6BigFAOnSn4QuHl02mVqtukihcQ3
+	0mFNBqPQUxcDfd/ofQiFDD5qHErmLNUYiIIBJ52xkgoM2gM4qLyY7egttYMYkw==
+Message-ID: <7e9221ae-e53b-475f-9b6f-4cab58b2d109@arinc9.com>
+Date: Fri, 8 Mar 2024 16:48:43 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] mips: dts: ralink: mt7621: associate uart1_pins
- with serial0
+Subject: Re: [PATCH v2] mips: dts: ralink: mt7621: add cell count properties
+ to usb
 Content-Language: en-US
-To: Justin Swartz <justin.swartz@risingedge.co.za>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Justin Swartz <justin.swartz@risingedge.co.za>
 Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>,
  Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mips@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <CAMhs-H_eUKm7C40oCzuKwwEMZAcOJ-g4MghAfkGAmxRM0AXPUw@mail.gmail.com>
- <20240307190408.23443-1-justin.swartz@risingedge.co.za>
- <ff708cd5-efe1-47e0-8112-ac7a2658cd8d@collabora.com>
- <9634b4fe726e711bd6bec7e487caab76@risingedge.co.za>
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mips@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <0001-mips-dts-ralink-mt7621-add-cell-count-properties-to-.patch>
+ <20240307223756.31643-1-justin.swartz@risingedge.co.za>
+ <c445fd12-f8a8-41df-bee8-8b126b26110b@arinc9.com>
+ <067071a9d57ffb09f437718cf905b121@risingedge.co.za>
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <9634b4fe726e711bd6bec7e487caab76@risingedge.co.za>
+In-Reply-To: <067071a9d57ffb09f437718cf905b121@risingedge.co.za>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-GND-Spam-Score: 400
 X-GND-Status: SPAM
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240308_052443_419829_D8FD0BA3 
-X-CRM114-Status: GOOD (  24.91  )
+X-CRM114-CacheID: sfid-20240308_054856_455342_EB4515D0 
+X-CRM114-Status: GOOD (  22.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,81 +86,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8.03.2024 15:40, Justin Swartz wrote:
-> Hi Angelo
+On 8.03.2024 16:21, Justin Swartz wrote:
 > 
-> On 2024-03-08 10:41, AngeloGioacchino Del Regno wrote:
->> Il 07/03/24 20:04, Justin Swartz ha scritto:
->>> Add missing pinctrl-name and pinctrl-0 properties to declare
->>> that the uart1_pins group is associated with serial0.
+> On 2024-03-08 14:01, Arınç ÜNAL wrote:
+>> On 8.03.2024 01:37, Justin Swartz wrote:
+>>> Add default #address-cells and #size-cells properties to the
+>>> usb node, which should be suitable for hubs and devices without
+>>> explicitly declared interface nodes, as:
+>>>
+>>>    "#address-cells":
+>>>      description: should be 1 for hub nodes with device nodes,
+>>>        should be 2 for device nodes with interface nodes.
+>>>      enum: [1, 2]
+>>>
+>>>    "#size-cells":
+>>>      const: 0
+>>>
+>>> -- Documentation/devicetree/bindings/usb/usb-device.yaml
+>>>
+>>> This version of the patch places the properties according to
+>>> the order recommended by:
+>>>
+>>>     Documentation/devicetree/bindings/dts-coding-style.rst
 >>>
 >>> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
 >>> ---
->>>   arch/mips/boot/dts/ralink/mt7621.dtsi | 3 +++
->>>   1 file changed, 3 insertions(+)
+>>>   arch/mips/boot/dts/ralink/mt7621.dtsi | 4 ++--
+>>>   1 file changed, 2 insertions(+), 2 deletions(-)
 >>>
 >>> diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
->>> index 35a10258f..dca415fdd 100644
+>>> index 5a89f0b8c..7532e17dd 100644
 >>> --- a/arch/mips/boot/dts/ralink/mt7621.dtsi
 >>> +++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
->>> @@ -123,6 +123,9 @@ serial0: serial@c00 {
->>>               reg-shift = <2>;
->>>               reg-io-width = <4>;
->>>               no-loopback-test;
->>> +
->>> +            pinctrl-names = "default";
->>> +            pinctrl-0 = <&uart1_pins>;
->>>           };
->>>             spi0: spi@b00 {
+>>> @@ -289,10 +289,10 @@ usb: usb@1e1c0000 {
+>>>           reg = <0x1e1c0000 0x1000
+>>>                  0x1e1d0700 0x0100>;
+>>>           reg-names = "mac", "ippc";
+>>> -
+>>> +        #address-cells = <1>;
+>>> +        #size-cells = <0>;
+>>>           clocks = <&sysc MT7621_CLK_XTAL>;
+>>>           clock-names = "sys_ck";
+>>> -
 >>
->> The pins are muxed and can be either UART, or some other function that
->> is supported by the mux: this means that the pinctrl-xxx properties shall
->> *not* go into the SoC dtsi file, but in board dts files instead.
->>
->> Said differently: the usage of the UART pins is board-specific, not SoC-wide.
+>> Please keep the empty lines. It's easier to read. I don't see anything on
+>> the Devicetree Sources (DTS) Coding Style that would restrict this.
 > 
-> Thanks for the explanation. I agree that the pinctrl properties
-> would make more sense in a serial node extension in a board's dts,
-> but my reason for including them in the SoC's dtsi is due to the
-> precedent set with these existing nodes:
+> The reason I removed them was due to the SoC DTSI example shown in [1]
+> lacking empty lines between properties, but then using them instead as
+> visual separation between properties and child nodes, or at least that's
+> how I understood it when I looked at it.
 > 
->    i2c
->    spi0
->    mmc
->    ethernet
->    pcie
+> Personally, I prefer the look of the SoC DTSI example - but I don't mind
+> recreating the patch set with the empty lines between the properties left
+> entact.
 > 
-> There is also a default function declared for each of the pin
-> groups defined under the pinctrl node. These functions co-incide
-> with what is intended for each of those device nodes to function
-> correctly, rather than in the alternative GPIO-mode.
+> As there is a mix of property spacing and ordering styles in mt7621.dtsi
+> already - what is the consensus on what a node in this file should look
+> like?
+
+There's no precise spacing style I maintain here. I simply group together
+properties that describe a single attribute, and separate those that
+describe different attributes.
+
 > 
-> So I thought that sticking with that existing pattern would get
-> the least resistance from the community.
-> 
-> I can imagine how moving the pinctrl node to the board dts, and
-> then moving all of the pinctrl properties associated with device
-> nodes to their board dts references could be a better separation
-> logically.
-> 
-> What do you recommend?
+> I also don't mind following that pattern and cleaning up the whole dtsi
+> according to that if it'll save us all time and energy in future.
 
-As a maintainer, this is the logic I follow on the MT7621 device tree
-source files regarding the description of pin groups:
-
-- Claim the relevant pin group with the default function (pinctrl-names &
-   pinctrl-0) on the node that describes a component of the SoC.
-
-- Keep the node disabled and leave it to the board DTS file to enable it.
-
-I don't disable serial@c00 as we can expect every board to use it. Same
-goes for ethernet@1e100000. Some boards use the pins on the rgmii2 pin
-group as GPIO, so the pinctrl-0 property on ethernet@1e100000 is
-overwritten on the board DTS file without rgmii2_pins listed.
-
-So I'm fine with this patch as is.
-
-Reviewed-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+If you'd like to improve the ordering style of the MT7621 device tree
+sources accordingly with
+Documentation/devicetree/bindings/dts-coding-style.rst, I'd be happy to
+review those patches.
 
 Arınç
 
