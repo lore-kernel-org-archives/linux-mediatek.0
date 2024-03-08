@@ -4,107 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 152FDC54E4A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 13:57:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53C5FC5475B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Mar 2024 14:32:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Content-Transfer-Encoding:Content-Type:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mblih+4aRiBhJNw99bnE5slZmsY2YvDP13y7ErXtuoU=; b=ppW1oikIG/+M0Ro0iTaQgaB4xZ
-	Rrws5JgSIL+gU61Lui7ZzozN5krQhLyUuuxmkhPyrvM8WfQsDSQeswQAytWevh6aaUzUKesdY7iNP
-	YsqF0qRvil4R8UNqonOG0SP2On4cWN2JijdK8fxKf78ifAAW2M4y3Tdcjlw/42PK+s+RjIy0blej1
-	FtmJ6B8zLjcRJrGuxkjNSzZKfQj8KDdTfdNZwqv7RdsQZxL21zVCAg2fCgZdh72BFqly9KbrmSLWS
-	q4rlZgtxiVmJgLdPTIzXZCek1DuqaCaBh93pwp7JugrEjpP9x63m8tVrq85Ntrr/3zRvMCtYJJYb0
-	eOpFHGug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6coLGN2o7T+HnhsIJpqB1H4NYRqhiPGnAgEfWaOCrxo=; b=c9oOEzzMxALVmf+Tl9aqHF1GYl
+	yobDRIrswiKfP4J+5rjM0mWba/fflkR71iwefSFa0P0EHy/zEiweHG2dWpDl79DrAYcD2s+uWc8T0
+	RrD2Ox95CQYJ794tSy+jmybejNRsLKh3H45urr6cLlUiAp1kU2kEO7x1KsLVugZ9D3Aopw9Ijqn5I
+	L39edwSBgn+STNF1eLKYL2zkcr8i5FfCyn8QuLygXJNj8BJ0+01n+MXaHzd8PKBeXYNSkVjpaz5yT
+	GoNhIFOY19lO3S1xhbb5wII7KA49RQkREoz55B1XrsitmIG7DnozLKgHXzTnmMaNqKnhnIpK/cgw0
+	eNdCfYXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riajN-00000009PX5-2nvj;
-	Fri, 08 Mar 2024 13:57:49 +0000
-Received: from outgoing1.flk.host-h.net ([188.40.0.86])
+	id 1ribGW-00000009aQK-1ohk;
+	Fri, 08 Mar 2024 14:32:04 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riajL-00000009PV0-0rQW;
-	Fri, 08 Mar 2024 13:57:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=risingedge.co.za; s=xneelo; h=Message-ID:References:In-Reply-To:Subject:Cc:
-	To:From:Date:Content-Transfer-Encoding:Content-Type:MIME-Version:reply-to:
-	sender:bcc; bh=mblih+4aRiBhJNw99bnE5slZmsY2YvDP13y7ErXtuoU=; b=SRSXzERuTXXSsb
-	AeuUkB8vc5rker87kqmefLj1SruVVlLnyP6JkTWSTxKuSTO3KZYsGzcajBzNFJQDxoEzmLk/B3bnA
-	OhwjnPDupK2CM/bPj7zTUgmoTQbcxTiJDiurAhN7LkiN8WTqKrXWiPEeRqgzBhDvtV0JkPt28jjw2
-	YWOftRtv0QRvsb04zWpyJMi3dspNYb3quHySberinV3A5dJmdXdqeTqBro7gsRfCl5Q2iTCSsWDjw
-	LL6vnAIbsWlZDIgpfpE/1Qh+qK7nCNEMeFx0V/ib+IFHRmoZORfs2Xij037RfoslogfMCCiLrIZFW
-	k3Ebe8K9o5dEJXSbauKg==;
-Received: from www31.flk1.host-h.net ([188.40.1.173])
-	by antispam3-flk1.host-h.net with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1riajH-0054fZ-My; Fri, 08 Mar 2024 15:57:45 +0200
-Received: from roundcubeweb1.flk1.host-h.net ([138.201.244.33] helo=webmail9.konsoleh.co.za)
-	by www31.flk1.host-h.net with esmtpa (Exim 4.92)
-	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1riajH-0007lj-3t; Fri, 08 Mar 2024 15:57:43 +0200
+	id 1ribGS-00000009aNS-14da;
+	Fri, 08 Mar 2024 14:32:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1709908317;
+	bh=wdtYuwWx8ORQMwU47Qj5g2L7s2yOzijaUjNod58MtHc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WOV78bzOtFgbkclVF1IHUAojPBKxxPeMbLzSqAkg93ILAG1TPRonZhHVToLUUKerl
+	 OBGMcXxyT9ozJdaCYQcLI1absu/0fJ3VL3mG6siOMAWwkbpRvVbJaNwx5xzDIMWj4o
+	 t8B8DrXILMB+OgyhVvbTHlFGQL4VOQk/zQXdTpRpaulErM4EcQsj1N6wePREhWHlQk
+	 KkqXUCBn8BPY/urVHoe+xqOBr+6+gu9eGWu2ky2tDZOdyQ8GBDPgNMyDn9n4AZGExc
+	 lg3p2EFHPey7EMKIJu7kOVhofva1YqpBdgsxYASnZst/+wCQgYrWGyjn/PafgWZ8Mo
+	 Dsi/vkQHKarig==
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A282D37820C3;
+	Fri,  8 Mar 2024 14:31:54 +0000 (UTC)
+Date: Fri, 8 Mar 2024 09:31:52 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Chen-Yu Tsai <wenst@chromium.org>
+Cc: regressions@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: Probe regression of efuse@11f10000 on
+ mt8183-kukui-jacuzzi-juniper-sku16 running next-20240202
+Message-ID: <c4416256-eedc-4c9b-b968-3a02490c4c09@notapiano>
+References: <47cdeac1-121d-4b1a-a3ac-e2affc7a2fc3@notapiano>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Date: Fri, 08 Mar 2024 15:57:42 +0200
-From: Justin Swartz <justin.swartz@risingedge.co.za>
-To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, linux-mips@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] mips: dts: ralink: mt7621: add cell count properties
- to usb
-In-Reply-To: <7e9221ae-e53b-475f-9b6f-4cab58b2d109@arinc9.com>
-References: <0001-mips-dts-ralink-mt7621-add-cell-count-properties-to-.patch>
- <20240307223756.31643-1-justin.swartz@risingedge.co.za>
- <c445fd12-f8a8-41df-bee8-8b126b26110b@arinc9.com>
- <067071a9d57ffb09f437718cf905b121@risingedge.co.za>
- <7e9221ae-e53b-475f-9b6f-4cab58b2d109@arinc9.com>
-Message-ID: <59b0b2084ea1322c3db2bfe9f2c2c702@risingedge.co.za>
-X-Sender: justin.swartz@risingedge.co.za
-User-Agent: Roundcube Webmail/1.3.17
-X-Authenticated-Sender: justin.swartz@risingedge.co.za
-X-Virus-Scanned: Clear
-X-Originating-IP: 188.40.1.173
-X-SpamExperts-Domain: risingedge.co.za
-X-SpamExperts-Username: 
-Authentication-Results: host-h.net; auth=pass (login) smtp.auth=@risingedge.co.za
-X-SpamExperts-Outgoing-Class: ham
-X-SpamExperts-Outgoing-Evidence: Combined (0.02)
-X-Recommended-Action: accept
-X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT91LYmA7WyhHcEQsf7WsZ3VPUtbdvnXkggZ
- 3YnVId/Y5jcf0yeVQAvfjHznO7+bT5wCPRB8bAzJcv2cv+UqiTTc2+CpNcmBnO4XM3Sck4bwNogU
- WCl1nkLBzZX0KuJ9bXiS85Z42w/+2OBolTNFbPomXFWCX8oNdggW7HE9XDTdSejrkEpbuUvwMvHx
- 3T+KSG//gbuP7hnUK8NQdLwsVWKIFDZRrTGv3rxiw9tFrqFSCFNiLZt/QXQnOBRD+jq1HsKsDh/6
- Srgk2K3gr1VBfJbChkYH6fbrypLNrde+UooQVNLReLErukdelEOHUIpaBbp5GdnsN8+UvimwMinK
- 0+Txhz2u9qvrL2PODYgMZQApJXOjDLkqunZ9NcY2bHZn7CfFscMZZf3sCkN20I5vMh4akiObI7Kj
- vK7X04QEin24qbfMFd8eGjnYW8aSH5qj4ujh/13psIvqSqJFa1CcANErDW/w69saM9prk3jNnHtn
- nuEt/J9wDZeQfiNOYsLDFBdwYt2XtlLzy7G7T4kla0JNnAWQx3FS11bhwUa9HCIwKB+TroNcRY33
- oNmH4nRQzHQazgY7lmveanvOdQzf6IMJ3345q/s6ySNrGnXycmhg3FDRRzisL1oin/zKhywqX9/w
- bOl0qtP5EgfDRdSDhnwOLtBcNrQxKZYuPe8bdCyw79zlPbqLQkZr26Lcxdvj8cqI+CogZdOhX7v3
- ClXzrmMENhJLl6MBfhzHVBR0wHQZxzIUka7Uq615Mik1qzcz30+tdk6yIuh9K7v+Nq0Cm3JVhle6
- F/kpBdN+oWjoATjEFDwcaiz0R34rhTN+GTbl4uS+pZovX9cex7Ac4fawcerGI7TrGXpM/B/M0BZd
- PfIU1BX7pZc1sE3vsz58auH/srM2fgZ9JmgLbj7sqoEiwv7LCxIiAE5ODMnmwjvj2589zjbyZCiM
- WpBpW8YvoIIqmZcWhL/r/eFjMjJnMHeiAPOVAT1rE1/vP68Bb4z3v3h3gCdXrv2+9GnNX30LKqXb
- fwFKgm/rnYBl+Mj5KqOl6Jzub/f3QhLRbOgisvi5VU9eNBtgo6zjiatjNO/pnMCjuIvXs/AyV/Ns
- URB/R+FlEHyAzksgfaRvdgw0WK34QWnzHHMcN6qoXPjenLhIOF1oeRYbjF1Hp647mOWoQlc3hL3c
- dBMSQgQtiTUcJp5roVy0aSDnJVDNCxo62e2RFzS2kkd4u/m4iBmYb1/LCV4/EuVHup06w3Vwxf9C
- F7D6LKKRTfdjzQ6YC7Heg3Xf7O1TOd6RcY/MXB8eEq3bCN2QohZvyS03iBmgsz450Kmjd3fGV5Pc
- rZPg14lcNaSs4Fwukty8QMQa7L0bD+vL0NiZJ28dIbtf63VNbf0lrvssY+k7AHGi1NevGWTo2+h8
- Lhk4HCeZR7ymlGVRtthBJ2y8A5arx6JItKpFaUNPGMMlvbMX0nyK1NiAJ0y2Qvvn6ds6mor35w4f
- SfHzQbABJfgy21HclcZkPRq7NhoxyMwqi8Q23Rgadfh5T5n5D4OHHpbEIgsllZKWnzc5M5WlNtVJ
- qo05MS+4ayUpOtEhdxekWDmK9g==
-X-Report-Abuse-To: spam@antispamquarantine.host-h.net
+In-Reply-To: <47cdeac1-121d-4b1a-a3ac-e2affc7a2fc3@notapiano>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240308_055747_336967_1129EE99 
-X-CRM114-Status: GOOD (  21.26  )
+X-CRM114-CacheID: sfid-20240308_063200_488512_36C7C137 
+X-CRM114-Status: GOOD (  17.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,93 +78,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024-03-08 15:48, Arınç ÜNAL wrote:
-> On 8.03.2024 16:21, Justin Swartz wrote:
->> 
->> On 2024-03-08 14:01, Arınç ÜNAL wrote:
->>> On 8.03.2024 01:37, Justin Swartz wrote:
->>>> Add default #address-cells and #size-cells properties to the
->>>> usb node, which should be suitable for hubs and devices without
->>>> explicitly declared interface nodes, as:
->>>> 
->>>>    "#address-cells":
->>>>      description: should be 1 for hub nodes with device nodes,
->>>>        should be 2 for device nodes with interface nodes.
->>>>      enum: [1, 2]
->>>> 
->>>>    "#size-cells":
->>>>      const: 0
->>>> 
->>>> -- Documentation/devicetree/bindings/usb/usb-device.yaml
->>>> 
->>>> This version of the patch places the properties according to
->>>> the order recommended by:
->>>> 
->>>>     Documentation/devicetree/bindings/dts-coding-style.rst
->>>> 
->>>> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
->>>> ---
->>>>   arch/mips/boot/dts/ralink/mt7621.dtsi | 4 ++--
->>>>   1 file changed, 2 insertions(+), 2 deletions(-)
->>>> 
->>>> diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi 
->>>> b/arch/mips/boot/dts/ralink/mt7621.dtsi
->>>> index 5a89f0b8c..7532e17dd 100644
->>>> --- a/arch/mips/boot/dts/ralink/mt7621.dtsi
->>>> +++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
->>>> @@ -289,10 +289,10 @@ usb: usb@1e1c0000 {
->>>>           reg = <0x1e1c0000 0x1000
->>>>                  0x1e1d0700 0x0100>;
->>>>           reg-names = "mac", "ippc";
->>>> -
->>>> +        #address-cells = <1>;
->>>> +        #size-cells = <0>;
->>>>           clocks = <&sysc MT7621_CLK_XTAL>;
->>>>           clock-names = "sys_ck";
->>>> -
->>> 
->>> Please keep the empty lines. It's easier to read. I don't see 
->>> anything on
->>> the Devicetree Sources (DTS) Coding Style that would restrict this.
->> 
->> The reason I removed them was due to the SoC DTSI example shown in [1]
->> lacking empty lines between properties, but then using them instead as
->> visual separation between properties and child nodes, or at least 
->> that's
->> how I understood it when I looked at it.
->> 
->> Personally, I prefer the look of the SoC DTSI example - but I don't 
->> mind
->> recreating the patch set with the empty lines between the properties 
->> left
->> entact.
->> 
->> As there is a mix of property spacing and ordering styles in 
->> mt7621.dtsi
->> already - what is the consensus on what a node in this file should 
->> look
->> like?
+On Tue, Feb 06, 2024 at 11:11:00AM -0500, N�colas F. R. A. Prado wrote:
+> Hi,
 > 
-> There's no precise spacing style I maintain here. I simply group 
-> together
-> properties that describe a single attribute, and separate those that
-> describe different attributes.
-
-I'll recreate v3 accordingly.
-
-
->> I also don't mind following that pattern and cleaning up the whole 
->> dtsi
->> according to that if it'll save us all time and energy in future.
+> KernelCI has identified a regression [1] on the
+> mt8183-kukui-jacuzzi-juniper-sku16 machine running on next-20240202 compared to
+> next-20240118:
 > 
-> If you'd like to improve the ordering style of the MT7621 device tree
-> sources accordingly with
-> Documentation/devicetree/bindings/dts-coding-style.rst, I'd be happy to
-> review those patches.
+> <4>[    0.627077] sysfs: cannot create duplicate filename '/bus/nvmem/devices/mtk-efuse0'
+> <4>[    0.634945] CPU: 7 PID: 1 Comm: swapper/0 Not tainted 6.8.0-rc2-next-20240202 #1
+> <4>[    0.642542] Hardware name: Google juniper sku16 board (DT)
+> <4>[    0.648237] Call trace:
+> <4>[    0.650917]  dump_backtrace+0x94/0xec
+> <4>[    0.654815]  show_stack+0x18/0x24
+> <4>[    0.658359]  dump_stack_lvl+0x48/0x60
+> <4>[    0.662252]  dump_stack+0x18/0x24
+> <4>[    0.665796]  sysfs_warn_dup+0x64/0x80
+> <4>[    0.669688]  sysfs_do_create_link_sd+0xf0/0xf8
+> <4>[    0.674353]  sysfs_create_link+0x20/0x40
+> <4>[    0.678500]  bus_add_device+0x64/0x104
+> <4>[    0.682475]  device_add+0x33c/0x778
+> <4>[    0.686193]  nvmem_register+0x514/0x714
+> <4>[    0.690256]  devm_nvmem_register+0x1c/0x6c
+> <4>[    0.694577]  mtk_efuse_probe+0xe8/0x170
+> <4>[    0.698637]  platform_probe+0x68/0xd8
+> <4>[    0.702525]  really_probe+0x148/0x2b4
+> <4>[    0.706413]  __driver_probe_device+0x78/0x12c
+> <4>[    0.710990]  driver_probe_device+0xdc/0x160
+> <4>[    0.715394]  __driver_attach+0x94/0x19c
+> <4>[    0.719453]  bus_for_each_dev+0x74/0xd4
+> <4>[    0.723512]  driver_attach+0x24/0x30
+> <4>[    0.727312]  bus_add_driver+0xe4/0x1e8
+> <4>[    0.731284]  driver_register+0x60/0x128
+> <4>[    0.735343]  __platform_driver_register+0x28/0x34
+> <4>[    0.740265]  mtk_efuse_init+0x20/0x5c
+> <4>[    0.744155]  do_one_initcall+0x6c/0x1b0
+> <4>[    0.748214]  kernel_init_freeable+0x1c8/0x290
+> <4>[    0.752795]  kernel_init+0x20/0x1dc
+> <4>[    0.756512]  ret_from_fork+0x10/0x20
+> <4>[    0.760353] mediatek,efuse: probe of 11f10000.efuse failed with error -17
+> 
+> This efuse probe failure causes the probe failure of other components that
+> depend on it, including the display pipeline:
+> 
+> /soc/dsi-phy@11e50000
+> /soc/dsi@14014000
+> /soc/efuse@11f10000
+> /soc/i2c@11008000/anx7625@58
+> /soc/i2c@11008000/anx7625@58/aux-bus/panel
+> /soc/thermal@1100b000
+> 
+> There is a series already addressing the issue [2]. The first two patches have
+> been merged into the mediatek tree, but that tree isn't currently being
+> integrated into linux-next. Besides that, patch 3 hasn't been merged into the
+> nvmem tree yet, and it is required in order to solve the issue.
+> 
+> I'm sending this regression report so we can properly track the regression while
+> the fixes don't land on linux-next.
+> 
+> Thanks,
+> N�colas
+> 
+> [1] https://linux.kernelci.org/test/plan/id/65bd63c3f12d8a95e200a225/
+> [2] https://lore.kernel.org/linux-mediatek/20240130095656.3712469-1-wenst@chromium.org/
+> 
+> #regzbot introduced next-20240118..next-20240202
 
-Thanks, I'll make an attempt at this sometime soon.
+Not sure why this got filed by regzbot under the mainline tab rather than next.
+Maybe it was the missing collon? Let me try again:
 
+#regzbot introduced: next-20240118..next-20240202
 
-Regards
-Justin
+In any case, the fix has already made it to linux-next, so this should close the
+regression:
+
+#regzbot fix: nvmem: mtk-efuse: Drop NVMEM device name
+
+Thanks,
+N�colas
 
