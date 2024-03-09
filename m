@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4310EC54E41
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Mar 2024 14:06:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1943DC54E41
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Mar 2024 15:08:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tw2VS+QsVfGXZiZF1IkS/2FHF2jIkdONTN9aFBFDJco=; b=oF4rtIe3jCwRnjU30IOnBus+If
-	fstP5AiZPCB6onBs/Ej0AII4/CJFhXIAj2XGxFeBhVkvY0OvMtQxP562G1d7g+PTifVI3M+DT928a
-	GYuBD0L/cK/9tknZJLFh06JQ7C5LXKKTkBxjYAp88adFfcGp36ArmE9NnX8jkqPE+ELnB8OyndsQ/
-	hC6qnkZzydlcRqzbJWKcxt8jYtzlWlwAlisjOThM73cI4uOBzKTinNcH/TtqK12Wv7Op8bgYxbK0x
-	nLeTT4MOGXg4iwOOM+0WepVKHPVGU4AD2Vr4RgmPU9lgHIEV8DkH7dNIGNX6KIg0OYyRgdNe3xtOG
-	UhCwFlmA==;
+	bh=DuPtJOjhFYPaxtRlZq5T8P/iF0PcvZKdQUsKoL9s618=; b=U+mz22XZ3aB9qed+ZTi+pwWufL
+	wYHweJ9/mpg3Q4R+vUx/FsMpWxQyCTbGGjFf6m0wyhP/7Yf0ehlHmPDX3CGHzNRG3/vMyu95YZMj4
+	w5o6HOkEhP2MXzCufoqbPm3LKM/SCsptOpWebTx12lZyRYV4hl/srItSwR3Zv3ww/Nv15ERdNduYh
+	lZdBlFp//ysnnAvPru8LjZjYc97T/TOLHvS99IuCnAtKdG2UGLdzGoVNZ3MuXfnJVT85v4xVPS8fu
+	RufflFVED9JpeubLB6XcTtRMRcx/1+FSWy26cIvIjZmfmeDCIXukDhdNmzKLI5OnDFdNIQQACBpWf
+	sXabWuRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rixLh-0000000DUhB-1QEq;
-	Sat, 09 Mar 2024 14:06:53 +0000
-Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
+	id 1riyJg-0000000Db6Y-44hl;
+	Sat, 09 Mar 2024 15:08:52 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rixLe-0000000DUgO-1A6L;
-	Sat, 09 Mar 2024 14:06:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:From:
-	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:In-Reply-To:
-	References; bh=Tw2VS+QsVfGXZiZF1IkS/2FHF2jIkdONTN9aFBFDJco=; t=1709993210;
-	x=1710425210; b=VQ7a4utDW7lYAlCfjI0NUFECGAcqhgC/auFFH8JQWBOt7a25SfxRHJqkeyIA1
-	pSUOATr3nNp38lzBkwyj+PHZdpCL6ctAsPE5nE9l6ECxO5rkKgVJRsesNGmL8wAdBUC3hsqWwaX/I
-	oLk1mTWNY62hrmbgzWLQBf90wzX+fevMmCdj5+0cfJGinlQLC80I+QN84Y3w2JTZ9XBtmIOA95Nld
-	YCFvpsgUiyqXMHsvwljk1fszCbuDxiUEafUxrTL+Jj9ylwTjSSEZtsF+tgzGTUTNvkzirl0FmOWEB
-	SfjGfBb3hjU62AUtJXcMmnwZ9qDgn5UZChwV2ODFOdbmvwlCjg==;
-Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
-	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	id 1rixLT-0007yp-Dn; Sat, 09 Mar 2024 15:06:39 +0100
-Message-ID: <b888cbe2-6071-4445-91cd-8ce7cc9cc8f4@leemhuis.info>
-Date: Sat, 9 Mar 2024 15:06:38 +0100
+	id 1riyJb-0000000Db20-0vj3;
+	Sat, 09 Mar 2024 15:08:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1709996923;
+	bh=qTEqGKNFjaYsuV/phc8ORQVbsab7C8DxOC4Q/kxtGZo=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=LC9Yl0ASKsa/CrK1czdWcr/62wJZA8AxMjkFJKCzFtsdBXqD/HHpjZuQ9dVxpwAKR
+	 2PIBATnledzYqRbGG7SWlmzYrO8cv9ZtKvi/qzcUGAbfLIJtnuy0l3epdARjqpd2Mf
+	 tOnIfF2nCCH0LxWU302IE9Me1He2Izi8jmevYZ4HTQbFmUVQN1LBCdxR9ikfEsS5DA
+	 oUFxOF38J/dKX/zjxHdccFt7nXLOgpckZbd3a8MUeadTTlnMDDRkD+5eIVOKDW/z5g
+	 vU7EQRsDOUPNVhnJOmiE0Xw8PYf7XDoS950qSY4byKGxT6ullTrVkMHCHsCg1HHa8Q
+	 /uo5XZO6oHWoQ==
+Received: from localhost (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sebastianfricke)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E33443782043;
+	Sat,  9 Mar 2024 15:08:42 +0000 (UTC)
+From: Sebastian Fricke <sebastian.fricke@collabora.com>
+Date: Sat, 09 Mar 2024 16:08:38 +0100
+Subject: [PATCH 2/3] media: mediatek: vcodec: Improve wording & fix grammatic issues
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: Probe regression of efuse@11f10000 on
- mt8183-kukui-jacuzzi-juniper-sku16 running next-20240202
-Content-Language: en-US, de-DE
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240309-mediatek-typos-v1-2-fa4aeb59306c@collabora.com>
+References: <20240309-mediatek-typos-v1-0-fa4aeb59306c@collabora.com>
+In-Reply-To: <20240309-mediatek-typos-v1-0-fa4aeb59306c@collabora.com>
+To: Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: regressions@lists.linux.dev, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com
-References: <47cdeac1-121d-4b1a-a3ac-e2affc7a2fc3@notapiano>
- <c4416256-eedc-4c9b-b968-3a02490c4c09@notapiano>
-From: Thorsten Leemhuis <regressions@leemhuis.info>
-In-Reply-To: <c4416256-eedc-4c9b-b968-3a02490c4c09@notapiano>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1709993210;990b76bd;
-X-HE-SMSGID: 1rixLT-0007yp-Dn
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com, Sebastian Fricke <sebastian.fricke@collabora.com>
+X-Mailer: b4 0.11.1
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1709996919; l=5849;
+ i=sebastian.fricke@collabora.com; s=linux-media; h=from:subject:message-id;
+ bh=qTEqGKNFjaYsuV/phc8ORQVbsab7C8DxOC4Q/kxtGZo=;
+ b=rKIInxf1pNxiLqElpsLEecHpA9fojcvJ0hoVMqp5YWocqN/Ve0kgtFxy+Smr1ZCN6obDvVV9IZdK
+ K8fYAIdoD0L+bPnjpAMFIsMWjnqNc/Qoxiku51mQKswcIA8Blq63
+X-Developer-Key: i=sebastian.fricke@collabora.com; a=ed25519;
+ pk=pYXedPwrTtErcj7ERYeo/IpTrpe4QbJuEzSB52fslBg=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240309_060650_503573_450975DB 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20240309_070847_454294_46DD1235 
+X-CRM114-Status: GOOD (  14.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,31 +86,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08.03.24 15:31, Nícolas F. R. A. Prado wrote:
-> On Tue, Feb 06, 2024 at 11:11:00AM -0500, Nícolas F. R. A. Prado wrote:
->>
->> KernelCI has identified a regression [1] on the
->> mt8183-kukui-jacuzzi-juniper-sku16 machine running on next-20240202 compared to
->> next-20240118:
->>
->> #regzbot introduced next-20240118..next-20240202
-> 
-> Not sure why this got filed by regzbot under the mainline tab rather than next.
-> Maybe it was the missing collon? 
+Multiple issues detected while scanning the code by far not a complete
+list of required changes but some small improvements.
 
-No, I guess that is a bug in regzbot: the support for -next is there,
-but not much tested. Will need to take a closer look, will do so in the
-next few days.
+Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
+---
+ drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h   | 2 +-
+ .../media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c    | 2 +-
+ .../platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c    | 2 +-
+ .../platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c    | 2 +-
+ drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_if.c     | 4 ++--
+ drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c | 2 +-
+ 6 files changed, 7 insertions(+), 7 deletions(-)
 
-> In any case, the fix has already made it to linux-next, so this should close the
-> regression:
->
-> #regzbot fix: nvmem: mtk-efuse: Drop NVMEM device name
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+index a0451116f2e4..f975db4293da 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+@@ -71,7 +71,7 @@ enum mtk_vdec_hw_arch {
+  * @fb_sz: bitstream size of each plane
+  * E.g. suppose picture size is 176x144,
+  *      buffer size will be aligned to 176x160.
+- * @cap_fourcc: fourcc number(may changed when resolution change)
++ * @cap_fourcc: fourcc number(may change on a resolution change)
+  * @reserved: align struct to 64-bit in order to adjust 32-bit and 64-bit os.
+  */
+ struct vdec_pic_info {
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c
+index 37c41b673876..668e87bf30e8 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c
+@@ -27,7 +27,7 @@ struct mtk_h264_dec_slice_param {
+ /**
+  * struct vdec_h264_dec_info - decode information
+  * @dpb_sz		: decoding picture buffer size
+- * @resolution_changed  : resolution change happend
++ * @resolution_changed  : flag to notify that a resolution change happend
+  * @realloc_mv_buf	: flag to notify driver to re-allocate mv buffer
+  * @cap_num_planes	: number planes of capture buffer
+  * @bs_dma		: Input bit-stream buffer dma address
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
+index d5224c9584b6..c4ac6b6f7acf 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
+@@ -131,7 +131,7 @@ struct vdec_h264_slice_share_info {
+ /**
+  * struct vdec_h264_slice_inst - h264 decoder instance
+  *
+- * @slice_dec_num:	how many picture be decoded
++ * @slice_dec_num:	how many pictures to be decoded
+  * @ctx:		point to mtk_vcodec_dec_ctx
+  * @pred_buf:		HW working prediction buffer
+  * @mv_buf:		HW working motion vector buffer
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
+index a44db6139ff2..349b510d355a 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
+@@ -342,7 +342,7 @@ struct vdec_hevc_slice_share_info {
+ /**
+  * struct vdec_hevc_slice_inst - hevc decoder instance
+  *
+- * @slice_dec_num:      how many picture be decoded
++ * @slice_dec_num:      how many pictures to be decoded
+  * @ctx:                point to mtk_vcodec_dec_ctx
+  * @mv_buf:             HW working motion vector buffer
+  * @vpu:                VPU instance
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_if.c
+index 19407f9bc773..9649f4ec1f2a 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_if.c
+@@ -56,7 +56,7 @@
+  * @cur_c_fb_dma      : current plane C frame buffer dma address
+  * @bs_dma	      : bitstream dma address
+  * @bs_sz	      : bitstream size
+- * @resolution_changed: resolution change flag 1 - changed,  0 - not change
++ * @resolution_changed: resolution change flag 1 - changed,  0 - not changed
+  * @show_frame	      : display this frame or not
+  * @wait_key_frame    : wait key frame coming
+  */
+@@ -109,7 +109,7 @@ struct vdec_vp8_hw_reg_base {
+ /**
+  * struct vdec_vp8_vpu_inst - VPU instance for VP8 decode
+  * @wq_hd	: Wait queue to wait VPU message ack
+- * @signaled	: 1 - Host has received ack message from VPU, 0 - not receive
++ * @signaled	: 1 - Host has received ack message from VPU, 0 - not received
+  * @failure	: VPU execution result status 0 - success, others - fail
+  * @inst_addr	: VPU decoder instance address
+  */
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
+index f677e499fefa..e27e728f392e 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
+@@ -35,7 +35,7 @@
+  * @cur_c_fb_dma:	current plane C frame buffer dma address
+  * @bs_dma:		bitstream dma address
+  * @bs_sz:		bitstream size
+- * @resolution_changed:resolution change flag 1 - changed,  0 - not change
++ * @resolution_changed:resolution change flag 1 - changed,  0 - not changed
+  * @frame_header_type:	current frame header type
+  * @crc:		used to check whether hardware's status is right
+  * @reserved:		reserved, currently unused
 
-Out of interest: Is involving regzbot worth it in case the fix is
-already in -next? Or is that primarily to keep track of "we found a
-regression and a fix was already available in next". I don't mind if
-it's the latter, just curious.
-
-Ciao, Thorsten
+-- 
+2.25.1
 
