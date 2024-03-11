@@ -4,64 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 157F8C5475B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Mar 2024 08:45:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FCD6C54E58
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Mar 2024 08:56:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:
-	From:Cc:Subject:Message-Id:Date:Content-Type:Reply-To:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mtzMvH4RKGw+lusOUgxI15uUupyuHjm5gygT3sYbz44=; b=AVrak6vlCrHZ7psx6qk+Fi4Uxf
-	YlQvEv61XFTeaFjMoyhP9JUYrYgxGHqa9IH7KNdDTaCzKhxw8bmrB/Z/RbdAeNwkN8MDykdsC2WIH
-	EIx6NcVDsrbKs9z3PyIzqUOuqNrY/VT5x9TjieAYDL1U/rKF3xuhuGBCk0lA9qB1tbqYZRWJtreRN
-	f4U4IQBMS/MP+Q+xGqDbiynWeMbKWkMAQnaBxcO+NY9RUQt5apnQp+FCmAztKfU8k1UmikD/13WU0
-	Tv33F8Cr53rhGFqwJUVSaJWQtfK8Ck8Rjs17ap5+r5h6zFh6aKKqXCIyv8GlJ4oA3Y9YSStHJe9J6
-	1bOLE20w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AiSypvsf0vFuIntMc6938GE+Jid5StU7ajQ4XOIRTT0=; b=O018qSjyUEwUMbmTiS4zHw5fV4
+	4rcC5tKc/OB76xd8VgAEDV1Tt43f//f3/eaa/m7vkhJon2DhSMuu/Qhd3EI/p+dNKOM2C9NBPh2Sz
+	7fWfMS+J8hJirx46I0Jg1jXAMBEB5S1fobXVw27dsCr5Zjyul31qvGKFx3BOcJzgHgJvM2SKQgw7Z
+	Ji+mxPW7Hr85uQmvCoFoPvQs6iVea7Boz+YkYYzXuEKHNDeq+RWseMzMa/gSP6aXmDRdjpzyRfmDv
+	hLW6ldVXtNjNTcaCL9WCwo6w0aJfk9QfALF8zDESeRp0dbHHaEXvKB9xzomb9yTLsrwfxjJRrbxPe
+	St6yLwsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjbHL-00000000fgj-3EXa;
-	Mon, 11 Mar 2024 08:45:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rjbSn-00000000hRZ-3RTz;
+	Mon, 11 Mar 2024 08:56:53 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjbHH-00000000feS-1Ej8;
-	Mon, 11 Mar 2024 08:45:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3A94160C36;
-	Mon, 11 Mar 2024 08:44:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75B7BC433F1;
-	Mon, 11 Mar 2024 08:44:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1710146697;
-	bh=JZieu3zU1s4uVfTI4Zgzi+WlM1F7Ie9p1d0FIqjXRiM=;
-	h=Date:Subject:Cc:From:To:References:In-Reply-To:From;
-	b=LeZgrurtAo7JrdGrtriPGahn3+EwF9D5tkRERDVUbBZT5H6+Yo8LTDZrNVkhu467U
-	 ykHgsNjHJsPg9lO+YNLDbw2PaWEZeb1S0BqZ94lpcemTbdthHbs1kTktCJTMvBsI/5
-	 dL9mcoKhvN354OKZaoJ46P9sU59p1Jy1+NOsZ8uZtU77mEmKq/tRzcunIri3e7afE5
-	 n2QVReGPsX3a2pbxLbuteTwNFKRTm4EC+YPJLjx0g+yig+OzYbxOR996UISrK9DoS5
-	 RNznzAd+NmQQ0XK9HfF5S7hPgm5NhdgEA4HcmCuypGq3W2BITYLdmJtIPCbOvqeiNy
-	 YBWG5Xj+rMl/Q==
-Content-Type: multipart/signed;
- boundary=86841d8504dafca0128a03728b2bfca24996893b0da9c247055c8de47cf4;
- micalg=pgp-sha256; protocol="application/pgp-signature"
-Date: Mon, 11 Mar 2024 09:44:44 +0100
-Message-Id: <CZQSEKZ288OL.205CBK4EC7G2J@kernel.org>
-Subject: Re: [PATCH v3 2/2] arm64: dts: mediatek: add Kontron 3.5"-SBC-i1200
-Cc: <devicetree@vger.kernel.org>, "Sean Wang" <sean.wang@mediatek.com>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-From: "Michael Walle" <mwalle@kernel.org>
-To: "Michael Walle" <mwalle@kernel.org>, "Rob Herring" <robh@kernel.org>,
- "Krzysztof Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, "Conor Dooley"
- <conor+dt@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>,
- "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
-X-Mailer: aerc 0.16.0
-References: <20240221155905.1217340-1-mwalle@kernel.org>
- <20240221155905.1217340-2-mwalle@kernel.org>
-In-Reply-To: <20240221155905.1217340-2-mwalle@kernel.org>
+	id 1rjbSi-00000000hPu-0XFZ;
+	Mon, 11 Mar 2024 08:56:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1710147404;
+	bh=LXDSRxlCG5CCneQuaLmC2tK3UwO3onm86dAkvFUIKWQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=F3gbBwhrhfInMUCcHzDvlAviU2qW0BhsNaWhd4AciDCfigP6s49NtcSLChisuolP1
+	 yRcwSCW3dcoWBlWr5pHM7+IstmJ7fvjmD1vZ4/Tcg31pRhtJUi4dpn0NdrD927/M3c
+	 n1x8GEY+ulYCLd0TfAi2WANCJUjZcpy96YAMBkfvnxB3XujRXIzW3zxYvExmMCTZuz
+	 yVdIKu9LydYr/kVSUX9PTGT0Tpbsl/dWOUUf7YkFdsDy645n/s2ZZ/5epYf8VV7Kdb
+	 wbIPwB04Wd0yl2Dq53EAhZG4v8IeQCfnBmZlfP8OPXNTHysWgiKtIgiijkaR22GFby
+	 37/lqySviz8KA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 790EE3780C21;
+	Mon, 11 Mar 2024 08:56:43 +0000 (UTC)
+Message-ID: <f7fb18dc-817e-4d93-94a8-a4b7493cc8a6@collabora.com>
+Date: Mon, 11 Mar 2024 09:56:42 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] clk: mediatek: pllfh: Don't log error for missing fhctl
+ node
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Johnson Wang <johnson.wang@mediatek.com>,
+ Edward-JW Yang <edward-jw.yang@mediatek.com>,
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: kernel@collabora.com, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240308-mtk-fhctl-no-node-error-v1-1-51e446eb149a@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240308-mtk-fhctl-no-node-error-v1-1-51e446eb149a@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240311_014459_443699_FCFF3F17 
-X-CRM114-Status: GOOD (  24.21  )
+X-CRM114-CacheID: sfid-20240311_015648_425622_46E9DD5D 
+X-CRM114-Status: GOOD (  12.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,75 +81,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---86841d8504dafca0128a03728b2bfca24996893b0da9c247055c8de47cf4
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+Il 08/03/24 21:29, Nícolas F. R. A. Prado ha scritto:
+> Support for fhctl clocks in apmixedsys was introduced at a later point
+> and to this moment only one mt6795 based platform has a fhctl DT node
+> present. Therefore the fhctl support in apmixedsys should be seen as
+> optional and not cause an error when it is missing.
+> 
+> Change the message's log level to warning. The warning level is chosen
+> so that it will still alert the fact that fhctl support might be
+> unintentionally missing, but without implying that this is necessarily
+> an issue.
+> 
+> Even if the FHCTL DT nodes are added to all current platforms moving
+> forward, since those changes won't be backported, this ensures stable
+> kernel releases won't have live with this error.
+> 
+> Fixes: d7964de8a8ea ("clk: mediatek: Add new clock driver to handle FHCTL hardware")
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Hi,
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-On Wed Feb 21, 2024 at 4:59 PM CET, Michael Walle wrote:
-> Add basic support for the Kontron 3.5" single board computer featuring a
-> Mediatek i1200 SoC (MT8395/MT8195).
->
-> Signed-off-by: Michael Walle <mwalle@kernel.org>
 
-Any feedback on this? Should I repost after the merge window or is
-it fine as it is for now?
-
--michael
-
-> ---
-> v3:
-> - add vsys regulator
-> - correct the LDO input of the mt6360 regulator
-> - add missing interrupt-cells
-> - no underscores in node names
-> - dropped regulator-compatible everywhere and use the correc node name
->   instead
-> - reordered mmc0 properties
-> - split mmc1 pinctrl properties, add no-mmc
-> - removed all MTK_DRIVE_8mA
-> - add i2c0 and i2c1
-> - add comments for spi and i2c busses
-> - add firmware-name property for scp (this should probably go into the
->   base dtsi?!)
-> - add missing tpm compatible
-> - renamed thermal zones to something more meaningful
-> - add correct bias-pull-up to (some) i2c busses
-> - moved reset handling into the PHY node, also added a compatible string
->   for the PHY.
->
-> Mh, my memory is hazy, but IIRC I run into the same problem which was
-> discussed on netdev some time ago. That is, the PHY driver cannot be
-> probed unless it is taken out of reset. Which will only happen if you
-> probe it. And the workaround/advise was to use the compatible string in
-> that case, which is unfortunate.
-> Just wanted to point out, that it is *not* the same as snps,reset-*
-> because the latter will work just fine without the compatible. I'll
-> go with the compatible for now.
->
-> I did *not* add the vbus to the USB ports, not even on the front port.
-> That is because of:
->   dependencies:
->     connector: [ usb-role-switch ]
-> and we just have a simple USB3.2 USB-A connector, no dual roles. IMHO
-> that is a bug in the driver, which should handle the vbus supply as
-> optional.
->
-> v2:
-> - none
-
---86841d8504dafca0128a03728b2bfca24996893b0da9c247055c8de47cf4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iIgEABYIADAWIQQCnWSOYTtih6UXaxvNyh2jtWxG+wUCZe7EfBIcbXdhbGxlQGtl
-cm5lbC5vcmcACgkQzcodo7VsRvuK8QD/UWncUk5POfZLlmd3CHTLcee2U3Na43dg
-L/gT99njMMsA/0NaR+3lRjSoxExN2TN5WFbjChnjUOGtaN5B5CkV2VoL
-=KYjX
------END PGP SIGNATURE-----
-
---86841d8504dafca0128a03728b2bfca24996893b0da9c247055c8de47cf4--
 
