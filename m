@@ -4,69 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FCD6C54E58
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Mar 2024 08:56:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D4FCC5475B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Mar 2024 09:21:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AiSypvsf0vFuIntMc6938GE+Jid5StU7ajQ4XOIRTT0=; b=O018qSjyUEwUMbmTiS4zHw5fV4
-	4rcC5tKc/OB76xd8VgAEDV1Tt43f//f3/eaa/m7vkhJon2DhSMuu/Qhd3EI/p+dNKOM2C9NBPh2Sz
-	7fWfMS+J8hJirx46I0Jg1jXAMBEB5S1fobXVw27dsCr5Zjyul31qvGKFx3BOcJzgHgJvM2SKQgw7Z
-	Ji+mxPW7Hr85uQmvCoFoPvQs6iVea7Boz+YkYYzXuEKHNDeq+RWseMzMa/gSP6aXmDRdjpzyRfmDv
-	hLW6ldVXtNjNTcaCL9WCwo6w0aJfk9QfALF8zDESeRp0dbHHaEXvKB9xzomb9yTLsrwfxjJRrbxPe
-	St6yLwsA==;
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EYN951LA1I6x2LqQG9SRvdSsS/DbVhjOvb+nDwRFhwc=; b=B5xi4QTE5+zU5mHZxnxzJCUU32
+	HRbDXRQ1znlMdfwP1LS1I/i59vd7cUUZXRxfJLXXSWQbtlmIhdwSixu5Kshd2m0MmtUlHUM5Pcwp3
+	7OS6v8feh9Iw5eIbJjQGrCNhJzuPrYBGi+mwjQS7omRjm4MzbEAAztfws91seXm04/fZSu5bo1M6h
+	YVJunh+0l20ogKnB+tNCDyvI00VFnz5L4PaAs92mc7x6oehE5PlkY2oPxy6Dg9X3m5M8bZ/5NjWtj
+	aSSVJOWlTG+jRenxvQBdo4HwWxRv0XLI6OecjYuKE0I6+e4KEvPgaBBnJBaLXN6A3U0/5giX75JHS
+	dj8xwSTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjbSn-00000000hRZ-3RTz;
-	Mon, 11 Mar 2024 08:56:53 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rjbqo-00000000oUV-0GgI;
+	Mon, 11 Mar 2024 09:21:42 +0000
+Received: from mail.buildbrigade.pl ([135.125.238.46])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjbSi-00000000hPu-0XFZ;
-	Mon, 11 Mar 2024 08:56:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710147404;
-	bh=LXDSRxlCG5CCneQuaLmC2tK3UwO3onm86dAkvFUIKWQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=F3gbBwhrhfInMUCcHzDvlAviU2qW0BhsNaWhd4AciDCfigP6s49NtcSLChisuolP1
-	 yRcwSCW3dcoWBlWr5pHM7+IstmJ7fvjmD1vZ4/Tcg31pRhtJUi4dpn0NdrD927/M3c
-	 n1x8GEY+ulYCLd0TfAi2WANCJUjZcpy96YAMBkfvnxB3XujRXIzW3zxYvExmMCTZuz
-	 yVdIKu9LydYr/kVSUX9PTGT0Tpbsl/dWOUUf7YkFdsDy645n/s2ZZ/5epYf8VV7Kdb
-	 wbIPwB04Wd0yl2Dq53EAhZG4v8IeQCfnBmZlfP8OPXNTHysWgiKtIgiijkaR22GFby
-	 37/lqySviz8KA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 790EE3780C21;
-	Mon, 11 Mar 2024 08:56:43 +0000 (UTC)
-Message-ID: <f7fb18dc-817e-4d93-94a8-a4b7493cc8a6@collabora.com>
-Date: Mon, 11 Mar 2024 09:56:42 +0100
+	id 1rjbql-00000000oSK-1zRz
+	for linux-mediatek@lists.infradead.org;
+	Mon, 11 Mar 2024 09:21:41 +0000
+Received: by mail.BuildBrigade.pl (Postfix, from userid 1002)
+	id 53AC1A2C8C; Mon, 11 Mar 2024 09:15:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=BuildBrigade.pl;
+	s=mail; t=1710148550;
+	bh=EYN951LA1I6x2LqQG9SRvdSsS/DbVhjOvb+nDwRFhwc=;
+	h=Date:From:To:Subject:From;
+	b=iG1UwmjhPJPuX10AsyKU4+7ggjTzDc6RuNqEEOfPnRghEuuvL4CvvC71mB97Jxz4f
+	 JJXdhc+h1nmBMCcXq0Y8Uavz8rgNlZVXOjweLlWFhhixal1DedGbU50YfNhoxJw0dj
+	 v5h2rBu47moZaAziGkBtUwbmvY4+2jafLB+qpswO+eQLg4uj939vhbOf1V7a3fvgXp
+	 r9Sw7SgdSimzTPg2Qx0mCBnhmtUm7ukie1JIdjKohq+vM7ZH8qpu6LxhHrqJIO/qff
+	 yIcJXMnfnDjfmhTlyHC9IXFjYjaDlaeiwQV72k/cXExfja18h4oqWGzAGIbaqHIj8A
+	 OK8BoYGHdekZQ==
+Received: by mail.BuildBrigade.pl for <linux-mediatek@lists.infradead.org>; Mon, 11 Mar 2024 09:15:20 GMT
+Message-ID: <20240311074500-0.1.c1.1gyg2.0.i90v0bne2h@BuildBrigade.pl>
+Date: Mon, 11 Mar 2024 09:15:20 GMT
+From: "Tomasz Mrozowski" <tomasz.mrozowski@buildbrigade.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?Niskokosztowa_modernizacja_o=C5=9Bwietlenia?=
+X-Mailer: mail.BuildBrigade.pl
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] clk: mediatek: pllfh: Don't log error for missing fhctl
- node
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Johnson Wang <johnson.wang@mediatek.com>,
- Edward-JW Yang <edward-jw.yang@mediatek.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: kernel@collabora.com, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20240308-mtk-fhctl-no-node-error-v1-1-51e446eb149a@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240308-mtk-fhctl-no-node-error-v1-1-51e446eb149a@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240311_015648_425622_46E9DD5D 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20240311_022139_711756_C25FB85F 
+X-CRM114-Status: UNSURE (   1.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,25 +67,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/03/24 21:29, Nícolas F. R. A. Prado ha scritto:
-> Support for fhctl clocks in apmixedsys was introduced at a later point
-> and to this moment only one mt6795 based platform has a fhctl DT node
-> present. Therefore the fhctl support in apmixedsys should be seen as
-> optional and not cause an error when it is missing.
-> 
-> Change the message's log level to warning. The warning level is chosen
-> so that it will still alert the fact that fhctl support might be
-> unintentionally missing, but without implying that this is necessarily
-> an issue.
-> 
-> Even if the FHCTL DT nodes are added to all current platforms moving
-> forward, since those changes won't be backported, this ensures stable
-> kernel releases won't have live with this error.
-> 
-> Fixes: d7964de8a8ea ("clk: mediatek: Add new clock driver to handle FHCTL hardware")
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Witam,=20
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+jeste=C5=9Bmy polskim producentem opraw o=C5=9Bwietleniowych, dostosowany=
+ch do potrzeb sektora przemys=C5=82owego.
+
+Naszym celem jest pomaganie firmom przemys=C5=82owym w oszcz=C4=99dzaniu =
+energii i zwi=C4=99kszaniu efektywno=C5=9Bci poprzez modernizacj=C4=99 o=C5=
+=9Bwietlenia.
+
+Przeprowadzimy niezobowi=C4=85zuj=C4=85cy i bezp=C5=82atny audyt o=C5=9Bw=
+ietlenia w Pani/Pana firmie, kt=C3=B3ry pomo=C5=BCe zidentyfikowa=C4=87 p=
+otencjalne oszcz=C4=99dno=C5=9Bci, jakie mo=C5=BCna osi=C4=85gn=C4=85=C4=87=
+ po zastosowaniu naszych opraw.=20
+
+Dzia=C5=82amy kompleksowo, pocz=C4=85wszy od konsultacji lokalnych, poprz=
+ez projektowanie optymalnego nat=C4=99=C5=BCenia =C5=9Bwiat=C5=82a, a=C5=BC=
+ po profesjonalny monta=C5=BC naszych produkt=C3=B3w.=20
+
+Opracowali=C5=9Bmy innowacyjny model finansowania inwestycji.
+
+Prosz=C4=99 o odpowied=C5=BA, je=C5=9Bli jeszcze nie wymienili Pa=C5=84st=
+wo o=C5=9Bwietlenia na LED i jeste=C5=9Bcie zainteresowani nasz=C4=85 pro=
+pozycj=C4=85.
 
 
+Pozdrawiam
+Tomasz Mrozowski
 
