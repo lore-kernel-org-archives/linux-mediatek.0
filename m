@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DEF0C54E58
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Mar 2024 16:05:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D60F7C5475B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Mar 2024 17:11:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P7nvosDKIXaYzFECdhZZyUrOF4mJgzGjiwhQVEGTMaA=; b=PdWxiarQyjzVI/
-	rcDHHAvhrn9zR0LJjjZLZe4hEaGVJa7PJKi/hF96qtHvVuqz8qcv75AyMwHbL8rfrT648A+WPWxZS
-	6ZvrFXwyItx1M3WJw6MhsUwmfFgHAaDR+fFSya9ks66Le4hIlblg4hd3OiVt5e+Q1kcBgdj6SI1tq
-	kSzlRQ6CsvbMqeNiSmEJyc3H3l+6qOeGCNyG/9aNSbt3DzcYOJMIFKV489RhQSmOHkRZhzlC+TDr3
-	M2iaSW928J9Xj2WPiSkKskyFl8kNFg2M4ekIhn85/eFia3NE3/7GrwW8UNfp2X9DEZx5w0GQrOmbe
-	1u9o6NBrWyFCfi9RD9pg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:Cc:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FKU4mrJnAoN9YC5bfeNC7qKPDdKIRepXayBmHbEmm5Y=; b=4l9PvbJoWkq+hEqVjNt12hEpVI
+	/OwJCmQVZC1C5symZCoQW9HlEq/tuDZnuAn/Ai337PlQ5WCtjLmQ3d8BrsQlJoVArhLomywIVP1D4
+	xHhN3pJkmGwsEzNVdHHqdZfRIyUDKSY9spjCnSoO0miVdaOF74Fn6xQX3c1Ss/DnipLocrdMd1P9v
+	+9amtacVDc/tx0DdbBK87275Sykxh0XL+7mUyUc8nbe5wUzAgjNF1AXlIalpjaa+qsNlG3krK9ydD
+	FhaNn9RaI1pIdyMXZ9rBbawbUyl2YoyD470KQYd4UD883j9EZb8H2lUDplaSXu8RNMz7B4TEPbilR
+	WRDVPyag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rji9c-00000002Cxj-0rCm;
-	Mon, 11 Mar 2024 16:05:33 +0000
-Received: from relay1-d.mail.gandi.net ([2001:4b98:dc4:8::221])
+	id 1rjjBV-00000002So3-0Iah;
+	Mon, 11 Mar 2024 17:11:33 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rji9V-00000002Csr-3ofX;
-	Mon, 11 Mar 2024 16:05:28 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 718E324000C;
-	Mon, 11 Mar 2024 16:05:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1710173121;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=P7nvosDKIXaYzFECdhZZyUrOF4mJgzGjiwhQVEGTMaA=;
-	b=TlqipGJ1rEEaJ3ox6Xp5LvcDJPWE1VQXzp+62p2VfdX53SAoRyfXXnb+2JDMIYSkEnVNhz
-	zLN7IBvZlq7TFV8BRmuaJpHSFibS+2fZqWehPuyxOTSFFTiE5dZ2K8twesfTtAV4ESMUvL
-	OAtmEezXDDRtyOWm5ep/s9+uTJHYz15cXP9rFRWJ5mSOm0VPLXGskMqlnLWikRmfZ+1gnG
-	LHX/m2AbV7KO/WK7fMpDGGvy1AjIrEcs2KYAWPTxaroxAz6i49h1UvOe8TKnOATcf/GG0r
-	zIrXoviPlgyVAqI4jwFgWDmjZmQ7Q4H6xQbJRwcukPt/Ny3igRyrgC0zoBmbng==
-Message-ID: <d6dbc174-50bd-46dc-8da2-910d36782d60@arinc9.com>
-Date: Mon, 11 Mar 2024 19:05:05 +0300
+	id 1rjjBO-00000002Sk2-3opq;
+	Mon, 11 Mar 2024 17:11:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1710177085;
+	bh=5AOlmp0WhMZQanJVzfmUCGnKbq90HEOIbEhrlt/ju1k=;
+	h=Date:Cc:Subject:To:References:From:In-Reply-To:From;
+	b=dl1NqHij7NxipguTGBERLEIq1bqfVRVP4iq3wioNLnoRj8g82MYWcih38MC1YerDb
+	 YhPWoqoawOeG7J4ySudJmbQ64zMgmzEPziktv0To8I/s5RD4sK3x+XDx0nkmsIB2eC
+	 htiJP4vxClYA8IPklK1mq1etU6mBcnrMIBPNFpzDeio9bKEFjNTc5++dxjOEy9Yawi
+	 V97kUv+MyIoZND+Z8lyElxyXZeUndm0a/JY8Q3XVaIfzAcc3p95pz6amt0zErJssIV
+	 wswXPg+bMzbbuhGFVTrPNABshzD/Y01VLthmaXySK9zYeolaTh1DypNY3jBQ7OS/ku
+	 gIUIVVy+Qh8kA==
+Received: from [10.193.1.1] (broslavsky.collaboradmins.com [68.183.210.73])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: usama.anjum)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 45F1B378200D;
+	Mon, 11 Mar 2024 17:11:19 +0000 (UTC)
+Message-ID: <ab6b08c5-86a2-47e3-8683-28cdbe5be7cf@collabora.com>
+Date: Mon, 11 Mar 2024 22:11:51 +0500
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net 1/2] net: dsa: mt7530: fix link-local frames that
- ingress vlan filtering ports
-To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20240311-b4-for-net-mt7530-fix-link-local-vlan-v1-0-d67e6cc31af2@arinc9.com>
- <20240311-b4-for-net-mt7530-fix-link-local-vlan-v1-1-d67e6cc31af2@arinc9.com>
+Cc: Muhammad Usama Anjum <usama.anjum@collabora.com>, kernel@collabora.com,
+ kernel-janitors@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] wifi: mt76: connac: check for null before dereferencing
 Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20240311-b4-for-net-mt7530-fix-link-local-vlan-v1-1-d67e6cc31af2@arinc9.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Spam-Score: 400
-X-GND-Status: SPAM
-X-GND-Sasl: arinc.unal@arinc9.com
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20240301144406.2808307-1-usama.anjum@collabora.com>
+From: Muhammad Usama Anjum <usama.anjum@collabora.com>
+In-Reply-To: <20240301144406.2808307-1-usama.anjum@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240311_090526_118118_8881ED9F 
-X-CRM114-Status: UNSURE (   3.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240311_101127_255337_E2068091 
+X-CRM114-Status: GOOD (  14.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,11 +77,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mithat.guner@xeront.com, =?UTF-8?Q?Alvin_=C5=A0ipraga?= <ALSI@bang-olufsen.dk>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, netdev@vger.kernel.org, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I'll add the "Fixes:" trailer after I receive reviews.
+Soft reminder
 
-Arınç
+On 3/1/24 7:44 PM, Muhammad Usama Anjum wrote:
+> The wcid can be NULL. It should be checked for validity before
+> dereferencing it to avoid crash.
+> 
+> Fixes: 098428c400ff ("wifi: mt76: connac: set correct muar_idx for mt799x chipsets")
+> Signed-off-by: Muhammad Usama Anjum <usama.anjum@collabora.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> index af0c2b2aacb00..7af60eebe517a 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> @@ -283,7 +283,7 @@ __mt76_connac_mcu_alloc_sta_req(struct mt76_dev *dev, struct mt76_vif *mvif,
+>  	};
+>  	struct sk_buff *skb;
+>  
+> -	if (is_mt799x(dev) && !wcid->sta)
+> +	if (is_mt799x(dev) && wcid && !wcid->sta)
+>  		hdr.muar_idx = 0xe;
+>  
+>  	mt76_connac_mcu_get_wlan_idx(dev, wcid, &hdr.wlan_idx_lo,
+
+-- 
+BR,
+Muhammad Usama Anjum
 
