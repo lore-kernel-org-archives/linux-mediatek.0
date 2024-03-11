@@ -4,54 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D4FCC5475B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Mar 2024 09:21:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2F6BC5475B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Mar 2024 10:28:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EYN951LA1I6x2LqQG9SRvdSsS/DbVhjOvb+nDwRFhwc=; b=B5xi4QTE5+zU5mHZxnxzJCUU32
-	HRbDXRQ1znlMdfwP1LS1I/i59vd7cUUZXRxfJLXXSWQbtlmIhdwSixu5Kshd2m0MmtUlHUM5Pcwp3
-	7OS6v8feh9Iw5eIbJjQGrCNhJzuPrYBGi+mwjQS7omRjm4MzbEAAztfws91seXm04/fZSu5bo1M6h
-	YVJunh+0l20ogKnB+tNCDyvI00VFnz5L4PaAs92mc7x6oehE5PlkY2oPxy6Dg9X3m5M8bZ/5NjWtj
-	aSSVJOWlTG+jRenxvQBdo4HwWxRv0XLI6OecjYuKE0I6+e4KEvPgaBBnJBaLXN6A3U0/5giX75JHS
-	dj8xwSTQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jqZk5vnFJ+qQyTMPdGhS1TGrvTSqb+svyT5tVIPW+aY=; b=Ojc9HOubCX2GGdMzRWodvTee/G
+	9hdBenJ8oqKFPgXeIIKjBoNjWsin9DZ+W1m/MjztRYMJcHAyvObbttjM84cClXyvgE9sXR3JLOzOa
+	woeZedYW1vcefofvAldHUiGqxYVlvuuP0/sjFWu0p/UtJ+rQ9x7h5w3TlgnzEhVHGMysAnkovBJjp
+	mHjaGOY80UjYvi1InukySnw4hU9OwfP8KAruNtCjQvN7Cu5Ix00qxBPYWFWbSF1r6KywkxE7NbcC5
+	g+DX810Yvz9z2My3nl5vxuK/Hpy9PEwmXjO6eaei3bWq1zTJG45ZzQEwgilzo7Va+mYV6me4UGNsU
+	Mwlrzsng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjbqo-00000000oUV-0GgI;
-	Mon, 11 Mar 2024 09:21:42 +0000
-Received: from mail.buildbrigade.pl ([135.125.238.46])
+	id 1rjct1-000000016JH-2uMq;
+	Mon, 11 Mar 2024 10:28:03 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjbql-00000000oSK-1zRz
-	for linux-mediatek@lists.infradead.org;
-	Mon, 11 Mar 2024 09:21:41 +0000
-Received: by mail.BuildBrigade.pl (Postfix, from userid 1002)
-	id 53AC1A2C8C; Mon, 11 Mar 2024 09:15:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=BuildBrigade.pl;
-	s=mail; t=1710148550;
-	bh=EYN951LA1I6x2LqQG9SRvdSsS/DbVhjOvb+nDwRFhwc=;
-	h=Date:From:To:Subject:From;
-	b=iG1UwmjhPJPuX10AsyKU4+7ggjTzDc6RuNqEEOfPnRghEuuvL4CvvC71mB97Jxz4f
-	 JJXdhc+h1nmBMCcXq0Y8Uavz8rgNlZVXOjweLlWFhhixal1DedGbU50YfNhoxJw0dj
-	 v5h2rBu47moZaAziGkBtUwbmvY4+2jafLB+qpswO+eQLg4uj939vhbOf1V7a3fvgXp
-	 r9Sw7SgdSimzTPg2Qx0mCBnhmtUm7ukie1JIdjKohq+vM7ZH8qpu6LxhHrqJIO/qff
-	 yIcJXMnfnDjfmhTlyHC9IXFjYjaDlaeiwQV72k/cXExfja18h4oqWGzAGIbaqHIj8A
-	 OK8BoYGHdekZQ==
-Received: by mail.BuildBrigade.pl for <linux-mediatek@lists.infradead.org>; Mon, 11 Mar 2024 09:15:20 GMT
-Message-ID: <20240311074500-0.1.c1.1gyg2.0.i90v0bne2h@BuildBrigade.pl>
-Date: Mon, 11 Mar 2024 09:15:20 GMT
-From: "Tomasz Mrozowski" <tomasz.mrozowski@buildbrigade.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?Niskokosztowa_modernizacja_o=C5=9Bwietlenia?=
-X-Mailer: mail.BuildBrigade.pl
+	id 1rjcsx-000000016Ha-1H6q;
+	Mon, 11 Mar 2024 10:28:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1710152877;
+	bh=Fgkwb/7yCvzFKvDQtJ1OKLGB5SBm7Cf1d4U3o19ANm0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=IbVh30D1g/pEERm13Uj1SwlryBdRwfdYZ/5GpC0yUqsoEfKEk1zgHw72ThIXUnOZJ
+	 WYLTmz+JGzVDoVNIyhKyC5H7auJ/aj9iAjmoxdtJl3DvfyCfF5JHMz7/V2ngac0Qb+
+	 qy+jEBhJkozyrA+6xG/a/mdGfT1MVXvJfVd4je2YRVSt+5ucJO8Q/xgcD6/QvhLeKz
+	 sYi1YnVVGKI2MPZRPYA4/jaSNwLNgQFufAPnAskO1zcsyAnpJhA5+E1AmpHdRD49ZQ
+	 fgCFJc0B2gMQSxcKcSBLMvZYNgaznddSun1sV5U/00ThkwlgqkKt3ICyxIjVdF2J8G
+	 W6quzf2Z7rFEw==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 310133780629;
+	Mon, 11 Mar 2024 10:27:56 +0000 (UTC)
+Message-ID: <e701d13a-44e9-473a-b0fa-f6cf14efae28@collabora.com>
+Date: Mon, 11 Mar 2024 11:27:55 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] media: mediatek: vcodec: Fix multiple typos
+Content-Language: en-US
+To: Sebastian Fricke <sebastian.fricke@collabora.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20240309-mediatek-typos-v1-0-fa4aeb59306c@collabora.com>
+ <20240309-mediatek-typos-v1-1-fa4aeb59306c@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240309-mediatek-typos-v1-1-fa4aeb59306c@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240311_022139_711756_C25FB85F 
-X-CRM114-Status: UNSURE (   1.24  )
+X-CRM114-CacheID: sfid-20240311_032759_592941_BC05BC19 
+X-CRM114-Status: UNSURE (   5.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -67,31 +82,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Witam,=20
+Il 09/03/24 16:08, Sebastian Fricke ha scritto:
+> Correct multiple different typos found in comments or function names.
+> 
+> Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
 
-jeste=C5=9Bmy polskim producentem opraw o=C5=9Bwietleniowych, dostosowany=
-ch do potrzeb sektora przemys=C5=82owego.
-
-Naszym celem jest pomaganie firmom przemys=C5=82owym w oszcz=C4=99dzaniu =
-energii i zwi=C4=99kszaniu efektywno=C5=9Bci poprzez modernizacj=C4=99 o=C5=
-=9Bwietlenia.
-
-Przeprowadzimy niezobowi=C4=85zuj=C4=85cy i bezp=C5=82atny audyt o=C5=9Bw=
-ietlenia w Pani/Pana firmie, kt=C3=B3ry pomo=C5=BCe zidentyfikowa=C4=87 p=
-otencjalne oszcz=C4=99dno=C5=9Bci, jakie mo=C5=BCna osi=C4=85gn=C4=85=C4=87=
- po zastosowaniu naszych opraw.=20
-
-Dzia=C5=82amy kompleksowo, pocz=C4=85wszy od konsultacji lokalnych, poprz=
-ez projektowanie optymalnego nat=C4=99=C5=BCenia =C5=9Bwiat=C5=82a, a=C5=BC=
- po profesjonalny monta=C5=BC naszych produkt=C3=B3w.=20
-
-Opracowali=C5=9Bmy innowacyjny model finansowania inwestycji.
-
-Prosz=C4=99 o odpowied=C5=BA, je=C5=9Bli jeszcze nie wymienili Pa=C5=84st=
-wo o=C5=9Bwietlenia na LED i jeste=C5=9Bcie zainteresowani nasz=C4=85 pro=
-pozycj=C4=85.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
-Pozdrawiam
-Tomasz Mrozowski
 
