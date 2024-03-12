@@ -4,200 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27CF9C5475B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 01:32:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2D5FC54E58
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 02:42:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NwDl0vEHIivU23QkK29WrGMgN9uGZn0VOc3f9hOETds=; b=VynXcqQrWD7IwQHjvKz9bxePog
-	T8LBcdPsVKLHfDxj5lD3VLs9ppq6ZIXtNK2ftH+jRFOgF5vClhP+88pmQgi6L452DOhvL3ykkRZ4Q
-	prdCeGZ2HyWUp6apRHncX8U+3KLySpT1iVbJiBbAxNamavhz2dJWRPojk02aK1dswfpzmd+t/Tfny
-	k8Un/nlIxtO2tfcbkzFJUoKER5eoZ7JBv/NmgmaEZS8dYsZLpJs95NQkjhErFTYY0Kqr5TMG6DZqO
-	ycWtJ44Eni/9UzQT7ryxvHPe5g1BsiTB/fF78wWBC8Ye3zPTW1A19VfPoCfA/+XYyEljB8bo6BAE6
-	b6PfzMAg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZJTPKj60zcN9dfLjCmksy1GRGg5SNemdWJWV0WcBEcs=; b=d4FnSYDFDKNrblbYZYApRAfO29
+	5pXxBFvG9t2IkWyHFP7MGztLSXZcmkqQIzDL0+qIlRKga+MYG4ydCe/jYSF21dxAqugDdN2j5EVwQ
+	1t3715wcDw2OaOJon7XUlX5cqBZRa/5lHLOFARnJHKmQDvlVQOk/XhuaAWwj7dW14Gv2csKpwB0DS
+	nuBsMSJgmuattH18MUkprPjFPpU+of2/mTh7G3xnDmXogefvI1vOfAsAydPZ+cvYg5gR5Y3B1/7EP
+	si0YArnov2MPG3IC/lM68bIG5FGE9+PGqujB2oKDitvgaU/cupBPZ35MvOZeevGqqKOmU/j5/aEPN
+	2CAZX+IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjqzw-00000003pnb-2hPD;
-	Tue, 12 Mar 2024 01:32:08 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rjs5Y-0000000426h-3Pnj;
+	Tue, 12 Mar 2024 02:42:00 +0000
+Received: from relay1-d.mail.gandi.net ([217.70.183.193])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjqzt-00000003pk6-2KDG;
-	Tue, 12 Mar 2024 01:32:07 +0000
-X-UUID: 51df5336e01011eeacdb61a41848c7d2-20240311
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=NwDl0vEHIivU23QkK29WrGMgN9uGZn0VOc3f9hOETds=;
-	b=PtKiPB/2Q8GAyMpqnNGq6d0/g+400fLOo+CEOGtAOWlN00CFd0KlSThQI9rJW/3CLNmw+FHnj3ZN0G0HBK9sRvi8OqjESgxbU4+Fa9umhtaCZYjH7+EYCMcQ6ixNMRzLdG8K9zhf/ShB4KS3ArG4VdsanahQx4cKw7I0JEuJGRg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:eb512e35-197d-49b6-b47a-e5af40cf0214,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:8d29e284-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
-X-UUID: 51df5336e01011eeacdb61a41848c7d2-20240311
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <zhi.mao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 710372308; Mon, 11 Mar 2024 18:31:59 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 12 Mar 2024 09:31:22 +0800
-Received: from SINPR02CU002.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 12 Mar 2024 09:31:22 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ctIRA4ss9Igcr5hOk7M2QS6gASKIO7NrznDf+la0Q0LPikNmTbEEwbZB5BvaZvh6wO9vGgiUni0dX4COdFT4snF+O3rSopG8BxTl2akWC/dvqn0+gL00jSLFqOx6q7PTV0uIExh3lFEjpKKC/AC/5e+9sr/Iug5m3haZRIjEbVGck5yQqQlU62WYPyDuXfiE753+X6B8XvVKkJ6jgri6yrF/1g1Izqe27a9v6Lof+YZAwNjn6SzOE8oBmi1EjZD5bV8DOEp9FwKM7v7L6jG3PyQUyW1kPcU8Dm5ihgE3/lZRfHU7RKW1ocHIS47V0rexoCb1ps6Bdk/uR7GIbBmubw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=NwDl0vEHIivU23QkK29WrGMgN9uGZn0VOc3f9hOETds=;
- b=DYGtjP/hFoV+Eesnq7M5BbP0YSQKm9rzKgAg8A2+mFxBHUJuCjbnvdPUJFA4jYeib8wpcWV0P6g4VpjPacc+8akSZ4Q2fJCqnUkSRV4cX/S48RVFXSQo7m55Ghm1WNru82sry31lTb+wRGCqF4Lp+JgxuCJ6ZgykklyhSTujOS99Bm48kFP2IMRF9Owb8ei1vSUXE8YM8Cg9MXlZbmFIQ2vEEwRW1ePOEjAgK6FnuakxFTE4+OVgLYEPDu+88S5Eb0Idw5lEJjXw39pI/pq9BifE5urD0pE1k6q/zBRdCF30tJYiELZKVNwZD0x2UHprOyiVvusBTeSKbhvueDv6PA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NwDl0vEHIivU23QkK29WrGMgN9uGZn0VOc3f9hOETds=;
- b=Qq+wpS77wYLJVhO/flMKGxR22VZMTlTtfWb7snzxJgxptpxvMfy/pNymYS1BPMFMPxPEJ7Tyym0QDjCRLDUXm1SJmcGTsCFmKJsRtI8F6aBu2LnyyVvrgB6XlzEG+J0r8K1KvdLr+K5Gh3+ez1QsKSdcmuxK0f2BgOdccONGi5k=
-Received: from TYZPR03MB5566.apcprd03.prod.outlook.com (2603:1096:400:53::7)
- by SG2PR03MB6538.apcprd03.prod.outlook.com (2603:1096:4:1d2::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7362.35; Tue, 12 Mar
- 2024 01:31:20 +0000
-Received: from TYZPR03MB5566.apcprd03.prod.outlook.com
- ([fe80::b39a:4ac4:5bf8:88d]) by TYZPR03MB5566.apcprd03.prod.outlook.com
- ([fe80::b39a:4ac4:5bf8:88d%5]) with mapi id 15.20.7362.035; Tue, 12 Mar 2024
- 01:31:20 +0000
-From: =?utf-8?B?WmhpIE1hbyAo5q+b5pm6KQ==?= <zhi.mao@mediatek.com>
-To: "mchehab@kernel.org" <mchehab@kernel.org>, "sakari.ailus@linux.intel.com"
-	<sakari.ailus@linux.intel.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
-CC: "heiko@sntech.de" <heiko@sntech.de>, "gerald.loacker@wolfvision.net"
-	<gerald.loacker@wolfvision.net>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "yunkec@chromium.org" <yunkec@chromium.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"dan.scally@ideasonboard.com" <dan.scally@ideasonboard.com>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	=?utf-8?B?U2hlbmduYW4gV2FuZyAo546L5Zyj55S3KQ==?=
-	<shengnan.wang@mediatek.com>, "hdegoede@redhat.com" <hdegoede@redhat.com>,
-	"linus.walleij@linaro.org" <linus.walleij@linaro.org>,
-	"andy.shevchenko@gmail.com" <andy.shevchenko@gmail.com>,
-	=?utf-8?B?WWF5YSBDaGFuZyAo5by16ZuF5riFKQ==?= <Yaya.Chang@mediatek.com>,
-	"bingbu.cao@intel.com" <bingbu.cao@intel.com>,
-	"jacopo.mondi@ideasonboard.com" <jacopo.mondi@ideasonboard.com>,
-	"jernej.skrabec@gmail.com" <jernej.skrabec@gmail.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "10572168@qq.com"
-	<10572168@qq.com>, "hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
-	"tomi.valkeinen@ideasonboard.com" <tomi.valkeinen@ideasonboard.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "laurent.pinchart@ideasonboard.com"
-	<laurent.pinchart@ideasonboard.com>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "macromorgan@hotmail.com"
-	<macromorgan@hotmail.com>
-Subject: Re: [PATCH v7 0/2] media: i2c: Add support for GC08A3 sensor
-Thread-Topic: [PATCH v7 0/2] media: i2c: Add support for GC08A3 sensor
-Thread-Index: AQHabRItIdh6pUmyo0aIwkivbzCpALEzX9KA
-Date: Tue, 12 Mar 2024 01:31:20 +0000
-Message-ID: <983197a9531748d7a34a77ce0a74dd7f086e827a.camel@mediatek.com>
-References: <20240303022609.26263-1-zhi.mao@mediatek.com>
-In-Reply-To: <20240303022609.26263-1-zhi.mao@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB5566:EE_|SG2PR03MB6538:EE_
-x-ms-office365-filtering-correlation-id: 2397e95c-9439-4c8d-7656-08dc42341f05
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: SmpuRwjzhxO4m9WXgw450e0QVhJQDUGGMogik8ycp6TnapHm90yPCOMcuAuVWIrflhexXhElOI+CpRxgis+ZvukzL/CSrqCfIhZBewfZtdXI9bYP4q9mCaEo9rVEY9ELhaIBHTlsvcuHy5xPkSLYXYZakjbbgyllnVvw3iTt6QoPxTPXcV/NYTcxcqEGAVGyNockDh3t865PBE+BUX12BgzLqzCP1gTR/xoY3kVdFxxBYSuGJUUnfLJv+RZdxI9cIOJ7W44MKpv3ox2Xj8FULl0KO94gb4JQLO8NogAFL1QJ7RQaqJbvLfA6fzKVotl6P3O1cHfwe3zjLuO2grc2itLHwPih8R/OMZWf1/7YcfaFgu6yTuCyZGNVNzBBxtIxlRufkg789Lv+FVFJlpqM3tLD43lalaW/aMM7kNe5ewPBc/QTYNtcWoq7GQ4yWVI68EPutNpRPRkM54+4cMnw8c32y+wsZ0h+76HiSRYnePZFntahfZD6ogRrd6mwM6bVOGc2lmICr+OspzJCxo1ytzO2q0eWCjNLJzApd6bCyMX7IYq+wKN780OA2HY6P3uG9jvl+w2HLfJVG8ly7bkhxQuEj3KECWCpq4ns4EwBf6vYrDkPU/AY24TeLWq8K3qpgOkVxNe8HUAausSFFw/YDuTebk0eFUXtE2N+fl+Z6LsyL4qM2lEB81gy+59ZOTei
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB5566.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(1800799015)(376005)(7416005)(38070700009);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZnlValI3c2xDU1ljNmpYOEEvbFkvcDNrSDVvaTFyaGFJL3Jad0U3WHJ5YkJN?=
- =?utf-8?B?U2NJSzJFVUIxWm1rVTRRU2dzTWQ4Sk9lZytWNjhoQjUzYmhJeXlBTFl0blk3?=
- =?utf-8?B?QlljVjYwbW9aNmdVWjBHbUl6Um4yQXJNamJlOFQ3UWQ5T2kwSjJwQWdqWldv?=
- =?utf-8?B?M1BVaTJIYUJMc1dkcWc1L3lodDBJQXZQcGdkU3NoU1VWRkhDQ3VZMldsUDdt?=
- =?utf-8?B?anZ4UFdtdmIrblNyWlZyNTZmc3dLZjdIVzFiZHdNYVY0eTk4cTJwQ2pwTFln?=
- =?utf-8?B?b1FHRWRwSSt5U3JzcHJPNzlnVmxFdC9sK3YzbW5xYlIzeDhNTEpuQy81cEQy?=
- =?utf-8?B?eVpvNTM2NUFMSndFRUN1RDFGSFBlTlZyR3BMOTFlNDYyRDFGQi9HbzJDLzk3?=
- =?utf-8?B?ZFVaU0Z4Y1dRM3FLNkdYTElQL3BLdTFnclpRb0VONSt1NW1DZXlDM1dsMnNF?=
- =?utf-8?B?bUZSR2c0bERZVHVOSlNpNFU0WERwQk55dGNQb3lvU1NFcDNFM2xTNmJ1NWNC?=
- =?utf-8?B?MkNqQmx3dEM2bXQ2UnBhdGNQbENhRHNCNEdpcEdWbmxFUndYTm5ZaFI0UlQ0?=
- =?utf-8?B?djE1Yld6MlM2VDBXRUpldW5lU3lMU1E3a0YzNmhBU1U1c3dMUm9vNUtMREhn?=
- =?utf-8?B?WnRqUjVGdm03SnFTOXRyWkd2eEV4bk9JRHozanNpQUtjVngxYWJEdHk3UXZ3?=
- =?utf-8?B?aU1RYnk3VnVsNUZPcElWd0FFM0svemJpY3ZHWTMwbWh0RkJSU0t6bDJoUjVs?=
- =?utf-8?B?QlM4SU9VT09MMVJFL1BuSFpOSU4wUWNsSUpzT0RLM2I3a3lqSkpGYStLeGNI?=
- =?utf-8?B?SHNSMUI3UkhYdE1CQTNuRk1uWDZTZ0ttV3pBbWV5Q2NPV28xMVJsLy8vZHFR?=
- =?utf-8?B?d3dpR1lpN09RMWlZb1l4WElDU08zYm02TXg3QTNZbkkxcEJaZG4zSnMwL0tC?=
- =?utf-8?B?WE1naUFHZU1WaFJlcWU1MWVxNmRUd29hZllucUtOUkhTZndSU2JZVjlWdDVL?=
- =?utf-8?B?VjFNbEhFR1lTekxXd1B0S1lGSTVCUTNLT1Ewck1Ub1l0ZDVRQk1qOUVsQXFk?=
- =?utf-8?B?VElyTnZlS1NVWUZ3dEhoZ0FPU2NrUW1FekJNeE5pdlZXbXhCbXI2cTF5UFMw?=
- =?utf-8?B?R3pQaGlWZkxPNjVYa0MvUVdaVGFVdjdid3BqaWU2S05SWHhiZDRzWUxseGJi?=
- =?utf-8?B?eGt6WjZGbjlvc254SE02RS9qcnEvSnJBODFuekJMMVNickdYdHZ6a3pOaE5B?=
- =?utf-8?B?Mk9JdUpreSt3NUN1QXNjL2drVWlvLys0TTRQcUprK3BDd0VtVGlaSmVKOXBI?=
- =?utf-8?B?ZDVmN3dNZWs3ZnZPNG4xaGpzZXZEMXNtL2s0R0Q4TndRcFFDN2IvTUUzSWZF?=
- =?utf-8?B?dmIwcHhVdVFKU01LQm1rSmg5ekd3M1RWWHZML0VIQXdmNmhDcDNtZTF6WERS?=
- =?utf-8?B?SUNwZWZZdTJJc0xpNE8vL0JjTEczUHRDb2R6SHNUeExoejQwK2ZldFM4dmkw?=
- =?utf-8?B?RWF0bVQ5T3R0a1VzbDErb0h5bW1OR2lxakgza25sZFJHWGUxWERUQ0lya0dr?=
- =?utf-8?B?WDBCS2ZWUzZlMDgrTTRVUWVSNTdMMHlKaUdPRDcvYXlvanpaWktTM2ROWE1W?=
- =?utf-8?B?MXF4eVVvUTdRQzZ4REwrNW80NXMxYno2S0xJWmdzL1pRQWVjOVZBMW5YVHpB?=
- =?utf-8?B?YmhHL1M0emJQTGFQZ0VibTVlbi9zUm51bHNZNlNYcEtJdHpQNXdPRmkzeEQy?=
- =?utf-8?B?VWgzLzdNU0ZKYytqS2tSaStsaEtKd1lBL1ZIWkhjT2lOTlZwRXBGTURoSDcy?=
- =?utf-8?B?c2dQZGZGSVdqQ2xKMnQ3Z3hQcmlUTlAzbjZmL1YyR2JHc3V5N0YyR2lFRHVo?=
- =?utf-8?B?dHRpeTNTZ1VaL3BrcEZKaEdvaFpNdTZsMEp1YTFkdFlucGRWbWlaRmxrQk4w?=
- =?utf-8?B?L3BaOFFyUTl2V05QQnFIOEZ1VDhzTjU3YW10L3ZaempxalhLNFRSZXllUUVJ?=
- =?utf-8?B?TTBCdW9YNDY2N1FwbUZza215MjBRU25uWTJ6NGx2aW5nUThyVmZxSFliWWFi?=
- =?utf-8?B?Y1E4Sk9BUUl4cVJ2RTlIWGhSWkdoYmgwcitlWUl6aDhDZlF3Z25pNkJZbytG?=
- =?utf-8?B?TGRtR3hwM3NvSDNKK0tyYVZIZnBuUzB0SFZQOWdzdEViZW94Zi8wdWVYYUhN?=
- =?utf-8?B?MXc9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <A1C96E33B2923D4B86349CFA6DD67676@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1rjs5T-0000000425u-1xPp;
+	Tue, 12 Mar 2024 02:41:57 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 35A22240002;
+	Tue, 12 Mar 2024 02:41:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1710211312;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ZJTPKj60zcN9dfLjCmksy1GRGg5SNemdWJWV0WcBEcs=;
+	b=ZA5cl/POcCQ8VUi89UNJHBVbi+RfVeT8PJAzEidNYwxJp4Ujd6xmGMh1L0hCOdGqoRWIWW
+	kpw5PRSc0zXebXOS/TYFMEy5siY2Hj6egAbvCjjVp7bo7Im2t0CndNxlYxjXAYI41BXff0
+	jr1Tf3vdu0MwI1qT6PzEgLsaIsGtBy2/wYddOY0H66VFt3PHe4DmK4livXLhM2BTreOvU4
+	i88dty58H27aVmyG0+H+nugRJiovZEc77yA5BOjI8F5CHwWxvdHSgAG4OUMnNUOql4U3mo
+	EuypFdicgiPLnsh3yhBH4Eu6aFViQCESPSuOP2VUc7ZrMXlEXd4JGdYcVYo6Qg==
+Message-ID: <1bfd93f1-36d5-436e-818e-2ebdcf475b44@arinc9.com>
+Date: Tue, 12 Mar 2024 05:41:35 +0300
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB5566.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2397e95c-9439-4c8d-7656-08dc42341f05
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Mar 2024 01:31:20.5665
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: PDf0FWKQEzJ9qdsYTOX7GZ/IMzJQ+kFd4xjJXknKla8a+Z4QAHxspVlzSAPXOGLp34slmQ/2rLvpsmrNRAbmaQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR03MB6538
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--14.642200-8.000000
-X-TMASE-MatchedRID: 6E41RGmUyPrUL3YCMmnG4gPZZctd3P4BjLOy13Cgb4+qvcIF1TcLYG9z
-	j16rJNcqrKfV8wugdrDBdc9OAQl+e1bpry0uquBQEPf7TDUOGopozho8K1gAGu8amKDrnhAvika
-	0Ka6FTuuR/a+7CkNPgsr5AVdin4a1H0nltmolsgmEryjhqiyzyn+vzHfC29pfNSweOixQAJKozw
-	9gka4dikltRjALUF+x0Orw/09zAN43Pdqtj2tcMdT4WBm7SuAOUAjrAJWsTe/xxaAXDrCns8Trc
-	lOEW8K1UyClodf9Qow6uauFPPtNZao+znd4MHO5dARARTk4h599LQinZ4QefKU8D0b0qFy9suf7
-	RWbvUtyrusVRy4an8SAHAopEd76vXNloowj4saw4UHyh4+AAwi7gwdTydvcF5r/aps4ibmxoTPL
-	BOmNJTQ==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--14.642200-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 25F0ECAC290E587376B134231220B0CBF1257D87E73C3BC608C2B5DD5F537E862000:8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] net: dsa: mt7530: disable LEDs before reset
+To: Justin Swartz <justin.swartz@risingedge.co.za>
+Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240305043952.21590-1-justin.swartz@risingedge.co.za>
+ <6064ba52-2470-4c56-958c-35632187f148@arinc9.com>
+ <d45083788db8b0b1ace051adecfe6a3a@risingedge.co.za>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <d45083788db8b0b1ace051adecfe6a3a@risingedge.co.za>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Spam-Score: 400
+X-GND-Status: SPAM
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240311_183205_657755_DCE28D44 
-X-CRM114-Status: GOOD (  19.24  )
+X-CRM114-CacheID: sfid-20240311_194155_826496_54D1AFA9 
+X-CRM114-Status: GOOD (  29.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -212,47 +83,413 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-cGluZy4uLg0KDQpPbiBTdW4sIDIwMjQtMDMtMDMgYXQgMTA6MjYgKzA4MDAsIFpoaSBNYW8gd3Jv
-dGU6DQo+IFRoaXMgc2VyaWVzIGFkZHMgWUFNTCBEVCBiaW5kaW5nIGFuZCBWNEwyIHN1Yi1kZXZp
-Y2UgZHJpdmVyIGZvcg0KPiBHYWxheHljb3JlJ3MNCj4gR0MwOEEzIDgtbWVnYXBpeGVsIDEwLWJp
-dCBSQVcgQ01PUyAxLzQiIHNlbnNvciwgd2l0aCBhbiBNSVBJIENTSS0yDQo+IGltYWdlIGRhdGEN
-Cj4gaW50ZXJmYWNlIGFuZCB0aGUgSTJDIGNvbnRyb2wgYnVzLg0KPiANCj4gVGhlIGRyaXZlciBp
-cyBpbXBsZW1lbnRlZCB3aXRoIFY0TDIgZnJhbWV3b3JrLg0KPiAgLSBBc3luYyByZWdpc3RlcmVk
-IGFzIGEgVjRMMiBzdWItZGV2aWNlLg0KPiAgLSBBcyB0aGUgZmlyc3QgY29tcG9uZW50IG9mIGNh
-bWVyYSBzeXN0ZW0gaW5jbHVkaW5nIFNlbmluZiwgSVNQDQo+IHBpcGVsaW5lLg0KPiAgLSBBIG1l
-ZGlhIGVudGl0eSB0aGF0IHByb3ZpZGVzIG9uZSBzb3VyY2UgcGFkIGluIGNvbW1vbi4NCj4gIC0g
-VXNlZCBpbiBjYW1lcmEgZmVhdHVyZXMgb24gQ2hyb21lT1MgYXBwbGljYXRpb24uDQo+IA0KPiBB
-bHNvIHRoaXMgZHJpdmVyIHN1cHBvcnRzIGZvbGxvd2luZyBmZWF0dXJlczoNCj4gIC0gbWFudWFs
-IGV4cG9zdXJlIGFuZCBhbmFsb2cgZ2FpbiBjb250cm9sIHN1cHBvcnQNCj4gIC0gdmVydGljYWwg
-YmxhbmtpbmcgY29udHJvbCBzdXBwb3J0DQo+ICAtIHRlc3QgcGF0dGVybiBzdXBwb3J0DQo+ICAt
-IG1lZGlhIGNvbnRyb2xsZXIgc3VwcG9ydA0KPiAgLSBydW50aW1lIFBNIHN1cHBvcnQNCj4gIC0g
-c3VwcG9ydCByZXNvbHV0aW9uOiAzMjY0eDI0NDhAMzBmcHMsIDE5MjB4MTA4MEA2MGZwcw0KPiAN
-Cj4gUHJldmlvdXMgdmVyc2lvbnMgb2YgdGhpcyBwYXRjaC1zZXQgY2FuIGJlIGZvdW5kIGhlcmU6
-DQo+IHY2OiANCj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWEvMjAyNDAyMjcw
-MTMyMjEuMjE1MTItMS16aGkubWFvQG1lZGlhdGVrLmNvbS8NCj4gdjU6IA0KPiBodHRwczovL2xv
-cmUua2VybmVsLm9yZy9saW51eC1tZWRpYS8yMDI0MDIyMDAxMjU0MC4xMDYwNy0xLXpoaS5tYW9A
-bWVkaWF0ZWsuY29tLw0KPiB2NDogDQo+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1l
-ZGlhLzIwMjQwMjA0MDYxNTM4LjIxMDUtMS16aGkubWFvQG1lZGlhdGVrLmNvbS8NCj4gdjM6IA0K
-PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1tZWRpYS8yMDI0MDEwOTAyMjcxNS4zMDI3
-OC0xLXpoaS5tYW9AbWVkaWF0ZWsuY29tLw0KPiB2MjogDQo+IGh0dHBzOi8vbG9yZS5rZXJuZWwu
-b3JnL2xpbnV4LW1lZGlhLzIwMjMxMjA3MDUyMDE2LjI1OTU0LTEtemhpLm1hb0BtZWRpYXRlay5j
-b20vDQo+IHYxOiANCj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWEvMjAyMzEx
-MjMxMTUxMDQuMzIwOTQtMS16aGkubWFvQG1lZGlhdGVrLmNvbS8NCj4gDQo+IFRoaXMgc2VyaWVz
-IGlzIGJhc2VkIG9uIGxpbnV4LW5leHQsIHRhZzogbmV4dC0yMDI0MDIyOQ0KPiBDaGFuZ2VzIGlu
-IHY3Og0KPiAtIGdjMDhhMyBzZW5zb3IgZHJpdmVyOg0KPiAtLSByZWZpbmUgaGVhZGVyIGZpbGVz
-IGluIGRyaXZlciBjb2RlIGZvbGxvdyBpd3l1IHJ1bGVzDQo+IC0tIG1vZGlmeSBzb21lIGNvbW1l
-dHMgdG8gbWF0Y2ggY29kZSBzdHlsZSBhbmQgZW5nbGlzaCBncmFtbWFyIGFuZA0KPiBwdW5jdHVh
-dGlvbg0KPiAtLSB1c2UgdGhlIGRlZmF1bHQgY2FzZSBmb3IgYXNzaWduIHZhcmlhYmxlIGluIGZ1
-bmN0aW9uOg0KPiBnYzA4YTNfdGVzdF9wYXR0ZXJuDQo+IC0tIHVzZSBERUZJTkVfKiBQTSBtYWNy
-byBmb3IgcnVudGltZSBwbSBvcHMNCj4gDQo+IFRoYW5rcw0KPiANCj4gWmhpIE1hbyAoMik6DQo+
-ICAgbWVkaWE6IGR0LWJpbmRpbmdzOiBpMmM6IGFkZCBHYWxheHlDb3JlIEdDMDhBMyBpbWFnZSBz
-ZW5zb3INCj4gICBtZWRpYTogaTJjOiBBZGQgR0MwOEEzIGltYWdlIHNlbnNvciBkcml2ZXINCj4g
-DQo+ICAuLi4vYmluZGluZ3MvbWVkaWEvaTJjL2dhbGF4eWNvcmUsZ2MwOGEzLnlhbWwgfCAgMTEy
-ICsrDQo+ICBkcml2ZXJzL21lZGlhL2kyYy9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgfCAg
-IDEwICsNCj4gIGRyaXZlcnMvbWVkaWEvaTJjL01ha2VmaWxlICAgICAgICAgICAgICAgICAgICB8
-ICAgIDEgKw0KPiAgZHJpdmVycy9tZWRpYS9pMmMvZ2MwOGEzLmMgICAgICAgICAgICAgICAgICAg
-IHwgMTMzOQ0KPiArKysrKysrKysrKysrKysrKw0KPiAgNCBmaWxlcyBjaGFuZ2VkLCAxNDYyIGlu
-c2VydGlvbnMoKykNCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NA0KPiBEb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3MvbWVkaWEvaTJjL2dhbGF4eWNvcmUsZ2MwOGEzLnlhbWwNCj4gIGNyZWF0
-ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL2kyYy9nYzA4YTMuYw0KPiANCg==
+On 12.03.2024 03:07, Justin Swartz wrote:
+> I took a similar approach, with calls to dev_info()
+> throughout mt7530_setup() plus mt7530_write(), mt7530_read()
+> and mt7530_rmw() to get an idea of the flow of execution and
+> which registers were being manipulated.
+> 
+> Calls to dev_info() affected timing, so I switched to using
+> trace_printk() and then read the output from the debugfs's
+> tracing/trace file instead of from the console.
+> 
+> I attached a logic analyzer to ESW_P4_LED_0 and ESW_P3_LED_0,
+> and manually triggered sampling as soon as execution of the
+> kernel was reported on UART1.
+> 
+> 
+> -- Test #1 -----------------------------------------------------------
+> 
+> For the sake of maximal reproducability, I removed the delay
+> between the assertion and deassertion of reset and added
+> HWTRAP value tracing:
+> 
+> ---%---
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -2243,7 +2243,6 @@ mt7530_setup(struct dsa_switch *ds)
+>       */
+>      if (priv->mcm) {
+>          reset_control_assert(priv->rstc);
+> -        usleep_range(1000, 1100);
+>          reset_control_deassert(priv->rstc);
+>      } else {
+>          gpiod_set_value_cansleep(priv->reset, 0);
+> @@ -2260,6 +2259,10 @@ mt7530_setup(struct dsa_switch *ds)
+>          return ret;
+>      }
+> 
+> +    static char ht_xtal_fsel[4][6] = { "?????", "20MHz", "40MHz", "25MHz" };
+> +    trace_printk("HWTRAP = %x, HT_XTAL_FSEL = %s\n",
+> +        val, ht_xtal_fsel[(val & HWTRAP_XTAL_MASK) >> 9]);
+> +
+>          id = mt7530_read(priv, MT7530_CREV);
+>          id >>= CHIP_NAME_SHIFT;
+>          if (id != MT7530_ID) {
+> ---%---
+> 
+> (a) Without a cable connected to Port 3 (lan4) before reset, the
+> correct external crystal frequency is selected:
+> 
+>                [3]      [4]     [6]
+>                :        :       :
+>                _________         ______________________________________
+> ESW_P4_LED_0           |_______|
+>                          _______
+> ESW_P3_LED_0  _________|       |______________________________________
+> 
+>                          :     :
+>                          [5]...:
+> 
+> [3] Port 4 LED Off. Port 3 LED On.
+> [4] Signals inverted. (reset_control_assert; reset_control_deassert)
+> [5] Period of 310 usec.
+> [6] Signals reflect the bootstrapped configuration.
+> 
+> 
+> ~ # sed -n -e '$s/^.*\. //p' /sys/kernel/debug/tracing/trace
+>      2.432646: mt7530_setup: HWTRAP = 7dcf, HT_XTAL_FSEL = 40MHz
+> 
+> 
+> (b) When a cable attached to an active peer is connected to
+> Port 3 (lan4) before reset, the incorrect crystal frequency
+> selection (0b11 = 25MHz) always occurs:
+> 
+>                [7]      [8]     [10]    [12]
+>                :        :       :       :
+>                _________         ______________________________________
+> ESW_P4_LED_0           |_______|
+>                _________         _______
+> ESW_P3_LED_0           |_______|       |______________________________
+> 
+>                          :     : :     :
+>                          [9]...: [11]..:
+> 
+>   [7] Port 4 LED Off. Port 3 LED Off.
+>   [8] Signals inverted. (reset_control_assert; reset_control_deassert)
+>   [9] Period of 320 usec.
+> [10] Signals inverted.
+> [11] Period of 300 usec.
+> [12] Signals reflect the bootstrapped configuration.
+> 
+> ~ # sed -n -e '$s/^.*\. //p' /sys/kernel/debug/tracing/trace
+>      2.432884: mt7530_setup: HWTRAP = 7fcf, HT_XTAL_FSEL = 25MHz
+> 
+> 
+> -- Test #2 -----------------------------------------------------------
+> 
+> To attempt to determine which transitions are associated
+> with asserting and deasserting reset, I performed another
+> test with a delay of what I intended to be a 1 sec period
+> where the MT7530 is held in reset:
+> 
+> ---%---
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -2243,7 +2243,7 @@ mt7530_setup(struct dsa_switch *ds)
+>       */
+>      if (priv->mcm) {
+>          reset_control_assert(priv->rstc);
+> -        usleep_range(1000, 1100);
+> +        usleep_range(1000000, 1000000);
+>          reset_control_deassert(priv->rstc);
+>      } else {
+>          gpiod_set_value_cansleep(priv->reset, 0);
+> @@ -2260,6 +2260,10 @@ mt7530_setup(struct dsa_switch *ds)
+>          return ret;
+>      }
+> 
+> +    static char ht_xtal_fsel[4][6] = { "?????", "20MHz", "40MHz", "25MHz" };
+> +    trace_printk("HWTRAP = %x, HT_XTAL_FSEL = %s\n",
+> +        val, ht_xtal_fsel[(val & HWTRAP_XTAL_MASK) >> 9]);
+> +
+>      id = mt7530_read(priv, MT7530_CREV);
+>      id >>= CHIP_NAME_SHIFT;
+>      if (id != MT7530_ID) {
+> ---%---
+> 
+> (a) Without a cable connected to Port 3 (lan4) before reset, the
+> correct external crystal frequency is again selected:
+> 
+>                [13]     [14]    [16]
+>                :        :       :
+>                _________         ______________________________________
+> ESW_P4_LED_0           |_______|
+>                          _______
+> ESW_P3_LED_0  _________|       |______________________________________
+> 
+>                          :     :
+>                          [15]..:
+> 
+> [13] Port 4 LED Off. Port 3 LED On.
+> [14] Signals inverted. (reset_control_deassert?)
+> [15] Period of 310 usec.
+> [16] Signals reflect the bootstrapped configuration.
+> 
+> 
+> ~ # sed -n -e '$s/^.*\. //p' /sys/kernel/debug/tracing/trace
+>      3.437461: mt7530_setup: HWTRAP = 7dcf, HT_XTAL_FSEL = 40MHz
+> 
+> 
+> No difference is apparent in the timing diagram, compared
+> to the result from Test #1a, but it is obvious that the code
+> which follows the reset was executed about 1 second later.
+> 
+> 
+> (b) With a cable from an active peer connected to Port 3
+> (lan4) before reset, the correct crystal frequency
+> (0b10 = 40MHz) is selected:
+> 
+>                [17]     [18]                    [20]   [22]
+>                :        :                       :      :
+>                ______________________ \ \ ______        _______________
+> ESW_P4_LED_0                         / /       |______|
+>                _________              \ \        ______
+> ESW_P3_LED_0           |____________ / / ______|      |_______________
+>                                       \ \
+>                          :                     : :    :
+>                          [19]..................: [21].:
+> 
+> [17] Port 4 LED Off. Port 3 LED Off.
+> [18] ESW_P3_LED_0 set low. (reset_control_assert?)
+> [19] Period of 1000.325 msec.
+> [20] Signals inverted. (reset_control_deassert?)
+> [21] Period of 310 usec.
+> [22] Signals reflect the bootstrapped configuration.
+> 
+> 
+> ~ # sed -n -e '$s/^.*\. //p' /sys/kernel/debug/tracing/trace
+>      3.433235: mt7530_setup: HWTRAP = 7dcf, HT_XTAL_FSEL = 40MHz
+> 
+> 
+> So it appears that when reset is deasserted, the ESW_P4_LED_0
+> and ESW_P3_LED_0 levels are inverted for a period of about
+> 300 - 310 usec in Test #1a, #1b, #2a, and #2b.
+> 
+> Co-incidentally, these inverted levels are the active low
+> representation of what ends up in HT_XTAL_FSEL. And in all
+> four examples, have been the inversion of what immediately
+> preceded reset_control_deassert().
+> 
+> 
+> -- Test #3 -----------------------------------------------------------
+> 
+> Now it seems that there is a signature that can be used
+> to identify when reset_control_deassert() is executed,
+> the time of reset_control_assert()'s execution should be
+> between (at most) 1100 and (at least) 1000 usec prior
+> based on the unmodified reset logic.
+> 
+> So this patch only includes the HT_XTAL_FSEL trace.
+> 
+> ---%---
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -2260,6 +2260,10 @@ mt7530_setup(struct dsa_switch *ds)
+>                  return ret;
+>          }
+> 
+> +       static char ht_xtal_fsel[4][6] = { "?????", "20MHz", "40MHz", "25MHz" };
+> +       trace_printk("HWTRAP = %x, HT_XTAL_FSEL = %s\n",
+> +               val, ht_xtal_fsel[(val & HWTRAP_XTAL_MASK) >> 9]);
+> +
+>          id = mt7530_read(priv, MT7530_CREV);
+>          id >>= CHIP_NAME_SHIFT;
+>          if (id != MT7530_ID) {
+> ---%---
+> 
+> The purpose of the following examples are to show the
+> variance in how long it takes for ESW_P3_LED_0 to go low.
+> 
+> (a) With a cable from an active peer connected to Port 3
+> (lan4) before reset, the correct crystal frequency
+> (0b10 = 40MHz) is selected.
+> 
+>                [23]    [24]       [26]      [28]    [30]
+>                :       :          :         :       :
+>                _____________________________         __________________
+> ESW_P4_LED_0                               |_______|
+>                ___________________           _______
+> ESW_P3_LED_0                     |_________|       |__________________
+> 
+>                         :          :       : :     :
+>                         :          [27]....: [29]..:
+>                         [25]...............:
+> 
+> [23] Port 4 LED Off. Port 3 LED Off.
+> [24] Approximate point of reset_control_assert?
+> [25] Period of approximately 1000 - 1100 usec.
+> [26] ESW_P3_LED_0 finally goes low.
+> [27] Period of 415 usec.
+> [28] Signals inverted. (reset_control_deassert?)
+> [29] Period of 310 usec.
+> [30] Signals reflect the bootstrapped configuration.
+> 
+> 
+> (b) With a cable from an active peer connected to Port 3
+> (lan4) before reset, the correct crystal frequency
+> (0b10 = 40MHz) is selected.
+> 
+>                [31]    [32]            [34] [36]    [38]
+>                :       :                  : :       :
+>                _____________________________         __________________
+> ESW_P4_LED_0                               |_______|
+>                ___________________________   _______
+> ESW_P3_LED_0                             |_|       |__________________
+> 
+>                         :                  : :     :
+>                         :               [35] [37]..:
+>                         :                  :
+>                         [33]...............:
+> 
+> [31] Port 4 LED Off. Port 3 LED Off.
+> [32] Approximate point of reset_control_assert?
+> [33] Period of approximately 1000 - 1100 usec.
+> [34] ESW_P3_LED_0 finally goes low.
+> [35] Period of 50 usec.
+> [36] Signals inverted. (reset_control_deassert?)
+> [37] Period of 310 usec.
+> [38] Signals reflect the bootstrapped configuration.
+> 
+> 
+> (c) With a cable from an active peer connected to Port 3
+> (lan4) before reset, an incorrect crystal frequency
+> (0b11 = 25MHz) is selected.
+> 
+>                [45]    [46]                 [48]    [50]
+>                :       :                    :       :
+>                _____________________________         __________________
+> ESW_P4_LED_0                               |_______|
+>                _____________________________
+> ESW_P3_LED_0                               |__________________________
+> 
+>                         :                  : :     :
+>                         :                  : [49]..:
+>                         :                  :
+>                         [47]...............:
+> 
+> [45] Port 4 LED Off. Port 3 LED Off.
+> [46] Approximate point of reset_control_assert?
+> [47] Period of approximately 1000 - 1100 usec.
+> [48] Signals inverted. (reset_control_deassert?)
+> [49] Period of 315 usec.
+> [50] Signals reflect the bootstrapped configuration.
+> 
+> ~ # sed -n -e '$s/^.*\. //p' /sys/kernel/debug/tracing/trace
+>      2.617819: mt7530_setup: HWTRAP = 7fcf, HT_XTAL_FSEL = 25MHz
+> 
+> ~ # cat /proc/cmdline
+> console=ttyS0,57600 loglevel=7 printk.time=1 root=/dev/ram0 debug rdinit=/linuxrc
+> 
+> 
+> -- End of Tests ------------------------------------------------------
+> 
+> It seems that the incorrect crystal frequency is selected more
+> often when debugging messages are present (such as printk()
+> based approaches) and especially when loglevel=7 and printk.time=1
+> are specified on the command line.
+> 
+> For the sake of reference: I disabled ethernet support in my build
+> of (mainline) U-boot, and my kernel configuration is a very lean
+> selection of options suited for IP routing and a few peripherals
+> on the I2C and SPI buses.
+> 
+> My userland is confined to an initramfs built around busybox.
+> 
+> I also disable gmac1 because I need a few of the rgmii2 pins for
+> modem control signalling.
+> 
+> Regards
+> Justin
+> 
+> PS: Yes, I only have access to MT7621AT SoCs.
+
+Thanks for the detailed presentation. I've simplified it to this, from what
+I understood.
+
+--- Currently -------------------------------------------------------------
+
+With a cable from an active peer connected to Port 3 (lan4) before
+reset:
+
+Test 1, the correct crystal frequency (0b10 = 40MHz) is selected.
+
+                       [1]        [2-1]     [3]     [5]
+                       :          :         :       :
+               _____________________________         __________________
+ESW_P4_LED_0                               |_______|
+               ___________________           _______
+ESW_P3_LED_0                     |_________|       |__________________
+
+                        :          :       : :     :
+                        :          [2-2]...: [4]...:
+                        [2]................:
+
+[1] reset_control_assert.
+[2] Period of 1000 - 1100 usec.
+[2-1] ESW_P3_LED_0 goes low.
+[2-2] Period of 415 usec.
+[3] reset_control_deassert.
+[4] Period of 310 usec. HWTRAP register is populated with bootstrapped
+     XTAL frequency.
+[5] Signals reflect the bootstrapped configuration.
+
+Test 2, an incorrect crystal frequency (0b11 = 25MHz) is selected.
+
+                       [2]                  [4]     [6]
+                       :                    :       :
+               _____________________________         __________________
+ESW_P4_LED_0                               |_______|
+               _____________________________
+ESW_P3_LED_0                               |__________________________
+
+                        :                  : :     :
+                        :                  : [5]...:
+                        :                  :
+                        [3]................:
+
+[1] reset_control_assert.
+[2] Period of 1000 - 1100 usec.
+[3] reset_control_deassert.
+[5] Period of 315 usec. HWTRAP register is populated with incorrect
+     XTAL frequency.
+[6] Signals reflect the bootstrapped configuration.
+
+--- 1 second delay between assert and deassert ----------------------------
+
+With a cable from an active peer connected to Port 3 (lan4) before
+reset, the correct crystal frequency (0b10 = 40MHz) is selected:
+
+                       [1]        [2-1]     [3]     [5]
+                       :          :         :       :
+               _____________________________         __________________
+ESW_P4_LED_0                               |_______|
+               ___________________           _______
+ESW_P3_LED_0                     |_________|       |__________________
+
+                        :          :       : :     :
+                        :          [2-2]...: [4]...:
+                        [2]................:
+
+[1] reset_control_assert.
+[3] Period of 1000.325 msec.
+[2-1] ESW_P3_LED_0 goes low.
+[2-2] Remaining period of 1000.325 msec.
+[3] reset_control_deassert.
+[4] Period of 310 usec. HWTRAP register is populated with bootstrapped
+     XTAL frequency.
+[5] Signals reflect the bootstrapped configuration.
+
+---
+
+Wouldn't it be a better idea to increase the delay between
+reset_control_assert() and reset_control_deassert(), and
+gpiod_set_value_cansleep(priv->reset, 0) and
+gpiod_set_value_cansleep(priv->reset, 1) instead of disabling the LED
+controller and delaying before reset?
+
+One MT7531 pin used for an LED is also used to decide the crystal frequency
+between 40MHz and 25Mhz. We should implement this there as well.
+
+Arınç
 
