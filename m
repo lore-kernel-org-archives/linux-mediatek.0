@@ -4,85 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C762C54E58
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 11:53:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7262DC54E58
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 12:02:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=32L7EdHAuQ4WnOqivRSfbIvHEBBAYz+hzKyLr7KyYy4=; b=4ClEjMUOSzzki2vrMk+npoTD4a
-	1ZxzJHU04PFO4URMVcbtBJnFm3+yTZcLbMnVcdtQw0xTyeZZObluc/Y3W20SLl25lMQ0xveaYbfoI
-	2C2TpWWtRvw+qe1bXzpr0WQePv9LApVFp7VhEeoYoItIT2Pz3llIZw/1sM4cCJNXfyJo4n8GcW83p
-	uMNwacdcvBUdJQBZFPBVVkuWpWFxSszKkVhxeMEmrN9AQAs9/TCI5/r+ZlS7DGQPwRitdJ/xIgTJz
-	mVHw7mKukyzViVnEzm6ajkfmivOPfqZZp2CrLc3D93n9vDUuEj1FPDgFjL784uOb2QkqJJKQ74AvO
-	hQaRZSXA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Content-Transfer-Encoding:Content-Type:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NNhoH3kZBU3wEA79UQzA8t2bW/QxrUW4IGrPs5jo6lw=; b=45RP462ixgB5ZHwwmziPoFl+Eo
+	knR83L7AG+VNrF/22srjlEMdtMe5jUZSJ9va3b1j4wwsWvilFjGLbjUz+ERRf9hy2Qm36YT3MlaJp
+	meddtG+GYo9L1J3GoN0lv1dnu0FX/e7VEKo3RXfT4FN9q/8upaK88L4FEcnyhixl+GluM3r8ZOjkF
+	rrQpMPnVkcWSA+kQYm4cSoRtm78oa6ZfA4YSMSvlPGk8P76m+iBAHbflttpZhR9w5uwcIq1Q8d+jE
+	sELyM8iHn6dRnPJ3pwivNAiXo4jOZ+tKWDIYs52LiOOIYT0DWm69VLyN/3hrLDmcVS4f8hq5t4GbI
+	PLmBjRwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rk0gn-00000005aV1-1TVb;
-	Tue, 12 Mar 2024 11:53:01 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1rk0pk-00000005cmu-3m3n;
+	Tue, 12 Mar 2024 12:02:16 +0000
+Received: from outgoing4.flk.host-h.net ([188.40.0.90])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rk0gi-00000005aTa-4Axd
-	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Mar 2024 11:52:58 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-1dd611d5645so32398065ad.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Mar 2024 04:52:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1710244376; x=1710849176; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=32L7EdHAuQ4WnOqivRSfbIvHEBBAYz+hzKyLr7KyYy4=;
-        b=KkBeyKuoV7I6cRsMn1UdOxYZAtzqs8/qSBYavSocTgQZeVp3szgMYESL1L8pWhU36Q
-         TgptGFrdZcPoSIElCIfnASFxugn50z68er9gwOmJrwziLbRlSpxX+HCWO1Gn8f9H/WxM
-         dgll4+c0ySLq2lHbaXK7X1LCfGgu9TKZKZGig=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710244376; x=1710849176;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=32L7EdHAuQ4WnOqivRSfbIvHEBBAYz+hzKyLr7KyYy4=;
-        b=GRsoR36RQRMdnFcifqKdcKBUjZcSo+Q0R17n/mR9q8BA6WUnzlEeZFp2n3SEoxrGc3
-         CRekk/bVHZf50OfEx2vBW87AE8jcry9RcQ/ee4D8NZ9Sp/FJHhOl6oYjfbhUtx21GbRs
-         AfKLie1kHSe3PKFBNkbN0LBF7t2ibYGlrZc4iYpPuYv7H4sM+EPTiFcCu0gCbn8tCOmH
-         40FqmLDaEltWahrb2+TByCOLKGrqfgkJhG5qvmcCL0h2HQ9O5C7OyppeBoe3saLyw4AQ
-         yUiUFR+cSmFm41cgYBZOU0pXo33/ltnGpO/0I43Kw2XmwHTKdpGyJ2hY/ARacVDUBGCH
-         71xQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUT8zQQIokqnW+Ez8e5fQxBt0iuTGEARiVdKGa4BPkp4+uTMhagN9pQ7IavkLoyLt4aiRI1lozUdZqn4naTi/RiS9bzBarjJLfGc+fohuvxxZEV
-X-Gm-Message-State: AOJu0Yy8Pbte9OXkods6iaJowZQE3ioaR/Mq+oI1FG48jExDo/xhVXdE
-	/FqrSSXyBzDO4SPQ5oUYR7MZ/83IT59/H2/77GDiJbEygk7tRdZjZEietnUJgQ==
-X-Google-Smtp-Source: AGHT+IFHW7gNc8FGsMt9K1fDNHiUJ5TT/QPfRrLz4t4aGJMOagv8xqOkZuJYIn0TiohOgI7RjlfCgg==
-X-Received: by 2002:a17:902:d2d2:b0:1dd:c227:4175 with SMTP id n18-20020a170902d2d200b001ddc2274175mr813268plc.8.1710244375852;
-        Tue, 12 Mar 2024 04:52:55 -0700 (PDT)
-Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:bae3:7b5f:7434:812e])
-        by smtp.gmail.com with ESMTPSA id b15-20020a170903228f00b001dd1bdee6d9sm6500179plh.31.2024.03.12.04.52.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Mar 2024 04:52:55 -0700 (PDT)
-From: Pin-yen Lin <treapking@chromium.org>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Pin-yen Lin <treapking@chromium.org>,
-	Weiyi Lu <weiyi.lu@mediatek.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Bosi Zhang <u201911157@hust.edu.cn>,
-	Nicolas Boichat <drinkcat@chromium.org>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Subject: [PATCH v4] clk: mediatek: Do a runtime PM get on controllers during probe
-Date: Tue, 12 Mar 2024 19:51:55 +0800
-Message-ID: <20240312115249.3341654-1-treapking@chromium.org>
-X-Mailer: git-send-email 2.44.0.278.ge034bb2e1d-goog
+	id 1rk0pV-00000005cdl-0NfC;
+	Tue, 12 Mar 2024 12:02:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=risingedge.co.za; s=xneelo; h=Message-ID:References:In-Reply-To:Subject:Cc:
+	To:From:Date:Content-Transfer-Encoding:Content-Type:MIME-Version:reply-to:
+	sender:bcc; bh=NNhoH3kZBU3wEA79UQzA8t2bW/QxrUW4IGrPs5jo6lw=; b=bqkjwvVw9xy3pQ
+	mMCv0Su65/2DT8Mrrk2w+RbI2wOz/XftwpphqycRF7AyijTdMdKvR5fnf12Rf5pWhq0QS5vOG1Mwt
+	lQq9Jwkmk/Iik9INnbwBtSeCTFT7yDOah7vU93vUc8xJv4jtYtko7+oEfoflyB9lECZ+hUwQF3+Fo
+	O60BsInX7lGVbJ4NJYawQt1rYfYuY5XFuDoSIsF02vM15t7KfVgYKQMGtNaoFO6oyWhgeU7sOWJKl
+	LPYx09pGUzZdzUhvkihl6Gow9YiZSrZ//zdj9jf/53E4czDtw1My6yxRKF1BRHthmljZrDmh5Vc2O
+	nY3hcn3jJQ13bKdKfUjg==;
+Received: from www31.flk1.host-h.net ([188.40.1.173])
+	by antispam1-flk1.host-h.net with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <justin.swartz@risingedge.co.za>)
+	id 1rk0pK-0012xT-Q1; Tue, 12 Mar 2024 14:01:54 +0200
+Received: from roundcubeweb1.flk1.host-h.net ([138.201.244.33] helo=webmail9.konsoleh.co.za)
+	by www31.flk1.host-h.net with esmtpa (Exim 4.92)
+	(envelope-from <justin.swartz@risingedge.co.za>)
+	id 1rk0pF-00064x-6Q; Tue, 12 Mar 2024 14:01:45 +0200
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
 Content-Transfer-Encoding: 8bit
+Date: Tue, 12 Mar 2024 14:01:44 +0200
+From: Justin Swartz <justin.swartz@risingedge.co.za>
+To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
+Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, Florian
+ Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David
+ S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] net: dsa: mt7530: disable LEDs before reset
+In-Reply-To: <1bfd93f1-36d5-436e-818e-2ebdcf475b44@arinc9.com>
+References: <20240305043952.21590-1-justin.swartz@risingedge.co.za>
+ <6064ba52-2470-4c56-958c-35632187f148@arinc9.com>
+ <d45083788db8b0b1ace051adecfe6a3a@risingedge.co.za>
+ <1bfd93f1-36d5-436e-818e-2ebdcf475b44@arinc9.com>
+Message-ID: <0439f80319127b6a4a9c19108bcc0065@risingedge.co.za>
+X-Sender: justin.swartz@risingedge.co.za
+User-Agent: Roundcube Webmail/1.3.17
+X-Authenticated-Sender: justin.swartz@risingedge.co.za
+X-Virus-Scanned: Clear
+X-Originating-IP: 188.40.1.173
+X-SpamExperts-Domain: risingedge.co.za
+X-SpamExperts-Username: 
+Authentication-Results: host-h.net; auth=pass (login) smtp.auth=@risingedge.co.za
+X-SpamExperts-Outgoing-Class: ham
+X-SpamExperts-Outgoing-Evidence: Combined (0.05)
+X-Recommended-Action: accept
+X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT8LFbNrmGJV48kijLFgdH0+PUtbdvnXkggZ
+ 3YnVId/Y5jcf0yeVQAvfjHznO7+bT5wCPRB8bAzJcv2cv+UqiTTc2+CpNcmBnO4XM3Sck4bwNogU
+ WCl1nkLBzZX0KuJ9bXiS85Z42w/+2OBolTNFbPomXFWCX8oNdggW7HE9XDTdSejrkEpbuUvwMvHx
+ 3T+KSG//gbuP7hnUK8NQdLwsVWKIv+fXqqb3FJ1Z7kkAIev0U9CKH/oA07tJunDPm536TODb5GPR
+ oyaaXp1VNA9dXvxV+mFktoWo3CKg4C3LDJ75vu2U4GT70q7ZqN/P49BncZ5XB7lfx9K88uL/WnJE
+ LAEP514Y/yfAEbrTclu3OeNcbACmFr3ts0d2E6vXySsvfMaT9Bjf4etJ827HW1/sdZ81dz6BqXHU
+ oYg+nmOeSIjjxA24TPuOyBrko5yKpcR03QEJ9DjWmjcfK/FpTD0spWG+rMYoj8CdNq4vLYsMDbt4
+ 2oUP1Ae/eGZl2OLANHAHEjHENEhX9cq65nsXPA0MIFDIPOMDW/6+MC+5Mq5RH9OoW0W22an/ubzj
+ InB/ImqScRfGyrhHVstPeAuxsRhUFJC4TtSvIahFt3uEpT0304dV2Yoz1SesQUA6bnjJZT6m9lal
+ 9vikoy50DqR3hu/rL5PGAoTDzn0QdoxFeruM0Uhu+abwd56m3P3V2gI/b7jbaHMihnVW8zB2Qi26
+ vkVALycwzSdeC1kd8cXa71WqOc72jXbRpMw6Agze1f399OurHEyYS7nq+EBNvgiWKNNSkdVDZOrL
+ 5kxgO94lq2025NSImfKeGaSpuwkt9kMFaoxOFH1hIqsDqiY5NFuEmlCmGLsHMs4VIrisX+dtrxYn
+ /0jYEvj5QBAPtzfeVlNHdCJmwgf0M7fnqgzRvCMiN68tcHQey84mBB4XoB473XOJmIRPynE3O7YZ
+ oFBs6I7QuC1BjGNT52hVLEr/9PrrMm81h6IAYzikeIJfw26MB/V1E5BP9Gv0xI1YXOxC1lZqyFpL
+ AwQr6muMti2YanICQnMITeB2fd0UyjU/MIq3Vtx6CgQGHtezYqxGMqsKjARq8PBC4qgGsfAERwCB
+ JFs7XjZYbJPBsmpIto2O4JO2fx1gIuNHgi11AwJSTGCrOFs22K1ZnDqAw3gLmOBPHazhChxq9nGW
+ aSi6bFHidB1VgzDzDZn/+QEiRQv+PVjjwa+Z5RFCOMQwU3LvoOQWIGmR34v72byEdfFYVDBYJee7
+ gx/u82RtU9N+avzH2dtCj9RPurLgE5Q0mVfWLKEgol9rYV4JEcNP1rJoln/cD8h/RIvkzXRTCYvX
+ WLQhlD92+1l+zHfJg1FMwntsduNBxKPaTpE5L8d4VqFy6yKUFQtzhTlGiGL9B6FGD04nL794T5Dd
+ GySA/i8IRmZnsBkNt3HcPVt1DPuPIIDSVMZhrIoAWTF5tIdhy/UIEBYDcZg+Q8UhuRLyBn1+pvlH
+ hV6a5QjptwQBGybQyDQ2/GYwPjlMcE57ESN6G+kn87CtwPdB/10jfVNpDbYnXJdSRQj8460WHJib
+ IxmU2pb4i4DTkMZeMiNI9JSIyUbtnrlbG4BI8o81FOo91axhCaqPShJzgHH7y4ZfQxML
+X-Report-Abuse-To: spam@antispamquarantine.host-h.net
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240312_045257_089882_A6DAD893 
-X-CRM114-Status: GOOD (  14.62  )
+X-CRM114-CacheID: sfid-20240312_050202_241314_42C09AA1 
+X-CRM114-Status: GOOD (  19.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,97 +118,542 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt8183-mfgcfg has a mutual dependency with genpd during the probing
-stage, which leads to a deadlock in the following call stack:
+Arınç
 
-CPU0:  genpd_lock --> clk_prepare_lock
-genpd_power_off_work_fn()
- genpd_lock()
- generic_pm_domain::power_off()
-    clk_unprepare()
-      clk_prepare_lock()
+On 2024-03-12 04:41, Arınç ÜNAL wrote:
+> On 12.03.2024 03:07, Justin Swartz wrote:
+>> I took a similar approach, with calls to dev_info()
+>> throughout mt7530_setup() plus mt7530_write(), mt7530_read()
+>> and mt7530_rmw() to get an idea of the flow of execution and
+>> which registers were being manipulated.
+>> 
+>> Calls to dev_info() affected timing, so I switched to using
+>> trace_printk() and then read the output from the debugfs's
+>> tracing/trace file instead of from the console.
+>> 
+>> I attached a logic analyzer to ESW_P4_LED_0 and ESW_P3_LED_0,
+>> and manually triggered sampling as soon as execution of the
+>> kernel was reported on UART1.
+>> 
+>> 
+>> -- Test #1 -----------------------------------------------------------
+>> 
+>> For the sake of maximal reproducability, I removed the delay
+>> between the assertion and deassertion of reset and added
+>> HWTRAP value tracing:
+>> 
+>> ---%---
+>> --- a/drivers/net/dsa/mt7530.c
+>> +++ b/drivers/net/dsa/mt7530.c
+>> @@ -2243,7 +2243,6 @@ mt7530_setup(struct dsa_switch *ds)
+>>       */
+>>      if (priv->mcm) {
+>>          reset_control_assert(priv->rstc);
+>> -        usleep_range(1000, 1100);
+>>          reset_control_deassert(priv->rstc);
+>>      } else {
+>>          gpiod_set_value_cansleep(priv->reset, 0);
+>> @@ -2260,6 +2259,10 @@ mt7530_setup(struct dsa_switch *ds)
+>>          return ret;
+>>      }
+>> 
+>> +    static char ht_xtal_fsel[4][6] = { "?????", "20MHz", "40MHz", 
+>> "25MHz" };
+>> +    trace_printk("HWTRAP = %x, HT_XTAL_FSEL = %s\n",
+>> +        val, ht_xtal_fsel[(val & HWTRAP_XTAL_MASK) >> 9]);
+>> +
+>>          id = mt7530_read(priv, MT7530_CREV);
+>>          id >>= CHIP_NAME_SHIFT;
+>>          if (id != MT7530_ID) {
+>> ---%---
+>> 
+>> (a) Without a cable connected to Port 3 (lan4) before reset, the
+>> correct external crystal frequency is selected:
+>> 
+>>                [3]      [4]     [6]
+>>                :        :       :
+>>                _________         
+>> ______________________________________
+>> ESW_P4_LED_0           |_______|
+>>                          _______
+>> ESW_P3_LED_0  _________|       |______________________________________
+>> 
+>>                          :     :
+>>                          [5]...:
+>> 
+>> [3] Port 4 LED Off. Port 3 LED On.
+>> [4] Signals inverted. (reset_control_assert; reset_control_deassert)
+>> [5] Period of 310 usec.
+>> [6] Signals reflect the bootstrapped configuration.
+>> 
+>> 
+>> ~ # sed -n -e '$s/^.*\. //p' /sys/kernel/debug/tracing/trace
+>>      2.432646: mt7530_setup: HWTRAP = 7dcf, HT_XTAL_FSEL = 40MHz
+>> 
+>> 
+>> (b) When a cable attached to an active peer is connected to
+>> Port 3 (lan4) before reset, the incorrect crystal frequency
+>> selection (0b11 = 25MHz) always occurs:
+>> 
+>>                [7]      [8]     [10]    [12]
+>>                :        :       :       :
+>>                _________         
+>> ______________________________________
+>> ESW_P4_LED_0           |_______|
+>>                _________         _______
+>> ESW_P3_LED_0           |_______|       |______________________________
+>> 
+>>                          :     : :     :
+>>                          [9]...: [11]..:
+>> 
+>>   [7] Port 4 LED Off. Port 3 LED Off.
+>>   [8] Signals inverted. (reset_control_assert; reset_control_deassert)
+>>   [9] Period of 320 usec.
+>> [10] Signals inverted.
+>> [11] Period of 300 usec.
+>> [12] Signals reflect the bootstrapped configuration.
+>> 
+>> ~ # sed -n -e '$s/^.*\. //p' /sys/kernel/debug/tracing/trace
+>>      2.432884: mt7530_setup: HWTRAP = 7fcf, HT_XTAL_FSEL = 25MHz
+>> 
+>> 
+>> -- Test #2 -----------------------------------------------------------
+>> 
+>> To attempt to determine which transitions are associated
+>> with asserting and deasserting reset, I performed another
+>> test with a delay of what I intended to be a 1 sec period
+>> where the MT7530 is held in reset:
+>> 
+>> ---%---
+>> --- a/drivers/net/dsa/mt7530.c
+>> +++ b/drivers/net/dsa/mt7530.c
+>> @@ -2243,7 +2243,7 @@ mt7530_setup(struct dsa_switch *ds)
+>>       */
+>>      if (priv->mcm) {
+>>          reset_control_assert(priv->rstc);
+>> -        usleep_range(1000, 1100);
+>> +        usleep_range(1000000, 1000000);
+>>          reset_control_deassert(priv->rstc);
+>>      } else {
+>>          gpiod_set_value_cansleep(priv->reset, 0);
+>> @@ -2260,6 +2260,10 @@ mt7530_setup(struct dsa_switch *ds)
+>>          return ret;
+>>      }
+>> 
+>> +    static char ht_xtal_fsel[4][6] = { "?????", "20MHz", "40MHz", 
+>> "25MHz" };
+>> +    trace_printk("HWTRAP = %x, HT_XTAL_FSEL = %s\n",
+>> +        val, ht_xtal_fsel[(val & HWTRAP_XTAL_MASK) >> 9]);
+>> +
+>>      id = mt7530_read(priv, MT7530_CREV);
+>>      id >>= CHIP_NAME_SHIFT;
+>>      if (id != MT7530_ID) {
+>> ---%---
+>> 
+>> (a) Without a cable connected to Port 3 (lan4) before reset, the
+>> correct external crystal frequency is again selected:
+>> 
+>>                [13]     [14]    [16]
+>>                :        :       :
+>>                _________         
+>> ______________________________________
+>> ESW_P4_LED_0           |_______|
+>>                          _______
+>> ESW_P3_LED_0  _________|       |______________________________________
+>> 
+>>                          :     :
+>>                          [15]..:
+>> 
+>> [13] Port 4 LED Off. Port 3 LED On.
+>> [14] Signals inverted. (reset_control_deassert?)
+>> [15] Period of 310 usec.
+>> [16] Signals reflect the bootstrapped configuration.
+>> 
+>> 
+>> ~ # sed -n -e '$s/^.*\. //p' /sys/kernel/debug/tracing/trace
+>>      3.437461: mt7530_setup: HWTRAP = 7dcf, HT_XTAL_FSEL = 40MHz
+>> 
+>> 
+>> No difference is apparent in the timing diagram, compared
+>> to the result from Test #1a, but it is obvious that the code
+>> which follows the reset was executed about 1 second later.
+>> 
+>> 
+>> (b) With a cable from an active peer connected to Port 3
+>> (lan4) before reset, the correct crystal frequency
+>> (0b10 = 40MHz) is selected:
+>> 
+>>                [17]     [18]                    [20]   [22]
+>>                :        :                       :      :
+>>                ______________________ \ \ ______        
+>> _______________
+>> ESW_P4_LED_0                         / /       |______|
+>>                _________              \ \        ______
+>> ESW_P3_LED_0           |____________ / / ______|      |_______________
+>>                                       \ \
+>>                          :                     : :    :
+>>                          [19]..................: [21].:
+>> 
+>> [17] Port 4 LED Off. Port 3 LED Off.
+>> [18] ESW_P3_LED_0 set low. (reset_control_assert?)
+>> [19] Period of 1000.325 msec.
+>> [20] Signals inverted. (reset_control_deassert?)
+>> [21] Period of 310 usec.
+>> [22] Signals reflect the bootstrapped configuration.
+>> 
+>> 
+>> ~ # sed -n -e '$s/^.*\. //p' /sys/kernel/debug/tracing/trace
+>>      3.433235: mt7530_setup: HWTRAP = 7dcf, HT_XTAL_FSEL = 40MHz
+>> 
+>> 
+>> So it appears that when reset is deasserted, the ESW_P4_LED_0
+>> and ESW_P3_LED_0 levels are inverted for a period of about
+>> 300 - 310 usec in Test #1a, #1b, #2a, and #2b.
+>> 
+>> Co-incidentally, these inverted levels are the active low
+>> representation of what ends up in HT_XTAL_FSEL. And in all
+>> four examples, have been the inversion of what immediately
+>> preceded reset_control_deassert().
+>> 
+>> 
+>> -- Test #3 -----------------------------------------------------------
+>> 
+>> Now it seems that there is a signature that can be used
+>> to identify when reset_control_deassert() is executed,
+>> the time of reset_control_assert()'s execution should be
+>> between (at most) 1100 and (at least) 1000 usec prior
+>> based on the unmodified reset logic.
+>> 
+>> So this patch only includes the HT_XTAL_FSEL trace.
+>> 
+>> ---%---
+>> --- a/drivers/net/dsa/mt7530.c
+>> +++ b/drivers/net/dsa/mt7530.c
+>> @@ -2260,6 +2260,10 @@ mt7530_setup(struct dsa_switch *ds)
+>>                  return ret;
+>>          }
+>> 
+>> +       static char ht_xtal_fsel[4][6] = { "?????", "20MHz", "40MHz", 
+>> "25MHz" };
+>> +       trace_printk("HWTRAP = %x, HT_XTAL_FSEL = %s\n",
+>> +               val, ht_xtal_fsel[(val & HWTRAP_XTAL_MASK) >> 9]);
+>> +
+>>          id = mt7530_read(priv, MT7530_CREV);
+>>          id >>= CHIP_NAME_SHIFT;
+>>          if (id != MT7530_ID) {
+>> ---%---
+>> 
+>> The purpose of the following examples are to show the
+>> variance in how long it takes for ESW_P3_LED_0 to go low.
+>> 
+>> (a) With a cable from an active peer connected to Port 3
+>> (lan4) before reset, the correct crystal frequency
+>> (0b10 = 40MHz) is selected.
+>> 
+>>                [23]    [24]       [26]      [28]    [30]
+>>                :       :          :         :       :
+>>                _____________________________         
+>> __________________
+>> ESW_P4_LED_0                               |_______|
+>>                ___________________           _______
+>> ESW_P3_LED_0                     |_________|       |__________________
+>> 
+>>                         :          :       : :     :
+>>                         :          [27]....: [29]..:
+>>                         [25]...............:
+>> 
+>> [23] Port 4 LED Off. Port 3 LED Off.
+>> [24] Approximate point of reset_control_assert?
+>> [25] Period of approximately 1000 - 1100 usec.
+>> [26] ESW_P3_LED_0 finally goes low.
+>> [27] Period of 415 usec.
+>> [28] Signals inverted. (reset_control_deassert?)
+>> [29] Period of 310 usec.
+>> [30] Signals reflect the bootstrapped configuration.
+>> 
+>> 
+>> (b) With a cable from an active peer connected to Port 3
+>> (lan4) before reset, the correct crystal frequency
+>> (0b10 = 40MHz) is selected.
+>> 
+>>                [31]    [32]            [34] [36]    [38]
+>>                :       :                  : :       :
+>>                _____________________________         
+>> __________________
+>> ESW_P4_LED_0                               |_______|
+>>                ___________________________   _______
+>> ESW_P3_LED_0                             |_|       |__________________
+>> 
+>>                         :                  : :     :
+>>                         :               [35] [37]..:
+>>                         :                  :
+>>                         [33]...............:
+>> 
+>> [31] Port 4 LED Off. Port 3 LED Off.
+>> [32] Approximate point of reset_control_assert?
+>> [33] Period of approximately 1000 - 1100 usec.
+>> [34] ESW_P3_LED_0 finally goes low.
+>> [35] Period of 50 usec.
+>> [36] Signals inverted. (reset_control_deassert?)
+>> [37] Period of 310 usec.
+>> [38] Signals reflect the bootstrapped configuration.
+>> 
+>> 
+>> (c) With a cable from an active peer connected to Port 3
+>> (lan4) before reset, an incorrect crystal frequency
+>> (0b11 = 25MHz) is selected.
+>> 
+>>                [45]    [46]                 [48]    [50]
+>>                :       :                    :       :
+>>                _____________________________         
+>> __________________
+>> ESW_P4_LED_0                               |_______|
+>>                _____________________________
+>> ESW_P3_LED_0                               |__________________________
+>> 
+>>                         :                  : :     :
+>>                         :                  : [49]..:
+>>                         :                  :
+>>                         [47]...............:
+>> 
+>> [45] Port 4 LED Off. Port 3 LED Off.
+>> [46] Approximate point of reset_control_assert?
+>> [47] Period of approximately 1000 - 1100 usec.
+>> [48] Signals inverted. (reset_control_deassert?)
+>> [49] Period of 315 usec.
+>> [50] Signals reflect the bootstrapped configuration.
+>> 
+>> ~ # sed -n -e '$s/^.*\. //p' /sys/kernel/debug/tracing/trace
+>>      2.617819: mt7530_setup: HWTRAP = 7fcf, HT_XTAL_FSEL = 25MHz
+>> 
+>> ~ # cat /proc/cmdline
+>> console=ttyS0,57600 loglevel=7 printk.time=1 root=/dev/ram0 debug 
+>> rdinit=/linuxrc
+>> 
+>> 
+>> -- End of Tests ------------------------------------------------------
+>> 
+>> It seems that the incorrect crystal frequency is selected more
+>> often when debugging messages are present (such as printk()
+>> based approaches) and especially when loglevel=7 and printk.time=1
+>> are specified on the command line.
+>> 
+>> For the sake of reference: I disabled ethernet support in my build
+>> of (mainline) U-boot, and my kernel configuration is a very lean
+>> selection of options suited for IP routing and a few peripherals
+>> on the I2C and SPI buses.
+>> 
+>> My userland is confined to an initramfs built around busybox.
+>> 
+>> I also disable gmac1 because I need a few of the rgmii2 pins for
+>> modem control signalling.
+>> 
+>> Regards
+>> Justin
+>> 
+>> PS: Yes, I only have access to MT7621AT SoCs.
+> 
+> Thanks for the detailed presentation. I've simplified it to this, from 
+> what
+> I understood.
+> 
+> --- Currently 
+> -------------------------------------------------------------
+> 
+> With a cable from an active peer connected to Port 3 (lan4) before
+> reset:
+> 
+> Test 1, the correct crystal frequency (0b10 = 40MHz) is selected.
+> 
+>                       [1]        [2-1]     [3]     [5]
+>                       :          :         :       :
+>               _____________________________         __________________
+> ESW_P4_LED_0                               |_______|
+>               ___________________           _______
+> ESW_P3_LED_0                     |_________|       |__________________
+> 
+>                        :          :       : :     :
+>                        :          [2-2]...: [4]...:
+>                        [2]................:
+> 
+> [1] reset_control_assert.
+> [2] Period of 1000 - 1100 usec.
+> [2-1] ESW_P3_LED_0 goes low.
+> [2-2] Period of 415 usec.
+> [3] reset_control_deassert.
+> [4] Period of 310 usec. HWTRAP register is populated with bootstrapped
+>     XTAL frequency.
+> [5] Signals reflect the bootstrapped configuration.
+> 
+> Test 2, an incorrect crystal frequency (0b11 = 25MHz) is selected.
+> 
+>                       [2]                  [4]     [6]
+>                       :                    :       :
+>               _____________________________         __________________
+> ESW_P4_LED_0                               |_______|
+>               _____________________________
+> ESW_P3_LED_0                               |__________________________
+> 
+>                        :                  : :     :
+>                        :                  : [5]...:
+>                        :                  :
+>                        [3]................:
+> 
+> [1] reset_control_assert.
+> [2] Period of 1000 - 1100 usec.
+> [3] reset_control_deassert.
+> [5] Period of 315 usec. HWTRAP register is populated with incorrect
+>     XTAL frequency.
+> [6] Signals reflect the bootstrapped configuration.
+> 
+> --- 1 second delay between assert and deassert 
+> ----------------------------
+> 
+> With a cable from an active peer connected to Port 3 (lan4) before
+> reset, the correct crystal frequency (0b10 = 40MHz) is selected:
+> 
+>                       [1]        [2-1]     [3]     [5]
+>                       :          :         :       :
+>               _____________________________         __________________
+> ESW_P4_LED_0                               |_______|
+>               ___________________           _______
+> ESW_P3_LED_0                     |_________|       |__________________
+> 
+>                        :          :       : :     :
+>                        :          [2-2]...: [4]...:
+>                        [2]................:
+> 
+> [1] reset_control_assert.
+> [3] Period of 1000.325 msec.
+> [2-1] ESW_P3_LED_0 goes low.
+> [2-2] Remaining period of 1000.325 msec.
+> [3] reset_control_deassert.
+> [4] Period of 310 usec. HWTRAP register is populated with bootstrapped
+>     XTAL frequency.
+> [5] Signals reflect the bootstrapped configuration.
+> 
+> ---
+> 
+> Wouldn't it be a better idea to increase the delay between
+> reset_control_assert() and reset_control_deassert(), and
+> gpiod_set_value_cansleep(priv->reset, 0) and
+> gpiod_set_value_cansleep(priv->reset, 1) instead of disabling the LED
+> controller and delaying before reset?
 
-CPU1: clk_prepare_lock --> genpd_lock
-clk_register()
-  __clk_core_init()
-    clk_prepare_lock()
-    clk_pm_runtime_get()
-      genpd_lock()
+I've done some additional tests to see what the difference would be
+between increasing the reset hold period vs. disabling the LEDs then
+sleeping before reset.
 
-Do a runtime PM get at the probe function to make sure clk_register()
-won't acquire the genpd lock. Instead of only modifying mt8183-mfgcfg,
-do this on all mediatek clock controller probings because we don't
-believe this would cause any regression.
 
-Verified on MT8183 and MT8192 Chromebooks.
+I wanted to know:
 
-Fixes: acddfc2c261b ("clk: mediatek: Add MT8183 clock support")
-Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+When an active link is present on Port 3 at boot, what are the
+minimum, maximum and average periods between ESW_P3_LED_0
+going low and the signal inversion that seems to co-incide with
+reset_control_deassert() for each approach?
 
----
-v3: https://lore.kernel.org/all/20240108081834.408403-1-treapking@chromium.org/
 
-Changes in v4:
-- Remove the need_runtime_pm flag and apply this to all mtk controllers
+I created two patches:
 
-Changes in v3:
-- Update the commit message and the comments before runtime PM call
+WITH INCREASED RESET DELAY
 
-Changes in v2:
-- Fix the order of error handling
-- Update the commit message and add a comment before the runtime PM call
+As I submitted a patch that added an intended 1000 - 1100 usec delay
+before reset, I thought it would be fair to increase the reset hold
+period by the same value.
 
- drivers/clk/mediatek/clk-mtk.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+---%---
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2243,11 +2243,11 @@ mt7530_setup(struct dsa_switch *ds)
+          */
+         if (priv->mcm) {
+                 reset_control_assert(priv->rstc);
+-               usleep_range(1000, 1100);
++               usleep_range(2000, 2200);
+                 reset_control_deassert(priv->rstc);
+         } else {
+                 gpiod_set_value_cansleep(priv->reset, 0);
+-               usleep_range(1000, 1100);
++               usleep_range(2000, 2200);
+                 gpiod_set_value_cansleep(priv->reset, 1);
+         }
+---%---
 
-diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index 2e55368dc4d8..bd37ab4d1a9b 100644
---- a/drivers/clk/mediatek/clk-mtk.c
-+++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -13,6 +13,7 @@
- #include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
- #include <linux/slab.h>
- 
- #include "clk-mtk.h"
-@@ -494,6 +495,16 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
- 			return IS_ERR(base) ? PTR_ERR(base) : -ENOMEM;
- 	}
- 
+
+DISABLE LEDS BEFORE RESET
+
+Reset hold period unchanged from the intended 1000 - 1100 usec.
+
+---%---
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2238,6 +2238,12 @@ mt7530_setup(struct dsa_switch *ds)
+                 }
+         }
+
++       /* Disable LEDs before reset to prevent the MT7530 sampling a
++        * potentially incorrect HT_XTAL_FSEL value.
++        */
++       mt7530_write(priv, MT7530_LED_EN, 0);
++       usleep_range(1000, 1100);
 +
-+	devm_pm_runtime_enable(&pdev->dev);
-+	/*
-+	 * Do a pm_runtime_resume_and_get() to workaround a possible
-+	 * deadlock between clk_register() and the genpd framework.
-+	 */
-+	r = pm_runtime_resume_and_get(&pdev->dev);
-+	if (r)
-+		return r;
-+
- 	/* Calculate how many clk_hw_onecell_data entries to allocate */
- 	num_clks = mcd->num_clks + mcd->num_composite_clks;
- 	num_clks += mcd->num_fixed_clks + mcd->num_factor_clks;
-@@ -574,6 +585,8 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
- 			goto unregister_clks;
- 	}
- 
-+	pm_runtime_put(&pdev->dev);
-+
- 	return r;
- 
- unregister_clks:
-@@ -604,6 +617,8 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
- free_base:
- 	if (mcd->shared_io && base)
- 		iounmap(base);
-+
-+	pm_runtime_put(&pdev->dev);
- 	return r;
- }
- 
--- 
-2.44.0.278.ge034bb2e1d-goog
+         /* Reset whole chip through gpio pin or memory-mapped registers 
+for
+          * different type of hardware
+          */
+---%---
 
+
+I ran 20 tests per patch, applied exclusively. 40 tests in total.
+
+      <-- ESW_P3_LED_0 Low Period before Reset Deassertion -->
+
+   TEST    WITH INCREASED RESET DELAY    DISABLE LEDS BEFORE RESET
+      #                        (usec)                       (usec)
+-------------------------------------------------------------------
+      1                           182                         4790
+      2                           370                         3470
+      3                           240                         4635
+      4                          1475                         4850
+      5                            70                         4775
+      6                          2730                         4575
+      7                          3180                         4565
+      8                           265                         5650
+      9                           270                         4690
+     10                          1525                         4450
+     11                          3210                         4735
+     12                           120                         4690
+     13                           185                         4625
+     14                           305                         7020
+     15                          2975                         4720
+     16                           245                         4675
+     17                           350                         4740
+     18                            80                        17920
+     19                           150                        17665
+     20                           100                         4620
+
+    Min                            70                         3470
+    Max                          3210                        17920
+
+   Mean                           270                         4720
+    Avg                       923.421                     6161.579
+
+
+Every test resulted in a 40MHz HT_XTAL_FSEL, but after seeing 70 usec
+and 80 usec periods I wondered how many more tests it may take before
+an 25MHz HT_XTAL_FSEL appears.
+
+I was also surprised by the 17920 usec and 17665 usec periods listed
+under the DISABLED LEDS BEFORE RESET column. Nothing unusual seemed
+to be happening, at least as far as the kernel message output was
+concerned.
+
+What do you make of these results?
+
+
+> One MT7531 pin used for an LED is also used to decide the crystal 
+> frequency
+> between 40MHz and 25Mhz. We should implement this there as well.
+> 
+> Arınç
 
