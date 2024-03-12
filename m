@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DBF2C54E58
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 09:45:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76BD8C54E58
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 09:50:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/BSfjigM5CfP5pMXhUSG/PAd/GS6MBGhibNQJu2VnaQ=; b=vY7qiBPD+dH3Z4RHEQJOeXiIU4
-	n7BK3tHIfh4T3X3AzCa10CxTX1W5WAyzrYPV1tCNJ6MlBoNGiDx+Yc9u0eXdhNkmznKccfbNdM7T6
-	lVQhVbt/MCiKBUAXWhhR3WHej5sk/ZO9ok64fb7N596pL7Y025WjvpbYJP9+h+aIr7Z+h10gCU/vh
-	FQo7/BCRX7Z3cZV5TQOtqEmEll1mftGJV08kiADLtDnmTsWKfnH3o5apLUu39CVB3yWWP7mN2wyYR
-	VjWBHkHjEGTr2+0aImt1Cf9pTcYwNQzXvf9EnzRPH0u17ZJF3h/nAkyRFxhUlwWmXJXSiIDBVcpDL
-	4LBbEQ3A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CuI0Z/csrhVEtus/UjC+4p8edQ1KfuBqZk1DeljPvkQ=; b=aIa51VJ90Lw4vW
+	YyX8RjIhM7Tkc0S2Q0oaGNMnLfTl0m80bgC2opXKuJVyOe8ntYVWfC68B7EyIzln/6bQWLjt6sHIn
+	zyTG07ulYFzN5ewTxSwlAlWvYKAFbQDj4Wy713cVvnhDHEQK+vXdSohoddn/yaQ9+M0fj51kXqFHg
+	ufsKCx59/MDLvYXyqSHnR82GcCB46j5nu1ngsBtGUCRNAYPQHxc71d1c3y6GWs7MQ/AOWO1+OHmQQ
+	p8ZT7vCAjNiAIlbjAKFm7zVFC0SqghAdQwgutMSg1duqDNRm73hj+4uU5ceOzzfDTej3deK9IuqrQ
+	TPWZIDQZlduu60sJx8wQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjyhH-00000005ArK-3cDB;
-	Tue, 12 Mar 2024 09:45:23 +0000
+	id 1rjymH-00000005Cjq-2MPm;
+	Tue, 12 Mar 2024 09:50:33 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjyhD-00000005ApA-2E2n;
-	Tue, 12 Mar 2024 09:45:21 +0000
+	id 1rjymB-00000005Cf1-3esc;
+	Tue, 12 Mar 2024 09:50:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710236717;
-	bh=Mk2uhfXl37VOJISZwLi7o99cz/qukl3YgrOVI1UeofY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Wv/bI80XvDTtZEuMgQE+FmNMRaOsJJXXWy3bWktedpp5XUs17nHeVVa/XmUnC6NXK
-	 pSojzoHSONji14fanSMaYeh0oDxeyuzYCZ5EpQQ2+tqTS91iqGW/q0ROoQfVrx6lX8
-	 5Bmt7Bi1zbpFhjWHY0pioIp5kusWbL8a0kV1+v2+y/6tUL7smvlXO43Q3Jz3bAI1Bz
-	 oYTSRjWnkbd4BQdiIoMnxfvvGCg3zoYnIEviLibebPbAATSChAb5qe4w5UnUwl2Nxv
-	 9+bfeg5F7nTcBJa9Lyh/ukUdPp61022ysnuQh8gwCXiUX3etDXgWmKsh+rWMg89/q9
-	 UgJpMiEQD/O2A==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1710237024;
+	bh=Wz+MQcHYlshyiHHZBfjQ1ecKs45madnSOe9Ok8w+hVc=;
+	h=From:Subject:Date:To:Cc:From;
+	b=ELc9u5bPy7qgIRdKwOD3m2vyGFlB27/9suVT8ObmeEha8xwkgYSOnEEinUcFgU+lc
+	 SUSxpBEsVhbCdXm9cbtt6HeL6LnCdEAaJF2rlu623PMG7M0l6a9tnWtr+dFWiEFyUT
+	 E9WCPS5ldszTiKciKmYEUhky3qyfANwLq+eS6NdJAwkCKOF3bcuHfCHCv9arkOH71p
+	 e80cEw+Ow45z8+TGziwh2fGclQP3qVBCBFTE4iRP8glD9ELVoWnEPDjjTU/zOJgoJH
+	 U4aF/KP4y8aK0+T3yU7am8nfc6QDcjBCHWiEg5uJCgza9ebv0czltkJ/E9F15UeUUF
+	 8xcwRBdWuIIwQ==
+Received: from localhost (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3F6CA37813E5;
-	Tue, 12 Mar 2024 09:45:17 +0000 (UTC)
-Message-ID: <ae89f215-c97d-496e-9640-c87ccac1c991@collabora.com>
-Date: Tue, 12 Mar 2024 10:45:16 +0100
+	(Authenticated sender: sebastianfricke)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2A71E37813E5;
+	Tue, 12 Mar 2024 09:50:24 +0000 (UTC)
+From: Sebastian Fricke <sebastian.fricke@collabora.com>
+Subject: [PATCH v2 0/3] Mediatek VCODEC documentation improvements
+Date: Tue, 12 Mar 2024 10:50:19 +0100
+Message-Id: <20240309-mediatek-typos-v2-0-7eaacd8e5401@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/2] clk: mediatek: Introduce need_pm_runtime to
- mtk_clk_desc
-Content-Language: en-US
-To: Pin-yen Lin <treapking@chromium.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Weiyi Lu <weiyi.lu@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-References: <20240108081834.408403-1-treapking@chromium.org>
- <CAGXv+5EnBt+7WrNb-QyziEaCihvjhFVf2tpzk=XyAoeELqucaw@mail.gmail.com>
- <e0e6febf-1045-49f8-a200-8bc095b0fa50@collabora.com>
- <CAGXv+5F5YFRKjaXu_XbXrUhqKL0NSRyt6tniQYfhRh+fsaxqmg@mail.gmail.com>
- <cc74422d-962f-4da5-867b-158a71db1a7b@collabora.com>
- <CAGXv+5EyRROsh_=J1Fg4K+ZgfkERF4dh4R6WoGw9MnTBMNUCgQ@mail.gmail.com>
- <dfdc6a65-3ccf-463c-95df-093f3c2fefd3@collabora.com>
- <CAEXTbpcPfWQr4iuD2U0zgJUi+BF-rLfyF4iDDiQYBrrv9U=6Xg@mail.gmail.com>
- <90f3f4e2-ced5-4fae-b765-5b802f4895c8@collabora.com>
- <CAEXTbpeSyh1YfKsM8cqRjOFA7Ww4ooRxgCxMwXw2F4uCyX=OBg@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAEXTbpeSyh1YfKsM8cqRjOFA7Ww4ooRxgCxMwXw2F4uCyX=OBg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAFsl8GUC/3WOywrCMBBFf6VkbTR9+Kgr/0OKTKZTO/SRkglFk
+ f67acGly3PgcO9HCXkmUdfkozzNLOzGCNkuUdjC+CTNdWSVmawwuSn1QDVDoE6H9+RE4+VYn+0p
+ RyhTFSMLQtp6GLFdM6EoAsPYeMaODr/6gU4GCoyyRpOnhl/bi3sVuWUJzr+3U3O62r/7c6qNbqA
+ AsscyNye8oet7sM7DHt2gqmVZvr0Zve/lAAAA
+To: Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com, Sebastian Fricke <sebastian.fricke@collabora.com>
+X-Mailer: b4 0.11.1
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1710237023; l=2589;
+ i=sebastian.fricke@collabora.com; s=linux-media; h=from:subject:message-id;
+ bh=Wz+MQcHYlshyiHHZBfjQ1ecKs45madnSOe9Ok8w+hVc=;
+ b=7/vLW6rmqh9cBdFYba/6bidloxmb4v4TJ/gY8YNCjyOgew026yA2YaB38Z8h9AeEqJeJPIMP1bYA
+ hm8feIbxArN3Si+TDH89Emi1m8ikvW/lnEak4lJQsV8aLnbJuvlE
+X-Developer-Key: i=sebastian.fricke@collabora.com; a=ed25519;
+ pk=pYXedPwrTtErcj7ERYeo/IpTrpe4QbJuEzSB52fslBg=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240312_024519_838741_341CDC42 
-X-CRM114-Status: GOOD (  49.71  )
+X-CRM114-CacheID: sfid-20240312_025028_234747_765918E5 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,271 +88,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/03/24 10:35, Pin-yen Lin ha scritto:
-> Hi Angelo
-> 
-> On Thu, Mar 7, 2024 at 7:22 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 07/03/24 12:10, Pin-yen Lin ha scritto:
->>> Hi Angelo and Chen-yu,
->>>
->>> I tried enabling the runtime PM regardless of the .need_pm_runtime
->>> flag, and my MT8183 device works well with that with no obvious boot
->>> regression.
->>>
->>> Should I send out another patch that always enables runtime PM in
->>> __mtk_clk_simple_probe()? Or is there anything I should test?
->>>
->>
->> Hello Pin-yen,
->>
->> as I discussed with Chen-Yu - yes, we must make sure that this does not
->> create any regression on machines running on other SoC models.
->>
->> I think it's unlikely that it does, but since the HW is available, being
->> extremely careful with validating this change is a good idea :-)
->>
->> If you can/want to test before we do, sure, please send the new patch and,
->> when you do, please say that you tested it and on which SoCs; as long as
->> it's not just one SoC, that'll be good enough for me.
->>
->> P.S.: Please don't top-post!
->>
->> Cheers,
->> Angelo
-> 
-> I just tried this on MT8192 and the system looks healthy as well. I'll
-> send out a patch to enable the runtime PM for all mediatek clock
-> controllers.
-> 
-> Thanks for your time on reviewing this, and sorry for the top-posting.
-> 
+The documentation within the codebase contains multiple issues regarding the
+use of the english language, during my recent work on the driver I discovered
+some of them and fixed them on the go. The list is by far not comprehensive but
+as much as I am willing to do on the run.
 
-You're welcome. Looking forward to see the new patch!
+To: Tiffany Lin <tiffany.lin@mediatek.com>
+To: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-media@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: kernel@collabora.com
+Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
 
-Cheers,
-Angelo
+---
+Changes in v2:
+- Fix two changes (a newly introduced typo, badly formatted function description)
+- Sort changes according to suggestion from the reviewer
+- Apply reviewed-by tags
+- Link to v1: https://lore.kernel.org/r/20240309-mediatek-typos-v1-0-fa4aeb59306c@collabora.com
 
-> Regards,
-> Pin-yen
-> 
->>
->>> Regards,
->>> Pin-yen
->>>
->>> On Thu, Feb 29, 2024 at 6:36 PM AngeloGioacchino Del Regno
->>> <angelogioacchino.delregno@collabora.com> wrote:
->>>>
->>>> Il 29/02/24 11:34, Chen-Yu Tsai ha scritto:
->>>>> On Thu, Feb 29, 2024 at 5:45 PM AngeloGioacchino Del Regno
->>>>> <angelogioacchino.delregno@collabora.com> wrote:
->>>>>>
->>>>>> Il 29/02/24 08:17, Chen-Yu Tsai ha scritto:
->>>>>>> On Mon, Feb 26, 2024 at 7:16 PM AngeloGioacchino Del Regno
->>>>>>> <angelogioacchino.delregno@collabora.com> wrote:
->>>>>>>>
->>>>>>>> Il 23/02/24 05:27, Chen-Yu Tsai ha scritto:
->>>>>>>>> On Mon, Jan 8, 2024 at 4:18 PM Pin-yen Lin <treapking@chromium.org> wrote:
->>>>>>>>>>
->>>>>>>>>> Introduce a new need_pm_runtime variable to mtk_clk_desc to indicate
->>>>>>>>>> this clock controller needs runtime PM for its operations.
->>>>>>>>>> Also do a runtime PM get on the clock controller during the
->>>>>>>>>> probing stage to workaround a possible deadlock.
->>>>>>>>>>
->>>>>>>>>> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
->>>>>>>>>
->>>>>>>>> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
->>>>>>>>>
->>>>>>>>> The patch itself looks fine.
->>>>>>>>>
->>>>>>>>> Besides the MT8183 MFG clock issues, we do actually need this for the
->>>>>>>>> MT8192 ADSP clock. Its power domain is not enabled by default.
->>>>>>>>>
->>>>>>>>
->>>>>>>> ...but on MT8195 the ADSP clock works - because the ADSP node exists.
->>>>>>>
->>>>>>> That's an indirect dependency that should not be relied on. Say the clock
->>>>>>> driver probed but the ADSP hasn't, and you try to read out the current
->>>>>>> status. What would happen?
->>>>>>>
->>>>>>> - Read out works fine, because the power domain is default on, and hasn't
->>>>>>>       been turned off by late cleanup
->>>>>>> - Read out is bogus (but you can't tell)
->>>>>>> - Read out hangs.
->>>>>>>
->>>>>>> The third is what happens on MT8192. There's still some issues on that
->>>>>>> front, as even after I applied the ADSP power domain patches from MediaTek,
->>>>>>> the readout was still hanging.
->>>>>>>
->>>>>>
->>>>>> That MT8192 lockup story is getting crazy in my head... anyway, besides that,
->>>>>> I get the point - I was somehow ignoring the fact that kernel modules do exist.
->>>>>>
->>>>>> Eh, sorry about that :-)
->>>>>>
->>>>>>>> This poses a question: should we make clock controllers depend on power domains,
->>>>>>>> or should we keep everything powered off (hence clocks down - no power consumption)
->>>>>>>> *unless* the user exists?
->>>>>>>
->>>>>>> That's a policy discussion separate from actual hardware dependencies.
->>>>>>> *If* the clock controller needs the power domain to be active for the
->>>>>>> registers to be accessed, the clock controller *must* have a direct
->>>>>>> dependency on the power domain.
->>>>>>>
->>>>>>
->>>>>> I admit I should've worded that better.
->>>>>>
->>>>>> "should we make clock controllers depend on power domains" was actually implying
->>>>>> "IF those need one" :-)
->>>>>>
->>>>>> I really wonder if - at this point - it's simply a better idea to not restrict
->>>>>> the call to devm_pm_runtime_enable/resume_and_get to `need_runtime_pm == true`.
->>>>>>
->>>>>> Do we really need to exclude that on other clock controllers that don't have
->>>>>> any power domain dependency? Any side effect?
->>>>>>
->>>>>> Saying this because if we can avoid yet another per-SoC flag I'm really happy,
->>>>>> as readability is also impacted and besides - if we ever find out that one of
->>>>>> those need a power domain in the future, we'll need just one commit and just
->>>>>> only in the devicetree, instead of enabling a flag in driver X as well as that,
->>>>>> avoiding some (potentially unnecessary) noise... I guess.
->>>>>>
->>>>>> P.S.: I just noticed that the return value for the devm_pm_runtime_enable() call
->>>>>>           is not being checked!
->>>>>>
->>>>>> .......
->>>>>>
->>>>>> In short....
->>>>>>
->>>>>> Chen-Yu, at this point, do you have any reason why we wouldn't be able and/or it
->>>>>> wouldn't be a good idea to just avoid adding the `need_runtime_pm` flag (meaning
->>>>>> that we perform pm_runtime calls for all clock drivers unconditionally)?
->>>>>>
->>>>>> If this is about longer boot time, I don't think that it's going to be more than
->>>>>> a millisecond or two, so that should be completely ignorable.
->>>>>
->>>>> I think it's just more of a "don't enable features you don't need" thing.
->>>>> We already ran into a weird deadlock, which is why the devm_pm_runtime_enable()
->>>>> call has that comment.
->>>>>
->>>>> I don't think anyone has actually looked at it. As you said it shouldn't be
->>>>> much, at least during boot time. It's one call per clock controller.
->>>>>
->>>>>> Can you please do a test for that, or should I?
->>>>>
->>>>> The earliest I can work on it would be some time next week. Does that work
->>>>> for you?
->>>>>
->>>>
->>>> The earliest I'd be able to work on this myself would be at the end of next
->>>> week if not later.. so yes, please take your time, no worries.
->>>>
->>>> Thank you!
->>>>
->>>>> ChenYu
->>>>>
->>>>>> Cheers
->>>>>> Angelo
->>>>>>
->>>>>>>> For the second one, this means that the *device* gets the power domain (adsp), and
->>>>>>>> not the clock controller (which clocks are effectively useless if there's no user).
->>>>>>>
->>>>>>> No. See my previous paragraph.
->>>>>>>
->>>>>>> ChenYu
->>>>>>>
->>>>>>>> Angelo
->>>>>>>>
->>>>>>>>>> ---
->>>>>>>>>>
->>>>>>>>>> Changes in v3:
->>>>>>>>>> - Update the commit message and the comments before runtime PM call
->>>>>>>>>>
->>>>>>>>>> Changes in v2:
->>>>>>>>>> - Fix the order of error handling
->>>>>>>>>> - Update the commit message and add a comment before the runtime PM call
->>>>>>>>>>
->>>>>>>>>>       drivers/clk/mediatek/clk-mtk.c | 19 +++++++++++++++++++
->>>>>>>>>>       drivers/clk/mediatek/clk-mtk.h |  2 ++
->>>>>>>>>>       2 files changed, 21 insertions(+)
->>>>>>>>>>
->>>>>>>>>> diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
->>>>>>>>>> index 2e55368dc4d8..ba1d1c495bc2 100644
->>>>>>>>>> --- a/drivers/clk/mediatek/clk-mtk.c
->>>>>>>>>> +++ b/drivers/clk/mediatek/clk-mtk.c
->>>>>>>>>> @@ -13,6 +13,7 @@
->>>>>>>>>>       #include <linux/of.h>
->>>>>>>>>>       #include <linux/of_address.h>
->>>>>>>>>>       #include <linux/platform_device.h>
->>>>>>>>>> +#include <linux/pm_runtime.h>
->>>>>>>>>>       #include <linux/slab.h>
->>>>>>>>>>
->>>>>>>>>>       #include "clk-mtk.h"
->>>>>>>>>> @@ -494,6 +495,18 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
->>>>>>>>>>                              return IS_ERR(base) ? PTR_ERR(base) : -ENOMEM;
->>>>>>>>>>              }
->>>>>>>>>>
->>>>>>>>>> +
->>>>>>>>>> +       if (mcd->need_runtime_pm) {
->>>>>>>>>> +               devm_pm_runtime_enable(&pdev->dev);
->>>>>>>>>> +               /*
->>>>>>>>>> +                * Do a pm_runtime_resume_and_get() to workaround a possible
->>>>>>>>>> +                * deadlock between clk_register() and the genpd framework.
->>>>>>>>>> +                */
->>>>>>>>>> +               r = pm_runtime_resume_and_get(&pdev->dev);
->>>>>>>>>> +               if (r)
->>>>>>>>>> +                       return r;
->>>>>>>>>> +       }
->>>>>>>>>> +
->>>>>>>>>>              /* Calculate how many clk_hw_onecell_data entries to allocate */
->>>>>>>>>>              num_clks = mcd->num_clks + mcd->num_composite_clks;
->>>>>>>>>>              num_clks += mcd->num_fixed_clks + mcd->num_factor_clks;
->>>>>>>>>> @@ -574,6 +587,9 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
->>>>>>>>>>                              goto unregister_clks;
->>>>>>>>>>              }
->>>>>>>>>>
->>>>>>>>>> +       if (mcd->need_runtime_pm)
->>>>>>>>>> +               pm_runtime_put(&pdev->dev);
->>>>>>>>>> +
->>>>>>>>>>              return r;
->>>>>>>>>>
->>>>>>>>>>       unregister_clks:
->>>>>>>>>> @@ -604,6 +620,9 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
->>>>>>>>>>       free_base:
->>>>>>>>>>              if (mcd->shared_io && base)
->>>>>>>>>>                      iounmap(base);
->>>>>>>>>> +
->>>>>>>>>> +       if (mcd->need_runtime_pm)
->>>>>>>>>> +               pm_runtime_put(&pdev->dev);
->>>>>>>>>>              return r;
->>>>>>>>>>       }
->>>>>>>>>>
->>>>>>>>>> diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
->>>>>>>>>> index 22096501a60a..c17fe1c2d732 100644
->>>>>>>>>> --- a/drivers/clk/mediatek/clk-mtk.h
->>>>>>>>>> +++ b/drivers/clk/mediatek/clk-mtk.h
->>>>>>>>>> @@ -237,6 +237,8 @@ struct mtk_clk_desc {
->>>>>>>>>>
->>>>>>>>>>              int (*clk_notifier_func)(struct device *dev, struct clk *clk);
->>>>>>>>>>              unsigned int mfg_clk_idx;
->>>>>>>>>> +
->>>>>>>>>> +       bool need_runtime_pm;
->>>>>>>>>>       };
->>>>>>>>>>
->>>>>>>>>>       int mtk_clk_pdev_probe(struct platform_device *pdev);
->>>>>>>>>> --
->>>>>>>>>> 2.43.0.472.g3155946c3a-goog
->>>>>>>>>>
->>>>>>>>
->>>>>>>>
->>>>>>>>
->>>>>>
->>>>>>
->>>>>>
->>>>
->>
->>
->>
+---
+Sebastian Fricke (3):
+      media: mediatek: vcodec: Fix multiple typos
+      media: mediatek: vcodec: Improve wording & fix grammatic issues
+      media: mediatek: vcodec: Replace false function description
 
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.c         |  2 +-
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h     |  4 ++--
+ .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c        | 20 ++++++++++----------
+ .../mediatek/vcodec/decoder/vdec/vdec_h264_if.c      | 12 ++++++------
+ .../vcodec/decoder/vdec/vdec_h264_req_common.h       | 15 +++++++++------
+ .../mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c  | 14 +++++++-------
+ .../vcodec/decoder/vdec/vdec_h264_req_multi_if.c     |  6 +++---
+ .../vcodec/decoder/vdec/vdec_hevc_req_multi_if.c     |  4 ++--
+ .../mediatek/vcodec/decoder/vdec/vdec_vp8_if.c       |  4 ++--
+ .../mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c   |  2 +-
+ .../mediatek/vcodec/decoder/vdec/vdec_vp9_if.c       |  4 ++--
+ .../mediatek/vcodec/decoder/vdec_msg_queue.h         |  4 ++--
+ .../platform/mediatek/vcodec/decoder/vdec_vpu_if.h   |  4 ++--
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c         |  2 +-
+ .../platform/mediatek/vcodec/encoder/venc_drv_if.h   |  2 +-
+ 15 files changed, 51 insertions(+), 48 deletions(-)
+---
+base-commit: b14257abe7057def6127f6fb2f14f9adc8acabdb
+change-id: 20240309-mediatek-typos-c85d7b63ca91
+
+Best regards,
+-- 
+Sebastian Fricke <sebastian.fricke@collabora.com>
 
