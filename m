@@ -4,73 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1806AC54E5D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 14:06:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2E47C54E58
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 14:41:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=078Q91kxFkJtbqNYLQudCalSSfSi16PLPA+QyKk374Q=; b=CptjqNJ1DYcIGw8dw2ZQ+4jF0q
-	3KtII2jvMVyyhlRsgoNMHjrQvX+2xj9Ja7uDFB+PsVOz23ebIbDxQWMsEDy9KIdAC5OyYGFahRKh/
-	o9HELuyWPXmq9NgMGpIX4a9vBgJ3Cv7A32yzOtfzCdDLsDxXED1TxAfWNtMTgTWKNGPAii9RmrMDD
-	0iHcLsi+uLW5LVoQinzBaGqE+B0jgo0RP15q0w389E04GTMuDmR/6LrmU+kBt+UtPpZ2CDlbE7xWE
-	DXYnctS41DqP5DERwPOr4uBpOuroCX6ZxORwGifsG5Whh2RzYxe6YsvqMvGJub+wZYhabE+zPl4+M
-	eCr1rp9A==;
+	bh=qSUN/6WVtfVy/Kq8UYs/JqShZLNoJqIVArhuQ0fSUyE=; b=ARkYqyDOyGhfKRjCAqNxgnZFvR
+	TwQSn56qswSBtmVxcEgM5OtSkQH5Odw55nnhAmpmODDXJVzqvqKOZsRDH6iLcpALhikGUkKZjMhPL
+	Rf28MBOFDi28M6Mgt7AnE5EKPaf8XU0HLpAd+9xJlDoKikNoCLVVMsC1eP3phPFk2tt0aqfQKS+rL
+	gjNcwNL9U09RTDV24T6sUA92tEyzk+HGqc80nMIZq9E5oyEtQsTFCWj188OQ0AJ3fiv1gDvj4Cx+U
+	sv7LG9RVX1S2vtLGcjebyGyqDdYR4Z6vA6lx2QJp5C4RUgopCyt2q1YZ3CVthktXySI+musQRewv5
+	wPJMb8gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rk2mK-000000061xp-20j8;
-	Tue, 12 Mar 2024 14:06:52 +0000
-Received: from relay2-d.mail.gandi.net ([217.70.183.194])
+	id 1rk3KH-00000006AzV-3aN1;
+	Tue, 12 Mar 2024 14:41:58 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rk2mD-000000061tT-3OgK;
-	Tue, 12 Mar 2024 14:06:49 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 299F34000A;
-	Tue, 12 Mar 2024 14:06:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1710252402;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=078Q91kxFkJtbqNYLQudCalSSfSi16PLPA+QyKk374Q=;
-	b=nJW62fuhcnXVtmrAnvE5qxf0sDTktEsGw0AZWRdF4J6S9n5qFi0R69+M6+OVWCrd9BBROp
-	jZ3Y4C/fdyQ6JzF5zB+Ne8jBVF/2IoklvBVRrK3SntLR9/gzetNkIIZq+IRHrmVDyRMJPy
-	jbceSAY3Lt/MvBS/Jv6myWRwxomZETJ1u7Pc0Mf7aFVPn9AbANeck/KfWIvtGskRm1k92R
-	YaNsUzK/6SocHm6LbpLt3mgT1/tm/8W3jCpICa+fdQxJhePS3Crg3cQMiFUs/zKOskaMZI
-	IOcg8Ad9KskRHeCXpOgNnUGnFIu1+0ZD0IdiC2hhn8CqvGTdFuJQyFL1ccGqUQ==
-Message-ID: <6df6db7e-7842-4194-b429-ab7443a18ccb@arinc9.com>
-Date: Tue, 12 Mar 2024 17:06:24 +0300
+	id 1rk3KA-00000006Aug-0mbU;
+	Tue, 12 Mar 2024 14:41:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1710254507;
+	bh=pssySadyO3WsLSXVvrg+qLF0LevwN7Bf/tVt4wuz7w4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=foMmiKTU8hq/wbrY693jOUcmZy2mKImlR2N3aYjOVMhGPspKUfLIDCIP6zdTI6VAw
+	 oLisdD2XTMJzC9dEJBaqkdhXf30Odio1FfAEoFs9fU7SHsuq9GZ6ZI8JVvqUUUqXE0
+	 nrwju0vt0fF0JyVggj55KoiwNKy/Ox3Rg0e6LyzRGU+9GGYqqbUOck8jwVOkIoY4Gz
+	 LXbQCy40+2P7SO6scg4aDFnjnHrQAdIar5cUfVTnZwqYVdmQZGlt91nWHJ2qbhYHbX
+	 cC6ZwaabYKDsh7B0P7Sv7C9vRwH3ODIl0tjARMnfc3jsoUQTUYSeZQcLKQY6yeq6zB
+	 teTsUmm3lYdtA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0E61637811D4;
+	Tue, 12 Mar 2024 14:41:47 +0000 (UTC)
+Message-ID: <3ec20339-b176-4d39-8cbe-4577a782aeec@collabora.com>
+Date: Tue, 12 Mar 2024 15:41:46 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] net: dsa: mt7530: disable LEDs before reset
+Subject: Re: [PATCH v4] clk: mediatek: Do a runtime PM get on controllers
+ during probe
 Content-Language: en-US
-To: Justin Swartz <justin.swartz@risingedge.co.za>
-Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240305043952.21590-1-justin.swartz@risingedge.co.za>
- <6064ba52-2470-4c56-958c-35632187f148@arinc9.com>
- <d45083788db8b0b1ace051adecfe6a3a@risingedge.co.za>
- <1bfd93f1-36d5-436e-818e-2ebdcf475b44@arinc9.com>
- <0439f80319127b6a4a9c19108bcc0065@risingedge.co.za>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <0439f80319127b6a4a9c19108bcc0065@risingedge.co.za>
+To: Pin-yen Lin <treapking@chromium.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Bosi Zhang <u201911157@hust.edu.cn>, Nicolas Boichat
+ <drinkcat@chromium.org>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
+ <u.kleine-koenig@pengutronix.de>
+References: <20240312115249.3341654-1-treapking@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240312115249.3341654-1-treapking@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Spam-Score: 400
-X-GND-Status: SPAM
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240312_070646_193061_A902B984 
-X-CRM114-Status: GOOD (  24.93  )
+X-CRM114-CacheID: sfid-20240312_074150_558516_899B7496 
+X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,137 +82,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12.03.2024 15:01, Justin Swartz wrote:
-> Arınç
+Il 12/03/24 12:51, Pin-yen Lin ha scritto:
+> mt8183-mfgcfg has a mutual dependency with genpd during the probing
+> stage, which leads to a deadlock in the following call stack:
 > 
-> On 2024-03-12 04:41, Arınç ÜNAL wrote:
->> Wouldn't it be a better idea to increase the delay between
->> reset_control_assert() and reset_control_deassert(), and
->> gpiod_set_value_cansleep(priv->reset, 0) and
->> gpiod_set_value_cansleep(priv->reset, 1) instead of disabling the LED
->> controller and delaying before reset?
+> CPU0:  genpd_lock --> clk_prepare_lock
+> genpd_power_off_work_fn()
+>   genpd_lock()
+>   generic_pm_domain::power_off()
+>      clk_unprepare()
+>        clk_prepare_lock()
 > 
-> I've done some additional tests to see what the difference would be
-> between increasing the reset hold period vs. disabling the LEDs then
-> sleeping before reset.
+> CPU1: clk_prepare_lock --> genpd_lock
+> clk_register()
+>    __clk_core_init()
+>      clk_prepare_lock()
+>      clk_pm_runtime_get()
+>        genpd_lock()
 > 
+> Do a runtime PM get at the probe function to make sure clk_register()
+> won't acquire the genpd lock. Instead of only modifying mt8183-mfgcfg,
+> do this on all mediatek clock controller probings because we don't
+> believe this would cause any regression.
 > 
-> I wanted to know:
+> Verified on MT8183 and MT8192 Chromebooks.
 > 
-> When an active link is present on Port 3 at boot, what are the
-> minimum, maximum and average periods between ESW_P3_LED_0
-> going low and the signal inversion that seems to co-incide with
-> reset_control_deassert() for each approach?
+> Fixes: acddfc2c261b ("clk: mediatek: Add MT8183 clock support")
+> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
 > 
-> 
-> I created two patches:
-> 
-> WITH INCREASED RESET DELAY
-> 
-> As I submitted a patch that added an intended 1000 - 1100 usec delay
-> before reset, I thought it would be fair to increase the reset hold
-> period by the same value.
-> 
-> ---%---
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -2243,11 +2243,11 @@ mt7530_setup(struct dsa_switch *ds)
->           */
->          if (priv->mcm) {
->                  reset_control_assert(priv->rstc);
-> -               usleep_range(1000, 1100);
-> +               usleep_range(2000, 2200);
->                  reset_control_deassert(priv->rstc);
->          } else {
->                  gpiod_set_value_cansleep(priv->reset, 0);
-> -               usleep_range(1000, 1100);
-> +               usleep_range(2000, 2200);
->                  gpiod_set_value_cansleep(priv->reset, 1);
->          }
-> ---%---
-> 
-> 
-> DISABLE LEDS BEFORE RESET
-> 
-> Reset hold period unchanged from the intended 1000 - 1100 usec.
-> 
-> ---%---
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -2238,6 +2238,12 @@ mt7530_setup(struct dsa_switch *ds)
->                  }
->          }
-> 
-> +       /* Disable LEDs before reset to prevent the MT7530 sampling a
-> +        * potentially incorrect HT_XTAL_FSEL value.
-> +        */
-> +       mt7530_write(priv, MT7530_LED_EN, 0);
-> +       usleep_range(1000, 1100);
-> +
->          /* Reset whole chip through gpio pin or memory-mapped registers for
->           * different type of hardware
->           */
-> ---%---
-> 
-> 
-> I ran 20 tests per patch, applied exclusively. 40 tests in total.
-> 
->       <-- ESW_P3_LED_0 Low Period before Reset Deassertion -->
-> 
->    TEST    WITH INCREASED RESET DELAY    DISABLE LEDS BEFORE RESET
->       #                        (usec)                       (usec)
-> -------------------------------------------------------------------
->       1                           182                         4790
->       2                           370                         3470
->       3                           240                         4635
->       4                          1475                         4850
->       5                            70                         4775
->       6                          2730                         4575
->       7                          3180                         4565
->       8                           265                         5650
->       9                           270                         4690
->      10                          1525                         4450
->      11                          3210                         4735
->      12                           120                         4690
->      13                           185                         4625
->      14                           305                         7020
->      15                          2975                         4720
->      16                           245                         4675
->      17                           350                         4740
->      18                            80                        17920
->      19                           150                        17665
->      20                           100                         4620
-> 
->     Min                            70                         3470
->     Max                          3210                        17920
-> 
->    Mean                           270                         4720
->     Avg                       923.421                     6161.579
-> 
-> 
-> Every test resulted in a 40MHz HT_XTAL_FSEL, but after seeing 70 usec
-> and 80 usec periods I wondered how many more tests it may take before
-> an 25MHz HT_XTAL_FSEL appears.
-> 
-> I was also surprised by the 17920 usec and 17665 usec periods listed
-> under the DISABLED LEDS BEFORE RESET column. Nothing unusual seemed
-> to be happening, at least as far as the kernel message output was
-> concerned.
-> 
-> What do you make of these results?
 
-What I see is setting ESW_P3_LED_0 low via reset assertion is much more
-efficient than doing so by setting the LED controller off. So I'd prefer
-increasing the delay between assertion and reassertion. For example, the
-Realtek DSA subdriver has a much more generous delay. 25ms after reset
-assertion [1].
+MT8195 Cherry Tomato - no issues as well.
 
-Looking at your results, 2000 - 2200 usec delay still seems too close, so
-let's agree on an amount that will ensure that boards in any circumstances
-will have these pins back to the bootstrapping configuration before reset
-deassertion. What about 5000 - 5100 usec?
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/tree/drivers/net/dsa/realtek/rtl83xx.c#n205
-
-Arınç
 
