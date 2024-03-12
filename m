@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76BD8C54E58
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 09:50:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CCBDC54E66
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 09:50:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CuI0Z/csrhVEtus/UjC+4p8edQ1KfuBqZk1DeljPvkQ=; b=aIa51VJ90Lw4vW
-	YyX8RjIhM7Tkc0S2Q0oaGNMnLfTl0m80bgC2opXKuJVyOe8ntYVWfC68B7EyIzln/6bQWLjt6sHIn
-	zyTG07ulYFzN5ewTxSwlAlWvYKAFbQDj4Wy713cVvnhDHEQK+vXdSohoddn/yaQ9+M0fj51kXqFHg
-	ufsKCx59/MDLvYXyqSHnR82GcCB46j5nu1ngsBtGUCRNAYPQHxc71d1c3y6GWs7MQ/AOWO1+OHmQQ
-	p8ZT7vCAjNiAIlbjAKFm7zVFC0SqghAdQwgutMSg1duqDNRm73hj+4uU5ceOzzfDTej3deK9IuqrQ
-	TPWZIDQZlduu60sJx8wQ==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hb8pyE6JbS9TMSLtbhXheNJ1PTC1gMJU9q4B8oZPhI4=; b=Df3vOpzqu5WYBUCl3RMXtlkXQr
+	sB6Q+NPaMY/Ft6EPdovXB483mzrOd2s/w82mUmdHMcBQSxzFg9Ur8SUfLeq2o1zSyiTQ3pqm758jh
+	1EX2uHegMvePB20aLZZbHVl+T797afWNU4Ttq1tDuX/NSQYwCko1WiPGg7wvTe7K6yCccfb1OswSa
+	9ky3Ugy7Qj19/At1i9Rz8vFKzDS3JyJ2kAXhX0A6FxPWcsvP7cY0zd/Cp9SwtP84li2WVVdqYs1s7
+	iKoqFbxI1HEOR45IumfWcBhuHT4RePgexAvO3M1ps6s91ElcjCYBgGGXq/UY7EALTSoC+HXggitbk
+	ZJZ2dmPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjymH-00000005Cjq-2MPm;
-	Tue, 12 Mar 2024 09:50:33 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rjymN-00000005Cmt-2PMX;
+	Tue, 12 Mar 2024 09:50:39 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjymB-00000005Cf1-3esc;
-	Tue, 12 Mar 2024 09:50:29 +0000
+	id 1rjymC-00000005CfT-2BXB;
+	Tue, 12 Mar 2024 09:50:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710237024;
-	bh=Wz+MQcHYlshyiHHZBfjQ1ecKs45madnSOe9Ok8w+hVc=;
-	h=From:Subject:Date:To:Cc:From;
-	b=ELc9u5bPy7qgIRdKwOD3m2vyGFlB27/9suVT8ObmeEha8xwkgYSOnEEinUcFgU+lc
-	 SUSxpBEsVhbCdXm9cbtt6HeL6LnCdEAaJF2rlu623PMG7M0l6a9tnWtr+dFWiEFyUT
-	 E9WCPS5ldszTiKciKmYEUhky3qyfANwLq+eS6NdJAwkCKOF3bcuHfCHCv9arkOH71p
-	 e80cEw+Ow45z8+TGziwh2fGclQP3qVBCBFTE4iRP8glD9ELVoWnEPDjjTU/zOJgoJH
-	 U4aF/KP4y8aK0+T3yU7am8nfc6QDcjBCHWiEg5uJCgza9ebv0czltkJ/E9F15UeUUF
-	 8xcwRBdWuIIwQ==
+	s=mail; t=1710237027;
+	bh=wx5Od8e0msgGi1gWmjh7X4CMlWtUwg0DpHfFHz+2/cM=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=dU0hPYq/vzHUOLU+RRnHBQwXFLMIg7g4HZaC7UVgWtpAwBPSngwwT3fTfKywh7VCN
+	 CSDMMBz56Au3GcpNKvPx8zc3YOMf4DQSxyeZf7tMRFyhKGWrAqeS7hB/sIEyEcukg+
+	 8uiMHpowNjJUi/JzouzS5n5Meu5PnA816vwA0QnCoF4yUtJAegXcPATO48+prPUlEG
+	 UHvuIAqgBZlWJYEaXRw7U5kfTwUDOLhnDBX66FggOQXd5JOLZFz3EXJkA2VEAx64m1
+	 aT5IBNxdoV8hYYsFNgKM029M+hcEnSY1EbOHOlUoqrSl08AiW16iWwPQ72UHiTcfMZ
+	 HyMkueFiVd2NA==
 Received: from localhost (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sebastianfricke)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2A71E37813E5;
-	Tue, 12 Mar 2024 09:50:24 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B63D13782082;
+	Tue, 12 Mar 2024 09:50:26 +0000 (UTC)
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
-Subject: [PATCH v2 0/3] Mediatek VCODEC documentation improvements
-Date: Tue, 12 Mar 2024 10:50:19 +0100
-Message-Id: <20240309-mediatek-typos-v2-0-7eaacd8e5401@collabora.com>
+Date: Tue, 12 Mar 2024 10:50:20 +0100
+Subject: [PATCH v2 2/3] media: mediatek: vcodec: Improve wording & fix
+ grammatic issues
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAFsl8GUC/3WOywrCMBBFf6VkbTR9+Kgr/0OKTKZTO/SRkglFk
- f67acGly3PgcO9HCXkmUdfkozzNLOzGCNkuUdjC+CTNdWSVmawwuSn1QDVDoE6H9+RE4+VYn+0p
- RyhTFSMLQtp6GLFdM6EoAsPYeMaODr/6gU4GCoyyRpOnhl/bi3sVuWUJzr+3U3O62r/7c6qNbqA
- AsscyNye8oet7sM7DHt2gqmVZvr0Zve/lAAAA
+Message-Id: <20240309-mediatek-typos-v2-2-7eaacd8e5401@collabora.com>
+References: <20240309-mediatek-typos-v2-0-7eaacd8e5401@collabora.com>
+In-Reply-To: <20240309-mediatek-typos-v2-0-7eaacd8e5401@collabora.com>
 To: Tiffany Lin <tiffany.lin@mediatek.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Yunfei Dong <yunfei.dong@mediatek.com>,
@@ -64,16 +63,16 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  kernel@collabora.com, Sebastian Fricke <sebastian.fricke@collabora.com>
 X-Mailer: b4 0.11.1
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1710237023; l=2589;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1710237023; l=2834;
  i=sebastian.fricke@collabora.com; s=linux-media; h=from:subject:message-id;
- bh=Wz+MQcHYlshyiHHZBfjQ1ecKs45madnSOe9Ok8w+hVc=;
- b=7/vLW6rmqh9cBdFYba/6bidloxmb4v4TJ/gY8YNCjyOgew026yA2YaB38Z8h9AeEqJeJPIMP1bYA
- hm8feIbxArN3Si+TDH89Emi1m8ikvW/lnEak4lJQsV8aLnbJuvlE
+ bh=wx5Od8e0msgGi1gWmjh7X4CMlWtUwg0DpHfFHz+2/cM=;
+ b=4TRPb9ey+FZFBS7b7sJJt7mXLU+HL5QHI2VaENisPMR47hWK5CjdJJT2JQJbROrKV8u6Rp6PwfjH
+ XMYLq/vjAi/IMidrky7RWkRKFt3WrYz7JdQsxY31CpJHf7WkLQOx
 X-Developer-Key: i=sebastian.fricke@collabora.com; a=ed25519;
  pk=pYXedPwrTtErcj7ERYeo/IpTrpe4QbJuEzSB52fslBg=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240312_025028_234747_765918E5 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20240312_025028_768414_DEFC6874 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,58 +87,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The documentation within the codebase contains multiple issues regarding the
-use of the english language, during my recent work on the driver I discovered
-some of them and fixed them on the go. The list is by far not comprehensive but
-as much as I am willing to do on the run.
+Multiple issues detected while scanning the code by far not a complete
+list of required changes but some small improvements.
 
-To: Tiffany Lin <tiffany.lin@mediatek.com>
-To: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-media@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: kernel@collabora.com
 Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
-
 ---
-Changes in v2:
-- Fix two changes (a newly introduced typo, badly formatted function description)
-- Sort changes according to suggestion from the reviewer
-- Apply reviewed-by tags
-- Link to v1: https://lore.kernel.org/r/20240309-mediatek-typos-v1-0-fa4aeb59306c@collabora.com
+ drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c  | 2 +-
+ .../platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c      | 2 +-
+ .../platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c      | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
----
-Sebastian Fricke (3):
-      media: mediatek: vcodec: Fix multiple typos
-      media: mediatek: vcodec: Improve wording & fix grammatic issues
-      media: mediatek: vcodec: Replace false function description
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c
+index 37c41b673876..73d5cef33b2a 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c
+@@ -27,7 +27,7 @@ struct mtk_h264_dec_slice_param {
+ /**
+  * struct vdec_h264_dec_info - decode information
+  * @dpb_sz		: decoding picture buffer size
+- * @resolution_changed  : resolution change happend
++ * @resolution_changed  : flag to notify that a resolution change happened
+  * @realloc_mv_buf	: flag to notify driver to re-allocate mv buffer
+  * @cap_num_planes	: number planes of capture buffer
+  * @bs_dma		: Input bit-stream buffer dma address
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
+index d5224c9584b6..2d4611e7fa0b 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
+@@ -131,7 +131,7 @@ struct vdec_h264_slice_share_info {
+ /**
+  * struct vdec_h264_slice_inst - h264 decoder instance
+  *
+- * @slice_dec_num:	how many picture be decoded
++ * @slice_dec_num:	Number of frames to be decoded
+  * @ctx:		point to mtk_vcodec_dec_ctx
+  * @pred_buf:		HW working prediction buffer
+  * @mv_buf:		HW working motion vector buffer
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
+index a44db6139ff2..fe0a8508d632 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
+@@ -342,7 +342,7 @@ struct vdec_hevc_slice_share_info {
+ /**
+  * struct vdec_hevc_slice_inst - hevc decoder instance
+  *
+- * @slice_dec_num:      how many picture be decoded
++ * @slice_dec_num:      Number of frames to be decoded
+  * @ctx:                point to mtk_vcodec_dec_ctx
+  * @mv_buf:             HW working motion vector buffer
+  * @vpu:                VPU instance
 
- .../mediatek/vcodec/decoder/mtk_vcodec_dec.c         |  2 +-
- .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h     |  4 ++--
- .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c        | 20 ++++++++++----------
- .../mediatek/vcodec/decoder/vdec/vdec_h264_if.c      | 12 ++++++------
- .../vcodec/decoder/vdec/vdec_h264_req_common.h       | 15 +++++++++------
- .../mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c  | 14 +++++++-------
- .../vcodec/decoder/vdec/vdec_h264_req_multi_if.c     |  6 +++---
- .../vcodec/decoder/vdec/vdec_hevc_req_multi_if.c     |  4 ++--
- .../mediatek/vcodec/decoder/vdec/vdec_vp8_if.c       |  4 ++--
- .../mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c   |  2 +-
- .../mediatek/vcodec/decoder/vdec/vdec_vp9_if.c       |  4 ++--
- .../mediatek/vcodec/decoder/vdec_msg_queue.h         |  4 ++--
- .../platform/mediatek/vcodec/decoder/vdec_vpu_if.h   |  4 ++--
- .../mediatek/vcodec/encoder/mtk_vcodec_enc.c         |  2 +-
- .../platform/mediatek/vcodec/encoder/venc_drv_if.h   |  2 +-
- 15 files changed, 51 insertions(+), 48 deletions(-)
----
-base-commit: b14257abe7057def6127f6fb2f14f9adc8acabdb
-change-id: 20240309-mediatek-typos-c85d7b63ca91
-
-Best regards,
 -- 
-Sebastian Fricke <sebastian.fricke@collabora.com>
+2.25.1
 
