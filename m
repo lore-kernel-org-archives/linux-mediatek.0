@@ -4,109 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91487C54E60
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 16:36:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F21D3C54E5D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 18:03:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Content-Transfer-Encoding:Content-Type:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yg+g+abNrGcwEzQSWBbG2h+JPGpvEcqsYIaVOBM+AUA=; b=o61MmoGG4JpJA6uaxUvT6zZpTR
-	XChNKjPx/wF4HDQNc66buzjcXDU9IcHHkvBdUI0c64n+JHt9ijqA6zuz6mArBMPRH/Bxl8lc99tpB
-	Jp5s0yQQa5bb6hQgJ3iAp0gr5OTT/bAWO2EXuKJPHwxpcMXNVyqwU1oDN4tC4vgmVOtRQ8adaLjQZ
-	NFUWwPHmGA1/RwEnWwZWvEAmOeu1oWmf0Vg9wJG+6M/uj2zRYdzyyUMHCAn2Y6y2WBU0K0A/N7ltR
-	W6LdkFPYkOBk13X0CJweiATZnE+UWQxKC86LkSus6Et/n37esPLQD3eyqWtRknGiZiiAY6S0fU2uh
-	oT1HllkQ==;
+	bh=HREX7H/9qDu7coR15IdnVSKnBY8ogVJjtclSGzuYtSo=; b=ALQ0XtID1W/FmeX3YgMmFHAZo4
+	QjM7hFlL4HFKudmU/OMd4JP6/fkUvon7ox2Rdcfn2IxZ1m9lQDaz1JA0ad5KGopRgpjJVniAunLQS
+	+u16gkB4RqyVMJWoGfKHgfz+SghKcDTMYfe4U1GfZqc+PMe32XSs6wZXfA8B1/cbyYKk20kZuBHZY
+	QYxgKdY/nH+KOtFOw+XIKf5t9lv7pwoCmJutASF6NDNhC2h6cVINZXpSqmVUZ7gl6h5YIpDyX+R3P
+	xdCrm9Z7IXbNb5yi5/NKzB6sSv0HY4Z2Y55q8gmBZCgFrMq81qLpRs80wHkePmjp2vjrHNmsyXFXd
+	uv3zly9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rk56d-00000006c8W-10e8;
-	Tue, 12 Mar 2024 16:35:59 +0000
-Received: from outgoing6.flk.host-h.net ([188.40.0.77])
+	id 1rk6TO-00000006xeh-3duz;
+	Tue, 12 Mar 2024 18:03:35 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rk56Y-00000006c7c-08we;
-	Tue, 12 Mar 2024 16:35:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=risingedge.co.za; s=xneelo; h=Message-ID:References:In-Reply-To:Subject:Cc:
-	To:From:Date:Content-Transfer-Encoding:Content-Type:MIME-Version:reply-to:
-	sender:bcc; bh=yg+g+abNrGcwEzQSWBbG2h+JPGpvEcqsYIaVOBM+AUA=; b=oy6s3xtd7jDtGp
-	6RPb1fsedIa8PfieDnwpdvgYnnczVWLLrzOAQzhyGUwfduVZbZDsS+yrEvgA0HDclaUMieAQRVn9/
-	H7XKezlmXa83mffFgtPLjzZDO2FiGPa1xuyDZ4bjqfiz3XbKzMTxfNuWvhLcvTiHV72LDMtxyhyeL
-	2whpDNtHlKk89s1WmLKSEgsDMZrfqYnblmj84LfBWsfWTmOXAyCgBL+8XtxRgkvBk8A3XbJ4ijESZ
-	rL8GyZ5auxRApC6T097AoG+7oZZG6RbE1KFVqpMzKSDfEudsvVorEI+q8ZpjU2dJNdfG+Gf06KrM6
-	o9JMgRLlDbOd/cNfgu4w==;
-Received: from www31.flk1.host-h.net ([188.40.1.173])
-	by antispam2-flk1.host-h.net with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1rk56N-007QAO-TD; Tue, 12 Mar 2024 18:35:47 +0200
-Received: from roundcubeweb1.flk1.host-h.net ([138.201.244.33] helo=webmail9.konsoleh.co.za)
-	by www31.flk1.host-h.net with esmtpa (Exim 4.92)
-	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1rk56H-0004yq-Ib; Tue, 12 Mar 2024 18:35:37 +0200
+	id 1rk6TL-00000006xcc-0JfB
+	for linux-mediatek@lists.infradead.org;
+	Tue, 12 Mar 2024 18:03:33 +0000
+Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-513b022a238so2546390e87.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 Mar 2024 11:03:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1710266608; x=1710871408; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=HREX7H/9qDu7coR15IdnVSKnBY8ogVJjtclSGzuYtSo=;
+        b=shfyNia+j8eHf0mEl49BpeRd/NrR2v74mvuqeFviI7C4Ge35Q4Rbm2WLSAIoDGSBip
+         v1oxH3smaBwe6SlyHutnOsuHWSpe//wP53MRqRQWhiSI4rtYrTLeJvUM0w0kEUcaWdWw
+         rgTFk6IRSZ6RSwMqjhr4ETTgSMfOJwZahxGHofSpjX4Kt9lpeoktBwi07EZBMH2XgruJ
+         v5kbNQ7XgLERLzydxFYf0BhtE0mXNA2rds2mIaOVYiFF/EyuzTu/HIbkqb3I9Kg5YXtL
+         YGXBH3Zxv9vA7eA0bjryKJWMTuKlG64CSaoYnTBv0pp7/ZxMf+lMcv2PZBfOh1HpiWQL
+         sdwQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710266608; x=1710871408;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=HREX7H/9qDu7coR15IdnVSKnBY8ogVJjtclSGzuYtSo=;
+        b=YdYNgDuB6alM1VKimkk9F6mhQplCm+Vvc38nmnfRxFbF8/3LBCORIXSuCzmgh4Ehsp
+         BVsxULuLrDsacE1K0Sp6rI9rWvr7j5q0SkqEOKRh0FQ5NlDQLykYe+gSoglTKRK519gk
+         g7CZWFH9PXjKXHlXC91BF1iVoWpWCr+q/Pi9LKqx3Yaq4aZ93lcfJzsSh6jkxnC5iRK4
+         hoKS/5rikoUcwf2M/I9e67m8lMY6umNhn6vvvcS5Thgejep4c+m706FegsnmU3pwhZn3
+         DfHTJpim+u1JEbt9juOYNZ4ei7om2+GuYCmiCzFG6Qg7pSFZn1gWQjGo6dHj4Q1/K1Ez
+         SCHQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXgACazkW4cPkt3EDiSp6qzRG3ePQgYHTAUYrP27JTx81oIhpkzyD43M9Xhuh/JkMI1aMREL3fGuxrTHDqilkMUCJM4ebz7szxtzpzpHPy7cjmM
+X-Gm-Message-State: AOJu0YwW6As3Y1ExjvYKVz2gPV/lBVEWMTJbN6xkLkJt0YO0FcSsJgnY
+	NSXcfEoElHo+r/hV3Btbn2+Wct9CVIoNOUggveJqp4qBGxF0gCOADu38nl1ZRQs=
+X-Google-Smtp-Source: AGHT+IH4QkVIYDqyhzAKmOcXC+nBQU3/7sOVXezpH3hXulIwAWJtf0fWxm8Rb21sEMqvyOTNR1ZG+Q==
+X-Received: by 2002:a05:6512:ba4:b0:513:a72c:de7c with SMTP id b36-20020a0565120ba400b00513a72cde7cmr2898449lfv.46.1710266608394;
+        Tue, 12 Mar 2024 11:03:28 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id bq7-20020a5d5a07000000b0033e95794186sm6250688wrb.83.2024.03.12.11.03.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 12 Mar 2024 11:03:27 -0700 (PDT)
+Message-ID: <c441a132-b16b-4244-a712-8971c902d4d7@baylibre.com>
+Date: Tue, 12 Mar 2024 19:03:25 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
-Content-Transfer-Encoding: 8bit
-Date: Tue, 12 Mar 2024 18:35:37 +0200
-From: Justin Swartz <justin.swartz@risingedge.co.za>
-To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, Florian
- Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David
- S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 12/18] ASoC: codecs: mt6357: add MT6357 codec
+Content-Language: en-US
+To: Mark Brown <broonie@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] net: dsa: mt7530: disable LEDs before reset
-In-Reply-To: <9a7c29b51575083201b963638bdb9fa5@risingedge.co.za>
-References: <20240305043952.21590-1-justin.swartz@risingedge.co.za>
- <6064ba52-2470-4c56-958c-35632187f148@arinc9.com>
- <d45083788db8b0b1ace051adecfe6a3a@risingedge.co.za>
- <1bfd93f1-36d5-436e-818e-2ebdcf475b44@arinc9.com>
- <0439f80319127b6a4a9c19108bcc0065@risingedge.co.za>
- <6df6db7e-7842-4194-b429-ab7443a18ccb@arinc9.com>
- <9a7c29b51575083201b963638bdb9fa5@risingedge.co.za>
-Message-ID: <f594a72a91d12f1d027a06962caa9750@risingedge.co.za>
-X-Sender: justin.swartz@risingedge.co.za
-User-Agent: Roundcube Webmail/1.3.17
-X-Authenticated-Sender: justin.swartz@risingedge.co.za
-X-Virus-Scanned: Clear
-X-Originating-IP: 188.40.1.173
-X-SpamExperts-Domain: risingedge.co.za
-X-SpamExperts-Username: 
-Authentication-Results: host-h.net; auth=pass (login) smtp.auth=@risingedge.co.za
-X-SpamExperts-Outgoing-Class: ham
-X-SpamExperts-Outgoing-Evidence: Combined (0.06)
-X-Recommended-Action: accept
-X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT+lUXMrY4PnmjnViZCjXhQaPUtbdvnXkggZ
- 3YnVId/Y5jcf0yeVQAvfjHznO7+bT5wCPRB8bAzJcv2cv+UqiTTc2+CpNcmBnO4XM3Sck4bwNogU
- WCl1nkLBzZX0KuJ9bXiS85Z42w/+2OBolTNFbPomXFWCX8oNdggW7HE9XDTdSejrkEpbuUvwMvHx
- 3T+KSG//gbuP7hnUK8NQdLwsVWKIv+fXqqb3FJ1Z7kkAIev0U9CKH/oA07tJunDPm536TODb5GPR
- oyaaXp1VNA9dXvxV+mFktoWo3CKg4C3LDJ75vu2U4GT70q7ZqN/P49BncZ5XB7lfx9K88uL/WnJE
- LAEP514Y/yfAEbrTclu3OeNcbACmFr3ts0d2E6vXySsvfMaT9Bjf4etJ827HW1/sdZ81dz6BqXHU
- oYg+nmOeSIjjxA24TPuOyBrko5yKpcR03QEJ9DjWmjcfK/FpTD0spWG+rMYoj8CdNq4vLYsMDbt4
- 2oUP1Ae/eGZl2OLANHAHEjHENEhX9cq65nsXPA0MIFDIPOMDW/6+MC+5Mq5RH9OoW0W22an/ubzj
- InB/ImqScRfGyrhHVstPeAuxsRhUFJC4TtSvIahFt3uEpT0304dV2Yoz1SesQUA6bnjJZT6m9lal
- 9vikoy50DqR3hu/rL5PGAoTDzn0QdoxFeruM0Uhu+RLoZIyBwur4TJrMt0TK0/cihnVW8zB2Qi26
- vkVALycwzSdeC1kd8cXa71WqOc72jXbRpMw6Agze1f399OurHEyYS7nq+EBNvgiWKNNSkdVDZOrL
- 5kxgO94lq2025NSImfKeGaSpuwkt9kMFaoxOFH3nT6Zph4wUZj+IQLUKRJzeMs4VIrisX+dtrxYn
- /0jYEvj5QBAPtzfeVlNHdCJmwgf0M7fnqgzRvCMiN68tcHQey84mBB4XoB473XOJmIRPynE3O7YZ
- oFBs6I7QuC1BjGNT52hVLEr/9PrrMm81h6IAYzikeIJfw26MB/V1E5BP9Gv0xI1YXOxC1lZqyFpL
- AwQr6muMti2YanICQnMITeB2fd0UyjU/MIq3Vtx6CgQGHtezYqxGMqsKjARq8PBC4qgGsfAERwCB
- JFs7XjZYbJPBsmpIto2O4JO2fx1gIuNHgi11AwJSTGCrOFs22K1ZnDqAw3gLmOBPHazhChxq9nGW
- aSi6bFHidB1VgzDzDZn/+QEiRQv+PVjjwa+Z5RFCOMRmYvGVP5J/K7tDFQHNyAqzdfFYVDBYJee7
- gx/u82RtU9UW3dl9fwt0Tdq4PMjNsqE0mVfWLKEgol9rYV4JEcNP1rJoln/cD8h/RIvkzXRTCYvX
- WLQhlD92+1l+zHfJg1FMwntsduNBxKPaTpE5L8d4VqFy6yKUFQtzhTlGiGL9B0nAIzS3VGMYMsaD
- t/vlLode8ZEQhyUpJRaYI785W4/hIIDSVMZhrIoAWTF5tIdhy/UIEBYDcZg+Q8UhuRLyBn1+pvlH
- hV6a5QjptwQBGybQyDQ2/GYwPjlMcE57ESN6G+kn87CtwPdB/10jfVNpDbYnXJdSRQj8460WHJib
- IxmU2pb4i4DTkMZeMiNI9JSIyUbtnrlbG4BI8o81FOo91axhCaqPShJzgHH7y4ZfQxML
-X-Report-Abuse-To: spam@antispamquarantine.host-h.net
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
+ Nicolas Belin <nbelin@baylibre.com>
+References: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
+ <20240226-audio-i350-v1-12-4fa1cea1667f@baylibre.com>
+ <9891855d-2284-42e4-9d3a-35ba406540e8@sirena.org.uk>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <9891855d-2284-42e4-9d3a-35ba406540e8@sirena.org.uk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240312_093554_424875_089787F9 
-X-CRM114-Status: GOOD (  17.38  )
+X-CRM114-CacheID: sfid-20240312_110331_377588_433678B7 
+X-CRM114-Status: GOOD (  29.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,222 +110,147 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On 2024-03-12 17:25, Justin Swartz wrote:
-> On 2024-03-12 16:06, Arınç ÜNAL wrote:
->> On 12.03.2024 15:01, Justin Swartz wrote:
->>> Arınç
->>> 
->>> On 2024-03-12 04:41, Arınç ÜNAL wrote:
->>>> Wouldn't it be a better idea to increase the delay between
->>>> reset_control_assert() and reset_control_deassert(), and
->>>> gpiod_set_value_cansleep(priv->reset, 0) and
->>>> gpiod_set_value_cansleep(priv->reset, 1) instead of disabling the 
->>>> LED
->>>> controller and delaying before reset?
->>> 
->>> I've done some additional tests to see what the difference would be
->>> between increasing the reset hold period vs. disabling the LEDs then
->>> sleeping before reset.
->>> 
->>> 
->>> I wanted to know:
->>> 
->>> When an active link is present on Port 3 at boot, what are the
->>> minimum, maximum and average periods between ESW_P3_LED_0
->>> going low and the signal inversion that seems to co-incide with
->>> reset_control_deassert() for each approach?
->>> 
->>> 
->>> I created two patches:
->>> 
->>> WITH INCREASED RESET DELAY
->>> 
->>> As I submitted a patch that added an intended 1000 - 1100 usec delay
->>> before reset, I thought it would be fair to increase the reset hold
->>> period by the same value.
->>> 
->>> ---%---
->>> --- a/drivers/net/dsa/mt7530.c
->>> +++ b/drivers/net/dsa/mt7530.c
->>> @@ -2243,11 +2243,11 @@ mt7530_setup(struct dsa_switch *ds)
->>>           */
->>>          if (priv->mcm) {
->>>                  reset_control_assert(priv->rstc);
->>> -               usleep_range(1000, 1100);
->>> +               usleep_range(2000, 2200);
->>>                  reset_control_deassert(priv->rstc);
->>>          } else {
->>>                  gpiod_set_value_cansleep(priv->reset, 0);
->>> -               usleep_range(1000, 1100);
->>> +               usleep_range(2000, 2200);
->>>                  gpiod_set_value_cansleep(priv->reset, 1);
->>>          }
->>> ---%---
->>> 
->>> 
->>> DISABLE LEDS BEFORE RESET
->>> 
->>> Reset hold period unchanged from the intended 1000 - 1100 usec.
->>> 
->>> ---%---
->>> --- a/drivers/net/dsa/mt7530.c
->>> +++ b/drivers/net/dsa/mt7530.c
->>> @@ -2238,6 +2238,12 @@ mt7530_setup(struct dsa_switch *ds)
->>>                  }
->>>          }
->>> 
->>> +       /* Disable LEDs before reset to prevent the MT7530 sampling a
->>> +        * potentially incorrect HT_XTAL_FSEL value.
->>> +        */
->>> +       mt7530_write(priv, MT7530_LED_EN, 0);
->>> +       usleep_range(1000, 1100);
->>> +
->>>          /* Reset whole chip through gpio pin or memory-mapped 
->>> registers for
->>>           * different type of hardware
->>>           */
->>> ---%---
->>> 
->>> 
->>> I ran 20 tests per patch, applied exclusively. 40 tests in total.
->>> 
->>>       <-- ESW_P3_LED_0 Low Period before Reset Deassertion -->
->>> 
->>>    TEST    WITH INCREASED RESET DELAY    DISABLE LEDS BEFORE RESET
->>>       #                        (usec)                       (usec)
->>> -------------------------------------------------------------------
->>>       1                           182                         4790
->>>       2                           370                         3470
->>>       3                           240                         4635
->>>       4                          1475                         4850
->>>       5                            70                         4775
->>>       6                          2730                         4575
->>>       7                          3180                         4565
->>>       8                           265                         5650
->>>       9                           270                         4690
->>>      10                          1525                         4450
->>>      11                          3210                         4735
->>>      12                           120                         4690
->>>      13                           185                         4625
->>>      14                           305                         7020
->>>      15                          2975                         4720
->>>      16                           245                         4675
->>>      17                           350                         4740
->>>      18                            80                        17920
->>>      19                           150                        17665
->>>      20                           100                         4620
->>> 
->>>     Min                            70                         3470
->>>     Max                          3210                        17920
->>> 
->>>    Mean                           270                         4720
-> -1s/  Mean/Median/
+
+On 26/02/2024 17:09, Mark Brown wrote:
+> On Mon, Feb 26, 2024 at 03:01:50PM +0100, amergnat@baylibre.com wrote:
 > 
->>>     Avg                       923.421                     6161.579
->>> 
->>> 
->>> Every test resulted in a 40MHz HT_XTAL_FSEL, but after seeing 70 usec
->>> and 80 usec periods I wondered how many more tests it may take before
->>> an 25MHz HT_XTAL_FSEL appears.
->>> 
->>> I was also surprised by the 17920 usec and 17665 usec periods listed
->>> under the DISABLED LEDS BEFORE RESET column. Nothing unusual seemed
->>> to be happening, at least as far as the kernel message output was
->>> concerned.
->>> 
->>> What do you make of these results?
->> 
->> What I see is setting ESW_P3_LED_0 low via reset assertion is much 
->> more
->> efficient than doing so by setting the LED controller off. So I'd 
->> prefer
->> increasing the delay between assertion and reassertion. For example, 
->> the
->> Realtek DSA subdriver has a much more generous delay. 25ms after reset
->> assertion [1].
->> 
->> Looking at your results, 2000 - 2200 usec delay still seems too close, 
->> so
->> let's agree on an amount that will ensure that boards in any 
->> circumstances
->> will have these pins back to the bootstrapping configuration before 
->> reset
->> deassertion. What about 5000 - 5100 usec?
+>> index 000000000000..13e95c227114
+>> --- /dev/null
+>> +++ b/sound/soc/codecs/mt6357.c
+>> @@ -0,0 +1,1805 @@
+>> +// SPDX-License-Identifier: GPL-2.0
+>> +/*
+>> + * MT6357 ALSA SoC audio codec driver
+>> + *
 > 
->    TEST    ESW_P3_LED_0 LOW PERIOD
->       #                     (usec)
-> ----------------------------------
->       1                       5410
->       2                       5440
->       3                       4375
->       4                       5490
->       5                       5475
->       6                       4335
->       7                       4370
->       8                       5435
->       9                       4205
->      10                       4335
->      11                       3750
->      12                       3170
->      13                       4395
->      14                       4375
->      15                       3515
->      16                       4335
->      17                       4220
->      18                       4175
->      19                       4175
->      20                       4350
+> Please use a C++ comment for the whole comment to make it clearer that
+> this is intentional.
+
+ok
+
 > 
->     Min                       3170
->     Max                       5490
+>> +static void set_playback_gpio(struct mt6357_priv *priv, bool enable)
+>> +{
+>> +	if (enable) {
+>> +		/* set gpio mosi mode */
+>> +		regmap_write(priv->regmap, MT6357_GPIO_MODE2_CLR, GPIO_MODE2_CLEAR_ALL);
+>> +		regmap_write(priv->regmap, MT6357_GPIO_MODE2_SET, GPIO8_MODE_SET_AUD_CLK_MOSI |
+>> +								  GPIO9_MODE_SET_AUD_DAT_MOSI0 |
+>> +								  GPIO10_MODE_SET_AUD_DAT_MOSI1 |
+>> +								  GPIO11_MODE_SET_AUD_SYNC_MOSI);
 > 
->  Median                   4342.500
->     Avg                   4466.500
+> This would be a lot more legible if you worked out the values to set and
+> then had a single set of writes, currently the indentation makes it very
+> hard to read.  Similarly for other similar functions.
+
+ok
+
 > 
-> Looks reasonable to me.
+>> +static int mt6357_put_volsw(struct snd_kcontrol *kcontrol, struct snd_ctl_elem_value *ucontrol)
+>> +{
+>> +	struct snd_soc_component *component = snd_soc_kcontrol_component(kcontrol);
+>> +	struct mt6357_priv *priv = snd_soc_component_get_drvdata(component);
+>> +	struct soc_mixer_control *mc = (struct soc_mixer_control *)kcontrol->private_value;
+>> +	unsigned int reg;
+>> +	int ret;
+>> +
+>> +	ret = snd_soc_put_volsw(kcontrol, ucontrol);
+>> +	if (ret < 0)
+>> +		return ret;
+>> +
+>> +	switch (mc->reg) {
+>> +	case MT6357_ZCD_CON2:
+>> +		regmap_read(priv->regmap, MT6357_ZCD_CON2, &reg);
+>> +		priv->ana_gain[ANALOG_VOLUME_HPOUTL] =
+>> +			(reg & AUD_HPL_GAIN_MASK) >> AUD_HPL_GAIN_SFT;
+>> +		priv->ana_gain[ANALOG_VOLUME_HPOUTR] =
+>> +			(reg & AUD_HPR_GAIN_MASK) >> AUD_HPR_GAIN_SFT;
+>> +		break;
+> 
+> It would probably be less code and would definitely be clearer and
+> simpler to just read the values when we need them rather than constatly
+> keeping a cache separate to the register cache.
 
-I had messed up the Median/Average calculation with the data
-I had pasted earlier after copying and pasting formulas without
-double checking how they had been affected.
+Actually you must save the values because the gain selected by the user 
+will be override to do a ramp => volume_ramp(.....):
+- When you switch on the HP, you start from gain=-40db to final_gain 
+(selected by user).
+- When you switch off the HP, you start from final_gain (selected by 
+user) to gain=-40db.
 
-So here's the table again, now with the 5000 - 5100 usec test
-run tacked on for easier comparison:
+Also, the microphone's gain change when it's enabled/disabled.
 
-              2000 usec                      5000 usec
-            - 2200 usec    DISABLE LEDS    - 5100 usec
-    TEST     RESET HOLD    BEFORE RESET     RESET HOLD
-       #         (usec)          (usec)         (usec)
---------------------------------------------------------
-       1            182            4790           5410
-       2            370            3470           5440
-       3            240            4635           4375
-       4           1475            4850           5490
-       5             70            4775           5475
-       6           2730            4575           4335
-       7           3180            4565           4370
-       8            265            5650           5435
-       9            270            4690           4205
-      10           1525            4450           4335
-      11           3210            4735           3750
-      12            120            4690           3170
-      13            185            4625           4395
-      14            305            7020           4375
-      15           2975            4720           3515
-      16            245            4675           4335
-      17            350            4740           4220
-      18             80           17920           4175
-      19            150           17665           4175
-      20            100            4620           4350
+So, it can implemented differently but currently it's aligned with the 
+other MTK codecs and I don't see any resource wasted here.
 
-     Min             70            3470           3170
-     Max           3210           17920           5490
+> 
+>> +	/* ul channel swap */
+>> +	SOC_SINGLE("UL LR Swap", MT6357_AFE_UL_DL_CON0, AFE_UL_LR_SWAP_SFT, 1, 0),
+> 
+> On/off controls should end in Switch.
 
-  Median        267.500            4705       4342.500
-     Avg        901.350            6093       4466.500
+Sorry, I don't understand your comment. Can you reword it please ?
 
+> 
+>> +static const char * const hslo_mux_map[] = {
+>> +	"Open", "DACR", "Playback", "Test mode"
+>> +};
+>> +
+>> +static int hslo_mux_map_value[] = {
+>> +	0x0, 0x1, 0x2, 0x3,
+>> +};
+> 
+> Why not just use a normal mux here, there's no missing values or
+> reordering?  Similarly for other muxes.
 
->> [1]
->> https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/tree/drivers/net/dsa/realtek/rtl83xx.c#n205
->> 
->> Arınç
+I've dug into some other codecs and it's done like that, but I've 
+probably misunderstood something.
+
+The only bad thing I see is enum is missing currently:
+
+enum {
+	PGA_MUX_OPEN = 0,
+	PGA_MUX_DACR,
+	PGA_MUX_PB,
+	PGA_MUX_TM,
+	PGA_MUX_MASK = 0x3,
+};
+
+static const char * const hslo_mux_map[] = {
+	"Open", "DACR", "Playback", "Test mode"
+};
+
+static int hslo_mux_map_value[] = {
+	PGA_MUX_OPEN, PGA_MUX_DACR, PGA_MUX_PB, PGA_MUX_TM,
+};
+
+> 
+>> +static unsigned int mt6357_read(struct snd_soc_component *codec, unsigned int reg)
+>> +{
+>> +	struct mt6357_priv *priv = snd_soc_component_get_drvdata(codec);
+>> +	unsigned int val;
+>> +
+>> +	pr_debug("%s() reg = 0x%x", __func__, reg);
+>> +	regmap_read(priv->regmap, reg, &val);
+>> +	return val;
+>> +}
+> 
+> Remove these, there are vastly more logging facilities as standard in
+> the regmap core.
+
+ok
+
+> 
+>> +/* Reg bit defines */
+>> +/* MT6357_GPIO_DIR0 */
+>> +#define GPIO8_DIR_MASK				BIT(8)
+>> +#define GPIO8_DIR_INPUT				0
+> 
+> Please namespace your defines, these look very generic.
+
+ok
+
+-- 
+Regards,
+Alexandre
 
