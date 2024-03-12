@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0849DC54E60
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 11:22:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C762C54E58
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 11:53:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hOdo/1mCWJYcxEKaBRYTzgE0ZAGk9OmOvt81SZQggfg=; b=y6ZEqn3PSiocihxipW/RXf3Uig
-	zPvTJIaxTnJYKsTaA8XM0xRriTkAkmtsHI/HdBkoHWqPzxvUsXdF2NXmTaRjA5nNFKxaP1kPQ9HcC
-	PU4InoU60gB1UY83VXARZzadFBq/RleXJTj0B9Q1W74qQobVTIs2c3DYCrIYTndtBNr8bHWp0HPxt
-	SWM/E6rm7a3+FV1gZZjIn4+ZZQau1Zaut/qJrIftpM8Fu4V5A8NRr/m0DBHCwM9bW0PzDUbzflqQO
-	fAGdZK/Yp9By+3OzzeJG3sYseWQm42RP7AxO14zAa8xzqdppkT+0MrBp//8EW/vGsLnCROpux0+GA
-	A4g1t0HQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=32L7EdHAuQ4WnOqivRSfbIvHEBBAYz+hzKyLr7KyYy4=; b=4ClEjMUOSzzki2vrMk+npoTD4a
+	1ZxzJHU04PFO4URMVcbtBJnFm3+yTZcLbMnVcdtQw0xTyeZZObluc/Y3W20SLl25lMQ0xveaYbfoI
+	2C2TpWWtRvw+qe1bXzpr0WQePv9LApVFp7VhEeoYoItIT2Pz3llIZw/1sM4cCJNXfyJo4n8GcW83p
+	uMNwacdcvBUdJQBZFPBVVkuWpWFxSszKkVhxeMEmrN9AQAs9/TCI5/r+ZlS7DGQPwRitdJ/xIgTJz
+	mVHw7mKukyzViVnEzm6ajkfmivOPfqZZp2CrLc3D93n9vDUuEj1FPDgFjL784uOb2QkqJJKQ74AvO
+	hQaRZSXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rk0Co-00000005Vqu-3ZhA;
-	Tue, 12 Mar 2024 11:22:02 +0000
-Received: from relay6-d.mail.gandi.net ([217.70.183.198])
+	id 1rk0gn-00000005aV1-1TVb;
+	Tue, 12 Mar 2024 11:53:01 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rk0Ck-00000005Vq6-0sWl;
-	Tue, 12 Mar 2024 11:22:00 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id BAF94C0002;
-	Tue, 12 Mar 2024 11:21:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1710242515;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=hOdo/1mCWJYcxEKaBRYTzgE0ZAGk9OmOvt81SZQggfg=;
-	b=e2rYS5fYWK1UsqRzdoJvxmWsFEW5R/stulHvr/IRvZMqd8xQ1kXaphv1yGlWUkqMm3sbqt
-	mDkD+/xCZ19gLSuDFIe4REOLdWMIz6ysjUjOmU5WRdq/breAHOft0O4/yNbdSn4RLibxWz
-	l/2UKwNDAgfDaA6Z5EBVyFBs4DgShMIDfuK/HmsYa55/INONdz7yFYMNKlJ2HNNToR1IjL
-	hHHyIOQkbMtZjGELXf/D67xTTQjHdEKBllaTjK4ayndNwL+3zawidrcmV+PATJoWbsJJSI
-	ZS5Y5uum0JmJi9ELMRMlDZD6g+0DIclL2Bvw4PqpNsT5vPu5WkhZZR92L/sTPg==
-Message-ID: <941e7c70-a90f-4e6b-a2b7-867fc798d693@arinc9.com>
-Date: Tue, 12 Mar 2024 14:21:37 +0300
+	id 1rk0gi-00000005aTa-4Axd
+	for linux-mediatek@lists.infradead.org;
+	Tue, 12 Mar 2024 11:52:58 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-1dd611d5645so32398065ad.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 Mar 2024 04:52:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1710244376; x=1710849176; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=32L7EdHAuQ4WnOqivRSfbIvHEBBAYz+hzKyLr7KyYy4=;
+        b=KkBeyKuoV7I6cRsMn1UdOxYZAtzqs8/qSBYavSocTgQZeVp3szgMYESL1L8pWhU36Q
+         TgptGFrdZcPoSIElCIfnASFxugn50z68er9gwOmJrwziLbRlSpxX+HCWO1Gn8f9H/WxM
+         dgll4+c0ySLq2lHbaXK7X1LCfGgu9TKZKZGig=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710244376; x=1710849176;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=32L7EdHAuQ4WnOqivRSfbIvHEBBAYz+hzKyLr7KyYy4=;
+        b=GRsoR36RQRMdnFcifqKdcKBUjZcSo+Q0R17n/mR9q8BA6WUnzlEeZFp2n3SEoxrGc3
+         CRekk/bVHZf50OfEx2vBW87AE8jcry9RcQ/ee4D8NZ9Sp/FJHhOl6oYjfbhUtx21GbRs
+         AfKLie1kHSe3PKFBNkbN0LBF7t2ibYGlrZc4iYpPuYv7H4sM+EPTiFcCu0gCbn8tCOmH
+         40FqmLDaEltWahrb2+TByCOLKGrqfgkJhG5qvmcCL0h2HQ9O5C7OyppeBoe3saLyw4AQ
+         yUiUFR+cSmFm41cgYBZOU0pXo33/ltnGpO/0I43Kw2XmwHTKdpGyJ2hY/ARacVDUBGCH
+         71xQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUT8zQQIokqnW+Ez8e5fQxBt0iuTGEARiVdKGa4BPkp4+uTMhagN9pQ7IavkLoyLt4aiRI1lozUdZqn4naTi/RiS9bzBarjJLfGc+fohuvxxZEV
+X-Gm-Message-State: AOJu0Yy8Pbte9OXkods6iaJowZQE3ioaR/Mq+oI1FG48jExDo/xhVXdE
+	/FqrSSXyBzDO4SPQ5oUYR7MZ/83IT59/H2/77GDiJbEygk7tRdZjZEietnUJgQ==
+X-Google-Smtp-Source: AGHT+IFHW7gNc8FGsMt9K1fDNHiUJ5TT/QPfRrLz4t4aGJMOagv8xqOkZuJYIn0TiohOgI7RjlfCgg==
+X-Received: by 2002:a17:902:d2d2:b0:1dd:c227:4175 with SMTP id n18-20020a170902d2d200b001ddc2274175mr813268plc.8.1710244375852;
+        Tue, 12 Mar 2024 04:52:55 -0700 (PDT)
+Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:bae3:7b5f:7434:812e])
+        by smtp.gmail.com with ESMTPSA id b15-20020a170903228f00b001dd1bdee6d9sm6500179plh.31.2024.03.12.04.52.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 12 Mar 2024 04:52:55 -0700 (PDT)
+From: Pin-yen Lin <treapking@chromium.org>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Pin-yen Lin <treapking@chromium.org>,
+	Weiyi Lu <weiyi.lu@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Bosi Zhang <u201911157@hust.edu.cn>,
+	Nicolas Boichat <drinkcat@chromium.org>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Subject: [PATCH v4] clk: mediatek: Do a runtime PM get on controllers during probe
+Date: Tue, 12 Mar 2024 19:51:55 +0800
+Message-ID: <20240312115249.3341654-1-treapking@chromium.org>
+X-Mailer: git-send-email 2.44.0.278.ge034bb2e1d-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] net: dsa: mt7530: disable LEDs before reset
-Content-Language: en-US
-To: Paolo Abeni <pabeni@redhat.com>, patchwork-bot+netdevbpf@kernel.org,
- Justin Swartz <justin.swartz@risingedge.co.za>
-Cc: daniel@makrotopia.org, dqfext@gmail.com, sean.wang@mediatek.com,
- andrew@lunn.ch, f.fainelli@gmail.com, olteanv@gmail.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240305043952.21590-1-justin.swartz@risingedge.co.za>
- <171019143163.14853.15330891015381229970.git-patchwork-notify@kernel.org>
- <7780460c-abc3-4009-9f95-28d123a9a23d@arinc9.com>
- <4fb0b96fe4049578718befc41f2121ce18c30fbe.camel@redhat.com>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <4fb0b96fe4049578718befc41f2121ce18c30fbe.camel@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-GND-Spam-Score: 400
-X-GND-Status: SPAM
-X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240312_042158_797077_BDB3CC68 
-X-CRM114-Status: GOOD (  21.68  )
+X-CRM114-CacheID: sfid-20240312_045257_089882_A6DAD893 
+X-CRM114-Status: GOOD (  14.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,53 +97,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12.03.2024 13:46, Paolo Abeni wrote:
-> On Tue, 2024-03-12 at 11:38 +0300, Arınç ÜNAL wrote:
->> I am once again calling for this patch to be reverted on the net-next tree
->> on the basis of:
->>
->> - This patch did not go through a proper reviewing process. There are
->>     proposed changes on the code it changes regarding the scope and the
->>     method of the patch, and improvements to be made on the patch log.
->>
->> - This patch should be backported to stable releases, therefore it
->>     shouldn't be on the net-next tree and should be submitted to the net tree
->>     instead.
-> 
-> The net-next pull request is out:
-> 
-> https://lore.kernel.org/netdev/20240312042504.1835743-1-kuba@kernel.org/
-> 
-> at this point I believe we can't retract it unless there is a very
-> serious regression affecting most/all users. This does not look such
-> case.
+mt8183-mfgcfg has a mutual dependency with genpd during the probing
+stage, which leads to a deadlock in the following call stack:
 
-It seems so. This patch was not tested on standalone MT7530 at submission.
-Whilst the patch is useless for standalone MT7530, it doesn't seem to break
-anything either, from my simple test on a board with it.
+CPU0:  genpd_lock --> clk_prepare_lock
+genpd_power_off_work_fn()
+ genpd_lock()
+ generic_pm_domain::power_off()
+    clk_unprepare()
+      clk_prepare_lock()
 
-> 
-> I think the better option is follow-up on net with follow-up fixes if
-> any.
-> 
-> All the relevant patches could be sent to the stable tree later:
-> 
-> https://elixir.bootlin.com/linux/latest/source/Documentation/process/stable-kernel-rules.rst#L47
-> 
-> To try to reduce the possibilities of this kind of situation in the
-> future, may I kindly ask you to invest some more little time to help
-> the reviewers and the maintainers? e.g. trimming the replies explicitly
-> cutting all the unneeded parts in the quoted code/text would make the
-> whole conversation much easier to follow (at least to me). The netdev
-> volume is insane, it's very easy to get lost in a given thread and miss
-> relevant part of it.
+CPU1: clk_prepare_lock --> genpd_lock
+clk_register()
+  __clk_core_init()
+    clk_prepare_lock()
+    clk_pm_runtime_get()
+      genpd_lock()
 
-I already try to do this. Here's my proposal that would not reduce but
-completely avoid this kind of situation in the future, and at the same time
-reduce the workload of the netdev maintainers. Do not apply patches without
-ACKs. Ask for reviews at least once if the patch had been stale for a
-while, and wait a bit for reviews. Only then apply the patch with/without
-ACKs.
+Do a runtime PM get at the probe function to make sure clk_register()
+won't acquire the genpd lock. Instead of only modifying mt8183-mfgcfg,
+do this on all mediatek clock controller probings because we don't
+believe this would cause any regression.
 
-Arınç
+Verified on MT8183 and MT8192 Chromebooks.
+
+Fixes: acddfc2c261b ("clk: mediatek: Add MT8183 clock support")
+Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+
+---
+v3: https://lore.kernel.org/all/20240108081834.408403-1-treapking@chromium.org/
+
+Changes in v4:
+- Remove the need_runtime_pm flag and apply this to all mtk controllers
+
+Changes in v3:
+- Update the commit message and the comments before runtime PM call
+
+Changes in v2:
+- Fix the order of error handling
+- Update the commit message and add a comment before the runtime PM call
+
+ drivers/clk/mediatek/clk-mtk.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index 2e55368dc4d8..bd37ab4d1a9b 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -13,6 +13,7 @@
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+ #include <linux/platform_device.h>
++#include <linux/pm_runtime.h>
+ #include <linux/slab.h>
+ 
+ #include "clk-mtk.h"
+@@ -494,6 +495,16 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
+ 			return IS_ERR(base) ? PTR_ERR(base) : -ENOMEM;
+ 	}
+ 
++
++	devm_pm_runtime_enable(&pdev->dev);
++	/*
++	 * Do a pm_runtime_resume_and_get() to workaround a possible
++	 * deadlock between clk_register() and the genpd framework.
++	 */
++	r = pm_runtime_resume_and_get(&pdev->dev);
++	if (r)
++		return r;
++
+ 	/* Calculate how many clk_hw_onecell_data entries to allocate */
+ 	num_clks = mcd->num_clks + mcd->num_composite_clks;
+ 	num_clks += mcd->num_fixed_clks + mcd->num_factor_clks;
+@@ -574,6 +585,8 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
+ 			goto unregister_clks;
+ 	}
+ 
++	pm_runtime_put(&pdev->dev);
++
+ 	return r;
+ 
+ unregister_clks:
+@@ -604,6 +617,8 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
+ free_base:
+ 	if (mcd->shared_io && base)
+ 		iounmap(base);
++
++	pm_runtime_put(&pdev->dev);
+ 	return r;
+ }
+ 
+-- 
+2.44.0.278.ge034bb2e1d-goog
+
 
