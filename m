@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7DF6C54E67
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 09:50:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30615C54E66
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Mar 2024 09:50:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eGo34Hcf4M6Bms6sLgkzKWklTra8S5ko1U0AhpE3zvE=; b=Z0kQffVOP/RUzG2PGfJyh7auNB
-	dTZYI5Rmnf9PEFjTgkZFOM03/mCeclDJFR2JvqgPdjH9+YzSga+RPP+r1qazf8Iyn0iwcePaDIj4P
-	xHEHX5rf2nGJmVo+ip6yL3gC2e9+YocjnIAocHoqi1QGyuCz76NKDA11S37/bdO9V28bmAeFAu0Bw
-	bxpfxmFU/OWGbVZKpdhwNaQiobmQIRB1HJL7Ws8yjNFLqDEQ5UAExcdo7JZ8LDdOEHd9hS5neEgBF
-	P8RqGFoNMJd762886diAujr37tdXXzEMT4tqBRm9nu3c633nbLeXncs5k4zJoAVW0LSjFDctcoYQG
-	Da20fs/w==;
+	bh=9ayl7vdkTMhzMlobb0WZj9nZ9urV/hURxJwWOd0dwW8=; b=z0sD0IDkpPNwb86DDIQa6/NwsU
+	DyPuKHB5Mcas6fQn5RZU4cJHd1GNY0b54/u0k430buavZTtSsk485Ex6myb/QiurPNKbHI76sHVyN
+	/aUZKU1/mBBwxfVP+tnhM03fbG54hzZik5z2phVCJi/j6BJMIpirrtdiJQYndd/knS3cKYQgxUKZa
+	0ER1gMoDcKFHRnTit4OFJWF5Xt5m9UeqU40Hwtdz4Hu+ajC2YxOxs0n4nTRyr0/ZTKKFa7iDEYJoV
+	sbHqO1vhrAte3N7AUxE+AK7Z2W9YYOeaHdG8QkVR/1ghLRs/DrYkyE/7mBBMtfnaz60od3bb1mkKz
+	/XHrahdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjymS-00000005CpS-1VQk;
-	Tue, 12 Mar 2024 09:50:44 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rjymU-00000005CrC-29mP;
+	Tue, 12 Mar 2024 09:50:46 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjymD-00000005CgI-1XSi;
-	Tue, 12 Mar 2024 09:50:33 +0000
+	id 1rjymC-00000005CfA-0nuj;
+	Tue, 12 Mar 2024 09:50:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710237028;
-	bh=CZUwmtrMAbhgiKTCOMdUvfJTKdr28NZ87Os6j2jRv5E=;
+	s=mail; t=1710237025;
+	bh=s+T3Z1Y8v/ZANo7uAQk0ZE+9dsgkMadCIBT0NP/4Oik=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=zvQsu+fIJYiHjQXafQqCVTx0aNz958hGNoFh5q/c5TdKFmkiM4KwqU+wNo3kk97oB
-	 JQlTiCf9OU1yK6qe3wUe9byjeZPrqLKGXhvJd5agIeXXOCv678DHXNh9kyK6IZ1LNq
-	 aMu4rNLzQby8all1/Ew+F/YjlWUWRa3g6U9hPIhxaDvsCGUZ1s71I7bsVwcmLBi6mW
-	 C0b2NLx9NK/DMpdBu06+I5U1wl3ERuiR7Qqx6HmAwynKssS7WFOTWmBonZP/363C7G
-	 m9f/vVQD3Bl0TvmIa+Qn6KetEVpHJROSFcRCjTHS/p8wfOFlfWXg7NeiPPbMh90cZp
-	 063GMukXAr4pQ==
+	b=sVeyl2qt9ww7xtT4br2T++wRyu/UvzYT6lg/icvCxv8WGd/eDmWkpinsIMPm2E+DE
+	 5KgxEhsQ1c9zir9iuS05gtsEqSLnQbl3XftI7hkOAZxlY+cFCF3bK1grmJkg0Hl0rb
+	 Ru7YplMOkCuaJRJ6hxlXBGxhHOrp2y+VN5krUorvIVYshoOGafCpoYKEl79HBZPZCe
+	 HoPz1dNPtTGJenxTnN7M9Ry0NBq1LJxv6bOZoTQ8Xac5sM+gqoNabBinJsm5+y+dhq
+	 M5hFENx+6d/QKaxiYUOoLM2rRDRo+FsIJIfidklJ3GjQELbfcwexaKWhruc32EyA3W
+	 Potk7FV4BNCrQ==
 Received: from localhost (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sebastianfricke)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 012E2378209A;
-	Tue, 12 Mar 2024 09:50:27 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 67B363781426;
+	Tue, 12 Mar 2024 09:50:25 +0000 (UTC)
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
-Date: Tue, 12 Mar 2024 10:50:21 +0100
-Subject: [PATCH v2 3/3] media: mediatek: vcodec: Replace false function description
+Date: Tue, 12 Mar 2024 10:50:19 +0100
+Subject: [PATCH v2 1/3] media: mediatek: vcodec: Fix multiple typos
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240309-mediatek-typos-v2-3-7eaacd8e5401@collabora.com>
+Message-Id: <20240309-mediatek-typos-v2-1-7eaacd8e5401@collabora.com>
 References: <20240309-mediatek-typos-v2-0-7eaacd8e5401@collabora.com>
 In-Reply-To: <20240309-mediatek-typos-v2-0-7eaacd8e5401@collabora.com>
 To: Tiffany Lin <tiffany.lin@mediatek.com>,
@@ -62,16 +62,16 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  kernel@collabora.com, Sebastian Fricke <sebastian.fricke@collabora.com>
 X-Mailer: b4 0.11.1
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1710237023; l=2009;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1710237023; l=23062;
  i=sebastian.fricke@collabora.com; s=linux-media; h=from:subject:message-id;
- bh=CZUwmtrMAbhgiKTCOMdUvfJTKdr28NZ87Os6j2jRv5E=;
- b=/1DOX8jA9henQNBIlm5fmKQ5f1n7Wz7Ojvk6tGNsdZb7AUz03Yaw2uu0jaCV9j3wqyjltyMiS3QP
- m5KjxAc5CkvRZaMoTnV6Y7950Idp4ZeGp0otkcYp/B1glgScjKZZ
+ bh=s+T3Z1Y8v/ZANo7uAQk0ZE+9dsgkMadCIBT0NP/4Oik=;
+ b=sLRI7WQyABttnFDhkX11VdopyOf78A8s2DppcIJoMytiT+KYSg7lvlk5H5KQuHW/e6q2cq1OVcxT
+ 7K9akMM0Ch1OgCxM0Q/6jqwUrTVyzfAs7liQ39+kKg8m/p+m5SwP
 X-Developer-Key: i=sebastian.fricke@collabora.com; a=ed25519;
  pk=pYXedPwrTtErcj7ERYeo/IpTrpe4QbJuEzSB52fslBg=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240312_025029_576878_89BAAD3A 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20240312_025028_670724_9EA9F1D7 
+X-CRM114-Status: GOOD (  22.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,45 +86,439 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The function descriptions where falsely copy pasted from another entry,
-write more fitting descriptions for the functions.
+Correct multiple different typos found in comments or function names.
 
 Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../mediatek/vcodec/decoder/vdec/vdec_h264_req_common.h       | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.c         |  2 +-
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h     |  4 ++--
+ .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c        | 20 ++++++++++----------
+ .../mediatek/vcodec/decoder/vdec/vdec_h264_if.c      | 12 ++++++------
+ .../vcodec/decoder/vdec/vdec_h264_req_common.h       |  4 ++--
+ .../mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c  | 14 +++++++-------
+ .../vcodec/decoder/vdec/vdec_h264_req_multi_if.c     |  4 ++--
+ .../vcodec/decoder/vdec/vdec_hevc_req_multi_if.c     |  2 +-
+ .../mediatek/vcodec/decoder/vdec/vdec_vp8_if.c       |  4 ++--
+ .../mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c   |  2 +-
+ .../mediatek/vcodec/decoder/vdec/vdec_vp9_if.c       |  4 ++--
+ .../mediatek/vcodec/decoder/vdec_msg_queue.h         |  4 ++--
+ .../platform/mediatek/vcodec/decoder/vdec_vpu_if.h   |  4 ++--
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c         |  2 +-
+ .../platform/mediatek/vcodec/encoder/venc_drv_if.h   |  2 +-
+ 15 files changed, 42 insertions(+), 42 deletions(-)
 
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+index ba742f0e391d..9107707de6c4 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+@@ -262,7 +262,7 @@ static int vidioc_try_fmt(struct mtk_vcodec_dec_ctx *ctx, struct v4l2_format *f,
+ 		int tmp_w, tmp_h;
+ 
+ 		/*
+-		 * Find next closer width align 64, heign align 64, size align
++		 * Find next closer width align 64, height align 64, size align
+ 		 * 64 rectangle
+ 		 * Note: This only get default value, the real HW needed value
+ 		 *       only available when ctx in MTK_STATE_HEADER state
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+index 849b89dd205c..f975db4293da 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+@@ -67,11 +67,11 @@ enum mtk_vdec_hw_arch {
+  * @pic_w: picture width
+  * @pic_h: picture height
+  * @buf_w: picture buffer width (64 aligned up from pic_w)
+- * @buf_h: picture buffer heiht (64 aligned up from pic_h)
++ * @buf_h: picture buffer height (64 aligned up from pic_h)
+  * @fb_sz: bitstream size of each plane
+  * E.g. suppose picture size is 176x144,
+  *      buffer size will be aligned to 176x160.
+- * @cap_fourcc: fourcc number(may changed when resolution change)
++ * @cap_fourcc: fourcc number(may change on a resolution change)
+  * @reserved: align struct to 64-bit in order to adjust 32-bit and 64-bit os.
+  */
+ struct vdec_pic_info {
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
+index 2b6a5adbc419..a081e12d67d6 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
+@@ -326,7 +326,7 @@ struct vdec_av1_slice_quantization {
+  * @use_lr:                     whether to use loop restoration
+  * @use_chroma_lr:              whether to use chroma loop restoration
+  * @frame_restoration_type:     specifies the type of restoration used for each plane
+- * @loop_restoration_size:      pecifies the size of loop restoration units in units
++ * @loop_restoration_size:      specifies the size of loop restoration units in units
+  *                              of samples in the current plane
+  */
+ struct vdec_av1_slice_lr {
+@@ -347,7 +347,7 @@ struct vdec_av1_slice_lr {
+  *                              and loop_filter_sharpness together determine when
+  *                              a block edge is filtered, and by how much the
+  *                              filtering can change the sample values
+- * @loop_filter_delta_enabled:  filetr level depends on the mode and reference
++ * @loop_filter_delta_enabled:  filter level depends on the mode and reference
+  *                              frame used to predict a block
+  */
+ struct vdec_av1_slice_loop_filter {
+@@ -392,7 +392,7 @@ struct vdec_av1_slice_mfmv {
+ /**
+  * struct vdec_av1_slice_tile - AV1 Tile info
+  * @tile_cols:                  specifies the number of tiles across the frame
+- * @tile_rows:                  pecifies the number of tiles down the frame
++ * @tile_rows:                  specifies the number of tiles down the frame
+  * @mi_col_starts:              an array specifying the start column
+  * @mi_row_starts:              an array specifying the start row
+  * @context_update_tile_id:     specifies which tile to use for the CDF update
+@@ -423,15 +423,15 @@ struct vdec_av1_slice_tile {
+  *                              or the tile sizes are coded
+  * @interpolation_filter:       specifies the filter selection used for performing inter prediction
+  * @allow_warped_motion:        motion_mode may be present or not
+- * @is_motion_mode_switchable : euqlt to 0 specifies that only the SIMPLE motion mode will be used
++ * @is_motion_mode_switchable : equal to 0 specifies that only the SIMPLE motion mode will be used
+  * @reference_mode :            frame reference mode selected
+  * @allow_high_precision_mv:    specifies that motion vectors are specified to
+  *                              quarter pel precision or to eighth pel precision
+- * @allow_intra_bc:             ubducates that intra block copy may be used in this frame
++ * @allow_intra_bc:             allows that intra block copy may be used in this frame
+  * @force_integer_mv:           specifies motion vectors will always be integers or
+  *                              can contain fractional bits
+  * @allow_screen_content_tools: intra blocks may use palette encoding
+- * @error_resilient_mode:       error resislent mode is enable/disable
++ * @error_resilient_mode:       error resilient mode is enable/disable
+  * @frame_type:                 specifies the AV1 frame type
+  * @primary_ref_frame:          specifies which reference frame contains the CDF values
+  *                              and other state that should be loaded at the start of the frame
+@@ -440,8 +440,8 @@ struct vdec_av1_slice_tile {
+  * @disable_cdf_update:         specified whether the CDF update in the symbol
+  *                              decoding process should be disables
+  * @skip_mode:                  av1 skip mode parameters
+- * @seg:                        av1 segmentaon parameters
+- * @delta_q_lf:                 av1 delta loop fileter
++ * @seg:                        av1 segmentation parameters
++ * @delta_q_lf:                 av1 delta loop filter
+  * @quant:                      av1 Quantization params
+  * @lr:                         av1 Loop Restauration parameters
+  * @superres_denom:             the denominator for the upscaling ratio
+@@ -450,8 +450,8 @@ struct vdec_av1_slice_tile {
+  * @mfmv:                       av1 mfmv parameters
+  * @tile:                       av1 Tile info
+  * @frame_is_intra:             intra frame
+- * @loss_less_array:            loss less array
+- * @coded_loss_less:            coded lsss less
++ * @loss_less_array:            lossless array
++ * @coded_loss_less:            coded lossless
+  * @mi_rows:                    size of mi unit in rows
+  * @mi_cols:                    size of mi unit in cols
+  */
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_if.c
+index bf7dffe60d07..795cb19b075d 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_if.c
+@@ -94,7 +94,7 @@ struct vdec_h264_dec_info {
+  *                        AP-W/R : AP is writer/reader on this item
+  *                        VPU-W/R: VPU is write/reader on this item
+  * @hdr_buf      : Header parsing buffer (AP-W, VPU-R)
+- * @pred_buf_dma : HW working predication buffer dma address (AP-W, VPU-R)
++ * @pred_buf_dma : HW working prediction buffer dma address (AP-W, VPU-R)
+  * @mv_buf_dma   : HW working motion vector buffer dma address (AP-W, VPU-R)
+  * @list_free    : free frame buffer ring list (AP-W/R, VPU-W)
+  * @list_disp    : display frame buffer ring list (AP-R, VPU-W)
+@@ -117,7 +117,7 @@ struct vdec_h264_vsi {
+  * struct vdec_h264_inst - h264 decoder instance
+  * @num_nalu : how many nalus be decoded
+  * @ctx      : point to mtk_vcodec_dec_ctx
+- * @pred_buf : HW working predication buffer
++ * @pred_buf : HW working prediction buffer
+  * @mv_buf   : HW working motion vector buffer
+  * @vpu      : VPU instance
+  * @vsi      : VPU shared information
+@@ -136,7 +136,7 @@ static unsigned int get_mv_buf_size(unsigned int width, unsigned int height)
+ 	return HW_MB_STORE_SZ * (width/MB_UNIT_LEN) * (height/MB_UNIT_LEN);
+ }
+ 
+-static int allocate_predication_buf(struct vdec_h264_inst *inst)
++static int allocate_prediction_buf(struct vdec_h264_inst *inst)
+ {
+ 	int err = 0;
+ 
+@@ -151,7 +151,7 @@ static int allocate_predication_buf(struct vdec_h264_inst *inst)
+ 	return 0;
+ }
+ 
+-static void free_predication_buf(struct vdec_h264_inst *inst)
++static void free_prediction_buf(struct vdec_h264_inst *inst)
+ {
+ 	struct mtk_vcodec_mem *mem = NULL;
+ 
+@@ -286,7 +286,7 @@ static int vdec_h264_init(struct mtk_vcodec_dec_ctx *ctx)
+ 	}
+ 
+ 	inst->vsi = (struct vdec_h264_vsi *)inst->vpu.vsi;
+-	err = allocate_predication_buf(inst);
++	err = allocate_prediction_buf(inst);
+ 	if (err)
+ 		goto error_deinit;
+ 
+@@ -308,7 +308,7 @@ static void vdec_h264_deinit(void *h_vdec)
+ 	struct vdec_h264_inst *inst = (struct vdec_h264_inst *)h_vdec;
+ 
+ 	vpu_dec_deinit(&inst->vpu);
+-	free_predication_buf(inst);
++	free_prediction_buf(inst);
+ 	free_mv_buf(inst);
+ 
+ 	kfree(inst);
 diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_common.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_common.h
-index 6f624c266246..31ffa13160a3 100644
+index ac82be336055..6f624c266246 100644
 --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_common.h
 +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_common.h
-@@ -185,7 +185,7 @@ void mtk_vdec_h264_get_ref_list(u8 *ref_list,
- void *mtk_vdec_h264_get_ctrl_ptr(struct mtk_vcodec_dec_ctx *ctx, int id);
+@@ -175,7 +175,7 @@ void mtk_vdec_h264_get_ref_list(u8 *ref_list,
+ 				int num_valid);
  
  /**
-- * mtk_vdec_h264_fill_dpb_info - get each CID contrl address.
-+ * mtk_vdec_h264_fill_dpb_info - Fill the decoded picture buffer info
+- * mtk_vdec_h264_get_ctrl_ptr - get each CID contrl address.
++ * mtk_vdec_h264_get_ctrl_ptr - get each CID control address.
   *
-  * @ctx:		v4l2 ctx
-  * @decode_params:	slice decode params
-@@ -225,10 +225,13 @@ void mtk_vdec_h264_copy_slice_hd_params(struct mtk_h264_slice_hd_param *dst_para
- 					const struct v4l2_ctrl_h264_decode_params *dec_param);
+  * @ctx:	v4l2 ctx
+  * @id:	CID control ID
+@@ -246,7 +246,7 @@ mtk_vdec_h264_copy_decode_params(struct slice_api_h264_decode_param *dst_params,
+ 				 const struct v4l2_h264_dpb_entry dpb[V4L2_H264_NUM_DPB_ENTRIES]);
  
  /**
-- * mtk_vdec_h264_copy_scaling_matrix - get each CID contrl address.
-+ * mtk_vdec_h264_copy_scaling_matrix - Copy scaling matrix from a control to the driver
+- * mtk_vdec_h264_update_dpb - updata dpb list.
++ * mtk_vdec_h264_update_dpb - update dpb list.
   *
-- * @dst_matrix:	scaling list params for hw decoder
-- * @src_matrix:	scaling list params from user driver
-+ * @dst_matrix:	scaling list params for the HW decoder
-+ * @src_matrix:	scaling list params from a V4L2 control
-+ *
-+ * This function is used to copy the scaling matrix from a
-+ * v4l2 control into the slice parameters for a decode.
+  * @dec_param:	v4l2 control decode params
+  * @dpb:	dpb entry informaton
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c
+index 5600f1df653d..37c41b673876 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c
+@@ -27,7 +27,7 @@ struct mtk_h264_dec_slice_param {
+ /**
+  * struct vdec_h264_dec_info - decode information
+  * @dpb_sz		: decoding picture buffer size
+- * @resolution_changed  : resoltion change happen
++ * @resolution_changed  : resolution change happend
+  * @realloc_mv_buf	: flag to notify driver to re-allocate mv buffer
+  * @cap_num_planes	: number planes of capture buffer
+  * @bs_dma		: Input bit-stream buffer dma address
+@@ -54,7 +54,7 @@ struct vdec_h264_dec_info {
+  *                        by VPU.
+  *                        AP-W/R : AP is writer/reader on this item
+  *                        VPU-W/R: VPU is write/reader on this item
+- * @pred_buf_dma : HW working predication buffer dma address (AP-W, VPU-R)
++ * @pred_buf_dma : HW working prediction buffer dma address (AP-W, VPU-R)
+  * @mv_buf_dma   : HW working motion vector buffer dma address (AP-W, VPU-R)
+  * @dec          : decode information (AP-R, VPU-W)
+  * @pic          : picture information (AP-R, VPU-W)
+@@ -74,7 +74,7 @@ struct vdec_h264_vsi {
+  * struct vdec_h264_slice_inst - h264 decoder instance
+  * @num_nalu : how many nalus be decoded
+  * @ctx      : point to mtk_vcodec_dec_ctx
+- * @pred_buf : HW working predication buffer
++ * @pred_buf : HW working prediction buffer
+  * @mv_buf   : HW working motion vector buffer
+  * @vpu      : VPU instance
+  * @vsi_ctx  : Local VSI data for this decoding context
+@@ -154,7 +154,7 @@ static int get_vdec_decode_parameters(struct vdec_h264_slice_inst *inst)
+ 	return 0;
+ }
+ 
+-static int allocate_predication_buf(struct vdec_h264_slice_inst *inst)
++static int allocate_prediction_buf(struct vdec_h264_slice_inst *inst)
+ {
+ 	int err;
+ 
+@@ -169,7 +169,7 @@ static int allocate_predication_buf(struct vdec_h264_slice_inst *inst)
+ 	return 0;
+ }
+ 
+-static void free_predication_buf(struct vdec_h264_slice_inst *inst)
++static void free_prediction_buf(struct vdec_h264_slice_inst *inst)
+ {
+ 	struct mtk_vcodec_mem *mem = &inst->pred_buf;
+ 
+@@ -292,7 +292,7 @@ static int vdec_h264_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+ 	inst->vsi_ctx.dec.resolution_changed = true;
+ 	inst->vsi_ctx.dec.realloc_mv_buf = true;
+ 
+-	err = allocate_predication_buf(inst);
++	err = allocate_prediction_buf(inst);
+ 	if (err)
+ 		goto error_deinit;
+ 
+@@ -320,7 +320,7 @@ static void vdec_h264_slice_deinit(void *h_vdec)
+ 	struct vdec_h264_slice_inst *inst = h_vdec;
+ 
+ 	vpu_dec_deinit(&inst->vpu);
+-	free_predication_buf(inst);
++	free_prediction_buf(inst);
+ 	free_mv_buf(inst);
+ 
+ 	kfree(inst);
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
+index 0e741e0dc8ba..d5224c9584b6 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
+@@ -51,7 +51,7 @@ struct vdec_h264_slice_lat_dec_param {
+  * struct vdec_h264_slice_info - decode information
+  *
+  * @nal_info:		nal info of current picture
+- * @timeout:		Decode timeout: 1 timeout, 0 no timeount
++ * @timeout:		Decode timeout: 1 timeout, 0 no timeout
+  * @bs_buf_size:	bitstream size
+  * @bs_buf_addr:	bitstream buffer dma address
+  * @y_fb_dma:		Y frame buffer dma address
+@@ -133,7 +133,7 @@ struct vdec_h264_slice_share_info {
+  *
+  * @slice_dec_num:	how many picture be decoded
+  * @ctx:		point to mtk_vcodec_dec_ctx
+- * @pred_buf:		HW working predication buffer
++ * @pred_buf:		HW working prediction buffer
+  * @mv_buf:		HW working motion vector buffer
+  * @vpu:		VPU instance
+  * @vsi:		vsi used for lat
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
+index 06ed47df693b..a44db6139ff2 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
+@@ -254,7 +254,7 @@ struct vdec_hevc_slice_lat_dec_param {
+  * struct vdec_hevc_slice_info - decode information
+  *
+  * @wdma_end_addr_offset: wdma end address offset
+- * @timeout:              Decode timeout: 1 timeout, 0 no timeount
++ * @timeout:              Decode timeout: 1 timeout, 0 no timeout
+  * @vdec_fb_va:           VDEC frame buffer struct virtual address
+  * @crc:                  Used to check whether hardware's status is right
   */
- void mtk_vdec_h264_copy_scaling_matrix(struct slice_api_h264_scaling_matrix *dst_matrix,
- 				       const struct v4l2_ctrl_h264_scaling_matrix *src_matrix);
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_if.c
+index 19407f9bc773..9649f4ec1f2a 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_if.c
+@@ -56,7 +56,7 @@
+  * @cur_c_fb_dma      : current plane C frame buffer dma address
+  * @bs_dma	      : bitstream dma address
+  * @bs_sz	      : bitstream size
+- * @resolution_changed: resolution change flag 1 - changed,  0 - not change
++ * @resolution_changed: resolution change flag 1 - changed,  0 - not changed
+  * @show_frame	      : display this frame or not
+  * @wait_key_frame    : wait key frame coming
+  */
+@@ -109,7 +109,7 @@ struct vdec_vp8_hw_reg_base {
+ /**
+  * struct vdec_vp8_vpu_inst - VPU instance for VP8 decode
+  * @wq_hd	: Wait queue to wait VPU message ack
+- * @signaled	: 1 - Host has received ack message from VPU, 0 - not receive
++ * @signaled	: 1 - Host has received ack message from VPU, 0 - not received
+  * @failure	: VPU execution result status 0 - success, others - fail
+  * @inst_addr	: VPU decoder instance address
+  */
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
+index f677e499fefa..e27e728f392e 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
+@@ -35,7 +35,7 @@
+  * @cur_c_fb_dma:	current plane C frame buffer dma address
+  * @bs_dma:		bitstream dma address
+  * @bs_sz:		bitstream size
+- * @resolution_changed:resolution change flag 1 - changed,  0 - not change
++ * @resolution_changed:resolution change flag 1 - changed,  0 - not changed
+  * @frame_header_type:	current frame header type
+  * @crc:		used to check whether hardware's status is right
+  * @reserved:		reserved, currently unused
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
+index 55355fa70090..3cd542242b1d 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
+@@ -41,7 +41,7 @@ struct vp9_dram_buf {
+ 
+ /**
+  * struct vp9_fb_info - contains frame buffer info
+- * @fb : frmae buffer
++ * @fb : frame buffer
+  * @reserved : reserved field used by vpu
+  */
+ struct vp9_fb_info {
+@@ -89,7 +89,7 @@ struct vp9_sf_ref_fb {
+  *	AP-W/R : AP is writer/reader on this item
+  *	VPU-W/R: VPU is write/reader on this item
+  * @sf_bs_buf : super frame backup buffer (AP-W, VPU-R)
+- * @sf_ref_fb : record supoer frame reference buffer information
++ * @sf_ref_fb : record super frame reference buffer information
+  *	(AP-R/W, VPU-R/W)
+  * @sf_next_ref_fb_idx : next available super frame (AP-W, VPU-R)
+  * @sf_frm_cnt : super frame count, filled by vpu (AP-R, VPU-W)
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.h
+index 1d9beb9e4a14..b0f576867f4b 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.h
+@@ -158,14 +158,14 @@ int vdec_msg_queue_qbuf(struct vdec_msg_queue_ctx *ctx, struct vdec_lat_buf *buf
+ struct vdec_lat_buf *vdec_msg_queue_dqbuf(struct vdec_msg_queue_ctx *ctx);
+ 
+ /**
+- * vdec_msg_queue_update_ube_rptr - used to updata the ube read point.
++ * vdec_msg_queue_update_ube_rptr - used to update the ube read point.
+  * @msg_queue: used to store the lat buffer information
+  * @ube_rptr: current ube read point
+  */
+ void vdec_msg_queue_update_ube_rptr(struct vdec_msg_queue *msg_queue, uint64_t ube_rptr);
+ 
+ /**
+- * vdec_msg_queue_update_ube_wptr - used to updata the ube write point.
++ * vdec_msg_queue_update_ube_wptr - used to update the ube write point.
+  * @msg_queue: used to store the lat buffer information
+  * @ube_wptr: current ube write point
+  */
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
+index aa7d08afc2f4..57ed9b1f5eaa 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
+@@ -81,7 +81,7 @@ int vpu_dec_deinit(struct vdec_vpu_inst *vpu);
+ 
+ /**
+  * vpu_dec_reset - reset decoder, use for flush decoder when end of stream or
+- *                 seek. Remainig non displayed frame will be pushed to display.
++ *                 seek. Remaining non displayed frame will be pushed to display.
+  *
+  * @vpu: instance for vdec_vpu_inst
+  */
+@@ -98,7 +98,7 @@ int vpu_dec_core(struct vdec_vpu_inst *vpu);
+ /**
+  * vpu_dec_core_end - core end decoding, basically the function will be invoked once
+  *               when core HW decoding done and receive interrupt successfully. The
+- *               decoder in VPU will updata hardware information and deinit hardware
++ *               decoder in VPU will update hardware information and deinit hardware
+  *               and check if there is a new decoded frame available to display.
+  *
+  * @vpu : instance for vdec_vpu_inst
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+index 181884e798fd..7eaf0e24c9fc 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+@@ -311,7 +311,7 @@ static int vidioc_try_fmt_out(struct mtk_vcodec_enc_ctx *ctx, struct v4l2_format
+ 	pix_fmt_mp->height = clamp(pix_fmt_mp->height, MTK_VENC_MIN_H, max_height);
+ 	pix_fmt_mp->width = clamp(pix_fmt_mp->width, MTK_VENC_MIN_W, max_width);
+ 
+-	/* find next closer width align 16, heign align 32, size align
++	/* find next closer width align 16, height align 32, size align
+ 	 * 64 rectangle
+ 	 */
+ 	tmp_w = pix_fmt_mp->width;
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_drv_if.h b/drivers/media/platform/mediatek/vcodec/encoder/venc_drv_if.h
+index d00fb68b8235..889440a436b6 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/venc_drv_if.h
++++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_drv_if.h
+@@ -156,7 +156,7 @@ int venc_if_set_param(struct mtk_vcodec_enc_ctx *ctx,
+  * @ctx: device context
+  * @opt: encode frame option
+  * @frm_buf: input frame buffer information
+- * @bs_buf: output bitstream buffer infomraiton
++ * @bs_buf: output bitstream buffer information
+  * @result: encode result
+  * Return: 0 if encoding frame successfully, otherwise it is failed.
+  */
 
 -- 
 2.25.1
