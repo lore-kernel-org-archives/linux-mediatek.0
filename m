@@ -4,81 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36E2FC54791
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Mar 2024 13:54:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABB42C54E67
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Mar 2024 14:00:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/heQt+Db0ehDtq1JCZPcwy70snmGl2Z1H+WOU5UmOPc=; b=DPZqY1rk6fYIsX0alU5qW0Ya7d
-	pVisVEN2BMKOXhMgfpzjl7Y7dpqpv0sm4LLRXrALjMbEfeAocZnvzW0e+T29nc3P/aiIRNkCPHH0T
-	r0ciXrNbIekQ7CUdy4OztQWRupsy2f2C/vI2HosI1i/S2w7pZ7NX5R+g/DlGoUUoVR9KKGPyPSdke
-	0Ff/DJnBF27zHphrVwkJhQQgOd6z+x9R47tYXoHSdYqpUd8AhwCUk72rAVhnxt4Fi8jmF5sl5t3jh
-	7ZArR1j+9WJbws0HJSmYS/m0Vh7sTuewlIH+LbLnxy/HRlCba0fDOStNcIyRNKAij+XJKownjejll
-	a0grIK2g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NxRC8Fq9QERcJb2UzuZo004M89nErmy23IOOPk9M5fQ=; b=EczZ6MHytorhzU1mvKmVmPJf2o
+	eNV1adolBGNjIIbhBNFzTpFKr+yrcVmxfjVkjTnCjAkcSRul+bwmuGnutSYOppEOs5S7niW+dHx33
+	IRuiuCtp5hjz9nIAucbbuGJyk1kHSI8ohBB4kVAJAKy6xo1LOnDmpbHctLkc+zaQwKtPM8wKPCPrI
+	Y5Wz/EN5jv/O3o+vD+OUDjwLi/zRtZmOOTjzxFwAwvxrd/HWwImPtwAkhGaiXSobRbCzQkmWepRjF
+	2Iag3wXr/3XIffpVYTygo27kJ7jseTUYIuNNMswpPkRdpOnE5WVMAHf/bSKSW2L87fAoM+RzWl+yF
+	Rek7j5yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkP3W-0000000AIst-2soZ;
-	Wed, 13 Mar 2024 13:54:06 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1rkP9y-0000000AK9z-15AM;
+	Wed, 13 Mar 2024 14:00:46 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkP3T-0000000AIqk-0hw2
-	for linux-mediatek@lists.infradead.org;
-	Wed, 13 Mar 2024 13:54:04 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-1dc5d0162bcso40916485ad.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 13 Mar 2024 06:53:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1710338039; x=1710942839; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=/heQt+Db0ehDtq1JCZPcwy70snmGl2Z1H+WOU5UmOPc=;
-        b=LB/+rdn4y3mJMdPx7ttENYL8H5l4zHp2xDmBCUDTvKp2z2UexPfdBHNO3RvkDefMV2
-         xulKtU1MBAiJmOTHLmnfbd426Z7hE3bIkZ66zDF6vHKzsAaQtBgWFlb6ORbl7uaIK5Be
-         ByF9DQDP2l6jxCUDaO6iZOMKx6JceaU2JzjNU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710338039; x=1710942839;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=/heQt+Db0ehDtq1JCZPcwy70snmGl2Z1H+WOU5UmOPc=;
-        b=f5uI3GdA2ChxDtC0XDr7LXGj1wPu7bFWh2bQs3vulmG0oxG04MTDZNyhb+lpsSiMFN
-         3LMny25t+f1uYo8a6tzOuvhsSmwZKGhELkbNttmNcooMq+d1rzfigwSK9FsL38oRgUST
-         hdYKcn0esRHJxSWFDXsPldcfBNJhGZ8QdN+wxUHdMq2xRBpHhiiC8MgvSsLIkY81Vm3v
-         OPWaR6zq626zAfy2zJ/vbmufa1d4uBgVqSG6PU7/hsSJtAPH1P7kZ/adbkopWLbbGhP9
-         7XpTpa80fCcNxiOUbGeOnTg9bp66E6qNAOdysVqkU92wTHekFLRxl4SpAd1MY8Xhscol
-         nhaw==
-X-Forwarded-Encrypted: i=1; AJvYcCUwjVq42hS2/XcoHdAM6R+1TomS2NS0YLAYAj9I9yGOsw60ZSpHXmGCYnpFzEMAikaT3qoNH3sNjSL06TDpHFLPJHDhnoQ+aTUVF0V3X05w6gIj
-X-Gm-Message-State: AOJu0YzJWzwUCCq+RgvX8JICM421csWQIDf2XMMYF6bkxZAqokECKiXY
-	o/MCA4VsslTqvV0qVd7/qcVxall0vnZB011tk4XHoF25ehp00hbqymz8cbOhfg==
-X-Google-Smtp-Source: AGHT+IE3PgaxgQ7zHkHAgGrWi0X7VbrllC27gi8LCOikz9dtE/g945xwEfsoOmxKeOZnqAPMvOWqew==
-X-Received: by 2002:a17:902:f544:b0:1dd:aa58:a648 with SMTP id h4-20020a170902f54400b001ddaa58a648mr8030088plf.43.1710338039452;
-        Wed, 13 Mar 2024 06:53:59 -0700 (PDT)
-Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:3708:eea3:d1b4:2032])
-        by smtp.gmail.com with ESMTPSA id d16-20020a170902ced000b001d8aa88f59esm8632504plg.110.2024.03.13.06.53.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Mar 2024 06:53:59 -0700 (PDT)
-From: Pin-yen Lin <treapking@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-kernel@vger.kernel.org,
+	id 1rkP9t-0000000AK8x-3tMG;
+	Wed, 13 Mar 2024 14:00:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1710338440;
+	bh=sbE/oJOP+xX5Lc9uR9YZEG+4mUwEDJhSytN76LNWq08=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=j33gQHjbQ2kOimxuku7kTz/iiCCqlQEC3yHUb+UJe92MzppLMEq+gkRySJvkDSof0
+	 lVKWvU5jtadwhR3aEABQ2G5pswNXmV6HelhaehNPoM2S9qKqllE0YZMSSp25wowUrB
+	 1NPJAq96Pp23tO21I4Wj1Hr2r31g0N4xOZIyqHbADxRacfPfzMAki3SR5o7a1MZKd6
+	 99mrqoOEjFWU7S8yQVIMBUu3ISDCMNFWz0OgmPxlAlRVVWAWDR5lP4zJnbN2Vato6r
+	 mVpdU1xBQHCbtaPwUqgJ87I6cm9Auz9AETBf/o1Elr/zLImxXL/t/S3XpIG2FeRwXM
+	 YYlP3pg+IsMng==
+Received: from localhost (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sebastianfricke)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E925937820D4;
+	Wed, 13 Mar 2024 14:00:38 +0000 (UTC)
+Date: Wed, 13 Mar 2024 15:00:28 +0100
+From: Sebastian Fricke <sebastian.fricke@collabora.com>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>, kernel@collabora.com,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
-	devicetree@vger.kernel.org,
-	Pin-yen Lin <treapking@chromium.org>
-Subject: [PATCH] arm64: dts: mediatek: mt8192-asurada: Update min voltage constraint for Vgpu
-Date: Wed, 13 Mar 2024 21:51:36 +0800
-Message-ID: <20240313135157.98989-1-treapking@chromium.org>
-X-Mailer: git-send-email 2.44.0.278.ge034bb2e1d-goog
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] media: mediatek: vcodec: Fix oops when HEVC init fails
+Message-ID: <20240313140028.zk47awvadwfrutu6@basti-XPS-13-9310>
+References: <20240226211954.400891-1-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Disposition: inline
+In-Reply-To: <20240226211954.400891-1-nicolas.dufresne@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240313_065403_222700_68331800 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20240313_070042_293539_2A437C94 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,34 +80,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Although the minimum voltage listed on the GPU OPP table is 606250 uV,
-the actual requested voltage could be even lower when the MTK Smart
-Voltage Scaling (SVS) driver is enabled.
+Hey Nicolas,
 
-Set the minimum voltage to 300000 uV because it's supported by the
-regulator.
+On 26.02.2024 16:19, Nicolas Dufresne wrote:
+>In stateless HEVC case, the instance pointer was saved in the
+>context regardless if the initialization worked. As the pointer
+>is freed in failure, this resulted in use after free in the
+>deinit function.
 
-Fixes: 3183cb62b033 ("arm64: dts: mediatek: asurada: Add SPMI regulators")
-Signed-off-by: Pin-yen Lin <treapking@chromium.org>
----
+just to fix some grammatic erros in the commit log, my suggestion:
 
- arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+The stateless HEVC decoder saves the instance pointer in the context
+regardless if the initialization worked or not. This caused a use after
+free, when the pointer is freed in case of a failure in the deinit
+function.
+Only store the instance pointer when the initialization was successful,
+to solve this issue.
+```
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index 43d80334610a..5cc5100a7c40 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -1448,7 +1448,7 @@ regulators {
- 			mt6315_7_vbuck1: vbuck1 {
- 				regulator-compatible = "vbuck1";
- 				regulator-name = "Vgpu";
--				regulator-min-microvolt = <606250>;
-+				regulator-min-microvolt = <300000>;
- 				regulator-max-microvolt = <800000>;
- 				regulator-enable-ramp-delay = <256>;
- 				regulator-allowed-modes = <0 1 2>;
--- 
-2.44.0.278.ge034bb2e1d-goog
+Greetings,
+Sebastian
 
+>
+> Hardware name: Acer Tomato (rev3 - 4) board (DT)
+> pstate: 80400009 (Nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> pc : vcodec_vpu_send_msg+0x4c/0x190 [mtk_vcodec_dec]
+> lr : vcodec_send_ap_ipi+0x78/0x170 [mtk_vcodec_dec]
+> sp : ffff80008750bc20
+> x29: ffff80008750bc20 x28: ffff1299f6d70000 x27: 0000000000000000
+> x26: 0000000000000000 x25: 0000000000000000 x24: 0000000000000000
+> x23: ffff80008750bc98 x22: 000000000000a003 x21: ffffd45c4cfae000
+> x20: 0000000000000010 x19: ffff1299fd668310 x18: 000000000000001a
+> x17: 000000040044ffff x16: ffffd45cb15dc648 x15: 0000000000000000
+> x14: ffff1299c08da1c0 x13: ffffd45cb1f87a10 x12: ffffd45cb2f5fe80
+> x11: 0000000000000001 x10: 0000000000001b30 x9 : ffffd45c4d12b488
+> x8 : 1fffe25339380d81 x7 : 0000000000000001 x6 : ffff1299c9c06c00
+> x5 : 0000000000000132 x4 : 0000000000000000 x3 : 0000000000000000
+> x2 : 0000000000000010 x1 : ffff80008750bc98 x0 : 0000000000000000
+> Call trace:
+>  vcodec_vpu_send_msg+0x4c/0x190 [mtk_vcodec_dec]
+>  vcodec_send_ap_ipi+0x78/0x170 [mtk_vcodec_dec]
+>  vpu_dec_deinit+0x1c/0x30 [mtk_vcodec_dec]
+>  vdec_hevc_slice_deinit+0x30/0x98 [mtk_vcodec_dec]
+>  vdec_if_deinit+0x38/0x68 [mtk_vcodec_dec]
+>  mtk_vcodec_dec_release+0x20/0x40 [mtk_vcodec_dec]
+>  fops_vcodec_release+0x64/0x118 [mtk_vcodec_dec]
+>  v4l2_release+0x7c/0x100
+>  __fput+0x80/0x2d8
+>  __fput_sync+0x58/0x70
+>  __arm64_sys_close+0x40/0x90
+>  invoke_syscall+0x50/0x128
+>  el0_svc_common.constprop.0+0x48/0xf0
+>  do_el0_svc+0x24/0x38
+>  el0_svc+0x38/0xd8
+>  el0t_64_sync_handler+0xc0/0xc8
+>  el0t_64_sync+0x1a8/0x1b0
+> Code: d503201f f9401660 b900127f b900227f (f9400400)
+>
+>Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+>Fixes: 2674486aac7d ("media: mediatek: vcodec: support stateless hevc decoder")
+>---
+> .../mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c       | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
+>
+>diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
+>index 06ed47df693bf..21836dd6ef85a 100644
+>--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
+>+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
+>@@ -869,7 +869,6 @@ static int vdec_hevc_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+> 	inst->vpu.codec_type = ctx->current_codec;
+> 	inst->vpu.capture_type = ctx->capture_fourcc;
+>
+>-	ctx->drv_handle = inst;
+> 	err = vpu_dec_init(&inst->vpu);
+> 	if (err) {
+> 		mtk_vdec_err(ctx, "vdec_hevc init err=%d", err);
+>@@ -898,6 +897,7 @@ static int vdec_hevc_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+> 	mtk_vdec_debug(ctx, "lat hevc instance >> %p, codec_type = 0x%x",
+> 		       inst, inst->vpu.codec_type);
+>
+>+	ctx->drv_handle = inst;
+> 	return 0;
+> error_free_inst:
+> 	kfree(inst);
+>-- 
+>2.43.2
+>
+>_______________________________________________
+>Kernel mailing list -- kernel@mailman.collabora.com
+>To unsubscribe send an email to kernel-leave@mailman.collabora.com
+>This list is managed by https://mailman.collabora.com
 
