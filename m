@@ -4,109 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C480EC54791
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Mar 2024 19:08:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BCD1C54E66
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Mar 2024 20:12:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FvpKoGHqAhnp1lNgk+Nmgp2O2RO7++nWDElpli4GHlI=; b=cdjlbUlpmlhtkVMSHzP/zvL/gy
-	Gil8XZ9qnn1tTW9Osj+XyqW+s4QBmLidlhEya7jCyVWm5wiFeDnryeJltxeOnPTLx0PjxFb/ZWt14
-	js6O4vcMl2LS7VcEJr39FD0KlOwDXaunLF+p9g9JN8A+r5fQ+NNdWezIyvhN7BkdKopbf/HqK168t
-	hsSziEGV2XxotyMqRsNLb6p8c8EpfOqnZvKpwNB50rxPkidoe+uuOkSMlDBot3/pqVYyrHsJ01D5z
-	v8O7XHNUv+BcRw0GSs2L9vQf+VtUHZyxJcK+kwntR9q2z5Wjd9s6EjxZI0DQyJsIJ9aeTuoVBqkwb
-	kvS5Pq8A==;
+	bh=0L9q2h8CYQgav6n1YqnS/t2FEJImcD0uzrXWt33zLYY=; b=fICiuGJhxCLzd0Uotf2pmCsgew
+	E9vZyIM0eRFd+H2IIxeGoUqya+LLq/veD83V+Pty+Kix9l3ydAjm2m7ihcFitXCGFoTReNrij9kpz
+	5ddfUPcn8ivY3jjI2hVlSZSsmftaJfb/DgYc5ysel69mG79kEw7x2iO7NLCmQT4FvNI34cCbhCAB8
+	q6r1RTeHiLs7VX5JyNtxg9oek6bKSnauG3RMcx5ubQ13RH29JA7kcuFk0ezF+UyDGsBPK5M544fg7
+	TgEXjEyM10cUx4DDmT+4JhHYC3kR8GjpMBG2vbnGqD8LtLQRZTuFJNlWA3WbZLX63D4qBxoWvkaoK
+	CGRF9nNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkTxT-0000000BVos-1kdA;
-	Wed, 13 Mar 2024 19:08:11 +0000
-Received: from ip-89-177-23-149.bb.vodafone.cz ([89.177.23.149] helo=ixit.cz)
+	id 1rkUxw-0000000Bmji-1aWm;
+	Wed, 13 Mar 2024 20:12:44 +0000
+Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkTxP-0000000BVlz-2BLb;
-	Wed, 13 Mar 2024 19:08:09 +0000
-Received: from [10.0.0.200] (unknown [10.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by ixit.cz (Postfix) with ESMTPSA id 465CC16566D;
-	Wed, 13 Mar 2024 20:07:57 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ixit.cz; s=dkim;
-	t=1710356877;
+	id 1rkUxr-0000000Bmhh-3nSb;
+	Wed, 13 Mar 2024 20:12:41 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 98BFCFF803;
+	Wed, 13 Mar 2024 20:12:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1710360756;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=FvpKoGHqAhnp1lNgk+Nmgp2O2RO7++nWDElpli4GHlI=;
-	b=fINs6xXFlz70Qb6Z/PuGVfIUerJrYLSxTf2vkc3qzYQZvF2zVPbAMWbtas5jjMWvB98P53
-	TWg01VwgtQWKDDVfFUJoFHETkHO1tGIftGhxBJle7j2oBtDqiIKkHPielvkObAfHczufPw
-	VvdyMoebiUO4nkSyFzulYvrd0E4Fhkg=
-Message-ID: <4f1ec438-9447-4a5c-b1ee-e9c6938516d1@ixit.cz>
-Date: Wed, 13 Mar 2024 20:07:57 +0100
+	 in-reply-to:in-reply-to:references:references;
+	bh=0L9q2h8CYQgav6n1YqnS/t2FEJImcD0uzrXWt33zLYY=;
+	b=WzTIhz4NH+AgR1EkATjBon5oOy+42v7M5LraE2D1hM726qOvt60LMbr0NHMMvYx0CSQVe3
+	KmyyAvSCcIJ932cUajDFov4Xt+SOUhWdnKSLOwwKn6Rc7O5YseMAagkzf2h9Unhg5Khj6l
+	noeCKKIpuYMfns0efz6lwMK6y8T8eBGdcgRnosXPUwzdIOjEQ4plA7SbnYxJ8VMSzowcbx
+	JTcs+N0/dsVqR6Gb5TsTLFHpPD+921X90J7JTwokRi4Ad3OyabHYdvZNP977VUrDp2TjlH
+	IrVU8DBgb/eq1ku0CKjYfa1Fwh6X4HvChT8lUU/Qt1vmAyiE/OTM+PjB+faw1g==
+Message-ID: <48fadb58-4b81-4271-919c-102943354c01@arinc9.com>
+Date: Wed, 13 Mar 2024 23:12:19 +0300
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: Add missing chassis-type to
- MT8192 Chromebooks
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org
-Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, devicetree@vger.kernel.org,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net] net: dsa: mt7530: prevent possible incorrect XTAL
+ frequency selection
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Landen Chao <Landen.Chao@mediatek.com>,
+ Bartel Eerdekens <bartel.eerdekens@constell8.be>, mithat.guner@xeront.com,
+ erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com
-References: <20240313141538.1438167-1-angelogioacchino.delregno@collabora.com>
- <20240313141538.1438167-3-angelogioacchino.delregno@collabora.com>
-From: David Heidelberg <david@ixit.cz>
-Autocrypt: addr=david@ixit.cz; keydata=
- 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
-In-Reply-To: <20240313141538.1438167-3-angelogioacchino.delregno@collabora.com>
+ linux-mediatek@lists.infradead.org,
+ Justin Swartz <justin.swartz@risingedge.co.za>
+References: <20240313085546.710679b0@kernel.org>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20240313085546.710679b0@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-GND-Spam-Score: 400
+X-GND-Status: SPAM
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240313_120807_881498_0D7E9C1F 
-X-CRM114-Status: GOOD (  12.68  )
+X-CRM114-CacheID: sfid-20240313_131240_148955_49C1D1C0 
+X-CRM114-Status: UNSURE (   5.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,72 +88,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Optional, but very useful for some user-space decisions. Thank you.
+On 13.03.2024 18:55, Jakub Kicinski wrote:
+> On Wed, 13 Mar 2024 14:25:07 +0300 Arınç ÜNAL via B4 Relay wrote:
+>> Reported-by: Justin Swartz <justin.swartz@risingedge.co.za>
+> 
+> That's way insufficient for the amount of diligence and work Justin did.
+> Co-developed-by, at least, please.
 
-Reviewed-by: David Heidelberg <david@ixit.cz>
+Fine by me. Do I need to resubmit or can you add it while applying?
 
-On 13/03/2024 15:15, AngeloGioacchino Del Regno wrote:
-> None of the MT8192 Chromebooks had their chassis-type specified: add
-> the right definition for each.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts      | 1 +
->   arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts | 1 +
->   arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts    | 1 +
->   arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts    | 1 +
->   4 files changed, 4 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
-> index fd2cb8765a15..ac2673e56fb8 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
-> @@ -7,6 +7,7 @@
->   
->   / {
->   	model = "Google Hayato rev1";
-> +	chassis-type = "convertible";
->   	compatible = "google,hayato-rev1", "google,hayato", "mediatek,mt8192";
->   };
->   
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts
-> index 3127ee5f6172..cd86ad9ba28a 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts
-> @@ -7,6 +7,7 @@
->   
->   / {
->   	model = "Google Hayato rev5";
-> +	chassis-type = "convertible";
->   	compatible = "google,hayato-rev5-sku2", "google,hayato-sku2",
->   		     "google,hayato", "mediatek,mt8192";
->   };
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
-> index bc88866ab2f5..29aa87e93888 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
-> @@ -8,6 +8,7 @@
->   
->   / {
->   	model = "Google Spherion (rev0 - 3)";
-> +	chassis-type = "laptop";
->   	compatible = "google,spherion-rev3", "google,spherion-rev2",
->   		     "google,spherion-rev1", "google,spherion-rev0",
->   		     "google,spherion", "mediatek,mt8192";
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts
-> index 0039158c9e60..5e9e598bab90 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts
-> @@ -8,6 +8,7 @@
->   
->   / {
->   	model = "Google Spherion (rev4)";
-> +	chassis-type = "laptop";
->   	compatible = "google,spherion-rev4", "google,spherion",
->   		     "mediatek,mt8192";
->   
-
--- 
-David Heidelberg
-
+Arınç
 
