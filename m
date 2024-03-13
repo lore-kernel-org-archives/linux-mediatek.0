@@ -4,66 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E58ECC54E66
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Mar 2024 14:36:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 506ADC54E66
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Mar 2024 15:05:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ol2ICfeaU5RILAELMVTWCQmraBg+YD817eZDWIKw1W0=; b=YKFP9gU69i9IuFR7c0X5kYXHBy
-	TOPT5EgbuC0SWLhEVPTwahgVEVEoksez0iX8/AXg5ErV/V+8Na3W2NygKZ42LZIN9IjphvkJyYmlo
-	ybkK1VxKm9HwfAmL4yuz6ehcCP07tc7WkeB6C2hJw8vE/7gSw0xClYsXq/plhhcYcHTzOOLyw2o1a
-	TgcjXJsG1ryGSLrA7G2Q3T1UkH2ni3rEUK4v69I2M0e39MBr7qm1najTY93zDrdhwYU8ps8H8zegH
-	k9Y8jEZl5sWYahBDJ63gWjhqMRLevGcSBXwD9we7yE+ywTQXdSwfoQSmPXdg/vsE8BNMB9w26+Rj0
-	tTIJKCNw==;
+	bh=08xa12eFgF24Q/HExgdKesRSK158jc76k5/A1mMD/dI=; b=aq+TGwN8u/ByVBw+bhbXTPaEM0
+	NsTEKo7FaIXZ7aJOiocThCfaHDU5B/ZEq+yFxgmlAhESCiC/BLg6DDteJmOt/jC2SSlhKMmbyOpbs
+	ChsI4RrpgC1mrTXuaYMqBpgVHa6MgIoUq0pVGSFbAP44ETSJwP6H4UvdwCK5YtEArlngvKKOy8/Tl
+	PUfnKwiyXHfaPsi2EyUipkWesEyQjotpeTX98x27AUHgFfxpebUUc1Dp1sXE+gSsNrIUNbaSDXXvz
+	CRIYitVTqq+tyWdTb4sm1EXd+s4X3uEQZFGQYtoj3w2hRE9uzwPzDEb6BkLUd6d/IzzY6ZmhTNWTc
+	CPR9VQ/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkPiz-0000000ARm3-1rth;
-	Wed, 13 Mar 2024 14:36:57 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rkQAH-0000000AXSG-31CI;
+	Wed, 13 Mar 2024 15:05:09 +0000
+Received: from relay6-d.mail.gandi.net ([217.70.183.198])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkPiv-0000000ARk1-2kyA;
-	Wed, 13 Mar 2024 14:36:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710340612;
-	bh=aBISMkyzcuXC4tndXkf0VYcmI9kprzzcj/ehlqHMdAQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=wV45Rr4voGJHrKXICE5+Eye7hrS2Pjf//lLfPMsweUmrMtaGowHMg8I1ftEp0aoc6
-	 vVBZcOLf4o11Mg5tTnufw6SyfR0TmnYh7euYN5U/mbmh4D+veduK3L1cVcQzJtfwf8
-	 3xTrl9JpUKtiEXdqBnujwEENhAYfYbBGvY78+vuV4+LxRKjiguO64XhrhCNeecyRoN
-	 QZR3ZhhDixM01wErO5qokiWMlKaRyx4SfSpnoi9s4eVgvGyGB75R5QPDv7h5kpVTPk
-	 4auppMOqkpTTs4wsJ/OuuvWTViAs6wdbnrHFPzTu7gtp0SfvfQWyasvBTJhcjCEcls
-	 O/G14egc519mg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9A15437813C4;
-	Wed, 13 Mar 2024 14:36:51 +0000 (UTC)
-Message-ID: <d1bdf9a6-3082-4076-99de-e49d59843244@collabora.com>
-Date: Wed, 13 Mar 2024 15:36:50 +0100
+	id 1rkQAC-0000000AXPn-4AAA;
+	Wed, 13 Mar 2024 15:05:07 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 42A22C0012;
+	Wed, 13 Mar 2024 15:04:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1710342301;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=08xa12eFgF24Q/HExgdKesRSK158jc76k5/A1mMD/dI=;
+	b=bpQnl2O53b8VNslubfwlRrs7ImLhnBZRI9miQ9brL4i/HTzsv/LTAj56RocdLqLJLKoGny
+	DldxBahLEeGZIYaq6nGvwweoK0RZxxCAGLpB3lUtGBxr0vzg+NePAaMp5QVbvGeTNOhXqY
+	0Bd51c+TdsuD0Xjs5lcutZp/YDpwzN3sia8HmJD1NJugiryFPoXi2WHCYtKZMEdjrK+6fD
+	VZPX8G0BRxGd4xbw+VUiAMm15m4hi8RtDQ469an0lQU4Vpbaar4bHRzELsSYqWlM8guE4I
+	DzGIwsu9iTOhSFm8iVlcemcECjbo8FTzHz/PTrGBZW08zaCt2UjiroNmPTWaMQ==
+Message-ID: <997db446-030b-4e6a-beea-0ae7d990e7e2@arinc9.com>
+Date: Wed, 13 Mar 2024 18:04:43 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8192-asurada: Update min voltage
- constraint for Vgpu
+Subject: Re: [PATCH] net: dsa: mt7530: increase reset hold time
+To: Justin Swartz <justin.swartz@risingedge.co.za>
+Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <f594a72a91d12f1d027a06962caa9750@risingedge.co.za>
+ <20240312192117.7789-1-justin.swartz@risingedge.co.za>
+ <bf0ed70f-e106-4a7f-a98c-de34658feb4d@arinc9.com>
+ <e6525cac666a033a5866465abb3e63f1@risingedge.co.za>
+ <2640a495-97a0-4669-a53a-e367af956a78@arinc9.com>
+ <c4590e9519d0cd788d157a1e1510cc45@risingedge.co.za>
 Content-Language: en-US
-To: Pin-yen Lin <treapking@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
- devicetree@vger.kernel.org
-References: <20240313135157.98989-1-treapking@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240313135157.98989-1-treapking@chromium.org>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <c4590e9519d0cd788d157a1e1510cc45@risingedge.co.za>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-GND-Spam-Score: 400
+X-GND-Status: SPAM
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240313_073653_927787_4FDACF6C 
-X-CRM114-Status: GOOD (  17.92  )
+X-CRM114-CacheID: sfid-20240313_080505_372670_E87F506F 
+X-CRM114-Status: GOOD (  26.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,59 +86,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/03/24 14:51, Pin-yen Lin ha scritto:
-> Although the minimum voltage listed on the GPU OPP table is 606250 uV,
-> the actual requested voltage could be even lower when the MTK Smart
-> Voltage Scaling (SVS) driver is enabled.
+On 13.03.2024 16:13, Justin Swartz wrote:
+> On 2024-03-13 14:06, Arınç ÜNAL wrote:
+>> On 13.03.2024 14:52, Justin Swartz wrote:
+>>>
+>>> On 2024-03-13 10:59, Arınç ÜNAL wrote:
+>>>> This ship has sailed anyway. Now the changes the first patch did must be
+>>>> reverted too. I will deal with this from now on, you can stop sending
+>>>> patches regarding this.
+>>>
+>>> At least if the first patch isn't reverted, the approach used is
+>>> less likely to result in the problem occuring, IMHO.
+>>
+>> I disagree that the previous approach is less likely to result in the
+>> problem occurring. If you don't like the delay amount we agreed on, feel
+>> free to express a higher amount.
 > 
-> Set the minimum voltage to 300000 uV because it's supported by the
-> regulator.
+> I created and tested a patch to entertain your input about what you
+> thought could be a suitable hold period to address the problem, and it
+> appeared to work. The criteria being that the crystal frequency selection
+> was correct over 20 tests.
 > 
-> Fixes: 3183cb62b033 ("arm64: dts: mediatek: asurada: Add SPMI regulators")
-> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-
-Okay, that makes sense, I agree.
-
-...but.
-
-The datasheet never mentions 0.3V as vmin - infact, it does mention that the
-vsel is selected as (0V +) 6250 * Vsel, but the brief spec says that for the
-standard configuration (in terms of HW), the Vmin is 0.4V and not 0.3.
-
-Reading through makes me think that it's not much about the buck providing an
-unstable output, but more about it starting to become inefficient under that
-value.
-
-This means that it is sensible to set, instead:
-
-	regulator-min-microvolt = <400000>;
-
-Also, this is repeated on multiple platforms: can you please perform the same
-change also on MT8183, MT8186 and MT8195?
-
-P.S.: For MT6358, the Vmin for VGPU is 0.5V :-)
-
-Cheers,
-Angelo
-
-> ---
+> So if only the reset hold period is going to change, I'm good with what
+> you had suggested: 5000 - 5100 usec.
 > 
->   arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> Ultimately the selection of this period should be guided by the timing
+> information provided in a datasheet or design guide from the manufacturer.
+
+That's a good point, I agree.
+
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> index 43d80334610a..5cc5100a7c40 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> @@ -1448,7 +1448,7 @@ regulators {
->   			mt6315_7_vbuck1: vbuck1 {
->   				regulator-compatible = "vbuck1";
->   				regulator-name = "Vgpu";
-> -				regulator-min-microvolt = <606250>;
-> +				regulator-min-microvolt = <300000>;
->   				regulator-max-microvolt = <800000>;
->   				regulator-enable-ramp-delay = <256>;
->   				regulator-allowed-modes = <0 1 2>;
+> If you, or anyone else, has such a document that provides this information
+> and is able to confirm or deny speculation about any/all timing periods
+> related to reset, please do so.
 
+These are the documents I use to program this switch family. I did not
+stumble upon a page going over this.
 
+MT7621 Giga Switch Programming Guide v0.3:
+
+https://github.com/vschagen/documents/blob/main/MT7621_ProgrammingGuide_GSW_v0_3.pdf
+
+MT7531 switch chip datasheet:
+
+https://wiki.banana-pi.org/Banana_Pi_BPI-R64#Documents
+
+> 
+> 
+>> I also disagree on introducing a solution that is in addition to another
+>> solution, both of which fix the same problem.
+> 
+> I'm not sure I understand why you say that. These patches were intended
+> to be applied exclusively, or in other words: in isolation - not together.
+> 
+> Although if they were applied together, it wouldn't really matter.
+> 
+> For the record, I've only continued to keep this thread alive in the
+> hope that some solution to this problem will make it into mainline
+> eventually.
+> 
+> I don't care if it was my original patch, the subsequent patch, or a
+> later patch provided by you or someone else. :)
+
+I think you've missed that your patch is already applied. And it won't be
+reverted for reasons explained by Paolo in this mail thread.
+
+https://git.kernel.org/netdev/net-next/c/2920dd92b980
+
+So if your patch here were to be applied too, the final mt7530.c would have
+the LEDs disabled AND before reset deassertion delay increased.
+
+Arınç
 
