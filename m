@@ -4,76 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7596FC54791
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Mar 2024 15:51:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A28B0C54791
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Mar 2024 17:12:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zmEhZmVSZBopL5MK9mOGygoyzG2onSwohVKSkd/C5f4=; b=WHqvM4SK/cu4yQ+/R9Mw2SlSAF
-	r/7HSvEemK0uRRrcgU+BbxgrzM7IiBXDoiBls0A5IwaqRobuj0gHLyZ8vbUviDUh7dtggotfdxfBD
-	sFz/ki/dkw7T0XdGNRqjteQX9OwbsGL1KVRmC2nlwiea1ldkY1hxlhasOnQl7i0Elww6weQdVzfg9
-	3uyZSriQW3bdXoX2TJx3DqHX9kASXgaUlhGvuC+w9TC8xGpX7UC778aUEjKhn1pQfloO5DGVibHIs
-	R/WRErVi2bMzYAxZ8sI7CsXBOSmq61fhrVrzPA3HYYwWFJRjImALrIBYvw3E/Kv6H14Sn1FNLCvTN
-	s5IxhVLg==;
+	bh=DfCyEn4BBkDtIZTeeb4WXSUMa8UuweDcHmhz18/rnUY=; b=cjAuyF7Gu7oTKAgn1SQt2uIew4
+	1OXplMZx1VygV+t5oPLdD88m7RGGS+dmIwnOIOS+3XcO7KXgK/UGkfX44jAnxdt2CcCClc5/BMnAj
+	vXVCjPm9BYAsoheUOwfGf17ku+h4Z0DPCQMLtg5eBMObNBEar9yj5L0pc5Gjm4QpEEAC3Z1MJI4YT
+	uxUmUxkXKCdIXt1P1egrgBzeh2/mGOuUCavNb7YBhsy/2/dfd4tyMoBat+tF9Fdd42h8PUmyer8ig
+	j1pJDkDz6kofq+aenMPSRNXDV/+7J3UxSrqm6VcAo0sTkSaxN1MvvShaewaiKgAcDywEdFKQhDF3W
+	A2muA2aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkQt7-0000000Affe-0OYk;
-	Wed, 13 Mar 2024 15:51:29 +0000
-Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
+	id 1rkS97-0000000Axcc-1NFm;
+	Wed, 13 Mar 2024 17:12:05 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkQt2-0000000AfdU-1SJd;
-	Wed, 13 Mar 2024 15:51:26 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 0741CC0002;
-	Wed, 13 Mar 2024 15:51:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1710345079;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=zmEhZmVSZBopL5MK9mOGygoyzG2onSwohVKSkd/C5f4=;
-	b=dCjpL1Qhypjdy9xlWHCA/0s3JSgZwPFzSzJHfAufqhwzFSQnY0+zHNZjLYvDXAlw0/LawK
-	RDx8xDVnYHshm2m0NrGmnkPQDWIBGnvKiYvxhLRlypYgqMngW3pU9CyIxh0kSafHPT+hhY
-	swkdzbS3JIH+qJ/PXMaqmQUuUrrxxoqq/xOtdYCSEWT5KTZM0jUYkHij2g5ubg/rD86p7g
-	tQhMDJsq5axO88mK1AWI3lpN7C2ChszAxiZvqc1wHXVVVGuMeAUfGqhvEotfO42uiUtjOz
-	9Ow132l3YSiEod4DqhAiKq5s6qZwH6Ma40k97EpgnTbhOHrmXMZgdrb3LRq5aA==
-Message-ID: <757e7f93-9ebd-49e3-afd6-a40eb81a1a49@arinc9.com>
-Date: Wed, 13 Mar 2024 18:51:03 +0300
+	id 1rkS93-0000000AxYr-15Af
+	for linux-mediatek@lists.infradead.org;
+	Wed, 13 Mar 2024 17:12:03 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-413ef6985bfso500455e9.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 13 Mar 2024 10:11:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1710349913; x=1710954713; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=DfCyEn4BBkDtIZTeeb4WXSUMa8UuweDcHmhz18/rnUY=;
+        b=z36/o8ElmHShRQqzz0I1WW9bg52OboyEKEJTlFZxyk3julfMtnN5Jj6n1N7z29t+0j
+         WjGsD2o7eieOdKrlvLOXSMFbo4MJg4fTqM3S0NNKU0/d11nIBRnGSMOpi+cR81X5z0QN
+         V/+dkw6/FK6AAKK1hSUqCgYwLJRUkqORDJHoD+CC/gDJItJP7vxIjadolGtVOtcqbqP5
+         fs0S2f6AUB7ELHatwGQQ6qEeQ+zuC4HLf6oCoymCimyds62C0doyG2s0XgK+QOq4ZDHI
+         rvjrupk7O9PmJNjk6Mhe3NTBOi2d/P6ItOWtG0G79V2F6mQsVCXf5ag0y8DOjRpPthhv
+         wAJw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710349913; x=1710954713;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=DfCyEn4BBkDtIZTeeb4WXSUMa8UuweDcHmhz18/rnUY=;
+        b=dFS9/ZGD0aZDIwJHHrrVAwEMYqqTZ6B/8uGmEtKBG2rLSQDf0cf2t8UyzH8egfuZCN
+         muq8yVJxvpvo4LvU36tJM2/CLBtnfakV8sn0786/OSWODxybG6vN4xIZUGqauIvRFENy
+         JzRD4pr++gvlYYO1SOzVOSF1DKAhMm9ILq1jjSgCsIbaLtNV32uHfbtsy3y1HOIqYcWz
+         +S5oSOoH6PZwL5+nawNcW9ekTvlho4a4bUaLgrgSrHTakcTtc740lMcMwXX5hgGzP0rB
+         SnUqz5fvG9Xfh0itXvU12S1uDiUh9+aBwT1FslZqVgZnxhCuVVlxrYRYkAbnKrhaPxGJ
+         RRbg==
+X-Forwarded-Encrypted: i=1; AJvYcCX0Zfdlwo9mipxWWB+HZYsOmxENdyW6l/m2BwV97yE93Kkff3ztyvABl5MXbrnzOjEt36Q3Pu+UaytLUEJcmYaEg0tSwQ+ctZikNFLoAySLfgb8
+X-Gm-Message-State: AOJu0YzAFCzy53lOulHJwHgull9GrdwmdJetlEH5QTanyCf2pIGiijTT
+	jHyAwVAEM+sv2Lj9HuRiKchaDhIJaSRbmfE3k9166uY0lMVcnoLiFw4ZsknIQdA=
+X-Google-Smtp-Source: AGHT+IFz1KXw55V676KHOL/rzoBQjJ9Rihc/CWALu4Z7kIN17vZX/My8C/6xcsm62UiChBonG2y1pw==
+X-Received: by 2002:a05:600c:450c:b0:413:1285:6e40 with SMTP id t12-20020a05600c450c00b0041312856e40mr442329wmo.20.1710349912671;
+        Wed, 13 Mar 2024 10:11:52 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id ay23-20020a05600c1e1700b00412ff941abasm2920026wmb.21.2024.03.13.10.11.50
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 13 Mar 2024 10:11:52 -0700 (PDT)
+Message-ID: <ef4da1f6-d3c5-4484-8df5-1a04df4453a0@baylibre.com>
+Date: Wed, 13 Mar 2024 18:11:50 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] net: dsa: mt7530: increase reset hold time
-To: Justin Swartz <justin.swartz@risingedge.co.za>
-Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <f594a72a91d12f1d027a06962caa9750@risingedge.co.za>
- <20240312192117.7789-1-justin.swartz@risingedge.co.za>
- <bf0ed70f-e106-4a7f-a98c-de34658feb4d@arinc9.com>
- <e6525cac666a033a5866465abb3e63f1@risingedge.co.za>
- <2640a495-97a0-4669-a53a-e367af956a78@arinc9.com>
- <c4590e9519d0cd788d157a1e1510cc45@risingedge.co.za>
- <997db446-030b-4e6a-beea-0ae7d990e7e2@arinc9.com>
- <3146df060620f08a620417cfcf2b2179@risingedge.co.za>
+Subject: Re: [PATCH 12/18] ASoC: codecs: mt6357: add MT6357 codec
 Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <3146df060620f08a620417cfcf2b2179@risingedge.co.za>
+To: Mark Brown <broonie@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
+ Nicolas Belin <nbelin@baylibre.com>
+References: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
+ <20240226-audio-i350-v1-12-4fa1cea1667f@baylibre.com>
+ <9891855d-2284-42e4-9d3a-35ba406540e8@sirena.org.uk>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <9891855d-2284-42e4-9d3a-35ba406540e8@sirena.org.uk>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Spam-Score: 400
-X-GND-Status: SPAM
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240313_085124_563079_4A3700EF 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20240313_101201_841822_2D1D5D73 
+X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,33 +110,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13.03.2024 18:38, Justin Swartz wrote:
-> On 2024-03-13 17:04, Arınç ÜNAL wrote:
->> On 13.03.2024 16:13, Justin Swartz wrote:
->> I think you've missed that your patch is already applied. And it won't be
->> reverted for reasons explained by Paolo in this mail thread.
->>
->> https://git.kernel.org/netdev/net-next/c/2920dd92b980
->>
->> So if your patch here were to be applied too, the final mt7530.c would have
->> the LEDs disabled AND before reset deassertion delay increased.
-> 
-> Yes, I seem to have missed that. I thought your request for the
-> patch to be reverted definitely would have been performed, or at
-> least queued, seeing as you're the maintainer.
 
-Yeah, one would think. :D Since your patch was applied in a good intent of
-not having it miss the current development cycle, it was a bit rushed. So
-before I could present a valid reason to revert the patch, the pull request
-that included your patch was already submitted to Linus. So unless the
-patch is something very bad which it's not, nobody's going to bother
-reverting it.
 
-I've sent another patch an hour or so ago that reverts it and implements
-what we've discussed here. I will also make sure it is applied to stable
-trees.
+On 26/02/2024 17:09, Mark Brown wrote:
+>> index 000000000000..13e95c227114
+>> --- /dev/null
+>> +++ b/sound/soc/codecs/mt6357.c
+>> @@ -0,0 +1,1805 @@
+>> +// SPDX-License-Identifier: GPL-2.0
+>> +/*
+>> + * MT6357 ALSA SoC audio codec driver
+>> + *
+> Please use a C++ comment for the whole comment to make it clearer that
+> this is intentional.
 
-https://lore.kernel.org/all/20240313-for-netnext-mt7530-better-fix-xtal-frequency-v1-1-5a50df99f51a@arinc9.com/
+If I do that, the checkpatch raise a warning:
 
-Arınç
+WARNING: Improper SPDX comment style for 
+'sound/soc/mediatek/mt8365/mt8365-afe-clk.c', please use '//' instead
+#22: FILE: sound/soc/mediatek/mt8365/mt8365-afe-clk.c:1:
++/* SPDX-License-Identifier: GPL-2.0
+
+WARNING: Missing or malformed SPDX-License-Identifier tag in line 1
+#22: FILE: sound/soc/mediatek/mt8365/mt8365-afe-clk.c:1:
++/* SPDX-License-Identifier: GPL-2.0
+
+even if I put:
+/* SPDX-License-Identifier: GPL-2.0 */
+
+IMO, the checkpatch tool should be fixed/update first.
+
+-- 
+Regards,
+Alexandre
 
