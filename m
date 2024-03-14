@@ -4,69 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB1BEC54E67
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 10:03:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D147BC54E67
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 10:10:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V4mZE+VF+M8ZONfFOGqJtV3AqyNUe/KWOMqioYt91+Y=; b=fxcsDSEuCnd44iCRY14G0jr/0w
-	1vkGvLcl0FsgYz1IqhuePJFEspXEWwADHIoYEeuRVRXo6lKeqYQE/4xXWkIz232tpp/RP8Bhijf1b
-	5ZkRamcIg4a8upUh8IcP6Z8w86F1W4Ss8mhyr0Wm8dUhJ7MPRIMfT1o5hKzJylk6YUSd2fKdIIX2x
-	MxsF1f83r/1dDqpy0Ll08xC5RIvRtM2bWnw/BPAPGD90urJpOXO6IDAvOMYUNtvmJcBMxr2TZKdhR
-	6GvBPwhIsw9gkiC1UYEUyrOmgGCtFSTSeO/h7QsMaPT8pOv/tfhOfnUHIO//xY4dF81wlQEMn/vX1
-	LC1eRTpA==;
+	bh=8qHVfpcS0gNP2l9Dm7vKHiBYcy45JbeQN6aihPCzJ6k=; b=J2GRcWXcH2ij9duWmGkbIOg/eT
+	/yaHr+GsVQFjEKMWe4d1VJ6oO22EwwONeco+yhuX86FQK7Vv93FmLiRYGDZDObH5S6KktgfBxc41l
+	lsvxjx+4ZzlxHlWqWxG1/VDjlKYA8h+tD2jr/q9K734bE8EZn0HsY6QJJUbviNWm0LSwtPA1ZngLq
+	H0Pj+YEQx+s9O5rkmAERii3BLXB2Au3bCpGQsqtb6kF0T2dVojxJ6Ih1j3z3/Emn5TqfsbXXepPxv
+	6Uy2ki/6JUjLMNwZWZVk3Avug6g8rPeT7JqfYFQipyJ9ME7ea4iCNTbeIyNB+3a3m+NUHCdgP5Zw2
+	CDJAUF6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkhvV-0000000DpGi-2FLM;
-	Thu, 14 Mar 2024 10:03:05 +0000
+	id 1rki36-0000000Dr6H-0rC7;
+	Thu, 14 Mar 2024 10:10:56 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkhvR-0000000DpEV-3THK;
-	Thu, 14 Mar 2024 10:03:03 +0000
+	id 1rki32-0000000Dr59-1PeY;
+	Thu, 14 Mar 2024 10:10:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710410580;
-	bh=7Te3YspK5rB2494WTdPhhCk43LasN8upRyD7Xd2ldfk=;
+	s=mail; t=1710411050;
+	bh=U4YEsnxniAk2SJLiG1F83BQacHJwGqbY26ZK4ZuBGU4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=2vW0+MY3gziKQl7e8yqupDfds0LLNG44VwBCObMCrLlpAmnOJylOQRzfmda8N0ZUA
-	 nUDMWQsFnxXJ1WQ/BAK4C7TipPu2JeOXsWYCACkP2fLugMvGnEvwygTrIy4xqTux1I
-	 LtWpR7PJ5OkeWlvrFTCiOttl81g79vJBS/siV4apVmZ6DproUihLLeT+TZhGEvsXl4
-	 2n8HjfX21h0cYXlip4Eoq/hk/G8Fsc+2Ujr99aPB6deXZEZKnz9IoYadkB1aJwkCI3
-	 9G6uRt5Nt5YxmrNLcBB3+FhMDHZlO/XW079tGVELuogfahNZDKtxfSTDn8S2AWQg39
-	 6NYHUJKUNzQMw==
+	b=bjILxDdcv8hqfkJ3jPKQcKll9Dhmzpmz4gtJDn+MDmhHnhkt6dtxbf92y4n13yFy6
+	 Xbgn5Q0F1C4rQoBoyU1zmgLanTjYlWCJrf9/S/tz/OHuCx7tV4qQtphxDWDsqIfcXK
+	 GgUCZfb57loUs9n9Xin8Jtbb67xTi6oUKf4IsW+6g1VOdw/XhKiaT7YNWZRDdExadv
+	 Mfm43/FafPrjrMf/C/Vhl0E7vI9+XvfL1xWsuyCqAJrsQH7VAzPQshcgE7Gz+qqDlN
+	 LVc7gE3bPRqpoFKavWy7XVCctJqSkEtb9QC4O4MLV0lxT8WV+jM/qXBTSB8kLQRBjM
+	 KZxdHsKvARF5A==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9245937820A3;
-	Thu, 14 Mar 2024 10:02:59 +0000 (UTC)
-Message-ID: <63cdec54-8dd6-4f17-8256-bbb8cfe791be@collabora.com>
-Date: Thu, 14 Mar 2024 11:02:58 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A20D137820A3;
+	Thu, 14 Mar 2024 10:10:49 +0000 (UTC)
+Message-ID: <b7addbd1-d199-4734-9db6-d7dbc3a7f7d9@collabora.com>
+Date: Thu, 14 Mar 2024 11:10:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8192-asurada: Update min voltage
- constraint for Vgpu
+Subject: Re: [PATCH] mediatek: dsi: Add dsi per-frame lp code for mt8188
 Content-Language: en-US
-To: Pin-yen Lin <treapking@google.com>
-Cc: Pin-yen Lin <treapking@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Chen-Yu Tsai
- <wenst@chromium.org>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
- devicetree@vger.kernel.org
-References: <20240313135157.98989-1-treapking@chromium.org>
- <d1bdf9a6-3082-4076-99de-e49d59843244@collabora.com>
- <CAHwYsiqJBsQn73H+2VeB4N3GNH=0EZ4qznqWwYCBjt6+qwNhHw@mail.gmail.com>
+To: Shuijing Li <shuijing.li@mediatek.com>, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
+ matthias.bgg@gmail.com, jitao.shi@mediatek.com
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20240314094238.3315-1-shuijing.li@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAHwYsiqJBsQn73H+2VeB4N3GNH=0EZ4qznqWwYCBjt6+qwNhHw@mail.gmail.com>
+In-Reply-To: <20240314094238.3315-1-shuijing.li@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240314_030302_197931_054C9AA7 
-X-CRM114-Status: GOOD (  20.48  )
+X-CRM114-CacheID: sfid-20240314_031052_597606_C0BBB559 
+X-CRM114-Status: GOOD (  20.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,85 +77,189 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/03/24 10:59, Pin-yen Lin ha scritto:
-> Hi Angelo,
+Il 14/03/24 10:41, Shuijing Li ha scritto:
+> Adding the per-frame lp function of mt8188, which can keep HFP in HS and
+> reduce the time required for each line to enter and exit low power.
+> Per Frame LP:
+>    |<----------One Active Frame-------->|
+> --______________________________________----___________________
+>    ^HSA+HBP^^RGB^^HFP^^HSA+HBP^^RGB^^HFP^    ^HSA+HBP^^RGB^^HFP^
 > 
-> On Wed, Mar 13, 2024 at 10:36 PM AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com> wrote:
+> Per Line LP:
+>    |<---------------One Active Frame----------->|
+> --______________--______________--______________----______________
+>    ^HSA+HBP^^RGB^  ^HSA+HBP^^RGB^  ^HSA+HBP^^RGB^    ^HSA+HBP^^RGB^
 > 
->> Il 13/03/24 14:51, Pin-yen Lin ha scritto:
->>> Although the minimum voltage listed on the GPU OPP table is 606250 uV,
->>> the actual requested voltage could be even lower when the MTK Smart
->>> Voltage Scaling (SVS) driver is enabled.
->>>
->>> Set the minimum voltage to 300000 uV because it's supported by the
->>> regulator.
->>>
->>> Fixes: 3183cb62b033 ("arm64: dts: mediatek: asurada: Add SPMI
->> regulators")
->>> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
->>
->> Okay, that makes sense, I agree.
->>
->> ...but.
->>
->> The datasheet never mentions 0.3V as vmin - infact, it does mention that
->> the
->> vsel is selected as (0V +) 6250 * Vsel, but the brief spec says that for
->> the
->> standard configuration (in terms of HW), the Vmin is 0.4V and not 0.3.
->>
->> Reading through makes me think that it's not much about the buck providing
->> an
->> unstable output, but more about it starting to become inefficient under
->> that
->> value.
->>
->> This means that it is sensible to set, instead:
->>
->>          regulator-min-microvolt = <400000>;
->>
->> Also, this is repeated on multiple platforms: can you please perform the
->> same
->> change also on MT8183, MT8186 and MT8195?
->>
->> P.S.: For MT6358, the Vmin for VGPU is 0.5V :-)
->>
+> Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
+> ---
+>   drivers/gpu/drm/mediatek/mtk_dsi.c | 100 +++++++++++++++++++++++++++++
+>   1 file changed, 100 insertions(+)
 > 
-> Thanks for checking! I'll update the values on other platforms as well.
-> 
-> I assume that we also want to update other mt6315 nodes listing 300000 uV
-> as the min voltage, so I'll update them as well.
-> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index a2fdfc8ddb15..e6f4807c8711 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -83,6 +83,7 @@
+>   #define DSI_HSA_WC		0x50
+>   #define DSI_HBP_WC		0x54
+>   #define DSI_HFP_WC		0x58
+> +#define DSI_BLLP_WC		0x5C
+>   
+>   #define DSI_CMDQ_SIZE		0x60
+>   #define CMDQ_SIZE			0x3f
+> @@ -180,6 +181,7 @@ struct mtk_dsi_driver_data {
+>   	bool has_shadow_ctl;
+>   	bool has_size_ctl;
+>   	bool cmdq_long_packet_ctl;
+> +	bool support_per_frame_lp;
+>   };
+>   
+>   struct mtk_dsi {
+> @@ -516,6 +518,103 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+>   			(vm->hactive * dsi_tmp_buf_bpp + 2) % dsi->lanes;
+>   	}
+>   
+> +	if (dsi->driver_data->support_per_frame_lp) {
 
-Yes, didn't notice that, nice catch. Please do!
+This really looks like a good candidate to fit in a function on its own...
 
-Cheers,
+> +		unsigned int lpx = 0, da_hs_exit = 0, da_hs_prep = 0, da_hs_trail = 0;
+> +		unsigned int da_hs_zero = 0, ps_wc = 0, hs_vb_ps_wc = 0;
+> +		u32 bllp_wc, bllp_en, v_active_roundup, hstx_cklp_wc;
+> +		u32 hstx_cklp_wc_max, hstx_cklp_wc_min;
+> +
+> +		da_hs_trail = (readl(dsi->regs + DSI_PHY_TIMECON0) >> 24) & 0xff;
+> +		bllp_en = (readl(dsi->regs + DSI_TXRX_CTRL) >> 7) & 0x1;
+
+(somewhere: #define HSTX_BLLP_EN BIT(7))
+
+u32 timecon0, txrx_ctrl;
+
+timecon0 = readl(....DSI_PHY_TIMECON0);
+txrx_ctrl = readl(.....);
+
+da_hs_trail = FIELD_GET(HS_TRAIL, timecon0);
+bllp_en = FIELD_GET(HSTX_BLLP_EN, txrx_ctrl);
+
+> +		if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE) {
+> +			horizontal_sync_active_byte =
+> +				(vm->hsync_len * dsi_tmp_buf_bpp - 10);
+> +			horizontal_backporch_byte =
+> +				(vm->hback_porch * dsi_tmp_buf_bpp - 10);
+> +			horizontal_frontporch_byte =
+> +				(vm->hfront_porch * dsi_tmp_buf_bpp - 12);
+> +
+> +			ps_wc = readl(dsi->regs + DSI_PSCTRL) & 0x7fff;
+> +			v_active_roundup = (32 + horizontal_sync_active_byte +
+> +				horizontal_backporch_byte + ps_wc +
+> +				horizontal_frontporch_byte) % dsi->lanes;
+> +			if (v_active_roundup)
+> +				horizontal_backporch_byte = horizontal_backporch_byte +
+> +					dsi->lanes - v_active_roundup;
+> +			hstx_cklp_wc_min = (DIV_ROUND_UP((12 + 2 + 4 +
+
+Please document those "magic numbers": why is this 12 + 2 + 4 ?
+What is 12? what is 2? what is 4?
+
+> +				horizontal_sync_active_byte), dsi->lanes) + da_hs_trail + 1)
+> +				* dsi->lanes / 6 - 1;
+> +			hstx_cklp_wc_max = (DIV_ROUND_UP((20 + 6 + 4 +
+> +				horizontal_sync_active_byte + horizontal_backporch_byte +
+> +				ps_wc), dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
+> +		} else {
+> +			horizontal_sync_active_byte = vm->hsync_len * dsi_tmp_buf_bpp - 4;
+> +
+> +			horizontal_backporch_byte = (vm->hback_porch + vm->hsync_len) *
+> +				dsi_tmp_buf_bpp - 10;
+> +			hstx_cklp_wc_min = (DIV_ROUND_UP(4, dsi->lanes) + da_hs_trail + 1)
+> +				* dsi->lanes / 6 - 1;
+> +
+> +			if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) {
+> +				ps_wc = readl(dsi->regs + DSI_PSCTRL) & 0x7fff;
+> +				bllp_wc = readl(dsi->regs + DSI_BLLP_WC) & 0xfff;
+
+Please use bitfield macros here as well.
+
+> +				horizontal_frontporch_byte = (vm->hfront_porch *
+> +					dsi_tmp_buf_bpp - 18);
+> +
+> +				v_active_roundup = (28 + horizontal_backporch_byte + ps_wc +
+> +					horizontal_frontporch_byte + bllp_wc) % dsi->lanes;
+> +				if (v_active_roundup)
+> +					horizontal_backporch_byte = horizontal_backporch_byte +
+> +					dsi->lanes - v_active_roundup;
+> +				if (bllp_en) {
+> +					hstx_cklp_wc_max = (DIV_ROUND_UP((16 + 6 + 4 +
+> +						horizontal_backporch_byte + bllp_wc + ps_wc),
+> +						dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
+> +				} else {
+> +					hstx_cklp_wc_max = (DIV_ROUND_UP((12 + 4 + 4 +
+> +						horizontal_backporch_byte + bllp_wc + ps_wc),
+> +						dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
+> +				}
+> +			} else {
+> +				ps_wc = readl(dsi->regs + DSI_PSCTRL) & 0x7fff;
+> +				horizontal_frontporch_byte = (vm->hfront_porch *
+> +					dsi_tmp_buf_bpp - 12);
+> +
+> +				v_active_roundup = (22 + horizontal_backporch_byte + ps_wc +
+> +					horizontal_frontporch_byte) % dsi->lanes;
+> +				if (v_active_roundup)
+> +					horizontal_backporch_byte = horizontal_backporch_byte +
+> +					dsi->lanes - v_active_roundup;
+> +
+> +				hstx_cklp_wc_max = (DIV_ROUND_UP((12 + 4 + 4 +
+> +					horizontal_backporch_byte + ps_wc),
+> +					dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
+> +			}
+> +		}
+> +		hstx_cklp_wc = (readl(dsi->regs + DSI_HSTX_CKL_WC) >> 2) & 0x3fff;
+
+same here
+
+> +		if (hstx_cklp_wc <= hstx_cklp_wc_min ||
+> +			hstx_cklp_wc >= hstx_cklp_wc_max) {
+> +			hstx_cklp_wc = (hstx_cklp_wc_max / 2) << 2;
+
+and same here... and everywhere else.
+
+> +			writel(hstx_cklp_wc, dsi->regs + DSI_HSTX_CKL_WC);
+> +		}
+> +		hstx_cklp_wc = hstx_cklp_wc >> 2;
+> +		if (hstx_cklp_wc <= hstx_cklp_wc_min ||
+> +			hstx_cklp_wc >= hstx_cklp_wc_max) {
+> +			DRM_WARN("Wrong setting of hstx_ckl_wc\n");
+> +		}
+> +
+> +		lpx = readl(dsi->regs + DSI_PHY_TIMECON0) & 0xff;
+> +		da_hs_exit = (readl(dsi->regs + DSI_PHY_TIMECON1) >> 24) & 0xff;
+> +		da_hs_prep = (readl(dsi->regs + DSI_PHY_TIMECON0) >> 8) & 0xff;
+> +		da_hs_zero = (readl(dsi->regs + DSI_PHY_TIMECON0) >> 16) & 0xff;
+> +		ps_wc = readl(dsi->regs + DSI_PSCTRL) & 0x7fff;
+> +		hs_vb_ps_wc = ps_wc -
+> +			(lpx + da_hs_exit + da_hs_prep + da_hs_zero + 2)
+> +			* dsi->lanes;
+> +		horizontal_frontporch_byte = (1 << 31)
+> +			| (hs_vb_ps_wc << 16)
+> +			| (horizontal_frontporch_byte);
+> +	}
+>   	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
+>   	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
+>   	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
+> @@ -1246,6 +1345,7 @@ static const struct mtk_dsi_driver_data mt8188_dsi_driver_data = {
+>   	.has_shadow_ctl = true,
+>   	.has_size_ctl = true,
+>   	.cmdq_long_packet_ctl = true,
+> +	.support_per_frame_lp = true,
+
+Is this supported only on MT8188? Are you sure that MT8195 doesn't support that?
+
+Regards,
 Angelo
 
->>
->>> ---
->>>
->>>    arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 2 +-
->>>    1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
->> b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
->>> index 43d80334610a..5cc5100a7c40 100644
->>> --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
->>> +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
->>> @@ -1448,7 +1448,7 @@ regulators {
->>>                        mt6315_7_vbuck1: vbuck1 {
->>>                                regulator-compatible = "vbuck1";
->>>                                regulator-name = "Vgpu";
->>> -                             regulator-min-microvolt = <606250>;
->>> +                             regulator-min-microvolt = <300000>;
->>>                                regulator-max-microvolt = <800000>;
->>>                                regulator-enable-ramp-delay = <256>;
->>>                                regulator-allowed-modes = <0 1 2>;
->>
->>
->>
-> 
+>   };
+>   
+>   static const struct of_device_id mtk_dsi_of_match[] = {
+
 
 
