@@ -4,78 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FC1EC54E67
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 09:34:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63BDCC5475B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 09:42:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:Reply-To:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:
-	In-Reply-To:References:Message-Id:Content-Transfer-Encoding:Content-Type:
-	MIME-Version:Subject:Date:From:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g1as7/+BD89JddWqMSKbzbL04KJnHyd+XJhRM+fE31g=; b=wRc4C7lHa58JDaIkR6OcPZ2bqI
-	6nt9DUZHNb6g0bp9ubOk+qYRDxtKW/vBodgp6vtt7ruB5HC9RmI/rU0Mr9nSr3an2+uc9TbMQfp8S
-	8DiUgiwRFj4nwKH5N5/swFbjLTTtVZu8Cy9taLp/1qdHbKgBPb9yjBZohnPDiW9WhJ0wr7QTx54UG
-	DtR6kUXn1MOzxLAbJZhmqZtRI5Dg6bFua5j3c9xUShxc07KxOsqTn/eFgvkxVtQ+4/bVl6ei7qLj0
-	KcFQzhHlc6Ds0cQNfQr2rjwlXwCKX2axVILxB+E311toolZ8Z1D48/wrnuAGcUG4rp3qip3zzUb1E
-	kNvqoZzQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YlZ5XiSrQtfZyIf42XjcQHUar2YIBT2LQ8deb92YJ2g=; b=kZIil9osdJKca1xmuhawVg70VR
+	KrVlGkrEJRe/L8saH2jz/VsUNJyd64fWN/ICZdSbmbkCTE8p9kfqlVXsDAYpQYJuibx1JVo1jytXY
+	rzfevOl0gXB0wXyYelUjF2hXetrFBp6sPFBjNYNLSxy6BlL/dtIFExNe8qWM8v0Sqe/pldhe1qRQF
+	2ZwO3Ov7rZCHrOrOpDyWTwpBPhY55fnXfOoVr/535qwLegEtwtGCXhGoTl64U3V7g4pFtfAcTqRZY
+	0aOzVrDSbm+8PaVHvxA0l05YvsEKtjGTJUhB+M6XjwZRc3THuj0/AUpy7U++K/LuSGuE9maYstFPT
+	/v3dYM8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkhTa-0000000DkKD-1fpW;
-	Thu, 14 Mar 2024 09:34:14 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rkhbX-0000000DltE-3lXf;
+	Thu, 14 Mar 2024 09:42:27 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkhTQ-0000000DkFX-19HM;
-	Thu, 14 Mar 2024 09:34:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 07223CE1D81;
-	Thu, 14 Mar 2024 09:34:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 3E21CC43390;
-	Thu, 14 Mar 2024 09:34:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1710408841;
-	bh=lxXkFDodYxZlCKjHYMDI7uPNtWjS0jLUW6HjGX4aols=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=pjgL2pNUdg4yv5wdO7CnPcW097Hz/D8lVw+vh1vmqGHbZvlmHhjpKPy8e/aChZTXD
-	 CWBmctSnw1nH4/m3BetCUdBYBXM3kEmDR/ciA0dnxQuqJnFpRB9fyDCt1Bc7mlPQV+
-	 EqbdBY06ODE53R+dWMeKmpQCY8oA634mxbJ32qynzJWiiFj1i0iSkuJEJPzDnr/B/m
-	 Qx5uOfvaE5vIfEkzUXlEWfL+gUaJQb/vGXPu7Fvu2D0b5ISxIgepE3Lq0r6Bo5BUtQ
-	 9Jf0ytMdMmzdbQKtzl9M3XIyQM4RGfGU9KmL5eUEnUZY99OA9q+6XUITr0cA/vF7AS
-	 /IlljipzkUjsg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2E075C54E67;
-	Thu, 14 Mar 2024 09:34:01 +0000 (UTC)
-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
- <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Thu, 14 Mar 2024 12:33:41 +0300
-Subject: [PATCH net v2 1/2] net: dsa: mt7530: fix link-local frames that
- ingress vlan filtering ports
+	id 1rkhbU-0000000Dlqw-03Qt;
+	Thu, 14 Mar 2024 09:42:25 +0000
+X-UUID: 2644536ae1e711eeacdb61a41848c7d2-20240314
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=YlZ5XiSrQtfZyIf42XjcQHUar2YIBT2LQ8deb92YJ2g=;
+	b=NEZVlngEWXZZ7VwOVwilUmTjauAAw6FQTE5qH56xL8lxdCv9rDirIWZpM5G/gMd17xV544dT2tsFJx6Eo5K6Cs8eLoouITd5b/gLGGbYG3ThAVNHeU6KCwqglaUDvYyt3xQqg52vKZF8V/2BvX+4iZhB8m4n11xBmhPHYLayGo4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:fa2e6de2-cb38-49ad-ab88-40575b06cbf9,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:f684ff84-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 2644536ae1e711eeacdb61a41848c7d2-20240314
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <shuijing.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 569149345; Thu, 14 Mar 2024 02:42:19 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 14 Mar 2024 17:41:44 +0800
+Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 14 Mar 2024 17:41:44 +0800
+From: Shuijing Li <shuijing.li@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Shuijing Li
+	<shuijing.li@mediatek.com>
+Subject: [PATCH] mediatek: dsi: Add dsi per-frame lp code for mt8188
+Date: Thu, 14 Mar 2024 17:41:55 +0800
+Message-ID: <20240314094238.3315-1-shuijing.li@mediatek.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240314-b4-for-net-mt7530-fix-link-local-vlan-v2-1-7dbcf6429ba0@arinc9.com>
-References: <20240314-b4-for-net-mt7530-fix-link-local-vlan-v2-0-7dbcf6429ba0@arinc9.com>
-In-Reply-To: <20240314-b4-for-net-mt7530-fix-link-local-vlan-v2-0-7dbcf6429ba0@arinc9.com>
-To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
- Florian Fainelli <f.fainelli@gmail.com>, 
- Vladimir Oltean <olteanv@gmail.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1710408826; l=7217;
- i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
- bh=A6apETuSYOGhMYrYi0mXPmD7DvQ3AuWdBYxlUBzvsDQ=;
- b=x+SiNkXwYLMAscdRPD8dRqLUtOs0B3Z5M+rB4Zho+UC1Pg5rd6XXJvjUA4QJXs1zm9gARUSEq
- i5UPRKdHl1gAQMs8mU+I2GTWCbjgWMCGU4Ah1k+2lP+YXo9qHC2bJl3
-X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
- pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
-X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt with auth_id=115
-X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--8.397200-8.000000
+X-TMASE-MatchedRID: S534RugKI8kwKP61E4rxu1VN8laWo90M5TpDO1WKs2mYQOVjVNfbbkeC
+	RUBS/4NPo5qw/iFKtvYWHIQM6TbbE5Rho78T5P9D4pdq9sdj8LXlNvCpVWkX4+8+PNqCaHTUQ5K
+	Zv/QHc1GfUW6RBS3uLULpsu+J7FFsoT61G3YSs7mQ+gWwzffozrn7V+KB+3cumyiLZetSf8lRN1
+	j+Z19Ne0kpbiYOUmwxwrbXMGDYqV/Ix3Icp6zuW/Y8Q+obMpZDGRigQm9wRcMFWmWkIG9aWWkGC
+	AUz36Zl
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--8.397200-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 967D6EFB6CEC7F978B2E6FDC292789DF1CF8A4A7AC9EBA50C3B0564A1B37B9FE2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240314_023404_693955_47488B31 
-X-CRM114-Status: GOOD (  17.43  )
+X-CRM114-CacheID: sfid-20240314_024224_068324_2F046B7F 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,179 +95,159 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: arinc.unal@arinc9.com
-Cc: netdev@vger.kernel.org, =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Bartel Eerdekens <bartel.eerdekens@constell8.be>, erkin.bozoglu@xeront.com, mithat.guner@xeront.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+Adding the per-frame lp function of mt8188, which can keep HFP in HS and
+reduce the time required for each line to enter and exit low power.
+Per Frame LP:
+  |<----------One Active Frame-------->|
+--______________________________________----___________________
+  ^HSA+HBP^^RGB^^HFP^^HSA+HBP^^RGB^^HFP^    ^HSA+HBP^^RGB^^HFP^
 
-Whether VLAN-aware or not, on every VID VLAN table entry that has the CPU
-port as a member of it, frames are set to egress the CPU port with the VLAN
-tag stacked. This is so that VLAN tags can be appended after hardware
-special tag (called DSA tag in the context of Linux drivers).
+Per Line LP:
+  |<---------------One Active Frame----------->|
+--______________--______________--______________----______________
+  ^HSA+HBP^^RGB^  ^HSA+HBP^^RGB^  ^HSA+HBP^^RGB^    ^HSA+HBP^^RGB^
 
-For user ports on a VLAN-unaware bridge, frame ingressing the user port
-egresses CPU port with only the special tag.
-
-For user ports on a VLAN-aware bridge, frame ingressing the user port
-egresses CPU port with the special tag and the VLAN tag.
-
-This causes issues with link-local frames, specifically BPDUs, because the
-software expects to receive them VLAN-untagged.
-
-There are two options to make link-local frames egress untagged. Setting
-CONSISTENT or UNTAGGED on the EG_TAG bits on the relevant register.
-CONSISTENT means frames egress exactly as they ingress. That means
-egressing with the VLAN tag they had at ingress or egressing untagged if
-they ingressed untagged. Although link-local frames are not supposed to be
-transmitted VLAN-tagged, if they are done so, when egressing through a CPU
-port, the special tag field will be broken.
-
-BPDU egresses CPU port with VLAN tag egressing stacked, received on
-software:
-
-00:01:25.104821 AF Unknown (382365846), length 106:
-                                     | STAG  | | VLAN  |
-        0x0000:  0000 6c27 614d 4143 0001 0000 8100 0001  ..l'aMAC........
-        0x0010:  0026 4242 0300 0000 0000 0000 6c27 614d  .&BB........l'aM
-        0x0020:  4143 0000 0000 0000 6c27 614d 4143 0000  AC......l'aMAC..
-        0x0030:  0000 1400 0200 0f00 0000 0000 0000 0000  ................
-
-BPDU egresses CPU port with VLAN tag egressing untagged, received on
-software:
-
-00:23:56.628708 AF Unknown (25215488), length 64:
-                                     | STAG  |
-        0x0000:  0000 6c27 614d 4143 0001 0000 0026 4242  ..l'aMAC.....&BB
-        0x0010:  0300 0000 0000 0000 6c27 614d 4143 0000  ........l'aMAC..
-        0x0020:  0000 0000 6c27 614d 4143 0000 0000 1400  ....l'aMAC......
-        0x0030:  0200 0f00 0000 0000 0000 0000            ............
-
-BPDU egresses CPU port with VLAN tag egressing tagged, received on
-software:
-
-00:01:34.311963 AF Unknown (25215488), length 64:
-                                     | Mess  |
-        0x0000:  0000 6c27 614d 4143 0001 0001 0026 4242  ..l'aMAC.....&BB
-        0x0010:  0300 0000 0000 0000 6c27 614d 4143 0000  ........l'aMAC..
-        0x0020:  0000 0000 6c27 614d 4143 0000 0000 1400  ....l'aMAC......
-        0x0030:  0200 0f00 0000 0000 0000 0000            ............
-
-To prevent confusing the software, force the frame to egress UNTAGGED
-instead of CONSISTENT. This way, frames can't possibly be received TAGGED
-by software which would have the special tag field broken.
-
-VLAN Tag Egress Procedure
-
-   For all frames, one of these options set the earliest in this order will
-   apply to the frame:
-
-   - EG_TAG in certain registers for certain frames.
-     This will apply to frame with matching MAC DA or EtherType.
-
-   - EG_TAG in the address table.
-     This will apply to frame at its incoming port.
-
-   - EG_TAG in the PVC register.
-     This will apply to frame at its incoming port.
-
-   - EG_CON and [EG_TAG per port] in the VLAN table.
-     This will apply to frame at its outgoing port.
-
-   - EG_TAG in the PCR register.
-     This will apply to frame at its outgoing port.
-
-   EG_TAG in certain registers for certain frames:
-
-   PPPoE Discovery_ARP/RARP: PPP_EG_TAG and ARP_EG_TAG in the APC register.
-   IGMP_MLD: IGMP_EG_TAG and MLD_EG_TAG in the IMC register.
-   BPDU and PAE: BPDU_EG_TAG and PAE_EG_TAG in the BPC register.
-   REV_01 and REV_02: R01_EG_TAG and R02_EG_TAG in the RGAC1 register.
-   REV_03 and REV_0E: R03_EG_TAG and R0E_EG_TAG in the RGAC2 register.
-   REV_10 and REV_20: R10_EG_TAG and R20_EG_TAG in the RGAC3 register.
-   REV_21 and REV_UN: R21_EG_TAG and RUN_EG_TAG in the RGAC4 register.
-
-With this change, it can be observed that a bridge interface with stp_state
-and vlan_filtering enabled will properly block ports now.
-
-Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
 ---
- drivers/net/dsa/mt7530.c | 23 +++++++++++++++--------
- drivers/net/dsa/mt7530.h |  9 ++++++++-
- 2 files changed, 23 insertions(+), 9 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 100 +++++++++++++++++++++++++++++
+ 1 file changed, 100 insertions(+)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 678b51f9cea6..ac887e929c79 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -953,16 +953,23 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- static void
- mt753x_trap_frames(struct mt7530_priv *priv)
- {
--	/* Trap BPDUs to the CPU port(s) */
--	mt7530_rmw(priv, MT753X_BPC, MT753X_BPDU_PORT_FW_MASK,
-+	/* Trap 802.1X PAE frames and BPDUs to the CPU port(s) and egress them
-+	 * VLAN-untagged.
-+	 */
-+	mt7530_rmw(priv, MT753X_BPC, MT753X_PAE_EG_TAG_MASK |
-+		   MT753X_PAE_PORT_FW_MASK | MT753X_BPDU_EG_TAG_MASK |
-+		   MT753X_BPDU_PORT_FW_MASK,
-+		   MT753X_PAE_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
-+		   MT753X_PAE_PORT_FW(MT753X_BPDU_CPU_ONLY) |
-+		   MT753X_BPDU_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
- 		   MT753X_BPDU_CPU_ONLY);
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index a2fdfc8ddb15..e6f4807c8711 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -83,6 +83,7 @@
+ #define DSI_HSA_WC		0x50
+ #define DSI_HBP_WC		0x54
+ #define DSI_HFP_WC		0x58
++#define DSI_BLLP_WC		0x5C
  
--	/* Trap 802.1X PAE frames to the CPU port(s) */
--	mt7530_rmw(priv, MT753X_BPC, MT753X_PAE_PORT_FW_MASK,
--		   MT753X_PAE_PORT_FW(MT753X_BPDU_CPU_ONLY));
--
--	/* Trap LLDP frames with :0E MAC DA to the CPU port(s) */
--	mt7530_rmw(priv, MT753X_RGAC2, MT753X_R0E_PORT_FW_MASK,
-+	/* Trap LLDP frames with :0E MAC DA to the CPU port(s) and egress them
-+	 * VLAN-untagged.
-+	 */
-+	mt7530_rmw(priv, MT753X_RGAC2, MT753X_R0E_EG_TAG_MASK |
-+		   MT753X_R0E_PORT_FW_MASK,
-+		   MT753X_R0E_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
- 		   MT753X_R0E_PORT_FW(MT753X_BPDU_CPU_ONLY));
- }
- 
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index a71166e0a7fc..5566c905a415 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -65,12 +65,18 @@ enum mt753x_id {
- 
- /* Registers for BPDU and PAE frame control*/
- #define MT753X_BPC			0x24
--#define  MT753X_BPDU_PORT_FW_MASK	GENMASK(2, 0)
-+#define  MT753X_PAE_EG_TAG_MASK		GENMASK(24, 22)
-+#define  MT753X_PAE_EG_TAG(x)		FIELD_PREP(MT753X_PAE_EG_TAG_MASK, x)
- #define  MT753X_PAE_PORT_FW_MASK	GENMASK(18, 16)
- #define  MT753X_PAE_PORT_FW(x)		FIELD_PREP(MT753X_PAE_PORT_FW_MASK, x)
-+#define  MT753X_BPDU_EG_TAG_MASK	GENMASK(8, 6)
-+#define  MT753X_BPDU_EG_TAG(x)		FIELD_PREP(MT753X_BPDU_EG_TAG_MASK, x)
-+#define  MT753X_BPDU_PORT_FW_MASK	GENMASK(2, 0)
- 
- /* Register for :03 and :0E MAC DA frame control */
- #define MT753X_RGAC2			0x2c
-+#define  MT753X_R0E_EG_TAG_MASK		GENMASK(24, 22)
-+#define  MT753X_R0E_EG_TAG(x)		FIELD_PREP(MT753X_R0E_EG_TAG_MASK, x)
- #define  MT753X_R0E_PORT_FW_MASK	GENMASK(18, 16)
- #define  MT753X_R0E_PORT_FW(x)		FIELD_PREP(MT753X_R0E_PORT_FW_MASK, x)
- 
-@@ -253,6 +259,7 @@ enum mt7530_port_mode {
- enum mt7530_vlan_port_eg_tag {
- 	MT7530_VLAN_EG_DISABLED = 0,
- 	MT7530_VLAN_EG_CONSISTENT = 1,
-+	MT7530_VLAN_EG_UNTAGGED = 4,
+ #define DSI_CMDQ_SIZE		0x60
+ #define CMDQ_SIZE			0x3f
+@@ -180,6 +181,7 @@ struct mtk_dsi_driver_data {
+ 	bool has_shadow_ctl;
+ 	bool has_size_ctl;
+ 	bool cmdq_long_packet_ctl;
++	bool support_per_frame_lp;
  };
  
- enum mt7530_vlan_port_attr {
-
+ struct mtk_dsi {
+@@ -516,6 +518,103 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+ 			(vm->hactive * dsi_tmp_buf_bpp + 2) % dsi->lanes;
+ 	}
+ 
++	if (dsi->driver_data->support_per_frame_lp) {
++		unsigned int lpx = 0, da_hs_exit = 0, da_hs_prep = 0, da_hs_trail = 0;
++		unsigned int da_hs_zero = 0, ps_wc = 0, hs_vb_ps_wc = 0;
++		u32 bllp_wc, bllp_en, v_active_roundup, hstx_cklp_wc;
++		u32 hstx_cklp_wc_max, hstx_cklp_wc_min;
++
++		da_hs_trail = (readl(dsi->regs + DSI_PHY_TIMECON0) >> 24) & 0xff;
++		bllp_en = (readl(dsi->regs + DSI_TXRX_CTRL) >> 7) & 0x1;
++		if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE) {
++			horizontal_sync_active_byte =
++				(vm->hsync_len * dsi_tmp_buf_bpp - 10);
++			horizontal_backporch_byte =
++				(vm->hback_porch * dsi_tmp_buf_bpp - 10);
++			horizontal_frontporch_byte =
++				(vm->hfront_porch * dsi_tmp_buf_bpp - 12);
++
++			ps_wc = readl(dsi->regs + DSI_PSCTRL) & 0x7fff;
++			v_active_roundup = (32 + horizontal_sync_active_byte +
++				horizontal_backporch_byte + ps_wc +
++				horizontal_frontporch_byte) % dsi->lanes;
++			if (v_active_roundup)
++				horizontal_backporch_byte = horizontal_backporch_byte +
++					dsi->lanes - v_active_roundup;
++			hstx_cklp_wc_min = (DIV_ROUND_UP((12 + 2 + 4 +
++				horizontal_sync_active_byte), dsi->lanes) + da_hs_trail + 1)
++				* dsi->lanes / 6 - 1;
++			hstx_cklp_wc_max = (DIV_ROUND_UP((20 + 6 + 4 +
++				horizontal_sync_active_byte + horizontal_backporch_byte +
++				ps_wc), dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
++		} else {
++			horizontal_sync_active_byte = vm->hsync_len * dsi_tmp_buf_bpp - 4;
++
++			horizontal_backporch_byte = (vm->hback_porch + vm->hsync_len) *
++				dsi_tmp_buf_bpp - 10;
++			hstx_cklp_wc_min = (DIV_ROUND_UP(4, dsi->lanes) + da_hs_trail + 1)
++				* dsi->lanes / 6 - 1;
++
++			if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) {
++				ps_wc = readl(dsi->regs + DSI_PSCTRL) & 0x7fff;
++				bllp_wc = readl(dsi->regs + DSI_BLLP_WC) & 0xfff;
++				horizontal_frontporch_byte = (vm->hfront_porch *
++					dsi_tmp_buf_bpp - 18);
++
++				v_active_roundup = (28 + horizontal_backporch_byte + ps_wc +
++					horizontal_frontporch_byte + bllp_wc) % dsi->lanes;
++				if (v_active_roundup)
++					horizontal_backporch_byte = horizontal_backporch_byte +
++					dsi->lanes - v_active_roundup;
++				if (bllp_en) {
++					hstx_cklp_wc_max = (DIV_ROUND_UP((16 + 6 + 4 +
++						horizontal_backporch_byte + bllp_wc + ps_wc),
++						dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
++				} else {
++					hstx_cklp_wc_max = (DIV_ROUND_UP((12 + 4 + 4 +
++						horizontal_backporch_byte + bllp_wc + ps_wc),
++						dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
++				}
++			} else {
++				ps_wc = readl(dsi->regs + DSI_PSCTRL) & 0x7fff;
++				horizontal_frontporch_byte = (vm->hfront_porch *
++					dsi_tmp_buf_bpp - 12);
++
++				v_active_roundup = (22 + horizontal_backporch_byte + ps_wc +
++					horizontal_frontporch_byte) % dsi->lanes;
++				if (v_active_roundup)
++					horizontal_backporch_byte = horizontal_backporch_byte +
++					dsi->lanes - v_active_roundup;
++
++				hstx_cklp_wc_max = (DIV_ROUND_UP((12 + 4 + 4 +
++					horizontal_backporch_byte + ps_wc),
++					dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
++			}
++		}
++		hstx_cklp_wc = (readl(dsi->regs + DSI_HSTX_CKL_WC) >> 2) & 0x3fff;
++		if (hstx_cklp_wc <= hstx_cklp_wc_min ||
++			hstx_cklp_wc >= hstx_cklp_wc_max) {
++			hstx_cklp_wc = (hstx_cklp_wc_max / 2) << 2;
++			writel(hstx_cklp_wc, dsi->regs + DSI_HSTX_CKL_WC);
++		}
++		hstx_cklp_wc = hstx_cklp_wc >> 2;
++		if (hstx_cklp_wc <= hstx_cklp_wc_min ||
++			hstx_cklp_wc >= hstx_cklp_wc_max) {
++			DRM_WARN("Wrong setting of hstx_ckl_wc\n");
++		}
++
++		lpx = readl(dsi->regs + DSI_PHY_TIMECON0) & 0xff;
++		da_hs_exit = (readl(dsi->regs + DSI_PHY_TIMECON1) >> 24) & 0xff;
++		da_hs_prep = (readl(dsi->regs + DSI_PHY_TIMECON0) >> 8) & 0xff;
++		da_hs_zero = (readl(dsi->regs + DSI_PHY_TIMECON0) >> 16) & 0xff;
++		ps_wc = readl(dsi->regs + DSI_PSCTRL) & 0x7fff;
++		hs_vb_ps_wc = ps_wc -
++			(lpx + da_hs_exit + da_hs_prep + da_hs_zero + 2)
++			* dsi->lanes;
++		horizontal_frontporch_byte = (1 << 31)
++			| (hs_vb_ps_wc << 16)
++			| (horizontal_frontporch_byte);
++	}
+ 	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
+ 	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
+ 	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
+@@ -1246,6 +1345,7 @@ static const struct mtk_dsi_driver_data mt8188_dsi_driver_data = {
+ 	.has_shadow_ctl = true,
+ 	.has_size_ctl = true,
+ 	.cmdq_long_packet_ctl = true,
++	.support_per_frame_lp = true,
+ };
+ 
+ static const struct of_device_id mtk_dsi_of_match[] = {
 -- 
-2.40.1
+2.43.0
 
 
