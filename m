@@ -4,86 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63BDCC5475B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 09:42:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFB16C5475B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 09:45:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=YlZ5XiSrQtfZyIf42XjcQHUar2YIBT2LQ8deb92YJ2g=; b=kZIil9osdJKca1xmuhawVg70VR
-	KrVlGkrEJRe/L8saH2jz/VsUNJyd64fWN/ICZdSbmbkCTE8p9kfqlVXsDAYpQYJuibx1JVo1jytXY
-	rzfevOl0gXB0wXyYelUjF2hXetrFBp6sPFBjNYNLSxy6BlL/dtIFExNe8qWM8v0Sqe/pldhe1qRQF
-	2ZwO3Ov7rZCHrOrOpDyWTwpBPhY55fnXfOoVr/535qwLegEtwtGCXhGoTl64U3V7g4pFtfAcTqRZY
-	0aOzVrDSbm+8PaVHvxA0l05YvsEKtjGTJUhB+M6XjwZRc3THuj0/AUpy7U++K/LuSGuE9maYstFPT
-	/v3dYM8g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IROgtCRQZjEVVrhl9ilsgSTq/wOx+QKigkNDboOu9bo=; b=KUloGHy+KH4IdnfSBJlDbo+oI7
+	NjO1H86rmRhOJTw7duM5h4WAieoiVfFO+GX843dT+6H8x06nIih0/rQ72SlJqQu8YiWxkqWp8BbPn
+	NCVsmCmogAeOG/bzW5UVVz5D9huGUoYWcw7DHV0wVHhqulFHkqXYAztr5+0kR8TweGNMPlZxYez16
+	PmyIqQ2qVVnPkb87J2mmhtXEQ1lhC/ou3GyLOwB+xfISEyotwtHuOeWXRRiFZgMWJ901jOR9wFVfD
+	wbQok+4+itCC22ViT2mFYjIltkVqR9fImu4c7+97rKX8lkr9IKAcgpS5mm4lGcyYwyBiX21RmolYV
+	X1ZqO8ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkhbX-0000000DltE-3lXf;
-	Thu, 14 Mar 2024 09:42:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rkhe8-0000000DmAE-1hfW;
+	Thu, 14 Mar 2024 09:45:08 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkhbU-0000000Dlqw-03Qt;
-	Thu, 14 Mar 2024 09:42:25 +0000
-X-UUID: 2644536ae1e711eeacdb61a41848c7d2-20240314
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=YlZ5XiSrQtfZyIf42XjcQHUar2YIBT2LQ8deb92YJ2g=;
-	b=NEZVlngEWXZZ7VwOVwilUmTjauAAw6FQTE5qH56xL8lxdCv9rDirIWZpM5G/gMd17xV544dT2tsFJx6Eo5K6Cs8eLoouITd5b/gLGGbYG3ThAVNHeU6KCwqglaUDvYyt3xQqg52vKZF8V/2BvX+4iZhB8m4n11xBmhPHYLayGo4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:fa2e6de2-cb38-49ad-ab88-40575b06cbf9,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:f684ff84-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 2644536ae1e711eeacdb61a41848c7d2-20240314
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <shuijing.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 569149345; Thu, 14 Mar 2024 02:42:19 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 14 Mar 2024 17:41:44 +0800
-Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 14 Mar 2024 17:41:44 +0800
-From: Shuijing Li <shuijing.li@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
-	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Shuijing Li
-	<shuijing.li@mediatek.com>
-Subject: [PATCH] mediatek: dsi: Add dsi per-frame lp code for mt8188
-Date: Thu, 14 Mar 2024 17:41:55 +0800
-Message-ID: <20240314094238.3315-1-shuijing.li@mediatek.com>
-X-Mailer: git-send-email 2.43.0
+	id 1rkhe4-0000000Dm93-15TS;
+	Thu, 14 Mar 2024 09:45:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1710409501;
+	bh=pVZnehC/cbZZicGajuwvH1Tlz6noVProoLGDfyrCVrw=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=fkUhM6GK0jvq0Q9XSZTW3dzp3W8UbHMTC7pIxcGG6MKPFbucGLAY3sMt7+1Wihfi5
+	 RRQHko0vML9PtDPKRes+rMf0wXvmzqrQNYyHP40avy27aMP3alI4+hAEyLe/shtfx7
+	 GJTqjmY75I08n/OrQgk7irkJ0tCGjTLsBi1OfR9EZtZM7PefrpdA8/mE5xWUJROLnQ
+	 5TQDtOk9LCQCyIu3g2t6/qVhOmG0TBQmD1LGcd2ZnEpbnvdGX9w7LpLN6koSfCgtwO
+	 EoWMy0xxgvuvO4VLfezr562BFlVcPLizsVeUSM/7/V0aoMbYabSPjCWZ1qhK9KTsmc
+	 4yLHgrQDeKYAQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 8516137820A3;
+	Thu, 14 Mar 2024 09:45:00 +0000 (UTC)
+Message-ID: <f0383126-99c4-4233-b222-597caacf43b9@collabora.com>
+Date: Thu, 14 Mar 2024 10:44:59 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.397200-8.000000
-X-TMASE-MatchedRID: S534RugKI8kwKP61E4rxu1VN8laWo90M5TpDO1WKs2mYQOVjVNfbbkeC
-	RUBS/4NPo5qw/iFKtvYWHIQM6TbbE5Rho78T5P9D4pdq9sdj8LXlNvCpVWkX4+8+PNqCaHTUQ5K
-	Zv/QHc1GfUW6RBS3uLULpsu+J7FFsoT61G3YSs7mQ+gWwzffozrn7V+KB+3cumyiLZetSf8lRN1
-	j+Z19Ne0kpbiYOUmwxwrbXMGDYqV/Ix3Icp6zuW/Y8Q+obMpZDGRigQm9wRcMFWmWkIG9aWWkGC
-	AUz36Zl
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.397200-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 967D6EFB6CEC7F978B2E6FDC292789DF1CF8A4A7AC9EBA50C3B0564A1B37B9FE2000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] clk: mediatek: mt7988-infracfg: fix clocks for 2nd PCIe
+ port
+To: Daniel Golle <daniel@makrotopia.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sam Shih <sam.shih@mediatek.com>, Frank Wunderlich
+ <frank-w@public-files.de>, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <1da2506a51f970706bf4ec9509dd04e0471065e5.1710367453.git.daniel@makrotopia.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <1da2506a51f970706bf4ec9509dd04e0471065e5.1710367453.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240314_024224_068324_2F046B7F 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20240314_024504_477524_D70181CF 
+X-CRM114-Status: GOOD (  16.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,156 +79,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adding the per-frame lp function of mt8188, which can keep HFP in HS and
-reduce the time required for each line to enter and exit low power.
-Per Frame LP:
-  |<----------One Active Frame-------->|
---______________________________________----___________________
-  ^HSA+HBP^^RGB^^HFP^^HSA+HBP^^RGB^^HFP^    ^HSA+HBP^^RGB^^HFP^
+Il 13/03/24 23:05, Daniel Golle ha scritto:
+> Due to what seems to be an undocumented oddity in MediaTek's MT7988
+> SoC design the CLK_INFRA_PCIE_PERI_26M_CK_P2 clock requires
+> CLK_INFRA_PCIE_PERI_26M_CK_P3 to be enabled.
+> 
+> This currently leads to PCIe port 2 not working in Linux.
+> 
+> Reflect the apparent relationship in the clk driver to make sure PCIe
+> port 2 of the MT7988 SoC works.
+> 
+> Fixes: 4b4719437d85f ("clk: mediatek: add drivers for MT7988 SoC")
+> Suggested-by: Sam Shih <sam.shih@mediatek.com>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-Per Line LP:
-  |<---------------One Active Frame----------->|
---______________--______________--______________----______________
-  ^HSA+HBP^^RGB^  ^HSA+HBP^^RGB^  ^HSA+HBP^^RGB^    ^HSA+HBP^^RGB^
+That's funny. Anyway:
 
-Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 100 +++++++++++++++++++++++++++++
- 1 file changed, 100 insertions(+)
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index a2fdfc8ddb15..e6f4807c8711 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -83,6 +83,7 @@
- #define DSI_HSA_WC		0x50
- #define DSI_HBP_WC		0x54
- #define DSI_HFP_WC		0x58
-+#define DSI_BLLP_WC		0x5C
- 
- #define DSI_CMDQ_SIZE		0x60
- #define CMDQ_SIZE			0x3f
-@@ -180,6 +181,7 @@ struct mtk_dsi_driver_data {
- 	bool has_shadow_ctl;
- 	bool has_size_ctl;
- 	bool cmdq_long_packet_ctl;
-+	bool support_per_frame_lp;
- };
- 
- struct mtk_dsi {
-@@ -516,6 +518,103 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
- 			(vm->hactive * dsi_tmp_buf_bpp + 2) % dsi->lanes;
- 	}
- 
-+	if (dsi->driver_data->support_per_frame_lp) {
-+		unsigned int lpx = 0, da_hs_exit = 0, da_hs_prep = 0, da_hs_trail = 0;
-+		unsigned int da_hs_zero = 0, ps_wc = 0, hs_vb_ps_wc = 0;
-+		u32 bllp_wc, bllp_en, v_active_roundup, hstx_cklp_wc;
-+		u32 hstx_cklp_wc_max, hstx_cklp_wc_min;
-+
-+		da_hs_trail = (readl(dsi->regs + DSI_PHY_TIMECON0) >> 24) & 0xff;
-+		bllp_en = (readl(dsi->regs + DSI_TXRX_CTRL) >> 7) & 0x1;
-+		if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE) {
-+			horizontal_sync_active_byte =
-+				(vm->hsync_len * dsi_tmp_buf_bpp - 10);
-+			horizontal_backporch_byte =
-+				(vm->hback_porch * dsi_tmp_buf_bpp - 10);
-+			horizontal_frontporch_byte =
-+				(vm->hfront_porch * dsi_tmp_buf_bpp - 12);
-+
-+			ps_wc = readl(dsi->regs + DSI_PSCTRL) & 0x7fff;
-+			v_active_roundup = (32 + horizontal_sync_active_byte +
-+				horizontal_backporch_byte + ps_wc +
-+				horizontal_frontporch_byte) % dsi->lanes;
-+			if (v_active_roundup)
-+				horizontal_backporch_byte = horizontal_backporch_byte +
-+					dsi->lanes - v_active_roundup;
-+			hstx_cklp_wc_min = (DIV_ROUND_UP((12 + 2 + 4 +
-+				horizontal_sync_active_byte), dsi->lanes) + da_hs_trail + 1)
-+				* dsi->lanes / 6 - 1;
-+			hstx_cklp_wc_max = (DIV_ROUND_UP((20 + 6 + 4 +
-+				horizontal_sync_active_byte + horizontal_backporch_byte +
-+				ps_wc), dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
-+		} else {
-+			horizontal_sync_active_byte = vm->hsync_len * dsi_tmp_buf_bpp - 4;
-+
-+			horizontal_backporch_byte = (vm->hback_porch + vm->hsync_len) *
-+				dsi_tmp_buf_bpp - 10;
-+			hstx_cklp_wc_min = (DIV_ROUND_UP(4, dsi->lanes) + da_hs_trail + 1)
-+				* dsi->lanes / 6 - 1;
-+
-+			if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) {
-+				ps_wc = readl(dsi->regs + DSI_PSCTRL) & 0x7fff;
-+				bllp_wc = readl(dsi->regs + DSI_BLLP_WC) & 0xfff;
-+				horizontal_frontporch_byte = (vm->hfront_porch *
-+					dsi_tmp_buf_bpp - 18);
-+
-+				v_active_roundup = (28 + horizontal_backporch_byte + ps_wc +
-+					horizontal_frontporch_byte + bllp_wc) % dsi->lanes;
-+				if (v_active_roundup)
-+					horizontal_backporch_byte = horizontal_backporch_byte +
-+					dsi->lanes - v_active_roundup;
-+				if (bllp_en) {
-+					hstx_cklp_wc_max = (DIV_ROUND_UP((16 + 6 + 4 +
-+						horizontal_backporch_byte + bllp_wc + ps_wc),
-+						dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
-+				} else {
-+					hstx_cklp_wc_max = (DIV_ROUND_UP((12 + 4 + 4 +
-+						horizontal_backporch_byte + bllp_wc + ps_wc),
-+						dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
-+				}
-+			} else {
-+				ps_wc = readl(dsi->regs + DSI_PSCTRL) & 0x7fff;
-+				horizontal_frontporch_byte = (vm->hfront_porch *
-+					dsi_tmp_buf_bpp - 12);
-+
-+				v_active_roundup = (22 + horizontal_backporch_byte + ps_wc +
-+					horizontal_frontporch_byte) % dsi->lanes;
-+				if (v_active_roundup)
-+					horizontal_backporch_byte = horizontal_backporch_byte +
-+					dsi->lanes - v_active_roundup;
-+
-+				hstx_cklp_wc_max = (DIV_ROUND_UP((12 + 4 + 4 +
-+					horizontal_backporch_byte + ps_wc),
-+					dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
-+			}
-+		}
-+		hstx_cklp_wc = (readl(dsi->regs + DSI_HSTX_CKL_WC) >> 2) & 0x3fff;
-+		if (hstx_cklp_wc <= hstx_cklp_wc_min ||
-+			hstx_cklp_wc >= hstx_cklp_wc_max) {
-+			hstx_cklp_wc = (hstx_cklp_wc_max / 2) << 2;
-+			writel(hstx_cklp_wc, dsi->regs + DSI_HSTX_CKL_WC);
-+		}
-+		hstx_cklp_wc = hstx_cklp_wc >> 2;
-+		if (hstx_cklp_wc <= hstx_cklp_wc_min ||
-+			hstx_cklp_wc >= hstx_cklp_wc_max) {
-+			DRM_WARN("Wrong setting of hstx_ckl_wc\n");
-+		}
-+
-+		lpx = readl(dsi->regs + DSI_PHY_TIMECON0) & 0xff;
-+		da_hs_exit = (readl(dsi->regs + DSI_PHY_TIMECON1) >> 24) & 0xff;
-+		da_hs_prep = (readl(dsi->regs + DSI_PHY_TIMECON0) >> 8) & 0xff;
-+		da_hs_zero = (readl(dsi->regs + DSI_PHY_TIMECON0) >> 16) & 0xff;
-+		ps_wc = readl(dsi->regs + DSI_PSCTRL) & 0x7fff;
-+		hs_vb_ps_wc = ps_wc -
-+			(lpx + da_hs_exit + da_hs_prep + da_hs_zero + 2)
-+			* dsi->lanes;
-+		horizontal_frontporch_byte = (1 << 31)
-+			| (hs_vb_ps_wc << 16)
-+			| (horizontal_frontporch_byte);
-+	}
- 	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
- 	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
- 	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
-@@ -1246,6 +1345,7 @@ static const struct mtk_dsi_driver_data mt8188_dsi_driver_data = {
- 	.has_shadow_ctl = true,
- 	.has_size_ctl = true,
- 	.cmdq_long_packet_ctl = true,
-+	.support_per_frame_lp = true,
- };
- 
- static const struct of_device_id mtk_dsi_of_match[] = {
--- 
-2.43.0
+> ---
+>   drivers/clk/mediatek/clk-mt7988-infracfg.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/clk/mediatek/clk-mt7988-infracfg.c b/drivers/clk/mediatek/clk-mt7988-infracfg.c
+> index 449041f8abbc9..c8c023afe3e5a 100644
+> --- a/drivers/clk/mediatek/clk-mt7988-infracfg.c
+> +++ b/drivers/clk/mediatek/clk-mt7988-infracfg.c
+> @@ -156,7 +156,7 @@ static const struct mtk_gate infra_clks[] = {
+>   	GATE_INFRA0(CLK_INFRA_PCIE_PERI_26M_CK_P1, "infra_pcie_peri_ck_26m_ck_p1",
+>   		    "csw_infra_f26m_sel", 8),
+>   	GATE_INFRA0(CLK_INFRA_PCIE_PERI_26M_CK_P2, "infra_pcie_peri_ck_26m_ck_p2",
+> -		    "csw_infra_f26m_sel", 9),
+> +		    "infra_pcie_peri_ck_26m_ck_p3", 9),
+>   	GATE_INFRA0(CLK_INFRA_PCIE_PERI_26M_CK_P3, "infra_pcie_peri_ck_26m_ck_p3",
+>   		    "csw_infra_f26m_sel", 10),
+>   	/* INFRA1 */
 
 
