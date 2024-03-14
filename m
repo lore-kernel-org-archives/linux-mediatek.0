@@ -4,59 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BE7EC54791
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Mar 2024 11:25:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 273DBC54E67
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 09:29:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Khp9WhdhrUMC3rjvLeiFVDA0pee+bxFrxYN8BOO/r2Q=; b=l+eeu25x0iirCmJgLTdpqF1nVr
-	65ZECPO1uOsaf8HyFanWtQk+Pbo1FZPqvLP4HJNQ31+sRw5nx6WD59vvSo+u8t6SfMATBY2wIqaS3
-	/pwcnTugxBJ09V5TcestEgfDgdapjyLN09DjTaqUe10OK9T/z/20m/NqlQveSr43vPoP6eu2keGG3
-	sXB4V2HwcWz4u6ePa9i23WZQt5MjiH6ogLk/m3/T8gu5QDTMg0v8DwqB/tbx/X8mlLyi3tQ2Fka0/
-	NytQmFSlQDyIRVOt2I89G8glnw/Py4/S8CghJ8xy3Po+/L+ZperCqysmSJNG3YREYa4UnmuSGEMqs
-	tsjKLkVw==;
+	bh=FyfHeqW2YFBA7U+iW7diKDLmxIlxNYlbSHhsCUa405I=; b=OiwQs4fY/mpRB3lKDKdo+zGvN9
+	/JqHLdCIKV20FdVgPDmr15cSHT2b4vRaa4j/+0J3F3Wgw1OPNr87CXJeo/FDkj/Z7qP092qoZXlUg
+	m5Pp5HLw1x0nOcNqLOKwkPl69rEZsE69jvMnamoqkayZfRTy9IVxObuEIgtvfcboydNMdZEuN83+g
+	G0GwKX4rD6Q9gxPm4SuAZBKlN4pFGJFpDN5rkYVCfVj/tPjyqiMvAQv+T/n47vuvswSOSHbaIJh1s
+	+Prf8m2JGSRpmcCm2n5nyivQPCheZnbwTU+TYQ54f9BypNtq43xiBYUP2CACt4ev2UEn5KXWLqtwx
+	jFXjGEqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkMjt-00000009uah-0iHT;
-	Wed, 13 Mar 2024 11:25:41 +0000
+	id 1rkhOe-0000000DjD9-00sx;
+	Thu, 14 Mar 2024 09:29:08 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkMjp-00000009uZu-1SB6;
-	Wed, 13 Mar 2024 11:25:38 +0000
+	id 1rkhOa-0000000DjBt-0EGA;
+	Thu, 14 Mar 2024 09:29:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 240BC6141C;
-	Wed, 13 Mar 2024 11:25:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 8D208C433C7;
-	Wed, 13 Mar 2024 11:25:35 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 988C76158A;
+	Thu, 14 Mar 2024 09:29:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 2DD6BC433F1;
+	Thu, 14 Mar 2024 09:29:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1710329135;
-	bh=LYcNh8f/VUH2gSW2953XdtfYjWbGSG8COCLwOqFU9ss=;
+	s=k20201202; t=1710408542;
+	bh=Jx/AZAWXpqocB7lNLUtwT+UcAklkZMnptmke1Ph4jas=;
 	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=UbL5fwOesmZxDjwGCadSLhlMetEzhhV4Sk6MRiBZPi7LHDafsiZ6rtdallYJqmKiM
-	 79yeNbQpI9PHxcxAoF7Etf1rVvKhH8EZ0hAXLqHgMBzVHs1vWpU2iuwGcDT3/uPDIv
-	 qbNYSTqmojPupxOpwiIC7PyLYq96LuxCM89+phSPRnLP57O/ViLtUG4b2o+OzwSJXl
-	 cSLK2aGj+Y1mT7eDUipud8VnAtU1K4RBjfW3lW58ZPteo1JsrpKl+iB7xQJSQ+Egul
-	 sZaN/0scE39HIUN15P74xpLI1w0J1c6lGwjAmtIghqbsXfpnk/AaJPjXQ0QpW4Myqg
-	 iMkw97lR19y+A==
+	b=gfsRdRpidNPAJe43U7bZizUjxnb7lhLHXhWDvnq6d/KhPYVAVIjUfjecau5q3pGdu
+	 q5vKfxAY5KDwkMXc3jfNOj1VWiIUUa6gHlGAUu9jO2gssv0S6cDknBbAzyRwXWv44l
+	 tXrGiiIXicEZ/U8Qf2rdouocNpxKGtUxGQzmVS5tT5cSTOZBRVZ0PIxogPyQlmRIcW
+	 Da6lOxw/x0CBHt3z04JlbRUCAr6zCcxJkf1GyP5+HRUEVCtsOwY+5fWyXaP1aiLnzi
+	 jtGyH8WPc0OvVEXZYApt0BmxxcH3cVS0nWPm+S+pxWY7JFUI+/pigICMSXWIKfx1xY
+	 hhnC7esVYq/Rw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 682FCC54791;
-	Wed, 13 Mar 2024 11:25:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 239FDC54E67;
+	Thu, 14 Mar 2024 09:29:02 +0000 (UTC)
 From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
  <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Wed, 13 Mar 2024 14:25:07 +0300
-Subject: [PATCH net] net: dsa: mt7530: prevent possible incorrect XTAL
+Date: Thu, 14 Mar 2024 12:28:35 +0300
+Subject: [PATCH net v2] net: dsa: mt7530: prevent possible incorrect XTAL
  frequency selection
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: =?utf-8?q?=3C20240313-for-netnext-mt7530-better-fix-xtal-frequen?=
- =?utf-8?q?cy-v1-1-5a50df99f51a=40arinc9=2Ecom=3E?=
-X-B4-Tracking: v=1; b=H4sIABKN8WUC/x2NzQrCMBAGX6Xs2YX8WEt9FemhrV80oKluVkkpf
- XeDx4FhZqMMich0bjYSfGOOS6pgDw3N9zHdwPFamZxxR+Ot47AIJ2hCUX5q13rDE1QhHGLhouO
- Dg+D9QZpX9han0Pa9t12gmnwJqvXfXahWaNj3H5EuS5uDAAAA
+Message-Id: =?utf-8?q?=3C20240314-for-netnext-mt7530-better-fix-xtal-frequen?=
+ =?utf-8?q?cy-v2-1-fe30795593df=40arinc9=2Ecom=3E?=
+X-B4-Tracking: v=1; b=H4sIAELD8mUC/5WOSw7CIBRFt9K8sc/wERscuQ/TAdKHJbGggE2bp
+ nuXNG7A4f3knrtCpuQpw6VZIdHks4+hCnFowA4mPAh9XzUIJk5McoEuJgxUAs0Fx9IqyfBOpVB
+ C52eci3miS/T+ULALSk5np7SWvHVQJ1+JamvH3aCuQFfNwecS07JfmPge/WjyP9rEkaMyivVOa
+ 6e4uZrkg9VHG0fotm37An9I9ZHuAAAA
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
  Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
  Florian Fainelli <f.fainelli@gmail.com>, 
@@ -74,18 +75,18 @@ Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
  Justin Swartz <justin.swartz@risingedge.co.za>, 
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1710329122; l=6561;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1710408527; l=6807;
  i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
- bh=L64g+46HN+S29jthqvg493sRpkqBmVTreKHISDH47E8=;
- b=QETKrDhCZGIxxkfvVHrUw+tUQmz/zGwkbwSTF7U2X5bdPBFZKtDOmY0SPiSsK98/qW7i0Kty1
- Fo+cDhkeTl+DLsjd42I1KWahApVmEMICNgNOyCa7nk9iV2a8eGtGNzy
+ bh=b3iyIQB+IfaOXBCFV+CLb00V/DTdBVGoIX1+WquqbvY=;
+ b=Ipl+/Xf00qHI5kU6sQQr2t9e/tXIrxQha0M6Rg9B5s1AJvw/WD/0qGsj5wKPMdj2NU+7fw4JW
+ AwKYa8g+h8iAgA13wPCzDbrlFJrd5GsCTjjA+VX97fIzFSXvtQe+9Kn
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt with auth_id=115
 X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240313_042537_703689_E1D460CB 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20240314_022904_429286_C3EC2168 
+X-CRM114-Status: GOOD (  14.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -223,10 +224,15 @@ Revert commit 2920dd92b980 ("net: dsa: mt7530: disable LEDs before reset").
 Changing the state of pins via reset assertion is simpler and more
 efficient than doing so by setting the LED controller off.
 
-Reported-by: Justin Swartz <justin.swartz@risingedge.co.za>
 Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
 Fixes: c288575f7810 ("net: dsa: mt7530: Add the support of MT7531 switch")
+Co-developed-by: Justin Swartz <justin.swartz@risingedge.co.za>
+Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+Changes in v2:
+- Feature Justin as a co-author.
+- Link to v1: https://lore.kernel.org/r/20240313-for-netnext-mt7530-better-fix-xtal-frequency-v1-1-5a50df99f51a@arinc9.com
 ---
  drivers/net/dsa/mt7530.c | 14 ++++----------
  1 file changed, 4 insertions(+), 10 deletions(-)
