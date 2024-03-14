@@ -4,81 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28651C54E67
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 12:20:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27610C54E68
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 12:30:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=1JOJevBznZDHv+rPPkI/kfMerMLWh3uWQP5q1ueWffU=; b=b4RxO4+XDKR5aFRBYU0JFXcpdr
-	ITL0K1QobRdUcoCMSbRhv9rVuu+6GPqazeUKs/JHDpCXiepDJjWpA61t84EtACQuylA0ozGs2kcA8
-	wvCRXYV20cT2ezMyt31AJnvSXph+VPGjYIAWVa0zn1naGY7iCyUiHIRVQ3/l9SRY5CM7aXAnIQL61
-	82iJ5hlL4/K6GjsQZk7QY/3coaUnLppPxv9/IWhoBJ6tX0TCiJZLFEPZrQenMKEyBBAQ6Mb3T7/wc
-	xJEeA3pnHLYbmpqGkMPN1C7fPVabunFoRkw9oi+1YHagg4vBoCGgni5NAMhUrkSp3VU+mu3ckP0uF
-	+KHMrmUg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ExKWeZtF1o/H6VvLIV2C1PGZug2wLFclbrXuhugazns=; b=et/E0swwL1d66VxKVOqRZlB0gr
+	5kVasPYe9WHgKrgskV02feGlLj3yP0y9hcamBAKE2SM4vzVX3L4QDvOssfkPRDza3Ec8lt3DWbduy
+	HsnqfMBwB2A3iVRFfXa3AHnni4l1IPEEefqohfBOyKAEJsvPWZ/OZEWy9WbLwf3MgMG9UZyJpOepX
+	Zn16TZEGCz+ut2TGmf2lZhCF3lsLvXzVb+pvxEB3bMnOWruCOjlyF4mvyHvnqhO6+tUue68p0Jlb5
+	7O4G2A0EmLBSNUyOuXXhUnErtXUBsg3tKh0bUC+fQqKEEmlAy+YpGqv+vNPUr2v/i+1wHPgZSsVfN
+	TrkfDf2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkk4n-0000000EDUW-3Ae8;
-	Thu, 14 Mar 2024 12:20:49 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rkkE1-0000000EFXL-3MTi;
+	Thu, 14 Mar 2024 12:30:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkk4a-0000000EDLT-0hsF;
-	Thu, 14 Mar 2024 12:20:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 24630CE1DA3;
-	Thu, 14 Mar 2024 12:20:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 5DF3CC433C7;
-	Thu, 14 Mar 2024 12:20:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1710418833;
-	bh=Lrp2iOUWubwRXDT8fn4ZYwC2hYGdTr2JrwFF4kKzDM8=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=bva8kgpVNnYUfFN8DdvzjJ54ErkDSTrnQ4BLOKrEHjkOIz0fsn/iNB8P58nbFLZ4m
-	 yMd6i8c1BAs0eXh+yGWiZobX1Q+PISdpTK/tMDZhQzVeniYN9qnuU3gBeIi0rejTpl
-	 zMhL8appR/uQfszGC1L6StWxbL9p/KdxtXIushnMcA/7cP5F/1NNU8/Gx5CejWwZNz
-	 S3BvmqIy9lCn5lHRI5JDzm02pBUnXK6MjH36eUF972K4luk0AIMvSqxSKyZpRCijw9
-	 fAeVDpDfnmZ/hJiskz4CBSK9/0ssKoU/7VgV1Ljolueeqc4n1pq84qUklX/BQB/cAK
-	 WVrC0GbguLddg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D51FC5475B;
-	Thu, 14 Mar 2024 12:20:33 +0000 (UTC)
-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
- <devnull+arinc.unal.arinc9.com@kernel.org>
-Subject: [PATCH 0/2] Set PHY address of MT7531 switch to 0x1f on MediaTek
- arm64 boards
-Date: Thu, 14 Mar 2024 15:20:03 +0300
-Message-Id: <20240314-for-mediatek-mt7531-phy-address-v1-0-52f58db01acd@arinc9.com>
+	id 1rkkDx-0000000EFVa-43Q4;
+	Thu, 14 Mar 2024 12:30:20 +0000
+X-UUID: 9b30944ce1fe11ee9aa9374d6d45775a-20240314
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ExKWeZtF1o/H6VvLIV2C1PGZug2wLFclbrXuhugazns=;
+	b=QjCyBJYeFKc957okieBTwMcitgoYSS5YWSDrTbDkLOXOauR/mtquFCPlBaPEoaovKZ3X4TdGUJpERXDhYSsz0P2XmGUPA0QERALKV4dwB4BH6yQIeMRNLnQ46tj8Jml1IYxoucnWJYN4II3zF0R9VvBJhFxXrO0iqbJkMB4RrpM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:4b24a543-914f-46de-8cf1-a27c4b99697e,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:6f543d0,CLOUDID:7dc10085-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 9b30944ce1fe11ee9aa9374d6d45775a-20240314
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 755685587; Thu, 14 Mar 2024 05:30:13 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 14 Mar 2024 20:30:10 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 14 Mar 2024 20:30:10 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>,
+	Sebastian Fricke <sebastian.fricke@collabora.com>, Irui Wang
+	<irui.wang@mediatek.com>
+CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei
+ Dong <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v4,0/2] media: adding lock to protect the context list
+Date: Thu, 14 Mar 2024 20:30:07 +0800
+Message-ID: <20240314123009.20205-1-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-B4-Tracking: v=1; b=H4sIAHPr8mUC/x3NTQqDMBBA4avIrDuQxBRpr1K6SDMTHYo/zIgo4
- t0buvw2751grMIGz+YE5U1M5qnC3xrIQ5p6RqFqCC5E1/qIZVYcmSSt/MVx7e6tx2U4MBEpm+G
- D3CfmwjkFD7WyKBfZ/4fX+7p+k3d7onEAAAA=
-To: Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1710418818; l=938;
- i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
- bh=Lrp2iOUWubwRXDT8fn4ZYwC2hYGdTr2JrwFF4kKzDM8=;
- b=cZgt4TQjE+rDWx2SQqBS405Ixkn/oDpThaOqJKxN8BxUVkJNynIapl7jq/9Qm+A+fsgw7lThl
- P0tFBRvHLvjAa/EUuhPdhovNPfzqDO5V/Jc75hGFx9ZKfr0m5Gd/nXl
-X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
- pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
-X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt with auth_id=115
-X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240314_052036_436061_8D2710CF 
-X-CRM114-Status: UNSURE (   7.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240314_053019_137229_4F499048 
+X-CRM114-Status: GOOD (  10.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,33 +89,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello.
+The ctx_list of each module will be deleted when scp getting
+unexpected behavior, then the ctx_list->next will be set to NULL,
+the system reboot when access the NULL pointer in function
+vpu_enc(dev)_ipi_handler to go through each context.
 
-This is a small patch series setting the PHY address of MT7531 to 0x1f on
-all boards that have the switch.
-
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
-Arınç ÜNAL (2):
-      arm64: dts: mediatek: mt7622: set PHY address of MT7531 switch to 0x1f
-      arm64: dts: mediatek: mt7986: set PHY address of MT7531 switch to 0x1f
-
- arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 4 ++--
- arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts             | 4 ++--
- arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 4 ++--
- arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts             | 4 ++--
- arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts             | 4 ++--
- 5 files changed, 10 insertions(+), 10 deletions(-)
+Changed in v4:
+- Re-write the commit message for patch 1/2
+Changed in v3:
+- change 'Fixes' tag in patch 1/2
+- add cover-letter for this patch series
 ---
-base-commit: ba90af39ba57b3fe3ecfdba0c87a80d20c7b788d
-change-id: 20240314-for-mediatek-mt7531-phy-address-9d0b4cfeca21
+Yunfei Dong (2):
+  media: mediatek: vcodec: adding lock to protect decoder context list
+  media: mediatek: vcodec: adding lock to protect encoder context list
 
-Best regards,
+ .../platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c   | 8 ++++----
+ .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c | 5 +++++
+ .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h | 2 ++
+ .../media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c  | 2 ++
+ .../platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c | 5 +++++
+ .../platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h | 2 ++
+ .../media/platform/mediatek/vcodec/encoder/venc_vpu_if.c  | 2 ++
+ 7 files changed, 22 insertions(+), 4 deletions(-)
+
 -- 
-Arınç ÜNAL <arinc.unal@arinc9.com>
+2.18.0
 
 
