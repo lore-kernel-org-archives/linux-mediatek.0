@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AA93C54E67
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 10:35:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BAC7C54E68
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 10:36:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zSUOhziiBfjKSLGMTMkTNUsg+7ebYE+77GKx5fCdvWk=; b=HsmATAYXMWM72en1lRReFnt8H1
-	PrvvWMnfNXoPr9B3jd7AHU2gLl3VXZSCgHRLX+R/uhi1qAXQeKHbzLDhOCwHuNV6a2TyXWzPfn80F
-	OUEG5bgWl6QU9vNiDhv5QmpJ8wa+vzMc1bLG2IN4j0DxE/nWTENoHdepiiWiAAysv/DVwc1fhjyow
-	kqsg6GUli1gv42MallrKUb/iXfqV/pqtlLiqXio9MF+H/sEuokKcb7+PSyDOvJgKTk/oWqFmMVPlS
-	BxE9/XVdpNzcBLSSRkf0mHcjLPDYrRlFWrgmuXQfxZ8qoLeyHJqXKVwXOr8fymfxsefsJpDPOTqMe
-	nhGwI2AA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WQ9xJOrNdcx4ns2opyYFy1nMz7E6ESkxJBC1vTwyjTA=; b=fKKAdLCqV7PsSsCoufcGAMoQeM
+	LSAu7eRdI9FTl5gY7D0prlc1MQBgvYD8V/wYU0aYbYozWOdg4L0LOUUBh+hLcp3dQrvDgRo/Vxkc0
+	VipTjUVX2NGR33/FEaMCpcmPOFvEhopOTnaj3eRCOTxjDolzQxSuHpDMPogo7sxMDYsxvmBTKJwFF
+	U2c9QK9J1WmYqI6tst/k8KLnKum+Asght72hcZWPkzcHF+hV7V3NFkBDBqilbXdJdBTLT43AOKIxC
+	6Cl5ipTMcU2L/zDUAjazAGzrYBSv4DCjxGbNphZLyTSrLvgPhPWS3wBScHUzwjqtLVq2yV4IEl8PG
+	UdbNfSQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkiRF-0000000DvTX-2vwR;
-	Thu, 14 Mar 2024 10:35:53 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rkiRM-0000000DvWp-2lC4;
+	Thu, 14 Mar 2024 10:36:00 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkiRB-0000000DvR1-2cJI;
-	Thu, 14 Mar 2024 10:35:51 +0000
+	id 1rkiRC-0000000DvRO-2gdI;
+	Thu, 14 Mar 2024 10:35:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710412547;
-	bh=J6gb1OM02C9ikyOM174uH6DQpHWs4urKUhlvpsHkC/o=;
-	h=From:To:Cc:Subject:Date:From;
-	b=3npdZz2i/ErBoZ0oKKMPq94oMjo2fcIql3voyUdnx2U42zfqXA6eRW2MTOLaaZtYk
-	 2ulDO8hO2OnDUFwyeK8shrGfbjb8AtwkNcqVpx1A9eqAPcOuipirvqjPMrSVYtvGHS
-	 3nZ1Y38qPseUJ2yjowGjdOUI651u8wj8Cys/BSxgQ+hzpQx1S/HRynbG1EAMNOBJHR
-	 Vjdw7AhR/tvLi+e8lK9b0i9ywJ2nw14dVYuYpSXLIyO5HjqcgtN/PWKmiTsZWZRAoO
-	 OIw7JSTMnGOs/XeszVmvj4b1+Yk8nW3Pw3cd+Z95uOlw6kLNPx5tbLMFgNCyfYt4QR
-	 V8nFLp+ZC0NZg==
+	s=mail; t=1710412548;
+	bh=QReK/KWVzgQf557F87tkZ7/Pys1J7fmBggS/0JRuhqM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=r0aP0w+C0idVItdhVePghwV+j80xy/2P7aDOE+0QbCvBNlu2+Ko/y3sxZRl3fnTDn
+	 xQdZ+b6v+etgrCxP+9t2TSIBkEuztj5seYouoiLGvgZhg8FjtMYV0ofcXYYtiWWwEJ
+	 mPMgqv+Br2q80+FdoaF1FL7tKowKKeLICE5OvrNNCiUu8rq8h3euGq+8WmblBdPAhX
+	 U67KMSrqvTTAGzNfT3tEqrvyqd2o7556Bm3Ex08B/7aHKoimYuHTdV8wHRZRjXq8FL
+	 enHq05yixx5b3mynSZRUqnnX8mTPJQlH0gahSBQ51MDWA1ch2eUYd6Bs5uA3FhjHxv
+	 ioPPCml0y53Tw==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E198537820EF;
-	Thu, 14 Mar 2024 10:35:46 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0C2A437820D9;
+	Thu, 14 Mar 2024 10:35:47 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org
 Cc: robh@kernel.org,
@@ -56,15 +56,17 @@ Cc: robh@kernel.org,
 	wenst@chromium.org,
 	jenneron@protonmail.com,
 	kernel@collabora.com
-Subject: [PATCH 0/2] MediaTek: Add HP Chromebook x360 13b-ca0002sa
-Date: Thu, 14 Mar 2024 11:34:58 +0100
-Message-ID: <20240314103500.93158-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 1/2] dt-bindings: arm: mediatek: Add MT8195 HP Chromebook x360 13b-ca0002sa
+Date: Thu, 14 Mar 2024 11:34:59 +0100
+Message-ID: <20240314103500.93158-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.44.0
+In-Reply-To: <20240314103500.93158-1-angelogioacchino.delregno@collabora.com>
+References: <20240314103500.93158-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240314_033549_808276_E28FECB5 
-X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-CacheID: sfid-20240314_033550_836335_B0ACABD6 
+X-CRM114-Status: UNSURE (   7.19  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,34 +82,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series adds support for the HP Chromebook x360 13b-ca0002sa,
-Cherry platform, codename Dojo.
+Add the MT8195 Cherry platform's Dojo machine, a convertible design
+commercially known as the HP Chromebook x360 (13b-ca0002sa).
 
-There are very few differences with Tomato, and specifically:
- - Different touchscreen controller (still HID over I2C, different addr)
- - Different (dual MAX98390) speaker amplifier
- - Slightly different keyboard top row keymap
- - NVMe storage over PCIe0
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-This series depends on [1] the ASoC MTK cleanup, and was tested working
-by PostmarketOS community members.
-
-As for the changes in mt8195-cherry.dtsi: personally tested on MT8195
-Cherry Tomato, no issues.
-
-[1]: https://lore.kernel.org/r/20240313110147.1267793-1-angelogioacchino.delregno@collabora.com
-
-AngeloGioacchino Del Regno (2):
-  dt-bindings: arm: mediatek: Add MT8195 HP Chromebook x360 13b-ca0002sa
-  arm64: mediatek: mt8195-cherry: Introduce the MT8195 Dojo Chromebook
-
- .../devicetree/bindings/arm/mediatek.yaml     |   8 ++
- arch/arm64/boot/dts/mediatek/Makefile         |   1 +
- .../dts/mediatek/mt8195-cherry-dojo-r1.dts    | 114 ++++++++++++++++++
- .../boot/dts/mediatek/mt8195-cherry.dtsi      |   5 +
- 4 files changed, 128 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dts
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index 09f9ffd3ff7b..5524b095bf3b 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -342,6 +342,14 @@ properties:
+           - const: google,tomato-rev3
+           - const: google,tomato
+           - const: mediatek,mt8195
++      - description: HP Dojo sku1, 3, 5, 7 (HP Chromebook x360 13b-ca0002sa)
++        items:
++          - const: google,dojo-sku7
++          - const: google,dojo-sku5
++          - const: google,dojo-sku3
++          - const: google,dojo-sku1
++          - const: google,dojo
++          - const: mediatek,mt8195
+       - items:
+           - enum:
+               - mediatek,mt8195-demo
 -- 
 2.44.0
 
