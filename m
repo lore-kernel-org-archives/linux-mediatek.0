@@ -4,94 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5949C54E67
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 11:55:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E06FC5475B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 12:13:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y8AOqNEE2z+8/C4fBu6xT5uIPzpeWScBA5hbmroPZmo=; b=b3O/NvzYdotmlBPZtrWRPaUPP7
-	ikdRe0fITuGYz8Qkr/EmTOoL3sYGdwEHG5QDdzK4Lwwsit0B4Pas1vpL6LNVnHqUgQvCB9tVKXrUc
-	QrXEaacASPdKwfl3H7bvbitN3qXHJHUQJ6fCobhnbWorkPCwQLkSMSEj8xGhgn+Sn+zB+ENrVwBAF
-	t4YRz1j4iTX790aqXr6aCAGe0NlUXMu0svjAjkD6PzEQL3Nsz8OYOQotPKwAXdRaGrklgpFDfVJND
-	MIh6d8rCZMvrFRNox6gxVVMMQodRQE4chp5TG5jQNMFvALescpvrfrjnxL/oURH8jir4Bf3DTf4V8
-	YgHzZUBA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=i/6eJM3fOsriNYf7PCVpfDjiGc5hnm60G2hUzvC/N6I=; b=ZlE9vcrzSeEDO4n++FtCn4mOn9
+	RtqqwfzR6JYHnztmxjHC49cJMc6hshExgDbKq3/iPodkS3W54Gd44+LJj71bNb4bnR+Cy1CQAPo1g
+	dKvn5F49opmMLPsR05OA1KiJp9fqqdqQrqLVYMknJqOfFnStnC9Y5Z8UK+3ddqT1N53SXhbtly94r
+	KWqIV8vBiQiH6ODc48s42/anwvsd8WStJRHFjOqckoIYt2tR9GvMNXDIoZb0wTMh6BQyY75+cnnvn
+	kCuXjgBYQbDts7i/4tkP1QekJbuv+NBETUZBEJzYx+AbfzqL0vi8El/BxnSDFIW02R0e/zCASSZM+
+	mBwkw+LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkjgV-0000000E8vA-06cL;
-	Thu, 14 Mar 2024 11:55:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rkjxS-0000000EC0z-3Y80;
+	Thu, 14 Mar 2024 12:13:14 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkjgR-0000000E8u6-41IR;
-	Thu, 14 Mar 2024 11:55:41 +0000
-X-UUID: c3e70650e1f911eeacdb61a41848c7d2-20240314
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Y8AOqNEE2z+8/C4fBu6xT5uIPzpeWScBA5hbmroPZmo=;
-	b=qLmfq5aaW433KL62H6X/ARRjZexknv8j8OaK7A8VIJgMFNiHz8Kxht99QQopvK1m/QmKJkk88MViSRL+UhPeBHO1s0MrFW42N2n2rVjyoIwSdG7fVAbfbA5Fwe/k5u2pPIsZRhguy0i4CNVHZGuok284S+39anrw9tgcDi6BrB8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:4071faf4-277c-4c69-8b08-edf529b81738,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6f543d0,CLOUDID:32890085-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: c3e70650e1f911eeacdb61a41848c7d2-20240314
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1241093369; Thu, 14 Mar 2024 04:55:34 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	id 1rkjxO-0000000EC0F-1VOQ;
+	Thu, 14 Mar 2024 12:13:12 +0000
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 42E9Mwas025880;
+	Thu, 14 Mar 2024 12:13:03 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	from:to:cc:subject:date:message-id:mime-version:content-type; s=
+	qcppdkim1; bh=i/6eJM3fOsriNYf7PCVpfDjiGc5hnm60G2hUzvC/N6I=; b=Z3
+	go+nSUMEy+ifZFMzTHvBm3U7UubnuJkH2aD08XDdfLhIgyqOJJV59W50cvPvHyj0
+	pf1rm1W/BmQ+VLuqlLvGXjHclrDQ2w2IUo7rh68lqzvSnd8XUFwuSm4mn+eAmexR
+	HpbUCaRtC0P3Tee7p7Y9A2LAXNSvJhHAF3rNsPN+lw7m1ub5GuixkhSnEvJKw0uu
+	s+Zh3mXugqVQ0vROmoRzq4fKOewbLYDLt2NGCf6YCaLGcvmUGEgPTR77OCPzu/gz
+	+CxNVkSJZK7KOvTGhYNSF9Dp9qy6n6GaSy1py29imbINg6XXYCJRTgAY207MjswM
+	Jwab3fYSnOGLwmHauGXg==
+Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3wusxggy9u-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 14 Mar 2024 12:13:03 +0000 (GMT)
+Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
+	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 42ECD24C018568
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 14 Mar 2024 12:13:02 GMT
+Received: from hu-amrianan-hyd.qualcomm.com (10.80.80.8) by
+ nalasex01b.na.qualcomm.com (10.47.209.197) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 14 Mar 2024 19:44:57 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 14 Mar 2024 19:44:56 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>,
-	Sebastian Fricke <sebastian.fricke@collabora.com>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, "Yunfei
- Dong" <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2,3/4] media: mediatek: vcodec: flush decoder before remove all source buffer
-Date: Thu, 14 Mar 2024 19:44:51 +0800
-Message-ID: <20240314114452.17532-4-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240314114452.17532-1-yunfei.dong@mediatek.com>
-References: <20240314114452.17532-1-yunfei.dong@mediatek.com>
+ 15.2.1118.40; Thu, 14 Mar 2024 05:12:55 -0700
+From: Amrit Anand <quic_amrianan@quicinc.com>
+To: <robh@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+        <conor+dt@kernel.org>, <agross@kernel.org>, <andersson@kernel.org>,
+        <konrad.dybcio@linaro.org>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-msm@vger.kernel.org>, <kernel@quicinc.com>,
+        <peter.griffin@linaro.org>, <caleb.connolly@linaro.org>,
+        <linux-riscv@lists.infradead.org>, <chrome-platform@lists.linux.dev>,
+        <linux-mediatek@lists.infradead.org>,
+        Amrit Anand <quic_amrianan@quicinc.com>
+Subject: [PATCH v2 0/2] Add board-id support for multiple DT selection
+Date: Thu, 14 Mar 2024 17:41:50 +0530
+Message-ID: <1710418312-6559-1-git-send-email-quic_amrianan@quicinc.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.180300-8.000000
-X-TMASE-MatchedRID: LQTn7QLkznoEQqIqKFLtTlu4M/xm4KZebnWMzHijq6Sen0qBdy7fjBXb
-	HvCbSY/6sTCecWdCeaflMF4v3SREo4x1g1lTiexdA9lly13c/gGOJZyIAulM0xQLE16MmfDLS20
-	1H/juErxAEhD9e0n6VSfyuWB93oCTC9YpJ/fXjNeeAiCmPx4NwBnUJ0Ek6yhjxEHRux+uk8ifEz
-	J5hPndGZnMVq7tIlw2tPfRu/NO6WJzOLRNuFmkzrkqWJxjUSaiqe1i8szqq0zFmp618OSM6Obqo
-	nfkRZEWXfGn12bbCvxioaYV0aSx3Bz+PhojlLUuev0YPTN868QBqq+/+aGCsQhzL04Or2eZVlxr
-	1FJij9s=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.180300-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 6680B778D7103250B9479887C3CEB8CB3823E585258715E9BDE23C31FE0953662000:8
-X-MTK: N
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nalasex01b.na.qualcomm.com (10.47.209.197)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: 9HbCtnvwlODWwAfE7hgXH8kYgPgf3f1C
+X-Proofpoint-GUID: 9HbCtnvwlODWwAfE7hgXH8kYgPgf3f1C
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-03-14_10,2024-03-13_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0 suspectscore=0
+ mlxlogscore=999 priorityscore=1501 adultscore=3 impostorscore=0
+ malwarescore=0 clxscore=1011 mlxscore=0 phishscore=0 lowpriorityscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2402120000 definitions=main-2403140088
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240314_045540_017186_D3A837BD 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20240314_051310_547374_65269068 
+X-CRM114-Status: GOOD (  16.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,57 +98,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Flush decoder will reset all driver to init status, lat and core work
-queue will stop to work. If lat or core work queue in working when
-remove all source buffer, will lead to remove source buffer again
-or buff done with one non-existent source buffer.
+The software packages are shipped with multiple device tree blobs supporting
+multiple boards. For instance, suppose we have 3 SoC, each with 4 boards supported,
+along with 2 PMIC support for each case which would lead to total of 24 DTB files.
+Along with these configurations, OEMs may also add certain additional board variants.
+Hence, a mechanism is required to pick the correct DTB for the board on which the
+software package is deployed. Introduce a unique property for adding board identifiers
+to device trees. Here, board-id property provides a mechanism for Qualcomm based
+bootloaders to select the appropriate DTB.
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 22 +++++++++----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+Isn't that what the compatible property is for?
+-----------------------------------------------
+The compatible property can be used for board matching, but requires
+bootloaders and/or firmware to maintain a database of possible strings
+to match against or have complex compatible string parsing and matching.
+Compatible string matching becomes complicated when there are multiple
+versions of the same board. It becomes difficult for the device tree
+selection mechanism to recognize the right DTB to pick, with minor
+differences in compatible strings.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-index 3766e2176899..cdd36a5320cd 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-@@ -835,17 +835,6 @@ void vb2ops_vdec_stop_streaming(struct vb2_queue *q)
- 			  ctx->id, q->type, ctx->state, ctx->decoded_frame_cnt);
- 
- 	if (q->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
--		while ((src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx))) {
--			if (src_buf != &ctx->empty_flush_buf.vb) {
--				struct media_request *req =
--					src_buf->vb2_buf.req_obj.req;
--
--				if (req)
--					v4l2_ctrl_request_complete(req, &ctx->ctrl_hdl);
--				v4l2_m2m_buf_done(src_buf, VB2_BUF_STATE_ERROR);
--			}
--		}
--
- 		if (ctx->state >= MTK_STATE_HEADER) {
- 			/* Until STREAMOFF is called on the CAPTURE queue
- 			 * (acknowledging the event), the driver operates
-@@ -868,6 +857,17 @@ void vb2ops_vdec_stop_streaming(struct vb2_queue *q)
- 				mtk_v4l2_vdec_err(ctx, "DecodeFinal failed, ret=%d", ret);
- 		}
- 
-+		while ((src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx))) {
-+			if (src_buf != &ctx->empty_flush_buf.vb) {
-+				struct media_request *req =
-+					src_buf->vb2_buf.req_obj.req;
-+
-+				if (req)
-+					v4l2_ctrl_request_complete(req, &ctx->ctrl_hdl);
-+				v4l2_m2m_buf_done(src_buf, VB2_BUF_STATE_ERROR);
-+			}
-+		}
-+
- 		ctx->state = MTK_STATE_FLUSH;
- 		return;
- 	}
+The solution proposed here is simpler to implement and doesn't require the need
+to update bootloader for every new board.
+
+How is this better than Qualcomm's qcom,msm-id/qcom,board-id?
+-------------------------------------------------------------
+Qualcomm's qcom,msm-id/qcom,board-id are not scalable for other distinguishing
+features as we need to add a new property every time. Board-id property provide
+a solution that the bootloader can use to select appropriate device tree. Board-id
+encapsulates soc, board, pmic and oem identifiers. Qualcomm based bootloader can use
+these key-value pairs to uniquely identify the device tree. This solution scales well
+for cases where additional identifiers would be needed for device tree selection
+criteria. Adding a new tuple in "board-id" along with "board-id-type" will help support it.
+				      
+Changes in V2:
+ - Based on comment on V1 related to challenges on designing common bootloader for all
+   the vendors, where different vendors can have different representation of board-id
+   and the best and exact match logic can also be different for different vendors, moving
+   the board-id definition in qcom specific binding.
+ - Adding support for board IDs for all the boards that are in kernel.org.
+ - Adding Qualcomm bootloader best/exact match logic for multi DT selection. 
+ - Keeping list of other vendors in CC for comment/awareness related to this requirement 
+ - Link to V1: https://lore.kernel.org/all/1705749649-4708-1-git-send-email-quic_amrianan@quicinc.com/
+
+Amrit Anand (2):
+  dt-bindings: arm: qcom: Update Devicetree identifiers
+  dt-bindings: qcom: Update DT bindings for multiple DT
+
+ Documentation/devicetree/bindings/arm/qcom.yaml | 90 +++++++++++++++++++++++++
+ include/dt-bindings/arm/qcom,ids.h              | 86 ++++++++++++++++++++---
+ 2 files changed, 167 insertions(+), 9 deletions(-)
+
 -- 
-2.18.0
+2.7.4
 
 
