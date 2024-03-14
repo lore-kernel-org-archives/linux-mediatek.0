@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E06FC5475B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 12:13:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6393C5475B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 12:13:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=i/6eJM3fOsriNYf7PCVpfDjiGc5hnm60G2hUzvC/N6I=; b=ZlE9vcrzSeEDO4n++FtCn4mOn9
-	RtqqwfzR6JYHnztmxjHC49cJMc6hshExgDbKq3/iPodkS3W54Gd44+LJj71bNb4bnR+Cy1CQAPo1g
-	dKvn5F49opmMLPsR05OA1KiJp9fqqdqQrqLVYMknJqOfFnStnC9Y5Z8UK+3ddqT1N53SXhbtly94r
-	KWqIV8vBiQiH6ODc48s42/anwvsd8WStJRHFjOqckoIYt2tR9GvMNXDIoZb0wTMh6BQyY75+cnnvn
-	kCuXjgBYQbDts7i/4tkP1QekJbuv+NBETUZBEJzYx+AbfzqL0vi8El/BxnSDFIW02R0e/zCASSZM+
-	mBwkw+LA==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AsgZE0W8yK2/VbYqsd/iNlV6hGVNbQ9xyRtXpfB5ZK4=; b=hnJsIZwfAHcnLHCvwL9BYuhtQe
+	K8IhWEGij0OVV5jfAa5FHkKG22vZS+3Fq3mbD6xdBOilhhJpZvKhTD63eQYLpTD5KpexsNg/mISpL
+	2XpkK166OQjKABzOONZ21XQf+u4AW65BsLXAnaZBjoOA4dRgNSL8X6ZDAUznOWSgVJULzjNFRaLIM
+	2ZpMD8WP1ZeprsPVLbcaF7JLLYURvUI7LH4ps6A7u9nwy5/YF2tKr3y9ry01De8yJGD4xAd7mvQRV
+	tPZFWSkfhziuIS0WfyXhPNsLuJosvwjWVfjr+voVjDdstl7ERb6Uu5FOSmSo6G8e2IAq/eujNQhs0
+	w5HcGW7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkjxS-0000000EC0z-3Y80;
-	Thu, 14 Mar 2024 12:13:14 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1rkjxY-0000000EC3e-1L7x;
+	Thu, 14 Mar 2024 12:13:20 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkjxO-0000000EC0F-1VOQ;
-	Thu, 14 Mar 2024 12:13:12 +0000
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 42E9Mwas025880;
-	Thu, 14 Mar 2024 12:13:03 GMT
+	id 1rkjxU-0000000EC0s-2Huw;
+	Thu, 14 Mar 2024 12:13:18 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 42E9Lw0i018768;
+	Thu, 14 Mar 2024 12:13:09 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	from:to:cc:subject:date:message-id:mime-version:content-type; s=
-	qcppdkim1; bh=i/6eJM3fOsriNYf7PCVpfDjiGc5hnm60G2hUzvC/N6I=; b=Z3
-	go+nSUMEy+ifZFMzTHvBm3U7UubnuJkH2aD08XDdfLhIgyqOJJV59W50cvPvHyj0
-	pf1rm1W/BmQ+VLuqlLvGXjHclrDQ2w2IUo7rh68lqzvSnd8XUFwuSm4mn+eAmexR
-	HpbUCaRtC0P3Tee7p7Y9A2LAXNSvJhHAF3rNsPN+lw7m1ub5GuixkhSnEvJKw0uu
-	s+Zh3mXugqVQ0vROmoRzq4fKOewbLYDLt2NGCf6YCaLGcvmUGEgPTR77OCPzu/gz
-	+CxNVkSJZK7KOvTGhYNSF9Dp9qy6n6GaSy1py29imbINg6XXYCJRTgAY207MjswM
-	Jwab3fYSnOGLwmHauGXg==
-Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3wusxggy9u-1
+	from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-type; s=qcppdkim1; bh=AsgZE0W8yK2/VbYqsd/i
+	NlV6hGVNbQ9xyRtXpfB5ZK4=; b=ZZlD64Qz5pVj8aTXcAkkC32xH2sNvGgdQ2+U
+	libNiVgVm2qbVit34j45/Dmhqb4arjtNovgNAhfgIJrHkRcY1h+stOEV0cBXVWJX
+	HsHzuJsIsvySvL7dasO9GpQU94XVXOg53qdTWoJjBP51vb71cWfzwL676KFTrK/W
+	eeYp5tN3VHIJIB6rwcoYRhf0rM0W9Xq5HVDcVg+Tug7WouTQ3i330BpBQE/BbYU7
+	8yjuV4UL7y9LXSorXbCMq4XpQGVcTKjfLUKxfHCA67K4l8t7XXdt+l6qCGi8z+LV
+	Wpvqh9fmMADrDaLHhawpLWZqJYU4aFqb8nGBRFiGN1xT+mKPIw==
+Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3wupch1d37-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 14 Mar 2024 12:13:03 +0000 (GMT)
+	Thu, 14 Mar 2024 12:13:08 +0000 (GMT)
 Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
-	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 42ECD24C018568
+	by NALASPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 42ECD7rI013769
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 14 Mar 2024 12:13:02 GMT
+	Thu, 14 Mar 2024 12:13:07 GMT
 Received: from hu-amrianan-hyd.qualcomm.com (10.80.80.8) by
  nalasex01b.na.qualcomm.com (10.47.209.197) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.40; Thu, 14 Mar 2024 05:12:55 -0700
+ 15.2.1118.40; Thu, 14 Mar 2024 05:13:00 -0700
 From: Amrit Anand <quic_amrianan@quicinc.com>
 To: <robh@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
         <conor+dt@kernel.org>, <agross@kernel.org>, <andersson@kernel.org>,
@@ -60,10 +60,12 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-riscv@lists.infradead.org>, <chrome-platform@lists.linux.dev>,
         <linux-mediatek@lists.infradead.org>,
         Amrit Anand <quic_amrianan@quicinc.com>
-Subject: [PATCH v2 0/2] Add board-id support for multiple DT selection
-Date: Thu, 14 Mar 2024 17:41:50 +0530
-Message-ID: <1710418312-6559-1-git-send-email-quic_amrianan@quicinc.com>
+Subject: [PATCH v2 1/2] dt-bindings: arm: qcom: Update Devicetree identifiers
+Date: Thu, 14 Mar 2024 17:41:51 +0530
+Message-ID: <1710418312-6559-2-git-send-email-quic_amrianan@quicinc.com>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1710418312-6559-1-git-send-email-quic_amrianan@quicinc.com>
+References: <1710418312-6559-1-git-send-email-quic_amrianan@quicinc.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.80.80.8]
@@ -71,19 +73,19 @@ X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
  nalasex01b.na.qualcomm.com (10.47.209.197)
 X-QCInternal: smtphost
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: 9HbCtnvwlODWwAfE7hgXH8kYgPgf3f1C
-X-Proofpoint-GUID: 9HbCtnvwlODWwAfE7hgXH8kYgPgf3f1C
+X-Proofpoint-ORIG-GUID: wPf9l5-A9ys5MX7fpUI17M4updpB8R2-
+X-Proofpoint-GUID: wPf9l5-A9ys5MX7fpUI17M4updpB8R2-
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2024-03-14_10,2024-03-13_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0 suspectscore=0
- mlxlogscore=999 priorityscore=1501 adultscore=3 impostorscore=0
- malwarescore=0 clxscore=1011 mlxscore=0 phishscore=0 lowpriorityscore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0 mlxscore=0
+ priorityscore=1501 impostorscore=0 phishscore=0 lowpriorityscore=0
+ mlxlogscore=820 suspectscore=0 bulkscore=0 adultscore=0 clxscore=1015
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.19.0-2402120000 definitions=main-2403140088
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240314_051310_547374_65269068 
-X-CRM114-Status: GOOD (  16.62  )
+X-CRM114-CacheID: sfid-20240314_051316_623091_8FF1E5F7 
+X-CRM114-Status: GOOD (  16.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,56 +100,134 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The software packages are shipped with multiple device tree blobs supporting
-multiple boards. For instance, suppose we have 3 SoC, each with 4 boards supported,
-along with 2 PMIC support for each case which would lead to total of 24 DTB files.
-Along with these configurations, OEMs may also add certain additional board variants.
-Hence, a mechanism is required to pick the correct DTB for the board on which the
-software package is deployed. Introduce a unique property for adding board identifiers
-to device trees. Here, board-id property provides a mechanism for Qualcomm based
-bootloaders to select the appropriate DTB.
+Update existing documentation for qcom,msm-id (interchangeably:
+qcom,soc-id) and qcom,board-id. Add support for qcom,pmic-id, qcom,oem-id
+to support multi-DTB selection on Qualcomm's boards.
 
-Isn't that what the compatible property is for?
------------------------------------------------
-The compatible property can be used for board matching, but requires
-bootloaders and/or firmware to maintain a database of possible strings
-to match against or have complex compatible string parsing and matching.
-Compatible string matching becomes complicated when there are multiple
-versions of the same board. It becomes difficult for the device tree
-selection mechanism to recognize the right DTB to pick, with minor
-differences in compatible strings.
+"qcom,soc-id", "qcom,board-id" and "qcom,pmic-id" are tuples of two 32-bit
+values. The "qcom,oem-id" is a tuple of one 32-bit value.
+Introduce macros to help generate SOC, board, PMIC and OEM identifiers.
+QCOM_SOC_ID and QCOM_SOC_REVISION can be used to generate qcom,msm-id.
+QCOM_BOARD_ID and QCOM_BOARD_SUBTYPE can be used to generate qcom,board-id.
+QCOM_PMIC_SID and QCOM_PMIC_MODEL can be used to generate qcom,pmic-id.
+QCOM_OEM_ID can be used to generate qcom,oem-id.
 
-The solution proposed here is simpler to implement and doesn't require the need
-to update bootloader for every new board.
+Add entries for different types of SoC, boards, DDR type, Boot device
+type which are currently used by Qualcomm based bootloader.
 
-How is this better than Qualcomm's qcom,msm-id/qcom,board-id?
--------------------------------------------------------------
-Qualcomm's qcom,msm-id/qcom,board-id are not scalable for other distinguishing
-features as we need to add a new property every time. Board-id property provide
-a solution that the bootloader can use to select appropriate device tree. Board-id
-encapsulates soc, board, pmic and oem identifiers. Qualcomm based bootloader can use
-these key-value pairs to uniquely identify the device tree. This solution scales well
-for cases where additional identifiers would be needed for device tree selection
-criteria. Adding a new tuple in "board-id" along with "board-id-type" will help support it.
-				      
-Changes in V2:
- - Based on comment on V1 related to challenges on designing common bootloader for all
-   the vendors, where different vendors can have different representation of board-id
-   and the best and exact match logic can also be different for different vendors, moving
-   the board-id definition in qcom specific binding.
- - Adding support for board IDs for all the boards that are in kernel.org.
- - Adding Qualcomm bootloader best/exact match logic for multi DT selection. 
- - Keeping list of other vendors in CC for comment/awareness related to this requirement 
- - Link to V1: https://lore.kernel.org/all/1705749649-4708-1-git-send-email-quic_amrianan@quicinc.com/
+Signed-off-by: Amrit Anand <quic_amrianan@quicinc.com>
+---
+ include/dt-bindings/arm/qcom,ids.h | 86 ++++++++++++++++++++++++++++++++++----
+ 1 file changed, 77 insertions(+), 9 deletions(-)
 
-Amrit Anand (2):
-  dt-bindings: arm: qcom: Update Devicetree identifiers
-  dt-bindings: qcom: Update DT bindings for multiple DT
-
- Documentation/devicetree/bindings/arm/qcom.yaml | 90 +++++++++++++++++++++++++
- include/dt-bindings/arm/qcom,ids.h              | 86 ++++++++++++++++++++---
- 2 files changed, 167 insertions(+), 9 deletions(-)
-
+diff --git a/include/dt-bindings/arm/qcom,ids.h b/include/dt-bindings/arm/qcom,ids.h
+index f724834..dc24151 100644
+--- a/include/dt-bindings/arm/qcom,ids.h
++++ b/include/dt-bindings/arm/qcom,ids.h
+@@ -8,9 +8,14 @@
+ #define _DT_BINDINGS_ARM_QCOM_IDS_H
+ 
+ /*
+- * The MSM chipset and hardware revision used by Qualcomm bootloaders, DTS for
+- * older chipsets (qcom,msm-id) and in socinfo driver:
++ * The MSM chipset ID (soc-id) used by Qualcomm bootloaders,
++ * and in socinfo driver:
++ * where, "a" indicates Qualcomm supported chipsets, example MSM8260, MSM8660 etc
+  */
++
++#define QCOM_SOC_ID(a)  ((QCOM_ID_##a) && 0xffff)
++
++
+ #define QCOM_ID_MSM8260			70
+ #define QCOM_ID_MSM8660			71
+ #define QCOM_ID_APQ8060			86
+@@ -266,16 +271,79 @@
+ #define QCOM_ID_IPQ5302			595
+ #define QCOM_ID_IPQ5300			624
+ 
++ /* The SOC revision used by Qualcomm bootloaders (soc-revision) */
++
++#define QCOM_SOC_REVISION(a)		(a & 0xff)
++
+ /*
+- * The board type and revision information, used by Qualcomm bootloaders and
+- * DTS for older chipsets (qcom,board-id):
++ * The board type and revision information (board-id), used by Qualcomm bootloaders
++ * where, "a" indicates board type which can be either MTP, QRD etc
+  */
++
+ #define QCOM_BOARD_ID(a, major, minor) \
+-	(((major & 0xff) << 16) | ((minor & 0xff) << 8) | QCOM_BOARD_ID_##a)
++	(((major & 0xff) << 16) | ((minor & 0xff) << 8) | ((QCOM_BOARD_ID_##a) & 0xff))
++
++#define QCOM_BOARD_ID_MTP		0x8
++#define QCOM_BOARD_ID_LIQUID		0x9
++#define QCOM_BOARD_ID_DRAGONBOARD	0xA
++#define QCOM_BOARD_ID_QRD		0x11
++#define QCOM_BOARD_ID_ADP		0x19
++#define QCOM_BOARD_ID_HDK		0x1F
++#define QCOM_BOARD_ID_ATP		0x21
++#define QCOM_BOARD_ID_IDP		0x22
++#define QCOM_BOARD_ID_SBC		0x24
++#define QCOM_BOARD_ID_QXR		0x26
++#define QCOM_BOARD_ID_X100		0x26
++#define QCOM_BOARD_ID_CRD		0x28
++
++/*
++ * The platform subtype is used by Qualcomm bootloaders and
++ * DTS (board-subtype)
++ * where, "a" indicates boot device type, it can be EMMC,
++ * UFS, NAND or OTHER (which can be used for default).
++ * "b" indicates DDR type which can be 128MB, 256MB,
++ * 512MB, 1024MB, 2048MB, 3072MB, 4096MB or ANY 
++ * (which can be used for default).
++ */
++#define QCOM_BOARD_SUBTYPE(a, b, SUBTYPE) \
++	(((QCOM_BOARD_BOOT_##a & 0xf) << 16) | ((QCOM_BOARD_DDRTYPE_##b & 0x7) << 8) | \
++	(SUBTYPE & 0xff))
++
++/* Board DDR Type where each value indicates higher limit */
++#define QCOM_BOARD_DDRTYPE_ANY		0x0
++#define QCOM_BOARD_DDRTYPE_128M		0x1
++#define QCOM_BOARD_DDRTYPE_256M		0x2
++#define QCOM_BOARD_DDRTYPE_512M		0x3
++#define QCOM_BOARD_DDRTYPE_1024M	0x4
++#define QCOM_BOARD_DDRTYPE_2048M	0x5
++#define QCOM_BOARD_DDRTYPE_3072M	0x6
++#define QCOM_BOARD_DDRTYPE_4096M	0x7
+ 
+-#define QCOM_BOARD_ID_MTP			8
+-#define QCOM_BOARD_ID_DRAGONBOARD		10
+-#define QCOM_BOARD_ID_QRD			11
+-#define QCOM_BOARD_ID_SBC			24
++/* Board Boot Device Type */
++#define QCOM_BOARD_BOOT_EMMC		0x0
++#define QCOM_BOARD_BOOT_UFS		0x1
++#define QCOM_BOARD_BOOT_NAND		0x2
++#define QCOM_BOARD_BOOT_OTHER		0x3
++
++/*
++ * The PMIC slave id is used by Qualcomm bootloaders to
++ * indicates which PMIC is attached (pmic-sid)
++ */
++
++#define QCOM_PMIC_SID(a)		(a & 0xff)
++
++/*
++ * The PMIC ID is used by Qualcomm bootloaders to describe the ID
++ * of PMIC attached to bus described by SID (pmic-model)
++ */
++
++#define QCOM_PMIC_MODEL(ID, major, minor) \
++	(((major & 0xff) << 16) | ((minor & 0xff) << 8) | (ID & 0xff))
++
++/*
++ * The OEM ID consists of 32 bit value to support OEM boards where they
++ * have slight differences on top of Qualcomm's standard boards
++ */
++#define QCOM_OEM_ID(a)		(a & 0xffffffff)
+ 
+ #endif /* _DT_BINDINGS_ARM_QCOM_IDS_H */
 -- 
 2.7.4
 
