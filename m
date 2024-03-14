@@ -4,60 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12B7CC5475B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 09:34:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48BADC5475B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Mar 2024 09:34:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:Reply-To:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wKXpJc7rnbCTikhjSUjlBzTaV70fUwDFA2NEmNe6lcU=; b=Eo0r60sKuFjQNbO6r1o4AoBsJb
-	LwfmrjysHWNt9npgr0kI4pw4q/nbpo/tSG6lO10BiaN554KKaWiG5mTvVLH5uCJVQqujtc+P5uGM1
-	udaH4aGgA3j+wHMz8e0/U2L+KOSRC3nHUlNwVfyAQ4rYpX1D9xcWmBEt8HVWrCKBluRYJRniCJHSb
-	BqV1c/aAMR5VKD63569PN1PSw661nVbSLGJzy8Md4lFV3WcfZaD7K5yWl7f60cAPy8QfzhbPMmkYz
-	c5UirM7smt2eHtNR9t8R6zy9LApAa88E9p0+xOx6Ez05X/s3AncvVchQuiTjOLd8vGgrlBefIq2KH
-	NRbL1sUA==;
+	In-Reply-To:References:Message-Id:Content-Transfer-Encoding:Content-Type:
+	MIME-Version:Subject:Date:From:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7eHmDdEbiTV3tUV7fsE5w+uZWYri5VIgDjUyeZMK8g8=; b=OE83IItMC/DOMQFyGAROwyQP9W
+	OlwxL3t6oi9+yC2rANJ3HHsSmTzpismtVkYwUQ3OFgFjwxcPNT1Z5yRa7wEi4FPMnWfx9hyCpLzTK
+	U1DuYZXLj3CRAo7zPS9d95L7sShRAqBxEwhQ5Tz6BTcN4NknZZz1iKPqyoKPmSD7ULhQQwiS1oGoO
+	R3aHEkN6WnbERwA28F3hxPGQZjB0yVassL2/IWI64ltUbyucHFpLBGZyKS/XNbpi0eH3QLq5tP+At
+	YfDdKNwG+D+dKT7ZibJx9qSra4jYM7fHiflp29E/6pQpQfmC5qOIkih3XFJKjA4ndF8+8zNdECRKi
+	c4tLIRnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkhTT-0000000DkHF-0ijY;
-	Thu, 14 Mar 2024 09:34:07 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rkhTZ-0000000DkJl-3kcv;
+	Thu, 14 Mar 2024 09:34:13 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkhTO-0000000DkFC-0y3o;
-	Thu, 14 Mar 2024 09:34:04 +0000
+	id 1rkhTQ-0000000DkFV-0Unf;
+	Thu, 14 Mar 2024 09:34:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 961E061546;
-	Thu, 14 Mar 2024 09:34:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 32FAFC433C7;
+	by sin.source.kernel.org (Postfix) with ESMTP id 1CF46CE1D82;
+	Thu, 14 Mar 2024 09:34:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 4F427C433F1;
 	Thu, 14 Mar 2024 09:34:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1710408841;
-	bh=9mhCWCDlcnDok55dMpIkq5VniwCLfhOjl6RgA4AYQZE=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=MCnH0QpQUiqNk5MbW8LitdIJrZknAqk+6T+0xKk3iQd30FtUa7Q51pkVtrI/VmUaX
-	 ++swNz2GB7+O8NrEr6z5FsJi5dYZGvmMluOKrmHHYjvmTy1OprE28Z6HM4XlVQJs45
-	 i1ymp0+e7GI2gwr2W+6LPHX0eEUS8OS4xV6aQswAxZGrwtPwdqztzP5UZiv1bEyevw
-	 i/Ozkz2+H0m4MQ5v3da/D61DP5a6cgPQAzKLtLZgwLLJSLXDtpayIRahwiNha9rlG7
-	 lfdQgW1yKkisWcw2EzmoPZteMhtTCRDfGHj3ARZCLqyfMV+Q6v3Ck5q+Y05eXJaHSV
-	 zxnHYe7gyv6jA==
+	bh=i5CIz4hgP3QPef4sef2s5Axx7pKoL13aQBXLUXtXudI=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=agzF8KOWISR9Ng4Q8iPJ9BsDOJdL7a3EAdi2jbPbF9i1GfdZ+Awhqy3ej8L7Ro7QJ
+	 zO6lzK13pSyDI6eFG+VuQDw2j0kg1MND0GhIqh2pzSZXhN8I3gjV8c0msUB9EdUeLZ
+	 fxXJ58DKiOEKu42TgdAjtVE8tp1VWSBnwSeukHFTE5XCMlRAsb/uv6oVLsdpbSaTqC
+	 77dWQwcAe04i2AkJdfm05kPQUVRaBJxhq0lm3/u8jlr6MSKg8pjbTyynMD8nyob52/
+	 jBI/Ciy9UTjkZUSXXymwcLc0kDC8BslKhgiNn+hNXSyq1XFBVvRg7WZ5rI3+UA/xnz
+	 dyht2X+zDxBMA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F7A9C5475B;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3B398C54E69;
 	Thu, 14 Mar 2024 09:34:01 +0000 (UTC)
 From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= via B4 Relay
  <devnull+arinc.unal.arinc9.com@kernel.org>
-Subject: [PATCH net v2 0/2] MT7530 DSA subdriver fix VLAN egress and
- handling of all link-local frames
-Date: Thu, 14 Mar 2024 12:33:40 +0300
-Message-Id: <20240314-b4-for-net-mt7530-fix-link-local-vlan-v2-0-7dbcf6429ba0@arinc9.com>
+Date: Thu, 14 Mar 2024 12:33:42 +0300
+Subject: [PATCH net v2 2/2] net: dsa: mt7530: fix handling of all
+ link-local frames
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-B4-Tracking: v=1; b=H4sIAHTE8mUC/42PsW7DMAxEfyXQXBainNpyp/5HkUGRKZuoIgWSY
- DQI/O9h3Q7d2pF35D3eXVUqTFW9Hu6q0MqVc5LBPB2UX1yaCXiSWRltjtpoC+cjhFwgUYNLG14
- 6DYE/IXL6gJi9i7BGl8CFnsbRWDfZSUnWtZCs7Zx3JbfqJOLCteVy29kr7tYPBv/GtMU14DQXq
- vWbGTg2KZNmuObSRERAsBY9+rE/myG8OXH9+Ozz5eunndUh/rOSxGmY+oF67zt0wfyOO23b9gB
- GDEZlTAEAAA==
+Message-Id: <20240314-b4-for-net-mt7530-fix-link-local-vlan-v2-2-7dbcf6429ba0@arinc9.com>
+References: <20240314-b4-for-net-mt7530-fix-link-local-vlan-v2-0-7dbcf6429ba0@arinc9.com>
+In-Reply-To: <20240314-b4-for-net-mt7530-fix-link-local-vlan-v2-0-7dbcf6429ba0@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
  Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
  Florian Fainelli <f.fainelli@gmail.com>, 
@@ -67,19 +64,18 @@ To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1710408826; l=912;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1710408826; l=5986;
  i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
- bh=9mhCWCDlcnDok55dMpIkq5VniwCLfhOjl6RgA4AYQZE=;
- b=y/QfBdILr3tdHqFe6w7wGfGuQGVjFvZrcg4u0T/fFa3h1BUIgOjuuuXeBdd6fANNjkg6S27HI
- 32sFVY83Ud/CBN2QrzvqGPZcCgmRDlDRtwQ6BrugfSb40Y5/66jD/rX
+ bh=LH1TidipD/5+ZNBthGK5IdT2X6g90y55ra+trYcBraE=;
+ b=KXLWVQM9pPnDDZIDufrF5WFcklMA2Vn5HAGgnKA3VM/o3/PlbAEOiMHXkNe021aClZCE2k2Hx
+ vnw4blunoF5Aw6T8BIE2dqgmUXeCh+zZUzTTAu6FirUTqwYZ3J6WNrO
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt with auth_id=115
 X-Original-From: =?utf-8?b?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240314_023402_386249_DDD2E9CB 
-X-CRM114-Status: UNSURE (   5.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240314_023404_568445_6E71D758 
+X-CRM114-Status: GOOD (  17.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,31 +92,135 @@ Cc: netdev@vger.kernel.org, =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@ar
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi.
+From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-This patch series fixes the VLAN tag egress procedure for link-local
-frames, and fixes handling of all link-local frames.
+Currently, the MT753X switches treat frames with :01-0D and :0F MAC DAs as
+regular multicast frames, therefore flooding them to user ports.
 
+On page 205, section "8.6.3 Frame filtering" of the active standard, IEEE
+Std 802.1Q™-2022, it is stated that frames with 01:80:C2:00:00:00-0F as MAC
+DA must only be propagated to C-VLAN and MAC Bridge components. That means
+VLAN-aware and VLAN-unaware bridges. On the switch designs with CPU ports,
+these frames are supposed to be processed by the CPU (software). So we make
+the switch only forward them to the CPU port. And if received from a CPU
+port, forward to a single port. The software is responsible of making the
+switch conform to the latter by setting a single port as destination port
+on the special tag.
+
+This switch intellectual property cannot conform to this part of the
+standard fully. Whilst the REV_UN frame tag covers the remaining :04-0D and
+:0F MAC DAs, it also includes :22-FF which the scope of propagation is not
+supposed to be restricted for these MAC DAs.
+
+Set frames with :01-03 MAC DAs to be trapped to the CPU port(s). Add a
+comment for the remaining MAC DAs.
+
+Note that the ingress port must have a PVID assigned to it for the switch
+to forward untagged frames. A PVID is set by default on VLAN-aware and
+VLAN-unaware ports. However, when the network interface that pertains to
+the ingress port is attached to a vlan_filtering enabled bridge, the user
+can remove the PVID assignment from it which would prevent the link-local
+frames from being trapped to the CPU port. I am yet to see a way to forward
+link-local frames while preventing other untagged frames from being
+forwarded too.
+
+Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
-Changes in v2:
-- Add Fixes: tag to both patches.
-- Link to v1: https://lore.kernel.org/r/20240311-b4-for-net-mt7530-fix-link-local-vlan-v1-0-d67e6cc31af2@arinc9.com
+ drivers/net/dsa/mt7530.c | 37 +++++++++++++++++++++++++++++++++----
+ drivers/net/dsa/mt7530.h | 13 +++++++++++++
+ 2 files changed, 46 insertions(+), 4 deletions(-)
 
----
-Arınç ÜNAL (2):
-      net: dsa: mt7530: fix link-local frames that ingress vlan filtering ports
-      net: dsa: mt7530: fix handling of all link-local frames
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index ac887e929c79..0d3d328f757a 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -950,6 +950,21 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+ 	mutex_unlock(&priv->reg_mutex);
+ }
+ 
++/* On page 205, section "8.6.3 Frame filtering" of the active standard, IEEE Std
++ * 802.1Q™-2022, it is stated that frames with 01:80:C2:00:00:00-0F as MAC DA
++ * must only be propagated to C-VLAN and MAC Bridge components. That means
++ * VLAN-aware and VLAN-unaware bridges. On the switch designs with CPU ports,
++ * these frames are supposed to be processed by the CPU (software). So we make
++ * the switch only forward them to the CPU port. And if received from a CPU
++ * port, forward to a single port. The software is responsible of making the
++ * switch conform to the latter by setting a single port as destination port on
++ * the special tag.
++ *
++ * This switch intellectual property cannot conform to this part of the standard
++ * fully. Whilst the REV_UN frame tag covers the remaining :04-0D and :0F MAC
++ * DAs, it also includes :22-FF which the scope of propagation is not supposed
++ * to be restricted for these MAC DAs.
++ */
+ static void
+ mt753x_trap_frames(struct mt7530_priv *priv)
+ {
+@@ -964,13 +979,27 @@ mt753x_trap_frames(struct mt7530_priv *priv)
+ 		   MT753X_BPDU_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
+ 		   MT753X_BPDU_CPU_ONLY);
+ 
+-	/* Trap LLDP frames with :0E MAC DA to the CPU port(s) and egress them
+-	 * VLAN-untagged.
++	/* Trap frames with :01 and :02 MAC DAs to the CPU port(s) and egress
++	 * them VLAN-untagged.
++	 */
++	mt7530_rmw(priv, MT753X_RGAC1, MT753X_R02_EG_TAG_MASK |
++		   MT753X_R02_PORT_FW_MASK | MT753X_R01_EG_TAG_MASK |
++		   MT753X_R01_PORT_FW_MASK,
++		   MT753X_R02_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
++		   MT753X_R02_PORT_FW(MT753X_BPDU_CPU_ONLY) |
++		   MT753X_R01_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
++		   MT753X_BPDU_CPU_ONLY);
++
++	/* Trap frames with :03 and :0E MAC DAs to the CPU port(s) and egress
++	 * them VLAN-untagged.
+ 	 */
+ 	mt7530_rmw(priv, MT753X_RGAC2, MT753X_R0E_EG_TAG_MASK |
+-		   MT753X_R0E_PORT_FW_MASK,
++		   MT753X_R0E_PORT_FW_MASK | MT753X_R03_EG_TAG_MASK |
++		   MT753X_R03_PORT_FW_MASK,
+ 		   MT753X_R0E_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
+-		   MT753X_R0E_PORT_FW(MT753X_BPDU_CPU_ONLY));
++		   MT753X_R0E_PORT_FW(MT753X_BPDU_CPU_ONLY) |
++		   MT753X_R03_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
++		   MT753X_BPDU_CPU_ONLY);
+ }
+ 
+ static void
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 5566c905a415..d17b318e6ee4 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -73,12 +73,25 @@ enum mt753x_id {
+ #define  MT753X_BPDU_EG_TAG(x)		FIELD_PREP(MT753X_BPDU_EG_TAG_MASK, x)
+ #define  MT753X_BPDU_PORT_FW_MASK	GENMASK(2, 0)
+ 
++/* Register for :01 and :02 MAC DA frame control */
++#define MT753X_RGAC1			0x28
++#define  MT753X_R02_EG_TAG_MASK		GENMASK(24, 22)
++#define  MT753X_R02_EG_TAG(x)		FIELD_PREP(MT753X_R02_EG_TAG_MASK, x)
++#define  MT753X_R02_PORT_FW_MASK	GENMASK(18, 16)
++#define  MT753X_R02_PORT_FW(x)		FIELD_PREP(MT753X_R02_PORT_FW_MASK, x)
++#define  MT753X_R01_EG_TAG_MASK		GENMASK(8, 6)
++#define  MT753X_R01_EG_TAG(x)		FIELD_PREP(MT753X_R01_EG_TAG_MASK, x)
++#define  MT753X_R01_PORT_FW_MASK	GENMASK(2, 0)
++
+ /* Register for :03 and :0E MAC DA frame control */
+ #define MT753X_RGAC2			0x2c
+ #define  MT753X_R0E_EG_TAG_MASK		GENMASK(24, 22)
+ #define  MT753X_R0E_EG_TAG(x)		FIELD_PREP(MT753X_R0E_EG_TAG_MASK, x)
+ #define  MT753X_R0E_PORT_FW_MASK	GENMASK(18, 16)
+ #define  MT753X_R0E_PORT_FW(x)		FIELD_PREP(MT753X_R0E_PORT_FW_MASK, x)
++#define  MT753X_R03_EG_TAG_MASK		GENMASK(8, 6)
++#define  MT753X_R03_EG_TAG(x)		FIELD_PREP(MT753X_R03_EG_TAG_MASK, x)
++#define  MT753X_R03_PORT_FW_MASK	GENMASK(2, 0)
+ 
+ enum mt753x_bpdu_port_fw {
+ 	MT753X_BPDU_FOLLOW_MFC,
 
- drivers/net/dsa/mt7530.c | 52 ++++++++++++++++++++++++++++++++++++++++--------
- drivers/net/dsa/mt7530.h | 22 +++++++++++++++++++-
- 2 files changed, 65 insertions(+), 9 deletions(-)
----
-base-commit: d7d75124965aee23e5e4421d78376545cf070b0a
-change-id: 20240208-b4-for-net-mt7530-fix-link-local-vlan-af6e9928ad8d
-
-Best regards,
 -- 
-Arınç ÜNAL <arinc.unal@arinc9.com>
+2.40.1
 
 
