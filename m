@@ -4,71 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61F4BC54E58
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 11:15:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93429C54E67
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 11:16:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n6Z6+LzWR8VnQ1MHAIQqSX3nYYo4plRfZHfUVAmQTDA=; b=OESlSq37GvnAk4dQuU+E3gI0yt
-	r7Pb9tRHoz19tdEBoGclDKtHoJ7eFCQ3+/tvha0Xh1W8xCy5YRMrO3CXuvD1cmo7lNVDKG+LiB1Wp
-	ihw5lxlrAJPPqrZx2HBYz3HqfuHizksnjw2yD0/PQvBdbPXqxwFEZKSu4wKWwx+Hug8c7loYdRlgH
-	YoE33V7dvaNWl6WStbK56c0nh+2N+RAWsIA3XuQXDQ2/65Ww0KHDGncbYXPu6XdAtVhZR0oJ7MHhb
-	Bgxlgez0RvFIVCS9Eo7pvz2/LLlct/2OlksQKRaBOwY9Hn2uZ866KYPgfNaZFPz492JUXu9DMm9bk
-	gGtJZcrw==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0MYemMVXfcwym4dqzvAuTYbxf7jh51PQWqcbKiVUnPw=; b=pG5m4D2NaGMYDlvEkTMcCpkCcy
+	ZDma1fdLqwQEUBeKon8cvW+OCJkq8kGphMlY5VEBI0FzOcW1Coecz1GRVvW5+OxnWPT7m/PtOS4tA
+	yqEfLJEuE4kjhK2ZU7/l6IjPFyTgzBfU5kKZEl4NCeoBEied5rACtjYL5AqoEMV4X7eaVPWqG60vM
+	SctZpZPpliU4qU8pxfw/5zO2GNGG9y3aD5Etk//P1cUNHH/BIQ+NvMC0EamjJ19iirq1oltymkFSI
+	YCpgCDeySXjx6BjDY8MmjO9FI1GjD0R73Jd4+vz3/OoL2x6hcikEgUOIM7u92hhHeDAhpWkPoETkp
+	fS8h4qtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl5XB-0000000HaAW-0JKp;
-	Fri, 15 Mar 2024 11:15:33 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rl5Y9-0000000HaNR-0oWe;
+	Fri, 15 Mar 2024 11:16:33 +0000
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl5X7-0000000Ha9v-2DUE;
-	Fri, 15 Mar 2024 11:15:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710501328;
-	bh=dl7ZhBIyNJ+zkeATWSO3R1GGYspWpDZBRDyyr6jhFxI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LZAY3hiq1mwwA9m59SLy+T5ZuyG+SM7R9K57TZdw85wxld+66CUWGg0yvUtTXQO9D
-	 pKbyloDvRwGnDg1vBhSyXLJe6gJT0BNToA7zZaayOesHRR9Tpsf1391diB/dUnRHl0
-	 g2XY6gmD+97I6E7ftZRYWQX+1yu1aY4StsUWhGewTo0Dzhv+qWUIpdI2cLEuj77axT
-	 QzXGamsy7SRP5kXVa4v2eiO6L9jk0R7xrWxeiz01jTL1521s1ulgHBPOanmL0yqFAx
-	 MzP7PrH37lOM/mKdm+Od5RmybnW4NakayucXCBEoztypsIGWC+NoSszFhyfvNBx2ci
-	 9ZMN33QjAeDbQ==
-Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 6B6FE37820D8;
-	Fri, 15 Mar 2024 11:15:24 +0000 (UTC)
-Message-ID: <4b88ae15-ac1c-c77f-69cf-26cd192ee908@collabora.com>
-Date: Fri, 15 Mar 2024 16:45:22 +0530
+	id 1rl5Y6-0000000HaLF-0vPY
+	for linux-mediatek@lists.infradead.org;
+	Fri, 15 Mar 2024 11:16:31 +0000
+Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-5d8b276979aso1392488a12.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 15 Mar 2024 04:16:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1710501387; x=1711106187; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=0MYemMVXfcwym4dqzvAuTYbxf7jh51PQWqcbKiVUnPw=;
+        b=NQ2ojF2wv4RWAn5Gks4KdQHYK8EUGN/DLs8pViQLZclIYMQ56xWBTSs2r+u4a2uJw8
+         mwL7WMRG0/94Z4aWyAEs4HsJBeCY/EdIsm71VkDV4oqo+HF9y+Q75wLn9e6YBGNZPvlJ
+         s4nRc1reRZADOEjClx9Pu5/CNwPWLq3rQzf2A=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710501387; x=1711106187;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=0MYemMVXfcwym4dqzvAuTYbxf7jh51PQWqcbKiVUnPw=;
+        b=t0pFCcPbbWBDTJDMARymE3bnyIo6b8TfpQyEnGTx1w8ah49LJHFBzkuEReeMB86LxW
+         heyXpWF+f9kISqD0kXJ3+wZTFKv4POENajKCX+8rxaIujz464VuDFRSWMJI946bydUba
+         QDVJOUlR9B9BYfA+DqQD696xCT2A2ULZXXpt2sqaROAO4zEu3318GI2I3RVUmlV7GuYL
+         O6pHd1tNwhHj7NYDnTU6KUQpmumBtwVwuDJqZfuvUzDidSSto3QIBXTa/UaUEPdjd8ar
+         F5ZrgOiICnbWNH8t/3aQI8QS7pzt03ZOCJDo3qNuXy0Z5mjd/TdM6ePKpT+3YbUeQ+ME
+         Ho8g==
+X-Forwarded-Encrypted: i=1; AJvYcCWA48d+HFc1CYPlh6zB74wMrdBkXu4LHT5MYNCOSzlwhUtA2oGxTDI0IlEfbj72m8m4N8BeolnDOVsfnPvgt6h9OQm9aCJu4V0xDn0XlrGxNyZP
+X-Gm-Message-State: AOJu0YwP0i+wcXqzdSoR/3/fqPCHQHaNkSaJFGv4ZD+FMzo69u4/i49F
+	YxGkAXLm0Dw90cQzSVb8yvR+lgEzk2MK2/lg784RDiOlT3TX5DkfwkH6Pm+FGw==
+X-Google-Smtp-Source: AGHT+IHkV6rWNk9VP1u+5Gar92wJ+6cA36TJ/sdDtyUb7G3JlBmUL/yk8qKG8iSNBDStFe511ywLaA==
+X-Received: by 2002:a05:6a20:d387:b0:1a3:4a1d:10a3 with SMTP id iq7-20020a056a20d38700b001a34a1d10a3mr2847412pzb.35.1710501387166;
+        Fri, 15 Mar 2024 04:16:27 -0700 (PDT)
+Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:2f9c:c00a:bf1f:e53c])
+        by smtp.gmail.com with ESMTPSA id c11-20020a62e80b000000b006e6aee6807dsm3122683pfi.22.2024.03.15.04.16.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 Mar 2024 04:16:26 -0700 (PDT)
+From: Pin-yen Lin <treapking@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
+	linux-mediatek@lists.infradead.org,
+	Pin-yen Lin <treapking@chromium.org>
+Subject: [PATCH v2 0/4] Update Vgpu minimum voltage for MT8183, MT8186, MT8192, MT8195
+Date: Fri, 15 Mar 2024 19:16:01 +0800
+Message-ID: <20240315111621.2263159-1-treapking@chromium.org>
+X-Mailer: git-send-email 2.44.0.291.gc1ea87d7ee-goog
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v4 05/11] drm/ci: mediatek: Refactor existing mediatek
- jobs
-Content-Language: en-US
-To: Helen Koike <helen.koike@collabora.com>, dri-devel@lists.freedesktop.org
-Cc: daniels@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- emma@anholt.net, robdclark@gmail.com, david.heidelberg@collabora.com,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- hamohammed.sa@gmail.com, rodrigosiqueiramelo@gmail.com,
- melissa.srw@gmail.com, mairacanal@riseup.net, mcanal@igalia.com,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20240306030649.60269-1-vignesh.raman@collabora.com>
- <20240306030649.60269-6-vignesh.raman@collabora.com>
- <e53fd362-c2c2-4935-b6a3-c73decd23d10@collabora.com>
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <e53fd362-c2c2-4935-b6a3-c73decd23d10@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240315_041529_720046_6827F628 
-X-CRM114-Status: GOOD (  17.96  )
+X-CRM114-CacheID: sfid-20240315_041630_529845_47649F23 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,98 +93,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Helen,
+Use the minimum voltage listed on the Vgpu regulator datasheets instead
+of the minimum value on GPU OPP table. This is because the requested
+voltage could be lower when the MTK Smart Voltage Scaling (SVS) driver
+is enabled.
 
-On 07/03/24 19:32, Helen Koike wrote:
-> 
-> 
-> On 06/03/2024 00:06, Vignesh Raman wrote:
->> For mediatek mt8173 and mt8183, the display driver is mediatek.
->> Currently, in drm-ci for mediatek, only the display driver is
->> tested. Refactor the existing mediatek jobs so that gpu driver
->> testing jobs can be added later and update xfails accordingly.
->> Since the correct driver name is passed from the job to test gpu
->> and display driver, remove the check to set IGT_FORCE_DRIVER
->> based on driver name.
->>
->> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
->> ---
->>
->> v2:
->>    - Refactor the patch to rename job to indicate display driver testing,
->>      rename the existing xfail files, and remove IGT_FORCE_DRIVER from 
->> the
->>      script since it's now set by the job.
->>
->> v3:
->>    - Add the job name in GPU_VERSION and use it for xfail file names 
->> instead
->>      of using DRIVER_NAME. Also update xfails.
->>
->> v4:
->>    - Remove the display suffix in job and rename xfails accordingly.
->>      Remove the change adding job name in GPU_VERSION.
->>
->> ---
->>   drivers/gpu/drm/ci/igt_runner.sh              | 10 ---------
->>   drivers/gpu/drm/ci/test.yml                   | 21 ++++++++++++++-----
->>   .../drm/ci/xfails/mediatek-mt8173-fails.txt   | 15 -------------
->>   .../drm/ci/xfails/mediatek-mt8173-flakes.txt  | 13 ++++++++++++
->>   .../drm/ci/xfails/mediatek-mt8183-fails.txt   | 21 ++++++++++++-------
->>   .../drm/ci/xfails/mediatek-mt8183-flakes.txt  |  8 +++++++
->>   6 files changed, 50 insertions(+), 38 deletions(-)
->>   create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
->>   create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-flakes.txt
->>
->> diff --git a/drivers/gpu/drm/ci/igt_runner.sh 
->> b/drivers/gpu/drm/ci/igt_runner.sh
->> index 77cd81fe6d1a..711f32772e48 100755
->> --- a/drivers/gpu/drm/ci/igt_runner.sh
->> +++ b/drivers/gpu/drm/ci/igt_runner.sh
->> @@ -20,16 +20,6 @@ cat /sys/kernel/debug/dri/*/state
->>   set -e
->>   case "$DRIVER_NAME" in
->> -    rockchip|meson)
->> -        export IGT_FORCE_DRIVER="panfrost"
->> -        ;;
->> -    mediatek)
->> -        if [ "$GPU_VERSION" = "mt8173" ]; then
->> -            export IGT_FORCE_DRIVER=${DRIVER_NAME}
->> -        elif [ "$GPU_VERSION" = "mt8183" ]; then
->> -            export IGT_FORCE_DRIVER="panfrost"
->> -        fi
->> -        ;;
->>       amdgpu)
->>           # Cannot use HWCI_KERNEL_MODULES as at that point we don't 
->> have the module in /lib
->>           mv /install/modules/lib/modules/* /lib/modules/.
->> diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
->> index 0857773e5c5f..f8f48523ada3 100644
->> --- a/drivers/gpu/drm/ci/test.yml
->> +++ b/drivers/gpu/drm/ci/test.yml
->> @@ -282,29 +282,40 @@ amdgpu:stoney:
->>       - .lava-igt:arm64
->>     stage: mediatek
->>     variables:
->> -    DRIVER_NAME: mediatek
->>       DTB: ${DEVICE_TYPE}
->>       BOOT_METHOD: depthcharge
->>       KERNEL_IMAGE_TYPE: ""
->> -mediatek:mt8173:
->> +.mt8173:
->>     extends:
->>       - .mediatek
->>     parallel: 4
->>     variables:
->>       DEVICE_TYPE: mt8173-elm-hana
->> -    GPU_VERSION: mt8173
-> 
-> Looks like it make sense to keep GPU_VERSION here, no?
-> Same comment for .mt8183.
+Also update the incorrect MT6315 regulator usages on MT8192 and MT8195.
 
-Yes, will keep the GPU_VERSION here for mediatek jobs and others also.
+Changes in v2:
+- Update Vgpu min voltage for MT8183, MT8186, MT8195
+- Fix other usages of MT6315 buck1/buck3
 
-Regards,
-Vignesh
+Pin-yen Lin (4):
+  arm64: dts: mediatek: mt8192-asurada: Update min voltage constraint
+    for MT6315
+  arm64: dts: mediatek: mt8195-cherry: Update min voltage constraint for
+    MT6315
+  arm64: dts: mediatek: mt8183-kukui: Use default min voltage for MT6358
+  arm64: dts: mediatek: mt8186-corsola: Update min voltage constraint
+    for Vgpu
+
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi   | 1 -
+ arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 6 +++---
+ arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi  | 4 ++--
+ 4 files changed, 6 insertions(+), 7 deletions(-)
+
+-- 
+2.44.0.291.gc1ea87d7ee-goog
 
 
