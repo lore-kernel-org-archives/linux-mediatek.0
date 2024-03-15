@@ -4,78 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 949BCC54E58
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 14:38:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C354C54E58
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 14:46:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7As8kexlHBJiCoMZaN5R/8h3ycXCzuAju2vZXS+EDgM=; b=cmWQavSqSHsNQHAyISXX043T53
-	2gJzvJQKDkr2WE4i4X3dhIfQFTUu2CHBIe2c8Mrvrhcs97lEhBiiX/upAGzKt5BTrT/t0HAX1+Vst
-	MBlGIrFzqMJPDCUBFvmE9XvXR5jtxFJZBQuo0+aS7b3XFI7o8aPi6NoLYVagObYzk1ztLgUWfMT4M
-	j3uACbenP0zEyBbzxECweyfRD4qEL6svsa2/QFmQhVMkFusi6nYUeyT/KmYiwcfzoiqzmY1P2mklt
-	hhh27wPaUKdgSkPlpMi3cSj2IXl74tN42GF07Mca3c2zw79ot3H3aAc/+tDSTL9Oq7Fjl4m+LBF9I
-	HLJJYvTg==;
+	bh=9KgzvuLdd3AxeujNNFtwWLhmYlvMjhxtwsKL5EtDbO0=; b=MQHM4p6W1r1nHHu7RRtNZwiuQp
+	m86pg0hbDeZ338xPVB87t6LpLmKR6AZkf1mvAtJPh2IowwiyymKMbimEHstAYzQjfITLIUY6LkKMp
+	dVZp5XSu6Rpmtwdh0E27D6U8sUbY+nKozNRYsTg67jWKhX+VftpEjSFNzbT3X6i5SxqB4DSERes7h
+	B1CsYoXwD4stHiJwrTNmHjVE29LjDqMBJq3S2Gmk2NvbyF0KD2bDOzSUDHAonCeR71brVLDyB+gBk
+	pMNatXDZIiRIabmQqavC1+eVV0z5F0/F9qx0BoCG9sp13yk3Rwlfwsi8DCvy+pR67Trc0gNHvMFXi
+	xmr3sMmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl8hz-00000000WJc-06lH;
-	Fri, 15 Mar 2024 14:38:55 +0000
+	id 1rl8or-00000000XWQ-2Qgd;
+	Fri, 15 Mar 2024 14:46:01 +0000
 Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl8hu-00000000WHe-2uDk;
-	Fri, 15 Mar 2024 14:38:52 +0000
+	id 1rl8on-00000000XTi-2BKl;
+	Fri, 15 Mar 2024 14:45:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 8307BCE20A8;
-	Fri, 15 Mar 2024 14:38:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37258C433C7;
-	Fri, 15 Mar 2024 14:38:40 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 83D72CE20AD;
+	Fri, 15 Mar 2024 14:45:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B01FC433C7;
+	Fri, 15 Mar 2024 14:45:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1710513524;
-	bh=LWOPGxaWjPP8E3hvpb0v/9QUSjPMu3aHfXD/4e34bMg=;
+	s=k20201202; t=1710513947;
+	bh=9KgzvuLdd3AxeujNNFtwWLhmYlvMjhxtwsKL5EtDbO0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pfLF0Y3Aw17VSoUcFU9nXUe7DJBTJnsvXRSp5JM2LcK8rgXc6Uqcotv7Rmcu/5y0r
-	 /k6jI4bvcl7jt+qndKxRPxKCuZU89MT7ts52FJGGSvHCZWLkGEMpmCxiaerdnhxlP4
-	 eca3MDnsqT6qnrh/36IIbVKpEABMWOLcMD840rxSlrl3WJKTxBSuQiGU2islj0xuUz
-	 VXPkRyigmU8/GmAk0LgZFCWSwIVB7rmY+yJiXtDISqyjOeYDHvGXasd3yu4D+lLUKl
-	 bbYt5HZZ/xwVfB+zMv4jDhP1WyyDmY5pb+X7Fmh9+K/LpfAq+PwR3Wf4s4A1UU0UjJ
-	 J5HVGG/SCVpew==
-Date: Fri, 15 Mar 2024 14:38:37 +0000
+	b=nwAbuAOUF24KUYuVFfjHyByrH/MI0YWhdhtAls7EY2ent8cTFd6mmtDijkswIfRMO
+	 Qukm4OE7NRQboayw/LC/wFRb0Yg2di9zf3pKXUufI8Z/H3DuOpZd3Kb4739V9nmbHt
+	 dOV6Tt4UhS0U3JpipjBiBkVh2W1xkxr5Aorhh3pM75Zkz1VKGx+ZqVzQB42x+VXE8Q
+	 LWkpjGGXsEsDT32fgg4DMJK6GU9oTdKjemKjmvR0q5dEc89PM886E1Sryujp+CTZIL
+	 gRtxsDt3v+Qab1UlprormELzh3MCCbSXoF4bwiwaMndK+zqU5ZV/chZGztkLo3PKEk
+	 8ccjds/8P48ng==
+Date: Fri, 15 Mar 2024 14:45:42 +0000
 From: Mark Brown <broonie@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+To: Justin Swartz <justin.swartz@risingedge.co.za>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
-	Nicolas Belin <nbelin@baylibre.com>,
-	Fabien Parent <fparent@baylibre.com>
-Subject: Re: [PATCH 00/18] Add audio support for the MediaTek Genio 350-evk
- board
-Message-ID: <bf418207-7f13-4ced-8c21-2824dd07fab5@sirena.org.uk>
-References: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
- <4ffde184-cf68-4b71-b81d-9b5894529926@sirena.org.uk>
- <7ddad394-e880-4ef8-8591-cb803a2086ae@baylibre.com>
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] spi: mt7621: allow GPIO chip select lines
+Message-ID: <d562be73-ad76-4450-8bff-38ed5d144714@sirena.org.uk>
+References: <20240315015708.13948-1-justin.swartz@risingedge.co.za>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Y91BRilVEGdxtZCJ"
+	protocol="application/pgp-signature"; boundary="OyRZntc5+wE1SuZv"
 Content-Disposition: inline
-In-Reply-To: <7ddad394-e880-4ef8-8591-cb803a2086ae@baylibre.com>
-X-Cookie: If rash develops, discontinue use.
+In-Reply-To: <20240315015708.13948-1-justin.swartz@risingedge.co.za>
+X-Cookie: A well-known friend is a treasure.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240315_073851_088536_AEADC51F 
-X-CRM114-Status: GOOD (  17.51  )
+X-CRM114-CacheID: sfid-20240315_074557_761053_42787FED 
+X-CRM114-Status: UNSURE (   8.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,49 +77,32 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---Y91BRilVEGdxtZCJ
+--OyRZntc5+wE1SuZv
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-On Tue, Mar 12, 2024 at 09:58:05AM +0100, Alexandre Mergnat wrote:
+On Fri, Mar 15, 2024 at 03:57:07AM +0200, Justin Swartz wrote:
 
-> I'm a bit lost for mixer-test and pcm-test.
-> Currently, I cross-compile the alsa lib project to be able to build the
-> tests and put it on my board.
+> Add the mt7621_spi_set_cs_gpio() function to control the
+> logical state of a GPIO chip select line, agnostic of the
+> electrical line state and activation polarity.
 
-> I can execute it, but I still have 2 issues:
+The core should handle GPIO chip selects for you?
 
-> 1) I've a lot of missing module in my environment (Encode.so, Encode.pm,
-> Symbol.pm, IO/Handle.pm, ...). AFAII, I've to cross compile the missing perl
-> modules and install them in the rootfs
-
-These tests are both simple C programs...
-
-> 2) I don't know how to configure pcm-test.conf &
-> Lenovo_ThinkPad_P1_Gen2.conf (or new file to match with my board).
-
-The configuration is optional.
-
-> My test cmd:
-> ./run_kselftest.sh -c alsa
-
-Just run the programs directly.  I'm only asking for the output from two
-of them anyway.
-
---Y91BRilVEGdxtZCJ
+--OyRZntc5+wE1SuZv
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmX0XWwACgkQJNaLcl1U
-h9BnLAf/e1vJ3Zr2d9fJBV1LV7sal34lcNVLD3JRrMKuk6bdnA2S2RYAgOf0UJwl
-cRuGTcq2lBneNaYnb9jgaf1C7i5kuXvnMG0IJuqVBrTZwiN5SbGhpmdvZj6HLwPu
-a8Q5MEwz/DrIXqjghxcXr5bjKi6XJ/9RRB1QpfxQFIwAOYQPNAG2F0j4SrD8zcbA
-O2dO4KRIjYUBBnpP5maQh3R3yr+TEEdolkib2FyoHL2jo2Vv1zOiTK2382kuTnKA
-y+GgUm8tQ4HiGZdAJqZAPh+Of86A9Rwl2133Tp1dxkFWlOamtyhfYbPESyNchUrV
-qduBr5NQ0tnTuAoEKttdYckFHYq6Bg==
-=FScF
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmX0XxYACgkQJNaLcl1U
+h9C4hgf+P0Z2s4lUknxJY2qju158/5Yhp5TQKmCuE5LrsDTuzpONlYkMibA2coZq
+F1UsonXCPisW6sJGBr2WIDEu4gcNvm3CJTnr04+xft7wYfS3jR0Yf0W1L4dKCQX2
+O6dP3AQ9cBv4+mgtiCJqGlb81gxBynV2VtDNMiLG3gaXfUh11GnagVfRhGUrk1oS
+eP9kFc0S9oecHnWmBk4Eov+HoKkv5mNouc/fJBAS4rqZCZPN5tYWC4BY8s8BzJ9U
+Qi/8fxX4QjWXbp1ohhcuMT6w6eSd42ELyRTkPiJeZy3Kqnjgvpb1JtU4HMbhkbZr
+P64TRRrsqBE5MgWO9N2uWEjHQEwO7Q==
+=/LPx
 -----END PGP SIGNATURE-----
 
---Y91BRilVEGdxtZCJ--
+--OyRZntc5+wE1SuZv--
 
