@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A969C54E58
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 18:25:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5067CC54E58
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 18:52:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:
 	Content-Transfer-Encoding:Cc:Date:In-Reply-To:From:Subject:Mime-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/0Qgt3MAxhQhxJk6jyspy1TaPbIA8YTmiFTwX7XyWo4=; b=QWBfNpOa+XTUFPH59SyGA13Zp+
-	zCKMvQt6TVG1DJ0jjDXLfDZoKmmGIDD1drAJEFvwCQ9cPDTWzLPNPdI+aKIfTFfCWBWTnM6F2/cAC
-	X4b9P4m/YTuxCqSqSQqV83s21ci+GGe1P4oWZyXbrWpSrCeWnavYZ8JMGzJUZYXzzwSIj5+hnoKgB
-	6GAzQEgvI8B6seyhYSGIVbzLZQsv6oneM3uUipWkrbW+oirgtPiLV22BZGtY3D722gC+fvhjl4dE9
-	ITonCPsGkDOPmQ4Z5tIIQ6sMs1xPqTiJaR4GnXpqsLWNgXy6EhT3T5+ZxxuMvaIrFdZjlfH6JGjig
-	X0vXcN7w==;
+	bh=iIbxlgLLMuP8VfnitXafCkNSyw7iQ2+h4YwS7mfda7g=; b=l2CGTYkOaRz1V4a5NaYovZLFZ4
+	0PE8kLG7PXx5RFKuPRNeGQV/NCZjcVOu152/YaKhU++/Y5ukgSj/r+9Ve5cWJa3Hvf+wgiRLOmn9z
+	pf8M8HN0hoGw9j0C657NqqayIUwaKcpANxa89MaGdyyJim02a+FlAmeXOIxcWHFPLiKp6s4uXqF2q
+	FQHBnTQYvB/+mzVj9GT103bKw7h+Aa2pAYdENU9a4jr7ZPXCk+YBqwaysaLdrlCw5gNZ/5fwyyqrP
+	H+Hx+0H8oJbp+fwIbiAaJ+FvsF+QJO98dJEfVdpG+TcKHxycI4AC9yzh9wioo3pcvm3DFXvrQJTwd
+	wNmMt0OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlCF0-00000001A6D-3Rsc;
-	Fri, 15 Mar 2024 18:25:14 +0000
+	id 1rlCfN-00000001EWQ-16Cz;
+	Fri, 15 Mar 2024 18:52:29 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlCEt-00000001A4t-2loT;
-	Fri, 15 Mar 2024 18:25:11 +0000
+	id 1rlCfG-00000001ETm-2UPk;
+	Fri, 15 Mar 2024 18:52:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710527103;
-	bh=2Au1D4Ot5E6gkicxx9t/mBxMS77Y4uefkAMGQCX6YtM=;
+	s=mail; t=1710528741;
+	bh=SMmJSZ8TCgP0UfFx6uzxM9a+eB5MYJgcY3kQQ1gi0O0=;
 	h=Subject:From:In-Reply-To:Date:Cc:References:To:From;
-	b=16rpIxEDl1lS7NryEFGRRGGYJquuVBhgV60Gq9KFdxp1YvlU4VL1pgZLuNLoIc92E
-	 xdfq4tB+lgEpzKXdVJ1r7XqfC89M2oVoxQ4rlIL3Cg1sqFc4+GJragentwQrSyNrTI
-	 705D/2FfIcD4d+1SYdd3igNGEgiVWiWb/JognT34KrksMtbAfQow4qpGHPVxWANNeh
-	 6AtRGvJOb0EvowdNZrG5FwpGJwyYhD8vClsr5nt8mKVaM2I2pe/7KrT1RWRsN3vHsx
-	 Yw/clNLSuIHhCmvTKPhUJe+P1idU8fXvQHdtkX7YMqhT+tZ/o7kzUpJJVB7AC1gQhZ
-	 xTupvx5lsj3kg==
+	b=1sBa83SUB+7n6wiqDY/CAQCVUpFwnwLT7WyHRMGya0irmAzXk/Q2pBLbJ+/4q2ez2
+	 goCFiv1pyPtFTTBsx6zONKvFmfiLLGFj1CdZmD8RjXDU/LnfuU2Hti5wJR7deGtoNm
+	 ZoPQcB94jxHgu8GoThSa7D18c5qPdvWzbcbrXBgIBgHnKOW4KurHdonLQWHAvGvH/Z
+	 cEoPChilds7pno3j4tXXyV3tlXTDsBJHzlZ0/GYClC38p31j2Iw1ML4iAXbtDhsx+R
+	 IME8pnKvsELxUgEnI7OkoDZyefc1RhEhzS6PKKZ87Os83070DjRY+lpuCmC1v9BuL7
+	 e7kapDEUyRrsA==
 Received: from smtpclient.apple (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
 	(Authenticated sender: dwlsalmeida)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 31D0637820D8;
-	Fri, 15 Mar 2024 18:24:57 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4E2FF37820D8;
+	Fri, 15 Mar 2024 18:52:15 +0000 (UTC)
 Content-Type: text/plain;
 	charset=utf-8
 Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
-Subject: Re: [PATCH v2,0/4] media: mediatek: vcodec: fix ctrl request complete
- fail
+Subject: Re: [PATCH v2,4/4] media: mediatek: vcodec: replace
+ v4l2_m2m_next_src_buf with v4l2_m2m_src_buf_remove
 From: Daniel Almeida <daniel.almeida@collabora.com>
-In-Reply-To: <20240314114452.17532-1-yunfei.dong@mediatek.com>
-Date: Fri, 15 Mar 2024 15:24:44 -0300
+In-Reply-To: <20240314114452.17532-5-yunfei.dong@mediatek.com>
+Date: Fri, 15 Mar 2024 15:52:01 -0300
 Cc: =?utf-8?B?Ik7DrWNvbGFzIEYgLiBSIC4gQSAuIFByYWRvIg==?= <nfraprado@collabora.com>,
  Nicolas Dufresne <nicolas.dufresne@collabora.com>,
  Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -68,13 +68,14 @@ Cc: =?utf-8?B?Ik7DrWNvbGFzIEYgLiBSIC4gQSAuIFByYWRvIg==?= <nfraprado@collabora.co
  linux-mediatek@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <4DFF7ED9-CD67-415E-965D-D83337CBE8A7@collabora.com>
+Message-Id: <69C5D24C-D33A-4F1E-B9A9-6C32AB1951BA@collabora.com>
 References: <20240314114452.17532-1-yunfei.dong@mediatek.com>
+ <20240314114452.17532-5-yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>
 X-Mailer: Apple Mail (2.3774.400.31)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240315_112508_060780_186DAD3F 
-X-CRM114-Status: GOOD (  15.04  )
+X-CRM114-CacheID: sfid-20240315_115222_844395_A1B99CB8 
+X-CRM114-Status: GOOD (  23.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,60 +90,283 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yunfei!
 
-I say this very respectfully, but I believe that you must improve the =
-wording of some of your commit messages. It is hard to understand your =
-changes otherwise. More importantly, it is hard to understand why they =
-are needed or what exactly they fix.
-
-This series has some checkpatch errors:=20
-
-total: 53 errors, 0 warnings, 0 checks, 1047 lines checked
-
-Did you test this with Fluster? We should really make sure that this =
-does not regress any of the tests there.
-
-See a few comments from me in the thread
-
-=E2=80=94 Daniel
 
 > On 14 Mar 2024, at 08:44, Yunfei Dong <yunfei.dong@mediatek.com> =
 wrote:
 >=20
-> Moving v4l2_ctrl_request_complete to before of function
-> v4l2_m2m_buf_done to make sure the status of request correctly.
+> There isn't lock to protect source buffer when get next src buffer, if
+> the source buffer is removed for some unknown reason before lat work =
+queue
+> execute done, will lead to remove source buffer or buffer done error.
 >=20
-> Replace v4l2_m2m_next_src_buf with v4l2_m2m_src_buf_remove to
-> make sure the src buffer won't be removed for some unknown
-> reason leading to buffer done error.
->=20
-> Patch 1 setting request complete before buffer done
-> Patch 3 flush decoder before remove all source buffer
-> Patch 2 change flush decode from capture to output when stream off
-> Patch 4 replace v4l2_m2m_next_src_buf with v4l2_m2m_src_buf_remove
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 > ---
-> compared with v1:
-> - add patch 2/3/4 to fix timing issue.
-> ---
-> Yunfei Dong (4):
->  media: mediatek: vcodec: setting request complete before buffer done
->  media: mediatek: vcodec: change flush decode from capture to output
->    when stream off
->  media: mediatek: vcodec: flush decoder before remove all source =
-buffer
->  media: mediatek: vcodec: replace v4l2_m2m_next_src_buf with
->    v4l2_m2m_src_buf_remove
+> .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 22 +++++++++----
+> .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c | 25 ++++++--------
+> .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c | 33 ++++++++-----------
+> 3 files changed, 40 insertions(+), 40 deletions(-)
 >=20
-> .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 52 +++++++++----------
-> .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  3 +-
-> .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 28 +++++++---
-> .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c | 28 +++++-----
-> .../decoder/vdec/vdec_h264_req_multi_if.c     |  3 +-
-> .../decoder/vdec/vdec_hevc_req_multi_if.c     |  3 +-
-> .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c | 37 ++++++-------
-> .../mediatek/vcodec/decoder/vdec_msg_queue.h  |  2 +
-> 8 files changed, 84 insertions(+), 72 deletions(-)
+> diff --git =
+a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.=
+c =
+b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.=
+c
+> index 3060768e0ea9..bb2680f3ec5b 100644
+> --- =
+a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.=
+c
+> +++ =
+b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.=
+c
+> @@ -328,7 +328,7 @@ static void mtk_vdec_worker(struct work_struct =
+*work)
+> bool res_chg =3D false;
+> int ret;
+>=20
+> - vb2_v4l2_src =3D v4l2_m2m_next_src_buf(ctx->m2m_ctx);
+> + vb2_v4l2_src =3D v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
+> if (!vb2_v4l2_src) {
+> v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+> mtk_v4l2_vdec_dbg(1, ctx, "[%d] no available source buffer", ctx->id);
+> @@ -363,7 +363,7 @@ static void mtk_vdec_worker(struct work_struct =
+*work)
+> mtk_v4l2_vdec_err(ctx, "vb2 buffer media request is NULL");
+>=20
+> ret =3D vdec_if_decode(ctx, bs_src, NULL, &res_chg);
+
+
+Can you leave a comment explaining why the !=3D -EAGAIN check was
+removed? Doesn=E2=80=99t seem obvious to me.
+
+
+> - if (ret && ret !=3D -EAGAIN) {
+> + if (ret) {
+> mtk_v4l2_vdec_err(ctx,
+>  "[%d] decode src_buf[%d] sz=3D0x%zx pts=3D%llu ret=3D%d res_chg=3D%d",
+>  ctx->id, vb2_src->index, bs_src->size,
+> @@ -380,11 +380,21 @@ static void mtk_vdec_worker(struct work_struct =
+*work)
+>    ctx->current_codec =3D=3D V4L2_PIX_FMT_VP8_FRAME) {
+> if (src_buf_req)
+> v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
+> - v4l2_m2m_buf_done_and_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx, =
+state);
+> - } else {
+> - if (ret !=3D -EAGAIN)
+> - v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
+> + if (vb2_v4l2_src)
+> + v4l2_m2m_buf_done(vb2_v4l2_src, state);
+> +
+> v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+> + } else {
+> + if (!ret) {
+> + v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+> + } else {
+> + if (src_buf_req)
+> + v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
+
+vb2_v4l2_src can=E2=80=99t really be NULL here due to this:
+
+```
+	vb2_v4l2_src =3D v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
+	if (!vb2_v4l2_src) {
+		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+		mtk_v4l2_vdec_dbg(1, ctx, "[%d] no available source =
+buffer", ctx->id);
+		return;
+	}
+```
+
+I must say I find the control flow here a bit confusing, so I wonder if =
+this block can=E2=80=99t go
+into an inline helper to clean up stuff a bit:
+
+```
+			if (src_buf_req)
+				v4l2_ctrl_request_complete(src_buf_req, =
+&ctx->ctrl_hdl);
+			if (vb2_v4l2_src)
+				v4l2_m2m_buf_done(vb2_v4l2_src, state);
+
+			v4l2_m2m_job_finish(dev->m2m_dev_dec, =
+ctx->m2m_ctx);
+```
+
+Also, I dislike that this apparently fails silently if the pointers are =
+NULL. It is
+not clear at a first glance if you=E2=80=99re just being careful or if =
+you legitimately expect
+`src_buf_req` to possibly be NULL at this point for whatever reason. The =
+lifecycle
+of request objects is not trivial, so it=E2=80=99s good to be explicit =
+here even if this means
+only leaving a comment or similar
+
+=E2=80=94 Daniel
+
+> + if (vb2_v4l2_src)
+> + v4l2_m2m_buf_done(vb2_v4l2_src, state);
+> +
+> + v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+> + }
+> }
+> }
+>=20
+> diff --git =
+a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.=
+c =
+b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.=
+c
+> index f277b907c345..339c5c88da1a 100644
+> --- =
+a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.=
+c
+> +++ =
+b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.=
+c
+> @@ -1052,23 +1052,18 @@ static inline void =
+vdec_av1_slice_vsi_to_remote(struct vdec_av1_slice_vsi *vsi,
+> memcpy(remote_vsi, vsi, sizeof(*vsi));
+> }
+>=20
+> -static int vdec_av1_slice_setup_lat_from_src_buf(struct =
+vdec_av1_slice_instance *instance,
+> - struct vdec_av1_slice_vsi *vsi,
+> - struct vdec_lat_buf *lat_buf)
+> +static int vdec_av1_slice_setup_lat_from_src_buf(struct =
+vdec_av1_slice_vsi *vsi,
+> + struct vdec_lat_buf *lat_buf,
+> + struct mtk_vcodec_mem *bs)
+> {
+> - struct vb2_v4l2_buffer *src;
+> - struct vb2_v4l2_buffer *dst;
+> -
+> - src =3D v4l2_m2m_next_src_buf(instance->ctx->m2m_ctx);
+> - if (!src)
+> - return -EINVAL;
+> + struct mtk_video_dec_buf *src_buf_info;
+>=20
+> - lat_buf->src_buf_req =3D src->vb2_buf.req_obj.req;
+> - lat_buf->vb2_v4l2_src =3D src;
+> + src_buf_info =3D container_of(bs, struct mtk_video_dec_buf, =
+bs_buffer);
+> + lat_buf->src_buf_req =3D =
+src_buf_info->m2m_buf.vb.vb2_buf.req_obj.req;
+> + lat_buf->vb2_v4l2_src =3D &src_buf_info->m2m_buf.vb;
+>=20
+> - dst =3D &lat_buf->ts_info;
+> - v4l2_m2m_buf_copy_metadata(src, dst, true);
+> - vsi->frame.cur_ts =3D dst->vb2_buf.timestamp;
+> + v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb, =
+&lat_buf->ts_info, true);
+> + vsi->frame.cur_ts =3D lat_buf->ts_info.vb2_buf.timestamp;
+>=20
+> return 0;
+> }
+> @@ -1717,7 +1712,7 @@ static int vdec_av1_slice_setup_lat(struct =
+vdec_av1_slice_instance *instance,
+> struct vdec_av1_slice_vsi *vsi =3D &pfc->vsi;
+> int ret;
+>=20
+> - ret =3D vdec_av1_slice_setup_lat_from_src_buf(instance, vsi, =
+lat_buf);
+> + ret =3D vdec_av1_slice_setup_lat_from_src_buf(vsi, lat_buf, bs);
+> if (ret)
+> return ret;
+>=20
+> diff --git =
+a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.=
+c =
+b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.=
+c
+> index 0dedbc3680e8..2697e04f4313 100644
+> --- =
+a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.=
+c
+> +++ =
+b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.=
+c
+> @@ -693,39 +693,34 @@ static int vdec_vp9_slice_tile_offset(int idx, =
+int mi_num, int tile_log2)
+> }
+>=20
+> static
+> -int vdec_vp9_slice_setup_single_from_src_to_dst(struct =
+vdec_vp9_slice_instance *instance)
+> +int vdec_vp9_slice_setup_single_from_src_to_dst(struct =
+vdec_vp9_slice_instance *instance,
+> + struct mtk_vcodec_mem *bs)
+> {
+> - struct vb2_v4l2_buffer *src;
+> struct vb2_v4l2_buffer *dst;
+> + struct mtk_video_dec_buf *src_buf_info;
+>=20
+> - src =3D v4l2_m2m_next_src_buf(instance->ctx->m2m_ctx);
+> - if (!src)
+> - return -EINVAL;
+> + src_buf_info =3D container_of(bs, struct mtk_video_dec_buf, =
+bs_buffer);
+>=20
+> dst =3D v4l2_m2m_next_dst_buf(instance->ctx->m2m_ctx);
+> if (!dst)
+> return -EINVAL;
+>=20
+> - v4l2_m2m_buf_copy_metadata(src, dst, true);
+> + v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb, dst, true);
+>=20
+> return 0;
+> }
+>=20
+> -static int vdec_vp9_slice_setup_lat_from_src_buf(struct =
+vdec_vp9_slice_instance *instance,
+> - struct vdec_lat_buf *lat_buf)
+> +static int vdec_vp9_slice_setup_lat_from_src_buf(struct vdec_lat_buf =
+*lat_buf,
+> + struct mtk_vcodec_mem *bs)
+> {
+> - struct vb2_v4l2_buffer *src;
+> - struct vb2_v4l2_buffer *dst;
+> + struct mtk_video_dec_buf *src_buf_info;
+>=20
+> - src =3D v4l2_m2m_next_src_buf(instance->ctx->m2m_ctx);
+> - if (!src)
+> - return -EINVAL;
+> + src_buf_info =3D container_of(bs, struct mtk_video_dec_buf, =
+bs_buffer);
+> + lat_buf->src_buf_req =3D =
+src_buf_info->m2m_buf.vb.vb2_buf.req_obj.req;
+> + lat_buf->vb2_v4l2_src =3D &src_buf_info->m2m_buf.vb;
+>=20
+> - lat_buf->src_buf_req =3D src->vb2_buf.req_obj.req;
+> - lat_buf->vb2_v4l2_src =3D src;
+> + v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb, =
+&lat_buf->ts_info, true);
+>=20
+> - dst =3D &lat_buf->ts_info;
+> - v4l2_m2m_buf_copy_metadata(src, dst, true);
+> return 0;
+> }
+>=20
+> @@ -1155,7 +1150,7 @@ static int vdec_vp9_slice_setup_lat(struct =
+vdec_vp9_slice_instance *instance,
+> struct vdec_vp9_slice_vsi *vsi =3D &pfc->vsi;
+> int ret;
+>=20
+> - ret =3D vdec_vp9_slice_setup_lat_from_src_buf(instance, lat_buf);
+> + ret =3D vdec_vp9_slice_setup_lat_from_src_buf(lat_buf, bs);
+> if (ret)
+> goto err;
+>=20
+> @@ -1796,7 +1791,7 @@ static int vdec_vp9_slice_setup_single(struct =
+vdec_vp9_slice_instance *instance,
+> struct vdec_vp9_slice_vsi *vsi =3D &pfc->vsi;
+> int ret;
+>=20
+> - ret =3D vdec_vp9_slice_setup_single_from_src_to_dst(instance);
+> + ret =3D vdec_vp9_slice_setup_single_from_src_to_dst(instance, bs);
+> if (ret)
+> goto err;
 >=20
 > --=20
 > 2.18.0
