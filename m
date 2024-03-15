@@ -4,90 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B303C54E66
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 07:26:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29B51C54E66
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 07:30:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yWtLl6WaCIrsB4FIY5b+16SN3rcRg3wXKdgtsLrlIEc=; b=nv6X9pBpRdKudOGu9qrVWWWwRZ
-	ezX49EaVwEJ5vQY3ByxGaeH+klT+E7EySPyw96ZaTt7+ZwB3DMBR7VveGJ9i18ZZ8FYnDaxXdbtKY
-	0/GeXmf99FQHPPdrUbSs0veens7ykGaGF0OJu800K3bZLUJbjJBDe1NsSZnssEqGH6AZnMWX5kFOC
-	VfM2jRfEtJjocM1uf8vP8gJT3INd82Z6wUvkRk8JwpxXEJG9F1nvEKj1elz/sHHr2sgJiFF8rUVhw
-	9f+WF+4iajdKR80aP3g1pA+PKJiBxwP7hPxBoglKnjkuEgUZey0N6QJxCj2kN0yowPAuP+WoJaVTT
-	z3gzXnnw==;
+	bh=yRWP9snI8RAx/YHERzDgmRG2nMqfLoPSeiF3f8FNgLU=; b=HRBx6/jEh6W1z9MEDdblvy2Z6X
+	C92TvbO8VfWHlftYmHR/xugAx9JurpvuINHasWuEULWZoxk56o7E0iRMhp8rI4pbmF0yGjjM+Dyih
+	4EqxbDyl6l2N3VYjPKBqM7UkjmRhPm/2V0Ft2E9sJCWWAGAm7gw7UWZyvTuvqYl0ccFuziTKAF2iV
+	0qcxg5f8AqvJ6n8zkiqX++xehMn8UkVeczgQ70R+GMl+QTTbW5l1apFahTlRB2Zr6v5qRqhCMHpUh
+	jI4hitB75NsdAbHoK2lL26KBFhDA4tdOaTyoeFPhbulpln/K6gKy4vmeKAQR4V+Ri1Q5ER9Hr+pD8
+	XvW09wTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl1xk-0000000Gyf1-03kh;
-	Fri, 15 Mar 2024 07:26:44 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rl20t-0000000GzT5-3XeG;
+	Fri, 15 Mar 2024 07:29:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl1xg-0000000GycJ-09JB;
-	Fri, 15 Mar 2024 07:26:41 +0000
-X-UUID: 59efb55ee29d11ee9aa9374d6d45775a-20240315
+	id 1rl20p-0000000GzSF-2COG;
+	Fri, 15 Mar 2024 07:29:57 +0000
+X-UUID: cee860eae29d11eeacdb61a41848c7d2-20240315
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=yWtLl6WaCIrsB4FIY5b+16SN3rcRg3wXKdgtsLrlIEc=;
-	b=O+tn2mIrDZOwRoZT03BsfOO7jzzD9zEehK2+jMQSl1EcaHWZyoNdxCCJQ6SSpdGVyhOSyUl1rglnM6LLGdkRsvIaem6Xu457vdunq62YjUnoEKOA7PK4aqRGTZbdfDFlKBC3AMQR0hMS1VRUfE92poDV1IWK6Zz+Y3J6Qy1qyis=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=yRWP9snI8RAx/YHERzDgmRG2nMqfLoPSeiF3f8FNgLU=;
+	b=bldC4cM9793BaKcuaQ0gkl4VpnCoZlK0X4MKNorbxVZSnYciSY1gLj36okttM+p8tCVru4t9xaLBIlpN2wutowW8HYiwAV33cAMaecRtcazC4w2KDU1X4dUaF4wgFmuxobfErVVQgTdNnB8i6gMIbrjDvFWNcbgVHPMzPY4vrwA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:cf6104a9-2999-45a4-9bd0-31d80b6706bd,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:d36b0985-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-O-INFO: VERSION:1.1.37,REQID:06088bb6-b6ba-4fa9-8e3f-cf66b8aa9071,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:-35
+X-CID-META: VersionHash:6f543d0,CLOUDID:1405eeff-c16b-4159-a099-3b9d0558e447,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
+	L:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
+	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 59efb55ee29d11ee9aa9374d6d45775a-20240315
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: cee860eae29d11eeacdb61a41848c7d2-20240315
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <shuijing.li@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1172777414; Fri, 15 Mar 2024 00:26:34 -0700
+	with ESMTP id 1308439576; Fri, 15 Mar 2024 00:29:50 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 15 Mar 2024 15:26:30 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ 15.2.1118.26; Fri, 15 Mar 2024 15:28:52 +0800
+Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 15 Mar 2024 15:26:30 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>,
-	Sebastian Fricke <sebastian.fricke@collabora.com>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, "Yunfei
- Dong" <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH] media: mediatek: vcodec: add decoder command to support stateless decoder
-Date: Fri, 15 Mar 2024 15:26:29 +0800
-Message-ID: <20240315072629.27738-1-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ 15.2.1118.26 via Frontend Transport; Fri, 15 Mar 2024 15:28:51 +0800
+From: Shuijing Li <shuijing.li@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Shuijing Li
+	<shuijing.li@mediatek.com>
+Subject: [PATCH] mediatek: dsi: Correct calculation formula of PHY Timing
+Date: Fri, 15 Mar 2024 15:29:17 +0800
+Message-ID: <20240315072945.19502-1-shuijing.li@mediatek.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.498300-8.000000
-X-TMASE-MatchedRID: H6JCIvDuX7+GVqG4eYPDVkZakoam9+aepQH4ogtVQP2xK/qamqYywXY3
-	TcMnBmkfThbvLLI8RvP+WuUgR5Gm1cJHVFWeMALEHcQQBuf4ZFsuhg66Itb65fzaSz3Z/4aaecZ
-	f3B8j81qQ5zXuXE7cooAy6p60ZV62fJ5/bZ6npdiyO81X3yak84h7iKx2XmBbBXO9QsFmS8iQqa
-	5F+eWEV9XjWmP/eZGnc0jrJpxlhMB+3BndfXUhXQ==
+X-TM-AS-Result: No-10--2.215100-8.000000
+X-TMASE-MatchedRID: YZSAQvmCNEE926lAoePLB6Yb59qT2vdqEbxKVXd70tXfUZT83lbkEEFN
+	G6vV64Np89MfnAiuroaG184Y5LIraR8TzIzimOwPC24oEZ6SpSmcfuxsiY4QFErqa51gGLvDwDD
+	qsyMeG4EW6WhcUTCY/falSjsNC8GOBNZu/eAwGF85FgWkTMqhfn6+pNxelVQZ8K6z02AXwE6f9V
+	II1fK9/PI2nuDg9d7QFezHPq6MHFSrV/xdKQcFSY0leYQxW8u2lExlQIQeRG0=
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.498300-8.000000
+X-TMASE-Result: 10--2.215100-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: D8F9687C570A89AD469DD8A683BE20B1C7ACB5943D3B5497361E2F29E5FEB1372000:8
+X-TM-SNTS-SMTP: 5A67AD3405B3FBFC63F4F8117293508A52A6B56E3483D38D0BF2920C847618F52000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240315_002640_189075_04E573E8 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20240315_002955_577412_1FAF7451 
+X-CRM114-Status: UNSURE (   7.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,120 +98,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The supported decoder commands are different for stateless and
-stateful architecture. Adding stateless decoder commands to fix
-below v4l2-compliance test error.
+This patch correct calculation formula of PHY timing.
+Make actual phy timing more accurate.
 
-Codec ioctls:
-    VIDIOC_ENCODER_CMD returned -1 (Inappropriate ioctl for device)
-    VIDIOC_TRY_ENCODER_CMD returned -1 (Inappropriate ioctl for device)
- test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
-    VIDIOC_G_ENC_INDEX returned -1 (Inappropriate ioctl for device)
- test VIDIOC_G_ENC_INDEX: OK (Not Supported)
-    VIDIOC_DECODER_CMD returned -1 (Invalid argument)
-    VIDIOC_TRY_DECODER_CMD returned -1 (Invalid argument)
-    VIDIOC_TRY_DECODER_CMD returned -1 (Invalid argument)
-    fail: v4l2-test-codecs.cpp(126): ret
- test VIDIOC_(TRY_)DECODER_CMD: FAIL
-
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
 ---
- .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 65 +++++++++++++++++--
- 1 file changed, 59 insertions(+), 6 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 33 +++++++++++++++---------------
+ 1 file changed, 17 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-index ba742f0e391d..90579dd92cae 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-@@ -80,21 +80,20 @@ static struct mtk_q_data *mtk_vdec_get_q_data(struct mtk_vcodec_dec_ctx *ctx,
- 	return &ctx->q_data[MTK_Q_DATA_DST];
- }
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index a2fdfc8ddb15..d1bd7d671880 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -235,22 +235,23 @@ static void mtk_dsi_phy_timconfig(struct mtk_dsi *dsi)
+ 	u32 data_rate_mhz = DIV_ROUND_UP(dsi->data_rate, 1000000);
+ 	struct mtk_phy_timing *timing = &dsi->phy_timing;
  
--static int vidioc_try_decoder_cmd(struct file *file, void *priv,
--				struct v4l2_decoder_cmd *cmd)
-+static int mtk_vcodec_stateful_try_decoder_cmd(struct file *file, void *priv,
-+					       struct v4l2_decoder_cmd *cmd)
- {
- 	return v4l2_m2m_ioctl_try_decoder_cmd(file, priv, cmd);
- }
- 
+-	timing->lpx = (60 * data_rate_mhz / (8 * 1000)) + 1;
+-	timing->da_hs_prepare = (80 * data_rate_mhz + 4 * 1000) / 8000;
+-	timing->da_hs_zero = (170 * data_rate_mhz + 10 * 1000) / 8000 + 1 -
+-			     timing->da_hs_prepare;
+-	timing->da_hs_trail = timing->da_hs_prepare + 1;
 -
--static int vidioc_decoder_cmd(struct file *file, void *priv,
--				struct v4l2_decoder_cmd *cmd)
-+static int mtk_vcodec_stateful_decoder_cmd(struct file *file, void *priv,
-+					   struct v4l2_decoder_cmd *cmd)
- {
- 	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
- 	struct vb2_queue *src_vq, *dst_vq;
- 	int ret;
+-	timing->ta_go = 4 * timing->lpx - 2;
+-	timing->ta_sure = timing->lpx + 2;
+-	timing->ta_get = 4 * timing->lpx;
+-	timing->da_hs_exit = 2 * timing->lpx + 1;
+-
+-	timing->clk_hs_prepare = 70 * data_rate_mhz / (8 * 1000);
+-	timing->clk_hs_post = timing->clk_hs_prepare + 8;
+-	timing->clk_hs_trail = timing->clk_hs_prepare;
+-	timing->clk_hs_zero = timing->clk_hs_trail * 4;
+-	timing->clk_hs_exit = 2 * timing->clk_hs_trail;
++	timing->lpx = (80 * data_rate_mhz / (8 * 1000)) + 1;
++	timing->da_hs_prepare = (59 * data_rate_mhz + 4 * 1000) / 8000 + 1;
++	timing->da_hs_zero = (163 * data_rate_mhz + 11 * 1000) / 8000 + 1 -
++		timing->da_hs_prepare;
++	timing->da_hs_trail = (78 * data_rate_mhz + 7 * 1000) / 8000 + 1;
++
++	timing->ta_go = 4 * timing->lpx;
++	timing->ta_sure = 3 * timing->lpx / 2;
++	timing->ta_get = 5 * timing->lpx;
++	timing->da_hs_exit = (118 * data_rate_mhz / (8 * 1000)) + 1;
++
++	timing->clk_hs_prepare = (57 * data_rate_mhz / (8 * 1000)) + 1;
++	timing->clk_hs_post = (65 * data_rate_mhz + 53 * 1000) / 8000 + 1;
++	timing->clk_hs_trail = (78 * data_rate_mhz + 7 * 1000) / 8000 + 1;
++	timing->clk_hs_zero = (330 * data_rate_mhz / (8 * 1000)) + 1 -
++		timing->clk_hs_prepare;
++	timing->clk_hs_exit = (118 * data_rate_mhz / (8 * 1000)) + 1;
  
--	ret = vidioc_try_decoder_cmd(file, priv, cmd);
-+	ret = mtk_vcodec_stateful_try_decoder_cmd(file, priv, cmd);
- 	if (ret)
- 		return ret;
- 
-@@ -128,6 +127,60 @@ static int vidioc_decoder_cmd(struct file *file, void *priv,
- 	return 0;
- }
- 
-+static int mtk_vcodec_stateless_try_decoder_cmd(struct file *file, void *priv,
-+						struct v4l2_decoder_cmd *cmd)
-+{
-+	return v4l2_m2m_ioctl_stateless_try_decoder_cmd(file, priv, cmd);
-+}
-+
-+static int mtk_vcodec_stateless_decoder_cmd(struct file *file, void *priv,
-+					    struct v4l2_decoder_cmd *cmd)
-+{
-+	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	int ret;
-+
-+	ret = v4l2_m2m_ioctl_stateless_try_decoder_cmd(file, priv, cmd);
-+	if (ret)
-+		return ret;
-+
-+	mtk_v4l2_vdec_dbg(3, ctx, "decoder cmd=%u", cmd->cmd);
-+	switch (cmd->cmd) {
-+	case V4L2_DEC_CMD_FLUSH:
-+		/*
-+		 * If the flag of output buffer is set with V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF,
-+		 * this command will prevent dequeueing the capture buffer containing the last
-+		 * decoded frame. Or do nothing
-+		 */
-+		break;
-+
-+	default:
-+		mtk_v4l2_vdec_err(ctx, "invalid stateless decoder cmd=%u", cmd->cmd);
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static int vidioc_try_decoder_cmd(struct file *file, void *priv, struct v4l2_decoder_cmd *cmd)
-+{
-+	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+
-+	if (ctx->dev->vdec_pdata->uses_stateless_api)
-+		return mtk_vcodec_stateless_try_decoder_cmd(file, priv, cmd);
-+	else
-+		return mtk_vcodec_stateful_try_decoder_cmd(file, priv, cmd);
-+}
-+
-+static int vidioc_decoder_cmd(struct file *file, void *priv, struct v4l2_decoder_cmd *cmd)
-+{
-+	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+
-+	if (ctx->dev->vdec_pdata->uses_stateless_api)
-+		return mtk_vcodec_stateless_decoder_cmd(file, priv, cmd);
-+	else
-+		return mtk_vcodec_stateful_decoder_cmd(file, priv, cmd);
-+}
-+
- void mtk_vdec_unlock(struct mtk_vcodec_dec_ctx *ctx)
- {
- 	mutex_unlock(&ctx->dev->dec_mutex[ctx->hw_id]);
+ 	timcon0 = timing->lpx | timing->da_hs_prepare << 8 |
+ 		  timing->da_hs_zero << 16 | timing->da_hs_trail << 24;
 -- 
-2.18.0
+2.43.0
 
 
