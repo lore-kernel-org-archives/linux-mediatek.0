@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA8CCC54E58
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 08:55:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92645C54E58
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 08:55:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=co97dusQYPEklPIpu86QgWV11cpjh4YHyUtI7SGFiQY=; b=TFr4vZ38y6RXV7ydw5dljllrDK
-	Kcs6MLIhvDPidiHtr7XOFgJy0ey2RqNy0AmwLjIagi5K21O43hysvSk60bL0pm/f3WYdwbn4SsrR4
-	aymF2fT/OGrzovL6e6SjQy7oNlD01rKDE/yg6yc6b2yKctof0dIjnCUj3YTgzvDi4FzUBbqp84put
-	mf7Q2Oi9FzT6vzub3+R97IyoR3d1+2Sb5s6ZlRRVa63tAp3se78P1u/JqZDn5L8LFYTFGTF+ZNQYU
-	Kl9HhbL+qHnV/BOVF/qbwceDTpHTQL0lyFGnBaGTSQc//sqJ/k2qv/hlrKzisK/8O+5qfDQvLWOm5
-	Gp4BXKPQ==;
+	bh=yE4JBQTCPH3gA6ZXKyx8sgWao+HvBsWrcvvs5VHR2/A=; b=jklzOy4f1JgMQOB3DvPB4xD7Lm
+	Bn7MyAgfPQCX5go8Gn+AlllhtojpEUdq4/pDm5GIqp9hU6QOW7xki3iru3eraVmY9KFUQZx3/KjiK
+	GOyMuxjYcFNkSITRBKoBBgWuKLcR4BLLrd3zA2ijVIAGym8gc4EsmGaaLFYg90DxcAWo0IXwWnBkC
+	rNpPL1YnCVYKNKe4JZob4uQmzB532O1b9/3E3Ri4PsrAjMOjhQveQa2UtJ0TYqGfQ0JXgdC3V5Hg4
+	PXrOwLHDB70+Szl04YoVHRGacpOp244Y39iCRt3NUQ8kxO8eHOMoAA1AacMA9LjqqrQYXdrZJkA1l
+	ZM9bx4Vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl3LA-0000000HEUr-0myG;
-	Fri, 15 Mar 2024 08:55:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rl3Lm-0000000HEaq-0nr7;
+	Fri, 15 Mar 2024 08:55:38 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl3L8-0000000HETG-029v
+	id 1rl3Li-0000000HEZz-3awd
 	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Mar 2024 08:54:59 +0000
-X-UUID: b15451eae2a911eeacdb61a41848c7d2-20240315
+	Fri, 15 Mar 2024 08:55:36 +0000
+X-UUID: c64b7b82e2a911ee9aa9374d6d45775a-20240315
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=co97dusQYPEklPIpu86QgWV11cpjh4YHyUtI7SGFiQY=;
-	b=e3/AIe7de8ofkTMjkkwM22aPB4S/giKh3SqmJSTBJBgvD8Vqn6KXkf++yLAtpXczLKrYZx1yeWNEIyjVWLFiCXd2UNItj2ZwZ37TUeeuFOrtGByPriF1lSzyqNwyIxSWw6/smoygUgEXFNrXv7oy2kR6Jb0NYpAhnZgQ1spjYWE=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=yE4JBQTCPH3gA6ZXKyx8sgWao+HvBsWrcvvs5VHR2/A=;
+	b=A6wEVPsSzSwREgj+fK2WnF7HB0eLeSdQtc/kL3qPGYjeBiTAMPA/bG6Ifpf5JiUdCVzs9hG4y+Ya8rVuGTU2aivJgkFiIUKObbwZxY84wmfYiGdSUIg8BM1WMX5lr1T48PUpOlN/U9iRjXa6tTPNGznuAsj7IcyhBQ6LuySNr7o=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:5b57dfa6-d260-4388-8a83-3d577d30f8e5,IP:0,U
+X-CID-O-INFO: VERSION:1.1.37,REQID:9823e178-93cf-4547-a0ba-be4abc2dd55d,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:aa7c0a85-8d4f-477b-89d2-1e3bdbef96d1,B
+X-CID-META: VersionHash:6f543d0,CLOUDID:4b7e0a85-8d4f-477b-89d2-1e3bdbef96d1,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: b15451eae2a911eeacdb61a41848c7d2-20240315
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: c64b7b82e2a911ee9aa9374d6d45775a-20240315
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <peter.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 736700871; Fri, 15 Mar 2024 01:54:54 -0700
+	with ESMTP id 452472908; Fri, 15 Mar 2024 01:55:29 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 15 Mar 2024 16:34:50 +0800
+ 15.2.1118.26; Fri, 15 Mar 2024 16:34:51 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 15 Mar 2024 16:34:50 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 15 Mar 2024 16:34:51 +0800
 From: <peter.wang@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
 	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
@@ -64,30 +64,30 @@ CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
 	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
 	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
 	<naomi.chu@mediatek.com>, <chu.stanley@gmail.com>
-Subject: [PATCH v2 3/7] ufs: host: mediatek: Add UFS_MTK_CAP_DISABLE_MCQ
-Date: Fri, 15 Mar 2024 16:34:44 +0800
-Message-ID: <20240315083448.7185-4-peter.wang@mediatek.com>
+Subject: [PATCH v2 4/7] ufs: host: mediatek: ufs mtk sip command reconstruct
+Date: Fri, 15 Mar 2024 16:34:45 +0800
+Message-ID: <20240315083448.7185-5-peter.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240315083448.7185-1-peter.wang@mediatek.com>
 References: <20240315083448.7185-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--9.664600-8.000000
-X-TMASE-MatchedRID: Dz2rI8EJB2APRVepDWIjx7iMC5wdwKqdT2fFmw5H8VPI9EDAP/dptm/Y
-	agJ/V3Z5L7y59K1QGD/G81sj4r28+AxAtdzYwZJsH5YQyOg71ZZMkOX0UoduuQqiCYa6w8tvlUN
-	mxPSthYIULfbRmZ/onHhbWkjJzPSiFm2HuAZVgfZfwzQfOH01PDJcsSAcBZLamyiLZetSf8mfop
-	0ytGwvXiq2rl3dzGQ1l3+bAt/YFVRLioE7CwaedVoA92s8DJ3qyWh+cGWvov7FbXKUXP6jRWgGZ
-	NLBHGNe
+X-TM-AS-Result: No-10--6.741700-8.000000
+X-TMASE-MatchedRID: jxLDw2lrPpv9jxte3IFskLiMC5wdwKqdf6/Md8Lb2l84YKAM3oRt9l0c
+	vQ4E8DdUXk6mOXfvRmBM8qdoCvOVvj13WcdbGR6QyeVujmXuYYXzWEMQjooUzUYvSDWdWaRh/c+
+	POq0n3JUSIx4SDL9Y5pNNyCYD/Z/9g4jZH72x494XrP0cYcrA24EcpMn6x9cZCqIJhrrDy28J64
+	/kWP1C5qnX7naLYMc4ou7eTOm27Q0YB2fOueQzjxRFJJyf5BJe3QfwsVk0UbvdirxFVpmK9aHch
+	3WEjd2F0nn3c1dbxAlDWsS2bc6upr30xNSH2BlAtZz3gO3LWCI=
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--9.664600-8.000000
+X-TMASE-Result: 10--6.741700-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 9A9341DD883609E319E4AC0196D5F112CE51C50D14BDD4B24523ED0E53B8A8D42000:8
+X-TM-SNTS-SMTP: 32482157928C4B65CAFD2AEC8DABE8A6FAEB78881EBB02EE5CA424F9AEC2BE422000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240315_015458_145578_1F16C356 
-X-CRM114-Status: GOOD (  11.58  )
+X-CRM114-CacheID: sfid-20240315_015534_925143_C1FB2B17 
+X-CRM114-Status: GOOD (  14.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,69 +104,237 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Po-Wen Kao <powen.kao@mediatek.com>
 
-Add new mediatek host cap UFS_MTK_CAP_DISABLE_MCQ to allow disable
-MCQ feature by assigning dts boolean property
-"mediatek,ufs-disable-mcq""
+Move sip command and define to a new sip header file.
 
 Acked-by: Chun-Hung Wu <Chun-Hung.Wu@mediatek.com>
-Reviewed-by: Avri Altman <avri.altman@wdc.com>
 Reviewed-by: Peter Wang <peter.wang@mediatek.com>
 Signed-off-by: Peter Wang <peter.wang@mediatek.com>
 Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
 ---
- drivers/ufs/host/ufs-mediatek.c | 12 ++++++++++++
- drivers/ufs/host/ufs-mediatek.h |  1 +
- 2 files changed, 13 insertions(+)
+ drivers/ufs/host/ufs-mediatek-sip.h | 90 +++++++++++++++++++++++++++++
+ drivers/ufs/host/ufs-mediatek.c     |  3 +-
+ drivers/ufs/host/ufs-mediatek.h     | 79 -------------------------
+ 3 files changed, 92 insertions(+), 80 deletions(-)
+ create mode 100755 drivers/ufs/host/ufs-mediatek-sip.h
 
+diff --git a/drivers/ufs/host/ufs-mediatek-sip.h b/drivers/ufs/host/ufs-mediatek-sip.h
+new file mode 100755
+index 000000000000..35d1d5e76a2c
+--- /dev/null
++++ b/drivers/ufs/host/ufs-mediatek-sip.h
+@@ -0,0 +1,90 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (C) 2022 MediaTek Inc.
++ */
++
++#ifndef _UFS_MEDIATEK_SIP_H
++#define _UFS_MEDIATEK_SIP_H
++
++#include <linux/soc/mediatek/mtk_sip_svc.h>
++
++/*
++ * SiP (Slicon Partner) commands
++ */
++#define MTK_SIP_UFS_CONTROL               MTK_SIP_SMC_CMD(0x276)
++#define UFS_MTK_SIP_VA09_PWR_CTRL         BIT(0)
++#define UFS_MTK_SIP_DEVICE_RESET          BIT(1)
++#define UFS_MTK_SIP_CRYPTO_CTRL           BIT(2)
++#define UFS_MTK_SIP_REF_CLK_NOTIFICATION  BIT(3)
++#define UFS_MTK_SIP_HOST_PWR_CTRL         BIT(5)
++#define UFS_MTK_SIP_GET_VCC_NUM           BIT(6)
++#define UFS_MTK_SIP_DEVICE_PWR_CTRL       BIT(7)
++
++
++/*
++ * Multi-VCC by Numbering
++ */
++enum ufs_mtk_vcc_num {
++	UFS_VCC_NONE = 0,
++	UFS_VCC_1,
++	UFS_VCC_2,
++	UFS_VCC_MAX
++};
++
++/*
++ * Host Power Control options
++ */
++enum {
++	HOST_PWR_HCI = 0,
++	HOST_PWR_MPHY
++};
++
++/*
++ * SMC call wrapper function
++ */
++struct ufs_mtk_smc_arg {
++	unsigned long cmd;
++	struct arm_smccc_res *res;
++	unsigned long v1;
++	unsigned long v2;
++	unsigned long v3;
++	unsigned long v4;
++	unsigned long v5;
++	unsigned long v6;
++	unsigned long v7;
++};
++
++
++static inline void _ufs_mtk_smc(struct ufs_mtk_smc_arg s)
++{
++	arm_smccc_smc(MTK_SIP_UFS_CONTROL,
++		s.cmd,
++		s.v1, s.v2, s.v3, s.v4, s.v5, s.v6, s.res);
++}
++
++#define ufs_mtk_smc(...) \
++	_ufs_mtk_smc((struct ufs_mtk_smc_arg) {__VA_ARGS__})
++
++/* Sip kernel interface */
++#define ufs_mtk_va09_pwr_ctrl(res, on) \
++	ufs_mtk_smc(UFS_MTK_SIP_VA09_PWR_CTRL, &(res), on)
++
++#define ufs_mtk_crypto_ctrl(res, enable) \
++	ufs_mtk_smc(UFS_MTK_SIP_CRYPTO_CTRL, &(res), enable)
++
++#define ufs_mtk_ref_clk_notify(on, stage, res) \
++	ufs_mtk_smc(UFS_MTK_SIP_REF_CLK_NOTIFICATION, &(res), on, stage)
++
++#define ufs_mtk_device_reset_ctrl(high, res) \
++	ufs_mtk_smc(UFS_MTK_SIP_DEVICE_RESET, &(res), high)
++
++#define ufs_mtk_host_pwr_ctrl(opt, on, res) \
++	ufs_mtk_smc(UFS_MTK_SIP_HOST_PWR_CTRL, &(res), opt, on)
++
++#define ufs_mtk_get_vcc_num(res) \
++	ufs_mtk_smc(UFS_MTK_SIP_GET_VCC_NUM, &(res))
++
++#define ufs_mtk_device_pwr_ctrl(on, ufs_version, res) \
++	ufs_mtk_smc(UFS_MTK_SIP_DEVICE_PWR_CTRL, &(res), on, ufs_version)
++
++#endif /* !_UFS_MEDIATEK_SIP_H */
 diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 25bf5a13cddd..2ee7881533ec 100644
+index 2ee7881533ec..bb5b11185d8a 100644
 --- a/drivers/ufs/host/ufs-mediatek.c
 +++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -640,6 +640,9 @@ static void ufs_mtk_init_host_caps(struct ufs_hba *hba)
- 	if (of_property_read_bool(np, "mediatek,ufs-tx-skew-fix"))
- 		host->caps |= UFS_MTK_CAP_TX_SKEW_FIX;
+@@ -20,13 +20,14 @@
+ #include <linux/pm_qos.h>
+ #include <linux/regulator/consumer.h>
+ #include <linux/reset.h>
+-#include <linux/soc/mediatek/mtk_sip_svc.h>
  
-+	if (of_property_read_bool(np, "mediatek,ufs-disable-mcq"))
-+		host->caps |= UFS_MTK_CAP_DISABLE_MCQ;
+ #include <ufs/ufshcd.h>
+ #include "ufshcd-pltfrm.h"
+ #include <ufs/ufs_quirks.h>
+ #include <ufs/unipro.h>
 +
- 	dev_info(hba->dev, "caps: 0x%x", host->caps);
- }
+ #include "ufs-mediatek.h"
++#include "ufs-mediatek-sip.h"
  
-@@ -874,6 +877,9 @@ static void ufs_mtk_init_mcq_irq(struct ufs_hba *hba)
- 	host->mcq_nr_intr = UFSHCD_MAX_Q_NR;
- 	pdev = container_of(hba->dev, struct platform_device, dev);
- 
-+	if (host->caps & UFS_MTK_CAP_DISABLE_MCQ)
-+		goto failed;
-+
- 	for (i = 0; i < host->mcq_nr_intr; i++) {
- 		/* irq index 0 is legacy irq, sq/cq irq start from index 1 */
- 		irq = platform_get_irq(pdev, i + 1);
-@@ -1585,6 +1591,12 @@ static int ufs_mtk_clk_scale_notify(struct ufs_hba *hba, bool scale_up,
- 
- static int ufs_mtk_get_hba_mac(struct ufs_hba *hba)
- {
-+	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
-+
-+	/* MCQ operation not permitted */
-+	if (host->caps & UFS_MTK_CAP_DISABLE_MCQ)
-+		return -EPERM;
-+
- 	return MAX_SUPP_MAC;
- }
+ static int  ufs_mtk_config_mcq(struct ufs_hba *hba, bool irq);
  
 diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
-index c1acbfc5568f..3f698af5f5ac 100644
+index 3f698af5f5ac..9226e95c4a60 100644
 --- a/drivers/ufs/host/ufs-mediatek.h
 +++ b/drivers/ufs/host/ufs-mediatek.h
-@@ -144,6 +144,7 @@ enum ufs_mtk_host_caps {
- 	UFS_MTK_CAP_ALLOW_VCCQX_LPM            = 1 << 5,
- 	UFS_MTK_CAP_PMC_VIA_FASTAUTO           = 1 << 6,
- 	UFS_MTK_CAP_TX_SKEW_FIX                = 1 << 7,
-+	UFS_MTK_CAP_DISABLE_MCQ                = 1 << 8,
+@@ -8,7 +8,6 @@
+ 
+ #include <linux/bitops.h>
+ #include <linux/pm_qos.h>
+-#include <linux/soc/mediatek/mtk_sip_svc.h>
+ 
+ /*
+  * MCQ define and struct
+@@ -100,18 +99,6 @@ enum {
+ 	VS_HIB_EXIT                 = 13,
  };
  
- struct ufs_mtk_crypt_cfg {
+-/*
+- * SiP commands
+- */
+-#define MTK_SIP_UFS_CONTROL               MTK_SIP_SMC_CMD(0x276)
+-#define UFS_MTK_SIP_VA09_PWR_CTRL         BIT(0)
+-#define UFS_MTK_SIP_DEVICE_RESET          BIT(1)
+-#define UFS_MTK_SIP_CRYPTO_CTRL           BIT(2)
+-#define UFS_MTK_SIP_REF_CLK_NOTIFICATION  BIT(3)
+-#define UFS_MTK_SIP_HOST_PWR_CTRL         BIT(5)
+-#define UFS_MTK_SIP_GET_VCC_NUM           BIT(6)
+-#define UFS_MTK_SIP_DEVICE_PWR_CTRL       BIT(7)
+-
+ /*
+  * VS_DEBUGCLOCKENABLE
+  */
+@@ -198,70 +185,4 @@ struct ufs_mtk_host {
+ 	struct ufs_mtk_mcq_intr_info mcq_intr_info[UFSHCD_MAX_Q_NR];
+ };
+ 
+-/*
+- * Multi-VCC by Numbering
+- */
+-enum ufs_mtk_vcc_num {
+-	UFS_VCC_NONE = 0,
+-	UFS_VCC_1,
+-	UFS_VCC_2,
+-	UFS_VCC_MAX
+-};
+-
+-/*
+- * Host Power Control options
+- */
+-enum {
+-	HOST_PWR_HCI = 0,
+-	HOST_PWR_MPHY
+-};
+-
+-/*
+- * SMC call wrapper function
+- */
+-struct ufs_mtk_smc_arg {
+-	unsigned long cmd;
+-	struct arm_smccc_res *res;
+-	unsigned long v1;
+-	unsigned long v2;
+-	unsigned long v3;
+-	unsigned long v4;
+-	unsigned long v5;
+-	unsigned long v6;
+-	unsigned long v7;
+-};
+-
+-static void _ufs_mtk_smc(struct ufs_mtk_smc_arg s)
+-{
+-	arm_smccc_smc(MTK_SIP_UFS_CONTROL,
+-		      s.cmd, s.v1, s.v2, s.v3, s.v4, s.v5, s.v6, s.res);
+-}
+-
+-#define ufs_mtk_smc(...) \
+-	_ufs_mtk_smc((struct ufs_mtk_smc_arg) {__VA_ARGS__})
+-
+-/*
+- * SMC call interface
+- */
+-#define ufs_mtk_va09_pwr_ctrl(res, on) \
+-	ufs_mtk_smc(UFS_MTK_SIP_VA09_PWR_CTRL, &(res), on)
+-
+-#define ufs_mtk_crypto_ctrl(res, enable) \
+-	ufs_mtk_smc(UFS_MTK_SIP_CRYPTO_CTRL, &(res), enable)
+-
+-#define ufs_mtk_ref_clk_notify(on, stage, res) \
+-	ufs_mtk_smc(UFS_MTK_SIP_REF_CLK_NOTIFICATION, &(res), on, stage)
+-
+-#define ufs_mtk_device_reset_ctrl(high, res) \
+-	ufs_mtk_smc(UFS_MTK_SIP_DEVICE_RESET, &(res), high)
+-
+-#define ufs_mtk_host_pwr_ctrl(opt, on, res) \
+-	ufs_mtk_smc(UFS_MTK_SIP_HOST_PWR_CTRL, &(res), opt, on)
+-
+-#define ufs_mtk_get_vcc_num(res) \
+-	ufs_mtk_smc(UFS_MTK_SIP_GET_VCC_NUM, &(res))
+-
+-#define ufs_mtk_device_pwr_ctrl(on, ufs_ver, res) \
+-	ufs_mtk_smc(UFS_MTK_SIP_DEVICE_PWR_CTRL, &(res), on, ufs_ver)
+-
+ #endif /* !_UFS_MEDIATEK_H */
 -- 
 2.18.0
 
