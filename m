@@ -4,78 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5067CC54E58
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 18:52:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F257DC54E58
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 20:22:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:
-	Content-Transfer-Encoding:Cc:Date:In-Reply-To:From:Subject:Mime-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Content-Transfer-Encoding:Content-Type:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iIbxlgLLMuP8VfnitXafCkNSyw7iQ2+h4YwS7mfda7g=; b=l2CGTYkOaRz1V4a5NaYovZLFZ4
-	0PE8kLG7PXx5RFKuPRNeGQV/NCZjcVOu152/YaKhU++/Y5ukgSj/r+9Ve5cWJa3Hvf+wgiRLOmn9z
-	pf8M8HN0hoGw9j0C657NqqayIUwaKcpANxa89MaGdyyJim02a+FlAmeXOIxcWHFPLiKp6s4uXqF2q
-	FQHBnTQYvB/+mzVj9GT103bKw7h+Aa2pAYdENU9a4jr7ZPXCk+YBqwaysaLdrlCw5gNZ/5fwyyqrP
-	H+Hx+0H8oJbp+fwIbiAaJ+FvsF+QJO98dJEfVdpG+TcKHxycI4AC9yzh9wioo3pcvm3DFXvrQJTwd
-	wNmMt0OQ==;
+	bh=//uDqZxww2AW+IIRaNpkx7sG+p6lLha2oCwZuquPjaI=; b=bzsMdWh7ZDtMaM+W95ZVtXWIkw
+	pbsR/qGwYbjEdsdeOXkiL2T5FIkA5eFRA1LYhf1DDCkifNMovwyUjSrW0NOs2jAzJYC18ktG8YwpN
+	SiSdiQ/KtYhjUkUakNEvqgSLVMVR7B79c4bxFB6iaCI4dUDbLeIZys7IWkjcMcmt1ZHUfEhBR2M9v
+	mLLG9aevxXOtwHJeue6RZL/6CAquYg6clMxlNQgh8ziuTbt+3O1eI93mTkc1CXCe6abNc31an03lD
+	FC4nfaJ3dxEtSd6L8k0YE6McPAygjddFSjIwoLhVPISp5iG830ryjcfJy0W+Il5ylIY7nfnFqXFi1
+	mw4svxpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlCfN-00000001EWQ-16Cz;
-	Fri, 15 Mar 2024 18:52:29 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rlE4H-00000001Q86-2ERd;
+	Fri, 15 Mar 2024 20:22:23 +0000
+Received: from outgoing6.flk.host-h.net ([188.40.0.77])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlCfG-00000001ETm-2UPk;
-	Fri, 15 Mar 2024 18:52:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710528741;
-	bh=SMmJSZ8TCgP0UfFx6uzxM9a+eB5MYJgcY3kQQ1gi0O0=;
-	h=Subject:From:In-Reply-To:Date:Cc:References:To:From;
-	b=1sBa83SUB+7n6wiqDY/CAQCVUpFwnwLT7WyHRMGya0irmAzXk/Q2pBLbJ+/4q2ez2
-	 goCFiv1pyPtFTTBsx6zONKvFmfiLLGFj1CdZmD8RjXDU/LnfuU2Hti5wJR7deGtoNm
-	 ZoPQcB94jxHgu8GoThSa7D18c5qPdvWzbcbrXBgIBgHnKOW4KurHdonLQWHAvGvH/Z
-	 cEoPChilds7pno3j4tXXyV3tlXTDsBJHzlZ0/GYClC38p31j2Iw1ML4iAXbtDhsx+R
-	 IME8pnKvsELxUgEnI7OkoDZyefc1RhEhzS6PKKZ87Os83070DjRY+lpuCmC1v9BuL7
-	 e7kapDEUyRrsA==
-Received: from smtpclient.apple (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	(Authenticated sender: dwlsalmeida)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4E2FF37820D8;
-	Fri, 15 Mar 2024 18:52:15 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
-Subject: Re: [PATCH v2,4/4] media: mediatek: vcodec: replace
- v4l2_m2m_next_src_buf with v4l2_m2m_src_buf_remove
-From: Daniel Almeida <daniel.almeida@collabora.com>
-In-Reply-To: <20240314114452.17532-5-yunfei.dong@mediatek.com>
-Date: Fri, 15 Mar 2024 15:52:01 -0300
-Cc: =?utf-8?B?Ik7DrWNvbGFzIEYgLiBSIC4gQSAuIFByYWRvIg==?= <nfraprado@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Nathan Hebert <nhebert@chromium.org>,
- Sebastian Fricke <sebastian.fricke@collabora.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>,
- Daniel Vetter <daniel@ffwll.ch>,
- Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org,
- devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <69C5D24C-D33A-4F1E-B9A9-6C32AB1951BA@collabora.com>
-References: <20240314114452.17532-1-yunfei.dong@mediatek.com>
- <20240314114452.17532-5-yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-X-Mailer: Apple Mail (2.3774.400.31)
+	id 1rlE46-00000001Q54-1cuk;
+	Fri, 15 Mar 2024 20:22:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=risingedge.co.za; s=xneelo; h=Message-ID:References:In-Reply-To:Subject:Cc:
+	To:From:Date:Content-Transfer-Encoding:Content-Type:MIME-Version:reply-to:
+	sender:bcc; bh=//uDqZxww2AW+IIRaNpkx7sG+p6lLha2oCwZuquPjaI=; b=l7YKrnPiSty71c
+	abFOR8qQpslU+gIwZGk63FdNmEFsrH/KHRm+tGKjIPi198/TPI6drVu901AqP6R5C2HvqvvfuwT8J
+	GUE4PljouU3Za8hOUp/qjuF8pc1V796SRxUSEQkjDK1CdGVexJiJ2IKLgmzCWG7kLn4V+9HDBLfNN
+	Cv1ivY4oSVH1WOKsj8EYJzDFMnhTZtzpWtLtD+XEF1gQuqiT/52zql2gTndEWvxDmPhToRgLrHbxG
+	DGjJ6dM7jREJOeRz74S03BBdlQYQPp6O/gzrPUB4Yr3EDaP9No2rolKwbrlqd1SyX2phJ1h3mM4iC
+	MhRL9X4mhX7Qqh3PQavw==;
+Received: from www31.flk1.host-h.net ([188.40.1.173])
+	by antispam2-flk1.host-h.net with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <justin.swartz@risingedge.co.za>)
+	id 1rlE3v-00BbGs-DE; Fri, 15 Mar 2024 22:21:58 +0200
+Received: from roundcubeweb1.flk1.host-h.net ([138.201.244.33] helo=webmail9.konsoleh.co.za)
+	by www31.flk1.host-h.net with esmtpa (Exim 4.92)
+	(envelope-from <justin.swartz@risingedge.co.za>)
+	id 1rlE3t-0006wR-JO; Fri, 15 Mar 2024 22:21:53 +0200
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+Date: Fri, 15 Mar 2024 22:21:53 +0200
+From: Justin Swartz <justin.swartz@risingedge.co.za>
+To: Mark Brown <broonie@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, linux-spi@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] spi: mt7621: allow GPIO chip select lines
+In-Reply-To: <6c92fddd-f79b-40b5-bd52-61f43d6a7591@sirena.org.uk>
+References: <20240315015708.13948-1-justin.swartz@risingedge.co.za>
+ <d562be73-ad76-4450-8bff-38ed5d144714@sirena.org.uk>
+ <2dbc59c9133542f6f8bc465113d9630b@risingedge.co.za>
+ <6c92fddd-f79b-40b5-bd52-61f43d6a7591@sirena.org.uk>
+Message-ID: <55c5f2e0723c18384c781e87985f0d22@risingedge.co.za>
+X-Sender: justin.swartz@risingedge.co.za
+User-Agent: Roundcube Webmail/1.3.17
+X-Authenticated-Sender: justin.swartz@risingedge.co.za
+X-Virus-Scanned: Clear
+X-Originating-IP: 188.40.1.173
+X-SpamExperts-Domain: risingedge.co.za
+X-SpamExperts-Username: 
+Authentication-Results: host-h.net; auth=pass (login) smtp.auth=@risingedge.co.za
+X-SpamExperts-Outgoing-Class: ham
+X-SpamExperts-Outgoing-Evidence: Combined (0.27)
+X-Recommended-Action: accept
+X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT9/WeCzYiIeYgp7jnAlgaiTPUtbdvnXkggZ
+ 3YnVId/Y5jcf0yeVQAvfjHznO7+bT5wCPRB8bAzJcv2cv+UqiTTc2+CpNcmBnO4XM3Sck4bwNogU
+ WCl1nkLBzZX0KuJ9bXiS85Z42w/+2OBolTNFbPomXFWCX8oNdggW7HE9XDTdSejrkEpbuUvwMvHx
+ 3T+KSG//gbuP7hnUK8NQdLwsVWKIss2oH4Yjh6Q4paNNh70vrmKlRYN8+ZW0XX0AH/7tz8lOUWMR
+ 3Oz/N19DDfqg//ykQCB4rUl3suKct8rEwEjtlBjGf82vsPPH4Z6bBeyJ2ioKLll7c1zqbZ0Shnfk
+ f76m6WzjgyOQ30CX3jGye0AgO43dPg2t4siixN3H6ipUQpunbVFFkQUmxUqPs0MXBr9YWmuNA8WT
+ ybi1JN85FSnfKaZl5e9CnNR0t//S8nh6vX9JR7tTkgtGxbJXMnaWeORi/IOL8hFK8UwSRsjj826v
+ xIvoo9siXVea4yN8+JzC4p2qtoJeAaAIM5zNlwLSz7WsotxMDYRAzuCR0I/uZN17IfdXFZsEUcDk
+ 8TfE1VxuxGc2M4JzCc//R6Wyn0xEa4/gbKRUuwP9TxU53J++//mag2wVXO50BuTihrUiUr+Ne0YD
+ 3ddZG295JphtZpms9X0aBNANCxNWMmHXUTEMGGbKThOghFKJuzFdJ78lk25pCKnYrhUnk1aI/tYo
+ PYfrgLItviC2z3vIzjh1mXBwO7cA3LYE//971/IPrjStHq+sLtv6f48W6vJ1YXzwg/yHdBoe6D9l
+ C5HcnR5sMHCtNqaTmXQ4BkBE3IhMX1f/+suluw5k87r8vepAOoS2eUqUWS3rIOs6OFebJBWcGqKs
+ Jc1xjt6Txl9yx/3BhqO3m5yd2tj74O4hBSz/kkmPgL+fgIguflsMx6vatUpjecZPSp26CgsDSXR1
+ fPypOcxCjKydCywXfmGZydDD5rCF2+ouUHmW4q/WKvSWBPzknbkTJiNN9rwBJkpKiGGp8ai4iv7H
+ Q04RFZ4oobg8BBg3Jq+ntzj0FowsI0DXck/yx+ZVYiqsOvAPPsA1Nn6T/CCq0ZTp7nHDepoBD+am
+ da0wp7qBc46yuh1ul0jVKCFNLf38tcIOJVFfEoXm0/FPF8PR0w363llwyMFXKarlqLFqhfrB0GFR
+ NCI72pnwdS+UMZgGNjw2gmyaDtrWPzIOQpV3d9KAZvFEy4yZs8FnQMzvojpIo6wEKULl9qYjJqeC
+ CacQRjWWfmKrLjRFuOfsv9pIlKVsvXNK4117w0+Iu7iq/3ilwajFT6Qh9VybPYnXpWlnmHX0yg==
+X-Report-Abuse-To: spam@antispamquarantine.host-h.net
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240315_115222_844395_A1B99CB8 
-X-CRM114-Status: GOOD (  23.99  )
+X-CRM114-CacheID: sfid-20240315_132207_055884_2E50F1F9 
+X-CRM114-Status: GOOD (  26.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,287 +109,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 2024-03-15 19:47, Mark Brown wrote:
+> On Fri, Mar 15, 2024 at 06:23:09PM +0200, Justin Swartz wrote:
+>> On 2024-03-15 16:45, Mark Brown wrote:
+> 
+>> > The core should handle GPIO chip selects for you?
+> 
+>> As far as I can tell, it doesn't - at least as far the state
+>> of spi-mt7621.c is concerned prior to the patch, plus kernel
+>> configuration choices, device tree definition, and other
+>> factors I might not be taking into account.
+> 
+>> But maybe I'm doing something wrong, or perhaps have a
+>> misconfiguration somewhere. So, if you're able to point out
+>> something I've done incorrectly, it would be appreciated.
+> 
+> Look at other drivers that support GPIO chip selects?
+
+Of the 43 drivers (of drivers/spi/*.c) that setup the
+spi_controller's use_gpio_descriptors as true:
+
+   39 drivers use the transfer_one hook, and
+    4 drivers use the transfer_one_message hook.
+
+Drivers that use the transfer_one hook benefit from the core
+taking care of chip selection on their behalf.
+
+Drivers that use the transfer_one_message hook handle chip
+selection on their own, within the function they've pointed
+the hook at.
+
+There's comment prior to the declaration of the spi_controller
+structure (in include/linux/spi/spi.h) that says the following
+about the transfer_one* hooks (beginning at line 493):
+
+  *                    Note: transfer_one and transfer_one_message are 
+mutually
+  *                    exclusive; when both are set, the generic 
+subsystem does
+  *                    not call your transfer_one callback.
+
+Considering spi-mt7621.c was implemented using the
+transfer_one_message() hook, I'd assumed that it made more
+sense to take the approach of determining whether a chip
+select was native or GPIO, and then calling a function that
+is responsible only for the control over a single type of
+chip select to ensure that I was not influencing the previous
+native chip select logic in any drastic manner.
+
+To me that seems less intrusive, and allows less room for
+potential breakage for existing users of this driver (who
+are native chip select users only), than the outright
+refactoring of the mt7621_spi_transfer_one_message() function
+into an mt7621_spi_transfer_one() function instead.
+
+Based on reading (some of) drivers/spi/spi.c and looking at
+cflow-generated callgraph of drivers/spi/spi.c, to determine
+where spi_set_cs() and any gpiod_* functions are called,
+I believe that only the transfer_one() hook approach leads
+to SPI core control of the GPIO chip select lines - via the
+core's own spi_transfer_one_message().
 
 
-> On 14 Mar 2024, at 08:44, Yunfei Dong <yunfei.dong@mediatek.com> =
-wrote:
->=20
-> There isn't lock to protect source buffer when get next src buffer, if
-> the source buffer is removed for some unknown reason before lat work =
-queue
-> execute done, will lead to remove source buffer or buffer done error.
->=20
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
-> .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 22 +++++++++----
-> .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c | 25 ++++++--------
-> .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c | 33 ++++++++-----------
-> 3 files changed, 40 insertions(+), 40 deletions(-)
->=20
-> diff --git =
-a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.=
-c =
-b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.=
-c
-> index 3060768e0ea9..bb2680f3ec5b 100644
-> --- =
-a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.=
-c
-> +++ =
-b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.=
-c
-> @@ -328,7 +328,7 @@ static void mtk_vdec_worker(struct work_struct =
-*work)
-> bool res_chg =3D false;
-> int ret;
->=20
-> - vb2_v4l2_src =3D v4l2_m2m_next_src_buf(ctx->m2m_ctx);
-> + vb2_v4l2_src =3D v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
-> if (!vb2_v4l2_src) {
-> v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
-> mtk_v4l2_vdec_dbg(1, ctx, "[%d] no available source buffer", ctx->id);
-> @@ -363,7 +363,7 @@ static void mtk_vdec_worker(struct work_struct =
-*work)
-> mtk_v4l2_vdec_err(ctx, "vb2 buffer media request is NULL");
->=20
-> ret =3D vdec_if_decode(ctx, bs_src, NULL, &res_chg);
+>> To attempt to confirm if the core will handle my desired
+>> GPIO chip select lines without explicit state toggling,
+>> I tried to set the value of use_gpio_descriptors to true,
+>> without any other modifications to spi-mt7621.c as of
+>> commit 90d35da658da8cff0d4ecbb5113f5fac9d00eb72:
+> 
+> Please include human readable descriptions of things like commits and
+> issues being discussed in e-mail in your mails, this makes them much
+> easier for humans to read especially when they have no internet access.
+> I do frequently catch up on my mail on flights or while otherwise
+> travelling so this is even more pressing for me than just being about
+> making things a bit easier to read.
+
+I understand that. The unlabelled commit was:
+
+$ git log | grep -A5 90d35da658da8cff0d4ecbb5113f5fac9d00eb72
+commit 90d35da658da8cff0d4ecbb5113f5fac9d00eb72
+Author: Linus Torvalds <torvalds@linux-foundation.org>
+Date:   Sun Mar 3 13:02:52 2024 -0800
+
+     Linux 6.8-rc7
 
 
-Can you leave a comment explaining why the !=3D -EAGAIN check was
-removed? Doesn=E2=80=99t seem obvious to me.
+> The core needs to know that the GPIO chip selects are there but once it
+> knows that they're there things like setting the chip select should 
+> just
+> work.
 
-
-> - if (ret && ret !=3D -EAGAIN) {
-> + if (ret) {
-> mtk_v4l2_vdec_err(ctx,
->  "[%d] decode src_buf[%d] sz=3D0x%zx pts=3D%llu ret=3D%d res_chg=3D%d",
->  ctx->id, vb2_src->index, bs_src->size,
-> @@ -380,11 +380,21 @@ static void mtk_vdec_worker(struct work_struct =
-*work)
->    ctx->current_codec =3D=3D V4L2_PIX_FMT_VP8_FRAME) {
-> if (src_buf_req)
-> v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
-> - v4l2_m2m_buf_done_and_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx, =
-state);
-> - } else {
-> - if (ret !=3D -EAGAIN)
-> - v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
-> + if (vb2_v4l2_src)
-> + v4l2_m2m_buf_done(vb2_v4l2_src, state);
-> +
-> v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
-> + } else {
-> + if (!ret) {
-> + v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
-> + } else {
-> + if (src_buf_req)
-> + v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
-
-vb2_v4l2_src can=E2=80=99t really be NULL here due to this:
-
-```
-	vb2_v4l2_src =3D v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
-	if (!vb2_v4l2_src) {
-		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
-		mtk_v4l2_vdec_dbg(1, ctx, "[%d] no available source =
-buffer", ctx->id);
-		return;
-	}
-```
-
-I must say I find the control flow here a bit confusing, so I wonder if =
-this block can=E2=80=99t go
-into an inline helper to clean up stuff a bit:
-
-```
-			if (src_buf_req)
-				v4l2_ctrl_request_complete(src_buf_req, =
-&ctx->ctrl_hdl);
-			if (vb2_v4l2_src)
-				v4l2_m2m_buf_done(vb2_v4l2_src, state);
-
-			v4l2_m2m_job_finish(dev->m2m_dev_dec, =
-ctx->m2m_ctx);
-```
-
-Also, I dislike that this apparently fails silently if the pointers are =
-NULL. It is
-not clear at a first glance if you=E2=80=99re just being careful or if =
-you legitimately expect
-`src_buf_req` to possibly be NULL at this point for whatever reason. The =
-lifecycle
-of request objects is not trivial, so it=E2=80=99s good to be explicit =
-here even if this means
-only leaving a comment or similar
-
-=E2=80=94 Daniel
-
-> + if (vb2_v4l2_src)
-> + v4l2_m2m_buf_done(vb2_v4l2_src, state);
-> +
-> + v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
-> + }
-> }
-> }
->=20
-> diff --git =
-a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.=
-c =
-b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.=
-c
-> index f277b907c345..339c5c88da1a 100644
-> --- =
-a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.=
-c
-> +++ =
-b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.=
-c
-> @@ -1052,23 +1052,18 @@ static inline void =
-vdec_av1_slice_vsi_to_remote(struct vdec_av1_slice_vsi *vsi,
-> memcpy(remote_vsi, vsi, sizeof(*vsi));
-> }
->=20
-> -static int vdec_av1_slice_setup_lat_from_src_buf(struct =
-vdec_av1_slice_instance *instance,
-> - struct vdec_av1_slice_vsi *vsi,
-> - struct vdec_lat_buf *lat_buf)
-> +static int vdec_av1_slice_setup_lat_from_src_buf(struct =
-vdec_av1_slice_vsi *vsi,
-> + struct vdec_lat_buf *lat_buf,
-> + struct mtk_vcodec_mem *bs)
-> {
-> - struct vb2_v4l2_buffer *src;
-> - struct vb2_v4l2_buffer *dst;
-> -
-> - src =3D v4l2_m2m_next_src_buf(instance->ctx->m2m_ctx);
-> - if (!src)
-> - return -EINVAL;
-> + struct mtk_video_dec_buf *src_buf_info;
->=20
-> - lat_buf->src_buf_req =3D src->vb2_buf.req_obj.req;
-> - lat_buf->vb2_v4l2_src =3D src;
-> + src_buf_info =3D container_of(bs, struct mtk_video_dec_buf, =
-bs_buffer);
-> + lat_buf->src_buf_req =3D =
-src_buf_info->m2m_buf.vb.vb2_buf.req_obj.req;
-> + lat_buf->vb2_v4l2_src =3D &src_buf_info->m2m_buf.vb;
->=20
-> - dst =3D &lat_buf->ts_info;
-> - v4l2_m2m_buf_copy_metadata(src, dst, true);
-> - vsi->frame.cur_ts =3D dst->vb2_buf.timestamp;
-> + v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb, =
-&lat_buf->ts_info, true);
-> + vsi->frame.cur_ts =3D lat_buf->ts_info.vb2_buf.timestamp;
->=20
-> return 0;
-> }
-> @@ -1717,7 +1712,7 @@ static int vdec_av1_slice_setup_lat(struct =
-vdec_av1_slice_instance *instance,
-> struct vdec_av1_slice_vsi *vsi =3D &pfc->vsi;
-> int ret;
->=20
-> - ret =3D vdec_av1_slice_setup_lat_from_src_buf(instance, vsi, =
-lat_buf);
-> + ret =3D vdec_av1_slice_setup_lat_from_src_buf(vsi, lat_buf, bs);
-> if (ret)
-> return ret;
->=20
-> diff --git =
-a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.=
-c =
-b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.=
-c
-> index 0dedbc3680e8..2697e04f4313 100644
-> --- =
-a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.=
-c
-> +++ =
-b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.=
-c
-> @@ -693,39 +693,34 @@ static int vdec_vp9_slice_tile_offset(int idx, =
-int mi_num, int tile_log2)
-> }
->=20
-> static
-> -int vdec_vp9_slice_setup_single_from_src_to_dst(struct =
-vdec_vp9_slice_instance *instance)
-> +int vdec_vp9_slice_setup_single_from_src_to_dst(struct =
-vdec_vp9_slice_instance *instance,
-> + struct mtk_vcodec_mem *bs)
-> {
-> - struct vb2_v4l2_buffer *src;
-> struct vb2_v4l2_buffer *dst;
-> + struct mtk_video_dec_buf *src_buf_info;
->=20
-> - src =3D v4l2_m2m_next_src_buf(instance->ctx->m2m_ctx);
-> - if (!src)
-> - return -EINVAL;
-> + src_buf_info =3D container_of(bs, struct mtk_video_dec_buf, =
-bs_buffer);
->=20
-> dst =3D v4l2_m2m_next_dst_buf(instance->ctx->m2m_ctx);
-> if (!dst)
-> return -EINVAL;
->=20
-> - v4l2_m2m_buf_copy_metadata(src, dst, true);
-> + v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb, dst, true);
->=20
-> return 0;
-> }
->=20
-> -static int vdec_vp9_slice_setup_lat_from_src_buf(struct =
-vdec_vp9_slice_instance *instance,
-> - struct vdec_lat_buf *lat_buf)
-> +static int vdec_vp9_slice_setup_lat_from_src_buf(struct vdec_lat_buf =
-*lat_buf,
-> + struct mtk_vcodec_mem *bs)
-> {
-> - struct vb2_v4l2_buffer *src;
-> - struct vb2_v4l2_buffer *dst;
-> + struct mtk_video_dec_buf *src_buf_info;
->=20
-> - src =3D v4l2_m2m_next_src_buf(instance->ctx->m2m_ctx);
-> - if (!src)
-> - return -EINVAL;
-> + src_buf_info =3D container_of(bs, struct mtk_video_dec_buf, =
-bs_buffer);
-> + lat_buf->src_buf_req =3D =
-src_buf_info->m2m_buf.vb.vb2_buf.req_obj.req;
-> + lat_buf->vb2_v4l2_src =3D &src_buf_info->m2m_buf.vb;
->=20
-> - lat_buf->src_buf_req =3D src->vb2_buf.req_obj.req;
-> - lat_buf->vb2_v4l2_src =3D src;
-> + v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb, =
-&lat_buf->ts_info, true);
->=20
-> - dst =3D &lat_buf->ts_info;
-> - v4l2_m2m_buf_copy_metadata(src, dst, true);
-> return 0;
-> }
->=20
-> @@ -1155,7 +1150,7 @@ static int vdec_vp9_slice_setup_lat(struct =
-vdec_vp9_slice_instance *instance,
-> struct vdec_vp9_slice_vsi *vsi =3D &pfc->vsi;
-> int ret;
->=20
-> - ret =3D vdec_vp9_slice_setup_lat_from_src_buf(instance, lat_buf);
-> + ret =3D vdec_vp9_slice_setup_lat_from_src_buf(lat_buf, bs);
-> if (ret)
-> goto err;
->=20
-> @@ -1796,7 +1791,7 @@ static int vdec_vp9_slice_setup_single(struct =
-vdec_vp9_slice_instance *instance,
-> struct vdec_vp9_slice_vsi *vsi =3D &pfc->vsi;
-> int ret;
->=20
-> - ret =3D vdec_vp9_slice_setup_single_from_src_to_dst(instance);
-> + ret =3D vdec_vp9_slice_setup_single_from_src_to_dst(instance, bs);
-> if (ret)
-> goto err;
->=20
-> --=20
-> 2.18.0
->=20
->=20
-
+This seems to be true for transfer_one() hookers only.
 
