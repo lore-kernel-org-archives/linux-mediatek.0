@@ -4,68 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A709C54E67
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 14:11:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCB5EC54E58
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 14:30:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9uRKvb8m11op0+rGdVcLnfI7fF9LhnOeCQ0v4lmvDKg=; b=bvygnqHdSsLq41z5GIpX66fAOa
-	S+82xj8G8jtvcIqNcWNUM4fg24+N6n6iQW83XC48lhnlUfQ5TksONZzdeZn11nHjhxayYEa536d8D
-	QJ9sXzAafiLdrmBAfRrRs1MwJjHvXe85su7Tp+uqREAZ138bHzty56RLWU/m30IaK3IMsa54ewO0E
-	RvuuUx8Y/230rzOs2rTZabtTZ8YGNPIKE7tKdMedSqaAAEfNkShuqfQazR6bZGBEKKw/ni/59vYdQ
-	d3aAnUXX0rf0MYSU7XRL9vtpzE7FG2NkSocactWc0RR/nG2+441Gcxivwlis5XIpTINOpBH5UQ6Mr
-	NcjaaPgg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ddQVnq0HUjxqJK1P5qk1ehXHNAL41H2sm08zEnN5sl8=; b=NUHHL4McP+jBUOOLreqAFTVsaF
+	OuI0Qe7mY05IHymz9/xXzfz7xw3vE0Cx/Xb8uvnlpbUeV35voFm4552L+TPT5zQnTKWO+nNkoWxuR
+	+LXBkYs9+751U5Oaml0/enAfOJ36dcZxWpSXRdlPIpJixGSk1nXT7hdrYvjK+QHYpaFAwk/HWCO7H
+	z7YTNApLMu62HqPfX2daA6Ttd4Hi2WoiX0vZIvc8GxTsBPTz7UcLZDzK5QhQthPuAx3zkNIoUHRx6
+	Z1/o1XCXuqW4eiD7HJ4aAiqnTCXUPhBTxaiJjgbj0iV79EbolpJQlAmKhY5TKQWDee/lpMH9fZt8Z
+	EI79SzEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl8HP-00000000RIx-38t4;
-	Fri, 15 Mar 2024 14:11:27 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rl8Zf-00000000UcM-1Yxf;
+	Fri, 15 Mar 2024 14:30:19 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl8HL-00000000RIA-0QxU;
-	Fri, 15 Mar 2024 14:11:25 +0000
+	id 1rl8Zb-00000000Uag-0S55;
+	Fri, 15 Mar 2024 14:30:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D36B561705;
-	Fri, 15 Mar 2024 14:11:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 8B3E3C433C7;
-	Fri, 15 Mar 2024 14:11:20 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id DD42ACE1B7D;
+	Fri, 15 Mar 2024 14:30:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 094F5C433F1;
+	Fri, 15 Mar 2024 14:30:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1710511880;
-	bh=xYmAthB11ki5pMUzbtNCl+cG0dk3Pap42GLMQ8EMeTE=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=ez//vUQcHaqHkEqhM6yLs7YMZlPo6c0DDwBTf9E+yHYUIWQXuKguB38bnOad5lIhy
-	 hxU+leTls8Orl24viNxHKwj4sJ0Vo8cUvH/9be1E4/tcAoMy3MEpldRdr1cspoRJXT
-	 7admbgk48qVAZBV1NTJWZE0UFatpFnm4CxRw+dB356fhWtP6G5gH14/ZCqXQXk1Nxj
-	 Hame8Fca1TzsQaCGVw8G6pgCSls14Ktg0u8hh6HFFXdckG1jp3VSP0SkpDjskreVxb
-	 9aI4ReDcgWX0hK9KrX9JkmhKca+AqOecORaXecS/2UqM5P9mU2qw+1L4WMxbajGLQV
-	 870rV7iF79NCA==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 7F037D84BA8;
-	Fri, 15 Mar 2024 14:11:20 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1710513012;
+	bh=y9UTrQR60pzrt4WbzQGYuGVl4ayHy9bpcn+b1iICLzs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BGoVIVh0xKRjHYfUEkZgVdUX4aDhwpU4ARn/sMVBEI1COT2p7VK3grcrtYC4rTTjJ
+	 ufBJJQYQ6fgBenIL7SI5Vtyg+3H6cblDWDmW/KjsYbU92qjg0vuLKDdgHEqabV3fqZ
+	 QubJ4yaoz7eJ1YEnlTsz6HB7evsn2U31Qv5q3FLzFNJyCd8UDg9nclG+ZRnBnmQ5iV
+	 XypU7z9D2SLN6njnByNBVNOgwth6Korsr2Zz/bfQuEL8b9G6O6d1Gf7hOFk61HFFH1
+	 wY37D4Gq8RO5xPn/7OMApVE+XjQSIigrDkQZbIrErOAO1yhsQUS16ir+kCudsiDvZC
+	 fcwNBMRsCKuCw==
+Date: Fri, 15 Mar 2024 14:30:02 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>, linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
+	Nicolas Belin <nbelin@baylibre.com>
+Subject: Re: [PATCH 12/18] ASoC: codecs: mt6357: add MT6357 codec
+Message-ID: <0d31ffb2-9df5-4c3e-a728-902b71a1a713@sirena.org.uk>
+References: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
+ <20240226-audio-i350-v1-12-4fa1cea1667f@baylibre.com>
+ <9891855d-2284-42e4-9d3a-35ba406540e8@sirena.org.uk>
+ <c441a132-b16b-4244-a712-8971c902d4d7@baylibre.com>
+ <ff3d2db1-697b-42c6-a0f2-74276e9fc098@sirena.org.uk>
+ <dda0e6ba-4538-47a0-95e9-6adcfd4169a7@baylibre.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net 1/2] net: mediatek: mtk_eth_soc: clear MAC_MCR_FORCE_LINK
- only when MAC is up
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <171051188051.5784.14743841618605304663.git-patchwork-notify@kernel.org>
-Date: Fri, 15 Mar 2024 14:11:20 +0000
-References: <7205ca7d3c5433214256df4672f7c1a49815a5a5.1710367570.git.daniel@makrotopia.org>
-In-Reply-To: <7205ca7d3c5433214256df4672f7c1a49815a5a5.1710367570.git.daniel@makrotopia.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: nbd@nbd.name, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
- lorenzo@kernel.org, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, opensource@vdorst.com,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- chad.monroe@adtran.com, steven.liu@mediatek.com, john@phrozen.org
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="K7ZVz5OiwuIdg9jd"
+Content-Disposition: inline
+In-Reply-To: <dda0e6ba-4538-47a0-95e9-6adcfd4169a7@baylibre.com>
+X-Cookie: A well-known friend is a treasure.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240315_071123_314218_A9A4EB69 
-X-CRM114-Status: UNSURE (   9.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240315_073015_517843_D2AC58BE 
+X-CRM114-Status: GOOD (  28.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,34 +91,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
 
-This series was applied to netdev/net.git (main)
-by David S. Miller <davem@davemloft.net>:
+--K7ZVz5OiwuIdg9jd
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On Wed, 13 Mar 2024 22:50:18 +0000 you wrote:
-> Clearing bit MAC_MCR_FORCE_LINK which forces the link down too early
-> can result in MAC ending up in a broken/blocked state.
-> 
-> Fix this by handling this bit in the .mac_link_up and .mac_link_down
-> calls instead of in .mac_finish.
-> 
-> Fixes: b8fc9f30821e ("net: ethernet: mediatek: Add basic PHYLINK support")
-> Suggested-by: Mason-cw Chang <Mason-cw.Chang@mediatek.com>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> 
-> [...]
+On Fri, Mar 15, 2024 at 12:01:12PM +0100, Alexandre Mergnat wrote:
+> On 13/03/2024 18:23, Mark Brown wrote:
+> > On Tue, Mar 12, 2024 at 07:03:25PM +0100, Alexandre Mergnat wrote:
 
-Here is the summary with links:
-  - [net,1/2] net: mediatek: mtk_eth_soc: clear MAC_MCR_FORCE_LINK only when MAC is up
-    https://git.kernel.org/netdev/net/c/f1b85ef15a99
-  - [net,2/2] net: ethernet: mtk_eth_soc: fix PPE hanging issue
-    https://git.kernel.org/netdev/net/c/ea80e3ed09ab
+> > > Actually you must save the values because the gain selected by the user will
+> > > be override to do a ramp => volume_ramp(.....):
+> > > - When you switch on the HP, you start from gain=-40db to final_gain
+> > > (selected by user).
+> > > - When you switch off the HP, you start from final_gain (selected by user)
+> > > to gain=-40db.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+> > You can just read the value back when you need to do a ramp?
 
+> You can't. Because you will read -40db when HP isn't playing sound. That is
+> why the gain is saved into the struct.
 
+> Let me know, when you change de gain to do a ramp down (start from user gain
+> to gain=-40db), next time for the ramp up, how/where do you find the user
+> gain ?
+
+In the register.  You only need to reset the gain to -40dB at the start
+of the ramp.
+
+> > > Also, the microphone's gain change when it's enabled/disabled.
+
+> > I don't understand what this means?
+
+> When microphone isn't capturing, the gain read back from the register is
+> 0dB. I've put some logs in my code and do capture to show how it works:
+
+Is this a property of the hardware or a property of your driver?
+
+> > > > > +	/* ul channel swap */
+> > > > > +	SOC_SINGLE("UL LR Swap", MT6357_AFE_UL_DL_CON0, AFE_UL_LR_SWAP_SFT, 1, 0),
+
+> > > > On/off controls should end in Switch.
+
+> > > Sorry, I don't understand your comment. Can you reword it please ?
+
+> > See control-names.rst.  Run mixer-test on a card with this driver and
+> > fix all the issues it reports.
+
+> Ok the name is the issue for you AFAII.
+> This control isn't for on/off but swap Left and Right.
+> From the codec documentation:
+> "Swaps audio UL L/R channel before UL SRC"
+> This control is overkill, I will remove it
+
+This is turning the swapping on and off.
+
+--K7ZVz5OiwuIdg9jd
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmX0W2oACgkQJNaLcl1U
+h9Crogf9HxYF3MaL/A3dUDm+Alxsez+w+9hdE05vA2xnAX7B+y66KyZ57bCm9SK1
+IfemHS3DsYz5DdY34Hgti1XBNCkxr4eo+QuYp5LlAht11IR9r2kxbjI9GOgW9KQt
+9b79rtSUodUf75NWoUdTJdR3XUeZaPfpNyY2JAYAKtb/NYF7wZ+2qY4H0Ghh9qQL
+zNno8ER/qk2DHIlyp8Io/7INq46g9k/XLKciK1nNFvwDhilREphfN6W7q/WD+9Dq
+b91sqdSD7ssMFD0b/KEMDBV7AoIiQv+2OaVSUB1SrD1N2E1GZiEFdpASy0ehuSOc
+/RK5R2ZA3NuKgt42DmLEW1b+Gn9Zlw==
+=TlBs
+-----END PGP SIGNATURE-----
+
+--K7ZVz5OiwuIdg9jd--
 
