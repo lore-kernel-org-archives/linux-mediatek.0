@@ -4,83 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0338C54E67
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 18:09:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A969C54E58
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 18:25:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X+CUlWbwhKWeVOjH50EhhnIS2rhwLOZOfeKR2WouLBw=; b=yR4tU4pXvvSkT+hrKuHwgwtuBA
-	H2/kqO5FQ8amhlogJWBDmGYXnTWBKqq+hSZ8/ZAaF5Zv6x1us+gMtqcbBVADBs12tJFjUXH0FJibv
-	i4b9n0EV7oPeRL42XYXDs5wSY7ialJg2iV+pZvnPMJ10jHhCcx+rI6ScnymDf0GysrML96ES1qk1N
-	DCQuYX4gBYwl4Jp066JINr6Vl6TyTla2gI8LufnwEva1tTp8gklQi2rEUDYRKj6Z3RmaDfNwt6+GD
-	bxxrWusttB59FdxqcIYdupgYRvyLq3rgVsGyedzbIK6zIMJ4/jaDdvF4U7gUdIjKozbHHAZ+IVnSo
-	OvejDBpg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:
+	Content-Transfer-Encoding:Cc:Date:In-Reply-To:From:Subject:Mime-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/0Qgt3MAxhQhxJk6jyspy1TaPbIA8YTmiFTwX7XyWo4=; b=QWBfNpOa+XTUFPH59SyGA13Zp+
+	zCKMvQt6TVG1DJ0jjDXLfDZoKmmGIDD1drAJEFvwCQ9cPDTWzLPNPdI+aKIfTFfCWBWTnM6F2/cAC
+	X4b9P4m/YTuxCqSqSQqV83s21ci+GGe1P4oWZyXbrWpSrCeWnavYZ8JMGzJUZYXzzwSIj5+hnoKgB
+	6GAzQEgvI8B6seyhYSGIVbzLZQsv6oneM3uUipWkrbW+oirgtPiLV22BZGtY3D722gC+fvhjl4dE9
+	ITonCPsGkDOPmQ4Z5tIIQ6sMs1xPqTiJaR4GnXpqsLWNgXy6EhT3T5+ZxxuMvaIrFdZjlfH6JGjig
+	X0vXcN7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlC06-000000017ZF-0VBJ;
-	Fri, 15 Mar 2024 18:09:50 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rlCF0-00000001A6D-3Rsc;
+	Fri, 15 Mar 2024 18:25:14 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlC02-000000017YR-2me7;
-	Fri, 15 Mar 2024 18:09:48 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id AD63BCE210F;
-	Fri, 15 Mar 2024 18:09:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26DA4C433C7;
-	Fri, 15 Mar 2024 18:09:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1710526183;
-	bh=x6mPWzzOIcq52zQTpLZRzif+g0BzSJp99JTQQBpC4RM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LP7lO3v7SLFArBHGkZnqr/WWlQC5EYqftdFmiJa5SjCoY3384X/Veh3ZFIdCs8SUz
-	 +cI2iFwKcYJypwRBRdV/WcySvENlDSUeaiRSlZKWiMECZD348RLwJmT/fE2Iepdufq
-	 9+6wFdhv0g4XDxuVMnFPjl+YiK6Hlcu3IOyogbc8ErrW69BXbHmb774NTEJEWpCWXM
-	 BGExTxabKZgkOm1W+a6eoOC6YriioAaIG9hMSEJXClKrrntbVETLAiWshxB1c8HdTZ
-	 livm/OTLPh68pYn9w6Ht16o2xMiyQvGoYVuNrW/EK4LMBphc80Dc3ZJgAoHKlyeAtJ
-	 MySJxHLT2uVqA==
-Date: Fri, 15 Mar 2024 18:09:36 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
-	Nicolas Belin <nbelin@baylibre.com>
-Subject: Re: [PATCH 12/18] ASoC: codecs: mt6357: add MT6357 codec
-Message-ID: <31e2135c-fed5-499e-894b-a8f0cc2744bb@sirena.org.uk>
-References: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
- <20240226-audio-i350-v1-12-4fa1cea1667f@baylibre.com>
- <9891855d-2284-42e4-9d3a-35ba406540e8@sirena.org.uk>
- <c441a132-b16b-4244-a712-8971c902d4d7@baylibre.com>
- <ff3d2db1-697b-42c6-a0f2-74276e9fc098@sirena.org.uk>
- <dda0e6ba-4538-47a0-95e9-6adcfd4169a7@baylibre.com>
- <0d31ffb2-9df5-4c3e-a728-902b71a1a713@sirena.org.uk>
- <fd53a0e7-fa70-4c0d-b578-393183487335@baylibre.com>
- <0a41b498-5cca-4487-a0e0-0df749f6e796@sirena.org.uk>
- <a9ad625a-c6fd-44f1-8776-aa5d54b448ae@baylibre.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="MkhxNCSSCKe3PKpY"
-Content-Disposition: inline
-In-Reply-To: <a9ad625a-c6fd-44f1-8776-aa5d54b448ae@baylibre.com>
-X-Cookie: A well-known friend is a treasure.
+	id 1rlCEt-00000001A4t-2loT;
+	Fri, 15 Mar 2024 18:25:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1710527103;
+	bh=2Au1D4Ot5E6gkicxx9t/mBxMS77Y4uefkAMGQCX6YtM=;
+	h=Subject:From:In-Reply-To:Date:Cc:References:To:From;
+	b=16rpIxEDl1lS7NryEFGRRGGYJquuVBhgV60Gq9KFdxp1YvlU4VL1pgZLuNLoIc92E
+	 xdfq4tB+lgEpzKXdVJ1r7XqfC89M2oVoxQ4rlIL3Cg1sqFc4+GJragentwQrSyNrTI
+	 705D/2FfIcD4d+1SYdd3igNGEgiVWiWb/JognT34KrksMtbAfQow4qpGHPVxWANNeh
+	 6AtRGvJOb0EvowdNZrG5FwpGJwyYhD8vClsr5nt8mKVaM2I2pe/7KrT1RWRsN3vHsx
+	 Yw/clNLSuIHhCmvTKPhUJe+P1idU8fXvQHdtkX7YMqhT+tZ/o7kzUpJJVB7AC1gQhZ
+	 xTupvx5lsj3kg==
+Received: from smtpclient.apple (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: dwlsalmeida)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 31D0637820D8;
+	Fri, 15 Mar 2024 18:24:57 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
+Subject: Re: [PATCH v2,0/4] media: mediatek: vcodec: fix ctrl request complete
+ fail
+From: Daniel Almeida <daniel.almeida@collabora.com>
+In-Reply-To: <20240314114452.17532-1-yunfei.dong@mediatek.com>
+Date: Fri, 15 Mar 2024 15:24:44 -0300
+Cc: =?utf-8?B?Ik7DrWNvbGFzIEYgLiBSIC4gQSAuIFByYWRvIg==?= <nfraprado@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Nathan Hebert <nhebert@chromium.org>,
+ Sebastian Fricke <sebastian.fricke@collabora.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>,
+ Daniel Vetter <daniel@ffwll.ch>,
+ Steve Cho <stevecho@chromium.org>,
+ linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <4DFF7ED9-CD67-415E-965D-D83337CBE8A7@collabora.com>
+References: <20240314114452.17532-1-yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+X-Mailer: Apple Mail (2.3774.400.31)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240315_110947_226903_9EB781E2 
-X-CRM114-Status: GOOD (  28.02  )
+X-CRM114-CacheID: sfid-20240315_112508_060780_186DAD3F 
+X-CRM114-Status: GOOD (  15.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,70 +89,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Yunfei!
 
---MkhxNCSSCKe3PKpY
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+I say this very respectfully, but I believe that you must improve the =
+wording of some of your commit messages. It is hard to understand your =
+changes otherwise. More importantly, it is hard to understand why they =
+are needed or what exactly they fix.
 
-On Fri, Mar 15, 2024 at 06:36:19PM +0100, Alexandre Mergnat wrote:
-> On 15/03/2024 16:15, Mark Brown wrote:
-> > On Fri, Mar 15, 2024 at 04:05:21PM +0100, Alexandre Mergnat wrote:
+This series has some checkpatch errors:=20
 
-> > > > In the register.  You only need to reset the gain to -40dB at the start
-> > > > of the ramp.
+total: 53 errors, 0 warnings, 0 checks, 1047 lines checked
 
-> > > Sorry but I don't understand your logic, I'm not able to implement it...
-> > > If I'm at -10dB and doing a ramp to reach -40dB, next time I will read the
-> > > register the value will be -40dB.
+Did you test this with Fluster? We should really make sure that this =
+does not regress any of the tests there.
 
-> > After we've done the ramp and turned the amplifier off we can just
-> > restore the desired value?  The hardware is not going to care what the
-> > volume is while it's not enabled.
+See a few comments from me in the thread
 
-> If you do that, HP will be enabled at the saved gain, and after that you
-> will do the ramp. To avoid pop, the driver should be rewrite to:
+=E2=80=94 Daniel
 
-So reset the volume to -40dB prior to turning the amplifier on...
+> On 14 Mar 2024, at 08:44, Yunfei Dong <yunfei.dong@mediatek.com> =
+wrote:
+>=20
+> Moving v4l2_ctrl_request_complete to before of function
+> v4l2_m2m_buf_done to make sure the status of request correctly.
+>=20
+> Replace v4l2_m2m_next_src_buf with v4l2_m2m_src_buf_remove to
+> make sure the src buffer won't be removed for some unknown
+> reason leading to buffer done error.
+>=20
+> Patch 1 setting request complete before buffer done
+> Patch 3 flush decoder before remove all source buffer
+> Patch 2 change flush decode from capture to output when stream off
+> Patch 4 replace v4l2_m2m_next_src_buf with v4l2_m2m_src_buf_remove
+> ---
+> compared with v1:
+> - add patch 2/3/4 to fix timing issue.
+> ---
+> Yunfei Dong (4):
+>  media: mediatek: vcodec: setting request complete before buffer done
+>  media: mediatek: vcodec: change flush decode from capture to output
+>    when stream off
+>  media: mediatek: vcodec: flush decoder before remove all source =
+buffer
+>  media: mediatek: vcodec: replace v4l2_m2m_next_src_buf with
+>    v4l2_m2m_src_buf_remove
+>=20
+> .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 52 +++++++++----------
+> .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  3 +-
+> .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 28 +++++++---
+> .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c | 28 +++++-----
+> .../decoder/vdec/vdec_h264_req_multi_if.c     |  3 +-
+> .../decoder/vdec/vdec_hevc_req_multi_if.c     |  3 +-
+> .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c | 37 ++++++-------
+> .../mediatek/vcodec/decoder/vdec_msg_queue.h  |  2 +
+> 8 files changed, 84 insertions(+), 72 deletions(-)
+>=20
+> --=20
+> 2.18.0
+>=20
+>=20
 
->   Read gain in the reg and save it locally
->   Set -40dB in the reg
->   Enable HP
->   Do ramp
-
-...as you yourself suggest?
-
-> > > AFAII from the comment in the code, it's done to avoid the "pop noises".
-
-> > Yes, that's the usual reason to ramp gains.  Though if you've just
-> > copied the code without checking that it's needed it's possible that
-> > this is something that's been fixed in current hardware.
-
-> I did the test at 24dB with and without the "pop filter". Isn't big but I
-> ear the pop at the start of the record without the "pop filter".
-
-OK, it probably is still doing something then.
-
-> To be clear, the algo/behavior of this code is an implementation based on
-> the 6k+ lines downstream code for this specific audio codec. But the
-> shape/style is based on upstreamed drivers like mt6358.c.
-
-The Mediatek code has a bunch of issues, I wouldn't read too much into
-something being present in the code.
-
---MkhxNCSSCKe3PKpY
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmX0jt8ACgkQJNaLcl1U
-h9DFzwf/WTFtub1WzGQHyCilLQ/Dm90Crp+NDTyCh8eMRG7+3o9uBhwqnKdBT2kY
-L9SAw/PR7zx+h3fGbCczOH9SGtZZy0FJkMTfEOYGED7E5hRFt0wfdNBqn1nn1hpz
-d2GXkXcliq2bP+FOw5tDJpNMHwYAnxCVmjqcl/tCInIBwKB0JVPXVZV+gf+/KTDi
-6UnFIQRExgRYPJt26pzWejqhRZl9KyKxKxORmnWAOvNU4tBIymSqZopFOqs4rvOT
-/byiicLBLKQ5VKr9IxIyd8+yMN1nuv0Sd2FjcGd5tcyWdItJ5ivV2AS4yIx8XtQh
-8BypOaepYix1QitTk/6SKwVIQZbT3w==
-=oa8d
------END PGP SIGNATURE-----
-
---MkhxNCSSCKe3PKpY--
 
