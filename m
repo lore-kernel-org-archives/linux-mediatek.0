@@ -4,90 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A7F7C54E69
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 08:35:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAAA1C54E66
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 08:35:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ATX7DE3pf+GNEBqDAhFhJVT5DKLBcrGcVoJ0/mRV3gQ=; b=4iGPPfor8tOKHilbdWExdVpLBQ
-	VvG/dmbIVVDFUaZUyCpZIO7DGqH6qh5xyiSq5iIEndptlC7Ap9ZWyvhWwU5d5g7RMYJbFZtNDk7Ww
-	H4DTbLt82rIv3Jxb+zOVBBqpkNviPqDxXi4dR0zLrBNyu/Wgxn2vHZmTpVjqfaubTV85XilP5mR0J
-	2YFy7W7Xt6Mo2g3TAEZulvOQPePie3KGi3TCvE0P6oC85+mKq6PAWUDrTEDvMBEpI6F8+lted2ZyB
-	+Ehje7qdkCH0tJqVAtY9HRzGFuN7TqtOc2QNsuHFgnEoLhyxG6qCG+wPTg/VDb3ennUDKVd9bGqCa
-	FXeDkF0A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=prHiz7Sk03vwfl/bccQjllgjesPqlvn4kZwLcCbZ6E8=; b=roLcRX/13GhYBtzGo6+ag8jv/u
+	g4M28kZolYBUo43a7800Roxfprzm9t2128XHADumDH8ViTcKvswwded1oFNI2UMZP6KEbsWZ1Yjis
+	bdUYtyD5psHSFkgnXcPSOcJx4lev481+MnWsD7NUsiNFzMRUrY+TYXjpm9hGlGJkV4oG87IjlK3fH
+	KF1QT/fDRRJvhaJ0eBCz5RRAONpoXzbV9bhxJ9+AqTiFmiiNHpAU9fvRGohI1uJNzLJlXB5cOITGW
+	pmvombu4SCP13p89y8NkeD5ucdF1k/dWJu8Sd1wwAhiQXQ5jJe9ujjFwgTr6ngnM3Xl4lwcc5R7Bd
+	5VZCv3Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl31v-0000000HAhw-2CMT;
-	Fri, 15 Mar 2024 08:35:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rl32g-0000000HAzQ-2hTd;
+	Fri, 15 Mar 2024 08:35:54 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl31p-0000000HAeK-2KP3
+	id 1rl32d-0000000HAwz-3DG0
 	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Mar 2024 08:35:03 +0000
-X-UUID: e64631aae2a611ee9aa9374d6d45775a-20240315
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ATX7DE3pf+GNEBqDAhFhJVT5DKLBcrGcVoJ0/mRV3gQ=;
-	b=Kt3dzgX1TG+4Ny8HNgZIwKTeu9lvEIElIxvE6R0hj+ZHGK86IkcZb/ZVq0HnqwefbffJ7xYhzFLy6aLcGh/i1i/qWplbrlOXYvazRCj+O2nmU58vBpLZk2s4A1bXJ7tfqrxBI8uW5y/nAuXSX5hOx0fLyCr+LGAsLL8BmNzlBgc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:9f3820cd-d89a-4d3e-b1bf-0ddda8e467e0,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:2e047190-e2c0-40b0-a8fe-7c7e47299109,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: e64631aae2a611ee9aa9374d6d45775a-20240315
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1273614618; Fri, 15 Mar 2024 01:34:55 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 15 Mar 2024 16:34:50 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 15 Mar 2024 16:34:50 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <chu.stanley@gmail.com>
-Subject: [PATCH v2 2/7] ufs: host: mediatek: tx skew fix
-Date: Fri, 15 Mar 2024 16:34:43 +0800
-Message-ID: <20240315083448.7185-3-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240315083448.7185-1-peter.wang@mediatek.com>
-References: <20240315083448.7185-1-peter.wang@mediatek.com>
+	Fri, 15 Mar 2024 08:35:53 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-512b3b04995so1866080e87.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 15 Mar 2024 01:35:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1710491749; x=1711096549; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=prHiz7Sk03vwfl/bccQjllgjesPqlvn4kZwLcCbZ6E8=;
+        b=KSVP5FRMkitJ1jUcLVaP2osMeB/6rHp4TAnLl7CMLVRqT3E4G2ps9y+hryH1kSuaYN
+         7Yg2GMoAtFTP1crR7UsbG2GI/kt706Wai/Uc837F3P9fnvBadpmiQGCuX968A4O23tUo
+         kvVzIlj3VKF9bshSDJ1zKcY6cxUnxyTr1OmHliztYPE+sOY45B3eODC3jVFXmTq8ZoEt
+         L0Jkb/dlmebxhhX9Y+NAzt9yVNQU5j0s4pQDjd5EJA5x8ZIwX7aFAFPKysflDvGE74Wj
+         X84MzZ8G9Zbx0grfsVTF3yjBXZhhFcWSNrAF77QFgOI/aWpqH30HLf1c3pd3KmsdfwAH
+         neWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710491749; x=1711096549;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=prHiz7Sk03vwfl/bccQjllgjesPqlvn4kZwLcCbZ6E8=;
+        b=Mlu0Y6wCojlAQtvsfBlTYBjtl/BReqEtnlM86arZaI9aaweq/YHd36s9P8MYYJD1o1
+         tZrprlMUXnxBUGmSzcH3R6XdCbmVQkthSwwHVNiOQMD2e4BhtRRfMgU5FJxM9YZI+Dlu
+         fFSEfx9mTnHtQETJdNWUvHmgHMQ4LLRDweRXihYA/eXX3b/zj3yF32YELVWkbMEXozG/
+         qWluWeBx3EQEdMpMYQYqdvie0Z9PVzpMRdXg08ve0UgN6noPXXrbLmiLx3X10uyOxXai
+         8/n6Swc2J6bfgYRK+QRlNuPRCoIfLsVH93OFQGD4ShEoCD6GUzWiqVE/HZVj8JGZ1Sor
+         jAjg==
+X-Forwarded-Encrypted: i=1; AJvYcCVtpy/2mkTC5iVh05lUf8D9CchNkAinJvsZOlNkc8yBkmgScoGD7y7BH9iTgMRc52L4cWmAPxIpyENEDoQsfqMLJQJFD43Wx5gSd6zzoExXHQO4
+X-Gm-Message-State: AOJu0YxXx2E3b9ZUilKQ175YCvgcc93ujVHWVM0g5LUcIeeT4m8Wdsmr
+	9WPg2b1hakhj63B3J7rM8R52iHCybBIOBLSxqpqNk+ov56EZHlKJcj2YD4GVio4=
+X-Google-Smtp-Source: AGHT+IEI7TOmSneGuXLP7njaog6nDdBAtHqcol+qmfDmvMCynVyzc8pBUvSfB9uq3lUyfup65xRKIw==
+X-Received: by 2002:a05:6512:3441:b0:513:d246:6e65 with SMTP id j1-20020a056512344100b00513d2466e65mr1585942lfr.50.1710491749325;
+        Fri, 15 Mar 2024 01:35:49 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.222.97])
+        by smtp.gmail.com with ESMTPSA id m8-20020a05600c4f4800b00413ea26f942sm7699529wmq.14.2024.03.15.01.35.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 15 Mar 2024 01:35:48 -0700 (PDT)
+Message-ID: <8ec0c9e0-19c9-4c7c-98c7-c307d001cc6c@linaro.org>
+Date: Fri, 15 Mar 2024 09:35:47 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.857300-8.000000
-X-TMASE-MatchedRID: n/G9Jfep/EYMQLXc2MGSbIzb2GR6Ttd39Nx/wC/5BIDfc2Xd6VJ+yqE9
-	PHeVbwLZeeTK1AUftLLijpjet3oGSJCoy9iDotiwjoyKzEmtrEdYN1akkye0qOkviQKjlVkeoBf
-	JbWQaw4Pc3nKzIYoy4oAy6p60ZV62fJ5/bZ6npdjKayT/BQTiGtJaX40YooekqswO62qermAz8M
-	fXufKgqBRTidULKtoa/IaBPoZPwlUXpWXAorqW3pG7NytUycyAZ30APAmfP3O0PdybCyoACq/XF
-	oPK0hZ9dATQdtPksR+3/JiWOe6GXXSWgQ2GpXdZbxffl9hhCBw=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.857300-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: EC9D5EAE5EE4ED939A91AD8637D2DB819933FAB94736ED65F7E0D3C9A9A73D432000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] dt-bindings: arm: mediatek: Add MT8195 HP Chromebook
+ x360 13b-ca0002sa
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mediatek@lists.infradead.org
+Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ wenst@chromium.org, jenneron@protonmail.com, kernel@collabora.com
+References: <20240314103500.93158-1-angelogioacchino.delregno@collabora.com>
+ <20240314103500.93158-2-angelogioacchino.delregno@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20240314103500.93158-2-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240315_013501_835612_EDE0B3DF 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20240315_013551_853605_0C3C5D9F 
+X-CRM114-Status: UNSURE (   7.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,78 +144,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+On 14/03/2024 11:34, AngeloGioacchino Del Regno wrote:
+> Add the MT8195 Cherry platform's Dojo machine, a convertible design
+> commercially known as the HP Chromebook x360 (13b-ca0002sa).
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 8 ++++++++
+>  1 file changed, 8 insertions(+)
 
-Mediatek tx skew issue fix by check dts setting and vendor/model.
-Then set PA_TACTIVATE set 8
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Acked-by: Chun-Hung Wu <Chun-Hung.Wu@mediatek.com>
-Reviewed-by: Avri Altman <avri.altman@wdc.com>
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- drivers/ufs/host/ufs-mediatek.c | 21 +++++++++++++++++++++
- drivers/ufs/host/ufs-mediatek.h |  1 +
- 2 files changed, 22 insertions(+)
-
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 147b5286ec98..25bf5a13cddd 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -119,6 +119,13 @@ static bool ufs_mtk_is_pmc_via_fastauto(struct ufs_hba *hba)
- 	return !!(host->caps & UFS_MTK_CAP_PMC_VIA_FASTAUTO);
- }
- 
-+static bool ufs_mtk_is_tx_skew_fix(struct ufs_hba *hba)
-+{
-+	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
-+
-+	return (host->caps & UFS_MTK_CAP_TX_SKEW_FIX);
-+}
-+
- static bool ufs_mtk_is_allow_vccqx_lpm(struct ufs_hba *hba)
- {
- 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
-@@ -630,6 +637,9 @@ static void ufs_mtk_init_host_caps(struct ufs_hba *hba)
- 	if (of_property_read_bool(np, "mediatek,ufs-pmc-via-fastauto"))
- 		host->caps |= UFS_MTK_CAP_PMC_VIA_FASTAUTO;
- 
-+	if (of_property_read_bool(np, "mediatek,ufs-tx-skew-fix"))
-+		host->caps |= UFS_MTK_CAP_TX_SKEW_FIX;
-+
- 	dev_info(hba->dev, "caps: 0x%x", host->caps);
- }
- 
-@@ -1423,6 +1433,17 @@ static int ufs_mtk_apply_dev_quirks(struct ufs_hba *hba)
- 	if (mid == UFS_VENDOR_SAMSUNG) {
- 		ufshcd_dme_set(hba, UIC_ARG_MIB(PA_TACTIVATE), 6);
- 		ufshcd_dme_set(hba, UIC_ARG_MIB(PA_HIBERN8TIME), 10);
-+	} else if (mid == UFS_VENDOR_MICRON) {
-+		/* Only for the host which have TX skew issue */
-+		if (ufs_mtk_is_tx_skew_fix(hba) &&
-+			(STR_PRFX_EQUAL("MT128GBCAV2U31", dev_info->model) ||
-+			STR_PRFX_EQUAL("MT256GBCAV4U31", dev_info->model) ||
-+			STR_PRFX_EQUAL("MT512GBCAV8U31", dev_info->model) ||
-+			STR_PRFX_EQUAL("MT256GBEAX4U40", dev_info->model) ||
-+			STR_PRFX_EQUAL("MT512GAYAX4U40", dev_info->model) ||
-+			STR_PRFX_EQUAL("MT001TAYAX8U40", dev_info->model))) {
-+			ufshcd_dme_set(hba, UIC_ARG_MIB(PA_TACTIVATE), 8);
-+		}
- 	}
- 
- 	/*
-diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
-index d0a5ab17860a..c1acbfc5568f 100644
---- a/drivers/ufs/host/ufs-mediatek.h
-+++ b/drivers/ufs/host/ufs-mediatek.h
-@@ -143,6 +143,7 @@ enum ufs_mtk_host_caps {
- 	 */
- 	UFS_MTK_CAP_ALLOW_VCCQX_LPM            = 1 << 5,
- 	UFS_MTK_CAP_PMC_VIA_FASTAUTO           = 1 << 6,
-+	UFS_MTK_CAP_TX_SKEW_FIX                = 1 << 7,
- };
- 
- struct ufs_mtk_crypt_cfg {
--- 
-2.18.0
+Best regards,
+Krzysztof
 
 
