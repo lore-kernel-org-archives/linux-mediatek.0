@@ -4,90 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92645C54E58
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 08:55:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 946F9C54E58
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Mar 2024 09:15:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yE4JBQTCPH3gA6ZXKyx8sgWao+HvBsWrcvvs5VHR2/A=; b=jklzOy4f1JgMQOB3DvPB4xD7Lm
-	Bn7MyAgfPQCX5go8Gn+AlllhtojpEUdq4/pDm5GIqp9hU6QOW7xki3iru3eraVmY9KFUQZx3/KjiK
-	GOyMuxjYcFNkSITRBKoBBgWuKLcR4BLLrd3zA2ijVIAGym8gc4EsmGaaLFYg90DxcAWo0IXwWnBkC
-	rNpPL1YnCVYKNKe4JZob4uQmzB532O1b9/3E3Ri4PsrAjMOjhQveQa2UtJ0TYqGfQ0JXgdC3V5Hg4
-	PXrOwLHDB70+Szl04YoVHRGacpOp244Y39iCRt3NUQ8kxO8eHOMoAA1AacMA9LjqqrQYXdrZJkA1l
-	ZM9bx4Vg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=87PhSsjtv1x+JQZmpCiioMPz9Gfgh8Wnv6MjE3E0p4E=; b=wN/ik2K521YexICdG+7abUtkVM
+	iUfA/W8dArNscErxO089uiX0xEtw7ogbZt5S0SOBSMxtxcdE8eO3EvPr+JORj7v0R84DOQ2i4GQ9p
+	AeHyi6L+k1RYFU6U0/dffdkg/LTXaKtpgPIRzT+c7oLprsXoSCPcVRXMVcrnQbt06W93+vtyeIgD6
+	lGIUm9m9JKRMWhHM1//0mtJ9OUWgAtO8mAd3DfdmbFzmMt7xHvOkj3jv4RfA1cajKzW0NQwyqR344
+	e6qqhZFk3bP22s5+AWKU9A7TfYzwtVafdtfNHb3OGYcK382DtYGKK+0nRw0Vt5Of8wYBmGgC/AZ5L
+	mWA1pzIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl3Lm-0000000HEaq-0nr7;
-	Fri, 15 Mar 2024 08:55:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rl3f1-0000000HHRI-08ym;
+	Fri, 15 Mar 2024 09:15:31 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl3Li-0000000HEZz-3awd
-	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Mar 2024 08:55:36 +0000
-X-UUID: c64b7b82e2a911ee9aa9374d6d45775a-20240315
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=yE4JBQTCPH3gA6ZXKyx8sgWao+HvBsWrcvvs5VHR2/A=;
-	b=A6wEVPsSzSwREgj+fK2WnF7HB0eLeSdQtc/kL3qPGYjeBiTAMPA/bG6Ifpf5JiUdCVzs9hG4y+Ya8rVuGTU2aivJgkFiIUKObbwZxY84wmfYiGdSUIg8BM1WMX5lr1T48PUpOlN/U9iRjXa6tTPNGznuAsj7IcyhBQ6LuySNr7o=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:9823e178-93cf-4547-a0ba-be4abc2dd55d,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:4b7e0a85-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: c64b7b82e2a911ee9aa9374d6d45775a-20240315
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 452472908; Fri, 15 Mar 2024 01:55:29 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 15 Mar 2024 16:34:51 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 15 Mar 2024 16:34:51 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <chu.stanley@gmail.com>
-Subject: [PATCH v2 4/7] ufs: host: mediatek: ufs mtk sip command reconstruct
-Date: Fri, 15 Mar 2024 16:34:45 +0800
-Message-ID: <20240315083448.7185-5-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240315083448.7185-1-peter.wang@mediatek.com>
-References: <20240315083448.7185-1-peter.wang@mediatek.com>
+	id 1rl3ex-0000000HHQD-3muB;
+	Fri, 15 Mar 2024 09:15:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1710494124;
+	bh=acrQ5oOzFvIptP0m55ggct7J15MBntUB7Hgt+FmRFRg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=j7CQdFq496EcdadWXv01UmcL6cPMnEne0Ve8NgUX6EIsZfO28poLm/zYFElsRmg8r
+	 L02tS8PomCFcYDO2g/Fpm6YlBqVX/p3IqIaxspuWPkGOYg1N1bGS+r6vAxDsKVKg+e
+	 xiDOpoNn6GD1INtI2opCCnng8fin2PPXPROdpsqeOZhWLzYqRG/i+eHB+mYljXN4CE
+	 sBKniqwVIkFU3vB2+zdfX0ICiRTuEItOr+lnz/V2pFkMZrcCk4q5rvTxNqt5uvNxXJ
+	 AewYrKTKhrLaqm9vCBSfDpgEFOzbsvh9u3hyfcFeMqChvHglqGLhJr0cKE8r+7M/1i
+	 pTRd13IOCOfWg==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 36ED137820FD;
+	Fri, 15 Mar 2024 09:15:23 +0000 (UTC)
+Message-ID: <d295a448-1b50-47be-92a2-770501c83e18@collabora.com>
+Date: Fri, 15 Mar 2024 10:15:22 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--6.741700-8.000000
-X-TMASE-MatchedRID: jxLDw2lrPpv9jxte3IFskLiMC5wdwKqdf6/Md8Lb2l84YKAM3oRt9l0c
-	vQ4E8DdUXk6mOXfvRmBM8qdoCvOVvj13WcdbGR6QyeVujmXuYYXzWEMQjooUzUYvSDWdWaRh/c+
-	POq0n3JUSIx4SDL9Y5pNNyCYD/Z/9g4jZH72x494XrP0cYcrA24EcpMn6x9cZCqIJhrrDy28J64
-	/kWP1C5qnX7naLYMc4ou7eTOm27Q0YB2fOueQzjxRFJJyf5BJe3QfwsVk0UbvdirxFVpmK9aHch
-	3WEjd2F0nn3c1dbxAlDWsS2bc6upr30xNSH2BlAtZz3gO3LWCI=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--6.741700-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 32482157928C4B65CAFD2AEC8DABE8A6FAEB78881EBB02EE5CA424F9AEC2BE422000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] mediatek: dsi: Correct calculation formula of PHY Timing
+To: Shuijing Li <shuijing.li@mediatek.com>, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
+ matthias.bgg@gmail.com, jitao.shi@mediatek.com
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20240315072945.19502-1-shuijing.li@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240315072945.19502-1-shuijing.li@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240315_015534_925143_C1FB2B17 
-X-CRM114-Status: GOOD (  14.46  )
+X-CRM114-CacheID: sfid-20240315_021528_269369_696BD6AF 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,240 +77,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Po-Wen Kao <powen.kao@mediatek.com>
+Il 15/03/24 08:29, Shuijing Li ha scritto:
+> This patch correct calculation formula of PHY timing.
+> Make actual phy timing more accurate.
+> 
 
-Move sip command and define to a new sip header file.
+More accurate in which cases? By how much? On which SoC(s)?
 
-Acked-by: Chun-Hung Wu <Chun-Hung.Wu@mediatek.com>
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
----
- drivers/ufs/host/ufs-mediatek-sip.h | 90 +++++++++++++++++++++++++++++
- drivers/ufs/host/ufs-mediatek.c     |  3 +-
- drivers/ufs/host/ufs-mediatek.h     | 79 -------------------------
- 3 files changed, 92 insertions(+), 80 deletions(-)
- create mode 100755 drivers/ufs/host/ufs-mediatek-sip.h
+I agree about those changes if those are improving the PHY timing, but
+can you please document what's going on?
 
-diff --git a/drivers/ufs/host/ufs-mediatek-sip.h b/drivers/ufs/host/ufs-mediatek-sip.h
-new file mode 100755
-index 000000000000..35d1d5e76a2c
---- /dev/null
-+++ b/drivers/ufs/host/ufs-mediatek-sip.h
-@@ -0,0 +1,90 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (C) 2022 MediaTek Inc.
-+ */
-+
-+#ifndef _UFS_MEDIATEK_SIP_H
-+#define _UFS_MEDIATEK_SIP_H
-+
-+#include <linux/soc/mediatek/mtk_sip_svc.h>
-+
-+/*
-+ * SiP (Slicon Partner) commands
-+ */
-+#define MTK_SIP_UFS_CONTROL               MTK_SIP_SMC_CMD(0x276)
-+#define UFS_MTK_SIP_VA09_PWR_CTRL         BIT(0)
-+#define UFS_MTK_SIP_DEVICE_RESET          BIT(1)
-+#define UFS_MTK_SIP_CRYPTO_CTRL           BIT(2)
-+#define UFS_MTK_SIP_REF_CLK_NOTIFICATION  BIT(3)
-+#define UFS_MTK_SIP_HOST_PWR_CTRL         BIT(5)
-+#define UFS_MTK_SIP_GET_VCC_NUM           BIT(6)
-+#define UFS_MTK_SIP_DEVICE_PWR_CTRL       BIT(7)
-+
-+
-+/*
-+ * Multi-VCC by Numbering
-+ */
-+enum ufs_mtk_vcc_num {
-+	UFS_VCC_NONE = 0,
-+	UFS_VCC_1,
-+	UFS_VCC_2,
-+	UFS_VCC_MAX
-+};
-+
-+/*
-+ * Host Power Control options
-+ */
-+enum {
-+	HOST_PWR_HCI = 0,
-+	HOST_PWR_MPHY
-+};
-+
-+/*
-+ * SMC call wrapper function
-+ */
-+struct ufs_mtk_smc_arg {
-+	unsigned long cmd;
-+	struct arm_smccc_res *res;
-+	unsigned long v1;
-+	unsigned long v2;
-+	unsigned long v3;
-+	unsigned long v4;
-+	unsigned long v5;
-+	unsigned long v6;
-+	unsigned long v7;
-+};
-+
-+
-+static inline void _ufs_mtk_smc(struct ufs_mtk_smc_arg s)
-+{
-+	arm_smccc_smc(MTK_SIP_UFS_CONTROL,
-+		s.cmd,
-+		s.v1, s.v2, s.v3, s.v4, s.v5, s.v6, s.res);
-+}
-+
-+#define ufs_mtk_smc(...) \
-+	_ufs_mtk_smc((struct ufs_mtk_smc_arg) {__VA_ARGS__})
-+
-+/* Sip kernel interface */
-+#define ufs_mtk_va09_pwr_ctrl(res, on) \
-+	ufs_mtk_smc(UFS_MTK_SIP_VA09_PWR_CTRL, &(res), on)
-+
-+#define ufs_mtk_crypto_ctrl(res, enable) \
-+	ufs_mtk_smc(UFS_MTK_SIP_CRYPTO_CTRL, &(res), enable)
-+
-+#define ufs_mtk_ref_clk_notify(on, stage, res) \
-+	ufs_mtk_smc(UFS_MTK_SIP_REF_CLK_NOTIFICATION, &(res), on, stage)
-+
-+#define ufs_mtk_device_reset_ctrl(high, res) \
-+	ufs_mtk_smc(UFS_MTK_SIP_DEVICE_RESET, &(res), high)
-+
-+#define ufs_mtk_host_pwr_ctrl(opt, on, res) \
-+	ufs_mtk_smc(UFS_MTK_SIP_HOST_PWR_CTRL, &(res), opt, on)
-+
-+#define ufs_mtk_get_vcc_num(res) \
-+	ufs_mtk_smc(UFS_MTK_SIP_GET_VCC_NUM, &(res))
-+
-+#define ufs_mtk_device_pwr_ctrl(on, ufs_version, res) \
-+	ufs_mtk_smc(UFS_MTK_SIP_DEVICE_PWR_CTRL, &(res), on, ufs_version)
-+
-+#endif /* !_UFS_MEDIATEK_SIP_H */
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 2ee7881533ec..bb5b11185d8a 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -20,13 +20,14 @@
- #include <linux/pm_qos.h>
- #include <linux/regulator/consumer.h>
- #include <linux/reset.h>
--#include <linux/soc/mediatek/mtk_sip_svc.h>
- 
- #include <ufs/ufshcd.h>
- #include "ufshcd-pltfrm.h"
- #include <ufs/ufs_quirks.h>
- #include <ufs/unipro.h>
-+
- #include "ufs-mediatek.h"
-+#include "ufs-mediatek-sip.h"
- 
- static int  ufs_mtk_config_mcq(struct ufs_hba *hba, bool irq);
- 
-diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
-index 3f698af5f5ac..9226e95c4a60 100644
---- a/drivers/ufs/host/ufs-mediatek.h
-+++ b/drivers/ufs/host/ufs-mediatek.h
-@@ -8,7 +8,6 @@
- 
- #include <linux/bitops.h>
- #include <linux/pm_qos.h>
--#include <linux/soc/mediatek/mtk_sip_svc.h>
- 
- /*
-  * MCQ define and struct
-@@ -100,18 +99,6 @@ enum {
- 	VS_HIB_EXIT                 = 13,
- };
- 
--/*
-- * SiP commands
-- */
--#define MTK_SIP_UFS_CONTROL               MTK_SIP_SMC_CMD(0x276)
--#define UFS_MTK_SIP_VA09_PWR_CTRL         BIT(0)
--#define UFS_MTK_SIP_DEVICE_RESET          BIT(1)
--#define UFS_MTK_SIP_CRYPTO_CTRL           BIT(2)
--#define UFS_MTK_SIP_REF_CLK_NOTIFICATION  BIT(3)
--#define UFS_MTK_SIP_HOST_PWR_CTRL         BIT(5)
--#define UFS_MTK_SIP_GET_VCC_NUM           BIT(6)
--#define UFS_MTK_SIP_DEVICE_PWR_CTRL       BIT(7)
--
- /*
-  * VS_DEBUGCLOCKENABLE
-  */
-@@ -198,70 +185,4 @@ struct ufs_mtk_host {
- 	struct ufs_mtk_mcq_intr_info mcq_intr_info[UFSHCD_MAX_Q_NR];
- };
- 
--/*
-- * Multi-VCC by Numbering
-- */
--enum ufs_mtk_vcc_num {
--	UFS_VCC_NONE = 0,
--	UFS_VCC_1,
--	UFS_VCC_2,
--	UFS_VCC_MAX
--};
--
--/*
-- * Host Power Control options
-- */
--enum {
--	HOST_PWR_HCI = 0,
--	HOST_PWR_MPHY
--};
--
--/*
-- * SMC call wrapper function
-- */
--struct ufs_mtk_smc_arg {
--	unsigned long cmd;
--	struct arm_smccc_res *res;
--	unsigned long v1;
--	unsigned long v2;
--	unsigned long v3;
--	unsigned long v4;
--	unsigned long v5;
--	unsigned long v6;
--	unsigned long v7;
--};
--
--static void _ufs_mtk_smc(struct ufs_mtk_smc_arg s)
--{
--	arm_smccc_smc(MTK_SIP_UFS_CONTROL,
--		      s.cmd, s.v1, s.v2, s.v3, s.v4, s.v5, s.v6, s.res);
--}
--
--#define ufs_mtk_smc(...) \
--	_ufs_mtk_smc((struct ufs_mtk_smc_arg) {__VA_ARGS__})
--
--/*
-- * SMC call interface
-- */
--#define ufs_mtk_va09_pwr_ctrl(res, on) \
--	ufs_mtk_smc(UFS_MTK_SIP_VA09_PWR_CTRL, &(res), on)
--
--#define ufs_mtk_crypto_ctrl(res, enable) \
--	ufs_mtk_smc(UFS_MTK_SIP_CRYPTO_CTRL, &(res), enable)
--
--#define ufs_mtk_ref_clk_notify(on, stage, res) \
--	ufs_mtk_smc(UFS_MTK_SIP_REF_CLK_NOTIFICATION, &(res), on, stage)
--
--#define ufs_mtk_device_reset_ctrl(high, res) \
--	ufs_mtk_smc(UFS_MTK_SIP_DEVICE_RESET, &(res), high)
--
--#define ufs_mtk_host_pwr_ctrl(opt, on, res) \
--	ufs_mtk_smc(UFS_MTK_SIP_HOST_PWR_CTRL, &(res), opt, on)
--
--#define ufs_mtk_get_vcc_num(res) \
--	ufs_mtk_smc(UFS_MTK_SIP_GET_VCC_NUM, &(res))
--
--#define ufs_mtk_device_pwr_ctrl(on, ufs_ver, res) \
--	ufs_mtk_smc(UFS_MTK_SIP_DEVICE_PWR_CTRL, &(res), on, ufs_ver)
--
- #endif /* !_UFS_MEDIATEK_H */
--- 
-2.18.0
+Thanks,
+Angelo
+
+> Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
+> ---
+>   drivers/gpu/drm/mediatek/mtk_dsi.c | 33 +++++++++++++++---------------
+>   1 file changed, 17 insertions(+), 16 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index a2fdfc8ddb15..d1bd7d671880 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -235,22 +235,23 @@ static void mtk_dsi_phy_timconfig(struct mtk_dsi *dsi)
+>   	u32 data_rate_mhz = DIV_ROUND_UP(dsi->data_rate, 1000000);
+>   	struct mtk_phy_timing *timing = &dsi->phy_timing;
+>   
+> -	timing->lpx = (60 * data_rate_mhz / (8 * 1000)) + 1;
+> -	timing->da_hs_prepare = (80 * data_rate_mhz + 4 * 1000) / 8000;
+> -	timing->da_hs_zero = (170 * data_rate_mhz + 10 * 1000) / 8000 + 1 -
+> -			     timing->da_hs_prepare;
+> -	timing->da_hs_trail = timing->da_hs_prepare + 1;
+> -
+> -	timing->ta_go = 4 * timing->lpx - 2;
+> -	timing->ta_sure = timing->lpx + 2;
+> -	timing->ta_get = 4 * timing->lpx;
+> -	timing->da_hs_exit = 2 * timing->lpx + 1;
+> -
+> -	timing->clk_hs_prepare = 70 * data_rate_mhz / (8 * 1000);
+> -	timing->clk_hs_post = timing->clk_hs_prepare + 8;
+> -	timing->clk_hs_trail = timing->clk_hs_prepare;
+> -	timing->clk_hs_zero = timing->clk_hs_trail * 4;
+> -	timing->clk_hs_exit = 2 * timing->clk_hs_trail;
+> +	timing->lpx = (80 * data_rate_mhz / (8 * 1000)) + 1;
+> +	timing->da_hs_prepare = (59 * data_rate_mhz + 4 * 1000) / 8000 + 1;
+> +	timing->da_hs_zero = (163 * data_rate_mhz + 11 * 1000) / 8000 + 1 -
+> +		timing->da_hs_prepare;
+> +	timing->da_hs_trail = (78 * data_rate_mhz + 7 * 1000) / 8000 + 1;
+> +
+> +	timing->ta_go = 4 * timing->lpx;
+> +	timing->ta_sure = 3 * timing->lpx / 2;
+> +	timing->ta_get = 5 * timing->lpx;
+> +	timing->da_hs_exit = (118 * data_rate_mhz / (8 * 1000)) + 1;
+> +
+> +	timing->clk_hs_prepare = (57 * data_rate_mhz / (8 * 1000)) + 1;
+> +	timing->clk_hs_post = (65 * data_rate_mhz + 53 * 1000) / 8000 + 1;
+> +	timing->clk_hs_trail = (78 * data_rate_mhz + 7 * 1000) / 8000 + 1;
+> +	timing->clk_hs_zero = (330 * data_rate_mhz / (8 * 1000)) + 1 -
+> +		timing->clk_hs_prepare;
+> +	timing->clk_hs_exit = (118 * data_rate_mhz / (8 * 1000)) + 1;
+>   
+>   	timcon0 = timing->lpx | timing->da_hs_prepare << 8 |
+>   		  timing->da_hs_zero << 16 | timing->da_hs_trail << 24;
+
+
 
 
