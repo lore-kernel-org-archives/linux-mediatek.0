@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A8EAC54E60
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Mar 2024 09:21:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D306C54E5D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Mar 2024 09:22:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/R89qJGYnbeg9WVgcaQ8Cba+D/WxrvX+F1zgBiCfzWc=; b=U9f8IcUjz8LzZZKZFMvxlRnzww
-	il1ycw9Z+TjM2PPHpxCqGOdvA+NRw8oKIlJWJCfCrVSvOr0V4LuR35BgSEtd2bm4Loo6hbqQv+UGI
-	OP2R0hP6DtTZt+47+m2eojweukxF0oMICXe9d7E6NyQFa+Cs1LUpYlmmt9+NJZBTZO8djRfL4Nx0A
-	reRgPgsN457l8gfG3Msdryzt8KqJdDGLRlOZKO6nwVq+qOSCnY6djFfo357/THuGavGv2RWggFQ3o
-	WiPhl9y0SHDeEJhoWSgghJ21cMHQ/VXIlfBSLkTY9SRdCppIHP+GsFrZhd59TVcGPZ2Bsht+x0GMy
-	M/tbphlA==;
+	bh=b8QIHCmNx7i/YQHcmrZytkPV0r8PHOyaKNLruF6ZVFk=; b=u4xRsl0AymW0yZWwoITN3ZLOPw
+	paZR0oa3ObcTd10VNT/yz898z8PoLrwHl79ehGG89HsgLfsJFt2yuMe56/dyyN8S1qHNugRwhrzp/
+	kmluso+oXx75YPOo9j79hsa54ZoQyluJGgYgM9jmAAjgnyyK+/fgk9aA0Wjd40/CoAEh8h/0XNbGk
+	d5gp89UcPSxeF6qyzz0Elm0b+2P8kAjSG6cutJfJVLVeEIU9PVaPhU/hFU/PLpsXa2hcvZDMY7K0Z
+	xB/R1XMBA3hNhkBc2eMbmPrAbsItMj7b7/7Nr58E1OUY8+/ILQfa/d9QAz/EAowOCKexPlyR1tHRt
+	pCqKNsTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlQEo-00000002qNa-3MwZ;
-	Sat, 16 Mar 2024 09:21:58 +0000
+	id 1rlQF4-00000002qSo-24z5;
+	Sat, 16 Mar 2024 09:22:14 +0000
 Received: from relay7-d.mail.gandi.net ([2001:4b98:dc4:8::227])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlQEl-00000002qLw-2cYY;
-	Sat, 16 Mar 2024 09:21:56 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 3879920003;
-	Sat, 16 Mar 2024 09:21:51 +0000 (UTC)
+	id 1rlQEz-00000002qQI-1xeG;
+	Sat, 16 Mar 2024 09:22:11 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 3371820004;
+	Sat, 16 Mar 2024 09:22:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1710580913;
+	t=1710580927;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=/R89qJGYnbeg9WVgcaQ8Cba+D/WxrvX+F1zgBiCfzWc=;
-	b=A5SYvb9/N7NN+b2Ch960ECv6QpDXu7CMYPuwjq5pqY1NoidhgH14sYCDwS6IgCQsjlqwhm
-	E7HvuE9gh/2ZuyRB/Z62wMBAKxtJxB25yECBpZrOINZw5dtANDM7ZMOri5cttsEeJFa0rW
-	VqMF5r2I+Ve4qd7aN5+IibF9+eGBBohdk22OD+66gbenj2odO9rnMtEgeC8re/Nph0kl2H
-	tgGloYUgdYhCukQmarHCcfzaiwtG8S0iHvZ/+LedS5cQAJpa0pkRXKgZmp9pyP0QdHsKEJ
-	Rh94gFlD5zN+YBSaLzJ2ECluPxN02Dj+0nQMGA5+ukzIO9NVL5QcG/CggKKkUw==
-Message-ID: <659f18e3-ed71-49ac-a019-956a7fbdc215@arinc9.com>
-Date: Sat, 16 Mar 2024 12:21:36 +0300
+	bh=b8QIHCmNx7i/YQHcmrZytkPV0r8PHOyaKNLruF6ZVFk=;
+	b=SEqZ88Ecred72uF5zEPxsjxIjDZ9nsdBQm1nsbxu4WQ1NuoBxJ+QWuS5leLg2V7QK5YTok
+	SmEYKza0fRtj+c7YEEdVfZvZ5/58zg/ZIRvUtI6eqvnmB+6aApk9zGldWNfw1POn5cMWfe
+	PYLeDQpu32VOgKuMzVo42XVa4qJhHNmEZQYBVoEE/6dghyvPIOvbnX7cQZIAGZIQEetPy9
+	cPAr+TNWpMA37z6HZyaqWyMl8X2CvvIHq1qEE8SzrjBO6EEuQPo3ltREFpEfoc2oKSx6T0
+	xBL/PMaEs2oYBINPU3SvGf64cScui2Xg1USo3R7XlIJsM13pzgcJoRNeVgut+Q==
+Message-ID: <4e8bcb9b-8df1-40f6-a0ad-6ef4ff4339a5@arinc9.com>
+Date: Sat, 16 Mar 2024 12:21:50 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/14] mips: dts: ralink: mt7621: reorder gpio node
+Subject: Re: [PATCH 06/14] mips: dts: ralink: mt7621: reorder i2c node
  attributes
 Content-Language: en-US
 To: Justin Swartz <justin.swartz@risingedge.co.za>,
@@ -59,17 +59,17 @@ Cc: linux-mips@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20240316045442.31469-1-justin.swartz@risingedge.co.za>
- <20240316045442.31469-6-justin.swartz@risingedge.co.za>
+ <20240316045442.31469-7-justin.swartz@risingedge.co.za>
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20240316045442.31469-6-justin.swartz@risingedge.co.za>
+In-Reply-To: <20240316045442.31469-7-justin.swartz@risingedge.co.za>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-GND-Spam-Score: 400
 X-GND-Status: SPAM
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240316_022155_824392_BFA20D91 
-X-CRM114-Status: UNSURE (   4.69  )
+X-CRM114-CacheID: sfid-20240316_022210_190910_02EBD37A 
+X-CRM114-Status: UNSURE (   5.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,8 +86,8 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 16.03.2024 07:54, Justin Swartz wrote:
-> Shuffle the attributes of the gpio node to appease the DTS
-> style guide.
+> Rearrange the order of the i2c node's attributes so that they
+> are inline with the DTS style guide.
 > 
 > Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
 
