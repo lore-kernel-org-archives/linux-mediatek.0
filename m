@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0C65C54E6A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Mar 2024 04:55:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BE35C54E60
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Mar 2024 04:55:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dDv0pbR5CPqChqplXNbirpSOvOZDBkPUmjOZEtlNwDA=; b=Tk++rQpFbI++9KjqBCz3R2OwXW
-	5zuYSYlpUSjWAuDXcTBPUvPakIyyrRC/XFQXSItJM/MXMEwTiNAyrloUQL0ndZ/OxrH/UfIxaHUG5
-	MRWWul8Vm+Af/7DhDYuhvA189imI4b0AI4hneiNhNXrM92JBWC+yXnfBAn1+fqeoPgJSpSFiFVT+s
-	buyu96uci0EQT813Xapnno6WwNA0852KaajVhATEVUs+9WvSclraKJMoZAtYfigYVvazQ8PSU6nOK
-	3RklwuaGTunhMyOJ8xcE8sSZCyUL7Ad78GyaHFskwj26BS/UqKhQgfj0zQIzLbNtfVhXXGzczDpG/
-	/w8ZzJKQ==;
+	bh=xbrJVxipSQ8jNIkYdHXETKUO7AhSsFV81H2yyXpjjSk=; b=BWKykYTOAeYlCbAFKv6zWY4DSb
+	PV6LcRlnWTKYMDNhAePHo/s08RSD8q82IKxgdRAHJp0cfBB1RrLV1uLjFzGBCLr4Y/8e6V5gJSLOc
+	z5jKU2c9JjRiA6jf38GP6oZe6u0FJngKT7kNULRdozxxODovIrz2951ljQagwF6nWWuxhdh4ZLgNU
+	sC1B9K2NQZRwcHcHsBHCSHcqsYXCh8nMhanmkWIIU/YXjDVeWW4FN30waiPLISPq/fftUS9OpCinx
+	UZwRNtN9/VFlKF7Uu1wiPRFGa3BQi2fiOwfBfpa5JdRx9DwWGd9Qo48khJh7aFOrIWuTrM0rryzSu
+	SgSHVh6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlM4X-00000002Lav-0tsJ;
-	Sat, 16 Mar 2024 04:55:05 +0000
-Received: from outgoing4.flk.host-h.net ([188.40.0.90])
+	id 1rlM4Y-00000002LcA-20RI;
+	Sat, 16 Mar 2024 04:55:06 +0000
+Received: from outgoing1.flk.host-h.net ([188.40.0.86])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlM4H-00000002LQw-3VWC;
-	Sat, 16 Mar 2024 04:54:51 +0000
+	id 1rlM4L-00000002LTB-42sn;
+	Sat, 16 Mar 2024 04:54:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=risingedge.co.za; s=xneelo; h=Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:reply-to:sender:bcc
-	:content-type; bh=dDv0pbR5CPqChqplXNbirpSOvOZDBkPUmjOZEtlNwDA=; b=h/qp5HXXtlH
-	uHqBGH7sQxkFwb+Q3cXsdKJhWnSaNCq0AWVanPXnGE5Serv3Gb4lktW/GVqDj+pKDPxT52dlclKtJ
-	gI5LrAzmjkSNQVEO5LkkkPqLGH2OPOxomNDGBPJPxBDDQ/O5uTDfvP7j6+PaZw5dh86Gi5LLZE7m9
-	vqmoT/Bdwi0+Dlev0Eipr8j/OB2m8YMIsT14fbljHM0unpOKSQa1IpOWGMnf759Bu93+BgNOVQWW8
-	pNAE4oUmbr76paka6XaxgxYLehw44xCKaFsrWagSkiV6I/091wrckhxFSCI/AYJTZZBPMOowIMafg
-	yhbi6T3Kz6RSFG7KLTOoxBQ==;
+	:content-type; bh=xbrJVxipSQ8jNIkYdHXETKUO7AhSsFV81H2yyXpjjSk=; b=Dw5ajhxUZvh
+	AcoVlRs7xjetDgmfviLwJkBTqRtDAxmx8HQrS6Nj+LEkbu2GUsiKC1fPDh89StK4rVf5/4zPjixrK
+	bn32YT/bImfsmzi5DKqlddKiMCy/kmL4IGEPlFvKc1N9xCEGSu9CZIQZmXuaS28gnDiZLJJh0ctzu
+	+jjVM1X6s+foLLJ/ibeUvYLgHXgJcsji+ZMsCdNVmkSNwSgE6QdHFnWc2SlSg8Z5xT1GNyHHwJoSd
+	cBAXNM3hYU4Kyo+5MB8maV/3ZAkk9ELQtAhazLrUZ5Eo0OypY7aSYqpXp8TqXmNc4q5oxb+03pki4
+	Tcy98hYx2jl0G8H+JTn99og==;
 Received: from www31.flk1.host-h.net ([188.40.1.173])
-	by antispam1-flk1.host-h.net with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+	by antispam3-flk1.host-h.net with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1rlM4F-00Bxxs-QY; Sat, 16 Mar 2024 06:54:48 +0200
+	id 1rlM4J-006jYl-Te; Sat, 16 Mar 2024 06:54:52 +0200
 Received: from [41.144.0.193] (helo=localhost.localdomain)
 	by www31.flk1.host-h.net with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1rlM4E-00048C-Nv; Sat, 16 Mar 2024 06:54:47 +0200
+	id 1rlM4J-00048C-0h; Sat, 16 Mar 2024 06:54:51 +0200
 From: Justin Swartz <justin.swartz@risingedge.co.za>
 To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
 	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
@@ -60,9 +60,9 @@ Cc: linux-mips@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Justin Swartz <justin.swartz@risingedge.co.za>
-Subject: [PATCH 04/14] mips: dts: ralink: mt7621: reorder sysc node attributes
-Date: Sat, 16 Mar 2024 06:54:32 +0200
-Message-Id: <20240316045442.31469-5-justin.swartz@risingedge.co.za>
+Subject: [PATCH 05/14] mips: dts: ralink: mt7621: reorder gpio node attributes
+Date: Sat, 16 Mar 2024 06:54:33 +0200
+Message-Id: <20240316045442.31469-6-justin.swartz@risingedge.co.za>
 In-Reply-To: <20240316045442.31469-1-justin.swartz@risingedge.co.za>
 References: <20240316045442.31469-1-justin.swartz@risingedge.co.za>
 MIME-Version: 1.0
@@ -74,9 +74,9 @@ X-SpamExperts-Domain: risingedge.co.za
 X-SpamExperts-Username: 
 Authentication-Results: host-h.net; auth=pass (login) smtp.auth=@risingedge.co.za
 X-SpamExperts-Outgoing-Class: ham
-X-SpamExperts-Outgoing-Evidence: SB/global_tokens (0.00601258593501)
+X-SpamExperts-Outgoing-Evidence: Combined (0.02)
 X-Recommended-Action: accept
-X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT+7GmcY6SH6rLHD+aDNrVlXPUtbdvnXkggZ
+X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT8o38WyELzEmii4SfUihYVYPUtbdvnXkggZ
  3YnVId/Y5jcf0yeVQAvfjHznO7+bT5wCPRB8bAzJcv2cv+UqiTTc2+CpNcmBnO4XM3Sck4bwNogU
  WCl1nkLBzZX0KuJ9bXiS85Z42w/+2OBolTNFbPomXFWCX8oNdggW7HE9XDTdSejrkEpbuUvwMvHx
  3T+KSG//gbuP7hnUK8NQdLwsVWKIFDZRrTGv3rxiw9tFrqFSCFNiLZt/QXQnOBRD+jq1HsKsDh/6
@@ -84,24 +84,24 @@ X-Filter-ID: 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
- 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
+ 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
- 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
+ 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
- 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
+ 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
+ qo05MS+4ayUpOtEhdxekWDmK9g==
 X-Report-Abuse-To: spam@antispamquarantine.host-h.net
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240315_215449_949205_D675DFFB 
-X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-CacheID: sfid-20240315_215454_035045_6E8839EA 
+X-CRM114-Status: UNSURE (   9.04  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -117,36 +117,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reorder the attributes of the sysc node so that the
-ralink prefixed attribute is placed after those which lack
-prefixes.
+Shuffle the attributes of the gpio node to appease the DTS
+style guide.
 
 Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
 ---
- arch/mips/boot/dts/ralink/mt7621.dtsi | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ arch/mips/boot/dts/ralink/mt7621.dtsi | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
-index 696460b2d..d1d4399d7 100644
+index d1d4399d7..99d47f286 100644
 --- a/arch/mips/boot/dts/ralink/mt7621.dtsi
 +++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
-@@ -68,12 +68,15 @@ palmbus: palmbus@1e000000 {
- 		sysc: syscon@0 {
- 			compatible = "mediatek,mt7621-sysc", "syscon";
- 			reg = <0x0 0x100>;
-+
- 			#clock-cells = <1>;
- 			#reset-cells = <1>;
--			ralink,memctl = <&memc>;
-+
- 			clock-output-names = "xtal", "cpu", "bus",
- 					     "50m", "125m", "150m",
- 					     "250m", "270m";
-+
-+			ralink,memctl = <&memc>;
+@@ -86,13 +86,16 @@ wdt: watchdog@100 {
  		};
  
- 		wdt: watchdog@100 {
+ 		gpio: gpio@600 {
++			compatible = "mediatek,mt7621-gpio";
++			reg = <0x600 0x100>;
++
+ 			#gpio-cells = <2>;
+ 			#interrupt-cells = <2>;
+-			compatible = "mediatek,mt7621-gpio";
++
+ 			gpio-controller;
+ 			gpio-ranges = <&pinctrl 0 0 95>;
++
+ 			interrupt-controller;
+-			reg = <0x600 0x100>;
+ 			interrupt-parent = <&gic>;
+ 			interrupts = <GIC_SHARED 12 IRQ_TYPE_LEVEL_HIGH>;
+ 		};
 -- 
 
 
