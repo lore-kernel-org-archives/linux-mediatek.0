@@ -4,105 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C239C54E5D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Mar 2024 05:01:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04E14C54E5D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Mar 2024 07:44:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MP0XS+dA0xvGvIC5x58bRme5TfURpo9bao9tcHOXySU=; b=nhDoVQDiu4ouHePrpiV76cxg1h
-	5kYQ4CvZY5H0HRNHZoh9ls3Uk72GBgG93dgaT2VnNaFhwcg+3X1rGRTlmrnm4Qx+mRrb1aSBniphm
-	9ACkuEFgTUXK5kqrYSo2LfKvTOqouOL99QXmx5FDDMdFU7eEpqrp25Cd3LRDhs1HN5CQtKk1vp2vf
-	nSShAxdKgu/HfgNRMTcpme8JSGJY+MQL8pB/5cUpcwkQuxv63EZVfNJEvPl5zkPrfFKTEW4u9ZB0n
-	FC0/1D7YTz7qnh/aiGH62yE548IAQtTed+rovfhq1FoH7P5C2DEzwrbXMnIjHZPgaQ5qpolOecglq
-	7ljw4TSw==;
+	bh=TaudTAjS9OrEf75WKlKVQeii/UQ8YYZCZtk03/a+WxE=; b=EnEly0g81me6mMWXkVyy2VWypI
+	kQDJKPhwZj/yrXrLLrLSG7/iV6m6ohT3OZET6Ol7WHhiLU9Be2tgsURDXJWcUz5LK2Y5F6hwHlMJ1
+	8QQKF/Lscj2UEAlcoSHUbri01SiWbG3tWjpjVCXyPQta8QmKg+4s3HOXpEC1HnkyCIqEeojdbvVfT
+	cnlfUzMTzBSVF+VQfznSQLPuQ0TdjDjSx5u2e/3UKduGn2Atjv0d3tcJvMpvsP0ob9jnmFLkOU0YC
+	gZQ4vmiU4Q+8ZwjmUbQvPUhQNFJtFMu02mrS4mbbwr2hFmbBfQH30M0sXjgFN/tSBUpnngRE7RfpJ
+	ePf5xhUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlMAu-00000002NA8-1fHK;
-	Sat, 16 Mar 2024 05:01:40 +0000
-Received: from outgoing4.flk.host-h.net ([188.40.0.90])
+	id 1rlOi8-00000002dwJ-2Ve9;
+	Sat, 16 Mar 2024 07:44:08 +0000
+Received: from relay8-d.mail.gandi.net ([2001:4b98:dc4:8::228])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlMAd-00000002MyS-2AoB;
-	Sat, 16 Mar 2024 05:01:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=risingedge.co.za; s=xneelo; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:reply-to:sender:bcc
-	:content-type; bh=MP0XS+dA0xvGvIC5x58bRme5TfURpo9bao9tcHOXySU=; b=a1csHOb5luJ
-	DkVH6xBksiq0QFdGWSAQfvtYI59uF88QDKqRNkr8UJXjCz8yyUzPm/MMEDzPQ7vlgsPqOgxuSQywp
-	0Eq23vyZmEg1yk5Tvh7cgbMQjw58Bzb7AiFIfN5omn36xQ5maCm/MKyEWlHHtbqPKlyYIk47jmrOA
-	QO5TmTNQEowqsYd3LY25tEbg1sUPuPmYX/ciwQuEjUHaxcKyAvkxQCRICSgVUDmKT+VsiNfL1J/Wp
-	UpNhT2oQ0bSM6VAKjcbIyhrCeoSwKRneJm9ajNvqjh/5z2bb6d2MQVwHlsmNQm6nkiO1PVbjr31Pz
-	0x2L5YYYPEZQ/Us7TGrrXsg==;
-Received: from www31.flk1.host-h.net ([188.40.1.173])
-	by antispam1-flk1.host-h.net with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1rlMAX-00C0VL-T0; Sat, 16 Mar 2024 07:01:18 +0200
-Received: from [41.144.0.193] (helo=localhost.localdomain)
-	by www31.flk1.host-h.net with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1rlM4e-00048C-CJ; Sat, 16 Mar 2024 06:55:12 +0200
-From: Justin Swartz <justin.swartz@risingedge.co.za>
-To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mips@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Justin Swartz <justin.swartz@risingedge.co.za>
-Subject: [PATCH 10/14] mips: dts: ralink: mt7621: reorder gic node attributes
-Date: Sat, 16 Mar 2024 06:54:38 +0200
-Message-Id: <20240316045442.31469-11-justin.swartz@risingedge.co.za>
-In-Reply-To: <20240316045442.31469-1-justin.swartz@risingedge.co.za>
-References: <20240316045442.31469-1-justin.swartz@risingedge.co.za>
+	id 1rlOi3-00000002dvV-2U3i;
+	Sat, 16 Mar 2024 07:44:05 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id C10871BF205;
+	Sat, 16 Mar 2024 07:43:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1710575039;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=TaudTAjS9OrEf75WKlKVQeii/UQ8YYZCZtk03/a+WxE=;
+	b=dltSEBizU1EpLVCl+E4/7gIDVn4aC38LqlKKoOfbKy4KSCUbSZvOiLfWaS6Upo8L8LPUv5
+	A+n49OslfLhrEaS8wYrWEpPq88iV5rfvEVFFmB7XgXghHlJYlxfk3MpoXjCbieBiJGqOwM
+	Sb6zS/xAcjc2hETJmsU4ulGGCBhaLMCdl47QUJtAmtD5Ee/uWS9fpxfmPZZHzb20YVLgY1
+	VYR1Lrh+kXPWvDKL9R0evcy9z2eMdCRnXqBnx8aMx4uiLgcFwDNPdyNvuAcYq/NA39dwnA
+	7sBoFpoLaSiGwSRhrtZvqTJNeWPb8lZeFhQsIa2reWZPocEDimQnAte2EzFJvA==
+Message-ID: <62d128f1-11ac-4669-90ff-e9cdd0ec5bd9@arinc9.com>
+Date: Sat, 16 Mar 2024 10:43:40 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] arm64: dts: mediatek: mt7622: set PHY address of
+ MT7531 switch to 0x1f
+To: Florian Fainelli <f.fainelli@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240314-for-mediatek-mt7531-phy-address-v1-0-52f58db01acd@arinc9.com>
+ <20240314-for-mediatek-mt7531-phy-address-v1-1-52f58db01acd@arinc9.com>
+ <94e3d09a-e6a4-4808-bc29-3f494b65e170@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <94e3d09a-e6a4-4808-bc29-3f494b65e170@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Authenticated-Sender: justin.swartz@risingedge.co.za
-X-Virus-Scanned: Clear
-X-Originating-IP: 188.40.1.173
-X-SpamExperts-Domain: risingedge.co.za
-X-SpamExperts-Username: 
-Authentication-Results: host-h.net; auth=pass (login) smtp.auth=@risingedge.co.za
-X-SpamExperts-Outgoing-Class: ham
-X-SpamExperts-Outgoing-Evidence: Combined (0.02)
-X-Recommended-Action: accept
-X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT/CVwgFDUDLUu7p4iGGgDhQPUtbdvnXkggZ
- 3YnVId/Y5jcf0yeVQAvfjHznO7+bT5wPY5yY5vX9MqMW2dd4bQescfggEolMHSR1Me+1tLQd/4/M
- 684FXPwRt/ItN/QGHZWwYVP/cCt8Z7AC3QZraAAXGOt0uV2bCpZmMTDaVY6o43+4/UA7yKh3fsRx
- FRwz3BBjyk7zbazyOxi/UqYNqAkRRGBP0VCgd4sTxz5Nt/DkcKfPy9Occ20k9TJ7Nj73O0V9NPjB
- nDE1daoPH54M/DHR5hr5ConJQfcb9SHvDRICkaHkmqj+K0XGa5SFpMYJI0DpfOOu7mUz0fsyGD6a
- bRQ+0H7Q2OEpckvWJAOmdJd77Z9vwc+QHB+X+u7aTqYHtT1NFG5qXEfeIX239vWfI6H8t9z6MXWg
- ZYbrkExtRMjfc/Em1xUk+uitP3ztfVUM86oAc60fMGKzOErxxj0B+NXHNlDo60GNfZ2F/yvXF5fp
- 0YCObyJslD58xugMMZCpQQvGifDpq5EYH46qR+vFm9wC7ren9RtRNyYim5e3GD8LGX4whxLggZ+w
- 3rysbgAyUKjvL2J0djuO4juAaA0bvabgXwvUJUc3Xwu/zqbuNWtRwvwyuuQNpWz3igJmnZgvgKqo
- naNQbqJUPRwZtKOTN8gOLtBcNrQxKZYuPe8bdCyw79zlPbqLQkZr26Lcxdvj8cqI+CogZdOhX7v3
- ClXzrmMENhJLl6MBfhzHVBR0wHQZxzIUka7Uq615Mik1qzcz308HFwsY4DWIzjhTYXUG8GBZhle6
- F/kpBdN+oWjoATjEFDwcaiz0R34rhTN+GTbl4uS+pZovX9cex7Ac4fawcerGI7TrGXpM/B/M0BZd
- PfIU1BX7pZc1sE3vsz58auH/srM2fgZ9JmgLbj7sqoEiwv7LCxIiAE5ODMnmwjvj2589zjbyZCiM
- WpBpW8YvoIIqmZcWhL/r/eFjMjJnMHeiAPOVAT1rE1/vP68Bb4z3v3h3gCdXrv2+9GnNX30LKqXb
- fwFKgm/rnYBl+Mj5KqOl6Jzub/f3QhLRbOgisvi5VU9eNBtgo6zjiatjNO/pnMCjuIvXs/AyV/Ns
- URB/R+FlEHyAzksgfaRvdgw0WK34QWnzHHMcN6qoXPjenLhIOF1oeRYbjF1Hp647mOWoQlc3hL3c
- ZMexQ8VxpTDmnfa+pzT1vSu8jRqctEsp1sZ3ATJdD2B4u/m4iBmYb1/LCV4/EuVHup06w3Vwxf9C
- F7D6LKKRTfdjzQ6YC7Heg3Xf7O1TOd6RcY/MXB8eEq3bCN2QohZvyS03iBmgsz450Kmjd3fGVxaD
- 2Yl9HSWPQwd9DEJgoxCce1UpcUIor2FgekvIIfFoIbtf63VNbf0lrvssY+k7AHGi1NevGWTo2+h8
- Lhk4HCeZR7ymlGVRtthBJ2y8A5arx6JItKpFaUNPGMMlvbMX0nyK1NiAJ0y2Qvvn6ds6mor35w4f
- SfHzQbABJfgy21HclcZkPRq7NhoxyMwqi8Q23Rgadfh5T5n5D4OHHpbEIgsllZKWnzc5M5WlNtVJ
- qo05MS+4ayUpOtEhdxekWDmK9g==
-X-Report-Abuse-To: spam@antispamquarantine.host-h.net
+X-GND-Spam-Score: 400
+X-GND-Status: SPAM
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240315_220123_735609_CA9E4DF2 
-X-CRM114-Status: UNSURE (   9.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240316_004404_064121_8CC484FC 
+X-CRM114-Status: GOOD (  14.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,37 +82,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reorder the attributes of the Global Interrupt Controller
-node to fit DTS style guidelines.
+On 15.03.2024 20:26, Florian Fainelli wrote:
+> On 3/14/24 05:20, Arınç ÜNAL via B4 Relay wrote:
+>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>
+>> The MT7531 switch listens on PHY address 0x1f on an MDIO bus. I've got two
+>> findings that support this. There's no bootstrapping option to change the
+>> PHY address of the switch. The Linux driver hardcodes 0x1f as the PHY
+>> address of the switch. So the reg property on the device tree is currently
+>> ignored by the Linux driver.
+>>
+>> Therefore, describe the correct PHY address on boards that have this
+>> switch.
+> 
+> Can we call it a pseudo PHY to use a similar terminology as what is done through drivers/net/dsa/{bcm_sf2,b53}*?
+> 
+> This is not a real PHY as in it has no actual transceiver/digital signal processing logic, this is a piece of logic that snoops for MDIO transactions at that specific address and lets you access the switch's internal register as if it was a MDIO device.
 
-Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
----
- arch/mips/boot/dts/ralink/mt7621.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+I can get behind calling the switch a psuedo-PHY in the context of MDIO.
+However, as described on "22.2.4.5.5 PHYAD (PHY Address)" of "22.2.4.5
+Management frame structure" of the active standard IEEE Std 802.3™‐2022,
+the field is called "PHY Address". The patch log doesn't give an identifier
+as to what a switch is in the context of MDIO. Only that it listens on a
+certain PHY address which the term complies with IEEE Std 802.3™‐2022.
 
-diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
-index 1fbe345bd..8aa9eba68 100644
---- a/arch/mips/boot/dts/ralink/mt7621.dtsi
-+++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
-@@ -338,15 +338,15 @@ gic: interrupt-controller@1fbc0000 {
- 		compatible = "mti,gic";
- 		reg = <0x1fbc0000 0x2000>;
- 
--		interrupt-controller;
- 		#interrupt-cells = <3>;
-+		interrupt-controller;
- 
- 		mti,reserved-cpu-vectors = <7>;
- 
- 		timer {
- 			compatible = "mti,gic-timer";
--			interrupts = <GIC_LOCAL 1 IRQ_TYPE_NONE>;
- 			clocks = <&sysc MT7621_CLK_CPU>;
-+			interrupts = <GIC_LOCAL 1 IRQ_TYPE_NONE>;
- 		};
- 	};
- 
--- 
+So I don't see an improvement to be made on the patch log. Feel free to
+elaborate further.
 
-
+Arınç
 
