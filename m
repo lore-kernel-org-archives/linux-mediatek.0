@@ -4,72 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C5CEC54E5D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Mar 2024 15:16:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6772EC54E60
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Mar 2024 15:50:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=14PPGHlwquM9FtQB61Tgvee0kwAHbcVyLM/4EWK6FbM=; b=o9g+yYYTqocbjDkwEFjbCeNcE3
-	ImQ6J0Xx0ZifTYYINp9ya1OpqKTgWz9WFTWJ5s8PlFwZCfZG751SO4zXvIb3OEnjUr1npx7jnvVdn
-	86DJZk5pk1QGrU28E1+hd5Y2A4A/OmVqsQVynRm08GRcXmvMfAOejcAFJ52irEMCsOpldfpZrY+jB
-	6nTiJxoL0qnCZCWoQS/uG1eJIGcYxn/J4zJuBwjgMqVFxqZUlj27e9K4h3WqBjxAsOYnMi/ZCuix5
-	nlS+M2RlX7zv9CWvpjZNao6qjBfVSkA6Cg5ItdvbwbrXt+p96+QKjx1fQaWnhHL34aATQogoCGQ6m
-	rYvw4/+Q==;
+	bh=Cck3p2bHkYZmQVnYplpxpScYPbxksZ8gwr6LYvSKs4g=; b=W0u6Rk0kIWiIm7A2MqkZfybSky
+	hN0iTySZDvrQd38OhpInGznTz3fAhLMZzIsSvVHn7/68wajWrepiHSju1vN8s+ER1TMEqckSXgZ6+
+	X6hf0+u8it+a3flUelXTEg024bHeBpFLbGAr2Ct8S/0InuJ3+Hb+steWrBsGNK6Ne+Zt1NRbZ7q5z
+	KI7u6mAsyIq9BklHEvol5mh9KD6BxvysGB2i8MFcblMZ6U8FTmzV4XoO9ijmNFI1gRVkTttpE+Pqf
+	OP6RUJQebGa/pgRzSmGJ9+C27VT2HMfBNKAUzln0884IUX3gzyIz/AyJIaTyl12MXgs6gZkyGLHvt
+	XzzsEIhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlVlw-00000003LSr-41Ox;
-	Sat, 16 Mar 2024 15:16:32 +0000
-Received: from relay7-d.mail.gandi.net ([2001:4b98:dc4:8::227])
+	id 1rlWIS-00000003O4d-2fA0;
+	Sat, 16 Mar 2024 15:50:08 +0000
+Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlVlq-00000003LRr-48Bt;
-	Sat, 16 Mar 2024 15:16:29 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id ED03A20002;
-	Sat, 16 Mar 2024 15:16:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1710602182;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=14PPGHlwquM9FtQB61Tgvee0kwAHbcVyLM/4EWK6FbM=;
-	b=Na64/poCupl4AkKi4SN9Jsi/boYqEvF9+dFwGvZocOEI360mcfckS1l/uCZuKD95CP9QHM
-	PoGaMdImfpnFIZt0rVHwUNAnhveeIOO1hFjvnMhI1hLYa6jzLvwnXl5JduiZUBfUeInfTo
-	GF/Z5K47NAwqmcT/PEgr6QmEBUOsJ2506Oa4xHfpRHe2WuLDaX20pne/ebq4vgNoErrPeC
-	PzUDUzsTdZul+BLmRmoiCLfPyTyUaXXXoriOL1IhuqRP8hgJYZS84ZK9iN2nsaRIIvAoX3
-	PMjf8qH4rYWuEYy0qPPwRWkPuuCnaheFD3ZaP+da2AFlLMOvduFyDJCOFrsAXA==
-Message-ID: <3fe558d9-e231-4015-ab7e-85eac06aa971@arinc9.com>
-Date: Sat, 16 Mar 2024 18:16:03 +0300
+	id 1rlWIO-00000003O3a-3xkK;
+	Sat, 16 Mar 2024 15:50:06 +0000
+Received: by mail-oa1-x30.google.com with SMTP id 586e51a60fabf-2222b96e4d2so1835122fac.3;
+        Sat, 16 Mar 2024 08:49:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1710604199; x=1711208999; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Cck3p2bHkYZmQVnYplpxpScYPbxksZ8gwr6LYvSKs4g=;
+        b=Dg+sYtYelchjvfYggLtNrqkm582tq7RVrv3RMKWezyjJMP1jz26qXx3xbT7vAO6xAr
+         U1iHDOt0qN8zBWfT+AlSI/ncU3FgB86YWJbeiz7iJyhYhZHQp9G4UO8vrGGhvw7+QYYn
+         AqE6dTfQSbGvJnxzanQmCEtroH7cis9w7tXLRev4abWR994jskzvwR1Vug4G6PRgoVoo
+         AS+QxyqTnOVx08WTRhqrYTYmJdC+jdRE3p93sRsyhVI4DL4nobvBmfBVzbeLo7Z59oAk
+         twH7xfwnH6eIja1vavky7Ol48I711Mi/f7s3zKupFGbYFdlEOqZPD/ZdZrqykylD6xNf
+         jeng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710604199; x=1711208999;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Cck3p2bHkYZmQVnYplpxpScYPbxksZ8gwr6LYvSKs4g=;
+        b=gZXuJJS7pdkQS0FwQY/R5+l6z+5fSfpxdPeHqPY3mAnbPYy8kypbN8IN0iLpI7ANwh
+         QF44yAbE/G2xM61rXc85dZpe0ZtMOt5VdwBHLIl9GEwh/l2ygiTJY7mAfbaDkk3wJE4i
+         23mbcZMPd8YSWQqVQzC2rM9MhDrQBCtkZVEXBrujQxSJWASei6mJW7T/G9caodqs9AmV
+         LALPheyE4n6Y+mFY5Y8nYcDO8HxPvZXS08dI6nuDewUD2Jw22czYwEztu6PoUm3GhcTT
+         ZwepIAalTLP/xBrs5kAmwGHYhBsZjqjFz2+eNB4CjIXjUyIO7QvDXopjqdDTF5DmtFxF
+         wnCA==
+X-Forwarded-Encrypted: i=1; AJvYcCV+Vd21BBsezzJ3om7MqocOvoXwSRYrOHLlB48tql/VEtmiyPH8rGjz/7zaPcTrOu6Z6A8KYpZUauNTq5grP3KHEI8Mqj7TMjwuvBQ2j52pg877cepENlo2fZLYuJl5LBbsCbkCWICJpsdno3KJnT8/vQs+ZzNyNJk=
+X-Gm-Message-State: AOJu0YyExmF4AGIjo//HeP9ekZRA4KfD3TWKGG7RZfS9rYIybRfGKkw/
+	DRRQsZR+meYBwRuDSbM2ypfqY9EEEfWT7z1NgVVh1VkRTQlw+DgfUmunXMkb0a52asxsWJpqX+t
+	jyl71t0Q/9PCrLy72HLqnPOgwH4o=
+X-Google-Smtp-Source: AGHT+IGpuhlnnJG0YoQhTHmJ9vL6fGs8Zhjj2Yr1tRmgqae2WvFGnduJnmBncXhg+nKSqKXwsiveXkjy4WkuRSKmNuo=
+X-Received: by 2002:a05:6870:e0c6:b0:220:8b6c:80a5 with SMTP id
+ a6-20020a056870e0c600b002208b6c80a5mr9500717oab.24.1710604199037; Sat, 16 Mar
+ 2024 08:49:59 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+References: <20240316045442.31469-1-justin.swartz@risingedge.co.za>
+In-Reply-To: <20240316045442.31469-1-justin.swartz@risingedge.co.za>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Sat, 16 Mar 2024 16:49:48 +0100
+Message-ID: <CAMhs-H9ZO-sitsrASuvsEd+ddwVyHH35gj7yAABTqFNfOCGYYw@mail.gmail.com>
 Subject: Re: [PATCH 00/14] mips: dts: ralink: mt7621: improve DTS style
 To: Justin Swartz <justin.swartz@risingedge.co.za>
-Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mips@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20240316045442.31469-1-justin.swartz@risingedge.co.za>
- <31b3d00f-6cf4-4bf8-ad78-a8354d57c518@arinc9.com>
- <c7eb79ee77542db3a539d8bb7719dba9@risingedge.co.za>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <c7eb79ee77542db3a539d8bb7719dba9@risingedge.co.za>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Spam-Score: 400
-X-GND-Status: SPAM
-X-GND-Sasl: arinc.unal@arinc9.com
+Cc: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mips@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240316_081627_351786_B5438A74 
-X-CRM114-Status: GOOD (  17.45  )
+X-CRM114-CacheID: sfid-20240316_085005_043355_D6B79513 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,73 +94,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16.03.2024 17:03, Justin Swartz wrote:
-> On 2024-03-16 11:24, Arınç ÜNAL wrote:
->> On 16.03.2024 07:54, Justin Swartz wrote:
->>> This set of patches was created with the intention of cleaning up
->>> arch/mips/boot/dts/ralink/mt7621.dtsi so that it is aligned with
->>> the Devicetree Sources (DTS) Coding Style [1] [2] guide.
->>>
->>> [1] Documentation/devicetree/bindings/dts-coding-style.rst
->>>
->>> [2] https://docs.kernel.org/devicetree/bindings/dts-coding-style.html
->>>
->>> Justin Swartz (14):
->>>    mips: dts: ralink: mt7621: reorder cpu node attributes
->>>    mips: dts: ralink: mt7621: reorder cpuintc node attributes
->>>    mips: dts: ralink: mt7621: reorder mmc regulator attributes
->>>    mips: dts: ralink: mt7621: reorder sysc node attributes
->>>    mips: dts: ralink: mt7621: reorder gpio node attributes
->>>    mips: dts: ralink: mt7621: reorder i2c node attributes
->>>    mips: dts: ralink: mt7621: reorder spi0 node attributes
->>>    mips: dts: ralink: mt7621: move pinctrl and sort its children
->>>    mips: dts: ralink: mt7621: reorder mmc node attributes
->>>    mips: dts: ralink: mt7621: reorder gic node attributes
->>>    mips: dts: ralink: mt7621: reorder ethernet node attributes and kids
->>>    mips: dts: ralink: mt7621: reorder pcie node attributes and children
->>>    mips: dts: ralink: mt7621: reorder pci?_phy attributes
->>>    mips: dts: ralink: mt7621: reorder the attributes of the root node
->>>
->>>   arch/mips/boot/dts/ralink/mt7621.dtsi | 430 ++++++++++++++------------
->>>   1 file changed, 239 insertions(+), 191 deletions(-)
->>
->> A well done patch series. Thank you very much for doing this!
->>
->> Arınç
-> 
-> ++ for reviewing them all.
-> 
-> As you have at least one board that features an MT7621 SoC,
-> please may you (and anyone else willing) take a look at a
-> patch [1] that I've submitted for spi-mt7621.c which allows
-> GPIO chip select lines to be used as well as the native chip
-> selects.
-> 
-> There's already been some back and forth with Mark Brown about
-> the initial version of the patch (the linked patch is v2) and,
-> of course I messed up how I send v2, as you'll read in the thread.
-> 
-> It seems you weren't included because I rely on [2] to determine
-> which people to address as maintainers when sending patches.
+On Sat, Mar 16, 2024 at 5:54=E2=80=AFAM Justin Swartz
+<justin.swartz@risingedge.co.za> wrote:
+>
+> This set of patches was created with the intention of cleaning up
+> arch/mips/boot/dts/ralink/mt7621.dtsi so that it is aligned with
+> the Devicetree Sources (DTS) Coding Style [1] [2] guide.
+>
+> [1] Documentation/devicetree/bindings/dts-coding-style.rst
+>
+> [2] https://docs.kernel.org/devicetree/bindings/dts-coding-style.html
+>
+> Justin Swartz (14):
+>   mips: dts: ralink: mt7621: reorder cpu node attributes
+>   mips: dts: ralink: mt7621: reorder cpuintc node attributes
+>   mips: dts: ralink: mt7621: reorder mmc regulator attributes
+>   mips: dts: ralink: mt7621: reorder sysc node attributes
+>   mips: dts: ralink: mt7621: reorder gpio node attributes
+>   mips: dts: ralink: mt7621: reorder i2c node attributes
+>   mips: dts: ralink: mt7621: reorder spi0 node attributes
+>   mips: dts: ralink: mt7621: move pinctrl and sort its children
+>   mips: dts: ralink: mt7621: reorder mmc node attributes
+>   mips: dts: ralink: mt7621: reorder gic node attributes
+>   mips: dts: ralink: mt7621: reorder ethernet node attributes and kids
+>   mips: dts: ralink: mt7621: reorder pcie node attributes and children
+>   mips: dts: ralink: mt7621: reorder pci?_phy attributes
+>   mips: dts: ralink: mt7621: reorder the attributes of the root node
+>
+>  arch/mips/boot/dts/ralink/mt7621.dtsi | 430 ++++++++++++++------------
+>  1 file changed, 239 insertions(+), 191 deletions(-)
 
-I'd prefer not to be involved. It's not my area of expertise.
+For the whole series:
+     Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 
-> 
-> Is there a better approach for populating git send's --to argument?
+Thanks for doing this.
 
-This is how I used to submit patches before I started using b4 [1].
-
-git format-patch HEAD~X --subject-prefix "PATCH (RFC) (tree) (vX)" --cover-letter
-
-./scripts/get_maintainer.pl --norolestats --nol --nor 00* > to.txt
-./scripts/get_maintainer.pl --norolestats --nom 00* > cc.txt
-
-git send-email --no-chain-reply-to \
---to-cmd="cat to.txt && cat > /dev/null" \
---cc-cmd="cat cc.txt && cat > /dev/null" \
-00*
-
-[1] https://b4.docs.kernel.org/en/latest/index.html
-
-Arınç
+Best regards,
+    Sergio Paracuellos
 
