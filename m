@@ -4,87 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2853C54E60
-	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Mar 2024 15:09:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68769C54E67
+	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Mar 2024 15:10:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=70T5dOB6D1FPwo/2pj5WVXeg4WHQdiUVsaR5CwbCdvc=; b=PucjIb9lFftyQWf9UZqJUKmm3L
-	Kp1DAHnnoPqWNwE5cHIp5AXSrkAnO8J6aEJ79JzeHBYq3x1gmcdteTITWZFSHf5Wcp4aX5ACOaLnt
-	vuDeWkssSRnMVH06Fn+sSN/zwZwXIWr4/nXvScqC+sE6eM3tTwjVHVmIZ5mTxmw4OnjGBw3HhYZ9d
-	FQpOyvRJTe5gvZskc7qLVmO6NKhx86Q6WSyTznBGFOUe5y4CDUVuYuD5uLaunzFnOkeSWf89h3cfc
-	WPSDyOhdTqGfRxV4VVnesVTdmuG7D+jS/IUIbYCGrNHg1o7t8ZIMVaXAADxDUqfylbees3e92sbMv
-	Mv1HRThA==;
+	bh=52LFxewU+lJnUU/UkYouuSQjkj5zFMWyV+Agj/X5Res=; b=ILFzhTCtBfenVYNuu7tyfITh2i
+	tDAAMzPbmaL6VOxp9P7GNJGuTizOlgaxxR4JPlroSDI4lc8WJ2E4pkjgZgWsO6qL/+E8zUnsyPopI
+	Thtc+i1yjhxVEgjLAZUwY4HbTaXMxIqwM0EIxv6RrkZZM9fs0tR3J4W78jDnVJIRSN6WSjOeUnkyB
+	tCfFjUheFAVOOa6abIXgcYgyq51Ow8y/C4EGaKazI09g1Zci6LA1+gunGbxuxGGDQl3UhPrRDuaqn
+	4r8KWJZZwXSvTNYrivCZZK7gywj2XMUpuRqz7219GG8TKbGTb4VrODxz4ykaWAisG2kBD6O/7dDjI
+	7l6hpPCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rls8T-00000005WUZ-0DxM;
-	Sun, 17 Mar 2024 15:09:17 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1rls9S-00000005Wj9-2jt1;
+	Sun, 17 Mar 2024 15:10:18 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rls8P-00000005WSP-3THO
+	id 1rls9O-00000005Wg8-3s6K
 	for linux-mediatek@lists.infradead.org;
-	Sun, 17 Mar 2024 15:09:15 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-a46a7b8e07fso134868766b.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 17 Mar 2024 08:09:11 -0700 (PDT)
+	Sun, 17 Mar 2024 15:10:16 +0000
+Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-568aa282ccdso3036497a12.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 17 Mar 2024 08:10:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1710688149; x=1711292949; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=70T5dOB6D1FPwo/2pj5WVXeg4WHQdiUVsaR5CwbCdvc=;
-        b=g5QKSW0quo8Xqiu7pvZ38I8Zq5peYbSTroqqBqmklBCPig/OSEUhSPQgaf3orILvqN
-         ArwWxWMTQqXSJYwquCDOtVYXiNUZcTNncjeytKWrv6VMhLsnrvaR+nuiPjEagTsynEAB
-         IpGZxREOuyjp7XsLbJyeuNAMnGq98urQGBv0QULU274rP3CvETVbf/lXN7Covm7dqITM
-         uaZ0hUpIJ8zQvbWlXHdlP+ejpxC90WhjS34kyoJdWhEi84F+apV6nQ+hWGLGR4NwpqDf
-         gGUnXqv9IiyGpnnr8fDR20BTAaTY8LgqQC3YTrHlW1JxsZMcSNjDPHryXXujROVrZwsJ
-         ZaYg==
+        d=linaro.org; s=google; t=1710688206; x=1711293006; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=52LFxewU+lJnUU/UkYouuSQjkj5zFMWyV+Agj/X5Res=;
+        b=dQ2ELQPIBK3z+jl+BBflnrNE4Gxc6MqmtOtYsCsVz7E538BObuvNqlEkbACfkxnodo
+         WEVd7vudiHDtrB3sn4m6BI8WVoXIA2L/gwq/Wko2Q9TYdmO0D73EkXU37tFpLnO2ooww
+         AoIeM2xRuMcwRejmfv9Yn4+c9P0u60Ndz5IThDL02p3sRQC0gKodpmcpX6ppe67QFwur
+         NMHFTWduOv42RfYSo1egkZe3c8JyEAedb9/ER4HyQfBYAVYPdEgFqy9Sg0OQokRQYsbt
+         dtWFpQv0bjQJAw0xMH1r+KrO2YokKaeVGR5B26cB9gjr4nqHXcEsfRcwMjpmPIR+jXEm
+         z3DQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710688149; x=1711292949;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=70T5dOB6D1FPwo/2pj5WVXeg4WHQdiUVsaR5CwbCdvc=;
-        b=MRFkmG3i6to1HNA0B+aBxD9uzIM3L4vxotMyFTe2nrbuN6ICYpEjVCV54mPloXrrZE
-         uUceR9Q2uY7tRQDxxF3R5LBkooNVGYsyB+xPT60C3sI0+YSPgVrMYbC5pCDtYHUOTymZ
-         QL5/h8cQnT6DFQoOsBBp2UBoa6/BmVHV+Rng+irmADpnkycLy+B/wiftR+B55z5nAXpK
-         eetEQhluuMvCXsl661zhYNKYycKqyPnpiHeTlsy61qBRERw8g/SUsv5pcmt56R0c2QPj
-         E0XurU1fC1dGgULbllCwjJX9mKx45RFll9YPBL+7U0pdTNCXKW1rB666+buX2YNJJSZ9
-         GfYQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXShwLlOoTdQdTRmtG2izEahixSfo/+g7dNmuNPKcZn/x4zhSpzggy4ry9bfR48b26jxQ7fwTdncsmIp6VVx8y2r9Fm5Gj7CqzqcrKCPbp8L+qu
-X-Gm-Message-State: AOJu0YxsxRMdZGHuq1ckIyuM2MwhscrB0bw7D4oushXMFAa9T1lCo55R
-	8JlXSNzAIFqwVg+D4N+AXrrSSxCM5x8Gt1MJeOGCNW5w2SMyPlwPsPIrvKMv4hs=
-X-Google-Smtp-Source: AGHT+IGMe7vbN+rcyaflK7UwHGodpy0PhAqDnXszyTvkpEpLuv1D0VhU5uY3RmPQcSZ6d3lWBMc6sA==
-X-Received: by 2002:a17:906:613:b0:a46:37db:b57d with SMTP id s19-20020a170906061300b00a4637dbb57dmr7218423ejb.15.1710688149126;
-        Sun, 17 Mar 2024 08:09:09 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1710688206; x=1711293006;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=52LFxewU+lJnUU/UkYouuSQjkj5zFMWyV+Agj/X5Res=;
+        b=v76ROUpnjhpdj7sTumvHgyhQx6K/kN8iCObR7hBkD9AAoddWFYFvZu5SrE9uzJAAts
+         L4qi6ZPVAusLje8PR7JvIy8sq+J2jYjS+CFlWqzKmXt5RqKblGSds+XSy0ZPfw1xGFm7
+         ZkfbpeUtVVGeUBAjV1Mh5ZlP2bkv7Q2HAtZXTpE8ePWwqgnQuRmls+2f6iLvIYvTT9ca
+         DxS1NT1/onCNoS2Xh88PHYdNKzsFGmZfgDfo7c2R+uNLqUISV6rUhfzFiELuHdUG997d
+         QTVnZjZoH3hBW0Fe9b6U2lQRKWlqW0lhMKpgYO2tfUn0gu0DKT4uLRvyz+dx//eMnv6V
+         tCdg==
+X-Forwarded-Encrypted: i=1; AJvYcCWAgOn1OSth6bR5eymbAJtC7oHMPMKP+LW3lpM2OUHaRDQbBw2pN/nH5vmdzrdVHmqcRwXWGilzp9YXcLwqHfamFw9mx6+iiVfkC72FvRdptoOb
+X-Gm-Message-State: AOJu0Yz6Y09TM8MqAx7cBHJieS64Sbydl0YbYwxn9Sm4CsVJDWXQnhB0
+	PnRFEz6n3nc7K5XHxVHPoNQNZJam13mUhA9rXN8enucXF9T6d53USDb8tcou3ws=
+X-Google-Smtp-Source: AGHT+IHXTfMCScXM1mkWeoif93ohDO1yjqtnmmUV/LOWvpVMz4oAN4Nji+UifEYxoUMrCTVuc9CW9A==
+X-Received: by 2002:a17:907:868f:b0:a46:a9a7:fbec with SMTP id qa15-20020a170907868f00b00a46a9a7fbecmr2806408ejc.76.1710688206136;
+        Sun, 17 Mar 2024 08:10:06 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.222.97])
-        by smtp.gmail.com with ESMTPSA id f23-20020a170906049700b00a3efa4e033asm3853301eja.151.2024.03.17.08.09.07
+        by smtp.gmail.com with ESMTPSA id f23-20020a170906049700b00a3efa4e033asm3853301eja.151.2024.03.17.08.10.04
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 17 Mar 2024 08:09:08 -0700 (PDT)
-Message-ID: <ded06cc5-9f98-4259-b081-afdffe051f7b@linaro.org>
-Date: Sun, 17 Mar 2024 16:09:06 +0100
+        Sun, 17 Mar 2024 08:10:05 -0700 (PDT)
+Message-ID: <60512ae2-dd73-4cb6-9514-145f946300fc@linaro.org>
+Date: Sun, 17 Mar 2024 16:10:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 04/14] mips: dts: ralink: mt7621: reorder sysc node
- attributes
-To: Justin Swartz <justin.swartz@risingedge.co.za>,
- =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+Subject: Re: [PATCH 00/14] mips: dts: ralink: mt7621: improve DTS style
+Content-Language: en-US
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Justin Swartz <justin.swartz@risingedge.co.za>
+Cc: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>,
  Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mips@vger.kernel.org, devicetree@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mips@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20240316045442.31469-1-justin.swartz@risingedge.co.za>
- <20240316045442.31469-5-justin.swartz@risingedge.co.za>
-Content-Language: en-US
+ <CAMhs-H9ZO-sitsrASuvsEd+ddwVyHH35gj7yAABTqFNfOCGYYw@mail.gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -130,12 +128,13 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240316045442.31469-5-justin.swartz@risingedge.co.za>
+In-Reply-To: <CAMhs-H9ZO-sitsrASuvsEd+ddwVyHH35gj7yAABTqFNfOCGYYw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240317_080913_881142_F94319A4 
-X-CRM114-Status: GOOD (  13.44  )
+X-CRM114-CacheID: sfid-20240317_081015_083730_8600E59B 
+X-CRM114-Status: UNSURE (   7.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,32 +149,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/03/2024 05:54, Justin Swartz wrote:
-> Reorder the attributes of the sysc node so that the
-> ralink prefixed attribute is placed after those which lack
-> prefixes.
-> 
-> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
-> ---
->  arch/mips/boot/dts/ralink/mt7621.dtsi | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
-> index 696460b2d..d1d4399d7 100644
-> --- a/arch/mips/boot/dts/ralink/mt7621.dtsi
-> +++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
-> @@ -68,12 +68,15 @@ palmbus: palmbus@1e000000 {
->  		sysc: syscon@0 {
->  			compatible = "mediatek,mt7621-sysc", "syscon";
->  			reg = <0x0 0x100>;
-> +
->  			#clock-cells = <1>;
->  			#reset-cells = <1>;
-> -			ralink,memctl = <&memc>;
-> +
+On 16/03/2024 16:49, Sergio Paracuellos wrote:
+> On Sat, Mar 16, 2024 at 5:54 AM Justin Swartz
+> <justin.swartz@risingedge.co.za> wrote:
+>>
+>> This set of patches was created with the intention of cleaning up
+>> arch/mips/boot/dts/ralink/mt7621.dtsi so that it is aligned with
+>> the Devicetree Sources (DTS) Coding Style [1] [2] guide.
+>>
+>> [1] Documentation/devicetree/bindings/dts-coding-style.rst
+>>
+>> [2] https://docs.kernel.org/devicetree/bindings/dts-coding-style.html
+>>
+>> Justin Swartz (14):
+>>   mips: dts: ralink: mt7621: reorder cpu node attributes
+>>   mips: dts: ralink: mt7621: reorder cpuintc node attributes
+>>   mips: dts: ralink: mt7621: reorder mmc regulator attributes
+>>   mips: dts: ralink: mt7621: reorder sysc node attributes
+>>   mips: dts: ralink: mt7621: reorder gpio node attributes
+>>   mips: dts: ralink: mt7621: reorder i2c node attributes
+>>   mips: dts: ralink: mt7621: reorder spi0 node attributes
+>>   mips: dts: ralink: mt7621: move pinctrl and sort its children
+>>   mips: dts: ralink: mt7621: reorder mmc node attributes
+>>   mips: dts: ralink: mt7621: reorder gic node attributes
+>>   mips: dts: ralink: mt7621: reorder ethernet node attributes and kids
+>>   mips: dts: ralink: mt7621: reorder pcie node attributes and children
+>>   mips: dts: ralink: mt7621: reorder pci?_phy attributes
 
-Why do you move properties one-by-one? This is a lot of churn. Fixup
-entire file in one pass.
+These are all simple cleanups for the same file. It's one patch, not 15.
 
 Best regards,
 Krzysztof
