@@ -4,106 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74E50C54E60
-	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Mar 2024 15:22:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75964C54E60
+	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Mar 2024 15:29:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Content-Transfer-Encoding:Content-Type:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jpJmCXnRWkvipvI+cl7psJeUcSum3HGG9o3Z43g1ycg=; b=oyAo8zNOI1CV97jJnCA3N33YaF
-	ZVHjtMKC3QkgpARWP0jAcNG6nF7+U36cwxzxurntHXyGDGwuuu9UXu5s5fPgPOYezgNpqt9hJjsAD
-	gIh1CPK6lAsrQb5QEH/XBYWIQVUJJxEy/KQZtCqhYK6X2I7dZBHIyGbOqcEb0pEFAVj5rgweg03Q7
-	JckYQYnLM4EiodRccI8mGRoMS+0VwzZM9E488K1KduIPGYkhcTIxppHrw6pL8YNGhM88ed0znLaBX
-	WIg/TiTOn0C6fyXXoYYMJE5ZWRsz2GeWjEIQ8FMyTLYHCFkaqevKc2WWnndYfP+zyz31O2orvNEm/
-	osnxQ1vA==;
+	bh=A8WcCyd8vgz263xa9NPZybhQi9kVqK0YmFh146T5x90=; b=RoESfou3LuoI9c+oIp5/nB6tX5
+	4Jxl2dHFRmXqAwjj0Hh2OZoaaWCWWaNkG0vthSE1FHrMPKqltiGjmk9gfpLzZHAlxrup5HiJXLUmB
+	IfxPm2Ii1SXFdQJKFWx2LZfXe+6gjwD+ZJgcNS9YpRy6PLFY7/nH3x6GrJXaQI7ia9mHo9AcPbmLZ
+	LHgnI2phEB+iz7cv9zHFaTvOKIMdpBLnPTLsajw4vigDwkEgqX9vWx3MC7IBmAvjBeFlkHc5hTz7H
+	x+I6C7KVD80SVOucobg0kknlt84J+5bQ8o8nfp88c0LiVk82AKXLC4R86mBKye2wKfE5IQ37TH+0R
+	3pucNJCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlsLi-00000005Z2V-4099;
-	Sun, 17 Mar 2024 15:22:58 +0000
-Received: from outgoing4.flk.host-h.net ([188.40.0.90])
+	id 1rlsSI-00000005aES-3zTZ;
+	Sun, 17 Mar 2024 15:29:46 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlsLe-00000005Z0H-1AyM;
-	Sun, 17 Mar 2024 15:22:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=risingedge.co.za; s=xneelo; h=Message-ID:References:In-Reply-To:Subject:Cc:
-	To:From:Date:Content-Transfer-Encoding:Content-Type:MIME-Version:reply-to:
-	sender:bcc; bh=jpJmCXnRWkvipvI+cl7psJeUcSum3HGG9o3Z43g1ycg=; b=j2TNxf4Pgtf1G9
-	tWJ3FqrZY26UZOriQ/i+mwirYaOpaKRVI6JSjuXyBZIjOyJ3YVJ1qtNOi17HiTgJxGmFGrrGJH5Y6
-	SqqN9A4DpEVRT7ZKTVC6kyxxMJM8ONNBlyfaegMGUIxhjewGyTtFwM3eQldfoM92T04q/pm+kBO4S
-	Fsb+EsFEZFRph9ocgXJoJ/KQdfAw1bY7dYLnGjip8ePhy+Gdo6ktp9872SMApqt8eXMyPJwzl+F8j
-	UmxPMqL1tGZ2Fsz9V+jkRjpOJqS86ltBU52yek/bUYHKdn/y4tYXdBTypNFalyCbSnMlQXs6p46HG
-	dmt0hgj7yCIQoiNEktIw==;
-Received: from www31.flk1.host-h.net ([188.40.1.173])
-	by antispam1-flk1.host-h.net with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1rlsLS-008gRB-0O; Sun, 17 Mar 2024 17:22:44 +0200
-Received: from roundcubeweb1.flk1.host-h.net ([138.201.244.33] helo=webmail9.konsoleh.co.za)
-	by www31.flk1.host-h.net with esmtpa (Exim 4.92)
-	(envelope-from <justin.swartz@risingedge.co.za>)
-	id 1rlsLQ-0005pa-09; Sun, 17 Mar 2024 17:22:40 +0200
+	id 1rlsSE-00000005aCu-0jmL
+	for linux-mediatek@lists.infradead.org;
+	Sun, 17 Mar 2024 15:29:43 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-513d599dbabso3640917e87.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 17 Mar 2024 08:29:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1710689377; x=1711294177; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=A8WcCyd8vgz263xa9NPZybhQi9kVqK0YmFh146T5x90=;
+        b=hLaGkA5YTzygbxFRkENNs7zKFYRk3x6K9Vjh95pZwDEcdsZhfacBcB6t/WYEOSxQYT
+         yZLCGh2KudkEO7C8AkGC4OfQTCrCl2ApmDjQoRWQecF7njsetJIE59bThMrgswHPJG1T
+         rvlbv9NNvIkjM9nPYIcaxF5MHM97KkXnm7LG2m2gIO+7PDdiIh9hBQW1MB7nVjHmqRSS
+         M2+bO6AEh4Om2Vt6ky9TS32uXsDRHqfwCYkea4ALzeAJ7FNgYJWyE6X2rgDzpF+vpMVf
+         T1b+x6m4UT/tmCVP7brf2oY+7iSRs2VOik7v2+y2/1D7zh6yglGTLLHNDxgLdiGyu55T
+         IxDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710689377; x=1711294177;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=A8WcCyd8vgz263xa9NPZybhQi9kVqK0YmFh146T5x90=;
+        b=ExcCT16Z62QRPm9T3s1ZVkc8CFEOZvr80mv1NeZrGgGbr3frzi/2/kwFuH+yIQ9H/0
+         NzPvKkk1zWobgj1R6V0lvO0OzurJgcFGsrkV/6vJWSXEeNxGklD33oqThNj1WqYiQDhO
+         N6Jofy0MYS9ZsMjBMcm5UGx8eoLI6Urrv7pvvPyyKFTy8bUr4IVYT/HcQ2ie7E6SptcK
+         MLnCrOE2YpLLnsPzUnweerX/CC2FIqOLFuOwUEDopgiW2qAsfjE/45SJBmWTLW7Cosdz
+         deaCKUadRHxlAsr/XPbH8eM49CTVfF1JM4MOBEq8tOnyp1Rz+nM2sGlv1jsugb1ZdF6K
+         g82A==
+X-Forwarded-Encrypted: i=1; AJvYcCXBrakGh05gDOwEX/Ade6te7yUFLbWPw/gZtVlTg+UPmcen/6077DCuIYwu+VIfpVNv3xl8dWYLcgb0Hsq5FRI93Y1R/yY6LXQB6NPoatqhugZu
+X-Gm-Message-State: AOJu0Yy/+lpBOS7yA3g+3Tzbyb7k/Ff/fHbtVjYMfLTdK/Wu3kTCiPus
+	niMieFfeedQ5NRlakgnKDsOpM11NDKPAy9tpMjvmDNpj33yqATJ8qV7e2jrdU7Q=
+X-Google-Smtp-Source: AGHT+IGgfgH03LvKICjbZS2cDme7K6TcagY32JX5GkRBXMsxFk4N9eETQx3WDI3Zqf+qcERZN+nN1w==
+X-Received: by 2002:a05:6512:3a93:b0:513:e7ff:15af with SMTP id q19-20020a0565123a9300b00513e7ff15afmr1090150lfu.64.1710689376859;
+        Sun, 17 Mar 2024 08:29:36 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.222.97])
+        by smtp.gmail.com with ESMTPSA id sd9-20020a170906ce2900b00a4628cacad4sm3859452ejb.195.2024.03.17.08.29.35
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 17 Mar 2024 08:29:36 -0700 (PDT)
+Message-ID: <adefc3ff-86a5-4af7-8276-73d0e0108901@linaro.org>
+Date: Sun, 17 Mar 2024 16:29:34 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
-Content-Transfer-Encoding: 8bit
-Date: Sun, 17 Mar 2024 17:22:39 +0200
-From: Justin Swartz <justin.swartz@risingedge.co.za>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>, =?UTF-8?Q?Ar=C4=B1?=
- =?UTF-8?Q?n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, linux-mips@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 00/14] mips: dts: ralink: mt7621: improve DTS style
-In-Reply-To: <60512ae2-dd73-4cb6-9514-145f946300fc@linaro.org>
+Content-Language: en-US
+To: Justin Swartz <justin.swartz@risingedge.co.za>
+Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mips@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 References: <20240316045442.31469-1-justin.swartz@risingedge.co.za>
  <CAMhs-H9ZO-sitsrASuvsEd+ddwVyHH35gj7yAABTqFNfOCGYYw@mail.gmail.com>
  <60512ae2-dd73-4cb6-9514-145f946300fc@linaro.org>
-Message-ID: <5d6c36cb9dd9afda1efb69aa34058517@risingedge.co.za>
-X-Sender: justin.swartz@risingedge.co.za
-User-Agent: Roundcube Webmail/1.3.17
-X-Authenticated-Sender: justin.swartz@risingedge.co.za
-X-Virus-Scanned: Clear
-X-Originating-IP: 188.40.1.173
-X-SpamExperts-Domain: risingedge.co.za
-X-SpamExperts-Username: 
-Authentication-Results: host-h.net; auth=pass (login) smtp.auth=@risingedge.co.za
-X-SpamExperts-Outgoing-Class: ham
-X-SpamExperts-Outgoing-Evidence: Combined (0.04)
-X-Recommended-Action: accept
-X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT9ZXznAGsLAbssBYrxq90PQPUtbdvnXkggZ
- 3YnVId/Y5jcf0yeVQAvfjHznO7+bT5wCPRB8bAzJcv2cv+UqiTTc2+CpNcmBnO4XM3Sck4bwNogU
- WCl1nkLBzZX0KuJ9bXiS85Z42w/+2OBolTNFbPomXFWCX8oNdggW7HE9XDTdSejrkEpbuUvwMvHx
- 3T+KSG//gbuP7hnUK8NQdLwsVWKIFDZRrTGv3rxiw9tFrqFSCFNiLZt/QXQnOBRD+jq1HsKsDh/6
- Srgk2K3gr1VBfJbChkYH6fbrypLNrde+UooQVNLReLErukdelEOHUIpaBbp5GdnsN8+UvimwMinK
- 0+Txhz2u9qvrL2PODYgMZQApJXOjDLkqunZ9NcY2bHZn7CfFscMZZf3sCkN20I5vMh4akiObI7Kj
- vK7X04QEin24qbfMFd8eGjnYW8aSH5qj4ujh/13psIvqSqJFa1CcANErDW/w69saM9prk3jNnHtn
- nuEt/J9wDZeQfiNOYsLDFBdwYt2XtlLzy7G7T4kla0JNMwpa8J6LDEGB71xpBP9rMN3suOKfn8Hl
- koyhyj7ioi1H+3FR74FPtCVqefSOps3DjBaEzxvm/wSPAqUO1+xOWSBZB5ABM5ibrJKBc41fzX2f
- c4dPBW7pWChw4uEjGhn8NxWJwjYpP3+Q3/7iG2wtXpj+MxXskxADOZtFo1H2i7Tgo+5B/jmqOvZj
- iTeRCozF+pjfbFrzHCaFHgNTrYhVbBAqR8ZRvY88PgTw/yJlftBcHX6tS8NW54gm54VAvfk9VDzu
- 2DWvs648c5Z9erCJvcji+JcS2GUvCK1BsRI8tTKkBVM18TehOmSn2kZRt3z8CHTZnKdQqcB0QMMU
- IPF3mL0sZmYqDqSi6Ubx7BN0H0IaZOsZnP36dPZwQWhvr8FGGENbqE9x654AXkUfGHPAHnWD1MEm
- 8zNnsSuSxjl6RVTXva2Jl4AHe5oTGEWuK7wQuHiJKcf5Sqd6P3zHxU4Ham35bIM7+pzQRR2+p5za
- 8H1gUaDJZGpg6c2oigrh+YcF3SeOS5epce2vBFQn8BLQG4wdJz5OZPl/85ViK8Ea0fe5iniRDU9a
- IkFLX1Ne1hGTitUHsPftyxriH1hAvmSO1crrLwiF2BozUnkjKLcelPzx2oqVYjg7pBU6N7n2Xnf9
- ORWrllgKtBSNx6xUC0rhukb6/HI5FFTbPOoZF9qxZ4vEB++mMxBCD3fThxO9W05FCDXTgie1WJoD
- 4hXRjHZ+R3cXutruHTpS87YkskBoFo6eZ5Uv5yUh4sH+KRvQOJ2675fcuW/3lDmDZZ7XgBhunFdj
- VYxKH3qWyoySMt2NXQeSeCQL64BFVPTx/kcAi/BxQpDwnPv6lZRBE5yf8dBL5neTPEi/hBlrHCDh
- EJ2WARFy2DNwOgV373pfDhBQ21Od8BCsodKtWDQizmRHoSVjKnexcCkQ+p5zWKzxeWKxLCyS8776
- l4RSwc4z5cqDb97hdiFVwaP90eVaqnDphEW4xEWnj3iKGpP30awjRzKpQ4kPl+3D1YhNMZlGTB68
- YWMe6VM9RYQVmV8q7nN/oibcn491jt+pt12gBHaGoo19huz2OKHH5lr9xXvSM4nM3avg
-X-Report-Abuse-To: spam@antispamquarantine.host-h.net
+ <5d6c36cb9dd9afda1efb69aa34058517@risingedge.co.za>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzTRLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnp5c3p0b2Yua296bG93c2tpQGxpbmFyby5vcmc+wsGUBBMBCgA+FiEE
+ m9B+DgxR+NWWd7dUG5NDfTtBYpsFAmI+BxMCGwMFCRRfreEFCwkIBwIGFQoJCAsCBBYCAwEC
+ HgECF4AACgkQG5NDfTtBYptgbhAAjAGunRoOTduBeC7V6GGOQMYIT5n3OuDSzG1oZyM4kyvO
+ XeodvvYv49/ng473E8ZFhXfrre+c1olbr1A8pnz9vKVQs9JGVa6wwr/6ddH7/yvcaCQnHRPK
+ mnXyP2BViBlyDWQ71UC3N12YCoHE2cVmfrn4JeyK/gHCvcW3hUW4i5rMd5M5WZAeiJj3rvYh
+ v8WMKDJOtZFXxwaYGbvFJNDdvdTHc2x2fGaWwmXMJn2xs1ZyFAeHQvrp49mS6PBQZzcx0XL5
+ cU9ZjhzOZDn6Apv45/C/lUJvPc3lo/pr5cmlOvPq1AsP6/xRXsEFX/SdvdxJ8w9KtGaxdJuf
+ rpzLQ8Ht+H0lY2On1duYhmro8WglOypHy+TusYrDEry2qDNlc/bApQKtd9uqyDZ+rx8bGxyY
+ qBP6bvsQx5YACI4p8R0J43tSqWwJTP/R5oPRQW2O1Ye1DEcdeyzZfifrQz58aoZrVQq+innR
+ aDwu8qDB5UgmMQ7cjDSeAQABdghq7pqrA4P8lkA7qTG+aw8Z21OoAyZdUNm8NWJoQy8m4nUP
+ gmeeQPRc0vjp5JkYPgTqwf08cluqO6vQuYL2YmwVBIbO7cE7LNGkPDA3RYMu+zPY9UUi/ln5
+ dcKuEStFZ5eqVyqVoZ9eu3RTCGIXAHe1NcfcMT9HT0DPp3+ieTxFx6RjY3kYTGLOwU0EVUNc
+ NAEQAM2StBhJERQvgPcbCzjokShn0cRA4q2SvCOvOXD+0KapXMRFE+/PZeDyfv4dEKuCqeh0
+ hihSHlaxTzg3TcqUu54w2xYskG8Fq5tg3gm4kh1Gvh1LijIXX99ABA8eHxOGmLPRIBkXHqJY
+ oHtCvPc6sYKNM9xbp6I4yF56xVLmHGJ61KaWKf5KKWYgA9kfHufbja7qR0c6H79LIsiYqf92
+ H1HNq1WlQpu/fh4/XAAaV1axHFt/dY/2kU05tLMj8GjeQDz1fHas7augL4argt4e+jum3Nwt
+ yupodQBxncKAUbzwKcDrPqUFmfRbJ7ARw8491xQHZDsP82JRj4cOJX32sBg8nO2N5OsFJOcd
+ 5IE9v6qfllkZDAh1Rb1h6DFYq9dcdPAHl4zOj9EHq99/CpyccOh7SrtWDNFFknCmLpowhct9
+ 5ZnlavBrDbOV0W47gO33WkXMFI4il4y1+Bv89979rVYn8aBohEgET41SpyQz7fMkcaZU+ok/
+ +HYjC/qfDxT7tjKXqBQEscVODaFicsUkjheOD4BfWEcVUqa+XdUEciwG/SgNyxBZepj41oVq
+ FPSVE+Ni2tNrW/e16b8mgXNngHSnbsr6pAIXZH3qFW+4TKPMGZ2rZ6zITrMip+12jgw4mGjy
+ 5y06JZvA02rZT2k9aa7i9dUUFggaanI09jNGbRA/ABEBAAHCwXwEGAEKACYCGwwWIQSb0H4O
+ DFH41ZZ3t1Qbk0N9O0FimwUCYDzvagUJFF+UtgAKCRAbk0N9O0Fim9JzD/0auoGtUu4mgnna
+ oEEpQEOjgT7l9TVuO3Qa/SeH+E0m55y5Fjpp6ZToc481za3xAcxK/BtIX5Wn1mQ6+szfrJQ6
+ 59y2io437BeuWIRjQniSxHz1kgtFECiV30yHRgOoQlzUea7FgsnuWdstgfWi6LxstswEzxLZ
+ Sj1EqpXYZE4uLjh6dW292sO+j4LEqPYr53hyV4I2LPmptPE9Rb9yCTAbSUlzgjiyyjuXhcwM
+ qf3lzsm02y7Ooq+ERVKiJzlvLd9tSe4jRx6Z6LMXhB21fa5DGs/tHAcUF35hSJrvMJzPT/+u
+ /oVmYDFZkbLlqs2XpWaVCo2jv8+iHxZZ9FL7F6AHFzqEFdqGnJQqmEApiRqH6b4jRBOgJ+cY
+ qc+rJggwMQcJL9F+oDm3wX47nr6jIsEB5ZftdybIzpMZ5V9v45lUwmdnMrSzZVgC4jRGXzsU
+ EViBQt2CopXtHtYfPAO5nAkIvKSNp3jmGxZw4aTc5xoAZBLo0OV+Ezo71pg3AYvq0a3/oGRG
+ KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
+ fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <5d6c36cb9dd9afda1efb69aa34058517@risingedge.co.za>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240317_082254_931093_07A13D9F 
-X-CRM114-Status: UNSURE (   9.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240317_082942_263366_4565ABFF 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,52 +150,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024-03-17 17:10, Krzysztof Kozlowski wrote:
-> On 16/03/2024 16:49, Sergio Paracuellos wrote:
->> On Sat, Mar 16, 2024 at 5:54 AM Justin Swartz
->> <justin.swartz@risingedge.co.za> wrote:
->>> 
->>> This set of patches was created with the intention of cleaning up
->>> arch/mips/boot/dts/ralink/mt7621.dtsi so that it is aligned with
->>> the Devicetree Sources (DTS) Coding Style [1] [2] guide.
->>> 
->>> [1] Documentation/devicetree/bindings/dts-coding-style.rst
->>> 
->>> [2] https://docs.kernel.org/devicetree/bindings/dts-coding-style.html
->>> 
->>> Justin Swartz (14):
->>>   mips: dts: ralink: mt7621: reorder cpu node attributes
->>>   mips: dts: ralink: mt7621: reorder cpuintc node attributes
->>>   mips: dts: ralink: mt7621: reorder mmc regulator attributes
->>>   mips: dts: ralink: mt7621: reorder sysc node attributes
->>>   mips: dts: ralink: mt7621: reorder gpio node attributes
->>>   mips: dts: ralink: mt7621: reorder i2c node attributes
->>>   mips: dts: ralink: mt7621: reorder spi0 node attributes
->>>   mips: dts: ralink: mt7621: move pinctrl and sort its children
->>>   mips: dts: ralink: mt7621: reorder mmc node attributes
->>>   mips: dts: ralink: mt7621: reorder gic node attributes
->>>   mips: dts: ralink: mt7621: reorder ethernet node attributes and 
->>> kids
->>>   mips: dts: ralink: mt7621: reorder pcie node attributes and 
->>> children
->>>   mips: dts: ralink: mt7621: reorder pci?_phy attributes
+On 17/03/2024 16:22, Justin Swartz wrote:
+> On 2024-03-17 17:10, Krzysztof Kozlowski wrote:
+>> On 16/03/2024 16:49, Sergio Paracuellos wrote:
+>>> On Sat, Mar 16, 2024 at 5:54 AM Justin Swartz
+>>> <justin.swartz@risingedge.co.za> wrote:
+>>>>
+>>>> This set of patches was created with the intention of cleaning up
+>>>> arch/mips/boot/dts/ralink/mt7621.dtsi so that it is aligned with
+>>>> the Devicetree Sources (DTS) Coding Style [1] [2] guide.
+>>>>
+>>>> [1] Documentation/devicetree/bindings/dts-coding-style.rst
+>>>>
+>>>> [2] https://docs.kernel.org/devicetree/bindings/dts-coding-style.html
+>>>>
+>>>> Justin Swartz (14):
+>>>>   mips: dts: ralink: mt7621: reorder cpu node attributes
+>>>>   mips: dts: ralink: mt7621: reorder cpuintc node attributes
+>>>>   mips: dts: ralink: mt7621: reorder mmc regulator attributes
+>>>>   mips: dts: ralink: mt7621: reorder sysc node attributes
+>>>>   mips: dts: ralink: mt7621: reorder gpio node attributes
+>>>>   mips: dts: ralink: mt7621: reorder i2c node attributes
+>>>>   mips: dts: ralink: mt7621: reorder spi0 node attributes
+>>>>   mips: dts: ralink: mt7621: move pinctrl and sort its children
+>>>>   mips: dts: ralink: mt7621: reorder mmc node attributes
+>>>>   mips: dts: ralink: mt7621: reorder gic node attributes
+>>>>   mips: dts: ralink: mt7621: reorder ethernet node attributes and 
+>>>> kids
+>>>>   mips: dts: ralink: mt7621: reorder pcie node attributes and 
+>>>> children
+>>>>   mips: dts: ralink: mt7621: reorder pci?_phy attributes
+>>
+>> These are all simple cleanups for the same file. It's one patch, not 
+>> 15.
 > 
-> These are all simple cleanups for the same file. It's one patch, not 
-> 15.
+> I agree these are all simple cleanups.
+> 
+> Even though the cleanup pattern was the same, or very similar,
+> for each node affected, the intention was to isolate each change
+> to a single node (or a grouping of nodes of that seemed logical
+> to me) so that if anyone had any objections, the discussion would
+> be easier to follow in subthreads identifiable by patch names (and
 
-I agree these are all simple cleanups.
+Objections to what? Coding style? Coding style is defined so you either
+implement it or not... and even if someone disagrees with one line swap,
+why it cannot be done like for every contribution: inline?
 
-Even though the cleanup pattern was the same, or very similar,
-for each node affected, the intention was to isolate each change
-to a single node (or a grouping of nodes of that seemed logical
-to me) so that if anyone had any objections, the discussion would
-be easier to follow in subthreads identifiable by patch names (and
-thus subject lines) that clearly indicate the context.
+Organize your patches how described in submitting patches: one per
+logical change. Logical change is to reorder all properties in one file,
+without functional impact.
 
-But if there're no objections and it lessens the burden on
-maintainers upstream to have less patches to apply, then I have no
-problem combining them into a single patch.
+> thus subject lines) that clearly indicate the context.
+> 
+> But if there're no objections and it lessens the burden on
+> maintainers upstream to have less patches to apply, then I have no
+> problem combining them into a single patch.
+> 
 
-Regards
-Justin
+Yeah, one review response instead of 14 responses... One commit in the
+history instead of 14.
+
+Best regards,
+Krzysztof
+
 
