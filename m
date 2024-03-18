@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16A04C54E69
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58A88C54E72
 	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Mar 2024 21:25:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,46 +12,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=khNyPzdzUwxJT9r+BjBAZWWR71jDW41R6nZDuV2NAOA=; b=MAXxTJPpgX5AIciVe8xMjSNVIS
-	XRdVFY9pY0w0Vv88etp/MhezKg3GVcym4BS94d5Y6EKy6cKUrHlVdTvXNgjzE4m+T6Gzk/Is19cCa
-	CPWsf0c+MqDFJhqSWZjM6rbXia+pYWOysJCglo7AaTp5bqxMmTfX4/34VdqMMw1FFW4zeRWtHe/+n
-	SDpxUp8Nk64IKTiYrpMVbxBkoil6gx1KeCGV2FlOLt62PouV5odk9NBX6bLb/MP/i+VJx8XX6+BDk
-	JA8xCGPcvjwZ/3e9fZZmJU0/GwNsLPH4znIeGHWFxOawO0R5gXPNBNEgPf125gVvadFBdzgUyAKnL
-	kY32nRNw==;
+	bh=0AbzRLsu5133ngdBfgYkJLuS9xExxWXqoL0oy5FtJhk=; b=03yNUAKZrZM1xbNIWks+sjkNrM
+	cvVD40DJ4xJ9BJLFdpEQKn/JQyrrTPHSVNzK/+iZQ5aDyVOwHFymksMNKClX2F4LRDKcbmxCrG0Up
+	/ck2zWjoKgBsfiCFyOowzTK/l7DpP8vlRGHM1tFuvuMJwFT1a435BKgidHvcBK6i8OUWG4kjynnuy
+	qH0b11qxtDB1w9uoyrwroyf7n6nPnFfBulpbSwOr+O4tSVysEUF9A2p2dMNzlZUCQVqNUk7KDXdeM
+	ViG92XZZcSYQxIKVFWmp8SV0KFLmduIvaX3UDoiFHu9jnTNpEzMEbQda6adL4xrUHkFq8SXv9SOVB
+	Q+PvahEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmKTc-0000000ACVW-3idQ;
-	Mon, 18 Mar 2024 21:25:00 +0000
-Received: from pb-smtp2.pobox.com ([64.147.108.71])
+	id 1rmKTf-0000000ACX7-3Yp4;
+	Mon, 18 Mar 2024 21:25:03 +0000
+Received: from pb-smtp1.pobox.com ([64.147.108.70])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmKTY-0000000ACRz-2Kcq
+	id 1rmKTY-0000000ACS2-3Ej5
 	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Mar 2024 21:24:58 +0000
-Received: from pb-smtp2.pobox.com (unknown [127.0.0.1])
-	by pb-smtp2.pobox.com (Postfix) with ESMTP id DF5841EA51B;
-	Mon, 18 Mar 2024 17:24:52 -0400 (EDT)
+	Mon, 18 Mar 2024 21:24:59 +0000
+Received: from pb-smtp1.pobox.com (unknown [127.0.0.1])
+	by pb-smtp1.pobox.com (Postfix) with ESMTP id 3FD031D0E44;
+	Mon, 18 Mar 2024 17:24:54 -0400 (EDT)
 	(envelope-from nico@fluxnic.net)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed; d=pobox.com; h=from:to:cc
 	:subject:date:message-id:in-reply-to:references:mime-version
-	:content-transfer-encoding; s=sasl; bh=PF4F+WZxQguweGUDyJuo+DxyL
-	q1Bma2dXu/r9mtnJzc=; b=OL4BpX+ipXpbuJzuMqmyK9CKWLbkvUMBKkKKEV4R7
-	jD6kYE7jXH5D2wyvSIDTNgOobYjxnBvGnQUOIReOBZ2MBFgqd3fyJAPbclhq72Kp
-	ZcmqYL5lAB3CLqiUZ6fiUJkKY9ipnYOHPnMpEbGBj0LT6NrrKHSjZy1RwmlLagtO
-	bQ=
-Received: from pb-smtp2.nyi.icgroup.com (unknown [127.0.0.1])
-	by pb-smtp2.pobox.com (Postfix) with ESMTP id D78461EA51A;
-	Mon, 18 Mar 2024 17:24:52 -0400 (EDT)
+	:content-transfer-encoding; s=sasl; bh=NRwo9Vln+9L3AYcfdiS9/reHq
+	DeX3l0K6R/lYc7v1ik=; b=aQFgprxngC/Rn/10nhlw1oVch6Dn0mRM5o4o7xgyj
+	+ee5d8YWrLB8+is2ho0IzUO4OBDHOUpA5feQooRy0FZGYo4vD8kUSEQJdwj1KP9L
+	YR3MKz8ImiEXCSA75QP8rs1NV6ewD2+fG3c0iNC34kdFkRQobYRfWUJWbUPW16CI
+	6Y=
+Received: from pb-smtp1.nyi.icgroup.com (unknown [127.0.0.1])
+	by pb-smtp1.pobox.com (Postfix) with ESMTP id 36B791D0E42;
+	Mon, 18 Mar 2024 17:24:54 -0400 (EDT)
 	(envelope-from nico@fluxnic.net)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed; d=fluxnic.net;
- h=from:to:cc:subject:date:message-id:in-reply-to:references:mime-version:content-transfer-encoding; s=2016-12.pbsmtp; bh=GqLLEauH127/GbjEIjqH3xblMmqoKZilokx5Leofrqo=; b=XFTfbDTsjue6uqlmAcdtJfKWefvoDI3Q0CxB8wUbA0K+20w6YtJM5H7XpyVdQET5kX1EhTdVpUabOdUj2uF/3oJv3g0x84vix1ps1MqpD2nyTLSm6t3L99pYUc271DONR/6AEZ7b+AEwUry/EYmafj5nqZRNBjvaXkjPU0Y0qsI=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references:mime-version:content-transfer-encoding; s=2016-12.pbsmtp; bh=N0Nl6TLUEQI4e98b3Ctp81RTv3wlY+4A3uV4RXxt404=; b=ZTQut1rv3FR1K8TB0we8xuPK6hsi2IJgaZqvZ+d2u94VJXMboyPWos7NJdzJAhWRmaqDBGv5qVD49UoQD6+zv3GxNBnT0TKQw3vJp0cz4fr+W0UIDQ5W+S2p3quusZcLaAdkMvWONffkFkD8qC9Ly1YAkDyHZ1NUxUTH0iw8EWw=
 Received: from yoda.fluxnic.net (unknown [24.201.101.36])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by pb-smtp2.pobox.com (Postfix) with ESMTPSA id 489361EA517;
-	Mon, 18 Mar 2024 17:24:52 -0400 (EDT)
+	by pb-smtp1.pobox.com (Postfix) with ESMTPSA id 8F5401D0E40;
+	Mon, 18 Mar 2024 17:24:53 -0400 (EDT)
 	(envelope-from nico@fluxnic.net)
 Received: from xanadu.lan (OpenWrt.lan [192.168.1.1])
-	by yoda.fluxnic.net (Postfix) with ESMTPSA id 645F2BE2BA8;
+	by yoda.fluxnic.net (Postfix) with ESMTPSA id B1A66BE2BAC;
 	Mon, 18 Mar 2024 17:24:50 -0400 (EDT)
 From: Nicolas Pitre <nico@fluxnic.net>
 To: Daniel Lezcano <daniel.lezcano@linaro.org>,
@@ -59,18 +59,18 @@ To: Daniel Lezcano <daniel.lezcano@linaro.org>,
 	linux-mediatek@lists.infradead.org,
 	devicetree@vger.kernel.org
 Cc: Nicolas Pitre <npitre@baylibre.com>
-Subject: [PATCH v2 07/13] thermal/drivers/mediatek/lvts_thermal: add MT8186 support
-Date: Mon, 18 Mar 2024 17:22:09 -0400
-Message-ID: <20240318212428.3843952-8-nico@fluxnic.net>
+Subject: [PATCH v2 10/13] thermal/drivers/mediatek/lvts_thermal: allow early empty sensor slots
+Date: Mon, 18 Mar 2024 17:22:12 -0400
+Message-ID: <20240318212428.3843952-11-nico@fluxnic.net>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240318212428.3843952-1-nico@fluxnic.net>
 References: <20240318212428.3843952-1-nico@fluxnic.net>
 MIME-Version: 1.0
-X-Pobox-Relay-ID: F5357760-E56D-11EE-B362-25B3960A682E-78420484!pb-smtp2.pobox.com
+X-Pobox-Relay-ID: F5F9CC32-E56D-11EE-903B-78DCEB2EC81B-78420484!pb-smtp1.pobox.com
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240318_142456_706702_C0BE76C6 
-X-CRM114-Status: GOOD (  15.52  )
+X-CRM114-CacheID: sfid-20240318_142457_030331_7851C072 
+X-CRM114-Status: GOOD (  18.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,130 +87,308 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Nicolas Pitre <npitre@baylibre.com>
 
-Various values extracted from the vendor's kernel driver.
+Some systems don't always populate sensor controller slots starting
+at slot 0. Use a bitmap instead of a count to indicate valid sensor
+slots. Also create a pretty iterator for that.
+
+About that iterator: it causes checkpatch to complain with "ERROR:
+Macros with multiple statements should be enclosed in a do - while
+loop". However this is not possible here. And many similar iterators
+do exist using the same form in the tree already.
 
 Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
 ---
- drivers/thermal/mediatek/lvts_thermal.c | 67 +++++++++++++++++++++++++
- 1 file changed, 67 insertions(+)
+ drivers/thermal/mediatek/lvts_thermal.c | 64 ++++++++++++++-----------
+ 1 file changed, 37 insertions(+), 27 deletions(-)
 
 diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/me=
 diatek/lvts_thermal.c
-index ed1888fb24..e923d22c17 100644
+index b20b70fd36..a23a93fc82 100644
 --- a/drivers/thermal/mediatek/lvts_thermal.c
 +++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -80,6 +80,8 @@
- #define LVTS_SENSOR_MAX				4
- #define LVTS_GOLDEN_TEMP_MAX		62
- #define LVTS_GOLDEN_TEMP_DEFAULT	50
-+#define LVTS_COEFF_A_MT8186			-204650
-+#define LVTS_COEFF_B_MT8186			204650
- #define LVTS_COEFF_A_MT8195			-250460
- #define LVTS_COEFF_B_MT8195			250460
- #define LVTS_COEFF_A_MT7988			-204650
-@@ -92,6 +94,7 @@
- #define LVTS_MSR_READ_WAIT_US		(LVTS_MSR_READ_TIMEOUT_US / 2)
+@@ -110,12 +110,24 @@ struct lvts_sensor_data {
 =20
- #define LVTS_HW_SHUTDOWN_MT7988		105000
-+#define LVTS_HW_SHUTDOWN_MT8186		105000
- #define LVTS_HW_SHUTDOWN_MT8192		105000
- #define LVTS_HW_SHUTDOWN_MT8195		105000
+ struct lvts_ctrl_data {
+ 	struct lvts_sensor_data lvts_sensor[LVTS_SENSOR_MAX];
++	u8 valid_sensor_mask;
+ 	int hw_tshut_temp;
+-	int num_lvts_sensor;
+ 	int offset;
+ 	int mode;
+ };
 =20
-@@ -1377,6 +1380,62 @@ static int lvts_resume(struct device *dev)
++#define VALID_SENSOR_MAP(s0, s1, s2, s3) \
++	.valid_sensor_mask =3D (((s0) ? BIT(0) : 0) | \
++			      ((s1) ? BIT(1) : 0) | \
++			      ((s2) ? BIT(2) : 0) | \
++			      ((s3) ? BIT(3) : 0))
++
++#define lvts_for_each_valid_sensor(i, lvts_ctrl_data) \
++	for ((i) =3D 0; (i) < LVTS_SENSOR_MAX; (i)++) \
++		if (!((lvts_ctrl_data)->valid_sensor_mask & BIT(i))) \
++			continue; \
++		else
++
+ struct lvts_data {
+ 	const struct lvts_ctrl_data *lvts_ctrl;
+ 	int num_lvts_ctrl;
+@@ -139,7 +151,6 @@ struct lvts_ctrl {
+ 	const struct lvts_data *lvts_data;
+ 	u32 calibration[LVTS_SENSOR_MAX];
+ 	u32 hw_tshut_raw_temp;
+-	int num_lvts_sensor;
+ 	int mode;
+ 	void __iomem *base;
+ 	int low_thresh;
+@@ -351,7 +362,7 @@ static bool lvts_should_update_thresh(struct lvts_ctr=
+l *lvts_ctrl, int high)
+ 	if (high > lvts_ctrl->high_thresh)
+ 		return true;
+=20
+-	for (i =3D 0; i < lvts_ctrl->num_lvts_sensor; i++)
++	lvts_for_each_valid_sensor(i, lvts_ctrl->lvts_data->lvts_ctrl)
+ 		if (lvts_ctrl->sensors[i].high_thresh =3D=3D lvts_ctrl->high_thresh
+ 		    && lvts_ctrl->sensors[i].low_thresh =3D=3D lvts_ctrl->low_thresh)
+ 			return false;
+@@ -555,6 +566,7 @@ static int lvts_sensor_init(struct device *dev, struc=
+t lvts_ctrl *lvts_ctrl,
+ 					const struct lvts_ctrl_data *lvts_ctrl_data)
+ {
+ 	struct lvts_sensor *lvts_sensor =3D lvts_ctrl->sensors;
++
+ 	void __iomem *msr_regs[] =3D {
+ 		LVTS_MSR0(lvts_ctrl->base),
+ 		LVTS_MSR1(lvts_ctrl->base),
+@@ -571,7 +583,7 @@ static int lvts_sensor_init(struct device *dev, struc=
+t lvts_ctrl *lvts_ctrl,
+=20
+ 	int i;
+=20
+-	for (i =3D 0; i < lvts_ctrl_data->num_lvts_sensor; i++) {
++	lvts_for_each_valid_sensor(i, lvts_ctrl_data) {
+=20
+ 		int dt_id =3D lvts_ctrl_data->lvts_sensor[i].dt_id;
+=20
+@@ -611,8 +623,6 @@ static int lvts_sensor_init(struct device *dev, struc=
+t lvts_ctrl *lvts_ctrl,
+ 		lvts_sensor[i].high_thresh =3D INT_MIN;
+ 	};
+=20
+-	lvts_ctrl->num_lvts_sensor =3D lvts_ctrl_data->num_lvts_sensor;
+-
  	return 0;
  }
 =20
-+/*
-+ * The MT8186 calibration data is stored as packed 3-byte little-endian
-+ * values using a weird layout that makes sense only when viewed as a 32=
--bit
-+ * hexadecimal word dump. Let's suppose SxBy where x =3D sensor number a=
-nd
-+ * y =3D byte number where the LSB is y=3D0. We then have:
-+ *
-+ *   [S0B2-S0B1-S0B0-S1B2] [S1B1-S1B0-S2B2-S2B1] [S2B0-S3B2-S3B1-S3B0]
-+ *
-+ * However, when considering a byte stream, those appear as follows:
-+ *
-+ *   [S1B2] [S0B0[ [S0B1] [S0B2] [S2B1] [S2B2] [S1B0] [S1B1] [S3B0] [S3B=
-1] [S3B2] [S2B0]
-+ *
-+ * Hence the rather confusing offsets provided below.
-+ */
-+static const struct lvts_ctrl_data mt8186_lvts_data_ctrl[] =3D {
-+	{
-+		.lvts_sensor =3D {
-+			{ .dt_id =3D MT8186_TS1_0,
-+			  .cal_offsets =3D { 5, 6, 7 } },
-+			{ .dt_id =3D MT8186_TS1_1,
-+			  .cal_offsets =3D { 10, 11, 4 } },
-+			{ .dt_id =3D MT8186_TS1_2,
-+			  .cal_offsets =3D { 15, 8, 9 } },
-+			{ .dt_id =3D MT8186_TS1_3,
-+			  .cal_offsets =3D { 12, 13, 14 } }
-+		},
-+		.num_lvts_sensor =3D 4,
-+		.offset =3D 0x0,
-+		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8186,
-+	},
-+	{
-+		.lvts_sensor =3D {
-+			{ .dt_id =3D MT8186_TS2_0,
-+			  .cal_offsets =3D { 22, 23, 16 } },
-+			{ .dt_id =3D MT8186_TS2_1,
-+			  .cal_offsets =3D { 27, 20, 21 } }
-+		},
-+		.num_lvts_sensor =3D 2,
-+		.offset =3D 0x100,
-+		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8186,
-+	},
-+	{
-+		.lvts_sensor =3D {
-+			{ .dt_id =3D MT8186_TS3_0,
-+			  .cal_offsets =3D { 29, 30, 31 } },
-+			{ .dt_id =3D MT8186_TS3_1,
-+			  .cal_offsets =3D { 34, 35, 28 } },
-+			{ .dt_id =3D MT8186_TS3_2,
-+			  .cal_offsets =3D { 39, 32, 33 } }
-+		},
-+		.num_lvts_sensor =3D 3,
-+		.offset =3D 0x200,
-+		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8186,
-+	}
-+};
-+
- static const struct lvts_ctrl_data mt8192_lvts_mcu_data_ctrl[] =3D {
- 	{
- 		.lvts_sensor =3D {
-@@ -1565,6 +1624,13 @@ static const struct lvts_data mt7988_lvts_ap_data =
-=3D {
- 	.temp_offset	=3D LVTS_COEFF_B_MT7988,
- };
-=20
-+static const struct lvts_data mt8186_lvts_data =3D {
-+	.lvts_ctrl	=3D mt8186_lvts_data_ctrl,
-+	.num_lvts_ctrl	=3D ARRAY_SIZE(mt8186_lvts_data_ctrl),
-+	.temp_factor	=3D LVTS_COEFF_A_MT8186,
-+	.temp_offset	=3D LVTS_COEFF_B_MT8186,
-+};
-+
- static const struct lvts_data mt8192_lvts_mcu_data =3D {
- 	.lvts_ctrl	=3D mt8192_lvts_mcu_data_ctrl,
- 	.num_lvts_ctrl	=3D ARRAY_SIZE(mt8192_lvts_mcu_data_ctrl),
-@@ -1591,6 +1657,7 @@ static const struct lvts_data mt8195_lvts_ap_data =3D=
+@@ -683,7 +693,7 @@ static int lvts_calibration_init(struct device *dev, =
+struct lvts_ctrl *lvts_ctrl
  {
+ 	int i;
 =20
- static const struct of_device_id lvts_of_match[] =3D {
- 	{ .compatible =3D "mediatek,mt7988-lvts-ap", .data =3D &mt7988_lvts_ap_=
-data },
-+	{ .compatible =3D "mediatek,mt8186-lvts", .data =3D &mt8186_lvts_data }=
-,
- 	{ .compatible =3D "mediatek,mt8192-lvts-mcu", .data =3D &mt8192_lvts_mc=
-u_data },
- 	{ .compatible =3D "mediatek,mt8192-lvts-ap", .data =3D &mt8192_lvts_ap_=
-data },
- 	{ .compatible =3D "mediatek,mt8195-lvts-mcu", .data =3D &mt8195_lvts_mc=
-u_data },
+-	for (i =3D 0; i < lvts_ctrl_data->num_lvts_sensor; i++) {
++	lvts_for_each_valid_sensor(i, lvts_ctrl_data) {
+ 		const struct lvts_sensor_data *sensor =3D
+ 					&lvts_ctrl_data->lvts_sensor[i];
+=20
+@@ -1106,7 +1116,7 @@ static int lvts_ctrl_start(struct device *dev, stru=
+ct lvts_ctrl *lvts_ctrl)
+ 	u32 *sensor_bitmap =3D lvts_ctrl->mode =3D=3D LVTS_MSR_IMMEDIATE_MODE ?
+ 			     sensor_imm_bitmap : sensor_filt_bitmap;
+=20
+-	for (i =3D 0; i < lvts_ctrl->num_lvts_sensor; i++) {
++	lvts_for_each_valid_sensor(i, lvts_ctrl->lvts_data->lvts_ctrl) {
+=20
+ 		int dt_id =3D lvts_sensors[i].dt_id;
+=20
+@@ -1329,7 +1339,7 @@ static const struct lvts_ctrl_data mt7988_lvts_ap_d=
+ata_ctrl[] =3D {
+ 			{ .dt_id =3D MT7988_ETH2P5G_1,
+ 			  .cal_offsets =3D { 0x0c, 0x0d, 0x0e } }
+ 		},
+-		.num_lvts_sensor =3D 4,
++		VALID_SENSOR_MAP(1, 1, 1, 1),
+ 		.offset =3D 0x0,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT7988,
+ 	},
+@@ -1344,7 +1354,7 @@ static const struct lvts_ctrl_data mt7988_lvts_ap_d=
+ata_ctrl[] =3D {
+ 			{ .dt_id =3D MT7988_ETHWARP_1,
+ 			   .cal_offsets =3D { 0x20, 0x21, 0x22 } }
+ 		},
+-		.num_lvts_sensor =3D 4,
++		VALID_SENSOR_MAP(1, 1, 1, 1),
+ 		.offset =3D 0x100,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT7988,
+ 	}
+@@ -1408,7 +1418,7 @@ static const struct lvts_ctrl_data mt8186_lvts_data=
+_ctrl[] =3D {
+ 			{ .dt_id =3D MT8186_TS1_3,
+ 			  .cal_offsets =3D { 12, 13, 14 } }
+ 		},
+-		.num_lvts_sensor =3D 4,
++		VALID_SENSOR_MAP(1, 1, 1, 1),
+ 		.offset =3D 0x0,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8186,
+ 	},
+@@ -1419,7 +1429,7 @@ static const struct lvts_ctrl_data mt8186_lvts_data=
+_ctrl[] =3D {
+ 			{ .dt_id =3D MT8186_TS2_1,
+ 			  .cal_offsets =3D { 27, 20, 21 } }
+ 		},
+-		.num_lvts_sensor =3D 2,
++		VALID_SENSOR_MAP(1, 1, 0, 0),
+ 		.offset =3D 0x100,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8186,
+ 	},
+@@ -1432,7 +1442,7 @@ static const struct lvts_ctrl_data mt8186_lvts_data=
+_ctrl[] =3D {
+ 			{ .dt_id =3D MT8186_TS3_2,
+ 			  .cal_offsets =3D { 39, 32, 33 } }
+ 		},
+-		.num_lvts_sensor =3D 3,
++		VALID_SENSOR_MAP(1, 1, 1, 0),
+ 		.offset =3D 0x200,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8186,
+ 	}
+@@ -1446,7 +1456,7 @@ static const struct lvts_ctrl_data mt8192_lvts_mcu_=
+data_ctrl[] =3D {
+ 			{ .dt_id =3D MT8192_MCU_BIG_CPU1,
+ 			  .cal_offsets =3D { 0x08, 0x09, 0x0a } }
+ 		},
+-		.num_lvts_sensor =3D 2,
++		VALID_SENSOR_MAP(1, 1, 0, 0),
+ 		.offset =3D 0x0,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+ 		.mode =3D LVTS_MSR_FILTERED_MODE,
+@@ -1458,7 +1468,7 @@ static const struct lvts_ctrl_data mt8192_lvts_mcu_=
+data_ctrl[] =3D {
+ 			{ .dt_id =3D MT8192_MCU_BIG_CPU3,
+ 			  .cal_offsets =3D { 0x10, 0x11, 0x12 } }
+ 		},
+-		.num_lvts_sensor =3D 2,
++		VALID_SENSOR_MAP(1, 1, 0, 0),
+ 		.offset =3D 0x100,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+ 		.mode =3D LVTS_MSR_FILTERED_MODE,
+@@ -1474,7 +1484,7 @@ static const struct lvts_ctrl_data mt8192_lvts_mcu_=
+data_ctrl[] =3D {
+ 			{ .dt_id =3D MT8192_MCU_LITTLE_CPU3,
+ 			  .cal_offsets =3D { 0x20, 0x21, 0x22 } }
+ 		},
+-		.num_lvts_sensor =3D 4,
++		VALID_SENSOR_MAP(1, 1, 1, 1),
+ 		.offset =3D 0x200,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+ 		.mode =3D LVTS_MSR_FILTERED_MODE,
+@@ -1489,7 +1499,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_d=
+ata_ctrl[] =3D {
+ 			{ .dt_id =3D MT8192_AP_VPU1,
+ 			  .cal_offsets =3D { 0x28, 0x29, 0x2a } }
+ 		},
+-		.num_lvts_sensor =3D 2,
++		VALID_SENSOR_MAP(1, 1, 0, 0),
+ 		.offset =3D 0x0,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+ 	},
+@@ -1500,7 +1510,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_d=
+ata_ctrl[] =3D {
+ 			{ .dt_id =3D MT8192_AP_GPU1,
+ 			  .cal_offsets =3D { 0x30, 0x31, 0x32 } }
+ 		},
+-		.num_lvts_sensor =3D 2,
++		VALID_SENSOR_MAP(1, 1, 0, 0),
+ 		.offset =3D 0x100,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+ 	},
+@@ -1511,7 +1521,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_d=
+ata_ctrl[] =3D {
+ 			{ .dt_id =3D MT8192_AP_CAM,
+ 			  .cal_offsets =3D { 0x38, 0x39, 0x3a } },
+ 		},
+-		.num_lvts_sensor =3D 2,
++		VALID_SENSOR_MAP(1, 1, 0, 0),
+ 		.offset =3D 0x200,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+ 	},
+@@ -1524,7 +1534,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_d=
+ata_ctrl[] =3D {
+ 			{ .dt_id =3D MT8192_AP_MD2,
+ 			  .cal_offsets =3D { 0x44, 0x45, 0x46 } }
+ 		},
+-		.num_lvts_sensor =3D 3,
++		VALID_SENSOR_MAP(1, 1, 1, 0),
+ 		.offset =3D 0x300,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8192,
+ 	}
+@@ -1538,7 +1548,7 @@ static const struct lvts_ctrl_data mt8195_lvts_mcu_=
+data_ctrl[] =3D {
+ 			{ .dt_id =3D MT8195_MCU_BIG_CPU1,
+ 			  .cal_offsets =3D { 0x07, 0x08, 0x09 } }
+ 		},
+-		.num_lvts_sensor =3D 2,
++		VALID_SENSOR_MAP(1, 1, 0, 0),
+ 		.offset =3D 0x0,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8195,
+ 	},
+@@ -1549,7 +1559,7 @@ static const struct lvts_ctrl_data mt8195_lvts_mcu_=
+data_ctrl[] =3D {
+ 			{ .dt_id =3D MT8195_MCU_BIG_CPU3,
+ 			  .cal_offsets =3D { 0x10, 0x11, 0x12 } }
+ 		},
+-		.num_lvts_sensor =3D 2,
++		VALID_SENSOR_MAP(1, 1, 0, 0),
+ 		.offset =3D 0x100,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8195,
+ 	},
+@@ -1564,7 +1574,7 @@ static const struct lvts_ctrl_data mt8195_lvts_mcu_=
+data_ctrl[] =3D {
+ 			{ .dt_id =3D MT8195_MCU_LITTLE_CPU3,
+ 			  .cal_offsets =3D { 0x1f, 0x20, 0x21 } }
+ 		},
+-		.num_lvts_sensor =3D 4,
++		VALID_SENSOR_MAP(1, 1, 1, 1),
+ 		.offset =3D 0x200,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8195,
+ 	}
+@@ -1578,7 +1588,7 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_d=
+ata_ctrl[] =3D {
+ 			{ .dt_id =3D MT8195_AP_VPU1,
+ 			  .cal_offsets =3D { 0x28, 0x29, 0x2a } }
+ 		},
+-		.num_lvts_sensor =3D 2,
++		VALID_SENSOR_MAP(1, 1, 0, 0),
+ 		.offset =3D 0x0,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8195,
+ 	},
+@@ -1589,7 +1599,7 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_d=
+ata_ctrl[] =3D {
+ 			{ .dt_id =3D MT8195_AP_GPU1,
+ 			  .cal_offsets =3D { 0x31, 0x32, 0x33 } }
+ 		},
+-		.num_lvts_sensor =3D 2,
++		VALID_SENSOR_MAP(1, 1, 0, 0),
+ 		.offset =3D 0x100,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8195,
+ 	},
+@@ -1602,7 +1612,7 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_d=
+ata_ctrl[] =3D {
+ 			{ .dt_id =3D MT8195_AP_INFRA,
+ 			  .cal_offsets =3D { 0x3d, 0x3e, 0x3f } }
+ 		},
+-		.num_lvts_sensor =3D 3,
++		VALID_SENSOR_MAP(1, 1, 1, 0),
+ 		.offset =3D 0x200,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8195,
+ 	},
+@@ -1613,7 +1623,7 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_d=
+ata_ctrl[] =3D {
+ 			{ .dt_id =3D MT8195_AP_CAM1,
+ 			  .cal_offsets =3D { 0x46, 0x47, 0x48 } }
+ 		},
+-		.num_lvts_sensor =3D 2,
++		VALID_SENSOR_MAP(1, 1, 0, 0),
+ 		.offset =3D 0x300,
+ 		.hw_tshut_temp =3D LVTS_HW_SHUTDOWN_MT8195,
+ 	}
 --=20
 2.44.0
 
