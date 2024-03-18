@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F88FC54E5D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Mar 2024 14:49:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB15CC54E58
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Mar 2024 15:27:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cqNM/2+6RtN7HRicnM8FnhxiDWxuUFeghI/4QFKksLs=; b=nmAIZMa9o+Jm6xQY8K26wRAOGw
-	thE9AIY5dQt0rsMDWoTdeTKOlUURG9FGknLsxGHP+DKr3it5150QdofuUn3nVA9cgXyXBQk2EmNto
-	/UtUjdQVaIQCzP+Sbjc7wti3XK6LhIvGZVaanUBwMNR6u/R1sKqGShx8G9JGa/SnnS1c9JbPpJtFv
-	XKXppuGuB16mkQ1Gv+qN5PFN4qD1WcS7ckOlGUkc8B2Kt9N//jx3Ieb6PudGRsbjuLLRewnQIjIMc
-	Jnk691ii2p/vXFVtHKiCe0FJOU+x1i+kFqlT46WkKahegmnSp7FXEuXIzLcfhSGMELgjVy6eDs5IF
-	jVgnJXQw==;
+	bh=Y5AbgyVonlLMB35g+E/KeAJdiy5cyi8OYzUmtkvQfc8=; b=oNTGNpGZlzm4NfgGWUy29DKW0o
+	obTkCTCqGMrApNYOegSXE0Btzo2nv++mGVJDjknSTAm2LECvc0/JPTdw59uApoyExGS81qWuuA6PW
+	2KaHH5G7pDeK6uR0VmIKYiKjFeo/pCVZaoaOUhSy9Tio6z7OLeRh2nVsr40ZeZi5+4eU1lw0awVwF
+	3ccFIEbNPdW3959a58WA81PYEu+rkFsvK6rqBQ0aB2hTzp4deoyX/qJ9cNF36LaELNbAS9I6hZ7wT
+	pK6pm2eknAJctIfhhfyPP9cICDcbdSlfJS4HXyy3FwkVTirRm7tnxNV/7dqKghTo55gM1EOW5Lc59
+	79SPXoZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmEIZ-00000008rd4-2fjr;
-	Mon, 18 Mar 2024 14:49:11 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rmEtQ-000000091yy-1c1X;
+	Mon, 18 Mar 2024 15:27:16 +0000
+Received: from relay9-d.mail.gandi.net ([217.70.183.199])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmEIV-00000008rbc-1Oat;
-	Mon, 18 Mar 2024 14:49:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710773344;
-	bh=USOr6qU9s7oCtYs/hRrdocv0US/SAICnJv0VzvAXOfs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Kt4qR/q+CdWoweti9UtfSuJ0viP1USdpy92jythJySd+nv/6i13t51t8Blr1njkZ6
-	 iCi3CoElv2WjMVUkToNLrjDFtiH+30oXu61w0tWoJBWvLuFykq04a0qHusmnF9ztZh
-	 XaKVqrx3oap2zxRcSmFNpxYUQsb0vIZokfVBNEVuLtl2IsY8zjOHO0C8VoqJo2XVWX
-	 PlukdzC9HBegy4226bnOGpUm0gqyaI66qQfiBD+g+Uof5XzpKXOV++O1zp6ylz2F2g
-	 MOCS35dvJQf8ChRUq/fKGJdFpFVylmBCegkflwhea6UpBjeqp61oNxQl/ng+/2Ye26
-	 +tqAbm7YEAJPg==
-Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D539A37811D1;
-	Mon, 18 Mar 2024 14:48:59 +0000 (UTC)
-Message-ID: <9f406611-54cd-3a69-5440-40535f3d30c0@collabora.com>
-Date: Mon, 18 Mar 2024 20:18:57 +0530
+	id 1rmEtL-000000091x6-2mvZ;
+	Mon, 18 Mar 2024 15:27:12 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 3ACA2FF80A;
+	Mon, 18 Mar 2024 15:27:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1710775628;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Y5AbgyVonlLMB35g+E/KeAJdiy5cyi8OYzUmtkvQfc8=;
+	b=MyINwp7ETbUp2gIk0pEzRSJRoX64jUgNICaW3pa+XutPVCEFxABm6gSZ/TQJqDfM/CG8Cf
+	zdVog4IN2JGgAJmGpOmSe5l2fx+ZAoht1m+cWWvbL3hhqnXJvmwpvRsiO3pyvi2+avoDcj
+	dy17X07nyLTps5p/d4a0TDfI9ADDzABCLTOnoLw81ErsHSFZ2LwzOEBCJmH1y7prFjXaYh
+	+2IuGNSYLC/TeE+d3AjXtQwwHxQIvNN9RDhAMVG6jB/lrzT72uIDCb44daRMJ7+c1giMh/
+	1HkPWK4nU0esHb1AsXi6OybJaAj/RDHceZub/tc2fUGxFnCiNVYRuJF/8PGxbw==
+Message-ID: <7d1ad037-d8ac-4b9a-b6d2-ab683e52a898@arinc9.com>
+Date: Mon, 18 Mar 2024 18:26:48 +0300
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v4 03/11] drm/ci: uprev IGT and update testlist
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] arm64: dts: mediatek: mt7622: set PHY address of
+ MT7531 switch to 0x1f
 Content-Language: en-US
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
- helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- emma@anholt.net, robdclark@gmail.com, david.heidelberg@collabora.com,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- hamohammed.sa@gmail.com, rodrigosiqueiramelo@gmail.com,
- melissa.srw@gmail.com, mairacanal@riseup.net, mcanal@igalia.com,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20240306030649.60269-1-vignesh.raman@collabora.com>
- <20240306030649.60269-4-vignesh.raman@collabora.com>
- <CAA8EJpo=OXUitC+NPjZd5Kpq9dF04BSffvgsMYnn7LmmEoh09A@mail.gmail.com>
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <CAA8EJpo=OXUitC+NPjZd5Kpq9dF04BSffvgsMYnn7LmmEoh09A@mail.gmail.com>
+To: Florian Fainelli <f.fainelli@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240314-for-mediatek-mt7531-phy-address-v1-0-52f58db01acd@arinc9.com>
+ <20240314-for-mediatek-mt7531-phy-address-v1-1-52f58db01acd@arinc9.com>
+ <94e3d09a-e6a4-4808-bc29-3f494b65e170@gmail.com>
+ <62d128f1-11ac-4669-90ff-e9cdd0ec5bd9@arinc9.com>
+ <71dd200a-0306-4baa-abab-6e6906aeef2a@gmail.com>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <71dd200a-0306-4baa-abab-6e6906aeef2a@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-GND-Spam-Score: 400
+X-GND-Status: SPAM
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240318_074907_727490_A5FC994A 
-X-CRM114-Status: GOOD (  14.66  )
+X-CRM114-CacheID: sfid-20240318_082711_857136_D3EF4C8B 
+X-CRM114-Status: GOOD (  13.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,41 +84,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
-
-On 15/03/24 17:07, Dmitry Baryshkov wrote:
-> On Wed, 6 Mar 2024 at 05:08, Vignesh Raman <vignesh.raman@collabora.com> wrote:
+On 18.03.2024 16:02, Florian Fainelli wrote:
+>>> Can we call it a pseudo PHY to use a similar terminology as what is done through drivers/net/dsa/{bcm_sf2,b53}*?
+>>>
+>>> This is not a real PHY as in it has no actual transceiver/digital signal processing logic, this is a piece of logic that snoops for MDIO transactions at that specific address and lets you access the switch's internal register as if it was a MDIO device.
 >>
->> Uprev IGT and add amd, v3d, vc4 and vgem specific
->> tests to testlist. Have testlist.txt per driver
->> and include a base testlist so that the driver
->> specific tests will run only on those hardware.
->> Also add testlists to the MAINTAINERS file.
+>> I can get behind calling the switch a psuedo-PHY in the context of MDIO.
+>> However, as described on "22.2.4.5.5 PHYAD (PHY Address)" of "22.2.4.5
+>> Management frame structure" of the active standard IEEE Std 802.3™‐2022,
+>> the field is called "PHY Address". The patch log doesn't give an identifier
+>> as to what a switch is in the context of MDIO. Only that it listens on a
+>> certain PHY address which the term complies with IEEE Std 802.3™‐2022.
+>>
+>> So I don't see an improvement to be made on the patch log. Feel free to
+>> elaborate further.
 > 
-> I think we should move away from specifying tests explicitly. They can
-> easily get out of sync. A month ago I had to manually go through the
-> list of the tests and update it to follow changes in the IGT.
-> 
-> I think we should directly use testlist.txt from IGT and then filter
-> it out using skips.
+> I would just s/PHY/MDIO bus address/ since that is simply more generic, but if it is not written as-is in the spec, then I won't fight it much more than I already did.
 
-So we use the test-list-full.txt or test-list.txt from IGT and generate 
-a single testlist for drm-ci when we uprev IGT?
+I'm not sure what you're referring to by spec. Are you asking how specific
+the name of the PHYAD field is described on the standard?
 
-Instead of adding the below to skips file for different driver,
-msm_.*
-^amdgpu.*
-panfrost_.*
-v3d_.*
-vc4_.*
-
-If we have a separate testlist for each driver, we can update the main 
-testlist.txt along with individual testlist for each driver. We just 
-need to move the driver specific tests from main testlist to individual
-driver testlist file. Please let me know your thoughts.
-
-Thanks.
-
-Regards,
-Vignesh
+Arınç
 
