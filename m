@@ -4,71 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04187C54E69
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Mar 2024 10:24:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1A72C54E5D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Mar 2024 10:28:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=boStEBxYLzG+BAE7/w3xFyV9O+TcPCLRCxVmQuHf2wY=; b=fNR/L17jc/V5tD4vn/rXBrw4Ym
-	y6kVL2pnXJFNDzndcfCwVCkwvXu6gK52X6fwm5EdbWZaHV8sKiLBAjuR+FR48V+qsg0hfO6OZ2Qt0
-	EhCMGyxwUL6pr9IaIB3vHrrNJI2p+hULs934EYCDXS29mBkyCxAbrAwyh5ZeXyUnbfQB4L8yNaSL0
-	4jsfT/RWIdN/zncC2F0kZUie9CsBCCygwydc15A5Li+mOucaWija9Sj5ge7hbgEqpo8ThZXAjwMhG
-	qMblWZ5PZnCn6nuPqHU0T8PO1CX6p1KRLlNDQ3GSiwmGXMIYjla3kmpcwDNcp/pijv/47Gmxd+AQi
-	kFDIhqzw==;
+	bh=sT+4zMWQzbo0x8RNhmfK/wviX6rDPIIfPgAYg9v88hA=; b=dB6Zmr+jRBa3uKEH2XVt6mSFc/
+	IAkTg/2OCmDwRWvzyWc7kLaFldN3KuDMOBmmGeY2mpV352aZMPb+DFLGxHPWwAasV562+nscUniKM
+	BxmriEs8dQeJbRXBLy8ELizaTB7PQ9I38qI+nTCrBfM07XkN2j02nqI3Qxoph01DHWmmu+HAwmxZn
+	UbS2mWCUXlPVwpiXhL6ANtnqDN4uxqD2tcjzX3in3XPHi4UC13mJ/KzErkDamxV+4Gy+5cCUFigGi
+	9ZGq9sUgeASgXfGCh7rB0WE1fvpDLMWvKUk4etHesUMgc4+q3V7HmKKeuNXCYaYheaOUrdTzTJNgB
+	TLnnym/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmAA9-000000088Yu-2SPx;
-	Mon, 18 Mar 2024 10:24:13 +0000
+	id 1rmAE6-000000089eG-2Ntz;
+	Mon, 18 Mar 2024 10:28:18 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmA9z-000000088TL-3BDU;
-	Mon, 18 Mar 2024 10:24:05 +0000
+	id 1rmAE2-000000089dZ-2mPG;
+	Mon, 18 Mar 2024 10:28:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710757442;
-	bh=hNpLFt8GxecUESbc49ly/PcpGkpFphO8cqf5mABNGZs=;
+	s=mail; t=1710757693;
+	bh=Hlz3vIo/SAFLMtB571JA+dfQmkfGK4xIdjyWOHWeuq8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RnV6nsUUsgKCxPjetCnisWhXn2lFSsvUwOwxOrlEwSfdm63DKXmi5na1L2dZKwjRq
-	 MlpIIFOoPhskrLCPSn0dYXqlU9j53luKhKUfcw9OMrflAiAwbjHMoIT7o1QH066wCz
-	 77VWLDsPDMqJwZ3uoIpwhQ0j9kUGFEL7DXp/k5U8QcjFGKCwIE6KYPQ41HooT96Ypy
-	 ymdTq8PmFp/qhh6XJNxv6tppHgEWmAdK6Q/GT29Bb+d8SHFMkf6Q+17VgEbTzygD1T
-	 DtS6hSYa10XHHrFfLJUykgswjHc8569GFs96dXHqUJg06tQI8bHa9YKuuUvkvHGZRO
-	 39sokNIQvI6wA==
+	b=24sDEon6VorXmZGTHRWyKcU6khdFzGNQ9Wxx/TS1W7GjC605djkugTTSNj4ZYl9Gs
+	 KsQG/eKYuCDXq2cE72oHiGRwVZstqtGaXYBpRmSFrYuDZzvf/1XS9vjJBjpdUwAeLF
+	 UTslBj1c+TSvDHG8IqzCFOF2ntB/evSCvYDhfofd+rGbppz5WJT4cG2hf21DgDQSLX
+	 9kAJZ8t//mUo7UQiuY3cFEIDDz8vE7Asnchtl1syRJMgCKyUOyjoKbESwhytnCCNeQ
+	 WXuyK8Nt6KK8lSjUxm7YlOcdXKkuFE2OmOuEw5i0w2vv/kWOajdOfTIYpXZC5rppuj
+	 XOnrn5Cl6M1aw==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id BDCCD378205B;
-	Mon, 18 Mar 2024 10:24:01 +0000 (UTC)
-Message-ID: <847e1c25-d28c-4616-88fb-b1d3d8f60f7b@collabora.com>
-Date: Mon, 18 Mar 2024 11:24:01 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2CF0C37813EA;
+	Mon, 18 Mar 2024 10:28:12 +0000 (UTC)
+Message-ID: <fb9ae93f-9531-468a-b6c8-044b91b62712@collabora.com>
+Date: Mon, 18 Mar 2024 11:28:11 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V2 1/4] arm64: dts: mediatek: mt7622: fix clock
- controllers
+Subject: Re: [PATCH V3 4/4] arm64: dts: mediatek: Add Cudy WR3000 V1
 Content-Language: en-US
 To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>
-Cc: Sean Wang <sean.wang@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
- "David S . Miller" <davem@davemloft.net>, devicetree@vger.kernel.org,
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
+ Heiko Stuebner <heiko.stuebner@cherry.de>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Chris Morgan <macromorgan@hotmail.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Sean Wang
+ <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
  <rafal@milecki.pl>
-References: <20240317221050.18595-1-zajec5@gmail.com>
- <20240317221050.18595-2-zajec5@gmail.com>
+References: <20240317223206.22033-1-zajec5@gmail.com>
+ <20240317223206.22033-5-zajec5@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240317221050.18595-2-zajec5@gmail.com>
+In-Reply-To: <20240317223206.22033-5-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240318_032403_963019_4176D0D8 
-X-CRM114-Status: UNSURE (   6.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240318_032814_889808_1F5F6F80 
+X-CRM114-Status: GOOD (  14.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,18 +86,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/03/24 23:10, Rafał Miłecki ha scritto:
+Il 17/03/24 23:32, Rafał Miłecki ha scritto:
 > From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> 1. Drop unneeded "syscon"s (bindings were updated recently)
-> 2. Use "clock-controller" in nodenames
-> 3. Add missing "#clock-cells"
+> Cudy WR3000 V1 is an MT7981B (AKA Filogic 820) based wireless router. It
+> has 256 MiB of RAM, some LEDs & buttons and (not described yet) 4
+> Ethernet ports.
 > 
-> Fixes: d7167881e03e ("arm64: dts: mt7622: add clock controller device nodes")
-> Fixes: e9b65ecb7c30 ("arm64: dts: mediatek: mt7622: introduce nodes for Wireless Ethernet Dispatch")
 > Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+> ---
+> V2: Reorder properties
+>      Describe online LED
+> V3: Use LED_FUNCTION_WAN_ONLINE (present in torvalds/linux.git)
+
+I'm really happy that you managed to get that WAN_ONLINE definition in the common
+leds binding, btw! :-)
+
+> 
+>   arch/arm64/boot/dts/mediatek/Makefile         |  1 +
+>   .../dts/mediatek/mt7981b-cudy-wr3000-v1.dts   | 74 +++++++++++++++++++
+>   2 files changed, 75 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index 37b4ca3a87c9..96da4ad640aa 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7981b-cudy-wr3000-v1.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7981b-xiaomi-ax3000t.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-acelink-ew-7886cax.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts b/arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts
+> new file mode 100644
+> index 000000000000..54101cc08a25
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts
+> @@ -0,0 +1,74 @@
+> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
+> +
+> +/dts-v1/;
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/leds/common.h>
+> +
+> +#include "mt7981b.dtsi"
+> +
+> +/ {
+> +	compatible = "cudy,wr3000-v1", "mediatek,mt7981b";
+> +	model = "Cudy WR3000 V1";
+> +
+> +	memory@40000000 {
+> +		reg = <0 0x40000000 0 0x10000000>;
+> +		device_type = "memory";
+> +	};
+> +
+> +	keys {
+> +		compatible = "gpio-keys";
+> +
+> +		key-wps {
+> +			label = "WPS";
+> +			gpios = <&pio 0 GPIO_ACTIVE_LOW>;
+> +			linux,code = <KEY_WPS_BUTTON>;
+> +		};
+> +
+> +		key-reset {
+> +			label = "RESET";
+> +			gpios = <&pio 1 GPIO_ACTIVE_LOW>;
+> +			linux,code = <KEY_RESTART>;
+> +		};
+> +	};
+> +
+> +	leds {
+> +		compatible = "gpio-leds";
+> +
+> +		led-0 {
+> +			color = <LED_COLOR_ID_BLUE>;
+> +			function = LED_FUNCTION_WAN;
+> +			gpios = <&pio 5 GPIO_ACTIVE_LOW>;
+> +		};
+> +
+> +		led-1 {
+> +			color = <LED_COLOR_ID_BLUE>;
+> +			function = LED_FUNCTION_WLAN_2GHZ;
+> +			gpios = <&pio 6 GPIO_ACTIVE_LOW>;
+> +		};
+> +
+> +		led-2 {
+> +			color = <LED_COLOR_ID_BLUE>;
+> +			function = LED_FUNCTION_WLAN_5GHZ;
+> +			gpios = <&pio 7 GPIO_ACTIVE_LOW>;
+> +		};
+> +
+> +		led-3 {
+> +			color = <LED_COLOR_ID_BLUE>;
+> +			function = LED_FUNCTION_LAN;
+> +			gpios = <&pio 9 GPIO_ACTIVE_LOW>;
+> +		};
+> +
+> +		led-4 {
+> +			color = <LED_COLOR_ID_BLUE>;
+> +			function = LED_FUNCTION_STATUS;
+> +			gpios = <&pio 10 GPIO_ACTIVE_LOW>;
+> +		};
+> +
+> +		led-5 {
+> +			color = <LED_COLOR_ID_BLUE>;
+> +			function = LED_FUNCTION_WAN_ONLINE;
+> +			gpios = <&pio 11 GPIO_ACTIVE_LOW>;
+> +		};
+> +	};
+> +};
 
 
 
