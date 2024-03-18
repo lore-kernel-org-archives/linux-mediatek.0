@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19BEFC54E71
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13AE6C54E5D
 	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Mar 2024 21:25:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,46 +12,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tp9pS86jt7EByb0LHJZootitRvKHsZVrpw6g/Ig23Xw=; b=KOP69e/80GlUibTUlfQ74kNe2d
-	hM4WFCCxQPf45dF3nQedDN6kZrxJCWZgdy8MAPq+kWDkJZECXxeWaLDlZzM1MIGIpvuyl9Fn4aoKv
-	xXMmgg5o+8XYMeKXeTH40SOofkahe1UbyZX8OqLF0R8I9WDKreiiNGUk2wUdiysqo4/hlmMuYIdZM
-	hDpoZj5j2Tibwg+79TNRYpHm/N/gCOaP4NHLfArX/hTN4EB1L2uCCsMz+qmTi3XADOtsQ5Huj5EM8
-	tMCvHj9sE4PDpWu3DvpIHPb8oRlurNV6CmGOOVwpl5RVNAkBN+kR+dt7Irs8EaLV2DRKVmUqy7rFe
-	/rcdxXbw==;
+	bh=w3Y1Ing7SjbPw8JnEXw53NAE2TlwO5gXZ1R6AnwBecQ=; b=dTTIajuZFQlAi1JPF4O8kiJ0JD
+	uxw9rc/RCgEVAqmkH3O5/kf72iskbh0GW16wnqO53uZz8+zwIdHqtdl88iP0W+uQC6r/SI9usVO8u
+	nxTyOR/W8qRuO/ZIztlCGPBsKhmPwZusQlAaEFp7rztWHrWv1KzQPxCxbbBfj7J/MBMBS7PVqetYc
+	rmbNraQ0F0TohhU+D15LzgGkzbbpcPzMIuRpX5dx84eyjYFLX7a4OSWHGxdGR5X0Q1mR9oVgAW2kr
+	/3ZQCUwrrnWDsw0XB08OgfM2H24FRtAJcSyr36f+StIBl8tdnKxX5tce6uG3Fx5opwhSTbtmw4Zqi
+	k69pP0MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmKTf-0000000ACWg-2Axa;
-	Mon, 18 Mar 2024 21:25:03 +0000
+	id 1rmKTc-0000000ACUx-0oCR;
+	Mon, 18 Mar 2024 21:25:00 +0000
 Received: from pb-smtp2.pobox.com ([64.147.108.71])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmKTY-0000000ACS1-2DQy
+	id 1rmKTY-0000000ACRy-242w
 	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Mar 2024 21:24:59 +0000
+	Mon, 18 Mar 2024 21:24:58 +0000
 Received: from pb-smtp2.pobox.com (unknown [127.0.0.1])
-	by pb-smtp2.pobox.com (Postfix) with ESMTP id 309001EA51F;
-	Mon, 18 Mar 2024 17:24:54 -0400 (EDT)
+	by pb-smtp2.pobox.com (Postfix) with ESMTP id B947F1EA519;
+	Mon, 18 Mar 2024 17:24:52 -0400 (EDT)
 	(envelope-from nico@fluxnic.net)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed; d=pobox.com; h=from:to:cc
 	:subject:date:message-id:in-reply-to:references:mime-version
-	:content-transfer-encoding; s=sasl; bh=riBa2i2K5aVkfxrVFil1GzpH3
-	/MJZgEvPoRpDmR6jew=; b=ozpoh6YsU2Wg/+Cwuee0tvNZL277kGIXf8c/Ga2eO
-	klSin18eoybgfrvfdtCvnCkBIJDVd940LRxOMBCTssciltydNNl+X0qosjIWWlGf
-	Ab9U33zRhDNIZ36D+xY0uwxpVetlHSwS+TbVbKrO7dgNBeLi9ji88K4PTnHu9q/t
-	Gk=
+	:content-transfer-encoding; s=sasl; bh=fjH3v9lUYOCHLYg/wxlBXzCQD
+	4vQ5R5fYy3nQWJXnb8=; b=dCp/Y6EAuxIFh9O4lJCoLa1b/bUNntW45acFdfO2r
+	GmLcfgwqO14ZEnounoR53e5la6nkKoEleYGUM97Q0O74rEzEZ0Ceok2Epjh3KbLd
+	n7Jv36xYgzvsC6AJLkVgcP3CO/hXzMcsoHKaqFse93zO6fXd3oMJYZg5zRVN/SL0
+	P8=
 Received: from pb-smtp2.nyi.icgroup.com (unknown [127.0.0.1])
-	by pb-smtp2.pobox.com (Postfix) with ESMTP id 288FC1EA51E;
-	Mon, 18 Mar 2024 17:24:54 -0400 (EDT)
+	by pb-smtp2.pobox.com (Postfix) with ESMTP id B10BA1EA518;
+	Mon, 18 Mar 2024 17:24:52 -0400 (EDT)
 	(envelope-from nico@fluxnic.net)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed; d=fluxnic.net;
- h=from:to:cc:subject:date:message-id:in-reply-to:references:mime-version:content-transfer-encoding; s=2016-12.pbsmtp; bh=WcTGoIDUaHZ+qNSs8SEiFxxzSk5tmdUFvUu3wByDWpE=; b=a/RBSYa8C5G4UPU4RJuKTdDGyl0hRgqu+O/LlKF8PzbIr82UloRbMPe+2zdqeNzeZ0Tm47NFaXZsWFHGzQxrrm9pL4kmMjyggYFQ7i2avfpZXhW/QX7euaEeBXPPDngPKD5kL9ABwuEYcOvi+AoFGkIR5xOLXx1Az+dnP9ESDrM=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references:mime-version:content-transfer-encoding; s=2016-12.pbsmtp; bh=PFrKZ3JxTnWeaYuZKg5QTI2xLnaKbtv+w5mmpVYZI7E=; b=DSUnM8BZJzY1Ih9D/3YlqNc5w++AHH+XoJvvzmdZBIrJ6mXDGbSir7oKGWlaHYeN3IrRi4tNT3rl9/ibjUykzJh53tNUtmn3591sYW958Wj3UqLDyoQ7OUNdI+iAxaOjgAlA4FyttqxYA3LI2I6B2cIOA1IlLZ0HZuAv7MwW6AI=
 Received: from yoda.fluxnic.net (unknown [24.201.101.36])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by pb-smtp2.pobox.com (Postfix) with ESMTPSA id 942491EA51D;
-	Mon, 18 Mar 2024 17:24:53 -0400 (EDT)
+	by pb-smtp2.pobox.com (Postfix) with ESMTPSA id 226931EA516;
+	Mon, 18 Mar 2024 17:24:52 -0400 (EDT)
 	(envelope-from nico@fluxnic.net)
 Received: from xanadu.lan (OpenWrt.lan [192.168.1.1])
-	by yoda.fluxnic.net (Postfix) with ESMTPSA id CD791BE2BAD;
+	by yoda.fluxnic.net (Postfix) with ESMTPSA id 4BB8DBE2BA6;
 	Mon, 18 Mar 2024 17:24:50 -0400 (EDT)
 From: Nicolas Pitre <nico@fluxnic.net>
 To: Daniel Lezcano <daniel.lezcano@linaro.org>,
@@ -59,18 +59,18 @@ To: Daniel Lezcano <daniel.lezcano@linaro.org>,
 	linux-mediatek@lists.infradead.org,
 	devicetree@vger.kernel.org
 Cc: Nicolas Pitre <npitre@baylibre.com>
-Subject: [PATCH v2 11/13] dt-bindings: thermal: mediatek: Add LVTS thermal controller definition for MT8188
-Date: Mon, 18 Mar 2024 17:22:13 -0400
-Message-ID: <20240318212428.3843952-12-nico@fluxnic.net>
+Subject: [PATCH v2 06/13] arm64: dts: mediatek: mt8186: add lvts definitions
+Date: Mon, 18 Mar 2024 17:22:08 -0400
+Message-ID: <20240318212428.3843952-7-nico@fluxnic.net>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240318212428.3843952-1-nico@fluxnic.net>
 References: <20240318212428.3843952-1-nico@fluxnic.net>
 MIME-Version: 1.0
-X-Pobox-Relay-ID: F5FC9052-E56D-11EE-BA10-25B3960A682E-78420484!pb-smtp2.pobox.com
+X-Pobox-Relay-ID: F51D6422-E56D-11EE-921F-25B3960A682E-78420484!pb-smtp2.pobox.com
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240318_142456_742397_83842C72 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20240318_142456_695446_0266B611 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,68 +87,53 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Nicolas Pitre <npitre@baylibre.com>
 
-Add LVTS thermal controller definition for MT8188.
+Values extracted from vendor source tree.
 
 Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
 ---
- .../bindings/thermal/mediatek,lvts-thermal.yaml  |  4 ++++
- .../dt-bindings/thermal/mediatek,lvts-thermal.h  | 16 ++++++++++++++++
- 2 files changed, 20 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/thermal/mediatek,lvts-ther=
-mal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,lvts-therma=
-l.yaml
-index 4173bae530..331cf4e662 100644
---- a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yam=
-l
-+++ b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yam=
-l
-@@ -20,6 +20,8 @@ properties:
-     enum:
-       - mediatek,mt7988-lvts-ap
-       - mediatek,mt8186-lvts
-+      - mediatek,mt8188-lvts-ap
-+      - mediatek,mt8188-lvts-mcu
-       - mediatek,mt8192-lvts-ap
-       - mediatek,mt8192-lvts-mcu
-       - mediatek,mt8195-lvts-ap
-@@ -61,6 +63,8 @@ allOf:
-         compatible:
-           contains:
-             enum:
-+              - mediatek,mt8188-lvts-ap
-+              - mediatek,mt8188-lvts-mcu
-               - mediatek,mt8192-lvts-ap
-               - mediatek,mt8192-lvts-mcu
-     then:
-diff --git a/include/dt-bindings/thermal/mediatek,lvts-thermal.h b/includ=
-e/dt-bindings/thermal/mediatek,lvts-thermal.h
-index 3197ca6087..04fa9d7821 100644
---- a/include/dt-bindings/thermal/mediatek,lvts-thermal.h
-+++ b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
-@@ -26,6 +26,22 @@
- #define MT8186_TS3_1		7
- #define MT8186_TS3_2		8
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt8186.dtsi
+index 2fec6fd1c1..7b7a517a41 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+@@ -1355,6 +1355,18 @@ spi0: spi@1100a000 {
+ 			status =3D "disabled";
+ 		};
 =20
-+#define MT8188_MCU_TS1_0	0
-+#define MT8188_MCU_TS1_1	1
-+#define MT8188_MCU_TS1_2	2
-+#define MT8188_MCU_TS1_3	3
-+#define MT8188_MCU_TS2_0	4
-+#define MT8188_MCU_TS2_1	5
++		lvts: lvts@1100b000 {
++			compatible =3D "mediatek,mt8186-lvts";
++			#thermal-sensor-cells =3D <1>;
++			reg =3D <0 0x1100b000 0 0x1000>;
++			interrupts =3D <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks =3D <&infracfg_ao CLK_INFRA_AO_THERM>;
++			clock-names =3D "lvts_clk";
++			resets =3D <&infracfg_ao MT8186_INFRA_THERMAL_CTRL_RST>;
++			nvmem-cells =3D <&lvts_e_data1 &lvts_e_data2>;
++			nvmem-cell-names =3D "e_data1","e_data2";
++		};
 +
-+#define MT8188_AP_TS3_1		0
-+#define MT8188_AP_TS4_0		1
-+#define MT8188_AP_TS4_1		2
-+#define MT8188_AP_TS4_2		3
-+#define MT8188_AP_TS5_0		4
-+#define MT8188_AP_TS5_1		5
-+#define MT8188_AP_TS6_0		6
-+#define MT8188_AP_TS6_1		7
+ 		pwm0: pwm@1100e000 {
+ 			compatible =3D "mediatek,mt8186-disp-pwm", "mediatek,mt8183-disp-pwm"=
+;
+ 			reg =3D <0 0x1100e000 0 0x1000>;
+@@ -1668,6 +1680,14 @@ efuse: efuse@11cb0000 {
+ 			#address-cells =3D <1>;
+ 			#size-cells =3D <1>;
+=20
++			lvts_e_data1: data1 {
++				reg =3D <0x1cc 0x14>;
++			};
 +
- #define MT8195_MCU_BIG_CPU0     0
- #define MT8195_MCU_BIG_CPU1     1
- #define MT8195_MCU_BIG_CPU2     2
++			lvts_e_data2: data1-1 {
++				reg =3D <0x2f8 0x14>;
++			};
++
+ 			gpu_speedbin: gpu-speedbin@59c {
+ 				reg =3D <0x59c 0x4>;
+ 				bits =3D <0 3>;
 --=20
 2.44.0
 
