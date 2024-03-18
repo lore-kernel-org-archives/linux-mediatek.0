@@ -4,74 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F980C54E5D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Mar 2024 15:51:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0989C54E69
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Mar 2024 18:02:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A05q6KoR0JEWg+AapjwLG9ZBzCyQlsIDEalElRAtOMg=; b=PH0shS8boRvmChvADL7NXnVg/4
-	/Gv5XI4pLgpc0Ewlv/mjNvFFU5EEgfjNwvHjV+nYbabLGq4ZNg23txP6DydoC78mtQveoKpkoACXj
-	7gDle4+xsnGNmyTEmyR82Eba2mCVkVYBKKsZDCZQCcgLcpCG6ylIHTPS71AePLflLzYSASkLdSxPm
-	43rwLOj21B7Xe0QRe9ottuRJ70HO9S4kfAt23gJ6Lef8WTsdiOWHJoNwvl2VPdT1Bt7O+lY/BqpRK
-	TyKVxJC6lJLH/I+HFUo7VceBmgvObTIf9qWN+lFRj6RTjtvhc1A9HwTDyG1sUTAbt36UYBZa+bl0p
-	KRKuYUiw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uhmIJSS0MmeG6gI2GaZskyHA3NQtOjY4VOlHtU7hHo0=; b=UWbB0PSvn+MTLkbCLe4kQKG3T3
+	lr9YOIxRmGfpkJQf0Df52Snok4XoBC8dOaipfdonRTNAv6epQBU6SaA34kYgYlxyeT8H5Stv+jzjW
+	gsi776o4k9GGfx+XZN2zuR3mKiPAdRPUFL414t4msbL4uwQvey4abv6ill++N50+lqeGm85wu9tr2
+	oV+2EpdQqh821TKTXxofoy0DZHiiPFBB21dDCitkOw+bV2gCWmBCjqcckG1WHiRaiqxbKlG6XuXpW
+	WBU3pwI59ZpXJFPviaFGeJfG3MXhhtzZReYynl5d8VzQpMfKVuKi/Ra0JvdKvJJY1cPS1NwqTGPEX
+	QQVvWDcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmFHA-000000096aq-0iLC;
-	Mon, 18 Mar 2024 15:51:48 +0000
-Received: from relay4-d.mail.gandi.net ([217.70.183.196])
+	id 1rmHJE-00000009Zv2-0t4v;
+	Mon, 18 Mar 2024 18:02:04 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmFGg-000000096Jk-3hm3;
-	Mon, 18 Mar 2024 15:51:21 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 32915E0005;
-	Mon, 18 Mar 2024 15:51:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1710777075;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=A05q6KoR0JEWg+AapjwLG9ZBzCyQlsIDEalElRAtOMg=;
-	b=L5UflZSpH2pvPOZJq67tgjFsh9FmimSSKG1CIj7BkPVn21owzSnc2FCv1Z8TXrEjr/COf8
-	0uJVcTuS33VzvGeLFN5Y/XcLYfniCTmzArj5bhddNit2+9A67ea1/6PUZkM2PjfNt4bSIp
-	gGAvUAuJtQaviRuMz5g6AlLTzU7rKdCtuTIqQHiGWdfqU3cyGUe4YpgG7UhCFDNJXV3WWo
-	mTc9Zt0BhBXUR0vUveKS1+oTBzjeRHXVKOtVu2r+2ZQ+BGfMtE7ldow4JAVLJdcje4hfbj
-	ro9naMUU213HFXZdugz0B+Ej0dYWyoTFn04VRizljW+pYZWxFze224bvvcYUVQ==
-Message-ID: <4c1c4420-b539-4e29-972d-cb3838fff066@arinc9.com>
-Date: Mon, 18 Mar 2024 18:50:53 +0300
+	id 1rmHJB-00000009Zti-0r96;
+	Mon, 18 Mar 2024 18:02:03 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 708D360C85;
+	Mon, 18 Mar 2024 18:01:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2300C433C7;
+	Mon, 18 Mar 2024 18:01:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1710784919;
+	bh=AsJtNv/pnLcwK3yuhNmyxuo7mviUdItkUTqHK8N+CpQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=wd5cAvKjs7+lgaCUrGw2bcXhS7NFH+TKpo4w2yEqrMXiJCg2xRhMXdZHeZBiuUaoP
+	 ZKgj3eAgJWlHNSHBp/Jv0CUkUQL8QpA2oBMzeJ8B7hvq/eUqV5iHrvzt8mZy2a9MDh
+	 RDvQTm01LvqUPb7PSe/Se5zM1KYYN5M1piVKDeLY=
+Date: Mon, 18 Mar 2024 14:01:58 -0400
+From: Konstantin Ryabitsev <konstantin@linuxfoundation.org>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: Florian Fainelli <f.fainelli@gmail.com>, 
+	Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
+	Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?UmVuw6k=?= van Dorst <opensource@vdorst.com>, 
+	Russell King <linux@armlinux.org.uk>, SkyLake Huang <SkyLake.Huang@mediatek.com>, 
+	Heiner Kallweit <hkallweit1@gmail.com>, Bartel Eerdekens <bartel.eerdekens@constell8.be>, 
+	mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 0/3] Fix EEE support for MT7531 and MT7988 SoC switch
+Message-ID: <20240318-quizzical-raven-of-plenty-ef21f5@lemur>
+References: <65f7f17d.050a0220.3c75a.cde3SMTPIN_ADDED_BROKEN@mx.google.com>
+ <5514243b-c795-436e-8628-8f421c900bcb@gmail.com>
+ <ea889226-3649-4f74-8c38-67c459e4ea4d@arinc9.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] arm64: dts: mediatek: mt7622: set PHY address of
- MT7531 switch to 0x1f
-Content-Language: en-US
-To: Florian Fainelli <f.fainelli@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240314-for-mediatek-mt7531-phy-address-v1-0-52f58db01acd@arinc9.com>
- <20240314-for-mediatek-mt7531-phy-address-v1-1-52f58db01acd@arinc9.com>
- <94e3d09a-e6a4-4808-bc29-3f494b65e170@gmail.com>
- <62d128f1-11ac-4669-90ff-e9cdd0ec5bd9@arinc9.com>
- <71dd200a-0306-4baa-abab-6e6906aeef2a@gmail.com>
- <7d1ad037-d8ac-4b9a-b6d2-ab683e52a898@arinc9.com>
- <23f4c9b1-5c6b-4f3c-9290-41d195650368@gmail.com>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <23f4c9b1-5c6b-4f3c-9290-41d195650368@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-GND-Spam-Score: 400
-X-GND-Status: SPAM
-X-GND-Sasl: arinc.unal@arinc9.com
+In-Reply-To: <ea889226-3649-4f74-8c38-67c459e4ea4d@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240318_085119_863580_0A48704B 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20240318_110201_309009_D9FC9699 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,33 +80,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18.03.2024 18:38, Florian Fainelli wrote:
-> On 3/18/24 08:26, Arınç ÜNAL wrote:
->> On 18.03.2024 16:02, Florian Fainelli wrote:
->>>>> Can we call it a pseudo PHY to use a similar terminology as what is done through drivers/net/dsa/{bcm_sf2,b53}*?
->>>>>
->>>>> This is not a real PHY as in it has no actual transceiver/digital signal processing logic, this is a piece of logic that snoops for MDIO transactions at that specific address and lets you access the switch's internal register as if it was a MDIO device.
->>>>
->>>> I can get behind calling the switch a psuedo-PHY in the context of MDIO.
->>>> However, as described on "22.2.4.5.5 PHYAD (PHY Address)" of "22.2.4.5
->>>> Management frame structure" of the active standard IEEE Std 802.3™‐2022,
->>>> the field is called "PHY Address". The patch log doesn't give an identifier
->>>> as to what a switch is in the context of MDIO. Only that it listens on a
->>>> certain PHY address which the term complies with IEEE Std 802.3™‐2022.
->>>>
->>>> So I don't see an improvement to be made on the patch log. Feel free to
->>>> elaborate further.
->>>
->>> I would just s/PHY/MDIO bus address/ since that is simply more generic, but if it is not written as-is in the spec, then I won't fight it much more than I already did.
->>
->> I'm not sure what you're referring to by spec. Are you asking how specific
->> the name of the PHYAD field is described on the standard?
+On Mon, Mar 18, 2024 at 05:03:29PM +0300, Arınç ÜNAL wrote:
+> > We've received your patch series 4 times and this was the same thing with your previous b4 submission, can you find out what happened? Thanks.
 > 
-> Spec = IEEE Std 802.3-2022 standard, aka the document you are quoting.
+> It looks like my branch name was too long again. b4 0.13.0 cannot handle
+> branch names that are too long. I'll keep it shorter for future
+> submissions. It'd be great if Konstantin could provide a specific limit.
 
-Ok. The field is referred to as "PHY Address" (capital A) in a sentence on
-the standard. I interpret that as it defines the term to mention the field
-in a sentence which is why I'd like to stick to it on my patch log.
+It's not really b4, it's the web endpoint and the version of python it's
+running. I hope to fix it soon by applying the same workarounds as we ended up
+doing for b4 itself.
 
-Arınç
+-K
 
