@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54CB7C54E58
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Mar 2024 13:08:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DC87C54E58
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Mar 2024 13:12:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0b3lVbJ/u4Iyr/bGVB60L+I6TRPbyfigHd10qyDtAt8=; b=WMDjaz14yhomeYV/gUjrYLKdgt
-	zno5ARKPl9aT7F4el2v5tORIJYhEQhTINudW8dXrqsjxLIpxH7tPU75BvjrPaY97xb8hfcUE2ZzYQ
-	fVMjEK4Kz/LFxENkee3B1z63YnYIyoeYYhqlwn2Da/ltnx72aAP4VBCz2RR5x6PD8wEdo+FVy10TP
-	UgRlEGY00EEvWLz+KdW0pZhH3Ns/smlkyIwsJAwW+zdzOEc9pZAnamOtxhD3B/pw7EIH+i3FWQncy
-	8MZOs76dGbbsI/fRHWvxk/K1PNNsteOLjdJMuQqa4Yn6Ik5FBY/q25N8VO1SMN6DxrEP8Tvzulrjr
-	MS2ysEZg==;
+	bh=iR1PVTYigSsX/lfBBb8BrTI0Bk6Qcqxklf6J6zVF8SI=; b=d5F1u74Q+hjKXhxPgp3lM0gxTP
+	is/PEKY8/EoZAdLu37n1I9FixgYQ9Xgv7iLjRnkw08KFRVGGwJ0HjuY7dTxOTpE0T/LKlWgaczeE8
+	xdb1m0eLkVUHiw1408msSi7nEJO1d8ZLx1WzHfXLAz8cGBMVyx6zXbpLcC123AqjvrNjHRQ3ZAWlc
+	hrYR6ITCRiBBtm2MpvxJtbpmKWMZswWsybWWowDSBn1rVLH5P8GD9OqJwpLxUaHfDfebdHCaS1M8q
+	gCHtqcH0UY6xHpbQdLhbzz3iapoMOGuPHwtKdAUJ7AALGOUcBVkI7pgdv3i8kNaBoesGtGcFxIUeA
+	8q8gA1cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmCj7-00000008bqi-3WXL;
-	Mon, 18 Mar 2024 13:08:29 +0000
-Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233])
+	id 1rmCmW-00000008ccS-13kB;
+	Mon, 18 Mar 2024 13:12:00 +0000
+Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmCj2-00000008boE-3v4I;
-	Mon, 18 Mar 2024 13:08:27 +0000
-Received: by mail-oi1-x233.google.com with SMTP id 5614622812f47-3c1a2f7e302so2445910b6e.0;
-        Mon, 18 Mar 2024 06:08:24 -0700 (PDT)
+	id 1rmCmS-00000008cbs-1rrf;
+	Mon, 18 Mar 2024 13:11:58 +0000
+Received: by mail-qv1-xf33.google.com with SMTP id 6a1803df08f44-6962950c6bfso1919696d6.2;
+        Mon, 18 Mar 2024 06:11:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1710767303; x=1711372103; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1710767515; x=1711372315; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=0b3lVbJ/u4Iyr/bGVB60L+I6TRPbyfigHd10qyDtAt8=;
-        b=F7crdzw5SxTDiN7rcXzevEfo+Rk3Vb36e8dd8KGZAhVgdLXbwSypmBP5KkfsYcaPdi
-         hxVS2GsntONJAIOPTKdo0lIx+cEb6DrgajAMZ+r3TptaLpAmcL6on2pmcjOcJZ46VXWJ
-         6e6r+tCHRWil0NEY61ZBQyDdNuTeHHwOVZFkiZX/OWqkC6BZtBIKWMo02VH7VGlAYkOZ
-         V3h6zcCwy+hsnZZEBMWmqq60Ty7TC1cOUtFSsHih/8K5wUKTAUG0bzybKC92DTM4RROP
-         c0iIXlrxmPmZyWaNqHSr4r63PSyHEbNRVpcnGHwNbbBEh0atMZBmDZda7hPfnL7ATMWc
-         j53w==
+        bh=iR1PVTYigSsX/lfBBb8BrTI0Bk6Qcqxklf6J6zVF8SI=;
+        b=ml2QgdAlc0yDLUXOB7C5j2gqyqE2HwvKbpPnLHMYPLQ0VXRlWsG6ZLRgjBotmPOET3
+         2ggRerKheIa3A1TwNaPu9x5PL+EUYYqsdylOpNzG6KtndU5wXFEyI/htTBKZy++9VBoq
+         L6Wylb0uW/PvR6fXC9l1aYrzEvUm3Z8ZWY/1sN1nfIM91wOD7VwW8GBeRaj8Xz8LMy6W
+         6oWn4uduZMtqE9Xx1cCBFs4zC2g62zNHNgsAB5MxmHfXZAamTbLrp+MdCC9IL1AlcGar
+         2ZA9CX9Tus+Hk9eckfqXLtzc1YhQyI0maUAepj1ctb/fAsp5bR5oDGlg6TzFqLjUqcUJ
+         3R+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710767303; x=1711372103;
+        d=1e100.net; s=20230601; t=1710767515; x=1711372315;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0b3lVbJ/u4Iyr/bGVB60L+I6TRPbyfigHd10qyDtAt8=;
-        b=Aau6v1h1tzjR1BEEAe5hpXbdMyZDW/pjPlT3T3nPQEiaC2jAgRAaY5xxST3KE2AdGq
-         I1SbGgOLljb95Og44bv0tLDF34gYXoeH1WqfXZ02QOBogMJ3d2BckgthqLP035ym9hB7
-         x+UJMW70krtCU5XmH9Vqq9FC76uR5hGKN8GL2U0dRO1r81HLTefs3lHHfV1g2K0cPNU8
-         JRslKOjMxmobWbX8QOvKQG5yEbRVku1NsKMjq+sUeYKBVc+43OFzbm9WH4gSYiad2Nuq
-         vXcGtZY2fEtMEGtQRd8GbbJ2NtK4RYvc2dW5TeXzxW97AvIFXVYG25kI3MEdcVHXswfv
-         6cbQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXL2AshjEUORCryqJXCfahVEtBwP1rYaNSmsvwbXIGWNO+WD/I7WNfSD5X/NDLutFVsmFSWugO9md9BlUYui9hTUI7HNovC4yv8DCSCO/xKQmYqHx1Scm9nx/KxeKPEiasidamxZiPWi+fRm3uZu/CoqcTgwq4MmEg=
-X-Gm-Message-State: AOJu0YynjIj2ANmkMQSvQs4pWP/FrnNTrdXqr5lzoKq5jRd36AIRQNhC
-	FO5qtQx2S62+KGQwU6y7A/K24BQesSpzhpL2/4cmrV3wz22EdHvw
-X-Google-Smtp-Source: AGHT+IFe50KHFHexAqMvJ0KnSzN5auUkz3ombF0fqCQ23161eDZZjvx9TuaLT4tbp6XDv3V6+OkWNg==
-X-Received: by 2002:a05:6808:2289:b0:3c3:82a1:e6e with SMTP id bo9-20020a056808228900b003c382a10e6emr7831238oib.53.1710767302926;
-        Mon, 18 Mar 2024 06:08:22 -0700 (PDT)
+        bh=iR1PVTYigSsX/lfBBb8BrTI0Bk6Qcqxklf6J6zVF8SI=;
+        b=krsy1QEEEOnb/sfn/39EnDrP3+0tnWze5MKzUFoc49j5Kj2mQ5Rw7nAGxQ4oQDjNb9
+         Erj7P0sFDeZWESjbkNvDGM+AqdzwcE6jsVpixq0cnFr+14iVDrLkspI+0Qtr04wVOLlu
+         MfbA82b1hS2VXQqGmY1g3tTJHeiBvrg6X4lf2meBMuFQ1IExj9B8OicQgrw7mVr05MM2
+         Bgc6UCqyLkMZZiyl3N9qwJrcodBS5zp142xT4ccchLxSvwK9s6DAbN8OhDIWTZN6BHal
+         goAbnXelbmX2ZHzRgv6+UjQEMPO51aGrupdgR2uWpVjip1h6Rm39Q/34VRfVryTI3ecO
+         ZsDA==
+X-Forwarded-Encrypted: i=1; AJvYcCXi7+jlYE93AYpEyt8nSiAchiJr8YTQyfxd4nsJvsO2tQLZ04bdIgCB7CmnxfGoMj8qAkmC5bK3IQCWpUpKPXWadYOWXMW760MLUNeKHcTr8BuAhYfWaDrAM2KS0k6seuei7HQXqHTMpm3p4n4daaU6wTGG0bF06aI=
+X-Gm-Message-State: AOJu0YwTBOaFlUvUJWBHHVYcTIN6DstJaV8SoRcdd401BbISOeBoAJJY
+	CSO6w+mtnfY6E5IEkeV8g+1OFjTlnhAS2doH0KpevBAAIVoH/jpS
+X-Google-Smtp-Source: AGHT+IEyZvLimIql/3umoWPezmAL/scvy5OqI+bhWQ0vzUndpy1LV31gNE1h9DgMDwYY3wJZJqyCsA==
+X-Received: by 2002:ad4:550d:0:b0:691:5c3:bdcb with SMTP id pz13-20020ad4550d000000b0069105c3bdcbmr11468009qvb.32.1710767514642;
+        Mon, 18 Mar 2024 06:11:54 -0700 (PDT)
 Received: from [192.168.1.3] (ip68-4-215-93.oc.oc.cox.net. [68.4.215.93])
-        by smtp.gmail.com with ESMTPSA id l16-20020ac84a90000000b0042ee243ca95sm4953118qtq.50.2024.03.18.06.08.19
+        by smtp.gmail.com with ESMTPSA id 4-20020a0562140dc400b006940b9ec66fsm2381423qvt.82.2024.03.18.06.11.51
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 18 Mar 2024 06:08:22 -0700 (PDT)
-Message-ID: <50d8a099-1274-40a7-937e-b2618bfe65be@gmail.com>
-Date: Mon, 18 Mar 2024 06:08:18 -0700
+        Mon, 18 Mar 2024 06:11:54 -0700 (PDT)
+Message-ID: <85bc49e5-a086-4484-86d2-bc2c3829de87@gmail.com>
+Date: Mon, 18 Mar 2024 06:11:51 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] net: phy: mediatek-ge: do not disable EEE
- advertisement
+Subject: Re: [PATCH 1/3] net: dsa: mt7530: fix enabling EEE on MT7531 switch
+ on all boards
 Content-Language: en-US
 To: arinc.unal@arinc9.com, Daniel Golle <daniel@makrotopia.org>,
  DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
@@ -85,7 +85,7 @@ Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20240318-for-net-mt7530-fix-eee-for-mt7531-mt7988-v1-0-3f17226344e8@arinc9.com>
- <65f7f17d.050a0220.c6db1.02bdSMTPIN_ADDED_BROKEN@mx.google.com>
+ <65f7f17d.050a0220.7383e.5eeeSMTPIN_ADDED_BROKEN@mx.google.com>
 From: Florian Fainelli <f.fainelli@gmail.com>
 Autocrypt: addr=f.fainelli@gmail.com; keydata=
  xsDiBEjPuBIRBACW9MxSJU9fvEOCTnRNqG/13rAGsj+vJqontvoDSNxRgmafP8d3nesnqPyR
@@ -120,12 +120,12 @@ Autocrypt: addr=f.fainelli@gmail.com; keydata=
  y5arMQorqTFWlEOgRA8OP47L9knl9i4xuR0euV6DChDrguup2aJVU8JPBBgRAgAPAhsMBQJU
  X9LxBQkeXB3fAAoJEGFXmRW1Y3YOj4UAn3nrFLPZekMeqX5aD/aq/dsbXSfyAKC45Go0YyxV
  HGuUuzv+GKZ6nsysJw==
-In-Reply-To: <65f7f17d.050a0220.c6db1.02bdSMTPIN_ADDED_BROKEN@mx.google.com>
+In-Reply-To: <65f7f17d.050a0220.7383e.5eeeSMTPIN_ADDED_BROKEN@mx.google.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240318_060825_004454_1D75DB04 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20240318_061156_511686_319BDD60 
+X-CRM114-Status: GOOD (  15.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,19 +145,31 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 3/18/2024 12:46 AM, Arınç ÜNAL via B4 Relay wrote:
 > From: Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
-> There's no need to disable Energy-Efficient Ethernet (EEE) advertisement on
-> the MT7530 and MT7531 switch PHYs. EEE works fine on MT7530 and MT7531
-> switch PHYs. Remove the code where EEE advertisement is disabled.
+> The commit 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
+> brought EEE support but did not enable EEE on MT7531 switch MACs. EEE is
+> enabled on MT7531 switch MACs either by pulling the LAN2LED0 pin low on the
+> board (bootstrapping), or unsetting the EEE_DIS bit on the trap register.
 > 
-> This is a bugfix because there's a possible race condition where the
-> mediatek-ge driver would kick in after the MT7530 DSA subdriver which would
-> have EEE disabled until manually enabled.
+> There are existing boards that were not designed to pull the pin low.
+> Therefore, unset the EEE_DIS bit on the trap register.
 > 
-> Fixes: e40d2cca0189 ("net: phy: add MediaTek Gigabit Ethernet PHY driver")
+> Unlike MT7530, the modifiable trap register won't be populated identical to
+> the trap status register after reset. Therefore, read from the trap status
+> register, modify the bits, then write to the modifiable trap register.
+> 
+> The disable EEE bit on the trap pertains to the LAN2LED0 pin which is
+> usually used to control an LED. Once the bit is unset, the pin will be low.
+> That will make the active low LED turn on.
+> 
+> The pin is controlled by the switch PHY. It seems that the PHY controls the
+> pin in the way that it inverts the pin state. That means depending on the
+> wiring of the LED connected to LAN2LED0 on the board, the LED may be on
+> without an active link.
+> 
+> Fixes: 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
 > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Could we get Sean to chime in, maybe there was a valid reason to disable 
-EEE advertisement in the first place?
+Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
 -- 
 Florian
 
