@@ -4,88 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA1DDC54E5D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Mar 2024 07:54:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 946CFC54E58
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Mar 2024 08:48:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=s40GUT5ZuecGd7Cuw5EoS2wMEPC2EMup1dr+n16UjQA=; b=zpaUO5w26c9C2ze3JUUpireDo7
-	E+Jw+3GITkAUZW6Av/vshG8u2Lvz4OO2qg65HS26rYcJs7YPCiITB5hzmreUKhyyqPjhmm37gheXm
-	v1EiWEAbe/3/1KWMq1HUNxFosF+xGRZH9p0ZWUVhTOY7uR+yguuCu1bYIEEGs+sewilHz0W18nRwo
-	7cfkOKLcfto0fdApWOztKoQ4kEtaY/+SX1Bk0IYT3PDiLZsGQ/PlNUOSFuE3a0OikPVLEyMCK6Css
-	NNdBhGyvGkRGD1puS2TKsEA2y9iBzk91+kZKnoeQ8tDVEUWLzzFcUFpe7czuLFbUJNk5dilhVX/mE
-	GQteOkiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=npuV+MPjFSDr3HzZ1jEevx08H7DusAET6upqkhgWg4o=; b=Js7TiFh4uV2Ug+/eDMqvu39AVo
+	htnT8vsVxEAt4x+PC17iC+bbGzjAXSPNUSupvZ8j3/wa8JU6yJZZXDVq7a8CIu79apPKP6rHCEVKc
+	BTGHy/c5xNz0Pp3UlWj232WQsHcu676tw+kJL3TLNJzq9voyU8GahTI4yJ0oIRoKtd4tr2DUCR6ct
+	KwxotoJcxToIfHwHeThBnY4nFALTzOH+DkrJE8tzEzFFnU+OX41JXLZ/eHTVmB/3xieI/oRCG80mO
+	lesYnpsDxelBbPt3L81uVddXuUu+C+6tXa7qOqRhpjVU/ybL4GbCof54iV/BLMKPob+PvltYxQZOS
+	+b8ThEpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rm7pi-00000007flX-216r;
-	Mon, 18 Mar 2024 07:54:58 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rm8fc-00000007nsr-29mk;
+	Mon, 18 Mar 2024 08:48:36 +0000
+Received: from mail-oa1-x2f.google.com ([2001:4860:4864:20::2f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rm7pf-00000007fkc-1YNi;
-	Mon, 18 Mar 2024 07:54:57 +0000
-X-UUID: cb63cc00e4fc11ee9aa9374d6d45775a-20240318
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=s40GUT5ZuecGd7Cuw5EoS2wMEPC2EMup1dr+n16UjQA=;
-	b=efyapZeTMezYjToAleSHqUnGONntmOgGxDnjUEBzVsGV0VBHae55mLkhTx1cKm6YFzrYXjr3nEwfGy1ZWmg7aXJ258ojGINHh1Zhz07kXlpiq4nR3zljZbFGp+06xARk4W9zLUX+Hgsk09MbMo4HKIaAgVOcMy7dvdUjxIv0TFU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:01ce422a-6c02-40d3-b0f2-07570100302f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:48ff1f85-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: cb63cc00e4fc11ee9aa9374d6d45775a-20240318
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <guoyong.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 930835529; Mon, 18 Mar 2024 00:54:49 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 18 Mar 2024 15:54:13 +0800
-Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 18 Mar 2024 15:54:12 +0800
-From: Guoyong Wang <guoyong.wang@mediatek.com>
-To: Theodore Ts'o <tytso@mit.edu>, "Jason A . Donenfeld" <Jason@zx2c4.com>,
-	Tejun Heo <tj@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>, "Guoyong
- Wang" <guoyong.wang@mediatek.com>
-Subject: [PATCH] random: Fix the issue of '_might_sleep' function running in an atomic contex
-Date: Mon, 18 Mar 2024 15:53:27 +0800
-Message-ID: <20240318075327.26318-1-guoyong.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1rm8fX-00000007noV-2x5g;
+	Mon, 18 Mar 2024 08:48:33 +0000
+Received: by mail-oa1-x2f.google.com with SMTP id 586e51a60fabf-229661f57cbso128013fac.1;
+        Mon, 18 Mar 2024 01:48:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1710751708; x=1711356508; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=npuV+MPjFSDr3HzZ1jEevx08H7DusAET6upqkhgWg4o=;
+        b=kwvw9yBhFqwjF5uRNwndwN7zls0emLgAf/oxFmQlnbzbdVadE8OU90dBVM8giaf4yM
+         6l3an+bNb+N8VM4J6KiRGnJOqXJRuS+/ZaSthgB946QmtGRWdWx7q0x81diSsWzm0uP2
+         np5P0TJ6XbSdlNB786UlHIOd3d+of57xPFr9IEtmIhO3ndFoei/d8qc/lY7W9ujaXhwC
+         B+FSuYb7Oj0OxpDsCOIfjuTdAaVXSjAvLsCBybaihghjuaTXFo1oqBeF442wtsmSM+ST
+         K8D7PW/qOBXfcd07qI8Qr4kQb2nT4AbVry9rkpqgnbnEnmfMJUAHZeN3MZsbROISVHtr
+         Dbag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710751708; x=1711356508;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=npuV+MPjFSDr3HzZ1jEevx08H7DusAET6upqkhgWg4o=;
+        b=JPnylA8kfwtc5ez4coxPE8sFsAU4CbOVg8ydYseasdA5BErFpHRNhi1aSMiFABZms/
+         goAqDzgcj579ohCnukNifYpAySdsi0XKJN5WF25pPgiFRkfyrlLKNt3vjkLy7ChYToED
+         rtyQy6Yiqe/V0+Mn2jkaUQLLVrHFSGpvUXXKkEBkCa9zjcnovx7VWetDTXA0qV8zlJi8
+         UyE56tl53f/2Tnn7OTzxK2M7G+wBbQJpKfqRpGJOMrTWb04pFO3Gw3gvX4t5hvOffHdN
+         c/eiycHgDxEer5qB8oYGV9naeB9jj5wQwZsCvaRYat7TCKEJ3ruGdHNw0NmLQ0cco0a+
+         VueQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWhliE+6Q2hIGLCApwcqWMpG7/sxTzwkmBvksULhC6JAoxGgiXweukenMgHrTtTFoXatbLb7HvUNq19N4o32j3ZlHQJtHlPewQawWYOgy9MOxSnbGJYn4L227DgVPilluB0e2q/L1l33iO/rbP5uJqhe5buOkz/HmI=
+X-Gm-Message-State: AOJu0Ywm2NiTJNDp/nMJ80eqqAdtdYbexPyqaVNutEwJyXmOtkKrDiEr
+	0zIBhNyrZMCkVSKTnAv8gJIKId+9MhrRWTLIBT9aSCt3yIhTI5dsFqFt+xgOcmt/s0OTb8bgrK4
+	k+sdaJXWct7s1+w0z1LsqGCF2I+8=
+X-Google-Smtp-Source: AGHT+IETjYlP8OmJEtS9A7tonlde3gO7yveZ3H0MRWYGfVElthO7L1t7r3b9bdSl8NrQTIQOGzxNqDOGbNgVpYGsXAk=
+X-Received: by 2002:a05:6870:2192:b0:21e:528f:54e9 with SMTP id
+ l18-20020a056870219200b0021e528f54e9mr12511527oae.18.1710751708108; Mon, 18
+ Mar 2024 01:48:28 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--3.305300-8.000000
-X-TMASE-MatchedRID: GSiycdxM5vtW/DiEtl1O86wxbZnudyr7reJWlnSW7AzFJnEpmt9OEwef
-	5FoKtUGzyEeGCxgB/y0u5ed2FW2K2WA2IAXETeuKI0cHLI6lhgLt/okBLaEo+C3FY27PpHmsrW4
-	1+BBqq+/5NLTowdvTKMhRl2j/G5EDdejbiw/Um0KEryjhqiyzyitovaaHxlUrXFNHTRKzg/pm+j
-	6YVbX2YOmpHB3eYmnZsvQLAMZPkyUGSS/0WwytR4+YSzwl92XTu4ICdvW94WGAZpvTq6Jh4cS4G
-	+2ecnOxNgHYUSdPXp2+LT/N9L0eANL8YenPOW5EPey2g5E3u1vJAXSoafphsVdwRHrgRcbqWmrY
-	r8SaWTXFvFNUfOxLYhIlVYCqhV5OHxPMjOKY7A9t1O49r1VEa8RB0bsfrpPI0PU0TdJoUte6AOO
-	V0y1r/Y9WMC5C2SBsqQcdrSfVFJ8mPBzXYStCYO4nGk5zzAi/lq6sb0EeGWq1Khzt1zZu8G2Ynp
-	iHC6gVvqJlNl3XQXCOh+wyNBrFXDJiNuKohDcKzKSG3JdyKAPqtV2AGMNPavWdclq8lU1q
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--3.305300-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 2290C989DD72737292ADF789F77AAC644350473F9635B32C6ACEF6B4E6F677C52000:8
-X-MTK: N
+References: <20240316045442.31469-1-justin.swartz@risingedge.co.za>
+ <CAMhs-H9ZO-sitsrASuvsEd+ddwVyHH35gj7yAABTqFNfOCGYYw@mail.gmail.com>
+ <60512ae2-dd73-4cb6-9514-145f946300fc@linaro.org> <5d6c36cb9dd9afda1efb69aa34058517@risingedge.co.za>
+ <adefc3ff-86a5-4af7-8276-73d0e0108901@linaro.org> <26633d73360e43b2c548f49e544472ea@risingedge.co.za>
+In-Reply-To: <26633d73360e43b2c548f49e544472ea@risingedge.co.za>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Mon, 18 Mar 2024 09:48:15 +0100
+Message-ID: <CAMhs-H_1bwfKO8yquz-3BHQ0UQYW1FFVJYHE66w8Q9m1+fCCHw@mail.gmail.com>
+Subject: Re: [PATCH 00/14] mips: dts: ralink: mt7621: improve DTS style
+To: Justin Swartz <justin.swartz@risingedge.co.za>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mips@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240318_005455_624512_3CB3B47E 
-X-CRM114-Status: GOOD (  15.39  )
+X-CRM114-CacheID: sfid-20240318_014831_778239_761A6063 
+X-CRM114-Status: GOOD (  30.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,101 +97,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-'input_handle_event' runs in an atomic context
-(spinlock). In rare instances, it may call
-the '_might_sleep' function, which could trigger
-a kernel exception.
+On Sun, Mar 17, 2024 at 4:43=E2=80=AFPM Justin Swartz
+<justin.swartz@risingedge.co.za> wrote:
+>
+> On 2024-03-17 17:29, Krzysztof Kozlowski wrote:
+> > On 17/03/2024 16:22, Justin Swartz wrote:
+> >> On 2024-03-17 17:10, Krzysztof Kozlowski wrote:
+> >>> On 16/03/2024 16:49, Sergio Paracuellos wrote:
+> >>>> On Sat, Mar 16, 2024 at 5:54=E2=80=AFAM Justin Swartz
+> >>>> <justin.swartz@risingedge.co.za> wrote:
+> >>>>>
+> >>>>> This set of patches was created with the intention of cleaning up
+> >>>>> arch/mips/boot/dts/ralink/mt7621.dtsi so that it is aligned with
+> >>>>> the Devicetree Sources (DTS) Coding Style [1] [2] guide.
+> >>>>>
+> >>>>> [1] Documentation/devicetree/bindings/dts-coding-style.rst
+> >>>>>
+> >>>>> [2]
+> >>>>> https://docs.kernel.org/devicetree/bindings/dts-coding-style.html
+> >>>>>
+> >>>>> Justin Swartz (14):
+> >>>>>   mips: dts: ralink: mt7621: reorder cpu node attributes
+> >>>>>   mips: dts: ralink: mt7621: reorder cpuintc node attributes
+> >>>>>   mips: dts: ralink: mt7621: reorder mmc regulator attributes
+> >>>>>   mips: dts: ralink: mt7621: reorder sysc node attributes
+> >>>>>   mips: dts: ralink: mt7621: reorder gpio node attributes
+> >>>>>   mips: dts: ralink: mt7621: reorder i2c node attributes
+> >>>>>   mips: dts: ralink: mt7621: reorder spi0 node attributes
+> >>>>>   mips: dts: ralink: mt7621: move pinctrl and sort its children
+> >>>>>   mips: dts: ralink: mt7621: reorder mmc node attributes
+> >>>>>   mips: dts: ralink: mt7621: reorder gic node attributes
+> >>>>>   mips: dts: ralink: mt7621: reorder ethernet node attributes and
+> >>>>> kids
+> >>>>>   mips: dts: ralink: mt7621: reorder pcie node attributes and
+> >>>>> children
+> >>>>>   mips: dts: ralink: mt7621: reorder pci?_phy attributes
+> >>>
+> >>> These are all simple cleanups for the same file. It's one patch, not
+> >>> 15.
+> >>
+> >> I agree these are all simple cleanups.
+> >>
+> >> Even though the cleanup pattern was the same, or very similar,
+> >> for each node affected, the intention was to isolate each change
+> >> to a single node (or a grouping of nodes of that seemed logical
+> >> to me) so that if anyone had any objections, the discussion would
+> >> be easier to follow in subthreads identifiable by patch names (and
+> >
+> > Objections to what? Coding style? Coding style is defined so you either
+> > implement it or not... and even if someone disagrees with one line
+> > swap,
+> > why it cannot be done like for every contribution: inline?
+>
+> I had been asked to include empty lines when I had left them out when
+> I had contributed a patch regarding the serial nodes, which resulted in
+> a second version of that patch.
+>
+>
+> > Organize your patches how described in submitting patches: one per
+> > logical change. Logical change is to reorder all properties in one
+> > file,
+> > without functional impact.
+>
+> If I had accidentally deleted or modified an attribute in the process
+> of cleanup, this could have had a functional impact. It's easier to
+> notice this sort of omission when the wall of text you're confronted
+> with is as small as possible, and not multiple pages long.
+>
+>
+> >> But if there're no objections and it lessens the burden on
+> >> maintainers upstream to have less patches to apply, then I have no
+> >> problem combining them into a single patch.
+> >>
+> >
+> > Yeah, one review response instead of 14 responses... One commit in the
+> > history instead of 14.
+>
+> I agree that 1 commit vs 14 is better.
+>
+> But for future reference: is it not enough for the Reviewed-by: trailer
+> to be sent in response to the cover letter of a patch set if a reviewer
+> has looked at the entire set?
 
-Backtrace:
-  [<ffffffd613025ba0>] die+0xa8/0x2fc
-  [<ffffffd613027428>] bug_handler+0x44/0xec
-  [<ffffffd613016964>] brk_handler+0x90/0x144
-  [<ffffffd613041e58>] do_debug_exception+0xa0/0x148
-  [<ffffffd61400c208>] el1_dbg+0x60/0x7c
-  [<ffffffd61400c000>] el1h_64_sync_handler+0x38/0x90
-  [<ffffffd613011294>] el1h_64_sync+0x64/0x6c
-  [<ffffffd613102d88>] __might_resched+0x1fc/0x2e8
-  [<ffffffd613102b54>] __might_sleep+0x44/0x7c
-  [<ffffffd6130b6eac>] cpus_read_lock+0x1c/0xec
-  [<ffffffd6132c2820>] static_key_enable+0x14/0x38
-  [<ffffffd61400ac08>] crng_set_ready+0x14/0x28
-  [<ffffffd6130df4dc>] execute_in_process_context+0xb8/0xf8
-  [<ffffffd61400ab30>] _credit_init_bits+0x118/0x1dc
-  [<ffffffd6138580c8>] add_timer_randomness+0x264/0x270
-  [<ffffffd613857e54>] add_input_randomness+0x38/0x48
-  [<ffffffd613a80f94>] input_handle_event+0x2b8/0x490
-  [<ffffffd613a81310>] input_event+0x6c/0x98
+It is enough, AFAICT. I found your patchset very easy to review so I
+am ok with the patchset as it is. However, at the end this will be
+through the mips tree, so let's do what Thomas prefers: add all
+patches as they are or squash all of them in one commit.
 
-Signed-off-by: Guoyong Wang <guoyong.wang@mediatek.com>
----
- drivers/char/random.c     |  2 +-
- include/linux/workqueue.h |  1 +
- kernel/workqueue.c        | 26 ++++++++++++++++++++++++++
- 3 files changed, 28 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/char/random.c b/drivers/char/random.c
-index 456be28ba67c..00be9426a6fc 100644
---- a/drivers/char/random.c
-+++ b/drivers/char/random.c
-@@ -719,7 +719,7 @@ static void __cold _credit_init_bits(size_t bits)
- 	if (orig < POOL_READY_BITS && new >= POOL_READY_BITS) {
- 		crng_reseed(NULL); /* Sets crng_init to CRNG_READY under base_crng.lock. */
- 		if (static_key_initialized)
--			execute_in_process_context(crng_set_ready, &set_ready);
-+			execute_in_non_atomic_context(crng_set_ready, &set_ready);
- 		atomic_notifier_call_chain(&random_ready_notifier, 0, NULL);
- 		wake_up_interruptible(&crng_init_wait);
- 		kill_fasync(&fasync, SIGIO, POLL_IN);
-diff --git a/include/linux/workqueue.h b/include/linux/workqueue.h
-index 158784dd189a..eb17c62d23aa 100644
---- a/include/linux/workqueue.h
-+++ b/include/linux/workqueue.h
-@@ -550,6 +550,7 @@ extern void drain_workqueue(struct workqueue_struct *wq);
- extern int schedule_on_each_cpu(work_func_t func);
- 
- int execute_in_process_context(work_func_t fn, struct execute_work *);
-+int execute_in_non_atomic_context(work_func_t fn, struct execute_work *ew);
- 
- extern bool flush_work(struct work_struct *work);
- extern bool cancel_work(struct work_struct *work);
-diff --git a/kernel/workqueue.c b/kernel/workqueue.c
-index bf2bdac46843..8f212346da7a 100644
---- a/kernel/workqueue.c
-+++ b/kernel/workqueue.c
-@@ -4449,6 +4449,32 @@ int execute_in_process_context(work_func_t fn, struct execute_work *ew)
- }
- EXPORT_SYMBOL_GPL(execute_in_process_context);
- 
-+/**
-+ * execute_in_non_atomic_context - reliably execute the routine with user context
-+ * @fn:		the function to execute
-+ * @ew:		guaranteed storage for the execute work structure (must
-+ *		be available when the work executes)
-+ *
-+ * Schedules the function for delayed execution if atomic context is available,
-+ * otherwise executes the function immediately .
-+ *
-+ * Return:	0 - function was executed
-+ *		1 - function was scheduled for execution
-+ */
-+int execute_in_non_atomic_context(work_func_t fn, struct execute_work *ew)
-+{
-+	if (!in_atomic()) {
-+		fn(&ew->work);
-+		return 0;
-+	}
-+
-+	INIT_WORK(&ew->work, fn);
-+	schedule_work(&ew->work);
-+
-+	return 1;
-+}
-+EXPORT_SYMBOL_GPL(execute_in_non_atomic_context);
-+
- /**
-  * free_workqueue_attrs - free a workqueue_attrs
-  * @attrs: workqueue_attrs to free
--- 
-2.18.0
-
+Thanks,
+    Sergio Paracuellos
 
