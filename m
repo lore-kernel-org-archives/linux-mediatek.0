@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4032C54E5D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Mar 2024 10:24:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACACEC54E58
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Mar 2024 10:24:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bG9Kr4ORvs+Y7XZE7+NNivOQ0CUbsHKaT4IaxcO+yYo=; b=qrEBJnfa2RZ/q6/xhXQ0xseVNw
-	A4U7r4Pb7SxnKoGp3VTIwQLSHrqBlEgywgxUuI/CsSFCa+qN8vH1VKdukUUXG/a8Kk/lIdIklt/BH
-	ehxQllr1PflcG2WKvbreKT3iZvhcTdH5oDBqS6C/hfwUInAaEVCDVw6iCeEnSO2j0txURuE/SsG5V
-	wszoOtZS0rA15YOkxcJrH0a5WEe5kqBfz6Df6hhiF4qqyaUUR/4HedowddDAvmGs4xljADxEUZc1Z
-	fKHZi/HDVw3qPZxLK2f7XI2uNBy0QZhxOW4biY6pUpUHCn+1LlcMKzMYvKzvhELENnkFvWt1ZtS0L
-	kLVWVzIg==;
+	bh=5AczrgRS/Ourjm2uMrczvD90vCL50TI2W022L6tIMsc=; b=t+pBdOloIc6+vr4+IsTAPlFCEk
+	UibMQ/hQB6M7fu2pimWDDONs3spw4FLPwRxzwzShNUWImhrlCqTTn98H0A8SPXplg3lYltkxqxlP0
+	Jg3pcOCTCfqOQ3UdS6K5g19b7BEwVhdLlOj2ST6qNNhQxkB4oWKAimP3GfGnS499qsFupbTJEBebb
+	inlqaCdRAqh2zP+hjiPFxvaZW1IbfiTAVB4vFlDN7LGbpScviqKH87gduJyRvN9KskpchIGYq6MoO
+	nByPOKiDslHxkHeax9x7sCCuMDSDu9OgMe3NSnOaPGjbjRPmwXGmKOiDa0+mDMngbRKC2hitIEw4E
+	d/B3JCbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmAA5-000000088Vq-2YJ6;
-	Mon, 18 Mar 2024 10:24:09 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rmAA7-000000088XA-0unt;
+	Mon, 18 Mar 2024 10:24:11 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmA9w-000000088R5-0333;
-	Mon, 18 Mar 2024 10:24:01 +0000
+	id 1rmA9x-000000088Rv-1RgG;
+	Mon, 18 Mar 2024 10:24:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710757438;
-	bh=oYi/GEei9YTrArQdXX13oG7NfqzSc8H9fu6XZlt8hC8=;
+	s=mail; t=1710757439;
+	bh=epH7fThYZdzezDriuik2qS8wOnir6pPihC9rc071D6A=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AptskvFZNxoFnqnGQe+cCxluGI4hkrkPGqYFFbkS/qlNCllF8+dbs4Xt/8CayKQB9
-	 vmAytJ+fOjAEMT29dEURE5YtqtLe214UhhCZtsMYASZtbHLQXNJ5kskjUuBLmorAmN
-	 xnHIW8lFwjbwIk5xx3d+EjEv+904ZazSAWdg5TSO9YHlP5EQFLGowCvwMbfwYAwosT
-	 QCOlGHP9GnfDUsj00KUKiK68bA6IAAFbpU3dxh7nY6U7bXkWRYgtR6XA7/99J5pR+/
-	 BWdORVK6tQ/Pbs5nUt2SZwDdE5LZ4CKkJNqqBQ+DVHQE/HDoVYBT+cdsVsnh5buo72
-	 01w8ZBAdg6aAQ==
+	b=xtuQVgaFTToXo9a3kjdvcWIZa34cagLpTEoKZWxxwWK+7bXuQoyhLMuAGm/CDeOx5
+	 kVqGD5Phr5/nOk0FXEzwYUYk/20/G0CNiuvbYGXwlYwr0l9QaO0LPGCjfEOzlNKPOp
+	 8gnWGf0EjDK1sJNOj0BwjMwG/Q1ZXo32WTsEdOoKT2AwBoS0BUJ0KC0d0ifiNe9ARg
+	 k5XQMBBx+zTJPm/f3ssNrSw6WkO2HKGR5bCpCoPer4YI0V9TewW0Gw5HoC9ECW1Fjs
+	 mgnev1bb3pZtsXpsmmGTERF5LWaTQQGhD36j2SAmjab9bLoYl9F+MqiPgR8cvZlNqV
+	 mqZA4OYA1tgPQ==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id F0D503782033;
-	Mon, 18 Mar 2024 10:23:57 +0000 (UTC)
-Message-ID: <37c65bf7-591a-49d9-a360-b52110be1b20@collabora.com>
-Date: Mon, 18 Mar 2024 11:23:57 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 22128378203E;
+	Mon, 18 Mar 2024 10:23:59 +0000 (UTC)
+Message-ID: <88f9c771-f42e-4345-8811-ed123a0f1fe7@collabora.com>
+Date: Mon, 18 Mar 2024 11:23:59 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V2 3/4] arm64: dts: mediatek: mt7622: fix ethernet
- controller "compatible"
+Subject: Re: [PATCH V2 2/4] arm64: dts: mediatek: mt7622: fix IR nodename
 Content-Language: en-US
 To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
@@ -60,14 +59,14 @@ Cc: Sean Wang <sean.wang@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
  linux-kernel@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
  <rafal@milecki.pl>
 References: <20240317221050.18595-1-zajec5@gmail.com>
- <20240317221050.18595-4-zajec5@gmail.com>
+ <20240317221050.18595-3-zajec5@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240317221050.18595-4-zajec5@gmail.com>
+In-Reply-To: <20240317221050.18595-3-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240318_032400_215321_B7F3087D 
-X-CRM114-Status: UNSURE (   5.67  )
+X-CRM114-CacheID: sfid-20240318_032401_557105_9FAA400B 
+X-CRM114-Status: UNSURE (   5.66  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,11 +86,10 @@ Il 17/03/24 23:10, Rafał Miłecki ha scritto:
 > From: Rafał Miłecki <rafal@milecki.pl>
 > 
 > Fix following validation error:
-> arch/arm64/boot/dts/mediatek/mt7622-rfb1.dtb: ethernet@1b100000: compatible: ['mediatek,mt7622-eth', 'mediatek,mt2701-eth', 'syscon'] is too long
->          from schema $id: http://devicetree.org/schemas/net/mediatek,net.yaml#
-> (and other complains about wrong clocks).
+> arch/arm64/boot/dts/mediatek/mt7622-rfb1.dtb: cir@10009000: $nodename:0: 'cir@10009000' does not match '^ir(-receiver)?(@[a-f0-9]+)?$'
+>          from schema $id: http://devicetree.org/schemas/media/mediatek,mt7622-cir.yaml#
 > 
-> Fixes: 5f599b3a0bb8 ("arm64: dts: mt7622: add ethernet device nodes")
+> Fixes: ae457b7679c4 ("arm64: dts: mt7622: add SoC and peripheral related device nodes")
 > Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
