@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD325C54E60
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Mar 2024 11:47:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25BB7C54E60
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Mar 2024 11:48:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zi4p6xTyoLW8RCLPWZHPX12XLuSuP6TykNDXaCdvoXU=; b=lwrKlkO7vk5tO92f4t4QuNh+/R
-	O7oHt69z8eE1fuk4q1qp1LzDagpWsCl5DkFiqpXWA+eOBOkIvDH+fLGcWxHpTqcmZZsxjQPzKpoLo
-	uowzfF1v2ysTp/kSmMFTW7fW9Utj2YCqVBm1Qe07lElVs36kxGRo7FTjJm1KRVaPO1YZJVSRoZo1u
-	MdX2jOvi75r5PVgRnk1B2D4fEnJU+MqXoHhquEYj+ilBDB5F/bJ+Xh3OPBASHY1xrhY681Cw8aeGb
-	kOf9a9RcrtHL/xIPcStkJuzYw/EXMdo4mWeY9IOVb4g9XwqTh8l+ZQG9f8CiYdIbkcwUPRtJmNx9k
-	RXIVjhVg==;
+	bh=xDNJBr1eM/GToB9SrCvLBUrebX4gumc4EMSx3d4xLaA=; b=Fbsq3k8dyqpknI84lZ91tTuDTA
+	PH+NwPJgObvYOEIZzqTZ5rTyz9ZEUGyYe05AV2CwSrppMk+zt10e9wXAeMDOotrEStElg71MIgUCO
+	UJ4jPhABlBuwveq/VCWBdCDVSLWV0qbsY5RgLHVvQqYJSlkvl/ACjUdwuqmTlZ3+Am+BbrEVz5Bzz
+	ywMDLtOw/C61Y7qnYFcLU5ZeEf5deKc3H6ObZiAEtp2j6yN8mi6k7ap0RRyN1k2i42ggk8RxGrB7m
+	irHDOhQq/tpjxFR4SRxOOpIIetul7t10KliInoKglYhTlTA0ZsSAaAwh2/OE5qf1FWYo1pMlDmHcN
+	HFGzAy0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmXwb-0000000CWVl-1iqo;
-	Tue, 19 Mar 2024 11:47:49 +0000
+	id 1rmXxi-0000000CWj1-3QIK;
+	Tue, 19 Mar 2024 11:48:58 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmXwY-0000000CWTp-1Nly
+	id 1rmXxf-0000000CWiN-3RID
 	for linux-mediatek@lists.infradead.org;
-	Tue, 19 Mar 2024 11:47:47 +0000
+	Tue, 19 Mar 2024 11:48:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710848865;
-	bh=qP5gXkLN9BbD+xAGyMSyZHGa30YnfxKKydf78AcNovs=;
+	s=mail; t=1710848934;
+	bh=e3xf9w9fguza9YlfKc8c4gwJVjizSFUCZqmpN2WsxJI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Amh5jQdjBcqhcjs7kG7HE2t/lX8p12H9abwdZrLqx/uRR1MOoV+lS1U0ShGDaqHi0
-	 P41UQP4qdmLFVglubo0f48fGH587hCJNRM2U5j2j6z8Su6Gx4w+qfPrsh/mTiOOYGM
-	 HUmll1+xjDg3c6D1PxSdOi4Esv5K+5QkIK05gQoUIaRa8V0RmYFnA1ZJso1FkGJb3P
-	 vZnccgM5Q9r16A9479VmQZLhd17XiZ1D6O0sYQRwUV7k2V1TD1wmAK9U/arAfheueS
-	 AcuKJFF+QK5+GvzK/NAC+CBamuk3I7RoXn5WNpIn0DxcFMOnfOCZDpKq38clt7FPwr
-	 eM9F/W55w/a7w==
+	b=WkKFOnexS6Vv6gCTko3Pvzmq5P6rqfcMlhDhF8OqqzRt/O+jMc9ETk0Y8Xxu34DFj
+	 Gps4yKKvF1OCudhtzBwzUuRq3RYtpzz/Rg9o31N91Pqj8rfi1x1eReMK/8yCpKULy1
+	 C+pv/ln8SlUPe7lIDw0sCxBkxBI4OgjpYhR+09JCatsuBwix5pp7hV+Uz6Eo2qjofr
+	 qbKX6/zZlq1iPihK6T8d5FJh6LKozX8GvkQZGsVmBVLcCKauI2XYEa1TcmkjMquIbv
+	 rX/5HPIsYVoB4vBBZuI7KLOByex/xGA/zFY4ysKyTmcySs+Ely4v44Gb0dQxGcsOpj
+	 uxpvl1QZk338Q==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 94C1C378203E;
-	Tue, 19 Mar 2024 11:47:44 +0000 (UTC)
-Message-ID: <2752f476-db91-46a5-a32f-458b7067063d@collabora.com>
-Date: Tue, 19 Mar 2024 12:47:43 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0D309378203E;
+	Tue, 19 Mar 2024 11:48:53 +0000 (UTC)
+Message-ID: <6c5e8e8c-3d00-468b-b5c3-d09838b670eb@collabora.com>
+Date: Tue, 19 Mar 2024 12:48:53 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 06/13] arm64: dts: mediatek: mt8186: add lvts
- definitions
+Subject: Re: [PATCH v2 07/13] thermal/drivers/mediatek/lvts_thermal: add
+ MT8186 support
 Content-Language: en-US
 To: Nicolas Pitre <nico@fluxnic.net>,
  Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org,
  linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 Cc: Nicolas Pitre <npitre@baylibre.com>
 References: <20240318212428.3843952-1-nico@fluxnic.net>
- <20240318212428.3843952-7-nico@fluxnic.net>
+ <20240318212428.3843952-8-nico@fluxnic.net>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240318212428.3843952-7-nico@fluxnic.net>
+In-Reply-To: <20240318212428.3843952-8-nico@fluxnic.net>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240319_044746_537664_AB30BD02 
-X-CRM114-Status: GOOD (  12.55  )
+X-CRM114-CacheID: sfid-20240319_044856_086460_47DAECB5 
+X-CRM114-Status: GOOD (  19.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,71 +81,124 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 18/03/24 22:22, Nicolas Pitre ha scritto:
 > From: Nicolas Pitre <npitre@baylibre.com>
 > 
-> Values extracted from vendor source tree.
+> Various values extracted from the vendor's kernel driver.
 > 
 > Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
 > ---
->   arch/arm64/boot/dts/mediatek/mt8186.dtsi | 20 ++++++++++++++++++++
->   1 file changed, 20 insertions(+)
+>   drivers/thermal/mediatek/lvts_thermal.c | 67 +++++++++++++++++++++++++
+>   1 file changed, 67 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> index 2fec6fd1c1..7b7a517a41 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> @@ -1355,6 +1355,18 @@ spi0: spi@1100a000 {
->   			status = "disabled";
->   		};
->   
-> +		lvts: lvts@1100b000 {
+> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+> index ed1888fb24..e923d22c17 100644
+> --- a/drivers/thermal/mediatek/lvts_thermal.c
+> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> @@ -80,6 +80,8 @@
+>   #define LVTS_SENSOR_MAX				4
+>   #define LVTS_GOLDEN_TEMP_MAX		62
+>   #define LVTS_GOLDEN_TEMP_DEFAULT	50
+> +#define LVTS_COEFF_A_MT8186			-204650
+> +#define LVTS_COEFF_B_MT8186			204650
 
-This is not generic and LVTS ain't special.
-
-thermal-sensor@1100b000
-
-Also, please use the correct length - you're clashing with the SVS iospace.
-
-> +			compatible = "mediatek,mt8186-lvts";
-> +			#thermal-sensor-cells = <1>;
-> +			reg = <0 0x1100b000 0 0x1000>;
-> +			interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			clocks = <&infracfg_ao CLK_INFRA_AO_THERM>;
-> +			clock-names = "lvts_clk";
-> +			resets = <&infracfg_ao MT8186_INFRA_THERMAL_CTRL_RST>;
-> +			nvmem-cells = <&lvts_e_data1 &lvts_e_data2>;
-> +			nvmem-cell-names = "e_data1","e_data2";
-> +		};
-> +
->   		pwm0: pwm@1100e000 {
->   			compatible = "mediatek,mt8186-disp-pwm", "mediatek,mt8183-disp-pwm";
->   			reg = <0 0x1100e000 0 0x1000>;
-> @@ -1668,6 +1680,14 @@ efuse: efuse@11cb0000 {
->   			#address-cells = <1>;
->   			#size-cells = <1>;
->   
-> +			lvts_e_data1: data1 {
-
-Please always run `make dtbs_check`
+You don't need this definition, as you can reuse the MT7988 one.
 
 Regards,
 Angelo
 
-> +				reg = <0x1cc 0x14>;
-> +			};
+>   #define LVTS_COEFF_A_MT8195			-250460
+>   #define LVTS_COEFF_B_MT8195			250460
+>   #define LVTS_COEFF_A_MT7988			-204650
+> @@ -92,6 +94,7 @@
+>   #define LVTS_MSR_READ_WAIT_US		(LVTS_MSR_READ_TIMEOUT_US / 2)
+>   
+>   #define LVTS_HW_SHUTDOWN_MT7988		105000
+> +#define LVTS_HW_SHUTDOWN_MT8186		105000
+>   #define LVTS_HW_SHUTDOWN_MT8192		105000
+>   #define LVTS_HW_SHUTDOWN_MT8195		105000
+>   
+> @@ -1377,6 +1380,62 @@ static int lvts_resume(struct device *dev)
+>   	return 0;
+>   }
+>   
+> +/*
+> + * The MT8186 calibration data is stored as packed 3-byte little-endian
+> + * values using a weird layout that makes sense only when viewed as a 32-bit
+> + * hexadecimal word dump. Let's suppose SxBy where x = sensor number and
+> + * y = byte number where the LSB is y=0. We then have:
+> + *
+> + *   [S0B2-S0B1-S0B0-S1B2] [S1B1-S1B0-S2B2-S2B1] [S2B0-S3B2-S3B1-S3B0]
+> + *
+> + * However, when considering a byte stream, those appear as follows:
+> + *
+> + *   [S1B2] [S0B0[ [S0B1] [S0B2] [S2B1] [S2B2] [S1B0] [S1B1] [S3B0] [S3B1] [S3B2] [S2B0]
+> + *
+> + * Hence the rather confusing offsets provided below.
+> + */
+> +static const struct lvts_ctrl_data mt8186_lvts_data_ctrl[] = {
+> +	{
+> +		.lvts_sensor = {
+> +			{ .dt_id = MT8186_TS1_0,
+> +			  .cal_offsets = { 5, 6, 7 } },
+> +			{ .dt_id = MT8186_TS1_1,
+> +			  .cal_offsets = { 10, 11, 4 } },
+> +			{ .dt_id = MT8186_TS1_2,
+> +			  .cal_offsets = { 15, 8, 9 } },
+> +			{ .dt_id = MT8186_TS1_3,
+> +			  .cal_offsets = { 12, 13, 14 } }
+> +		},
+> +		.num_lvts_sensor = 4,
+> +		.offset = 0x0,
+> +		.hw_tshut_temp = LVTS_HW_SHUTDOWN_MT8186,
+> +	},
+> +	{
+> +		.lvts_sensor = {
+> +			{ .dt_id = MT8186_TS2_0,
+> +			  .cal_offsets = { 22, 23, 16 } },
+> +			{ .dt_id = MT8186_TS2_1,
+> +			  .cal_offsets = { 27, 20, 21 } }
+> +		},
+> +		.num_lvts_sensor = 2,
+> +		.offset = 0x100,
+> +		.hw_tshut_temp = LVTS_HW_SHUTDOWN_MT8186,
+> +	},
+> +	{
+> +		.lvts_sensor = {
+> +			{ .dt_id = MT8186_TS3_0,
+> +			  .cal_offsets = { 29, 30, 31 } },
+> +			{ .dt_id = MT8186_TS3_1,
+> +			  .cal_offsets = { 34, 35, 28 } },
+> +			{ .dt_id = MT8186_TS3_2,
+> +			  .cal_offsets = { 39, 32, 33 } }
+> +		},
+> +		.num_lvts_sensor = 3,
+> +		.offset = 0x200,
+> +		.hw_tshut_temp = LVTS_HW_SHUTDOWN_MT8186,
+> +	}
+> +};
 > +
-> +			lvts_e_data2: data1-1 {
-> +				reg = <0x2f8 0x14>;
-> +			};
+>   static const struct lvts_ctrl_data mt8192_lvts_mcu_data_ctrl[] = {
+>   	{
+>   		.lvts_sensor = {
+> @@ -1565,6 +1624,13 @@ static const struct lvts_data mt7988_lvts_ap_data = {
+>   	.temp_offset	= LVTS_COEFF_B_MT7988,
+>   };
+>   
+> +static const struct lvts_data mt8186_lvts_data = {
+> +	.lvts_ctrl	= mt8186_lvts_data_ctrl,
+> +	.num_lvts_ctrl	= ARRAY_SIZE(mt8186_lvts_data_ctrl),
+> +	.temp_factor	= LVTS_COEFF_A_MT8186,
+> +	.temp_offset	= LVTS_COEFF_B_MT8186,
+> +};
 > +
->   			gpu_speedbin: gpu-speedbin@59c {
->   				reg = <0x59c 0x4>;
->   				bits = <0 3>;
-
--- 
-AngeloGioacchino Del Regno
-Senior Software Engineer
-
-Collabora Ltd.
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
-Registered in England & Wales, no. 5513718
+>   static const struct lvts_data mt8192_lvts_mcu_data = {
+>   	.lvts_ctrl	= mt8192_lvts_mcu_data_ctrl,
+>   	.num_lvts_ctrl	= ARRAY_SIZE(mt8192_lvts_mcu_data_ctrl),
+> @@ -1591,6 +1657,7 @@ static const struct lvts_data mt8195_lvts_ap_data = {
+>   
+>   static const struct of_device_id lvts_of_match[] = {
+>   	{ .compatible = "mediatek,mt7988-lvts-ap", .data = &mt7988_lvts_ap_data },
+> +	{ .compatible = "mediatek,mt8186-lvts", .data = &mt8186_lvts_data },
+>   	{ .compatible = "mediatek,mt8192-lvts-mcu", .data = &mt8192_lvts_mcu_data },
+>   	{ .compatible = "mediatek,mt8192-lvts-ap", .data = &mt8192_lvts_ap_data },
+>   	{ .compatible = "mediatek,mt8195-lvts-mcu", .data = &mt8195_lvts_mcu_data },
 
 
