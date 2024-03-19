@@ -4,53 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CAB6C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Mar 2024 21:16:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FCA0C54E71
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Mar 2024 21:31:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9s4X5Gi14fiprbPp/n09JkrAb3WJPWZ0M3os7Ylh/ek=; b=plkPAN4ixt20Yvy1upszOXf/KW
-	dtsdCcdupmgvYc9BtSnnwCZaqy6FhCWRGztEzDJB3rqS6+6ZAok1Kk12zPZo5U1a6lFXtmDON7ohZ
-	xH8EsbvR2Dv+2fvdf0BZ8rcHDyuarmzJ4ZvUSePSNroVQfOcwrBDXkNVfkGrGA7KP2ezfRv5ciTwt
-	REweWjVxJ+FqxuLdqkYVc2WIKXy3gZn8knsKyLmlGI8kkIyh+JiMFgYLAx4b+MqSBNUv4C4gVw98K
-	YwErrEocjsPO/6FMDbXZ8uk5ymMd09jqUVnqDmMC5hN34H+DRWVG2+0cds5yh23ebRYcEVRwJpTQ1
-	pM3tEOIA==;
+	bh=zrrC27c+leVw8q3sOhDGD63wH3I4xP5q0fuuEBKNnzQ=; b=W3A166ibyGUD5KOqd+dlbwPDBk
+	vOJztAFKzWnHL45vwDuPjbOewXWOUeIDIahtMZ8T19j/RwVDagPvc6wCK89w6/LZJTtimOcGugm4X
+	sdWjpKKpMuQP+riE5NHvr23tzUZpXeV4CogqFR8gHk/S0++jl3AtrO5y6Bq4dfoeozinDAV99OY/I
+	UJmFURYjNU3Pphuqn8WYWma/BRUe26s1bQifugw8dgLUoPZwnJctMSLVjo4Sp41c9xRvN8gdpzU6J
+	fSDFYV2pkTYNyDZzxj2eSvWBYyJ/Uq+ZtFI/poKvR9g8ASP7E0yDunpSSuuc9tK7emLysUdnA5x6x
+	uSJOHX5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmgp8-0000000EGR8-0LX7;
-	Tue, 19 Mar 2024 21:16:42 +0000
-Received: from relay7-d.mail.gandi.net ([217.70.183.200])
+	id 1rmh3a-0000000EIjp-2HoP;
+	Tue, 19 Mar 2024 21:31:38 +0000
+Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmgp2-0000000EGNK-27BC;
-	Tue, 19 Mar 2024 21:16:38 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 8A37D20003;
-	Tue, 19 Mar 2024 21:16:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1710882988;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9s4X5Gi14fiprbPp/n09JkrAb3WJPWZ0M3os7Ylh/ek=;
-	b=MHv/Y2Jf/gg5YRz9Xg02A3Uy/+L3ntSL/gPAF2UzYbGmc/qP7PHY7VuKl1zed85n+N0kdQ
-	1o1k/QGe5GsBCSlsu39mtGksj8tLqwlnJ7WHeuYmJUOTLN8UP0ukvtN7f4FqZXg/Wv8AKZ
-	mkWevzKGdbH9d1/Kjo5b6aQL2Fa88IJLQZwGG6TRvf8issssdzTBXSnOVcorW02H6rKQl4
-	W8teqzjihbMWP1A90re1PyZwbcQn5VgYA5ceHRdyq2N8AnXB104IBNYkdxUa96gkkknxog
-	fBwi1pMb8vaeKS9pQFCxNaQI2NRAfJjGt4aRoqOV43X4DOwUGW9EY4V5n6pisA==
-Message-ID: <3c6ccef9-8654-49ba-88d9-d39e99d2b7b1@arinc9.com>
-Date: Wed, 20 Mar 2024 00:16:02 +0300
+	id 1rmh3X-0000000EIix-1bWb;
+	Tue, 19 Mar 2024 21:31:37 +0000
+Received: by mail-oa1-x2b.google.com with SMTP id 586e51a60fabf-221a4f9557dso3544325fac.2;
+        Tue, 19 Mar 2024 14:31:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1710883893; x=1711488693; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=zrrC27c+leVw8q3sOhDGD63wH3I4xP5q0fuuEBKNnzQ=;
+        b=Uy5NtSqq4wDfmReMtiHSwmF9Lwox+F9x+7XYyrSPFIj8wh2UK+x9DGP5ItFlRAac+m
+         vhk45awp+AD15fNtfVaB5JbILs+yP+ysa5UuS1K0jN+Bl4Hvm/nx9eeooTnW0u0Krre0
+         f6a70+enxw5++jAVKjmY3YxuJhr4Qxlzh+HqYizSvPcTcIkv2QrYUSR2XmGOmWObTtC7
+         tYBviPzTRnbEzV6n+KBaPN3XXKRwU3E1CXyAG5H+VmkbKZCb0Z2xF39KaeRBaeac2P78
+         qZgDWT4jqv8LMA7MQwPsRr+D8W6+PkpMgSh+jdX/RBiblyUXxRxCyWkb9j3jkaK6C9fg
+         oyNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710883893; x=1711488693;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=zrrC27c+leVw8q3sOhDGD63wH3I4xP5q0fuuEBKNnzQ=;
+        b=nir0Tl+XSBkL1jeqUf+ARWLjPDSO1zeYTfIh5vXCZyW+XheNXpnr2Buw0Ytb9nxxiW
+         /QCrSliJVPHhIqfz8XLLV2g05pJS5wWG2BDZQo6jP1ME+dUAJignAT/RhDs0TARjtngL
+         2Pj3AaDurf3yQahC70fNlDNF9VhXvf+ZYjaPtAzF+6zF1FsSk+hnRa6/xRujym2nnWZR
+         0qqoFV+kkzPQRiR5nv7TO0HPkgF2vd624XCqPSb2QLwA2rwS6KCj3zRiVP9XBoY/Cocw
+         CSyUuir6dPV7ze2uHVdWcP+ReuCYMvKxtJL70p/4nGYm2O55Uy3xYVSQE8JorPPEfe92
+         g0Qw==
+X-Forwarded-Encrypted: i=1; AJvYcCXqJJ4FcnrwAY93tieQ6Hx/lnWxA2MwThlygWytXv9VfBSk2S/1R/ImqAlK3sQjwhD4K718p+TVrmyMLCbp+eD1Bzmyui4sok8KcAm6wjprNiBn2rn07SI13Oh4xxc2R2sgjAWH7dpw5aqEcLu9ngPaWdWK9kl8N2s=
+X-Gm-Message-State: AOJu0YzEXd3bopXV5sj0XOvszy27yQ5p51pQamjAyXex9Z0wrlY7el/6
+	9hYj67WnBBuwiQCHvosSskOXeOIDxg0blhv2DBfw/KQpVStzg7ET
+X-Google-Smtp-Source: AGHT+IGTbHkm/yZu+SFyFjorv7aR5q2Vk7pijIwUW83u6t5zXogAOTFA3W/xGBNXcrmlWiRg+MWmyQ==
+X-Received: by 2002:a05:6870:9a16:b0:221:94bb:c050 with SMTP id fo22-20020a0568709a1600b0022194bbc050mr17101034oab.32.1710883892747;
+        Tue, 19 Mar 2024 14:31:32 -0700 (PDT)
+Received: from [10.67.48.245] ([192.19.223.252])
+        by smtp.googlemail.com with ESMTPSA id h62-20020a638341000000b005dc832ed816sm9520138pge.59.2024.03.19.14.31.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 19 Mar 2024 14:31:31 -0700 (PDT)
+Message-ID: <38798882-c033-4949-9446-4c6f15c25ebe@gmail.com>
+Date: Tue, 19 Mar 2024 14:31:25 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 0/3] Fix EEE support for MT7531 and MT7988 SoC switch
+Content-Language: en-US
 To: Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>
-Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+Cc: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>,
  Russell King <linux@armlinux.org.uk>,
@@ -65,17 +89,13 @@ References: <20240318-for-net-mt7530-fix-eee-for-mt7531-mt7988-v>
  <00ec9779-19ce-4005-83f0-f4abf37350fc@arinc9.com>
  <6cb585f6-6da8-45a2-a28b-2fb556f95672@lunn.ch>
  <Zfn1DxkEa3u-f7l2@makrotopia.org>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+From: Florian Fainelli <f.fainelli@gmail.com>
 In-Reply-To: <Zfn1DxkEa3u-f7l2@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Spam-Score: 400
-X-GND-Status: SPAM
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240319_141636_701924_ACD7F0C7 
-X-CRM114-Status: GOOD (  16.49  )
+X-CRM114-CacheID: sfid-20240319_143135_461533_75DB2E20 
+X-CRM114-Status: GOOD (  21.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,7 +110,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19.03.2024 23:26, Daniel Golle wrote:
+On 3/19/24 13:26, Daniel Golle wrote:
 > On Tue, Mar 19, 2024 at 08:38:03PM +0100, Andrew Lunn wrote:
 >>> I would argue that EEE advertisement on the PHY should be enabled by
 >>> default.
@@ -114,10 +134,17 @@ On 19.03.2024 23:26, Daniel Golle wrote:
 > 
 > https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/24091177a18ba7f2dd8d928a8f5b27b14df46b16
 
-Are you saying this to indicate that we shouldn't remove that from
-mediatek-ge? If so, I've already explained that there'd be no practical
-change in removing it as both MT7530 and MT7531 switches enable EEE
-advertisement after mediatek-ge.
+EEE tends to be an interoperability trap and typically results in 
+unexplained link drops with different link partners which are difficult 
+to debug and root cause. It would be great to have more context as to 
+why it was disabled in the downstream tree to know what we are up 
+against, though I would not be surprised if there had been a number of 
+issues reported.
 
-Arınç
+That said as an user, if someone has a well controlled environment, they 
+should absolutely be able to turn on EEE and see how stable it holds in 
+their environment.
+-- 
+Florian
+
 
