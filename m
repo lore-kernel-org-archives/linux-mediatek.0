@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21858C54E5D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2487AC54E71
 	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Mar 2024 07:03:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,42 +12,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=85zG1qADj2+PeXUngB89OUIHW4WMQF1BST/UA49IDzQ=; b=LOHUZLDtgqs62qIYBBljbeMJj3
-	9l5Tdmd6uy3Lw9v67E4mtNvdzJhnW29pfekrNtY4aL7thD59PyQXsBBfrocVs/xw0QXcvvJOZ++0E
-	lLyuQGBE4UcdRNhICxbzMUpXLGC9XZi3AXm54PlE5vd/4mWv+6lgKopBfT3PldJgfaEri6nTjioJo
-	dSAwUt5FeTJiaAgrf9Q0qWdQP/JUPWvHFe/U9EvWpfktNAXxqRPo9qR/A4cVZ6jSHxxf1hWhchtQ4
-	O2VUpd29cFd4rdIB2EGx8Qy3c5ADjnrKqsyBzZY1S40idKZmGwpXCfv+0OP3mFYJAZMUeQpABeSdG
-	zLUZNokg==;
+	bh=CGihiINE4jr8gwW1duxiJk5+r7phZbsvGQSK+VEZn4I=; b=eaoHSy5VZPiUYw+2mCvzAAV6/M
+	fRzrqRakvfbPyyiUFs5I9+JAl+Qi6JojqXHP5jNplXpnL7/NcjYrlEyQositaOmjEvpAqsjdbnzdX
+	ySXaZaiK7gOXzb+FzfYzjACcaHKOjWtSAb46fEJx96VvhRLEYUN2i1Qo3TngP1VkWj9cl+pzcXvSf
+	mweKzNtanyFxozA8yoayPst3Xs8lfCI4YqAWqlNL7KnKZraK2qmfIuyMcjqsn4h0hNDl+1ZK7DveY
+	fzAtXaz4Z9sxznYP3C6Xr9ygc5uttpjEHZfPlb+A0dIcA2+Z+C97rLAv7qqlJIzJDolzIICid2MTB
+	bNr8bBgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmTVC-0000000BbzS-0Nq4;
-	Tue, 19 Mar 2024 07:03:14 +0000
+	id 1rmTVD-0000000Bc0E-0rjb;
+	Tue, 19 Mar 2024 07:03:15 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmTV8-0000000Bbwf-0QzI;
-	Tue, 19 Mar 2024 07:03:11 +0000
-X-UUID: bb1ce2b0e5be11ee9aa9374d6d45775a-20240319
+	id 1rmTV8-0000000Bbwc-0SBU;
+	Tue, 19 Mar 2024 07:03:12 +0000
+X-UUID: ba70a7dee5be11ee9aa9374d6d45775a-20240319
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=85zG1qADj2+PeXUngB89OUIHW4WMQF1BST/UA49IDzQ=;
-	b=fs7tlLMcAuXIMD0ef1IHbimmAxatRZa+5aRZ4+nCEKtU7gMszn2Qi1GDj58WA6xSab+L/Uz4hU+9MGjftgk5nxpfQn9eR5CgF13C9IsOfapKx5rsBrPq24Dg6jKT8sO+6GA++jMYJBk6n7dBtd+4iUl+kfqI6pUYqc2vu1gTk6g=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=CGihiINE4jr8gwW1duxiJk5+r7phZbsvGQSK+VEZn4I=;
+	b=It8wqpj+soHhLdyvVywZ+cGjSrzvVZk9e0gvFvRdn2LM+0YyC/oPj8Us8mXWxdSTpD1h8QhbPK6m9PgZZI3AkjUppVCkelihvJm8cUY9XFNDlj03h+cMOCGbrYos5YsfKUo6DfFTBTg0zECFIxCzQYQEEMJ+dK5D6jYZRbw5UIY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:9fac3306-3e66-4140-8181-56caca2a55ea,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:32860f00-c26b-4159-a099-3b9d0558e447,B
+X-CID-O-INFO: VERSION:1.1.37,REQID:87596d2a-bde4-4c60-8b4e-c778004e8a8a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:f8850f00-c26b-4159-a099-3b9d0558e447,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: bb1ce2b0e5be11ee9aa9374d6d45775a-20240319
+X-UUID: ba70a7dee5be11ee9aa9374d6d45775a-20240319
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1001123286; Tue, 19 Mar 2024 00:03:04 -0700
+	with ESMTP id 612205834; Tue, 19 Mar 2024 00:03:02 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Tue, 19 Mar 2024 15:02:59 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -64,29 +64,30 @@ CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
 	<linaro-mm-sig@lists.linaro.org>, Hsiao Chien Sung
 	<shawn.sung@mediatek.corp-partner.google.com>
-Subject: [PATCH v2 05/14] drm/mediatek: Rename "mtk_drm_hdmi" to "mtk_hdmi"
-Date: Tue, 19 Mar 2024 15:02:48 +0800
-Message-ID: <20240319070257.6443-6-shawn.sung@mediatek.com>
+Subject: [PATCH v2 03/14] drm/mediatek: Rename "mtk_drm_plane" to "mtk_plane"
+Date: Tue, 19 Mar 2024 15:02:46 +0800
+Message-ID: <20240319070257.6443-4-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240319070257.6443-1-shawn.sung@mediatek.com>
 References: <20240319070257.6443-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--6.357600-8.000000
-X-TMASE-MatchedRID: qR7vNmAOzjO4pD9RIlWSGjl/LoO+pjoA1cuIRwt/4Miaecho1pk4scbK
-	+pu0ZYwRgaTV+OEAOBbnftxNodBrx9m0JHSAKf2wA9lly13c/gHt/okBLaEo+EdmDSBYfnJRWc2
-	47K5p+pr3GaV8VXGJV8/waCk3L8d/L0W1btd8e56eAiCmPx4NwGmRqNBHmBve38LauI2fxt4qtq
-	5d3cxkNUw65OcFb/QovhpqfDyLvY02XOWw623G3Ag0xexL31C5Aofc2t4ycLDAvpLE+mvX8g==
+X-TM-AS-Result: No-10--4.098600-8.000000
+X-TMASE-MatchedRID: LAlCrEnopVW4pD9RIlWSGjl/LoO+pjoA1cuIRwt/4Miaecho1pk4scbK
+	+pu0ZYwRgaTV+OEAOBbnftxNodBrx9m0JHSAKf2wH5YQyOg71ZZMkOX0UoduuQqiCYa6w8tvVRr
+	UWxu78PgR4d+Uvhl0qrBFBlMmSjdIVJTV35UngiOeAiCmPx4NwBnUJ0Ek6yhjxEHRux+uk8hxKp
+	vEGAbTDkmgskU2xwom4nUm8qVokM2hiFLwKQlGCIxlvtHYclZPKo3q+Ki8Pg5JxT/D5r3nQKCq9
+	RlDeyQisLfXuW/4bbAX+Mbl/tX/i3mVKZusLp922v9OjYWA2uMMswg45VMfPXY3pGDmoik6
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--6.357600-8.000000
+X-TMASE-Result: 10--4.098600-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 60518D38A6411E950F4D5DA06A3273ED86F9CDF2F442E09902863DF3EE64D9322000:8
+X-TM-SNTS-SMTP: 90AD28AA0EAABDA7594ED146C686DF9BDD5D64896D250B6A8035FE47413215262000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240319_000310_220360_D29EA3E4 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20240319_000310_244971_DDB744E8 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,7 +104,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
 
-Rename all "mtk_drm_hdmi" to "mtk_hdmi":
+Rename all "mtk_drm_plane" to "mtk_plane":
 - To align the naming rule
 - To reduce the code size
 
@@ -111,59 +112,49 @@ Reviewed-by: AngeloGiaocchino Del Regno <angelogioacchino.delregno@collabora.com
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c | 6 +++---
+ drivers/gpu/drm/mediatek/mtk_drm_plane.h | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 86133bf16326b..d2876da1b43a7 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1687,7 +1687,7 @@ static int mtk_hdmi_register_audio_driver(struct device *dev)
- 	return 0;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+index cbdb70677d305..43137c46fc148 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+@@ -93,8 +93,8 @@ static bool mtk_plane_format_mod_supported(struct drm_plane *plane,
+ 	return true;
  }
  
--static int mtk_drm_hdmi_probe(struct platform_device *pdev)
-+static int mtk_hdmi_probe(struct platform_device *pdev)
+-static void mtk_drm_plane_destroy_state(struct drm_plane *plane,
+-					struct drm_plane_state *state)
++static void mtk_plane_destroy_state(struct drm_plane *plane,
++				    struct drm_plane_state *state)
  {
- 	struct mtk_hdmi *hdmi;
- 	struct device *dev = &pdev->dev;
-@@ -1746,7 +1746,7 @@ static int mtk_drm_hdmi_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static void mtk_drm_hdmi_remove(struct platform_device *pdev)
-+static void mtk_hdmi_remove(struct platform_device *pdev)
- {
- 	struct mtk_hdmi *hdmi = platform_get_drvdata(pdev);
- 
-@@ -1790,7 +1790,7 @@ static const struct mtk_hdmi_conf mtk_hdmi_conf_mt8167 = {
- 	.cea_modes_only = true,
+ 	__drm_atomic_helper_plane_destroy_state(state);
+ 	kfree(to_mtk_plane_state(state));
+@@ -241,7 +241,7 @@ static const struct drm_plane_funcs mtk_plane_funcs = {
+ 	.destroy = drm_plane_cleanup,
+ 	.reset = mtk_plane_reset,
+ 	.atomic_duplicate_state = mtk_plane_duplicate_state,
+-	.atomic_destroy_state = mtk_drm_plane_destroy_state,
++	.atomic_destroy_state = mtk_plane_destroy_state,
+ 	.format_mod_supported = mtk_plane_format_mod_supported,
  };
  
--static const struct of_device_id mtk_drm_hdmi_of_ids[] = {
-+static const struct of_device_id mtk_hdmi_of_ids[] = {
- 	{ .compatible = "mediatek,mt2701-hdmi",
- 	  .data = &mtk_hdmi_conf_mt2701,
- 	},
-@@ -1801,14 +1801,14 @@ static const struct of_device_id mtk_drm_hdmi_of_ids[] = {
- 	},
- 	{}
- };
--MODULE_DEVICE_TABLE(of, mtk_drm_hdmi_of_ids);
-+MODULE_DEVICE_TABLE(of, mtk_hdmi_of_ids);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.h b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
+index 99aff7da0831d..231bb7aac9473 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
+@@ -4,8 +4,8 @@
+  * Author: CK Hu <ck.hu@mediatek.com>
+  */
  
- static struct platform_driver mtk_hdmi_driver = {
--	.probe = mtk_drm_hdmi_probe,
--	.remove_new = mtk_drm_hdmi_remove,
-+	.probe = mtk_hdmi_probe,
-+	.remove_new = mtk_hdmi_remove,
- 	.driver = {
- 		.name = "mediatek-drm-hdmi",
--		.of_match_table = mtk_drm_hdmi_of_ids,
-+		.of_match_table = mtk_hdmi_of_ids,
- 		.pm = &mtk_hdmi_pm_ops,
- 	},
- };
+-#ifndef _MTK_DRM_PLANE_H_
+-#define _MTK_DRM_PLANE_H_
++#ifndef _MTK_PLANE_H_
++#define _MTK_PLANE_H_
+ 
+ #include <drm/drm_crtc.h>
+ #include <linux/types.h>
 -- 
 2.18.0
 
