@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F081C54E58
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Mar 2024 08:58:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41C30C54E58
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Mar 2024 08:58:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VHrMP/Te7GMh+xS9Wur86ok3W1iGWSFd5lYQe06Wg7o=; b=dYgZlFPzeA+8LnrJFUOJSaXCkf
-	yJsA8kCvowO/zGUJFM+TQ4j8lw5S9ZDRHA622+XZSVrx/GpTRek5wbQ44J9wXTnsEyB23IMbpdz8a
-	8y1Pc21X+RB3r9x4cXY+8xXBCdg0ekdSRpJ+EXKvMF4vBvbi8DHXNYdT88GDxsIaPK8PtBFTsqtC4
-	y8I9BeCFBIdFS73MXc8AaRM2D4I8Zx8GaUrfpAZ5eyt10lNrBW8EDcF6b/AeIfmj5ffIzU81b1vkz
-	ZdD4+4CLKuplS0O0hZK3YndHRCciF591zo/Mx49pSbNxZaumlS9SVaVSSLlbZHLGLsANesKdoraUT
-	CkNZRxzg==;
+	bh=PsA0J57VEG+wrejzDizxA3RZGa8fu/7pZTUptaTFM0c=; b=Zn/CPRZmiilrjLUDBz/V9nXozS
+	qJtmL8Hhu7Lm//R6rYSclsQ+53VV+Hjz2flAfX+cWcEJdca3z1iojBOH2eRBWkdRBO2YkbNnwpLhV
+	Fc0aFx18sU0VlIhuYMlisLcS8r29sB/+zgDUmsMFN03LevZFyFPD10PqqqqSxCEHUnr4HQUO5/lv/
+	IiH10jpkTEzIVHAvKUYXXP+g/5lGsYGCfVt6VOubsO/MIhl+JgHvrolNxKwsj3bz1X5AmB7oP9ehI
+	ex5eAiI9O/u6CRUrVtxG7vjPTUmF0zQzX9DHP1JMwSJT7E8rKVjX7tujj0tijK1fZQIMSa+S/a6JP
+	f6+r88Vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmrmT-0000000GKhv-47ZW;
-	Wed, 20 Mar 2024 08:58:41 +0000
+	id 1rmrme-0000000GKqO-00Oo;
+	Wed, 20 Mar 2024 08:58:52 +0000
 Received: from ssh248.corpemail.net ([210.51.61.248])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmrm7-0000000GKMp-3FfK;
-	Wed, 20 Mar 2024 08:58:21 +0000
+	id 1rmrm7-0000000GKN7-3sDk;
+	Wed, 20 Mar 2024 08:58:22 +0000
 Received: from ssh248.corpemail.net
-        by ssh248.corpemail.net ((D)) with ASMTP (SSL) id RDA00052;
-        Wed, 20 Mar 2024 16:57:52 +0800
+        by ssh248.corpemail.net ((D)) with ASMTP (SSL) id RDA00153;
+        Wed, 20 Mar 2024 16:57:53 +0800
 Received: from localhost.localdomain (10.94.17.92) by
  jtjnmail201610.home.langchao.com (10.100.2.10) with Microsoft SMTP Server id
- 15.1.2507.35; Wed, 20 Mar 2024 16:57:53 +0800
+ 15.1.2507.35; Wed, 20 Mar 2024 16:57:54 +0800
 From: Bo Liu <liubo03@inspur.com>
 To: <support.opensource@diasemi.com>, <lgirdwood@gmail.com>,
 	<broonie@kernel.org>, <matthias.bgg@gmail.com>,
 	<angelogioacchino.delregno@collabora.com>, <jagan@amarulasolutions.com>
 CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>, Bo Liu <liubo03@inspur.com>
-Subject: [PATCH v1 07/13] regulator: pf8x00: convert to use maple tree register cache
-Date: Wed, 20 Mar 2024 04:57:34 -0400
-Message-ID: <20240320085740.4604-8-liubo03@inspur.com>
+Subject: [PATCH v1 08/13] regulator: pfuze100: convert to use maple tree register cache
+Date: Wed, 20 Mar 2024 04:57:35 -0400
+Message-ID: <20240320085740.4604-9-liubo03@inspur.com>
 X-Mailer: git-send-email 2.18.2
 In-Reply-To: <20240320085740.4604-1-liubo03@inspur.com>
 References: <20240320085740.4604-1-liubo03@inspur.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.94.17.92]
-tUid: 202432016575236fe51fead87bdfab5f671ce3ee858c1
+tUid: 202432016575329b382f83f33a89471747f9a5084164d
 X-Abuse-Reports-To: service@corp-email.com
 Abuse-Reports-To: service@corp-email.com
 X-Complaints-To: service@corp-email.com
 X-Report-Abuse-To: service@corp-email.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240320_015820_193857_59BF561E 
-X-CRM114-Status: GOOD (  10.77  )
+X-CRM114-CacheID: sfid-20240320_015820_387919_DA123B37 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,22 +75,22 @@ more appropriate for modern systems than those made by the rbtree cache.
 
 Signed-off-by: Bo Liu <liubo03@inspur.com>
 ---
- drivers/regulator/pf8x00-regulator.c | 2 +-
+ drivers/regulator/pfuze100-regulator.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/regulator/pf8x00-regulator.c b/drivers/regulator/pf8x00-regulator.c
-index b0781d9a1058..9fd8e0949b32 100644
---- a/drivers/regulator/pf8x00-regulator.c
-+++ b/drivers/regulator/pf8x00-regulator.c
-@@ -142,7 +142,7 @@ static const struct regmap_config pf8x00_regmap_config = {
+diff --git a/drivers/regulator/pfuze100-regulator.c b/drivers/regulator/pfuze100-regulator.c
+index 46854602b3ea..7c04870442d3 100644
+--- a/drivers/regulator/pfuze100-regulator.c
++++ b/drivers/regulator/pfuze100-regulator.c
+@@ -680,7 +680,7 @@ static const struct regmap_config pfuze_regmap_config = {
  	.reg_bits = 8,
  	.val_bits = 8,
- 	.max_register = PF8X00_PAGE_SELECT,
+ 	.max_register = PFUZE_NUMREGS - 1,
 -	.cache_type = REGCACHE_RBTREE,
 +	.cache_type = REGCACHE_MAPLE,
  };
  
- /* VLDOx output: 1.5V to 5.0V */
+ static int pfuze100_regulator_probe(struct i2c_client *client)
 -- 
 2.18.2
 
