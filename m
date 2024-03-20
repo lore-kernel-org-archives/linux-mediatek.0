@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52326C54E67
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Mar 2024 08:59:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A898C54E67
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Mar 2024 08:59:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FL1qw34SGTXy7ImnYpLpmTM0gw9nOa3W+J6i0xYDlAs=; b=LnFEtoxZfXw/CoF3/B2zW46w7/
-	JCvduzj8szjYJmMcD5U70U1vD6tYhfX+u5WuOkKxTXPeTVghXL+0o1arnXKf6/OPTHGbthOF0l2vw
-	qJiLsSECpQb69bJBs9QtDRm2LCIhDfUmrrM2Ud1exgjMR4r/kOqGX9/5gNhQcp4r0d2etQQfQV6hv
-	B2uYrCIJ26xrZ7LE9AE5hf7hDLkMzS/dd4wCJn7HVOABd+ifXTI3NRxjsVPfNFzir08NdVMHZQ0Rl
-	r0OeLW9DrK1X27ABCh24UiB15+xdHy8PMNH3rqKYbR+iC75PrS25UQdkrEuJ3U82kB/I3eCroy3Hd
-	FR7QVtLA==;
+	bh=HYEuuc3Y0Zzr0QdWj4QeqJjY9Ew/htPF8rS+MOzY5GI=; b=rYAT1OcO8lX2D3NPs3JBNbd0SG
+	PSvzz1k3ZJ9ppoAHthwXOMVAbtQnQtUXrex+78D+77c1zfgyitX6DWwg4JOHe61lvzBjivg8eyNOt
+	NNoZN2hAnOHonQvQfK+kOyPKF3UutnRD7BDkFJuOdcuMpyohOMGv4efJqorO+WEn/TLdw0DQk/1oT
+	N4htespCpd/Tw72oQEcuMQ5r1oUDhnhwyyLSkoBNvfAwlorURDaVdgV8MiLkPDh1viE7zd2WK7Jm1
+	2b22MBhub+pg8gVvPC420Aq8SjRUKCN7P9RuKUUXIyxGmkczbXa8Lwb8vvMKaWJgNu9l6a4wp8nd9
+	cozlHz3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmrnE-0000000GLCr-43GT;
-	Wed, 20 Mar 2024 08:59:28 +0000
+	id 1rmrnP-0000000GLJT-0BSo;
+	Wed, 20 Mar 2024 08:59:39 +0000
 Received: from ssh248.corpemail.net ([210.51.61.248])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmrm9-0000000GKN8-4463;
-	Wed, 20 Mar 2024 08:58:23 +0000
+	id 1rmrmA-0000000GKMD-1V0n;
+	Wed, 20 Mar 2024 08:58:24 +0000
 Received: from ssh248.corpemail.net
-        by ssh248.corpemail.net ((D)) with ASMTP (SSL) id RDA00056;
-        Wed, 20 Mar 2024 16:57:56 +0800
+        by ssh248.corpemail.net ((D)) with ASMTP (SSL) id RDA00046;
+        Wed, 20 Mar 2024 16:57:46 +0800
 Received: from localhost.localdomain (10.94.17.92) by
  jtjnmail201610.home.langchao.com (10.100.2.10) with Microsoft SMTP Server id
- 15.1.2507.35; Wed, 20 Mar 2024 16:57:57 +0800
+ 15.1.2507.35; Wed, 20 Mar 2024 16:57:46 +0800
 From: Bo Liu <liubo03@inspur.com>
 To: <support.opensource@diasemi.com>, <lgirdwood@gmail.com>,
 	<broonie@kernel.org>, <matthias.bgg@gmail.com>,
 	<angelogioacchino.delregno@collabora.com>, <jagan@amarulasolutions.com>
 CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>, Bo Liu <liubo03@inspur.com>
-Subject: [PATCH v1 10/13] regulator: rtq6752: convert to use maple tree register cache
-Date: Wed, 20 Mar 2024 04:57:37 -0400
-Message-ID: <20240320085740.4604-11-liubo03@inspur.com>
+Subject: [PATCH v1 01/13] regulator: da9121: convert to use maple tree register cache
+Date: Wed, 20 Mar 2024 04:57:28 -0400
+Message-ID: <20240320085740.4604-2-liubo03@inspur.com>
 X-Mailer: git-send-email 2.18.2
 In-Reply-To: <20240320085740.4604-1-liubo03@inspur.com>
 References: <20240320085740.4604-1-liubo03@inspur.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.94.17.92]
-tUid: 2024320165756186053ed60c66470a40aeceec52f73fc
+tUid: 2024320165746aad7dc223c642e3cd2cb0c306415dbf7
 X-Abuse-Reports-To: service@corp-email.com
 Abuse-Reports-To: service@corp-email.com
 X-Complaints-To: service@corp-email.com
 X-Report-Abuse-To: service@corp-email.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240320_015822_721295_5D50A1DE 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20240320_015822_849651_BC06A303 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,22 +75,31 @@ more appropriate for modern systems than those made by the rbtree cache.
 
 Signed-off-by: Bo Liu <liubo03@inspur.com>
 ---
- drivers/regulator/rtq6752-regulator.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/regulator/da9121-regulator.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/regulator/rtq6752-regulator.c b/drivers/regulator/rtq6752-regulator.c
-index 8176e5ab0683..d35d844eff3b 100644
---- a/drivers/regulator/rtq6752-regulator.c
-+++ b/drivers/regulator/rtq6752-regulator.c
-@@ -209,7 +209,7 @@ static const struct reg_default rtq6752_reg_defaults[] = {
- static const struct regmap_config rtq6752_regmap_config = {
- 	.reg_bits = 8,
- 	.val_bits = 8,
+diff --git a/drivers/regulator/da9121-regulator.c b/drivers/regulator/da9121-regulator.c
+index 5ee76b533576..96257551bb12 100644
+--- a/drivers/regulator/da9121-regulator.c
++++ b/drivers/regulator/da9121-regulator.c
+@@ -872,7 +872,7 @@ static struct regmap_config da9121_1ch_regmap_config = {
+ 	.rd_table = &da9121_1ch_readable_table,
+ 	.wr_table = &da9121_1ch_writeable_table,
+ 	.volatile_table = &da9121_volatile_table,
 -	.cache_type = REGCACHE_RBTREE,
 +	.cache_type = REGCACHE_MAPLE,
- 	.max_register = RTQ6752_REG_FAULT,
- 	.reg_defaults = rtq6752_reg_defaults,
- 	.num_reg_defaults = ARRAY_SIZE(rtq6752_reg_defaults),
+ };
+ 
+ /* DA9121 regmap config for 2 channel variants */
+@@ -883,7 +883,7 @@ static struct regmap_config da9121_2ch_regmap_config = {
+ 	.rd_table = &da9121_2ch_readable_table,
+ 	.wr_table = &da9121_2ch_writeable_table,
+ 	.volatile_table = &da9121_volatile_table,
+-	.cache_type = REGCACHE_RBTREE,
++	.cache_type = REGCACHE_MAPLE,
+ };
+ 
+ static int da9121_check_device_type(struct i2c_client *i2c, struct da9121 *chip)
 -- 
 2.18.2
 
