@@ -4,98 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FCA0C54E71
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Mar 2024 21:31:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1888C54E68
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Mar 2024 01:09:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zrrC27c+leVw8q3sOhDGD63wH3I4xP5q0fuuEBKNnzQ=; b=W3A166ibyGUD5KOqd+dlbwPDBk
-	vOJztAFKzWnHL45vwDuPjbOewXWOUeIDIahtMZ8T19j/RwVDagPvc6wCK89w6/LZJTtimOcGugm4X
-	sdWjpKKpMuQP+riE5NHvr23tzUZpXeV4CogqFR8gHk/S0++jl3AtrO5y6Bq4dfoeozinDAV99OY/I
-	UJmFURYjNU3Pphuqn8WYWma/BRUe26s1bQifugw8dgLUoPZwnJctMSLVjo4Sp41c9xRvN8gdpzU6J
-	fSDFYV2pkTYNyDZzxj2eSvWBYyJ/Uq+ZtFI/poKvR9g8ASP7E0yDunpSSuuc9tK7emLysUdnA5x6x
-	uSJOHX5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0vslccHoMCWly3ZURU46sxdUj43F/UH9ebalL/ZrLyE=; b=I0qw42pEpG7sPFv6ce7sIJFtt0
+	VxYZwWqZL2BxioN3pXbAfSnh3RsTqdSzK0e7yJcx2JgP3TOOXRP9pZ2A8yhTfuf/cvB8joGt08rjq
+	rsJzaW2KcQ2q7+Lkdw34MCsFZtRl0oRYxud/zjfUcSkgZx7B4Z43Vo/kKw3tF487U13anpci5GW3/
+	NEtuplbK8Dus5JQZjzheCcmKM1A8FNx5cRZqTjQwL9nwwSdVq9PJ9kFlKVRTNbdHsYM7u4wj2dgq8
+	t2A7WHuGOx4+R3XJfMsHICudumChaZtx4m68er/JDNP9XiMHOqj8gXvBvxStOSmE2Ds4bnFpfeQ5C
+	VUn0+qUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmh3a-0000000EIjp-2HoP;
-	Tue, 19 Mar 2024 21:31:38 +0000
-Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
+	id 1rmkSY-0000000ErXJ-3yOa;
+	Wed, 20 Mar 2024 01:09:38 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmh3X-0000000EIix-1bWb;
-	Tue, 19 Mar 2024 21:31:37 +0000
-Received: by mail-oa1-x2b.google.com with SMTP id 586e51a60fabf-221a4f9557dso3544325fac.2;
-        Tue, 19 Mar 2024 14:31:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1710883893; x=1711488693; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=zrrC27c+leVw8q3sOhDGD63wH3I4xP5q0fuuEBKNnzQ=;
-        b=Uy5NtSqq4wDfmReMtiHSwmF9Lwox+F9x+7XYyrSPFIj8wh2UK+x9DGP5ItFlRAac+m
-         vhk45awp+AD15fNtfVaB5JbILs+yP+ysa5UuS1K0jN+Bl4Hvm/nx9eeooTnW0u0Krre0
-         f6a70+enxw5++jAVKjmY3YxuJhr4Qxlzh+HqYizSvPcTcIkv2QrYUSR2XmGOmWObTtC7
-         tYBviPzTRnbEzV6n+KBaPN3XXKRwU3E1CXyAG5H+VmkbKZCb0Z2xF39KaeRBaeac2P78
-         qZgDWT4jqv8LMA7MQwPsRr+D8W6+PkpMgSh+jdX/RBiblyUXxRxCyWkb9j3jkaK6C9fg
-         oyNQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710883893; x=1711488693;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=zrrC27c+leVw8q3sOhDGD63wH3I4xP5q0fuuEBKNnzQ=;
-        b=nir0Tl+XSBkL1jeqUf+ARWLjPDSO1zeYTfIh5vXCZyW+XheNXpnr2Buw0Ytb9nxxiW
-         /QCrSliJVPHhIqfz8XLLV2g05pJS5wWG2BDZQo6jP1ME+dUAJignAT/RhDs0TARjtngL
-         2Pj3AaDurf3yQahC70fNlDNF9VhXvf+ZYjaPtAzF+6zF1FsSk+hnRa6/xRujym2nnWZR
-         0qqoFV+kkzPQRiR5nv7TO0HPkgF2vd624XCqPSb2QLwA2rwS6KCj3zRiVP9XBoY/Cocw
-         CSyUuir6dPV7ze2uHVdWcP+ReuCYMvKxtJL70p/4nGYm2O55Uy3xYVSQE8JorPPEfe92
-         g0Qw==
-X-Forwarded-Encrypted: i=1; AJvYcCXqJJ4FcnrwAY93tieQ6Hx/lnWxA2MwThlygWytXv9VfBSk2S/1R/ImqAlK3sQjwhD4K718p+TVrmyMLCbp+eD1Bzmyui4sok8KcAm6wjprNiBn2rn07SI13Oh4xxc2R2sgjAWH7dpw5aqEcLu9ngPaWdWK9kl8N2s=
-X-Gm-Message-State: AOJu0YzEXd3bopXV5sj0XOvszy27yQ5p51pQamjAyXex9Z0wrlY7el/6
-	9hYj67WnBBuwiQCHvosSskOXeOIDxg0blhv2DBfw/KQpVStzg7ET
-X-Google-Smtp-Source: AGHT+IGTbHkm/yZu+SFyFjorv7aR5q2Vk7pijIwUW83u6t5zXogAOTFA3W/xGBNXcrmlWiRg+MWmyQ==
-X-Received: by 2002:a05:6870:9a16:b0:221:94bb:c050 with SMTP id fo22-20020a0568709a1600b0022194bbc050mr17101034oab.32.1710883892747;
-        Tue, 19 Mar 2024 14:31:32 -0700 (PDT)
-Received: from [10.67.48.245] ([192.19.223.252])
-        by smtp.googlemail.com with ESMTPSA id h62-20020a638341000000b005dc832ed816sm9520138pge.59.2024.03.19.14.31.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 19 Mar 2024 14:31:31 -0700 (PDT)
-Message-ID: <38798882-c033-4949-9446-4c6f15c25ebe@gmail.com>
-Date: Tue, 19 Mar 2024 14:31:25 -0700
+	id 1rmkSV-0000000ErW5-0QuL;
+	Wed, 20 Mar 2024 01:09:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id ECB18CE0EE4;
+	Wed, 20 Mar 2024 01:09:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12B4FC433F1;
+	Wed, 20 Mar 2024 01:09:28 +0000 (UTC)
+Authentication-Results: smtp.kernel.org;
+	dkim=pass (1024-bit key) header.d=zx2c4.com header.i=@zx2c4.com header.b="dQ8BenM7"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zx2c4.com; s=20210105;
+	t=1710896966;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0vslccHoMCWly3ZURU46sxdUj43F/UH9ebalL/ZrLyE=;
+	b=dQ8BenM7n4QQUbeM1wjdCGNzGSH6TFaQ3XM37L904ZiYEBphDBP1IVzdpgk21HkXPo7MDs
+	SUCPBwU6iv45YWyk/jJjXtJtDoRGpwil4kua5uo50FKur821+KYRKpavodlQJdqL6qtH8l
+	EC6XNoHZW1Iqz4IrdGKAmEXrWYABtKA=
+Received: by mail.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id c3249e04 (TLSv1.3:TLS_AES_256_GCM_SHA384:256:NO);
+	Wed, 20 Mar 2024 01:09:24 +0000 (UTC)
+Date: Wed, 20 Mar 2024 02:09:21 +0100
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+To: Guoyong Wang <guoyong.wang@mediatek.com>
+Cc: Theodore Ts'o <tytso@mit.edu>, Tejun Heo <tj@kernel.org>,
+	Lai Jiangshan <jiangshanlai@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+Subject: Re: [PATCH] random: Fix the issue of '_might_sleep' function running
+ in an atomic contex
+Message-ID: <Zfo3QUFEy4wHkLEB@zx2c4.com>
+References: <Zfidal8CEZStp3R7@zx2c4.com>
+ <20240319093055.3252-1-guoyong.wang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/3] Fix EEE support for MT7531 and MT7988 SoC switch
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>
-Cc: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>,
- Russell King <linux@armlinux.org.uk>,
- SkyLake Huang <SkyLake.Huang@mediatek.com>,
- Heiner Kallweit <hkallweit1@gmail.com>,
- Bartel Eerdekens <bartel.eerdekens@constell8.be>, mithat.guner@xeront.com,
- erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20240318-for-net-mt7530-fix-eee-for-mt7531-mt7988-v>
- <ZfnYkuzuvwLepIfC@makrotopia.org>
- <00ec9779-19ce-4005-83f0-f4abf37350fc@arinc9.com>
- <6cb585f6-6da8-45a2-a28b-2fb556f95672@lunn.ch>
- <Zfn1DxkEa3u-f7l2@makrotopia.org>
-From: Florian Fainelli <f.fainelli@gmail.com>
-In-Reply-To: <Zfn1DxkEa3u-f7l2@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20240319093055.3252-1-guoyong.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240319_143135_461533_75DB2E20 
-X-CRM114-Status: GOOD (  21.92  )
+X-CRM114-CacheID: sfid-20240319_180935_633508_DE1D6C14 
+X-CRM114-Status: GOOD (  22.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,41 +79,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3/19/24 13:26, Daniel Golle wrote:
-> On Tue, Mar 19, 2024 at 08:38:03PM +0100, Andrew Lunn wrote:
->>> I would argue that EEE advertisement on the PHY should be enabled by
->>> default.
->>
->> That is an open question at the moment. For some use cases, it can add
->> extra delay and jitter which can cause problems. I've heard people
->> doing PTP don't like EEE for example.
+On Tue, Mar 19, 2024 at 05:30:55PM +0800, Guoyong Wang wrote:
+> On Mon, 18 Mar 2024 21:00:42 +0100, Jason A. Donenfeld wrote:
+> > I'm wondering, though, rather than introducing a second function, maybe
+> > execute_in_process_context() should just gain a `&& !in_atomic()`.
+> > That'd make things a bit simpler.  
 > 
-> MediaTek consumer-grade hardware doesn't support PTP and hence that
-> quite certainly won't ever be an issue with all switch ICs supported
-> by the mt7530 driver.
+> > However, I'm pretty sure in_atomic() isn't actually a reliable way of
+> > determining that, depending on config. So maybe this should just call
+> > the worker always (if system_wq isn't null).
 > 
-> I'd rather first change the (configuration) default in OpenWrt (which
-> is arguable the way most people are using this hardware), also because
-> that will be more visible/obvious for users. Or even just make EEE
-> configurable in the LuCI web-UI as a first step so users start playing
-> with it.
+> > Alternatively, any chance the call to add_input_randomness() could be
+> > moved outside the spinlock, or does this not look possible?
 > 
-> After all, I also have a hard time imagining that MediaTek disabled
-> EEE in their downstream driver for no reason:
+> Hi Jason,
 > 
-> https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/24091177a18ba7f2dd8d928a8f5b27b14df46b16
+> Thanks for your suggestions. 
+> 
+> I am inclined to accept your second suggestion. My reluctance to accept 
+> the first is due to the concern that "&& !in_atomic()" could potentially 
+> alter the original meaning of the 'execute_in_process_context' interface. 
+> Regarding the third suggestion, modifying the logic associated with 'input' 
+> is not recommended.
 
-EEE tends to be an interoperability trap and typically results in 
-unexplained link drops with different link partners which are difficult 
-to debug and root cause. It would be great to have more context as to 
-why it was disabled in the downstream tree to know what we are up 
-against, though I would not be surprised if there had been a number of 
-issues reported.
+Doesn't something like the below seem simplest? Just move the call out
+of the spinlock and we're done.
 
-That said as an user, if someone has a well controlled environment, they 
-should absolutely be able to turn on EEE and see how stable it holds in 
-their environment.
--- 
-Florian
+diff --git a/drivers/input/input-core-private.h b/drivers/input/input-core-private.h
+index 116834cf8868..717f239e28d0 100644
+--- a/drivers/input/input-core-private.h
++++ b/drivers/input/input-core-private.h
+@@ -10,7 +10,7 @@
+ struct input_dev;
+
+ void input_mt_release_slots(struct input_dev *dev);
+-void input_handle_event(struct input_dev *dev,
++bool input_handle_event(struct input_dev *dev,
+ 			unsigned int type, unsigned int code, int value);
+
+ #endif /* _INPUT_CORE_PRIVATE_H */
+diff --git a/drivers/input/input.c b/drivers/input/input.c
+index f71ea4fb173f..2faf46218c66 100644
+--- a/drivers/input/input.c
++++ b/drivers/input/input.c
+@@ -391,20 +391,22 @@ static void input_event_dispose(struct input_dev *dev, int disposition,
+ 	}
+ }
+
+-void input_handle_event(struct input_dev *dev,
++bool input_handle_event(struct input_dev *dev,
+ 			unsigned int type, unsigned int code, int value)
+ {
+ 	int disposition;
++	bool should_contribute_to_rng = false;
+
+ 	lockdep_assert_held(&dev->event_lock);
+
+ 	disposition = input_get_disposition(dev, type, code, &value);
+ 	if (disposition != INPUT_IGNORE_EVENT) {
+ 		if (type != EV_SYN)
+-			add_input_randomness(type, code, value);
++			should_contribute_to_rng = true;
+
+ 		input_event_dispose(dev, disposition, type, code, value);
+ 	}
++	return should_contribute_to_rng;
+ }
+
+ /**
+@@ -428,12 +430,15 @@ void input_event(struct input_dev *dev,
+ 		 unsigned int type, unsigned int code, int value)
+ {
+ 	unsigned long flags;
++	bool should_contribute_to_rng;
+
+ 	if (is_event_supported(type, dev->evbit, EV_MAX)) {
+
+ 		spin_lock_irqsave(&dev->event_lock, flags);
+-		input_handle_event(dev, type, code, value);
++		should_contribute_to_rng = input_handle_event(dev, type, code, value);
+ 		spin_unlock_irqrestore(&dev->event_lock, flags);
++		if (should_contribute_to_rng)
++			add_input_randomness(type, code, value);
+ 	}
+ }
+ EXPORT_SYMBOL(input_event);
 
 
