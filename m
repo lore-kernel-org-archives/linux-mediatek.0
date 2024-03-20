@@ -4,77 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 641EDC6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Mar 2024 15:04:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CE37C54E58
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Mar 2024 15:32:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EPnVyRoNctObdniIj1LYajBfdJ4KCDXA+i1lA4eN1Ok=; b=5C/cW2IDJuQApw/Z8phiMkxklZ
-	XW0ydGKtc9J9AFqZSWlPsSEKOiM4a512MDiNciPlx3TEhwHkSmQirTMmSY0b7deX+meRqKkI31fSn
-	qwGnEm0w7MolkuBX0aeLzVBorl9s0SgEqlxZsdyR5dTJvok5N1rL5A7I1sor/+wC4gU/nTB2h3b4d
-	ZHOh2y+m+teGKTPrPLgEfVoTuBCPvArX4eI5lysyp+VmtV4+O4uQd6um9bFqwbzjGxCxjo033NOJp
-	MEJWWtre6y8Jvph3fPr5nZTpnihBhLP0+X0E4oJx86UC8i1aU2sbgd++rLyM/0qxYH30pnhxHt1uo
-	PmQOh0lA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/C7653718RlBdSg+k42d/NO73Wvgf5E+DZZfon0Ag+k=; b=dFnNJH39524CcwQn+u4TBJO54j
+	34sNWc9A3jOOJVdrbgY5xMcFC1GwJnuBzf+AFN3IhNx89MNchk4irHaapJQ/tmnfpdOqI94O/GOxY
+	8PLxhTXKl1BXq4BZEs0a7l4rxb4SbBPPaC6EgP3YrNlB/kKnTxJ2/2OhqGOQRg1SymU6HEMSZrxQA
+	P+T9PZ1E/wTdsn3084Yso7cPxT+oSmTTUeCAIaZP66yMHs2H6St49SlsDXSNG6oRkSkJLFEJUqkao
+	cem3FvuYaM7v1OZjEhuRTzE2TKWWtLIC6utC1BPnGRXNVQRI+Baa73OOwf2THZ2BxewkKkM6BbBoU
+	5b2cZc5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmxUa-0000000HaRp-2BuU;
-	Wed, 20 Mar 2024 15:04:36 +0000
-Received: from relay8-d.mail.gandi.net ([2001:4b98:dc4:8::228])
+	id 1rmxvu-000000005qV-0RKU;
+	Wed, 20 Mar 2024 15:32:56 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmxUW-0000000HaQv-0OVy;
-	Wed, 20 Mar 2024 15:04:34 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 58E531BF20E;
-	Wed, 20 Mar 2024 15:04:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1710947064;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=EPnVyRoNctObdniIj1LYajBfdJ4KCDXA+i1lA4eN1Ok=;
-	b=RfSA+UhG2CCvT8s3keKol+jqb3t/l0Vw21Xp4Ejm+XNwtdyVT4kjlB4XEFKVcqv5bzcEc6
-	wX2fJI42+LksHzhgi+T8TAmfla9hnLdU+63L5FqEOR4RrIYVfXmtUA/3sJowNB6/+arSRJ
-	3dFMAdGdEzNXaiy8FAEvb8FtIzrr5Vxb9YQ7bKsxPoC8ZgCMnQnAxL22vjNo5Fq3DMpZUm
-	Kke1u5XpWYxbbu46BlExMVGZnIoUjRccIf7WwxCtnHn+6L53zQ+ApgAEm+geG9ansi2ZK8
-	+CmSUNTM/kXi9eyCtDL/HRfWUApIC3Ffp4N1/L3Y20iQ+oCjVqfw8FzG3GvelQ==
-Message-ID: <3ee60bfe-1283-46b3-9b7e-07526912f763@arinc9.com>
-Date: Wed, 20 Mar 2024 18:03:57 +0300
+	id 1rmxvq-000000005pI-2vkB
+	for linux-mediatek@lists.infradead.org;
+	Wed, 20 Mar 2024 15:32:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9266361000;
+	Wed, 20 Mar 2024 15:32:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B5AEC433C7;
+	Wed, 20 Mar 2024 15:32:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1710948765;
+	bh=gW3iHwL4OWAxkaSXv/fLpVs36bsMw/9vOSHOFPiRlUY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ewTpx6kCQIMQuWQNuip44aS/k7lJIMqTiEj9UOPx43aH9Nd0OmHYWU+mOBZH8nVA9
+	 dLoBXoNPNTIoOS1J9X+5BhUhI2VQI63jjqJoqStvODbguWvZyEVdxBvJi9FDx+Ws0P
+	 7NvUjIpd3sdPb2G1LAxyDeP9nYMZvpSnfaDjFhG80+N/05JtXcWDdO+sLNObEUrOdo
+	 YKDZcg23PY8q8whhdr0ZeLixnv/+R51kgnCDJstwzhdy1pRXA//dlLvJGvMlgu+DEq
+	 2titbGOcS4MmYEiK2g8w+Uq98ns26ZqsvN9Akp9s6ZSg4PaZ5D29ky5USpA/JSNsL0
+	 edkWAqRLvnMHw==
+Date: Wed, 20 Mar 2024 10:32:42 -0500
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@kernel.org>
+Cc: Nicolas Pitre <nico@fluxnic.net>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, Nicolas Pitre <npitre@baylibre.com>
+Subject: Re: [PATCH v2 01/13] thermal/drivers/mediatek/lvts_thermal: retrieve
+ all calibration bytes
+Message-ID: <20240320153242.GA1760306-robh@kernel.org>
+References: <20240318212428.3843952-1-nico@fluxnic.net>
+ <20240318212428.3843952-2-nico@fluxnic.net>
+ <7a529bd6-abac-42d0-980e-3b1b5c46946f@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/3] Fix EEE support for MT7531 and MT7988 SoC switch
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>,
- Russell King <linux@armlinux.org.uk>,
- SkyLake Huang <SkyLake.Huang@mediatek.com>,
- Heiner Kallweit <hkallweit1@gmail.com>,
- Bartel Eerdekens <bartel.eerdekens@constell8.be>, mithat.guner@xeront.com,
- erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20240318-for-net-mt7530-fix-eee-for-mt7531-mt7988-v1-0-3f17226344e8@arinc9.com>
- <9d111cc9-c73a-4d3c-83f5-3f59e6c8841f@arinc9.com>
- <ZfrDnFyGay5YTTFg@makrotopia.org>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <ZfrDnFyGay5YTTFg@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-GND-Spam-Score: 400
-X-GND-Status: SPAM
-X-GND-Sasl: arinc.unal@arinc9.com
+In-Reply-To: <7a529bd6-abac-42d0-980e-3b1b5c46946f@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240320_080432_486839_11686BA6 
-X-CRM114-Status: GOOD (  20.28  )
+X-CRM114-CacheID: sfid-20240320_083246_862465_1B2961CC 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,45 +77,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20.03.2024 14:08, Daniel Golle wrote:
-> On Wed, Mar 20, 2024 at 11:10:19AM +0300, Arınç ÜNAL wrote:
->> On 18.03.2024 10:46, Arınç ÜNAL via B4 Relay wrote:
->>> Hi.
->>>
->>> This patch series fixes EEE support for MT7531 and the switch on the MT7988
->>> SoC. EEE did not work on MT7531 on most boards before this, it is unclear
->>> what's the status on MT7988 SoC switch as I don't have the hardware.
->>>
->>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->>
->> I see the state of this patch series is deferred on patchwork. I see that I
->> forgot to delegate this to the net tree. As I don't see any objections in
->> this series, I'll send v2 with it tomorrow.
+On Tue, Mar 19, 2024 at 12:40:20PM +0100, AngeloGioacchino Del Regno wrote:
+> Il 18/03/24 22:22, Nicolas Pitre ha scritto:
+> > From: Nicolas Pitre <npitre@baylibre.com>
+> > 
+> > Calibration values are 24-bit wide. Those values so far appear to span
+> > only 16 bits but let's not push our luck.
+> > 
 > 
-> Sorry, but imho it should go to net-next, and you might have overlook
-> it but there have been some concerns.
-
-I don't believe I overlooked anything. I've come to this conclusion after
-reading every response in this thread.
-
+> I wonder how much feedback you got on v1 - I didn't even look and will not lose
+> time with that - but regardless, if you don't add the right people to the Cc field,
+> I really don't think that you'll ever get your patches reviewed (and probably also
+> not accepted).
 > 
-> For sure it should not go to net tree as you are enabling a new feature
-> and not fixing anything which is broken. EEE on MT7988 works fine as
+> That -- especially if you don't even Cc all the relevant maintainers...!
+> 
+> Please read:
+> https://www.kernel.org/doc/html/latest/process/submitting-patches.html
+> 
+> P.S.:
+> scripts/get_maintainer.pl lvts-8186-8188-patches.patch
+> 
+> "Rafael J. Wysocki" <rafael@kernel.org> (supporter:THERMAL)
+> Daniel Lezcano <daniel.lezcano@linaro.org> (supporter:THERMAL,commit_signer:21/22=95%)
+> Zhang Rui <rui.zhang@intel.com> (reviewer:THERMAL)
+> Lukasz Luba <lukasz.luba@arm.com> (reviewer:THERMAL)
+> Rob Herring <robh@kernel.org> (maintainer:OPEN FIRMWARE AND FLATTENED DEVICE
+> TREE BINDINGS)
+> Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org> (maintainer:OPEN
+> FIRMWARE AND FLATTENED DEVICE TREE BINDINGS)
+> Conor Dooley <conor+dt@kernel.org> (maintainer:OPEN FIRMWARE AND FLATTENED
+> DEVICE TREE BINDINGS)
+> Matthias Brugger <matthias.bgg@gmail.com> (maintainer:ARM/Mediatek SoC
+> support,commit_signer:4/22=18%)
+> AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> (maintainer:ARM/Mediatek SoC support,commit_signer:13/22=59%)
 
-EEE support exists since the commit which I've mentioned on my patches
-here. I am fixing it. I thought I had explained this clearly on the
-patches.
+> Alexandre Mergnat <amergnat@baylibre.com> (commit_signer:11/22=50%)
+> "N�colas F. R. A. Prado" <nfraprado@collabora.com> (commit_signer:10/22=45%,authored:7/22=32%,added_lines:128/453=28%,removed_lines:45/98=46%)
+> Balsam CHIHI <bchihi@baylibre.com>
+> (authored:4/22=18%,added_lines:235/453=52%,removed_lines:22/98=22%,in file)
+> Chen-Yu Tsai <wenst@chromium.org> (authored:2/22=9%)
+> Minjie Du <duminjie@vivo.com> (authored:2/22=9%)
+> Frank Wunderlich <frank-w@public-files.de>
+> (authored:2/22=9%,added_lines:72/453=16%,removed_lines:17/98=17%)
 
-> of now (see my reply), EEE on MT7531 was supposedly intentionally
-> disabled for reasons we should ask MTK people about.
+Please don't suggest to people that commit signers and authors are CCed. 
+That results in huge Cc lists of people that probably aren't interested. 
+If they are, then they should add themselves to MAINTAINERS.
 
-Are you talking about the EEE_DIS bit on the trap? There's no default
-setting there, it's up to the board vendor to enable/disable EEE by pulling
-the affine pin low or high. So there's no intentional disabling by MediaTek
-there. I see no need to ask the corporate regarding this.
-
-This patch series does not in any way enable EEE on the switch PHYs and
-MACs when it's disabled by default.
-
-Arınç
+Rob
 
