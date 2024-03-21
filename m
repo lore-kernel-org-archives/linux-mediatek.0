@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0497C54E68
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Mar 2024 06:50:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80CD5C54E68
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Mar 2024 06:51:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZBiGSHa0oimyE1MM5zUN6LTK3eAVLs8v7Z76nGxN0a8=; b=Q1QO/r1IWfjQ1g
-	uvGUJnMUlxYmHxawjeYWA2a0FmX7cgcEFCNIvkd83HsrOJmXG+PtWH8vsjv1udcYhlsmhxIZHQqEg
-	BrG3fX+MC02enMSvtye7IYfTL5VgCdMDaW/a6ecVC5CDhz8g0jis3eOsyLnUb2OIg1ne7rPvA4P2g
-	YoDsK7QM2WFBjVtmcrhsKwrE3tHPAwfjH/T9zG9seFni7tPiAgsjiuOr4xVziCZwD1ih9bLupqhzv
-	E4Tm9ufVEULyOIwAvqm6MPy6MJmO/0hjiEILOwNegiI1EQH7tTGxj3TOEVcx2RK52F0+NeQbhajla
-	wkG/cUql8DpnUWWJcCTg==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=XtvNQiaw+2/IaxnmzdGoLxqPTPX+iJkSvUz6nFXt6OU=; b=lFoZzxuYd5kvQo
+	85rMxMmU7yvAiHBK3FFr1ooPIASFuZnb1rkOSFAm7HSnbh6VEX8YDn3+p1tQspCC+HwPfp11VUEuJ
+	rcHRmkiKibizI36Ayj5AAbLT1CMNxyrL+IC4BNQwTbhyKQZxtTm2SnB3Tqag7n+wyOm4t878YZ9dR
+	GSulet5XclioBkzwPuQSn9+520re+nCyH28Mhzss+qJPfHT6AoYnkUrw6+gcrW1lAr1kU9GNpv0Ca
+	jKE9QqvdfkiBJdJOMhCHmPfsM5Irli2mC0zePXK+1T4yCMgZgaxgg6mEMN3VubT9/7Q06aSKqjazC
+	opTntpVCh8evM77SSFFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnCFV-000000025GK-1Izh;
-	Thu, 21 Mar 2024 06:50:01 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1rnCGV-000000025O5-2Iel;
+	Thu, 21 Mar 2024 06:51:03 +0000
+Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnCFS-000000025Fg-2geJ
+	id 1rnCGS-000000025NP-4Azd
 	for linux-mediatek@lists.infradead.org;
-	Thu, 21 Mar 2024 06:50:00 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-1dfff641d10so3758155ad.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 20 Mar 2024 23:49:58 -0700 (PDT)
+	Thu, 21 Mar 2024 06:51:02 +0000
+Received: by mail-qv1-xf31.google.com with SMTP id 6a1803df08f44-6962a97752eso5120276d6.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 20 Mar 2024 23:51:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1711003797; x=1711608597; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZBiGSHa0oimyE1MM5zUN6LTK3eAVLs8v7Z76nGxN0a8=;
-        b=PryZqI8Xl5LlyahUUJhHGSFzBwwWdxpRlHqV20zLLf5qFWKnsGo5csxkCbm6753xtS
-         nPEZXLBJmE/t44y2+E6czb5ZHRIt4FibYCe2z/hlDKar/wd7prWPAikhqkygGls0nmC+
-         BhHZw/GTzqQeSLjVwQxqclFcyi6yyy1/9DKMU=
+        d=chromium.org; s=google; t=1711003859; x=1711608659; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=XtvNQiaw+2/IaxnmzdGoLxqPTPX+iJkSvUz6nFXt6OU=;
+        b=SJ8/wnZyWQEnutM1ekLMwNEMDqgIRr+O/9DqBsZ+92/eLt25Woq6d+mECTqRnWEmfU
+         qtWjoVx21jyaDUj+rtPC+DUNniImmh+07hUhrURyT7Qp0FBChXgPvuQeUpQF8a4pHXU5
+         hGdCUAXzUYsuIto6eykMB0YhN1DIuuL4D7RSM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711003797; x=1711608597;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ZBiGSHa0oimyE1MM5zUN6LTK3eAVLs8v7Z76nGxN0a8=;
-        b=TdkMhALJOsfvQCmy+LmrkvgvoILl5pgH+WQLREd+4y3vJw+5oHYRazNXt4R0Tb+XA0
-         D/U7R8kUT1+nIV+jRHAT49V5aifXFUEJ7lIl61WdJpqt3ngOHWW5LhlSl//6lJBbGsCs
-         05KnxcUuCNSlUVYL/6SbQkyM9JWKX9roupkvw4luaP6Ok3qa3e+nrzOtDUkHe2zJxb9x
-         gLBilvKNHqeAH21CcxKk6dgrD2Y4cwZscNT1/OWzwcCAx6eCcIIdeE8j/JBT9usZG+KA
-         8t7Tp6E/lnSe7ZtNsFjPAk3g7D6k+AwMMaXYInZPKr4HM2FthX1h1wzkHupsYic7UhGZ
-         FAug==
-X-Forwarded-Encrypted: i=1; AJvYcCWHJ6ZHg1oIx6tTlRePUdzffzxUDrcfYGcsOIMKcCnzk3L22D4VGNvcMcMPnVnd+KgR1o1roq+dIlkD7yu8cIkckFbNQ1teTEhBM1x2pfyloY+/
-X-Gm-Message-State: AOJu0Ywuhg9gq4Y0dqNdTmsDAwcQERhCyRd5xNntYmwTN2hc7IIKyi5/
-	xYmseYhLtTGJbh/iQVXKv+l0j3gMrvem8RbVP6tuDYBN/PbhzR1RyYr1wIx3FcyN/I/oYQ9Dh4M
+        d=1e100.net; s=20230601; t=1711003859; x=1711608659;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=XtvNQiaw+2/IaxnmzdGoLxqPTPX+iJkSvUz6nFXt6OU=;
+        b=B2XbJjsHZFIdlDOQW70dofyGbZux2rLGK6Fkh7l42n+CxkL5ORYJTwTtUaqVytS31L
+         0ddTj+GWjfyxv5KpW24CmT6ZB5gS0EJN65h78xcSJt5KC981XbkhDphXqh+cEjPK+xtu
+         4o8Nq3nyLIZkXHJQofIEXKhJxmlI4iHgaF7KWJkVNFeGzxjTskak3SKAsqdJhsXrd6vE
+         7PpIjgmgYo/mn+xJ6RoQeVA0pcp6UpCl6EJ7vNkl2pYufjj7k5O5K5A+EwrUV613CUYC
+         SMhgU8bqcT/Gsb8TRpt8HEGI0RDP6P7OVoWKbP5861OkWcXXOQrgEyCBC59IDAAmuUv5
+         I1Sw==
+X-Forwarded-Encrypted: i=1; AJvYcCXwu+9+i33pOGfTCFodlUDHNkn4yNwLRWUAhEe5UZyBYLKTTjHItPCI3Ix0Q8zGwRrUBLUlAxR3Df5M6VdvBbSGQigEBV1ga3yub4GkPVeiIBmf
+X-Gm-Message-State: AOJu0YySGBgKHuj74IG+UvdLwFkWsxRKKo7Jlx3Uv2UT6wuIGLF7QZSA
+	0w5rwJJ3gqXwIBPnai7kC+qZR1vIh6YaiaVNEEwelzG6ApJ7ZH9DPOzjnkM5ZuimAuO7FrKQJqk
 	=
-X-Google-Smtp-Source: AGHT+IEEEIHKCYtjOYJVfRhVwN68KX9lfipwtZ2TMyYDdaLt1ht07nRcowYnTodrhLwxJsrplM2RyQ==
-X-Received: by 2002:a05:6a21:a586:b0:1a3:6a4c:80a9 with SMTP id gd6-20020a056a21a58600b001a36a4c80a9mr11624698pzc.1.1711003409539;
-        Wed, 20 Mar 2024 23:43:29 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHWd5hWPmT05m/dMO6abQe1VIjaPIiKOk2TwZu/GsKoXdSkfitV4XwZzfzNFOrPnEs3/o8wrg==
+X-Received: by 2002:a05:6a20:4907:b0:1a3:4469:5967 with SMTP id ft7-20020a056a20490700b001a344695967mr7091773pzb.57.1711003407287;
+        Wed, 20 Mar 2024 23:43:27 -0700 (PDT)
 Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:c1ff:a4cf:ac35:8df6])
-        by smtp.gmail.com with ESMTPSA id lb3-20020a056a004f0300b006e664031f10sm12874938pfb.51.2024.03.20.23.43.27
+        by smtp.gmail.com with ESMTPSA id lb3-20020a056a004f0300b006e664031f10sm12874938pfb.51.2024.03.20.23.43.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 20 Mar 2024 23:43:29 -0700 (PDT)
+        Wed, 20 Mar 2024 23:43:26 -0700 (PDT)
 From: Fei Shao <fshao@chromium.org>
 To: Mark Brown <broonie@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 1/2] spi: spi-mt65xx: Fix NULL pointer access in interrupt handler
-Date: Thu, 21 Mar 2024 14:41:01 +0800
-Message-ID: <20240321064313.1385316-2-fshao@chromium.org>
+Subject: [PATCH 0/2] Fixes NULL pointer access in spi-mt65xx.c
+Date: Thu, 21 Mar 2024 14:41:00 +0800
+Message-ID: <20240321064313.1385316-1-fshao@chromium.org>
 X-Mailer: git-send-email 2.44.0.396.g6e790dbe36-goog
-In-Reply-To: <20240321064313.1385316-1-fshao@chromium.org>
-References: <20240321064313.1385316-1-fshao@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240320_234958_706479_AD138002 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20240320_235101_143181_B69DC6C9 
+X-CRM114-Status: GOOD (  10.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,51 +87,36 @@ Cc: linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, linux-spi
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The TX buffer in spi_transfer can be a NULL pointer, so the interrupt
-handler may end up writing to the invalid memory and cause crashes.
+Hi,
 
-Add a check to xfer->tx_buf before using it.
+This series contains two patches for spi-mt65xx.c, both focusing on its
+interrupt handler mtk_spi_interrupt().
 
-Fixes: 1ce24864bff4 ("spi: mediatek: Only do dma for 4-byte aligned buffers")
-Signed-off-by: Fei Shao <fshao@chromium.org>
----
+The first patch is to fix a NULL pointer access in the interrupt
+handler, which is first found on a MT8186 Chromebook device when the
+system tries to establish host communication with its embedded
+controller.
 
- drivers/spi/spi-mt65xx.c | 21 +++++++++++----------
- 1 file changed, 11 insertions(+), 10 deletions(-)
+The second one is a decorative clean-up when I'm working on the first
+patch, which simply renames a variable to better follow the rest of the
+code.
+I put this after the first fix because I think that will make
+maintainers and users slightly easier to only backport the fix if
+needed.
 
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 8d4633b353ee..86ea822c942b 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -788,17 +788,18 @@ static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
- 		mdata->xfer_len = min(MTK_SPI_MAX_FIFO_SIZE, len);
- 		mtk_spi_setup_packet(host);
- 
--		cnt = mdata->xfer_len / 4;
--		iowrite32_rep(mdata->base + SPI_TX_DATA_REG,
--				trans->tx_buf + mdata->num_xfered, cnt);
-+		if (trans->tx_buf) {
-+			cnt = mdata->xfer_len / 4;
-+			iowrite32_rep(mdata->base + SPI_TX_DATA_REG,
-+					trans->tx_buf + mdata->num_xfered, cnt);
- 
--		remainder = mdata->xfer_len % 4;
--		if (remainder > 0) {
--			reg_val = 0;
--			memcpy(&reg_val,
--				trans->tx_buf + (cnt * 4) + mdata->num_xfered,
--				remainder);
--			writel(reg_val, mdata->base + SPI_TX_DATA_REG);
-+			remainder = mdata->xfer_len % 4;
-+			if (remainder > 0) {
-+				reg_val = 0;
-+				memcpy(&reg_val,
-+					trans->tx_buf + (cnt * 4) + mdata->num_xfered,
-+					remainder);
-+				writel(reg_val, mdata->base + SPI_TX_DATA_REG);
- 		}
- 
- 		mtk_spi_enable_transfer(host);
+Looking forward to any feedback, thank you.
+
+Regards,
+Fei
+
+
+Fei Shao (2):
+  spi: spi-mt65xx: Fix NULL pointer access in interrupt handler
+  spi: spi-mt65xx: Rename a variable in interrupt handler
+
+ drivers/spi/spi-mt65xx.c | 47 ++++++++++++++++++++--------------------
+ 1 file changed, 23 insertions(+), 24 deletions(-)
+
 -- 
 2.44.0.396.g6e790dbe36-goog
 
