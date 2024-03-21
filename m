@@ -4,85 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3132C54E68
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Mar 2024 15:27:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BFD3C54E58
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Mar 2024 15:44:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+xaUG2ldhaQRaRHuk6t4MDB7vN1BXN+/W59BKlbNm/o=; b=U0IjHpSgSeE5EoTdAWBxCDIvqb
-	B550Qg2cmum/oh+agQVivjkdorVdYQqRcG/E0zjF1CEWMB8ZRNJFn1TRVTX7LuT0UkssrWDebgNXF
-	fkVAGV4kaZE9lupmW4eQ7x89Ve9qQ4uAnwD0KOs1Iin8+kDFR7IpQY/MIZKSJW1vzxwyBu+Vd7REL
-	8noDvylUVL6P3A3p1dfUJMh8JFgnlBxihVTDmWKNuluDyRoHMy1RA/FQWrI/2NwhOanYplSun92UT
-	1oiYJiFZ2GPHu93gYaS8DhQpkZJvqRzSKpYCYluzICJOK53PCj0cfA0YsrVDJ0IHYZp7h6ipX3AJ8
-	DNqp5SqQ==;
+	bh=GoKI1oN7NuMqVexF+ImYK1Yr93HuS7hH703NEwUH7G0=; b=pSQASU3HeJKopNuNj21+fE69fX
+	CC0rmXvNBV54WT21NF8Jlb3T0677XFkFd9gNfL33+vCO+IKhYxn4qEZLRGyQ5X3dY/YBy+Uqnyuxx
+	ENB0K3Do/AMwfBqt3EajfFhN+d9guliWUZBoo1nkW8R3SaJMDkwOrwCqCVuQUyq5EDaUN76BGd6H5
+	XYlYhb3guzXSD2KtuE9n4GuJxnOmR0P03iXKIQacED6g5gEp53wpmt46ycv5M0ylrm93ZF+XbkKt9
+	xDcKG1VuW1LoCUGH0XN+9SdLEeqbyimaWvWH6XeHOVqbIMH4s4IFMOxzaC4UPvkcbpdsb/EUkTRjD
+	xGQS5LfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnKK1-00000003TH5-0vVq;
-	Thu, 21 Mar 2024 15:27:13 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1rnKb2-00000003bGW-2LoR;
+	Thu, 21 Mar 2024 15:44:48 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnKJy-00000003TGA-3DGe
-	for linux-mediatek@lists.infradead.org;
-	Thu, 21 Mar 2024 15:27:12 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-1de0f92e649so7392985ad.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 21 Mar 2024 08:27:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711034830; x=1711639630; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=+xaUG2ldhaQRaRHuk6t4MDB7vN1BXN+/W59BKlbNm/o=;
-        b=fB+s3KjtRDkmpI9MmN5TXtjDoE53wd7jRFhvQ9y86AAW2dDSzrNRmkTyu5U52lHbuH
-         vUjXF2vKuGw5yxn1PEXhTClYhoTo/CHtGiMISRsB7Q/J13uG/qeLxAKALjPQ6DjDMluX
-         CH1dZmZAQxJKE2TT3BR8IiHSvZTP790zumrWXUKlOtgawJfBQSZxdCs5VrUgo+7cikkk
-         qH0Tw9ktvKjqAXA2MGV04M4QB5hFgwgXyZ2qABRjskMA7BgXqszTf/5T+HPnAucmpkpt
-         HdqRuW7LG4BK03sOXa+gdUu1fRkN6qpVtpcsFqMtySomgQgQh3HXMbFFInTCb/6TjJJS
-         jdGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711034830; x=1711639630;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=+xaUG2ldhaQRaRHuk6t4MDB7vN1BXN+/W59BKlbNm/o=;
-        b=wV1/2adn5TQ/aGCtbL2+lo9VXjfJfG8Y2+KN7o5xvmvA/JbVn2BETva5I/QT27Ag2j
-         cEypwu17xuRJRihjESitevE9BFmbJ+PG9/xKTBSGLiej7HpEodYyd5vwP0y2EDWA+sZ+
-         mmO/QbJ92CHqANBzDqu9waOwehjlzmAf6471SvIoJ3gcSoLrXG5GY6rCCbjaV6eTRXbh
-         idh4uTtXt6E8q6uxGX3AS4KYTB8ISZOzoDPr2vh6nZna5MIjpr6+u2/UfL354SeS+CT4
-         wzSo+zwN2YnOJLx33st2+JZjKOJGtEXJO4qj4ryEzIsTjlP+L5adfWwIKajMNYptj26Q
-         D02g==
-X-Forwarded-Encrypted: i=1; AJvYcCVN/GXb8TtUkCgB1XpvhTuk0Mvdrq6PncfglKR98iRW4rFwoW8wIISUazq2q7nxM+nOwrnqk9An6ac5YRpOUset655kQ6CCMBFZrT5PHBAo6OFO
-X-Gm-Message-State: AOJu0YzQjESqRCCJa1apENoSmIXY5ZfoJxy8BFbMzQAzQza8KtgtD5In
-	eK4y0mczjax57pWdxeFADyUJ2Dw0Gl1wxz1DJgiX05GOvMEte4znPud/uj9JRTrzKjw0ASx7G7t
-	R
-X-Google-Smtp-Source: AGHT+IFZusUIQQGZ01wR/lIafQ3ProKPMjN3Xn3Bpv3FxV8YHFTb1NMxzLzr2zATgiRssYtdZLM9qA==
-X-Received: by 2002:a17:903:22d0:b0:1e0:1e87:c9d8 with SMTP id y16-20020a17090322d000b001e01e87c9d8mr13021667plg.7.1711034829723;
-        Thu, 21 Mar 2024 08:27:09 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:d9a2:e52:d93:c759])
-        by smtp.gmail.com with ESMTPSA id q6-20020a170902a3c600b001dee3fe3c1asm15077983plb.258.2024.03.21.08.27.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 21 Mar 2024 08:27:09 -0700 (PDT)
-Date: Thu, 21 Mar 2024 09:27:04 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: andersson@kernel.org, matthias.bgg@gmail.com, tzungbi@kernel.org,
-	tinghan.shen@mediatek.com, linux-remoteproc@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, wenst@chromium.org,
-	kernel@collabora.com
-Subject: Re: [PATCH 2/2] remoteproc: mediatek: Don't parse extraneous
- subnodes for multi-core
-Message-ID: <ZfxRyMyUqyqtXy8n@p14s>
-References: <20240321084614.45253-1-angelogioacchino.delregno@collabora.com>
- <20240321084614.45253-3-angelogioacchino.delregno@collabora.com>
+	id 1rnKaz-00000003bCK-0Rsa;
+	Thu, 21 Mar 2024 15:44:46 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1rnKai-0007eQ-2t;
+	Thu, 21 Mar 2024 15:44:29 +0000
+Date: Thu, 21 Mar 2024 15:44:25 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Jakub Kicinski <kuba@kernel.org>,
+	Bc-bocun Chen <bc-bocun.chen@mediatek.com>,
+	Steven Liu <steven.liu@mediatek.com>,
+	John Crispin <john@phrozen.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org
+Subject: Re: [PATCH v3 2/2] phy: add driver for MediaTek XFI T-PHY
+Message-ID: <ZfxV2c-JBCFrpSRV@makrotopia.org>
+References: <745f8b46f676e94c1a396df8c46aefe0e8b4771c.1707530671.git.daniel@makrotopia.org>
+ <3bb95f1d795eede63284dbcb224e06ea6886b421.1707530671.git.daniel@makrotopia.org>
+ <ZevJwSq-A43vqO6k@makrotopia.org>
+ <20240308193632.158b3c42@kernel.org>
+ <Ze3j-7WzbTM52kAs@matsya>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240321084614.45253-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <Ze3j-7WzbTM52kAs@matsya>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240321_082710_836531_842A9D87 
-X-CRM114-Status: GOOD (  17.28  )
+X-CRM114-CacheID: sfid-20240321_084445_172635_E0E06F31 
+X-CRM114-Status: GOOD (  15.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,43 +81,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 21, 2024 at 09:46:14AM +0100, AngeloGioacchino Del Regno wrote:
-> When probing multi-core SCP, this driver is parsing all sub-nodes of
-> the scp-cluster node, but one of those could be not an actual SCP core
-> and that would make the entire SCP cluster to fail probing for no good
-> reason.
-> 
-> To fix that, in scp_add_multi_core() treat a subnode as a SCP Core by
-> parsing only available subnodes having compatible "mediatek,scp-core".
-> 
-> Fixes: 1fdbf0cdde98 ("remoteproc: mediatek: Probe SCP cluster on multi-core SCP")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/remoteproc/mtk_scp.c | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index 67518291a8ad..fbe1c232dae7 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -1096,6 +1096,9 @@ static int scp_add_multi_core(struct platform_device *pdev,
->  	cluster_of_data = (const struct mtk_scp_of_data **)of_device_get_match_data(dev);
->  
->  	for_each_available_child_of_node(np, child) {
-> +		if (!of_device_is_compatible(child, "mediatek,scp-core"))
-> +			continue;
-> +
+Hi Vinod,
 
-Interesting - what else gets stashed under the remote processor node?  I don't
-see anything specified in the bindings.
-
-Thanks,
-Mathieu
-
->  		if (!cluster_of_data[core_id]) {
->  			ret = -EINVAL;
->  			dev_err(dev, "Not support core %d\n", core_id);
-> -- 
-> 2.44.0
+On Sun, Mar 10, 2024 at 10:16:51PM +0530, Vinod Koul wrote:
+> On 08-03-24, 19:36, Jakub Kicinski wrote:
+> > On Sat, 9 Mar 2024 02:30:25 +0000 Daniel Golle wrote:
+> > > > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > > > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>  
+> > > 
+> > > It's been a month since this patch was posted. Maybe it has somehow
+> > > slipped under the table (or even under the carpet)?
 > 
+> Nope, somehow I dont have this in inbox, i think i have some issues with
+> gmail and list server,
+
+The series can be found here, just in case:
+
+https://patchwork.kernel.org/project/linux-phy/list/?series=824861
+
+> 
+> > Lots of people in To:, lets direct the question to Vinod? 
+> > Most active generic PHY maintainer according to git, Vinod?
+> 
+> thanks for letting me know...
+> I will review it in next few days (pulled it from lore using b4)
+
+It'd be great if you can take a look and maybe merge this so
+we can proceed adding support for MT7988.
+
+Thank you!
 
