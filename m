@@ -4,72 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2853C54E58
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Mar 2024 14:42:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C207C54E58
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Mar 2024 15:02:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1X+hNJMGK6SqdH8ZPP6qaRmvCLvttst+h+aM4nW4TUg=; b=fD9BH7N3asOoFmWTXLBJIYR3y3
-	xLTrW6VXCUeCTZuk4zusHfKjj+8o4KMZ7VDtAUi8L88ZT4T00dJArmZSELsT8ctDRejaxS8tleXh3
-	xfRK/qOdq2xhUIsiCd3AJr0Zh/jKyYGl0YXOd0gQ2UGYMLg1+5Pd7+T3kSRbW1DUWZVtIjDi4TFpR
-	7BQTML2o71sDNKH5Cji3XQKYymLjs5uqna0aUELsE0vGPouf21OXj2wF+48veAX0VytZ96m/Rp4ib
-	MRmWvyszYz0D/kHo1+eGSSF6d5ftduADtlWI9R7TU2oIvNaZIYsaWCRjMZMZQD/zHi9vz0BOxS6PC
-	Nk0W8Jtg==;
+	bh=8B1tZNcVMTrBIWI3xZGkMffag1oDFtb8qZhP89e8KWQ=; b=ixmfsvljdz+JXNNXGfTU6I1tkP
+	7BGi9YHct3oAAiDABaT4/wA4rnEmLesqbIjQXkyjcrWsxehX472rQCPyCwQivKQSH/6idT9pgMr86
+	cT0U0ozMk74n3VmuZy2JXzQfgu4XHhEomtTgoSRH028AJ61H7EMO7T1z/FOpaOaZETU9jQzH41M0c
+	aGXEZpOgPTs23TtiK3XbTiBBeImvPyI1+tazjtcffFaDc0T1lpSHhNVt/DAtCo1Gcd5+73CUDlpzB
+	MBze1p7kZ0utE7UBRBDYJPQHg+qFuP52EqT7LO6inxfDP+C2/0KmQb5u9hFq1SV3VBLwArY5fFYZL
+	vlQkfd2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnJcm-00000003K1Y-0A4V;
-	Thu, 21 Mar 2024 14:42:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rnJvh-00000003O58-2iWg;
+	Thu, 21 Mar 2024 15:02:05 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnJci-00000003K0F-0Gnt;
-	Thu, 21 Mar 2024 14:42:29 +0000
+	id 1rnJve-00000003O3j-2Lmh;
+	Thu, 21 Mar 2024 15:02:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 58752611D8;
-	Thu, 21 Mar 2024 14:42:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 057FDC433F1;
-	Thu, 21 Mar 2024 14:42:25 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 17B9ACE138A;
+	Thu, 21 Mar 2024 15:02:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDA1CC433F1;
+	Thu, 21 Mar 2024 15:01:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711032146;
-	bh=1X+hNJMGK6SqdH8ZPP6qaRmvCLvttst+h+aM4nW4TUg=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=hHn9p6gWloIhsr8q0wVLpZxCd0EDS1d4xQ6+pSX0XnN7d8yq5hF5uGnn+zpVoOZxP
-	 KTvpbW7/DIp5PQE/Hjz2h1pDrrn+S2AZ4m7ZLjBwmyUOevV+KYoHuyu84VI4X4qbfd
-	 vdizrvk2UmdojHguVVfEkKvPJZOFkr7ubHzlRIDsHjFpj6uz0ZR1eUHcG6dFb11s4L
-	 NJB29Yblv/AT1QqiFOqLQV5NoZ6IV3eJKE06R8j/dANe3ocCOpUcw9UfekLoAyErvo
-	 uSj5AYB3xmH0b8jq8WCZbrpIHSdKmZFS8TAfv/GdkWXCottixUk//xoI8dsSgW5gr8
-	 5y5IPK6cMBayQ==
-Date: Thu, 21 Mar 2024 07:42:24 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Konstantin Ryabitsev <konstantin@linuxfoundation.org>
-Cc: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, Paolo Abeni
- <pabeni@redhat.com>, Daniel Golle <daniel@makrotopia.org>, DENG Qingfang
- <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Andrew Lunn
- <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Bartel Eerdekens <bartel.eerdekens@constell8.be>, erkin.bozoglu@xeront.com,
- mithat.guner@xeront.com
-Subject: Re: [PATCH net v2 0/2] MT7530 DSA subdriver fix VLAN egress and
- handling of all link-local frames
-Message-ID: <20240321074224.5850c05e@kernel.org>
-In-Reply-To: <20240321-tentacled-pearl-ferret-efd5be@lemur>
-References: <20240314-b4-for-net-mt7530-fix-link-local-vlan-v2-0-7dbcf6429ba0@arinc9.com>
-	<f6f064b8-efb2-4ab0-94f1-468d5d273d6e@arinc9.com>
-	<49d23df1340f342822702de0439674ddbc5bff6f.camel@redhat.com>
-	<7a7e6c46-03a4-48eb-9f46-84a05259cf26@arinc9.com>
-	<20240321-tentacled-pearl-ferret-efd5be@lemur>
+	s=k20201202; t=1711033319;
+	bh=kmMw7UrxyYm+FrW2p/kXhJw0xpkOp6iNmX0mZMs6h10=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=rBS3hh6a7XnbPCyETgHuyP4Gzi5T8ulrzuCZY+NwYdZDihY0vZO3F5Mjz7RHz3+fT
+	 LMjOby+wmiv4ooIDcbTGjMopnVv9ktbF7vA0sbV5mymIByAjdI0VH45ZIxILykinyn
+	 Vwjmre3d4jdgMUY7Zwj/otTwNTOB9/TJrDCgDcOjye4EiEDXn6l+yvfj3bXa1gshLG
+	 Jwxv9UHOk60VLQatPPF3B93u2lR+AWnYxCfx8I9qirKVjQ3iRsSHR1cHg/isw8jZ6g
+	 RDYqlvFNBoUj50Au2d5INpAkMPtMcqDpp7kbDDw+6Tu1N9f9ziHSejrBzjSTrVSUZU
+	 rWnd+1I9UpKlA==
+From: Mark Brown <broonie@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Fei Shao <fshao@chromium.org>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-spi@vger.kernel.org
+In-Reply-To: <20240321070942.1587146-1-fshao@chromium.org>
+References: <20240321070942.1587146-1-fshao@chromium.org>
+Subject: Re: [PATCH v2 0/2] Fixes NULL pointer access in spi-mt65xx.c
+Message-Id: <171103331749.114773.10634941088175436463.b4-ty@kernel.org>
+Date: Thu, 21 Mar 2024 15:01:57 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-a684c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240321_074228_170903_99F6F9BC 
-X-CRM114-Status: GOOD (  15.65  )
+X-CRM114-CacheID: sfid-20240321_080202_817345_8525C194 
+X-CRM114-Status: GOOD (  13.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,30 +74,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 21 Mar 2024 09:19:02 -0400 Konstantin Ryabitsev wrote:
-> On Thu, Mar 21, 2024 at 02:29:19PM +0300, Ar=C4=B1n=C3=A7 =C3=9CNAL wrote:
-> > > For future memory: I think the SoB in the cover letter is not require=
-d,
-> > > and is, at least to me, a bit confusing.
-> > >=20
-> > > No action needed here, I'll keep this unmodified, but I suggest to om=
-it
-> > > it in future submission. =20
-> >=20
-> > b4 puts it on the cover letter so it's not my doing. =20
->=20
-> This is done because many subsystems use the cover letter as the merge co=
-mmit
-> message.=20
+On Thu, 21 Mar 2024 15:08:56 +0800, Fei Shao wrote:
+> This series contains two patches for spi-mt65xx.c, both focusing on its
+> interrupt handler mtk_spi_interrupt().
+> 
+> The first patch is to fix a NULL pointer access in the interrupt
+> handler, which is first found on a MT8186 Chromebook device when the
+> system tries to establish host communication with its embedded
+> controller.
+> 
+> [...]
 
-Could be wrong, but I think it was DaveM who originated this practice,
-in networking..
+Applied to
 
-> Those subsystems who don't follow this practice don't generally care
-> if there's a Signed-Off-By in the cover letter anyway, so I don't see why=
- this
-> is a concern that it's there.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-Because we have to remove it, extra work. And the benefit of adding it
-in the first place is unclear.
+Thanks!
+
+[1/2] spi: spi-mt65xx: Fix NULL pointer access in interrupt handler
+      commit: a20ad45008a7c82f1184dc6dee280096009ece55
+[2/2] spi: spi-mt65xx: Rename a variable in interrupt handler
+      (no commit info)
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
