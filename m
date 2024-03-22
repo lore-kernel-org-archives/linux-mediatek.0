@@ -4,224 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A8B6C54E71
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Mar 2024 17:10:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51190C54E71
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Mar 2024 17:40:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WFSROxQZOVxFu47A+8VqRSUCe8TRaljA8PS0t5b553Y=; b=mLK7/g+qa/jus3wfdlQH1IB6rN
-	Ro9++/A/IRN4h/m43IUidr+mRQhCiRPyBpvKIPpjZw8wmAnlRAjTNdZ+ue6YSReDt0zTMDiKrt7SE
-	aG4naPE9JF3zN5kshSiNGm+5mY8UuvtCodn45jKvyjqWNn0m4AMPWYAtjRrud5kBFheBx5xpD2m22
-	tOUKmlrTMRCdGhoyuC6m+5FU/Opbzi7zOh7aLfXiol/h0ytWzvabeuPcsPQ6tmBjMuzB5WN5bXaeT
-	9CURAi946SegZwPO4/o51t92Kglr1+Nt4584XiMWvlBI5Q7pDxI2KV3yjg9//IHD513oIZf82zHev
-	3D7FMm5g==;
+	bh=naO8BF7g1cMMU98fqBEpl/Z57ENLBruvG/53N/7HKrM=; b=jzNiXmBupfdc87frid1+182tg3
+	KPTcbnkjUfWR/w1MdAwDoVT1r3GQHln5v7n9bJTthCvqnISkfBGcL9SiZxHN/5Nom6sarm0hFqbYh
+	fpdMzECJbe8x/RNJfk3MeE9bHS80RFH4q7VnI+PlYX0EadsrPHvxkGed/V9PKc7outRQL5uA8iNKJ
+	FiDzO2+Y+EEgwVTYXp+IM53x6Mxi7QYrsphEyUwbK3Q0ABrFSpHmf+NG0STVeahx5/Lp4Dznq/pND
+	0V5FD0//71yTkoOzLm+Hk62Bk8gHEASWS/yQavdkMN8Doa6CZg6VxZu7h6OVx+kieHz5pOja5hpRz
+	rsapJibg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rniPB-000000086cT-1pSA;
-	Fri, 22 Mar 2024 17:10:09 +0000
-Received: from www.zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
+	id 1rnisQ-00000008C9e-0lGI;
+	Fri, 22 Mar 2024 17:40:22 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rniOz-000000086Wg-1Nca
-	for linux-mediatek@lists.infradead.org;
-	Fri, 22 Mar 2024 17:10:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	sang-engineering.com; h=date:from:to:cc:subject:message-id
-	:references:mime-version:content-type:in-reply-to; s=k1; bh=WFSR
-	OxQZOVxFu47A+8VqRSUCe8TRaljA8PS0t5b553Y=; b=cNmYtKwO5Cu5IWiuRD5o
-	Rra1wfWzl7faA6KT3pVfA9ipAZ93fnWCDyioXrFmupshiecN38ZhuEn20Lv197ck
-	wliUCprkQUA+jo49CTtVw9txv7lkqS3TK7Sph3u8PGimL8isWCSjBtDUOvzRJC0c
-	HV4nrVroNyYOMldN5AgE4PNKHFpmVyKgXYoBCwPSXbXBzaxGbeNIbPfQZpKPIkJj
-	OW/7uewh3zH5HPeHcYM/IfiHiY62bvPzBSsPOmiOjbDOgKSwOamu6D/qtV+wk6R+
-	BNT0hTYDcakbO1754UvcuMCQVFvDQRT4cCISEjn5KLHZbq2psaT5U9oxZ+uoJ87t
-	pw==
-Received: (qmail 3929014 invoked from network); 22 Mar 2024 18:09:43 +0100
-Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 22 Mar 2024 18:09:43 +0100
-X-UD-Smtp-Session: l3s3148p1@P2He40IU0sJehhtF
-Date: Fri, 22 Mar 2024 18:09:42 +0100
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-To: Guenter Roeck <groeck@google.com>
-Cc: Nicolas Ferre <nicolas.ferre@microchip.com>, linux-i2c@vger.kernel.org,
-	Elie Morisse <syniurge@gmail.com>,
-	Shyam Sundar S K <shyam-sundar.s-k@amd.com>,
-	Andi Shyti <andi.shyti@kernel.org>,
-	Codrin Ciubotariu <codrin.ciubotariu@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Krzysztof Adamski <krzysztof.adamski@nokia.com>,
-	Benson Leung <bleung@chromium.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	Jarkko Nikula <jarkko.nikula@linux.intel.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Mika Westerberg <mika.westerberg@linux.intel.com>,
-	Jan Dabros <jsd@semihalf.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Jean-Marie Verdun <verdun@hpe.com>,
-	Nick Hawkins <nick.hawkins@hpe.com>,
-	Yicong Yang <yangyicong@hisilicon.com>,
-	Oleksij Rempel <o.rempel@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Khalil Blaiech <kblaiech@nvidia.com>,
-	Asmaa Mnebhi <asmaa@nvidia.com>, Qii Wang <qii.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Ajay Gupta <ajayg@nvidia.com>,
-	Peter Korsgaard <peter@korsgaard.com>, Andrew Lunn <andrew@lunn.ch>,
-	Robert Richter <rric@kernel.org>,
-	Aaro Koskinen <aaro.koskinen@iki.fi>,
-	Janusz Krzysztofik <jmkrzyszt@gmail.com>,
-	Tony Lindgren <tony@atomide.com>, Vignesh R <vigneshr@ti.com>,
-	Michael Ellerman <mpe@ellerman.id.au>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Christophe Leroy <christophe.leroy@csgroup.eu>,
-	"Aneesh Kumar K.V" <aneesh.kumar@kernel.org>,
-	"Naveen N. Rao" <naveen.n.rao@linux.ibm.com>,
-	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Vladimir Zapolskiy <vz@mleia.com>,
-	Loic Poulain <loic.poulain@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
-	Pierre-Yves MORDRET <pierre-yves.mordret@foss.st.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Laxman Dewangan <ldewangan@nvidia.com>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Conghui Chen <conghui.chen@intel.com>,
-	Viresh Kumar <viresh.kumar@linaro.org>,
-	Michal Simek <michal.simek@amd.com>, linux-kernel@vger.kernel.org,
+	id 1rnisL-00000008C79-2Fsi;
+	Fri, 22 Mar 2024 17:40:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id DFEEECE1177;
+	Fri, 22 Mar 2024 17:40:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 65E1DC433C7;
+	Fri, 22 Mar 2024 17:40:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1711129214;
+	bh=tTwBbRt2pqHamlnWharifXWWwuWmdQz8Rk753vrs9Tc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=tUV4V9chSdBEhmS3/ab/LOTuC18tZ5+Xt9D4PIFL9rhdteNBuxvFgwNzKnxUCpx39
+	 xSNyMVK0iGDIKqvXHfr9GfE6EqcmmKwGa2zd3AQOkAaAiVFr2DIcDnvL/eLoWCW0+g
+	 T0htdNedHpFoIJJrZjeG+pIY4NSf6RT4FWmmi4Ncvt0nkLS1j1l+pVWgHYJr+arT9G
+	 LO7EgQJiZcHwwYVh4DCjxTcMZ+tqxSVapjXaPc7b5hPiwjEX4VkCK97zQZaYp73t/Z
+	 tPiMy5yoJp4rpdLUxmFWfwpualX/lxqznaUpeG7zx71u3mZE32PxtDCWgqQbHBDw36
+	 XaNwctZduV9JQ==
+Date: Fri, 22 Mar 2024 17:40:08 +0000
+From: Conor Dooley <conor@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-media@vger.kernel.org, mchehab@kernel.org, robh@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	matthias.bgg@gmail.com, amergnat@baylibre.com,
+	moudy.ho@mediatek.com, hverkuil-cisco@xs4all.nl,
+	sebastian.fricke@collabora.com, u.kleine-koenig@pengutronix.de,
+	chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	chrome-platform@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
-	imx@lists.linux.dev, linux-mips@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
-	linux-omap@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	asahi@lists.linux.dev, linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org, virtualization@lists.linux.dev,
-	Ryan Wanner <Ryan.Wanner@microchip.com>
-Subject: Re: [PATCH 64/64] i2c: reword i2c_algorithm in drivers according to
- newest specification
-Message-ID: <Zf27VpOHPXAtHCLr@shikoro>
-Mail-Followup-To: Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Guenter Roeck <groeck@google.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	linux-i2c@vger.kernel.org, Elie Morisse <syniurge@gmail.com>,
-	Shyam Sundar S K <shyam-sundar.s-k@amd.com>,
-	Andi Shyti <andi.shyti@kernel.org>,
-	Codrin Ciubotariu <codrin.ciubotariu@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Krzysztof Adamski <krzysztof.adamski@nokia.com>,
-	Benson Leung <bleung@chromium.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	Jarkko Nikula <jarkko.nikula@linux.intel.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Mika Westerberg <mika.westerberg@linux.intel.com>,
-	Jan Dabros <jsd@semihalf.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Jean-Marie Verdun <verdun@hpe.com>,
-	Nick Hawkins <nick.hawkins@hpe.com>,
-	Yicong Yang <yangyicong@hisilicon.com>,
-	Oleksij Rempel <o.rempel@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Khalil Blaiech <kblaiech@nvidia.com>,
-	Asmaa Mnebhi <asmaa@nvidia.com>, Qii Wang <qii.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Ajay Gupta <ajayg@nvidia.com>,
-	Peter Korsgaard <peter@korsgaard.com>, Andrew Lunn <andrew@lunn.ch>,
-	Robert Richter <rric@kernel.org>,
-	Aaro Koskinen <aaro.koskinen@iki.fi>,
-	Janusz Krzysztofik <jmkrzyszt@gmail.com>,
-	Tony Lindgren <tony@atomide.com>, Vignesh R <vigneshr@ti.com>,
-	Michael Ellerman <mpe@ellerman.id.au>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Christophe Leroy <christophe.leroy@csgroup.eu>,
-	"Aneesh Kumar K.V" <aneesh.kumar@kernel.org>,
-	"Naveen N. Rao" <naveen.n.rao@linux.ibm.com>,
-	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Vladimir Zapolskiy <vz@mleia.com>,
-	Loic Poulain <loic.poulain@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
-	Pierre-Yves MORDRET <pierre-yves.mordret@foss.st.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Laxman Dewangan <ldewangan@nvidia.com>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Conghui Chen <conghui.chen@intel.com>,
-	Viresh Kumar <viresh.kumar@linaro.org>,
-	Michal Simek <michal.simek@amd.com>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	chrome-platform@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
-	imx@lists.linux.dev, linux-mips@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
-	linux-omap@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	asahi@lists.linux.dev, linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org, virtualization@lists.linux.dev,
-	Ryan Wanner <Ryan.Wanner@microchip.com>
-References: <20240322132619.6389-1-wsa+renesas@sang-engineering.com>
- <20240322132619.6389-65-wsa+renesas@sang-engineering.com>
- <e8dff9d4-ed15-44e9-ae9a-2e77845ec40b@microchip.com>
- <Zf22G4jC2gIlzhi_@shikoro>
- <CABXOdTc14kfPpkF96KG-oeLRTLvjxAD_gtOO2TQFLnHMLNoU_Q@mail.gmail.com>
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH 3/4] dt-bindings: media: mediatek: mdp3: Add support for
+ MT8188 RDMA
+Message-ID: <20240322-elderly-ether-170408423883@spud>
+References: <20240322092845.381313-1-angelogioacchino.delregno@collabora.com>
+ <20240322092845.381313-4-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="un7BlYMtStBuO9gz"
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="TYbo2CO3aIfqwZwQ"
 Content-Disposition: inline
-In-Reply-To: <CABXOdTc14kfPpkF96KG-oeLRTLvjxAD_gtOO2TQFLnHMLNoU_Q@mail.gmail.com>
+In-Reply-To: <20240322092845.381313-4-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240322_101005_299929_AEF4212D 
-X-CRM114-Status: UNSURE (   6.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240322_104017_795427_24927CD3 
+X-CRM114-Status: GOOD (  13.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -237,39 +81,54 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---un7BlYMtStBuO9gz
+--TYbo2CO3aIfqwZwQ
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Fri, Mar 22, 2024 at 10:28:44AM +0100, AngeloGioacchino Del Regno wrote:
+> Add a compatible for MediaTek MT8188 RDMA, which supports only a
+> subset of the MDP3 components of its similar MT8195 counterpart.
+>=20
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 
-> Kind of odd though to change function names but not parameter names of
-> those very same functions.
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-Ouch, this is definitely a valid point. Seems like this series will need
-a respin after all. Will wait for further comments, though.
+Thanks,
+Conor.
 
-Thanks!
+> ---
+>  Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.y=
+aml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> index 59db8306485b..18603f6c5e06 100644
+> --- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> @@ -23,6 +23,7 @@ properties:
+>      oneOf:
+>        - enum:
+>            - mediatek,mt8183-mdp3-rdma
+> +          - mediatek,mt8188-mdp3-rdma
+>            - mediatek,mt8195-mdp3-rdma
+>            - mediatek,mt8195-vdo1-rdma
+>        - items:
+> --=20
+> 2.44.0
+>=20
 
-
---un7BlYMtStBuO9gz
+--TYbo2CO3aIfqwZwQ
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmX9u1YACgkQFA3kzBSg
-KbZSKA//Q8484MbfzpPKmvUS0QA73oCgcHXOiIKbRKOfwXWkquKc1vuGV6LbxWG+
-oPc84UQGrv+MjAhAMX/ZpO2VdGp+ej/a1j1kNYihlqVTkY/rRWPMa5y1oNB2H5Xq
-tFjFmqgwbqm/K/OND3KcJw8zAmXCTgCvgQDyQx76B6KMydRGzKel/sM29TwW6mTm
-HCQ9klGLK273LaNEAwn4vkLQ6BtVmjI1CpnjIp3hSRWdW9IytTQlM2weh0gQ+D2p
-OerYgE9JUZp4dgPgLIR60J3AER1DaZtHMVH5NwMLT8xMLa/L3RgkSaTbxa/D2tvm
-K2XQbEWvx8HsxtEIUEcIy936gmSyZ7Nta1mJv+5yN+DLHdGoo9KNl6vcMxzXLgpM
-02/ySV8tMq+Q4cX/fIVZxaeudi69toWj1QcjLg11KaJDo4ndbPqBwYRkSYJ+o2Nh
-aJNDu7J+5ud051bq05bFRaCitl7kyEdv5WEjwk5RTLDD1xvwR84SZ3ElcQ6Jnb/I
-VaA1JNnKw/et4KmEF4A65wphnC8pC/gmH5c9SrPs6w7dUw44dla+p+jPrgtvUOnY
-sqhCnFNLZ5MGuyhTemuWVdGNNvwwuTYFf/VYKi7mdRVsCRdLQIoHklH7FUfmwhpM
-G5oEk4nI7j9MbLPl4WOjrZ9k5wZQnd5zRSWHj/aw5xmVCbNVKsQ=
-=dqSs
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZf3CeAAKCRB4tDGHoIJi
+0l3AAQCL5XSgotDR4l9Rji+b5MSgqPkrXB/7xT15infA4yxeLgD/dJ3reW+ywpxg
+TVn9ErbQIAsrdGYLZO/BdFSmBaP5pgE=
+=sIb/
 -----END PGP SIGNATURE-----
 
---un7BlYMtStBuO9gz--
+--TYbo2CO3aIfqwZwQ--
 
