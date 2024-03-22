@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BEAFCD11BF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Mar 2024 09:13:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17AF1C47DD9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Mar 2024 09:14:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ubzYPoi3tJCh8ZemTI1pk9scTjl0MoQnxDHohK+galA=; b=YYS25gDM0vBlbBBku3l/6koGj9
-	O4pD125Ze0Kc/dOZEBbYuE6FqCetgW7NFGf8lw0O0aaUNnN0Yd9UcGkEEdw6L4rFPmHr15aSGrcYA
-	+SCIulD8Y6zTBeqsQAJQ043IwStpbdj/4goon/uEvuzkiyIKhzdw2QoDiFtSUIWfSxFjzlpReNXON
-	yiLmCY5kpllZwe118AJ1eDNQNNqpFrQl8OAxsQO7O2mzIO1s5axTv5eecaClvHOeWcu24uFLIt1s8
-	IkyCms1ET2r4jJzkQbN3P19cUF2ZFw1eR6B9FicS9HCxOvsad71zOdni+RjPZbU4w+675mV5xuamc
-	VruUM/Lw==;
+	bh=op9aiY3TOWj6dPubjkg2dvGqaIeTnrx2TAJelM32Z9k=; b=jtBrUkjYJIhPM7zrjBIMsRstPJ
+	Ie9b3QCP58t9GB6aHoPscqoktd74gnooGJQhdDo5KbXPND7ebYLPf+IMoBtqYkuAZRSCXTX1NEwX6
+	kzL/sWB6ZgrmsBe42NlpGz/JS56QVlrJkeEhap9k5j4Cn6J8S+epsbcwNKM2twB9Z0bT5EjkdA7mP
+	ti7+Viw3OXjaZBsJds7n6RZ7KAvcCQpIHEifAFnZWcP+S+muuck3OGDVF9XSmhw0K4d1FvkGt6X8j
+	9aOC+/6PQk+u9OgBz/3XFJu6B+VeNTE5rKbU0PKAOPXANLJN3hcvRArOtsJ44LtTuOE9HDH5mOgGr
+	8S+HUDGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnaxY-00000006VBl-1owD;
-	Fri, 22 Mar 2024 09:13:08 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rnayN-00000006Vgg-20Rv;
+	Fri, 22 Mar 2024 09:13:59 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnaxB-00000006Uo4-2i1D;
-	Fri, 22 Mar 2024 09:12:47 +0000
-X-UUID: 53aef918e82c11eeacdb61a41848c7d2-20240322
+	id 1rnaxd-00000006VEy-1qJl;
+	Fri, 22 Mar 2024 09:13:24 +0000
+X-UUID: 6688b358e82c11ee9aa9374d6d45775a-20240322
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ubzYPoi3tJCh8ZemTI1pk9scTjl0MoQnxDHohK+galA=;
-	b=kYB5l7mAsRvWe0yOtabBo72ZAbE+UGhfTLKKJTr/6IJJeojL94/8+pPRV5uAalTIvRk5TEWICxaOAO+Xu8TRcZiLzFWCRcbkK8mrSQ1I5S2UowyCrnYUvhaTfd6SZ+6B0MdMR6wEK6N8z9xBj5cCYZjcp9diHD5RuQt5WVJMBsI=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=op9aiY3TOWj6dPubjkg2dvGqaIeTnrx2TAJelM32Z9k=;
+	b=SiFYPpUvCcZ238Oj9i+4n8M4NgzNyCMxC43KdmUk/yz4/TdXuH0Vn9VDPzrghuHE3fOZs1viOonTSKRs9uGDl3cfA+XZ7yQ5uR722xxGehY/qCduA0+EreOzf//iPeDwOKQWOR2uoL6jK0f8QosVOD+hM1rcpCtz4xr5PqryneA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:55fbf04b-6026-4ac1-89f2-0e289fe43981,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6f543d0,CLOUDID:9447b690-e2c0-40b0-a8fe-7c7e47299109,B
+X-CID-O-INFO: VERSION:1.1.37,REQID:e1b69751-564c-42dc-881e-f34379503674,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:96213400-c26b-4159-a099-3b9d0558e447,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 53aef918e82c11eeacdb61a41848c7d2-20240322
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 6688b358e82c11ee9aa9374d6d45775a-20240322
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 292907575; Fri, 22 Mar 2024 02:12:37 -0700
+	with ESMTP id 917327066; Fri, 22 Mar 2024 02:13:09 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Fri, 22 Mar 2024 17:12:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -64,9 +64,9 @@ CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
 	<linaro-mm-sig@lists.linaro.org>, Hsiao Chien Sung
 	<shawn.sung@mediatek.corp-partner.google.com>
-Subject: [PATCH v5 08/14] drm/mediatek: Rename files "mtk_drm_ddp_comp.h" to "mtk_ddp_comp.h"
-Date: Fri, 22 Mar 2024 17:12:26 +0800
-Message-ID: <20240322091232.26387-9-shawn.sung@mediatek.com>
+Subject: [PATCH v5 07/14] drm/mediatek: Rename files "mtk_drm_crtc.c" to "mtk_crtc.c"
+Date: Fri, 22 Mar 2024 17:12:25 +0800
+Message-ID: <20240322091232.26387-8-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240322091232.26387-1-shawn.sung@mediatek.com>
 References: <20240322091232.26387-1-shawn.sung@mediatek.com>
@@ -74,8 +74,9 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240322_021245_888980_9B50AE9E 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20240322_021314_818202_FAE3D714 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,288 +93,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
 
-Rename files mtk_drm_ddp_comp.h to mtk_ddp_comp.h.
+Rename files mtk_drm_crtc.c to mtk_crtc.c and
+modify the Makefile accordingly.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
 ---
- drivers/gpu/drm/mediatek/mtk_crtc.c                             | 2 +-
- drivers/gpu/drm/mediatek/mtk_crtc.h                             | 2 +-
- drivers/gpu/drm/mediatek/{mtk_drm_ddp_comp.h => mtk_ddp_comp.h} | 0
- drivers/gpu/drm/mediatek/mtk_disp_aal.c                         | 2 +-
- drivers/gpu/drm/mediatek/mtk_disp_ccorr.c                       | 2 +-
- drivers/gpu/drm/mediatek/mtk_disp_color.c                       | 2 +-
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c                       | 2 +-
- drivers/gpu/drm/mediatek/mtk_disp_merge.c                       | 2 +-
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c                         | 2 +-
- drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c                 | 2 +-
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c                        | 2 +-
- drivers/gpu/drm/mediatek/mtk_dpi.c                              | 2 +-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c                     | 2 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c                          | 2 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.h                          | 2 +-
- drivers/gpu/drm/mediatek/mtk_drm_plane.c                        | 2 +-
- drivers/gpu/drm/mediatek/mtk_dsi.c                              | 2 +-
- drivers/gpu/drm/mediatek/mtk_ethdr.c                            | 2 +-
- drivers/gpu/drm/mediatek/mtk_padding.c                          | 2 +-
- 19 files changed, 18 insertions(+), 18 deletions(-)
- rename drivers/gpu/drm/mediatek/{mtk_drm_ddp_comp.h => mtk_ddp_comp.h} (100%)
+ drivers/gpu/drm/mediatek/Makefile                       | 4 ++--
+ drivers/gpu/drm/mediatek/{mtk_drm_crtc.c => mtk_crtc.c} | 0
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+ rename drivers/gpu/drm/mediatek/{mtk_drm_crtc.c => mtk_crtc.c} (100%)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
-index d9f7febd24a6d..97b5e0f186a1d 100644
---- a/drivers/gpu/drm/mediatek/mtk_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
-@@ -20,8 +20,8 @@
- #include <drm/drm_vblank.h>
-
- #include "mtk_crtc.h"
-+#include "mtk_ddp_comp.h"
- #include "mtk_drm_drv.h"
--#include "mtk_drm_ddp_comp.h"
- #include "mtk_drm_gem.h"
- #include "mtk_drm_plane.h"
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.h b/drivers/gpu/drm/mediatek/mtk_crtc.h
-index 2d9f28f436aea..fd6c006f0c169 100644
---- a/drivers/gpu/drm/mediatek/mtk_crtc.h
-+++ b/drivers/gpu/drm/mediatek/mtk_crtc.h
-@@ -7,7 +7,7 @@
- #define MTK_CRTC_H
-
- #include <drm/drm_crtc.h>
--#include "mtk_drm_ddp_comp.h"
-+#include "mtk_ddp_comp.h"
- #include "mtk_drm_drv.h"
- #include "mtk_drm_plane.h"
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
+index 5e4436403b8d2..0198b50820d4c 100644
+--- a/drivers/gpu/drm/mediatek/Makefile
++++ b/drivers/gpu/drm/mediatek/Makefile
+@@ -1,6 +1,7 @@
+ # SPDX-License-Identifier: GPL-2.0
+ 
+-mediatek-drm-y := mtk_disp_aal.o \
++mediatek-drm-y := mtk_crtc.o \
++		  mtk_disp_aal.o \
+ 		  mtk_disp_ccorr.o \
+ 		  mtk_disp_color.o \
+ 		  mtk_disp_gamma.o \
+@@ -8,7 +9,6 @@ mediatek-drm-y := mtk_disp_aal.o \
+ 		  mtk_disp_ovl.o \
+ 		  mtk_disp_ovl_adaptor.o \
+ 		  mtk_disp_rdma.o \
+-		  mtk_drm_crtc.o \
+ 		  mtk_drm_ddp_comp.o \
+ 		  mtk_drm_drv.o \
+ 		  mtk_drm_gem.o \
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
 similarity index 100%
-rename from drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-rename to drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-index ba926e797af8a..92acdaddd648d 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-@@ -12,8 +12,8 @@
- #include <linux/soc/mediatek/mtk-cmdq.h>
-
- #include "mtk_crtc.h"
-+#include "mtk_ddp_comp.h"
- #include "mtk_disp_drv.h"
--#include "mtk_drm_ddp_comp.h"
- #include "mtk_drm_drv.h"
-
- #define DISP_AAL_EN				0x0000
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-index 79bcd3c487563..975ee45a0f72c 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-@@ -11,8 +11,8 @@
- #include <linux/soc/mediatek/mtk-cmdq.h>
-
- #include "mtk_crtc.h"
-+#include "mtk_ddp_comp.h"
- #include "mtk_disp_drv.h"
--#include "mtk_drm_ddp_comp.h"
- #include "mtk_drm_drv.h"
-
- #define DISP_CCORR_EN				0x0000
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-index 4aa41b1ff2602..91e7837a32c86 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-@@ -11,8 +11,8 @@
- #include <linux/soc/mediatek/mtk-cmdq.h>
-
- #include "mtk_crtc.h"
-+#include "mtk_ddp_comp.h"
- #include "mtk_disp_drv.h"
--#include "mtk_drm_ddp_comp.h"
- #include "mtk_drm_drv.h"
-
- #define DISP_COLOR_CFG_MAIN			0x0400
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-index 1a1ee77127ee9..51ae4f947c714 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-@@ -12,8 +12,8 @@
- #include <linux/soc/mediatek/mtk-cmdq.h>
-
- #include "mtk_crtc.h"
-+#include "mtk_ddp_comp.h"
- #include "mtk_disp_drv.h"
--#include "mtk_drm_ddp_comp.h"
- #include "mtk_drm_drv.h"
-
- #define DISP_GAMMA_EN				0x0000
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-index 32a29924bd54c..3b1e04ecb9d45 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-@@ -10,7 +10,7 @@
- #include <linux/reset.h>
- #include <linux/soc/mediatek/mtk-cmdq.h>
-
--#include "mtk_drm_ddp_comp.h"
-+#include "mtk_ddp_comp.h"
- #include "mtk_drm_drv.h"
- #include "mtk_disp_drv.h"
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 7f2219c0119be..0ebeaf9830d83 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -16,8 +16,8 @@
- #include <linux/soc/mediatek/mtk-cmdq.h>
-
- #include "mtk_crtc.h"
-+#include "mtk_ddp_comp.h"
- #include "mtk_disp_drv.h"
--#include "mtk_drm_ddp_comp.h"
- #include "mtk_drm_drv.h"
-
- #define DISP_REG_OVL_INTEN			0x0004
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-index 542dc2a20ea90..d957f5c8ccf92 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-@@ -18,8 +18,8 @@
- #include <linux/soc/mediatek/mtk-mutex.h>
-
- #include "mtk_crtc.h"
-+#include "mtk_ddp_comp.h"
- #include "mtk_disp_drv.h"
--#include "mtk_drm_ddp_comp.h"
- #include "mtk_drm_drv.h"
- #include "mtk_ethdr.h"
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index 04f584372214f..f06b048c12479 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -14,8 +14,8 @@
- #include <linux/soc/mediatek/mtk-cmdq.h>
-
- #include "mtk_crtc.h"
-+#include "mtk_ddp_comp.h"
- #include "mtk_disp_drv.h"
--#include "mtk_drm_ddp_comp.h"
- #include "mtk_drm_drv.h"
-
- #define DISP_REG_RDMA_INT_ENABLE		0x0000
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index beb7d9d08e971..fbf63e0441337 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -26,9 +26,9 @@
- #include <drm/drm_of.h>
- #include <drm/drm_simple_kms_helper.h>
-
-+#include "mtk_ddp_comp.h"
- #include "mtk_disp_drv.h"
- #include "mtk_dpi_regs.h"
--#include "mtk_drm_ddp_comp.h"
- #include "mtk_drm_drv.h"
-
- enum mtk_dpi_out_bit_num {
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 24389c6c3561f..ab96b1001de3e 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -15,10 +15,10 @@
- #include <drm/drm_print.h>
-
- #include "mtk_crtc.h"
-+#include "mtk_ddp_comp.h"
- #include "mtk_disp_drv.h"
- #include "mtk_drm_drv.h"
- #include "mtk_drm_plane.h"
--#include "mtk_drm_ddp_comp.h"
-
-
- #define DISP_REG_DITHER_EN			0x0000
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 7be3b0546d3df..113fdbaac5a14 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -25,7 +25,7 @@
- #include <drm/drm_vblank.h>
-
- #include "mtk_crtc.h"
--#include "mtk_drm_ddp_comp.h"
-+#include "mtk_ddp_comp.h"
- #include "mtk_drm_drv.h"
- #include "mtk_drm_gem.h"
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index 24c4d59085bd6..78d698ede1bf8 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -7,7 +7,7 @@
- #define MTK_DRM_DRV_H
-
- #include <linux/io.h>
--#include "mtk_drm_ddp_comp.h"
-+#include "mtk_ddp_comp.h"
-
- #define MAX_CONNECTOR	2
- #define DDP_COMPONENT_DRM_OVL_ADAPTOR (DDP_COMPONENT_ID_MAX + 1)
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-index 720f6b4b08215..63a7a24468c13 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-@@ -14,7 +14,7 @@
- #include <linux/align.h>
-
- #include "mtk_crtc.h"
--#include "mtk_drm_ddp_comp.h"
-+#include "mtk_ddp_comp.h"
- #include "mtk_drm_drv.h"
- #include "mtk_drm_gem.h"
- #include "mtk_drm_plane.h"
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index ec9d96396d7b2..e29c37fb5be09 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -28,8 +28,8 @@
- #include <drm/drm_probe_helper.h>
- #include <drm/drm_simple_kms_helper.h>
-
-+#include "mtk_ddp_comp.h"
- #include "mtk_disp_drv.h"
--#include "mtk_drm_ddp_comp.h"
- #include "mtk_drm_drv.h"
-
- #define DSI_START		0x00
-diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.c b/drivers/gpu/drm/mediatek/mtk_ethdr.c
-index 41efaafe26f1a..9b0264bd5e731 100644
---- a/drivers/gpu/drm/mediatek/mtk_ethdr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ethdr.c
-@@ -15,7 +15,7 @@
- #include <linux/soc/mediatek/mtk-mmsys.h>
-
- #include "mtk_crtc.h"
--#include "mtk_drm_ddp_comp.h"
-+#include "mtk_ddp_comp.h"
- #include "mtk_drm_drv.h"
- #include "mtk_ethdr.h"
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_padding.c b/drivers/gpu/drm/mediatek/mtk_padding.c
-index ff6a5c695128c..1f91805cd9aac 100644
---- a/drivers/gpu/drm/mediatek/mtk_padding.c
-+++ b/drivers/gpu/drm/mediatek/mtk_padding.c
-@@ -12,8 +12,8 @@
- #include <linux/soc/mediatek/mtk-cmdq.h>
-
- #include "mtk_crtc.h"
-+#include "mtk_ddp_comp.h"
- #include "mtk_disp_drv.h"
--#include "mtk_drm_ddp_comp.h"
-
- #define PADDING_CONTROL_REG	0x00
- #define PADDING_BYPASS			BIT(0)
---
+rename from drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+rename to drivers/gpu/drm/mediatek/mtk_crtc.c
+-- 
 2.18.0
 
 
