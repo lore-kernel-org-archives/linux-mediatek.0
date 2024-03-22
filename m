@@ -4,78 +4,172 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BD1FC47DD9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Mar 2024 09:23:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A90CC47DD9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Mar 2024 09:27:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+Y7pDLy2z70oqV69Qv4vjpLNsRfJ8vJYpMU0Qdno7FQ=; b=E9+2Sl3yrhnCve6GA0Rp9uXVuC
-	xQZltlb+1VLI7vU9SGH6xZSfJymq1FDh5bJEfMIpPtCc1OPJBDNZMYxWap+GumfHNRV38Qbv3oaSS
-	qXkpAMupXtB1wwo1waTJl0Ny/543BCm5VRtz/WLSAmjYAv/2Pb20pAsLjw6ywrobIS2KHdOOpm7iM
-	FLTl49prgsdH+b7xC28ReYq2wSoPfOK164lUapwdjEb2FwtZs5hVFsOUxKtl9Ofh2r2xZZx9OFSVb
-	uY5LwytcFBFj6ChEulG2mHjuAqshP9Uck+uLp4wdA8dQi03kN3BC93Q6/6DGVnWtsYau5R1iwxJve
-	zP2IgPrw==;
+	bh=N1uOw+gSjiXvN5Rei/CY+JW9yK7WDBu/Px5Lu4fzXjA=; b=PdBmBcSk+or+JeYnusg2iLtga6
+	gDqIdmhvbUnsQJvpseeOmhqQD/lA7EXKX6kmby7442D7Q7g23pKULWkObyjWqmy5PbSuzgFpVFZFT
+	t7nVXVxjLvKvyxnyInRzLlfe+F3dM2W0BS4k/oqyCOaEqa4WbollYiRk3nTlxudZ7t3eUY4edu3kA
+	6MhJHEktyggMEhv9wbkqpQzPTXi00UCwAHsg5zk1tesSPwze8YkwJLX1Ih8/DSZQJNSXhXMlvWjc3
+	6sQU5233q7N+azTMOFs1KoRZpc/qIOEQCdqgIPGiZYgv8kIigUUxdFw/4dPI/RYcsyIaGY/Q6tSxH
+	W/JFhLlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnb7M-00000006YSz-3sK0;
-	Fri, 22 Mar 2024 09:23:16 +0000
+	id 1rnbBk-00000006Zbi-4Bet;
+	Fri, 22 Mar 2024 09:27:49 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnb7J-00000006YQj-0yey;
-	Fri, 22 Mar 2024 09:23:14 +0000
-X-UUID: cb712d30e82d11eeacdb61a41848c7d2-20240322
+	id 1rnbBh-00000006ZZj-1Pep;
+	Fri, 22 Mar 2024 09:27:46 +0000
+X-UUID: 6d658ec4e82e11eeacdb61a41848c7d2-20240322
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=+Y7pDLy2z70oqV69Qv4vjpLNsRfJ8vJYpMU0Qdno7FQ=;
-	b=kisgKUTvK/x+z0xfSLT4vc2Lav4V7cXV7LJWvM4fKIbCBw98/SvOzZtypMQFYnklbRCVOO1XoAEujGO3MvnHHQt2GZiU9o6XZTcaCwmVTHNSLF0yMQTkl9+SqSkyGuyLThkzUDtySLSoI3J/1nrGoHILdBkz33nYk9SsZr28Vk0=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=N1uOw+gSjiXvN5Rei/CY+JW9yK7WDBu/Px5Lu4fzXjA=;
+	b=EPAxCihOSZbpW9tukqhcmXs9Tex+dehmx+EkoXCSplyQsb1Ywe951XCAbOF04WXAmxv+kJmGpTVrn1HOBkbnmnmu0JeibCS6FYF18COOJuFrt4SO0z1wziWwEB+JkYPhnQtIBUjqe7hK9YDK6P2oOPD70vtVTjA1c9pMD37cwj8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:163e839f-5378-44b7-aae1-051f9302470b,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6f543d0,CLOUDID:2b66b690-e2c0-40b0-a8fe-7c7e47299109,B
+X-CID-O-INFO: VERSION:1.1.37,REQID:079b2419-4027-4757-94c1-307df2814463,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:5f47cf81-4f93-4875-95e7-8c66ea833d57,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: cb712d30e82d11eeacdb61a41848c7d2-20240322
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <shawn.sung@mediatek.com>)
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 6d658ec4e82e11eeacdb61a41848c7d2-20240322
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 258175248; Fri, 22 Mar 2024 02:23:07 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+	with ESMTP id 778877496; Fri, 22 Mar 2024 02:27:39 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 22 Mar 2024 17:12:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 22 Mar 2024 17:12:34 +0800
-From: Shawn Sung <shawn.sung@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+ 15.2.1118.26; Fri, 22 Mar 2024 17:27:03 +0800
+Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 22 Mar 2024 17:27:03 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Y2zfd+1+jRb/IQJ5bIsBVOEao6as3A18nygHfO7XOVrHDXelFvKlsJn1HqOr5L+QP0pk+yajWvlC8B4YhMIE33NPl4iJA2lMTNvRzULTVG2SRb8015DDTC+MKNCNWC/FgfaPQTdTYSqMedCAxiVsElAblbD54A6JFDf5opfYmgtjaXBT1E0EMNDQLZZTEqlfmGrBHu193l87KpYRa5maNsFnliQp3IF8JHLBlwPMR9MEA97O0FkrHzFZ+V+QHdqDhj6P/UCRL0s1Ogbtwh7vxwkm1BQLFC9ufNPBLA+zyMVDKEo01HtyWRKlUuIpLF6er4WVTCqu296D9+UwcZ0CLw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=N1uOw+gSjiXvN5Rei/CY+JW9yK7WDBu/Px5Lu4fzXjA=;
+ b=EcLiFGZxgS6OGYDfhsuR0N8jv5d3HAIm0rVF7LJF+CGIkpOzw7XALJZ9WZ+vDEZje7BGZj9DNmVeRkBDnFct2KyRgS+kgRekX+HAQ3aOzZTVp56NR41TzjNuFR+wMrmzySshCzgimEUBsf1bN2qXkVaB5OyMOcHCLs4dc+lzgEqgEjZSHvI0UmkD1B4F//jnKogZpKliXdj+FZTArBZ0O7b3dOd2gK3HL8hHTR+Do4jIZ3wyHS98C0v/btDsXi0tx5ZyTZeZzW/IRcLS/7hfnS65aBGnV1xAFvb7c0zgPktU3dxP/2b2qTYtKvxxWiR1E5QYvjrTsMuGESEyp8eGEA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=N1uOw+gSjiXvN5Rei/CY+JW9yK7WDBu/Px5Lu4fzXjA=;
+ b=l2UFVdW7ZZ8Wq/MazA3txokoS3xg9Ckg/3k6kAMghSCa6jZcyRZ67htW24E9v6qr4dg0nja6oRUR6LMkWcUzn7y2y3CneeZmNcPk5l6a1dJD7LDs/Z4CrzZjjSbwYQuzx1hdp2gv+3EnhXDc46qGhkZ8F5hMYbGSsCbg79wUC0U=
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
+ by SEZPR03MB8998.apcprd03.prod.outlook.com (2603:1096:101:23c::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7386.30; Fri, 22 Mar
+ 2024 09:26:58 +0000
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::f3b6:91a7:e0fb:cb27]) by TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::f3b6:91a7:e0fb:cb27%7]) with mapi id 15.20.7386.031; Fri, 22 Mar 2024
+ 09:26:58 +0000
+From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
+To: =?utf-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+	"angelogioacchino.delregno@collabora.com"
 	<angelogioacchino.delregno@collabora.com>
-CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>, =?UTF-8?q?Christian=20K=C3=B6nig?=
-	<christian.koenig@amd.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
-	<linaro-mm-sig@lists.linaro.org>, Hsiao Chien Sung
-	<shawn.sung@mediatek.corp-partner.google.com>
-Subject: [PATCH v5 04/14] drm/mediatek: Rename "mtk_drm_gem" to "mtk_gem"
-Date: Fri, 22 Mar 2024 17:12:22 +0800
-Message-ID: <20240322091232.26387-5-shawn.sung@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240322091232.26387-1-shawn.sung@mediatek.com>
-References: <20240322091232.26387-1-shawn.sung@mediatek.com>
+Subject: Re: [PATCH v6 09/14] drm/mediatek: Support "Pre-multiplied" alpha
+ blending in Mixer
+Thread-Topic: [PATCH v6 09/14] drm/mediatek: Support "Pre-multiplied" alpha
+ blending in Mixer
+Thread-Index: AQHafBnvaeIa27qwOE23+TyPufxl2bFDffeA
+Date: Fri, 22 Mar 2024 09:26:58 +0000
+Message-ID: <b58930f947f08b70cfb3c4a06482237ce71ba496.camel@mediatek.com>
+References: <20240322052829.9893-1-shawn.sung@mediatek.com>
+	 <20240322052829.9893-10-shawn.sung@mediatek.com>
+In-Reply-To: <20240322052829.9893-10-shawn.sung@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|SEZPR03MB8998:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: rc2+xl5+b3xlQiwjflRoKjTpI0N2tw7g+Y6BrsKW89SDFWIOVw42wkwRqERONdfYklf0gd0ms4LFNBvLHQEu5CvLrlZRRFayDmsH4kZDok3ELEqKhc4/Mw+JuwAP8EQvb4Bv2UrI/rxXFYAx3Omv5QrRHR5UyX420cu4T74VUKgGbM6rOMCSBVooJVKRkLJuhz9hX9180YHZgmeNBxIWMmYkpg2NYZcDCEJSiSns+QqsNoLJrxErUPnyZK5gIB25bnNbL/RtK3xlBs8BLfOjOqmTRhVSiUkDBGsEWm0WUDSEY2uGK+ICF275EMvQuvew6LYv9fEZ3sGxOQPZE7X7Qpd8KOyNn/lhy6Mn4kEX+wwWEOv3zY3EWImR/qGx6cbGn4dy+VxmminczwJEt+QoNHD+Msih5ryuehQC+S6rSQcyS7tpCXl/3ir+3yy2DzD8hacI95lPyJc0FYBcZpltpOn2A9S3sFpaZ/pErWbaoI22geS1w003yxXtgU9KbNX4P5QqU+1GNOq/oeTNKJ61Z9TpIoxKL7efhdByCpVNA7wqEkD4HuM408e8hdJa1aG+IXK1jHhb3+QKa8iQMRSBY/XcI2Co4/skBudeEegeOaskbpfmkTFc4SbzD2juVvA95zw9X8OsSQYRNHYfyF3A0Oj+nMWtzTkRL2oh4T579oE=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(7416005)(366007)(1800799015)(376005);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?bkpiK2lmbWo2NkFxZXFOazN1N0NsNFV1UElieWFEYjNwbjZBMDAvRERKYnQ4?=
+ =?utf-8?B?RkhobGpGU2lIQ25kUFMrNGJJSDN0QnZPNkdJVDA1ZVkyZTZwS3JGc1ZyUGRy?=
+ =?utf-8?B?SjdzUEVHYm8yU3RZN1R2K3A3TWpaU3BNZjFxRkhTSGliOG1JUDU3SDNZQnc2?=
+ =?utf-8?B?VjlFS2xnL2pBQlJ0YjQ1NXBXL01SUmJxVjlwalNISVQwWmNNSmwzbG5HZU51?=
+ =?utf-8?B?RUFkdElVWmMwNExCdUFTbERCQjk2RDRoQndwcUZIazRYaFF0eC9JRXVRejh2?=
+ =?utf-8?B?aDVKMFNTeE9IUHdiSXg5OUdRTXlqMEs4SzNSUWQ1Wm9CdGVJWFZUeklsYWF2?=
+ =?utf-8?B?Y0tNSVVuMDU5cFcrQTd4WGVERmpsd3FFYlM5eDRUUjM3K2poVjdDWXRwWTFs?=
+ =?utf-8?B?OTgvK0hjL1dRMitBUitXaUpNblJsM1ZyVjNCSFl5eko4MGVpb05Ia0xsUUNp?=
+ =?utf-8?B?T3FoQURIU3lFcXlLNjhqdC93TmRBZzU3VUZEV3VKVzZyc1oxNjh0aEcxbkpp?=
+ =?utf-8?B?OTNyUGFncnZhSGx5SXAwdE1YVUZKUk16QWxxWUx5SGZBWVQzeTdudElOTVlt?=
+ =?utf-8?B?ZnozaE9TYU84M2UvSkRqODZnbWV6QnR5SGdPWkdVQXRvWHpYNGpDbTIwWjVI?=
+ =?utf-8?B?WU5Wd0Q4LzBCTDIxMXJYK3lRb2JqY0MwWUVQQzRHVm5aRkFhRGk2TC9YV1Ns?=
+ =?utf-8?B?bkM2NjRYQzVKd0Ird1JzUEIrVmp6S2pMMGRPNVpYODNnL25vNGxENXpqWmo0?=
+ =?utf-8?B?NjNPZEptdDRYZVNUcCtmYVFTVEZwTlFrbVdra2ZrNUZlL3kvbUlwSjJLbU5C?=
+ =?utf-8?B?YlRQWmpCSXdzcVZMWURSdG5CQ2ZJOWJPbnVsZVhHTG5YRmpCaG8vbnN6L3BQ?=
+ =?utf-8?B?ZnNhL1NqYW1xWE9rdmtzK2luV3hEZW0vK0ZxaFBqL1ZXemdQTUFtZ21McjJ3?=
+ =?utf-8?B?VTRzbG9IYms4bER6Y3FvS1FPWUQ2K1dJRXozQk1JSmRzWWFkbTVFbjR3ZFRi?=
+ =?utf-8?B?YnJReGc4OGRFS3BXL3JuOXBiZGRYYS9DaU1VWmorRExPVThJWENiWDFBTXhD?=
+ =?utf-8?B?QnlGbndPc0NwR3RPb3kycXEyZHdCZERYZlFENmFMVkNLSGYybWtESDVFU1BQ?=
+ =?utf-8?B?T1BBODZpTGVqMmlYeDU3TnFJLzYxOFpnekZHS294TEFFR0Uwb1UzTkxqTU5C?=
+ =?utf-8?B?SkZlRTgwV1lXbWdzL05UUEJJZjZTRWNlZU5SQ0tlRCthL2QybUxLdWwybXZq?=
+ =?utf-8?B?Z3NWWUpOUEdQV3JRN1lRSFJ0RndKQXEydStybzZzWmlJaURhOVNqVHJCckVP?=
+ =?utf-8?B?cTJCYkNtdGZCLzBWajRjbm1kTEtQeUdsYi9nRWtSZXVSWlJzMitzeEMvUVJP?=
+ =?utf-8?B?QlpJQldNRWtWSkZwdElnbDNGU05Lckg0dlFvbWhOVUZub0hSSGdXQ2ovejVt?=
+ =?utf-8?B?WFFOK01QeG9DendxQWo3bThzb1NONE9RZ0IvSVFZNHhyNW8ySDhKNWJCNlpF?=
+ =?utf-8?B?SEJjSHhUK0IyRkZBVktVdXRFZXpwMldubjgzczdWWXVidGdtbzlqamR2Q25Y?=
+ =?utf-8?B?TGF1aWd6TDZYN3cvSE43ZkkyTDdiejU3RmVqOERDTTRVcHZJNStRelA0dGQx?=
+ =?utf-8?B?ZmFlanNKdHMrRVBMeUxZc1kzRFhhOVBIYTh4Z3c4Nm1ISHhSU0pHVHUyRlhu?=
+ =?utf-8?B?YjNFWnlmUDE1Y1pzaDEvak9RaGptcytPK2NrTUR3aDA1NWg4MWZiQXdMSEdo?=
+ =?utf-8?B?dGpIemxOWjE0clpFRW1CKzJCZm41NXlOTXM3UUl2cTNSSjhQZHNPeWEzWDNx?=
+ =?utf-8?B?ZzlmT3pXVU56QUpVdGV2c1hNWU9HZVhwZVdJQnk2VFN6aTFIREtBVndxbVlz?=
+ =?utf-8?B?ZDdlbHlBaURDaDdJdHFCODFId3RBdm1Ud2dpTksva0MwK3liWFZqT1grblF2?=
+ =?utf-8?B?ekRQSmE4SWlMc1pXQis0aTRHdEg4YnpJelJNY0hxd01BVDhHam5sZEVFV0Z1?=
+ =?utf-8?B?bTJrSUJlakVLVHFXekszYjNEVjN5QlJxUmpML1hCTE1XMEltMERsNmJSMVYy?=
+ =?utf-8?B?SnZRWjVRQ2E3Z01Fa1BMM3Jvd1ZJaFlKTVZuVkJsTGN5cEV4aDZYb3Rocy9Z?=
+ =?utf-8?Q?F1tPE2f1ineyuLAJ4yGMDvdNj?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <7216E8000B9B9940AD4BAD3ECE7D39CB@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: dae927a8-e49b-4433-7db3-08dc4a52391a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Mar 2024 09:26:58.5540
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: TH3oNTQmOuGJmZgxru6h8Avky3WGNL2W+FiRE4ysKZS3QBLipsfzRqbvXyHmuE4PX/IJXB99W9Ut6DNFdpIsPw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB8998
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--13.355300-8.000000
+X-TMASE-MatchedRID: QW5G6BKkLToOwH4pD14DsPHkpkyUphL9X4GSJGyYc34J5zM3dzkaQbJn
+	Ph8w+R5oxpWxmut0txol6rr8933abhAq4jU0QZlBQ4srjeRbxTZMkOX0UoduuUYvSDWdWaRhNjy
+	2tJcff+RuAR/Spdx9aZjXlVZ6P0cvwjNT2ImDeU2NzYJBKgDdEcnlJe2gk8vIV+MOvGRW7mI0oI
+	W/6XAMMlwXT4SAXuOUkNSp2KM/ZRCQFHd0cGjNx7MsPmSZxbpkLAnNohUyMa34JyR+b5tvoI3tI
+	4HHvrLy4vM1YF6AJbY9l7H+TFQgdbew1twePJJB3QfwsVk0UbtuRXh7bFKB7mpwLC488klrNavj
+	95SxWIj30Ud7sUT0Jt39GR/gtuXbNkUSDDq742k=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--13.355300-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: D7FC89130FDDE23DE1F52ADD56B5F272D3D4DF0DF0327F0AFC48F91A330B819A2000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240322_022313_334544_3D807FCA 
-X-CRM114-Status: GOOD (  21.42  )
+X-CRM114-CacheID: sfid-20240322_022745_416459_4992C746 
+X-CRM114-Status: GOOD (  23.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,294 +181,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: =?utf-8?B?QmliYnkgSHNpZWggKOisnea/n+mBoCk=?= <Bibby.Hsieh@mediatek.com>, "sean@poorly.run" <sean@poorly.run>, "jason-ch.chen@mediatek.corp-partner.google.com" <jason-ch.chen@mediatek.corp-partner.google.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, =?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "daniel@ffwll.ch" <daniel@ffwll.ch>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, "airlied@gmail.com" <airlied@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
-
-Rename all "mtk_drm_gem" to "mtk_gem":
-- To align the naming rule
-- To reduce the code size
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c   |  8 +--
- drivers/gpu/drm/mediatek/mtk_drm_gem.c   | 63 ++++++++++++------------
- drivers/gpu/drm/mediatek/mtk_drm_gem.h   | 23 +++++----
- drivers/gpu/drm/mediatek/mtk_drm_plane.c |  2 +-
- 4 files changed, 47 insertions(+), 49 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index c46773569b3c9..81e8aa65abd6d 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -576,8 +576,8 @@ DEFINE_DRM_GEM_FOPS(mtk_drm_fops);
-  * We need to override this because the device used to import the memory is
-  * not dev->dev, as drm_gem_prime_import() expects.
-  */
--static struct drm_gem_object *mtk_drm_gem_prime_import(struct drm_device *dev,
--						       struct dma_buf *dma_buf)
-+static struct drm_gem_object *mtk_gem_prime_import(struct drm_device *dev,
-+						   struct dma_buf *dma_buf)
- {
- 	struct mtk_drm_private *private = dev->dev_private;
- 
-@@ -587,9 +587,9 @@ static struct drm_gem_object *mtk_drm_gem_prime_import(struct drm_device *dev,
- static const struct drm_driver mtk_drm_driver = {
- 	.driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_ATOMIC,
- 
--	.dumb_create = mtk_drm_gem_dumb_create,
-+	.dumb_create = mtk_gem_dumb_create,
- 
--	.gem_prime_import = mtk_drm_gem_prime_import,
-+	.gem_prime_import = mtk_gem_prime_import,
- 	.gem_prime_import_sg_table = mtk_gem_prime_import_sg_table,
- 	.fops = &mtk_drm_fops,
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-index 4f2e3feabc0f8..445fd8a8b8988 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-@@ -14,26 +14,26 @@
- #include "mtk_drm_drv.h"
- #include "mtk_drm_gem.h"
- 
--static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj, struct vm_area_struct *vma);
-+static int mtk_gem_object_mmap(struct drm_gem_object *obj, struct vm_area_struct *vma);
- 
- static const struct vm_operations_struct vm_ops = {
- 	.open = drm_gem_vm_open,
- 	.close = drm_gem_vm_close,
- };
- 
--static const struct drm_gem_object_funcs mtk_drm_gem_object_funcs = {
--	.free = mtk_drm_gem_free_object,
-+static const struct drm_gem_object_funcs mtk_gem_object_funcs = {
-+	.free = mtk_gem_free_object,
- 	.get_sg_table = mtk_gem_prime_get_sg_table,
--	.vmap = mtk_drm_gem_prime_vmap,
--	.vunmap = mtk_drm_gem_prime_vunmap,
--	.mmap = mtk_drm_gem_object_mmap,
-+	.vmap = mtk_gem_prime_vmap,
-+	.vunmap = mtk_gem_prime_vunmap,
-+	.mmap = mtk_gem_object_mmap,
- 	.vm_ops = &vm_ops,
- };
- 
--static struct mtk_drm_gem_obj *mtk_drm_gem_init(struct drm_device *dev,
--						unsigned long size)
-+static struct mtk_gem_obj *mtk_gem_init(struct drm_device *dev,
-+					unsigned long size)
- {
--	struct mtk_drm_gem_obj *mtk_gem_obj;
-+	struct mtk_gem_obj *mtk_gem_obj;
- 	int ret;
- 
- 	size = round_up(size, PAGE_SIZE);
-@@ -42,7 +42,7 @@ static struct mtk_drm_gem_obj *mtk_drm_gem_init(struct drm_device *dev,
- 	if (!mtk_gem_obj)
- 		return ERR_PTR(-ENOMEM);
- 
--	mtk_gem_obj->base.funcs = &mtk_drm_gem_object_funcs;
-+	mtk_gem_obj->base.funcs = &mtk_gem_object_funcs;
- 
- 	ret = drm_gem_object_init(dev, &mtk_gem_obj->base, size);
- 	if (ret < 0) {
-@@ -54,15 +54,15 @@ static struct mtk_drm_gem_obj *mtk_drm_gem_init(struct drm_device *dev,
- 	return mtk_gem_obj;
- }
- 
--struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm_device *dev,
--					   size_t size, bool alloc_kmap)
-+struct mtk_gem_obj *mtk_gem_create(struct drm_device *dev,
-+				   size_t size, bool alloc_kmap)
- {
- 	struct mtk_drm_private *priv = dev->dev_private;
--	struct mtk_drm_gem_obj *mtk_gem;
-+	struct mtk_gem_obj *mtk_gem;
- 	struct drm_gem_object *obj;
- 	int ret;
- 
--	mtk_gem = mtk_drm_gem_init(dev, size);
-+	mtk_gem = mtk_gem_init(dev, size);
- 	if (IS_ERR(mtk_gem))
- 		return ERR_CAST(mtk_gem);
- 
-@@ -97,9 +97,9 @@ struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm_device *dev,
- 	return ERR_PTR(ret);
- }
- 
--void mtk_drm_gem_free_object(struct drm_gem_object *obj)
-+void mtk_gem_free_object(struct drm_gem_object *obj)
- {
--	struct mtk_drm_gem_obj *mtk_gem = to_mtk_gem_obj(obj);
-+	struct mtk_gem_obj *mtk_gem = to_mtk_gem_obj(obj);
- 	struct mtk_drm_private *priv = obj->dev->dev_private;
- 
- 	if (mtk_gem->sg)
-@@ -114,10 +114,10 @@ void mtk_drm_gem_free_object(struct drm_gem_object *obj)
- 	kfree(mtk_gem);
- }
- 
--int mtk_drm_gem_dumb_create(struct drm_file *file_priv, struct drm_device *dev,
--			    struct drm_mode_create_dumb *args)
-+int mtk_gem_dumb_create(struct drm_file *file_priv, struct drm_device *dev,
-+			struct drm_mode_create_dumb *args)
- {
--	struct mtk_drm_gem_obj *mtk_gem;
-+	struct mtk_gem_obj *mtk_gem;
- 	int ret;
- 
- 	args->pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
-@@ -130,7 +130,7 @@ int mtk_drm_gem_dumb_create(struct drm_file *file_priv, struct drm_device *dev,
- 	args->size = args->pitch;
- 	args->size *= args->height;
- 
--	mtk_gem = mtk_drm_gem_create(dev, args->size, false);
-+	mtk_gem = mtk_gem_create(dev, args->size, false);
- 	if (IS_ERR(mtk_gem))
- 		return PTR_ERR(mtk_gem);
- 
-@@ -148,16 +148,16 @@ int mtk_drm_gem_dumb_create(struct drm_file *file_priv, struct drm_device *dev,
- 	return 0;
- 
- err_handle_create:
--	mtk_drm_gem_free_object(&mtk_gem->base);
-+	mtk_gem_free_object(&mtk_gem->base);
- 	return ret;
- }
- 
--static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj,
--				   struct vm_area_struct *vma)
-+static int mtk_gem_object_mmap(struct drm_gem_object *obj,
-+			       struct vm_area_struct *vma)
- 
- {
- 	int ret;
--	struct mtk_drm_gem_obj *mtk_gem = to_mtk_gem_obj(obj);
-+	struct mtk_gem_obj *mtk_gem = to_mtk_gem_obj(obj);
- 	struct mtk_drm_private *priv = obj->dev->dev_private;
- 
- 	/*
-@@ -188,7 +188,7 @@ static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj,
-  */
- struct sg_table *mtk_gem_prime_get_sg_table(struct drm_gem_object *obj)
- {
--	struct mtk_drm_gem_obj *mtk_gem = to_mtk_gem_obj(obj);
-+	struct mtk_gem_obj *mtk_gem = to_mtk_gem_obj(obj);
- 	struct mtk_drm_private *priv = obj->dev->dev_private;
- 	struct sg_table *sgt;
- 	int ret;
-@@ -212,7 +212,7 @@ struct sg_table *mtk_gem_prime_get_sg_table(struct drm_gem_object *obj)
- struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_device *dev,
- 			struct dma_buf_attachment *attach, struct sg_table *sg)
- {
--	struct mtk_drm_gem_obj *mtk_gem;
-+	struct mtk_gem_obj *mtk_gem;
- 
- 	/* check if the entries in the sg_table are contiguous */
- 	if (drm_prime_get_contiguous_size(sg) < attach->dmabuf->size) {
-@@ -220,7 +220,7 @@ struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_device *dev,
- 		return ERR_PTR(-EINVAL);
- 	}
- 
--	mtk_gem = mtk_drm_gem_init(dev, attach->dmabuf->size);
-+	mtk_gem = mtk_gem_init(dev, attach->dmabuf->size);
- 	if (IS_ERR(mtk_gem))
- 		return ERR_CAST(mtk_gem);
- 
-@@ -230,9 +230,9 @@ struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_device *dev,
- 	return &mtk_gem->base;
- }
- 
--int mtk_drm_gem_prime_vmap(struct drm_gem_object *obj, struct iosys_map *map)
-+int mtk_gem_prime_vmap(struct drm_gem_object *obj, struct iosys_map *map)
- {
--	struct mtk_drm_gem_obj *mtk_gem = to_mtk_gem_obj(obj);
-+	struct mtk_gem_obj *mtk_gem = to_mtk_gem_obj(obj);
- 	struct sg_table *sgt = NULL;
- 	unsigned int npages;
- 
-@@ -270,10 +270,9 @@ int mtk_drm_gem_prime_vmap(struct drm_gem_object *obj, struct iosys_map *map)
- 	return 0;
- }
- 
--void mtk_drm_gem_prime_vunmap(struct drm_gem_object *obj,
--			      struct iosys_map *map)
-+void mtk_gem_prime_vunmap(struct drm_gem_object *obj, struct iosys_map *map)
- {
--	struct mtk_drm_gem_obj *mtk_gem = to_mtk_gem_obj(obj);
-+	struct mtk_gem_obj *mtk_gem = to_mtk_gem_obj(obj);
- 	void *vaddr = map->vaddr;
- 
- 	if (!mtk_gem->pages)
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.h b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
-index 78f23b07a02e2..66e5f154f6980 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
-@@ -3,8 +3,8 @@
-  * Copyright (c) 2015 MediaTek Inc.
-  */
- 
--#ifndef _MTK_DRM_GEM_H_
--#define _MTK_DRM_GEM_H_
-+#ifndef _MTK_GEM_H_
-+#define _MTK_GEM_H_
- 
- #include <drm/drm_gem.h>
- 
-@@ -22,7 +22,7 @@
-  * P.S. this object would be transferred to user as kms_bo.handle so
-  *	user can access the buffer through kms_bo.handle.
-  */
--struct mtk_drm_gem_obj {
-+struct mtk_gem_obj {
- 	struct drm_gem_object	base;
- 	void			*cookie;
- 	void			*kvaddr;
-@@ -32,18 +32,17 @@ struct mtk_drm_gem_obj {
- 	struct page		**pages;
- };
- 
--#define to_mtk_gem_obj(x)	container_of(x, struct mtk_drm_gem_obj, base)
-+#define to_mtk_gem_obj(x) container_of(x, struct mtk_gem_obj, base)
- 
--void mtk_drm_gem_free_object(struct drm_gem_object *gem);
--struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm_device *dev, size_t size,
--					   bool alloc_kmap);
--int mtk_drm_gem_dumb_create(struct drm_file *file_priv, struct drm_device *dev,
--			    struct drm_mode_create_dumb *args);
-+void mtk_gem_free_object(struct drm_gem_object *gem);
-+struct mtk_gem_obj *mtk_gem_create(struct drm_device *dev, size_t size,
-+				   bool alloc_kmap);
-+int mtk_gem_dumb_create(struct drm_file *file_priv, struct drm_device *dev,
-+			struct drm_mode_create_dumb *args);
- struct sg_table *mtk_gem_prime_get_sg_table(struct drm_gem_object *obj);
- struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_device *dev,
- 			struct dma_buf_attachment *attach, struct sg_table *sg);
--int mtk_drm_gem_prime_vmap(struct drm_gem_object *obj, struct iosys_map *map);
--void mtk_drm_gem_prime_vunmap(struct drm_gem_object *obj,
--			      struct iosys_map *map);
-+int mtk_gem_prime_vmap(struct drm_gem_object *obj, struct iosys_map *map);
-+void mtk_gem_prime_vunmap(struct drm_gem_object *obj, struct iosys_map *map);
- 
- #endif
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-index 43137c46fc148..db63a32c407e3 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-@@ -135,7 +135,7 @@ static void mtk_plane_update_new_state(struct drm_plane_state *new_state,
- {
- 	struct drm_framebuffer *fb = new_state->fb;
- 	struct drm_gem_object *gem;
--	struct mtk_drm_gem_obj *mtk_gem;
-+	struct mtk_gem_obj *mtk_gem;
- 	unsigned int pitch, format;
- 	u64 modifier;
- 	dma_addr_t addr;
--- 
-2.18.0
-
+SGksIFNoYXduOg0KDQpPbiBGcmksIDIwMjQtMDMtMjIgYXQgMTM6MjggKzA4MDAsIFNoYXduIFN1
+bmcgd3JvdGU6DQo+IEZyb206IEhzaWFvIENoaWVuIFN1bmcgPHNoYXduLnN1bmdAbWVkaWF0ZWsu
+Y29tPg0KPiANCj4gU3VwcG9ydCAiUHJlLW11bHRpcGxpZWQiIGJsZW5kIG1vZGUgb24gTWVkaWFU
+ZWsncyBjaGlwcy4NCj4gQmVmb3JlIHRoaXMgcGF0Y2gsIG9ubHkgdGhlICJDb3ZlcmFnZSIgbW9k
+ZSBpcyBzdXBwb3J0ZWQuDQo+IA0KPiBQbGVhc2UgcmVmZXIgdG8gdGhlIGRlc2NyaXB0aW9uIG9m
+IHRoZSBjb21taXQNCj4gImRybS9tZWRpYXRlazogU3VwcG9ydCBhbHBoYSBibGVuZGluZyBpbiBk
+aXNwbGF5IGRyaXZlciINCj4gZm9yIG1vcmUgaW5mb3JtYXRpb24uDQo+IA0KPiBTaWduZWQtb2Zm
+LWJ5OiBIc2lhbyBDaGllbiBTdW5nIDxzaGF3bi5zdW5nQG1lZGlhdGVrLmNvbT4NCj4gLS0tDQo+
+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2V0aGRyLmMgfCAyNSArKysrKysrKysrKysr
+KysrKystLS0tLS0tDQo+ICAxIGZpbGUgY2hhbmdlZCwgMTggaW5zZXJ0aW9ucygrKSwgNyBkZWxl
+dGlvbnMoLSkNCj4gDQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2V0aGRyLmMNCj4gYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2V0aGRyLmMNCj4gaW5k
+ZXggNmJmMzk4ODUwZTg1Zi4uNGIxMmNhMjg1ZTg0YiAxMDA2NDQNCj4gLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19ldGhkci5jDQo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZXRoZHIuYw0KPiBAQCAtNSw2ICs1LDcgQEANCj4gIA0KPiAgI2luY2x1ZGUgPGRy
+bS9kcm1fZm91cmNjLmg+DQo+ICAjaW5jbHVkZSA8ZHJtL2RybV9mcmFtZWJ1ZmZlci5oPg0KPiAr
+I2luY2x1ZGUgPGRybS9kcm1fYmxlbmQuaD4NCj4gICNpbmNsdWRlIDxsaW51eC9jbGsuaD4NCj4g
+ICNpbmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4NCj4gICNpbmNsdWRlIDxsaW51eC9vZi5oPg0K
+PiBAQCAtMzUsNiArMzYsNyBAQA0KPiAgI2RlZmluZSBNSVhfU1JDX0wwX0VOCQkJCUJJVCgwKQ0K
+PiAgI2RlZmluZSBNSVhfTF9TUkNfQ09OKG4pCQkoMHgyOCArIDB4MTggKiAobikpDQo+ICAjZGVm
+aW5lIE5PTl9QUkVNVUxUSV9TT1VSQ0UJCQkoMiA8PCAxMikNCj4gKyNkZWZpbmUgUFJFTVVMVElf
+U09VUkNFCQkJCSgzIDw8IDEyKQ0KPiAgI2RlZmluZSBNSVhfTF9TUkNfU0laRShuKQkJKDB4MzAg
+KyAweDE4ICogKG4pKQ0KPiAgI2RlZmluZSBNSVhfTF9TUkNfT0ZGU0VUKG4pCQkoMHgzNCArIDB4
+MTggKiAobikpDQo+ICAjZGVmaW5lIE1JWF9GVU5DX0RDTTAJCQkweDEyMA0KPiBAQCAtMTUzLDcg
+KzE1NSw4IEBAIHZvaWQgbXRrX2V0aGRyX2xheWVyX2NvbmZpZyhzdHJ1Y3QgZGV2aWNlICpkZXYs
+DQo+IHVuc2lnbmVkIGludCBpZHgsDQo+ICAJc3RydWN0IG10a19wbGFuZV9wZW5kaW5nX3N0YXRl
+ICpwZW5kaW5nID0gJnN0YXRlLT5wZW5kaW5nOw0KPiAgCXVuc2lnbmVkIGludCBvZmZzZXQgPSAo
+cGVuZGluZy0+eCAmIDEpIDw8IDMxIHwgcGVuZGluZy0+eSA8PCAxNg0KPiB8IHBlbmRpbmctPng7
+DQo+ICAJdW5zaWduZWQgaW50IGFsaWduX3dpZHRoID0gQUxJR05fRE9XTihwZW5kaW5nLT53aWR0
+aCwgMik7DQo+IC0JdW5zaWduZWQgaW50IGFscGhhX2NvbiA9IDA7DQo+ICsJdW5zaWduZWQgaW50
+IG1peF9jb24gPSBOT05fUFJFTVVMVElfU09VUkNFOw0KDQpJIHRoaW5rIHlvdSBzaG91bGQgbm90
+IGFzc2lnbiBoZXJlLiBZb3Ugc2hvdWxkIGNob29zZSBvbmUgb2YNClBSRU1VTFRJX1NPVVJDRSBv
+ciBOT05fUFJFTVVMVElfU09VUkNFIGxhdGVyLg0KDQo+ICsJYm9vbCByZXBsYWNlX3NyY19hID0g
+ZmFsc2U7DQo+ICANCj4gIAlkZXZfZGJnKGRldiwgIiVzKyBpZHg6JWQiLCBfX2Z1bmNfXywgaWR4
+KTsNCj4gIA0KPiBAQCAtMTcwLDE5ICsxNzMsMjcgQEAgdm9pZCBtdGtfZXRoZHJfbGF5ZXJfY29u
+ZmlnKHN0cnVjdCBkZXZpY2UgKmRldiwNCj4gdW5zaWduZWQgaW50IGlkeCwNCj4gIAkJcmV0dXJu
+Ow0KPiAgCX0NCj4gIA0KPiAtCWlmIChzdGF0ZS0+YmFzZS5mYiAmJiBzdGF0ZS0+YmFzZS5mYi0+
+Zm9ybWF0LT5oYXNfYWxwaGEpDQo+IC0JCWFscGhhX2NvbiA9IE1JWEVSX0FMUEhBX0FFTiB8IE1J
+WEVSX0FMUEhBOw0KPiArCW1peF9jb24gfD0gTUlYRVJfQUxQSEFfQUVOIHwgKHN0YXRlLT5iYXNl
+LmFscGhhICYgTUlYRVJfQUxQSEEpOw0KDQpOb3cgc3VwcG9ydCBwaXhlbCBhbHBoYSwgYW5kIHRo
+aXMgc2VlbXMgdG8gc3VwcG9ydCBwbGFuZSBhbHBoYS4NClNlcGFyYXRlIHRoaXMgdG8gYW5vdGhl
+ciBwYXRjaC4NCg0KPiAgDQo+IC0JbXRrX21tc3lzX21peGVyX2luX2NvbmZpZyhwcml2LT5tbXN5
+c19kZXYsIGlkeCArIDEsIGFscGhhX2NvbiA/DQo+IGZhbHNlIDogdHJ1ZSwNCj4gLQkJCQkgIERF
+RkFVTFRfOUJJVF9BTFBIQSwNCj4gKwlpZiAoc3RhdGUtPmJhc2UucGl4ZWxfYmxlbmRfbW9kZSAh
+PSBEUk1fTU9ERV9CTEVORF9DT1ZFUkFHRSkNCj4gKwkJbWl4X2NvbiB8PSBQUkVNVUxUSV9TT1VS
+Q0U7DQo+ICsNCj4gKwlpZiAoc3RhdGUtPmJhc2UuZmIgJiYgIXN0YXRlLT5iYXNlLmZiLT5mb3Jt
+YXQtPmhhc19hbHBoYSkgew0KPiArCQkvKg0KPiArCQkgKiBNaXhlciBkb2Vzbid0IHN1cHBvcnQg
+Q09OU1RfQkxEIG1vZGUsDQo+ICsJCSAqIHVzZSBhIHRyaWNrIHRvIG1ha2UgdGhlIG91dHB1dCBl
+cXVpdmFsZW50DQo+ICsJCSAqLw0KPiArCQlyZXBsYWNlX3NyY19hID0gdHJ1ZTsNCg0KRGl0dG8u
+DQoNClJlZ2FyZHMsDQpDSw0KDQo+ICsJfQ0KPiArDQo+ICsJbXRrX21tc3lzX21peGVyX2luX2Nv
+bmZpZyhwcml2LT5tbXN5c19kZXYsIGlkeCArIDEsDQo+IHJlcGxhY2Vfc3JjX2EsIE1JWEVSX0FM
+UEhBLA0KPiAgCQkJCSAgcGVuZGluZy0+eCAmIDEgPw0KPiBNSVhFUl9JTlhfTU9ERV9FVkVOX0VY
+VEVORCA6DQo+ICAJCQkJICBNSVhFUl9JTlhfTU9ERV9CWVBBU1MsIGFsaWduX3dpZHRoIC8NCj4g
+MiAtIDEsIGNtZHFfcGt0KTsNCj4gIA0KPiAgCW10a19kZHBfd3JpdGUoY21kcV9wa3QsIHBlbmRp
+bmctPmhlaWdodCA8PCAxNiB8IGFsaWduX3dpZHRoLA0KPiAmbWl4ZXItPmNtZHFfYmFzZSwNCj4g
+IAkJICAgICAgbWl4ZXItPnJlZ3MsIE1JWF9MX1NSQ19TSVpFKGlkeCkpOw0KPiAgCW10a19kZHBf
+d3JpdGUoY21kcV9wa3QsIG9mZnNldCwgJm1peGVyLT5jbWRxX2Jhc2UsIG1peGVyLT5yZWdzLCAN
+Cj4gTUlYX0xfU1JDX09GRlNFVChpZHgpKTsNCj4gLQltdGtfZGRwX3dyaXRlX21hc2soY21kcV9w
+a3QsIGFscGhhX2NvbiwgJm1peGVyLT5jbWRxX2Jhc2UsDQo+IG1peGVyLT5yZWdzLCBNSVhfTF9T
+UkNfQ09OKGlkeCksDQo+IC0JCQkgICAweDFmZik7DQo+ICsJbXRrX2RkcF93cml0ZShjbWRxX3Br
+dCwgbWl4X2NvbiwgJm1peGVyLT5jbWRxX2Jhc2UsIG1peGVyLQ0KPiA+cmVncywgTUlYX0xfU1JD
+X0NPTihpZHgpKTsNCj4gIAltdGtfZGRwX3dyaXRlX21hc2soY21kcV9wa3QsIEJJVChpZHgpLCAm
+bWl4ZXItPmNtZHFfYmFzZSwNCj4gbWl4ZXItPnJlZ3MsIE1JWF9TUkNfQ09OLA0KPiAgCQkJICAg
+QklUKGlkeCkpOw0KPiAgfQ0K
 
