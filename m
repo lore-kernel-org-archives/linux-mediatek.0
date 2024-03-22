@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28D3BCD11DF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8894C47DD9
 	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Mar 2024 09:12:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=D90IpDuiRkZ2VElRCOSMl6WQG52MAQH00jESrYAeQLQ=; b=xF/QwJebe27WctkmG6sQbV+wxf
-	7zaKte4BMC8en8wsz4xurtPhIe3N9YVFkhTB/nqRLlYbocQOCRddSfEMauAdfyPF8sDEdMX7N2aGO
-	JkhlJnnFoHf8pHnWbeicwgbaDfjfTnynhbTs+Mi7r1rlnenGfZsG3jMkjK/QGE5q5EuB6FOSHlQbP
-	n8g9lwLBTEv/uQvZOAU3V5o37/CyRjo8AAklrhvtrhK+bp0Wk21C19kawCydmgd2zgzpSr8TtQHi6
-	lLsQRqF/jze+H/fhaHB4dFITOulatcMUoVUKrGclmQra61sxrbOLkUEZUuYVtPbeCei+Bv1PMinec
-	2uepxIjw==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BnE7kfT92vOKoVcnW2N3zYJMAiR9CTN4ccK+CcPCmZw=; b=GV5NiBpC4ZUWVxSMQyWsO09tyq
+	oJxHdLKH2in0xB11vVQRdxGmKOkzpBtYBLXPl9qUWd9bzSJZ61W9j7NGMDHAt3CaQKXsYJPL3417w
+	EhBgJBBo3FQNsOZ+Y/SC1ES/XBqW8eKnCI6gYg/2kCu0GA/pqlM0OUynrJ+eWug+gZtzoM+f2L1A1
+	+1nPRepcXAbbBMgwLtDwRn1vDU1l/yiRygaqzvGXiTpwVAzQ8BGThuDkQUhRnwA/s5vfuQbbet0tN
+	s+8krbDwDUg71hxR4FZ2Oo0fnvg2F+7KOVys1y/nhv7kVvDJPG9lrJqQLwMCLfg1PLcfLu5ezTpGx
+	hHYeRihA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnaxI-00000006UvR-1ZGe;
-	Fri, 22 Mar 2024 09:12:52 +0000
+	id 1rnaxJ-00000006Uw8-0e5q;
+	Fri, 22 Mar 2024 09:12:53 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnaxA-00000006Unx-0lWO;
+	id 1rnaxA-00000006Uo4-0lPt;
 	Fri, 22 Mar 2024 09:12:45 +0000
-X-UUID: 5315306ce82c11eeacdb61a41848c7d2-20240322
+X-UUID: 539b4206e82c11eeacdb61a41848c7d2-20240322
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=D90IpDuiRkZ2VElRCOSMl6WQG52MAQH00jESrYAeQLQ=;
-	b=a5QMxR3Olhbb/PDdfEBe5ifvDTCnjqnwD/pPBq6wZ0iVJno8ETGShSZQVZ1f9br9Rd1SJdpNCs7No92PyswixDCZLvaY+hS7Cfiaiqe8Vn75NpY8QwQhilS0ynJdPN42OVx5OAqJVI/fwNXogZXx2JUpE44GDu61e2PKddmFIVY=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=BnE7kfT92vOKoVcnW2N3zYJMAiR9CTN4ccK+CcPCmZw=;
+	b=V5lzrPZEoubr+B3Rr7iD3ZSs28RpckMNEctQQC9oTFFV+G4Kw4W5fBh78JPwTVoozIc9sHghJHtMC1gxQl2KC2x+jHI8RgZDWyVkJmPTmnAbQiFniS/xl58sXmc6d26B8lEX/H4q/URheZ611Ne0rPlokdzoWLuG4RznUHa+G/4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:6e0e83f0-a39b-42d2-9bc2-aeefec949480,IP:0,U
+X-CID-O-INFO: VERSION:1.1.37,REQID:7171646c-b90c-4f68-8d37-edc4a3ccccc3,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:201bcf81-4f93-4875-95e7-8c66ea833d57,B
+X-CID-META: VersionHash:6f543d0,CLOUDID:9147b690-e2c0-40b0-a8fe-7c7e47299109,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 5315306ce82c11eeacdb61a41848c7d2-20240322
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 539b4206e82c11eeacdb61a41848c7d2-20240322
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1525872191; Fri, 22 Mar 2024 02:12:36 -0700
+	with ESMTP id 1075479845; Fri, 22 Mar 2024 02:12:37 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 22 Mar 2024 17:12:33 +0800
+ 15.2.1118.26; Fri, 22 Mar 2024 17:12:35 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 22 Mar 2024 17:12:33 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 22 Mar 2024 17:12:35 +0800
 From: Shawn Sung <shawn.sung@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>
@@ -64,27 +64,19 @@ CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
 	<linaro-mm-sig@lists.linaro.org>, Hsiao Chien Sung
 	<shawn.sung@mediatek.corp-partner.google.com>
-Subject: [PATCH v5 00/14] Rename mtk_drm_* to mtk_*
-Date: Fri, 22 Mar 2024 17:12:18 +0800
-Message-ID: <20240322091232.26387-1-shawn.sung@mediatek.com>
+Subject: [PATCH v5 13/14] drm/mediatek: Rename files "mtk_drm_gem.c" to "mtk_gem.c"
+Date: Fri, 22 Mar 2024 17:12:31 +0800
+Message-ID: <20240322091232.26387-14-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240322091232.26387-1-shawn.sung@mediatek.com>
+References: <20240322091232.26387-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--16.176100-8.000000
-X-TMASE-MatchedRID: llTo18AJfvE/5uXNh96gfjl/LoO+pjoA1cuIRwt/4Mjb6Y+fnTZUL80U
-	/azwU24yYfroVIh1m0C4hZmY35M3T0FKjjgcgwapaK+MsTwM+1mH7D1bP/FcOjRCaZSKE/Os4+n
-	0olV+QL9dLrRNHKRnTPYqYU8vzTMop11fUZKoS3wD2WXLXdz+AXcF/0kiqyh4WEBoeOCrJbXnU/
-	zlxreh3uLzNWBegCW2wgn7iDBesS28QIu4z6HhEH7cGd19dSFd
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--16.176100-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 8A0A66182036D317C5888BA94D5703FDE618A200F98EA02E9DCEEF6437B83D4F2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240322_021244_284233_CCBB1D1F 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20240322_021244_264260_3E934364 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,80 +93,38 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
 
-Rename some unnecessary  "mtk_drm_*" to "mtk_*" to:
-- Lower the matches when searching the native drm_* codes
-- Reduce the code size
+Rename files mtk_drm_gem.c to mtk_gem.c.
 
-Changes in v5:
-- Fix typo in the commit message
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
+---
+ drivers/gpu/drm/mediatek/Makefile                     | 2 +-
+ drivers/gpu/drm/mediatek/{mtk_drm_gem.c => mtk_gem.c} | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename drivers/gpu/drm/mediatek/{mtk_drm_gem.c => mtk_gem.c} (100%)
 
-Changes in v4:
-- Fix patch error
-
-Changes in v3:
-- Fix typo and patch error
-
-Changes in v2:
-- Sort header files alphabetically
-- Seperate patches for renaming .c files to avoid conflicts
-
-This series is based on c958e86e9cc1b of mediatek-drm-next.
-
-
-Hsiao Chien Sung (14):
-  drm/mediatek: Rename "mtk_drm_crtc" to "mtk_crtc"
-  drm/mediatek: Rename "mtk_drm_ddp_comp" to "mtk_ddp_comp"
-  drm/mediatek: Rename "mtk_drm_plane" to "mtk_plane"
-  drm/mediatek: Rename "mtk_drm_gem" to "mtk_gem"
-  drm/mediatek: Rename "mtk_drm_hdmi" to "mtk_hdmi"
-  drm/mediatek: Rename files "mtk_drm_crtc.h" to "mtk_crtc.h"
-  drm/mediatek: Rename files "mtk_drm_crtc.c" to "mtk_crtc.c"
-  drm/mediatek: Rename files "mtk_drm_ddp_comp.h" to "mtk_ddp_comp.h"
-  drm/mediatek: Rename files "mtk_drm_ddp_comp.c" to "mtk_ddp_comp.c"
-  drm/mediatek: Rename files "mtk_drm_plane.h" to "mtk_plane.h"
-  drm/mediatek: Rename files "mtk_drm_plane.c" to "mtk_plane.c"
-  drm/mediatek: Rename files "mtk_drm_gem.h" to "mtk_gem.h"
-  drm/mediatek: Rename files "mtk_drm_gem.c" to "mtk_gem.c"
-  drm/mediatek: Rename mtk_ddp_comp functions
-
- drivers/gpu/drm/mediatek/Makefile             |  12 +-
- .../mediatek/{mtk_drm_crtc.c => mtk_crtc.c}   | 210 +++++++++---------
- drivers/gpu/drm/mediatek/mtk_crtc.h           |  28 +++
- .../{mtk_drm_ddp_comp.c => mtk_ddp_comp.c}    |  51 +++--
- .../{mtk_drm_ddp_comp.h => mtk_ddp_comp.h}    |   9 +-
- drivers/gpu/drm/mediatek/mtk_disp_aal.c       |   4 +-
- drivers/gpu/drm/mediatek/mtk_disp_ccorr.c     |   4 +-
- drivers/gpu/drm/mediatek/mtk_disp_color.c     |   4 +-
- drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   2 +-
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c     |   4 +-
- drivers/gpu/drm/mediatek/mtk_disp_merge.c     |   2 +-
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c       |   4 +-
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |   4 +-
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c      |   4 +-
- drivers/gpu/drm/mediatek/mtk_dpi.c            |   4 +-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h       |  30 ---
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  32 +--
- drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   4 +-
- drivers/gpu/drm/mediatek/mtk_dsi.c            |   6 +-
- drivers/gpu/drm/mediatek/mtk_ethdr.c          |   4 +-
- .../drm/mediatek/{mtk_drm_gem.c => mtk_gem.c} |  65 +++---
- .../drm/mediatek/{mtk_drm_gem.h => mtk_gem.h} |  23 +-
- drivers/gpu/drm/mediatek/mtk_hdmi.c           |  14 +-
- drivers/gpu/drm/mediatek/mtk_padding.c        |   4 +-
- .../mediatek/{mtk_drm_plane.c => mtk_plane.c} |  26 +--
- .../mediatek/{mtk_drm_plane.h => mtk_plane.h} |   4 +-
- 26 files changed, 275 insertions(+), 283 deletions(-)
- rename drivers/gpu/drm/mediatek/{mtk_drm_crtc.c => mtk_crtc.c} (82%)
- create mode 100644 drivers/gpu/drm/mediatek/mtk_crtc.h
- rename drivers/gpu/drm/mediatek/{mtk_drm_ddp_comp.c => mtk_ddp_comp.c} (94%)
- rename drivers/gpu/drm/mediatek/{mtk_drm_ddp_comp.h => mtk_ddp_comp.h} (98%)
- delete mode 100644 drivers/gpu/drm/mediatek/mtk_drm_crtc.h
- rename drivers/gpu/drm/mediatek/{mtk_drm_gem.c => mtk_gem.c} (76%)
- rename drivers/gpu/drm/mediatek/{mtk_drm_gem.h => mtk_gem.h} (62%)
- rename drivers/gpu/drm/mediatek/{mtk_drm_plane.c => mtk_plane.c} (94%)
- rename drivers/gpu/drm/mediatek/{mtk_drm_plane.h => mtk_plane.h} (95%)
-
---
+diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
+index a47fbec7b9ce1..32a2ed6c0cfef 100644
+--- a/drivers/gpu/drm/mediatek/Makefile
++++ b/drivers/gpu/drm/mediatek/Makefile
+@@ -11,10 +11,10 @@ mediatek-drm-y := mtk_crtc.o \
+ 		  mtk_disp_ovl_adaptor.o \
+ 		  mtk_disp_rdma.o \
+ 		  mtk_drm_drv.o \
+-		  mtk_drm_gem.o \
+ 		  mtk_dsi.o \
+ 		  mtk_dpi.o \
+ 		  mtk_ethdr.o \
++		  mtk_gem.o \
+ 		  mtk_mdp_rdma.o \
+ 		  mtk_padding.o \
+ 		  mtk_plane.o
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_gem.c
+similarity index 100%
+rename from drivers/gpu/drm/mediatek/mtk_drm_gem.c
+rename to drivers/gpu/drm/mediatek/mtk_gem.c
+-- 
 2.18.0
 
 
