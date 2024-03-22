@@ -4,78 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47E84C54E71
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Mar 2024 10:17:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5564EC47DD9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Mar 2024 13:26:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S2i1CrYScsWxd8X5IUMkWM735SZ0Bu6ofMMCI6ivzus=; b=0Qhydy4Anakg9Oi+u0r8l7QW5k
-	nv57m31dVeivlt7qX8D4+q2lWuMk63LX8sa8ILYe5jqYFElVH4GvOivVBBqbhL7NZU80PjK5JDEKt
-	W14L3znvQePtkmAyPc3qPNsZL4RF6mC18XgoO37yO7W7m0HlwgGa+LujyzZfvsu1b+KXHXMgCjaal
-	sJd+YjHG4DVt3VbFkGEXijO/GhOl5imt5Dr2y4N0Xz3hrjOGO+udf2xcE0wcjEMPbMEfaA4KpaPeA
-	fOvz5jtgshTqxCo3X4cuHhOFr1TG+o99hiIkwBtZuo6xNFHU0lmrk1hmscbpROCGWR64Lhm//uzpp
-	yz9QPD3Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bOf4HkOrzle/FyJG8mZHPOABnHhQv51u3vi0fpeyQ5Q=; b=txNFWk8XxeZ6B0hWmFJhO7dkAC
+	eVqERhkfGFFe3I2RfQk89Ui3KwJzBxNH/xd5OK5+u/OIIE6stfOfwqcV77cSno/kRk8CYFCCg9cNm
+	x4JR8jMiN+za8zrLu8RESInD4wmk+EsGadS0YnupcBSV8/bJRzrK0gEvkvrbgL6HTpPNS1SnYc2rr
+	VqpK6MqNKlj5oM9wdLAlLzkUUWtMMTEbhwKX39yse8aDppNxbN1SdesGej8qyrRTPIP2JfqwKF9Bx
+	Qt+WXgsLt4ugW/+xRMnmE5I1UKGLYNaC5VMVnRHscX6ebyQZifZIZVFfEhncBKhnP9B9d/dSCXfaR
+	OxMjOKNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnbxr-00000006kCD-20Hk;
-	Fri, 22 Mar 2024 10:17:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rneus-00000007HzY-13aX;
+	Fri, 22 Mar 2024 13:26:38 +0000
+Received: from www.zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnaxB-00000006UoN-2lEz;
-	Fri, 22 Mar 2024 09:12:48 +0000
-X-UUID: 52fd23e6e82c11eeacdb61a41848c7d2-20240322
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=S2i1CrYScsWxd8X5IUMkWM735SZ0Bu6ofMMCI6ivzus=;
-	b=YsyQg7qNYPdio7Pr39qbnF4Z4a+UWdMYL8rrEasjU/CSkrrJxm1q5eH38g8yUO42oPYQ71QW2MIP9hq57vh+upsuSeKFaWkHN0kFbBYwQtXEj/WuAycctI2in1ne50OAkUUc9vRTaPjI3JpvBZArqnQjoCW+VH2SbrDV5ABCLKw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:739cde40-3907-4fa8-8f7f-b18b9a4a496f,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6f543d0,CLOUDID:231bcf81-4f93-4875-95e7-8c66ea833d57,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 52fd23e6e82c11eeacdb61a41848c7d2-20240322
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <shawn.sung@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 313896041; Fri, 22 Mar 2024 02:12:36 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 22 Mar 2024 17:12:33 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 22 Mar 2024 17:12:33 +0800
-From: Shawn Sung <shawn.sung@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>, =?UTF-8?q?Christian=20K=C3=B6nig?=
-	<christian.koenig@amd.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
-	<linaro-mm-sig@lists.linaro.org>, Hsiao Chien Sung
-	<shawn.sung@mediatek.corp-partner.google.com>
-Subject: [PATCH v5 01/14] drm/mediatek: Rename "mtk_drm_crtc" to "mtk_crtc"
-Date: Fri, 22 Mar 2024 17:12:19 +0800
-Message-ID: <20240322091232.26387-2-shawn.sung@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240322091232.26387-1-shawn.sung@mediatek.com>
-References: <20240322091232.26387-1-shawn.sung@mediatek.com>
+	id 1rneum-00000007Ht7-0HVu
+	for linux-mediatek@lists.infradead.org;
+	Fri, 22 Mar 2024 13:26:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	sang-engineering.com; h=from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding; s=k1; bh=bOf4HkOrzle/Fy
+	JG8mZHPOABnHhQv51u3vi0fpeyQ5Q=; b=a6wbfcte3+iXXCHibc+JrZzTin6dRv
+	R/KSB8hp01+LD2eYy9sHlg2rk631UWOsn12Y+n+kLseFY+llqMyTkAsXsa6SiRwh
+	MWm4LoN2zRJucl7AcBuXiztmbKc/EIBM7mZDtMCuyBPr9HgJZmeZ/QrbcrtglWHS
+	XN+P7gn2zQD/Lze6LmCDGEGHL9G2ujuVTWCU21W3oIUiV/btIhr/tqNO2UzK6c7u
+	GiqtIoKlD88U2nMoYFxi6SLiCaIBiXxhRRTMJxL3pZ9O0lWnbgR868o+Ty13YBXb
+	C70pYVUa6DcFGd/ysTyvqG2U7fdTnfOcmCXLvQLbrSiCtbkj8qjVIAVA==
+Received: (qmail 3869988 invoked from network); 22 Mar 2024 14:26:20 +0100
+Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 22 Mar 2024 14:26:20 +0100
+X-UD-Smtp-Session: l3s3148p1@LoLvxD8UMpNehhtF
+From: Wolfram Sang <wsa+renesas@sang-engineering.com>
+To: linux-i2c@vger.kernel.org
+Cc: Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	asahi@lists.linux.dev,
+	chrome-platform@lists.linux.dev,
+	imx@lists.linux.dev,
+	linux-actions@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-aspeed@lists.ozlabs.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-mips@vger.kernel.org,
+	linux-omap@vger.kernel.org,
+	linuxppc-dev@lists.ozlabs.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-riscv@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	openbmc@lists.ozlabs.org,
+	virtualization@lists.linux.dev
+Subject: [PATCH 00/64] i2c: reword i2c_algorithm according to newest specification
+Date: Fri, 22 Mar 2024 14:24:53 +0100
+Message-ID: <20240322132619.6389-1-wsa+renesas@sang-engineering.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240322_021245_942652_40574FB3 
-X-CRM114-Status: GOOD (  18.32  )
+X-CRM114-CacheID: sfid-20240322_062632_461524_81044A24 
+X-CRM114-Status: GOOD (  14.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,697 +88,225 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
-
-Rename all "mtk_drm_crtc" to "mtk_crtc" due to the following benefits:
-- Lower the matches when searching the native drm_crtc* codes
-- Reduce the code size
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c  | 186 +++++++++++------------
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h  |  28 ++--
- drivers/gpu/drm/mediatek/mtk_drm_drv.c   |  18 +--
- drivers/gpu/drm/mediatek/mtk_drm_drv.h   |   2 +-
- drivers/gpu/drm/mediatek/mtk_drm_plane.c |  10 +-
- drivers/gpu/drm/mediatek/mtk_dsi.c       |   2 +-
- 6 files changed, 119 insertions(+), 127 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index a04499c4f9ca2..71e20e8fc4ab8 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -26,7 +26,7 @@
- #include "mtk_drm_plane.h"
-
- /*
-- * struct mtk_drm_crtc - MediaTek specific crtc structure.
-+ * struct mtk_crtc - MediaTek specific crtc structure.
-  * @base: crtc object.
-  * @enabled: records whether crtc_enable succeeded
-  * @planes: array of 4 drm_plane structures, one for each overlay plane
-@@ -38,7 +38,7 @@
-  *
-  * TODO: Needs update: this header is missing a bunch of member descriptions.
-  */
--struct mtk_drm_crtc {
-+struct mtk_crtc {
- 	struct drm_crtc			base;
- 	bool				enabled;
-
-@@ -80,9 +80,9 @@ struct mtk_crtc_state {
- 	unsigned int			pending_vrefresh;
- };
-
--static inline struct mtk_drm_crtc *to_mtk_crtc(struct drm_crtc *c)
-+static inline struct mtk_crtc *to_mtk_crtc(struct drm_crtc *c)
- {
--	return container_of(c, struct mtk_drm_crtc, base);
-+	return container_of(c, struct mtk_crtc, base);
- }
-
- static inline struct mtk_crtc_state *to_mtk_crtc_state(struct drm_crtc_state *s)
-@@ -90,7 +90,7 @@ static inline struct mtk_crtc_state *to_mtk_crtc_state(struct drm_crtc_state *s)
- 	return container_of(s, struct mtk_crtc_state, base);
- }
-
--static void mtk_drm_crtc_finish_page_flip(struct mtk_drm_crtc *mtk_crtc)
-+static void mtk_crtc_finish_page_flip(struct mtk_crtc *mtk_crtc)
- {
- 	struct drm_crtc *crtc = &mtk_crtc->base;
- 	unsigned long flags;
-@@ -104,11 +104,11 @@ static void mtk_drm_crtc_finish_page_flip(struct mtk_drm_crtc *mtk_crtc)
- 	}
- }
-
--static void mtk_drm_finish_page_flip(struct mtk_drm_crtc *mtk_crtc)
-+static void mtk_drm_finish_page_flip(struct mtk_crtc *mtk_crtc)
- {
- 	drm_crtc_handle_vblank(&mtk_crtc->base);
- 	if (!mtk_crtc->config_updating && mtk_crtc->pending_needs_vblank) {
--		mtk_drm_crtc_finish_page_flip(mtk_crtc);
-+		mtk_crtc_finish_page_flip(mtk_crtc);
- 		mtk_crtc->pending_needs_vblank = false;
- 	}
- }
-@@ -151,9 +151,9 @@ static void mtk_drm_cmdq_pkt_destroy(struct cmdq_pkt *pkt)
- }
- #endif
-
--static void mtk_drm_crtc_destroy(struct drm_crtc *crtc)
-+static void mtk_crtc_destroy(struct drm_crtc *crtc)
- {
--	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	int i;
-
- 	mtk_mutex_put(mtk_crtc->mutex);
-@@ -176,7 +176,7 @@ static void mtk_drm_crtc_destroy(struct drm_crtc *crtc)
- 	drm_crtc_cleanup(crtc);
- }
-
--static void mtk_drm_crtc_reset(struct drm_crtc *crtc)
-+static void mtk_crtc_reset(struct drm_crtc *crtc)
- {
- 	struct mtk_crtc_state *state;
-
-@@ -191,7 +191,7 @@ static void mtk_drm_crtc_reset(struct drm_crtc *crtc)
- 		__drm_atomic_helper_crtc_reset(crtc, &state->base);
- }
-
--static struct drm_crtc_state *mtk_drm_crtc_duplicate_state(struct drm_crtc *crtc)
-+static struct drm_crtc_state *mtk_crtc_duplicate_state(struct drm_crtc *crtc)
- {
- 	struct mtk_crtc_state *state;
-
-@@ -208,18 +208,17 @@ static struct drm_crtc_state *mtk_drm_crtc_duplicate_state(struct drm_crtc *crtc
- 	return &state->base;
- }
-
--static void mtk_drm_crtc_destroy_state(struct drm_crtc *crtc,
--				       struct drm_crtc_state *state)
-+static void mtk_crtc_destroy_state(struct drm_crtc *crtc,
-+				   struct drm_crtc_state *state)
- {
- 	__drm_atomic_helper_crtc_destroy_state(state);
- 	kfree(to_mtk_crtc_state(state));
- }
-
- static enum drm_mode_status
--mtk_drm_crtc_mode_valid(struct drm_crtc *crtc,
--			const struct drm_display_mode *mode)
-+mtk_crtc_mode_valid(struct drm_crtc *crtc, const struct drm_display_mode *mode)
- {
--	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	enum drm_mode_status status = MODE_OK;
- 	int i;
-
-@@ -231,15 +230,15 @@ mtk_drm_crtc_mode_valid(struct drm_crtc *crtc,
- 	return status;
- }
-
--static bool mtk_drm_crtc_mode_fixup(struct drm_crtc *crtc,
--				    const struct drm_display_mode *mode,
--				    struct drm_display_mode *adjusted_mode)
-+static bool mtk_crtc_mode_fixup(struct drm_crtc *crtc,
-+				const struct drm_display_mode *mode,
-+				struct drm_display_mode *adjusted_mode)
- {
- 	/* Nothing to do here, but this callback is mandatory. */
- 	return true;
- }
-
--static void mtk_drm_crtc_mode_set_nofb(struct drm_crtc *crtc)
-+static void mtk_crtc_mode_set_nofb(struct drm_crtc *crtc)
- {
- 	struct mtk_crtc_state *state = to_mtk_crtc_state(crtc->state);
-
-@@ -250,7 +249,7 @@ static void mtk_drm_crtc_mode_set_nofb(struct drm_crtc *crtc)
- 	state->pending_config = true;
- }
-
--static int mtk_crtc_ddp_clk_enable(struct mtk_drm_crtc *mtk_crtc)
-+static int mtk_crtc_ddp_clk_enable(struct mtk_crtc *mtk_crtc)
- {
- 	int ret;
- 	int i;
-@@ -270,7 +269,7 @@ static int mtk_crtc_ddp_clk_enable(struct mtk_drm_crtc *mtk_crtc)
- 	return ret;
- }
-
--static void mtk_crtc_ddp_clk_disable(struct mtk_drm_crtc *mtk_crtc)
-+static void mtk_crtc_ddp_clk_disable(struct mtk_crtc *mtk_crtc)
- {
- 	int i;
-
-@@ -283,7 +282,7 @@ struct mtk_ddp_comp *mtk_drm_ddp_comp_for_plane(struct drm_crtc *crtc,
- 						struct drm_plane *plane,
- 						unsigned int *local_layer)
- {
--	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	struct mtk_ddp_comp *comp;
- 	int i, count = 0;
- 	unsigned int local_index = plane - mtk_crtc->planes;
-@@ -306,7 +305,7 @@ static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
- {
- 	struct cmdq_cb_data *data = mssg;
- 	struct cmdq_client *cmdq_cl = container_of(cl, struct cmdq_client, client);
--	struct mtk_drm_crtc *mtk_crtc = container_of(cmdq_cl, struct mtk_drm_crtc, cmdq_client);
-+	struct mtk_crtc *mtk_crtc = container_of(cmdq_cl, struct mtk_crtc, cmdq_client);
- 	struct mtk_crtc_state *state;
- 	unsigned int i;
-
-@@ -346,7 +345,7 @@ static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
- }
- #endif
-
--static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
-+static int mtk_crtc_ddp_hw_init(struct mtk_crtc *mtk_crtc)
- {
- 	struct drm_crtc *crtc = &mtk_crtc->base;
- 	struct drm_connector *connector;
-@@ -446,7 +445,7 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
- 	return ret;
- }
-
--static void mtk_crtc_ddp_hw_fini(struct mtk_drm_crtc *mtk_crtc)
-+static void mtk_crtc_ddp_hw_fini(struct mtk_crtc *mtk_crtc)
- {
- 	struct drm_device *drm = mtk_crtc->base.dev;
- 	struct drm_crtc *crtc = &mtk_crtc->base;
-@@ -491,7 +490,7 @@ static void mtk_crtc_ddp_hw_fini(struct mtk_drm_crtc *mtk_crtc)
- static void mtk_crtc_ddp_config(struct drm_crtc *crtc,
- 				struct cmdq_pkt *cmdq_handle)
- {
--	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	struct mtk_crtc_state *state = to_mtk_crtc_state(mtk_crtc->base.state);
- 	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
- 	unsigned int i;
-@@ -563,8 +562,7 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc,
- 	}
- }
-
--static void mtk_drm_crtc_update_config(struct mtk_drm_crtc *mtk_crtc,
--				       bool needs_vblank)
-+static void mtk_crtc_update_config(struct mtk_crtc *mtk_crtc, bool needs_vblank)
- {
- #if IS_REACHABLE(CONFIG_MTK_CMDQ)
- 	struct cmdq_pkt *cmdq_handle = &mtk_crtc->cmdq_handle;
-@@ -636,7 +634,7 @@ static void mtk_drm_crtc_update_config(struct mtk_drm_crtc *mtk_crtc,
- static void mtk_crtc_ddp_irq(void *data)
- {
- 	struct drm_crtc *crtc = data;
--	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	struct mtk_drm_private *priv = crtc->dev->dev_private;
-
- #if IS_REACHABLE(CONFIG_MTK_CMDQ)
-@@ -652,9 +650,9 @@ static void mtk_crtc_ddp_irq(void *data)
- 	mtk_drm_finish_page_flip(mtk_crtc);
- }
-
--static int mtk_drm_crtc_enable_vblank(struct drm_crtc *crtc)
-+static int mtk_crtc_enable_vblank(struct drm_crtc *crtc)
- {
--	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
-
- 	mtk_ddp_comp_enable_vblank(comp);
-@@ -662,22 +660,22 @@ static int mtk_drm_crtc_enable_vblank(struct drm_crtc *crtc)
- 	return 0;
- }
-
--static void mtk_drm_crtc_disable_vblank(struct drm_crtc *crtc)
-+static void mtk_crtc_disable_vblank(struct drm_crtc *crtc)
- {
--	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
-
- 	mtk_ddp_comp_disable_vblank(comp);
- }
-
--static void mtk_drm_crtc_update_output(struct drm_crtc *crtc,
--				       struct drm_atomic_state *state)
-+static void mtk_crtc_update_output(struct drm_crtc *crtc,
-+				   struct drm_atomic_state *state)
- {
- 	int crtc_index = drm_crtc_index(crtc);
- 	int i;
- 	struct device *dev;
- 	struct drm_crtc_state *crtc_state = state->crtcs[crtc_index].new_state;
--	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	struct mtk_drm_private *priv;
- 	unsigned int encoder_mask = crtc_state->encoder_mask;
-
-@@ -707,8 +705,8 @@ static void mtk_drm_crtc_update_output(struct drm_crtc *crtc,
- 	}
- }
-
--int mtk_drm_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
--			     struct mtk_plane_state *state)
-+int mtk_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
-+			 struct mtk_plane_state *state)
- {
- 	unsigned int local_layer;
- 	struct mtk_ddp_comp *comp;
-@@ -719,21 +717,21 @@ int mtk_drm_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
- 	return 0;
- }
-
--void mtk_drm_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
--			       struct drm_atomic_state *state)
-+void mtk_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
-+			   struct drm_atomic_state *state)
- {
--	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
-
- 	if (!mtk_crtc->enabled)
- 		return;
-
--	mtk_drm_crtc_update_config(mtk_crtc, false);
-+	mtk_crtc_update_config(mtk_crtc, false);
- }
-
--static void mtk_drm_crtc_atomic_enable(struct drm_crtc *crtc,
--				       struct drm_atomic_state *state)
-+static void mtk_crtc_atomic_enable(struct drm_crtc *crtc,
-+				   struct drm_atomic_state *state)
- {
--	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
- 	int ret;
-
-@@ -745,7 +743,7 @@ static void mtk_drm_crtc_atomic_enable(struct drm_crtc *crtc,
- 		return;
- 	}
-
--	mtk_drm_crtc_update_output(crtc, state);
-+	mtk_crtc_update_output(crtc, state);
-
- 	ret = mtk_crtc_ddp_hw_init(mtk_crtc);
- 	if (ret) {
-@@ -757,10 +755,10 @@ static void mtk_drm_crtc_atomic_enable(struct drm_crtc *crtc,
- 	mtk_crtc->enabled = true;
- }
-
--static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
--					struct drm_atomic_state *state)
-+static void mtk_crtc_atomic_disable(struct drm_crtc *crtc,
-+				    struct drm_atomic_state *state)
- {
--	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
- 	int i;
-
-@@ -779,7 +777,7 @@ static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
- 	}
- 	mtk_crtc->pending_planes = true;
-
--	mtk_drm_crtc_update_config(mtk_crtc, false);
-+	mtk_crtc_update_config(mtk_crtc, false);
- #if IS_REACHABLE(CONFIG_MTK_CMDQ)
- 	/* Wait for planes to be disabled by cmdq */
- 	if (mtk_crtc->cmdq_client.chan)
-@@ -797,13 +795,13 @@ static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
- 	mtk_crtc->enabled = false;
- }
-
--static void mtk_drm_crtc_atomic_begin(struct drm_crtc *crtc,
--				      struct drm_atomic_state *state)
-+static void mtk_crtc_atomic_begin(struct drm_crtc *crtc,
-+				  struct drm_atomic_state *state)
- {
- 	struct drm_crtc_state *crtc_state = drm_atomic_get_new_crtc_state(state,
- 									  crtc);
- 	struct mtk_crtc_state *mtk_crtc_state = to_mtk_crtc_state(crtc_state);
--	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	unsigned long flags;
-
- 	if (mtk_crtc->event && mtk_crtc_state->base.event)
-@@ -821,10 +819,10 @@ static void mtk_drm_crtc_atomic_begin(struct drm_crtc *crtc,
- 	}
- }
-
--static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
--				      struct drm_atomic_state *state)
-+static void mtk_crtc_atomic_flush(struct drm_crtc *crtc,
-+				  struct drm_atomic_state *state)
- {
--	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	int i;
-
- 	if (crtc->state->color_mgmt_changed)
-@@ -832,33 +830,32 @@ static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
- 			mtk_ddp_gamma_set(mtk_crtc->ddp_comp[i], crtc->state);
- 			mtk_ddp_ctm_set(mtk_crtc->ddp_comp[i], crtc->state);
- 		}
--	mtk_drm_crtc_update_config(mtk_crtc, !!mtk_crtc->event);
-+	mtk_crtc_update_config(mtk_crtc, !!mtk_crtc->event);
- }
-
- static const struct drm_crtc_funcs mtk_crtc_funcs = {
- 	.set_config		= drm_atomic_helper_set_config,
- 	.page_flip		= drm_atomic_helper_page_flip,
--	.destroy		= mtk_drm_crtc_destroy,
--	.reset			= mtk_drm_crtc_reset,
--	.atomic_duplicate_state	= mtk_drm_crtc_duplicate_state,
--	.atomic_destroy_state	= mtk_drm_crtc_destroy_state,
--	.enable_vblank		= mtk_drm_crtc_enable_vblank,
--	.disable_vblank		= mtk_drm_crtc_disable_vblank,
-+	.destroy		= mtk_crtc_destroy,
-+	.reset			= mtk_crtc_reset,
-+	.atomic_duplicate_state	= mtk_crtc_duplicate_state,
-+	.atomic_destroy_state	= mtk_crtc_destroy_state,
-+	.enable_vblank		= mtk_crtc_enable_vblank,
-+	.disable_vblank		= mtk_crtc_disable_vblank,
- };
-
- static const struct drm_crtc_helper_funcs mtk_crtc_helper_funcs = {
--	.mode_fixup	= mtk_drm_crtc_mode_fixup,
--	.mode_set_nofb	= mtk_drm_crtc_mode_set_nofb,
--	.mode_valid	= mtk_drm_crtc_mode_valid,
--	.atomic_begin	= mtk_drm_crtc_atomic_begin,
--	.atomic_flush	= mtk_drm_crtc_atomic_flush,
--	.atomic_enable	= mtk_drm_crtc_atomic_enable,
--	.atomic_disable	= mtk_drm_crtc_atomic_disable,
-+	.mode_fixup	= mtk_crtc_mode_fixup,
-+	.mode_set_nofb	= mtk_crtc_mode_set_nofb,
-+	.mode_valid	= mtk_crtc_mode_valid,
-+	.atomic_begin	= mtk_crtc_atomic_begin,
-+	.atomic_flush	= mtk_crtc_atomic_flush,
-+	.atomic_enable	= mtk_crtc_atomic_enable,
-+	.atomic_disable	= mtk_crtc_atomic_disable,
- };
-
--static int mtk_drm_crtc_init(struct drm_device *drm,
--			     struct mtk_drm_crtc *mtk_crtc,
--			     unsigned int pipe)
-+static int mtk_crtc_init(struct drm_device *drm, struct mtk_crtc *mtk_crtc,
-+			 unsigned int pipe)
- {
- 	struct drm_plane *primary = NULL;
- 	struct drm_plane *cursor = NULL;
-@@ -885,8 +882,7 @@ static int mtk_drm_crtc_init(struct drm_device *drm,
- 	return ret;
- }
-
--static int mtk_drm_crtc_num_comp_planes(struct mtk_drm_crtc *mtk_crtc,
--					int comp_idx)
-+static int mtk_crtc_num_comp_planes(struct mtk_crtc *mtk_crtc, int comp_idx)
- {
- 	struct mtk_ddp_comp *comp;
-
-@@ -904,8 +900,8 @@ static int mtk_drm_crtc_num_comp_planes(struct mtk_drm_crtc *mtk_crtc,
- }
-
- static inline
--enum drm_plane_type mtk_drm_crtc_plane_type(unsigned int plane_idx,
--					    unsigned int num_planes)
-+enum drm_plane_type mtk_crtc_plane_type(unsigned int plane_idx,
-+					unsigned int num_planes)
- {
- 	if (plane_idx == 0)
- 		return DRM_PLANE_TYPE_PRIMARY;
-@@ -916,11 +912,11 @@ enum drm_plane_type mtk_drm_crtc_plane_type(unsigned int plane_idx,
-
- }
-
--static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
--					 struct mtk_drm_crtc *mtk_crtc,
--					 int comp_idx, int pipe)
-+static int mtk_crtc_init_comp_planes(struct drm_device *drm_dev,
-+				     struct mtk_crtc *mtk_crtc,
-+				     int comp_idx, int pipe)
- {
--	int num_planes = mtk_drm_crtc_num_comp_planes(mtk_crtc, comp_idx);
-+	int num_planes = mtk_crtc_num_comp_planes(mtk_crtc, comp_idx);
- 	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[comp_idx];
- 	int i, ret;
-
-@@ -928,8 +924,7 @@ static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
- 		ret = mtk_plane_init(drm_dev,
- 				&mtk_crtc->planes[mtk_crtc->layer_nr],
- 				BIT(pipe),
--				mtk_drm_crtc_plane_type(mtk_crtc->layer_nr,
--							num_planes),
-+				mtk_crtc_plane_type(mtk_crtc->layer_nr, num_planes),
- 				mtk_ddp_comp_supported_rotations(comp),
- 				mtk_ddp_comp_get_formats(comp),
- 				mtk_ddp_comp_get_num_formats(comp));
-@@ -941,9 +936,9 @@ static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
- 	return 0;
- }
-
--struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc)
-+struct device *mtk_crtc_dma_dev_get(struct drm_crtc *crtc)
- {
--	struct mtk_drm_crtc *mtk_crtc = NULL;
-+	struct mtk_crtc *mtk_crtc = NULL;
-
- 	if (!crtc)
- 		return NULL;
-@@ -955,14 +950,14 @@ struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc)
- 	return mtk_crtc->dma_dev;
- }
-
--int mtk_drm_crtc_create(struct drm_device *drm_dev,
--			const unsigned int *path, unsigned int path_len,
--			int priv_data_index, const struct mtk_drm_route *conn_routes,
--			unsigned int num_conn_routes)
-+int mtk_crtc_create(struct drm_device *drm_dev, const unsigned int *path,
-+		    unsigned int path_len, int priv_data_index,
-+		    const struct mtk_drm_route *conn_routes,
-+		    unsigned int num_conn_routes)
- {
- 	struct mtk_drm_private *priv = drm_dev->dev_private;
- 	struct device *dev = drm_dev->dev;
--	struct mtk_drm_crtc *mtk_crtc;
-+	struct mtk_crtc *mtk_crtc;
- 	unsigned int num_comp_planes = 0;
- 	int ret;
- 	int i;
-@@ -1047,7 +1042,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 	}
-
- 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++)
--		num_comp_planes += mtk_drm_crtc_num_comp_planes(mtk_crtc, i);
-+		num_comp_planes += mtk_crtc_num_comp_planes(mtk_crtc, i);
-
- 	mtk_crtc->planes = devm_kcalloc(dev, num_comp_planes,
- 					sizeof(struct drm_plane), GFP_KERNEL);
-@@ -1055,8 +1050,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 		return -ENOMEM;
-
- 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
--		ret = mtk_drm_crtc_init_comp_planes(drm_dev, mtk_crtc, i,
--						    crtc_i);
-+		ret = mtk_crtc_init_comp_planes(drm_dev, mtk_crtc, i, crtc_i);
- 		if (ret)
- 			return ret;
- 	}
-@@ -1068,7 +1062,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 	 */
- 	mtk_crtc->dma_dev = mtk_ddp_comp_dma_dev_get(&priv->ddp_comp[path[0]]);
-
--	ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, crtc_i);
-+	ret = mtk_crtc_init(drm_dev, mtk_crtc, crtc_i);
- 	if (ret < 0)
- 		return ret;
-
-@@ -1138,7 +1132,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 		mtk_crtc->num_conn_routes = num_conn_routes;
- 		mtk_crtc->conn_routes = conn_routes;
-
--		/* increase ddp_comp_nr at the end of mtk_drm_crtc_create */
-+		/* increase ddp_comp_nr at the end of mtk_crtc_create */
- 		mtk_crtc->ddp_comp_nr++;
- 	}
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-index 1f988ff1bf9fd..2d9f28f436aea 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-@@ -3,8 +3,8 @@
-  * Copyright (c) 2015 MediaTek Inc.
-  */
-
--#ifndef MTK_DRM_CRTC_H
--#define MTK_DRM_CRTC_H
-+#ifndef MTK_CRTC_H
-+#define MTK_CRTC_H
-
- #include <drm/drm_crtc.h>
- #include "mtk_drm_ddp_comp.h"
-@@ -14,17 +14,15 @@
- #define MTK_MAX_BPC	10
- #define MTK_MIN_BPC	3
-
--void mtk_drm_crtc_commit(struct drm_crtc *crtc);
--int mtk_drm_crtc_create(struct drm_device *drm_dev,
--			const unsigned int *path,
--			unsigned int path_len,
--			int priv_data_index,
--			const struct mtk_drm_route *conn_routes,
--			unsigned int num_conn_routes);
--int mtk_drm_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
--			     struct mtk_plane_state *state);
--void mtk_drm_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
--			       struct drm_atomic_state *plane_state);
--struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc);
-+void mtk_crtc_commit(struct drm_crtc *crtc);
-+int mtk_crtc_create(struct drm_device *drm_dev, const unsigned int *path,
-+		    unsigned int path_len, int priv_data_index,
-+		    const struct mtk_drm_route *conn_routes,
-+		    unsigned int num_conn_routes);
-+int mtk_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
-+			 struct mtk_plane_state *state);
-+void mtk_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
-+			   struct drm_atomic_state *plane_state);
-+struct device *mtk_crtc_dma_dev_get(struct drm_crtc *crtc);
-
--#endif /* MTK_DRM_CRTC_H */
-+#endif /* MTK_CRTC_H */
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 74832c2130921..c46773569b3c9 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -494,24 +494,24 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 			priv_n = private->all_drm_private[j];
-
- 			if (i == CRTC_MAIN && priv_n->data->main_len) {
--				ret = mtk_drm_crtc_create(drm, priv_n->data->main_path,
--							  priv_n->data->main_len, j,
--							  priv_n->data->conn_routes,
--							  priv_n->data->num_conn_routes);
-+				ret = mtk_crtc_create(drm, priv_n->data->main_path,
-+						      priv_n->data->main_len, j,
-+						      priv_n->data->conn_routes,
-+						      priv_n->data->num_conn_routes);
- 				if (ret)
- 					goto err_component_unbind;
-
- 				continue;
- 			} else if (i == CRTC_EXT && priv_n->data->ext_len) {
--				ret = mtk_drm_crtc_create(drm, priv_n->data->ext_path,
--							  priv_n->data->ext_len, j, NULL, 0);
-+				ret = mtk_crtc_create(drm, priv_n->data->ext_path,
-+						      priv_n->data->ext_len, j, NULL, 0);
- 				if (ret)
- 					goto err_component_unbind;
-
- 				continue;
- 			} else if (i == CRTC_THIRD && priv_n->data->third_len) {
--				ret = mtk_drm_crtc_create(drm, priv_n->data->third_path,
--							  priv_n->data->third_len, j, NULL, 0);
-+				ret = mtk_crtc_create(drm, priv_n->data->third_path,
-+						      priv_n->data->third_len, j, NULL, 0);
- 				if (ret)
- 					goto err_component_unbind;
-
-@@ -523,7 +523,7 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 	/* Use OVL device for all DMA memory allocations */
- 	crtc = drm_crtc_from_index(drm, 0);
- 	if (crtc)
--		dma_dev = mtk_drm_crtc_dma_dev_get(crtc);
-+		dma_dev = mtk_crtc_dma_dev_get(crtc);
- 	if (!dma_dev) {
- 		ret = -ENODEV;
- 		dev_err(drm->dev, "Need at least one OVL device\n");
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index 33fadb08dc1c7..24c4d59085bd6 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -13,7 +13,7 @@
- #define DDP_COMPONENT_DRM_OVL_ADAPTOR (DDP_COMPONENT_ID_MAX + 1)
- #define DDP_COMPONENT_DRM_ID_MAX (DDP_COMPONENT_DRM_OVL_ADAPTOR + 1)
-
--enum mtk_drm_crtc_path {
-+enum mtk_crtc_path {
- 	CRTC_MAIN,
- 	CRTC_EXT,
- 	CRTC_THIRD,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-index ddc9355b06d51..cbdb70677d305 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-@@ -117,8 +117,8 @@ static int mtk_plane_atomic_async_check(struct drm_plane *plane,
- 	if (!plane->state->fb)
- 		return -EINVAL;
-
--	ret = mtk_drm_crtc_plane_check(new_plane_state->crtc, plane,
--				       to_mtk_plane_state(new_plane_state));
-+	ret = mtk_crtc_plane_check(new_plane_state->crtc, plane,
-+				   to_mtk_plane_state(new_plane_state));
- 	if (ret)
- 		return ret;
-
-@@ -232,7 +232,7 @@ static void mtk_plane_atomic_async_update(struct drm_plane *plane,
- 	swap(plane->state->fb, new_state->fb);
- 	wmb(); /* Make sure the above parameters are set before update */
- 	new_plane_state->pending.async_dirty = true;
--	mtk_drm_crtc_async_update(new_state->crtc, plane, state);
-+	mtk_crtc_async_update(new_state->crtc, plane, state);
- }
-
- static const struct drm_plane_funcs mtk_plane_funcs = {
-@@ -260,8 +260,8 @@ static int mtk_plane_atomic_check(struct drm_plane *plane,
- 	if (WARN_ON(!new_plane_state->crtc))
- 		return 0;
-
--	ret = mtk_drm_crtc_plane_check(new_plane_state->crtc, plane,
--				       to_mtk_plane_state(new_plane_state));
-+	ret = mtk_crtc_plane_check(new_plane_state->crtc, plane,
-+				   to_mtk_plane_state(new_plane_state));
- 	if (ret)
- 		return ret;
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 9501f40191990..ec9d96396d7b2 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -662,7 +662,7 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
-
- 	/*
- 	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
--	 * mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(),
-+	 * mtk_dsi_stop() should be called after mtk_crtc_atomic_disable(),
- 	 * which needs irq for vblank, and mtk_dsi_stop() will disable irq.
- 	 * mtk_dsi_start() needs to be called in mtk_output_dsi_enable(),
- 	 * after dsi is fully set.
---
-2.18.0
+Okay, we need to begin somewhere...
+
+Start changing the wording of the I2C main header wrt. the newest I2C
+v7, SMBus 3.2, I3C specifications and replace "master/slave" with more
+appropriate terms. This first step renames the members of struct
+i2c_algorithm. Once all in-tree users are converted, the anonymous union
+will go away again. All this work will also pave the way for finally
+seperating the monolithic header into more fine-grained headers like
+"i2c/clients.h" etc. So, this is not a simple renaming-excercise but
+also a chance to update the I2C core to recent Linux standards.
+
+My motivation is to improve the I2C core API, in general. My motivation
+is not to clean each and every driver. I think this is impossible
+because register names based on official documentation will need to stay
+as they are. But the Linux-internal names should be updated IMO.
+
+That being said, I worked on 62 drivers in this series beyond plain
+renames inside 'struct i2c_algorithm' because the fruits were so
+low-hanging. Before this series, 112 files in the 'busses/' directory
+contained 'master' and/or 'slave'. After the series, only 57. Why not?
+
+Next step is updating the drivers outside the 'i2c'-folder regarding
+'struct i2c_algorithm' so we can remove the anonymous union ASAP. To be
+able to work on this with minimal dependencies, I'd like to apply this
+series between -rc1 and -rc2.
+
+I hope this will work for you guys. The changes are really minimal. If
+you are not comfortable with changes to your driver or need more time to
+review, please NACK the patch and I will drop the patch and/or address
+the issues separeately.
+
+@Andi: are you okay with this approach? It means you'd need to merge
+-rc2 into your for-next branch. Or rebase if all fails.
+
+Speaking of Andi, thanks a lot to him taking care of the controller
+drivers these days. His work really gives me the freedom to work on I2C
+core issues again. Also, Renesas deserves a honorable mention here for
+increased support of my I2C activities. Thank you!
+
+If you have comments, hints, etc, please let me know.
+
+Happy hacking,
+
+   Wolfram
+
+
+Wolfram Sang (64):
+  i2c: reword i2c_algorithm according to newest specification
+  i2c: ali15x3: reword according to newest specification
+  i2c: altera: reword according to newest specification
+  i2c: amd-mp2-pci: reword according to newest specification
+  i2c: aspeed: reword according to newest specification
+  i2c: au1550: reword according to newest specification
+  i2c: bcm-iproc: reword according to newest specification
+  i2c: bcm-kona: reword according to newest specification
+  i2c: bcm2835: reword according to newest specification
+  i2c: brcmstb: reword according to newest specification
+  i2c: cadence: reword according to newest specification
+  i2c: cht-wc: reword according to newest specification
+  i2c: cp2615: reword according to newest specification
+  i2c: cpm: reword according to newest specification
+  i2c: davinci: reword according to newest specification
+  i2c: digicolor: reword according to newest specification
+  i2c: dln2: reword according to newest specification
+  i2c: eg20t: reword according to newest specification
+  i2c: emev2: reword according to newest specification
+  i2c: fsi: reword according to newest specification
+  i2c: gpio: reword according to newest specification
+  i2c: highlander: reword according to newest specification
+  i2c: hix5hd2: reword according to newest specification
+  i2c: i801: reword according to newest specification
+  i2c: ibm_iic: reword according to newest specification
+  i2c: imx-lpi2c: reword according to newest specification
+  i2c: iop3xx: reword according to newest specification
+  i2c: isch: reword according to newest specification
+  i2c: ismt: reword according to newest specification
+  i2c: ljca: reword according to newest specification
+  i2c: lpc2k: reword according to newest specification
+  i2c: ls2x: reword according to newest specification
+  i2c: mchp-pci1xxxx: reword according to newest specification
+  i2c: microchip-corei2c: reword according to newest specification
+  i2c: mlxcpld: reword according to newest specification
+  i2c: mpc: reword according to newest specification
+  i2c: mt7621: reword according to newest specification
+  i2c: mv64xxx: reword according to newest specification
+  i2c: octeon-core: reword according to newest specification
+  i2c: owl: reword according to newest specification
+  i2c: piix4: reword according to newest specification
+  i2c: powermac: reword according to newest specification
+  i2c: pxa-pci: reword according to newest specification
+  i2c: qup: reword according to newest specification
+  i2c: rcar: reword according to newest specification
+  i2c: riic: reword according to newest specification
+  i2c: rk3x: reword according to newest specification
+  i2c: sh7760: reword according to newest specification
+  i2c: sh_mobile: reword according to newest specification
+  i2c: sis5595: reword according to newest specification
+  i2c: sis630: reword according to newest specification
+  i2c: sprd: reword according to newest specification
+  i2c: st: reword according to newest specification
+  i2c: stm32f4: reword according to newest specification
+  i2c: sun6i-p2wi: reword according to newest specification
+  i2c: synquacer: reword according to newest specification
+  i2c: taos-evm: reword according to newest specification
+  i2c: tiny-usb: reword according to newest specification
+  i2c: uniphier-f: reword according to newest specification
+  i2c: uniphier: reword according to newest specification
+  i2c: viperboard: reword according to newest specification
+  i2c: xlp9xx: reword according to newest specification
+  i2c: scx200_acb: reword according to newest specification
+  i2c: reword i2c_algorithm in drivers according to newest specification
+
+ drivers/i2c/busses/i2c-ali15x3.c           |  2 +-
+ drivers/i2c/busses/i2c-altera.c            |  4 +-
+ drivers/i2c/busses/i2c-amd-mp2-pci.c       |  8 ++--
+ drivers/i2c/busses/i2c-amd-mp2-plat.c      |  2 +-
+ drivers/i2c/busses/i2c-aspeed.c            | 26 +++++-----
+ drivers/i2c/busses/i2c-at91-master.c       |  2 +-
+ drivers/i2c/busses/i2c-at91-slave.c        |  8 ++--
+ drivers/i2c/busses/i2c-au1550.c            | 14 +++---
+ drivers/i2c/busses/i2c-axxia.c             | 10 ++--
+ drivers/i2c/busses/i2c-bcm-iproc.c         | 20 ++++----
+ drivers/i2c/busses/i2c-bcm-kona.c          | 14 +++---
+ drivers/i2c/busses/i2c-bcm2835.c           |  8 ++--
+ drivers/i2c/busses/i2c-brcmstb.c           | 12 ++---
+ drivers/i2c/busses/i2c-cadence.c           | 14 +++---
+ drivers/i2c/busses/i2c-cht-wc.c            |  8 ++--
+ drivers/i2c/busses/i2c-cp2615.c            |  6 +--
+ drivers/i2c/busses/i2c-cpm.c               |  4 +-
+ drivers/i2c/busses/i2c-cros-ec-tunnel.c    |  2 +-
+ drivers/i2c/busses/i2c-davinci.c           | 13 +++--
+ drivers/i2c/busses/i2c-designware-master.c |  2 +-
+ drivers/i2c/busses/i2c-designware-slave.c  |  8 ++--
+ drivers/i2c/busses/i2c-digicolor.c         |  4 +-
+ drivers/i2c/busses/i2c-diolan-u2c.c        |  2 +-
+ drivers/i2c/busses/i2c-dln2.c              |  4 +-
+ drivers/i2c/busses/i2c-eg20t.c             | 10 ++--
+ drivers/i2c/busses/i2c-emev2.c             | 10 ++--
+ drivers/i2c/busses/i2c-exynos5.c           |  4 +-
+ drivers/i2c/busses/i2c-fsi.c               | 56 +++++++++++-----------
+ drivers/i2c/busses/i2c-gpio.c              |  8 ++--
+ drivers/i2c/busses/i2c-gxp.c               | 12 ++---
+ drivers/i2c/busses/i2c-highlander.c        |  2 +-
+ drivers/i2c/busses/i2c-hisi.c              |  4 +-
+ drivers/i2c/busses/i2c-hix5hd2.c           |  4 +-
+ drivers/i2c/busses/i2c-i801.c              | 12 ++---
+ drivers/i2c/busses/i2c-ibm_iic.c           | 26 +++++-----
+ drivers/i2c/busses/i2c-img-scb.c           |  2 +-
+ drivers/i2c/busses/i2c-imx-lpi2c.c         | 10 ++--
+ drivers/i2c/busses/i2c-imx.c               | 12 ++---
+ drivers/i2c/busses/i2c-iop3xx.c            | 10 ++--
+ drivers/i2c/busses/i2c-isch.c              |  2 +-
+ drivers/i2c/busses/i2c-ismt.c              |  2 +-
+ drivers/i2c/busses/i2c-jz4780.c            |  2 +-
+ drivers/i2c/busses/i2c-kempld.c            |  2 +-
+ drivers/i2c/busses/i2c-ljca.c              | 20 ++++----
+ drivers/i2c/busses/i2c-lpc2k.c             |  8 ++--
+ drivers/i2c/busses/i2c-ls2x.c              |  8 ++--
+ drivers/i2c/busses/i2c-mchp-pci1xxxx.c     | 40 ++++++++--------
+ drivers/i2c/busses/i2c-meson.c             |  4 +-
+ drivers/i2c/busses/i2c-microchip-corei2c.c |  4 +-
+ drivers/i2c/busses/i2c-mlxbf.c             |  8 ++--
+ drivers/i2c/busses/i2c-mlxcpld.c           | 12 ++---
+ drivers/i2c/busses/i2c-mpc.c               |  4 +-
+ drivers/i2c/busses/i2c-mt65xx.c            |  2 +-
+ drivers/i2c/busses/i2c-mt7621.c            | 22 ++++-----
+ drivers/i2c/busses/i2c-mv64xxx.c           | 12 ++---
+ drivers/i2c/busses/i2c-mxs.c               |  2 +-
+ drivers/i2c/busses/i2c-nomadik.c           |  2 +-
+ drivers/i2c/busses/i2c-npcm7xx.c           | 12 ++---
+ drivers/i2c/busses/i2c-nvidia-gpu.c        |  4 +-
+ drivers/i2c/busses/i2c-ocores.c            |  8 ++--
+ drivers/i2c/busses/i2c-octeon-core.c       |  6 +--
+ drivers/i2c/busses/i2c-octeon-platdrv.c    |  2 +-
+ drivers/i2c/busses/i2c-omap.c              |  4 +-
+ drivers/i2c/busses/i2c-opal.c              |  4 +-
+ drivers/i2c/busses/i2c-owl.c               | 10 ++--
+ drivers/i2c/busses/i2c-pasemi-core.c       |  2 +-
+ drivers/i2c/busses/i2c-piix4.c             |  2 +-
+ drivers/i2c/busses/i2c-pnx.c               |  2 +-
+ drivers/i2c/busses/i2c-powermac.c          |  8 ++--
+ drivers/i2c/busses/i2c-pxa-pci.c           |  2 +-
+ drivers/i2c/busses/i2c-pxa.c               | 12 ++---
+ drivers/i2c/busses/i2c-qcom-cci.c          |  2 +-
+ drivers/i2c/busses/i2c-qcom-geni.c         |  2 +-
+ drivers/i2c/busses/i2c-qup.c               |  6 +--
+ drivers/i2c/busses/i2c-rcar.c              | 16 +++----
+ drivers/i2c/busses/i2c-riic.c              |  6 +--
+ drivers/i2c/busses/i2c-rk3x.c              | 18 +++----
+ drivers/i2c/busses/i2c-robotfuzz-osif.c    |  2 +-
+ drivers/i2c/busses/i2c-rzv2m.c             |  8 ++--
+ drivers/i2c/busses/i2c-s3c2410.c           |  4 +-
+ drivers/i2c/busses/i2c-sh7760.c            | 18 +++----
+ drivers/i2c/busses/i2c-sh_mobile.c         | 12 ++---
+ drivers/i2c/busses/i2c-sis5595.c           |  2 +-
+ drivers/i2c/busses/i2c-sis630.c            | 16 +++----
+ drivers/i2c/busses/i2c-sprd.c              | 14 +++---
+ drivers/i2c/busses/i2c-st.c                | 17 +++----
+ drivers/i2c/busses/i2c-stm32f4.c           |  8 ++--
+ drivers/i2c/busses/i2c-stm32f7.c           | 14 +++---
+ drivers/i2c/busses/i2c-sun6i-p2wi.c        | 20 ++++----
+ drivers/i2c/busses/i2c-synquacer.c         | 30 ++++++------
+ drivers/i2c/busses/i2c-taos-evm.c          |  2 +-
+ drivers/i2c/busses/i2c-tegra-bpmp.c        |  4 +-
+ drivers/i2c/busses/i2c-tegra.c             |  4 +-
+ drivers/i2c/busses/i2c-thunderx-pcidrv.c   |  2 +-
+ drivers/i2c/busses/i2c-tiny-usb.c          |  4 +-
+ drivers/i2c/busses/i2c-uniphier-f.c        | 22 ++++-----
+ drivers/i2c/busses/i2c-uniphier.c          | 12 ++---
+ drivers/i2c/busses/i2c-viperboard.c        |  8 ++--
+ drivers/i2c/busses/i2c-virtio.c            |  2 +-
+ drivers/i2c/busses/i2c-wmt.c               |  2 +-
+ drivers/i2c/busses/i2c-xiic.c              |  2 +-
+ drivers/i2c/busses/i2c-xlp9xx.c            |  4 +-
+ drivers/i2c/busses/scx200_acb.c            |  4 +-
+ include/linux/i2c.h                        | 24 ++++++++--
+ 104 files changed, 460 insertions(+), 464 deletions(-)
+
+-- 
+2.43.0
 
 
