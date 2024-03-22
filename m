@@ -4,76 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E418DC54E71
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Mar 2024 09:29:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9441C47DD9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Mar 2024 09:32:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XzkY89m+VQg4nEtZhbRzXT+yBnmnZorDckiY1ZJRVLc=; b=ZriMZsp7gWiW3GDRlGG2NMD68t
-	W/iGLo3ckgXZKkTp2H7ykntfPYFjbjJt+yvJQWwSJYoarhvmBQxsKlS2jmZkkd3li9XXG6C7OmnSE
-	c4Gb2LPfk89gNaejBBvBCaCiWbH/0sbvcQHm2BTZiTMh5KW0gJoZXAFU+WtgEw0T9U/Nwr97znuQ9
-	QZEOyJJSedhlX+kk9m3ZSA6Y9bodL+1u3Vh5BTMekwG/qAhkO8oLvdAkQ3AchNpJkglnz48/vTPG0
-	uGPWKJmcQtr2tqflzVqjW7IiwNmI/L8eYlhvcqjA4CbU266O7PHyyCeORkvksbYNP1CL/AmLWpr4s
-	soG0Moig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e0PVavCPtbm8pLzFjMYnTh5m497EF/Wmfsp9X2BC+/w=; b=GvEKnFf8gI4ZP0RP0LES+gD8ug
+	ZRYLiwtxKa3+3DuykyHaC7jW5CYPQBWxKg5thK6EXxlzvk4Tee2zrLUtKcegGE5vSejac4Fbp/nGl
+	sX75SGMhq9ugtP/vLTn1fnXIrqxFZ4fZ7O8WzCNuD+fGQUNNn0344Hwx4pHVlkGtQKB5NitgQ2IAT
+	IIH2sqv5i8cuqJEHJ9EulalQ8vdZgxLrZM+iWF9eKNwLguSy8RDmrl/8kDTj6uq9cbe8A4x2R4x9D
+	HW6WvsuoGZYe4C27HPqS+C3XtgfH80SOCQaa0rvHL6tdo0pyFiHLPju3yXi32ckt4e3Iv5yHWTTwS
+	EHFBwSvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnbDi-00000006aJE-2Afz;
-	Fri, 22 Mar 2024 09:29:50 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rnbGc-00000006b9G-0j0A;
+	Fri, 22 Mar 2024 09:32:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnbD4-00000006ZvR-2zIP;
-	Fri, 22 Mar 2024 09:29:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1711099749;
-	bh=4amundVKYBlSE0uqGcpRga8XrKsqEbBI94uQCoLB7QU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=PVIpcBH9kYPJIol66J9sc/Vr0EkaiebpxVCoufid4xumEC07fgZw+lVFqgR75SOT6
-	 T6nJXxPjlh8sIRoc4/2P954uCXCQUGFbPRssPKmiRNo2ra9dTECtFLYegwRZ9TSWn5
-	 7DnODLDFVLV8KiQxlUWQUL3YsDJFPuJxUGVF2jTOAO5hr+eT2oFBYHDdfaeCZJtozy
-	 bIlMgygoSTFUcjMMECc3GSl/3pmDCpNV6kRpjjlf8voWzeGGDD7tAryt5CiFU3GOWZ
-	 GM59EcbHxGEKo6KnkP2/MDHM4bYBJOMHXbIXg9kMXykSQF0NQe/OUoM9+kKaBw7vW2
-	 WrHEhHBwaOlmQ==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 6492A378211A;
-	Fri, 22 Mar 2024 09:29:08 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-media@vger.kernel.org
-Cc: mchehab@kernel.org,
-	robh@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	amergnat@baylibre.com,
-	moudy.ho@mediatek.com,
-	hverkuil-cisco@xs4all.nl,
-	sebastian.fricke@collabora.com,
-	u.kleine-koenig@pengutronix.de,
-	chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH 4/4] media: platform: mtk-mdp3: Add support for MT8188 MDP3 components
-Date: Fri, 22 Mar 2024 10:28:45 +0100
-Message-ID: <20240322092845.381313-5-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240322092845.381313-1-angelogioacchino.delregno@collabora.com>
-References: <20240322092845.381313-1-angelogioacchino.delregno@collabora.com>
+	id 1rnbGV-00000006b4y-3BOG;
+	Fri, 22 Mar 2024 09:32:45 +0000
+X-UUID: 1fac262ee82f11ee9aa9374d6d45775a-20240322
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=e0PVavCPtbm8pLzFjMYnTh5m497EF/Wmfsp9X2BC+/w=;
+	b=dsIxklfi5/m5J7+SwPg0YWRnQJqLiWkZGngM0TOacNjnyM/rU4GFlk7O6pO3FDp/d55DnfV+PyVasCWtkkQ1KT9CTWqh6RoGKiUvzbpv+l9dBTrMURiqcLQHREbEjHwBAOpDD5iSztvEV7Zh7pRQIXw4IFRaeMfFCec+MTh05KM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:3efeb078-4746-42d3-bc01-c170f1809756,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:25c94f85-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 1fac262ee82f11ee9aa9374d6d45775a-20240322
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <shawn.sung@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 515218057; Fri, 22 Mar 2024 02:32:38 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 22 Mar 2024 17:12:34 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 22 Mar 2024 17:12:34 +0800
+From: Shawn Sung <shawn.sung@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>, =?UTF-8?q?Christian=20K=C3=B6nig?=
+	<christian.koenig@amd.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
+	<linaro-mm-sig@lists.linaro.org>, Hsiao Chien Sung
+	<shawn.sung@mediatek.corp-partner.google.com>
+Subject: [PATCH v5 09/14] drm/mediatek: Rename files "mtk_drm_ddp_comp.c" to "mtk_ddp_comp.c"
+Date: Fri, 22 Mar 2024 17:12:27 +0800
+Message-ID: <20240322091232.26387-10-shawn.sung@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240322091232.26387-1-shawn.sung@mediatek.com>
+References: <20240322091232.26387-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--3.689400-8.000000
+X-TMASE-MatchedRID: RU3AOpnwdje4pD9RIlWSGjl/LoO+pjoA1cuIRwt/4Mg1LB46LFAAkkfp
+	kQx2u0KsbDDGr42tgBOi5055Kxg7KTAAg7F4DOMyA9lly13c/gHzWEMQjooUzY9osn8JrdJPPnA
+	Es+Fc/7bi8zVgXoAltsIJ+4gwXrEtWBd6ltyXuvtb1fYuIJvfqah52ProBhzNWUbfuissaKqcoq
+	n0BqybNW3Hus9BdZIeXGuSsl/9KxQi2wWKMDWXkJwsCn76gVCVJ1Wnd3SMOySAhOcaQrQ0U1GyR
+	coeF18qmKP0zzpTAeGwod8xOMKmvMCBO+zxAW5pftwZ3X11IV0=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--3.689400-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 26138B1CDF21A7F05ABA332103FBA8D810B884C2BD6EB4421AD6C5776E6D074A2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240322_022911_146206_4706AF72 
-X-CRM114-Status: GOOD (  15.73  )
+X-CRM114-CacheID: sfid-20240322_023244_032632_620EE3E4 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,387 +103,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8195 and MT8188 share a similar MDP3 macro-block, with minor
-differences - as in, the latter supports a subset of the number
-of components supported by the former, but are otherwise handled
-in the same way.
+From: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
 
-Add driver data for MT8188, reusing the already present MT8195
-data where possible.
+Rename files mtk_drm_ddp_comp.c to mtk_ddp_comp.c and
+modify the Makefile accordingly.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
 ---
- .../platform/mediatek/mdp3/mdp_cfg_data.c     | 280 ++++++++++++++++++
- .../platform/mediatek/mdp3/mtk-img-ipi.h      |   1 +
- .../platform/mediatek/mdp3/mtk-mdp3-cfg.h     |   1 +
- .../platform/mediatek/mdp3/mtk-mdp3-core.c    |   3 +
- 4 files changed, 285 insertions(+)
+ drivers/gpu/drm/mediatek/Makefile                               | 2 +-
+ drivers/gpu/drm/mediatek/{mtk_drm_ddp_comp.c => mtk_ddp_comp.c} | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename drivers/gpu/drm/mediatek/{mtk_drm_ddp_comp.c => mtk_ddp_comp.c} (100%)
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-index ecca52b45307..0b4c50bc1776 100644
---- a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-@@ -46,6 +46,53 @@ enum mt8183_mdp_comp_id {
- 	MT8183_MDP_COMP_WROT1,          /* 25 */
- };
+diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
+index 0198b50820d4c..bdb71738e1f31 100644
+--- a/drivers/gpu/drm/mediatek/Makefile
++++ b/drivers/gpu/drm/mediatek/Makefile
+@@ -1,6 +1,7 @@
+ # SPDX-License-Identifier: GPL-2.0
  
-+enum mt8188_mdp_comp_id {
-+	/* MT8188 Comp id */
-+	/* ISP */
-+	MT8188_MDP_COMP_WPEI = 0,
-+	MT8188_MDP_COMP_WPEO,           /* 1 */
-+
-+	/* MDP */
-+	MT8188_MDP_COMP_CAMIN,          /* 2 */
-+	MT8188_MDP_COMP_RDMA0,          /* 3 */
-+	MT8188_MDP_COMP_RDMA2,          /* 4 */
-+	MT8188_MDP_COMP_RDMA3,          /* 5 */
-+	MT8188_MDP_COMP_FG0,            /* 6 */
-+	MT8188_MDP_COMP_FG2,            /* 7 */
-+	MT8188_MDP_COMP_FG3,            /* 8 */
-+	MT8188_MDP_COMP_TO_SVPP2MOUT,   /* 9 */
-+	MT8188_MDP_COMP_TO_SVPP3MOUT,   /* 10 */
-+	MT8188_MDP_COMP_TO_WARP0MOUT,   /* 11 */
-+	MT8188_MDP_COMP_VPP0_SOUT,      /* 12 */
-+	MT8188_MDP_COMP_VPP1_SOUT,      /* 13 */
-+	MT8188_MDP_COMP_PQ0_SOUT,       /* 14 */
-+	MT8188_MDP_COMP_HDR0,           /* 15 */
-+	MT8188_MDP_COMP_HDR2,           /* 16 */
-+	MT8188_MDP_COMP_HDR3,           /* 17 */
-+	MT8188_MDP_COMP_AAL0,           /* 18 */
-+	MT8188_MDP_COMP_AAL2,           /* 19 */
-+	MT8188_MDP_COMP_AAL3,           /* 20 */
-+	MT8188_MDP_COMP_RSZ0,           /* 21 */
-+	MT8188_MDP_COMP_RSZ2,           /* 22 */
-+	MT8188_MDP_COMP_RSZ3,           /* 23 */
-+	MT8188_MDP_COMP_TDSHP0,         /* 24 */
-+	MT8188_MDP_COMP_TDSHP2,         /* 25 */
-+	MT8188_MDP_COMP_TDSHP3,         /* 26 */
-+	MT8188_MDP_COMP_COLOR0,         /* 27 */
-+	MT8188_MDP_COMP_COLOR2,         /* 28 */
-+	MT8188_MDP_COMP_COLOR3,         /* 29 */
-+	MT8188_MDP_COMP_OVL0,           /* 30 */
-+	MT8188_MDP_COMP_PAD0,           /* 31 */
-+	MT8188_MDP_COMP_PAD2,           /* 32 */
-+	MT8188_MDP_COMP_PAD3,           /* 33 */
-+	MT8188_MDP_COMP_TCC0,           /* 34 */
-+	MT8188_MDP_COMP_WROT0,          /* 35 */
-+	MT8188_MDP_COMP_WROT2,          /* 36 */
-+	MT8188_MDP_COMP_WROT3,          /* 37 */
-+	MT8188_MDP_COMP_MERGE2,         /* 38 */
-+	MT8188_MDP_COMP_MERGE3,         /* 39 */
-+};
-+
- enum mt8195_mdp_comp_id {
- 	/* MT8195 Comp id */
- 	/* ISP */
-@@ -123,6 +170,13 @@ static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
- 	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8183-scp" }
- };
- 
-+static const struct of_device_id mt8188_mdp_probe_infra[MDP_INFRA_MAX] = {
-+	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8188-vppsys0" },
-+	[MDP_INFRA_MMSYS2] = { .compatible = "mediatek,mt8188-vppsys1" },
-+	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8188-vpp-mutex" },
-+	[MDP_INFRA_MUTEX2] = { .compatible = "mediatek,mt8188-vpp-mutex" },
-+};
-+
- static const struct of_device_id mt8195_mdp_probe_infra[MDP_INFRA_MAX] = {
- 	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8195-vppsys0" },
- 	[MDP_INFRA_MMSYS2] = { .compatible = "mediatek,mt8195-vppsys1" },
-@@ -167,6 +221,40 @@ static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
- 	[MDP_COMP_CCORR0] = MUTEX_MOD_IDX_MDP_CCORR0,
- };
- 
-+static const u32 mt8188_mutex_idx[MDP_MAX_COMP_COUNT] = {
-+	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
-+	[MDP_COMP_RDMA2] = MUTEX_MOD_IDX_MDP_RDMA2,
-+	[MDP_COMP_RDMA3] = MUTEX_MOD_IDX_MDP_RDMA3,
-+	[MDP_COMP_FG0] = MUTEX_MOD_IDX_MDP_FG0,
-+	[MDP_COMP_FG2] = MUTEX_MOD_IDX_MDP_FG2,
-+	[MDP_COMP_FG3] = MUTEX_MOD_IDX_MDP_FG3,
-+	[MDP_COMP_HDR0] = MUTEX_MOD_IDX_MDP_HDR0,
-+	[MDP_COMP_HDR2] = MUTEX_MOD_IDX_MDP_HDR2,
-+	[MDP_COMP_HDR3] = MUTEX_MOD_IDX_MDP_HDR3,
-+	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
-+	[MDP_COMP_AAL2] = MUTEX_MOD_IDX_MDP_AAL2,
-+	[MDP_COMP_AAL3] = MUTEX_MOD_IDX_MDP_AAL3,
-+	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
-+	[MDP_COMP_RSZ2] = MUTEX_MOD_IDX_MDP_RSZ2,
-+	[MDP_COMP_RSZ3] = MUTEX_MOD_IDX_MDP_RSZ3,
-+	[MDP_COMP_MERGE2] = MUTEX_MOD_IDX_MDP_MERGE2,
-+	[MDP_COMP_MERGE3] = MUTEX_MOD_IDX_MDP_MERGE3,
-+	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
-+	[MDP_COMP_TDSHP2] = MUTEX_MOD_IDX_MDP_TDSHP2,
-+	[MDP_COMP_TDSHP3] = MUTEX_MOD_IDX_MDP_TDSHP3,
-+	[MDP_COMP_COLOR0] = MUTEX_MOD_IDX_MDP_COLOR0,
-+	[MDP_COMP_COLOR2] = MUTEX_MOD_IDX_MDP_COLOR2,
-+	[MDP_COMP_COLOR3] = MUTEX_MOD_IDX_MDP_COLOR3,
-+	[MDP_COMP_OVL0] = MUTEX_MOD_IDX_MDP_OVL0,
-+	[MDP_COMP_PAD0] = MUTEX_MOD_IDX_MDP_PAD0,
-+	[MDP_COMP_PAD2] = MUTEX_MOD_IDX_MDP_PAD2,
-+	[MDP_COMP_PAD3] = MUTEX_MOD_IDX_MDP_PAD3,
-+	[MDP_COMP_TCC0] = MUTEX_MOD_IDX_MDP_TCC0,
-+	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
-+	[MDP_COMP_WROT2] = MUTEX_MOD_IDX_MDP_WROT2,
-+	[MDP_COMP_WROT3] = MUTEX_MOD_IDX_MDP_WROT3,
-+};
-+
- static const u32 mt8195_mutex_idx[MDP_MAX_COMP_COUNT] = {
- 	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
- 	[MDP_COMP_RDMA1] = MUTEX_MOD_IDX_MDP_RDMA1,
-@@ -288,6 +376,171 @@ static const struct mdp_comp_data mt8183_mdp_comp_data[MDP_MAX_COMP_COUNT] = {
- 	},
- };
- 
-+static const struct mdp_comp_data mt8188_mdp_comp_data[MDP_MAX_COMP_COUNT] = {
-+	[MDP_COMP_WPEI] = {
-+		{MDP_COMP_TYPE_WPEI, 0, MT8188_MDP_COMP_WPEI, MDP_MM_SUBSYS_0},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_WPEO] = {
-+		{MDP_COMP_TYPE_EXTO, 0, MT8188_MDP_COMP_WPEO, MDP_MM_SUBSYS_0},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_CAMIN] = {
-+		{MDP_COMP_TYPE_DL_PATH, 0, MT8188_MDP_COMP_CAMIN, MDP_MM_SUBSYS_0},
-+		{3, 3, 0}
-+	},
-+	[MDP_COMP_RDMA0] = {
-+		{MDP_COMP_TYPE_RDMA, 0, MT8188_MDP_COMP_RDMA0, MDP_MM_SUBSYS_0},
-+		{3, 0, 0}
-+	},
-+	[MDP_COMP_RDMA2] = {
-+		{MDP_COMP_TYPE_RDMA, 1, MT8188_MDP_COMP_RDMA2, MDP_MM_SUBSYS_1},
-+		{3, 0, 0}
-+	},
-+	[MDP_COMP_RDMA3] = {
-+		{MDP_COMP_TYPE_RDMA, 2, MT8188_MDP_COMP_RDMA3, MDP_MM_SUBSYS_1},
-+		{3, 0, 0}
-+	},
-+	[MDP_COMP_FG0] = {
-+		{MDP_COMP_TYPE_FG, 0, MT8188_MDP_COMP_FG0, MDP_MM_SUBSYS_0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_FG2] = {
-+		{MDP_COMP_TYPE_FG, 1, MT8188_MDP_COMP_FG2, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_FG3] = {
-+		{MDP_COMP_TYPE_FG, 2, MT8188_MDP_COMP_FG3, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_HDR0] = {
-+		{MDP_COMP_TYPE_HDR, 0, MT8188_MDP_COMP_HDR0, MDP_MM_SUBSYS_0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_HDR2] = {
-+		{MDP_COMP_TYPE_HDR, 1, MT8188_MDP_COMP_HDR2, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_HDR3] = {
-+		{MDP_COMP_TYPE_HDR, 2, MT8188_MDP_COMP_HDR3, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_AAL0] = {
-+		{MDP_COMP_TYPE_AAL, 0, MT8188_MDP_COMP_AAL0, MDP_MM_SUBSYS_0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_AAL2] = {
-+		{MDP_COMP_TYPE_AAL, 1, MT8188_MDP_COMP_AAL2, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_AAL3] = {
-+		{MDP_COMP_TYPE_AAL, 2, MT8188_MDP_COMP_AAL3, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_RSZ0] = {
-+		{MDP_COMP_TYPE_RSZ, 0, MT8188_MDP_COMP_RSZ0, MDP_MM_SUBSYS_0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_RSZ2] = {
-+		{MDP_COMP_TYPE_RSZ, 1, MT8188_MDP_COMP_RSZ2, MDP_MM_SUBSYS_1},
-+		{2, 0, 0},
-+		{MDP_COMP_MERGE2, true, true}
-+	},
-+	[MDP_COMP_RSZ3] = {
-+		{MDP_COMP_TYPE_RSZ, 2, MT8188_MDP_COMP_RSZ3, MDP_MM_SUBSYS_1},
-+		{2, 0, 0},
-+		{MDP_COMP_MERGE3, true, true}
-+	},
-+	[MDP_COMP_TDSHP0] = {
-+		{MDP_COMP_TYPE_TDSHP, 0, MT8188_MDP_COMP_TDSHP0, MDP_MM_SUBSYS_0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_TDSHP2] = {
-+		{MDP_COMP_TYPE_TDSHP, 1, MT8188_MDP_COMP_TDSHP2, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_TDSHP3] = {
-+		{MDP_COMP_TYPE_TDSHP, 2, MT8188_MDP_COMP_TDSHP3, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_COLOR0] = {
-+		{MDP_COMP_TYPE_COLOR, 0, MT8188_MDP_COMP_COLOR0, MDP_MM_SUBSYS_0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_COLOR2] = {
-+		{MDP_COMP_TYPE_COLOR, 1, MT8188_MDP_COMP_COLOR2, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_COLOR3] = {
-+		{MDP_COMP_TYPE_COLOR, 2, MT8188_MDP_COMP_COLOR3, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_OVL0] = {
-+		{MDP_COMP_TYPE_OVL, 0, MT8188_MDP_COMP_OVL0, MDP_MM_SUBSYS_0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_PAD0] = {
-+		{MDP_COMP_TYPE_PAD, 0, MT8188_MDP_COMP_PAD0, MDP_MM_SUBSYS_0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_PAD2] = {
-+		{MDP_COMP_TYPE_PAD, 1, MT8188_MDP_COMP_PAD2, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_PAD3] = {
-+		{MDP_COMP_TYPE_PAD, 2, MT8188_MDP_COMP_PAD3, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_TCC0] = {
-+		{MDP_COMP_TYPE_TCC, 0, MT8188_MDP_COMP_TCC0, MDP_MM_SUBSYS_0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_WROT0] = {
-+		{MDP_COMP_TYPE_WROT, 0, MT8188_MDP_COMP_WROT0, MDP_MM_SUBSYS_0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_WROT2] = {
-+		{MDP_COMP_TYPE_WROT, 1, MT8188_MDP_COMP_WROT2, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_WROT3] = {
-+		{MDP_COMP_TYPE_WROT, 2, MT8188_MDP_COMP_WROT3, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_MERGE2] = {
-+		{MDP_COMP_TYPE_MERGE, 0, MT8188_MDP_COMP_MERGE2, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_MERGE3] = {
-+		{MDP_COMP_TYPE_MERGE, 1, MT8188_MDP_COMP_MERGE3, MDP_MM_SUBSYS_1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_PQ0_SOUT] = {
-+		{MDP_COMP_TYPE_DUMMY, 0, MT8188_MDP_COMP_PQ0_SOUT, MDP_MM_SUBSYS_0},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_TO_WARP0MOUT] = {
-+		{MDP_COMP_TYPE_DUMMY, 1, MT8188_MDP_COMP_TO_WARP0MOUT, MDP_MM_SUBSYS_0},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_TO_SVPP2MOUT] = {
-+		{MDP_COMP_TYPE_DUMMY, 2, MT8188_MDP_COMP_TO_SVPP2MOUT, MDP_MM_SUBSYS_1},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_TO_SVPP3MOUT] = {
-+		{MDP_COMP_TYPE_DUMMY, 3, MT8188_MDP_COMP_TO_SVPP3MOUT, MDP_MM_SUBSYS_1},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_VPP0_SOUT] = {
-+		{MDP_COMP_TYPE_PATH, 0, MT8188_MDP_COMP_VPP0_SOUT, MDP_MM_SUBSYS_1},
-+		{2, 6, 0}
-+	},
-+	[MDP_COMP_VPP1_SOUT] = {
-+		{MDP_COMP_TYPE_PATH, 1, MT8188_MDP_COMP_VPP1_SOUT, MDP_MM_SUBSYS_0},
-+		{2, 8, 0}
-+	},
-+};
-+
- static const struct mdp_comp_data mt8195_mdp_comp_data[MDP_MAX_COMP_COUNT] = {
- 	[MDP_COMP_WPEI] = {
- 		{MDP_COMP_TYPE_WPEI, 0, MT8195_MDP_COMP_WPEI, MDP_MM_SUBSYS_0},
-@@ -1046,6 +1299,15 @@ static const struct mdp_pipe_info mt8183_pipe_info[] = {
- 	[MDP_PIPE_RDMA0] = {MDP_PIPE_RDMA0, MDP_MM_SUBSYS_0, 3}
- };
- 
-+static const struct mdp_pipe_info mt8188_pipe_info[] = {
-+	[MDP_PIPE_WPEI] = {MDP_PIPE_WPEI, MDP_MM_SUBSYS_0, 0},
-+	[MDP_PIPE_RDMA0] = {MDP_PIPE_RDMA0, MDP_MM_SUBSYS_0, 1},
-+	[MDP_PIPE_RDMA2] = {MDP_PIPE_RDMA2, MDP_MM_SUBSYS_1, 0},
-+	[MDP_PIPE_RDMA3] = {MDP_PIPE_RDMA3, MDP_MM_SUBSYS_1, 1},
-+	[MDP_PIPE_VPP1_SOUT] = {MDP_PIPE_VPP1_SOUT, MDP_MM_SUBSYS_0, 2},
-+	[MDP_PIPE_VPP0_SOUT] = {MDP_PIPE_VPP0_SOUT, MDP_MM_SUBSYS_1, 2},
-+};
-+
- static const struct mdp_pipe_info mt8195_pipe_info[] = {
- 	[MDP_PIPE_WPEI] = {MDP_PIPE_WPEI, MDP_MM_SUBSYS_0, 0},
- 	[MDP_PIPE_WPEI2] = {MDP_PIPE_WPEI2, MDP_MM_SUBSYS_0, 1},
-@@ -1082,6 +1344,24 @@ const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
- 	.pp_used = MDP_PP_USED_1,
- };
- 
-+const struct mtk_mdp_driver_data mt8188_mdp_driver_data = {
-+	.mdp_plat_id = MT8188,
-+	.mdp_con_res = 0x14001000,
-+	.mdp_probe_infra = mt8188_mdp_probe_infra,
-+	.mdp_sub_comp_dt_ids = mt8195_sub_comp_dt_ids,
-+	.mdp_cfg = &mt8195_plat_cfg,
-+	.mdp_mutex_table_idx = mt8188_mutex_idx,
-+	.comp_data = mt8188_mdp_comp_data,
-+	.comp_data_len = ARRAY_SIZE(mt8188_mdp_comp_data),
-+	.format = mt8195_formats,
-+	.format_len = ARRAY_SIZE(mt8195_formats),
-+	.def_limit = &mt8195_mdp_def_limit,
-+	.pipe_info = mt8188_pipe_info,
-+	.pipe_info_len = ARRAY_SIZE(mt8188_pipe_info),
-+	.pp_criteria = &mt8195_mdp_pp_criteria,
-+	.pp_used = MDP_PP_USED_2,
-+};
-+
- const struct mtk_mdp_driver_data mt8195_mdp_driver_data = {
- 	.mdp_plat_id = MT8195,
- 	.mdp_con_res = 0x14001000,
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h b/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
-index f83ac408306e..4764c5b5107b 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
-@@ -116,6 +116,7 @@ struct img_frameparam {
- 
- /* Platform config indicator */
- #define MT8183 8183
-+#define MT8188 8195
- #define MT8195 8195
- 
- #define CFG_CHECK(plat, p_id) ((plat) == (p_id))
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
-index 49cdf45f6e59..7f7625299ce7 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
-@@ -10,6 +10,7 @@
- #include <linux/types.h>
- 
- extern const struct mtk_mdp_driver_data mt8183_mdp_driver_data;
-+extern const struct mtk_mdp_driver_data mt8188_mdp_driver_data;
- extern const struct mtk_mdp_driver_data mt8195_mdp_driver_data;
- 
- struct mdp_dev;
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-index 5209f531ef8d..61a798f33041 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-@@ -21,6 +21,9 @@ static const struct of_device_id mdp_of_ids[] = {
- 	{ .compatible = "mediatek,mt8183-mdp3-rdma",
- 	  .data = &mt8183_mdp_driver_data,
- 	},
-+	{ .compatible = "mediatek,mt8188-mdp3-rdma",
-+	  .data = &mt8188_mdp_driver_data,
-+	},
- 	{ .compatible = "mediatek,mt8195-mdp3-rdma",
- 	  .data = &mt8195_mdp_driver_data,
- 	},
+ mediatek-drm-y := mtk_crtc.o \
++		  mtk_ddp_comp.o \
+ 		  mtk_disp_aal.o \
+ 		  mtk_disp_ccorr.o \
+ 		  mtk_disp_color.o \
+@@ -9,7 +10,6 @@ mediatek-drm-y := mtk_crtc.o \
+ 		  mtk_disp_ovl.o \
+ 		  mtk_disp_ovl_adaptor.o \
+ 		  mtk_disp_rdma.o \
+-		  mtk_drm_ddp_comp.o \
+ 		  mtk_drm_drv.o \
+ 		  mtk_drm_gem.o \
+ 		  mtk_drm_plane.o \
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+similarity index 100%
+rename from drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+rename to drivers/gpu/drm/mediatek/mtk_ddp_comp.c
 -- 
-2.44.0
+2.18.0
 
 
