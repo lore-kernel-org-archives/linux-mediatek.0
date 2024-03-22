@@ -4,70 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BE33C47DD9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Mar 2024 13:39:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B7C3C47DD9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Mar 2024 14:34:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0cR7pF5HX2GHPONoKQ+9dp9O0BQdTc6dwMQmpbSLDCc=; b=DoKWOF0Lp4zu/IzXw/DSgdAfKf
-	SbrLayN4G2Fjhp+lGjICqIjTt42Ias320sVpdUL2wSlDsu6aWx/S2W1gPolDHbOBbeFAif4rrAJX3
-	LTOvkZQGKRRIg30eG7HmYq8EkYHU11Gm4AIVEycnlzDFBpXcq6R8tXNDAW6WLdjfd4PVpgZ+8o15o
-	xCjNB4nKqxeyWmKbSlC1TJgoMQHGjiPxZ7l/PnwdLD1/k0YTTvfMeqsjc40+JcfNN745l4c5w8S+h
-	UQ7fA+9AXsEleO//xb6uFpXCEaselTQ4vrcQCFi8IEgElNAfPMwPtNT9QSQdZFDtPByScF8qOinKp
-	ZzGdrOvg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NFZ1yPD5FPfNmdnDQT4S4dEkS92ro2TOAoKTVqaTos8=; b=qWHr4f3Ti9FsOLeZsoZm2U/1gl
+	KMmbjFDKxncyAe58GBjrQWx4WX9pxLWUhcTW0eexsGTvq5lG0SdwXhmVn4afWg4V7TCNuVMS92Ar6
+	4RqWUaVnVyUZK/KevnqRyEEpm6nBM1g/Gf3KVeRQG5xrvHwTuqIlXV2G7mDqjMk1B9lDD/i1oDomr
+	VaGUtLIGMERYjT7Ly3jvkhQdmK8lR0zGBeagCwA9Wx9Lf2PYezQT4nveI4nHs0o+miaT1uuRkm5zC
+	z7VxGcuPP6Gbw08zAFvUCVTZ601p8g0yUDBhDncg+6icFxznTouGss/rbO0LmZpfOaYPVVJkrV5Dj
+	N1KFCfgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnf7g-00000007NCw-0XB1;
-	Fri, 22 Mar 2024 13:39:52 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rnfys-00000007Zoz-1b6i;
+	Fri, 22 Mar 2024 14:34:50 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnf7c-00000007NAE-21Ef
-	for linux-mediatek@lists.infradead.org;
-	Fri, 22 Mar 2024 13:39:51 +0000
+	id 1rnfyo-00000007ZmF-0MSq;
+	Fri, 22 Mar 2024 14:34:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 7FAE4CE194D
-	for <linux-mediatek@lists.infradead.org>; Fri, 22 Mar 2024 13:39:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5BD1C43390
-	for <linux-mediatek@lists.infradead.org>; Fri, 22 Mar 2024 13:39:45 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B0B1160C24;
+	Fri, 22 Mar 2024 14:34:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1BB7FC43390;
+	Fri, 22 Mar 2024 14:34:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711114785;
-	bh=5TgSuCauS8GT6QQBaZPrZ5FUn7IoDZ6oyTws1noJ3dU=;
-	h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
-	b=jCRSWwtgI1VTREEpxVvdKrcnVV4Xc0WSWjDLuG5ZqA/F1eO8PPKIh9NB91vX1TSBC
-	 DbopIxSssShPK9LF3zZOuLct9A1mM6COnudYcucWsY6pcNRpTG8YiDvD8bLUQk1qkN
-	 RQLMrRj2Ugrn5tfHbpOHyvVtD7MUdzrhvUL3cadp5fRmuTFo63qrS4EE3M/GJIfpQ0
-	 tqZfkB1bQMwcfP+rn+wKTNVUDUqKWHFkCxS30MWXVC2hfEHDGIrnFqbg3DnaiGMgm8
-	 mXe8mqZQX/X90bp5E4oPXtVTyajuGL7H7FhGYCIm1XglDPS61yJasivi4vdwLO/9Ti
-	 OuJ5b3uMaIgaw==
-Received: by mail-yb1-f169.google.com with SMTP id 3f1490d57ef6-db3a09e96daso1908447276.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 22 Mar 2024 06:39:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCXyLzJRgGNh8FmJ/dZa1bq4NqWzn+heq9JcGYjz/hEXen2B7QcHLpR+nT4aRQWDibTj3o4UHOhEumqSl06JXU+ovtjZi/FnFLBaV+1dQIs1R1DP
-X-Gm-Message-State: AOJu0YyXWFSL4861GAsSMxZRPbhaEBH4liY7H9aSdim8MB/TiTzSlgHK
-	eDj5RjtgjAm/0a/PfNTSUK9OeLDF4O2NIMp6+hgeqnftK2lkUBCyzcIik/aYyXTvIVdz3qTRWsl
-	XtBeul8VOLBYO9b2qMghT1IWu1hY=
-X-Google-Smtp-Source: AGHT+IG9QOnlmA925r/URlwN8TWyLSJ8cidRQ/KYULhpPmwaQG5KAQuoRS5+qmd5tlP2wVw70KmwZLmMHc3/VbuXD4A=
-X-Received: by 2002:a25:2f0c:0:b0:dcc:f5d4:8b43 with SMTP id
- v12-20020a252f0c000000b00dccf5d48b43mr2071317ybv.9.1711114784961; Fri, 22 Mar
- 2024 06:39:44 -0700 (PDT)
+	s=k20201202; t=1711118083;
+	bh=hlZVhqXG5tZdnG9IkzH2tQNrjKC3YWqFEQJmVE1j798=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=L9YIH9mHGzkuhZa5ZVgbm1uCmpXH/UdC5VoAAU2ZdmPoXXqtpJMpUbovXd3gDgO41
+	 CU2DUUw+SMa8RxrldgPU79Ss9iLOQN6UmBrNuMgrwYhLnrE/9pIW897R2ohFddMIXc
+	 fKAcsdytm6UayuPjZsV6voe6BUrX1bROQ4UC5NTMEIiFIp4Cdztw4DnZ0J1u/GaohG
+	 CdPO8YbPjtOS9u2k4iiFhrL81vXJ7YZxlQaIdf2NetJ3ZGrkO0LeJuDCMVwOrjUrRl
+	 LZee8y5F+DzlqtMhPwLn2YgOsuJFmKXvTh9GCAuztPZGuK4AA8IAS+C6YSkEmDZmew
+	 YKo4qspd4j+2A==
+Date: Fri, 22 Mar 2024 09:34:35 -0500
+From: Bjorn Andersson <andersson@kernel.org>
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>
+Cc: linux-i2c@vger.kernel.org, Elie Morisse <syniurge@gmail.com>, 
+	Shyam Sundar S K <shyam-sundar.s-k@amd.com>, Andi Shyti <andi.shyti@kernel.org>, 
+	Codrin Ciubotariu <codrin.ciubotariu@microchip.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+	Krzysztof Adamski <krzysztof.adamski@nokia.com>, Benson Leung <bleung@chromium.org>, 
+	Guenter Roeck <groeck@chromium.org>, Jarkko Nikula <jarkko.nikula@linux.intel.com>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Mika Westerberg <mika.westerberg@linux.intel.com>, 
+	Jan Dabros <jsd@semihalf.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Jean-Marie Verdun <verdun@hpe.com>, 
+	Nick Hawkins <nick.hawkins@hpe.com>, Yicong Yang <yangyicong@hisilicon.com>, 
+	Oleksij Rempel <o.rempel@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Khalil Blaiech <kblaiech@nvidia.com>, Asmaa Mnebhi <asmaa@nvidia.com>, 
+	Qii Wang <qii.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Linus Walleij <linus.walleij@linaro.org>, 
+	Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, 
+	Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, 
+	Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, 
+	Ajay Gupta <ajayg@nvidia.com>, Peter Korsgaard <peter@korsgaard.com>, 
+	Andrew Lunn <andrew@lunn.ch>, Robert Richter <rric@kernel.org>, 
+	Aaro Koskinen <aaro.koskinen@iki.fi>, Janusz Krzysztofik <jmkrzyszt@gmail.com>, 
+	Tony Lindgren <tony@atomide.com>, Vignesh R <vigneshr@ti.com>, 
+	Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, 
+	Christophe Leroy <christophe.leroy@csgroup.eu>, "Aneesh Kumar K.V" <aneesh.kumar@kernel.org>, 
+	"Naveen N. Rao" <naveen.n.rao@linux.ibm.com>, Hector Martin <marcan@marcan.st>, 
+	Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
+	Vladimir Zapolskiy <vz@mleia.com>, Loic Poulain <loic.poulain@linaro.org>, 
+	Robert Foss <rfoss@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>, Pierre-Yves MORDRET <pierre-yves.mordret@foss.st.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Laxman Dewangan <ldewangan@nvidia.com>, 
+	Dmitry Osipenko <digetx@gmail.com>, Conghui Chen <conghui.chen@intel.com>, 
+	Viresh Kumar <viresh.kumar@linaro.org>, Michal Simek <michal.simek@amd.com>, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	chrome-platform@lists.linux.dev, linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev, 
+	linux-mips@vger.kernel.org, linux-amlogic@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, linux-omap@vger.kernel.org, 
+	linuxppc-dev@lists.ozlabs.org, asahi@lists.linux.dev, linux-arm-msm@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-tegra@vger.kernel.org, virtualization@lists.linux.dev
+Subject: Re: [PATCH 64/64] i2c: reword i2c_algorithm in drivers according to
+ newest specification
+Message-ID: <zdgzj3oemsmlsqz2ctxb3ew6xkohiuew2e4djvxileiew66su5@3pjbsgqdbf3f>
+References: <20240322132619.6389-1-wsa+renesas@sang-engineering.com>
+ <20240322132619.6389-65-wsa+renesas@sang-engineering.com>
 MIME-Version: 1.0
-References: <30f41011495fb0b11a11eef9c7a536268306edb2.camel@mediatek.com>
-In-Reply-To: <30f41011495fb0b11a11eef9c7a536268306edb2.camel@mediatek.com>
-From: Josh Boyer <jwboyer@kernel.org>
-Date: Fri, 22 Mar 2024 09:39:33 -0400
-X-Gmail-Original-Message-ID: <CA+5PVA5unmBTXbiksB=N5x16RinxnYGgevPYZ0Hd2j7owLGRsQ@mail.gmail.com>
-Message-ID: <CA+5PVA5unmBTXbiksB=N5x16RinxnYGgevPYZ0Hd2j7owLGRsQ@mail.gmail.com>
-Subject: Re: [PULL] mediatek: Update mt8186 SOF firmware to v2.0.1
-To: =?UTF-8?B?SGFpbG9uZyBGYW4gKOiMg+a1t+m+mSk=?= <Hailong.Fan@mediatek.com>
-Cc: "linux-firmware@kernel.org" <linux-firmware@kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240322132619.6389-65-wsa+renesas@sang-engineering.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240322_063948_917626_3A12915E 
-X-CRM114-Status: GOOD (  16.94  )
+X-CRM114-CacheID: sfid-20240322_073446_270027_1FDE7D20 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,51 +115,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 22, 2024 at 5:32=E2=80=AFAM Hailong Fan (=E8=8C=83=E6=B5=B7=E9=
-=BE=99)
-<Hailong.Fan@mediatek.com> wrote:
->
-> Hi maintainers,
->
-> This pull request updates MT8186 SOF firmware.
->
-> If there is any problem, please let me know.
-> Thank you.
->
-> Best regards,
-> Hailong
->
-> --
->
-> The following changes since commit
-> 22ee1d8ca6663ca7c28477581993d6ed5cc54323:
->
->   Merge branch 'robot/pr-0-1710861164' into 'main' (2024-03-19 19:07:14
-> +0000)
->
-> are available in the Git repository at:
->
->   https://github.com/hailongfan-mtk/linux_fw_sof v2.0.1
+On Fri, Mar 22, 2024 at 02:25:57PM +0100, Wolfram Sang wrote:
+> Match the wording in i2c_algorithm in I2C drivers wrt. the newest I2C
+> v7, SMBus 3.2, I3C specifications and replace "master/slave" with more
+> appropriate terms. For some drivers, this means no more conversions are
+> needed. For the others more work needs to be done but this will be
+> performed incrementally along with API changes/improvements. All these
+> changes here are simple search/replace results.
+> 
+> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
 
-Merged and pushed out.
+Reviewed-by: Bjorn Andersson <andersson@kernel.org>
 
-https://gitlab.com/kernel-firmware/linux-firmware/-/merge_requests/183
-
-josh
-
->
-> for you to fetch changes up to
-> 9a6a0cc195c108c677165075c55cbc0e417a1e64:
->
->   mekdiatek: Update mt8186 SOF firmware to v2.0.1 (2024-03-22 17:04:27
-> +0800)
->
-> ----------------------------------------------------------------
-> Hailong Fan (1):
->       mekdiatek: Update mt8186 SOF firmware to v2.0.1
->
->  mediatek/sof-tplg/sof-mt8186.tplg | Bin 16191 -> 16191 bytes
->  mediatek/sof/sof-mt8186.ldc       | Bin 48436 -> 48564 bytes
->  mediatek/sof/sof-mt8186.ri        | Bin 128712 -> 129304 bytes
->  3 files changed, 0 insertions(+), 0 deletions(-)
+Regards,
+Bjorn
 
