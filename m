@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9794EC54E71
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Mar 2024 09:14:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 978A7C54E71
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Mar 2024 09:14:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PZJix1J9Jpmh+i91OEHpGMGggBKx4tQWzIsRWzZa578=; b=tCs/fefb2CmKJSRscL1giJVJeE
-	kOEK7h73J0ucH5GsLGnbfkkm72ePRYSV5xeYeizmFdMhbqIu4mlDaSMAMhyQtu5KgDxil7yj678L5
-	oIwJksu+Q59cx1hB32riZ+RZNS0V2xe9uuFSn/f5Wnsf7DfKKHGVYl39V6guSmQ2VmgBlku5UehLL
-	rC6KEsJHnBdTTAGWt+r26klx7J8CFwF898Sv1zoVF/pziOjN2qujv1+f/2yWOvBHN4i7TQ8OlHiac
-	Ygf2t9f1hDcbYcnPi/yyvGJaV3ji9MO4Jq57QyB81IDpvQx/azaQWpFCbxw6ak+r0hboXigGKigqs
-	6UmVW8Zg==;
+	bh=IxfoSJRgtLM7Y9Q8+5O2pEW6twqTFjA7H0y0agURdlM=; b=euPN2LZdiXByEDCi8qx5QjUVtx
+	ZIoQLH8G7x3tsJYLE7v/j9miLnHAuy3TFGuQyKA4BiYByDlAhO8A6mw/Iuem9uXGm8MYBwvNjIiJY
+	En6tE6Kgk6rpm98TYFp/Jzppww8vdTsLbMpy7GMLvWFQvbdaiUbpAHWKjVn77YY4rwzdc12DScl7k
+	mRSZFwvTFxVhLLxDpoqIyIEpSF4LqzZ6e+A6JgZm5JFUiIyAit0fAgIcXdloXFSVSu4i/5z0ZY+jN
+	G6AFEZjyXTD56jRBCFqDUHU4MlFvPkW3rHt75b0Xrp+lXiV6OSmxzrE11B3/DPzxOAXzUYyTqM0qX
+	ZuNzrxsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnayX-00000006VmE-0pLN;
-	Fri, 22 Mar 2024 09:14:09 +0000
+	id 1rnayh-00000006VrW-0sQQ;
+	Fri, 22 Mar 2024 09:14:19 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnaxf-00000006VH1-1Rrk;
-	Fri, 22 Mar 2024 09:13:26 +0000
-X-UUID: 671321bee82c11ee9aa9374d6d45775a-20240322
+	id 1rnay6-00000006VXq-1A7A;
+	Fri, 22 Mar 2024 09:13:44 +0000
+X-UUID: 7798c886e82c11ee9aa9374d6d45775a-20240322
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=PZJix1J9Jpmh+i91OEHpGMGggBKx4tQWzIsRWzZa578=;
-	b=IW6cdhSPAItBocEGICoMemKZtRORlRJh7E9w3J7ZVE70Gg2AsCRn4yHlIaPgAs7oS8qh+/c8+Rc/7KTmSd7Bk2UQMtclZf6RCO59GSNnhrH0HlUmz0SJT5qa/qYtsWanCWf1GTLhPCupDhnxUqq0Ye6LBxTNungLJ1iIwUG3BL4=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=IxfoSJRgtLM7Y9Q8+5O2pEW6twqTFjA7H0y0agURdlM=;
+	b=PTbt29aAjclZnqm2MvdSf0ACTqLT2U2zJ/dKAuQKDFsSEO/batrRzX3PScEs3c/jUBstBHAl4yj/uS6/ys6w9TsH/lS40af2OSiQablSghYj0qwh/IXsE2HL6PyGI3QzM0dvrS1kdliMD+O9JM8xWOaEf8yWisgkQPTmYbZa5ns=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:fce28a01-539d-40d5-88f7-c4333f0ffa80,IP:0,U
+X-CID-O-INFO: VERSION:1.1.37,REQID:c180c70d-6857-4fc2-b19e-a0e76e3ee1c0,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:3349b690-e2c0-40b0-a8fe-7c7e47299109,B
+X-CID-META: VersionHash:6f543d0,CLOUDID:f01dcf81-4f93-4875-95e7-8c66ea833d57,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 671321bee82c11ee9aa9374d6d45775a-20240322
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: 7798c886e82c11ee9aa9374d6d45775a-20240322
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1520683639; Fri, 22 Mar 2024 02:13:10 -0700
+	with ESMTP id 672718854; Fri, 22 Mar 2024 02:13:37 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 22 Mar 2024 17:12:35 +0800
+ 15.2.1118.26; Fri, 22 Mar 2024 17:12:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 22 Mar 2024 17:12:35 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 22 Mar 2024 17:12:34 +0800
 From: Shawn Sung <shawn.sung@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>
@@ -64,9 +64,9 @@ CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
 	<linaro-mm-sig@lists.linaro.org>, Hsiao Chien Sung
 	<shawn.sung@mediatek.corp-partner.google.com>
-Subject: [PATCH v5 14/14] drm/mediatek: Rename mtk_ddp_comp functions
-Date: Fri, 22 Mar 2024 17:12:32 +0800
-Message-ID: <20240322091232.26387-15-shawn.sung@mediatek.com>
+Subject: [PATCH v5 05/14] drm/mediatek: Rename "mtk_drm_hdmi" to "mtk_hdmi"
+Date: Fri, 22 Mar 2024 17:12:23 +0800
+Message-ID: <20240322091232.26387-6-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240322091232.26387-1-shawn.sung@mediatek.com>
 References: <20240322091232.26387-1-shawn.sung@mediatek.com>
@@ -74,8 +74,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240322_021316_375432_CA41B559 
-X-CRM114-Status: GOOD (  14.85  )
+X-CRM114-CacheID: sfid-20240322_021342_407041_5E77F2ED 
+X-CRM114-Status: GOOD (  14.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,7 +92,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
 
-Rename functions of mtk_ddp_comp:
+Rename all "mtk_drm_hdmi" to "mtk_hdmi":
 - To align the naming rule
 - To reduce the code size
 
@@ -100,130 +100,59 @@ Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
 ---
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 45 ++++++++++++++-----------
- drivers/gpu/drm/mediatek/mtk_ddp_comp.h |  3 +-
- drivers/gpu/drm/mediatek/mtk_dpi.c      |  2 +-
- drivers/gpu/drm/mediatek/mtk_dsi.c      |  2 +-
- 4 files changed, 28 insertions(+), 24 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-index c3441508f452f..17b0364112922 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-@@ -497,10 +497,10 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_DRM_ID_MAX]
- 	[DDP_COMPONENT_WDMA1]		= { MTK_DISP_WDMA,		1, NULL },
- };
- 
--static bool mtk_drm_find_comp_in_ddp(struct device *dev,
--				     const unsigned int *path,
--				     unsigned int path_len,
--				     struct mtk_ddp_comp *ddp_comp)
-+static bool mtk_ddp_comp_find(struct device *dev,
-+			      const unsigned int *path,
-+			      unsigned int path_len,
-+			      struct mtk_ddp_comp *ddp_comp)
- {
- 	unsigned int i;
- 
-@@ -514,10 +514,10 @@ static bool mtk_drm_find_comp_in_ddp(struct device *dev,
- 	return false;
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index 86133bf16326b..d2876da1b43a7 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -1687,7 +1687,7 @@ static int mtk_hdmi_register_audio_driver(struct device *dev)
+ 	return 0;
  }
  
--static unsigned int mtk_drm_find_comp_in_ddp_conn_path(struct device *dev,
--						       const struct mtk_drm_route *routes,
--						       unsigned int num_routes,
--						       struct mtk_ddp_comp *ddp_comp)
-+static unsigned int mtk_ddp_comp_find_in_route(struct device *dev,
-+					       const struct mtk_drm_route *routes,
-+					       unsigned int num_routes,
-+					       struct mtk_ddp_comp *ddp_comp)
+-static int mtk_drm_hdmi_probe(struct platform_device *pdev)
++static int mtk_hdmi_probe(struct platform_device *pdev)
  {
- 	int ret;
- 	unsigned int i;
-@@ -554,26 +554,31 @@ int mtk_ddp_comp_get_id(struct device_node *node,
- 	return -EINVAL;
- }
- 
--unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
--						struct device *dev)
-+unsigned int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev)
- {
- 	struct mtk_drm_private *private = drm->dev_private;
- 	unsigned int ret = 0;
- 
--	if (mtk_drm_find_comp_in_ddp(dev, private->data->main_path, private->data->main_len,
--				     private->ddp_comp))
-+	if (mtk_ddp_comp_find(dev,
-+			      private->data->main_path,
-+			      private->data->main_len,
-+			      private->ddp_comp))
- 		ret = BIT(0);
--	else if (mtk_drm_find_comp_in_ddp(dev, private->data->ext_path,
--					  private->data->ext_len, private->ddp_comp))
-+	else if (mtk_ddp_comp_find(dev,
-+				   private->data->ext_path,
-+				   private->data->ext_len,
-+				   private->ddp_comp))
- 		ret = BIT(1);
--	else if (mtk_drm_find_comp_in_ddp(dev, private->data->third_path,
--					  private->data->third_len, private->ddp_comp))
-+	else if (mtk_ddp_comp_find(dev,
-+				   private->data->third_path,
-+				   private->data->third_len,
-+				   private->ddp_comp))
- 		ret = BIT(2);
- 	else
--		ret = mtk_drm_find_comp_in_ddp_conn_path(dev,
--							 private->data->conn_routes,
--							 private->data->num_conn_routes,
--							 private->ddp_comp);
-+		ret = mtk_ddp_comp_find_in_route(dev,
-+						 private->data->conn_routes,
-+						 private->data->num_conn_routes,
-+						 private->ddp_comp);
- 
+ 	struct mtk_hdmi *hdmi;
+ 	struct device *dev = &pdev->dev;
+@@ -1746,7 +1746,7 @@ static int mtk_drm_hdmi_probe(struct platform_device *pdev)
  	return ret;
  }
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-index ba985206fdd24..26236691ce4c2 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-@@ -326,8 +326,7 @@ static inline void mtk_ddp_comp_encoder_index_set(struct mtk_ddp_comp *comp)
  
- int mtk_ddp_comp_get_id(struct device_node *node,
- 			enum mtk_ddp_comp_type comp_type);
--unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
--						struct device *dev);
-+unsigned int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev);
- int mtk_ddp_comp_init(struct device_node *comp_node, struct mtk_ddp_comp *comp,
- 		      unsigned int comp_id);
- enum mtk_ddp_comp_type mtk_ddp_comp_get_type(unsigned int comp_id);
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index fbf63e0441337..bfe8653005dbf 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -805,7 +805,7 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
- 		return ret;
- 	}
+-static void mtk_drm_hdmi_remove(struct platform_device *pdev)
++static void mtk_hdmi_remove(struct platform_device *pdev)
+ {
+ 	struct mtk_hdmi *hdmi = platform_get_drvdata(pdev);
  
--	dpi->encoder.possible_crtcs = mtk_drm_find_possible_crtc_by_comp(drm_dev, dpi->dev);
-+	dpi->encoder.possible_crtcs = mtk_find_possible_crtcs(drm_dev, dpi->dev);
+@@ -1790,7 +1790,7 @@ static const struct mtk_hdmi_conf mtk_hdmi_conf_mt8167 = {
+ 	.cea_modes_only = true,
+ };
  
- 	ret = drm_bridge_attach(&dpi->encoder, &dpi->bridge, NULL,
- 				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index e29c37fb5be09..67239606adbfc 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -836,7 +836,7 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
- 		return ret;
- 	}
+-static const struct of_device_id mtk_drm_hdmi_of_ids[] = {
++static const struct of_device_id mtk_hdmi_of_ids[] = {
+ 	{ .compatible = "mediatek,mt2701-hdmi",
+ 	  .data = &mtk_hdmi_conf_mt2701,
+ 	},
+@@ -1801,14 +1801,14 @@ static const struct of_device_id mtk_drm_hdmi_of_ids[] = {
+ 	},
+ 	{}
+ };
+-MODULE_DEVICE_TABLE(of, mtk_drm_hdmi_of_ids);
++MODULE_DEVICE_TABLE(of, mtk_hdmi_of_ids);
  
--	dsi->encoder.possible_crtcs = mtk_drm_find_possible_crtc_by_comp(drm, dsi->host.dev);
-+	dsi->encoder.possible_crtcs = mtk_find_possible_crtcs(drm, dsi->host.dev);
- 
- 	ret = drm_bridge_attach(&dsi->encoder, &dsi->bridge, NULL,
- 				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
+ static struct platform_driver mtk_hdmi_driver = {
+-	.probe = mtk_drm_hdmi_probe,
+-	.remove_new = mtk_drm_hdmi_remove,
++	.probe = mtk_hdmi_probe,
++	.remove_new = mtk_hdmi_remove,
+ 	.driver = {
+ 		.name = "mediatek-drm-hdmi",
+-		.of_match_table = mtk_drm_hdmi_of_ids,
++		.of_match_table = mtk_hdmi_of_ids,
+ 		.pm = &mtk_hdmi_pm_ops,
+ 	},
+ };
 -- 
 2.18.0
 
