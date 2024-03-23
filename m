@@ -4,184 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CED02C47DD9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Mar 2024 03:00:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FC43C54E58
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Mar 2024 09:20:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3RbGqczdB5XQ6jfmBB7St2g7YSNFwgPJ+rTGkf8I4e8=; b=tGkWIaJTNFfH02qQkxQ1dktOcq
-	6KwUFvV6t3pgJoOTcJU67IVmgG6IjSWk/hvZgQWVe2hJJGeffwzdpp3qNYP6lfN6axvLJPGyVd8xP
-	iu1Zvy0o0RaOqPDGRX+uLSPSGyQsqFX6ox/qVdna4Ip/6IetFCVhLXMSRcGRTZ4DbZ7aihGmRW1z5
-	vO+CuGKY+5L5+1wewiXCMzAQ7iPXd/buqeq5IrBKKxA9WXisOoqcLGCBJwkPVvK5B7Gx5lKaeMG9k
-	A38RHE43U5dYTo6VjHb2akzf9QVxMCprXe0UnXYlrv3cTUjwqPO+nxPE31ntWe/oJeDKehshHhmKI
-	EmpnyXtg==;
+	bh=oWPh5pRiB0YC24HBvCgf6JyT1jdUNaQ40siKoMbbwOE=; b=ssmIGt1zBONN/IbChe0x1G7hH8
+	7VxdQDrfBuR0c25LR8R7SZgvLXp+4uGTjefGmlmSIYFZshzOCY6NUUel91LNqSVgr9pmTu26jeNDS
+	AHjQGVsYKZMWmw7c9ubsWpIqtf4sf5Y7++J60lcdNB//1+7TnD3NEG4uvgN4Ftyf67bGnQynTjrsY
+	JIs23FaSDQhytEe7memzn4jUIfNmckOJdIgOBewR3ApbHULyotPU15x2gSVlDukDBD9MexM4LanEI
+	Yq1ZMHYhI0V54KbRoTNY6MoNdDxN2xdI2J8qe0HsI29OVZCoib8h9f4ZbJajKxSLPD6bWm6auql/Q
+	9L8R+CsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnrc5-00000009IWV-3Yg7;
-	Sat, 23 Mar 2024 03:00:05 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rnxYS-0000000A3fK-3Xdv;
+	Sat, 23 Mar 2024 09:20:44 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnrc3-00000009IUs-1VNK;
-	Sat, 23 Mar 2024 03:00:04 +0000
-X-UUID: 6d7ac882e8c111ee9aa9374d6d45775a-20240322
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=3RbGqczdB5XQ6jfmBB7St2g7YSNFwgPJ+rTGkf8I4e8=;
-	b=nczgUXYeSzmDtBveVwij3DRdJHJqsu6br7XTnqQVAE9nzS4+rIasepN7htGeBI++muYBmom+375xu9NqqMipxB4mF5cZ6i14h43ibFq7fjA4n3NLaRJnQtGpzRby2upsqxjr7BAAy6Z2FeXZRAXpvP2KbE1TT75rQ5YZXyf2IcU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:93787eb4-4984-4483-87bd-00566f7b10b1,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:8192d481-4f93-4875-95e7-8c66ea833d57,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 6d7ac882e8c111ee9aa9374d6d45775a-20240322
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <zhi.mao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 150374602; Fri, 22 Mar 2024 19:59:55 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 23 Mar 2024 10:59:21 +0800
-Received: from SG2PR03CU006.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 23 Mar 2024 10:59:21 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=A4xU/EufbGBvyxsviQPglidrA4GnocXbbqzyAOFTzBe2RWso5bQ3p97uYhJ3VtAHapm86ZqwhkwyMl74dqmoa87piwMrllzW6k4DKX/B0fizFJxPsbWXq5GqAlzCDOjfGo930uaIu9CEUtAHVIEAgZ+eY6+BPmjrPLzHdc1IVaMf2VWKVGeczxWfOTAarkTFWUxQQhGginGp4KnFduvDNdJF6yiubYdaTWWVpF6Luy45CHHmCRrCsE//psaS1jQXGY/1V81ghSgpet+EPOddh2LzsK40iT0lAgxiM+s4JGnkt6i75vvYuIW9aimgCo86NhEpOd3HK0q6vOWV4IKNiQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3RbGqczdB5XQ6jfmBB7St2g7YSNFwgPJ+rTGkf8I4e8=;
- b=fj7RzmKn7LLYAaXGOK8NmpbENXvT1UZjifAT84W+K4KQfhApzdsR8Ef7FCUlfxF5S8xY6wnx55PRn3hzqfE069SnWQli9eKDbBR9LDIUEY2OgmQOYclV0WhxxrRMvo8+7ADCUqtbKiHrbSbklPbYAq2R8KmNJciolNdXX26R2f3JdfBNn+jf0MWbylD8Hj0J77lJiZYwXLvz0VkXyr1JYgSFC0LEm2rDXLRo2coQXNksrDbx4C7cysXGAvdxH6ESa9m9t0JIWvSCK0XTFuZepSVozzk5X4SWCH/xy4tmMaf51efQo/FA+qGu4RmpVbdkwbZhWh5hyZSE6TspK3LDdg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3RbGqczdB5XQ6jfmBB7St2g7YSNFwgPJ+rTGkf8I4e8=;
- b=uPLHLA2OFvI3QRR7bSDqPEl/jtNW3MHdy/57nhQi22fvy53Mai1lWAd15jXJ6nkO4GfMRlgiQVwF/BTZBD8qChqb7GCMPYVk72625kHQ40E84hu7YsJqyjOpnvBQ7BnVS4Rr3XtS3X3PMzqs6tB9yL7OCHU5LMGu4mp+S4/juRI=
-Received: from TYZPR03MB5566.apcprd03.prod.outlook.com (2603:1096:400:53::7)
- by TY0PR03MB8297.apcprd03.prod.outlook.com (2603:1096:405:11::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7386.35; Sat, 23 Mar
- 2024 02:59:18 +0000
-Received: from TYZPR03MB5566.apcprd03.prod.outlook.com
- ([fe80::b39a:4ac4:5bf8:88d]) by TYZPR03MB5566.apcprd03.prod.outlook.com
- ([fe80::b39a:4ac4:5bf8:88d%5]) with mapi id 15.20.7409.023; Sat, 23 Mar 2024
- 02:59:18 +0000
-From: =?utf-8?B?WmhpIE1hbyAo5q+b5pm6KQ==?= <zhi.mao@mediatek.com>
-To: "sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>
-CC: "heiko@sntech.de" <heiko@sntech.de>, "gerald.loacker@wolfvision.net"
-	<gerald.loacker@wolfvision.net>, "robh+dt@kernel.org" <robh+dt@kernel.org>,
-	"yunkec@chromium.org" <yunkec@chromium.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "dan.scally@ideasonboard.com"
-	<dan.scally@ideasonboard.com>, "linux-media@vger.kernel.org"
-	<linux-media@vger.kernel.org>,
-	=?utf-8?B?U2hlbmduYW4gV2FuZyAo546L5Zyj55S3KQ==?=
-	<shengnan.wang@mediatek.com>, "hdegoede@redhat.com" <hdegoede@redhat.com>,
-	"linus.walleij@linaro.org" <linus.walleij@linaro.org>,
-	"andy.shevchenko@gmail.com" <andy.shevchenko@gmail.com>,
-	=?utf-8?B?WWF5YSBDaGFuZyAo5by16ZuF5riFKQ==?= <Yaya.Chang@mediatek.com>,
-	"mchehab@kernel.org" <mchehab@kernel.org>, "jacopo.mondi@ideasonboard.com"
-	<jacopo.mondi@ideasonboard.com>, "jernej.skrabec@gmail.com"
-	<jernej.skrabec@gmail.com>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "bingbu.cao@intel.com"
-	<bingbu.cao@intel.com>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "conor+dt@kernel.org"
-	<conor+dt@kernel.org>, "10572168@qq.com" <10572168@qq.com>,
-	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
-	"tomi.valkeinen@ideasonboard.com" <tomi.valkeinen@ideasonboard.com>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "laurent.pinchart@ideasonboard.com"
-	<laurent.pinchart@ideasonboard.com>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "macromorgan@hotmail.com"
-	<macromorgan@hotmail.com>
-Subject: Re: [PATCH v1 2/2] media: i2c: Add GC05A2 image sensor driver
-Thread-Topic: [PATCH v1 2/2] media: i2c: Add GC05A2 image sensor driver
-Thread-Index: AQHad00+IqkBATFIkUCM1xUJwrGHMrFAQfSAgARroYA=
-Date: Sat, 23 Mar 2024 02:59:18 +0000
-Message-ID: <8a6bbbdde57283b5bf8cab0ea7ecb0f201d437e7.camel@mediatek.com>
-References: <20240316025253.2300-1-zhi.mao@mediatek.com>
-	 <20240316025253.2300-3-zhi.mao@mediatek.com>
-	 <ZfqQPTgqzOw7tATK@kekkonen.localdomain>
-In-Reply-To: <ZfqQPTgqzOw7tATK@kekkonen.localdomain>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB5566:EE_|TY0PR03MB8297:EE_
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: fd9sqxeOwrkptuiFb6iUzuzVoQwLZvbqXTh8UpABznnbaV6qF/+9rPNDIoH9/9C1oRM+siG/E707GcZ7MeeUVFWJiPg+EAPlmvDXHxtCMGaKICPQbhkWtj2Ic5TcCM+LvmR53pKMA63yPDlHiDvu1HV3S8i27EXNuNdLA1mKGMJVdQdRhfU1IqE3pbbHTtuLmt8SUjjsToF96O3NWNiycWG10qkLkRE7+qcK8jr+Gj/p7lCkb7mhRdTbYi4PlUzu0tXT2sg3pMBgsLHAwZwHiEKdo9Tcc51MzSvovjOf2OPtHY1yxnRiv1pLV0rWAVRhMRD9f4qJQ+bWUt3Rkc56BeNwz9oUt6s/irescm2gATeZRZmEkdB8Y/of1NAGc+LI0dV3gmb1O79+6LcE/wPtA231APgk1O9T4tT5XHdSyrEfkQCd82Whd+9NwDT8JjtTySmeIpF4bruxvYkGs77yeJIfy/pQavL4u/pSRXBwBWdtiOz3a93uoqCm3VYXp3+SYTSEbC1NFi4JQE50FlaWWg1PSYamyZKdfKQchxJIYh263+hTASKHCi4HkW+te/7YTOlUdiq9rl1YV7i7ldJnhU2lF3FLFnwOldQmLnHUVZj9s5SgwmvOja3eiUQcI8iL
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB5566.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(7416005)(1800799015)(376005)(366007);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?eC9sYkNDV2VMWXM3OEtIMFNjN3I2dTR0UTZuZERveVpnM3o4ZGpBMjB5a2Q1?=
- =?utf-8?B?RFIxazdqRDZ4QTFmWjFOTFQ4azExUFlPN1Y5cituUkVlalUzV1l5bkVJWTZY?=
- =?utf-8?B?aTVrRjhYaGpPVXJPYnFzZS81aWRaUVZCMGtaaEt6VWp6cGdrUXVmQkFVUzlK?=
- =?utf-8?B?QXhSVitHN2FZOGE1UzNSRHhwNmxQc0hHNGVocGphM1l5WUJSUEZ6MjJYUnk5?=
- =?utf-8?B?TVJvVUxmKy83Z1BtVEVZTTdBakoxVlVHbG5lY3VDN0EybytiRzYxWE9CeTdW?=
- =?utf-8?B?QzFyeVNCbUN3b1M0NzBDR1JuM0NKeTVLbkpSYXJSanpvTi9TTE9ZaDhHZEhF?=
- =?utf-8?B?UGlMYlZCOGJEeFhNdGdYWFZhMnd1VHFwREkzWEFMV21GQTBQamhWYkR4V2tl?=
- =?utf-8?B?cDdMdEFya25KdHRFbEc0QmxoUmJrV1FJbWVJQ2c1UGNVNXBBOVNJeHFqaTVw?=
- =?utf-8?B?MERvVCtZcXdnTGJpamlhdGkwdzF3MU5sdWhXcSsvOTJGNnp6N0VDUHpTb0pK?=
- =?utf-8?B?Ni9CN1QrdWxrc2QvT0dhOWhLeFpiVmo2alRsWkJQK2ZGd0pHT1NTbGUydXFu?=
- =?utf-8?B?WUlSNEtVWnBCeU5yVjU1d0NNK050OUZjb2FEeDFxenFUY0gzU204cmJiUXVl?=
- =?utf-8?B?L0pzMldRQzJLRnd5S3lsNWRVNDJIZEJobDB0bFpieklwOG5VcDMrWERZUWpp?=
- =?utf-8?B?ZjIzL2xXYlA5aHpLcXRMUFRrS3pacXFzeEp4ZFlaOWcySStVbjB0MVgvWk12?=
- =?utf-8?B?RHZSamlNaFRlZXY2N1lQTHF6V3ZLdHFHdGJGWlUrcHZ0MmxjS205T0YzUCtU?=
- =?utf-8?B?V0JKbUM2MVNoYWFwN05hNFhYUmpaYTV6aDNxaS9NWG5NbmNRQm82L3o0WVJn?=
- =?utf-8?B?dUlHNlVRTDMxU2dhRTk3ME5UbDg2L0VrY0FtU3hMRkFMNk1TWUxTREU2bGg1?=
- =?utf-8?B?T2I1cWUzSHFwRkErcndad3NDR3o3NkJJbGNaYmlYNnExVWdSemUvK05WdlVV?=
- =?utf-8?B?RXE0eG1FMUJNbnBCV3Q3VW9XMTFENk81OCtkQXVnY3p1R1RzdGhNMG15OWRV?=
- =?utf-8?B?dk9hTThNc0V2TTk0dHRROWpFdk1xQytzWGl5eCtHcU9SUS9YcGRTKzM0S3dY?=
- =?utf-8?B?QnNYNGhMNlBJRnVCbFFXckdzMitOL0QzL0t2dm1DL0dtRlRPNW94eGhwMlZK?=
- =?utf-8?B?SlkwOTFsa1c4U2FCcWhkSU14QVNEeXJoOVRYaWp2Q1paQk5QV2tBL3JOSTNM?=
- =?utf-8?B?RDdwM0pCYmw4T3VKTnplYTh6azY4Sm9SVnlPeHV1clVQMjEzNlRkNnl1K2cv?=
- =?utf-8?B?a2MvbHBzTDBuNFpmRHJyTVA0YzY2dHJnQUF2NjBaZDVRN1JPV3dTdUdFQ2V5?=
- =?utf-8?B?c1BPQ1lsSXp0eVRUaEp6SDM4L3UxWk9qYWI2VVRxWHJGVHpFa3oyckRLd2xV?=
- =?utf-8?B?VC9hV3ZmMTFDbGc1UmthR0NqL3BobDM4RzJLRXdrdDJsVCtiaXBQZzFFTzVJ?=
- =?utf-8?B?U2RuNU44Yk8rZEU0VXFIMHRZTVlxbm1sdTQzc2p5WHloT1FnYUk2TkZ3VEJY?=
- =?utf-8?B?R0dIc1c3WHI0RmZ3YVFpYjFpSTZtQzBEaHdNOEdlMmNVcEo5VHNRQmdvYytV?=
- =?utf-8?B?aTBSWDR5Z2ZaUlMyV0NiTURSRGovTW8zZnY1aGJmTFIwZnRFY2liMlF0VzI3?=
- =?utf-8?B?QjFSTHdnZDdOVjlmQzQ3M0k3K0hieS9ydEMzQ3JHci9FbHIyYTNxTzc5a2JU?=
- =?utf-8?B?SlAyYnNGWFRsTU1BY1NhbEx5UjNMSklaVC85dlp2NjBWTjlPcGpOYUpCa1NP?=
- =?utf-8?B?SWd0bERZb1plUW90Mk42LzdXTG9mcEJ1M00zdjUxbGEwVCtGemVQdVk1NmZG?=
- =?utf-8?B?UHlTbjFrU1dBM2c3ZElnWm15LzA1Ky9mUUEyanFZWkpwZlQrUU50SStEc3NQ?=
- =?utf-8?B?YjY2MUFndmNFV2JTUDk0NlA3WDFoNEM0dFRTWUYvcjBNYXdleEorMlNzNG94?=
- =?utf-8?B?ZXUzRWlvMUptV29rUTRsUlZmOFRua2RwZFZsbTcvTkFOT0pwNDYyN0NvREdo?=
- =?utf-8?B?dHdqcEc0NTRpNDVBZk9wYnBqdEkwWjRyM2RveFVaa04xSkx4V2E2cm5UdTFQ?=
- =?utf-8?B?ZDFrNFdCckZ6QTdlWjVjR0syejNSZ3dIekp0M2g2c2FMMHpLeEtrMnZRN0RV?=
- =?utf-8?B?NFE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <97D4F5B358CBFE479AE355E6433E173C@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1rnxYO-0000000A3e6-2AEG;
+	Sat, 23 Mar 2024 09:20:42 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 352B7CE0959;
+	Sat, 23 Mar 2024 09:20:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D51C0C433F1;
+	Sat, 23 Mar 2024 09:20:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1711185636;
+	bh=aGTQuZy7vZpxuhlc2uWM1FWO2cNVLUpXYHPr+30NYM4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=AmGkF125xegySFWAiHvPntmZ+07s8hZQPC/0IVIftdkxYeMJTqDHDoBaq087Sl4Ry
+	 qKx2QcAVw6S410SG7j4biAqt4/h5dTjc1vKUs5R8LJBjxtJSQyMNE1PxZTAhzLwpa+
+	 ZvDOHlqhfPGo+3K1JP9tq5K11rxRL31gNRIYe4fcfJjyAcpNQmozM0AzDwGqt7aAAm
+	 vL1bo7yWAyyXHWJXICav98Il7syCI5t9aEO0HLvfyTQ7cJVQX5WfpHiaD8JmvRG1Zm
+	 VmI4taBLphr2uo/nVmCk1uj3x3TE6/IYqaCXMkAcTk/3yvQe9KoaZIneVeSaGY4Thk
+	 hCCXd6I1k2Bcg==
+Date: Sat, 23 Mar 2024 10:20:32 +0100
+From: Andi Shyti <andi.shyti@kernel.org>
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>
+Cc: linux-i2c@vger.kernel.org, asahi@lists.linux.dev, 
+	chrome-platform@lists.linux.dev, imx@lists.linux.dev, linux-actions@lists.infradead.org, 
+	linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-aspeed@lists.ozlabs.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, linux-omap@vger.kernel.org, 
+	linuxppc-dev@lists.ozlabs.org, linux-renesas-soc@vger.kernel.org, 
+	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-rpi-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+	openbmc@lists.ozlabs.org, virtualization@lists.linux.dev
+Subject: Re: [PATCH 00/64] i2c: reword i2c_algorithm according to newest
+ specification
+Message-ID: <ug266trshvhhbsln3eoh53fmsuj3l63ziz6gavcl7rv2jhjr5t@3av5givh5n7m>
+References: <20240322132619.6389-1-wsa+renesas@sang-engineering.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB5566.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4135597d-19a3-415c-ccd2-08dc4ae53b8e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Mar 2024 02:59:18.6646
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: f7V7kTXP44AnjjMbv8DFLL76urlj5GprazZGrpER6a9bpTvTGtglyUjA4UI/gdeXlLoCGql/cYXm/ByOnxCG4Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR03MB8297
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240322132619.6389-1-wsa+renesas@sang-engineering.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240322_200003_419946_19F18582 
-X-CRM114-Status: GOOD (  18.85  )
+X-CRM114-CacheID: sfid-20240323_022041_074435_A061D9D8 
+X-CRM114-Status: GOOD (  19.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -196,36 +79,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgU2FrYXJpLA0KDQpUaGFua3MgZm9yIHlvdXIgcmV2aWV3Lg0KDQpPbiBXZWQsIDIwMjQtMDMt
-MjAgYXQgMDc6MjkgKzAwMDAsIFNha2FyaSBBaWx1cyB3cm90ZToNCj4gIAkgDQo+IEV4dGVybmFs
-IGVtYWlsIDogUGxlYXNlIGRvIG5vdCBjbGljayBsaW5rcyBvciBvcGVuIGF0dGFjaG1lbnRzIHVu
-dGlsDQo+IHlvdSBoYXZlIHZlcmlmaWVkIHRoZSBzZW5kZXIgb3IgdGhlIGNvbnRlbnQuDQo+ICBI
-aSBaaGksDQo+IA0KPiBUaGFua3MgZm9yIHRoZSBzZXQuDQo+IA0KPiBPbiBTYXQsIE1hciAxNiwg
-MjAyNCBhdCAxMDo1Mjo1M0FNICswODAwLCBaaGkgTWFvIHdyb3RlOg0KPiA+ICtzdGF0aWMgaW50
-IGdjMDVhMl9zZXRfY3RybChzdHJ1Y3QgdjRsMl9jdHJsICpjdHJsKQ0KPiA+ICt7DQo+ID4gK3N0
-cnVjdCBnYzA1YTIgKmdjMDVhMiA9DQo+ID4gK2NvbnRhaW5lcl9vZihjdHJsLT5oYW5kbGVyLCBz
-dHJ1Y3QgZ2MwNWEyLCBjdHJscyk7DQo+ID4gK2ludCByZXQgPSAwOw0KPiA+ICtzNjQgZXhwb3N1
-cmVfbWF4Ow0KPiA+ICtzdHJ1Y3QgdjRsMl9zdWJkZXZfc3RhdGUgKnN0YXRlOw0KPiA+ICtjb25z
-dCBzdHJ1Y3QgdjRsMl9tYnVzX2ZyYW1lZm10ICpmb3JtYXQ7DQo+ID4gKw0KPiA+ICtzdGF0ZSA9
-IHY0bDJfc3ViZGV2X2dldF9sb2NrZWRfYWN0aXZlX3N0YXRlKCZnYzA1YTItPnNkKTsNCj4gPiAr
-Zm9ybWF0ID0gdjRsMl9zdWJkZXZfc3RhdGVfZ2V0X2Zvcm1hdChzdGF0ZSwgMCk7DQo+ID4gKw0K
-PiA+ICtpZiAoY3RybC0+aWQgPT0gVjRMMl9DSURfVkJMQU5LKSB7DQo+ID4gKy8qIFVwZGF0ZSBt
-YXggZXhwb3N1cmUgd2hpbGUgbWVldGluZyBleHBlY3RlZCB2YmxhbmtpbmcgKi8NCj4gPiArZXhw
-b3N1cmVfbWF4ID0gZm9ybWF0LT5oZWlnaHQgKyBjdHJsLT52YWwgLSBHQzA1QTJfRVhQX01BUkdJ
-TjsNCj4gPiArX192NGwyX2N0cmxfbW9kaWZ5X3JhbmdlKGdjMDVhMi0+ZXhwb3N1cmUsDQo+ID4g
-KyBnYzA1YTItPmV4cG9zdXJlLT5taW5pbXVtLA0KPiA+ICsgZXhwb3N1cmVfbWF4LCBnYzA1YTIt
-PmV4cG9zdXJlLT5zdGVwLA0KPiA+ICsgZXhwb3N1cmVfbWF4KTsNCj4gPiArfQ0KPiA+ICsNCj4g
-PiArLyoNCj4gPiArICogQXBwbHlpbmcgVjRMMiBjb250cm9sIHZhbHVlIG9ubHkgaGFwcGVucw0K
-PiA+ICsgKiB3aGVuIHBvd2VyIGlzIG9uIGZvciBzdHJlYW1pbmcuDQo+ID4gKyAqLw0KPiA+ICtp
-ZiAoIXBtX3J1bnRpbWVfZ2V0X2lmX2luX3VzZShnYzA1YTItPmRldikpDQo+IA0KPiBUaGlzIHNo
-b3VsZCBiZSBwbV9ydW50aW1lX2dldF9pZl9hY3RpdmUoKS4gUGxlYXNlIGFzc3VtZSBpdCB0YWtl
-cyBhDQo+IHNpbmdsZQ0KPiBhcmd1bWVudCAodGhlIGRldmljZSktLS1zZWUgY29tbWl0DQo+IGMw
-ZWYzZGY4ZGJhZWY1MWVlNGNmZDU4YTQ3MWFkZjJlYWVlNmY2YjMuDQo+IA0KPiBUaGUgc2FtZSBj
-b21tZW50IGFwcGxpZXMgdG8gdGhlIEdDMDhBMyBpZiBpdCB1c2VzIGF1dG9zdXNwZW5kLCBwbGVh
-c2UNCj4gcG9zdA0KPiBhIG5ldyBwYXRjaCBmb3IgdGhhdC4NCj4gDQpmaXhlZCwgcGF0Y2ggYXMg
-YmVsb3c6IA0KZ2MwNWEgcGF0Y2g6djIgDQoNCmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4
-LW1lZGlhLzIwMjQwMzIzMDE0NzUxLjQ5ODktMS16aGkubWFvQG1lZGlhdGVrLmNvbS8NCg0KZ2Mw
-OGEgcGF0Y2g6djgNCg0KaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWEvMjAyNDAz
-MjMwMjM4NTEuNTUwMy0xLXpoaS5tYW9AbWVkaWF0ZWsuY29tLw0KDQo+IC0tIA0KPiBLaW5kIHJl
-Z2FyZHMsDQo+IA0KPiBTYWthcmkgQWlsdXMNCg==
+Hi Wolfram,
+
+On Fri, Mar 22, 2024 at 02:24:53PM +0100, Wolfram Sang wrote:
+> Okay, we need to begin somewhere...
+> 
+> Start changing the wording of the I2C main header wrt. the newest I2C
+> v7, SMBus 3.2, I3C specifications and replace "master/slave" with more
+> appropriate terms. This first step renames the members of struct
+> i2c_algorithm. Once all in-tree users are converted, the anonymous union
+> will go away again. All this work will also pave the way for finally
+> seperating the monolithic header into more fine-grained headers like
+> "i2c/clients.h" etc. So, this is not a simple renaming-excercise but
+> also a chance to update the I2C core to recent Linux standards.
+
+yes, very good! It's clearly stated in all three documentations
+that Target replaces Slave and Controller replaces Master (i3c is
+at the 1.1.1 version).
+
+> My motivation is to improve the I2C core API, in general. My motivation
+> is not to clean each and every driver. I think this is impossible
+> because register names based on official documentation will need to stay
+> as they are. But the Linux-internal names should be updated IMO.
+
+Also because some drivers have been written based on previous
+specifications where master/slave was used.
+
+> That being said, I worked on 62 drivers in this series beyond plain
+> renames inside 'struct i2c_algorithm' because the fruits were so
+> low-hanging. Before this series, 112 files in the 'busses/' directory
+> contained 'master' and/or 'slave'. After the series, only 57. Why not?
+> 
+> Next step is updating the drivers outside the 'i2c'-folder regarding
+> 'struct i2c_algorithm' so we can remove the anonymous union ASAP. To be
+> able to work on this with minimal dependencies, I'd like to apply this
+> series between -rc1 and -rc2.
+> 
+> I hope this will work for you guys. The changes are really minimal. If
+> you are not comfortable with changes to your driver or need more time to
+> review, please NACK the patch and I will drop the patch and/or address
+> the issues separeately.
+> 
+> @Andi: are you okay with this approach? It means you'd need to merge
+> -rc2 into your for-next branch. Or rebase if all fails.
+
+I think it's a good plan, I'll try to support you with it.
+
+> Speaking of Andi, thanks a lot to him taking care of the controller
+> drivers these days. His work really gives me the freedom to work on I2C
+> core issues again.
+
+Thank you, Wolfram!
+
+Andi
 
