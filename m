@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7746FC54E58
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Mar 2024 22:58:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0607AC54E58
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Mar 2024 23:10:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nlDWJdQycQkd27AXi7BJ6f+M3ZHXeiSce97p9DkUOiY=; b=aCUfhFQ2KfvWp8jCRrC1REyyah
-	YbRG29jWm1c37GHPG1sFv7En0QU2EG4y5FJ1oJ+bS3Ws/qCqduAJfdWkjwX8r+CF/jAOa5Se7fN5E
-	afiAxDsElD0AkfAR3gWdHBp0aljTGPwsY0X7c8UOX3ffwm7kDqvprTD09ZCtaIdYHIgKE+OWn1b5X
-	NavQjH30MvCqDFHsHaIQnPmPEP7MUtfZh5QTrG4HvY6mAK3P+K0uAxpTXDD5vu35MbpRV8e2TQluN
-	U3QEBV6/WrfPF+XiXLAOrfl1iva9URo4Pxhd4UX4jmnU43ChkjIP5DsGbAsuQxKhr14sHLx1OvRi1
-	nMk+skaw==;
+	bh=FsxvVilUXpZWAgjEQwLLEV8FfS/KQPW+fdyggvrHeyA=; b=i2qu9tqmLBqppcUssfrT6iXPrz
+	xZfh6Qz717+mG1ImvASin3dpj2wpQ0azRe/KrZD0IOZUXFhzDqNZal/pslGpFV32MzvVwkPw/vgXd
+	2HPQ/qlhh1QIwX264Dka3OcT2Z6yXiGh2hUsr9uuFkMcMABjiGkDhzA1wb3w2eZu8BKuYUiZMJcKw
+	CXBFA8lxvBWhke304AnKAWMg/8JG8I2gV4umEN1497hKgF3WGWRm3k8CuqBrKAykW8kd2vTyD0MG6
+	cOUiJgWEiHk4xQZhOjHQPwMIrbCDPOQehPKhU+988y4g/gzvrqdZy0bcp+iDrOZwSWIjU+gBAwXXi
+	XCutyUwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1roWmz-0000000DiVH-1RuY;
-	Sun, 24 Mar 2024 22:58:05 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1roWzH-0000000DmOd-1Jw8;
+	Sun, 24 Mar 2024 23:10:47 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1roWmt-0000000DiQ1-1aYe;
-	Sun, 24 Mar 2024 22:58:01 +0000
+	id 1roWzC-0000000DmN7-01bB;
+	Sun, 24 Mar 2024 23:10:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id C38E4CE0AD8;
-	Sun, 24 Mar 2024 22:57:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F080C433C7;
-	Sun, 24 Mar 2024 22:57:48 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6935560DDD;
+	Sun, 24 Mar 2024 23:10:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 615FAC43399;
+	Sun, 24 Mar 2024 23:10:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711321070;
-	bh=auK8R9Pko+8qzyQY9/nghXInMkBIXsa2OBgChzHHXdM=;
+	s=k20201202; t=1711321841;
+	bh=0WHpBM7JN7f1ZsGQtkApKapoJ1cGu4XtGejhhDb4tzQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=j5EiQQ8GwKbok3hH+PEt6h+naJ9md59vvthaC7XO2XP39UqMQgN47xe56GLgNX0V5
-	 fByjIV2hTpBZOYlrNmf52Cn6Q1ZTo6eSTtax4zIGPUPhREwUIWFERALn4G/V5OlzPR
-	 M8Dn6P7PoyOit0wUkZpXxGldfyxBOTN0NJnZciIv5jUZlQynyl3GfU8ELdBV443ZBL
-	 0J40AKmYdjTBbv9cYmuzef2g91Q9035YFBHbUm7oq8G5bOrdPhIzdjsiVgA8zbPWAN
-	 mk1+yZoBMKOjjLG63FN+NTXsG64TdIeyq3x8XMlk1UIYq5tBsJz4KGW6wYHKS62ddr
-	 bbvUO0FC35uKg==
+	b=AFwWhGdLgKliNQogS/8D5XIzGImbjsEVD5PZsINdSQmHK85mG01sAhuabhfIiG+//
+	 JzCc9UTYn2NzusPjuy+Q5iqffWX5Dxzlre/AqlgilS0SVoVMPJc1BKDbC7JNrEkyM0
+	 TQ0HFfmIIFqxYhYqiV4nNRHFxuW/ZxWaXePlKOPQkMXVAp1v3L4rDSOWQN7Kyjfq28
+	 /928M45w4c81JL7VBtQYt438LelBCxrMhkyPXuYS3DT6Py9uxMHvJcKqXGWevGbyyO
+	 JGq9qcwto8D3O3q146qJ345M+GNBeBt1yFIqz1kYcxtLCuMcEyZKqG8Drc8oR8latV
+	 liW9T2wgGq9Xg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -59,18 +59,18 @@ Cc: Randy Dunlap <rdunlap@infradead.org>,
 	Peter Rosin <peda@axentia.se>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Sasha Levin <sashal@kernel.org>
-Subject: [PATCH 6.7 633/713] rtc: mt6397: select IRQ_DOMAIN instead of depending on it
-Date: Sun, 24 Mar 2024 18:45:59 -0400
-Message-ID: <20240324224720.1345309-634-sashal@kernel.org>
+Subject: [PATCH 6.6 569/638] rtc: mt6397: select IRQ_DOMAIN instead of depending on it
+Date: Sun, 24 Mar 2024 19:00:06 -0400
+Message-ID: <20240324230116.1348576-570-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240324224720.1345309-1-sashal@kernel.org>
-References: <20240324224720.1345309-1-sashal@kernel.org>
+In-Reply-To: <20240324230116.1348576-1-sashal@kernel.org>
+References: <20240324230116.1348576-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240324_155759_679370_64E6DDDA 
+X-CRM114-CacheID: sfid-20240324_161042_334593_2890EEB9 
 X-CRM114-Status: GOOD (  12.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -124,7 +124,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
-index 3814e0845e772..b1e1d277d4593 100644
+index d7502433c78aa..92f46a6312c24 100644
 --- a/drivers/rtc/Kconfig
 +++ b/drivers/rtc/Kconfig
 @@ -1832,7 +1832,8 @@ config RTC_DRV_MT2712
