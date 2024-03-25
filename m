@@ -4,67 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A333EC54E64
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Mar 2024 13:06:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DABDC54E64
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Mar 2024 13:19:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4thd2ZTS7+ANXVLcJCbfAt3fDy9gqJOO3GLl8F1igJM=; b=L/6yoAdLDdb5rBzBZqYQ10lQX4
-	srfhvxXWtU3nfzHgbuPH+cYGsSULFK6onqAsj691xhbuepEZNIgr+j/5N4tZJ+0vZmNGKXYlpFyji
-	X0ysxqtruv8xLs+6JO0Z0/vYPy1e267NjKttVDz/GPlyK1DTXpuqCQQbHiCPvQ3X2cXcj4tinsiEr
-	GS3EAaIK8so71lYiXYOJFmDxXJ9xIRIYENcUC4JSAYmOYZcRPafHIrjRlaFTWKW6NvreU2+hmE9Ss
-	9RYkkidtQzZWfr6v0uf4cZDlQSydn9MtB1w/obVO49cTQBJoPY6Yzykp4RkS+KZqse83jU0CJ+JQ7
-	kiC8mwew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yUWQ4N8aQ4jL2fjYy2Ba7XeBW0vWjhzL38iFdr/etLQ=; b=0po6QdcveJIpRhmo7UVPUWvrM8
+	8c2OrTZzW4EAflb+l1UQmcoO4HU9nGGDrepQsBhAq21C3GM1/0EV0uADj2+s4JKg0TGu9i1+uKLcF
+	5uTtgmLnmTjXujuKSJqvNBb6CbKE6QBVgan1RDbUAd4HqoMqwUNDmx2wBIezPGmNt8mBjS4gMqJoj
+	W68Zs+GOm4gLhtk+VmDAiZtej7KVkf7akhOAAG5J2IzPyf6a1GOsVWZnAbondQQGaYrQTx4XodJoR
+	byy0Dmb4WjPJqdl3jtdG3L7AaAzQbIGL3wWJkq3oTNnmNQ+J1ydVBCSSwIhgfS8ZbgeWmexd3Z0qc
+	4YgfHMWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rok2E-0000000HRnN-0WAP;
-	Mon, 25 Mar 2024 13:06:42 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rokF3-0000000HWDb-0dR2;
+	Mon, 25 Mar 2024 13:19:57 +0000
+Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rok27-0000000HRk7-0dBY;
-	Mon, 25 Mar 2024 13:06:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1711371992;
-	bh=y41ZUo//R1PFlTZZBp6OISCB8XZyhdqerzYG0tK4h84=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AwX6bukZx35XtczvSYUlGvxfUuq/ynvrxShktE9Ug4+6f6WqsKtlBHio6PNittTaT
-	 kJgFP96UNjt/zIufP5ssM0wvAe/8YetuWcgPl38y7W8Ojrr7ACbJM4TRGscxJiyJMH
-	 Dj9S+4+zL5ZPSxEuY0Q4w29SNV9IzMz4LM2bTl87dXpGjZRcumk6dT8t7EmRQpBtFG
-	 dTfWlwuI/cxuKtaFieVRYUm9H0OUAKdFWUTwdZIpaMvEUhSlBV5xqmaOrTWmN6onVM
-	 HkjfDZJDQ8/ZKTdc3SYc+SB0cU8Dm1AlBmKORLdHETtCryt3E8LywypIWElPFbkBMX
-	 HC575lGmdMdnw==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id CF571378209A;
-	Mon, 25 Mar 2024 13:06:31 +0000 (UTC)
-Message-ID: <2625bf93-1501-4e5d-b492-de9bcffa93ec@collabora.com>
-Date: Mon, 25 Mar 2024 14:06:31 +0100
+	id 1rokE5-0000000HVgH-1CZT
+	for linux-mediatek@lists.infradead.org;
+	Mon, 25 Mar 2024 13:19:15 +0000
+Received: by mail-yb1-xb33.google.com with SMTP id 3f1490d57ef6-dcc4de7d901so3545181276.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 25 Mar 2024 06:18:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1711372734; x=1711977534; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=yUWQ4N8aQ4jL2fjYy2Ba7XeBW0vWjhzL38iFdr/etLQ=;
+        b=G+ZqEYEedOBYEOp+jmlkVn9x/0ECQORneBuhW7kedg+gYBIpz9wF/aN9lHu3cIvJTu
+         Bwni2zbT6jSbJ26lCkQs4SAV3hgx9eHIWIOn8HN1ci6q24NoTQ81TSghpf6wajKezTMU
+         q0TXPsGmvoktBLVg/uoqbaUfMS2sxEvrFgaNj9eT1bOVgxL42koNJPKcSpPkt8LkfoCa
+         89pUcsvN951P38B3DRB9r6ZjUgayb3Z7CunvmWvGRn47q1VVRJ6I5stN1p9KaYY9ZLZ3
+         gzbZWdWqNIskm0U6mrtTvD++HFieXLGk3LMquOdx/OXIItf9L4VDxk+mJzhd15y/naiA
+         o7tw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1711372734; x=1711977534;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=yUWQ4N8aQ4jL2fjYy2Ba7XeBW0vWjhzL38iFdr/etLQ=;
+        b=ZspYcQlKWi/vLMg43PyAP38IGDu1bMcPazE54kL+/0RvU6oHy6u9KLOHK218Ao/sKM
+         0XMjEQ7ftzfMw0hHaZE8Dmn7FO64jk+CBoACT7C/ka/Jel80D05/oqlC0q8r0Lb+kg4Z
+         qp/uSH+jn/nlXkzzO5VmicrmNhBkHNRwUUwj+xV6ktWZ7sWAAmywttKhJTCNWb2c7MOG
+         M8BLcrqnkHkGD0DjhlNTeLPs/A36Aoz9IFwX9FAsbNfzwHGoVN4iua6jolUVCrndnvp8
+         Lx+W8hjzu1KCrMrExbP7zDYAOXJYM2eLhU6lOz+Qhdg5iMFSTT66xSuExFbo4068bzfs
+         s5+w==
+X-Forwarded-Encrypted: i=1; AJvYcCUp2RJhOSPrhuC3Emlhjk6p0vxlEy51zS3f6cTqckDJhx3MSn2P8BEbu4eyIdrEPdhEEAkVnfRxFKjw3fc0wjQA6HndvNPgrZaxZ5/YFGTVzTw3
+X-Gm-Message-State: AOJu0YxVR/SdJGiw67BvphXnIqIxkWe/MX4vput0mtRugFwJVR82oENX
+	2W76rYZVtC3yz6hUHYcRgpcyFD7PMEXIb7H2eXtwFmeop+mCE3XTPUNJ7shH7yHvWAxah97AdEY
+	V6O6LSwxe0xQThle8lSsEEZjAbV59TxxS8xnAeQ==
+X-Google-Smtp-Source: AGHT+IHzTD+eD804dUyrAtAijJPdYapsf0OCnAi6GJ6Hmffr3CDyQqbURkpBgSiWK8ZFwu+EzGqtOUIM1EiwoY+Ah6Q=
+X-Received: by 2002:a25:3618:0:b0:dcd:6c0:da64 with SMTP id
+ d24-20020a253618000000b00dcd06c0da64mr5239723yba.58.1711372734085; Mon, 25
+ Mar 2024 06:18:54 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] soc: mediatek: pm-domains: solve power domain glitch
- issue
-To: "yu-chang.lee" <yu-chang.lee@mediatek.com>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, mandyjh.liu@mediatek.com,
- fan.chen@mediatek.com, xiufeng.li@mediatek.com
-References: <20240325121908.3958-1-yu-chang.lee@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240325121908.3958-1-yu-chang.lee@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20240307114348.3643034-1-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20240307114348.3643034-1-andriy.shevchenko@linux.intel.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 25 Mar 2024 14:18:18 +0100
+Message-ID: <CAPDyKFr7hQzOzVXK7Nck9jn=PSyJF652rJfVPVayO0mzGP14nQ@mail.gmail.com>
+Subject: Re: [PATCH v1 1/1] mmc: mtk-sd: Remove unused of_gpio.h
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Axe Yang <axe.yang@mediatek.com>, linux-mmc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, 
+	Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_060635_428672_D0E69772 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20240325_061859_334178_682985A8 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,39 +91,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/03/24 13:19, yu-chang.lee ha scritto:
-> Hi,
-> 
-> This series aims to solve power-off failures and occasional SMI hang issues that
-> occur during camera stress tests. The issue arises because, when MTCMOS powers on
-> or off, signal glitches are sometimes produced. This is fairly normal, but the
-> software must address it to avoid mistaking the glitch for a transaction signal.
-> 
-> The solutions in these patches can be summarized as follows:
-> 
-> 1. Disable the sub-common port after turning off the Larb CG and before turning
->     off the Larb MTCMOS.
-> 2. Use CLAMP to disable/enable the SMI common port.
-> 3. Implement an AXI reset.
-> For previous discussion on the direction of the code modifications, please refer
-> to: https://lore.kernel.org/linux-arm-kernel/c476cc48-17ec-4e14-98d8-35bdffb5d296@collabora.com/
-> 
-> 
-> yu-chang.lee (2):
->    soc: mediatek: pm-domains: add smi_larb_reset function when power on
->    soc: mediatek: pm-domains: support smi clamp protection
+On Thu, 7 Mar 2024 at 12:43, Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+>
+> of_gpio.h is deprecated and subject to remove.
+> The driver doesn't use it, simply remove the unused header.
+>
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-Can you please change both commit titles to use "pmdomain: mediatek:" instead of
-"soc: mediatek:"?
+Applied for next, thanks!
 
-Thanks
-Angelo
+Kind regards
+Uffe
 
-> 
->   drivers/pmdomain/mediatek/mt8188-pm-domains.h |  69 +++++-
->   drivers/pmdomain/mediatek/mtk-pm-domains.c    | 206 +++++++++++++++---
->   drivers/pmdomain/mediatek/mtk-pm-domains.h    |  13 ++
->   3 files changed, 255 insertions(+), 33 deletions(-)
-> 
 
+> ---
+>  drivers/mmc/host/mtk-sd.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 1634b1f5d201..a94835b8ab93 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -13,7 +13,6 @@
+>  #include <linux/ioport.h>
+>  #include <linux/irq.h>
+>  #include <linux/of.h>
+> -#include <linux/of_gpio.h>
+>  #include <linux/pinctrl/consumer.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/pm.h>
+> --
+> 2.43.0.rc1.1.gbec44491f096
+>
 
