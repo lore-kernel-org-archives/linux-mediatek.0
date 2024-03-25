@@ -4,75 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DB26CD11DD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Mar 2024 08:30:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7412EC54E58
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Mar 2024 12:19:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JtSgWHk1xHAhI5zxMgtFggLv8t4JQ9ZRtaS4KfZWjYk=; b=EbAC9fJ/m90SGS7NzBozws5Fua
-	+/cVyHi9fZyyG7dnG9uZaUEZHdg0pvZBlW7I2AX7xZYZ353mi1+3rsauHfSU8/QPVUM1a5zwT5mc2
-	tAT7Igfi2oins5dc2zVyOq1Gu8e4JCbe9tMqpHk9rkTTfMfLTp3pTC/uvUcDYX46r3AbljkRDrSR9
-	JbwRYjLJmWCQNVjqTyFufAcoEaLVtSbDO83CwLggTUUiEZuGvcOnT/bsQx6MaUfw61ZdeetW9OG6K
-	RrKcfCNlxSUSQFWdXP4fkGCiIo2CSJjo9uNqroAiP6GZTemrRjDJ/wxC2V5icb+of+BRNMLdgEtrW
-	Kg9+auAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lmpuo9I0bbZzu8NWnzQ5XfVCX4DjRHWuUIyZfU8/iiM=; b=vFASuBojSU8gfnySWfT1kFPFbl
+	IrIu+fY0tVDhXnxIpakCfVjnfyMU8/EF85Dadwzv2y9e76mGy9y2tVIDWDFaYXrx7euPUECvL0P95
+	cPUZC+z8kjdq56ClcoTFMmi72YUdYEmCEcwAKbvHb031XhG2S3X9Rul6Yoqwlf4fqpoAiekdESr73
+	mm7TKqgyVQhIhgRYQEz0sW+Cnw+d54yI5ZR3EbvLEIzKckvD1EJa1YhoqTDDiVvuce4yfrxXg28nU
+	vKo7ZMvtq1X4DOBiCvZYco9jMjd7/VK+bRzOGjdQdyB/MdOUn/cVQAJXIH2fZF8CvaekciqAXeKA9
+	mYPD+8gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rofik-0000000GANf-0w8O;
-	Mon, 25 Mar 2024 08:30:18 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rojIW-0000000HG07-1w89;
+	Mon, 25 Mar 2024 12:19:28 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rofiW-0000000GAEs-1xAc;
-	Mon, 25 Mar 2024 08:30:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1711355403;
-	bh=WcjRvdfQ2EbQum9xWCjkiEU3kMs3JIEIAvUpABV232Q=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=0BBCJUwJ7vWjw3HrU5xaFXwV+xSULegmhfamw+lIn+trZZQiFHhl9jk1mZ2Q2cjYo
-	 AiIAWSTeFlM9byqnX0Z2lMbZ/EAnx95k6Ojb3pEmJgkj2mAvV4BPVyWRK9XTCTBX5x
-	 brzFmnzKmSQvTEca4b8Q7/u+cQocbgIGCUfap8KdtQDcWJJxMphuDCVUSYd09SroRa
-	 g2uDARjYNHVfL089PTtXe2DXFayNNbKeOB30fEpDeT4EP6Qc61+wOuFLg+71+PZlLD
-	 z10N5ghqVJsOkm6U9iOtTkG64KpuBSbWqIDaIZZmgzBuXEBx23ht9I6I64fnmD07Ul
-	 pbvLZPF0sk5Lw==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 883D7378209C;
-	Mon, 25 Mar 2024 08:30:01 +0000 (UTC)
-Message-ID: <26c3e4e6-89b2-4411-b55b-8fad80d38c75@collabora.com>
-Date: Mon, 25 Mar 2024 09:30:01 +0100
+	id 1rojIR-0000000HFwd-1NLd;
+	Mon, 25 Mar 2024 12:19:25 +0000
+X-UUID: e6a3d1cceaa111ee96d5dfc950b7243d-20240325
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=lmpuo9I0bbZzu8NWnzQ5XfVCX4DjRHWuUIyZfU8/iiM=;
+	b=gpHywCdiRo2Ru6odRRrjEEEzxmAXxLRLDQtrrgIWXORUu+skFjGiNFvxEX60TyyiznLF4cACZRUQcVeS6vFuXmtceP6qGDg1mrcJJE1FtFve3rrNIfjlC/mwaWEazyXoOmGdSXWSVLgJwNY+AjCoofV6hVogTDoldn4U/1sYOhE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:168d033d-59d0-4bf6-8ba0-2cba09958305,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:ed466885-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
+X-UUID: e6a3d1cceaa111ee96d5dfc950b7243d-20240325
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <yu-chang.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2058945697; Mon, 25 Mar 2024 05:19:17 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 25 Mar 2024 20:19:14 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 25 Mar 2024 20:19:14 +0800
+From: yu-chang.lee <yu-chang.lee@mediatek.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<mandyjh.liu@mediatek.com>, <fan.chen@mediatek.com>,
+	<xiufeng.li@mediatek.com>, <yu-chang.lee@mediatek.com>
+Subject: [PATCH 0/2] soc: mediatek: pm-domains: solve power domain glitch issue
+Date: Mon, 25 Mar 2024 20:19:06 +0800
+Message-ID: <20240325121908.3958-1-yu-chang.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] media: dt-bindings: i2c: add GalaxyCore GC05A2
- image sensor
-To: Zhi Mao <zhi.mao@mediatek.com>, mchehab@kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, sakari.ailus@linux.intel.com
-Cc: laurent.pinchart@ideasonboard.com, shengnan.wang@mediatek.com,
- yaya.chang@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
- yunkec@chromium.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- jacopo.mondi@ideasonboard.com, 10572168@qq.com, hverkuil-cisco@xs4all.nl,
- heiko@sntech.de, jernej.skrabec@gmail.com, macromorgan@hotmail.com,
- linus.walleij@linaro.org, hdegoede@redhat.com,
- tomi.valkeinen@ideasonboard.com, gerald.loacker@wolfvision.net,
- andy.shevchenko@gmail.com, bingbu.cao@intel.com,
- dan.scally@ideasonboard.com, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-References: <20240323014751.4989-1-zhi.mao@mediatek.com>
- <20240323014751.4989-2-zhi.mao@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240323014751.4989-2-zhi.mao@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--7.339100-8.000000
+X-TMASE-MatchedRID: u0D5i0POlXiYvtVftxNfQUvrB8UvzFr4BdebOqawiLuCsBeCv8CM/Sse
+	9qdFFe49mI8EBZ3uTGtSzpXv5ekotFrgS5K/qcaqDko+EYiDQxFQCOsAlaxN7w6QlBHhBZuwkwm
+	4GnFKyckb7ifYusSVqcMHFIKAT3DiXSJ4c3nT+QcZXJLztZviXLLiLKO9VZOiXCmcAC8DBrOekk
+	V1yzofFtYn7aUb4In+oFW8SPM0GkIfE8yM4pjsDwtuKBGekqUpOlxBO2IcOBYegoblg+i7rGCnQ
+	UssYJ15MlFYtzBbKQ1vcglu/p3CKKy2KbCWZSoB
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--7.339100-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 9765538F42BCE3697C87BD1816866E3CD6EB2C80F0C481004623D67ED9900FF22000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_013004_953988_BDFF82B2 
-X-CRM114-Status: UNSURE (   5.31  )
+X-CRM114-CacheID: sfid-20240325_051923_541522_CEED16DA 
+X-CRM114-Status: UNSURE (   8.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,14 +99,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/03/24 02:47, Zhi Mao ha scritto:
-> Add YAML device tree binding for GC05A2 CMOS image sensor,
-> and the relevant MAINTAINERS entries.
-> 
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+Hi,
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+This series aims to solve power-off failures and occasional SMI hang issues that
+occur during camera stress tests. The issue arises because, when MTCMOS powers on
+or off, signal glitches are sometimes produced. This is fairly normal, but the 
+software must address it to avoid mistaking the glitch for a transaction signal.
 
+The solutions in these patches can be summarized as follows:
+
+1. Disable the sub-common port after turning off the Larb CG and before turning 
+   off the Larb MTCMOS.
+2. Use CLAMP to disable/enable the SMI common port.
+3. Implement an AXI reset.
+For previous discussion on the direction of the code modifications, please refer
+to: https://lore.kernel.org/linux-arm-kernel/c476cc48-17ec-4e14-98d8-35bdffb5d296@collabora.com/
+
+
+yu-chang.lee (2):
+  soc: mediatek: pm-domains: add smi_larb_reset function when power on
+  soc: mediatek: pm-domains: support smi clamp protection
+
+ drivers/pmdomain/mediatek/mt8188-pm-domains.h |  69 +++++-
+ drivers/pmdomain/mediatek/mtk-pm-domains.c    | 206 +++++++++++++++---
+ drivers/pmdomain/mediatek/mtk-pm-domains.h    |  13 ++
+ 3 files changed, 255 insertions(+), 33 deletions(-)
+
+-- 
+2.18.0
 
 
