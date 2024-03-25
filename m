@@ -4,91 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37BBECD11DD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Mar 2024 02:13:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FE17C54E58
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Mar 2024 07:46:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sxHqzO+35IMaHC8reJ9w64iyarfWsb9alKddJjlhWCU=; b=jiCMv8EJtRRdH3Lz9Qejp2fLdW
-	s0P1qQh3OmDD0EeuMCebFWaz5ulPjgn5ndO3V+5xJFf6QzuOLAKtB5yRO5pdZdTc3A6ppaBRuZkhC
-	Z7cxrX/EytnoITAvEM7aPVjHGjV/rs23gfwAbsmGhVyTLWa/bjRAq0V4njhxo6YjBNVFKJJg3AmDR
-	4QEbWRw0Pn/ydaIKerVvl7h/lCbZ7uaAD2/OVEacOjVQpm9f5HU/pQbEwgc8st6W0OLwCQ0eutG3S
-	KZ8lKDqDNJi0e/FgJf6xDrjRfICKDc8/ptRFc9os1DMA98LR8g/+jS6Oa1ModgaUgQbYItivooRB6
-	jukN4NIw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QQRLa1ZYCeZs9CkxrCoO9g5rdtkEbaQEd0z+VIHJ4VA=; b=k3C2cnMLtHbll0nPiZmrFSIAdX
+	LX8qwR/mOrvT648qeEqffLioDX+179x6IZ6aoYLpNSwG/h1wQKmWzv5CCSnwHzMIP3igsJRfZ7GWd
+	w9BhlfBCRf4KJg128D4be22/csbA6XOOQGWq7xdcYEkUVTAlxuJL5bE4Ml07pH6b4tk6ym/FQulm8
+	GE9zDZteqGDxkpdo3N8NBW9W+WdAm/0mnV+RCbMt7LkcOZkl12mPZ9jwQe+EP3gJC7GxRK6hNZjIi
+	FSx7SNKE74ClrDs1XLyT/3GEhaLj5mxGQ2WsV/UmwOPXg6ID2qS8mXlx7XIe8hf5SRQaPs7MwBS+4
+	1Xi0QLrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1roZq1-0000000EbLy-3F6U;
-	Mon, 25 Mar 2024 02:13:25 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rof2k-0000000FzNs-26rt;
+	Mon, 25 Mar 2024 07:46:54 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1roZpm-0000000EbBH-2PZT;
-	Mon, 25 Mar 2024 02:13:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id C3F8FCE1005;
-	Mon, 25 Mar 2024 02:13:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id A56A5C4166B;
-	Mon, 25 Mar 2024 02:13:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711332787;
-	bh=OQ6DaWqLtLK0mHL2i6HS0EPqyqAvookaS2ecZGz/nWM=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=IW3oS+vkvE1rg2omkWdnXg451W2R8QWxmUug1tn/Bg6l3cfmeu1XEIle4W9BtNPp4
-	 0oal/S4apZS+BzY3gBaCjlntTY0jgQlz1t3PTdy9XjaTcskT+il7ElSZAp+JWMzJPx
-	 t4H/ihZGECuHFrRbX8V87SXD5ftRGwC5bn6CdPejAvtWiLKQtnbNuipuyb5sBYBBYm
-	 r76u6K1eEb3PqAdmigNT4nSlFA/s5U3UgALZVL8Mu6HumRAnW3tR7xT39q806nrvhq
-	 m7JZPsTIIGWptqQY1qCZ3jSIb5cnxMaBAWbnn/lCp4J/k3we+Ge3Bv+ms0rQoNcWaw
-	 NOIkisLFJZphg==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 90BCDD2D0E3;
-	Mon, 25 Mar 2024 02:13:07 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1rof2e-0000000FzLi-0Hw8
+	for linux-mediatek@lists.infradead.org;
+	Mon, 25 Mar 2024 07:46:50 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ore@pengutronix.de>)
+	id 1rof17-0003OW-Jx; Mon, 25 Mar 2024 08:45:13 +0100
+Received: from [2a0a:edc0:2:b01:1d::c5] (helo=pty.whiteo.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ore@pengutronix.de>)
+	id 1rof0v-008NMm-2h; Mon, 25 Mar 2024 08:45:01 +0100
+Received: from ore by pty.whiteo.stw.pengutronix.de with local (Exim 4.96)
+	(envelope-from <ore@pengutronix.de>)
+	id 1rof0u-00G1gD-2q;
+	Mon, 25 Mar 2024 08:45:00 +0100
+Date: Mon, 25 Mar 2024 08:45:00 +0100
+From: Oleksij Rempel <o.rempel@pengutronix.de>
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>
+Cc: linux-i2c@vger.kernel.org, Elie Morisse <syniurge@gmail.com>,
+	Shyam Sundar S K <shyam-sundar.s-k@amd.com>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Codrin Ciubotariu <codrin.ciubotariu@microchip.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Krzysztof Adamski <krzysztof.adamski@nokia.com>,
+	Benson Leung <bleung@chromium.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Jarkko Nikula <jarkko.nikula@linux.intel.com>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Mika Westerberg <mika.westerberg@linux.intel.com>,
+	Jan Dabros <jsd@semihalf.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Jean-Marie Verdun <verdun@hpe.com>,
+	Nick Hawkins <nick.hawkins@hpe.com>,
+	Yicong Yang <yangyicong@hisilicon.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Khalil Blaiech <kblaiech@nvidia.com>,
+	Asmaa Mnebhi <asmaa@nvidia.com>, Qii Wang <qii.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Ajay Gupta <ajayg@nvidia.com>,
+	Peter Korsgaard <peter@korsgaard.com>, Andrew Lunn <andrew@lunn.ch>,
+	Robert Richter <rric@kernel.org>,
+	Aaro Koskinen <aaro.koskinen@iki.fi>,
+	Janusz Krzysztofik <jmkrzyszt@gmail.com>,
+	Tony Lindgren <tony@atomide.com>, Vignesh R <vigneshr@ti.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	"Aneesh Kumar K.V" <aneesh.kumar@kernel.org>,
+	"Naveen N. Rao" <naveen.n.rao@linux.ibm.com>,
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Loic Poulain <loic.poulain@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
+	Pierre-Yves MORDRET <pierre-yves.mordret@foss.st.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Laxman Dewangan <ldewangan@nvidia.com>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Conghui Chen <conghui.chen@intel.com>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	Michal Simek <michal.simek@amd.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	chrome-platform@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+	imx@lists.linux.dev, linux-mips@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
+	linux-omap@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+	asahi@lists.linux.dev, linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-tegra@vger.kernel.org, virtualization@lists.linux.dev
+Subject: Re: [PATCH 64/64] i2c: reword i2c_algorithm in drivers according to
+ newest specification
+Message-ID: <ZgErfGFanetan_gP@pengutronix.de>
+References: <20240322132619.6389-1-wsa+renesas@sang-engineering.com>
+ <20240322132619.6389-65-wsa+renesas@sang-engineering.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v3 00/32] spi: get rid of some legacy macros
-From: patchwork-bot+chrome-platform@kernel.org
-Message-Id: <171133278756.9916.16032493309661657935.git-patchwork-notify@kernel.org>
-Date: Mon, 25 Mar 2024 02:13:07 +0000
-References: <cover.1707324793.git.u.kleine-koenig@pengutronix.de>
-In-Reply-To: <cover.1707324793.git.u.kleine-koenig@pengutronix.de>
-To: =?utf-8?q?Uwe_Kleine-K=C3=B6nig_=3Cu=2Ekleine-koenig=40pengutronix=2Ede=3E?=@ci.codeaurora.org
-Cc: broonie@kernel.org, kernel@pengutronix.de, mdf@kernel.org,
- hao.wu@intel.com, yilun.xu@intel.com, trix@redhat.com,
- linux-fpga@vger.kernel.org, linux-kernel@vger.kernel.org,
- alex.aring@gmail.com, stefan@datenfreihafen.org, miquel.raynal@bootlin.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- linux-wpan@vger.kernel.org, netdev@vger.kernel.org, lars@metafoo.de,
- Michael.Hennerich@analog.com, jic23@kernel.org, linux-iio@vger.kernel.org,
- dmitry.torokhov@gmail.com, Jonathan.Cameron@huawei.com,
- linux-input@vger.kernel.org, gregkh@linuxfoundation.org,
- andriy.shevchenko@linux.intel.com, ulf.hansson@linaro.org,
- martin.tuma@digiteqautomotive.com, mchehab@kernel.org,
- linux-media@vger.kernel.org, serjk@netup.ru, arnd@arndb.de,
- yangyingliang@huawei.com, linux-mmc@vger.kernel.org, richard@nod.at,
- vigneshr@ti.com, robh@kernel.org, amit.kumar-mahapatra@amd.com,
- alsa-devel@alsa-project.org, linux-mtd@lists.infradead.org, horms@kernel.org,
- ronald.wahl@raritan.com, bleung@chromium.org, tzungbi@kernel.org,
- groeck@chromium.org, chrome-platform@lists.linux.dev, michal.simek@amd.com,
- jcmvbkbc@gmail.com, linux-spi@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, andersson@kernel.org,
- konrad.dybcio@linaro.org, linux-arm-msm@vger.kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux-mediatek@lists.infradead.org, tzimmermann@suse.de, javierm@redhat.com,
- sam@ravnborg.org, dri-devel@lists.freedesktop.org,
- linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev,
- vireshk@kernel.org, rmfrfs@gmail.com, johan@kernel.org, elder@kernel.org,
- greybus-dev@lists.linaro.org, peterhuewe@gmx.de, jarkko@kernel.org,
- jgg@ziepe.ca, linux-integrity@vger.kernel.org, herve.codina@bootlin.com,
- krzysztof.kozlowski@linaro.org, linux-usb@vger.kernel.org, deller@gmx.de,
- dario.binacchi@amarulasolutions.com, kvalo@kernel.org, dmantipov@yandex.ru,
- libertas-dev@lists.infradead.org, linux-wireless@vger.kernel.org,
- corbet@lwn.net, bhelgaas@google.com, james.clark@arm.com,
- linux-doc@vger.kernel.org
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20240322132619.6389-65-wsa+renesas@sang-engineering.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ore@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240324_191311_079845_769CD797 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20240325_004648_290748_648D15A3 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,33 +156,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to chrome-platform/linux.git (for-next)
-by Mark Brown <broonie@kernel.org>:
-
-On Wed,  7 Feb 2024 19:40:14 +0100 you wrote:
-> Changes since v2
-> (https://lore.kernel.org/linux-spi/cover.1705944943.git.u.kleine-koenig@pengutronix.de):
+On Fri, Mar 22, 2024 at 02:25:57PM +0100, Wolfram Sang wrote:
+> Match the wording in i2c_algorithm in I2C drivers wrt. the newest I2C
+> v7, SMBus 3.2, I3C specifications and replace "master/slave" with more
+> appropriate terms. For some drivers, this means no more conversions are
+> needed. For the others more work needs to be done but this will be
+> performed incrementally along with API changes/improvements. All these
+> changes here are simple search/replace results.
 > 
->  - Drop patch "mtd: rawnand: fsl_elbc: Let .probe retry if local bus is
->    missing" which doesn't belong into this series.
->  - Fix a build failure noticed by the kernel build bot in
->    drivers/spi/spi-au1550.c. (I failed to catch this because this driver
->    is mips only, but not enabled in a mips allmodconfig. That's a bit
->    unfortunate, but not easily fixable.)
->  - Add the Reviewed-by: and Acked-by: tags I received for v2.
-> 
-> [...]
+> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
 
-Here is the summary with links:
-  - [v3,15/32] platform/chrome: cros_ec_spi: Follow renaming of SPI "master" to "controller"
-    https://git.kernel.org/chrome-platform/c/85ad0ec049a7
+Acked-by: Oleksij Rempel <o.rempel@pengutronix.de> # for i2c-imx.c 
 
-You are awesome, thank you!
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
