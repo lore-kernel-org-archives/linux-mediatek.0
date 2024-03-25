@@ -4,71 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D654C54E58
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Mar 2024 08:24:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEB72C54E64
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Mar 2024 08:30:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fPpe3uLSfsQlcTc/HStwdXwQSNVpaeuqe1/Wvq9vVcM=; b=0ZGkHDbHndSt7CvbJUtHiJ5RNh
-	bclxdlmiRZfDG1X+C9SHGe68aDc32UHkpfwFMX8A+5JgWhOXdQJeQIBwDBnblKjh1To+pLSu5u8GD
-	+VGQ42It6msNO5ieQk28GpSveDTuXMNgVIpx0HiP966Wcwdm1R71tFB7bpQSyhctDzDtGyMsl3tnu
-	DCBX7LGm9SL5Oi5CTk9sKMP/U1+veQINA6cP3/96CZ+1QEyP9dkbinW7Yt/QYJX45p6EYsV3gZ8Ie
-	QVzv3A5K4xA5UP7lxUP6dDXWiyRwJVAnGB0o2gRzJMxY40P4RIDdvRcjC5xP6Kcoakh+xpvSkBdfO
-	Iyy0Y8TA==;
+	bh=+nKLEkdWdzdFgN4vcxtbxd5hdMhqGILRieC54RsPRHE=; b=4k9Zwpt9HzMTGXwTw2V0i3Syf6
+	pMmSNXe95ecZhfxMKGMATt0nsPDMjTg3oZSSGxRCKP9uUEalTUbux35bjw5cYhAb+/eJ1bXa5GbEs
+	k4py+T8ZIjhRwafT+CyYMeV6dZc3Tz2e8NNYftg70VueGXVE0/QSzHYZYdEJpGTjJh9wGxyLzvYUS
+	y7eD6SigTyB+vM7eKAjSRstKFhrJO0Hr0O+J0pBZZfVIcRbe3aaQek8vfcNzVxYMqDxv4RGAc+lsO
+	tFqrSX/YOXpLr/T+tLnEpLyrhDHvNhYqNRTE5L1Eh7sfoWjEmC9h6+A5eTQ3KTrmcSrcfFNzAB3XW
+	6RUVTOAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rofcl-0000000G8XN-1y5l;
-	Mon, 25 Mar 2024 08:24:07 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rofid-0000000GAIr-011H;
+	Mon, 25 Mar 2024 08:30:11 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rofcg-0000000G8Uv-3W07;
-	Mon, 25 Mar 2024 08:24:04 +0000
+	id 1rofiV-0000000GAE0-0xYi;
+	Mon, 25 Mar 2024 08:30:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1711355040;
-	bh=FxeJBW8SRhWP/KtNW8MieDakXdayiD+/WVoSml7b8l0=;
+	s=mail; t=1711355400;
+	bh=h//CRCGD0d2uWLlCN+oZeO5mCD2Cg8zsTxqX7sO+7k8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=k0TiPAfGSgiIx1WnbJvOpKq7uVHspIBm69VBmNfa1dmMUr+dkN4zSASKiw5MtDD7z
-	 WXmrj/V2LsPSU73F6+W9xs9Q5U9H3/KJLunK8SHalbg9SX/gocuDwGqhAerUohj2Fk
-	 nZaucggQ1R0vO+Dn0USpHSFWw6B/taFk9/NJea9uUHYioH/aGW1/uIgj4Cs6JU3VYC
-	 w2Ie/hTHkOcstcEWRy0L9DIK5b5wIGXxMyYBvQhcHfPoYlm4Lp21jz9uBZPD3frbkj
-	 1zuyVO38akjU8l1lxCzTiwV/NDzvrWN/YBH1PBOKlzHedu3br1JN4YHg7i/GvHwbHo
-	 G6xjvlMmSis2A==
+	b=MrBm0YvQ2wj43Xa4m0qGLAj2InrmGYBOv7ocrTWilwNht2ogn6buEk12a49ONDu6c
+	 caUY1+gsZTPHaf/NP9z92M9tweUc69i74xaj7+fCXBL4BfVn29bA6UDTdBdFjxSiqm
+	 tBmQIffZhuypp6rrE6g22gviTCwtQ8V+3z586l0Sf57So2vgP+RXvK2/Jz+mP1+Vw7
+	 QsmlegZxTUpS/t/7ld0VlTbif6i0AeGn5u1xhfsOKXAFQMqNXmeFTJRqT9nt5XuDNg
+	 laRQEMDAVQZGIM2IW0FI+j5BiKcU9B/HuOhWM90qtowD1KGldXkTm+XyIX9BFXtLNW
+	 4kHR7MiA8PbWQ==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3F0E137813B7;
-	Mon, 25 Mar 2024 08:23:59 +0000 (UTC)
-Message-ID: <f90b2c8b-6eb3-46dc-abcc-600248218b4e@collabora.com>
-Date: Mon, 25 Mar 2024 09:23:58 +0100
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4E9B637813B7;
+	Mon, 25 Mar 2024 08:29:59 +0000 (UTC)
+Message-ID: <fc6f60fe-ddf5-4f18-bf04-225b4cc174fb@collabora.com>
+Date: Mon, 25 Mar 2024 09:29:58 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] dt-bindings: soc: mediatek: Add support for MT8188
- VPPSYS
-To: Conor Dooley <conor@kernel.org>
-Cc: linux-media@vger.kernel.org, mchehab@kernel.org, robh@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, amergnat@baylibre.com, moudy.ho@mediatek.com,
- hverkuil-cisco@xs4all.nl, sebastian.fricke@collabora.com,
- u.kleine-koenig@pengutronix.de, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com
-References: <20240322092845.381313-1-angelogioacchino.delregno@collabora.com>
- <20240322092845.381313-2-angelogioacchino.delregno@collabora.com>
- <20240322-lugged-tabloid-3d5a85dc58d0@spud>
+Subject: Re: [PATCH v8 2/2] media: i2c: Add GC08A3 image sensor driver
+To: Zhi Mao <zhi.mao@mediatek.com>, mchehab@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, sakari.ailus@linux.intel.com
+Cc: laurent.pinchart@ideasonboard.com, shengnan.wang@mediatek.com,
+ yaya.chang@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
+ yunkec@chromium.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ jacopo.mondi@ideasonboard.com, 10572168@qq.com, hverkuil-cisco@xs4all.nl,
+ heiko@sntech.de, jernej.skrabec@gmail.com, macromorgan@hotmail.com,
+ linus.walleij@linaro.org, hdegoede@redhat.com,
+ tomi.valkeinen@ideasonboard.com, gerald.loacker@wolfvision.net,
+ andy.shevchenko@gmail.com, bingbu.cao@intel.com,
+ dan.scally@ideasonboard.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240323023851.5503-1-zhi.mao@mediatek.com>
+ <20240323023851.5503-3-zhi.mao@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240322-lugged-tabloid-3d5a85dc58d0@spud>
+In-Reply-To: <20240323023851.5503-3-zhi.mao@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_012403_062603_B7D284F7 
-X-CRM114-Status: GOOD (  13.75  )
+X-CRM114-CacheID: sfid-20240325_013003_861075_13BA4A34 
+X-CRM114-Status: UNSURE (   4.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,48 +86,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/03/24 18:42, Conor Dooley ha scritto:
-> On Fri, Mar 22, 2024 at 10:28:42AM +0100, AngeloGioacchino Del Regno wrote:
->> Add compatible for MT8188 VPP mutex.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Il 23/03/24 03:38, Zhi Mao ha scritto:
+> Add a V4L2 sub-device driver for Galaxycore GC08A3 image sensor.
 > 
-> You should at least mention the difference between this any anything
-> else.
-> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
 
-It's exactly always the same difference for MuteX blocks: different bits to
-activate mute for some IP ... but yeah, you're right, I'll shoot a word about
-this in the commit description on v2 (waiting a bit before doing that anyway).
-
-Thank you!
-
-Cheers,
-Angelo
-
-> 
-> Thanks,
-> Conor.
-> 
->> ---
->>   .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml         | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
->> index ba2014a8725c..a10326a9683d 100644
->> --- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
->> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
->> @@ -33,6 +33,7 @@ properties:
->>         - mediatek,mt8186-disp-mutex
->>         - mediatek,mt8186-mdp3-mutex
->>         - mediatek,mt8188-disp-mutex
->> +      - mediatek,mt8188-vpp-mutex
->>         - mediatek,mt8192-disp-mutex
->>         - mediatek,mt8195-disp-mutex
->>         - mediatek,mt8195-vpp-mutex
->> -- 
->> 2.44.0
->>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
