@@ -4,131 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D37B5C54E58
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Mar 2024 09:06:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28355CD11DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Mar 2024 09:20:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NqGFRjWR0QURm2aye+7abkeZFK6Er7JYJSWYgUQlFGU=; b=ORMFg1mJB4TqmWgwNMb0bGX4rM
-	icdjNL4SBGnfuWinFcPo50mp0rZLB/MzClff+7hrDtayrbLQJMJ3mm22tnb2HCtey5C4OG+EqoMhB
-	Dny+6AfB3kLQxQlCIRFY1cKMx7QcaJ6kE3JGOnhOskVxD/MStCogAgHNfjyYO4+QcS6EJlHIDbh0G
-	O6yawi/zPILZjpVBTDscT+MBaMUXitWxtx0nMiLIq/Ku1eL05p9BrY7FfNSXCOOEWwUlPKwmi3VVh
-	RXLsvaoRaipzQ4ToJz3POkkbXwIHc0koF5TZVSK7Wd+r8R9pTecJKSAR17AJKzE/goDmHVJxdnVUd
-	T+pUDW4w==;
+	bh=5r0irEwQn1lB3UnLNAwqebaOIn42MDl/NmPOJcplkmY=; b=Gb30hXhyU9aNDK0iYJZWXO8tYs
+	pOGo685P3J6bE9rO2mFNBPcbpNr+FHgCKXgGJoFKmlGvrPFPqAhHJSetc/njkia6e8agpeLTpYTwY
+	tcqR7w1KcMymDRlsEfPluP7xr2/Co5MBpkzpEm0GmFd9NzEO80JcrE3noEFczCzUQhfDRkDKvPpSV
+	y5l1JYurz0PJ8FbIjBfmmShrHRhcducOOEjZ3R2Weez87TGybnaPmNMzfeGJ5tg0PLPYx1dTJhudY
+	QgXYdUG6oKOdr7Ayv+ZVP2c8Y03E2+k9bf5olPo2yPb+VsuN+bOWS+hLn5DI022fp/R/6elXotTh/
+	muJTDqjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rp2l5-00000003jsY-3u25;
-	Tue, 26 Mar 2024 09:06:15 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rp2yO-00000003md1-0OeB;
+	Tue, 26 Mar 2024 09:20:00 +0000
+Received: from relay1-d.mail.gandi.net ([2001:4b98:dc4:8::221])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rp2l3-00000003jsB-3hbD
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 26 Mar 2024 09:06:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=NqGFRjWR0QURm2aye+7abkeZFK6Er7JYJSWYgUQlFGU=; b=pONAGmxOBvI6WE6KClUjbKXEFl
-	Dw5hvvdShBhubONJG0q9AfHM6Hxx9vGxqR+/hOP26gcdNidG7FiKSXrWXXqTWGJYlbxSagWsZI8F5
-	jPLfKgRXeWoyuiaSZ7COklu8laNhKMPHWAe3EWKk5VODE4Bd1thhibxGgcCTFL1WtvPhALDSL2lfD
-	pEz/RpSHijSwnlc/0xnpPAYf+EY+VRx1D12Mq3wetlrTeIXwQhFFKOQUmJltBW5ZSGdtQyV42BLvf
-	xp0QhZXABAXxEp/4fFcb7PpMDQqmzqO+mOCXyQyNy+tdjvd0OGxZAQxfHwEGeCMlmBP3Vu6/h7emR
-	Jt92GSVg==;
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rp2kw-0000000H484-3IzR
-	for linux-mediatek@lists.infradead.org;
-	Tue, 26 Mar 2024 09:06:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1711443788;
+	id 1rp2yH-00000003mbo-2oEt;
+	Tue, 26 Mar 2024 09:19:55 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 27E4A240011;
+	Tue, 26 Mar 2024 09:19:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1711444788;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=NqGFRjWR0QURm2aye+7abkeZFK6Er7JYJSWYgUQlFGU=;
-	b=ft/4fq8nDuCbhGZtnvUtZsbD3rwICHqgueRb9/dJZ+ZdrR+Ixbrs5sU7MI5Hd4MUpV4AvC
-	EAyuXn9hG4EgEzW2cx3mCNtzoEvAW/InugdeRUvahRx3UOFQrEp7X6jC0/NasKEYlbH9fp
-	5d4cGzTbvDChwnFw4pAlnX9Ve3Vc3xw=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1711443788;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=NqGFRjWR0QURm2aye+7abkeZFK6Er7JYJSWYgUQlFGU=;
-	b=ft/4fq8nDuCbhGZtnvUtZsbD3rwICHqgueRb9/dJZ+ZdrR+Ixbrs5sU7MI5Hd4MUpV4AvC
-	EAyuXn9hG4EgEzW2cx3mCNtzoEvAW/InugdeRUvahRx3UOFQrEp7X6jC0/NasKEYlbH9fp
-	5d4cGzTbvDChwnFw4pAlnX9Ve3Vc3xw=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-587-5sajQRwGPh-k7XWbEDOVQQ-1; Tue, 26 Mar 2024 05:02:58 -0400
-X-MC-Unique: 5sajQRwGPh-k7XWbEDOVQQ-1
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-4146d5038c0so12914005e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 Mar 2024 02:02:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711443777; x=1712048577;
-        h=mime-version:user-agent:content-transfer-encoding:autocrypt
-         :references:in-reply-to:date:cc:to:from:subject:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=NqGFRjWR0QURm2aye+7abkeZFK6Er7JYJSWYgUQlFGU=;
-        b=VYELPr1iNedBTt1yfd/umYtJaT5KAB2H+XlpLmLTyssT86bux/HhfvDnQfNsq/6vS8
-         JivBkwtYFv+A0RKf0HVkgD6e9KxOicad7yZn/aqN6IqQLO5+5rb1u0mMHiqObBL392dp
-         flRNIepW7KLygbBB6wwDtPaMkVFeFWyXbyoQ5qRixyDcf7hy9zbH0MImTYrFC0otiK0Z
-         +wTT/uDGONdAQR7/Xnohn7WjSohoVbjXzprjgzUTnDSqVmiSaLjYYArukq9m5wMLLEQj
-         U8qcD7FMP9tO1MEB3357jrY0XhNYY/oXrBIP25brz5SBRyb69ys/IcB2zvEmBCh3bib8
-         3K+w==
-X-Forwarded-Encrypted: i=1; AJvYcCWdcFunExoOwC9qfV5bQorCNSlhIsknHpN1EjnkwGTC8+zAP8PbDyU0fIRKdaiisYxbM3sNr+2l5N9d7NtU51hYtYsLeD5vKUljsMxlM/couDIr
-X-Gm-Message-State: AOJu0YzfRrKjSBo0icrDySmJnl0kN5U21dZKifE1VwBXKRl9sbY2HF4q
-	mpnNUwcFUD16APqJPzDtThqfnp+yj4kgOB2gqkhPcGcf6RHbZmHv4UqA+qcMbFQ0JqIf2GGUoEr
-	UDU3fHlJcNM8Gf/hzRs6Ehidkqou59ftxPnYivLc7fQjBgiON3fl2JKJB5hbMjk+I8e1rew==
-X-Received: by 2002:a05:600c:1ca9:b0:414:8032:72e4 with SMTP id k41-20020a05600c1ca900b00414803272e4mr6953193wms.4.1711443777392;
-        Tue, 26 Mar 2024 02:02:57 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF5kYu/lKbTy+ljHRULd1J1Vm3guqKNgel59V6fCBvRom3sy3zu18H2PmJMjpuSGKjpQM2y0A==
-X-Received: by 2002:a05:600c:1ca9:b0:414:8032:72e4 with SMTP id k41-20020a05600c1ca900b00414803272e4mr6953155wms.4.1711443776947;
-        Tue, 26 Mar 2024 02:02:56 -0700 (PDT)
-Received: from gerbillo.redhat.com (146-241-229-159.dyn.eolo.it. [146.241.229.159])
-        by smtp.gmail.com with ESMTPSA id d8-20020a05600c34c800b00414903d20aesm474225wmq.11.2024.03.26.02.02.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Mar 2024 02:02:56 -0700 (PDT)
-Message-ID: <799572b672ea8b4756236b14068aef7c8fa726a6.camel@redhat.com>
-Subject: Re: [PATCH net v2 2/2] net: dsa: mt7530: fix disabling EEE on
- failure on MT7531 and MT7988
-From: Paolo Abeni <pabeni@redhat.com>
-To: arinc.unal@arinc9.com, Daniel Golle <daniel@makrotopia.org>, DENG
- Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Andrew
- Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Vladimir
- Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, =?ISO-8859-1?Q?Ren=E9?= van
- Dorst <opensource@vdorst.com>, Russell King <linux@armlinux.org.uk>,
- SkyLake Huang <SkyLake.Huang@mediatek.com>, Heiner Kallweit
- <hkallweit1@gmail.com>
-Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
- mithat.guner@xeront.com,  erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Date: Tue, 26 Mar 2024 10:02:54 +0100
-In-Reply-To: <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-2-9af9d5041bfe@arinc9.com>
-References: <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-0-9af9d5041bfe@arinc9.com>
-	 <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-2-9af9d5041bfe@arinc9.com>
-Autocrypt: addr=pabeni@redhat.com; prefer-encrypt=mutual; keydata=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
-User-Agent: Evolution 3.50.4 (3.50.4-1.fc39)
+	 in-reply-to:in-reply-to:references:references;
+	bh=5r0irEwQn1lB3UnLNAwqebaOIn42MDl/NmPOJcplkmY=;
+	b=W79L7du6q9HZs1Gs+5VBgV8goGI2G4zYDm6OB/HDnFsDR/cyl+rlwpzRDXSVo5BG058Y3t
+	KCWSoBXKKDza+xs5AxeKEInKNb8Yfi8l07NoBbb0EzR4fwIZdpP2K6/aPggQmOzyTe/6g5
+	uggF2txSH8TqpcRd5qrv56ClVvr8Vz7hrdobfsukkq2StZivs3erSICy10Z6QZdZrFRwQv
+	egveqbn64WYu9jO9buJlovfCmbvF+UomVb0UkL0kTRe8KItqDLfMHybR1EobKJf4Fg/C2+
+	/+MkrO9MYX/PbF+DaIE1eKzexSME/ly5JKwP3mZmsxy43CT5dXhqfdGRKd5RQg==
+Message-ID: <d65f4c45-e616-4157-a769-c285cbad575c@arinc9.com>
+Date: Tue, 26 Mar 2024 12:19:40 +0300
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net v2 2/2] net: dsa: mt7530: fix disabling EEE on failure
+ on MT7531 and MT7988
+To: Paolo Abeni <pabeni@redhat.com>, Daniel Golle <daniel@makrotopia.org>,
+ DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>,
+ Russell King <linux@armlinux.org.uk>,
+ SkyLake Huang <SkyLake.Huang@mediatek.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
+ mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-0-9af9d5041bfe@arinc9.com>
+ <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-2-9af9d5041bfe@arinc9.com>
+ <799572b672ea8b4756236b14068aef7c8fa726a6.camel@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <799572b672ea8b4756236b14068aef7c8fa726a6.camel@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Spam-Score: 400
+X-GND-Status: SPAM
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240326_090607_094630_D73B68F9 
-X-CRM114-Status: GOOD (  14.76  )
+X-CRM114-CacheID: sfid-20240326_021954_038835_69FFB952 
+X-CRM114-Status: GOOD (  18.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,45 +89,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2024-03-21 at 19:29 +0300, Ar=C4=B1n=C3=A7 =C3=9CNAL via B4 Relay w=
-rote:
-> From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
->=20
-> The MT7531_FORCE_EEE1G and MT7531_FORCE_EEE100 bits let the
-> PMCR_FORCE_EEE1G and PMCR_FORCE_EEE100 bits determine the 1G/100 EEE
-> abilities of the MAC. If MT7531_FORCE_EEE1G and MT7531_FORCE_EEE100 are
-> unset, the abilities are left to be determined by PHY auto polling.
->=20
-> The commit 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features"=
-)
-> made it so that the PMCR_FORCE_EEE1G and PMCR_FORCE_EEE100 bits are set o=
-n
-> mt753x_phylink_mac_link_up(). But it did not set the MT7531_FORCE_EEE1G a=
-nd
-> MT7531_FORCE_EEE100 bits. Because of this, EEE will be enabled on the
-> switch MACs by polling the PHY, regardless of the result of phy_init_eee(=
-).
->=20
-> Define these bits and add them to MT7531_FORCE_MODE which is being used b=
-y
-> the subdriver. With this, EEE will be prevented from being enabled on the
-> switch MACs when phy_init_eee() fails.
->=20
-> Fixes: 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
-> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
+On 26.03.2024 12:02, Paolo Abeni wrote:
+> On Thu, 2024-03-21 at 19:29 +0300, Arınç ÜNAL via B4 Relay wrote:
+>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>
+>> The MT7531_FORCE_EEE1G and MT7531_FORCE_EEE100 bits let the
+>> PMCR_FORCE_EEE1G and PMCR_FORCE_EEE100 bits determine the 1G/100 EEE
+>> abilities of the MAC. If MT7531_FORCE_EEE1G and MT7531_FORCE_EEE100 are
+>> unset, the abilities are left to be determined by PHY auto polling.
+>>
+>> The commit 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
+>> made it so that the PMCR_FORCE_EEE1G and PMCR_FORCE_EEE100 bits are set on
+>> mt753x_phylink_mac_link_up(). But it did not set the MT7531_FORCE_EEE1G and
+>> MT7531_FORCE_EEE100 bits. Because of this, EEE will be enabled on the
+>> switch MACs by polling the PHY, regardless of the result of phy_init_eee().
+>>
+>> Define these bits and add them to MT7531_FORCE_MODE which is being used by
+>> the subdriver. With this, EEE will be prevented from being enabled on the
+>> switch MACs when phy_init_eee() fails.
+>>
+>> Fixes: 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
+>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> If I read the past discussion correctly, this is a potential issue
+> found by code inspection and never producing problem in practice, am I
+> correct?
+> 
+> If so I think it will deserve a 3rd party tested-by tag or similar to
+> go in.
+> 
+> If nobody could provide such feedback in a little time, I suggest to
+> drop this patch and apply only 1/2.
 
-If I read the past discussion correctly, this is a potential issue
-found by code inspection and never producing problem in practice, am I
-correct?
+Whether a problem would happen in practice depends on when phy_init_eee()
+fails, meaning it returns a negative non-zero code. I requested Russell to
+review this patch to shed light on when phy_init_eee() would return a
+negative non-zero code so we have an idea whether this patch actually fixes
+a problem.
 
-If so I think it will deserve a 3rd party tested-by tag or similar to
-go in.
-
-If nobody could provide such feedback in a little time, I suggest to
-drop this patch and apply only 1/2.
-
-Cheers,
-
-Paolo
-
+Arınç
 
