@@ -4,62 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BCE5C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Mar 2024 12:39:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B525C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Mar 2024 13:57:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o1Gh5aKdbTdP+qtmiPst9kiB4BzT/lLl/8G+RL9TN/w=; b=ohGi+7wrlqPtgd5GZ+3JQvxaD+
-	MVyoOpBro/u80HuGID8xQZJZsa49SyYTb/AgDzZ11zLC0Ue8PaN5W3n3uiky1xiA76EnBqbvG/L1M
-	CSajNRm/KriJiTr4EWH5dBerN4clO1+9YwNQBLUbRcBz1Yy+kpE4DULkf1RJ+2NGcWrOoXSir5YzW
-	EF+4CZiQ0HeyVfpMSwiErDF3HsKQJIWyU00oMTTtYw/dEusidySLlaEbMku62azwxlacbn2A6J6h3
-	TxYDJJQJ+nY2UP49v3tSlpC99AM68QpdzKPfcm8coVsLdwrf3G02GUFTWWPleVzzKp8H4Xw761NcE
-	FXz4eSpg==;
+	bh=xL2ZOgO4vta+ZhccCNNx79Ch6MDq27jYrOqh1+Cw8sA=; b=nRCgtwKnPoxtdDuMnC2D1UE11q
+	H4Pa0LeotC18/tLXE3ftnr72NISmBGZ4vnSm28pAgHbnaUeNtUZOg5fYlMTBd3aZMA3c1OS5sKP91
+	RWHhBmjVbueDiB7MnSGJn2Krn5KjUmendT85q827p4SkcHMgBCEW9elS0KblxHGZ9nD7nMz2+n+Bv
+	dO4X24DvYwrafFkefL431QVoOZugkFMMdKrwELxAqmp4zHWFZsxJJCauUlDVlUgI4eLWgK0P5WSPc
+	IRZ0ory0f7KtNTnKDUzYS7UGfZGpjfh1ZGMqhaJzWOrH8X8Zr8PQNkg2p6cmzoB3FZ2m7zzK4IkPq
+	8dHcnwEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rp65E-00000004VBj-36Ku;
-	Tue, 26 Mar 2024 12:39:16 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rp7In-00000004moA-0rkE;
+	Tue, 26 Mar 2024 13:57:21 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rp659-00000004V9M-47n5;
-	Tue, 26 Mar 2024 12:39:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 671EBCE203F;
-	Tue, 26 Mar 2024 12:39:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7FD2C43394;
-	Tue, 26 Mar 2024 12:39:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711456748;
-	bh=aIZN4ayFWAxqe4bKOQlECj+NTdd2YL5f3lY7krQamOI=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=H3MPJ6sOxaDeI8bHhLDFMP2Ffwr6cvCkA0U+3nDbvylo/g0j9l/OlkyHD2TGM9HRl
-	 ds1FvyfPZDloy+G7iQUEMRqlHqigq2GM8bAKN8ZPfLQaQ3ZD7oytI//3lTWoIFpuJq
-	 DyAG/rjOUhjYxChskOOmq/wj/OV7WJNdfGiDQSfi1trxwiswy/dtFi53pXx+93mIHn
-	 Q8pkaS+ZQ5thrA8EJIKCrBoSJjzwPLyC37q/dg/XSsjfBIDi4Pynsopu5HV/I+gR0K
-	 /ObQQa+0ONrCFOyLy+6pe52oj312ufuQ76nd5g8ZKXJUlAMxsOnIRDdhDVJrwK+gK8
-	 FzMvcEDHC9Ryw==
-From: Mark Brown <broonie@kernel.org>
-To: support.opensource@diasemi.com, lgirdwood@gmail.com, 
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- jagan@amarulasolutions.com, Bo Liu <liubo03@inspur.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20240320085740.4604-1-liubo03@inspur.com>
-References: <20240320085740.4604-1-liubo03@inspur.com>
-Subject: Re: [PATCH v1 00/13] regulator: convert to use maple tree register
- cache
-Message-Id: <171145674540.65165.16145640493562999646.b4-ty@kernel.org>
-Date: Tue, 26 Mar 2024 12:39:05 +0000
+	id 1rp7Id-00000004mlW-1x1B;
+	Tue, 26 Mar 2024 13:57:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1711461427;
+	bh=8+UkfQFcSGx7Ny6yQMpzS+qDlr7otfWIYw6zuYufEKA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=oifsG60zOHSKEobk5bJ5iEvHc7XpGbb7rkWJyOq0MykFhb0aOPwA8/7HSRYmhAgTB
+	 +P9+wxtjg89937bURMkE75oNJCBLf97Ujh7d6SZeblqYvporXF5nOTwlZOFlVRZWgs
+	 vmC8G6xQDyAOlAJPQc89A6aK1/XZBl9B64TUkAYgcCc6dr9MbIGMRK8ZOcYGhrWYCN
+	 Zp4c9py+DqoM2cB+EbGFj8nGaVadyk+UZRiKHfae0yt6Rl/hbYavRw7GiwassVFEf+
+	 kEihc3RTDAP2PQMZ7mHve5pvltCFNI4tBW2J2v0kzfH/jAJDmwS+8Ihpb2+R8ZqMkT
+	 azCHOTiWpve3A==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 739A537813D7;
+	Tue, 26 Mar 2024 13:57:06 +0000 (UTC)
+Message-ID: <dbf2b658-43c2-4994-81f9-24fb82d108a2@collabora.com>
+Date: Tue, 26 Mar 2024 14:57:05 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14-dev
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] soc: mediatek: pm-domains: support smi clamp
+ protection
+To: =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
+ "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+ =?UTF-8?B?TWFuZHlKSCBMaXUgKOWKieS6uuWDlik=?= <MandyJH.Liu@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ =?UTF-8?B?WGl1ZmVuZyBMaSAo5p2O56eA5bOwKQ==?= <Xiufeng.Li@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, =?UTF-8?B?RmFuIENoZW4gKOmZs+WHoSk=?=
+ <fan.chen@mediatek.com>
+References: <20240325121908.3958-1-yu-chang.lee@mediatek.com>
+ <20240325121908.3958-3-yu-chang.lee@mediatek.com>
+ <a6f54fdf-f0a9-4edc-9054-50d5204a6898@collabora.com>
+ <c0086465922ec54bed17cee7b9e87d224240f21a.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <c0086465922ec54bed17cee7b9e87d224240f21a.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240326_053912_496812_20A63B7E 
-X-CRM114-Status: GOOD (  11.19  )
+X-CRM114-CacheID: sfid-20240326_065712_782252_9841CDC8 
+X-CRM114-Status: GOOD (  17.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,78 +88,337 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 20 Mar 2024 04:57:27 -0400, Bo Liu wrote:
-> The maple tree register cache is based on a much more modern data structure
-> than the rbtree cache and makes optimisation choices which are probably
-> more appropriate for modern systems than those made by the rbtree cache.
+Il 26/03/24 03:00, Yu-chang Lee (李禹璋) ha scritto:
+> On Mon, 2024-03-25 at 14:05 +0100, AngeloGioacchino Del Regno wrote:
+>> Il 25/03/24 13:19, yu-chang.lee ha scritto:
+>>> In order to avoid power glitch, this patch use smi clamp
+>>> to disable/enable smi common port.
+>>>
+>>> Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
+>>> ---
+>>>    drivers/pmdomain/mediatek/mt8188-pm-domains.h |  41 ++++-
+>>>    drivers/pmdomain/mediatek/mtk-pm-domains.c    | 147
+>>> ++++++++++++++----
+>>>    drivers/pmdomain/mediatek/mtk-pm-domains.h    |   1 +
+>>>    3 files changed, 156 insertions(+), 33 deletions(-)
+>>>
+>>> diff --git a/drivers/pmdomain/mediatek/mt8188-pm-domains.h
+>>> b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
+>>> index 7bbba4d56a77..39f057dca92c 100644
+>>> --- a/drivers/pmdomain/mediatek/mt8188-pm-domains.h
+>>> +++ b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
+>>> @@ -573,6 +573,18 @@ static const struct scpsys_domain_data
+>>> scpsys_domain_data_mt8188[] = {
+>>>    		.pwr_sta2nd_offs = 0x170,
+>>>    		.sram_pdn_bits = BIT(8),
+>>>    		.sram_pdn_ack_bits = BIT(12),
+>>> +		.bp_cfg = {
+>>> +			BUS_PROT_WR(SMI,
+>>> +				    MT8188_SMI_COMMON_SMI_CLAMP_DIP_TO_
+>>> VDO0,
+>>> +				    MT8188_SMI_COMMON_CLAMP_EN_SET,
+>>> +				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
+>>> +				    MT8188_SMI_COMMON_CLAMP_EN_STA),
+>>> +			BUS_PROT_WR(SMI,
+>>> +				    MT8188_SMI_COMMON_SMI_CLAMP_DIP_TO_
+>>> VPP1,
+>>> +				    MT8188_SMI_COMMON_CLAMP_EN_SET,
+>>> +				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
+>>> +				    MT8188_SMI_COMMON_CLAMP_EN_STA),
+>>> +		},
+>>>    		.reset_smi = {
+>>>    			SMI_RESET_WR(MT8188_SMI_LARB10_RESET,
+>>>    				     MT8188_SMI_LARB10_RESET_ADDR),
+>>> @@ -585,7 +597,7 @@ static const struct scpsys_domain_data
+>>> scpsys_domain_data_mt8188[] = {
+>>>    			SMI_RESET_WR(MT8188_SMI_LARB15_RESET,
+>>>    				     MT8188_SMI_LARB15_RESET_ADDR),
+>>>    		},
+>>> -		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
+>>> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF |
+>>> MTK_SCPD_CLAMP_PROTECTION,
+>>>    	},
+>>>    	[MT8188_POWER_DOMAIN_IPE] = {
+>>>    		.name = "ipe",
+>>> @@ -595,11 +607,18 @@ static const struct scpsys_domain_data
+>>> scpsys_domain_data_mt8188[] = {
+>>>    		.pwr_sta2nd_offs = 0x170,
+>>>    		.sram_pdn_bits = BIT(8),
+>>>    		.sram_pdn_ack_bits = BIT(12),
+>>> +		.bp_cfg = {
+>>> +			BUS_PROT_WR(SMI,
+>>> +				    MT8188_SMI_COMMON_SMI_CLAMP_IPE_TO_
+>>> VPP1,
+>>> +				    MT8188_SMI_COMMON_CLAMP_EN_SET,
+>>> +				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
+>>> +				    MT8188_SMI_COMMON_CLAMP_EN_STA),
+>>> +		},
+>>>    		.reset_smi = {
+>>>    			SMI_RESET_WR(MT8188_SMI_LARB12_RESET,
+>>>    				     MT8188_SMI_LARB12_RESET_ADDR),
+>>>    		},
+>>> -		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
+>>> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF |
+>>> MTK_SCPD_CLAMP_PROTECTION,
+>>>    	},
+>>>    	[MT8188_POWER_DOMAIN_CAM_VCORE] = {
+>>>    		.name = "cam_vcore",
+>>> @@ -676,13 +695,20 @@ static const struct scpsys_domain_data
+>>> scpsys_domain_data_mt8188[] = {
+>>>    		.pwr_sta2nd_offs = 0x170,
+>>>    		.sram_pdn_bits = BIT(8),
+>>>    		.sram_pdn_ack_bits = BIT(12),
+>>> +		.bp_cfg = {
+>>> +			BUS_PROT_WR(SMI,
+>>> +				    MT8188_SMI_COMMON_SMI_CLAMP_IPE_TO_
+>>> VPP1,
+>>> +				    MT8188_SMI_COMMON_CLAMP_EN_SET,
+>>> +				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
+>>> +				    MT8188_SMI_COMMON_CLAMP_EN_STA),
+>>> +		},
+>>>    		.reset_smi = {
+>>>    			SMI_RESET_WR(MT8188_SMI_LARB16A_RESET,
+>>>    				     MT8188_SMI_LARB16A_RESET_ADDR),
+>>>    			SMI_RESET_WR(MT8188_SMI_LARB17A_RESET,
+>>>    				     MT8188_SMI_LARB17A_RESET_ADDR),
+>>>    		},
+>>> -		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
+>>> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF |
+>>> MTK_SCPD_CLAMP_PROTECTION,
+>>>    	},
+>>>    	[MT8188_POWER_DOMAIN_CAM_SUBB] = {
+>>>    		.name = "cam_subb",
+>>> @@ -692,13 +718,20 @@ static const struct scpsys_domain_data
+>>> scpsys_domain_data_mt8188[] = {
+>>>    		.pwr_sta2nd_offs = 0x170,
+>>>    		.sram_pdn_bits = BIT(8),
+>>>    		.sram_pdn_ack_bits = BIT(12),
+>>> +		.bp_cfg = {
+>>> +			BUS_PROT_WR(SMI,
+>>> +				    MT8188_SMI_COMMON_SMI_CLAMP_CAM_SUB
+>>> B_TO_VDO0,
+>>> +				    MT8188_SMI_COMMON_CLAMP_EN_SET,
+>>> +				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
+>>> +				    MT8188_SMI_COMMON_CLAMP_EN_STA),
+>>> +		},
+>>>    		.reset_smi = {
+>>>    			SMI_RESET_WR(MT8188_SMI_LARB16B_RESET,
+>>>    				     MT8188_SMI_LARB16B_RESET_ADDR),
+>>>    			SMI_RESET_WR(MT8188_SMI_LARB17B_RESET,
+>>>    				     MT8188_SMI_LARB17B_RESET_ADDR),
+>>>    		},
+>>> -		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
+>>> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF |
+>>> MTK_SCPD_CLAMP_PROTECTION,
+>>>    	},
+>>>    };
+>>>    
+>>> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c
+>>> b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+>>> index 9ab6fa105c8c..3c797e136c0e 100644
+>>> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
+>>> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+>>> @@ -47,9 +47,10 @@ struct scpsys_domain {
+>>>    	struct clk_bulk_data *subsys_clks;
+>>>    	struct regmap *infracfg_nao;
+>>>    	struct regmap *infracfg;
+>>> -	struct regmap *smi;
+>>> +	struct regmap **smi;
+>>>    	struct regmap **larb;
+>>>    	int num_larb;
+>>> +	int num_smi;
+>>>    	struct regulator *supply;
+>>>    };
+>>>    
+>>> @@ -122,29 +123,19 @@ static int scpsys_sram_disable(struct
+>>> scpsys_domain *pd)
+>>>    					MTK_POLL_TIMEOUT);
+>>>    }
+>>>    
+>>> -static struct regmap *scpsys_bus_protect_get_regmap(struct
+>>> scpsys_domain *pd,
+>>> -						    const struct
+>>> scpsys_bus_prot_data *bpd)
+>>> -{
+>>> -	if (bpd->flags & BUS_PROT_COMPONENT_SMI)
+>>> -		return pd->smi;
+>>> -	else
+>>> -		return pd->infracfg;
+>>> -}
+>>> -
+>>>    static struct regmap *scpsys_bus_protect_get_sta_regmap(struct
+>>> scpsys_domain *pd,
+>>>    							const struct
+>>> scpsys_bus_prot_data *bpd)
+>>>    {
+>>>    	if (bpd->flags & BUS_PROT_STA_COMPONENT_INFRA_NAO)
+>>>    		return pd->infracfg_nao;
+>>>    	else
+>>> -		return scpsys_bus_protect_get_regmap(pd, bpd);
+>>> +		return pd->infracfg;
+>>>    }
+>>>    
+>>>    static int scpsys_bus_protect_clear(struct scpsys_domain *pd,
+>>> -				    const struct scpsys_bus_prot_data
+>>> *bpd)
+>>> +				    const struct scpsys_bus_prot_data
+>>> *bpd,
+>>> +					struct regmap *sta_regmap,
+>>> struct regmap *regmap)
+>>>    {
+>>> -	struct regmap *sta_regmap =
+>>> scpsys_bus_protect_get_sta_regmap(pd, bpd);
+>>> -	struct regmap *regmap = scpsys_bus_protect_get_regmap(pd, bpd);
+>>>    	u32 sta_mask = bpd->bus_prot_sta_mask;
+>>>    	u32 expected_ack;
+>>>    	u32 val;
+>>> @@ -165,10 +156,9 @@ static int scpsys_bus_protect_clear(struct
+>>> scpsys_domain *pd,
+>>>    }
+>>>    
+>>>    static int scpsys_bus_protect_set(struct scpsys_domain *pd,
+>>> -				  const struct scpsys_bus_prot_data
+>>> *bpd)
+>>> +				  const struct scpsys_bus_prot_data
+>>> *bpd,
+>>> +				  struct regmap *sta_regmap, struct
+>>> regmap *regmap)
+>>>    {
+>>> -	struct regmap *sta_regmap =
+>>> scpsys_bus_protect_get_sta_regmap(pd, bpd);
+>>> -	struct regmap *regmap = scpsys_bus_protect_get_regmap(pd, bpd);
+>>>    	u32 sta_mask = bpd->bus_prot_sta_mask;
+>>>    	u32 val;
+>>>    
+>>> @@ -182,19 +172,32 @@ static int scpsys_bus_protect_set(struct
+>>> scpsys_domain *pd,
+>>>    					MTK_POLL_DELAY_US,
+>>> MTK_POLL_TIMEOUT);
+>>>    }
+>>>    
+>>> -static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
+>>> +static int _scpsys_clamp_bus_protection_enable(struct
+>>> scpsys_domain *pd, bool is_smi)
+>>>    {
+>>> +	int smi_count = 0;
+>>> +
+>>>    	for (int i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
+>>>    		const struct scpsys_bus_prot_data *bpd = &pd->data-
+>>>> bp_cfg[i];
+>>> +		struct regmap *sta_regmap, *regmap;
+>>> +		bool is_smi = bpd->flags & BUS_PROT_COMPONENT_SMI;
+>>>    		int ret;
+>>>    
+>>>    		if (!bpd->bus_prot_set_clr_mask)
+>>>    			break;
+>>>    
+>>> +		if (is_smi) {
+>>> +			sta_regmap = pd->smi[smi_count];
+>>> +			regmap = pd->smi[smi_count];
+>>> +			smi_count++;
+>>> +		} else {
+>>> +			sta_regmap =
+>>> scpsys_bus_protect_get_sta_regmap(pd, bpd);
+>>> +			regmap = pd->infracfg;
+>>> +		}
+>>> +
+>>>    		if (bpd->flags & BUS_PROT_INVERTED)
+>>> -			ret = scpsys_bus_protect_clear(pd, bpd);
+>>> +			ret = scpsys_bus_protect_clear(pd, bpd,
+>>> sta_regmap, regmap);
+>>>    		else
+>>> -			ret = scpsys_bus_protect_set(pd, bpd);
+>>> +			ret = scpsys_bus_protect_set(pd, bpd,
+>>> sta_regmap, regmap);
+>>>    		if (ret)
+>>>    			return ret;
+>>>    	}
+>>> @@ -202,19 +205,32 @@ static int scpsys_bus_protect_enable(struct
+>>> scpsys_domain *pd)
+>>>    	return 0;
+>>>    }
+>>>    
+>>> -static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
+>>> +static int _scpsys_clamp_bus_protection_disable(struct
+>>> scpsys_domain *pd, bool is_smi)
+>>>    {
+>>> +	int smi_count = pd->num_smi - 1;
+>>> +
+>>>    	for (int i = SPM_MAX_BUS_PROT_DATA - 1; i >= 0; i--) {
+>>>    		const struct scpsys_bus_prot_data *bpd = &pd->data-
+>>>> bp_cfg[i];
+>>> +		struct regmap *sta_regmap, *regmap;
+>>> +		bool is_smi = bpd->flags & BUS_PROT_COMPONENT_SMI;
+>>>    		int ret;
+>>>    
+>>>    		if (!bpd->bus_prot_set_clr_mask)
+>>>    			continue;
+>>>    
+>>> +		if (is_smi) {
+>>> +			sta_regmap = pd->smi[smi_count];
+>>> +			regmap = pd->smi[smi_count];
+>>> +			smi_count--;
+>>> +		} else {
+>>> +			sta_regmap =
+>>> scpsys_bus_protect_get_sta_regmap(pd, bpd);
+>>> +			regmap = pd->infracfg;
+>>> +		}
+>>> +
+>>>    		if (bpd->flags & BUS_PROT_INVERTED)
+>>> -			ret = scpsys_bus_protect_set(pd, bpd);
+>>> +			ret = scpsys_bus_protect_set(pd, bpd,
+>>> sta_regmap, regmap);
+>>>    		else
+>>> -			ret = scpsys_bus_protect_clear(pd, bpd);
+>>> +			ret = scpsys_bus_protect_clear(pd, bpd,
+>>> sta_regmap, regmap);
+>>>    		if (ret)
+>>>    			return ret;
+>>>    	}
+>>> @@ -222,6 +238,50 @@ static int scpsys_bus_protect_disable(struct
+>>> scpsys_domain *pd)
+>>>    	return 0;
+>>>    }
+>>>    
+>>> +static int scpsys_clamp_protection(struct scpsys_domain *pd)
+>>> +{
+>>> +	int ret;
+>>> +
+>>
+>> You can directly call _scpsys_clamp_bus_protection_enable(), no need
+>> for a helper.
+>>
+>>> +	ret = _scpsys_clamp_bus_protection_enable(pd, true);
+>>> +	if (ret)
+>>> +		return ret;
+>>> +
+>>> +	return 0;
+>>> +}
+>>> +
+>>> +static int scpsys_clamp_protection_disable(struct scpsys_domain
+>>> *pd)
+>>> +{
+>>> +	int ret;
+>>> +
+>>> +	ret = _scpsys_clamp_bus_protection_disable(pd, true);
+>>> +	if (ret)
+>>> +		return ret;
+>>> +
+>>> +	return 0;
+>>> +}
+>>> +
+>>> +static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
+>>
+>> Unused function, please remove.
 > 
-> Bo Liu (13):
->   regulator: da9121: convert to use maple tree register cache
->   regulator: da9211: convert to use maple tree register cache
->   regulator: isl9305: convert to use maple tree register cache
->   regulator: max8973: convert to use maple tree register cache
->   regulator: mt6311: convert to use maple tree register cache
->   regulator: pca9450: convert to use maple tree register cache
->   regulator: pf8x00: convert to use maple tree register cache
->   regulator: pfuze100: convert to use maple tree register cache
->   regulator: rtmv20: convert to use maple tree register cache
->   regulator: rtq6752: convert to use maple tree register cache
->   regulator: tps51632: convert to use maple tree register cache
->   regulator: tps62360: convert to use maple tree register cache
->   regulator: rpi-panel-attiny: convert to use maple tree register cache
+> I think this is used in scpsys_power_off function. Do you mean I
+> should directly call _scpsys_clamp_bus_protection_disable?
 > 
-> [...]
 
-Applied to
+Yes, please.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+Cheers,
+Angelo
 
-Thanks!
-
-[01/13] regulator: da9121: convert to use maple tree register cache
-        commit: d92eb7c333c5ac8d8add10d5a211ac9c405e4393
-[02/13] regulator: da9211: convert to use maple tree register cache
-        commit: 03ddbcbe2f1ca9fac2759849be6714d8e82aa331
-[03/13] regulator: isl9305: convert to use maple tree register cache
-        commit: 66a4ead5ed9393d250105fcbe6e3525e1cdd977a
-[04/13] regulator: max8973: convert to use maple tree register cache
-        commit: 36649db5b216a85cfd7937a289c4cdd0b4b69126
-[05/13] regulator: mt6311: convert to use maple tree register cache
-        commit: bc125125125c10ec14764d153227c95ad0fd0b48
-[06/13] regulator: pca9450: convert to use maple tree register cache
-        commit: 0b03e9cb8b137490f4adedf07482384ffeee7145
-[07/13] regulator: pf8x00: convert to use maple tree register cache
-        commit: cea065dced280306ff5a4f7adfeb3773c49b2818
-[08/13] regulator: pfuze100: convert to use maple tree register cache
-        commit: 0332f074f5c3d8c2a32db24c9dcc3c3f13056cef
-[09/13] regulator: rtmv20: convert to use maple tree register cache
-        commit: 43edba6b670bc4f5426e77873b400fe91f8d3c75
-[10/13] regulator: rtq6752: convert to use maple tree register cache
-        commit: 81c180e77d60755ca5ff217786e2f427ccab04e0
-[11/13] regulator: tps51632: convert to use maple tree register cache
-        commit: 9500d38e50d0cfd33536454a204dedb9d47d84a3
-[12/13] regulator: tps62360: convert to use maple tree register cache
-        commit: fe258f54c0a85c1bfc0e836e20c3e4e52f1a8318
-[13/13] regulator: rpi-panel-attiny: convert to use maple tree register cache
-        commit: ab470abe58c09b2fbe2c1478e67a904fd803e84f
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 
