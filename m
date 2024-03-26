@@ -4,157 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B580C54E67
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Mar 2024 06:12:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9C8DC54E67
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Mar 2024 07:01:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OVVHZORcAHls0k5Ku39qrT06xqZBJlcpQfxRVWAVYtI=; b=MWXbN6qmepD5DP8Gd5yKpO5xZO
-	9ZO6YfX72cRPsTS2UD/6lQZvUGKK4nATLDF2dI9Wi0puk7JR6TL9+KkkySEpbmLF624GrnLpxHSUS
-	KULSwvIOSp+/rlRH6R/fp4EKBfpMHUYBSDS267tYC52NwQ1A4Zm5oiHgaIi6xHh3jjHM/D9nX9cEX
-	jVTRVj1USG2EtSFmq123YSgneUGn2TXyD1avm75GS1xTd8FUsc6XnN2Hw9Bdha3R1FqEYEZM5qKLo
-	paoQbcR0Bi+dbs1KCUhJWSXMBmhkmCdyxsCy06r/y2soUiAtOFWRD4gED+nSyIuuBwEuv2cVAyrMB
-	o8MuKJJw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lDKb2M9m2N/T/ojZvD9vpqOH7ck2s7a6r40cUfN081o=; b=ss48db5fwPQFWb2lb43JWwFuGw
+	/t4Fo1ATYJo6VYD/b/W8wxOUa4j4RnrLaz779XVh5U6l7tOkAMqicdlSUjMwarLYobgfDdT4Id3ha
+	v7EI8y5fVCO83yvemxFDbAzY5MY2zbDDlxGc2xh+Zvj4qaH0NUMkjvU1lf7Yy7vlRSXu16q5bTnU4
+	T4IqFPrnQh2mbTz+gJupEAdhsV2oXP/apM6mspCKW1xM2p8uguHiiMX5vyQTCoeWksRKIIRUFWrb+
+	xbYDDc+z1Tk2TlFDr6l2d7Hf4s4+BJ7DjtB4N7TZkh1dYvYIT301buW3V6d6Ui8TvH6x6qgitzRaw
+	dtNk8oDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rp02i-00000003F6l-0xDE;
-	Tue, 26 Mar 2024 06:12:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rp0oC-00000003Mgo-1MUn;
+	Tue, 26 Mar 2024 07:01:20 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rp02b-00000003F3C-3wtp;
-	Tue, 26 Mar 2024 06:12:12 +0000
-X-UUID: c32f49baeb3711ee96d5dfc950b7243d-20240325
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=OVVHZORcAHls0k5Ku39qrT06xqZBJlcpQfxRVWAVYtI=;
-	b=sYy+SndqzndEXXyVN8nLLR7VxvDXgtN1G97gqxjrzjtK2tDJzU6fxbC1TwhHbsN7Mnjlp6ptrLEsobsnF8qLLy5SCOYZ8xAltPz1Qf1I4geeCtKZH2pS0dsckAkcsmGlIa5XX+CSGRt3tRSA310VZ+hq2pWVbBwspV0QTbMKrgg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:1792cb64-2305-4995-b846-0acc0c796eb2,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:3ae3ef81-4f93-4875-95e7-8c66ea833d57,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: c32f49baeb3711ee96d5dfc950b7243d-20240325
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1299352959; Mon, 25 Mar 2024 23:12:02 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 26 Mar 2024 14:11:59 +0800
-Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 26 Mar 2024 14:11:59 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HwxqStmrKmfmFugFMWHdeNtE7n1p1zsWEJn0hylow6Dn/oYcMLXAJmle2loSh7hvSBbTbhf6txs8osXjYPxZnrXodOUMKLctUCS/eh4LaqilPZ77mtwaYA7qGg5hyhAtLHLwm+JJE1d7NqM9n//udsBOcdQHoTQ21wMt2/iCDcH5BWGyYzYpBvApohvG46YxN8tfsbGuIrKKTk4zSLYCRf0N9ozWFH1sRJvASDtJ+vPsGSv6TXV0mi8JSA/coFMZCm1A+JG+EdrVBgq1kwqOUXNm6R5vrnHe71cpgKMdmDzI9SV1+vQ/MMhqMCh3dJ+0cW6PaRcnMW6xBvViXjMVsg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OVVHZORcAHls0k5Ku39qrT06xqZBJlcpQfxRVWAVYtI=;
- b=RqJkb5H4/PotbD7QzL6konagd01MtaSERLTliFFNWVu4hYfYrVaGyohH5GP+nsDVbVbFLeaan//IZ/RTHugKAi7fb/9C0L9r2+CLLtmIvssS5ZYKg3Ee7crfns6Gs13K9tNYb3kRX/mzil1tuT9BOpaHqPytDM2YJYNK54BNjWIi7MgbeAAEuS1YdRP3RGMIkEp1D06sJ8fbVPHAkVksiNo7UI14/ikwFI+vIFi18TecTdvJE+cqzPguKLfPCqB6llXLLSilyY7ybdlyxZ5cHTXanRXhBUGszI32csNyy2+oq7ZA/jMuYW7cUiT6bAxHhUoXkFiiOwMFGiU6QKNIfQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1rp0o4-00000003MeT-1kdE;
+	Tue, 26 Mar 2024 07:01:17 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a4a39ab1a10so219090266b.1;
+        Tue, 26 Mar 2024 00:01:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OVVHZORcAHls0k5Ku39qrT06xqZBJlcpQfxRVWAVYtI=;
- b=nOH11tUDHRkQw9ccl7qzf06KroTQqwyvXn6TD/qVpuKm5NmQE5B84+Isw5uLKFprxMznqYSV67XsmDUX9OwcRkAxvnJWrnBhuB0lE8P0y51Gya3rdcsZLAH5pB09/XWlDphAK7UBKImDjn/ccuqolUTXG6lSoD3R3hrsaO2Vo3E=
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
- by SEZPR03MB8232.apcprd03.prod.outlook.com (2603:1096:101:1a0::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7386.30; Tue, 26 Mar
- 2024 06:11:56 +0000
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::f3b6:91a7:e0fb:cb27]) by TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::f3b6:91a7:e0fb:cb27%7]) with mapi id 15.20.7409.028; Tue, 26 Mar 2024
- 06:11:56 +0000
-From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-To: =?utf-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v6 13/14] drm/mediatek: Support CRC in OVL
-Thread-Topic: [PATCH v6 13/14] drm/mediatek: Support CRC in OVL
-Thread-Index: AQHafBnuG31tmVMTX0ycMIyG4NUwXrFJkMyA
-Date: Tue, 26 Mar 2024 06:11:56 +0000
-Message-ID: <10afc2842aea3700263c4accf0593b75e7209431.camel@mediatek.com>
-References: <20240322052829.9893-1-shawn.sung@mediatek.com>
-	 <20240322052829.9893-14-shawn.sung@mediatek.com>
-In-Reply-To: <20240322052829.9893-14-shawn.sung@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|SEZPR03MB8232:EE_
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 5Kq7IeamBRdXdc1tjoCFOjiC8HDn5N+j76hm/VSTf2A26s/YZ2Do43K6AGfcf9jjo1J5Kh2j/mQXVyA1bpwwTGKy/Jka2Z+IzqaTv5EQOQQIymzj2cQMPqwHN4WOfEVqzCJt31k5BQLFzGn6d5UTXGngJ7w05XSseSZqHvrn/0fQpSIfcsYN9Jf/YlEFLvn9F881pXW5UPOatTDOO7MBiTMLiBToNIqeiKFdAQe2vhunEs8EdTGgywl+1ojPTmcUsBNRg/NsogUYX2fvvgT5ZlKsNTTMKuHprQCTYHo2E/M/4SEpx0ygUpbUrgelv74ywBNZ2ALbcap2Jfwou2ME5591HoqzuT4wOjCChWoq2k7hasYA7B6d3jEFzsCrOpWmXy/94RJjeXHOHmsTTlR4BhlC2NY6R6pLxGS72lVe0KWaUBfacEO9Spfpcd7kmd9ol75lmoEzgL0KstxhlIfrapLLfs7tmmbLnilOF0L49JhSJTHnjI13efbwCMpK5OKuEYNOze3ZLI33WhUKwJvpA20JLP4lmitrWaMxCEFtzn+/1FeWXJkcsRXLcCEMS4gPXbetdCLMb07neLWEuYmfSu1EzTgdBMc7W2K/RjMpQEnrbeEt5r05/Cm+4er3C3Syyi6QopJMNSTVMNeqLrbcF6ENWNFanRo2XXRaPdik8DU=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(7416005)(376005)(366007)(1800799015);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?a1ZoK3h5NkVHSllIWHVkc3gzN01JR2ttUG5TbVdWUm5JV21qOG0rb3NGSUdr?=
- =?utf-8?B?TkYwY1BWa29pV0lRRktiWW5DcE9sQTVEQWxURUhpL0VYZEJ4bDRNVTRpUy9P?=
- =?utf-8?B?akVRd2t1Q2YyY1J3L3puSTNRb2NYclFuZm9vbW85b0wzblhjbEVmTW9hMDVO?=
- =?utf-8?B?MVo5SHhod3JUeS8vTFdZcVBENnRibU56TlF4VEVjS3Y3SEdSZGNWTzdCaFFK?=
- =?utf-8?B?YXVHUXFheVYzeW1mYVJhcm1mbGdRZkNlNVFrSGZRcElBUjZ0WDdpWUVpaDFi?=
- =?utf-8?B?L3FKZTE3NldNL0VKcXNzZ29seFhWc0UvZnRmRnN5dkQzQnhsZEJnNHV2TWdh?=
- =?utf-8?B?amp4cnBoZmprTmRHY01BRkJJWnNOaGVuR1VRUHBhZVZOSG5rNVd6UHV2VXVn?=
- =?utf-8?B?YnBoZm9ucEgrSVR1SU1NM1lSdHR0OHFDdzRQTVFLTGxGYkRtY084cUtrYnVW?=
- =?utf-8?B?ZC83Wm9FVHpzZXFuN3EySjNjWTJib2I3VDNEWExRVTUxVmVVdG05ZUlWTHV6?=
- =?utf-8?B?czFQWUJydGpUNlZEMWp0Wisza3kxYTYrcEh6dXcwcllLUmJaZ2o1Z0ZSUzRK?=
- =?utf-8?B?NHVZT0xoS0liUDF3dFpsL3dzbHcyd25tSTZaRzBPTGlzSHpTT2wxU2ZITVRK?=
- =?utf-8?B?aHZvRTJpWkhmcnNDRVdyUjcyZHN3L1N2ZkJlV1dQc3ZZVEdxMmFaOGJscVhD?=
- =?utf-8?B?TVhXdTFha2dZL2JqRGZWeGhWREg2dm1PM1VzcWg2VUZCTnZlZkQ5akczRC9w?=
- =?utf-8?B?SWRXQVNnUDlDVjJKREtTQUVYRWdLWTBKRVNFQ2xJaTBLWE5YaUdyMHFIMWdL?=
- =?utf-8?B?Mi85Umd4aUJMMG5EdlB6VFI0cVpYT2dRMjlCbEtSa1MzN1BqTCtpRTRYUkZH?=
- =?utf-8?B?QVRiZSs3RUlEYXhUa2pvZ25OcmU4aGQzNS8rMi96cXNCN3l3cmZZalcxT1Jj?=
- =?utf-8?B?Yi84a0pDR1o4Rnk0TzhmSmxESDhjQWhwRGludmRtUVBFTU90c0N6WlQ0Q1N4?=
- =?utf-8?B?WWo0dUhWL2gyRzJmNDFrTXNnN1FtWmRkRWhMcC9PWE53RkN2RjVkNUk1QWZy?=
- =?utf-8?B?cldkNWljUGdLbDhDbVJuWm5KejM3d2VieHkzUnFHNVp6T2lBd3dRVGFpeDJy?=
- =?utf-8?B?MERTY1pFTkkrYVc0OC9nRGRQWXplbjJGQ0wrSHAzSzNJRnVqOUc5amJsdlJF?=
- =?utf-8?B?a2haWkxiQkJER2l4UHVzUUREckhMaWIvK0s1bUoxZmNjOS9ra2RSeGlhTHB2?=
- =?utf-8?B?SEZjb01vNWh5aXpXMUcwU2VENEh4MWl2aVlhbFJIN216VEd5VjhqbGdiOHd2?=
- =?utf-8?B?RFNIT1lTREVWeTlaYjBZN00vdmRlaWZqaUo1UXJUbndpRjNQWUU1QzlWZVBq?=
- =?utf-8?B?TmsvbDBncDd2OHg4YTlUZVdaeTZ5YWNicWN0UFh3YXhyVVA2T1djb2ZObXpI?=
- =?utf-8?B?V2xXOWE1eE0xV2pMT3Z4V3pEY1o2VFJ6NEZHc2RReW9TRnZXcncvSktTOXNE?=
- =?utf-8?B?cW14SWdUdmxOWEF3VlA3VTZycXNraGdTMWFUMU4razM1WVlhT2hhblVLWmVK?=
- =?utf-8?B?N1pvd2paMFZDM0UrTkFvRFIwTmdCZ25JSlJtRWZ5Y2plZjBZNDFJN1BwZUp6?=
- =?utf-8?B?bkdqbmQ2M29oQzd5Q3VrR0FlWktDL1VrcitEelVNa3NsL2FNNFNhcVg2NjdE?=
- =?utf-8?B?RWdlKzJSL01uOElKVEI1SjNMelovTkpLYkFlakV5bDd0bzVUY0xhMS91a2pN?=
- =?utf-8?B?WlJpYWo2Z0Q0MjlLbnNWS29RbWxYeitWUUpXWFd6cXZMejc4S0d5dUw2NFlx?=
- =?utf-8?B?azhGeWc2cThFOWtVMVpicTlpYld6eU1ud3hNWmx3YjNnV2xGRXkySk1ZanFK?=
- =?utf-8?B?bENwQkRwa2dTdklDb1Y4Qm5oVkNiK2RBMER6cHFlYUdnNW1IdGZSR09DdXJQ?=
- =?utf-8?B?aU1LZjZFYmw0cklTNW5FNC9VWmRLdVVaYnRIbWVmVU00ZXZkOXNGWXJMMjhl?=
- =?utf-8?B?MGVveGZRTnBrL1lGSzByUUJMQVZUTTJNSDJaRkxRTkRCVmloT0Q5ai9PcWxr?=
- =?utf-8?B?M0RNOEFGWEJ0eE5aQ2VvZUhBRDFKQnJRL3NJY3N6UG1WQ1dQdUJTdldUU1FB?=
- =?utf-8?Q?IsNGAYcHFwGaGl1EuSKkG9Xpo?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <62E964A4DE438244B8F01FF2520C5807@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=gmail.com; s=20230601; t=1711436470; x=1712041270; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=lDKb2M9m2N/T/ojZvD9vpqOH7ck2s7a6r40cUfN081o=;
+        b=KaHbc0P2f5UUulcrJgqKgFBjt4QnHADZyx1EIYKGy/Kg/I16FnugA3QXkCFHCvmMRN
+         lcHkLWc9lF2+DCqT7mLAwU84UHKi1Kn3Og9NSutMtfkwIuG+b2UEQUIYEG2x3oXykRDI
+         t6WpTPdowMSSaYz2YekCKNDeovYTqxbQcgfEDzDbYsJV/v+4O4FhrkYuFnK9P9PMz2hi
+         b/+2DkNSG3VICQSJsSQJc++AU7kTzOclRDP0FDMRi9i5Lp1GrnXyhiGa/PGgx1Fuq0vB
+         kvxLsqcZg+IlCSP5YS+9LpI4FbwIzmroTn2hTdXMBMsqJvlB6aS5iT56+DeXnPzBIzBP
+         FHjw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1711436470; x=1712041270;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=lDKb2M9m2N/T/ojZvD9vpqOH7ck2s7a6r40cUfN081o=;
+        b=TP/aiCT2lO7nEX6Ex3BI9vsLOweRJfJIfVjxqcYiRt8zz64y+d+PmlV0AMfjUzmIqA
+         EAz0fU6C6qEi/N0ZQAuSgOq61CxvOtLRITn6v8kfiKOUpK9bEbxKGXFmQjEPqb0MjWl/
+         1/dvJyH6gHgpn2Kawz0ONySxGoHn8rdKVF7vGun/m/lAvUVyObkfHmPWMSjZhkeNFkeU
+         bAu6mq4kN/QXk5pNe6XyM8kE8X4lEhMeRdTXh72IJR2LvSo1kTZ8bLYoF8wSrRZOXo2i
+         Mg4embOJgC+16Udy33GsCXrxXI6X3SE8re4HflEuezem1wEtdRsixd1XW6GGbGQBFnAy
+         v1LQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUk0gUtFP7SjAzZuVhgCtE/BXQuLPploLHO20gE0XyMpWlx9vPqrVUT8zZyeneJksiNdmOBPw4AvQdOGMbct1Pi+O7N0FEXpOmqax/yQGTHcm+SVsW+49AeXfloNsKoo04LDNwoQc7ssjaU0Qem/JF6/bWtkZjmbYw=
+X-Gm-Message-State: AOJu0YwludH0An0cg3rhSbICBBz4o42QJpXVLnPy1F6HM0/2hg4iE2i3
+	k5GSebo6z5upnA48LvhUxmCioXWG5waCE36anYsQBo+mOJHXdn38
+X-Google-Smtp-Source: AGHT+IGS7If5ZXcQkgLuE49sfA9z218WCOq2iJGFO/MWSofFJ+6rGOBhl6p4HD5hJSj51PdqEOlRTQ==
+X-Received: by 2002:a17:906:f1ca:b0:a4d:8f17:44db with SMTP id gx10-20020a170906f1ca00b00a4d8f1744dbmr1667693ejb.31.1711436469707;
+        Tue, 26 Mar 2024 00:01:09 -0700 (PDT)
+Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.googlemail.com with ESMTPSA id c21-20020a170906155500b00a46baba1a0asm3892431ejd.100.2024.03.26.00.01.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 26 Mar 2024 00:01:09 -0700 (PDT)
+Message-ID: <8b89de10-10a9-477f-9096-f78e769c1e1f@gmail.com>
+Date: Tue, 26 Mar 2024 08:01:07 +0100
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 74f1c009-853b-4969-f385-08dc4d5ba3ed
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Mar 2024 06:11:56.7218
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: RTglCdqs1OoryCpiUnVZYXTunj4BCybV37Hk1sEY9z+Sc4N0H587H1lT//8EIoYm+DeGbItdSm4TpU2HCMT9tg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB8232
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] wifi: mt76: mt7603: add debugfs attr for disabling frames
+ buffering
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>
+Cc: Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ openwrt-devel@lists.openwrt.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>
+References: <20240325223319.30125-1-zajec5@gmail.com>
+ <4c6319eb-79d3-46ba-a334-c74ea13461ea@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+In-Reply-To: <4c6319eb-79d3-46ba-a334-c74ea13461ea@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_231210_155051_FFF85DDA 
-X-CRM114-Status: GOOD (  21.19  )
+X-CRM114-CacheID: sfid-20240326_000112_689822_739F9AB0 
+X-CRM114-Status: UNSURE (   7.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -166,271 +99,1397 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: =?utf-8?B?QmliYnkgSHNpZWggKOisnea/n+mBoCk=?= <Bibby.Hsieh@mediatek.com>, "sean@poorly.run" <sean@poorly.run>, "jason-ch.chen@mediatek.corp-partner.google.com" <jason-ch.chen@mediatek.corp-partner.google.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, =?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "daniel@ffwll.ch" <daniel@ffwll.ch>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, "airlied@gmail.com" <airlied@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIFNoYXduOg0KDQpPbiBGcmksIDIwMjQtMDMtMjIgYXQgMTM6MjggKzA4MDAsIFNoYXduIFN1
-bmcgd3JvdGU6DQo+IEZyb206IEhzaWFvIENoaWVuIFN1bmcgPHNoYXduLnN1bmdAbWVkaWF0ZWsu
-Y29tPg0KPiANCj4gV2UgY2hvb3NlIE9WTCBhcyB0aGUgQ1JDIGdlbmVyYXRvciBmcm9tIG90aGVy
-IGhhcmR3YXJlDQo+IGNvbXBvbmVudHMgdGhhdCBhcmUgYWxzbyBjYXBhYmxlIG9mIGNhbGN1bGF0
-aW5nIENSQ3MsDQo+IHNpbmNlIGl0cyBmcmFtZSBkb25lIGV2ZW50IHRyaWdnZXJzIHZibGFua3Ms
-IGl0IGNhbiBiZQ0KPiB1c2VkIGFzIGEgc2lnbmFsIHRvIGtub3cgd2hlbiBpcyBzYWZlIHRvIHJl
-dHJpZXZlIENSQyBvZg0KPiB0aGUgZnJhbWUuDQo+IA0KPiBQbGVhc2Ugbm90ZSB0aGF0IHBvc2l0
-aW9uIG9mIHRoZSBoYXJkd2FyZSBjb21wb25lbnQNCj4gdGhhdCBpcyBjaG9zZW4gYXMgQ1JDIGdl
-bmVyYXRvciBpbiB0aGUgZGlzcGxheSBwYXRoIGlzDQo+IHNpZ25pZmljYW50LiBGb3IgZXhhbXBs
-ZSwgd2hpbGUgT1ZMIGlzIHRoZSBmaXJzdCBtb2R1bGUNCj4gaW4gVkRPU1lTMCwgaXRzIENSQyB3
-b24ndCBiZSBhZmZlY3RlZCBieSB0aGUgbW9kdWxlcw0KPiBhZnRlciBpdCwgd2hpY2ggbWVhbnMg
-ZWZmZWN0cyBhcHBsaWVkIGJ5IFBRLCBHYW1tYSwNCj4gRGl0aGVyIG9yIGFueSBvdGhlciBjb21w
-b25lbnRzIGFmdGVyIE9WTCB3b24ndCBiZQ0KPiBjYWxjdWxhdGVkIGluIENSQyBnZW5lcmF0aW9u
-Lg0KPiANCj4gU2lnbmVkLW9mZi1ieTogSHNpYW8gQ2hpZW4gU3VuZyA8c2hhd24uc3VuZ0BtZWRp
-YXRlay5jb20+DQo+IC0tLQ0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kZHBfY29t
-cC5jIHwgICAzICsNCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9kcnYuaCB8
-ICAgMyArDQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMgfCAxOTgN
-Cj4gKysrKysrKysrKysrKysrKysrKysrKy0tDQo+ICAzIGZpbGVzIGNoYW5nZWQsIDE5NCBpbnNl
-cnRpb25zKCspLCAxMCBkZWxldGlvbnMoLSkNCj4gDQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RkcF9jb21wLmMNCj4gYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RkcF9jb21wLmMNCj4gaW5kZXggMTdiMDM2NDExMjkyMi4uY2I3MWVmZmRhOWMyYSAx
-MDA2NDQNCj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kZHBfY29tcC5jDQo+
-ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGRwX2NvbXAuYw0KPiBAQCAtMzUx
-LDYgKzM1MSw5IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2RkcF9jb21wX2Z1bmNzIGRkcF9v
-dmwgPQ0KPiB7DQo+ICAJLmNsa19lbmFibGUgPSBtdGtfb3ZsX2Nsa19lbmFibGUsDQo+ICAJLmNs
-a19kaXNhYmxlID0gbXRrX292bF9jbGtfZGlzYWJsZSwNCj4gIAkuY29uZmlnID0gbXRrX292bF9j
-b25maWcsDQo+ICsJLmNyY19jbnQgPSBtdGtfb3ZsX2NyY19jbnQsDQo+ICsJLmNyY19lbnRyeSA9
-IG10a19vdmxfY3JjX2VudHJ5LA0KPiArCS5jcmNfcmVhZCA9IG10a19vdmxfY3JjX3JlYWQsDQo+
-ICAJLnN0YXJ0ID0gbXRrX292bF9zdGFydCwNCj4gIAkuc3RvcCA9IG10a19vdmxfc3RvcCwNCj4g
-IAkucmVnaXN0ZXJfdmJsYW5rX2NiID0gbXRrX292bF9yZWdpc3Rlcl92YmxhbmtfY2IsDQo+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfZHJ2LmgNCj4gYi9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfZHJ2LmgNCj4gaW5kZXggMDgyYWMxOGZl
-MDRhYS4uYzQ3NjA1NmE1Y2JiNSAxMDA2NDQNCj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kaXNwX2Rydi5oDQo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-ZGlzcF9kcnYuaA0KPiBAQCAtMTA1LDYgKzEwNSw5IEBAIHZvaWQgbXRrX292bF9lbmFibGVfdmJs
-YW5rKHN0cnVjdCBkZXZpY2UgKmRldik7DQo+ICB2b2lkIG10a19vdmxfZGlzYWJsZV92Ymxhbmso
-c3RydWN0IGRldmljZSAqZGV2KTsNCj4gIGNvbnN0IHUzMiAqbXRrX292bF9nZXRfZm9ybWF0cyhz
-dHJ1Y3QgZGV2aWNlICpkZXYpOw0KPiAgc2l6ZV90IG10a19vdmxfZ2V0X251bV9mb3JtYXRzKHN0
-cnVjdCBkZXZpY2UgKmRldik7DQo+ICtzaXplX3QgbXRrX292bF9jcmNfY250KHN0cnVjdCBkZXZp
-Y2UgKmRldik7DQo+ICt1MzIgKm10a19vdmxfY3JjX2VudHJ5KHN0cnVjdCBkZXZpY2UgKmRldik7
-DQo+ICt2b2lkIG10a19vdmxfY3JjX3JlYWQoc3RydWN0IGRldmljZSAqZGV2KTsNCj4gIA0KPiAg
-dm9pZCBtdGtfb3ZsX2FkYXB0b3JfYWRkX2NvbXAoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3Qg
-bXRrX211dGV4DQo+ICptdXRleCk7DQo+ICB2b2lkIG10a19vdmxfYWRhcHRvcl9yZW1vdmVfY29t
-cChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdA0KPiBtdGtfbXV0ZXggKm11dGV4KTsNCj4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYw0KPiBiL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYw0KPiBpbmRleCBhOTM2ZjMzOGFi
-NzlkLi4yNzllNjE5M2U3OTc1IDEwMDY0NA0KPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2Rpc3Bfb3ZsLmMNCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-aXNwX292bC5jDQo+IEBAIC0yNCwxMiArMjQsMjAgQEANCj4gICNkZWZpbmUgT1ZMX0ZNRV9DUExf
-SU5UCQkJCQlCSVQoMSkNCj4gICNkZWZpbmUgRElTUF9SRUdfT1ZMX0lOVFNUQQkJCTB4MDAwOA0K
-PiAgI2RlZmluZSBESVNQX1JFR19PVkxfRU4JCQkJMHgwMDBjDQo+ICsjZGVmaW5lIE9WTF9FTgkJ
-CQkJCUJJVCgwKQ0KPiArI2RlZmluZSBPVkxfT1BfOEJJVF9NT0RFCQkJCUJJVCg0KQ0KPiArI2Rl
-ZmluZSBPVkxfSEdfRk9WTF9DS19PTgkJCQlCSVQoOCkNCj4gKyNkZWZpbmUgT1ZMX0hGX0ZPVkxf
-Q0tfT04JCQkJQklUKDEwKQ0KPiArI2RlZmluZSBESVNQX1JFR19PVkxfVFJJRwkJCTB4MDAxMA0K
-PiArI2RlZmluZSBPVkxfQ1JDX0VOCQkJCQlCSVQoOCkNCj4gKyNkZWZpbmUgT1ZMX0NSQ19DTFIJ
-CQkJCUJJVCg5KQ0KPiAgI2RlZmluZSBESVNQX1JFR19PVkxfUlNUCQkJMHgwMDE0DQo+ICAjZGVm
-aW5lIERJU1BfUkVHX09WTF9ST0lfU0laRQkJCTB4MDAyMA0KPiAgI2RlZmluZSBESVNQX1JFR19P
-VkxfREFUQVBBVEhfQ09OCQkweDAwMjQNCj4gICNkZWZpbmUgT1ZMX0xBWUVSX1NNSV9JRF9FTgkJ
-CQlCSVQoMCkNCj4gICNkZWZpbmUgT1ZMX0JHQ0xSX1NFTF9JTgkJCQlCSVQoMikNCj4gICNkZWZp
-bmUgT1ZMX0xBWUVSX0FGQkNfRU4obikJCQkJQklUKDQrbikNCj4gKyNkZWZpbmUgT1ZMX09VVFBV
-VF9DTEFNUAkJCQlCSVQoMjYpDQo+ICAjZGVmaW5lIERJU1BfUkVHX09WTF9ST0lfQkdDTFIJCQkw
-eDAwMjgNCj4gICNkZWZpbmUgRElTUF9SRUdfT1ZMX1NSQ19DT04JCQkweDAwMmMNCj4gICNkZWZp
-bmUgRElTUF9SRUdfT1ZMX0NPTihuKQkJCSgweDAwMzAgKyAweDIwICogKG4pKQ0KPiBAQCAtNDIs
-NyArNTAsMjYgQEANCj4gICNkZWZpbmUgRElTUF9SRUdfT1ZMX1JETUFfQ1RSTChuKQkJKDB4MDBj
-MCArIDB4MjAgKiAobikpDQo+ICAjZGVmaW5lIERJU1BfUkVHX09WTF9SRE1BX0dNQyhuKQkJKDB4
-MDBjOCArIDB4MjAgKiAobikpDQo+ICAjZGVmaW5lIERJU1BfUkVHX09WTF9BRERSX01UMjcwMQkJ
-MHgwMDQwDQo+ICsjZGVmaW5lIERJU1BfUkVHX09WTF9DUkMJCQkweDAyNzANCj4gKyNkZWZpbmUg
-T1ZMX0NSQ19PVVRfTUFTSwkJCQlHRU5NQVNLKDMwLCAwKQ0KPiAgI2RlZmluZSBESVNQX1JFR19P
-VkxfQ0xSRk1UX0VYVAkJCTB4MDJEMA0KPiArI2RlZmluZSBESVNQX1JFR19PVkxfQ0xSRk1UX0VY
-VDEJCTB4MDJEOA0KPiArI2RlZmluZSBPVkxfQ0xSRk1UX0VYVDFfQ1NDX0VOKG4pCQkJKDEgPDwg
-KCgobikgKg0KPiA0KSArIDEpKQ0KPiArI2RlZmluZSBESVNQX1JFR19PVkxfWTJSX1BBUkFfUjAo
-bikJCSgweDAxMzQgKyAweDI4ICogKG4pKQ0KPiArI2RlZmluZSBPVkxfWTJSX1BBUkFfQ19DRl9S
-TVkJCQkJKEdFTk1BUw0KPiBLKDE0LCAwKSkNCj4gKyNkZWZpbmUgRElTUF9SRUdfT1ZMX1kyUl9Q
-QVJBX0cwKG4pCQkoMHgwMTNjICsgMHgyOCAqIChuKSkNCj4gKyNkZWZpbmUgT1ZMX1kyUl9QQVJB
-X0NfQ0ZfR01VCQkJCShHRU5NQVMNCj4gSygzMCwgMTYpKQ0KPiArI2RlZmluZSBESVNQX1JFR19P
-VkxfWTJSX1BBUkFfQjEobikJCSgweDAxNDggKyAweDI4ICogKG4pKQ0KPiArI2RlZmluZSBPVkxf
-WTJSX1BBUkFfQ19DRl9CTVYJCQkJKEdFTk1BUw0KPiBLKDE0LCAwKSkNCj4gKyNkZWZpbmUgRElT
-UF9SRUdfT1ZMX1kyUl9QQVJBX1lVVl9BXzAobikJKDB4MDE0YyArIDB4MjggKiAobikpDQo+ICsj
-ZGVmaW5lIE9WTF9ZMlJfUEFSQV9DX0NGX1lBCQkJCShHRU5NQVNLKDEwLA0KPiAwKSkNCj4gKyNk
-ZWZpbmUgT1ZMX1kyUl9QQVJBX0NfQ0ZfVUEJCQkJKEdFTk1BU0soMjYsDQo+IDE2KSkNCj4gKyNk
-ZWZpbmUgRElTUF9SRUdfT1ZMX1kyUl9QQVJBX1lVVl9BXzEobikJKDB4MDE1MCArIDB4MjggKiAo
-bikpDQo+ICsjZGVmaW5lIE9WTF9ZMlJfUEFSQV9DX0NGX1ZBCQkJCShHRU5NQVNLKDEwLA0KPiAw
-KSkNCj4gKyNkZWZpbmUgRElTUF9SRUdfT1ZMX1kyUl9QUkVfQUREMihuKQkJKDB4MDE1NCArIDB4
-MjggKiAobikpDQo+ICsjZGVmaW5lIERJU1BfUkVHX09WTF9SMlJfUjAobikJCQkoMHgwNTAwICsg
-MHg0MA0KPiAqIChuKSkNCj4gKyNkZWZpbmUgRElTUF9SRUdfT1ZMX1IyUl9HMShuKQkJCSgweDA1
-MTAgKyAweDQwDQo+ICogKG4pKQ0KPiArI2RlZmluZSBESVNQX1JFR19PVkxfUjJSX0IyKG4pCQkJ
-KDB4MDUyMCArIDB4NDANCj4gKiAobikpDQo+ICAjZGVmaW5lIERJU1BfUkVHX09WTF9BRERSX01U
-ODE3MwkJMHgwZjQwDQo+ICAjZGVmaW5lIERJU1BfUkVHX09WTF9BRERSKG92bCwgbikJCSgob3Zs
-KS0+ZGF0YS0+YWRkciArDQo+IDB4MjAgKiAobikpDQo+ICAjZGVmaW5lIERJU1BfUkVHX09WTF9I
-RFJfQUREUihvdmwsIG4pCQkoKG92bCktPmRhdGEtDQo+ID5hZGRyICsgMHgyMCAqIChuKSArIDB4
-MDQpDQo+IEBAIC01NSw2ICs4Miw4IEBADQo+ICAjZGVmaW5lIE9WTF9DT05fQ0xSRk1UX01BTglC
-SVQoMjMpDQo+ICAjZGVmaW5lIE9WTF9DT05fQllURV9TV0FQCUJJVCgyNCkNCj4gICNkZWZpbmUg
-T1ZMX0NPTl9SR0JfU1dBUAlCSVQoMjUpDQo+ICsjZGVmaW5lIE9WTF9DT05fTVRYX0FVVE9fRElT
-CUJJVCgyNikNCj4gKyNkZWZpbmUgT1ZMX0NPTl9NVFhfRU4JCUJJVCgyNykNCj4gICNkZWZpbmUg
-T1ZMX0NPTl9DTFJGTVRfUkdCCSgxIDw8IDEyKQ0KPiAgI2RlZmluZSBPVkxfQ09OX0NMUkZNVF9S
-R0JBODg4OAkoMiA8PCAxMikNCj4gICNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfQVJHQjg4ODgJKDMg
-PDwgMTIpDQo+IEBAIC02Miw2ICs5MSw3IEBADQo+ICAjZGVmaW5lIE9WTF9DT05fQ0xSRk1UX1lV
-WVYJKDUgPDwgMTIpDQo+ICAjZGVmaW5lIE9WTF9DT05fTVRYX1lVVl9UT19SR0IJKDYgPDwgMTYp
-DQo+ICAjZGVmaW5lIE9WTF9DT05fQ0xSRk1UX1BBUkdCODg4OAkoT1ZMX0NPTl9DTFJGTVRfQVJH
-Qjg4ODggfA0KPiBPVkxfQ09OX0NMUkZNVF9NQU4pDQo+ICsjZGVmaW5lIE9WTF9DT05fTVRYX1BS
-T0dSQU1NQUJMRQkoOCA8PCAxNikNCj4gICNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfUkdCNTY1KG92
-bCkJKChvdmwpLT5kYXRhLT5mbXRfcmdiNTY1X2lzXzAgPw0KPiBcDQo+ICAJCQkJCTAgOiBPVkxf
-Q09OX0NMUkZNVF9SR0IpDQo+ICAjZGVmaW5lIE9WTF9DT05fQ0xSRk1UX1JHQjg4OChvdmwpCSgo
-b3ZsKS0+ZGF0YS0+Zm10X3JnYjU2NV9pc18wID8NCj4gXA0KPiBAQCAtMTMxLDYgKzE2MSwxMCBA
-QCBzdGF0aWMgY29uc3QgdTMyIG10ODE5NV9mb3JtYXRzW10gPSB7DQo+ICAJRFJNX0ZPUk1BVF9Z
-VVlWLA0KPiAgfTsNCj4gIA0KPiArc3RhdGljIGNvbnN0IHUzMiBtdDgxOTVfb3ZsX2NyY19vZnNb
-XSA9IHsNCj4gKwlESVNQX1JFR19PVkxfQ1JDLA0KPiArfTsNCj4gKw0KPiAgc3RydWN0IG10a19k
-aXNwX292bF9kYXRhIHsNCj4gIAl1bnNpZ25lZCBpbnQgYWRkcjsNCj4gIAl1bnNpZ25lZCBpbnQg
-Z21jX2JpdHM7DQo+IEBAIC0xNDEsMTIgKzE3NSwxNSBAQCBzdHJ1Y3QgbXRrX2Rpc3Bfb3ZsX2Rh
-dGEgew0KPiAgCWNvbnN0IHUzMiAqZm9ybWF0czsNCj4gIAlzaXplX3QgbnVtX2Zvcm1hdHM7DQo+
-ICAJYm9vbCBzdXBwb3J0c19jbHJmbXRfZXh0Ow0KPiArCWNvbnN0IHUzMiAqY3JjX29mczsNCj4g
-KwlzaXplX3QgY3JjX2NudDsNCj4gIH07DQo+ICANCj4gIC8qDQo+ICAgKiBzdHJ1Y3QgbXRrX2Rp
-c3Bfb3ZsIC0gRElTUF9PVkwgZHJpdmVyIHN0cnVjdHVyZQ0KPiAgICogQGNydGM6IGFzc29jaWF0
-ZWQgY3J0YyB0byByZXBvcnQgdmJsYW5rIGV2ZW50cyB0bw0KPiAgICogQGRhdGE6IHBsYXRmb3Jt
-IGRhdGENCj4gKyAqIEBjcmM6IGNyYyByZWxhdGVkIGluZm9ybWF0aW9uDQo+ICAgKi8NCj4gIHN0
-cnVjdCBtdGtfZGlzcF9vdmwgew0KPiAgCXN0cnVjdCBkcm1fY3J0YwkJCSpjcnRjOw0KPiBAQCAt
-MTU2LDggKzE5MywzMSBAQCBzdHJ1Y3QgbXRrX2Rpc3Bfb3ZsIHsNCj4gIAljb25zdCBzdHJ1Y3Qg
-bXRrX2Rpc3Bfb3ZsX2RhdGEJKmRhdGE7DQo+ICAJdm9pZAkJCQkoKnZibGFua19jYikodm9pZCAq
-ZGF0YSk7DQo+ICAJdm9pZAkJCQkqdmJsYW5rX2NiX2RhdGE7DQo+ICsJcmVzb3VyY2Vfc2l6ZV90
-CQkJcmVnc19wYTsNCj4gKwlzdHJ1Y3QgbXRrX2NydGNfY3JjCQljcmM7DQo+ICB9Ow0KPiAgDQo+
-ICtzaXplX3QgbXRrX292bF9jcmNfY250KHN0cnVjdCBkZXZpY2UgKmRldikNCj4gK3sNCj4gKwlz
-dHJ1Y3QgbXRrX2Rpc3Bfb3ZsICpvdmwgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsNCj4gKw0KPiAr
-CXJldHVybiBvdmwtPmNyYy5jbnQ7DQo+ICt9DQo+ICsNCj4gK3UzMiAqbXRrX292bF9jcmNfZW50
-cnkoc3RydWN0IGRldmljZSAqZGV2KQ0KPiArew0KPiArCXN0cnVjdCBtdGtfZGlzcF9vdmwgKm92
-bCA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOw0KPiArDQo+ICsJcmV0dXJuIG92bC0+Y3JjLnZhOw0K
-PiArfQ0KPiArDQo+ICt2b2lkIG10a19vdmxfY3JjX3JlYWQoc3RydWN0IGRldmljZSAqZGV2KQ0K
-PiArew0KPiArCXN0cnVjdCBtdGtfZGlzcF9vdmwgKm92bCA9IGRldl9nZXRfZHJ2ZGF0YShkZXYp
-Ow0KPiArDQo+ICsJbXRrX2NydGNfcmVhZF9jcmMoJm92bC0+Y3JjLCBvdmwtPnJlZ3MpOw0KPiAr
-fQ0KPiArDQo+ICBzdGF0aWMgaXJxcmV0dXJuX3QgbXRrX2Rpc3Bfb3ZsX2lycV9oYW5kbGVyKGlu
-dCBpcnEsIHZvaWQgKmRldl9pZCkNCj4gIHsNCj4gIAlzdHJ1Y3QgbXRrX2Rpc3Bfb3ZsICpwcml2
-ID0gZGV2X2lkOw0KPiBAQCAtMjM3LDIxICsyOTcsNDAgQEAgdm9pZCBtdGtfb3ZsX2Nsa19kaXNh
-YmxlKHN0cnVjdCBkZXZpY2UgKmRldikNCj4gIHZvaWQgbXRrX292bF9zdGFydChzdHJ1Y3QgZGV2
-aWNlICpkZXYpDQo+ICB7DQo+ICAJc3RydWN0IG10a19kaXNwX292bCAqb3ZsID0gZGV2X2dldF9k
-cnZkYXRhKGRldik7DQo+ICsJdW5zaWduZWQgaW50IHJlZyA9IHJlYWRsKG92bC0+cmVncyArDQo+
-IERJU1BfUkVHX09WTF9EQVRBUEFUSF9DT04pOw0KPiAgDQo+IC0JaWYgKG92bC0+ZGF0YS0+c21p
-X2lkX2VuKSB7DQo+IC0JCXVuc2lnbmVkIGludCByZWc7DQo+ICsJaWYgKG92bC0+ZGF0YS0+c21p
-X2lkX2VuKQ0KPiArCQlyZWcgfD0gT1ZMX0xBWUVSX1NNSV9JRF9FTjsNCj4gIA0KPiAtCQlyZWcg
-PSByZWFkbChvdmwtPnJlZ3MgKyBESVNQX1JFR19PVkxfREFUQVBBVEhfQ09OKTsNCj4gLQkJcmVn
-ID0gcmVnIHwgT1ZMX0xBWUVSX1NNSV9JRF9FTjsNCj4gLQkJd3JpdGVsX3JlbGF4ZWQocmVnLCBv
-dmwtPnJlZ3MgKw0KPiBESVNQX1JFR19PVkxfREFUQVBBVEhfQ09OKTsNCj4gKwkvKg0KPiArCSAq
-IFdoZW4gZG9pbmcgWTJSIGNvbnZlcnNpb24sIGl0J3MgY29tbW9uIHRvIGdldCBhbiBvdXRwdXQN
-Cj4gKwkgKiB0aGF0IGlzIGxhcmdlciB0aGFuIDEwIGJpdHMgKG5lZ2F0aXZlIG51bWJlcnMpLg0K
-PiArCSAqIEVuYWJsZSB0aGlzIGJpdCB0byBjbGFtcCB0aGUgb3V0cHV0IHRvIDEwIGJpdHMgcGVy
-IGNoYW5uZWwNCj4gKwkgKiAoc2hvdWxkIGFsd2F5cyBiZSBlbmFibGVkKQ0KPiArCSAqLw0KPiAr
-CXJlZyB8PSBPVkxfT1VUUFVUX0NMQU1QOw0KPiArCXdyaXRlbF9yZWxheGVkKHJlZywgb3ZsLT5y
-ZWdzICsgRElTUF9SRUdfT1ZMX0RBVEFQQVRIX0NPTik7DQo+ICsNCj4gKwlyZWcgPSBPVkxfRU47
-DQo+ICsJaWYgKG92bC0+ZGF0YS0+Y3JjX2NudCkgew0KPiArCQkvKiBlbmFibGUgY3JjICBhbmQg
-aXRzIHJlbGF0ZWQgY2xvY2tzICovDQo+ICsJCXdyaXRlbF9yZWxheGVkKE9WTF9DUkNfRU4sIG92
-bC0+cmVncyArDQo+IERJU1BfUkVHX09WTF9UUklHKTsNCj4gKwkJcmVnIHw9IE9WTF9PUF84QklU
-X01PREUgfCBPVkxfSEdfRk9WTF9DS19PTiB8DQo+IE9WTF9IRl9GT1ZMX0NLX09OOw0KPiAgCX0N
-Cj4gLQl3cml0ZWxfcmVsYXhlZCgweDEsIG92bC0+cmVncyArIERJU1BfUkVHX09WTF9FTik7DQo+
-ICsJd3JpdGVsX3JlbGF4ZWQocmVnLCBvdmwtPnJlZ3MgKyBESVNQX1JFR19PVkxfRU4pOw0KPiAr
-DQo+ICsjaWYgSVNfUkVBQ0hBQkxFKENPTkZJR19NVEtfQ01EUSkNCj4gKwltdGtfY3J0Y19zdGFy
-dF9jcmNfY21kcSgmb3ZsLT5jcmMpOw0KPiArI2VuZGlmDQo+ICB9DQo+ICANCj4gIHZvaWQgbXRr
-X292bF9zdG9wKHN0cnVjdCBkZXZpY2UgKmRldikNCj4gIHsNCj4gIAlzdHJ1Y3QgbXRrX2Rpc3Bf
-b3ZsICpvdmwgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsNCj4gIA0KPiArI2lmIElTX1JFQUNIQUJM
-RShDT05GSUdfTVRLX0NNRFEpDQo+ICsJbXRrX2NydGNfc3RvcF9jcmNfY21kcSgmb3ZsLT5jcmMp
-Ow0KPiArI2VuZGlmDQo+ICAJd3JpdGVsX3JlbGF4ZWQoMHgwLCBvdmwtPnJlZ3MgKyBESVNQX1JF
-R19PVkxfRU4pOw0KPiAgCWlmIChvdmwtPmRhdGEtPnNtaV9pZF9lbikgew0KPiAgCQl1bnNpZ25l
-ZCBpbnQgcmVnOw0KPiBAQCAtNDg4LDYgKzU2Nyw4MyBAQCB2b2lkIG10a19vdmxfbGF5ZXJfY29u
-ZmlnKHN0cnVjdCBkZXZpY2UgKmRldiwNCj4gdW5zaWduZWQgaW50IGlkeCwNCj4gIAkgICAgKHN0
-YXRlLT5iYXNlLmZiICYmICFzdGF0ZS0+YmFzZS5mYi0+Zm9ybWF0LT5oYXNfYWxwaGEpKQ0KPiAg
-CQlpZ25vcmVfcGl4ZWxfYWxwaGEgPSBPVkxfQ09OU1RfQkxFTkQ7DQo+ICANCj4gKwkvKg0KPiAr
-CSAqIE9WTCBvbmx5IHN1cHBvcnRzIDggYml0cyBkYXRhIGluIENSQyBjYWxjdWxhdGlvbiwgdHJh
-bnNmb3JtDQo+IDEwLWJpdA0KPiArCSAqIFJHQiB0byA4LWJpdCBSR0IgYnkgbGV2ZXJhZ2luZyB0
-aGUgYWJpbGl0eSBvZiB0aGUgWTJSIChZVVYtDQo+IHRvLVJHQikNCj4gKwkgKiBoYXJkd2FyZSB0
-byBtdWx0aXBseSBjb2VmZmljaWVudHMsIGFsdGhvdWdoIHRoZXJlIGlzIG5vdGhpbmcNCj4gdG8g
-ZG8NCj4gKwkgKiB3aXRoIHRoZSBZVVYgZm9ybWF0Lg0KPiArCSAqLw0KPiArCWlmIChvdmwtPmRh
-dGEtPnN1cHBvcnRzX2NscmZtdF9leHQpIHsNCj4gKwkJdTMyIHkycl9jb2VmID0gMCwgeTJyX29m
-ZnNldCA9IDAsIHIycl9jb2VmID0gMCwgY3NjX2VuDQo+ID0gMDsNCj4gKw0KPiArCQlpZiAoaXNf
-MTBiaXRfcmdiKGZtdCkpIHsNCj4gKwkJCWNvbiB8PSBPVkxfQ09OX01UWF9BVVRPX0RJUyB8IE9W
-TF9DT05fTVRYX0VOIHwNCj4gT1ZMX0NPTl9NVFhfUFJPR1JBTU1BQkxFOw0KPiArDQo+ICsJCQkv
-Kg0KPiArCQkJICogWTJSIGNvZWZmaWNpZW50IHNldHRpbmcNCj4gKwkJCSAqIGJpdCAxMyBpcyAy
-XjEsIGJpdCAxMiBpcyAyXjAsIGJpdCAxMSBpcyAyXi0NCj4gMSwNCj4gKwkJCSAqIGJpdCAxMCBp
-cyAyXi0yID0gMC4yNQ0KPiArCQkJICovDQo+ICsJCQl5MnJfY29lZiA9IEJJVCgxMCk7DQo+ICsN
-Cj4gKwkJCS8qIC0xIGluIDEwYml0ICovDQo+ICsJCQl5MnJfb2Zmc2V0ID0gR0VOTUFTSygxMCwg
-MCkgLSAxOw0KDQpJIGRvbid0IGtub3cgd2h5IGRvIHRoaXM/IElmIGFuIGlucHV0IHZhbHVlIGlz
-IDB4MTAwLCB0aGVuDQoNCjB4MTAwIHJpZ2h0IHNoaXQgMiBiaXQgYmVjb21lIDB4NDAuDQoweDQw
-IC0gMSA9IDB4M2YuDQoweDNmIGxlZnQgc2hpZnQgMiBiaXQgYmVjb21lIDB4ZmMuDQoNClNvIGlu
-cHV0IDB4MTAwIGFuZCBvdXRwdXQgMHhmYy4gV2h5Pw0KDQo+ICsNCj4gKwkJCS8qDQo+ICsJCQkg
-KiBSMlIgY29lZmZpY2llbnQgc2V0dGluZw0KPiArCQkJICogYml0IDE5IGlzIDJeMSwgYml0IDE4
-IGlzIDJeMCwgYml0IDE3IGlzIDJeLQ0KPiAxLA0KPiArCQkJICogYml0IDIwIGlzIDJeMiA9IDQN
-Cj4gKwkJCSAqLw0KPiArCQkJcjJyX2NvZWYgPSBCSVQoMjApOw0KPiArDQo+ICsJCQkvKiBDU0Nf
-RU4gaXMgZm9yIFIyUiAqLw0KPiArCQkJY3NjX2VuID0gT1ZMX0NMUkZNVF9FWFQxX0NTQ19FTihp
-ZHgpOw0KPiArDQo+ICsJCQkvKg0KPiArCQkJICogMS4gWVVWIGlucHV0IGRhdGEgLSAxIGFuZCBz
-aGlmdCByaWdodCBmb3IgMg0KPiBiaXRzIHRvIHJlbW92ZSBpdA0KPiArCQkJICogW1InXSAgIFsw
-LjI1ICAgIDAgICAgMF0gICBbWSBpbiAtIDFdDQo+ICsJCQkgKiBbRyddID0gWyAgIDAgMC4yNSAg
-ICAwXSAqIFtVIGluIC0gMV0NCj4gKwkJCSAqIFtCJ10gICBbICAgMCAgICAwIDAuMjVdICAgW1Yg
-aW4gLSAxXQ0KPiArCQkJICoNCj4gKwkJCSAqIDIuIHNoaWZ0IGxlZnQgZm9yIDIgYml0IGxldHRp
-bmcgdGhlIGxhc3QgMg0KPiBiaXRzIGJlY29tZSAwDQoNCllvdSB0cnVuY2F0ZSB0aGUgbGFzdCB0
-d28gYml0LCBzbyBzb21lIHF1YWxpdHkgbG9zdC4gSSB0aGluayB0aGUNCnF1YWxpdHkgaXMgbWFp
-biBmdW5jdGlvbiBhbmQgQ1JDIGlzIGp1c3QgZm9yIGRlYnVnLiBTbyBpdCdzIGJldHRlciB0aGF0
-DQppbiBub3JtYWwgY2FzZSB3ZSBrZWVwIHF1YWxpdHkgYW5kIG9ubHkgZm9yIGRlYnVnIHRvIGxv
-c3QgdGhlIHF1YWxpdHkuDQoNCkkgaGF2ZSBhbm90aGVyIHF1ZXN0aW9uLiBZb3UganVzdCB0cnVu
-Y2F0ZSB0aGUgbGFzdCB0d28gYml0IGJ1dCBpdCBpcw0Kc3RpbGwgMTAgYml0IHZhbHVlLCBzbyBD
-UkMgY291bGQgY2FsY3VsYXRlIHRoaXMgMTAgYml0IHZhbHVlPyBJIGRvbid0DQprbm93IHdoeSB5
-b3Ugc2F5IENSQyBqdXN0IGZvciA4IGJpdD8NCg0KUmVnYXJkcywNCkNLDQoNCj4gKwkJCSAqIFtS
-IG91dF0gICBbIDQgIDAgIDBdICAgW1InXQ0KPiArCQkJICogW0cgb3V0XSA9IFsgMCAgNCAgMF0g
-KiBbRyddDQo+ICsJCQkgKiBbQiBvdXRdICAgWyAwICAwICA0XSAgIFtCJ10NCj4gKwkJCSAqLw0K
-PiArCQl9DQo+ICsNCj4gKwkJbXRrX2RkcF93cml0ZV9tYXNrKGNtZHFfcGt0LCB5MnJfY29lZiwN
-Cj4gKwkJCQkgICAmb3ZsLT5jbWRxX3JlZywgb3ZsLT5yZWdzLA0KPiBESVNQX1JFR19PVkxfWTJS
-X1BBUkFfUjAoaWR4KSwNCj4gKwkJCQkgICBPVkxfWTJSX1BBUkFfQ19DRl9STVkpOw0KPiArCQlt
-dGtfZGRwX3dyaXRlX21hc2soY21kcV9wa3QsICh5MnJfY29lZiA8PCAxNiksDQo+ICsJCQkJICAg
-Jm92bC0+Y21kcV9yZWcsIG92bC0+cmVncywNCj4gRElTUF9SRUdfT1ZMX1kyUl9QQVJBX0cwKGlk
-eCksDQo+ICsJCQkJICAgT1ZMX1kyUl9QQVJBX0NfQ0ZfR01VKTsNCj4gKwkJbXRrX2RkcF93cml0
-ZV9tYXNrKGNtZHFfcGt0LCB5MnJfY29lZiwNCj4gKwkJCQkgICAmb3ZsLT5jbWRxX3JlZywgb3Zs
-LT5yZWdzLA0KPiBESVNQX1JFR19PVkxfWTJSX1BBUkFfQjEoaWR4KSwNCj4gKwkJCQkgICBPVkxf
-WTJSX1BBUkFfQ19DRl9CTVYpOw0KPiArDQo+ICsJCW10a19kZHBfd3JpdGVfbWFzayhjbWRxX3Br
-dCwgeTJyX29mZnNldCwNCj4gKwkJCQkgICAmb3ZsLT5jbWRxX3JlZywgb3ZsLT5yZWdzLA0KPiBE
-SVNQX1JFR19PVkxfWTJSX1BBUkFfWVVWX0FfMChpZHgpLA0KPiArCQkJCSAgIE9WTF9ZMlJfUEFS
-QV9DX0NGX1lBKTsNCj4gKwkJbXRrX2RkcF93cml0ZV9tYXNrKGNtZHFfcGt0LCAoeTJyX29mZnNl
-dCA8PCAxNiksDQo+ICsJCQkJICAgJm92bC0+Y21kcV9yZWcsIG92bC0+cmVncywNCj4gRElTUF9S
-RUdfT1ZMX1kyUl9QQVJBX1lVVl9BXzAoaWR4KSwNCj4gKwkJCQkgICBPVkxfWTJSX1BBUkFfQ19D
-Rl9VQSk7DQo+ICsJCW10a19kZHBfd3JpdGVfbWFzayhjbWRxX3BrdCwgeTJyX29mZnNldCwNCj4g
-KwkJCQkgICAmb3ZsLT5jbWRxX3JlZywgb3ZsLT5yZWdzLA0KPiBESVNQX1JFR19PVkxfWTJSX1BB
-UkFfWVVWX0FfMShpZHgpLA0KPiArCQkJCSAgIE9WTF9ZMlJfUEFSQV9DX0NGX1ZBKTsNCj4gKw0K
-PiArCQltdGtfZGRwX3dyaXRlX3JlbGF4ZWQoY21kcV9wa3QsIHIycl9jb2VmLA0KPiArCQkJCSAg
-ICAgICZvdmwtPmNtZHFfcmVnLCBvdmwtPnJlZ3MsDQo+IERJU1BfUkVHX09WTF9SMlJfUjAoaWR4
-KSk7DQo+ICsJCW10a19kZHBfd3JpdGVfcmVsYXhlZChjbWRxX3BrdCwgcjJyX2NvZWYsDQo+ICsJ
-CQkJICAgICAgJm92bC0+Y21kcV9yZWcsIG92bC0+cmVncywNCj4gRElTUF9SRUdfT1ZMX1IyUl9H
-MShpZHgpKTsNCj4gKwkJbXRrX2RkcF93cml0ZV9yZWxheGVkKGNtZHFfcGt0LCByMnJfY29lZiwN
-Cj4gKwkJCQkgICAgICAmb3ZsLT5jbWRxX3JlZywgb3ZsLT5yZWdzLA0KPiBESVNQX1JFR19PVkxf
-UjJSX0IyKGlkeCkpOw0KPiArDQo+ICsJCW10a19kZHBfd3JpdGVfbWFzayhjbWRxX3BrdCwgY3Nj
-X2VuLA0KPiArCQkJCSAgICZvdmwtPmNtZHFfcmVnLCBvdmwtPnJlZ3MsDQo+IERJU1BfUkVHX09W
-TF9DTFJGTVRfRVhUMSwNCj4gKwkJCQkgICBPVkxfQ0xSRk1UX0VYVDFfQ1NDX0VOKGlkeCkpOw0K
-PiArCX0NCj4gKw0KPiAgCWlmIChwZW5kaW5nLT5yb3RhdGlvbiAmIERSTV9NT0RFX1JFRkxFQ1Rf
-WSkgew0KPiAgCQljb24gfD0gT1ZMX0NPTl9WSVJUX0ZMSVA7DQo+ICAJCWFkZHIgKz0gKHBlbmRp
-bmctPmhlaWdodCAtIDEpICogcGVuZGluZy0+cGl0Y2g7DQo+IEBAIC01OTQsMTUgKzc1MCwzMSBA
-QCBzdGF0aWMgaW50IG10a19kaXNwX292bF9wcm9iZShzdHJ1Y3QNCj4gcGxhdGZvcm1fZGV2aWNl
-ICpwZGV2KQ0KPiAgCQlkZXZfZXJyKGRldiwgImZhaWxlZCB0byBpb3JlbWFwIG92bFxuIik7DQo+
-ICAJCXJldHVybiBQVFJfRVJSKHByaXYtPnJlZ3MpOw0KPiAgCX0NCj4gKw0KPiArCXByaXYtPmRh
-dGEgPSBvZl9kZXZpY2VfZ2V0X21hdGNoX2RhdGEoZGV2KTsNCj4gKwlwbGF0Zm9ybV9zZXRfZHJ2
-ZGF0YShwZGV2LCBwcml2KTsNCj4gKw0KPiArCWlmIChwcml2LT5kYXRhLT5jcmNfY250KSB7DQo+
-ICsJCW10a19jcnRjX2luaXRfY3JjKCZwcml2LT5jcmMsDQo+ICsJCQkJICBwcml2LT5kYXRhLT5j
-cmNfb2ZzLCBwcml2LT5kYXRhLQ0KPiA+Y3JjX2NudCwNCj4gKwkJCQkgIERJU1BfUkVHX09WTF9U
-UklHLCBPVkxfQ1JDX0NMUik7DQo+ICsJfQ0KPiArDQo+ICAjaWYgSVNfUkVBQ0hBQkxFKENPTkZJ
-R19NVEtfQ01EUSkNCj4gIAlyZXQgPSBjbWRxX2Rldl9nZXRfY2xpZW50X3JlZyhkZXYsICZwcml2
-LT5jbWRxX3JlZywgMCk7DQo+ICAJaWYgKHJldCkNCj4gIAkJZGV2X2RiZyhkZXYsICJnZXQgbWVk
-aWF0ZWssZ2NlLWNsaWVudC1yZWcgZmFpbCFcbiIpOw0KPiAtI2VuZGlmDQo+IC0NCj4gLQlwcml2
-LT5kYXRhID0gb2ZfZGV2aWNlX2dldF9tYXRjaF9kYXRhKGRldik7DQo+IC0JcGxhdGZvcm1fc2V0
-X2RydmRhdGEocGRldiwgcHJpdik7DQo+ICANCj4gKwlpZiAocHJpdi0+ZGF0YS0+Y3JjX2NudCkg
-ew0KPiArCQlpZiAob2ZfcHJvcGVydHlfcmVhZF91MzJfaW5kZXgoZGV2LT5vZl9ub2RlLA0KPiAr
-CQkJCQkgICAgICAgIm1lZGlhdGVrLGdjZS1ldmVudHMiLA0KPiAwLA0KPiArCQkJCQkgICAgICAg
-JnByaXYtPmNyYy5jbWRxX2V2ZW50KSkNCj4gew0KPiArCQkJZGV2X3dhcm4oZGV2LCAiZmFpbGVk
-IHRvIGdldCBnY2UtZXZlbnRzIGZvcg0KPiBjcmNcbiIpOw0KPiArCQl9DQo+ICsJCXByaXYtPmNy
-Yy5jbWRxX3JlZyA9ICZwcml2LT5jbWRxX3JlZzsNCj4gKwkJbXRrX2NydGNfY3JlYXRlX2NyY19j
-bWRxKGRldiwgJnByaXYtPmNyYyk7DQo+ICsJfQ0KPiArI2VuZGlmDQo+ICAJcmV0ID0gZGV2bV9y
-ZXF1ZXN0X2lycShkZXYsIGlycSwgbXRrX2Rpc3Bfb3ZsX2lycV9oYW5kbGVyLA0KPiAgCQkJICAg
-ICAgIElSUUZfVFJJR0dFUl9OT05FLCBkZXZfbmFtZShkZXYpLCBwcml2KTsNCj4gIAlpZiAocmV0
-IDwgMCkgew0KPiBAQCAtNjIzLDYgKzc5NSwxMCBAQCBzdGF0aWMgaW50IG10a19kaXNwX292bF9w
-cm9iZShzdHJ1Y3QNCj4gcGxhdGZvcm1fZGV2aWNlICpwZGV2KQ0KPiAgDQo+ICBzdGF0aWMgdm9p
-ZCBtdGtfZGlzcF9vdmxfcmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpDQo+ICB7
-DQo+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gJnBkZXYtPmRldjsNCj4gKwlzdHJ1Y3QgbXRrX2Rp
-c3Bfb3ZsICpvdmwgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsNCj4gKw0KPiArCW10a19jcnRjX2Rl
-c3Ryb3lfY3JjKCZvdmwtPmNyYyk7DQo+ICAJY29tcG9uZW50X2RlbCgmcGRldi0+ZGV2LCAmbXRr
-X2Rpc3Bfb3ZsX2NvbXBvbmVudF9vcHMpOw0KPiAgCXBtX3J1bnRpbWVfZGlzYWJsZSgmcGRldi0+
-ZGV2KTsNCj4gIH0NCj4gQEAgLTY5Myw2ICs4NjksOCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG10
-a19kaXNwX292bF9kYXRhDQo+IG10ODE5NV9vdmxfZHJpdmVyX2RhdGEgPSB7DQo+ICAJLmZvcm1h
-dHMgPSBtdDgxOTVfZm9ybWF0cywNCj4gIAkubnVtX2Zvcm1hdHMgPSBBUlJBWV9TSVpFKG10ODE5
-NV9mb3JtYXRzKSwNCj4gIAkuc3VwcG9ydHNfY2xyZm10X2V4dCA9IHRydWUsDQo+ICsJLmNyY19v
-ZnMgPSBtdDgxOTVfb3ZsX2NyY19vZnMsDQo+ICsJLmNyY19jbnQgPSBBUlJBWV9TSVpFKG10ODE5
-NV9vdmxfY3JjX29mcyksDQo+ICB9Ow0KPiAgDQo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2Rl
-dmljZV9pZCBtdGtfZGlzcF9vdmxfZHJpdmVyX2R0X21hdGNoW10gPSB7DQo=
+On 26.03.2024 00:11, Rafał Miłecki wrote:
+> I'll provide some iperf logs from my ThinkPad with 8086:3166 Intel
+> Wireless-AC 3165 working as 2 GHz client of MT7603EN on Netgear R6220.
+
+I run seven 1-hour iperf sessions overnight using ThinkPad + Xiaomi
+Mi Router 4C (MT7628AN Wi-Fi SoC) with buffering DISABLED.
+
+Session 1 (1 hour) with 51.7 Mbps avg:
+All GOOD
+
+Session 2 (1 hour) with 40.5 Mbps avg:
+* 2 seconds traffic stall (STA diconnected with 34=DISASSOC_LOW_ACK)
+* 718 seconds traffic stall (nothing in STA logs)
+
+Session 3 (1 hour) with 51.6 Mbps avg:
+* 5 seconds traffic stall (STA diconnected with 34=DISASSOC_LOW_ACK)
+
+Session 4 (1 hour) with 51.8 Mbps avg:
+All GOOD
+
+Session 5 (1 hour) with 51.8 Mbps avg:
+All GOOD
+
+Session 6 (1 hour) with 51.8 Mbps avg:
+All GOOD
+
+Session 7 (1 hour) with 51.1 Mbps avg:
+All GOOD
+
+I find MT7628AN without frames buffering pretty usable.
+
+
+
+Now, with frames buffering enabled, things look quite worse. There are
+multiple traffic stalls and often TCP session dies. See below.
+
+pon, 25 mar 2024, 23:23:51 CET
+------------------------------------------------------------
+Client connecting to 192.168.27.1, TCP port 5001
+TCP window size: 85.0 KByte (default)
+------------------------------------------------------------
+[  3] local 192.168.1.181 port 58838 connected with 192.168.27.1 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0- 1.0 sec  3.12 MBytes  26.2 Mbits/sec
+[  3]  1.0- 2.0 sec  3.25 MBytes  27.3 Mbits/sec
+[  3]  2.0- 3.0 sec  3.25 MBytes  27.3 Mbits/sec
+[  3]  3.0- 4.0 sec  5.25 MBytes  44.0 Mbits/sec
+[  3]  4.0- 5.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3]  5.0- 6.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3]  6.0- 7.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3]  7.0- 8.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3]  8.0- 9.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3]  9.0-10.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 10.0-11.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 11.0-12.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 12.0-13.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 13.0-14.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 14.0-15.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 15.0-16.0 sec  5.38 MBytes  45.1 Mbits/sec
+[  3] 16.0-17.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 17.0-18.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 18.0-19.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 19.0-20.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 20.0-21.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 21.0-22.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 22.0-23.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 23.0-24.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 24.0-25.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 25.0-26.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 26.0-27.0 sec  3.62 MBytes  30.4 Mbits/sec
+[  3] 27.0-28.0 sec  3.12 MBytes  26.2 Mbits/sec
+[  3] 28.0-29.0 sec  2.62 MBytes  22.0 Mbits/sec
+[  3] 29.0-30.0 sec  1.75 MBytes  14.7 Mbits/sec
+[  3] 30.0-31.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 31.0-32.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 32.0-33.0 sec  3.50 MBytes  29.4 Mbits/sec
+[  3] 33.0-34.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 34.0-35.0 sec  5.62 MBytes  47.2 Mbits/sec
+[  3] 35.0-36.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 36.0-37.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 37.0-38.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 38.0-39.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 39.0-40.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 40.0-41.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 41.0-42.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 42.0-43.0 sec  3.88 MBytes  32.5 Mbits/sec
+[  3] 43.0-44.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 44.0-45.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 45.0-46.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 46.0-47.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 47.0-48.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 48.0-49.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 49.0-50.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 50.0-51.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 51.0-52.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 52.0-53.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 53.0-54.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 54.0-55.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 55.0-56.0 sec  3.75 MBytes  31.5 Mbits/sec
+[  3] 56.0-57.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 57.0-58.0 sec  2.38 MBytes  19.9 Mbits/sec
+[  3] 58.0-59.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 59.0-60.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 60.0-61.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3] 61.0-62.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 62.0-63.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 63.0-64.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 64.0-65.0 sec  2.25 MBytes  18.9 Mbits/sec
+[  3] 65.0-66.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 66.0-67.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 67.0-68.0 sec  1.25 MBytes  10.5 Mbits/sec
+[  3] 68.0-69.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3] 69.0-70.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3] 70.0-71.0 sec  3.75 MBytes  31.5 Mbits/sec
+[  3] 71.0-72.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 72.0-73.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 73.0-74.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 74.0-75.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 75.0-76.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 76.0-77.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 77.0-78.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 78.0-79.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 79.0-80.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 80.0-81.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 81.0-82.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 82.0-83.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 83.0-84.0 sec  2.38 MBytes  19.9 Mbits/sec
+[  3] 84.0-85.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 85.0-86.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 86.0-87.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 87.0-88.0 sec  3.75 MBytes  31.5 Mbits/sec
+[  3] 88.0-89.0 sec  5.62 MBytes  47.2 Mbits/sec
+[  3] 89.0-90.0 sec  7.88 MBytes  66.1 Mbits/sec
+[  3] 90.0-91.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 91.0-92.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 92.0-93.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 93.0-94.0 sec  5.62 MBytes  47.2 Mbits/sec
+[  3] 94.0-95.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 95.0-96.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 96.0-97.0 sec  3.00 MBytes  25.2 Mbits/sec
+[  3] 97.0-98.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 98.0-99.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 99.0-100.0 sec  3.75 MBytes  31.5 Mbits/sec
+[  3] 100.0-101.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 101.0-102.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 102.0-103.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 103.0-104.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 104.0-105.0 sec  3.88 MBytes  32.5 Mbits/sec
+[  3] 105.0-106.0 sec  5.00 MBytes  41.9 Mbits/sec
+[  3] 106.0-107.0 sec  5.62 MBytes  47.2 Mbits/sec
+[  3] 107.0-108.0 sec  7.50 MBytes  62.9 Mbits/sec
+[  3] 108.0-109.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 109.0-110.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 110.0-111.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 111.0-112.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 112.0-113.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 113.0-114.0 sec  7.50 MBytes  62.9 Mbits/sec
+[  3] 114.0-115.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 115.0-116.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 116.0-117.0 sec  4.88 MBytes  40.9 Mbits/sec
+[  3] 117.0-118.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3] 118.0-119.0 sec  3.12 MBytes  26.2 Mbits/sec
+[  3] 119.0-120.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 120.0-121.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3] 121.0-122.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 122.0-123.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 123.0-124.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 124.0-125.0 sec  1.25 MBytes  10.5 Mbits/sec
+[  3] 125.0-126.0 sec  2.25 MBytes  18.9 Mbits/sec
+[  3] 126.0-127.0 sec  2.50 MBytes  21.0 Mbits/sec
+[  3] 127.0-128.0 sec   896 KBytes  7.34 Mbits/sec
+[  3] 128.0-129.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 129.0-130.0 sec  1.25 MBytes  10.5 Mbits/sec
+[  3] 130.0-131.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3] 131.0-132.0 sec   896 KBytes  7.34 Mbits/sec
+[  3] 132.0-133.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 133.0-134.0 sec  3.00 MBytes  25.2 Mbits/sec
+[  3] 134.0-135.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 135.0-136.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 136.0-137.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 137.0-138.0 sec  3.75 MBytes  31.5 Mbits/sec
+[  3] 138.0-139.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 139.0-140.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 140.0-141.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 141.0-142.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 142.0-143.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 143.0-144.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 144.0-145.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 145.0-146.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 146.0-147.0 sec  4.75 MBytes  39.8 Mbits/sec
+[  3] 147.0-148.0 sec  4.88 MBytes  40.9 Mbits/sec
+[  3] 148.0-149.0 sec  3.88 MBytes  32.5 Mbits/sec
+[  3] 149.0-150.0 sec  3.75 MBytes  31.5 Mbits/sec
+[  3] 150.0-151.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 151.0-152.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 152.0-153.0 sec  5.75 MBytes  48.2 Mbits/sec
+[  3] 153.0-154.0 sec  7.62 MBytes  64.0 Mbits/sec
+[  3] 154.0-155.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 155.0-156.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 156.0-157.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 157.0-158.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 158.0-159.0 sec  5.75 MBytes  48.2 Mbits/sec
+[  3] 159.0-160.0 sec  4.00 MBytes  33.6 Mbits/sec
+[  3] 160.0-161.0 sec  5.00 MBytes  41.9 Mbits/sec
+[  3] 161.0-162.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 162.0-163.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 163.0-164.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 164.0-165.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 165.0-166.0 sec  7.75 MBytes  65.0 Mbits/sec
+[  3] 166.0-167.0 sec  3.88 MBytes  32.5 Mbits/sec
+[  3] 167.0-168.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 168.0-169.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 169.0-170.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 170.0-171.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 171.0-172.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 172.0-173.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 173.0-174.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 174.0-175.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 175.0-176.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 176.0-177.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 177.0-178.0 sec  5.75 MBytes  48.2 Mbits/sec
+[  3] 178.0-179.0 sec  7.50 MBytes  62.9 Mbits/sec
+[  3] 179.0-180.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 180.0-181.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 181.0-182.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 182.0-183.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 183.0-184.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 184.0-185.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 185.0-186.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 186.0-187.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 187.0-188.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 188.0-189.0 sec  3.00 MBytes  25.2 Mbits/sec
+[  3] 189.0-190.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 190.0-191.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 191.0-192.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 192.0-193.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 193.0-194.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 194.0-195.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 195.0-196.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 196.0-197.0 sec  7.50 MBytes  62.9 Mbits/sec
+[  3] 197.0-198.0 sec  5.75 MBytes  48.2 Mbits/sec
+[  3] 198.0-199.0 sec  7.50 MBytes  62.9 Mbits/sec
+[  3] 199.0-200.0 sec  4.00 MBytes  33.6 Mbits/sec
+[  3] 200.0-201.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 201.0-202.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 202.0-203.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 203.0-204.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 204.0-205.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 205.0-206.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 206.0-207.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 207.0-208.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 208.0-209.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 209.0-210.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 210.0-211.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 211.0-212.0 sec  4.75 MBytes  39.8 Mbits/sec
+[  3] 212.0-213.0 sec  3.88 MBytes  32.5 Mbits/sec
+[  3] 213.0-214.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 214.0-215.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 215.0-216.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 216.0-217.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 217.0-218.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 218.0-219.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 219.0-220.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 220.0-221.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 221.0-222.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 222.0-223.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 223.0-224.0 sec  5.75 MBytes  48.2 Mbits/sec
+[  3] 224.0-225.0 sec  3.12 MBytes  26.2 Mbits/sec
+[  3] 225.0-226.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 226.0-227.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 227.0-228.0 sec  4.00 MBytes  33.6 Mbits/sec
+[  3] 228.0-229.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 229.0-230.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 230.0-231.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 231.0-232.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 232.0-233.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 233.0-234.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 234.0-235.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 235.0-236.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 236.0-237.0 sec  4.75 MBytes  39.8 Mbits/sec
+[  3] 237.0-238.0 sec  4.88 MBytes  40.9 Mbits/sec
+[  3] 238.0-239.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 239.0-240.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 240.0-241.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 241.0-242.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 242.0-243.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 243.0-244.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 244.0-245.0 sec  1.25 MBytes  10.5 Mbits/sec
+[  3] 245.0-246.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 246.0-247.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 247.0-248.0 sec  2.25 MBytes  18.9 Mbits/sec
+[  3] 248.0-249.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 249.0-250.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 250.0-251.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 251.0-252.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 252.0-253.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 253.0-254.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 254.0-255.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 255.0-256.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 256.0-257.0 sec  5.12 MBytes  43.0 Mbits/sec
+[  3] 257.0-258.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 258.0-259.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 259.0-260.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 260.0-261.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 261.0-262.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 262.0-263.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 263.0-264.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 264.0-265.0 sec  4.00 MBytes  33.6 Mbits/sec
+[  3] 265.0-266.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 266.0-267.0 sec  2.38 MBytes  19.9 Mbits/sec
+[  3] 267.0-268.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 268.0-269.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 269.0-270.0 sec  6.12 MBytes  51.4 Mbits/sec
+[  3] 270.0-271.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 271.0-272.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 272.0-273.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 273.0-274.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 274.0-275.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 275.0-276.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 276.0-277.0 sec  4.12 MBytes  34.6 Mbits/sec
+[  3] 277.0-278.0 sec  3.00 MBytes  25.2 Mbits/sec
+[  3] 278.0-279.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 279.0-280.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 280.0-281.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 281.0-282.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 282.0-283.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 283.0-284.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3] 284.0-285.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 285.0-286.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 286.0-287.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 287.0-288.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 288.0-289.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 289.0-290.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 290.0-291.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 291.0-292.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 292.0-293.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 293.0-294.0 sec  4.00 MBytes  33.6 Mbits/sec
+[  3] 294.0-295.0 sec  3.88 MBytes  32.5 Mbits/sec
+[  3] 295.0-296.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 296.0-297.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 297.0-298.0 sec  3.12 MBytes  26.2 Mbits/sec
+[  3] 298.0-299.0 sec  3.25 MBytes  27.3 Mbits/sec
+[  3] 299.0-300.0 sec  5.00 MBytes  41.9 Mbits/sec
+[  3] 300.0-301.0 sec  5.00 MBytes  41.9 Mbits/sec
+[  3] 301.0-302.0 sec  5.00 MBytes  41.9 Mbits/sec
+[  3] 302.0-303.0 sec  4.88 MBytes  40.9 Mbits/sec
+[  3] 303.0-304.0 sec  3.88 MBytes  32.5 Mbits/sec
+[  3] 304.0-305.0 sec  5.00 MBytes  41.9 Mbits/sec
+[  3] 305.0-306.0 sec  4.88 MBytes  40.9 Mbits/sec
+[  3] 306.0-307.0 sec  5.00 MBytes  41.9 Mbits/sec
+[  3] 307.0-308.0 sec  5.00 MBytes  41.9 Mbits/sec
+[  3] 308.0-309.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 309.0-310.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 310.0-311.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 311.0-312.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 312.0-313.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 313.0-314.0 sec  4.00 MBytes  33.6 Mbits/sec
+[  3] 314.0-315.0 sec  5.00 MBytes  41.9 Mbits/sec
+[  3] 315.0-316.0 sec  2.38 MBytes  19.9 Mbits/sec
+[  3] 316.0-317.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 317.0-318.0 sec  5.00 MBytes  41.9 Mbits/sec
+[  3] 318.0-319.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 319.0-320.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 320.0-321.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 321.0-322.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 322.0-323.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 323.0-324.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 324.0-325.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 325.0-326.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 326.0-327.0 sec  5.00 MBytes  41.9 Mbits/sec
+[  3] 327.0-328.0 sec  5.00 MBytes  41.9 Mbits/sec
+[  3] 328.0-329.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 329.0-330.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 330.0-331.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 331.0-332.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 332.0-333.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 333.0-334.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 334.0-335.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 335.0-336.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 336.0-337.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 337.0-338.0 sec  6.12 MBytes  51.4 Mbits/sec
+[  3] 338.0-339.0 sec  4.88 MBytes  40.9 Mbits/sec
+[  3] 339.0-340.0 sec  5.12 MBytes  43.0 Mbits/sec
+[  3] 340.0-341.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 341.0-342.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 342.0-343.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 343.0-344.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 344.0-345.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 345.0-346.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 346.0-347.0 sec  4.00 MBytes  33.6 Mbits/sec
+[  3] 347.0-348.0 sec  5.00 MBytes  41.9 Mbits/sec
+[  3] 348.0-349.0 sec  4.88 MBytes  40.9 Mbits/sec
+[  3] 349.0-350.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 350.0-351.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 351.0-352.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 352.0-353.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 353.0-354.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 354.0-355.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 355.0-356.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 356.0-357.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 357.0-358.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 358.0-359.0 sec  5.75 MBytes  48.2 Mbits/sec
+[  3] 359.0-360.0 sec  5.25 MBytes  44.0 Mbits/sec
+[  3] 360.0-361.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 361.0-362.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 362.0-363.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3] 363.0-364.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 364.0-365.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 365.0-366.0 sec  1.38 MBytes  11.5 Mbits/sec
+[  3] 366.0-367.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 367.0-368.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 368.0-369.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 369.0-370.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 370.0-371.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 371.0-372.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 372.0-373.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 373.0-374.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 374.0-375.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 375.0-376.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 376.0-377.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 377.0-378.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 378.0-379.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 379.0-380.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 380.0-381.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 381.0-382.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 382.0-383.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 383.0-384.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 384.0-385.0 sec  5.00 MBytes  41.9 Mbits/sec
+[  3] 385.0-386.0 sec  4.75 MBytes  39.8 Mbits/sec
+[  3] 386.0-387.0 sec  4.12 MBytes  34.6 Mbits/sec
+[  3] 387.0-388.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 388.0-389.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 389.0-390.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 390.0-391.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 391.0-392.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 392.0-393.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 393.0-394.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 394.0-395.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 395.0-396.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 396.0-397.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 397.0-398.0 sec  4.88 MBytes  40.9 Mbits/sec
+[  3] 398.0-399.0 sec  4.00 MBytes  33.6 Mbits/sec
+[  3] 399.0-400.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 400.0-401.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 401.0-402.0 sec  3.00 MBytes  25.2 Mbits/sec
+[  3] 402.0-403.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 403.0-404.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 404.0-405.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 405.0-406.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 406.0-407.0 sec  5.12 MBytes  43.0 Mbits/sec
+[  3] 407.0-408.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 408.0-409.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 409.0-410.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 410.0-411.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 411.0-412.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 412.0-413.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 413.0-414.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 414.0-415.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 415.0-416.0 sec  6.12 MBytes  51.4 Mbits/sec
+[  3] 416.0-417.0 sec  4.88 MBytes  40.9 Mbits/sec
+[  3] 417.0-418.0 sec  2.38 MBytes  19.9 Mbits/sec
+[  3] 418.0-419.0 sec  2.25 MBytes  18.9 Mbits/sec
+[  3] 419.0-420.0 sec  2.50 MBytes  21.0 Mbits/sec
+[  3] 420.0-421.0 sec  1.25 MBytes  10.5 Mbits/sec
+[  3] 421.0-422.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 422.0-423.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 423.0-424.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 424.0-425.0 sec  2.25 MBytes  18.9 Mbits/sec
+[  3] 425.0-426.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 426.0-427.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 427.0-428.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 428.0-429.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 429.0-430.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 430.0-431.0 sec  1.25 MBytes  10.5 Mbits/sec
+[  3] 431.0-432.0 sec  1.88 MBytes  15.7 Mbits/sec
+^C^C^C[  3] 432.0-433.0 sec  3.25 MBytes  27.3 Mbits/sec
+[  3] 433.0-434.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 434.0-435.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 435.0-436.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 436.0-437.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 437.0-438.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 438.0-439.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 439.0-440.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 440.0-441.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 441.0-442.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 442.0-443.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 443.0-444.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 444.0-445.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 445.0-446.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 446.0-447.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 447.0-448.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 448.0-449.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 449.0-450.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 450.0-451.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 451.0-452.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 452.0-453.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 453.0-454.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 454.0-455.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 455.0-456.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 456.0-457.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 457.0-458.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 458.0-459.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 459.0-460.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 460.0-461.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 461.0-462.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 462.0-463.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 463.0-464.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 464.0-465.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 465.0-466.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 466.0-467.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 467.0-468.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 468.0-469.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 469.0-470.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 470.0-471.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 471.0-472.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 472.0-473.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 473.0-474.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 474.0-475.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 475.0-476.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 476.0-477.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 477.0-478.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 478.0-479.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 479.0-480.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 480.0-481.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 481.0-482.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 482.0-483.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 483.0-484.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 484.0-485.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 485.0-486.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 486.0-487.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 487.0-488.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 488.0-489.0 sec  0.00 Bytes  0.00 bits/sec
+[  3]  0.0-489.0 sec  1.94 GBytes  34.2 Mbits/sec
+
+
+
+pon, 25 mar 2024, 23:32:13 CET
+------------------------------------------------------------
+Client connecting to 192.168.27.1, TCP port 5001
+TCP window size: 85.0 KByte (default)
+------------------------------------------------------------
+[  3] local 192.168.1.181 port 35878 connected with 192.168.27.1 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0- 1.0 sec  8.38 MBytes  70.3 Mbits/sec
+[  3]  1.0- 2.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3]  2.0- 3.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3]  3.0- 4.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3]  4.0- 5.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3]  5.0- 6.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3]  6.0- 7.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3]  7.0- 8.0 sec  3.75 MBytes  31.5 Mbits/sec
+[  3]  8.0- 9.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3]  9.0-10.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 10.0-11.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 11.0-12.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 12.0-13.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 13.0-14.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 14.0-15.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 15.0-16.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 16.0-17.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 17.0-18.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 18.0-19.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 19.0-20.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 20.0-21.0 sec  2.38 MBytes  19.9 Mbits/sec
+[  3] 21.0-22.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 22.0-23.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 23.0-24.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 24.0-25.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 25.0-26.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 26.0-27.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 27.0-28.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 28.0-29.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 29.0-30.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 30.0-31.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 31.0-32.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 32.0-33.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 33.0-34.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 34.0-35.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 35.0-36.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 36.0-37.0 sec  4.00 MBytes  33.6 Mbits/sec
+[  3] 37.0-38.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 38.0-39.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 39.0-40.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 40.0-41.0 sec  1.25 MBytes  10.5 Mbits/sec
+[  3] 41.0-42.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 42.0-43.0 sec  1.25 MBytes  10.5 Mbits/sec
+[  3] 43.0-44.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3] 44.0-45.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 45.0-46.0 sec  1.38 MBytes  11.5 Mbits/sec
+[  3] 46.0-47.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3] 47.0-48.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 48.0-49.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 49.0-50.0 sec  2.38 MBytes  19.9 Mbits/sec
+[  3] 50.0-51.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 51.0-52.0 sec  1.38 MBytes  11.5 Mbits/sec
+[  3] 52.0-53.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 53.0-54.0 sec  3.75 MBytes  31.5 Mbits/sec
+[  3] 54.0-55.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 55.0-56.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 56.0-57.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 57.0-58.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 58.0-59.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 59.0-60.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 60.0-61.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 61.0-62.0 sec  5.12 MBytes  43.0 Mbits/sec
+[  3] 62.0-63.0 sec  3.88 MBytes  32.5 Mbits/sec
+[  3] 63.0-64.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 64.0-65.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 65.0-66.0 sec  4.88 MBytes  40.9 Mbits/sec
+[  3] 66.0-67.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 67.0-68.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 68.0-69.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 69.0-70.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 70.0-71.0 sec  7.50 MBytes  62.9 Mbits/sec
+[  3] 71.0-72.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 72.0-73.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 73.0-74.0 sec  4.88 MBytes  40.9 Mbits/sec
+[  3] 74.0-75.0 sec  3.88 MBytes  32.5 Mbits/sec
+[  3] 75.0-76.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 76.0-77.0 sec  3.00 MBytes  25.2 Mbits/sec
+[  3] 77.0-78.0 sec  3.88 MBytes  32.5 Mbits/sec
+[  3] 78.0-79.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 79.0-80.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 80.0-81.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 81.0-82.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 82.0-83.0 sec  5.75 MBytes  48.2 Mbits/sec
+[  3] 83.0-84.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 84.0-85.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 85.0-86.0 sec  5.88 MBytes  49.3 Mbits/sec
+[  3] 86.0-87.0 sec  3.88 MBytes  32.5 Mbits/sec
+[  3] 87.0-88.0 sec  4.88 MBytes  40.9 Mbits/sec
+[  3] 88.0-89.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 89.0-90.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 90.0-91.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 91.0-92.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 92.0-93.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 93.0-94.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 94.0-95.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 95.0-96.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 96.0-97.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 97.0-98.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 98.0-99.0 sec  3.00 MBytes  25.2 Mbits/sec
+[  3] 99.0-100.0 sec  3.75 MBytes  31.5 Mbits/sec
+[  3] 100.0-101.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 101.0-102.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 102.0-103.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 103.0-104.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 104.0-105.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 105.0-106.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 106.0-107.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 107.0-108.0 sec  2.38 MBytes  19.9 Mbits/sec
+[  3] 108.0-109.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 109.0-110.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 110.0-111.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 111.0-112.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 112.0-113.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 113.0-114.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 114.0-115.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 115.0-116.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 116.0-117.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 117.0-118.0 sec  3.62 MBytes  30.4 Mbits/sec
+[  3] 118.0-119.0 sec  2.50 MBytes  21.0 Mbits/sec
+[  3] 119.0-120.0 sec  3.25 MBytes  27.3 Mbits/sec
+[  3] 120.0-121.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 121.0-122.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 122.0-123.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 123.0-124.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 124.0-125.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 125.0-126.0 sec  3.25 MBytes  27.3 Mbits/sec
+[  3] 126.0-127.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 127.0-128.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 128.0-129.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 129.0-130.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 130.0-131.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 131.0-132.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 132.0-133.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 133.0-134.0 sec  5.38 MBytes  45.1 Mbits/sec
+[  3] 134.0-135.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 135.0-136.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 136.0-137.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 137.0-138.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 138.0-139.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 139.0-140.0 sec  6.75 MBytes  56.6 Mbits/sec
+[  3] 140.0-141.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 141.0-142.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 142.0-143.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 143.0-144.0 sec  6.88 MBytes  57.7 Mbits/sec
+[  3] 144.0-145.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 145.0-146.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 146.0-147.0 sec  2.38 MBytes  19.9 Mbits/sec
+[  3] 147.0-148.0 sec  2.62 MBytes  22.0 Mbits/sec
+[  3] 148.0-149.0 sec  3.25 MBytes  27.3 Mbits/sec
+^C^C^C[  3] 149.0-150.0 sec  1.25 MBytes  10.5 Mbits/sec
+[  3] 150.0-151.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 151.0-152.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 152.0-153.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 153.0-154.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 154.0-155.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 155.0-156.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 156.0-157.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 157.0-158.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 158.0-159.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 159.0-160.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 160.0-161.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 161.0-162.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 162.0-163.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 163.0-164.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 164.0-165.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 165.0-166.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 166.0-167.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 167.0-168.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 168.0-169.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 169.0-170.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 170.0-171.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 171.0-172.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 172.0-173.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 173.0-174.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 174.0-175.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 175.0-176.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 176.0-177.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 177.0-178.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 178.0-179.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 179.0-180.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 180.0-181.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 181.0-182.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 182.0-183.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 183.0-184.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 184.0-185.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 185.0-186.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 186.0-187.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 187.0-188.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 188.0-189.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 189.0-190.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 190.0-191.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 191.0-192.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 192.0-193.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 193.0-194.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 194.0-195.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 195.0-196.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 196.0-197.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 197.0-198.0 sec  0.00 Bytes  0.00 bits/sec
+[  3]  0.0-198.1 sec   712 MBytes  30.2 Mbits/sec
+
+
+
+pon, 25 mar 2024, 23:35:43 CET
+------------------------------------------------------------
+Client connecting to 192.168.27.1, TCP port 5001
+TCP window size: 85.0 KByte (default)
+------------------------------------------------------------
+[  3] local 192.168.1.181 port 42114 connected with 192.168.27.1 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0- 1.0 sec  8.38 MBytes  70.3 Mbits/sec
+[  3]  1.0- 2.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3]  2.0- 3.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3]  3.0- 4.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3]  4.0- 5.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3]  5.0- 6.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3]  6.0- 7.0 sec  3.75 MBytes  31.5 Mbits/sec
+[  3]  7.0- 8.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3]  8.0- 9.0 sec  0.00 Bytes  0.00 bits/sec
+[  3]  9.0-10.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3] 10.0-11.0 sec   896 KBytes  7.34 Mbits/sec
+[  3] 11.0-12.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 12.0-13.0 sec  2.25 MBytes  18.9 Mbits/sec
+[  3] 13.0-14.0 sec  2.62 MBytes  22.0 Mbits/sec
+[  3] 14.0-15.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 15.0-16.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 16.0-17.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 17.0-18.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 18.0-19.0 sec  4.38 MBytes  36.7 Mbits/sec
+[  3] 19.0-20.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 20.0-21.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 21.0-22.0 sec  5.62 MBytes  47.2 Mbits/sec
+[  3] 22.0-23.0 sec  4.00 MBytes  33.6 Mbits/sec
+[  3] 23.0-24.0 sec  4.88 MBytes  40.9 Mbits/sec
+[  3] 24.0-25.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 25.0-26.0 sec  3.62 MBytes  30.4 Mbits/sec
+[  3] 26.0-27.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 27.0-28.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 28.0-29.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 29.0-30.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 30.0-31.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 31.0-32.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 32.0-33.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 33.0-34.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 34.0-35.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 35.0-36.0 sec  4.75 MBytes  39.8 Mbits/sec
+[  3] 36.0-37.0 sec  3.12 MBytes  26.2 Mbits/sec
+[  3] 37.0-38.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 38.0-39.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 39.0-40.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 40.0-41.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 41.0-42.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 42.0-43.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 43.0-44.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 44.0-45.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 45.0-46.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 46.0-47.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 47.0-48.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 48.0-49.0 sec  4.38 MBytes  36.7 Mbits/sec
+[  3] 49.0-50.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 50.0-51.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 51.0-52.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 52.0-53.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 53.0-54.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 54.0-55.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 55.0-56.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 56.0-57.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 57.0-58.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 58.0-59.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 59.0-60.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 60.0-61.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 61.0-62.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 62.0-63.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 63.0-64.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 64.0-65.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 65.0-66.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 66.0-67.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 67.0-68.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 68.0-69.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 69.0-70.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 70.0-71.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 71.0-72.0 sec  5.38 MBytes  45.1 Mbits/sec
+[  3] 72.0-73.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 73.0-74.0 sec  2.25 MBytes  18.9 Mbits/sec
+[  3] 74.0-75.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 75.0-76.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 76.0-77.0 sec  1.25 MBytes  10.5 Mbits/sec
+[  3] 77.0-78.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 78.0-79.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3] 79.0-80.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 80.0-81.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 81.0-82.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 82.0-83.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 83.0-84.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 84.0-85.0 sec  1.25 MBytes  10.5 Mbits/sec
+[  3] 85.0-86.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 86.0-87.0 sec  2.25 MBytes  18.9 Mbits/sec
+[  3] 87.0-88.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 88.0-89.0 sec  3.00 MBytes  25.2 Mbits/sec
+[  3] 89.0-90.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 90.0-91.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 91.0-92.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 92.0-93.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 93.0-94.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 94.0-95.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 95.0-96.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 96.0-97.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 97.0-98.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 98.0-99.0 sec  5.62 MBytes  47.2 Mbits/sec
+[  3] 99.0-100.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 100.0-101.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 101.0-102.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 102.0-103.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 103.0-104.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 104.0-105.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 105.0-106.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 106.0-107.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 107.0-108.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 108.0-109.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 109.0-110.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 110.0-111.0 sec  5.62 MBytes  47.2 Mbits/sec
+[  3] 111.0-112.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 112.0-113.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 113.0-114.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 114.0-115.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 115.0-116.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 116.0-117.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 117.0-118.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 118.0-119.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 119.0-120.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 120.0-121.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 121.0-122.0 sec  5.25 MBytes  44.0 Mbits/sec
+[  3] 122.0-123.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 123.0-124.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 124.0-125.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 125.0-126.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 126.0-127.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 127.0-128.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 128.0-129.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 129.0-130.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 130.0-131.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 131.0-132.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 132.0-133.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 133.0-134.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 134.0-135.0 sec  3.62 MBytes  30.4 Mbits/sec
+[  3] 135.0-136.0 sec  3.00 MBytes  25.2 Mbits/sec
+[  3] 136.0-137.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 137.0-138.0 sec  4.38 MBytes  36.7 Mbits/sec
+[  3] 138.0-139.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 139.0-140.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 140.0-141.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 141.0-142.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 142.0-143.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 143.0-144.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 144.0-145.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 145.0-146.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 146.0-147.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 147.0-148.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 148.0-149.0 sec   896 KBytes  7.34 Mbits/sec
+[  3] 149.0-150.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 150.0-151.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 151.0-152.0 sec  1.75 MBytes  14.7 Mbits/sec
+[  3] 152.0-153.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 153.0-154.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 154.0-155.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 155.0-156.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 156.0-157.0 sec  2.25 MBytes  18.9 Mbits/sec
+[  3] 157.0-158.0 sec  1.25 MBytes  10.5 Mbits/sec
+[  3] 158.0-159.0 sec  2.25 MBytes  18.9 Mbits/sec
+[  3] 159.0-160.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 160.0-161.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 161.0-162.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 162.0-163.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 163.0-164.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 164.0-165.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 165.0-166.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 166.0-167.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 167.0-168.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 168.0-169.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 169.0-170.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 170.0-171.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 171.0-172.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 172.0-173.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 173.0-174.0 sec  4.75 MBytes  39.8 Mbits/sec
+[  3] 174.0-175.0 sec  5.25 MBytes  44.0 Mbits/sec
+[  3] 175.0-176.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 176.0-177.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 177.0-178.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 178.0-179.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 179.0-180.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 180.0-181.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 181.0-182.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 182.0-183.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 183.0-184.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 184.0-185.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 185.0-186.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 186.0-187.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 187.0-188.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 188.0-189.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 189.0-190.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 190.0-191.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 191.0-192.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 192.0-193.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 193.0-194.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 194.0-195.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 195.0-196.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 196.0-197.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 197.0-198.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 198.0-199.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 199.0-200.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 200.0-201.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 201.0-202.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 202.0-203.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 203.0-204.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 204.0-205.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 205.0-206.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 206.0-207.0 sec  4.00 MBytes  33.6 Mbits/sec
+[  3] 207.0-208.0 sec  6.12 MBytes  51.4 Mbits/sec
+[  3] 208.0-209.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 209.0-210.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 210.0-211.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 211.0-212.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 212.0-213.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 213.0-214.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 214.0-215.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 215.0-216.0 sec  4.38 MBytes  36.7 Mbits/sec
+[  3] 216.0-217.0 sec  3.00 MBytes  25.2 Mbits/sec
+[  3] 217.0-218.0 sec  2.25 MBytes  18.9 Mbits/sec
+[  3] 218.0-219.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 219.0-220.0 sec  2.62 MBytes  22.0 Mbits/sec
+[  3] 220.0-221.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 221.0-222.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 222.0-223.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 223.0-224.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 224.0-225.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 225.0-226.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 226.0-227.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 227.0-228.0 sec  5.25 MBytes  44.0 Mbits/sec
+[  3] 228.0-229.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 229.0-230.0 sec  1.75 MBytes  14.7 Mbits/sec
+[  3] 230.0-231.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 231.0-232.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 232.0-233.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 233.0-234.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 234.0-235.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 235.0-236.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 236.0-237.0 sec  6.12 MBytes  51.4 Mbits/sec
+[  3] 237.0-238.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 238.0-239.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 239.0-240.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 240.0-241.0 sec  4.75 MBytes  39.8 Mbits/sec
+[  3] 241.0-242.0 sec  3.12 MBytes  26.2 Mbits/sec
+[  3] 242.0-243.0 sec   896 KBytes  7.34 Mbits/sec
+[  3] 243.0-244.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 244.0-245.0 sec  3.62 MBytes  30.4 Mbits/sec
+[  3] 245.0-246.0 sec  5.38 MBytes  45.1 Mbits/sec
+[  3] 246.0-247.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 247.0-248.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 248.0-249.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 249.0-250.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 250.0-251.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 251.0-252.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 252.0-253.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 253.0-254.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 254.0-255.0 sec  5.38 MBytes  45.1 Mbits/sec
+[  3] 255.0-256.0 sec  2.62 MBytes  22.0 Mbits/sec
+[  3] 256.0-257.0 sec  2.25 MBytes  18.9 Mbits/sec
+[  3] 257.0-258.0 sec  2.62 MBytes  22.0 Mbits/sec
+[  3] 258.0-259.0 sec  5.38 MBytes  45.1 Mbits/sec
+[  3] 259.0-260.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 260.0-261.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 261.0-262.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 262.0-263.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 263.0-264.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 264.0-265.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 265.0-266.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 266.0-267.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 267.0-268.0 sec  4.75 MBytes  39.8 Mbits/sec
+[  3] 268.0-269.0 sec  2.62 MBytes  22.0 Mbits/sec
+[  3] 269.0-270.0 sec  1.75 MBytes  14.7 Mbits/sec
+[  3] 270.0-271.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 271.0-272.0 sec  1.75 MBytes  14.7 Mbits/sec
+[  3] 272.0-273.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 273.0-274.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3] 274.0-275.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 275.0-276.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 276.0-277.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 277.0-278.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3] 278.0-279.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 279.0-280.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 280.0-281.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 281.0-282.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 282.0-283.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 283.0-284.0 sec   896 KBytes  7.34 Mbits/sec
+[  3] 284.0-285.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 285.0-286.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 286.0-287.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 287.0-288.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 288.0-289.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 289.0-290.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 290.0-291.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 291.0-292.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 292.0-293.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 293.0-294.0 sec  5.00 MBytes  41.9 Mbits/sec
+[  3] 294.0-295.0 sec  4.88 MBytes  40.9 Mbits/sec
+[  3] 295.0-296.0 sec  5.38 MBytes  45.1 Mbits/sec
+[  3] 296.0-297.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 297.0-298.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 298.0-299.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 299.0-300.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 300.0-301.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 301.0-302.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 302.0-303.0 sec  6.12 MBytes  51.4 Mbits/sec
+[  3] 303.0-304.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 304.0-305.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 305.0-306.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 306.0-307.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 307.0-308.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 308.0-309.0 sec  2.62 MBytes  22.0 Mbits/sec
+[  3] 309.0-310.0 sec  3.62 MBytes  30.4 Mbits/sec
+[  3] 310.0-311.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 311.0-312.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 312.0-313.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 313.0-314.0 sec  5.38 MBytes  45.1 Mbits/sec
+[  3] 314.0-315.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 315.0-316.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 316.0-317.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 317.0-318.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 318.0-319.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 319.0-320.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 320.0-321.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 321.0-322.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 322.0-323.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 323.0-324.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 324.0-325.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 325.0-326.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 326.0-327.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 327.0-328.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 328.0-329.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 329.0-330.0 sec  3.62 MBytes  30.4 Mbits/sec
+[  3] 330.0-331.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 331.0-332.0 sec  2.25 MBytes  18.9 Mbits/sec
+[  3] 332.0-333.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 333.0-334.0 sec  1.75 MBytes  14.7 Mbits/sec
+[  3] 334.0-335.0 sec  1.25 MBytes  10.5 Mbits/sec
+[  3] 335.0-336.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 336.0-337.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 337.0-338.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 338.0-339.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 339.0-340.0 sec  1.75 MBytes  14.7 Mbits/sec
+[  3] 340.0-341.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 341.0-342.0 sec  1.25 MBytes  10.5 Mbits/sec
+[  3] 342.0-343.0 sec  3.00 MBytes  25.2 Mbits/sec
+[  3] 343.0-344.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 344.0-345.0 sec  5.25 MBytes  44.0 Mbits/sec
+[  3] 345.0-346.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 346.0-347.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 347.0-348.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 348.0-349.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 349.0-350.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 350.0-351.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 351.0-352.0 sec  7.00 MBytes  58.7 Mbits/sec
+[  3] 352.0-353.0 sec  3.88 MBytes  32.5 Mbits/sec
+[  3] 353.0-354.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 354.0-355.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 355.0-356.0 sec  3.50 MBytes  29.4 Mbits/sec
+[  3] 356.0-357.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 357.0-358.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 358.0-359.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 359.0-360.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 360.0-361.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 361.0-362.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 362.0-363.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 363.0-364.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 364.0-365.0 sec  5.38 MBytes  45.1 Mbits/sec
+[  3] 365.0-366.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 366.0-367.0 sec  5.38 MBytes  45.1 Mbits/sec
+[  3] 367.0-368.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 368.0-369.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 369.0-370.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 370.0-371.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 371.0-372.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 372.0-373.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 373.0-374.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 374.0-375.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 375.0-376.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 376.0-377.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 377.0-378.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 378.0-379.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 379.0-380.0 sec  2.62 MBytes  22.0 Mbits/sec
+[  3] 380.0-381.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 381.0-382.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 382.0-383.0 sec  6.12 MBytes  51.4 Mbits/sec
+[  3] 383.0-384.0 sec  7.50 MBytes  62.9 Mbits/sec
+[  3] 384.0-385.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 385.0-386.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 386.0-387.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 387.0-388.0 sec  6.12 MBytes  51.4 Mbits/sec
+[  3] 388.0-389.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 389.0-390.0 sec  4.38 MBytes  36.7 Mbits/sec
+[  3] 390.0-391.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 391.0-392.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 392.0-393.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 393.0-394.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 394.0-395.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 395.0-396.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 396.0-397.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 397.0-398.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 398.0-399.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 399.0-400.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 400.0-401.0 sec  6.62 MBytes  55.6 Mbits/sec
+[  3] 401.0-402.0 sec  6.00 MBytes  50.3 Mbits/sec
+[  3] 402.0-403.0 sec  3.62 MBytes  30.4 Mbits/sec
+[  3] 403.0-404.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 404.0-405.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 405.0-406.0 sec  1.75 MBytes  14.7 Mbits/sec
+[  3] 406.0-407.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 407.0-408.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 408.0-409.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 409.0-410.0 sec   896 KBytes  7.34 Mbits/sec
+[  3] 410.0-411.0 sec  2.25 MBytes  18.9 Mbits/sec
+[  3] 411.0-412.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 412.0-413.0 sec  1.25 MBytes  10.5 Mbits/sec
+[  3] 413.0-414.0 sec   896 KBytes  7.34 Mbits/sec
+[  3] 414.0-415.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 415.0-416.0 sec  2.00 MBytes  16.8 Mbits/sec
+[  3] 416.0-417.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 417.0-418.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 418.0-419.0 sec  1.75 MBytes  14.7 Mbits/sec
+[  3] 419.0-420.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 420.0-421.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 421.0-422.0 sec  3.62 MBytes  30.4 Mbits/sec
+[  3] 422.0-423.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 423.0-424.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 424.0-425.0 sec  6.25 MBytes  52.4 Mbits/sec
+[  3] 425.0-426.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 426.0-427.0 sec  6.12 MBytes  51.4 Mbits/sec
+[  3] 427.0-428.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 428.0-429.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 429.0-430.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 430.0-431.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 431.0-432.0 sec  3.88 MBytes  32.5 Mbits/sec
+[  3] 432.0-433.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  3] 433.0-434.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 434.0-435.0 sec  1.88 MBytes  15.7 Mbits/sec
+[  3] 435.0-436.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 436.0-437.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 437.0-438.0 sec  6.12 MBytes  51.4 Mbits/sec
+[  3] 438.0-439.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 439.0-440.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 440.0-441.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 441.0-442.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 442.0-443.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 443.0-444.0 sec  5.50 MBytes  46.1 Mbits/sec
+[  3] 444.0-445.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 445.0-446.0 sec  3.62 MBytes  30.4 Mbits/sec
+[  3] 446.0-447.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 447.0-448.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 448.0-449.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 449.0-450.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 450.0-451.0 sec  7.12 MBytes  59.8 Mbits/sec
+[  3] 451.0-452.0 sec  3.75 MBytes  31.5 Mbits/sec
+[  3] 452.0-453.0 sec  5.38 MBytes  45.1 Mbits/sec
+[  3] 453.0-454.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 454.0-455.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 455.0-456.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 456.0-457.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 457.0-458.0 sec  7.25 MBytes  60.8 Mbits/sec
+[  3] 458.0-459.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 459.0-460.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 460.0-461.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 461.0-462.0 sec  7.38 MBytes  61.9 Mbits/sec
+[  3] 462.0-463.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 463.0-464.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 464.0-465.0 sec  6.38 MBytes  53.5 Mbits/sec
+[  3] 465.0-466.0 sec  5.38 MBytes  45.1 Mbits/sec
+[  3] 466.0-467.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 467.0-468.0 sec  3.88 MBytes  32.5 Mbits/sec
+[  3] 468.0-469.0 sec  4.50 MBytes  37.7 Mbits/sec
+[  3] 469.0-470.0 sec  3.62 MBytes  30.4 Mbits/sec
+[  3] 470.0-471.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 471.0-472.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 472.0-473.0 sec  2.12 MBytes  17.8 Mbits/sec
+[  3] 473.0-474.0 sec   896 KBytes  7.34 Mbits/sec
+[  3] 474.0-475.0 sec   896 KBytes  7.34 Mbits/sec
+[  3] 475.0-476.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 476.0-477.0 sec  1.12 MBytes  9.44 Mbits/sec
+[  3] 477.0-478.0 sec   896 KBytes  7.34 Mbits/sec
+[  3] 478.0-479.0 sec  1.00 MBytes  8.39 Mbits/sec
+[  3] 479.0-480.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 480.0-481.0 sec  1.75 MBytes  14.7 Mbits/sec
+[  3] 481.0-482.0 sec  2.75 MBytes  23.1 Mbits/sec
+[  3] 482.0-483.0 sec  3.75 MBytes  31.5 Mbits/sec
+[  3] 483.0-484.0 sec  6.50 MBytes  54.5 Mbits/sec
+[  3] 484.0-485.0 sec  5.38 MBytes  45.1 Mbits/sec
+[  3] 485.0-486.0 sec  4.62 MBytes  38.8 Mbits/sec
+[  3] 486.0-487.0 sec  3.62 MBytes  30.4 Mbits/sec
+[  3] 487.0-488.0 sec  2.62 MBytes  22.0 Mbits/sec
+[  3] 488.0-489.0 sec  1.75 MBytes  14.7 Mbits/sec
+^C^C^C[  3] 489.0-490.0 sec  3.50 MBytes  29.4 Mbits/sec
+[  3] 490.0-491.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 491.0-492.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 492.0-493.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 493.0-494.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 494.0-495.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 495.0-496.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 496.0-497.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 497.0-498.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 498.0-499.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 499.0-500.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 500.0-501.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 501.0-502.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 502.0-503.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 503.0-504.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 504.0-505.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 505.0-506.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 506.0-507.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 507.0-508.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 508.0-509.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 509.0-510.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 510.0-511.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 511.0-512.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 512.0-513.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 513.0-514.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 514.0-515.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 515.0-516.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 516.0-517.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 517.0-518.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 518.0-519.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 519.0-520.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 520.0-521.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 521.0-522.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 522.0-523.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 523.0-524.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 524.0-525.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 525.0-526.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 526.0-527.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 527.0-528.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 528.0-529.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 529.0-530.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 530.0-531.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 531.0-532.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 532.0-533.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 533.0-534.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 534.0-535.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 535.0-536.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 536.0-537.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 537.0-538.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 538.0-539.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 539.0-540.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 540.0-541.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 541.0-542.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 542.0-543.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 543.0-544.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 544.0-545.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 545.0-546.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 546.0-547.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 547.0-548.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 548.0-549.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 549.0-550.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 550.0-551.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 551.0-552.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 552.0-553.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 553.0-554.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 554.0-555.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 555.0-556.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 556.0-557.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 557.0-558.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 558.0-559.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 559.0-560.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 560.0-561.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 561.0-562.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 562.0-563.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 563.0-564.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 564.0-565.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 565.0-566.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 566.0-567.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 567.0-568.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 568.0-569.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 569.0-570.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 570.0-571.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 571.0-572.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 572.0-573.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 573.0-574.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 574.0-575.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 575.0-576.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 576.0-577.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 577.0-578.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 578.0-579.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 579.0-580.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 580.0-581.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 581.0-582.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 582.0-583.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 583.0-584.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 584.0-585.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 585.0-586.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 586.0-587.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 587.0-588.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 588.0-589.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 589.0-590.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 590.0-591.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 591.0-592.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 592.0-593.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 593.0-594.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 594.0-595.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 595.0-596.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 596.0-597.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 597.0-598.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 598.0-599.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 599.0-600.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 600.0-601.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 601.0-602.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 602.0-603.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 603.0-604.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 604.0-605.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 605.0-606.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 606.0-607.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 607.0-608.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 608.0-609.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 609.0-610.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 610.0-611.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 611.0-612.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 612.0-613.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 613.0-614.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 614.0-615.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 615.0-616.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 616.0-617.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 617.0-618.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 618.0-619.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 619.0-620.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 620.0-621.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 621.0-622.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 622.0-623.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 623.0-624.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 624.0-625.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 625.0-626.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 626.0-627.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 627.0-628.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 628.0-629.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 629.0-630.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 630.0-631.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 631.0-632.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 632.0-633.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 633.0-634.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 634.0-635.0 sec  0.00 Bytes  0.00 bits/sec
+[  3] 635.0-636.0 sec  0.00 Bytes  0.00 bits/sec
+[  3]  0.0-636.7 sec  2.33 GBytes  31.4 Mbits/sec
+
 
