@@ -4,77 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28355CD11DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Mar 2024 09:20:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BCE5C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Mar 2024 12:39:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5r0irEwQn1lB3UnLNAwqebaOIn42MDl/NmPOJcplkmY=; b=Gb30hXhyU9aNDK0iYJZWXO8tYs
-	pOGo685P3J6bE9rO2mFNBPcbpNr+FHgCKXgGJoFKmlGvrPFPqAhHJSetc/njkia6e8agpeLTpYTwY
-	tcqR7w1KcMymDRlsEfPluP7xr2/Co5MBpkzpEm0GmFd9NzEO80JcrE3noEFczCzUQhfDRkDKvPpSV
-	y5l1JYurz0PJ8FbIjBfmmShrHRhcducOOEjZ3R2Weez87TGybnaPmNMzfeGJ5tg0PLPYx1dTJhudY
-	QgXYdUG6oKOdr7Ayv+ZVP2c8Y03E2+k9bf5olPo2yPb+VsuN+bOWS+hLn5DI022fp/R/6elXotTh/
-	muJTDqjw==;
+	bh=o1Gh5aKdbTdP+qtmiPst9kiB4BzT/lLl/8G+RL9TN/w=; b=ohGi+7wrlqPtgd5GZ+3JQvxaD+
+	MVyoOpBro/u80HuGID8xQZJZsa49SyYTb/AgDzZ11zLC0Ue8PaN5W3n3uiky1xiA76EnBqbvG/L1M
+	CSajNRm/KriJiTr4EWH5dBerN4clO1+9YwNQBLUbRcBz1Yy+kpE4DULkf1RJ+2NGcWrOoXSir5YzW
+	EF+4CZiQ0HeyVfpMSwiErDF3HsKQJIWyU00oMTTtYw/dEusidySLlaEbMku62azwxlacbn2A6J6h3
+	TxYDJJQJ+nY2UP49v3tSlpC99AM68QpdzKPfcm8coVsLdwrf3G02GUFTWWPleVzzKp8H4Xw761NcE
+	FXz4eSpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rp2yO-00000003md1-0OeB;
-	Tue, 26 Mar 2024 09:20:00 +0000
-Received: from relay1-d.mail.gandi.net ([2001:4b98:dc4:8::221])
+	id 1rp65E-00000004VBj-36Ku;
+	Tue, 26 Mar 2024 12:39:16 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rp2yH-00000003mbo-2oEt;
-	Tue, 26 Mar 2024 09:19:55 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 27E4A240011;
-	Tue, 26 Mar 2024 09:19:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1711444788;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5r0irEwQn1lB3UnLNAwqebaOIn42MDl/NmPOJcplkmY=;
-	b=W79L7du6q9HZs1Gs+5VBgV8goGI2G4zYDm6OB/HDnFsDR/cyl+rlwpzRDXSVo5BG058Y3t
-	KCWSoBXKKDza+xs5AxeKEInKNb8Yfi8l07NoBbb0EzR4fwIZdpP2K6/aPggQmOzyTe/6g5
-	uggF2txSH8TqpcRd5qrv56ClVvr8Vz7hrdobfsukkq2StZivs3erSICy10Z6QZdZrFRwQv
-	egveqbn64WYu9jO9buJlovfCmbvF+UomVb0UkL0kTRe8KItqDLfMHybR1EobKJf4Fg/C2+
-	/+MkrO9MYX/PbF+DaIE1eKzexSME/ly5JKwP3mZmsxy43CT5dXhqfdGRKd5RQg==
-Message-ID: <d65f4c45-e616-4157-a769-c285cbad575c@arinc9.com>
-Date: Tue, 26 Mar 2024 12:19:40 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net v2 2/2] net: dsa: mt7530: fix disabling EEE on failure
- on MT7531 and MT7988
-To: Paolo Abeni <pabeni@redhat.com>, Daniel Golle <daniel@makrotopia.org>,
- DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>,
- Russell King <linux@armlinux.org.uk>,
- SkyLake Huang <SkyLake.Huang@mediatek.com>,
- Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
- mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	id 1rp659-00000004V9M-47n5;
+	Tue, 26 Mar 2024 12:39:14 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 671EBCE203F;
+	Tue, 26 Mar 2024 12:39:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7FD2C43394;
+	Tue, 26 Mar 2024 12:39:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1711456748;
+	bh=aIZN4ayFWAxqe4bKOQlECj+NTdd2YL5f3lY7krQamOI=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=H3MPJ6sOxaDeI8bHhLDFMP2Ffwr6cvCkA0U+3nDbvylo/g0j9l/OlkyHD2TGM9HRl
+	 ds1FvyfPZDloy+G7iQUEMRqlHqigq2GM8bAKN8ZPfLQaQ3ZD7oytI//3lTWoIFpuJq
+	 DyAG/rjOUhjYxChskOOmq/wj/OV7WJNdfGiDQSfi1trxwiswy/dtFi53pXx+93mIHn
+	 Q8pkaS+ZQ5thrA8EJIKCrBoSJjzwPLyC37q/dg/XSsjfBIDi4Pynsopu5HV/I+gR0K
+	 /ObQQa+0ONrCFOyLy+6pe52oj312ufuQ76nd5g8ZKXJUlAMxsOnIRDdhDVJrwK+gK8
+	 FzMvcEDHC9Ryw==
+From: Mark Brown <broonie@kernel.org>
+To: support.opensource@diasemi.com, lgirdwood@gmail.com, 
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+ jagan@amarulasolutions.com, Bo Liu <liubo03@inspur.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org
-References: <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-0-9af9d5041bfe@arinc9.com>
- <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-2-9af9d5041bfe@arinc9.com>
- <799572b672ea8b4756236b14068aef7c8fa726a6.camel@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <799572b672ea8b4756236b14068aef7c8fa726a6.camel@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Spam-Score: 400
-X-GND-Status: SPAM
-X-GND-Sasl: arinc.unal@arinc9.com
+In-Reply-To: <20240320085740.4604-1-liubo03@inspur.com>
+References: <20240320085740.4604-1-liubo03@inspur.com>
+Subject: Re: [PATCH v1 00/13] regulator: convert to use maple tree register
+ cache
+Message-Id: <171145674540.65165.16145640493562999646.b4-ty@kernel.org>
+Date: Tue, 26 Mar 2024 12:39:05 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240326_021954_038835_69FFB952 
-X-CRM114-Status: GOOD (  18.16  )
+X-CRM114-CacheID: sfid-20240326_053912_496812_20A63B7E 
+X-CRM114-Status: GOOD (  11.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,43 +74,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26.03.2024 12:02, Paolo Abeni wrote:
-> On Thu, 2024-03-21 at 19:29 +0300, Arınç ÜNAL via B4 Relay wrote:
->> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>
->> The MT7531_FORCE_EEE1G and MT7531_FORCE_EEE100 bits let the
->> PMCR_FORCE_EEE1G and PMCR_FORCE_EEE100 bits determine the 1G/100 EEE
->> abilities of the MAC. If MT7531_FORCE_EEE1G and MT7531_FORCE_EEE100 are
->> unset, the abilities are left to be determined by PHY auto polling.
->>
->> The commit 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
->> made it so that the PMCR_FORCE_EEE1G and PMCR_FORCE_EEE100 bits are set on
->> mt753x_phylink_mac_link_up(). But it did not set the MT7531_FORCE_EEE1G and
->> MT7531_FORCE_EEE100 bits. Because of this, EEE will be enabled on the
->> switch MACs by polling the PHY, regardless of the result of phy_init_eee().
->>
->> Define these bits and add them to MT7531_FORCE_MODE which is being used by
->> the subdriver. With this, EEE will be prevented from being enabled on the
->> switch MACs when phy_init_eee() fails.
->>
->> Fixes: 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+On Wed, 20 Mar 2024 04:57:27 -0400, Bo Liu wrote:
+> The maple tree register cache is based on a much more modern data structure
+> than the rbtree cache and makes optimisation choices which are probably
+> more appropriate for modern systems than those made by the rbtree cache.
 > 
-> If I read the past discussion correctly, this is a potential issue
-> found by code inspection and never producing problem in practice, am I
-> correct?
+> Bo Liu (13):
+>   regulator: da9121: convert to use maple tree register cache
+>   regulator: da9211: convert to use maple tree register cache
+>   regulator: isl9305: convert to use maple tree register cache
+>   regulator: max8973: convert to use maple tree register cache
+>   regulator: mt6311: convert to use maple tree register cache
+>   regulator: pca9450: convert to use maple tree register cache
+>   regulator: pf8x00: convert to use maple tree register cache
+>   regulator: pfuze100: convert to use maple tree register cache
+>   regulator: rtmv20: convert to use maple tree register cache
+>   regulator: rtq6752: convert to use maple tree register cache
+>   regulator: tps51632: convert to use maple tree register cache
+>   regulator: tps62360: convert to use maple tree register cache
+>   regulator: rpi-panel-attiny: convert to use maple tree register cache
 > 
-> If so I think it will deserve a 3rd party tested-by tag or similar to
-> go in.
-> 
-> If nobody could provide such feedback in a little time, I suggest to
-> drop this patch and apply only 1/2.
+> [...]
 
-Whether a problem would happen in practice depends on when phy_init_eee()
-fails, meaning it returns a negative non-zero code. I requested Russell to
-review this patch to shed light on when phy_init_eee() would return a
-negative non-zero code so we have an idea whether this patch actually fixes
-a problem.
+Applied to
 
-Arınç
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+
+Thanks!
+
+[01/13] regulator: da9121: convert to use maple tree register cache
+        commit: d92eb7c333c5ac8d8add10d5a211ac9c405e4393
+[02/13] regulator: da9211: convert to use maple tree register cache
+        commit: 03ddbcbe2f1ca9fac2759849be6714d8e82aa331
+[03/13] regulator: isl9305: convert to use maple tree register cache
+        commit: 66a4ead5ed9393d250105fcbe6e3525e1cdd977a
+[04/13] regulator: max8973: convert to use maple tree register cache
+        commit: 36649db5b216a85cfd7937a289c4cdd0b4b69126
+[05/13] regulator: mt6311: convert to use maple tree register cache
+        commit: bc125125125c10ec14764d153227c95ad0fd0b48
+[06/13] regulator: pca9450: convert to use maple tree register cache
+        commit: 0b03e9cb8b137490f4adedf07482384ffeee7145
+[07/13] regulator: pf8x00: convert to use maple tree register cache
+        commit: cea065dced280306ff5a4f7adfeb3773c49b2818
+[08/13] regulator: pfuze100: convert to use maple tree register cache
+        commit: 0332f074f5c3d8c2a32db24c9dcc3c3f13056cef
+[09/13] regulator: rtmv20: convert to use maple tree register cache
+        commit: 43edba6b670bc4f5426e77873b400fe91f8d3c75
+[10/13] regulator: rtq6752: convert to use maple tree register cache
+        commit: 81c180e77d60755ca5ff217786e2f427ccab04e0
+[11/13] regulator: tps51632: convert to use maple tree register cache
+        commit: 9500d38e50d0cfd33536454a204dedb9d47d84a3
+[12/13] regulator: tps62360: convert to use maple tree register cache
+        commit: fe258f54c0a85c1bfc0e836e20c3e4e52f1a8318
+[13/13] regulator: rpi-panel-attiny: convert to use maple tree register cache
+        commit: ab470abe58c09b2fbe2c1478e67a904fd803e84f
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
