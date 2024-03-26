@@ -4,70 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF724C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Mar 2024 08:50:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EED9CD11DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Mar 2024 09:01:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eCkWYTEXWBakOnUz7fRFGXXdOpVCR+sv7wyPojg1oiI=; b=zVWQYoAB6ns/DeA4a7yBx/7VyY
-	sfMm0octbxwYgYnmxIdVrH2nn2c3aOd31B2q6H3kl5VHeTzulWlgUk2SFYwnJ/5I73tvaqQetnzE3
-	7YZt2lujTGtETCclFKTVjYPrddM5/IziM68SV5d6kq6J7c/rcuMxGPcfaKNv8H9jefksgBs2UMAfr
-	Kfa7xO/y3uT6CjuCJL+WPJuDsy3CEJLpPhG0sIyDFeENPV2o9CoI0YWRWk6JxWvVpZZ2QTM/P0LEN
-	Hbtd9MKnwDp45L7zxdHby7W215OtIQlL4YAjgwVoWU2L5Gn97g3jHSEVxL0ai/5+SHSFaWiRusrHg
-	LE1x3IRw==;
+	bh=8SlUvErwAnYqUqDGZohx8yc7/n1w1bJF62439LoJFUM=; b=gBJ1GK5nLIVGO8ndHH4oSJKkFf
+	AVV4sbu5JaX19+PuW9nFn61z856xQmuMfg/90ZhEUhctOvmMSwOYHbg1M4mN5XLtVnjq6zrfTXJSt
+	15bsTN/uSjBs1ypHTd5naGKosPG3CfXWvAHV97uv7qdGsYETgX4VMjCYEmDwX/h/leAT/vnHRCRws
+	MWgj/wbPu9LcbpSGphI9Xp3dC6cVNU7T3+WFAlVJGr2cRhLbAjVX8+GIRqg6SUgwur+C426WX33gu
+	qA1+KtBOBTeFQZYwfVmxr9DYeLNftlRlceDoGlWXKZ2x1hZ1ukhMiMyTOJIuXp1UuK48B3yEyoKXt
+	kANdR+zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rp2W1-00000003fi8-1j2X;
-	Tue, 26 Mar 2024 08:50:41 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rp2gZ-00000003iQX-2TXe;
+	Tue, 26 Mar 2024 09:01:36 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rp2Vs-00000003fdc-28jd;
-	Tue, 26 Mar 2024 08:50:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 8DA88CE1F2C;
-	Tue, 26 Mar 2024 08:50:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id C0CD0C43390;
-	Tue, 26 Mar 2024 08:50:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711443029;
-	bh=4X1Z3kvgSdNm/Ff7dFFnXnXj/MKpjiKYMAG4S+nj6rY=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=bMzQOZyUd//B/B/1Mhs5OviJK3RYqfO4NxyBm6TFNgBO6ql0hqh6PmXLOtnJ2xOFK
-	 Tnv0jvVJC7WH+SweKyx3r3Oel1H89DK9Ouyvd7hBVkfrMPWSoqo+6Y1o6xKj8+0EGV
-	 ehEhdJ7sJQS9WRsohNqoB+hZgqeFmyW6RCSbF/eL+ewPKrHS5f4eFSkUGL4eaSbove
-	 keomdByrpeflobjpyb76QYRCU/w+XXu4fSLWpPgmgQQUfpihF6Mr1rL1Q7kvmzrQi2
-	 zNXy47adMcpBN+Sn+RnnAFeq/JPSBeD9VkQbaLdxSlFbp0iSzJmaqtgj4Ez9jT62Cx
-	 /t8/COWJAXTTQ==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id AB22CD2D0E9;
-	Tue, 26 Mar 2024 08:50:29 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1rp2gR-00000003iKg-07Aa;
+	Tue, 26 Mar 2024 09:01:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1711443682;
+	bh=ixR84/hC5ObDuk4xPuGOBtJ9kzC3VnB6M3PMiFfGYYw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=xVo5qX9gWM7zCDSwnSrhWrJ89WQvr7Mbc8CNeGAKCYK8/DNDNUah7EFJtxQsJQteW
+	 pwHub4vWv7+ankvLH9iVnb3NilI/G/gn5g4ssqgBuAMsTkG0XhBKVGw4mg2Qq5nPpO
+	 croR8uM9EiMqWkOpeGDYUWP4vMdJbgFKuUn/xTItahZ7+NaWD3vz2hgCiZGvbbtZ+a
+	 oWifTWYZw2g2fRnlXx8xQYfX9I7Pn6yFQyGaKZnyTth+SqgOzxAhMeo6rwwjZaKjAd
+	 3cevRIaBA+SSmFVdKAFeITWqCF0EzI7DS2OH7ViPquRFEKRIM+JoZaqX4qhH3fEzVH
+	 jl47zmQ8nbWbA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 15BA33782082;
+	Tue, 26 Mar 2024 09:01:20 +0000 (UTC)
+Message-ID: <eb4b5b1d-90dc-4355-8fb0-5fb7f2bb2426@collabora.com>
+Date: Tue, 26 Mar 2024 10:01:19 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 05/22] ASoC: mediatek: Add common machine soundcard
+ driver probe mechanism
+To: Mark Brown <broonie@kernel.org>
+Cc: wenst@chromium.org, lgirdwood@gmail.com, robh@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.com,
+ trevor.wu@mediatek.com, maso.huang@mediatek.com,
+ xiazhengqiao@huaqin.corp-partner.google.com, arnd@arndb.de,
+ kuninori.morimoto.gx@renesas.com, shraash@google.com, amergnat@baylibre.com,
+ nicolas.ferre@microchip.com, u.kleine-koenig@pengutronix.de,
+ dianders@chromium.org, frank.li@vivo.com, allen-kh.cheng@mediatek.com,
+ eugen.hristev@collabora.com, claudiu.beznea@tuxon.dev,
+ jarkko.nikula@bitmer.com, jiaxin.yu@mediatek.com, alpernebiyasak@gmail.com,
+ ckeepax@opensource.cirrus.com, zhourui@huaqin.corp-partner.google.com,
+ nfraprado@collabora.com, alsa-devel@alsa-project.org,
+ shane.chien@mediatek.com, linux-sound@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20240313110147.1267793-1-angelogioacchino.delregno@collabora.com>
+ <20240313110147.1267793-6-angelogioacchino.delregno@collabora.com>
+ <6b9dd2ad-a24e-497a-8a5c-c7c04475cf5d@sirena.org.uk>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <6b9dd2ad-a24e-497a-8a5c-c7c04475cf5d@sirena.org.uk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: dsa: mt7530: fix improper frames on all 25MHz and
- 40MHz XTAL MT7530
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <171144302969.11902.10822860484949100289.git-patchwork-notify@kernel.org>
-Date: Tue, 26 Mar 2024 08:50:29 +0000
-References: <20240320-for-net-mt7530-fix-25mhz-xtal-with-direct-phy-access-v1-1-d92f605f1160@arinc9.com>
-In-Reply-To: <20240320-for-net-mt7530-fix-25mhz-xtal-with-direct-phy-access-v1-1-d92f605f1160@arinc9.com>
-To: =?utf-8?b?QXLEsW7DpyDDnE5BTCB2aWEgQjQgUmVsYXkgPGRldm51bGwrYXJpbmMudW5hbC5h?=@ci.codeaurora.org,
-	=?utf-8?b?cmluYzkuY29tQGtlcm5lbC5vcmc+?=@ci.codeaurora.org
-Cc: daniel@makrotopia.org, dqfext@gmail.com, sean.wang@mediatek.com,
- andrew@lunn.ch, f.fainelli@gmail.com, olteanv@gmail.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- Landen.Chao@mediatek.com, bartel.eerdekens@constell8.be,
- mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240326_015032_758188_1FE96AFE 
-X-CRM114-Status: UNSURE (   8.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240326_020127_269559_3B91D56B 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,33 +91,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to netdev/net.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
-
-On Wed, 20 Mar 2024 23:45:30 +0300 you wrote:
-> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+Il 25/03/24 15:18, Mark Brown ha scritto:
+> On Wed, Mar 13, 2024 at 12:01:30PM +0100, AngeloGioacchino Del Regno wrote:
+>> Add a common machine soundcard driver probe function that supports both
+>> DSP and AFE-direct usecases and also provides a hook for legacy machine
+>> soundcard driver probe mechanisms.
+>>
+>> Note that the hook is there because, even for legacy probe, a lot of the
+>> actual code can still be commonized, hence still reducing duplication
+>> for the legacy devicetree retrocompatibility cases.
+>>
+>> This common probe function deprecates all of the inconsistent previous
+>> probe mechanisms and aims to settle all of the MediaTek card drivers on
+>> consistent and common devicetree properties describing wanted DAIs,
+>> device specific DAI configuration and DAI links to codecs found on
+>> each device/board.
 > 
-> The MT7530 switch after reset initialises with a core clock frequency that
-> works with a 25MHz XTAL connected to it. For 40MHz XTAL, the core clock
-> frequency must be set to 500MHz.
+> This breaks allmodconfig builds:
+
+Oops. Forgot to test this commit without the next one constifying stuff around.
+I'll recheck and make this one right. Good catch!
+
+Thanks for notifying!
+
+Cheers,
+Angelo
+
 > 
-> The mt7530_pll_setup() function is responsible of setting the core clock
-> frequency. Currently, it runs on MT7530 with 25MHz and 40MHz XTAL. This
-> causes MT7530 switch with 25MHz XTAL to egress and ingress frames
-> improperly.
 > 
-> [...]
-
-Here is the summary with links:
-  - [net] net: dsa: mt7530: fix improper frames on all 25MHz and 40MHz XTAL MT7530
-    https://git.kernel.org/netdev/net/c/5f563c31ff0c
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c: In function ‘mtk_sof_dai_link_fixup’:
+> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c:18:41: error: initialization discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
+>     18 |         struct mtk_sof_priv *sof_priv = soc_card_data->sof_priv;
+>        |                                         ^~~~~~~~~~~~~
+> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c: In function ‘mtk_sof_card_probe’:
+> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c:58:41: error: initialization discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
+>     58 |         struct mtk_sof_priv *sof_priv = soc_card_data->sof_priv;
+>        |                                         ^~~~~~~~~~~~~
+> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c: In function ‘mtk_sof_find_tplg_be’:
+> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c:76:41: error: initialization discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
+>     76 |         struct mtk_sof_priv *sof_priv = soc_card_data->sof_priv;
+>        |                                         ^~~~~~~~~~~~~
+> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c: In function ‘mtk_sof_check_tplg_be_dai_link_fixup’:
+> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c:116:41: error: initialization discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
+>    116 |         struct mtk_sof_priv *sof_priv = soc_card_data->sof_priv;
+>        |                                         ^~~~~~~~~~~~~
+> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c: In function ‘mtk_sof_card_late_probe’:
+> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c:147:41: error: initialization discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
+>    147 |         struct mtk_sof_priv *sof_priv = soc_card_data->sof_priv;
+>        |                                         ^~~~~~~~~~~~~
+> cc1: all warnings being treated as errors
+> 
+> 
 
