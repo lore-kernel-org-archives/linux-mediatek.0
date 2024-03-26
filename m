@@ -4,79 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EED9CD11DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Mar 2024 09:01:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D37B5C54E58
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Mar 2024 09:06:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8SlUvErwAnYqUqDGZohx8yc7/n1w1bJF62439LoJFUM=; b=gBJ1GK5nLIVGO8ndHH4oSJKkFf
-	AVV4sbu5JaX19+PuW9nFn61z856xQmuMfg/90ZhEUhctOvmMSwOYHbg1M4mN5XLtVnjq6zrfTXJSt
-	15bsTN/uSjBs1ypHTd5naGKosPG3CfXWvAHV97uv7qdGsYETgX4VMjCYEmDwX/h/leAT/vnHRCRws
-	MWgj/wbPu9LcbpSGphI9Xp3dC6cVNU7T3+WFAlVJGr2cRhLbAjVX8+GIRqg6SUgwur+C426WX33gu
-	qA1+KtBOBTeFQZYwfVmxr9DYeLNftlRlceDoGlWXKZ2x1hZ1ukhMiMyTOJIuXp1UuK48B3yEyoKXt
-	kANdR+zw==;
+	bh=NqGFRjWR0QURm2aye+7abkeZFK6Er7JYJSWYgUQlFGU=; b=ORMFg1mJB4TqmWgwNMb0bGX4rM
+	icdjNL4SBGnfuWinFcPo50mp0rZLB/MzClff+7hrDtayrbLQJMJ3mm22tnb2HCtey5C4OG+EqoMhB
+	Dny+6AfB3kLQxQlCIRFY1cKMx7QcaJ6kE3JGOnhOskVxD/MStCogAgHNfjyYO4+QcS6EJlHIDbh0G
+	O6yawi/zPILZjpVBTDscT+MBaMUXitWxtx0nMiLIq/Ku1eL05p9BrY7FfNSXCOOEWwUlPKwmi3VVh
+	RXLsvaoRaipzQ4ToJz3POkkbXwIHc0koF5TZVSK7Wd+r8R9pTecJKSAR17AJKzE/goDmHVJxdnVUd
+	T+pUDW4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rp2gZ-00000003iQX-2TXe;
-	Tue, 26 Mar 2024 09:01:36 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rp2l5-00000003jsY-3u25;
+	Tue, 26 Mar 2024 09:06:15 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rp2gR-00000003iKg-07Aa;
-	Tue, 26 Mar 2024 09:01:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1711443682;
-	bh=ixR84/hC5ObDuk4xPuGOBtJ9kzC3VnB6M3PMiFfGYYw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=xVo5qX9gWM7zCDSwnSrhWrJ89WQvr7Mbc8CNeGAKCYK8/DNDNUah7EFJtxQsJQteW
-	 pwHub4vWv7+ankvLH9iVnb3NilI/G/gn5g4ssqgBuAMsTkG0XhBKVGw4mg2Qq5nPpO
-	 croR8uM9EiMqWkOpeGDYUWP4vMdJbgFKuUn/xTItahZ7+NaWD3vz2hgCiZGvbbtZ+a
-	 oWifTWYZw2g2fRnlXx8xQYfX9I7Pn6yFQyGaKZnyTth+SqgOzxAhMeo6rwwjZaKjAd
-	 3cevRIaBA+SSmFVdKAFeITWqCF0EzI7DS2OH7ViPquRFEKRIM+JoZaqX4qhH3fEzVH
-	 jl47zmQ8nbWbA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 15BA33782082;
-	Tue, 26 Mar 2024 09:01:20 +0000 (UTC)
-Message-ID: <eb4b5b1d-90dc-4355-8fb0-5fb7f2bb2426@collabora.com>
-Date: Tue, 26 Mar 2024 10:01:19 +0100
+	id 1rp2l3-00000003jsB-3hbD
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 26 Mar 2024 09:06:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=NqGFRjWR0QURm2aye+7abkeZFK6Er7JYJSWYgUQlFGU=; b=pONAGmxOBvI6WE6KClUjbKXEFl
+	Dw5hvvdShBhubONJG0q9AfHM6Hxx9vGxqR+/hOP26gcdNidG7FiKSXrWXXqTWGJYlbxSagWsZI8F5
+	jPLfKgRXeWoyuiaSZ7COklu8laNhKMPHWAe3EWKk5VODE4Bd1thhibxGgcCTFL1WtvPhALDSL2lfD
+	pEz/RpSHijSwnlc/0xnpPAYf+EY+VRx1D12Mq3wetlrTeIXwQhFFKOQUmJltBW5ZSGdtQyV42BLvf
+	xp0QhZXABAXxEp/4fFcb7PpMDQqmzqO+mOCXyQyNy+tdjvd0OGxZAQxfHwEGeCMlmBP3Vu6/h7emR
+	Jt92GSVg==;
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rp2kw-0000000H484-3IzR
+	for linux-mediatek@lists.infradead.org;
+	Tue, 26 Mar 2024 09:06:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1711443788;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=NqGFRjWR0QURm2aye+7abkeZFK6Er7JYJSWYgUQlFGU=;
+	b=ft/4fq8nDuCbhGZtnvUtZsbD3rwICHqgueRb9/dJZ+ZdrR+Ixbrs5sU7MI5Hd4MUpV4AvC
+	EAyuXn9hG4EgEzW2cx3mCNtzoEvAW/InugdeRUvahRx3UOFQrEp7X6jC0/NasKEYlbH9fp
+	5d4cGzTbvDChwnFw4pAlnX9Ve3Vc3xw=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1711443788;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=NqGFRjWR0QURm2aye+7abkeZFK6Er7JYJSWYgUQlFGU=;
+	b=ft/4fq8nDuCbhGZtnvUtZsbD3rwICHqgueRb9/dJZ+ZdrR+Ixbrs5sU7MI5Hd4MUpV4AvC
+	EAyuXn9hG4EgEzW2cx3mCNtzoEvAW/InugdeRUvahRx3UOFQrEp7X6jC0/NasKEYlbH9fp
+	5d4cGzTbvDChwnFw4pAlnX9Ve3Vc3xw=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-587-5sajQRwGPh-k7XWbEDOVQQ-1; Tue, 26 Mar 2024 05:02:58 -0400
+X-MC-Unique: 5sajQRwGPh-k7XWbEDOVQQ-1
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-4146d5038c0so12914005e9.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 Mar 2024 02:02:58 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1711443777; x=1712048577;
+        h=mime-version:user-agent:content-transfer-encoding:autocrypt
+         :references:in-reply-to:date:cc:to:from:subject:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=NqGFRjWR0QURm2aye+7abkeZFK6Er7JYJSWYgUQlFGU=;
+        b=VYELPr1iNedBTt1yfd/umYtJaT5KAB2H+XlpLmLTyssT86bux/HhfvDnQfNsq/6vS8
+         JivBkwtYFv+A0RKf0HVkgD6e9KxOicad7yZn/aqN6IqQLO5+5rb1u0mMHiqObBL392dp
+         flRNIepW7KLygbBB6wwDtPaMkVFeFWyXbyoQ5qRixyDcf7hy9zbH0MImTYrFC0otiK0Z
+         +wTT/uDGONdAQR7/Xnohn7WjSohoVbjXzprjgzUTnDSqVmiSaLjYYArukq9m5wMLLEQj
+         U8qcD7FMP9tO1MEB3357jrY0XhNYY/oXrBIP25brz5SBRyb69ys/IcB2zvEmBCh3bib8
+         3K+w==
+X-Forwarded-Encrypted: i=1; AJvYcCWdcFunExoOwC9qfV5bQorCNSlhIsknHpN1EjnkwGTC8+zAP8PbDyU0fIRKdaiisYxbM3sNr+2l5N9d7NtU51hYtYsLeD5vKUljsMxlM/couDIr
+X-Gm-Message-State: AOJu0YzfRrKjSBo0icrDySmJnl0kN5U21dZKifE1VwBXKRl9sbY2HF4q
+	mpnNUwcFUD16APqJPzDtThqfnp+yj4kgOB2gqkhPcGcf6RHbZmHv4UqA+qcMbFQ0JqIf2GGUoEr
+	UDU3fHlJcNM8Gf/hzRs6Ehidkqou59ftxPnYivLc7fQjBgiON3fl2JKJB5hbMjk+I8e1rew==
+X-Received: by 2002:a05:600c:1ca9:b0:414:8032:72e4 with SMTP id k41-20020a05600c1ca900b00414803272e4mr6953193wms.4.1711443777392;
+        Tue, 26 Mar 2024 02:02:57 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF5kYu/lKbTy+ljHRULd1J1Vm3guqKNgel59V6fCBvRom3sy3zu18H2PmJMjpuSGKjpQM2y0A==
+X-Received: by 2002:a05:600c:1ca9:b0:414:8032:72e4 with SMTP id k41-20020a05600c1ca900b00414803272e4mr6953155wms.4.1711443776947;
+        Tue, 26 Mar 2024 02:02:56 -0700 (PDT)
+Received: from gerbillo.redhat.com (146-241-229-159.dyn.eolo.it. [146.241.229.159])
+        by smtp.gmail.com with ESMTPSA id d8-20020a05600c34c800b00414903d20aesm474225wmq.11.2024.03.26.02.02.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 26 Mar 2024 02:02:56 -0700 (PDT)
+Message-ID: <799572b672ea8b4756236b14068aef7c8fa726a6.camel@redhat.com>
+Subject: Re: [PATCH net v2 2/2] net: dsa: mt7530: fix disabling EEE on
+ failure on MT7531 and MT7988
+From: Paolo Abeni <pabeni@redhat.com>
+To: arinc.unal@arinc9.com, Daniel Golle <daniel@makrotopia.org>, DENG
+ Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Andrew
+ Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Vladimir
+ Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, =?ISO-8859-1?Q?Ren=E9?= van
+ Dorst <opensource@vdorst.com>, Russell King <linux@armlinux.org.uk>,
+ SkyLake Huang <SkyLake.Huang@mediatek.com>, Heiner Kallweit
+ <hkallweit1@gmail.com>
+Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
+ mithat.guner@xeront.com,  erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Date: Tue, 26 Mar 2024 10:02:54 +0100
+In-Reply-To: <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-2-9af9d5041bfe@arinc9.com>
+References: <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-0-9af9d5041bfe@arinc9.com>
+	 <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-2-9af9d5041bfe@arinc9.com>
+Autocrypt: addr=pabeni@redhat.com; prefer-encrypt=mutual; keydata=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
+User-Agent: Evolution 3.50.4 (3.50.4-1.fc39)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 05/22] ASoC: mediatek: Add common machine soundcard
- driver probe mechanism
-To: Mark Brown <broonie@kernel.org>
-Cc: wenst@chromium.org, lgirdwood@gmail.com, robh@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.com,
- trevor.wu@mediatek.com, maso.huang@mediatek.com,
- xiazhengqiao@huaqin.corp-partner.google.com, arnd@arndb.de,
- kuninori.morimoto.gx@renesas.com, shraash@google.com, amergnat@baylibre.com,
- nicolas.ferre@microchip.com, u.kleine-koenig@pengutronix.de,
- dianders@chromium.org, frank.li@vivo.com, allen-kh.cheng@mediatek.com,
- eugen.hristev@collabora.com, claudiu.beznea@tuxon.dev,
- jarkko.nikula@bitmer.com, jiaxin.yu@mediatek.com, alpernebiyasak@gmail.com,
- ckeepax@opensource.cirrus.com, zhourui@huaqin.corp-partner.google.com,
- nfraprado@collabora.com, alsa-devel@alsa-project.org,
- shane.chien@mediatek.com, linux-sound@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20240313110147.1267793-1-angelogioacchino.delregno@collabora.com>
- <20240313110147.1267793-6-angelogioacchino.delregno@collabora.com>
- <6b9dd2ad-a24e-497a-8a5c-c7c04475cf5d@sirena.org.uk>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <6b9dd2ad-a24e-497a-8a5c-c7c04475cf5d@sirena.org.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240326_020127_269559_3B91D56B 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20240326_090607_094630_D73B68F9 
+X-CRM114-Status: GOOD (  14.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,55 +143,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/03/24 15:18, Mark Brown ha scritto:
-> On Wed, Mar 13, 2024 at 12:01:30PM +0100, AngeloGioacchino Del Regno wrote:
->> Add a common machine soundcard driver probe function that supports both
->> DSP and AFE-direct usecases and also provides a hook for legacy machine
->> soundcard driver probe mechanisms.
->>
->> Note that the hook is there because, even for legacy probe, a lot of the
->> actual code can still be commonized, hence still reducing duplication
->> for the legacy devicetree retrocompatibility cases.
->>
->> This common probe function deprecates all of the inconsistent previous
->> probe mechanisms and aims to settle all of the MediaTek card drivers on
->> consistent and common devicetree properties describing wanted DAIs,
->> device specific DAI configuration and DAI links to codecs found on
->> each device/board.
-> 
-> This breaks allmodconfig builds:
+On Thu, 2024-03-21 at 19:29 +0300, Ar=C4=B1n=C3=A7 =C3=9CNAL via B4 Relay w=
+rote:
+> From: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
+>=20
+> The MT7531_FORCE_EEE1G and MT7531_FORCE_EEE100 bits let the
+> PMCR_FORCE_EEE1G and PMCR_FORCE_EEE100 bits determine the 1G/100 EEE
+> abilities of the MAC. If MT7531_FORCE_EEE1G and MT7531_FORCE_EEE100 are
+> unset, the abilities are left to be determined by PHY auto polling.
+>=20
+> The commit 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features"=
+)
+> made it so that the PMCR_FORCE_EEE1G and PMCR_FORCE_EEE100 bits are set o=
+n
+> mt753x_phylink_mac_link_up(). But it did not set the MT7531_FORCE_EEE1G a=
+nd
+> MT7531_FORCE_EEE100 bits. Because of this, EEE will be enabled on the
+> switch MACs by polling the PHY, regardless of the result of phy_init_eee(=
+).
+>=20
+> Define these bits and add them to MT7531_FORCE_MODE which is being used b=
+y
+> the subdriver. With this, EEE will be prevented from being enabled on the
+> switch MACs when phy_init_eee() fails.
+>=20
+> Fixes: 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
+> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
 
-Oops. Forgot to test this commit without the next one constifying stuff around.
-I'll recheck and make this one right. Good catch!
+If I read the past discussion correctly, this is a potential issue
+found by code inspection and never producing problem in practice, am I
+correct?
 
-Thanks for notifying!
+If so I think it will deserve a 3rd party tested-by tag or similar to
+go in.
+
+If nobody could provide such feedback in a little time, I suggest to
+drop this patch and apply only 1/2.
 
 Cheers,
-Angelo
 
-> 
-> 
-> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c: In function ‘mtk_sof_dai_link_fixup’:
-> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c:18:41: error: initialization discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
->     18 |         struct mtk_sof_priv *sof_priv = soc_card_data->sof_priv;
->        |                                         ^~~~~~~~~~~~~
-> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c: In function ‘mtk_sof_card_probe’:
-> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c:58:41: error: initialization discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
->     58 |         struct mtk_sof_priv *sof_priv = soc_card_data->sof_priv;
->        |                                         ^~~~~~~~~~~~~
-> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c: In function ‘mtk_sof_find_tplg_be’:
-> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c:76:41: error: initialization discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
->     76 |         struct mtk_sof_priv *sof_priv = soc_card_data->sof_priv;
->        |                                         ^~~~~~~~~~~~~
-> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c: In function ‘mtk_sof_check_tplg_be_dai_link_fixup’:
-> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c:116:41: error: initialization discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
->    116 |         struct mtk_sof_priv *sof_priv = soc_card_data->sof_priv;
->        |                                         ^~~~~~~~~~~~~
-> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c: In function ‘mtk_sof_card_late_probe’:
-> /build/stage/linux/sound/soc/mediatek/common/mtk-dsp-sof-common.c:147:41: error: initialization discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
->    147 |         struct mtk_sof_priv *sof_priv = soc_card_data->sof_priv;
->        |                                         ^~~~~~~~~~~~~
-> cc1: all warnings being treated as errors
-> 
-> 
+Paolo
+
 
