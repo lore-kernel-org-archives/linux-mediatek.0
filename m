@@ -4,67 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 444E3C47DD9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Mar 2024 09:02:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B9DEC54E67
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Mar 2024 09:13:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oB7UTjU+JNYBvQTBKyLSnfhcxVEQJ+c3z986qfvPm2g=; b=P9N/1mAs6AEZtG3uzxHlmzzER1
-	+N0pyvgsgjrhUKtKeHb8d/+uH3m5BzIbokU05Ata+uH/XE2mxAwTxe9o7phJ1DSMS/GNtd/jI/pBq
-	QsYhR/bxor0sFZ0BiiTAob0FGpVGXOG0LeurGMM1+OqGyF6CRgdRKy4amyqt3Z/5AGeRgyF8DePU+
-	o3MmiiRDefn2BjHBlC679JvLCJPqGYTL3YB1AX+Y4bOX2VXT2F5vYiDeN5OJoDzl1iyyg3qCSXMQL
-	gbtldaqg+S9AEfSjfqP0abWNQYIauVW5f/YkY07wMy687zA319z31XdOt/sb0qaZwIWCNZSPl0/cB
-	x4ad9+DQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mxElVZwgDSK1YSb8hGRkSJE7Hq+zmgPYXh8LPg2gT3Q=; b=xabHDSxVP1e8V3fTRJmIEPxJW+
+	9leUFt/kAUoCIEgjafL7cf/AwFxj00Hu1bQs+8j6rPg4HkkbBWcbnWDAETuXF7sQViOaeU91R23dt
+	dOheFeM6oCZaqHuVqEFQ/JVljrOJ6AzDp6PdKJFiUw1+2A3bw7nohNBPkRiAJpRE3Z/I9GHU4XJP9
+	t6qoXaQKxl66/wdBHZI8FYW0zytxYy1a/jNcvZkFzpV6pRSIecI7US7WwOcX/0x+2uINZJ83+5zA8
+	bbP1WLu0FhJb4ExYPbOmDccgZCNsr69nJC+nD9bNOdK/Y0anMPWku6ubdOQZqTGYeV0sFVFMQZdYO
+	dyWsTEwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpPAV-000000088zP-1l78;
-	Wed, 27 Mar 2024 09:01:59 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rpPLs-00000008AWW-3QGW;
+	Wed, 27 Mar 2024 09:13:44 +0000
+Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpPAO-000000088wf-1Q3E;
-	Wed, 27 Mar 2024 09:01:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 1DA80CE25AD;
-	Wed, 27 Mar 2024 09:01:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2981BC43390;
-	Wed, 27 Mar 2024 09:01:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711530108;
-	bh=lyIEGaS1jPdeUhemduBEQ1WVoVPKb/fAHOq4AFGqAlY=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=VahVV8sPUT8wuLtiT+/FuwYXJASdefezzd/GOLaob/zAnNobMN2Z+yBBon0KF0kog
-	 WOqTFmPtX/3HWDyyP+CcaTxRqv6getFWAvw4kjgxYFdsnjHGHgqBpyHf04aACOWIZa
-	 xrquFEwTS0eY2PlhGhceKPg6I5XG0Gnz1vuu0Q5v3jCOicg/NM6fUZZ1iSojhvkdi7
-	 bgIWXlPXNA6gdiR7qV7VjH4uSppKPKWdp6WVYCvZKClNEB+PPS7TX7ARg0VE2z40UH
-	 ZBzdjwfjOyN+rkOqqV4+4iKP8GGIrW7oBijefo/rq+1sPJvak59EmPfgcwvo0f9aYP
-	 l0HgDlG+ODwFg==
-Date: Wed, 27 Mar 2024 04:01:47 -0500
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+	id 1rpPLq-00000008AVl-2oYF
+	for linux-mediatek@lists.infradead.org;
+	Wed, 27 Mar 2024 09:13:44 +0000
+Received: by mail-ot1-x32f.google.com with SMTP id 46e09a7af769-6e6e3eadec8so917728a34.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 Mar 2024 02:13:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1711530820; x=1712135620; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=mxElVZwgDSK1YSb8hGRkSJE7Hq+zmgPYXh8LPg2gT3Q=;
+        b=XQgZV1k6kyJwNod5/Rit4f5p8aM6KKECbYqG7PmeCLFcIWE4tjeSlcnNu7RZb6fyBy
+         7VAN5s4m3s8eCfo6Sw3MmjVewjninPe+r601m/KqOs55K1KbWprxAPzBIJNI5qAhTEtH
+         M7W7dcJVAA9uLp6wptRDrTQbc7hCvB46gBbKM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1711530820; x=1712135620;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=mxElVZwgDSK1YSb8hGRkSJE7Hq+zmgPYXh8LPg2gT3Q=;
+        b=LTkuF1nul50JT8p1KcvCoa42VdXLDbqzts9OgNs7uPUpiilBulhyanHqLArXC0qZTJ
+         CIyTJDEuzQe4mHEpVvrdgEL2IueVDnb0uqgLEHpSGIhOhlITilmSjROJJHvoMOYRE/sF
+         yz6AY3hBJFN1JNcUvOxGATzW4f5FrO5nL0/ITSb/4HYsUDVItr97ng8COkkKrxaGxJFz
+         8QQmT7NOlYnpD/lYr5suHYyWFuvnSwFa9/Dt6n+yvBoyYoTp82Mz3+ch5jUYiXgZoHM+
+         RXG4m6bxbXcscSuQxQNPdz/Uqq64+TsPKOw8NGI6qHKCqWLpIRVGi28miizuCmWfS3to
+         pGvw==
+X-Forwarded-Encrypted: i=1; AJvYcCWBoXuR1+D/ybDepZ/I9gRjkIrq3sTx9pwI/ZBSYeCqJv7jmNAjOXMeiP6aO3vqX8uhhKjFQYJXxTTbPyryMTkR2xO/N9Nde67ifc2maV6XXh6Q
+X-Gm-Message-State: AOJu0YyNPUuz070KSOarkSUh5TImhL/XufZjI4qzJkXsq4xocEVgOX3O
+	zIDVbNpWuJm+dgvo3K83/vmN+dvUqhVpkY9l6Of85jSzrFKrdMrZW2UD650DZw==
+X-Google-Smtp-Source: AGHT+IEb932ORwMZAWuJMDZYxzAxef8XwPiw/kk7kOZAgwvVteC2Tlm4yt0lNUvQ8BGf1TisMGWnlQ==
+X-Received: by 2002:a05:6870:1c8:b0:229:f61d:7e52 with SMTP id n8-20020a05687001c800b00229f61d7e52mr6040680oad.34.1711530820771;
+        Wed, 27 Mar 2024 02:13:40 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:74c2:3606:170b:52f3])
+        by smtp.gmail.com with ESMTPSA id fa31-20020a056a002d1f00b006e69cb93585sm7342911pfb.83.2024.03.27.02.13.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 27 Mar 2024 02:13:40 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 0/2] pinctrl: mediatek: paris: More pin config cleanups
+Date: Wed, 27 Mar 2024 17:13:32 +0800
+Message-ID: <20240327091336.3434141-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.44.0.396.g6e790dbe36-goog
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: "yu-chang.lee" <yu-chang.lee@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
- MandyJH Liu <mandyjh.liu@mediatek.com>, xiufeng.li@mediatek.com, 
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-mediatek@lists.infradead.org, Ulf Hansson <ulf.hansson@linaro.org>, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, fan.chen@mediatek.com, 
- linux-pm@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-In-Reply-To: <20240327055732.28198-3-yu-chang.lee@mediatek.com>
-References: <20240327055732.28198-1-yu-chang.lee@mediatek.com>
- <20240327055732.28198-3-yu-chang.lee@mediatek.com>
-Message-Id: <171153010608.1499881.4707871183250112406.robh@kernel.org>
-Subject: Re: [PATCH v2 2/3] dt-bindings: power: Add mediatek larb
- definition
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240327_020152_776766_56AEDC5E 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20240327_021342_744957_E21CD9FF 
+X-CRM114-Status: UNSURE (   9.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,54 +93,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
-On Wed, 27 Mar 2024 13:57:31 +0800, yu-chang.lee wrote:
-> Add Smart Multimedia Interface Local Arbiter to mediatek
-> power domain.
-> 
-> Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
-> ---
->  .../devicetree/bindings/power/mediatek,power-controller.yaml  | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
+Here are a couple more pin config cleanups for the MediaTek paris
+pinctrl driver library.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+Patch 1 fixes readback of PIN_CONFIG_INPUT_SCHMITT_ENABLE. The function
+was passing back the disabled state incorrectly.
 
-yamllint warnings/errors:
-./Documentation/devicetree/bindings/power/mediatek,power-controller.yaml:128:6: [error] syntax error: expected <block end>, but found '<block mapping start>' (syntax)
-./Documentation/devicetree/bindings/power/mediatek,power-controller.yaml:129:9: [warning] wrong indentation: expected 7 but found 8 (indentation)
+Patch 2 reworks support for PIN_CONFIG_{INPUT,OUTPUT}_ENABLE, following
+discussions on the bcm2835/bcm2711 pinctrl drivers [1]. The driver is
+made to follow the definitions of each option as described in the DT
+bindings and pinctrl core.
 
-dtschema/dtc warnings/errors:
-make[2]: *** Deleting file 'Documentation/devicetree/bindings/power/mediatek,power-controller.example.dts'
-Documentation/devicetree/bindings/power/mediatek,power-controller.yaml:128:6: did not find expected key
-make[2]: *** [Documentation/devicetree/bindings/Makefile:26: Documentation/devicetree/bindings/power/mediatek,power-controller.example.dts] Error 1
-make[2]: *** Waiting for unfinished jobs....
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml:
-while parsing a block mapping
-  in "<unicode string>", line 64, column 5
-did not find expected key
-  in "<unicode string>", line 128, column 6
-./Documentation/devicetree/bindings/power/mediatek,power-controller.yaml:128:6: did not find expected key
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml: ignoring, error parsing file
-make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1430: dt_binding_check] Error 2
-make: *** [Makefile:240: __sub-make] Error 2
+Please have a look and merge if possible.
 
-doc reference errors (make refcheckdocs):
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240327055732.28198-3-yu-chang.lee@mediatek.com
+Thanks
+ChenYu
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
+[1] https://lore.kernel.org/linux-arm-kernel/CAGb2v66XpjvDnTpi2=SPbeAPf844FLCai6YFwvVqvmF9z4Mj=A@mail.gmail.com/
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+Chen-Yu Tsai (2):
+  pinctrl: mediatek: paris: Fix PIN_CONFIG_INPUT_SCHMITT_ENABLE readback
+  pinctrl: mediatek: paris: Rework support for
+    PIN_CONFIG_{INPUT,OUTPUT}_ENABLE
 
-pip3 install dtschema --upgrade
+ drivers/pinctrl/mediatek/pinctrl-paris.c | 40 ++++++++----------------
+ 1 file changed, 13 insertions(+), 27 deletions(-)
 
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+-- 
+2.44.0.396.g6e790dbe36-goog
 
 
