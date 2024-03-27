@@ -4,67 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A042C47DD9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Mar 2024 12:50:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38B5CC54E67
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Mar 2024 15:53:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NUw1SKgmWw5ORSAiR/36Yj9L3Y1k8+bSXT3+XT5yssw=; b=lq03TG3N+6G9Nbd5429EaQhG+9
-	kmKSi9KTqiHt7hnfzINO+eMnnBqB0jdlirpBOK9z89486MfDa1XZ/fx6D/xfN0BaW8wW4wzzThEyW
-	S9CpZ4mAzH5mbEDY0XalWRVXhCLQjAqMDlavNaKN9bK1g59j/KcAvRFRUgZ9bMIZT8/0fe3uf60e6
-	S7RHDpimZ5sTNCcBnM3l2tXgfrIgsJfZQmM7uco+aSKO0M8Plr75/a4NdaVh1BMz3sHtjuQbQ0lis
-	7QmOQ67mFTBBw/4AOqrT3mSU3AkoW+sgB+FUsZtLRJ+OFHD8tXkSu0C8MIR/hNyqO9yN0rnyiKbPW
-	jbKKe/+Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=v8Zo+lpGmEYMzAiuqKIM8OssQvdryZbCI6NC3RlvDLc=; b=pl5898nd2GBS7ECwdq5P0MWdDH
+	eDwPCLYC9AxdMW37VqSunvqNkvSfcqOvxe+IQ9d847D/U/FPtaLYsPY/Ir1HS1xiJltN62rCMzvae
+	F+l0ri5qT65Tih17Dh1MjYpdiOALEFuWgitB7nLJ1zCmZQCeSx13t7pZJ3HHMkuYTjEiXfRt1GLHt
+	LP2PmQTRIFkT8gml80JXPf3J+IHAcq7NO1nzQsWkAigKCxEJ9oNuA5S1ULtTQSUMB7jhs1gjKIwwE
+	rFJUuNFvbELtPg15PHbWWDiE56wC5mtqMiAv5O+GSGP/c6Yqwxs/Ira/kE/f/tQWVkbUrwx+GeyzO
+	3hncqjcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpSjI-000000090GB-0P8L;
-	Wed, 27 Mar 2024 12:50:08 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rpVab-00000009vlR-2Ild;
+	Wed, 27 Mar 2024 15:53:21 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpSjE-000000090CS-1Me7;
-	Wed, 27 Mar 2024 12:50:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1711543799;
-	bh=ABclRLb/R2quz1tOh/euCSegn/zdsYmPz6ReeOO+m9s=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BiKre3OppgksMn0qvlTpqn8PN0VPd9qAcm+ZlikA9ppXxvpgRiGG2jIaEq3ZXdZyJ
-	 LchSpMT/XOSWQj/OuZb07xVg0mdSi1CpU4HIXgbPIpUMG7ZjJG7vXlWEVwBvhQcR/k
-	 pPZ7g04SXUECZgRkNqMRRKkJ3bcWuQ+bMomk6kgyVcfJFBsJg0fmm9tbqrmSnrb5Pw
-	 zWlVrLfq+IikZG1mwpDiVAP0tWrihYvHlk4My5pvGEYHbI3xDvk+Hnls9VfdEiz2Bd
-	 /ZiLlRTNWNKhxlIKhOjnwZKRyPzcpCLm07y0MEklL605qdgVw+IMGDhZPyNEIPE/+W
-	 FA/Crc/1Czv4g==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B2BF237811CD;
-	Wed, 27 Mar 2024 12:49:58 +0000 (UTC)
-Message-ID: <9ef4e974-740e-4698-bb38-f236521a425c@collabora.com>
-Date: Wed, 27 Mar 2024 13:49:58 +0100
+	id 1rpVaY-00000009vGd-0gJT;
+	Wed, 27 Mar 2024 15:53:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=v8Zo+lpGmEYMzAiuqKIM8OssQvdryZbCI6NC3RlvDLc=; b=pIenkUfc6gIEUz1zTSvCVoy95W
+	tG+Pc5hVuecUgQGIPOcmluq+nOW/noQ3qiVIO3xP+tcxUES0f47sFzfHK5vlPsJP3B2vcHG+tzUYH
+	/4Hc33aOH8Ff+mRWIm1nyCysVWjLjEDBVTgtFdVB/qPPBLugAVfKXTtp0xI7VH581NXCqHnP7Wtlo
+	MV9S2txg5yF539UdMvjJRv0Jbj5x3RJxLtE/xB0ohtFR+Z4tqQaARb2gnyCAl2YPgi1qKRF/tYR1i
+	09DfcdIzM2VaySFd+Z6bSiU9lwqZlOWswkcn39wQC5MrM9BzTfHUMbQywbIsCNrhZEgGQOeQ4PLtl
+	LSJUDBpA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:53940)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1rpVXq-0007DS-20;
+	Wed, 27 Mar 2024 15:50:30 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1rpVXk-000100-VR; Wed, 27 Mar 2024 15:50:25 +0000
+Date: Wed, 27 Mar 2024 15:50:24 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: Paolo Abeni <pabeni@redhat.com>, Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
+	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net v2 2/2] net: dsa: mt7530: fix disabling EEE on
+ failure on MT7531 and MT7988
+Message-ID: <ZgRAQFfKWR1skCMo@shell.armlinux.org.uk>
+References: <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-0-9af9d5041bfe@arinc9.com>
+ <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-2-9af9d5041bfe@arinc9.com>
+ <799572b672ea8b4756236b14068aef7c8fa726a6.camel@redhat.com>
+ <d65f4c45-e616-4157-a769-c285cbad575c@arinc9.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] remoteproc: mediatek: Don't parse extraneous subnodes
- for multi-core
-To: Mathieu Poirier <mathieu.poirier@linaro.org>
-Cc: andersson@kernel.org, matthias.bgg@gmail.com, tzungbi@kernel.org,
- tinghan.shen@mediatek.com, linux-remoteproc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, wenst@chromium.org, kernel@collabora.com
-References: <20240321084614.45253-1-angelogioacchino.delregno@collabora.com>
- <20240321084614.45253-3-angelogioacchino.delregno@collabora.com>
- <ZfxRyMyUqyqtXy8n@p14s>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <ZfxRyMyUqyqtXy8n@p14s>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <d65f4c45-e616-4157-a769-c285cbad575c@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240327_055004_590822_167AFA6C 
-X-CRM114-Status: GOOD (  19.16  )
+X-CRM114-CacheID: sfid-20240327_085318_230657_800A2A06 
+X-CRM114-Status: GOOD (  31.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,72 +97,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/03/24 16:27, Mathieu Poirier ha scritto:
-> On Thu, Mar 21, 2024 at 09:46:14AM +0100, AngeloGioacchino Del Regno wrote:
->> When probing multi-core SCP, this driver is parsing all sub-nodes of
->> the scp-cluster node, but one of those could be not an actual SCP core
->> and that would make the entire SCP cluster to fail probing for no good
->> reason.
->>
->> To fix that, in scp_add_multi_core() treat a subnode as a SCP Core by
->> parsing only available subnodes having compatible "mediatek,scp-core".
->>
->> Fixes: 1fdbf0cdde98 ("remoteproc: mediatek: Probe SCP cluster on multi-core SCP")
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/remoteproc/mtk_scp.c | 3 +++
->>   1 file changed, 3 insertions(+)
->>
->> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
->> index 67518291a8ad..fbe1c232dae7 100644
->> --- a/drivers/remoteproc/mtk_scp.c
->> +++ b/drivers/remoteproc/mtk_scp.c
->> @@ -1096,6 +1096,9 @@ static int scp_add_multi_core(struct platform_device *pdev,
->>   	cluster_of_data = (const struct mtk_scp_of_data **)of_device_get_match_data(dev);
->>   
->>   	for_each_available_child_of_node(np, child) {
->> +		if (!of_device_is_compatible(child, "mediatek,scp-core"))
->> +			continue;
->> +
+On Tue, Mar 26, 2024 at 12:19:40PM +0300, Arınç ÜNAL wrote:
+> On 26.03.2024 12:02, Paolo Abeni wrote:
+> > On Thu, 2024-03-21 at 19:29 +0300, Arınç ÜNAL via B4 Relay wrote:
+> > > From: Arınç ÜNAL <arinc.unal@arinc9.com>
+> > > 
+> > > The MT7531_FORCE_EEE1G and MT7531_FORCE_EEE100 bits let the
+> > > PMCR_FORCE_EEE1G and PMCR_FORCE_EEE100 bits determine the 1G/100 EEE
+> > > abilities of the MAC. If MT7531_FORCE_EEE1G and MT7531_FORCE_EEE100 are
+> > > unset, the abilities are left to be determined by PHY auto polling.
+> > > 
+> > > The commit 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
+> > > made it so that the PMCR_FORCE_EEE1G and PMCR_FORCE_EEE100 bits are set on
+> > > mt753x_phylink_mac_link_up(). But it did not set the MT7531_FORCE_EEE1G and
+> > > MT7531_FORCE_EEE100 bits. Because of this, EEE will be enabled on the
+> > > switch MACs by polling the PHY, regardless of the result of phy_init_eee().
+> > > 
+> > > Define these bits and add them to MT7531_FORCE_MODE which is being used by
+> > > the subdriver. With this, EEE will be prevented from being enabled on the
+> > > switch MACs when phy_init_eee() fails.
+> > > 
+> > > Fixes: 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
+> > > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> > 
+> > If I read the past discussion correctly, this is a potential issue
+> > found by code inspection and never producing problem in practice, am I
+> > correct?
+> > 
+> > If so I think it will deserve a 3rd party tested-by tag or similar to
+> > go in.
+> > 
+> > If nobody could provide such feedback in a little time, I suggest to
+> > drop this patch and apply only 1/2.
 > 
-> Interesting - what else gets stashed under the remote processor node?  I don't
-> see anything specified in the bindings.
-> 
+> Whether a problem would happen in practice depends on when phy_init_eee()
+> fails, meaning it returns a negative non-zero code. I requested Russell to
+> review this patch to shed light on when phy_init_eee() would return a
+> negative non-zero code so we have an idea whether this patch actually fixes
+> a problem.
 
-Sorry for the late reply - well, in this precise moment in time, upstream,
-nothing yet.
+Urgh, so I need to read the code and report back?
 
-I have noticed this while debugging some lockups and wanted to move the scp_adsp
-clock controller node as child of the SCP node (as some of those clocks are located
-*into the SCP's CFG register space*, and it's correct for that to be a child as one
-of those do depend on the SCP being up - and I'll spare you the rest) and noticed
-the unexpected behavior, as the SCP driver was treating those as an SCP core.
+Well, looking at phy_init_eee(), it could return a negative vallue when:
 
-There was no kernel panic, but the SCP would fail probing.
+1. phydev->drv is NULL
+2. if genphy_c45_eee_is_active() returns negative
+3. if genphy_c45_eee_is_active() returns zero, it returns
+   -EPROTONOSUPPORT
+4. if phy_set_bits_mmd() fails (e.g. communication error with the PHY)
 
-This is anyway a missed requirement ... for platforms that want *both* two SCP
-cores *and* the AudioDSP, as that'd at least be two nodes with the same iostart
-(scp@1072000, clock-controller@1072000), other than the reasons I explained some
-lines back.
+If we then look at genphy_c45_eee_is_active(), then:
 
-...and that's why this commit was sent :-)
+genphy_c45_read_eee_adv() and genphy_c45_read_eee_lpa() propagate their
+non-zero return values, otherwise this function returns zero or positive
+integer.
 
-P.S.: The reason why platforms don't crash without the scp_adsp clock controller
-       as a child of SCP is that the bootloader is actually doing basic init for
-       the SCP, hence the block is powered on when booting ;-)
+If we then look at genphy_c45_read_eee_adv(), then a failure of
+phy_read_mmd() would cause a negative value to be returned.
 
-Cheers,
-Angelo
+Looking at genphy_c45_read_eee_lpa(), the same is true.
 
-> Thanks,
-> Mathieu
-> 
->>   		if (!cluster_of_data[core_id]) {
->>   			ret = -EINVAL;
->>   			dev_err(dev, "Not support core %d\n", core_id);
->> -- 
->> 2.44.0
->>
+So, it can be summarised as:
 
+- phydev->drv is NULL
+- there is a communication error accessing the PHY
+- EEE is not active
 
+otherwise, it returns zero on success.
+
+If one wishes to determine whether an error occurred vs EEE not being
+supported through negotiation for the negotiated speed, if it returns
+-EPROTONOSUPPORT in the latter case. Other error codes mean either the
+driver has been unloaded or communication error.
+
+This has been expertly determined by reading the code, which only a
+phylib maintainer has the capability of doing. Thank you for using this
+service.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
