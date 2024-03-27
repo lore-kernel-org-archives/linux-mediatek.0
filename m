@@ -4,39 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25223CD1284
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Mar 2024 16:04:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3050CD1280
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Mar 2024 16:04:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=haxatjJf3ExzQxyLxhyBSdBbLt149x1NFm9OJuTg9mI=; b=VsJw3eVxsKqsEPhtecROZNUs41
-	vSUbjde+WSpf5ij8FEhv+/xCz/qn/hPei9u+F04g+00YMuW2xAJAVQG/Zapek3EzMOP0FGlO6tCiz
-	zK8eE5i0Rf0WTBB2LmiraQsFAKaO2VA7Vln3XxrwntgYnZNZf64eSSBIcsnaeNBnpdogpc5WNkkDH
-	XhgRCvdQ1NMbRKUmJHR/VFzQbkLUsmXvQ5Cj6GwItvKysDjMcRqIeMPT+5xN1rDPhSw2YAKNDSJq0
-	qeBZFvKjImNfHO3KjgdFIwUYaDLTHRJM8jfpjVr7JMYAK8/2j8QZ88KBwToli6OHAqYH8TQwmDgaW
-	E34I+gUg==;
+	bh=xDUe8JlaEBVj4Yzwll8byF63bglXBJEnvRcRQGJLWTE=; b=SQ5gIjSzjIyBPjXTIwvsG/frjc
+	qSnx5+5x+MlF/ORVOpFpcXOMl8QPbDmgtSQrmbGHqi3d+N9259KEbTp6Rknx3/iPSNnrUy2U6kg6u
+	8MoGjnQZY+a5UkcauwkXrSBW0LMMpJEFUYo6bXpuY5FGVO9KX3vBkpu+IEce/95CnsAB+fP3IacTd
+	wYoUvd7OhdOMqhp0VLhYZO2MdZBsfeZ54AVn/Y59RRGVMeaBZB/DzZGJtVXrVfCc/HdFx4+7mAczr
+	pcKqPzHONQ1jLW3us++SIW9mlob+G+MVuRKU7NMdZN87TBcgnezSY+7Haqrj6x7W3ZDTjz53DfTxt
+	+gvVCKpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpVlB-00000009yLZ-1uD9;
-	Wed, 27 Mar 2024 16:04:17 +0000
+	id 1rpVlL-00000009ySK-14ct;
+	Wed, 27 Mar 2024 16:04:27 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rpVka-00000009y2w-2pIC;
+	Wed, 27 Mar 2024 16:03:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=References:In-Reply-To:Message-Id:Date
+	:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=xDUe8JlaEBVj4Yzwll8byF63bglXBJEnvRcRQGJLWTE=; b=mTqGzm4/jHiXG6NLOZ466mAgva
+	/aPOVAf1dZvpZJQI9tItYTuYgWwfrnn1wAKVmbXXnNBapOLCgjtlxvqrQEygUZYJJ1vQnNoHcs5nC
+	JXuXcglB8O8PpT97orUdp3VbuYJtKXRniPnvU/o2d+x6C0i5s7BiiDY7fj9P13v9XsGg4I8ZG+3bM
+	qQSYYC3SSDOIZcjqchB0UJPVdqHrl7u9IDExRTI71rGN5/mz7ASuP4CC49Dr7qSVv9o1oTEESiptY
+	y9RSxPUBThXgfHls3/05WCBO7XOyw9uolp+gyon7iu/3mkzhorxUkhaGeVoiwcVxjtbZrsCpMR4zN
+	yCGstv7Q==;
 Received: from linux.microsoft.com ([13.77.154.182])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpVkL-00000009xtG-0yNN;
-	Wed, 27 Mar 2024 16:03:36 +0000
+	by desiato.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rpVkU-00000000MNY-0PdP;
+	Wed, 27 Mar 2024 16:03:39 +0000
 Received: from apais-vm1.0synte4vioeebbvidf5q0vz2ua.xx.internal.cloudapp.net (unknown [52.183.86.224])
-	by linux.microsoft.com (Postfix) with ESMTPSA id 85F7C2085D12;
-	Wed, 27 Mar 2024 09:03:21 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 85F7C2085D12
+	by linux.microsoft.com (Postfix) with ESMTPSA id 8565E208B35B;
+	Wed, 27 Mar 2024 09:03:22 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 8565E208B35B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
-	s=default; t=1711555401;
-	bh=haxatjJf3ExzQxyLxhyBSdBbLt149x1NFm9OJuTg9mI=;
+	s=default; t=1711555402;
+	bh=xDUe8JlaEBVj4Yzwll8byF63bglXBJEnvRcRQGJLWTE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LF4c8+u7hxH1gtkMde2nUFLeOY7qhsSOLX3MYrPKOxgU6onwRJa3Beop1iYM8rhwY
-	 JKJWabOHr3bDubopTkSrfOda6dk06SLxefXbd0NX6Vz+Vhi9K8wsJz84JBq49IJQPt
-	 zQ1biSALtkbOTUh7I9PCcfln+/IY04Wu2+8SHeT0=
+	b=MKEaFD6Xv82Gw9sMT96PBAyIARthem/fPFjtUXCH9Bh6MpRTyar8zRltfczYe1PZe
+	 VTY5r98qsmuY+/wnt0GjZEfcAnAnSEWwJuTtABrb35ea31MAObZkmF+PUe5rWKbjxC
+	 YjtDjIM1LUp8wcPrrsf3fORclJq7ULhlFYkaxkyE=
 From: Allen Pais <apais@linux.microsoft.com>
 To: linux-kernel@vger.kernel.org
 Cc: tj@kernel.org,
@@ -120,15 +134,15 @@ Cc: tj@kernel.org,
 	linux-s390@vger.kernel.org,
 	netdev@vger.kernel.org,
 	linux-usb@vger.kernel.org
-Subject: [PATCH 3/9] IB: Convert from tasklet to BH workqueue
-Date: Wed, 27 Mar 2024 16:03:08 +0000
-Message-Id: <20240327160314.9982-4-apais@linux.microsoft.com>
+Subject: [PATCH 8/9] drivers/media/*: Convert from tasklet to BH workqueue
+Date: Wed, 27 Mar 2024 16:03:13 +0000
+Message-Id: <20240327160314.9982-9-apais@linux.microsoft.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20240327160314.9982-1-apais@linux.microsoft.com>
 References: <20240327160314.9982-1-apais@linux.microsoft.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240327_090325_880716_591E255B 
-X-CRM114-Status: GOOD (  19.51  )
+X-CRM114-CacheID: sfid-20240327_160334_904989_CB35BD3E 
+X-CRM114-Status: GOOD (  17.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,916 +163,1297 @@ replace tasklets, BH workqueue support was recently added. A BH workqueue
 behaves similarly to regular workqueues except that the queued work items
 are executed in the BH context.
 
-This patch converts drivers/infiniband/* from tasklet to BH workqueue.
+This patch converts drivers/media/* from tasklet to BH workqueue.
 
 Based on the work done by Tejun Heo <tj@kernel.org>
 Branch: https://git.kernel.org/pub/scm/linux/kernel/git/tj/wq.git for-6.10
 
 Signed-off-by: Allen Pais <allen.lkml@gmail.com>
 ---
- drivers/infiniband/hw/bnxt_re/bnxt_re.h    |  3 +-
- drivers/infiniband/hw/bnxt_re/qplib_fp.c   | 21 ++++++------
- drivers/infiniband/hw/bnxt_re/qplib_fp.h   |  2 +-
- drivers/infiniband/hw/bnxt_re/qplib_rcfw.c | 25 ++++++++-------
- drivers/infiniband/hw/bnxt_re/qplib_rcfw.h |  2 +-
- drivers/infiniband/hw/erdma/erdma.h        |  3 +-
- drivers/infiniband/hw/erdma/erdma_eq.c     | 11 ++++---
- drivers/infiniband/hw/hfi1/rc.c            |  2 +-
- drivers/infiniband/hw/hfi1/sdma.c          | 37 +++++++++++-----------
- drivers/infiniband/hw/hfi1/sdma.h          |  9 +++---
- drivers/infiniband/hw/hfi1/tid_rdma.c      |  6 ++--
- drivers/infiniband/hw/irdma/ctrl.c         |  2 +-
- drivers/infiniband/hw/irdma/hw.c           | 24 +++++++-------
- drivers/infiniband/hw/irdma/main.h         |  5 +--
- drivers/infiniband/hw/qib/qib.h            |  7 ++--
- drivers/infiniband/hw/qib/qib_iba7322.c    |  9 +++---
- drivers/infiniband/hw/qib/qib_rc.c         | 16 +++++-----
- drivers/infiniband/hw/qib/qib_ruc.c        |  4 +--
- drivers/infiniband/hw/qib/qib_sdma.c       | 11 ++++---
- drivers/infiniband/sw/rdmavt/qp.c          |  2 +-
- 20 files changed, 106 insertions(+), 95 deletions(-)
+ drivers/media/pci/bt8xx/bt878.c               |  8 ++--
+ drivers/media/pci/bt8xx/bt878.h               |  3 +-
+ drivers/media/pci/bt8xx/dvb-bt8xx.c           |  9 ++--
+ drivers/media/pci/ddbridge/ddbridge.h         |  3 +-
+ drivers/media/pci/mantis/hopper_cards.c       |  2 +-
+ drivers/media/pci/mantis/mantis_cards.c       |  2 +-
+ drivers/media/pci/mantis/mantis_common.h      |  3 +-
+ drivers/media/pci/mantis/mantis_dma.c         |  5 ++-
+ drivers/media/pci/mantis/mantis_dma.h         |  2 +-
+ drivers/media/pci/mantis/mantis_dvb.c         | 12 +++---
+ drivers/media/pci/ngene/ngene-core.c          | 23 ++++++-----
+ drivers/media/pci/ngene/ngene.h               |  5 ++-
+ drivers/media/pci/smipcie/smipcie-main.c      | 18 ++++----
+ drivers/media/pci/smipcie/smipcie.h           |  3 +-
+ drivers/media/pci/ttpci/budget-av.c           |  3 +-
+ drivers/media/pci/ttpci/budget-ci.c           | 27 ++++++------
+ drivers/media/pci/ttpci/budget-core.c         | 10 ++---
+ drivers/media/pci/ttpci/budget.h              |  5 ++-
+ drivers/media/pci/tw5864/tw5864-core.c        |  2 +-
+ drivers/media/pci/tw5864/tw5864-video.c       | 13 +++---
+ drivers/media/pci/tw5864/tw5864.h             |  7 ++--
+ drivers/media/platform/intel/pxa_camera.c     | 15 +++----
+ drivers/media/platform/marvell/mcam-core.c    | 11 ++---
+ drivers/media/platform/marvell/mcam-core.h    |  3 +-
+ .../st/sti/c8sectpfe/c8sectpfe-core.c         | 15 +++----
+ .../st/sti/c8sectpfe/c8sectpfe-core.h         |  2 +-
+ drivers/media/radio/wl128x/fmdrv.h            |  7 ++--
+ drivers/media/radio/wl128x/fmdrv_common.c     | 41 ++++++++++---------
+ drivers/media/rc/mceusb.c                     |  2 +-
+ drivers/media/usb/ttusb-dec/ttusb_dec.c       | 21 +++++-----
+ 30 files changed, 151 insertions(+), 131 deletions(-)
 
-diff --git a/drivers/infiniband/hw/bnxt_re/bnxt_re.h b/drivers/infiniband/hw/bnxt_re/bnxt_re.h
-index 9dca451ed522..f511c8415806 100644
---- a/drivers/infiniband/hw/bnxt_re/bnxt_re.h
-+++ b/drivers/infiniband/hw/bnxt_re/bnxt_re.h
-@@ -42,6 +42,7 @@
- #include <rdma/uverbs_ioctl.h>
- #include "hw_counters.h"
- #include <linux/hashtable.h>
-+#include <linux/workqueue.h>
- #define ROCE_DRV_MODULE_NAME		"bnxt_re"
+diff --git a/drivers/media/pci/bt8xx/bt878.c b/drivers/media/pci/bt8xx/bt878.c
+index 90972d6952f1..983ec29108f0 100644
+--- a/drivers/media/pci/bt8xx/bt878.c
++++ b/drivers/media/pci/bt8xx/bt878.c
+@@ -300,8 +300,8 @@ static irqreturn_t bt878_irq(int irq, void *dev_id)
+ 		}
+ 		if (astat & BT878_ARISCI) {
+ 			bt->finished_block = (stat & BT878_ARISCS) >> 28;
+-			if (bt->tasklet.callback)
+-				tasklet_schedule(&bt->tasklet);
++			if (bt->work.func)
++				queue_work(system_bh_wq,
+ 			break;
+ 		}
+ 		count++;
+@@ -478,8 +478,8 @@ static int bt878_probe(struct pci_dev *dev, const struct pci_device_id *pci_id)
+ 	btwrite(0, BT878_AINT_MASK);
+ 	bt878_num++;
  
- #define BNXT_RE_DESC	"Broadcom NetXtreme-C/E RoCE Driver"
-@@ -162,7 +163,7 @@ struct bnxt_re_dev {
- 	u8				cur_prio_map;
+-	if (!bt->tasklet.func)
+-		tasklet_disable(&bt->tasklet);
++	if (!bt->work.func)
++		disable_work_sync(&bt->work);
  
- 	/* FP Notification Queue (CQ & SRQ) */
--	struct tasklet_struct		nq_task;
-+	struct work_struct 		nq_work;
+ 	return 0;
  
- 	/* RCFW Channel */
- 	struct bnxt_qplib_rcfw		rcfw;
-diff --git a/drivers/infiniband/hw/bnxt_re/qplib_fp.c b/drivers/infiniband/hw/bnxt_re/qplib_fp.c
-index 439d0c7c5d0c..052906982cdf 100644
---- a/drivers/infiniband/hw/bnxt_re/qplib_fp.c
-+++ b/drivers/infiniband/hw/bnxt_re/qplib_fp.c
-@@ -46,6 +46,7 @@
- #include <linux/delay.h>
- #include <linux/prefetch.h>
- #include <linux/if_ether.h>
-+#include <linux/workqueue.h>
- #include <rdma/ib_mad.h>
- 
- #include "roce_hsi.h"
-@@ -294,9 +295,9 @@ static void __wait_for_all_nqes(struct bnxt_qplib_cq *cq, u16 cnq_events)
- 	}
- }
- 
--static void bnxt_qplib_service_nq(struct tasklet_struct *t)
-+static void bnxt_qplib_service_nq(struct work_struct *t)
- {
--	struct bnxt_qplib_nq *nq = from_tasklet(nq, t, nq_tasklet);
-+	struct bnxt_qplib_nq *nq = from_work(nq, t, nq_work);
- 	struct bnxt_qplib_hwq *hwq = &nq->hwq;
- 	struct bnxt_qplib_cq *cq;
- 	int budget = nq->budget;
-@@ -394,7 +395,7 @@ void bnxt_re_synchronize_nq(struct bnxt_qplib_nq *nq)
- 	int budget = nq->budget;
- 
- 	nq->budget = nq->hwq.max_elements;
--	bnxt_qplib_service_nq(&nq->nq_tasklet);
-+	bnxt_qplib_service_nq(&nq->nq_work);
- 	nq->budget = budget;
- }
- 
-@@ -409,7 +410,7 @@ static irqreturn_t bnxt_qplib_nq_irq(int irq, void *dev_instance)
- 	prefetch(bnxt_qplib_get_qe(hwq, sw_cons, NULL));
- 
- 	/* Fan out to CPU affinitized kthreads? */
--	tasklet_schedule(&nq->nq_tasklet);
-+	queue_work(system_bh_wq, &nq->nq_work);
- 
- 	return IRQ_HANDLED;
- }
-@@ -430,8 +431,8 @@ void bnxt_qplib_nq_stop_irq(struct bnxt_qplib_nq *nq, bool kill)
- 	nq->name = NULL;
- 
- 	if (kill)
--		tasklet_kill(&nq->nq_tasklet);
--	tasklet_disable(&nq->nq_tasklet);
-+		cancel_work_sync(&nq->nq_work);
-+	disable_work_sync(&nq->nq_work);
- }
- 
- void bnxt_qplib_disable_nq(struct bnxt_qplib_nq *nq)
-@@ -465,9 +466,9 @@ int bnxt_qplib_nq_start_irq(struct bnxt_qplib_nq *nq, int nq_indx,
- 
- 	nq->msix_vec = msix_vector;
- 	if (need_init)
--		tasklet_setup(&nq->nq_tasklet, bnxt_qplib_service_nq);
-+		INIT_WORK(&nq->nq_work, bnxt_qplib_service_nq);
- 	else
--		tasklet_enable(&nq->nq_tasklet);
-+		enable_and_queue_work(system_bh_wq, &nq->nq_work);
- 
- 	nq->name = kasprintf(GFP_KERNEL, "bnxt_re-nq-%d@pci:%s",
- 			     nq_indx, pci_name(res->pdev));
-@@ -477,7 +478,7 @@ int bnxt_qplib_nq_start_irq(struct bnxt_qplib_nq *nq, int nq_indx,
- 	if (rc) {
- 		kfree(nq->name);
- 		nq->name = NULL;
--		tasklet_disable(&nq->nq_tasklet);
-+		disable_work_sync(&nq->nq_work);
- 		return rc;
- 	}
- 
-@@ -541,7 +542,7 @@ int bnxt_qplib_enable_nq(struct pci_dev *pdev, struct bnxt_qplib_nq *nq,
- 	nq->cqn_handler = cqn_handler;
- 	nq->srqn_handler = srqn_handler;
- 
--	/* Have a task to schedule CQ notifiers in post send case */
-+	/* Have a work to schedule CQ notifiers in post send case */
- 	nq->cqn_wq  = create_singlethread_workqueue("bnxt_qplib_nq");
- 	if (!nq->cqn_wq)
- 		return -ENOMEM;
-diff --git a/drivers/infiniband/hw/bnxt_re/qplib_fp.h b/drivers/infiniband/hw/bnxt_re/qplib_fp.h
-index 7fd4506b3584..6ee3e501d136 100644
---- a/drivers/infiniband/hw/bnxt_re/qplib_fp.h
-+++ b/drivers/infiniband/hw/bnxt_re/qplib_fp.h
-@@ -494,7 +494,7 @@ struct bnxt_qplib_nq {
- 	u16				ring_id;
- 	int				msix_vec;
- 	cpumask_t			mask;
--	struct tasklet_struct		nq_tasklet;
-+	struct work_struct 		nq_work;
- 	bool				requested;
- 	int				budget;
- 
-diff --git a/drivers/infiniband/hw/bnxt_re/qplib_rcfw.c b/drivers/infiniband/hw/bnxt_re/qplib_rcfw.c
-index 3ffaef0c2651..2fba712d88db 100644
---- a/drivers/infiniband/hw/bnxt_re/qplib_rcfw.c
-+++ b/drivers/infiniband/hw/bnxt_re/qplib_rcfw.c
-@@ -43,6 +43,7 @@
- #include <linux/pci.h>
- #include <linux/prefetch.h>
- #include <linux/delay.h>
+diff --git a/drivers/media/pci/bt8xx/bt878.h b/drivers/media/pci/bt8xx/bt878.h
+index fde8db293c54..b9ce78e5116b 100644
+--- a/drivers/media/pci/bt8xx/bt878.h
++++ b/drivers/media/pci/bt8xx/bt878.h
+@@ -14,6 +14,7 @@
+ #include <linux/sched.h>
+ #include <linux/spinlock.h>
+ #include <linux/mutex.h>
 +#include <linux/workqueue.h>
  
- #include "roce_hsi.h"
- #include "qplib_res.h"
-@@ -51,7 +52,7 @@
- #include "qplib_fp.h"
- #include "qplib_tlv.h"
+ #include "bt848.h"
+ #include "bttv.h"
+@@ -120,7 +121,7 @@ struct bt878 {
+ 	dma_addr_t risc_dma;
+ 	u32 risc_pos;
  
--static void bnxt_qplib_service_creq(struct tasklet_struct *t);
-+static void bnxt_qplib_service_creq(struct work_struct *t);
- 
- /**
-  * bnxt_qplib_map_rc  -  map return type based on opcode
-@@ -165,7 +166,7 @@ static int __wait_for_resp(struct bnxt_qplib_rcfw *rcfw, u16 cookie)
- 		if (!crsqe->is_in_used)
- 			return 0;
- 
--		bnxt_qplib_service_creq(&rcfw->creq.creq_tasklet);
-+		bnxt_qplib_service_creq(&rcfw->creq.creq_work);
- 
- 		if (!crsqe->is_in_used)
- 			return 0;
-@@ -206,7 +207,7 @@ static int __block_for_resp(struct bnxt_qplib_rcfw *rcfw, u16 cookie)
- 
- 		udelay(1);
- 
--		bnxt_qplib_service_creq(&rcfw->creq.creq_tasklet);
-+		bnxt_qplib_service_creq(&rcfw->creq.creq_work);
- 		if (!crsqe->is_in_used)
- 			return 0;
- 
-@@ -403,7 +404,7 @@ static int __poll_for_resp(struct bnxt_qplib_rcfw *rcfw, u16 cookie)
- 
- 		usleep_range(1000, 1001);
- 
--		bnxt_qplib_service_creq(&rcfw->creq.creq_tasklet);
-+		bnxt_qplib_service_creq(&rcfw->creq.creq_work);
- 		if (!crsqe->is_in_used)
- 			return 0;
- 		if (jiffies_to_msecs(jiffies - issue_time) >
-@@ -727,9 +728,9 @@ static int bnxt_qplib_process_qp_event(struct bnxt_qplib_rcfw *rcfw,
- }
- 
- /* SP - CREQ Completion handlers */
--static void bnxt_qplib_service_creq(struct tasklet_struct *t)
-+static void bnxt_qplib_service_creq(struct work_struct *t)
- {
--	struct bnxt_qplib_rcfw *rcfw = from_tasklet(rcfw, t, creq.creq_tasklet);
-+	struct bnxt_qplib_rcfw *rcfw = from_work(rcfw, t, creq.creq_work);
- 	struct bnxt_qplib_creq_ctx *creq = &rcfw->creq;
- 	u32 type, budget = CREQ_ENTRY_POLL_BUDGET;
- 	struct bnxt_qplib_hwq *hwq = &creq->hwq;
-@@ -800,7 +801,7 @@ static irqreturn_t bnxt_qplib_creq_irq(int irq, void *dev_instance)
- 	sw_cons = HWQ_CMP(hwq->cons, hwq);
- 	prefetch(bnxt_qplib_get_qe(hwq, sw_cons, NULL));
- 
--	tasklet_schedule(&creq->creq_tasklet);
-+	queue_work(system_bh_wq, &creq->creq_work);
- 
- 	return IRQ_HANDLED;
- }
-@@ -1007,8 +1008,8 @@ void bnxt_qplib_rcfw_stop_irq(struct bnxt_qplib_rcfw *rcfw, bool kill)
- 	creq->irq_name = NULL;
- 	atomic_set(&rcfw->rcfw_intr_enabled, 0);
- 	if (kill)
--		tasklet_kill(&creq->creq_tasklet);
--	tasklet_disable(&creq->creq_tasklet);
-+		cancel_work_sync(&creq->creq_work);
-+	disable_work_sync(&creq->creq_work);
- }
- 
- void bnxt_qplib_disable_rcfw_channel(struct bnxt_qplib_rcfw *rcfw)
-@@ -1045,9 +1046,9 @@ int bnxt_qplib_rcfw_start_irq(struct bnxt_qplib_rcfw *rcfw, int msix_vector,
- 
- 	creq->msix_vec = msix_vector;
- 	if (need_init)
--		tasklet_setup(&creq->creq_tasklet, bnxt_qplib_service_creq);
-+		INIT_WORK(&creq->creq_work, bnxt_qplib_service_creq);
- 	else
--		tasklet_enable(&creq->creq_tasklet);
-+		enable_and_queue_work(system_bh_wq, &creq->creq_work);
- 
- 	creq->irq_name = kasprintf(GFP_KERNEL, "bnxt_re-creq@pci:%s",
- 				   pci_name(res->pdev));
-@@ -1058,7 +1059,7 @@ int bnxt_qplib_rcfw_start_irq(struct bnxt_qplib_rcfw *rcfw, int msix_vector,
- 	if (rc) {
- 		kfree(creq->irq_name);
- 		creq->irq_name = NULL;
--		tasklet_disable(&creq->creq_tasklet);
-+		disable_work_sync(&creq->creq_work);
- 		return rc;
- 	}
- 	creq->requested = true;
-diff --git a/drivers/infiniband/hw/bnxt_re/qplib_rcfw.h b/drivers/infiniband/hw/bnxt_re/qplib_rcfw.h
-index 45996e60a0d0..8efa474fcf3f 100644
---- a/drivers/infiniband/hw/bnxt_re/qplib_rcfw.h
-+++ b/drivers/infiniband/hw/bnxt_re/qplib_rcfw.h
-@@ -207,7 +207,7 @@ struct bnxt_qplib_creq_ctx {
- 	struct bnxt_qplib_hwq		hwq;
- 	struct bnxt_qplib_creq_db	creq_db;
- 	struct bnxt_qplib_creq_stat	stats;
--	struct tasklet_struct		creq_tasklet;
-+	struct work_struct 		creq_work;
- 	aeq_handler_t			aeq_handler;
- 	u16				ring_id;
- 	int				msix_vec;
-diff --git a/drivers/infiniband/hw/erdma/erdma.h b/drivers/infiniband/hw/erdma/erdma.h
-index 5df401a30cb9..9a47c1432c27 100644
---- a/drivers/infiniband/hw/erdma/erdma.h
-+++ b/drivers/infiniband/hw/erdma/erdma.h
-@@ -11,6 +11,7 @@
- #include <linux/netdevice.h>
- #include <linux/pci.h>
- #include <linux/xarray.h>
-+#include <linux/workqueue.h>
- #include <rdma/ib_verbs.h>
- 
- #include "erdma_hw.h"
-@@ -161,7 +162,7 @@ struct erdma_eq_cb {
- 	void *dev; /* All EQs use this fields to get erdma_dev struct */
- 	struct erdma_irq irq;
- 	struct erdma_eq eq;
 -	struct tasklet_struct tasklet;
 +	struct work_struct work;
+ 	int shutdown;
  };
  
- struct erdma_resource_cb {
-diff --git a/drivers/infiniband/hw/erdma/erdma_eq.c b/drivers/infiniband/hw/erdma/erdma_eq.c
-index ea47cb21fdb8..252906fd73b0 100644
---- a/drivers/infiniband/hw/erdma/erdma_eq.c
-+++ b/drivers/infiniband/hw/erdma/erdma_eq.c
-@@ -160,14 +160,16 @@ static irqreturn_t erdma_intr_ceq_handler(int irq, void *data)
+diff --git a/drivers/media/pci/bt8xx/dvb-bt8xx.c b/drivers/media/pci/bt8xx/dvb-bt8xx.c
+index 390cbba6c065..8c0e1fa764a4 100644
+--- a/drivers/media/pci/bt8xx/dvb-bt8xx.c
++++ b/drivers/media/pci/bt8xx/dvb-bt8xx.c
+@@ -15,6 +15,7 @@
+ #include <linux/delay.h>
+ #include <linux/slab.h>
+ #include <linux/i2c.h>
++#include <linux/workqueue.h>
+ 
+ #include <media/dmxdev.h>
+ #include <media/dvbdev.h>
+@@ -39,9 +40,9 @@ DVB_DEFINE_MOD_OPT_ADAPTER_NR(adapter_nr);
+ 
+ #define IF_FREQUENCYx6 217    /* 6 * 36.16666666667MHz */
+ 
+-static void dvb_bt8xx_task(struct tasklet_struct *t)
++static void dvb_bt8xx_task(struct work_struct *t)
  {
- 	struct erdma_eq_cb *ceq_cb = data;
+-	struct bt878 *bt = from_tasklet(bt, t, tasklet);
++	struct bt878 *bt = from_work(bt, t, work);
+ 	struct dvb_bt8xx_card *card = dev_get_drvdata(&bt->adapter->dev);
  
--	tasklet_schedule(&ceq_cb->tasklet);
-+	queue_work(system_bh_wq, &ceq_cb->work);
+ 	dprintk("%d\n", card->bt->finished_block);
+@@ -782,7 +783,7 @@ static int dvb_bt8xx_load_card(struct dvb_bt8xx_card *card, u32 type)
+ 		goto err_disconnect_frontend;
+ 	}
  
- 	return IRQ_HANDLED;
- }
+-	tasklet_setup(&card->bt->tasklet, dvb_bt8xx_task);
++	INIT_WORK(&card->bt->work, dvb_bt8xx_task);
  
--static void erdma_intr_ceq_task(unsigned long data)
-+static void erdma_intr_ceq_task(struct work_struct *t)
- {
--	erdma_ceq_completion_handler((struct erdma_eq_cb *)data);
-+	struct erdma_eq_cb *ceq_cb = from_work(ceq_cb, t, work);
-+
-+	erdma_ceq_completion_handler(ceq_cb);
- }
+ 	frontend_init(card, type);
  
- static int erdma_set_ceq_irq(struct erdma_dev *dev, u16 ceqn)
-@@ -179,8 +181,7 @@ static int erdma_set_ceq_irq(struct erdma_dev *dev, u16 ceqn)
- 		 pci_name(dev->pdev));
- 	eqc->irq.msix_vector = pci_irq_vector(dev->pdev, ceqn + 1);
+@@ -922,7 +923,7 @@ static void dvb_bt8xx_remove(struct bttv_sub_device *sub)
+ 	dprintk("dvb_bt8xx: unloading card%d\n", card->bttv_nr);
  
--	tasklet_init(&dev->ceqs[ceqn].tasklet, erdma_intr_ceq_task,
--		     (unsigned long)&dev->ceqs[ceqn]);
-+	INIT_WORK(&dev->ceqs[ceqn].work, erdma_intr_ceq_task);
- 
- 	cpumask_set_cpu(cpumask_local_spread(ceqn + 1, dev->attrs.numa_node),
- 			&eqc->irq.affinity_hint_mask);
-diff --git a/drivers/infiniband/hw/hfi1/rc.c b/drivers/infiniband/hw/hfi1/rc.c
-index b36242c9d42c..ec19ddbfdacb 100644
---- a/drivers/infiniband/hw/hfi1/rc.c
-+++ b/drivers/infiniband/hw/hfi1/rc.c
-@@ -1210,7 +1210,7 @@ static inline void hfi1_queue_rc_ack(struct hfi1_packet *packet, bool is_fecn)
- 	if (is_fecn)
- 		qp->s_flags |= RVT_S_ECN;
- 
--	/* Schedule the send tasklet. */
-+	/* Schedule the send work. */
- 	hfi1_schedule_send(qp);
- unlock:
- 	spin_unlock_irqrestore(&qp->s_lock, flags);
-diff --git a/drivers/infiniband/hw/hfi1/sdma.c b/drivers/infiniband/hw/hfi1/sdma.c
-index b67d23b1f286..5e1a1dd45511 100644
---- a/drivers/infiniband/hw/hfi1/sdma.c
-+++ b/drivers/infiniband/hw/hfi1/sdma.c
-@@ -11,6 +11,7 @@
- #include <linux/timer.h>
+ 	bt878_stop(card->bt);
+-	tasklet_kill(&card->bt->tasklet);
++	cancel_work_sync(&card->bt->work);
+ 	dvb_net_release(&card->dvbnet);
+ 	card->demux.dmx.remove_frontend(&card->demux.dmx, &card->fe_mem);
+ 	card->demux.dmx.remove_frontend(&card->demux.dmx, &card->fe_hw);
+diff --git a/drivers/media/pci/ddbridge/ddbridge.h b/drivers/media/pci/ddbridge/ddbridge.h
+index f3699dbd193f..037d1d13ef0f 100644
+--- a/drivers/media/pci/ddbridge/ddbridge.h
++++ b/drivers/media/pci/ddbridge/ddbridge.h
+@@ -35,6 +35,7 @@
+ #include <linux/uaccess.h>
  #include <linux/vmalloc.h>
- #include <linux/highmem.h>
-+#include <linux/workqueue.h>
- 
- #include "hfi.h"
- #include "common.h"
-@@ -190,11 +191,11 @@ static const struct sdma_set_state_action sdma_action_table[] = {
- static void sdma_complete(struct kref *);
- static void sdma_finalput(struct sdma_state *);
- static void sdma_get(struct sdma_state *);
--static void sdma_hw_clean_up_task(struct tasklet_struct *);
-+static void sdma_hw_clean_up_task(struct work_struct *);
- static void sdma_put(struct sdma_state *);
- static void sdma_set_state(struct sdma_engine *, enum sdma_states);
- static void sdma_start_hw_clean_up(struct sdma_engine *);
--static void sdma_sw_clean_up_task(struct tasklet_struct *);
-+static void sdma_sw_clean_up_task(struct work_struct *);
- static void sdma_sendctrl(struct sdma_engine *, unsigned);
- static void init_sdma_regs(struct sdma_engine *, u32, uint);
- static void sdma_process_event(
-@@ -503,9 +504,9 @@ static void sdma_err_progress_check(struct timer_list *t)
- 	schedule_work(&sde->err_halt_worker);
- }
- 
--static void sdma_hw_clean_up_task(struct tasklet_struct *t)
-+static void sdma_hw_clean_up_task(struct work_struct *t)
- {
--	struct sdma_engine *sde = from_tasklet(sde, t,
-+	struct sdma_engine *sde = from_work(sde, t,
- 					       sdma_hw_clean_up_task);
- 	u64 statuscsr;
- 
-@@ -563,9 +564,9 @@ static void sdma_flush_descq(struct sdma_engine *sde)
- 		sdma_desc_avail(sde, sdma_descq_freecnt(sde));
- }
- 
--static void sdma_sw_clean_up_task(struct tasklet_struct *t)
-+static void sdma_sw_clean_up_task(struct work_struct *t)
- {
--	struct sdma_engine *sde = from_tasklet(sde, t, sdma_sw_clean_up_task);
-+	struct sdma_engine *sde = from_work(sde, t, sdma_sw_clean_up_task);
- 	unsigned long flags;
- 
- 	spin_lock_irqsave(&sde->tail_lock, flags);
-@@ -624,7 +625,7 @@ static void sdma_sw_tear_down(struct sdma_engine *sde)
- 
- static void sdma_start_hw_clean_up(struct sdma_engine *sde)
- {
--	tasklet_hi_schedule(&sde->sdma_hw_clean_up_task);
-+	queue_work(system_bh_highpri_wq, &sde->sdma_hw_clean_up_task);
- }
- 
- static void sdma_set_state(struct sdma_engine *sde,
-@@ -1415,9 +1416,9 @@ int sdma_init(struct hfi1_devdata *dd, u8 port)
- 		sde->tail_csr =
- 			get_kctxt_csr_addr(dd, this_idx, SD(TAIL));
- 
--		tasklet_setup(&sde->sdma_hw_clean_up_task,
-+		INIT_WORK(&sde->sdma_hw_clean_up_task,
- 			      sdma_hw_clean_up_task);
--		tasklet_setup(&sde->sdma_sw_clean_up_task,
-+		INIT_WORK(&sde->sdma_sw_clean_up_task,
- 			      sdma_sw_clean_up_task);
- 		INIT_WORK(&sde->err_halt_worker, sdma_err_halt_wait);
- 		INIT_WORK(&sde->flush_worker, sdma_field_flush);
-@@ -2741,7 +2742,7 @@ static void __sdma_process_event(struct sdma_engine *sde,
- 		switch (event) {
- 		case sdma_event_e00_go_hw_down:
- 			sdma_set_state(sde, sdma_state_s00_hw_down);
--			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
-+			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
- 			break;
- 		case sdma_event_e10_go_hw_start:
- 			break;
-@@ -2783,13 +2784,13 @@ static void __sdma_process_event(struct sdma_engine *sde,
- 		switch (event) {
- 		case sdma_event_e00_go_hw_down:
- 			sdma_set_state(sde, sdma_state_s00_hw_down);
--			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
-+			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
- 			break;
- 		case sdma_event_e10_go_hw_start:
- 			break;
- 		case sdma_event_e15_hw_halt_done:
- 			sdma_set_state(sde, sdma_state_s30_sw_clean_up_wait);
--			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
-+			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
- 			break;
- 		case sdma_event_e25_hw_clean_up_done:
- 			break;
-@@ -2824,13 +2825,13 @@ static void __sdma_process_event(struct sdma_engine *sde,
- 		switch (event) {
- 		case sdma_event_e00_go_hw_down:
- 			sdma_set_state(sde, sdma_state_s00_hw_down);
--			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
-+			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
- 			break;
- 		case sdma_event_e10_go_hw_start:
- 			break;
- 		case sdma_event_e15_hw_halt_done:
- 			sdma_set_state(sde, sdma_state_s30_sw_clean_up_wait);
--			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
-+			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
- 			break;
- 		case sdma_event_e25_hw_clean_up_done:
- 			break;
-@@ -2864,7 +2865,7 @@ static void __sdma_process_event(struct sdma_engine *sde,
- 		switch (event) {
- 		case sdma_event_e00_go_hw_down:
- 			sdma_set_state(sde, sdma_state_s00_hw_down);
--			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
-+			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
- 			break;
- 		case sdma_event_e10_go_hw_start:
- 			break;
-@@ -2888,7 +2889,7 @@ static void __sdma_process_event(struct sdma_engine *sde,
- 			break;
- 		case sdma_event_e81_hw_frozen:
- 			sdma_set_state(sde, sdma_state_s82_freeze_sw_clean);
--			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
-+			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
- 			break;
- 		case sdma_event_e82_hw_unfreeze:
- 			break;
-@@ -2903,7 +2904,7 @@ static void __sdma_process_event(struct sdma_engine *sde,
- 		switch (event) {
- 		case sdma_event_e00_go_hw_down:
- 			sdma_set_state(sde, sdma_state_s00_hw_down);
--			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
-+			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
- 			break;
- 		case sdma_event_e10_go_hw_start:
- 			break;
-@@ -2947,7 +2948,7 @@ static void __sdma_process_event(struct sdma_engine *sde,
- 		switch (event) {
- 		case sdma_event_e00_go_hw_down:
- 			sdma_set_state(sde, sdma_state_s00_hw_down);
--			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
-+			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
- 			break;
- 		case sdma_event_e10_go_hw_start:
- 			break;
-diff --git a/drivers/infiniband/hw/hfi1/sdma.h b/drivers/infiniband/hw/hfi1/sdma.h
-index d77246b48434..3f047260cebe 100644
---- a/drivers/infiniband/hw/hfi1/sdma.h
-+++ b/drivers/infiniband/hw/hfi1/sdma.h
-@@ -11,6 +11,7 @@
- #include <asm/byteorder.h>
  #include <linux/workqueue.h>
- #include <linux/rculist.h>
 +#include <linux/workqueue.h>
  
- #include "hfi.h"
- #include "verbs.h"
-@@ -346,11 +347,11 @@ struct sdma_engine {
+ #include <asm/dma.h>
+ #include <asm/irq.h>
+@@ -298,7 +299,7 @@ struct ddb_link {
+ 	spinlock_t             lock; /* lock link access */
+ 	struct mutex           flash_mutex; /* lock flash access */
+ 	struct ddb_lnb         lnb;
+-	struct tasklet_struct  tasklet;
++	struct work_struct work;
+ 	struct ddb_ids         ids;
  
- 	/* CONFIG SDMA for now, just blindly duplicate */
- 	/* private: */
--	struct tasklet_struct sdma_hw_clean_up_task
-+	struct work_struct sdma_hw_clean_up_task
- 		____cacheline_aligned_in_smp;
- 
- 	/* private: */
--	struct tasklet_struct sdma_sw_clean_up_task
-+	struct work_struct sdma_sw_clean_up_task
- 		____cacheline_aligned_in_smp;
- 	/* private: */
- 	struct work_struct err_halt_worker;
-@@ -471,7 +472,7 @@ void _sdma_txreq_ahgadd(
-  * Completions of submitted requests can be gotten on selected
-  * txreqs by giving a completion routine callback to sdma_txinit() or
-  * sdma_txinit_ahg().  The environment in which the callback runs
-- * can be from an ISR, a tasklet, or a thread, so no sleeping
-+ * can be from an ISR, a work, or a thread, so no sleeping
-  * kernel routines can be used.   Aspects of the sdma ring may
-  * be locked so care should be taken with locking.
-  *
-@@ -551,7 +552,7 @@ static inline int sdma_txinit_ahg(
-  * Completions of submitted requests can be gotten on selected
-  * txreqs by giving a completion routine callback to sdma_txinit() or
-  * sdma_txinit_ahg().  The environment in which the callback runs
-- * can be from an ISR, a tasklet, or a thread, so no sleeping
-+ * can be from an ISR, a work, or a thread, so no sleeping
-  * kernel routines can be used.   The head size of the sdma ring may
-  * be locked so care should be taken with locking.
-  *
-diff --git a/drivers/infiniband/hw/hfi1/tid_rdma.c b/drivers/infiniband/hw/hfi1/tid_rdma.c
-index c465966a1d9c..31cb5a092f42 100644
---- a/drivers/infiniband/hw/hfi1/tid_rdma.c
-+++ b/drivers/infiniband/hw/hfi1/tid_rdma.c
-@@ -2316,7 +2316,7 @@ void hfi1_rc_rcv_tid_rdma_read_req(struct hfi1_packet *packet)
- 	 */
- 	qpriv->r_tid_alloc = qp->r_head_ack_queue;
- 
--	/* Schedule the send tasklet. */
-+	/* Schedule the send work. */
- 	qp->s_flags |= RVT_S_RESP_PENDING;
- 	if (fecn)
- 		qp->s_flags |= RVT_S_ECN;
-@@ -3807,7 +3807,7 @@ void hfi1_rc_rcv_tid_rdma_write_req(struct hfi1_packet *packet)
- 	hfi1_tid_write_alloc_resources(qp, true);
- 	trace_hfi1_tid_write_rsp_rcv_req(qp);
- 
--	/* Schedule the send tasklet. */
-+	/* Schedule the send work. */
- 	qp->s_flags |= RVT_S_RESP_PENDING;
- 	if (fecn)
- 		qp->s_flags |= RVT_S_ECN;
-@@ -5389,7 +5389,7 @@ static void hfi1_do_tid_send(struct rvt_qp *qp)
- 
- 			/*
- 			 * If the packet cannot be sent now, return and
--			 * the send tasklet will be woken up later.
-+			 * the send work will be woken up later.
- 			 */
- 			if (hfi1_verbs_send(qp, &ps))
- 				return;
-diff --git a/drivers/infiniband/hw/irdma/ctrl.c b/drivers/infiniband/hw/irdma/ctrl.c
-index 6aed6169c07d..e9644f2b774d 100644
---- a/drivers/infiniband/hw/irdma/ctrl.c
-+++ b/drivers/infiniband/hw/irdma/ctrl.c
-@@ -5271,7 +5271,7 @@ int irdma_process_cqp_cmd(struct irdma_sc_dev *dev,
- }
- 
- /**
-- * irdma_process_bh - called from tasklet for cqp list
-+ * irdma_process_bh - called from work for cqp list
-  * @dev: sc device struct
-  */
- int irdma_process_bh(struct irdma_sc_dev *dev)
-diff --git a/drivers/infiniband/hw/irdma/hw.c b/drivers/infiniband/hw/irdma/hw.c
-index ad50b77282f8..18d552919c28 100644
---- a/drivers/infiniband/hw/irdma/hw.c
-+++ b/drivers/infiniband/hw/irdma/hw.c
-@@ -440,12 +440,12 @@ static void irdma_ena_intr(struct irdma_sc_dev *dev, u32 msix_id)
- }
- 
- /**
-- * irdma_dpc - tasklet for aeq and ceq 0
-- * @t: tasklet_struct ptr
-+ * irdma_dpc - work for aeq and ceq 0
-+ * @t: work_struct ptr
-  */
--static void irdma_dpc(struct tasklet_struct *t)
-+static void irdma_dpc(struct work_struct *t)
- {
--	struct irdma_pci_f *rf = from_tasklet(rf, t, dpc_tasklet);
-+	struct irdma_pci_f *rf = from_work(rf, t, dpc_work);
- 
- 	if (rf->msix_shared)
- 		irdma_process_ceq(rf, rf->ceqlist);
-@@ -455,11 +455,11 @@ static void irdma_dpc(struct tasklet_struct *t)
- 
- /**
-  * irdma_ceq_dpc - dpc handler for CEQ
-- * @t: tasklet_struct ptr
-+ * @t: work_struct ptr
-  */
--static void irdma_ceq_dpc(struct tasklet_struct *t)
-+static void irdma_ceq_dpc(struct work_struct *t)
- {
--	struct irdma_ceq *iwceq = from_tasklet(iwceq, t, dpc_tasklet);
-+	struct irdma_ceq *iwceq = from_work(iwceq, t, dpc_work);
- 	struct irdma_pci_f *rf = iwceq->rf;
- 
- 	irdma_process_ceq(rf, iwceq);
-@@ -533,7 +533,7 @@ static irqreturn_t irdma_irq_handler(int irq, void *data)
- {
- 	struct irdma_pci_f *rf = data;
- 
--	tasklet_schedule(&rf->dpc_tasklet);
-+	queue_work(system_bh_wq, &rf->dpc_work);
- 
- 	return IRQ_HANDLED;
- }
-@@ -550,7 +550,7 @@ static irqreturn_t irdma_ceq_handler(int irq, void *data)
- 	if (iwceq->irq != irq)
- 		ibdev_err(to_ibdev(&iwceq->rf->sc_dev), "expected irq = %d received irq = %d\n",
- 			  iwceq->irq, irq);
--	tasklet_schedule(&iwceq->dpc_tasklet);
-+	queue_work(system_bh_wq, &iwceq->dpc_work);
- 
- 	return IRQ_HANDLED;
- }
-@@ -1121,14 +1121,14 @@ static int irdma_cfg_ceq_vector(struct irdma_pci_f *rf, struct irdma_ceq *iwceq,
- 	if (rf->msix_shared && !ceq_id) {
- 		snprintf(msix_vec->name, sizeof(msix_vec->name) - 1,
- 			 "irdma-%s-AEQCEQ-0", dev_name(&rf->pcidev->dev));
--		tasklet_setup(&rf->dpc_tasklet, irdma_dpc);
-+		INIT_WORK(&rf->dpc_work, irdma_dpc);
- 		status = request_irq(msix_vec->irq, irdma_irq_handler, 0,
- 				     msix_vec->name, rf);
- 	} else {
- 		snprintf(msix_vec->name, sizeof(msix_vec->name) - 1,
- 			 "irdma-%s-CEQ-%d",
- 			 dev_name(&rf->pcidev->dev), ceq_id);
--		tasklet_setup(&iwceq->dpc_tasklet, irdma_ceq_dpc);
-+		INIT_WORK(&iwceq->dpc_work, irdma_ceq_dpc);
- 
- 		status = request_irq(msix_vec->irq, irdma_ceq_handler, 0,
- 				     msix_vec->name, iwceq);
-@@ -1162,7 +1162,7 @@ static int irdma_cfg_aeq_vector(struct irdma_pci_f *rf)
- 	if (!rf->msix_shared) {
- 		snprintf(msix_vec->name, sizeof(msix_vec->name) - 1,
- 			 "irdma-%s-AEQ", dev_name(&rf->pcidev->dev));
--		tasklet_setup(&rf->dpc_tasklet, irdma_dpc);
-+		INIT_WORK(&rf->dpc_work, irdma_dpc);
- 		ret = request_irq(msix_vec->irq, irdma_irq_handler, 0,
- 				  msix_vec->name, rf);
+ 	spinlock_t             temp_lock; /* lock temp chip access */
+diff --git a/drivers/media/pci/mantis/hopper_cards.c b/drivers/media/pci/mantis/hopper_cards.c
+index c0bd5d7e148b..869ea88c4893 100644
+--- a/drivers/media/pci/mantis/hopper_cards.c
++++ b/drivers/media/pci/mantis/hopper_cards.c
+@@ -116,7 +116,7 @@ static irqreturn_t hopper_irq_handler(int irq, void *dev_id)
+ 	if (stat & MANTIS_INT_RISCI) {
+ 		dprintk(MANTIS_DEBUG, 0, "<%s>", label[8]);
+ 		mantis->busy_block = (stat & MANTIS_INT_RISCSTAT) >> 28;
+-		tasklet_schedule(&mantis->tasklet);
++		queue_work(system_bh_wq, &mantis->work);
  	}
-diff --git a/drivers/infiniband/hw/irdma/main.h b/drivers/infiniband/hw/irdma/main.h
-index b65bc2ea542f..54301093b746 100644
---- a/drivers/infiniband/hw/irdma/main.h
-+++ b/drivers/infiniband/hw/irdma/main.h
-@@ -30,6 +30,7 @@
- #endif
- #include <linux/auxiliary_bus.h>
- #include <linux/net/intel/iidc.h>
+ 	if (stat & MANTIS_INT_I2CDONE) {
+ 		dprintk(MANTIS_DEBUG, 0, "<%s>", label[9]);
+diff --git a/drivers/media/pci/mantis/mantis_cards.c b/drivers/media/pci/mantis/mantis_cards.c
+index 906e4500d87d..cb124b19e36e 100644
+--- a/drivers/media/pci/mantis/mantis_cards.c
++++ b/drivers/media/pci/mantis/mantis_cards.c
+@@ -125,7 +125,7 @@ static irqreturn_t mantis_irq_handler(int irq, void *dev_id)
+ 	if (stat & MANTIS_INT_RISCI) {
+ 		dprintk(MANTIS_DEBUG, 0, "<%s>", label[8]);
+ 		mantis->busy_block = (stat & MANTIS_INT_RISCSTAT) >> 28;
+-		tasklet_schedule(&mantis->tasklet);
++		queue_work(system_bh_wq, &mantis->work);
+ 	}
+ 	if (stat & MANTIS_INT_I2CDONE) {
+ 		dprintk(MANTIS_DEBUG, 0, "<%s>", label[9]);
+diff --git a/drivers/media/pci/mantis/mantis_common.h b/drivers/media/pci/mantis/mantis_common.h
+index d88ac280226c..f2247148f268 100644
+--- a/drivers/media/pci/mantis/mantis_common.h
++++ b/drivers/media/pci/mantis/mantis_common.h
+@@ -12,6 +12,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/mutex.h>
+ #include <linux/workqueue.h>
 +#include <linux/workqueue.h>
- #include <crypto/hash.h>
- #include <rdma/ib_smi.h>
- #include <rdma/ib_verbs.h>
-@@ -192,7 +193,7 @@ struct irdma_ceq {
- 	u32 irq;
- 	u32 msix_idx;
- 	struct irdma_pci_f *rf;
--	struct tasklet_struct dpc_tasklet;
-+	struct work_struct dpc_work;
- 	spinlock_t ce_lock; /* sync cq destroy with cq completion event notification */
- };
  
-@@ -316,7 +317,7 @@ struct irdma_pci_f {
- 	struct mc_table_list mc_qht_list;
- 	struct irdma_msix_vector *iw_msixtbl;
- 	struct irdma_qvlist_info *iw_qvlist;
--	struct tasklet_struct dpc_tasklet;
-+	struct work_struct dpc_work;
- 	struct msix_entry *msix_entries;
- 	struct irdma_dma_mem obj_mem;
- 	struct irdma_dma_mem obj_next;
-diff --git a/drivers/infiniband/hw/qib/qib.h b/drivers/infiniband/hw/qib/qib.h
-index 26c615772be3..d2ebaf31ce5a 100644
---- a/drivers/infiniband/hw/qib/qib.h
-+++ b/drivers/infiniband/hw/qib/qib.h
-@@ -53,6 +53,7 @@
+ #include "mantis_reg.h"
+ #include "mantis_uart.h"
+@@ -125,7 +126,7 @@ struct mantis_pci {
+ 	__le32			*risc_cpu;
+ 	dma_addr_t		risc_dma;
+ 
+-	struct tasklet_struct	tasklet;
++	struct work_struct 	work;
+ 	spinlock_t		intmask_lock;
+ 
+ 	struct i2c_adapter	adapter;
+diff --git a/drivers/media/pci/mantis/mantis_dma.c b/drivers/media/pci/mantis/mantis_dma.c
+index 80c843936493..c85f9b84a2c6 100644
+--- a/drivers/media/pci/mantis/mantis_dma.c
++++ b/drivers/media/pci/mantis/mantis_dma.c
+@@ -15,6 +15,7 @@
+ #include <linux/signal.h>
  #include <linux/sched.h>
- #include <linux/kthread.h>
- #include <linux/xarray.h>
+ #include <linux/interrupt.h>
 +#include <linux/workqueue.h>
- #include <rdma/ib_hdrs.h>
- #include <rdma/rdma_vt.h>
  
-@@ -562,7 +563,7 @@ struct qib_pportdata {
- 	u8                    sdma_generation;
- 	u8                    sdma_intrequest;
- 
--	struct tasklet_struct sdma_sw_clean_up_task
-+	struct work_struct sdma_sw_clean_up_task
- 		____cacheline_aligned_in_smp;
- 
- 	wait_queue_head_t state_wait; /* for state_wanted */
-@@ -1068,8 +1069,8 @@ struct qib_devdata {
- 	u8 psxmitwait_supported;
- 	/* cycle length of PS* counters in HW (in picoseconds) */
- 	u16 psxmitwait_check_rate;
--	/* high volume overflow errors defered to tasklet */
--	struct tasklet_struct error_tasklet;
-+	/* high volume overflow errors defered to work */
-+	struct work_struct error_work;
- 
- 	int assigned_node_id; /* NUMA node closest to HCA */
- };
-diff --git a/drivers/infiniband/hw/qib/qib_iba7322.c b/drivers/infiniband/hw/qib/qib_iba7322.c
-index f93906d8fc09..c3325071f2b3 100644
---- a/drivers/infiniband/hw/qib/qib_iba7322.c
-+++ b/drivers/infiniband/hw/qib/qib_iba7322.c
-@@ -46,6 +46,7 @@
- #include <rdma/ib_smi.h>
- #ifdef CONFIG_INFINIBAND_QIB_DCA
- #include <linux/dca.h>
-+#include <linux/workqueue.h>
- #endif
- 
- #include "qib.h"
-@@ -1711,9 +1712,9 @@ static noinline void handle_7322_errors(struct qib_devdata *dd)
- 	return;
+ #include <media/dmxdev.h>
+ #include <media/dvbdev.h>
+@@ -200,9 +201,9 @@ void mantis_dma_stop(struct mantis_pci *mantis)
  }
  
--static void qib_error_tasklet(struct tasklet_struct *t)
-+static void qib_error_work(struct work_struct *t)
- {
--	struct qib_devdata *dd = from_tasklet(dd, t, error_tasklet);
-+	struct qib_devdata *dd = from_work(dd, t, error_work);
  
- 	handle_7322_errors(dd);
- 	qib_write_kreg(dd, kr_errmask, dd->cspec->errormask);
-@@ -3001,7 +3002,7 @@ static noinline void unlikely_7322_intr(struct qib_devdata *dd, u64 istat)
- 		unknown_7322_gpio_intr(dd);
- 	if (istat & QIB_I_C_ERROR) {
- 		qib_write_kreg(dd, kr_errmask, 0ULL);
--		tasklet_schedule(&dd->error_tasklet);
-+		queue_work(system_bh_wq, &dd->error_work);
+-void mantis_dma_xfer(struct tasklet_struct *t)
++void mantis_dma_xfer(struct work_struct *t)
+ {
+-	struct mantis_pci *mantis = from_tasklet(mantis, t, tasklet);
++	struct mantis_pci *mantis = from_work(mantis, t, work);
+ 	struct mantis_hwconfig *config = mantis->hwconfig;
+ 
+ 	while (mantis->last_block != mantis->busy_block) {
+diff --git a/drivers/media/pci/mantis/mantis_dma.h b/drivers/media/pci/mantis/mantis_dma.h
+index 37da982c9c29..5db0d3728f15 100644
+--- a/drivers/media/pci/mantis/mantis_dma.h
++++ b/drivers/media/pci/mantis/mantis_dma.h
+@@ -13,6 +13,6 @@ extern int mantis_dma_init(struct mantis_pci *mantis);
+ extern int mantis_dma_exit(struct mantis_pci *mantis);
+ extern void mantis_dma_start(struct mantis_pci *mantis);
+ extern void mantis_dma_stop(struct mantis_pci *mantis);
+-extern void mantis_dma_xfer(struct tasklet_struct *t);
++extern void mantis_dma_xfer(struct work_struct *t);
+ 
+ #endif /* __MANTIS_DMA_H */
+diff --git a/drivers/media/pci/mantis/mantis_dvb.c b/drivers/media/pci/mantis/mantis_dvb.c
+index c7ba4a76e608..f640635de170 100644
+--- a/drivers/media/pci/mantis/mantis_dvb.c
++++ b/drivers/media/pci/mantis/mantis_dvb.c
+@@ -105,7 +105,7 @@ static int mantis_dvb_start_feed(struct dvb_demux_feed *dvbdmxfeed)
+ 	if (mantis->feeds == 1)	 {
+ 		dprintk(MANTIS_DEBUG, 1, "mantis start feed & dma");
+ 		mantis_dma_start(mantis);
+-		tasklet_enable(&mantis->tasklet);
++		enable_and_queue_work(system_bh_wq, &mantis->work);
  	}
- 	if (istat & INT_MASK_P(Err, 0) && dd->rcd[0])
- 		handle_7322_p_errors(dd->rcd[0]->ppd);
-@@ -3515,7 +3516,7 @@ static void qib_setup_7322_interrupt(struct qib_devdata *dd, int clearpend)
- 	for (i = 0; i < ARRAY_SIZE(redirect); i++)
- 		qib_write_kreg(dd, kr_intredirect + i, redirect[i]);
- 	dd->cspec->main_int_mask = mask;
--	tasklet_setup(&dd->error_tasklet, qib_error_tasklet);
-+	INIT_WORK(&dd->error_work, qib_error_work);
+ 
+ 	return mantis->feeds;
+@@ -125,7 +125,7 @@ static int mantis_dvb_stop_feed(struct dvb_demux_feed *dvbdmxfeed)
+ 	mantis->feeds--;
+ 	if (mantis->feeds == 0) {
+ 		dprintk(MANTIS_DEBUG, 1, "mantis stop feed and dma");
+-		tasklet_disable(&mantis->tasklet);
++		disable_work_sync(&mantis->work);
+ 		mantis_dma_stop(mantis);
+ 	}
+ 
+@@ -205,8 +205,8 @@ int mantis_dvb_init(struct mantis_pci *mantis)
+ 	}
+ 
+ 	dvb_net_init(&mantis->dvb_adapter, &mantis->dvbnet, &mantis->demux.dmx);
+-	tasklet_setup(&mantis->tasklet, mantis_dma_xfer);
+-	tasklet_disable(&mantis->tasklet);
++	INIT_WORK(&mantis->bh, mantis_dma_xfer);
++	disable_work_sync(&mantis->work);
+ 	if (mantis->hwconfig) {
+ 		result = config->frontend_init(mantis, mantis->fe);
+ 		if (result < 0) {
+@@ -235,7 +235,7 @@ int mantis_dvb_init(struct mantis_pci *mantis)
+ 
+ 	/* Error conditions ..	*/
+ err5:
+-	tasklet_kill(&mantis->tasklet);
++	cancel_work_sync(&mantis->work);
+ 	dvb_net_release(&mantis->dvbnet);
+ 	if (mantis->fe) {
+ 		dvb_unregister_frontend(mantis->fe);
+@@ -273,7 +273,7 @@ int mantis_dvb_exit(struct mantis_pci *mantis)
+ 		dvb_frontend_detach(mantis->fe);
+ 	}
+ 
+-	tasklet_kill(&mantis->tasklet);
++	cancel_work_sync(&mantis->work);
+ 	dvb_net_release(&mantis->dvbnet);
+ 
+ 	mantis->demux.dmx.remove_frontend(&mantis->demux.dmx, &mantis->fe_mem);
+diff --git a/drivers/media/pci/ngene/ngene-core.c b/drivers/media/pci/ngene/ngene-core.c
+index 7481f553f959..5211d6796748 100644
+--- a/drivers/media/pci/ngene/ngene-core.c
++++ b/drivers/media/pci/ngene/ngene-core.c
+@@ -21,6 +21,7 @@
+ #include <linux/byteorder/generic.h>
+ #include <linux/firmware.h>
+ #include <linux/vmalloc.h>
++#include <linux/workqueue.h>
+ 
+ #include "ngene.h"
+ 
+@@ -50,9 +51,9 @@ DVB_DEFINE_MOD_OPT_ADAPTER_NR(adapter_nr);
+ /* nGene interrupt handler **************************************************/
+ /****************************************************************************/
+ 
+-static void event_tasklet(struct tasklet_struct *t)
++static void event_work(struct work_struct *t)
+ {
+-	struct ngene *dev = from_tasklet(dev, t, event_tasklet);
++	struct ngene *dev = from_work(dev, t, event_work);
+ 
+ 	while (dev->EventQueueReadIndex != dev->EventQueueWriteIndex) {
+ 		struct EVENT_BUFFER Event =
+@@ -68,9 +69,9 @@ static void event_tasklet(struct tasklet_struct *t)
+ 	}
  }
  
- /**
-diff --git a/drivers/infiniband/hw/qib/qib_rc.c b/drivers/infiniband/hw/qib/qib_rc.c
-index a1c20ffb4490..79e31921e384 100644
---- a/drivers/infiniband/hw/qib/qib_rc.c
-+++ b/drivers/infiniband/hw/qib/qib_rc.c
-@@ -593,7 +593,7 @@ int qib_make_rc_req(struct rvt_qp *qp, unsigned long *flags)
-  *
-  * This is called from qib_rc_rcv() and qib_kreceive().
-  * Note that RDMA reads and atomics are handled in the
-- * send side QP state and tasklet.
-+ * send side QP state and work.
-  */
- void qib_send_rc_ack(struct rvt_qp *qp)
+-static void demux_tasklet(struct tasklet_struct *t)
++static void demux_work(struct work_struct *t)
  {
-@@ -670,7 +670,7 @@ void qib_send_rc_ack(struct rvt_qp *qp)
- 		/*
- 		 * We are out of PIO buffers at the moment.
- 		 * Pass responsibility for sending the ACK to the
--		 * send tasklet so that when a PIO buffer becomes
-+		 * send work so that when a PIO buffer becomes
- 		 * available, the ACK is sent ahead of other outgoing
- 		 * packets.
- 		 */
-@@ -715,7 +715,7 @@ void qib_send_rc_ack(struct rvt_qp *qp)
- 		qp->s_nak_state = qp->r_nak_state;
- 		qp->s_ack_psn = qp->r_ack_psn;
+-	struct ngene_channel *chan = from_tasklet(chan, t, demux_tasklet);
++	struct ngene_channel *chan = from_work(chan, t, demux_work);
+ 	struct device *pdev = &chan->dev->pci_dev->dev;
+ 	struct SBufferHeader *Cur = chan->nextBuffer;
  
--		/* Schedule the send tasklet. */
-+		/* Schedule the send work. */
- 		qib_schedule_send(qp);
+@@ -204,7 +205,7 @@ static irqreturn_t irq_handler(int irq, void *dev_id)
+ 			dev->EventQueueOverflowFlag = 1;
+ 		}
+ 		dev->EventBuffer->EventStatus &= ~0x80;
+-		tasklet_schedule(&dev->event_tasklet);
++		queue_work(system_bh_wq, &dev->event_work);
+ 		rc = IRQ_HANDLED;
  	}
- unlock:
-@@ -806,7 +806,7 @@ static void reset_psn(struct rvt_qp *qp, u32 psn)
- 	qp->s_psn = psn;
- 	/*
- 	 * Set RVT_S_WAIT_PSN as qib_rc_complete() may start the timer
--	 * asynchronously before the send tasklet can get scheduled.
-+	 * asynchronously before the send work can get scheduled.
- 	 * Doing it in qib_make_rc_req() is too late.
- 	 */
- 	if ((qib_cmp24(qp->s_psn, qp->s_sending_hpsn) <= 0) &&
-@@ -1292,7 +1292,7 @@ static void qib_rc_rcv_resp(struct qib_ibport *ibp,
- 		    (qib_cmp24(qp->s_sending_psn, qp->s_sending_hpsn) <= 0)) {
  
- 			/*
--			 * If send tasklet not running attempt to progress
-+			 * If send work not running attempt to progress
- 			 * SDMA queue.
- 			 */
- 			if (!(qp->s_flags & RVT_S_BUSY)) {
-@@ -1629,7 +1629,7 @@ static int qib_rc_rcv_error(struct ib_other_headers *ohdr,
- 	case OP(FETCH_ADD): {
- 		/*
- 		 * If we didn't find the atomic request in the ack queue
--		 * or the send tasklet is already backed up to send an
-+		 * or the send work is already backed up to send an
- 		 * earlier entry, we can ignore this request.
- 		 */
- 		if (!e || e->opcode != (u8) opcode || old_req)
-@@ -1996,7 +1996,7 @@ void qib_rc_rcv(struct qib_ctxtdata *rcd, struct ib_header *hdr,
- 		qp->r_nak_state = 0;
- 		qp->r_head_ack_queue = next;
+@@ -217,8 +218,8 @@ static irqreturn_t irq_handler(int irq, void *dev_id)
+ 			     ngeneBuffer.SR.Flags & 0xC0) == 0x80) {
+ 				dev->channel[i].nextBuffer->
+ 					ngeneBuffer.SR.Flags |= 0x40;
+-				tasklet_schedule(
+-					&dev->channel[i].demux_tasklet);
++				queue_work(system_bh_wq,
++					&dev->channel[i].demux_work);
+ 				rc = IRQ_HANDLED;
+ 			}
+ 		}
+@@ -1181,7 +1182,7 @@ static void ngene_init(struct ngene *dev)
+ 	struct device *pdev = &dev->pci_dev->dev;
+ 	int i;
  
--		/* Schedule the send tasklet. */
-+		/* Schedule the send work. */
- 		qp->s_flags |= RVT_S_RESP_PENDING;
- 		qib_schedule_send(qp);
+-	tasklet_setup(&dev->event_tasklet, event_tasklet);
++	INIT_WORK(&dev->event_work, event_work);
  
-@@ -2059,7 +2059,7 @@ void qib_rc_rcv(struct qib_ctxtdata *rcd, struct ib_header *hdr,
- 		qp->r_nak_state = 0;
- 		qp->r_head_ack_queue = next;
+ 	memset_io(dev->iomem + 0xc000, 0x00, 0x220);
+ 	memset_io(dev->iomem + 0xc400, 0x00, 0x100);
+@@ -1395,7 +1396,7 @@ static void release_channel(struct ngene_channel *chan)
+ 	if (chan->running)
+ 		set_transfer(chan, 0);
  
--		/* Schedule the send tasklet. */
-+		/* Schedule the send work. */
- 		qp->s_flags |= RVT_S_RESP_PENDING;
- 		qib_schedule_send(qp);
+-	tasklet_kill(&chan->demux_tasklet);
++	cancel_work_sync(&chan->demux_work);
  
-diff --git a/drivers/infiniband/hw/qib/qib_ruc.c b/drivers/infiniband/hw/qib/qib_ruc.c
-index 1fa21938f310..f44a2a8b4b1e 100644
---- a/drivers/infiniband/hw/qib/qib_ruc.c
-+++ b/drivers/infiniband/hw/qib/qib_ruc.c
-@@ -257,7 +257,7 @@ void _qib_do_send(struct work_struct *work)
-  * @qp: pointer to the QP
-  *
-  * Process entries in the send work queue until credit or queue is
-- * exhausted.  Only allow one CPU to send a packet per QP (tasklet).
-+ * exhausted.  Only allow one CPU to send a packet per QP (work).
-  * Otherwise, two threads could send packets out of order.
-  */
- void qib_do_send(struct rvt_qp *qp)
-@@ -299,7 +299,7 @@ void qib_do_send(struct rvt_qp *qp)
- 			spin_unlock_irqrestore(&qp->s_lock, flags);
- 			/*
- 			 * If the packet cannot be sent now, return and
--			 * the send tasklet will be woken up later.
-+			 * the send work will be woken up later.
- 			 */
- 			if (qib_verbs_send(qp, priv->s_hdr, qp->s_hdrwords,
- 					   qp->s_cur_sge, qp->s_cur_size))
-diff --git a/drivers/infiniband/hw/qib/qib_sdma.c b/drivers/infiniband/hw/qib/qib_sdma.c
-index 5e86cbf7d70e..facb3964d2ec 100644
---- a/drivers/infiniband/hw/qib/qib_sdma.c
-+++ b/drivers/infiniband/hw/qib/qib_sdma.c
-@@ -34,6 +34,7 @@
+ 	if (chan->ci_dev) {
+ 		dvb_unregister_device(chan->ci_dev);
+@@ -1445,7 +1446,7 @@ static int init_channel(struct ngene_channel *chan)
+ 	struct ngene_info *ni = dev->card_info;
+ 	int io = ni->io_type[nr];
+ 
+-	tasklet_setup(&chan->demux_tasklet, demux_tasklet);
++	INIT_WORK(&chan->demux_work, demux_work);
+ 	chan->users = 0;
+ 	chan->type = io;
+ 	chan->mode = chan->type;	/* for now only one mode */
+@@ -1647,7 +1648,7 @@ void ngene_remove(struct pci_dev *pdev)
+ 	struct ngene *dev = pci_get_drvdata(pdev);
+ 	int i;
+ 
+-	tasklet_kill(&dev->event_tasklet);
++	cancel_work_sync(&dev->event_work);
+ 	for (i = MAX_STREAM - 1; i >= 0; i--)
+ 		release_channel(&dev->channel[i]);
+ 	if (dev->ci.en)
+diff --git a/drivers/media/pci/ngene/ngene.h b/drivers/media/pci/ngene/ngene.h
+index d1d7da84cd9d..c2a23f6dbe09 100644
+--- a/drivers/media/pci/ngene/ngene.h
++++ b/drivers/media/pci/ngene/ngene.h
+@@ -16,6 +16,7 @@
+ #include <linux/scatterlist.h>
+ 
+ #include <linux/dvb/frontend.h>
++#include <linux/workqueue.h>
+ 
+ #include <media/dmxdev.h>
+ #include <media/dvbdev.h>
+@@ -621,7 +622,7 @@ struct ngene_channel {
+ 	int                   users;
+ 	struct video_device  *v4l_dev;
+ 	struct dvb_device    *ci_dev;
+-	struct tasklet_struct demux_tasklet;
++	struct work_struct demux_work;
+ 
+ 	struct SBufferHeader *nextBuffer;
+ 	enum KSSTATE          State;
+@@ -717,7 +718,7 @@ struct ngene {
+ 	struct EVENT_BUFFER   EventQueue[EVENT_QUEUE_SIZE];
+ 	int                   EventQueueOverflowCount;
+ 	int                   EventQueueOverflowFlag;
+-	struct tasklet_struct event_tasklet;
++	struct work_struct event_work;
+ 	struct EVENT_BUFFER  *EventBuffer;
+ 	int                   EventQueueWriteIndex;
+ 	int                   EventQueueReadIndex;
+diff --git a/drivers/media/pci/smipcie/smipcie-main.c b/drivers/media/pci/smipcie/smipcie-main.c
+index 0c300d019d9c..7da6bb55660b 100644
+--- a/drivers/media/pci/smipcie/smipcie-main.c
++++ b/drivers/media/pci/smipcie/smipcie-main.c
+@@ -279,10 +279,10 @@ static void smi_port_clearInterrupt(struct smi_port *port)
+ 		(port->_dmaInterruptCH0 | port->_dmaInterruptCH1));
+ }
+ 
+-/* tasklet handler: DMA data to dmx.*/
+-static void smi_dma_xfer(struct tasklet_struct *t)
++/* work handler: DMA data to dmx.*/
++static void smi_dma_xfer(struct work_struct *t)
+ {
+-	struct smi_port *port = from_tasklet(port, t, tasklet);
++	struct smi_port *port = from_work(port, t, work);
+ 	struct smi_dev *dev = port->dev;
+ 	u32 intr_status, finishedData, dmaManagement;
+ 	u8 dmaChan0State, dmaChan1State;
+@@ -426,8 +426,8 @@ static int smi_port_init(struct smi_port *port, int dmaChanUsed)
+ 	}
+ 
+ 	smi_port_disableInterrupt(port);
+-	tasklet_setup(&port->tasklet, smi_dma_xfer);
+-	tasklet_disable(&port->tasklet);
++	INIT_WORK(&port->work, smi_dma_xfer);
++	disable_work_sync(&port->work);
+ 	port->enable = 1;
+ 	return 0;
+ err:
+@@ -438,7 +438,7 @@ static int smi_port_init(struct smi_port *port, int dmaChanUsed)
+ static void smi_port_exit(struct smi_port *port)
+ {
+ 	smi_port_disableInterrupt(port);
+-	tasklet_kill(&port->tasklet);
++	cancel_work_sync(&port->work);
+ 	smi_port_dma_free(port);
+ 	port->enable = 0;
+ }
+@@ -452,7 +452,7 @@ static int smi_port_irq(struct smi_port *port, u32 int_status)
+ 		smi_port_disableInterrupt(port);
+ 		port->_int_status = int_status;
+ 		smi_port_clearInterrupt(port);
+-		tasklet_schedule(&port->tasklet);
++		queue_work(system_bh_wq, &port->work);
+ 		handled = 1;
+ 	}
+ 	return handled;
+@@ -823,7 +823,7 @@ static int smi_start_feed(struct dvb_demux_feed *dvbdmxfeed)
+ 		smi_port_clearInterrupt(port);
+ 		smi_port_enableInterrupt(port);
+ 		smi_write(port->DMA_MANAGEMENT, dmaManagement);
+-		tasklet_enable(&port->tasklet);
++		enable_and_queue_work(system_bh_wq, &port->work);
+ 	}
+ 	return port->users;
+ }
+@@ -837,7 +837,7 @@ static int smi_stop_feed(struct dvb_demux_feed *dvbdmxfeed)
+ 	if (--port->users)
+ 		return port->users;
+ 
+-	tasklet_disable(&port->tasklet);
++	disable_work_sync(&port->work);
+ 	smi_port_disableInterrupt(port);
+ 	smi_clear(port->DMA_MANAGEMENT, 0x30003);
+ 	return 0;
+diff --git a/drivers/media/pci/smipcie/smipcie.h b/drivers/media/pci/smipcie/smipcie.h
+index 2b5e0154814c..f124d2cdead6 100644
+--- a/drivers/media/pci/smipcie/smipcie.h
++++ b/drivers/media/pci/smipcie/smipcie.h
+@@ -17,6 +17,7 @@
+ #include <linux/pci.h>
+ #include <linux/dma-mapping.h>
+ #include <linux/slab.h>
++#include <linux/workqueue.h>
+ #include <media/rc-core.h>
+ 
+ #include <media/demux.h>
+@@ -257,7 +258,7 @@ struct smi_port {
+ 	u32 _dmaInterruptCH0;
+ 	u32 _dmaInterruptCH1;
+ 	u32 _int_status;
+-	struct tasklet_struct tasklet;
++	struct work_struct work;
+ 	/* dvb */
+ 	struct dmx_frontend hw_frontend;
+ 	struct dmx_frontend mem_frontend;
+diff --git a/drivers/media/pci/ttpci/budget-av.c b/drivers/media/pci/ttpci/budget-av.c
+index a47c5850ef87..6e43b1a01191 100644
+--- a/drivers/media/pci/ttpci/budget-av.c
++++ b/drivers/media/pci/ttpci/budget-av.c
+@@ -37,6 +37,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/input.h>
  #include <linux/spinlock.h>
- #include <linux/netdevice.h>
- #include <linux/moduleparam.h>
 +#include <linux/workqueue.h>
  
- #include "qib.h"
- #include "qib_common.h"
-@@ -62,7 +63,7 @@ static void sdma_get(struct qib_sdma_state *);
- static void sdma_put(struct qib_sdma_state *);
- static void sdma_set_state(struct qib_pportdata *, enum qib_sdma_states);
- static void sdma_start_sw_clean_up(struct qib_pportdata *);
--static void sdma_sw_clean_up_task(struct tasklet_struct *);
-+static void sdma_sw_clean_up_task(struct work_struct *);
- static void unmap_desc(struct qib_pportdata *, unsigned);
+ #include <media/dvb_ca_en50221.h>
  
- static void sdma_get(struct qib_sdma_state *ss)
-@@ -119,9 +120,9 @@ static void clear_sdma_activelist(struct qib_pportdata *ppd)
- 	}
+@@ -55,7 +56,7 @@ struct budget_av {
+ 	struct video_device vd;
+ 	int cur_input;
+ 	int has_saa7113;
+-	struct tasklet_struct ciintf_irq_tasklet;
++	struct work_struct ciintf_irq_work;
+ 	int slot_status;
+ 	struct dvb_ca_en50221 ca;
+ 	u8 reinitialise_demod:1;
+diff --git a/drivers/media/pci/ttpci/budget-ci.c b/drivers/media/pci/ttpci/budget-ci.c
+index 66e1a004ee43..11e0ed62707e 100644
+--- a/drivers/media/pci/ttpci/budget-ci.c
++++ b/drivers/media/pci/ttpci/budget-ci.c
+@@ -17,6 +17,7 @@
+ #include <linux/slab.h>
+ #include <linux/interrupt.h>
+ #include <linux/spinlock.h>
++#include <linux/workqueue.h>
+ #include <media/rc-core.h>
+ 
+ #include "budget.h"
+@@ -80,7 +81,7 @@ DVB_DEFINE_MOD_OPT_ADAPTER_NR(adapter_nr);
+ 
+ struct budget_ci_ir {
+ 	struct rc_dev *dev;
+-	struct tasklet_struct msp430_irq_tasklet;
++	struct work_struct msp430_irq_work;
+ 	char name[72]; /* 40 + 32 for (struct saa7146_dev).name */
+ 	char phys[32];
+ 	int rc5_device;
+@@ -91,7 +92,7 @@ struct budget_ci_ir {
+ 
+ struct budget_ci {
+ 	struct budget budget;
+-	struct tasklet_struct ciintf_irq_tasklet;
++	struct work_struct ciintf_irq_work;
+ 	int slot_status;
+ 	int ci_irq;
+ 	struct dvb_ca_en50221 ca;
+@@ -99,9 +100,9 @@ struct budget_ci {
+ 	u8 tuner_pll_address; /* used for philips_tdm1316l configs */
+ };
+ 
+-static void msp430_ir_interrupt(struct tasklet_struct *t)
++static void msp430_ir_interrupt(struct work_struct *t)
+ {
+-	struct budget_ci_ir *ir = from_tasklet(ir, t, msp430_irq_tasklet);
++	struct budget_ci_ir *ir = from_work(ir, t, msp430_irq_work);
+ 	struct budget_ci *budget_ci = container_of(ir, typeof(*budget_ci), ir);
+ 	struct rc_dev *dev = budget_ci->ir.dev;
+ 	u32 command = ttpci_budget_debiread(&budget_ci->budget, DEBINOSWAP, DEBIADDR_IR, 2, 1, 0) >> 8;
+@@ -230,7 +231,7 @@ static int msp430_ir_init(struct budget_ci *budget_ci)
+ 
+ 	budget_ci->ir.dev = dev;
+ 
+-	tasklet_setup(&budget_ci->ir.msp430_irq_tasklet, msp430_ir_interrupt);
++	INIT_WORK(&budget_ci->ir.msp430_irq_work, msp430_ir_interrupt);
+ 
+ 	SAA7146_IER_ENABLE(saa, MASK_06);
+ 	saa7146_setgpio(saa, 3, SAA7146_GPIO_IRQHI);
+@@ -244,7 +245,7 @@ static void msp430_ir_deinit(struct budget_ci *budget_ci)
+ 
+ 	SAA7146_IER_DISABLE(saa, MASK_06);
+ 	saa7146_setgpio(saa, 3, SAA7146_GPIO_INPUT);
+-	tasklet_kill(&budget_ci->ir.msp430_irq_tasklet);
++	cancel_work_sync(&budget_ci->ir.msp430_irq_work);
+ 
+ 	rc_unregister_device(budget_ci->ir.dev);
+ }
+@@ -348,10 +349,10 @@ static int ciintf_slot_ts_enable(struct dvb_ca_en50221 *ca, int slot)
+ 	return 0;
  }
  
--static void sdma_sw_clean_up_task(struct tasklet_struct *t)
-+static void sdma_sw_clean_up_task(struct work_struct *t)
+-static void ciintf_interrupt(struct tasklet_struct *t)
++static void ciintf_interrupt(struct work_struct *t)
  {
--	struct qib_pportdata *ppd = from_tasklet(ppd, t,
-+	struct qib_pportdata *ppd = from_work(ppd, t,
- 						 sdma_sw_clean_up_task);
+-	struct budget_ci *budget_ci = from_tasklet(budget_ci, t,
+-						   ciintf_irq_tasklet);
++	struct budget_ci *budget_ci = from_work(budget_ci, t,
++						   ciintf_irq_work);
+ 	struct saa7146_dev *saa = budget_ci->budget.dev;
+ 	unsigned int flags;
+ 
+@@ -492,7 +493,7 @@ static int ciintf_init(struct budget_ci *budget_ci)
+ 
+ 	// Setup CI slot IRQ
+ 	if (budget_ci->ci_irq) {
+-		tasklet_setup(&budget_ci->ciintf_irq_tasklet, ciintf_interrupt);
++		INIT_WORK(&budget_ci->ciintf_irq_work, ciintf_interrupt);
+ 		if (budget_ci->slot_status != SLOTSTATUS_NONE) {
+ 			saa7146_setgpio(saa, 0, SAA7146_GPIO_IRQLO);
+ 		} else {
+@@ -532,7 +533,7 @@ static void ciintf_deinit(struct budget_ci *budget_ci)
+ 	if (budget_ci->ci_irq) {
+ 		SAA7146_IER_DISABLE(saa, MASK_03);
+ 		saa7146_setgpio(saa, 0, SAA7146_GPIO_INPUT);
+-		tasklet_kill(&budget_ci->ciintf_irq_tasklet);
++		cancel_work_sync(&budget_ci->ciintf_irq_work);
+ 	}
+ 
+ 	// reset interface
+@@ -558,13 +559,13 @@ static void budget_ci_irq(struct saa7146_dev *dev, u32 * isr)
+ 	dprintk(8, "dev: %p, budget_ci: %p\n", dev, budget_ci);
+ 
+ 	if (*isr & MASK_06)
+-		tasklet_schedule(&budget_ci->ir.msp430_irq_tasklet);
++		queue_work(system_bh_wq, &budget_ci->ir.msp430_irq_work);
+ 
+ 	if (*isr & MASK_10)
+ 		ttpci_budget_irq10_handler(dev, isr);
+ 
+ 	if ((*isr & MASK_03) && (budget_ci->budget.ci_present) && (budget_ci->ci_irq))
+-		tasklet_schedule(&budget_ci->ciintf_irq_tasklet);
++		queue_work(system_bh_wq, &budget_ci->ciintf_irq_work);
+ }
+ 
+ static u8 philips_su1278_tt_inittab[] = {
+diff --git a/drivers/media/pci/ttpci/budget-core.c b/drivers/media/pci/ttpci/budget-core.c
+index 25f44c3eebf3..3443c12dc9f2 100644
+--- a/drivers/media/pci/ttpci/budget-core.c
++++ b/drivers/media/pci/ttpci/budget-core.c
+@@ -171,9 +171,9 @@ static int budget_read_fe_status(struct dvb_frontend *fe,
+ 	return ret;
+ }
+ 
+-static void vpeirq(struct tasklet_struct *t)
++static void vpeirq(struct work_struct *t)
+ {
+-	struct budget *budget = from_tasklet(budget, t, vpe_tasklet);
++	struct budget *budget = from_work(budget, t, vpe_work);
+ 	u8 *mem = (u8 *) (budget->grabbing);
+ 	u32 olddma = budget->ttbp;
+ 	u32 newdma = saa7146_read(budget->dev, PCI_VDP3);
+@@ -520,7 +520,7 @@ int ttpci_budget_init(struct budget *budget, struct saa7146_dev *dev,
+ 	/* upload all */
+ 	saa7146_write(dev, GPIO_CTRL, 0x000000);
+ 
+-	tasklet_setup(&budget->vpe_tasklet, vpeirq);
++	INIT_WORK(&budget->vpe_work, vpeirq);
+ 
+ 	/* frontend power on */
+ 	if (bi->type != BUDGET_FS_ACTIVY)
+@@ -557,7 +557,7 @@ int ttpci_budget_deinit(struct budget *budget)
+ 
+ 	budget_unregister(budget);
+ 
+-	tasklet_kill(&budget->vpe_tasklet);
++	cancel_work_sync(&budget->vpe_work);
+ 
+ 	saa7146_vfree_destroy_pgtable(dev->pci, budget->grabbing, &budget->pt);
+ 
+@@ -575,7 +575,7 @@ void ttpci_budget_irq10_handler(struct saa7146_dev *dev, u32 * isr)
+ 	dprintk(8, "dev: %p, budget: %p\n", dev, budget);
+ 
+ 	if (*isr & MASK_10)
+-		tasklet_schedule(&budget->vpe_tasklet);
++		queue_work(system_bh_wq, &budget->vpe_work);
+ }
+ 
+ void ttpci_budget_set_video_port(struct saa7146_dev *dev, int video_port)
+diff --git a/drivers/media/pci/ttpci/budget.h b/drivers/media/pci/ttpci/budget.h
+index bd87432e6cde..a3ee75e326b4 100644
+--- a/drivers/media/pci/ttpci/budget.h
++++ b/drivers/media/pci/ttpci/budget.h
+@@ -12,6 +12,7 @@
+ 
+ #include <linux/module.h>
+ #include <linux/mutex.h>
++#include <linux/workqueue.h>
+ 
+ #include <media/drv-intf/saa7146.h>
+ 
+@@ -49,8 +50,8 @@ struct budget {
+ 	unsigned char *grabbing;
+ 	struct saa7146_pgtable pt;
+ 
+-	struct tasklet_struct fidb_tasklet;
+-	struct tasklet_struct vpe_tasklet;
++	struct work_struct fidb_work;
++	struct work_struct vpe_work;
+ 
+ 	struct dmxdev dmxdev;
+ 	struct dvb_demux demux;
+diff --git a/drivers/media/pci/tw5864/tw5864-core.c b/drivers/media/pci/tw5864/tw5864-core.c
+index 560ff1ddcc83..a58c268e94a8 100644
+--- a/drivers/media/pci/tw5864/tw5864-core.c
++++ b/drivers/media/pci/tw5864/tw5864-core.c
+@@ -144,7 +144,7 @@ static void tw5864_h264_isr(struct tw5864_dev *dev)
+ 		cur_frame->gop_seqno = input->frame_gop_seqno;
+ 
+ 		dev->h264_buf_w_index = next_frame_index;
+-		tasklet_schedule(&dev->tasklet);
++		queue_work(system_bh_wq, &dev->work);
+ 
+ 		cur_frame = next_frame;
+ 
+diff --git a/drivers/media/pci/tw5864/tw5864-video.c b/drivers/media/pci/tw5864/tw5864-video.c
+index 8b1aae4b6319..ac2249626506 100644
+--- a/drivers/media/pci/tw5864/tw5864-video.c
++++ b/drivers/media/pci/tw5864/tw5864-video.c
+@@ -6,6 +6,7 @@
+  */
+ 
+ #include <linux/module.h>
++#include <linux/workqueue.h>
+ #include <media/v4l2-common.h>
+ #include <media/v4l2-event.h>
+ #include <media/videobuf2-dma-contig.h>
+@@ -175,7 +176,7 @@ static const unsigned int intra4x4_lambda3[] = {
+ static v4l2_std_id tw5864_get_v4l2_std(enum tw5864_vid_std std);
+ static enum tw5864_vid_std tw5864_from_v4l2_std(v4l2_std_id v4l2_std);
+ 
+-static void tw5864_handle_frame_task(struct tasklet_struct *t);
++static void tw5864_handle_frame_task(struct work_struct *t);
+ static void tw5864_handle_frame(struct tw5864_h264_frame *frame);
+ static void tw5864_frame_interval_set(struct tw5864_input *input);
+ 
+@@ -1062,7 +1063,7 @@ int tw5864_video_init(struct tw5864_dev *dev, int *video_nr)
+ 	dev->irqmask |= TW5864_INTR_VLC_DONE | TW5864_INTR_TIMER;
+ 	tw5864_irqmask_apply(dev);
+ 
+-	tasklet_setup(&dev->tasklet, tw5864_handle_frame_task);
++	INIT_WORK(&dev->work, tw5864_handle_frame_task);
+ 
+ 	for (i = 0; i < TW5864_INPUTS; i++) {
+ 		dev->inputs[i].root = dev;
+@@ -1079,7 +1080,7 @@ int tw5864_video_init(struct tw5864_dev *dev, int *video_nr)
+ 	for (i = last_input_nr_registered; i >= 0; i--)
+ 		tw5864_video_input_fini(&dev->inputs[i]);
+ 
+-	tasklet_kill(&dev->tasklet);
++	cancel_work_sync(&dev->work);
+ 
+ free_dma:
+ 	for (i = last_dma_allocated; i >= 0; i--) {
+@@ -1198,7 +1199,7 @@ void tw5864_video_fini(struct tw5864_dev *dev)
+ {
+ 	int i;
+ 
+-	tasklet_kill(&dev->tasklet);
++	cancel_work_sync(&dev->work);
+ 
+ 	for (i = 0; i < TW5864_INPUTS; i++)
+ 		tw5864_video_input_fini(&dev->inputs[i]);
+@@ -1315,9 +1316,9 @@ static int tw5864_is_motion_triggered(struct tw5864_h264_frame *frame)
+ 	return detected;
+ }
+ 
+-static void tw5864_handle_frame_task(struct tasklet_struct *t)
++static void tw5864_handle_frame_task(struct work_struct *t)
+ {
+-	struct tw5864_dev *dev = from_tasklet(dev, t, tasklet);
++	struct tw5864_dev *dev = from_work(dev, t, work);
+ 	unsigned long flags;
+ 	int batch_size = H264_BUF_CNT;
+ 
+diff --git a/drivers/media/pci/tw5864/tw5864.h b/drivers/media/pci/tw5864/tw5864.h
+index a8b6fbd5b710..278373859098 100644
+--- a/drivers/media/pci/tw5864/tw5864.h
++++ b/drivers/media/pci/tw5864/tw5864.h
+@@ -12,6 +12,7 @@
+ #include <linux/mutex.h>
+ #include <linux/io.h>
+ #include <linux/interrupt.h>
++#include <linux/workqueue.h>
+ 
+ #include <media/v4l2-common.h>
+ #include <media/v4l2-ioctl.h>
+@@ -85,7 +86,7 @@ struct tw5864_input {
+ 	int nr; /* input number */
+ 	struct tw5864_dev *root;
+ 	struct mutex lock; /* used for vidq and vdev */
+-	spinlock_t slock; /* used for sync between ISR, tasklet & V4L2 API */
++	spinlock_t slock; /* used for sync between ISR, work & V4L2 API */
+ 	struct video_device vdev;
+ 	struct v4l2_ctrl_handler hdl;
+ 	struct vb2_queue vidq;
+@@ -142,7 +143,7 @@ struct tw5864_h264_frame {
+ 
+ /* global device status */
+ struct tw5864_dev {
+-	spinlock_t slock; /* used for sync between ISR, tasklet & V4L2 API */
++	spinlock_t slock; /* used for sync between ISR, work & V4L2 API */
+ 	struct v4l2_device v4l2_dev;
+ 	struct tw5864_input inputs[TW5864_INPUTS];
+ #define H264_BUF_CNT 4
+@@ -150,7 +151,7 @@ struct tw5864_dev {
+ 	int h264_buf_r_index;
+ 	int h264_buf_w_index;
+ 
+-	struct tasklet_struct tasklet;
++	struct work_struct work;
+ 
+ 	int encoder_busy;
+ 	/* Input number to check next for ready raw picture (in RR fashion) */
+diff --git a/drivers/media/platform/intel/pxa_camera.c b/drivers/media/platform/intel/pxa_camera.c
+index d904952bf00e..df0a3c559287 100644
+--- a/drivers/media/platform/intel/pxa_camera.c
++++ b/drivers/media/platform/intel/pxa_camera.c
+@@ -43,6 +43,7 @@
+ #include <linux/videodev2.h>
+ 
+ #include <linux/platform_data/media/camera-pxa.h>
++#include <linux/workqueue.h>
+ 
+ #define PXA_CAM_VERSION "0.0.6"
+ #define PXA_CAM_DRV_NAME "pxa27x-camera"
+@@ -683,7 +684,7 @@ struct pxa_camera_dev {
+ 	unsigned int		buf_sequence;
+ 
+ 	struct pxa_buffer	*active;
+-	struct tasklet_struct	task_eof;
++	struct work_struct 	task_eof;
+ 
+ 	u32			save_cicr[5];
+ };
+@@ -1146,9 +1147,9 @@ static void pxa_camera_deactivate(struct pxa_camera_dev *pcdev)
+ 	clk_disable_unprepare(pcdev->clk);
+ }
+ 
+-static void pxa_camera_eof(struct tasklet_struct *t)
++static void pxa_camera_eof(struct work_struct *t)
+ {
+-	struct pxa_camera_dev *pcdev = from_tasklet(pcdev, t, task_eof);
++	struct pxa_camera_dev *pcdev = from_work(pcdev, t, task_eof);
+ 	unsigned long cifr;
+ 	struct pxa_buffer *buf;
+ 
+@@ -1185,7 +1186,7 @@ static irqreturn_t pxa_camera_irq(int irq, void *data)
+ 	if (status & CISR_EOF) {
+ 		cicr0 = __raw_readl(pcdev->base + CICR0) | CICR0_EOFM;
+ 		__raw_writel(cicr0, pcdev->base + CICR0);
+-		tasklet_schedule(&pcdev->task_eof);
++		queue_work(system_bh_wq, &pcdev->task_eof);
+ 	}
+ 
+ 	return IRQ_HANDLED;
+@@ -2383,7 +2384,7 @@ static int pxa_camera_probe(struct platform_device *pdev)
+ 		}
+ 	}
+ 
+-	tasklet_setup(&pcdev->task_eof, pxa_camera_eof);
++	INIT_WORK(&pcdev->task_eof, pxa_camera_eof);
+ 
+ 	pxa_camera_activate(pcdev);
+ 
+@@ -2409,7 +2410,7 @@ static int pxa_camera_probe(struct platform_device *pdev)
+ 	return 0;
+ exit_deactivate:
+ 	pxa_camera_deactivate(pcdev);
+-	tasklet_kill(&pcdev->task_eof);
++	cancel_work_sync(&pcdev->task_eof);
+ exit_free_dma:
+ 	dma_release_channel(pcdev->dma_chans[2]);
+ exit_free_dma_u:
+@@ -2428,7 +2429,7 @@ static void pxa_camera_remove(struct platform_device *pdev)
+ 	struct pxa_camera_dev *pcdev = platform_get_drvdata(pdev);
+ 
+ 	pxa_camera_deactivate(pcdev);
+-	tasklet_kill(&pcdev->task_eof);
++	cancel_work_sync(&pcdev->task_eof);
+ 	dma_release_channel(pcdev->dma_chans[0]);
+ 	dma_release_channel(pcdev->dma_chans[1]);
+ 	dma_release_channel(pcdev->dma_chans[2]);
+diff --git a/drivers/media/platform/marvell/mcam-core.c b/drivers/media/platform/marvell/mcam-core.c
+index 66688b4aece5..d6b96a7039be 100644
+--- a/drivers/media/platform/marvell/mcam-core.c
++++ b/drivers/media/platform/marvell/mcam-core.c
+@@ -25,6 +25,7 @@
+ #include <linux/clk-provider.h>
+ #include <linux/videodev2.h>
+ #include <linux/pm_runtime.h>
++#include <linux/workqueue.h>
+ #include <media/v4l2-device.h>
+ #include <media/v4l2-ioctl.h>
+ #include <media/v4l2-ctrls.h>
+@@ -439,9 +440,9 @@ static void mcam_ctlr_dma_vmalloc(struct mcam_camera *cam)
+ /*
+  * Copy data out to user space in the vmalloc case
+  */
+-static void mcam_frame_tasklet(struct tasklet_struct *t)
++static void mcam_frame_work(struct work_struct *t)
+ {
+-	struct mcam_camera *cam = from_tasklet(cam, t, s_tasklet);
++	struct mcam_camera *cam = from_work(cam, t, s_work);
+ 	int i;
+ 	unsigned long flags;
+ 	struct mcam_vb_buffer *buf;
+@@ -480,7 +481,7 @@ static void mcam_frame_tasklet(struct tasklet_struct *t)
+ 
+ 
+ /*
+- * Make sure our allocated buffers are up to the task.
++ * Make sure our allocated buffers are up to the work.
+  */
+ static int mcam_check_dma_buffers(struct mcam_camera *cam)
+ {
+@@ -493,7 +494,7 @@ static int mcam_check_dma_buffers(struct mcam_camera *cam)
+ 
+ static void mcam_vmalloc_done(struct mcam_camera *cam, int frame)
+ {
+-	tasklet_schedule(&cam->s_tasklet);
++	queue_work(system_bh_wq, &cam->s_work);
+ }
+ 
+ #else /* MCAM_MODE_VMALLOC */
+@@ -1305,7 +1306,7 @@ static int mcam_setup_vb2(struct mcam_camera *cam)
+ 		break;
+ 	case B_vmalloc:
+ #ifdef MCAM_MODE_VMALLOC
+-		tasklet_setup(&cam->s_tasklet, mcam_frame_tasklet);
++		INIT_WORK(&cam->s_work, mcam_frame_work);
+ 		vq->ops = &mcam_vb2_ops;
+ 		vq->mem_ops = &vb2_vmalloc_memops;
+ 		cam->dma_setup = mcam_ctlr_dma_vmalloc;
+diff --git a/drivers/media/platform/marvell/mcam-core.h b/drivers/media/platform/marvell/mcam-core.h
+index 51e66db45af6..0d4b953dbb23 100644
+--- a/drivers/media/platform/marvell/mcam-core.h
++++ b/drivers/media/platform/marvell/mcam-core.h
+@@ -9,6 +9,7 @@
+ 
+ #include <linux/list.h>
+ #include <linux/clk-provider.h>
++#include <linux/workqueue.h>
+ #include <media/v4l2-common.h>
+ #include <media/v4l2-ctrls.h>
+ #include <media/v4l2-dev.h>
+@@ -167,7 +168,7 @@ struct mcam_camera {
+ 	unsigned int dma_buf_size;	/* allocated size */
+ 	void *dma_bufs[MAX_DMA_BUFS];	/* Internal buffer addresses */
+ 	dma_addr_t dma_handles[MAX_DMA_BUFS]; /* Buffer bus addresses */
+-	struct tasklet_struct s_tasklet;
++	struct work_struct s_work;
+ #endif
+ 	unsigned int sequence;		/* Frame sequence number */
+ 	unsigned int buf_seq[MAX_DMA_BUFS]; /* Sequence for individual bufs */
+diff --git a/drivers/media/platform/st/sti/c8sectpfe/c8sectpfe-core.c b/drivers/media/platform/st/sti/c8sectpfe/c8sectpfe-core.c
+index e4cf27b5a072..22b359569a10 100644
+--- a/drivers/media/platform/st/sti/c8sectpfe/c8sectpfe-core.c
++++ b/drivers/media/platform/st/sti/c8sectpfe/c8sectpfe-core.c
+@@ -33,6 +33,7 @@
+ #include <linux/time.h>
+ #include <linux/usb.h>
+ #include <linux/wait.h>
++#include <linux/workqueue.h>
+ 
+ #include "c8sectpfe-common.h"
+ #include "c8sectpfe-core.h"
+@@ -73,16 +74,16 @@ static void c8sectpfe_timer_interrupt(struct timer_list *t)
+ 
+ 		/* is this descriptor initialised and TP enabled */
+ 		if (channel->irec && readl(channel->irec + DMA_PRDS_TPENABLE))
+-			tasklet_schedule(&channel->tsklet);
++			queue_work(system_bh_wq, &channel->tsklet);
+ 	}
+ 
+ 	fei->timer.expires = jiffies +	msecs_to_jiffies(POLL_MSECS);
+ 	add_timer(&fei->timer);
+ }
+ 
+-static void channel_swdemux_tsklet(struct tasklet_struct *t)
++static void channel_swdemux_tsklet(struct work_struct *t)
+ {
+-	struct channel_info *channel = from_tasklet(channel, t, tsklet);
++	struct channel_info *channel = from_work(channel, t, tsklet);
+ 	struct c8sectpfei *fei;
+ 	unsigned long wp, rp;
+ 	int pos, num_packets, n, size;
+@@ -211,7 +212,7 @@ static int c8sectpfe_start_feed(struct dvb_demux_feed *dvbdmxfeed)
+ 
+ 		dev_dbg(fei->dev, "Starting channel=%p\n", channel);
+ 
+-		tasklet_setup(&channel->tsklet, channel_swdemux_tsklet);
++		INIT_WORK(&channel->tsklet, channel_swdemux_tsklet);
+ 
+ 		/* Reset the internal inputblock sram pointers */
+ 		writel(channel->fifo,
+@@ -304,7 +305,7 @@ static int c8sectpfe_stop_feed(struct dvb_demux_feed *dvbdmxfeed)
+ 		/* disable this channels descriptor */
+ 		writel(0,  channel->irec + DMA_PRDS_TPENABLE);
+ 
+-		tasklet_disable(&channel->tsklet);
++		disable_work_sync(&channel->tsklet);
+ 
+ 		/* now request memdma channel goes idle */
+ 		idlereq = (1 << channel->tsin_id) | IDLEREQ;
+@@ -631,8 +632,8 @@ static int configure_memdma_and_inputblock(struct c8sectpfei *fei,
+ 	writel(tsin->back_buffer_busaddr, tsin->irec + DMA_PRDS_BUSWP_TP(0));
+ 	writel(tsin->back_buffer_busaddr, tsin->irec + DMA_PRDS_BUSRP_TP(0));
+ 
+-	/* initialize tasklet */
+-	tasklet_setup(&tsin->tsklet, channel_swdemux_tsklet);
++	/* initialize work */
++	INIT_WORK(&tsin->tsklet, channel_swdemux_tsklet);
+ 
+ 	return 0;
+ 
+diff --git a/drivers/media/platform/st/sti/c8sectpfe/c8sectpfe-core.h b/drivers/media/platform/st/sti/c8sectpfe/c8sectpfe-core.h
+index bf377cc82225..d63f0ee83615 100644
+--- a/drivers/media/platform/st/sti/c8sectpfe/c8sectpfe-core.h
++++ b/drivers/media/platform/st/sti/c8sectpfe/c8sectpfe-core.h
+@@ -51,7 +51,7 @@ struct channel_info {
+ 	unsigned long  fifo;
+ 
+ 	struct completion idle_completion;
+-	struct tasklet_struct tsklet;
++	struct work_struct tsklet;
+ 
+ 	struct c8sectpfei *fei;
+ 	void __iomem *irec;
+diff --git a/drivers/media/radio/wl128x/fmdrv.h b/drivers/media/radio/wl128x/fmdrv.h
+index da8920169df8..85282f638c4a 100644
+--- a/drivers/media/radio/wl128x/fmdrv.h
++++ b/drivers/media/radio/wl128x/fmdrv.h
+@@ -15,6 +15,7 @@
+ #include <sound/core.h>
+ #include <sound/initval.h>
+ #include <linux/timer.h>
++#include <linux/workqueue.h>
+ #include <media/v4l2-ioctl.h>
+ #include <media/v4l2-common.h>
+ #include <media/v4l2-device.h>
+@@ -200,15 +201,15 @@ struct fmdev {
+ 	int streg_cbdata; /* status of ST registration */
+ 
+ 	struct sk_buff_head rx_q;	/* RX queue */
+-	struct tasklet_struct rx_task;	/* RX Tasklet */
++	struct work_struct rx_task;	/* RX Work */
+ 
+ 	struct sk_buff_head tx_q;	/* TX queue */
+-	struct tasklet_struct tx_task;	/* TX Tasklet */
++	struct work_struct tx_task;	/* TX Work */
+ 	unsigned long last_tx_jiffies;	/* Timestamp of last pkt sent */
+ 	atomic_t tx_cnt;	/* Number of packets can send at a time */
+ 
+ 	struct sk_buff *resp_skb;	/* Response from the chip */
+-	/* Main task completion handler */
++	/* Main work completion handler */
+ 	struct completion maintask_comp;
+ 	/* Opcode of last command sent to the chip */
+ 	u8 pre_op;
+diff --git a/drivers/media/radio/wl128x/fmdrv_common.c b/drivers/media/radio/wl128x/fmdrv_common.c
+index 3da8e5102bec..52290bb4a4ad 100644
+--- a/drivers/media/radio/wl128x/fmdrv_common.c
++++ b/drivers/media/radio/wl128x/fmdrv_common.c
+@@ -9,7 +9,7 @@
+  *     one Channel-8 command to be sent to the chip).
+  *  2) Sending each Channel-8 command to the chip and reading
+  *     response back over Shared Transport.
+- *  3) Managing TX and RX Queues and Tasklets.
++ *  3) Managing TX and RX Queues and Works.
+  *  4) Handling FM Interrupt packet and taking appropriate action.
+  *  5) Loading FM firmware to the chip (common, FM TX, and FM RX
+  *     firmware files based on mode selection)
+@@ -29,6 +29,7 @@
+ #include "fmdrv_v4l2.h"
+ #include "fmdrv_common.h"
+ #include <linux/ti_wilink_st.h>
++#include <linux/workqueue.h>
+ #include "fmdrv_rx.h"
+ #include "fmdrv_tx.h"
+ 
+@@ -244,10 +245,10 @@ void fmc_update_region_info(struct fmdev *fmdev, u8 region_to_set)
+ }
+ 
+ /*
+- * FM common sub-module will schedule this tasklet whenever it receives
++ * FM common sub-module will schedule this work whenever it receives
+  * FM packet from ST driver.
+  */
+-static void recv_tasklet(struct tasklet_struct *t)
++static void recv_work(struct work_struct *t)
+ {
+ 	struct fmdev *fmdev;
+ 	struct fm_irq *irq_info;
+@@ -256,7 +257,7 @@ static void recv_tasklet(struct tasklet_struct *t)
+ 	u8 num_fm_hci_cmds;
  	unsigned long flags;
  
-@@ -188,7 +189,7 @@ static void sdma_sw_tear_down(struct qib_pportdata *ppd)
+-	fmdev = from_tasklet(fmdev, t, tx_task);
++	fmdev = from_work(fmdev, t, tx_task);
+ 	irq_info = &fmdev->irq_info;
+ 	/* Process all packets in the RX queue */
+ 	while ((skb = skb_dequeue(&fmdev->rx_q))) {
+@@ -322,22 +323,22 @@ static void recv_tasklet(struct tasklet_struct *t)
  
- static void sdma_start_sw_clean_up(struct qib_pportdata *ppd)
- {
--	tasklet_hi_schedule(&ppd->sdma_sw_clean_up_task);
-+	queue_work(system_bh_highpri_wq, &ppd->sdma_sw_clean_up_task);
+ 		/*
+ 		 * Check flow control field. If Num_FM_HCI_Commands field is
+-		 * not zero, schedule FM TX tasklet.
++		 * not zero, schedule FM TX work.
+ 		 */
+ 		if (num_fm_hci_cmds && atomic_read(&fmdev->tx_cnt))
+ 			if (!skb_queue_empty(&fmdev->tx_q))
+-				tasklet_schedule(&fmdev->tx_task);
++				queue_work(system_bh_wq, &fmdev->tx_task);
+ 	}
  }
  
- static void sdma_set_state(struct qib_pportdata *ppd,
-@@ -437,7 +438,7 @@ int qib_setup_sdma(struct qib_pportdata *ppd)
+-/* FM send tasklet: is scheduled when FM packet has to be sent to chip */
+-static void send_tasklet(struct tasklet_struct *t)
++/* FM send work: is scheduled when FM packet has to be sent to chip */
++static void send_work(struct work_struct *t)
+ {
+ 	struct fmdev *fmdev;
+ 	struct sk_buff *skb;
+ 	int len;
  
- 	INIT_LIST_HEAD(&ppd->sdma_activelist);
+-	fmdev = from_tasklet(fmdev, t, tx_task);
++	fmdev = from_work(fmdev, t, tx_task);
  
--	tasklet_setup(&ppd->sdma_sw_clean_up_task, sdma_sw_clean_up_task);
-+	INIT_WORK(&ppd->sdma_sw_clean_up_task, sdma_sw_clean_up_task);
+ 	if (!atomic_read(&fmdev->tx_cnt))
+ 		return;
+@@ -366,7 +367,7 @@ static void send_tasklet(struct tasklet_struct *t)
+ 	if (len < 0) {
+ 		kfree_skb(skb);
+ 		fmdev->resp_comp = NULL;
+-		fmerr("TX tasklet failed to send skb(%p)\n", skb);
++		fmerr("TX work failed to send skb(%p)\n", skb);
+ 		atomic_set(&fmdev->tx_cnt, 1);
+ 	} else {
+ 		fmdev->last_tx_jiffies = jiffies;
+@@ -374,7 +375,7 @@ static void send_tasklet(struct tasklet_struct *t)
+ }
  
- 	ret = dd->f_init_sdma_regs(ppd);
- 	if (ret)
-diff --git a/drivers/infiniband/sw/rdmavt/qp.c b/drivers/infiniband/sw/rdmavt/qp.c
-index e6203e26cc06..efe4689151c2 100644
---- a/drivers/infiniband/sw/rdmavt/qp.c
-+++ b/drivers/infiniband/sw/rdmavt/qp.c
-@@ -1306,7 +1306,7 @@ int rvt_error_qp(struct rvt_qp *qp, enum ib_wc_status err)
+ /*
+- * Queues FM Channel-8 packet to FM TX queue and schedules FM TX tasklet for
++ * Queues FM Channel-8 packet to FM TX queue and schedules FM TX work for
+  * transmission
+  */
+ static int fm_send_cmd(struct fmdev *fmdev, u8 fm_op, u16 type,	void *payload,
+@@ -440,7 +441,7 @@ static int fm_send_cmd(struct fmdev *fmdev, u8 fm_op, u16 type,	void *payload,
  
- 	rdi->driver_f.notify_error_qp(qp);
+ 	fm_cb(skb)->completion = wait_completion;
+ 	skb_queue_tail(&fmdev->tx_q, skb);
+-	tasklet_schedule(&fmdev->tx_task);
++	queue_work(system_bh_wq, &fmdev->tx_task);
  
--	/* Schedule the sending tasklet to drain the send work queue. */
-+	/* Schedule the sending work to drain the send work queue. */
- 	if (READ_ONCE(qp->s_last) != qp->s_head)
- 		rdi->driver_f.schedule_send(qp);
+ 	return 0;
+ }
+@@ -462,7 +463,7 @@ int fmc_send_cmd(struct fmdev *fmdev, u8 fm_op, u16 type, void *payload,
  
+ 	if (!wait_for_completion_timeout(&fmdev->maintask_comp,
+ 					 FM_DRV_TX_TIMEOUT)) {
+-		fmerr("Timeout(%d sec),didn't get regcompletion signal from RX tasklet\n",
++		fmerr("Timeout(%d sec),didn't get regcompletion signal from RX work\n",
+ 			   jiffies_to_msecs(FM_DRV_TX_TIMEOUT) / 1000);
+ 		return -ETIMEDOUT;
+ 	}
+@@ -1455,7 +1456,7 @@ static long fm_st_receive(void *arg, struct sk_buff *skb)
+ 
+ 	memcpy(skb_push(skb, 1), &skb->cb[0], 1);
+ 	skb_queue_tail(&fmdev->rx_q, skb);
+-	tasklet_schedule(&fmdev->rx_task);
++	queue_work(system_bh_wq, &fmdev->rx_task);
+ 
+ 	return 0;
+ }
+@@ -1537,13 +1538,13 @@ int fmc_prepare(struct fmdev *fmdev)
+ 	spin_lock_init(&fmdev->rds_buff_lock);
+ 	spin_lock_init(&fmdev->resp_skb_lock);
+ 
+-	/* Initialize TX queue and TX tasklet */
++	/* Initialize TX queue and TX work */
+ 	skb_queue_head_init(&fmdev->tx_q);
+-	tasklet_setup(&fmdev->tx_task, send_tasklet);
++	INIT_WORK(&fmdev->tx_task, send_work);
+ 
+-	/* Initialize RX Queue and RX tasklet */
++	/* Initialize RX Queue and RX work */
+ 	skb_queue_head_init(&fmdev->rx_q);
+-	tasklet_setup(&fmdev->rx_task, recv_tasklet);
++	INIT_WORK(&fmdev->rx_task, recv_work);
+ 
+ 	fmdev->irq_info.stage = 0;
+ 	atomic_set(&fmdev->tx_cnt, 1);
+@@ -1589,8 +1590,8 @@ int fmc_release(struct fmdev *fmdev)
+ 	/* Service pending read */
+ 	wake_up_interruptible(&fmdev->rx.rds.read_queue);
+ 
+-	tasklet_kill(&fmdev->tx_task);
+-	tasklet_kill(&fmdev->rx_task);
++	cancel_work_sync(&fmdev->tx_task);
++	cancel_work_sync(&fmdev->rx_task);
+ 
+ 	skb_queue_purge(&fmdev->tx_q);
+ 	skb_queue_purge(&fmdev->rx_q);
+diff --git a/drivers/media/rc/mceusb.c b/drivers/media/rc/mceusb.c
+index c76ba24c1f55..a2e2e58b7506 100644
+--- a/drivers/media/rc/mceusb.c
++++ b/drivers/media/rc/mceusb.c
+@@ -774,7 +774,7 @@ static void mceusb_dev_printdata(struct mceusb_dev *ir, u8 *buf, int buf_len,
+ 
+ /*
+  * Schedule work that can't be done in interrupt handlers
+- * (mceusb_dev_recv() and mce_write_callback()) nor tasklets.
++ * (mceusb_dev_recv() and mce_write_callback()) nor works.
+  * Invokes mceusb_deferred_kevent() for recovering from
+  * error events specified by the kevent bit field.
+  */
+diff --git a/drivers/media/usb/ttusb-dec/ttusb_dec.c b/drivers/media/usb/ttusb-dec/ttusb_dec.c
+index 79faa2560613..55eeb00f1126 100644
+--- a/drivers/media/usb/ttusb-dec/ttusb_dec.c
++++ b/drivers/media/usb/ttusb-dec/ttusb_dec.c
+@@ -19,6 +19,7 @@
+ #include <linux/input.h>
+ 
+ #include <linux/mutex.h>
++#include <linux/workqueue.h>
+ 
+ #include <media/dmxdev.h>
+ #include <media/dvb_demux.h>
+@@ -139,7 +140,7 @@ struct ttusb_dec {
+ 	int			v_pes_postbytes;
+ 
+ 	struct list_head	urb_frame_list;
+-	struct tasklet_struct	urb_tasklet;
++	struct work_struct 	urb_work;
+ 	spinlock_t		urb_frame_list_lock;
+ 
+ 	struct dvb_demux_filter	*audio_filter;
+@@ -766,9 +767,9 @@ static void ttusb_dec_process_urb_frame(struct ttusb_dec *dec, u8 *b,
+ 	}
+ }
+ 
+-static void ttusb_dec_process_urb_frame_list(struct tasklet_struct *t)
++static void ttusb_dec_process_urb_frame_list(struct work_struct *t)
+ {
+-	struct ttusb_dec *dec = from_tasklet(dec, t, urb_tasklet);
++	struct ttusb_dec *dec = from_work(dec, t, urb_work);
+ 	struct list_head *item;
+ 	struct urb_frame *frame;
+ 	unsigned long flags;
+@@ -822,7 +823,7 @@ static void ttusb_dec_process_urb(struct urb *urb)
+ 				spin_unlock_irqrestore(&dec->urb_frame_list_lock,
+ 						       flags);
+ 
+-				tasklet_schedule(&dec->urb_tasklet);
++				queue_work(system_bh_wq, &dec->urb_work);
+ 			}
+ 		}
+ 	} else {
+@@ -1198,11 +1199,11 @@ static int ttusb_dec_alloc_iso_urbs(struct ttusb_dec *dec)
+ 	return 0;
+ }
+ 
+-static void ttusb_dec_init_tasklet(struct ttusb_dec *dec)
++static void ttusb_dec_init_work(struct ttusb_dec *dec)
+ {
+ 	spin_lock_init(&dec->urb_frame_list_lock);
+ 	INIT_LIST_HEAD(&dec->urb_frame_list);
+-	tasklet_setup(&dec->urb_tasklet, ttusb_dec_process_urb_frame_list);
++	INIT_WORK(&dec->urb_work, ttusb_dec_process_urb_frame_list);
+ }
+ 
+ static int ttusb_init_rc( struct ttusb_dec *dec)
+@@ -1588,12 +1589,12 @@ static void ttusb_dec_exit_usb(struct ttusb_dec *dec)
+ 	ttusb_dec_free_iso_urbs(dec);
+ }
+ 
+-static void ttusb_dec_exit_tasklet(struct ttusb_dec *dec)
++static void ttusb_dec_exit_work(struct ttusb_dec *dec)
+ {
+ 	struct list_head *item;
+ 	struct urb_frame *frame;
+ 
+-	tasklet_kill(&dec->urb_tasklet);
++	cancel_work_sync(&dec->urb_work);
+ 
+ 	while ((item = dec->urb_frame_list.next) != &dec->urb_frame_list) {
+ 		frame = list_entry(item, struct urb_frame, urb_frame_list);
+@@ -1703,7 +1704,7 @@ static int ttusb_dec_probe(struct usb_interface *intf,
+ 
+ 	ttusb_dec_init_v_pes(dec);
+ 	ttusb_dec_init_filters(dec);
+-	ttusb_dec_init_tasklet(dec);
++	ttusb_dec_init_work(dec);
+ 
+ 	dec->active = 1;
+ 
+@@ -1729,7 +1730,7 @@ static void ttusb_dec_disconnect(struct usb_interface *intf)
+ 	dprintk("%s\n", __func__);
+ 
+ 	if (dec->active) {
+-		ttusb_dec_exit_tasklet(dec);
++		ttusb_dec_exit_work(dec);
+ 		ttusb_dec_exit_filters(dec);
+ 		if(enable_rc)
+ 			ttusb_dec_exit_rc(dec);
 -- 
 2.17.1
 
