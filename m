@@ -4,93 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF98EC47DD9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Mar 2024 10:37:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 434F9C54E67
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Mar 2024 10:43:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k0RBjv/Mk5+1uH8zHWpw+frS6Pk+FGxJ0ixEJQeiLUE=; b=rn7afwStphNtwokBEXjdwk2H0b
-	I66u1n4SrUNLybfkHIxyKQucYDCdlPfN5vwQkpgjZv9Nev8pmT0GEvoj7iHrftA0a5akPGDrlb6G+
-	p5HlYbBIm2FBI63vM8LpCDGbL+aDtfYQYFjcSSueplTRUCf3/xs0wZ3PpyqeTRwBZ6+hOXLr8L6xK
-	xGYoEUSsLwspb/5A83LDLYbh+7k6x/E6W0Cs/kQhr2AYaTKXMsOVLUx6QEpHVEWJ6/FDJcyhbwqnm
-	or6wHqWIQcUPIwxqEj6gEAtGSc+Wx2B0B3c4Vt4eayu6DEKxUzqeblzsqWvFpj2B84O4a8p240cob
-	0JsV7xrw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e4NrpBXvsW7MggsJVU9krNc1XmRyUBDTMJN1iw/MahM=; b=XD5qfiqZby5ic1jBeW0i6LktYO
+	rLxNPwIm7aXIoXS/7sWdXYLKqBnzr+GpveJQX4/l6dSyd+Br/lYDOt4u0BfIH/s9QWKEWm5Wrk8pl
+	Em36bXbNNU42NwaQlgB23y4Q4sema+ns9TQfKta4ZgFh4FA4Vf1CwQzRexbhvEqP0bNd81lEkG3HM
+	VhjHhBecVRZ4h9wfxpSAnmzDUb3KaWk9qmI7aGhaoa4Rkkazks+Pm/t6nXm+/vwr3kOo+D5inRELR
+	wp4VHcoE8xCE2En7m+wPI/zRyp/Idae+qf16ANsh+/RtMHvpvCSnZ22tCXevjn2SW8WrYAdNuzONq
+	qIJD5vyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpQei-00000008RO9-1Xjc;
-	Wed, 27 Mar 2024 10:37:16 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1rpQl9-00000008SPW-3iYF;
+	Wed, 27 Mar 2024 10:43:56 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpQee-00000008RMf-3SgS
+	id 1rpQl6-00000008SO1-1iuC
 	for linux-mediatek@lists.infradead.org;
-	Wed, 27 Mar 2024 10:37:14 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-565c6cf4819so1174008a12.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 27 Mar 2024 03:37:11 -0700 (PDT)
+	Wed, 27 Mar 2024 10:43:53 +0000
+Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-a4a393b699fso117478066b.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 Mar 2024 03:43:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711535830; x=1712140630; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=k0RBjv/Mk5+1uH8zHWpw+frS6Pk+FGxJ0ixEJQeiLUE=;
-        b=HetH/qqFKWNLDRAIOIXMhCNzCuYdb3NZseXwNlGGAWd53WHrilewt79KXhPoUdKbKL
-         SQVt9SjtB0yPffGPqHtB750imHjE7axQCN0gmHZnO1PN0ItDkFWAeSVVIV6Nxno7ocTb
-         pU7a1kRthOsrNplC+osW/w5G3RGmj7G9K53EwGwRziYdblYeToJpUInIqtBx/MrHxIg0
-         KV/CoywY5eoBYpvoUP0Ki3qE8vTlEusdypq8CL72tc4d6TQyXmfMWsdw8WeaKb/ELlg8
-         DxQChfWps9YCs243NWElEmJSpuNODa0+Q63hYZ2HXy99zXO4yYk6RVOloHUi7VzugNDP
-         lRdQ==
+        d=linaro.org; s=google; t=1711536230; x=1712141030; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=e4NrpBXvsW7MggsJVU9krNc1XmRyUBDTMJN1iw/MahM=;
+        b=xlsOXvbFj6P2iI241guL5OZtZuLsfCYvWFPuofvAMZg38dxQons5Rj6DX7UEHUplBi
+         shxQbMkY/KQy9re/ZFdpvgYqC578qIzjVnz+qhHmfRtNICNHIHw6O78DkXtW4YcQLjfU
+         pAwx6GmWj+w9aTLmvfHuGgEZWaeIFbVp6y5GMo6UqhhPiY4hkDiZpHAoToKijsBSu7U2
+         HETXU3GT3ZdhG/aebWQLuymt0BB0i7cy7ICFGwGjvMnGw0QIaBT7piMp1uQn153VKl0G
+         5fFl+iSI6o2CUagZP2e2g5IfkJkrulK9UW/61oNeXUDBbZ7V7TYaCHkWlsZ+/ZYfitZq
+         SLHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711535830; x=1712140630;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=1e100.net; s=20230601; t=1711536230; x=1712141030;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=k0RBjv/Mk5+1uH8zHWpw+frS6Pk+FGxJ0ixEJQeiLUE=;
-        b=AZJ8nGGofqBSOltr5YwznZJFKCQPHFsZC8+KG9wJxZPFP2YnPeg2iTkxr4VCXu9+YH
-         YT6MsoVVjRK+OXFggYVDPNBrFuC8XHekWI7tQwfcNoFwBuGg6HwPjBYC4y+n/P/2AXB1
-         LCocfvHYA12iwAEClMis6j7e4mqZdyv/PpL1f3kHnvEkL+CbPEnAi/5Ayi1o0gPa2fJf
-         PLR2P6ASRK+QRVlv4xWhvtt3zGBCNIDnifdPubqfzXJNCrvJDy623p7WbNH2t1xnKIrN
-         36AhuHf/Pt6Yc5QACOX6Cx7faWPBViPkcuNtpN7IaKxjWxrd/TcxQLaKReztuUtvRFoQ
-         1kYw==
-X-Forwarded-Encrypted: i=1; AJvYcCXMTwueiWtBTkhQzohurlHze7NMVpm8d3WVC4x+ihncEcpTrsuxhXlBQ0LjA9KaG5v1V5IbYi8PZ7/ZfW5TurMRfpQnMcnHmrfgfxKIPOruXQHJ
-X-Gm-Message-State: AOJu0YwAxzarWN2NpJ+loDj0E1qqLxqrqdIQWVGpWavIW+Z2CJDQlmst
-	M8QphT+skdHpwoW3To93q3yUxCawz5B216OjiDOkX7EkVhdXPuwkraVRNJ6AKtU=
-X-Google-Smtp-Source: AGHT+IGz4Ddt/Fv3CJl38Ww58TnJzydiHKubdfPR7I7n1Y2mpYfMpwk6w9WcDu9linEDr2LcHQ+bmQ==
-X-Received: by 2002:a17:906:4552:b0:a4e:ca2:f597 with SMTP id s18-20020a170906455200b00a4e0ca2f597mr141687ejq.30.1711535829275;
-        Wed, 27 Mar 2024 03:37:09 -0700 (PDT)
-Received: from linaro.org ([79.114.172.194])
-        by smtp.gmail.com with ESMTPSA id d12-20020a50fe8c000000b0056a033fa007sm5109218edt.64.2024.03.27.03.37.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Mar 2024 03:37:08 -0700 (PDT)
-Date: Wed, 27 Mar 2024 12:37:07 +0200
-From: Abel Vesa <abel.vesa@linaro.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Srini Kandagatla <srinivas.kandagatla@linaro.org>,
-	Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH RESEND v6 0/5] spmi: pmic-arb: Add support for multiple
- buses
-Message-ID: <ZgP209t7IhdhcZIr@linaro.org>
-References: <20240326-spmi-multi-master-support-v6-0-1c87d8306c5b@linaro.org>
- <d213f262-ba0e-4cf8-af0e-66745ffea429@linaro.org>
+        bh=e4NrpBXvsW7MggsJVU9krNc1XmRyUBDTMJN1iw/MahM=;
+        b=s0337io55p49yPjCWlWNjNoLd+3/JQQkHAIjgqx+FcZUi3Stkp/9jBGst3ls/HnrgT
+         3Pjb3qs6nW85KvngBj0qx3xD+o0dP+6VZy9Jklvm/dFyE4hsNyMEI1CijCiNiB2fphtT
+         BE7Hl73/TJnts2yJPSU/+Phl60FnUP+Dk/iSfljech8xsmGQDtqaK7L+kFr/JTSqGsDw
+         lCSzMk8oRuLNVr7Y4l8JOR8W0YyuQ2Epxemsf6GU7sxyuzschK//JsrVDxzUwqc+4g2Z
+         pmgPn022mr1y4cUo/qPHunv9LMQaar1FC312dQiRJt9XSW9ap5Y3zfof35Lq7XxYN6Sy
+         Ikbw==
+X-Forwarded-Encrypted: i=1; AJvYcCU9055UTYo2KdBdDGxuE4EN0In7lzYXOcNfnviE5glDns1vyChwLFh7p5V5BAv1mzodqNj1k5pGb+IqALA4azzOkPtBfIFWUKk6qaeOqDWZeaLl
+X-Gm-Message-State: AOJu0YyWOA1/KFZ7/g2uR+OpY8WZkfoD6r0QSjaBr4DJEZvhGlqSEf74
+	hPvBjveByiZOWG3aWvdvzVfTlKv9aHr+XuzFeg6TNXhlRQb2zE4rrA+0+BbZnJ4=
+X-Google-Smtp-Source: AGHT+IGamD7bwkdSCDLxuqvNBNCGKiAV9AzedAo1MfteyoIBbpAnPEaKi3YY1DIV3Q+4H5dDPIM5Qw==
+X-Received: by 2002:a17:906:f84b:b0:a46:f99d:1af9 with SMTP id ks11-20020a170906f84b00b00a46f99d1af9mr3597593ejb.1.1711536229623;
+        Wed, 27 Mar 2024 03:43:49 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.206.205])
+        by smtp.gmail.com with ESMTPSA id rh9-20020a17090720e900b00a46d786365esm5290545ejb.94.2024.03.27.03.43.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 27 Mar 2024 03:43:48 -0700 (PDT)
+Message-ID: <038ccb20-71cb-40d2-9720-ce1a0d3eac8c@linaro.org>
+Date: Wed, 27 Mar 2024 11:43:47 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <d213f262-ba0e-4cf8-af0e-66745ffea429@linaro.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/3] dt-bindings: power: Add mediatek larb definition
+To: =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
+ =?UTF-8?B?TWFuZHlKSCBMaXUgKOWKieS6uuWDlik=?= <MandyJH.Liu@mediatek.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ =?UTF-8?B?WGl1ZmVuZyBMaSAo5p2O56eA5bOwKQ==?= <Xiufeng.Li@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, =?UTF-8?B?RmFuIENoZW4gKOmZs+WHoSk=?=
+ <fan.chen@mediatek.com>
+References: <20240327055732.28198-1-yu-chang.lee@mediatek.com>
+ <20240327055732.28198-3-yu-chang.lee@mediatek.com>
+ <6dd9959e-f741-47af-b10a-1894f72ae78f@linaro.org>
+ <c3ca3d90-898e-44b0-ad0f-dd78c09c5fcd@linaro.org>
+ <f3eedfb3495bb9c28b5cbf466387c24822c5b6f6.camel@mediatek.com>
+ <7ff9c4c7-3b56-4a5b-95b7-c37cbf8bcd6d@linaro.org>
+ <b957b072d5d88ed315982e914a7f700e0ccafb83.camel@mediatek.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <b957b072d5d88ed315982e914a7f700e0ccafb83.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240327_033712_894090_4B231758 
-X-CRM114-Status: GOOD (  14.88  )
+X-CRM114-CacheID: sfid-20240327_034352_534930_FEF2B5AA 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,30 +161,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24-03-27 10:23:51, Krzysztof Kozlowski wrote:
-> On 26/03/2024 17:28, Abel Vesa wrote:
-> > This RFC prepares for and adds support for 2 buses, which is supported
-> > in HW starting with version 7. Until now, none of the currently
-> > supported platforms in upstream have used the second bus. The X1E80100
-> > platform, on the other hand, needs the second bus for the USB2.0 to work
-> > as there are 3 SMB2360 PMICs which provide eUSB2 repeaters and they are
-> > all found on the second bus.
-> > 
-> > Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
-> > ---
-> > Changes in v6:
-> > - Changed the compatible to platform specific (X1E80100) along with the
-> >   schema. Fixed the spmi buses unit addresses and added the empty ranges
+On 27/03/2024 11:39, Yu-chang Lee (李禹璋) wrote:
+>>>>
+>>> Hi,
+>>>
+>>> I will double check the format of yaml for the next version, sorry
+>> for
+>>> inconvenience. But I did test it on mt8188 chromebook, the reason
+>> why
+>>
+>> How do you test a binding on chromebook?
+>>
+>>> power domain need larb node is that when mtcmos power on, signal
+>> glitch
+>>> may produce. Power domain driver must reset larb when this happen
+>> to 
+>>> prevent dummy transaction on bus. That why I need larb node in dts.
+>>
+>> No one talks here about larb node...
 > 
-> Why resending after few days? And why without reviews?
-> 
+> Sorry, May you elaborate on what information I need to provide to you
+> or it is just a syntax problem I need to fix?
 
-If you are referring to the initial v6 patchset, it was sent more than a
-month ago.
+Please explain the purpose of this property (how is it going to be used
+by drivers) and what does it represent.
 
-https://lore.kernel.org/all/20240222-spmi-multi-master-support-v6-0-bc34ea9561da@linaro.org/
+Best regards,
+Krzysztof
 
-> Best regards,
-> Krzysztof
-> 
 
