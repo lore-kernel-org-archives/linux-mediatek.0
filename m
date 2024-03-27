@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE4FEC47DD9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Mar 2024 09:13:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DD99C54E67
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Mar 2024 09:13:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rCP1xxVL+2XFFuRCnhWKsh1+37AXhGb+RDaWbRieDPQ=; b=uoBWpiUIYgvcEXo29roO5f+XLO
-	Em7C/M4r4ZV9YnFfVUJRjxAG1qkAAkiW8zRKUt7TJ7Ld4ixMZTBQ8ob7sz5fU9wFi0RwWyNewlBCp
-	LPKhE3ODt0UQBnjqwoy26SF41ylDRwVcziYRCfOBwIVkXV1bOJzWMXPO+K0ngG3lA120JdsyFj6Jl
-	M+Q5lhutaG6D5ENOUi3o7RUCAZSX0Uju9lBUDrymsaoyIlWcacOVHW0l7StYrJR0YqJXLxA0ourtf
-	M35TCat6VpctLzNX8kn9lP3yZNA9V3mlkf2dGVHNJ37ZHYQxPdtFTG94WYFIDDnBd9hswki6wrFKU
-	0k+4Wzmg==;
+	bh=4iOYt4zJ+o1C7+SnoOb0q+ySfizskDZk97tdK1KywqY=; b=4/WAkuaylfnsbPOCo4XBtmBt1d
+	ptJLbf5Hhc9ZuKoFkWUIXbDw4eeYZ4rxBeL62kDo/+oKPzJTmEpBId8uIWLVQzlkiY66f0dRY/6bI
+	N9m1bbnPiBkyrJGviVgH22/Kb0l8f/777CnulpRzjJ1gokPFhYvygt/Z6W6Gnnpj6rsnYAr7Tvz95
+	Cd5zRGbkjSW1aWm5CXj+JxYlSWI7CBoWEZwZlg7mvvVLQxeP/t1pPPXs6vnQx8VxQm6xdl2kAbif5
+	DUyac4VyP1PfxxbQ+VYyqv3jsPyc+d6Kn2un4Lr+sFg8KK0KWld+JQWcva73KD+41DvSEKfhIuOUL
+	5047C3cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpPLv-00000008AY6-23tO;
-	Wed, 27 Mar 2024 09:13:47 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1rpPM4-00000008Acq-2iRP;
+	Wed, 27 Mar 2024 09:13:56 +0000
+Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpPLs-00000008AWE-3cC0
+	id 1rpPLv-00000008AXJ-1PoX
 	for linux-mediatek@lists.infradead.org;
-	Wed, 27 Mar 2024 09:13:46 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-6e6bee809b8so5487416b3a.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 27 Mar 2024 02:13:43 -0700 (PDT)
+	Wed, 27 Mar 2024 09:13:48 +0000
+Received: by mail-oi1-x236.google.com with SMTP id 5614622812f47-3c3d404225dso1388124b6e.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 Mar 2024 02:13:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1711530823; x=1712135623; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1711530825; x=1712135625; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=rCP1xxVL+2XFFuRCnhWKsh1+37AXhGb+RDaWbRieDPQ=;
-        b=DsVoaiTxoLDaujrEq+5fLKmEtFZpeEOc20/ksN72sfB7VjxYD2wipaxTtcAKsRMD0A
-         xCbKVNdYq2ylqUhY3diz4wZZXDTPnWeXgj4GKquB7JlcGE2DP0KsCRUSnfF3w08KU5m1
-         lh4gh7s6RRrmPpfOV+/Q3bsDm5oe3IrfVf/rg=
+        bh=4iOYt4zJ+o1C7+SnoOb0q+ySfizskDZk97tdK1KywqY=;
+        b=WXf8TixmJEm+H4bfal3eWYuQBm7glhEfsnNx90AxXimHVznEfXuMa7+l8eNtB7t/JB
+         pMTLi07V43lsZ9OeQKuHLIuLBwj4ZXQW+6O6IhldIx1NsElfhy29LtqW7zijwhAB0sry
+         zlDuHBeMo7FBiBnHI4f+itoEYxnVyICtksQoQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711530823; x=1712135623;
+        d=1e100.net; s=20230601; t=1711530825; x=1712135625;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=rCP1xxVL+2XFFuRCnhWKsh1+37AXhGb+RDaWbRieDPQ=;
-        b=fNQGODptElvikF/fUuQX7TCraqK25AMtqk3YuRbXiLv8L9lcaL9smHZMqBNidITzRl
-         63F61fngqYPZKk/GpTQivrfzftOHHh/vAsbjto4nr5AdhbUsxVkPeIFZf354xxzzOhKL
-         4HK0+Mc11eJyoqheoQTGUWlqyWqB1ng1M2NguMPXsDoH4IG6fXRuejIjufPCGOVVv3SE
-         u7/OFm+A1n0pZbMpxHgXIgNwTGR5JAtirc6GJZ36wDqVDxPFI/SyuQLo1MTNoXYXVmXA
-         F39zwaXQB1VMO6XHFyZWQ2U0z4HOfKNIE2dmvAAmdqoKG8ZRK54trhDTzWNuTjPM8vLG
-         eZgA==
-X-Forwarded-Encrypted: i=1; AJvYcCUXCiA/X6rSSYpb28GZFFFqBBDSyGKb+OQoFMFUr+zYKu9wzk442u9u1bmjSOM4X6kf0nJW187ucwPadVNMLyzUsfWQMQfTwfxlmUxyT2N743og
-X-Gm-Message-State: AOJu0Yw/lnXJ9w3ZDSPI7aGj2udOZ+lGLbVOLzjtDKx3DynUi9sLTtZj
-	b/nTwlnM6r/dGsGyUqbg4cGwbxhDO2WQLuaMHzAoqwnrPX78ECkXGyw9YOqqPg==
-X-Google-Smtp-Source: AGHT+IGO/q6xt1tiCf12rN/iTWiDaEhcezoHgM4FVnnPfonMbt9q2BCRE5wf+w6mxtmS4gbOe5GCww==
-X-Received: by 2002:a05:6a00:cc1:b0:6ea:c46a:3b66 with SMTP id b1-20020a056a000cc100b006eac46a3b66mr2396932pfv.16.1711530822949;
-        Wed, 27 Mar 2024 02:13:42 -0700 (PDT)
+        bh=4iOYt4zJ+o1C7+SnoOb0q+ySfizskDZk97tdK1KywqY=;
+        b=b7HgAS9NAkQahjDi5jlP3r8U6J93nB8rxImYuQh2Y/110cBe29806S3l5m3vJZjnGj
+         8VKvMCDBOILFEbFAFkRnZINowDSYaoj1kKRHhetZUlVAIw9VZA4h2xGipJjfEiZU75jk
+         cMGw8WAupXnqzfTdPTPrTLDCPxTyn6Lwn2FU0zDwekeeyPXaQNuKhzwRIZBgTJtghyj4
+         dts4pY3U8HDn3BN9fNlUXFut+ffPKBGgH3hAOliZYtKiAtSb5ILBk1mb6k2F8CjiIRse
+         aiaoXxWq8wRwcM5z3ou4nAW5HBkqE5so1RWFbYIVTgWgvl1KYYAhnFX+qvlvL2C0t/k6
+         03Fw==
+X-Forwarded-Encrypted: i=1; AJvYcCUNl5t7uvHGk8vulcb8AX0xBjk9XBsLPACYBZGgdKScoy6B0ipvxMlhgsgHOwPn4BXcKPu699jUCzeq5kY0TtB+Pyvjonug2dXyvSEXQ4LpqjDC
+X-Gm-Message-State: AOJu0YwwXbNlNPJmbZIIQsUNMPHieYj/xkBd/xeB5zUzakTRTzua/MZ5
+	/Y/Oh4uXSXpJ9Q7zJq/b2RdcA9fNu2Vdx99XeSYiYeltyPbUjmHkvYdgQ0vV/w==
+X-Google-Smtp-Source: AGHT+IF3aqIva/K4jRimDmX4/NLQURpL14i8+mvF0x7rMtjQj5U78MiIs6pbbKkfU3lhicktx6j8iA==
+X-Received: by 2002:a05:6808:319a:b0:3c3:878e:a43b with SMTP id cd26-20020a056808319a00b003c3878ea43bmr772486oib.44.1711530825181;
+        Wed, 27 Mar 2024 02:13:45 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:74c2:3606:170b:52f3])
-        by smtp.gmail.com with ESMTPSA id fa31-20020a056a002d1f00b006e69cb93585sm7342911pfb.83.2024.03.27.02.13.40
+        by smtp.gmail.com with ESMTPSA id fa31-20020a056a002d1f00b006e69cb93585sm7342911pfb.83.2024.03.27.02.13.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Mar 2024 02:13:42 -0700 (PDT)
+        Wed, 27 Mar 2024 02:13:44 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Sean Wang <sean.wang@kernel.org>,
 	Linus Walleij <linus.walleij@linaro.org>,
@@ -70,17 +70,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-gpio@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 1/2] pinctrl: mediatek: paris: Fix PIN_CONFIG_INPUT_SCHMITT_ENABLE readback
-Date: Wed, 27 Mar 2024 17:13:33 +0800
-Message-ID: <20240327091336.3434141-2-wenst@chromium.org>
+Subject: [PATCH 2/2] pinctrl: mediatek: paris: Rework support for PIN_CONFIG_{INPUT,OUTPUT}_ENABLE
+Date: Wed, 27 Mar 2024 17:13:34 +0800
+Message-ID: <20240327091336.3434141-3-wenst@chromium.org>
 X-Mailer: git-send-email 2.44.0.396.g6e790dbe36-goog
 In-Reply-To: <20240327091336.3434141-1-wenst@chromium.org>
 References: <20240327091336.3434141-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240327_021344_938742_7EA123F6 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20240327_021347_443535_B601D680 
+X-CRM114-Status: GOOD (  19.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,35 +95,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the generic pin config library, readback of some options are handled
-differently compared to the setting of those options: the argument value
-is used to convey enable/disable of an option in the set path, but
-success or -EINVAL is used to convey if an option is enabled or disabled
-in the debugfs readback path.
+There is a misinterpretation of some of the PIN_CONFIG_* options in this
+driver library. PIN_CONFIG_OUTPUT_ENABLE should refer to a buffer or
+switch in the output direction of the electrical path. The MediaTek
+hardware does not have such a thing. The driver incorrectly maps this
+option to the GPIO function's direction.
 
-PIN_CONFIG_INPUT_SCHMITT_ENABLE is one such option. Fix the readback of
-the option in the mediatek-paris library, so that the debugfs dump is
-not showing "input schmitt enabled" for pins that don't have it enabled.
+Likewise, PIN_CONFIG_INPUT_ENABLE should refer to a buffer or switch in
+the input direction. The hardware does have such a mechanism, and is
+mapped to the IES bit. The driver however sets the direction in addition
+to the IES bit, which is incorrect. On readback, the IES bit isn't even
+considered.
 
-Fixes: 1bea6afbc842 ("pinctrl: mediatek: Refine mtk_pinconf_get()")
+Ironically, the driver does not support readback for PIN_CONFIG_OUTPUT,
+while its readback of PIN_CONFIG_{INPUT,OUTPUT}_ENABLE is what it should
+be doing for PIN_CONFIG_OUTPUT.
+
+Rework support for these three options, so that PIN_CONFIG_OUTPUT_ENABLE
+is completely removed, PIN_CONFIG_INPUT_ENABLE is only linked to the IES
+bit, and PIN_CONFIG_OUTPUT is linked to the GPIO function's direction
+and output level.
+
+Fixes: 805250982bb5 ("pinctrl: mediatek: add pinctrl-paris that implements the vendor dt-bindings")
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/pinctrl/mediatek/pinctrl-paris.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/pinctrl/mediatek/pinctrl-paris.c | 38 +++++++-----------------
+ 1 file changed, 11 insertions(+), 27 deletions(-)
 
 diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-index b6bc31abd2b0..9353f78a52f0 100644
+index 9353f78a52f0..b19bc391705e 100644
 --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
 +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-@@ -193,6 +193,8 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
- 		}
- 
- 		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_SMT, &ret);
+@@ -165,20 +165,21 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
+ 		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_SR, &ret);
+ 		break;
+ 	case PIN_CONFIG_INPUT_ENABLE:
+-	case PIN_CONFIG_OUTPUT_ENABLE:
++		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_IES, &ret);
 +		if (!ret)
 +			err = -EINVAL;
++		break;
++	case PIN_CONFIG_OUTPUT:
+ 		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &ret);
+ 		if (err)
+ 			break;
+-		/*     CONFIG     Current direction return value
+-		 * -------------  ----------------- ----------------------
+-		 * OUTPUT_ENABLE       output       1 (= HW value)
+-		 *                     input        0 (= HW value)
+-		 * INPUT_ENABLE        output       0 (= reverse HW value)
+-		 *                     input        1 (= reverse HW value)
+-		 */
+-		if (param == PIN_CONFIG_INPUT_ENABLE)
+-			ret = !ret;
+ 
++		if (!ret) {
++			err = -EINVAL;
++			break;
++		}
++
++		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DO, &ret);
  		break;
- 	case PIN_CONFIG_DRIVE_STRENGTH:
- 		if (!hw->soc->drive_get)
+ 	case PIN_CONFIG_INPUT_SCHMITT_ENABLE:
+ 		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &ret);
+@@ -283,26 +284,9 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
+ 			break;
+ 		err = hw->soc->bias_set_combo(hw, desc, 0, arg);
+ 		break;
+-	case PIN_CONFIG_OUTPUT_ENABLE:
+-		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT,
+-				       MTK_DISABLE);
+-		/* Keep set direction to consider the case that a GPIO pin
+-		 *  does not have SMT control
+-		 */
+-		if (err != -ENOTSUPP)
+-			break;
+-
+-		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DIR,
+-				       MTK_OUTPUT);
+-		break;
+ 	case PIN_CONFIG_INPUT_ENABLE:
+ 		/* regard all non-zero value as enable */
+ 		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_IES, !!arg);
+-		if (err)
+-			break;
+-
+-		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DIR,
+-				       MTK_INPUT);
+ 		break;
+ 	case PIN_CONFIG_SLEW_RATE:
+ 		/* regard all non-zero value as enable */
 -- 
 2.44.0.396.g6e790dbe36-goog
 
