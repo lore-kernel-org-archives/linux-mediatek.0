@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38B5CC54E67
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Mar 2024 15:53:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 872E9C54E67
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Mar 2024 15:58:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v8Zo+lpGmEYMzAiuqKIM8OssQvdryZbCI6NC3RlvDLc=; b=pl5898nd2GBS7ECwdq5P0MWdDH
-	eDwPCLYC9AxdMW37VqSunvqNkvSfcqOvxe+IQ9d847D/U/FPtaLYsPY/Ir1HS1xiJltN62rCMzvae
-	F+l0ri5qT65Tih17Dh1MjYpdiOALEFuWgitB7nLJ1zCmZQCeSx13t7pZJ3HHMkuYTjEiXfRt1GLHt
-	LP2PmQTRIFkT8gml80JXPf3J+IHAcq7NO1nzQsWkAigKCxEJ9oNuA5S1ULtTQSUMB7jhs1gjKIwwE
-	rFJUuNFvbELtPg15PHbWWDiE56wC5mtqMiAv5O+GSGP/c6Yqwxs/Ira/kE/f/tQWVkbUrwx+GeyzO
-	3hncqjcQ==;
+	bh=HKuUY8oYVWK3ibGLu4p+RahdQ08L6ev0YrXnh1poFUA=; b=eYkLe/J5QD7lCpjkhwLZklzuIh
+	X4/6v1+Emv+FaTdOxOyGyN4r0Dr65EDaKy/m8i2EA4fvaMrjJ2Sta7QWYHsNdgSzalhUUxdTwnJOP
+	zY7kMO1XKXIseT+xdMk9LPOOCQF6RHf1vOxCDXVgdpMhOdMxOCHMxy222OdD0x7IcjoxVW91FL24Y
+	eCpt2sQur1UwvfcdpPNACR3Q6vkIBDoqiAXVgGn0AEgEJt0TwEl6IZF0RzX8PsOG+PS6Pg2QtneUx
+	DrVZQ4ZALVlLRRbO7pa/nDChMQ2sR/ynKvsL+jjIegrCj2bUEkkMbomDnIbWo+2QMgg71ASJEga+6
+	936JeZnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpVab-00000009vlR-2Ild;
-	Wed, 27 Mar 2024 15:53:21 +0000
+	id 1rpVfh-00000009wtY-3vFm;
+	Wed, 27 Mar 2024 15:58:37 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpVaY-00000009vGd-0gJT;
-	Wed, 27 Mar 2024 15:53:20 +0000
+	id 1rpVfc-00000009wpd-1m3Q;
+	Wed, 27 Mar 2024 15:58:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=v8Zo+lpGmEYMzAiuqKIM8OssQvdryZbCI6NC3RlvDLc=; b=pIenkUfc6gIEUz1zTSvCVoy95W
-	tG+Pc5hVuecUgQGIPOcmluq+nOW/noQ3qiVIO3xP+tcxUES0f47sFzfHK5vlPsJP3B2vcHG+tzUYH
-	/4Hc33aOH8Ff+mRWIm1nyCysVWjLjEDBVTgtFdVB/qPPBLugAVfKXTtp0xI7VH581NXCqHnP7Wtlo
-	MV9S2txg5yF539UdMvjJRv0Jbj5x3RJxLtE/xB0ohtFR+Z4tqQaARb2gnyCAl2YPgi1qKRF/tYR1i
-	09DfcdIzM2VaySFd+Z6bSiU9lwqZlOWswkcn39wQC5MrM9BzTfHUMbQywbIsCNrhZEgGQOeQ4PLtl
-	LSJUDBpA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:53940)
+	bh=HKuUY8oYVWK3ibGLu4p+RahdQ08L6ev0YrXnh1poFUA=; b=IIWlnOIabH1NmHfb9fNpV1Ddgl
+	o18yM5tKlrmhkDUkvWpPIQkBFS9NA9LWXK9y+jGiVUVifXFBnWSObSx5Y7AZVJn9u70BXGBCKWN2a
+	8wmpaL9GM6TsAUa7e5NQ2SAqei9sSIo95jgiU/izJt6Bl/qT6/MBuXgHWa1cBeR5k/rsjpBSZ1do/
+	p+HiC3qK9yBuROvdIoc1vCjMe2pDzw4je2dtz1gE0+8CcwVwULtcPGC1MUd5DixWVXnTpARiJVkdg
+	ophN+HaUMCjTKr3MD6SihOz0VZTGpA4NLzC6RJ9FR1cEpboAbXQZhO/8yV0TIlSfLJcpgg6cBIqRm
+	j/h3b91g==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:44886)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1rpVXq-0007DS-20;
-	Wed, 27 Mar 2024 15:50:30 +0000
+	id 1rpVfL-0007E7-1F;
+	Wed, 27 Mar 2024 15:58:15 +0000
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1rpVXk-000100-VR; Wed, 27 Mar 2024 15:50:25 +0000
-Date: Wed, 27 Mar 2024 15:50:24 +0000
+	id 1rpVfJ-000109-94; Wed, 27 Mar 2024 15:58:13 +0000
+Date: Wed, 27 Mar 2024 15:58:13 +0000
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+To: arinc.unal@arinc9.com
 Cc: Paolo Abeni <pabeni@redhat.com>, Daniel Golle <daniel@makrotopia.org>,
 	DENG Qingfang <dqfext@gmail.com>,
 	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
@@ -70,19 +70,20 @@ Cc: Paolo Abeni <pabeni@redhat.com>, Daniel Golle <daniel@makrotopia.org>,
 	linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH net v2 2/2] net: dsa: mt7530: fix disabling EEE on
  failure on MT7531 and MT7988
-Message-ID: <ZgRAQFfKWR1skCMo@shell.armlinux.org.uk>
+Message-ID: <ZgRCFZBFvNSZ1a2U@shell.armlinux.org.uk>
 References: <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-0-9af9d5041bfe@arinc9.com>
  <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-2-9af9d5041bfe@arinc9.com>
  <799572b672ea8b4756236b14068aef7c8fa726a6.camel@redhat.com>
  <d65f4c45-e616-4157-a769-c285cbad575c@arinc9.com>
+ <530da7c1-c058-44ef-84fd-86ff58f1501b@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <d65f4c45-e616-4157-a769-c285cbad575c@arinc9.com>
+In-Reply-To: <530da7c1-c058-44ef-84fd-86ff58f1501b@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240327_085318_230657_800A2A06 
-X-CRM114-Status: GOOD (  31.67  )
+X-CRM114-CacheID: sfid-20240327_085832_523781_E4D6E1BA 
+X-CRM114-Status: GOOD (  26.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,82 +98,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 26, 2024 at 12:19:40PM +0300, Arınç ÜNAL wrote:
-> On 26.03.2024 12:02, Paolo Abeni wrote:
-> > On Thu, 2024-03-21 at 19:29 +0300, Arınç ÜNAL via B4 Relay wrote:
-> > > From: Arınç ÜNAL <arinc.unal@arinc9.com>
+On Wed, Mar 27, 2024 at 11:46:19AM +0300, arinc.unal@arinc9.com wrote:
+> On 26.03.2024 12:19, Arınç ÜNAL wrote:
+> > On 26.03.2024 12:02, Paolo Abeni wrote:
+> > > If I read the past discussion correctly, this is a potential issue
+> > > found by code inspection and never producing problem in practice, am I
+> > > correct?
 > > > 
-> > > The MT7531_FORCE_EEE1G and MT7531_FORCE_EEE100 bits let the
-> > > PMCR_FORCE_EEE1G and PMCR_FORCE_EEE100 bits determine the 1G/100 EEE
-> > > abilities of the MAC. If MT7531_FORCE_EEE1G and MT7531_FORCE_EEE100 are
-> > > unset, the abilities are left to be determined by PHY auto polling.
+> > > If so I think it will deserve a 3rd party tested-by tag or similar to
+> > > go in.
 > > > 
-> > > The commit 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
-> > > made it so that the PMCR_FORCE_EEE1G and PMCR_FORCE_EEE100 bits are set on
-> > > mt753x_phylink_mac_link_up(). But it did not set the MT7531_FORCE_EEE1G and
-> > > MT7531_FORCE_EEE100 bits. Because of this, EEE will be enabled on the
-> > > switch MACs by polling the PHY, regardless of the result of phy_init_eee().
-> > > 
-> > > Define these bits and add them to MT7531_FORCE_MODE which is being used by
-> > > the subdriver. With this, EEE will be prevented from being enabled on the
-> > > switch MACs when phy_init_eee() fails.
-> > > 
-> > > Fixes: 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
-> > > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> > > If nobody could provide such feedback in a little time, I suggest to
+> > > drop this patch and apply only 1/2.
 > > 
-> > If I read the past discussion correctly, this is a potential issue
-> > found by code inspection and never producing problem in practice, am I
-> > correct?
-> > 
-> > If so I think it will deserve a 3rd party tested-by tag or similar to
-> > go in.
-> > 
-> > If nobody could provide such feedback in a little time, I suggest to
-> > drop this patch and apply only 1/2.
+> > Whether a problem would happen in practice depends on when
+> > phy_init_eee()
+> > fails, meaning it returns a negative non-zero code. I requested Russell
+> > to
+> > review this patch to shed light on when phy_init_eee() would return a
+> > negative non-zero code so we have an idea whether this patch actually
+> > fixes
+> > a problem.
 > 
-> Whether a problem would happen in practice depends on when phy_init_eee()
-> fails, meaning it returns a negative non-zero code. I requested Russell to
-> review this patch to shed light on when phy_init_eee() would return a
-> negative non-zero code so we have an idea whether this patch actually fixes
-> a problem.
+> I don't suppose Russell is going to review the patch at this point. I will
+> submit this to net-next then. If someone actually reports a problem in
+> practice, I can always submit it to the stable trees.
 
-Urgh, so I need to read the code and report back?
+So the fact that I only saw your request this morning to look at
+phy_init_eee(), and to review this patch... because... I work for
+Oracle, and I've been looking at backporting Arm64 KVM patches to
+our kernel, been testing and debugging that effort... and the
+act that less than 24 hours had passed since you made the original
+request... yea, sorry, it's clearly my fault for not jumping on this
+the moment you sent the email.
 
-Well, looking at phy_init_eee(), it could return a negative vallue when:
+I get _so_ much email that incorrectly has me in the To: header. I
+also get _so_ much email that fails to list me in the To: header
+when the author wants me to respond. I don't have time to read every
+email as it comes in. I certainly don't have time to read every
+email in any case. I do the best I can, which varies considerably
+with my workload.
 
-1. phydev->drv is NULL
-2. if genphy_c45_eee_is_active() returns negative
-3. if genphy_c45_eee_is_active() returns zero, it returns
-   -EPROTONOSUPPORT
-4. if phy_set_bits_mmd() fails (e.g. communication error with the PHY)
+I already find that being single, fitting everything in during the
+day (paid work, chores, feeding oneself) is quite a mammoth task.
+There is no one else to do the laundry. There is no one else to get
+the shopping. There is no one else to do the washing up. There is no
+one else to take the rubbish out. All this I do myself, and serially
+because there is only one of me, and it all takes time away from
+sitting here reading every damn email as it comes in.
 
-If we then look at genphy_c45_eee_is_active(), then:
-
-genphy_c45_read_eee_adv() and genphy_c45_read_eee_lpa() propagate their
-non-zero return values, otherwise this function returns zero or positive
-integer.
-
-If we then look at genphy_c45_read_eee_adv(), then a failure of
-phy_read_mmd() would cause a negative value to be returned.
-
-Looking at genphy_c45_read_eee_lpa(), the same is true.
-
-So, it can be summarised as:
-
-- phydev->drv is NULL
-- there is a communication error accessing the PHY
-- EEE is not active
-
-otherwise, it returns zero on success.
-
-If one wishes to determine whether an error occurred vs EEE not being
-supported through negotiation for the negotiated speed, if it returns
--EPROTONOSUPPORT in the latter case. Other error codes mean either the
-driver has been unloaded or communication error.
-
-This has been expertly determined by reading the code, which only a
-phylib maintainer has the capability of doing. Thank you for using this
-service.
+And then when I end up doing something that _you_ very well could do
+(reading the phy_init_eee() code to find out when it might return a
+negative number) and then you send an email like this... yea... that
+really gets my goat.
 
 -- 
 RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
