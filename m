@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4185AC54E67
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Mar 2024 05:57:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7D07C54E67
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Mar 2024 05:57:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/2eLA/TH/ne/YsQmVXep4OzHNxDnmZn9sfsjEtn7A8g=; b=IBmvFPkNoMy2VZCCT/yhL2XdJT
-	uWWTo0eypTA2nCofFpr1n+XU1YXAPUN7bXlQtYxIbGkodOndUQTuUzZU0dUySMJs1cTHsLV1TmQWp
-	dA5dF3+DAAnJca6gNFEkweofhn0LRV0vEyXIg3I4iFB4I6JPQFDr8rMzv1moPWFgkhrvqlqvUQZDl
-	z3LIi74W/amYwyD0nDz2dZHvACWTFf8SF1f5aPiWXp7KAs2HDcQcNzMmHUIlXiV3XBflkn3wRVq74
-	nT6baaWtQHVFuU6rxeRFogdPkWgUSxB2EjqyxYJLbe3gvECMFg4btUGs5v3Up0GWwc+UuVHbBpsUE
-	XSag1mzg==;
+	bh=YUgDF4AfXPRSldFHt5AC3QHjV4yg9ILDETo3MMuKaiw=; b=wr6jSghRa6snuYp8tHzpMUz3O5
+	zj150SVwIFk4wfGIuv2a3+ZeEjzEBCPEu9VWjHu6akP2NOyGKeBvOe2Arcv6HE9C3y8uj4Lf2GPzw
+	jyrB8ZUsr/doIw9wE8HuY3EC2I0Ty8EsoDWULKDb0XQNS9OTEYQrmiCaqHlfQrQs7DBunAICLS+jm
+	BBEdm7qtQ3bUH4wCJjzSd7AsddG4psS5eTtQFMEbPnjFmtTGTkZwM6xvEiK9cZL5KvdPM9nK7FHKQ
+	p0ObzzgGGGr4liCOgPUD3rwnLy6N+lH/mfsgdNnrA1ek5izb/+iYa4ybwHIP6ABKbtMQSfj9wsKCG
+	gxsaG+Pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpMID-00000007aql-441j;
-	Wed, 27 Mar 2024 05:57:45 +0000
+	id 1rpMIH-00000007asd-1W4w;
+	Wed, 27 Mar 2024 05:57:49 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpMIB-00000007ap2-2Wbi;
-	Wed, 27 Mar 2024 05:57:44 +0000
-X-UUID: e9f9bba8ebfe11eeac1957ae9f99f617-20240326
+	id 1rpMIB-00000007apD-2fgM;
+	Wed, 27 Mar 2024 05:57:45 +0000
+X-UUID: ea166beaebfe11eeac1957ae9f99f617-20240326
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=/2eLA/TH/ne/YsQmVXep4OzHNxDnmZn9sfsjEtn7A8g=;
-	b=AdoOzG1WL8wqwnGWoL5L4CJkSqpmhxC34y+eVKyez1LyEldkjbCNprhNrVcPUn32OIkywzs1P8kbVcdeYmgUPVZiGrtZUUHoc46GV+KsZ8WrRFGb4btPsAinprcKlQd1yDArfg2TRCMM4bzZ3xUAxi7R6e6penZaSU0CFiIEKIg=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=YUgDF4AfXPRSldFHt5AC3QHjV4yg9ILDETo3MMuKaiw=;
+	b=U+5LRffixbOOSmqFoy/zRBfTwZeSo5z3maMRganlXUnmnnTWRoo4j3H9DkvyP1zSzjGBxscX6cfNkYFe9t7kmmQsBn/bXNf0yargIpyZB9Kl835K9F+yM4KGV9cdGEPG4p32cTNC6uJ10Jtp1+nF612IVowsGy6F84Kdy5INuEE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:5f248cc3-8b93-4371-925d-08eec3b06583,IP:0,U
+X-CID-O-INFO: VERSION:1.1.37,REQID:044c3c44-ce11-4bfc-bd64-5b52e7977e2f,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:de666000-c26b-4159-a099-3b9d0558e447,B
+X-CID-META: VersionHash:6f543d0,CLOUDID:4be37b85-8d4f-477b-89d2-1e3bdbef96d1,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: e9f9bba8ebfe11eeac1957ae9f99f617-20240326
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+X-UUID: ea166beaebfe11eeac1957ae9f99f617-20240326
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <yu-chang.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2121020942; Tue, 26 Mar 2024 22:57:37 -0700
+	with ESMTP id 1412951520; Tue, 26 Mar 2024 22:57:37 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Wed, 27 Mar 2024 13:57:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -64,9 +64,9 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <fan.chen@mediatek.com>,
 	<xiufeng.li@mediatek.com>, <yu-chang.lee@mediatek.com>
-Subject: [PATCH v2 2/3] dt-bindings: power: Add mediatek larb definition
-Date: Wed, 27 Mar 2024 13:57:31 +0800
-Message-ID: <20240327055732.28198-3-yu-chang.lee@mediatek.com>
+Subject: [PATCH v2 3/3] pmdomain: mediatek: support smi clamp protection
+Date: Wed, 27 Mar 2024 13:57:32 +0800
+Message-ID: <20240327055732.28198-4-yu-chang.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240327055732.28198-1-yu-chang.lee@mediatek.com>
 References: <20240327055732.28198-1-yu-chang.lee@mediatek.com>
@@ -74,9 +74,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240326_225743_690083_194FD687 
-X-CRM114-Status: UNSURE (   9.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240326_225743_715856_1C6C7B49 
+X-CRM114-Status: GOOD (  21.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,29 +90,340 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add Smart Multimedia Interface Local Arbiter to mediatek
-power domain.
+In order to avoid power glitch, this patch use smi clamp
+to disable/enable smi common port.
 
 Signed-off-by: yu-chang.lee <yu-chang.lee@mediatek.com>
 ---
- .../devicetree/bindings/power/mediatek,power-controller.yaml  | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/pmdomain/mediatek/mt8188-pm-domains.h |  41 ++++++-
+ drivers/pmdomain/mediatek/mtk-pm-domains.c    | 109 +++++++++++++-----
+ drivers/pmdomain/mediatek/mtk-pm-domains.h    |   1 +
+ 3 files changed, 115 insertions(+), 36 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-index 8985e2df8a56..228c0dec5253 100644
---- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-+++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-@@ -125,6 +125,10 @@ $defs:
-         $ref: /schemas/types.yaml#/definitions/phandle
-         description: phandle to the device containing the SMI register range.
+diff --git a/drivers/pmdomain/mediatek/mt8188-pm-domains.h b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
+index 7bbba4d56a77..39f057dca92c 100644
+--- a/drivers/pmdomain/mediatek/mt8188-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
+@@ -573,6 +573,18 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+ 		.pwr_sta2nd_offs = 0x170,
+ 		.sram_pdn_bits = BIT(8),
+ 		.sram_pdn_ack_bits = BIT(12),
++		.bp_cfg = {
++			BUS_PROT_WR(SMI,
++				    MT8188_SMI_COMMON_SMI_CLAMP_DIP_TO_VDO0,
++				    MT8188_SMI_COMMON_CLAMP_EN_SET,
++				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
++				    MT8188_SMI_COMMON_CLAMP_EN_STA),
++			BUS_PROT_WR(SMI,
++				    MT8188_SMI_COMMON_SMI_CLAMP_DIP_TO_VPP1,
++				    MT8188_SMI_COMMON_CLAMP_EN_SET,
++				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
++				    MT8188_SMI_COMMON_CLAMP_EN_STA),
++		},
+ 		.reset_smi = {
+ 			SMI_RESET_WR(MT8188_SMI_LARB10_RESET,
+ 				     MT8188_SMI_LARB10_RESET_ADDR),
+@@ -585,7 +597,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+ 			SMI_RESET_WR(MT8188_SMI_LARB15_RESET,
+ 				     MT8188_SMI_LARB15_RESET_ADDR),
+ 		},
+-		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
++		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_CLAMP_PROTECTION,
+ 	},
+ 	[MT8188_POWER_DOMAIN_IPE] = {
+ 		.name = "ipe",
+@@ -595,11 +607,18 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+ 		.pwr_sta2nd_offs = 0x170,
+ 		.sram_pdn_bits = BIT(8),
+ 		.sram_pdn_ack_bits = BIT(12),
++		.bp_cfg = {
++			BUS_PROT_WR(SMI,
++				    MT8188_SMI_COMMON_SMI_CLAMP_IPE_TO_VPP1,
++				    MT8188_SMI_COMMON_CLAMP_EN_SET,
++				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
++				    MT8188_SMI_COMMON_CLAMP_EN_STA),
++		},
+ 		.reset_smi = {
+ 			SMI_RESET_WR(MT8188_SMI_LARB12_RESET,
+ 				     MT8188_SMI_LARB12_RESET_ADDR),
+ 		},
+-		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
++		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_CLAMP_PROTECTION,
+ 	},
+ 	[MT8188_POWER_DOMAIN_CAM_VCORE] = {
+ 		.name = "cam_vcore",
+@@ -676,13 +695,20 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+ 		.pwr_sta2nd_offs = 0x170,
+ 		.sram_pdn_bits = BIT(8),
+ 		.sram_pdn_ack_bits = BIT(12),
++		.bp_cfg = {
++			BUS_PROT_WR(SMI,
++				    MT8188_SMI_COMMON_SMI_CLAMP_IPE_TO_VPP1,
++				    MT8188_SMI_COMMON_CLAMP_EN_SET,
++				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
++				    MT8188_SMI_COMMON_CLAMP_EN_STA),
++		},
+ 		.reset_smi = {
+ 			SMI_RESET_WR(MT8188_SMI_LARB16A_RESET,
+ 				     MT8188_SMI_LARB16A_RESET_ADDR),
+ 			SMI_RESET_WR(MT8188_SMI_LARB17A_RESET,
+ 				     MT8188_SMI_LARB17A_RESET_ADDR),
+ 		},
+-		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
++		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_CLAMP_PROTECTION,
+ 	},
+ 	[MT8188_POWER_DOMAIN_CAM_SUBB] = {
+ 		.name = "cam_subb",
+@@ -692,13 +718,20 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+ 		.pwr_sta2nd_offs = 0x170,
+ 		.sram_pdn_bits = BIT(8),
+ 		.sram_pdn_ack_bits = BIT(12),
++		.bp_cfg = {
++			BUS_PROT_WR(SMI,
++				    MT8188_SMI_COMMON_SMI_CLAMP_CAM_SUBB_TO_VDO0,
++				    MT8188_SMI_COMMON_CLAMP_EN_SET,
++				    MT8188_SMI_COMMON_CLAMP_EN_CLR,
++				    MT8188_SMI_COMMON_CLAMP_EN_STA),
++		},
+ 		.reset_smi = {
+ 			SMI_RESET_WR(MT8188_SMI_LARB16B_RESET,
+ 				     MT8188_SMI_LARB16B_RESET_ADDR),
+ 			SMI_RESET_WR(MT8188_SMI_LARB17B_RESET,
+ 				     MT8188_SMI_LARB17B_RESET_ADDR),
+ 		},
+-		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
++		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_CLAMP_PROTECTION,
+ 	},
+ };
  
-+     mediatek,larb:
-+        $ref: /schemas/types.yaml#/definitions/phandle
-+        description: phandle to the device containing the LARB register range.
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+index 9ab6fa105c8c..2a86ff4bf23e 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+@@ -47,9 +47,10 @@ struct scpsys_domain {
+ 	struct clk_bulk_data *subsys_clks;
+ 	struct regmap *infracfg_nao;
+ 	struct regmap *infracfg;
+-	struct regmap *smi;
++	struct regmap **smi;
+ 	struct regmap **larb;
+ 	int num_larb;
++	int num_smi;
+ 	struct regulator *supply;
+ };
+ 
+@@ -122,29 +123,19 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
+ 					MTK_POLL_TIMEOUT);
+ }
+ 
+-static struct regmap *scpsys_bus_protect_get_regmap(struct scpsys_domain *pd,
+-						    const struct scpsys_bus_prot_data *bpd)
+-{
+-	if (bpd->flags & BUS_PROT_COMPONENT_SMI)
+-		return pd->smi;
+-	else
+-		return pd->infracfg;
+-}
+-
+ static struct regmap *scpsys_bus_protect_get_sta_regmap(struct scpsys_domain *pd,
+ 							const struct scpsys_bus_prot_data *bpd)
+ {
+ 	if (bpd->flags & BUS_PROT_STA_COMPONENT_INFRA_NAO)
+ 		return pd->infracfg_nao;
+ 	else
+-		return scpsys_bus_protect_get_regmap(pd, bpd);
++		return pd->infracfg;
+ }
+ 
+ static int scpsys_bus_protect_clear(struct scpsys_domain *pd,
+-				    const struct scpsys_bus_prot_data *bpd)
++				    const struct scpsys_bus_prot_data *bpd,
++					struct regmap *sta_regmap, struct regmap *regmap)
+ {
+-	struct regmap *sta_regmap = scpsys_bus_protect_get_sta_regmap(pd, bpd);
+-	struct regmap *regmap = scpsys_bus_protect_get_regmap(pd, bpd);
+ 	u32 sta_mask = bpd->bus_prot_sta_mask;
+ 	u32 expected_ack;
+ 	u32 val;
+@@ -165,10 +156,9 @@ static int scpsys_bus_protect_clear(struct scpsys_domain *pd,
+ }
+ 
+ static int scpsys_bus_protect_set(struct scpsys_domain *pd,
+-				  const struct scpsys_bus_prot_data *bpd)
++				  const struct scpsys_bus_prot_data *bpd,
++				  struct regmap *sta_regmap, struct regmap *regmap)
+ {
+-	struct regmap *sta_regmap = scpsys_bus_protect_get_sta_regmap(pd, bpd);
+-	struct regmap *regmap = scpsys_bus_protect_get_regmap(pd, bpd);
+ 	u32 sta_mask = bpd->bus_prot_sta_mask;
+ 	u32 val;
+ 
+@@ -182,19 +172,32 @@ static int scpsys_bus_protect_set(struct scpsys_domain *pd,
+ 					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+ }
+ 
+-static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
++static int scpsys_clamp_bus_protection_enable(struct scpsys_domain *pd, bool is_smi)
+ {
++	int smi_count = 0;
 +
-     required:
-       - reg
+ 	for (int i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
+ 		const struct scpsys_bus_prot_data *bpd = &pd->data->bp_cfg[i];
++		struct regmap *sta_regmap, *regmap;
++		bool is_smi = bpd->flags & BUS_PROT_COMPONENT_SMI;
+ 		int ret;
  
+ 		if (!bpd->bus_prot_set_clr_mask)
+ 			break;
+ 
++		if (is_smi) {
++			sta_regmap = pd->smi[smi_count];
++			regmap = pd->smi[smi_count];
++			smi_count++;
++		} else {
++			sta_regmap = scpsys_bus_protect_get_sta_regmap(pd, bpd);
++			regmap = pd->infracfg;
++		}
++
+ 		if (bpd->flags & BUS_PROT_INVERTED)
+-			ret = scpsys_bus_protect_clear(pd, bpd);
++			ret = scpsys_bus_protect_clear(pd, bpd, sta_regmap, regmap);
+ 		else
+-			ret = scpsys_bus_protect_set(pd, bpd);
++			ret = scpsys_bus_protect_set(pd, bpd, sta_regmap, regmap);
+ 		if (ret)
+ 			return ret;
+ 	}
+@@ -202,19 +205,32 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
+ 	return 0;
+ }
+ 
+-static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
++static int scpsys_clamp_bus_protection_disable(struct scpsys_domain *pd, bool is_smi)
+ {
++	int smi_count = pd->num_smi - 1;
++
+ 	for (int i = SPM_MAX_BUS_PROT_DATA - 1; i >= 0; i--) {
+ 		const struct scpsys_bus_prot_data *bpd = &pd->data->bp_cfg[i];
++		struct regmap *sta_regmap, *regmap;
++		bool is_smi = bpd->flags & BUS_PROT_COMPONENT_SMI;
+ 		int ret;
+ 
+ 		if (!bpd->bus_prot_set_clr_mask)
+ 			continue;
+ 
++		if (is_smi) {
++			sta_regmap = pd->smi[smi_count];
++			regmap = pd->smi[smi_count];
++			smi_count--;
++		} else {
++			sta_regmap = scpsys_bus_protect_get_sta_regmap(pd, bpd);
++			regmap = pd->infracfg;
++		}
++
+ 		if (bpd->flags & BUS_PROT_INVERTED)
+-			ret = scpsys_bus_protect_set(pd, bpd);
++			ret = scpsys_bus_protect_set(pd, bpd, sta_regmap, regmap);
+ 		else
+-			ret = scpsys_bus_protect_clear(pd, bpd);
++			ret = scpsys_bus_protect_clear(pd, bpd, sta_regmap, regmap);
+ 		if (ret)
+ 			return ret;
+ 	}
+@@ -272,6 +288,12 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 	bool tmp;
+ 	int ret;
+ 
++	if (MTK_SCPD_CAPS(pd, MTK_SCPD_CLAMP_PROTECTION)) {
++		ret = scpsys_clamp_bus_protection_enable(pd, true);
++		if (ret)
++			return ret;
++	}
++
+ 	ret = scpsys_regulator_enable(pd->supply);
+ 	if (ret)
+ 		return ret;
+@@ -318,7 +340,13 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 	if (ret < 0)
+ 		goto err_disable_subsys_clks;
+ 
+-	ret = scpsys_bus_protect_disable(pd);
++	if (MTK_SCPD_CAPS(pd, MTK_SCPD_CLAMP_PROTECTION)) {
++		ret = scpsys_clamp_bus_protection_disable(pd, true);
++		if (ret)
++			return ret;
++	}
++
++	ret = scpsys_clamp_bus_protection_disable(pd, false);
+ 	if (ret < 0)
+ 		goto err_disable_sram;
+ 
+@@ -332,7 +360,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 	return 0;
+ 
+ err_enable_bus_protect:
+-	scpsys_bus_protect_enable(pd);
++	scpsys_clamp_bus_protection_enable(pd, false);
+ err_disable_sram:
+ 	scpsys_sram_disable(pd);
+ err_disable_subsys_clks:
+@@ -353,7 +381,13 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 	bool tmp;
+ 	int ret;
+ 
+-	ret = scpsys_bus_protect_enable(pd);
++	if (MTK_SCPD_CAPS(pd, MTK_SCPD_CLAMP_PROTECTION)) {
++		ret = scpsys_clamp_bus_protection_enable(pd, true);
++		if (ret)
++			return ret;
++	}
++
++	ret = scpsys_clamp_bus_protection_enable(pd, false);
+ 	if (ret < 0)
+ 		return ret;
+ 
+@@ -450,12 +484,23 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+ 	if (IS_ERR(pd->infracfg))
+ 		return ERR_CAST(pd->infracfg);
+ 
+-	smi_node = of_parse_phandle(node, "mediatek,smi", 0);
+-	if (smi_node) {
+-		pd->smi = device_node_to_regmap(smi_node);
+-		of_node_put(smi_node);
+-		if (IS_ERR(pd->smi))
+-			return ERR_CAST(pd->smi);
++	pd->num_smi = of_count_phandle_with_args(node, "mediatek,smi", NULL);
++	if (pd->num_smi > 0) {
++		pd->smi = devm_kcalloc(scpsys->dev, pd->num_smi, sizeof(*pd->smi), GFP_KERNEL);
++		if (!pd->smi)
++			return ERR_PTR(-ENOMEM);
++
++		for (i = 0; i < pd->num_smi; i++) {
++			smi_node = of_parse_phandle(node, "mediatek,smi", i);
++			if (!smi_node)
++				return ERR_PTR(-EINVAL);
++
++			pd->smi[i] = device_node_to_regmap(smi_node);
++			if (IS_ERR(pd->smi[i]))
++				return ERR_CAST(pd->smi[i]);
++		}
++	} else {
++		pd->num_smi = 0;
+ 	}
+ 
+ 	pd->num_larb = of_count_phandle_with_args(node, "mediatek,larb", NULL);
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.h b/drivers/pmdomain/mediatek/mtk-pm-domains.h
+index 31c2a1bb500f..e0eb7214719e 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.h
+@@ -13,6 +13,7 @@
+ #define MTK_SCPD_EXT_BUCK_ISO		BIT(6)
+ #define MTK_SCPD_HAS_INFRA_NAO		BIT(7)
+ #define MTK_SCPD_STRICT_BUS_PROTECTION	BIT(8)
++#define MTK_SCPD_CLAMP_PROTECTION	BIT(9)
+ #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
+ 
+ #define SPM_VDE_PWR_CON			0x0210
 -- 
 2.18.0
 
