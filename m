@@ -4,103 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1402C54E64
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 08:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 161DBC54E64
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 08:50:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vm8neqGmCcwB+1XXAd9zMCmUPIcIdZmM13yfXwpV3mY=; b=wV86UOluZr3lCwAuluyBJb2ZyS
-	U5uKlLUtkgIs9d7l3+to7iIcPCPjwqjuxI8kXR5u4E4cf045fy3RKBjae1kMCmwahSepJf7OSP4yE
-	Bev3CTm1cJ0iR2TZsK5mkvU5BXBZr4trG9ltgO65O4hF9zeOS+//q/r6VhJXHdMaZe0ueYtdr6/tn
-	80NTp5uaxhahmjAFZizH84mQedy7KPJZhYFbCCsUr5nmRkHn14kepFbbWQp6US/ObAWGu7W0hyXAi
-	IZOMpZRJ9Vm2bkpqrjipXPActXv1wU0M+5tFryW30KQSX2u8lK8oRFbwKn+MCyqgl4Rc8OIf1ATD9
-	llXfUhuQ==;
+	bh=oZ+YBLkNV6VEF2rUgGOJxYuEYM/uMvvAYGZ9fwfCJXw=; b=dbqQQS0hzR7NjZ/wmHPgggi3cH
+	DgKmxIuBKS4eAmPgV+VEWYAGpv+FHOz7hUbVDkxawds0MFmYB+6sdMD7bS/DESXQDmYU/+ns7mqUF
+	5htUtj2e5bewvwzgC5MAQSrN26aQDOej78znTJggbpJlpWfYUR7YdfKYjp14k+pg4fxDIopzHdLAe
+	Wo9YgU1lylOMs1HzAa6mdpfktj69OOv/FCIHsdghEfk3GWzR31XGwPN3yeXBe5IgCrpPMPy3rz+rC
+	9EMIj7SwsAysjI0hE+JDIXgZt0WnUncg+G7QBDVAUtwTjGi1aQLmfClD1m9+52oc1TV/lrQ2VklMh
+	78Kb4AEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rplNP-0000000D86q-3XsF;
-	Thu, 28 Mar 2024 08:44:47 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1rplT5-0000000D9cU-1HEH;
+	Thu, 28 Mar 2024 08:50:39 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rplNM-0000000D85X-2PEA
+	id 1rplSr-0000000D9Z0-2cop
 	for linux-mediatek@lists.infradead.org;
-	Thu, 28 Mar 2024 08:44:45 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-515a81928faso750946e87.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Mar 2024 01:44:43 -0700 (PDT)
+	Thu, 28 Mar 2024 08:50:37 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-33ed4dd8659so1134221f8f.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Mar 2024 01:50:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711615482; x=1712220282; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1711615819; x=1712220619; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=Vm8neqGmCcwB+1XXAd9zMCmUPIcIdZmM13yfXwpV3mY=;
-        b=jB4SQJHqmRQjmsBmRailcacefBbRZN+iBHDtLxixDP0StVnDkQplvi0Wc27HPletvE
-         oh+A6qCsVVuQ23BF6M/Q8JQF7qH++UrBz5xtQdZfifUD1UtuBo2VCvyLaoKHwIBxd8+w
-         0p7uHvfm8SwVlac2W8DytrT1+wYk2Tqi6Xf4IWDaoNpLGXq+UzRNjFe5EOb9aiiRIFtS
-         D8UG0EvtegHcDE9JIMwqTOhz+JS/g7a6v27WhLT2jgEy5lMeIi7haJyVpINB6rIifKwI
-         fM2qyIyupG0bZfGTcWgWU+rYfLfb/ybTy/q+8LxYNSrhLFXvEu4wOZOz5Pm5BjerQb+D
-         3M3g==
+        bh=oZ+YBLkNV6VEF2rUgGOJxYuEYM/uMvvAYGZ9fwfCJXw=;
+        b=B0NUhjxgVybjdFbdxPKbOlamMN2BuZPQs2S5HNzqB5Cxn916M4mOyyFbuhwqucj0/X
+         v3eI0cFjfddnJ8CV6/GwnlUDaxtasOoYkbI/OSQ+OQ8mFpCpfXybyqAqpytMVqYE9+Sr
+         IHkj5SGDTHiAnha6fabQggqu4O+Dv3P3RIjMHIXwhMIlL7XdyhtKBBpmK9LdLJdPwsWx
+         eqcsXFowG/scBYt5tML0+KOUFiWDQMslislxyAaaMube3Hh08XAUQkDeGXYgvvROlwDS
+         SP5OVI1+gdtD1D8hEUojVqlXBbqi2ESVi4fupRbku/zCpq5XkmlsuenH0z/xQ+NtUNHy
+         YFBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711615482; x=1712220282;
+        d=1e100.net; s=20230601; t=1711615819; x=1712220619;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Vm8neqGmCcwB+1XXAd9zMCmUPIcIdZmM13yfXwpV3mY=;
-        b=OWsY89mMaZctXtG5c4IP4RNon8nmZtNv6RlD5Q9jCzJFIguPELEwlzwouhRamUr5Oa
-         65hkQF3oKCT3eKjxBVefvxv1SSwVoySVJJAuCWX+7iFP0hYQ+9yqE80vqwOEAkrAcamk
-         AggifrkeyvAWSDYYWcNdH+UI5idRl85toyA+lH5zWdrTfNqalxu8+7imMrrFJQMlw3m0
-         Xc+fobEXxxJYMpmJAwSLRjU5vXrgc3Ldk4t3Iosval62xWeMjPESThUq0j444nWjrvxv
-         T7ixRPGH/c0PM0R2QSfWC5HbdRcuIdsN5WqXu6OjjGX6Ilq9hU2OmGCt2DdrJpvmhbE+
-         ke3Q==
-X-Gm-Message-State: AOJu0YzhYdjDBd4w0sbjlILL9WfCp6BJFSz+QIerzZJY1QgzHSllsVXN
-	iSDTXEHZvocfjOv4wfxGjC3j7bPKYXj2q00YExe+6O7Hz1eMVIU00ZKW/j7D+ak=
-X-Google-Smtp-Source: AGHT+IF3v72Lsejp74D9eHW05mq25ZXi+byMrEtB0ZgKT2QsyLHkbdos75fog2sbl9TVdTwjfx7xYQ==
-X-Received: by 2002:ac2:5b4c:0:b0:513:d49a:7a0d with SMTP id i12-20020ac25b4c000000b00513d49a7a0dmr1170137lfp.42.1711615482135;
-        Thu, 28 Mar 2024 01:44:42 -0700 (PDT)
+        bh=oZ+YBLkNV6VEF2rUgGOJxYuEYM/uMvvAYGZ9fwfCJXw=;
+        b=NK9biixj5fMStxzbemavz9qzPGJn8RspaXf1lY8oNCPKRSUDmwA6fUK8sKM8zedtO/
+         TyltITNMaHzuJVxsHtvcB0VFC8dCfTm9kGwGUBS5Yx9mz9luwz+8jjOyG4VCSCFu70U4
+         gmUXALMMj2bu3FUcq1VPY4l5L/U5jpgTaxj1j2h8t7YVFnqYBapYmSHeu7vlxaQOLG6j
+         wysyj/Lg5mFUWLcfdH36CrkUaZYMvLzzHz+6Q+4t1XN+Ze7u1IQmeGyygy4CdfgoyZBX
+         DNYVCJt1OTZ8pVEZB62JLMTIA8zZFswvxK1FLbGEfq1jiXTEAY2zXXCoRKuT8aFJqXag
+         ksKA==
+X-Forwarded-Encrypted: i=1; AJvYcCW0Hqugrh48YLIjeO3a0MDb/5oUD4/7RM+A7HsNQJFO86sUR6DLRUvNT9j0wTk5zK//iZh4k+5zxEAVICDZaqsDqTQrTg7k9oMKjn1K9Ad1vEdA
+X-Gm-Message-State: AOJu0Yw+zU4YTMj9bK4Decy35/oLkfwpSj6zJTxI/KgaDbcoa7z9eY+a
+	v/Q7SGPaJOq3HUQXxeVSHoUv0gEdB8bjPVR03F+DW0prB25hM6JbUzWn6oApXfo=
+X-Google-Smtp-Source: AGHT+IHtezabxk0LaPOL3zQ45H75rf+nCNsKrfQeSAmSXeRy5hUrXy9WJyMTcEop3ixcKCztrypIPg==
+X-Received: by 2002:a5d:540b:0:b0:341:a63c:58bc with SMTP id g11-20020a5d540b000000b00341a63c58bcmr1177900wrv.2.1711615818960;
+        Thu, 28 Mar 2024 01:50:18 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.219.148])
-        by smtp.gmail.com with ESMTPSA id fj3-20020a05600c0c8300b00414896b61e4sm4712117wmb.16.2024.03.28.01.44.40
+        by smtp.gmail.com with ESMTPSA id dv10-20020a0560000d8a00b00341ce1b64f0sm1156645wrb.17.2024.03.28.01.50.17
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 28 Mar 2024 01:44:41 -0700 (PDT)
-Message-ID: <12b911fb-ba8e-4fbc-bc7c-4de3a45d4581@linaro.org>
-Date: Thu, 28 Mar 2024 09:44:39 +0100
+        Thu, 28 Mar 2024 01:50:18 -0700 (PDT)
+Message-ID: <ace20109-fc4e-43f6-b82b-2ae7c2905b99@linaro.org>
+Date: Thu, 28 Mar 2024 09:50:16 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] dt-bindings: power: Add mediatek larb definition
-To: =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
- "amergnat@baylibre.com" <amergnat@baylibre.com>
-Cc: "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
- =?UTF-8?B?TWFuZHlKSCBMaXUgKOWKieS6uuWDlik=?= <MandyJH.Liu@mediatek.com>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>,
- =?UTF-8?B?WGl1ZmVuZyBMaSAo5p2O56eA5bOwKQ==?= <Xiufeng.Li@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>,
- =?UTF-8?B?RmFuIENoZW4gKOmZs+WHoSk=?= <fan.chen@mediatek.com>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>
-References: <20240327055732.28198-1-yu-chang.lee@mediatek.com>
- <20240327055732.28198-3-yu-chang.lee@mediatek.com>
- <6dd9959e-f741-47af-b10a-1894f72ae78f@linaro.org>
- <c3ca3d90-898e-44b0-ad0f-dd78c09c5fcd@linaro.org>
- <f3eedfb3495bb9c28b5cbf466387c24822c5b6f6.camel@mediatek.com>
- <7ff9c4c7-3b56-4a5b-95b7-c37cbf8bcd6d@linaro.org>
- <b957b072d5d88ed315982e914a7f700e0ccafb83.camel@mediatek.com>
- <038ccb20-71cb-40d2-9720-ce1a0d3eac8c@linaro.org>
- <7f24ca2806a7199e4de6fad17b8dc1f127c82180.camel@mediatek.com>
- <c59f2f33-ad6b-469d-96be-9345920370b4@linaro.org>
- <CAFGrd9qZhObQXvm2_abqaX83xMLqxjQETB2=wXpobDWU1CnvkA@mail.gmail.com>
- <3b04c5344435cdb941b5d132e8f5fbfdf9188d67.camel@mediatek.com>
+Subject: Re: [PATCH v2 0/2] Add board-id support for multiple DT selection
+To: Amrit Anand <quic_amrianan@quicinc.com>, robh@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, agross@kernel.org,
+ andersson@kernel.org, konrad.dybcio@linaro.org
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, kernel@quicinc.com, peter.griffin@linaro.org,
+ caleb.connolly@linaro.org, linux-riscv@lists.infradead.org,
+ chrome-platform@lists.linux.dev, linux-mediatek@lists.infradead.org
+References: <1710418312-6559-1-git-send-email-quic_amrianan@quicinc.com>
 Content-Language: en-US
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -147,12 +123,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <3b04c5344435cdb941b5d132e8f5fbfdf9188d67.camel@mediatek.com>
+In-Reply-To: <1710418312-6559-1-git-send-email-quic_amrianan@quicinc.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240328_014444_640408_2876AD2E 
-X-CRM114-Status: GOOD (  19.31  )
+X-CRM114-CacheID: sfid-20240328_015035_071805_D41D83B2 
+X-CRM114-Status: GOOD (  15.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,48 +143,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28/03/2024 07:06, Yu-chang Lee (李禹璋) wrote:
-> On Wed, 2024-03-27 at 12:55 +0100, Alexandre Mergnat wrote:
->>  	 
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>  Hello Yu-chang Lee,
->>
->> SMI LARB must have a power domain, according to "mediatek,smi-
->> larb.yaml"
->> Now you try to create a link from power domain to larb.
->>
->> Here is my understanding: when you enable/disable power domain, the
->> larb linked to this power domain may have an issue. Then you want to
->> retrieve de LARB linked to the power domain though the dts to manage
->> the LARB. 
+On 14/03/2024 13:11, Amrit Anand wrote:
+> The software packages are shipped with multiple device tree blobs supporting
+> multiple boards. For instance, suppose we have 3 SoC, each with 4 boards supported,
+> along with 2 PMIC support for each case which would lead to total of 24 DTB files.
+> Along with these configurations, OEMs may also add certain additional board variants.
+> Hence, a mechanism is required to pick the correct DTB for the board on which the
+> software package is deployed. Introduce a unique property for adding board identifiers
+> to device trees. Here, board-id property provides a mechanism for Qualcomm based
+> bootloaders to select the appropriate DTB.
 > 
-> Yes, this is what I am trying to do.
+> Isn't that what the compatible property is for?
+> -----------------------------------------------
+> The compatible property can be used for board matching, but requires
+> bootloaders and/or firmware to maintain a database of possible strings
+> to match against or have complex compatible string parsing and matching.
+> Compatible string matching becomes complicated when there are multiple
+> versions of the same board. It becomes difficult for the device tree
+> selection mechanism to recognize the right DTB to pick, with minor
+> differences in compatible strings.
 > 
->> IMHO, using the dts to have this information into the power
->> driver isn't necessary and may introduce some bugs if the LARB node
->> and power node in the DTS aren't aligned.
->>
->> It seems not implemented today but during the LARB probe, it should
->> "subscribe" to the linked power domain. Then, when the power domain
->> status is changing, it is able to "notify" (callback) the LARB, then
->> implement the good stuff to handle this power domain status change
->> into LARB driver.
->>
-> 
-> The problem with this method and why "smi clamp" is in power domain
-> driver is that our HW designer gave us a programming guide strictly
-> states the sequence of what we need to do to power on/off power domain.
-> Using callback, this sequence is no longer guaranteed and the side
-> effect is unknown... 
-> 
-> So I would like to stick with adding larbs just like smi into powe
+> The solution proposed here is simpler to implement and doesn't require the need
+> to update bootloader for every new board.
 
-You want your power domain driver to poke, asynchronously, without
-locking into registers of another device. And how does this not cause
-issues?
-
-No, work with your hardware engineers or Linux engineers on sane behavior.
+One of the concerns you got in v1 was: show us second user, so I believe
+in your interest is to Cc other platform maintainers which could support
+this idea.
 
 Best regards,
 Krzysztof
