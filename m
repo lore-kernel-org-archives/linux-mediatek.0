@@ -4,146 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9F6FC54E67
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 10:09:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7D31C54E67
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 10:09:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Subject:Cc:To:
-	From:Date:References:In-Reply-To:Message-Id:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pYBjGEQadh25rkMc0fkoc5Y7p79L1tP3xKDkS0IogRA=; b=xTemaE+slja5N6ncGQYoolUicM
-	rgIPs9J87CM6Ml5zL/uviz3Nwyvp/FlhtVlZiZ+GvANuXJX40IK9scTR+ZKOuLXokJKBLOGz1Te83
-	Ew25C1t3g5/Q2Cn1F3WFTcj3FZxocDPj1gs+lri1E5d5NcacGOT/QhUWiLRIw8Y7si0s44WmCKSHN
-	zkLACkrIHIZCTXbKwBAySPeSntbfVXkt3fr2P1EGtMzY3+f6psbzwjqO2Lb++silEvToSHfL0oD6D
-	jPfnNvev6FDV6iX1vbn++2N5gzWoCVfDNd310D0HOhGht4NxrPj2Yz3PiVuZS7+UPjhfZPx0TpEBf
-	TZihnMXg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f5wMiw22c5vII85IvPgCG/zbOc7PIefhra+kZ3K8oIE=; b=rCBa+t4AS/c03UoOTZpZa+lZNI
+	onl8sNhRETZCY4UYksQqlxppjI1n+bwBKfiuu0dllPMVCG9AA3e5t9HFkH7coKtG7ZBYFU6yzx/TH
+	b7FuxMTLao99nA06GOUZAWi5zUn2Tv1a1OEzxxbtvw3drDP/+cUws/nIDyHxCy6NLZCc4ecKU9DJ2
+	j+R58qCUlYPgM6FyAGosx87MPbLaiCo7H2I1vxKWAj8qEqY48d05nlmOdLl1hVkIE/ofjWjr4vD2n
+	2DTwVEailjUvXuplgGKsafpCMQMC95G6sSjCz1Uk1QRG+6w4MzO+93RtmbEq5Kk+p7uzmHu/GQq5n
+	U+f4nXUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpmhB-0000000DUDD-2aIv;
-	Thu, 28 Mar 2024 10:09:17 +0000
-Received: from flow7-smtp.messagingengine.com ([103.168.172.142])
+	id 1rpmha-0000000DUNy-1XRE;
+	Thu, 28 Mar 2024 10:09:42 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpmh6-0000000DUBo-0KV6;
-	Thu, 28 Mar 2024 10:09:14 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailflow.nyi.internal (Postfix) with ESMTP id 5C11820053F;
-	Thu, 28 Mar 2024 06:09:10 -0400 (EDT)
-Received: from imap51 ([10.202.2.101])
-  by compute5.internal (MEProxy); Thu, 28 Mar 2024 06:09:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-type:content-type:date:date:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:subject
-	:subject:to:to; s=fm1; t=1711620550; x=1711627750; bh=pYBjGEQadh
-	25rkMc0fkoc5Y7p79L1tP3xKDkS0IogRA=; b=bZ/F23JMPyrmIk/Ntj2seAKXb/
-	fK61J0u8ls1qOi2xe5oyM0yZSsH19MZp9yi+zXy1BWPve1eXg+la8Sg/UxYaSRbf
-	sz3eypDY+Q1OHr+nkbkQQXqADbtGp250VeO64zWBK3NlHeV3OuNA+AZQsGMbPzKc
-	tIO1b/JsdoMTi9Sa4qtzIxjRNmOivgTzJ16capo1Du6/6Fjf289SueUzJiDFabNr
-	qhusH+/OTCYUQ62Md0W6Kb3XPtKtRHxWZCqsKeVcfwYFkjwwnQZ/KFVsiJpsteij
-	UEFhJXpiMc48Yj8JBMnhQua7+EaskwT/bkKa7TU7dUlzuZ/tjgJdklUZue1A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:subject:subject:to
-	:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm2; t=1711620550; x=1711627750; bh=pYBjGEQadh25rkMc0fkoc5Y7p79L
-	1tP3xKDkS0IogRA=; b=wIyGwxiTM97DFQgPX8br04l4NUp1wbd4F4aPRoaUOJ69
-	IWjYFE2zpRpr2ZuCwawUtQP0xu1riAaYJcF8USi+pvWpGBrvqxzl6qy9M8HeUTvj
-	kVxQ7atxp6oErsgqwVoswrTCwbaiyfyUdp8+oN7eMDHgG5G6bSbHffjZHTbQsPbP
-	IflwKJRYQrIc3e2sOalAP3O2nnPS7RFCYwh52d72tHyVVP1qCEG8loNKTO3Li5SS
-	3ttm0HswwW743xnKX1Ty4B5+hDe8/KcLasvI/O1mopYD2mG+ye8Mw2HvxrKxhJv0
-	BtW1IYz8le5pBrV97eBtuTiYg1cJRixjcewJiJzDtg==
-X-ME-Sender: <xms:xEEFZjUDB6vUXVuE4su_mfFztVEXuLQBqnkQAhHLwG1jR8Gk4Rhccg>
-    <xme:xEEFZrkXsFEZpvOySs979kbBxybPVD4HPzNHJDAuQc2A74iPvQQqs8EEN8sgZ1AOY
-    -B735Q1j88_yj5yeME>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudduledgudduucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepofgfggfkjghffffhvfevufgtsehttdertderredtnecuhfhrohhmpedftehr
-    nhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrth
-    htvghrnhepffehueegteeihfegtefhjefgtdeugfegjeelheejueethfefgeeghfektdek
-    teffnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprg
-    hrnhgusegrrhhnuggsrdguvg
-X-ME-Proxy: <xmx:xEEFZvanNkHDHk3D4daIt3HN3RRy4VJsLZBS_5xTq6OZ_s46lBHeqg>
-    <xmx:xEEFZuXz105eJN6iaqF1LnVwLMEtc10LEM014QjmGYfrwvQMnV9zQQ>
-    <xmx:xEEFZtlackC-bm2ZG6jhrgNjSy9Qg70Et6FoLLjgTPEKil-mStUOQg>
-    <xmx:xEEFZrdAQp1QGnibQ6HQuAZmU_FkzEzvep2EzwBzRXg0_5Nan7e3Mg>
-    <xmx:xkEFZvTJcmNZMFGcjkzffyZ1DB1SyuiY0BkmrH3Smejf5bob7fZc1n9GOA0>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
-	id E6410B6008D; Thu, 28 Mar 2024 06:09:07 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.11.0-alpha0-333-gbfea15422e-fm-20240327.001-gbfea1542
+	id 1rpmhU-0000000DUKC-2Xeo
+	for linux-mediatek@lists.infradead.org;
+	Thu, 28 Mar 2024 10:09:39 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-34175878e3cso532371f8f.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Mar 2024 03:09:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1711620574; x=1712225374; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=f5wMiw22c5vII85IvPgCG/zbOc7PIefhra+kZ3K8oIE=;
+        b=LaqYCvNWv8hphPBrLU6V64wZXc5vfDfI7TD8JUfRBI0NnNIRN+rHBP+uTWn/hOtJsb
+         dr+htirTfkM2YaOHZuc0P/NVPQyrbX89l/bIr066Z7tuhjPeOO5YmFFGxhunBNSTdZn4
+         cgI/mgVwR28PVQz63uvaHnuwjxilOrg2IVXYONmkbq6hd7sYyqBoLIOJplrG3cq//zz5
+         KYqi3EBv9v/vhpVXwbcr+tS7K89c37gOyJ6a1nnz+KOX9vCeDs0uNUjWTm4yjB/5ZyD1
+         iEphKuQu7nY9BjdfFCpBc1zciHMYJze/RUDyzfvawTZzi2BU+DPFcflcEzlpjz+sUnlq
+         WEUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1711620574; x=1712225374;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=f5wMiw22c5vII85IvPgCG/zbOc7PIefhra+kZ3K8oIE=;
+        b=GmrAPd71SNuI1P1GUjb3dWMJigNQD9hQGbkq5z11r0ATV0DoXvIGNFoI5hoX85nyf6
+         KXu95gHcdDc/wnqjIOQsEGmyci7+YMDajC7BJBqKhikzmaPptM0Y93aqFJuF9HPqoYhD
+         jLrw1auBlD4IQ6elMkGozObb4t0FrLYFKj6ow/+mNT4/MH8yRcFgrrCDZ05o3sIlMzOs
+         /l2O5TT/jCKPvAghddmxW6zcPjb1cjvb/irts/f3qcWg1CIOL/a0BXxFaaNxZxlMot4Z
+         rsQ7+h2VtMV9EnAXtsEKxcwPai+EyTbqAZOe22aRlD+SJT5p+UxaV6I6QhOqmgtz5uNY
+         S2WQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVPRMe6n7DwPQigzOQFy/XJbVIzpjWEqOJkmDgeC1jpxYqTtlBb1OQoQi5ej7KXsTkaTq9M/AByyUHSl54WFw1SW4ERJWhQl4GGNWa/Gwglzu53
+X-Gm-Message-State: AOJu0YyPlFB957PfdNW+yHAD01FmIAZ/hXDer7pRlij/7n6fs9uMh0PM
+	Kvwj/4xhaYYdo9eWa0lveSsvxzi5l20d8sDW9kFn24Ti1W2pyrvH9R7Ytm74Bb8=
+X-Google-Smtp-Source: AGHT+IFGHWYadDJCgABhwjbgmr/G/9ahD5CWJZRFUjAkHe014xq2ZOOYv0q270M74EFrQt4il5g9rw==
+X-Received: by 2002:a5d:6d82:0:b0:33e:9292:b194 with SMTP id l2-20020a5d6d82000000b0033e9292b194mr2493550wrs.14.1711620574475;
+        Thu, 28 Mar 2024 03:09:34 -0700 (PDT)
+Received: from [10.1.5.127] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.gmail.com with ESMTPSA id ea2-20020a0560000ec200b003432d79876esm1316197wrb.97.2024.03.28.03.09.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 28 Mar 2024 03:09:34 -0700 (PDT)
+Message-ID: <4dba5a65-d1dc-4a80-bcaa-fe9ba02c5082@baylibre.com>
+Date: Thu, 28 Mar 2024 11:09:32 +0100
 MIME-Version: 1.0
-Message-Id: <2e9257af-c123-406b-a189-eaebeecc1d71@app.fastmail.com>
-In-Reply-To: <ZgUGXTKPVhrA1tam@matsya>
-References: <20240327160314.9982-1-apais@linux.microsoft.com>
- <20240327160314.9982-3-apais@linux.microsoft.com> <ZgUGXTKPVhrA1tam@matsya>
-Date: Thu, 28 Mar 2024 11:08:47 +0100
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "Vinod Koul" <vkoul@kernel.org>, "Allen Pais" <apais@linux.microsoft.com>
-Cc: linux-kernel@vger.kernel.org, "Tejun Heo" <tj@kernel.org>,
- "Kees Cook" <keescook@chromium.org>, "Hector Martin" <marcan@marcan.st>,
- "Sven Peter" <sven@svenpeter.dev>,
- "Florian Fainelli" <florian.fainelli@broadcom.com>,
- "Ray Jui" <rjui@broadcom.com>, "Scott Branden" <sbranden@broadcom.com>,
- "Paul Cercueil" <paul@crapouillou.net>, Eugeniy.Paltsev@synopsys.com,
- "Manivannan Sadhasivam" <manivannan.sadhasivam@linaro.org>,
- "Viresh Kumar" <vireshk@kernel.org>, "Frank Li" <Frank.Li@nxp.com>,
- "Leo Li" <leoyang.li@nxp.com>, zw@zh-kernel.org,
- "Zhou Wang" <wangzhou1@hisilicon.com>, haijie1@huawei.com,
- "Shawn Guo" <shawnguo@kernel.org>,
- "Sascha Hauer" <s.hauer@pengutronix.de>,
- "Sean Wang" <sean.wang@mediatek.com>,
- "Matthias Brugger" <matthias.bgg@gmail.com>,
- "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, logang@deltatee.com,
- "Daniel Mack" <daniel@zonque.org>,
- "Haojian Zhuang" <haojian.zhuang@gmail.com>,
- "Robert Jarzmik" <robert.jarzmik@free.fr>,
- "Bjorn Andersson" <andersson@kernel.org>,
- "Konrad Dybcio" <konrad.dybcio@linaro.org>,
- "Orson Zhai" <orsonzhai@gmail.com>,
- "Baolin Wang" <baolin.wang@linux.alibaba.com>,
- "Chunyan Zhang" <zhang.lyra@gmail.com>,
- "Patrice Chotard" <patrice.chotard@foss.st.com>,
- "Linus Walleij" <linus.walleij@linaro.org>,
- "Chen-Yu Tsai" <wens@csie.org>,
- "Jernej Skrabec" <jernej.skrabec@gmail.com>, peter.ujfalusi@gmail.com,
- "K. Y. Srinivasan" <kys@microsoft.com>,
- "Haiyang Zhang" <haiyangz@microsoft.com>, "Wei Liu" <wei.liu@kernel.org>,
- "Dexuan Cui" <decui@microsoft.com>,
- "Jassi Brar" <jassisinghbrar@gmail.com>,
- "Mauro Carvalho Chehab" <mchehab@kernel.org>,
- maintainers@bluecherrydvr.com, aubin.constans@microchip.com,
- "Ulf Hansson" <ulf.hansson@linaro.org>,
- "Manuel Lauss" <manuel.lauss@gmail.com>,
- =?UTF-8?Q?Micha=C5=82_Miros=C5=82aw?= <mirq-linux@rere.qmqm.pl>,
- "jh80.chung" <jh80.chung@samsung.com>, oakad@yahoo.com,
- "Kunihiko Hayashi" <hayashi.kunihiko@socionext.com>,
- "Masami Hiramatsu" <mhiramat@kernel.org>, brucechang@via.com.tw,
- HaraldWelte@viatech.com, pierre@ossman.eu, duncan.sands@free.fr,
- "Alan Stern" <stern@rowland.harvard.edu>,
- "Oliver Neukum" <oneukum@suse.com>,
- openipmi-developer@lists.sourceforge.net, dmaengine@vger.kernel.org,
- asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
- imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
- linux-mediatek@lists.infradead.org, linux-actions@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-riscv@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- linux-hyperv@vger.kernel.org, linux-rdma@vger.kernel.org,
- linux-media@vger.kernel.org,
- "linux-mmc @ vger . kernel . org" <linux-mmc@vger.kernel.org>,
- Linux-OMAP <linux-omap@vger.kernel.org>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- linux-s390@vger.kernel.org, Netdev <netdev@vger.kernel.org>,
- linux-usb@vger.kernel.org
-Subject: Re: [PATCH 2/9] dma: Convert from tasklet to BH workqueue
-Content-Type: text/plain
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/18] Add audio support for the MediaTek Genio 350-evk
+ board
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+ Lee Jones <lee@kernel.org>, Mark Brown <broonie@kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Conor Dooley
+ <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ linux-arm-kernel@lists.infradead.org, Takashi Iwai <tiwai@suse.com>,
+ Jaroslav Kysela <perex@perex.cz>, Flora Fu <flora.fu@mediatek.com>,
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
+ Nicolas Belin <nbelin@baylibre.com>, Fabien Parent <fparent@baylibre.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>, Will Deacon <will@kernel.org>
+References: <20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com>
+ <53671deb-9c11-43c1-8deb-93fe4708651a@collabora.com>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <53671deb-9c11-43c1-8deb-93fe4708651a@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240328_030912_608159_07A16D85 
-X-CRM114-Status: GOOD (  12.01  )
+X-CRM114-CacheID: sfid-20240328_030936_680959_A3053866 
+X-CRM114-Status: GOOD (  16.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -158,35 +109,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 28, 2024, at 06:55, Vinod Koul wrote:
-> On 27-03-24, 16:03, Allen Pais wrote:
->> The only generic interface to execute asynchronously in the BH context is
->> tasklet; however, it's marked deprecated and has some design flaws. To
->> replace tasklets, BH workqueue support was recently added. A BH workqueue
->> behaves similarly to regular workqueues except that the queued work items
->> are executed in the BH context.
->
-> Thanks for conversion, am happy with BH alternative as it helps in
-> dmaengine where we need shortest possible time between tasklet and
-> interrupt handling to maximize dma performance
+Hi Angelo
 
-I still feel that we want something different for dmaengine,
-at least in the long run. As we have discussed in the past,
-the tasklet context in these drivers is what the callbacks
-from the dma client device is run in, and a lot of these probably
-want something other than tasklet context, e.g. just call
-complete() on a client-provided completion structure.
+On 26/02/2024 15:54, AngeloGioacchino Del Regno wrote:
+> Il 26/02/24 15:01, Alexandre Mergnat ha scritto:
+>> This serie aim to add the following audio support for the Genio 350-evk:
+>> - Playback
+>>    - 2ch Headset Jack (Earphone)
+>>    - 1ch Line-out Jack (Speaker)
+>>    - 8ch HDMI Tx
+>> - Capture
+>>    - 1ch DMIC (On-board Digital Microphone)
+>>    - 1ch AMIC (On-board Analogic Microphone)
+>>    - 1ch Headset Jack (External Analogic Microphone)
+>>
+>> Of course, HDMI playback need the MT8365 display patches [1] and a DTS
+>> change documented in "mediatek,mt8365-mt6357.yaml".
+>>
+>> [1]: 
+>> https://lore.kernel.org/all/20231023-display-support-v1-0-5c860ed5c33b@baylibre.com/
+>>
+>> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> 
+> Actually, I am cooking a series (I'm finishing the testing....) that 
+> brings quite
+> a bit of cleanups in MTK ASoC, including the commonization of the 
+> machine driver
+> probe, with the dai-link DT nodes, and which also modernizes most of the 
+> existing
+> drivers to use that instead.
+> 
+> If you wait for a day or two, your mt8365-mt6357.c driver's probe 
+> function can be
+> shrunk to ~3 lines or something like that.. very easily :-)
 
-Instead of open-coding the use of the system_bh_wq in each
-dmaengine, how about we start with a custom WQ_BH
-specifically for the dmaengine subsystem and wrap them
-inside of another interface.
+Just to inform you. I'm aware of your serie. Currently, I've fixed my 
+patches according to the comments. The next step will be to rebase my 
+serie over yours and do the changes to be aligned with your new 
+implementation.
 
-Since almost every driver associates the tasklet with the
-dma_chan, we could go one step further and add the
-work_queue structure directly into struct dma_chan,
-with the wrapper operating on the dma_chan rather than
-the work_queue.
+I've planned to review your serie during my last task, but it seems 
+already approved and already (partially) merged into linux-next, sorry.
 
-      Arnd
+
+-- 
+Regards,
+Alexandre
 
