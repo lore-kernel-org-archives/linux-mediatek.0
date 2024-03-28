@@ -4,131 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 161DBC54E64
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 08:50:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0492C54E67
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 08:52:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oZ+YBLkNV6VEF2rUgGOJxYuEYM/uMvvAYGZ9fwfCJXw=; b=dbqQQS0hzR7NjZ/wmHPgggi3cH
-	DgKmxIuBKS4eAmPgV+VEWYAGpv+FHOz7hUbVDkxawds0MFmYB+6sdMD7bS/DESXQDmYU/+ns7mqUF
-	5htUtj2e5bewvwzgC5MAQSrN26aQDOej78znTJggbpJlpWfYUR7YdfKYjp14k+pg4fxDIopzHdLAe
-	Wo9YgU1lylOMs1HzAa6mdpfktj69OOv/FCIHsdghEfk3GWzR31XGwPN3yeXBe5IgCrpPMPy3rz+rC
-	9EMIj7SwsAysjI0hE+JDIXgZt0WnUncg+G7QBDVAUtwTjGi1aQLmfClD1m9+52oc1TV/lrQ2VklMh
-	78Kb4AEw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8Z16nDYO14OlggL2k+8tkNqpLiDh6RkJfQheHk95wXc=; b=CVMr1LqtPoTjTJdtsjlO8586U6
+	5cABAy+vR7IEqglIGsOLP9uN511j1HwHzYxWLrEGL6rxfj5ul3fhx7LI5J8uGrmBjNVGWBb/MHQZg
+	MwiUA0BMPyhnFDdxCuAUJsAZvZ8Fz5SFAXv8QD2wjv6tEWwS9LXkVon/Y/xl8aTeDfu5eWLApTx5k
+	A6wxiWzrgOBsfyzdeu8bj4D/ON12nGMBa7Fo6W6qVssdumQeGlcbaosAdhllosw05XiassfMg2smM
+	TIy2V+6+KhMiB9wCt3z/TgcK3x9rVxmxly86Wkq2hApAtfVME7WVzekPFFm3nxmGbX/MnmEBakJ5K
+	BCwVgBdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rplT5-0000000D9cU-1HEH;
-	Thu, 28 Mar 2024 08:50:39 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1rplUr-0000000DAbb-29ed;
+	Thu, 28 Mar 2024 08:52:29 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rplSr-0000000D9Z0-2cop
+	id 1rplUI-0000000DAE0-3kM1
 	for linux-mediatek@lists.infradead.org;
-	Thu, 28 Mar 2024 08:50:37 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-33ed4dd8659so1134221f8f.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Mar 2024 01:50:20 -0700 (PDT)
+	Thu, 28 Mar 2024 08:52:02 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-41543b772e6so4991385e9.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Mar 2024 01:51:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711615819; x=1712220619; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=oZ+YBLkNV6VEF2rUgGOJxYuEYM/uMvvAYGZ9fwfCJXw=;
-        b=B0NUhjxgVybjdFbdxPKbOlamMN2BuZPQs2S5HNzqB5Cxn916M4mOyyFbuhwqucj0/X
-         v3eI0cFjfddnJ8CV6/GwnlUDaxtasOoYkbI/OSQ+OQ8mFpCpfXybyqAqpytMVqYE9+Sr
-         IHkj5SGDTHiAnha6fabQggqu4O+Dv3P3RIjMHIXwhMIlL7XdyhtKBBpmK9LdLJdPwsWx
-         eqcsXFowG/scBYt5tML0+KOUFiWDQMslislxyAaaMube3Hh08XAUQkDeGXYgvvROlwDS
-         SP5OVI1+gdtD1D8hEUojVqlXBbqi2ESVi4fupRbku/zCpq5XkmlsuenH0z/xQ+NtUNHy
-         YFBg==
+        d=linaro.org; s=google; t=1711615912; x=1712220712; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=8Z16nDYO14OlggL2k+8tkNqpLiDh6RkJfQheHk95wXc=;
+        b=OkC4V6tEym1mGaxfxpy68bPE6sYvDx8HSRXSE99HkqLz0eMFbzmplfgzM8X3qKxbwP
+         TGwzCqn4mpKKBptjCGYG5q7ipD+Ha9VqhU3hsyY2n5ANfglaocrELfVDVQ15Ab3Wq/Iq
+         gzWuR2qS4Yf3nQ0NABZFiWlncejXuhIzjYIuoMWwc89Va3Cf8U2rxLDjgZ9zlot+wot3
+         oBmlkOaDrXam0txD0mdCIN0qPWxDNg9ZRdgkvdye2L7jPwwhbNEc3jD5qJQGEa21bRog
+         NgudglinWkqkZ63aWzdHNVml2q1VyTJVwAEvfBXvvIwAufBzsdM0svYnIX/dDepxSGc+
+         xWUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711615819; x=1712220619;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=oZ+YBLkNV6VEF2rUgGOJxYuEYM/uMvvAYGZ9fwfCJXw=;
-        b=NK9biixj5fMStxzbemavz9qzPGJn8RspaXf1lY8oNCPKRSUDmwA6fUK8sKM8zedtO/
-         TyltITNMaHzuJVxsHtvcB0VFC8dCfTm9kGwGUBS5Yx9mz9luwz+8jjOyG4VCSCFu70U4
-         gmUXALMMj2bu3FUcq1VPY4l5L/U5jpgTaxj1j2h8t7YVFnqYBapYmSHeu7vlxaQOLG6j
-         wysyj/Lg5mFUWLcfdH36CrkUaZYMvLzzHz+6Q+4t1XN+Ze7u1IQmeGyygy4CdfgoyZBX
-         DNYVCJt1OTZ8pVEZB62JLMTIA8zZFswvxK1FLbGEfq1jiXTEAY2zXXCoRKuT8aFJqXag
-         ksKA==
-X-Forwarded-Encrypted: i=1; AJvYcCW0Hqugrh48YLIjeO3a0MDb/5oUD4/7RM+A7HsNQJFO86sUR6DLRUvNT9j0wTk5zK//iZh4k+5zxEAVICDZaqsDqTQrTg7k9oMKjn1K9Ad1vEdA
-X-Gm-Message-State: AOJu0Yw+zU4YTMj9bK4Decy35/oLkfwpSj6zJTxI/KgaDbcoa7z9eY+a
-	v/Q7SGPaJOq3HUQXxeVSHoUv0gEdB8bjPVR03F+DW0prB25hM6JbUzWn6oApXfo=
-X-Google-Smtp-Source: AGHT+IHtezabxk0LaPOL3zQ45H75rf+nCNsKrfQeSAmSXeRy5hUrXy9WJyMTcEop3ixcKCztrypIPg==
-X-Received: by 2002:a5d:540b:0:b0:341:a63c:58bc with SMTP id g11-20020a5d540b000000b00341a63c58bcmr1177900wrv.2.1711615818960;
-        Thu, 28 Mar 2024 01:50:18 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.148])
-        by smtp.gmail.com with ESMTPSA id dv10-20020a0560000d8a00b00341ce1b64f0sm1156645wrb.17.2024.03.28.01.50.17
+        d=1e100.net; s=20230601; t=1711615912; x=1712220712;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=8Z16nDYO14OlggL2k+8tkNqpLiDh6RkJfQheHk95wXc=;
+        b=pS8TOmeiBitMT/WLdhTVpfni6jDBGucULe3wzLggpKvaFbA0Z/KMF1dDYgAULn4VjR
+         jYSUPajZKxKia8hV9+htWsJQIF++zsUu2F6f5AwAImu0orpZhOC3cpI+K/CgmEwXd7wC
+         yJ8q1dzUHZp6LdbpBrzWzhmJbK0M3HmzpomPBU/DGvfJhDei34iQj57/tzAS7X2IWcbO
+         prxmMNThLTt3M2gkXFartY6vSnnXaD30CFvYLdMPzDFMLcD+xA0jaiHUQpaalLQ8mS5H
+         194RyZBka3h/W1OgErVH/QSOiuuOI9B71HdYK6f5fNxOu+FlVVUufMspcrkb7ZoMxUtl
+         u0lw==
+X-Forwarded-Encrypted: i=1; AJvYcCWohienpdl9Tc1J+eaXpkW7ueCsEOlbB5IIaQeLuDt4vRyOalr7J7COliigpTSovVaL8UN2XBDpKL48tDrytCkGS1NEX8hLGC/vYp0nD/Jjzr7a
+X-Gm-Message-State: AOJu0Yx1d2HUK8Yu/40b3/ZaWp3Lu5uDS4vxu0KPXB2w7lHZfg5phy+y
+	xKis/UwZs3My80MxVqsaPCqiPlC7W5SK26Qif3U5mhVzsOUeeWGxRsNYGlrIHtA=
+X-Google-Smtp-Source: AGHT+IHy/MxXCnVTpL7akYMlfGf/5b/GqskHacgJBue5slPJxjHyclv+1Q6ddcA0c6SLuRjScxeoew==
+X-Received: by 2002:a5d:51c3:0:b0:341:bda1:f650 with SMTP id n3-20020a5d51c3000000b00341bda1f650mr1811349wrv.15.1711615911615;
+        Thu, 28 Mar 2024 01:51:51 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:982:cbb0:6306:1c7a:72c2:892a? ([2a01:e0a:982:cbb0:6306:1c7a:72c2:892a])
+        by smtp.gmail.com with ESMTPSA id a9-20020a056000050900b00341d7596ec0sm1160342wrf.15.2024.03.28.01.51.50
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 28 Mar 2024 01:50:18 -0700 (PDT)
-Message-ID: <ace20109-fc4e-43f6-b82b-2ae7c2905b99@linaro.org>
-Date: Thu, 28 Mar 2024 09:50:16 +0100
+        Thu, 28 Mar 2024 01:51:51 -0700 (PDT)
+Message-ID: <9af9cfd1-38c7-4f38-a652-fd046f427f98@linaro.org>
+Date: Thu, 28 Mar 2024 09:51:49 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/2] Add board-id support for multiple DT selection
-To: Amrit Anand <quic_amrianan@quicinc.com>, robh@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, agross@kernel.org,
- andersson@kernel.org, konrad.dybcio@linaro.org
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, kernel@quicinc.com, peter.griffin@linaro.org,
- caleb.connolly@linaro.org, linux-riscv@lists.infradead.org,
- chrome-platform@lists.linux.dev, linux-mediatek@lists.infradead.org
-References: <1710418312-6559-1-git-send-email-quic_amrianan@quicinc.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <1710418312-6559-1-git-send-email-quic_amrianan@quicinc.com>
-Content-Type: text/plain; charset=UTF-8
+From: Neil Armstrong <neil.armstrong@linaro.org>
+Subject: Re: [PATCH RESEND v6 3/5] spmi: pmic-arb: Make the APID init a
+ version operation
+To: Abel Vesa <abel.vesa@linaro.org>, Stephen Boyd <sboyd@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Cc: Srini Kandagatla <srinivas.kandagatla@linaro.org>,
+ Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+References: <20240326-spmi-multi-master-support-v6-0-1c87d8306c5b@linaro.org>
+ <20240326-spmi-multi-master-support-v6-3-1c87d8306c5b@linaro.org>
+Content-Language: en-US, fr
+Autocrypt: addr=neil.armstrong@linaro.org; keydata=
+ xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
+ GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
+ BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
+ qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
+ 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
+ AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
+ OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
+ Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
+ YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
+ GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
+ UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
+ GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
+ yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
+ QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
+ SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
+ 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
+ Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
+ oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
+ M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
+ 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
+ KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
+ 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
+ QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
+Organization: Linaro
+In-Reply-To: <20240326-spmi-multi-master-support-v6-3-1c87d8306c5b@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240328_015035_071805_D41D83B2 
-X-CRM114-Status: GOOD (  15.44  )
+X-CRM114-CacheID: sfid-20240328_015155_238421_8254053F 
+X-CRM114-Status: GOOD (  28.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,37 +130,338 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: neil.armstrong@linaro.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/03/2024 13:11, Amrit Anand wrote:
-> The software packages are shipped with multiple device tree blobs supporting
-> multiple boards. For instance, suppose we have 3 SoC, each with 4 boards supported,
-> along with 2 PMIC support for each case which would lead to total of 24 DTB files.
-> Along with these configurations, OEMs may also add certain additional board variants.
-> Hence, a mechanism is required to pick the correct DTB for the board on which the
-> software package is deployed. Introduce a unique property for adding board identifiers
-> to device trees. Here, board-id property provides a mechanism for Qualcomm based
-> bootloaders to select the appropriate DTB.
+On 26/03/2024 17:28, Abel Vesa wrote:
+> Rather than using conditionals in probe function, add the APID init
+> as a version specific operation. Due to v7, which supports multiple
+> buses, pass on the bus index to be used for sorting out the apid base
+> and count.
 > 
-> Isn't that what the compatible property is for?
-> -----------------------------------------------
-> The compatible property can be used for board matching, but requires
-> bootloaders and/or firmware to maintain a database of possible strings
-> to match against or have complex compatible string parsing and matching.
-> Compatible string matching becomes complicated when there are multiple
-> versions of the same board. It becomes difficult for the device tree
-> selection mechanism to recognize the right DTB to pick, with minor
-> differences in compatible strings.
+> Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
+> ---
+>   drivers/spmi/spmi-pmic-arb.c | 199 +++++++++++++++++++++++++++----------------
+>   1 file changed, 124 insertions(+), 75 deletions(-)
 > 
-> The solution proposed here is simpler to implement and doesn't require the need
-> to update bootloader for every new board.
+> diff --git a/drivers/spmi/spmi-pmic-arb.c b/drivers/spmi/spmi-pmic-arb.c
+> index 9ed1180fe31f..38fed8a585fe 100644
+> --- a/drivers/spmi/spmi-pmic-arb.c
+> +++ b/drivers/spmi/spmi-pmic-arb.c
+> @@ -183,6 +183,7 @@ struct spmi_pmic_arb {
+>    * struct pmic_arb_ver_ops - version dependent functionality.
+>    *
+>    * @ver_str:		version string.
+> + * @init_apid:		finds the apid base and count
+>    * @ppid_to_apid:	finds the apid for a given ppid.
+>    * @non_data_cmd:	on v1 issues an spmi non-data command.
+>    *			on v2 no HW support, returns -EOPNOTSUPP.
+> @@ -202,6 +203,7 @@ struct spmi_pmic_arb {
+>    */
+>   struct pmic_arb_ver_ops {
+>   	const char *ver_str;
+> +	int (*init_apid)(struct spmi_pmic_arb *pmic_arb, int index);
+>   	int (*ppid_to_apid)(struct spmi_pmic_arb *pmic_arb, u16 ppid);
+>   	/* spmi commands (read_cmd, write_cmd, cmd) functionality */
+>   	int (*offset)(struct spmi_pmic_arb *pmic_arb, u8 sid, u16 addr,
+> @@ -942,6 +944,38 @@ static int qpnpint_irq_domain_alloc(struct irq_domain *domain,
+>   	return 0;
+>   }
+>   
+> +static int pmic_arb_init_apid_min_max(struct spmi_pmic_arb *pmic_arb)
+> +{
+> +	/*
+> +	 * Initialize max_apid/min_apid to the opposite bounds, during
+> +	 * the irq domain translation, we are sure to update these
+> +	 */
+> +	pmic_arb->max_apid = 0;
+> +	pmic_arb->min_apid = pmic_arb->max_periphs - 1;
+> +
+> +	return 0;
+> +}
+> +
+> +static int pmic_arb_init_apid_v1(struct spmi_pmic_arb *pmic_arb, int index)
+> +{
+> +	u32 *mapping_table;
+> +
+> +	if (index) {
+> +		dev_err(&pmic_arb->spmic->dev, "Unsupported buses count %d detected\n",
+> +			index);
+> +		return -EINVAL;
+> +	}
+> +
+> +	mapping_table = devm_kcalloc(&pmic_arb->spmic->dev, pmic_arb->max_periphs,
+> +				     sizeof(*mapping_table), GFP_KERNEL);
+> +	if (!mapping_table)
+> +		return -ENOMEM;
+> +
+> +	pmic_arb->mapping_table = mapping_table;
 
-One of the concerns you got in v1 was: show us second user, so I believe
-in your interest is to Cc other platform maintainers which could support
-this idea.
+Can you specify in the spmi_pmic_arb->mapping_table struct documentation the mapping_table
+is only used in v1 ? or even better rename it to mapping_table_v1
 
-Best regards,
-Krzysztof
+> +
+> +	return pmic_arb_init_apid_min_max(pmic_arb);
+> +}
+> +
+>   static int pmic_arb_ppid_to_apid_v1(struct spmi_pmic_arb *pmic_arb, u16 ppid)
+>   {
+>   	u32 *mapping_table = pmic_arb->mapping_table;
+> @@ -1144,6 +1178,40 @@ static int pmic_arb_offset_v2(struct spmi_pmic_arb *pmic_arb, u8 sid, u16 addr,
+>   	return 0x1000 * pmic_arb->ee + 0x8000 * apid;
+>   }
+>   
+> +static int pmic_arb_init_apid_v5(struct spmi_pmic_arb *pmic_arb, int index)
+> +{
+> +	int ret;
+> +
+> +	if (index) {
+> +		dev_err(&pmic_arb->spmic->dev, "Unsupported buses count %d detected\n",
+> +			index);
+> +		return -EINVAL;
+> +	}
+> +
+> +	pmic_arb->base_apid = 0;
+> +	pmic_arb->apid_count = readl_relaxed(pmic_arb->core + PMIC_ARB_FEATURES) &
+> +					   PMIC_ARB_FEATURES_PERIPH_MASK;
+> +
+> +	if (pmic_arb->base_apid + pmic_arb->apid_count > pmic_arb->max_periphs) {
+> +		dev_err(&pmic_arb->spmic->dev, "Unsupported APID count %d detected\n",
+> +			pmic_arb->base_apid + pmic_arb->apid_count);
+> +		return -EINVAL;
+> +	}
+> +
+> +	ret = pmic_arb_init_apid_min_max(pmic_arb);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = pmic_arb_read_apid_map_v5(pmic_arb);
+> +	if (ret) {
+> +		dev_err(&pmic_arb->spmic->dev, "could not read APID->PPID mapping table, rc= %d\n",
+> +			ret);
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>   /*
+>    * v5 offset per ee and per apid for observer channels and per apid for
+>    * read/write channels.
+> @@ -1178,6 +1246,49 @@ static int pmic_arb_offset_v5(struct spmi_pmic_arb *pmic_arb, u8 sid, u16 addr,
+>   	return offset;
+>   }
+>   
+> +/*
+> + * Only v7 supports 2 buses. Each bus will get a different apid count, read
+> + * from different registers.
+> + */
+> +static int pmic_arb_init_apid_v7(struct spmi_pmic_arb *pmic_arb, int index)
+> +{
+> +	int ret;
+> +
+> +	if (index == 0) {
+> +		pmic_arb->base_apid = 0;
+> +		pmic_arb->apid_count = readl_relaxed(pmic_arb->core + PMIC_ARB_FEATURES) &
+> +						   PMIC_ARB_FEATURES_PERIPH_MASK;
+> +	} else if (index == 1) {
+> +		pmic_arb->base_apid = readl_relaxed(pmic_arb->core + PMIC_ARB_FEATURES) &
+> +						  PMIC_ARB_FEATURES_PERIPH_MASK;
+> +		pmic_arb->apid_count = readl_relaxed(pmic_arb->core + PMIC_ARB_FEATURES1) &
+> +						   PMIC_ARB_FEATURES_PERIPH_MASK;
+> +	} else {
+> +		dev_err(&pmic_arb->spmic->dev, "Unsupported buses count %d detected\n",
+> +			index);
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (pmic_arb->base_apid + pmic_arb->apid_count > pmic_arb->max_periphs) {
+> +		dev_err(&pmic_arb->spmic->dev, "Unsupported APID count %d detected\n",
+> +			pmic_arb->base_apid + pmic_arb->apid_count);
+> +		return -EINVAL;
+> +	}
+> +
+> +	ret = pmic_arb_init_apid_min_max(pmic_arb);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = pmic_arb_read_apid_map_v5(pmic_arb);
+> +	if (ret) {
+> +		dev_err(&pmic_arb->spmic->dev, "could not read APID->PPID mapping table, rc= %d\n",
+> +			ret);
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>   /*
+>    * v7 offset per ee and per apid for observer channels and per apid for
+>    * read/write channels.
+> @@ -1358,6 +1469,7 @@ pmic_arb_apid_owner_v7(struct spmi_pmic_arb *pmic_arb, u16 n)
+>   
+>   static const struct pmic_arb_ver_ops pmic_arb_v1 = {
+>   	.ver_str		= "v1",
+> +	.init_apid		= pmic_arb_init_apid_v1,
+>   	.ppid_to_apid		= pmic_arb_ppid_to_apid_v1,
+>   	.non_data_cmd		= pmic_arb_non_data_cmd_v1,
+>   	.offset			= pmic_arb_offset_v1,
+> @@ -1372,6 +1484,7 @@ static const struct pmic_arb_ver_ops pmic_arb_v1 = {
+>   
+>   static const struct pmic_arb_ver_ops pmic_arb_v2 = {
+>   	.ver_str		= "v2",
+> +	.init_apid		= pmic_arb_init_apid_v1,
+>   	.ppid_to_apid		= pmic_arb_ppid_to_apid_v2,
+>   	.non_data_cmd		= pmic_arb_non_data_cmd_v2,
+>   	.offset			= pmic_arb_offset_v2,
+> @@ -1386,6 +1499,7 @@ static const struct pmic_arb_ver_ops pmic_arb_v2 = {
+>   
+>   static const struct pmic_arb_ver_ops pmic_arb_v3 = {
+>   	.ver_str		= "v3",
+> +	.init_apid		= pmic_arb_init_apid_v1,
+>   	.ppid_to_apid		= pmic_arb_ppid_to_apid_v2,
+>   	.non_data_cmd		= pmic_arb_non_data_cmd_v2,
+>   	.offset			= pmic_arb_offset_v2,
+> @@ -1400,6 +1514,7 @@ static const struct pmic_arb_ver_ops pmic_arb_v3 = {
+>   
+>   static const struct pmic_arb_ver_ops pmic_arb_v5 = {
+>   	.ver_str		= "v5",
+> +	.init_apid		= pmic_arb_init_apid_v5,
+>   	.ppid_to_apid		= pmic_arb_ppid_to_apid_v5,
+>   	.non_data_cmd		= pmic_arb_non_data_cmd_v2,
+>   	.offset			= pmic_arb_offset_v5,
+> @@ -1414,6 +1529,7 @@ static const struct pmic_arb_ver_ops pmic_arb_v5 = {
+>   
+>   static const struct pmic_arb_ver_ops pmic_arb_v7 = {
+>   	.ver_str		= "v7",
+> +	.init_apid		= pmic_arb_init_apid_v7,
+>   	.ppid_to_apid		= pmic_arb_ppid_to_apid_v5,
+>   	.non_data_cmd		= pmic_arb_non_data_cmd_v2,
+>   	.offset			= pmic_arb_offset_v7,
+> @@ -1439,7 +1555,6 @@ static int spmi_pmic_arb_probe(struct platform_device *pdev)
+>   	struct spmi_controller *ctrl;
+>   	struct resource *res;
+>   	void __iomem *core;
+> -	u32 *mapping_table;
+>   	u32 channel, ee, hw_ver;
+>   	int err;
+>   
+> @@ -1467,12 +1582,6 @@ static int spmi_pmic_arb_probe(struct platform_device *pdev)
+>   
+>   	pmic_arb->core_size = resource_size(res);
+>   
+> -	pmic_arb->ppid_to_apid = devm_kcalloc(&ctrl->dev, PMIC_ARB_MAX_PPID,
+> -					      sizeof(*pmic_arb->ppid_to_apid),
+> -					      GFP_KERNEL);
+> -	if (!pmic_arb->ppid_to_apid)
+> -		return -ENOMEM;
+> -
+>   	hw_ver = readl_relaxed(core + PMIC_ARB_VERSION);
+>   
+>   	if (hw_ver < PMIC_ARB_VERSION_V2_MIN) {
+> @@ -1506,58 +1615,17 @@ static int spmi_pmic_arb_probe(struct platform_device *pdev)
+>   			return PTR_ERR(pmic_arb->wr_base);
+>   	}
+>   
+> -	pmic_arb->max_periphs = PMIC_ARB_MAX_PERIPHS;
+> +	dev_info(&ctrl->dev, "PMIC arbiter version %s (0x%x)\n",
+> +		 pmic_arb->ver_ops->ver_str, hw_ver);
+>   
+> -	if (hw_ver >= PMIC_ARB_VERSION_V7_MIN) {
+> +	if (hw_ver < PMIC_ARB_VERSION_V7_MIN)
+> +		pmic_arb->max_periphs = PMIC_ARB_MAX_PERIPHS;
+> +	else
+>   		pmic_arb->max_periphs = PMIC_ARB_MAX_PERIPHS_V7;
+> -		/* Optional property for v7: */
+> -		of_property_read_u32(pdev->dev.of_node, "qcom,bus-id",
+> -					&pmic_arb->bus_instance);
+> -		if (pmic_arb->bus_instance > 1) {
+> -			dev_err(&pdev->dev, "invalid bus instance (%u) specified\n",
+> -				pmic_arb->bus_instance);
+> -			return -EINVAL;
+> -		}
+> -
+> -		if (pmic_arb->bus_instance == 0) {
+> -			pmic_arb->base_apid = 0;
+> -			pmic_arb->apid_count =
+> -				readl_relaxed(core + PMIC_ARB_FEATURES) &
+> -				PMIC_ARB_FEATURES_PERIPH_MASK;
+> -		} else {
+> -			pmic_arb->base_apid =
+> -				readl_relaxed(core + PMIC_ARB_FEATURES) &
+> -				PMIC_ARB_FEATURES_PERIPH_MASK;
+> -			pmic_arb->apid_count =
+> -				readl_relaxed(core + PMIC_ARB_FEATURES1) &
+> -				PMIC_ARB_FEATURES_PERIPH_MASK;
+> -		}
+>   
+> -		if (pmic_arb->base_apid + pmic_arb->apid_count > pmic_arb->max_periphs) {
+> -			dev_err(&pdev->dev, "Unsupported APID count %d detected\n",
+> -				pmic_arb->base_apid + pmic_arb->apid_count);
+> -			return -EINVAL;
+> -		}
+> -	} else if (hw_ver >= PMIC_ARB_VERSION_V5_MIN) {
+> -		pmic_arb->base_apid = 0;
+> -		pmic_arb->apid_count = readl_relaxed(core + PMIC_ARB_FEATURES) &
+> -					PMIC_ARB_FEATURES_PERIPH_MASK;
+> -
+> -		if (pmic_arb->apid_count > pmic_arb->max_periphs) {
+> -			dev_err(&pdev->dev, "Unsupported APID count %d detected\n",
+> -				pmic_arb->apid_count);
+> -			return -EINVAL;
+> -		}
+> -	}
+> -
+> -	pmic_arb->apid_data = devm_kcalloc(&ctrl->dev, pmic_arb->max_periphs,
+> -					   sizeof(*pmic_arb->apid_data),
+> -					   GFP_KERNEL);
+> -	if (!pmic_arb->apid_data)
+> -		return -ENOMEM;
+> -
+> -	dev_info(&ctrl->dev, "PMIC arbiter version %s (0x%x)\n",
+> -		 pmic_arb->ver_ops->ver_str, hw_ver);
+> +	err = pmic_arb->ver_ops->init_apid(pmic_arb, 0);
+> +	if (err)
+> +		return err;
+>   
+>   	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "intr");
+>   	pmic_arb->intr = devm_ioremap_resource(&ctrl->dev, res);
+> @@ -1599,16 +1667,6 @@ static int spmi_pmic_arb_probe(struct platform_device *pdev)
+>   	}
+>   
+>   	pmic_arb->ee = ee;
+> -	mapping_table = devm_kcalloc(&ctrl->dev, pmic_arb->max_periphs,
+> -					sizeof(*mapping_table), GFP_KERNEL);
+> -	if (!mapping_table)
+> -		return -ENOMEM;
+> -
+> -	pmic_arb->mapping_table = mapping_table;
+> -	/* Initialize max_apid/min_apid to the opposite bounds, during
+> -	 * the irq domain translation, we are sure to update these */
+> -	pmic_arb->max_apid = 0;
+> -	pmic_arb->min_apid = pmic_arb->max_periphs - 1;
+>   
+>   	platform_set_drvdata(pdev, ctrl);
+>   	raw_spin_lock_init(&pmic_arb->lock);
+> @@ -1617,15 +1675,6 @@ static int spmi_pmic_arb_probe(struct platform_device *pdev)
+>   	ctrl->read_cmd = pmic_arb_read_cmd;
+>   	ctrl->write_cmd = pmic_arb_write_cmd;
+>   
+> -	if (hw_ver >= PMIC_ARB_VERSION_V5_MIN) {
+> -		err = pmic_arb_read_apid_map_v5(pmic_arb);
+> -		if (err) {
+> -			dev_err(&pdev->dev, "could not read APID->PPID mapping table, rc= %d\n",
+> -				err);
+> -			return err;
+> -		}
+> -	}
+> -
+>   	dev_dbg(&pdev->dev, "adding irq domain\n");
+>   	pmic_arb->domain = irq_domain_add_tree(pdev->dev.of_node,
+>   					 &pmic_arb_irq_domain_ops, pmic_arb);
+> 
+With that clarified:
 
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
