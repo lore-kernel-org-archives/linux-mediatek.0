@@ -4,120 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1212CD11DD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 19:52:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BD3DCD11DD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 19:59:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YT6C4kyGaXJTnO4s5bmEmPWYlNQPKErlDo5CuGDxbV8=; b=Rjz610s8QEoBpx6jDnWCuLYitL
-	TGK0fXm2mLGBzjcjkusi1OLTn3E8CnyNSGe1fS3u4/dBjsW9k/Ij/25go8eaTdE/9cOYAqdDOMlYk
-	Mi598/jyYCjQ+pO4EEkpMmaNRfFYAuxEQ024ZI/Pe9jQ2JlVxJRbRMuIjNESqewcorO+EKt7a72jz
-	tzaYMmJiP0NcPAnGFNe0k1E3R3Fz/Vhz80oUEN1sXZKMyLuuQ/i/XvEHBwF9nFpLlRXTbIglHN8W4
-	fOqhCTsPjikucnsl9EGJ10foR0AF+HPPw5s6wowcwBcZqzrlSL4LAjDmAvLoARynda8IuGpm80t8p
-	gPuMwd2g==;
+	bh=vnKBKhBKsmsJMY/bC4lZDp0UO96Fq//Yoyy126bkPGI=; b=cEdN8lQB8CCdYnYlbOawWEj+Ah
+	7iU6qpsPudfgnTB/nxNM3CVbp0blhFSRGMppvqZDJBkHV5HVndaMAzBtVc1gHiwYGQcHXZt4zPG/j
+	KOPf187iqp8ajmjg5kYwaD4xE0oFGn7DRRg97EHRXbO0stdp8GXfXarE+XNGQCEEdBDbE+N2zdbTI
+	uPlE+H+R0/7PzNaUvJf5yCOqD4wXbtt8hPYAD9+Ihv4KjXCzDh5oNF47J/+diDRVCmum+V/n+Yd+I
+	cp4wk7Qe5ebR9buGorZ/MHTv01cP5HxLCIsbjWPvRgOMiKHHgYKdjdnkXy/rKaPMvnX59YQl5nuA4
+	65zjoriA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpvnd-0000000FSy5-1c1u;
-	Thu, 28 Mar 2024 19:52:33 +0000
-Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f])
+	id 1rpvtz-0000000FUyt-2clw;
+	Thu, 28 Mar 2024 19:59:07 +0000
+Received: from mail-vs1-xe31.google.com ([2607:f8b0:4864:20::e31])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpvnZ-0000000FSvw-0GQs;
-	Thu, 28 Mar 2024 19:52:30 +0000
-Received: by mail-ot1-x32f.google.com with SMTP id 46e09a7af769-6e6e3eadec8so681305a34.0;
-        Thu, 28 Mar 2024 12:52:27 -0700 (PDT)
+	id 1rpvtu-0000000FUw6-3DLq;
+	Thu, 28 Mar 2024 19:59:04 +0000
+Received: by mail-vs1-xe31.google.com with SMTP id ada2fe7eead31-47822e4dc24so471416137.3;
+        Thu, 28 Mar 2024 12:59:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1711655547; x=1712260347; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:reply-to
-         :message-id:subject:cc:to:from:date:sender:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YT6C4kyGaXJTnO4s5bmEmPWYlNQPKErlDo5CuGDxbV8=;
-        b=Of1A8TLl7pT1NcWV/WSdZvoFpccifSBUje6jPJ3MTacRSRbGXBB9VEKdyF0EK5lPUL
-         iSL7SJZQC0eoI1dTF0+oxZGCTo1vE4CQbufLijenN6nohUi0tOvyVy2xd0UoPiths0A9
-         JBqVmzK68vCmRl6iJaW/rpAGPdIHLplMfiSvZwqptuGtdUrzRHpdX4gJ2piAEyWb1JxM
-         JLzaNat5+YONsHS0mDSHL7sf47ShAG55NJ6GXasQOg9ZWCmCZWdDDwB44myh+Uc01m4g
-         dUgBD5XrCOi5OymZUm+4ndN9PV4yZ+i0cayAc/SDwmb4iHRm9amndA26KS6U2K9XhJ+Z
-         xBSA==
+        d=gmail.com; s=20230601; t=1711655940; x=1712260740; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=vnKBKhBKsmsJMY/bC4lZDp0UO96Fq//Yoyy126bkPGI=;
+        b=mh2aGv6albal+vGy7dvWaCQW4EXlzydGRGqgye8VC3MEssrxydZXJuP1bjajl4n/DQ
+         JgSufvy3BoMcoo7DYpF6u7uk2f4yIfsbd2ogtVqD91RaHWOHhzwr9R1OcZgn1Qt2nKgM
+         Mz0hCmtRRNKes3iHiAs7lIEeQPu+nPoWclNkJPhlVGaLAkmZ7B1oCswKoc1F9zA7BwCy
+         l9Q/p7IpfAW1AxmlBkXpTy1cXiu1wZZupAHz6qQokWkBRkTwPYFUX71Uxsuxj5yvpAQi
+         1o0eTvMEYAnfJyZTOZfuC0H+wBUsQu7+k/1uS9B+hDZCC0R6ARGuoOYC7NI+t1l8/4Ko
+         zC5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711655547; x=1712260347;
-        h=in-reply-to:content-disposition:mime-version:references:reply-to
-         :message-id:subject:cc:to:from:date:sender:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=YT6C4kyGaXJTnO4s5bmEmPWYlNQPKErlDo5CuGDxbV8=;
-        b=GSgZeEvEroYGKeMxVtaI9WMTn6kAf1muV1sfY+YGdRBzQcNm07I+/gkTKmWfJz1miB
-         93ZrBqjh5AYP95ZxDyGpT87gSaE5FROlZ11oRiRgo+CHQa50XgrrbVFl5ThVxrkVvOVO
-         +xRyayM/EINBlXN92i+4wL68l2bGK6HB7ZrzgW5xmc+eDbu2Xu1HXmgzUY73KxRyk/q7
-         mwFqqvyCFDAtfUx5+7nsdfmzs+Ugg4uQpZUn32P/sYiFEnjuioeXXKM0Susg1FpxUHZe
-         atk0HKDbGid9wjL/qin3TaQogwfGG/cJYbwzX5FMYCd6FPciPZSHwCe7YcE1CUdoPkqd
-         cGvw==
-X-Forwarded-Encrypted: i=1; AJvYcCXTysfzFqNgkaMKfxpqFwiWlaWGqLT4sKCuOX6o3yZiocRvujY0zfujkY0LfAWaEMrqVa+wIKQFTU04rfjDGERfs9WLlDGPc9sL3YM4Ndic95SLkb5sAAV4zjLPuIuaqIM1xe6YHQ3zvJ7tLIxEFMk7E1tks/84rvnlxad70fUyoOIcyrSnB6m+T3+m+bKhIinkz+XJFbn+KfWs1UhtTRsoO2rvnGhfQaIYCvWHccB16ytYf0ZBQq2IUjhoNzdhRLDZT2NncZ1sbgymS06Y9k+amTwJHw9UXO/+FQi2IxhM6F44
-X-Gm-Message-State: AOJu0YxIvapyy5xQOTnWxJR8+oAGn0NEzevdZEbcxNwhdm/LSkw8w6mo
-	GpAUTj36+nA25K6UQDScP3cG8/m3tGkaUR6fheeEiUH8LFX1nAs=
-X-Google-Smtp-Source: AGHT+IHzO114l0NerWSB89S0FuZIWvU872Dx5hTOnZas2urBgE80eNZxB2BV9A8JCj8+LYtYL67EKw==
-X-Received: by 2002:a05:6870:3513:b0:22a:8e5:941 with SMTP id k19-20020a056870351300b0022a08e50941mr177999oah.52.1711655546921;
-        Thu, 28 Mar 2024 12:52:26 -0700 (PDT)
-Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
-        by smtp.gmail.com with ESMTPSA id pd12-20020a0568717a8c00b00229f94bf403sm536320oac.19.2024.03.28.12.52.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Mar 2024 12:52:26 -0700 (PDT)
-Received: from mail.minyard.net (unknown [IPv6:2001:470:b8f6:1b:b987:69e:202a:697a])
-	by serve.minyard.net (Postfix) with ESMTPSA id 4B51A180059;
-	Thu, 28 Mar 2024 19:52:25 +0000 (UTC)
-Date: Thu, 28 Mar 2024 14:52:24 -0500
-From: Corey Minyard <minyard@acm.org>
-To: Allen <allen.lkml@gmail.com>
-Cc: Allen Pais <apais@linux.microsoft.com>, linux-kernel@vger.kernel.org,
-	tj@kernel.org, keescook@chromium.org, vkoul@kernel.org,
-	marcan@marcan.st, sven@svenpeter.dev, florian.fainelli@broadcom.com,
-	rjui@broadcom.com, sbranden@broadcom.com, paul@crapouillou.net,
-	Eugeniy.Paltsev@synopsys.com, manivannan.sadhasivam@linaro.org,
-	vireshk@kernel.org, Frank.Li@nxp.com, leoyang.li@nxp.com,
-	zw@zh-kernel.org, wangzhou1@hisilicon.com, haijie1@huawei.com,
-	shawnguo@kernel.org, s.hauer@pengutronix.de, sean.wang@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	afaerber@suse.de, logang@deltatee.com, daniel@zonque.org,
-	haojian.zhuang@gmail.com, robert.jarzmik@free.fr,
-	andersson@kernel.org, konrad.dybcio@linaro.org, orsonzhai@gmail.com,
-	baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com,
-	patrice.chotard@foss.st.com, linus.walleij@linaro.org,
-	wens@csie.org, jernej.skrabec@gmail.com, peter.ujfalusi@gmail.com,
-	kys@microsoft.com, haiyangz@microsoft.com, wei.liu@kernel.org,
-	decui@microsoft.com, jassisinghbrar@gmail.com, mchehab@kernel.org,
-	maintainers@bluecherrydvr.com, aubin.constans@microchip.com,
-	ulf.hansson@linaro.org, manuel.lauss@gmail.com,
-	mirq-linux@rere.qmqm.pl, jh80.chung@samsung.com, oakad@yahoo.com,
-	hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
-	brucechang@via.com.tw, HaraldWelte@viatech.com, pierre@ossman.eu,
-	duncan.sands@free.fr, stern@rowland.harvard.edu, oneukum@suse.com,
-	openipmi-developer@lists.sourceforge.net, dmaengine@vger.kernel.org,
-	asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
-	imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
-	linux-mediatek@lists.infradead.org,
-	linux-actions@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-riscv@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, linux-hyperv@vger.kernel.org,
-	linux-rdma@vger.kernel.org, linux-media@vger.kernel.org,
-	linux-mmc@vger.kernel.org, linux-omap@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org, linux-s390@vger.kernel.org,
-	netdev@vger.kernel.org, linux-usb@vger.kernel.org
-Subject: Re: [PATCH 6/9] ipmi: Convert from tasklet to BH workqueue
-Message-ID: <ZgXKeL36ckOyNpI/@mail.minyard.net>
-References: <20240327160314.9982-1-apais@linux.microsoft.com>
- <20240327160314.9982-7-apais@linux.microsoft.com>
- <ZgRePyo2zC4A1Fp4@mail.minyard.net>
- <CAOMdWS+1AFxEqmACiBYzPHc+q0Ut6hp15tdV50JHvfVeUNCGQw@mail.gmail.com>
- <ZgXDmx1HvujsMYAR@mail.minyard.net>
- <CAOMdWS+nB5EENp_Vb=k1j77nrch5JgbZP2XYPJ2ieTja14zB0w@mail.gmail.com>
+        d=1e100.net; s=20230601; t=1711655940; x=1712260740;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=vnKBKhBKsmsJMY/bC4lZDp0UO96Fq//Yoyy126bkPGI=;
+        b=JRkBPmoeD02Yq/GTihNnlDCqmfUO9mae0E5MAmZH+G/5fBZtwC4pvegEObrXh0d/fu
+         5Z112kFQETNG7s0eiHy6eerGxSyHSmTIO40e8U6NZdBn+ybbfPeEcdUpFhit1u7OVclo
+         n/H2YwVHKYHCdEb5S7zHftDNr+yc7yXugK4TZ3Ag+ya9rpCs6WOzCWvp5e9/7x3JyLPc
+         lx4myvi+TdDMpEOth9ZmY8GLtQC4z/Aaz/nZ5JzNBRUvfUAUfUyJiuS27FW24l0B0SAH
+         d+KhHgpsxCxMyImz4yDk8Tfk9rd8HoqrBgAOHOtU3AbIC+ODfGuZZmcUMLbWJoryW4Nh
+         YBVQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUYRZ5IWgNCnfDKfnVWSLd554JT9voJjLLmsrBpS8Fyq83OmIh89nnGaGL/RI8w+yqhxtK4fyNQZTQvaBEzQEmQx1ZnJSmRZxaLeRA2rWy7BlmKFEOhF0XkkljNO22HPYg+9G1uvhwb6fNU760bFvV8ISgyqN+Om0L/rbJk1khiBlIPy9PRSuQ8pj7bn59VQqcFSfL7XIFCUt0q3c+V/kjg1wt/+ulWy6zCIgOBtryhRdozoheVYZ25izGU8+tRotQ3mGp9MafNbsjK/6dYaxhyXXcEzEhDD6KXWdTIIEX2OG3Q
+X-Gm-Message-State: AOJu0Yz542Hk26zqdP2aAAfG1tc+xrwK0Ob1/eUPkH1ul28w1OQB8P8p
+	3wQgCxIJJJ++M9qHemCSqsJHmH2uskeHq8Hku2JahQmp7NlxsTQqQeg1/7otUiwxwKiTBeyBnZT
+	K70zI1scuuNQowB+Vfq3yIA64j5U=
+X-Google-Smtp-Source: AGHT+IEsqiTQ+RuhLXyb/Y+jV0DgOZDtp/0zVM9owKFV3xn7f9aoxOYdP+JeSKGOIKqBlapOYOkCUtaaLw32MikZSqo=
+X-Received: by 2002:a05:6102:2a65:b0:476:cf52:e1b7 with SMTP id
+ hp5-20020a0561022a6500b00476cf52e1b7mr141814vsb.28.1711655940207; Thu, 28 Mar
+ 2024 12:59:00 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAOMdWS+nB5EENp_Vb=k1j77nrch5JgbZP2XYPJ2ieTja14zB0w@mail.gmail.com>
+References: <20240327160314.9982-1-apais@linux.microsoft.com>
+ <20240327160314.9982-7-apais@linux.microsoft.com> <ZgRePyo2zC4A1Fp4@mail.minyard.net>
+ <CAOMdWS+1AFxEqmACiBYzPHc+q0Ut6hp15tdV50JHvfVeUNCGQw@mail.gmail.com>
+ <ZgXDmx1HvujsMYAR@mail.minyard.net> <CAOMdWS+nB5EENp_Vb=k1j77nrch5JgbZP2XYPJ2ieTja14zB0w@mail.gmail.com>
+ <ZgXKeL36ckOyNpI/@mail.minyard.net>
+In-Reply-To: <ZgXKeL36ckOyNpI/@mail.minyard.net>
+From: Allen <allen.lkml@gmail.com>
+Date: Thu, 28 Mar 2024 12:58:49 -0700
+Message-ID: <CAOMdWS+KrT2dK0XiEkZJT0aHnre1sr6gMMSkdxuXZaUh5e2e8Q@mail.gmail.com>
+Subject: Re: [PATCH 6/9] ipmi: Convert from tasklet to BH workqueue
+To: minyard@acm.org
+Cc: Allen Pais <apais@linux.microsoft.com>, linux-kernel@vger.kernel.org, tj@kernel.org, 
+	keescook@chromium.org, vkoul@kernel.org, marcan@marcan.st, sven@svenpeter.dev, 
+	florian.fainelli@broadcom.com, rjui@broadcom.com, sbranden@broadcom.com, 
+	paul@crapouillou.net, Eugeniy.Paltsev@synopsys.com, 
+	manivannan.sadhasivam@linaro.org, vireshk@kernel.org, Frank.Li@nxp.com, 
+	leoyang.li@nxp.com, zw@zh-kernel.org, wangzhou1@hisilicon.com, 
+	haijie1@huawei.com, shawnguo@kernel.org, s.hauer@pengutronix.de, 
+	sean.wang@mediatek.com, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, afaerber@suse.de, 
+	logang@deltatee.com, daniel@zonque.org, haojian.zhuang@gmail.com, 
+	robert.jarzmik@free.fr, andersson@kernel.org, konrad.dybcio@linaro.org, 
+	orsonzhai@gmail.com, baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com, 
+	patrice.chotard@foss.st.com, linus.walleij@linaro.org, wens@csie.org, 
+	jernej.skrabec@gmail.com, peter.ujfalusi@gmail.com, kys@microsoft.com, 
+	haiyangz@microsoft.com, wei.liu@kernel.org, decui@microsoft.com, 
+	jassisinghbrar@gmail.com, mchehab@kernel.org, maintainers@bluecherrydvr.com, 
+	aubin.constans@microchip.com, ulf.hansson@linaro.org, manuel.lauss@gmail.com, 
+	mirq-linux@rere.qmqm.pl, jh80.chung@samsung.com, oakad@yahoo.com, 
+	hayashi.kunihiko@socionext.com, mhiramat@kernel.org, brucechang@via.com.tw, 
+	HaraldWelte@viatech.com, pierre@ossman.eu, duncan.sands@free.fr, 
+	stern@rowland.harvard.edu, oneukum@suse.com, 
+	openipmi-developer@lists.sourceforge.net, dmaengine@vger.kernel.org, 
+	asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
+	imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org, 
+	linux-mediatek@lists.infradead.org, linux-actions@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-riscv@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+	linux-hyperv@vger.kernel.org, linux-rdma@vger.kernel.org, 
+	linux-media@vger.kernel.org, linux-mmc@vger.kernel.org, 
+	linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-s390@vger.kernel.org, netdev@vger.kernel.org, linux-usb@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240328_125229_317877_E098D1CA 
-X-CRM114-Status: GOOD (  21.98  )
+X-CRM114-CacheID: sfid-20240328_125902_870678_B45CF769 
+X-CRM114-Status: GOOD (  17.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,45 +118,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: minyard@acm.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 28, 2024 at 12:41:22PM -0700, Allen wrote:
-> > > > I believe that work queues items are execute single-threaded for a work
-> > > > queue, so this should be good.  I need to test this, though.  It may be
-> > > > that an IPMI device can have its own work queue; it may not be important
-> > > > to run it in bh context.
+> > > >
+> > > >   Fair point. Could you please let me know once you have had a chance to test
+> > > > these changes. Meanwhile, I will work on RFC wherein IPMI will have its own
+> > > > workqueue.
+> > > >
+> > > >  Thanks for taking time out to review.
 > > >
-> > >   Fair point. Could you please let me know once you have had a chance to test
-> > > these changes. Meanwhile, I will work on RFC wherein IPMI will have its own
-> > > workqueue.
+> > > After looking and thinking about it a bit, a BH context is still
+> > > probably the best for this.
 > > >
-> > >  Thanks for taking time out to review.
+> > > I have tested this patch under load and various scenarios and it seems
+> > > to work ok.  So:
+> > >
+> > > Tested-by: Corey Minyard <cminyard@mvista.com>
+> > > Acked-by: Corey Minyard <cminyard@mvista.com>
+> > >
+> > > Or I can take this into my tree.
+> > >
+> > > -corey
 > >
-> > After looking and thinking about it a bit, a BH context is still
-> > probably the best for this.
-> >
-> > I have tested this patch under load and various scenarios and it seems
-> > to work ok.  So:
-> >
-> > Tested-by: Corey Minyard <cminyard@mvista.com>
-> > Acked-by: Corey Minyard <cminyard@mvista.com>
-> >
-> > Or I can take this into my tree.
-> >
-> > -corey
-> 
->  Thank you very much. I think it should be okay for you to carry it into
-> your tree.
+> >  Thank you very much. I think it should be okay for you to carry it into
+> > your tree.
+>
+> Ok, it's in my for-next tree.  I fixed the directory reference, and I
+> changed all the comments where you changed "tasklet" to "work" to
+> instead say "workqueue".
+>
 
-Ok, it's in my for-next tree.  I fixed the directory reference, and I
-changed all the comments where you changed "tasklet" to "work" to
-instead say "workqueue".
+ Thank you very much for fixing it.
 
--corey
-
-> 
-> - Allen
-> 
+- Allen
 
