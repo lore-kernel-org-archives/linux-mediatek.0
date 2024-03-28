@@ -4,120 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B676C54E64
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 09:08:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9F6FC54E67
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 10:09:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Subject:Cc:To:
+	From:Date:References:In-Reply-To:Message-Id:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yKXwHmc4cXcL+3XlaHJcygoE0sPqn2G65Y8JY5URJDs=; b=1M0k9PuFKp8/3X+RXgMbjCHkNe
-	hPZ1lSrFc7GJdLBpp4nqiOZMK6r+0hRfHsdva97Dt8TZ4pMxZ7shR7nb0DKhMo88m3srME9hcRFnp
-	HkqrycuO/ScMsUgWfaZtZAWgB6XGpEpw5IxVlDBIrsxZxeeFPPhudy9HkAudmnNzPODQ13Kl5u7vD
-	zpH6MX7WdyZvnGvgf5MzMVwO2o4otqmhiFb44b/rki2PAxaVRyV5zOg1J+0LcbliOivys9PJFuLZR
-	CCogrjYLJPI+9rYejX3UxVTRlP8DPAMPU4pohc4ToaluESwIsrE2EkyiZw57sPZtVcTlNO6v71Exj
-	Up9xkyhQ==;
+	bh=pYBjGEQadh25rkMc0fkoc5Y7p79L1tP3xKDkS0IogRA=; b=xTemaE+slja5N6ncGQYoolUicM
+	rgIPs9J87CM6Ml5zL/uviz3Nwyvp/FlhtVlZiZ+GvANuXJX40IK9scTR+ZKOuLXokJKBLOGz1Te83
+	Ew25C1t3g5/Q2Cn1F3WFTcj3FZxocDPj1gs+lri1E5d5NcacGOT/QhUWiLRIw8Y7si0s44WmCKSHN
+	zkLACkrIHIZCTXbKwBAySPeSntbfVXkt3fr2P1EGtMzY3+f6psbzwjqO2Lb++silEvToSHfL0oD6D
+	jPfnNvev6FDV6iX1vbn++2N5gzWoCVfDNd310D0HOhGht4NxrPj2Yz3PiVuZS7+UPjhfZPx0TpEBf
+	TZihnMXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rplkA-0000000DEeX-1Cz4;
-	Thu, 28 Mar 2024 09:08:18 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1rpmhB-0000000DUDD-2aIv;
+	Thu, 28 Mar 2024 10:09:17 +0000
+Received: from flow7-smtp.messagingengine.com ([103.168.172.142])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rplk1-0000000DEVq-3pL8
-	for linux-mediatek@lists.infradead.org;
-	Thu, 28 Mar 2024 09:08:15 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2d46dd8b0b8so7786681fa.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Mar 2024 02:07:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711616873; x=1712221673; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:references:cc:to:subject:reply-to:from:user-agent
-         :mime-version:date:message-id:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=yKXwHmc4cXcL+3XlaHJcygoE0sPqn2G65Y8JY5URJDs=;
-        b=EUigLkvjxDd/Xq1caqKl5X3xn3zGUeL9RyXn42bemNPDxMdob22MWxhWYII9pWrnWl
-         mQga+DmoEudLaEEAO1O+CuOjdFAGJmzBBZXvGJvU5rUWSSnnqVgHfU2Ch/dHvi5UyW5W
-         a0NA78ayS7jhHU4bzwGMSYQJOztn0F7w5a/L4wEbtsGXM8bB7Nb+ccT/Jt/ZoUcorOcH
-         cx8ff6XgBm3nAZ638sIZHkGual94ccB033bfpWq6bX01atqN6qN9uRFlKnMhsaReiBow
-         evbQsuFA3EjK8Bzsg0YTpZ4SBujRK64oakZz3r4XVcg5BkVvipPmwc4f5wmbRfoVNguE
-         0Jeg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711616873; x=1712221673;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:references:cc:to:subject:reply-to:from:user-agent
-         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=yKXwHmc4cXcL+3XlaHJcygoE0sPqn2G65Y8JY5URJDs=;
-        b=cRIDIZ/riRnn5MJOjXE+SqBtwKf1+HYDYKt4De87mBGtlceJh13CYTvj3EzV8CaCo6
-         mBvWItzB9iiu+1x2vYF9CHNKLugm0mOrt5U33268xYB24RatHu1accp45YR7T4OYGHqS
-         FSjfa7zmiyWfk2uRvkoYI072hPdvieWehROpyPiVI9xIWnnt5O6XEHgHs5UdL7lX+JaE
-         yMJ5zr3JGJB5o6dtW8WpX/5aWR5kP32kU9nfY2TArkghXijpdLtL8aWIN5nKVqtMjVlt
-         jooVuEfoXSLyvE7cCTFBka6ChigrK1DbI1zvMCpB1NQkJcb5hnwDUfLcqBDoyqh1hUgk
-         WRIg==
-X-Forwarded-Encrypted: i=1; AJvYcCUtLb0LcrVRuLX0kut/VheOyuf/fFCiOJ+lLW4wSqjCG3rsBDx+SizGMGtEkQLeLfV0bisbha1/li5l6cRdIR9iURyJcx6q4I+2nDYDAwg/FxlN
-X-Gm-Message-State: AOJu0YzJtf50hm4g326cVKM4/ePx/g98jL806znlPW1OMddQmJ1I10Yb
-	uy0RvJjjfSghqK7+s0BM8ZSTc8lC38lkWteceH6XfoJaeW3iQr//sKFROKvZ/Tg=
-X-Google-Smtp-Source: AGHT+IFan8kG+r3iVU6A8LgXX5xHcdF5eGLJCwQMzUJRaJjaVzQi8QQwkp8heq/oAlpdTtpsfmu/wg==
-X-Received: by 2002:a2e:a40e:0:b0:2d6:ec7b:b69b with SMTP id p14-20020a2ea40e000000b002d6ec7bb69bmr1228173ljn.7.1711616873130;
-        Thu, 28 Mar 2024 02:07:53 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:982:cbb0:6306:1c7a:72c2:892a? ([2a01:e0a:982:cbb0:6306:1c7a:72c2:892a])
-        by smtp.gmail.com with ESMTPSA id hg6-20020a05600c538600b004148ff6ef54sm1622433wmb.29.2024.03.28.02.07.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 28 Mar 2024 02:07:52 -0700 (PDT)
-Message-ID: <ab749f2d-269f-40bb-b6ab-b19fd7243eed@linaro.org>
-Date: Thu, 28 Mar 2024 10:07:51 +0100
+	id 1rpmh6-0000000DUBo-0KV6;
+	Thu, 28 Mar 2024 10:09:14 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailflow.nyi.internal (Postfix) with ESMTP id 5C11820053F;
+	Thu, 28 Mar 2024 06:09:10 -0400 (EDT)
+Received: from imap51 ([10.202.2.101])
+  by compute5.internal (MEProxy); Thu, 28 Mar 2024 06:09:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-type:content-type:date:date:from:from:in-reply-to
+	:in-reply-to:message-id:mime-version:references:reply-to:subject
+	:subject:to:to; s=fm1; t=1711620550; x=1711627750; bh=pYBjGEQadh
+	25rkMc0fkoc5Y7p79L1tP3xKDkS0IogRA=; b=bZ/F23JMPyrmIk/Ntj2seAKXb/
+	fK61J0u8ls1qOi2xe5oyM0yZSsH19MZp9yi+zXy1BWPve1eXg+la8Sg/UxYaSRbf
+	sz3eypDY+Q1OHr+nkbkQQXqADbtGp250VeO64zWBK3NlHeV3OuNA+AZQsGMbPzKc
+	tIO1b/JsdoMTi9Sa4qtzIxjRNmOivgTzJ16capo1Du6/6Fjf289SueUzJiDFabNr
+	qhusH+/OTCYUQ62Md0W6Kb3XPtKtRHxWZCqsKeVcfwYFkjwwnQZ/KFVsiJpsteij
+	UEFhJXpiMc48Yj8JBMnhQua7+EaskwT/bkKa7TU7dUlzuZ/tjgJdklUZue1A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm2; t=1711620550; x=1711627750; bh=pYBjGEQadh25rkMc0fkoc5Y7p79L
+	1tP3xKDkS0IogRA=; b=wIyGwxiTM97DFQgPX8br04l4NUp1wbd4F4aPRoaUOJ69
+	IWjYFE2zpRpr2ZuCwawUtQP0xu1riAaYJcF8USi+pvWpGBrvqxzl6qy9M8HeUTvj
+	kVxQ7atxp6oErsgqwVoswrTCwbaiyfyUdp8+oN7eMDHgG5G6bSbHffjZHTbQsPbP
+	IflwKJRYQrIc3e2sOalAP3O2nnPS7RFCYwh52d72tHyVVP1qCEG8loNKTO3Li5SS
+	3ttm0HswwW743xnKX1Ty4B5+hDe8/KcLasvI/O1mopYD2mG+ye8Mw2HvxrKxhJv0
+	BtW1IYz8le5pBrV97eBtuTiYg1cJRixjcewJiJzDtg==
+X-ME-Sender: <xms:xEEFZjUDB6vUXVuE4su_mfFztVEXuLQBqnkQAhHLwG1jR8Gk4Rhccg>
+    <xme:xEEFZrkXsFEZpvOySs979kbBxybPVD4HPzNHJDAuQc2A74iPvQQqs8EEN8sgZ1AOY
+    -B735Q1j88_yj5yeME>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudduledgudduucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepofgfggfkjghffffhvfevufgtsehttdertderredtnecuhfhrohhmpedftehr
+    nhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrth
+    htvghrnhepffehueegteeihfegtefhjefgtdeugfegjeelheejueethfefgeeghfektdek
+    teffnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprg
+    hrnhgusegrrhhnuggsrdguvg
+X-ME-Proxy: <xmx:xEEFZvanNkHDHk3D4daIt3HN3RRy4VJsLZBS_5xTq6OZ_s46lBHeqg>
+    <xmx:xEEFZuXz105eJN6iaqF1LnVwLMEtc10LEM014QjmGYfrwvQMnV9zQQ>
+    <xmx:xEEFZtlackC-bm2ZG6jhrgNjSy9Qg70Et6FoLLjgTPEKil-mStUOQg>
+    <xmx:xEEFZrdAQp1QGnibQ6HQuAZmU_FkzEzvep2EzwBzRXg0_5Nan7e3Mg>
+    <xmx:xkEFZvTJcmNZMFGcjkzffyZ1DB1SyuiY0BkmrH3Smejf5bob7fZc1n9GOA0>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id E6410B6008D; Thu, 28 Mar 2024 06:09:07 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.11.0-alpha0-333-gbfea15422e-fm-20240327.001-gbfea1542
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Neil Armstrong <neil.armstrong@linaro.org>
-Subject: Re: [PATCH RESEND v6 0/5] spmi: pmic-arb: Add support for multiple
- buses
-To: Abel Vesa <abel.vesa@linaro.org>, Stephen Boyd <sboyd@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: Srini Kandagatla <srinivas.kandagatla@linaro.org>,
- Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-References: <20240326-spmi-multi-master-support-v6-0-1c87d8306c5b@linaro.org>
-Content-Language: en-US, fr
-Autocrypt: addr=neil.armstrong@linaro.org; keydata=
- xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
- GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
- BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
- qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
- 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
- AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
- OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
- Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
- YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
- GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
- UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
- GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
- yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
- QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
- SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
- 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
- Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
- oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
- M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
- 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
- KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
- 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
- QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
-Organization: Linaro
-In-Reply-To: <20240326-spmi-multi-master-support-v6-0-1c87d8306c5b@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Message-Id: <2e9257af-c123-406b-a189-eaebeecc1d71@app.fastmail.com>
+In-Reply-To: <ZgUGXTKPVhrA1tam@matsya>
+References: <20240327160314.9982-1-apais@linux.microsoft.com>
+ <20240327160314.9982-3-apais@linux.microsoft.com> <ZgUGXTKPVhrA1tam@matsya>
+Date: Thu, 28 Mar 2024 11:08:47 +0100
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Vinod Koul" <vkoul@kernel.org>, "Allen Pais" <apais@linux.microsoft.com>
+Cc: linux-kernel@vger.kernel.org, "Tejun Heo" <tj@kernel.org>,
+ "Kees Cook" <keescook@chromium.org>, "Hector Martin" <marcan@marcan.st>,
+ "Sven Peter" <sven@svenpeter.dev>,
+ "Florian Fainelli" <florian.fainelli@broadcom.com>,
+ "Ray Jui" <rjui@broadcom.com>, "Scott Branden" <sbranden@broadcom.com>,
+ "Paul Cercueil" <paul@crapouillou.net>, Eugeniy.Paltsev@synopsys.com,
+ "Manivannan Sadhasivam" <manivannan.sadhasivam@linaro.org>,
+ "Viresh Kumar" <vireshk@kernel.org>, "Frank Li" <Frank.Li@nxp.com>,
+ "Leo Li" <leoyang.li@nxp.com>, zw@zh-kernel.org,
+ "Zhou Wang" <wangzhou1@hisilicon.com>, haijie1@huawei.com,
+ "Shawn Guo" <shawnguo@kernel.org>,
+ "Sascha Hauer" <s.hauer@pengutronix.de>,
+ "Sean Wang" <sean.wang@mediatek.com>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, logang@deltatee.com,
+ "Daniel Mack" <daniel@zonque.org>,
+ "Haojian Zhuang" <haojian.zhuang@gmail.com>,
+ "Robert Jarzmik" <robert.jarzmik@free.fr>,
+ "Bjorn Andersson" <andersson@kernel.org>,
+ "Konrad Dybcio" <konrad.dybcio@linaro.org>,
+ "Orson Zhai" <orsonzhai@gmail.com>,
+ "Baolin Wang" <baolin.wang@linux.alibaba.com>,
+ "Chunyan Zhang" <zhang.lyra@gmail.com>,
+ "Patrice Chotard" <patrice.chotard@foss.st.com>,
+ "Linus Walleij" <linus.walleij@linaro.org>,
+ "Chen-Yu Tsai" <wens@csie.org>,
+ "Jernej Skrabec" <jernej.skrabec@gmail.com>, peter.ujfalusi@gmail.com,
+ "K. Y. Srinivasan" <kys@microsoft.com>,
+ "Haiyang Zhang" <haiyangz@microsoft.com>, "Wei Liu" <wei.liu@kernel.org>,
+ "Dexuan Cui" <decui@microsoft.com>,
+ "Jassi Brar" <jassisinghbrar@gmail.com>,
+ "Mauro Carvalho Chehab" <mchehab@kernel.org>,
+ maintainers@bluecherrydvr.com, aubin.constans@microchip.com,
+ "Ulf Hansson" <ulf.hansson@linaro.org>,
+ "Manuel Lauss" <manuel.lauss@gmail.com>,
+ =?UTF-8?Q?Micha=C5=82_Miros=C5=82aw?= <mirq-linux@rere.qmqm.pl>,
+ "jh80.chung" <jh80.chung@samsung.com>, oakad@yahoo.com,
+ "Kunihiko Hayashi" <hayashi.kunihiko@socionext.com>,
+ "Masami Hiramatsu" <mhiramat@kernel.org>, brucechang@via.com.tw,
+ HaraldWelte@viatech.com, pierre@ossman.eu, duncan.sands@free.fr,
+ "Alan Stern" <stern@rowland.harvard.edu>,
+ "Oliver Neukum" <oneukum@suse.com>,
+ openipmi-developer@lists.sourceforge.net, dmaengine@vger.kernel.org,
+ asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+ imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
+ linux-mediatek@lists.infradead.org, linux-actions@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-riscv@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ linux-hyperv@vger.kernel.org, linux-rdma@vger.kernel.org,
+ linux-media@vger.kernel.org,
+ "linux-mmc @ vger . kernel . org" <linux-mmc@vger.kernel.org>,
+ Linux-OMAP <linux-omap@vger.kernel.org>,
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ linux-s390@vger.kernel.org, Netdev <netdev@vger.kernel.org>,
+ linux-usb@vger.kernel.org
+Subject: Re: [PATCH 2/9] dma: Convert from tasklet to BH workqueue
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240328_020809_991332_21B2EADE 
-X-CRM114-Status: GOOD (  22.36  )
+X-CRM114-CacheID: sfid-20240328_030912_608159_07A16D85 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,99 +155,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: neil.armstrong@linaro.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Abel,
+On Thu, Mar 28, 2024, at 06:55, Vinod Koul wrote:
+> On 27-03-24, 16:03, Allen Pais wrote:
+>> The only generic interface to execute asynchronously in the BH context is
+>> tasklet; however, it's marked deprecated and has some design flaws. To
+>> replace tasklets, BH workqueue support was recently added. A BH workqueue
+>> behaves similarly to regular workqueues except that the queued work items
+>> are executed in the BH context.
+>
+> Thanks for conversion, am happy with BH alternative as it helps in
+> dmaengine where we need shortest possible time between tasklet and
+> interrupt handling to maximize dma performance
 
-On 26/03/2024 17:28, Abel Vesa wrote:
-> This RFC prepares for and adds support for 2 buses, which is supported
-> in HW starting with version 7. Until now, none of the currently
-> supported platforms in upstream have used the second bus. The X1E80100
-> platform, on the other hand, needs the second bus for the USB2.0 to work
-> as there are 3 SMB2360 PMICs which provide eUSB2 repeaters and they are
-> all found on the second bus.
+I still feel that we want something different for dmaengine,
+at least in the long run. As we have discussed in the past,
+the tasklet context in these drivers is what the callbacks
+from the dma client device is run in, and a lot of these probably
+want something other than tasklet context, e.g. just call
+complete() on a client-provided completion structure.
 
-@Dmitry, @Konrad, @Bjorn, could you apply those patches and test an devices
-you have to make sure there's no regression ?
+Instead of open-coding the use of the system_bh_wq in each
+dmaengine, how about we start with a custom WQ_BH
+specifically for the dmaengine subsystem and wrap them
+inside of another interface.
 
-> 
-> Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
-> ---
-> Changes in v6:
-> - Changed the compatible to platform specific (X1E80100) along with the
->    schema. Fixed the spmi buses unit addresses and added the empty ranges
->    property. Added missing properties to the spmi buses and the
->    "unevaluatedProperties: false".
-> - Deprecated the "qcom,bus-id" in the legacy schema.
-> - Changed the driver to check for legacy compatible first
-> - Link to v5: https://lore.kernel.org/r/20240221-spmi-multi-master-support-v5-0-3255ca413a0b@linaro.org
-> 
-> Changes in v5:
-> - Dropped the RFC as there aren't any concerns about the approach anymore
-> - Dropped the unused dev and res variables from pmic_arb_get_obsrvr_chnls_v2
-> - Link to v4: https://lore.kernel.org/r/20240220-spmi-multi-master-support-v4-0-dc813c878ba8@linaro.org
-> 
-> Changes in v4:
-> - Fixed comment above pmic_arb_init_apid_v7 by dropping the extra "bus" word
-> - Swicthed to devm_platform_ioremap_resource_byname for obsrvr and chnls.
->    The core remains with platform_get_resource_byname as we need the core size.
-> - Dropped comment from probe related to the need of platform_get_resource_byname
->    as it not true anymore.
-> - Dropped the qcom,bus-id optional property.
-> - Link to v3: https://lore.kernel.org/r/20240214-spmi-multi-master-support-v3-0-0bae0ef04faf@linaro.org
-> 
-> Changes in v3:
-> - Split the change into 3 separate patches. First 2 patches are moving
->    apid init and core resources into version specific ops. Third one is
->    adding the support for 2 buses and dedicated compatible.
-> - Added separate bindings patch
-> - Link to v2: https://lore.kernel.org/r/20240213-spmi-multi-master-support-v2-1-b3b102326906@linaro.org
-> 
-> Changes in v2:
-> - Reworked it so that it registers a spmi controller for each bus
->    rather than relying on the generic framework to pass on the bus
->    (master) id.
-> - Link to v1: https://lore.kernel.org/r/20240207-spmi-multi-master-support-v1-0-ce57f301c7fd@linaro.org
-> 
-> ---
-> Abel Vesa (5):
->        dt-bindings: spmi: Add X1E80100 SPMI PMIC ARB schema
->        dt-bindings: spmi: Deprecate qcom,bus-id
+Since almost every driver associates the tasklet with the
+dma_chan, we could go one step further and add the
+work_queue structure directly into struct dma_chan,
+with the wrapper operating on the dma_chan rather than
+the work_queue.
 
-Forgot to add, but please fix this in a v7:
-
->        spmi: pmic-arb: Make the APID init a version operation
-
-drivers/spmi/spmi-pmic-arb.c:180: warning: Function parameter or struct member 'core' not described in 'spmi_pmic_arb'
-drivers/spmi/spmi-pmic-arb.c:180: warning: Function parameter or struct member 'core_size' not described in 'spmi_pmic_arb'
-drivers/spmi/spmi-pmic-arb.c:180: warning: Function parameter or struct member 'mapping_table_valid' not described in 'spmi_pmic_arb'
-drivers/spmi/spmi-pmic-arb.c:243: warning: Function parameter or struct member 'pmic_arb' not described in 'pmic_arb_read_data'
-drivers/spmi/spmi-pmic-arb.c:257: warning: Function parameter or struct member 'pmic_arb' not described in 'pmic_arb_write_data'
-
->        spmi: pmic-arb: Make core resources acquiring a version operation
-
-drivers/spmi/spmi-pmic-arb.c:180: warning: Function parameter or struct member 'core' not described in 'spmi_pmic_arb'
-drivers/spmi/spmi-pmic-arb.c:180: warning: Function parameter or struct member 'core_size' not described in 'spmi_pmic_arb'
-drivers/spmi/spmi-pmic-arb.c:180: warning: Function parameter or struct member 'mapping_table_valid' not described in 'spmi_pmic_arb'
-drivers/spmi/spmi-pmic-arb.c:222: warning: Function parameter or struct member 'get_core_resources' not described in 'pmic_arb_ver_ops'
-drivers/spmi/spmi-pmic-arb.c:244: warning: Function parameter or struct member 'pmic_arb' not described in 'pmic_arb_read_data'
-drivers/spmi/spmi-pmic-arb.c:258: warning: Function parameter or struct member 'pmic_arb' not described in 'pmic_arb_write_data'
-
->        spmi: pmic-arb: Add multi bus support
-> 
->   .../bindings/spmi/qcom,spmi-pmic-arb.yaml          |   1 +
->   .../bindings/spmi/qcom,x1e80100-spmi-pmic-arb.yaml | 136 +++
->   drivers/spmi/spmi-pmic-arb.c                       | 948 +++++++++++++--------
->   3 files changed, 715 insertions(+), 370 deletions(-)
-> ---
-> base-commit: 4893c639cc3659cefaa675bf1e59f4e7571afb5c
-> change-id: 20240207-spmi-multi-master-support-832a704b779b
-> 
-> Best regards,
-
-Thanks,
-Neil
-
+      Arnd
 
