@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23664C54E64
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 10:47:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4227C54E64
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 11:12:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+d8jAmmQE7faFpsW3herBD/76TvmpU8bwHDK9j4rTvU=; b=QSDNzYVM3i2FLMDwN8MQndzQ+7
-	4amSn3g6ujG6JD9uAPri0Mq2g8c0WoO0AW/S2ptR2Z51RcFn8/MfO00yQVMS/4MTvnfh3fSLxlROD
-	4R5i2oeaKCFhdtxMg2kRoMoHVQDqULwKSGx6GBY1pAWcjvekZvWg3eg+Hte/o4ZfycM8y+/d/Q20w
-	/lyC3U16LwPnQoSK8HIhrdFIN87PEY4CX3Z6fnWgTTDy6RbjNjhLz7GF/rBiaD3jO57k8GRPMczvf
-	Ns9wclaigX6d6ivl6frHoI6XnRUVqkuNziLW6qJ9XbRHrT6LYHfo0irzAtMp4C+QeG/Qw19TaXV+l
-	+KOYmN8A==;
+	bh=1+ipa3gYGdsi7GnjlrbioIQ8A1A8ugliu8amDLRxkgc=; b=MYykICO3+D1JrCRiFgP+tOeeDA
+	Y0TELw0tRav+RlmnSllzykykB4ao1trOOiTquoiDON3DIrEA2gWfsW3lYmIuj02DOLthCGw0g6yd6
+	RsahQU6t9prCnLPSpiE8W23jak/61H0MGy1lTrxsvVekjX8Q+6lrkKLr1mbaWsF6BECT27IRiPQVS
+	KzXyazTABpw4rPJc1W8cV7zwN1ivLu/+lc50/Np33p1skillB6Ke/etp1ml8zMHnLT0YUVIZF+e9n
+	s9P2sV+LblHxFTWi7FlLrMGKdAzNzMXRVhIQtHpFuERLxWQJwm5NYvBJZr+XATBKSkBR5VYqJVLq4
+	iUsfiJdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpnIY-0000000Dcu4-0xvN;
-	Thu, 28 Mar 2024 10:47:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rpngk-0000000DheL-41vc;
+	Thu, 28 Mar 2024 11:12:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpnIU-0000000DcsM-1QuP
+	id 1rpngi-0000000DhdV-1cpl
 	for linux-mediatek@lists.infradead.org;
-	Thu, 28 Mar 2024 10:47:51 +0000
-X-UUID: 9b9467c2ecf011ee96d5dfc950b7243d-20240328
+	Thu, 28 Mar 2024 11:12:53 +0000
+X-UUID: 1d1c8b82ecf411eeac1957ae9f99f617-20240328
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+d8jAmmQE7faFpsW3herBD/76TvmpU8bwHDK9j4rTvU=;
-	b=NnwWYe4HxcmPAshbxE20XZvVLvUWuYZ5bG7oBNyzBU159NTGgTJBL9AG/6hJ2Bhyslq/YP9W1xjVemwKECQTOS67wx9GciV/QtfZ2Po56k6zI0+S8nXpAvh3r8mQ80KcuVEwhMgx/Q7bbZ56yysKB4DpcyAyKJ/3uRazAi7xSls=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=1+ipa3gYGdsi7GnjlrbioIQ8A1A8ugliu8amDLRxkgc=;
+	b=QPmQVKEzJAeIQTAvKE2g3eSBPfNz7cbgQETwp8afk1QvqfwxIgMaXZFEaf8u9RWTH/o8/JbqI+dvel7vCtCqhi/NiKWNij0415BxYCyFs4cDct04yqCJFU1zPGgLN3CdFcofmH8QC051G9qNwlABCWX421Xj5koK7JywPKMIDKg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:e9668d94-824a-45a1-b28e-d6f5035fd2be,IP:0,U
+X-CID-O-INFO: VERSION:1.1.37,REQID:edc2ff9c-34e7-446d-bc25-0e963b5e11cc,IP:0,U
 	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:-5
-X-CID-META: VersionHash:6f543d0,CLOUDID:bf4f0a82-4f93-4875-95e7-8c66ea833d57,B
+X-CID-META: VersionHash:6f543d0,CLOUDID:c0c1f190-e2c0-40b0-a8fe-7c7e47299109,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 9b9467c2ecf011ee96d5dfc950b7243d-20240328
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+X-UUID: 1d1c8b82ecf411eeac1957ae9f99f617-20240328
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
 	(envelope-from <peter.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 898071265; Thu, 28 Mar 2024 03:47:44 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+	with ESMTP id 1157646903; Thu, 28 Mar 2024 04:12:49 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 28 Mar 2024 18:47:09 +0800
+ 15.2.1118.26; Thu, 28 Mar 2024 19:12:46 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 28 Mar 2024 18:47:09 +0800
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 28 Mar 2024 19:12:46 +0800
 From: <peter.wang@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
 	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
@@ -64,29 +64,28 @@ CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
 	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
 	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
 	<naomi.chu@mediatek.com>, <chu.stanley@gmail.com>
-Subject: [PATCH v1] ufs: core: wlun suspend dev/link state error recovery
-Date: Thu, 28 Mar 2024 18:47:07 +0800
-Message-ID: <20240328104707.1452-1-peter.wang@mediatek.com>
+Subject: [PATCH v1] ufs: core: fix mcq mode dev commad timeout
+Date: Thu, 28 Mar 2024 19:12:44 +0800
+Message-ID: <20240328111244.3599-1-peter.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.288900-8.000000
-X-TMASE-MatchedRID: xKwqdG8zLkeAAYHsHSPDcxn0UD4GU5IqKx5ICGp/WtEmu2XKsBcW8RUO
-	nrDGROOdLqWDA5QpvGM5QOj/9mEf0+DjmHulaCpRKaMQ6tw7oDJMkOX0UoduuQqiCYa6w8tv0Qx
-	Bl5kNTSd1q3E60KR9HnTv9Bst6w/PDPIzF4wRfrAURSScn+QSXt0H8LFZNFG7MGpgBNI6BaNY5I
-	+rbevWdKNDgm1wxJWZIPSOkUPcWW/DBPCKp6l351POE1CXbZ+DBXd/blXpfhH2zj3Yg/gmLw4CB
-	GNcrlBpQPJfIrUZGpaAhOcaQrQ0U1GyRcoeF18qmKP0zzpTAeGwod8xOMKmvMCBO+zxAW5pftwZ
-	3X11IV0=
+X-TM-AS-Result: No-10--3.713000-8.000000
+X-TMASE-MatchedRID: n/G9Jfep/EYMQLXc2MGSbEKcYi5Qw/RVLoYOuiLW+uW7qpOHKudqcyvd
+	+2hXReVzUKHb2fVYuJQZiQOLu5PhvLBAQLqGlKiv4pdq9sdj8LWz4D778GcgEUklF5L0lQHcKLW
+	rCrDVHUni8zVgXoAltsYlDcGKIsCCC24oEZ6SpSk6XEE7Yhw4FgbXoidYSy4P3unOsFItkBB+mh
+	WkR14Qms0MN25RQ6qSqHSgf2x6gMl1CdFT0X8D/24OrJLqXmZ9R4HKDZ8NHjGuxQRL3Ccs18GQY
+	FMiVRG5ehcPPz6UzEWlb5ogMngNpHOTEn5IiRSOady5RJQR05c=
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.288900-8.000000
+X-TMASE-Result: 10--3.713000-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 7B89F9B1F6D6CAFDEF7C7BA0769095B830BEC2CA89DDEB27F3B0471B6AAED0562000:8
+X-TM-SNTS-SMTP: DB594D91E0DAB569C3A7D9A4665BB7B09F13F27FFC68A0935D26ED1A494258802000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240328_034750_431099_4AD1BBDE 
-X-CRM114-Status: GOOD (  13.40  )
+X-CRM114-CacheID: sfid-20240328_041252_465218_9A682638 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,35 +102,30 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Peter Wang <peter.wang@mediatek.com>
 
-When wl suspend error occurs, for example, BKOP or SSU timeout, the host
-triggers an error handler and returns -EBUSY to break the wl suspend process.
-However, it is possible for the runtime PM to enter wl suspend again before
-the error handler has finished, and return -EINVAL because the device is
-in an error state. To address this, ensure that the rumtime PM waits for the
-error handler to finish, or trigger the error handler in such cases,
-because returning -EINVAL can cause the I/O to hang.
+When dev command timeout in mcq mode, clear success should return
+retry, because return 0, caller consider success and have error log.
+"Invalid offset 0x0 in descriptor IDN 0x9, length 0x0"
 
 Signed-off-by: Peter Wang <peter.wang@mediatek.com>
 ---
- drivers/ufs/core/ufshcd.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/ufs/core/ufshcd.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index e30fd125988d..0a32f423f6a0 100644
+index e30fd125988d..5f8749ea347c 100644
 --- a/drivers/ufs/core/ufshcd.c
 +++ b/drivers/ufs/core/ufshcd.c
-@@ -9791,7 +9791,10 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+@@ -3217,7 +3217,9 @@ static int ufshcd_wait_for_dev_cmd(struct ufs_hba *hba,
  
- 	/* UFS device & link must be active before we enter in this function */
- 	if (!ufshcd_is_ufs_dev_active(hba) || !ufshcd_is_link_active(hba)) {
--		ret = -EINVAL;
-+		/*  Wait err handler finish or tirgger err recovery in this case */
-+		if (!ufshcd_eh_in_progress(hba))
-+			ufshcd_force_error_recovery(hba);
-+		ret = -EBUSY;
- 		goto enable_scaling;
- 	}
- 
+ 		/* MCQ mode */
+ 		if (is_mcq_enabled(hba)) {
+-			err = ufshcd_clear_cmd(hba, lrbp->task_tag);
++			/* successfully cleared the command, retry if needed */
++			if (ufshcd_clear_cmd(hba, lrbp->task_tag) == 0)
++				err = -EAGAIN;
+ 			hba->dev_cmd.complete = NULL;
+ 			return err;
+ 		}
 -- 
 2.18.0
 
