@@ -4,120 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F845CD11DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 19:23:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E63CECD11DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 19:39:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GyFGSwdDS+8X5fWOjo2s+K1AMkRQoOt7S254R+rI76g=; b=46mYbM4mYoUxya/L1y+cCKSAPD
-	mJX4RbeCB71sGISSE+IhJ6Lqny5GFGHfbRocAACMtzRG82cWVb4E/GHkG/iHJXxNCe7TyNwlimFzC
-	e7Os6mXkqLqxBufuQ76mESYgWWNSI0dt3BcQSUkTe3R9xWOrINBptoXYqW+YvnRBvWXpz8X8CiSb/
-	9I6I1EIbxjPB1nQhIDG1MXr47P44EJ0EIl6JTtxfvIzPWqlEPksJUyQJ0ilH+PecVQ3lGft9Y5kaO
-	DgK/DfuRxnmAwyybwQ0SwIs1LBD0XpgTV8Oa7ZZidM3kyyvNkp1QILbMP9hKXB61Cu5lfH/hH0zOc
-	aBTaQGoA==;
+	bh=622VK9NVBI6NV/BHlHroiE+gl2GqatwpJmnEQrqKhSw=; b=FluEXM0zGvowD4JKwp3rk74zl+
+	Jj4JvKuo66UyMC+fQYZU9nv2T6GYMJogi0JIsaaDqJVA1FQeXBlLgHSOQk/x3po1I5x0ltW4FyXjd
+	JSa7pNm/oZebMQqAMXUWnVvmBh3DWWwxJnY49oFR30vm+WCi2F5c1iI1MOiWXH3QoEFS0VSaPqCnJ
+	+3l7SsExHrQztJEqlAV3dfPl8Z07IOE9XfVOxaJiTpmGcmJtzbeInLtykHcyJWI+HEiJTJFI246PH
+	UiVCXcirR5qmAPoZEhQ2Y2o7M2Db3L7KgceBgSLaW2D6HO9sxlxRVsdFJHWZIyYFxce1MF2PhPTh7
+	T7ugRDNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpvLJ-0000000FMVk-33rR;
-	Thu, 28 Mar 2024 19:23:17 +0000
-Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
+	id 1rpvbJ-0000000FQDT-0Rx0;
+	Thu, 28 Mar 2024 19:39:49 +0000
+Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpvLF-0000000FMUi-0O0n;
-	Thu, 28 Mar 2024 19:23:15 +0000
-Received: by mail-ot1-x336.google.com with SMTP id 46e09a7af769-6e707210ab9so57441a34.2;
-        Thu, 28 Mar 2024 12:23:11 -0700 (PDT)
+	id 1rpvbE-0000000FQBq-0x7Q;
+	Thu, 28 Mar 2024 19:39:45 +0000
+Received: by mail-ua1-x92b.google.com with SMTP id a1e0cc1a2514c-7e05d68723dso281196241.1;
+        Thu, 28 Mar 2024 12:39:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1711653790; x=1712258590; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:reply-to:message-id:subject:cc:to:from:date
-         :sender:from:to:cc:subject:date:message-id:reply-to;
-        bh=GyFGSwdDS+8X5fWOjo2s+K1AMkRQoOt7S254R+rI76g=;
-        b=e9pVkHb/ttN6YKzxLWmnXcW1FKBONoeclefZMwrEm7PGQsgY/mj3YyTTbsMkw0WFYX
-         +CyZYyXCfdl8ipPiolxD6DjVKeDjne+mR1UWKlG29hwQM2CRxjKWcOejXrrzhMhAtqZB
-         +tmdORPo8G8Y0j6d74GLMaXKxXZW7wWmk8rnWLMq0BvIuycapuRlOMvHZUC+r8eo7YPs
-         lS57QSrqxHP/CZqDTssHi1sxAhUqkTlPg5c+XkQDVXjo9Dy9Jnj4TstTKSkivVFiFgrW
-         4CXEhiELuPcRnGZPRLN3wHkPQ5Livucs/YkNct0umuB0THkFgkSPe9syzRLdCoBu0KaD
-         csHA==
+        d=gmail.com; s=20230601; t=1711654782; x=1712259582; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=622VK9NVBI6NV/BHlHroiE+gl2GqatwpJmnEQrqKhSw=;
+        b=ly0y1j2rC9P0Zy2qjoiHwMGog4pYdmtn01vtiyseIyeL4G46OodMc+h5d5Cxs0gGWd
+         7bBUuDZwkegac6j4yiPpY1U0stxc4W1I2MRKtrs/cgaRvt6R/CuGueRqulyRv7PQRaR/
+         GupQtZvK7qUUn+h9CyijvZcBLC+GpesIOqQzg5/b7d6VCdw+yiuwm4zb8dmbBMVcfZCE
+         C0aSQ3l6WGBUORx52Q5HL51kAr0F3C+wf68WB6WxIBZQIuGzOd68q4LMdKnorxmIBQjt
+         t5chxfmqCx8cHZCU0kNwUdsydpmFAOrQb2/461sOb2YlueLqh/A0glLl5onWKnTsFQsj
+         cLGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711653790; x=1712258590;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:reply-to:message-id:subject:cc:to:from:date
-         :sender:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1711654782; x=1712259582;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=GyFGSwdDS+8X5fWOjo2s+K1AMkRQoOt7S254R+rI76g=;
-        b=KGkrxlSTa2IRIdFJ0lwsD5qO401Xe0IHERfxAi/0aiTVQhQT7P5u91p10gv7dKVXmG
-         Iu2/5V9Sw9GuhHQ/wD89AJmH+pAjI2lwNws2VmpeDTq0FUcEY5uNHLNkqW71omObrIQk
-         d690vRCS2cJcSU0v4RxodJoIj/lm/quqXMW8lR2dOFnuaWP57Js/jp8rXvifmRDrx8e0
-         qffhUpc9ITpR9e0i+pUTgO5eZx1Reqt4qhsDlsnN6IFtI5Z2qjVP9Efonsv06Oz5nkfj
-         GnmkFh179X7J0xANibRH/CYYq4FyLV6QL5u7qVXq7CkUSS3opqnhzHPnXDPZHI2KqCxW
-         XYxw==
-X-Forwarded-Encrypted: i=1; AJvYcCVs51q53CI8oNKlY8u1Pft7C8s62f5fQRqDEeiWkphwfxGsDRH4bAMgfP/slVZ/4m/SsIHh252VE0841TxHnONcQiolS3wZYsdRLSW7qO/p46fwLTx7VjzfOoxN6ePTpx0ntui5M3WBPPeNqyAik9SLMFm/9GuyFMB69izE2f5vf/lQMHKGeXBjBfMAm/arJxk990KnD55MialUpJjoPnVZfM7OLx++PnAy9BG1IKQl7YSI+3unrpEn9CdFWEPn7u7smaAWN1PBBPo+VKbjMb1nyHkVZxTT8u05A3kTl1zH1Bt4
-X-Gm-Message-State: AOJu0YzdSPtZmL01d04KOTGaR4ioygURKAMRTY0oaYKtifDMcYWbjMYQ
-	KtxRCUnSKmSw5MTXxkl4TBL9Jgys8RJBzr9+YQig2qi4FbTadTM=
-X-Google-Smtp-Source: AGHT+IEOtLqqAjjYrlHQS8qBEVcSrjCNrCoEQoC8julgRSnyZQ6WZe0wbYQEX2ZQYcLWJzzUoCRR0w==
-X-Received: by 2002:a9d:7754:0:b0:6e6:6ea1:9820 with SMTP id t20-20020a9d7754000000b006e66ea19820mr191312otl.14.1711653790323;
-        Thu, 28 Mar 2024 12:23:10 -0700 (PDT)
-Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
-        by smtp.gmail.com with ESMTPSA id n9-20020a9d64c9000000b006e6c9a56591sm344956otl.19.2024.03.28.12.23.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Mar 2024 12:23:09 -0700 (PDT)
-Received: from mail.minyard.net (unknown [IPv6:2001:470:b8f6:1b:b987:69e:202a:697a])
-	by serve.minyard.net (Postfix) with ESMTPSA id A60B1180011;
-	Thu, 28 Mar 2024 19:23:08 +0000 (UTC)
-Date: Thu, 28 Mar 2024 14:23:07 -0500
-From: Corey Minyard <minyard@acm.org>
-To: Allen <allen.lkml@gmail.com>
-Cc: Allen Pais <apais@linux.microsoft.com>, linux-kernel@vger.kernel.org,
-	tj@kernel.org, keescook@chromium.org, vkoul@kernel.org,
-	marcan@marcan.st, sven@svenpeter.dev, florian.fainelli@broadcom.com,
-	rjui@broadcom.com, sbranden@broadcom.com, paul@crapouillou.net,
-	Eugeniy.Paltsev@synopsys.com, manivannan.sadhasivam@linaro.org,
-	vireshk@kernel.org, Frank.Li@nxp.com, leoyang.li@nxp.com,
-	zw@zh-kernel.org, wangzhou1@hisilicon.com, haijie1@huawei.com,
-	shawnguo@kernel.org, s.hauer@pengutronix.de, sean.wang@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	afaerber@suse.de, logang@deltatee.com, daniel@zonque.org,
-	haojian.zhuang@gmail.com, robert.jarzmik@free.fr,
-	andersson@kernel.org, konrad.dybcio@linaro.org, orsonzhai@gmail.com,
-	baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com,
-	patrice.chotard@foss.st.com, linus.walleij@linaro.org,
-	wens@csie.org, jernej.skrabec@gmail.com, peter.ujfalusi@gmail.com,
-	kys@microsoft.com, haiyangz@microsoft.com, wei.liu@kernel.org,
-	decui@microsoft.com, jassisinghbrar@gmail.com, mchehab@kernel.org,
-	maintainers@bluecherrydvr.com, aubin.constans@microchip.com,
-	ulf.hansson@linaro.org, manuel.lauss@gmail.com,
-	mirq-linux@rere.qmqm.pl, jh80.chung@samsung.com, oakad@yahoo.com,
-	hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
-	brucechang@via.com.tw, HaraldWelte@viatech.com, pierre@ossman.eu,
-	duncan.sands@free.fr, stern@rowland.harvard.edu, oneukum@suse.com,
-	openipmi-developer@lists.sourceforge.net, dmaengine@vger.kernel.org,
-	asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
-	imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
-	linux-mediatek@lists.infradead.org,
-	linux-actions@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-riscv@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, linux-hyperv@vger.kernel.org,
-	linux-rdma@vger.kernel.org, linux-media@vger.kernel.org,
-	linux-mmc@vger.kernel.org, linux-omap@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org, linux-s390@vger.kernel.org,
-	netdev@vger.kernel.org, linux-usb@vger.kernel.org
-Subject: Re: [PATCH 6/9] ipmi: Convert from tasklet to BH workqueue
-Message-ID: <ZgXDmx1HvujsMYAR@mail.minyard.net>
-References: <20240327160314.9982-1-apais@linux.microsoft.com>
- <20240327160314.9982-7-apais@linux.microsoft.com>
- <ZgRePyo2zC4A1Fp4@mail.minyard.net>
- <CAOMdWS+1AFxEqmACiBYzPHc+q0Ut6hp15tdV50JHvfVeUNCGQw@mail.gmail.com>
+        bh=622VK9NVBI6NV/BHlHroiE+gl2GqatwpJmnEQrqKhSw=;
+        b=c5HG2ZQqEg6gbKlwoLj0CZkEMvL6iMCIlWQAUKanRz2YUrWTg3xpkxAyXJGTG2Ibje
+         uvATu9wbgZRZnCjwDPCkiyqkF5gDRAiPFTOoEznhKJZ4Cm5IdDRjzvaqDE8T35QzIqiP
+         l3b+C4ECNdYMrctxshkD99e80lrQmZRFBCLfonxgJ2/iD78UymU+w5WXnn/8zZyyWwUL
+         Wz8vtx0Vdk1zp+mVP7JRcwuuSzfo7Me4IXIp7Bebi9JTHqbc08e3E/ensLa3gWysBAVm
+         vfRSRMIP8MUDyKxpzDtZ7QF5/SuVAO30ivg9joweZxBCCWjSS8x19YSkfvI37PqtWMFq
+         MpWA==
+X-Forwarded-Encrypted: i=1; AJvYcCX5UfAdqGynJflcf/ZTr0PETCX45mkcqaL3t3S5OhexH7XQ8XEn7NDTTf9Bm1JKc3GSwSv+Gn0lvQm+wQEx4mKpj3v8YmEj95O8UoAdSN90n3hNCCUEZS16pOpsH4OtBcqxkipVI5yp2hBSR/vp8T7BOE8v1MdEu4EA8CWBEvr5c1Pw1d2urD6ade/FI0La6MFv9y6lVXSrrVsCBVjTniq/PIIypmtulBz+HrznrDryrL86whRCSR2735aMC71xPqjJ/SBonoUVKCsYWoNy6TKKCigBV5JoeaSj2d/K4KVp220l
+X-Gm-Message-State: AOJu0YzhAnvFIG50xEywoVA3I8nLJwuh3s+TxnP87W8V9au6pqvcPB5d
+	HFASsGFE/b1bnLLLUV86hZiv0tH33LHaTF/7GnKtSFx7bMenF1MbXE6UbzHlei6N2ig/MvEwqme
+	WBbzfxY1u7IOGpf9r76C1qqGw+48=
+X-Google-Smtp-Source: AGHT+IEY59Ji/OARBUAoYgwqWp5p4Pop3R94bZWuKlJaRj9K8xYwJ5pD7jLBPmXxcg5SXNElqhUUtT98mEK7bvSO2Kc=
+X-Received: by 2002:a1f:c801:0:b0:4d4:1cca:1a72 with SMTP id
+ y1-20020a1fc801000000b004d41cca1a72mr369742vkf.6.1711654781874; Thu, 28 Mar
+ 2024 12:39:41 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAOMdWS+1AFxEqmACiBYzPHc+q0Ut6hp15tdV50JHvfVeUNCGQw@mail.gmail.com>
+References: <20240327160314.9982-1-apais@linux.microsoft.com>
+ <20240327160314.9982-3-apais@linux.microsoft.com> <ZgUGXTKPVhrA1tam@matsya>
+ <2e9257af-c123-406b-a189-eaebeecc1d71@app.fastmail.com> <ZgW3j1qkLA-QU4iM@matsya>
+In-Reply-To: <ZgW3j1qkLA-QU4iM@matsya>
+From: Allen <allen.lkml@gmail.com>
+Date: Thu, 28 Mar 2024 12:39:30 -0700
+Message-ID: <CAOMdWSKY9D75FM3bswUfXn2o7bGtrei3G5kLt6JdcdOPDXaG8g@mail.gmail.com>
+Subject: Re: [PATCH 2/9] dma: Convert from tasklet to BH workqueue
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Allen Pais <apais@linux.microsoft.com>, 
+	linux-kernel@vger.kernel.org, Tejun Heo <tj@kernel.org>, 
+	Kees Cook <keescook@chromium.org>, Hector Martin <marcan@marcan.st>, 
+	Sven Peter <sven@svenpeter.dev>, Florian Fainelli <florian.fainelli@broadcom.com>, 
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Eugeniy.Paltsev@synopsys.com, 
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Viresh Kumar <vireshk@kernel.org>, 
+	Frank Li <Frank.Li@nxp.com>, Leo Li <leoyang.li@nxp.com>, zw@zh-kernel.org, 
+	Zhou Wang <wangzhou1@hisilicon.com>, haijie1@huawei.com, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, logang@deltatee.com, 
+	Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, 
+	Robert Jarzmik <robert.jarzmik@free.fr>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Orson Zhai <orsonzhai@gmail.com>, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Patrice Chotard <patrice.chotard@foss.st.com>, Linus Walleij <linus.walleij@linaro.org>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, peter.ujfalusi@gmail.com, 
+	"K. Y. Srinivasan" <kys@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, 
+	Dexuan Cui <decui@microsoft.com>, Jassi Brar <jassisinghbrar@gmail.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, maintainers@bluecherrydvr.com, 
+	aubin.constans@microchip.com, Ulf Hansson <ulf.hansson@linaro.org>, 
+	Manuel Lauss <manuel.lauss@gmail.com>, =?UTF-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>, 
+	"jh80.chung" <jh80.chung@samsung.com>, oakad@yahoo.com, 
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
+	brucechang@via.com.tw, HaraldWelte@viatech.com, pierre@ossman.eu, 
+	duncan.sands@free.fr, Alan Stern <stern@rowland.harvard.edu>, 
+	Oliver Neukum <oneukum@suse.com>, openipmi-developer@lists.sourceforge.net, 
+	dmaengine@vger.kernel.org, asahi@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, 
+	linux-mips@vger.kernel.org, imx@lists.linux.dev, 
+	linuxppc-dev@lists.ozlabs.org, linux-mediatek@lists.infradead.org, 
+	linux-actions@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	linux-riscv@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	linux-tegra@vger.kernel.org, linux-hyperv@vger.kernel.org, 
+	linux-rdma@vger.kernel.org, linux-media@vger.kernel.org, 
+	"linux-mmc @ vger . kernel . org" <linux-mmc@vger.kernel.org>, Linux-OMAP <linux-omap@vger.kernel.org>, 
+	Linux-Renesas <linux-renesas-soc@vger.kernel.org>, linux-s390@vger.kernel.org, 
+	Netdev <netdev@vger.kernel.org>, linux-usb@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240328_122313_270384_69D156FA 
-X-CRM114-Status: GOOD (  36.58  )
+X-CRM114-CacheID: sfid-20240328_123944_290351_F60288A3 
+X-CRM114-Status: GOOD (  26.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,184 +124,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: minyard@acm.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 28, 2024 at 10:52:16AM -0700, Allen wrote:
-> On Wed, Mar 27, 2024 at 11:05 AM Corey Minyard <minyard@acm.org> wrote:
+> > >> The only generic interface to execute asynchronously in the BH context is
+> > >> tasklet; however, it's marked deprecated and has some design flaws. To
+> > >> replace tasklets, BH workqueue support was recently added. A BH workqueue
+> > >> behaves similarly to regular workqueues except that the queued work items
+> > >> are executed in the BH context.
+> > >
+> > > Thanks for conversion, am happy with BH alternative as it helps in
+> > > dmaengine where we need shortest possible time between tasklet and
+> > > interrupt handling to maximize dma performance
 > >
-> > I believe that work queues items are execute single-threaded for a work
-> > queue, so this should be good.  I need to test this, though.  It may be
-> > that an IPMI device can have its own work queue; it may not be important
-> > to run it in bh context.
-> 
->   Fair point. Could you please let me know once you have had a chance to test
-> these changes. Meanwhile, I will work on RFC wherein IPMI will have its own
-> workqueue.
-> 
->  Thanks for taking time out to review.
-
-After looking and thinking about it a bit, a BH context is still
-probably the best for this.
-
-I have tested this patch under load and various scenarios and it seems
-to work ok.  So:
-
-Tested-by: Corey Minyard <cminyard@mvista.com>
-Acked-by: Corey Minyard <cminyard@mvista.com>
-
-Or I can take this into my tree.
-
--corey
-
-> 
-> - Allen
-> 
+> > I still feel that we want something different for dmaengine,
+> > at least in the long run. As we have discussed in the past,
+> > the tasklet context in these drivers is what the callbacks
+> > from the dma client device is run in, and a lot of these probably
+> > want something other than tasklet context, e.g. just call
+> > complete() on a client-provided completion structure.
 > >
-> > -corey
+> > Instead of open-coding the use of the system_bh_wq in each
+> > dmaengine, how about we start with a custom WQ_BH
+> > specifically for the dmaengine subsystem and wrap them
+> > inside of another interface.
 > >
-> > >
-> > > Based on the work done by Tejun Heo <tj@kernel.org>
-> > > Branch: https://git.kernel.org/pub/scm/linux/kernel/git/tj/wq.git for-610
-> > >
-> > > Signed-off-by: Allen Pais <allen.lkml@gmail.com>
-> > > ---
-> > >  drivers/char/ipmi/ipmi_msghandler.c | 30 ++++++++++++++---------------
-> > >  1 file changed, 15 insertions(+), 15 deletions(-)
-> > >
-> > > diff --git a/drivers/char/ipmi/ipmi_msghandler.c b/drivers/char/ipmi/ipmi_msghandler.c
-> > > index b0eedc4595b3..fce2a2dbdc82 100644
-> > > --- a/drivers/char/ipmi/ipmi_msghandler.c
-> > > +++ b/drivers/char/ipmi/ipmi_msghandler.c
-> > > @@ -36,12 +36,13 @@
-> > >  #include <linux/nospec.h>
-> > >  #include <linux/vmalloc.h>
-> > >  #include <linux/delay.h>
-> > > +#include <linux/workqueue.h>
-> > >
-> > >  #define IPMI_DRIVER_VERSION "39.2"
-> > >
-> > >  static struct ipmi_recv_msg *ipmi_alloc_recv_msg(void);
-> > >  static int ipmi_init_msghandler(void);
-> > > -static void smi_recv_tasklet(struct tasklet_struct *t);
-> > > +static void smi_recv_work(struct work_struct *t);
-> > >  static void handle_new_recv_msgs(struct ipmi_smi *intf);
-> > >  static void need_waiter(struct ipmi_smi *intf);
-> > >  static int handle_one_recv_msg(struct ipmi_smi *intf,
-> > > @@ -498,13 +499,13 @@ struct ipmi_smi {
-> > >       /*
-> > >        * Messages queued for delivery.  If delivery fails (out of memory
-> > >        * for instance), They will stay in here to be processed later in a
-> > > -      * periodic timer interrupt.  The tasklet is for handling received
-> > > +      * periodic timer interrupt.  The work is for handling received
-> > >        * messages directly from the handler.
-> > >        */
-> > >       spinlock_t       waiting_rcv_msgs_lock;
-> > >       struct list_head waiting_rcv_msgs;
-> > >       atomic_t         watchdog_pretimeouts_to_deliver;
-> > > -     struct tasklet_struct recv_tasklet;
-> > > +     struct work_struct recv_work;
-> > >
-> > >       spinlock_t             xmit_msgs_lock;
-> > >       struct list_head       xmit_msgs;
-> > > @@ -704,7 +705,7 @@ static void clean_up_interface_data(struct ipmi_smi *intf)
-> > >       struct cmd_rcvr  *rcvr, *rcvr2;
-> > >       struct list_head list;
-> > >
-> > > -     tasklet_kill(&intf->recv_tasklet);
-> > > +     cancel_work_sync(&intf->recv_work);
-> > >
-> > >       free_smi_msg_list(&intf->waiting_rcv_msgs);
-> > >       free_recv_msg_list(&intf->waiting_events);
-> > > @@ -1319,7 +1320,7 @@ static void free_user(struct kref *ref)
-> > >  {
-> > >       struct ipmi_user *user = container_of(ref, struct ipmi_user, refcount);
-> > >
-> > > -     /* SRCU cleanup must happen in task context. */
-> > > +     /* SRCU cleanup must happen in work context. */
-> > >       queue_work(remove_work_wq, &user->remove_work);
-> > >  }
-> > >
-> > > @@ -3605,8 +3606,7 @@ int ipmi_add_smi(struct module         *owner,
-> > >       intf->curr_seq = 0;
-> > >       spin_lock_init(&intf->waiting_rcv_msgs_lock);
-> > >       INIT_LIST_HEAD(&intf->waiting_rcv_msgs);
-> > > -     tasklet_setup(&intf->recv_tasklet,
-> > > -                  smi_recv_tasklet);
-> > > +     INIT_WORK(&intf->recv_work, smi_recv_work);
-> > >       atomic_set(&intf->watchdog_pretimeouts_to_deliver, 0);
-> > >       spin_lock_init(&intf->xmit_msgs_lock);
-> > >       INIT_LIST_HEAD(&intf->xmit_msgs);
-> > > @@ -4779,7 +4779,7 @@ static void handle_new_recv_msgs(struct ipmi_smi *intf)
-> > >                        * To preserve message order, quit if we
-> > >                        * can't handle a message.  Add the message
-> > >                        * back at the head, this is safe because this
-> > > -                      * tasklet is the only thing that pulls the
-> > > +                      * work is the only thing that pulls the
-> > >                        * messages.
-> > >                        */
-> > >                       list_add(&smi_msg->link, &intf->waiting_rcv_msgs);
-> > > @@ -4812,10 +4812,10 @@ static void handle_new_recv_msgs(struct ipmi_smi *intf)
-> > >       }
-> > >  }
-> > >
-> > > -static void smi_recv_tasklet(struct tasklet_struct *t)
-> > > +static void smi_recv_work(struct work_struct *t)
-> > >  {
-> > >       unsigned long flags = 0; /* keep us warning-free. */
-> > > -     struct ipmi_smi *intf = from_tasklet(intf, t, recv_tasklet);
-> > > +     struct ipmi_smi *intf = from_work(intf, t, recv_work);
-> > >       int run_to_completion = intf->run_to_completion;
-> > >       struct ipmi_smi_msg *newmsg = NULL;
-> > >
-> > > @@ -4866,7 +4866,7 @@ void ipmi_smi_msg_received(struct ipmi_smi *intf,
-> > >
-> > >       /*
-> > >        * To preserve message order, we keep a queue and deliver from
-> > > -      * a tasklet.
-> > > +      * a work.
-> > >        */
-> > >       if (!run_to_completion)
-> > >               spin_lock_irqsave(&intf->waiting_rcv_msgs_lock, flags);
-> > > @@ -4887,9 +4887,9 @@ void ipmi_smi_msg_received(struct ipmi_smi *intf,
-> > >               spin_unlock_irqrestore(&intf->xmit_msgs_lock, flags);
-> > >
-> > >       if (run_to_completion)
-> > > -             smi_recv_tasklet(&intf->recv_tasklet);
-> > > +             smi_recv_work(&intf->recv_work);
-> > >       else
-> > > -             tasklet_schedule(&intf->recv_tasklet);
-> > > +             queue_work(system_bh_wq, &intf->recv_work);
-> > >  }
-> > >  EXPORT_SYMBOL(ipmi_smi_msg_received);
-> > >
-> > > @@ -4899,7 +4899,7 @@ void ipmi_smi_watchdog_pretimeout(struct ipmi_smi *intf)
-> > >               return;
-> > >
-> > >       atomic_set(&intf->watchdog_pretimeouts_to_deliver, 1);
-> > > -     tasklet_schedule(&intf->recv_tasklet);
-> > > +     queue_work(system_bh_wq, &intf->recv_work);
-> > >  }
-> > >  EXPORT_SYMBOL(ipmi_smi_watchdog_pretimeout);
-> > >
-> > > @@ -5068,7 +5068,7 @@ static bool ipmi_timeout_handler(struct ipmi_smi *intf,
-> > >                                      flags);
-> > >       }
-> > >
-> > > -     tasklet_schedule(&intf->recv_tasklet);
-> > > +     queue_work(system_bh_wq, &intf->recv_work);
-> > >
-> > >       return need_timer;
-> > >  }
-> > > --
-> > > 2.17.1
-> > >
-> > >
-> >
-> 
-> 
-> -- 
->        - Allen
-> 
+> > Since almost every driver associates the tasklet with the
+> > dma_chan, we could go one step further and add the
+> > work_queue structure directly into struct dma_chan,
+> > with the wrapper operating on the dma_chan rather than
+> > the work_queue.
+>
+> I think that is very great idea. having this wrapped in dma_chan would
+> be very good way as well
+>
+> Am not sure if Allen is up for it :-)
+
+ Thanks Arnd, I know we did speak about this at LPC. I did start
+working on using completion. I dropped it as I thought it would
+be easier to move to workqueues.
+
+Vinod, I would like to give this a shot and put out a RFC, I would
+really appreciate review and feedback.
+
+Thanks,
+Allen
+
+>
+> --
+> ~Vinod
+>
 
