@@ -4,81 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FFDBCD1283
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 14:46:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25C25C54E67
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 15:37:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yvXc/6fB/STKMVpjx0LeFmiE8/rH1mB7ohtX7hXt9io=; b=w0SK9QvGKuOSLfOFJbdpPcjWws
-	A425810dgKbkcm/uoe30vTkq5TES7G3zr2nZ/abqSagKvpNjGL4rHJCOfsehuf8/ct5TYPnWsrixN
-	sGtSznTJ+gl7MTIrh5CHPmryA71Q4rE5wGsy6VjUP+hHl89jILIMXAEd51xJE5Xet9vbONHm+AwHI
-	YKQwM3olJbmd67BavIGqt3OlzQwaWItWto8fMVV6V8O3BF6I3DzCCL4ccSTwvqvMauSpToYBLBf0o
-	eTP2PN45b4SHDVgvS9b5fWt46IGr0wDi4s4ObA3enRnkWUyP8eVw7GUPKCU7mMEkM9SagOVNKDvIH
-	ce2Skorw==;
+	bh=cbqvq+BA/vaA9/GEYHd73qogtaZufT5humKqhlfkAys=; b=cUyESXpE1e7Jg/wPKvIfU5TO7P
+	N/Uo1Wd63ir3XWv99OZwaHXSELPA7KdFM0xaK1HWj9htVJl0TzAnn0mXFVDyzXPLWCkAupwHhlpqE
+	kQmzVP/E6/WJvR5uJOVgvnteL1eqtm+uLkMtClcAIxR6psgcDopCdDrUx/k6tOq02vMiC0CaxIzKe
+	+7bflmJb+heoGBeL8Fmxe7kXrocSCAYfo7BIGE7B+MpXxSqeE46IksIUvbpxQ56DPR4f2v7TJlZO1
+	SAEcX5lO2dPNTYXHR/ABV8a38U7dgf7Atz/gttR0B5nO4eocbdwcq6lvwgbQYtSoi4mh1wsEg7y1k
+	THigq9+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpr1J-0000000ENnU-0YpR;
-	Thu, 28 Mar 2024 14:46:21 +0000
-Received: from relay3-d.mail.gandi.net ([217.70.183.195])
+	id 1rpron-0000000EXXg-2PHY;
+	Thu, 28 Mar 2024 15:37:29 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpr1D-0000000ENjx-2GWv;
-	Thu, 28 Mar 2024 14:46:17 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id C15E460005;
-	Thu, 28 Mar 2024 14:46:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1711637172;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=yvXc/6fB/STKMVpjx0LeFmiE8/rH1mB7ohtX7hXt9io=;
-	b=jAu4ww4X3VxvcLdS3J00rkjW+Rwb2tH+izGCSUraHF5ssrjAwsT4npqWOf4+ih8U9oUZbP
-	h3+iooEUdjyMVVH4Wx55xhtsOzafmrK/ZkwcO+drbk1tyFwDztVsZg/kp/IsF4oMEqH8ul
-	U/I1akDNZo3t6twvO5EN+uaOrz5LtY/wXOHQriJcNxN4pKqBqbJ8nrdQn6Om0S5OiCODOt
-	fSdB/V8CL+nSomrlHtFqpl3vdR2SwftbkBkPHjWlsgqXdOiwCdO4vrFkyi13xEeChmtujw
-	B8jP565rNI5qmBmgWaW7EGprWyddbAvrsSbmpiLSh6bPAQ/8avXtYDwin9uPXw==
-Message-ID: <515ca95e-7f7a-4eb7-9431-a297301ca55d@arinc9.com>
-Date: Thu, 28 Mar 2024 17:46:03 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net v2 2/2] net: dsa: mt7530: fix disabling EEE on failure
- on MT7531 and MT7988
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Paolo Abeni <pabeni@redhat.com>, Daniel Golle <daniel@makrotopia.org>,
- DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1rproj-0000000EXVz-43rI;
+	Thu, 28 Mar 2024 15:37:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7663C617A4;
+	Thu, 28 Mar 2024 15:37:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE36FC433F1;
+	Thu, 28 Mar 2024 15:37:20 +0000 (UTC)
+Date: Thu, 28 Mar 2024 11:40:04 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Yi-De Wu <yi-de.wu@mediatek.com>
+Cc: Yingshiuan Pan <yingshiuan.pan@mediatek.com>, Ze-Yu Wang
+ <ze-yu.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+ <conor+dt@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Catalin Marinas
+ <catalin.marinas@arm.com>, Wihl Deacon <will@kernel.org>, "Masami
+ Hiramatsu" <mhiramat@kernel.org>, Mathieu Desnoyers
+ <mathieu.desnoyers@efficios.com>, Richard Cochran
+ <richardcochran@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>,
- SkyLake Huang <SkyLake.Huang@mediatek.com>,
- Heiner Kallweit <hkallweit1@gmail.com>,
- Bartel Eerdekens <bartel.eerdekens@constell8.be>, mithat.guner@xeront.com,
- erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-0-9af9d5041bfe@arinc9.com>
- <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-2-9af9d5041bfe@arinc9.com>
- <799572b672ea8b4756236b14068aef7c8fa726a6.camel@redhat.com>
- <d65f4c45-e616-4157-a769-c285cbad575c@arinc9.com>
- <530da7c1-c058-44ef-84fd-86ff58f1501b@arinc9.com>
- <ZgRCFZBFvNSZ1a2U@shell.armlinux.org.uk>
- <ZgRCZSBniraUCuT2@shell.armlinux.org.uk>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <ZgRCZSBniraUCuT2@shell.armlinux.org.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Spam-Score: 400
-X-GND-Status: SPAM
-X-GND-Sasl: arinc.unal@arinc9.com
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-doc@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-trace-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, David Bradil <dbrazdil@google.com>,
+ Trilok Soni <quic_tsoni@quicinc.com>, Jade Shih <jades.shih@mediatek.com>,
+ Ivan Tseng <ivan.tseng@mediatek.com>, My Chuang <my.chuang@mediatek.com>,
+ Shawn Hsiao <shawn.hsiao@mediatek.com>, PeiLun Suei
+ <peilun.suei@mediatek.com>, Liju Chen <liju-clr.chen@mediatek.com>, "Willix
+ Yeh" <chi-shen.yeh@mediatek.com>, Kevenny Hsieh
+ <kevenny.hsieh@mediatek.com>
+Subject: Re: [PATCH v8 19/20] virt: geniezone: Add tracing support for hyp
+ call and vcpu exit_reason
+Message-ID: <20240328114004.5793230a@gandalf.local.home>
+In-Reply-To: <20231228105147.13752-20-yi-de.wu@mediatek.com>
+References: <20231228105147.13752-1-yi-de.wu@mediatek.com>
+	<20231228105147.13752-20-yi-de.wu@mediatek.com>
+X-Mailer: Claws Mail 3.19.1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240328_074615_876876_9685A654 
-X-CRM114-Status: GOOD (  24.46  )
+X-CRM114-CacheID: sfid-20240328_083726_318792_21C0C7A5 
+X-CRM114-Status: GOOD (  23.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,67 +80,202 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27.03.2024 18:59, Russell King (Oracle) wrote:
-> On Wed, Mar 27, 2024 at 03:58:13PM +0000, Russell King (Oracle) wrote:
->> On Wed, Mar 27, 2024 at 11:46:19AM +0300, arinc.unal@arinc9.com wrote:
->>> On 26.03.2024 12:19, Arınç ÜNAL wrote:
->>>> Whether a problem would happen in practice depends on when
->>>> phy_init_eee()
->>>> fails, meaning it returns a negative non-zero code. I requested Russell
->>>> to
->>>> review this patch to shed light on when phy_init_eee() would return a
->>>> negative non-zero code so we have an idea whether this patch actually
->>>> fixes
->>>> a problem.
->>>
->>> I don't suppose Russell is going to review the patch at this point. I will
->>> submit this to net-next then. If someone actually reports a problem in
->>> practice, I can always submit it to the stable trees.
->>
->> So the fact that I only saw your request this morning to look at
->> phy_init_eee(), and to review this patch... because... I work for
->> Oracle, and I've been looking at backporting Arm64 KVM patches to
->> our kernel, been testing and debugging that effort... and the
->> act that less than 24 hours had passed since you made the original
->> request... yea, sorry, it's clearly my fault for not jumping on this
->> the moment you sent the email.
->>
->> I get _so_ much email that incorrectly has me in the To: header. I
->> also get _so_ much email that fails to list me in the To: header
->> when the author wants me to respond. I don't have time to read every
->> email as it comes in. I certainly don't have time to read every
->> email in any case. I do the best I can, which varies considerably
->> with my workload.
->>
->> I already find that being single, fitting everything in during the
->> day (paid work, chores, feeding oneself) is quite a mammoth task.
->> There is no one else to do the laundry. There is no one else to get
->> the shopping. There is no one else to do the washing up. There is no
->> one else to take the rubbish out. All this I do myself, and serially
->> because there is only one of me, and it all takes time away from
->> sitting here reading every damn email as it comes in.
->>
->> And then when I end up doing something that _you_ very well could do
->> (reading the phy_init_eee() code to find out when it might return a
->> negative number) and then you send an email like this... yea... that
->> really gets my goat.
+On Thu, 28 Dec 2023 18:51:46 +0800
+Yi-De Wu <yi-de.wu@mediatek.com> wrote:
 
-I've made the request on 21th of March. It must've been buried under the
-other emails that are incorrectly sent to you as you've described. Of
-course you're not in fault for not responding. I trust your expertise on
-the topic so I requested your comment. You're not entitled to do that,
-which is why, after waiting for about 6 days, I assumed that you're not
-interested in looking at this patch, so I responded with the intention to
-move on.
+> Add tracepoints for hypervisor calls and VCPU exit reasons in GenieZone
+> driver. It aids performance debugging by providing more information
+> about hypervisor operations and VCPU behavior.
+> 
+> Command Usage:
+> echo geniezone:* >> /sys/kernel/tracing/set_event
+> echo 1 > /sys/kernel/tracing/tracing_on
+> echo 0 > /sys/kernel/tracing/tracing_on
+> cat /sys/kernel/tracing/trace
+> 
+> For example:
+> crosvm_vcpu0-4838 [004] ..... 76053.536034: mtk_hypcall_enter: id=0xbb001005
+> crosvm_vcpu0-4838 [004] ..... 76053.540039: mtk_hypcall_leave: id=0xbb001005 invalid=0
+> crosvm_vcpu0-4838 [004] ..... 76053.540040: mtk_vcpu_exit: vcpu exit_reason=0x92920003
 
-https://lore.kernel.org/netdev/dc487e20-7d6c-48b7-a590-cb3bd815cd21@arinc9.com/
+Cleaning out patchwork, I noticed this patch.
+
+You can make the above more informative by having it output:
+
+ crosvm_vcpu0-4838 [004] ..... 76053.540040: mtk_vcpu_exit: vcpu exit_reason=IRQ
+
 
 > 
-> ... and now I have a 1:1 with my manager for the next 30-60 minutes.
-> Is it okay by you for me to be offline for that period of time while
-> I have a chat with him?
+> This example tracks a hypervisor function call by an ID (`0xbb001005`)
+> from initiation to termination, which is supported (invalid=0). A vCPU
+> exit is triggered by an Interrupt Request (IRQ) (exit reason: 0x92920003).
+> 
+> /* VM exit reason */
+> enum {
+> 	GZVM_EXIT_UNKNOWN = 0x92920000,
+> 	GZVM_EXIT_MMIO = 0x92920001,
+> 	GZVM_EXIT_HYPERCALL = 0x92920002,
+> 	GZVM_EXIT_IRQ = 0x92920003,
+> 	GZVM_EXIT_EXCEPTION = 0x92920004,
+> 	GZVM_EXIT_DEBUG = 0x92920005,
+> 	GZVM_EXIT_FAIL_ENTRY = 0x92920006,
+> 	GZVM_EXIT_INTERNAL_ERROR = 0x92920007,
+> 	GZVM_EXIT_SYSTEM_EVENT = 0x92920008,
+> 	GZVM_EXIT_SHUTDOWN = 0x92920009,
+> 	GZVM_EXIT_GZ = 0x9292000a,
+> };
+> 
+> Signed-off-by: Liju-clr Chen <liju-clr.chen@mediatek.com>
+> Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
+> ---
+>  arch/arm64/geniezone/vm.c          |  5 +++
+>  drivers/virt/geniezone/gzvm_vcpu.c |  3 ++
+>  include/trace/events/geniezone.h   | 54 ++++++++++++++++++++++++++++++
+>  3 files changed, 62 insertions(+)
+>  create mode 100644 include/trace/events/geniezone.h
+> 
+> diff --git a/arch/arm64/geniezone/vm.c b/arch/arm64/geniezone/vm.c
+> index a9d264bbb3b1..5667643251b5 100644
+> --- a/arch/arm64/geniezone/vm.c
+> +++ b/arch/arm64/geniezone/vm.c
+> @@ -7,6 +7,8 @@
+>  #include <linux/err.h>
+>  #include <linux/uaccess.h>
+>  
+> +#define CREATE_TRACE_POINTS
+> +#include <trace/events/geniezone.h>
+>  #include <linux/gzvm.h>
+>  #include <linux/gzvm_drv.h>
+>  #include "gzvm_arch_common.h"
+> @@ -33,7 +35,10 @@ int gzvm_hypcall_wrapper(unsigned long a0, unsigned long a1,
+>  			 unsigned long a6, unsigned long a7,
+>  			 struct arm_smccc_res *res)
+>  {
+> +	trace_mtk_hypcall_enter(a0);
+>  	arm_smccc_hvc(a0, a1, a2, a3, a4, a5, a6, a7, res);
+> +	trace_mtk_hypcall_leave(a0, (res->a0 != ERR_NOT_SUPPORTED) ? 0 : 1);
+> +
+>  	return gzvm_err_to_errno(res->a0);
+>  }
+>  
+> diff --git a/drivers/virt/geniezone/gzvm_vcpu.c b/drivers/virt/geniezone/gzvm_vcpu.c
+> index 86c690749277..138ec064596b 100644
+> --- a/drivers/virt/geniezone/gzvm_vcpu.c
+> +++ b/drivers/virt/geniezone/gzvm_vcpu.c
+> @@ -10,6 +10,8 @@
+>  #include <linux/mm.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/slab.h>
+> +
+> +#include <trace/events/geniezone.h>
+>  #include <linux/gzvm_drv.h>
+>  
+>  /* maximum size needed for holding an integer */
+> @@ -103,6 +105,7 @@ static long gzvm_vcpu_run(struct gzvm_vcpu *vcpu, void __user *argp)
+>  
+>  	while (!need_userspace && !signal_pending(current)) {
+>  		gzvm_arch_vcpu_run(vcpu, &exit_reason);
+> +		trace_mtk_vcpu_exit(exit_reason);
+>  
+>  		switch (exit_reason) {
+>  		case GZVM_EXIT_MMIO:
+> diff --git a/include/trace/events/geniezone.h b/include/trace/events/geniezone.h
+> new file mode 100644
+> index 000000000000..1fa44f9c4b3c
+> --- /dev/null
+> +++ b/include/trace/events/geniezone.h
+> @@ -0,0 +1,54 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2023 MediaTek Inc.
+> + */
+> +
+> +#undef TRACE_SYSTEM
+> +#define TRACE_SYSTEM geniezone
+> +
+> +#define _TRACE_GENIEZONE_H
+> +
+> +#include <linux/tracepoint.h>
 
-That sounds exhausting. I wish things get easier for you.
+#define GZVM_EXIT_REASONS	\
+	EM(UNKNOWN)		\
+	EM(MMIO)		\
+	EM(HYPERCALL)		\
+	EM(IRQ)			\
+	EM(EXCEPTION)		\
+	EM(DEBUG)		\
+	EM(FAIL_ENTRY)		\
+	EM(INTERNAL_ERROR)	\
+	EM(SYSTEM_EVENT)	\
+	EM(SHUTDOWN)		\
+	EMe(GZ)
 
-Arınç
+#undef EM
+#undef EMe
+#define EM(a) TRACE_DEFINE_ENUM(GZVM_EXIT_##a);
+#define EMe(a) TRACE_DEFINE_ENUM(GZVM_EXIT_##a);
+
+GZVM_EXIT_REASONS
+
+#undef EM
+#undef EMe
+
+#define EM(a)       { GZVM_EXIT_##a, #a },
+#define EMe(a)      { GZVM_EXIT_##a, #a }
+
+> +
+> +TRACE_EVENT(mtk_hypcall_enter,
+> +	    TP_PROTO(unsigned long id),
+> +
+> +	    TP_ARGS(id),
+> +
+> +	    TP_STRUCT__entry(__field(unsigned long, id)),
+> +
+> +	    TP_fast_assign(__entry->id = id;),
+> +
+> +	    TP_printk("id=0x%lx", __entry->id)
+> +);
+> +
+> +TRACE_EVENT(mtk_hypcall_leave,
+> +	    TP_PROTO(unsigned long id, unsigned long invalid),
+> +
+> +	    TP_ARGS(id, invalid),
+> +
+> +	    TP_STRUCT__entry(__field(unsigned long, id)
+> +			     __field(unsigned long, invalid)
+> +	    ),
+> +
+> +	    TP_fast_assign(__entry->id = id;
+> +			   __entry->invalid = invalid;
+> +	    ),
+> +
+> +	    TP_printk("id=0x%lx invalid=%lu", __entry->id, __entry->invalid)
+> +);
+> +
+> +TRACE_EVENT(mtk_vcpu_exit,
+> +	    TP_PROTO(unsigned long exit_reason),
+> +
+> +	    TP_ARGS(exit_reason),
+> +
+> +	    TP_STRUCT__entry(__field(unsigned long, exit_reason)),
+> +
+> +	    TP_fast_assign(__entry->exit_reason = exit_reason;),
+> +
+> +	    TP_printk("vcpu exit_reason=0x%lx", __entry->exit_reason)
+
+	    TP_printk("vcpu exit_reason=0x%lx",
+		__print_symbolic(__entry->exit_reason, GZVM_EXIT_REASONS))
+
+
+And instead of having the cryptic enum values printed, you will have human
+readable reasons.
+
+-- Steve
+
+
+> +);
+> +
+> +/* This part must be outside protection */
+> +#include <trace/define_trace.h>
+
 
