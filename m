@@ -4,86 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14829C54E64
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 14:39:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FFDBCD1283
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Mar 2024 14:46:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vMY8NVnOF97MA9cY4uKJK6Z1YfV/geMkbCzYeBNB1p0=; b=EIQQOL8XVpKE0DLfUgdLBTb/YI
-	fPmUe/edyCRYxVrNapnOO8qTnn/lwuudtuHz0w9NsOG9oLR//UIkXQJLUqMsqum6ZSxXN13QQiwcH
-	QirV6PqkOoRm8aECTOJzYVe4Cq+uPhV4J+YQsJs7g1l5o1O/dV5EcgM5CjRc5pkgPREE6tvwnnyvl
-	nAcAdA2jI7vHzhI/nndeOMcbRJHrmNndhPyuQ5nVcsi8GWorBBR+CFt2VhChQtiU1tnPH014ajNrz
-	Ez8xSiKGjvUpEomJbPdLu0y4HCeLgFqBQ+F9+IewLxgXbn3YpTwXp6KaSHwywckpYHTAYmQxeytKB
-	a26lmriw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yvXc/6fB/STKMVpjx0LeFmiE8/rH1mB7ohtX7hXt9io=; b=w0SK9QvGKuOSLfOFJbdpPcjWws
+	A425810dgKbkcm/uoe30vTkq5TES7G3zr2nZ/abqSagKvpNjGL4rHJCOfsehuf8/ct5TYPnWsrixN
+	sGtSznTJ+gl7MTIrh5CHPmryA71Q4rE5wGsy6VjUP+hHl89jILIMXAEd51xJE5Xet9vbONHm+AwHI
+	YKQwM3olJbmd67BavIGqt3OlzQwaWItWto8fMVV6V8O3BF6I3DzCCL4ccSTwvqvMauSpToYBLBf0o
+	eTP2PN45b4SHDVgvS9b5fWt46IGr0wDi4s4ObA3enRnkWUyP8eVw7GUPKCU7mMEkM9SagOVNKDvIH
+	ce2Skorw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpquG-0000000EMGh-2mcd;
-	Thu, 28 Mar 2024 14:39:04 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1rpr1J-0000000ENnU-0YpR;
+	Thu, 28 Mar 2024 14:46:21 +0000
+Received: from relay3-d.mail.gandi.net ([217.70.183.195])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpquD-0000000EMFT-2WFM
-	for linux-mediatek@lists.infradead.org;
-	Thu, 28 Mar 2024 14:39:03 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-6e6b54a28d0so844049b3a.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Mar 2024 07:38:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711636736; x=1712241536; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=vMY8NVnOF97MA9cY4uKJK6Z1YfV/geMkbCzYeBNB1p0=;
-        b=mHd7Q1EZtCcTZcy3vErQdsDIUPikW4dKezGwTNW3/I6iMe3fBhhNLrxnPI2nYTAGXi
-         4DJiRgICi1YQHhHxF2rgbvN4JGrqUKnklZZBvu0jVk0pNZDMpNYZDv/JLAachmoaPKLI
-         gdQ8IyNnCYDqyF9ln+rMDG5nY0OmL2ROmkUics2NFT5NY0pLYtT2cfUY9PVRXhJ8kvt7
-         lRBHyoQOtYHRd8c9Ylg5/EaYSda1XIs56C+FKMTYGGwjQ4SZ2D8y/CguSMIMIMVL17l/
-         GrLS9IONti1hMWG/Ts9GAVtIgpAqm7tphpwpf4mh7LtMez6RJUzmQ65CDzH4E11JSZyn
-         pmFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711636736; x=1712241536;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vMY8NVnOF97MA9cY4uKJK6Z1YfV/geMkbCzYeBNB1p0=;
-        b=FmCLHjwsCfuts7fnXtK1z4EKvtMZ0BroOaU7kBTTTsLau1DG1fe52Vh4VD2bs5NbPm
-         /7+np4OK9QDq7VZsdhIlaTtEUSesz7rXCdXkN8oh3SgnN7S0kVt7fJcpI9SuOF4z+7PN
-         nYMBpt7IxSkXvqRz2jCaT8jifKuRV7KhvJO9jU9L8Ar8jq8zhqlpoVUUB8EMzC3EiMq6
-         cpdBa2aVlhpfrwUekhNDMmzMhajzmkzd5zeqh7sJPIcvTuBSOXVWzYTszR6+9s0WKGta
-         SSNpUArE8/xYYqJVdGweFHVnLtLclojZy5zwOKtI9O4zIuAg207n2pmRwQPR7Vym46el
-         nf9g==
-X-Forwarded-Encrypted: i=1; AJvYcCX2fP0pWTp28b86UXwhLfokXFHEU+5bOWIgz+0tROwPQy5Tm/3Abk/Nn65VG71ATVzQhYcuJFScFYfjSl8ADC48VMdxGTnRFNSUbKguO44aVM/Z
-X-Gm-Message-State: AOJu0Yw5c6EutFG38OcO3h/ofSrrMs5yxSqjMGkeHRKk3Ech4Q3j3d5h
-	h0IohQOMzEDrSNAZy/KGYrz4SNrACY7jp0QBNGm4l68mddMp51p3GRgDvTfurig=
-X-Google-Smtp-Source: AGHT+IHSRHXvmH5VZNmwCTDuXN846Z1hCir5wFWdCEOx0hNfK6aMIMOd1COe/h7RuCB3uRw7DmjA6g==
-X-Received: by 2002:a05:6a00:464f:b0:6ea:7b29:3ab7 with SMTP id kp15-20020a056a00464f00b006ea7b293ab7mr3081643pfb.23.1711636736154;
-        Thu, 28 Mar 2024 07:38:56 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:ff63:c57b:4625:b68c])
-        by smtp.gmail.com with ESMTPSA id p43-20020a056a0026eb00b006e6b12d650asm1439220pfw.31.2024.03.28.07.38.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Mar 2024 07:38:55 -0700 (PDT)
-Date: Thu, 28 Mar 2024 08:38:52 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: andersson@kernel.org, matthias.bgg@gmail.com, tzungbi@kernel.org,
-	tinghan.shen@mediatek.com, linux-remoteproc@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, wenst@chromium.org,
-	kernel@collabora.com
-Subject: Re: [PATCH 2/2] remoteproc: mediatek: Don't parse extraneous
- subnodes for multi-core
-Message-ID: <ZgWA/E46i/CaoM74@p14s>
-References: <20240321084614.45253-1-angelogioacchino.delregno@collabora.com>
- <20240321084614.45253-3-angelogioacchino.delregno@collabora.com>
- <ZfxRyMyUqyqtXy8n@p14s>
- <9ef4e974-740e-4698-bb38-f236521a425c@collabora.com>
+	id 1rpr1D-0000000ENjx-2GWv;
+	Thu, 28 Mar 2024 14:46:17 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id C15E460005;
+	Thu, 28 Mar 2024 14:46:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1711637172;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=yvXc/6fB/STKMVpjx0LeFmiE8/rH1mB7ohtX7hXt9io=;
+	b=jAu4ww4X3VxvcLdS3J00rkjW+Rwb2tH+izGCSUraHF5ssrjAwsT4npqWOf4+ih8U9oUZbP
+	h3+iooEUdjyMVVH4Wx55xhtsOzafmrK/ZkwcO+drbk1tyFwDztVsZg/kp/IsF4oMEqH8ul
+	U/I1akDNZo3t6twvO5EN+uaOrz5LtY/wXOHQriJcNxN4pKqBqbJ8nrdQn6Om0S5OiCODOt
+	fSdB/V8CL+nSomrlHtFqpl3vdR2SwftbkBkPHjWlsgqXdOiwCdO4vrFkyi13xEeChmtujw
+	B8jP565rNI5qmBmgWaW7EGprWyddbAvrsSbmpiLSh6bPAQ/8avXtYDwin9uPXw==
+Message-ID: <515ca95e-7f7a-4eb7-9431-a297301ca55d@arinc9.com>
+Date: Thu, 28 Mar 2024 17:46:03 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <9ef4e974-740e-4698-bb38-f236521a425c@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net v2 2/2] net: dsa: mt7530: fix disabling EEE on failure
+ on MT7531 and MT7988
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Paolo Abeni <pabeni@redhat.com>, Daniel Golle <daniel@makrotopia.org>,
+ DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>,
+ SkyLake Huang <SkyLake.Huang@mediatek.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>,
+ Bartel Eerdekens <bartel.eerdekens@constell8.be>, mithat.guner@xeront.com,
+ erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-0-9af9d5041bfe@arinc9.com>
+ <20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-2-9af9d5041bfe@arinc9.com>
+ <799572b672ea8b4756236b14068aef7c8fa726a6.camel@redhat.com>
+ <d65f4c45-e616-4157-a769-c285cbad575c@arinc9.com>
+ <530da7c1-c058-44ef-84fd-86ff58f1501b@arinc9.com>
+ <ZgRCFZBFvNSZ1a2U@shell.armlinux.org.uk>
+ <ZgRCZSBniraUCuT2@shell.armlinux.org.uk>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <ZgRCZSBniraUCuT2@shell.armlinux.org.uk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Spam-Score: 400
+X-GND-Status: SPAM
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240328_073901_683701_760D7EAC 
-X-CRM114-Status: GOOD (  32.07  )
+X-CRM114-CacheID: sfid-20240328_074615_876876_9685A654 
+X-CRM114-Status: GOOD (  24.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,76 +93,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 27, 2024 at 01:49:58PM +0100, AngeloGioacchino Del Regno wrote:
-> Il 21/03/24 16:27, Mathieu Poirier ha scritto:
-> > On Thu, Mar 21, 2024 at 09:46:14AM +0100, AngeloGioacchino Del Regno wrote:
-> > > When probing multi-core SCP, this driver is parsing all sub-nodes of
-> > > the scp-cluster node, but one of those could be not an actual SCP core
-> > > and that would make the entire SCP cluster to fail probing for no good
-> > > reason.
-> > > 
-> > > To fix that, in scp_add_multi_core() treat a subnode as a SCP Core by
-> > > parsing only available subnodes having compatible "mediatek,scp-core".
-> > > 
-> > > Fixes: 1fdbf0cdde98 ("remoteproc: mediatek: Probe SCP cluster on multi-core SCP")
-> > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > ---
-> > >   drivers/remoteproc/mtk_scp.c | 3 +++
-> > >   1 file changed, 3 insertions(+)
-> > > 
-> > > diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> > > index 67518291a8ad..fbe1c232dae7 100644
-> > > --- a/drivers/remoteproc/mtk_scp.c
-> > > +++ b/drivers/remoteproc/mtk_scp.c
-> > > @@ -1096,6 +1096,9 @@ static int scp_add_multi_core(struct platform_device *pdev,
-> > >   	cluster_of_data = (const struct mtk_scp_of_data **)of_device_get_match_data(dev);
-> > >   	for_each_available_child_of_node(np, child) {
-> > > +		if (!of_device_is_compatible(child, "mediatek,scp-core"))
-> > > +			continue;
-> > > +
-> > 
-> > Interesting - what else gets stashed under the remote processor node?  I don't
-> > see anything specified in the bindings.
-> > 
-> 
-> Sorry for the late reply - well, in this precise moment in time, upstream,
-> nothing yet.
-> 
-> I have noticed this while debugging some lockups and wanted to move the scp_adsp
-> clock controller node as child of the SCP node (as some of those clocks are located
-> *into the SCP's CFG register space*, and it's correct for that to be a child as one
-> of those do depend on the SCP being up - and I'll spare you the rest) and noticed
-> the unexpected behavior, as the SCP driver was treating those as an SCP core.
-> 
-> There was no kernel panic, but the SCP would fail probing.
-> 
-> This is anyway a missed requirement ... for platforms that want *both* two SCP
-> cores *and* the AudioDSP, as that'd at least be two nodes with the same iostart
-> (scp@1072000, clock-controller@1072000), other than the reasons I explained some
-> lines back.
-> 
-> ...and that's why this commit was sent :-)
->
+On 27.03.2024 18:59, Russell King (Oracle) wrote:
+> On Wed, Mar 27, 2024 at 03:58:13PM +0000, Russell King (Oracle) wrote:
+>> On Wed, Mar 27, 2024 at 11:46:19AM +0300, arinc.unal@arinc9.com wrote:
+>>> On 26.03.2024 12:19, Arınç ÜNAL wrote:
+>>>> Whether a problem would happen in practice depends on when
+>>>> phy_init_eee()
+>>>> fails, meaning it returns a negative non-zero code. I requested Russell
+>>>> to
+>>>> review this patch to shed light on when phy_init_eee() would return a
+>>>> negative non-zero code so we have an idea whether this patch actually
+>>>> fixes
+>>>> a problem.
+>>>
+>>> I don't suppose Russell is going to review the patch at this point. I will
+>>> submit this to net-next then. If someone actually reports a problem in
+>>> practice, I can always submit it to the stable trees.
+>>
+>> So the fact that I only saw your request this morning to look at
+>> phy_init_eee(), and to review this patch... because... I work for
+>> Oracle, and I've been looking at backporting Arm64 KVM patches to
+>> our kernel, been testing and debugging that effort... and the
+>> act that less than 24 hours had passed since you made the original
+>> request... yea, sorry, it's clearly my fault for not jumping on this
+>> the moment you sent the email.
+>>
+>> I get _so_ much email that incorrectly has me in the To: header. I
+>> also get _so_ much email that fails to list me in the To: header
+>> when the author wants me to respond. I don't have time to read every
+>> email as it comes in. I certainly don't have time to read every
+>> email in any case. I do the best I can, which varies considerably
+>> with my workload.
+>>
+>> I already find that being single, fitting everything in during the
+>> day (paid work, chores, feeding oneself) is quite a mammoth task.
+>> There is no one else to do the laundry. There is no one else to get
+>> the shopping. There is no one else to do the washing up. There is no
+>> one else to take the rubbish out. All this I do myself, and serially
+>> because there is only one of me, and it all takes time away from
+>> sitting here reading every damn email as it comes in.
+>>
+>> And then when I end up doing something that _you_ very well could do
+>> (reading the phy_init_eee() code to find out when it might return a
+>> negative number) and then you send an email like this... yea... that
+>> really gets my goat.
 
-Please update the bindings with the extra clock requirement in your next
-revision. 
+I've made the request on 21th of March. It must've been buried under the
+other emails that are incorrectly sent to you as you've described. Of
+course you're not in fault for not responding. I trust your expertise on
+the topic so I requested your comment. You're not entitled to do that,
+which is why, after waiting for about 6 days, I assumed that you're not
+interested in looking at this patch, so I responded with the intention to
+move on.
 
-> P.S.: The reason why platforms don't crash without the scp_adsp clock controller
->       as a child of SCP is that the bootloader is actually doing basic init for
->       the SCP, hence the block is powered on when booting ;-)
+https://lore.kernel.org/netdev/dc487e20-7d6c-48b7-a590-cb3bd815cd21@arinc9.com/
+
 > 
-> Cheers,
-> Angelo
-> 
-> > Thanks,
-> > Mathieu
-> > 
-> > >   		if (!cluster_of_data[core_id]) {
-> > >   			ret = -EINVAL;
-> > >   			dev_err(dev, "Not support core %d\n", core_id);
-> > > -- 
-> > > 2.44.0
-> > > 
-> 
-> 
+> ... and now I have a 1:1 with my manager for the next 30-60 minutes.
+> Is it okay by you for me to be offline for that period of time while
+> I have a chat with him?
+
+That sounds exhausting. I wish things get easier for you.
+
+Arınç
 
