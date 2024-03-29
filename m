@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADE24C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Mar 2024 18:54:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B8D0C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Mar 2024 18:55:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JEoJt6PTt2qpbe2pE1qKEsmwN83YlKQDSAv770KyGdc=; b=TuRlmwC1dlBXPo
-	RogfJuAr8AtWOGvvTqoobo+caAL/qcGrS1B5Wb/Qy1+u6o8eEMrpCdKooXFdYWKaeBmb1W97Oseuh
-	/Yl5e7zDCrbkt8kNxtdgJVw1phN2oe3P5cWoB1MYQ7upK6SyS3ZWOVqdEeVxlZWmgGcCZJ0+rKuY+
-	b8GtoVs9+v/MZKCxwW4FXcmrRO1Xt6cdbGJ59F2pdfIuk42nVQWvsANlOL2bdMo7qNQFRD2jIQBeg
-	OFdxRUddup2dBiTQG2RvHuoGzCl1+PWV/aCOZ4A85tlM9xGFCeXu5J8dH2g1MtMzFaHDyB6IAvIuu
-	DeNtgwtUSAkg3JfzjQ8g==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e0l9XqgR5rgZt/McZ1+LYeV2+Ae3g0xUIEFWoqdq9PI=; b=bKE354SKiGkfYoRVkhk4ZNZ8bG
+	ZvtYLgXC8JByXSqwnTgX0HwyqlfvmLicCgj6PpXbtz5ys3Sh98YXndQsNBfxUVN+ey2sBLau+GDBi
+	r32Fv6LFiPvhuFsRK6n6GoPurW7iPA0hxp8LajVsBIPRpQsJzEiDgVAny8p4wXcmLsGZgr0ozJAmN
+	ii8utc6Aop8lHtLFKdosGgFT8RNuZE1tRRaFhaUXOK1s62Dm/6FTsnHWME2apdecAl8oLIxv1Ajp0
+	v7qf6yx0hlAGyfRf0dQ/tkOOCi2wrWzaiVDAYGzonOe9u5GGGg/mjyhd/GW99GIUV7S9ewL9BHJ4v
+	8D0qcdzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqHNL-00000001f0j-2bQa;
-	Fri, 29 Mar 2024 18:54:51 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1rqHNW-00000001f8K-1xyp;
+	Fri, 29 Mar 2024 18:55:02 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqHNG-00000001eve-0VSX
+	id 1rqHNH-00000001evo-21H4
 	for linux-mediatek@lists.infradead.org;
-	Fri, 29 Mar 2024 18:54:48 +0000
-Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a4734ae95b3so299719266b.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 29 Mar 2024 11:54:44 -0700 (PDT)
+	Fri, 29 Mar 2024 18:54:50 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a4e0e3ef357so304268266b.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 29 Mar 2024 11:54:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711738483; x=1712343283; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=JEoJt6PTt2qpbe2pE1qKEsmwN83YlKQDSAv770KyGdc=;
-        b=Q/OzvTt1TZv/SbdOAYwP+PIMyghYjVDzzJa5daEdmLQlKGbalKtk2LVY9vJRa5NIOa
-         +ShZaHCKJkqDDuDt/N8M7ULMAlyxkjAKWEJrp0Fph9eKk6m7R7k+ks1hKVnAR5diZukp
-         82dG1vjgqiH8nax5WlRaIrVMEeEs80h8xbAUAPk8Npp6CTYytLoN2UtBnEJu6glWFw9o
-         2NqCewxJtiw3BbEFPDKnZG4IgU+i5+9I0nvXpVKkZla5JEct+nkdo0sc+vvHL1iBp4Ll
-         rkeHtR60ARoMUCg9ZZ94Cr7HJPZyFGJJqXpkgZQmir5pdBXSv9M3aa69Z6zL6XS8M/bf
-         IcVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711738483; x=1712343283;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=linaro.org; s=google; t=1711738484; x=1712343284; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=JEoJt6PTt2qpbe2pE1qKEsmwN83YlKQDSAv770KyGdc=;
-        b=LI0YaPfe7nxufT4Yo1DJRt5NkbtqH6HLMbK3ZHRVBqMYUxBCRlxJ+m1VngfMSAIRL7
-         1MF3gwCxPmPjo8tD/CQYetSOMQPbJqqwtkd4/qqFl6UwUsWsYexmW2TL0ePyIVpwuA6o
-         s+7Frvv2dolDNsGbSQG6L9u13b9T+rQNsJPXOTdgjt7QgLpvGa3g63SBf/fFlpQ53CtV
-         LxN7zndhQzuQd5eQhSWjC67sxhnjH8FfqOFWceNaOSzElMdDeHUaJFFUyUj4K5qmqNvk
-         vHxMTUv3uWjU5QqtvtllH897e96v+tVuPloThxc/5cvcJpduZJCavtvtseBUPFZ00u8+
-         yQMA==
-X-Forwarded-Encrypted: i=1; AJvYcCUygweGzHr78aBl5C7IKzxJTLudOYbY9almwBy19wZ1pkJ6tZpcXWEHmXSifVsM2CLl5sple5MEsKIN+6FOQ56dq+sPyEvD3EAisrE6gzT7JGIk
-X-Gm-Message-State: AOJu0YzXGWme5RYG79CUe9IN22pYAUNrcsunrBUTXpcejOASoa1WhiBn
-	gSp1VIyxbIM7U15gfNejIBu/ywdVnhl/tYt//mbG911yi5XR1pVof57+Xi3TLpc=
-X-Google-Smtp-Source: AGHT+IHiQbZaByTqx1a8yLXtEDMIaraAkghg/jn8TQ1vw3pG3HRmO5i2EtQWeRCNZLTt6veW2dJqgw==
-X-Received: by 2002:a17:906:b288:b0:a4e:4441:1024 with SMTP id q8-20020a170906b28800b00a4e44411024mr370498ejz.68.1711738482866;
-        Fri, 29 Mar 2024 11:54:42 -0700 (PDT)
+        bh=e0l9XqgR5rgZt/McZ1+LYeV2+Ae3g0xUIEFWoqdq9PI=;
+        b=giJxJjYsWGXCT0NNyElkyYyx6GLpqnUugiETqUrAcMK57o8POrlJO4g/G1jn6Jd+Nb
+         OZuvMfYvLD/E1IDkBLCF3V1jFAKQVbkMFUFzD4bJIqL21tfVW7oiJ9GD4osVCvlXBC4N
+         pu0syRz930La5Xw4BG77Y7oZZWfAJqVbosaLnb2KNLfo1J9p24wrQsT4iM7MupOhirHQ
+         /YjZssmMX4MSM/NciM+Jd/bEccP6GMmgi2tFrY5T5p4zWVOiKMEgN8nqjFw2Vio6c4Pi
+         NWreV7RDMqE7G2p44On9AN7lkbI4ZKiMg24uf+wfeC08ud0XfntwZi6+CH6I5S4iZkIA
+         7v5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1711738484; x=1712343284;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=e0l9XqgR5rgZt/McZ1+LYeV2+Ae3g0xUIEFWoqdq9PI=;
+        b=HQLFpX9OwoB5quEtuuqv9YQ/+aI2YttRo3UWEkg59w15RczD2rQaYfYX8cj6LRcKdB
+         i2lsG2yF5rJPGDgtjVRVPTZQTOdeHumHitJiOiIf5wp7XTMC3hZt5wgzBL+cfCOf2IkO
+         8pb9HxI6VXKyXOIzyKEZdLqlUckPAMbEYSQvUKd3oSvDPUbn0SxOYl4HctMAo+HjXsQO
+         pjS4iKgs6sQZz48FgEM+mr2tfVZemBUmb1Uyc/8/pIx54N8WdoGWy/A94CjAadcIRUwI
+         LwFTdVUCy/W1XkGBwCxPs4ObqTzR21SUd2oXf45X7aXCcQ5FDCz5aC0d/HeeDhp4eOHm
+         4MlQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUz2XjGwkLIa++3oBS5xlBVu3CXVf1XA3jqv2tRz5OHP5bHAFccmRS1HFnwIeKkmSA2s+TGX3DI/whi7w7rTeMEwg7GRyk7gaD8ykFRZsi/N6ea
+X-Gm-Message-State: AOJu0Yz5o9R4FPp2vHC8NUCFYELZaZNrgVyUht8w0eVgyGfyGprTrq8q
+	SGdelJTeUsua8DWdsiuJ4cZmZBsgSYSyJnJNnZyIWudSCXo8E5tyJSRghUBJ/+Y=
+X-Google-Smtp-Source: AGHT+IEvez3gnbfE1h985nyrZbf3lwtS5MK1xcBVKx0GUJnsoq87hfeTZGXxgOag0cR9v/4ebdQxYw==
+X-Received: by 2002:a17:907:9877:b0:a4e:1c3d:89a0 with SMTP id ko23-20020a170907987700b00a4e1c3d89a0mr2367909ejc.4.1711738484378;
+        Fri, 29 Mar 2024 11:54:44 -0700 (PDT)
 Received: from [127.0.1.1] ([79.114.172.194])
-        by smtp.gmail.com with ESMTPSA id gl20-20020a170906e0d400b00a46c39e6a47sm2235618ejb.148.2024.03.29.11.54.41
+        by smtp.gmail.com with ESMTPSA id gl20-20020a170906e0d400b00a46c39e6a47sm2235618ejb.148.2024.03.29.11.54.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 29 Mar 2024 11:54:42 -0700 (PDT)
+        Fri, 29 Mar 2024 11:54:44 -0700 (PDT)
 From: Abel Vesa <abel.vesa@linaro.org>
-Subject: [PATCH v7 0/6] spmi: pmic-arb: Add support for multiple buses
-Date: Fri, 29 Mar 2024 20:54:17 +0200
-Message-Id: <20240329-spmi-multi-master-support-v7-0-7b902824246c@linaro.org>
+Date: Fri, 29 Mar 2024 20:54:18 +0200
+Subject: [PATCH v7 1/6] dt-bindings: spmi: Add X1E80100 SPMI PMIC ARB
+ schema
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAFkOB2YC/43OwWrDMAwG4FcpPs9Dluw46WnvMXaQHbs1tE2w0
- 7BR8u5ze8oIhF0Ev+D/pIcoIadQxPHwEDnMqaThVoN9Owh/5tspyNTXLBBQA4KVZbwmeb1fpjq
- 5TCHLch/HIU+yJWQL2lnbOVH7Yw4xfb/sz6+az6lMQ/55nZrVc/sfdVYSpA/GRgLlbew/LunGe
- Xgf8kk82RlXlKI9CqWSjpwCJGw6aDYUrSm9R1H9ChwHCBF05Lih9IpC2KN0pXrfKvKtbR23G8q
- sKbVHmUoRGuNZK2JwG6pZU7hHNZVynnTgzjSq5z/Usiy/44Uk4ToCAAA=
+Message-Id: <20240329-spmi-multi-master-support-v7-1-7b902824246c@linaro.org>
+References: <20240329-spmi-multi-master-support-v7-0-7b902824246c@linaro.org>
+In-Reply-To: <20240329-spmi-multi-master-support-v7-0-7b902824246c@linaro.org>
 To: Stephen Boyd <sboyd@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  Bjorn Andersson <andersson@kernel.org>, 
@@ -91,25 +90,25 @@ Cc: Srini Kandagatla <srinivas.kandagatla@linaro.org>,
  Abel Vesa <abel.vesa@linaro.org>, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3899; i=abel.vesa@linaro.org;
- h=from:subject:message-id; bh=3QA/wELDjfOly3SoK3JbqflTPPsTAzGm3BpN54bG+T0=;
- b=owEBbQKS/ZANAwAKARtfRMkAlRVWAcsmYgBmBw5lpJ0vA3Lm4pFAQDl5UcaM29FU6Ch6r0Qnj
- Sv/XR5jmjGJAjMEAAEKAB0WIQRO8+4RTnqPKsqn0bgbX0TJAJUVVgUCZgcOZQAKCRAbX0TJAJUV
- VnurEACg1vlmC9fBDZAwTHc4srOY5w9xZz0XOUprEVRhM0fxGhv05xLgLZN3ORmuoQAJ7MnX6WQ
- KFGlIjO6AL5PRe9HqwRK+zk5xomLrdxxgBTB4g2v8zreSdHikzd3MxYxiRea87m0jE6+C6cow38
- HKAH5nqmoZjn0/Fm30BXE+b19E3q7xXvtMU95De/QlW774pHjV6RLpvX+xR57/U7E9ycbR2ky/c
- LMrLyFVzWE1IkzjigaQ6+jogfFniCdLjgAeX6q3tI3Ech+zS0+iWOAvozP31gZ1SiDfBqHsVBwK
- 8QCCGF5UZlBnMZp440OU2A1A6DEaH4a62TPiE2+4J4FmaJC2W/LXDEC5jVOiBbqyVreq1Fj3bIW
- ox6g6eW383GY10eVwFytxdF+RGwATmig8yqEO6sSYu2yoddYwsRD2WOWrlPWcJ+DuQvBhZGXVS+
- rsxROBVZarCwsK6FMVG44zldrB/sQfebZhpQLh2ClaAm9udC6fAPw7cGRKOaQsbsY1XGpxHURgO
- jZ/yA5k9PYuqpMWiLauFxJRmCmJxLquIb33TzUxrtUuTMwUMIBcioz/hWuUN12m2Rm9EjQ9olsP
- rfyEeG4tfUe8uta0/r2PvL8RLmeVDSuPDFVX1V2to5XRebN9pvxfXAZkFcrplqWeOcXpybor0fh
- 5/chTNvcThq7a0g==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4280; i=abel.vesa@linaro.org;
+ h=from:subject:message-id; bh=H2L6hk3BSbGZWXsaMqnOwDhN0rNiIn1lAFbUz+5zVTU=;
+ b=owEBbQKS/ZANAwAKARtfRMkAlRVWAcsmYgBmBw5p2QmwCkKqbzyOMMbpOWoF0qvc0ARyq+X+6
+ 7dr0j/S0MGJAjMEAAEKAB0WIQRO8+4RTnqPKsqn0bgbX0TJAJUVVgUCZgcOaQAKCRAbX0TJAJUV
+ VszXEAC7xyiA34AfEV+TDkvZPPpgeAtVDPvwKYKFPF3hrkY3F0SNCyutBXWPsZ7dENoGccze8U0
+ 7kCiz7fwqH0tnQV4rqcWaKO7cbWzczKlGSlxVVDYElSZ8a0zGf9WxWwzYDOKMkJjad9+eD+Xzex
+ VZKu9Utt06TL/e8lfdjrAInA7X/Ck+RrxxzU7XVz5bKQE5WeKpQf5gth7xUsvcNBcfdk0sRq5iK
+ VflDiQ2y44YfO7Xuj/CLbOtUeORzhUHJl4L45OHG2UoFE+oNpD2jCSFWHLf3d01gnINHUYDrSJz
+ 47qnj+g26WRZwhTI/I/C/s+cYbpDvlP/rrmTy9fE7a5El/h69oOXt4ScbzOU9SyDIqJE8N9yZTs
+ 95P5VyxPlfzlykS13ZWttrlVU7s5Lf4m5Vr0j3JRTp5AmW2sZAf+UOwr1xhnMzzkVh/UM1UVe4e
+ LbkV130Tk5QEfBSg++abtl+qjr0cogYZfYGAxH2GMVOQcTFEqVohDWou6hxuGxXtSA45hP+vzoV
+ 3wn41LNj9CsGULuLON5/HvbBG0VZCHBS40ZP01hft0uBYPsXXksiSn18m/NLojuBXl130tp8oQF
+ W3eFMnDjO+bGm4CwZsmi4lKQYHk6UJJLeyzSh0qKzO0mDFPcDKYlOcuxWONbDlTkDpQuAbblx3Y
+ 9QJj0ZUb51A+sGQ==
 X-Developer-Key: i=abel.vesa@linaro.org; a=openpgp;
  fpr=6AFF162D57F4223A8770EF5AF7BF214136F41FAE
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_115446_349520_254FC5F4 
-X-CRM114-Status: GOOD (  14.86  )
+X-CRM114-CacheID: sfid-20240329_115447_571861_486BFE84 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,85 +123,159 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This RFC prepares for and adds support for 2 buses, which is supported
-in HW starting with version 7. Until now, none of the currently
-supported platforms in upstream have used the second bus. The X1E80100
-platform, on the other hand, needs the second bus for the USB2.0 to work
-as there are 3 SMB2360 PMICs which provide eUSB2 repeaters and they are
-all found on the second bus.
+Add dedicated schema for X1E80100 PMIC ARB (v7) as it allows multiple
+buses by declaring them as child nodes.
 
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
 ---
-Changes in v7:
-- This time really collected Krzysztof's R-b tags
-- Added Neil's R-b tag to the 4th patch
-- Split the multi bus patch into two separate patches, one for adding
-  the bus object and one for the secondary bus, as per Neil's suggestion
-- Fixed regression for single bus platforms triggered by casting to
-  pmic_arb instead of bus in pmic_arb_non_data_cmd_v1
-- Fixed bus object allocation by using ctrl drvdata instead
-- Prefixed the spmi node property in x1e80100 schema with '^'
-- Fixed struct and function documentation warnings reported by Neil
+ .../bindings/spmi/qcom,x1e80100-spmi-pmic-arb.yaml | 136 +++++++++++++++++++++
+ 1 file changed, 136 insertions(+)
 
-Changes in v6 (resend):
-- Collected Krzysztof's R-b tags
-- Link to v6: https://lore.kernel.org/r/20240222-spmi-multi-master-support-v6-0-bc34ea9561da@linaro.org
+diff --git a/Documentation/devicetree/bindings/spmi/qcom,x1e80100-spmi-pmic-arb.yaml b/Documentation/devicetree/bindings/spmi/qcom,x1e80100-spmi-pmic-arb.yaml
+new file mode 100644
+index 000000000000..f32a7ae33b4b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/spmi/qcom,x1e80100-spmi-pmic-arb.yaml
+@@ -0,0 +1,136 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/spmi/qcom,x1e80100-spmi-pmic-arb.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Qualcomm X1E80100 SPMI Controller (PMIC Arbiter v7)
++
++maintainers:
++  - Stephen Boyd <sboyd@kernel.org>
++
++description: |
++  The X1E80100 SPMI PMIC Arbiter implements HW version 7 and it's an SPMI
++  controller with wrapping arbitration logic to allow for multiple on-chip
++  devices to control up to 2 SPMI separate buses.
++
++  The PMIC Arbiter can also act as an interrupt controller, providing interrupts
++  to slave devices.
++
++properties:
++  compatible:
++    const: qcom,x1e80100-spmi-pmic-arb
++
++  reg:
++    items:
++      - description: core registers
++      - description: tx-channel per virtual slave regosters
++      - description: rx-channel (called observer) per virtual slave registers
++
++  reg-names:
++    items:
++      - const: core
++      - const: chnls
++      - const: obsrvr
++
++  ranges: true
++
++  '#address-cells':
++    const: 2
++
++  '#size-cells':
++    const: 2
++
++  qcom,ee:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    minimum: 0
++    maximum: 5
++    description: >
++      indicates the active Execution Environment identifier
++
++  qcom,channel:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    minimum: 0
++    maximum: 5
++    description: >
++      which of the PMIC Arb provided channels to use for accesses
++
++patternProperties:
++  "^spmi@[a-f0-9]+$":
++    type: object
++    $ref: /schemas/spmi/spmi.yaml
++    unevaluatedProperties: false
++
++    properties:
++      reg:
++        items:
++          - description: configuration registers
++          - description: interrupt controller registers
++
++      reg-names:
++        items:
++          - const: cnfg
++          - const: intr
++
++      interrupts:
++        maxItems: 1
++
++      interrupt-names:
++        const: periph_irq
++
++      interrupt-controller: true
++
++      '#interrupt-cells':
++        const: 4
++        description: |
++          cell 1: slave ID for the requested interrupt (0-15)
++          cell 2: peripheral ID for requested interrupt (0-255)
++          cell 3: the requested peripheral interrupt (0-7)
++          cell 4: interrupt flags indicating level-sense information,
++                  as defined in dt-bindings/interrupt-controller/irq.h
++
++required:
++  - compatible
++  - reg-names
++  - qcom,ee
++  - qcom,channel
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++
++    soc {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      spmi: arbiter@c400000 {
++        compatible = "qcom,x1e80100-spmi-pmic-arb";
++        reg = <0 0x0c400000 0 0x3000>,
++              <0 0x0c500000 0 0x4000000>,
++              <0 0x0c440000 0 0x80000>;
++        reg-names = "core", "chnls", "obsrvr";
++
++        qcom,ee = <0>;
++        qcom,channel = <0>;
++
++        #address-cells = <2>;
++        #size-cells = <2>;
++        ranges;
++
++        spmi_bus0: spmi@c42d000 {
++          reg = <0 0x0c42d000 0 0x4000>,
++                <0 0x0c4c0000 0 0x10000>;
++          reg-names = "cnfg", "intr";
++
++          interrupt-names = "periph_irq";
++          interrupts-extended = <&pdc 1 IRQ_TYPE_LEVEL_HIGH>;
++          interrupt-controller;
++          #interrupt-cells = <4>;
++
++          #address-cells = <2>;
++          #size-cells = <0>;
++        };
++      };
++    };
 
-Changes in v6:
-- Changed the compatible to platform specific (X1E80100) along with the
-  schema. Fixed the spmi buses unit addresses and added the empty ranges
-  property. Added missing properties to the spmi buses and the
-  "unevaluatedProperties: false".
-- Deprecated the "qcom,bus-id" in the legacy schema.
-- Changed the driver to check for legacy compatible first
-- Link to v5: https://lore.kernel.org/r/20240221-spmi-multi-master-support-v5-0-3255ca413a0b@linaro.org
-
-Changes in v5:
-- Dropped the RFC as there aren't any concerns about the approach anymore
-- Dropped the unused dev and res variables from pmic_arb_get_obsrvr_chnls_v2
-- Link to v4: https://lore.kernel.org/r/20240220-spmi-multi-master-support-v4-0-dc813c878ba8@linaro.org
-
-Changes in v4:
-- Fixed comment above pmic_arb_init_apid_v7 by dropping the extra "bus" word
-- Swicthed to devm_platform_ioremap_resource_byname for obsrvr and chnls.
-  The core remains with platform_get_resource_byname as we need the core size.
-- Dropped comment from probe related to the need of platform_get_resource_byname
-  as it not true anymore.
-- Dropped the qcom,bus-id optional property.
-- Link to v3: https://lore.kernel.org/r/20240214-spmi-multi-master-support-v3-0-0bae0ef04faf@linaro.org
-
-Changes in v3:
-- Split the change into 3 separate patches. First 2 patches are moving
-  apid init and core resources into version specific ops. Third one is
-  adding the support for 2 buses and dedicated compatible.
-- Added separate bindings patch
-- Link to v2: https://lore.kernel.org/r/20240213-spmi-multi-master-support-v2-1-b3b102326906@linaro.org
-
-Changes in v2:
-- Reworked it so that it registers a spmi controller for each bus
-  rather than relying on the generic framework to pass on the bus
-  (master) id.
-- Link to v1: https://lore.kernel.org/r/20240207-spmi-multi-master-support-v1-0-ce57f301c7fd@linaro.org
-
----
-Abel Vesa (6):
-      dt-bindings: spmi: Add X1E80100 SPMI PMIC ARB schema
-      dt-bindings: spmi: Deprecate qcom,bus-id
-      spmi: pmic-arb: Make the APID init a version operation
-      spmi: pmic-arb: Make core resources acquiring a version operation
-      spmi: pmic-arb: Register controller for bus instead of arbiter
-      spmi: pmic-arb: Add multi bus support
-
- .../bindings/spmi/qcom,spmi-pmic-arb.yaml          |   1 +
- .../bindings/spmi/qcom,x1e80100-spmi-pmic-arb.yaml | 136 +++
- drivers/spmi/spmi-pmic-arb.c                       | 953 +++++++++++++--------
- 3 files changed, 723 insertions(+), 367 deletions(-)
----
-base-commit: a6bd6c9333397f5a0e2667d4d82fef8c970108f2
-change-id: 20240207-spmi-multi-master-support-832a704b779b
-
-Best regards,
 -- 
-Abel Vesa <abel.vesa@linaro.org>
+2.34.1
 
 
