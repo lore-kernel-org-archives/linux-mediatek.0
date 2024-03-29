@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B8D0C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Mar 2024 18:55:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3681CD1283
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Mar 2024 18:55:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e0l9XqgR5rgZt/McZ1+LYeV2+Ae3g0xUIEFWoqdq9PI=; b=bKE354SKiGkfYoRVkhk4ZNZ8bG
-	ZvtYLgXC8JByXSqwnTgX0HwyqlfvmLicCgj6PpXbtz5ys3Sh98YXndQsNBfxUVN+ey2sBLau+GDBi
-	r32Fv6LFiPvhuFsRK6n6GoPurW7iPA0hxp8LajVsBIPRpQsJzEiDgVAny8p4wXcmLsGZgr0ozJAmN
-	ii8utc6Aop8lHtLFKdosGgFT8RNuZE1tRRaFhaUXOK1s62Dm/6FTsnHWME2apdecAl8oLIxv1Ajp0
-	v7qf6yx0hlAGyfRf0dQ/tkOOCi2wrWzaiVDAYGzonOe9u5GGGg/mjyhd/GW99GIUV7S9ewL9BHJ4v
-	8D0qcdzw==;
+	bh=8lYudh1XGipLZp45Ed9irT2kjTBzp7nX6WUMRhG9/PM=; b=TTH26Xs2Tl0KP2RgRNVaVHBkYy
+	2x87jDlUKM/rf14wHhfQWGH2RaA/9qrWDvzSgKxXTdAM+H0G839fA/+PJYtbF4ZdmxyxWyO3b1V8J
+	EVpRU0avgFmFXkKYe67oT2hliBW/gnTOxoQ5dtN4w5B7hvwbu4Ex4V3VGHcopFNlYSkmEcYrvJY2o
+	jih3GNAHdD69tMPkmurr31zAQrK+8KoTcaeEgznzqyf86rP7Bn1DZ3Bkk13PiWK09PR05xwYxovXq
+	yCOw7V9vdPoMoG9NtmOguqvGrrjMxLDkEzPv4E/PneHGVdgxbBdEx7IoYWkpeT9OnKHTymtgkeQvI
+	Nznee08g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqHNW-00000001f8K-1xyp;
-	Fri, 29 Mar 2024 18:55:02 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1rqHNf-00000001fDO-1yIw;
+	Fri, 29 Mar 2024 18:55:11 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqHNH-00000001evo-21H4
+	id 1rqHNJ-00000001ewp-1bH5
 	for linux-mediatek@lists.infradead.org;
 	Fri, 29 Mar 2024 18:54:50 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a4e0e3ef357so304268266b.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 29 Mar 2024 11:54:45 -0700 (PDT)
+Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-2d6fd3cfaceso28333721fa.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 29 Mar 2024 11:54:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711738484; x=1712343284; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1711738486; x=1712343286; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=e0l9XqgR5rgZt/McZ1+LYeV2+Ae3g0xUIEFWoqdq9PI=;
-        b=giJxJjYsWGXCT0NNyElkyYyx6GLpqnUugiETqUrAcMK57o8POrlJO4g/G1jn6Jd+Nb
-         OZuvMfYvLD/E1IDkBLCF3V1jFAKQVbkMFUFzD4bJIqL21tfVW7oiJ9GD4osVCvlXBC4N
-         pu0syRz930La5Xw4BG77Y7oZZWfAJqVbosaLnb2KNLfo1J9p24wrQsT4iM7MupOhirHQ
-         /YjZssmMX4MSM/NciM+Jd/bEccP6GMmgi2tFrY5T5p4zWVOiKMEgN8nqjFw2Vio6c4Pi
-         NWreV7RDMqE7G2p44On9AN7lkbI4ZKiMg24uf+wfeC08ud0XfntwZi6+CH6I5S4iZkIA
-         7v5w==
+        bh=8lYudh1XGipLZp45Ed9irT2kjTBzp7nX6WUMRhG9/PM=;
+        b=j6KpiYvLXErtpDNrlq+Fm3W8nr809B5P7XPkSnAdi00AWeRE6knwfMbJdZOTyjc+m8
+         QObcgBP8mhkTB+/fJNWOzeZxfrxL8qG1zqrYUm63zoYd4XJIC2aaoh3pr/zHRpUEAFjU
+         KrSqGx4BLlvGDL9fCzEEkKN+cwD7Pkz0j2BPmFAWwNaZPX2ZyHj+rvGwOwjUBshS6IpM
+         x97vq/ijBH2KLYR+XDttrGBWnzJu+w0zS9JCbSoKP/ZBSEkhtep8h/cbso73nm5zl9aq
+         pqS0nTXaZz0tO146FXvzfzSQJ3zQTvXON4B/IChXcwAiDU6DsqEbwPDxpFJOv22diQCV
+         Kk3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711738484; x=1712343284;
+        d=1e100.net; s=20230601; t=1711738486; x=1712343286;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=e0l9XqgR5rgZt/McZ1+LYeV2+Ae3g0xUIEFWoqdq9PI=;
-        b=HQLFpX9OwoB5quEtuuqv9YQ/+aI2YttRo3UWEkg59w15RczD2rQaYfYX8cj6LRcKdB
-         i2lsG2yF5rJPGDgtjVRVPTZQTOdeHumHitJiOiIf5wp7XTMC3hZt5wgzBL+cfCOf2IkO
-         8pb9HxI6VXKyXOIzyKEZdLqlUckPAMbEYSQvUKd3oSvDPUbn0SxOYl4HctMAo+HjXsQO
-         pjS4iKgs6sQZz48FgEM+mr2tfVZemBUmb1Uyc/8/pIx54N8WdoGWy/A94CjAadcIRUwI
-         LwFTdVUCy/W1XkGBwCxPs4ObqTzR21SUd2oXf45X7aXCcQ5FDCz5aC0d/HeeDhp4eOHm
-         4MlQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUz2XjGwkLIa++3oBS5xlBVu3CXVf1XA3jqv2tRz5OHP5bHAFccmRS1HFnwIeKkmSA2s+TGX3DI/whi7w7rTeMEwg7GRyk7gaD8ykFRZsi/N6ea
-X-Gm-Message-State: AOJu0Yz5o9R4FPp2vHC8NUCFYELZaZNrgVyUht8w0eVgyGfyGprTrq8q
-	SGdelJTeUsua8DWdsiuJ4cZmZBsgSYSyJnJNnZyIWudSCXo8E5tyJSRghUBJ/+Y=
-X-Google-Smtp-Source: AGHT+IEvez3gnbfE1h985nyrZbf3lwtS5MK1xcBVKx0GUJnsoq87hfeTZGXxgOag0cR9v/4ebdQxYw==
-X-Received: by 2002:a17:907:9877:b0:a4e:1c3d:89a0 with SMTP id ko23-20020a170907987700b00a4e1c3d89a0mr2367909ejc.4.1711738484378;
-        Fri, 29 Mar 2024 11:54:44 -0700 (PDT)
+        bh=8lYudh1XGipLZp45Ed9irT2kjTBzp7nX6WUMRhG9/PM=;
+        b=VOEBxcsaQa16ZJZKnCJ92PLiBmxR/Kln3bfUULbtYysqquFmqa2hgzmZpD1Sgf+Fj8
+         lsc/1tzzLE899b7I3bnHj17+rW0vTaabyXcGBTIvFeUuuB5CTCmBbMUejKUpsyi/VuQj
+         +1Ni2eUl0inaW8ruRUyFbPl0Ic834MHHE5N2b1Ep4nfh0Pf/5nYsF+XeBh/DQs38m+Fl
+         yrEJnd0E6QnzG/JRizPeBpa5jntJvNLFB52HJgY0+01LAjzRp6Hf1U0WRrri+JcbU+c5
+         4TV7KdSFW5BOvoq9fbFdfUtevMghylUldt8uqNTwfhCyV6T4j2La3HOBLnY/kYpHD1ub
+         FHJg==
+X-Forwarded-Encrypted: i=1; AJvYcCVRuS9BN30wdMtN008Li4i7Nwlhj+AL3a0wQp26ttYEBCk7GoZIf5SEcQibAUyr1NajywjfL8d6FHqaaJxnmp104M9sj9603Pj/qhK21kUo9268
+X-Gm-Message-State: AOJu0Yzl8CRtHNEri1iZDXx/AbMF2pPRDfW0bYLwf4nZOtKJ1fE3Sl95
+	yDaw4Ws49ZrcvVMWQrU3CRntTMh+ZnARfAqxzxpYlH9sINR/rhLcTzCll4KyNNQ=
+X-Google-Smtp-Source: AGHT+IFLq2zPNZAQWIXV2oGHh7AXsnxXyYm+kF2F9Y8m5wIc8iL/MpNSFstxnipVIzw2JZJ8+OEiLQ==
+X-Received: by 2002:a05:6512:3f2:b0:513:cc18:d4c6 with SMTP id n18-20020a05651203f200b00513cc18d4c6mr2423772lfq.41.1711738485916;
+        Fri, 29 Mar 2024 11:54:45 -0700 (PDT)
 Received: from [127.0.1.1] ([79.114.172.194])
-        by smtp.gmail.com with ESMTPSA id gl20-20020a170906e0d400b00a46c39e6a47sm2235618ejb.148.2024.03.29.11.54.42
+        by smtp.gmail.com with ESMTPSA id gl20-20020a170906e0d400b00a46c39e6a47sm2235618ejb.148.2024.03.29.11.54.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 29 Mar 2024 11:54:44 -0700 (PDT)
+        Fri, 29 Mar 2024 11:54:45 -0700 (PDT)
 From: Abel Vesa <abel.vesa@linaro.org>
-Date: Fri, 29 Mar 2024 20:54:18 +0200
-Subject: [PATCH v7 1/6] dt-bindings: spmi: Add X1E80100 SPMI PMIC ARB
- schema
+Date: Fri, 29 Mar 2024 20:54:19 +0200
+Subject: [PATCH v7 2/6] dt-bindings: spmi: Deprecate qcom,bus-id
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240329-spmi-multi-master-support-v7-1-7b902824246c@linaro.org>
+Message-Id: <20240329-spmi-multi-master-support-v7-2-7b902824246c@linaro.org>
 References: <20240329-spmi-multi-master-support-v7-0-7b902824246c@linaro.org>
 In-Reply-To: <20240329-spmi-multi-master-support-v7-0-7b902824246c@linaro.org>
 To: Stephen Boyd <sboyd@kernel.org>, 
@@ -90,25 +89,26 @@ Cc: Srini Kandagatla <srinivas.kandagatla@linaro.org>,
  Abel Vesa <abel.vesa@linaro.org>, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4280; i=abel.vesa@linaro.org;
- h=from:subject:message-id; bh=H2L6hk3BSbGZWXsaMqnOwDhN0rNiIn1lAFbUz+5zVTU=;
- b=owEBbQKS/ZANAwAKARtfRMkAlRVWAcsmYgBmBw5p2QmwCkKqbzyOMMbpOWoF0qvc0ARyq+X+6
- 7dr0j/S0MGJAjMEAAEKAB0WIQRO8+4RTnqPKsqn0bgbX0TJAJUVVgUCZgcOaQAKCRAbX0TJAJUV
- VszXEAC7xyiA34AfEV+TDkvZPPpgeAtVDPvwKYKFPF3hrkY3F0SNCyutBXWPsZ7dENoGccze8U0
- 7kCiz7fwqH0tnQV4rqcWaKO7cbWzczKlGSlxVVDYElSZ8a0zGf9WxWwzYDOKMkJjad9+eD+Xzex
- VZKu9Utt06TL/e8lfdjrAInA7X/Ck+RrxxzU7XVz5bKQE5WeKpQf5gth7xUsvcNBcfdk0sRq5iK
- VflDiQ2y44YfO7Xuj/CLbOtUeORzhUHJl4L45OHG2UoFE+oNpD2jCSFWHLf3d01gnINHUYDrSJz
- 47qnj+g26WRZwhTI/I/C/s+cYbpDvlP/rrmTy9fE7a5El/h69oOXt4ScbzOU9SyDIqJE8N9yZTs
- 95P5VyxPlfzlykS13ZWttrlVU7s5Lf4m5Vr0j3JRTp5AmW2sZAf+UOwr1xhnMzzkVh/UM1UVe4e
- LbkV130Tk5QEfBSg++abtl+qjr0cogYZfYGAxH2GMVOQcTFEqVohDWou6hxuGxXtSA45hP+vzoV
- 3wn41LNj9CsGULuLON5/HvbBG0VZCHBS40ZP01hft0uBYPsXXksiSn18m/NLojuBXl130tp8oQF
- W3eFMnDjO+bGm4CwZsmi4lKQYHk6UJJLeyzSh0qKzO0mDFPcDKYlOcuxWONbDlTkDpQuAbblx3Y
- 9QJj0ZUb51A+sGQ==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1023; i=abel.vesa@linaro.org;
+ h=from:subject:message-id; bh=f1k2/XtnKKT0QabjDTtzy+0Tu+D0+1BkiYHMuQzuNWI=;
+ b=owEBbQKS/ZANAwAKARtfRMkAlRVWAcsmYgBmBw5rmBF1a6Kayn0McPPhO9Vili8LVVjwUHVTA
+ Ms6jQpU9aiJAjMEAAEKAB0WIQRO8+4RTnqPKsqn0bgbX0TJAJUVVgUCZgcOawAKCRAbX0TJAJUV
+ VjcfD/9TlUMe8f+3fPhLYasDGg8g/v36up5C2ABrJX8El4US2PozU/+1trcDJU52ZXplM4CiawA
+ ebRTCjQ+vB4Ca8MN2XWbaCeeUu/0ecjmS/48HSrnRhphCoIXCTe8AWUKwO+R8VBRnRKPGdJg7u1
+ kUTzgSclc9W0ThCgx8xXEUV4sR8Tk0Q4sOc7GPORWd55rBjAN8r5L3LhO8USw5A2TUc6wWI0iDX
+ X9RxsdMBXyS7Ej4+jQcZlxhEru5zKQtjEVyagVLEh6WhnSB07uU6hY6+zG/yREFm4fEeu5JDQgO
+ Cn/rgajjrkX7d2sF4aCY3gLZqWaF0shIGI1IgUPGsvLLRCTfvkM8ZXgfGeGQWhA6BW0fcMGbHe9
+ BjU8rqrXvV9N91vAhN+3AyijyFcQQ4n3Ge2RUtdhQ1OcmfsBK3Bp3mjdStQqUm8+RGtuVTCqTaD
+ 8eN6QIaPVMZ4ZRoI1o9pQI+5RiLBIBQF24jf/BVM6cWEEQM5mMB9L69QErcsdy42FgybYoMsVXq
+ Ujoxjut03zTyn+h5XZvGSUyYHuHl8EFH440/peAFjMmc0wT41HSBd+64w5OSoTq9c02w7skXyfP
+ p+hVjyJFiBh/zpj9kAC8WqX62nGSxOfM6JXauUagiuw+tN/XDGXda/Zl2jmRQEgRjSXuV4xCmXf
+ nDUfN/EHg2aDOaw==
 X-Developer-Key: i=abel.vesa@linaro.org; a=openpgp;
  fpr=6AFF162D57F4223A8770EF5AF7BF214136F41FAE
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_115447_571861_486BFE84 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20240329_115449_537566_BC8272BE 
+X-CRM114-Status: UNSURE (   8.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,157 +123,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add dedicated schema for X1E80100 PMIC ARB (v7) as it allows multiple
-buses by declaring them as child nodes.
+As it is optional and no platform is actually using the secondary bus,
+deprecate the qcom,bus-id property. For newer platforms that implement
+SPMI PMIC ARB v7 in HW, the X1E80100 approach should be used.
 
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
 ---
- .../bindings/spmi/qcom,x1e80100-spmi-pmic-arb.yaml | 136 +++++++++++++++++++++
- 1 file changed, 136 insertions(+)
+ Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/spmi/qcom,x1e80100-spmi-pmic-arb.yaml b/Documentation/devicetree/bindings/spmi/qcom,x1e80100-spmi-pmic-arb.yaml
-new file mode 100644
-index 000000000000..f32a7ae33b4b
---- /dev/null
-+++ b/Documentation/devicetree/bindings/spmi/qcom,x1e80100-spmi-pmic-arb.yaml
-@@ -0,0 +1,136 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/spmi/qcom,x1e80100-spmi-pmic-arb.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Qualcomm X1E80100 SPMI Controller (PMIC Arbiter v7)
-+
-+maintainers:
-+  - Stephen Boyd <sboyd@kernel.org>
-+
-+description: |
-+  The X1E80100 SPMI PMIC Arbiter implements HW version 7 and it's an SPMI
-+  controller with wrapping arbitration logic to allow for multiple on-chip
-+  devices to control up to 2 SPMI separate buses.
-+
-+  The PMIC Arbiter can also act as an interrupt controller, providing interrupts
-+  to slave devices.
-+
-+properties:
-+  compatible:
-+    const: qcom,x1e80100-spmi-pmic-arb
-+
-+  reg:
-+    items:
-+      - description: core registers
-+      - description: tx-channel per virtual slave regosters
-+      - description: rx-channel (called observer) per virtual slave registers
-+
-+  reg-names:
-+    items:
-+      - const: core
-+      - const: chnls
-+      - const: obsrvr
-+
-+  ranges: true
-+
-+  '#address-cells':
-+    const: 2
-+
-+  '#size-cells':
-+    const: 2
-+
-+  qcom,ee:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    minimum: 0
-+    maximum: 5
-+    description: >
-+      indicates the active Execution Environment identifier
-+
-+  qcom,channel:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    minimum: 0
-+    maximum: 5
-+    description: >
-+      which of the PMIC Arb provided channels to use for accesses
-+
-+patternProperties:
-+  "^spmi@[a-f0-9]+$":
-+    type: object
-+    $ref: /schemas/spmi/spmi.yaml
-+    unevaluatedProperties: false
-+
-+    properties:
-+      reg:
-+        items:
-+          - description: configuration registers
-+          - description: interrupt controller registers
-+
-+      reg-names:
-+        items:
-+          - const: cnfg
-+          - const: intr
-+
-+      interrupts:
-+        maxItems: 1
-+
-+      interrupt-names:
-+        const: periph_irq
-+
-+      interrupt-controller: true
-+
-+      '#interrupt-cells':
-+        const: 4
-+        description: |
-+          cell 1: slave ID for the requested interrupt (0-15)
-+          cell 2: peripheral ID for requested interrupt (0-255)
-+          cell 3: the requested peripheral interrupt (0-7)
-+          cell 4: interrupt flags indicating level-sense information,
-+                  as defined in dt-bindings/interrupt-controller/irq.h
-+
-+required:
-+  - compatible
-+  - reg-names
-+  - qcom,ee
-+  - qcom,channel
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+
-+    soc {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+
-+      spmi: arbiter@c400000 {
-+        compatible = "qcom,x1e80100-spmi-pmic-arb";
-+        reg = <0 0x0c400000 0 0x3000>,
-+              <0 0x0c500000 0 0x4000000>,
-+              <0 0x0c440000 0 0x80000>;
-+        reg-names = "core", "chnls", "obsrvr";
-+
-+        qcom,ee = <0>;
-+        qcom,channel = <0>;
-+
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+        ranges;
-+
-+        spmi_bus0: spmi@c42d000 {
-+          reg = <0 0x0c42d000 0 0x4000>,
-+                <0 0x0c4c0000 0 0x10000>;
-+          reg-names = "cnfg", "intr";
-+
-+          interrupt-names = "periph_irq";
-+          interrupts-extended = <&pdc 1 IRQ_TYPE_LEVEL_HIGH>;
-+          interrupt-controller;
-+          #interrupt-cells = <4>;
-+
-+          #address-cells = <2>;
-+          #size-cells = <0>;
-+        };
-+      };
-+    };
+diff --git a/Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb.yaml b/Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb.yaml
+index f983b4af6db9..51daf1b847a9 100644
+--- a/Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb.yaml
++++ b/Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb.yaml
+@@ -92,6 +92,7 @@ properties:
+     description: >
+       SPMI bus instance. only applicable to PMIC arbiter version 7 and beyond.
+       Supported values, 0 = primary bus, 1 = secondary bus
++    deprecated: true
+ 
+ required:
+   - compatible
 
 -- 
 2.34.1
