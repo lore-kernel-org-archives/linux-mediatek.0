@@ -4,57 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0753C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Mar 2024 12:41:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 383C8C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Mar 2024 12:46:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7eQKwf0Z+/IU8P6FzXPXgNYGM69mSrUpyYay8JCX58M=; b=0o9npf2td3OeZHEKu2S9EuBUp3
-	Z8jaRtFGPT2q3vjq1ZjVkv9m4fIAd8YgKuJeAcS34YR6/pIR35ZceNiAxqfQVLc0IYwS6pFhg1ppf
-	pOuvXSfhUtXPsvD4D6UQh+8E5LfV4Ydrh67Ir9TDIGYe6EEsXpcNbYZGjof8pUwPRVaFytM47tYOz
-	WSAVOIMztppa1CEAcBzxwyBRWBV9nGN2eaWmBdj5jOjnrRQZzty1gl4ZHhgIZcSSVo0vfOv/UgCJf
-	DhIuSBEpXfGdSBfbIGSCIj3uJ9Y32vPnIZ1JJ0aeGla1Gu+WRV645r+wvw357xxJfWDU5lT4JVxZ5
-	zLzrF7KA==;
+	bh=7eQKwf0Z+/IU8P6FzXPXgNYGM69mSrUpyYay8JCX58M=; b=1cBtjCmKO9/wMnZQPLZlwUjuMl
+	doX9ZuWcUkJHpus3HKxRUPWUlBkFlLDyPi0KCjzdP52KtNU3eWIY/QN4sCvBrCUamhaZskAfuglGd
+	hiJvOO+OxAkSCfVBOfsXop89J1N32sWzYND1iWb667zoRZZaF17tTkpGlCsT5htBx7ymPJFhPU2ps
+	afQP1iABk5RCgsFccazF//rd4fSUjnYaVVjNKHvni9u7vIdTBmnUPmXavKfGhjlUBrh9MTSDvNQh9
+	iVfSh+H2OjUWkg2njdmCUh/wstOZ9aDkZi6CoqCO0xU5gFdRdH+5a/epu4+imjQQvkLGN2D298Vyb
+	mj1s3mLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBYN-00000000Qec-1QKO;
-	Fri, 29 Mar 2024 12:41:51 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rqBcR-00000000Rzt-0vY4;
+	Fri, 29 Mar 2024 12:46:03 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBXT-00000000QR6-3ToP;
-	Fri, 29 Mar 2024 12:40:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=7eQKwf0Z+/IU8P6FzXPXgNYGM69mSrUpyYay8JCX58M=; b=ibHEFBX3oQRpp+n15aHrdAznQQ
-	Od6K9QOrn0sevOwyehP1rUxMeNSobOqShjGkfrvdqDro+yBkLzQMUVAUzpHvXxf7Wb3EeIFJiVFwX
-	Fyi18dIFn0e7u6iK7BAxHYn8afRc6KMVNfrVnO/qPPdefcRJKF7PZfWLrLA59mMerHmN4fSZnDlYy
-	TTphV41O/AD1LZKhTxazbuwS/AuRx5vOL7PRCy8m74EC1/xBxHcJSvy+0M+VIV069ZGKQyQO4t5A+
-	3QRq5Y//PlWK0MDFwqYC+1WlVDf+NG6RqS5z1mqdJ+2KGBHVtqIVwEtuhaS5l4mrO4F6l6hD1Vhm/
-	j0XMXV7Q==;
-Received: from dfw.source.kernel.org ([139.178.84.217])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBXQ-00000001Yqp-3R1g;
-	Fri, 29 Mar 2024 12:40:54 +0000
+	id 1rqBaY-00000000R8X-21WD;
+	Fri, 29 Mar 2024 12:44:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2ED5061920;
-	Fri, 29 Mar 2024 12:40:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95DACC43390;
-	Fri, 29 Mar 2024 12:40:49 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id CEA96CE2F9E;
+	Fri, 29 Mar 2024 12:44:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B417DC43390;
+	Fri, 29 Mar 2024 12:44:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711716051;
+	s=k20201202; t=1711716243;
 	bh=uRO9hNSHchqspmCb1F6je6akXTN4Hy8qBEMg95DG9jg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NrZKtPVtBxsI1CXM7WGuCkhix7O9SUgBdXFPSSxc0cTFh1+nJm+2RvxxChlUc0ct1
-	 q2UvZyv2UNtrYBMz2ybacAxfrR3meAKJUl4+EaxJEQLbzIgbCw555SMumiHpwRC/Sb
-	 sTyysz5wmC0YDXiD6bEpftRrY4wEYF0ImWn74cKzxX5nmF3A9EpdSmdwKFdDzCovjD
-	 R5xc2ZtDLUHKvKgopKgX8d14QNHOzdF93mj+35Yfae8pSNahMsS51VQ70Cp4BK+u3e
-	 phahzODtPeGYVfv47i1tquE1CRDUAyV8R+RcOUZYeGXraW0qtE4g3A3ItuADBcWVat
-	 vjS0wA0QkFF7w==
+	b=EJQEsp6oISBucig7g+0diMfjpNLFzX1OYjSonZmhrMT0pzLYGa9hL2nzJ9zAY/eoq
+	 lGoFw/BSdtDyKj2Ysef1jOWyBY+lckjc8yoi2PcallQOIQYTX0/YW2lToESRJOgyMH
+	 lYw7AA7TU8elRVnnr8p8HlHmw9aVA8GQvEAmAeFitjCzOIUT2yTucgj0ZiqLQP1v++
+	 xpxqgMitQ4jYTpakLOEyBnBvdH1UuRBeAyDGhiHoezpw0e6S1qQz2SbQYKg2RZUF+/
+	 1toAtbTQMKG9OAwNaJXPVehLWyUYvzUx7Sl4h0C2yqU+8pdRe6BemJmUxP0txNrrQ6
+	 M89ILP7PQWK6g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -69,20 +55,20 @@ Cc: C Cheng <C.Cheng@mediatek.com>,
 	linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.8 28/98] cpuidle: Avoid potential overflow in integer multiplication
-Date: Fri, 29 Mar 2024 08:36:59 -0400
-Message-ID: <20240329123919.3087149-28-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.6 18/75] cpuidle: Avoid potential overflow in integer multiplication
+Date: Fri, 29 Mar 2024 08:41:59 -0400
+Message-ID: <20240329124330.3089520-18-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240329123919.3087149-1-sashal@kernel.org>
-References: <20240329123919.3087149-1-sashal@kernel.org>
+In-Reply-To: <20240329124330.3089520-1-sashal@kernel.org>
+References: <20240329124330.3089520-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.8.2
+X-stable-base: Linux 6.6.23
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_124053_100985_74668FEA 
-X-CRM114-Status: GOOD (  13.33  )
+X-CRM114-CacheID: sfid-20240329_054407_531750_A399A191 
+X-CRM114-Status: GOOD (  13.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
