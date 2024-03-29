@@ -4,43 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 383C8C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Mar 2024 12:46:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ECC1C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Mar 2024 12:48:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7eQKwf0Z+/IU8P6FzXPXgNYGM69mSrUpyYay8JCX58M=; b=1cBtjCmKO9/wMnZQPLZlwUjuMl
-	doX9ZuWcUkJHpus3HKxRUPWUlBkFlLDyPi0KCjzdP52KtNU3eWIY/QN4sCvBrCUamhaZskAfuglGd
-	hiJvOO+OxAkSCfVBOfsXop89J1N32sWzYND1iWb667zoRZZaF17tTkpGlCsT5htBx7ymPJFhPU2ps
-	afQP1iABk5RCgsFccazF//rd4fSUjnYaVVjNKHvni9u7vIdTBmnUPmXavKfGhjlUBrh9MTSDvNQh9
-	iVfSh+H2OjUWkg2njdmCUh/wstOZ9aDkZi6CoqCO0xU5gFdRdH+5a/epu4+imjQQvkLGN2D298Vyb
-	mj1s3mLA==;
+	bh=pwS1ON/JJah49cVCqcFkCazDcULif+FnoEQQ3ZD7xPM=; b=rThyQLM1wRIf5bNuNAzeJ9cdpt
+	wQ4Cc0BEF4tO4Hy3Vwm0R5PPlnYQ3ei7QFkfZUFQzYhLG+mpn8sz6WgP73TVXVTf3fQdMx+DI/g0Q
+	gUeJhHAqGQBe7/Xq3H3uqk5nNJFAVuxS93G8YP6KGuBi6s0/iSv4X0WbS0xoI5KWUT7n5ddB6vOdl
+	TBMYRR/wef1JgTzAoVbfLIGEJZQ0+++um6C0neDKpP3nlx14W1AFf+K11D9DBbsZhK13grfiWCsBn
+	cdak68Bw3wvFUilxHsRlKk8LkwFgKZ2WgGV6WLnPwjXJL24N/80PIz8C80nJsWNi8GZDRwxijqXFS
+	OokwktUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBcR-00000000Rzt-0vY4;
-	Fri, 29 Mar 2024 12:46:03 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rqBf6-00000000TNQ-1jjk;
+	Fri, 29 Mar 2024 12:48:48 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBaY-00000000R8X-21WD;
-	Fri, 29 Mar 2024 12:44:10 +0000
+	id 1rqBcz-00000000SDW-1l9B;
+	Fri, 29 Mar 2024 12:46:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=pwS1ON/JJah49cVCqcFkCazDcULif+FnoEQQ3ZD7xPM=; b=Ywkz8lEN7Vc2iQn/8oryvaB2z9
+	SeJn1+1ymIaTxwZqnMHFQfTv8kccyEPeyvIFA9sNv41mjgBk933bDldm37ycSIEO/Tqy4akbq1+BR
+	sEWgfitQRl2WO7J+PeoaJZkxqob/GhtAxSIEKYk8CN/x9BLmgbStJWV58PqKtIh5qGAWg2ZviYraj
+	+TiX/pcSnAg5nqdiwqlsjV4B0fylKMuHtz6QKrvquWNDKi6LdhUTNP/zWGHI3SDu/gxUUzG/1xbMe
+	Mt8pDLMS/I06ZFCjUFqEV0vjfTfe2CVvCtPBKfcLbiRRNPidlfgn5kvAPpWMr7Bif/46opNQPybYQ
+	MfEhZSIQ==;
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rqBcw-00000001Za1-0agr;
+	Fri, 29 Mar 2024 12:46:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id CEA96CE2F9E;
-	Fri, 29 Mar 2024 12:44:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B417DC43390;
-	Fri, 29 Mar 2024 12:44:01 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 46241CE2F9A;
+	Fri, 29 Mar 2024 12:46:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2963EC433C7;
+	Fri, 29 Mar 2024 12:46:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711716243;
-	bh=uRO9hNSHchqspmCb1F6je6akXTN4Hy8qBEMg95DG9jg=;
+	s=k20201202; t=1711716390;
+	bh=Kx+1H+QtnuCB8ciX29fyhB79zT4Lxwy5pONlNfKxAiY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=EJQEsp6oISBucig7g+0diMfjpNLFzX1OYjSonZmhrMT0pzLYGa9hL2nzJ9zAY/eoq
-	 lGoFw/BSdtDyKj2Ysef1jOWyBY+lckjc8yoi2PcallQOIQYTX0/YW2lToESRJOgyMH
-	 lYw7AA7TU8elRVnnr8p8HlHmw9aVA8GQvEAmAeFitjCzOIUT2yTucgj0ZiqLQP1v++
-	 xpxqgMitQ4jYTpakLOEyBnBvdH1UuRBeAyDGhiHoezpw0e6S1qQz2SbQYKg2RZUF+/
-	 1toAtbTQMKG9OAwNaJXPVehLWyUYvzUx7Sl4h0C2yqU+8pdRe6BemJmUxP0txNrrQ6
-	 M89ILP7PQWK6g==
+	b=sLLRPfomblxWnL5E8qu46AJV+9GDc72gVoeF7+a7nr8txIB2Yx7pQEKiudlo/IIen
+	 03jmk9Ws8E5CEsMqpaJtIe2nAEYYJFk4BOCisHENYNHQsx3NlMQ3DEVYnzd2fd6G1R
+	 HEjkOjB9wK20w0iHUmB4Bg0nPJ4DnUVY0LZM9wMkaJFzH8392K0XypK51K7ErWCB0m
+	 syFs8kn5l7PZ3ZTp+Z0EhgnDJmwPgr+qyfFC504zNnF3+SOH8IXDvvBjDC0pRlXjDZ
+	 820BrgWqvVk0KXaNkZBRyHyG5JnoP91toMOttPmHhNOpuDLv/4KpfJ8GqEyqC8GGa5
+	 ffKdNLBFx+J3g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -55,20 +69,20 @@ Cc: C Cheng <C.Cheng@mediatek.com>,
 	linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 18/75] cpuidle: Avoid potential overflow in integer multiplication
-Date: Fri, 29 Mar 2024 08:41:59 -0400
-Message-ID: <20240329124330.3089520-18-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 14/52] cpuidle: Avoid potential overflow in integer multiplication
+Date: Fri, 29 Mar 2024 08:45:08 -0400
+Message-ID: <20240329124605.3091273-14-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240329124330.3089520-1-sashal@kernel.org>
-References: <20240329124330.3089520-1-sashal@kernel.org>
+In-Reply-To: <20240329124605.3091273-1-sashal@kernel.org>
+References: <20240329124605.3091273-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.23
+X-stable-base: Linux 6.1.83
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_054407_531750_A399A191 
-X-CRM114-Status: GOOD (  13.38  )
+X-CRM114-CacheID: sfid-20240329_124634_631917_94A9FB60 
+X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,7 +126,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/cpuidle/driver.c b/drivers/cpuidle/driver.c
-index d9cda7f6ccb98..cf5873cc45dc8 100644
+index f70aa17e2a8e0..c594e28adddf3 100644
 --- a/drivers/cpuidle/driver.c
 +++ b/drivers/cpuidle/driver.c
 @@ -16,6 +16,7 @@
@@ -123,15 +137,15 @@ index d9cda7f6ccb98..cf5873cc45dc8 100644
  
  #include "cpuidle.h"
  
-@@ -187,7 +188,7 @@ static void __cpuidle_driver_init(struct cpuidle_driver *drv)
- 			s->target_residency = div_u64(s->target_residency_ns, NSEC_PER_USEC);
+@@ -185,7 +186,7 @@ static void __cpuidle_driver_init(struct cpuidle_driver *drv)
+ 			s->target_residency_ns = 0;
  
  		if (s->exit_latency > 0)
 -			s->exit_latency_ns = s->exit_latency * NSEC_PER_USEC;
 +			s->exit_latency_ns = mul_u32_u32(s->exit_latency, NSEC_PER_USEC);
  		else if (s->exit_latency_ns < 0)
  			s->exit_latency_ns =  0;
- 		else
+ 	}
 -- 
 2.43.0
 
