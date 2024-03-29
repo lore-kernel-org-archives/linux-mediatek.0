@@ -4,74 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E1BCCD11DD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Mar 2024 12:34:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4FD3CD11DD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Mar 2024 12:35:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pwS1ON/JJah49cVCqcFkCazDcULif+FnoEQQ3ZD7xPM=; b=ljP784PbR91lXBwwwEcpx1K+WA
-	9KKuZEgdn162E929nzlY+4NNAHu2OajwNMcw16futQmJ0RXpZYFQuuI7tIwOpzmzWl9twgV5rFDF4
-	SoMJ41JWvv2tRceYjo26f9CVkKqeM9Acw5e8lFRah8MbBddEAtTfcdX8bI1dr3fKRcClLlsfdPeoX
-	uV6SdNJx1qxC5BaL5fusRR9esjnC7HQsiF72gGotMsgrrdH7jcmqwFYStakOUWwAraRh3JVg0yRv0
-	lJGhlkaFQHP37SVf8KmJPMlAfvf7TvjCsFhQGkxSKOuv9Xo7FKMKdzgdVkd6sOI2l2Y8dinCLiO9x
-	2lsyP1Og==;
+	bh=yWT+G9FFAF2rey9UvB7e6ddHPLFLiWLFCfOJDuJbV1M=; b=IQASoS0Xh+9CGlc78y34RUY1wp
+	iP2eIDhqxuLNBjGf5QChmBtkfUaXTBPI3Mh1znyFxgIJHUcG1e/0hP2yjj73ifqO5nEhw5rk8ln5Q
+	CkotJRCcBqkRnL4Q2Ln8EahKvaJXCqBFCQrU5B65x4Pw0kf/7WRRjc/X2ghka8NsFa7p0ZsYTzlWZ
+	yYup19IWDge/gIFCaVI16+Oi6yoazYHcdtwlrBtUOTFEbc9Tt6uHihd4cNRCUvUTMTAm5CLWFB8gz
+	hnYZ2xuvnxOq5sfwssStsebsoLcufDL3k8wQLZ6aGHz2JEOhulxYBto8xveplPd8LEaxqSpI7gmP4
+	+4efIJCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBQm-00000000NWB-34Nx;
-	Fri, 29 Mar 2024 12:34:00 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rqBRq-00000000OAr-08ks;
+	Fri, 29 Mar 2024 12:35:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBPL-00000000Mym-1dWI;
-	Fri, 29 Mar 2024 12:32:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=pwS1ON/JJah49cVCqcFkCazDcULif+FnoEQQ3ZD7xPM=; b=LgFLwwEULx4+1at69I4D+mORw4
-	l9Cp8DClKDiE0RdvbFjrCjSEhzgHwdrIvtRUxh9UmnJMaNDdblyOn0vVjYb07JbZKmaWtDF2rfOcS
-	toMP/N/HoE8giZELtWKqWsWDpfMN+J4YtykuPqO0sA9fH8mDy+vs/OJwa5sBO3tYoUo8DaSxUTMDz
-	eM3pJ6NDlq/KHMFtPBCxmuvdYDd75WRrUrBP2T5klifgTsh5QsseYSagUyQGTtMKzF5G3TrAImFN9
-	t4xWQfLkEWtcrrl788a9MaVOMqodhrwn56kWqn2DPiiMpcrdvuNmhHJs8wb29KeKSk6BaXE60/QTC
-	YOVMRNCg==;
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBPH-00000001YPe-1jCt;
-	Fri, 29 Mar 2024 12:32:30 +0000
+	id 1rqBQJ-00000000NIr-1BSQ;
+	Fri, 29 Mar 2024 12:33:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 2FBCECE2F86;
-	Fri, 29 Mar 2024 12:32:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08A9FC433A6;
-	Fri, 29 Mar 2024 12:32:21 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id AB37D6190D;
+	Fri, 29 Mar 2024 12:33:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 24F0EC43394;
+	Fri, 29 Mar 2024 12:33:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711715543;
-	bh=Kx+1H+QtnuCB8ciX29fyhB79zT4Lxwy5pONlNfKxAiY=;
+	s=k20201202; t=1711715586;
+	bh=4fg65O1FuQRomrbX9eU2W2hmBoGbIhKA8D1UBF0ceD0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=FjfCZSp+LMd4F7YfUcmRR8Xgk7/3nx6T7UYhN8/sav9hg8U7QVdz+PSCKwNlwM4dt
-	 xja3t+2tEdO6GYwZKFRcSIUkF91LnZx3fbw3f4UyKgwFjbku9jewGeA9R2jWdxhO7z
-	 vuHXdJJwg56DY0bEdx/LhcanXzz1ijXpYVCLBLmDACb8tj9N6Z8Sdsj23h0S50beot
-	 6bb0BfcztITz20RBTsdR0cKjrovjV03v1/kVsWJ9vpvmS3ZR4Hm4m5l4ivgEQeo9NK
-	 zxrFaBXRyXazof29MLUN1IjiBUBe92ac6AfSPOVSXy1RbJn3kej+syPrQpDMj0UNgi
-	 7shQYN51LGBRw==
+	b=h/7M6ic8J4G8Wn5MQv9wX/AJ1f6lulUs9VqLFM1Tff4O1JlpobKdKqTexAnDW2gvS
+	 kcLWst3RcU/M9lSNG8stPct6YujoS7GHjJr48i25SRPLrD4p1T9vVHGVh1OcBpHIkb
+	 1dzp2mcvxkFWyBV+9+a8Cb1sIB14WAoKwZYDNtjiIJ5hmHuoYKyeRXIfVEG3JlkAcn
+	 kaTt1jaU7CjD44lBnbkyCeZAw0ujimJDn0Um+L+JnbWtI3y77hI/x8APCv26C90wtp
+	 adP6XvID3eqkdCoXP59nbRrZoTjY9eaHs5GXBNkd9ePrkzlq41n8nXA86vWLxoHv4K
+	 pg8ZFe/kplnyQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: C Cheng <C.Cheng@mediatek.com>,
-	Bo Ye <bo.ye@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Rafael J . Wysocki" <rafael.j.wysocki@intel.com>,
+Cc: Takashi Iwai <tiwai@suse.de>,
+	Paul Menzel <pmenzel@molgen.mpg.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Luiz Augusto von Dentz <luiz.von.dentz@intel.com>,
 	Sasha Levin <sashal@kernel.org>,
-	rafael@kernel.org,
-	daniel.lezcano@linaro.org,
-	matthias.bgg@gmail.com,
-	linux-pm@vger.kernel.org,
+	marcel@holtmann.org,
+	luiz.dentz@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-bluetooth@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 09/31] cpuidle: Avoid potential overflow in integer multiplication
-Date: Fri, 29 Mar 2024 08:31:28 -0400
-Message-ID: <20240329123207.3085013-9-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 31/31] Bluetooth: btmtk: Add MODULE_FIRMWARE() for MT7922
+Date: Fri, 29 Mar 2024 08:31:50 -0400
+Message-ID: <20240329123207.3085013-31-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240329123207.3085013-1-sashal@kernel.org>
 References: <20240329123207.3085013-1-sashal@kernel.org>
@@ -81,8 +67,9 @@ X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.1.83
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_123228_621683_32B5EB02 
-X-CRM114-Status: GOOD (  13.61  )
+X-CRM114-CacheID: sfid-20240329_053332_283950_473D31E6 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,55 +84,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: C Cheng <C.Cheng@mediatek.com>
+From: Takashi Iwai <tiwai@suse.de>
 
-[ Upstream commit 88390dd788db485912ee7f9a8d3d56fc5265d52f ]
+[ Upstream commit 3e465a07cdf444140f16bc57025c23fcafdde997 ]
 
-In detail:
+Since dracut refers to the module info for defining the required
+firmware files and btmtk driver doesn't provide the firmware info for
+MT7922, the generate initrd misses the firmware, resulting in the
+broken Bluetooth.
 
-In C language, when you perform a multiplication operation, if
-both operands are of int type, the multiplication operation is
-performed on the int type, and then the result is converted to
-the target type. This means that if the product of int type
-multiplication exceeds the range that int type can represent,
-an overflow will occur even if you store the result in a
-variable of int64_t type.
+This patch simply adds the MODULE_FIRMWARE() for the missing entry
+for covering that.
 
-For a multiplication of two int values, it is better to use
-mul_u32_u32() rather than s->exit_latency_ns = s->exit_latency *
-NSEC_PER_USEC to avoid potential overflow happenning.
-
-Signed-off-by: C Cheng <C.Cheng@mediatek.com>
-Signed-off-by: Bo Ye <bo.ye@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-[ rjw: New subject ]
-Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+Link: https://bugzilla.suse.com/show_bug.cgi?id=1214133
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Luiz Augusto von Dentz <luiz.von.dentz@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/cpuidle/driver.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/bluetooth/btmtk.c | 1 +
+ drivers/bluetooth/btmtk.h | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/drivers/cpuidle/driver.c b/drivers/cpuidle/driver.c
-index f70aa17e2a8e0..c594e28adddf3 100644
---- a/drivers/cpuidle/driver.c
-+++ b/drivers/cpuidle/driver.c
-@@ -16,6 +16,7 @@
- #include <linux/cpumask.h>
- #include <linux/tick.h>
- #include <linux/cpu.h>
-+#include <linux/math64.h>
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 809762d64fc65..b77e337778a44 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -288,4 +288,5 @@ MODULE_LICENSE("GPL");
+ MODULE_FIRMWARE(FIRMWARE_MT7622);
+ MODULE_FIRMWARE(FIRMWARE_MT7663);
+ MODULE_FIRMWARE(FIRMWARE_MT7668);
++MODULE_FIRMWARE(FIRMWARE_MT7922);
+ MODULE_FIRMWARE(FIRMWARE_MT7961);
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index 2a88ea8e475e8..ee0b1d27aa5c0 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -4,6 +4,7 @@
+ #define FIRMWARE_MT7622		"mediatek/mt7622pr2h.bin"
+ #define FIRMWARE_MT7663		"mediatek/mt7663pr2h.bin"
+ #define FIRMWARE_MT7668		"mediatek/mt7668pr2h.bin"
++#define FIRMWARE_MT7922		"mediatek/BT_RAM_CODE_MT7922_1_1_hdr.bin"
+ #define FIRMWARE_MT7961		"mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin"
  
- #include "cpuidle.h"
- 
-@@ -185,7 +186,7 @@ static void __cpuidle_driver_init(struct cpuidle_driver *drv)
- 			s->target_residency_ns = 0;
- 
- 		if (s->exit_latency > 0)
--			s->exit_latency_ns = s->exit_latency * NSEC_PER_USEC;
-+			s->exit_latency_ns = mul_u32_u32(s->exit_latency, NSEC_PER_USEC);
- 		else if (s->exit_latency_ns < 0)
- 			s->exit_latency_ns =  0;
- 	}
+ #define HCI_EV_WMT 0xe4
 -- 
 2.43.0
 
