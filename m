@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D90ECD11DD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Mar 2024 12:28:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FB48C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Mar 2024 12:29:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mkzFSdmyYqskLIZ0S9WWjOt47OQph/TAQ/I4qb81N88=; b=GMoUqnyO2wzHNu6sIRkyRrRSKg
-	U1Z98EmvsYuSBBrtHJE2xyCFz0e0kiq0XcoPcedcR5jvJNYrVJMHPKhNIwYOBjeqpbCL2QqbHAI3A
-	XaxuhV9ucqe9Zyc/zEhziq/tm6vNJlLLENv7cqU1/pJadWC/12a+poZfVO8cDmBNZ7T/QSmZryqW8
-	b3yqTfRGQ/XS7Z/qMHCoQ+ill6oKpEx+XGCCveJj61gMMdSvAADfRjbRJ8VZn16fFDvCRL18L6Zy+
-	mnPsSFMI05DFGNOCtv9TkwvnTDQuzONonPvkxkhTNDqtSTJPcErPTi2Cv3PZl/oLdYHhqah8ymUon
-	XBhpSQJg==;
+	bh=1mUGieBf81NHgDHLFFszeOE1W9DwmuOKqKWfCEXch2E=; b=kdudzQ7bqmajwpkYDRUurSNV57
+	8u4WllmAwUhbjj1CNjIcO205KwqRSfaEUGC515hFPzcdFPtlCyg5ycGSyIQoaQJpyoW85JnbgNIWy
+	kqJi85gdya7iyDyYeW/bTN8R0bbITl+XP67vVEJ7AndLUYuZ98FeMg432aJRcFQdRKtulyY2G7YDh
+	pl0AHLe9IcnP8WT5z1cPfqnfEiXtA3ZOc4Vy159L5pPlN6NDBqwcZbR6vztz0RELAhRkLyVkQUlte
+	CbYg8aopL9Z7CeRcPUkh6EPm3v0C+6HMikwnBMg8s7qU01mqqM7whX8WxAtOCDR6Jn50ugKdoZjAt
+	bCNO2Fgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBLi-00000000LFc-3g6E;
-	Fri, 29 Mar 2024 12:28:46 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rqBM2-00000000LPS-3tUp;
+	Fri, 29 Mar 2024 12:29:06 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBLJ-00000000Kug-16Pv;
-	Fri, 29 Mar 2024 12:28:24 +0000
+	id 1rqBLN-00000000KxC-3WBd;
+	Fri, 29 Mar 2024 12:28:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 8280BCE2F8C;
-	Fri, 29 Mar 2024 12:28:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F707C43390;
-	Fri, 29 Mar 2024 12:28:17 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id BC364CE2F84;
+	Fri, 29 Mar 2024 12:28:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9E7C2C43609;
+	Fri, 29 Mar 2024 12:28:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711715299;
-	bh=fldpuLXo2p6gttLzplunPpMyuUgrKzCch/ucIDryDqo=;
+	s=k20201202; t=1711715302;
+	bh=jynmpQ+qq4mMAdefWa+kWyANDOVCxQSgDNakmtIj/GI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OTjrGJ/dcu3D0iSh92g0sYMOw2N6DzYovI6TYp3kV6eTatI9mtwHawTghUrlBCN7p
-	 dEKhhKCNGuOV5qragIHi0jzsZT2wMCduw6NIB+4PU/YV5XIyL7j0feJNe+b0tzhqW+
-	 5BGr5aANMa297RKeoR4SR9qRFuKrhpmyjRE3Hhpqcy2f7DRXcm8tPZ0S7qdofNL+VB
-	 KcQ7Etm44P4Koiz+KmX7YviAzKoPWb+OTY9nZuUtTeg5zw6VNglfhy5UmbxAQnIV4p
-	 rqpeB+hC2+qTr4ZOk2cqFSkK9cwDWJq2g0HbRfc/f2QoHEDIL3dgm7yIB+kXvB6Zd7
-	 BnYyLsh5CxfJQ==
+	b=X5snKhEEcT/WGxEkE01izFAsMrheMdWO9htbyEXeUf9yJm0G1TEC/HnHebTTmGvCv
+	 R0+8O4mwhHxT1PYjEnVz9TicMkJWsLI9NLFXV+XGs5EWxGOtkG4VYuQyRLkWfv6E0f
+	 08xqZFIFpGG/ooFECK3Dn2+dc3cU4LLoq4R7werOGc4C48puyZjhJ+Ur5dsAK+dUeQ
+	 jJiyMLSJI9LSfWmcfLHjy1phdCzGRHj57rtyAhX9iHe7S7l+WbrbbD3EI0iwmhgsdY
+	 s6CGoAEdL+D/fcAQKZLqY5qORekiMaLwoGZaQ8dsIR+5vO9SgWritvRScV5uLKQUyS
+	 5TYXgc1lvkXSw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Shayne Chen <shayne.chen@mediatek.com>,
-	Peter Chiu <chui-hao.chiu@mediatek.com>,
+Cc: Peter Chiu <chui-hao.chiu@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
 	Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
 	lorenzo@kernel.org,
@@ -53,16 +53,15 @@ Cc: Shayne Chen <shayne.chen@mediatek.com>,
 	kvalo@kernel.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	sujuan.chen@mediatek.com,
-	leitao@debian.org,
-	lynxis@fe80.eu,
-	meichia.chiu@mediatek.com,
+	yi-chia.hsieh@mediatek.com,
+	Bo.Jiao@mediatek.com,
+	benjamin-jw.lin@mediatek.com,
 	linux-wireless@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.8 42/68] wifi: mt76: mt7915: add locking for accessing mapped registers
-Date: Fri, 29 Mar 2024 08:25:38 -0400
-Message-ID: <20240329122652.3082296-42-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.8 43/68] wifi: mt76: mt7996: disable AMSDU for non-data frames
+Date: Fri, 29 Mar 2024 08:25:39 -0400
+Message-ID: <20240329122652.3082296-43-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240329122652.3082296-1-sashal@kernel.org>
 References: <20240329122652.3082296-1-sashal@kernel.org>
@@ -72,8 +71,9 @@ X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.8.2
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_052822_163936_920325B7 
-X-CRM114-Status: GOOD (  13.98  )
+X-CRM114-CacheID: sfid-20240329_052826_351797_3C63AB2B 
+X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,125 +88,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Shayne Chen <shayne.chen@mediatek.com>
+From: Peter Chiu <chui-hao.chiu@mediatek.com>
 
-[ Upstream commit 0937f95ab07af6e663ae932d592f630d9eb591da ]
+[ Upstream commit 5d5edc09197cd8c705b42a73cdf8ba03db53c033 ]
 
-Sicne the mapping is global, mapped register access needs to be protected
-against concurrent access, otherwise a race condition might cause the reads
-or writes to go towards the wrong register
+Disable AMSDU for non-data frames to prevent TX token leak issues.
 
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- .../net/wireless/mediatek/mt76/mt7915/mmio.c  | 45 ++++++++++++++++---
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  1 +
- 2 files changed, 41 insertions(+), 5 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-index 3039f53e22454..dceb505987b19 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-@@ -490,6 +490,11 @@ static u32 __mt7915_reg_addr(struct mt7915_dev *dev, u32 addr)
- 		return dev->reg.map[i].maps + ofs;
- 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index 53258488d49f3..b5b8b163f94df 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -732,6 +732,9 @@ mt7996_mac_write_txwi_8023(struct mt7996_dev *dev, __le32 *txwi,
+ 	      FIELD_PREP(MT_TXD2_SUB_TYPE, fc_stype);
  
-+	return 0;
-+}
+ 	txwi[2] |= cpu_to_le32(val);
 +
-+static u32 __mt7915_reg_remap_addr(struct mt7915_dev *dev, u32 addr)
-+{
- 	if ((addr >= MT_INFRA_BASE && addr < MT_WFSYS0_PHY_START) ||
- 	    (addr >= MT_WFSYS0_PHY_START && addr < MT_WFSYS1_PHY_START) ||
- 	    (addr >= MT_WFSYS1_PHY_START && addr <= MT_WFSYS1_PHY_END))
-@@ -514,15 +519,30 @@ void mt7915_memcpy_fromio(struct mt7915_dev *dev, void *buf, u32 offset,
- {
- 	u32 addr = __mt7915_reg_addr(dev, offset);
- 
--	memcpy_fromio(buf, dev->mt76.mmio.regs + addr, len);
-+	if (addr) {
-+		memcpy_fromio(buf, dev->mt76.mmio.regs + addr, len);
-+		return;
-+	}
-+
-+	spin_lock_bh(&dev->reg_lock);
-+	memcpy_fromio(buf, dev->mt76.mmio.regs +
-+			   __mt7915_reg_remap_addr(dev, offset), len);
-+	spin_unlock_bh(&dev->reg_lock);
++	if (wcid->amsdu)
++		txwi[3] |= cpu_to_le32(MT_TXD3_HW_AMSDU);
  }
  
- static u32 mt7915_rr(struct mt76_dev *mdev, u32 offset)
- {
- 	struct mt7915_dev *dev = container_of(mdev, struct mt7915_dev, mt76);
--	u32 addr = __mt7915_reg_addr(dev, offset);
-+	u32 addr = __mt7915_reg_addr(dev, offset), val;
+ static void
+@@ -862,8 +865,6 @@ void mt7996_mac_write_txwi(struct mt7996_dev *dev, __le32 *txwi,
+ 		val |= MT_TXD3_PROTECT_FRAME;
+ 	if (info->flags & IEEE80211_TX_CTL_NO_ACK)
+ 		val |= MT_TXD3_NO_ACK;
+-	if (wcid->amsdu)
+-		val |= MT_TXD3_HW_AMSDU;
  
--	return dev->bus_ops->rr(mdev, addr);
-+	if (addr)
-+		return dev->bus_ops->rr(mdev, addr);
-+
-+	spin_lock_bh(&dev->reg_lock);
-+	val = dev->bus_ops->rr(mdev, __mt7915_reg_remap_addr(dev, offset));
-+	spin_unlock_bh(&dev->reg_lock);
-+
-+	return val;
- }
- 
- static void mt7915_wr(struct mt76_dev *mdev, u32 offset, u32 val)
-@@ -530,7 +550,14 @@ static void mt7915_wr(struct mt76_dev *mdev, u32 offset, u32 val)
- 	struct mt7915_dev *dev = container_of(mdev, struct mt7915_dev, mt76);
- 	u32 addr = __mt7915_reg_addr(dev, offset);
- 
--	dev->bus_ops->wr(mdev, addr, val);
-+	if (addr) {
-+		dev->bus_ops->wr(mdev, addr, val);
-+		return;
-+	}
-+
-+	spin_lock_bh(&dev->reg_lock);
-+	dev->bus_ops->wr(mdev, __mt7915_reg_remap_addr(dev, offset), val);
-+	spin_unlock_bh(&dev->reg_lock);
- }
- 
- static u32 mt7915_rmw(struct mt76_dev *mdev, u32 offset, u32 mask, u32 val)
-@@ -538,7 +565,14 @@ static u32 mt7915_rmw(struct mt76_dev *mdev, u32 offset, u32 mask, u32 val)
- 	struct mt7915_dev *dev = container_of(mdev, struct mt7915_dev, mt76);
- 	u32 addr = __mt7915_reg_addr(dev, offset);
- 
--	return dev->bus_ops->rmw(mdev, addr, mask, val);
-+	if (addr)
-+		return dev->bus_ops->rmw(mdev, addr, mask, val);
-+
-+	spin_lock_bh(&dev->reg_lock);
-+	val = dev->bus_ops->rmw(mdev, __mt7915_reg_remap_addr(dev, offset), mask, val);
-+	spin_unlock_bh(&dev->reg_lock);
-+
-+	return val;
- }
- 
- #ifdef CONFIG_NET_MEDIATEK_SOC_WED
-@@ -707,6 +741,7 @@ static int mt7915_mmio_init(struct mt76_dev *mdev,
- 
- 	dev = container_of(mdev, struct mt7915_dev, mt76);
- 	mt76_mmio_init(&dev->mt76, mem_base);
-+	spin_lock_init(&dev->reg_lock);
- 
- 	switch (device_id) {
- 	case 0x7915:
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 4727d9c7b11de..6e79bc65f5a51 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -287,6 +287,7 @@ struct mt7915_dev {
- 
- 	struct list_head sta_rc_list;
- 	struct list_head twt_list;
-+	spinlock_t reg_lock;
- 
- 	u32 hw_pattern;
- 
+ 	txwi[3] = cpu_to_le32(val);
+ 	txwi[4] = 0;
 -- 
 2.43.0
 
