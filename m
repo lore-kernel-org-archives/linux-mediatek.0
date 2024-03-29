@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4CC1C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Mar 2024 16:39:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B018C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Mar 2024 16:39:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QX+pj3ylEWCAp85oOvAghe4Anwxmp2zsGxUDux6EioU=; b=npLmUfiMtIp0Rr6/rFski4LhJP
-	+dP2+OHwkUUnnWZmiuLoD7cuCDPiD6RvqGAYiVjol21xBZUiflExfYOVIi5dZLrPefOAN5w4ZXRCO
-	hHwL3P06SBWLH+BUVJzKb66DMGVfUuLTr1362yV0jrIof5Yua9CL1lfM1uaC8m+zLr2JFDpNR4R9K
-	zon6Ww/+hrTaw+tZIwIM+VBKv4zdBp6T8E4FADhEx7R165H1h7g2E5U1mLHOHuaXMS4nbTRAQUY81
-	XkqbFZtmv6TI5l1KE0BRpjooReW2OBYgS6mqFjRFePsXORT6tppJzspLjyyU5HQHR0byy2b8xxdl7
-	kpU8hynA==;
+	bh=7kBMjssFuU7qb+lDgAID28McqHpYdJdKjSiHXIC3Jco=; b=aCWYH9fyOFoAHO2npraRts1R7C
+	wupLAY8htwR7s9cpHWYFgKNLQ946LV+XG/P/zUOINOpSEBNAdeLg+SlbLpytSqnCbY+yjGD56VFAE
+	VA6fFSGT0bXKY/zQC5QkanSEzopHSP39kqN7XzJWmWGHxIt7Cd8xoCGnFgSBPsXalA57lC7pwl8JO
+	rsU31AiCQ2y0l6TTJYqrdcfJDzNwoHcDxT5S7+IC8zvDfOvyrBL4DZBuXv/+HQdPo3PENNnRwigAm
+	VbtRvbtyM4W9eYEVrdMIzQaPXMIIM/PdzlfsbyjuzHb1NJw3QoMSPjRG9kHonGQ8Q/IXclFEd0bmm
+	DCc5Zn+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqFG1-00000001LEX-3VvL;
-	Fri, 29 Mar 2024 16:39:09 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rqFGc-00000001LUJ-1Aio;
+	Fri, 29 Mar 2024 16:39:46 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqFFx-00000001LBv-3sYe;
-	Fri, 29 Mar 2024 16:39:07 +0000
+	id 1rqFGX-00000001LRW-0EBd;
+	Fri, 29 Mar 2024 16:39:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9D74B61977;
-	Fri, 29 Mar 2024 16:39:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 717E8C433C7;
-	Fri, 29 Mar 2024 16:39:02 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 385F9CE301C;
+	Fri, 29 Mar 2024 16:39:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4D9DC433C7;
+	Fri, 29 Mar 2024 16:39:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711730343;
-	bh=mu709RK6RdUvGezRsei4fEVVFDMPGmRnjx++n5sjyL0=;
+	s=k20201202; t=1711730378;
+	bh=bg+h7PlnfTedz1YBjzApxZkMOAnsBGDd8/EzMTXhZfQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=uEituwgn1xxAMuURhdwt3/iaLtwEGCu1+Mclwo9+Ty7wLbaMiWmyQU0rOPlf9vJzM
-	 o13NJKluh2NnMuLRvgLiGrQVrebzv3a2gzICu48+3LXXhQ45oB4NluNbhd7SB44a70
-	 M0Wt2X6l0SJT7LJi3C8GA4V9BEhry7YR3ma4wI/3OylDT4TAEwBE8hLV/q3auS8o5H
-	 9muF3kTL6rkQ20Iba0mAQK6pIs92yEx6N2CKY/CrPm5aLVKXPn+H3gbBFziiX6OMqC
-	 zpP4PltZewjblpXJOZBFZ8cpmv8jSqFoiAAks6EZfkeP36KAWbWprPmsY2/9TNUion
-	 NxXBlJGeFB7CQ==
-Date: Fri, 29 Mar 2024 22:08:58 +0530
+	b=uW7qxP8y8ACgUR891lLqNXK4nRCSSexkXmk3NVlX/43RdUbJKhMUBo+3F7ImHHCLd
+	 EgMy3VnFONlXXBX8N/84xV65QgEoe3byfIcVSoYOnvkYvas222h0lZkI0ts/7GK5dK
+	 RXDBa+pCTcdJsCx5bNqP+0NeWpjfPDjTw0LzbJBD2TGFbdPiUtd9S2xCHSf/YkWg3h
+	 LkeVRnbJmAa4tPbrg134PWkZdQ7HBQC4t3veXbL+goDjmVnDap5Tj4fOkvn8ClJwbk
+	 uuZW1rzs8wZhLpPlp2dMwsOxB3VXY8Xf/XxfLnuX/VdqMAE2Sw5BpezoMJa9uZRiGz
+	 dYTGMY6Ps7ZVQ==
+Date: Fri, 29 Mar 2024 22:09:34 +0530
 From: Vinod Koul <vkoul@kernel.org>
 To: Allen <allen.lkml@gmail.com>
 Cc: Arnd Bergmann <arnd@arndb.de>, Allen Pais <apais@linux.microsoft.com>,
@@ -85,8 +85,7 @@ Cc: Arnd Bergmann <arnd@arndb.de>, Allen Pais <apais@linux.microsoft.com>,
 	"jh80.chung" <jh80.chung@samsung.com>, oakad@yahoo.com,
 	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
 	Masami Hiramatsu <mhiramat@kernel.org>, brucechang@via.com.tw,
-	HaraldWelte@viatech.com, pierre@ossman.eu,
-	Duncan Sands <duncan.sands@free.fr>,
+	HaraldWelte@viatech.com, pierre@ossman.eu, duncan.sands@free.fr,
 	Alan Stern <stern@rowland.harvard.edu>,
 	Oliver Neukum <oneukum@suse.com>,
 	openipmi-developer@lists.sourceforge.net, dmaengine@vger.kernel.org,
@@ -104,22 +103,20 @@ Cc: Arnd Bergmann <arnd@arndb.de>, Allen Pais <apais@linux.microsoft.com>,
 	linux-s390@vger.kernel.org, Netdev <netdev@vger.kernel.org>,
 	linux-usb@vger.kernel.org
 Subject: Re: [PATCH 2/9] dma: Convert from tasklet to BH workqueue
-Message-ID: <ZgbuotY4IX4iHm9U@matsya>
+Message-ID: <ZgbuxmxncU0-0jhA@matsya>
 References: <20240327160314.9982-1-apais@linux.microsoft.com>
  <20240327160314.9982-3-apais@linux.microsoft.com>
  <ZgUGXTKPVhrA1tam@matsya>
  <2e9257af-c123-406b-a189-eaebeecc1d71@app.fastmail.com>
  <ZgW3j1qkLA-QU4iM@matsya>
  <CAOMdWSKY9D75FM3bswUfXn2o7bGtrei3G5kLt6JdcdOPDXaG8g@mail.gmail.com>
- <678ba20b-9f1d-41cb-8a25-e716b61ffafe@app.fastmail.com>
- <CAOMdWSKC4B8zn6N+=5DssB_BiR6JkHBEpJr0ohKb149eJvCKMQ@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAOMdWSKC4B8zn6N+=5DssB_BiR6JkHBEpJr0ohKb149eJvCKMQ@mail.gmail.com>
+In-Reply-To: <CAOMdWSKY9D75FM3bswUfXn2o7bGtrei3G5kLt6JdcdOPDXaG8g@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_093906_108160_7FEE8F2F 
-X-CRM114-Status: GOOD (  23.33  )
+X-CRM114-CacheID: sfid-20240329_093941_441276_7915D740 
+X-CRM114-Status: GOOD (  15.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,37 +131,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28-03-24, 13:01, Allen wrote:
-> > >> > Since almost every driver associates the tasklet with the
-> > >> > dma_chan, we could go one step further and add the
-> > >> > work_queue structure directly into struct dma_chan,
-> > >> > with the wrapper operating on the dma_chan rather than
-> > >> > the work_queue.
-> > >>
-> > >> I think that is very great idea. having this wrapped in dma_chan would
-> > >> be very good way as well
-> > >>
-> > >> Am not sure if Allen is up for it :-)
-> > >
-> > >  Thanks Arnd, I know we did speak about this at LPC. I did start
-> > > working on using completion. I dropped it as I thought it would
-> > > be easier to move to workqueues.
-> >
-> > It's definitely easier to do the workqueue conversion as a first
-> > step, and I agree adding support for the completion right away is
-> > probably too much. Moving the work_struct into the dma_chan
-> > is probably not too hard though, if you leave your current
-> > approach for the cases where the tasklet is part of the
-> > dma_dev rather than the dma_chan.
-> >
-> 
->  Alright, I will work on moving work_struck into the dma_chan and
-> leave the dma_dev as is (using bh workqueues) and post a RFC.
-> Once reviewed, I could move to the next step.
+On 28-03-24, 12:39, Allen wrote:
 
-That might be better from a performance pov but the current design is a
-global tasklet and not a per chan one... We would need to carefully
-review and test this for sure
+> > I think that is very great idea. having this wrapped in dma_chan would
+> > be very good way as well
+> >
+> > Am not sure if Allen is up for it :-)
+> 
+>  Thanks Arnd, I know we did speak about this at LPC. I did start
+> working on using completion. I dropped it as I thought it would
+> be easier to move to workqueues.
+> 
+> Vinod, I would like to give this a shot and put out a RFC, I would
+> really appreciate review and feedback.
+
+Sounds like a good plan to me
 
 -- 
 ~Vinod
