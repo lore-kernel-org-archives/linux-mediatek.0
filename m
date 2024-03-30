@@ -4,88 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A31D8CD1290
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Mar 2024 20:43:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3986CD1288
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Mar 2024 20:43:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s2SriLcn9TJO3LgQJx20T2AIgEEtOSgbbLiOwdTXH8A=; b=NWvI2nyLlerfbr2jcvwRjxOlWs
-	kJP4eLZmBvcxHOOTpUvzn8xK+opSlpAq7hlp8yhbonRHoDNYsblVrnM7EnRsupOwRYKh4uLHaOAuu
-	SCBNoP8f5UDReQzs0dygTEFFL3222BFdpNa2pjjFW7Dzij2tYbVYhaAuhYz30JeL1gzhmEVwZMtQg
-	erTx4J/CYaO2Maop+jVbM3x7f3AVMt8amhkBIe58qDPDBXDidewW3trBUfCCVkIf1YGNUkZ/BkRwc
-	Uz8L4508oATuU9RqcdVGh6RMtEIvCrEDJgjJMethMLUIntFOguSc5qvhImZWs1CpkoaV0+wEnMrX6
-	uTtSgczg==;
+	bh=QWJmDtW45HEJ3u7PqTsUPbyNK5NNAsCg2Vc2E8WL+CM=; b=dP6YuNWkdRjSiJdOS/Em0pyhQG
+	tYtcyCRUhg4sUf4tqxuGgx9ncZyDAL75LjSmUrXDpRXSAFrWfzxyudw4fhyqWE/TdSarPt1KBgPKJ
+	ytlWcNX1/C8ZRacDVOgyOsqAP9iu7FJG2BnviuOzWDoezZ22AAUNniaTHX5dUKaTQ+LgQ73Zw+qO0
+	PKlD6sUFWJDauGTuH7xJYUnb4em4MclV97cIEdR//QWbmus2NllojY0+qnWDpwn9cQG8LlQyV/myI
+	2gWXf5aa9/yw8nFEoUCEBUiZtXg05FGGm6pU3teMvgYeYsgWpEfoN0410afBaIRpYeTEl3C02jXT+
+	h+RLdEYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqfYS-00000004C6C-0kYh;
-	Sat, 30 Mar 2024 20:43:56 +0000
+	id 1rqfYT-00000004C7k-27TO;
+	Sat, 30 Mar 2024 20:43:57 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqfYC-00000004BsG-2t4R
+	id 1rqfYD-00000004Bsq-3G0D
 	for linux-mediatek@bombadil.infradead.org;
-	Sat, 30 Mar 2024 20:43:40 +0000
+	Sat, 30 Mar 2024 20:43:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=s2SriLcn9TJO3LgQJx20T2AIgEEtOSgbbLiOwdTXH8A=; b=OKc0L8t2AB/6lc0EG1LSZZgjTS
-	f1Fk6TbApZTlJojMuXE62csTzwf9g9nac8FeAPhStFI33XvwgOCcEMGahhj/QJRQ84S1Y6mBPQYWs
-	oZN5VI0jEBI+5b/ykfD5RZvFMzujaoUdyGmIZ8KBv/Bcspml8kW1CW1qA0VDoBS3KyQUra6C+kC87
-	mtHJy5w0miFgQJnEkWTqSyUrJ72qsHgZ92wLqJYhnhVNQ/jJ24MG/xUh4Y7Sey+ppv8AERYHZzUIF
-	i/TNI+/ca7A3TsMVFp9ZoX48MzVceK6cznbirl84k46nFoChlmusYz6shXxbIpz7p1QMoOHLsfmPd
-	eKANOU1g==;
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	bh=QWJmDtW45HEJ3u7PqTsUPbyNK5NNAsCg2Vc2E8WL+CM=; b=Qyxee1ILbaFXctGLlLleKXy2iT
+	PF2m3jUu2m9i0zxh+XAxRv3/OVtt4FOrK/2QLl01JWi7oxwYv83IvNE3diFw1l8zc9XfMRBNUKydf
+	xxgGi0aI+k1LJ+nI4hXsf5v9X21O/dmPGJf9MQYfEgElT0HiwvgsI32wqSNP5mBiAGN4/6qjTmYbb
+	4doscjbS0dTyLn3/RqYuwbJZCXqeLvJW8UiN6YcNw5hVjPxaREL47tiHpgFJ47YQu4HMT8jw3P30r
+	PZCtCB1NmccVCtGTwr+CG7vk3Y5Sl/5FfUiew3hA6tBkCeZL+3v09PSCOvnll+qwMNDmTycVxW6fT
+	KVBW6cLA==;
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqfY7-00000002EHD-2RLh
+	id 1rqfYA-00000002EHp-0nnI
 	for linux-mediatek@lists.infradead.org;
-	Sat, 30 Mar 2024 20:43:39 +0000
-Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-33ecb04e018so2223656f8f.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 30 Mar 2024 13:43:35 -0700 (PDT)
+	Sat, 30 Mar 2024 20:43:40 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-3416a975840so2330547f8f.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 30 Mar 2024 13:43:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711831414; x=1712436214; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1711831416; x=1712436216; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=s2SriLcn9TJO3LgQJx20T2AIgEEtOSgbbLiOwdTXH8A=;
-        b=UNNZov7tjxxLpPO7IroakvskgJt1LvtETNBSNP5fX+l/f4i2yqp7FFE+575/ydgeZA
-         AiI5lWZMAldK3eZ9X/dAVBe2MwSXRs8ygLCN4CXOtvS/ugN/8CSl6YFssWzXweinV9W1
-         IUvqAjtRtiqwi/ngwcQUXQG7gbLReReLzO/SWy8nFg+zMCtPJ9+vzTtzIcATZGqXFOVD
-         5Qgn9F0bBLe4KZiVjHx+lFJ2aRypW2AJlc3XswJCeE1y/y+bjXN9yuSF2WGo2FeU+8U0
-         OWZLFuq+wOgEMTnCcK3OaPIxob45/G4b3qpmH+vzZgqbPOguL5B8KUcPxuM5AAH/1aHq
-         poIA==
+        bh=QWJmDtW45HEJ3u7PqTsUPbyNK5NNAsCg2Vc2E8WL+CM=;
+        b=smGOoHmH3qfo3poTE9J3sd4hVMpIIhNcIY9ZHddVbEqSW2BhaPeg/KDfvsO8mtEAtU
+         CeuBrAxOJsobYQnksV+lXlfT93/GCTJEkucFBuD9/eqwWyc7t4Ewrnd3+qcGnOv09pYs
+         Y/o+4Nk82TxfZmhFLHNLKeYR3ry8gx2dHzyqHUJv7woTDYiIkfeQ3uUYHJXcrVzy9Gkj
+         moLCiHpV5Q1ZwO44jeo/Z7HjXDeVnBjgzx5q3j9K7mAQ0ymrGQITQ92yJYx6A9stvq2h
+         BJduNpKQNLH2GUNgawOPQe9qfDLHmPsKZcAZ/544M1Bv3uLWynlP5y207uWcQOOVXmFB
+         dxpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711831414; x=1712436214;
+        d=1e100.net; s=20230601; t=1711831416; x=1712436216;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=s2SriLcn9TJO3LgQJx20T2AIgEEtOSgbbLiOwdTXH8A=;
-        b=IPabEr8Zr3CwVmPDDbPM/KwXDYLO7ktLe2a1EUkJF4vept8jku71Sl1PjtH8xy9y+7
-         6YmU1cbBPnE5vMYRBwoS/FHuqovWm7IOjEiVc7AE1JD6/R7BmfCTrbcTNx/7B6vaomh4
-         CgnqhH8OXULgs6LdwnsQs6eDTMmdLMkmcO8cxTSWDpQbFOwV3z6XsJ/xW7VS6lGIUEe0
-         doelBhXZQG3rmxbzpcQgK5NsRO5JYyrMqtiieVytBxQyNTMGMd/endh0vQpKHI9eRJLU
-         A3Zmov+aaN5GjKOdIkPjbvxer+VE27NPAoSFD5efcAXPBqvU48LX3ugiSbU+VJIvYtAY
-         ktAw==
-X-Forwarded-Encrypted: i=1; AJvYcCWEPwoZc5Pfo7DEaBb2KECmvSvT41W4+LxrjdhPN2Y35MjZMiT9csrKB30TJCAuZ8H7uHTBTEqt0PZrbSyYSiEtm1ZVmaQxad1clM00V3BlEIeD
-X-Gm-Message-State: AOJu0YyC09p2SAiie4RKiwwNsqrmvm/vfvfT4Zqz7pK7JIBR2M0gGfay
-	Br9qrqHYG3FmKmQLHaxh7IYQS+1mm90Qh94OrHA9jq/NgBxnJ+bYPrNyTn0SRe0=
-X-Google-Smtp-Source: AGHT+IFvLt93H7dQNeEDZguMmmS4FNRGep53208CGmKxPVfo+bNUGLha89NjiS6FAQW3YrbqOBbHaw==
-X-Received: by 2002:a5d:6188:0:b0:341:9a78:c008 with SMTP id j8-20020a5d6188000000b003419a78c008mr4014410wru.49.1711831413830;
-        Sat, 30 Mar 2024 13:43:33 -0700 (PDT)
+        bh=QWJmDtW45HEJ3u7PqTsUPbyNK5NNAsCg2Vc2E8WL+CM=;
+        b=XDGXwuiyTLcLmxrZdx0YhA8dyZ8fRSRvhE5fODjqLt/IVMZjYfNUdtU2itU84rmpST
+         6bXfmid3u0XxwtAemRaXF8CkZEyn0X91T5Erun5CZL45AeWYP2R5y8jAyZyTuN/xLsaO
+         UoOUlkfyb3+5JeAePNVKjaJapKG6mQ/ccLisGqskOVUYhvZOEuifv6DDZSRkKwnglLQk
+         YUMqsNP4MIOFx6cCFxnIYW1ZVG5sG2PkQpv5r7V8hHljE7v/+NLGkltXSqkflqt4ph3z
+         NSJDPQQ1lPYFnD/kLKAxqn+h2RlNBtUpexinC9mLJ+ojyKWsP4ZN3LHI92+QqOmbrYSe
+         tWvA==
+X-Forwarded-Encrypted: i=1; AJvYcCXiWmor5UjHUhZPTvFmsCB3zJgTNruCSUy+8jCAfgJGRkoG5/87DTfZef0E1oBK2A72rBIScwq/8FfF1XEYiBuEZ5NFFS76ZQmYKX/gogX4dh46
+X-Gm-Message-State: AOJu0Yzfk+pUK2PtJum2+Knaw0nN/e1nzYlent6UW8+qjT0bxfi/aNkq
+	Tt+DcAsTj2wAkVpwwlAs+OdoUouEM9zl0borOwAkRfRVRHi7fksVdqiDPE3HPJ4=
+X-Google-Smtp-Source: AGHT+IG+hFfASnhq0/mKQq/p18W4G3oaCfPiHAHV8QkPFTQ+2T8akxT/w8IqahTgANQV4BXyYuOElQ==
+X-Received: by 2002:a5d:5f8e:0:b0:33b:87fb:7106 with SMTP id dr14-20020a5d5f8e000000b0033b87fb7106mr4541576wrb.55.1711831416697;
+        Sat, 30 Mar 2024 13:43:36 -0700 (PDT)
 Received: from [127.0.1.1] ([178.197.223.16])
-        by smtp.gmail.com with ESMTPSA id o12-20020a5d4a8c000000b0033e7b05edf3sm7231299wrq.44.2024.03.30.13.43.32
+        by smtp.gmail.com with ESMTPSA id o12-20020a5d4a8c000000b0033e7b05edf3sm7231299wrq.44.2024.03.30.13.43.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 30 Mar 2024 13:43:33 -0700 (PDT)
+        Sat, 30 Mar 2024 13:43:36 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Sat, 30 Mar 2024 21:43:15 +0100
-Subject: [PATCH 04/11] drm/mediatek: gamma: drop driver owner
- initialization
+Date: Sat, 30 Mar 2024 21:43:17 +0100
+Subject: [PATCH 06/11] drm/mediatek: ovl: drop driver owner initialization
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240330-b4-module-owner-drm-mediatek-v1-4-fd5c4b8d633e@linaro.org>
+Message-Id: <20240330-b4-module-owner-drm-mediatek-v1-6-fd5c4b8d633e@linaro.org>
 References: <20240330-b4-module-owner-drm-mediatek-v1-0-fd5c4b8d633e@linaro.org>
 In-Reply-To: <20240330-b4-module-owner-drm-mediatek-v1-0-fd5c4b8d633e@linaro.org>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -96,26 +95,26 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=857;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=839;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=fEKPyt5MKP0ErlDj1eUkq/Xkd/ayVcNlQIh45H48Y8g=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmCHlngBYZ9rPEtMEx31DNrPcnol9e/jXK/FMCZ
- lDKDZ5jf7mJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZgh5ZwAKCRDBN2bmhouD
- 17gKD/9p5cCATU5vVXAAZCgUsG7dmcij8oCywqqHS3x1Qq0cqPf7gr0Zd/kpFMF1DdMssMO0dYX
- XK7W92I8IUSdDg22IuZWSH8ktqIHU1QzMdorcsI3oiZjH+6qojx5ap/zSkLg10eMaPFhuoCmQBP
- ds8yx6F1mVZKXmONhr5F1u+1P085CKvcOP02uc66hD0CFKL6yXENg87oZBt/dOVdcCBH0fKv7Hz
- InfN+dHnfxDrJYpHtgdeMgmJWcwcACXLkwTGy7TlO9mk5B+kuXdRWKOV9S37FnmU59Lp1Cro/bB
- mb/P6G+cwMdrwhTWf/lZ49Xpz36va0+Ddsc9/g4c1pwgmJtxg6jPyYTR9Oo4uf8MJ5QB1NEBZiX
- Rk2wDpM/nOzZ07aA+EF12Ij3jc+gcE4XWeq2kKkaDWIRZSAxB3hy9lVhSvMlQtAAcXa0KIX7GY7
- n0GxR5pdUlG9W59F7jKWb6epcbyTJFJ0eIORf2OC+UTxQtHmKBFcotReUBCMrKthgTkoymYiJIQ
- hG2DXYW9URO39vmMcIq/VK+wXSLn2i+5qYKEu3KCzSGG6vxU516hb3SLLe7JIQA2/4oAuKCSxmN
- 0yIc8n+hOk313lvKKpKcYIVRR7aWzFLKid9WLShyO785eU/AlKBTQE9ptt2jQlK8vKJ+2kmpolU
- HQb4rLJV/rv9dIg==
+ bh=v30/7g6LlGP3tVcCZHt2tO6SJcJFhbx0VZHT/xHvl3g=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmCHlpH/nOsD9iDkauUFajwnyggNRWK7nl4QHHO
+ o9wKXLw0N+JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZgh5aQAKCRDBN2bmhouD
+ 10pyD/4gXiChI6eF/nqOH/ByxwmwE0S1I82agd65uR4+66SlR5/x8yjVJbZMPxbRVdKFW34oGWu
+ 7zQx78eDNJUdj46hPevBL9YyxLU0DDJBKIO3lGnBvA6qTdFSnZDgFll0udt/PYkxrspnFtHi4cF
+ /a+Qzmbqq1EJ2+/28ISHGz1d4XAnQiSAgiz+4QKGonnvawsC4aU2349Sfy8Qz4tfCrceFDzGTCd
+ BEOYpQIoFflOxMVHckm30bU2OYWEqgM/juyXtBSUu4pFXpTRUwg6Op3yVf5bP1Mdq5CWliPQ5EZ
+ FdxhOs04zmesoB8zUgwCWtvsXPTHhpwUi83dPXcn7W9CQjFGoEvENiBIh4e6n3sdixZn918En+p
+ ZM4YAh7nTJWmSY65NhgmyoQYR4J6F2asn8OAGcg5fsbbXr4nU5MiicXLdd52A7k4VQYOrtj7zH9
+ 6VuAr2NoToeiNKO7Hp66WYuTNrF8OwgAO5YheqWsZiNqcNXIfPwbNx/1AXFyOKz2LoKqDMMzfC5
+ ujOy7SKcKH4vpeUd4362htI7DjffLSta+CzOpI8wPOneKTkqJONlmJUA6/nzgugyXzaEAkB+/nu
+ Tolz6MHQRTuT5FaBr2Ehg55v/aDb6Nqtmn4G7QFoUgO3KimXRvOQ64eZfqFY6adVlfAcMBDSAyy
+ W5TouLFV3wQn9Yw==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240330_204336_428090_74285C9A 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20240330_204338_550915_30E3AB15 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,19 +135,19 @@ main driver calling platform_driver_register().
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 1 -
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-index c1bc8b00d938..572f0716a0f1 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-@@ -334,7 +334,6 @@ struct platform_driver mtk_disp_gamma_driver = {
- 	.remove_new	= mtk_disp_gamma_remove,
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index 2bffe4245466..c754dcab716c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -659,7 +659,6 @@ struct platform_driver mtk_disp_ovl_driver = {
+ 	.remove_new	= mtk_disp_ovl_remove,
  	.driver		= {
- 		.name	= "mediatek-disp-gamma",
+ 		.name	= "mediatek-disp-ovl",
 -		.owner	= THIS_MODULE,
- 		.of_match_table = mtk_disp_gamma_driver_dt_match,
+ 		.of_match_table = mtk_disp_ovl_driver_dt_match,
  	},
  };
 
