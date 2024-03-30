@@ -4,82 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 266D2C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Mar 2024 21:10:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9178CD1288
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Mar 2024 21:49:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=61v4scjVgIk2ToFnkXS2oeqx/czO/u3CzUzarujt/iQ=; b=UdRekTcfvm1CQHmDhqwSiVz0OT
-	AOxkcvaIbdgFKWdpjn90IS88+CcfanLXl77AHGiG/j5CShPe4TCGtk4MHe5LrdQYD2DBMnqQZJ07j
-	YlA4f3BeJSMqVJvrPEH2Ln0pnCpv4/ob9fBVlAeJUuk6jG6ZuOuCoRqt5LSp1gmRUQQXq7XqkApOM
-	XtAd3C8k4EcGqB0LfBGq0LQKoQ6HKjuQXcOownCOc1ag+y3jJMKRQyVipnTaWtH5KV91D4FapB/2s
-	iFjmUFkhi4dsucndV+yG1a4ZKvgzHwZRZ5X9Yf0ApFE0UByUcVzMUHIYHdQYXT1Td8kawG1a8MP16
-	a2tKfnqA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Lytz4NRlGMjIcJpm2jggdQDN6y6/sjFypog/Jp0bB6c=; b=TM00+qMFseuervWg1tXjPbmBy7
+	iVMwfbJ+rMBuYnmfcC91zRHYvu6XSy8mqMSbhO1d+ChM3FPB/6RfLwrlVcKrCMmzsATo4tMc0OeH7
+	q/YbA4mkUuBhBofzqNIt+/icafiJ6p3Qy84wRL3pQ3t3fbsfd7J4+fbIKpb7QVosRinKh46GXEH2r
+	2+nM5w2pt7iOHkDuMuknRdgUraZugQam1mmKbrmEeLF3MfwWh4MbANGBj3vAPGDGe62qTrt9pS1PW
+	k7nLnxKBk8bIphvuXJ+PZgsF3qIEov+o5FWTFcHp+6xaV5s1FmVZ1TLw0AaC0Ch2Bcp8HmBD6hSNl
+	U9ZQ/oyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqfyN-00000004GI2-2fvP;
-	Sat, 30 Mar 2024 21:10:43 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1rqga3-00000004JqS-3Wp4;
+	Sat, 30 Mar 2024 21:49:40 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqfyL-00000004GGr-1nOS
+	id 1rqfYH-00000004Bve-33va
 	for linux-mediatek@lists.infradead.org;
-	Sat, 30 Mar 2024 21:10:42 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-415573263bfso5354525e9.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 30 Mar 2024 14:10:40 -0700 (PDT)
+	Sat, 30 Mar 2024 20:43:47 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-34100f4f9a2so2086854f8f.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 30 Mar 2024 13:43:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711833039; x=1712437839; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=61v4scjVgIk2ToFnkXS2oeqx/czO/u3CzUzarujt/iQ=;
-        b=Vmp0qob+2SrPiXTrgOGkUgmpJXciSmPjyfksgCI68NGQdIXV1gK7UeyzCk4/aIpddv
-         DlME6yDRtHK811epUafNNe2BV7NtGG5Muql2fhy0Qy3scIVSeRHT0SeM9uOgJxfa+Dt+
-         3haq8i4TGAmowpyzUtmualcRiobYAzbAHWgTn937H63Ubtblty320zqOUTqEmQ4T32Ku
-         qPTigbxaKZH8BYznq7LJC28kjpH7IJHSwYFz/ZV981SfV3YrYW0yKGKCWTM/+yHn7dAA
-         TQx6uAPT6XbTdhAR3ZXy+1dDcJjvdh5nkfMm4nrrT0fGaQfgWAVsUzjXphj646wqo3J2
-         U1xQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711833039; x=1712437839;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=linaro.org; s=google; t=1711831424; x=1712436224; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=61v4scjVgIk2ToFnkXS2oeqx/czO/u3CzUzarujt/iQ=;
-        b=nFPR6YxVPn1gb5iaoFULFwHNI74FcmenJUNVoq90lPAuNpkYL7FeLrdQX+8FZege9R
-         o5LgLx7r6YB0KkpHN4cUHHj1vnqv/mku0OoXWPV+jC7hvb/sqkFlpAateNluNWd7+yAK
-         9ReacCDvIxkX+7N7EVhOHSOSDVz34bB4QqwJ0J4tmRK599Yq54bWheAi4ZLfd0RFY5Ps
-         ItgoWyoEjgcOBl07VUwlXhY6vCNr2agvq/xzvV23O11ekiwzdfUT0HBczI13ek0SLnBg
-         IT/FRNARMB8mm7Gi/lorhRxnQVDnYF5X6zzScj/eabgOeZ4F7hyc72nakiulG9114WjK
-         rsxA==
-X-Forwarded-Encrypted: i=1; AJvYcCXk1rmFxTcD/L67nBrBx0PrJO2tZ4XcgEwSQQFZkRKD+JfVd8pAap5aba5/HmpOtXeXmsVtdYcGptG8nSIikSE1Od8r9SHXdZEuMmOUmRvgf25j
-X-Gm-Message-State: AOJu0YxIK0ijbybVQVDLGUsUndw+HKiPF4RWNlQltktE0y/+cUlvQSGN
-	b3pgYUu+8jm59NFdEnJHM6//WQKbYqpgYMHT8nuhu4l7lay5Oyqxuzk6Vf4GEj8=
-X-Google-Smtp-Source: AGHT+IGvC5puYahyLfoRxaBZa5kEc2+uWb+/xISXFXurHNo+cizr9pJb/P/tTe/zgahZkVnF1kYg5g==
-X-Received: by 2002:a05:600c:4e8b:b0:414:f60:5d6a with SMTP id f11-20020a05600c4e8b00b004140f605d6amr4142782wmq.0.1711833039552;
-        Sat, 30 Mar 2024 14:10:39 -0700 (PDT)
-Received: from krzk-bin.. ([178.197.223.16])
-        by smtp.gmail.com with ESMTPSA id ay8-20020a05600c1e0800b0041559c59ee3sm2758210wmb.12.2024.03.30.14.10.38
+        bh=Lytz4NRlGMjIcJpm2jggdQDN6y6/sjFypog/Jp0bB6c=;
+        b=yGOGOALtmpqALiYEdX6KFYntQSM6DXopF1B9SuPcKqjEXI33KsQvz9y8yJQuMPn0Yx
+         nOAi5GZfRN4oycF0vCws0iQa9CDpanrD16zDTYyO0k9yfexc4pdTGDq5+HQdQ+MmXLeY
+         bWVisUTLfxyU3vY9ulzlqthsitflIQRx65A35lmwp5zkWCcF3v3c0Dz1IEIPLjsF3PPH
+         4DHyH6SXau31DB2Fo9TC8DtQrAMw6br994g/aVtuHi+h6p7m1Eyuv59vI2UWVCpevIi1
+         NQpE/czXuxtK5EBImV9sdvm+4eXgoU2mGzq76uAg6RH1Vo2wbsupKiJrNGT9LSU84iyv
+         BfDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1711831424; x=1712436224;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Lytz4NRlGMjIcJpm2jggdQDN6y6/sjFypog/Jp0bB6c=;
+        b=CJvMq4Elk6x0URDIYsum+pbMnAP1MzlbISBfPiRpgNNykULZqez1+E6eF2t/dMcPNk
+         rsry2/wkrl6XOYSh04vsyyYlwu0hcxHk5abxbrY3u0tRiVejQcb03jgx9xuddOSunx2K
+         TdIyKQBdGveDsJm0+/owKRyc6ajGzqTR5j5w21YRuKaGUvO1mlyAjjUTePnQUU+XR3He
+         3sFGXA5PNJ00CjdpkP6m58E8x+CQZGVV6Dn0tKYalxqeOIRqf5ipybVjcs4qLoxamP1k
+         pPt8MaGoHlMqoSECtU9bKLyiAUo69zZwKovq24p0Dc9yksgDrDCnr+Z6LfNtm7lnzbYN
+         cqBQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWou4N7mpxGzSUrhLkUnaydCjrEIOvZjJNAhpbshu7B5OA76c//a0et0TaxEa06PzsXh3WleApjT5FdMMGcPKYc3MiOCJBnsDygKGT/kq/UVCiA
+X-Gm-Message-State: AOJu0YzPhiEn8qrf+FVfW5ygExUXNbBQQWWXHFAKElb6jENKD6bRjEZm
+	+JveTTkX/F4FWXrBLHah9XuR1Xvc8+JFvmdkrrnWIpTZMdYg0iJ2e+mWzWuSXRU=
+X-Google-Smtp-Source: AGHT+IEmC+12zHWKXQrDYIZtxl1tMQr6URkl8P5NKb7hNbBHYUVheUANTikJ3X+pXT1ODg2Gi3mwIw==
+X-Received: by 2002:a5d:4524:0:b0:33e:d15c:3575 with SMTP id j4-20020a5d4524000000b0033ed15c3575mr3374244wra.33.1711831424325;
+        Sat, 30 Mar 2024 13:43:44 -0700 (PDT)
+Received: from [127.0.1.1] ([178.197.223.16])
+        by smtp.gmail.com with ESMTPSA id o12-20020a5d4a8c000000b0033e7b05edf3sm7231299wrq.44.2024.03.30.13.43.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 30 Mar 2024 14:10:39 -0700 (PDT)
+        Sat, 30 Mar 2024 13:43:43 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Ulf Hansson <ulf.hansson@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH] pmdomain: mediatek: scpsys: drop driver owner assignment
-Date: Sat, 30 Mar 2024 22:10:36 +0100
-Message-Id: <20240330211036.100956-1-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
+Date: Sat, 30 Mar 2024 21:43:22 +0100
+Subject: [PATCH 11/11] drm/mediatek: padding: drop driver owner
+ initialization
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240330-b4-module-owner-drm-mediatek-v1-11-fd5c4b8d633e@linaro.org>
+References: <20240330-b4-module-owner-drm-mediatek-v1-0-fd5c4b8d633e@linaro.org>
+In-Reply-To: <20240330-b4-module-owner-drm-mediatek-v1-0-fd5c4b8d633e@linaro.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=832;
+ i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
+ bh=YcU01k3+utKezOFHPg08Yx3HafMCGt2Hy8rvn4zmr1c=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmCHlt2ZfAYGdPMVaud2WYnO/P2J6dEJEhY9cF/
+ xWcTAT5AUiJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZgh5bQAKCRDBN2bmhouD
+ 185oEACByr63OyistUrAchRSUDePvLKUvea1pTj+6E4Q7EDGWgMV96qccpsRcfic1ckPDR8OUdl
+ PAiUiqY3YBNXzQkXqwCJ/qCvhYOZwcfGmRuPXZxbQi3fKgESPqBLfjiJQ1ljMwhVZBu3Xqj6gJ7
+ Yy/KKaAroXr2oxP3trIO1SZ5EMnZWFWFOWVHxR72WFZ/SCVyIg4OWl7pG+TGjNeCKBDeV4pFkR1
+ xcQX9POwxlD7JFfLDz4lTzaPcrjHiyLiknsb+hMxWl8b2+cHB1WzkGEGwyYStobHvwxJJEVkOEj
+ VX8lWB7SOcOy4S0l21nMtN8gFSgLu/q5/+nnaVHm+8XsTK+b5CYgV99B4wwCbl/2030p1xM+tBz
+ QQIwisBM8DB0R/RpZuG809+9pqMP/7o1XLQb1IHFoHrIXOzxhNio97ZhXeNq9Zf05fTryfz7uPO
+ aKxrsaC45FnvoOXNWAtfgLngEvqZYUkDA/Oo5WV31brU5NrYFx72Pviop4+SxbN0WoWHH8zvQCw
+ ml47OAu+Mtq7XkbRX1tkb16TeMLByt2/vzM6HaB9ZGz7PRDkNXoezeUTDZoA9j5Ai5YV6FQzFhS
+ FI8Z0DBbUYFcxKk9kGe34NLc20SdvfCCZBw5XFIMWKmNpHu+HSowyD5PWAMd1Xh56m38ZUGfThU
+ jHlv1s/GNzDIitA==
+X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
+ fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240330_141041_524933_62ABB9DF 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20240330_134345_909466_37B10E9B 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,25 +116,27 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Core in platform_driver_register() already sets the .owner, so driver
-does not need to.
+does not need to.  Whatever is set here will be anyway overwritten by
+main driver calling platform_driver_register().
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/pmdomain/mediatek/mtk-scpsys.c | 1 -
+ drivers/gpu/drm/mediatek/mtk_padding.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/drivers/pmdomain/mediatek/mtk-scpsys.c b/drivers/pmdomain/mediatek/mtk-scpsys.c
-index 59a7a8c261ed..1a80c1537a43 100644
---- a/drivers/pmdomain/mediatek/mtk-scpsys.c
-+++ b/drivers/pmdomain/mediatek/mtk-scpsys.c
-@@ -1138,7 +1138,6 @@ static struct platform_driver scpsys_drv = {
- 	.driver = {
- 		.name = "mtk-scpsys",
- 		.suppress_bind_attrs = true,
--		.owner = THIS_MODULE,
- 		.of_match_table = of_scpsys_match_tbl,
+diff --git a/drivers/gpu/drm/mediatek/mtk_padding.c b/drivers/gpu/drm/mediatek/mtk_padding.c
+index 0d6451c149b6..aed84af5b9ac 100644
+--- a/drivers/gpu/drm/mediatek/mtk_padding.c
++++ b/drivers/gpu/drm/mediatek/mtk_padding.c
+@@ -154,7 +154,6 @@ struct platform_driver mtk_padding_driver = {
+ 	.remove		= mtk_padding_remove,
+ 	.driver		= {
+ 		.name	= "mediatek-disp-padding",
+-		.owner	= THIS_MODULE,
+ 		.of_match_table = mtk_padding_driver_dt_match,
  	},
  };
+
 -- 
 2.34.1
 
