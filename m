@@ -4,76 +4,142 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F12ECD128D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Apr 2024 07:16:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A07E2CD1283
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Apr 2024 09:45:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1yXJvugeNffQ3YZZswETUEJm6TUNIIvEYxECEaQdHL8=; b=pBPDLVgxC9lAyFF6XST57XTh5s
-	L497io4dVhOGTs9YtDEDMdtTSvNwHVtR0BBjTF6TAENpNrA4PtMpXX3BqRPdLN2gJUAwuced70mnK
-	9S4R10Hklpma+NsCt36rm3BtGz7yHD7K1WJvIaxOTGfoGuOKeQXVtT6pKDgJdWK39wCAP9nxPcTmZ
-	Y7lR4iJIOwkFv2xhANBpK8xmRT0aTIqIaQfFimWFglb1jPDpwmKUw8w72GqGsPBTCMOmapf8Yu3T5
-	tmzuPi6pAuPdGNJ1ynEo44nsSmmCZZguJyFUJO7UTyuKVBXKS28bHrs4PltkioKyxmQUi90Wimv+C
-	ci6IBKBQ==;
+	bh=d+diNP0/3LUwNWUT5gbc+2tWQaGcrSkj9S8RpDkHp50=; b=yDo5c4pXo/yl1Fj5dFvfpW1FRM
+	meFEpEbnl3sIba2IgbxruUiLXLuzfVCag2pjdVotArAjxEzXAZVq0zKxrjQ76K2jGuGweZkO6b40K
+	Mxs7P+62l19QfZRAabTT80+zh+ZKrvLRt4ffY0j17CzilVk3+LXw6p1/5/PbsX73Ke0wxIpbnexQw
+	eCuOAFvvf+NFsx1jdSZveENpkz6lqlzACFXF1BvxeecVyVjgzPzGH5injz5ImtHssSgl9pClw1Xt/
+	bpJ+H293xoQ1BuPyk++dzQsothxq+VWWGrCC0gI3qUN5T20pnYWH1ZJ8Rfga2ZdPcmFrvhyRI6Zvw
+	JVY+r7kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrBuM-000000077w7-3u2z;
-	Mon, 01 Apr 2024 07:16:42 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rrEDx-00000007N32-1Boz;
+	Mon, 01 Apr 2024 09:45:05 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrAvn-000000071dX-0Dms;
-	Mon, 01 Apr 2024 06:14:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1711952045;
-	bh=8qJ3ciIUKXzXMXkGK0xRIsuO+xbVMIkMF57BNwi+b7w=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=UmQnnZvIRURZFOh1t9ztUQYqqAkkUnvyoENbOwxPitVhdVSeDvES9QDs+k8HBEHRm
-	 VyfW+8BQYx98LfJwHJxKD/VZwP08w+RNbEYIKeId2um/qBawDvWpGHrtArAmoYpfVb
-	 jwDrKySp+Iu7VbJli79F/rWj9+XIZkAxu5SN8vm6Gb96cmGMr+rZmLs8gxFzte8LNf
-	 KNhqnNfRVCCg82JfKmVkZhvj/9nZ3PmCH++Oa8yGpkjP2z/r7XPxVZ+Z2vYynzsMRu
-	 jE1RCqpPXx4A7oMB9TYhAyylFCMw10RdJqBWT5zHdoA9oQWvcXnyL0G2OEGsJQiMpV
-	 mBiSmKBRKvAig==
-Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 01DAC37813B6;
-	Mon,  1 Apr 2024 06:14:01 +0000 (UTC)
-From: Vignesh Raman <vignesh.raman@collabora.com>
-To: dri-devel@lists.freedesktop.org
-Cc: daniels@collabora.com,
-	helen.koike@collabora.com,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	emma@anholt.net,
-	robdclark@gmail.com,
-	david.heidelberg@collabora.com,
-	guilherme.gallo@collabora.com,
-	sergi.blanch.torne@collabora.com,
-	hamohammed.sa@gmail.com,
-	rodrigosiqueiramelo@gmail.com,
-	melissa.srw@gmail.com,
-	mairacanal@riseup.net,
-	mcanal@igalia.com,
-	linux-mediatek@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v5 09/10] drm/ci: rockchip: Add job to test panfrost GPU driver
-Date: Mon,  1 Apr 2024 11:42:34 +0530
-Message-Id: <20240401061235.192713-10-vignesh.raman@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20240401061235.192713-1-vignesh.raman@collabora.com>
-References: <20240401061235.192713-1-vignesh.raman@collabora.com>
+	id 1rrEDq-00000007N0y-1xJB
+	for linux-mediatek@lists.infradead.org;
+	Mon, 01 Apr 2024 09:45:01 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a4644bde1d4so501039466b.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 01 Apr 2024 02:44:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1711964695; x=1712569495; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=d+diNP0/3LUwNWUT5gbc+2tWQaGcrSkj9S8RpDkHp50=;
+        b=gjeHSAw4ICZZAHIxk0p3CsLX7deOqhlfE7iCSiIVZ1RC9WPFRSDUci+K/vDuxfF0Mt
+         J8AQyrgzX1iOnN17GsEkj9TVNe9QH3T2Z2G/2VUDB0CkO9gf34Y+YIggDh007e6pvVS1
+         ZCYpUk225VInIak1l/2YQ26Jz3IA10VzLQj8SwDWFkIX97bhdjeSPhv3EO63LM4KTED2
+         jYgyI1L705BzgWn2enpTaBzMAfSkMVZ7k68GDZAPEauXOIs2w8OEeuYdgQ6ZJ8Xsx/iJ
+         8nRR8fGpnq4uOpEaVzVrIeb9ye1yET6UcrVctnVVia8EWhimAlvYXJktx/Q0GN8Xst2d
+         ojhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1711964695; x=1712569495;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=d+diNP0/3LUwNWUT5gbc+2tWQaGcrSkj9S8RpDkHp50=;
+        b=k3xrL8iaAC0jHniLPq3z8Yj6YYTe8v7xvVG3tXwfm2MilCx+iyENM0uWyrZVFmQ/gK
+         Y7YwZOJptlb4NQp/tifHY8Umy47SJtQdcORMgoHaYocmhI/hAMaWXBgj1a1HuqTVYZGH
+         sCkEnflTNQWRmekKmucfdIlVYg/WVSt9LZANvc45ih8IT3Ls/w4yvxvYFRmoxKIcji78
+         /9OAaueKd3mIjQwfQgIwiCKmlp8OVzClP32GRH9LgPm84e6Ufir+lo6RuYOPQvXbYG0d
+         VNThucXibwI2GzfyrxuIjUkMSfc5Tt90SpGp1vyczCwzesW0/Tl//Z75BryLrpdHYsD8
+         A1rw==
+X-Forwarded-Encrypted: i=1; AJvYcCUthXPw9+E0PNOI3SzlgOGizSfYwCM///sj2m0rfxQ+5fApoUbaXCbEwgViHHH2dFY0jS0NKPCJJf+t8iVm5BefLlQ70GIHQbaHdLgK+Ca+J9FB
+X-Gm-Message-State: AOJu0YxZ+teqdGhy8GP8LMcmJA/nxYHNBmwFebQb95l8PfslKlXHsgaH
+	pGAVLb7NCifsZoIFTH4U1JWW3boBf7lLHBI9aOu4EkCoVtXpnhSUbzqbG8sMtoI=
+X-Google-Smtp-Source: AGHT+IHyAxC2Nha5nCXqGrQwGsjBWpEQ/9fhdptsCohMGEbhWFkiXJ6u69AXTVBFM4Ztj6ZVAZZT/A==
+X-Received: by 2002:a17:907:7248:b0:a4e:4350:3b3a with SMTP id ds8-20020a170907724800b00a4e43503b3amr5048203ejc.60.1711964695236;
+        Mon, 01 Apr 2024 02:44:55 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.223.16])
+        by smtp.gmail.com with ESMTPSA id ef14-20020a17090697ce00b00a4e44f724e8sm3060972ejb.186.2024.04.01.02.44.53
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 01 Apr 2024 02:44:54 -0700 (PDT)
+Message-ID: <efae80b6-a0c2-4db4-b42e-83fb61eb74b4@linaro.org>
+Date: Mon, 1 Apr 2024 11:44:52 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/7] mmc: sdio: store owner from modules with
+ sdio_register_driver()
+To: Francesco Dolcini <francesco@dolcini.it>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>,
+ Marcel Holtmann <marcel@holtmann.org>,
+ Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Kalle Valo <kvalo@kernel.org>, Jeff Johnson <jjohnson@kernel.org>,
+ Arend van Spriel <arend.vanspriel@broadcom.com>,
+ Brian Norris <briannorris@chromium.org>,
+ =?UTF-8?B?SsOpcsO0bWUgUG91aWxsZXI=?= <jerome.pouiller@silabs.com>,
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org,
+ ath10k@lists.infradead.org, brcm80211@lists.linux.dev,
+ brcm80211-dev-list.pdl@broadcom.com
+References: <20240329-module-owner-sdio-v1-0-e4010b11ccaa@linaro.org>
+ <20240329-module-owner-sdio-v1-1-e4010b11ccaa@linaro.org>
+ <20240331203729.GC4116@francesco-nb>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20240331203729.GC4116@francesco-nb>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240331_231407_734072_CFC17284 
-X-CRM114-Status: GOOD (  15.44  )
+X-CRM114-CacheID: sfid-20240401_024458_740306_F68F57A9 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,109 +154,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For rockchip rk3288 and rk3399, the GPU driver is panfrost.
-So add support in drm-ci to test panfrost driver for rockchip
-SOC and update xfails. Skip KMS tests for panfrost driver
-since it is not a not a KMS driver and skip driver-specific tests.
+On 31/03/2024 22:37, Francesco Dolcini wrote:
+> Hello Krzysztof,
+> 
+> On Fri, Mar 29, 2024 at 06:24:31PM +0100, Krzysztof Kozlowski wrote:
+>> Modules registering driver with sdio_register_driver() might
+>> forget to set .owner field.  The field is used by some of other kernel
+>                              ^^ double space here
+> 
+>> parts for reference counting (try_module_get()), so it is expected that
+>> drivers will set it.
+>>
+>> Solve the problem by moving this task away from the drivers to the core
+>> code, just like we did for platform_driver in
+>> commit 9447057eaff8 ("platform_device: use a macro instead of
+>> platform_driver_register").
+>>
+>> Since many drivers forget to set the .owner, this effectively will fix
+>> them.  Examples of fixed drivers are: ath6kl, b43, btsdio.c, ks7010,
+>        ^^ and here
 
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
----
+Which is correct :). Double space is on purpose.
 
-v2:
-  - Add panfrost GPU jobs for rockchip SOC with new xfails.
+> 
+>> libertas, MediaTek WiFi drivers, Realtek WiFi drivers, rsi, siano,
+>> wilc1000, wl1251 and more.
+>>
+>> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> 
+> My nit comments are irrelevant, but given you did the same twice I felt
+> like letting you know.
+> 
+> Reviewed-by: Francesco Dolcini <francesco.dolcini@toradex.com>
+> 
 
-v3:
-  - Skip KMS tests for panfrost driver since it is not a not
-    a KMS driver and update xfails. Add the job name in GPU_VERSION
-    and use it for xfail file names instead of using DRIVER_NAME.
-
-v4:
-  - Remove the gpu suffix in job and rename xfails accordingly.
-
-v5:
-  - Skip driver-specific tests.
-
----
- drivers/gpu/drm/ci/test.yml                         | 10 ++++++++++
- drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt |  1 +
- drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt |  8 ++++++++
- drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt |  1 +
- drivers/gpu/drm/ci/xfails/panfrost-rk3399-skips.txt |  8 ++++++++
- 5 files changed, 28 insertions(+)
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-skips.txt
-
-diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index 96b299c32c07..8c90ae5a51e6 100644
---- a/drivers/gpu/drm/ci/test.yml
-+++ b/drivers/gpu/drm/ci/test.yml
-@@ -191,11 +191,21 @@ rockchip:rk3288:
-     - .rk3288
-     - .rockchip-display
- 
-+panfrost:rk3288:
-+  extends:
-+    - .rk3288
-+    - .panfrost-gpu
-+
- rockchip:rk3399:
-   extends:
-     - .rk3399
-     - .rockchip-display
- 
-+panfrost:rk3399:
-+  extends:
-+    - .rk3399
-+    - .panfrost-gpu
-+
- .i915:
-   extends:
-     - .lava-igt:x86_64
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt
-new file mode 100644
-index 000000000000..abd35a8ef6f4
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt
-@@ -0,0 +1 @@
-+panfrost_prime@gem-prime-import,Crash
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt
-new file mode 100644
-index 000000000000..41a846a59644
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt
-@@ -0,0 +1,8 @@
-+# Panfrost is not a KMS driver, so skip the KMS tests
-+kms_.*
-+
-+# Skip driver specific tests
-+msm_.*
-+^amdgpu.*
-+v3d_.*
-+vc4_.*
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt
-new file mode 100644
-index 000000000000..6f5e760d5ec0
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt
-@@ -0,0 +1 @@
-+panfrost_prime@gem-prime-import,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3399-skips.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-skips.txt
-new file mode 100644
-index 000000000000..41a846a59644
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-skips.txt
-@@ -0,0 +1,8 @@
-+# Panfrost is not a KMS driver, so skip the KMS tests
-+kms_.*
-+
-+# Skip driver specific tests
-+msm_.*
-+^amdgpu.*
-+v3d_.*
-+vc4_.*
--- 
-2.40.1
+Best regards,
+Krzysztof
 
 
