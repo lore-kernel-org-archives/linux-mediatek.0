@@ -4,79 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA462CD1288
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Apr 2024 14:18:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E9FECD1292
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Apr 2024 14:44:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A9qh02aSQqkFNf3LhjjoFs5rbnBuXyuGxGuocn0IWSE=; b=jxQNcMQibfMsBYYYkWVPkh+OOF
-	nzAMEFbSe9y142oBoE/ZxL2lf65unkrOGnS1YqobgKNfBzLNNhgpF+cVHPUytP4b1KspQEAdVFDMF
-	RoHJX8yWAqsWI3Xy2XSVmGTuoP+YeILmc77949ce+1zS/bGkQcB7E3DmdpqhICWs89dA3G0Swh5ST
-	wjUp02xZErZikY7VfoWLtbgs9ZT6MblgUuycY+CrwIQg5dgqif40PFHeWvNjT0OKXJSPrH817pvlq
-	IcZZGC7PUh1/dfHHah6e17rwj49yVakBmCs4KjGGxUDObhnl5f2F1ZchxOD4/HSoGuE4iSGs7RrXe
-	yxQCxQ3w==;
+	bh=2RvYbbHjPyiORsf1A18YXo9DewRsvfmOj39Pus78xSY=; b=TkXeQQZlNCA6RKbPazH/BThgBr
+	7WoDz6DR7+WROSXIBE51T88y14ryMxEZXBb1Xz417BLIU9bX5AO6Zu2akFw1mcog65FuUubTbNrJg
+	XouFBemC6E5lK/aKJWEH9MeoQlY4QaEcSmUaIDByrM/uHZQrqeUy6YKBXM/lhqoMBu/A0btClc6Fq
+	95N1nf7MGnuVvPH0oKoHo+WptIhyA7Kla5iGUcYH16dDO4iNnCbDBHFiPCsWv+FGW8uWioPbiypKW
+	wnDqNLpoX9CjH2e3o9TDHvpv4SHQP0KE/fpqFnki56WRp/Yxnlz1dp7T1ofVCSFUvgfBhhB7QNV7d
+	gK7wc+GQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrIUw-000000082Tv-2Wfx;
-	Mon, 01 Apr 2024 14:18:54 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rrItr-000000085RQ-3nL8;
+	Mon, 01 Apr 2024 14:44:39 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrIUs-000000082T1-3jq5;
-	Mon, 01 Apr 2024 14:18:52 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 6E3BFCE10EA;
-	Mon,  1 Apr 2024 14:18:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1278C43141;
-	Mon,  1 Apr 2024 14:18:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711981126;
-	bh=f2DoFurOynOG4quHV5d8r8M1WM9y77WeUcdSY3SBS8I=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=JgVrt27DJVAew0sATHO5VZ3AQgNkhHlKyDUwITVRIa6hzv0BdugeBJnUKSxhRilzU
-	 AEVQXYpKQjwj8kHhSw4XBUBuaBr5PVFGVJcWUIwctFvV1tsWZM1e4edB89/DWV6YBl
-	 MZfl49Lb/8GOVL8xBqjMmyNYK5Q17cKyXha98a2/19KT/spReHU3S2EGbPFsxO9C93
-	 H8igpDXIcN2S7h2NfXbdzzKTi3iunZjPnc4gdj0y6xphVlvOayvoSKKIApyiY0iQWe
-	 49YZHhJHLeAzWVBBTu7W+OXHIDtI6QL0CQnOmlUNXItkyQut6Gcl7r8wSc8UmUngcE
-	 Ng0sY2ek7i0tg==
-Received: by mail-lf1-f42.google.com with SMTP id 2adb3069b0e04-513d3746950so5011744e87.1;
-        Mon, 01 Apr 2024 07:18:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCWwBkuAJZyCZJwuO5815mfsjibdM6e123O/JBGLrSxq9LsT9jNNnKsKO6VTqIKB1bYqPFb3C0TUNo0IeAua5aW2y1hGUoDOo/ulI59/lrXsx4CeD4OJLOYzvb2yeNjYU7PvoM3kbVaGMlDYqySKzK9g2ogLsib+hIw=
-X-Gm-Message-State: AOJu0YyYOGmwHSQ11DG31hKzVJq/Nsds5q1aXrLMj5kA8j7XTgRgnGMa
-	TgV4P5G7/tqTlBHPojo9JjdmxF5F2ttQjdko3ZzDAe6iPhmxbY7vTyIm/kk8b9QLpiKRZtB2zk0
-	SPfmseeXSybtFUwa7yO+I30W+KA==
-X-Google-Smtp-Source: AGHT+IHdAlkLW/SrxLn81/xGOsOTs89tCt0NFENCGddgQeEUwEG7bKOE+D4m9RY1CD7sWB90CmVEJay42db8PHVpres=
-X-Received: by 2002:a2e:9d44:0:b0:2d6:9e7a:1524 with SMTP id
- y4-20020a2e9d44000000b002d69e7a1524mr5486251ljj.13.1711981125136; Mon, 01 Apr
- 2024 07:18:45 -0700 (PDT)
+	id 1rrIto-000000085Qz-1oJ7
+	for linux-mediatek@lists.infradead.org;
+	Mon, 01 Apr 2024 14:44:37 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4156e0cffdaso1586385e9.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 01 Apr 2024 07:44:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fireburn-co-uk.20230601.gappssmtp.com; s=20230601; t=1711982674; x=1712587474; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2RvYbbHjPyiORsf1A18YXo9DewRsvfmOj39Pus78xSY=;
+        b=iTW1XaeKt9KLPYNE///llTBFVB8dXR20PaIMPbPQuNRKXb4+SUl81VeXQqjFyTN+Tf
+         ZBc6kZySFJxnNExPXyYWBhHeL0RcE/kDSE9/lbV6b7cKmMBeFjF8asbo8Ouwz8YOf7YJ
+         GAYzxKqlcKwCg6fYORkeQmCdZIzVddNEx+dfHthF2gCeTYgb4SKVaF8XzPzuNrDwyga5
+         TzNA9yX+drlUMfCmjedhZ8yT/s9Pjw/bUKmlYy2zFbnrM1LqJj3qt5IsSh3qqQJ5hEih
+         3gUEgEF6+QXfDxjf2PQh7VyAI4o8Mso5AWVeFCdUFn1OfDa0ENQTkD8a6YfWpI94hOuG
+         G6BA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1711982674; x=1712587474;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=2RvYbbHjPyiORsf1A18YXo9DewRsvfmOj39Pus78xSY=;
+        b=OkNiGCdbqiV2p4mJf0AFV7YN1krDuIWmyruGfj6IwM/M6QgLxokIHY0dp4LruMqo0f
+         Exjdn/X2yAS4QooauEuUlSMVFTQAhwN8EQGAiuCQ4GDvibE/80RDNBespo6hg9EEH0mR
+         pIiX3DFSKbB1aJ+KTWREbjRhzcmzVIC0J/Rm3lWE4t5E0zx5ayk89wlSP5LevpFw+bbI
+         as6djSemX+PAuW8TpjZwz8+jdxs9uUDJrbB0t5tFMpF80olti24SOCzoj9iQHzD59FD6
+         PgMb8CAaxl9VFbgcgMycP/W2tH5yJ0i9LeHafbnGkqnQmXp/hnZtTpezS8r8rVaA8BcQ
+         UqcA==
+X-Forwarded-Encrypted: i=1; AJvYcCUk+aO2GX85+Ql6iDbNev4LXZUtWyR5+IfwoQa57MUCXJmkFd4CYAiendoeRfAiLRjPOI8P7fIGHqRnU1ftFP2crl3kHPLud9bIoAlmHZLWMG3J
+X-Gm-Message-State: AOJu0YyEXykKDPUlyO2ZEuFBpWQNVmmj5iKvJ2+KS53Gn3uKlZDryI7i
+	ZfEy5POL+1L+5iJK61Yz1l/7JSagf/af+r3x4CEDEY651WfFwM1SF8zWZ2YTl+3dn2gVdlb5ep3
+	o+VJs
+X-Google-Smtp-Source: AGHT+IHFwTeHa3eLF0iSWmR3ZRa9CNqiw+F/uWJvheTXNwpRf9+4QL+uhvTDDxHrRzI6a2UhU6K3YQ==
+X-Received: by 2002:a05:600c:35c1:b0:415:6b9a:326d with SMTP id r1-20020a05600c35c100b004156b9a326dmr1118098wmq.4.1711982673860;
+        Mon, 01 Apr 2024 07:44:33 -0700 (PDT)
+Received: from axion.fireburn.co.uk ([2a01:4b00:d309:1c00:cf6f:1e76:917a:6efb])
+        by smtp.gmail.com with ESMTPSA id bi11-20020a05600c3d8b00b004156c8d0530sm1258026wmb.13.2024.04.01.07.44.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 01 Apr 2024 07:44:33 -0700 (PDT)
+From: Mike Lothian <mike@fireburn.co.uk>
+To: peter.tsao@mediatek.com
+Cc: aaron.hou@mediatek.com,
+	chris.lu@mediatek.com,
+	deren.Wu@mediatek.com,
+	johan.hedberg@gmail.com,
+	linux-bluetooth@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	luiz.dentz@gmail.com,
+	marcel@holtmann.org,
+	sean.wang@mediatek.com,
+	steve.lee@mediatek.com
+Subject: Re: [PATCH] [PATCH] Bluetooth: btusb: Add support Mediatek MT7920
+Date: Mon,  1 Apr 2024 15:44:24 +0100
+Message-ID: <20240401144424.1714-1-mike@fireburn.co.uk>
+X-Mailer: git-send-email 2.44.0
+In-Reply-To: <20240304144844.2042-1-peter.tsao@mediatek.com>
+References: <20240304144844.2042-1-peter.tsao@mediatek.com>
 MIME-Version: 1.0
-References: <20240201125304.218467-1-angelogioacchino.delregno@collabora.com>
- <20240201125304.218467-3-angelogioacchino.delregno@collabora.com> <4b5d172c9b169313aaec777158e2db697fe447fc.camel@mediatek.com>
-In-Reply-To: <4b5d172c9b169313aaec777158e2db697fe447fc.camel@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 1 Apr 2024 22:18:37 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8K9Z0skA8aAXauUnoyLqqVEaukes=Mpz-EF19eF0XcYA@mail.gmail.com>
-Message-ID: <CAAOTY_8K9Z0skA8aAXauUnoyLqqVEaukes=Mpz-EF19eF0XcYA@mail.gmail.com>
-Subject: Re: [PATCH 2/3] drm/mediatek: Perform iounmap on simple DDP component destruction
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-Cc: "angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "wenst@chromium.org" <wenst@chromium.org>, 
-	"kernel@collabora.com" <kernel@collabora.com>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, 
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, 
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
-	=?UTF-8?B?TmF0aGFuIEx1ICjlkYLmnbHpnJYp?= <Nathan.Lu@mediatek.com>, 
-	"airlied@gmail.com" <airlied@gmail.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240401_071851_305513_6ADEE135 
-X-CRM114-Status: GOOD (  27.26  )
+X-CRM114-CacheID: sfid-20240401_074436_717659_38F9918A 
+X-CRM114-Status: UNSURE (   7.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,143 +103,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Angelo:
+Hi
 
-CK Hu (=E8=83=A1=E4=BF=8A=E5=85=89) <ck.hu@mediatek.com> =E6=96=BC 2024=E5=
-=B9=B43=E6=9C=8822=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8B=E5=8D=884:49=E5=AF=
-=AB=E9=81=93=EF=BC=9A
->
-> Hi, Angelo:
->
-> On Thu, 2024-02-01 at 13:53 +0100, AngeloGioacchino Del Regno wrote:
-> > Add a new mtk_ddp_comp_destroy() function and call it in the teardown
-> > path of mtk_drm_drv to make sure that we unmap the iospace of the
-> > simple DDP components.
-> >
-> > While at it, also fix iounmapping on mtk_ddp_comp_init() error path.
->
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
->
-> >
-> > Fixes: ff1395609e20 ("drm/mediatek: Move mtk_ddp_comp_init() from sub
-> > driver to DRM driver")
-> > Signed-off-by: AngeloGioacchino Del Regno <
-> > angelogioacchino.delregno@collabora.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 38
-> > ++++++++++++++++++++-
-> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  1 +
-> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  4 ++-
-> >  3 files changed, 41 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > index c13359eeb3cd..539b526a6b0a 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > @@ -626,8 +626,11 @@ int mtk_ddp_comp_init(struct device_node *node,
-> > struct mtk_ddp_comp *comp,
-> >
-> >       priv->regs =3D of_iomap(node, 0);
-> >       priv->clk =3D of_clk_get(node, 0);
-> > -     if (IS_ERR(priv->clk))
-> > +     if (IS_ERR(priv->clk)) {
-> > +             iounmap(priv->regs);
-> > +             priv->regs =3D NULL;
-> >               return PTR_ERR(priv->clk);
-> > +     }
-> >
-> >  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
-> >       ret =3D cmdq_dev_get_client_reg(comp->dev, &priv->cmdq_reg, 0);
-> > @@ -639,3 +642,36 @@ int mtk_ddp_comp_init(struct device_node *node,
-> > struct mtk_ddp_comp *comp,
-> >
-> >       return 0;
-> >  }
-> > +
-> > +void mtk_ddp_comp_destroy(struct mtk_ddp_comp *comp)
-> > +{
-> > +     struct mtk_ddp_comp_dev *priv;
-> > +
-> > +     if (!comp || !comp->dev)
-> > +             return;
-> > +
-> > +     /* Complex components are destroyed with their own remove
-> > callback */
-> > +     if (type =3D=3D MTK_DISP_AAL ||
+I think this patch is cauisng issues with older firmware
 
-Build error:
+Bus 003 Device 002: ID 13d3:3563 IMC Networks Wireless_Device
 
-../drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c: In function
-\u2018mtk_ddp_comp_destroy\u2019:
-../drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c:657:13: error:
-\u2018type\u2019 undeclared (first use in this function); did you mean
-\u2018_ctype\u2019?
-  657 |         if (type =3D=3D MTK_DISP_AAL ||
-      |             ^~~~
-      |             _ctype
-../drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c:657:13: note: each
-undeclared identifier is reported only once for each function it
-appears in
+[    0.315064] Bluetooth: Core ver 2.22
+[    0.315064] NET: Registered PF_BLUETOOTH protocol family
+[    0.315064] Bluetooth: HCI device and connection manager initialized
+[    0.315064] Bluetooth: HCI socket layer initialized
+[    0.315064] Bluetooth: L2CAP socket layer initialized
+[    0.315064] Bluetooth: SCO socket layer initialized
+[    4.670811] Bluetooth: RFCOMM TTY layer initialized
+[    4.671029] Bluetooth: RFCOMM socket layer initialized
+[    4.671790] Bluetooth: RFCOMM ver 1.11
+[    4.673416] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[    4.673659] Bluetooth: BNEP filters: protocol multicast
+[    4.673895] Bluetooth: BNEP socket layer initialized
+[    4.674125] Bluetooth: HIDP (Human Interface Emulation) ver 1.2
+[    4.674360] Bluetooth: HIDP socket layer initialized
+[    5.016365] bluetooth hci0: Direct firmware load for mediatek/BT_RAM_CODE_MT7961_1a_2_hdr.bin failed with error -2
+[    5.017163] Bluetooth: hci0: Failed to load firmware file (-2)
+[    5.017557] Bluetooth: hci0: Failed to set up firmware (-2)
+[    5.018129] Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
 
-Regards,
-Chun-Kuang.
+The correct name should be mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin
 
-> > +         type =3D=3D MTK_DISP_BLS ||
-> > +         type =3D=3D MTK_DISP_CCORR ||
-> > +         type =3D=3D MTK_DISP_COLOR ||
-> > +         type =3D=3D MTK_DISP_GAMMA ||
-> > +         type =3D=3D MTK_DISP_MERGE ||
-> > +         type =3D=3D MTK_DISP_OVL ||
-> > +         type =3D=3D MTK_DISP_OVL_2L ||
-> > +         type =3D=3D MTK_DISP_PWM ||
-> > +         type =3D=3D MTK_DISP_RDMA ||
-> > +         type =3D=3D MTK_DPI ||
-> > +         type =3D=3D MTK_DP_INTF ||
-> > +         type =3D=3D MTK_DSI)
-> > +             return;
-> > +
-> > +     priv =3D dev_get_drvdata(comp->dev);
-> > +     if (!priv)
-> > +             return;
-> > +
-> > +     if (priv->regs) {
-> > +             iounmap(priv->regs);
-> > +             priv->regs =3D NULL;
-> > +     }
-> > +}
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > index 15b2eafff438..43372b416a3f 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > @@ -318,6 +318,7 @@ unsigned int
-> > mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
-> >                                               struct device *dev);
-> >  int mtk_ddp_comp_init(struct device_node *comp_node, struct
-> > mtk_ddp_comp *comp,
-> >                     unsigned int comp_id);
-> > +void mtk_ddp_comp_destroy(struct mtk_ddp_comp *comp);
-> >  enum mtk_ddp_comp_type mtk_ddp_comp_get_type(unsigned int comp_id);
-> >  void mtk_ddp_write(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-> >                  struct cmdq_client_reg *cmdq_reg, void __iomem
-> > *regs,
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > index 14a1e0157cc4..89b6c31a1511 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > @@ -944,8 +944,10 @@ static void mtk_drm_remove(struct
-> > platform_device *pdev)
-> >       component_master_del(&pdev->dev, &mtk_drm_ops);
-> >       pm_runtime_disable(&pdev->dev);
-> >       of_node_put(private->mutex_node);
-> > -     for (i =3D 0; i < DDP_COMPONENT_DRM_ID_MAX; i++)
-> > +     for (i =3D 0; i < DDP_COMPONENT_DRM_ID_MAX; i++) {
-> > +             mtk_ddp_comp_destroy(&private->ddp_comp[i]);
-> >               of_node_put(private->comp_node[i]);
-> > +     }
-> >  }
-> >
-> >  static int mtk_drm_sys_prepare(struct device *dev)
+Reverting this patch fixes things
+
+Cheers
+
+Mike
 
