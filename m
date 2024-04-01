@@ -4,69 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49D84CD128A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Apr 2024 16:45:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38C4CCD1288
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Apr 2024 17:00:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9deoxj/0pSHDAisvALViOxvwVNJRhnNUaDbubhDog2M=; b=qincCFdIH4bQuEkYYpx6IrIJRc
-	pnG0djr8NgPx+aB1XwxFtyuQOrmfkmQlrkFqbXS1ZYZzsoE1rHLphOsI9/94odQb6sgCXjdnKl3q1
-	UgxTFsROxAun3SAjcLfyvJnbaJR/dyJ6mK6AfwjzIN47WOwe4HXJOlc3D2km7GSmPjay0y7nkwkOZ
-	GoKC0G5Hhvxj5IIjXUDoGXxzCTKTn41m8BTY2NZ+u2mOwCp2xuNktfN2ERoXJP8lohO01V7bFTuJa
-	9gsGiU/jYVcjQd/WuOFMecZd9tDmpynKQh3bnWQCE4fjrGu2bEGkU/a0hxY0UQLaPiUxX6KGnRWmO
-	fXVN5X0Q==;
+	bh=FmT/246q2v4RRcdH4pcSl1aosdjsTKWCAVsj0OC9Dks=; b=sB9TpNepLQ9oWvZON2v9cDdBcI
+	ID5VYXPrur2pIyUx0HYXgyyw+5tX5kjTAGjTU2u81edAz7Dwlfgm/SkdWC9R7dcyx5Wtm/Ery6rbz
+	Raf6KocqoTh3A4cRlfu3D7lnS8KX3aVmjhyEz+TCmdN6bkKgNsGa+z6e/J/0NsluCFx5sdBrPIdSd
+	3Ghinmu6oeLzu+KSn43fN7TRJfTFmZzrN2atzwrtzuN/zzhQf7BR9brpJpZcbkue51iaJWOYkI1Cr
+	NnqZoC0xunzpC2YOY0XnC1P8LBk4iS/Kb9cyFuGFGnGnsPq2Rl7UdP2rI2aYVI6HQ69/LnE4xcoLX
+	QW+tISvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrKmo-00000008N2x-47ZU;
-	Mon, 01 Apr 2024 16:45:30 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rrL1Z-00000008PKE-3ROt;
+	Mon, 01 Apr 2024 17:00:45 +0000
+Received: from fanzine2.igalia.com ([213.97.179.56])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrKmg-00000008N0Y-3BQ2;
-	Mon, 01 Apr 2024 16:45:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1711989921;
-	bh=heEWpXD2d4ioamqcjV7dMigkm+Pyz3fXsZggrGudDyE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QVRDSDu+fZDRGSOFV/02926geo1si6E/74JtfFQW9eSIOfoJArC2cES1tlfKeDbZj
-	 vXDBVxpI4XT9PuB8jrO+QRHdHDjrZmDgkxeb6H/sQhsxPgv9+vXzbVTHc/WQjrPvBA
-	 iEhtiuudDsmdI4BUC5nkox0KAxtbs4S3g/x3UXKB2p3bbQGlNi7P4DeUIecefD5nAc
-	 XXL1OxSB2/E5xVolY00Ig+M+PcxfeYI0Ky3UxAOaWOEP/v12i6kDsaIiSzdCvzmfKX
-	 awmZbcL40ZHgWf6htwI6K5aESAwMRRzuecz6Y9ZgLGJ22kR61XIkBQaS2I78zFSVWA
-	 1boJe2piEwImw==
-Received: from [100.95.196.25] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: koike)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D1A803781144;
-	Mon,  1 Apr 2024 16:45:15 +0000 (UTC)
-Message-ID: <c05bbde7-7119-4fff-9b62-a7a585259143@collabora.com>
-Date: Mon, 1 Apr 2024 13:45:15 -0300
+	id 1rrL1W-00000008PGs-2rPG;
+	Mon, 01 Apr 2024 17:00:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=igalia.com;
+	s=20170329; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=FmT/246q2v4RRcdH4pcSl1aosdjsTKWCAVsj0OC9Dks=; b=Od2BR8PCSY9h5KHAo5CL8wu6ZX
+	FjTkf1FQdjKl4ym2ZbNe5X9hmzFiKhNgqJakJcv3NZC2aCi5LZGV0ED0hHLaHU9kvlTq5aq4KusJc
+	EMBftNoxAwz6WCu+i6OJBBmDFK/RmrAW4rxTJstU9ObaNCaeMt851toFBVIAzxoaGOnAXrm3da5G1
+	IHzDZSMTfCKJt+F9im9wEtnTq7AhYM6QNCTTKDerxtPX9XXQCWCuQZlyySk+o0S6iSXnQZC8YjjqT
+	TIgFIvDtUVH0kNZSzNkFBcDWxIgclMqd//ogRRIv5IfoOdw3N/ND1LTic+YPTTU7vRB0QDg8zZ4iV
+	xpxt3JDQ==;
+Received: from [177.34.169.255] (helo=[192.168.0.139])
+	by fanzine2.igalia.com with esmtpsa 
+	(Cipher TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_128_GCM:128) (Exim)
+	id 1rrL15-0006D0-3m; Mon, 01 Apr 2024 19:00:15 +0200
+Message-ID: <db70b74c-1b7c-463f-a783-a289caf59fa5@igalia.com>
+Date: Mon, 1 Apr 2024 14:00:03 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v5 10/10] drm/ci: add tests on vkms
-Content-Language: en-US
 To: Vignesh Raman <vignesh.raman@collabora.com>,
  dri-devel@lists.freedesktop.org
-Cc: daniels@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- emma@anholt.net, robdclark@gmail.com, david.heidelberg@collabora.com,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- hamohammed.sa@gmail.com, rodrigosiqueiramelo@gmail.com,
- melissa.srw@gmail.com, mairacanal@riseup.net, mcanal@igalia.com,
+Cc: daniels@collabora.com, helen.koike@collabora.com, airlied@gmail.com,
+ daniel@ffwll.ch, emma@anholt.net, robdclark@gmail.com,
+ david.heidelberg@collabora.com, guilherme.gallo@collabora.com,
+ sergi.blanch.torne@collabora.com, hamohammed.sa@gmail.com,
+ rodrigosiqueiramelo@gmail.com, melissa.srw@gmail.com, mairacanal@riseup.net,
  linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20240401061235.192713-1-vignesh.raman@collabora.com>
  <20240401061235.192713-11-vignesh.raman@collabora.com>
-From: Helen Koike <helen.koike@collabora.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>
+Autocrypt: addr=mcanal@igalia.com; keydata=
+ xjMEZIsaeRYJKwYBBAHaRw8BAQdAGU6aY8oojw61KS5rGGMrlcilFqR6p6ID45IZ6ovX0h3N
+ H01haXJhIENhbmFsIDxtY2FuYWxAaWdhbGlhLmNvbT7CjwQTFggANxYhBDMCqFtIvFKVRJZQ
+ hDSPnHLaGFVuBQJkixp5BQkFo5qAAhsDBAsJCAcFFQgJCgsFFgIDAQAACgkQNI+cctoYVW5u
+ GAEAwpaC5rI3wD8zqETKwGVoXd6+AbmGfZuVD40xepy7z/8BAM5w95/oyPsHUqOsg/xUTlNp
+ rlbhA+WWoaOXA3XgR+wCzjgEZIsaeRIKKwYBBAGXVQEFAQEHQGoOK0jgh0IorMAacx6WUUWb
+ s3RLiJYWUU6iNrk5wWUbAwEIB8J+BBgWCAAmFiEEMwKoW0i8UpVEllCENI+cctoYVW4FAmSL
+ GnkFCQWjmoACGwwACgkQNI+cctoYVW6cqwD/Q9R98msvkhgRvi18fzUPFDwwogn+F+gQJJ6o
+ pwpgFkAA/R2zOfla3IT6G3SBoV5ucdpdCpnIXFpQLbmfHK7dXsAC
 In-Reply-To: <20240401061235.192713-11-vignesh.raman@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240401_094526_256100_1E491A8A 
-X-CRM114-Status: GOOD (  21.72  )
+X-CRM114-CacheID: sfid-20240401_100042_953991_B3D74BC3 
+X-CRM114-Status: GOOD (  20.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,9 +89,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 01/04/2024 03:12, Vignesh Raman wrote:
+On 4/1/24 03:12, Vignesh Raman wrote:
 > Add job that runs igt on top of vkms.
 > 
 > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
@@ -92,10 +98,10 @@ On 01/04/2024 03:12, Vignesh Raman wrote:
 > Acked-by: Maxime Ripard <mripard@kernel.org>
 > Signed-off-by: Helen Koike <helen.koike@collabora.com>
 
-Acked-by: Helen Koike <helen.koike@collabora.com>
+Acked-by: Maíra Canal <mcanal@igalia.com>
 
-Thanks
-Helen
+Best Regards,
+- Maíra
 
 > ---
 > 
