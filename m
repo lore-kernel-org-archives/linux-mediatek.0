@@ -4,91 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E9FECD1292
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Apr 2024 14:44:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AC8ACD128D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Apr 2024 15:14:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2RvYbbHjPyiORsf1A18YXo9DewRsvfmOj39Pus78xSY=; b=TkXeQQZlNCA6RKbPazH/BThgBr
-	7WoDz6DR7+WROSXIBE51T88y14ryMxEZXBb1Xz417BLIU9bX5AO6Zu2akFw1mcog65FuUubTbNrJg
-	XouFBemC6E5lK/aKJWEH9MeoQlY4QaEcSmUaIDByrM/uHZQrqeUy6YKBXM/lhqoMBu/A0btClc6Fq
-	95N1nf7MGnuVvPH0oKoHo+WptIhyA7Kla5iGUcYH16dDO4iNnCbDBHFiPCsWv+FGW8uWioPbiypKW
-	wnDqNLpoX9CjH2e3o9TDHvpv4SHQP0KE/fpqFnki56WRp/Yxnlz1dp7T1ofVCSFUvgfBhhB7QNV7d
-	gK7wc+GQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LRqo8gY7+Vs23IJHKbmO6ua9EEcvx//oYAJXqXetYYA=; b=PCLdwsLgyDxNmARQGC9WXj+WOX
+	qUqynxRyZ2n/N5HYaTEHPZ+iMO2lZTRt10P+tFeyfpY8XShWRD9pKXDRYD+miOOL2UoBbHL83TzDH
+	oSK11EGmyjemb/pZpCNK2/dY/EiMeqHVstd8p743xl5vwobyRQnv9Nr1vGJf1XbI8UrFszr8ZH0N/
+	WdE0edk4u8wwl6t+hB1+bxwu5umvPGwe6erd6i1wroiWtZrKFFyh/z+TDwvgRfzJE3h9dyExtOQ+9
+	bDNV4wymPZy+Im+8o1OzjxJvTS4+GwSo170HaWCmSlT6wUxneihiK6U/UqUHjgw5TY803ddTZ2xsb
+	ID14p6aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrItr-000000085RQ-3nL8;
-	Mon, 01 Apr 2024 14:44:39 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1rrJMb-000000089NT-2Eni;
+	Mon, 01 Apr 2024 15:14:21 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrIto-000000085Qz-1oJ7
-	for linux-mediatek@lists.infradead.org;
-	Mon, 01 Apr 2024 14:44:37 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4156e0cffdaso1586385e9.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 01 Apr 2024 07:44:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fireburn-co-uk.20230601.gappssmtp.com; s=20230601; t=1711982674; x=1712587474; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2RvYbbHjPyiORsf1A18YXo9DewRsvfmOj39Pus78xSY=;
-        b=iTW1XaeKt9KLPYNE///llTBFVB8dXR20PaIMPbPQuNRKXb4+SUl81VeXQqjFyTN+Tf
-         ZBc6kZySFJxnNExPXyYWBhHeL0RcE/kDSE9/lbV6b7cKmMBeFjF8asbo8Ouwz8YOf7YJ
-         GAYzxKqlcKwCg6fYORkeQmCdZIzVddNEx+dfHthF2gCeTYgb4SKVaF8XzPzuNrDwyga5
-         TzNA9yX+drlUMfCmjedhZ8yT/s9Pjw/bUKmlYy2zFbnrM1LqJj3qt5IsSh3qqQJ5hEih
-         3gUEgEF6+QXfDxjf2PQh7VyAI4o8Mso5AWVeFCdUFn1OfDa0ENQTkD8a6YfWpI94hOuG
-         G6BA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711982674; x=1712587474;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=2RvYbbHjPyiORsf1A18YXo9DewRsvfmOj39Pus78xSY=;
-        b=OkNiGCdbqiV2p4mJf0AFV7YN1krDuIWmyruGfj6IwM/M6QgLxokIHY0dp4LruMqo0f
-         Exjdn/X2yAS4QooauEuUlSMVFTQAhwN8EQGAiuCQ4GDvibE/80RDNBespo6hg9EEH0mR
-         pIiX3DFSKbB1aJ+KTWREbjRhzcmzVIC0J/Rm3lWE4t5E0zx5ayk89wlSP5LevpFw+bbI
-         as6djSemX+PAuW8TpjZwz8+jdxs9uUDJrbB0t5tFMpF80olti24SOCzoj9iQHzD59FD6
-         PgMb8CAaxl9VFbgcgMycP/W2tH5yJ0i9LeHafbnGkqnQmXp/hnZtTpezS8r8rVaA8BcQ
-         UqcA==
-X-Forwarded-Encrypted: i=1; AJvYcCUk+aO2GX85+Ql6iDbNev4LXZUtWyR5+IfwoQa57MUCXJmkFd4CYAiendoeRfAiLRjPOI8P7fIGHqRnU1ftFP2crl3kHPLud9bIoAlmHZLWMG3J
-X-Gm-Message-State: AOJu0YyEXykKDPUlyO2ZEuFBpWQNVmmj5iKvJ2+KS53Gn3uKlZDryI7i
-	ZfEy5POL+1L+5iJK61Yz1l/7JSagf/af+r3x4CEDEY651WfFwM1SF8zWZ2YTl+3dn2gVdlb5ep3
-	o+VJs
-X-Google-Smtp-Source: AGHT+IHFwTeHa3eLF0iSWmR3ZRa9CNqiw+F/uWJvheTXNwpRf9+4QL+uhvTDDxHrRzI6a2UhU6K3YQ==
-X-Received: by 2002:a05:600c:35c1:b0:415:6b9a:326d with SMTP id r1-20020a05600c35c100b004156b9a326dmr1118098wmq.4.1711982673860;
-        Mon, 01 Apr 2024 07:44:33 -0700 (PDT)
-Received: from axion.fireburn.co.uk ([2a01:4b00:d309:1c00:cf6f:1e76:917a:6efb])
-        by smtp.gmail.com with ESMTPSA id bi11-20020a05600c3d8b00b004156c8d0530sm1258026wmb.13.2024.04.01.07.44.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 Apr 2024 07:44:33 -0700 (PDT)
-From: Mike Lothian <mike@fireburn.co.uk>
-To: peter.tsao@mediatek.com
-Cc: aaron.hou@mediatek.com,
-	chris.lu@mediatek.com,
-	deren.Wu@mediatek.com,
-	johan.hedberg@gmail.com,
-	linux-bluetooth@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	luiz.dentz@gmail.com,
-	marcel@holtmann.org,
-	sean.wang@mediatek.com,
-	steve.lee@mediatek.com
-Subject: Re: [PATCH] [PATCH] Bluetooth: btusb: Add support Mediatek MT7920
-Date: Mon,  1 Apr 2024 15:44:24 +0100
-Message-ID: <20240401144424.1714-1-mike@fireburn.co.uk>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240304144844.2042-1-peter.tsao@mediatek.com>
-References: <20240304144844.2042-1-peter.tsao@mediatek.com>
+	id 1rrJMY-000000089Ma-2bEt;
+	Mon, 01 Apr 2024 15:14:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9149060C96;
+	Mon,  1 Apr 2024 15:14:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E47B0C433C7;
+	Mon,  1 Apr 2024 15:14:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1711984457;
+	bh=JltTTo7L3Pqb7x/nOOqrDGh4IIDaFzvkM7xcA0ivsp8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=AOYUl9CpeoWpySvUK2rUyJSDEeRhPXzAHbVHYDs5CFBnvRRj4DVrls0W7obkCxRwR
+	 EEPk4esZ4pUA7/dilS17s/Z4pT5eOIpZw8WrSqXNcLxS/gaZ/37r7LWPiAHNcMAnCw
+	 u6mahNDpuw8dv6REBM/9UnBLP5vur6pY73oGNmKEk75DENS31rw3hrBScSV3SGVLyq
+	 1p/WGUNP10x7qJdySPicK7tP2b4nhDZCi0rjatOUbLFrXJSIYXA5VjQjzFQP3dSlWb
+	 B7SLYw1B5HU/gFkCZ31mE4jx6eBMgFqPqYPIg9RIvohuUJMwNeZ6RM9zLp6LlA4eg0
+	 Qjq9Q5PfDa9/g==
+Date: Mon, 1 Apr 2024 10:14:14 -0500
+From: Rob Herring <robh@kernel.org>
+To: Kartik Agarwala <agarwala.kartik@gmail.com>
+Cc: lgirdwood@gmail.com, broonie@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] ASoC: dt-bindings: mt2701-wm8960: Convert to dtschema
+Message-ID: <20240401151414.GA706943-robh@kernel.org>
+References: <20240401043505.40972-1-agarwala.kartik@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240401043505.40972-1-agarwala.kartik@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240401_074436_717659_38F9918A 
-X-CRM114-Status: UNSURE (   7.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240401_081418_782480_3200829B 
+X-CRM114-Status: GOOD (  16.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,36 +74,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+On Mon, Apr 01, 2024 at 10:05:05AM +0530, Kartik Agarwala wrote:
+> Convert mt2701-wm890 bindings from text to dtschema. This is used by MediaTek mt77623a/n SoC.
 
-I think this patch is cauisng issues with older firmware
+Wrap lines at 75.
 
-Bus 003 Device 002: ID 13d3:3563 IMC Networks Wireless_Device
+> 
+> Signed-off-by: Kartik Agarwala <agarwala.kartik@gmail.com>
+> ---
+>  .../sound/mediatek,mt2701-wm8960.yaml         | 59 +++++++++++++++++++
+>  .../bindings/sound/mt2701-wm8960.txt          | 24 --------
+>  2 files changed, 59 insertions(+), 24 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt2701-wm8960.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/sound/mt2701-wm8960.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt2701-wm8960.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt2701-wm8960.yaml
+> new file mode 100644
+> index 000000000..771f14a59
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt2701-wm8960.yaml
+> @@ -0,0 +1,59 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/sound/mediatek,mt2701-wm8960.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT2701 with WM8960 CODEC
+> +
+> +maintainers:
+> +  - Kartik Agarwala <agarwala.kartik@gmail.com>
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt2701-wm8960-machine
+> +
+> +  mediatek,platform:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: The phandle of MT2701 ASoC platform.
+> +
+> +  audio-routing:
+> +    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
+> +    description: |
 
-[    0.315064] Bluetooth: Core ver 2.22
-[    0.315064] NET: Registered PF_BLUETOOTH protocol family
-[    0.315064] Bluetooth: HCI device and connection manager initialized
-[    0.315064] Bluetooth: HCI socket layer initialized
-[    0.315064] Bluetooth: L2CAP socket layer initialized
-[    0.315064] Bluetooth: SCO socket layer initialized
-[    4.670811] Bluetooth: RFCOMM TTY layer initialized
-[    4.671029] Bluetooth: RFCOMM socket layer initialized
-[    4.671790] Bluetooth: RFCOMM ver 1.11
-[    4.673416] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
-[    4.673659] Bluetooth: BNEP filters: protocol multicast
-[    4.673895] Bluetooth: BNEP socket layer initialized
-[    4.674125] Bluetooth: HIDP (Human Interface Emulation) ver 1.2
-[    4.674360] Bluetooth: HIDP socket layer initialized
-[    5.016365] bluetooth hci0: Direct firmware load for mediatek/BT_RAM_CODE_MT7961_1a_2_hdr.bin failed with error -2
-[    5.017163] Bluetooth: hci0: Failed to load firmware file (-2)
-[    5.017557] Bluetooth: hci0: Failed to set up firmware (-2)
-[    5.018129] Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
+Don't need '|'.
 
-The correct name should be mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin
+> +      A list of the connections between audio components. Each entry is a
+> +      pair of strings, the first being the connection's sink, the second
+> +      being the connection's source.
+> +
+> +  mediatek,audio-codec:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: The phandle of the WM8960 audio codec.
+> +  
+> +  pinctrl-names:
+> +    const: default
+> +
+> +  pinctrl-0: true
 
-Reverting this patch fixes things
+You can drop pinctrl properties. Those are implicitly supported.
 
-Cheers
-
-Mike
+> +
+> +unevaluatedProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - mediatek,platform
+> +  - audio-routing
+> +  - mediatek,audio-codec
+> +  - pinctrl-names
+> +  - pinctrl-0
+> +
+> +examples:
+> +  - |
+> +    sound {
+> +        compatible = "mediatek,mt2701-wm8960-machine";
+> +        mediatek,platform = <&afe>;
+> +        audio-routing =
+> +            "Headphone", "HP_L",
+> +            "Headphone", "HP_R",
+> +            "LINPUT1", "AMIC",
+> +            "RINPUT1", "AMIC";
+> +        mediatek,audio-codec = <&wm8960>;
+> +        pinctrl-names = "default";
+> +        pinctrl-0 = <&aud_pins_default>;
+> +    };
 
