@@ -4,86 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90C67CD128A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Apr 2024 04:36:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 375FBCD1283
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Apr 2024 04:49:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wwE/tImZaiEw269ZV6D7aAgEnYEgHKfSAFMQ257qCzM=; b=A/Wq2INl2XV/2Jpf9NQde/lnsY
-	aAPfdbV0HjxgG4lhp+dca+XKn30dphsMEJcEb/Dpp/OHh/lKLITniCcbW3P/8dxCL5iC5pLxMMWFD
-	Uf3PidfzcjXli7XDjzPLINe2Ypz4uHDXkxz3SzpLjSJ8+HSklhEypo6gDP+89E/URiDCrN5rOuy9/
-	Z1MjNPJdbL9HR4DulkqlLJEwtJVMocbUlE6sLTQo0BgCuZduG2MHSqnPgAt+0XhFJm0AL9p0sJEvU
-	y6ppAMY3uANA8Jkc74OQj8lKw1Le1TKggr/W6g7r1bWPM2dQwpa8mXjuujCXHquZ8fWiZ9qDMgyvR
-	os9s83sg==;
+	Content-Type:From:In-Reply-To:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9P7DNDDewKZzJDm8kGzQZn2gBUwX7Mnh0jPmlVtXWrY=; b=nafUU7P3R/FSZshXpbFHy6rAbS
+	FQLummmpSx9drg6vIVSV4LTtG324fqVdUH9ii1kUlo5HhNRQKgHlQUkb4jBxmlo41uBHoBw+a49Nd
+	LEsTeJq8/Nb1bJ+K+IcrJ2PUt+iMIm9lBIRoiiEiB3K37ti4J9Tl9Cq84BA+5xfqLkasthdqYrYWL
+	W3EBo/YG+CXs73NKNJaVryHvXuf/S0e9sLgk+05Y6EtcJ8yJN3iLtYMr2hher52ppiZaNVnaaIvSR
+	rEwt6Zr5dIs7vyWsxhRI+gT/gVnENoNpNhcVnQYAMUuad/u9Tsr3KQ/6pIf2Km83nkV/ZopqJAW4n
+	RXjWmzlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rr9PJ-00000006tx1-1ehq;
-	Mon, 01 Apr 2024 04:36:29 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1rr9c9-00000006uoQ-1nrZ;
+	Mon, 01 Apr 2024 04:49:45 +0000
+Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rr9PF-00000006twA-28zA;
-	Mon, 01 Apr 2024 04:36:27 +0000
-Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-1e0189323b4so25120195ad.1;
-        Sun, 31 Mar 2024 21:36:19 -0700 (PDT)
+	id 1rr9c6-00000006unw-0IoN;
+	Mon, 01 Apr 2024 04:49:43 +0000
+Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-2218a0f55e1so2353417fac.1;
+        Sun, 31 Mar 2024 21:49:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1711946179; x=1712550979; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=wwE/tImZaiEw269ZV6D7aAgEnYEgHKfSAFMQ257qCzM=;
-        b=SFFYztM9d6ElH+0scuuIBebsLdyZBC47Gzq9fiy0xKZFZ4sbH6f0rmOPuRqiWywoHL
-         79LiUKyJFkW0O8t0wYhsZwE5zlKSQoH/XSWXifMYlQCoPDy5dammIAHudo/jggXIwleW
-         uwWCA57sFa1KcmZMnZa50+w2b8MwiZFFdGLJ2Hn7BXs22RnTS4IzPV8f/DwltXBIALFR
-         35CBc0PABlCO/Eah4oScQ8HJqpSmTtKet3dRyVbo//Ki0DZAGODaGhib0hesyRY/a32z
-         QFFjfNKvizZG3Ltl6waich9lbkjlFXluANwewcpf5lDxDSyb1q97ZgV3x9S17sI5LUAM
-         phpQ==
+        d=gmail.com; s=20230601; t=1711946978; x=1712551778; darn=lists.infradead.org;
+        h=content-transfer-encoding:from:in-reply-to:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=9P7DNDDewKZzJDm8kGzQZn2gBUwX7Mnh0jPmlVtXWrY=;
+        b=KwTy245Of3S38aHHZvSRBXKWDmBNwXMxB4myX04vpnn/Hj4dmNqhtoB5ED4QmpPQGb
+         ZeuZK5KcINw71kny2hugJMQbW2sNhuGxALJg7aHyhifNo3URw3AT04xUWDxglQUvPBXG
+         +xf7+AguMEnR68If+OxHmRXnKmzRQDasWeL57O1lz3vkMx6eHHbLhYzet4KkNQnnXQWK
+         bD5K1DcS7KcNIEiF+WYqlyxCaflMQaXahBPDq0jeQXRWAypfJLCQfIx4wseqp7lv8XwH
+         sI6fpcFWgoucesJiNw0nXCdcPtrr1b4Mlcc9eN1sOLrZUwdO5ZF0qQ9Su+gGtE7g/u/c
+         +QRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711946179; x=1712550979;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=wwE/tImZaiEw269ZV6D7aAgEnYEgHKfSAFMQ257qCzM=;
-        b=l4eFGeuS53fpuMcEEJdO0ap5PDtkR1/Uppp6dG9+JqHjUELY+COg/7RAT5+JHp8eiR
-         tFH1MuAGre/WAR0jOgCW5hn8zelkbSrSrP1YrWPJKdPV5S1nH0Y404tRo/mH7REEHLfh
-         FJjKOhhRZ2cpokYY/kMkB6PjX+ilBeK6DDxY80bGvuzYaiQlXYd9YxUWxgHZukk5Uu9V
-         vwAhfQvcUNZSODA4vWRr5pZj7XBaaVpIni5UShG18gJyBjmKn6kT/H5R3qiGM52gRi7i
-         0WZmFEMetEJHPc+eS2/laDuqh7Z+Ivon95aC4kwmVh5SDvImEyDZWRAZ8IH5MoUJDaE1
-         zUAw==
-X-Forwarded-Encrypted: i=1; AJvYcCUB2+YuksJ6n75YKveEAzCr0LetqzHDaAzZrRE3oP5PrSA3HfhkLtMBF9Mzu1BPIEQSKk5fp2BjBT95KzA/vbKsCPd6jwuhOcYmTMhVg1vYxcp6MC9ssNeRb1iKNlInu8meyezTH+EV0FnCwjadYRS4brVP45hr9Aw=
-X-Gm-Message-State: AOJu0YziFiuk6yohUnkCn3Gkr8tf1c0L0RbwKtjqawaQiI/05ODVA1PI
-	weSQ+ZQ0B9sTLB+/1DdugrG24fyksS/BXH/XjMfXFB5AObo9DVKApsHCBgevtXQ=
-X-Google-Smtp-Source: AGHT+IEPrRPcssxLAqfAranfcyHY9xgJrUdh96WohAZXPVnDF8gY+cKfMUA1ablelrfiFyNBcdPxHg==
-X-Received: by 2002:a17:902:db0e:b0:1e0:b5ee:e806 with SMTP id m14-20020a170902db0e00b001e0b5eee806mr10295230plx.10.1711946178553;
-        Sun, 31 Mar 2024 21:36:18 -0700 (PDT)
-Received: from localhost ([103.139.191.219])
-        by smtp.gmail.com with UTF8SMTPSA id t4-20020a170902e84400b001d8be6d1ec4sm7748324plg.39.2024.03.31.21.35.56
+        d=1e100.net; s=20230601; t=1711946978; x=1712551778;
+        h=content-transfer-encoding:from:in-reply-to:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=9P7DNDDewKZzJDm8kGzQZn2gBUwX7Mnh0jPmlVtXWrY=;
+        b=cIrA7t2UH2xoqYtENwP6sgx9D9zAxN8so7xzoC7kzOVhLUONrsIUmjtE5RH5aYFgJI
+         kaW0fE9IqMy1ts7rEwXHKAorTaJqTS0oZF47mdCIZqUnBLAgw7zIGimPPknumDUUwKfo
+         VV3jWSnqR6DLOzdFNYNu1RjZPmf8MJygEFK1JJbZrCipVvuf9+u/SPanwW95m2/exFqN
+         f39UyKDC/O0aWpQu09PqSDRdzKv5C2GdVTTscSIlEGWw3tyxalSR1jGO0lfpTE4ldV5i
+         touPX9WTixQ3XYT6LaFJzn2oSmUru3sY2rTnoTXo2vDjoI91KMP/uctzCDAXVQt8eqPY
+         /Sag==
+X-Forwarded-Encrypted: i=1; AJvYcCXGKFp/FWi/P9VwElRXSEdnc2z6cFoRD2bFPyMUMaTKE5GFFMJ6lMcOr2LsovwAWRHAt8bSRGOnm8aiTA6VpO/H/7DMI0RNTfYkyMJPULQ22KqnPm7n+jiQYtGMaAbbR3tOpnVdj2m9zwoP1GtlbQAONxxpk7thsUg=
+X-Gm-Message-State: AOJu0Yzf6YN76pLh5R9b5x4SPmp+DDT9fNrkKHeEihb4ZWHVdRzRg8hr
+	3t2k5q16UPCjGXr27gOSLtdZ/Vnc0ZfVAanuCWTn9ydsyjexyd9n
+X-Google-Smtp-Source: AGHT+IGMYFyjD1S0J/UlMasZQdb+LzfB19BFL7nbiO9VGTxLKWZM7nDChE1SjMsf1YPBvo7tIhAIfQ==
+X-Received: by 2002:a05:6870:3912:b0:229:819a:d2e6 with SMTP id b18-20020a056870391200b00229819ad2e6mr9837827oap.15.1711946977956;
+        Sun, 31 Mar 2024 21:49:37 -0700 (PDT)
+Received: from [10.5.5.43] ([103.139.191.219])
+        by smtp.gmail.com with ESMTPSA id fj42-20020a056a003a2a00b006eae2d9298esm5613056pfb.194.2024.03.31.21.49.32
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 31 Mar 2024 21:36:01 -0700 (PDT)
-From: Kartik Agarwala <agarwala.kartik@gmail.com>
-To: lgirdwood@gmail.com,
-	broonie@kernel.org,
-	robh@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: Kartik Agarwala <agarwala.kartik@gmail.com>,
-	linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] ASoC: dt-bindings: mt2701-wm8960: Convert to dtschema
-Date: Mon,  1 Apr 2024 10:05:05 +0530
-Message-Id: <20240401043505.40972-1-agarwala.kartik@gmail.com>
-X-Mailer: git-send-email 2.34.1
+        Sun, 31 Mar 2024 21:49:37 -0700 (PDT)
+Message-ID: <d4b0aa10-c2d3-4beb-98de-23ab929a0764@gmail.com>
+Date: Mon, 1 Apr 2024 10:19:29 +0530
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] ASoC: dt-bindings: mt2701-wm8960: Convert to dtschema
+Content-Language: en-US, ar-LB
+To: lgirdwood@gmail.com, broonie@kernel.org, robh@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240401043505.40972-1-agarwala.kartik@gmail.com>
+In-Reply-To: <20240401043505.40972-1-agarwala.kartik@gmail.com>
+From: Kartik Agarwala <agarwala.kartik@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240331_213625_587819_0E2742BD 
-X-CRM114-Status: GOOD (  14.84  )
+X-CRM114-CacheID: sfid-20240331_214942_148864_AEEF78D6 
+X-CRM114-Status: UNSURE (   6.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,112 +97,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert mt2701-wm890 bindings from text to dtschema. This is used by MediaTek mt77623a/n SoC.
+On 4/1/24 10:05 AM, Kartik Agarwala wrote:
+> Convert mt2701-wm890 bindings from text to dtschema. This is used by MediaTek mt77623a/n SoC.
 
-Signed-off-by: Kartik Agarwala <agarwala.kartik@gmail.com>
----
- .../sound/mediatek,mt2701-wm8960.yaml         | 59 +++++++++++++++++++
- .../bindings/sound/mt2701-wm8960.txt          | 24 --------
- 2 files changed, 59 insertions(+), 24 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt2701-wm8960.yaml
- delete mode 100644 Documentation/devicetree/bindings/sound/mt2701-wm8960.txt
+Apologies for the typo, it should be mt7623a/n instead of mt77623a/n.
 
-diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt2701-wm8960.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt2701-wm8960.yaml
-new file mode 100644
-index 000000000..771f14a59
---- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mediatek,mt2701-wm8960.yaml
-@@ -0,0 +1,59 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/sound/mediatek,mt2701-wm8960.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek MT2701 with WM8960 CODEC
-+
-+maintainers:
-+  - Kartik Agarwala <agarwala.kartik@gmail.com>
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt2701-wm8960-machine
-+
-+  mediatek,platform:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: The phandle of MT2701 ASoC platform.
-+
-+  audio-routing:
-+    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
-+    description: |
-+      A list of the connections between audio components. Each entry is a
-+      pair of strings, the first being the connection's sink, the second
-+      being the connection's source.
-+
-+  mediatek,audio-codec:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: The phandle of the WM8960 audio codec.
-+  
-+  pinctrl-names:
-+    const: default
-+
-+  pinctrl-0: true
-+
-+unevaluatedProperties: false
-+
-+required:
-+  - compatible
-+  - mediatek,platform
-+  - audio-routing
-+  - mediatek,audio-codec
-+  - pinctrl-names
-+  - pinctrl-0
-+
-+examples:
-+  - |
-+    sound {
-+        compatible = "mediatek,mt2701-wm8960-machine";
-+        mediatek,platform = <&afe>;
-+        audio-routing =
-+            "Headphone", "HP_L",
-+            "Headphone", "HP_R",
-+            "LINPUT1", "AMIC",
-+            "RINPUT1", "AMIC";
-+        mediatek,audio-codec = <&wm8960>;
-+        pinctrl-names = "default";
-+        pinctrl-0 = <&aud_pins_default>;
-+    };
-diff --git a/Documentation/devicetree/bindings/sound/mt2701-wm8960.txt b/Documentation/devicetree/bindings/sound/mt2701-wm8960.txt
-deleted file mode 100644
-index 809b609ea..000000000
---- a/Documentation/devicetree/bindings/sound/mt2701-wm8960.txt
-+++ /dev/null
-@@ -1,24 +0,0 @@
--MT2701 with WM8960 CODEC
--
--Required properties:
--- compatible: "mediatek,mt2701-wm8960-machine"
--- mediatek,platform: the phandle of MT2701 ASoC platform
--- audio-routing: a list of the connections between audio
--- mediatek,audio-codec: the phandles of wm8960 codec
--- pinctrl-names: Should contain only one value - "default"
--- pinctrl-0: Should specify pin control groups used for this controller.
--
--Example:
--
--	sound:sound {
--		compatible = "mediatek,mt2701-wm8960-machine";
--		mediatek,platform = <&afe>;
--		audio-routing =
--			"Headphone", "HP_L",
--			"Headphone", "HP_R",
--			"LINPUT1", "AMIC",
--			"RINPUT1", "AMIC";
--		mediatek,audio-codec = <&wm8960>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&aud_pins_default>;
--	};
--- 
-2.34.1
-
+Regards,
+Kartik Agarwala
 
