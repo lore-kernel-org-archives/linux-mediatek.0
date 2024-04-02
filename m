@@ -4,69 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 464A4CD1284
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Apr 2024 14:33:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCFA5C6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Apr 2024 16:23:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qSZAeR7q0/O1jdxZyeglN/inYMURvBot8I+FEfY1nGc=; b=smwBmROMAIwLOgzCgl8Yo27uaC
-	tIcxKgW175Mvt/trEhUFXITKFvfMBPcj97dPLnpN4cdyfq6b10z8UqVzh0VOH7NRESiGN036Upppd
-	u0kfa37PXLTR425RaxB9eGKkdgC4GKsG1FiClvkzZuPzGpcp3Mp/aZTxw2kebsCjAc2eMhBgtGcmq
-	R7d7kM6xhwV4uHjt+K0ArQf7KQFErvariZdvPRcq5a2jYfbH3CJeIL8mLRtYrFXGfsW1CoSPxphJO
-	b0gN3U5qui+trfqhA8u9rv+TLbhiAhdovuv15dq5iAQ/wIFrFS8ulbTqX8zoWkyBE5yW9DP4FM5MO
-	cnbqzIRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L0p9uhkLrkMrOJ93YgzWjPNs477TJpAGodqOIkg4CxU=; b=bRb5eLwpj4yeFmR/mugUnUaMhg
+	5wuoV1cCH98vJOuWj1lXOVMJgYTuKq+PiYhSkMd7TgwDIXPrvugAP928Bs71xtsBy33r2tzjMALTq
+	4OibtFgXjCKj6m0l6Bd/q7U/Wz7KzDiFQcidR66pO5TrbujV0hd2eYIw8c7N6IWAIHVoI+k81/YU0
+	+tPJ34LbxJx4HA9qSVIgeOOq5M6SOMMHr+fwhLxYkxQsqeMi9IJnK4BvnE8umdUFJHKla3F67qISL
+	2bma08qgpjv8C+oLQxHsdR7HscXYy1fahUA2Nnz9JLQNu9020ihEHyJgDuXYGNNFSwDR2CECcrMfw
+	mvuemTEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrfCN-0000000Bau9-2OsJ;
-	Tue, 02 Apr 2024 14:33:15 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rrgvA-0000000C1vS-15ab;
+	Tue, 02 Apr 2024 16:23:36 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrfCI-0000000Baqp-3dl2;
-	Tue, 02 Apr 2024 14:33:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712068387;
-	bh=k9jpeeTQRulLlydfpwC6l14dlccqbsTGqCf2ynVuYi0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fBMTao+x11ZZxsEye6B1rpE+VCfhdJsJEjGqi5K6sYPkJRIsjLpxbcoYZAPt3Lmw3
-	 0Dm5fUPMVs19etqTkb2movClXqHhAgw3RPoMOJa5EjRArLD5N17NNs9SvB7sMYarhu
-	 +ruwYVRyPK53FXPcoplIBsC3PBr9n3tLjaiYh+25ATNZaB0+epp7/HqSnBzuJW8PRn
-	 xOMVwv3At1j+V8GzryFc0utZGQ0Fttgb4sbcRvKN1frouteerZzW1Y+kEDDWubM1vV
-	 3dR5SeIgeWjBJtAhvclke5ndjcVQ6BtJNewk8BVtkjsUeiK6OQmSHeEBukIMIjos9e
-	 n+3AwmaA6htOg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 181A93780624;
-	Tue,  2 Apr 2024 14:33:07 +0000 (UTC)
-Message-ID: <1f38ce24-83fa-4370-b036-b6c4bcb39fb3@collabora.com>
-Date: Tue, 2 Apr 2024 16:33:06 +0200
+	id 1rrgv6-0000000C1um-3Ujt
+	for linux-mediatek@lists.infradead.org;
+	Tue, 02 Apr 2024 16:23:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 9AE86CE1D11;
+	Tue,  2 Apr 2024 16:23:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A32B4C433F1;
+	Tue,  2 Apr 2024 16:23:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712075009;
+	bh=xYB/qZ9RTNhXxTESYZVU46lsLKaPjJLvUgmdS58ycBs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=aqv3ImhLq1PgJ337brrNrEBxR9qJmf0FXnJXgOwaUAud1wrbeWwQovWfLmtSArZ2+
+	 VbM4zi4pse5vhiYygB9CjlyJJ0mHVFk+wigK7NKMAwIqWhy34Preatizf9IbJsoMuM
+	 NrTu9SiLT+m+NLCX+TDYDzYVRGoscwGHlIwN/NjkJhthUtEHu7YP5s5akZtTH8DkoO
+	 g/JZd0YhqkZnUdgbzcOApXE+eHPjirScuH2VQdLL6SbWCjb0qCyl1Rg0a/3O3wod3O
+	 pUcayin0xsm6XXbBOtuir9EqntzT4Fe7UBt2Du9k6n/vvs5Enh70tHTxHj+5wNUwW+
+	 LI52eLRN3Y+tg==
+Date: Tue, 2 Apr 2024 11:23:27 -0500
+From: Rob Herring <robh@kernel.org>
+To: Nicolas Pitre <nico@fluxnic.net>
+Cc: Nicolas Pitre <npitre@baylibre.com>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 12/15] dt-bindings: thermal: mediatek: Add LVTS
+ thermal controller definition for MT8188
+Message-ID: <171207500517.249957.12484282062174711386.robh@kernel.org>
+References: <20240402032729.2736685-1-nico@fluxnic.net>
+ <20240402032729.2736685-13-nico@fluxnic.net>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] remoteproc: mediatek: Don't parse extraneous subnodes
- for multi-core
-To: Mathieu Poirier <mathieu.poirier@linaro.org>
-Cc: andersson@kernel.org, matthias.bgg@gmail.com, tzungbi@kernel.org,
- tinghan.shen@mediatek.com, linux-remoteproc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, wenst@chromium.org, kernel@collabora.com
-References: <20240321084614.45253-1-angelogioacchino.delregno@collabora.com>
- <20240321084614.45253-3-angelogioacchino.delregno@collabora.com>
- <ZfxRyMyUqyqtXy8n@p14s> <9ef4e974-740e-4698-bb38-f236521a425c@collabora.com>
- <ZgWA/E46i/CaoM74@p14s> <b6ed8710-1608-4343-8a58-5f8e0e16d10d@collabora.com>
- <CANLsYkyu69Pwv094XGfVomuu1Oixw3vxr42q6WOE4F3snATygw@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CANLsYkyu69Pwv094XGfVomuu1Oixw3vxr42q6WOE4F3snATygw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240402032729.2736685-13-nico@fluxnic.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240402_073311_242855_AA5E6137 
-X-CRM114-Status: GOOD (  18.98  )
+X-CRM114-CacheID: sfid-20240402_092333_093271_129B3A76 
+X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,78 +77,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/04/24 16:23, Mathieu Poirier ha scritto:
-> On Tue, 2 Apr 2024 at 03:56, AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 28/03/24 15:38, Mathieu Poirier ha scritto:
->>> On Wed, Mar 27, 2024 at 01:49:58PM +0100, AngeloGioacchino Del Regno wrote:
->>>> Il 21/03/24 16:27, Mathieu Poirier ha scritto:
->>>>> On Thu, Mar 21, 2024 at 09:46:14AM +0100, AngeloGioacchino Del Regno wrote:
->>>>>> When probing multi-core SCP, this driver is parsing all sub-nodes of
->>>>>> the scp-cluster node, but one of those could be not an actual SCP core
->>>>>> and that would make the entire SCP cluster to fail probing for no good
->>>>>> reason.
->>>>>>
->>>>>> To fix that, in scp_add_multi_core() treat a subnode as a SCP Core by
->>>>>> parsing only available subnodes having compatible "mediatek,scp-core".
->>>>>>
->>>>>> Fixes: 1fdbf0cdde98 ("remoteproc: mediatek: Probe SCP cluster on multi-core SCP")
->>>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>>>> ---
->>>>>>     drivers/remoteproc/mtk_scp.c | 3 +++
->>>>>>     1 file changed, 3 insertions(+)
->>>>>>
->>>>>> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
->>>>>> index 67518291a8ad..fbe1c232dae7 100644
->>>>>> --- a/drivers/remoteproc/mtk_scp.c
->>>>>> +++ b/drivers/remoteproc/mtk_scp.c
->>>>>> @@ -1096,6 +1096,9 @@ static int scp_add_multi_core(struct platform_device *pdev,
->>>>>>             cluster_of_data = (const struct mtk_scp_of_data **)of_device_get_match_data(dev);
->>>>>>             for_each_available_child_of_node(np, child) {
->>>>>> +          if (!of_device_is_compatible(child, "mediatek,scp-core"))
->>>>>> +                  continue;
->>>>>> +
->>>>>
->>>>> Interesting - what else gets stashed under the remote processor node?  I don't
->>>>> see anything specified in the bindings.
->>>>>
->>>>
->>>> Sorry for the late reply - well, in this precise moment in time, upstream,
->>>> nothing yet.
->>>>
->>>> I have noticed this while debugging some lockups and wanted to move the scp_adsp
->>>> clock controller node as child of the SCP node (as some of those clocks are located
->>>> *into the SCP's CFG register space*, and it's correct for that to be a child as one
->>>> of those do depend on the SCP being up - and I'll spare you the rest) and noticed
->>>> the unexpected behavior, as the SCP driver was treating those as an SCP core.
->>>>
->>>> There was no kernel panic, but the SCP would fail probing.
->>>>
->>>> This is anyway a missed requirement ... for platforms that want *both* two SCP
->>>> cores *and* the AudioDSP, as that'd at least be two nodes with the same iostart
->>>> (scp@1072000, clock-controller@1072000), other than the reasons I explained some
->>>> lines back.
->>>>
->>>> ...and that's why this commit was sent :-)
->>>>
->>>
->>> Please update the bindings with the extra clock requirement in your next
->>> revision.
->>>
->>
->> Ok.
->>
->> Can you please take only patch 1/2 of this series so that I can delay this one
->> for a bit? I don't have time to work on that exactly right now.
->>
+
+On Mon, 01 Apr 2024 23:25:46 -0400, Nicolas Pitre wrote:
+> From: Nicolas Pitre <npitre@baylibre.com>
 > 
-> It was added to rproc-next last week.
+> Add LVTS thermal controller definition for MT8188.
+> 
+> Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
+> ---
+>  .../bindings/thermal/mediatek,lvts-thermal.yaml  |  4 ++++
+>  .../dt-bindings/thermal/mediatek,lvts-thermal.h  | 16 ++++++++++++++++
+>  2 files changed, 20 insertions(+)
 > 
 
-Ah, sorry, didn't notice that.
-
-Thanks again!
-
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 
