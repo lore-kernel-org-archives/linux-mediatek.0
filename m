@@ -4,72 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23C3BCD128D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Apr 2024 12:08:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1E8FC6FD1F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Apr 2024 12:09:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GUalNrbfbrxbwM0ycSW1gsKaZR1W99qZXQXgxCOsfPw=; b=MzAshPIe1RaVs0LMZPLKrTOH/V
-	xFQ00AeJskdXUhuEhqXq/XbcidWDv+jKNlQYdc2Hr5GHXqX66WWGWQm1MURGf4bJHHb21jg39aFtc
-	jmVPwCzRiPRm4dEGV0M/ytjHSP+zUmj/pJD6bscJJiFeEFmQR0EOhz0xw9jIDraepwvZu6RIz/z5w
-	PCfg7/Pp3R7Lga7by1IfV1E+87r8Z+CU25fg2FPRzpHQ7QCr8akdfYtGHpG5pPSABGywMVB/r6g/G
-	wnl2L9nelcaodO2W/uEYBQZ4XHhs95TxYIk45QvJJhUkJFUYe+9mW7EPx+gDiJLXpagtXbRjZr5gA
-	OWw1cfRQ==;
+	bh=Z7Pnr6PoGhceBp/MkaACIjm9COgBNW2tpmbpLJHir3Y=; b=l0lXg7rt6XRSHbWKlxlogbX+wt
+	yIIVurA/ASLl1mRbOqFTYvzNXbwwFbxWS/pcEfmqC4DhMVwYx82dKi4evZShG/CpkyULNj+gXjWkx
+	chF5ifc7iOPdx7k7eC4+T4PV75QlQ9xFPJcceiNr4y1UpytT/eb6BhGLdqRMwY4JFMeNIJk/L+WVa
+	11ohRYuG7O48YAMNCm1DAj2lEET3cUkh0lpvHPih09WaHpTIyfUUXXx2yCWxz+1n6n3xgNPKx5dbm
+	DHhyYDLP4Fa7K9uNFZv6UcqnoPSfRvvJjc7YgA3SL+dfoBzWlffXeu4v7IbbCJzJ8O0vPb1CvTAoH
+	Wvj4t0Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrcwL-0000000AyoV-1U2R;
-	Tue, 02 Apr 2024 12:08:33 +0000
-Received: from mail-ej1-f44.google.com ([209.85.218.44])
+	id 1rrcwl-0000000Az74-2HYt;
+	Tue, 02 Apr 2024 12:08:59 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrcvy-0000000AyW5-08RF
+	id 1rrcwD-0000000Ayhz-3oLN
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 02 Apr 2024 12:08:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=Z7Pnr6PoGhceBp/MkaACIjm9COgBNW2tpmbpLJHir3Y=; b=QE2wbIh3TRVTdv1vZmheIITlTK
+	S/7F+EFfObBcoF/07s3TingcKMGCTpiDp5YOaXZunQ3/RCfnn8qd0v0uMwgwDpOJbt2h8ZRciJsB4
+	YEaxnuyIkc/mlco0fY8I8Q+xu7FFB5ji6rwj630RXEJenZqnhXK2PEUNHtQATGYOeVv69VlitBDhw
+	rYMbZ3dE56mGhp0aGPhwh011uWbjjtS+FcAtUlMvxXRd21MpmFbXUxVK5FcTaVFBqC/2fnPpusK44
+	v/9Vjp/3EHCPm6Za5AAnuEgNRCNIwSQu1Vn67Kx5CwoiFs9nuEbEw8mQJswSeGTt+hgNxcLggOye8
+	5lITvaeg==;
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rrcw0-00000003b9a-3jPx
 	for linux-mediatek@lists.infradead.org;
-	Tue, 02 Apr 2024 12:08:13 +0000
-Received: by mail-ej1-f44.google.com with SMTP id a640c23a62f3a-a4e8904bd71so75155866b.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 02 Apr 2024 05:08:09 -0700 (PDT)
+	Tue, 02 Apr 2024 12:08:21 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-a46a7208eedso657550266b.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Apr 2024 05:08:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1712059687; x=1712664487; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1712059683; x=1712664483; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=GUalNrbfbrxbwM0ycSW1gsKaZR1W99qZXQXgxCOsfPw=;
-        b=Zv+IJRyLbJLgtXyYL9YY6LYGKSH2hcfZO+x6VBKOb3S0N9gY77W7cx8pYx0guDhCUN
-         va0WUZ5xYnJvhr8CZvL4AmsdkXCPu3hcJRcT+lDgHcGhmdaoeGA9zVenolPy9WYKFnmi
-         AJ+Amj/hAkXDwp7XdycQobnPx1fDUnKPDgi3ThsaR8J4U5Yp8ZIkXWL4Ix77HlogeZ3S
-         o3pF8HKQQX0zd9WZcOPgHA9iE9nsKlAfVoHJFSshXPeZ6SkGHYpsOTWqWojAp2twZP4a
-         mrETdhKRrbmY60Z2GMTiKqGVzjhOvxzpFvTyxFCe92rGR/Pz7PbyrQA6ktsfaRlWIZy5
-         39uQ==
+        bh=Z7Pnr6PoGhceBp/MkaACIjm9COgBNW2tpmbpLJHir3Y=;
+        b=IbzmUTjqn9n/+y+SZqtsB+qRLYhSXEoe1ltEjAZPuCkgYOkPz8c2wFaGUZHFDN6vCY
+         GOVYsC/MWS+iFe1G8emSQ3jARwgd2C159bS3x2k/xCZKZ5FRCD+cf/cS0lKBZH/r3yUN
+         5yzkE4KeI5AWDsVrkArQJe7M8CJYnJuV+ayHxv/o9nIdcGBDc27qpN1zpBYmFbe/0OiF
+         dkpPAs5EaOZsdkETs2JEqaBZIgb/3RqrfpouG5pko5gD56KuOrQVv78z+tasxPGW9JXR
+         Y1UUKj49dbVjurgySGReQt6N31o0RtaeK1zTlIEz5jVExyMarcWa20AYpedHz9Q6+4iz
+         uNtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712059687; x=1712664487;
+        d=1e100.net; s=20230601; t=1712059683; x=1712664483;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=GUalNrbfbrxbwM0ycSW1gsKaZR1W99qZXQXgxCOsfPw=;
-        b=n2/rrBFv27vHosktrVEi95orMqun5z/n6jbx2TMfjr35a2JtAOowMM6GxsHmlB62Gw
-         CI6nXtTTwUZ82GctHFlVDHK5f7kURJhtjuU/vNbyUFZkjE/QnLxLkWsmbKAplH9jk5R0
-         FBwUN64XLF5zpQ6wCu052sKTIIdX6zpqcmdK8BMHWuba47MG0X/8QPCvipXtwoVI7WAS
-         s1yuxv9GzJGiCRSB5FO0GJwgp1QFnZaPhI1FG0pPfC6jv6zdCqNL5gl3ilaNEGq231zF
-         tzuWGyk6pdwfrdBO7yatolr6yUXnzDua3QuPOB1844E5UUuGwMR+ashTtM4cDrXVefpq
-         XCzw==
-X-Forwarded-Encrypted: i=1; AJvYcCV1uvc9dX676+/YAfV1WCT0LkwWLJjg+hJW9SbbCnrcE58WrN4DX4pLpor+iBm4p+4++MYLbN2HLund0aiYWGZaOPR563/usKDJMOhTwmNm7VNU
-X-Gm-Message-State: AOJu0YxZBuuBeeUrZPUptBR/Kv4kFphCyk4iNI7dgSGq5O11b9niDfbG
-	E2bfb5fgLLkdTa0EhbVNIwlYnAqng52OBASGV4LuyQ0goyNAsOWETI2VPFx//pk=
-X-Google-Smtp-Source: AGHT+IHluOCa3U55gU1404/cstKM8jThiDf3RlVD44TYCRhUJKgbHehml0oDw5pmcgUz0VOCucjG9g==
-X-Received: by 2002:a17:907:86a9:b0:a4e:68a9:a6d2 with SMTP id qa41-20020a17090786a900b00a4e68a9a6d2mr4786542ejc.64.1712059687298;
-        Tue, 02 Apr 2024 05:08:07 -0700 (PDT)
+        bh=Z7Pnr6PoGhceBp/MkaACIjm9COgBNW2tpmbpLJHir3Y=;
+        b=aelN8oUB/b566VvUTHJxDWhFaOsRNdp84pidDGPIYZuOveox9IqhKPcO5WN+kTfjTv
+         2dVX+HmyXnNQV/jRPtuIoM4QsjziX/FOd5uBbP0qQb6bAylcAahhvDHLPvEa/4RrKGIF
+         e/YvaKU9k5Q5B2z6nHb83eqyJjaKYN0NGmZO0Vw44u9znwcutEuha8FcUvdXzKi5Fsgu
+         2iGl7ARLEdznGUeXAZBikCJvAq6mU2AcYe3vncHhLi5ZyWukLHWF++TfzM8s7N5gmdi5
+         Bewp0NHWtf3fV+Y5aL8LbtdvwCDBHd0b6/LCZX5SuUCCZt6uPA6AZ6K2kGXAmO/tZC6K
+         BUSg==
+X-Forwarded-Encrypted: i=1; AJvYcCVhA8gIo9dZshETA9yaBGyXXqnjVQkyqeJb89wJ10GbvWyMNhiDOT2Egi9HN18Lna2z9nNSqeLz31zYn3Okg06mY24zHTQ7ozIlY7cjXvxrYWF+
+X-Gm-Message-State: AOJu0YxQ4M6BCqOiNCtLcGTy0nGfOdnKy9EBWBBlYCvlKVk5XOUm8K/q
+	rM+TK4mvkWpXyQlsvfTTP7506sGKrylPPg5s9vM+PZJmisgYGvQmJqOhJRnOKZk=
+X-Google-Smtp-Source: AGHT+IFwds7j5Oy1CAS64f68Ezrxjls4edaFYUTYmJQDs6h26uVyX/Ha/d2VYKUFNfRhPWQzeA7LaQ==
+X-Received: by 2002:a17:906:f754:b0:a47:183d:6c82 with SMTP id jp20-20020a170906f75400b00a47183d6c82mr7038780ejb.31.1712059682557;
+        Tue, 02 Apr 2024 05:08:02 -0700 (PDT)
 Received: from [127.0.1.1] ([79.114.172.194])
-        by smtp.gmail.com with ESMTPSA id l13-20020a1709065a8d00b00a4df251a601sm6519384ejq.77.2024.04.02.05.08.05
+        by smtp.gmail.com with ESMTPSA id l13-20020a1709065a8d00b00a4df251a601sm6519384ejq.77.2024.04.02.05.08.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Apr 2024 05:08:06 -0700 (PDT)
+        Tue, 02 Apr 2024 05:08:02 -0700 (PDT)
 From: Abel Vesa <abel.vesa@linaro.org>
-Date: Tue, 02 Apr 2024 15:07:36 +0300
-Subject: [PATCH v8 7/7] spmi: pmic-arb: Add multi bus support
+Date: Tue, 02 Apr 2024 15:07:33 +0300
+Subject: [PATCH v8 4/7] spmi: pmic-arb: Make the APID init a version
+ operation
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240402-spmi-multi-master-support-v8-7-ce6f2d14a058@linaro.org>
+Message-Id: <20240402-spmi-multi-master-support-v8-4-ce6f2d14a058@linaro.org>
 References: <20240402-spmi-multi-master-support-v8-0-ce6f2d14a058@linaro.org>
 In-Reply-To: <20240402-spmi-multi-master-support-v8-0-ce6f2d14a058@linaro.org>
 To: Stephen Boyd <sboyd@kernel.org>, 
@@ -88,25 +104,25 @@ Cc: Srini Kandagatla <srinivas.kandagatla@linaro.org>,
  linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
  Abel Vesa <abel.vesa@linaro.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=9929; i=abel.vesa@linaro.org;
- h=from:subject:message-id; bh=5lzv0FCxMJV+6eMWAl2BkglRlaaER3JpeGnoI4xXHTw=;
- b=owEBbQKS/ZANAwAKARtfRMkAlRVWAcsmYgBmC/UZuhRIavaNOOBHKBUu7LI+R3rh6XcutvCL3
- qmA0I9xGcyJAjMEAAEKAB0WIQRO8+4RTnqPKsqn0bgbX0TJAJUVVgUCZgv1GQAKCRAbX0TJAJUV
- Vu9nD/0QtF2vIfzSVVyVdiuiXvVwd/waWHHisBGtzXCWAic97M08R9as1WjaBirT5ANE4Vm+Xzl
- S/rKBGU7At8neh4JamV4Liseat8mkRnGGRLW6JfG51q0wIpNFA9wqJ6GGhFSZG/NAn2QEoSSmGV
- pEDSwqq/PusbASTNA0duyB8JBaBB0VP8eXwMZTT9R02drLDkARimyrUKAU97L4mgwLMyYOGW7ft
- xP5+/jN5bAc0lf+ONKlzZBHla4fZhRmfFb6QUuQ0bGd8E3oZvHBho8JBkzXyRkU8R2qu75vWShW
- 4jZvs3dTwpRbq4gFLDd9xLz4QHK2VxLVziUsdTDIZrKS26ExqjDhLB0NL11lV8adgVvNy/qH02M
- uTb7iAolr4ufJ1a4b0hipXrM2HJKId6VMsjduYzslgDlEgiILXZ81xB/hZg5l1pg8W+XNxifQRU
- hS9AHXUoMEDP6mg/IJtX2Y6QiaIk6Wno/XYKmjdiODmdpVtqXPJcBZ3UjS/lws8Lb8bCfb973dV
- Vs3JkhVWBw0lStw6SWXa1AaPp/Wu907bfcWcXQNdiyWrB1nLPjQh2KhDb9TYeeua5uNwSHuDBYQ
- PDajMeV7G/M3LURjwOyGwiEoRcQ/sXXfieQJYQVtflptLsaKghR/i5bFevv9kGaFeLHVY0IJ0aH
- 2z+xkX923ll3kZA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=9054; i=abel.vesa@linaro.org;
+ h=from:subject:message-id; bh=0hIdOnPxC6/IlNZDC4oQnGBBsSrIsuVpzjKgCwMCAOo=;
+ b=owEBbQKS/ZANAwAKARtfRMkAlRVWAcsmYgBmC/UU4XmfotH+ILXtrDAyYAY2eFzmgr0ENVhS/
+ xJc3ChnLoaJAjMEAAEKAB0WIQRO8+4RTnqPKsqn0bgbX0TJAJUVVgUCZgv1FAAKCRAbX0TJAJUV
+ Vh4WEACJIpSwO9kKQF5zttWad6DOjL+Pj235726jT1wwuv1gTQaf62i4YIDB8Jpav1yAwls/F73
+ h59aK4lBjqnBcV9JetxIMKPYW/nsCAaWGydvquEC58diCZTY2xqItu41zyMaiSBAx3ovU1LJGwH
+ I8KbKjYdUrZdpCYnbnVYkuhCo+AK096bXmEyV8I47kErU1zjo3ZJ/heV67mFY9qeNI91L5ojUHr
+ f4J0BcHBfLQuk/Qm6uaNfOt3oUFzZrI8JgSoWNfxBIhCkPwM8Tkoe4EhgzH6SXKXiDE4LHY2/4Q
+ 3ToAQGR1axG8seUfE3/+QivgMlZTT9KLyns59xfNrn30Bi2TIoooeJ/Txp4eM8Yv/rnR7+GiSJa
+ vRbBa23cH4wzVFFkBCq3SKCxk6+tozUpkDuZrgVFKbnpQ0jpCCgKC91YN/A3YHu4t13X5hG6Vvq
+ 2jKbS8Y7aYIbpnbyAA02jaCOUZMYuwDIpDE4JKyl3Id5kRxvekF3LqHqY9pA7ll6KtvLmJhxL+Q
+ iKfZ9rr1wUIkbwSyz8cqwbjMtV+fientogkNtzwK3l6utP0D7CZRTWdTGL09Wj9xIeW8idY6RE1
+ 3TBDhFu6ma/Ta+xys3lIzkjfphGhQc54QsR9rCx5MZvdR8nTphD3P690PQoRbEX9dciciazE5u6
+ Q/O/WuwAriDT5tg==
 X-Developer-Key: i=abel.vesa@linaro.org; a=openpgp;
  fpr=6AFF162D57F4223A8770EF5AF7BF214136F41FAE
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240402_050810_258661_C74B1B21 
-X-CRM114-Status: GOOD (  24.58  )
+X-CRM114-CacheID: sfid-20240402_130815_603817_CB0976B6 
+X-CRM114-Status: GOOD (  19.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,183 +137,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Starting with HW version 7, there are actually two separate buses
-(with two separate sets of wires). So add support for the second bus.
-The first platform that needs this support for the second bus is the
-Qualcomm X1 Elite, so add the compatible for it as well.
+Rather than using conditionals in probe function, add the APID init
+as a version specific operation. Due to v7, which supports multiple
+buses, pass on the bus index to be used for sorting out the apid base
+and count.
 
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
 ---
- drivers/spmi/spmi-pmic-arb.c | 138 +++++++++++++++++++++++++++++++++++++------
- 1 file changed, 120 insertions(+), 18 deletions(-)
+ drivers/spmi/spmi-pmic-arb.c | 144 +++++++++++++++++++++----------------------
+ 1 file changed, 69 insertions(+), 75 deletions(-)
 
 diff --git a/drivers/spmi/spmi-pmic-arb.c b/drivers/spmi/spmi-pmic-arb.c
-index 3db622ed80de..52b9e275a7b2 100644
+index 704fd4506971..dc969f8bed18 100644
 --- a/drivers/spmi/spmi-pmic-arb.c
 +++ b/drivers/spmi/spmi-pmic-arb.c
-@@ -13,6 +13,7 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
-+#include <linux/of_address.h>
- #include <linux/of_irq.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
-@@ -95,6 +96,8 @@ enum pmic_arb_channel {
- 	PMIC_ARB_CHANNEL_OBS,
- };
- 
-+#define PMIC_ARB_MAX_BUSES		2
-+
- /* Maximum number of support PMIC peripherals */
- #define PMIC_ARB_MAX_PERIPHS		512
- #define PMIC_ARB_MAX_PERIPHS_V7		1024
-@@ -148,6 +151,7 @@ struct spmi_pmic_arb;
-  * @min_apid:		minimum APID (used for bounding IRQ search)
-  * @max_apid:		maximum APID
-  * @irq:		PMIC ARB interrupt.
-+ * @id:			unique ID of the bus
+@@ -186,6 +186,7 @@ struct spmi_pmic_arb {
+  * struct pmic_arb_ver_ops - version dependent functionality.
+  *
+  * @ver_str:		version string.
++ * @init_apid:		finds the apid base and count
+  * @ppid_to_apid:	finds the apid for a given ppid.
+  * @non_data_cmd:	on v1 issues an spmi non-data command.
+  *			on v2 no HW support, returns -EOPNOTSUPP.
+@@ -205,6 +206,7 @@ struct spmi_pmic_arb {
   */
- struct spmi_pmic_arb_bus {
- 	struct spmi_pmic_arb	*pmic_arb;
-@@ -165,6 +169,7 @@ struct spmi_pmic_arb_bus {
- 	u16			min_apid;
- 	u16			max_apid;
- 	int			irq;
-+	u8			id;
- };
- 
- /**
-@@ -179,7 +184,8 @@ struct spmi_pmic_arb_bus {
-  * @ee:			the current Execution Environment
-  * @ver_ops:		version dependent operations.
-  * @max_periphs:	Number of elements in apid_data[]
-- * @bus:		per arbiter bus instance
-+ * @buses:		per arbiter buses instances
-+ * @buses_available:	number of buses registered
-  */
- struct spmi_pmic_arb {
- 	void __iomem		*rd_base;
-@@ -191,7 +197,8 @@ struct spmi_pmic_arb {
- 	u8			ee;
- 	const struct pmic_arb_ver_ops *ver_ops;
- 	int			max_periphs;
--	struct spmi_pmic_arb_bus *bus;
-+	struct spmi_pmic_arb_bus *buses[PMIC_ARB_MAX_BUSES];
-+	int			buses_available;
- };
- 
- /**
-@@ -220,7 +227,7 @@ struct spmi_pmic_arb {
  struct pmic_arb_ver_ops {
  	const char *ver_str;
- 	int (*get_core_resources)(struct platform_device *pdev, void __iomem *core);
--	int (*init_apid)(struct spmi_pmic_arb_bus *bus);
-+	int (*init_apid)(struct spmi_pmic_arb_bus *bus, int index);
- 	int (*ppid_to_apid)(struct spmi_pmic_arb_bus *bus, u16 ppid);
++	int (*init_apid)(struct spmi_pmic_arb *pmic_arb);
+ 	int (*ppid_to_apid)(struct spmi_pmic_arb *pmic_arb, u16 ppid);
  	/* spmi commands (read_cmd, write_cmd, cmd) functionality */
- 	int (*offset)(struct spmi_pmic_arb_bus *bus, u8 sid, u16 addr,
-@@ -309,8 +316,8 @@ static int pmic_arb_wait_for_done(struct spmi_controller *ctrl,
- 			}
- 
- 			if (status & PMIC_ARB_STATUS_FAILURE) {
--				dev_err(&ctrl->dev, "%s: %#x %#x: transaction failed (%#x)\n",
--					__func__, sid, addr, status);
-+				dev_err(&ctrl->dev, "%s: %#x %#x: transaction failed (%#x) reg: 0x%x\n",
-+					__func__, sid, addr, status, offset);
- 				WARN_ON(1);
- 				return -EIO;
- 			}
-@@ -326,8 +333,8 @@ static int pmic_arb_wait_for_done(struct spmi_controller *ctrl,
- 		udelay(1);
- 	}
- 
--	dev_err(&ctrl->dev, "%s: %#x %#x: timeout, status %#x\n",
--		__func__, sid, addr, status);
-+	dev_err(&ctrl->dev, "%s: %#x %#x %#x: timeout, status %#x\n",
-+		__func__, bus->id, sid, addr, status);
- 	return -ETIMEDOUT;
- }
- 
-@@ -1006,11 +1013,17 @@ static int pmic_arb_get_core_resources_v1(struct platform_device *pdev,
+ 	int (*offset)(struct spmi_pmic_arb *pmic_arb, u8 sid, u16 addr,
+@@ -947,6 +949,32 @@ static int qpnpint_irq_domain_alloc(struct irq_domain *domain,
  	return 0;
  }
  
--static int pmic_arb_init_apid_v1(struct spmi_pmic_arb_bus *bus)
-+static int pmic_arb_init_apid_v1(struct spmi_pmic_arb_bus *bus, int index)
- {
- 	struct spmi_pmic_arb *pmic_arb = bus->pmic_arb;
- 	u32 *mapping_table;
- 
-+	if (index) {
-+		dev_err(&bus->spmic->dev, "Unsupported buses count %d detected\n",
-+			index);
-+		return -EINVAL;
-+	}
++static int pmic_arb_init_apid_min_max(struct spmi_pmic_arb *pmic_arb)
++{
++	/*
++	 * Initialize max_apid/min_apid to the opposite bounds, during
++	 * the irq domain translation, we are sure to update these
++	 */
++	pmic_arb->max_apid = 0;
++	pmic_arb->min_apid = pmic_arb->max_periphs - 1;
 +
- 	mapping_table = devm_kcalloc(&bus->spmic->dev, pmic_arb->max_periphs,
- 				     sizeof(*mapping_table), GFP_KERNEL);
- 	if (!mapping_table)
-@@ -1253,11 +1266,17 @@ static int pmic_arb_offset_v2(struct spmi_pmic_arb_bus *bus, u8 sid, u16 addr,
++	return 0;
++}
++
++static int pmic_arb_init_apid_v1(struct spmi_pmic_arb *pmic_arb)
++{
++	u32 *mapping_table;
++
++	mapping_table = devm_kcalloc(&pmic_arb->spmic->dev, pmic_arb->max_periphs,
++				     sizeof(*mapping_table), GFP_KERNEL);
++	if (!mapping_table)
++		return -ENOMEM;
++
++	pmic_arb->mapping_table = mapping_table;
++
++	return pmic_arb_init_apid_min_max(pmic_arb);
++}
++
+ static int pmic_arb_ppid_to_apid_v1(struct spmi_pmic_arb *pmic_arb, u16 ppid)
+ {
+ 	u32 *mapping_table = pmic_arb->mapping_table;
+@@ -1149,6 +1177,34 @@ static int pmic_arb_offset_v2(struct spmi_pmic_arb *pmic_arb, u8 sid, u16 addr,
  	return 0x1000 * pmic_arb->ee + 0x8000 * apid;
  }
  
--static int pmic_arb_init_apid_v5(struct spmi_pmic_arb_bus *bus)
-+static int pmic_arb_init_apid_v5(struct spmi_pmic_arb_bus *bus, int index)
- {
- 	struct spmi_pmic_arb *pmic_arb = bus->pmic_arb;
- 	int ret;
- 
-+	if (index) {
-+		dev_err(&bus->spmic->dev, "Unsupported buses count %d detected\n",
-+			index);
-+		return -EINVAL;
-+	}
-+
- 	bus->base_apid = 0;
- 	bus->apid_count = readl_relaxed(pmic_arb->core + PMIC_ARB_FEATURES) &
- 					PMIC_ARB_FEATURES_PERIPH_MASK;
-@@ -1329,6 +1348,50 @@ static int pmic_arb_get_core_resources_v7(struct platform_device *pdev,
- 	return pmic_arb_get_obsrvr_chnls_v2(pdev);
- }
- 
-+/*
-+ * Only v7 supports 2 buses. Each bus will get a different apid count, read
-+ * from different registers.
-+ */
-+static int pmic_arb_init_apid_v7(struct spmi_pmic_arb_bus *bus, int index)
++static int pmic_arb_init_apid_v5(struct spmi_pmic_arb *pmic_arb)
 +{
-+	struct spmi_pmic_arb *pmic_arb = bus->pmic_arb;
 +	int ret;
 +
-+	if (index == 0) {
-+		bus->base_apid = 0;
-+		bus->apid_count = readl_relaxed(pmic_arb->core + PMIC_ARB_FEATURES) &
-+						   PMIC_ARB_FEATURES_PERIPH_MASK;
-+	} else if (index == 1) {
-+		bus->base_apid = readl_relaxed(pmic_arb->core + PMIC_ARB_FEATURES) &
-+						  PMIC_ARB_FEATURES_PERIPH_MASK;
-+		bus->apid_count = readl_relaxed(pmic_arb->core + PMIC_ARB_FEATURES1) &
-+						   PMIC_ARB_FEATURES_PERIPH_MASK;
-+	} else {
-+		dev_err(&bus->spmic->dev, "Unsupported buses count %d detected\n",
-+			bus->id);
++	pmic_arb->base_apid = 0;
++	pmic_arb->apid_count = readl_relaxed(pmic_arb->core + PMIC_ARB_FEATURES) &
++					   PMIC_ARB_FEATURES_PERIPH_MASK;
++
++	if (pmic_arb->base_apid + pmic_arb->apid_count > pmic_arb->max_periphs) {
++		dev_err(&pmic_arb->spmic->dev, "Unsupported APID count %d detected\n",
++			pmic_arb->base_apid + pmic_arb->apid_count);
 +		return -EINVAL;
 +	}
 +
-+	if (bus->base_apid + bus->apid_count > pmic_arb->max_periphs) {
-+		dev_err(&bus->spmic->dev, "Unsupported APID count %d detected\n",
-+			bus->base_apid + bus->apid_count);
-+		return -EINVAL;
-+	}
-+
-+	ret = pmic_arb_init_apid_min_max(bus);
++	ret = pmic_arb_init_apid_min_max(pmic_arb);
 +	if (ret)
 +		return ret;
 +
-+	ret = pmic_arb_read_apid_map_v5(bus);
++	ret = pmic_arb_read_apid_map_v5(pmic_arb);
 +	if (ret) {
-+		dev_err(&bus->spmic->dev, "could not read APID->PPID mapping table, rc= %d\n",
++		dev_err(&pmic_arb->spmic->dev, "could not read APID->PPID mapping table, rc= %d\n",
 +			ret);
 +		return ret;
 +	}
@@ -306,129 +234,169 @@ index 3db622ed80de..52b9e275a7b2 100644
 +}
 +
  /*
-  * v7 offset per ee and per apid for observer channels and per apid for
+  * v5 offset per ee and per apid for observer channels and per apid for
   * read/write channels.
-@@ -1581,7 +1644,7 @@ static const struct pmic_arb_ver_ops pmic_arb_v5 = {
+@@ -1363,6 +1419,7 @@ pmic_arb_apid_owner_v7(struct spmi_pmic_arb *pmic_arb, u16 n)
+ 
+ static const struct pmic_arb_ver_ops pmic_arb_v1 = {
+ 	.ver_str		= "v1",
++	.init_apid		= pmic_arb_init_apid_v1,
+ 	.ppid_to_apid		= pmic_arb_ppid_to_apid_v1,
+ 	.non_data_cmd		= pmic_arb_non_data_cmd_v1,
+ 	.offset			= pmic_arb_offset_v1,
+@@ -1377,6 +1434,7 @@ static const struct pmic_arb_ver_ops pmic_arb_v1 = {
+ 
+ static const struct pmic_arb_ver_ops pmic_arb_v2 = {
+ 	.ver_str		= "v2",
++	.init_apid		= pmic_arb_init_apid_v1,
+ 	.ppid_to_apid		= pmic_arb_ppid_to_apid_v2,
+ 	.non_data_cmd		= pmic_arb_non_data_cmd_v2,
+ 	.offset			= pmic_arb_offset_v2,
+@@ -1391,6 +1449,7 @@ static const struct pmic_arb_ver_ops pmic_arb_v2 = {
+ 
+ static const struct pmic_arb_ver_ops pmic_arb_v3 = {
+ 	.ver_str		= "v3",
++	.init_apid		= pmic_arb_init_apid_v1,
+ 	.ppid_to_apid		= pmic_arb_ppid_to_apid_v2,
+ 	.non_data_cmd		= pmic_arb_non_data_cmd_v2,
+ 	.offset			= pmic_arb_offset_v2,
+@@ -1405,6 +1464,7 @@ static const struct pmic_arb_ver_ops pmic_arb_v3 = {
+ 
+ static const struct pmic_arb_ver_ops pmic_arb_v5 = {
+ 	.ver_str		= "v5",
++	.init_apid		= pmic_arb_init_apid_v5,
+ 	.ppid_to_apid		= pmic_arb_ppid_to_apid_v5,
+ 	.non_data_cmd		= pmic_arb_non_data_cmd_v2,
+ 	.offset			= pmic_arb_offset_v5,
+@@ -1419,6 +1479,7 @@ static const struct pmic_arb_ver_ops pmic_arb_v5 = {
+ 
  static const struct pmic_arb_ver_ops pmic_arb_v7 = {
  	.ver_str		= "v7",
- 	.get_core_resources	= pmic_arb_get_core_resources_v7,
--	.init_apid		= pmic_arb_init_apid_v5,
-+	.init_apid		= pmic_arb_init_apid_v7,
++	.init_apid		= pmic_arb_init_apid_v5,
  	.ppid_to_apid		= pmic_arb_ppid_to_apid_v5,
  	.non_data_cmd		= pmic_arb_non_data_cmd_v2,
  	.offset			= pmic_arb_offset_v7,
-@@ -1605,6 +1668,7 @@ static int spmi_pmic_arb_bus_init(struct platform_device *pdev,
- 				  struct device_node *node,
- 				  struct spmi_pmic_arb *pmic_arb)
- {
-+	int bus_index = pmic_arb->buses_available;
- 	struct spmi_pmic_arb_bus *bus;
- 	struct device *dev = &pdev->dev;
+@@ -1444,7 +1505,6 @@ static int spmi_pmic_arb_probe(struct platform_device *pdev)
  	struct spmi_controller *ctrl;
-@@ -1623,7 +1687,7 @@ static int spmi_pmic_arb_bus_init(struct platform_device *pdev,
+ 	struct resource *res;
+ 	void __iomem *core;
+-	u32 *mapping_table;
+ 	u32 channel, ee, hw_ver;
+ 	int err;
  
- 	bus = spmi_controller_get_drvdata(ctrl);
+@@ -1472,12 +1532,6 @@ static int spmi_pmic_arb_probe(struct platform_device *pdev)
  
--	pmic_arb->bus = bus;
-+	pmic_arb->buses[bus_index] = bus;
+ 	pmic_arb->core_size = resource_size(res);
  
- 	bus->ppid_to_apid = devm_kcalloc(dev, PMIC_ARB_MAX_PPID,
- 					 sizeof(*bus->ppid_to_apid),
-@@ -1666,12 +1730,13 @@ static int spmi_pmic_arb_bus_init(struct platform_device *pdev,
- 	bus->cnfg = cnfg;
- 	bus->irq = irq;
- 	bus->spmic = ctrl;
-+	bus->id = bus_index;
+-	pmic_arb->ppid_to_apid = devm_kcalloc(&ctrl->dev, PMIC_ARB_MAX_PPID,
+-					      sizeof(*pmic_arb->ppid_to_apid),
+-					      GFP_KERNEL);
+-	if (!pmic_arb->ppid_to_apid)
+-		return -ENOMEM;
+-
+ 	hw_ver = readl_relaxed(core + PMIC_ARB_VERSION);
  
--	ret = pmic_arb->ver_ops->init_apid(bus);
-+	ret = pmic_arb->ver_ops->init_apid(bus, bus_index);
- 	if (ret)
- 		return ret;
+ 	if (hw_ver < PMIC_ARB_VERSION_V2_MIN) {
+@@ -1511,58 +1565,17 @@ static int spmi_pmic_arb_probe(struct platform_device *pdev)
+ 			return PTR_ERR(pmic_arb->wr_base);
+ 	}
  
--	dev_dbg(&pdev->dev, "adding irq domain\n");
-+	dev_dbg(&pdev->dev, "adding irq domain for bus %d\n", bus_index);
+-	pmic_arb->max_periphs = PMIC_ARB_MAX_PERIPHS;
++	dev_info(&ctrl->dev, "PMIC arbiter version %s (0x%x)\n",
++		 pmic_arb->ver_ops->ver_str, hw_ver);
  
- 	bus->domain = irq_domain_add_tree(dev->of_node,
- 					  &pmic_arb_irq_domain_ops, bus);
-@@ -1684,14 +1749,53 @@ static int spmi_pmic_arb_bus_init(struct platform_device *pdev,
- 					 pmic_arb_chained_irq, bus);
+-	if (hw_ver >= PMIC_ARB_VERSION_V7_MIN) {
++	if (hw_ver < PMIC_ARB_VERSION_V7_MIN)
++		pmic_arb->max_periphs = PMIC_ARB_MAX_PERIPHS;
++	else
+ 		pmic_arb->max_periphs = PMIC_ARB_MAX_PERIPHS_V7;
+-		/* Optional property for v7: */
+-		of_property_read_u32(pdev->dev.of_node, "qcom,bus-id",
+-					&pmic_arb->bus_instance);
+-		if (pmic_arb->bus_instance > 1) {
+-			dev_err(&pdev->dev, "invalid bus instance (%u) specified\n",
+-				pmic_arb->bus_instance);
+-			return -EINVAL;
+-		}
  
- 	ctrl->dev.of_node = node;
-+	dev_set_name(&ctrl->dev, "spmi-%d", bus_index);
+-		if (pmic_arb->bus_instance == 0) {
+-			pmic_arb->base_apid = 0;
+-			pmic_arb->apid_count =
+-				readl_relaxed(core + PMIC_ARB_FEATURES) &
+-				PMIC_ARB_FEATURES_PERIPH_MASK;
+-		} else {
+-			pmic_arb->base_apid =
+-				readl_relaxed(core + PMIC_ARB_FEATURES) &
+-				PMIC_ARB_FEATURES_PERIPH_MASK;
+-			pmic_arb->apid_count =
+-				readl_relaxed(core + PMIC_ARB_FEATURES1) &
+-				PMIC_ARB_FEATURES_PERIPH_MASK;
+-		}
+-
+-		if (pmic_arb->base_apid + pmic_arb->apid_count > pmic_arb->max_periphs) {
+-			dev_err(&pdev->dev, "Unsupported APID count %d detected\n",
+-				pmic_arb->base_apid + pmic_arb->apid_count);
+-			return -EINVAL;
+-		}
+-	} else if (hw_ver >= PMIC_ARB_VERSION_V5_MIN) {
+-		pmic_arb->base_apid = 0;
+-		pmic_arb->apid_count = readl_relaxed(core + PMIC_ARB_FEATURES) &
+-					PMIC_ARB_FEATURES_PERIPH_MASK;
+-
+-		if (pmic_arb->apid_count > pmic_arb->max_periphs) {
+-			dev_err(&pdev->dev, "Unsupported APID count %d detected\n",
+-				pmic_arb->apid_count);
+-			return -EINVAL;
+-		}
+-	}
+-
+-	pmic_arb->apid_data = devm_kcalloc(&ctrl->dev, pmic_arb->max_periphs,
+-					   sizeof(*pmic_arb->apid_data),
+-					   GFP_KERNEL);
+-	if (!pmic_arb->apid_data)
+-		return -ENOMEM;
+-
+-	dev_info(&ctrl->dev, "PMIC arbiter version %s (0x%x)\n",
+-		 pmic_arb->ver_ops->ver_str, hw_ver);
++	err = pmic_arb->ver_ops->init_apid(pmic_arb);
++	if (err)
++		return err;
  
- 	ret = devm_spmi_controller_add(dev, ctrl);
- 	if (ret)
- 		return ret;
- 
-+	pmic_arb->buses_available++;
-+
- 	return 0;
- }
- 
-+static int spmi_pmic_arb_register_buses(struct spmi_pmic_arb *pmic_arb,
-+					struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct device_node *node = dev->of_node;
-+	struct device_node *child;
-+	int ret;
-+
-+	/* legacy mode doesn't provide child node for the bus */
-+	if (of_device_is_compatible(node, "qcom,spmi-pmic-arb"))
-+		return spmi_pmic_arb_bus_init(pdev, node, pmic_arb);
-+
-+	for_each_available_child_of_node(node, child) {
-+		if (of_node_name_eq(child, "spmi")) {
-+			ret = spmi_pmic_arb_bus_init(pdev, child, pmic_arb);
-+			if (ret)
-+				return ret;
-+		}
-+	}
-+
-+	return ret;
-+}
-+
-+static void spmi_pmic_arb_deregister_buses(struct spmi_pmic_arb *pmic_arb)
-+{
-+	int i;
-+
-+	for (i = 0; i < PMIC_ARB_MAX_BUSES; i++) {
-+		struct spmi_pmic_arb_bus *bus = pmic_arb->buses[i];
-+
-+		irq_set_chained_handler_and_data(bus->irq,
-+						 NULL, NULL);
-+		irq_domain_remove(bus->domain);
-+	}
-+}
-+
- static int spmi_pmic_arb_probe(struct platform_device *pdev)
- {
- 	struct spmi_pmic_arb *pmic_arb;
-@@ -1762,21 +1866,19 @@ static int spmi_pmic_arb_probe(struct platform_device *pdev)
+ 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "intr");
+ 	pmic_arb->intr = devm_ioremap_resource(&ctrl->dev, res);
+@@ -1604,16 +1617,6 @@ static int spmi_pmic_arb_probe(struct platform_device *pdev)
+ 	}
  
  	pmic_arb->ee = ee;
+-	mapping_table = devm_kcalloc(&ctrl->dev, pmic_arb->max_periphs,
+-					sizeof(*mapping_table), GFP_KERNEL);
+-	if (!mapping_table)
+-		return -ENOMEM;
+-
+-	pmic_arb->mapping_table = mapping_table;
+-	/* Initialize max_apid/min_apid to the opposite bounds, during
+-	 * the irq domain translation, we are sure to update these */
+-	pmic_arb->max_apid = 0;
+-	pmic_arb->min_apid = pmic_arb->max_periphs - 1;
  
--	return spmi_pmic_arb_bus_init(pdev, dev->of_node, pmic_arb);
-+	return spmi_pmic_arb_register_buses(pmic_arb, pdev);
- }
+ 	platform_set_drvdata(pdev, ctrl);
+ 	raw_spin_lock_init(&pmic_arb->lock);
+@@ -1622,15 +1625,6 @@ static int spmi_pmic_arb_probe(struct platform_device *pdev)
+ 	ctrl->read_cmd = pmic_arb_read_cmd;
+ 	ctrl->write_cmd = pmic_arb_write_cmd;
  
- static void spmi_pmic_arb_remove(struct platform_device *pdev)
- {
- 	struct spmi_pmic_arb *pmic_arb = platform_get_drvdata(pdev);
--	struct spmi_pmic_arb_bus *bus = pmic_arb->bus;
- 
--	irq_set_chained_handler_and_data(bus->irq,
--					 NULL, NULL);
--	irq_domain_remove(bus->domain);
-+	spmi_pmic_arb_deregister_buses(pmic_arb);
- }
- 
- static const struct of_device_id spmi_pmic_arb_match_table[] = {
- 	{ .compatible = "qcom,spmi-pmic-arb", },
-+	{ .compatible = "qcom,x1e80100-spmi-pmic-arb", },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, spmi_pmic_arb_match_table);
+-	if (hw_ver >= PMIC_ARB_VERSION_V5_MIN) {
+-		err = pmic_arb_read_apid_map_v5(pmic_arb);
+-		if (err) {
+-			dev_err(&pdev->dev, "could not read APID->PPID mapping table, rc= %d\n",
+-				err);
+-			return err;
+-		}
+-	}
+-
+ 	dev_dbg(&pdev->dev, "adding irq domain\n");
+ 	pmic_arb->domain = irq_domain_add_tree(pdev->dev.of_node,
+ 					 &pmic_arb_irq_domain_ops, pmic_arb);
 
 -- 
 2.34.1
