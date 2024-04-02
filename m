@@ -4,74 +4,167 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AFC7C6FD1F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Apr 2024 04:48:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3015CD1284
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Apr 2024 06:20:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zcZ1XvZurJIxI4ZQKWbpR4Ga1nSS5VfGi/vCmA0KJsY=; b=qqRLJoYlmq5ulbxlulzSeiJLNS
-	ZzSSEfMGS8U3AByLXZRkLl2cpftnrR4WRUT8m/VBVoXwH3wThhrQs+M57Rla0DY18beRNnhIks1Dv
-	xwmLWra9xCp6/ralXic+OWNQUOwxIIDWckqBhfQ7tOE/o1Xk8Ua+SppGn0NBgmD/NRqhkUpWvi/MC
-	pC40G6N3WbVkRlTxiGZk4OJkZ2Iff394I9p6+pfMgt1eubM06aKDpntRqKEPyViEH0FMbNuacHrzW
-	cjJNu5RTcI+XamNMGsII/UkLebPJw3wa0RSTUxumywndsVunSZhG5Qg3wgiXtyK/eDd+1z7gc46gd
-	wgGZMAiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f2Lh5eRLWX3yb6bWKYqHH1vp77wJljITj+EIHLEAYB8=; b=BiZuqHN7WcVcg4IASkqqshSkDX
+	l9BhjJY2gwsPpnbaZ0SH9iRbDFz+wvly6qXeUNwlamSMq2/G4M+S5uUKS30fODrut0L98KD/WFQ0y
+	KsWmaeVqIp9paRzO1Q9twsPDBpbYaMVT/Og3icTJVpikzSwvdm0PAZIvUPigrdHldZKMTMr7ytiS6
+	A38pZTbOx68ikH4BIlKRMLUqZoOknH/F7gMCAKkeFiwlJZZ+2aP1lY6n8i69q9TBqUTRC0c4WvNEZ
+	0eJXK+9pkpHT5MTBQ4IYtxthHaZ1pOBwTprWgsAe9Ph3dRoUnRunIiIpGuRWpxmTf62jBzkVexciP
+	PBsRBC2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrW4D-00000009i8E-2wbg;
-	Tue, 02 Apr 2024 04:48:13 +0000
-Received: from pb-smtp1.pobox.com ([64.147.108.70])
+	id 1rrXVh-00000009tDr-1tik;
+	Tue, 02 Apr 2024 06:20:41 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrUun-00000009aTy-0Xte
-	for linux-mediatek@lists.infradead.org;
-	Tue, 02 Apr 2024 03:34:27 +0000
-Received: from pb-smtp1.pobox.com (unknown [127.0.0.1])
-	by pb-smtp1.pobox.com (Postfix) with ESMTP id 3A49B1EC042;
-	Mon,  1 Apr 2024 23:34:24 -0400 (EDT)
-	(envelope-from nico@fluxnic.net)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed; d=pobox.com; h=from:to:cc
-	:subject:date:message-id:in-reply-to:references:mime-version
-	:content-transfer-encoding; s=sasl; bh=fbzduesfoi7WBSbK48nDNOKNv
-	y0Xx2fWyeNfaOxED4U=; b=qSVSMIuLeyhuHwd47Wyd/V2tOikGs7RP0kAtezgcN
-	W+0AFfXWOYWrfiKIiYhpBI0qRdKnwnlesUGLloWUxWh+m9+9ibguNj0esnPsINPv
-	NW/gZhgCrFSWixZ+M893r177Vk642lpkkCsjy6R3xh9dQ0TajE/LTe6fSQjInqw8
-	bU=
-Received: from pb-smtp1.nyi.icgroup.com (unknown [127.0.0.1])
-	by pb-smtp1.pobox.com (Postfix) with ESMTP id 31E091EC041;
-	Mon,  1 Apr 2024 23:34:24 -0400 (EDT)
-	(envelope-from nico@fluxnic.net)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed; d=fluxnic.net;
- h=from:to:cc:subject:date:message-id:in-reply-to:references:mime-version:content-transfer-encoding; s=2016-12.pbsmtp; bh=O5G071kShCO6ZVBcYtGhvwuX7G84AfatCEHH9aQAkJQ=; b=iktrO/+jKbdkIJSxpdkVueJydOevmqwQzytw3XWutnt7itCcOwaROWzhBu57tkrzAMPJg1lopRYzLEovg0nxPJWUWo+fhYzoYkYev0fmDYtUfrL8OeL5Di7gWVunHOXfcBnv0dGKxIqLiorx5t4r84c00yupOQxsWcK7Ety+Pe0=
-Received: from yoda.fluxnic.net (unknown [24.201.101.36])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by pb-smtp1.pobox.com (Postfix) with ESMTPSA id 8A6391EC040;
-	Mon,  1 Apr 2024 23:34:23 -0400 (EDT)
-	(envelope-from nico@fluxnic.net)
-Received: from xanadu.lan (OpenWrt.lan [192.168.1.1])
-	by yoda.fluxnic.net (Postfix) with ESMTPSA id 75E65C1CED5;
-	Mon,  1 Apr 2024 23:27:45 -0400 (EDT)
-From: Nicolas Pitre <nico@fluxnic.net>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>,
-	linux-pm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org
-Cc: Nicolas Pitre <npitre@baylibre.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 11/15] thermal/drivers/mediatek/lvts_thermal: allow early empty sensor slots
-Date: Mon,  1 Apr 2024 23:25:45 -0400
-Message-ID: <20240402032729.2736685-12-nico@fluxnic.net>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240402032729.2736685-1-nico@fluxnic.net>
-References: <20240402032729.2736685-1-nico@fluxnic.net>
+	id 1rrXVd-00000009tAp-0ezv;
+	Tue, 02 Apr 2024 06:20:39 +0000
+X-UUID: 19607d5af0b911eeac1957ae9f99f617-20240401
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=f2Lh5eRLWX3yb6bWKYqHH1vp77wJljITj+EIHLEAYB8=;
+	b=NwfplQWrHoUw8t09RU0kYMylZ4EOmCrKX9reESrrKkJ9tgzZr218GLAOUDyYJcj+XWarW02pB8BtMaSymunkjz0+S+g6lqywjRzJhn/TZsu0M/HvSKruWK70QHJ+ayVebZaLblrP6Y9wRwbML1+TsS8ifKRQYIngdwaREIAuRg4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:9c50d601-37a5-491c-a234-45285e072ed4,IP:0,U
+	RL:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:20
+X-CID-META: VersionHash:6f543d0,CLOUDID:53899b00-c26b-4159-a099-3b9d0558e447,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 19607d5af0b911eeac1957ae9f99f617-20240401
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <boy.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 164306078; Mon, 01 Apr 2024 23:20:28 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 2 Apr 2024 14:19:53 +0800
+Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 2 Apr 2024 14:19:53 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=H1M1DnopipzgAffSK0mfGHqQGmbu85x9gzRxCtObPT4JFizFW+LlrveRdZcGS5Y5S9w1PC/9qechiEMlBWwSZ939JSrAjHhHS+7+qDHLWY0EGl2drv+f6eZ+12KD1IRfV13LwjQOgWjYFia+xho67Ew0ELAohl9q7Pk2MKinmN4LcnAQpBzoPpyth568lc0OF/AYTdxLuxjxlMviIge5Jf9vvavYmsydrZUZpfI79vDRiofEgZyz3sEB/b9g/OpGwFA5t4WplFYiVs5DFh78o7l2y3npm+nHgxN5CAE0XC6L/xA7S90ujDCgdbfP8/kOR6ieOnUZ8B4vQM9EICdakA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=f2Lh5eRLWX3yb6bWKYqHH1vp77wJljITj+EIHLEAYB8=;
+ b=HLMkKNaF08MhBvXTjTK9jlTXt+4XTzgA8tdEnbFxkOzW/7T5L8jgLuBdcpUqe5H4WViW/hY8XN7OYlNlyWjB1x/2LA6j98Ix7sZirSApkJnCFWgJWZg7FFR5RyC8T/Rojv94hmzZs5BvwFJweuc0mYZz22k2TGLOhno9DuQABrZ2r2xMaiYehn8rAY6Uhmjk4eLPWAW5EXfejuBIjtVoGdsQ31O2OMjvVWvyQXAEVVbfgMDxCTutxpen/kJQz0a0Sg7+AVv4F14pxlKI+/BqapHGw02Dc9NQTIhL1x+nynxDkm4Z7h+9tECmwe4EaNTLaZkggHogaB210jDbuVJmwQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=f2Lh5eRLWX3yb6bWKYqHH1vp77wJljITj+EIHLEAYB8=;
+ b=tKZPuemvF8iUvu78Qc0Mzb9DcOzjEqt1oe562utVGmiyLk2dfMORSIYyqM77HF6u0gkSmgKPMNPlIO6KjEf7uUa3g1hYJL8xfcmWlGcnTVFWrApKXGJW0xdYDgxBBr0a7J4JNeXt0t/x2Lwz789OlaaQu4ibzoAlb5JiHhA8riw=
+Received: from TYZPR03MB7867.apcprd03.prod.outlook.com (2603:1096:400:465::7)
+ by SEZPR03MB8418.apcprd03.prod.outlook.com (2603:1096:101:21d::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.43; Tue, 2 Apr
+ 2024 06:19:51 +0000
+Received: from TYZPR03MB7867.apcprd03.prod.outlook.com
+ ([fe80::45da:cd44:6032:ea9]) by TYZPR03MB7867.apcprd03.prod.outlook.com
+ ([fe80::45da:cd44:6032:ea9%5]) with mapi id 15.20.7409.042; Tue, 2 Apr 2024
+ 06:19:51 +0000
+From: =?utf-8?B?Qm95IFd1ICjlkLPli4Poqrwp?= <Boy.Wu@mediatek.com>
+To: "linux@armlinux.org.uk" <linux@armlinux.org.uk>, "ryabinin.a.a@gmail.com"
+	<ryabinin.a.a@gmail.com>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-mm@kvack.org" <linux-mm@kvack.org>, "andreyknvl@gmail.com"
+	<andreyknvl@gmail.com>, "kasan-dev@googlegroups.com"
+	<kasan-dev@googlegroups.com>, "dvyukov@google.com" <dvyukov@google.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "glider@google.com" <glider@google.com>,
+	"vincenzo.frascino@arm.com" <vincenzo.frascino@arm.com>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] arm: kasan: clear stale stack poison
+Thread-Topic: [PATCH] arm: kasan: clear stale stack poison
+Thread-Index: AQHaNH50g4opuV1/1EWa6LrsT9gdhLFOplGAgAKS7oCAA+lIAA==
+Date: Tue, 2 Apr 2024 06:19:51 +0000
+Message-ID: <1b18064c7ca66b26114610772f17753159351355.camel@mediatek.com>
+References: <20231222022741.8223-1-boy.wu@mediatek.com>
+	 <6837adc26ed09b9acd6a2239a14014cd3f16c87c.camel@mediatek.com>
+	 <Zghbkx67hKErqui2@shell.armlinux.org.uk>
+In-Reply-To: <Zghbkx67hKErqui2@shell.armlinux.org.uk>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB7867:EE_|SEZPR03MB8418:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: hmTl+8hCLhD2FKA2uSSjnam2fiOhA4lVr1QEup+z43+MfKsydGp+DsZLVywFfOUX1m3KiQaKwdACvBrv3O2N6/z8aNqP3hJ73zOGj/MvwJRiB2BIgzqSCEtAEWg9lZN74KP7gx7Sun1SnyA5Y43hySNs0gV4FIQWOvZkuzOt3WDrcDNMqFO2o/kN4sV4xIj4LoGA9KqGmicM8U4jEUSoPKhqcTda459XhU58ucP0gBfxvgmb9m/qGXg1CPhotnafotWycv0GtGYxzr5uQGHXxtBRZiSCr7u2hJRqH5DyVxfzTmFJKRvzDO83LuvMdo7mfekkReIfF9oGJiYjYWijZMx9opqSlWyJq9ohJPyH9WAWTUicGwBnnieYjkMcRSWF5EUHBpty/Qr0t2wSdOy1HlSjCvBDhebw8rKxt+zBL8A+2WMZLIG/5sXqiH1SMyGzX0+JWZlX2p7BcnxySN+ESk1hlB0ScO165b8P3JG/0QOO538KUyNxgwQtKkvcCZHvAnhadR0G+ZO58Rgiq6WZUtHLyODZntSyAZbLQwdpxkzQWDrSCq65+Zka+QGrZNsCrH4ZSTufLln6Y2XM0Eoqk6GEc2lGgl6E/2Us2SBwhag=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7867.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366007)(7416005)(1800799015)(376005);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?MHVMWlI4anJIa3ErS2xvaWhpZmpUZklvTlBweFNKLy8xUWI5TlJGMjVqZkRv?=
+ =?utf-8?B?akR4R1NPSENPYStRanlLNnNyVWZuY1VLQi9DMWFCQXZXVFFlaGFpaC95a0g3?=
+ =?utf-8?B?L0RuK3pJMlBrbEVycEU5RDRlTFN0alM1WWpwYnRUb2kxdVZSdkYxanZQZFJ3?=
+ =?utf-8?B?NysvZkc0YmQzSS9OWWVmYmtBYmRFSjBJM0xLTXpnRWszSGo3ZXViTEtaZUNz?=
+ =?utf-8?B?NlUveGNrR1dFR2xaSS9zY3B4dUlDem80Z29TeUxCekkxTnNtMjZ2ZDJpZmtF?=
+ =?utf-8?B?ak9uaWl2REsyUWpTU0cyOVVEWTBuclFDeGRReXRZRHl1WkdZYWJFZG9VdWpP?=
+ =?utf-8?B?TUVpVUFmc3NYdnNjbVlORWY4M0lNQW50cUFOVjRkSjRmUFF5Z2pGaVhoSEcr?=
+ =?utf-8?B?bUYvVndZdVJ3SEh1ajdrVk9BeSttb3AwM0ZXQ3V5MVVlakV0My9DWStBMllJ?=
+ =?utf-8?B?VloyYXgwZ2w5eDA1K0ZaOWU0YTJrMGhZd3ViVEJIaENjTGpERUd6NkxldmtJ?=
+ =?utf-8?B?dmFCRkZ4ZW5ZSDhIQnhqWXRzVFdQWlF1THJqL2FyNU14UWtROFJzYUdQdmQx?=
+ =?utf-8?B?LyswT0NHdlZ4cUFEd1ZBVGRNRm9ZUkQyaG9WU1psZ0Y2WGNWdyt5SytORnJJ?=
+ =?utf-8?B?UTEraW4xcEEyOU9hQlF3NnhWTEZqUmt5MWowSG54NkZBQlFyTjhydWVzQ2Q1?=
+ =?utf-8?B?MnNWdU8vYVBURjBQNE8xTUdlYUE4d0UwUTZjR1c1UU0wN2dMUjFOTnhERTli?=
+ =?utf-8?B?bklia1FWL2tBNEVJOHFlTzJsaENIZEVodnJ3S09LaWdISkxuUGh0VGZCekFW?=
+ =?utf-8?B?cHIreTd3NTNNUE9FK0kya090bThOTkZrM0xSekpGekVhdms0WVRJQ0N6V1Nw?=
+ =?utf-8?B?VUpuQ2QrNm5OTDZsa1gxckFIWVU1QjRNNmxFODcrQUcyeVQ1dUM4Zlp4U2V4?=
+ =?utf-8?B?ODBzRFdwa25BRGhUMFNSb1VkeEp0Wld3L2oyNmh5SzdTcTZTei91ZXFraTFV?=
+ =?utf-8?B?QzZTMGY4TzBlN1RFMkdwQ3FxNEtISW5lSG80NlpwNWRlL2pWR3JSOUdQdXJ5?=
+ =?utf-8?B?V0tRUjJUOHZCc2VaNjd6VFl6UUdBb3hoNzR4dENVdUYycGVWQWlmVjNxV0xG?=
+ =?utf-8?B?TklOaFhSbS9XTGdJSVVKRjlHR0pPemxlaWZua3ZIUTBKRktJeDN3TDZObzRS?=
+ =?utf-8?B?TEJOM1l3V3FobzQwQ1NmZEd1K2R5Y1BMakp4T1dzYzZnbkZHMmE4NFRjN3dw?=
+ =?utf-8?B?ejFpdHl2VUdRU1hleTlDWTNoOEx2NGhTRHRLZkw0SVVpanlGckR1QkYzdFJj?=
+ =?utf-8?B?UXRZRWY0ZDdJb3VuUndtbWhNdDlmL201VCthSjdCVEZSQ1kzS1U4UmNOTlBC?=
+ =?utf-8?B?T0k0bmdSc1N1MkhxZWxDL3lhSWYzOTk2Z3pMR3pOTmpTakdHMXl6TkorQlc1?=
+ =?utf-8?B?QU5Dc1hkYWFac0xsZ1ZTMjdxdmt0R2wzTWZJdzEzN09tc1FhcnJNeGFhSzVN?=
+ =?utf-8?B?bmt4TE1NSE5wVTFGdmhPOGpFRjE5UEZydGs4QzNvUnczYkluelUwRWNZSWlX?=
+ =?utf-8?B?ajZsbUVHOTBVVnU1MGI5cEtYOGVwcXd0aTU4aXVHWmtKQkRiT0x5RE5nRXFZ?=
+ =?utf-8?B?MldQWWFqY1hzVlpqczRqcWdGVTlLZVQybFRreElDWHJmVkdpVUJsSkF5eDRZ?=
+ =?utf-8?B?UWdaU1lCN0dtcnZkOEt0ZkJuMXByYWJwNk5tVlM5N2srYkZUNWJHaTVoZGxE?=
+ =?utf-8?B?SS9MZXc1TGk2UWFzaENGRmh1dXhYaWcvY0o2dXhQK0ZKbVkzclZWTDF5N014?=
+ =?utf-8?B?Q1NxdnM4cXFERCtXVWszaGlLODB4dCtCNVYwd3NEUm9hOUNhYlNReE0wTUVU?=
+ =?utf-8?B?TUNudjBUdGVZVGFLZ0RRalFzNm4vR0JWOG9nVUVVTDNlK3A4SWFyUjBZQ0tj?=
+ =?utf-8?B?cUVReXMxTXFZbTA4cXJtSk5rZGJzSEhJWktCMzBuQ2kyQUk1TkpmVWpsSFRT?=
+ =?utf-8?B?Q3dBaXhzQmNRNmdrR0EyM3FTcXpJNFZ5M2llT2RZdWNOTVdCYUpxdG5RQ21J?=
+ =?utf-8?B?elZTcFBCcDAvRkJsc0pCTFhSM3NmMFp6SlhKQXYvS01vY0grSERFU2ZtOUtE?=
+ =?utf-8?Q?d1zLaYQ4HSFuknfD59BbkSzPx?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <A803291350A36141BE4301FBB87B7EB4@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-Pobox-Relay-ID: E618C734-F0A1-11EE-8F40-78DCEB2EC81B-78420484!pb-smtp1.pobox.com
-Content-Transfer-Encoding: quoted-printable
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7867.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 03853e36-222c-4b44-bd39-08dc52dce790
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Apr 2024 06:19:51.0986
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: lNjSacrvt5mzFrIxSoy3yHy7dnC1RxbKDcC+bkf7fsdCwWnyf64qKWmy8ykVoMHyC7odMdAdIpe81q5tLOfwSg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB8418
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240401_203425_282632_76F627E2 
-X-CRM114-Status: GOOD (  18.45  )
+X-CRM114-CacheID: sfid-20240401_232037_247393_AA36DEF4 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,309 +179,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Nicolas Pitre <npitre@baylibre.com>
-
-Some systems don't always populate sensor controller slots starting
-at slot 0. Use a bitmap instead of a count to indicate valid sensor
-slots. Also create a pretty iterator for that.
-
-About that iterator: it causes checkpatch to complain with "ERROR:
-Macros with multiple statements should be enclosed in a do - while
-loop". However this is not possible here. And many similar iterators
-do exist using the same form in the tree already.
-
-Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
----
- drivers/thermal/mediatek/lvts_thermal.c | 63 +++++++++++++++----------
- 1 file changed, 37 insertions(+), 26 deletions(-)
-
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/me=
-diatek/lvts_thermal.c
-index 00649483bb..ae0c8f265b 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -107,10 +107,23 @@ struct lvts_ctrl_data {
- 	struct lvts_sensor_data lvts_sensor[LVTS_SENSOR_MAX];
- 	int cal_offset[LVTS_SENSOR_MAX];
- 	int num_lvts_sensor;
-+	u8 valid_sensor_mask;
- 	int offset;
- 	int mode;
- };
-=20
-+#define VALID_SENSOR_MAP(s0, s1, s2, s3) \
-+	.valid_sensor_mask =3D (((s0) ? BIT(0) : 0) | \
-+			      ((s1) ? BIT(1) : 0) | \
-+			      ((s2) ? BIT(2) : 0) | \
-+			      ((s3) ? BIT(3) : 0))
-+
-+#define lvts_for_each_valid_sensor(i, lvts_ctrl_data) \
-+	for ((i) =3D 0; (i) < LVTS_SENSOR_MAX; (i)++) \
-+		if (!((lvts_ctrl_data)->valid_sensor_mask & BIT(i))) \
-+			continue; \
-+		else
-+
- struct lvts_data {
- 	const struct lvts_ctrl_data *lvts_ctrl;
- 	int num_lvts_ctrl;
-@@ -134,7 +147,6 @@ struct lvts_ctrl {
- 	const struct lvts_data *lvts_data;
- 	u32 calibration[LVTS_SENSOR_MAX];
- 	u32 hw_tshut_raw_temp;
--	int num_lvts_sensor;
- 	int mode;
- 	void __iomem *base;
- 	int low_thresh;
-@@ -346,7 +358,7 @@ static bool lvts_should_update_thresh(struct lvts_ctr=
-l *lvts_ctrl, int high)
- 	if (high > lvts_ctrl->high_thresh)
- 		return true;
-=20
--	for (i =3D 0; i < lvts_ctrl->num_lvts_sensor; i++)
-+	lvts_for_each_valid_sensor(i, lvts_ctrl->lvts_data->lvts_ctrl)
- 		if (lvts_ctrl->sensors[i].high_thresh =3D=3D lvts_ctrl->high_thresh
- 		    && lvts_ctrl->sensors[i].low_thresh =3D=3D lvts_ctrl->low_thresh)
- 			return false;
-@@ -550,6 +562,7 @@ static int lvts_sensor_init(struct device *dev, struc=
-t lvts_ctrl *lvts_ctrl,
- 					const struct lvts_ctrl_data *lvts_ctrl_data)
- {
- 	struct lvts_sensor *lvts_sensor =3D lvts_ctrl->sensors;
-+
- 	void __iomem *msr_regs[] =3D {
- 		LVTS_MSR0(lvts_ctrl->base),
- 		LVTS_MSR1(lvts_ctrl->base),
-@@ -566,7 +579,7 @@ static int lvts_sensor_init(struct device *dev, struc=
-t lvts_ctrl *lvts_ctrl,
-=20
- 	int i;
-=20
--	for (i =3D 0; i < lvts_ctrl_data->num_lvts_sensor; i++) {
-+	lvts_for_each_valid_sensor(i, lvts_ctrl_data) {
-=20
- 		int dt_id =3D lvts_ctrl_data->lvts_sensor[i].dt_id;
-=20
-@@ -606,8 +619,6 @@ static int lvts_sensor_init(struct device *dev, struc=
-t lvts_ctrl *lvts_ctrl,
- 		lvts_sensor[i].high_thresh =3D INT_MIN;
- 	};
-=20
--	lvts_ctrl->num_lvts_sensor =3D lvts_ctrl_data->num_lvts_sensor;
--
- 	return 0;
- }
-=20
-@@ -678,7 +689,7 @@ static int lvts_calibration_init(struct device *dev, =
-struct lvts_ctrl *lvts_ctrl
- {
- 	int i;
-=20
--	for (i =3D 0; i < lvts_ctrl_data->num_lvts_sensor; i++) {
-+	lvts_for_each_valid_sensor(i, lvts_ctrl_data) {
- 		const struct lvts_sensor_data *sensor =3D
- 					&lvts_ctrl_data->lvts_sensor[i];
-=20
-@@ -1101,7 +1112,7 @@ static int lvts_ctrl_start(struct device *dev, stru=
-ct lvts_ctrl *lvts_ctrl)
- 	u32 *sensor_bitmap =3D lvts_ctrl->mode =3D=3D LVTS_MSR_IMMEDIATE_MODE ?
- 			     sensor_imm_bitmap : sensor_filt_bitmap;
-=20
--	for (i =3D 0; i < lvts_ctrl->num_lvts_sensor; i++) {
-+	lvts_for_each_valid_sensor(i, lvts_ctrl->lvts_data->lvts_ctrl) {
-=20
- 		int dt_id =3D lvts_sensors[i].dt_id;
-=20
-@@ -1324,7 +1335,7 @@ static const struct lvts_ctrl_data mt7988_lvts_ap_d=
-ata_ctrl[] =3D {
- 			{ .dt_id =3D MT7988_ETH2P5G_1,
- 			  .cal_offsets =3D { 0x0c, 0x0d, 0x0e } }
- 		},
--		.num_lvts_sensor =3D 4,
-+		VALID_SENSOR_MAP(1, 1, 1, 1),
- 		.offset =3D 0x0,
- 	},
- 	{
-@@ -1338,7 +1349,7 @@ static const struct lvts_ctrl_data mt7988_lvts_ap_d=
-ata_ctrl[] =3D {
- 			{ .dt_id =3D MT7988_ETHWARP_1,
- 			   .cal_offsets =3D { 0x20, 0x21, 0x22 } }
- 		},
--		.num_lvts_sensor =3D 4,
-+		VALID_SENSOR_MAP(1, 1, 1, 1),
- 		.offset =3D 0x100,
- 	}
- };
-@@ -1401,7 +1412,7 @@ static const struct lvts_ctrl_data mt8186_lvts_data=
-_ctrl[] =3D {
- 			{ .dt_id =3D MT8186_CAM,
- 			  .cal_offsets =3D { 12, 13, 14 } }
- 		},
--		.num_lvts_sensor =3D 4,
-+		VALID_SENSOR_MAP(1, 1, 1, 1),
- 		.offset =3D 0x0,
- 	},
- 	{
-@@ -1411,7 +1422,7 @@ static const struct lvts_ctrl_data mt8186_lvts_data=
-_ctrl[] =3D {
- 			{ .dt_id =3D MT8186_BIG_CPU1,
- 			  .cal_offsets =3D { 27, 20, 21 } }
- 		},
--		.num_lvts_sensor =3D 2,
-+		VALID_SENSOR_MAP(1, 1, 0, 0),
- 		.offset =3D 0x100,
- 	},
- 	{
-@@ -1423,7 +1434,7 @@ static const struct lvts_ctrl_data mt8186_lvts_data=
-_ctrl[] =3D {
- 			{ .dt_id =3D MT8186_MFG,
- 			  .cal_offsets =3D { 39, 32, 33 } }
- 		},
--		.num_lvts_sensor =3D 3,
-+		VALID_SENSOR_MAP(1, 1, 1, 0),
- 		.offset =3D 0x200,
- 	}
- };
-@@ -1436,7 +1447,7 @@ static const struct lvts_ctrl_data mt8192_lvts_mcu_=
-data_ctrl[] =3D {
- 			{ .dt_id =3D MT8192_MCU_BIG_CPU1,
- 			  .cal_offsets =3D { 0x08, 0x09, 0x0a } }
- 		},
--		.num_lvts_sensor =3D 2,
-+		VALID_SENSOR_MAP(1, 1, 0, 0),
- 		.offset =3D 0x0,
- 		.mode =3D LVTS_MSR_FILTERED_MODE,
- 	},
-@@ -1447,7 +1458,7 @@ static const struct lvts_ctrl_data mt8192_lvts_mcu_=
-data_ctrl[] =3D {
- 			{ .dt_id =3D MT8192_MCU_BIG_CPU3,
- 			  .cal_offsets =3D { 0x10, 0x11, 0x12 } }
- 		},
--		.num_lvts_sensor =3D 2,
-+		VALID_SENSOR_MAP(1, 1, 0, 0),
- 		.offset =3D 0x100,
- 		.mode =3D LVTS_MSR_FILTERED_MODE,
- 	},
-@@ -1462,7 +1473,7 @@ static const struct lvts_ctrl_data mt8192_lvts_mcu_=
-data_ctrl[] =3D {
- 			{ .dt_id =3D MT8192_MCU_LITTLE_CPU3,
- 			  .cal_offsets =3D { 0x20, 0x21, 0x22 } }
- 		},
--		.num_lvts_sensor =3D 4,
-+		VALID_SENSOR_MAP(1, 1, 1, 1),
- 		.offset =3D 0x200,
- 		.mode =3D LVTS_MSR_FILTERED_MODE,
- 	}
-@@ -1476,7 +1487,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_d=
-ata_ctrl[] =3D {
- 			{ .dt_id =3D MT8192_AP_VPU1,
- 			  .cal_offsets =3D { 0x28, 0x29, 0x2a } }
- 		},
--		.num_lvts_sensor =3D 2,
-+		VALID_SENSOR_MAP(1, 1, 0, 0),
- 		.offset =3D 0x0,
- 	},
- 	{
-@@ -1486,7 +1497,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_d=
-ata_ctrl[] =3D {
- 			{ .dt_id =3D MT8192_AP_GPU1,
- 			  .cal_offsets =3D { 0x30, 0x31, 0x32 } }
- 		},
--		.num_lvts_sensor =3D 2,
-+		VALID_SENSOR_MAP(1, 1, 0, 0),
- 		.offset =3D 0x100,
- 	},
- 	{
-@@ -1496,7 +1507,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_d=
-ata_ctrl[] =3D {
- 			{ .dt_id =3D MT8192_AP_CAM,
- 			  .cal_offsets =3D { 0x38, 0x39, 0x3a } },
- 		},
--		.num_lvts_sensor =3D 2,
-+		VALID_SENSOR_MAP(1, 1, 0, 0),
- 		.offset =3D 0x200,
- 	},
- 	{
-@@ -1508,7 +1519,7 @@ static const struct lvts_ctrl_data mt8192_lvts_ap_d=
-ata_ctrl[] =3D {
- 			{ .dt_id =3D MT8192_AP_MD2,
- 			  .cal_offsets =3D { 0x44, 0x45, 0x46 } }
- 		},
--		.num_lvts_sensor =3D 3,
-+		VALID_SENSOR_MAP(1, 1, 1, 0),
- 		.offset =3D 0x300,
- 	}
- };
-@@ -1521,7 +1532,7 @@ static const struct lvts_ctrl_data mt8195_lvts_mcu_=
-data_ctrl[] =3D {
- 			{ .dt_id =3D MT8195_MCU_BIG_CPU1,
- 			  .cal_offsets =3D { 0x07, 0x08, 0x09 } }
- 		},
--		.num_lvts_sensor =3D 2,
-+		VALID_SENSOR_MAP(1, 1, 0, 0),
- 		.offset =3D 0x0,
- 	},
- 	{
-@@ -1531,7 +1542,7 @@ static const struct lvts_ctrl_data mt8195_lvts_mcu_=
-data_ctrl[] =3D {
- 			{ .dt_id =3D MT8195_MCU_BIG_CPU3,
- 			  .cal_offsets =3D { 0x10, 0x11, 0x12 } }
- 		},
--		.num_lvts_sensor =3D 2,
-+		VALID_SENSOR_MAP(1, 1, 0, 0),
- 		.offset =3D 0x100,
- 	},
- 	{
-@@ -1545,7 +1556,7 @@ static const struct lvts_ctrl_data mt8195_lvts_mcu_=
-data_ctrl[] =3D {
- 			{ .dt_id =3D MT8195_MCU_LITTLE_CPU3,
- 			  .cal_offsets =3D { 0x1f, 0x20, 0x21 } }
- 		},
--		.num_lvts_sensor =3D 4,
-+		VALID_SENSOR_MAP(1, 1, 1, 1),
- 		.offset =3D 0x200,
- 	}
- };
-@@ -1558,7 +1569,7 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_d=
-ata_ctrl[] =3D {
- 			{ .dt_id =3D MT8195_AP_VPU1,
- 			  .cal_offsets =3D { 0x28, 0x29, 0x2a } }
- 		},
--		.num_lvts_sensor =3D 2,
-+		VALID_SENSOR_MAP(1, 1, 0, 0),
- 		.offset =3D 0x0,
- 	},
- 	{
-@@ -1568,7 +1579,7 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_d=
-ata_ctrl[] =3D {
- 			{ .dt_id =3D MT8195_AP_GPU1,
- 			  .cal_offsets =3D { 0x31, 0x32, 0x33 } }
- 		},
--		.num_lvts_sensor =3D 2,
-+		VALID_SENSOR_MAP(1, 1, 0, 0),
- 		.offset =3D 0x100,
- 	},
- 	{
-@@ -1580,7 +1591,7 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_d=
-ata_ctrl[] =3D {
- 			{ .dt_id =3D MT8195_AP_INFRA,
- 			  .cal_offsets =3D { 0x3d, 0x3e, 0x3f } }
- 		},
--		.num_lvts_sensor =3D 3,
-+		VALID_SENSOR_MAP(1, 1, 1, 0),
- 		.offset =3D 0x200,
- 	},
- 	{
-@@ -1590,7 +1601,7 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_d=
-ata_ctrl[] =3D {
- 			{ .dt_id =3D MT8195_AP_CAM1,
- 			  .cal_offsets =3D { 0x46, 0x47, 0x48 } }
- 		},
--		.num_lvts_sensor =3D 2,
-+		VALID_SENSOR_MAP(1, 1, 0, 0),
- 		.offset =3D 0x300,
- 	}
- };
---=20
-2.44.0
-
+SGkgQW5kcmV5LA0KDQpDb3VsZCB5b3UgcGxlYXNlIGhlbHAgcmV2aWV3IHRoaXMgcGF0Y2g/DQoN
+Ck9uIFNhdCwgMjAyNC0wMy0zMCBhdCAxODozNiArMDAwMCwgUnVzc2VsbCBLaW5nIChPcmFjbGUp
+IHdyb3RlOg0KPiAgT24gRnJpLCBNYXIgMjksIDIwMjQgYXQgMDM6MTc6MzlBTSArMDAwMCwgQm95
+IFd1ICjlkLPli4PoqrwpIHdyb3RlOg0KPiA+IEhpIFJ1c3NlbGw6DQo+ID4gDQo+ID4gS2luZ2x5
+IHBpbmcNCj4gDQo+IEknbSBhZnJhaWQgSSBrbm93IG5vd3QgYWJvdXQgS0FTQU4uIEl0IHdhcyBh
+ZGRlZCB0byBBUk0zMiBieSBvdGhlcnMuDQo+IEkndmUgbm8gaWRlYSB3aGV0aGVyIHRoaXMgaXMg
+Y29ycmVjdCBvciBub3QuIENhbiB3ZSBnZXQgc29tZW9uZSB3aG8NCj4ga25vd3MgS0FTQU4gdG8g
+cmV2aWV3IHRoaXM/DQo+IA0KPiAtLSANCj4gUk1LJ3MgUGF0Y2ggc3lzdGVtOiBodHRwczovL3d3
+dy5hcm1saW51eC5vcmcudWsvZGV2ZWxvcGVyL3BhdGNoZXMvDQo+IEZUVFAgaXMgaGVyZSEgODBN
+YnBzIGRvd24gMTBNYnBzIHVwLiBEZWNlbnQgY29ubmVjdGl2aXR5IGF0IGxhc3QhDQo=
 
