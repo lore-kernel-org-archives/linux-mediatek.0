@@ -4,79 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2227CD1294
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 09:40:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 793A1CD1288
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 09:53:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Wn/76pYQR540CZbFJPHpX8ZPYvd3JaV3IggNNQ6u4qw=; b=QFdKSuwqXHAfvkkgtDZpmZnDf9
-	owPuquUyOTf87IEqjMUeDC22w4iOISaptne8ew9KfhO2DqFKNWxcTns1z8eiQrilZ/AoJK62edQ4w
-	o4O2H2IsDpIGKHO3gmADpvKHdSlOGuPO6pOLJXB4wqPNGB0Oj2aXBy+W/rPBPqvHCNGzfiEbsqPNO
-	0TMVKSCvIXw95KLUv9+mWhSQJxQJGje6i0SlC7IzBmCmFVOGpsbop8xZSwbkFRUCAx//XQQJoiGEa
-	j+lf/mNG4GkZy+on3UJdgwDUtmjx4aV6UKzMpOZWWhjoKnu+9Lm3qV4Q02EfrK/kL0t6Q7WPfxMs/
-	TE1sDmDA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qeWypaWPri9rAciaLOJ6QGFlszp1IkAwPLtsuqUh4/c=; b=uYrJO2zXZPvmWgNv/P0AbqOkpv
+	7cYTmjyNznSofevhd2QhWbHgByDaGKIQsdX+eGIbk9/zF/f+KZu9gWUl2V7G2YBREkbpouFqSzu35
+	jRCi139A2Qs80FDALQ3H1dvVigs0fQFYrdahX3BLo1cPyrW2YaQtzMS5sVsvyUhZb6PJr9N8b22yC
+	TuGciQN2EyCTdh3EdbB05zHbqUU6Fr9BBc4bfs4RtasMNyEaEiC8tLAbsje9zpG6Q15JajxPS0hVa
+	nLD3Uuiiw7t0VL4f7PGFDHpZhazRZBolkbO3mzTy2nNPZQ6CjapZYcVmthcr6GfOYn67xwEO7/yFw
+	M83Jn06Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrx6d-0000000FFs0-2PTs;
-	Wed, 03 Apr 2024 09:40:31 +0000
+	id 1rrxIl-0000000FK5U-0iip;
+	Wed, 03 Apr 2024 09:53:03 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrx6a-0000000FFqv-381z;
-	Wed, 03 Apr 2024 09:40:30 +0000
-X-UUID: 31c16ff4f19e11eeac1957ae9f99f617-20240403
+	id 1rrxIi-0000000FK4L-05Bu
+	for linux-mediatek@lists.infradead.org;
+	Wed, 03 Apr 2024 09:53:01 +0000
+X-UUID: efdb5864f19f11eeac1957ae9f99f617-20240403
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Wn/76pYQR540CZbFJPHpX8ZPYvd3JaV3IggNNQ6u4qw=;
-	b=eiJRGOy+/8Mz8jPvvzIxhYx2dZpUfwldR3fDlu+oumJoPi2yFxcmEr2i2/xC8IZBakAETPUzz6hQgW9GXlDPvOjZbxLbz90ggRFgrWIw9XSGh0iDpI3YLYwI5I+ko7MuhkhVgWVEuEbIDZccWGi+K7qcXIDDrODg/ncKijOcm0U=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=qeWypaWPri9rAciaLOJ6QGFlszp1IkAwPLtsuqUh4/c=;
+	b=Wd89HncCqiuuIDK5PxX1OwXkXXvpesZ1/x66C9pjCEfbLxYSsBTJbvfiJxaryt4zWn4HGFDRbpVN+exbNHPZ8AqnZDO8xoQtIRqBNLUOt2MXZve/32e5VPhRFRT/oVrHW0p6EPRBYFDKP7Zw4NtwFCH2QRR2fdnmWO4iVezgL7Y=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:c12630e7-a6de-48fd-97c3-ad17ecab62a4,IP:0,U
-	RL:0,TC:0,Content:43,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:43
-X-CID-META: VersionHash:6f543d0,CLOUDID:9ae54482-4f93-4875-95e7-8c66ea833d57,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4,EDM:-3,IP:nil,U
+X-CID-O-INFO: VERSION:1.1.37,REQID:7f6c89ba-812d-4b74-99db-7fca9afa3b41,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:99acc585-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 31c16ff4f19e11eeac1957ae9f99f617-20240403
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
+X-UUID: efdb5864f19f11eeac1957ae9f99f617-20240403
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1707717442; Wed, 03 Apr 2024 02:40:23 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	with ESMTP id 1116826458; Wed, 03 Apr 2024 02:52:52 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 3 Apr 2024 17:30:20 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 3 Apr 2024 17:30:19 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Sebastian Fricke <sebastian.fricke@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei
- Dong <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH] media: mediatek: vcodec: fix the error sizeimage for 10bit bitstream
-Date: Wed, 3 Apr 2024 17:30:18 +0800
-Message-ID: <20240403093018.13168-1-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ 15.2.1118.26; Wed, 3 Apr 2024 17:52:15 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 3 Apr 2024 17:52:15 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <km.lin@mediatek.com>,
+	<robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+	<Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Rong Yan <rong.yan@mediatek.com>, Ming
+ Yen Hsieh <mingyen.hsieh@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7921: cqm rssi low/high event notify
+Date: Wed, 3 Apr 2024 17:52:14 +0800
+Message-ID: <20240403095214.20596-1-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240403_024028_955530_DBA45F35 
-X-CRM114-Status: GOOD (  12.19  )
+X-CRM114-CacheID: sfid-20240403_025300_108304_9004ADFE 
+X-CRM114-Status: GOOD (  14.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,85 +87,191 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The sizeimage of each plane are calculated the same way for 8bit and
-10bit bitstream. Need to enlarge the sizeimage with simeimage*5/4 for
-10bit bitstream when try and set fmt.
+From: "Rong Yan" <rong.yan@mediatek.com>
 
-Fixes: 9d86be9bda6c ("media: mediatek: vcodec: Add driver to support 10bit")
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+The implementation amounts to setting the driver flag
+IEEE80211_VIF_SUPPORTS_CQM_RSSI, and then providing
+mechanisms for continuously updating enough information
+to be able to provide notifications to userspace when
+RSSI drops below a certain threshold
+
+Signed-off-by: Rong Yan <rong.yan@mediatek.com>
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 ---
- .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 47 ++++++++++++++-----
- 1 file changed, 34 insertions(+), 13 deletions(-)
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  6 ++
+ .../net/wireless/mediatek/mt76/mt7921/main.c  |  5 ++
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 61 +++++++++++++++++++
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  1 +
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |  1 +
+ 5 files changed, 74 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-index 9107707de6c4..45209894f1fe 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-@@ -259,6 +259,7 @@ static int vidioc_try_fmt(struct mtk_vcodec_dec_ctx *ctx, struct v4l2_format *f,
- 		pix_fmt_mp->num_planes = 1;
- 		pix_fmt_mp->plane_fmt[0].bytesperline = 0;
- 	} else if (f->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
-+		unsigned int dram_y, dram_c, dram_y_10bit, dram_c_10bit;
- 		int tmp_w, tmp_h;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 657a4d1f856b..8a6642495d62 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -1004,6 +1004,7 @@ enum {
+ 	MCU_EVENT_CH_PRIVILEGE = 0x18,
+ 	MCU_EVENT_SCHED_SCAN_DONE = 0x23,
+ 	MCU_EVENT_DBG_MSG = 0x27,
++	MCU_EVENT_RSSI_NOTIFY = 0x96,
+ 	MCU_EVENT_TXPWR = 0xd0,
+ 	MCU_EVENT_EXT = 0xed,
+ 	MCU_EVENT_RESTART_DL = 0xef,
+@@ -1303,6 +1304,7 @@ enum {
+ 	MCU_CE_CMD_SCHED_SCAN_ENABLE = 0x61,
+ 	MCU_CE_CMD_SCHED_SCAN_REQ = 0x62,
+ 	MCU_CE_CMD_GET_NIC_CAPAB = 0x8a,
++	MCU_CE_CMD_RSSI_MONITOR = 0xa1,
+ 	MCU_CE_CMD_SET_MU_EDCA_PARMS = 0xb0,
+ 	MCU_CE_CMD_REG_WRITE = 0xc0,
+ 	MCU_CE_CMD_REG_READ = 0xc0,
+@@ -1448,6 +1450,10 @@ struct mt76_connac_beacon_loss_event {
+ 	u8 pad[2];
+ } __packed;
  
- 		/*
-@@ -280,22 +281,42 @@ static int vidioc_try_fmt(struct mtk_vcodec_dec_ctx *ctx, struct v4l2_format *f,
- 		    (pix_fmt_mp->height + 64) <= frmsize->max_height)
- 			pix_fmt_mp->height += 64;
- 
--		mtk_v4l2_vdec_dbg(0, ctx,
--				  "before resize wxh=%dx%d, after resize wxh=%dx%d, sizeimage=%d",
--				  tmp_w, tmp_h, pix_fmt_mp->width, pix_fmt_mp->height,
--				  pix_fmt_mp->width * pix_fmt_mp->height);
-+		dram_y = pix_fmt_mp->width * pix_fmt_mp->height;
-+		dram_c = dram_y / 2;
++struct mt76_connac_rssi_notify_event {
++	s32 rssi[4];
++} __packed;
 +
-+		dram_y_10bit = dram_y * 5 / 4;
-+		dram_c_10bit = dram_y_10bit / 2;
- 
- 		pix_fmt_mp->num_planes = fmt->num_planes;
--		pix_fmt_mp->plane_fmt[0].sizeimage =
--				pix_fmt_mp->width * pix_fmt_mp->height;
--		pix_fmt_mp->plane_fmt[0].bytesperline = pix_fmt_mp->width;
--
--		if (pix_fmt_mp->num_planes == 2) {
--			pix_fmt_mp->plane_fmt[1].sizeimage =
--				(pix_fmt_mp->width * pix_fmt_mp->height) / 2;
--			pix_fmt_mp->plane_fmt[1].bytesperline =
--				pix_fmt_mp->width;
-+		if (pix_fmt_mp->num_planes == 1) {
-+			if (ctx->is_10bit_bitstream) {
-+				pix_fmt_mp->plane_fmt[0].bytesperline = pix_fmt_mp->width * 5 / 4;
-+				pix_fmt_mp->plane_fmt[0].sizeimage = dram_y_10bit + dram_c_10bit;
-+			} else {
-+				pix_fmt_mp->plane_fmt[0].bytesperline = pix_fmt_mp->width;
-+				pix_fmt_mp->plane_fmt[0].sizeimage = dram_y + dram_c;
-+			}
-+		} else {
-+			if (ctx->is_10bit_bitstream) {
-+				pix_fmt_mp->plane_fmt[0].bytesperline = pix_fmt_mp->width * 5 / 4;
-+				pix_fmt_mp->plane_fmt[1].bytesperline = pix_fmt_mp->width * 5 / 4;
-+
-+				pix_fmt_mp->plane_fmt[0].sizeimage = dram_y_10bit;
-+				pix_fmt_mp->plane_fmt[1].sizeimage = dram_c_10bit;
-+			} else {
-+				pix_fmt_mp->plane_fmt[0].bytesperline = pix_fmt_mp->width;
-+				pix_fmt_mp->plane_fmt[1].bytesperline = pix_fmt_mp->width;
-+
-+				pix_fmt_mp->plane_fmt[0].sizeimage = dram_y;
-+				pix_fmt_mp->plane_fmt[1].sizeimage = dram_c;
-+			}
- 		}
-+
-+		mtk_v4l2_vdec_dbg(0, ctx,
-+				  "before resize:%dx%d, after resize:%dx%d, sizeimage=0x%x_0x%x",
-+				  tmp_w, tmp_h, pix_fmt_mp->width, pix_fmt_mp->height,
-+				  pix_fmt_mp->plane_fmt[0].sizeimage,
-+				  pix_fmt_mp->plane_fmt[1].sizeimage);
+ struct mt76_connac_mcu_bss_event {
+ 	u8 bss_idx;
+ 	u8 is_absent;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index ca36de34171b..afcda7c481e0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -310,6 +310,8 @@ mt7921_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
  	}
  
- 	pix_fmt_mp->flags = 0;
+ 	vif->driver_flags |= IEEE80211_VIF_BEACON_FILTER;
++	if (phy->chip_cap & MT792x_CHIP_CAP_RSSI_NOTIFY_EVT_EN)
++		vif->driver_flags |= IEEE80211_VIF_SUPPORTS_CQM_RSSI;
+ out:
+ 	mt792x_mutex_release(dev);
+ 
+@@ -679,6 +681,9 @@ static void mt7921_bss_info_changed(struct ieee80211_hw *hw,
+ 	if (changed & BSS_CHANGED_PS)
+ 		mt7921_mcu_uni_bss_ps(dev, vif);
+ 
++	if (changed & BSS_CHANGED_CQM)
++		mt7921_mcu_set_rssimonitor(dev, vif);
++
+ 	if (changed & BSS_CHANGED_ASSOC) {
+ 		mt7921_mcu_sta_update(dev, NULL, vif, true,
+ 				      MT76_STA_INFO_STATE_ASSOC);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index 8b4ce32a2cd1..5ccef867b4b8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -253,6 +253,42 @@ mt7921_mcu_tx_done_event(struct mt792x_dev *dev, struct sk_buff *skb)
+ 	mt7921_mac_add_txs(dev, event->txs);
+ }
+ 
++static void
++mt7921_mcu_rssi_monitor_iter(void *priv, u8 *mac,
++			     struct ieee80211_vif *vif)
++{
++	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
++	struct mt76_connac_rssi_notify_event *event = priv;
++	enum nl80211_cqm_rssi_threshold_event nl_event;
++	s32 rssi = le32_to_cpu(event->rssi[mvif->mt76.idx]);
++
++	if (!rssi)
++		return;
++
++	if (!(vif->driver_flags & IEEE80211_VIF_SUPPORTS_CQM_RSSI))
++		return;
++
++	if (rssi > vif->bss_conf.cqm_rssi_thold)
++		nl_event = NL80211_CQM_RSSI_THRESHOLD_EVENT_HIGH;
++	else
++		nl_event = NL80211_CQM_RSSI_THRESHOLD_EVENT_LOW;
++
++	ieee80211_cqm_rssi_notify(vif, nl_event, rssi, GFP_KERNEL);
++}
++
++static void
++mt7921_mcu_rssi_monitor_event(struct mt792x_dev *dev, struct sk_buff *skb)
++{
++	struct mt76_connac_rssi_notify_event *event;
++
++	skb_pull(skb, sizeof(struct mt76_connac2_mcu_rxd));
++	event = (struct mt76_connac_rssi_notify_event *)skb->data;
++
++	ieee80211_iterate_active_interfaces_atomic(mt76_hw(dev),
++						   IEEE80211_IFACE_ITER_RESUME_ALL,
++						   mt7921_mcu_rssi_monitor_iter, event);
++}
++
+ static void
+ mt7921_mcu_rx_unsolicited_event(struct mt792x_dev *dev, struct sk_buff *skb)
+ {
+@@ -281,6 +317,9 @@ mt7921_mcu_rx_unsolicited_event(struct mt792x_dev *dev, struct sk_buff *skb)
+ 	case MCU_EVENT_TX_DONE:
+ 		mt7921_mcu_tx_done_event(dev, skb);
+ 		break;
++	case MCU_EVENT_RSSI_NOTIFY:
++		mt7921_mcu_rssi_monitor_event(dev, skb);
++		break;
+ 	default:
+ 		break;
+ 	}
+@@ -327,6 +366,7 @@ void mt7921_mcu_rx_event(struct mt792x_dev *dev, struct sk_buff *skb)
+ 	if (rxd->ext_eid == MCU_EXT_EVENT_RATE_REPORT ||
+ 	    rxd->eid == MCU_EVENT_BSS_BEACON_LOSS ||
+ 	    rxd->eid == MCU_EVENT_SCHED_SCAN_DONE ||
++	    rxd->eid == MCU_EVENT_RSSI_NOTIFY ||
+ 	    rxd->eid == MCU_EVENT_SCAN_DONE ||
+ 	    rxd->eid == MCU_EVENT_TX_DONE ||
+ 	    rxd->eid == MCU_EVENT_DBG_MSG ||
+@@ -1391,3 +1431,24 @@ int mt7921_mcu_set_rxfilter(struct mt792x_dev *dev, u32 fif,
+ 	return mt76_mcu_send_msg(&dev->mt76, MCU_CE_CMD(SET_RX_FILTER),
+ 				 &data, sizeof(data), false);
+ }
++
++int mt7921_mcu_set_rssimonitor(struct mt792x_dev *dev, struct ieee80211_vif *vif)
++{
++	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
++	struct {
++		u8 enable;
++		s8 cqm_rssi_high;
++		s8 cqm_rssi_low;
++		u8 bss_idx;
++		u16 duration;
++		u8 rsv2[2];
++	} __packed data = {
++		.enable = vif->cfg.assoc,
++		.cqm_rssi_high = vif->bss_conf.cqm_rssi_thold + vif->bss_conf.cqm_rssi_hyst,
++		.cqm_rssi_low = vif->bss_conf.cqm_rssi_thold - vif->bss_conf.cqm_rssi_hyst,
++		.bss_idx = mvif->mt76.idx,
++	};
++
++	return mt76_mcu_send_msg(&dev->mt76, MCU_CE_CMD(RSSI_MONITOR),
++				 &data, sizeof(data), false);
++}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+index 3016636d18c6..62617589a84f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+@@ -323,4 +323,5 @@ int mt7921_mcu_set_roc(struct mt792x_phy *phy, struct mt792x_vif *vif,
+ int mt7921_mcu_abort_roc(struct mt792x_phy *phy, struct mt792x_vif *vif,
+ 			 u8 token_id);
+ void mt7921_roc_abort_sync(struct mt792x_dev *dev);
++int mt7921_mcu_set_rssimonitor(struct mt792x_dev *dev, struct ieee80211_vif *vif);
+ #endif
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index a8556de3d480..4c14e2c5da5b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -26,6 +26,7 @@
+ #define MT792x_FW_CAP_CNM	BIT(7)
+ 
+ #define MT792x_CHIP_CAP_CLC_EVT_EN BIT(0)
++#define MT792x_CHIP_CAP_RSSI_NOTIFY_EVT_EN BIT(1)
+ 
+ /* NOTE: used to map mt76_rates. idx may change if firmware expands table */
+ #define MT792x_BASIC_RATES_TBL	11
 -- 
-2.25.1
+2.18.0
 
 
