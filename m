@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10B1ACD128A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 10:56:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55672CD1288
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 10:57:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DG8RRYGurHH7eJqvVVi62aX25pa8rpEUy+z3d66HOPc=; b=UXecI3mx+YDWgNGFhedw2AeNQP
-	T0wH7sjZP2SeEQF9SHKKDGr1OvOJDVL/IdIhQOq1tYYpH/B6QKFpuAw0+IUh2MDLBrUbrJ8cSkpWJ
-	9vm0+VnrP3rlWpD6ZJJ9Cs8LlfpzTCfuwD4R1cfnfZmf+FQIozSpvMwBhPSmjxnyRHEMgdJObTy1Y
-	7a52SxAW7kQDTaW62TUEwM7Tk7q7wjM2pBYto92xFoTYEHU8KlqvqzJJztFJoITcnJcUNwhtUsiCE
-	oBWSM8X/1PhjRk7LWbvwERBW8tVP+qY6oWc+v49NpgCl7xUCFVGYVn833fy4EQUNFhamVOhM1v+ov
-	i8D0zmQw==;
+	bh=BQXR41AesZLRM9jJK9HfvouXViEHlO7QApiKUi7YnH8=; b=OypHx7N2GaQ4lgfv951e8YY5mz
+	5XV9nRtBljlO5TrMuxRM+qjBRJQVp+cNWOJ66Ao6VOkDxegGKbtlt1IAtiE5Ohnvy4dSWhs+35vBf
+	XIThsAvxclDu9GYKJA/pfkLkPLi1GFZWTSDw0LXG1BnhkzKT2tLtoM9fU9dK/kZgD8tC+AXJMIew+
+	qb+vVc27FClBy5vFGZqPqbjhrCFyTub1P/fIhaEVSUS684JFMW8tJfCnDikk14ZdnuDAkHXxf/yx7
+	wHhH9DdzPc3vrIUkMKnQCmUs3TDrFjb+m+fEAaula4LIHoYaKtb+uFtstQzsvKtJu8Okdb5lYkg52
+	tB5R7vsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rryI3-0000000Ff7U-1MMw;
-	Wed, 03 Apr 2024 10:56:23 +0000
+	id 1rryJ2-0000000Ffl6-3sGT;
+	Wed, 03 Apr 2024 10:57:24 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rryHz-0000000Ff6I-2AnH
+	id 1rryIz-0000000Ffiu-3z1D
 	for linux-mediatek@lists.infradead.org;
-	Wed, 03 Apr 2024 10:56:21 +0000
+	Wed, 03 Apr 2024 10:57:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
 	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
 	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=DG8RRYGurHH7eJqvVVi62aX25pa8rpEUy+z3d66HOPc=; b=DIsV3PegxvRrMFBV4MQWfctgr1
-	hGROqOBEVGurOe08vyHQXQSZHe9jF0J3ZA5K5nHnU4VZDP/6xwjsyzkKFCUpapqV+3Sq+oBJYilhm
-	dL5x6+6bRKs74rANpFUQZw4ckzAiUVXZSNbKa6h1QKBniUiTfjDJ4grt/c39idV4TO0c=;
+	bh=BQXR41AesZLRM9jJK9HfvouXViEHlO7QApiKUi7YnH8=; b=bTDXjEyoY+y8PaUrVRaxFAYlQr
+	8Oq+GBbd+HL/pv9JzCteYfuBqahIsiGs8uGqUyapTqKliHWpf2eT75ABfy0GAdQrTfBk+RzruqpHc
+	re4PKlLkQcwtN+rcCRgu3NczJMRE9QTjnHY4EswJGonROkX1I7yVyuYIfaQz0Mjwi1nA=;
 Received: from p54ae9c93.dip0.t-ipconnect.de ([84.174.156.147] helo=nf.local)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
 	(Exim 4.94.2)
 	(envelope-from <nbd@nbd.name>)
-	id 1rryHp-00ChNS-C4; Wed, 03 Apr 2024 12:56:09 +0200
-Message-ID: <c3758211-1849-454b-88cc-bb91e040c486@nbd.name>
-Date: Wed, 3 Apr 2024 12:56:08 +0200
+	id 1rryIt-00ChQx-Ja; Wed, 03 Apr 2024 12:57:15 +0200
+Message-ID: <8fe81cdf-5807-4d6b-9bad-7a45208cd15a@nbd.name>
+Date: Wed, 3 Apr 2024 12:57:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/10] wifi: mt76: mt7996: let upper layer handle MGMT
- frame protection
+Subject: Re: [PATCH 10/10] wifi: mt76: mt7996: add sanity check for NAPI
+ schedule
 To: Shayne Chen <shayne.chen@mediatek.com>
 Cc: linux-wireless <linux-wireless@vger.kernel.org>,
  Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
  Evelyn Tsai <evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>,
  linux-mediatek <linux-mediatek@lists.infradead.org>,
- Michael-CY Lee <michael-cy.lee@mediatek.com>
+ Henry Yen <henry.yen@mediatek.com>
 References: <20240320110918.3488-1-shayne.chen@mediatek.com>
- <20240320110918.3488-9-shayne.chen@mediatek.com>
-From: Felix Fietkau <nbd@nbd.name>
+ <20240320110918.3488-10-shayne.chen@mediatek.com>
 Content-Language: en-US
+From: Felix Fietkau <nbd@nbd.name>
 Autocrypt: addr=nbd@nbd.name; keydata=
  xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
  ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
@@ -80,12 +80,13 @@ Autocrypt: addr=nbd@nbd.name; keydata=
  TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
  GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
  cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <20240320110918.3488-9-shayne.chen@mediatek.com>
+In-Reply-To: <20240320110918.3488-10-shayne.chen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240403_035619_804217_457A0DF8 
-X-CRM114-Status: GOOD (  14.53  )
+X-CRM114-CacheID: sfid-20240403_035722_098078_197693F8 
+X-CRM114-Status: UNSURE (   5.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,35 +102,18 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 20.03.24 12:09, Shayne Chen wrote:
-> From: Michael-CY Lee <michael-cy.lee@mediatek.com>
+> From: Henry Yen <henry.yen@mediatek.com>
 > 
-> The firmware support for management frame protection has limitations:
-> - do not support cipher BIP-GMAC-128 and BIP-GMAC-256
-> - support cipher BIP-CMAC-128 and BIP-CMAC-256, except action frame with
->    action type 'not robust'.
+> It's observed that host driver might occasionally receive
+> interrupts from unexpected Rx ring, whose Rx NAPI hasn't been
+> prepared yet. Under such situation, __napi_poll crash issue
+> would occur, so we add a sanity check to prevent it.
 > 
-> Therefore, to simplify the logic, do not set the IGTK to firmware and
-> let the encryption of management frames be handled by upper layer.
-> 
-> Signed-off-by: Michael-CY Lee <michael-cy.lee@mediatek.com>
-> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
-> ---
->   drivers/net/wireless/mediatek/mt76/mt7996/main.c | 8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-> index 338ff10b121d..4ab4d2bcbedc 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-> @@ -352,10 +352,6 @@ static int mt7996_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
->   
->   	/* fall back to sw encryption for unsupported ciphers */
->   	switch (key->cipher) {
-> -	case WLAN_CIPHER_SUITE_AES_CMAC:
-> -		wcid_keyidx = &wcid->hw_key_idx2;
+> Without this patch, we might encounter kernel crash issue
+> especially in WED-on & RRO-on software path.
 
-Did you intend to drop the wcid_keyidx line? If so, I don't see anything 
-related to that in the patch description.
+Does this issue occur even with Lorenzo's fix "wifi: mt76: mt7996: fix 
+uninitialized variable in mt7996_irq_tasklet()"?
 
 - Felix
 
