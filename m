@@ -4,85 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C669DCD1292
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 04:48:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02330CD1288
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 05:48:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RfXxZqRO1iT2ixVp89TG5IOSKAmXlSsHm4PrhfIZCQc=; b=BgD+2Yv3gED3/ybqiSQDKGVFk1
-	4XOJvGOtfB427C0RHhfCUgEaPG6cjNn6A41E8UK6bLn06TYmKmiqUnZoMGKL4ahxoGmAryZ6tXjok
-	fNYDqf73Vl7H7jaSbbXaA8EsZqXdskAyPRAuLUo3HCVFjUb5wAUfLXMo9SYwyz99S0qOaUSw0CIrQ
-	XtE+K+zQvuSqxWRWXXbhugT2B9aMitzm5DLPZkPt9hHmY0vDTgafmj6Xi1K7Coth+SbIiZYOd2aiX
-	CUrt8rjZ1Fry4qwuXsTCD1Sc36X+onQaRQ51tji8cWXbAM6oyRsJb6eNlWGynhXm+wYYQNjC27eYP
-	3gRZ+VnA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tAUWnoAjK4f4N8u2nRlqABDVBizkq6YQK37LOUpzcxM=; b=ur5szMIAHJ8nT5/AT8j6SWgZ09
+	WHfyR6FX12KCAuiYQCq0DoavMBTQhKBvd/Tbkz//OayQBN3eqqEAzVSk61J/wanm8vD/uv0CILhKD
+	QJbb53TaMVJ6fTJwz3aDjgcTU4NzBiuuVTFOAWVcYgnNWiLMd4bk9+VE+W2e9MV1wMajbpDZCX/Br
+	ceIsrtZFA1RsKpxracX9vH+eo/0G2VvGRjGoReMg9tnl6+lmcJUlxX7Lr7t0pK1kgJIVsyFurQ3CF
+	aUVrRdxCbmerXnz+rvtQoHwW/PftI0CFOeSkxjx/nXQWVbU2NsOc+zK7fiBTh+9Oiy80NaipfN55B
+	21wKc2mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrsYS-0000000DzwR-19bL;
-	Wed, 03 Apr 2024 04:48:56 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rrtUX-0000000EAXv-1wMb;
+	Wed, 03 Apr 2024 05:48:57 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrrSi-0000000Dns5-11WT;
-	Wed, 03 Apr 2024 03:38:58 +0000
-X-UUID: af865e1ef16b11eeac1957ae9f99f617-20240402
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RfXxZqRO1iT2ixVp89TG5IOSKAmXlSsHm4PrhfIZCQc=;
-	b=rSowIRkn4VmHg3mTlCnFGNnDLLULGjvB8Y2oF+WOU6CpCNuSfJXjItGFZCz8Q3T9rIgZlqPFvY1RBv0GJAjaB3F0YI1KrdNq1dtHltPcX3aoPw58NdyPoNwoBYibmeOUNHf4xCt3sWdAbbojewQVf2J9uG3WG+3NqUFGYe2FRt4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:11419583-e881-485b-b5ff-ef0a3611bd5a,IP:0,U
-	RL:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:e147c185-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: af865e1ef16b11eeac1957ae9f99f617-20240402
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <zhi.mao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1782345716; Tue, 02 Apr 2024 20:38:50 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 3 Apr 2024 11:38:46 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 3 Apr 2024 11:38:45 +0800
-From: Zhi Mao <zhi.mao@mediatek.com>
-To: <mchehab@kernel.org>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <sakari.ailus@linux.intel.com>
-CC: <laurent.pinchart@ideasonboard.com>, <shengnan.wang@mediatek.com>,
-	<yaya.chang@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <yunkec@chromium.org>,
-	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <jacopo.mondi@ideasonboard.com>,
-	<zhi.mao@mediatek.com>, <10572168@qq.com>, <hverkuil-cisco@xs4all.nl>,
-	<heiko@sntech.de>, <jernej.skrabec@gmail.com>, <macromorgan@hotmail.com>,
-	<linus.walleij@linaro.org>, <hdegoede@redhat.com>,
-	<tomi.valkeinen@ideasonboard.com>, <gerald.loacker@wolfvision.net>,
-	<andy.shevchenko@gmail.com>, <bingbu.cao@intel.com>,
-	<dan.scally@ideasonboard.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v3 1/2] media: dt-bindings: i2c: add GalaxyCore GC05A2 image sensor
-Date: Wed, 3 Apr 2024 11:38:24 +0800
-Message-ID: <20240403033825.9072-2-zhi.mao@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240403033825.9072-1-zhi.mao@mediatek.com>
-References: <20240403033825.9072-1-zhi.mao@mediatek.com>
+	id 1rrsQr-0000000Dyrs-2XOu;
+	Wed, 03 Apr 2024 04:41:07 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-565c6cf4819so864352a12.1;
+        Tue, 02 Apr 2024 21:41:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1712119262; x=1712724062; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=tAUWnoAjK4f4N8u2nRlqABDVBizkq6YQK37LOUpzcxM=;
+        b=W7HDOb7B90u4ChxX1MV6cAH9ol98BJym8U0E5q5aKgt12LLlML42lGpwFRa8tSrSM/
+         z3o7P7zLTV9Tuh5wV5AJfNDI30PMuR5TG2G+hcjdNBnn8WHlRu3hWo9dIgN9GveqJjhr
+         1fzdjMB+hZIFl4nW8ScawqZ5NVaNwG9aSMUjOwWpIUaO7pREUIPwTOUby37G5qierbj6
+         IC9S2+FXM5EJK8+u6by0xDKNYswNttwyfQwRUNZ50Aim6eh4J7T2fNrSgF/GHflWbCwy
+         2TEWmCbWisUEt7X6E1qktpLcqdvPqHtlm65CL+svkZhdpNXh8NxEfbdbaBLkn3dvxmqP
+         LXSw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712119262; x=1712724062;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tAUWnoAjK4f4N8u2nRlqABDVBizkq6YQK37LOUpzcxM=;
+        b=EHQk2Xs4blfVZlhn4sTpRQ8+SZaW65zS73obx1Mc9pE260uEKDcJZNo7LdcWiiQ+8w
+         m9jcSw1OIuCsKiRTMj0uixqlSL6KqdkaxGMDpfAkdFg6AR5WE0jIoEsBkxxACFCmi5Ff
+         LxONBwBbgB/EKsuK90bWdptkG25Ymfq6OLRGaMbDBGXUKsTcJuSZqVzPV/9SPOnjyVOp
+         6G2iUuZFW7XGZ/++O5Gj280NN9xsT3JMy81T9Jv+n+/uh5gsLksdfYNrICxWesiEFZlT
+         UC1WimT5gYrm10uS6xxMdmjueURgb4a6mkEuRvKZpZXddyIJNYHgKf//QhN5kFKjXZjH
+         CzFw==
+X-Forwarded-Encrypted: i=1; AJvYcCWlEMf1y8lY7CwswjJ814wMQfc8U86tu+naL0Fjo+3NUgUCqMmNCKFqQerYBvuqarg25yP9d7gRC8wRahUYHc8REAyLik6cM9Bt8BjfuuyK5xUsMcVTCCO720EBHo0TUB2EprTP/XAatoIrGDKbpmBuxnTOTmp9aIM=
+X-Gm-Message-State: AOJu0YzMjnqzTtbQH665emsNdKchkQXI6HmxZ3pdFaEbczVeqG8T6VaX
+	boOjiFRo5ZHL7CCD7xNypSd6X4Z7yhT8JxfxBzZ/a1ontmqIeGv9
+X-Google-Smtp-Source: AGHT+IFoJ2ZN+EBh+8WDL27sAlKM9SycR+TnpzMf5hWL69IYYFEe66Y6nzAwIDJ4LDuPXAQIOLHuRA==
+X-Received: by 2002:a50:d59c:0:b0:56d:fbe4:aeba with SMTP id v28-20020a50d59c000000b0056dfbe4aebamr1157828edi.21.1712119261721;
+        Tue, 02 Apr 2024 21:41:01 -0700 (PDT)
+Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.googlemail.com with ESMTPSA id e5-20020a056402104500b0056dbd754811sm5250095edu.40.2024.04.02.21.41.00
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 02 Apr 2024 21:41:01 -0700 (PDT)
+Message-ID: <954572ee-1f8f-43b6-a8b7-93a3608c84d6@gmail.com>
+Date: Wed, 3 Apr 2024 06:40:58 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] wifi: mt76: mt7603: add debugfs attr for disabling frames
+ buffering
+Content-Language: en-US
+To: Shengyu Qu <wiagn233@outlook.com>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>
+Cc: Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ openwrt-devel@lists.openwrt.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>
+References: <20240325223319.30125-1-zajec5@gmail.com>
+ <TY3P286MB261180E5A3A3A11351441DEC983E2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
+From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+In-Reply-To: <TY3P286MB261180E5A3A3A11351441DEC983E2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240402_203856_346685_5F529EE3 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20240402_214105_682836_57CBB212 
+X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,136 +102,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add YAML device tree binding for GC05A2 CMOS image sensor,
-and the relevant MAINTAINERS entries.
+On 2.04.2024 18:54, Shengyu Qu wrote:
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
----
- .../bindings/media/i2c/galaxycore,gc05a2.yaml | 112 ++++++++++++++++++
- 1 file changed, 112 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/i2c/galaxycore,gc05a2.yaml
+ > Maybe we could disable frames buffering by default until it is fixed?
 
-diff --git a/Documentation/devicetree/bindings/media/i2c/galaxycore,gc05a2.yaml b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc05a2.yaml
-new file mode 100644
-index 000000000000..0e7a7b5ac89f
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc05a2.yaml
-@@ -0,0 +1,112 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+# Copyright (c) 2023 MediaTek Inc.
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/i2c/galaxycore,gc05a2.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: GalaxyCore gc05a2 1/5" 5M Pixel MIPI CSI-2 sensor
-+
-+maintainers:
-+  - Zhi Mao <zhi.mao@mediatek.com>
-+
-+description:
-+  The gc05a2 is a raw image sensor with an MIPI CSI-2 image data
-+  interface and CCI (I2C compatible) control bus. The output format
-+  is raw Bayer.
-+
-+properties:
-+  compatible:
-+    const: galaxycore,gc05a2
-+
-+  reg:
-+    maxItems: 1
-+
-+  clocks:
-+    maxItems: 1
-+
-+  dovdd-supply: true
-+
-+  avdd-supply: true
-+
-+  dvdd-supply: true
-+
-+  reset-gpios:
-+    description: Reference to the GPIO connected to the RESETB pin.
-+    maxItems: 1
-+
-+  port:
-+    $ref: /schemas/graph.yaml#/$defs/port-base
-+    additionalProperties: false
-+    description:
-+      Output port node, single endpoint describing the CSI-2 transmitter.
-+
-+    properties:
-+      endpoint:
-+        $ref: /schemas/media/video-interfaces.yaml#
-+        unevaluatedProperties: false
-+
-+        properties:
-+          data-lanes:
-+            oneOf:
-+              - items:
-+                  - const: 1
-+                  - const: 2
-+                  - const: 3
-+                  - const: 4
-+              - items:
-+                  - const: 1
-+                  - const: 2
-+
-+          link-frequencies: true
-+
-+        required:
-+          - data-lanes
-+          - link-frequencies
-+
-+    required:
-+      - endpoint
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - dovdd-supply
-+  - avdd-supply
-+  - dvdd-supply
-+  - reset-gpios
-+  - port
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/gpio/gpio.h>
-+
-+    i2c {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        sensor@37 {
-+            compatible =  "galaxycore,gc05a2";
-+            reg = <0x37>;
-+
-+            clocks = <&gc05a2_clk>;
-+
-+            reset-gpios = <&pio 21 GPIO_ACTIVE_LOW>;
-+
-+            avdd-supply = <&gc05a2_avdd>;
-+            dovdd-supply = <&gc05a2_dovdd>;
-+            dvdd-supply = <&gc05a2_dvdd>;
-+
-+            port {
-+                sensor_out: endpoint {
-+                    data-lanes = <1 2>;
-+                    link-frequencies = /bits/ 64 <448000000 224000000>;
-+                    remote-endpoint = <&seninf_csi_port_1_in>;
-+                };
-+            };
-+        };
-+    };
-+
-+...
--- 
-2.25.1
+Please check commit description:
 
+"If this solution yields a success we can make this feature disabled by default."
+
+
+ > Also, maybe we could do more tests on newer models such as mt7986/81 to
+ > make this patch benefit more models?
+
+Can you point me to the mt7915 driver buffering code? I clearly missed that.
 
