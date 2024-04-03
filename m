@@ -4,92 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44373CD1288
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 10:28:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 204F1CD1288
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 10:31:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lo4lDmVfE2uO4XA7Sc+H4dQlxZJDmRsnTUJ/N8Cz8P0=; b=1/VVK5jZHUXMtdSf9eKAxOqkB4
-	djiZ2+an8hPKXYBmI0BIfVBjfgKi645IiVrkh9aW2MNoo4L4pZVBFwjLO35RsJdzgHJHxHYTq2Chg
-	BkkRNfZy7NmNelPsebjxGMLR7yqPLuvnGKzfX+t4OLfs2P5B97+dqzBbMtH4w5hea2pkyb740XWcO
-	A38Rn3+OANtSkpNW7Rur9ANp5hYsqdYSJfm85gnM9PLg5fvUjmuHJAr8WxQ+wHupxDvn7Uui+gL8i
-	iMCV7RjahOihjbGKjpeVqDxC0LXULDYt9bxPEAx1fUoLY4jx8UfajKvAMszg/13vKZLXaXKChuwCD
-	VZftG0Sw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=29vu8g3Ed8C/yF1nmFK3k19phtXsbXUcMNAwp+Go5XI=; b=ismwQUsFUjZnGtRWzxysTswkT6
+	bW5a15GBgkYn+He5N5QRCwfZV++bIHBoMCuowlOEoSBI1V8hyCgv+jDcvaWH707EKcsyy9cVIBxD+
+	UQdb7asXL9r6rg1Z5o0JpfDO1WTgqbPorxrceI6e8/EpQdendT2rYD1EIp6cfCEqAYH4O+vql5Uma
+	vdzkC6oS6UakOpXn8ezkiirV1yIBcUGrejtCygdXECSibtvUebVmWhGgZZjlGJTozIGfenoB0/7AJ
+	8ahbbhM98S1Y4clJmH+xG9E9MvV+CL8nEzwVV3aqa4m6LLqE5eR9Rz38GwI0/LDNWJEp38XznC/Yx
+	ExjcSorw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrxqm-0000000FVGL-0NOS;
-	Wed, 03 Apr 2024 10:28:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rrxtz-0000000FWi0-2jBo;
+	Wed, 03 Apr 2024 10:31:31 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrxqJ-0000000FUsT-1Wl3;
-	Wed, 03 Apr 2024 10:27:59 +0000
-X-UUID: cb971394f1a411ee96d5dfc950b7243d-20240403
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=lo4lDmVfE2uO4XA7Sc+H4dQlxZJDmRsnTUJ/N8Cz8P0=;
-	b=WvZthqpmnWWAJblBn0ICu2oJ1q1MRDnublK33t9jklNcsvm7r1fxXR5z51usuUxZRXD87d74DcpJFQNgeTXSScvVYBjsS9FrkTSoKLQw8cx2EBB0vQOVH7Q6bouH+aBOYiqZ6mW2hJkcA62YSwUm9p9u8NF/yn4/6iT7GcFYKe4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:ae0af181-062b-4424-ab23-5eebbac225d7,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:b39e2c91-e2c0-40b0-a8fe-7c7e47299109,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: cb971394f1a411ee96d5dfc950b7243d-20240403
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <shawn.sung@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1068882249; Wed, 03 Apr 2024 03:27:38 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 3 Apr 2024 18:27:03 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 3 Apr 2024 18:27:03 +0800
-From: Shawn Sung <shawn.sung@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, Maxime Ripard
-	<mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Sumit Semwal
-	<sumit.semwal@linaro.org>, =?UTF-8?q?Christian=20K=C3=B6nig?=
-	<christian.koenig@amd.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
-	<linaro-mm-sig@lists.linaro.org>, Jason-JH.Lin <jason-jh.lin@mediatek.com>,
-	Hsiao Chien Sung <shawn.sung@mediatek.com>
-Subject: [PATCH v5 9/9] drm/mediatek: Add cmdq_insert_backup_cookie before secure pkt finalize
-Date: Wed, 3 Apr 2024 18:27:01 +0800
-Message-ID: <20240403102701.369-10-shawn.sung@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240403102701.369-1-shawn.sung@mediatek.com>
-References: <20240403102701.369-1-shawn.sung@mediatek.com>
+	id 1rrxtq-0000000FWc2-3wGq;
+	Wed, 03 Apr 2024 10:31:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1712140278;
+	bh=etU0Fj2iZdIff3gebOm2cSSWKbsxCIRWcO8xXg0dock=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=ZFkQnSQz5Qh2ySG1S7JtHOmJ561+j+A92qPRyCSztA3w8ZfhQRv0ASmmJvEJoP9Nz
+	 kcPJ17CUuClzRp8ZfxyufvRvYNR9cYv2z6MhLQr6Kya8sa2PekDKS8EdSKf+DPhae3
+	 ApQ85hx42I+YkmItiy5Q3syOT74ijQGHAC1VQPEI2jmR3aHe9hRvWEhdcqjIofu3Zi
+	 mNlpcLY5lX4OWjulIH3xql6G4N1dnSd4ldwFc+EhK7yHeSPCOQ/t3+Qt5slbnFxVlO
+	 irbngHphEHkdSHf42d6/PD2aQnxs3FRkfY9+jWVeEStCIjOqBbzCufSq8OeGQE75QV
+	 qOoeYBTV7dk1w==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C039B3780624;
+	Wed,  3 Apr 2024 10:31:17 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+	Tinghan Shen <tinghan.shen@mediatek.com>,
+	"Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+	"Nancy.Lin" <nancy.lin@mediatek.com>,
+	kernel@collabora.com,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 0/4] arm64: dts: mediatek: Add missing gce-client-reg properties to mt8192 and mt8195
+Date: Wed,  3 Apr 2024 12:30:55 +0200
+Message-ID: <171213179799.60933.17952427266637004148.b4-ty@collabora.com>
+X-Mailer: git-send-email 2.44.0
+In-Reply-To: <20240229-gce-client-reg-add-missing-mt8192-95-v1-0-b12c233a8a33@collabora.com>
+References: <20240229-gce-client-reg-add-missing-mt8192-95-v1-0-b12c233a8a33@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--9.964300-8.000000
-X-TMASE-MatchedRID: DpePiNkRMProb/hVdrvnXjPDkSOzeDWW+eBf9ovw8I27eXIF2U7rKy+8
-	OxujShyxE/UmhJjBrzZC3mgca9yt8kttpN+KVVd9syNb+yeIRArvJY9pBzgg1P+RKQghHjkeBgH
-	mCxujQvyORmg3vGx7V9sIe/TXUbL1GClvwc20fT5gS3HnT6jvf4iuaoNXJrK/fmHrLgoJIlxLR6
-	I6ytdxOLBCNZjB5OVeh+gv6XmqORNRbbZ0jxgFOp4CIKY/Hg3AGdQnQSTrKGPEQdG7H66TyMdRT
-	5TQAJnA4zjUu/hzMaXvKCvoWLGqrJA2OYWJIR3ArCVg7MtbdbieqD9WtJkSIw==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--9.964300-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: BB83068C8A2923A221CC6DA4A0919189003744023CC932CD209D04F2D18548492000:8
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240403_032743_925536_8CF93A12 
-X-CRM114-Status: GOOD (  13.46  )
+X-CRM114-CacheID: sfid-20240403_033123_197566_46AECD35 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,47 +85,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+On Thu, 29 Feb 2024 14:44:27 -0500, Nícolas F. R. A. Prado wrote:
+> This series adds the gce-client-reg properties to the nodes where it was
+> missing in order to avoid "error -2 can't parse gce-client-reg property"
+> errors and possibly improve the performance. The separation of the
+> commits was done in order for each one to have a single Fixes tag and
+> therefore be more easily backported.
+> 
+> 
+> [...]
 
-Add cmdq_insert_backup_cookie to append some commands before EOC:
-1. Get GCE HW thread execute count from the GCE HW register.
-2. Add 1 to the execute count and then store into a shared memory.
-3. Set a software event siganl as secure irq to GCE HW.
+Applied to v6.9-fixes/dts64, thanks!
 
-Since the value of execute count + 1 is stored in a shared memory,
-CMDQ driver in the normal world can use it to handle task done in irq
-handler and CMDQ driver in the secure world will use it to schedule
-the task slot for each secure thread.
+[1/4] arm64: dts: mediatek: mt8192: Add missing gce-client-reg to mutex
+      commit: 00bcc8810d9dd69d3899a4189e2f3964f263a600
+[2/4] arm64: dts: mediatek: mt8195: Add missing gce-client-reg to vpp/vdosys
+      commit: 96b0c1528ef41fe754f5d1378b1db6c098a2e33f
+[3/4] arm64: dts: mediatek: mt8195: Add missing gce-client-reg to mutex
+      commit: 3b129949184a1251e6a42db714f6d68b75fabedd
+[4/4] arm64: dts: mediatek: mt8195: Add missing gce-client-reg to mutex1
+      commit: 58f126296c3c52d02bf3fad1f68c331d718c4a9b
 
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_crtc.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
-index 8a3c204d48d2b..8a70d731f2ee2 100644
---- a/drivers/gpu/drm/mediatek/mtk_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
-@@ -186,7 +186,7 @@ void mtk_crtc_disable_secure_state(struct drm_crtc *crtc)
- 		sec_scn = CMDQ_SEC_SCNR_SUB_DISP_DISABLE;
- 
- 	cmdq_sec_pkt_set_data(&mtk_crtc->sec_cmdq_handle, sec_engine, sec_engine, sec_scn);
--
-+	cmdq_sec_insert_backup_cookie(&mtk_crtc->sec_cmdq_handle);
- 	cmdq_pkt_finalize(&mtk_crtc->sec_cmdq_handle);
- 	dma_sync_single_for_device(mtk_crtc->sec_cmdq_client.chan->mbox->dev,
- 				   mtk_crtc->sec_cmdq_handle.pa_base,
-@@ -812,6 +812,8 @@ static void mtk_crtc_update_config(struct mtk_crtc *mtk_crtc, bool needs_vblank)
- 		cmdq_pkt_clear_event(cmdq_handle, mtk_crtc->cmdq_event);
- 		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event, false);
- 		mtk_crtc_ddp_config(crtc, cmdq_handle);
-+		if (cmdq_handle->sec_data)
-+			cmdq_sec_insert_backup_cookie(cmdq_handle);
- 		cmdq_pkt_finalize(cmdq_handle);
- 		dma_sync_single_for_device(cmdq_client.chan->mbox->dev,
- 					   cmdq_handle->pa_base,
--- 
-2.18.0
+Cheers,
+Angelo
 
 
