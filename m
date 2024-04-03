@@ -4,90 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02330CD1288
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 05:48:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 211ACCD1288
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 06:41:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tAUWnoAjK4f4N8u2nRlqABDVBizkq6YQK37LOUpzcxM=; b=ur5szMIAHJ8nT5/AT8j6SWgZ09
-	WHfyR6FX12KCAuiYQCq0DoavMBTQhKBvd/Tbkz//OayQBN3eqqEAzVSk61J/wanm8vD/uv0CILhKD
-	QJbb53TaMVJ6fTJwz3aDjgcTU4NzBiuuVTFOAWVcYgnNWiLMd4bk9+VE+W2e9MV1wMajbpDZCX/Br
-	ceIsrtZFA1RsKpxracX9vH+eo/0G2VvGRjGoReMg9tnl6+lmcJUlxX7Lr7t0pK1kgJIVsyFurQ3CF
-	aUVrRdxCbmerXnz+rvtQoHwW/PftI0CFOeSkxjx/nXQWVbU2NsOc+zK7fiBTh+9Oiy80NaipfN55B
-	21wKc2mg==;
+	bh=hlYGf9bs3A4aHdb8GjLQO63uw+7vHklFyTTZuFItXt0=; b=QxLYFiXhtdOsoahvwjWQSQwe6H
+	rHPXr5mZUOi6OQs9lJLc+5FsOZBs6KbpCTs76OLHIQPQuQo/aMirlGPQGlKXn7mT8VLwn63f8hubP
+	lMb2P2OybcsjNsKnVAHtIx4Sh45+4tC7y1SVZazayIxFIs4gKSgJf3MxlwUVGRgMB8/qw0WWjxLHS
+	C2apTUjWMdl8d5SXS5kdX00hu3I0w6JCGqCji2hZ+X8fupd0pEPKjGHqGmVT2rmVRMQgkxBcgbqkL
+	1rlUR+gYtHcqZWX1Mm2QSLRulWhtHo6KWRGPO3u44O7IoiUZVL3Fbl5HKXpOb+2F2omAZ57ZPI7Ve
+	IksDuy9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrtUX-0000000EAXv-1wMb;
-	Wed, 03 Apr 2024 05:48:57 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1rruJT-0000000EHxB-2nIX;
+	Wed, 03 Apr 2024 06:41:35 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrsQr-0000000Dyrs-2XOu;
-	Wed, 03 Apr 2024 04:41:07 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-565c6cf4819so864352a12.1;
-        Tue, 02 Apr 2024 21:41:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1712119262; x=1712724062; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=tAUWnoAjK4f4N8u2nRlqABDVBizkq6YQK37LOUpzcxM=;
-        b=W7HDOb7B90u4ChxX1MV6cAH9ol98BJym8U0E5q5aKgt12LLlML42lGpwFRa8tSrSM/
-         z3o7P7zLTV9Tuh5wV5AJfNDI30PMuR5TG2G+hcjdNBnn8WHlRu3hWo9dIgN9GveqJjhr
-         1fzdjMB+hZIFl4nW8ScawqZ5NVaNwG9aSMUjOwWpIUaO7pREUIPwTOUby37G5qierbj6
-         IC9S2+FXM5EJK8+u6by0xDKNYswNttwyfQwRUNZ50Aim6eh4J7T2fNrSgF/GHflWbCwy
-         2TEWmCbWisUEt7X6E1qktpLcqdvPqHtlm65CL+svkZhdpNXh8NxEfbdbaBLkn3dvxmqP
-         LXSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712119262; x=1712724062;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=tAUWnoAjK4f4N8u2nRlqABDVBizkq6YQK37LOUpzcxM=;
-        b=EHQk2Xs4blfVZlhn4sTpRQ8+SZaW65zS73obx1Mc9pE260uEKDcJZNo7LdcWiiQ+8w
-         m9jcSw1OIuCsKiRTMj0uixqlSL6KqdkaxGMDpfAkdFg6AR5WE0jIoEsBkxxACFCmi5Ff
-         LxONBwBbgB/EKsuK90bWdptkG25Ymfq6OLRGaMbDBGXUKsTcJuSZqVzPV/9SPOnjyVOp
-         6G2iUuZFW7XGZ/++O5Gj280NN9xsT3JMy81T9Jv+n+/uh5gsLksdfYNrICxWesiEFZlT
-         UC1WimT5gYrm10uS6xxMdmjueURgb4a6mkEuRvKZpZXddyIJNYHgKf//QhN5kFKjXZjH
-         CzFw==
-X-Forwarded-Encrypted: i=1; AJvYcCWlEMf1y8lY7CwswjJ814wMQfc8U86tu+naL0Fjo+3NUgUCqMmNCKFqQerYBvuqarg25yP9d7gRC8wRahUYHc8REAyLik6cM9Bt8BjfuuyK5xUsMcVTCCO720EBHo0TUB2EprTP/XAatoIrGDKbpmBuxnTOTmp9aIM=
-X-Gm-Message-State: AOJu0YzMjnqzTtbQH665emsNdKchkQXI6HmxZ3pdFaEbczVeqG8T6VaX
-	boOjiFRo5ZHL7CCD7xNypSd6X4Z7yhT8JxfxBzZ/a1ontmqIeGv9
-X-Google-Smtp-Source: AGHT+IFoJ2ZN+EBh+8WDL27sAlKM9SycR+TnpzMf5hWL69IYYFEe66Y6nzAwIDJ4LDuPXAQIOLHuRA==
-X-Received: by 2002:a50:d59c:0:b0:56d:fbe4:aeba with SMTP id v28-20020a50d59c000000b0056dfbe4aebamr1157828edi.21.1712119261721;
-        Tue, 02 Apr 2024 21:41:01 -0700 (PDT)
-Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.googlemail.com with ESMTPSA id e5-20020a056402104500b0056dbd754811sm5250095edu.40.2024.04.02.21.41.00
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 02 Apr 2024 21:41:01 -0700 (PDT)
-Message-ID: <954572ee-1f8f-43b6-a8b7-93a3608c84d6@gmail.com>
-Date: Wed, 3 Apr 2024 06:40:58 +0200
+	id 1rruJQ-0000000EHwD-1ZYW;
+	Wed, 03 Apr 2024 06:41:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C7A7F60D2E;
+	Wed,  3 Apr 2024 06:41:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82AA9C433C7;
+	Wed,  3 Apr 2024 06:41:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712126491;
+	bh=UQwvzFq9nmoVptXxO5VyP6RADeLeS7Kk0i+kC5qILec=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=kyT37Up9iGW/Mut7gS9PEYGFfJ5Q1qi+Ky7WyiM256tfjzIePO7tjksC1m0koEKAk
+	 r0pMH/h5DTK12wVUfZhghM4yofIQX3jtma5MCb8fJ0VmeK6b4uW8L/WFByFb+d894T
+	 fqa9959g6yDoorZNUTXv8NbnqphUGT80V/r4aVDCAE80Rk6q+ePgMjaUU72UTjo6Vp
+	 yrwA7VUXnhE5lhYKr2yw1xb7M+nZ9RgwsJavPRssJtCqYX6uaE3gqyF5jJw1+wyU+O
+	 P7vzvlMvlZY3QFEpjHzbfMQBiCfoX1Wn6C9D8I+Vrr9OMeFsC+04zH+a5oIT7mRk8k
+	 o3NsaTg1Jne/A==
+Message-ID: <c0986506-ba8b-4c52-88f8-119c23b8778c@kernel.org>
+Date: Wed, 3 Apr 2024 08:41:23 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] wifi: mt76: mt7603: add debugfs attr for disabling frames
- buffering
+Subject: Re: [PATCH v1 1/1] drm/mediatek/dp: The register is written with the
+ parsed DTS SSC value.
+To: Liankun Yang <liankun.yang@mediatek.com>, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, chunfeng.yun@mediatek.com, vkoul@kernel.org,
+ kishon@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, jitao.shi@mediatek.com,
+ mac.shen@mediatek.com
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20240403040517.3279-1-liankun.yang@mediatek.com>
 Content-Language: en-US
-To: Shengyu Qu <wiagn233@outlook.com>, Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>
-Cc: Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- openwrt-devel@lists.openwrt.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
- <rafal@milecki.pl>
-References: <20240325223319.30125-1-zajec5@gmail.com>
- <TY3P286MB261180E5A3A3A11351441DEC983E2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-In-Reply-To: <TY3P286MB261180E5A3A3A11351441DEC983E2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240403040517.3279-1-liankun.yang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240402_214105_682836_57CBB212 
-X-CRM114-Status: UNSURE (   9.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240402_234132_768633_5ED725AA 
+X-CRM114-Status: GOOD (  10.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,17 +121,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2.04.2024 18:54, Shengyu Qu wrote:
+On 03/04/2024 06:05, Liankun Yang wrote:
+> [Description]
+> Severe screen flickering has been observed on the external display
+> when the DP projection function is used with the market expansion dock.
+> 
 
- > Maybe we could disable frames buffering by default until it is fixed?
+> +	if (!strcmp(mode_name, RG_XTP_GLB_TXPLL_SSC_DELTA_RBR)) {
+> +		regmap_update_bits(dp_phy->regs, ssc_reg_offset,
+> +			   XTP_GLB_TXPLL_SSC_DELTA_RBR_DEFAULT, read_value);
+> +	} else if (!strcmp(mode_name, RG_XTP_GLB_TXPLL_SSC_DELTA_HBR)) {
+> +		read_value = read_value << 16 | 0x0000;
+> +		regmap_update_bits(dp_phy->regs, ssc_reg_offset,
+> +			   XTP_GLB_TXPLL_SSC_DELTA_HBR_DEFAULT, read_value);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static struct device_node *mtk_dp_get_ssc_node(struct phy *phy, struct mtk_dp_phy *dp_phy)
+> +{
+> +	struct device_node *mode_node = NULL;
+> +
+> +	mode_node = of_find_node_by_name(dp_phy->dev->of_node, SSC_SETTING);
 
-Please check commit description:
+?!?!
+You have the node, why do you try to find it?
 
-"If this solution yields a success we can make this feature disabled by default."
 
 
- > Also, maybe we could do more tests on newer models such as mt7986/81 to
- > make this patch benefit more models?
+Best regards,
+Krzysztof
 
-Can you point me to the mt7915 driver buffering code? I clearly missed that.
 
