@@ -4,82 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9213CD128A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 10:31:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA8CACD128A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 10:32:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PFOLxvwwbqurOsaBKKDGIkr/U3h3e/8V7ICbLUNaRRw=; b=O4IplclN1JBQuh/cDgwa9+i3Cc
-	UatGSrirXYG9sC/ONceOlmzDnYLuzW7eXBBeZy7Jbzxp7dArGhvp9Gz/jNBL5bbCev27epWbdF3jf
-	lnWtdzlklbpTxm7iUXicda8AERuQlrMPkwNoKFOXe5qHd93cfCFiHHNKyDlRe+015l3ice6fBG7pi
-	LoL6bUzwiazNIYHxP23oDFSnU0eVbAsd21ZeNT+TUSeFVWPUslcXjyeA4XeniyIWcyW4GjnnXdcNb
-	no2eK9guciwJdfXqwxP2OpMMWysvCd/+gG8Tmtd08mU/TqOpW38/hRdWc8bpaeX6bzWhzCHLtsPQd
-	YtUC0Dlw==;
+	bh=NkUIlSapQDuvNhJo7AEKVbgM49hO3NuBWdsqPvR5nAI=; b=W6IPC2zQCMrDlUubp5KkIx2YiM
+	KgzsNJY//QRcAC171Uc+vO6Hbbncmj1J2NJOhnIsPEJ61orOUdM9RPp/CX4uX+/WhTsR3D5X0wlDj
+	MzWT7wN7QIJFmrjjbj9i9mW8fAxg8So9c1Ox6iVtSECxJ6KSjZI7cq7RkLrQafZaoEGA/MK8dLn13
+	HCMcqd2SfeKbNzM3alZdrahoKfeNF0ai1m9nuUs4cCaIB1TeskOZPWW+4HfYMvSIOpvFXSqzw9aID
+	aer7KpY/buIGYMpSHOwKeGMbZ1y9zMi4cdp4V0rhvnobW9aKJKMi1s1RlcH10B+LtJ2UEZgj6tuHE
+	LrJ0zDkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrxuE-0000000FWus-27Jv;
-	Wed, 03 Apr 2024 10:31:46 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rrxuX-0000000FX9p-3Wsp;
+	Wed, 03 Apr 2024 10:32:05 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrxtu-0000000FWe1-3yYm;
-	Wed, 03 Apr 2024 10:31:28 +0000
+	id 1rrxuK-0000000FWys-1pQe;
+	Wed, 03 Apr 2024 10:31:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712140284;
-	bh=PYIRmUFghpI8A50oiu40PS5xDa+QI8EerqhE598Bz9A=;
+	s=mail; t=1712140310;
+	bh=4iqKGJY4kBJIBlK531YR7UlzsD9hKc27WlTKaBE2L6c=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=EqKeAqTPlb3pmbIe6dSIwV4CVEgMpzMxoOltEpWseRBh8y5x0vQCHFN0zZhqmBrq+
-	 eSrGqLka7CpdA+Pwng7gKj+Ef7Iiy/DJfolP83Vt5+FxweMO4FeSy6x7ImqMp+KMyZ
-	 OzzNip2Ujt5vMjeBIfYvNShisxHjGJ7fZQiIiBHYC5TuZ4KVZmf4iwhZzJS+N0+hUJ
-	 4LwXesTio/2PpGob7izm9ptQkpK5f8ibFvdMcsmUr5Jg5xJUiFhhmB2JOc1VOsJMqR
-	 GqckyLXmFTkxxWXBzs+ZpsNohaBe3VJp7CmJ92pXi+ixaT4hFYX/0NV7OwEnfmsE0M
-	 pYfJdzN9WWsxQ==
+	b=dpePdvJ6o64/y+hWsMvSio6BoiFXgnbSY5fnWWl/C+4y3eIaZpyxqvPa4FVP1RFcq
+	 7xogpdAg7vsQDv48sdKvVhKdRW/tLXNBjVi9fEVn1fJuvnLw64JoKCZDi1d4B0WcM9
+	 Onaf33Cvu7AGbILGVCU4C/XhtKWrnxpMJnV4FWUeqZDrjIBmToS92MR15NekJPinaA
+	 uUvc9S4k+r7enXSTg9fNJztATKbkRK/dCFVB8ylUMTIOlB1J/ENesGVD8i+WdLGPEw
+	 So1nD4D2OZtYoxKwDKWLFia6omPmRlWFtlsXFAy7et2h1VRzjccNhsjtUms3o28xEu
+	 /buh9A9/dZPsw==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id EE9B737820F3;
-	Wed,  3 Apr 2024 10:31:22 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 105AB3780624;
+	Wed,  3 Apr 2024 10:31:50 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
-	Tinghan Shen <tinghan.shen@mediatek.com>,
-	"Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
-	"Nancy.Lin" <nancy.lin@mediatek.com>,
-	kernel@collabora.com,
+To: linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	Heiko Stuebner <heiko.stuebner@cherry.de>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: Re: [PATCH V3 0/4] dts: mediatek: add Cudy WR3000 V1 wireless router
-Date: Wed,  3 Apr 2024 12:30:59 +0200
-Message-ID: <171213179798.60933.728917515471078236.b4-ty@collabora.com>
+	kernel@collabora.com
+Subject: Re: [PATCH 0/2] Add missing chassis-type to MTK Chromebooks DTs
+Date: Wed,  3 Apr 2024 12:31:43 +0200
+Message-ID: <171213798076.111748.12884095737828369172.b4-ty@collabora.com>
 X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240317223206.22033-1-zajec5@gmail.com>
-References: <20240317223206.22033-1-zajec5@gmail.com>
+In-Reply-To: <20240313141538.1438167-1-angelogioacchino.delregno@collabora.com>
+References: <20240313141538.1438167-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240403_033127_338828_5F6A5447 
-X-CRM114-Status: UNSURE (   6.97  )
+X-CRM114-CacheID: sfid-20240403_033153_005735_AA72FD56 
+X-CRM114-Status: UNSURE (   9.16  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,31 +81,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 17 Mar 2024 23:32:02 +0100, Rafał Miłecki wrote:
-> From: Rafał Miłecki <rafal@milecki.pl>
+On Wed, 13 Mar 2024 15:15:36 +0100, AngeloGioacchino Del Regno wrote:
+> Even though the chassis-type property is optional, it is useful to
+> identify a convertible vs a laptop (etc).
 > 
-> Cudy WR3000 V1 is a MediaTek Filogic 820 based 802.11ax wireless router.
+> Some of the MediaTek Chromebook devicetrees were lacking their chassis
+> type declaration: this series adds it where missing.
 > 
-> https://www.cudy.com/productinfo/1637722.html
-> 
-> Rafał Miłecki (4):
->   dt-bindings: vendor-prefixes: add Cudy
->   dt-bindings: arm64: dts: mediatek: Add Cudy WR3000 V1 router
->   arm64: dts: mediatek: mt7981: add pinctrl
->   arm64: dts: mediatek: Add Cudy WR3000 V1
+> AngeloGioacchino Del Regno (2):
+>   arm64: dts: mediatek: Complete chassis-type for MT8183 Chromebooks
+>   arm64: dts: mediatek: Add missing chassis-type to MT8192 Chromebooks
 > 
 > [...]
 
 Applied to v6.9-next/dts64, thanks!
 
-[1/4] dt-bindings: vendor-prefixes: add Cudy
-      (no commit info)
-[2/4] dt-bindings: arm64: dts: mediatek: Add Cudy WR3000 V1 router
-      (no commit info)
-[3/4] arm64: dts: mediatek: mt7981: add pinctrl
-      (no commit info)
-[4/4] arm64: dts: mediatek: Add Cudy WR3000 V1
-      (no commit info)
+[1/2] arm64: dts: mediatek: Complete chassis-type for MT8183 Chromebooks
+      commit: c7df5fa3d1bd4c71d3a2d452c9da70e5e78f03e2
+[2/2] arm64: dts: mediatek: Add missing chassis-type to MT8192 Chromebooks
+      commit: 9b8c00596e30bb27a1f25a0d9766d6c767f4b355
 
 Cheers,
 Angelo
