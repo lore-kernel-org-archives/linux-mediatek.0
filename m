@@ -4,87 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B462CD128A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 14:17:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DF85CD128A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 14:17:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KtzghwkQC0PmjQC/FhDBGdEgi78pS9U5YA2ZXwW6cgM=; b=Tl7oSWXnEaLLjvDuN0YLxwdIzH
-	pTQcE8NlvhqmTLCHH9C5zZt4yOB3aYdFNnq8h/bH8hspNQYlYx4Sl/Bjdd8ap4aJppKAgWIH4BGwu
-	L9s4K2rNzxwVhQzdtIj1GoaPQTV62dDKGrYSKdB2f5umKUmMbyuXBHwDDlYzsbmYkWmdtAjuaNMyn
-	AmNbHX0jLSaMfV9MTv8s5LwSThRL+nckmrT0Yjfq5Dl68R60VfynJZdSB8TtD/bIG1tp5CUCtPY/9
-	t/x+N1/4nTd0ggXCsezpD/pC8RFmdc9coSY7w/C5YiL01W7pnW0iPn3VdwewKSDa6AhNg8yFOX92W
-	+igtByEQ==;
+	bh=iVQ0U9D/KVAqjXU1brwZZN7jtSQawCJDB5Go47IF4+I=; b=tB197GZeppD94ChWouYnSbexl8
+	PXG+9LJoOAqM8QdJsyjAzz2EQn9vTttrgR2W4CM0yaIRGa15VmZmehbVTaIDiB/Uzr7AmJDlYEjyv
+	XjWlKTSj96vPSy1tL6Z68FmjUZKIT6W+f4kMunvh++oBinG+bLFDbLv9v0Ad71UjQfEy2YstlCeUH
+	tKhnd91UqqOURGhHEKkAlO5JJFgSEN4JupQUb8pmUl+hQ3zTdfhXDhaI+rLuQ8aK07KrYbivOZn7B
+	vwKkf8BXndv3mWB+2x/zWaSt3ZYXJRb3PgUnNMBh1IXKK03mt8cshxueIgEVT6g9ThlglpTP87LG4
+	qMG99LZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rs1Qk-0000000GPrI-1Nj8;
-	Wed, 03 Apr 2024 14:17:34 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rs1Qo-0000000GPuR-0lZ4;
+	Wed, 03 Apr 2024 14:17:38 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rs1QW-0000000GPia-0jr2
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 03 Apr 2024 14:17:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=KtzghwkQC0PmjQC/FhDBGdEgi78pS9U5YA2ZXwW6cgM=; b=fMkUfbj2ixOZ2N6+kawQ8v0nJe
-	29d4FThscCa4fgYKn1n79UBWe6cN0vJwxPvpU10+A4pB6pFE3zGRszZpiKkl28mMtTuXWDIqr4B5K
-	4ro4h4iw7nLuKI6DRx666iA0noqipMrZh8gBCX49Nuoark/gjJiZwc0zjgGaOyiQULEI1+3VlHQX8
-	uKuH6G9j+aG88D2DDH//FvJedL+qeibL8h3rqVJ1fTIaKPAAcWKEZqeDWo78qmhwhwFo05fAsG3Ba
-	daUBW7ArMm2aTZOiO26n1sdWyFN9+R4svNfZXvz1XVq4FOdOWAMA4EteBe1UJYhAFN3YeOg91AYpF
-	zEjKDyGQ==;
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rs1QS-00000004GVR-2Il3
+	id 1rs1QS-0000000GPcO-2teQ
 	for linux-mediatek@lists.infradead.org;
-	Wed, 03 Apr 2024 14:17:18 +0000
-Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a4a393b699fso173618266b.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 03 Apr 2024 07:17:16 -0700 (PDT)
+	Wed, 03 Apr 2024 14:17:23 +0000
+Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-56b0af675deso7311987a12.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 03 Apr 2024 07:17:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1712153835; x=1712758635; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1712153830; x=1712758630; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=KtzghwkQC0PmjQC/FhDBGdEgi78pS9U5YA2ZXwW6cgM=;
-        b=RVPRS2S9xfzPNpLwg4U0fj8PL1Gn2qsXXvKLj+Y/T54lIGhLaGIMF2iM2R8eMaEc1U
-         LGBvSfKQHeormhZT11lLdFLIEPKk87JlXvpmyLXZIfblR3fYWH50oIJ2MEj3r4WO0t3M
-         +Jue9SpXnupG7HaL+X5avU1LALYuyeEGnGOLn6NzRg9odcbIFQuo15yM+Vhls9LuoHTH
-         eXJGN6BgL8+CbjNUIUH+uok4oh2kJg5mVeZQP9z7vwIktt1AbgGjJdmOTfdH40zqbaGy
-         7UvR+LZEvMEPr7x1nGyg87NkDiu3otd9flYs22SQrSy/YJ1OWYXrONstWJNMx2UUUDDj
-         gVtA==
+        bh=iVQ0U9D/KVAqjXU1brwZZN7jtSQawCJDB5Go47IF4+I=;
+        b=kSJDgoTePBN0fDJ7TCaH7fnhJ6BEN/UEncHw8Xwbu2Y19+tyRrEbjMdGwqY6+bJER5
+         tji47JubMOmpEBR/FyNlR+RpkFYdn7k4p2n68DqlEpG7U3xI9SFi2Ylx7XfHfgbR+wbI
+         g5vgqFVkd4HiDSrWmci6kq+3Ie13a75ObSgrH8vkEB7R7+xis+D403zF+CIrZo+kxGda
+         pQJovzTDR7EkGLKQp0YpawCNBotGhPoT/MAMt9x6nhBHOx9ZVSKJ/6XoZ6NDCYUyBPUv
+         sDyNbd+jvmHq7hJUUcHaRTUs3YEdMnASgAuMliemNCo3p7q9zvTDvUAf69GWvO00wF/s
+         99dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712153835; x=1712758635;
+        d=1e100.net; s=20230601; t=1712153830; x=1712758630;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=KtzghwkQC0PmjQC/FhDBGdEgi78pS9U5YA2ZXwW6cgM=;
-        b=XkQaKpxwZKvTwDHYP3co8hmyBjVuPB4qTdpjareVCIz2OHUon6TB9Is5IG7qx2Z+K5
-         AbjnkbXbBPTF/YwFR/t6wt50BY1V1ni/fow0kkpKj+UQvE4UMfGQwjzrdfgfU8W7smJH
-         q7RuQ35a+8lqePGXwJiBFTRztl/fRfP8bHCEu4ClqXy4ubnTGMN51VamhyGPTmuuf8w8
-         YJpHeIBIvycgvS8kmLaJB1cRC5WEESvasnAowCDfpPcHNyBPUpbwqzvDtHrvV9k6b9nk
-         iqglhRRpv6l/rFs+Rwq6Cp7/vVIdqjorTrvKPSlZmInZkXNPq780h20onfyJHIHSVoHH
-         IwFw==
-X-Forwarded-Encrypted: i=1; AJvYcCUihqY86J/3CepEwun09VaA04sA6miPsB5WKepOFL8wOmbc+3kfqjLUMzdhtZrltY7zeH1DZFcDhccLwStCK8YNRJRKEWZQXLnDisZzbXxhsXER
-X-Gm-Message-State: AOJu0Ywi3H38GPCvfe+tjB2xQ2d9EOTNrcc4gFSRgElX2tCzXnTHh22d
-	HYK3Vm0gXL0Dtr9ui9zPE1EqxHdXGT6mkI5rjMDsz+Fabn4tM4qPIPUYS5x9UW8=
-X-Google-Smtp-Source: AGHT+IHhgEWh9iPNOPHwnOG5Ucf0f1VjLhJAnC0jPd6Py8JOZqFE+ITUDFrj/tVu+BgC1bMNTDrVYA==
-X-Received: by 2002:a17:906:f203:b0:a4e:3841:8da9 with SMTP id gt3-20020a170906f20300b00a4e38418da9mr2445038ejb.23.1712153834987;
-        Wed, 03 Apr 2024 07:17:14 -0700 (PDT)
+        bh=iVQ0U9D/KVAqjXU1brwZZN7jtSQawCJDB5Go47IF4+I=;
+        b=sUFzljVUXG1lrrbflH0ffXx9/8aiP4o+FPbvNsiQGHA+FXBKRFQBe9QeAU/lN432Ce
+         DrjeLWkCUHgWUa26klSCzi4fd7OmKRVYQUucsQ9xtkX2A92JZn4LdRcFWa0duTsiZPa+
+         ZGtEoRsot4JfSs4w5QA/HohVNKRaPYqlvcQ0vn4mHsJUZXP1JOKBEZRiGHN8LmkOr7Eg
+         zWMO4zaz0C9Oz2EjCAM2911k8R0TxU4KpDAN4YXwz/dy3E/ippw7n4rvxiwwK13MM1eF
+         /toullqGhxwntP/73TA3kdNsIMXdZ9OPJ7gglOTWSAm7mmD/ir0WDtvj4PsW1zPoYDbg
+         xxdA==
+X-Forwarded-Encrypted: i=1; AJvYcCUGwAD9pNNPno6MXH1w58t0yLCjIvK7yLXA6BT6PGsHGsrGoR8qm3MFm07AcdfxCNgRDp1g2JXqWA8LuC/udmaaT6gtZEnj3yUBcLD0yY6w7pQ9
+X-Gm-Message-State: AOJu0YyMcH0ZtmXCjmpFzjAJ1I7znBZuBbyuwrzdmm2SwC4PM1Iwe0At
+	9avOeCYt4aCdcmihrO3XlGns5e2mCOEzh6EzdaJiQP3cx5oleaStjhDFWIB/zmY=
+X-Google-Smtp-Source: AGHT+IEq+cedMg/HdXeWUJ46ccGlTECKF+cYAqgFSpQRqCCTL8vGS1xn+Q24HJJd08R2KNhYaMPkLg==
+X-Received: by 2002:a17:907:97c9:b0:a4e:5088:a959 with SMTP id js9-20020a17090797c900b00a4e5088a959mr11602611ejc.17.1712153829813;
+        Wed, 03 Apr 2024 07:17:09 -0700 (PDT)
 Received: from [127.0.1.1] ([178.197.223.16])
-        by smtp.gmail.com with ESMTPSA id he18-20020a1709073d9200b00a4729f093ecsm7737819ejc.53.2024.04.03.07.17.13
+        by smtp.gmail.com with ESMTPSA id he18-20020a1709073d9200b00a4729f093ecsm7737819ejc.53.2024.04.03.07.17.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Apr 2024 07:17:14 -0700 (PDT)
+        Wed, 03 Apr 2024 07:17:09 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Wed, 03 Apr 2024 16:16:54 +0200
-Subject: [PATCH v2 5/7] wifi: brcm80211: drop driver owner initialization
+Date: Wed, 03 Apr 2024 16:16:51 +0200
+Subject: [PATCH v2 2/7] Bluetooth: btmtksdio: drop driver owner
+ initialization
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240403-module-owner-sdio-v2-5-ae46d6b955eb@linaro.org>
+Message-Id: <20240403-module-owner-sdio-v2-2-ae46d6b955eb@linaro.org>
 References: <20240403-module-owner-sdio-v2-0-ae46d6b955eb@linaro.org>
 In-Reply-To: <20240403-module-owner-sdio-v2-0-ae46d6b955eb@linaro.org>
 To: Ulf Hansson <ulf.hansson@linaro.org>, 
@@ -104,26 +90,26 @@ Cc: linux-mmc@vger.kernel.org, linux-bluetooth@vger.kernel.org,
  brcm80211-dev-list.pdl@broadcom.com, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=936;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=694;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=+oQOj54E8azRB6OAy0SBTyBX7qm6Cw4f0BTTdrV/19g=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmDWTdk4remwYQ8MPd4+0bn1vbzqllLhREEFzZE
- nqHbYhDUiaJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZg1k3QAKCRDBN2bmhouD
- 10GHEACVe0SHPfWrkE8WfxpC0NwDclSzh8WdeUe8P2iGIhi2sSBmHMWdbEVvwA9PEG7eDB+lXHQ
- y3vG54Y+GTZz3oErC9uQb+hWN3JzA1tsIZww1h9xrezZ+dHz+FpsZhz6VWSG271LLle0fmTzzzC
- 3/SC+j3CiyPS/JRWizY1s4AxuFuSRiN67/LUGaXDQd5+VDig6n1gdH5oByYOnL2cZNDybG/fDje
- qSXiUl9pkheNK39WKuvwn5jVwJxdohynYCmR2ePhSJfLvyroUxXque3MgCqvk6DS61IR88VqP4X
- P3uEzcVFQCghvmhnv/Mj+gBdqOV/BJAjvC0Q0pwAfNKIv2A8LSd8KsvGgG6aalFW57nuOw8HC87
- 5RoT8klgd7VwJA2f0bvjXtsZXkoIoL+73dU3mShuF5Ara7wcxpXXBrzpZdrJ8exjN3L/UYqbAsr
- MjQGm0YUEnN7MshNVlBNwx39kWCCvv5HV6qF31vpKcYUNjuD2FXj1n17JGqMO4pTPCn2DAUeyvd
- gQ2Cs2YcDuT78OzcrktDA+vylKPDyonrGSChlZ4WZWO7oiy64jN1KTzFJHsdFO/0vC3oOX1ts/q
- au+zXHVRkAi0iqcmT28UKAxFFFpWHoKMiv/HLfDlAWvQrtH3zcR0IoZdl+WyAU+Wx+uXvOAyNji
- 8iU4ZZ+B2ce9nVw==
+ bh=wmPmmXdT8FMwSksDvwRdXeWX/na11P5Z6Ye1jHKblRU=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmDWTaZN41kIdbagqJ8fbnOuBWNq6NcKpm+jnmw
+ SokJxjA9ZeJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZg1k2gAKCRDBN2bmhouD
+ 18TqD/4xMdeO7N8l/RfcqlLT8jwGJJpLGtyHMHJVuEX5WDCMPUL0LKwWqGI48sSlBaPNDp5uZ7b
+ bpD9xkZtpsFLxeTOAUVR428mbr1ejpNQ8Q/B0ilOg4L002xiikkzLaPKrypNOZVk1Y5sePzi1iu
+ VsPrAXo1vFpQ3URnX3Ph9o8esjfPfJqguU835edg0Cf+IgTZFV5ODNGBbDI/tG9YMnwU+4s9FZ5
+ FNwTrT7xfi9yInPMbu7qB5/ZVEctiydQWu+0VLjjQ28nokYCbGH/8a67X/gN9G7DkGK0ha6osSB
+ G68+oLRWdpykxGXgj9+lggR//ZlHdTJE2ekdyWaVt85iAKmW7n4ixZOPl8LBJrtD1eqQwLAaMni
+ ZlxNpG9q+LCoSx7JaB881EeKwS/0zDyX0FWC8n5qYiDpZ28rYjQ5AbPKmaRGGrS0UnqdaY+Hf30
+ Tj34ZUSYc+RPw3DS2VGPQ81b/Sz83YgKING3NORDXWg8LBqFaENZ7oMI2zIg0tZnLOTj5hNNNSa
+ HmY0qMwWOie2pjXpnyq9yctaaIe0lrpx4MjiUFWnjSKE1JbKfpfGWXMsp7TckdmnNk9zaXcC3at
+ +qanW5E0+QlG0Phx+ZW8Brc4TV+mr8Rwe1bYb/o0X01nQ27LdryWzFmxacAc78gKZPIqwQiKU+l
+ dXRLBJZzLsoAzjw==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240403_151716_858911_BD2A404E 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20240403_071717_006900_8026EBC7 
+X-CRM114-Status: GOOD (  11.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,26 +128,26 @@ Core in sdio_register_driver() already sets the .owner, so driver does
 not need to.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Acked-by: Arend van Spriel <arend.vanspriel@broadcom.com>
+
 ---
 
 Depends on the patch in mmc tree.
 ---
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c | 1 -
+ drivers/bluetooth/btmtksdio.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c
-index 00679a990e3d..13391c2d82aa 100644
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c
-@@ -1238,7 +1238,6 @@ static struct sdio_driver brcmf_sdmmc_driver = {
- 	.name = KBUILD_MODNAME,
- 	.id_table = brcmf_sdmmc_ids,
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index ff4868c83cd8..8ded9ef8089a 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -1519,7 +1519,6 @@ static struct sdio_driver btmtksdio_driver = {
+ 	.remove		= btmtksdio_remove,
+ 	.id_table	= btmtksdio_table,
  	.drv = {
 -		.owner = THIS_MODULE,
- 		.pm = pm_sleep_ptr(&brcmf_sdio_pm_ops),
- 		.coredump = brcmf_dev_coredump,
- 	},
+ 		.pm = BTMTKSDIO_PM_OPS,
+ 	}
+ };
 
 -- 
 2.34.1
