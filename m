@@ -4,91 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FF63CD128A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 10:48:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10B1ACD128A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 10:56:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HU1I/VZAAlLwOVCfFci18SC3VkHndwh9c7tHr0pvp3c=; b=UeJff1t2c93xpY69HvBEtwovsN
-	HeOGLsQ+4axKQ3gvGMXD0FMYO9lvJUjUVravvKT+eQKhgiKFND226yM/O0Bo9lk4GDjVi+Sx8absa
-	78Pq4b5z+0Y17DtC9O764mSKaepMT5kW5Mw0SMflZAlDXH6kxcWudzTBQcTyD7QmlmJ4Yj7WTW0/j
-	0L531RzdgAUP4XTkNoJisv9YSRuVQvqaN4S2s0yALmVM3d6hWuc42Mqb48+8sfUi/noTMH+x9Mnut
-	yqhc8YKjUvVjlHhgxY358CJplnD8gYDvASKa56RDSEE9Q3BCHIi6PvFqAp1heCy+0qriLu2+WQkpK
-	UL1eDIMg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DG8RRYGurHH7eJqvVVi62aX25pa8rpEUy+z3d66HOPc=; b=UXecI3mx+YDWgNGFhedw2AeNQP
+	T0wH7sjZP2SeEQF9SHKKDGr1OvOJDVL/IdIhQOq1tYYpH/B6QKFpuAw0+IUh2MDLBrUbrJ8cSkpWJ
+	9vm0+VnrP3rlWpD6ZJJ9Cs8LlfpzTCfuwD4R1cfnfZmf+FQIozSpvMwBhPSmjxnyRHEMgdJObTy1Y
+	7a52SxAW7kQDTaW62TUEwM7Tk7q7wjM2pBYto92xFoTYEHU8KlqvqzJJztFJoITcnJcUNwhtUsiCE
+	oBWSM8X/1PhjRk7LWbvwERBW8tVP+qY6oWc+v49NpgCl7xUCFVGYVn833fy4EQUNFhamVOhM1v+ov
+	i8D0zmQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rryAA-0000000FcqS-0hrG;
-	Wed, 03 Apr 2024 10:48:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rryI3-0000000Ff7U-1MMw;
+	Wed, 03 Apr 2024 10:56:23 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rryA6-0000000FcpI-0lPb;
-	Wed, 03 Apr 2024 10:48:11 +0000
-X-UUID: a7f290bef1a711eeac1957ae9f99f617-20240403
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=HU1I/VZAAlLwOVCfFci18SC3VkHndwh9c7tHr0pvp3c=;
-	b=Ohg4sjH2NG15orU1upkhBo8ImPi9bRgrLnEF/aoCJoQbNQr+t/S3nCiZ3mix35C1gfEVTn20BfrN44JneOEyJqMVbV9G5XuwjIwN0+S6fhavb6pJMBJseBEK9k2CbU8F/T4Z996eHB1UZVVD3Gg4jvn9VyuvX43jwyX3Tt/2cDM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:908b5a19-f5bc-448c-bab4-9d2e87a1e476,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:00824582-4f93-4875-95e7-8c66ea833d57,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: a7f290bef1a711eeac1957ae9f99f617-20240403
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <shawn.sung@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1280297527; Wed, 03 Apr 2024 03:48:07 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 3 Apr 2024 18:27:02 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 3 Apr 2024 18:27:02 +0800
-From: Shawn Sung <shawn.sung@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, Maxime Ripard
-	<mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Sumit Semwal
-	<sumit.semwal@linaro.org>, =?UTF-8?q?Christian=20K=C3=B6nig?=
-	<christian.koenig@amd.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
-	<linaro-mm-sig@lists.linaro.org>, Jason-JH.Lin <jason-jh.lin@mediatek.com>,
-	Hsiao Chien Sung <shawn.sung@mediatek.com>
-Subject: [PATCH v5 5/9] drm/mediatek: Add get_sec_port interface to mtk_ddp_comp
-Date: Wed, 3 Apr 2024 18:26:57 +0800
-Message-ID: <20240403102701.369-6-shawn.sung@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240403102701.369-1-shawn.sung@mediatek.com>
-References: <20240403102701.369-1-shawn.sung@mediatek.com>
+	id 1rryHz-0000000Ff6I-2AnH
+	for linux-mediatek@lists.infradead.org;
+	Wed, 03 Apr 2024 10:56:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=DG8RRYGurHH7eJqvVVi62aX25pa8rpEUy+z3d66HOPc=; b=DIsV3PegxvRrMFBV4MQWfctgr1
+	hGROqOBEVGurOe08vyHQXQSZHe9jF0J3ZA5K5nHnU4VZDP/6xwjsyzkKFCUpapqV+3Sq+oBJYilhm
+	dL5x6+6bRKs74rANpFUQZw4ckzAiUVXZSNbKa6h1QKBniUiTfjDJ4grt/c39idV4TO0c=;
+Received: from p54ae9c93.dip0.t-ipconnect.de ([84.174.156.147] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.94.2)
+	(envelope-from <nbd@nbd.name>)
+	id 1rryHp-00ChNS-C4; Wed, 03 Apr 2024 12:56:09 +0200
+Message-ID: <c3758211-1849-454b-88cc-bb91e040c486@nbd.name>
+Date: Wed, 3 Apr 2024 12:56:08 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.033400-8.000000
-X-TMASE-MatchedRID: I4WY2Dgn0PgxFdXyW/P+XQI0yP/uoH+DUAjrAJWsTe/7efdnqtsaE1+K
-	LrHzzAboRhP7mhvK/WwnOAFYLaUTjQDNPxu11HXjDB+ErBr0bAMK3n1SHen81R/H14cDyzexo8W
-	MkQWv6iXBcIE78YqRWo6HM5rqDwqtz0raTJJg2rffJLQ2j2H43UN0/kZu525xKPXZlBX+4BjVI0
-	NI7k2clkMMprcbiest
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.033400-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 7D9A0F3BCF93507C2B3E6C9EFD6EA0D3EC6A586F687581143A856C4008B1366C2000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 09/10] wifi: mt76: mt7996: let upper layer handle MGMT
+ frame protection
+To: Shayne Chen <shayne.chen@mediatek.com>
+Cc: linux-wireless <linux-wireless@vger.kernel.org>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ Michael-CY Lee <michael-cy.lee@mediatek.com>
+References: <20240320110918.3488-1-shayne.chen@mediatek.com>
+ <20240320110918.3488-9-shayne.chen@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
+Content-Language: en-US
+Autocrypt: addr=nbd@nbd.name; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
+ cL98efvrjdstUfTCP2pfetyN
+In-Reply-To: <20240320110918.3488-9-shayne.chen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240403_034810_432831_CFED310C 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20240403_035619_804217_457A0DF8 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,47 +100,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+On 20.03.24 12:09, Shayne Chen wrote:
+> From: Michael-CY Lee <michael-cy.lee@mediatek.com>
+> 
+> The firmware support for management frame protection has limitations:
+> - do not support cipher BIP-GMAC-128 and BIP-GMAC-256
+> - support cipher BIP-CMAC-128 and BIP-CMAC-256, except action frame with
+>    action type 'not robust'.
+> 
+> Therefore, to simplify the logic, do not set the IGTK to firmware and
+> let the encryption of management frames be handled by upper layer.
+> 
+> Signed-off-by: Michael-CY Lee <michael-cy.lee@mediatek.com>
+> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+> ---
+>   drivers/net/wireless/mediatek/mt76/mt7996/main.c | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+> index 338ff10b121d..4ab4d2bcbedc 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+> @@ -352,10 +352,6 @@ static int mt7996_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+>   
+>   	/* fall back to sw encryption for unsupported ciphers */
+>   	switch (key->cipher) {
+> -	case WLAN_CIPHER_SUITE_AES_CMAC:
+> -		wcid_keyidx = &wcid->hw_key_idx2;
 
-Add get_sec_port interface to ddp_comp to get the secure port settings
-from ovl and ovl_adaptor.
-Then mediatek-drm will use secure cmdq driver to configure DRAM access
-permission in secure world by their secure port settings.
+Did you intend to drop the wcid_keyidx line? If so, I don't see anything 
+related to that in the patch description.
 
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_ddp_comp.h | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-index 17c690e1f477f..cddad8978c1c5 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-@@ -92,6 +92,7 @@ struct mtk_ddp_comp_funcs {
- 	size_t (*crc_cnt)(struct device *dev);
- 	u32 *(*crc_entry)(struct device *dev);
- 	void (*crc_read)(struct device *dev);
-+	u64 (*get_sec_port)(struct mtk_ddp_comp *comp, unsigned int idx);
- };
- 
- struct mtk_ddp_comp {
-@@ -237,6 +238,14 @@ static inline unsigned int mtk_ddp_gamma_get_lut_size(struct mtk_ddp_comp *comp)
- 	return 0;
- }
- 
-+static inline u64 mtk_ddp_comp_layer_get_sec_port(struct mtk_ddp_comp *comp,
-+						  unsigned int idx)
-+{
-+	if (comp->funcs && comp->funcs->get_sec_port)
-+		return comp->funcs->get_sec_port(comp, idx);
-+	return 0;
-+}
-+
- static inline void mtk_ddp_gamma_set(struct mtk_ddp_comp *comp,
- 				     struct drm_crtc_state *state)
- {
--- 
-2.18.0
-
+- Felix
 
