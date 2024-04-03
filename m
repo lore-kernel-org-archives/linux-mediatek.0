@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E59FCCD1288
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 07:08:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C857CD1288
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 07:08:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pT+mAS1Yst5bND9qW5seLF2kjpLuzM8HwxDsfPgehOI=; b=0uVSE8KwdBDg/osIFap5RXTWMq
-	Vlroo/pQ1a/tMn0NoR6vvqJLU65EOq82lKARe29dSXCX3tp7RXvi9mjuwXmNyVskrnW5UV4OghLvu
-	aQaBnvKpRjy98Z3DtxvWfNsnkHYrKPTX0prMBmOZ/ddmFntN0yEGhIESIt0UEriKIt4mgSY8MN1xC
-	2bRBdaM9TOERQMS6N3besj9uR5uun2CTPSqQ/nL9WSyd/6vUnRbAeo5/+fn18OV/TrD+lPckiMvwM
-	5aMQCS1dYtb86EJH0Zln0aFG7Lt8ZHKOMbeKH2gdxGdcBLS8L/Ir0a6+uVjldV2cUp4uBn9H/3rwS
-	nNH6G0HA==;
+	bh=rSPlUmZb6lCaBtZc3iVf0O4/VIRBllDIZOf56rQqAME=; b=K3/LRLmlLvk8OPE5mSKIYjQwSw
+	rFox4IPmehyQChrFChyNaoxhdJil+XWqEyjAefaPe3RHEHLLDRmuQM0oF5keyCkb4VNRrNHKu7W/J
+	+zGfstpGUe/MKZ17276aJGFINKa5aiWL/3mhLjkroOLiq/Cr4L4rbB+x5UIVGww1iQpTKAIHdQsU4
+	GWHNKa07Mv1ez1YLJgK0dTnqQf9qiX3v9YTbOgTRb1IxvK6jWSMbE+spzjGqXu4B4Iz+xU1dZoUZd
+	Su/iymzaSvF6ZA5xUGApD8Ydszp/TBpTaVvnoZu4xOB5Xaa/z9ck/qG/Ur3qo964KQnuUU1BWa/cs
+	DLt3rPOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrujS-0000000EOit-0Wrd;
-	Wed, 03 Apr 2024 07:08:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rrujc-0000000EOsK-32YA;
+	Wed, 03 Apr 2024 07:08:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrujH-0000000EOa4-0W2B;
-	Wed, 03 Apr 2024 07:08:17 +0000
-X-UUID: ed269e06f18811ee96d5dfc950b7243d-20240403
+	id 1rrujH-0000000EOcE-3Jjt;
+	Wed, 03 Apr 2024 07:08:19 +0000
+X-UUID: eeb4763af18811eeac1957ae9f99f617-20240403
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=pT+mAS1Yst5bND9qW5seLF2kjpLuzM8HwxDsfPgehOI=;
-	b=Gvrh3iWaPUeoUFiObBUmivw+l9uqxdo7DZyidid1Ab9uLrMrgmfV62JgKHVzzz9PE+iDfSHRWC7JXNi1JUF4oj+zn/Y6hOImtDmOR9Gdd51qr5hp51dnG1iaZsSKtkPgWgNcGn0jy7osr4mUybyCVKHZ/859nk8FKjGgRsR/DKw=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=rSPlUmZb6lCaBtZc3iVf0O4/VIRBllDIZOf56rQqAME=;
+	b=jIGxgecV6FCZwc23S4I/ZcobOpGsm1bEw0GNKw/VKbFE9tEsSyXtjgjWiL2f1h1A0e+bborpPIRQVKBfzVAZEOQEiXxx8yFXOOTo0TXizol34eB31Hjp/F8wwmfQ17oOIdwyd4+260/4chjZzvJHCIgq0K80nZlnZLWTyBGnrww=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:601efd09-d503-4392-ab9f-be7360327cd2,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:ee11a800-c26b-4159-a099-3b9d0558e447,B
+X-CID-O-INFO: VERSION:1.1.37,REQID:e7f16fca-e803-400d-a7d8-fede3b7d2ec4,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:19a1c385-8d4f-477b-89d2-1e3bdbef96d1,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: ed269e06f18811ee96d5dfc950b7243d-20240403
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-UUID: eeb4763af18811eeac1957ae9f99f617-20240403
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 626143221; Wed, 03 Apr 2024 00:08:09 -0700
+	with ESMTP id 84956732; Wed, 03 Apr 2024 00:08:11 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 3 Apr 2024 15:07:35 +0800
+ 15.2.1118.26; Wed, 3 Apr 2024 15:07:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.1118.26 via Frontend Transport; Wed, 3 Apr 2024 15:07:34 +0800
@@ -66,31 +66,29 @@ CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
 	<linaro-mm-sig@lists.linaro.org>, Jason-JH.Lin <jason-jh.lin@mediatek.com>,
 	Hsiao Chien Sung <shawn.sung@mediatek.com>
-Subject: [PATCH v4 9/9] drm/mediatek: Add cmdq_insert_backup_cookie before secure pkt finalize
-Date: Wed, 3 Apr 2024 15:07:32 +0800
-Message-ID: <20240403070732.22085-10-shawn.sung@mediatek.com>
+Subject: [PATCH v4 5/9] drm/mediatek: Add get_sec_port interface to mtk_ddp_comp
+Date: Wed, 3 Apr 2024 15:07:28 +0800
+Message-ID: <20240403070732.22085-6-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240403070732.22085-1-shawn.sung@mediatek.com>
 References: <20240403070732.22085-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--9.712500-8.000000
-X-TMASE-MatchedRID: YXgS1C6OPWzob/hVdrvnXjPDkSOzeDWW+eBf9ovw8I27eXIF2U7rKy+8
-	OxujShyxE/UmhJjBrzZC3mgca9yt8kttpN+KVVd9syNb+yeIRArvJY9pBzgg1AdskglgNB06Wrv
-	rtnfQ0ritv1Ljw57Roa8VyW/hymUcP+blzYfeoH5DiyuN5FvFNkJfxXUWJFGS31GU/N5W5BBGrI
-	LfHhGdpOCvXbSo8NyzsBVstGxQO24YBLhRVmu+NuG5dRZCgxC3NACnndLvXwdnuv8pVwMzSaPFj
-	JEFr+olwXCBO/GKkVqOhzOa6g8KrZ6dUK0lcRRnJjV8ViTOjGoY/N7Roz/q3K0gT4tKfSqMWMHU
-	JHy0CyZDDKa3G4nrLQ==
+X-TM-AS-Result: No-10--8.033400-8.000000
+X-TMASE-MatchedRID: I4WY2Dgn0PgxFdXyW/P+XQI0yP/uoH+DUAjrAJWsTe/7efdnqtsaE1+K
+	LrHzzAboRhP7mhvK/WwnOAFYLaUTjQDNPxu11HXjDB+ErBr0bAMK3n1SHen81R/H14cDyzexo8W
+	MkQWv6iXBcIE78YqRWo6HM5rqDwqt+ee1Ply/lTL6/67N6qxkq1LkHLP6OGDIUXQhwjRmweIfiL
+	IefuvSMUMMprcbiest
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--9.712500-8.000000
+X-TMASE-Result: 10--8.033400-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: CBDB9CEA1B0D281A6C149F54596BA3FCB12C109C78A272B3F183B48BF64A7A792000:8
+X-TM-SNTS-SMTP: C50693E467063D0EF80E373B4893939F078B0C7B5BC90779310EF8CDAC362BBA2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240403_000815_311715_1669D3D9 
-X-CRM114-Status: GOOD (  15.11  )
+X-CRM114-CacheID: sfid-20240403_000815_975551_1694C41F 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,52 +105,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
 
-Add cmdq_insert_backup_cookie to append some commands before EOC:
-1. Get GCE HW thread execute count from the GCE HW register.
-2. Add 1 to the execute count and then store into a shared memory.
-3. Set a software event siganl as secure irq to GCE HW.
-
-Since the value of execute count + 1 is stored in a shared memory,
-CMDQ driver in the normal world can use it to handle task done in irq
-handler and CMDQ driver in the secure world will use it to schedule
-the task slot for each secure thread.
-
-The reason why we use shared memory to record execute count here is:
-1. normal world can not access the register of secure GCE thread in
-normal world.
-2. calling TEE invoke cmd in the irq handler would be expensive and not
-stable. I've tested that a single TEE invloke cmd to CMDQ PTA costs
-19~53 us. Maybe it would cost more during the scenario that needs more
-CPU loading.
+Add get_sec_port interface to ddp_comp to get the secure port settings
+from ovl and ovl_adaptor.
+Then mediatek-drm will use secure cmdq driver to configure DRAM access
+permission in secure world by their secure port settings.
 
 Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_crtc.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
-index a6ba9965500f0..2fb52928a3055 100644
---- a/drivers/gpu/drm/mediatek/mtk_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
-@@ -186,7 +186,7 @@ void mtk_crtc_disable_secure_state(struct drm_crtc *crtc)
- 		sec_scn = CMDQ_SEC_SCNR_SUB_DISP_DISABLE;
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+index a00258a5cefda..a22725e5cdce9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+@@ -92,6 +92,7 @@ struct mtk_ddp_comp_funcs {
+ 	size_t (*crc_cnt)(struct device *dev);
+ 	u32 *(*crc_entry)(struct device *dev);
+ 	void (*crc_read)(struct device *dev);
++	u64 (*get_sec_port)(struct mtk_ddp_comp *comp, unsigned int idx);
+ };
  
- 	cmdq_sec_pkt_set_data(&mtk_crtc->sec_cmdq_handle, sec_engine, sec_engine, sec_scn);
--
-+	cmdq_sec_insert_backup_cookie(&mtk_crtc->sec_cmdq_handle);
- 	cmdq_pkt_finalize(&mtk_crtc->sec_cmdq_handle);
- 	dma_sync_single_for_device(mtk_crtc->sec_cmdq_client.chan->mbox->dev,
- 				   mtk_crtc->sec_cmdq_handle.pa_base,
-@@ -810,6 +810,8 @@ static void mtk_crtc_update_config(struct mtk_crtc *mtk_crtc, bool needs_vblank)
- 		cmdq_pkt_clear_event(cmdq_handle, mtk_crtc->cmdq_event);
- 		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event, false);
- 		mtk_crtc_ddp_config(crtc, cmdq_handle);
-+		if (cmdq_handle->sec_data)
-+			cmdq_sec_insert_backup_cookie(cmdq_handle);
- 		cmdq_pkt_finalize(cmdq_handle);
- 		dma_sync_single_for_device(cmdq_client.chan->mbox->dev,
- 					   cmdq_handle->pa_base,
+ struct mtk_ddp_comp {
+@@ -237,6 +238,14 @@ static inline unsigned int mtk_ddp_gamma_get_lut_size(struct mtk_ddp_comp *comp)
+ 	return 0;
+ }
+ 
++static inline u64 mtk_ddp_comp_layer_get_sec_port(struct mtk_ddp_comp *comp,
++						  unsigned int idx)
++{
++	if (comp->funcs && comp->funcs->get_sec_port)
++		return comp->funcs->get_sec_port(comp, idx);
++	return 0;
++}
++
+ static inline void mtk_ddp_gamma_set(struct mtk_ddp_comp *comp,
+ 				     struct drm_crtc_state *state)
+ {
 -- 
 2.18.0
 
