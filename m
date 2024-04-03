@@ -4,94 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61AECCD1288
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 07:18:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0E31CD1288
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 07:35:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b1R7cr/Y69po1CcmKxYFPM6M+QHCkEJfXGlsJ3NaItM=; b=3gVc7eUQ2mDLJ2nEyXPCcVL95T
-	ViG4nyP9g3DrRP5K29dlBz9lTTzvDt4JLBro9Q9mE7UGcWctQTgiRm0rZh9PQjsTRnZmrfz3Xpbea
-	8EFTrVoVd7JcF/mhtA+3JYi3BEJ3kmEF54z0/8ZtGJXxXYn8yT2wn/ubebeodJRAYAvl9UB9IlI7G
-	VVmk8TgHzKgD25Gxbc63xl0yD2kgNI/IuAkduFlDSt53u/jLIz2DmaETPPH2+jb4LjjvqlYu4iOLu
-	Z1QD8xvUvIU58boq7pBVAQQfijOVXXgnZmETr92IbDu3QjGsJtR8zA5HiCTKeeoOyjUeYD7zYWp5F
-	+LaNjzug==;
+	bh=Zk6yUkP6W1rULwKkjyUHjYr2nx3DKKi0BVPn7REXL4U=; b=b0N5R7HoMFbKGngKK6h4gumaDA
+	ZDZ4gmtgpyKjwAUKwpJnVdE7Eg8h2nKfl9RQ0CSWD9u2mlhP/sa5GmfI7+RQy/bjFGOuUWv62Xv/D
+	9p2GV9hlY/FcgCkmIM+8TQqAWMkjV2cBsdERLLWmU+xYZpGFPMkMD0in4xvf/idWliSiAWmA0pwPC
+	KxW5kCTgj7fS8DBxFQRpo72I7Gkvn70oLPaUhlBe/5jocPp+Z+/S93bv/eC7MkzY/GFLVm1wtyvVw
+	+VzGDgFUa47yMd4p7e+5qTSSuk5VCoNeO/A0J9FCIbk2LIGQRcH0f8poCCPkZK93vdZ9+jp3yt4xj
+	RE8b7WbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrut8-0000000ESFC-2sGw;
-	Wed, 03 Apr 2024 07:18:26 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rrv9k-0000000EYET-10d3;
+	Wed, 03 Apr 2024 07:35:36 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrut7-0000000ESDc-0e9u;
-	Wed, 03 Apr 2024 07:18:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=b1R7cr/Y69po1CcmKxYFPM6M+QHCkEJfXGlsJ3NaItM=; b=SHoC/ZDI3ANepddxh8TFZdovoq
-	fECv8z19ndStPbYNveC8yy6K8cXLna09LhF1Pboq143r/2gkPO7xrAM8CSeeiXIG5iIMmuwhgAx1N
-	yhCx2vn4akClGy9/6S9ZnMPYlKTe+Sg7ipKeKyUzBoJOHrGa8+IiX3qKv5vjtbp9PhtdmPjutnSrk
-	7xC7mimjnG9HueMfnsBzdnjjCwUjt0/JjL4ymSDg9RQL/HsanpSliNviAQHbYPfx8RVlDLKwtTJIu
-	ZbbI+hqeTsOGGTRxCJF3VlN4IMjbnU5AdrVXCBqXwgq0AhwGfOehkpmqr6T4qcswbnY6wGjov7aEF
-	k9poJzHg==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrut2-0000000444Y-3Kai;
-	Wed, 03 Apr 2024 07:18:23 +0000
-X-UUID: 544951ccf18a11ee96d5dfc950b7243d-20240403
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=b1R7cr/Y69po1CcmKxYFPM6M+QHCkEJfXGlsJ3NaItM=;
-	b=op1QPsi3ILuf0m1Hc2/VhFMv5Sq5Y08rlb2sYUW/scFGgiIzEkPpXX7kHPwp52wBDiN8SmRQ6ammj0ZrND4zYcMx/XJLbcdvz+A+LeTCRPLj6Uvz+xH/k4t/BcpIaaMD9v/O/5SB2YAIwvKPJQTTR0JfJ37pY5Y3Wv7haQa8UYg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:d32daa93-6825-400f-8ee2-86bfcbe84263,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:a8c2c385-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 544951ccf18a11ee96d5dfc950b7243d-20240403
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <shawn.sung@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1736329896; Wed, 03 Apr 2024 00:18:11 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 3 Apr 2024 15:07:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 3 Apr 2024 15:07:34 +0800
-From: Shawn Sung <shawn.sung@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Maarten
- Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
-	<mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Sumit Semwal
-	<sumit.semwal@linaro.org>, =?UTF-8?q?Christian=20K=C3=B6nig?=
-	<christian.koenig@amd.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
-	<linaro-mm-sig@lists.linaro.org>, Jason-JH.Lin <jason-jh.lin@mediatek.com>,
-	Hsiao Chien Sung <shawn.sung@mediatek.com>
-Subject: [PATCH v4 7/9] drm/mediatek: Add secure layer config support for ovl
-Date: Wed, 3 Apr 2024 15:07:30 +0800
-Message-ID: <20240403070732.22085-8-shawn.sung@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240403070732.22085-1-shawn.sung@mediatek.com>
-References: <20240403070732.22085-1-shawn.sung@mediatek.com>
+	id 1rrv9h-0000000EYCL-0bif
+	for linux-mediatek@lists.infradead.org;
+	Wed, 03 Apr 2024 07:35:34 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-415523d9824so41196165e9.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 03 Apr 2024 00:35:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1712129731; x=1712734531; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Zk6yUkP6W1rULwKkjyUHjYr2nx3DKKi0BVPn7REXL4U=;
+        b=RHv1Ur8iRa1oJcG5/1uhdV26VfIW9ohbjPLIE3O83lmMMkekGX+TTiDUo2P6RlQmJp
+         u74A4rZbmyd8DPLL6zLbGx3fpuZdzzq8/Zofu4j+WDOb2fc7VRE3yRJu9VCKEe0ef80t
+         mMtg4Er1uzIRf0FAtVPZdg/ApknELufBhxG0tXNuH320OG5n+95A7TUmYDmDNAYlwngI
+         dSOgkDb8P6/E1dg2c3sb0+4l94hTRfFRAqX07EykCqyZ+Vxhj3dxN3MS2WucZTBDp0K6
+         RWAaPe501MNRGUYJBenPIPU/BGj+Ki9032fuICb0Cx2So3OGyLn6WClcv418PyBoYxmI
+         LMEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712129731; x=1712734531;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=Zk6yUkP6W1rULwKkjyUHjYr2nx3DKKi0BVPn7REXL4U=;
+        b=C9yqo6FoFRmtwYLcTvbr0UM+2OorRv5RpQZI4EXJJQ+jQVWjgu266c/wn0xJM1PgpE
+         1zTKdl9w2yCB9BQxAc96y410KOoNXdMr5CWdpdhH2IX4LtOAYM5rN9QTeJ/4uFbobKRx
+         SGaMUuLdDzZOzjUR8JyY+46TGL4Gtl26/z8+YZ+rlJLNA0WY4fVr5jvBE44jQAQ9hE/h
+         Ly+v7E7Fs1K0oseJAe0eL+yykTYVFYJgZOmbcMsI8JgAKjSTXS/jLyeFvNBl4QZBF5tT
+         gOfdv75J5cxzG4vMbQW4yfKJ05xrSm2a3yex6aWEARVq6BUZ50lglsYs4jbx6HERHw64
+         iRHw==
+X-Forwarded-Encrypted: i=1; AJvYcCWH1kk27PqL9FKfMK3CsqYaSa1E8gzC+fXBWeBn1DIsP0kIEUTcZR6VLxSKjwlScCKiuu0tOPCTRM9jimwU6RdHjhPul1lK36ffjyzDs2mQ4Jd5
+X-Gm-Message-State: AOJu0Yyk9RHrAv0pYog+LcjThAj+PyRe6S4g0aQVqwT4wRBUinrqAe64
+	g43M+S0jIDNfEdot/4vru/6/VuNEUWF1PO8JCxX++NAMI17Sx4S+J1XOI3oSl1k=
+X-Google-Smtp-Source: AGHT+IHXvAP8cSVNeOWnJluu8rIyEeTJzOcu+0z22O8FJUnGbtq1azSw+RrgCvrNebeugbuXKrMsXA==
+X-Received: by 2002:a05:600c:3b26:b0:414:9455:85e with SMTP id m38-20020a05600c3b2600b004149455085emr3363419wms.25.1712129731067;
+        Wed, 03 Apr 2024 00:35:31 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:982:cbb0:d6d:8d9b:bb47:c974? ([2a01:e0a:982:cbb0:d6d:8d9b:bb47:c974])
+        by smtp.gmail.com with ESMTPSA id k4-20020a05600c1c8400b00414807ef8dfsm20792252wms.5.2024.04.03.00.35.30
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 03 Apr 2024 00:35:30 -0700 (PDT)
+Message-ID: <43819edb-d65d-4639-80e9-1f3a505c016d@linaro.org>
+Date: Wed, 3 Apr 2024 09:35:29 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+From: Neil Armstrong <neil.armstrong@linaro.org>
+Subject: Re: [PATCH v8 3/7] spmi: pmic-arb: Fix some compile warnings about
+ members not being described
+To: Abel Vesa <abel.vesa@linaro.org>, Stephen Boyd <sboyd@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Cc: Srini Kandagatla <srinivas.kandagatla@linaro.org>,
+ Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+References: <20240402-spmi-multi-master-support-v8-0-ce6f2d14a058@linaro.org>
+ <20240402-spmi-multi-master-support-v8-3-ce6f2d14a058@linaro.org>
+Content-Language: en-US, fr
+Autocrypt: addr=neil.armstrong@linaro.org; keydata=
+ xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
+ GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
+ BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
+ qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
+ 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
+ AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
+ OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
+ Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
+ YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
+ GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
+ UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
+ GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
+ yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
+ QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
+ SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
+ 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
+ Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
+ oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
+ M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
+ 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
+ KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
+ 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
+ QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
+Organization: Linaro
+In-Reply-To: <20240402-spmi-multi-master-support-v8-3-ce6f2d14a058@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240403_081821_586725_33E48ECD 
-X-CRM114-Status: GOOD (  18.64  )
+X-CRM114-CacheID: sfid-20240403_003533_401713_D21721A1 
+X-CRM114-Status: GOOD (  14.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,121 +130,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: neil.armstrong@linaro.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+On 02/04/2024 14:07, Abel Vesa wrote:
+> Fix the following compile warnings:
+> 
+>   warning: Function parameter or struct member 'core' not described in 'spmi_pmic_arb'
+>   warning: Function parameter or struct member 'core_size' not described in 'spmi_pmic_arb'
+>   warning: Function parameter or struct member 'mapping_table_valid' not described in 'spmi_pmic_arb'
+>   warning: Function parameter or struct member 'pmic_arb' not described in 'pmic_arb_read_data'
+>   warning: Function parameter or struct member 'pmic_arb' not described in 'pmic_arb_write_data'
+> 
+> Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
+> ---
+>   drivers/spmi/spmi-pmic-arb.c | 5 +++++
+>   1 file changed, 5 insertions(+)
+> 
+> diff --git a/drivers/spmi/spmi-pmic-arb.c b/drivers/spmi/spmi-pmic-arb.c
+> index 9ed1180fe31f..704fd4506971 100644
+> --- a/drivers/spmi/spmi-pmic-arb.c
+> +++ b/drivers/spmi/spmi-pmic-arb.c
+> @@ -132,6 +132,8 @@ struct apid_data {
+>    * @wr_base:		on v1 "core", on v2 "chnls"    register base off DT.
+>    * @intr:		address of the SPMI interrupt control registers.
+>    * @cnfg:		address of the PMIC Arbiter configuration registers.
+> + * @core:		core register base for v2 and above only (see above)
+> + * @core_size:		core register base size
+>    * @lock:		lock to synchronize accesses.
+>    * @channel:		execution environment channel to use for accesses.
+>    * @irq:		PMIC ARB interrupt.
+> @@ -144,6 +146,7 @@ struct apid_data {
+>    * @apid_count:		on v5 and v7: number of APIDs associated with the
+>    *			particular SPMI bus instance
+>    * @mapping_table:	in-memory copy of PPID -> APID mapping table.
+> + * @mapping_table_valid:bitmap containing valid-only periphs
+>    * @domain:		irq domain object for PMIC IRQ domain
+>    * @spmic:		SPMI controller object
+>    * @ver_ops:		version dependent operations.
+> @@ -232,6 +235,7 @@ static inline void pmic_arb_set_rd_cmd(struct spmi_pmic_arb *pmic_arb,
+>   
+>   /**
+>    * pmic_arb_read_data: reads pmic-arb's register and copy 1..4 bytes to buf
+> + * @pmic_arb:	the SPMI PMIC arbiter
+>    * @bc:		byte count -1. range: 0..3
+>    * @reg:	register's address
+>    * @buf:	output parameter, length must be bc + 1
+> @@ -246,6 +250,7 @@ pmic_arb_read_data(struct spmi_pmic_arb *pmic_arb, u8 *buf, u32 reg, u8 bc)
+>   
+>   /**
+>    * pmic_arb_write_data: write 1..4 bytes from buf to pmic-arb's register
+> + * @pmic_arb:	the SPMI PMIC arbiter
+>    * @bc:		byte-count -1. range: 0..3.
+>    * @reg:	register's address.
+>    * @buf:	buffer to write. length must be bc + 1.
+> 
 
-Add secure layer config support for ovl.
-
-TODO:
-1. Move DISP_REG_OVL_SECURE setting to secure world.
-2. Change the parameter register address in mtk_ddp_sec_write()
-   from "u32 addr" to "struct cmdq_client_reg *cmdq_reg".
-
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c |  1 +
- drivers/gpu/drm/mediatek/mtk_disp_drv.h |  2 ++
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 30 +++++++++++++++++++++++--
- 3 files changed, 31 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-index cda0da4848029..b2f59e54c3f4b 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-@@ -382,6 +382,7 @@ static const struct mtk_ddp_comp_funcs ddp_ovl = {
- 	.bgclr_in_off = mtk_ovl_bgclr_in_off,
- 	.get_formats = mtk_ovl_get_formats,
- 	.get_num_formats = mtk_ovl_get_num_formats,
-+	.get_sec_port = mtk_ovl_get_sec_port,
- };
- 
- static const struct mtk_ddp_comp_funcs ddp_postmask = {
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index d2c8fac468798..c4e1b5b8a2e31 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -9,6 +9,7 @@
- #include <linux/soc/mediatek/mtk-cmdq.h>
- #include <linux/soc/mediatek/mtk-mmsys.h>
- #include <linux/soc/mediatek/mtk-mutex.h>
-+#include "mtk_ddp_comp.h"
- #include "mtk_mdp_rdma.h"
- #include "mtk_plane.h"
- 
-@@ -84,6 +85,7 @@ void mtk_ovl_clk_disable(struct device *dev);
- void mtk_ovl_config(struct device *dev, unsigned int w,
- 		    unsigned int h, unsigned int vrefresh,
- 		    unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
-+u64 mtk_ovl_get_sec_port(struct mtk_ddp_comp *comp, unsigned int idx);
- int mtk_ovl_layer_check(struct device *dev, unsigned int idx,
- 			struct mtk_plane_state *mtk_state);
- void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 279e6193e7975..8cee64495cd04 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -74,6 +74,7 @@
- #define DISP_REG_OVL_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n))
- #define DISP_REG_OVL_HDR_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x04)
- #define DISP_REG_OVL_HDR_PITCH(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x08)
-+#define DISP_REG_OVL_SECURE			0x0fc0
- 
- #define GMC_THRESHOLD_BITS	16
- #define GMC_THRESHOLD_HIGH	((1 << GMC_THRESHOLD_BITS) / 4)
-@@ -218,6 +219,16 @@ void mtk_ovl_crc_read(struct device *dev)
- 	mtk_crtc_read_crc(&ovl->crc, ovl->regs);
- }
- 
-+u64 mtk_ovl_get_sec_port(struct mtk_ddp_comp *comp, unsigned int idx)
-+{
-+	if (comp->id == DDP_COMPONENT_OVL0)
-+		return BIT_ULL(CMDQ_SEC_DISP_OVL0);
-+	else if (comp->id == DDP_COMPONENT_OVL1)
-+		return BIT_ULL(CMDQ_SEC_DISP_OVL1);
-+
-+	return 0;
-+}
-+
- static irqreturn_t mtk_disp_ovl_irq_handler(int irq, void *dev_id)
- {
- 	struct mtk_disp_ovl *priv = dev_id;
-@@ -665,8 +676,22 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 			      DISP_REG_OVL_SRC_SIZE(idx));
- 	mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
- 			      DISP_REG_OVL_OFFSET(idx));
--	mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
--			      DISP_REG_OVL_ADDR(ovl, idx));
-+
-+	if (state->pending.is_secure) {
-+		const struct drm_format_info *fmt_info = drm_format_info(fmt);
-+		unsigned int buf_size = (pending->height - 1) * pending->pitch +
-+					pending->width * fmt_info->cpp[0];
-+
-+		mtk_ddp_write_mask(cmdq_pkt, BIT(idx), &ovl->cmdq_reg, ovl->regs,
-+				   DISP_REG_OVL_SECURE, BIT(idx));
-+		mtk_ddp_sec_write(cmdq_pkt, ovl->regs_pa + DISP_REG_OVL_ADDR(ovl, idx),
-+				  pending->addr, CMDQ_IWC_H_2_MVA, 0, buf_size, 0);
-+	} else {
-+		mtk_ddp_write_mask(cmdq_pkt, 0, &ovl->cmdq_reg, ovl->regs,
-+				   DISP_REG_OVL_SECURE, BIT(idx));
-+		mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
-+				      DISP_REG_OVL_ADDR(ovl, idx));
-+	}
- 
- 	if (is_afbc) {
- 		mtk_ddp_write_relaxed(cmdq_pkt, hdr_addr, &ovl->cmdq_reg, ovl->regs,
-@@ -745,6 +770,7 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
- 	}
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	priv->regs_pa = res->start;
- 	priv->regs = devm_ioremap_resource(dev, res);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap ovl\n");
--- 
-2.18.0
-
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
