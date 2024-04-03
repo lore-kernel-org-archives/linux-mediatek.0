@@ -4,55 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02930CD1294
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 11:34:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 385CCCD1297
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 11:34:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zI0sMjMp3gJZFl+e3ioYmwF3P0NdTg6udb+mIb8wH+w=; b=H+okZkOg0s7sV6zwfuSmsx6owP
-	lyzeLj9a98z+GWrtDgd4DjTjsjyhuMdDZjFhqNvothSGOCHTmPNObllO73YtkqViS7PJvcSWc43ze
-	c2Z4TPnqWpa5FTN1PK96wxydBCEGVPNpq1gkIH/l5zSPgM7gUUKPsNrrtVrhdlUr7LwNXl5w6MiTu
-	2eoWSoh5gAV65k7w2hBGSqeZUDUWHXCRYrra/62uza8Bdfe50bkMReWVkWg2zpPjHuKGl05K6fWuc
-	4anyefWeCFVb5M0wAPHHQqf0Jjtmo21iw5kkHuQ2YCuU2dR3clT8Wf6+jsJ5qz1gPYPas8EcyxBXA
-	6655njcQ==;
+	bh=J7GVq50e/cnKmwr692qLbeiX3iiulaSkExJyOfZxnCM=; b=SNVxEdJ8cWtmBoZ3HnUwjED57g
+	gty+mwfXLvqtgZ5tNB1O7qwThxwhoYX93kcb6oOXwEThVKy81nsqC60yl6S4mTGc0ZjXobPhKiVx/
+	jOEGR8lsmALMXMk/BUL8BXj6IDtx4BcyZSpc12oXtLiXeF+B4IBp8R1gPRk69yiSlqmvElx2h621T
+	aJnj61RoJieYZEpN9u3MXBYYFiz/FruHVyshNtDMC5n1ahoYVlakhTlxrUH7cwNDwsPfiNyQi5Jqe
+	kf0WxP93rVYP+ALHBIjteOUpqfFDIZh+fJpRc6nfw5JhQFipJ7jqE3btwDw1OTphp6glHt6RsR01E
+	Zn6+1pzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrysg-0000000FnBT-2rRr;
-	Wed, 03 Apr 2024 11:34:14 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rrysi-0000000FnCo-3mgX;
+	Wed, 03 Apr 2024 11:34:16 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrxpC-0000000FU2j-0ipG;
-	Wed, 03 Apr 2024 10:26:44 +0000
-X-UUID: 96c1120af1a411ee96d5dfc950b7243d-20240403
+	id 1rrxpa-0000000FUHZ-03QZ;
+	Wed, 03 Apr 2024 10:26:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=J7GVq50e/cnKmwr692qLbeiX3iiulaSkExJyOfZxnCM=; b=HN9/NGoFJ/nyN9Tk1HoV8gB9X3
+	RMLCj47+woeZPcUMj6jqPad1MM0N38KUlnPsbNTA43rG1J7XlUCD3lW2QW+N8U6zAvrRt1hhsqMrz
+	yDlbDMN0k+8EBWvN66R+ByjREvue4/6vF2sZQThjOy+O864bgF8JHdPIStZVTEgcM7QysJ220CwLH
+	l5rQPVuu64FUAt6gwW1BdQPKP56jU3N/vpO0BrFjzHuWjaA+m2pieiSzUUfxieJ1P4iX13OKp7cfg
+	qnIde8qcDhKMIGlNRdYUjtAB9tckJo2gRmKNdECW3lLihZt2Yl+SJ0en72yp/OkkWXmDrT0W/qqNT
+	GbudfN0w==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rrxpW-00000005LfH-2osN;
+	Wed, 03 Apr 2024 10:26:56 +0000
+X-UUID: a6e7f5f4f1a411eeac1957ae9f99f617-20240403
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=zI0sMjMp3gJZFl+e3ioYmwF3P0NdTg6udb+mIb8wH+w=;
-	b=E8bqjPJjhdi9/zpaPjsZGPf4l5dRtfzHMvzYsg8TDzyAlNCzJdE0Bedb5E9S3HFpLWCR86l4yzpx7UlduOlnO8K30rkn2PVen7kIXH54iGWgCDjda/dCDLAe8R2UpKMNXzn1N4DrEUU7u9F/KCtPQKynB783ASnD5bWFaU3yDGI=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=J7GVq50e/cnKmwr692qLbeiX3iiulaSkExJyOfZxnCM=;
+	b=h5T69hrDKuOx1ndVIcqdvRGS6OxfKzmcmmpV5SKq29tONwqxEB5a8ziy+rDTkODQtGjXOa6lK/OwH5P93jnXD0hJVZgXeYiqeyZ1Un60HvV21CPR8fQrKLP59C9HkLIBmzaTSVJRCsgea5xwpQYc36SIy5UDXWk8Fvk6ZjVLqu4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:1c4736a0-7d1e-40e9-8f71-f728744885bc,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6f543d0,CLOUDID:39fcc585-8d4f-477b-89d2-1e3bdbef96d1,B
+X-CID-O-INFO: VERSION:1.1.37,REQID:a44a41ce-1b20-4ae4-a773-ab8ac7fb42e7,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:8f70aa00-c26b-4159-a099-3b9d0558e447,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 96c1120af1a411ee96d5dfc950b7243d-20240403
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: a6e7f5f4f1a411eeac1957ae9f99f617-20240403
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1323296634; Wed, 03 Apr 2024 03:26:10 -0700
+	with ESMTP id 1290476720; Wed, 03 Apr 2024 03:26:37 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 3 Apr 2024 18:26:05 +0800
+ 15.2.1118.26; Wed, 3 Apr 2024 18:26:04 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 3 Apr 2024 18:26:05 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 3 Apr 2024 18:26:04 +0800
 From: Shawn Sung <shawn.sung@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>, Jassi Brar <jassisinghbrar@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -62,35 +76,19 @@ CC: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
 	<shawn.sung@mediatek.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
 	Houlong Wei <houlong.wei@mediatek.com>, <linux-kernel@vger.kernel.org>,
 	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Hsiao Chien Sung
-	<shawn.sung@mediatek.corp-partner.google.com>
-Subject: [PATCH v5 10/10] drm/mediatek: Add interface to allocate MediaTek GEM buffer.
-Date: Wed, 3 Apr 2024 18:26:02 +0800
-Message-ID: <20240403102602.32155-11-shawn.sung@mediatek.com>
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v5 01/10] dt-bindings: gce: mt8195: Add CMDQ_SYNC_TOKEN_SECURE_THR_EOF event id
+Date: Wed, 3 Apr 2024 18:25:53 +0800
+Message-ID: <20240403102602.32155-2-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240403102602.32155-1-shawn.sung@mediatek.com>
 References: <20240403102602.32155-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--10.383100-8.000000
-X-TMASE-MatchedRID: IP2XlN8ufaOXFGyE5q3nYI6MisxJraxHvhf/zJ92tsP7efdnqtsaE0bj
-	B8LDWKj2Aunqu1nlwTRswaBvYjx/7iQVVteP90CtKaMQ6tw7oDJU3K6aV1ad7d9RlPzeVuQQkmi
-	3zE7HIvkybq5nXNxxl6mm1mbOCqOQig1RteqE6iB0Uibeis6dEK6JG5H2YJq6FLXUWU5hGiERcU
-	eSUAEujpJWdV1quNw8aNPw9ABc6H69WjwSnAs/t6OuVibdZNTvuoYFb0nRiqPIvQIyugvKdbyPe
-	55WbcuIaO7i+fdXAfAy7RToPtBlKOlVfYNOXGqmoiN8YTmq+cvoFXQb3ZgkUf2TbFr0CGODEcRa
-	3XM5JeRptSMKPu8IjkdWV7qYCXR19dXaIcOJDZ+yBjDX4sGuTaxwr8rYOW+OZ3q824boKrLr2yi
-	Kkd3N2shHObr27PYyaK8uWXuH4d0fE8yM4pjsDwtuKBGekqUpI/NGWt0UYPCztFsz3UM2JH/t3i
-	lEWiSYZevEzYr2I57Pbkz8xBB1sCZW8DARDgA6
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--10.383100-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 5013D66FBB75C856B501B8C8A0161162BCDC9187673B60F24AF64EE2E4CAC5DD2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240403_032634_324166_F801EB1E 
-X-CRM114-Status: GOOD (  27.55  )
+X-CRM114-CacheID: sfid-20240403_112655_020833_0BEDBA31 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,216 +103,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: CK Hu <ck.hu@mediatek.com>
+From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
 
-Add an interface to allocate MediaTek GEM buffers, allow the IOCTLs
-to be used by render nodes.
-This patch also sets the RENDER driver feature.
+There are 2 kind of GCE event signal:
+- The SW token means: a GCE event signal triggered by SW drivers.
+e.g. SW driver append a GCE command to set a GCE event after a specific
+GCE command. Or SW driver use CPU to write a event id to GCE register to
+trigger the GCE event corresponding to that event id.
 
-Signed-off-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
+- The HW event means: a GCE event signal triggered by HW engines.
+e.g. When HW OVL fetches all the data in frame buffer, HW OVL will send
+a frame done irq and also send a frame done GCE event via HW bus directly.
+
+CMDQ_SYNC_TOKEN_SECURE_THR_EOF is a SW token event that is set in the
+end of each cmdq secure pkt. It is used as a secure irq to notify
+CMDQ driver in the normal world that GCE secure thread has completed
+a secure cmd buffer in thee secure world.
+
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 16 ++++++-
- drivers/gpu/drm/mediatek/mtk_gem.c     | 40 ++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_gem.h     | 11 +++++
- include/uapi/drm/mediatek_drm.h        | 64 ++++++++++++++++++++++++++
- 4 files changed, 130 insertions(+), 1 deletion(-)
- create mode 100644 include/uapi/drm/mediatek_drm.h
+ include/dt-bindings/gce/mt8195-gce.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index b5f605751b0a1..41eed3f89316c 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -23,6 +23,7 @@
- #include <drm/drm_of.h>
- #include <drm/drm_probe_helper.h>
- #include <drm/drm_vblank.h>
-+#include <drm/mediatek_drm.h>
- 
- #include "mtk_crtc.h"
- #include "mtk_ddp_comp.h"
-@@ -570,6 +571,14 @@ static void mtk_drm_kms_deinit(struct drm_device *drm)
- 	component_unbind_all(drm->dev, drm);
- }
- 
-+static const struct drm_ioctl_desc mtk_ioctls[] = {
-+	DRM_IOCTL_DEF_DRV(MTK_GEM_CREATE, mtk_gem_create_ioctl,
-+			  DRM_UNLOCKED | DRM_AUTH | DRM_RENDER_ALLOW),
-+	DRM_IOCTL_DEF_DRV(MTK_GEM_MAP_OFFSET,
-+			  mtk_gem_map_offset_ioctl,
-+			  DRM_UNLOCKED | DRM_AUTH | DRM_RENDER_ALLOW),
-+};
-+
- DEFINE_DRM_GEM_FOPS(mtk_drm_fops);
- 
- /*
-@@ -585,12 +594,17 @@ static struct drm_gem_object *mtk_gem_prime_import(struct drm_device *dev,
- }
- 
- static const struct drm_driver mtk_drm_driver = {
--	.driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_ATOMIC,
-+	.driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_ATOMIC |
-+			   DRIVER_RENDER,
- 
- 	.dumb_create = mtk_gem_dumb_create,
- 
- 	.gem_prime_import = mtk_gem_prime_import,
- 	.gem_prime_import_sg_table = mtk_gem_prime_import_sg_table,
-+
-+	.ioctls = mtk_ioctls,
-+	.num_ioctls = ARRAY_SIZE(mtk_ioctls),
-+
- 	.fops = &mtk_drm_fops,
- 
- 	.name = DRIVER_NAME,
-diff --git a/drivers/gpu/drm/mediatek/mtk_gem.c b/drivers/gpu/drm/mediatek/mtk_gem.c
-index 5a82d7cf3ed0d..e59e0727717b7 100644
---- a/drivers/gpu/drm/mediatek/mtk_gem.c
-+++ b/drivers/gpu/drm/mediatek/mtk_gem.c
-@@ -4,9 +4,11 @@
-  */
- 
- #include <linux/dma-buf.h>
-+#include <drm/mediatek_drm.h>
- 
- #include <drm/drm.h>
- #include <drm/drm_device.h>
-+#include <drm/drm_drv.h>
- #include <drm/drm_gem.h>
- #include <drm/drm_gem_dma_helper.h>
- #include <drm/drm_prime.h>
-@@ -285,3 +287,41 @@ void mtk_gem_prime_vunmap(struct drm_gem_object *obj, struct iosys_map *map)
- 	mtk_gem->kvaddr = NULL;
- 	kfree(mtk_gem->pages);
- }
-+
-+int mtk_gem_map_offset_ioctl(struct drm_device *drm, void *data,
-+			     struct drm_file *file_priv)
-+{
-+	struct drm_mtk_gem_map_off *args = data;
-+
-+	return drm_gem_dumb_map_offset(file_priv, drm, args->handle,
-+				       &args->offset);
-+}
-+
-+int mtk_gem_create_ioctl(struct drm_device *dev, void *data,
-+			 struct drm_file *file_priv)
-+{
-+	struct mtk_gem_obj *mtk_gem;
-+	struct drm_mtk_gem_create *args = data;
-+	int ret;
-+
-+	mtk_gem = mtk_gem_create(dev, args->size, false);
-+	if (IS_ERR(mtk_gem))
-+		return PTR_ERR(mtk_gem);
-+
-+	/*
-+	 * allocate a id of idr table where the obj is registered
-+	 * and handle has the id what user can see.
-+	 */
-+	ret = drm_gem_handle_create(file_priv, &mtk_gem->base, &args->handle);
-+	if (ret)
-+		goto err_handle_create;
-+
-+	/* drop reference from allocate - handle holds it now. */
-+	drm_gem_object_put(&mtk_gem->base);
-+
-+	return 0;
-+
-+err_handle_create:
-+	mtk_gem_free_object(&mtk_gem->base);
-+	return ret;
-+}
-diff --git a/drivers/gpu/drm/mediatek/mtk_gem.h b/drivers/gpu/drm/mediatek/mtk_gem.h
-index 66e5f154f6980..4d7598220ca8f 100644
---- a/drivers/gpu/drm/mediatek/mtk_gem.h
-+++ b/drivers/gpu/drm/mediatek/mtk_gem.h
-@@ -45,4 +45,15 @@ struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_device *dev,
- int mtk_gem_prime_vmap(struct drm_gem_object *obj, struct iosys_map *map);
- void mtk_gem_prime_vunmap(struct drm_gem_object *obj, struct iosys_map *map);
+diff --git a/include/dt-bindings/gce/mt8195-gce.h b/include/dt-bindings/gce/mt8195-gce.h
+index dcfb302b8a5bc..b6b3db82c381e 100644
+--- a/include/dt-bindings/gce/mt8195-gce.h
++++ b/include/dt-bindings/gce/mt8195-gce.h
+@@ -800,6 +800,12 @@
+ #define CMDQ_EVENT_WPE_VPP1_WPE_GCE_FRAME_DONE	969
+ #define CMDQ_EVENT_WPE_VPP1_WPE_DONE_SYNC_OUT	970
  
 +/*
-+ * request gem object creation and buffer allocation as the size
-+ * that it is calculated with framebuffer information such as width,
-+ * height and bpp.
++ * Notify normal CMDQ there are some secure task done,
++ * this token sync with secure world.
 + */
-+int mtk_gem_create_ioctl(struct drm_device *dev, void *data,
-+			 struct drm_file *file_priv);
++#define CMDQ_SYNC_TOKEN_SECURE_THR_EOF			980
 +
-+/* get buffer offset to map to user space. */
-+int mtk_gem_map_offset_ioctl(struct drm_device *dev, void *data,
-+			     struct drm_file *file_priv);
- #endif
-diff --git a/include/uapi/drm/mediatek_drm.h b/include/uapi/drm/mediatek_drm.h
-new file mode 100644
-index 0000000000000..b0dea00bacbc4
---- /dev/null
-+++ b/include/uapi/drm/mediatek_drm.h
-@@ -0,0 +1,64 @@
-+/* SPDX-License-Identifier: GPL-2.0+ WITH Linux-syscall-note */
-+/*
-+ * Copyright (c) 2015 MediaTek Inc.
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#ifndef _UAPI_MEDIATEK_DRM_H
-+#define _UAPI_MEDIATEK_DRM_H
-+
-+#include <drm/drm.h>
-+
-+#ifdef __KERNEL__
-+#include <linux/types.h>
-+#else
-+#include <stdint.h>
-+#endif
-+
-+/**
-+ * User-desired buffer creation information structure.
-+ *
-+ * @size: user-desired memory allocation size.
-+ *	- this size value would be page-aligned internally.
-+ * @flags: user request for setting memory type or cache attributes.
-+ * @handle: returned a handle to created gem object.
-+ *	- this handle will be set by gem module of kernel side.
-+ */
-+struct drm_mtk_gem_create {
-+	uint64_t size;
-+	uint32_t flags;
-+	uint32_t handle;
-+};
-+
-+/**
-+ * A structure for getting buffer offset.
-+ *
-+ * @handle: a pointer to gem object created.
-+ * @pad: just padding to be 64-bit aligned.
-+ * @offset: relatived offset value of the memory region allocated.
-+ *     - this value should be set by user.
-+ */
-+struct drm_mtk_gem_map_off {
-+	uint32_t handle;
-+	uint32_t pad;
-+	uint64_t offset;
-+};
-+
-+#define DRM_MTK_GEM_CREATE		0x00
-+#define DRM_MTK_GEM_MAP_OFFSET		0x01
-+
-+#define DRM_IOCTL_MTK_GEM_CREATE	DRM_IOWR(DRM_COMMAND_BASE + \
-+		DRM_MTK_GEM_CREATE, struct drm_mtk_gem_create)
-+
-+#define DRM_IOCTL_MTK_GEM_MAP_OFFSET	DRM_IOWR(DRM_COMMAND_BASE + \
-+		DRM_MTK_GEM_MAP_OFFSET, struct drm_mtk_gem_map_off)
-+
-+#endif /* _UAPI_MEDIATEK_DRM_H */
+ #define CMDQ_EVENT_DP_TX_VBLANK_FALLING	994
+ #define CMDQ_EVENT_DP_TX_VSC_FINISH	995
+ 
 -- 
 2.18.0
 
