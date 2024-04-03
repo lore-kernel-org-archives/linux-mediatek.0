@@ -4,103 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEE7DCD1288
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 10:27:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F8BACD128A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 10:27:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=urbzCOgzD7/Hupt+Y7xPp6Zzq0kIUnTELc1uefBAO6o=; b=UdzuAFAMG4sCLplArJa2JF9ETH
-	BVp0w2TTRlZ7sOLEIZQmT2wqtx9QIBEmukRhnbcwGtR80sZzbXzDtt3inEVaGchDf4KKVmP2fA0U/
-	8PdXqwEFNxrenVGak31dZl7vfZLy7f9yTv9RYvo5O8reWxbFYr1uTECHlGMcFTMekf/QczV+dBT7N
-	gT/DbPn6EGhnrSBvkSlISUw3BH9Vjdjdsq2cDMRrxxf6Nr05/KTNWVYPshJzKmrd+TDNggGoQ0RwW
-	4BrxRdqe1Tss0mnsf0ollotdFYyq7wskpjSEvKNDh0J6yDqhbZZH/bUF/7LPV2zzwcZaRIXgtDsps
-	qRir33nA==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JZkUKgIPLh7/qe2xhIetKSxoRL0ImVbOMTN8ofcMOdE=; b=c5ybrm+nFIbaAwdeZ4tAvrZm29
+	mVrRTVd0Tb0eyEi2XHJiVesaxtLEwuJm6nmBwwHTKHo/wHGwUMtoVodA53ngTKSXwgDBAF9e3bDdl
+	0vGG0pGXvp0++yIVBthA8m8PD/MmQd//U+gD/fNFtqT8/L7sLF6EVe6Xfzl0wA9PLXqVNcryBUys6
+	zGlyBzVwMaafEHWQv4eZ0nyS/JJkX7W5/ooq6BCrg4FQOPhAxVlHTFYNVpBfGjE+GmQqPhVfo2Hg5
+	X2/kqJNMeC0LMtZonxgt7SCKULDGUijXfTma7p0UrJcOTLrp4YUxbZ3itcOS2eYckZegJCCGZxKab
+	4YGyzf6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrxpz-0000000FUbW-38ni;
-	Wed, 03 Apr 2024 10:27:23 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1rrxqG-0000000FUqp-2Vvq;
+	Wed, 03 Apr 2024 10:27:40 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrxpX-0000000FUGV-1jwp;
-	Wed, 03 Apr 2024 10:26:55 +0000
+	id 1rrxpv-0000000FUXk-1ggq;
+	Wed, 03 Apr 2024 10:27:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:Message-ID:
-	Date:Subject:CC:To:From:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=urbzCOgzD7/Hupt+Y7xPp6Zzq0kIUnTELc1uefBAO6o=; b=j/74aOKFFnb3opUrsr8Tzjg0Dl
-	gzii8KWLyvnOK1sqDbxtJuZguQ54E2+elwUhy3wUiY1LrsCcOQi5T4qVbc6ceKewM1dHyRy6BaXZh
-	NQa07O+6HzWdT8UVdCA6L//sYRQv5vr5jMYNA0P08EST2UMqYZPEWURkOb02supw7E7mzDbGZWohc
-	Tt4HoC56j83CkzdD+enBsxO7Kb8YkPwrOwHJvCoPSploiJ6z06Zf9gSil0XFd7AeqPnpniIp6+/KR
-	v4ckRuLEXUR6eWZqUmpT2gs2vW9o7vut45zmyC990ZR/5DZ5nMhgoSVeDzP8Y0KL59Sl6dzAy9LzT
-	qxfXyWGg==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrxpT-00000005Lf0-23hi;
-	Wed, 03 Apr 2024 10:26:54 +0000
-X-UUID: a758ce46f1a411ee96d5dfc950b7243d-20240403
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=JZkUKgIPLh7/qe2xhIetKSxoRL0ImVbOMTN8ofcMOdE=; b=Aiyc2bHMTGWgJInZg+SDSoS+50
+	2TXf3irz3febIMIADbUFWP0M9d70vinr2FGmMdWuhkE28vM786RjtmOTeMdqmHR4sRSdydA+Uz3KD
+	RfCQLqprx/b1uJ3ZIzwr3IHT32lYXtR/CWtWLsk9SnIyiV9Lha5RGiAEELmKrhoO4ftSxqjq3fQ6k
+	fQ8FdBAM/nhRLElrblFVISUAkHBWIY2ERK7+ZAqv/zPKciz1MkYOSU9vAowO0DT3Vj7HIzyk8Bo8a
+	KCEBwPk3m/X+zGP3DrOG+9kjAM4sQsHcCRl5AY/RGS0yBrY06IAjwKtaMrZ+UQn8yo9yiViWdJntY
+	uGcUiCOA==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rrxpr-00000004A6w-3051;
+	Wed, 03 Apr 2024 10:27:17 +0000
+X-UUID: b9278630f1a411eeac1957ae9f99f617-20240403
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=urbzCOgzD7/Hupt+Y7xPp6Zzq0kIUnTELc1uefBAO6o=;
-	b=CTY2Zn8TfufIcYixJpgorfkHwyNJqj8L4uYh+yMbh9INQqhauw3konedBv9r47q7OHc74SDVxgYbY/7oCKhGXBvtbFctbmqJKtRPrrXIROqFjiI/gMIL3jcr1vyb62b09LMswPOV35egw2uuX9tfMt9rPWMVHSKusHU7g6nebfo=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=JZkUKgIPLh7/qe2xhIetKSxoRL0ImVbOMTN8ofcMOdE=;
+	b=c8PbsavIaMn8do79zCUtoFu6Ph4zce8XX3opnr1/QV4utypye8diTmpjqdHdHwdndDsCXx3WIi7zKIfB1xj+dJAlqp1xKuQHvPTCTF5DW9Dhf9HOzfsdJRq6iTqoo9wduq117eK2Hhg4Jm0Ygz5V7c6IsSETAjwRQnGJUGmvPDI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:feaafd86-f189-4792-ac35-406749d8e92e,IP:0,U
-	RL:0,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:100
-X-CID-META: VersionHash:6f543d0,CLOUDID:c69c2c91-e2c0-40b0-a8fe-7c7e47299109,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:801|102,TC:nil,Content:3,EDM:-3,IP:n
-	il,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LE
-	S:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-O-INFO: VERSION:1.1.37,REQID:1e3f36cc-42d7-45af-ba12-335508b2398b,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6f543d0,CLOUDID:6971aa00-c26b-4159-a099-3b9d0558e447,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: a758ce46f1a411ee96d5dfc950b7243d-20240403
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: b9278630f1a411eeac1957ae9f99f617-20240403
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1736827700; Wed, 03 Apr 2024 03:26:37 -0700
+	with ESMTP id 770948685; Wed, 03 Apr 2024 03:27:07 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 3 Apr 2024 18:26:03 +0800
+ 15.2.1118.26; Wed, 3 Apr 2024 18:27:02 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 3 Apr 2024 18:26:03 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 3 Apr 2024 18:27:02 +0800
 From: Shawn Sung <shawn.sung@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, Jassi Brar <jassisinghbrar@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, Hsiao Chien Sung
-	<shawn.sung@mediatek.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Hsiao Chien Sung
-	<shawn.sung@mediatek.corp-partner.google.com>
-Subject: [PATCH v5 00/10] Add CMDQ secure driver for SVP
-Date: Wed, 3 Apr 2024 18:25:52 +0800
-Message-ID: <20240403102602.32155-1-shawn.sung@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Maarten
+ Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+	<mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Sumit Semwal
+	<sumit.semwal@linaro.org>, =?UTF-8?q?Christian=20K=C3=B6nig?=
+	<christian.koenig@amd.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
+	<linaro-mm-sig@lists.linaro.org>, Jason-JH.Lin <jason-jh.lin@mediatek.com>,
+	Hsiao Chien Sung <shawn.sung@mediatek.com>
+Subject: [PATCH v5 4/9] drm/mediatek: Add mtk_ddp_sec_write to config secure buffer info
+Date: Wed, 3 Apr 2024 18:26:56 +0800
+Message-ID: <20240403102701.369-5-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240403102701.369-1-shawn.sung@mediatek.com>
+References: <20240403102701.369-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.399900-8.000000
-X-TMASE-MatchedRID: 2KXNH9TWyB78rQJMqxBG8AI0yP/uoH+DKaRmDCmXszd2Cr1D6VVk8n4z
-	9jl2IgzvD96xyDWv66V3DwGxIMXYVCoLG8HLfjNfXP5rFAucBUH4qCLIu0mtIGHZ+cd7VyKX4nz
-	kw7itaMhZk01J3c7PAfGwWOiK+CFhvoOwdMywpfOxo9yzdPhMvUGtrAxy5ENORL9uhZIYy13fSg
-	MQRUDlML1GkWouMMWsk7Vb6h17QQQ/eX/eRWk3Rd35+5/2Rxqm/8CuA+b/YYSlc5zJswSBz+b1a
-	n+ANQl/kPk8oBU71SxEzxsFM1euZqo77AcuQhw7ngIgpj8eDcCbifj2/J/1cQ1fU1q220JrKrau
-	Xd3MZDUb7Ul726xKAi05CVh5cvg3CMBT2WXOoJOFCmvAAvRrvyf6qUzae34r
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.399900-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: F9D346B31598FBEA755AAE21659235500CF499B8D32E44FB9AA7F30D098187632000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240403_112651_863708_9AE90C2F 
-X-CRM114-Status: GOOD (  14.38  )
+X-CRM114-CacheID: sfid-20240403_112716_149830_3AC5A924 
+X-CRM114-Status: GOOD (  12.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,92 +106,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
+From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
 
-For the Secure Video Path (SVP) feature, inculding the memory stored
-secure video content, the registers of display HW pipeline and the
-HW configure operations are required to execute in the secure world.
+Add mtk_ddp_sec_write to configure secure buffer information to
+cmdq secure packet data.
+Then secure cmdq driver will use these information to configure
+curresponding secure DRAM address to HW overlay in secure world.
 
-So using a CMDQ secure driver to make all display HW registers
-configuration secure DRAM access permision settings execute by GCE
-secure thread in the secure world.
-
-We are landing this feature on mt8188 and mt8195 currently.
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
-Based on 2 series and 1 patch:
-[1] Add CMDQ driver support for mt8188
-- https://patchwork.kernel.org/project/linux-mediatek/list/?series=810382
-[2] Add mediatek,gce-events definition to mediatek,gce-mailbox bindings
-- https://patchwork.kernel.org/project/linux-mediatek/list/?series=810938
-[3] soc: mediatek: Add register definitions for GCE
-- https://patchwork.kernel.org/project/linux-mediatek/patch/20231017064717.21616-2-shawn.sung@mediatek.com/
----
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 14 ++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h |  4 ++++
+ 2 files changed, 18 insertions(+)
 
-Changes in v5:
-1. Sync the local changes
-
-Changes in v4:
-1. Rebase on mediatek-drm-next(278640d4d74cd) and fix the conflicts
-2. This series is based on 20240307013458.23550-1-jason-jh.lin@mediatek.com
-
-Changes in v3:
-1. separate mt8188 driver porting patches to another series
-2. separate adding 'mediatek,gce-events' event prop to another series
-3. sepatate mailbox helper and controller driver modification to a
-   single patch for adding looping thread
-4. add kerneldoc for secure mailbox related definition
-5. add moving reuseable definition patch before adding secure mailbox
-   driver patch
-6. adjust redundant logic in mtk-cmdq-sec-mailbox
-
-Changes in v2:
-1. adjust dt-binding SW event define patch before the dt-binding patch using it
-2. adjust dt-binding patch for secure cmdq driver
-3. remove the redundant patches or merge the patches of modification for the same API
-
-CK Hu (1):
-  drm/mediatek: Add interface to allocate MediaTek GEM buffer.
-
-Jason-JH.Lin (9):
-  dt-bindings: gce: mt8195: Add CMDQ_SYNC_TOKEN_SECURE_THR_EOF event id
-  dt-bindings: mailbox: Add mboxes property for CMDQ secure driver
-  soc: mediatek: cmdq: Add cmdq_pkt_logic_command to support math
-    operation
-  soc: mediatek: cmdq: Add cmdq_pkt_write_s_reg_value to support write
-    value to reg
-  mailbox: mtk-cmdq: Support GCE loop packets in interrupt handler
-  soc: mediatek: cmdq: Add cmdq_pkt_finalize_loop for looping cmd with
-    irq
-  mailbox: mediatek: Move reuseable definition to header for secure
-    driver
-  mailbox: mediatek: Add CMDQ secure mailbox driver
-  mailbox: mediatek: Add secure CMDQ driver support for CMDQ driver
-
- .../mailbox/mediatek,gce-mailbox.yaml         |   10 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        |   16 +-
- drivers/gpu/drm/mediatek/mtk_gem.c            |   40 +
- drivers/gpu/drm/mediatek/mtk_gem.h            |   11 +
- drivers/mailbox/Makefile                      |    2 +-
- drivers/mailbox/mtk-cmdq-mailbox.c            |  108 +-
- drivers/mailbox/mtk-cmdq-sec-mailbox.c        | 1045 +++++++++++++++++
- drivers/mailbox/mtk-cmdq-sec-tee.c            |  165 +++
- drivers/soc/mediatek/mtk-cmdq-helper.c        |   75 ++
- include/dt-bindings/gce/mt8195-gce.h          |    6 +
- include/linux/mailbox/mtk-cmdq-mailbox.h      |   37 +
- .../linux/mailbox/mtk-cmdq-sec-iwc-common.h   |  385 ++++++
- include/linux/mailbox/mtk-cmdq-sec-mailbox.h  |  159 +++
- include/linux/mailbox/mtk-cmdq-sec-tee.h      |  105 ++
- include/linux/soc/mediatek/mtk-cmdq.h         |   61 +
- include/uapi/drm/mediatek_drm.h               |   64 +
- 16 files changed, 2257 insertions(+), 32 deletions(-)
- create mode 100644 drivers/mailbox/mtk-cmdq-sec-mailbox.c
- create mode 100644 drivers/mailbox/mtk-cmdq-sec-tee.c
- create mode 100644 include/linux/mailbox/mtk-cmdq-sec-iwc-common.h
- create mode 100644 include/linux/mailbox/mtk-cmdq-sec-mailbox.h
- create mode 100644 include/linux/mailbox/mtk-cmdq-sec-tee.h
- create mode 100644 include/uapi/drm/mediatek_drm.h
-
---
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+index 8aab373ce67c9..0ee9e42cdf0a0 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+@@ -111,6 +111,20 @@ void mtk_ddp_write_mask(struct cmdq_pkt *cmdq_pkt, unsigned int value,
+ #endif
+ }
+ 
++void mtk_ddp_sec_write(struct cmdq_pkt *cmdq_pkt, u32 addr, u64 base,
++		       const enum cmdq_iwc_addr_metadata_type type,
++		       const u32 offset, const u32 size, const u32 port)
++{
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	if (!cmdq_pkt)
++		return;
++
++	/* secure buffer will be 4K alignment */
++	cmdq_sec_pkt_write(cmdq_pkt, addr, base, type,
++			   offset, ALIGN(size, PAGE_SIZE), port);
++#endif
++}
++
+ static int mtk_ddp_clk_enable(struct device *dev)
+ {
+ 	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+index b9c79e740abe0..17c690e1f477f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+@@ -7,6 +7,7 @@
+ #define MTK_DDP_COMP_H
+ 
+ #include <linux/io.h>
++#include <linux/mailbox/mtk-cmdq-sec-mailbox.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/soc/mediatek/mtk-cmdq.h>
+ #include <linux/soc/mediatek/mtk-mmsys.h>
+@@ -346,4 +347,7 @@ void mtk_ddp_write_relaxed(struct cmdq_pkt *cmdq_pkt, unsigned int value,
+ void mtk_ddp_write_mask(struct cmdq_pkt *cmdq_pkt, unsigned int value,
+ 			struct cmdq_client_reg *cmdq_reg, void __iomem *regs,
+ 			unsigned int offset, unsigned int mask);
++void mtk_ddp_sec_write(struct cmdq_pkt *cmdq_pkt, u32 addr, u64 base,
++		       const enum cmdq_iwc_addr_metadata_type type,
++		       const u32 offset, const u32 size, const u32 port);
+ #endif /* MTK_DDP_COMP_H */
+-- 
 2.18.0
 
 
