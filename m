@@ -4,126 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9813DCD128A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 15:19:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29981CD128A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Apr 2024 15:46:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cnRU4IuiiR+L4DbUNFcvoGVCrcztEel/ynJcAah208g=; b=Ky/Sgv8S+A15qy7JpgXE3eqs9W
-	RqGJdrg6iiqkyvAvGwurZqXemIpsPEuE3xfKU6GB64uh7m2+bWhfiAKN7qqR+0OyHI/r2J2fkDV4g
-	HDzZlh5glSQxVWRyDv/BvuQUaemT1DczqFsHOwU3qdfr6prVZIZUALazvloMTKfz2X23yidRyWQhs
-	8U6KFt5PflNyBsl+HgiyVF8wwmjsBr6slB6Y8KcD+4I4bz/dloj3twehcp0PTZZuezGXyNPdDwdo6
-	OVLMcmeHJjQWDq0oqo4t09UNaTroB8ITIy7YZ0jgkzTUhYN1DSp5KUSGWZDqbRGEvFMPhWvMUQVgR
-	M3dbls8A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p1DzNPGwodtbKAHmZM0CBdErqZDpJmc/Sh/x+3k7XFo=; b=bHC9Ufk+dBlofIB2YDdRSpqxJ0
+	FZuAA3QVz3/gDjTj0BCiWu0FDg9ANQUx5/Xj5b8aOiPijRMYqUN9QPCZRbnTKBuDgtEpe8aNAPQwy
+	BNXBajtsJwPGXsdU6tXw1/IN3CrMtpdSdsOZBMdbsgt7IE7S5QoefNu9Ndinq537Gy34C85YnbIi8
+	tt6YwuOSEp7Zl8A9ncyuW28G+L8/WrueFncQ6Sx+3Fb2DkZexNkzSXOeVeo+1rKnAy9qlSHg3iWdL
+	UwwJ7RLVol4Rai9S4wmUk+9KHk9fqyih5SCGr/x3gyKkrLjEURE2gKWnbjTO0l51W2xwpS/Jz6D6a
+	P4KdKksA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rs2OZ-0000000GhT3-0mxq;
-	Wed, 03 Apr 2024 15:19:23 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rs2p0-0000000Gnv0-2j7y;
+	Wed, 03 Apr 2024 15:46:42 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rs1Qa-0000000GPjv-2PDx
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 03 Apr 2024 14:17:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=cnRU4IuiiR+L4DbUNFcvoGVCrcztEel/ynJcAah208g=; b=GSPDAm3UwigxuaWdK3XsemAq1S
-	8X/3Qx5e+bJ/M2skcS7FYjWWzzQTUsGbNTrdlIAesvQYq200gPjJZaUl6nCjHaCiBVMytKbmy6rcg
-	tDK97j5s9wTDNIEvabodbFAb2Otfm65iXRM5sQ9mvBt1J1kq+sthLUNfbX/a4PtwLlnFlN/RnAuKy
-	5NzdnmiqPSe6ltN/i8bfDR5CvBG4XXkdW/JkdLqKmwwaQSI2RHnIShIiSNLnCQDQrtFSGrxtWF6Tq
-	HGQ8qJhT/Aopl/F1/d1waOU6JAZSSUieFLibQ3RyJ/7hP6UB+fVx2z8lEOpwvPvjGDiejIlgFmlC/
-	kyFDHTrA==;
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rs1QW-00000004GXH-10M6
-	for linux-mediatek@lists.infradead.org;
-	Wed, 03 Apr 2024 14:17:22 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a46a7208eedso839844766b.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 03 Apr 2024 07:17:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1712153838; x=1712758638; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=cnRU4IuiiR+L4DbUNFcvoGVCrcztEel/ynJcAah208g=;
-        b=CpCNzrtBRfW5IFuSFkU4wSXBOMuNkmDpwX83T2gNcpUhnwy5gt3+VXIVDWWGDeU1FS
-         LxFloKkGnoa/ofVEnUhwW9tX1xf26LFgUt2BxQWbyHT8uWYWVyQRVPvPDFPlcBhv84pX
-         b2aLgzoqxSnWwopQsX7Mi/Kldh/fgkr1C3MsRuKcZviA8Xcnt1axfK6sCMTSBNGbQRXa
-         HkxX1PoIkOspJelwkVICaZOsFR39RdBKYo1BKOhrADl02QVOKhwKuWDDR+IYiHEK4ei7
-         udpEehjp8nxlCpZemSiTvTRW6kCkxLFTJF5szpZUI9grKqaC8ExjL6Du/aKudVV0Tlqt
-         p3RA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712153838; x=1712758638;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=cnRU4IuiiR+L4DbUNFcvoGVCrcztEel/ynJcAah208g=;
-        b=gRd64Px0J4ALLTi6gGh2mDxoBcQiLNO58S12hIe8RlhEhbpEhYwlwiMMvee32rp79w
-         hh70m15UHURsAMD01rZfRhOsr1+yRde1rOtnrxaR3+8fPuMU7jeFFEIXv25omb3nJXbi
-         IrMIjhFpFp2WxIS3XqZXjVTiP/165VUM5pk8rVHUu+DqtQUfo2CfsKjtio91c2yauZV7
-         dGXNED4Vi/0M22MRhz/KRbrCgC4cWRmDTfoXJfSwkaEqtuVv47XlKct+oxR5j+jOIFxq
-         KHsseSRCpZDpmwGvjlYc4eeaV9FvqFWgpdl5hF3iDkePJwcVbMsHZZJvn7n9vTQFjhnu
-         fNDw==
-X-Forwarded-Encrypted: i=1; AJvYcCVWIJtdf5qtN1Tz89qgz867d6kmpZhitPmbgJhJBaISwCi28cmQGgLaJuufbADswREaIygzAiza51NZq4pp/EeyxjpnVMCvznKr0uUBjCi0a9fE
-X-Gm-Message-State: AOJu0YyBl1BGOlqF2dcQfHkI0OFJOREtzeVlnjXmp4+wwXaaFjzj7Pt+
-	71++OCS9cabB09z1aUbqnPx6JeVT/EFn7F7neya70bOIVP08o78fQhjcf8MuO/k=
-X-Google-Smtp-Source: AGHT+IFTX0zGPUE9Ns6+NdhULu8lAEjCjxyg2b/cKN8bqqMv3ElMG+Gylzpf3w9rj3hUtOEzVIzlxQ==
-X-Received: by 2002:a17:906:da81:b0:a4e:a114:1afe with SMTP id xh1-20020a170906da8100b00a4ea1141afemr1688370ejb.2.1712153838464;
-        Wed, 03 Apr 2024 07:17:18 -0700 (PDT)
-Received: from [127.0.1.1] ([178.197.223.16])
-        by smtp.gmail.com with ESMTPSA id he18-20020a1709073d9200b00a4729f093ecsm7737819ejc.53.2024.04.03.07.17.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Apr 2024 07:17:18 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Wed, 03 Apr 2024 16:16:56 +0200
-Subject: [PATCH v2 7/7] wifi: wfx: drop driver owner initialization
+	id 1rs2ox-0000000GnuN-2STJ;
+	Wed, 03 Apr 2024 15:46:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7D05B61490;
+	Wed,  3 Apr 2024 15:46:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C64FC433C7;
+	Wed,  3 Apr 2024 15:46:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712159198;
+	bh=ZngLA7fiu23CbbP2FeZpKPJ67tayqrPfJ1YqiGcCHyg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Px9srY/uyIRW5t1QLkovNO7yEOqoIYkIIAulrCjYQAfrcuMRateZgR7AGgEuLcr7V
+	 YhY24aPYHHM+qyzwz3IlkrjSXakoy9e1M4VXfkbH1vcswhn9bM2o4QLwvO7nvp8Phg
+	 9/S4PXM+z/9hQ3fkmV60uyQY9xXydRThW+7NxSGPfggIJwLRz4Cf4XZ5zNHu9HTX/w
+	 G87opAvkkB3qKmX/W5grwxAO6g/akxBMBZ1wEjix9u/tzqhD5Xctxhuszck0S7vgBL
+	 mlYlHL0fO0yp1RQd+giwePACin7YPuwVupF5BVDYlBUIYp4Kv75NQHbndkvFkdB/CP
+	 nFQLfm+AGBA/w==
+Date: Wed, 3 Apr 2024 16:46:33 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Shawn Sung <shawn.sung@mediatek.com>
+Cc: CK Hu <ck.hu@mediatek.com>, Jassi Brar <jassisinghbrar@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v5 02/10] dt-bindings: mailbox: Add mboxes property for
+ CMDQ secure driver
+Message-ID: <20240403-conflict-detest-717b4175a00c@spud>
+References: <20240403102602.32155-1-shawn.sung@mediatek.com>
+ <20240403102602.32155-3-shawn.sung@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240403-module-owner-sdio-v2-7-ae46d6b955eb@linaro.org>
-References: <20240403-module-owner-sdio-v2-0-ae46d6b955eb@linaro.org>
-In-Reply-To: <20240403-module-owner-sdio-v2-0-ae46d6b955eb@linaro.org>
-To: Ulf Hansson <ulf.hansson@linaro.org>, 
- Marcel Holtmann <marcel@holtmann.org>, 
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Kalle Valo <kvalo@kernel.org>, Jeff Johnson <jjohnson@kernel.org>, 
- Arend van Spriel <arend.vanspriel@broadcom.com>, 
- Brian Norris <briannorris@chromium.org>, 
- Francesco Dolcini <francesco@dolcini.it>, 
- =?utf-8?q?J=C3=A9r=C3=B4me_Pouiller?= <jerome.pouiller@silabs.com>
-Cc: linux-mmc@vger.kernel.org, linux-bluetooth@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org, 
- ath10k@lists.infradead.org, brcm80211@lists.linux.dev, 
- brcm80211-dev-list.pdl@broadcom.com, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=795;
- i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=uGEZExd5go3TxQ++ox1VKkM6W5qVi0yKE/c7ScITjdg=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmDWTeqS7abKdxjbX/ezfyCtRmlw7qW/HCPv7mT
- 6zlnQ7KYKeJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZg1k3gAKCRDBN2bmhouD
- 13ktD/9YFZuqZloQPg2ULSo6Tu1Ci1ahN/R5OjRUhoWDGVX8+2s91o6KVG79Tj8eEzmgBAY7y6m
- CSnfgaDDoklC/CohY+LXdWsdFugKHpTRCrUo/hHOWOMWn+IZqbt+KAuI4BKWIZVDLkRvUJtAtJP
- scnKqM6sovge8LFoZ+Gcr+OlBPWOH0gr47r9Um12eXr7Api+Hi8Wk5mW875paXmjwXNu/UNGO8g
- WcMCyioIhn11Mmj25rSCrra/W/K7tddspeBv3x02+CWFAVxsmmvtCG1A0Tfz+2mWyYKWtJMicb8
- QI2diPO/Ivim8J/8yfaNkGhY6VrR9VfpfCoiRasYy61aKO7ZQoyAgMMLtvTSdxZ5KrEy5Za7Gy1
- 3nnUzpDzvs9IWT/BRvgo5CKHAlEta+bT3rSXez2TQkSpfzyfMxk54h8GOsZdYY4oYqC5wPTyxWn
- 4W2xkTLU597C1pauM1MwC1WRcWyXcdb1Ui8WsX7zsQd11xzKm4k1d2NgQh+9xeMaK84oqkZLZ+k
- Z5/HzM3ZS81FPFCjTkG1YbwCbmlZuYBvMSmqA1tSrVXeLOGv9kfTilKwKvYx9rc0hiEjpeZdiiP
- GSaQrf+giEjdwugOrcuItP/4hDJxVB/zOqpAczlXm6+JfSrMUA0J1rvXxNedEN5j2Vg2yhdHFcG
- Iuh94f8K9gmgdxA==
-X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
- fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="E81O+TvFKhTaSmXc"
+Content-Disposition: inline
+In-Reply-To: <20240403102602.32155-3-shawn.sung@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240403_151721_077604_10682B1E 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20240403_084639_693006_A23FB4C9 
+X-CRM114-Status: GOOD (  19.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,32 +82,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Core in sdio_register_driver() already sets the .owner, so driver does
-not need to.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Acked-by: Kalle Valo <kvalo@kernel.org>
----
+--E81O+TvFKhTaSmXc
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Depends on the patch in mmc tree.
----
- drivers/net/wireless/silabs/wfx/bus_sdio.c | 1 -
- 1 file changed, 1 deletion(-)
+On Wed, Apr 03, 2024 at 06:25:54PM +0800, Shawn Sung wrote:
+> From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+>=20
+> Add mboxes to define a GCE loopping thread as a secure irq handler.
+> This property is only required if CMDQ secure driver is supported.
+>=20
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+> ---
+>  .../bindings/mailbox/mediatek,gce-mailbox.yaml         | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailb=
+ox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.ya=
+ml
+> index cef9d76013985..c0d80cc770899 100644
+> --- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+> +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+> @@ -49,6 +49,16 @@ properties:
+>      items:
+>        - const: gce
+> =20
+> +  mediatek,gce-events:
+> +    description:
+> +      The event id which is mapping to the specific hardware event signal
+> +      to gce. The event id is defined in the gce header
+> +      include/dt-bindings/gce/<chip>-gce.h of each chips.
 
-diff --git a/drivers/net/wireless/silabs/wfx/bus_sdio.c b/drivers/net/wireless/silabs/wfx/bus_sdio.c
-index 909d5f346a01..f290eecde773 100644
---- a/drivers/net/wireless/silabs/wfx/bus_sdio.c
-+++ b/drivers/net/wireless/silabs/wfx/bus_sdio.c
-@@ -267,7 +267,6 @@ struct sdio_driver wfx_sdio_driver = {
- 	.probe = wfx_sdio_probe,
- 	.remove = wfx_sdio_remove,
- 	.drv = {
--		.owner = THIS_MODULE,
- 		.of_match_table = wfx_sdio_of_match,
- 	}
- };
+Missing any info here about when this should be used, hint - you have it
+in the commit message.
 
--- 
-2.34.1
+> +    $ref: /schemas/types.yaml#/definitions/uint32-arrayi
 
+Why is the ID used by the CMDQ service not fixed for each SoC?
+
+Cheers,
+Conor
+
+--E81O+TvFKhTaSmXc
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZg152QAKCRB4tDGHoIJi
+0vRTAP9IssazpBxI33VpR42jjeZ6yOZ3Cn9Ii0/LAsJy4PqrsAEA61YU795bv8QT
+Fq82qt45WCanVJX1wTPdUieIv3s4pg8=
+=6/qj
+-----END PGP SIGNATURE-----
+
+--E81O+TvFKhTaSmXc--
 
