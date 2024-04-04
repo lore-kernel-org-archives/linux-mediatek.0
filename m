@@ -4,65 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3AFDCD1284
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Apr 2024 12:46:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55964CD1292
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Apr 2024 13:04:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bMeba/ZjM+rpR2UE9BP6AL5nalpfSJKcpoSghXHvoQQ=; b=ynYi6cnFTpG/0z4NjRYMztAR18
-	98LWJGaEDouO5Txsw4anNtlE7mMbhbYlE0JGESeigLpN/2RpthF8u9rRkb+53UyqrlZ9U2QLOES3R
-	X0M3KDpOXMe6+YM9UFQcwIuOKPvufSarTYUvif0ARqiZIbi45yWXO3qZTys11qcweZDmH041wYO3r
-	bg+BjRGSVaRnwFPvzx7FIAtCHUyeWMwNoVZGM8huOaAFTrDRv5euotl2hZ20YHr2exIzTtY3e43Zb
-	vwybNf2qh5+bRozq0gqKxq9QztL/DE8EF8qZxRsmazecTYQ9sX3nHUU2mv6M0ksmksRXbki50/F4e
-	czGN3n1A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mM0VRkY4R/s+2RZMIGBjXivRb+LhyFR0UNjBp7WG/2w=; b=TSnT2W1fMOMBIcHT0eV7gsMj+X
+	/aszQuoNDjN7OAVsi5PYRTaj5ZcwIBLchGBaQtd4ZsOgtdWL/zEmQyRK0MmxI60xD1iWdl70eG3gc
+	uXbpKQHo7/7uTh0TpzxGrv3aX/AxToOihR92CdVdIo2FGW4FBkR7kPucooJ6LMU+9UvArfKy/UuNE
+	9Gxy95KHloQR+qTEIQIushr8k378w7lgEO2eqKLqkJXyy/4OAwY/AtBNufe57h/HLbegwaO5sZMBj
+	bRWbg452aBC8kR0J7HutCg7j6XPRw0vvVcIPqk3eUxSOvhQR+JfWFoZX3jqbySPr7db+EO/ruvZY8
+	Dlk5ajGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsMUK-00000002hnf-0Zsd;
-	Thu, 04 Apr 2024 12:46:40 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rsMlh-00000002kqJ-1E3a;
+	Thu, 04 Apr 2024 13:04:37 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsMUG-00000002hjJ-0xug;
-	Thu, 04 Apr 2024 12:46:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712234792;
-	bh=kEhubNZE4GoCJnbWmZx8xT0a6eg7XExvJYDkgz0QdbM=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=PFJiNdsvee9e+UwX10Wo39znqqPFEH/kzhiAygPlnKZuwzpfBp4+tYj69Po9KDQHQ
-	 s8/zDltnLDKV9PVuFsTN2i5PZP4jdDGelt8gaqE4fbXXBSeiLjVdLht++2v6vd9g/J
-	 Se5tBtVhPaPw0MFX/zDu19mIEh6Sjt2kU9RNwBXMbuq4Bheq5YrjOIbsdcYEDYDOMJ
-	 v4+jyCX9P5C7yWoD5NOlQLUUFB71YxBUpe4ENzT0j4iIlw9oRAxlIJDZqZwO7ZINvR
-	 ++Irmaus9H39MsL4HaEvjCohq6GTiAZR6lC7Ddny9KWi6zp2drLIPXZOSeOffIP887
-	 lajuG9ll8cS3A==
-Received: from [100.77.12.232] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: obbardc)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id AFC7F37813DC;
-	Thu,  4 Apr 2024 12:46:31 +0000 (UTC)
-Message-ID: <10127a05c2c6b7ac3ec4331a3e590c122335800e.camel@collabora.com>
-Subject: Re: [PATCH] soc: mediatek: mtk-socinfo: Add entry for MT8395AV/ZA
- Genio 1200
-From: Christopher Obbard <chris.obbard@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	matthias.bgg@gmail.com
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, wenst@chromium.org
-Date: Thu, 04 Apr 2024 13:46:16 +0100
-In-Reply-To: <20240404082056.93454-1-angelogioacchino.delregno@collabora.com>
-References: <20240404082056.93454-1-angelogioacchino.delregno@collabora.com>
-Autocrypt: addr=chris.obbard@collabora.com; prefer-encrypt=mutual; keydata=mQINBF7k5dIBEACmD3CqXJiJOtLEjilK2ghCO47y9Fl8+jc8yQPNsp4rMZuzlryL3vLseG0DpR3XE0bK0ojRLhUAqw13epLR5/nWp5ehm8kcy8WyDMBco9DaEyoElKCfelMvTtwmYkJXj8Z831nzzyh1CocFoFStL8HyLHc2/iU1wjczkL0t5hC9KvukV3koQTc9w03sNHeZyZedZIwR/r83k1myJXJsOPXZbmI2KGKq5QV4kTqgQJw3OkSVIQ9Mz2zVZNLKedWr2syrHFgojb7WX5iXbMUgJ8/Ikdttou0B/2xfgKNyKFe0DsbgkcEsJTIsx+C/Ju0+ycEk/7dW69oQLJo0j1oBP+8QfAeAT+M5C0uHC87KAmmy83Sh0xMGAVpcH2lLrE+5SjV3rnB+x/R4B/x7+1uYB5n7MU4/W2lYuAe1hfLtqDbEOyqLzC0FvFiZoDKxexQzcGpSW/LliBEvjjA/LXWADaM+mZezzLSjDwsGVohQrP0ZWOZ1NtC0e1sEt870fa4f+YkZeVHJRDInTcecw6c2QpNH4TzcTMD7bW9YZVqNiT5t9z+BzjJk3LtdrYPQ1SSpov7TB3LVKLIZDxgSlrur0dIklFFYPIx1KStCzqbvOEvlz03iZX4+tqZauNTkVhCoDLG+Z4w3OQdmR/uNqXqsbI04+kM3tOcVnXsosSW6E0TAJQARAQABtCZDaHJpc3RvcGhlciBPYmJhcmQgPG9iYmFyZGNAZ21haWwuY29tPokCUQQTAQgAOwIbAwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgAIZARYhBPGL3ItsJfkKoj1RdGNNxPBocEb4BQJe+22mAAoJEGNNxPBocEb4iUIP+wWXh7bqqLWWo1uYYzMZN9WSnhC1qiD8RyK18DvN8UEOINmvuX2beZjVftZYLyp55bT09VZXY0s4hFVr3PbqIYnkDmXGGnG/fHtmHm4QLNozNRJNXlf+gRvA+ D2Zc41viquXrwrJEqrfz+g2rlO17jETQCJe5HWcvj3R1nps5MvymQ29KzmfYvMBmDYcYOVSSrqkItIFb9wppHHy8f1+sLM4pjb26OS1MUv02lRaptsV0wB3uVCNpZ8dS1aJdEYlLzKujKdVUG64ktwxboBbLSxa98J3oroHPBJbLPD+OjB9YUa3rkBIqf5JyrPPeQVzmU7rPb43o1vwWEGK1fj0N1riOWTb+v+xD00R+WBNSLYEouB+rd4d1+adBQY7DERemqQG9WlY2HHHbgcpK5SRYffwof3GL2Dgqd+K3KS+3uqenQByPGf5sXjuvo/uoI2TPoW5vYhApozM8voUycL7HA9f8MTZ7YCbPDHBfmioYiJN4y0EuO2JJ34jMZhySjft2JQ839yZP/iIwY3o6Y/ep97VDQqH8WrqfnnAKzw6WcJJ+5O088CANfI9xFsC5P8oPyBx2Ne3/zN/Bmv+3bLpcTPYyqfxZb3MIKAZXzxFU6Gn2MpNcQfMdwpJvd3NpMI7OAvhzgtW0aRe1Mj3m0gugbbOLiBw0SGPTgNwM4T7A2dltC9DaHJpc3RvcGhlciBPYmJhcmQgPGNocmlzLm9iYmFyZEBjb2xsYWJvcmEuY29tPokCTgQTAQgAOAIbAwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBPGL3ItsJfkKoj1RdGNNxPBocEb4BQJe+22uAAoJEGNNxPBocEb4JYwP+gMIrabuXS5llUz8yvICgusThLej0VSEWWF6BkiJdsaid1IbkbStYITE/jb834VdhjEHOT0A1SNVB6Yx38l9VNryyJkPZ38fELSUTI9FVLIfO3CP2qgJisoGh2LozSu9d+50hFIF0E9xQZCqcR7kS6j2xp14BiCoD94HCW9Z5r6gA57vFBupGwlcGxA5Z4MfFulpFaDry0R6ICksHe07vY49opWSXhSdhtv+apzaMC7r+5zJKBf1G4kNrKkauUiehgUB9f xyA7CXuvB5KtZKILhv8bxyjB66u0REaigEUIBMtD2yE3Z7jXj8H42BV28/l7STNY5CoXaqSpKG82mpLPWiZ3kOd6vKT2q71LnSkk1qcQ3H9QwOTA1yCZk/GwH772nxajA5mfqets+6tAUj5Baj1Zp0MYmoquV2On9W5+0SSc/ei4NsTLj4IO9klPoHFmpd82HwthpkpCVvNKmp6cJdWIOfaIm6q71jPSnWW/YlqNnJ0T3OjwmOrJ1KXagJt1YJfGTlqRgNNrQ3x2gLJH+2upy5ZafgcZ8dZOl/P5MTVSoe5z3a5YPRBz8/hO2luFCLcOlah06ei/N0ZQfNBhzTD+FTn0Q0UB+FUkSb7D+BqBVfOConVQ+MTc51v2RGsIWIhiYo3czhdUPXr4R2Ba8WSvD54VYY1i0CKmfMHG8etCdDaHJpc3RvcGhlciBPYmJhcmQgPGNocmlzQDY0c3R1ZGlvLmNvbT6JAk4EEwEIADgCGwMFCwkIBwMFFQoJCAsFFgIDAQACHgECF4AWIQTxi9yLbCX5CqI9UXRjTcTwaHBG+AUCXvttrgAKCRBjTcTwaHBG+DemD/0RST9WJd1AYk4oq2ZwB9L/X6U9vi9Hcrm/FZDHLJ+kycin0D97hogOXU6YilI+2rV3Wkw6ugu9kxtxY/nFnlCvX80c4UDMca+wZgjFTqbesXSFyjgverZa6APZseiAY4sSWEp8lfKSbb+o5T12urdDPd9k9ok0so4c8O8TOEp2SANEibzb5wl6h3Mv40firL/mwyAFIR0c6UircPG4Skjj5h+dlAf/xA9DlgIGSPFZSD9ZLB+1JeEDMwdwJxHAVkSpAfPEWCcXEb58K0hnbGWasFUe9FugqvhezrxyJ14sVrvoWNKFbTmqamNqZQFuMRsCrNUqZaIvtu7Lz87sMxBfoVESSIDfJngWxBadTuIm5wXjCiAJHbqUclzTbF7GIQ8/JSzFrzOtv/lx+0mGAjXfsU6FTqU OJ25iFzQmr2gYRcc28uu1HfnfXHFgaX344gGg8x3BTySIprJ17ie8VCHHAKmAatcNs96KLCHhre/3AYj15GkkllBuKBRUQdxcTlenvuU2XTl7PGCOa2OhPL8SzTfCof0NFl8kzOeHelFjcWu6gPTB0Z2Lc5tSWGUkzmzUfrQxYUpPGDsXDfNRPN7bCAR9BX1nzqh4CHR+cLSADI5ny96y4SUxdv/i19IoMUewPr9LTVhdJqo3rw1FvAxNYtoYytrVEvyv3zVBxqev+bQnQ2hyaXN0b3BoZXIgT2JiYXJkIDxvYmJhcmRjQGRlYmlhbi5vcmc+iQJOBBMBCgA4FiEE8Yvci2wl+QqiPVF0Y03E8GhwRvgFAmVEFJUCGwMFCwkIBwMFFQoJCAsFFgIDAQACHgECF4AACgkQY03E8GhwRviwKBAAlUv55m857NdCF+Vz+qbiiCxPjXQWlG54FGyXJ4qB8+Dtjqj22FzEKm64IC0ulD5w9VbQD0QohWzhyXXX+3ngWy2HUdZQBfXOaqOGGlS8iq0qHgY3GVRuHDPS97e+jrkpfj97qbqlZ/4ydgmScO9jof0mCB2eG6oHIvWvxmZFU+lwlQ2v5jb2dcccdEXHrOCgtB3ENGE/ZXY2IpLvoPY4/rDYQUDKRVHl61+gY6P5nikxfgMZxMasIcKAozWAU4x9WtzuTN5Ut2rrKkCSLJtQ78LYlhqtzDoFLxYly9QPQpi/FTCvhFKO7wOQrHSJGlI5ZKipGVi7JxHGvrv02ron3sOFjBZKjmfTN0koc9DL2199x6tCYiem2isRrnxAecoLovmhbKw/6ipnagoelLVWuFbkMABQLEtxBqEax1aX8/Mo8vKfL7r+Hj5gg8KNAoI5M9pS89m1Pl1Fg2Sv7Lgp/L8FF8OOMS3ULTtKDUaPJbtuxVK0H2NcnxOIy89GAT5zONCokKJT01CUONCdx4UrrU97hDzRaa7CH/Xq79FMrDn5HWy+v9wx
- NHLOJqpIGnpXmhEmTYq2uXVRRALq89fvzlobLEl8dwIUgPYDm9LkTYwGEIgLLF1COn2wuoLDgR5h7pAnHlRQA/7rzkSidDV7FbP3Tqu1pLGd8VI6dezLGcq5Ag0EXuTl0gEQALPXCNQniM29q7QLyEUuIUSsDHbfWU/9XHc1RaNiBLYUbAbOTble7NXMFwV44ua3Av/UmxIBse4fdySeYdRYxbqigIAxDGQ7uo0lHW2xmyFli3vayhE0iKplUgI0sTYO6UdJRTE3DhJBCkyVpMD99mrtVgZk4lGQcGrq8flb0MqRaS+swHZz1S9Go1S1plXokVg7z1CA6bJTJgEF9GWNDixvmfFOeYd6jnV7qYwXRF7HA6BSTbAsN8Syp4XNNkn/KTum+Bod2o+1BOsahR9kXPQfSgS8uoMXWbqgAs9LQLGnWHzgPYiccQrFEXIYkZnVuuswBX87WESLS2SOzvEwgSgpvTmrMUPimsG3VcNbJ9uIeZCqWdfqkXqeXNbLkpB556HYUZclbpUV0O6QOH02gHs9lFf0GueeqL9P74mmIalLgqKEPNpw18r9nrpYVRllLg7Q6Zsp90el3rFMLJJrYImuKFoozlKTxiGKYzeg74YXIU2AdlMgJTHAhQG+JrU6bE/6i2/TTkwrgTHp2mK+kOdk/TED2oHYDkiL+qd4I7EqMS4HtaBpDVvSGeoPrzaCs0POwHx7AE2VvDCQbHebGm8JQIRAzALpfXTVtK5Re83SNsK/jjzL67kND5j7rDyfB+8ek28NYYMWqT/GaxM6ESwassA7XV0LGxgcndrHNs+dABEBAAGJAjYEGAEIACACGwwWIQTxi9yLbCX5CqI9UXRjTcTwaHBG+AUCXvtttwAKCRBjTcTwaHBG+N91D/9cqV+YGr4z1NK3sL+0isRuITjIiMxY8+FaLi4FHAP0OuRKvTyCCoDQWKX+DSkn+NzkDvontYrsHtpdtpUYNCEm2vtWGYy4sdNCZ 6FDmkgcu70PsxVyCcTxggf+5c3LNldetpzU60KK/jvJKVPwYoa9gtax9BK7ugR7tJ0MJMufteG9y7A+VfZo2NAElXFef5QURY0THH4KkywjvWBqElcK29fsZ+jHTCA4Ki+jpuUpj8doPqrhfVmdRJZiZAyGPe5ZooXcbFnHMp8Enheyp0j57GodYfFgnIQUHszLnEgOq22OdaDvwyta6kniwITOSThtzEVnCPI5vZPsB8FNQrfx8Z7dJK+bfkW576IN3AG55ktHfKCzDmAD2qoEZB+9oTx3Jccy+cXwIGdCufxFwQqWUoW1VpOBaMWCjmqMqJN04RLn5Dh08i9wgYx6F6pVy3t3vvKA0OppmSko3RtclR1HTsNeHGMpwsWVNzwCjYoY5OhJZ1p664P0V4e2qGVDRghUbb0n5jeX37WO1nRzOgeNAUOJnEuhtGoGhR0Dk3scMgKuddaYMpwrEZ+2YWkCxSVO3qMqrofTdCeL66lg6u1VZyQBMsNbTmRKlm7yayFX7L4Cpw93iJBm2Vd/ZZAeJhKfCOWeUUI2tZFsKqZIy0/IgGi8oedzJkCfcsSc7QkqFA==
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.50.3-1+b1 
+	id 1rsLbP-00000002RKI-0dZE;
+	Thu, 04 Apr 2024 11:49:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=mM0VRkY4R/s+2RZMIGBjXivRb+LhyFR0UNjBp7WG/2w=; b=OhknEfQi/ERLt0ooc6j2p+3qr1
+	EUkMNoV7sqGQb8nUlKujQRm/9uk4NRU88hWFasL66ERE8yDcAIjzkwnOrjxCY/Au22bNkKxOiJ7R1
+	aH45YGRgwaEu47Jo/MfM6t/sogXAncXG/Di25/hI7Lr7GFfgh4xvDw0ps9i8f+AIWou7zF8g2Mnh4
+	I2HhG7jFGcj0VKAFqr1fAWzlWqJOjsmlQtFQL1c1tmJzrKJcYk/jKwwW4GEMLVZM4qHMTJBF8h629
+	QiskUJyVlyWBZ5wFV4jCTmRqoPxnE4QxMxfCQWnVyJbghf+MYvidkhizgmnw4AfbHka4w6nLSbUAF
+	Q4NFSBbA==;
+Received: from mail-ej1-f41.google.com ([209.85.218.41])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rsLbL-00000005031-0TBC;
+	Thu, 04 Apr 2024 11:49:53 +0000
+Received: by mail-ej1-f41.google.com with SMTP id a640c23a62f3a-a4e34d138f9so128447666b.2;
+        Thu, 04 Apr 2024 04:49:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712231389; x=1712836189;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=mM0VRkY4R/s+2RZMIGBjXivRb+LhyFR0UNjBp7WG/2w=;
+        b=xP08dLp8BzNZRaIgQR2kMHw63MaGUBJyypdDKkIsN337CGN5jO7yj3ifSrwTLa23mQ
+         Fzd0k0hGXajIH3HmxAVtRXmF2p15w9c1IAuAzyGxNli7Q4WZNoPXyb1n4I2RgHB6l41l
+         J/RPtcbkOIsH5EaxsAu6CaOJrBe06TlyLiatBMYne3p7cGaqZGhIgByyq9Fyheq/l5W/
+         eISP5XCx4jGDWN7wGaPOZYaslBSel7O8+n11AgAdycLsm8ynjVGYcYqiDur9EUf7LdHd
+         ez1RO89T8Iy5yM67fzGbMxQfzQ/DoBo8IN+LB2EUxxS0OB35M3rqDkTA0y7OT685B1sQ
+         ZJuA==
+X-Forwarded-Encrypted: i=1; AJvYcCW1WdBVuzrUPkskD2+Gs2uDDz1SKW147OdCFakspTfngYSFWzNBf9Rxw/gEJ1n4TN9paqRv3WivdDExMbfeAjzQMNkzsps11UpWkuJ3D5WnhrBOwo/r6RA/aapO6ftD3matsPGuvlB6zqViJZ4f6rNRKSnlybD0g9Y=
+X-Gm-Message-State: AOJu0YzTfsSCTBoB6KvKlQaUNauyp/pbr3TeZqTVdfgvsuA03OnG8w+c
+	qRz7NQJC5M3VwfOJOP6G/OE0aCCoptyhbyAalAU+nRKsnh0fa9bT
+X-Google-Smtp-Source: AGHT+IFDNnBaWKjKBUScMyD1XxsRGzjVdkpYifMEFEBvLKEwHf4ElIsvpdnvFDl4eaA7HXmhAU+ciQ==
+X-Received: by 2002:a17:907:9807:b0:a4e:539d:2183 with SMTP id ji7-20020a170907980700b00a4e539d2183mr1768927ejc.73.1712231388672;
+        Thu, 04 Apr 2024 04:49:48 -0700 (PDT)
+Received: from localhost (fwdproxy-lla-118.fbsv.net. [2a03:2880:30ff:76::face:b00c])
+        by smtp.gmail.com with ESMTPSA id xj7-20020a170906db0700b00a4e379ac57fsm7640946ejb.30.2024.04.04.04.49.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 04 Apr 2024 04:49:48 -0700 (PDT)
+From: Breno Leitao <leitao@debian.org>
+To: aleksander.lobakin@intel.com,
+	kuba@kernel.org,
+	davem@davemloft.net,
+	pabeni@redhat.com,
+	edumazet@google.com,
+	elder@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	nbd@nbd.name,
+	sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com,
+	lorenzo@kernel.org,
+	taras.chornyi@plvision.eu,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: quic_jjohnson@quicinc.com,
+	kvalo@kernel.org,
+	leon@kernel.org,
+	dennis.dalessandro@cornelisnetworks.com,
+	linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org,
+	bpf@vger.kernel.org
+Subject: [PATCH net-next v3 0/5] allocate dummy device dynamically
+Date: Thu,  4 Apr 2024 04:48:40 -0700
+Message-ID: <20240404114854.2498663-1-leitao@debian.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240404_054636_481688_B339069C 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20240404_124951_410562_2013B2CC 
+X-CRM114-Status: GOOD (  10.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,38 +110,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+struct net_device shouldn't be embedded into any structure, instead,
+the owner should use the private space to embed their state into
+net_device.
 
-On Thu, 2024-04-04 at 10:20 +0200, AngeloGioacchino Del Regno wrote:
-> Add an entry for the MT8395 SoC with commercial name Genio 1200.
->=20
-> Signed-off-by: AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com>
+But, in some cases the net_device is embedded inside the private
+structure, which blocks the usage of zero-length arrays inside
+net_device.
 
-Reviewed-by: Christopher Obbard <chris.obbard@collabora.com>
-Tested-by: Christopher Obbard <chris.obbard@collabora.com>
+Create a helper to allocate a dummy device at dynamically runtime, and
+move the Ethernet devices to use it, instead of embedding the dummy
+device inside the private structure.
 
-> ---
-> =C2=A0drivers/soc/mediatek/mtk-socinfo.c | 1 +
-> =C2=A01 file changed, 1 insertion(+)
->=20
-> diff --git a/drivers/soc/mediatek/mtk-socinfo.c b/drivers/soc/mediatek/mt=
-k-
-> socinfo.c
-> index 4494cca1d075..6943ab29f095 100644
-> --- a/drivers/soc/mediatek/mtk-socinfo.c
-> +++ b/drivers/soc/mediatek/mtk-socinfo.c
-> @@ -56,6 +56,7 @@ static struct socinfo_data socinfo_data_table[] =3D {
-> =C2=A0	MTK_SOCINFO_ENTRY("MT8195", "MT8195GV/EHZA", "Kompanio 1200",
-> 0x81950304, CELL_NOT_USED),
-> =C2=A0	MTK_SOCINFO_ENTRY("MT8195", "MT8195TV/EZA", "Kompanio 1380",
-> 0x81950400, CELL_NOT_USED),
-> =C2=A0	MTK_SOCINFO_ENTRY("MT8195", "MT8195TV/EHZA", "Kompanio 1380",
-> 0x81950404, CELL_NOT_USED),
-> +	MTK_SOCINFO_ENTRY("MT8395", "MT8395AV/ZA", "Genio 1200",
-> 0x83950100, CELL_NOT_USED),
-> =C2=A0};
-> =C2=A0
-> =C2=A0static int mtk_socinfo_create_socinfo_node(struct mtk_socinfo
-> *mtk_socinfop)
+This fixes all the network cases except for wireless drivers.
+
+PS: Due to lack of hardware, unfortunately all these patches are
+compiled tested only.
+
+---
+Changelog:
+
+v1:
+	* https://lore.kernel.org/all/20240327200809.512867-1-leitao@debian.org/
+
+v2:
+	* Patch 1: Use a pre-defined name ("dummy#") for the dummy
+	  net_devices.
+	* Patch 2-5: Added users for the new helper.
+v3:
+	* Use free_netdev() instead of kfree() as suggested by Jakub.
+	* Change the free_netdev() place in ipa driver, as suggested by
+	  Alex Elder.
+	* Set err in the error path in the Marvell driver, as suggested
+	  by Simon Horman.
+
+Breno Leitao (5):
+  net: create a dummy net_device allocator
+  net: marvell: prestera: allocate dummy net_device dynamically
+  net: mediatek: mtk_eth_sock: allocate dummy net_device dynamically
+  net: ipa: allocate dummy net_device dynamically
+  net: ibm/emac: allocate dummy net_device dynamically
+
+ drivers/net/ethernet/ibm/emac/mal.c           | 13 +++--
+ drivers/net/ethernet/ibm/emac/mal.h           |  2 +-
+ .../ethernet/marvell/prestera/prestera_rxtx.c | 15 ++++--
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 17 ++++--
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h   |  2 +-
+ drivers/net/ipa/gsi.c                         | 12 +++--
+ drivers/net/ipa/gsi.h                         |  2 +-
+ include/linux/netdevice.h                     |  3 ++
+ net/core/dev.c                                | 54 ++++++++++++-------
+ 9 files changed, 85 insertions(+), 35 deletions(-)
+
+-- 
+2.43.0
+
 
