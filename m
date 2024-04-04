@@ -4,80 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E33ECD1284
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Apr 2024 08:23:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D612CD1292
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Apr 2024 08:40:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tUkPXupaLm7fsLyPKoLu5BZRQ4nvoD4y4GxTbasq5fw=; b=LuKEr8zwF4renxDGYmxHkwcMEV
-	DVkwArETXCDqCQyuygxoKMsgxknlnuZ4PCid5uVwjvzbyXAq7FYO/uC/XzPEg6NJMEpHfxnKlcy3m
-	ivsTxlYfDvjwp1qSL6ruPA+D4QmYFVMNF1wfoWfFSM6BCEgJgvxJYcMifs4MpooAcsnhBu2TtOYJo
-	ndaVtCYfgRTSAIhrkPqQYVTi+GbqJibelyJQyZkt+6mrDEU+AXjJntJotSnmgxB8lnMmLhWUPUjze
-	k7dWMsrY6dD6ktLXlv8DHaLLkZniOGt5gPKlCEzFX+8Xjulu6nG7z8rrVXeQcLzsK+czkyPqC1FKX
-	yz0Pysqw==;
+	bh=MGA13cAnkY6mPpbzSMgevDLYB9+Tr41gsznS2L+gZR4=; b=TmsLyoh3u22IQ6yw2j8tuH78Aw
+	rBB6uDAqQofDAGjmtNcCx0Aly2ZuN6J4oP7DMGZrj592vPluz9qzoPSVKSpOBejEoGCIvnXkpCmdM
+	86f+9bqVkzKTvOmqTWxeCBgXg62yuEngxDJJP6pooID52cML7Q1+mEU5MtQPpZVYlCTCqULI5VVhe
+	17661v6+tBzj1RgIylL82WKE6V6EXrO3eqzZ1jee+yqs1mCBRsd+Wk6Cn5xqg61jB1FAYBG4ML3sa
+	28P1OjvD6HP7vjDAyvL7RGqvMb2/meZUy9SnvWuNGutQVY/H2uExuPyalNaqUgy2RmZXP0G9NWM8t
+	3O55+6qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsINb-00000001pfK-44Jo;
-	Thu, 04 Apr 2024 08:23:27 +0000
-Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
+	id 1rsIeV-00000001su6-3Oph;
+	Thu, 04 Apr 2024 08:40:55 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsINZ-00000001peG-3S0h
-	for linux-mediatek@lists.infradead.org;
-	Thu, 04 Apr 2024 08:23:27 +0000
-Received: by mail-yb1-xb36.google.com with SMTP id 3f1490d57ef6-dcc84ae94c1so825401276.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 04 Apr 2024 01:23:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1712219004; x=1712823804; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=tUkPXupaLm7fsLyPKoLu5BZRQ4nvoD4y4GxTbasq5fw=;
-        b=InalgFQY8YsJxVUfnex7MJ2qCVKg+OAMpkDw5cY/04j9RgaJXoVfKjiuJ+G30Smo9x
-         yO4wSdhDCkw4BvTXTq8wm/j6M8yieF2KNvixJDV+souNIWNfFebddEtzeXYRiIkv3emU
-         VhGPxHOMEc+yZ1eTIEP4T3YrPSO446FncwT1gjjgiWyC3i8ltY5932Zqba8enimEFs7J
-         oiY9K1Aw/eme4/DGRgCrq1+M0+aZmyUI4Cu3zoEjThcavvPwEtflaaBoYFIa1b0wmgVt
-         A2EfkCzF/aOh8KkV2sGBm1P0AhB2h+AX62UqPlhECEDBRRjEyk6ERByds/EF56zTMPIy
-         eV5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712219004; x=1712823804;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=tUkPXupaLm7fsLyPKoLu5BZRQ4nvoD4y4GxTbasq5fw=;
-        b=pK4VU5S6nhZc1ZxGab1kkoWxYWbcsaOA8C7qJG2KcY79bLgvSGBIrQsN87/xERsBRw
-         RopAK2oXl3kJ0Msw9uqtVIiIXal4zkLAt/3PLIkRQ7ApVja1MMQ90IFJQ6UY3emT1TEl
-         MosQaJcLVrZ0VTx4NMWXjMH3yDlh/WcoJWs4g5djMihI84OupbzGXOPOb+/PrI4Gcew2
-         77kaUB4R8WcBNdMdYrOXvYjvSwrbg1ZMyZIygoOEUkW5lDepkE42Q+LyL5vrT+JTfS/K
-         yIGz3clVidlOYY6BmcldDJA0cdfLRLekaJtF7gsUMSapIueOgTDYYMD/1NEi2C3PRvBH
-         ro4Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVMuFZlwniY9U8kDsqAHR09vL/ed9JLAn0J8Kv8AqIbpjZSJ45VrSU5DuKp0F+ylKbHk72ZzXfhtOch5I9AihGArkE7JKeVlIh2n4KXOQfNs8k1
-X-Gm-Message-State: AOJu0YzTG3FYMQWFBMrP4nT/nBNyNuD5CTw7BbY9l0D+pKqq1e5cN+Wr
-	5O3Hzwe7HPIcjfBiDNMGNNdteavxs56H0hJSmZLz7vUBr4fkWpsLOdLz9U1GzTNwAY0LOy1XN6O
-	Jejwq0PxM7xhVm7BtKVrdb6WYGa33r2TibLpbuA==
-X-Google-Smtp-Source: AGHT+IESU9WLa3h8aZDesnqNiyXJbZj+fNufrMd2QMdK0OU/9kP3JNABg1ywIrSqCK1qb7HDwP4jhkHml0tcg8LZkz4=
-X-Received: by 2002:a05:6902:c09:b0:dcc:375:2257 with SMTP id
- fs9-20020a0569020c0900b00dcc03752257mr2023598ybb.0.1712219003651; Thu, 04 Apr
- 2024 01:23:23 -0700 (PDT)
+	id 1rsIeR-00000001stA-3RDS;
+	Thu, 04 Apr 2024 08:40:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id B023FCE203F;
+	Thu,  4 Apr 2024 08:40:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC91EC433C7;
+	Thu,  4 Apr 2024 08:40:46 +0000 (UTC)
+Message-ID: <1caa6a4c-d4c1-474a-abf2-63384dba3cbb@xs4all.nl>
+Date: Thu, 4 Apr 2024 10:40:44 +0200
 MIME-Version: 1.0
-References: <20240327091336.3434141-1-wenst@chromium.org>
-In-Reply-To: <20240327091336.3434141-1-wenst@chromium.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 4 Apr 2024 10:23:11 +0200
-Message-ID: <CACRpkdYi=3ZYVQGAAwJ5iYNX-WY1OPTX_xuP3H-xJj9Q+b+RRw@mail.gmail.com>
-Subject: Re: [PATCH 0/2] pinctrl: mediatek: paris: More pin config cleanups
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] media: cec: core: remove length check of Timer Status
+Content-Language: en-US, nl
+To: nini.song@mediatek.com
+Cc: ci.wu@mediatek.com, mchehab@kernel.org, nicolas@fjasle.eu,
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jani Nikula <jani.nikula@intel.com>, linux-kernel@vger.kernel.org
+References: <20240125132850.10430-1-nini.song@mediatek.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20240125132850.10430-1-nini.song@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240404_012326_059773_FC914139 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20240404_014052_154670_FA92FF1E 
+X-CRM114-Status: GOOD (  23.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,26 +66,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 27, 2024 at 10:13=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> =
-wrote:
+Hi Nini,
 
-> Here are a couple more pin config cleanups for the MediaTek paris
-> pinctrl driver library.
->
-> Patch 1 fixes readback of PIN_CONFIG_INPUT_SCHMITT_ENABLE. The function
-> was passing back the disabled state incorrectly.
->
-> Patch 2 reworks support for PIN_CONFIG_{INPUT,OUTPUT}_ENABLE, following
-> discussions on the bcm2835/bcm2711 pinctrl drivers [1]. The driver is
-> made to follow the definitions of each option as described in the DT
-> bindings and pinctrl core.
->
-> Please have a look and merge if possible.
+This patch has now been merged in mainline as commit ce5d241c3ad45
+("media: cec: core: remove length check of Timer Status").
 
-Patches applied for fixes, it looks like pretty urgent stuff, yet no feedba=
-ck
-from maintainers for a week so I applied it.
+To get this into older kernels please post this patch to
+stable@vger.kernel.org, CC the linux-media mailinglist, and mention the
+mainline commit that I provided above.
 
-Yours,
-Linus Walleij
+Also mention that this patch applies to 5.10 and up. You can mention
+that the patch applies to 5.4 and 4.19 as well after removing the '/core'
+directory from the pathnames.
+
+Since you are the author of the patch, you should be the one to post
+the patch.
+
+Regards,
+
+	Hans
+
+
+On 25/01/2024 14:28, nini.song@mediatek.com wrote:
+> From: "nini.song" <nini.song@mediatek.com>
+> 
+> The valid_la is used to check the length requirements,
+> including special cases of Timer Status. If the length is
+> shorter than 5, that means no Duration Available is returned,
+> the message will be forced to be invalid.
+> 
+> However, the description of Duration Available in the spec
+> is that this parameter may be returned when these cases, or
+> that it can be optionally return when these cases. The key
+> words in the spec description are flexible choices.
+> 
+> Remove the special length check of Timer Status to fit the
+> spec which is not compulsory about that.
+> 
+> Signed-off-by: Nini Song <nini.song@mediatek.com>
+> ---
+>  drivers/media/cec/core/cec-adap.c | 14 --------------
+>  1 file changed, 14 deletions(-)
+> 
+> diff --git a/drivers/media/cec/core/cec-adap.c b/drivers/media/cec/core/cec-adap.c
+> index 5741adf09a2e..559a172ebc6c 100644
+> --- a/drivers/media/cec/core/cec-adap.c
+> +++ b/drivers/media/cec/core/cec-adap.c
+> @@ -1151,20 +1151,6 @@ void cec_received_msg_ts(struct cec_adapter *adap,
+>  	if (valid_la && min_len) {
+>  		/* These messages have special length requirements */
+>  		switch (cmd) {
+> -		case CEC_MSG_TIMER_STATUS:
+> -			if (msg->msg[2] & 0x10) {
+> -				switch (msg->msg[2] & 0xf) {
+> -				case CEC_OP_PROG_INFO_NOT_ENOUGH_SPACE:
+> -				case CEC_OP_PROG_INFO_MIGHT_NOT_BE_ENOUGH_SPACE:
+> -					if (msg->len < 5)
+> -						valid_la = false;
+> -					break;
+> -				}
+> -			} else if ((msg->msg[2] & 0xf) == CEC_OP_PROG_ERROR_DUPLICATE) {
+> -				if (msg->len < 5)
+> -					valid_la = false;
+> -			}
+> -			break;
+>  		case CEC_MSG_RECORD_ON:
+>  			switch (msg->msg[2]) {
+>  			case CEC_OP_RECORD_SRC_OWN:
+
 
