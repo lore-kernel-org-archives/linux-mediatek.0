@@ -4,54 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D612CD1292
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Apr 2024 08:40:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CD11CD1284
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Apr 2024 08:45:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MGA13cAnkY6mPpbzSMgevDLYB9+Tr41gsznS2L+gZR4=; b=TmsLyoh3u22IQ6yw2j8tuH78Aw
-	rBB6uDAqQofDAGjmtNcCx0Aly2ZuN6J4oP7DMGZrj592vPluz9qzoPSVKSpOBejEoGCIvnXkpCmdM
-	86f+9bqVkzKTvOmqTWxeCBgXg62yuEngxDJJP6pooID52cML7Q1+mEU5MtQPpZVYlCTCqULI5VVhe
-	17661v6+tBzj1RgIylL82WKE6V6EXrO3eqzZ1jee+yqs1mCBRsd+Wk6Cn5xqg61jB1FAYBG4ML3sa
-	28P1OjvD6HP7vjDAyvL7RGqvMb2/meZUy9SnvWuNGutQVY/H2uExuPyalNaqUgy2RmZXP0G9NWM8t
-	3O55+6qg==;
+	bh=p18Umpu7bShB8jZYC7bDIic76iXWEjm60AJXX9D1W88=; b=lKN+ytdo7C4HRdqYlcIC02NGP9
+	xner0zNhhYfjb0LzdJ2i/H+OkPoTv2+xkLOvHautjo+x8kqZtkINH89407eoOKBafRXi4/705j2Zg
+	mHNiuqo4+uywroNtdNbytXJdoXw4l6VaK8rWu3nwri6QgFISyI8uLlX8a5NVGWOhULfANwAEKuUWM
+	qan4stuo2ZQ5TCwOMplclPXfTdCzt+I21EVjtVj1u9e8sv5BlmdX2C9nIBUg2jcORc8oMwPNk0TyT
+	N8NXqY9kgketxROae7PTskbB88nnaHEMDtLwW2QUX30AdWQ3gOB3JBjIonY1xJjeoPHA1UkG+X0uC
+	wDzvGyuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsIeV-00000001su6-3Oph;
-	Thu, 04 Apr 2024 08:40:55 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rsIjH-00000001ttj-0VHq;
+	Thu, 04 Apr 2024 08:45:51 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsIeR-00000001stA-3RDS;
-	Thu, 04 Apr 2024 08:40:53 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id B023FCE203F;
-	Thu,  4 Apr 2024 08:40:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC91EC433C7;
-	Thu,  4 Apr 2024 08:40:46 +0000 (UTC)
-Message-ID: <1caa6a4c-d4c1-474a-abf2-63384dba3cbb@xs4all.nl>
-Date: Thu, 4 Apr 2024 10:40:44 +0200
+	id 1rsIj4-00000001toz-0B5X;
+	Thu, 04 Apr 2024 08:45:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1712220336;
+	bh=f3ZHkHvCpCweFVRDS+9nWl67EHYJRCdqnlO132i1YnM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Ek1Sbvg/59Y+GNAxAeM5gP3RduwmfKbBbHJnk6mNbhplJoPLulTR4aNwxzm1kiasU
+	 YgrayKHq3IxJq4sSguxXkwXDtofmww4VvRe1GhggK754mTR/qXkmlrHr84fXbuEQyV
+	 ZUmi4h55358SEK1UKIjoLIAAU8sP/gThIAJgx1l6ZRlB1o3W5D+/tr/vlHltbMdKb/
+	 fUL/mDY0Jgr1DmIoiiRnpGqHldzv6LRtekiApFRhrV6YCFs1I8Csv8MZ+hdlpQfClV
+	 Hx22YPyijzSo6s7KukpUwXgKgnAIHvGzWRxZM607wV7aq4mELbiyPnAmIAjokHBKEJ
+	 0sLuYQ1F3OK7w==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D26823780029;
+	Thu,  4 Apr 2024 08:45:35 +0000 (UTC)
+Message-ID: <ae872ee7-3709-45ce-b240-c35a59427041@collabora.com>
+Date: Thu, 4 Apr 2024 10:45:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] media: cec: core: remove length check of Timer Status
-Content-Language: en-US, nl
-To: nini.song@mediatek.com
-Cc: ci.wu@mediatek.com, mchehab@kernel.org, nicolas@fjasle.eu,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jani Nikula <jani.nikula@intel.com>, linux-kernel@vger.kernel.org
-References: <20240125132850.10430-1-nini.song@mediatek.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20240125132850.10430-1-nini.song@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Subject: Re: [PATCH 0/2] pinctrl: mediatek: paris: More pin config cleanups
+To: Linus Walleij <linus.walleij@linaro.org>,
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: Sean Wang <sean.wang@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20240327091336.3434141-1-wenst@chromium.org>
+ <CACRpkdYi=3ZYVQGAAwJ5iYNX-WY1OPTX_xuP3H-xJj9Q+b+RRw@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <CACRpkdYi=3ZYVQGAAwJ5iYNX-WY1OPTX_xuP3H-xJj9Q+b+RRw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240404_014052_154670_FA92FF1E 
-X-CRM114-Status: GOOD (  23.89  )
+X-CRM114-CacheID: sfid-20240404_014543_675510_5A20D1A7 
+X-CRM114-Status: GOOD (  13.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,72 +78,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Nini,
-
-This patch has now been merged in mainline as commit ce5d241c3ad45
-("media: cec: core: remove length check of Timer Status").
-
-To get this into older kernels please post this patch to
-stable@vger.kernel.org, CC the linux-media mailinglist, and mention the
-mainline commit that I provided above.
-
-Also mention that this patch applies to 5.10 and up. You can mention
-that the patch applies to 5.4 and 4.19 as well after removing the '/core'
-directory from the pathnames.
-
-Since you are the author of the patch, you should be the one to post
-the patch.
-
-Regards,
-
-	Hans
-
-
-On 25/01/2024 14:28, nini.song@mediatek.com wrote:
-> From: "nini.song" <nini.song@mediatek.com>
+Il 04/04/24 10:23, Linus Walleij ha scritto:
+> On Wed, Mar 27, 2024 at 10:13 AM Chen-Yu Tsai <wenst@chromium.org> wrote:
 > 
-> The valid_la is used to check the length requirements,
-> including special cases of Timer Status. If the length is
-> shorter than 5, that means no Duration Available is returned,
-> the message will be forced to be invalid.
+>> Here are a couple more pin config cleanups for the MediaTek paris
+>> pinctrl driver library.
+>>
+>> Patch 1 fixes readback of PIN_CONFIG_INPUT_SCHMITT_ENABLE. The function
+>> was passing back the disabled state incorrectly.
+>>
+>> Patch 2 reworks support for PIN_CONFIG_{INPUT,OUTPUT}_ENABLE, following
+>> discussions on the bcm2835/bcm2711 pinctrl drivers [1]. The driver is
+>> made to follow the definitions of each option as described in the DT
+>> bindings and pinctrl core.
+>>
+>> Please have a look and merge if possible.
 > 
-> However, the description of Duration Available in the spec
-> is that this parameter may be returned when these cases, or
-> that it can be optionally return when these cases. The key
-> words in the spec description are flexible choices.
+> Patches applied for fixes, it looks like pretty urgent stuff, yet no feedback
+> from maintainers for a week so I applied it.
 > 
-> Remove the special length check of Timer Status to fit the
-> spec which is not compulsory about that.
-> 
-> Signed-off-by: Nini Song <nini.song@mediatek.com>
-> ---
->  drivers/media/cec/core/cec-adap.c | 14 --------------
->  1 file changed, 14 deletions(-)
-> 
-> diff --git a/drivers/media/cec/core/cec-adap.c b/drivers/media/cec/core/cec-adap.c
-> index 5741adf09a2e..559a172ebc6c 100644
-> --- a/drivers/media/cec/core/cec-adap.c
-> +++ b/drivers/media/cec/core/cec-adap.c
-> @@ -1151,20 +1151,6 @@ void cec_received_msg_ts(struct cec_adapter *adap,
->  	if (valid_la && min_len) {
->  		/* These messages have special length requirements */
->  		switch (cmd) {
-> -		case CEC_MSG_TIMER_STATUS:
-> -			if (msg->msg[2] & 0x10) {
-> -				switch (msg->msg[2] & 0xf) {
-> -				case CEC_OP_PROG_INFO_NOT_ENOUGH_SPACE:
-> -				case CEC_OP_PROG_INFO_MIGHT_NOT_BE_ENOUGH_SPACE:
-> -					if (msg->len < 5)
-> -						valid_la = false;
-> -					break;
-> -				}
-> -			} else if ((msg->msg[2] & 0xf) == CEC_OP_PROG_ERROR_DUPLICATE) {
-> -				if (msg->len < 5)
-> -					valid_la = false;
-> -			}
-> -			break;
->  		case CEC_MSG_RECORD_ON:
->  			switch (msg->msg[2]) {
->  			case CEC_OP_RECORD_SRC_OWN:
+> Yours,
+> Linus Walleij
 
+Yeah - sorry about that, but this one went out of my radar for whatever
+reason....
+Just had a look at it and - even if it's too late - I can give my approval.
+
+Please feel free to ping me if this happens again: when done for a good reason,
+pings are helpful and appreciated on my side, no worries!
+
+Btw, Linus, thanks for swiftly applying this as - yes - those are good and
+high priority fixes.
+
+
+*Anyway* - whole series is
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Cheers,
+Angelo
 
