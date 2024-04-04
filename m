@@ -4,79 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09552CD1292
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Apr 2024 10:47:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B678CD1284
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Apr 2024 11:49:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L0Ykm2W1S1p85sujFPKLol+N6IEGAfeW2v8P+jKKQlQ=; b=EOTx9sB+vPlYK+oz1dcE0iWMPX
-	/1IdyDW9I6VXt7EWu7C9GfH8s1R7sE0xjzBzvoaIeYGnNxRI565p952hOS+bsLJlB7pN0qoo7wxat
-	/OQ0pPlwgz6ZYFY6ftGnVdWcMdUM4zGjO8EcYVkTBXID4fo/Ne5I4GjfCR+fbuwjYd/Jd6iwkjj+s
-	ZKeiIPr9CKGtJ7SQVXr1o/zQb3H3V21td4f0Aq1PdjxH2elt23QDc/2OCsr5qrgghi7NGpW1+FB3Q
-	L8fm7cgj1clOEHSxceTfLk+GNDu48VQqqQ9jsEWYCxgPukWIb6U6+oG2gFu/NK7ZzI5sMIQGnkZbc
-	U1hl/5Lg==;
+	bh=QJzdwgYqSiXBG2wAbt+70V3f0hLZ0hXphRY5qJD39hQ=; b=xp6pWyEMShiinbb66f1vYdnEKV
+	HreZbRyXPltQ+XP0Ncr0DVGH3ySXjBlqt/Cjsae2LjCnqO0ZXz8Cka1/a2TRUC9zpmOMhQvN6Mw3I
+	pP7rMlQEMiLlJrE3y4K1nvP2ATMjRoTfS4wtBoS83UGXuE8Ly5U5ghk+sOw2/Mou9APXI0QxHXozt
+	L3uxD0sQlsAUr1hdyMpUw5Jpqps+8rMuKiszjCToZhW62sDGf7DscKxjSCdxezi4d+xOBNk7hHudI
+	zXIXG5rekVEQ86pEjIzUiRgIkKn/4Lf/qEDAOAKFraEHQoimT6qV+GdYSMyzM78U1OGY0MIC/bhIq
+	21kamI9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsKcv-00000002EMo-1zeC;
-	Thu, 04 Apr 2024 10:47:25 +0000
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
+	id 1rsLb7-00000002R9D-3KAU;
+	Thu, 04 Apr 2024 11:49:37 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsKcp-00000002EFx-17lN
+	id 1rsJRe-000000021nC-2UHq
+	for linux-mediatek@bombadil.infradead.org;
+	Thu, 04 Apr 2024 09:31:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Type:Cc:To:Subject:Message-ID:
+	Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=QJzdwgYqSiXBG2wAbt+70V3f0hLZ0hXphRY5qJD39hQ=; b=DlgrPIlzrAYs2CffiACZ0ddU0K
+	ok+7oYdabRJG4BNMFJQDfyB/JEFv0ubwJXUwtvj9I6y+L+a/Ltf2hc5jNROL3YgFAZlhiwQVx/mUY
+	XrK3y1zIuA3J46GO4oTX21bN7oxn7ACtm9uVkRjtdRQB8fSj2V2Zd0PqS+A5WAiZZUcwrZ8N5ki9J
+	MAAkHIffDD3xFLy8xG7CL94GLPxwEAQZmWsAtnYEG8KgtLIM2GnjoocPY14sszLiL6QsnHJyXHL3B
+	IqJPkYao2GcywgqXPYdO0HamzvXfklDXwZEMEE4oaIAGdz17ktMpFcUC83ICUUU9cJIhUYFh62hBi
+	D0jDiDvw==;
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rsJRX-00000007j6u-47HN
 	for linux-mediatek@lists.infradead.org;
-	Thu, 04 Apr 2024 10:47:22 +0000
-Received: by mail-yb1-xb2e.google.com with SMTP id 3f1490d57ef6-dc74435c428so865784276.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 04 Apr 2024 03:47:11 -0700 (PDT)
+	Thu, 04 Apr 2024 09:31:41 +0000
+Received: by mail-yb1-xb35.google.com with SMTP id 3f1490d57ef6-dd161eb03afso746005276.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 04 Apr 2024 02:31:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1712227631; x=1712832431; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1712223091; x=1712827891; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=L0Ykm2W1S1p85sujFPKLol+N6IEGAfeW2v8P+jKKQlQ=;
-        b=giQ/8iehcgC8kuTo51VYmuwHLcjFu9yOB+AGYp2KNvLAEcbJRtbPLIxGCB5CUomMrQ
-         vmCclR7o/pnnFG85vsSzVyUSVEc4WV5j+VmQ7RzdVk4AhBDvXmuSlaZmSvjsO3gE8L/p
-         0ob9678UjZYRYwxIfhCgLhsl4PsvkQa2gCAv+RgMHiymDojvgvgXNRVNGeOqF/B5obqM
-         Zp32gXEUk8uaeafpZJENWv03QSQ4qPfY/Nyxsx6p/tiWRJyIdOqwhJuRKolN3G/mR4z2
-         fD/om7oeIrWCIjRmSpV/dC0VWh8oXMGCLR/GRMkGUTRWNfWYtxJIe5fSdtAC2tM04mvq
-         AARA==
+        bh=QJzdwgYqSiXBG2wAbt+70V3f0hLZ0hXphRY5qJD39hQ=;
+        b=zc/kZiUY93GsKWMF/62TB5FDeJvLowiJcNNtjrDiVbh9coJnWG6my2pbNtlOsOetD/
+         lbdMsNDHunbtZnbkQeP31q1doSdkP2GuuKLQJZdXx9Uw9jqesltBFxBrWpR7A9QtQ4ze
+         4Plx/mnBgFcAlem9JbKLq+pfhi+jIAddrVPgGr+MvRxHZtTLQZL+uFA3kq6K2wdTV6JD
+         1LzztWX2Q/onKTDtrP2dIPS+ar0u2xlTv9CEa+6+7aI2w3SMljSvG7lkFi3eQI3GZaay
+         PaWYaLZvutFqAM7dV6AVCUmtT5aHcLkuZn8hHEwJx4QXC/PmGQsCddlaJ6xlRlQBwp9Y
+         GRTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712227631; x=1712832431;
+        d=1e100.net; s=20230601; t=1712223091; x=1712827891;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=L0Ykm2W1S1p85sujFPKLol+N6IEGAfeW2v8P+jKKQlQ=;
-        b=SoxV1rlwXqIqVfthkv7WU68S2oL9u4+jcqYsX+KaMyC20a3wdLt4bz3PQmNESwLMyX
-         enJYO8FOiuaXkK7vR/ct6nk9bhxu+pEKh7t6HsIQ6QTzzUJETK9Pzf3U0f6dVQLWRtkz
-         dCAJe/OJdSsllL8JTle8Nsnpyvq2PsEev12lJ+MqSKYNVX2B9NKR2opipqfPvwmOnjtg
-         NouRmnVzsHF1pErhOTMqT1HTByWNFG0tbm6jl3ZnU5SsCKhHV71hwp7DwXpS0khRqwdH
-         vmCuHkdVSHeWv8Wva89x6fTFhlRmHUDxkYcVnqitNawM7MyfPOfsn1thCzTwfos7+r1a
-         ePAw==
-X-Forwarded-Encrypted: i=1; AJvYcCUqYn1hogF6gn9PErurmD+aZOTFsTjUZubi3CF9V2nVdg86e5cYcBklgUFSfG29GZhXyflZq5ZraEsrGD3CNdqLI56jdbqaM7GDTN1aZEzsoQ83
-X-Gm-Message-State: AOJu0Ywx83h8Co3/azbyTihS3nUoiZ6rugryAE5w1478FCfGKLPODFuV
-	PcUStygElCCBj7mHC/D+wVdsByuYuzwLSnKvJepr6cSrslVofhg92MV7S3DDcA6Q3H08A4ue95E
-	gZ/NOfrCDI7Vaj9Aj80yFboiMwXUR5/2xqDGybzTdLjbA42Z3
-X-Google-Smtp-Source: AGHT+IG8QfWI6GVdC6qLbyKBp8gOwWy/t5BNQ+Yfrm5Mn9ZdgBynu+9KPMQrhUmNrccslE7argS+hG9yXel1mv9D6SM=
-X-Received: by 2002:a25:9111:0:b0:dc7:4f61:5723 with SMTP id
- v17-20020a259111000000b00dc74f615723mr1910942ybl.39.1712227631181; Thu, 04
- Apr 2024 03:47:11 -0700 (PDT)
+        bh=QJzdwgYqSiXBG2wAbt+70V3f0hLZ0hXphRY5qJD39hQ=;
+        b=rx9XgrCp8HHwc+8lfKmK7yoYhPZEmz1velWwLFtpEy6p1N/7GjMQwKYKxyKNobYl01
+         yH9oYYz0ZH3wFFa/PoMyDafUWARAAR/6Y06HEQO4hv4tDn4sstJVX/6i0ykHjf4wzQQM
+         DVNDUb8sTn//8MAjSnMo6WJhWORRxkKlGX7Pp5amHSs+w2NYS727SEhokByam3kCl/cG
+         UWApXyIMbtULctm8p3Tt9lfKj+iOgQlJx/KvqL/e4PnFn20STo6JkjOIO3VxzIrfO3m+
+         +zVanF1tUCHjrg2zXr+C78ZomA7WDFWW3aHOPzB1oigGjKyuXReb/biaMYhkQHSKztUa
+         JTiQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXQ0rOAKvBVxcaOJdQc5nQsjsuA5QbP+gT20Nwa65eisogLDNLiZsi47MAbjNGMlgE4tMGdiXXOGW6HhgRkMg4j8RDgGPanJ94q0rB6UfjdBFPp
+X-Gm-Message-State: AOJu0Yzrm7USBtr4M9DfqC3gbslo9p16Mn0wJbthy0mOB92xWk3/Qvzu
+	IKoFvFPKI4J80MPhAcAIm4IG6Mv5StQU3XcbVqcaDi/2jEGyIJ3HcHj58qimwIveXVkU8tUG92K
+	7l5K+9knEhGLm1Yg6DsexJ/0jUBqXsBo1PaIWGg==
+X-Google-Smtp-Source: AGHT+IHTXtbKZV4PRrgxvlL/R1tUqcSFTjPcwK6//feDtYUO9NjrShijYYET6/+oeV22B9HIEQVjv5iZuw/cw+hBGTs=
+X-Received: by 2002:a25:ac04:0:b0:dc7:423c:b8aa with SMTP id
+ w4-20020a25ac04000000b00dc7423cb8aamr1828891ybi.12.1712223091503; Thu, 04 Apr
+ 2024 02:31:31 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240329044142.3095193-1-fshao@chromium.org>
-In-Reply-To: <20240329044142.3095193-1-fshao@chromium.org>
+References: <20240403-module-owner-sdio-v2-0-ae46d6b955eb@linaro.org>
+In-Reply-To: <20240403-module-owner-sdio-v2-0-ae46d6b955eb@linaro.org>
 From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Thu, 4 Apr 2024 12:46:35 +0200
-Message-ID: <CAPDyKFqr2wPHGScSAdwocjOF8jUTJnti+j5sWMYW5kg5x5OmyQ@mail.gmail.com>
-Subject: Re: [PATCH v2] pmdomain: mediatek: Add MT8188 buck isolation setting
-To: Fei Shao <fshao@chromium.org>
-Cc: Johnson Wang <johnson.wang@mediatek.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-pm@vger.kernel.org
+Date: Thu, 4 Apr 2024 11:30:54 +0200
+Message-ID: <CAPDyKFodTh-KN+=b1B3V+7aNEoR0SPo5-xjFaWu=gYEtsDy1pQ@mail.gmail.com>
+Subject: Re: [PATCH v2 0/7] mmc/wifi/bluetooth: store owner from modules with sdio_register_driver()
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Marcel Holtmann <marcel@holtmann.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Kalle Valo <kvalo@kernel.org>, 
+	Jeff Johnson <jjohnson@kernel.org>, Arend van Spriel <arend.vanspriel@broadcom.com>, 
+	Brian Norris <briannorris@chromium.org>, Francesco Dolcini <francesco@dolcini.it>, 
+	=?UTF-8?B?SsOpcsO0bWUgUG91aWxsZXI=?= <jerome.pouiller@silabs.com>, 
+	linux-mmc@vger.kernel.org, linux-bluetooth@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org, 
+	ath10k@lists.infradead.org, brcm80211@lists.linux.dev, 
+	brcm80211-dev-list.pdl@broadcom.com, Jeff Johnson <quic_jjohnson@quicinc.com>, 
+	Francesco Dolcini <francesco.dolcini@toradex.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240404_034720_225084_86A1B774 
-X-CRM114-Status: GOOD (  17.23  )
+X-CRM114-CacheID: sfid-20240404_103136_066831_2435DBB7 
+X-CRM114-Status: UNSURE (   7.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,98 +114,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 29 Mar 2024 at 05:43, Fei Shao <fshao@chromium.org> wrote:
+On Wed, 3 Apr 2024 at 16:17, Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
 >
-> From: Johnson Wang <johnson.wang@mediatek.com>
+> Changes in v2:
+> 1. Add "wifi: ath10k: sdio: simplify module initialization" patch, from
+>    my other patchset to avoid conflicts.
+> 2. Add Acks/Rb tags.
+> 3. Drop applied SDIO patch, which was the dependency for the rest
+>    cleanups.
+> 4. Update subjects according to feedback.
+> - Link to v1: https://lore.kernel.org/r/20240329-module-owner-sdio-v1-0-e4010b11ccaa@linaro.org
 >
-> From: Johnson Wang <johnson.wang@mediatek.com>
->
-> Add buck isolation setting to ADSP_AO, CAM_VCORE and IMG_VCORE power
-> domains in MT8188 for proper buck isolation control in power domain
-> on/off.
->
-> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
-> Signed-off-by: Fei Shao <fshao@chromium.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Merging
+> =======
+> With Acks from Kalle, please take entire set via mmc/sdio.
 
-Applied for next, thanks!
+The series applied for next, thanks!
+
+[...]
 
 Kind regards
 Uffe
-
-
-> ---
->
-> Changes in v2:
-> [1] was reviewed but didn't get accepted at the time.
-> This rebases [1] on next-20240327 with revised commit message.
->
-> [1]: https://lore.kernel.org/all/20230315114505.25144-1-johnson.wang@mediatek.com/
->
->  drivers/pmdomain/mediatek/mt8188-pm-domains.h | 14 +++++++++++---
->  1 file changed, 11 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/pmdomain/mediatek/mt8188-pm-domains.h b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
-> index 06834ab6597c..007235be9efe 100644
-> --- a/drivers/pmdomain/mediatek/mt8188-pm-domains.h
-> +++ b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
-> @@ -175,6 +175,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
->                 .ctl_offs = 0x35C,
->                 .pwr_sta_offs = 0x16C,
->                 .pwr_sta2nd_offs = 0x170,
-> +               .ext_buck_iso_offs = 0x3EC,
-> +               .ext_buck_iso_mask = BIT(10),
->                 .bp_cfg = {
->                         BUS_PROT_WR(INFRA,
->                                     MT8188_TOP_AXI_PROT_EN_2_ADSP_AO_STEP1,
-> @@ -187,7 +189,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
->                                     MT8188_TOP_AXI_PROT_EN_2_CLR,
->                                     MT8188_TOP_AXI_PROT_EN_2_STA),
->                 },
-> -               .caps = MTK_SCPD_ALWAYS_ON,
-> +               .caps = MTK_SCPD_ALWAYS_ON | MTK_SCPD_EXT_BUCK_ISO,
->         },
->         [MT8188_POWER_DOMAIN_ADSP_INFRA] = {
->                 .name = "adsp_infra",
-> @@ -524,6 +526,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
->                 .ctl_offs = 0x3A4,
->                 .pwr_sta_offs = 0x16C,
->                 .pwr_sta2nd_offs = 0x170,
-> +               .ext_buck_iso_offs = 0x3EC,
-> +               .ext_buck_iso_mask = BIT(12),
->                 .bp_cfg = {
->                         BUS_PROT_WR(INFRA,
->                                     MT8188_TOP_AXI_PROT_EN_MM_IMG_VCORE_STEP1,
-> @@ -541,7 +545,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
->                                     MT8188_TOP_AXI_PROT_EN_MM_2_CLR,
->                                     MT8188_TOP_AXI_PROT_EN_MM_2_STA),
->                 },
-> -               .caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_DOMAIN_SUPPLY,
-> +               .caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_DOMAIN_SUPPLY |
-> +                       MTK_SCPD_EXT_BUCK_ISO,
->         },
->         [MT8188_POWER_DOMAIN_IMG_MAIN] = {
->                 .name = "img_main",
-> @@ -591,6 +596,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
->                 .ctl_offs = 0x3A0,
->                 .pwr_sta_offs = 0x16C,
->                 .pwr_sta2nd_offs = 0x170,
-> +               .ext_buck_iso_offs = 0x3EC,
-> +               .ext_buck_iso_mask = BIT(11),
->                 .bp_cfg = {
->                         BUS_PROT_WR(INFRA,
->                                     MT8188_TOP_AXI_PROT_EN_MM_CAM_VCORE_STEP1,
-> @@ -618,7 +625,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
->                                     MT8188_TOP_AXI_PROT_EN_MM_2_CLR,
->                                     MT8188_TOP_AXI_PROT_EN_MM_2_STA),
->                 },
-> -               .caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_DOMAIN_SUPPLY,
-> +               .caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_DOMAIN_SUPPLY |
-> +                       MTK_SCPD_EXT_BUCK_ISO,
->         },
->         [MT8188_POWER_DOMAIN_CAM_MAIN] = {
->                 .name = "cam_main",
-> --
-> 2.44.0.478.gd926399ef9-goog
->
 
