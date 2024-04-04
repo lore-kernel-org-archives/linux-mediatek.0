@@ -4,66 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CD11CD1284
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Apr 2024 08:45:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F8ACCD1292
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Apr 2024 09:26:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p18Umpu7bShB8jZYC7bDIic76iXWEjm60AJXX9D1W88=; b=lKN+ytdo7C4HRdqYlcIC02NGP9
-	xner0zNhhYfjb0LzdJ2i/H+OkPoTv2+xkLOvHautjo+x8kqZtkINH89407eoOKBafRXi4/705j2Zg
-	mHNiuqo4+uywroNtdNbytXJdoXw4l6VaK8rWu3nwri6QgFISyI8uLlX8a5NVGWOhULfANwAEKuUWM
-	qan4stuo2ZQ5TCwOMplclPXfTdCzt+I21EVjtVj1u9e8sv5BlmdX2C9nIBUg2jcORc8oMwPNk0TyT
-	N8NXqY9kgketxROae7PTskbB88nnaHEMDtLwW2QUX30AdWQ3gOB3JBjIonY1xJjeoPHA1UkG+X0uC
-	wDzvGyuw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RddDiGdvjhhZyEX7BicAsFxkLqT6/XIDSocM2Q7RQuc=; b=aF/IKc5SgohGrBNDEejNdraziD
+	h92INtOuGYfw1rhaWGYkJJMTDFPZt/LjziRfF3U5FBIh+xG825x/4lfBg5jjSbGniPsVcsfkozapz
+	prW15GIZPJzw2hn9ibw9ZJuVXkHIgJUL7rv7LR5GC0Nu0DtkRq0pF2hakcSKkrGWHNQ8gd1iugLUL
+	T3Zs3lPgtdIgUfeHtTfeccjavcFj5oJdqDxabOzyuxeeQ3QRclWAP/264yKMargnugqgGQJYdSnY5
+	SpivXTRETrECjeNzPenmRfUrMlhq/hsGBeOseHlonbJNx+lH/oxK3ZpyvXOpc0va6EJHHkO4MCP4/
+	oHPPWeRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsIjH-00000001ttj-0VHq;
-	Thu, 04 Apr 2024 08:45:51 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rsJML-000000020BA-023d;
+	Thu, 04 Apr 2024 09:26:13 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsIj4-00000001toz-0B5X;
-	Thu, 04 Apr 2024 08:45:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712220336;
-	bh=f3ZHkHvCpCweFVRDS+9nWl67EHYJRCdqnlO132i1YnM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Ek1Sbvg/59Y+GNAxAeM5gP3RduwmfKbBbHJnk6mNbhplJoPLulTR4aNwxzm1kiasU
-	 YgrayKHq3IxJq4sSguxXkwXDtofmww4VvRe1GhggK754mTR/qXkmlrHr84fXbuEQyV
-	 ZUmi4h55358SEK1UKIjoLIAAU8sP/gThIAJgx1l6ZRlB1o3W5D+/tr/vlHltbMdKb/
-	 fUL/mDY0Jgr1DmIoiiRnpGqHldzv6LRtekiApFRhrV6YCFs1I8Csv8MZ+hdlpQfClV
-	 Hx22YPyijzSo6s7KukpUwXgKgnAIHvGzWRxZM607wV7aq4mELbiyPnAmIAjokHBKEJ
-	 0sLuYQ1F3OK7w==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D26823780029;
-	Thu,  4 Apr 2024 08:45:35 +0000 (UTC)
-Message-ID: <ae872ee7-3709-45ce-b240-c35a59427041@collabora.com>
-Date: Thu, 4 Apr 2024 10:45:35 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] pinctrl: mediatek: paris: More pin config cleanups
-To: Linus Walleij <linus.walleij@linaro.org>,
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: Sean Wang <sean.wang@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20240327091336.3434141-1-wenst@chromium.org>
- <CACRpkdYi=3ZYVQGAAwJ5iYNX-WY1OPTX_xuP3H-xJj9Q+b+RRw@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CACRpkdYi=3ZYVQGAAwJ5iYNX-WY1OPTX_xuP3H-xJj9Q+b+RRw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+	id 1rsJMH-000000020AY-3MOm;
+	Thu, 04 Apr 2024 09:26:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1099C6152A;
+	Thu,  4 Apr 2024 09:26:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 799A2C433C7;
+	Thu,  4 Apr 2024 09:26:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712222768;
+	bh=LQHPeCxsTClRiQFklZkM7OeAADhg7xB3paGeP09fuNI=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=ccof+V0eEDquGLB7ROWgkSuWRHrYjTBY/0h345S8VTXnPbHvM/M0douzbdfJSnRPk
+	 qHCwLS5haZtliW6qAVMI3aNB5nz/DPmhoOAvnd2wgmhUX2vkFo4JTuMg2URnq58CsC
+	 VA+RZyLMGk3NUeYB8b8wqjgEG28bi1INAaazGIZ6FvmFcjYpeENlOP+u+R6ikKMFY+
+	 aVwkX3SVcwmuE6JCd3dNSQDEV4tqjJQv/KZTxZBfLj/nzuqAcFNwLzxJjzPHOxlOMb
+	 JQfjiZMJTpp/tY/Q2GdV3HJQMg8Zyl3tKaWDk4uYaynFUXI43i33hzOsM60SdjKJhN
+	 i/uwGLI+moLyA==
+Date: Thu, 04 Apr 2024 04:26:07 -0500
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: shawn.sung@mediatek.com, ck.hu@mediatek.com, 
+ linux-arm-kernel@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org, 
+ chunkuang.hu@kernel.org, daniel@ffwll.ch, p.zabel@pengutronix.de, 
+ wenst@chromium.org, matthias.bgg@gmail.com, airlied@gmail.com, 
+ tzimmermann@suse.de, kernel@collabora.com, 
+ maarten.lankhorst@linux.intel.com, dri-devel@lists.freedesktop.org, 
+ linux-kernel@vger.kernel.org, yu-chang.lee@mediatek.com, 
+ jitao.shi@mediatek.com, conor+dt@kernel.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ mripard@kernel.org
+In-Reply-To: <20240404081635.91412-3-angelogioacchino.delregno@collabora.com>
+References: <20240404081635.91412-1-angelogioacchino.delregno@collabora.com>
+ <20240404081635.91412-3-angelogioacchino.delregno@collabora.com>
+Message-Id: <171222276632.1805081.13595219837975408757.robh@kernel.org>
+Subject: Re: [PATCH v1 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
+ support for board path
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240404_014543_675510_5A20D1A7 
-X-CRM114-Status: GOOD (  13.23  )
+X-CRM114-CacheID: sfid-20240404_022610_029639_9EF565BF 
+X-CRM114-Status: GOOD (  13.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,43 +80,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/04/24 10:23, Linus Walleij ha scritto:
-> On Wed, Mar 27, 2024 at 10:13 AM Chen-Yu Tsai <wenst@chromium.org> wrote:
+
+On Thu, 04 Apr 2024 10:16:34 +0200, AngeloGioacchino Del Regno wrote:
+> Document OF graph on MMSYS/VDOSYS: this supports up to three DDP paths
+> per HW instance (so potentially up to six displays for multi-vdo SoCs).
 > 
->> Here are a couple more pin config cleanups for the MediaTek paris
->> pinctrl driver library.
->>
->> Patch 1 fixes readback of PIN_CONFIG_INPUT_SCHMITT_ENABLE. The function
->> was passing back the disabled state incorrectly.
->>
->> Patch 2 reworks support for PIN_CONFIG_{INPUT,OUTPUT}_ENABLE, following
->> discussions on the bcm2835/bcm2711 pinctrl drivers [1]. The driver is
->> made to follow the definitions of each option as described in the DT
->> bindings and pinctrl core.
->>
->> Please have a look and merge if possible.
+> The MMSYS or VDOSYS is always the first component in the DDP pipeline,
+> so it only supports an output port with multiple endpoints - where each
+> endpoint defines the starting point for one of the (currently three)
+> possible hardware paths.
 > 
-> Patches applied for fixes, it looks like pretty urgent stuff, yet no feedback
-> from maintainers for a week so I applied it.
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../bindings/arm/mediatek/mediatek,mmsys.yaml | 23 +++++++++++++++++++
+>  1 file changed, 23 insertions(+)
 > 
-> Yours,
-> Linus Walleij
 
-Yeah - sorry about that, but this one went out of my radar for whatever
-reason....
-Just had a look at it and - even if it's too late - I can give my approval.
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-Please feel free to ping me if this happens again: when done for a good reason,
-pings are helpful and appreciated on my side, no worries!
+yamllint warnings/errors:
 
-Btw, Linus, thanks for swiftly applying this as - yes - those are good and
-high priority fixes.
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml: properties:port:properties:required: ['endpoint@0'] is not of type 'object', 'boolean'
+	from schema $id: http://json-schema.org/draft-07/schema#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml: properties:port:properties: 'required' should not be valid under {'$ref': '#/definitions/json-schema-prop-names'}
+	hint: A json-schema keyword was found instead of a DT property name.
+	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml: properties:port:properties:required: ['endpoint@0'] is not of type 'object', 'boolean'
+	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml: ignoring, error in schema: properties: port: properties: required
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.example.dtb: /example-0/syscon@14000000: failed to match any schema with compatible: ['mediatek,mt8173-mmsys', 'syscon']
 
+doc reference errors (make refcheckdocs):
 
-*Anyway* - whole series is
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240404081635.91412-3-angelogioacchino.delregno@collabora.com
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
 
-Cheers,
-Angelo
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
