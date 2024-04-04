@@ -4,75 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F184CD1297
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Apr 2024 18:29:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56071CD1292
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Apr 2024 19:03:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cjEZP/PNLWTKZkjySuBXmesFi8isoCc88gy4I1lUyiE=; b=oRBKmfH1UZMVajwGOL082LA49o
-	QO0aTfn7yg2p1JeHP9fZHdSKluleSbFr0aBkykmZ+RdswUg/rM6dBKGe5nllFObVa26hpZqCxAW79
-	zFtUmlssUxNcxkuQD8nlQqI9sVTPkzGfFbd3Si1+KzTdEO3x7N5SVlvJhNDc5wtnZJZg87eEyOqOi
-	epd5hR3FXXhN1DdGfOg71pcjlayuxiE6zaIrfaqln8u6EArlpkI7O9r8lm8qfKk57e6HMdLiG0mtT
-	QVk6ITpMX+Fl93acBi1JpvLjYDqeS8ZOX/Kmd7R7+8eiVhtuhXAWCgDMuSQGmr9fGLIDST73yOFbY
-	IreDfJgQ==;
+	bh=p+CbQTA2iSYs41dobAl4Mn03s52UBZLR03o420g0nXE=; b=2FBltKXD1JEI/ODXj1Ph8xO13f
+	TXGXNNpTVX7Kb6LBVuZP0aUkTp3mw1W3OOsC4eXVucffNcXjcT88+R5dINVrVWhtbNF9OiLWkgHfl
+	KAeisDFu5kjm1JFwUWmwKJBLnnnv8d96xMbo36dOzojM/SafmtIdfpR0fY272ljaHAdcnJaVboOcJ
+	A+cqAFnb+/Ot7/x2B6Xy4lKh/Opl36DEdfATsFlnmvHonxXqj1O1dI4GLsTGH6IzIgabbFsTVE2Ci
+	XiQ+I613P06dhyUULMXFnHgoxwHc9hDRXlQgY829LsdPAwQRomtea8Yxf9zE8fIWvKVDL6rle3TrA
+	j6pPcFkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsRpp-00000003qTA-3cWb;
-	Thu, 04 Apr 2024 18:29:13 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rsSNG-00000003xeB-2nge;
+	Thu, 04 Apr 2024 19:03:46 +0000
+Received: from mail-ed1-f46.google.com ([209.85.208.46])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsRpl-00000003qSI-40LH;
-	Thu, 04 Apr 2024 18:29:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712255345;
-	bh=NmU8KFMfNoUMM9NLhO7uk8bPhscbUNMmBYEZDzGYqCA=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=2wirKzlL2FX0E2q3XU0W+0S+XRZK0fL7JC5B3/y0ikWxuSRC2BWz3bBMYaiNJB+qX
-	 ppaoLO1WHmCDbQHNzduxpH44j2ZZqXVfdDDZa37l4BjeQuedjR7rwtr2rE3VBcVBTn
-	 tONu6WKfKo5GxGQcssYfnwL8Eyvr/XnmitdSgOOKuTg8QocxhkNWtcYCmRiQecWfz4
-	 Pkl+l+PyVN1U0rPTeToNOFyRVCFr4z+NI6DWzW8Zb6lvU/FakrDh9IKpr+HeL+N5HY
-	 wR5T5lcdTQ6oGmq0pqRGLHiXFl0Tr2RKBLsOUPXofgL7NIFFr2pWBhFt1mj+GcpAJn
-	 gAi9278YX4vHw==
-Received: from nicolas-tpx395.localdomain (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 387EA37813DF;
-	Thu,  4 Apr 2024 18:29:03 +0000 (UTC)
-Message-ID: <1ca5278d8c15b45ebd6f28b9043a98f28b5ae128.camel@collabora.com>
-Subject: Re: [PATCH] media: mediatek: vcodec: fix the error sizeimage for
- 10bit bitstream
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, =?ISO-8859-1?Q?N=EDcolas?= "F .
- R . A . Prado" <nfraprado@collabora.com>, Sebastian Fricke
- <sebastian.fricke@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, Nathan Hebert
- <nhebert@chromium.org>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
- <frkoenig@chromium.org>,  Daniel Vetter <daniel@ffwll.ch>, Steve Cho
- <stevecho@chromium.org>, linux-media@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Date: Thu, 04 Apr 2024 14:28:59 -0400
-In-Reply-To: <20240403093018.13168-1-yunfei.dong@mediatek.com>
-References: <20240403093018.13168-1-yunfei.dong@mediatek.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=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
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.50.4 (3.50.4-1.fc39) 
+	id 1rsSNC-00000003xdF-2tQe;
+	Thu, 04 Apr 2024 19:03:44 +0000
+Received: by mail-ed1-f46.google.com with SMTP id 4fb4d7f45d1cf-56e0e1d162bso1376446a12.1;
+        Thu, 04 Apr 2024 12:03:41 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712257420; x=1712862220;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=p+CbQTA2iSYs41dobAl4Mn03s52UBZLR03o420g0nXE=;
+        b=DyGbKVNJ01pAf08NUmzbbzsNHQp6haD5W+wtLKXGOuUzVMDaveR0vv5uuUf2Fw2ZLy
+         worjq7AyswIgwRskemMZVKOUeIbPSE5MDS/rkhXvOZpXywfduXKT1jhctHkINiAg9I3J
+         Y7nHEisv8nuVC98Ap2H0bXpEW1ZAFGeeqol/gvTpgzPIY1g2DHiYJYYQDUMLzNFDovpp
+         kD+i+YdzcLqfQN7FPOgjkt8W/kn4YmOQmKQq62BJPyRmJZuvKpVIsixwHeExo+BF6UP/
+         0+U0JuFUjpb9Shem4bVNMK7IhVKx38Pup+FYIHGqRJ4zZXxCIl5h69J5pSBe1NtM5etX
+         //DA==
+X-Forwarded-Encrypted: i=1; AJvYcCV9vN6tGQtczVSHQOLDDISGkpNmCvoUWQoE8wyu+P6VfPEw6+TtXc0bxdJ11MznLL0y0tawNFY73Ah07vl3psOpwjGiBIEa1tWi99azzOCTTIgq//+2txlKkHN/87CN4SN/fIXRmvKLhQ++taEgceMo1UDD78Drnhs=
+X-Gm-Message-State: AOJu0YwkqNYu2hj7p7UDtmzWCQBwR0uYwwaRe8tW5HuLM+IGLECFRTkD
+	4SWBtPj8XKmyMJLoTekzWTNXxkzJAxlf52R58SJHtEF4SEhFdfW/
+X-Google-Smtp-Source: AGHT+IHmvFcFisUvqZnNo8wPKYtf8P8HNEXIVh2KGY7KWKzBSyC21xcVPnv1zgUB7h6HBBv0BS0kWA==
+X-Received: by 2002:a17:907:10c2:b0:a4e:21e0:2e6e with SMTP id rv2-20020a17090710c200b00a4e21e02e6emr2104481ejb.5.1712257419825;
+        Thu, 04 Apr 2024 12:03:39 -0700 (PDT)
+Received: from gmail.com (fwdproxy-lla-005.fbsv.net. [2a03:2880:30ff:5::face:b00c])
+        by smtp.gmail.com with ESMTPSA id q6-20020a170906388600b00a4576dd5a8csm9326341ejd.201.2024.04.04.12.03.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 04 Apr 2024 12:03:39 -0700 (PDT)
+Date: Thu, 4 Apr 2024 12:03:36 -0700
+From: Breno Leitao <leitao@debian.org>
+To: Alexander Lobakin <aleksander.lobakin@intel.com>
+Cc: kuba@kernel.org, davem@davemloft.net, pabeni@redhat.com,
+	edumazet@google.com, elder@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, nbd@nbd.name,
+	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	lorenzo@kernel.org, taras.chornyi@plvision.eu,
+	quic_jjohnson@quicinc.com, kvalo@kernel.org, leon@kernel.org,
+	dennis.dalessandro@cornelisnetworks.com,
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	bpf@vger.kernel.org, Jiri Pirko <jiri@resnulli.us>,
+	Simon Horman <horms@kernel.org>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Subject: Re: [PATCH net-next v3 1/5] net: create a dummy net_device allocator
+Message-ID: <Zg75iK8VtzZL9/G+@gmail.com>
+References: <20240404114854.2498663-1-leitao@debian.org>
+ <20240404114854.2498663-2-leitao@debian.org>
+ <1b1dfe1f-57ed-416d-a9c0-408aafa69583@intel.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1b1dfe1f-57ed-416d-a9c0-408aafa69583@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240404_112910_185868_614EC61E 
-X-CRM114-Status: GOOD (  15.10  )
+X-CRM114-CacheID: sfid-20240404_120342_965445_0074C20D 
+X-CRM114-Status: GOOD (  17.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,100 +92,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hello Alexander,
 
-Le mercredi 03 avril 2024 =C3=A0 17:30 +0800, Yunfei Dong a =C3=A9crit=C2=
-=A0:
-> The sizeimage of each plane are calculated the same way for 8bit and
-> 10bit bitstream. Need to enlarge the sizeimage with simeimage*5/4 for
-> 10bit bitstream when try and set fmt.
+On Thu, Apr 04, 2024 at 06:40:33PM +0200, Alexander Lobakin wrote:
+> > @@ -11063,6 +11070,17 @@ void free_netdev(struct net_device *dev)
+> >  }
+> >  EXPORT_SYMBOL(free_netdev);
+> >  
+> > +/**
+> > + * alloc_netdev_dummy - Allocate and initialize a dummy net device.
+> > + * @sizeof_priv: size of private data to allocate space for
+> > + */
+> > +struct net_device *alloc_netdev_dummy(int sizeof_priv)
+> 
+> Repeating my question from the previous thread: I see that in your
+> series you always pass 0 as @sizeof_priv, does it make sense to have
+> this argument or we can just pass 0 here to alloc_netdev() unconditionally?
+> Drivers that have &net_device embedded can't have any private data there
+> anyway.
 
-Can we stop adding more layers of custom code and port to v4l2-common helpe=
-rs
-please.
+Sorry, I answered you this question in the previous thread, and gave you an
+example why we need the @sizeof_priv.
 
-regards,
-Nicolas
+	https://lore.kernel.org/all/ZgWrcvKyAzDvl%2Fjn@gmail.com/
 
->=20
-> Fixes: 9d86be9bda6c ("media: mediatek: vcodec: Add driver to support 10bi=
-t")
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
->  .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 47 ++++++++++++++-----
->  1 file changed, 34 insertions(+), 13 deletions(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_de=
-c.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-> index 9107707de6c4..45209894f1fe 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-> @@ -259,6 +259,7 @@ static int vidioc_try_fmt(struct mtk_vcodec_dec_ctx *=
-ctx, struct v4l2_format *f,
->  		pix_fmt_mp->num_planes =3D 1;
->  		pix_fmt_mp->plane_fmt[0].bytesperline =3D 0;
->  	} else if (f->type =3D=3D V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
-> +		unsigned int dram_y, dram_c, dram_y_10bit, dram_c_10bit;
->  		int tmp_w, tmp_h;
-> =20
->  		/*
-> @@ -280,22 +281,42 @@ static int vidioc_try_fmt(struct mtk_vcodec_dec_ctx=
- *ctx, struct v4l2_format *f,
->  		    (pix_fmt_mp->height + 64) <=3D frmsize->max_height)
->  			pix_fmt_mp->height +=3D 64;
-> =20
-> -		mtk_v4l2_vdec_dbg(0, ctx,
-> -				  "before resize wxh=3D%dx%d, after resize wxh=3D%dx%d, sizeimage=3D=
-%d",
-> -				  tmp_w, tmp_h, pix_fmt_mp->width, pix_fmt_mp->height,
-> -				  pix_fmt_mp->width * pix_fmt_mp->height);
-> +		dram_y =3D pix_fmt_mp->width * pix_fmt_mp->height;
-> +		dram_c =3D dram_y / 2;
-> +
-> +		dram_y_10bit =3D dram_y * 5 / 4;
-> +		dram_c_10bit =3D dram_y_10bit / 2;
-> =20
->  		pix_fmt_mp->num_planes =3D fmt->num_planes;
-> -		pix_fmt_mp->plane_fmt[0].sizeimage =3D
-> -				pix_fmt_mp->width * pix_fmt_mp->height;
-> -		pix_fmt_mp->plane_fmt[0].bytesperline =3D pix_fmt_mp->width;
-> -
-> -		if (pix_fmt_mp->num_planes =3D=3D 2) {
-> -			pix_fmt_mp->plane_fmt[1].sizeimage =3D
-> -				(pix_fmt_mp->width * pix_fmt_mp->height) / 2;
-> -			pix_fmt_mp->plane_fmt[1].bytesperline =3D
-> -				pix_fmt_mp->width;
-> +		if (pix_fmt_mp->num_planes =3D=3D 1) {
-> +			if (ctx->is_10bit_bitstream) {
-> +				pix_fmt_mp->plane_fmt[0].bytesperline =3D pix_fmt_mp->width * 5 / 4;
-> +				pix_fmt_mp->plane_fmt[0].sizeimage =3D dram_y_10bit + dram_c_10bit;
-> +			} else {
-> +				pix_fmt_mp->plane_fmt[0].bytesperline =3D pix_fmt_mp->width;
-> +				pix_fmt_mp->plane_fmt[0].sizeimage =3D dram_y + dram_c;
-> +			}
-> +		} else {
-> +			if (ctx->is_10bit_bitstream) {
-> +				pix_fmt_mp->plane_fmt[0].bytesperline =3D pix_fmt_mp->width * 5 / 4;
-> +				pix_fmt_mp->plane_fmt[1].bytesperline =3D pix_fmt_mp->width * 5 / 4;
-> +
-> +				pix_fmt_mp->plane_fmt[0].sizeimage =3D dram_y_10bit;
-> +				pix_fmt_mp->plane_fmt[1].sizeimage =3D dram_c_10bit;
-> +			} else {
-> +				pix_fmt_mp->plane_fmt[0].bytesperline =3D pix_fmt_mp->width;
-> +				pix_fmt_mp->plane_fmt[1].bytesperline =3D pix_fmt_mp->width;
-> +
-> +				pix_fmt_mp->plane_fmt[0].sizeimage =3D dram_y;
-> +				pix_fmt_mp->plane_fmt[1].sizeimage =3D dram_c;
-> +			}
->  		}
-> +
-> +		mtk_v4l2_vdec_dbg(0, ctx,
-> +				  "before resize:%dx%d, after resize:%dx%d, sizeimage=3D0x%x_0x%x",
-> +				  tmp_w, tmp_h, pix_fmt_mp->width, pix_fmt_mp->height,
-> +				  pix_fmt_mp->plane_fmt[0].sizeimage,
-> +				  pix_fmt_mp->plane_fmt[1].sizeimage);
->  	}
-> =20
->  	pix_fmt_mp->flags =3D 0;
+I didn't see any reply from you, so, I suppose you were OK with it, but
+maybe you missed it?!
 
+Anyway, let me paste what I've sent there here, so, we can continue the
+discussion in this thread, which might make the reviewing process here.
+
+This is what I wrote in the thread/message above:
+
+  We need to have this private size for cases where we need to get the
+pointer to their private structure given the dummy device.  In the
+embedded case you can use container_of(), but, with a pointer to
+net_device, that is not the case anymore, and we should use the dummy private
+data pointer back to the private data.
+
+For instance, see the example of iwlwifi:
+https://lore.kernel.org/all/20240307174843.1719130-1-leitao@debian.org/
 
