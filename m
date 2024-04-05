@@ -4,120 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7C23CD11C2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Apr 2024 09:20:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46B27CD11C2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Apr 2024 09:29:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:CC
-	:To:Message-Id:Subject:Date:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hTf0upw0HQjpnQ6UQarFtMoCKi8zE4LKkr6HqiuKwo8=; b=3vO3dSf6ZT85SD0zkHjK7sXvWw
-	aGR/2wChJ9K45NWLFqotmaJxlGFzEOOm8Ldke/YyyaliV/3JLW62ONsQreruuzIBEvl7HdV4kNUwo
-	APlPAzMay4FF4MGjFAxqlomYNszx/urbcMQsZ7QV8o97wz/tyjIedAiJBYDY+mIA7QSn5E1bozhLL
-	QyJ00vwxCZsNrCtTYo01SRi61FVxtgeZh6Z2UQhHRqjmpjRTQv6Q386SfQ+6bS/8uAj2puxQrlX9e
-	3EM7y40mWW5jGdinhTdMoF+ob2HEzBS9VdMuzKAvKqRxLARjoD5mAFSrf1PT8wj8dWOPQVTuJftCD
-	KUhqYYFQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=roPWxbLccZER+vBGVJyQfVpEx9mdSzd/kyTN65Tprig=; b=VOOU6hbLpLeLFhJtbYvZgFexz4
+	ITRxMCzUzUGMKb2s8DEp/9VicNIObvc1gEKTmq2TquPU1AX1ZRfq15tmeY5Ib7wzHDUxR6MwW8Pye
+	lDoJ6gKUANUBLK6IrPlP9J047cXknQLZYRXIboY2auP8q4LSX45RBR17WuwrdnmghjCL66F4v5IYj
+	nO5XEBFB7ptH+7x4+RKv2za6cLAgifeRxLPtaA6ua46VNfRgYdmJ2aZ3GBCsZvtF8QFk9CiVyAn01
+	p68I0NhDP5/O7hvUh3UH6WpQ2phbteVKiuCm3Ss/xPLPp8GBRL2W0TNRod/BDqqJ3GVh7matV2jAy
+	eOj9F7xQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsfk0-000000069td-3Fzl;
-	Fri, 05 Apr 2024 09:20:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rsftB-00000006Bvu-3CU3;
+	Fri, 05 Apr 2024 09:29:37 +0000
+Received: from rere.qmqm.pl ([91.227.64.183])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsfjx-000000069qg-40XJ
-	for linux-mediatek@lists.infradead.org;
-	Fri, 05 Apr 2024 09:20:07 +0000
-X-UUID: ab1fd6b6f32d11eeac1957ae9f99f617-20240405
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:CC:To:Message-Id:Subject:Date:From; bh=hTf0upw0HQjpnQ6UQarFtMoCKi8zE4LKkr6HqiuKwo8=;
-	b=Sa9ZNWh/rx970elANfro1D7OGj7XHXNSjc73a8fAlWIlAl9fQMIigOESggg7FbO1EswhCusOMgX++5xwigdr54McDQ0AOlM9ddx/+WFD+AVrN91UjRj1Hy4ThTB87O1n7vK+n+6oVrV42/wd/lcgdGsDnnTTi3vmRPZvT0JyOks=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:6c0a7336-12d0-4c9c-8418-14bb80c1d409,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6f543d0,CLOUDID:1fbdd485-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: ab1fd6b6f32d11eeac1957ae9f99f617-20240405
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1104024594; Fri, 05 Apr 2024 02:19:56 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 5 Apr 2024 17:19:53 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 5 Apr 2024 17:19:53 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IQrZouLhwXwTOGUqiNnePlyb5Uyf13bHh55/u1qLCu8PuVl36uF+iVf5QA8Pc8wVXJ2q7heXPtKboUaTfYSZhfrzwwKgqWetpllOtLR9HZ4BlC7kSInGMLiRmJWZz1rYwLmEydbDs4wUKTet0n7PTHNJ8M1bTGvaty99YcLuwFb+IWYpsKdAzzOLnZCUp65SNKYrY7FxZvHu/6jnt6ucR1v6QjlExGL2dDQ4bicIqoauZpPUTgPmK8j8W6Nf5Se0GLvkBQzPadS3WN+F7b7SMh10hK2Z4GaUAmvoYuAVGm8wl20c/Xq34Vppb87k5Z70FsmeaTUzjZiHC/4UI1L3Xg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=hTf0upw0HQjpnQ6UQarFtMoCKi8zE4LKkr6HqiuKwo8=;
- b=VTLEUoOVxQ5FtXeaOrOAHuTrp5RzSXS9J9x22fGwVP+eaAHir8T4twqTj18I3/z0S8DGRVuzlULFZeaiSUF7Fgujr3jv3RXeqD1Mi4IAKCsI/uLd/TIq0UKEXXqAXD+PSYUvHWjohTIpvNnFzOqPdJZ9SEIuO8k5gAlooC92ue9YDOe0BKDKdKcUkduZcY06j+RjrsRgK3urTuDtWPp0nt6EWziSpwn/Yzv5H/UH/C/hVfA5AfP14bh0UqxMBkVvz9w5CAF1cPofIUvFqQIda+ImEPTIDfAl8KCavQdF+9exX+VGhMD4OrAMfVU/Ltu49auJM7SRjT152VImDuTmgA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hTf0upw0HQjpnQ6UQarFtMoCKi8zE4LKkr6HqiuKwo8=;
- b=kz9OOXXdjVNz9kByk0+HdFulsgjkfEw9b2e/tKSeLe4wwN1H6gAtgcSUB6BVemou3XMzmmr+wYYDNt9h0P1pCms34c4v/u7IYX4ArbR0M0hn6RYaDslivMvXG5CqAa1Foc76xUOsVE4ArMllyN6nnnDfE650koV/KBe8zbJdUVU=
-Received: from substrate.office.com (2603:1096:101:183::7) by
- SEZPR03MB8122.apcprd03.prod.outlook.com with HTTP via
- PU1PR06CA0020.APCPRD06.PROD.OUTLOOK.COM; Fri, 5 Apr 2024 09:19:51 +0000
-From: Deren Wu =?utf-8?b?KOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>
-Date: Fri, 05 Apr 2024 09:19:51 +0000
-Subject: Recall: Re: [SPAM]Re: [PATCH] [PATCH] Bluetooth: btusb: Add support
- Mediatek MT7920
-Message-Id: <A28MT1PXPMU4.9N1TSV0GJ9WQ2@si2pr03mb5515>
-To: <regressions@lists.linux.dev>, <mike@fireburn.co.uk>,
-	<Peter.Tsao@mediatek.com>
-CC: <Aaron.Hou@mediatek.com>, <Chris.Lu@mediatek.com>,
-	<johan.hedberg@gmail.com>, <linux-bluetooth@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<luiz.dentz@gmail.com>, <marcel@holtmann.org>, <Sean.Wang@mediatek.com>,
-	<steve.lee@mediatek.com>, <regressions@lists.linux.dev>
+	id 1rsft6-00000006BtT-3XlQ;
+	Fri, 05 Apr 2024 09:29:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=rere.qmqm.pl; s=1;
+	t=1712309337; bh=gui0f6MViE5zSAEEOcDKHdPoDszSctiaYWprNP7GSNc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZcrcoLqsz/zzlMruWf44PYk75DueBejOUyr1Eh31EyaZcoY7ODel3t0vFK51sQutC
+	 YY7dBqw6x5FiEghmAZFtz/zTJMGq5GtkEocuVfbQcN9BDPuRIei5HZ4DdjLpHxZ7+6
+	 E7lgHaOaQ5/+P2XOh5i4UPTyYivuDu5pF+wIovDfOhmC0jyS7Po0jdQpgN6Tw+kWcU
+	 BR21bYeWeQT2EX7dHW/mtmIf4RbdkqX5exTxh2367mA4o2zBmZSc7BFV4XrNkiEptZ
+	 Q5SBD2Ru9xBFkYUfXpcQGRwkKRKwaEBGta6Gar0WuqKpV+3lBKaNoDOSXQIouXFRPP
+	 Bq/roRR1X1cQQ==
+Received: from remote.user (localhost [127.0.0.1])
+	by rere.qmqm.pl (Postfix) with ESMTPSA id 4V9tTX48kvz8B;
+	Fri,  5 Apr 2024 11:28:48 +0200 (CEST)
+X-Virus-Status: Clean
+X-Virus-Scanned: clamav-milter 1.0.3 at mail
+Date: Fri, 5 Apr 2024 11:28:47 +0200
+From: =?iso-8859-2?Q?Micha=B3_Miros=B3aw?= <mirq-linux@rere.qmqm.pl>
+To: Allen Pais <apais@linux.microsoft.com>
+Cc: linux-kernel@vger.kernel.org, tj@kernel.org, keescook@chromium.org,
+	vkoul@kernel.org, marcan@marcan.st, sven@svenpeter.dev,
+	florian.fainelli@broadcom.com, rjui@broadcom.com,
+	sbranden@broadcom.com, paul@crapouillou.net,
+	Eugeniy.Paltsev@synopsys.com, manivannan.sadhasivam@linaro.org,
+	vireshk@kernel.org, Frank.Li@nxp.com, leoyang.li@nxp.com,
+	zw@zh-kernel.org, wangzhou1@hisilicon.com, haijie1@huawei.com,
+	shawnguo@kernel.org, s.hauer@pengutronix.de, sean.wang@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	afaerber@suse.de, logang@deltatee.com, daniel@zonque.org,
+	haojian.zhuang@gmail.com, robert.jarzmik@free.fr,
+	andersson@kernel.org, konrad.dybcio@linaro.org, orsonzhai@gmail.com,
+	baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com,
+	patrice.chotard@foss.st.com, linus.walleij@linaro.org,
+	wens@csie.org, jernej.skrabec@gmail.com, peter.ujfalusi@gmail.com,
+	kys@microsoft.com, haiyangz@microsoft.com, wei.liu@kernel.org,
+	decui@microsoft.com, jassisinghbrar@gmail.com, mchehab@kernel.org,
+	maintainers@bluecherrydvr.com, aubin.constans@microchip.com,
+	ulf.hansson@linaro.org, manuel.lauss@gmail.com,
+	jh80.chung@samsung.com, oakad@yahoo.com,
+	hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
+	brucechang@via.com.tw, HaraldWelte@viatech.com, pierre@ossman.eu,
+	duncan.sands@free.fr, stern@rowland.harvard.edu, oneukum@suse.com,
+	openipmi-developer@lists.sourceforge.net, dmaengine@vger.kernel.org,
+	asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+	imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
+	linux-mediatek@lists.infradead.org,
+	linux-actions@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-riscv@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, linux-hyperv@vger.kernel.org,
+	linux-rdma@vger.kernel.org, linux-media@vger.kernel.org,
+	linux-mmc@vger.kernel.org, linux-omap@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org, linux-s390@vger.kernel.org,
+	netdev@vger.kernel.org, linux-usb@vger.kernel.org
+Subject: Re: [PATCH 9/9] mmc: Convert from tasklet to BH workqueue
+Message-ID: <Zg_ET2XmZM_Id_Ad@qmqm.qmqm.pl>
+References: <20240327160314.9982-1-apais@linux.microsoft.com>
+ <20240327160314.9982-10-apais@linux.microsoft.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-X-MS-PublicTrafficType: Email
-client-request-id: 8cb3ab86-11f1-4966-5fac-605dad4d4705
-request-id: 8cb3ab86-11f1-4966-5fac-605dad4d4705
-X-MS-TrafficTypeDiagnostic: SEZPR03MB8122:EE_MessageRecallEmail
-X-MS-Exchange-RecallReportGenerated: true
-X-MS-Exchange-RecallReportCfmGenerated: true
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: FEt121WSqyxpOEpGptroDvbYRl0/56Z5TbFaHu3RzYHfWNnbJUXK7oYwZ4F0y9EhrZgd9hUe4N+ZNM8PuqBg90rhM9CNoqixcrECAG+7Wh/IJGOLPN64rMg3F7OuwEtVDSLXNfOx5fcsGM3tdzo4HBKq3k4Of++jhX/+vSnO5y2Be2i5YaqokSViuAhewNIWEWATHCrWH/DYoyadf+mcD9C3PpeyeQHNjeNbx6ECsO+J6WVtUPy6Wd/pfed5mp5IMSE6OxJRXf67+kXO0+zc3az1EklXf6K82BECYorifMiC7/DffnWerh5YKM2Y7dgW3vwkdIqtkj+Cvqdqyc4gXprsAGXIVU9hdPTjhaB1Z3TfqZpo4WURtKewYUbntJgk+vo85NsJplUdGkJ7Hqx2ivKNKd3roFprF8K1vSLHLOr3cEZ2NpApEEqGtn61z0uhb+IFf64YGTg04+YdgC7pkP4af9138t/urMtN6GEHT1OlHkEutqEa4Bt7MSX8MgsXwvfExgyZzqltrDhz0YlIzgKu8ExeSwVKdldduPSFSd5XTL7sng6Fj65gfHf5qL5ETEdn2/bIfctK2lXWuYc58mc26nYpK+TvCLdTs/qLGIW4Noo1eOwsPyMBamDJgl2iSlERmYCUuO53Jc57CVS3yKRf5m9jDqL+ufDl0HsuXPHyH9RbcuwSf3syY1jUyIxT/7mzLkoTU534vO/YVP3fNQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:;PTR:;CAT:NONE;SFS:(13230031)(1800799015)(376005)(217643003);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 085e89RHFP+FdVSOzhCzCtF8QsYJSaEnXsLR1Jw0M9qwXOroNpLUCvUvdyln/3z11HCqOVGqDnGsVZDWFXPQyWFRYbLd9foY6YzgWwDJOTHP4yFHuze1G2t9qBPjk2t3TVEswJwJoBgknFtSTLT/znLd+YxqnYcFn9wt7btMVIUV1wPkDM/GYEUDjzT9wDEtgzRGhAgYoFMYc0k/WAhHy4sdmL0q3FqVLi4H2Z3B1z50Yerr6ofmJbZQQ0JAzld6UpqovpNEzpmh8jsGgkbXBR0UO6GT1mwuLnCH4lXoTX9oahedttJM2j36KhLBFCBaKXjvDh6kp4sJlBsAP6+WzYzoVfzIDbwwJnh8Gz3VCq9KkgEsf7lHTAVuDDAyrxrNSIFJQX6aLHaZrGavY2b97Yf+boIoeFA4ayiEdMKuo/o=
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: HttpSubmission-SEZPR03MB8122
-X-MS-Exchange-CrossTenant-Id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Apr 2024 09:19:51.2982 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: addf9e4c-0fac-4335-990f-08dc55518c45
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB8122
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--0.375800-8.000000
-X-TMASE-MatchedRID: uX0qRX/JYJSALnLwcLJ8c0+4wmL9kCTxjzwigoyOACTd1Nq3SV2z16PF
-	jJEFr+olmP38c3DNiySKpAefy6FsjO2eKH3LGf9LanE1Ybb9x4X3FLeZXNZS4CiM3WUt6LtFJ4R
-	unYQZH/UPM0KP7wGGBtF9xxnqBdR/Z+5pUUnZoXcJW8x7nv6dHg4SVUX42+9WP5uMSYbkz+bZZr
-	s9ioNnot+cnxLKcBb8lExlQIQeRG0=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--0.375800-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 87B3475F4BF228255B343FD9A117781AD4643BFAF4B31CB4E05559A659DD8B602000:8
+Content-Type: text/plain; charset=iso-8859-2
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240327160314.9982-10-apais@linux.microsoft.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240405_022006_026259_4F1704DD 
-X-CRM114-Status: UNSURE (   1.09  )
+X-CRM114-CacheID: sfid-20240405_022933_054313_96CB138E 
+X-CRM114-Status: UNSURE (   8.28  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -133,5 +105,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Deren.Wu@mediatek.com would like to recall the message, "Re: [SPAM]Re: [PATCH] [PATCH] Bluetooth: btusb: Add support Mediatek MT7920".
+On Wed, Mar 27, 2024 at 04:03:14PM +0000, Allen Pais wrote:
+> The only generic interface to execute asynchronously in the BH context is
+> tasklet; however, it's marked deprecated and has some design flaws. To
+> replace tasklets, BH workqueue support was recently added. A BH workqueue
+> behaves similarly to regular workqueues except that the queued work items
+> are executed in the BH context.
+> 
+> This patch converts drivers/infiniband/* from tasklet to BH workqueue.
+> 
+> Based on the work done by Tejun Heo <tj@kernel.org>
+> Branch: https://git.kernel.org/pub/scm/linux/kernel/git/tj/wq.git for-6.10
+> 
+> Signed-off-by: Allen Pais <allen.lkml@gmail.com>
+> ---
+[...]
+>  drivers/mmc/host/cb710-mmc.c                  | 15 ++--
+>  drivers/mmc/host/cb710-mmc.h                  |  3 +-
+[...]
+
+Acked-by: Micha³ Miros³aw <mirq-linux@rere.qmqm.pl>
 
