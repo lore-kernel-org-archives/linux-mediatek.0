@@ -4,105 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34DA8CD11C2
-	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Apr 2024 12:39:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70E7DCD1296
+	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Apr 2024 13:11:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1YinWXQnk0eT7Z1wHOzuPSCSYvlwXIPlk1+iKh10Vls=; b=D8TM+y7dqg3hA5xwOubtqWJ+T3
-	i0iI5QLahZnqdcDl5EHEC+TlZyyFCSvoIAjppvT2Qwc+AHn+THUYvB/4NIrYrIAAIbb5yeG3ZtOcB
-	2DZTBl6cmmEsasAxzwVkASzpFKaH1vIDu+FW9oADZysHDf2a8tJc9NB7QxyMgwhD47zm6A+3kSSP/
-	LwV9Gg8xFxkiCZK/yR3wEQuKmHlgYPdKXVQNeh7JQxU/nydmEuDTJhuPSKR1NtjLp/QxweHWjJMxn
-	q9fQE4LCxcVRc9qZBHhGePxHoi3XBJBVrpPSROcTJEjKRVhpd2Q0uCM2fYeOYcT4HIbSI4c9iswMn
-	sh5PqIOQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UQG7FBh0IEemy+PMmdyBEI0HGdQIp4OgrDmbKfMNlgQ=; b=H+qckHCJ/kYCBNkCxgO90ZgamC
+	Sy9hxyhpQKNxFuu/bj61p8unqF96xhXfdYIw+XUxNgRSrdgaski31WHDjClXi6iVhR8i2yBieLsOr
+	tzo4ErGbvuu21uArIb+TEAAtur3kr1LFNlW0bLSqecudWkJwQDYMzbfAVDGMYN5RYz2H7k+AUZLLX
+	9v+ALdSYJWKJZ/GfNxLj+N+QXryh7+XYWp44SLOpLgZ+IbvFhZ7I/MOrh6JnEKTXJuVLfncaPeE6W
+	x7mWtSpkVbPU6CUaXPHrgclf7TGOYCr9hiwsQzIQ6Git9go4ZxgOrrmo0MQMwuXkUyOfKVrHGpM3n
+	T7A98RwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtRnn-0000000CXwS-1G5g;
-	Sun, 07 Apr 2024 12:39:15 +0000
-Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
+	id 1rtSIm-0000000CbkO-3HSS;
+	Sun, 07 Apr 2024 13:11:17 +0000
+Received: from szxga05-in.huawei.com ([45.249.212.191])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtRni-0000000CXvY-07QI;
-	Sun, 07 Apr 2024 12:39:11 +0000
-Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-221e6bf537dso2306273fac.1;
-        Sun, 07 Apr 2024 05:39:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1712493547; x=1713098347; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=1YinWXQnk0eT7Z1wHOzuPSCSYvlwXIPlk1+iKh10Vls=;
-        b=TBFOdNM0L/H3WXBlNY0e3NxTfDO/1TgC+VeCdMiTeHzseFqU3STOgQbkQwyRl7VRtV
-         RIVHJglb7EC6MghQhotsaHzks6VM3/bdD5PrlAYuBEY0Jvu8aRmM/siU/H9DXH2ZiCcn
-         EgfIlU8mdZjGp2tDh1k8HblCY0WS/M/buMLq1xs7CRYjZXmM4dhDismMTQCSO5Tcn4es
-         g+VtJKfLTPG1A6/+lc4SYBCLyDFyjmzq3iITds5nNAFSnIE2A4SKzAC2/8dil4bfd7BG
-         Vu9DMUznsrFQAislRH71EYGrgIop3jyM2gCWD727X5BkHoGZSv5H53aFa9iA7xuGckfW
-         D3Fw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712493547; x=1713098347;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=1YinWXQnk0eT7Z1wHOzuPSCSYvlwXIPlk1+iKh10Vls=;
-        b=ehkeSPasFDXV1D32T2dLu2VLs7clx01+nrQ6/tcWGGtVKI4CAmmaRl02srzlL06D/T
-         QWF3aaChUP6EBLPFCnDTtVjS7frO7fodkjnOSIjE3EzQB0rqGq9io2CUCPx5eiE9YgZD
-         FbQ7vgntsqdU0e98//cCEGLqz7gV84ueNToFOltfxjmhO0Ah9Ibpc69GAlwG76yls8e+
-         /RwW5xMnnGnIesUQ8eNmlNTtWDrnjF9ghtLIheUbXgsbTu9XiQS/OIJu3gan0+PvG4As
-         6vq+ZZtUt9nbvQ1uzTDt/qWI5z1UKnKxJeEwbGT5HulcFi9aAEaVBzCR/jLtQl3Kz82a
-         6wGg==
-X-Forwarded-Encrypted: i=1; AJvYcCWYJKgxI8RTz4RHhF4zcrtNIh9TwU57DvTblG2xSS5w1eVzIWo0dmULmQbYbkKPrL4W9rMLUcQ2YBhHFrsPKcY6HpvBCu7RkqlNK0VDZ2uJLVbQJZnDJ/sRwMRjexxgMwgrkXpq6I5YkvczmSd/VaVedPP66jytiItgS5rqUtJrZLTfngMPDgDDkpNV0UPeUF7nJJyRJ3ftF+D01Sb4yvX+R/HfLQUH7/LJD8/0ybgRrmuU9v6WZr3z6wup3O9Yv6ryog==
-X-Gm-Message-State: AOJu0YynAG30UQnhqDN++8iX2wuB53tHv199XztMF4OG+ZpuGCd6fWPj
-	Bd57WXheg3S0rQNz7/pqvu9HlcfE/ybEPYLRe+yLL59Mse/lL2vU1Pr7niohB6KFN6wXxKYfJCE
-	feMzX/W7MIVKVGCTwyfaj8NiZmFE=
-X-Google-Smtp-Source: AGHT+IFvZ1UMHhMwBSNso145G9wXeopvnhz67bSYiVC6v0RYNhkx43Ef5CmXFgL9Iup+iSFrwPTE4vACd2zsBUdljvU=
-X-Received: by 2002:a05:6870:fb8f:b0:22e:e1e5:b8e with SMTP id
- kv15-20020a056870fb8f00b0022ee1e50b8emr6777731oab.41.1712493547737; Sun, 07
- Apr 2024 05:39:07 -0700 (PDT)
+	id 1rtSIg-0000000Cbdm-1mL8;
+	Sun, 07 Apr 2024 13:11:13 +0000
+Received: from mail.maildlp.com (unknown [172.19.163.17])
+	by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4VCCJ30Xjdz1GCqF;
+	Sun,  7 Apr 2024 21:10:11 +0800 (CST)
+Received: from dggpemm500005.china.huawei.com (unknown [7.185.36.74])
+	by mail.maildlp.com (Postfix) with ESMTPS id 05B0E1A0172;
+	Sun,  7 Apr 2024 21:10:54 +0800 (CST)
+Received: from localhost.localdomain (10.69.192.56) by
+ dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Sun, 7 Apr 2024 21:10:53 +0800
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
+	<linyunsheng@huawei.com>, Alexander Duyck <alexander.duyck@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Alexei Starovoitov
+	<ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard
+ Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<bpf@vger.kernel.org>
+Subject: [PATCH net-next v1 00/12] First try to replace page_frag with page_frag_cache
+Date: Sun, 7 Apr 2024 21:08:37 +0800
+Message-ID: <20240407130850.19625-1-linyunsheng@huawei.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
-References: <20240407102000.37213-1-krzysztof.kozlowski@linaro.org> <20240407102000.37213-3-krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20240407102000.37213-3-krzysztof.kozlowski@linaro.org>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Sun, 7 Apr 2024 14:38:57 +0200
-Message-ID: <CAMhs-H_gx0LB89QpLf-fJrumONRSnwB5_L7YkkWKC=7130EFLA@mail.gmail.com>
-Subject: Re: [PATCH 3/3] dt-bindings: PCI: host-bridges: switch from
- deprecated pci-bus.yaml
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Jim Quinlan <jim2101024@gmail.com>, 
-	Nicolas Saenz Julienne <nsaenz@kernel.org>, Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Will Deacon <will@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
-	Srikanth Thokala <srikanth.thokala@intel.com>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Jianjun Wang <jianjun.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Daire McNamara <daire.mcnamara@microchip.com>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konrad.dybcio@linaro.org>, Marek Vasut <marek.vasut+renesas@gmail.com>, 
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin <shawn.lin@rock-chips.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, 
-	Gustavo Pimentel <gustavo.pimentel@synopsys.com>, 
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
-	Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>, Michal Simek <michal.simek@amd.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Mark Kettenis <kettenis@openbsd.org>, 
-	Tom Joseph <tjoseph@cadence.com>, Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>, 
-	Jiaxun Yang <jiaxun.yang@flygoat.com>, Kishon Vijay Abraham I <kishon@kernel.org>, 
-	Thippeswamy Havalige <thippeswamy.havalige@amd.com>, linux-pci@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.69.192.56]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ dggpemm500005.china.huawei.com (7.185.36.74)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240407_053910_106756_D588E4CF 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20240407_061111_032331_D976A5E9 
+X-CRM114-Status: GOOD (  14.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,27 +73,169 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Apr 7, 2024 at 12:20=E2=80=AFPM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
->
-> dtschema package with core schemas deprecated pci-bus.yaml schema in
-> favor of pci-host-bridge.yaml.  Update all bindings to use the latter
-> one.
->
-> The difference between pci-bus.yaml and pci-host-bridge.yaml is only in
-> lack of "reg" property defined by the latter, which should not have any
-> effect here, because all these bindings define the "reg".
->
-> The change is therefore quite trivial, except mediatek,mt7621-pcie.yaml
-> binding which have children nodes being also host bridges, apparently.
->
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
+After [1], Only there are two implementations for page frag:
 
->  .../devicetree/bindings/pci/mediatek,mt7621-pcie.yaml         | 4 ++--
+1. mm/page_alloc.c: net stack seems to be using it in the
+   rx part with 'struct page_frag_cache' and the main API
+   being page_frag_alloc_align().
+2. net/core/sock.c: net stack seems to be using it in the
+   tx part with 'struct page_frag' and the main API being
+   skb_page_frag_refill().
 
-Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+This patchset tries to unfiy the page frag implementation
+by replacing page_frag with page_frag_cache for sk_page_frag()
+first. net_high_order_alloc_disable_key for the implementation
+in net/core/sock.c doesn't seems matter that much now have
+have pcp support for high-order pages in commit 44042b449872
+("mm/page_alloc: allow high-order pages to be stored on the
+per-cpu lists").
 
-Thanks,
-    Sergio Paracuellos
+As the related change is mostly related to networking, so
+targeting the net-next. And will try to replace the rest
+of page_frag in the follow patchset.
+
+After this patchset, we are not only able to unify the page
+frag implementation a little, but seems able to have about
+0.5+% performance boost testing by using the vhost_net_test
+introduced in [1] and page_frag_test.ko introduced in this
+patch.
+
+Before this patchset:
+Performance counter stats for './vhost_net_test' (10 runs):
+
+         603027.29 msec task-clock                       #    1.756 CPUs utilized               ( +-  0.04% )
+           2097713      context-switches                 #    3.479 K/sec                       ( +-  0.00% )
+               212      cpu-migrations                   #    0.352 /sec                        ( +-  4.72% )
+                40      page-faults                      #    0.066 /sec                        ( +-  1.18% )
+      467215266413      cycles                           #    0.775 GHz                         ( +-  0.12% )  (66.02%)
+      131736729037      stalled-cycles-frontend          #   28.20% frontend cycles idle        ( +-  2.38% )  (64.34%)
+       77728393294      stalled-cycles-backend           #   16.64% backend cycles idle         ( +-  3.98% )  (65.42%)
+      345874254764      instructions                     #    0.74  insn per cycle
+                                                  #    0.38  stalled cycles per insn     ( +-  0.75% )  (70.28%)
+      105166217892      branches                         #  174.397 M/sec                       ( +-  0.65% )  (68.56%)
+        9649321070      branch-misses                    #    9.18% of all branches             ( +-  0.69% )  (65.38%)
+
+           343.376 +- 0.147 seconds time elapsed  ( +-  0.04% )
+
+
+ Performance counter stats for 'insmod ./page_frag_test.ko nr_test=99999999' (30 runs):
+
+             39.12 msec task-clock                       #    0.001 CPUs utilized               ( +-  4.51% )
+                 5      context-switches                 #  127.805 /sec                        ( +-  3.76% )
+                 1      cpu-migrations                   #   25.561 /sec                        ( +- 15.52% )
+               197      page-faults                      #    5.035 K/sec                       ( +-  0.10% )
+          10689913      cycles                           #    0.273 GHz                         ( +-  9.46% )  (72.72%)
+           2821237      stalled-cycles-frontend          #   26.39% frontend cycles idle        ( +- 12.04% )  (76.23%)
+           5035549      stalled-cycles-backend           #   47.11% backend cycles idle         ( +-  9.69% )  (49.40%)
+           5439395      instructions                     #    0.51  insn per cycle
+                                                  #    0.93  stalled cycles per insn     ( +- 11.58% )  (51.45%)
+           1274419      branches                         #   32.575 M/sec                       ( +- 12.69% )  (77.88%)
+             49562      branch-misses                    #    3.89% of all branches             ( +-  9.91% )  (72.32%)
+
+            30.309 +- 0.305 seconds time elapsed  ( +-  1.01% )
+
+
+After this patchset:
+Performance counter stats for './vhost_net_test' (10 runs):
+
+         598081.02 msec task-clock                       #    1.752 CPUs utilized               ( +-  0.11% )
+           2097738      context-switches                 #    3.507 K/sec                       ( +-  0.00% )
+               220      cpu-migrations                   #    0.368 /sec                        ( +-  6.58% )
+                40      page-faults                      #    0.067 /sec                        ( +-  0.92% )
+      469788205101      cycles                           #    0.785 GHz                         ( +-  0.27% )  (64.86%)
+      137108509582      stalled-cycles-frontend          #   29.19% frontend cycles idle        ( +-  0.96% )  (63.62%)
+       75499065401      stalled-cycles-backend           #   16.07% backend cycles idle         ( +-  1.04% )  (65.86%)
+      345469451681      instructions                     #    0.74  insn per cycle
+                                                  #    0.40  stalled cycles per insn     ( +-  0.37% )  (70.16%)
+      102782224964      branches                         #  171.853 M/sec                       ( +-  0.62% )  (69.28%)
+        9295357532      branch-misses                    #    9.04% of all branches             ( +-  1.08% )  (66.21%)
+
+           341.466 +- 0.305 seconds time elapsed  ( +-  0.09% )
+
+
+ Performance counter stats for 'insmod ./page_frag_test.ko nr_test=99999999' (30 runs):
+
+             40.09 msec task-clock                       #    0.001 CPUs utilized               ( +-  4.60% )
+                 5      context-switches                 #  124.722 /sec                        ( +-  3.45% )
+                 1      cpu-migrations                   #   24.944 /sec                        ( +- 12.62% )
+               197      page-faults                      #    4.914 K/sec                       ( +-  0.11% )
+          10221721      cycles                           #    0.255 GHz                         ( +-  9.05% )  (27.73%)
+           2459009      stalled-cycles-frontend          #   24.06% frontend cycles idle        ( +- 10.80% )  (29.05%)
+           5148423      stalled-cycles-backend           #   50.37% backend cycles idle         ( +-  7.30% )  (82.47%)
+           5889929      instructions                     #    0.58  insn per cycle
+                                                  #    0.87  stalled cycles per insn     ( +- 11.85% )  (87.75%)
+           1276667      branches                         #   31.846 M/sec                       ( +- 11.48% )  (89.80%)
+             50631      branch-misses                    #    3.97% of all branches             ( +-  8.72% )  (83.20%)
+
+            29.341 +- 0.300 seconds time elapsed  ( +-  1.02% )
+
+CC: Alexander Duyck <alexander.duyck@gmail.com>
+
+1. https://lore.kernel.org/all/20240228093013.8263-1-linyunsheng@huawei.com/
+
+Yunsheng Lin (12):
+  mm: Move the page fragment allocator from page_alloc into its own file
+  mm: page_frag: use initial zero offset for page_frag_alloc_align()
+  mm: page_frag: change page_frag_alloc_* API to accept align param
+  mm: page_frag: add '_va' suffix to page_frag API
+  mm: page_frag: add two inline helper for page_frag API
+  mm: page_frag: reuse MSB of 'size' field for pfmemalloc
+  mm: page_frag: reuse existing bit field of 'va' for pagecnt_bias
+  net: introduce the skb_copy_to_va_nocache() helper
+  mm: page_frag: introduce prepare/commit API for page_frag
+  net: replace page_frag with page_frag_cache
+  mm: page_frag: add a test module for page_frag
+  mm: page_frag: update documentation and maintainer for page_frag
+
+ Documentation/mm/page_frags.rst               | 115 ++++--
+ MAINTAINERS                                   |  10 +
+ .../chelsio/inline_crypto/chtls/chtls.h       |   3 -
+ .../chelsio/inline_crypto/chtls/chtls_io.c    | 101 ++---
+ .../chelsio/inline_crypto/chtls/chtls_main.c  |   3 -
+ drivers/net/ethernet/google/gve/gve_rx.c      |   4 +-
+ drivers/net/ethernet/intel/ice/ice_txrx.c     |   2 +-
+ drivers/net/ethernet/intel/ice/ice_txrx.h     |   2 +-
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.c |   2 +-
+ .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |   4 +-
+ .../marvell/octeontx2/nic/otx2_common.c       |   2 +-
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c    |   4 +-
+ drivers/net/tun.c                             |  34 +-
+ drivers/nvme/host/tcp.c                       |   8 +-
+ drivers/nvme/target/tcp.c                     |  22 +-
+ drivers/vhost/net.c                           |   6 +-
+ include/linux/gfp.h                           |  22 --
+ include/linux/mm_types.h                      |  18 -
+ include/linux/page_frag_cache.h               | 339 ++++++++++++++++
+ include/linux/sched.h                         |   4 +-
+ include/linux/skbuff.h                        |  15 +-
+ include/net/sock.h                            |  29 +-
+ kernel/bpf/cpumap.c                           |   2 +-
+ kernel/exit.c                                 |   3 +-
+ kernel/fork.c                                 |   2 +-
+ mm/Kconfig.debug                              |   8 +
+ mm/Makefile                                   |   2 +
+ mm/page_alloc.c                               | 136 -------
+ mm/page_frag_cache.c                          | 185 +++++++++
+ mm/page_frag_test.c                           | 366 ++++++++++++++++++
+ net/core/skbuff.c                             |  57 +--
+ net/core/skmsg.c                              |  22 +-
+ net/core/sock.c                               |  46 ++-
+ net/core/xdp.c                                |   2 +-
+ net/ipv4/ip_output.c                          |  35 +-
+ net/ipv4/tcp.c                                |  35 +-
+ net/ipv4/tcp_output.c                         |  28 +-
+ net/ipv6/ip6_output.c                         |  35 +-
+ net/kcm/kcmsock.c                             |  30 +-
+ net/mptcp/protocol.c                          |  74 ++--
+ net/rxrpc/txbuf.c                             |  16 +-
+ net/sunrpc/svcsock.c                          |   4 +-
+ net/tls/tls_device.c                          | 139 ++++---
+ 43 files changed, 1404 insertions(+), 572 deletions(-)
+ create mode 100644 include/linux/page_frag_cache.h
+ create mode 100644 mm/page_frag_cache.c
+ create mode 100644 mm/page_frag_test.c
+
+-- 
+2.33.0
+
 
