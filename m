@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89919CD11C2
-	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Apr 2024 12:36:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34DA8CD11C2
+	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Apr 2024 12:39:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HTpah3z9nxK4+QUIUhM/zsRbPjioxiMre0R2YErPMBI=; b=bbRC2DyFY4ZLzYa/Ikh8RqW2fY
-	RyVo3cL4sXe6JtUGd//tK991B+Ck2TpK+3Gac3DBQbn75slVbgfzzPZLbDVTmFbWqBDbn+HmtfWoy
-	7LqXtWqGjYB5tEr3eyzvutpspg1NsS3freBUoc0JRXPcKguKprFDV7WYZXRs+5pLcrK81mCIWF9fZ
-	kD9RdyeXc5V/d4/AfqC/wWtctDHTZyk5itnV9y0WDp/rziSLXz1pVkooiSQ6Hx2l1qN1TfB8SfWPV
-	E1cwq0iCrKZT0ZNmGTdQQ+TPTqY1jPCWIqELxPCobZO+bHh3KVtG8wsWGEoMyu3pxlkWbHBjFJGdj
-	FBwlZsLQ==;
+	bh=1YinWXQnk0eT7Z1wHOzuPSCSYvlwXIPlk1+iKh10Vls=; b=D8TM+y7dqg3hA5xwOubtqWJ+T3
+	i0iI5QLahZnqdcDl5EHEC+TlZyyFCSvoIAjppvT2Qwc+AHn+THUYvB/4NIrYrIAAIbb5yeG3ZtOcB
+	2DZTBl6cmmEsasAxzwVkASzpFKaH1vIDu+FW9oADZysHDf2a8tJc9NB7QxyMgwhD47zm6A+3kSSP/
+	LwV9Gg8xFxkiCZK/yR3wEQuKmHlgYPdKXVQNeh7JQxU/nydmEuDTJhuPSKR1NtjLp/QxweHWjJMxn
+	q9fQE4LCxcVRc9qZBHhGePxHoi3XBJBVrpPSROcTJEjKRVhpd2Q0uCM2fYeOYcT4HIbSI4c9iswMn
+	sh5PqIOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtRl9-0000000CXVN-3F6w;
-	Sun, 07 Apr 2024 12:36:32 +0000
-Received: from mail-oa1-x2f.google.com ([2001:4860:4864:20::2f])
+	id 1rtRnn-0000000CXwS-1G5g;
+	Sun, 07 Apr 2024 12:39:15 +0000
+Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtRl0-0000000CXTR-1c4u;
-	Sun, 07 Apr 2024 12:36:23 +0000
-Received: by mail-oa1-x2f.google.com with SMTP id 586e51a60fabf-222c0572eedso2290075fac.3;
-        Sun, 07 Apr 2024 05:36:21 -0700 (PDT)
+	id 1rtRni-0000000CXvY-07QI;
+	Sun, 07 Apr 2024 12:39:11 +0000
+Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-221e6bf537dso2306273fac.1;
+        Sun, 07 Apr 2024 05:39:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1712493380; x=1713098180; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1712493547; x=1713098347; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=HTpah3z9nxK4+QUIUhM/zsRbPjioxiMre0R2YErPMBI=;
-        b=aSJ40g2sAO3P+yQphen2ZXP79revuZahKEzB9GigZepMz5ND+jynO3hSLUQPGomySe
-         5c1nJRAZoaRsaKSropi3+BMMtZJMlauoINIO5iK9HZiez07d4EKxxl4fBI3UjUFzWvt7
-         EUQ/xMYKZH6wYxsV2RG7K3k7zKsvCNGPqW4EIVan/L1gKecUYZgT232w+MvrG6cQ2IUm
-         t/DOmKgjE5weVXYZACuDg5mHNbFPuF257ImtingD0yzPA3QAppV9wR8HJpt7hG3aDX7e
-         3cOIpnyKfAynp8MWJgxVQ9Iw+XFNhxSrXeUAYU838MxbRja91odEYg3SPQVLkh7ET80z
-         I9vQ==
+        bh=1YinWXQnk0eT7Z1wHOzuPSCSYvlwXIPlk1+iKh10Vls=;
+        b=TBFOdNM0L/H3WXBlNY0e3NxTfDO/1TgC+VeCdMiTeHzseFqU3STOgQbkQwyRl7VRtV
+         RIVHJglb7EC6MghQhotsaHzks6VM3/bdD5PrlAYuBEY0Jvu8aRmM/siU/H9DXH2ZiCcn
+         EgfIlU8mdZjGp2tDh1k8HblCY0WS/M/buMLq1xs7CRYjZXmM4dhDismMTQCSO5Tcn4es
+         g+VtJKfLTPG1A6/+lc4SYBCLyDFyjmzq3iITds5nNAFSnIE2A4SKzAC2/8dil4bfd7BG
+         Vu9DMUznsrFQAislRH71EYGrgIop3jyM2gCWD727X5BkHoGZSv5H53aFa9iA7xuGckfW
+         D3Fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712493380; x=1713098180;
+        d=1e100.net; s=20230601; t=1712493547; x=1713098347;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=HTpah3z9nxK4+QUIUhM/zsRbPjioxiMre0R2YErPMBI=;
-        b=w+Ln4iZMdi5C2nkbgoZ1gewnspr/ChVb+VczTYKUzg2+a/c0ePZgZn79gmzQkalS/I
-         OXXcLX+1g21NTzve+YR8KGnBIy4iC5Q1E5Z6dyKcSiYqTLwT6jHLPzo/ohuFzFyWTyO8
-         ErZq6QullMTpUYVHzeL38ECH22DCqvW3CNcjT28d2EPaTMZeKQktISNwP42sAkwxk2fb
-         1yvEEDdg5Mp2PaOKIKHEH+HfKbDkVxWr5Hy5Vc18rHP3VQ5V3C8+gZoqFjVnPOtdJFI+
-         WeM6wof5lYaleCH4URIOVMWf2M/BsPgKQ9aefzAoY/G6M/H0exSN45iFFFcgc5hLWVXp
-         wlVQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXCXjfsCLXs4oh4znb0t8a45BhGucehYwPVieiTQlw5o9SCNK1vAvrKK/1qt854JX4PV23wRJiq/lJKYe1cHnFEuHm97WiYMQ4LrpNdHJ7ONNOersE7JSh/UiF3Sd7XfUw7HEJJHgtY0sMbCUZcM3K+huOkaqXEDsAVMHa/FJSrichWJGju3ubizOsGJ1l1jIVU3MqpOsl3bmUTwfSMFPe3ducx+EaFvkbvhXkfsBv0wnnAv3qzyVL901SvjKG4MeOjMA==
-X-Gm-Message-State: AOJu0YxYfHD/sB3WsrnC/3U7ER7KIPxw4siGZfFbH898X4v9larceh3F
-	OvZs6m3tXM39JYXYmaH551pS4VdnAJR6v0DAs3MQXJ6d3W0LM0Lo9cpYnH72YfBnSLLx5bp5ytl
-	p4DlIsi7Bw2PUTkURxrhea1QFyCo=
-X-Google-Smtp-Source: AGHT+IHCRJwJiztaVGgYDsbvhsWKurdYA7ka/A/XrCbAAgdQQF3HjScy5xiyJE6CEank6R3QWX9EeoxlvmFNctyZZ+w=
-X-Received: by 2002:a05:6870:d622:b0:229:f9fa:df52 with SMTP id
- a34-20020a056870d62200b00229f9fadf52mr7031792oaq.12.1712493380515; Sun, 07
- Apr 2024 05:36:20 -0700 (PDT)
+        bh=1YinWXQnk0eT7Z1wHOzuPSCSYvlwXIPlk1+iKh10Vls=;
+        b=ehkeSPasFDXV1D32T2dLu2VLs7clx01+nrQ6/tcWGGtVKI4CAmmaRl02srzlL06D/T
+         QWF3aaChUP6EBLPFCnDTtVjS7frO7fodkjnOSIjE3EzQB0rqGq9io2CUCPx5eiE9YgZD
+         FbQ7vgntsqdU0e98//cCEGLqz7gV84ueNToFOltfxjmhO0Ah9Ibpc69GAlwG76yls8e+
+         /RwW5xMnnGnIesUQ8eNmlNTtWDrnjF9ghtLIheUbXgsbTu9XiQS/OIJu3gan0+PvG4As
+         6vq+ZZtUt9nbvQ1uzTDt/qWI5z1UKnKxJeEwbGT5HulcFi9aAEaVBzCR/jLtQl3Kz82a
+         6wGg==
+X-Forwarded-Encrypted: i=1; AJvYcCWYJKgxI8RTz4RHhF4zcrtNIh9TwU57DvTblG2xSS5w1eVzIWo0dmULmQbYbkKPrL4W9rMLUcQ2YBhHFrsPKcY6HpvBCu7RkqlNK0VDZ2uJLVbQJZnDJ/sRwMRjexxgMwgrkXpq6I5YkvczmSd/VaVedPP66jytiItgS5rqUtJrZLTfngMPDgDDkpNV0UPeUF7nJJyRJ3ftF+D01Sb4yvX+R/HfLQUH7/LJD8/0ybgRrmuU9v6WZr3z6wup3O9Yv6ryog==
+X-Gm-Message-State: AOJu0YynAG30UQnhqDN++8iX2wuB53tHv199XztMF4OG+ZpuGCd6fWPj
+	Bd57WXheg3S0rQNz7/pqvu9HlcfE/ybEPYLRe+yLL59Mse/lL2vU1Pr7niohB6KFN6wXxKYfJCE
+	feMzX/W7MIVKVGCTwyfaj8NiZmFE=
+X-Google-Smtp-Source: AGHT+IFvZ1UMHhMwBSNso145G9wXeopvnhz67bSYiVC6v0RYNhkx43Ef5CmXFgL9Iup+iSFrwPTE4vACd2zsBUdljvU=
+X-Received: by 2002:a05:6870:fb8f:b0:22e:e1e5:b8e with SMTP id
+ kv15-20020a056870fb8f00b0022ee1e50b8emr6777731oab.41.1712493547737; Sun, 07
+ Apr 2024 05:39:07 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240407102000.37213-1-krzysztof.kozlowski@linaro.org> <20240407102000.37213-2-krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20240407102000.37213-2-krzysztof.kozlowski@linaro.org>
+References: <20240407102000.37213-1-krzysztof.kozlowski@linaro.org> <20240407102000.37213-3-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20240407102000.37213-3-krzysztof.kozlowski@linaro.org>
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Sun, 7 Apr 2024 14:36:10 +0200
-Message-ID: <CAMhs-H8jjPpoFfUngpCckAq+hix65VN4rNWMJb=Rrtkzq6nEKA@mail.gmail.com>
-Subject: Re: [PATCH 2/3] dt-bindings: PCI: mediatek,mt7621: add missing child
- node reg
+Date: Sun, 7 Apr 2024 14:38:57 +0200
+Message-ID: <CAMhs-H_gx0LB89QpLf-fJrumONRSnwB5_L7YkkWKC=7130EFLA@mail.gmail.com>
+Subject: Re: [PATCH 3/3] dt-bindings: PCI: host-bridges: switch from
+ deprecated pci-bus.yaml
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Cc: Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
 	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
@@ -101,8 +101,8 @@ Cc: Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lpieralisi@kernel.or
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240407_053622_620987_483D660F 
-X-CRM114-Status: GOOD (  13.60  )
+X-CRM114-CacheID: sfid-20240407_053910_106756_D588E4CF 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,19 +120,21 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Sun, Apr 7, 2024 at 12:20=E2=80=AFPM Krzysztof Kozlowski
 <krzysztof.kozlowski@linaro.org> wrote:
 >
-> MT7621 PCI host bridge has children which apparently are also PCI host
-> bridges, at least that's what the binding suggest.  The children have
-> "reg" property, but do not explicitly define it.  Instead they rely on
-> pci-bus.yaml schema, but that one has "reg" without any constraints.
+> dtschema package with core schemas deprecated pci-bus.yaml schema in
+> favor of pci-host-bridge.yaml.  Update all bindings to use the latter
+> one.
 >
-> Define the "reg" for the children, so the binding will be more specific
-> and later will allow dropping reference to deprecated pci-bus.yaml
-> schema.
+> The difference between pci-bus.yaml and pci-host-bridge.yaml is only in
+> lack of "reg" property defined by the latter, which should not have any
+> effect here, because all these bindings define the "reg".
+>
+> The change is therefore quite trivial, except mediatek,mt7621-pcie.yaml
+> binding which have children nodes being also host bridges, apparently.
 >
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > ---
->  .../devicetree/bindings/pci/mediatek,mt7621-pcie.yaml          | 3 +++
->  1 file changed, 3 insertions(+)
+
+>  .../devicetree/bindings/pci/mediatek,mt7621-pcie.yaml         | 4 ++--
 
 Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 
