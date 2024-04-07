@@ -4,84 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0170CD128A
-	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Apr 2024 18:11:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CCC5CD128A
+	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Apr 2024 18:56:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xOYfs0mAz52Tu+p/ygS0eukUQHd+FIpgZ0SpLlMNPVY=; b=HQyiNjftQ66q/5/9mLI6dKK7tt
-	y70XiP2I+pfsUtXDtx7R1WqtouHBVc/tPOsCenggrCF80HM6mWF+D6u4FViT0Xc0+QL3/DREY+9fc
-	GUXkPsYO59N4wdkUWXxwT7/fOBh9NaKwwc27sAtr5jvn6omrHUq5lYLjvyziDLJgovvi/XQHL21G8
-	qS152q6PI41vlVtf/BH1yf9TETu/6YeGVcsn28l47HdEl5VJ5GF58EPpVdJE99F+pqUN9AWEM30Wj
-	rF8zGZ7kXeNk7gKTrQt2IZ6nraZcOcW85Azgzrp7lyGdFlgZ+n4SOGsiSUzTL1U8ShMFrYLTOQVpU
-	MyHs9x9g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VPWMmDLO77UTrV5Jci0z2krEZP1mwBlTU+VWJnRngNk=; b=Cv64S4of3VP82LkL8R53d6GxxO
+	MU1CtCy6unT6hI/Re3kxGRVmcH7HwFnwY1Oy9xRGo+l7f/gJtcsTzCqyzXtSAwJTb+74B6qWesTqZ
+	WWgP39S8LdVsVfJXwu0XJnLPbVbCcnm/RyWIqDrb1pwA6vPAfw1vCPJv6d+sFaT9108TI8VFzM/5c
+	7JOW9WAagiOnwLAjvn3KklqJ0OaHA1Ik1i+CTuMg+/Kyi82tLF8ZM6QWLnxGsI/QAuR3oOky1WAh4
+	EqShQORmcxupyBn34UAX0QtlvVuuGF+Uyx2KMTD9vz92UCSjTQDqpCW7HmQDATp7KDuGp/zp6G9vh
+	T0HCWtnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtWzd-0000000DFDI-2eBC;
-	Sun, 07 Apr 2024 18:11:49 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rtXhG-0000000DJed-08zv;
+	Sun, 07 Apr 2024 18:56:54 +0000
+Received: from out-184.mta1.migadu.com ([2001:41d0:203:375::b8])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtWzW-0000000DFBo-3l4c;
-	Sun, 07 Apr 2024 18:11:45 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4D51560C72;
-	Sun,  7 Apr 2024 18:11:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id E19BAC433C7;
-	Sun,  7 Apr 2024 18:11:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712513500;
-	bh=Q4/B9kHHblgJc7C4bORObz49GboICVc7MJQ++gfPBXc=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=WoifntrH4mzMHxzxfQO4D5B88M5c4mNqwbBQepYmooTPs+pzH48M7k5Uogx4gEAsh
-	 L99uMV0Cnu0MlKHmhE5406s1atzFDjpUTUHBkCbUb0qyW58lZ7SWd7OabS3ChRlxrr
-	 m0oSnER6OKMJBfadW9c+rRE3woHcVKvgNTyMvB9LDbo3XHAYn+ZVR8lju+xz5yDwVK
-	 F+kcs8ZAdMYL0rnHctR/yUXleTMult3bGjy/R5M8l8tfAXLdZ/HIgls5UrNYjhnye8
-	 4QSB1NaVq0FzQaMR4vNjxwIQNbQ8v/lEvJoSVvKenxy3gbAq97OchxmWCvpz0SDAxm
-	 NnQ/6BeiUQGfw==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CC25FCD128A;
-	Sun,  7 Apr 2024 18:11:40 +0000 (UTC)
-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL_via_B4_Relay?= <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Sun, 07 Apr 2024 21:11:11 +0300
-Subject: [PATCH net] net: dsa: mt7530: trap link-local frames regardless of
- ST Port State
+	id 1rtXh6-0000000DJcS-1fZ1
+	for linux-mediatek@lists.infradead.org;
+	Sun, 07 Apr 2024 18:56:48 +0000
+Message-ID: <20158645-6637-4f36-a247-d3a15ff56d63@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1712516198;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=VPWMmDLO77UTrV5Jci0z2krEZP1mwBlTU+VWJnRngNk=;
+	b=Q5liLnbmSKwUcufa6Y/hCudLg415TvisZKo+32dn2P1GN0Cz/UdESwnaEu+89Vnp2zLK4I
+	/qgPFYLf1pT/TpYGYYWBkP/+c/BbYo7gOSvhzDlobjaZUyLlmwjwnadI5XNGD1V4SQqNQ8
+	TNsraRLAtKkEMRR6LzCj9vEfrS5OgLo=
+Date: Sun, 7 Apr 2024 20:56:29 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Subject: Re: [PATCH 3/9] IB: Convert from tasklet to BH workqueue
+To: Allen Pais <apais@linux.microsoft.com>, linux-kernel@vger.kernel.org
+Cc: tj@kernel.org, keescook@chromium.org, vkoul@kernel.org, marcan@marcan.st,
+ sven@svenpeter.dev, florian.fainelli@broadcom.com, rjui@broadcom.com,
+ sbranden@broadcom.com, paul@crapouillou.net, Eugeniy.Paltsev@synopsys.com,
+ manivannan.sadhasivam@linaro.org, vireshk@kernel.org, Frank.Li@nxp.com,
+ leoyang.li@nxp.com, zw@zh-kernel.org, wangzhou1@hisilicon.com,
+ haijie1@huawei.com, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ sean.wang@mediatek.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, afaerber@suse.de,
+ logang@deltatee.com, daniel@zonque.org, haojian.zhuang@gmail.com,
+ robert.jarzmik@free.fr, andersson@kernel.org, konrad.dybcio@linaro.org,
+ orsonzhai@gmail.com, baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com,
+ patrice.chotard@foss.st.com, linus.walleij@linaro.org, wens@csie.org,
+ jernej.skrabec@gmail.com, peter.ujfalusi@gmail.com, kys@microsoft.com,
+ haiyangz@microsoft.com, wei.liu@kernel.org, decui@microsoft.com,
+ jassisinghbrar@gmail.com, mchehab@kernel.org, maintainers@bluecherrydvr.com,
+ aubin.constans@microchip.com, ulf.hansson@linaro.org,
+ manuel.lauss@gmail.com, mirq-linux@rere.qmqm.pl, jh80.chung@samsung.com,
+ oakad@yahoo.com, hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
+ brucechang@via.com.tw, HaraldWelte@viatech.com, pierre@ossman.eu,
+ duncan.sands@free.fr, stern@rowland.harvard.edu, oneukum@suse.com,
+ openipmi-developer@lists.sourceforge.net, dmaengine@vger.kernel.org,
+ asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+ imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
+ linux-mediatek@lists.infradead.org, linux-actions@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-riscv@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ linux-hyperv@vger.kernel.org, linux-rdma@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mmc@vger.kernel.org,
+ linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-s390@vger.kernel.org, netdev@vger.kernel.org, linux-usb@vger.kernel.org
+References: <20240327160314.9982-1-apais@linux.microsoft.com>
+ <20240327160314.9982-4-apais@linux.microsoft.com>
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Zhu Yanjun <yanjun.zhu@linux.dev>
+In-Reply-To: <20240327160314.9982-4-apais@linux.microsoft.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240407-b4-for-net-mt7530-fix-link-local-when-stp-discarding-v1-1-b4b20ac93457@arinc9.com>
-X-B4-Tracking: v=1; b=H4sIAL7hEmYC/x2NQQ7CIBQFr9L8tS+hFFvjVYwLhN/2R4QGiJo0v
- bvE5SxmZqfCWbjQtdsp81uKpNigP3XkVhsXhvjGpJU2yqgeD4M5ZUSueNXpPCjM8kWQ+ERIzgZ
- 8Vo4odYOX4mz2EheMrK3hgS/jZKmlt8zN+m9v1FJ0P44fNwIjJIsAAAA=
-To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
- Florian Fainelli <f.fainelli@gmail.com>, 
- Vladimir Oltean <olteanv@gmail.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>, 
- mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1712513497; l=25358;
- i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
- bh=HkHsmgHn7WJ2yviXCM6gQkQGKw7s2grLJMPqxVTH3kg=;
- b=2pLAnipqyiSzcLc06Gdbtf3K/UJKeDJAR5BGZb6fUCjmwFqfCnTInz1t34jfOUjiqEzV22m9t
- tQ82IvQIlDlAnVsl57W7ys0cRB3Zu7VCozWOKJqrTA0xiYFRoXwnYHA
-X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
- pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
-X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt
- with auth_id=115
-X-Original-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240407_111143_283868_395B9187 
-X-CRM114-Status: GOOD (  25.63  )
+X-CRM114-CacheID: sfid-20240407_115645_023121_60407404 
+X-CRM114-Status: GOOD (  23.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,495 +95,935 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+在 2024/3/27 17:03, Allen Pais 写道:
+> The only generic interface to execute asynchronously in the BH context is
+> tasklet; however, it's marked deprecated and has some design flaws. To
+> replace tasklets, BH workqueue support was recently added. A BH workqueue
+> behaves similarly to regular workqueues except that the queued work items
+> are executed in the BH context.
+> 
+> This patch converts drivers/infiniband/* from tasklet to BH workqueue.
+> 
+> Based on the work done by Tejun Heo <tj@kernel.org>
+> Branch: https://git.kernel.org/pub/scm/linux/kernel/git/tj/wq.git for-6.10
 
-In Clause 5 of IEEE Std 802-2014, two sublayers of the data link layer
-(DLL) of the Open Systems Interconnection basic reference model (OSI/RM)
-are described; the medium access control (MAC) and logical link control
-(LLC) sublayers. The MAC sublayer is the one facing the physical layer.
+I made simple tests. And I can not find the difference on latency and 
+throughput on RoCEv2 devices.
 
-In 8.2 of IEEE Std 802.1Q-2022, the Bridge architecture is described. A
-Bridge component comprises a MAC Relay Entity for interconnecting the Ports
-of the Bridge, at least two Ports, and higher layer entities with at least
-a Spanning Tree Protocol Entity included.
+Anyone also made tests with these patches on IB? Any difference on 
+Latency and throughput?
 
-Each Bridge Port also functions as an end station and shall provide the MAC
-Service to an LLC Entity. Each instance of the MAC Service is provided to a
-distinct LLC Entity that supports protocol identification, multiplexing,
-and demultiplexing, for protocol data unit (PDU) transmission and reception
-by one or more higher layer entities.
+Thanks,
+Zhu Yanjun
 
-It is described in 8.13.9 of IEEE Std 802.1Q-2022 that in a Bridge, the LLC
-Entity associated with each Bridge Port is modeled as being directly
-connected to the attached Local Area Network (LAN).
-
-On the switch with CPU port architecture, CPU port functions as Management
-Port, and the Management Port functionality is provided by software which
-functions as an end station. Software is connected to an IEEE 802 LAN that
-is wholly contained within the system that incorporates the Bridge.
-Software provides access to the LLC Entity associated with each Bridge Port
-by the value of the source port field on the special tag on the frame
-received by software.
-
-We call frames that carry control information to determine the active
-topology and current extent of each Virtual Local Area Network (VLAN),
-i.e., spanning tree or Shortest Path Bridging (SPB) and Multiple VLAN
-Registration Protocol Data Units (MVRPDUs), and frames from other link
-constrained protocols, such as Extensible Authentication Protocol over LAN
-(EAPOL) and Link Layer Discovery Protocol (LLDP), link-local frames. They
-are not forwarded by a Bridge. Permanently configured entries in the
-filtering database (FDB) ensure that such frames are discarded by the
-Forwarding Process. In 8.6.3 of IEEE Std 802.1Q-2022, this is described in
-detail:
-
-Each of the reserved MAC addresses specified in Table 8-1
-(01-80-C2-00-00-[00,01,02,03,04,05,06,07,08,09,0A,0B,0C,0D,0E,0F]) shall be
-permanently configured in the FDB in C-VLAN components and ERs.
-
-Each of the reserved MAC addresses specified in Table 8-2
-(01-80-C2-00-00-[01,02,03,04,05,06,07,08,09,0A,0E]) shall be permanently
-configured in the FDB in S-VLAN components.
-
-Each of the reserved MAC addresses specified in Table 8-3
-(01-80-C2-00-00-[01,02,04,0E]) shall be permanently configured in the FDB
-in TPMR components.
-
-The FDB entries for reserved MAC addresses shall specify filtering for all
-Bridge Ports and all VIDs. Management shall not provide the capability to
-modify or remove entries for reserved MAC addresses.
-
-The addresses in Table 8-1, Table 8-2, and Table 8-3 determine the scope of
-propagation of PDUs within a Bridged Network, as follows:
-
-  The Nearest Bridge group address (01-80-C2-00-00-0E) is an address that
-  no conformant Two-Port MAC Relay (TPMR) component, Service VLAN (S-VLAN)
-  component, Customer VLAN (C-VLAN) component, or MAC Bridge can forward.
-  PDUs transmitted using this destination address, or any other addresses
-  that appear in Table 8-1, Table 8-2, and Table 8-3
-  (01-80-C2-00-00-[00,01,02,03,04,05,06,07,08,09,0A,0B,0C,0D,0E,0F]), can
-  therefore travel no further than those stations that can be reached via a
-  single individual LAN from the originating station.
-
-  The Nearest non-TPMR Bridge group address (01-80-C2-00-00-03), is an
-  address that no conformant S-VLAN component, C-VLAN component, or MAC
-  Bridge can forward; however, this address is relayed by a TPMR component.
-  PDUs using this destination address, or any of the other addresses that
-  appear in both Table 8-1 and Table 8-2 but not in Table 8-3
-  (01-80-C2-00-00-[00,03,05,06,07,08,09,0A,0B,0C,0D,0F]), will be relayed
-  by any TPMRs but will propagate no further than the nearest S-VLAN
-  component, C-VLAN component, or MAC Bridge.
-
-  The Nearest Customer Bridge group address (01-80-C2-00-00-00) is an
-  address that no conformant C-VLAN component, MAC Bridge can forward;
-  however, it is relayed by TPMR components and S-VLAN components. PDUs
-  using this destination address, or any of the other addresses that appear
-  in Table 8-1 but not in either Table 8-2 or Table 8-3
-  (01-80-C2-00-00-[00,0B,0C,0D,0F]), will be relayed by TPMR components and
-  S-VLAN components but will propagate no further than the nearest C-VLAN
-  component or MAC Bridge.
-
-Because the LLC Entity associated with each Bridge Port is provided via CPU
-port, we must not filter these frames but forward them to CPU port.
-
-In a Bridge, the transmission Port is majorly decided by ingress and egress
-rules, FDB, and spanning tree Port State functions of the Forwarding
-Process. For link-local frames, only CPU port should be designated as
-destination port in the FDB, and the other functions of the Forwarding
-Process must not interfere with the decision of the transmission Port. We
-call this process trapping frames to CPU port.
-
-Therefore, on the switch with CPU port architecture, link-local frames must
-be trapped to CPU port, and certain link-local frames received by a Port of
-a Bridge comprising a TPMR component or an S-VLAN component must be
-excluded from it.
-
-A Bridge of the switch with CPU architecture cannot comprise a non-Two-Port
-MAC Relay (TPMR) component as TPMR component is only supposed to support a
-subset of the functionality of a MAC Bridge. A Bridge comprising two ports
-(Management Port doesn't count) of this architecture will either function
-as a standard MAC Bridge or a standard VLAN Bridge.
-
-Therefore, a Bridge of this architecture can only comprise S-VLAN
-components, C-VLAN components, or MAC Bridge components. Since there's no
-TPMR component, we don't need to relay PDUs using the destination addresses
-specified on the Nearest non-TPMR section, and the proportion of the
-Nearest Customer Bridge section where they must be relayed by TPMR
-components.
-
-One option to trap link-local frames to CPU port is to add static FDB
-entries with CPU port designated as destination port. However, because that
-Independent VLAN Learning (IVL) is being used on every VID, each entry only
-applies to a single VLAN Identifier (VID). For a Bridge comprising a MAC
-Bridge component or a C-VLAN component, there would have to be 16 times
-4096 entries. This switch intellectual property can only hold a maximum of
-2048 entries. Using this option, there also isn't a mechanism to prevent
-link-local frames from being discarded when the spanning tree Port State of
-the reception Port is discarding.
-
-The remaining option is to utilise the BPC, RGAC1, RGAC2, RGAC3, and RGAC4
-registers. Whilst this applies to every VID, it doesn't contain all of the
-reserved MAC addresses without affecting the remaining Standard Group MAC
-Addresses. The REV_UN frame tag utilised using the RGAC4 register covers
-the remaining 01-80-C2-00-00-[04,05,06,07,08,09,0A,0B,0C,0D,0F] destination
-addresses. It also includes the 01-80-C2-00-00-22 to 01-80-C2-00-00-FF
-destination addresses which may be relayed by MAC Bridges or VLAN Bridges.
-The latter option provides better but not complete conformance.
-
-This switch intellectual property also does not provide a mechanism to trap
-link-local frames with specific destination addresses to CPU port by
-Bridge, to conform to the filtering rules for the distinct Bridge
-components.
-
-Therefore, regardless of the type of the Bridge component, link-local
-frames with these destination addresses will be trapped to CPU port:
-
-01-80-C2-00-00-[00,01,02,03,0E]
-
-In a Bridge comprising a MAC Bridge component or a C-VLAN component:
-
-  Link-local frames with these destination addresses won't be trapped to
-  CPU port which won't conform to IEEE Std 802.1Q-2022:
-
-  01-80-C2-00-00-[04,05,06,07,08,09,0A,0B,0C,0D,0F]
-
-In a Bridge comprising an S-VLAN component:
-
-  Link-local frames with these destination addresses will be trapped to CPU
-  port which won't conform to IEEE Std 802.1Q-2022:
-
-  01-80-C2-00-00-00
-
-  Link-local frames with these destination addresses won't be trapped to
-  CPU port which won't conform to IEEE Std 802.1Q-2022:
-
-  01-80-C2-00-00-[04,05,06,07,08,09,0A]
-
-Currently on this switch intellectual property, if the spanning tree Port
-State of the reception Port is discarding, link-local frames will be
-discarded.
-
-To trap link-local frames regardless of the spanning tree Port State, make
-the switch regard them as BPDU. This switch intellectual property only lets
-the frames regarded as BPDU bypass the spanning tree Port State function of
-the Forwarding Process.
-
-With this change, the only remaining interference left is the ingress
-rules. When the reception Port has no PVID assigned on software,
-VLAN-untagged frames won't be allowed in. There doesn't seem to be a
-mechanism on the switch intellectual property to have link-local frames
-bypass this function of the Forwarding Process.
-
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
- drivers/net/dsa/mt7530.c | 229 ++++++++++++++++++++++++++++++++++++++++-------
- drivers/net/dsa/mt7530.h |   5 ++
- 2 files changed, 200 insertions(+), 34 deletions(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 1035820c2377..254501f63731 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -950,20 +950,173 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 	mutex_unlock(&priv->reg_mutex);
- }
- 
--/* On page 205, section "8.6.3 Frame filtering" of the active standard, IEEE Std
-- * 802.1Q™-2022, it is stated that frames with 01:80:C2:00:00:00-0F as MAC DA
-- * must only be propagated to C-VLAN and MAC Bridge components. That means
-- * VLAN-aware and VLAN-unaware bridges. On the switch designs with CPU ports,
-- * these frames are supposed to be processed by the CPU (software). So we make
-- * the switch only forward them to the CPU port. And if received from a CPU
-- * port, forward to a single port. The software is responsible of making the
-- * switch conform to the latter by setting a single port as destination port on
-- * the special tag.
-+/* In Clause 5 of IEEE Std 802-2014, two sublayers of the data link layer (DLL)
-+ * of the Open Systems Interconnection basic reference model (OSI/RM) are
-+ * described; the medium access control (MAC) and logical link control (LLC)
-+ * sublayers. The MAC sublayer is the one facing the physical layer.
-  *
-- * This switch intellectual property cannot conform to this part of the standard
-- * fully. Whilst the REV_UN frame tag covers the remaining :04-0D and :0F MAC
-- * DAs, it also includes :22-FF which the scope of propagation is not supposed
-- * to be restricted for these MAC DAs.
-+ * In 8.2 of IEEE Std 802.1Q-2022, the Bridge architecture is described. A
-+ * Bridge component comprises a MAC Relay Entity for interconnecting the Ports
-+ * of the Bridge, at least two Ports, and higher layer entities with at least a
-+ * Spanning Tree Protocol Entity included.
-+ *
-+ * Each Bridge Port also functions as an end station and shall provide the MAC
-+ * Service to an LLC Entity. Each instance of the MAC Service is provided to a
-+ * distinct LLC Entity that supports protocol identification, multiplexing, and
-+ * demultiplexing, for protocol data unit (PDU) transmission and reception by
-+ * one or more higher layer entities.
-+ *
-+ * It is described in 8.13.9 of IEEE Std 802.1Q-2022 that in a Bridge, the LLC
-+ * Entity associated with each Bridge Port is modeled as being directly
-+ * connected to the attached Local Area Network (LAN).
-+ *
-+ * On the switch with CPU port architecture, CPU port functions as Management
-+ * Port, and the Management Port functionality is provided by software which
-+ * functions as an end station. Software is connected to an IEEE 802 LAN that is
-+ * wholly contained within the system that incorporates the Bridge. Software
-+ * provides access to the LLC Entity associated with each Bridge Port by the
-+ * value of the source port field on the special tag on the frame received by
-+ * software.
-+ *
-+ * We call frames that carry control information to determine the active
-+ * topology and current extent of each Virtual Local Area Network (VLAN), i.e.,
-+ * spanning tree or Shortest Path Bridging (SPB) and Multiple VLAN Registration
-+ * Protocol Data Units (MVRPDUs), and frames from other link constrained
-+ * protocols, such as Extensible Authentication Protocol over LAN (EAPOL) and
-+ * Link Layer Discovery Protocol (LLDP), link-local frames. They are not
-+ * forwarded by a Bridge. Permanently configured entries in the filtering
-+ * database (FDB) ensure that such frames are discarded by the Forwarding
-+ * Process. In 8.6.3 of IEEE Std 802.1Q-2022, this is described in detail:
-+ *
-+ * Each of the reserved MAC addresses specified in Table 8-1
-+ * (01-80-C2-00-00-[00,01,02,03,04,05,06,07,08,09,0A,0B,0C,0D,0E,0F]) shall be
-+ * permanently configured in the FDB in C-VLAN components and ERs.
-+ *
-+ * Each of the reserved MAC addresses specified in Table 8-2
-+ * (01-80-C2-00-00-[01,02,03,04,05,06,07,08,09,0A,0E]) shall be permanently
-+ * configured in the FDB in S-VLAN components.
-+ *
-+ * Each of the reserved MAC addresses specified in Table 8-3
-+ * (01-80-C2-00-00-[01,02,04,0E]) shall be permanently configured in the FDB in
-+ * TPMR components.
-+ *
-+ * The FDB entries for reserved MAC addresses shall specify filtering for all
-+ * Bridge Ports and all VIDs. Management shall not provide the capability to
-+ * modify or remove entries for reserved MAC addresses.
-+ *
-+ * The addresses in Table 8-1, Table 8-2, and Table 8-3 determine the scope of
-+ * propagation of PDUs within a Bridged Network, as follows:
-+ *
-+ *   The Nearest Bridge group address (01-80-C2-00-00-0E) is an address that no
-+ *   conformant Two-Port MAC Relay (TPMR) component, Service VLAN (S-VLAN)
-+ *   component, Customer VLAN (C-VLAN) component, or MAC Bridge can forward.
-+ *   PDUs transmitted using this destination address, or any other addresses
-+ *   that appear in Table 8-1, Table 8-2, and Table 8-3
-+ *   (01-80-C2-00-00-[00,01,02,03,04,05,06,07,08,09,0A,0B,0C,0D,0E,0F]), can
-+ *   therefore travel no further than those stations that can be reached via a
-+ *   single individual LAN from the originating station.
-+ *
-+ *   The Nearest non-TPMR Bridge group address (01-80-C2-00-00-03), is an
-+ *   address that no conformant S-VLAN component, C-VLAN component, or MAC
-+ *   Bridge can forward; however, this address is relayed by a TPMR component.
-+ *   PDUs using this destination address, or any of the other addresses that
-+ *   appear in both Table 8-1 and Table 8-2 but not in Table 8-3
-+ *   (01-80-C2-00-00-[00,03,05,06,07,08,09,0A,0B,0C,0D,0F]), will be relayed by
-+ *   any TPMRs but will propagate no further than the nearest S-VLAN component,
-+ *   C-VLAN component, or MAC Bridge.
-+ *
-+ *   The Nearest Customer Bridge group address (01-80-C2-00-00-00) is an address
-+ *   that no conformant C-VLAN component, MAC Bridge can forward; however, it is
-+ *   relayed by TPMR components and S-VLAN components. PDUs using this
-+ *   destination address, or any of the other addresses that appear in Table 8-1
-+ *   but not in either Table 8-2 or Table 8-3 (01-80-C2-00-00-[00,0B,0C,0D,0F]),
-+ *   will be relayed by TPMR components and S-VLAN components but will propagate
-+ *   no further than the nearest C-VLAN component or MAC Bridge.
-+ *
-+ * Because the LLC Entity associated with each Bridge Port is provided via CPU
-+ * port, we must not filter these frames but forward them to CPU port.
-+ *
-+ * In a Bridge, the transmission Port is majorly decided by ingress and egress
-+ * rules, FDB, and spanning tree Port State functions of the Forwarding Process.
-+ * For link-local frames, only CPU port should be designated as destination port
-+ * in the FDB, and the other functions of the Forwarding Process must not
-+ * interfere with the decision of the transmission Port. We call this process
-+ * trapping frames to CPU port.
-+ *
-+ * Therefore, on the switch with CPU port architecture, link-local frames must
-+ * be trapped to CPU port, and certain link-local frames received by a Port of a
-+ * Bridge comprising a TPMR component or an S-VLAN component must be excluded
-+ * from it.
-+ *
-+ * A Bridge of the switch with CPU architecture cannot comprise a non-Two-Port
-+ * MAC Relay (TPMR) component as TPMR component is only supposed to support a
-+ * subset of the functionality of a MAC Bridge. A Bridge comprising two ports
-+ * (Management Port doesn't count) of this architecture will either function as
-+ * a standard MAC Bridge or a standard VLAN Bridge.
-+ *
-+ * Therefore, a Bridge of this architecture can only comprise S-VLAN components,
-+ * C-VLAN components, or MAC Bridge components. Since there's no TPMR component,
-+ * we don't need to relay PDUs using the destination addresses specified on the
-+ * Nearest non-TPMR section, and the proportion of the Nearest Customer Bridge
-+ * section where they must be relayed by TPMR components.
-+ *
-+ * One option to trap link-local frames to CPU port is to add static FDB entries
-+ * with CPU port designated as destination port. However, because that
-+ * Independent VLAN Learning (IVL) is being used on every VID, each entry only
-+ * applies to a single VLAN Identifier (VID). For a Bridge comprising a MAC
-+ * Bridge component or a C-VLAN component, there would have to be 16 times 4096
-+ * entries. This switch intellectual property can only hold a maximum of 2048
-+ * entries. Using this option, there also isn't a mechanism to prevent
-+ * link-local frames from being discarded when the spanning tree Port State of
-+ * the reception Port is discarding.
-+ *
-+ * The remaining option is to utilise the BPC, RGAC1, RGAC2, RGAC3, and RGAC4
-+ * registers. Whilst this applies to every VID, it doesn't contain all of the
-+ * reserved MAC addresses without affecting the remaining Standard Group MAC
-+ * Addresses. The REV_UN frame tag utilised using the RGAC4 register covers the
-+ * remaining 01-80-C2-00-00-[04,05,06,07,08,09,0A,0B,0C,0D,0F] destination
-+ * addresses. It also includes the 01-80-C2-00-00-22 to 01-80-C2-00-00-FF
-+ * destination addresses which may be relayed by MAC Bridges or VLAN Bridges.
-+ * The latter option provides better but not complete conformance.
-+ *
-+ * This switch intellectual property also does not provide a mechanism to trap
-+ * link-local frames with specific destination addresses to CPU port by Bridge,
-+ * to conform to the filtering rules for the distinct Bridge components.
-+ *
-+ * Therefore, regardless of the type of the Bridge component, link-local frames
-+ * with these destination addresses will be trapped to CPU port:
-+ *
-+ * 01-80-C2-00-00-[00,01,02,03,0E]
-+ *
-+ * In a Bridge comprising a MAC Bridge component or a C-VLAN component:
-+ *
-+ *   Link-local frames with these destination addresses won't be trapped to CPU
-+ *   port which won't conform to IEEE Std 802.1Q-2022:
-+ *
-+ *   01-80-C2-00-00-[04,05,06,07,08,09,0A,0B,0C,0D,0F]
-+ *
-+ * In a Bridge comprising an S-VLAN component:
-+ *
-+ *   Link-local frames with these destination addresses will be trapped to CPU
-+ *   port which won't conform to IEEE Std 802.1Q-2022:
-+ *
-+ *   01-80-C2-00-00-00
-+ *
-+ *   Link-local frames with these destination addresses won't be trapped to CPU
-+ *   port which won't conform to IEEE Std 802.1Q-2022:
-+ *
-+ *   01-80-C2-00-00-[04,05,06,07,08,09,0A]
-+ *
-+ * To trap link-local frames to CPU port as conformant as this switch
-+ * intellectual property can allow, link-local frames are made to be regarded as
-+ * BPDU. This is because this switch intellectual property only lets the frames
-+ * regarded as BPDU bypass the spanning tree Port State function of the
-+ * Forwarding Process.
-+ *
-+ * The only remaining interference left is the ingress rules. When the reception
-+ * Port has no PVID assigned on software, VLAN-untagged frames won't be allowed
-+ * in. There doesn't seem to be a mechanism on the switch intellectual property
-+ * to have link-local frames bypass this function of the Forwarding Process.
-  */
- static void
- mt753x_trap_frames(struct mt7530_priv *priv)
-@@ -971,35 +1124,43 @@ mt753x_trap_frames(struct mt7530_priv *priv)
- 	/* Trap 802.1X PAE frames and BPDUs to the CPU port(s) and egress them
- 	 * VLAN-untagged.
- 	 */
--	mt7530_rmw(priv, MT753X_BPC, MT753X_PAE_EG_TAG_MASK |
--		   MT753X_PAE_PORT_FW_MASK | MT753X_BPDU_EG_TAG_MASK |
--		   MT753X_BPDU_PORT_FW_MASK,
--		   MT753X_PAE_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
--		   MT753X_PAE_PORT_FW(MT753X_BPDU_CPU_ONLY) |
--		   MT753X_BPDU_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
--		   MT753X_BPDU_CPU_ONLY);
-+	mt7530_rmw(priv, MT753X_BPC,
-+		   MT753X_PAE_BPDU_FR | MT753X_PAE_EG_TAG_MASK |
-+			   MT753X_PAE_PORT_FW_MASK | MT753X_BPDU_EG_TAG_MASK |
-+			   MT753X_BPDU_PORT_FW_MASK,
-+		   MT753X_PAE_BPDU_FR |
-+			   MT753X_PAE_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
-+			   MT753X_PAE_PORT_FW(MT753X_BPDU_CPU_ONLY) |
-+			   MT753X_BPDU_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
-+			   MT753X_BPDU_CPU_ONLY);
- 
- 	/* Trap frames with :01 and :02 MAC DAs to the CPU port(s) and egress
- 	 * them VLAN-untagged.
- 	 */
--	mt7530_rmw(priv, MT753X_RGAC1, MT753X_R02_EG_TAG_MASK |
--		   MT753X_R02_PORT_FW_MASK | MT753X_R01_EG_TAG_MASK |
--		   MT753X_R01_PORT_FW_MASK,
--		   MT753X_R02_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
--		   MT753X_R02_PORT_FW(MT753X_BPDU_CPU_ONLY) |
--		   MT753X_R01_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
--		   MT753X_BPDU_CPU_ONLY);
-+	mt7530_rmw(priv, MT753X_RGAC1,
-+		   MT753X_R02_BPDU_FR | MT753X_R02_EG_TAG_MASK |
-+			   MT753X_R02_PORT_FW_MASK | MT753X_R01_BPDU_FR |
-+			   MT753X_R01_EG_TAG_MASK | MT753X_R01_PORT_FW_MASK,
-+		   MT753X_R02_BPDU_FR |
-+			   MT753X_R02_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
-+			   MT753X_R02_PORT_FW(MT753X_BPDU_CPU_ONLY) |
-+			   MT753X_R01_BPDU_FR |
-+			   MT753X_R01_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
-+			   MT753X_BPDU_CPU_ONLY);
- 
- 	/* Trap frames with :03 and :0E MAC DAs to the CPU port(s) and egress
- 	 * them VLAN-untagged.
- 	 */
--	mt7530_rmw(priv, MT753X_RGAC2, MT753X_R0E_EG_TAG_MASK |
--		   MT753X_R0E_PORT_FW_MASK | MT753X_R03_EG_TAG_MASK |
--		   MT753X_R03_PORT_FW_MASK,
--		   MT753X_R0E_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
--		   MT753X_R0E_PORT_FW(MT753X_BPDU_CPU_ONLY) |
--		   MT753X_R03_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
--		   MT753X_BPDU_CPU_ONLY);
-+	mt7530_rmw(priv, MT753X_RGAC2,
-+		   MT753X_R0E_BPDU_FR | MT753X_R0E_EG_TAG_MASK |
-+			   MT753X_R0E_PORT_FW_MASK | MT753X_R03_BPDU_FR |
-+			   MT753X_R03_EG_TAG_MASK | MT753X_R03_PORT_FW_MASK,
-+		   MT753X_R0E_BPDU_FR |
-+			   MT753X_R0E_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
-+			   MT753X_R0E_PORT_FW(MT753X_BPDU_CPU_ONLY) |
-+			   MT753X_R03_BPDU_FR |
-+			   MT753X_R03_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
-+			   MT753X_BPDU_CPU_ONLY);
- }
- 
- static void
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index d17b318e6ee4..2deffe741484 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -65,6 +65,7 @@ enum mt753x_id {
- 
- /* Registers for BPDU and PAE frame control*/
- #define MT753X_BPC			0x24
-+#define  MT753X_PAE_BPDU_FR		BIT(25)
- #define  MT753X_PAE_EG_TAG_MASK		GENMASK(24, 22)
- #define  MT753X_PAE_EG_TAG(x)		FIELD_PREP(MT753X_PAE_EG_TAG_MASK, x)
- #define  MT753X_PAE_PORT_FW_MASK	GENMASK(18, 16)
-@@ -75,20 +76,24 @@ enum mt753x_id {
- 
- /* Register for :01 and :02 MAC DA frame control */
- #define MT753X_RGAC1			0x28
-+#define  MT753X_R02_BPDU_FR		BIT(25)
- #define  MT753X_R02_EG_TAG_MASK		GENMASK(24, 22)
- #define  MT753X_R02_EG_TAG(x)		FIELD_PREP(MT753X_R02_EG_TAG_MASK, x)
- #define  MT753X_R02_PORT_FW_MASK	GENMASK(18, 16)
- #define  MT753X_R02_PORT_FW(x)		FIELD_PREP(MT753X_R02_PORT_FW_MASK, x)
-+#define  MT753X_R01_BPDU_FR		BIT(9)
- #define  MT753X_R01_EG_TAG_MASK		GENMASK(8, 6)
- #define  MT753X_R01_EG_TAG(x)		FIELD_PREP(MT753X_R01_EG_TAG_MASK, x)
- #define  MT753X_R01_PORT_FW_MASK	GENMASK(2, 0)
- 
- /* Register for :03 and :0E MAC DA frame control */
- #define MT753X_RGAC2			0x2c
-+#define  MT753X_R0E_BPDU_FR		BIT(25)
- #define  MT753X_R0E_EG_TAG_MASK		GENMASK(24, 22)
- #define  MT753X_R0E_EG_TAG(x)		FIELD_PREP(MT753X_R0E_EG_TAG_MASK, x)
- #define  MT753X_R0E_PORT_FW_MASK	GENMASK(18, 16)
- #define  MT753X_R0E_PORT_FW(x)		FIELD_PREP(MT753X_R0E_PORT_FW_MASK, x)
-+#define  MT753X_R03_BPDU_FR		BIT(9)
- #define  MT753X_R03_EG_TAG_MASK		GENMASK(8, 6)
- #define  MT753X_R03_EG_TAG(x)		FIELD_PREP(MT753X_R03_EG_TAG_MASK, x)
- #define  MT753X_R03_PORT_FW_MASK	GENMASK(2, 0)
-
----
-base-commit: 365af7ace014ef3fc6f5d0a373c96cc7193db4ce
-change-id: 20240401-b4-for-net-mt7530-fix-link-local-when-stp-discarding-6e2a4e3e867a
-
-Best regards,
--- 
-Arınç ÜNAL <arinc.unal@arinc9.com>
-
+> 
+> Signed-off-by: Allen Pais <allen.lkml@gmail.com>
+> ---
+>   drivers/infiniband/hw/bnxt_re/bnxt_re.h    |  3 +-
+>   drivers/infiniband/hw/bnxt_re/qplib_fp.c   | 21 ++++++------
+>   drivers/infiniband/hw/bnxt_re/qplib_fp.h   |  2 +-
+>   drivers/infiniband/hw/bnxt_re/qplib_rcfw.c | 25 ++++++++-------
+>   drivers/infiniband/hw/bnxt_re/qplib_rcfw.h |  2 +-
+>   drivers/infiniband/hw/erdma/erdma.h        |  3 +-
+>   drivers/infiniband/hw/erdma/erdma_eq.c     | 11 ++++---
+>   drivers/infiniband/hw/hfi1/rc.c            |  2 +-
+>   drivers/infiniband/hw/hfi1/sdma.c          | 37 +++++++++++-----------
+>   drivers/infiniband/hw/hfi1/sdma.h          |  9 +++---
+>   drivers/infiniband/hw/hfi1/tid_rdma.c      |  6 ++--
+>   drivers/infiniband/hw/irdma/ctrl.c         |  2 +-
+>   drivers/infiniband/hw/irdma/hw.c           | 24 +++++++-------
+>   drivers/infiniband/hw/irdma/main.h         |  5 +--
+>   drivers/infiniband/hw/qib/qib.h            |  7 ++--
+>   drivers/infiniband/hw/qib/qib_iba7322.c    |  9 +++---
+>   drivers/infiniband/hw/qib/qib_rc.c         | 16 +++++-----
+>   drivers/infiniband/hw/qib/qib_ruc.c        |  4 +--
+>   drivers/infiniband/hw/qib/qib_sdma.c       | 11 ++++---
+>   drivers/infiniband/sw/rdmavt/qp.c          |  2 +-
+>   20 files changed, 106 insertions(+), 95 deletions(-)
+> 
+> diff --git a/drivers/infiniband/hw/bnxt_re/bnxt_re.h b/drivers/infiniband/hw/bnxt_re/bnxt_re.h
+> index 9dca451ed522..f511c8415806 100644
+> --- a/drivers/infiniband/hw/bnxt_re/bnxt_re.h
+> +++ b/drivers/infiniband/hw/bnxt_re/bnxt_re.h
+> @@ -42,6 +42,7 @@
+>   #include <rdma/uverbs_ioctl.h>
+>   #include "hw_counters.h"
+>   #include <linux/hashtable.h>
+> +#include <linux/workqueue.h>
+>   #define ROCE_DRV_MODULE_NAME		"bnxt_re"
+>   
+>   #define BNXT_RE_DESC	"Broadcom NetXtreme-C/E RoCE Driver"
+> @@ -162,7 +163,7 @@ struct bnxt_re_dev {
+>   	u8				cur_prio_map;
+>   
+>   	/* FP Notification Queue (CQ & SRQ) */
+> -	struct tasklet_struct		nq_task;
+> +	struct work_struct 		nq_work;
+>   
+>   	/* RCFW Channel */
+>   	struct bnxt_qplib_rcfw		rcfw;
+> diff --git a/drivers/infiniband/hw/bnxt_re/qplib_fp.c b/drivers/infiniband/hw/bnxt_re/qplib_fp.c
+> index 439d0c7c5d0c..052906982cdf 100644
+> --- a/drivers/infiniband/hw/bnxt_re/qplib_fp.c
+> +++ b/drivers/infiniband/hw/bnxt_re/qplib_fp.c
+> @@ -46,6 +46,7 @@
+>   #include <linux/delay.h>
+>   #include <linux/prefetch.h>
+>   #include <linux/if_ether.h>
+> +#include <linux/workqueue.h>
+>   #include <rdma/ib_mad.h>
+>   
+>   #include "roce_hsi.h"
+> @@ -294,9 +295,9 @@ static void __wait_for_all_nqes(struct bnxt_qplib_cq *cq, u16 cnq_events)
+>   	}
+>   }
+>   
+> -static void bnxt_qplib_service_nq(struct tasklet_struct *t)
+> +static void bnxt_qplib_service_nq(struct work_struct *t)
+>   {
+> -	struct bnxt_qplib_nq *nq = from_tasklet(nq, t, nq_tasklet);
+> +	struct bnxt_qplib_nq *nq = from_work(nq, t, nq_work);
+>   	struct bnxt_qplib_hwq *hwq = &nq->hwq;
+>   	struct bnxt_qplib_cq *cq;
+>   	int budget = nq->budget;
+> @@ -394,7 +395,7 @@ void bnxt_re_synchronize_nq(struct bnxt_qplib_nq *nq)
+>   	int budget = nq->budget;
+>   
+>   	nq->budget = nq->hwq.max_elements;
+> -	bnxt_qplib_service_nq(&nq->nq_tasklet);
+> +	bnxt_qplib_service_nq(&nq->nq_work);
+>   	nq->budget = budget;
+>   }
+>   
+> @@ -409,7 +410,7 @@ static irqreturn_t bnxt_qplib_nq_irq(int irq, void *dev_instance)
+>   	prefetch(bnxt_qplib_get_qe(hwq, sw_cons, NULL));
+>   
+>   	/* Fan out to CPU affinitized kthreads? */
+> -	tasklet_schedule(&nq->nq_tasklet);
+> +	queue_work(system_bh_wq, &nq->nq_work);
+>   
+>   	return IRQ_HANDLED;
+>   }
+> @@ -430,8 +431,8 @@ void bnxt_qplib_nq_stop_irq(struct bnxt_qplib_nq *nq, bool kill)
+>   	nq->name = NULL;
+>   
+>   	if (kill)
+> -		tasklet_kill(&nq->nq_tasklet);
+> -	tasklet_disable(&nq->nq_tasklet);
+> +		cancel_work_sync(&nq->nq_work);
+> +	disable_work_sync(&nq->nq_work);
+>   }
+>   
+>   void bnxt_qplib_disable_nq(struct bnxt_qplib_nq *nq)
+> @@ -465,9 +466,9 @@ int bnxt_qplib_nq_start_irq(struct bnxt_qplib_nq *nq, int nq_indx,
+>   
+>   	nq->msix_vec = msix_vector;
+>   	if (need_init)
+> -		tasklet_setup(&nq->nq_tasklet, bnxt_qplib_service_nq);
+> +		INIT_WORK(&nq->nq_work, bnxt_qplib_service_nq);
+>   	else
+> -		tasklet_enable(&nq->nq_tasklet);
+> +		enable_and_queue_work(system_bh_wq, &nq->nq_work);
+>   
+>   	nq->name = kasprintf(GFP_KERNEL, "bnxt_re-nq-%d@pci:%s",
+>   			     nq_indx, pci_name(res->pdev));
+> @@ -477,7 +478,7 @@ int bnxt_qplib_nq_start_irq(struct bnxt_qplib_nq *nq, int nq_indx,
+>   	if (rc) {
+>   		kfree(nq->name);
+>   		nq->name = NULL;
+> -		tasklet_disable(&nq->nq_tasklet);
+> +		disable_work_sync(&nq->nq_work);
+>   		return rc;
+>   	}
+>   
+> @@ -541,7 +542,7 @@ int bnxt_qplib_enable_nq(struct pci_dev *pdev, struct bnxt_qplib_nq *nq,
+>   	nq->cqn_handler = cqn_handler;
+>   	nq->srqn_handler = srqn_handler;
+>   
+> -	/* Have a task to schedule CQ notifiers in post send case */
+> +	/* Have a work to schedule CQ notifiers in post send case */
+>   	nq->cqn_wq  = create_singlethread_workqueue("bnxt_qplib_nq");
+>   	if (!nq->cqn_wq)
+>   		return -ENOMEM;
+> diff --git a/drivers/infiniband/hw/bnxt_re/qplib_fp.h b/drivers/infiniband/hw/bnxt_re/qplib_fp.h
+> index 7fd4506b3584..6ee3e501d136 100644
+> --- a/drivers/infiniband/hw/bnxt_re/qplib_fp.h
+> +++ b/drivers/infiniband/hw/bnxt_re/qplib_fp.h
+> @@ -494,7 +494,7 @@ struct bnxt_qplib_nq {
+>   	u16				ring_id;
+>   	int				msix_vec;
+>   	cpumask_t			mask;
+> -	struct tasklet_struct		nq_tasklet;
+> +	struct work_struct 		nq_work;
+>   	bool				requested;
+>   	int				budget;
+>   
+> diff --git a/drivers/infiniband/hw/bnxt_re/qplib_rcfw.c b/drivers/infiniband/hw/bnxt_re/qplib_rcfw.c
+> index 3ffaef0c2651..2fba712d88db 100644
+> --- a/drivers/infiniband/hw/bnxt_re/qplib_rcfw.c
+> +++ b/drivers/infiniband/hw/bnxt_re/qplib_rcfw.c
+> @@ -43,6 +43,7 @@
+>   #include <linux/pci.h>
+>   #include <linux/prefetch.h>
+>   #include <linux/delay.h>
+> +#include <linux/workqueue.h>
+>   
+>   #include "roce_hsi.h"
+>   #include "qplib_res.h"
+> @@ -51,7 +52,7 @@
+>   #include "qplib_fp.h"
+>   #include "qplib_tlv.h"
+>   
+> -static void bnxt_qplib_service_creq(struct tasklet_struct *t);
+> +static void bnxt_qplib_service_creq(struct work_struct *t);
+>   
+>   /**
+>    * bnxt_qplib_map_rc  -  map return type based on opcode
+> @@ -165,7 +166,7 @@ static int __wait_for_resp(struct bnxt_qplib_rcfw *rcfw, u16 cookie)
+>   		if (!crsqe->is_in_used)
+>   			return 0;
+>   
+> -		bnxt_qplib_service_creq(&rcfw->creq.creq_tasklet);
+> +		bnxt_qplib_service_creq(&rcfw->creq.creq_work);
+>   
+>   		if (!crsqe->is_in_used)
+>   			return 0;
+> @@ -206,7 +207,7 @@ static int __block_for_resp(struct bnxt_qplib_rcfw *rcfw, u16 cookie)
+>   
+>   		udelay(1);
+>   
+> -		bnxt_qplib_service_creq(&rcfw->creq.creq_tasklet);
+> +		bnxt_qplib_service_creq(&rcfw->creq.creq_work);
+>   		if (!crsqe->is_in_used)
+>   			return 0;
+>   
+> @@ -403,7 +404,7 @@ static int __poll_for_resp(struct bnxt_qplib_rcfw *rcfw, u16 cookie)
+>   
+>   		usleep_range(1000, 1001);
+>   
+> -		bnxt_qplib_service_creq(&rcfw->creq.creq_tasklet);
+> +		bnxt_qplib_service_creq(&rcfw->creq.creq_work);
+>   		if (!crsqe->is_in_used)
+>   			return 0;
+>   		if (jiffies_to_msecs(jiffies - issue_time) >
+> @@ -727,9 +728,9 @@ static int bnxt_qplib_process_qp_event(struct bnxt_qplib_rcfw *rcfw,
+>   }
+>   
+>   /* SP - CREQ Completion handlers */
+> -static void bnxt_qplib_service_creq(struct tasklet_struct *t)
+> +static void bnxt_qplib_service_creq(struct work_struct *t)
+>   {
+> -	struct bnxt_qplib_rcfw *rcfw = from_tasklet(rcfw, t, creq.creq_tasklet);
+> +	struct bnxt_qplib_rcfw *rcfw = from_work(rcfw, t, creq.creq_work);
+>   	struct bnxt_qplib_creq_ctx *creq = &rcfw->creq;
+>   	u32 type, budget = CREQ_ENTRY_POLL_BUDGET;
+>   	struct bnxt_qplib_hwq *hwq = &creq->hwq;
+> @@ -800,7 +801,7 @@ static irqreturn_t bnxt_qplib_creq_irq(int irq, void *dev_instance)
+>   	sw_cons = HWQ_CMP(hwq->cons, hwq);
+>   	prefetch(bnxt_qplib_get_qe(hwq, sw_cons, NULL));
+>   
+> -	tasklet_schedule(&creq->creq_tasklet);
+> +	queue_work(system_bh_wq, &creq->creq_work);
+>   
+>   	return IRQ_HANDLED;
+>   }
+> @@ -1007,8 +1008,8 @@ void bnxt_qplib_rcfw_stop_irq(struct bnxt_qplib_rcfw *rcfw, bool kill)
+>   	creq->irq_name = NULL;
+>   	atomic_set(&rcfw->rcfw_intr_enabled, 0);
+>   	if (kill)
+> -		tasklet_kill(&creq->creq_tasklet);
+> -	tasklet_disable(&creq->creq_tasklet);
+> +		cancel_work_sync(&creq->creq_work);
+> +	disable_work_sync(&creq->creq_work);
+>   }
+>   
+>   void bnxt_qplib_disable_rcfw_channel(struct bnxt_qplib_rcfw *rcfw)
+> @@ -1045,9 +1046,9 @@ int bnxt_qplib_rcfw_start_irq(struct bnxt_qplib_rcfw *rcfw, int msix_vector,
+>   
+>   	creq->msix_vec = msix_vector;
+>   	if (need_init)
+> -		tasklet_setup(&creq->creq_tasklet, bnxt_qplib_service_creq);
+> +		INIT_WORK(&creq->creq_work, bnxt_qplib_service_creq);
+>   	else
+> -		tasklet_enable(&creq->creq_tasklet);
+> +		enable_and_queue_work(system_bh_wq, &creq->creq_work);
+>   
+>   	creq->irq_name = kasprintf(GFP_KERNEL, "bnxt_re-creq@pci:%s",
+>   				   pci_name(res->pdev));
+> @@ -1058,7 +1059,7 @@ int bnxt_qplib_rcfw_start_irq(struct bnxt_qplib_rcfw *rcfw, int msix_vector,
+>   	if (rc) {
+>   		kfree(creq->irq_name);
+>   		creq->irq_name = NULL;
+> -		tasklet_disable(&creq->creq_tasklet);
+> +		disable_work_sync(&creq->creq_work);
+>   		return rc;
+>   	}
+>   	creq->requested = true;
+> diff --git a/drivers/infiniband/hw/bnxt_re/qplib_rcfw.h b/drivers/infiniband/hw/bnxt_re/qplib_rcfw.h
+> index 45996e60a0d0..8efa474fcf3f 100644
+> --- a/drivers/infiniband/hw/bnxt_re/qplib_rcfw.h
+> +++ b/drivers/infiniband/hw/bnxt_re/qplib_rcfw.h
+> @@ -207,7 +207,7 @@ struct bnxt_qplib_creq_ctx {
+>   	struct bnxt_qplib_hwq		hwq;
+>   	struct bnxt_qplib_creq_db	creq_db;
+>   	struct bnxt_qplib_creq_stat	stats;
+> -	struct tasklet_struct		creq_tasklet;
+> +	struct work_struct 		creq_work;
+>   	aeq_handler_t			aeq_handler;
+>   	u16				ring_id;
+>   	int				msix_vec;
+> diff --git a/drivers/infiniband/hw/erdma/erdma.h b/drivers/infiniband/hw/erdma/erdma.h
+> index 5df401a30cb9..9a47c1432c27 100644
+> --- a/drivers/infiniband/hw/erdma/erdma.h
+> +++ b/drivers/infiniband/hw/erdma/erdma.h
+> @@ -11,6 +11,7 @@
+>   #include <linux/netdevice.h>
+>   #include <linux/pci.h>
+>   #include <linux/xarray.h>
+> +#include <linux/workqueue.h>
+>   #include <rdma/ib_verbs.h>
+>   
+>   #include "erdma_hw.h"
+> @@ -161,7 +162,7 @@ struct erdma_eq_cb {
+>   	void *dev; /* All EQs use this fields to get erdma_dev struct */
+>   	struct erdma_irq irq;
+>   	struct erdma_eq eq;
+> -	struct tasklet_struct tasklet;
+> +	struct work_struct work;
+>   };
+>   
+>   struct erdma_resource_cb {
+> diff --git a/drivers/infiniband/hw/erdma/erdma_eq.c b/drivers/infiniband/hw/erdma/erdma_eq.c
+> index ea47cb21fdb8..252906fd73b0 100644
+> --- a/drivers/infiniband/hw/erdma/erdma_eq.c
+> +++ b/drivers/infiniband/hw/erdma/erdma_eq.c
+> @@ -160,14 +160,16 @@ static irqreturn_t erdma_intr_ceq_handler(int irq, void *data)
+>   {
+>   	struct erdma_eq_cb *ceq_cb = data;
+>   
+> -	tasklet_schedule(&ceq_cb->tasklet);
+> +	queue_work(system_bh_wq, &ceq_cb->work);
+>   
+>   	return IRQ_HANDLED;
+>   }
+>   
+> -static void erdma_intr_ceq_task(unsigned long data)
+> +static void erdma_intr_ceq_task(struct work_struct *t)
+>   {
+> -	erdma_ceq_completion_handler((struct erdma_eq_cb *)data);
+> +	struct erdma_eq_cb *ceq_cb = from_work(ceq_cb, t, work);
+> +
+> +	erdma_ceq_completion_handler(ceq_cb);
+>   }
+>   
+>   static int erdma_set_ceq_irq(struct erdma_dev *dev, u16 ceqn)
+> @@ -179,8 +181,7 @@ static int erdma_set_ceq_irq(struct erdma_dev *dev, u16 ceqn)
+>   		 pci_name(dev->pdev));
+>   	eqc->irq.msix_vector = pci_irq_vector(dev->pdev, ceqn + 1);
+>   
+> -	tasklet_init(&dev->ceqs[ceqn].tasklet, erdma_intr_ceq_task,
+> -		     (unsigned long)&dev->ceqs[ceqn]);
+> +	INIT_WORK(&dev->ceqs[ceqn].work, erdma_intr_ceq_task);
+>   
+>   	cpumask_set_cpu(cpumask_local_spread(ceqn + 1, dev->attrs.numa_node),
+>   			&eqc->irq.affinity_hint_mask);
+> diff --git a/drivers/infiniband/hw/hfi1/rc.c b/drivers/infiniband/hw/hfi1/rc.c
+> index b36242c9d42c..ec19ddbfdacb 100644
+> --- a/drivers/infiniband/hw/hfi1/rc.c
+> +++ b/drivers/infiniband/hw/hfi1/rc.c
+> @@ -1210,7 +1210,7 @@ static inline void hfi1_queue_rc_ack(struct hfi1_packet *packet, bool is_fecn)
+>   	if (is_fecn)
+>   		qp->s_flags |= RVT_S_ECN;
+>   
+> -	/* Schedule the send tasklet. */
+> +	/* Schedule the send work. */
+>   	hfi1_schedule_send(qp);
+>   unlock:
+>   	spin_unlock_irqrestore(&qp->s_lock, flags);
+> diff --git a/drivers/infiniband/hw/hfi1/sdma.c b/drivers/infiniband/hw/hfi1/sdma.c
+> index b67d23b1f286..5e1a1dd45511 100644
+> --- a/drivers/infiniband/hw/hfi1/sdma.c
+> +++ b/drivers/infiniband/hw/hfi1/sdma.c
+> @@ -11,6 +11,7 @@
+>   #include <linux/timer.h>
+>   #include <linux/vmalloc.h>
+>   #include <linux/highmem.h>
+> +#include <linux/workqueue.h>
+>   
+>   #include "hfi.h"
+>   #include "common.h"
+> @@ -190,11 +191,11 @@ static const struct sdma_set_state_action sdma_action_table[] = {
+>   static void sdma_complete(struct kref *);
+>   static void sdma_finalput(struct sdma_state *);
+>   static void sdma_get(struct sdma_state *);
+> -static void sdma_hw_clean_up_task(struct tasklet_struct *);
+> +static void sdma_hw_clean_up_task(struct work_struct *);
+>   static void sdma_put(struct sdma_state *);
+>   static void sdma_set_state(struct sdma_engine *, enum sdma_states);
+>   static void sdma_start_hw_clean_up(struct sdma_engine *);
+> -static void sdma_sw_clean_up_task(struct tasklet_struct *);
+> +static void sdma_sw_clean_up_task(struct work_struct *);
+>   static void sdma_sendctrl(struct sdma_engine *, unsigned);
+>   static void init_sdma_regs(struct sdma_engine *, u32, uint);
+>   static void sdma_process_event(
+> @@ -503,9 +504,9 @@ static void sdma_err_progress_check(struct timer_list *t)
+>   	schedule_work(&sde->err_halt_worker);
+>   }
+>   
+> -static void sdma_hw_clean_up_task(struct tasklet_struct *t)
+> +static void sdma_hw_clean_up_task(struct work_struct *t)
+>   {
+> -	struct sdma_engine *sde = from_tasklet(sde, t,
+> +	struct sdma_engine *sde = from_work(sde, t,
+>   					       sdma_hw_clean_up_task);
+>   	u64 statuscsr;
+>   
+> @@ -563,9 +564,9 @@ static void sdma_flush_descq(struct sdma_engine *sde)
+>   		sdma_desc_avail(sde, sdma_descq_freecnt(sde));
+>   }
+>   
+> -static void sdma_sw_clean_up_task(struct tasklet_struct *t)
+> +static void sdma_sw_clean_up_task(struct work_struct *t)
+>   {
+> -	struct sdma_engine *sde = from_tasklet(sde, t, sdma_sw_clean_up_task);
+> +	struct sdma_engine *sde = from_work(sde, t, sdma_sw_clean_up_task);
+>   	unsigned long flags;
+>   
+>   	spin_lock_irqsave(&sde->tail_lock, flags);
+> @@ -624,7 +625,7 @@ static void sdma_sw_tear_down(struct sdma_engine *sde)
+>   
+>   static void sdma_start_hw_clean_up(struct sdma_engine *sde)
+>   {
+> -	tasklet_hi_schedule(&sde->sdma_hw_clean_up_task);
+> +	queue_work(system_bh_highpri_wq, &sde->sdma_hw_clean_up_task);
+>   }
+>   
+>   static void sdma_set_state(struct sdma_engine *sde,
+> @@ -1415,9 +1416,9 @@ int sdma_init(struct hfi1_devdata *dd, u8 port)
+>   		sde->tail_csr =
+>   			get_kctxt_csr_addr(dd, this_idx, SD(TAIL));
+>   
+> -		tasklet_setup(&sde->sdma_hw_clean_up_task,
+> +		INIT_WORK(&sde->sdma_hw_clean_up_task,
+>   			      sdma_hw_clean_up_task);
+> -		tasklet_setup(&sde->sdma_sw_clean_up_task,
+> +		INIT_WORK(&sde->sdma_sw_clean_up_task,
+>   			      sdma_sw_clean_up_task);
+>   		INIT_WORK(&sde->err_halt_worker, sdma_err_halt_wait);
+>   		INIT_WORK(&sde->flush_worker, sdma_field_flush);
+> @@ -2741,7 +2742,7 @@ static void __sdma_process_event(struct sdma_engine *sde,
+>   		switch (event) {
+>   		case sdma_event_e00_go_hw_down:
+>   			sdma_set_state(sde, sdma_state_s00_hw_down);
+> -			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
+> +			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
+>   			break;
+>   		case sdma_event_e10_go_hw_start:
+>   			break;
+> @@ -2783,13 +2784,13 @@ static void __sdma_process_event(struct sdma_engine *sde,
+>   		switch (event) {
+>   		case sdma_event_e00_go_hw_down:
+>   			sdma_set_state(sde, sdma_state_s00_hw_down);
+> -			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
+> +			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
+>   			break;
+>   		case sdma_event_e10_go_hw_start:
+>   			break;
+>   		case sdma_event_e15_hw_halt_done:
+>   			sdma_set_state(sde, sdma_state_s30_sw_clean_up_wait);
+> -			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
+> +			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
+>   			break;
+>   		case sdma_event_e25_hw_clean_up_done:
+>   			break;
+> @@ -2824,13 +2825,13 @@ static void __sdma_process_event(struct sdma_engine *sde,
+>   		switch (event) {
+>   		case sdma_event_e00_go_hw_down:
+>   			sdma_set_state(sde, sdma_state_s00_hw_down);
+> -			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
+> +			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
+>   			break;
+>   		case sdma_event_e10_go_hw_start:
+>   			break;
+>   		case sdma_event_e15_hw_halt_done:
+>   			sdma_set_state(sde, sdma_state_s30_sw_clean_up_wait);
+> -			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
+> +			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
+>   			break;
+>   		case sdma_event_e25_hw_clean_up_done:
+>   			break;
+> @@ -2864,7 +2865,7 @@ static void __sdma_process_event(struct sdma_engine *sde,
+>   		switch (event) {
+>   		case sdma_event_e00_go_hw_down:
+>   			sdma_set_state(sde, sdma_state_s00_hw_down);
+> -			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
+> +			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
+>   			break;
+>   		case sdma_event_e10_go_hw_start:
+>   			break;
+> @@ -2888,7 +2889,7 @@ static void __sdma_process_event(struct sdma_engine *sde,
+>   			break;
+>   		case sdma_event_e81_hw_frozen:
+>   			sdma_set_state(sde, sdma_state_s82_freeze_sw_clean);
+> -			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
+> +			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
+>   			break;
+>   		case sdma_event_e82_hw_unfreeze:
+>   			break;
+> @@ -2903,7 +2904,7 @@ static void __sdma_process_event(struct sdma_engine *sde,
+>   		switch (event) {
+>   		case sdma_event_e00_go_hw_down:
+>   			sdma_set_state(sde, sdma_state_s00_hw_down);
+> -			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
+> +			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
+>   			break;
+>   		case sdma_event_e10_go_hw_start:
+>   			break;
+> @@ -2947,7 +2948,7 @@ static void __sdma_process_event(struct sdma_engine *sde,
+>   		switch (event) {
+>   		case sdma_event_e00_go_hw_down:
+>   			sdma_set_state(sde, sdma_state_s00_hw_down);
+> -			tasklet_hi_schedule(&sde->sdma_sw_clean_up_task);
+> +			queue_work(system_bh_highpri_wq, &sde->sdma_sw_clean_up_task);
+>   			break;
+>   		case sdma_event_e10_go_hw_start:
+>   			break;
+> diff --git a/drivers/infiniband/hw/hfi1/sdma.h b/drivers/infiniband/hw/hfi1/sdma.h
+> index d77246b48434..3f047260cebe 100644
+> --- a/drivers/infiniband/hw/hfi1/sdma.h
+> +++ b/drivers/infiniband/hw/hfi1/sdma.h
+> @@ -11,6 +11,7 @@
+>   #include <asm/byteorder.h>
+>   #include <linux/workqueue.h>
+>   #include <linux/rculist.h>
+> +#include <linux/workqueue.h>
+>   
+>   #include "hfi.h"
+>   #include "verbs.h"
+> @@ -346,11 +347,11 @@ struct sdma_engine {
+>   
+>   	/* CONFIG SDMA for now, just blindly duplicate */
+>   	/* private: */
+> -	struct tasklet_struct sdma_hw_clean_up_task
+> +	struct work_struct sdma_hw_clean_up_task
+>   		____cacheline_aligned_in_smp;
+>   
+>   	/* private: */
+> -	struct tasklet_struct sdma_sw_clean_up_task
+> +	struct work_struct sdma_sw_clean_up_task
+>   		____cacheline_aligned_in_smp;
+>   	/* private: */
+>   	struct work_struct err_halt_worker;
+> @@ -471,7 +472,7 @@ void _sdma_txreq_ahgadd(
+>    * Completions of submitted requests can be gotten on selected
+>    * txreqs by giving a completion routine callback to sdma_txinit() or
+>    * sdma_txinit_ahg().  The environment in which the callback runs
+> - * can be from an ISR, a tasklet, or a thread, so no sleeping
+> + * can be from an ISR, a work, or a thread, so no sleeping
+>    * kernel routines can be used.   Aspects of the sdma ring may
+>    * be locked so care should be taken with locking.
+>    *
+> @@ -551,7 +552,7 @@ static inline int sdma_txinit_ahg(
+>    * Completions of submitted requests can be gotten on selected
+>    * txreqs by giving a completion routine callback to sdma_txinit() or
+>    * sdma_txinit_ahg().  The environment in which the callback runs
+> - * can be from an ISR, a tasklet, or a thread, so no sleeping
+> + * can be from an ISR, a work, or a thread, so no sleeping
+>    * kernel routines can be used.   The head size of the sdma ring may
+>    * be locked so care should be taken with locking.
+>    *
+> diff --git a/drivers/infiniband/hw/hfi1/tid_rdma.c b/drivers/infiniband/hw/hfi1/tid_rdma.c
+> index c465966a1d9c..31cb5a092f42 100644
+> --- a/drivers/infiniband/hw/hfi1/tid_rdma.c
+> +++ b/drivers/infiniband/hw/hfi1/tid_rdma.c
+> @@ -2316,7 +2316,7 @@ void hfi1_rc_rcv_tid_rdma_read_req(struct hfi1_packet *packet)
+>   	 */
+>   	qpriv->r_tid_alloc = qp->r_head_ack_queue;
+>   
+> -	/* Schedule the send tasklet. */
+> +	/* Schedule the send work. */
+>   	qp->s_flags |= RVT_S_RESP_PENDING;
+>   	if (fecn)
+>   		qp->s_flags |= RVT_S_ECN;
+> @@ -3807,7 +3807,7 @@ void hfi1_rc_rcv_tid_rdma_write_req(struct hfi1_packet *packet)
+>   	hfi1_tid_write_alloc_resources(qp, true);
+>   	trace_hfi1_tid_write_rsp_rcv_req(qp);
+>   
+> -	/* Schedule the send tasklet. */
+> +	/* Schedule the send work. */
+>   	qp->s_flags |= RVT_S_RESP_PENDING;
+>   	if (fecn)
+>   		qp->s_flags |= RVT_S_ECN;
+> @@ -5389,7 +5389,7 @@ static void hfi1_do_tid_send(struct rvt_qp *qp)
+>   
+>   			/*
+>   			 * If the packet cannot be sent now, return and
+> -			 * the send tasklet will be woken up later.
+> +			 * the send work will be woken up later.
+>   			 */
+>   			if (hfi1_verbs_send(qp, &ps))
+>   				return;
+> diff --git a/drivers/infiniband/hw/irdma/ctrl.c b/drivers/infiniband/hw/irdma/ctrl.c
+> index 6aed6169c07d..e9644f2b774d 100644
+> --- a/drivers/infiniband/hw/irdma/ctrl.c
+> +++ b/drivers/infiniband/hw/irdma/ctrl.c
+> @@ -5271,7 +5271,7 @@ int irdma_process_cqp_cmd(struct irdma_sc_dev *dev,
+>   }
+>   
+>   /**
+> - * irdma_process_bh - called from tasklet for cqp list
+> + * irdma_process_bh - called from work for cqp list
+>    * @dev: sc device struct
+>    */
+>   int irdma_process_bh(struct irdma_sc_dev *dev)
+> diff --git a/drivers/infiniband/hw/irdma/hw.c b/drivers/infiniband/hw/irdma/hw.c
+> index ad50b77282f8..18d552919c28 100644
+> --- a/drivers/infiniband/hw/irdma/hw.c
+> +++ b/drivers/infiniband/hw/irdma/hw.c
+> @@ -440,12 +440,12 @@ static void irdma_ena_intr(struct irdma_sc_dev *dev, u32 msix_id)
+>   }
+>   
+>   /**
+> - * irdma_dpc - tasklet for aeq and ceq 0
+> - * @t: tasklet_struct ptr
+> + * irdma_dpc - work for aeq and ceq 0
+> + * @t: work_struct ptr
+>    */
+> -static void irdma_dpc(struct tasklet_struct *t)
+> +static void irdma_dpc(struct work_struct *t)
+>   {
+> -	struct irdma_pci_f *rf = from_tasklet(rf, t, dpc_tasklet);
+> +	struct irdma_pci_f *rf = from_work(rf, t, dpc_work);
+>   
+>   	if (rf->msix_shared)
+>   		irdma_process_ceq(rf, rf->ceqlist);
+> @@ -455,11 +455,11 @@ static void irdma_dpc(struct tasklet_struct *t)
+>   
+>   /**
+>    * irdma_ceq_dpc - dpc handler for CEQ
+> - * @t: tasklet_struct ptr
+> + * @t: work_struct ptr
+>    */
+> -static void irdma_ceq_dpc(struct tasklet_struct *t)
+> +static void irdma_ceq_dpc(struct work_struct *t)
+>   {
+> -	struct irdma_ceq *iwceq = from_tasklet(iwceq, t, dpc_tasklet);
+> +	struct irdma_ceq *iwceq = from_work(iwceq, t, dpc_work);
+>   	struct irdma_pci_f *rf = iwceq->rf;
+>   
+>   	irdma_process_ceq(rf, iwceq);
+> @@ -533,7 +533,7 @@ static irqreturn_t irdma_irq_handler(int irq, void *data)
+>   {
+>   	struct irdma_pci_f *rf = data;
+>   
+> -	tasklet_schedule(&rf->dpc_tasklet);
+> +	queue_work(system_bh_wq, &rf->dpc_work);
+>   
+>   	return IRQ_HANDLED;
+>   }
+> @@ -550,7 +550,7 @@ static irqreturn_t irdma_ceq_handler(int irq, void *data)
+>   	if (iwceq->irq != irq)
+>   		ibdev_err(to_ibdev(&iwceq->rf->sc_dev), "expected irq = %d received irq = %d\n",
+>   			  iwceq->irq, irq);
+> -	tasklet_schedule(&iwceq->dpc_tasklet);
+> +	queue_work(system_bh_wq, &iwceq->dpc_work);
+>   
+>   	return IRQ_HANDLED;
+>   }
+> @@ -1121,14 +1121,14 @@ static int irdma_cfg_ceq_vector(struct irdma_pci_f *rf, struct irdma_ceq *iwceq,
+>   	if (rf->msix_shared && !ceq_id) {
+>   		snprintf(msix_vec->name, sizeof(msix_vec->name) - 1,
+>   			 "irdma-%s-AEQCEQ-0", dev_name(&rf->pcidev->dev));
+> -		tasklet_setup(&rf->dpc_tasklet, irdma_dpc);
+> +		INIT_WORK(&rf->dpc_work, irdma_dpc);
+>   		status = request_irq(msix_vec->irq, irdma_irq_handler, 0,
+>   				     msix_vec->name, rf);
+>   	} else {
+>   		snprintf(msix_vec->name, sizeof(msix_vec->name) - 1,
+>   			 "irdma-%s-CEQ-%d",
+>   			 dev_name(&rf->pcidev->dev), ceq_id);
+> -		tasklet_setup(&iwceq->dpc_tasklet, irdma_ceq_dpc);
+> +		INIT_WORK(&iwceq->dpc_work, irdma_ceq_dpc);
+>   
+>   		status = request_irq(msix_vec->irq, irdma_ceq_handler, 0,
+>   				     msix_vec->name, iwceq);
+> @@ -1162,7 +1162,7 @@ static int irdma_cfg_aeq_vector(struct irdma_pci_f *rf)
+>   	if (!rf->msix_shared) {
+>   		snprintf(msix_vec->name, sizeof(msix_vec->name) - 1,
+>   			 "irdma-%s-AEQ", dev_name(&rf->pcidev->dev));
+> -		tasklet_setup(&rf->dpc_tasklet, irdma_dpc);
+> +		INIT_WORK(&rf->dpc_work, irdma_dpc);
+>   		ret = request_irq(msix_vec->irq, irdma_irq_handler, 0,
+>   				  msix_vec->name, rf);
+>   	}
+> diff --git a/drivers/infiniband/hw/irdma/main.h b/drivers/infiniband/hw/irdma/main.h
+> index b65bc2ea542f..54301093b746 100644
+> --- a/drivers/infiniband/hw/irdma/main.h
+> +++ b/drivers/infiniband/hw/irdma/main.h
+> @@ -30,6 +30,7 @@
+>   #endif
+>   #include <linux/auxiliary_bus.h>
+>   #include <linux/net/intel/iidc.h>
+> +#include <linux/workqueue.h>
+>   #include <crypto/hash.h>
+>   #include <rdma/ib_smi.h>
+>   #include <rdma/ib_verbs.h>
+> @@ -192,7 +193,7 @@ struct irdma_ceq {
+>   	u32 irq;
+>   	u32 msix_idx;
+>   	struct irdma_pci_f *rf;
+> -	struct tasklet_struct dpc_tasklet;
+> +	struct work_struct dpc_work;
+>   	spinlock_t ce_lock; /* sync cq destroy with cq completion event notification */
+>   };
+>   
+> @@ -316,7 +317,7 @@ struct irdma_pci_f {
+>   	struct mc_table_list mc_qht_list;
+>   	struct irdma_msix_vector *iw_msixtbl;
+>   	struct irdma_qvlist_info *iw_qvlist;
+> -	struct tasklet_struct dpc_tasklet;
+> +	struct work_struct dpc_work;
+>   	struct msix_entry *msix_entries;
+>   	struct irdma_dma_mem obj_mem;
+>   	struct irdma_dma_mem obj_next;
+> diff --git a/drivers/infiniband/hw/qib/qib.h b/drivers/infiniband/hw/qib/qib.h
+> index 26c615772be3..d2ebaf31ce5a 100644
+> --- a/drivers/infiniband/hw/qib/qib.h
+> +++ b/drivers/infiniband/hw/qib/qib.h
+> @@ -53,6 +53,7 @@
+>   #include <linux/sched.h>
+>   #include <linux/kthread.h>
+>   #include <linux/xarray.h>
+> +#include <linux/workqueue.h>
+>   #include <rdma/ib_hdrs.h>
+>   #include <rdma/rdma_vt.h>
+>   
+> @@ -562,7 +563,7 @@ struct qib_pportdata {
+>   	u8                    sdma_generation;
+>   	u8                    sdma_intrequest;
+>   
+> -	struct tasklet_struct sdma_sw_clean_up_task
+> +	struct work_struct sdma_sw_clean_up_task
+>   		____cacheline_aligned_in_smp;
+>   
+>   	wait_queue_head_t state_wait; /* for state_wanted */
+> @@ -1068,8 +1069,8 @@ struct qib_devdata {
+>   	u8 psxmitwait_supported;
+>   	/* cycle length of PS* counters in HW (in picoseconds) */
+>   	u16 psxmitwait_check_rate;
+> -	/* high volume overflow errors defered to tasklet */
+> -	struct tasklet_struct error_tasklet;
+> +	/* high volume overflow errors defered to work */
+> +	struct work_struct error_work;
+>   
+>   	int assigned_node_id; /* NUMA node closest to HCA */
+>   };
+> diff --git a/drivers/infiniband/hw/qib/qib_iba7322.c b/drivers/infiniband/hw/qib/qib_iba7322.c
+> index f93906d8fc09..c3325071f2b3 100644
+> --- a/drivers/infiniband/hw/qib/qib_iba7322.c
+> +++ b/drivers/infiniband/hw/qib/qib_iba7322.c
+> @@ -46,6 +46,7 @@
+>   #include <rdma/ib_smi.h>
+>   #ifdef CONFIG_INFINIBAND_QIB_DCA
+>   #include <linux/dca.h>
+> +#include <linux/workqueue.h>
+>   #endif
+>   
+>   #include "qib.h"
+> @@ -1711,9 +1712,9 @@ static noinline void handle_7322_errors(struct qib_devdata *dd)
+>   	return;
+>   }
+>   
+> -static void qib_error_tasklet(struct tasklet_struct *t)
+> +static void qib_error_work(struct work_struct *t)
+>   {
+> -	struct qib_devdata *dd = from_tasklet(dd, t, error_tasklet);
+> +	struct qib_devdata *dd = from_work(dd, t, error_work);
+>   
+>   	handle_7322_errors(dd);
+>   	qib_write_kreg(dd, kr_errmask, dd->cspec->errormask);
+> @@ -3001,7 +3002,7 @@ static noinline void unlikely_7322_intr(struct qib_devdata *dd, u64 istat)
+>   		unknown_7322_gpio_intr(dd);
+>   	if (istat & QIB_I_C_ERROR) {
+>   		qib_write_kreg(dd, kr_errmask, 0ULL);
+> -		tasklet_schedule(&dd->error_tasklet);
+> +		queue_work(system_bh_wq, &dd->error_work);
+>   	}
+>   	if (istat & INT_MASK_P(Err, 0) && dd->rcd[0])
+>   		handle_7322_p_errors(dd->rcd[0]->ppd);
+> @@ -3515,7 +3516,7 @@ static void qib_setup_7322_interrupt(struct qib_devdata *dd, int clearpend)
+>   	for (i = 0; i < ARRAY_SIZE(redirect); i++)
+>   		qib_write_kreg(dd, kr_intredirect + i, redirect[i]);
+>   	dd->cspec->main_int_mask = mask;
+> -	tasklet_setup(&dd->error_tasklet, qib_error_tasklet);
+> +	INIT_WORK(&dd->error_work, qib_error_work);
+>   }
+>   
+>   /**
+> diff --git a/drivers/infiniband/hw/qib/qib_rc.c b/drivers/infiniband/hw/qib/qib_rc.c
+> index a1c20ffb4490..79e31921e384 100644
+> --- a/drivers/infiniband/hw/qib/qib_rc.c
+> +++ b/drivers/infiniband/hw/qib/qib_rc.c
+> @@ -593,7 +593,7 @@ int qib_make_rc_req(struct rvt_qp *qp, unsigned long *flags)
+>    *
+>    * This is called from qib_rc_rcv() and qib_kreceive().
+>    * Note that RDMA reads and atomics are handled in the
+> - * send side QP state and tasklet.
+> + * send side QP state and work.
+>    */
+>   void qib_send_rc_ack(struct rvt_qp *qp)
+>   {
+> @@ -670,7 +670,7 @@ void qib_send_rc_ack(struct rvt_qp *qp)
+>   		/*
+>   		 * We are out of PIO buffers at the moment.
+>   		 * Pass responsibility for sending the ACK to the
+> -		 * send tasklet so that when a PIO buffer becomes
+> +		 * send work so that when a PIO buffer becomes
+>   		 * available, the ACK is sent ahead of other outgoing
+>   		 * packets.
+>   		 */
+> @@ -715,7 +715,7 @@ void qib_send_rc_ack(struct rvt_qp *qp)
+>   		qp->s_nak_state = qp->r_nak_state;
+>   		qp->s_ack_psn = qp->r_ack_psn;
+>   
+> -		/* Schedule the send tasklet. */
+> +		/* Schedule the send work. */
+>   		qib_schedule_send(qp);
+>   	}
+>   unlock:
+> @@ -806,7 +806,7 @@ static void reset_psn(struct rvt_qp *qp, u32 psn)
+>   	qp->s_psn = psn;
+>   	/*
+>   	 * Set RVT_S_WAIT_PSN as qib_rc_complete() may start the timer
+> -	 * asynchronously before the send tasklet can get scheduled.
+> +	 * asynchronously before the send work can get scheduled.
+>   	 * Doing it in qib_make_rc_req() is too late.
+>   	 */
+>   	if ((qib_cmp24(qp->s_psn, qp->s_sending_hpsn) <= 0) &&
+> @@ -1292,7 +1292,7 @@ static void qib_rc_rcv_resp(struct qib_ibport *ibp,
+>   		    (qib_cmp24(qp->s_sending_psn, qp->s_sending_hpsn) <= 0)) {
+>   
+>   			/*
+> -			 * If send tasklet not running attempt to progress
+> +			 * If send work not running attempt to progress
+>   			 * SDMA queue.
+>   			 */
+>   			if (!(qp->s_flags & RVT_S_BUSY)) {
+> @@ -1629,7 +1629,7 @@ static int qib_rc_rcv_error(struct ib_other_headers *ohdr,
+>   	case OP(FETCH_ADD): {
+>   		/*
+>   		 * If we didn't find the atomic request in the ack queue
+> -		 * or the send tasklet is already backed up to send an
+> +		 * or the send work is already backed up to send an
+>   		 * earlier entry, we can ignore this request.
+>   		 */
+>   		if (!e || e->opcode != (u8) opcode || old_req)
+> @@ -1996,7 +1996,7 @@ void qib_rc_rcv(struct qib_ctxtdata *rcd, struct ib_header *hdr,
+>   		qp->r_nak_state = 0;
+>   		qp->r_head_ack_queue = next;
+>   
+> -		/* Schedule the send tasklet. */
+> +		/* Schedule the send work. */
+>   		qp->s_flags |= RVT_S_RESP_PENDING;
+>   		qib_schedule_send(qp);
+>   
+> @@ -2059,7 +2059,7 @@ void qib_rc_rcv(struct qib_ctxtdata *rcd, struct ib_header *hdr,
+>   		qp->r_nak_state = 0;
+>   		qp->r_head_ack_queue = next;
+>   
+> -		/* Schedule the send tasklet. */
+> +		/* Schedule the send work. */
+>   		qp->s_flags |= RVT_S_RESP_PENDING;
+>   		qib_schedule_send(qp);
+>   
+> diff --git a/drivers/infiniband/hw/qib/qib_ruc.c b/drivers/infiniband/hw/qib/qib_ruc.c
+> index 1fa21938f310..f44a2a8b4b1e 100644
+> --- a/drivers/infiniband/hw/qib/qib_ruc.c
+> +++ b/drivers/infiniband/hw/qib/qib_ruc.c
+> @@ -257,7 +257,7 @@ void _qib_do_send(struct work_struct *work)
+>    * @qp: pointer to the QP
+>    *
+>    * Process entries in the send work queue until credit or queue is
+> - * exhausted.  Only allow one CPU to send a packet per QP (tasklet).
+> + * exhausted.  Only allow one CPU to send a packet per QP (work).
+>    * Otherwise, two threads could send packets out of order.
+>    */
+>   void qib_do_send(struct rvt_qp *qp)
+> @@ -299,7 +299,7 @@ void qib_do_send(struct rvt_qp *qp)
+>   			spin_unlock_irqrestore(&qp->s_lock, flags);
+>   			/*
+>   			 * If the packet cannot be sent now, return and
+> -			 * the send tasklet will be woken up later.
+> +			 * the send work will be woken up later.
+>   			 */
+>   			if (qib_verbs_send(qp, priv->s_hdr, qp->s_hdrwords,
+>   					   qp->s_cur_sge, qp->s_cur_size))
+> diff --git a/drivers/infiniband/hw/qib/qib_sdma.c b/drivers/infiniband/hw/qib/qib_sdma.c
+> index 5e86cbf7d70e..facb3964d2ec 100644
+> --- a/drivers/infiniband/hw/qib/qib_sdma.c
+> +++ b/drivers/infiniband/hw/qib/qib_sdma.c
+> @@ -34,6 +34,7 @@
+>   #include <linux/spinlock.h>
+>   #include <linux/netdevice.h>
+>   #include <linux/moduleparam.h>
+> +#include <linux/workqueue.h>
+>   
+>   #include "qib.h"
+>   #include "qib_common.h"
+> @@ -62,7 +63,7 @@ static void sdma_get(struct qib_sdma_state *);
+>   static void sdma_put(struct qib_sdma_state *);
+>   static void sdma_set_state(struct qib_pportdata *, enum qib_sdma_states);
+>   static void sdma_start_sw_clean_up(struct qib_pportdata *);
+> -static void sdma_sw_clean_up_task(struct tasklet_struct *);
+> +static void sdma_sw_clean_up_task(struct work_struct *);
+>   static void unmap_desc(struct qib_pportdata *, unsigned);
+>   
+>   static void sdma_get(struct qib_sdma_state *ss)
+> @@ -119,9 +120,9 @@ static void clear_sdma_activelist(struct qib_pportdata *ppd)
+>   	}
+>   }
+>   
+> -static void sdma_sw_clean_up_task(struct tasklet_struct *t)
+> +static void sdma_sw_clean_up_task(struct work_struct *t)
+>   {
+> -	struct qib_pportdata *ppd = from_tasklet(ppd, t,
+> +	struct qib_pportdata *ppd = from_work(ppd, t,
+>   						 sdma_sw_clean_up_task);
+>   	unsigned long flags;
+>   
+> @@ -188,7 +189,7 @@ static void sdma_sw_tear_down(struct qib_pportdata *ppd)
+>   
+>   static void sdma_start_sw_clean_up(struct qib_pportdata *ppd)
+>   {
+> -	tasklet_hi_schedule(&ppd->sdma_sw_clean_up_task);
+> +	queue_work(system_bh_highpri_wq, &ppd->sdma_sw_clean_up_task);
+>   }
+>   
+>   static void sdma_set_state(struct qib_pportdata *ppd,
+> @@ -437,7 +438,7 @@ int qib_setup_sdma(struct qib_pportdata *ppd)
+>   
+>   	INIT_LIST_HEAD(&ppd->sdma_activelist);
+>   
+> -	tasklet_setup(&ppd->sdma_sw_clean_up_task, sdma_sw_clean_up_task);
+> +	INIT_WORK(&ppd->sdma_sw_clean_up_task, sdma_sw_clean_up_task);
+>   
+>   	ret = dd->f_init_sdma_regs(ppd);
+>   	if (ret)
+> diff --git a/drivers/infiniband/sw/rdmavt/qp.c b/drivers/infiniband/sw/rdmavt/qp.c
+> index e6203e26cc06..efe4689151c2 100644
+> --- a/drivers/infiniband/sw/rdmavt/qp.c
+> +++ b/drivers/infiniband/sw/rdmavt/qp.c
+> @@ -1306,7 +1306,7 @@ int rvt_error_qp(struct rvt_qp *qp, enum ib_wc_status err)
+>   
+>   	rdi->driver_f.notify_error_qp(qp);
+>   
+> -	/* Schedule the sending tasklet to drain the send work queue. */
+> +	/* Schedule the sending work to drain the send work queue. */
+>   	if (READ_ONCE(qp->s_last) != qp->s_head)
+>   		rdi->driver_f.schedule_send(qp);
+>   
 
 
