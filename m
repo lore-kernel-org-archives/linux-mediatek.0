@@ -4,83 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AECE5CD128A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 10:38:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C5F0C67861
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 10:51:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=i1J16o8a/AiIgBIYW2eQoMmauzTJFPFFwzLx0A2U3Tk=; b=1vB1b+7171fiLll3Svw17BMPj6
-	zZCgux0m4IULHcYe4xrQItQ6GnNrj7sG8/tVQZIAH+9Pzk/ccxEYST2v6kOQ6DBK4QocSQ20ZD8TD
-	1o3GvUlnsaSeSFxR0ahxMbuHs4pKsW/Z0V1JU7gMRNSRQuImGeP6Gmn6OIKX3lg5Gcf4vdPjAw+WT
-	rN8jIm4/LAOgGNJiqH35W5ts85jff3qlMmEOkigQwfpKceOEh/pJsywWoETcinb0t3M+P/rwWGTQ/
-	Sf87NzmQUS8KKr7lW7a+mttDkQOG7zk7MYLRCtGlYrG5uU7evelFFIPTnkXCrMPxa+0y5InYm8vy7
-	h3ERhW3Q==;
+	bh=BgMBOXWSUTk2V625cFtn0BP+aJZnfiCckssn4N/MuIc=; b=Mmous88c7iXNeitcIWWDDzLBrw
+	xAaqWV3Uu5BeYUgI6mjEKwtTAFcSKKTubGm/VJgjSD7IOYDsYxW0zOfJesPC9vBaA3UhRZ9WGPsT3
+	xkp5xPisKN695IuVieRBHETaHsRt9ssfkVlv4WFa0iJ/rFctE9WoBcQSaIkeANm3Tlh8g5jPQFdHI
+	tDk+yHsf5p7Tkc9VI5/u4IoprXMcAf7qYJj7WTG00j2AioXghwTvT/dVqesIRco8+Kj6K7A6ZXCWr
+	j+bR1Z6o+WdkERUvyAj63cKuSQFqE8lLfOVCpfJtsfL63JP7/s4fPpm5VVNOxgkgyk1FhGUxl9+y9
+	A80O1lMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtmOa-0000000FHj9-1S5Y;
-	Mon, 08 Apr 2024 10:38:36 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rtmbQ-0000000FJDc-2zpz;
+	Mon, 08 Apr 2024 10:51:52 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtmOW-0000000FHiJ-42GI
-	for linux-mediatek@lists.infradead.org;
-	Mon, 08 Apr 2024 10:38:34 +0000
-X-UUID: 23226ad0f59411ee96d5dfc950b7243d-20240408
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=i1J16o8a/AiIgBIYW2eQoMmauzTJFPFFwzLx0A2U3Tk=;
-	b=Aj1C93UEiaYW1mE5sUYIWNTAYZH/L/pom2J40XbGU/P8PwgvIaG5mekPUabISA+dicfrHAbuRUPT+LnQcTvIrtRkgzzPL4C0BJt0x2zNkMO4PZvJ1YKbSe4eyLdXxAZ6ZuD0sZWd+bCLkoqdXoh8NKJr1jeTJNsf5S97RL2hqt0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:a644fc5e-7b74-491d-889e-e4aff9ee125c,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:18f5eb85-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 23226ad0f59411ee96d5dfc950b7243d-20240408
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <joe.zhou@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 138953394; Mon, 08 Apr 2024 03:38:28 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 8 Apr 2024 18:38:20 +0800
-Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 8 Apr 2024 18:38:19 +0800
-From: Joe.Zhou <Joe.Zhou@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-CC: <linux-mmc@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<wsd_upstream@mediatek.com>, "Peng . Zhou" <Peng.Zhou@mediatek.com>, "Sophie
- . Wang" <Sophie.Wang@mediatek.com>, "Wey . Zhang" <Wey.Zhang@mediatek.com>,
-	"Yijian . Jia" <yijian.jia@mediatek.com>, "Sharp . Xia"
-	<Sharp.Xia@mediatek.com>, Joe.Zhou <Joe.Zhou@mediatek.com>
-Subject: [PATCH] mmc: race condition between "sdcard hot plug out" and "system reboot"
-Date: Mon, 8 Apr 2024 18:38:24 +0800
-Message-ID: <20240408103824.11476-1-Joe.Zhou@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1rtmbN-0000000FJD7-2bl5;
+	Mon, 08 Apr 2024 10:51:51 +0000
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-56e6282dd72so784077a12.3;
+        Mon, 08 Apr 2024 03:51:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1712573507; x=1713178307; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=BgMBOXWSUTk2V625cFtn0BP+aJZnfiCckssn4N/MuIc=;
+        b=gM0IofIcEV702ZfyaAHvweNSme5et06xqAsBek116uyBUXDG1NzQeyNnuXW2YeHmL4
+         AuNwcKaDoMt7aJ8d59JBQTshIv9BWZT5CNmt6OXStPtpfozFxAdxxrSNtNGM0JIKCWZ7
+         UTsrvFYC8u0ylNYo6fmkrJ4QnF0HjC/SE2wszIXayVrWkgcTJrI5nLqtBkczpx5+3wcq
+         E8igmXzwb24dVwrV5UV/evjV93MyOjNyPynBisVQ6UWRXjzF7QZcRTnXuWeGnxnzcw6V
+         3Bn7wHL9b9CSeVeo0BB2q1gbs627etx1DaUrhCbOVx2dV1RZb1Emva8cXEql2qTy6Rg9
+         52VA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712573507; x=1713178307;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=BgMBOXWSUTk2V625cFtn0BP+aJZnfiCckssn4N/MuIc=;
+        b=gstBEY+hLmBvVSPLWKCh4y4D1LeAlFxnM1s4w4XRdeEuh8Kj8OrFISdTbinusrXzOK
+         p7501ZYd/TcwDbUdL2WqHJS86gx5razfrxurw6fD0UzGb2ymKc6/G3Pw9EtP8KBZ17NR
+         XospwmZx4CO/wDRQobqu9VcMzC/8Fy1Qu0gywmRiVEibg1QZU8GPavAMC/yy8rSDBDIs
+         k+7kKGr1jeV9VV3i1rsLkSEgE2h2l7pKBojEnlk/XEOT7LTF/H8O2cz4E1ELPfVnvutd
+         M2aPg88TAY7VgHzSJh6P9MiAkpvLDPKUIqc9PttFC4gzkEA8oP3HCkNuOWXiD4Ev328A
+         BQLg==
+X-Forwarded-Encrypted: i=1; AJvYcCUMRyIis4GCGdVcMjd7AuVPdWbwan4ZYz69GDeqFE7jQkA8s01yDoxKd6EY71aW1OkT1waVu6mP0bj8+vRZgtliWPjq2Cw9XRaKvxEGkLqXjKSqyvj7ak327xgAomJCmQcpqCMuukFL9i9qZQBi59qrtubP9WtdGLY=
+X-Gm-Message-State: AOJu0Ywwc+ljAthlFgTUHht6EDRPyqJCQHzsqvmLSJO1Xb+S5auP6Twj
+	WnSZqmfETiHwrdBc67YGIys9qR4PE5AJ4lb5wQaGqUzUR+tR6yRh
+X-Google-Smtp-Source: AGHT+IF1/ugf/K7uAP7APr+QbAPjgDSfGk4792+1LeuVHIJk9kuAxqHXAOJRMldWYia02ufJj3Ks0w==
+X-Received: by 2002:a50:c003:0:b0:566:fbf5:a279 with SMTP id r3-20020a50c003000000b00566fbf5a279mr5312382edb.20.1712573506521;
+        Mon, 08 Apr 2024 03:51:46 -0700 (PDT)
+Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.gmail.com with ESMTPSA id c9-20020a0564021f8900b00568c613570dsm3983900edc.79.2024.04.08.03.51.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 08 Apr 2024 03:51:46 -0700 (PDT)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hsin-Yi Wang <hsinyi@chromium.org>,
+	linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH] dt-bindings: pinctrl: mediatek: mt7622: add "gpio-ranges" property
+Date: Mon,  8 Apr 2024 12:51:28 +0200
+Message-Id: <20240408105128.30586-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--5.893800-8.000000
-X-TMASE-MatchedRID: 4dLm6kicgxWvVT6bfkFW/ocU/ASc4KydJD5ItWH4fSKUvX/ci5TjsqP6
-	lEvEjaSAqvr4KXCXxhMNdZsOPCvd7LuIV2AVynTksyNb+yeIRAohpWQUitAWG5kd+ko3Vgxl8U1
-	60P1TrZB8lDLz8Vr1zLZMGUUyuIF5lwV2iaAfSWcURSScn+QSXt0H8LFZNFG7hqz53n/yPnql9x
-	whgVpyoZb6UV+Zy7/DoltnS9/+IyJOSSqBsK+S9FbhgBx8Hi7b
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--5.893800-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 9C3F4986530E6E5EA6FD323329A355320D03813A4A33CF50CA99282926EAA13D2000:8
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_033833_060500_9C88E7ED 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20240408_035149_687620_6C872259 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,91 +99,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mmc driver, a race condition may occur between "sdcard hot plug out" and "system reboot".
-How it happen?
+From: Rafał Miłecki <rafal@milecki.pl>
 
-sdcard hot pulg out:                SyS_reboot:
-CPU0                               CPU1
-mmc_sd_detect()                    _mmc_sd_suspend
-{                                  {
+Allow specifying pin to GPIO mapping. It can be find in in-Linux DTS
+file for MT7622.
 
-......
-#Step1: detect SD card removed
-if (err) {                          ......
-    #Step2: host->card is NULL
-    mmc_sd_remove(host);
-                                    #Step3:_mmc_sd_suspend claimed host
-                                    mmc_claim_host(host);
-                                    #Step4: use host->card(NULL pointer)
-                                    if (mmc_card_suspended(host->card))
-                                    ......
-                                    }
-    mmc_claim_host(host);
-    mmc_detach_bus(host);
- }
- ......
- }
-we can prevent it occuring by add claim for "host->card = NULL" and add "host->card" validity check in mmc_sd_suspend.
-
-Signed-off-by: Joe.Zhou <Joe.Zhou@mediatek.com>
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 ---
- drivers/mmc/core/sd.c | 25 ++++++++++++++-----------
- 1 file changed, 14 insertions(+), 11 deletions(-)
+ .../devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml   | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/mmc/core/sd.c b/drivers/mmc/core/sd.c
-index 1c8148cdda50..38c0b271283a 100644
---- a/drivers/mmc/core/sd.c
-+++ b/drivers/mmc/core/sd.c
-@@ -1593,7 +1593,9 @@ static int mmc_sd_init_card(struct mmc_host *host, u32 ocr,
- static void mmc_sd_remove(struct mmc_host *host)
- {
- 	mmc_remove_card(host->card);
-+	mmc_claim_host(host);
- 	host->card = NULL;
-+	mmc_release_host(host);
- }
+diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
+index eaa65512161a..d211f2e403f2 100644
+--- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
+@@ -36,6 +36,9 @@ properties:
+       the amount of cells must be specified as 2. See the below mentioned gpio
+       binding representation for description of particular cells.
  
- /*
-@@ -1702,18 +1704,19 @@ static int _mmc_sd_suspend(struct mmc_host *host)
- 	int err = 0;
++  gpio-ranges:
++    maxItems: 1
++
+   interrupt-controller: true
  
- 	mmc_claim_host(host);
-+	if (host->card) {
-+		if (mmc_card_suspended(card))
-+			goto out;
- 
--	if (mmc_card_suspended(card))
--		goto out;
--
--	if (sd_can_poweroff_notify(card))
--		err = sd_poweroff_notify(card);
--	else if (!mmc_host_is_spi(host))
--		err = mmc_deselect_cards(host);
-+		if (sd_can_poweroff_notify(card))
-+			err = sd_poweroff_notify(card);
-+		else if (!mmc_host_is_spi(host))
-+			err = mmc_deselect_cards(host);
- 
--	if (!err) {
--		mmc_power_off(host);
--		mmc_card_set_suspended(card);
-+		if (!err) {
-+			mmc_power_off(host);
-+			mmc_card_set_suspended(card);
-+		}
- 	}
- 
- out:
-@@ -1729,7 +1732,7 @@ static int mmc_sd_suspend(struct mmc_host *host)
- 	int err;
- 
- 	err = _mmc_sd_suspend(host);
--	if (!err) {
-+	if (!err && host->card) {
- 		pm_runtime_disable(&host->card->dev);
- 		pm_runtime_set_suspended(&host->card->dev);
- 	}
+   interrupts:
 -- 
-2.18.0
+2.35.3
 
 
