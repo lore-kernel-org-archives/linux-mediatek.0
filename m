@@ -4,90 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E32BFC67861
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 07:09:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68A4CCD1292
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 07:23:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lRePUzkiOnblWnNfFPr/Bp6O1OkH4LNKZRoZszEI5Kc=; b=HGD81NwC4k1HP2VVLXMa3KJ41H
-	ApXjzaQgEM4VuMXJouPABdDDu//uT8EeW/QQMjC3zieS2n9bj1wvoxRP6ipYGsRHytl6+NXJO4aeu
-	vvpSIt6E1LgPqQGhz1ZS/T1Pja2RXPbPTqPg8cmO0UX7CrzVD/tqRQwEJnGcCfHfaPalJdB+WL0jy
-	/9bE22n5a7pTzGA/LI3K5Qb+3Lt7MB3nu9IRIOlGBnXEgx1XX+0Xw4QJIXkM1YLWEPittFa/9Msmc
-	PcvGmV+lxdrIZ0JSXy5EOFxEc3TrPQk2ut2H8xpXq4+1Q162pKqWFSEhvQ1IvJY45iVFxECHUPJzr
-	YeLOKJrw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iyDYERK6l30+oDEBuARqGCRNtAGvvbmEpKNmF9iObNE=; b=b/1dp9zZ6msl/Z4z2qzreJnCQV
+	LFi/CQ/eoB8ktPqI4kry5DYKFLYBgcLVrn2bu5J00Esk5KQhPGm0R7BpyeTMY5uB/TtWGRdvoaPKn
+	oFVux0jbQ7Op1/sy02salDIJ7spVZufV/uDARrp3xelAN1X2tM+EXy67xDmUYNAFHa/SBBXcLzMSX
+	WcgwPRMJQ0PJqbIqBeWMqe14+OaKPJCvqzw29B8AQ94xi8N87D/ef2BlLiXdWTwnS6RewpNPMfBkd
+	OcDs2ujTTqKRLQQvtLAYTHsCS3UBX8JJX+WK5Ssm4Ar/zOBUBSAtl3uZWMHKAk/xG4up40o6H7Nsq
+	l3lHfnHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtj89-0000000Ebup-2Jye;
-	Mon, 08 Apr 2024 07:09:25 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rtjLd-0000000Ee1e-3Msm;
+	Mon, 08 Apr 2024 07:23:21 +0000
+Received: from relay4-d.mail.gandi.net ([2001:4b98:dc4:8::224])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtj85-0000000EbuE-3PkE;
-	Mon, 08 Apr 2024 07:09:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id AC0FC60DFF;
-	Mon,  8 Apr 2024 07:09:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 4AC72C433F1;
-	Mon,  8 Apr 2024 07:09:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712560160;
-	bh=gHm79mf9dWuS5bcDHOIECrVCMjYGD3c3Yz1JJKRWYHw=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=in/lzK3/xJIYilF1HCvk4EMLomEzDXuKs8edinhjeb7U6MmlFxAKdnwy+95+XQPr5
-	 SNJ8VLOgX0qPyO2Gf3vry+VJ12uejDF/DaCALoOSRbCei+oDqR90KYFImISU5PlYlK
-	 ve6wllW0+8JTtJzJaQqAZovhtJabF/1U7Zn8YqnBmQccT2GkeITCVDIrHRnd2+wOld
-	 5BuKognz3hYDm7T0wSAKCQcAxtH728gzHF+zUdhWLgyxHeG5t18c3kGKaxgNjKMy/9
-	 kBUTbtCzEQKUxkdWgMGDEfzNRIlXgsIPdD+FJK7w6D/b65wwvCdvH4e8AkKxU3rLhc
-	 puTD1nrZkW62w==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 40DE2CD1292;
-	Mon,  8 Apr 2024 07:09:20 +0000 (UTC)
-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL_via_B4_Relay?= <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Mon, 08 Apr 2024 10:08:53 +0300
-Subject: [PATCH net v3] net: dsa: mt7530: fix enabling EEE on MT7531 switch
- on all boards
+	id 1rtjLZ-0000000EdzD-2uF7;
+	Mon, 08 Apr 2024 07:23:19 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 75566E0006;
+	Mon,  8 Apr 2024 07:22:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1712560982;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=iyDYERK6l30+oDEBuARqGCRNtAGvvbmEpKNmF9iObNE=;
+	b=hkS1kS6JejD8PCxzYAB99s8mrC/a2KTdaxqAII8bbnMJNBwsoOnoTHB1v63oUMItk8mXlF
+	4VfQ0PfNZ1GbTUVHmuULqxkrLImkjASykz44FdUQAZNzbANm+c3xPs83O+7p7Tl0R+Lbx2
+	1Lrp9U8Cbf0PjZSlTC2MG5wPub4FjnxuXI4c/oqykZ6iAD9kTJ44B9QyDkwpET2dHa9Oe4
+	sw2Zb113De6qb8V9rN7xmjBCvEp1Wb1wSIwAek0LmZU4BD9sMOK829aaWGoSvxMC4Xk7Va
+	EcVEKoRla575rGuzrF3FYcUH+NCSi7AvLfUOxqEYAux24d64pixQdnVqxxBMaA==
+Message-ID: <a60fc16d-4236-427c-b4a8-ec6fdf62d9f0@arinc9.com>
+Date: Mon, 8 Apr 2024 10:22:54 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/2] Set PHY address of MT7531 switch to 0x1f on MediaTek
+ arm64 boards
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+To: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240314-for-mediatek-mt7531-phy-address-v1-0-52f58db01acd@arinc9.com>
+ <ff196055-ecd8-4563-bc01-ff2533a07109@arinc9.com>
+Content-Language: en-US
+In-Reply-To: <ff196055-ecd8-4563-bc01-ff2533a07109@arinc9.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240408-for-net-mt7530-fix-eee-for-mt7531-mt7988-v3-1-84fdef1f008b@arinc9.com>
-X-B4-Tracking: v=1; b=H4sIAASYE2YC/5WNyw7CIBBFf6Vh7RielrryP4wLpINlIRhoiKbpv
- 4vEhe50Nbn3Ts5ZSMbkMZN9t5CExWcfQw1i0xE7mXBB8GPNhFMuqWA9uJgg4AzXuVeCgvN3QMR
- Wt4q9zqA1GGWVVMJaippU3C1hfW6qI6kEcqrl5PMc06PpC2vT26R/NxUGFIRjPec7ISXqg0k+2
- GFr47VZCv8gc/YHmVfyYNwwKirZ2eEXeV3XJ5AcQDRAAQAA
-To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
- Florian Fainelli <f.fainelli@gmail.com>, 
- Vladimir Oltean <olteanv@gmail.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- =?utf-8?q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>, 
- Russell King <linux@armlinux.org.uk>, 
- SkyLake Huang <SkyLake.Huang@mediatek.com>, 
- Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>, 
- mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Florian Fainelli <florian.fainelli@broadcom.com>, 
- =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1712560156; l=5377;
- i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
- bh=qltAZRBFaTmcscWTR0cgLD3pkbarl63ldtcQJSlZS1A=;
- b=SinTodZV5a3qq0Y5xSGw6i9NCkL5hPnKOUyl/NRE1zpg0H/wRH5jJCFeQ0Zc9TKpLseqAG5A0
- J+uMIgsnr23A8d9q/UMk7Prad+OU27kdgySMP/U1VPyHTu1HBa2IRBE
-X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
- pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
-X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt
- with auth_id=115
-X-Original-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_000921_994289_2C1E7628 
-X-CRM114-Status: GOOD (  23.72  )
+X-CRM114-CacheID: sfid-20240408_002317_919081_FDDC9293 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,129 +76,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+On 31.03.2024 12:28, arinc.unal@arinc9.com wrote:
+> On 14.03.2024 15:20, Arınç ÜNAL via B4 Relay wrote:
+>> Hello.
+>>
+>> This is a small patch series setting the PHY address of MT7531 to 0x1f on
+>> all boards that have the switch.
+>>
+>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>> ---
+>> Arınç ÜNAL (2):
+>>        arm64: dts: mediatek: mt7622: set PHY address of MT7531 switch to 0x1f
+>>        arm64: dts: mediatek: mt7986: set PHY address of MT7531 switch to 0x1f
+>>
+>>   arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 4 ++--
+>>   arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts             | 4 ++--
+>>   arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 4 ++--
+>>   arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts             | 4 ++--
+>>   arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts             | 4 ++--
+>>   5 files changed, 10 insertions(+), 10 deletions(-)
+>> ---
+>> base-commit: ba90af39ba57b3fe3ecfdba0c87a80d20c7b788d
+>> change-id: 20240314-for-mediatek-mt7531-phy-address-9d0b4cfeca21
+>>
+>> Best regards,
+> 
+> Reminder that this patch series is waiting.
 
-The commit 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
-brought EEE support but did not enable EEE on MT7531 switch MACs. EEE is
-enabled on MT7531 switch MACs by pulling the LAN2LED0 pin low on the board
-(bootstrapping), unsetting the EEE_DIS bit on the trap register, or setting
-the internal EEE switch bit on the CORE_PLL_GROUP4 register. Thanks to
-SkyLake Huang (黃啟澤) from MediaTek for providing information on the
-internal EEE switch bit.
+Another reminder that this patch series is waiting to be applied.
 
-There are existing boards that were not designed to pull the pin low.
-Because of that, the EEE status currently depends on the board design.
-
-The EEE_DIS bit on the trap pertains to the LAN2LED0 pin which is usually
-used to control an LED. Once the bit is unset, the pin will be low. That
-will make the active low LED turn on. The pin is controlled by the switch
-PHY. It seems that the PHY controls the pin in the way that it inverts the
-pin state. That means depending on the wiring of the LED connected to
-LAN2LED0 on the board, the LED may be on without an active link.
-
-To not cause this unwanted behaviour whilst enabling EEE on all boards, set
-the internal EEE switch bit on the CORE_PLL_GROUP4 register.
-
-My testing on MT7531 shows a certain amount of traffic loss when EEE is
-enabled. That said, I haven't come across a board that enables EEE. So
-enable EEE on the switch MACs but disable EEE advertisement on the switch
-PHYs. This way, we don't change the behaviour of the majority of the boards
-that have this switch. The mediatek-ge PHY driver already disables EEE
-advertisement on the switch PHYs but my testing shows that it is somehow
-enabled afterwards. Disabling EEE advertisement before the PHY driver
-initialises keeps it off.
-
-With this change, EEE can now be enabled using ethtool.
-
-Fixes: 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
-Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
-Here's some information for the record. EEE could not be enabled on MT7531
-on most boards using ethtool before this. On MT7988 SoC switch, EEE is
-disabled by default but can be turned on normally using ethtool. EEE is
-enabled by default on MT7530 and there's no need to make changes on the DSA
-subdriver for it.
----
-Changes in v3:
-- Remove patch 2, it was revealed that it doesn't fix a bug.
-- Patch 1
-  - Use the internal EEE switch bit provided by SkyLake Huang (黃啟澤). It
-    is a better method compared to unsetting the EEE_DIS bit of the trap as
-    the latter method causes unwanted behaviour on the LED connected to the
-    pin that pertains to the EEE_DIS bit.
-- Link to v2: https://lore.kernel.org/r/20240321-for-net-mt7530-fix-eee-for-mt7531-mt7988-v2-0-9af9d5041bfe@arinc9.com
-
-Changes in v2:
-- Delegate the patch to the net tree.
-- Remove patch 3, it was revealed that it doesn't fix a bug.
-- Patch 1
-  - Disable EEE advertisement on MT7531 by default.
-- Link to v1: https://lore.kernel.org/r/20240318-for-net-mt7530-fix-eee-for-mt7531-mt7988-v1-0-3f17226344e8@arinc9.com
----
- drivers/net/dsa/mt7530.c | 17 ++++++++++++-----
- drivers/net/dsa/mt7530.h |  1 +
- 2 files changed, 13 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 1035820c2377..451ff0620c2e 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2505,18 +2505,25 @@ mt7531_setup(struct dsa_switch *ds)
- 	mt7530_rmw(priv, MT7531_GPIO_MODE0, MT7531_GPIO0_MASK,
- 		   MT7531_GPIO0_INTERRUPT);
- 
--	/* Enable PHY core PLL, since phy_device has not yet been created
--	 * provided for phy_[read,write]_mmd_indirect is called, we provide
--	 * our own mt7531_ind_mmd_phy_[read,write] to complete this
--	 * function.
-+	/* Enable Energy-Efficient Ethernet (EEE) and PHY core PLL, since
-+	 * phy_device has not yet been created provided for
-+	 * phy_[read,write]_mmd_indirect is called, we provide our own
-+	 * mt7531_ind_mmd_phy_[read,write] to complete this function.
- 	 */
- 	val = mt7531_ind_c45_phy_read(priv, MT753X_CTRL_PHY_ADDR,
- 				      MDIO_MMD_VEND2, CORE_PLL_GROUP4);
--	val |= MT7531_PHY_PLL_BYPASS_MODE;
-+	val |= MT7531_RG_SYSPLL_DMY2 | MT7531_PHY_PLL_BYPASS_MODE;
- 	val &= ~MT7531_PHY_PLL_OFF;
- 	mt7531_ind_c45_phy_write(priv, MT753X_CTRL_PHY_ADDR, MDIO_MMD_VEND2,
- 				 CORE_PLL_GROUP4, val);
- 
-+	/* Disable EEE advertisement on the switch PHYs. */
-+	for (i = MT753X_CTRL_PHY_ADDR;
-+	     i < MT753X_CTRL_PHY_ADDR + MT7530_NUM_PHYS; i++) {
-+		mt7531_ind_c45_phy_write(priv, i, MDIO_MMD_AN, MDIO_AN_EEE_ADV,
-+					 0);
-+	}
-+
- 	mt7531_setup_common(ds);
- 
- 	/* Setup VLAN ID 0 for VLAN-unaware bridges */
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index d17b318e6ee4..9439db495001 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -616,6 +616,7 @@ enum mt7531_clk_skew {
- #define  RG_SYSPLL_DDSFBK_EN		BIT(12)
- #define  RG_SYSPLL_BIAS_EN		BIT(11)
- #define  RG_SYSPLL_BIAS_LPF_EN		BIT(10)
-+#define  MT7531_RG_SYSPLL_DMY2		BIT(6)
- #define  MT7531_PHY_PLL_OFF		BIT(5)
- #define  MT7531_PHY_PLL_BYPASS_MODE	BIT(4)
- 
-
----
-base-commit: bccb798e07f8bb8b91212fe8ed1e421685449076
-change-id: 20240317-for-net-mt7530-fix-eee-for-mt7531-mt7988-a5c5453cc0e8
-
-Best regards,
--- 
-Arınç ÜNAL <arinc.unal@arinc9.com>
-
-
+Arınç
 
