@@ -4,85 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2FC7C67861
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 10:00:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 478BCCD128A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 10:03:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MmqygqPIi2pmOIAveCkmELtI1ENdExQ5dYj28gsYUKI=; b=gQ/wlCd0EcThb4Mra1j+k3ploV
-	bGUGo415vBytmNDP6fC+JFf98WCAC51ArCAd63GfYe/pF95Xg4KNniSPYBfLZ1vSXVSwa57a4Rmoy
-	2QYDu7sGp8SfwWt40SqWFlzfZVENx9GaWpGxOIPdTtVivaLFb5f2bmDhW0oSHphtBC/jwWYLmWfvp
-	vjOpfQrkRXJqaulUETjtcaUrRTixXumLwCKz0gbVrahwvlQJ8GMrNZeGL4/iEDg8+QBLIdeAmQX4n
-	hnVhbFw4L7FnAa3kVaTm1S20o0kF84RkvmZGTuRs9Gp36R7RjjbMoiJxCcHlsW6p6eb5UGL1k707O
-	1+XqkFDQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:Message-ID:References:In-Reply-To:
+	Subject:Cc:To:From:Date:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WGRw+wpQ+8BkQKcdJ/jvqWzRkTuOQNEebcPy5PQD4Kw=; b=MUsdPfpcYOBTQSJ3h3Z0idCZE8
+	PZH5E73pNYVYSGkpe0ROzvtEObf4ZeReXXI5NVkoYSVIN13xgLx53C0YYGNNmQiq95wL92CZTF5Bl
+	uuFhbW+hAfv3ymBZAC+Edfcv2aQOwLsnrzUvtTMBBKOFkn+lpYjI3y03CU2+43ygVLzbcppbvKZ/S
+	F76HpiXxmjZ28SgJZClVTqT/bA9a+eFqCBVwTfCTbWHOOt9ajECkfJlZzK8THcmtpdXYoT0uzlWfy
+	OkjDFBOWy252Ok7qyqBt95oFXZJXwJ3FTL2dPKpkbhIR1eiwxXj0HuOvM3OkDtv//VEKvE9hwfGfs
+	NcNmaXPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtlo8-0000000FBeg-1Qzz;
-	Mon, 08 Apr 2024 10:00:56 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1rtlqi-0000000FCKz-22jp;
+	Mon, 08 Apr 2024 10:03:36 +0000
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtlo4-0000000FBcW-1AS9;
-	Mon, 08 Apr 2024 10:00:53 +0000
-Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-55a179f5fa1so4969982a12.0;
-        Mon, 08 Apr 2024 03:00:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1712570447; x=1713175247; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=MmqygqPIi2pmOIAveCkmELtI1ENdExQ5dYj28gsYUKI=;
-        b=mRQg+4ke9KUVA0QA8Tw+31/TJCKtKxklpAQLSBolmLAQfFbZrodLE6KGrxBD9GxM6n
-         VOIiFI3zPODARq8j225ZIvMoCfv7lDdgcUbIuXzUowSyG2GXYyUvD+6j0bgmb53B6pir
-         oYz/q1Gf4Uldtky/pVNR2WK/epYsqpK1ANZfN/I3/H1q9n4u/Xvq6+1omlyVnRX5m31K
-         BRdr0I+E5JiayRi5eVN5FYxN5LiH/lWPwlJkNitEpytkyp6hKuTUrEqQATgkj2GeqJcX
-         u1aRMSu6Jh5zjHFs0Qen8x4Sk2DJY3HzSDfxWDuit2/OUEl30PZ7n8dJqmFUZVT0IE9o
-         XOtA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712570447; x=1713175247;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=MmqygqPIi2pmOIAveCkmELtI1ENdExQ5dYj28gsYUKI=;
-        b=rbsJ3llGKPnjD36q1l7khIHHq8NvmYTicccv7Xf0hrZDHByIkdEfaX4PeEowBEYoKw
-         8xDAmDpVgnKx2DHDPv7Ew84lY48vL8pwr/IhpphBIeC2y19LrSgj61vFVqVAUxceTgV3
-         Iu26eIllYdDehFMRTPTziYzzKP8N6D6g35pb9sdP03EL0BQv9t8j0vHgV5ybXaHorPGz
-         MsqicKs+7hFhd3PhXYxHEK3c9utWZt83+aQIiMLwxZ6qF1mnStCewTjdLQzCCNdcGcD+
-         eQVVckoFPXVeCXRVjEWkbfVoFw+nrAr3NMPmInP5jLhzshkyQqMAL8THGPY/u09fu38Z
-         LegA==
-X-Forwarded-Encrypted: i=1; AJvYcCWDB4EQjcG8FihchJh9Q8t6KhqVO7BV86tJOjMEC2Pd2NqykpcvqKIp/vtWT8fXPH+chwz1i3jkMH6nX9rRElol0YbVhCm2psBIVlKJWX5k+eY6EgM9R4lqbF51Nh2QqkXudvxxOqZ0/6Css+oAyuFOC+czlwRASIg=
-X-Gm-Message-State: AOJu0YzwiYQQkct+HXJGsxwD9Fpu/2H1WFsK6qLKBFmodO5jLLXStZ74
-	jJJfXtgP87ViSDevI4HlE6r/NS9dvrNasClmJqXdaS48H2saBHFW
-X-Google-Smtp-Source: AGHT+IE6e3zft5dEHLDKboDSRcCws1sIWye2Ny0tIb1ztMu8FS3I9a8HiSg+0wY1xi3qFJMrqR34cw==
-X-Received: by 2002:a50:d784:0:b0:56b:9f35:65f9 with SMTP id w4-20020a50d784000000b0056b9f3565f9mr6978903edi.0.1712570447269;
-        Mon, 08 Apr 2024 03:00:47 -0700 (PDT)
-Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id bf20-20020a0564021a5400b0056dd3626035sm3855590edb.91.2024.04.08.03.00.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Apr 2024 03:00:46 -0700 (PDT)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH] arm64: dts: mediatek: mt7622: fix "emmc" pinctrl mux
-Date: Mon,  8 Apr 2024 12:00:40 +0200
-Message-Id: <20240408100040.25997-1-zajec5@gmail.com>
-X-Mailer: git-send-email 2.35.3
+	id 1rtlqX-0000000FCGS-3Rqs;
+	Mon, 08 Apr 2024 10:03:27 +0000
+Received: from pps.filterd (m0353727.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 4389vTLC024196;
+	Mon, 8 Apr 2024 10:03:21 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=date : from : to : cc :
+ subject : reply-to : in-reply-to : references : message-id : content-type
+ : content-transfer-encoding : mime-version; s=pp1;
+ bh=WGRw+wpQ+8BkQKcdJ/jvqWzRkTuOQNEebcPy5PQD4Kw=;
+ b=V1m9DY18uGHMz8vh9IxAKCdhy2XzRwg7vXDe5eU16f5nEfVNyFSH2bkwzlSGAU2+MppO
+ 4KiihhZ6Fk01FJPzdXSR1BLEuGht8lFKOYZkgyQ+XDX6d86NzlDgaIq0J9qJC+jfnfB7
+ aEeGTfrHV1qJLbUVw7VwF0wJD3GQGVNebGmuEEwqhBLJ9iqNw/OPA1h1UuFrYBwI63SP
+ L8QiPE5Ov/+xNvSEFsQF6+fJ779nZgk/JgjuEZ8d5Yw4SPP9YYyN9phnIKPRv8VXU/FC
+ LdWtpshSMMqQ0phdyUamMRN3ZDDlZNvPvkSzaRMK+nFo6z+Im4121GSQHwYWxTP0de2t 7g== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xceda00e7-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 08 Apr 2024 10:03:21 +0000
+Received: from m0353727.ppops.net (m0353727.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 438A3KAu002830;
+	Mon, 8 Apr 2024 10:03:20 GMT
+Received: from ppma22.wdc07v.mail.ibm.com (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xceda00e4-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 08 Apr 2024 10:03:20 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+	by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 4387uZ0H019096;
+	Mon, 8 Apr 2024 10:03:18 GMT
+Received: from smtprelay04.wdc07v.mail.ibm.com ([172.16.1.71])
+	by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3xbh3yym76-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 08 Apr 2024 10:03:18 +0000
+Received: from smtpav02.wdc07v.mail.ibm.com (smtpav02.wdc07v.mail.ibm.com [10.39.53.229])
+	by smtprelay04.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 438A3FKl53084522
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 8 Apr 2024 10:03:18 GMT
+Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id D2E1D58058;
+	Mon,  8 Apr 2024 10:03:15 +0000 (GMT)
+Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id F35F85806B;
+	Mon,  8 Apr 2024 10:03:10 +0000 (GMT)
+Received: from ltc.linux.ibm.com (unknown [9.5.196.140])
+	by smtpav02.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+	Mon,  8 Apr 2024 10:03:10 +0000 (GMT)
+Date: Mon, 08 Apr 2024 12:03:10 +0200
+From: Harald Freudenberger <freude@linux.ibm.com>
+To: Allen Pais <apais@linux.microsoft.com>
+Cc: linux-kernel@vger.kernel.org, tj@kernel.org, keescook@chromium.org,
+        vkoul@kernel.org, marcan@marcan.st, sven@svenpeter.dev,
+        florian.fainelli@broadcom.com, rjui@broadcom.com,
+        sbranden@broadcom.com, paul@crapouillou.net,
+        Eugeniy.Paltsev@synopsys.com, manivannan.sadhasivam@linaro.org,
+        vireshk@kernel.org, Frank.Li@nxp.com, leoyang.li@nxp.com,
+        zw@zh-kernel.org, wangzhou1@hisilicon.com, haijie1@huawei.com,
+        shawnguo@kernel.org, s.hauer@pengutronix.de, sean.wang@mediatek.com,
+        matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+        afaerber@suse.de, logang@deltatee.com, daniel@zonque.org,
+        haojian.zhuang@gmail.com, robert.jarzmik@free.fr, andersson@kernel.org,
+        konrad.dybcio@linaro.org, orsonzhai@gmail.com,
+        baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com,
+        patrice.chotard@foss.st.com, linus.walleij@linaro.org, wens@csie.org,
+        jernej.skrabec@gmail.com, peter.ujfalusi@gmail.com, kys@microsoft.com,
+        haiyangz@microsoft.com, wei.liu@kernel.org, decui@microsoft.com,
+        jassisinghbrar@gmail.com, mchehab@kernel.org,
+        maintainers@bluecherrydvr.com, aubin.constans@microchip.com,
+        ulf.hansson@linaro.org, manuel.lauss@gmail.com,
+        mirq-linux@rere.qmqm.pl, jh80.chung@samsung.com, oakad@yahoo.com,
+        hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
+        brucechang@via.com.tw, HaraldWelte@viatech.com, pierre@ossman.eu,
+        duncan.sands@free.fr, stern@rowland.harvard.edu, oneukum@suse.com,
+        openipmi-developer@lists.sourceforge.net, dmaengine@vger.kernel.org,
+        asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+        linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+        imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
+        linux-mediatek@lists.infradead.org, linux-actions@lists.infradead.org,
+        linux-arm-msm@vger.kernel.org, linux-riscv@lists.infradead.org,
+        linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+        linux-hyperv@vger.kernel.org, linux-rdma@vger.kernel.org,
+        linux-media@vger.kernel.org, linux-mmc@vger.kernel.org,
+        linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+        linux-s390@vger.kernel.org, netdev@vger.kernel.org,
+        linux-usb@vger.kernel.org, Holger Dengler <dengler@linux.ibm.com>
+Subject: Re: [PATCH 7/9] s390: Convert from tasklet to BH workqueue
+Mail-Reply-To: freude@linux.ibm.com
+In-Reply-To: <20240327160314.9982-8-apais@linux.microsoft.com>
+References: <20240327160314.9982-1-apais@linux.microsoft.com>
+ <20240327160314.9982-8-apais@linux.microsoft.com>
+Message-ID: <702594ec5852c482f96cfcf84a02cab2@linux.ibm.com>
+X-Sender: freude@linux.ibm.com
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: vcJ1PwKFq1RysBO3jh1OFUS_rcqMuAYv
+X-Proofpoint-ORIG-GUID: X3ilzQ7TzOIWEyFQfqPrw-z8aSdSkVVd
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-04-08_08,2024-04-05_02,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 mlxlogscore=918
+ lowpriorityscore=0 bulkscore=0 spamscore=0 adultscore=0 priorityscore=1501
+ malwarescore=0 phishscore=0 impostorscore=0 clxscore=1011 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2404010000
+ definitions=main-2404080077
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_030052_362674_E5F039AB 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20240408_030325_907734_3E1D3FE4 
+X-CRM114-Status: GOOD (  15.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,59 +144,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: freude@linux.ibm.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+On 2024-03-27 17:03, Allen Pais wrote:
+> The only generic interface to execute asynchronously in the BH context 
+> is
+> tasklet; however, it's marked deprecated and has some design flaws. To
+> replace tasklets, BH workqueue support was recently added. A BH 
+> workqueue
+> behaves similarly to regular workqueues except that the queued work 
+> items
+> are executed in the BH context.
+> 
+> This patch converts drivers/infiniband/* from tasklet to BH workqueue.
+> 
+> Based on the work done by Tejun Heo <tj@kernel.org>
+> Branch: https://git.kernel.org/pub/scm/linux/kernel/git/tj/wq.git 
+> for-6.10
+> 
+> Note: Not tested. Please test/review.
+> 
+> Signed-off-by: Allen Pais <allen.lkml@gmail.com>
+> ---
+> ...
+>  drivers/s390/crypto/ap_bus.c           | 24 +++++++-------
+>  drivers/s390/crypto/ap_bus.h           |  2 +-
+>  drivers/s390/crypto/zcrypt_msgtype50.c |  2 +-
+>  drivers/s390/crypto/zcrypt_msgtype6.c  |  4 +--
+> ...
 
-Value "emmc_rst" is a group name and should be part of the "groups"
-property.
+Applied and tested the s390 AP bus and zcrypt part of the patch.
+Works fine, a sniff test did not show any problems.
+Thanks for your work.
 
-This fixes:
-arch/arm64/boot/dts/mediatek/mt7622-rfb1.dtb: pinctrl@10211000: emmc-pins-default:mux:function: ['emmc', 'emmc_rst'] is too long
-        from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt7622-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dtb: pinctrl@10211000: emmc-pins-default:mux:function: ['emmc', 'emmc_rst'] is too long
-        from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt7622-pinctrl.yaml#
-
-Fixes: 3725ba3f5574 ("arm64: dts: mt7622: add pinctrl related device nodes")
-Fixes: 0b6286dd96c0 ("arm64: dts: mt7622: add bananapi BPI-R64 board")
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
----
- arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 4 ++--
- arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts             | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-index 224bb289660c..2791de5b28f6 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-@@ -329,8 +329,8 @@ asm_sel {
- 	/* eMMC is shared pin with parallel NAND */
- 	emmc_pins_default: emmc-pins-default {
- 		mux {
--			function = "emmc", "emmc_rst";
--			groups = "emmc";
-+			function = "emmc";
-+			groups = "emmc", "emmc_rst";
- 		};
- 
- 		/* "NDL0","NDL1","NDL2","NDL3","NDL4","NDL5","NDL6","NDL7",
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-index 41629769bdc8..8c3e2e2578bc 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-@@ -268,8 +268,8 @@ &pio {
- 	/* eMMC is shared pin with parallel NAND */
- 	emmc_pins_default: emmc-pins-default {
- 		mux {
--			function = "emmc", "emmc_rst";
--			groups = "emmc";
-+			function = "emmc";
-+			groups = "emmc", "emmc_rst";
- 		};
- 
- 		/* "NDL0","NDL1","NDL2","NDL3","NDL4","NDL5","NDL6","NDL7",
--- 
-2.35.3
-
+Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
 
