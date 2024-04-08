@@ -4,90 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A4DECD128A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 09:05:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D010C67861
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 09:33:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WziNI0dy9ontwBLhhuwGeSxizPXdz8ruFPYdBGBNZvg=; b=2TE6tu9U1PBcMOJbmnpqAMVX56
-	+kfvhOZxJYu/jVuNjurrNShcy2emPJTNFjUZJ5exUudBnNT9aqc4Vk2jsFv+E6ufQ/w7k3TcnhsN/
-	icl2BhApZYSWVPQoh9yuYM8VXZFNbXSee/1ckTiOd0Uo2pb9l+9KEtfwmEj6RRGkDP24tO8dk72yM
-	aZM58s6dVuth9bPjGiRdGm9OCYRPIR7VegH0ffE87+gEtAOJrmGz6VFBsLSZYeHqbXlNX9qJ84Ynj
-	iiLQkMdgIgld+aWRF4D0u4sIbrCkmDZe3jf5Ggd8WrPL8gNkkPbNx0opSKhDN82jNNqrXWAXwXrSk
-	2+2ku8Xg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HRb08lOvL/RkQcGPtpnIO47HiV3JbnaC5Kla4WlkdPg=; b=FkD7Pwm6lAvJT0+FV4TuZoOTb6
+	ZLIMTDGlKpsCuOmQb9XmRz55cVD/974vZGEofIWXYAAogPzlYDnPqM1QGdDTb0TvRaa/iLIKoVq4L
+	EvIxozH51tkacGaYpLcagvQ2tOmmc6PCTtORSlCnVSxOqOYSpgaoKpx3iWlhLfvUzWeiHL7xogPi9
+	9g4p/eoHTKyGpEmjS9o4ILHnEP9hLfCHv6xNWvAjhoP2udOT1p3J+p5UTV6Y6xMLMsJXXuUrLVXUs
+	ez39JkLShRc9dpglpM2keZkBSo+tP4kw2rdfSP9zULhHagKonoYoVTLXyMFrISyAjBpbimpHFXJNc
+	pbpv44Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtkwP-0000000F0sW-3XIF;
-	Mon, 08 Apr 2024 09:05:25 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1rtlNj-0000000F70v-1ouf;
+	Mon, 08 Apr 2024 09:33:39 +0000
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtkwM-0000000F0pR-2NaR;
-	Mon, 08 Apr 2024 09:05:24 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-56e1f3462caso4161706a12.3;
-        Mon, 08 Apr 2024 02:05:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1712567120; x=1713171920; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=WziNI0dy9ontwBLhhuwGeSxizPXdz8ruFPYdBGBNZvg=;
-        b=NCZkLq9JCB6pAc1q8K1jJwBTViaQ7a1SVCM5ttDzLA17GGp1rSw7BUu+1OQj0CrXXq
-         PuCYPY5AaaDwwJq90ehoI4UBgWPMdqZngbu2r1oBqT3i4TUIgQw5VKBILH1KLnfVKANd
-         wPcvaPNUK2syDB5eCXRhlWhTPU54Q4roCNk8KgP81Z3Ln0AMmSIDu2shCcH2UpCv7vos
-         yLyq+U0wzZQQQ/jQk7e1fJ15Zfmqy455nlmak1YpZcvRUXmz3OQaP7HHj9DzVZTcEGLt
-         PhHYGa4GWxRouyzgebX86UcGKKx2yk/OxwjKkpGcgyBjLIjy+jgIbbMgfm7bLwzLJSb8
-         4TmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712567120; x=1713171920;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=WziNI0dy9ontwBLhhuwGeSxizPXdz8ruFPYdBGBNZvg=;
-        b=oLf5pCrx8+uhnoVh6qS6crFH975ld0S92Pb88sEANkOhcXlGqnZpDk/Q5apcBvyvAM
-         YufBtetokekN7KA5kJzSm+bpYc3Hh4MELSBRf8z+cI0IbVNdrnU130qG5LL7TXF6HxK7
-         NZsq7T93Tf6AhPyK3usf2N3+tXnrzq/IN2LXTNYnO0NzUoHtEslyToIs7O735oDbWG6a
-         jIkimOaFVhTxQ3IyBrWzds/aWkcvh0c4gZM1ILnlNqXJFDTrMhFGT0z91TjoI3ShXpNm
-         PbuwlV+sm4RRykLGUGjes6CqQUvWJ7UTkXR+1Axi/+7dYQ/8MFG6a6/ETDG2QDDlBLLi
-         cL4g==
-X-Forwarded-Encrypted: i=1; AJvYcCVAOmnpTIrqiaZHWov30ijidQURpaQ/i3Ivrkkx4qU7Qd6r9qUWr+VNI8+lHXydceOxzFZYJRwsXcHfRNwzLca74W+n9wpeYsNWCo3zr0CdMV8BO0x9MHLry2hfwe8Rfp+z4SqdqlIwyfrnXAuNBTD84tPIK+T5qqw=
-X-Gm-Message-State: AOJu0Yzufh9wtFJnxfCw82g/pcLAc7qd/Teh9SqGNfJ5cjhd5WYrzygB
-	y29RXDizhlF2+hlTE+8jr01SIpA8tTE4pdu88AZRpmhlbvxV8QT2
-X-Google-Smtp-Source: AGHT+IFJuDSPZV6Dt59lpjhwCnHica/ftb5KxSrdAGBGyr3hReB6zu7+J40yCPnZLpMbPyfGBIDvvA==
-X-Received: by 2002:a17:906:ecee:b0:a51:99e1:1f1a with SMTP id qt14-20020a170906ecee00b00a5199e11f1amr5386527ejb.64.1712567119701;
-        Mon, 08 Apr 2024 02:05:19 -0700 (PDT)
-Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id h1-20020a170906718100b00a51bd3bfec3sm2773969ejk.121.2024.04.08.02.05.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Apr 2024 02:05:19 -0700 (PDT)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	linux-mediatek@lists.infradead.org,
-	linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH 3/3] dt-bindings: pinctrl: mediatek: mt7622: add "base" reg
-Date: Mon,  8 Apr 2024 11:05:06 +0200
-Message-Id: <20240408090506.21596-3-zajec5@gmail.com>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20240408090506.21596-1-zajec5@gmail.com>
-References: <20240408090506.21596-1-zajec5@gmail.com>
+	id 1rtlNY-0000000F6yY-148w;
+	Mon, 08 Apr 2024 09:33:35 +0000
+Received: from pps.filterd (m0353723.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 4389674X018763;
+	Mon, 8 Apr 2024 09:33:21 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=date : from : to : cc :
+ subject : message-id : references : content-type : in-reply-to :
+ mime-version; s=pp1; bh=HRb08lOvL/RkQcGPtpnIO47HiV3JbnaC5Kla4WlkdPg=;
+ b=HAJzuBNsO2JwyXcSUPA5KKjMXoa85ATgDBDMdlUVrWrD4LTczUD9Nzq1exAuSBYIXiod
+ e0MbeFjiTJ8BhZHNrUhGGDzWKY8EITc7XduqdLDZ5GctKya+kVyoKq/IkOu0SedUx2z5
+ pQp8LeJGmQfs2CM+LTbmD/KJRvxg9VmuuBuJ1NKV4C1xxrojFpma6UqwA03Fy2zslw5J
+ vQkdyyQm/5xiBkjpSpVWZG0r2JfzA51m5ovZNnFXMysbeE8Tuv+bGvb6/0yFAENxHcVu
+ qAKQ1mFWZTC2QuNZ6UtiF13rTIvo2INwrArwDWHsJE6MYCmUQBSAMU8Fvb7Q48Tb74E1 6A== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xcahageb0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 08 Apr 2024 09:33:21 +0000
+Received: from m0353723.ppops.net (m0353723.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 4389WAD8027701;
+	Mon, 8 Apr 2024 09:33:20 GMT
+Received: from ppma21.wdc07v.mail.ibm.com (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xcahageav-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 08 Apr 2024 09:33:20 +0000
+Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
+	by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 4388CHai022664;
+	Mon, 8 Apr 2024 09:33:19 GMT
+Received: from smtprelay05.fra02v.mail.ibm.com ([9.218.2.225])
+	by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3xbhqnqanr-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 08 Apr 2024 09:33:19 +0000
+Received: from smtpav05.fra02v.mail.ibm.com (smtpav05.fra02v.mail.ibm.com [10.20.54.104])
+	by smtprelay05.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 4389XFRb40632662
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 8 Apr 2024 09:33:17 GMT
+Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id E7ADC2004B;
+	Mon,  8 Apr 2024 09:33:14 +0000 (GMT)
+Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 43F2D20040;
+	Mon,  8 Apr 2024 09:33:11 +0000 (GMT)
+Received: from osiris (unknown [9.171.19.167])
+	by smtpav05.fra02v.mail.ibm.com (Postfix) with ESMTPS;
+	Mon,  8 Apr 2024 09:33:11 +0000 (GMT)
+Date: Mon, 8 Apr 2024 11:33:09 +0200
+From: Heiko Carstens <hca@linux.ibm.com>
+To: Allen Pais <apais@linux.microsoft.com>
+Cc: linux-kernel@vger.kernel.org, tj@kernel.org, keescook@chromium.org,
+        vkoul@kernel.org, marcan@marcan.st, sven@svenpeter.dev,
+        florian.fainelli@broadcom.com, rjui@broadcom.com,
+        sbranden@broadcom.com, paul@crapouillou.net,
+        Eugeniy.Paltsev@synopsys.com, manivannan.sadhasivam@linaro.org,
+        vireshk@kernel.org, Frank.Li@nxp.com, leoyang.li@nxp.com,
+        zw@zh-kernel.org, wangzhou1@hisilicon.com, haijie1@huawei.com,
+        shawnguo@kernel.org, s.hauer@pengutronix.de, sean.wang@mediatek.com,
+        matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+        afaerber@suse.de, logang@deltatee.com, daniel@zonque.org,
+        haojian.zhuang@gmail.com, robert.jarzmik@free.fr, andersson@kernel.org,
+        konrad.dybcio@linaro.org, orsonzhai@gmail.com,
+        baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com,
+        patrice.chotard@foss.st.com, linus.walleij@linaro.org, wens@csie.org,
+        jernej.skrabec@gmail.com, peter.ujfalusi@gmail.com, kys@microsoft.com,
+        haiyangz@microsoft.com, wei.liu@kernel.org, decui@microsoft.com,
+        jassisinghbrar@gmail.com, mchehab@kernel.org,
+        maintainers@bluecherrydvr.com, aubin.constans@microchip.com,
+        ulf.hansson@linaro.org, manuel.lauss@gmail.com,
+        mirq-linux@rere.qmqm.pl, jh80.chung@samsung.com, oakad@yahoo.com,
+        hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
+        brucechang@via.com.tw, HaraldWelte@viatech.com, pierre@ossman.eu,
+        duncan.sands@free.fr, stern@rowland.harvard.edu, oneukum@suse.com,
+        openipmi-developer@lists.sourceforge.net, dmaengine@vger.kernel.org,
+        asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+        linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+        imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
+        linux-mediatek@lists.infradead.org, linux-actions@lists.infradead.org,
+        linux-arm-msm@vger.kernel.org, linux-riscv@lists.infradead.org,
+        linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+        linux-hyperv@vger.kernel.org, linux-rdma@vger.kernel.org,
+        linux-media@vger.kernel.org, linux-mmc@vger.kernel.org,
+        linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+        linux-s390@vger.kernel.org, netdev@vger.kernel.org,
+        linux-usb@vger.kernel.org
+Subject: Re: [PATCH 7/9] s390: Convert from tasklet to BH workqueue
+Message-ID: <20240408093309.9447-A-hca@linux.ibm.com>
+References: <20240327160314.9982-1-apais@linux.microsoft.com>
+ <20240327160314.9982-8-apais@linux.microsoft.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240327160314.9982-8-apais@linux.microsoft.com>
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: iEx_GL3tt0mvzHnM4XY0RznJTIWn8Sle
+X-Proofpoint-GUID: YubKogQl91W9lviSSqhJG7ZeEe8HfK38
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-04-08_07,2024-04-05_02,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0
+ priorityscore=1501 malwarescore=0 clxscore=1011 phishscore=0
+ lowpriorityscore=0 impostorscore=0 mlxscore=0 adultscore=0 spamscore=0
+ bulkscore=0 mlxlogscore=816 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2404010000 definitions=main-2404080073
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_020522_731586_A1E05957 
-X-CRM114-Status: GOOD (  11.50  )
+X-CRM114-CacheID: sfid-20240408_023329_424404_7161FDE9 
+X-CRM114-Status: GOOD (  18.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,47 +143,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+On Wed, Mar 27, 2024 at 04:03:12PM +0000, Allen Pais wrote:
+> The only generic interface to execute asynchronously in the BH context is
+> tasklet; however, it's marked deprecated and has some design flaws. To
+> replace tasklets, BH workqueue support was recently added. A BH workqueue
+> behaves similarly to regular workqueues except that the queued work items
+> are executed in the BH context.
+> 
+> This patch converts drivers/infiniband/* from tasklet to BH workqueue.
+> 
+> Based on the work done by Tejun Heo <tj@kernel.org>
+> Branch: https://git.kernel.org/pub/scm/linux/kernel/git/tj/wq.git for-6.10
 
-Both: MT7622 and MT7629 use two reg spaces: "base" and "eint". It wasn't
-covered by the binding and also example didn't match incomplete binding.
-Fix it.
+I guess this dependency is a hard requirement due to commit 134874e2eee9
+("workqueue: Allow cancel_work_sync() and disable_work() from atomic contexts
+on BH work items")?
 
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
----
- .../bindings/pinctrl/mediatek,mt7622-pinctrl.yaml         | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+> ---
+>  drivers/s390/block/dasd.c              | 42 ++++++++++++------------
+>  drivers/s390/block/dasd_int.h          | 10 +++---
+>  drivers/s390/char/con3270.c            | 27 ++++++++--------
+>  drivers/s390/crypto/ap_bus.c           | 24 +++++++-------
+>  drivers/s390/crypto/ap_bus.h           |  2 +-
+>  drivers/s390/crypto/zcrypt_msgtype50.c |  2 +-
+>  drivers/s390/crypto/zcrypt_msgtype6.c  |  4 +--
+>  drivers/s390/net/ctcm_fsms.c           |  4 +--
+>  drivers/s390/net/ctcm_main.c           | 15 ++++-----
+>  drivers/s390/net/ctcm_main.h           |  5 +--
+>  drivers/s390/net/ctcm_mpc.c            | 12 +++----
+>  drivers/s390/net/ctcm_mpc.h            |  7 ++--
+>  drivers/s390/net/lcs.c                 | 26 +++++++--------
+>  drivers/s390/net/lcs.h                 |  2 +-
+>  drivers/s390/net/qeth_core_main.c      |  2 +-
+>  drivers/s390/scsi/zfcp_qdio.c          | 45 +++++++++++++-------------
+>  drivers/s390/scsi/zfcp_qdio.h          |  9 +++---
+>  17 files changed, 117 insertions(+), 121 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-index a9ab623b2697..eaa65512161a 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-@@ -19,10 +19,12 @@ properties:
-       - mediatek,mt7629-pinctrl
- 
-   reg:
--    maxItems: 1
-+    minItems: 2
-+    maxItems: 2
- 
-   reg-names:
-     items:
-+      - const: base
-       - const: eint
- 
-   gpio-controller: true
-@@ -364,7 +366,9 @@ examples:
- 
-         pio: pinctrl@10211000 {
-           compatible = "mediatek,mt7622-pinctrl";
--          reg = <0 0x10211000 0 0x1000>;
-+          reg = <0 0x10211000 0 0x1000>,
-+                <0 0x10005000 0 0x1000>;
-+          reg-names = "base", "eint";
-           gpio-controller;
-           #gpio-cells = <2>;
- 
--- 
-2.35.3
+I'm asking since this patch comes with multiple compile errors. Probably due
+to lack of cross compiler tool chain on your side.
 
+If the above wouldn't be a hard dependency I'd say we could take those parts
+of your patch which are fine into the s390 tree for 6.10, fix the rest, and
+schedule that as well for 6.10 via the s390 tree.
 
