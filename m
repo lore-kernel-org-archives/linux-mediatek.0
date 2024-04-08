@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A9B6CD1296
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 09:05:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A4DECD128A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 09:05:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=urPnK9SKsV5nVEA1yeOAoEutTVGuSxP802X+pnIxpxI=; b=QFx6ySyYH6v8+b4S248x6O3/U7
-	elQwi4VnsuR8wm3OlvKaIh9FgBpeHJzCTBq8RzetnTYCI6+Uvx0TxJv6Zw9zUtqPLYVUNirlM2Dxh
-	znb8b88D6h9LYfrbJ1Bpfc1iHFIDjFwR3p5oImkVN9ntARTPU7oRIitrbp+ndJM9haS9WzdVZWING
-	orURqwpQJXdB79Ww/GVHPW31xRHFLlF1Hn0K0vcOaO3dzcB2CicvlzjqMmEfnXt/HxvHm9g4Ikg1o
-	atLPUwd5QfaZz0CTPcYffmZyU9Hv7IKqSFNq3dhgeP1SAiTtAOXvCOqrYFaDmkoyhuKBq1dU34qFN
-	ghoJrcJA==;
+	bh=WziNI0dy9ontwBLhhuwGeSxizPXdz8ruFPYdBGBNZvg=; b=2TE6tu9U1PBcMOJbmnpqAMVX56
+	+kfvhOZxJYu/jVuNjurrNShcy2emPJTNFjUZJ5exUudBnNT9aqc4Vk2jsFv+E6ufQ/w7k3TcnhsN/
+	icl2BhApZYSWVPQoh9yuYM8VXZFNbXSee/1ckTiOd0Uo2pb9l+9KEtfwmEj6RRGkDP24tO8dk72yM
+	aZM58s6dVuth9bPjGiRdGm9OCYRPIR7VegH0ffE87+gEtAOJrmGz6VFBsLSZYeHqbXlNX9qJ84Ynj
+	iiLQkMdgIgld+aWRF4D0u4sIbrCkmDZe3jf5Ggd8WrPL8gNkkPbNx0opSKhDN82jNNqrXWAXwXrSk
+	2+2ku8Xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtkwM-0000000F0qg-411M;
-	Mon, 08 Apr 2024 09:05:22 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1rtkwP-0000000F0sW-3XIF;
+	Mon, 08 Apr 2024 09:05:25 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtkwK-0000000F0ox-0Yfu;
-	Mon, 08 Apr 2024 09:05:21 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-a51addddbd4so262336866b.0;
-        Mon, 08 Apr 2024 02:05:18 -0700 (PDT)
+	id 1rtkwM-0000000F0pR-2NaR;
+	Mon, 08 Apr 2024 09:05:24 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-56e1f3462caso4161706a12.3;
+        Mon, 08 Apr 2024 02:05:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1712567117; x=1713171917; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1712567120; x=1713171920; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=urPnK9SKsV5nVEA1yeOAoEutTVGuSxP802X+pnIxpxI=;
-        b=dWO2Y30d91v48a866w5wM1GIXmFH17tAMn6STCKYmXY5UjcX0LdKj0v/lWd4zTt7jv
-         a0OlM+Hwt/Wyxer907n0IqyaSyGmeuoQHwGV7R180eVpYr6yePAXpbNJ+kaDT+FILhBY
-         OxOKU0nEcyozVfZpfhmR1Y0huo3CtF2BUZ29PYD+S54qijO7EoWoI1HcU7dyp8QqJn1/
-         ZyaF8u+Cp1j82OiriC1NioWeIjrCeKo+l1G4KEgMV/4ZGVL4Va5nOs4EYfpRtXHP7PRv
-         B52K3qna3ryG7BY9Aw8MBNNwevNCHekSL3gaeabTArYU0vCA/3hIxa4jbRdDYp0q4Shw
-         eigw==
+        bh=WziNI0dy9ontwBLhhuwGeSxizPXdz8ruFPYdBGBNZvg=;
+        b=NCZkLq9JCB6pAc1q8K1jJwBTViaQ7a1SVCM5ttDzLA17GGp1rSw7BUu+1OQj0CrXXq
+         PuCYPY5AaaDwwJq90ehoI4UBgWPMdqZngbu2r1oBqT3i4TUIgQw5VKBILH1KLnfVKANd
+         wPcvaPNUK2syDB5eCXRhlWhTPU54Q4roCNk8KgP81Z3Ln0AMmSIDu2shCcH2UpCv7vos
+         yLyq+U0wzZQQQ/jQk7e1fJ15Zfmqy455nlmak1YpZcvRUXmz3OQaP7HHj9DzVZTcEGLt
+         PhHYGa4GWxRouyzgebX86UcGKKx2yk/OxwjKkpGcgyBjLIjy+jgIbbMgfm7bLwzLJSb8
+         4TmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712567117; x=1713171917;
+        d=1e100.net; s=20230601; t=1712567120; x=1713171920;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=urPnK9SKsV5nVEA1yeOAoEutTVGuSxP802X+pnIxpxI=;
-        b=wgzhg9HtR/eK7ZUeHcavgeUgjOqhmnShRE5CySBq7sgIZyNunt17RQBJ9HFW3V/+Sy
-         3EA1Gy7KBCIRLx8pk2owO/r/1/QuxgV71BEiSJOzBYx4tDoOoZ9Bft9dVGgKqU0BqE2N
-         e28iPsU76QwkvZM4aee8UqB8FVdtkVgLCRNlVJE7HVTl0DVtnzGcOaA8PiPsrnuhDJUR
-         1ZVHTVhaBY37Zmn5fgLkEKx/HKavJFtymrgy2d0/VVS8OlXB/WB1p4nMtyA8ASTkSVLH
-         RiaHFiiED8V7xKhOJj3igmrJ8FKyolKlqyY2g0C1ex2ay7icraTWPPtrA8n67VZ7keJ4
-         EtSQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX6e54c+uL1m+x4RVtYwsYX+PWgWkKKW7WnZ4aWxS4TnSYgPlF6LomZ/HYFxxwPSh+UBlpW8odGqj0aEtDNEzjzvkRhYJ8LhbxIndgh0b2aSrB+6IolnjWKaRLh9YCRa6miW5t39KF/+k9+rXrw9pvb/1fDhYJblLA=
-X-Gm-Message-State: AOJu0YzKVadaxQ43w+dYKgThyfxocqYPb0QG6hCyqTQKiFFDBE+jVR+g
-	WAbA/dmuCVN8HtmhL/DUuLZyrRBgNZsSWUX/EWvcKIYHknEzY9EvUL1gcg6y
-X-Google-Smtp-Source: AGHT+IFrzZOCYf3cevStt0TK0MTR+9GFEq2JSptieBkxHNbtINxf0w9YFW6N4oKbZw0HPh2N8wyEWQ==
-X-Received: by 2002:a17:906:3bc5:b0:a4e:3715:7f4a with SMTP id v5-20020a1709063bc500b00a4e37157f4amr4263965ejf.71.1712567117295;
-        Mon, 08 Apr 2024 02:05:17 -0700 (PDT)
+        bh=WziNI0dy9ontwBLhhuwGeSxizPXdz8ruFPYdBGBNZvg=;
+        b=oLf5pCrx8+uhnoVh6qS6crFH975ld0S92Pb88sEANkOhcXlGqnZpDk/Q5apcBvyvAM
+         YufBtetokekN7KA5kJzSm+bpYc3Hh4MELSBRf8z+cI0IbVNdrnU130qG5LL7TXF6HxK7
+         NZsq7T93Tf6AhPyK3usf2N3+tXnrzq/IN2LXTNYnO0NzUoHtEslyToIs7O735oDbWG6a
+         jIkimOaFVhTxQ3IyBrWzds/aWkcvh0c4gZM1ILnlNqXJFDTrMhFGT0z91TjoI3ShXpNm
+         PbuwlV+sm4RRykLGUGjes6CqQUvWJ7UTkXR+1Axi/+7dYQ/8MFG6a6/ETDG2QDDlBLLi
+         cL4g==
+X-Forwarded-Encrypted: i=1; AJvYcCVAOmnpTIrqiaZHWov30ijidQURpaQ/i3Ivrkkx4qU7Qd6r9qUWr+VNI8+lHXydceOxzFZYJRwsXcHfRNwzLca74W+n9wpeYsNWCo3zr0CdMV8BO0x9MHLry2hfwe8Rfp+z4SqdqlIwyfrnXAuNBTD84tPIK+T5qqw=
+X-Gm-Message-State: AOJu0Yzufh9wtFJnxfCw82g/pcLAc7qd/Teh9SqGNfJ5cjhd5WYrzygB
+	y29RXDizhlF2+hlTE+8jr01SIpA8tTE4pdu88AZRpmhlbvxV8QT2
+X-Google-Smtp-Source: AGHT+IFJuDSPZV6Dt59lpjhwCnHica/ftb5KxSrdAGBGyr3hReB6zu7+J40yCPnZLpMbPyfGBIDvvA==
+X-Received: by 2002:a17:906:ecee:b0:a51:99e1:1f1a with SMTP id qt14-20020a170906ecee00b00a5199e11f1amr5386527ejb.64.1712567119701;
+        Mon, 08 Apr 2024 02:05:19 -0700 (PDT)
 Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id h1-20020a170906718100b00a51bd3bfec3sm2773969ejk.121.2024.04.08.02.05.16
+        by smtp.gmail.com with ESMTPSA id h1-20020a170906718100b00a51bd3bfec3sm2773969ejk.121.2024.04.08.02.05.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Apr 2024 02:05:16 -0700 (PDT)
+        Mon, 08 Apr 2024 02:05:19 -0700 (PDT)
 From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
 To: Sean Wang <sean.wang@kernel.org>,
 	Linus Walleij <linus.walleij@linaro.org>,
@@ -75,11 +75,10 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
 	linux-gpio@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
-	Chuanhong Guo <gch981213@gmail.com>
-Subject: [PATCH 2/3] dt-bindings: pinctrl: mediatek: mt7622: add "antsel" function
-Date: Mon,  8 Apr 2024 11:05:05 +0200
-Message-Id: <20240408090506.21596-2-zajec5@gmail.com>
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH 3/3] dt-bindings: pinctrl: mediatek: mt7622: add "base" reg
+Date: Mon,  8 Apr 2024 11:05:06 +0200
+Message-Id: <20240408090506.21596-3-zajec5@gmail.com>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20240408090506.21596-1-zajec5@gmail.com>
 References: <20240408090506.21596-1-zajec5@gmail.com>
@@ -87,8 +86,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_020520_208871_81A568A2 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20240408_020522_731586_A1E05957 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,52 +104,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Rafał Miłecki <rafal@milecki.pl>
 
-MT7622 pinctrl has ANTSEL* pins. Linux support for those was added in
-the commit 19f599e83ac5 ("pinctrl: mediatek: mt7622: add antsel
-pins/groups"). Include them in binding.
+Both: MT7622 and MT7629 use two reg spaces: "base" and "eint". It wasn't
+covered by the binding and also example didn't match incomplete binding.
+Fix it.
 
-Cc: Chuanhong Guo <gch981213@gmail.com>
 Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 ---
- .../pinctrl/mediatek,mt7622-pinctrl.yaml       | 18 ++++++++++++++++--
- 1 file changed, 16 insertions(+), 2 deletions(-)
+ .../bindings/pinctrl/mediatek,mt7622-pinctrl.yaml         | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-index 60f30a59f385..a9ab623b2697 100644
+index a9ab623b2697..eaa65512161a 100644
 --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
 +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-@@ -75,8 +75,8 @@ patternProperties:
-           function:
-             description:
-               A string containing the name of the function to mux to the group.
--            enum: [emmc, eth, i2c, i2s, ir, led, flash, pcie, pmic, pwm, sd,
--                   spi, tdm, uart, watchdog, wifi]
-+            enum: [antsel, emmc, eth, i2c, i2s, ir, led, flash, pcie, pmic, pwm,
-+                   sd, spi, tdm, uart, watchdog, wifi]
+@@ -19,10 +19,12 @@ properties:
+       - mediatek,mt7629-pinctrl
  
-           groups:
-             description:
-@@ -90,6 +90,20 @@ patternProperties:
-           - function
+   reg:
+-    maxItems: 1
++    minItems: 2
++    maxItems: 2
  
-         allOf:
-+          - if:
-+              properties:
-+                function:
-+                  const: antsel
-+            then:
-+              properties:
-+                groups:
-+                  items:
-+                    enum: [antsel0, antsel1, antsel2, antsel3, antsel4, antsel5,
-+                           antsel6, antsel7, antsel8, antsel9, antsel10,
-+                           antsel11, antsel12, antsel13, antsel14, antsel15,
-+                           antsel16, antsel17, antsel18, antsel19, antsel20,
-+                           antsel21, antsel22, antsel23, antsel24, antsel25,
-+                           antsel26, antsel27, antsel28, antsel29]
-           - if:
-               properties:
-                 function:
+   reg-names:
+     items:
++      - const: base
+       - const: eint
+ 
+   gpio-controller: true
+@@ -364,7 +366,9 @@ examples:
+ 
+         pio: pinctrl@10211000 {
+           compatible = "mediatek,mt7622-pinctrl";
+-          reg = <0 0x10211000 0 0x1000>;
++          reg = <0 0x10211000 0 0x1000>,
++                <0 0x10005000 0 0x1000>;
++          reg-names = "base", "eint";
+           gpio-controller;
+           #gpio-cells = <2>;
+ 
 -- 
 2.35.3
 
