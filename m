@@ -4,72 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A8C0C67861
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 10:16:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AECE5CD128A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 10:38:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6pVekdkrQBPc4D4jebsomNbQ+DnizhbQ58ZJeq6rgCc=; b=f9MAotJj9E/basJnGc2PUD3G89
-	yV/pJlc6Mzx3Z3LI4W3NDBMNXqtlMZ1AS5xoWX9vfJU+nwefp37kQMkLcuFhm6tn+ZGuthIMXZjzQ
-	+zs+Vz27Na/6QaXTMi2GTKfp8lwhhXS+ACl5pugMAAMrq3iqBDyL/WjMzcPz09nwd+EpGWEtyZXEv
-	t+kPs7Tl837M6ZP9KF7jrZNx3nf3aKhhazNHHutIWMzPKVq39ejr/XUZi5BGRi+yCzLnA2GY8Tio/
-	iE2AdOPr0+SwE96yzsh5Wo8NduC49pAjM4WCAD10vq9svWK7lVuzqEMyJH7YI2J9lYk2/asCgicJD
-	cE/DZkRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=i1J16o8a/AiIgBIYW2eQoMmauzTJFPFFwzLx0A2U3Tk=; b=1vB1b+7171fiLll3Svw17BMPj6
+	zZCgux0m4IULHcYe4xrQItQ6GnNrj7sG8/tVQZIAH+9Pzk/ccxEYST2v6kOQ6DBK4QocSQ20ZD8TD
+	1o3GvUlnsaSeSFxR0ahxMbuHs4pKsW/Z0V1JU7gMRNSRQuImGeP6Gmn6OIKX3lg5Gcf4vdPjAw+WT
+	rN8jIm4/LAOgGNJiqH35W5ts85jff3qlMmEOkigQwfpKceOEh/pJsywWoETcinb0t3M+P/rwWGTQ/
+	Sf87NzmQUS8KKr7lW7a+mttDkQOG7zk7MYLRCtGlYrG5uU7evelFFIPTnkXCrMPxa+0y5InYm8vy7
+	h3ERhW3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtm3O-0000000FElo-1aQy;
-	Mon, 08 Apr 2024 10:16:42 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rtmOa-0000000FHj9-1S5Y;
+	Mon, 08 Apr 2024 10:38:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtm2r-0000000FEfO-3r3M;
-	Mon, 08 Apr 2024 10:16:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712571365;
-	bh=su42lLW6PD3z+UBwwbFQ0posL3pq3ei8eZhPwV7J1QU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aaY5QGWExwVtL7oX5bMM2dEOfNtL1HOeztXi5FJXuvvhWIuxrbzODt/767fCfgNvi
-	 zFUowTzx0VKnymoQvkXzj73u5/ZHw4o/2BC7HmPwmdUT3jojDy1H1vCFpTxsmGv3KI
-	 tqXGNeshynXl0YQS/vODDfUl5DWbZb0jAF5cJTATPg+tJOiV8rVXVnHSk5nMQUsJnf
-	 jNnAHdgwqkmoVMzktYrKnyEfxgO5Xjf9GQL0MdukR/htkCPqqzBsVERbgLMZNWNky6
-	 JCeLMA0hrNlXYb0IisVRdkZzWodc6l3iK4n+qLUxeV3mn+zWLAp63ZhnESId8gZoMb
-	 3B+cTnpnSZDew==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 398633780627;
-	Mon,  8 Apr 2024 10:16:04 +0000 (UTC)
-Message-ID: <5e385c2e-6509-4347-96a5-4606b32d20ff@collabora.com>
-Date: Mon, 8 Apr 2024 12:16:03 +0200
+	id 1rtmOW-0000000FHiJ-42GI
+	for linux-mediatek@lists.infradead.org;
+	Mon, 08 Apr 2024 10:38:34 +0000
+X-UUID: 23226ad0f59411ee96d5dfc950b7243d-20240408
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=i1J16o8a/AiIgBIYW2eQoMmauzTJFPFFwzLx0A2U3Tk=;
+	b=Aj1C93UEiaYW1mE5sUYIWNTAYZH/L/pom2J40XbGU/P8PwgvIaG5mekPUabISA+dicfrHAbuRUPT+LnQcTvIrtRkgzzPL4C0BJt0x2zNkMO4PZvJ1YKbSe4eyLdXxAZ6ZuD0sZWd+bCLkoqdXoh8NKJr1jeTJNsf5S97RL2hqt0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:a644fc5e-7b74-491d-889e-e4aff9ee125c,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6f543d0,CLOUDID:18f5eb85-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 23226ad0f59411ee96d5dfc950b7243d-20240408
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <joe.zhou@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 138953394; Mon, 08 Apr 2024 03:38:28 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 8 Apr 2024 18:38:20 +0800
+Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 8 Apr 2024 18:38:19 +0800
+From: Joe.Zhou <Joe.Zhou@mediatek.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+CC: <linux-mmc@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<wsd_upstream@mediatek.com>, "Peng . Zhou" <Peng.Zhou@mediatek.com>, "Sophie
+ . Wang" <Sophie.Wang@mediatek.com>, "Wey . Zhang" <Wey.Zhang@mediatek.com>,
+	"Yijian . Jia" <yijian.jia@mediatek.com>, "Sharp . Xia"
+	<Sharp.Xia@mediatek.com>, Joe.Zhou <Joe.Zhou@mediatek.com>
+Subject: [PATCH] mmc: race condition between "sdcard hot plug out" and "system reboot"
+Date: Mon, 8 Apr 2024 18:38:24 +0800
+Message-ID: <20240408103824.11476-1-Joe.Zhou@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
- support for board path
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: chunkuang.hu@kernel.org, robh@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- matthias.bgg@gmail.com, shawn.sung@mediatek.com, yu-chang.lee@mediatek.com,
- ck.hu@mediatek.com, jitao.shi@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com
-References: <20240404081635.91412-1-angelogioacchino.delregno@collabora.com>
- <20240404081635.91412-3-angelogioacchino.delregno@collabora.com>
- <CAGXv+5F9rfTVDExKSCF7fBKwR+HijNzFYE6+4aHKw3ZP81DG9w@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAGXv+5F9rfTVDExKSCF7fBKwR+HijNzFYE6+4aHKw3ZP81DG9w@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--5.893800-8.000000
+X-TMASE-MatchedRID: 4dLm6kicgxWvVT6bfkFW/ocU/ASc4KydJD5ItWH4fSKUvX/ci5TjsqP6
+	lEvEjaSAqvr4KXCXxhMNdZsOPCvd7LuIV2AVynTksyNb+yeIRAohpWQUitAWG5kd+ko3Vgxl8U1
+	60P1TrZB8lDLz8Vr1zLZMGUUyuIF5lwV2iaAfSWcURSScn+QSXt0H8LFZNFG7hqz53n/yPnql9x
+	whgVpyoZb6UV+Zy7/DoltnS9/+IyJOSSqBsK+S9FbhgBx8Hi7b
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--5.893800-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 9C3F4986530E6E5EA6FD323329A355320D03813A4A33CF50CA99282926EAA13D2000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_031610_298996_E6F40C71 
-X-CRM114-Status: GOOD (  18.59  )
+X-CRM114-CacheID: sfid-20240408_033833_060500_9C88E7ED 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,87 +95,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/04/24 05:20, Chen-Yu Tsai ha scritto:
-> On Thu, Apr 4, 2024 at 4:16 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Document OF graph on MMSYS/VDOSYS: this supports up to three DDP paths
->> per HW instance (so potentially up to six displays for multi-vdo SoCs).
->>
->> The MMSYS or VDOSYS is always the first component in the DDP pipeline,
->> so it only supports an output port with multiple endpoints - where each
->> endpoint defines the starting point for one of the (currently three)
->> possible hardware paths.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   .../bindings/arm/mediatek/mediatek,mmsys.yaml | 23 +++++++++++++++++++
->>   1 file changed, 23 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
->> index b3c6888c1457..90758bb5bcb1 100644
->> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
->> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
->> @@ -93,6 +93,29 @@ properties:
->>     '#reset-cells':
->>       const: 1
->>
->> +  port:
->> +    $ref: /schemas/graph.yaml#/properties/port
->> +    description:
->> +      Output port node. This port connects the MMSYS/VDOSYS output to
->> +      the first component of one display pipeline, for example one of
->> +      the available OVL or RDMA blocks.
->> +      Some MediaTek SoCs support up to three display outputs per MMSYS.
->> +    properties:
->> +      endpoint@0:
->> +        $ref: /schemas/graph.yaml#/properties/endpoint
->> +        description: Output to the primary display pipeline
->> +
->> +      endpoint@1:
->> +        $ref: /schemas/graph.yaml#/properties/endpoint
->> +        description: Output to the secondary display pipeline
->> +
->> +      endpoint@2:
->> +        $ref: /schemas/graph.yaml#/properties/endpoint
->> +        description: Output to the tertiary display pipeline
->> +
->> +      required:
->> +        - endpoint@0
->> +
-> 
-> Technically the mmsys device serves as an glue layer for the display
-> pipeline, providing things like clock control and signal routing; the
-> device itself is not part of the pipeline, and probably shouldn't be
-> part of the graph?
-> 
+In mmc driver, a race condition may occur between "sdcard hot plug out" and "system reboot".
+How it happen?
 
-That is (only) partially true: in the case of older SoCs, the MMSYS can only
-connect to a single first IP of the pipeline, but in the case of newer ones,
-and especially (but not limited to) MT8195 onwards having multiple instances
-of VDOSYS, that really becomes part of the pipeline.
+sdcard hot pulg out:                SyS_reboot:
+CPU0                               CPU1
+mmc_sd_detect()                    _mmc_sd_suspend
+{                                  {
 
-This is not because of the possible different first IP in the pipeline, but
-because of support for dual-interface (DSI and DP) that, in even newer SoCs,
-can be done with cross-mmsys (cross-vdosys, actually...) as some of those do
-have the two in different VDOs.
+......
+#Step1: detect SD card removed
+if (err) {                          ......
+    #Step2: host->card is NULL
+    mmc_sd_remove(host);
+                                    #Step3:_mmc_sd_suspend claimed host
+                                    mmc_claim_host(host);
+                                    #Step4: use host->card(NULL pointer)
+                                    if (mmc_card_suspended(host->card))
+                                    ......
+                                    }
+    mmc_claim_host(host);
+    mmc_detach_bus(host);
+ }
+ ......
+ }
+we can prevent it occuring by add claim for "host->card = NULL" and add "host->card" validity check in mmc_sd_suspend.
 
-So yes, this can be done without the graph in MMSYS *in this precise moment in
-time*, but we'll anyway end up adding it sooner than later - and I'm doing this
-right now, instead of later, because it's also simplifying the implementation
-so like that I'm "catching two birds with one stone" :-)
+Signed-off-by: Joe.Zhou <Joe.Zhou@mediatek.com>
+---
+ drivers/mmc/core/sd.c | 25 ++++++++++++++-----------
+ 1 file changed, 14 insertions(+), 11 deletions(-)
 
-Cheers,
-Angelo
-
-> ChenYu
-> 
->>   required:
->>     - compatible
->>     - reg
->> --
->> 2.44.0
->>
-
+diff --git a/drivers/mmc/core/sd.c b/drivers/mmc/core/sd.c
+index 1c8148cdda50..38c0b271283a 100644
+--- a/drivers/mmc/core/sd.c
++++ b/drivers/mmc/core/sd.c
+@@ -1593,7 +1593,9 @@ static int mmc_sd_init_card(struct mmc_host *host, u32 ocr,
+ static void mmc_sd_remove(struct mmc_host *host)
+ {
+ 	mmc_remove_card(host->card);
++	mmc_claim_host(host);
+ 	host->card = NULL;
++	mmc_release_host(host);
+ }
+ 
+ /*
+@@ -1702,18 +1704,19 @@ static int _mmc_sd_suspend(struct mmc_host *host)
+ 	int err = 0;
+ 
+ 	mmc_claim_host(host);
++	if (host->card) {
++		if (mmc_card_suspended(card))
++			goto out;
+ 
+-	if (mmc_card_suspended(card))
+-		goto out;
+-
+-	if (sd_can_poweroff_notify(card))
+-		err = sd_poweroff_notify(card);
+-	else if (!mmc_host_is_spi(host))
+-		err = mmc_deselect_cards(host);
++		if (sd_can_poweroff_notify(card))
++			err = sd_poweroff_notify(card);
++		else if (!mmc_host_is_spi(host))
++			err = mmc_deselect_cards(host);
+ 
+-	if (!err) {
+-		mmc_power_off(host);
+-		mmc_card_set_suspended(card);
++		if (!err) {
++			mmc_power_off(host);
++			mmc_card_set_suspended(card);
++		}
+ 	}
+ 
+ out:
+@@ -1729,7 +1732,7 @@ static int mmc_sd_suspend(struct mmc_host *host)
+ 	int err;
+ 
+ 	err = _mmc_sd_suspend(host);
+-	if (!err) {
++	if (!err && host->card) {
+ 		pm_runtime_disable(&host->card->dev);
+ 		pm_runtime_set_suspended(&host->card->dev);
+ 	}
+-- 
+2.18.0
 
 
