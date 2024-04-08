@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11D8FC67861
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 07:56:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61DB2CD1292
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 08:08:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vGFDg2MTBH1lWhyP2c5sjz1mFhzd3Awu/cYfQ1pozd8=; b=lxWYoWWW9uvGqaFl1vBQjXx3zP
-	gUm6+nfGz2vTzz1H/PrtDOnkSZyHGXmpGD3TQgq1MxnaYypv7F9IOH1sdISKUDmk4e6QD3VQ0XOz3
-	ptb5ClKRW50BJqqK+/yVrco8HrQ7zJ3uXkNjrSYWDWdgVzDFicZ4+TQpED12cKWH1DaRd7BD+yARy
-	mh7Abr0UqzeH3UltwVYzRLBa3ts0KYpdSTkAecA1znyrZoSVMAH1L8nAfsU0lWREB1GqRRyfC10jh
-	gu3kO+f6Zm76V1gOxuNjR1xOqRnwSDdUHinTKd/DqV64OqAReChKXSS45682E64lRttVw2jnlrwP0
-	oLu/aIRA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TEMDozC6Ki2lBDJ5ghbWs8zLTRgjLfZD4IzGZksn5F4=; b=JZIKm8maWu/wTDefdZG4bWCQuZ
+	HAarhpMYPZ2wwDet4ObnctBlXyzNF2Z9h2XZxlM1BI0THRwEfofrOSaaE6fGP9nPj4X8irKvWe21l
+	Z+eZAZbC45bLPLyA/4NvDEVWlNewh0zML0d95/f/Z1KhmREp5j0AWv+i4quzSO5VTdWCW492Um+cb
+	9HGEUtBTfcetoR0xf4jwYRqYHbqyDpGL2SuI8FZlxrmahgtkK2buplVyO6qWoXDd81JYnN20zC3hP
+	qlVMfUFh6e06Csy2/+JU6hFuVLcqZnDfcYyFilVJIodPlHEjIQZ7dZJykxb46QZnv81ZTNZixNUIY
+	L4N3Nk2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtjs5-0000000Emvp-2aoh;
-	Mon, 08 Apr 2024 07:56:53 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1rtk3c-0000000Epa4-11Rx;
+	Mon, 08 Apr 2024 08:08:48 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtjry-0000000Emrd-0e34
-	for linux-mediatek@lists.infradead.org;
-	Mon, 08 Apr 2024 07:56:48 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rtjre-00084h-Af; Mon, 08 Apr 2024 09:56:26 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rtjrc-00B4MM-ED; Mon, 08 Apr 2024 09:56:24 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rtjrc-00G4LH-15;
-	Mon, 08 Apr 2024 09:56:24 +0200
-Date: Mon, 8 Apr 2024 09:56:24 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	conor+dt@kernel.org, matthias.bgg@gmail.com, jitao.shi@mediatek.com, 
-	thierry.reding@gmail.com, miles.chen@mediatek.com, xinlei.lee@mediatek.com, 
-	linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wenst@chromium.org, 
-	kernel@collabora.com
-Subject: Re: [PATCH] dt-bindings: pwm: mediatek,pwm-disp: Document
- power-domains property
-Message-ID: <govw33edknpv5oif4txex7b47nfqbpmc7qlytqqx6oetpm34db@vilvv2s4zzsy>
-References: <20240404081808.92199-1-angelogioacchino.delregno@collabora.com>
+	id 1rtk3V-0000000EpWw-3Cbr;
+	Mon, 08 Apr 2024 08:08:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 7C714CE0E3C;
+	Mon,  8 Apr 2024 08:08:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59450C433F1;
+	Mon,  8 Apr 2024 08:08:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712563714;
+	bh=Uov0ir20j4odI6p1u5vs5WTkiCa18dZ4q6slRFfyyN4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=cz6kskoCau8Xii27F8rmNEguEqAR4XvL9X1pTR3Lhks/B8DJfWFrhL2GIAsBOu3d9
+	 wOxiTxLur5Ark1m6GlHDEjdIWmITefAYaKEmYyLmJwMriqN7Y0wZ2RWMTn9q7az/VX
+	 5MZhX6OiT/nXSznfvox1EnKe/hSFZo7SpNvFz3a6zI/Yj3M8xPS0mfU94+3l/yHjFH
+	 7jPr8t4p4gpnSAYU5Ecce0O3rClD31iOStkZHlvdqvTFsEMngV7Qpc0KkcYu2FIhoj
+	 aq/fI1hY60R9x7235AJMfM0a4RPaGzbuu3LyMi8DnL/R6pQ8sk/oYzZu97iVT3Y1ad
+	 o9b8x/4SUHHkg==
+From: Michael Walle <mwalle@kernel.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Sean Wang <sean.wang@mediatek.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Michael Walle <mwalle@kernel.org>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v4 1/2] dt-bindings: arm64: mediatek: add Kontron 3.5"-SBC-i1200
+Date: Mon,  8 Apr 2024 10:08:15 +0200
+Message-Id: <20240408080816.4134370-1-mwalle@kernel.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ge6rl4smjg7jdvlz"
-Content-Disposition: inline
-In-Reply-To: <20240404081808.92199-1-angelogioacchino.delregno@collabora.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_005646_904780_790D1BDA 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20240408_010842_098203_27CCF9F0 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,53 +78,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add the compatible string for the Kontron 3.5"-SBC-i1200 single board
+computer.
 
---ge6rl4smjg7jdvlz
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Michael Walle <mwalle@kernel.org>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+v4:
+ - rebase to latest next
 
-Hello,
+v3:
+ - drop description and add to mt8395 existing entry
 
-On Thu, Apr 04, 2024 at 10:18:08AM +0200, AngeloGioacchino Del Regno wrote:
-> Allow the power-domains property to the PWM_DISP block as on some SoCs
-> this does need at most one power domain.
->=20
-> Fixes: b09b179bac0a ("dt-bindings: pwm: Convert pwm-mtk-disp.txt to media=
-tek,pwm-disp.yaml format")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
+v2:
+ - convert enum to const as there is only one specific board
+---
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-applied to
-https://git.kernel.org/pub/scm/linux/kernel/git/ukleinek/linux.git pwm/for-=
-next
-=2E
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index d986b160fed1..72be45853fe0 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -359,6 +359,7 @@ properties:
+           - const: mediatek,mt8188
+       - items:
+           - enum:
++              - kontron,3-5-sbc-i1200
+               - mediatek,mt8395-evk
+               - radxa,nio-12l
+           - const: mediatek,mt8395
+-- 
+2.39.2
 
-While that is a fix I wouldn't consider this urgent enough to send it to
-Linus before v6.9. However if another urgent fix comes in, I'll send it
-along.
-
-Best regards and thanks,
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---ge6rl4smjg7jdvlz
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmYToycACgkQj4D7WH0S
-/k5ohwf5ASXu/S93rwTQinzP8fl/R7X0RAysJa4ItkB52IZclVPQ/keaeXAs7cWO
-Tx8HlVM0euKtmVIobPXh7ZoyPqe/vhqedQYbMYCSrikuWsVCyErmhnW2Kn+89bKo
-YIESDSv0O6EJEVWdcapR4sOzEblnIZJyqB3TYqrT7+eK3nHMHI7E+r318pKLeFoJ
-5K/UWMZkTFYIqAJXk4fKG4j3ieuH+cDPCAMhOQRtqxQ6paMXpJgt71aJD4Y+Z4sw
-BGHNPKiZTWDeaK7LH1LXFimMwAiZmMDMsf6CGQ6vY/pI6jKzqyUg1R96WTV07nf1
-HMKKif/gTgd+D02BlOlrwbj9hUANmw==
-=iE3d
------END PGP SIGNATURE-----
-
---ge6rl4smjg7jdvlz--
 
