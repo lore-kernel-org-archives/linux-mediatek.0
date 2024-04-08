@@ -4,135 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 478BCCD128A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 10:03:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A8C0C67861
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 10:16:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:Message-ID:References:In-Reply-To:
-	Subject:Cc:To:From:Date:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WGRw+wpQ+8BkQKcdJ/jvqWzRkTuOQNEebcPy5PQD4Kw=; b=MUsdPfpcYOBTQSJ3h3Z0idCZE8
-	PZH5E73pNYVYSGkpe0ROzvtEObf4ZeReXXI5NVkoYSVIN13xgLx53C0YYGNNmQiq95wL92CZTF5Bl
-	uuFhbW+hAfv3ymBZAC+Edfcv2aQOwLsnrzUvtTMBBKOFkn+lpYjI3y03CU2+43ygVLzbcppbvKZ/S
-	F76HpiXxmjZ28SgJZClVTqT/bA9a+eFqCBVwTfCTbWHOOt9ajECkfJlZzK8THcmtpdXYoT0uzlWfy
-	OkjDFBOWy252Ok7qyqBt95oFXZJXwJ3FTL2dPKpkbhIR1eiwxXj0HuOvM3OkDtv//VEKvE9hwfGfs
-	NcNmaXPw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6pVekdkrQBPc4D4jebsomNbQ+DnizhbQ58ZJeq6rgCc=; b=f9MAotJj9E/basJnGc2PUD3G89
+	yV/pJlc6Mzx3Z3LI4W3NDBMNXqtlMZ1AS5xoWX9vfJU+nwefp37kQMkLcuFhm6tn+ZGuthIMXZjzQ
+	+zs+Vz27Na/6QaXTMi2GTKfp8lwhhXS+ACl5pugMAAMrq3iqBDyL/WjMzcPz09nwd+EpGWEtyZXEv
+	t+kPs7Tl837M6ZP9KF7jrZNx3nf3aKhhazNHHutIWMzPKVq39ejr/XUZi5BGRi+yCzLnA2GY8Tio/
+	iE2AdOPr0+SwE96yzsh5Wo8NduC49pAjM4WCAD10vq9svWK7lVuzqEMyJH7YI2J9lYk2/asCgicJD
+	cE/DZkRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtlqi-0000000FCKz-22jp;
-	Mon, 08 Apr 2024 10:03:36 +0000
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+	id 1rtm3O-0000000FElo-1aQy;
+	Mon, 08 Apr 2024 10:16:42 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtlqX-0000000FCGS-3Rqs;
-	Mon, 08 Apr 2024 10:03:27 +0000
-Received: from pps.filterd (m0353727.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 4389vTLC024196;
-	Mon, 8 Apr 2024 10:03:21 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=date : from : to : cc :
- subject : reply-to : in-reply-to : references : message-id : content-type
- : content-transfer-encoding : mime-version; s=pp1;
- bh=WGRw+wpQ+8BkQKcdJ/jvqWzRkTuOQNEebcPy5PQD4Kw=;
- b=V1m9DY18uGHMz8vh9IxAKCdhy2XzRwg7vXDe5eU16f5nEfVNyFSH2bkwzlSGAU2+MppO
- 4KiihhZ6Fk01FJPzdXSR1BLEuGht8lFKOYZkgyQ+XDX6d86NzlDgaIq0J9qJC+jfnfB7
- aEeGTfrHV1qJLbUVw7VwF0wJD3GQGVNebGmuEEwqhBLJ9iqNw/OPA1h1UuFrYBwI63SP
- L8QiPE5Ov/+xNvSEFsQF6+fJ779nZgk/JgjuEZ8d5Yw4SPP9YYyN9phnIKPRv8VXU/FC
- LdWtpshSMMqQ0phdyUamMRN3ZDDlZNvPvkSzaRMK+nFo6z+Im4121GSQHwYWxTP0de2t 7g== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xceda00e7-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 08 Apr 2024 10:03:21 +0000
-Received: from m0353727.ppops.net (m0353727.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 438A3KAu002830;
-	Mon, 8 Apr 2024 10:03:20 GMT
-Received: from ppma22.wdc07v.mail.ibm.com (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xceda00e4-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 08 Apr 2024 10:03:20 +0000
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
-	by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 4387uZ0H019096;
-	Mon, 8 Apr 2024 10:03:18 GMT
-Received: from smtprelay04.wdc07v.mail.ibm.com ([172.16.1.71])
-	by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3xbh3yym76-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 08 Apr 2024 10:03:18 +0000
-Received: from smtpav02.wdc07v.mail.ibm.com (smtpav02.wdc07v.mail.ibm.com [10.39.53.229])
-	by smtprelay04.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 438A3FKl53084522
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 8 Apr 2024 10:03:18 GMT
-Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id D2E1D58058;
-	Mon,  8 Apr 2024 10:03:15 +0000 (GMT)
-Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id F35F85806B;
-	Mon,  8 Apr 2024 10:03:10 +0000 (GMT)
-Received: from ltc.linux.ibm.com (unknown [9.5.196.140])
-	by smtpav02.wdc07v.mail.ibm.com (Postfix) with ESMTP;
-	Mon,  8 Apr 2024 10:03:10 +0000 (GMT)
-Date: Mon, 08 Apr 2024 12:03:10 +0200
-From: Harald Freudenberger <freude@linux.ibm.com>
-To: Allen Pais <apais@linux.microsoft.com>
-Cc: linux-kernel@vger.kernel.org, tj@kernel.org, keescook@chromium.org,
-        vkoul@kernel.org, marcan@marcan.st, sven@svenpeter.dev,
-        florian.fainelli@broadcom.com, rjui@broadcom.com,
-        sbranden@broadcom.com, paul@crapouillou.net,
-        Eugeniy.Paltsev@synopsys.com, manivannan.sadhasivam@linaro.org,
-        vireshk@kernel.org, Frank.Li@nxp.com, leoyang.li@nxp.com,
-        zw@zh-kernel.org, wangzhou1@hisilicon.com, haijie1@huawei.com,
-        shawnguo@kernel.org, s.hauer@pengutronix.de, sean.wang@mediatek.com,
-        matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-        afaerber@suse.de, logang@deltatee.com, daniel@zonque.org,
-        haojian.zhuang@gmail.com, robert.jarzmik@free.fr, andersson@kernel.org,
-        konrad.dybcio@linaro.org, orsonzhai@gmail.com,
-        baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com,
-        patrice.chotard@foss.st.com, linus.walleij@linaro.org, wens@csie.org,
-        jernej.skrabec@gmail.com, peter.ujfalusi@gmail.com, kys@microsoft.com,
-        haiyangz@microsoft.com, wei.liu@kernel.org, decui@microsoft.com,
-        jassisinghbrar@gmail.com, mchehab@kernel.org,
-        maintainers@bluecherrydvr.com, aubin.constans@microchip.com,
-        ulf.hansson@linaro.org, manuel.lauss@gmail.com,
-        mirq-linux@rere.qmqm.pl, jh80.chung@samsung.com, oakad@yahoo.com,
-        hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
-        brucechang@via.com.tw, HaraldWelte@viatech.com, pierre@ossman.eu,
-        duncan.sands@free.fr, stern@rowland.harvard.edu, oneukum@suse.com,
-        openipmi-developer@lists.sourceforge.net, dmaengine@vger.kernel.org,
-        asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-        linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
-        imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
-        linux-mediatek@lists.infradead.org, linux-actions@lists.infradead.org,
-        linux-arm-msm@vger.kernel.org, linux-riscv@lists.infradead.org,
-        linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-        linux-hyperv@vger.kernel.org, linux-rdma@vger.kernel.org,
-        linux-media@vger.kernel.org, linux-mmc@vger.kernel.org,
-        linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-        linux-s390@vger.kernel.org, netdev@vger.kernel.org,
-        linux-usb@vger.kernel.org, Holger Dengler <dengler@linux.ibm.com>
-Subject: Re: [PATCH 7/9] s390: Convert from tasklet to BH workqueue
-Mail-Reply-To: freude@linux.ibm.com
-In-Reply-To: <20240327160314.9982-8-apais@linux.microsoft.com>
-References: <20240327160314.9982-1-apais@linux.microsoft.com>
- <20240327160314.9982-8-apais@linux.microsoft.com>
-Message-ID: <702594ec5852c482f96cfcf84a02cab2@linux.ibm.com>
-X-Sender: freude@linux.ibm.com
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: vcJ1PwKFq1RysBO3jh1OFUS_rcqMuAYv
-X-Proofpoint-ORIG-GUID: X3ilzQ7TzOIWEyFQfqPrw-z8aSdSkVVd
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+	id 1rtm2r-0000000FEfO-3r3M;
+	Mon, 08 Apr 2024 10:16:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1712571365;
+	bh=su42lLW6PD3z+UBwwbFQ0posL3pq3ei8eZhPwV7J1QU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=aaY5QGWExwVtL7oX5bMM2dEOfNtL1HOeztXi5FJXuvvhWIuxrbzODt/767fCfgNvi
+	 zFUowTzx0VKnymoQvkXzj73u5/ZHw4o/2BC7HmPwmdUT3jojDy1H1vCFpTxsmGv3KI
+	 tqXGNeshynXl0YQS/vODDfUl5DWbZb0jAF5cJTATPg+tJOiV8rVXVnHSk5nMQUsJnf
+	 jNnAHdgwqkmoVMzktYrKnyEfxgO5Xjf9GQL0MdukR/htkCPqqzBsVERbgLMZNWNky6
+	 JCeLMA0hrNlXYb0IisVRdkZzWodc6l3iK4n+qLUxeV3mn+zWLAp63ZhnESId8gZoMb
+	 3B+cTnpnSZDew==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 398633780627;
+	Mon,  8 Apr 2024 10:16:04 +0000 (UTC)
+Message-ID: <5e385c2e-6509-4347-96a5-4606b32d20ff@collabora.com>
+Date: Mon, 8 Apr 2024 12:16:03 +0200
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-04-08_08,2024-04-05_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 mlxlogscore=918
- lowpriorityscore=0 bulkscore=0 spamscore=0 adultscore=0 priorityscore=1501
- malwarescore=0 phishscore=0 impostorscore=0 clxscore=1011 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2404010000
- definitions=main-2404080077
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
+ support for board path
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: chunkuang.hu@kernel.org, robh@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ matthias.bgg@gmail.com, shawn.sung@mediatek.com, yu-chang.lee@mediatek.com,
+ ck.hu@mediatek.com, jitao.shi@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com
+References: <20240404081635.91412-1-angelogioacchino.delregno@collabora.com>
+ <20240404081635.91412-3-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5F9rfTVDExKSCF7fBKwR+HijNzFYE6+4aHKw3ZP81DG9w@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <CAGXv+5F9rfTVDExKSCF7fBKwR+HijNzFYE6+4aHKw3ZP81DG9w@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_030325_907734_3E1D3FE4 
-X-CRM114-Status: GOOD (  15.65  )
+X-CRM114-CacheID: sfid-20240408_031610_298996_E6F40C71 
+X-CRM114-Status: GOOD (  18.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,40 +81,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: freude@linux.ibm.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024-03-27 17:03, Allen Pais wrote:
-> The only generic interface to execute asynchronously in the BH context 
-> is
-> tasklet; however, it's marked deprecated and has some design flaws. To
-> replace tasklets, BH workqueue support was recently added. A BH 
-> workqueue
-> behaves similarly to regular workqueues except that the queued work 
-> items
-> are executed in the BH context.
+Il 08/04/24 05:20, Chen-Yu Tsai ha scritto:
+> On Thu, Apr 4, 2024 at 4:16 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Document OF graph on MMSYS/VDOSYS: this supports up to three DDP paths
+>> per HW instance (so potentially up to six displays for multi-vdo SoCs).
+>>
+>> The MMSYS or VDOSYS is always the first component in the DDP pipeline,
+>> so it only supports an output port with multiple endpoints - where each
+>> endpoint defines the starting point for one of the (currently three)
+>> possible hardware paths.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   .../bindings/arm/mediatek/mediatek,mmsys.yaml | 23 +++++++++++++++++++
+>>   1 file changed, 23 insertions(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+>> index b3c6888c1457..90758bb5bcb1 100644
+>> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+>> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+>> @@ -93,6 +93,29 @@ properties:
+>>     '#reset-cells':
+>>       const: 1
+>>
+>> +  port:
+>> +    $ref: /schemas/graph.yaml#/properties/port
+>> +    description:
+>> +      Output port node. This port connects the MMSYS/VDOSYS output to
+>> +      the first component of one display pipeline, for example one of
+>> +      the available OVL or RDMA blocks.
+>> +      Some MediaTek SoCs support up to three display outputs per MMSYS.
+>> +    properties:
+>> +      endpoint@0:
+>> +        $ref: /schemas/graph.yaml#/properties/endpoint
+>> +        description: Output to the primary display pipeline
+>> +
+>> +      endpoint@1:
+>> +        $ref: /schemas/graph.yaml#/properties/endpoint
+>> +        description: Output to the secondary display pipeline
+>> +
+>> +      endpoint@2:
+>> +        $ref: /schemas/graph.yaml#/properties/endpoint
+>> +        description: Output to the tertiary display pipeline
+>> +
+>> +      required:
+>> +        - endpoint@0
+>> +
 > 
-> This patch converts drivers/infiniband/* from tasklet to BH workqueue.
+> Technically the mmsys device serves as an glue layer for the display
+> pipeline, providing things like clock control and signal routing; the
+> device itself is not part of the pipeline, and probably shouldn't be
+> part of the graph?
 > 
-> Based on the work done by Tejun Heo <tj@kernel.org>
-> Branch: https://git.kernel.org/pub/scm/linux/kernel/git/tj/wq.git 
-> for-6.10
-> 
-> Note: Not tested. Please test/review.
-> 
-> Signed-off-by: Allen Pais <allen.lkml@gmail.com>
-> ---
-> ...
->  drivers/s390/crypto/ap_bus.c           | 24 +++++++-------
->  drivers/s390/crypto/ap_bus.h           |  2 +-
->  drivers/s390/crypto/zcrypt_msgtype50.c |  2 +-
->  drivers/s390/crypto/zcrypt_msgtype6.c  |  4 +--
-> ...
 
-Applied and tested the s390 AP bus and zcrypt part of the patch.
-Works fine, a sniff test did not show any problems.
-Thanks for your work.
+That is (only) partially true: in the case of older SoCs, the MMSYS can only
+connect to a single first IP of the pipeline, but in the case of newer ones,
+and especially (but not limited to) MT8195 onwards having multiple instances
+of VDOSYS, that really becomes part of the pipeline.
 
-Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+This is not because of the possible different first IP in the pipeline, but
+because of support for dual-interface (DSI and DP) that, in even newer SoCs,
+can be done with cross-mmsys (cross-vdosys, actually...) as some of those do
+have the two in different VDOs.
+
+So yes, this can be done without the graph in MMSYS *in this precise moment in
+time*, but we'll anyway end up adding it sooner than later - and I'm doing this
+right now, instead of later, because it's also simplifying the implementation
+so like that I'm "catching two birds with one stone" :-)
+
+Cheers,
+Angelo
+
+> ChenYu
+> 
+>>   required:
+>>     - compatible
+>>     - reg
+>> --
+>> 2.44.0
+>>
+
+
 
