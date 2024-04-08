@@ -4,131 +4,164 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D010C67861
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 09:33:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C952BCD128A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 10:00:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HRb08lOvL/RkQcGPtpnIO47HiV3JbnaC5Kla4WlkdPg=; b=FkD7Pwm6lAvJT0+FV4TuZoOTb6
-	ZLIMTDGlKpsCuOmQb9XmRz55cVD/974vZGEofIWXYAAogPzlYDnPqM1QGdDTb0TvRaa/iLIKoVq4L
-	EvIxozH51tkacGaYpLcagvQ2tOmmc6PCTtORSlCnVSxOqOYSpgaoKpx3iWlhLfvUzWeiHL7xogPi9
-	9g4p/eoHTKyGpEmjS9o4ILHnEP9hLfCHv6xNWvAjhoP2udOT1p3J+p5UTV6Y6xMLMsJXXuUrLVXUs
-	ez39JkLShRc9dpglpM2keZkBSo+tP4kw2rdfSP9zULhHagKonoYoVTLXyMFrISyAjBpbimpHFXJNc
-	pbpv44Rw==;
+	bh=AwBWMVdOmbivKq+TpJpiqomZTBhMYRsNWxrtvAJKMRw=; b=IKvxKyT8AbhMSgCSfLkaFRK9aW
+	dtRY3Ky05qPn2/SR2R7laWBjdnQN8pTFfsP3Ojhq7h4abF9EK7H/jDIT0aykFOivMnmOoOmFyMZpC
+	T9fhydTl0+einLa0DzrvkF4Png4dP8hdYstFCJ56Eo8iTbkSblRR2oycOdydUTdFL7qnTnsHULUln
+	JyH/njmablzeE2Mmal+SCRwitpyWZWgzi1vEWk04seml+v6xCQ7DJI2zTLn0Tc8xuvWsOfbqniFLe
+	p7hKEdEFU0jY8wJZ4JpP/C7pr5CBL+Bm82rJuiQutnFQ4/eWpOlvLFwI5lq7CGd8ulV0N/0HYteHG
+	D0threyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtlNj-0000000F70v-1ouf;
-	Mon, 08 Apr 2024 09:33:39 +0000
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+	id 1rtlnO-0000000FBWT-1PfP;
+	Mon, 08 Apr 2024 10:00:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtlNY-0000000F6yY-148w;
-	Mon, 08 Apr 2024 09:33:35 +0000
-Received: from pps.filterd (m0353723.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 4389674X018763;
-	Mon, 8 Apr 2024 09:33:21 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=date : from : to : cc :
- subject : message-id : references : content-type : in-reply-to :
- mime-version; s=pp1; bh=HRb08lOvL/RkQcGPtpnIO47HiV3JbnaC5Kla4WlkdPg=;
- b=HAJzuBNsO2JwyXcSUPA5KKjMXoa85ATgDBDMdlUVrWrD4LTczUD9Nzq1exAuSBYIXiod
- e0MbeFjiTJ8BhZHNrUhGGDzWKY8EITc7XduqdLDZ5GctKya+kVyoKq/IkOu0SedUx2z5
- pQp8LeJGmQfs2CM+LTbmD/KJRvxg9VmuuBuJ1NKV4C1xxrojFpma6UqwA03Fy2zslw5J
- vQkdyyQm/5xiBkjpSpVWZG0r2JfzA51m5ovZNnFXMysbeE8Tuv+bGvb6/0yFAENxHcVu
- qAKQ1mFWZTC2QuNZ6UtiF13rTIvo2INwrArwDWHsJE6MYCmUQBSAMU8Fvb7Q48Tb74E1 6A== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xcahageb0-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 08 Apr 2024 09:33:21 +0000
-Received: from m0353723.ppops.net (m0353723.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 4389WAD8027701;
-	Mon, 8 Apr 2024 09:33:20 GMT
-Received: from ppma21.wdc07v.mail.ibm.com (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xcahageav-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 08 Apr 2024 09:33:20 +0000
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
-	by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 4388CHai022664;
-	Mon, 8 Apr 2024 09:33:19 GMT
-Received: from smtprelay05.fra02v.mail.ibm.com ([9.218.2.225])
-	by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3xbhqnqanr-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 08 Apr 2024 09:33:19 +0000
-Received: from smtpav05.fra02v.mail.ibm.com (smtpav05.fra02v.mail.ibm.com [10.20.54.104])
-	by smtprelay05.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 4389XFRb40632662
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 8 Apr 2024 09:33:17 GMT
-Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id E7ADC2004B;
-	Mon,  8 Apr 2024 09:33:14 +0000 (GMT)
-Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 43F2D20040;
-	Mon,  8 Apr 2024 09:33:11 +0000 (GMT)
-Received: from osiris (unknown [9.171.19.167])
-	by smtpav05.fra02v.mail.ibm.com (Postfix) with ESMTPS;
-	Mon,  8 Apr 2024 09:33:11 +0000 (GMT)
-Date: Mon, 8 Apr 2024 11:33:09 +0200
-From: Heiko Carstens <hca@linux.ibm.com>
-To: Allen Pais <apais@linux.microsoft.com>
-Cc: linux-kernel@vger.kernel.org, tj@kernel.org, keescook@chromium.org,
-        vkoul@kernel.org, marcan@marcan.st, sven@svenpeter.dev,
-        florian.fainelli@broadcom.com, rjui@broadcom.com,
-        sbranden@broadcom.com, paul@crapouillou.net,
-        Eugeniy.Paltsev@synopsys.com, manivannan.sadhasivam@linaro.org,
-        vireshk@kernel.org, Frank.Li@nxp.com, leoyang.li@nxp.com,
-        zw@zh-kernel.org, wangzhou1@hisilicon.com, haijie1@huawei.com,
-        shawnguo@kernel.org, s.hauer@pengutronix.de, sean.wang@mediatek.com,
-        matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-        afaerber@suse.de, logang@deltatee.com, daniel@zonque.org,
-        haojian.zhuang@gmail.com, robert.jarzmik@free.fr, andersson@kernel.org,
-        konrad.dybcio@linaro.org, orsonzhai@gmail.com,
-        baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com,
-        patrice.chotard@foss.st.com, linus.walleij@linaro.org, wens@csie.org,
-        jernej.skrabec@gmail.com, peter.ujfalusi@gmail.com, kys@microsoft.com,
-        haiyangz@microsoft.com, wei.liu@kernel.org, decui@microsoft.com,
-        jassisinghbrar@gmail.com, mchehab@kernel.org,
-        maintainers@bluecherrydvr.com, aubin.constans@microchip.com,
-        ulf.hansson@linaro.org, manuel.lauss@gmail.com,
-        mirq-linux@rere.qmqm.pl, jh80.chung@samsung.com, oakad@yahoo.com,
-        hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
-        brucechang@via.com.tw, HaraldWelte@viatech.com, pierre@ossman.eu,
-        duncan.sands@free.fr, stern@rowland.harvard.edu, oneukum@suse.com,
-        openipmi-developer@lists.sourceforge.net, dmaengine@vger.kernel.org,
-        asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-        linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
-        imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
-        linux-mediatek@lists.infradead.org, linux-actions@lists.infradead.org,
-        linux-arm-msm@vger.kernel.org, linux-riscv@lists.infradead.org,
-        linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-        linux-hyperv@vger.kernel.org, linux-rdma@vger.kernel.org,
-        linux-media@vger.kernel.org, linux-mmc@vger.kernel.org,
-        linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-        linux-s390@vger.kernel.org, netdev@vger.kernel.org,
-        linux-usb@vger.kernel.org
-Subject: Re: [PATCH 7/9] s390: Convert from tasklet to BH workqueue
-Message-ID: <20240408093309.9447-A-hca@linux.ibm.com>
-References: <20240327160314.9982-1-apais@linux.microsoft.com>
- <20240327160314.9982-8-apais@linux.microsoft.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240327160314.9982-8-apais@linux.microsoft.com>
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: iEx_GL3tt0mvzHnM4XY0RznJTIWn8Sle
-X-Proofpoint-GUID: YubKogQl91W9lviSSqhJG7ZeEe8HfK38
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+	id 1rtlnK-0000000FBVQ-3QM1;
+	Mon, 08 Apr 2024 10:00:08 +0000
+X-UUID: c2260bb0f58e11ee96d5dfc950b7243d-20240408
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:To:From; bh=AwBWMVdOmbivKq+TpJpiqomZTBhMYRsNWxrtvAJKMRw=;
+	b=uSm64j3DsAON+wdHmcxl1fN0jztHWbXRggk+IiC2cYJdXZstVSyY6jSCOujdzDlskBmOT4mvCLeeXHEA5GQtEhBUQphpBKztwPh+lPBnuMC1+Nz5FFvY54+v1A6uTNq0HnJj//+ywZJdCYBRNDOX13RBRBnD2iIhLb0eDFZFThI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:27ad1a11-9325-41be-bec9-14cf1e61b2c7,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:b8e56a82-4f93-4875-95e7-8c66ea833d57,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: c2260bb0f58e11ee96d5dfc950b7243d-20240408
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 790907109; Mon, 08 Apr 2024 02:59:58 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 8 Apr 2024 17:49:21 +0800
+Received: from SINPR02CU002.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 8 Apr 2024 17:49:21 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=bVaIPOixcQ9Y/GhRv0t5vSaHjPtlf2sVqX3f74JOSH+gazd2SLYde8jv5YX/+Tdw/UJasyE6gmJBTLdpfDwEzi0Hf9HSLuGAb2R+DMABLI2bRBeheVfW40XBZTF2cZ1SmUZJ6E0uurSWw/SOoErdRqpcAsV/LKy+SXLhn4eLA5lUhGWpTyi3ayu71Icsp7djE6GpY8kDSE6cGq6xqbbMFddb4jND2vdoz2Mk0o+m1rtFoGAhzlXcnwxKqLbiIl8+6ha80xZsZPC/Ownm6J5UasD3VRJexoB+p+sB/EiRjCYLcRtbshZfqP4lvoUkgtB5RTWXXckBySrT1pN+vw4HqA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=AwBWMVdOmbivKq+TpJpiqomZTBhMYRsNWxrtvAJKMRw=;
+ b=NoOvLeLji9jNuMFA9BlrcqDe57CkfvFfl7Nqs2V6qgQ0BxBC63zJtK7GnMseTLa5Dq/i2ltQHvwaHo4MHvkoaFLmrt9BtRt5h70iKCWkfAkqppGfsRRvH0tyEgxIL80rBg3AtwTJf0hWQE9m1BYBaBnwVLpe/5Lw8R1LO+gXJXiNtb5wNOyxu4OeZkfTYjOUpymki5iemFa7iy6WZf7BrFEKSB8c4DflB1yI8y6KjWgzQfnBT4Z8nZ3GLs1u/PJL+U2NdZQ8W1WbVt3nA16VsAGXXjMT47sV+6s9pnKx1ip8FGlX+cC0BBGUOWPATIZ9cfvyjSlc6Rr7MCHr9HZW8g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=AwBWMVdOmbivKq+TpJpiqomZTBhMYRsNWxrtvAJKMRw=;
+ b=Z+JgZTi37ud90OEz0wdHhNhhNQQ4MQ9UX2o4VxbLBDPHGDNlKN07SEk+QEP1X7BKSdQouBXbGmxbX3cMBv8968vk0DY/35P2GMfAtesj81FfrxKCWg5sufKqoJEM7zM+NDVh4EMj+exwGtiy1oWmQmCEIP8DUiZiePubOFZ8+38=
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
+ by SEYPR03MB7010.apcprd03.prod.outlook.com (2603:1096:101:b0::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.46; Mon, 8 Apr
+ 2024 09:49:18 +0000
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::f3b6:91a7:e0fb:cb27]) by TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::f3b6:91a7:e0fb:cb27%7]) with mapi id 15.20.7409.042; Mon, 8 Apr 2024
+ 09:49:18 +0000
+From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
+To: "wmacek@chromium.org" <wmacek@chromium.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"chrome-platform@lists.linux.dev" <chrome-platform@lists.linux.dev>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "daniel@ffwll.ch"
+	<daniel@ffwll.ch>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"airlied@gmail.com" <airlied@gmail.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] drm/mediatek: Add RENDER capability to DRM device
+Thread-Topic: [PATCH] drm/mediatek: Add RENDER capability to DRM device
+Thread-Index: AQHahNMKiD//QF7OJEuho/dn90M+ALFeKmUA
+Date: Mon, 8 Apr 2024 09:49:18 +0000
+Message-ID: <d4b15c6cdec777f8e930473983914ba52457a30d.camel@mediatek.com>
+References: <20240402075352.3147747-1-wmacek@chromium.org>
+In-Reply-To: <20240402075352.3147747-1-wmacek@chromium.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|SEYPR03MB7010:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 20BPkdS3wlRrKByyO3xiGVmBW8X9H0b9Hu8IN6bijgYvmvEuu4CQU8RAuscVIrUewfftcNEEesQuSIZFJZyohXiAXpm11FTjsbyu6rNjlyAAxPYs4ZndkzL/XgVS4pS3c4zuQDWrU9JdU3zHibhKQ00JmAx1fff3WdvhoFVXh2qpkPs3bJWmIraPmSZeyjgDjsaT+vC3CXOHsKfHrverZ5mDVRNfDrWxpvZTE0mmu9As6btdq/dfFQ424mrliQXZol+3ROSuqC3QBunY3dVPLmCQkXhgu5G6Q1PUOVVd5WdZAKcycoPQHi2WbXBbxWOiU3oBCPCvQ7QIh6u0LGevpmzGosl8kBbZrEuJZyE94lK9VdCWqrSuKq2F4SbPyhXIKAU4io5EJofefLhZUCo7ndNPiv96XAnzehCqM/gO0tzhvRw5YQCN8w716cVVVUNTjuEmQxqw9TcUSSpvzwoZBIe0rxy/qigqHmtvJx/OK+7jX0LwluASyhO6oLI5vFsXu/wJ/tl9tRRgAWGhyYs+DQbaQArilMIFATGDmqVmUla4T/Va3gZZYmbZvd1Rc6t/n3fP1YITbjeNAopG/iJYQhMan1PPyOvKWhxw17rsJZbG0u/qCHZrlAiU/+1zK9ekrCD2/8pA7VATjeYAzojl5A==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376005)(7416005)(1800799015)(366007)(921011);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?U0dGcnZhWDM3VkFnQ3p1ZmFPa2hPZ3lBZDhqKzdCQVpkeWNxVm9rYXlmbXFy?=
+ =?utf-8?B?T2t2bnJhMnZGN1hBcXpyYkNGTUVaQ05hZmd4S052cm5ISDBXVk5ncE03UGRK?=
+ =?utf-8?B?dS95TTZFb0J3STM3N2FyMXg1dHd5WVZiV3h5OWNBSHF4QlN0SUNaZGNkbVhy?=
+ =?utf-8?B?ekV1UEpITHJjeDFnaHcxVitVbWxjeHIvdDFJcGQzN1NCMHYyTmh3S0lGZDZW?=
+ =?utf-8?B?bHRXOHkxYmR0dVpBakZld3Z2b2hRQ1dsTk9ZUHVrb2wvQnZScHo1UGNLY3NW?=
+ =?utf-8?B?dUlrY1p4TlkvekxKTzdjVVNDKzNHTkM2QmxxWHBEamUyZ3l5RVlSSndSemIr?=
+ =?utf-8?B?d0MrcGl3Y244c1NlUTdZY1NJbGVEdzc5MFJTTEEvOXJSb1RHdStUZFl1L0o2?=
+ =?utf-8?B?Y2VYWUxXZUJoZHVWa3NhbGZkeUxpMHBMTzN4UDJ4b096b2NYSldreEZYcG00?=
+ =?utf-8?B?cG55bHo5MUc3TlZpWnpyYVM3Y1lkUXlRRTVtMnJyRTVtUlpXVzhJYVB6RS9x?=
+ =?utf-8?B?b1VIL3RtOFJZQ1p4eG5RQXVxMll3a2x1SFhCcmpCMURuMElNVURWaXpPYTVF?=
+ =?utf-8?B?WTBRdWR3aEtyWWZManBIVG44MGJrNExQMENKSXc3R2loengvNTZMRC9Pekhr?=
+ =?utf-8?B?cFdYdFhDRllYVmgzMW5acUpwMTdmcXdEaVF0VitzYmhKQklxZG5WcUl0a2lm?=
+ =?utf-8?B?Ym9hTCtRTjFMdmpLWDZaU1c5Zm5wQkVnbm81Z3J3SlRYcFZFbkJsN05qdU1j?=
+ =?utf-8?B?Ums2SnZzQmo4SnBrK2w1RkFCVUhJRjcrRDF1bzRjMXliNGFKZG5ON2FwYTdC?=
+ =?utf-8?B?cjlyV2lXWnV2OGt0WXFQT05mNVVzVGJBVi9kTUJ1UU5ncjVsWi85VmI2VUhh?=
+ =?utf-8?B?UTh4R2JTZmpsZHhwKzJNSUNWUWljRmN1VFIweEpvWnhBSC9OY09NUGRvb2k1?=
+ =?utf-8?B?Q3Q2UllJenV2WlZGdVd0ZTdHODlLRzZsRnpMMjBqOTR0ZjRSQ1JZcEUxd0pH?=
+ =?utf-8?B?WU4yWWNMZVQwWFhVdmRZajZJSzA4eDI5Z1RMY1VRMnpsN21vQTZVb2lGaXo4?=
+ =?utf-8?B?QytCbVc4d1lSS2Y1LzNxSi9yOElZRzgveWEzMFB5MCs1UldpTkpEM2VGWEJt?=
+ =?utf-8?B?QkJGU3BQWTBiVHpxNWptZ3Zrbjg3YnBxUDNLVlFDV1hSR1MvZW5zbzYzWGVQ?=
+ =?utf-8?B?WjVacjJibkl5ZGFRMzFyZFN4cjVhdWVTOC9zZmtrRG5Ec3hvWmN3UkdlU3FR?=
+ =?utf-8?B?RHZ1d0NsaU1lSzhBZFZhQVlFaFpzRVNQeUxZbmx5d0xyZWljaVA0K3YxWE9W?=
+ =?utf-8?B?Rzg4RUIvQlVKMFhBN1VIUVlyQkxOVlZTTTNid1UvalAzSjhGM3FwTHFhMDEv?=
+ =?utf-8?B?SE9sbTRMZTlXaituYkY4REhXcTIwU3FWYU4wV1RjVGk1R1ZQc1hKNEtQSWtC?=
+ =?utf-8?B?QUxxNHRXQTRwNDYrWFZxMDZVUXFHTXAvUHp1R21HNTFvRHcwcjg3OHk4aWZY?=
+ =?utf-8?B?R09US0hNVnU2R0JiT3J2ZVpJLytnRmtJdEJPRC9FL0xNYWJLWnBKK3N0VDJK?=
+ =?utf-8?B?Y1gzaDhDWnY0SGJKK283NlpXbDNTWnJuZ0ZpUXFlVXA1VmxBRk45OGJIaXFk?=
+ =?utf-8?B?M3NpVTR3RUI3ZjNOUXBFREtEa3NzSlN4WGgrL2lVZjNzMlFFelBERCsyTWxY?=
+ =?utf-8?B?OFdjNnRiczBRNTFxa2NQQXljV1gvbWdNaXZBWEVlV0x0SFgzaFpGbDdiclZq?=
+ =?utf-8?B?ZXlFamNpd0ROc1dieFBZOXovMU1oQjBUUmtUc29PdkswbGhMUEN5cG14b01F?=
+ =?utf-8?B?Nmw3dlZzZTFNVUxDRW5hTjlleFh4cXJCUzFXUlpMdlZoR1RuUG5HRWsrQjBM?=
+ =?utf-8?B?U0JBb1M2ME1kNW9NdUFtc3VwWmorQ3RqNUlkSHFSZ2JpNVBka3BxTlNmUE84?=
+ =?utf-8?B?clhaSUZBMVA3R01BRmZ2cmFKWVcvNGtFZE1TaExMczJUM1lOczlrdG9LSGVC?=
+ =?utf-8?B?TEYxVE93bzJtRzZmVVRWNVlPZXV5eDMxL3F0aHN3VEpyVUxPQjdtMVVNQ1Nn?=
+ =?utf-8?B?dXZ4WDhRME85a3NxYnMrbUZxYXJiU0RTcUlteXUrU1ZRWE9TeE10a0RHeGsz?=
+ =?utf-8?Q?H0bgl1qGDQui/ftb9mV3ghET2?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <B8610B01B57A394B8568D85D836BDD44@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-04-08_07,2024-04-05_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0
- priorityscore=1501 malwarescore=0 clxscore=1011 phishscore=0
- lowpriorityscore=0 impostorscore=0 mlxscore=0 adultscore=0 spamscore=0
- bulkscore=0 mlxlogscore=816 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2404010000 definitions=main-2404080073
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6fd84400-c3ba-4a73-01c6-08dc57b128eb
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Apr 2024 09:49:18.6643
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: hNptbwWsp5ejyD7GJU0noyJCYv/8ZUFu1odWaBP/1Ssh90/9fRg9Qk1HJyAKxe9ZhPrMg0JPrFN2hKF4sxlo0w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB7010
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_023329_424404_7161FDE9 
-X-CRM114-Status: GOOD (  18.72  )
+X-CRM114-CacheID: sfid-20240408_030006_885955_C25BD41A 
+X-CRM114-Status: GOOD (  17.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,46 +176,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 27, 2024 at 04:03:12PM +0000, Allen Pais wrote:
-> The only generic interface to execute asynchronously in the BH context is
-> tasklet; however, it's marked deprecated and has some design flaws. To
-> replace tasklets, BH workqueue support was recently added. A BH workqueue
-> behaves similarly to regular workqueues except that the queued work items
-> are executed in the BH context.
-> 
-> This patch converts drivers/infiniband/* from tasklet to BH workqueue.
-> 
-> Based on the work done by Tejun Heo <tj@kernel.org>
-> Branch: https://git.kernel.org/pub/scm/linux/kernel/git/tj/wq.git for-6.10
-
-I guess this dependency is a hard requirement due to commit 134874e2eee9
-("workqueue: Allow cancel_work_sync() and disable_work() from atomic contexts
-on BH work items")?
-
-> ---
->  drivers/s390/block/dasd.c              | 42 ++++++++++++------------
->  drivers/s390/block/dasd_int.h          | 10 +++---
->  drivers/s390/char/con3270.c            | 27 ++++++++--------
->  drivers/s390/crypto/ap_bus.c           | 24 +++++++-------
->  drivers/s390/crypto/ap_bus.h           |  2 +-
->  drivers/s390/crypto/zcrypt_msgtype50.c |  2 +-
->  drivers/s390/crypto/zcrypt_msgtype6.c  |  4 +--
->  drivers/s390/net/ctcm_fsms.c           |  4 +--
->  drivers/s390/net/ctcm_main.c           | 15 ++++-----
->  drivers/s390/net/ctcm_main.h           |  5 +--
->  drivers/s390/net/ctcm_mpc.c            | 12 +++----
->  drivers/s390/net/ctcm_mpc.h            |  7 ++--
->  drivers/s390/net/lcs.c                 | 26 +++++++--------
->  drivers/s390/net/lcs.h                 |  2 +-
->  drivers/s390/net/qeth_core_main.c      |  2 +-
->  drivers/s390/scsi/zfcp_qdio.c          | 45 +++++++++++++-------------
->  drivers/s390/scsi/zfcp_qdio.h          |  9 +++---
->  17 files changed, 117 insertions(+), 121 deletions(-)
-
-I'm asking since this patch comes with multiple compile errors. Probably due
-to lack of cross compiler tool chain on your side.
-
-If the above wouldn't be a hard dependency I'd say we could take those parts
-of your patch which are fine into the s390 tree for 6.10, fix the rest, and
-schedule that as well for 6.10 via the s390 tree.
+SGksIFdvamNpZWNoOg0KDQpPbiBUdWUsIDIwMjQtMDQtMDIgYXQgMDc6NTMgKzAwMDAsIFdvamNp
+ZWNoIE1hY2VrIHdyb3RlOg0KPiAgCSANCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90
+IGNsaWNrIGxpbmtzIG9yIG9wZW4gYXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVyaWZp
+ZWQgdGhlIHNlbmRlciBvciB0aGUgY29udGVudC4NCj4gIERSTSBkZXZpY2Ugc2hhbGwgY3JlYXRl
+IC9kZXYvZHJpL3JlbmRlclhYWCBlbnRyeQ0KPiB0byBhbGxvdyBDaHJvbWVPUyBWTXMgdG8gYWNj
+ZXNzIHRoZSBPcGVuR0wgcmVuZGVyaW5nDQo+IG9mZmxvYWQuDQoNCkkgdGhpbmsgdGhpcyBpcyB0
+aGUgY2FzZSBEYW5pZWwgbWVudGlvbiBpbiBbMV0uIElmIHNvLCB0aGlzIHNob3VsZCBub3QNCnVw
+c3RyZWFtLiANCg0KWzFdIA0KaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2Ry
+aS1kZXZlbC9wYXRjaC8xNDUyNjExNzUwLTE2MjgzLTE1LWdpdC1zZW5kLWVtYWlsLXAuemFiZWxA
+cGVuZ3V0cm9uaXguZGUvDQoNClJlZ2FyZHMsDQpDSw0KDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBX
+b2pjaWVjaCBNYWNlayA8d21hY2VrQGNocm9taXVtLm9yZz4NCj4gLS0tDQo+ICBkcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyB8IDMgKystDQo+ICAxIGZpbGUgY2hhbmdlZCwg
+MiBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pDQo+IA0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMNCj4gYi9kcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RybV9kcnYuYw0KPiBpbmRleCA3NDgzMmMyMTMwOTIuLmFmYTRkNjM5MWIwOCAx
+MDA2NDQNCj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMNCj4g
+KysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMNCj4gQEAgLTU4NSw3
+ICs1ODUsOCBAQCBzdGF0aWMgc3RydWN0IGRybV9nZW1fb2JqZWN0DQo+ICptdGtfZHJtX2dlbV9w
+cmltZV9pbXBvcnQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwNCj4gIH0NCj4gIA0KPiAgc3RhdGlj
+IGNvbnN0IHN0cnVjdCBkcm1fZHJpdmVyIG10a19kcm1fZHJpdmVyID0gew0KPiAtCS5kcml2ZXJf
+ZmVhdHVyZXMgPSBEUklWRVJfTU9ERVNFVCB8IERSSVZFUl9HRU0gfCBEUklWRVJfQVRPTUlDLA0K
+PiArCS5kcml2ZXJfZmVhdHVyZXMgPSBEUklWRVJfTU9ERVNFVCB8IERSSVZFUl9HRU0gfCBEUklW
+RVJfQVRPTUlDDQo+IHwNCj4gKwkJCSAgIERSSVZFUl9SRU5ERVIsDQo+ICANCj4gIAkuZHVtYl9j
+cmVhdGUgPSBtdGtfZHJtX2dlbV9kdW1iX2NyZWF0ZSwNCj4gIA0KPiAtLSANCj4gMi40NC4wLjQ3
+OC5nZDkyNjM5OWVmOS1nb29nDQo+IA0K
 
