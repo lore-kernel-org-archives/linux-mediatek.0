@@ -4,83 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54F67C67861
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 08:52:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1A5DCD1292
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Apr 2024 09:05:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=i1J16o8a/AiIgBIYW2eQoMmauzTJFPFFwzLx0A2U3Tk=; b=QcWZ763W0Ua67mDomT07Bpfg8H
-	l344/TXektY/35cHzOOvcwEZ4STNEaAYzyBw1aFYB8lyDqgETPXm9MskMWG+e5awelD85sfhR7bls
-	rNN61mbzQ32LroilwPCgO9QjIXQ0j7gv/QoIt3ggGSZJgz/8FnNDNK9d9YscjzEnL+8rJWXA556Pk
-	WTiROZuZUOuuklktJFEeQw7pnQazxhMtPy+oim15YiOehzRwtLi3jhMWn33lgxxXSASHg3/jlwOv/
-	jmKT5X2z3wwKEI98vvmOWK4jpc1+ONaD/XZxLdGqU9ndlv4LygDxyCudxAygA2j48Mq1ZG/y/Rcq5
-	dadsDFtA==;
+	bh=0VdWl81xUkhQ/9Yp0vD3aydPnMUvCiiOMIXPQn+0VSc=; b=aVsmhR47EB5a8VCsHsrlon7vL8
+	ZhQiTYxkbao0r0V1k8MC8IdhJ+tVg89yjhfDHiC5RZtetDIYjASuVbI/jgO+9YlZf2emWIlGZplv+
+	Cm8GRk2tWHW/kr0ADrXcBCEwmFBRA/ziSmsStZjLPS7xnr5cT8wlbdWmCFeiGFQd3nacKy4y9ELIJ
+	3uGlDhuQb7DAQVE0x005jzXlpBeTIeCSuLnrR/3jp5+pClFwprsNcOvLRrmHdYmpFf4UwfcTT0+a/
+	twBnbo0GcEtzrv+D/+/+s2eH+cjsHwem5VMAMTpnmyGBzy4c/TfZuBwgHYjZr6zjKzrjR22tKHfFm
+	ACSmgxHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtkjc-0000000Eygq-1xIJ;
-	Mon, 08 Apr 2024 08:52:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rtkwK-0000000F0pE-1JCU;
+	Mon, 08 Apr 2024 09:05:20 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtkjZ-0000000EygN-0RoK
-	for linux-mediatek@lists.infradead.org;
-	Mon, 08 Apr 2024 08:52:10 +0000
-X-UUID: 44aabc84f58511ee96d5dfc950b7243d-20240408
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=i1J16o8a/AiIgBIYW2eQoMmauzTJFPFFwzLx0A2U3Tk=;
-	b=jKfh0WiCNQEfEfQMlSu3X9hQKqVM+6P8ju0ktY/u7mNZPJQbdz3GMc770e5eBU5ZZgp9VUuGu4FSBXbQ2My/ElS1NArr6hPOC4A9b/VpdWfpFwVkkUgXFW/FHwjWeylsBiRJ8f+q49xLTjpDfn1gR2OQyHmqDssls0qPSTgGVHg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:dde0bb2d-a9b8-4ca8-872b-4c618632ac1c,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:9a36cf00-c26b-4159-a099-3b9d0558e447,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 44aabc84f58511ee96d5dfc950b7243d-20240408
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <joe.zhou@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 387799752; Mon, 08 Apr 2024 01:52:02 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 8 Apr 2024 16:31:25 +0800
-Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 8 Apr 2024 16:31:24 +0800
-From: Joe.Zhou <Joe.Zhou@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-CC: <linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>, "Peng .
- Zhou" <Peng.Zhou@mediatek.com>, "Sophie . Wang" <Sophie.Wang@mediatek.com>,
-	"Wey . Zhang" <Wey.Zhang@mediatek.com>, "Yijian . Jia"
-	<yijian.jia@mediatek.com>, "Sharp . Xia" <Sharp.Xia@mediatek.com>, Joe.Zhou
-	<Joe.Zhou@mediatek.com>
-Subject: [PATCH] mmc: race condition between "sdcard hot plug out" and "system reboot"
-Date: Mon, 8 Apr 2024 16:31:29 +0800
-Message-ID: <20240408083129.10973-1-Joe.Zhou@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1rtkwH-0000000F0oR-1qeh;
+	Mon, 08 Apr 2024 09:05:18 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a4715991c32so595147766b.1;
+        Mon, 08 Apr 2024 02:05:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1712567114; x=1713171914; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=0VdWl81xUkhQ/9Yp0vD3aydPnMUvCiiOMIXPQn+0VSc=;
+        b=e18vLiRxrVAT4NDjjXnV2iUsCIdWFEyGTf29TnyBul9y5bwN4fBRGp3iuIna5aWjh2
+         3OfZloU3nOH9V/Jc2DYmPqEeDjnsEOrLLFUalZafwKPJ6/k/exVYZNvDUjOnLnmVs02A
+         Ghjc4kdwnlKMAf4fMyj78l4UfQq8fqp3BktyscPewV9fZJzF1uJvHXzGsZrjuxoRD9+8
+         OS1Tr9Lm/4sCzXHbsf+6mHj6HgWpwkzJ4MNkrGYU31Ab0bueN2GtdDSwWd5q0UkCuiop
+         fyn333nlUtWB0d/0ra8HJJOw5PSRLO4PYJnSPUJrsAt7o9BiX4Bgjy897D3y19lDD4M2
+         kAhw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712567114; x=1713171914;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=0VdWl81xUkhQ/9Yp0vD3aydPnMUvCiiOMIXPQn+0VSc=;
+        b=mmIcdCUdqM+VswErRKABrWb9Tv/LRTbReEAlxHRns/pDMx+qE+l4XcGhgd/flvCKth
+         uQxPbq2AebpZMXJyiTcDreKOSVfv6R5v2IoWC313kk+xt3QjNZiyF6EKFsnCAJ9lZBHe
+         WRX3XZLbGeR4des8TumtApmcm+2BSc7fc9gzd0NmNXZVBzvibG1Xao+NaJBd3Fl7yptD
+         1IBGd6ce2MHashu2miAOLYRDM+Kn8q9zfY2PlIasmfssZeEgvPMV+CJT2leonaPe0nbS
+         nfv0YEUxoOf3NfdEBc+lQv+q2VSxR+8VYxvHZXvBc1lEcwuXtRr+qCMpixueM8T0eNaD
+         6o1g==
+X-Forwarded-Encrypted: i=1; AJvYcCVGTr3CTVqEqwMX8DFie5TITXse7+E9LKyCU6NFxrUSf1Lgg8k/Bh62OulQnxfhK632Te3GHfSoSbU1F6g/VZI7L6bhBck8fVPC3x1USomfmlqpaMH5nCBPeN9q5zTrf6Pu+ocPtdC11noxuX3g7kzYA+VVjkkZIE0=
+X-Gm-Message-State: AOJu0YyCdUNH9TKMdzlRYYluweYxdYWS/JluQavZ0DKleXHrnG3KxmPI
+	soD9La2Pi2f5NTG0/ZPb3T588uC5+Kcgc04QthGt7pPjW1s6Wc2K
+X-Google-Smtp-Source: AGHT+IHoDPHjMBvKWWxI6l+a/pOx5BO9ETXLbsUsMeGrQvdnDpuv/Gs2Dn58wW/rDjO9l2t+4A7cUg==
+X-Received: by 2002:a17:907:84b:b0:a51:df52:5a65 with SMTP id ww11-20020a170907084b00b00a51df525a65mr608198ejb.2.1712567113914;
+        Mon, 08 Apr 2024 02:05:13 -0700 (PDT)
+Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.gmail.com with ESMTPSA id h1-20020a170906718100b00a51bd3bfec3sm2773969ejk.121.2024.04.08.02.05.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 08 Apr 2024 02:05:13 -0700 (PDT)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hsin-Yi Wang <hsinyi@chromium.org>,
+	linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH 1/3] dt-bindings: pinctrl: mediatek: mt7622: fix array properties
+Date: Mon,  8 Apr 2024 11:05:04 +0200
+Message-Id: <20240408090506.21596-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--5.893800-8.000000
-X-TMASE-MatchedRID: ap0A7F3ACGmvVT6bfkFW/ocU/ASc4KydJD5ItWH4fSKUvX/ci5TjsqP6
-	lEvEjaSAqvr4KXCXxhMNdZsOPCvd7LuIV2AVynTksyNb+yeIRAohpWQUitAWG5kd+ko3Vgxl8U1
-	60P1TrZB8lDLz8Vr1zLZMGUUyuIF5lwV2iaAfSWcURSScn+QSXt0H8LFZNFG71sULACB0qRK3w0
-	zYp5paHBWWQc7nMyfajmf1aTSVjafGaSwoCc44AzgimdyLHn0XlExlQIQeRG0=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--5.893800-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: C168F5B7E52570B8D53C927A26F7F4F5AE96964151EEE345049876363B2010762000:8
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_015209_179105_2C025927 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20240408_020517_519407_D31C4359 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,91 +99,158 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mmc driver, a race condition may occur between "sdcard hot plug out" and "system reboot".
-How it happen?
+From: Rafał Miłecki <rafal@milecki.pl>
 
-sdcard hot pulg out:                SyS_reboot:
-CPU0                               CPU1
-mmc_sd_detect()                    _mmc_sd_suspend
-{                                  {
+Some properties (function groups & pins) are meant to be arrays and
+should allow multiple entries out of enum sets. Use "items" for those.
 
-......
-#Step1: detect SD card removed
-if (err) {                          ......
-    #Step2: host->card is NULL
-    mmc_sd_remove(host);
-                                    #Step3:_mmc_sd_suspend claimed host
-                                    mmc_claim_host(host);
-                                    #Step4: use host->card(NULL pointer)
-                                    if (mmc_card_suspended(host->card))
-                                    ......
-                                    }
-    mmc_claim_host(host);
-    mmc_detach_bus(host);
- }
- ......
- }
-we can prevent it occuring by add claim for "host->card = NULL" and add "host->card" validity check in mmc_sd_suspend.
+Mistake was noticed during validation of in-kernel DTS files.
 
-Signed-off-by: Joe.Zhou <Joe.Zhou@mediatek.com>
+Fixes: b9ffc18c6388 ("dt-bindings: mediatek: convert pinctrl to yaml")
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 ---
- drivers/mmc/core/sd.c | 25 ++++++++++++++-----------
- 1 file changed, 14 insertions(+), 11 deletions(-)
+ .../pinctrl/mediatek,mt7622-pinctrl.yaml      | 92 ++++++++++---------
+ 1 file changed, 49 insertions(+), 43 deletions(-)
 
-diff --git a/drivers/mmc/core/sd.c b/drivers/mmc/core/sd.c
-index 1c8148cdda50..38c0b271283a 100644
---- a/drivers/mmc/core/sd.c
-+++ b/drivers/mmc/core/sd.c
-@@ -1593,7 +1593,9 @@ static int mmc_sd_init_card(struct mmc_host *host, u32 ocr,
- static void mmc_sd_remove(struct mmc_host *host)
- {
- 	mmc_remove_card(host->card);
-+	mmc_claim_host(host);
- 	host->card = NULL;
-+	mmc_release_host(host);
- }
+diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
+index bd72a326e6e0..60f30a59f385 100644
+--- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
+@@ -97,7 +97,8 @@ patternProperties:
+             then:
+               properties:
+                 groups:
+-                  enum: [emmc, emmc_rst]
++                  items:
++                    enum: [emmc, emmc_rst]
+           - if:
+               properties:
+                 function:
+@@ -105,8 +106,9 @@ patternProperties:
+             then:
+               properties:
+                 groups:
+-                  enum: [esw, esw_p0_p1, esw_p2_p3_p4, rgmii_via_esw,
+-                         rgmii_via_gmac1, rgmii_via_gmac2, mdc_mdio]
++                  items:
++                    enum: [esw, esw_p0_p1, esw_p2_p3_p4, rgmii_via_esw,
++                           rgmii_via_gmac1, rgmii_via_gmac2, mdc_mdio]
+           - if:
+               properties:
+                 function:
+@@ -123,10 +125,11 @@ patternProperties:
+             then:
+               properties:
+                 groups:
+-                  enum: [i2s_in_mclk_bclk_ws, i2s1_in_data, i2s2_in_data,
+-                         i2s3_in_data, i2s4_in_data, i2s_out_mclk_bclk_ws,
+-                         i2s1_out_data, i2s2_out_data, i2s3_out_data,
+-                         i2s4_out_data]
++                  items:
++                    enum: [i2s_in_mclk_bclk_ws, i2s1_in_data, i2s2_in_data,
++                           i2s3_in_data, i2s4_in_data, i2s_out_mclk_bclk_ws,
++                           i2s1_out_data, i2s2_out_data, i2s3_out_data,
++                           i2s4_out_data]
+           - if:
+               properties:
+                 function:
+@@ -159,10 +162,11 @@ patternProperties:
+             then:
+               properties:
+                 groups:
+-                  enum: [pcie0_0_waken, pcie0_1_waken, pcie1_0_waken,
+-                         pcie0_0_clkreq, pcie0_1_clkreq, pcie1_0_clkreq,
+-                         pcie0_pad_perst, pcie1_pad_perst, pcie_pereset,
+-                         pcie_wake, pcie_clkreq]
++                  items:
++                    enum: [pcie0_0_waken, pcie0_1_waken, pcie1_0_waken,
++                           pcie0_0_clkreq, pcie0_1_clkreq, pcie1_0_clkreq,
++                           pcie0_pad_perst, pcie1_pad_perst, pcie_pereset,
++                           pcie_wake, pcie_clkreq]
+           - if:
+               properties:
+                 function:
+@@ -178,11 +182,12 @@ patternProperties:
+             then:
+               properties:
+                 groups:
+-                  enum: [pwm_ch1_0, pwm_ch1_1, pwm_ch1_2, pwm_ch2_0, pwm_ch2_1,
+-                         pwm_ch2_2, pwm_ch3_0, pwm_ch3_1, pwm_ch3_2, pwm_ch4_0,
+-                         pwm_ch4_1, pwm_ch4_2, pwm_ch4_3, pwm_ch5_0, pwm_ch5_1,
+-                         pwm_ch5_2, pwm_ch6_0, pwm_ch6_1, pwm_ch6_2, pwm_ch6_3,
+-                         pwm_ch7_0, pwm_0, pwm_1]
++                  items:
++                    enum: [pwm_ch1_0, pwm_ch1_1, pwm_ch1_2, pwm_ch2_0, pwm_ch2_1,
++                           pwm_ch2_2, pwm_ch3_0, pwm_ch3_1, pwm_ch3_2, pwm_ch4_0,
++                           pwm_ch4_1, pwm_ch4_2, pwm_ch4_3, pwm_ch5_0, pwm_ch5_1,
++                           pwm_ch5_2, pwm_ch6_0, pwm_ch6_1, pwm_ch6_2, pwm_ch6_3,
++                           pwm_ch7_0, pwm_0, pwm_1]
+           - if:
+               properties:
+                 function:
+@@ -260,33 +265,34 @@ patternProperties:
+           pins:
+             description:
+               An array of strings. Each string contains the name of a pin.
+-            enum: [GPIO_A, I2S1_IN, I2S1_OUT, I2S_BCLK, I2S_WS, I2S_MCLK, TXD0,
+-                   RXD0, SPI_WP, SPI_HOLD, SPI_CLK, SPI_MOSI, SPI_MISO, SPI_CS,
+-                   I2C_SDA, I2C_SCL, I2S2_IN, I2S3_IN, I2S4_IN, I2S2_OUT,
+-                   I2S3_OUT, I2S4_OUT, GPIO_B, MDC, MDIO, G2_TXD0, G2_TXD1,
+-                   G2_TXD2, G2_TXD3, G2_TXEN, G2_TXC, G2_RXD0, G2_RXD1, G2_RXD2,
+-                   G2_RXD3, G2_RXDV, G2_RXC, NCEB, NWEB, NREB, NDL4, NDL5, NDL6,
+-                   NDL7, NRB, NCLE, NALE, NDL0, NDL1, NDL2, NDL3, MDI_TP_P0,
+-                   MDI_TN_P0, MDI_RP_P0, MDI_RN_P0, MDI_TP_P1, MDI_TN_P1,
+-                   MDI_RP_P1, MDI_RN_P1, MDI_RP_P2, MDI_RN_P2, MDI_TP_P2,
+-                   MDI_TN_P2, MDI_TP_P3, MDI_TN_P3, MDI_RP_P3, MDI_RN_P3,
+-                   MDI_RP_P4, MDI_RN_P4, MDI_TP_P4, MDI_TN_P4, PMIC_SCL,
+-                   PMIC_SDA, SPIC1_CLK, SPIC1_MOSI, SPIC1_MISO, SPIC1_CS,
+-                   GPIO_D, WATCHDOG, RTS3_N, CTS3_N, TXD3, RXD3, PERST0_N,
+-                   PERST1_N, WLED_N, EPHY_LED0_N, AUXIN0, AUXIN1, AUXIN2,
+-                   AUXIN3, TXD4, RXD4, RTS4_N, CST4_N, PWM1, PWM2, PWM3, PWM4,
+-                   PWM5, PWM6, PWM7, GPIO_E, TOP_5G_CLK, TOP_5G_DATA,
+-                   WF0_5G_HB0, WF0_5G_HB1, WF0_5G_HB2, WF0_5G_HB3, WF0_5G_HB4,
+-                   WF0_5G_HB5, WF0_5G_HB6, XO_REQ, TOP_RST_N, SYS_WATCHDOG,
+-                   EPHY_LED0_N_JTDO, EPHY_LED1_N_JTDI, EPHY_LED2_N_JTMS,
+-                   EPHY_LED3_N_JTCLK, EPHY_LED4_N_JTRST_N, WF2G_LED_N,
+-                   WF5G_LED_N, GPIO_9, GPIO_10, GPIO_11, GPIO_12, UART1_TXD,
+-                   UART1_RXD, UART1_CTS, UART1_RTS, UART2_TXD, UART2_RXD,
+-                   UART2_CTS, UART2_RTS, SMI_MDC, SMI_MDIO, PCIE_PERESET_N,
+-                   PWM_0, GPIO_0, GPIO_1, GPIO_2, GPIO_3, GPIO_4, GPIO_5,
+-                   GPIO_6, GPIO_7, GPIO_8, UART0_TXD, UART0_RXD, TOP_2G_CLK,
+-                   TOP_2G_DATA, WF0_2G_HB0, WF0_2G_HB1, WF0_2G_HB2, WF0_2G_HB3,
+-                   WF0_2G_HB4, WF0_2G_HB5, WF0_2G_HB6]
++            items:
++              enum: [GPIO_A, I2S1_IN, I2S1_OUT, I2S_BCLK, I2S_WS, I2S_MCLK, TXD0,
++                     RXD0, SPI_WP, SPI_HOLD, SPI_CLK, SPI_MOSI, SPI_MISO, SPI_CS,
++                     I2C_SDA, I2C_SCL, I2S2_IN, I2S3_IN, I2S4_IN, I2S2_OUT,
++                     I2S3_OUT, I2S4_OUT, GPIO_B, MDC, MDIO, G2_TXD0, G2_TXD1,
++                     G2_TXD2, G2_TXD3, G2_TXEN, G2_TXC, G2_RXD0, G2_RXD1, G2_RXD2,
++                     G2_RXD3, G2_RXDV, G2_RXC, NCEB, NWEB, NREB, NDL4, NDL5, NDL6,
++                     NDL7, NRB, NCLE, NALE, NDL0, NDL1, NDL2, NDL3, MDI_TP_P0,
++                     MDI_TN_P0, MDI_RP_P0, MDI_RN_P0, MDI_TP_P1, MDI_TN_P1,
++                     MDI_RP_P1, MDI_RN_P1, MDI_RP_P2, MDI_RN_P2, MDI_TP_P2,
++                     MDI_TN_P2, MDI_TP_P3, MDI_TN_P3, MDI_RP_P3, MDI_RN_P3,
++                     MDI_RP_P4, MDI_RN_P4, MDI_TP_P4, MDI_TN_P4, PMIC_SCL,
++                     PMIC_SDA, SPIC1_CLK, SPIC1_MOSI, SPIC1_MISO, SPIC1_CS,
++                     GPIO_D, WATCHDOG, RTS3_N, CTS3_N, TXD3, RXD3, PERST0_N,
++                     PERST1_N, WLED_N, EPHY_LED0_N, AUXIN0, AUXIN1, AUXIN2,
++                     AUXIN3, TXD4, RXD4, RTS4_N, CST4_N, PWM1, PWM2, PWM3, PWM4,
++                     PWM5, PWM6, PWM7, GPIO_E, TOP_5G_CLK, TOP_5G_DATA,
++                     WF0_5G_HB0, WF0_5G_HB1, WF0_5G_HB2, WF0_5G_HB3, WF0_5G_HB4,
++                     WF0_5G_HB5, WF0_5G_HB6, XO_REQ, TOP_RST_N, SYS_WATCHDOG,
++                     EPHY_LED0_N_JTDO, EPHY_LED1_N_JTDI, EPHY_LED2_N_JTMS,
++                     EPHY_LED3_N_JTCLK, EPHY_LED4_N_JTRST_N, WF2G_LED_N,
++                     WF5G_LED_N, GPIO_9, GPIO_10, GPIO_11, GPIO_12, UART1_TXD,
++                     UART1_RXD, UART1_CTS, UART1_RTS, UART2_TXD, UART2_RXD,
++                     UART2_CTS, UART2_RTS, SMI_MDC, SMI_MDIO, PCIE_PERESET_N,
++                     PWM_0, GPIO_0, GPIO_1, GPIO_2, GPIO_3, GPIO_4, GPIO_5,
++                     GPIO_6, GPIO_7, GPIO_8, UART0_TXD, UART0_RXD, TOP_2G_CLK,
++                     TOP_2G_DATA, WF0_2G_HB0, WF0_2G_HB1, WF0_2G_HB2, WF0_2G_HB3,
++                     WF0_2G_HB4, WF0_2G_HB5, WF0_2G_HB6]
  
- /*
-@@ -1702,18 +1704,19 @@ static int _mmc_sd_suspend(struct mmc_host *host)
- 	int err = 0;
+           bias-disable: true
  
- 	mmc_claim_host(host);
-+	if (host->card) {
-+		if (mmc_card_suspended(card))
-+			goto out;
- 
--	if (mmc_card_suspended(card))
--		goto out;
--
--	if (sd_can_poweroff_notify(card))
--		err = sd_poweroff_notify(card);
--	else if (!mmc_host_is_spi(host))
--		err = mmc_deselect_cards(host);
-+		if (sd_can_poweroff_notify(card))
-+			err = sd_poweroff_notify(card);
-+		else if (!mmc_host_is_spi(host))
-+			err = mmc_deselect_cards(host);
- 
--	if (!err) {
--		mmc_power_off(host);
--		mmc_card_set_suspended(card);
-+		if (!err) {
-+			mmc_power_off(host);
-+			mmc_card_set_suspended(card);
-+		}
- 	}
- 
- out:
-@@ -1729,7 +1732,7 @@ static int mmc_sd_suspend(struct mmc_host *host)
- 	int err;
- 
- 	err = _mmc_sd_suspend(host);
--	if (!err) {
-+	if (!err && host->card) {
- 		pm_runtime_disable(&host->card->dev);
- 		pm_runtime_set_suspended(&host->card->dev);
- 	}
 -- 
-2.18.0
+2.35.3
 
 
