@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E33C2CD1284
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 03:39:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 576EACD1284
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 03:54:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RKPZzs2J4lIrxwzL7Z1BludJY/XdSD/M6/ANxlIo6/0=; b=R2BegE/Vy9C0HUTPGfKRwGyp64
-	FNtnpXnidk85pFH87w2GrO5iuyHoWxVuAfKPgkEPObDnEvkgXBbaOSmtFTs4A5KfK6kzXcMSA+IJm
-	jpvGyOqejR0tiPNp9qlrtCROq0euQMqmkrPmet2HWSOy9pg718HY5gU1Gm1W+DI/Sckfv7FEJ0hWC
-	5ig2oPRihR6NaisUYwMsfnju0EHrggesyVeroFtI9K7g7w9L4q8h8RtlJBKhcImW5waYoT8ffWymw
-	25Y5ZOctCDij2UobpwdWJ69MG5hgELeCTVIDzIuHJmDk9l5hFXvIbtC2p4QMzdh9/ar48LMcC7JhQ
-	GsahF+Zw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gn4SVKjDp2+oRxnoHIuawfi3x9MS9w2xBc7UDFhjgkg=; b=HU41dnDaUzpkZt7ohLfraPzYbO
+	JVOk9HYVzsr7m7YX1M61i/SiyAJOUA17+9ngeDUaMLEWm3MUXeA+dbPbuRp4xNdeqh2rpdmGVolPI
+	dB6cmvi6uh+qeVz6TyHF52ZYa+QkkJE0cJ2iRzVznf1bi4+poH8JxQ5LYVwFEoTlrnbgBekBIMREA
+	Kd6k98ktqSd2vNlutbP2bGmEtL5JR3tFrz1x2PYICOC02uqu/citka+Qttnkhzgt++XlGf/PkuxNA
+	jxWqvX9dQvX1hJLiGdRcacKhLzCe6XZOpfBzmxWPtaIr2aGjA2UETYDhQf8El1KvgwdCsdMDestOd
+	tzc8emcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ru2Kw-00000000BVu-3TQL;
-	Tue, 09 Apr 2024 03:39:54 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1ru2ZK-00000000F2O-1Sxe;
+	Tue, 09 Apr 2024 03:54:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ru2Kt-00000000BU5-1fC3
-	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Apr 2024 03:39:53 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-516b6e75dc3so6492630e87.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 08 Apr 2024 20:39:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1712633984; x=1713238784; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=RKPZzs2J4lIrxwzL7Z1BludJY/XdSD/M6/ANxlIo6/0=;
-        b=aCeg1sM0hqv7pGMiRZsDNc+DUFXUfjg+oMoScxn1gNl6zP8nBa/aPd9IApysjK+eIw
-         ZUjtR/IQTXubNdAAmDvREuBVLDBU+Cw1UuLOpZhsUgwM2Nx8EOR2SdJ0pPz6ttRw3Cwg
-         2buphnkc1H9Z8PiQZc8baTb7puxKPqJv08t2M=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712633984; x=1713238784;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=RKPZzs2J4lIrxwzL7Z1BludJY/XdSD/M6/ANxlIo6/0=;
-        b=piYEuPqL3/42/LAIJ7LQr05kr1sXtxkG5mca5ESEot3DuYjEhN0B9Sr4KvJ8PciUl7
-         z2gq+gdPCspUZU3G8VhhTRHu3YeSmmmXbEmOXY8JCCaIgnI7eLtPPto4ceCa8nKLe4gb
-         EF8ohUkN+jDH8kjSpSBjuBvl0aMdP1CwEa3owBPLJM/NcjPRV2q4gW5izDcJ3+/XxDe2
-         xCtJLVS0bSlDGacIrMn2iZ7tFogExsMf+d+h2pczDOXhWW3Hh/rAqzjBOF7oSMIBlJje
-         zphtodI2tMKxZ2zJFgL6xViu1qUpcFS3zP3faEMz6hemnePZfDJ+6fdWvOK06OQO8Y3i
-         oujQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWEfLJu9DjKcc+274ExT8ZquJQIfLGq656MvRMb5cWWJyFA8olMghJV/WDeoCOVz5EVsJgakC+OC1KuLepKb44t11DAHbM9SLGPs47oPHPqtF5a
-X-Gm-Message-State: AOJu0Yw2nSEurd8f/sizyVo2Ma1XMAviDxPom84PszDqyq8Qdx3ig2RZ
-	L/vyKeJyP2L+8Q+/MUqdkrYJLweVG2toRRfk/k/ugxjN22kvGjP9mddlH9C3XcHQAZODP94X6dF
-	3hS5AA5yAgX6/ovuqlpFo6Cy7vmipYGibzv5C
-X-Google-Smtp-Source: AGHT+IFba+BrwCMiOouL0a7dqzF+zOfyVTmCHkiqgDT24USb8iVyp548tZZRYidWDUI6/w60evjxT4xx96AaXSCW7qY=
-X-Received: by 2002:ac2:43b6:0:b0:516:c099:e785 with SMTP id
- t22-20020ac243b6000000b00516c099e785mr6549819lfl.20.1712633983546; Mon, 08
- Apr 2024 20:39:43 -0700 (PDT)
+	id 1ru2ZH-00000000F10-1UMN;
+	Tue, 09 Apr 2024 03:54:44 +0000
+X-UUID: e116f886f62411eeac1957ae9f99f617-20240408
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=gn4SVKjDp2+oRxnoHIuawfi3x9MS9w2xBc7UDFhjgkg=;
+	b=SYhSaaT/QBMZd2TFXFBZh6V3wIWlWzq1vLkAtaLZVpq/N6B8Vc7fxOED0sdiFuhvPPp63+bIXnLNqr0KsJxtfpX0G/Kun/pIOmQBMgkqI7kEWZy/E02VJi6YQ6Ea49qFGBY7mnDEIRXat5pemTxlN9BMd5BdjVMwzEvc/J76VJ8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:67a9e876-ba21-4283-941b-ed9808831ecb,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:20827282-4f93-4875-95e7-8c66ea833d57,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: e116f886f62411eeac1957ae9f99f617-20240408
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <jason-ch.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1109723611; Mon, 08 Apr 2024 20:54:35 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 9 Apr 2024 11:53:57 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 9 Apr 2024 11:53:57 +0800
+From: Jason-ch Chen <jason-ch.chen@mediatek.com>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-watchdog@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	Jason-ch Chen <Jason-ch.Chen@mediatek.com>
+Subject: [PATCH] soc: mediatek: mtk-socinfo: Correct the marketing name for MT8188GV
+Date: Tue, 9 Apr 2024 11:53:55 +0800
+Message-ID: <20240409035355.27659-1-jason-ch.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20240404081635.91412-1-angelogioacchino.delregno@collabora.com>
- <20240404081635.91412-3-angelogioacchino.delregno@collabora.com>
- <CAGXv+5F9rfTVDExKSCF7fBKwR+HijNzFYE6+4aHKw3ZP81DG9w@mail.gmail.com> <5e385c2e-6509-4347-96a5-4606b32d20ff@collabora.com>
-In-Reply-To: <5e385c2e-6509-4347-96a5-4606b32d20ff@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 9 Apr 2024 11:39:32 +0800
-Message-ID: <CAGXv+5HkKZr0tDPhS9qVs=Uw7YYpfFYaC2Qf4Suv7RznUNWVsQ@mail.gmail.com>
-Subject: Re: [PATCH v1 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
- support for board path
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, robh@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, 
-	p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch, 
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, 
-	matthias.bgg@gmail.com, shawn.sung@mediatek.com, yu-chang.lee@mediatek.com, 
-	ck.hu@mediatek.com, jitao.shi@mediatek.com, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--4.265700-8.000000
+X-TMASE-MatchedRID: VZuxIYcieyzh8RW9qY6+GwPZZctd3P4B7f6JAS2hKPhrTDNJQXOxDaPF
+	jJEFr+olwXCBO/GKkVr3FLeZXNZS4IzHo47z5Aa+JSsrnm9gBe1vuqvSSWUSX8OmhAllm9BvzsP
+	W6bH7ICFbnGka1c72QtIUoq3qtzf10Huf0+4h7vtorSEFudR6+b4uS7g0k2sdeZUpm6wun3ba/0
+	6NhYDa4wyzCDjlUx89p2y3mIB+it9WXGvUUmKP2w==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--4.265700-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: CCEE519ECF554D8D2C4644AD0C835A1320B2366487E12B37B88ADE3CC7D605D32000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_203951_757994_6AD2F664 
-X-CRM114-Status: GOOD (  26.40  )
+X-CRM114-CacheID: sfid-20240408_205443_406051_B87019C1 
+X-CRM114-Status: UNSURE (   9.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,113 +97,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 8, 2024 at 6:16=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 08/04/24 05:20, Chen-Yu Tsai ha scritto:
-> > On Thu, Apr 4, 2024 at 4:16=E2=80=AFPM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> >>
-> >> Document OF graph on MMSYS/VDOSYS: this supports up to three DDP paths
-> >> per HW instance (so potentially up to six displays for multi-vdo SoCs)=
-.
-> >>
-> >> The MMSYS or VDOSYS is always the first component in the DDP pipeline,
-> >> so it only supports an output port with multiple endpoints - where eac=
-h
-> >> endpoint defines the starting point for one of the (currently three)
-> >> possible hardware paths.
-> >>
-> >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@c=
-ollabora.com>
-> >> ---
-> >>   .../bindings/arm/mediatek/mediatek,mmsys.yaml | 23 +++++++++++++++++=
-++
-> >>   1 file changed, 23 insertions(+)
-> >>
-> >> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,m=
-msys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.y=
-aml
-> >> index b3c6888c1457..90758bb5bcb1 100644
-> >> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.ya=
-ml
-> >> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.ya=
-ml
-> >> @@ -93,6 +93,29 @@ properties:
-> >>     '#reset-cells':
-> >>       const: 1
-> >>
-> >> +  port:
-> >> +    $ref: /schemas/graph.yaml#/properties/port
-> >> +    description:
-> >> +      Output port node. This port connects the MMSYS/VDOSYS output to
-> >> +      the first component of one display pipeline, for example one of
-> >> +      the available OVL or RDMA blocks.
-> >> +      Some MediaTek SoCs support up to three display outputs per MMSY=
-S.
-> >> +    properties:
-> >> +      endpoint@0:
-> >> +        $ref: /schemas/graph.yaml#/properties/endpoint
-> >> +        description: Output to the primary display pipeline
-> >> +
-> >> +      endpoint@1:
-> >> +        $ref: /schemas/graph.yaml#/properties/endpoint
-> >> +        description: Output to the secondary display pipeline
-> >> +
-> >> +      endpoint@2:
-> >> +        $ref: /schemas/graph.yaml#/properties/endpoint
-> >> +        description: Output to the tertiary display pipeline
-> >> +
-> >> +      required:
-> >> +        - endpoint@0
-> >> +
-> >
-> > Technically the mmsys device serves as an glue layer for the display
-> > pipeline, providing things like clock control and signal routing; the
-> > device itself is not part of the pipeline, and probably shouldn't be
-> > part of the graph?
-> >
->
-> That is (only) partially true: in the case of older SoCs, the MMSYS can o=
-nly
-> connect to a single first IP of the pipeline, but in the case of newer on=
-es,
-> and especially (but not limited to) MT8195 onwards having multiple instan=
-ces
-> of VDOSYS, that really becomes part of the pipeline.
->
-> This is not because of the possible different first IP in the pipeline, b=
-ut
-> because of support for dual-interface (DSI and DP) that, in even newer So=
-Cs,
-> can be done with cross-mmsys (cross-vdosys, actually...) as some of those=
- do
-> have the two in different VDOs.
->
-> So yes, this can be done without the graph in MMSYS *in this precise mome=
-nt in
-> time*, but we'll anyway end up adding it sooner than later - and I'm doin=
-g this
-> right now, instead of later, because it's also simplifying the implementa=
-tion
-> so like that I'm "catching two birds with one stone" :-)
+From: Jason-ch Chen <Jason-ch.Chen@mediatek.com>
 
-I see. Thanks for sorting it out. We had something similar on Allwinner
-platforms but it was never as complex or flexible as this.
+Change 'Kompanio 830' to 'Kompanio 838'.
 
-ChenYu
+Signed-off-by: Jason-ch Chen <Jason-ch.Chen@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-socinfo.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> Cheers,
-> Angelo
->
-> > ChenYu
-> >
-> >>   required:
-> >>     - compatible
-> >>     - reg
-> >> --
-> >> 2.44.0
-> >>
->
->
+diff --git a/drivers/soc/mediatek/mtk-socinfo.c b/drivers/soc/mediatek/mtk-socinfo.c
+index 6943ab29f095..74672a9d6d13 100644
+--- a/drivers/soc/mediatek/mtk-socinfo.c
++++ b/drivers/soc/mediatek/mtk-socinfo.c
+@@ -48,8 +48,8 @@ static struct socinfo_data socinfo_data_table[] = {
+ 	MTK_SOCINFO_ENTRY("MT8183", "MT8183V/AZA", "Kompanio 500", 0x00010043, 0x00000940),
+ 	MTK_SOCINFO_ENTRY("MT8186", "MT8186GV/AZA", "Kompanio 520", 0x81861001, CELL_NOT_USED),
+ 	MTK_SOCINFO_ENTRY("MT8186T", "MT8186TV/AZA", "Kompanio 528", 0x81862001, CELL_NOT_USED),
+-	MTK_SOCINFO_ENTRY("MT8188", "MT8188GV/AZA", "Kompanio 830", 0x81880000, 0x00000010),
+-	MTK_SOCINFO_ENTRY("MT8188", "MT8188GV/HZA", "Kompanio 830", 0x81880000, 0x00000011),
++	MTK_SOCINFO_ENTRY("MT8188", "MT8188GV/AZA", "Kompanio 838", 0x81880000, 0x00000010),
++	MTK_SOCINFO_ENTRY("MT8188", "MT8188GV/HZA", "Kompanio 838", 0x81880000, 0x00000011),
+ 	MTK_SOCINFO_ENTRY("MT8192", "MT8192V/AZA", "Kompanio 820", 0x00001100, 0x00040080),
+ 	MTK_SOCINFO_ENTRY("MT8192T", "MT8192V/ATZA", "Kompanio 828", 0x00000100, 0x000400C0),
+ 	MTK_SOCINFO_ENTRY("MT8195", "MT8195GV/EZA", "Kompanio 1200", 0x81950300, CELL_NOT_USED),
+-- 
+2.18.0
+
 
