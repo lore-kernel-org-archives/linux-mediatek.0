@@ -4,72 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32B6DC67861
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 13:43:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 126D5CD1284
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 13:43:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GTSY1ko++/wb2lPvySWoKOwaimob916R/fGD0IssuIQ=; b=je60zIvFP2sXC6bWZVCDLEhzNt
-	F5aIoZ+JMyxbKB4GJoSvsQHvuo0+frnjTbZZdue4zGb6HmuOP+rU8WIKTd27KZmrUTOvW+xJ3scER
-	JMPiw5YgrAkdOEFLKjLNqo8/3D3DmU4DLWVfs58jljWc/Y3OUnDiUdfInVI7OGql8mj2xx4CQacGf
-	0pyWzY7tIdfEhh7N9NVSPsQ4Nu2W+Z4//a8ht8XbpjU2xSLGqMbzfX8+BK2sjjpvKfgHjq7OH6r3h
-	Tl7AblXtApykwq74DEz47kXXQW/zAIhlVH/vlpJE8Q+bJbQctr62+wgocgf3z6omACNQ4oyo/mXRt
-	CT/KS68g==;
+	bh=vaOPptAkDAr7UZe0kfx5Sw+wAFzpeWgd0I8ED1nhO2M=; b=xr0u7Y1U1rnqNJAW0ybRanwCOE
+	taxoK+6KjmtgpnTzN6DRRieJFEDRlBBB6cWLnCdRtme4J4BisfBKUSgDf44U6aAM7yoq7KGOqWp9p
+	W8PHkH6jY6+fz6R4hr9TQDMH7p85gOUO16Lt8ZHPk6y4GFSisdl71fzAGbsdRouC9Q3gntM0dyPxW
+	giVA6XsOMVIT1DT9fUj6MKENl7Ln+ZlBLWYv1VkQYWBki/O9tE4rldH628wOqY8CpeDIKwQAkPD+4
+	6xXCLKiB5GJGMgBSihagEKUS4MKTtk9EhSMxIFqT9+/qQa9wxWxW0R+GAJevzOy9jP0anoZv/Df/W
+	eAduK/tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruBlC-00000002D8v-3Oje;
-	Tue, 09 Apr 2024 13:43:39 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1ruBlN-00000002DFn-1S67;
+	Tue, 09 Apr 2024 13:43:49 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruBk2-00000002CMq-26jp
+	id 1ruBkB-00000002CPO-25PG
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 09 Apr 2024 13:42:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=vaOPptAkDAr7UZe0kfx5Sw+wAFzpeWgd0I8ED1nhO2M=; b=dXJjMb9KhVL5FYdz+T08w1ah96
+	hnuM0A1K4RfmA+/bfeOY7WeN0qstMZcpltOtFaqFK79iiT/I3WqpJXPi50lBai3Ayjs1Tv/4JlzPH
+	E+JuLXaYRnIFYeVLAo8tncQmdpQSj2XVMyiapFJpFQEuds1ZXTunakxaKhaAbyH4vtYSn1tMy3zev
+	7cdyT1RbSO8UbOezYiERyjo4vMCPU8MgMm2PQbPYHqfjMo+PPWsveHZP6tykatH+W4hdHtmOispqF
+	Im9NGPJBegMNtku6SrtAjUbnYGSOJnEYdrEXufvMGQ4OrZBLvuzLFWsrsy1tfRGY4eFFjeYU9hW7g
+	/znF5H0Q==;
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1ruBk6-00000007dAb-3Yrf
 	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Apr 2024 13:42:31 +0000
-Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-343c891bca5so3605377f8f.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Apr 2024 06:42:26 -0700 (PDT)
+	Tue, 09 Apr 2024 13:42:33 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-343c891bca5so3605465f8f.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Apr 2024 06:42:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1712670145; x=1713274945; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1712670150; x=1713274950; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=GTSY1ko++/wb2lPvySWoKOwaimob916R/fGD0IssuIQ=;
-        b=Ujaclzh8V04rFGji5mRAP4WLZljMhPg3lA6p/Zs5YSySgWSQiaadt7Ml+eS564JdRc
-         FJEbnXh3STv2EnW80X/QZhVknQ/ci1pTmQp8g7CP/LP8/MwXcewBQwkwlWk56Wf8AUo3
-         iJgzXF2CcngW+23iRpQW4CL7MGsQCJX1DIhgLn/+hjghB4NLMmIoFlEQaLVhKmVUDy6c
-         67s0zxKyzua7U2o6tgDMKHOi4NkPn9plWsnCN9TuQOWkBtIOH58OqHBLr7VsFTscACFB
-         RBs8J4+HiCE/4nhmpqdWHHaOtn4c6j1O86WPEniULz0BQrhHanydY5+TCTHCAiJdc1Ja
-         3Ytg==
+        bh=vaOPptAkDAr7UZe0kfx5Sw+wAFzpeWgd0I8ED1nhO2M=;
+        b=b/xL6rUE/hgi0qXBAMFwmfduzzdXzECoh8wmiWQMcbPa2qI8xo/HIo3ftoInrODNzm
+         v44kBNMUvJomy4zHmuu1lR53z/WVwA9F3/tgCQ2ftV5RAfA1FTTVjEdFcJyvHm4DmIen
+         2cEYRyYWb90ulrDlbJqUBBR/eWNFsV9pe/j9u9O/PY1ZFd3clW62n5WVMjwEyVH2ucPW
+         ot7/GP7h1XDiiCgIbcA2YBHZYfzBQW1tEB+MDuqlkd3b9SPdaNPTSkoD0GvUf+q3pXU+
+         om9sGiWImolGXamZN/iXW7u/nvnQe2RCyiTK0A+ZDZesYyg3arkxXH6hsB8RCjcUjO7U
+         x7vA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712670145; x=1713274945;
+        d=1e100.net; s=20230601; t=1712670150; x=1713274950;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=GTSY1ko++/wb2lPvySWoKOwaimob916R/fGD0IssuIQ=;
-        b=Qw9uK8wzAVPj9Y1oHwwB/aZ3RJ+jINxjT7ikOsmGUBDZaQhz7yRTbcdXbFq/tFV1E5
-         cwdraOjLG7typ3kmSXN7k+SLuDeOJuDP8eUBsrrCciY97AhkQU+CV41fLPjIJ/YFpFhR
-         zrL9FPSxyhnuJhnnNoBidimDRGcihJtuDniXbgpaVXOyEYLOukogGLoV1ibLPR8zH3B3
-         cPsJYdT6NOoHtYOM9Ee+3SvxXg1B5zcS/ygF7taUYSuhXduA3vch4LIQNBjLMgA9iDHR
-         ykbxmhitJPUUIlLGTJ/ks0lDtKMsBm8n26sv4z+lPMpO3U2dwxw6KO3h/YmRtNaIv9+B
-         i8Zg==
-X-Forwarded-Encrypted: i=1; AJvYcCUwXplMDfgsj5vghRjd+Y9WVhPKbsAv6j9QH/Fojaax1QzG4UF/3lDAB8q4wSqiBYbXg834hrHIl0cedX5dGJe9LO2ty0PzfxsAsumjuNRDHX3u
-X-Gm-Message-State: AOJu0YyzotR6o3ptLy2vKIIIzpWZMbzHOCgrIkSW/fhL8Jkspx/Oe0xR
-	16oD1J0VUAdt3Sr76/nuYDBZQQwASte1mLBsmkUJpcg6dZ5txvEBM7OdKHDF1x8=
-X-Google-Smtp-Source: AGHT+IEqTXuQ9vUhLAGUJddJlynr3Hgv8g1A9SL9yf+aGDwibGHFcaB9hafvGzYGFH6ippvirWYDUA==
-X-Received: by 2002:a5d:6d81:0:b0:345:e3e9:f063 with SMTP id l1-20020a5d6d81000000b00345e3e9f063mr4281547wrs.59.1712670145020;
-        Tue, 09 Apr 2024 06:42:25 -0700 (PDT)
+        bh=vaOPptAkDAr7UZe0kfx5Sw+wAFzpeWgd0I8ED1nhO2M=;
+        b=TCHjA4WF9O2x/F+ws6ihkxTqhydCA8mXNLjgcROppL7r9fHNas6qQKCFRz5pxBKn8t
+         p4tGfS/fhd/Ma1V0o9NYikgQZdURdmgXuLxqehGdehvYStIZqlIgDD64bV6n88KqdnkF
+         0WL/kQzsBLvly8Y9Dgp1YILDZo/WF4gFTQd2qZNQ5K5hvDOj8NhvtCLL4AEzalDVuGIw
+         9MIxso3N3GGpHGwSgtLaLJMaefNvAbRu2Hdy1kYEYiKGa4yPpJGulC+OZst7Wg4QdNsJ
+         QNXw5zf5t30NGOD66x2qgG/dpqFWka/eFt6hCL5v2eaKjMeMydJb9B3rk9ICMVhlmM5X
+         LBcg==
+X-Forwarded-Encrypted: i=1; AJvYcCXft2qfGyGEHmM73PzRlF6Sf1zJ6qlJDV+6JtT+2ic/T3tpdweky9uFyx9r3kh9xB4KRmTSAAIrmJp5zbZNZY1LT6H205mGgxy7yZB2y6XEVue4
+X-Gm-Message-State: AOJu0YzXRckbG1ZlhPC1DZ7HiptvFl3ViIQVQb6BhZrWDV10j2W8nRSW
+	PJ+87IXG5Hr4gUyAEuEfvmIO3xiW3RvaNv67v6ZcjvEi9b735aSHYimunuBEfiU=
+X-Google-Smtp-Source: AGHT+IG1UinWwyCmZgHJ/Vc0k+gt3jtbv981K8oyrdY1dX5a/Ah/5TLTczdPwNeWy9tfDj3t3AnqQA==
+X-Received: by 2002:a05:6000:104a:b0:33e:6ac9:f5b0 with SMTP id c10-20020a056000104a00b0033e6ac9f5b0mr9127301wrx.20.1712670149819;
+        Tue, 09 Apr 2024 06:42:29 -0700 (PDT)
 Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id j11-20020adff54b000000b003433bf6651dsm10753579wrp.75.2024.04.09.06.42.23
+        by smtp.googlemail.com with ESMTPSA id j11-20020adff54b000000b003433bf6651dsm10753579wrp.75.2024.04.09.06.42.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Apr 2024 06:42:24 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Tue, 09 Apr 2024 15:42:06 +0200
-Subject: [PATCH v3 08/18] ASoC: mediatek: mt8365: Add ADDA DAI support
+        Tue, 09 Apr 2024 06:42:29 -0700 (PDT)
+From: amergnat@baylibre.com
+Date: Tue, 09 Apr 2024 15:42:09 +0200
+Subject: [PATCH v3 11/18] ASoc: mediatek: mt8365: Add a specific soundcard
+ for EVK
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240226-audio-i350-v3-8-16bb2c974c55@baylibre.com>
+Message-Id: <20240226-audio-i350-v3-11-16bb2c974c55@baylibre.com>
 References: <20240226-audio-i350-v3-0-16bb2c974c55@baylibre.com>
 In-Reply-To: <20240226-audio-i350-v3-0-16bb2c974c55@baylibre.com>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
@@ -88,27 +104,28 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
- Alexandre Mergnat <amergnat@baylibre.com>
+ Alexandre Mergnat <amergnat@baylibre.com>, 
+ Nicolas Belin <nbelin@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=10092;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=10412;
  i=amergnat@baylibre.com; h=from:subject:message-id;
- bh=rupMHCo4ov9trVUAGySMN2xWWd+DYicdRaX3eev6dnk=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmFUWsOUxDkfb5Y6lEXLcqiv/Q4r3YM0QpDXUzDn10
- 19y3N96JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZhVFrAAKCRArRkmdfjHURectD/
- 9s0QdsZOWYWPWRTbuAWsfsKjlECL2HPlJkV0BC33MQ6nzp49VKIfcVeDSsP7AXEo/p5/+YZu+PGlc6
- Av4NyWFNyj+xgpn9hVrwPViIoD5XmF2opMUKfgpiYuhahZx2b2zVWOtCZEhfP66nS9pIaHxQRrrYph
- PMBEklKT3PZVF0HwXEPDH7NWRUfcrjsW8QTp3ooP+Nnv0etcz3qnAv9kGSUczTv5uUT4jp6dXZnOFn
- /aJKweOIkR64gAo9e4ldIhPVFNklZPZWfSIxwKY79m3Zy5FauGRK5uVhV8UH/111cnSaTEf2NLBrqE
- PvAjnQxTv5nfh2qXXF+9p4kjji5DyPhPqRMPZDuR+HoPGcs8X2D7P7oQZeQz3zRZBVv7Fywf2eqTHy
- fgr3ZxyMPd6cVdrNqHStauwRbKwadgLUMWm44pSyFEYqMZx2MWRlDvht8xWarmwjBe7svrc7ZQu47F
- FiTZTENiWfevkdVAhav0yRPz8tg2/ELu2kT2y0CtzuBYlPKvX+Wf1yLc06fk9gtpgwbuFy27t6V+M8
- nlaf/ICE1mZBgiFjgDlBNbOuyergt2DjpL4lVu6nttjhwDk9Fl5EDtsPXRIlCKfu9FzMplEBSexMl7
- 78Upemv9Hyn7fcnoGq14wIa8AfeSxbxUP2lpQ9+ftMf7Gqos8U3xzsLfBbHg==
+ bh=StbcbcNjCboJVA2ZtaKY54PzLiOMhLbRuvUI8afProg=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmFUWsJ3Dxv/pDnhWZbpFHQ90U6AaL6GZGpBe0/so+
+ INTtB72JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZhVFrAAKCRArRkmdfjHURbacD/
+ 40oVE5jnrIrRQSBR7Ud3qAm1HhRysjMHsxSzeL4Ifpbuz6yzrXptTpF/wRHc0bCXZKituseUOEA4qQ
+ fAjmWvncvwzYhKJX26SMa+nHtcrFCki41IrW80NIK7TYjmLvCCsrb8v2TXWtQ67ChMCmlJbEaz/+1r
+ PD9g7E7AEYNpxAOCODvGarQbwhQALf6PuPacZ9QAzv79FVTItiLCB7ysfm411X1fKFXaMrAvGau3iu
+ dVzkKu0WLGaGflHUnKI4Sgdi6XqlyLS68DXALGcl4hdAiUfbubvdoErwUl4Rv9I37UWRsXLb8GBQgK
+ HQjBuKuitfqCeH6aoqLTSPSJreVh8LpLn1Z+EN1s/qLLsbOknm889dYLUgJk0TDAizOThao1izB2fB
+ dSNvNQj9ZRjrB6nMa4bpjFcE/vbaw/ztOU/Qt9MUjlBsNorxp0yBDNiwvhmGw7iNWatcwFfj1fuxqC
+ J3rlpO3k9DIudy8yqyudfjpCmGJ7pp3Ff6OR0KePfVnDAmb8mX6oKZQUZcdfZCh5VWIn9G84hrmIQB
+ BjVApl2/QVl5jD445bYLLK8TLyeRhX6DgHoqxKG5sR+oKfThdZSMeNuyLtRP4clBApw3OH0QPhOl96
+ UW28GZSGQGRVe7gcW0u8NnMe66Hdo+/z3s6yT/MTMuE4z6h5kL30N68dKXHg==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_064226_996581_C0BA176D 
-X-CRM114-Status: GOOD (  20.12  )
+X-CRM114-CacheID: sfid-20240409_144231_119072_F8DB6BAE 
+X-CRM114-Status: GOOD (  21.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,334 +140,371 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add ADDA Device Audio Interface support for MT8365 SoC.
+From: Nicolas Belin <nbelin@baylibre.com>
 
+Add a specific soundcard for mt8365-evk. It supports audio jack
+in/out, dmics, the amic and lineout.
+
+Signed-off-by: Nicolas Belin <nbelin@baylibre.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- sound/soc/mediatek/mt8365/mt8365-dai-adda.c | 315 ++++++++++++++++++++++++++++
- 1 file changed, 315 insertions(+)
+ sound/soc/mediatek/mt8365/mt8365-mt6357.c | 348 ++++++++++++++++++++++++++++++
+ 1 file changed, 348 insertions(+)
 
-diff --git a/sound/soc/mediatek/mt8365/mt8365-dai-adda.c b/sound/soc/mediatek/mt8365/mt8365-dai-adda.c
+diff --git a/sound/soc/mediatek/mt8365/mt8365-mt6357.c b/sound/soc/mediatek/mt8365/mt8365-mt6357.c
 new file mode 100644
-index 000000000000..65d45010ac90
+index 000000000000..9f1be194fe34
 --- /dev/null
-+++ b/sound/soc/mediatek/mt8365/mt8365-dai-adda.c
-@@ -0,0 +1,315 @@
++++ b/sound/soc/mediatek/mt8365/mt8365-mt6357.c
+@@ -0,0 +1,348 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
-+ * Mediatek 8365 ALSA SoC Audio DAI ADDA Control
++ * Mediatek MT8365 Sound Card driver
 + *
 + * Copyright (c) 2024 MediaTek Inc.
-+ * Authors: Jia Zeng <jia.zeng@mediatek.com>
-+ *          Alexandre Mergnat <amergnat@baylibre.com>
++ * Authors: Nicolas Belin <nbelin@baylibre.com>
 + */
 +
-+#include <linux/bitops.h>
-+#include <linux/regmap.h>
++#include <linux/module.h>
++#include <linux/of_gpio.h>
++#include <sound/soc.h>
 +#include <sound/pcm_params.h>
-+#include "mt8365-afe-clk.h"
 +#include "mt8365-afe-common.h"
-+#include "../common/mtk-dai-adda-common.h"
++#include <linux/pinctrl/consumer.h>
++#include "../common/mtk-soc-card.h"
++#include "../common/mtk-soundcard-driver.h"
 +
-+static int adda_afe_on_ref_cnt;
++enum pinctrl_pin_state {
++	PIN_STATE_DEFAULT,
++	PIN_STATE_DMIC,
++	PIN_STATE_MISO_OFF,
++	PIN_STATE_MISO_ON,
++	PIN_STATE_MOSI_OFF,
++	PIN_STATE_MOSI_ON,
++	PIN_STATE_MAX
++};
 +
-+/* DAI Drivers */
++static const char * const mt8365_mt6357_pin_str[PIN_STATE_MAX] = {
++	"default",
++	"dmic",
++	"miso_off",
++	"miso_on",
++	"mosi_off",
++	"mosi_on",
++};
 +
-+static int mt8365_dai_set_adda_out(struct mtk_base_afe *afe, unsigned int rate)
++struct mt8365_mt6357_priv {
++	struct pinctrl *pinctrl;
++	struct pinctrl_state *pin_states[PIN_STATE_MAX];
++};
++
++enum {
++	/* FE */
++	DAI_LINK_DL1_PLAYBACK = 0,
++	DAI_LINK_DL2_PLAYBACK,
++	DAI_LINK_AWB_CAPTURE,
++	DAI_LINK_VUL_CAPTURE,
++	/* BE */
++	DAI_LINK_2ND_I2S_INTF,
++	DAI_LINK_DMIC,
++	DAI_LINK_INT_ADDA,
++	DAI_LINK_NUM
++};
++
++static const struct snd_soc_dapm_widget mt8365_mt6357_widgets[] = {
++	SND_SOC_DAPM_OUTPUT("HDMI Out"),
++};
++
++static const struct snd_soc_dapm_route mt8365_mt6357_routes[] = {
++	{"HDMI Out", NULL, "2ND I2S Playback"},
++	{"DMIC In", NULL, "MICBIAS0"},
++};
++
++static int mt8365_mt6357_int_adda_startup(struct snd_pcm_substream *substream)
 +{
-+	unsigned int val;
-+
-+	switch (rate) {
-+	case 8000:
-+		val = AFE_ADDA_DL_VOICE_DATA;
-+		break;
-+	case 16000:
-+		val = AFE_ADDA_DL_VOICE_DATA;
-+		break;
-+	default:
-+		val = 0;
-+	}
-+
-+	val |= FIELD_PREP(AFE_ADDA_DL_SAMPLING_RATE,
-+		mtk_adda_dl_rate_transform(afe, rate));
-+	val |= AFE_ADDA_DL_8X_UPSAMPLE |
-+	       AFE_ADDA_DL_MUTE_OFF_CH1 |
-+	       AFE_ADDA_DL_MUTE_OFF_CH2 |
-+	       AFE_ADDA_DL_DEGRADE_GAIN;
-+
-+	regmap_update_bits(afe->regmap, AFE_ADDA_PREDIS_CON0, 0xffffffff, 0);
-+	regmap_update_bits(afe->regmap, AFE_ADDA_PREDIS_CON1, 0xffffffff, 0);
-+	regmap_update_bits(afe->regmap, AFE_ADDA_DL_SRC2_CON0, 0xffffffff, val);
-+	/* SA suggest apply -0.3db to audio/speech path */
-+	regmap_update_bits(afe->regmap, AFE_ADDA_DL_SRC2_CON1,
-+			   0xffffffff, 0xf74f0000);
-+	/* SA suggest use default value for sdm */
-+	regmap_update_bits(afe->regmap, AFE_ADDA_DL_SDM_DCCOMP_CON,
-+			   0xffffffff, 0x0700701e);
-+
-+	return 0;
-+}
-+
-+static int mt8365_dai_set_adda_in(struct mtk_base_afe *afe, unsigned int rate)
-+{
-+	unsigned int val;
-+
-+	val = FIELD_PREP(AFE_ADDA_UL_SAMPLING_RATE,
-+			 mtk_adda_ul_rate_transform(afe, rate));
-+	regmap_update_bits(afe->regmap, AFE_ADDA_UL_SRC_CON0,
-+			   AFE_ADDA_UL_SAMPLING_RATE, val);
-+	/* Using Internal ADC */
-+	regmap_update_bits(afe->regmap, AFE_ADDA_TOP_CON0, 0x1, 0x0);
-+
-+	return 0;
-+}
-+
-+int mt8365_dai_enable_adda_on(struct mtk_base_afe *afe)
-+{
-+	unsigned long flags;
-+	struct mt8365_afe_private *afe_priv = afe->platform_priv;
-+
-+	spin_lock_irqsave(&afe_priv->afe_ctrl_lock, flags);
-+
-+	adda_afe_on_ref_cnt++;
-+	if (adda_afe_on_ref_cnt == 1)
-+		regmap_update_bits(afe->regmap, AFE_ADDA_UL_DL_CON0,
-+				   AFE_ADDA_UL_DL_ADDA_AFE_ON,
-+				   AFE_ADDA_UL_DL_ADDA_AFE_ON);
-+
-+	spin_unlock_irqrestore(&afe_priv->afe_ctrl_lock, flags);
-+
-+	return 0;
-+}
-+
-+int mt8365_dai_disable_adda_on(struct mtk_base_afe *afe)
-+{
-+	unsigned long flags;
-+	struct mt8365_afe_private *afe_priv = afe->platform_priv;
-+
-+	spin_lock_irqsave(&afe_priv->afe_ctrl_lock, flags);
-+
-+	adda_afe_on_ref_cnt--;
-+	if (adda_afe_on_ref_cnt == 0)
-+		regmap_update_bits(afe->regmap, AFE_ADDA_UL_DL_CON0,
-+				   AFE_ADDA_UL_DL_ADDA_AFE_ON,
-+				   ~AFE_ADDA_UL_DL_ADDA_AFE_ON);
-+	else if (adda_afe_on_ref_cnt < 0)
-+		adda_afe_on_ref_cnt = 0;
-+
-+	spin_unlock_irqrestore(&afe_priv->afe_ctrl_lock, flags);
-+
-+	return 0;
-+}
-+
-+static void mt8365_dai_set_adda_out_enable(struct mtk_base_afe *afe,
-+					   bool enable)
-+{
-+	regmap_update_bits(afe->regmap, AFE_ADDA_DL_SRC2_CON0, 0x1, enable);
-+
-+	if (enable)
-+		mt8365_dai_enable_adda_on(afe);
-+	else
-+		mt8365_dai_disable_adda_on(afe);
-+}
-+
-+static void mt8365_dai_set_adda_in_enable(struct mtk_base_afe *afe, bool enable)
-+{
-+	if (enable) {
-+		regmap_update_bits(afe->regmap, AFE_ADDA_UL_SRC_CON0, 0x1, 0x1);
-+		mt8365_dai_enable_adda_on(afe);
-+		/* enable aud_pad_top fifo */
-+		regmap_update_bits(afe->regmap, AFE_AUD_PAD_TOP,
-+				   0xffffffff, 0x31);
-+	} else {
-+		/* disable aud_pad_top fifo */
-+		regmap_update_bits(afe->regmap, AFE_AUD_PAD_TOP,
-+				   0xffffffff, 0x30);
-+		regmap_update_bits(afe->regmap, AFE_ADDA_UL_SRC_CON0, 0x1, 0x0);
-+		/* de suggest disable ADDA_UL_SRC at least wait 125us */
-+		usleep_range(150, 300);
-+		mt8365_dai_disable_adda_on(afe);
-+	}
-+}
-+
-+static int mt8365_dai_int_adda_startup(struct snd_pcm_substream *substream,
-+				       struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	unsigned int stream = substream->stream;
-+
-+	mt8365_afe_enable_main_clk(afe);
-+
-+	if (stream == SNDRV_PCM_STREAM_PLAYBACK) {
-+		mt8365_afe_enable_top_cg(afe, MT8365_TOP_CG_DAC);
-+		mt8365_afe_enable_top_cg(afe, MT8365_TOP_CG_DAC_PREDIS);
-+	} else if (stream == SNDRV_PCM_STREAM_CAPTURE) {
-+		mt8365_afe_enable_top_cg(afe, MT8365_TOP_CG_ADC);
-+	}
-+
-+	return 0;
-+}
-+
-+static void mt8365_dai_int_adda_shutdown(struct snd_pcm_substream *substream,
-+					 struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct mt8365_afe_private *afe_priv = afe->platform_priv;
-+	struct mt8365_be_dai_data *be =
-+		&afe_priv->be_data[dai->id - MT8365_AFE_BACKEND_BASE];
-+	unsigned int stream = substream->stream;
-+
-+	if (be->prepared[stream]) {
-+		if (stream == SNDRV_PCM_STREAM_PLAYBACK) {
-+			mt8365_dai_set_adda_out_enable(afe, false);
-+			mt8365_afe_set_i2s_out_enable(afe, false);
-+		} else {
-+			mt8365_dai_set_adda_in_enable(afe, false);
-+		}
-+		be->prepared[stream] = false;
-+	}
-+
-+	if (stream == SNDRV_PCM_STREAM_PLAYBACK) {
-+		mt8365_afe_disable_top_cg(afe, MT8365_TOP_CG_DAC_PREDIS);
-+		mt8365_afe_disable_top_cg(afe, MT8365_TOP_CG_DAC);
-+	} else if (stream == SNDRV_PCM_STREAM_CAPTURE) {
-+		mt8365_afe_disable_top_cg(afe, MT8365_TOP_CG_ADC);
-+	}
-+
-+	mt8365_afe_disable_main_clk(afe);
-+}
-+
-+static int mt8365_dai_int_adda_prepare(struct snd_pcm_substream *substream,
-+				       struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct mt8365_afe_private *afe_priv = afe->platform_priv;
-+	struct mt8365_be_dai_data *be =
-+		&afe_priv->be_data[dai->id - MT8365_AFE_BACKEND_BASE];
-+	unsigned int rate = substream->runtime->rate;
-+	int bit_width = snd_pcm_format_width(substream->runtime->format);
-+	int ret;
-+
-+	dev_info(afe->dev, "%s '%s' rate = %u\n", __func__,
-+		 snd_pcm_stream_str(substream), rate);
-+
-+	if (be->prepared[substream->stream]) {
-+		dev_info(afe->dev, "%s '%s' prepared already\n",
-+			 __func__, snd_pcm_stream_str(substream));
-+		return 0;
-+	}
++	struct snd_soc_pcm_runtime *rtd = substream->private_data;
++	struct mt8365_mt6357_priv *priv = snd_soc_card_get_drvdata(rtd->card);
++	int ret = 0;
 +
 +	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
-+		ret = mt8365_dai_set_adda_out(afe, rate);
-+		if (ret)
++		if (IS_ERR(priv->pin_states[PIN_STATE_MOSI_ON]))
 +			return ret;
 +
-+		ret = mt8365_afe_set_i2s_out(afe, rate, bit_width);
++		ret = pinctrl_select_state(priv->pinctrl,
++					   priv->pin_states[PIN_STATE_MOSI_ON]);
 +		if (ret)
-+			return ret;
-+
-+		mt8365_dai_set_adda_out_enable(afe, true);
-+		mt8365_afe_set_i2s_out_enable(afe, true);
-+	} else {
-+		ret = mt8365_dai_set_adda_in(afe, rate);
-+		if (ret)
-+			return ret;
-+
-+		mt8365_dai_set_adda_in_enable(afe, true);
++			dev_err(rtd->card->dev, "%s failed to select state %d\n",
++				__func__, ret);
 +	}
-+	be->prepared[substream->stream] = true;
++
++	if (substream->stream == SNDRV_PCM_STREAM_CAPTURE) {
++		if (IS_ERR(priv->pin_states[PIN_STATE_MISO_ON]))
++			return ret;
++
++		ret = pinctrl_select_state(priv->pinctrl,
++					   priv->pin_states[PIN_STATE_MISO_ON]);
++		if (ret)
++			dev_err(rtd->card->dev, "%s failed to select state %d\n",
++				__func__, ret);
++	}
++
 +	return 0;
 +}
 +
-+static const struct snd_soc_dai_ops mt8365_afe_int_adda_ops = {
-+	.startup	= mt8365_dai_int_adda_startup,
-+	.shutdown	= mt8365_dai_int_adda_shutdown,
-+	.prepare	= mt8365_dai_int_adda_prepare,
-+};
-+
-+static struct snd_soc_dai_driver mtk_dai_adda_driver[] = {
-+	{
-+		.name = "INT ADDA",
-+		.id = MT8365_AFE_IO_INT_ADDA,
-+		.playback = {
-+			.stream_name = "INT ADDA Playback",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = SNDRV_PCM_RATE_8000_48000,
-+			.formats = SNDRV_PCM_FMTBIT_S16_LE,
-+		},
-+		.capture = {
-+			.stream_name = "INT ADDA Capture",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = SNDRV_PCM_RATE_16000 |
-+				 SNDRV_PCM_RATE_32000 |
-+				 SNDRV_PCM_RATE_48000,
-+			.formats = SNDRV_PCM_FMTBIT_S16_LE |
-+				   SNDRV_PCM_FMTBIT_S32_LE,
-+		},
-+		.ops = &mt8365_afe_int_adda_ops,
-+	}
-+};
-+
-+/* DAI Controls */
-+
-+static const struct snd_kcontrol_new mtk_adda_dl_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("GAIN1_OUT_CH1 Switch", AFE_CONN3,
-+				    10, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new mtk_adda_dl_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("GAIN1_OUT_CH2 Switch", AFE_CONN4,
-+				    11, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new int_adda_o03_o04_enable_ctl =
-+	SOC_DAPM_SINGLE_VIRT("Switch", 1);
-+
-+/* DAI widget */
-+
-+static const struct snd_soc_dapm_widget mtk_dai_adda_widgets[] = {
-+	SND_SOC_DAPM_SWITCH("INT ADDA O03_O04", SND_SOC_NOPM, 0, 0,
-+			    &int_adda_o03_o04_enable_ctl),
-+	/* inter-connections */
-+	SND_SOC_DAPM_MIXER("ADDA_DL_CH1", SND_SOC_NOPM, 0, 0,
-+			   mtk_adda_dl_ch1_mix,
-+			   ARRAY_SIZE(mtk_adda_dl_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("ADDA_DL_CH2", SND_SOC_NOPM, 0, 0,
-+			   mtk_adda_dl_ch2_mix,
-+			   ARRAY_SIZE(mtk_adda_dl_ch2_mix)),
-+};
-+
-+/* DAI route */
-+
-+static const struct snd_soc_dapm_route mtk_dai_adda_routes[] = {
-+	{"INT ADDA O03_O04", "Switch", "O03"},
-+	{"INT ADDA O03_O04", "Switch", "O04"},
-+	{"INT ADDA Playback", NULL, "INT ADDA O03_O04"},
-+	{"INT ADDA Playback", NULL, "ADDA_DL_CH1"},
-+	{"INT ADDA Playback", NULL, "ADDA_DL_CH2"},
-+	{"AIN Mux", "INT ADC", "INT ADDA Capture"},
-+	{"ADDA_DL_CH1", "GAIN1_OUT_CH1", "Hostless FM DL"},
-+	{"ADDA_DL_CH2", "GAIN1_OUT_CH2", "Hostless FM DL"},
-+};
-+
-+int mt8365_dai_adda_register(struct mtk_base_afe *afe)
++static void mt8365_mt6357_int_adda_shutdown(struct snd_pcm_substream *substream)
 +{
-+	struct mtk_base_afe_dai *dai;
++	struct snd_soc_pcm_runtime *rtd = substream->private_data;
++	struct mt8365_mt6357_priv *priv = snd_soc_card_get_drvdata(rtd->card);
++	int ret = 0;
 +
-+	dai = devm_kzalloc(afe->dev, sizeof(*dai), GFP_KERNEL);
-+	if (!dai)
-+		return -ENOMEM;
-+	list_add(&dai->list, &afe->sub_dais);
-+	dai->dai_drivers = mtk_dai_adda_driver;
-+	dai->num_dai_drivers = ARRAY_SIZE(mtk_dai_adda_driver);
-+	dai->dapm_widgets = mtk_dai_adda_widgets;
-+	dai->num_dapm_widgets = ARRAY_SIZE(mtk_dai_adda_widgets);
-+	dai->dapm_routes = mtk_dai_adda_routes;
-+	dai->num_dapm_routes = ARRAY_SIZE(mtk_dai_adda_routes);
++	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
++		if (IS_ERR(priv->pin_states[PIN_STATE_MOSI_OFF]))
++			return;
++
++		ret = pinctrl_select_state(priv->pinctrl,
++					   priv->pin_states[PIN_STATE_MOSI_OFF]);
++		if (ret)
++			dev_err(rtd->card->dev, "%s failed to select state %d\n",
++				__func__, ret);
++	}
++
++	if (substream->stream == SNDRV_PCM_STREAM_CAPTURE) {
++		if (IS_ERR(priv->pin_states[PIN_STATE_MISO_OFF]))
++			return;
++
++		ret = pinctrl_select_state(priv->pinctrl,
++					   priv->pin_states[PIN_STATE_MISO_OFF]);
++		if (ret)
++			dev_err(rtd->card->dev, "%s failed to select state %d\n",
++				__func__, ret);
++	}
++}
++
++static const struct snd_soc_ops mt8365_mt6357_int_adda_ops = {
++	.startup = mt8365_mt6357_int_adda_startup,
++	.shutdown = mt8365_mt6357_int_adda_shutdown,
++};
++
++SND_SOC_DAILINK_DEFS(playback1,
++		     DAILINK_COMP_ARRAY(COMP_CPU("DL1")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++SND_SOC_DAILINK_DEFS(playback2,
++		     DAILINK_COMP_ARRAY(COMP_CPU("DL2")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++SND_SOC_DAILINK_DEFS(awb_capture,
++		     DAILINK_COMP_ARRAY(COMP_CPU("AWB")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++SND_SOC_DAILINK_DEFS(vul,
++		     DAILINK_COMP_ARRAY(COMP_CPU("VUL")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(i2s3,
++		     DAILINK_COMP_ARRAY(COMP_CPU("2ND I2S")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++SND_SOC_DAILINK_DEFS(dmic,
++		     DAILINK_COMP_ARRAY(COMP_CPU("DMIC")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++SND_SOC_DAILINK_DEFS(primary_codec,
++		     DAILINK_COMP_ARRAY(COMP_CPU("INT ADDA")),
++		     DAILINK_COMP_ARRAY(COMP_CODEC("mt6357-sound", "mt6357-snd-codec-aif1")),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++/* Digital audio interface glue - connects codec <---> CPU */
++static struct snd_soc_dai_link mt8365_mt6357_dais[] = {
++	/* Front End DAI links */
++	[DAI_LINK_DL1_PLAYBACK] = {
++		.name = "DL1_FE",
++		.stream_name = "MultiMedia1_PLayback",
++		.id = DAI_LINK_DL1_PLAYBACK,
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST
++		},
++		.dynamic = 1,
++		.dpcm_playback = 1,
++		.dpcm_merged_rate = 1,
++		SND_SOC_DAILINK_REG(playback1),
++	},
++	[DAI_LINK_DL2_PLAYBACK] = {
++		.name = "DL2_FE",
++		.stream_name = "MultiMedia2_PLayback",
++		.id = DAI_LINK_DL2_PLAYBACK,
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST
++		},
++		.dynamic = 1,
++		.dpcm_playback = 1,
++		.dpcm_merged_rate = 1,
++		SND_SOC_DAILINK_REG(playback2),
++	},
++	[DAI_LINK_AWB_CAPTURE] = {
++		.name = "AWB_FE",
++		.stream_name = "DL1_AWB_Record",
++		.id = DAI_LINK_AWB_CAPTURE,
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST
++		},
++		.dynamic = 1,
++		.dpcm_capture = 1,
++		.dpcm_merged_rate = 1,
++		SND_SOC_DAILINK_REG(awb_capture),
++	},
++	[DAI_LINK_VUL_CAPTURE] = {
++		.name = "VUL_FE",
++		.stream_name = "MultiMedia1_Capture",
++		.id = DAI_LINK_VUL_CAPTURE,
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST
++		},
++		.dynamic = 1,
++		.dpcm_capture = 1,
++		.dpcm_merged_rate = 1,
++		SND_SOC_DAILINK_REG(vul),
++	},
++	/* Back End DAI links */
++	[DAI_LINK_2ND_I2S_INTF] = {
++		.name = "2ND_I2S_BE",
++		.no_pcm = 1,
++		.id = DAI_LINK_2ND_I2S_INTF,
++		.dai_fmt = SND_SOC_DAIFMT_I2S |
++				SND_SOC_DAIFMT_NB_NF |
++				SND_SOC_DAIFMT_CBS_CFS,
++		.dpcm_playback = 1,
++		.dpcm_capture = 1,
++		SND_SOC_DAILINK_REG(i2s3),
++	},
++	[DAI_LINK_DMIC] = {
++		.name = "DMIC_BE",
++		.no_pcm = 1,
++		.id = DAI_LINK_DMIC,
++		.dpcm_capture = 1,
++		SND_SOC_DAILINK_REG(dmic),
++	},
++	[DAI_LINK_INT_ADDA] = {
++		.name = "MTK_Codec",
++		.no_pcm = 1,
++		.id = DAI_LINK_INT_ADDA,
++		.dpcm_playback = 1,
++		.dpcm_capture = 1,
++		.ops = &mt8365_mt6357_int_adda_ops,
++		SND_SOC_DAILINK_REG(primary_codec),
++	},
++};
++
++static int mt8365_mt6357_gpio_probe(struct snd_soc_card *card)
++{
++	struct mt8365_mt6357_priv *priv = snd_soc_card_get_drvdata(card);
++	int ret, i;
++
++	priv->pinctrl = devm_pinctrl_get(card->dev);
++	if (IS_ERR(priv->pinctrl)) {
++		ret = PTR_ERR(priv->pinctrl);
++		return dev_err_probe(card->dev, ret,
++				     "Failed to get pinctrl\n");
++	}
++
++	for (i = PIN_STATE_DEFAULT ; i < PIN_STATE_MAX ; i++) {
++		priv->pin_states[i] = pinctrl_lookup_state(priv->pinctrl,
++							   mt8365_mt6357_pin_str[i]);
++		if (IS_ERR(priv->pin_states[i])) {
++			ret = PTR_ERR(priv->pin_states[i]);
++			dev_warn(card->dev, "No pin state for %s\n",
++				 mt8365_mt6357_pin_str[i]);
++		} else {
++			ret = pinctrl_select_state(priv->pinctrl,
++						   priv->pin_states[i]);
++			if (ret) {
++				dev_err_probe(card->dev, ret,
++					      "Failed to select pin state %s\n",
++					      mt8365_mt6357_pin_str[i]);
++				return ret;
++			}
++		}
++	}
 +	return 0;
 +}
++
++static struct snd_soc_card mt8365_mt6357_soc_card = {
++	.name = "mt8365-evk",
++	.owner = THIS_MODULE,
++	.dai_link = mt8365_mt6357_dais,
++	.num_links = ARRAY_SIZE(mt8365_mt6357_dais),
++	.dapm_widgets = mt8365_mt6357_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(mt8365_mt6357_widgets),
++	.dapm_routes = mt8365_mt6357_routes,
++	.num_dapm_routes = ARRAY_SIZE(mt8365_mt6357_routes),
++};
++
++static int mt8365_mt6357_dev_probe(struct mtk_soc_card_data *soc_card_data, bool legacy)
++{
++	struct mtk_platform_card_data *card_data = soc_card_data->card_data;
++	struct snd_soc_card *card = card_data->card;
++	struct device *dev = card->dev;
++	struct device_node *platform_node;
++	struct mt8365_mt6357_priv *mach_priv;
++	int i, ret;
++
++	card->dev = dev;
++	ret = parse_dai_link_info(card);
++	if (ret)
++		goto err;
++
++	mach_priv = devm_kzalloc(dev, sizeof(*mach_priv),
++				 GFP_KERNEL);
++	if (!mach_priv)
++		return -ENOMEM;
++	soc_card_data->mach_priv = mach_priv;
++	snd_soc_card_set_drvdata(card, soc_card_data);
++	mt8365_mt6357_gpio_probe(card);
++	return 0;
++
++err:
++	clean_card_reference(card);
++	return ret;
++}
++
++static const struct mtk_soundcard_pdata mt8365_mt6357_card = {
++	.card_name = "mt8365-mt6357",
++	.card_data = &(struct mtk_platform_card_data) {
++		.card = &mt8365_mt6357_soc_card,
++	},
++	.soc_probe = mt8365_mt6357_dev_probe
++};
++
++static const struct of_device_id mt8365_mt6357_dt_match[] = {
++	{
++		.compatible = "mediatek,mt8365-mt6357",
++		.data = &mt8365_mt6357_card,
++	},
++	{ }
++};
++MODULE_DEVICE_TABLE(of, mt8365_mt6357_dt_match);
++
++static struct platform_driver mt8365_mt6357_driver = {
++	.driver = {
++		   .name = "mt8365_mt6357",
++		   .of_match_table = mt8365_mt6357_dt_match,
++		   .pm = &snd_soc_pm_ops,
++	},
++	.probe = mtk_soundcard_common_probe,
++};
++
++module_platform_driver(mt8365_mt6357_driver);
++
++/* Module information */
++MODULE_DESCRIPTION("MT8365 EVK SoC machine driver");
++MODULE_AUTHOR("Nicolas Belin <nbelin@baylibre.com>");
++MODULE_LICENSE("GPL");
++MODULE_ALIAS("platform: mt8365_mt6357");
 
 -- 
 2.25.1
