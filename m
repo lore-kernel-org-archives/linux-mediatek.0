@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9CCACD1284
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 11:42:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A269C67861
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 11:45:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+kI7a0RuILMPScmkILKeGMrOruhi9aXjtkHQ1/wVVqM=; b=v8lnLWJcaSjW/0evgekvRdX4jw
-	lyFcb0eDiTQZbrlLDVmD/Q6lJnbLjskWMgrX5tGHlz8pTsyvB45XjDr8Qb0fLZtx5gEdA7m/+um7z
-	boVHRezR7UcwLsBGiWdGl6/WJQYG1J+5YUyEjieDY4OBYGmq2X8taWYvzCLLQ4cx3iaotMaD5vmlF
-	tgjt5/z3gBUVOWFmc+/8ye2qznMbk41FDDR1nMgsdSySO6/wctkTQ8m3rbWt0qb3jv494OJugVmUG
-	Uil/qpcJk0KDyiILj4TaxTVqsXEpYvppmGWrwtZ+9N5joul1d13tT91r0IwYKYWvMLl5TczeZTpsw
-	XtIDQPxw==;
+	bh=3cXnY3N069ShtuQKQSH8FzFJSBT/CkPPkbl87PX+Plg=; b=zl9XGcfnB624tRx1Xf650WxTYY
+	136bzdX1927xgMO6xQX1tySiMFOYByPGXQML81pxvXlwvlTnJ3hUiZ3HTjd8IFZyCRtMmjvg+pBsB
+	TwOPm9jalGI2z8WpgnDqUVNE+PvO9dNe0i9wanShh7bWVLMpsjqbqIvSn5sNIFDP7KXHuwDS7zb/G
+	ThFAzSPQ38S7uODHSrC7i0SnPSGxL/NYnD165aKRZIAM5mUiJY2EbpzDtDmGVz0h1EvrAtzGr0cli
+	niuKcD7wcTFOOOO1OF3L9DzGQ6vqfjtdb3Rz+2QQIqzfJgKYfv0XpcmVgmRVy3Rdi6mjpwS89dBIb
+	tfBNDjvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ru9sQ-00000001l2l-0MMu;
-	Tue, 09 Apr 2024 11:42:58 +0000
+	id 1ru9vA-00000001lon-3211;
+	Tue, 09 Apr 2024 11:45:48 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ru9rz-00000001khK-1ESM;
-	Tue, 09 Apr 2024 11:42:33 +0000
+	id 1ru9v5-00000001lmz-3UXQ;
+	Tue, 09 Apr 2024 11:45:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712662950;
-	bh=1IKHkg+bFOK+XIFwPPhCXS2tjDgeASO3rycSgHf2rZg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=r+nxKpPevPYF5KeaMrPZbMUBWhwIroSMLfrTCJAyZ2z7biBlV7Itac+bNYWXqg9AX
-	 x9wnbrJnbg1v/wRm9okRoXB/1y97SMuMIOJk/BzdVYBTIMDJACi2M91C3+Db5aN46G
-	 w82qJMCOha7zlg+40XhKJIEJ/P/nYP9AeR4jWR7qkPYMxOSupgAQlx28Y4P19FbU5p
-	 5c9e7DVeJsBlD05j1N39auPKoot74PRZjF5/qGT5m4cANizhQH+lkaYXaJ3keqv8pn
-	 wJXxnr/dggeGXAdfslqaJxkLvB51wpJdFO1p0r28+YVn3m1Lo5WWZyMnq9E+ox/J8y
-	 cmG4JeFVEh+5Q==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1712663142;
+	bh=lC4EWcyFhRfCmq02OzOhjC6dK5sQhjYXtXyu0Z/pVO8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=w3c2kQFOB9CvuYyVBDEo7ncdVlz3Zt9JgxPdIIBosC8qcLaa0fP2yD2eKN4eGtn0J
+	 Uiu5m97KAjMcXiRPcc1XSZU9gtEdOpf2lACGTOibkpHatkd7aH0LOn914CkjBpm30M
+	 /VPO9c6ORB8uqvHl27IOmsB55KdiiH12cgbfZ2GYL2Ag6WDsck244+j+pmCQAjAn1H
+	 rWX02LNgggpNu9ExU7PMayxgB2nZh+1yujFm/W/VX2s3yYVyetuRVnd2l8au+MMCc3
+	 ioJTAjRb/nGm5yulnao+dR9u1V+URfC+eCL11sGhJt4f64X9pUlr8jJbWnkIqX3hz8
+	 RV4QuRAowgY7w==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 5D3133782127;
-	Tue,  9 Apr 2024 11:42:29 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-mediatek@lists.infradead.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH 5/5] arm64: dts: mediatek: mt8395-nio-12l: Add power supplies for CPU/GPU scaling
-Date: Tue,  9 Apr 2024 13:42:11 +0200
-Message-ID: <20240409114211.310462-6-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240409114211.310462-1-angelogioacchino.delregno@collabora.com>
-References: <20240409114211.310462-1-angelogioacchino.delregno@collabora.com>
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id DDAEB37820F5;
+	Tue,  9 Apr 2024 11:45:41 +0000 (UTC)
+Message-ID: <c98ea7c9-6c9b-466d-bc49-ec76874ac6da@collabora.com>
+Date: Tue, 9 Apr 2024 13:45:41 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] leds: mt6360: Fix the second LED can not enable torch
+ mode by V4L2
+To: ChiaEn Wu <chiaen_wu@richtek.com>, pavel@ucw.cz, lee@kernel.org,
+ matthias.bgg@gmail.com
+Cc: linux-kernel@vger.kernel.org, linux-leds@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ peterwu.pub@gmail.com, cy_huang@richtek.com
+References: <d1d1419bb322e2b0f40d34edd3a66979015b668c.1712657386.git.chiaen_wu@richtek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <d1d1419bb322e2b0f40d34edd3a66979015b668c.1712657386.git.chiaen_wu@richtek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_044231_672807_DDDFF871 
-X-CRM114-Status: UNSURE (   8.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240409_044544_061649_CBD6CDAD 
+X-CRM114-Status: GOOD (  19.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,73 +77,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the necessary power supplies to safely enable CPU and GPU frequency
-scaling.
+Il 09/04/24 12:21, ChiaEn Wu ha scritto:
+> V4L2 will disable strobe mode of the LED device when enable torch mode,
+> but this logic will conflict with the "priv->fled_torch_used"
+> in "mt6360_strobe_set()". So after enabling torch mode of the first
+> LED, the second LED will not be able to enable torch mode correctly.
+> 
+> Therefore, at the beginning of "mt6360_strobe_set()", check whether the
+> state of the upcoming change and the current LED device state are the
+> same, so as to avoid the above problem.
+> 
+> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> ---
+>   drivers/leds/flash/leds-mt6360.c | 12 +++++++++++-
+>   1 file changed, 11 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/leds/flash/leds-mt6360.c b/drivers/leds/flash/leds-mt6360.c
+> index a90de82f4568..1b75b4d36834 100644
+> --- a/drivers/leds/flash/leds-mt6360.c
+> +++ b/drivers/leds/flash/leds-mt6360.c
+> @@ -241,10 +241,20 @@ static int mt6360_strobe_set(struct led_classdev_flash *fl_cdev, bool state)
+>   	u32 enable_mask = MT6360_STROBEN_MASK | MT6360_FLCSEN_MASK(led->led_no);
+>   	u32 val = state ? MT6360_FLCSEN_MASK(led->led_no) : 0;
+>   	u32 prev = priv->fled_strobe_used, curr;
+> -	int ret;
+> +	int ret = 0;
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../dts/mediatek/mt8395-radxa-nio-12l.dts     | 40 +++++++++++++++++++
- 1 file changed, 40 insertions(+)
+I prefer that you leave ret uninitialized here, and...
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-index 5cbe969da425..bf6b539e6c06 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-@@ -140,6 +140,38 @@ apu_mem: memory@62000000 {
- 	};
- };
- 
-+&cpu0 {
-+	cpu-supply = <&mt6359_vcore_buck_reg>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&mt6359_vcore_buck_reg>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&mt6359_vcore_buck_reg>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&mt6359_vcore_buck_reg>;
-+};
-+
-+&cpu4 {
-+	cpu-supply = <&mt6315_6_vbuck1>;
-+};
-+
-+&cpu5 {
-+	cpu-supply = <&mt6315_6_vbuck1>;
-+};
-+
-+&cpu6 {
-+	cpu-supply = <&mt6315_6_vbuck1>;
-+};
-+
-+&cpu7 {
-+	cpu-supply = <&mt6315_6_vbuck1>;
-+};
-+
- &eth {
- 	phy-mode = "rgmii-rxid";
- 	phy-handle = <&rgmii_phy>;
-@@ -343,6 +375,14 @@ typec_con_mux: endpoint {
- 	};
- };
- 
-+&mfg0 {
-+	domain-supply = <&mt6315_7_vbuck1>;
-+};
-+
-+&mfg1 {
-+	domain-supply = <&mt6359_vsram_others_ldo_reg>;
-+};
-+
- /* MMC0 Controller: eMMC (HS400). Power lines are shared with UFS! */
- &mmc0 {
- 	pinctrl-names = "default", "state_uhs";
--- 
-2.44.0
+>   
+>   	mutex_lock(&priv->lock);
+>   
+> +	/*
+> +	 * If the state of the upcoming change is the same as the current LED
+> +	 * device state, then skip the subsequent code to avoid conflict
+> +	 * with the flow of turning on LED torch mode in V4L2.
+> +	 */
+> +	if (state == !!(BIT(led->led_no) & prev)) {
+> +		dev_info(lcdev->dev, "No change in strobe state [0x%x]\n", prev);
+
+...that you do here, instead
+
+		ret = 0;
+		goto unlock;
+
+With that addressed,
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collaobra.com>
+
 
 
