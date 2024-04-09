@@ -4,85 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3263CD128A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 15:01:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 011CBCD128A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 15:15:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+DdrfBJmMQ5ylYMZYoJ/Phfo48h4WfKqmfjd1ZfkE4I=; b=Vi3Pft2/QFdnERdwjITuB+bm7o
-	riSr8Gsj9dPtXphmANaHj8hJxlGfgzEMoN3BKVRJYcrtzm26DsSLOZEtxxYT60u9WX2fv8WDJM0dF
-	+fWj1FJWO/NNhxMLON0rLu4KjitP2chlOY4fGfq+9T3O50CNc/lXdk1sFuGKhMG+1YDD8nwUIfcFl
-	hkkN7x++7y3q8U7E6+mgor/x4QUPF37NzLjCPwzMDtpFVvPhzXW1eaGnin1PvYrC3pqV8RZMf6zlh
-	704s9bHSmXoCTiKXRAWnB6hxrusd2sH2i9zPYNuxF9bVSwWQyvsY7YtaRFetkxlqh1A0bNP7zQeF5
-	Z93QRrwg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EMWS4mPrrF8Ct6YFyO/ObmKaP4rMRLJkaeYl8zMi+3U=; b=hucu/c3UHQ1fLYqqTXTrFOTWlQ
+	dma01WzKNc7/EqLEhU18I4h/NxIucnPGWBVCzZbTgkJAVShf80f5JlgOFPqYAavBlw4OUVd2raEmb
+	hrwZuZnFZKmzwPOvIC7uTsAcc1sVnzLDHCmKMskDWVqduQ1jFZSvn+c+7KTbSclacIIm7PNnMbrKg
+	Q4HA6PAUsvZ++1EZQDR4+lv9YAxFFWTuCrhb8U4sABwW85WMeRypinZKBc+o2MXJPrgEBJt6jOuyx
+	p2nYMTQxDeWkxt5yOsyi1bt5nIfErpD54p2+0L1Q5zVg9X/mVR8WptNhDTzFqs6fqNbOykJxKZwvh
+	w7JCZOUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruCyc-00000002Z7d-4900;
-	Tue, 09 Apr 2024 15:01:35 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ruDC8-00000002eUO-2Ird;
+	Tue, 09 Apr 2024 15:15:32 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruCyU-00000002Z3X-30pA;
-	Tue, 09 Apr 2024 15:01:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 10892617E6;
-	Tue,  9 Apr 2024 15:01:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id E7DC9C433F1;
-	Tue,  9 Apr 2024 15:01:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712674884;
-	bh=B4ew2Qkt0jyTjmfuReVOB8iNkVJ1pQBfZZbnCGpT7PY=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=pKiQvibSSbQkiG7OkgG37INCkqJdmlZosElvVr2pnuiDj/GGZit6qi39up/MHsgBK
-	 XdN1HO+YqOHqXDlW9c8Iki4gnkZeQ/SinVgURlzBl5a/BOOEEW/FCZ4oT/yzYxvcL5
-	 vuFMVH5qVHbJpzgWsTWBn9mEsywD2DIWH+GE8S7JRE+fAvgQiR6Wpvqap11y7FFUUN
-	 5LmsP6I2ryVIF5WXUsMkk37BAuY59ppFR9NFYew0RVpo38ESiSqp/bkvGbtnmAO20T
-	 ZMVdgIxzOte0w0KQtnnn5bASGnyng3vLn91/nrVeVpb881Qv4jWT1hv2wMvUbLH+RQ
-	 ulusI2bQaEAyA==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CDD83CD128A;
-	Tue,  9 Apr 2024 15:01:23 +0000 (UTC)
-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL_via_B4_Relay?= <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Tue, 09 Apr 2024 18:01:14 +0300
-Subject: [PATCH net v2] net: dsa: mt7530: trap link-local frames regardless
- of ST Port State
+	id 1ruDC1-00000002eQe-1Xpm
+	for linux-mediatek@lists.infradead.org;
+	Tue, 09 Apr 2024 15:15:30 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-516d6e23253so4386111e87.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Apr 2024 08:15:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1712675721; x=1713280521; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=EMWS4mPrrF8Ct6YFyO/ObmKaP4rMRLJkaeYl8zMi+3U=;
+        b=ffaFd8idTY0HMoDc4bA9NA5Tz4LzoeizE9Y5Jia4cLgXZbib3eTO5Uey8UlOcvztVy
+         rbDeIo4lA1nG0xpoFitBf67ZPsz8KPo2sBAlQzwc8YLeXXw8BONWVWMopSeBfNUHXQpN
+         2fvtr69vrIVXEMDi45yHCX0GGQwdD0Js4soOyLfejfs93R+ghA+Dir9XfbAe9ObX/0Ex
+         fpDym7u7bBOU7nH6mLg5qogxERSDTfdFYIOOIrE4dSA3zwo1lRYIiNocii2z44ClBp8K
+         /ZkdZv61nvSai5SALzYVSBKuAvTnxAqZgEY4TofYg3U9s2tmRuPFLhSrUgTsve7SERjz
+         F55w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712675721; x=1713280521;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=EMWS4mPrrF8Ct6YFyO/ObmKaP4rMRLJkaeYl8zMi+3U=;
+        b=AXZjynU+NXUHuNsgISUIFMHL6sOfGxVFl0UsvnioVadAvlO2oXCzM5RkDe/ams7AWF
+         LYAzFGpkBzkucKNY8bfKnnA5A/oCVqOYikYnacApI9KuSSJCaMGOZaBAWVUhDZRsLeDg
+         nkVlW4cDjYe8Io5qj936XHWBRwQCsGKAUtcKMmsZmw5L0WwkqXo8+LYIV9/Ki1axIPqI
+         l+ws25GA+E/y2V4+NRl/rwcWXQYF0g6qgw4JbSabh145a0RntrI1ok5xQWdB7FFutKgr
+         IYe38ycgUYTwJpqh9CKG5mT97RNKbH/rgbaIGhvFXqG80/QCVLVPWxc2pjcxgsCaxbTV
+         TCGg==
+X-Forwarded-Encrypted: i=1; AJvYcCWPuFjbvep8+yl9A9ubFc5LLJi20bJWqeQl9EfUaQ+Z5LblBuGhK+hwnFJ8tuAMXUmONNDpu6S2ErS6InH684thp8A1/jqDMhqkVxLizzl4mOqL
+X-Gm-Message-State: AOJu0Ywi84j1DAASFJO3to5QL7BgelvcU0YK03p8PIlfYuDsclnqU/5V
+	1oQ9kcPEsf6g/AXStlSjg4myaVEE1RkRJPMFvxothDyLYo01QPSwNdzpuYvsKks=
+X-Google-Smtp-Source: AGHT+IEwLwk3ll8TD8uazg/KAa0xMwZFzr3n1kQvoteQbJ/0zZ06aOho8bjjvftdOkyC/tbJQJqGBw==
+X-Received: by 2002:a05:6512:4859:b0:516:d14b:435f with SMTP id ep25-20020a056512485900b00516d14b435fmr8222378lfb.14.1712675720659;
+        Tue, 09 Apr 2024 08:15:20 -0700 (PDT)
+Received: from eriador.lumag.spb.ru (dzyjmhyyyyyyyyyyyykxt-3.rev.dnainternet.fi. [2001:14ba:a00e:a300::227])
+        by smtp.gmail.com with ESMTPSA id w24-20020a05651234d800b00513cb309c8asm1572222lfr.52.2024.04.09.08.15.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 Apr 2024 08:15:20 -0700 (PDT)
+Date: Tue, 9 Apr 2024 18:15:18 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Vignesh Raman <vignesh.raman@collabora.com>
+Cc: =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	dri-devel@lists.freedesktop.org, daniels@collabora.com, helen.koike@collabora.com, 
+	airlied@gmail.com, daniel@ffwll.ch, emma@anholt.net, robdclark@gmail.com, 
+	david.heidelberg@collabora.com, guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
+	hamohammed.sa@gmail.com, rodrigosiqueiramelo@gmail.com, melissa.srw@gmail.com, 
+	mairacanal@riseup.net, linux-mediatek@lists.infradead.org, 
+	linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v6 3/8] drm/ci: uprev IGT and update testlist
+Message-ID: <xdg5ogy2xmotofuvo6hlnjrnnzgs7e7grvquvnrc2ausqgi6i4@wkyqaidxtg44>
+References: <20240409081329.472463-1-vignesh.raman@collabora.com>
+ <20240409081329.472463-4-vignesh.raman@collabora.com>
+ <46baa9f8-fe6c-403d-bc29-c66c6e168aee@igalia.com>
+ <096e3003-dad9-49a4-8cf7-26967c265ee1@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240409-b4-for-net-mt7530-fix-link-local-when-stp-discarding-v2-1-07b1150164ac@arinc9.com>
-X-B4-Tracking: v=1; b=H4sIADlYFWYC/52OQQ6CMBREr0L+2m9KKSCuvIdhUcoHfoSWtAQ1h
- LtbiSdwOTOZebNBIM8U4Jps4GnlwM5GIU8JmEHbnpDbqEEKqYQSKTYKO+fR0oLTUuaZwI5fOLJ
- 94OiMHvE5kMWwzNhyMNq3bHssSGpFGV2KUkOcnj3F1oG9Q5yCOpoDh8X593FlTY/oRy3/o64pf
- v82UmhTZSovb9qzNdXZuAnqfd8/mR9ayf4AAAA=
-To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
- Florian Fainelli <f.fainelli@gmail.com>, 
- Vladimir Oltean <olteanv@gmail.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>, 
- mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1712674879; l=25758;
- i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
- bh=4hvAXxPZPZ3ZX21lHhBrmf2ehXeho17xrQz23bl6zJk=;
- b=T9GVXfpwu8JF3OQRNrxTufxkqb084/jRWBn96rT+CkkIWIXImwTeXdpnds4Mnzk1/gHTddX3Y
- w8cUbQZClxeC/eGGUxhYRNAtx6V3UixyGjgIoSf31EaR6ht+kZAbF56
-X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
- pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
-X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt
- with auth_id=115
-X-Original-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
+In-Reply-To: <096e3003-dad9-49a4-8cf7-26967c265ee1@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_080126_928404_90E809DC 
-X-CRM114-Status: GOOD (  27.18  )
+X-CRM114-CacheID: sfid-20240409_081525_491695_E490FC12 
+X-CRM114-Status: GOOD (  34.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,502 +98,1051 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ArÄ±nÃ§ ÃœNAL <arinc.unal@arinc9.com>
+On Tue, Apr 09, 2024 at 07:22:38PM +0530, Vignesh Raman wrote:
+> Hi Maíra,
+> 
+> On 09/04/24 15:10, Maíra Canal wrote:
+> > On 4/9/24 05:13, Vignesh Raman wrote:
+> > > Uprev IGT and add amd, v3d, vc4 and vgem specific tests to
+> > > testlist and skip driver-specific tests in *-skips.txt.
+> > > Also add testlist to the MAINTAINERS file and update xfails.
+> > > 
+> > > A better approach would be to stop vendoring the testlist
+> > > into the kernel and instead use testlist from the IGT build
+> > > to ensure we do not miss renamed or newly added tests.
+> > > This implementation is planned for the future.
+> > 
+> > How problamatic would be to just do this in this test series, instead
+> > of adding a huge testlist that we need to maintain synced with IGT?
+> 
+> Is it okay if these changes are submitted in another patch series to avoid
+> delaying the current one. There are patches like vkms which are
+> blocked due to the mesa uprev patch. We would also need to rerun all jobs
+> and update xfails with the new testlist. In next series we could uprev IGT
+> to the latest version and use the testlist from the build and remove the one
+> in drm-ci. We can also test with the latest kernel. I will work on this.
+> Please let me know your thoughts.
 
-In Clause 5 of IEEE Std 802-2014, two sublayers of the data link layer
-(DLL) of the Open Systems Interconnection basic reference model (OSI/RM)
-are described; the medium access control (MAC) and logical link control
-(LLC) sublayers. The MAC sublayer is the one facing the physical layer.
+As we have to rebase/retest anyway, I think it makes more sense to land
+from-IGT-test-list first, fixing it for the devices that are currently
+present, and to land the rest afterwards. As for the IGT uprev we have
+been waititng for that for quite a while (I think I've event sent a
+patch a while ago) in order to fix test failures on drm/msm.
 
-In 8.2 of IEEE Std 802.1Q-2022, the Bridge architecture is described. A
-Bridge component comprises a MAC Relay Entity for interconnecting the Ports
-of the Bridge, at least two Ports, and higher layer entities with at least
-a Spanning Tree Protocol Entity included.
+> 
+> Regards,
+> Vignesh
+> 
+> > 
+> > Best Regards,
+> > - Maíra
+> > 
+> > > 
+> > > Acked-by: Helen Koike <helen.koike@collabora.com>
+> > > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+> > > ---
+> > > 
+> > > v3:
+> > >    - New patch in series to uprev IGT and update testlist.
+> > > 
+> > > v4:
+> > >    - Add testlists to the MAINTAINERS file and remove amdgpu xfails
+> > > changes.
+> > > 
+> > > v5:
+> > >    - Keep single testlist and update xfails. Skip driver specific tests.
+> > > 
+> > > v6:
+> > >    - Update xfails.
+> > > 
+> > > ---
+> > >   MAINTAINERS                                   |   8 +
+> > >   drivers/gpu/drm/ci/gitlab-ci.yml              |   2 +-
+> > >   drivers/gpu/drm/ci/testlist.txt               | 321 ++++++++++++++++++
+> > >   .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |  25 +-
+> > >   .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |  10 +-
+> > >   .../gpu/drm/ci/xfails/amdgpu-stoney-skips.txt |  23 +-
+> > >   drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |   1 +
+> > >   drivers/gpu/drm/ci/xfails/i915-amly-skips.txt |   9 +-
+> > >   drivers/gpu/drm/ci/xfails/i915-apl-skips.txt  |   9 +-
+> > >   drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  |   1 +
+> > >   drivers/gpu/drm/ci/xfails/i915-cml-skips.txt  |   7 +
+> > >   drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |   2 +-
+> > >   drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  |   9 +-
+> > >   drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt  |   9 +-
+> > >   drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |   2 +
+> > >   drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt  |   9 +-
+> > >   drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |   1 +
+> > >   drivers/gpu/drm/ci/xfails/i915-whl-skips.txt  |   9 +-
+> > >   .../drm/ci/xfails/mediatek-mt8173-fails.txt   |   3 -
+> > >   .../drm/ci/xfails/mediatek-mt8173-skips.txt   |   6 +
+> > >   .../drm/ci/xfails/mediatek-mt8183-fails.txt   |   1 +
+> > >   .../drm/ci/xfails/mediatek-mt8183-skips.txt   |   5 +
+> > >   .../gpu/drm/ci/xfails/meson-g12b-fails.txt    |   1 +
+> > >   .../gpu/drm/ci/xfails/meson-g12b-skips.txt    |   5 +
+> > >   .../gpu/drm/ci/xfails/msm-apq8016-skips.txt   |   5 +
+> > >   .../gpu/drm/ci/xfails/msm-apq8096-skips.txt   |   8 +-
+> > >   .../msm-sc7180-trogdor-kingoftown-skips.txt   |   6 +
+> > >   ...sm-sc7180-trogdor-lazor-limozeen-skips.txt |   6 +
+> > >   .../gpu/drm/ci/xfails/msm-sdm845-skips.txt    |   6 +
+> > >   .../drm/ci/xfails/rockchip-rk3288-fails.txt   |   1 +
+> > >   .../drm/ci/xfails/rockchip-rk3288-skips.txt   |   8 +-
+> > >   .../drm/ci/xfails/rockchip-rk3399-fails.txt   |   1 +
+> > >   .../drm/ci/xfails/rockchip-rk3399-skips.txt   |   6 +
+> > >   .../drm/ci/xfails/virtio_gpu-none-fails.txt   |  15 +
+> > >   .../drm/ci/xfails/virtio_gpu-none-skips.txt   |   9 +-
+> > >   35 files changed, 532 insertions(+), 17 deletions(-)
+> > >   create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-skips.txt
+> > >   create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-skips.txt
+> > >   create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-skips.txt
+> > >   create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8016-skips.txt
+> > > 
+> > > diff --git a/MAINTAINERS b/MAINTAINERS
+> > > index 3bc7e122a094..f7d0040a6c21 100644
+> > > --- a/MAINTAINERS
+> > > +++ b/MAINTAINERS
+> > > @@ -1665,6 +1665,7 @@ L:    dri-devel@lists.freedesktop.org
+> > >   S:    Supported
+> > >   T:    git git://anongit.freedesktop.org/drm/drm-misc
+> > >   F:    Documentation/gpu/panfrost.rst
+> > > +F:    drivers/gpu/drm/ci/testlist.txt
+> > >   F:    drivers/gpu/drm/panfrost/
+> > >   F:    include/uapi/drm/panfrost_drm.h
+> > > @@ -6753,6 +6754,7 @@ S:    Maintained
+> > >   B:    https://gitlab.freedesktop.org/drm/msm/-/issues
+> > >   T:    git https://gitlab.freedesktop.org/drm/msm.git
+> > >   F:    Documentation/devicetree/bindings/display/msm/
+> > > +F:    drivers/gpu/drm/ci/testlist.txt
+> > >   F:    drivers/gpu/drm/ci/xfails/msm*
+> > >   F:    drivers/gpu/drm/msm/
+> > >   F:    include/uapi/drm/msm_drm.h
+> > > @@ -7047,6 +7049,7 @@ T:    git
+> > > git://anongit.freedesktop.org/drm/drm-misc
+> > >   F:
+> > > Documentation/devicetree/bindings/display/amlogic,meson-dw-hdmi.yaml
+> > >   F:    Documentation/devicetree/bindings/display/amlogic,meson-vpu.yaml
+> > >   F:    Documentation/gpu/meson.rst
+> > > +F:    drivers/gpu/drm/ci/testlist.txt
+> > >   F:    drivers/gpu/drm/ci/xfails/meson*
+> > >   F:    drivers/gpu/drm/meson/
+> > > @@ -7160,6 +7163,7 @@ L:    dri-devel@lists.freedesktop.org
+> > >   L:    linux-mediatek@lists.infradead.org (moderated for
+> > > non-subscribers)
+> > >   S:    Supported
+> > >   F:    Documentation/devicetree/bindings/display/mediatek/
+> > > +F:    drivers/gpu/drm/ci/testlist.txt
+> > >   F:    drivers/gpu/drm/ci/xfails/mediatek*
+> > >   F:    drivers/gpu/drm/mediatek/
+> > >   F:    drivers/phy/mediatek/phy-mtk-dp.c
+> > > @@ -7211,6 +7215,7 @@ L:    dri-devel@lists.freedesktop.org
+> > >   S:    Maintained
+> > >   T:    git git://anongit.freedesktop.org/drm/drm-misc
+> > >   F:    Documentation/devicetree/bindings/display/rockchip/
+> > > +F:    drivers/gpu/drm/ci/testlist.txt
+> > >   F:    drivers/gpu/drm/ci/xfails/rockchip*
+> > >   F:    drivers/gpu/drm/rockchip/
+> > > @@ -10739,6 +10744,7 @@ C:    irc://irc.oftc.net/intel-gfx
+> > >   T:    git git://anongit.freedesktop.org/drm-intel
+> > >   F:    Documentation/ABI/testing/sysfs-driver-intel-i915-hwmon
+> > >   F:    Documentation/gpu/i915.rst
+> > > +F:    drivers/gpu/drm/ci/testlist.txt
+> > >   F:    drivers/gpu/drm/ci/xfails/i915*
+> > >   F:    drivers/gpu/drm/i915/
+> > >   F:    include/drm/i915*
+> > > @@ -18255,6 +18261,7 @@ C:    irc://irc.oftc.net/radeon
+> > >   T:    git https://gitlab.freedesktop.org/agd5f/linux.git
+> > >   F:    Documentation/gpu/amdgpu/
+> > >   F:    drivers/gpu/drm/amd/
+> > > +F:    drivers/gpu/drm/ci/testlist.txt
+> > >   F:    drivers/gpu/drm/ci/xfails/amd*
+> > >   F:    drivers/gpu/drm/radeon/
+> > >   F:    include/uapi/drm/amdgpu_drm.h
+> > > @@ -23303,6 +23310,7 @@ L:    dri-devel@lists.freedesktop.org
+> > >   L:    virtualization@lists.linux.dev
+> > >   S:    Maintained
+> > >   T:    git git://anongit.freedesktop.org/drm/drm-misc
+> > > +F:    drivers/gpu/drm/ci/testlist.txt
+> > >   F:    drivers/gpu/drm/ci/xfails/virtio*
+> > >   F:    drivers/gpu/drm/virtio/
+> > >   F:    include/uapi/linux/virtio_gpu.h
+> > > diff --git a/drivers/gpu/drm/ci/gitlab-ci.yml
+> > > b/drivers/gpu/drm/ci/gitlab-ci.yml
+> > > index 2f9a5e217f5c..d03d76692f0e 100644
+> > > --- a/drivers/gpu/drm/ci/gitlab-ci.yml
+> > > +++ b/drivers/gpu/drm/ci/gitlab-ci.yml
+> > > @@ -5,7 +5,7 @@ variables:
+> > >     UPSTREAM_REPO: git://anongit.freedesktop.org/drm/drm
+> > >     TARGET_BRANCH: drm-next
+> > > -  IGT_VERSION: d2af13d9f5be5ce23d996e4afd3e45990f5ab977
+> > > +  IGT_VERSION: b0cc8160ebdc87ce08b7fd83bb3c99ff7a4d8610
+> > >     DEQP_RUNNER_GIT_URL:
+> > > https://gitlab.freedesktop.org/anholt/deqp-runner.git
+> > >     DEQP_RUNNER_GIT_TAG: v0.15.0
+> > > diff --git a/drivers/gpu/drm/ci/testlist.txt
+> > > b/drivers/gpu/drm/ci/testlist.txt
+> > > index 3377f002f8c5..8a5967a4b3bd 100644
+> > > --- a/drivers/gpu/drm/ci/testlist.txt
+> > > +++ b/drivers/gpu/drm/ci/testlist.txt
+> > > @@ -2759,3 +2759,324 @@ msm_submit@invalid-duplicate-bo-submit
+> > >   msm_submit@invalid-cmd-idx-submit
+> > >   msm_submit@invalid-cmd-type-submit
+> > >   msm_submit@valid-submit
+> > > +prime_vgem@basic-read
+> > > +prime_vgem@basic-write
+> > > +prime_vgem@basic-gtt
+> > > +prime_vgem@basic-blt
+> > > +prime_vgem@shrink
+> > > +prime_vgem@coherency-gtt
+> > > +prime_vgem@coherency-blt
+> > > +prime_vgem@sync
+> > > +prime_vgem@busy
+> > > +prime_vgem@wait
+> > > +prime_vgem@basic-fence-read
+> > > +prime_vgem@basic-fence-mmap
+> > > +prime_vgem@basic-fence-blt
+> > > +prime_vgem@basic-fence-flip
+> > > +prime_vgem@fence-read-hang
+> > > +prime_vgem@fence-write-hang
+> > > +prime_vgem@fence-flip-hang
+> > > +prime_vgem@fence-wait
+> > > +vgem_basic@unload
+> > > +vgem_basic@setversion
+> > > +vgem_basic@second-client
+> > > +vgem_basic@create
+> > > +vgem_basic@mmap
+> > > +vgem_basic@bad-flag
+> > > +vgem_basic@bad-pad
+> > > +vgem_basic@bad-handle
+> > > +vgem_basic@bad-fence
+> > > +vgem_basic@busy-fence
+> > > +vgem_basic@dmabuf-export
+> > > +vgem_basic@dmabuf-mmap
+> > > +vgem_basic@dmabuf-fence
+> > > +vgem_basic@dmabuf-fence-before
+> > > +vgem_basic@sysfs
+> > > +vgem_basic@debugfs
+> > > +vgem_slow@nohang
+> > > +amdgpu/amd_abm@dpms_cycle
+> > > +amdgpu/amd_abm@backlight_monotonic_basic
+> > > +amdgpu/amd_abm@backlight_monotonic_abm
+> > > +amdgpu/amd_abm@abm_enabled
+> > > +amdgpu/amd_abm@abm_gradual
+> > > +amdgpu/amd_bo@amdgpu_bo_export_import
+> > > +amdgpu/amd_bo@amdgpu_bo_metadata
+> > > +amdgpu/amd_bo@amdgpu_bo_map_unmap
+> > > +amdgpu/amd_bo@amdgpu_memory_alloc
+> > > +amdgpu/amd_bo@amdgpu_mem_fail_alloc
+> > > +amdgpu/amd_bo@amdgpu_bo_find_by_cpu_mapping
+> > > +amdgpu/amd_cp_dma_misc@GTT_to_VRAM-AMDGPU_HW_IP_GFX0
+> > > +amdgpu/amd_cp_dma_misc@GTT_to_VRAM-AMDGPU_HW_IP_COMPUTE0
+> > > +amdgpu/amd_cp_dma_misc@VRAM_to_GTT-AMDGPU_HW_IP_GFX0
+> > > +amdgpu/amd_cp_dma_misc@VRAM_to_GTT-AMDGPU_HW_IP_COMPUTE0
+> > > +amdgpu/amd_cp_dma_misc@VRAM_to_VRAM-AMDGPU_HW_IP_GFX0
+> > > +amdgpu/amd_cp_dma_misc@VRAM_to_VRAM-AMDGPU_HW_IP_COMPUTE0
+> > > +amdgpu/amd_dispatch@amdgpu-dispatch-test-compute-with-IP-COMPUTE
+> > > +amdgpu/amd_dispatch@amdgpu-dispatch-test-gfx-with-IP-GFX
+> > > +amdgpu/amd_dispatch@amdgpu-dispatch-hang-test-gfx-with-IP-GFX
+> > > +amdgpu/amd_dispatch@amdgpu-dispatch-hang-test-compute-with-IP-COMPUTE
+> > > +amdgpu/amd_dispatch@amdgpu-reset-test-gfx-with-IP-GFX-and-COMPUTE
+> > > +amdgpu/amd_hotplug@basic
+> > > +amdgpu/amd_hotplug@basic-suspend
+> > > +amdgpu/amd_jpeg_dec@amdgpu_cs_jpeg_decode
+> > > +amdgpu/amd_max_bpc@4k-mode-max-bpc
+> > > +amdgpu/amd_module_load@reload
+> > > +amdgpu/amd_plane@test-mpo-4k
+> > > +amdgpu/amd_plane@mpo-swizzle-toggle
+> > > +amdgpu/amd_plane@mpo-swizzle-toggle-multihead
+> > > +amdgpu/amd_plane@mpo-pan-rgb
+> > > +amdgpu/amd_plane@mpo-pan-rgb-multihead
+> > > +amdgpu/amd_plane@mpo-pan-nv12
+> > > +amdgpu/amd_plane@mpo-pan-nv12-multihead
+> > > +amdgpu/amd_plane@mpo-pan-p010
+> > > +amdgpu/amd_plane@mpo-pan-p010-multihead
+> > > +amdgpu/amd_plane@mpo-pan-multi-rgb
+> > > +amdgpu/amd_plane@mpo-pan-multi-nv12
+> > > +amdgpu/amd_plane@mpo-pan-multi-p010
+> > > +amdgpu/amd_plane@multi-overlay
+> > > +amdgpu/amd_plane@multi-overlay-invalid
+> > > +amdgpu/amd_plane@mpo-scale-rgb
+> > > +amdgpu/amd_plane@mpo-scale-rgb-multihead
+> > > +amdgpu/amd_plane@mpo-scale-nv12
+> > > +amdgpu/amd_plane@mpo-scale-nv12-multihead
+> > > +amdgpu/amd_plane@mpo-scale-p010
+> > > +amdgpu/amd_plane@mpo-scale-p010-multihead
+> > > +amdgpu/amd_pstate@amdgpu_pstate
+> > > +amdgpu/amd_subvp@dual-4k60
+> > > +amdgpu/amd_uvd_enc@uvd_enc_create
+> > > +amdgpu/amd_uvd_enc@amdgpu_uvd_enc_session_init
+> > > +amdgpu/amd_uvd_enc@amdgpu_uvd_enc_encode
+> > > +amdgpu/amd_uvd_enc@uvd_enc_destroy
+> > > +amdgpu/amd_vm@vmid-reserve-test
+> > > +amdgpu/amd_vm@amdgpu-vm-unaligned-map
+> > > +amdgpu/amd_vm@amdgpu-vm-mapping-test
+> > > +amdgpu/amd_assr@assr-links
+> > > +amdgpu/amd_assr@assr-links-dpms
+> > > +amdgpu/amd_assr@assr-links-suspend
+> > > +amdgpu/amd_bypass@8bpc-bypass-mode
+> > > +amdgpu/amd_cs_nop@cs-nops-with-nop-compute0
+> > > +amdgpu/amd_cs_nop@cs-nops-with-nop-gfx0
+> > > +amdgpu/amd_cs_nop@cs-nops-with-sync-compute0
+> > > +amdgpu/amd_cs_nop@cs-nops-with-sync-gfx0
+> > > +amdgpu/amd_cs_nop@cs-nops-with-fork-compute0
+> > > +amdgpu/amd_cs_nop@cs-nops-with-fork-gfx0
+> > > +amdgpu/amd_cs_nop@cs-nops-with-sync-fork-compute0
+> > > +amdgpu/amd_cs_nop@cs-nops-with-sync-fork-gfx0
+> > > +amdgpu/amd_dp_dsc@dsc-enable-basic
+> > > +amdgpu/amd_dp_dsc@dsc-slice-dimensions-change
+> > > +amdgpu/amd_dp_dsc@dsc-link-settings
+> > > +amdgpu/amd_dp_dsc@dsc-bpc
+> > > +amdgpu/amd_ilr@ilr-link-training-configs
+> > > +amdgpu/amd_ilr@ilr-policy
+> > > +amdgpu/amd_link_settings@link-training-configs
+> > > +amdgpu/amd_mem_leak@connector-suspend-resume
+> > > +amdgpu/amd_mem_leak@connector-hotplug
+> > > +amdgpu/amd_odm@odm-combine-2-to-1-4k144
+> > > +amdgpu/amd_prime@i915-to-amd
+> > > +amdgpu/amd_prime@amd-to-i915
+> > > +amdgpu/amd_prime@shrink
+> > > +amdgpu/amd_ras@RAS-basic
+> > > +amdgpu/amd_ras@RAS-query
+> > > +amdgpu/amd_ras@RAS-inject
+> > > +amdgpu/amd_ras@RAS-disable
+> > > +amdgpu/amd_ras@RAS-enable
+> > > +amdgpu/amd_syncobj@amdgpu_syncobj_timeline
+> > > +amdgpu/amd_vce_dec@amdgpu_cs_vce_create
+> > > +amdgpu/amd_vce_dec@amdgpu_cs_vce_encode
+> > > +amdgpu/amd_vce_dec@amdgpu_cs_vce_destroy
+> > > +amdgpu/amd_vpe@vpe-fence-test
+> > > +amdgpu/amd_vpe@vpe-blit-test
+> > > +amdgpu/amd_basic@memory-alloc
+> > > +amdgpu/amd_basic@userptr-with-IP-DMA
+> > > +amdgpu/amd_basic@cs-gfx-with-IP-GFX
+> > > +amdgpu/amd_basic@cs-compute-with-IP-COMPUTE
+> > > +amdgpu/amd_basic@cs-multi-fence-with-IP-GFX
+> > > +amdgpu/amd_basic@cs-sdma-with-IP-DMA
+> > > +amdgpu/amd_basic@semaphore-with-IP-GFX-and-IP-DMA
+> > > +amdgpu/amd_basic@eviction-test-with-IP-DMA
+> > > +amdgpu/amd_basic@sync-dependency-test-with-IP-GFX
+> > > +amdgpu/amd_color@crtc-linear-degamma
+> > > +amdgpu/amd_color@crtc-linear-regamma
+> > > +amdgpu/amd_color@crtc-lut-accuracy
+> > > +amdgpu/amd_deadlock@amdgpu-deadlock-sdma
+> > > +amdgpu/amd_deadlock@amdgpu-gfx-illegal-reg-access
+> > > +amdgpu/amd_deadlock@amdgpu-gfx-illegal-mem-access
+> > > +amdgpu/amd_deadlock@amdgpu-deadlock-gfx
+> > > +amdgpu/amd_deadlock@amdgpu-deadlock-compute
+> > > +amdgpu/amd_deadlock@amdgpu-deadlock-sdma-corrupted-header-test
+> > > +amdgpu/amd_deadlock@amdgpu-deadlock-sdma-slow-linear-copy
+> > > +amdgpu/amd_freesync_video_mode@freesync-base-to-various
+> > > +amdgpu/amd_freesync_video_mode@freesync-lower-to-higher
+> > > +amdgpu/amd_freesync_video_mode@freesync-non-preferred-to-freesync
+> > > +amdgpu/amd_freesync_video_mode@freesync-custom-mode
+> > > +amdgpu/amd_info@query-firmware-version
+> > > +amdgpu/amd_info@query-timestamp
+> > > +amdgpu/amd_info@query-timestamp-while-idle
+> > > +amdgpu/amd_mall@static-screen
+> > > +amdgpu/amd_mode_switch@mode-switch-first-last-pipe-0
+> > > +amdgpu/amd_mode_switch@mode-switch-first-last-pipe-1
+> > > +amdgpu/amd_mode_switch@mode-switch-first-last-pipe-2
+> > > +amdgpu/amd_mode_switch@mode-switch-first-last-pipe-3
+> > > +amdgpu/amd_mode_switch@mode-switch-first-last-pipe-4
+> > > +amdgpu/amd_mode_switch@mode-switch-first-last-pipe-5
+> > > +amdgpu/amd_pci_unplug@amdgpu_hotunplug_simple
+> > > +amdgpu/amd_pci_unplug@amdgpu_hotunplug_with_cs
+> > > +amdgpu/amd_pci_unplug@amdgpu_hotunplug_with_exported_bo
+> > > +amdgpu/amd_pci_unplug@amdgpu_hotunplug_with_exported_fence
+> > > +amdgpu/amd_psr@psr_enable
+> > > +amdgpu/amd_psr@psr_enable_null_crtc
+> > > +amdgpu/amd_psr@psr_su_mpo
+> > > +amdgpu/amd_psr@psr_su_ffu
+> > > +amdgpu/amd_psr@psr_su_cursor
+> > > +amdgpu/amd_psr@psr_su_cursor_mpo
+> > > +amdgpu/amd_psr@psr_su_mpo_scaling_1_5
+> > > +amdgpu/amd_psr@psr_su_mpo_scaling_0_75
+> > > +amdgpu/amd_security@amdgpu-security-alloc-buf-test
+> > > +amdgpu/amd_security@sdma-write-linear-helper-secure
+> > > +amdgpu/amd_security@gfx-write-linear-helper-secure
+> > > +amdgpu/amd_security@amdgpu-secure-bounce
+> > > +amdgpu/amd_uvd_dec@amdgpu_uvd_dec_create
+> > > +amdgpu/amd_uvd_dec@amdgpu_uvd_decode
+> > > +amdgpu/amd_uvd_dec@amdgpu_uvd_dec_destroy
+> > > +amdgpu/amd_vcn@vcn-decoder-create-decode-destroy
+> > > +amdgpu/amd_vcn@vcn-encoder-create-encode-destroy
+> > > +amdgpu/amd_vrr_range@freesync-parsing
+> > > +amdgpu/amd_vrr_range@freesync-parsing-suspend
+> > > +amdgpu/amd_vrr_range@freesync-range
+> > > +amdgpu/amd_vrr_range@freesync-range-suspend
+> > > +panfrost_get_param@base-params
+> > > +panfrost_get_param@get-bad-param
+> > > +panfrost_get_param@get-bad-padding
+> > > +panfrost_gem_new@gem-new-4096
+> > > +panfrost_gem_new@gem-new-0
+> > > +panfrost_gem_new@gem-new-zeroed
+> > > +panfrost_prime@gem-prime-import
+> > > +panfrost_submit@pan-submit
+> > > +panfrost_submit@pan-submit-error-no-jc
+> > > +panfrost_submit@pan-submit-error-bad-in-syncs
+> > > +panfrost_submit@pan-submit-error-bad-bo-handles
+> > > +panfrost_submit@pan-submit-error-bad-requirements
+> > > +panfrost_submit@pan-submit-error-bad-out-sync
+> > > +panfrost_submit@pan-reset
+> > > +panfrost_submit@pan-submit-and-close
+> > > +panfrost_submit@pan-unhandled-pagefault
+> > > +v3d_create_bo@create-bo-invalid-flags
+> > > +v3d_create_bo@create-bo-0
+> > > +v3d_create_bo@create-bo-4096
+> > > +v3d_create_bo@create-bo-zeroed
+> > > +v3d_get_bo_offset@create-get-offsets
+> > > +v3d_get_bo_offset@get-bad-handle
+> > > +v3d_get_param@base-params
+> > > +v3d_get_param@get-bad-param
+> > > +v3d_get_param@get-bad-flags
+> > > +v3d_job_submission@array-job-submission
+> > > +v3d_job_submission@multiple-singlesync-to-multisync
+> > > +v3d_job_submission@threaded-job-submission
+> > > +v3d_mmap@mmap-bad-flags
+> > > +v3d_mmap@mmap-bad-handle
+> > > +v3d_mmap@mmap-bo
+> > > +v3d_perfmon@create-perfmon-0
+> > > +v3d_perfmon@create-perfmon-exceed
+> > > +v3d_perfmon@create-perfmon-invalid-counters
+> > > +v3d_perfmon@create-single-perfmon
+> > > +v3d_perfmon@create-two-perfmon
+> > > +v3d_perfmon@get-values-invalid-pad
+> > > +v3d_perfmon@get-values-invalid-perfmon
+> > > +v3d_perfmon@get-values-invalid-pointer
+> > > +v3d_perfmon@get-values-valid-perfmon
+> > > +v3d_perfmon@destroy-invalid-perfmon
+> > > +v3d_perfmon@destroy-valid-perfmon
+> > > +v3d_submit_cl@bad-pad
+> > > +v3d_submit_cl@bad-flag
+> > > +v3d_submit_cl@bad-extension
+> > > +v3d_submit_cl@bad-bo
+> > > +v3d_submit_cl@bad-perfmon
+> > > +v3d_submit_cl@bad-in-sync
+> > > +v3d_submit_cl@bad-multisync-pad
+> > > +v3d_submit_cl@bad-multisync-extension
+> > > +v3d_submit_cl@bad-multisync-out-sync
+> > > +v3d_submit_cl@bad-multisync-in-sync
+> > > +v3d_submit_cl@valid-submission
+> > > +v3d_submit_cl@single-out-sync
+> > > +v3d_submit_cl@single-in-sync
+> > > +v3d_submit_cl@simple-flush-cache
+> > > +v3d_submit_cl@valid-multisync-submission
+> > > +v3d_submit_cl@multisync-out-syncs
+> > > +v3d_submit_cl@multi-and-single-sync
+> > > +v3d_submit_cl@multiple-job-submission
+> > > +v3d_submit_cl@job-perfmon
+> > > +v3d_submit_csd@bad-pad
+> > > +v3d_submit_csd@bad-flag
+> > > +v3d_submit_csd@bad-extension
+> > > +v3d_submit_csd@bad-bo
+> > > +v3d_submit_csd@bad-perfmon
+> > > +v3d_submit_csd@bad-in-sync
+> > > +v3d_submit_csd@bad-multisync-pad
+> > > +v3d_submit_csd@bad-multisync-extension
+> > > +v3d_submit_csd@bad-multisync-out-sync
+> > > +v3d_submit_csd@bad-multisync-in-sync
+> > > +v3d_submit_csd@valid-submission
+> > > +v3d_submit_csd@single-out-sync
+> > > +v3d_submit_csd@single-in-sync
+> > > +v3d_submit_csd@valid-multisync-submission
+> > > +v3d_submit_csd@multisync-out-syncs
+> > > +v3d_submit_csd@multi-and-single-sync
+> > > +v3d_submit_csd@multiple-job-submission
+> > > +v3d_submit_csd@job-perfmon
+> > > +v3d_wait_bo@bad-bo
+> > > +v3d_wait_bo@bad-pad
+> > > +v3d_wait_bo@unused-bo-0ns
+> > > +v3d_wait_bo@unused-bo-1ns
+> > > +v3d_wait_bo@map-bo-0ns
+> > > +v3d_wait_bo@map-bo-1ns
+> > > +v3d_wait_bo@used-bo-0ns
+> > > +v3d_wait_bo@used-bo-1ns
+> > > +v3d_wait_bo@used-bo
+> > > +vc4_create_bo@create-bo-4096
+> > > +vc4_create_bo@create-bo-0
+> > > +vc4_create_bo@create-bo-zeroed
+> > > +vc4_dmabuf_poll@poll-write-waits-until-write-done
+> > > +vc4_dmabuf_poll@poll-read-waits-until-write-done
+> > > +vc4_label_bo@set-label
+> > > +vc4_label_bo@set-bad-handle
+> > > +vc4_label_bo@set-bad-name
+> > > +vc4_label_bo@set-kernel-name
+> > > +vc4_lookup_fail@bad-color-write
+> > > +vc4_mmap@mmap-bad-handle
+> > > +vc4_mmap@mmap-bo
+> > > +vc4_perfmon@create-perfmon-0
+> > > +vc4_perfmon@create-perfmon-exceed
+> > > +vc4_perfmon@create-perfmon-invalid-events
+> > > +vc4_perfmon@create-single-perfmon
+> > > +vc4_perfmon@create-two-perfmon
+> > > +vc4_perfmon@get-values-invalid-perfmon
+> > > +vc4_perfmon@get-values-invalid-pointer
+> > > +vc4_perfmon@get-values-valid-perfmon
+> > > +vc4_perfmon@destroy-invalid-perfmon
+> > > +vc4_perfmon@destroy-valid-perfmon
+> > > +vc4_purgeable_bo@mark-willneed
+> > > +vc4_purgeable_bo@mark-purgeable
+> > > +vc4_purgeable_bo@mark-purgeable-twice
+> > > +vc4_purgeable_bo@mark-unpurgeable-twice
+> > > +vc4_purgeable_bo@access-purgeable-bo-mem
+> > > +vc4_purgeable_bo@access-purged-bo-mem
+> > > +vc4_purgeable_bo@mark-unpurgeable-check-retained
+> > > +vc4_purgeable_bo@mark-unpurgeable-purged
+> > > +vc4_purgeable_bo@free-purged-bo
+> > > +vc4_tiling@get-bad-handle
+> > > +vc4_tiling@set-bad-handle
+> > > +vc4_tiling@get-bad-flags
+> > > +vc4_tiling@set-bad-flags
+> > > +vc4_tiling@get-bad-modifier
+> > > +vc4_tiling@set-bad-modifier
+> > > +vc4_tiling@set-get
+> > > +vc4_tiling@get-after-free
+> > > +vc4_wait_bo@bad-bo
+> > > +vc4_wait_bo@bad-pad
+> > > +vc4_wait_bo@unused-bo-0ns
+> > > +vc4_wait_bo@unused-bo-1ns
+> > > +vc4_wait_bo@used-bo-0ns
+> > > +vc4_wait_bo@used-bo-1ns
+> > > +vc4_wait_bo@used-bo
+> > > +vc4_wait_seqno@bad-seqno-0ns
+> > > +vc4_wait_seqno@bad-seqno-1ns
+> > > diff --git a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
+> > > b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
+> > > index ea87dc46bc2b..30d3252adddf 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
+> > > @@ -1,3 +1,21 @@
+> > > +amdgpu/amd_assr@assr-links,Fail
+> > > +amdgpu/amd_assr@assr-links-dpms,Fail
+> > > +amdgpu/amd_deadlock@amdgpu-deadlock-compute,Timeout
+> > > +amdgpu/amd_ilr@ilr-policy,Fail
+> > > +amdgpu/amd_mall@static-screen,Crash
+> > > +amdgpu/amd_mode_switch@mode-switch-first-last-pipe-2,Crash
+> > > +amdgpu/amd_pci_unplug@amdgpu_hotunplug_with_exported_bo,Fail
+> > > +amdgpu/amd_plane@mpo-pan-nv12,Fail
+> > > +amdgpu/amd_plane@mpo-pan-p010,Fail
+> > > +amdgpu/amd_plane@mpo-pan-rgb,Crash
+> > > +amdgpu/amd_plane@mpo-scale-nv12,Fail
+> > > +amdgpu/amd_plane@mpo-scale-p010,Fail
+> > > +amdgpu/amd_plane@mpo-scale-rgb,Crash
+> > > +amdgpu/amd_plane@mpo-swizzle-toggle,Fail
+> > > +amdgpu/amd_uvd_dec@amdgpu_uvd_decode,Fail
+> > > +amdgpu/amd_vce_dec@amdgpu_cs_vce_destroy,Fail
+> > > +amdgpu/amd_vce_dec@amdgpu_cs_vce_encode,Fail
+> > > +amdgpu/amd_vrr_range@freesync-parsing,Timeout
+> > >   kms_addfb_basic@bad-pitch-65536,Fail
+> > >   kms_addfb_basic@bo-too-small,Fail
+> > >   kms_addfb_basic@too-high,Fail
+> > > @@ -14,7 +32,13 @@ kms_bw@linear-tiling-1-displays-3840x2160p,Fail
+> > >   kms_bw@linear-tiling-2-displays-3840x2160p,Fail
+> > >   kms_bw@linear-tiling-3-displays-1920x1080p,Fail
+> > >   kms_color@degamma,Fail
+> > > +kms_cursor_crc@cursor-onscreen-64x21,Fail
+> > > +kms_cursor_crc@cursor-onscreen-64x64,Fail
+> > > +kms_cursor_crc@cursor-random-64x21,Fail
+> > > +kms_cursor_crc@cursor-random-64x64,Fail
+> > >   kms_cursor_crc@cursor-size-change,Fail
+> > > +kms_cursor_crc@cursor-sliding-64x21,Fail
+> > > +kms_cursor_crc@cursor-sliding-64x64,Fail
+> > >   kms_cursor_crc@pipe-A-cursor-size-change,Fail
+> > >   kms_cursor_crc@pipe-B-cursor-size-change,Fail
+> > >   kms_flip@flip-vs-modeset-vs-hang,Fail
+> > > @@ -23,5 +47,4 @@ kms_hdr@bpc-switch,Fail
+> > >   kms_hdr@bpc-switch-dpms,Fail
+> > >   kms_plane@pixel-format,Fail
+> > >   kms_plane_multiple@atomic-pipe-A-tiling-none,Fail
+> > > -kms_rmfb@close-fd,Fail
+> > >   kms_rotation_crc@primary-rotation-180,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-flakes.txt
+> > > b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-flakes.txt
+> > > index 6faf75e667d3..c5085c5571eb 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-flakes.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-flakes.txt
+> > > @@ -1 +1,9 @@
+> > > -kms_async_flips@async-flip-with-page-flip-events
+> > > +# Board Name: hp-11A-G6-EE-grunt
+> > > +# Bug Report: https://lore.kernel.org/dri-devel/903b01f7-3f0d-18b7-a4b7-301c118c9321@collabora.com/T/#u
+> > > +# IGT Version: 1.28-gb0cc8160e
+> > > +# Linux Version: 6.7.0-rc3
+> > > +
+> > > +# Reported by deqp-runner
+> > > +kms_async_flips@crc
+> > > +amdgpu/amd_pci_unplug@amdgpu_hotunplug_simple
+> > > +amdgpu/amd_pci_unplug@amdgpu_hotunplug_with_exported_bo
+> > > diff --git a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-skips.txt
+> > > index e2c538a0f954..6e6200e6392c 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-skips.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-skips.txt
+> > > @@ -1,2 +1,23 @@
+> > >   # Suspend to RAM seems to be broken on this machine
+> > > -.*suspend.*
+> > > \ No newline at end of file
+> > > +.*suspend.*
+> > > +
+> > > +# Skip driver specific tests
+> > > +msm_.*
+> > > +panfrost_.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > +
+> > > +# GPU reset seen and it hangs the machine
+> > > +amdgpu/amd_deadlock@amdgpu-deadlock-sdma
+> > > +amdgpu/amd_deadlock@amdgpu-gfx-illegal-reg-access
+> > > +amdgpu/amd_dispatch@amdgpu-reset-test-gfx-with-IP-GFX-and-COMPUTE
+> > > +
+> > > +# Hangs the machine and timeout occurs
+> > > +amdgpu/amd_pci_unplug@amdgpu_hotunplug_simple
+> > > +amdgpu/amd_pci_unplug@amdgpu_hotunplug_with_cs
+> > > +amdgpu/amd_pci_unplug@amdgpu_hotunplug_with_exported_bo
+> > > +amdgpu/amd_pci_unplug@amdgpu_hotunplug_with_exported_fence
+> > > +
+> > > +# Skip this test as core_getrevision fails with
+> > > +# Module amdgpu already inserted
+> > > +amdgpu/amd_module_load@reload
+> > > diff --git a/drivers/gpu/drm/ci/xfails/i915-amly-fails.txt
+> > > b/drivers/gpu/drm/ci/xfails/i915-amly-fails.txt
+> > > index 59438e4df86e..55a8807711eb 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/i915-amly-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/i915-amly-fails.txt
+> > > @@ -1,3 +1,4 @@
+> > > +kms_flip@busy-flip,Fail
+> > >   kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-downscaling,Fail
+> > >   kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-upscaling,Fail
+> > >   kms_flip_scaled_crc@flip-32bpp-xtile-to-64bpp-xtile-downscaling,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/i915-amly-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/i915-amly-skips.txt
+> > > index fe55540a3f9a..33369735c821 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/i915-amly-skips.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/i915-amly-skips.txt
+> > > @@ -1,4 +1,11 @@
+> > >   # Suspend to RAM seems to be broken on this machine
+> > >   .*suspend.*
+> > >   # This is generating kernel oops with divide error
+> > > -kms_plane_scaling@invalid-parameters
+> > > \ No newline at end of file
+> > > +kms_plane_scaling@invalid-parameters
+> > > +
+> > > +# Skip driver specific tests
+> > > +msm_.*
+> > > +^amdgpu.*
+> > > +panfrost_.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git a/drivers/gpu/drm/ci/xfails/i915-apl-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/i915-apl-skips.txt
+> > > index 3430b215c06e..9804805984dc 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/i915-apl-skips.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/i915-apl-skips.txt
+> > > @@ -3,4 +3,11 @@
+> > >   # This is generating kernel oops with divide error
+> > >   kms_plane_scaling@invalid-parameters
+> > >   # This is cascading issues
+> > > -kms_3d
+> > > \ No newline at end of file
+> > > +kms_3d
+> > > +
+> > > +# Skip driver specific tests
+> > > +msm_.*
+> > > +^amdgpu.*
+> > > +panfrost_.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git a/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
+> > > b/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
+> > > index 240ef8467c26..5d274066e589 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
+> > > @@ -1,3 +1,4 @@
+> > > +kms_flip@busy-flip,Fail
+> > >   kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-downscaling,Fail
+> > >   kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-upscaling,Fail
+> > >   kms_flip_scaled_crc@flip-32bpp-xtile-to-64bpp-xtile-downscaling,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/i915-cml-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/i915-cml-skips.txt
+> > > index 6d3d7ddc377f..e2c542d76e75 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/i915-cml-skips.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/i915-cml-skips.txt
+> > > @@ -1,2 +1,9 @@
+> > >   # This is generating kernel oops with divide error
+> > >   kms_plane_scaling@invalid-parameters
+> > > +
+> > > +# Skip driver specific tests
+> > > +msm_.*
+> > > +^amdgpu.*
+> > > +panfrost_.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git a/drivers/gpu/drm/ci/xfails/i915-glk-fails.txt
+> > > b/drivers/gpu/drm/ci/xfails/i915-glk-fails.txt
+> > > index 4596055d7e5e..4213a3156aab 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/i915-glk-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/i915-glk-fails.txt
+> > > @@ -1,5 +1,6 @@
+> > >   kms_fbcon_fbt@fbc,Fail
+> > >   kms_flip@blocking-wf_vblank,Fail
+> > > +kms_flip@busy-flip,Fail
+> > >   kms_flip@wf_vblank-ts-check,Fail
+> > >   kms_flip@wf_vblank-ts-check-interruptible,Fail
+> > >   kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-downscaling,Fail
+> > > @@ -33,4 +34,3 @@ kms_plane_alpha_blend@constant-alpha-max,Fail
+> > >   kms_rotation_crc@multiplane-rotation,Fail
+> > >   kms_rotation_crc@multiplane-rotation-cropping-bottom,Fail
+> > >   kms_rotation_crc@multiplane-rotation-cropping-top,Fail
+> > > -kms_setmode@basic,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/i915-glk-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/i915-glk-skips.txt
+> > > index 4c7d00ce14bc..76d987f9b397 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/i915-glk-skips.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/i915-glk-skips.txt
+> > > @@ -2,4 +2,11 @@
+> > >   .*suspend.*
+> > >   # This is generating kernel oops with divide error
+> > > -kms_plane_scaling@invalid-parameters
+> > > \ No newline at end of file
+> > > +kms_plane_scaling@invalid-parameters
+> > > +
+> > > +# Skip driver specific tests
+> > > +msm_.*
+> > > +^amdgpu.*
+> > > +panfrost_.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git a/drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt
+> > > index 4c7d00ce14bc..76d987f9b397 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt
+> > > @@ -2,4 +2,11 @@
+> > >   .*suspend.*
+> > >   # This is generating kernel oops with divide error
+> > > -kms_plane_scaling@invalid-parameters
+> > > \ No newline at end of file
+> > > +kms_plane_scaling@invalid-parameters
+> > > +
+> > > +# Skip driver specific tests
+> > > +msm_.*
+> > > +^amdgpu.*
+> > > +panfrost_.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git a/drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt
+> > > b/drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt
+> > > index 27bfca1c6f2c..01a0b6a889ba 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt
+> > > @@ -9,6 +9,8 @@ kms_bw@linear-tiling-5-displays-1920x1080p,Fail
+> > >   kms_bw@linear-tiling-5-displays-2560x1440p,Fail
+> > >   kms_bw@linear-tiling-5-displays-3840x2160p,Fail
+> > >   kms_flip@flip-vs-panning-vs-hang,Timeout
+> > > +kms_flip@flip-vs-rmfb,Fail
+> > > +kms_flip@plain-flip-fb-recreate,Fail
+> > >   kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-downscaling,Fail
+> > >   kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-upscaling,Fail
+> > >   kms_flip_scaled_crc@flip-32bpp-xtile-to-64bpp-xtile-downscaling,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt
+> > > index 1d0621750b14..c27412db3041 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt
+> > > @@ -8,4 +8,11 @@ gem_eio.*
+> > >   kms_flip@absolute-wf_vblank@a-edp1
+> > >   # This is generating kernel oops with divide error
+> > > -kms_plane_scaling@invalid-parameters
+> > > \ No newline at end of file
+> > > +kms_plane_scaling@invalid-parameters
+> > > +
+> > > +# Skip driver specific tests
+> > > +msm_.*
+> > > +^amdgpu.*
+> > > +panfrost_.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git a/drivers/gpu/drm/ci/xfails/i915-whl-fails.txt
+> > > b/drivers/gpu/drm/ci/xfails/i915-whl-fails.txt
+> > > index 967327ddc1ac..b405657a652d 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/i915-whl-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/i915-whl-fails.txt
+> > > @@ -9,6 +9,7 @@ kms_bw@linear-tiling-4-displays-2560x1440p,Fail
+> > >   kms_bw@linear-tiling-4-displays-3840x2160p,Fail
+> > >   kms_fbcon_fbt@fbc,Fail
+> > >   kms_fbcon_fbt@fbc-suspend,Fail
+> > > +kms_flip@busy-flip,Fail
+> > >   kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-downscaling,Fail
+> > >   kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-upscaling,Fail
+> > >   kms_flip_scaled_crc@flip-32bpp-xtile-to-64bpp-xtile-downscaling,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/i915-whl-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/i915-whl-skips.txt
+> > > index f3be0888a214..e2c542d76e75 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/i915-whl-skips.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/i915-whl-skips.txt
+> > > @@ -1,2 +1,9 @@
+> > >   # This is generating kernel oops with divide error
+> > > -kms_plane_scaling@invalid-parameters
+> > > \ No newline at end of file
+> > > +kms_plane_scaling@invalid-parameters
+> > > +
+> > > +# Skip driver specific tests
+> > > +msm_.*
+> > > +^amdgpu.*
+> > > +panfrost_.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
+> > > b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
+> > > index ef0cb7c3698c..640da02e508a 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
+> > > @@ -17,10 +17,7 @@ kms_flip@flip-vs-modeset-vs-hang,Fail
+> > >   kms_flip@flip-vs-panning-vs-hang,Fail
+> > >   kms_flip@flip-vs-suspend,Fail
+> > >   kms_flip@flip-vs-suspend-interruptible,Fail
+> > > -kms_force_connector_basic@force-edid,Fail
+> > >   kms_force_connector_basic@force-load-detect,Fail
+> > > -kms_force_connector_basic@prune-stale-modes,Fail
+> > > -kms_hdmi_inject@inject-4k,Fail
+> > >   kms_plane_scaling@planes-upscale-20x20,Fail
+> > >   kms_plane_scaling@planes-upscale-20x20-downscale-factor-0-25,Fail
+> > >   kms_plane_scaling@planes-upscale-20x20-downscale-factor-0-5,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-skips.txt
+> > > new file mode 100644
+> > > index 000000000000..f1a96db6a64e
+> > > --- /dev/null
+> > > +++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-skips.txt
+> > > @@ -0,0 +1,6 @@
+> > > +# Skip driver specific tests
+> > > +msm_.*
+> > > +^amdgpu.*
+> > > +panfrost_.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
+> > > b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
+> > > index 67d690fc4037..2a09c88c0702 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
+> > > @@ -11,3 +11,4 @@ kms_plane_cursor@primary,Fail
+> > >   kms_plane_cursor@viewport,Fail
+> > >   kms_plane_scaling@upscale-with-rotation-20x20,Fail
+> > >   kms_rmfb@close-fd,Fail
+> > > +panfrost_prime@gem-prime-import,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-skips.txt
+> > > new file mode 100644
+> > > index 000000000000..beb8d37362cf
+> > > --- /dev/null
+> > > +++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-skips.txt
+> > > @@ -0,0 +1,5 @@
+> > > +# Skip driver specific tests
+> > > +msm_.*
+> > > +^amdgpu.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git a/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt
+> > > b/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt
+> > > index 56a2ae7047b4..9e7c9683e74c 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt
+> > > @@ -14,3 +14,4 @@ kms_properties@connector-properties-atomic,Fail
+> > >   kms_properties@connector-properties-legacy,Fail
+> > >   kms_properties@get_properties-sanity-atomic,Fail
+> > >   kms_properties@get_properties-sanity-non-atomic,Fail
+> > > +panfrost_prime@gem-prime-import,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/meson-g12b-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/meson-g12b-skips.txt
+> > > new file mode 100644
+> > > index 000000000000..beb8d37362cf
+> > > --- /dev/null
+> > > +++ b/drivers/gpu/drm/ci/xfails/meson-g12b-skips.txt
+> > > @@ -0,0 +1,5 @@
+> > > +# Skip driver specific tests
+> > > +msm_.*
+> > > +^amdgpu.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8016-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/msm-apq8016-skips.txt
+> > > new file mode 100644
+> > > index 000000000000..83d9bba9cafd
+> > > --- /dev/null
+> > > +++ b/drivers/gpu/drm/ci/xfails/msm-apq8016-skips.txt
+> > > @@ -0,0 +1,5 @@
+> > > +# Skip driver specific tests
+> > > +^amdgpu.*
+> > > +panfrost_.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8096-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/msm-apq8096-skips.txt
+> > > index cd49c8ce2059..66b7fde54bd1 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/msm-apq8096-skips.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/msm-apq8096-skips.txt
+> > > @@ -1,2 +1,8 @@
+> > >   # Whole machine hangs
+> > > -kms_cursor_legacy@all-pipes-torture-move
+> > > \ No newline at end of file
+> > > +kms_cursor_legacy@all-pipes-torture-move
+> > > +
+> > > +# Skip driver specific tests
+> > > +^amdgpu.*
+> > > +panfrost_.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git
+> > > a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-skips.txt
+> > > index 327039f70252..57beedbbedf6 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-skips.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-skips.txt
+> > > @@ -1,2 +1,8 @@
+> > >   # Suspend to RAM seems to be broken on this machine
+> > >   .*suspend.*
+> > > +
+> > > +# Skip driver specific tests
+> > > +^amdgpu.*
+> > > +panfrost_.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git
+> > > a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-skips.txt
+> > > index 327039f70252..57beedbbedf6 100644
+> > > ---
+> > > a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-skips.txt
+> > > +++
+> > > b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-skips.txt
+> > > @@ -1,2 +1,8 @@
+> > >   # Suspend to RAM seems to be broken on this machine
+> > >   .*suspend.*
+> > > +
+> > > +# Skip driver specific tests
+> > > +^amdgpu.*
+> > > +panfrost_.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git a/drivers/gpu/drm/ci/xfails/msm-sdm845-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/msm-sdm845-skips.txt
+> > > index 618e3a3a7277..5018fc3f0495 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/msm-sdm845-skips.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/msm-sdm845-skips.txt
+> > > @@ -5,3 +5,9 @@ kms_bw.*
+> > >   # https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/4b49f902ec6f2bb382cbbf489870573f4b43371e
+> > >   # https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/38cdf4c5559771e2474ae0fecef8469f65147bc1
+> > >   msm_mapping@*
+> > > +
+> > > +# Skip driver specific tests
+> > > +^amdgpu.*
+> > > +panfrost_.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
+> > > b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
+> > > index 90c63f519e9e..282817a22cf8 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
+> > > @@ -52,3 +52,4 @@ kms_properties@get_properties-sanity-atomic,Crash
+> > >   kms_properties@get_properties-sanity-non-atomic,Crash
+> > >   kms_rmfb@close-fd,Crash
+> > >   kms_setmode@invalid-clone-single-crtc,Crash
+> > > +panfrost_prime@gem-prime-import,Crash
+> > > diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt
+> > > index f20c3574b75a..3e99106e50e0 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt
+> > > @@ -49,4 +49,10 @@ kms_plane_lowres@pipe-F-tiling-y
+> > >   kms_cursor_crc.*
+> > >   # Machine is hanging in this test, so skip it
+> > > -kms_pipe_crc_basic@disable-crc-after-crtc
+> > > \ No newline at end of file
+> > > +kms_pipe_crc_basic@disable-crc-after-crtc
+> > > +
+> > > +# Skip driver specific tests
+> > > +msm_.*
+> > > +^amdgpu.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
+> > > b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
+> > > index d516d9c1d546..32ca7f29472e 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
+> > > @@ -73,3 +73,4 @@ kms_plane_multiple@tiling-none,Fail
+> > >   kms_prime@basic-crc,Fail
+> > >   kms_rmfb@close-fd,Fail
+> > >   kms_universal_plane@universal-plane-pipe-B-functional,Fail
+> > > +panfrost_prime@gem-prime-import,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt
+> > > index 10c3d81a919a..bd0bba0d8477 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt
+> > > @@ -3,3 +3,9 @@
+> > >   # Too unstable, machine ends up hanging after lots of Oopses
+> > >   kms_cursor_legacy.*
+> > > +
+> > > +# Skip driver specific tests
+> > > +msm_.*
+> > > +^amdgpu.*
+> > > +v3d_.*
+> > > +vc4_.*
+> > > diff --git a/drivers/gpu/drm/ci/xfails/virtio_gpu-none-fails.txt
+> > > b/drivers/gpu/drm/ci/xfails/virtio_gpu-none-fails.txt
+> > > index 007f21e56d89..5b8cbb28b25c 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/virtio_gpu-none-fails.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/virtio_gpu-none-fails.txt
+> > > @@ -68,6 +68,7 @@ kms_plane_scaling@upscale-with-rotation-20x20,Fail
+> > >   kms_selftest@drm_format,Timeout
+> > >   kms_selftest@drm_format_helper,Timeout
+> > >   kms_setmode@basic,Fail
+> > > +kms_vblank@accuracy-idle,Fail
+> > >   kms_vblank@crtc-id,Fail
+> > >   kms_vblank@invalid,Fail
+> > >   kms_vblank@pipe-A-accuracy-idle,Fail
+> > > @@ -82,3 +83,17 @@ kms_vblank@pipe-A-wait-busy,Fail
+> > >   kms_vblank@pipe-A-wait-forked,Fail
+> > >   kms_vblank@pipe-A-wait-forked-busy,Fail
+> > >   kms_vblank@pipe-A-wait-idle,Fail
+> > > +kms_vblank@query-busy,Fail
+> > > +kms_vblank@query-forked,Fail
+> > > +kms_vblank@query-forked-busy,Fail
+> > > +kms_vblank@query-idle,Fail
+> > > +kms_vblank@ts-continuation-dpms-rpm,Fail
+> > > +kms_vblank@ts-continuation-dpms-suspend,Fail
+> > > +kms_vblank@ts-continuation-idle,Fail
+> > > +kms_vblank@ts-continuation-modeset,Fail
+> > > +kms_vblank@ts-continuation-modeset-rpm,Fail
+> > > +kms_vblank@ts-continuation-suspend,Fail
+> > > +kms_vblank@wait-busy,Fail
+> > > +kms_vblank@wait-forked,Fail
+> > > +kms_vblank@wait-forked-busy,Fail
+> > > +kms_vblank@wait-idle,Fail
+> > > diff --git a/drivers/gpu/drm/ci/xfails/virtio_gpu-none-skips.txt
+> > > b/drivers/gpu/drm/ci/xfails/virtio_gpu-none-skips.txt
+> > > index 78be18174012..4e4a087ce49a 100644
+> > > --- a/drivers/gpu/drm/ci/xfails/virtio_gpu-none-skips.txt
+> > > +++ b/drivers/gpu/drm/ci/xfails/virtio_gpu-none-skips.txt
+> > > @@ -3,4 +3,11 @@
+> > >   kms_cursor_legacy.*
+> > >   # Job just hangs without any output
+> > > -kms_flip@flip-vs-suspend.*
+> > > \ No newline at end of file
+> > > +kms_flip@flip-vs-suspend.*
+> > > +
+> > > +# Skip driver specific tests
+> > > +msm_.*
+> > > +^amdgpu.*
+> > > +panfrost_.*
+> > > +v3d_.*
+> > > +vc4_.*
 
-Each Bridge Port also functions as an end station and shall provide the MAC
-Service to an LLC Entity. Each instance of the MAC Service is provided to a
-distinct LLC Entity that supports protocol identification, multiplexing,
-and demultiplexing, for protocol data unit (PDU) transmission and reception
-by one or more higher layer entities.
-
-It is described in 8.13.9 of IEEE Std 802.1Q-2022 that in a Bridge, the LLC
-Entity associated with each Bridge Port is modeled as being directly
-connected to the attached Local Area Network (LAN).
-
-On the switch with CPU port architecture, CPU port functions as Management
-Port, and the Management Port functionality is provided by software which
-functions as an end station. Software is connected to an IEEE 802 LAN that
-is wholly contained within the system that incorporates the Bridge.
-Software provides access to the LLC Entity associated with each Bridge Port
-by the value of the source port field on the special tag on the frame
-received by software.
-
-We call frames that carry control information to determine the active
-topology and current extent of each Virtual Local Area Network (VLAN),
-i.e., spanning tree or Shortest Path Bridging (SPB) and Multiple VLAN
-Registration Protocol Data Units (MVRPDUs), and frames from other link
-constrained protocols, such as Extensible Authentication Protocol over LAN
-(EAPOL) and Link Layer Discovery Protocol (LLDP), link-local frames. They
-are not forwarded by a Bridge. Permanently configured entries in the
-filtering database (FDB) ensure that such frames are discarded by the
-Forwarding Process. In 8.6.3 of IEEE Std 802.1Q-2022, this is described in
-detail:
-
-Each of the reserved MAC addresses specified in Table 8-1
-(01-80-C2-00-00-[00,01,02,03,04,05,06,07,08,09,0A,0B,0C,0D,0E,0F]) shall be
-permanently configured in the FDB in C-VLAN components and ERs.
-
-Each of the reserved MAC addresses specified in Table 8-2
-(01-80-C2-00-00-[01,02,03,04,05,06,07,08,09,0A,0E]) shall be permanently
-configured in the FDB in S-VLAN components.
-
-Each of the reserved MAC addresses specified in Table 8-3
-(01-80-C2-00-00-[01,02,04,0E]) shall be permanently configured in the FDB
-in TPMR components.
-
-The FDB entries for reserved MAC addresses shall specify filtering for all
-Bridge Ports and all VIDs. Management shall not provide the capability to
-modify or remove entries for reserved MAC addresses.
-
-The addresses in Table 8-1, Table 8-2, and Table 8-3 determine the scope of
-propagation of PDUs within a Bridged Network, as follows:
-
-  The Nearest Bridge group address (01-80-C2-00-00-0E) is an address that
-  no conformant Two-Port MAC Relay (TPMR) component, Service VLAN (S-VLAN)
-  component, Customer VLAN (C-VLAN) component, or MAC Bridge can forward.
-  PDUs transmitted using this destination address, or any other addresses
-  that appear in Table 8-1, Table 8-2, and Table 8-3
-  (01-80-C2-00-00-[00,01,02,03,04,05,06,07,08,09,0A,0B,0C,0D,0E,0F]), can
-  therefore travel no further than those stations that can be reached via a
-  single individual LAN from the originating station.
-
-  The Nearest non-TPMR Bridge group address (01-80-C2-00-00-03), is an
-  address that no conformant S-VLAN component, C-VLAN component, or MAC
-  Bridge can forward; however, this address is relayed by a TPMR component.
-  PDUs using this destination address, or any of the other addresses that
-  appear in both Table 8-1 and Table 8-2 but not in Table 8-3
-  (01-80-C2-00-00-[00,03,05,06,07,08,09,0A,0B,0C,0D,0F]), will be relayed
-  by any TPMRs but will propagate no further than the nearest S-VLAN
-  component, C-VLAN component, or MAC Bridge.
-
-  The Nearest Customer Bridge group address (01-80-C2-00-00-00) is an
-  address that no conformant C-VLAN component, MAC Bridge can forward;
-  however, it is relayed by TPMR components and S-VLAN components. PDUs
-  using this destination address, or any of the other addresses that appear
-  in Table 8-1 but not in either Table 8-2 or Table 8-3
-  (01-80-C2-00-00-[00,0B,0C,0D,0F]), will be relayed by TPMR components and
-  S-VLAN components but will propagate no further than the nearest C-VLAN
-  component or MAC Bridge.
-
-Because the LLC Entity associated with each Bridge Port is provided via CPU
-port, we must not filter these frames but forward them to CPU port.
-
-In a Bridge, the transmission Port is majorly decided by ingress and egress
-rules, FDB, and spanning tree Port State functions of the Forwarding
-Process. For link-local frames, only CPU port should be designated as
-destination port in the FDB, and the other functions of the Forwarding
-Process must not interfere with the decision of the transmission Port. We
-call this process trapping frames to CPU port.
-
-Therefore, on the switch with CPU port architecture, link-local frames must
-be trapped to CPU port, and certain link-local frames received by a Port of
-a Bridge comprising a TPMR component or an S-VLAN component must be
-excluded from it.
-
-A Bridge of the switch with CPU port architecture cannot comprise a
-Two-Port MAC Relay (TPMR) component as a TPMR component supports only a
-subset of the functionality of a MAC Bridge. A Bridge comprising two Ports
-(Management Port doesn't count) of this architecture will either function
-as a standard MAC Bridge or a standard VLAN Bridge.
-
-Therefore, a Bridge of this architecture can only comprise S-VLAN
-components, C-VLAN components, or MAC Bridge components. Since there's no
-TPMR component, we don't need to relay PDUs using the destination addresses
-specified on the Nearest non-TPMR section, and the proportion of the
-Nearest Customer Bridge section where they must be relayed by TPMR
-components.
-
-One option to trap link-local frames to CPU port is to add static FDB
-entries with CPU port designated as destination port. However, because that
-Independent VLAN Learning (IVL) is being used on every VID, each entry only
-applies to a single VLAN Identifier (VID). For a Bridge comprising a MAC
-Bridge component or a C-VLAN component, there would have to be 16 times
-4096 entries. This switch intellectual property can only hold a maximum of
-2048 entries. Using this option, there also isn't a mechanism to prevent
-link-local frames from being discarded when the spanning tree Port State of
-the reception Port is discarding.
-
-The remaining option is to utilise the BPC, RGAC1, RGAC2, RGAC3, and RGAC4
-registers. Whilst this applies to every VID, it doesn't contain all of the
-reserved MAC addresses without affecting the remaining Standard Group MAC
-Addresses. The REV_UN frame tag utilised using the RGAC4 register covers
-the remaining 01-80-C2-00-00-[04,05,06,07,08,09,0A,0B,0C,0D,0F] destination
-addresses. It also includes the 01-80-C2-00-00-22 to 01-80-C2-00-00-FF
-destination addresses which may be relayed by MAC Bridges or VLAN Bridges.
-The latter option provides better but not complete conformance.
-
-This switch intellectual property also does not provide a mechanism to trap
-link-local frames with specific destination addresses to CPU port by
-Bridge, to conform to the filtering rules for the distinct Bridge
-components.
-
-Therefore, regardless of the type of the Bridge component, link-local
-frames with these destination addresses will be trapped to CPU port:
-
-01-80-C2-00-00-[00,01,02,03,0E]
-
-In a Bridge comprising a MAC Bridge component or a C-VLAN component:
-
-  Link-local frames with these destination addresses won't be trapped to
-  CPU port which won't conform to IEEE Std 802.1Q-2022:
-
-  01-80-C2-00-00-[04,05,06,07,08,09,0A,0B,0C,0D,0F]
-
-In a Bridge comprising an S-VLAN component:
-
-  Link-local frames with these destination addresses will be trapped to CPU
-  port which won't conform to IEEE Std 802.1Q-2022:
-
-  01-80-C2-00-00-00
-
-  Link-local frames with these destination addresses won't be trapped to
-  CPU port which won't conform to IEEE Std 802.1Q-2022:
-
-  01-80-C2-00-00-[04,05,06,07,08,09,0A]
-
-Currently on this switch intellectual property, if the spanning tree Port
-State of the reception Port is discarding, link-local frames will be
-discarded.
-
-To trap link-local frames regardless of the spanning tree Port State, make
-the switch regard them as Bridge Protocol Data Units (BPDUs). This switch
-intellectual property only lets the frames regarded as BPDUs bypass the
-spanning tree Port State function of the Forwarding Process.
-
-With this change, the only remaining interference is the ingress rules.
-When the reception Port has no PVID assigned on software, VLAN-untagged
-frames won't be allowed in. There doesn't seem to be a mechanism on the
-switch intellectual property to have link-local frames bypass this function
-of the Forwarding Process.
-
-Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
-Reviewed-by: Daniel Golle <daniel@makrotopia.org>
-Signed-off-by: ArÄ±nÃ§ ÃœNAL <arinc.unal@arinc9.com>
----
-Changes in v2:
-- Add a Fixes: trailer.
-- Slightly adjust the patch log and the comment section.
-- Link to v1: https://lore.kernel.org/r/20240407-b4-for-net-mt7530-fix-link-local-when-stp-discarding-v1-1-b4b20ac93457@arinc9.com
----
- drivers/net/dsa/mt7530.c | 229 ++++++++++++++++++++++++++++++++++++++++-------
- drivers/net/dsa/mt7530.h |   5 ++
- 2 files changed, 200 insertions(+), 34 deletions(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 1035820c2377..fd62b38ae913 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -950,20 +950,173 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 	mutex_unlock(&priv->reg_mutex);
- }
- 
--/* On page 205, section "8.6.3 Frame filtering" of the active standard, IEEE Std
-- * 802.1Qâ„¢-2022, it is stated that frames with 01:80:C2:00:00:00-0F as MAC DA
-- * must only be propagated to C-VLAN and MAC Bridge components. That means
-- * VLAN-aware and VLAN-unaware bridges. On the switch designs with CPU ports,
-- * these frames are supposed to be processed by the CPU (software). So we make
-- * the switch only forward them to the CPU port. And if received from a CPU
-- * port, forward to a single port. The software is responsible of making the
-- * switch conform to the latter by setting a single port as destination port on
-- * the special tag.
-+/* In Clause 5 of IEEE Std 802-2014, two sublayers of the data link layer (DLL)
-+ * of the Open Systems Interconnection basic reference model (OSI/RM) are
-+ * described; the medium access control (MAC) and logical link control (LLC)
-+ * sublayers. The MAC sublayer is the one facing the physical layer.
-  *
-- * This switch intellectual property cannot conform to this part of the standard
-- * fully. Whilst the REV_UN frame tag covers the remaining :04-0D and :0F MAC
-- * DAs, it also includes :22-FF which the scope of propagation is not supposed
-- * to be restricted for these MAC DAs.
-+ * In 8.2 of IEEE Std 802.1Q-2022, the Bridge architecture is described. A
-+ * Bridge component comprises a MAC Relay Entity for interconnecting the Ports
-+ * of the Bridge, at least two Ports, and higher layer entities with at least a
-+ * Spanning Tree Protocol Entity included.
-+ *
-+ * Each Bridge Port also functions as an end station and shall provide the MAC
-+ * Service to an LLC Entity. Each instance of the MAC Service is provided to a
-+ * distinct LLC Entity that supports protocol identification, multiplexing, and
-+ * demultiplexing, for protocol data unit (PDU) transmission and reception by
-+ * one or more higher layer entities.
-+ *
-+ * It is described in 8.13.9 of IEEE Std 802.1Q-2022 that in a Bridge, the LLC
-+ * Entity associated with each Bridge Port is modeled as being directly
-+ * connected to the attached Local Area Network (LAN).
-+ *
-+ * On the switch with CPU port architecture, CPU port functions as Management
-+ * Port, and the Management Port functionality is provided by software which
-+ * functions as an end station. Software is connected to an IEEE 802 LAN that is
-+ * wholly contained within the system that incorporates the Bridge. Software
-+ * provides access to the LLC Entity associated with each Bridge Port by the
-+ * value of the source port field on the special tag on the frame received by
-+ * software.
-+ *
-+ * We call frames that carry control information to determine the active
-+ * topology and current extent of each Virtual Local Area Network (VLAN), i.e.,
-+ * spanning tree or Shortest Path Bridging (SPB) and Multiple VLAN Registration
-+ * Protocol Data Units (MVRPDUs), and frames from other link constrained
-+ * protocols, such as Extensible Authentication Protocol over LAN (EAPOL) and
-+ * Link Layer Discovery Protocol (LLDP), link-local frames. They are not
-+ * forwarded by a Bridge. Permanently configured entries in the filtering
-+ * database (FDB) ensure that such frames are discarded by the Forwarding
-+ * Process. In 8.6.3 of IEEE Std 802.1Q-2022, this is described in detail:
-+ *
-+ * Each of the reserved MAC addresses specified in Table 8-1
-+ * (01-80-C2-00-00-[00,01,02,03,04,05,06,07,08,09,0A,0B,0C,0D,0E,0F]) shall be
-+ * permanently configured in the FDB in C-VLAN components and ERs.
-+ *
-+ * Each of the reserved MAC addresses specified in Table 8-2
-+ * (01-80-C2-00-00-[01,02,03,04,05,06,07,08,09,0A,0E]) shall be permanently
-+ * configured in the FDB in S-VLAN components.
-+ *
-+ * Each of the reserved MAC addresses specified in Table 8-3
-+ * (01-80-C2-00-00-[01,02,04,0E]) shall be permanently configured in the FDB in
-+ * TPMR components.
-+ *
-+ * The FDB entries for reserved MAC addresses shall specify filtering for all
-+ * Bridge Ports and all VIDs. Management shall not provide the capability to
-+ * modify or remove entries for reserved MAC addresses.
-+ *
-+ * The addresses in Table 8-1, Table 8-2, and Table 8-3 determine the scope of
-+ * propagation of PDUs within a Bridged Network, as follows:
-+ *
-+ *   The Nearest Bridge group address (01-80-C2-00-00-0E) is an address that no
-+ *   conformant Two-Port MAC Relay (TPMR) component, Service VLAN (S-VLAN)
-+ *   component, Customer VLAN (C-VLAN) component, or MAC Bridge can forward.
-+ *   PDUs transmitted using this destination address, or any other addresses
-+ *   that appear in Table 8-1, Table 8-2, and Table 8-3
-+ *   (01-80-C2-00-00-[00,01,02,03,04,05,06,07,08,09,0A,0B,0C,0D,0E,0F]), can
-+ *   therefore travel no further than those stations that can be reached via a
-+ *   single individual LAN from the originating station.
-+ *
-+ *   The Nearest non-TPMR Bridge group address (01-80-C2-00-00-03), is an
-+ *   address that no conformant S-VLAN component, C-VLAN component, or MAC
-+ *   Bridge can forward; however, this address is relayed by a TPMR component.
-+ *   PDUs using this destination address, or any of the other addresses that
-+ *   appear in both Table 8-1 and Table 8-2 but not in Table 8-3
-+ *   (01-80-C2-00-00-[00,03,05,06,07,08,09,0A,0B,0C,0D,0F]), will be relayed by
-+ *   any TPMRs but will propagate no further than the nearest S-VLAN component,
-+ *   C-VLAN component, or MAC Bridge.
-+ *
-+ *   The Nearest Customer Bridge group address (01-80-C2-00-00-00) is an address
-+ *   that no conformant C-VLAN component, MAC Bridge can forward; however, it is
-+ *   relayed by TPMR components and S-VLAN components. PDUs using this
-+ *   destination address, or any of the other addresses that appear in Table 8-1
-+ *   but not in either Table 8-2 or Table 8-3 (01-80-C2-00-00-[00,0B,0C,0D,0F]),
-+ *   will be relayed by TPMR components and S-VLAN components but will propagate
-+ *   no further than the nearest C-VLAN component or MAC Bridge.
-+ *
-+ * Because the LLC Entity associated with each Bridge Port is provided via CPU
-+ * port, we must not filter these frames but forward them to CPU port.
-+ *
-+ * In a Bridge, the transmission Port is majorly decided by ingress and egress
-+ * rules, FDB, and spanning tree Port State functions of the Forwarding Process.
-+ * For link-local frames, only CPU port should be designated as destination port
-+ * in the FDB, and the other functions of the Forwarding Process must not
-+ * interfere with the decision of the transmission Port. We call this process
-+ * trapping frames to CPU port.
-+ *
-+ * Therefore, on the switch with CPU port architecture, link-local frames must
-+ * be trapped to CPU port, and certain link-local frames received by a Port of a
-+ * Bridge comprising a TPMR component or an S-VLAN component must be excluded
-+ * from it.
-+ *
-+ * A Bridge of the switch with CPU port architecture cannot comprise a Two-Port
-+ * MAC Relay (TPMR) component as a TPMR component supports only a subset of the
-+ * functionality of a MAC Bridge. A Bridge comprising two Ports (Management Port
-+ * doesn't count) of this architecture will either function as a standard MAC
-+ * Bridge or a standard VLAN Bridge.
-+ *
-+ * Therefore, a Bridge of this architecture can only comprise S-VLAN components,
-+ * C-VLAN components, or MAC Bridge components. Since there's no TPMR component,
-+ * we don't need to relay PDUs using the destination addresses specified on the
-+ * Nearest non-TPMR section, and the proportion of the Nearest Customer Bridge
-+ * section where they must be relayed by TPMR components.
-+ *
-+ * One option to trap link-local frames to CPU port is to add static FDB entries
-+ * with CPU port designated as destination port. However, because that
-+ * Independent VLAN Learning (IVL) is being used on every VID, each entry only
-+ * applies to a single VLAN Identifier (VID). For a Bridge comprising a MAC
-+ * Bridge component or a C-VLAN component, there would have to be 16 times 4096
-+ * entries. This switch intellectual property can only hold a maximum of 2048
-+ * entries. Using this option, there also isn't a mechanism to prevent
-+ * link-local frames from being discarded when the spanning tree Port State of
-+ * the reception Port is discarding.
-+ *
-+ * The remaining option is to utilise the BPC, RGAC1, RGAC2, RGAC3, and RGAC4
-+ * registers. Whilst this applies to every VID, it doesn't contain all of the
-+ * reserved MAC addresses without affecting the remaining Standard Group MAC
-+ * Addresses. The REV_UN frame tag utilised using the RGAC4 register covers the
-+ * remaining 01-80-C2-00-00-[04,05,06,07,08,09,0A,0B,0C,0D,0F] destination
-+ * addresses. It also includes the 01-80-C2-00-00-22 to 01-80-C2-00-00-FF
-+ * destination addresses which may be relayed by MAC Bridges or VLAN Bridges.
-+ * The latter option provides better but not complete conformance.
-+ *
-+ * This switch intellectual property also does not provide a mechanism to trap
-+ * link-local frames with specific destination addresses to CPU port by Bridge,
-+ * to conform to the filtering rules for the distinct Bridge components.
-+ *
-+ * Therefore, regardless of the type of the Bridge component, link-local frames
-+ * with these destination addresses will be trapped to CPU port:
-+ *
-+ * 01-80-C2-00-00-[00,01,02,03,0E]
-+ *
-+ * In a Bridge comprising a MAC Bridge component or a C-VLAN component:
-+ *
-+ *   Link-local frames with these destination addresses won't be trapped to CPU
-+ *   port which won't conform to IEEE Std 802.1Q-2022:
-+ *
-+ *   01-80-C2-00-00-[04,05,06,07,08,09,0A,0B,0C,0D,0F]
-+ *
-+ * In a Bridge comprising an S-VLAN component:
-+ *
-+ *   Link-local frames with these destination addresses will be trapped to CPU
-+ *   port which won't conform to IEEE Std 802.1Q-2022:
-+ *
-+ *   01-80-C2-00-00-00
-+ *
-+ *   Link-local frames with these destination addresses won't be trapped to CPU
-+ *   port which won't conform to IEEE Std 802.1Q-2022:
-+ *
-+ *   01-80-C2-00-00-[04,05,06,07,08,09,0A]
-+ *
-+ * To trap link-local frames to CPU port as conformant as this switch
-+ * intellectual property can allow, link-local frames are made to be regarded as
-+ * Bridge Protocol Data Units (BPDUs). This is because this switch intellectual
-+ * property only lets the frames regarded as BPDUs bypass the spanning tree Port
-+ * State function of the Forwarding Process.
-+ *
-+ * The only remaining interference is the ingress rules. When the reception Port
-+ * has no PVID assigned on software, VLAN-untagged frames won't be allowed in.
-+ * There doesn't seem to be a mechanism on the switch intellectual property to
-+ * have link-local frames bypass this function of the Forwarding Process.
-  */
- static void
- mt753x_trap_frames(struct mt7530_priv *priv)
-@@ -971,35 +1124,43 @@ mt753x_trap_frames(struct mt7530_priv *priv)
- 	/* Trap 802.1X PAE frames and BPDUs to the CPU port(s) and egress them
- 	 * VLAN-untagged.
- 	 */
--	mt7530_rmw(priv, MT753X_BPC, MT753X_PAE_EG_TAG_MASK |
--		   MT753X_PAE_PORT_FW_MASK | MT753X_BPDU_EG_TAG_MASK |
--		   MT753X_BPDU_PORT_FW_MASK,
--		   MT753X_PAE_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
--		   MT753X_PAE_PORT_FW(MT753X_BPDU_CPU_ONLY) |
--		   MT753X_BPDU_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
--		   MT753X_BPDU_CPU_ONLY);
-+	mt7530_rmw(priv, MT753X_BPC,
-+		   MT753X_PAE_BPDU_FR | MT753X_PAE_EG_TAG_MASK |
-+			   MT753X_PAE_PORT_FW_MASK | MT753X_BPDU_EG_TAG_MASK |
-+			   MT753X_BPDU_PORT_FW_MASK,
-+		   MT753X_PAE_BPDU_FR |
-+			   MT753X_PAE_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
-+			   MT753X_PAE_PORT_FW(MT753X_BPDU_CPU_ONLY) |
-+			   MT753X_BPDU_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
-+			   MT753X_BPDU_CPU_ONLY);
- 
- 	/* Trap frames with :01 and :02 MAC DAs to the CPU port(s) and egress
- 	 * them VLAN-untagged.
- 	 */
--	mt7530_rmw(priv, MT753X_RGAC1, MT753X_R02_EG_TAG_MASK |
--		   MT753X_R02_PORT_FW_MASK | MT753X_R01_EG_TAG_MASK |
--		   MT753X_R01_PORT_FW_MASK,
--		   MT753X_R02_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
--		   MT753X_R02_PORT_FW(MT753X_BPDU_CPU_ONLY) |
--		   MT753X_R01_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
--		   MT753X_BPDU_CPU_ONLY);
-+	mt7530_rmw(priv, MT753X_RGAC1,
-+		   MT753X_R02_BPDU_FR | MT753X_R02_EG_TAG_MASK |
-+			   MT753X_R02_PORT_FW_MASK | MT753X_R01_BPDU_FR |
-+			   MT753X_R01_EG_TAG_MASK | MT753X_R01_PORT_FW_MASK,
-+		   MT753X_R02_BPDU_FR |
-+			   MT753X_R02_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
-+			   MT753X_R02_PORT_FW(MT753X_BPDU_CPU_ONLY) |
-+			   MT753X_R01_BPDU_FR |
-+			   MT753X_R01_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
-+			   MT753X_BPDU_CPU_ONLY);
- 
- 	/* Trap frames with :03 and :0E MAC DAs to the CPU port(s) and egress
- 	 * them VLAN-untagged.
- 	 */
--	mt7530_rmw(priv, MT753X_RGAC2, MT753X_R0E_EG_TAG_MASK |
--		   MT753X_R0E_PORT_FW_MASK | MT753X_R03_EG_TAG_MASK |
--		   MT753X_R03_PORT_FW_MASK,
--		   MT753X_R0E_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
--		   MT753X_R0E_PORT_FW(MT753X_BPDU_CPU_ONLY) |
--		   MT753X_R03_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
--		   MT753X_BPDU_CPU_ONLY);
-+	mt7530_rmw(priv, MT753X_RGAC2,
-+		   MT753X_R0E_BPDU_FR | MT753X_R0E_EG_TAG_MASK |
-+			   MT753X_R0E_PORT_FW_MASK | MT753X_R03_BPDU_FR |
-+			   MT753X_R03_EG_TAG_MASK | MT753X_R03_PORT_FW_MASK,
-+		   MT753X_R0E_BPDU_FR |
-+			   MT753X_R0E_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
-+			   MT753X_R0E_PORT_FW(MT753X_BPDU_CPU_ONLY) |
-+			   MT753X_R03_BPDU_FR |
-+			   MT753X_R03_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
-+			   MT753X_BPDU_CPU_ONLY);
- }
- 
- static void
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index d17b318e6ee4..2deffe741484 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -65,6 +65,7 @@ enum mt753x_id {
- 
- /* Registers for BPDU and PAE frame control*/
- #define MT753X_BPC			0x24
-+#define  MT753X_PAE_BPDU_FR		BIT(25)
- #define  MT753X_PAE_EG_TAG_MASK		GENMASK(24, 22)
- #define  MT753X_PAE_EG_TAG(x)		FIELD_PREP(MT753X_PAE_EG_TAG_MASK, x)
- #define  MT753X_PAE_PORT_FW_MASK	GENMASK(18, 16)
-@@ -75,20 +76,24 @@ enum mt753x_id {
- 
- /* Register for :01 and :02 MAC DA frame control */
- #define MT753X_RGAC1			0x28
-+#define  MT753X_R02_BPDU_FR		BIT(25)
- #define  MT753X_R02_EG_TAG_MASK		GENMASK(24, 22)
- #define  MT753X_R02_EG_TAG(x)		FIELD_PREP(MT753X_R02_EG_TAG_MASK, x)
- #define  MT753X_R02_PORT_FW_MASK	GENMASK(18, 16)
- #define  MT753X_R02_PORT_FW(x)		FIELD_PREP(MT753X_R02_PORT_FW_MASK, x)
-+#define  MT753X_R01_BPDU_FR		BIT(9)
- #define  MT753X_R01_EG_TAG_MASK		GENMASK(8, 6)
- #define  MT753X_R01_EG_TAG(x)		FIELD_PREP(MT753X_R01_EG_TAG_MASK, x)
- #define  MT753X_R01_PORT_FW_MASK	GENMASK(2, 0)
- 
- /* Register for :03 and :0E MAC DA frame control */
- #define MT753X_RGAC2			0x2c
-+#define  MT753X_R0E_BPDU_FR		BIT(25)
- #define  MT753X_R0E_EG_TAG_MASK		GENMASK(24, 22)
- #define  MT753X_R0E_EG_TAG(x)		FIELD_PREP(MT753X_R0E_EG_TAG_MASK, x)
- #define  MT753X_R0E_PORT_FW_MASK	GENMASK(18, 16)
- #define  MT753X_R0E_PORT_FW(x)		FIELD_PREP(MT753X_R0E_PORT_FW_MASK, x)
-+#define  MT753X_R03_BPDU_FR		BIT(9)
- #define  MT753X_R03_EG_TAG_MASK		GENMASK(8, 6)
- #define  MT753X_R03_EG_TAG(x)		FIELD_PREP(MT753X_R03_EG_TAG_MASK, x)
- #define  MT753X_R03_PORT_FW_MASK	GENMASK(2, 0)
-
----
-base-commit: 365af7ace014ef3fc6f5d0a373c96cc7193db4ce
-change-id: 20240401-b4-for-net-mt7530-fix-link-local-when-stp-discarding-6e2a4e3e867a
-
-Best regards,
 -- 
-ArÄ±nÃ§ ÃœNAL <arinc.unal@arinc9.com>
-
-
+With best wishes
+Dmitry
 
