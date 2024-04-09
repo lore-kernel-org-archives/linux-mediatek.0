@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED2F4C67861
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 12:10:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82563C67861
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 12:12:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YyjjnM2IGz5DaOmkGdNiPWRrULNvhgtZsdttg/HjAJk=; b=jmgnwFsr4N8oXq/P1zBA1YCdRA
-	XTqPt4s9san2DDIZKt67DlDdqQTXHBcxYSshFVw1caUic4PQvxUs80FSE+SB5tZyPmoCwJZN1/C3U
-	/E68eMIHjJ8SAOsiHW7x1HCQmgS2Jab7vbM1nlxJvQ3On5Hb/9q0apf3hrimuXx2fYlZwJciWLZQD
-	bNcU6ODvleAKInf8gACGco4USVVuxhhJftWbhviC+SNWNTzXpxYStEoaif+pI3NBTt6Y8hxXjGloW
-	/DUsNGC+kWfPbtua6B87LKjlLUl1mO4grDhHhBPhGyX59gpuDKhU/pO6fpceq/ICfb1BwhRMPUf+L
-	iplSzAdg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BVrLcFdYPUDEWEn5KDV423hxP0oT8V4yLUiWZ5gAH/s=; b=ydpZJ/PEXmI46+wwc62kd1JYQk
+	NCUx5snUVbZeeVrLUeilbPJG0kBhSrmmp2uYJmgNlQPMpkj2qOXK/kwA6AL92Nl8MXE6XNIeQL9rL
+	inW1UpdmbhxVjeZ9W39Mr6YoHJg2a25V2xnSSOuF9i8viqTRpuXh1lusyTopLVmkaP95t1cAskWfZ
+	dzdNC+Z+gsjPpxlk6rZGaiUD3bbXhv/9f0uYtTREfW2VAdHH37l07MOy6aphPkRQcBUOqKfXfUKn/
+	2x8FJ7k/ZPNP997/eS5/jJOFtka3OA+3vysxkeLTJngMF8u4pC/LvnBKINCz6MoRxnP73z13P/+TE
+	Zze0WG5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruAJW-00000001rtr-0PZE;
-	Tue, 09 Apr 2024 12:10:58 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ruAKX-00000001sJI-3jJn;
+	Tue, 09 Apr 2024 12:12:01 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruAJN-00000001rpE-2K00;
-	Tue, 09 Apr 2024 12:10:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CEBDE616E0;
-	Tue,  9 Apr 2024 12:10:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5ACE4C43399;
-	Tue,  9 Apr 2024 12:10:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712664648;
-	bh=qPcpjQQA+x/Lp3zoDAguMcAnH3yp4AUeYMdHe1M4OcE=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=Lr6otbaZHkCwc8rTE3hO5aEBmzcZW1GmC9RB07B4BUlkpRRo/Dj2uW7ymS7cIqQtf
-	 TI2U0yDOEl9WMMGHLaetqQHVpaud3bzGlHx/8A3G2rWc1KZvLSMiSxIrR2NQODkaNx
-	 S3F/X6kQBtaW8yaX0qCwVBdU791lVnJAxFWyXEvnjr8FcFPkrdf6HjM6YoWDjtL1sA
-	 /JSfcsu/7hCuCFyx4sBOlIDjyxfSf8VJqnSUS3MRT6HWxVpvdE9IcXtO1vs0ACEucf
-	 io9RlHyjH0Z/JkbCJmtALKfb5HFty6qkFWsqmjkNQmx0Vd9rkRpc5aK3MNjNdTsR3u
-	 Q7nZ6uDer/jzA==
-Date: Tue, 09 Apr 2024 07:10:47 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1ruAKU-00000001sGw-2bxr;
+	Tue, 09 Apr 2024 12:12:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1712664716;
+	bh=BVrLcFdYPUDEWEn5KDV423hxP0oT8V4yLUiWZ5gAH/s=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ooLazIGZqE3OaFF6d+Ilz7NVeVx8eJIxOh2mbgysLKU5kS1Xy1WZHP+Upx+0xJlc+
+	 m6jB+h/LEox8y7O2NEqE2sWa1uZEHjur17z/65/ePxGRvPgjqkqRjTaU9aIFIY/sC/
+	 o1XEc0KavHkF+mfQfskvEcsNoUQe0RwCwA1lWOgWNpC8cjvjbJsT6INFZhfJtYI7u6
+	 kbU558Fo2sTzdjwQIfMLTsvo0eFUMbpNPW15H6mzzj0Q5yus3XsIPzWGLhoiJuTE33
+	 F7SWQd1CxPabfYNAqhuynrP4N6vXO9j/gDePIeJkKcI2oKNv4Je0GTZwjpa93U29xi
+	 sLS1RPRloeXuQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C820137820F5;
+	Tue,  9 Apr 2024 12:11:55 +0000 (UTC)
+Message-ID: <66237505-d84f-483e-b088-b8fd7c34ab9f@collabora.com>
+Date: Tue, 9 Apr 2024 14:11:54 +0200
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Rob Herring <robh+dt@kernel.org>, 
- Sumit Semwal <sumit.semwal@linaro.org>, Flora Fu <flora.fu@mediatek.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- dri-devel@lists.freedesktop.org, Mark Brown <broonie@kernel.org>, 
- devicetree@vger.kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Catalin Marinas <catalin.marinas@arm.com>, linux-media@vger.kernel.org, 
- Jaroslav Kysela <perex@perex.cz>, 
- =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- Takashi Iwai <tiwai@suse.com>, Conor Dooley <conor+dt@kernel.org>, 
- linux-mediatek@lists.infradead.org, Lee Jones <lee@kernel.org>, 
- linux-kernel@vger.kernel.org, Will Deacon <will@kernel.org>, 
- linaro-mm-sig@lists.linaro.org, Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Liam Girdwood <lgirdwood@gmail.com>
-In-Reply-To: <20240226-audio-i350-v2-4-3043d483de0d@baylibre.com>
-References: <20240226-audio-i350-v2-0-3043d483de0d@baylibre.com>
- <20240226-audio-i350-v2-4-3043d483de0d@baylibre.com>
-Message-Id: <171266464354.692403.15935267584546388532.robh@kernel.org>
-Subject: Re: [PATCH v2 04/18] ASoC: dt-bindings: mt6357: Add audio codec
- document
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] ARM: dts: qcom: msm8974: Use proper compatible for
+ APCS syscon
+To: Luca Weiss <luca@z3ntu.xyz>, ~postmarketos/upstreaming@lists.sr.ht,
+ phone-devel@vger.kernel.org, Jassi Brar <jassisinghbrar@gmail.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jacky Huang
+ <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>
+Cc: linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240408-msm8974-apcs-v1-0-90cb7368836e@z3ntu.xyz>
+ <20240408-msm8974-apcs-v1-2-90cb7368836e@z3ntu.xyz>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240408-msm8974-apcs-v1-2-90cb7368836e@z3ntu.xyz>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_051049_661683_C94AE1A7 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20240409_051158_850324_4D25808F 
+X-CRM114-Status: UNSURE (   7.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,45 +84,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Tue, 09 Apr 2024 12:13:25 +0200, Alexandre Mergnat wrote:
-> Add MT8365 audio codec bindings to set required
-> and optional voltage properties between the codec and the board.
-> The properties are:
-> - phandle of the requiered power supply.
-> - Setup of microphone bias voltage.
-> - Setup of the speaker pin pull-down.
-> 
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> ---
->  .../devicetree/bindings/sound/mt6357.yaml          | 54 ++++++++++++++++++++++
->  1 file changed, 54 insertions(+)
-> 
-
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
-
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/sound/mt6357.yaml: properties:vaud28-supply: '$ref' is not one of ['description', 'deprecated']
-	from schema $id: http://devicetree.org/meta-schemas/core.yaml#
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240226-audio-i350-v2-4-3043d483de0d@baylibre.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+SWwgMDgvMDQvMjQgMjE6MzIsIEx1Y2EgV2Vpc3MgaGEgc2NyaXR0bzoNCj4gVXNlIHRoZSBh
+cGNzLWtwc3MtZ2xvYmFsIGNvbXBhdGlibGUgZm9yIHRoZSBBUENTIGdsb2JhbCBtYWlsYm94
+IGJsb2NrDQo+IGZvdW5kIG9uIHRoaXMgU29DLg0KPiANCj4gVGhpcyBhbHNvIHJlc29sdmVz
+IGEgZHQtYmluZGluZyBjaGVja2VyIHdhcm5pbmc6DQo+IA0KPiAgICBhcmNoL2FybS9ib290
+L2R0cy9xY29tL3Fjb20tbXNtODk3NHByby1mYWlycGhvbmUtZnAyLmR0Yjogc3lzY29uQGY5
+MDExMDAwOiBjb21wYXRpYmxlOiAnYW55T2YnIGNvbmRpdGlvbmFsIGZhaWxlZCwgb25lIG11
+c3QgYmUgZml4ZWQ6DQo+ICAgICAgICAgICAgWydzeXNjb24nXSBpcyB0b28gc2hvcnQNCj4g
+ICAgICAgICAgICAnc3lzY29uJyBpcyBub3Qgb25lIG9mIFsnYWxsd2lubmVyLHN1bjhpLWE4
+M3Qtc3lzdGVtLWNvbnRyb2xsZXInLCAnYWxsd2lubmVyLHN1bjhpLWgzLXN5c3RlbS1jb250
+cm9sbGVyJywgJ2FsbHdpbm5lcixzdW44aS12M3Mtc3lzdGVtLWNvbnRyb2xsZXInLCAnYWxs
+d2lubmVyLHN1bjUwaS1hNjQtc3lzdGVtLWNvbnRyb2xsZXInLCAnYW1kLHBlbnNhbmRvLWVs
+YmEtc3lzY29uJywgJ2JyY20sY3J1LWNsa3NldCcsICdmcmVlY29tLGZzZy1jczItc3lzdGVt
+LWNvbnRyb2xsZXInLCAnZnNsLGlteDkzLWFvbm1peC1ucy1zeXNjZmcnLCAnZnNsLGlteDkz
+LXdha2V1cG1peC1zeXNjZmcnLCAnaGlzaWxpY29uLGRzYS1zdWJjdHJsJywgJ2hpc2lsaWNv
+bixoaTYyMjAtc3JhbWN0cmwnLCAnaGlzaWxpY29uLHBjaWUtc2FzLXN1YmN0cmwnLCAnaGlz
+aWxpY29uLHBlcmktc3ViY3RybCcsICdocGUsZ3hwLXN5c3JlZycsICdpbnRlbCxsZ20tc3lz
+Y29uJywgJ2xvb25nc29uLGxzMWItc3lzY29uJywgJ2xvb25nc29uLGxzMWMtc3lzY29uJywg
+J21hcnZlbGwsYXJtYWRhLTM3MDAtdXNiMi1ob3N0LW1pc2MnLCAnbWVkaWF0ZWssbXQ4MTM1
+LXBjdGwtYS1zeXNjZmcnLCAnbWVkaWF0ZWssbXQ4MTM1LXBjdGwtYi1zeXNjZmcnLCAnbWVk
+aWF0ZWssbXQ4MzY1LXN5c2NmZycsICdtaWNyb2NoaXAsbGFuOTY2eC1jcHUtc3lzY29uJywg
+J21pY3JvY2hpcCxzcGFyeDUtY3B1LXN5c2NvbicsICdtc3Rhcixtc2MzMTMtcG1zbGVlcCcs
+ICdudXZvdG9uLG1hMzVkMS1zeXMnLCAnbnV2b3Rvbix3cGNtNDUwLXNobScsICdyb2NrY2hp
+cCxweDMwLXFvcycsICdyb2NrY2hpcCxyazMwMzYtcW9zJywgJ3JvY2tjaGlwLHJrMzA2Ni1x
+b3MnLCAncm9ja2NoaXAscmszMTI4LXFvcycsICdyb2NrY2hpcCxyazMyMjgtcW9zJywgJ3Jv
+Y2tjaGlwLHJrMzI4OC1xb3MnLCAncm9ja2NoaXAscmszMzY4LXFvcycsICdyb2NrY2hpcCxy
+azMzOTktcW9zJywgJ3JvY2tjaGlwLHJrMzU2DQo+ICAgOC1xb3MnLCAncm9ja2NoaXAscmsz
+NTg4LXFvcycsICdyb2NrY2hpcCxydjExMjYtcW9zJywgJ3N0YXJmaXZlLGpoNzEwMC1zeXNt
+YWluJywgJ3RpLGFtNjItdXNiLXBoeS1jdHJsJywgJ3RpLGFtNjU0LWRzcy1vbGRpLWlvLWN0
+cmwnLCAndGksYW02NTQtc2VyZGVzLWN0cmwnLCAndGksajc4NHM0LXBjaWUtY3RybCddDQo+
+ICAgICAgICAgICAgZnJvbSBzY2hlbWEgJGlkOiBodHRwOi8vZGV2aWNldHJlZS5vcmcvc2No
+ZW1hcy9tZmQvc3lzY29uLnlhbWwjDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBMdWNhIFdlaXNz
+IDxsdWNhQHozbnR1Lnh5ej4NCg0KUmV2aWV3ZWQtYnk6IEFuZ2Vsb0dpb2FjY2hpbm8gRGVs
+IFJlZ25vIDxhbmdlbG9naW9hY2NoaW5vLmRlbHJlZ25vQGNvbGxhYm9yYS5jb20+DQoNCg0K
 
 
