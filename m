@@ -4,113 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF366C67861
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 06:37:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97400CD1297
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 06:44:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vy0PWZPAPyixcPi5hnwM4Paya8fSPXHfcDQ5TZi89qo=; b=FHfroDboZQnTNIpJJQuoxMbhl3
-	rh8sE8fRLWanIgShaeQbv8yUHDabhs6Mb9ICE9dXAw7hA/zPyaorJuO8ZEGnMIty1yKnxlxrBiX1D
-	cG8j8/vFQXT7qWxbkWGqoN66HXIyndDP8RppONnNgCmMeJ+vwoD1kBYkaxA+Myzh1H5cKkQcze6l7
-	ocrVvV1s03Vip7jxdh69XA8Tp8BpIHhkjpziRdcpckQbDrmQucQ8pCEMP/lAbpWVVZxVmVfgBy1N0
-	8lGAdIu1Vy9lHl/Vp8hoDtgoEH2w6hJXoOM3PGTZCzoKPmchCW1CjKYDKQamz4hMs6bRf+8E2V7vo
-	bTaGTFeA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UnZa+kymEWALAGSMk0rr8+0T+l265TIU6gLXOBOUsZo=; b=W096ZfJnrIBcgSodOqoUwim0nw
+	TdkXt93xjvTVlYg1o9QkE+ojZphJzMSY5ypyaNosd54kzruCQSxX2QvSm7p1JX3zboHtbCx2i/2mR
+	/BWtyENsBM/Mz2uoMHHePwL6CvlXm50Mvhz+K/+DNXNvrYnKOqMOhRShrbe5EGfGUCDU7vhlmCjZy
+	Y2ZAgDUFlnbJwjwsJG/T71AhZPmvXunoOONSnRZmJNJBK88q/6ecewLwOc2azD/Vd2WSlboFILAks
+	jmbKSnuUYD62OKuVVLhLJgMQQyub5cb3ZS0F7AoREJPh3A7sQ1YJY3nNHg2cva5mPwW6Kr3eEfq2c
+	z/qlMb3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ru56g-00000000c8R-2ppQ;
-	Tue, 09 Apr 2024 06:37:22 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1ru5Dp-00000000dON-087T;
+	Tue, 09 Apr 2024 06:44:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ru56d-00000000c64-02YH;
-	Tue, 09 Apr 2024 06:37:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 8CBF5CE1CB3;
-	Tue,  9 Apr 2024 06:37:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C367DC433C7;
-	Tue,  9 Apr 2024 06:37:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712644631;
-	bh=vy0PWZPAPyixcPi5hnwM4Paya8fSPXHfcDQ5TZi89qo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=W35iNMjfqXxBgVo11VVkrE6Gmk6js52raUjbHKe8RhyVa98nKmZJIic+t7j9nN/5d
-	 A2Ox/QpBVP99OM+GZreQMXeyK2aRYE+xsk23K2MPtdKsnn5ao0GUhyR7gfRFJK80or
-	 6DESuWqioGMR5xm4NWOaJv9JIM+lK2AWR8CVRtnemdrf66b+6BUmHx5cZ51IFMPSME
-	 TXleNRZE8wlzbndHOa4FgFNwGK/TeFWDJNQmmH+Y8Gy40RAecKuZdnb6mk4Ol2cGmK
-	 L3vlkEszOlBu871OBYUR9ZjZLE71cND6moaP1uhzm2djTeygrS21Wz04xhG09ZO0GI
-	 vUDX9SvWfK3jg==
-Message-ID: <ef8443ef-005b-44cc-a98d-a9a0cd201eb0@kernel.org>
-Date: Tue, 9 Apr 2024 08:37:03 +0200
+	id 1ru5Dm-00000000dMu-2IKk;
+	Tue, 09 Apr 2024 06:44:43 +0000
+X-UUID: a1c3ca02f63c11ee96d5dfc950b7243d-20240408
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=UnZa+kymEWALAGSMk0rr8+0T+l265TIU6gLXOBOUsZo=;
+	b=Skgp1VIWML4MExHSKn7sg/sWgQG9JaU82WU6oo2g5GomSY7UODkDqSz2UlF8YuQeESkG6u6zBR3arsoNL8R3e4eFgJzy3Bop3xtIlQHZuoIy02h+3qYlOXuvmtQoa+iPyC4zwEXZn+tscsKmzb+dGJDuZnF1+G/NOTigMjKlVJI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:a4fa0aa5-23d9-4f0e-85fc-1a5c49d7b399,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6f543d0,CLOUDID:4362d900-c26b-4159-a099-3b9d0558e447,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: a1c3ca02f63c11ee96d5dfc950b7243d-20240408
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 705396190; Mon, 08 Apr 2024 23:44:36 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 9 Apr 2024 14:44:32 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 9 Apr 2024 14:44:31 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>,
+	Sebastian Fricke <sebastian.fricke@collabora.com>
+CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, "Yunfei
+ Dong" <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v2,0/5] media: change the calculation method of sizeimage
+Date: Tue, 9 Apr 2024 14:44:26 +0800
+Message-ID: <20240409064431.16909-1-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: mailbox: qcom: Add MSM8974 APCS
- compatible
-To: Luca Weiss <luca@z3ntu.xyz>, ~postmarketos/upstreaming@lists.sr.ht,
- phone-devel@vger.kernel.org, Jassi Brar <jassisinghbrar@gmail.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>
-Cc: linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20240408-msm8974-apcs-v1-0-90cb7368836e@z3ntu.xyz>
- <20240408-msm8974-apcs-v1-1-90cb7368836e@z3ntu.xyz>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240408-msm8974-apcs-v1-1-90cb7368836e@z3ntu.xyz>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--3.658400-8.000000
+X-TMASE-MatchedRID: tiRXYRqWr+t7EGbCBtXNh5dc7I2df+ms7TLAShhI26nfUZT83lbkEF2k
+	xKIqW9ov4vM1YF6AJbZhyT3WNjppUtAtbEEX0MxBxEHRux+uk8hxKpvEGAbTDs2d8v07uhCE1LI
+	xCR7fv4UoyD9yZkFZeBEgi3uuWutXDxXLKQJKaUy36ORTd1K+uaY7sVJ5Q4+lfdzU+O6sfADO8T
+	UL2Fw68xz+PhojlLUuev0YPTN868QBqq+/+aGCsUu0bcffALXE
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--3.658400-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 7216C0668EF25ACFABAA8C78AB5D3A64ACCEEE92F96DE857900F403C65F763032000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_233719_456003_52A7A017 
-X-CRM114-Status: UNSURE (   5.48  )
+X-CRM114-CacheID: sfid-20240408_234442_652945_078A08B3 
+X-CRM114-Status: UNSURE (   7.01  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -126,16 +103,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08/04/2024 21:32, Luca Weiss wrote:
-> Add compatible for the Qualcomm MSM8974 APCS block.
+The bytesperline and sizeimage of each plan are different for 8bit
+and 10bit bitstreams. Using v4l2 common interface to calculate them
+independently.
 
-"... The block is already used in DTS, but without any SoC specific
-compatible."
+---
+compare with v1:
+- add patch 1/2/3/4
+- change the calculation method for sizeimage for patch 5
+---
+Yunfei Dong (5):
+  media: mediatek: vcodec: fix incorrect MT2T format information
+  media: mediatek: vcodec: fix incorrect MT2R format information
+  media: mediatek: vcodec: add MM21 format definition
+  media: mediatek: vcodec: add MT21 format definition
+  media: mediatek: vcodec: fix incorrect sizeimage for 10bit bitstream
 
-Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 28 ++++++-------------
+ drivers/media/v4l2-core/v4l2-common.c         | 12 +++++---
+ 2 files changed, 16 insertions(+), 24 deletions(-)
 
-
-Best regards,
-Krzysztof
+-- 
+2.18.0
 
 
