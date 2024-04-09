@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB7F5CD1284
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 13:39:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3170C67861
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 13:39:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
 	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
 	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mkpRqvYIptS41FJZZh9bbzuAxAcWat/L4eB8HgDVxRA=; b=5HBTV6DEQ0NUkBW/wHrslIu39C
-	OKJJcFh0S/eusJtg/dTw3XARbbhBWU9QVqAINQUhYlwAgvci5temfmAD2GjmRFfAfXS8ZjJUC8+Zy
-	tEum724yzRaFeV4wA8GMZ+okrW3DGAdxeTM12EIVvLMEN/m0HG2199gCfQ79HV73fPElBAtplq6Xb
-	TD8GJoo47FvA4mApNB/I2T7EbWsalS1GiJfW2kiQkw9b9zBt5bTxtiduksdRgBxDVFl3a2JH+CUYo
-	kJ53R3zqtDWbzd8Z2mg1V/MFIVVVH4TwG487IjYTh+0Ug4RuIkCY/KqGUk7PIInqvzkBotY2UGevL
-	JQAr3oFA==;
+	bh=/LDeaGUFKgTuPdyupc9OvXAcr+ViDhO+T6W6fXTKeY4=; b=N3tFvQ9XWB5xZBOh0UqEV9U7Gd
+	wbcPXdr2VX+PAc8TJ7OyTeXPCiUYFNUnJWhABcGiGhTGfOUIrziVL9/Mj8UAtEMtDo7wtym6u2jNY
+	PBJNBLwo+cYc/DnxYt6RLC07yKW5T8rrKih+g9nwvKwp97kZBI7ogntsZC46fpwpp7z4wxszHr5CW
+	iooVUY0y/hNduKddIeGXkiCFSoloXMPluCmJiChUCPR+Fm7i2Q507h2HJfln776WI2uKeOhbZaiMZ
+	/uGUex/bhBI5UR1irw+hN6E2Tw6QEB+cnQLcTTlvydlyIX6OXX4QzytP0zlfR+QHFUcNvTTq9pIc0
+	d4IJyJ6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruBgs-00000002Aon-1p50;
-	Tue, 09 Apr 2024 13:39:10 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ruBgw-00000002ArL-04jG;
+	Tue, 09 Apr 2024 13:39:14 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruBgc-00000002AeB-07kL;
-	Tue, 09 Apr 2024 13:38:56 +0000
+	id 1ruBgc-00000002Add-3T5G;
+	Tue, 09 Apr 2024 13:39:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 775026175F;
-	Tue,  9 Apr 2024 13:38:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1831BC43394;
-	Tue,  9 Apr 2024 13:38:53 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id A14C1CE1E82;
+	Tue,  9 Apr 2024 13:38:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 940F7C433C7;
+	Tue,  9 Apr 2024 13:38:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712669933;
-	bh=MaNTo1TwypdMImDfu267HMVrFoa2Gv937RWDn+H7NYE=;
+	s=k20201202; t=1712669930;
+	bh=vx0BqNfIb8F4lDx/iXeS8NQx1kj2f2ZQ4T6UWr5MvSU=;
 	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=NlG8/J28axE58KEH46XEcDmHy3yMO8Dh1UdJPlygPKqW10vSd5kumTqY8W2XHP8dY
-	 k+XykDNyWpMmpkgR6bDATlazXoIXqKQHcsJzKVGoM9c8dFOcdUdXiwfVDyEEwumR3t
-	 rGq218oUsf6/aYQjZQUJPKeRLUfssSxxRHab5F/YxzFkLD3U2l2z0h3fQAlariJesb
-	 xgEj1zS5j/hY1ABgOLLLXKWZUzsFd8AzsvTw+1jOKD3p+uMVL8gmU/pF8zxeovg9/C
-	 BVdYN4U5oLfeIsSry7VforNoEaqK6NuwLqqgCy+ihxoqLWgbnlczyICyq56dB/Gbqz
-	 joEzMVXL89tWw==
-Date: Tue, 09 Apr 2024 08:38:52 -0500
+	b=IoSJeDDwI+KW/z9/tKVlMtK0X5cwXlpLp5tXMyETc76qJvZlRXAKiAUB04IBAA3Xt
+	 CmXi0pLFz5ZEVvvnZuCdlWNjVrf17d59sOySGB3CbnlaTO+VDyKzdcRxy4oXCyxA+B
+	 NwQiZN3olbmTxEW2pPZLgQibV/kZaaFKfwogZXXleoQFgN2rDM+SvlCWodj8NDxYm0
+	 EBTgXkqhyVOAQ9nHiJFfEkZS2kMrqQWqXeF1f56MRBIgS07CGHC9tMflrlJoImZg7E
+	 RVFrLZDC9GxVSxhdGmx0GvB92qkU60pa5RsCiiqn5cmSquttNyoLGAn+e3nYC/s39s
+	 1TPw03FVwfqYw==
+Date: Tue, 09 Apr 2024 08:38:49 -0500
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
 From: Rob Herring <robh@kernel.org>
-To: =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+To: Michael Walle <mwalle@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+ Sean Wang <sean.wang@mediatek.com>, 
+ Conor Dooley <conor.dooley@microchip.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- devicetree@vger.kernel.org, 
- =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>, 
- linux-mediatek@lists.infradead.org, 
- Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20240408100040.25997-1-zajec5@gmail.com>
-References: <20240408100040.25997-1-zajec5@gmail.com>
-Message-Id: <171266958436.1032546.17539975560250001591.robh@kernel.org>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt7622: fix "emmc" pinctrl mux
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20240408080816.4134370-1-mwalle@kernel.org>
+References: <20240408080816.4134370-1-mwalle@kernel.org>
+Message-Id: <171266958413.1032531.2798711513331001834.robh@kernel.org>
+Subject: Re: [PATCH v4 1/2] dt-bindings: arm64: mediatek: add Kontron
+ 3.5"-SBC-i1200
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_063854_476370_7192385A 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20240409_063855_424326_5D7D8033 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,25 +78,25 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 08 Apr 2024 12:00:40 +0200, Rafał Miłecki wrote:
-> From: Rafał Miłecki <rafal@milecki.pl>
+On Mon, 08 Apr 2024 10:08:15 +0200, Michael Walle wrote:
+> Add the compatible string for the Kontron 3.5"-SBC-i1200 single board
+> computer.
 > 
-> Value "emmc_rst" is a group name and should be part of the "groups"
-> property.
-> 
-> This fixes:
-> arch/arm64/boot/dts/mediatek/mt7622-rfb1.dtb: pinctrl@10211000: emmc-pins-default:mux:function: ['emmc', 'emmc_rst'] is too long
->         from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt7622-pinctrl.yaml#
-> arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dtb: pinctrl@10211000: emmc-pins-default:mux:function: ['emmc', 'emmc_rst'] is too long
->         from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt7622-pinctrl.yaml#
-> 
-> Fixes: 3725ba3f5574 ("arm64: dts: mt7622: add pinctrl related device nodes")
-> Fixes: 0b6286dd96c0 ("arm64: dts: mt7622: add bananapi BPI-R64 board")
-> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> Signed-off-by: Michael Walle <mwalle@kernel.org>
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 4 ++--
->  arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts             | 4 ++--
->  2 files changed, 4 insertions(+), 4 deletions(-)
+> v4:
+>  - rebase to latest next
+> 
+> v3:
+>  - drop description and add to mt8395 existing entry
+> 
+> v2:
+>  - convert enum to const as there is only one specific board
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 > 
 
 
@@ -113,12 +114,39 @@ make sure dt-schema is up to date:
   pip3 install dtschema --upgrade
 
 
-New warnings running 'make CHECK_DTBS=y mediatek/mt7622-bananapi-bpi-r64.dtb mediatek/mt7622-rfb1.dtb' for 20240408100040.25997-1-zajec5@gmail.com:
+New warnings running 'make CHECK_DTBS=y mediatek/mt8395-kontron-3-5-sbc-i1200.dtb' for 20240408080816.4134370-1-mwalle@kernel.org:
 
-arch/arm64/boot/dts/mediatek/mt7622-rfb1.dtb: pinctrl@10211000: emmc-pins-default:mux:groups: ['emmc', 'emmc_rst'] is too long
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt7622-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dtb: pinctrl@10211000: emmc-pins-default:mux:groups: ['emmc', 'emmc_rst'] is too long
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt7622-pinctrl.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: soc: jpgdec-master: {'compatible': ['mediatek,mt8195-jpgdec'], 'power-domains': [[43, 24]], 'iommus': [[130, 621], [130, 622], [130, 626], [130, 627], [130, 628], [130, 629]], '#address-cells': [[2]], '#size-cells': [[2]], 'ranges': True, 'jpgdec@1a040000': {'compatible': ['mediatek,mt8195-jpgdec-hw'], 'reg': [[0, 436469760, 0, 65536]], 'iommus': [[130, 621], [130, 622], [130, 626], [130, 627], [130, 628], [130, 629]], 'interrupts': [[0, 343, 4, 0]], 'clocks': [[34, 3]], 'clock-names': ['jpgdec'], 'power-domains': [[43, 23]]}, 'jpgdec@1a050000': {'compatible': ['mediatek,mt8195-jpgdec-hw'], 'reg': [[0, 436535296, 0, 65536]], 'iommus': [[130, 621], [130, 622], [130, 626], [130, 627], [130, 628], [130, 629]], 'interrupts': [[0, 344, 4, 0]], 'clocks': [[34, 4]], 'clock-names': ['jpgdec'], 'power-domains': [[43, 24]]}, 'jpgdec@1b040000': {'compatible': ['mediatek,mt8195-jpgdec-hw'], 'reg': [[0, 453246976, 0, 65536]], 'iommus'
+ : [[112, 653], [112, 654], [112, 658], [112, 659], [112, 660], [112, 661]], 'interrupts': [[0, 348, 4, 0]], 'clocks': [[28, 3]], 'clock-names': ['jpgdec'], 'power-domains': [[43, 25]]}} should not be valid under {'type': 'object'}
+	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: soc: jpgenc-master: {'compatible': ['mediatek,mt8195-jpgenc'], 'power-domains': [[43, 27]], 'iommus': [[112, 647], [112, 648], [112, 649], [112, 652]], '#address-cells': [[2]], '#size-cells': [[2]], 'ranges': True, 'jpgenc@1a030000': {'compatible': ['mediatek,mt8195-jpgenc-hw'], 'reg': [[0, 436404224, 0, 65536]], 'iommus': [[130, 615], [130, 616], [130, 617], [130, 620]], 'interrupts': [[0, 342, 4, 0]], 'clocks': [[34, 2]], 'clock-names': ['jpgenc'], 'power-domains': [[43, 26]]}, 'jpgenc@1b030000': {'compatible': ['mediatek,mt8195-jpgenc-hw'], 'reg': [[0, 453181440, 0, 65536]], 'iommus': [[112, 647], [112, 648], [112, 649], [112, 652]], 'interrupts': [[0, 347, 4, 0]], 'clocks': [[28, 2]], 'clock-names': ['jpgenc'], 'power-domains': [[43, 27]]}} should not be valid under {'type': 'object'}
+	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: syscon@10001000: compatible: ['mediatek,mt8195-infracfg_ao', 'syscon', 'simple-mfd'] is too long
+	from schema $id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt8195-sys-clock.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: /soc/pwrap@10024000/pmic: failed to match any schema with compatible: ['mediatek,mt6359']
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: /soc/pwrap@10024000/pmic/mt6359rtc: failed to match any schema with compatible: ['mediatek,mt6358-rtc']
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: infra-iommu@10315000: interrupts: [[0, 795, 4, 0], [0, 796, 4, 0], [0, 797, 4, 0], [0, 798, 4, 0], [0, 799, 4, 0]] is too long
+	from schema $id: http://devicetree.org/schemas/iommu/mediatek,iommu.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: ethernet@11021000: Unevaluated properties are not allowed ('snps,rxpbl', 'snps,txpbl' were unexpected)
+	from schema $id: http://devicetree.org/schemas/net/mediatek-dwmac.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: regulator: 'BUCK1', 'BUCK2', 'LDO1', 'LDO2', 'LDO3', 'LDO5', 'LDO6', 'LDO7' do not match any of the regexes: '^buck[12]$', '^ldo[123567]$', 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/regulator/mt6360-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: t-phy@11e30000: 'power-domains' does not match any of the regexes: '^(usb|pcie|sata)-phy@[0-9a-f]+$', 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/phy/mediatek,tphy.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: display@14f06000: clocks: [[30, 14], [30, 43], [30, 44]] is too long
+	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,split.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: dp-intf@1c015000: clock-names:0: 'pixel' was expected
+	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: dp-intf@1c015000: clock-names:1: 'engine' was expected
+	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: mutex@1c101000: 'clock-names', 'reg-names' do not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/soc/mediatek/mediatek,mutex.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: dp-intf@1c113000: clock-names:0: 'pixel' was expected
+	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: dp-intf@1c113000: clock-names:1: 'engine' was expected
+	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: dp-intf@1c113000: Additional properties are not allowed ('power-domains' was unexpected)
+	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
 
 
 
