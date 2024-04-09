@@ -4,73 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85A26CD1296
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 13:42:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7850CD1284
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 13:43:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LGt34+sJLdk3MLx6big+T+CAqaWtPyYycofqseF0Aok=; b=OeezkO3XeENPgwt+ssyz6oh5ol
-	lSE4B8EYIfvYtZBN+vpnh2KQ9MzmeoG2F2+QVEdlgQ8XB3pIezcejBjCv/ww0tvI2DoJTRc1OnlkX
-	19WjLmZ4XaZkY269KuSi5fg3B00zIZposTXGncuNYUfld+OrqtsTlqfeD5ytQpCm0TDmHVbojERLz
-	Z/X2FvABEEkeGDpArubShLQ3bEm9q/KHqaWFiV5CfRN9XKkJZLNe3k4RfRvgUWvQz9pvaej0ov5y6
-	bZ97fyggKWha2VPkGAgJYjT59vl+dsDFAl+x0IoqhkrrAYYkthbf2Ddt3lwcgb41tLfEnoot2Np13
-	FRRH2rcA==;
+	bh=dRV21odMDlex1rg2VPTTIxBGhyXnDTdo0QEnA7Bs1Ys=; b=2lkRIJyH1EVFpuhlF9pltelMUW
+	OMlZRG0TFrYo0ocu9sUdE1b8GZt+To875544E5LyATEPKvo2oAKSYoB7+iVZWxx5sI2WjG5r3BpoK
+	bE3/NIw0/NJqzVNNZ4n8Faq1PSeevNpJmoN3WZygY4lrVaVkHSJti/cGPwMcvlDE1p6xmThB4xm8I
+	52oP1ZATGNpH8ihPwtiiinVoGPc9Libtp01bPBUqUKt1FewvMqxyRCxHZBprRs5dEAg5Yp1j5nySf
+	nwHYN1LYEk7e8G7sf3GiT+62wLQHflvc82KpPu1lq+7+OX95rNXR18D/EBQOWQVhydzeB+uIfTKhA
+	BAMZIKag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruBkY-00000002Cdc-45YF;
-	Tue, 09 Apr 2024 13:42:58 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1ruBki-00000002Clx-3xFn;
+	Tue, 09 Apr 2024 13:43:09 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruBjp-00000002CDw-3zLU
+	id 1ruBk4-00000002COL-3WpD
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 09 Apr 2024 13:42:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=dRV21odMDlex1rg2VPTTIxBGhyXnDTdo0QEnA7Bs1Ys=; b=XT1BhrnZJ4PuTGBdnZAgMmFq5y
+	/oWGoPlqoTgMk118F8jbGx/FrpeGR/3Cy23qjdx1H0KPQ10pM80usZKKsznUdrM9Rj65EydmwWEsa
+	4/7RpV6B8ZoCQtmVTtVspeNm3MY9xc7hURAqCyshA8Vln5CPurym0kgdPa0EJBdMMHl3Nd00uCIqK
+	fTgPJ9tZKgspISUQXOFt1qYQcE1c3s3CXRlPOKSoRp/K+nZuouF1H5zxcKD+ub4R3tRmoG3+jStYS
+	UJaseXSDCRmuRk5l7G6uzyzYtC+Yxvk1YO03FxYrERIgmy5I7CUP01cmdkz6wfx02zflXeSEh7MNe
+	MGpVNUWA==;
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1ruBk1-00000007d9L-1Vpn
 	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Apr 2024 13:42:25 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-34175878e3cso4092611f8f.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Apr 2024 06:42:10 -0700 (PDT)
+	Tue, 09 Apr 2024 13:42:27 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-34388753650so2349752f8f.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Apr 2024 06:42:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1712670129; x=1713274929; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1712670143; x=1713274943; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=LGt34+sJLdk3MLx6big+T+CAqaWtPyYycofqseF0Aok=;
-        b=aEOF/Sdwyup8SkVlgEOtSVq817cNM0XJczKllioxRJ49ur/bJGmV5AeX2ZD8dmbqHz
-         eX90FphQqFPdvGXFGkXIS0Sua1YkTkl3SercTGAsXDIBvxgg510c0Jv6wJBTw2c+METr
-         Kd8snyW312oBouw9nvlN5/Nx+LuBwXJuqIrCUURPPxRyI5Ujr4Jxp0CiJfya1346TsiI
-         z384M4f7y4hKgv3690AkTD2SoN0MmEfAj9a9zHbpB0viNyezRy4VawjQ1gcISiD1W1i4
-         8Y5L6mzdbtM2SP5BHBLCSDbRU07x0MmJKYFu6ufclOIelrJgLcORCaNJHJA5iQGmRgQr
-         h/LA==
+        bh=dRV21odMDlex1rg2VPTTIxBGhyXnDTdo0QEnA7Bs1Ys=;
+        b=lWpzFizSxFXO9JHqZ0XNqlRKF7qG0/aX3wVuw4j1eap9syJndE9scpSK3DLNFDvNZa
+         YDc+MG9L03YhUXXxNFB0SW6TZoJgg4LoP2zWJYkssuzZR3kd+uW0qbamuWWsji6IUxkk
+         3bGSvkxiAyat3z4mIaFLKxjLTIdmBLlrQ1VQ/nilW6RyG7n9rDFtydEfX6eC/mRrioiK
+         e53X3wqHhnWv5Bc1N7R4cHWkAUP74I1c4WpKymaJUd4KKip57E4papclPNzzs6E1BJtj
+         TgpfHOey4623PxMUhoBLnjZEaBfo9m4IWspZrK+3LUOyCqAlu+BiHBIFIxNxCHsUaOYn
+         Wprg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712670129; x=1713274929;
+        d=1e100.net; s=20230601; t=1712670143; x=1713274943;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=LGt34+sJLdk3MLx6big+T+CAqaWtPyYycofqseF0Aok=;
-        b=quOj3azsHxHye4iYqTHgBNAzXLt+e0dIiFk3qjfKAox+QKqcto0naNSewZYg4bJA0o
-         XHUlguI8xYVGMvu4rnhs8XZtrzrB5sz9F49wOkUb71rG5VQjm6EjdBQfKZX5ZalWJFLb
-         JSQFb6geuQaGRPK676r9n6Si074VgfhloXFjM95q4baZ/2RdIFcC9AVmzoRjqJQO6ItH
-         p8snS2MH2QSh065CV6qsvo2nGQ/TPWWCjzfjSC3ATeyKWJxsRz1RqFaKR83vgh5Ww+Eo
-         Z6XA/GV9EPXxKpnZAAjrM1gHgYBDR32QEKQ2rcYERQW3qf++yG4sn0qv8TJIIWCmUsBX
-         4bAQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWEDD/dk+mnsqjmKj+YCzA2vc+AyPv+IxKG6zLJmOaB3cqUQ/LtljdzN+67Og4ZJTLf51xS7mOzYfjDzz7MvJX3HZv7eTfnKepUBjy+47AQQiHL
-X-Gm-Message-State: AOJu0YzRsuut3bGLlgdyhBqf89J4+Vm05XzNYsx3GkfBQ2Z8AuX2aO1p
-	SXbAedl8IWknxGPncRkhcJisP2LQczELZkpc0/GEmyuObe9DX8yj5UsKMwxz70Y=
-X-Google-Smtp-Source: AGHT+IHs+PVJes9bcU5J+hkjaytIEisTo/t9yMkWk6trmZIfpsRZXqQx9bQrZmBp9veYPw3+BYfK+w==
-X-Received: by 2002:adf:e802:0:b0:33d:fb3:9021 with SMTP id o2-20020adfe802000000b0033d0fb39021mr7947332wrm.54.1712670129306;
-        Tue, 09 Apr 2024 06:42:09 -0700 (PDT)
+        bh=dRV21odMDlex1rg2VPTTIxBGhyXnDTdo0QEnA7Bs1Ys=;
+        b=pral49S5zpahkOKXGLONaR5GZ19JSHQ+FtSWMniCR1PKk9cAzx2OKQGRlsm5qTy2r3
+         +Qv1qVB1cfTT77gIZeoZxQz9SEAe/uXAhkAm6SMSxPm4bfLnZY2AADrNFoI/rlCWumsY
+         kI7tWBap+xGOLLePUD/iiDV6V0SSldWRKKINMdgt9b82Wf42127U6mhHUsjWSagH5MjP
+         6Anf73RYKZicnx5KzgLc4B8f7lPbVw55xvjW/GzRWaZcRiP1kZvN51+8F7nAWnXq28RR
+         lmR+S/Zg1HzfcGIGv6ZD2WaGtmXwGJTcQuFAyQRouIVymQNmEMvsgKrnZybVJkfCHJSp
+         sTBA==
+X-Forwarded-Encrypted: i=1; AJvYcCV5ci4YmpTyNOb5iUKhOLvGuJoQjX6FosVp0S5cLoeGb/yzCUqUR+hAU2Bq+PUgqb3K3wbur8Zf2Pxg3DYIVO30Cl3mg5Wxu1OYtvUk1TJufS6B
+X-Gm-Message-State: AOJu0YzHkCRrNmo698z6Qi0F5GPetQGda4jjCfu7uaeyBS9FmipDCo9h
+	Wx/LC0o3iJVEUj9zYnveThATvO9F5J7SDu0CsRXzTaJDyXIgyI7tpOxEjeD/w9c=
+X-Google-Smtp-Source: AGHT+IGYE8y5YRNsGhP5DFgSmI2yBVsy+1iSIU2sJTMjI//Dg+4PsTbP6OKSwIglZCdzQPbTQ++rvA==
+X-Received: by 2002:adf:f592:0:b0:343:9d4b:d920 with SMTP id f18-20020adff592000000b003439d4bd920mr8097581wro.40.1712670143542;
+        Tue, 09 Apr 2024 06:42:23 -0700 (PDT)
 Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id j11-20020adff54b000000b003433bf6651dsm10753579wrp.75.2024.04.09.06.42.08
+        by smtp.googlemail.com with ESMTPSA id j11-20020adff54b000000b003433bf6651dsm10753579wrp.75.2024.04.09.06.42.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Apr 2024 06:42:08 -0700 (PDT)
+        Tue, 09 Apr 2024 06:42:23 -0700 (PDT)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Tue, 09 Apr 2024 15:42:00 +0200
-Subject: [PATCH v3 02/18] ASoC: dt-bindings: mediatek,mt8365-mt6357: Add
- audio sound card document
+Date: Tue, 09 Apr 2024 15:42:05 +0200
+Subject: [PATCH v3 07/18] ASoC: mediatek: mt8365: Add I2S DAI support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240226-audio-i350-v3-2-16bb2c974c55@baylibre.com>
+Message-Id: <20240226-audio-i350-v3-7-16bb2c974c55@baylibre.com>
 References: <20240226-audio-i350-v3-0-16bb2c974c55@baylibre.com>
 In-Reply-To: <20240226-audio-i350-v3-0-16bb2c974c55@baylibre.com>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
@@ -91,24 +105,25 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
  Alexandre Mergnat <amergnat@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3125; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=bcex9J3pUiKsSDmYMrLdaDcykBaj5YDYBra4ZvFBZJo=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmFUWsk5RNDHaaRzybw5abcV5vneXW5vP8Vm6SQhmY
- 0Md7TsaJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZhVFrAAKCRArRkmdfjHURR2zD/
- 9KNc4raiGk9xEnimPxYM2FegfDoBhRKHwIpxu8KF1g1GPWr+l5FFDRfIHQfZXB8Ot+wawVk7PSSlaM
- 4pyNeUkltjPieiUonFHchDVseFFwJpX0UDgw2+IfosUkM4NlPdhpb9FhGaO6TlOf9rUVhJ0c8klDTy
- O4N3ZFgDsVufRwZX3ENmrao8VNuxZWn26KM5bJRscJh+K5AGRszPfo/qCWNZXjbVaFPBDyLxo7luj4
- 7JVdtsY/2RGmNPbrK9ohyDF7bzI54u5tHi2vn6cqYY79YQk9OkxgR+gzQhUKw9NkVoSzrsdUjqjflc
- 6EGZnw1xfAuZUoDf/VypXBwRP45T0H584H4iU4aVO3VJUz1XHV+kM/5GBR8cvoaAbYDzaI0pt7m0AV
- kc7bUqhGcg8mEawUzz1n0Ru3A5ND6NbfD8URPAAxbrwxMGn5DJvI3cktuDutx9qdRWTNb4V07j+Cz3
- Dx2ReCOH3j9HlP0W55LVvhIKVmxwjE+hIdaHq04uyG5tldw5sjVyhJvUxk7GsBPar04VfUdvrx5hUh
- cYxVhmfbMvicDTADR0JXa1L+MyjsoLZMk/CR8nBfC41xK0a6gYVFeCgQCwLHVlme8O0niJDTfzI/VR
- ebzFyQyVU+mmBRXoMqA3Zu9x4j/f7ATZhcRXhMTZZQEouCyW6g8cAggL11CA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=27760;
+ i=amergnat@baylibre.com; h=from:subject:message-id;
+ bh=uIUEQbX74BjpBT6arp9xgmz0PSMZGSl08X+sKXtOPS4=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmFUWs7s3z/QY0t0Bb2MukYPfYO2XDwD02rmXOq66U
+ X1+urN+JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZhVFrAAKCRArRkmdfjHURefzD/
+ 492lRbsokFN6R1t5qu+mCJoLrrQJkcZehOM4ZhrXp+tBzXtRT20KxDz+PU2wqw5Nsw+pw9YqHA2sGv
+ WCO7CIm4oFw9QYEf+TznkbkNacAZJPYhUrNL38Gj3FRVlP4rBYbYkGj1ISr79rB4ENm6QzzXb0F+O8
+ Xqx1/wtGHA/RVlgTFj/ex3g/AqnM2/X7YMMXJu5h7iwzysCfsFhRE+8U9Lk1Dq5pwXUlojznnJ0rik
+ mrv10fkRJgVm+ZtNX+fn9MPHad92OljwQ/CoYCPjaz16sWIxmBjQzWfYflpHWWLO8rGJ5poM5sfhsH
+ JpHbzSqa90IkwT+2PPEN16wrP421BgQUWvCRPh+MCm7KQXSEY57raM2FZ5o6mFMknZdHut2N/7MUJp
+ SpucR09rKBSbs4PK63W5VgnFIu86xMCbDWf/psFns9U1z6XXzv7k/6x5BbosWjxuBCZuyLH8S6Q92K
+ Y77r6MgYLFKTPS1MOHsRWBwD0OKYh1KNRsNkPE6J8/62NOvDr0uNboVmjaD2/JkiYEiQZDuM4M+k15
+ NrGUa+mrjZ2+rmlK24SmzMq4BJBQHMYB/9/RMz383ew9GEKYcZj8qrqMiuiwQwMaBEoeEFff2iqJdS
+ vpnl3N8cO7M+R2pz9oj2HRzg5bKv42xNJr89WfEtVMLrsVQl2JjPKRSlCwUA==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_064216_115754_D8CDA663 
-X-CRM114-Status: GOOD (  14.40  )
+X-CRM114-CacheID: sfid-20240409_144225_581942_21FC1D50 
+X-CRM114-Status: GOOD (  18.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,118 +138,873 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add soundcard bindings for the MT8365 SoC with the MT6357 audio codec.
+Add I2S Device Audio Interface support for MT8365 SoC.
 
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- .../bindings/sound/mediatek,mt8365-mt6357.yaml     | 99 ++++++++++++++++++++++
- 1 file changed, 99 insertions(+)
+ sound/soc/mediatek/mt8365/mt8365-dai-i2s.c | 854 +++++++++++++++++++++++++++++
+ 1 file changed, 854 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8365-mt6357.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8365-mt6357.yaml
+diff --git a/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c b/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c
 new file mode 100644
-index 000000000000..831c5b4665b8
+index 000000000000..c12d75dfe215
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mediatek,mt8365-mt6357.yaml
-@@ -0,0 +1,99 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/sound/mediatek,mt8365-mt6357.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c
+@@ -0,0 +1,854 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Mediatek 8365 ALSA SoC Audio DAI I2S Control
++ *
++ * Copyright (c) 2024 MediaTek Inc.
++ * Authors: Jia Zeng <jia.zeng@mediatek.com>
++ *          Alexandre Mergnat <amergnat@baylibre.com>
++ */
 +
-+title: Mediatek MT8365 ASoC sound card
++#include <linux/bitops.h>
++#include <linux/regmap.h>
++#include <sound/pcm_params.h>
++#include "mt8365-afe-clk.h"
++#include "mt8365-afe-common.h"
 +
-+maintainers:
-+  - Alexandre Mergnat <amergnat@baylibre.com>
++struct mtk_afe_i2s_priv {
++	bool adda_link;
++	int i2s_out_on_ref_cnt;
++	int id;
++	int low_jitter_en;
++	int mclk_id;
++	int share_i2s_id;
++	unsigned int clk_id_in;
++	unsigned int clk_id_in_m_sel;
++	unsigned int clk_id_out;
++	unsigned int clk_id_out_m_sel;
++	unsigned int clk_in_mult;
++	unsigned int clk_out_mult;
++	unsigned int config_val_in;
++	unsigned int config_val_out;
++	unsigned int dynamic_bck;
++	unsigned int reg_off_in;
++	unsigned int reg_off_out;
++};
 +
-+properties:
-+  compatible:
-+    const: mediatek,mt8365-mt6357
++/* This enum is merely for mtk_afe_i2s_priv declare */
++enum {
++	DAI_I2S0 = 0,
++	DAI_I2S3,
++	DAI_I2S_NUM,
++};
 +
-+  pinctrl-names:
-+    minItems: 1
-+    items:
-+      - const: default
-+      - const: dmic
-+      - const: miso_off
-+      - const: miso_on
-+      - const: mosi_off
-+      - const: mosi_on
++static const struct mtk_afe_i2s_priv mt8365_i2s_priv[DAI_I2S_NUM] = {
++	[DAI_I2S0] = {
++		.id = MT8365_AFE_IO_I2S,
++		.mclk_id = MT8365_I2S0_MCK,
++		.share_i2s_id = -1,
++		.clk_id_in = MT8365_CLK_AUD_I2S2_M,
++		.clk_id_out = MT8365_CLK_AUD_I2S1_M,
++		.clk_id_in_m_sel = MT8365_CLK_I2S2_M_SEL,
++		.clk_id_out_m_sel = MT8365_CLK_I2S1_M_SEL,
++		.clk_in_mult = 256,
++		.clk_out_mult = 256,
++		.adda_link = true,
++		.config_val_out = AFE_I2S_CON1_I2S2_TO_PAD,
++		.reg_off_in = AFE_I2S_CON2,
++		.reg_off_out = AFE_I2S_CON1,
++	},
++	[DAI_I2S3] = {
++		.id = MT8365_AFE_IO_2ND_I2S,
++		.mclk_id = MT8365_I2S3_MCK,
++		.share_i2s_id = -1,
++		.clk_id_in = MT8365_CLK_AUD_I2S0_M,
++		.clk_id_out = MT8365_CLK_AUD_I2S3_M,
++		.clk_id_in_m_sel = MT8365_CLK_I2S0_M_SEL,
++		.clk_id_out_m_sel = MT8365_CLK_I2S3_M_SEL,
++		.clk_in_mult = 256,
++		.clk_out_mult = 256,
++		.adda_link = false,
++		.config_val_in = AFE_I2S_CON_FROM_IO_MUX,
++		.reg_off_in = AFE_I2S_CON,
++		.reg_off_out = AFE_I2S_CON3,
++	},
++};
 +
-+  mediatek,platform:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: The phandle of MT8365 ASoC platform.
++static const u32 *get_iir_coef(unsigned int input_fs,
++			       unsigned int output_fs, unsigned int *count)
++{
++#define RATIOVER 9
++#define INV_COEF 10
++#define NO_NEED 11
 +
-+patternProperties:
-+  "^dai-link-[0-9]+$":
-+    type: object
-+    description:
-+      Container for dai-link level properties and CODEC sub-nodes.
++	static const u32 IIR_COEF_48_TO_44p1[30] = {
++		0x061fb0, 0x0bd256, 0x061fb0, 0xe3a3e6, 0xf0a300, 0x000003,
++		0x0e416d, 0x1bb577, 0x0e416d, 0xe59178, 0xf23637, 0x000003,
++		0x0c7d72, 0x189060, 0x0c7d72, 0xe96f09, 0xf505b2, 0x000003,
++		0x126054, 0x249143, 0x126054, 0xe1fc0c, 0xf4b20a, 0x000002,
++		0x000000, 0x323c85, 0x323c85, 0xf76d4e, 0x000000, 0x000002,
++	};
 +
-+    properties:
-+      codec:
-+        type: object
-+        description: Holds subnode which indicates codec dai.
++	static const u32 IIR_COEF_44p1_TO_32[42] = {
++		0x0a6074, 0x0d237a, 0x0a6074, 0xdd8d6c, 0xe0b3f6, 0x000002,
++		0x0e41f8, 0x128d48, 0x0e41f8, 0xefc14e, 0xf12d7a, 0x000003,
++		0x0cfa60, 0x11e89c, 0x0cfa60, 0xf1b09e, 0xf27205, 0x000003,
++		0x15b69c, 0x20e7e4, 0x15b69c, 0xea799a, 0xe9314a, 0x000002,
++		0x0f79e2, 0x1a7064, 0x0f79e2, 0xf65e4a, 0xf03d8e, 0x000002,
++		0x10c34f, 0x1ffe4b, 0x10c34f, 0x0bbecb, 0xf2bc4b, 0x000001,
++		0x000000, 0x23b063, 0x23b063, 0x07335f, 0x000000, 0x000002,
++	};
 +
-+        properties:
-+          sound-dai:
-+            maxItems: 1
-+            description: phandle of the codec DAI
++	static const u32 IIR_COEF_48_TO_32[42] = {
++		0x0a2a9b, 0x0a2f05, 0x0a2a9b, 0xe73873, 0xe0c525, 0x000002,
++		0x0dd4ad, 0x0e765a, 0x0dd4ad, 0xf49808, 0xf14844, 0x000003,
++		0x18a8cd, 0x1c40d0, 0x18a8cd, 0xed2aab, 0xe542ec, 0x000002,
++		0x13e044, 0x1a47c4, 0x13e044, 0xf44aed, 0xe9acc7, 0x000002,
++		0x1abd9c, 0x2a5429, 0x1abd9c, 0xff3441, 0xe0fc5f, 0x000001,
++		0x0d86db, 0x193e2e, 0x0d86db, 0x1a6f15, 0xf14507, 0x000001,
++		0x000000, 0x1f820c, 0x1f820c, 0x0a1b1f, 0x000000, 0x000002,
++	};
 +
-+        additionalProperties: false
++	static const u32 IIR_COEF_32_TO_16[48] = {
++		0x122893, 0xffadd4, 0x122893, 0x0bc205, 0xc0ee1c, 0x000001,
++		0x1bab8a, 0x00750d, 0x1bab8a, 0x06a983, 0xe18a5c, 0x000002,
++		0x18f68e, 0x02706f, 0x18f68e, 0x0886a9, 0xe31bcb, 0x000002,
++		0x149c05, 0x054487, 0x149c05, 0x0bec31, 0xe5973e, 0x000002,
++		0x0ea303, 0x07f24a, 0x0ea303, 0x115ff9, 0xe967b6, 0x000002,
++		0x0823fd, 0x085531, 0x0823fd, 0x18d5b4, 0xee8d21, 0x000002,
++		0x06888e, 0x0acbbb, 0x06888e, 0x40b55c, 0xe76dce, 0x000001,
++		0x000000, 0x2d31a9, 0x2d31a9, 0x23ba4f, 0x000000, 0x000001,
++	};
 +
-+      link-name:
-+        description:
-+          This property corresponds to the name of the BE dai-link to which
-+          we are going to update parameters in this node.
-+        items:
-+          const: 2ND_I2S_BE
++	static const u32 IIR_COEF_96_TO_44p1[48] = {
++		0x08b543, 0xfd80f4, 0x08b543, 0x0e2332, 0xe06ed0, 0x000002,
++		0x1b6038, 0xf90e7e, 0x1b6038, 0x0ec1ac, 0xe16f66, 0x000002,
++		0x188478, 0xfbb921, 0x188478, 0x105859, 0xe2e596, 0x000002,
++		0x13eff3, 0xffa707, 0x13eff3, 0x13455c, 0xe533b7, 0x000002,
++		0x0dc239, 0x03d458, 0x0dc239, 0x17f120, 0xe8b617, 0x000002,
++		0x0745f1, 0x05d790, 0x0745f1, 0x1e3d75, 0xed5f18, 0x000002,
++		0x05641f, 0x085e2b, 0x05641f, 0x48efd0, 0xe3e9c8, 0x000001,
++		0x000000, 0x28f632, 0x28f632, 0x273905, 0x000000, 0x000001,
++	};
 +
-+      sound-dai:
-+        maxItems: 1
-+        description: phandle of the CPU DAI
++	static const u32 IIR_COEF_44p1_TO_16[48] = {
++		0x0998fb, 0xf7f925, 0x0998fb, 0x1e54a0, 0xe06605, 0x000002,
++		0x0d828e, 0xf50f97, 0x0d828e, 0x0f41b5, 0xf0a999, 0x000003,
++		0x17ebeb, 0xee30d8, 0x17ebeb, 0x1f48ca, 0xe2ae88, 0x000002,
++		0x12fab5, 0xf46ddc, 0x12fab5, 0x20cc51, 0xe4d068, 0x000002,
++		0x0c7ac6, 0xfbd00e, 0x0c7ac6, 0x2337da, 0xe8028c, 0x000002,
++		0x060ddc, 0x015b3e, 0x060ddc, 0x266754, 0xec21b6, 0x000002,
++		0x0407b5, 0x04f827, 0x0407b5, 0x52e3d0, 0xe0149f, 0x000001,
++		0x000000, 0x1f9521, 0x1f9521, 0x2ac116, 0x000000, 0x000001,
++	};
 +
-+    required:
-+      - link-name
-+      - sound-dai
++	static const u32 IIR_COEF_48_TO_16[48] = {
++		0x0955ff, 0xf6544a, 0x0955ff, 0x2474e5, 0xe062e6, 0x000002,
++		0x0d4180, 0xf297f4, 0x0d4180, 0x12415b, 0xf0a3b0, 0x000003,
++		0x0ba079, 0xf4f0b0, 0x0ba079, 0x1285d3, 0xf1488b, 0x000003,
++		0x12247c, 0xf1033c, 0x12247c, 0x2625be, 0xe48e0d, 0x000002,
++		0x0b98e0, 0xf96d1a, 0x0b98e0, 0x27e79c, 0xe7798a, 0x000002,
++		0x055e3b, 0xffed09, 0x055e3b, 0x2a2e2d, 0xeb2854, 0x000002,
++		0x01a934, 0x01ca03, 0x01a934, 0x2c4fea, 0xee93ab, 0x000002,
++		0x000000, 0x1c46c5, 0x1c46c5, 0x2d37dc, 0x000000, 0x000001,
++	};
 +
-+    additionalProperties: false
++	static const u32 IIR_COEF_96_TO_16[48] = {
++		0x0805a1, 0xf21ae3, 0x0805a1, 0x3840bb, 0xe02a2e, 0x000002,
++		0x0d5dd8, 0xe8f259, 0x0d5dd8, 0x1c0af6, 0xf04700, 0x000003,
++		0x0bb422, 0xec08d9, 0x0bb422, 0x1bfccc, 0xf09216, 0x000003,
++		0x08fde6, 0xf108be, 0x08fde6, 0x1bf096, 0xf10ae0, 0x000003,
++		0x0ae311, 0xeeeda3, 0x0ae311, 0x37c646, 0xe385f5, 0x000002,
++		0x044089, 0xfa7242, 0x044089, 0x37a785, 0xe56526, 0x000002,
++		0x00c75c, 0xffb947, 0x00c75c, 0x378ba3, 0xe72c5f, 0x000002,
++		0x000000, 0x0ef76e, 0x0ef76e, 0x377fda, 0x000000, 0x000001,
++	};
 +
-+required:
-+  - compatible
-+  - pinctrl-names
-+  - mediatek,platform
++	static const struct {
++		const u32 *coef;
++		unsigned int cnt;
++	} iir_coef_tbl_list[8] = {
++		/* 0: 0.9188 */
++		{ IIR_COEF_48_TO_44p1, ARRAY_SIZE(IIR_COEF_48_TO_44p1) },
++		/* 1: 0.7256 */
++		{ IIR_COEF_44p1_TO_32, ARRAY_SIZE(IIR_COEF_44p1_TO_32) },
++		/* 2: 0.6667 */
++		{ IIR_COEF_48_TO_32, ARRAY_SIZE(IIR_COEF_48_TO_32) },
++		/* 3: 0.5 */
++		{ IIR_COEF_32_TO_16, ARRAY_SIZE(IIR_COEF_32_TO_16) },
++		/* 4: 0.4594 */
++		{ IIR_COEF_96_TO_44p1, ARRAY_SIZE(IIR_COEF_96_TO_44p1) },
++		/* 5: 0.3628 */
++		{ IIR_COEF_44p1_TO_16, ARRAY_SIZE(IIR_COEF_44p1_TO_16) },
++		/* 6: 0.3333 */
++		{ IIR_COEF_48_TO_16, ARRAY_SIZE(IIR_COEF_48_TO_16) },
++		/* 7: 0.1667 */
++		{ IIR_COEF_96_TO_16, ARRAY_SIZE(IIR_COEF_96_TO_16) },
++	};
 +
-+additionalProperties: false
++	static const u32 freq_new_index[16] = {
++		0, 1, 2, 99, 3, 4, 5, 99, 6, 7, 8, 9, 10, 11, 12, 99
++	};
 +
-+examples:
-+  - |
-+    sound {
-+        compatible = "mediatek,mt8365-mt6357";
-+        pinctrl-names = "default",
-+                        "dmic",
-+                        "miso_off",
-+                        "miso_on",
-+                        "mosi_off",
-+                        "mosi_on";
-+        pinctrl-0 = <&aud_default_pins>;
-+        pinctrl-1 = <&aud_dmic_pins>;
-+        pinctrl-2 = <&aud_miso_off_pins>;
-+        pinctrl-3 = <&aud_miso_on_pins>;
-+        pinctrl-4 = <&aud_mosi_off_pins>;
-+        pinctrl-5 = <&aud_mosi_on_pins>;
-+        mediatek,platform = <&afe>;
++	static const u32 iir_coef_tbl_matrix[13][13] = {
++		{/*0*/
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*1*/
++			1, NO_NEED, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*2*/
++			2, 0, NO_NEED, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*3*/
++			3, INV_COEF, INV_COEF, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*4*/
++			5, 3, INV_COEF, 2, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*5*/
++			6, 4, 3, 2, 0, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED
++		},
++		{/*6*/
++			INV_COEF, INV_COEF, INV_COEF, 3, INV_COEF,
++			INV_COEF, NO_NEED, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*7*/
++			INV_COEF, INV_COEF, INV_COEF, 5, 3,
++			INV_COEF, 1, NO_NEED, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*8*/
++			7, INV_COEF, INV_COEF, 6, 4, 3, 2, 0, NO_NEED,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*9*/
++			INV_COEF, INV_COEF, INV_COEF, INV_COEF,
++			INV_COEF, INV_COEF, 5, 3, INV_COEF,
++			NO_NEED, NO_NEED, NO_NEED, NO_NEED
++		},
++		{/*10*/
++			INV_COEF, INV_COEF, INV_COEF, 7, INV_COEF,
++			INV_COEF, 6, 4, 3, 0,
++			NO_NEED, NO_NEED, NO_NEED
++		},
++		{ /*11*/
++			RATIOVER, INV_COEF, INV_COEF, INV_COEF,
++			INV_COEF, INV_COEF, INV_COEF, INV_COEF,
++			INV_COEF, 3, INV_COEF, NO_NEED, NO_NEED
++		},
++		{/*12*/
++			RATIOVER, RATIOVER, INV_COEF, INV_COEF,
++			INV_COEF, INV_COEF, 7, INV_COEF,
++			INV_COEF, 4, 3, 0, NO_NEED
++		},
++	};
 +
-+        /* hdmi interface */
-+        dai-link-0 {
-+            link-name = "2ND_I2S_BE";
-+            sound-dai = <&afe>;
++	const u32 *coef = NULL;
++	unsigned int cnt = 0;
++	u32 i = freq_new_index[input_fs];
++	u32 j = freq_new_index[output_fs];
 +
-+            codec {
-+                sound-dai = <&it66121hdmitx>;
-+            };
-+        };
-+    };
++	if (i >= 13 || j >= 13) {
++	} else {
++		u32 k = iir_coef_tbl_matrix[i][j];
++
++		if (k >= NO_NEED) {
++		} else if (k == RATIOVER) {
++		} else if (k == INV_COEF) {
++		} else {
++			coef = iir_coef_tbl_list[k].coef;
++			cnt = iir_coef_tbl_list[k].cnt;
++		}
++	}
++	*count = cnt;
++	return coef;
++}
++
++static int mt8365_dai_set_config(struct mtk_base_afe *afe,
++				 struct mtk_afe_i2s_priv *i2s_data,
++				 bool is_input, unsigned int rate,
++				 int bit_width)
++{
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++	struct mt8365_be_dai_data *be =
++	&afe_priv->be_data[i2s_data->id - MT8365_AFE_BACKEND_BASE];
++	unsigned int val, reg_off;
++	int fs = mt8365_afe_fs_timing(rate);
++
++	if (fs < 0)
++		return -EINVAL;
++
++	val = AFE_I2S_CON_LOW_JITTER_CLK |
++	      FIELD_PREP(AFE_I2S_CON_RATE_MASK, fs) |
++	      AFE_I2S_CON_FORMAT_I2S;
++
++	if (is_input) {
++		reg_off = i2s_data->reg_off_in;
++		if (i2s_data->adda_link)
++			val |= i2s_data->config_val_in;
++	} else {
++		reg_off = i2s_data->reg_off_out;
++		val |= i2s_data->config_val_in;
++	}
++
++	/* 1:bck=32lrck(16bit) or bck=64lrck(32bit) 0:fix bck=64lrck */
++	if (i2s_data->dynamic_bck) {
++		if (bit_width > 16)
++			val |= AFE_I2S_CON_WLEN_32BIT;
++		else
++			val &= ~(u32)AFE_I2S_CON_WLEN_32BIT;
++	} else {
++		val |= AFE_I2S_CON_WLEN_32BIT;
++	}
++
++	if ((be->fmt_mode & SND_SOC_DAIFMT_MASTER_MASK) ==
++	    SND_SOC_DAIFMT_CBM_CFM) {
++		val |= AFE_I2S_CON_SRC_SLAVE;
++		val &= ~(u32)AFE_I2S_CON_FROM_IO_MUX;//from consys
++	}
++
++	regmap_update_bits(afe->regmap, reg_off, ~(u32)AFE_I2S_CON_EN, val);
++
++	if (i2s_data->adda_link && is_input)
++		regmap_update_bits(afe->regmap, AFE_ADDA_TOP_CON0, 0x1, 0x1);
++
++	return 0;
++}
++
++int mt8365_afe_set_i2s_out(struct mtk_base_afe *afe,
++			   unsigned int rate, int bit_width)
++{
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_afe_i2s_priv *i2s_data =
++		afe_priv->dai_priv[MT8365_AFE_IO_I2S];
++
++	return mt8365_dai_set_config(afe, i2s_data, false, rate, bit_width);
++}
++
++static int mt8365_afe_set_2nd_i2s_asrc(struct mtk_base_afe *afe,
++				       unsigned int rate_in,
++				       unsigned int rate_out,
++				       unsigned int width,
++				       unsigned int mono,
++				       int o16bit, int tracking)
++{
++	int ifs, ofs = 0;
++	unsigned int val = 0;
++	unsigned int mask = 0;
++	const u32 *coef;
++	u32 iir_stage;
++	unsigned int coef_count = 0;
++
++	ifs = mt8365_afe_fs_timing(rate_in);
++
++	if (ifs < 0)
++		return -EINVAL;
++
++	ofs = mt8365_afe_fs_timing(rate_out);
++
++	if (ofs < 0)
++		return -EINVAL;
++
++	val = FIELD_PREP(O16BIT, o16bit) | FIELD_PREP(IS_MONO, mono);
++	regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON2,
++			   O16BIT | IS_MONO, val);
++
++	coef = get_iir_coef(ifs, ofs, &coef_count);
++	iir_stage = ((u32)coef_count / 6) - 1;
++
++	if (coef) {
++		unsigned int i;
++
++		/* CPU control IIR coeff SRAM */
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON0,
++				   COEFF_SRAM_CTRL, COEFF_SRAM_CTRL);
++
++		/* set to 0, IIR coeff SRAM addr */
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON13,
++				   0xffffffff, 0x0);
++
++		for (i = 0; i < coef_count; ++i)
++			regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON12,
++					   0xffffffff, coef[i]);
++
++		/* disable IIR coeff SRAM access */
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON0,
++				   COEFF_SRAM_CTRL,
++				   (unsigned long)~COEFF_SRAM_CTRL);
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON2,
++				   CLR_IIR_HISTORY | IIR_EN | IIR_STAGE_MASK,
++				   CLR_IIR_HISTORY | IIR_EN |
++				   FIELD_PREP(IIR_STAGE_MASK, iir_stage));
++	} else {
++		/* disable IIR */
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON2,
++				   IIR_EN, (unsigned long)~IIR_EN);
++	}
++
++	/* CON3 setting (RX OFS) */
++	regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON3,
++			   0x00FFFFFF, rx_frequency_palette(ofs));
++	/* CON4 setting (RX IFS) */
++	regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON4,
++			   0x00FFFFFF, rx_frequency_palette(ifs));
++
++	/* CON5 setting */
++	if (tracking) {
++		val = CALI_64_CYCLE |
++		      CALI_AUTORST |
++		      AUTO_TUNE_FREQ5 |
++		      COMP_FREQ_RES |
++		      CALI_BP_DGL |
++		      CALI_AUTO_RESTART |
++		      CALI_USE_FREQ_OUT |
++		      CALI_SEL_01;
++
++		mask = CALI_CYCLE_MASK |
++		       CALI_AUTORST |
++		       AUTO_TUNE_FREQ5 |
++		       COMP_FREQ_RES |
++		       CALI_SEL_MASK |
++		       CALI_BP_DGL |
++		       AUTO_TUNE_FREQ4 |
++		       CALI_AUTO_RESTART |
++		       CALI_USE_FREQ_OUT |
++		       CALI_ON;
++
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON5,
++				   mask, val);
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON5,
++				   CALI_ON, CALI_ON);
++	} else {
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON5,
++				   0xffffffff, 0x0);
++	}
++	/* CON6 setting fix 8125 */
++	regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON6,
++			   0x0000ffff, 0x1FBD);
++	/* CON9 setting (RX IFS) */
++	regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON9,
++			   0x000fffff, AutoRstThHi(ifs));
++	/* CON10 setting (RX IFS) */
++	regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON10,
++			   0x000fffff, AutoRstThLo(ifs));
++	regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON0,
++			   CHSET_STR_CLR, CHSET_STR_CLR);
++
++	return 0;
++}
++
++static int mt8365_afe_set_2nd_i2s_asrc_enable(struct mtk_base_afe *afe,
++					      bool enable)
++{
++	if (enable)
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON0,
++				   ASM_ON, ASM_ON);
++	else
++		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON0,
++				   ASM_ON, (unsigned long)~ASM_ON);
++	return 0;
++}
++
++void mt8365_afe_set_i2s_out_enable(struct mtk_base_afe *afe, bool enable)
++{
++	int i;
++	unsigned long flags;
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_afe_i2s_priv *i2s_data;
++
++	for (i = 0; i < DAI_I2S_NUM; i++) {
++		if (mt8365_i2s_priv[i].adda_link)
++			i2s_data = afe_priv->dai_priv[mt8365_i2s_priv[i].id];
++	}
++
++	spin_lock_irqsave(&afe_priv->afe_ctrl_lock, flags);
++
++	if (enable) {
++		i2s_data->i2s_out_on_ref_cnt++;
++		if (i2s_data->i2s_out_on_ref_cnt == 1)
++			regmap_update_bits(afe->regmap, AFE_I2S_CON1,
++					   0x1, enable);
++	} else {
++		i2s_data->i2s_out_on_ref_cnt--;
++		if (i2s_data->i2s_out_on_ref_cnt == 0)
++			regmap_update_bits(afe->regmap, AFE_I2S_CON1,
++					   0x1, enable);
++		else if (i2s_data->i2s_out_on_ref_cnt < 0)
++			i2s_data->i2s_out_on_ref_cnt = 0;
++	}
++
++	spin_unlock_irqrestore(&afe_priv->afe_ctrl_lock, flags);
++}
++
++static void mt8365_dai_set_enable(struct mtk_base_afe *afe,
++				  struct mtk_afe_i2s_priv *i2s_data,
++				  bool is_input, bool enable)
++{
++	unsigned int reg_off;
++
++	if (is_input) {
++		reg_off = i2s_data->reg_off_in;
++	} else {
++		if (i2s_data->adda_link) {
++			mt8365_afe_set_i2s_out_enable(afe, enable);
++			return;
++		}
++		reg_off = i2s_data->reg_off_out;
++	}
++	regmap_update_bits(afe->regmap, reg_off,
++			   0x1, enable);
++}
++
++static int mt8365_dai_i2s_startup(struct snd_pcm_substream *substream,
++				  struct snd_soc_dai *dai)
++{
++	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_afe_i2s_priv *i2s_data = afe_priv->dai_priv[dai->id];
++	struct mt8365_be_dai_data *be = &afe_priv->be_data[dai->id - MT8365_AFE_BACKEND_BASE];
++	bool i2s_in_slave =
++		(substream->stream == SNDRV_PCM_STREAM_CAPTURE) &&
++		((be->fmt_mode & SND_SOC_DAIFMT_MASTER_MASK) ==
++		SND_SOC_DAIFMT_CBM_CFM);
++
++	mt8365_afe_enable_main_clk(afe);
++
++	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK)
++		mt8365_afe_enable_clk(afe,
++				      afe_priv->clocks[i2s_data->clk_id_out]);
++
++	if (substream->stream == SNDRV_PCM_STREAM_CAPTURE && !i2s_in_slave)
++		mt8365_afe_enable_clk(afe,
++				      afe_priv->clocks[i2s_data->clk_id_in]);
++
++	if (i2s_in_slave)
++		mt8365_afe_enable_top_cg(afe, MT8365_TOP_CG_I2S_IN);
++
++	return 0;
++}
++
++static void mt8365_dai_i2s_shutdown(struct snd_pcm_substream *substream,
++				    struct snd_soc_dai *dai)
++{
++	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_afe_i2s_priv *i2s_data = afe_priv->dai_priv[dai->id];
++	struct mt8365_be_dai_data *be = &afe_priv->be_data[dai->id - MT8365_AFE_BACKEND_BASE];
++	bool reset_i2s_out_change = (substream->stream == SNDRV_PCM_STREAM_PLAYBACK);
++	bool reset_i2s_in_change = (substream->stream == SNDRV_PCM_STREAM_CAPTURE);
++	bool i2s_in_slave =
++		(substream->stream == SNDRV_PCM_STREAM_CAPTURE) &&
++		((be->fmt_mode & SND_SOC_DAIFMT_MASTER_MASK) ==
++		SND_SOC_DAIFMT_CBM_CFM);
++
++	if (be->prepared[substream->stream]) {
++		if (reset_i2s_out_change)
++			mt8365_dai_set_enable(afe, i2s_data, false, false);
++
++		if (reset_i2s_in_change)
++			mt8365_dai_set_enable(afe, i2s_data, true, false);
++
++		if (substream->runtime->rate % 8000)
++			mt8365_afe_disable_apll_associated_cfg(afe, MT8365_AFE_APLL1);
++		else
++			mt8365_afe_disable_apll_associated_cfg(afe, MT8365_AFE_APLL2);
++
++		if (reset_i2s_out_change)
++			be->prepared[SNDRV_PCM_STREAM_PLAYBACK] = false;
++
++		if (reset_i2s_in_change)
++			be->prepared[SNDRV_PCM_STREAM_CAPTURE] = false;
++	}
++
++	if (reset_i2s_out_change)
++		mt8365_afe_disable_clk(afe,
++				       afe_priv->clocks[i2s_data->clk_id_out]);
++
++	if (reset_i2s_in_change && !i2s_in_slave)
++		mt8365_afe_disable_clk(afe,
++				       afe_priv->clocks[i2s_data->clk_id_in]);
++
++	if (i2s_in_slave)
++		mt8365_afe_disable_top_cg(afe, MT8365_TOP_CG_I2S_IN);
++
++	mt8365_afe_disable_main_clk(afe);
++}
++
++static int mt8365_dai_i2s_prepare(struct snd_pcm_substream *substream,
++				  struct snd_soc_dai *dai)
++{
++	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_afe_i2s_priv *i2s_data = afe_priv->dai_priv[dai->id];
++	struct mt8365_be_dai_data *be = &afe_priv->be_data[dai->id - MT8365_AFE_BACKEND_BASE];
++	bool apply_i2s_out_change = (substream->stream == SNDRV_PCM_STREAM_PLAYBACK);
++	bool apply_i2s_in_change = (substream->stream == SNDRV_PCM_STREAM_CAPTURE);
++	unsigned int rate = substream->runtime->rate;
++	int bit_width = snd_pcm_format_width(substream->runtime->format);
++	int ret;
++
++	if (be->prepared[substream->stream]) {
++		dev_info(afe->dev, "%s '%s' prepared already\n",
++			 __func__, snd_pcm_stream_str(substream));
++		return 0;
++	}
++
++	if (apply_i2s_out_change) {
++		ret = mt8365_dai_set_config(afe, i2s_data, false, rate, bit_width);
++		if (ret)
++			return ret;
++	}
++
++	if (apply_i2s_in_change) {
++		if ((be->fmt_mode & SND_SOC_DAIFMT_MASTER_MASK)
++		    == SND_SOC_DAIFMT_CBM_CFM) {
++			ret = mt8365_afe_set_2nd_i2s_asrc(afe, 32000, rate,
++							  (unsigned int)bit_width,
++							  0, 0, 1);
++			if (ret < 0)
++				return ret;
++		}
++		ret = mt8365_dai_set_config(afe, i2s_data, true, rate, bit_width);
++		if (ret)
++			return ret;
++	}
++
++	if (rate % 8000)
++		mt8365_afe_enable_apll_associated_cfg(afe, MT8365_AFE_APLL1);
++	else
++		mt8365_afe_enable_apll_associated_cfg(afe, MT8365_AFE_APLL2);
++
++	if (apply_i2s_out_change) {
++		mt8365_afe_set_clk_parent(afe,
++					  afe_priv->clocks[i2s_data->clk_id_out_m_sel],
++					  ((rate % 8000) ?
++					  afe_priv->clocks[MT8365_CLK_AUD1] :
++					  afe_priv->clocks[MT8365_CLK_AUD2]));
++
++		mt8365_afe_set_clk_rate(afe,
++					afe_priv->clocks[i2s_data->clk_id_out],
++					rate * i2s_data->clk_out_mult);
++
++		mt8365_dai_set_enable(afe, i2s_data, false, true);
++		be->prepared[SNDRV_PCM_STREAM_PLAYBACK] = true;
++	}
++
++	if (apply_i2s_in_change) {
++		mt8365_afe_set_clk_parent(afe,
++					  afe_priv->clocks[i2s_data->clk_id_in_m_sel],
++					  ((rate % 8000) ?
++					  afe_priv->clocks[MT8365_CLK_AUD1] :
++					  afe_priv->clocks[MT8365_CLK_AUD2]));
++
++		mt8365_afe_set_clk_rate(afe,
++					afe_priv->clocks[i2s_data->clk_id_in],
++					rate * i2s_data->clk_in_mult);
++
++		mt8365_dai_set_enable(afe, i2s_data, true, true);
++
++		if ((be->fmt_mode & SND_SOC_DAIFMT_MASTER_MASK)
++		    == SND_SOC_DAIFMT_CBM_CFM)
++			mt8365_afe_set_2nd_i2s_asrc_enable(afe, true);
++
++		be->prepared[SNDRV_PCM_STREAM_CAPTURE] = true;
++	}
++	return 0;
++}
++
++static int mt8365_afe_2nd_i2s_hw_params(struct snd_pcm_substream *substream,
++					struct snd_pcm_hw_params *params,
++					struct snd_soc_dai *dai)
++{
++	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++	unsigned int width_val = params_width(params) > 16 ?
++		(AFE_CONN_24BIT_O00 | AFE_CONN_24BIT_O01) : 0;
++
++	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK)
++		regmap_update_bits(afe->regmap, AFE_CONN_24BIT,
++				   AFE_CONN_24BIT_O00 | AFE_CONN_24BIT_O01, width_val);
++
++	return 0;
++}
++
++static int mt8365_afe_2nd_i2s_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
++{
++	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++	struct mt8365_be_dai_data *be = &afe_priv->be_data[dai->id - MT8365_AFE_BACKEND_BASE];
++
++	be->fmt_mode = 0;
++
++	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
++	case SND_SOC_DAIFMT_I2S:
++		be->fmt_mode |= SND_SOC_DAIFMT_I2S;
++		break;
++	case SND_SOC_DAIFMT_LEFT_J:
++		be->fmt_mode |= SND_SOC_DAIFMT_LEFT_J;
++		break;
++	default:
++		dev_info(afe->dev, "invalid audio format for 2nd i2s!\n");
++		return -EINVAL;
++	}
++
++	if (((fmt & SND_SOC_DAIFMT_INV_MASK) != SND_SOC_DAIFMT_NB_NF) &&
++	    ((fmt & SND_SOC_DAIFMT_INV_MASK) != SND_SOC_DAIFMT_NB_IF) &&
++	    ((fmt & SND_SOC_DAIFMT_INV_MASK) != SND_SOC_DAIFMT_IB_NF) &&
++	    ((fmt & SND_SOC_DAIFMT_INV_MASK) != SND_SOC_DAIFMT_IB_IF)) {
++		dev_info(afe->dev, "invalid audio format for 2nd i2s!\n");
++		return -EINVAL;
++	}
++
++	be->fmt_mode |= (fmt & SND_SOC_DAIFMT_INV_MASK);
++
++	if (((fmt & SND_SOC_DAIFMT_MASTER_MASK) == SND_SOC_DAIFMT_CBM_CFM))
++		be->fmt_mode |= (fmt & SND_SOC_DAIFMT_MASTER_MASK);
++
++	return 0;
++}
++
++static const struct snd_soc_dai_ops mt8365_afe_i2s_ops = {
++	.startup	= mt8365_dai_i2s_startup,
++	.shutdown	= mt8365_dai_i2s_shutdown,
++	.prepare	= mt8365_dai_i2s_prepare,
++};
++
++static const struct snd_soc_dai_ops mt8365_afe_2nd_i2s_ops = {
++	.startup	= mt8365_dai_i2s_startup,
++	.shutdown	= mt8365_dai_i2s_shutdown,
++	.hw_params	= mt8365_afe_2nd_i2s_hw_params,
++	.prepare	= mt8365_dai_i2s_prepare,
++	.set_fmt	= mt8365_afe_2nd_i2s_set_fmt,
++};
++
++static struct snd_soc_dai_driver mtk_dai_i2s_driver[] = {
++	{
++		.name = "I2S",
++		.id = MT8365_AFE_IO_I2S,
++		.playback = {
++			.stream_name = "I2S Playback",
++			.channels_min = 1,
++			.channels_max = 2,
++			.rates = SNDRV_PCM_RATE_8000_192000,
++			.formats = SNDRV_PCM_FMTBIT_S16_LE |
++				   SNDRV_PCM_FMTBIT_S24_LE |
++				   SNDRV_PCM_FMTBIT_S32_LE,
++		},
++		.capture = {
++			.stream_name = "I2S Capture",
++			.channels_min = 1,
++			.channels_max = 2,
++			.rates = SNDRV_PCM_RATE_8000_192000,
++			.formats = SNDRV_PCM_FMTBIT_S16_LE |
++				   SNDRV_PCM_FMTBIT_S24_LE |
++				   SNDRV_PCM_FMTBIT_S32_LE,
++		},
++		.ops = &mt8365_afe_i2s_ops,
++	}, {
++		.name = "2ND I2S",
++		.id = MT8365_AFE_IO_2ND_I2S,
++		.playback = {
++			.stream_name = "2ND I2S Playback",
++			.channels_min = 1,
++			.channels_max = 2,
++			.rates = SNDRV_PCM_RATE_8000_192000,
++			.formats = SNDRV_PCM_FMTBIT_S16_LE |
++				   SNDRV_PCM_FMTBIT_S24_LE |
++				   SNDRV_PCM_FMTBIT_S32_LE,
++		},
++		.capture = {
++			.stream_name = "2ND I2S Capture",
++			.channels_min = 1,
++			.channels_max = 2,
++			.rates = SNDRV_PCM_RATE_8000_192000,
++			.formats = SNDRV_PCM_FMTBIT_S16_LE |
++				   SNDRV_PCM_FMTBIT_S24_LE |
++				   SNDRV_PCM_FMTBIT_S32_LE,
++		},
++		.ops = &mt8365_afe_2nd_i2s_ops,
++	}
++};
++
++/* low jitter control */
++static const char * const mt8365_i2s_hd_str[] = {
++	"Normal", "Low_Jitter"
++};
++
++static SOC_ENUM_SINGLE_EXT_DECL(mt8365_i2s_enum, mt8365_i2s_hd_str);
++
++static const char * const fmi2sin_text[] = {
++	"OPEN", "FM_2ND_I2S_IN"
++};
++
++static SOC_ENUM_SINGLE_VIRT_DECL(fmi2sin_enum, fmi2sin_text);
++
++static const struct snd_kcontrol_new fmi2sin_mux =
++	SOC_DAPM_ENUM("FM 2ND I2S Source", fmi2sin_enum);
++
++static const struct snd_kcontrol_new i2s_o03_o04_enable_ctl =
++	SOC_DAPM_SINGLE_VIRT("Switch", 1);
++
++static const struct snd_soc_dapm_widget mtk_dai_i2s_widgets[] = {
++	SND_SOC_DAPM_SWITCH("I2S O03_O04", SND_SOC_NOPM, 0, 0,
++			    &i2s_o03_o04_enable_ctl),
++	SND_SOC_DAPM_MUX("FM 2ND I2S Mux", SND_SOC_NOPM, 0, 0, &fmi2sin_mux),
++	SND_SOC_DAPM_INPUT("2ND I2S In"),
++};
++
++static const struct snd_soc_dapm_route mtk_dai_i2s_routes[] = {
++	{"I2S O03_O04", "Switch", "O03"},
++	{"I2S O03_O04", "Switch", "O04"},
++	{"I2S Playback", NULL, "I2S O03_O04"},
++	{"2ND I2S Playback", NULL, "O00"},
++	{"2ND I2S Playback", NULL, "O01"},
++	{"2ND I2S Capture", NULL, "2ND I2S In"},
++	{"FM 2ND I2S Mux", "FM_2ND_I2S_IN", "2ND I2S Capture"},
++};
++
++static int mt8365_dai_i2s_set_priv(struct mtk_base_afe *afe)
++{
++	int i, ret;
++	struct mt8365_afe_private *afe_priv = afe->platform_priv;
++
++	for (i = 0; i < DAI_I2S_NUM; i++) {
++		ret = mt8365_dai_set_priv(afe, mt8365_i2s_priv[i].id,
++					  sizeof(*afe_priv),
++					  &mt8365_i2s_priv[i]);
++		if (ret)
++			return ret;
++	}
++	return 0;
++}
++
++int mt8365_dai_i2s_register(struct mtk_base_afe *afe)
++{
++	struct mtk_base_afe_dai *dai;
++
++	dai = devm_kzalloc(afe->dev, sizeof(*dai), GFP_KERNEL);
++	if (!dai)
++		return -ENOMEM;
++
++	list_add(&dai->list, &afe->sub_dais);
++
++	dai->dai_drivers = mtk_dai_i2s_driver;
++	dai->num_dai_drivers = ARRAY_SIZE(mtk_dai_i2s_driver);
++	dai->dapm_widgets = mtk_dai_i2s_widgets;
++	dai->num_dapm_widgets = ARRAY_SIZE(mtk_dai_i2s_widgets);
++	dai->dapm_routes = mtk_dai_i2s_routes;
++	dai->num_dapm_routes = ARRAY_SIZE(mtk_dai_i2s_routes);
++
++	/* set all dai i2s private data */
++	return mt8365_dai_i2s_set_priv(afe);
++}
 
 -- 
 2.25.1
