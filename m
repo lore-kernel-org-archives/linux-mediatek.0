@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1794CD1296
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 12:10:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED2F4C67861
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 12:10:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
 	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
 	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v2zGX0Nb7XGXVaIZzphruqHiMnBkqgX68Z3rMQ8nP3M=; b=gT2on6mvUqykFrKrTN1XF07M/E
-	zZW+wGgXC4SrDBIBq1rxoHGCTKeUwcxZRnYQqeL2a5fjs6PFECWkKE5+RJVx5BxJwLXnWaEeyFgpl
-	LXaCUczb103HTxXtJ+AMi5wgSDPB0beUIxAoyhIlso53htVp1ywrbMLe21FZ2grhaXa2wQ5aBZ/R0
-	d3i0AUSi1GR4ZFEdFPWjmpaLkNaHH9+X67102zi4mV/XcPMMWu/tJ8GBcuTgU28EIci4r4/zy79TO
-	kwXCEUBMRZK+PRtS1MKPHdrlAZB5BYHbVo4pToS789sI6rZbKNskb3IyUQjchgmCUXu9H2qVnc18G
-	ZbHLoS0Q==;
+	bh=YyjjnM2IGz5DaOmkGdNiPWRrULNvhgtZsdttg/HjAJk=; b=jmgnwFsr4N8oXq/P1zBA1YCdRA
+	XTqPt4s9san2DDIZKt67DlDdqQTXHBcxYSshFVw1caUic4PQvxUs80FSE+SB5tZyPmoCwJZN1/C3U
+	/E68eMIHjJ8SAOsiHW7x1HCQmgS2Jab7vbM1nlxJvQ3On5Hb/9q0apf3hrimuXx2fYlZwJciWLZQD
+	bNcU6ODvleAKInf8gACGco4USVVuxhhJftWbhviC+SNWNTzXpxYStEoaif+pI3NBTt6Y8hxXjGloW
+	/DUsNGC+kWfPbtua6B87LKjlLUl1mO4grDhHhBPhGyX59gpuDKhU/pO6fpceq/ICfb1BwhRMPUf+L
+	iplSzAdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruAJP-00000001rpw-1bz6;
-	Tue, 09 Apr 2024 12:10:51 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ruAJW-00000001rtr-0PZE;
+	Tue, 09 Apr 2024 12:10:58 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruAJL-00000001rof-0X58;
-	Tue, 09 Apr 2024 12:10:48 +0000
+	id 1ruAJN-00000001rpE-2K00;
+	Tue, 09 Apr 2024 12:10:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 676C5616D4;
-	Tue,  9 Apr 2024 12:10:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BED3EC433C7;
-	Tue,  9 Apr 2024 12:10:45 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id CEBDE616E0;
+	Tue,  9 Apr 2024 12:10:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5ACE4C43399;
+	Tue,  9 Apr 2024 12:10:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712664646;
-	bh=Kqt0iwwTPC3AOYTlEZgew0NErAZ3Ys/2OHVWI4y3Xd4=;
+	s=k20201202; t=1712664648;
+	bh=qPcpjQQA+x/Lp3zoDAguMcAnH3yp4AUeYMdHe1M4OcE=;
 	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=eF1TAvKhRb0ECUTHSgTfdE50JOT/NZ1JcNC1PvF4Q/IQymUhXQ0OKu7tcU6E2gt1Y
-	 JBfBEJEiL7kboOpY9vf5D5sQyRNv7jVstOpNjWGTKb74Fso+biJHlXXyQxcD8DniMX
-	 3sMQRksrPADdIEwwz1rRpULXWQCBv4tdIQQZYvmGTFVchOQRU4lvxn6U99BgjSBtbr
-	 //vjZWzhQcwOwONnIzsnnTm2lZnwb/OlSXc4z9NsZCQAr2wMelgrNtbuN6S5van+GB
-	 MZg7hF5JXU7tJreJXYtnvzCOeAympCSPPG7cBsJSor/mL82KsJPKkvTCCqUsVhkWtC
-	 IlagK8/TsStug==
-Date: Tue, 09 Apr 2024 07:10:44 -0500
+	b=Lr6otbaZHkCwc8rTE3hO5aEBmzcZW1GmC9RB07B4BUlkpRRo/Dj2uW7ymS7cIqQtf
+	 TI2U0yDOEl9WMMGHLaetqQHVpaud3bzGlHx/8A3G2rWc1KZvLSMiSxIrR2NQODkaNx
+	 S3F/X6kQBtaW8yaX0qCwVBdU791lVnJAxFWyXEvnjr8FcFPkrdf6HjM6YoWDjtL1sA
+	 /JSfcsu/7hCuCFyx4sBOlIDjyxfSf8VJqnSUS3MRT6HWxVpvdE9IcXtO1vs0ACEucf
+	 io9RlHyjH0Z/JkbCJmtALKfb5HFty6qkFWsqmjkNQmx0Vd9rkRpc5aK3MNjNdTsR3u
+	 Q7nZ6uDer/jzA==
+Date: Tue, 09 Apr 2024 07:10:47 -0500
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
 From: Rob Herring <robh@kernel.org>
 To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: dri-devel@lists.freedesktop.org, linux-sound@vger.kernel.org, 
- linaro-mm-sig@lists.linaro.org, Rob Herring <robh+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Catalin Marinas <catalin.marinas@arm.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- linux-media@vger.kernel.org, 
- =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- Flora Fu <flora.fu@mediatek.com>, Mark Brown <broonie@kernel.org>, 
- Lee Jones <lee@kernel.org>, Takashi Iwai <tiwai@suse.com>, 
- Will Deacon <will@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>, 
- linux-mediatek@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, 
+Cc: Rob Herring <robh+dt@kernel.org>, 
+ Sumit Semwal <sumit.semwal@linaro.org>, Flora Fu <flora.fu@mediatek.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
- Jaroslav Kysela <perex@perex.cz>
-In-Reply-To: <20240226-audio-i350-v2-3-3043d483de0d@baylibre.com>
+ dri-devel@lists.freedesktop.org, Mark Brown <broonie@kernel.org>, 
+ devicetree@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Catalin Marinas <catalin.marinas@arm.com>, linux-media@vger.kernel.org, 
+ Jaroslav Kysela <perex@perex.cz>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ Takashi Iwai <tiwai@suse.com>, Conor Dooley <conor+dt@kernel.org>, 
+ linux-mediatek@lists.infradead.org, Lee Jones <lee@kernel.org>, 
+ linux-kernel@vger.kernel.org, Will Deacon <will@kernel.org>, 
+ linaro-mm-sig@lists.linaro.org, Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Liam Girdwood <lgirdwood@gmail.com>
+In-Reply-To: <20240226-audio-i350-v2-4-3043d483de0d@baylibre.com>
 References: <20240226-audio-i350-v2-0-3043d483de0d@baylibre.com>
- <20240226-audio-i350-v2-3-3043d483de0d@baylibre.com>
-Message-Id: <171266464251.692374.12025555863069807976.robh@kernel.org>
-Subject: Re: [PATCH v2 03/18] dt-bindings: mfd: mediatek: Add codec
- property for MT6357 PMIC
+ <20240226-audio-i350-v2-4-3043d483de0d@baylibre.com>
+Message-Id: <171266464354.692403.15935267584546388532.robh@kernel.org>
+Subject: Re: [PATCH v2 04/18] ASoC: dt-bindings: mt6357: Add audio codec
+ document
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_051047_248109_96A30B33 
-X-CRM114-Status: GOOD (  13.49  )
+X-CRM114-CacheID: sfid-20240409_051049_661683_C94AE1A7 
+X-CRM114-Status: GOOD (  13.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,14 +86,18 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 09 Apr 2024 12:13:24 +0200, Alexandre Mergnat wrote:
-> Add the audio codec sub-device. This sub-device is used to set required
+On Tue, 09 Apr 2024 12:13:25 +0200, Alexandre Mergnat wrote:
+> Add MT8365 audio codec bindings to set required
 > and optional voltage properties between the codec and the board.
+> The properties are:
+> - phandle of the requiered power supply.
+> - Setup of microphone bias voltage.
+> - Setup of the speaker pin pull-down.
 > 
 > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
->  Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
+>  .../devicetree/bindings/sound/mt6357.yaml          | 54 ++++++++++++++++++++++
+>  1 file changed, 54 insertions(+)
 > 
 
 My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
@@ -102,12 +106,12 @@ on your patch (DT_CHECKER_FLAGS is new in v5.13):
 yamllint warnings/errors:
 
 dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml:
-Error in referenced schema matching $id: http://devicetree.org/schemas/sound/mt6357.yaml
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/sound/mt6357.yaml: properties:vaud28-supply: '$ref' is not one of ['description', 'deprecated']
+	from schema $id: http://devicetree.org/meta-schemas/core.yaml#
 
 doc reference errors (make refcheckdocs):
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240226-audio-i350-v2-3-3043d483de0d@baylibre.com
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240226-audio-i350-v2-4-3043d483de0d@baylibre.com
 
 The base for the series is generally the latest rc1. A different dependency
 should be noted in *this* patch.
