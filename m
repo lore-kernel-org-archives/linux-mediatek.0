@@ -4,64 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA075CD1296
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 13:39:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F0B6C67861
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 13:42:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xCpN42NoM8l2VZfemJ9KVrtqPC+1364xP5ICOWiN8w8=; b=Y5rQQNvheSwfljy1Z/0TR+aGPl
-	DoThFz2tHI+Y0MuaRyqbA1rlFu6ahmN0J0dayXJctNcyhk/u0FhrDXLHjuugt+wR+HsBkXCw0yWec
-	OPg8APjZzERa+UEFs1Ve80y+87R9zg7PatMnSk/wnZowOv19AInGy44mr9WsYWwYkr+EdXvaa5XsQ
-	bFc5JaX6NR87wTopT+sorlQGO0+NhNAY2Uo4Vj8xvBS1SWFoNOYSt307OUcqeJybNuc/nRqTsMalI
-	wdUOHd3HMNTAdi1RbZigfD4d+jjFytCUcivAZ6UG3Rie7Ir2wvjnRxteTQcF+Gx3bDftdVVi8Uz+q
-	m090MF6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cWI7S1lElWn3U1R+aucOq0dCW+BF+dyNtQxwUN5pMOY=; b=Gy8vuPtN5kxsDE
+	oa4mBaMWl7awqWZ+aD+t8eKuOg2yprdhuFyUO2E+GlA5woZIKpjHY6sI2HTLECf8FOCFarVNecGBf
+	B8njihf+WEQjAgfqbLPCK9yK+t4zVfHFndj0Ld7kldgIyqX2NDNannRpm4Toqc/MOQeQgXckg51kt
+	cNe0AmmxK9wPkP3I/tBcz5DtujM9OJnlQzAqY2zUwAh7x3j1XWJlNQl4ASOskTM/zqMLJKxJB/OJe
+	0OEtjXvfTmwrG+WfEA0bE/IDIrbFb8pGOekz1WTZCHIS8YrlwBMPzVxypDCAwyVeO+J/qsc6eZtzM
+	YoUHauuYgXIkbcvU8CUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruBhJ-00000002B9T-02ZK;
-	Tue, 09 Apr 2024 13:39:37 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ruBkR-00000002CYc-2TBl;
+	Tue, 09 Apr 2024 13:42:51 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruBgm-00000002Aky-0YJS;
-	Tue, 09 Apr 2024 13:39:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4C38061728;
-	Tue,  9 Apr 2024 13:39:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BBDDDC433C7;
-	Tue,  9 Apr 2024 13:39:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712669942;
-	bh=OnuzSH8LAPQvSQO3KHP6BnMusdFNbbSnJDLXb0C2oog=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=rlTWQ+pyJHr/UrKeCWYzsZ6ZPqc88jOcRa4I2DQWf8hUrTw8MMRRnWBwnXp1WT+Av
-	 NY9GpB0QG40V8M/mYNmYO4/hxI42U/z/ie79e4Rqr5wwe8+GPAfq0EuU7mjneOLFsC
-	 u1rZCjh9nCfSVWPLmzHZNV7ekOTXbsG5GaCjd8/d/omnFY1lpRb78J8GfsavD9h9iZ
-	 NhRsv6b2Mwr8o38huDnnURds06BQXN+KIGpQcEIR4sNFxkeEZ9kSeOORhedmP4kw8f
-	 S1QviPf4iw4VrLwp6a1h3ikJLLc1DSIAdEcQeqj+sHPXf1rP1a1N9F8rwVb9AYwYfD
-	 3jLQ7kaiRrHWw==
-Date: Tue, 09 Apr 2024 08:39:01 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1ruBjm-00000002CCW-1Hqf
+	for linux-mediatek@lists.infradead.org;
+	Tue, 09 Apr 2024 13:42:22 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-3455ff1339dso1959677f8f.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Apr 2024 06:42:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1712670126; x=1713274926; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=cWI7S1lElWn3U1R+aucOq0dCW+BF+dyNtQxwUN5pMOY=;
+        b=Wbi+axZElVVeQ/88pYVnB8d+UH1MISlZSJKv4CFOpw/0mFhwsH1jNBo16M2ANXLF9m
+         QZ7cj/7ggIkrcJCJfmiOnVYtaKnue7899w0D9LSOLcVOBy7G5J6RLDaAiJqi30Al1gbR
+         UfpbmJTe9b6tQ6r9W2d2W1ZIQP99hTu4RtVLff5XMc86aiTGggDRHe3XMyqoW8Sx1e3p
+         mC2pzUg6jWrzE1KePvBVEbKuue8IUtfagaVknCMAAXGCwcpq8xQv7nusEhkDsdqcWkU2
+         pIrsNhBXh9d7u4iAXjhnEsfVJQyeKgTz13dtX7c86grV2EBlm/+RTaC3yzP6POJlb9q7
+         f2AQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712670126; x=1713274926;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=cWI7S1lElWn3U1R+aucOq0dCW+BF+dyNtQxwUN5pMOY=;
+        b=BxBfZc54zfG75qAaCbhtY4d5AbFZ4+K5gIgh9t6cG80naVOGFoA+nqt1kkCACnuAqu
+         WtZAOMwxsNZXpKE9FKtMjLhZJQ4/pzxjssh1vXfOzUisOq61LzdfAhKDR8wjxZ6kBL/n
+         Zb34JY5+7XZiGbbRny7E6ujehkYaVBF24JTUNM+1jqLBT7cYnAo8s6TNrpc+ckVROo42
+         k1TUeftlj6wnKLVKDQY6KLVAeTgJvXPF0NikgoB8o54p9D96vjnrRP/9mabhKCk8uZQb
+         PxoJZRQYpPGKhhH6VHQD/7x9WiPvu4mIV1TiLwWDpiuuY7bvaUwe0PkSo6x4qXx9g6pG
+         KTFw==
+X-Forwarded-Encrypted: i=1; AJvYcCUBLopFWofFS1Mz4ZHbBE9pzTdGG3SA8hSGrTVzMWS2bu+SNQuVyFmrzCg3uivlpPVInkUdWLmULkdxyEfamUCx/Sd6yl7AKa//CJXsqac+dgPs
+X-Gm-Message-State: AOJu0YzhMVtpThMy7z5xS1Zu0q6cN6uMAsLDwqDk5BfW7OxuT1VpEc6a
+	jAUcrLgXL1984XVP3pUaz4FpPhA441jRBiSaivPfpfHUY8fNZ+qvqBYEQnD/9Ng=
+X-Google-Smtp-Source: AGHT+IHYVcm4uy8e+4m+zihLKjtGWB1nmUnYJwk2/Yz/lUHp3i/vJBMnbO5QWc6xpkTcOVvA+nN3FA==
+X-Received: by 2002:a05:6000:1202:b0:343:e152:4c43 with SMTP id e2-20020a056000120200b00343e1524c43mr9109327wrx.2.1712670126364;
+        Tue, 09 Apr 2024 06:42:06 -0700 (PDT)
+Received: from [127.0.1.1] ([93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id j11-20020adff54b000000b003433bf6651dsm10753579wrp.75.2024.04.09.06.42.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 Apr 2024 06:42:05 -0700 (PDT)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Subject: [PATCH v3 00/18] Add audio support for the MediaTek Genio 350-evk
+ board
+Date: Tue, 09 Apr 2024 15:41:58 +0200
+Message-Id: <20240226-audio-i350-v3-0-16bb2c974c55@baylibre.com>
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- linux-mediatek@lists.infradead.org, 
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAKdFFWYC/3XOTQ6CMBAF4KuYri30B5C48h7GmKEdZBItpIVGQ
+ ri7haXR5Zvke28WFtATBnY+LMxjpEC9S0EfD8x04B7IyabMlFCFUKriMFnqOelS8AKltCDqGsu
+ SJdBAQN54cKbbCLzQPxyMeayymnsj893ezRPBTcMmBo8tvff56y3ljsLY+3n/Jsrt+nM4Sp7WW
+ 5AGQVbVqb00MD+p8ZiZ/sW2pqj+a5W0FoW2Ra0tCvul13X9APBs2hMXAQAA
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- dianders@chromium.org
-In-Reply-To: <20240409095239.627000-1-wenst@chromium.org>
-References: <20240409095239.627000-1-wenst@chromium.org>
-Message-Id: <171266958532.1032636.2034668017701925023.robh@kernel.org>
-Subject: Re: [PATCH RFC] arm64: dts: mediatek: mt8183-kodama: Split into
- base and overlays
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Sumit Semwal <sumit.semwal@linaro.org>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
+ Rob Herring <robh@kernel.org>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org, 
+ dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
+ Alexandre Mergnat <amergnat@baylibre.com>, 
+ Nicolas Belin <nbelin@baylibre.com>
+X-Mailer: b4 0.12.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5262; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=35Y/hWwz12Ve63DuUSoS7RbzfGqLgB7dwKktzFb/Izc=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmFUWs2/gi0dORmN+sYnWD5lQDLvls9amOl8w+6j55
+ 0W3z/yeJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZhVFrAAKCRArRkmdfjHURVzjD/
+ 9GNDSHdXURnV0TjG9IhD2P+jLCMn5WYhOdsUWG/duDY/npD7ypoJLjGS8RRw2SQsKh4fLTBeQWdO7m
+ GNnJBaeC5OTYhZlu7zGgksypJ56wQlQDnXcB437f9xDjGFVVDeTAUXvzvauG5L9INx0Y5NNehXFFX+
+ GYOp1UC5Rj1EgIWltNeVQmIpu0JDU4cBMjq8HfvjD6iTtaHkrSpvhUqr1FSXUjvam6l4nm8RIMqiU/
+ DqU14gd6TzaGrMUSyKl7dYE86lp9cIKsQICQZbU7Uoz3+SXdaoAlVjX6W6ZjaC8gUn84i9T4JMDgsP
+ ykSn05+s79iGwBkFnzGhI6oGKKt8H3ibqwkq6lZAAFIe8AsALv6nUpHghEnVOIuWRxHm+oCaRlInDI
+ WO/r8TM20Gmn3jE+178G8BOk7d1DZyJ/gPeaqEMFXqn05WNA8STRgAcZmaeu7E6rUw0r/M5cMsWWQk
+ jLtQde3t0fYJO+S54vjaZ6O06ILQ4LjFZfrz+NvQgBYNcwTVL93qDbZFWpbhFe0Eisl+3+sPVEHx9u
+ KHa3OZEAlmuhWsxockSlsoLYfHnENXHOcasSJaioDO7Vab/5PccF+saEN/jnqhy5eGtVt2B9Cp/cYo
+ IQc6VLDICZo8Otr2I0+CDqJOG2kTjskq4EmjCtcWEdFfZoDNQLwnwM2JJFFg==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_063904_811677_F233F9B7 
-X-CRM114-Status: GOOD (  30.60  )
+X-CRM114-CacheID: sfid-20240409_064216_041089_81DC22C6 
+X-CRM114-Status: GOOD (  16.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,220 +125,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This serie aim to add the following audio support for the Genio 350-evk:
+- Playback
+  - 2ch Headset Jack (Earphone)
+  - 1ch Line-out Jack (Speaker)
+  - 8ch HDMI Tx
+- Capture
+  - 1ch DMIC (On-board Digital Microphone)
+  - 1ch AMIC (On-board Analogic Microphone)
+  - 1ch Headset Jack (External Analogic Microphone)
 
-On Tue, 09 Apr 2024 17:52:38 +0800, Chen-Yu Tsai wrote:
-> All the SKUs of Kodama share much of their .dts, as evident of the
-> inclusion of a common .dtsi file. However this scheme builds each
-> .dtb file as a complete device tree.
-> 
-> To deduplicate this, make the common .dtsi file a .dts file, and the
-> SKU specific .dts files into .dtso overlay source files. Have the build
-> system assemble the SKU specific .dtb files from these components.
-> 
-> The final composite .dtb files increase in size by around 54 kB, or 22.5%,
-> due to the inclusion of symbols and fixup tables, and extra phandle
-> properties. This could be slightly reduced by dropping the symbol and
-> fixup tables after the overlays are fully applied if desired.
-> 
-> However if the bootloader can assemble the end .dtb using the base .dtb
-> and overlays, and only those are counted, then the combined size
-> decreases by around 165 kB, or 68.7%.
-> 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
-> Hi,
-> 
-> This is part of the work I'm looking into and will present at EOSS 2024
-> in Seattle [1].
-> 
-> The idea is to reorganize device trees so that devices within a common
-> family, instead of having a common .dtsi file, will share a base DTB
-> and apply one or more overlays on top. This allows an upstream [2] or
-> downstream [3] bundling script to be able to deduplicate the base DTB
-> and get some space savings, however minor they are compared to the
-> kernel binary executable.
-> 
-> This patch gives a simple conversion, but we could even look into
-> converting the entire MT8183 Kukui family, which are all based on the
-> "Kukui" hardware reference design.
-> 
-> There are some issues, hence the RFC:
-> 
-> 1. The base .dtb doesn't have a valid board compatible string sequence
->    yet. Suppose we used the sequence
-> 
->      "google,kodama", "mediatek,mt8183"
-> 
->    for the base .dtb in this conversion, would that be acceptable? The
->    base .dtb would act like a fallback.
-> 
-> 2. The composite .dtb files grow in size substantially, due to the base
->    .dtb file being built with overlay support. The symbols and fixup
->    tables could be trimmed out with `fdtput`, but there will still be
->    extra phandles, and also nodes with /omit-if-no-ref/ that would
->    have been removed.
->    For this I could maybe come up with a program to minify the DTB. That
->    would also work for existing composite .dtb files in-tree.
-> 
-> 3. Such a scheme would require more awareness on the maintainer's part,
->    and of the .dtbo authors. The maintainer needs to be aware of how
->    the composite .dtb files are assembled. The authors need to know that
->    certain constructs, such as /delete-property/ or /delete-node/, won't
->    work.
-> 
-> [1] https://eoss24.sched.com/event/1aBGe/second-source-component-probing-on-device-tree-platforms-chen-yu-tsai-google-llc
-> [2] https://lore.kernel.org/linux-arm-kernel/20240329032836.141899-1-sjg@chromium.org/
-> [3] https://crrev.com/c/5412876
-> 
->  arch/arm64/boot/dts/mediatek/Makefile                       | 6 ++++++
->  ...ukui-kodama-sku16.dts => mt8183-kukui-kodama-sku16.dtso} | 4 ++--
->  ...ui-kodama-sku272.dts => mt8183-kukui-kodama-sku272.dtso} | 4 ++--
->  ...ui-kodama-sku288.dts => mt8183-kukui-kodama-sku288.dtso} | 4 ++--
->  ...ukui-kodama-sku32.dts => mt8183-kukui-kodama-sku32.dtso} | 4 ++--
->  .../{mt8183-kukui-kodama.dtsi => mt8183-kukui-kodama.dts}   | 0
->  6 files changed, 14 insertions(+), 8 deletions(-)
->  rename arch/arm64/boot/dts/mediatek/{mt8183-kukui-kodama-sku16.dts => mt8183-kukui-kodama-sku16.dtso} (90%)
->  rename arch/arm64/boot/dts/mediatek/{mt8183-kukui-kodama-sku272.dts => mt8183-kukui-kodama-sku272.dtso} (90%)
->  rename arch/arm64/boot/dts/mediatek/{mt8183-kukui-kodama-sku288.dts => mt8183-kukui-kodama-sku288.dtso} (90%)
->  rename arch/arm64/boot/dts/mediatek/{mt8183-kukui-kodama-sku32.dts => mt8183-kukui-kodama-sku32.dtso} (90%)
->  rename arch/arm64/boot/dts/mediatek/{mt8183-kukui-kodama.dtsi => mt8183-kukui-kodama.dts} (100%)
-> 
+Of course, HDMI playback need the MT8365 display patches [1] and a DTS
+change documented in "mediatek,mt8365-mt6357.yaml".
 
+Rebase on top of sound/for-next branch and the
+Angelo's serie "SoC: Cleanup MediaTek soundcard machine drivers" [2]
+Work branch with all patches [5]
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+Applied patch:
+- mfd: mt6397-core: register mt6357 sound codec
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+Test passed:
+- mixer-test log: [3]
+- pcm-test log: [4]
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
+[1]: https://lore.kernel.org/all/20231023-display-support-v1-0-5c860ed5c33b@baylibre.com/
+[2]: https://lore.kernel.org/all/20240313110147.1267793-1-angelogioacchino.delregno@collabora.com/
+[3]: https://pastebin.com/pc43AVrT
+[4]: https://pastebin.com/cCtGhDpg
+[5]: https://gitlab.baylibre.com/baylibre/mediatek/bsp/linux/-/commits/sound/for-next/add-i350-audio-support
 
-  pip3 install dtschema --upgrade
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+Changes in v3:
+- Re-order documentation commit to fix dt_binding_check error.
+- Remove $ref and add "mediatek," prefix to vaud28-supply property.
+- Link to v2: https://lore.kernel.org/r/20240226-audio-i350-v2-0-3043d483de0d@baylibre.com
 
+Changes in v2:
+- Documentation fixed:
+  - Remove spurious description.
+  - Change property order to fit with dts coding style rules.
+  - micbias property: use microvolt value instead of index.
+  - mediatek,i2s-shared-clock property removed.
+  - mediatek,dmic-iir-on property removed.
+  - mediatek,dmic-irr-mode property removed.
+  - Change dmic-two-wire-mode => dmic-mode to be aligned with another SoC
+  - Remove the spurious 2nd reg of the afe.
+- Manage IIR filter feature using audio controls.
+- Fix audio controls to pass mixer-test and pcm-test.
+- Refactor some const name according to feedbacks.
+- Rework the codec to remove spurious driver data.
+- Use the new common MTK probe functions for AFE PCM and sound card.
+- Rework pinctrl probe in the soundcard driver.
+- Remove spurious "const" variables in all files.
+- Link to v1: https://lore.kernel.org/r/20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com
 
-New warnings running 'make CHECK_DTBS=y mediatek/mt8183-kukui-kodama.dtb' for 20240409095239.627000-1-wenst@chromium.org:
+---
+Alexandre Mergnat (16):
+      ASoC: dt-bindings: mediatek,mt8365-afe: Add audio afe document
+      ASoC: dt-bindings: mediatek,mt8365-mt6357: Add audio sound card document
+      ASoC: dt-bindings: mt6357: Add audio codec document
+      dt-bindings: mfd: mediatek: Add codec property for MT6357 PMIC
+      ASoC: mediatek: mt8365: Add common header
+      SoC: mediatek: mt8365: support audio clock control
+      ASoC: mediatek: mt8365: Add I2S DAI support
+      ASoC: mediatek: mt8365: Add ADDA DAI support
+      ASoC: mediatek: mt8365: Add DMIC DAI support
+      ASoC: mediatek: mt8365: Add PCM DAI support
+      ASoC: mediatek: mt8365: Add platform driver
+      ASoC: mediatek: Add MT8365 support
+      arm64: defconfig: enable mt8365 sound
+      arm64: dts: mediatek: add mt6357 audio codec support
+      arm64: dts: mediatek: add afe support for mt8365 SoC
+      arm64: dts: mediatek: add audio support for mt8365-evk
 
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /: compatible: 'oneOf' conditional failed, one must be fixed:
-	['mediatek,mt8183'] is too short
-	'mediatek,mt8183' is not one of ['mediatek,mt2701-evb']
-	'mediatek,mt8183' is not one of ['mediatek,mt2712-evb']
-	'mediatek,mt8183' is not one of ['mediatek,mt6580-evbp1']
-	'mediatek,mt8183' is not one of ['prestigio,pmt5008-3g']
-	'mediatek,mt8183' is not one of ['fairphone,fp1', 'mundoreader,bq-aquaris5']
-	'mediatek,mt8183' is not one of ['mediatek,mt6592-evb']
-	'mediatek,mt8183' is not one of ['mediatek,mt6755-evb']
-	'mediatek,mt8183' is not one of ['mediatek,mt6765-evb']
-	'mediatek,mt8183' is not one of ['mediatek,mt6779-evb']
-	'mediatek,mt8183' is not one of ['mediatek,mt6795-evb', 'sony,xperia-m5']
-	'mediatek,mt8183' is not one of ['archermind,mt6797-x20-dev', 'mediatek,mt6797-evb']
-	'mediatek,mt8183' is not one of ['bananapi,bpi-r64', 'mediatek,mt7622-rfb1']
-	'mediatek,mt8183' is not one of ['mediatek,mt7623a-rfb-emmc', 'mediatek,mt7623a-rfb-nand', 'mediatek,mt7623n-rfb-emmc', 'bananapi,bpi-r2']
-	'mediatek,mt8183' is not one of ['mediatek,mt7629-rfb']
-	'mediatek,mt8183' is not one of ['cudy,wr3000-v1', 'xiaomi,ax3000t']
-	'mediatek,mt8183' is not one of ['acelink,ew-7886cax', 'bananapi,bpi-r3', 'mediatek,mt7986a-rfb']
-	'mediatek,mt8183' is not one of ['mediatek,mt7986b-rfb']
-	'mediatek,mt8183' is not one of ['bananapi,bpi-r4']
-	'mediatek,mt8183' is not one of ['mediatek,mt8127-moose']
-	'mediatek,mt8183' is not one of ['mediatek,mt8135-evbp1']
-	'mediatek,mt8183' is not one of ['mediatek,mt8167-pumpkin']
-	'google,elm-rev8' was expected
-	'google,hana-rev6' was expected
-	'google,hana-rev7' was expected
-	'mediatek,mt8183' is not one of ['mediatek,mt8173-evb']
-	'google,burnet' was expected
-	'google,cozmo' was expected
-	'google,damu' was expected
-	'mediatek,mt8183' is not one of ['google,fennel-sku0', 'google,fennel-sku1', 'google,fennel-sku2', 'google,fennel-sku6', 'google,fennel-sku7']
-	'mediatek,mt8183' is not one of ['google,juniper-sku16', 'google,juniper-sku17']
-	'google,kakadu-rev3' was expected
-	'google,kakadu-rev3-sku22' was expected
-	'google,kappa' was expected
-	'mediatek,mt8183' is not one of ['google,katsu-sku32', 'google,katsu-sku38']
-	'mediatek,mt8183' is not one of ['google,kodama-sku16', 'google,kodama-sku272', 'google,kodama-sku288', 'google,kodama-sku32']
-	'mediatek,mt8183' is not one of ['google,krane-sku0', 'google,krane-sku176']
-	'mediatek,mt8183' is not one of ['google,makomo-sku0', 'google,makomo-sku1']
-	'mediatek,mt8183' is not one of ['google,pico-sku1', 'google,pico-sku2']
-	'mediatek,mt8183' is not one of ['google,willow-sku0', 'google,willow-sku1']
-	'mediatek,mt8183' is not one of ['mediatek,mt8183-evb']
-	'mediatek,mt8183' is not one of ['mediatek,mt8183-pumpkin']
-	'google,steelix-sku393219' was expected
-	'google,steelix-sku393220' was expected
-	'google,steelix-sku393221' was expected
-	'google,steelix-sku196609' was expected
-	'mediatek,mt8183' is not one of ['google,steelix-sku131072', 'google,steelix-sku131073']
-	'google,tentacruel-sku262147' was expected
-	'google,tentacruel-sku262151' was expected
-	'google,tentacruel-sku327681' was expected
-	'google,tentacruel-sku327683' was expected
-	'mediatek,mt8183' is not one of ['mediatek,mt8186-evb']
-	'mediatek,mt8183' is not one of ['mediatek,mt8188-evb']
-	'google,hayato-rev1' was expected
-	'google,hayato-rev5-sku2' was expected
-	'google,spherion-rev3' was expected
-	'google,spherion-rev4' was expected
-	'mediatek,mt8183' is not one of ['mediatek,mt8192-evb']
-	'mediatek,mt8183' is not one of ['google,tomato-rev2', 'google,tomato-rev1']
-	'google,tomato-rev4' was expected
-	'mediatek,mt8183' is not one of ['mediatek,mt8195-demo', 'mediatek,mt8195-evb']
-	'mediatek,mt8183' is not one of ['mediatek,mt8365-evk']
-	'mediatek,mt8183' is not one of ['mediatek,mt8390-evk']
-	'mediatek,mt8183' is not one of ['mediatek,mt8395-evk', 'radxa,nio-12l']
-	'mediatek,mt8183' is not one of ['mediatek,mt8516-pumpkin']
-	from schema $id: http://devicetree.org/schemas/arm/mediatek.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /: 'model' is a required property
-	from schema $id: http://devicetree.org/schemas/root-node.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /soc/syscon@c530000: failed to match any schema with compatible: ['mediatek,mt8183-mcucfg', 'syscon']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: pinctrl@10005000: mmc0-pins-default:pins-clk:mediatek,pull-down-adv:0:0: 10 is not one of [0, 1, 2, 3]
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8183-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: pinctrl@10005000: mmc0-pins-uhs:pins-clk:mediatek,pull-down-adv:0:0: 10 is not one of [0, 1, 2, 3]
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8183-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: pinctrl@10005000: mmc0-pins-uhs:pins-ds:mediatek,pull-down-adv:0:0: 10 is not one of [0, 1, 2, 3]
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8183-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: pinctrl@10005000: mmc1-pins-default:pins-cmd-dat:mediatek,pull-up-adv:0:0: 10 is not one of [0, 1, 2, 3]
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8183-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: pinctrl@10005000: mmc1-pins-default:pins-clk:mediatek,pull-down-adv:0:0: 10 is not one of [0, 1, 2, 3]
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8183-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: pinctrl@10005000: mmc1-pins-uhs:pins-cmd-dat:mediatek,pull-up-adv:0:0: 10 is not one of [0, 1, 2, 3]
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8183-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: pinctrl@10005000: mmc1-pins-uhs:pins-clk:mediatek,pull-down-adv:0:0: 10 is not one of [0, 1, 2, 3]
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8183-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: pinctrl@10005000: panel-pins-default: 'panel-reset' does not match any of the regexes: '^pins', 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8183-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: pinctrl@10005000: uart1-pins-default:pins-rts: 'output-enable' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8183-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: pinctrl@10005000: uart1-pins-sleep:pins-rts: 'output-enable' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8183-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: pinctrl@10005000: 'audiopins', 'audiotdmoutoff', 'audiotdmouton', 'ec-ap-int-odl', 'gpio-line-names', 'h1-int-od-l', 'i2c0', 'i2c1', 'i2c2', 'i2c3', 'i2c4', 'i2c5', 'i2c6', 'pp1800-lcd-en', 'ppvarn-lcd-en', 'ppvarp-lcd-en', 'pwm0-pin-default', 'scp', 'spi0', 'spi1', 'spi2', 'spi3', 'spi4', 'spi5', 'touchdefault', 'ts3a227e_pins' do not match any of the regexes: '-pins(-[a-z]+)?$', 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8183-pinctrl.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /soc/pwrap@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt6358']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /soc/pwrap@1000d000/pmic/mt6358codec: failed to match any schema with compatible: ['mediatek,mt6358-sound']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /soc/pwrap@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek,mt6358-rtc']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /soc/audio-controller@11220000: failed to match any schema with compatible: ['mediatek,mt8183-audiosys', 'syscon']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /soc/audio-controller@11220000/mt8183-afe-pcm: failed to match any schema with compatible: ['mediatek,mt8183-audio']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /soc/syscon@13000000: failed to match any schema with compatible: ['mediatek,mt8183-mfgcfg', 'syscon']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: dsi@14014000: 'port' is a required property
-	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,dsi.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: dsi@14014000: Unevaluated properties are not allowed ('ports' was unexpected)
-	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,dsi.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /soc/syscon@15020000: failed to match any schema with compatible: ['mediatek,mt8183-imgsys', 'syscon']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /soc/syscon@16000000: failed to match any schema with compatible: ['mediatek,mt8183-vdecsys', 'syscon']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /soc/syscon@17000000: failed to match any schema with compatible: ['mediatek,mt8183-vencsys', 'syscon']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /soc/syscon@19000000: failed to match any schema with compatible: ['mediatek,mt8183-ipu_conn', 'syscon']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /soc/syscon@19010000: failed to match any schema with compatible: ['mediatek,mt8183-ipu_adl', 'syscon']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /soc/syscon@19180000: failed to match any schema with compatible: ['mediatek,mt8183-ipu_core0', 'syscon']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /soc/syscon@19280000: failed to match any schema with compatible: ['mediatek,mt8183-ipu_core1', 'syscon']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /soc/syscon@1a000000: failed to match any schema with compatible: ['mediatek,mt8183-camsys', 'syscon']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: thermal-zones: 'tboard1', 'tboard2', 'tzts1', 'tzts2', 'tzts3', 'tzts4', 'tzts5', 'tztsABB' do not match any of the regexes: '^[a-zA-Z][a-zA-Z0-9\-]{1,12}-thermal$', 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/thermal/thermal-zones.yaml#
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: /mt8183-sound: failed to match any schema with compatible: ['mediatek,mt8183_mt6358_ts3a227_max98357']
-arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtb: bt-sco: '#sound-dai-cells' is a required property
-	from schema $id: http://devicetree.org/schemas/sound/linux,bt-sco.yaml#
+Nicolas Belin (2):
+      ASoc: mediatek: mt8365: Add a specific soundcard for EVK
+      ASoC: codecs: add MT6357 support
 
+ .../devicetree/bindings/mfd/mediatek,mt6357.yaml   |    5 +
+ .../bindings/sound/mediatek,mt8365-afe.yaml        |  136 ++
+ .../bindings/sound/mediatek,mt8365-mt6357.yaml     |   99 +
+ .../devicetree/bindings/sound/mt6357.yaml          |   54 +
+ arch/arm64/boot/dts/mediatek/mt6357.dtsi           |    5 +-
+ arch/arm64/boot/dts/mediatek/mt8365-evk.dts        |   98 +-
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi           |   46 +-
+ arch/arm64/configs/defconfig                       |    2 +
+ sound/soc/codecs/Kconfig                           |    7 +
+ sound/soc/codecs/Makefile                          |    2 +
+ sound/soc/codecs/mt6357.c                          | 1898 ++++++++++++++++
+ sound/soc/codecs/mt6357.h                          |  662 ++++++
+ sound/soc/mediatek/Kconfig                         |   20 +
+ sound/soc/mediatek/Makefile                        |    1 +
+ sound/soc/mediatek/mt8365/Makefile                 |   15 +
+ sound/soc/mediatek/mt8365/mt8365-afe-clk.c         |  451 ++++
+ sound/soc/mediatek/mt8365/mt8365-afe-clk.h         |   49 +
+ sound/soc/mediatek/mt8365/mt8365-afe-common.h      |  491 +++++
+ sound/soc/mediatek/mt8365/mt8365-afe-pcm.c         | 2275 ++++++++++++++++++++
+ sound/soc/mediatek/mt8365/mt8365-dai-adda.c        |  315 +++
+ sound/soc/mediatek/mt8365/mt8365-dai-dmic.c        |  347 +++
+ sound/soc/mediatek/mt8365/mt8365-dai-i2s.c         |  854 ++++++++
+ sound/soc/mediatek/mt8365/mt8365-dai-pcm.c         |  293 +++
+ sound/soc/mediatek/mt8365/mt8365-mt6357.c          |  348 +++
+ sound/soc/mediatek/mt8365/mt8365-reg.h             |  991 +++++++++
+ 25 files changed, 9456 insertions(+), 8 deletions(-)
+---
+base-commit: 6a3d4a830e4e9de8e8aefc233d790bef4a5c0037
+change-id: 20240226-audio-i350-4e11da088e55
 
-
-
+Best regards,
+-- 
+Alexandre Mergnat <amergnat@baylibre.com>
 
 
