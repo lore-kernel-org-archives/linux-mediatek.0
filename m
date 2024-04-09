@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BBBDC67861
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 15:59:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60F83CD128A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 16:00:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y+/spKUkA9slzNHp8vKtqr5Sqc4bQ9ZR/k/vJJvywmg=; b=R8EGFmAUgNQHi55D5YymRA4SP9
-	Db13OB15KYm/HvLWgSx+orRt36M9Se26H1Ha26Og6y9IWcDXj7ug602CThVZTlebWurJp5kyvW9+/
-	a4MYHVBWwh8uvpSMQVXciNqHdho6DFr+UdzsGb3iz/E9vQo5B5cVtkvNCGPhDNh3acnCoc3EpUXuY
-	6acJDJP7S5YKzAXVclh7F2lbxf8iRYRHvBgVO8XHSXEUp33vT9vVpUlQEU1kN4GKOHEWwNiuQyyqA
-	18JDp5XkwISKAEVl7Xc9hJ457+PD2fltjQ43R+9V1GdJf2OS5NsRYm+Qb1qOHJVqSgwB3bMJVPe5n
-	6HWZOQ5g==;
+	bh=Vl2WAWZiRqw9Ns4ylVujkmqdUMbnF+5lRwOPnf5XU7k=; b=o2xuOIZIC96YN4+7lbk2se+oxW
+	7QoPOt9lYVlQJ3JsTW22r7XbRvdyfoacJGqf503HC3W6Eoab+vSOoji8ZOOuO/T9P3Px1Bk6n54n1
+	Ak5i8PGbkodaPE0PB2fhkxH+GOhp37axy7b1u/plykW/DUxWAdt47ZZP5cp5IkBMFhF8F4OTmSNRq
+	Voll65yvC2Nb5EPchTkF+bZp0TOOmFjlckA3//vf2tjv7gH4hnGqOLrrQsZEtsco9JLmBpChsZ+kW
+	ay6dRw+DKvBx8NZOg337x6JuanWrAuIwvRAmGrL1uSLFuMNVVE0HrFDM5jWp41Wi7GF/LyPat3RaC
+	u1CADcfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruDsT-00000002q15-45Kl;
-	Tue, 09 Apr 2024 15:59:17 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+	id 1ruDta-00000002qR3-3ONL;
+	Tue, 09 Apr 2024 16:00:26 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruDsN-00000002pvx-3g32
+	id 1ruDtV-00000002qNI-3uQc
 	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Apr 2024 15:59:14 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2d82713f473so99347591fa.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Apr 2024 08:59:05 -0700 (PDT)
+	Tue, 09 Apr 2024 16:00:23 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-345e1c64695so1057085f8f.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Apr 2024 09:00:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1712678343; x=1713283143; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1712678419; x=1713283219; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=Y+/spKUkA9slzNHp8vKtqr5Sqc4bQ9ZR/k/vJJvywmg=;
-        b=jZ5cwoth7DpWH4WcSbHTphF3Qyr3+tdRsx0P9AVk0FoWJJHxcKG5hIOcy5jHaQpXww
-         XTNgEx7+HuSdOGAI7FzsZlc5Cb2BxwP4EJtHXSfxTZSXK11BgfPCzB53iLeryEEUGO3b
-         GRR815++c+A9bbBHK8EfNk2V5K4IF/sBCxewTPv9KdekYtDYrja1aOdRRuMJFEoB+g/b
-         5+MJXnYg66TRCYpmOsI0KmpwelBoWs+UjuJheegsSqcUH3RwrzQplMbK+lnwXNYCFyFo
-         pDdGR0u6EoPEwUPFDl2FP9piJkzqTvhvbqhirqdcYF2hrLk0jZT6gX59e6GPqgNibv1T
-         7Q4Q==
+        bh=Vl2WAWZiRqw9Ns4ylVujkmqdUMbnF+5lRwOPnf5XU7k=;
+        b=m3l+b/1xwQS9cjMvCyhZavDLNf/BScp2QsQLp+bns7DRpbK2dUD4WYDV4MFWaOZxfH
+         EU8birpqyvGJFB/u4DlvaCcobjJDZTHhqcdTOnjR1ZGf4F0giVpnf3LpQyXULLItZz4B
+         lli0JLlsuKICxWm5Wv+TO57YIr7db9Fq3eDP+YndIIQ8iCm7n0+feVDbFCSEhRFUuaju
+         pAeaN6rY76l8fEMBrfx3WXO8rZBcpBXGGto/b2VClmxZywXMdbxZSZ7PTvDPrP/FN2bn
+         GI8X84ak30/ivxmgGXAxFD0NkiioJViU+HKECAcBWxgQmDvHPVarslWAzkkyJ//1UTjX
+         UOgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712678343; x=1713283143;
+        d=1e100.net; s=20230601; t=1712678419; x=1713283219;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Y+/spKUkA9slzNHp8vKtqr5Sqc4bQ9ZR/k/vJJvywmg=;
-        b=F2ckYOaexaz4O1Qi89zIc3+uA2xvtcFXiU71kQl/S1q6+stmYZORV8wWG/nUVSOiRY
-         AhzaOlGW2BeUBqcWpe3WLoVp41fZwZFCnBNMVmP/MbRjxwgBV4Ik60NhUp203fhwfYlP
-         5iRnFa9uQ1i/yD/UOnXgu61gHJ6SukgLk/u8WNQzk/DwfFIQkvdzubdBW8SFaInUvAnU
-         YayFgQJAH+aeSlDdUQLrJ2HOnwHCC0cu3qLJVU1wGlMiY0t+1G9n8pYGB4s7R/5vrQ18
-         SkeLn6zZmK1gTIbJP9rwY+IeFGScxzMybyBUGOPT2vFRyCoB0P9MMXzVnef9I/aI9xos
-         lXXw==
-X-Forwarded-Encrypted: i=1; AJvYcCXDhpIglX0kMeMEEnrv67smb5lRM6PORozvfjDhDyOQ3DsVVf4PhrVftFARSsYfB/LVLLyUyr6pmuKEVVvnzqDItXlvTSA6qjLuvS8P54VH7psi
-X-Gm-Message-State: AOJu0Yxopb/5LNGI2/HAGHXBaOOdGXbje+3klKFBH50IKLo4s7YrcK0P
-	P7XBynDkdCymHcitK4qKYOtOCbwf6iU/Jer2gY3QvImnZgYtQLeaRncLHN5yYww=
-X-Google-Smtp-Source: AGHT+IEwmvmvRUWELqbbts3tqSXfa50z4eY5lQY39SDTovI1YrizSuwrb6EVAJvqAhL1f+F/VWmctA==
-X-Received: by 2002:a2e:8303:0:b0:2d8:6a04:3bcd with SMTP id a3-20020a2e8303000000b002d86a043bcdmr222197ljh.3.1712678343286;
-        Tue, 09 Apr 2024 08:59:03 -0700 (PDT)
+        bh=Vl2WAWZiRqw9Ns4ylVujkmqdUMbnF+5lRwOPnf5XU7k=;
+        b=J4z3OOA9LJ4f3aEIFUZEu7CDOBqdnQUajkID7opnDg6iBpZWGmGu2CBKvghHBh9cH8
+         xafXZMeXA1mm/P1wHsu8eEeTfvkD69Y6BbzQEWfjUe3/ulcajNbpeB3NnIKlN/Y/LfoD
+         ybeyL/Q85HB0p8HpkQOuQOaafbxPuPdaZFEGTU2ghOlNwp/iYyeP3N0wsZt8VO9aPYTw
+         JL2GkX86FwtBuqyeRAL9AYKBR1q+vmu3q2SkvDf6x5+zgn61OE+okSSywJvkJYQgiDRE
+         igBd9FCYjzeG76lN7tMbubt8whwOdWsY4nizT8KlB7agwBl9hRVkGjrrV8qgfTEn5Zrk
+         fbxg==
+X-Forwarded-Encrypted: i=1; AJvYcCVcpjJUNIGgoM1Y9St9EsqasA9wE4sLldZscSNMLUyquWEvfay4gMnZ4BR2hj2i7J7nBF0IjT+7vTzc+cr8+8WgYiD10QfEdvL+UxPP6Y78iLJw
+X-Gm-Message-State: AOJu0YxFSLNamFREMXF9TTrQ06Ypw/dvMRaLXtEIaYSUoBaWqHjq+zWl
+	kL/HHOUuRMNUeK2aBkLH+lbbGhZwkiwRtmAJsc4z3qGkt9U3M774EHkSprHNTE0=
+X-Google-Smtp-Source: AGHT+IHXyvG8mKfTY4naLXWGXb6e7X0FvCeImKpBuVDysC36RkLPoOdejDcQfesyOgvubSVgZ97dCw==
+X-Received: by 2002:adf:f1c4:0:b0:341:e4f4:4399 with SMTP id z4-20020adff1c4000000b00341e4f44399mr83235wro.68.1712678418814;
+        Tue, 09 Apr 2024 09:00:18 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.223.16])
-        by smtp.gmail.com with ESMTPSA id dm14-20020a170907948e00b00a4e24d259edsm5749071ejc.167.2024.04.09.08.59.00
+        by smtp.gmail.com with ESMTPSA id k2-20020adff282000000b0033e9d9f891csm11740838wro.58.2024.04.09.09.00.16
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 09 Apr 2024 08:59:02 -0700 (PDT)
-Message-ID: <60fd9942-1621-452d-b7ae-40dd11ee1ae0@linaro.org>
-Date: Tue, 9 Apr 2024 17:58:34 +0200
+        Tue, 09 Apr 2024 09:00:18 -0700 (PDT)
+Message-ID: <62b1f2fe-7892-405c-bbb9-4bc77173a801@linaro.org>
+Date: Tue, 9 Apr 2024 18:00:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 16/18] arm64: dts: mediatek: add mt6357 audio codec
- support
+Subject: Re: [PATCH v3 18/18] arm64: dts: mediatek: add audio support for
+ mt8365-evk
 To: Alexandre Mergnat <amergnat@baylibre.com>,
  Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
  Rob Herring <robh+dt@kernel.org>,
@@ -88,7 +88,7 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
  dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org
 References: <20240226-audio-i350-v3-0-16bb2c974c55@baylibre.com>
- <20240226-audio-i350-v3-16-16bb2c974c55@baylibre.com>
+ <20240226-audio-i350-v3-18-16bb2c974c55@baylibre.com>
 Content-Language: en-US
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -135,12 +135,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240226-audio-i350-v3-16-16bb2c974c55@baylibre.com>
+In-Reply-To: <20240226-audio-i350-v3-18-16bb2c974c55@baylibre.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_085911_973698_A2ACAADD 
-X-CRM114-Status: GOOD (  17.06  )
+X-CRM114-CacheID: sfid-20240409_090022_079693_C976466C 
+X-CRM114-Status: GOOD (  16.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,47 +156,96 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 09/04/2024 15:42, Alexandre Mergnat wrote:
-> Add audio codec support of MT6357 PMIC.
+> Add the sound node which is linked to the MT8365 SoC AFE and
+> the MT6357 audio codec.
+> 
 > Update the file header.
-
-Why?
-
 > 
 > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt6357.dtsi | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
+>  arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 98 +++++++++++++++++++++++++++--
+>  1 file changed, 94 insertions(+), 4 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6357.dtsi b/arch/arm64/boot/dts/mediatek/mt6357.dtsi
-> index 3330a03c2f74..ade410851524 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt6357.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt6357.dtsi
-> @@ -1,7 +1,7 @@
->  // SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> index 50cbaefa1a99..eb0c5f076dd4 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> @@ -1,9 +1,9 @@
+>  // SPDX-License-Identifier: GPL-2.0
 >  /*
->   * Copyright (c) 2020 MediaTek Inc.
-> - * Copyright (c) 2023 BayLibre Inc.
-> + * Copyright (c) 2024 BayLibre Inc.
+> - * Copyright (c) 2021-2022 BayLibre, SAS.
+> - * Authors:
+> - * Fabien Parent <fparent@baylibre.com>
+> - * Bernhard Rosenkränzer <bero@baylibre.com>
+> + * Copyright (c) 2024 BayLibre, SAS.
 
-That's not a reasonable change. The file was published on 2023, wasn't
-it? If this is not correct, please explain why/how and make it separate
-patch.
 
+What is happening with your copyrights? Why do you change existing ones?
+
+> + * Authors: Fabien Parent <fparent@baylibre.com>
+> + *	    Bernhard Rosenkränzer <bero@baylibre.com>
+> + *	    Alexandre Mergnat <amergnat@baylibre.com>
 >   */
 >  
->  #include <dt-bindings/input/input.h>
-> @@ -10,6 +10,9 @@ &pwrap {
->  	mt6357_pmic: pmic {
->  		compatible = "mediatek,mt6357";
+>  /dts-v1/;
+> @@ -86,6 +86,29 @@ optee_reserved: optee@43200000 {
+>  			reg = <0 0x43200000 0 0x00c00000>;
+>  		};
+>  	};
+> +
+> +	sound: sound {
+> +		compatible = "mediatek,mt8365-mt6357";
+> +		pinctrl-names = "default",
+> +				"dmic",
+> +				"miso_off",
+> +				"miso_on",
+> +				"mosi_off",
+> +				"mosi_on";
+> +		pinctrl-0 = <&aud_default_pins>;
+> +		pinctrl-1 = <&aud_dmic_pins>;
+> +		pinctrl-2 = <&aud_miso_off_pins>;
+> +		pinctrl-3 = <&aud_miso_on_pins>;
+> +		pinctrl-4 = <&aud_mosi_off_pins>;
+> +		pinctrl-5 = <&aud_mosi_on_pins>;
+> +		mediatek,platform = <&afe>;
+> +		status = "okay";
+
+Where did you disable the node?
+
+> +	};
+> +};
+> +
+> +&afe {
+> +	mediatek,dmic-mode = <1>;
+> +	status = "okay";
+>  };
 >  
-> +		mt6357_codec: codec {
-> +		};
+>  &cpu0 {
+> @@ -174,6 +197,12 @@ &mmc1 {
+>  	status = "okay";
+>  };
+>  
+> +&mt6357_codec {
+> +	mediatek,micbias0-microvolt = <1900000>;
+> +	mediatek,micbias1-microvolt = <1700000>;
+> +	mediatek,vaud28-supply = <&mt6357_vaud28_reg>;
+> +};
+> +
+>  &mt6357_pmic {
+>  	interrupts-extended = <&pio 145 IRQ_TYPE_LEVEL_HIGH>;
+>  	interrupt-controller;
+> @@ -181,6 +210,67 @@ &mt6357_pmic {
+>  };
+>  
+>  &pio {
+> +	aud_default_pins: audiodefault-pins {
+> +		pins {
+> +		pinmux = <MT8365_PIN_72_CMDAT4__FUNC_I2S3_BCK>,
+> +			 <MT8365_PIN_73_CMDAT5__FUNC_I2S3_LRCK>,
+> +			 <MT8365_PIN_74_CMDAT6__FUNC_I2S3_MCK>,
+> +			 <MT8365_PIN_75_CMDAT7__FUNC_I2S3_DO>;
 
-There is no single point of having empty nodes.
-
-NAK.
-
-
+You have broken indentation everywhere.
 
 Best regards,
 Krzysztof
