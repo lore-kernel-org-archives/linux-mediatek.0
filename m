@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECA47CD1296
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 11:36:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02C81CD1284
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 11:36:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6bT0NHWjiD2XH+GLk+mTSSalII/jxYiN0qaWhx5UYxQ=; b=0ryat9sqH0oAui7OV4vsKfdYu/
-	1OKd3G41hIt1rPPOGVupOF2lfNAhXcVyH0Y6xG3Ca8oWTWbah8U99ia050arcdEpm0S4D2x0Pz23C
-	ALZk3C/vd6wOY05e2iwBSNE9MqDw1UdeOejGz63yAsPA/9en2Tk/mLH7mrFu+RV7Tm2CLR/AIn82w
-	JkzWMsObyCGFs3YQJ4cFoehKj4BtPAaBBFwVuGHS7bIqT3/rrrSrnf/K8qbDVZaSQnnWAnn3YPdtz
-	wpqsoHQlGO7rZqSoEpERsvw3jFCRScXPjrSc83LYZBCEf+ikzQvkRxqHaBu9BcNjDSow5Bk7Ki8/S
-	Sdilftsg==;
+	bh=y7q83q+bA/QUBBbTmOc7VvdxAdgRHVRRKuHg6XBb3wQ=; b=h6g3fYptlduSf0GConrTFZkEk/
+	/1jo6LbqwJzbnGA0CKXoN/eBD7zli1MrpD6AA69/Kcr/jiuYrqmG/XIQ6ChyPiAnS/1ZSKisH7SMm
+	xVmCwceOVcvXyfWgMo6Sc/Cfhw1RaA+qIE3naETkLsyf/oFdB3Lkg7FpaEVeSC0+B1bvBvVB/ellV
+	/KcxnwIyt4OS4EzNB64oNCkDJJOh3YprLA8x/GOMZFQmtion325otO+v36GhCrUrhyhntnhiZUFSs
+	1Ca/XF61BZE4OKyLEiikXPuYro2o6eLdiei29hm3bYCKZtV3HkX+iC9T2Rq5CiEASLQrgwX8u8CzE
+	LLqrqHLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ru9mE-00000001iEt-3iWz;
-	Tue, 09 Apr 2024 11:36:34 +0000
+	id 1ru9mG-00000001iFl-0xsi;
+	Tue, 09 Apr 2024 11:36:36 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ru9jy-00000001gbV-198j;
+	id 1ru9jv-00000001gZT-3g8f;
 	Tue, 09 Apr 2024 11:34:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712662452;
-	bh=SRSwRgJbTBz/3750pVOWh9FKrFSoG2LU80QaUy5HTjg=;
+	s=mail; t=1712662450;
+	bh=+JfrTVgrO4JkC6c7ui1/Sey7vbzN8l8IbPUAys7zK+A=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=4IYpUbTTh7MAruw1btaUKUdqHfQRm5G74zFUVOftI+T9TCdsW5jy+aLe+ovvx3Z5I
-	 11UI3jSgbp9qKxd+LzBCt00w7WOAWyUP/p6OB6fymARuqX2oCBDDdepX2IMoVISL+l
-	 yu8bpU2L/u64hzPPpzZ0vIgXl62UkoB32ZOLbxYDRjgTb+eRUNCL50wab1sbQos2xG
-	 HJfl3ws6cRLa3pNEkCI0Pa2XtGASP4yD8EFCw4cm+utr45JPLDdRVZNKAKynh0A/hx
-	 ZmyW8i1MGMnAKvoLH4yDcvS0p2W6YZQ6e0aE3wR4ig2B/fdqYyzv7v8Kj0v2b8Ocb5
-	 0WNMlXDLwfDJQ==
+	b=ce2Cd4mCVU7Vhtoi0ILH3n35kwovkmajhigwTItpUOd+Msadx4h+NV3PnixFVviar
+	 wHMwoeoyixkvbBcwgBU4jwq4I9mBYgD2hTjw+pDvcAC80t0VdLfdG5KPgyIKVSxR1J
+	 aJZ8eukC2/FHA+gLkVlykHFcyWBj5NpwyJlR5lDzH+0okKqDX6NSonAf7Cyzhri+T4
+	 OOIK9Xw32W5DIzJ4RUpndQAps8XE1ZeHx5l2QvillwcsDAhSN/3Y7JAJ3NwjumanGY
+	 lyCZG7iDbTMniTn3cq17jRuTiptI+EXUHOfj130bmtGb+kbl5cU11BlNpl/CC50taP
+	 uTMsfdK2FaYoA==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C7F1E378212C;
-	Tue,  9 Apr 2024 11:34:10 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 728E43782111;
+	Tue,  9 Apr 2024 11:34:08 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: broonie@kernel.org
 Cc: wenst@chromium.org,
@@ -82,17 +82,18 @@ Cc: wenst@chromium.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v4 18/18] arm64: dts: mediatek: mt8186-corsola: Specify sound DAI links and routing
-Date: Tue,  9 Apr 2024 13:33:10 +0200
-Message-ID: <20240409113310.303261-19-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 17/18] arm64: dts: mediatek: mt8195-cherry: Specify sound DAI links and routing
+Date: Tue,  9 Apr 2024 13:33:09 +0200
+Message-ID: <20240409113310.303261-18-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240409113310.303261-1-angelogioacchino.delregno@collabora.com>
 References: <20240409113310.303261-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_043414_920056_C81D0C45 
-X-CRM114-Status: GOOD (  10.51  )
+X-CRM114-CacheID: sfid-20240409_043412_641164_689F967C 
+X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,71 +114,86 @@ machine.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../boot/dts/mediatek/mt8186-corsola.dtsi     | 42 ++++++++++++++++---
- 1 file changed, 37 insertions(+), 5 deletions(-)
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 45 +++++++++++++++++++
+ 1 file changed, 45 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-index 1807e9d6cb0e..afdab5724eaa 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-@@ -42,7 +42,7 @@ backlight_lcd0: backlight-lcd0 {
- 		default-brightness-level = <576>;
- 	};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index 4a11918da370..e35adff02469 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -240,6 +240,7 @@ adsp_device_mem: memory@60e80000 {
+ 	spk_amplifier: rt1019p {
+ 		compatible = "realtek,rt1019p";
+ 		label = "rt1019p";
++		#sound-dai-cells = <0>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&rt1019p_pins_default>;
+ 		sdb-gpios = <&pio 100 GPIO_ACTIVE_HIGH>;
+@@ -366,6 +367,7 @@ &disp_pwm0 {
+ &dp_tx {
+ 	status = "okay";
  
--	bt-sco-codec {
-+	bt-sco {
- 		compatible = "linux,bt-sco";
- 		#sound-dai-cells = <0>;
- 	};
-@@ -223,12 +223,44 @@ sound: sound {
- 		mediatek,adsp = <&adsp>;
- 		mediatek,platform = <&afe>;
++	#sound-dai-cells = <0>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&dptx_pin>;
  
--		playback-codecs {
--			sound-dai = <&it6505dptx>, <&rt1019p>;
-+		audio-routing =
-+			"Headphone", "HPOL",
-+			"Headphone", "HPOR",
-+			"IN1P", "Headset Mic",
-+			"Speakers", "Speaker",
-+			"HDMI1", "TX";
+@@ -436,6 +438,7 @@ audio_codec: codec@1a {
+ 		/* Realtek RT5682i or RT5682s, sharing the same configuration */
+ 		reg = <0x1a>;
+ 		interrupts-extended = <&pio 89 IRQ_TYPE_EDGE_BOTH>;
++		#sound-dai-cells = <0>;
+ 		realtek,jd-src = <1>;
+ 
+ 		AVDD-supply = <&mt6359_vio18_ldo_reg>;
+@@ -1162,6 +1165,48 @@ &sound {
+ 		"AFE_SOF_DL2", "AFE_SOF_DL3", "AFE_SOF_UL4", "AFE_SOF_UL5";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&aud_pins_default>;
 +
-+		hs-playback-dai-link {
-+			link-name = "I2S0";
-+			dai-format = "i2s";
-+			mediatek,clk-provider = "cpu";
-+			codec {
-+				sound-dai = <&rt5682s 0>;
-+			};
++	audio-routing =
++		"Headphone", "HPOL",
++		"Headphone", "HPOR",
++		"IN1P", "Headset Mic",
++		"Ext Spk", "Speaker";
++
++	mm-dai-link {
++		link-name = "ETDM1_IN_BE";
++		mediatek,clk-provider = "cpu";
++	};
++
++	hs-playback-dai-link {
++		link-name = "ETDM1_OUT_BE";
++		mediatek,clk-provider = "cpu";
++		codec {
++			sound-dai = <&audio_codec>;
 +		};
++	};
 +
-+		hs-capture-dai-link {
-+			link-name = "I2S1";
-+			dai-format = "i2s";
-+			mediatek,clk-provider = "cpu";
-+			codec {
-+				sound-dai = <&rt5682s 0>;
-+			};
- 		};
- 
--		headset-codec {
--			sound-dai = <&rt5682s 0>;
-+		spk-share-dai-link {
-+			link-name = "I2S2";
-+			mediatek,clk-provider = "cpu";
++	hs-capture-dai-link {
++		link-name = "ETDM2_IN_BE";
++		mediatek,clk-provider = "cpu";
++		codec {
++			sound-dai = <&audio_codec>;
 +		};
++	};
 +
-+		spk-hdmi-playback-dai-link {
-+			link-name = "I2S3";
-+			dai-format = "i2s";
-+			mediatek,clk-provider = "cpu";
-+			/* RT1019P and IT6505 connected to the same I2S line */
-+			codec {
-+				sound-dai = <&it6505dptx>, <&rt1019p>;
-+			};
- 		};
- 	};
++	spk-playback-dai-link {
++		link-name = "ETDM2_OUT_BE";
++		mediatek,clk-provider = "cpu";
++		codec {
++			sound-dai = <&spk_amplifier>;
++		};
++	};
++
++	displayport-dai-link {
++		link-name = "DPTX_BE";
++		codec {
++			sound-dai = <&dp_tx>;
++		};
++	};
+ };
  
+ &spi0 {
 -- 
 2.44.0
 
