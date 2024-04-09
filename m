@@ -4,90 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3693BCD1284
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 14:02:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B0B7C67861
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 14:14:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9uOh18J18K7IiJjOdRTp7+wBD9ghOrm4r66dFYnU+6Y=; b=0waf/Di1q5oQrMXIFCZw+eLKor
-	V3CChJWDq2Vun4GlZ/cR2JLsNmS7KNcYmNZcsr4IJk3NqG5rYoPTHuO8cgZGyKmEsoaplqsGKqwvM
-	kNBnvlzXCVDcgLMKyBw6l8b2ou7D+QvkNJpYIlrScehlwxZi3U+mrcOFi1nhoo3Yx0QQnPlfXfwv+
-	a8q+sCQ496O+/vRzdgYX/NXUmla2qRsrKQ7ewJQbYhKAI0LiLDTPYCdxmkeK4Bjo3g5ZFAPpc9jiA
-	IlOFnsHRgUp5pffqC+KMjSpUSTKM1YK2Bwe8xUsleIXr1bOLMRrVaANV8vGwYMDnmRGVSbBqDMuZ/
-	0wnSakHw==;
+	bh=/ej64Y8Nc6K3ZAEnIrbirBr241m32e3taZF6oNkhmM0=; b=VAfvyjOeOqAS4pinDZiOhLmCW0
+	ReWgT01i74tkmTAkisLpPf83+niD2m8vNdvts6ahiAZ/t3SFNoWFjfFMv+9oFPLTlctLK60OoI99K
+	4TuNDw6wBz1v4mKNeqvoBX89i2XA9nflVO+UTDdPKxHOZFem1OpKBVmIC7+Juzp3TzyM2AnS7Osl8
+	qjfkUI8CCCTpw4tipefpPdE4KDo3q8CCNW4fdQQxL5rBBSsT/BLFFELCQSrvPrlhDbWbF7dtVf/CO
+	dJPmNuiTfmp7zl1u5te978V3d8tkT+2m8OmBZpLwYaZSxgR86o73WjYVSWVZiF32QrW1A2nNwP4xP
+	h6oC5yMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruC3E-00000002JWp-2smx;
-	Tue, 09 Apr 2024 14:02:16 +0000
-Received: from mail-lf1-f52.google.com ([209.85.167.52])
+	id 1ruCF1-00000002Mp2-3Jay;
+	Tue, 09 Apr 2024 14:14:27 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruB3p-000000020AD-1z5g;
-	Tue, 09 Apr 2024 12:58:54 +0000
-Received: by mail-lf1-f52.google.com with SMTP id 2adb3069b0e04-516d0c004b1so6462681e87.2;
-        Tue, 09 Apr 2024 05:58:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712667524; x=1713272324;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=9uOh18J18K7IiJjOdRTp7+wBD9ghOrm4r66dFYnU+6Y=;
-        b=pXKTIJt6RREOu1a2HyCHeO3CARStEMMAaS9XlfYkyh0aH70QwH178TjQvMp4h8+OXO
-         SeRTFtZMdi8iXFbAZnE5WO7JQT/EZtak6zoObOaPzpdUtn3Nfcd+VpbxRlGO8gE4EVt2
-         vfirqCg3oMIll3KdV2AXRLr8JLFB0iwque136MCtIiryahrYOz6zo7+XBNmt/AupB0p/
-         XkF+JABma++BilAoH9CYc7YvunjrpRNu7ywRKtAicwVwm1kj9vIuWzllL/Km+q2UckHl
-         C/hriMzefa3t69bYmKX6Mdz0l4/3iMRVY/1Su7n/58etGkKQZgRg7qiMK+sW7pznnth+
-         nDyA==
-X-Forwarded-Encrypted: i=1; AJvYcCUQEebmPYFi9DYOI2VGhikWuNmJtaONt4lWd6CVSZxMVB5pfTETfyyUoIrZ04/hmFCUGEkbOAYqTem2Wd7U1HLTdmYNTy8un6t+Rm0NqNpIihAR0lkesWQGi1VSooTkDBbuDnxUK3mQsQP9soqHGUsLrbGFrOgh+t543vpdHS8W5/GYzuPQoPo7EiixWLSccepxDq4nDbaP1gLVHxyI2uiizFjMGWoimIEFhCQb6QqB7A==
-X-Gm-Message-State: AOJu0YxE1i2AnMFpm8y0odl/FuyggwxPce2TsQg7rQIHo01ljlAehHmh
-	UbYaoR7zMklGHJ9eMrWYKvPq+z5ub9YwPqFO7KU3t5LfOOSpdAH4
-X-Google-Smtp-Source: AGHT+IEl+OLSX5EKE8Svhc2Wiu4wKJokIxStZwY7ArPgyL/m9N/Ov3vBZPbfAeUYvjwOSj4HMJgJgg==
-X-Received: by 2002:ac2:4f16:0:b0:516:cf23:588 with SMTP id k22-20020ac24f16000000b00516cf230588mr12706898lfr.27.1712667523822;
-        Tue, 09 Apr 2024 05:58:43 -0700 (PDT)
-Received: from localhost (fwdproxy-lla-117.fbsv.net. [2a03:2880:30ff:75::face:b00c])
-        by smtp.gmail.com with ESMTPSA id og42-20020a1709071dea00b00a4e657a5f1asm5633237ejc.112.2024.04.09.05.58.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Apr 2024 05:58:43 -0700 (PDT)
-From: Breno Leitao <leitao@debian.org>
-To: aleksander.lobakin@intel.com,
-	kuba@kernel.org,
-	davem@davemloft.net,
-	pabeni@redhat.com,
-	edumazet@google.com,
-	elder@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	nbd@nbd.name,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	lorenzo@kernel.org,
-	taras.chornyi@plvision.eu,
-	ath11k@lists.infradead.org,
-	ath10k@lists.infradead.org,
-	linux-wireless@vger.kernel.org,
-	geomatsi@gmail.com,
-	kvalo@kernel.org,
-	Igor Mitsyanko <imitsyanko@quantenna.com>
-Cc: quic_jjohnson@quicinc.com,
-	leon@kernel.org,
-	dennis.dalessandro@cornelisnetworks.com,
-	linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org,
-	bpf@vger.kernel.org
-Subject: [PATCH net-next v4 7/9] wifi: qtnfmac: Use netdev dummy allocator helper
-Date: Tue,  9 Apr 2024 05:57:21 -0700
-Message-ID: <20240409125738.1824983-8-leitao@debian.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240409125738.1824983-1-leitao@debian.org>
-References: <20240409125738.1824983-1-leitao@debian.org>
+	id 1ruCEy-00000002Mms-2UZB;
+	Tue, 09 Apr 2024 14:14:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1712672061;
+	bh=bbFHu+W7pWwQce2qu4sFi0y/kXqqRKu/Ciran2Y9Ivo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=lfWTI8h6fwpFNiuvvllOEkLLZIusfm7UhW1Iw9+IB8wvuS6tQMHGWOUySLCjwnWOw
+	 cpGsOTXoghKjMZOTPM2fAKRRAqMU8Zh5Z0jwH6aZdDfHBwk6jAiOKD+Y1Ts/rcww0R
+	 1FVwx6tc1SwWh4UcfTTgFy/kg0TxTebdAd7rR53S86pdrO58S+Egu+cEAIA2wod/xl
+	 IRuydABjy3CNE+CL3Sh01a+S05gWfyNB5wiiT+BRzTbxpBkiOdx2tw+knuoWbW72Oc
+	 BDusFRXDfrohrpdwamfLcgIhD2zzvQu9cU+8ULxOYq4nBEH3cCs6qRxrNcRhdOFEQb
+	 zkL60p9zYxlDQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 293333780480;
+	Tue,  9 Apr 2024 14:14:21 +0000 (UTC)
+Message-ID: <cf58846c-687c-46c4-b041-c944cab78dce@collabora.com>
+Date: Tue, 9 Apr 2024 16:14:20 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/5] arm64: dts: mediatek: mt8395-nio-12l: Fix MT6360
+ regulator nodes names
+To: linux-mediatek@lists.infradead.org
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com
+References: <20240409114211.310462-1-angelogioacchino.delregno@collabora.com>
+ <20240409114211.310462-2-angelogioacchino.delregno@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240409114211.310462-2-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_055850_123005_AF146B95 
-X-CRM114-Status: UNSURE (   9.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240409_071424_973413_99BBD5EB 
+X-CRM114-Status: GOOD (  14.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,33 +78,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There is a new dummy netdev allocator, use it instead of
-alloc_netdev()/init_dummy_netdev combination.
+Il 09/04/24 13:42, AngeloGioacchino Del Regno ha scritto:
+> The regulators' node names for mt6360-regulator are supposed to be
+> uppercase. Also, drop "-regulator" from the usb-otg-vbus node name
+> to make all vregs to probe correctly.
+> 
+> The alternative would've been to use regulator-compatible, but that's
+> a deprecated property.
+> Now all regulators are probing fine.
+> 
+> Fixes: 96564b1e2ea4 ("arm64: dts: mediatek: Introduce the MT8395 Radxa NIO 12L board")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts | 18 +++++++++---------
+>   1 file changed, 9 insertions(+), 9 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> index e5d9b671a405..18182cf073fb 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+> @@ -216,7 +216,7 @@ charger {
+>   			compatible = "mediatek,mt6360-chg";
+>   			richtek,vinovp-microvolt = <14500000>;
+>   
+> -			otg_vbus_regulator: usb-otg-vbus-regulator {
+> +			otg_vbus_regulator: usb-otg-vbus {
 
-Using alloc_netdev() with init_dummy_netdev might cause some memory
-corruption at the driver removal side.
+Reviewing and NACK'ing my own patch, I just noticed that everything apart the
+usb-otg-vbus renaming is wrong.
 
-Fixes: 61cdb09ff760 ("wifi: qtnfmac: allocate dummy net_device dynamically")
-Signed-off-by: Breno Leitao <leitao@debian.org>
----
- drivers/net/wireless/quantenna/qtnfmac/pcie/pcie.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+The MT6360 regulator node names should not be capitalized as the bindings are
+correct in this regard, and there already is one user (genio-1200-evk) apart
+from NIO-12L declaring the wrong ones - so, the driver must be fixed, not the
+other way around.
 
-diff --git a/drivers/net/wireless/quantenna/qtnfmac/pcie/pcie.c b/drivers/net/wireless/quantenna/qtnfmac/pcie/pcie.c
-index f8f55db2f454..f66eb43094d4 100644
---- a/drivers/net/wireless/quantenna/qtnfmac/pcie/pcie.c
-+++ b/drivers/net/wireless/quantenna/qtnfmac/pcie/pcie.c
-@@ -372,8 +372,7 @@ static int qtnf_pcie_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 		goto error;
- 	}
- 
--	bus->mux_dev = alloc_netdev(0, "dummy", NET_NAME_UNKNOWN,
--				    init_dummy_netdev);
-+	bus->mux_dev = alloc_netdev_dummy(0);
- 	if (!bus->mux_dev) {
- 		ret = -ENOMEM;
- 		goto error;
--- 
-2.43.0
+This patch will be cleaned up in v2.
+
+Cheers
 
 
