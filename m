@@ -4,65 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3170C67861
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 13:39:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82A02CD129A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 13:39:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
 	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
 	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/LDeaGUFKgTuPdyupc9OvXAcr+ViDhO+T6W6fXTKeY4=; b=N3tFvQ9XWB5xZBOh0UqEV9U7Gd
-	wbcPXdr2VX+PAc8TJ7OyTeXPCiUYFNUnJWhABcGiGhTGfOUIrziVL9/Mj8UAtEMtDo7wtym6u2jNY
-	PBJNBLwo+cYc/DnxYt6RLC07yKW5T8rrKih+g9nwvKwp97kZBI7ogntsZC46fpwpp7z4wxszHr5CW
-	iooVUY0y/hNduKddIeGXkiCFSoloXMPluCmJiChUCPR+Fm7i2Q507h2HJfln776WI2uKeOhbZaiMZ
-	/uGUex/bhBI5UR1irw+hN6E2Tw6QEB+cnQLcTTlvydlyIX6OXX4QzytP0zlfR+QHFUcNvTTq9pIc0
-	d4IJyJ6Q==;
+	bh=U3BhuXuYVntFrTKTe9DyFGQcqwlbU4aEjRYx4t/i40o=; b=HuYeImPEmpj+cv8k23zlSgs68W
+	iI9FqYYuJaO/r5ITlLa5BG/EQAFkTB21fSxEWuIXzbREx7YvbHijF32+5N/m4WbhK7qJzgkoG++tf
+	2/p887ZtLyYup3nGSSRAE0qODdKgwcn/EZFve6Db9ZLiOawfSRT+YrTJDUKp05mFIKyyUZQDKMbWN
+	KJwrewEM89OfKXg+BDdnHWkppXNbEGed+xNlB9wxM/euxwUZ41jtVSnCOgUFF6X8q9eAI/3r/C9QE
+	w8ETls/zA4edkBqeroejsSTnIbkWVgR7CSzVbq6Dvu0W+AX5OchzQUso3Y3Nt/xUfS93yO0VYCw5m
+	1nWMlO+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruBgw-00000002ArL-04jG;
-	Tue, 09 Apr 2024 13:39:14 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1ruBh7-00000002B14-41bt;
+	Tue, 09 Apr 2024 13:39:26 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruBgc-00000002Add-3T5G;
-	Tue, 09 Apr 2024 13:39:00 +0000
+	id 1ruBgo-00000002AmG-1Pyk;
+	Tue, 09 Apr 2024 13:39:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id A14C1CE1E82;
-	Tue,  9 Apr 2024 13:38:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 940F7C433C7;
-	Tue,  9 Apr 2024 13:38:50 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C1AF261729;
+	Tue,  9 Apr 2024 13:39:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25F34C43399;
+	Tue,  9 Apr 2024 13:39:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712669930;
-	bh=vx0BqNfIb8F4lDx/iXeS8NQx1kj2f2ZQ4T6UWr5MvSU=;
+	s=k20201202; t=1712669945;
+	bh=7hrNrvhSRHtyZ6X1D6pysKCJsCiJsdLaYXC8yh0wAUM=;
 	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=IoSJeDDwI+KW/z9/tKVlMtK0X5cwXlpLp5tXMyETc76qJvZlRXAKiAUB04IBAA3Xt
-	 CmXi0pLFz5ZEVvvnZuCdlWNjVrf17d59sOySGB3CbnlaTO+VDyKzdcRxy4oXCyxA+B
-	 NwQiZN3olbmTxEW2pPZLgQibV/kZaaFKfwogZXXleoQFgN2rDM+SvlCWodj8NDxYm0
-	 EBTgXkqhyVOAQ9nHiJFfEkZS2kMrqQWqXeF1f56MRBIgS07CGHC9tMflrlJoImZg7E
-	 RVFrLZDC9GxVSxhdGmx0GvB92qkU60pa5RsCiiqn5cmSquttNyoLGAn+e3nYC/s39s
-	 1TPw03FVwfqYw==
-Date: Tue, 09 Apr 2024 08:38:49 -0500
+	b=HEOHTdUfT40MII2SsTPC3kxPREzZm2W/lVyEe9od6xbqeWv+E+CnLbDZ4XpYgcJvS
+	 NGI8fSoLiC6wAKLnSlvi2QosYG5cKatT8ATrPC+Gxnl5uWX8ov14lzpj+X4GqfNh9U
+	 RUtx+AYrx9o7CTLirh6h10eh+hJRy9k3aU2iPezhwGymSkIyL6oTIT543hHDjbC1q9
+	 jMo4X+2mUz8rvpXKXGTei/TMySmwQJxzli35BeyfxLwgA5fF6S1Sio9ZupIHzUeufa
+	 xW3V5AqNVXfLZk7+xw+fILjgw+zgISok7gWaUSEW1IGzOKJkYq6E4Zj0g+ZnCZlYd0
+	 DN4xtgiXsi4qQ==
+Date: Tue, 09 Apr 2024 08:39:04 -0500
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
 From: Rob Herring <robh@kernel.org>
-To: Michael Walle <mwalle@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
- Sean Wang <sean.wang@mediatek.com>, 
- Conor Dooley <conor.dooley@microchip.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20240408080816.4134370-1-mwalle@kernel.org>
-References: <20240408080816.4134370-1-mwalle@kernel.org>
-Message-Id: <171266958413.1032531.2798711513331001834.robh@kernel.org>
-Subject: Re: [PATCH v4 1/2] dt-bindings: arm64: mediatek: add Kontron
- 3.5"-SBC-i1200
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ krzk+dt@kernel.org, conor+dt@kernel.org, linux-kernel@vger.kernel.org, 
+ kernel@collabora.com, matthias.bgg@gmail.com, 
+ linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20240409114211.310462-1-angelogioacchino.delregno@collabora.com>
+References: <20240409114211.310462-1-angelogioacchino.delregno@collabora.com>
+Message-Id: <171266958557.1032651.3727332046208008120.robh@kernel.org>
+Subject: Re: [PATCH 0/5] Radxa NIO-12L: Supplies for CPU/GPU and
+ improvements
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_063855_424326_5D7D8033 
-X-CRM114-Status: GOOD (  14.24  )
+X-CRM114-CacheID: sfid-20240409_063907_259564_98CB359B 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,25 +74,31 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 08 Apr 2024 10:08:15 +0200, Michael Walle wrote:
-> Add the compatible string for the Kontron 3.5"-SBC-i1200 single board
-> computer.
+On Tue, 09 Apr 2024 13:42:06 +0200, AngeloGioacchino Del Regno wrote:
+> This series performs various improvements and enables PHYs and USB Role
+> Switching for proper PM support and to stop relying on the bootloader's
+> pre-boot configuration.
+> USB Role Switching doesn't include Alternate Modes yet, as this needs
+> some more work.
 > 
-> Signed-off-by: Michael Walle <mwalle@kernel.org>
-> Acked-by: Conor Dooley <conor.dooley@microchip.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
-> v4:
->  - rebase to latest next
+> As for the regulator nodes, those were not probing correctly, producing
+> unability to resume after PM suspend.
 > 
-> v3:
->  - drop description and add to mt8395 existing entry
+> AngeloGioacchino Del Regno (5):
+>   arm64: dts: mediatek: mt8395-nio-12l: Fix MT6360 regulator nodes names
+>   arm64: dts: medaitek: mt8395-nio-12l: Set i2c6 pins to bias-disable
+>   arm64: dts: mediatek: mt8395-nio-12l: Define RSEL in microamperes
+>   arm64: dts: mediatek: mt8395-nio-12l: Enable PHYs and USB role switch
+>   arm64: dts: mediatek: mt8395-nio-12l: Add power supplies for CPU/GPU
+>     scaling
 > 
-> v2:
->  - convert enum to const as there is only one specific board
-> ---
->  Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
->  1 file changed, 1 insertion(+)
+>  .../dts/mediatek/mt8395-radxa-nio-12l.dts     | 106 ++++++++++++++++--
+>  1 file changed, 94 insertions(+), 12 deletions(-)
+> 
+> --
+> 2.44.0
+> 
+> 
 > 
 
 
@@ -114,39 +116,21 @@ make sure dt-schema is up to date:
   pip3 install dtschema --upgrade
 
 
-New warnings running 'make CHECK_DTBS=y mediatek/mt8395-kontron-3-5-sbc-i1200.dtb' for 20240408080816.4134370-1-mwalle@kernel.org:
+New warnings running 'make CHECK_DTBS=y mediatek/mt8395-radxa-nio-12l.dtb' for 20240409114211.310462-1-angelogioacchino.delregno@collabora.com:
 
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: soc: jpgdec-master: {'compatible': ['mediatek,mt8195-jpgdec'], 'power-domains': [[43, 24]], 'iommus': [[130, 621], [130, 622], [130, 626], [130, 627], [130, 628], [130, 629]], '#address-cells': [[2]], '#size-cells': [[2]], 'ranges': True, 'jpgdec@1a040000': {'compatible': ['mediatek,mt8195-jpgdec-hw'], 'reg': [[0, 436469760, 0, 65536]], 'iommus': [[130, 621], [130, 622], [130, 626], [130, 627], [130, 628], [130, 629]], 'interrupts': [[0, 343, 4, 0]], 'clocks': [[34, 3]], 'clock-names': ['jpgdec'], 'power-domains': [[43, 23]]}, 'jpgdec@1a050000': {'compatible': ['mediatek,mt8195-jpgdec-hw'], 'reg': [[0, 436535296, 0, 65536]], 'iommus': [[130, 621], [130, 622], [130, 626], [130, 627], [130, 628], [130, 629]], 'interrupts': [[0, 344, 4, 0]], 'clocks': [[34, 4]], 'clock-names': ['jpgdec'], 'power-domains': [[43, 24]]}, 'jpgdec@1b040000': {'compatible': ['mediatek,mt8195-jpgdec-hw'], 'reg': [[0, 453246976, 0, 65536]], 'iommus'
- : [[112, 653], [112, 654], [112, 658], [112, 659], [112, 660], [112, 661]], 'interrupts': [[0, 348, 4, 0]], 'clocks': [[28, 3]], 'clock-names': ['jpgdec'], 'power-domains': [[43, 25]]}} should not be valid under {'type': 'object'}
+arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dtb: soc: jpgdec-master: {'compatible': ['mediatek,mt8195-jpgdec'], 'power-domains': [[47, 24]], 'iommus': [[137, 621], [137, 622], [137, 626], [137, 627], [137, 628], [137, 629]], '#address-cells': [[2]], '#size-cells': [[2]], 'ranges': True, 'jpgdec@1a040000': {'compatible': ['mediatek,mt8195-jpgdec-hw'], 'reg': [[0, 436469760, 0, 65536]], 'iommus': [[137, 621], [137, 622], [137, 626], [137, 627], [137, 628], [137, 629]], 'interrupts': [[0, 343, 4, 0]], 'clocks': [[38, 3]], 'clock-names': ['jpgdec'], 'power-domains': [[47, 23]]}, 'jpgdec@1a050000': {'compatible': ['mediatek,mt8195-jpgdec-hw'], 'reg': [[0, 436535296, 0, 65536]], 'iommus': [[137, 621], [137, 622], [137, 626], [137, 627], [137, 628], [137, 629]], 'interrupts': [[0, 344, 4, 0]], 'clocks': [[38, 4]], 'clock-names': ['jpgdec'], 'power-domains': [[47, 24]]}, 'jpgdec@1b040000': {'compatible': ['mediatek,mt8195-jpgdec-hw'], 'reg': [[0, 453246976, 0, 65536]], 'iommus': [[119,
+  653], [119, 654], [119, 658], [119, 659], [119, 660], [119, 661]], 'interrupts': [[0, 348, 4, 0]], 'clocks': [[32, 3]], 'clock-names': ['jpgdec'], 'power-domains': [[47, 25]]}} should not be valid under {'type': 'object'}
 	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: soc: jpgenc-master: {'compatible': ['mediatek,mt8195-jpgenc'], 'power-domains': [[43, 27]], 'iommus': [[112, 647], [112, 648], [112, 649], [112, 652]], '#address-cells': [[2]], '#size-cells': [[2]], 'ranges': True, 'jpgenc@1a030000': {'compatible': ['mediatek,mt8195-jpgenc-hw'], 'reg': [[0, 436404224, 0, 65536]], 'iommus': [[130, 615], [130, 616], [130, 617], [130, 620]], 'interrupts': [[0, 342, 4, 0]], 'clocks': [[34, 2]], 'clock-names': ['jpgenc'], 'power-domains': [[43, 26]]}, 'jpgenc@1b030000': {'compatible': ['mediatek,mt8195-jpgenc-hw'], 'reg': [[0, 453181440, 0, 65536]], 'iommus': [[112, 647], [112, 648], [112, 649], [112, 652]], 'interrupts': [[0, 347, 4, 0]], 'clocks': [[28, 2]], 'clock-names': ['jpgenc'], 'power-domains': [[43, 27]]}} should not be valid under {'type': 'object'}
+arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dtb: soc: jpgenc-master: {'compatible': ['mediatek,mt8195-jpgenc'], 'power-domains': [[47, 27]], 'iommus': [[119, 647], [119, 648], [119, 649], [119, 652]], '#address-cells': [[2]], '#size-cells': [[2]], 'ranges': True, 'jpgenc@1a030000': {'compatible': ['mediatek,mt8195-jpgenc-hw'], 'reg': [[0, 436404224, 0, 65536]], 'iommus': [[137, 615], [137, 616], [137, 617], [137, 620]], 'interrupts': [[0, 342, 4, 0]], 'clocks': [[38, 2]], 'clock-names': ['jpgenc'], 'power-domains': [[47, 26]]}, 'jpgenc@1b030000': {'compatible': ['mediatek,mt8195-jpgenc-hw'], 'reg': [[0, 453181440, 0, 65536]], 'iommus': [[119, 647], [119, 648], [119, 649], [119, 652]], 'interrupts': [[0, 347, 4, 0]], 'clocks': [[32, 2]], 'clock-names': ['jpgenc'], 'power-domains': [[47, 27]]}} should not be valid under {'type': 'object'}
 	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: syscon@10001000: compatible: ['mediatek,mt8195-infracfg_ao', 'syscon', 'simple-mfd'] is too long
-	from schema $id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt8195-sys-clock.yaml#
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: /soc/pwrap@10024000/pmic: failed to match any schema with compatible: ['mediatek,mt6359']
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: /soc/pwrap@10024000/pmic/mt6359rtc: failed to match any schema with compatible: ['mediatek,mt6358-rtc']
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: infra-iommu@10315000: interrupts: [[0, 795, 4, 0], [0, 796, 4, 0], [0, 797, 4, 0], [0, 798, 4, 0], [0, 799, 4, 0]] is too long
-	from schema $id: http://devicetree.org/schemas/iommu/mediatek,iommu.yaml#
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: ethernet@11021000: Unevaluated properties are not allowed ('snps,rxpbl', 'snps,txpbl' were unexpected)
-	from schema $id: http://devicetree.org/schemas/net/mediatek-dwmac.yaml#
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: regulator: 'BUCK1', 'BUCK2', 'LDO1', 'LDO2', 'LDO3', 'LDO5', 'LDO6', 'LDO7' do not match any of the regexes: '^buck[12]$', '^ldo[123567]$', 'pinctrl-[0-9]+'
+arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dtb: pmic@34: charger: 'usb-otg-vbus' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6360.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dtb: charger: 'usb-otg-vbus' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/power/supply/mt6360_charger.yaml#
+arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dtb: regulator: 'BUCK1', 'BUCK2', 'LDO1', 'LDO2', 'LDO3', 'LDO5', 'LDO6', 'LDO7' do not match any of the regexes: '^buck[12]$', '^ldo[123567]$', 'pinctrl-[0-9]+'
 	from schema $id: http://devicetree.org/schemas/regulator/mt6360-regulator.yaml#
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: t-phy@11e30000: 'power-domains' does not match any of the regexes: '^(usb|pcie|sata)-phy@[0-9a-f]+$', 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/phy/mediatek,tphy.yaml#
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: display@14f06000: clocks: [[30, 14], [30, 43], [30, 44]] is too long
+arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dtb: display@14f06000: clocks: [[34, 14], [34, 43], [34, 44]] is too long
 	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,split.yaml#
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: dp-intf@1c015000: clock-names:0: 'pixel' was expected
-	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: dp-intf@1c015000: clock-names:1: 'engine' was expected
-	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: mutex@1c101000: 'clock-names', 'reg-names' do not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/soc/mediatek/mediatek,mutex.yaml#
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: dp-intf@1c113000: clock-names:0: 'pixel' was expected
-	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: dp-intf@1c113000: clock-names:1: 'engine' was expected
-	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
-arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dtb: dp-intf@1c113000: Additional properties are not allowed ('power-domains' was unexpected)
-	from schema $id: http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
 
 
 
