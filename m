@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D0A1CD129A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71D3DCD129C
 	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 11:17:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,65 +12,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vstY9Zznkfygwg0NsHtg7aqDXceNRwx7wPOtr1MNxN0=; b=wwqN9j/L3WtBTcKI4lThTsreQp
-	k6zEbMRbzow5hn9X1EHdXZ9HkUJuzgsLZQgvEqbb2K3JaSvbtlvQXB6CMIl8MQ+5MH+fNlFSE5FOX
-	5N65aTwa6HrQGLNlQZqTF2utIJj3Hc2FZSa9IaCBIoy4DmiMSkfXCUoqXjFdKYZoW9JGG7WLSQy0a
-	uATA+NBzQNTCqzVgE6MEybgVy7m+Euq+z72uGJQA2tJBW4PHOmOgIQOJzUnehJTo2JdvvCoB0BtwF
-	rp7Z6ROx+dufEyF1wqoetJZdjmxGUKxQNZrO4RcHvjLhVWoX0uqHA9rhoQe5RR6MkLi9NytElJD5M
-	+srk96sA==;
+	bh=ORjGCzH/z+0lccA7K6wZO54EFsOktZ+W05TnMMd8cIg=; b=1Fbk1rOK4uoWh3GiakPlB5GGN9
+	luuttKTWTJeGFE8pQhVtXn4Eb0KnBPJ66SbUf7vZX7/sma5r2CXP+1ZdKLWwACUXeh30d8n2WBn92
+	Hfz8V++Y4QufJ30JFK1Dciw+ZrBhZXV0G8PcagssUgrnTMOGTtLtr4myW/pUvN4HHUClBhmuFobKA
+	08RLtOvlTAj+KEBeMklOZsD+UXQMsrdkRHEthYOcmGpglpMStEwQotCtQZVj9jXtQ8mBeY+Vw2pgM
+	2av/0tNi/zW+msdOlGt1eOwaoo3WwUk6zgvXgKqmDu19mBIY2YYFZ6Q2HFGQjqNaL6snrohgDVH32
+	9enVtMnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ru9TL-00000001cHz-2Vyj;
-	Tue, 09 Apr 2024 11:17:03 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1ru9TJ-00000001cHD-4BsG;
+	Tue, 09 Apr 2024 11:17:02 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ru8U9-00000001NSm-2cX9
+	id 1ru8U8-00000001NUh-2dt6
 	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Apr 2024 10:13:53 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-416920b1a2aso8985555e9.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Apr 2024 03:13:43 -0700 (PDT)
+	Tue, 09 Apr 2024 10:13:50 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-416b7f372b3so592115e9.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Apr 2024 03:13:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1712657622; x=1713262422; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1712657626; x=1713262426; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=vstY9Zznkfygwg0NsHtg7aqDXceNRwx7wPOtr1MNxN0=;
-        b=Dl/TZQNewwPKnFifr2QjD2bEw/hC/XscZE5MEwPdoo4DyrwyQ/gTTaVcsrlPb3VhNP
-         FkpMN0jEXZ+1cW7PprYw5l27J8QBSSlSaeKSEsSSSOFjc47R886a0lD2i3zsuX+pmCf3
-         iNycUwK2tygz9OjS1WrfM0R8PBIFpd82Op5Y3zduQn+IvMiZeE49v/x+FMIlBFI1wiij
-         levJCIqBs36QWZzmzB9wO/1SWJ0NBfE2p/LcQolDbW3DupH+3A7d4PvFUqtMgmeGQ3MG
-         JON0PXbYI2rtXKczOXfT3yCDKVOqjKkmmLHVpDQ8N4vU9VbFK7O/Hlyhx3hZ46QvKy5P
-         Bzlw==
+        bh=ORjGCzH/z+0lccA7K6wZO54EFsOktZ+W05TnMMd8cIg=;
+        b=IU2WLH5wqOll8tZm24SVJPKv+n2ue1UAlsbizcqSXnho/GReMEvUkG60gSsdevk5em
+         dRL17k2VuRLSjAAarMkxXuLx9V6NzvIbhxTBFTGauE29Q4dI3A2vVyvpb+L8PRh/yNfI
+         lB9mbChyvUNVlWSRLnq0huC4bRUYUoWsLjtj7bPUGWzFm6XeMOpy9NnaQyiyVobsmU8C
+         70rOrP31YebwAlZsif/e1XBXRbRJK4krWo9CI30xilINGYT72ZXEWPLN3Ye1Bwk1uBVl
+         k3Qd5OdqZbxfDh+Qr6f09r4v9ZruVtvzCZBTqE4gvc4wfTFPXYghj12+DV0WXqDAaxRp
+         x8Jw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712657622; x=1713262422;
+        d=1e100.net; s=20230601; t=1712657626; x=1713262426;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=vstY9Zznkfygwg0NsHtg7aqDXceNRwx7wPOtr1MNxN0=;
-        b=wJg9tdFa/GmmO5M7mM+UUObw9nCp6eQ7R1vY4eIpZxjHlZVQ/JUh6vHPtu9wzdeXSb
-         vmh7KzdiM6+NgN9yDu67V9sulN3BILhu894/2MCUpYrFsHDHvmR1wXfbciToamTCySes
-         SyOo5gGt+REBqSX5Tcuo0rpPjknTb13MBaMDtyB9dwa/f0dt16Fxjxmur5S6rMwtuoUS
-         Pb12RgI+jmMyBStD7JjuGBt9bO93FY3ruYi5GgUYmcLyRVKxngWFCMSlvdgUgw5NMIKh
-         +mCB1hHJ4Y7dJ7UkSp4RZS5cxVWjfigM+wXyLq4ivWkUxlYnELnjSRkNZt+UhmKZFn18
-         KkCQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW358xphnATXk8hWL/fRT4QE7WZ6AR2X0Eo2hKhAdqTR0Id5oELRW3lNWduFE22xxHP9Bo+1ufgJAFG79mcfN1bJjT7f3lsvLmvel+7J6t3aBT2
-X-Gm-Message-State: AOJu0YyUTOyyy2kZhL+UMaCf2pOFpZVkaVwdw5jou4fmPQbuFRpIS7RG
-	AgsRgMyf9fXyKGr4SCCbu4gIWqpaaOys4+jGZSNdpub1KKTTGzaNojSd+9uwOD0=
-X-Google-Smtp-Source: AGHT+IHqrZDTpg9fb5GQH0DhI4jx2HY2qdWx0GVAnjcLi1UXF9vEhHArn9ciUPZ9dzVCo8vSXIPiog==
-X-Received: by 2002:a05:600c:3509:b0:414:6a1b:819 with SMTP id h9-20020a05600c350900b004146a1b0819mr7911487wmq.13.1712657622311;
-        Tue, 09 Apr 2024 03:13:42 -0700 (PDT)
+        bh=ORjGCzH/z+0lccA7K6wZO54EFsOktZ+W05TnMMd8cIg=;
+        b=HdyPlssN1yx5YYcw9Doda6UF3QoD1Cq8RbqG4KILGF1fLKaOW5mJYS4P5U4gRu3e8T
+         eVOrEdsGCvGqBj8gYadiftKX/HWynEG7fuGDL47vKdwXbrIM3cwEMeF0kA+VmXFdwuyG
+         76FkKa9jKjGLnmqzUumnKK+rfyrjBSWx+ntHGSI4nzHNxRo2hR1DkHuyZJ0lz/PsxKhS
+         M6X8SLy0tm4d0IFQB7ciXIEek5vjnaM3R09GaqsCG0G6bNCiTpUnW2HMXCSH0XILqQOQ
+         sYDt4fquqaRJL+z8EdQS5hQnJvyJNc8VOwS0n1FyJDz4QfJ1D4YYFNbuB9GHSiPCuihb
+         73HQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV9ebETHaV4/IM08QdifSNbHJ/OxNMWiwicDiMaHcRT8yS19WMUs0X5/0nIe0Cigh1mDe/KNuCN56+/bm11ptm4bcDhlA/mN9dDKY9ldOALHy7R
+X-Gm-Message-State: AOJu0Yw9KbZhj9zMC8jmYSgDUEW1wePNi3zUY+4kUcgPGvDopkeSAqU2
+	u0ndHdPMU+l/DWwlhzpQtPeisYhThzdqngDJkib5NYEE7QetgWwZRT32AHYEFtw=
+X-Google-Smtp-Source: AGHT+IEsJPu/054QzozXEcR3cAKbGmgbpg6X8FhQfUnUAHkjL52ZMV/yQQbc2f2sdvpHT1vGB9wzLA==
+X-Received: by 2002:a05:600c:350c:b0:416:667d:4691 with SMTP id h12-20020a05600c350c00b00416667d4691mr4530196wmq.25.1712657626644;
+        Tue, 09 Apr 2024 03:13:46 -0700 (PDT)
 Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id r7-20020a05600c458700b00416b035c2d8sm1124149wmo.3.2024.04.09.03.13.41
+        by smtp.googlemail.com with ESMTPSA id r7-20020a05600c458700b00416b035c2d8sm1124149wmo.3.2024.04.09.03.13.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Apr 2024 03:13:41 -0700 (PDT)
+        Tue, 09 Apr 2024 03:13:46 -0700 (PDT)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Tue, 09 Apr 2024 12:13:22 +0200
-Subject: [PATCH v2 01/18] ASoC: dt-bindings: mediatek,mt8365-afe: Add audio
- afe document
+Date: Tue, 09 Apr 2024 12:13:25 +0200
+Subject: [PATCH v2 04/18] ASoC: dt-bindings: mt6357: Add audio codec
+ document
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240226-audio-i350-v2-1-3043d483de0d@baylibre.com>
+Message-Id: <20240226-audio-i350-v2-4-3043d483de0d@baylibre.com>
 References: <20240226-audio-i350-v2-0-3043d483de0d@baylibre.com>
 In-Reply-To: <20240226-audio-i350-v2-0-3043d483de0d@baylibre.com>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
@@ -91,24 +91,24 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
  Alexandre Mergnat <amergnat@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4760; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=6yP2PSTtW/6RtQgKkMZffCd+b5diqb9RzbFiRrSwUQ0=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmFRTT1RZ83NnSZXFR+xtetcg3ocLkN87pn3rt8lvM
- Bw3SBMeJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZhUU0wAKCRArRkmdfjHURU8cD/
- 9+eYbJh7Z1C/HPcwCIRFa4iJqRud2TZmORRiL5znL6VLbAcmasJM5woFlHIBVSYTfVeRBojFBXQYVu
- KvPJokhiDYNFgPKkVxN4VssP/Ie4lZv/MuySDZWV1vYxpmASA8aAG7JTxxrI2HcBDZroWSEDqtefqc
- MNLvOY6UtAgII7YRXchKGhnNNkAt4FdkNS/i4Z/Whs6p8v49GGUscdm3rkJBmswDqiWF+zGWdTr8fg
- Ai36j4e8dnCaNGujXh4Zyh8mUfZccYvDlc8vGB5XLnh3MV1nXS6pExc1K6ef4HA9oonfv9YwbcT+B7
- H+Z8P+EXmPHzJ7huHtpZ2Ef4Ua6Bu3nt/paAJptBl/Jzc/iCG5yk+hD5JrCS+rYUznWJbfXsbikfiN
- zgOaX8vPMP4k2A8RJUH8uqa3lR3kEUWnzq3xWPPdoEpV5Z8lSBx1uOPh/m8mFSt9MJjRgpFT0POGOp
- mO+0W39uoIpKYhgmeF+BTOO+iCHAkeyVfTfw8Kr57K0JMlHL/BvT70N+C/waciP3FNR+kTZkZl/1Hg
- s77OelmvsvaxF/Jlwd7TRDjl143YApZO4wCThKelYcQxoeJJrvCbH5AGY0tBrK0Z6XbsSMg3tzvpOK
- zfNN7s6B6lj1WhLc1Gkr182cNsggrj1Fnd0dlmMdfqqdVrQ7MLN++zk1wyLg==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2299; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=ufC03TRzyDk5YR8DEBKesMFjVbHSKso6JjQ31AKWDaQ=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmFRTTFKmit1LRHBjD3sVBNy1AD+EFSPxUwuPh5hBL
+ llo/QJCJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZhUU0wAKCRArRkmdfjHURRLrD/
+ 0UItyg9zwrmDQpm/gbTeRtQNNsOjxAl8PQIWG8EqnsHgcHKNZrT5vEhV+q6JscmsLBfKi1MnE3f3HX
+ t2UyIjSKZTzyYdGRsCJEqMicDSryyY7IckznV0K7tVh8PNPNcCAtcS5y0BswhRRY/MsqEscAGm4X9Q
+ 0xfJfWpCXqVnfEz35io+YGQYh1pNdw+Sua5QmPXzWAJrd2ZMadxK6f6rjLEVPTjIrq16VYfEJuIlq3
+ PPr/0cJx5AYi/70kI6NW1qds/TkjhJHMhcyVzG0yI6f2QGmhlru4byON2sRKKnoy/SKeqI7UJxW2bd
+ ssbzSx4dxbtlzGwy0bFGjL9X5m3EN4oYAP5UTd5xR8pyG16Orv+/tLJaLX4dFEzkqtdCZXgnlY9Gki
+ B4ohzq/yeLtxcLfZQwiIegbQWxTVOAxHIP+Q4uPLxCYD+FR/ZHVlVEbJ6QCmpK+sOGRzqiBv0kqY1C
+ MUT1f6xaRnTvjkx3EfDKaXGUUV1sv71+gHTlrMz7q3gKyVaRHH6zYSWfIRD2PrzRfiZ66J5SU7IMxc
+ FyKZHs9k/OWQ0E5jN0npkOcn0mqcrZ6iFWA1qK6xhyHu+61Xa6DKEkM6YcMLUQYwtP3/6o+JsQYnuN
+ 8a4gQu4guSBQODpZf9+jzZFOd1nf7gCoacIRWppbgdHhnfS9tvBXBVOcVI/A==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_031349_799550_71D62B1F 
-X-CRM114-Status: GOOD (  13.78  )
+X-CRM114-CacheID: sfid-20240409_031348_806909_2BA91AC8 
+X-CRM114-Status: GOOD (  14.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,152 +123,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8365 audio front-end bindings
+Add MT8365 audio codec bindings to set required
+and optional voltage properties between the codec and the board.
+The properties are:
+- phandle of the requiered power supply.
+- Setup of microphone bias voltage.
+- Setup of the speaker pin pull-down.
 
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- .../bindings/sound/mediatek,mt8365-afe.yaml        | 136 +++++++++++++++++++++
- 1 file changed, 136 insertions(+)
+ .../devicetree/bindings/sound/mt6357.yaml          | 54 ++++++++++++++++++++++
+ 1 file changed, 54 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8365-afe.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8365-afe.yaml
+diff --git a/Documentation/devicetree/bindings/sound/mt6357.yaml b/Documentation/devicetree/bindings/sound/mt6357.yaml
 new file mode 100644
-index 000000000000..d0759898b9c5
+index 000000000000..f532a9e7dff5
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mediatek,mt8365-afe.yaml
-@@ -0,0 +1,136 @@
++++ b/Documentation/devicetree/bindings/sound/mt6357.yaml
+@@ -0,0 +1,54 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/sound/mediatek,mt8365-afe.yaml#
++$id: http://devicetree.org/schemas/sound/mt6357.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: MediaTek AFE PCM controller for MT8365
++title: Mediatek MT6357 Codec
 +
 +maintainers:
 +  - Alexandre Mergnat <amergnat@baylibre.com>
 +
++description: |
++  This is the required and optional voltage properties for this subdevice.
++  The communication between MT6357 and SoC is through Mediatek PMIC wrapper.
++  For more detail, please visit Mediatek PMIC wrapper documentation.
++  Must be a child node of PMIC wrapper.
++
 +properties:
-+  compatible:
-+    const: mediatek,mt8365-afe-pcm
-+
-+  reg:
-+    maxItems: 1
-+
-+  "#sound-dai-cells":
-+    const: 0
-+
-+  clocks:
-+    items:
-+      - description: 26M clock
-+      - description: mux for audio clock
-+      - description: audio i2s0 mck
-+      - description: audio i2s1 mck
-+      - description: audio i2s2 mck
-+      - description: audio i2s3 mck
-+      - description: engen 1 clock
-+      - description: engen 2 clock
-+      - description: audio 1 clock
-+      - description: audio 2 clock
-+      - description: mux for i2s0
-+      - description: mux for i2s1
-+      - description: mux for i2s2
-+      - description: mux for i2s3
-+
-+  clock-names:
-+    items:
-+      - const: top_clk26m_clk
-+      - const: top_audio_sel
-+      - const: audio_i2s0_m
-+      - const: audio_i2s1_m
-+      - const: audio_i2s2_m
-+      - const: audio_i2s3_m
-+      - const: engen1
-+      - const: engen2
-+      - const: aud1
-+      - const: aud2
-+      - const: i2s0_m_sel
-+      - const: i2s1_m_sel
-+      - const: i2s2_m_sel
-+      - const: i2s3_m_sel
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  mediatek,dmic-mode:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      Indicates how many data pins are used to transmit two channels of PDM
-+      signal. 1 means two wires, 0 means one wire. Default value is 0.
-+    enum:
-+      - 0 # one wire
-+      - 1 # two wires
-+
-+  mediatek,topckgen:
++  vaud28-supply:
 +    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: The phandle of the mediatek topckgen controller
++    description: 2.8 volt supply for the audio codec
++
++  mediatek,hp-pull-down:
++    description:
++      Earphone driver positive output stage short to
++      the audio reference ground.
++    type: boolean
++
++  mediatek,micbias0-microvolt:
++    description: Selects MIC Bias 0 output voltage.
++    enum: [1700000, 1800000, 1900000, 2000000,
++           2100000, 2500000, 2600000, 2700000]
++    default: 1700000
++
++  mediatek,micbias1-microvolt:
++    description: Selects MIC Bias 1 output voltage.
++    enum: [1700000, 1800000, 1900000, 2000000,
++           2100000, 2500000, 2600000, 2700000]
++    default: 1700000
 +
 +required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - clock-names
-+  - interrupts
-+  - power-domains
-+  - mediatek,topckgen
++  - vaud28-supply
 +
 +additionalProperties: false
 +
 +examples:
 +  - |
-+    #include <dt-bindings/clock/mediatek,mt8365-clk.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/power/mediatek,mt8365-power.h>
-+
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        afe@11220000 {
-+            compatible = "mediatek,mt8365-afe-pcm";
-+            reg = <0 0x11220000 0 0x1000>;
-+            #sound-dai-cells = <0>;
-+            clocks = <&clk26m>,
-+                     <&topckgen CLK_TOP_AUDIO_SEL>,
-+                     <&topckgen CLK_TOP_AUD_I2S0_M>,
-+                     <&topckgen CLK_TOP_AUD_I2S1_M>,
-+                     <&topckgen CLK_TOP_AUD_I2S2_M>,
-+                     <&topckgen CLK_TOP_AUD_I2S3_M>,
-+                     <&topckgen CLK_TOP_AUD_ENGEN1_SEL>,
-+                     <&topckgen CLK_TOP_AUD_ENGEN2_SEL>,
-+                     <&topckgen CLK_TOP_AUD_1_SEL>,
-+                     <&topckgen CLK_TOP_AUD_2_SEL>,
-+                     <&topckgen CLK_TOP_APLL_I2S0_SEL>,
-+                     <&topckgen CLK_TOP_APLL_I2S1_SEL>,
-+                     <&topckgen CLK_TOP_APLL_I2S2_SEL>,
-+                     <&topckgen CLK_TOP_APLL_I2S3_SEL>;
-+            clock-names = "top_clk26m_clk",
-+                          "top_audio_sel",
-+                          "audio_i2s0_m",
-+                          "audio_i2s1_m",
-+                          "audio_i2s2_m",
-+                          "audio_i2s3_m",
-+                          "engen1",
-+                          "engen2",
-+                          "aud1",
-+                          "aud2",
-+                          "i2s0_m_sel",
-+                          "i2s1_m_sel",
-+                          "i2s2_m_sel",
-+                          "i2s3_m_sel";
-+            interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_LOW>;
-+            power-domains = <&spm MT8365_POWER_DOMAIN_AUDIO>;
-+            mediatek,dmic-mode = <1>;
-+            mediatek,topckgen = <&topckgen>;
-+        };
++    codec {
++        vaud28-supply = <&mt6357_vaud28_reg>;
++        mediatek,micbias0-microvolt = <1900000>;
++        mediatek,micbias1-microvolt = <1700000>;
 +    };
 +
 +...
