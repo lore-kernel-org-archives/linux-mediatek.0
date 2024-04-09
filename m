@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57520C67861
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 15:57:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BBBDC67861
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 15:59:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cfusfqeFqRJ0WRDgA8cU5FKIiHVgUt/Pa1fP0UY4u98=; b=u5woBsJdjjvZhFe8UtzqKgv6vp
-	ougjJ4eH6A7Rd2VRjQN1FMJt9nnp6S05c7MprcDHtCYkayfevXM+d0bwih2jcu5PA05e5Zp+1WZ59
-	SCWZcIxpyzkv9IX06iNcpHq5xnYSyMB689uZ6JaqCDogT6Bsujcl082CrLGO0fUENNIQboj2U0Egz
-	6bh6I+f//vpJR6+2+5F1t6xdAVJhPdjMvw4LCgDp+BDHQ51JHUl9/nAlmCtpN9gp/sC/Ogpi1mo0O
-	8vP4QcymoCO/qBFCLR3KF6Mn8dOOwNsggMNit+ev7I3VjABTb0fxQ02r2CWr5KwG+KijhTkzbeX3K
-	fZOeXqEw==;
+	bh=Y+/spKUkA9slzNHp8vKtqr5Sqc4bQ9ZR/k/vJJvywmg=; b=R8EGFmAUgNQHi55D5YymRA4SP9
+	Db13OB15KYm/HvLWgSx+orRt36M9Se26H1Ha26Og6y9IWcDXj7ug602CThVZTlebWurJp5kyvW9+/
+	a4MYHVBWwh8uvpSMQVXciNqHdho6DFr+UdzsGb3iz/E9vQo5B5cVtkvNCGPhDNh3acnCoc3EpUXuY
+	6acJDJP7S5YKzAXVclh7F2lbxf8iRYRHvBgVO8XHSXEUp33vT9vVpUlQEU1kN4GKOHEWwNiuQyyqA
+	18JDp5XkwISKAEVl7Xc9hJ457+PD2fltjQ43R+9V1GdJf2OS5NsRYm+Qb1qOHJVqSgwB3bMJVPe5n
+	6HWZOQ5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruDqG-00000002pK0-3mkv;
-	Tue, 09 Apr 2024 15:57:00 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1ruDsT-00000002q15-45Kl;
+	Tue, 09 Apr 2024 15:59:17 +0000
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruDqC-00000002pHC-2Bhe
+	id 1ruDsN-00000002pvx-3g32
 	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Apr 2024 15:56:59 +0000
-Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-56e1bbdb362so7099934a12.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Apr 2024 08:56:54 -0700 (PDT)
+	Tue, 09 Apr 2024 15:59:14 +0000
+Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2d82713f473so99347591fa.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Apr 2024 08:59:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1712678213; x=1713283013; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1712678343; x=1713283143; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=cfusfqeFqRJ0WRDgA8cU5FKIiHVgUt/Pa1fP0UY4u98=;
-        b=sM29QxLCHjARcPZSKnRNQfLP0ZjOYlAV/YTaA97m9q+Ra6xbk5P71LXLs6ogvYpQ8X
-         1gRBlGEl79ii2yeA07x5Rn6xxpByJl+UzxKCRAzjyB5v9NBKxjBISQj21jBbYWkhVjNE
-         XLMs9AoL7VBPjVBrrKPsId/h5wRgjA2FayMyDre9fsLnO8zlxpMdQNyMFmXl0bhmbP9+
-         IraDj2KpBC3HA46HB2cW6lUpFyHcnTH1CH8qwC47C5RZNJTtXzdSou74KpgPV2JriaZe
-         wjtBEMpF23JAA7T5RqD5h6FmwE+2QNtSwgKMy42ladF0V80ubeFu/WitS5uSStOqpFMu
-         eHgA==
+        bh=Y+/spKUkA9slzNHp8vKtqr5Sqc4bQ9ZR/k/vJJvywmg=;
+        b=jZ5cwoth7DpWH4WcSbHTphF3Qyr3+tdRsx0P9AVk0FoWJJHxcKG5hIOcy5jHaQpXww
+         XTNgEx7+HuSdOGAI7FzsZlc5Cb2BxwP4EJtHXSfxTZSXK11BgfPCzB53iLeryEEUGO3b
+         GRR815++c+A9bbBHK8EfNk2V5K4IF/sBCxewTPv9KdekYtDYrja1aOdRRuMJFEoB+g/b
+         5+MJXnYg66TRCYpmOsI0KmpwelBoWs+UjuJheegsSqcUH3RwrzQplMbK+lnwXNYCFyFo
+         pDdGR0u6EoPEwUPFDl2FP9piJkzqTvhvbqhirqdcYF2hrLk0jZT6gX59e6GPqgNibv1T
+         7Q4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712678213; x=1713283013;
+        d=1e100.net; s=20230601; t=1712678343; x=1713283143;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=cfusfqeFqRJ0WRDgA8cU5FKIiHVgUt/Pa1fP0UY4u98=;
-        b=LRYvoNY9vt9hlTeemCZhmsg5HGYf/e0XfosQN4ZoNDSY9ggwtRxU5h0qKY7EfVH6w5
-         YakGSkdyoHJtpbjX8b3Uh3ndTZtdfX/RY5tvV5T+TISxUtOUlw/Bs8lOZo23kVJLqiwr
-         5Zcp4nEH8C4Dl8nP7rJPh4h27/0zP2+ofJyxSeHt0A4UsgPDSGVVrKEWZ3Pd4NOBD8e0
-         D7S0a4cMC1nHzYYL14xZb0PlFo9whdPU/UKvJCS3W8QJGQ45ucK8q9mOS0a8GLeuTwAt
-         lGq+uS2+Yu7/qmQ0fSU6GHvkZgcSVNWMjS989FZk8Xshlrx9pjurK3Ez0V6gSEzVso+J
-         3ymQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU2uBkSt0E4YQTDHUfp/+m3cA5vJ/dpV+dNQBgLhrvAwUt3/VCyyeCFI8RurMu5eTojpiLnmF0jf8Rucbu0jba+aKJAWH+C1cWIEot3Izy2Sk0V
-X-Gm-Message-State: AOJu0Yxi8D9PQfvAyQxVs8UKOp78HAI5Ubco0dRDh11dr8NZXgfLL5Oc
-	2CCttYbF6BgX2spYqcplyn+F16IhoKMccdFihWvqg/jb5si2YIKIRuLya1z3WYI=
-X-Google-Smtp-Source: AGHT+IGz69y5YQmJCMWOCwk0+ovCF0eMOPo7z36gohvpMfMsK6OkGCXH0pCxdYBz5kX6P2cbGycwTg==
-X-Received: by 2002:a17:907:1b17:b0:a51:da26:9062 with SMTP id mp23-20020a1709071b1700b00a51da269062mr5127083ejc.36.1712678213231;
-        Tue, 09 Apr 2024 08:56:53 -0700 (PDT)
+        bh=Y+/spKUkA9slzNHp8vKtqr5Sqc4bQ9ZR/k/vJJvywmg=;
+        b=F2ckYOaexaz4O1Qi89zIc3+uA2xvtcFXiU71kQl/S1q6+stmYZORV8wWG/nUVSOiRY
+         AhzaOlGW2BeUBqcWpe3WLoVp41fZwZFCnBNMVmP/MbRjxwgBV4Ik60NhUp203fhwfYlP
+         5iRnFa9uQ1i/yD/UOnXgu61gHJ6SukgLk/u8WNQzk/DwfFIQkvdzubdBW8SFaInUvAnU
+         YayFgQJAH+aeSlDdUQLrJ2HOnwHCC0cu3qLJVU1wGlMiY0t+1G9n8pYGB4s7R/5vrQ18
+         SkeLn6zZmK1gTIbJP9rwY+IeFGScxzMybyBUGOPT2vFRyCoB0P9MMXzVnef9I/aI9xos
+         lXXw==
+X-Forwarded-Encrypted: i=1; AJvYcCXDhpIglX0kMeMEEnrv67smb5lRM6PORozvfjDhDyOQ3DsVVf4PhrVftFARSsYfB/LVLLyUyr6pmuKEVVvnzqDItXlvTSA6qjLuvS8P54VH7psi
+X-Gm-Message-State: AOJu0Yxopb/5LNGI2/HAGHXBaOOdGXbje+3klKFBH50IKLo4s7YrcK0P
+	P7XBynDkdCymHcitK4qKYOtOCbwf6iU/Jer2gY3QvImnZgYtQLeaRncLHN5yYww=
+X-Google-Smtp-Source: AGHT+IEwmvmvRUWELqbbts3tqSXfa50z4eY5lQY39SDTovI1YrizSuwrb6EVAJvqAhL1f+F/VWmctA==
+X-Received: by 2002:a2e:8303:0:b0:2d8:6a04:3bcd with SMTP id a3-20020a2e8303000000b002d86a043bcdmr222197ljh.3.1712678343286;
+        Tue, 09 Apr 2024 08:59:03 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.223.16])
-        by smtp.gmail.com with ESMTPSA id i3-20020a1709063c4300b00a51fa9f6d92sm809358ejg.38.2024.04.09.08.56.50
+        by smtp.gmail.com with ESMTPSA id dm14-20020a170907948e00b00a4e24d259edsm5749071ejc.167.2024.04.09.08.59.00
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 09 Apr 2024 08:56:52 -0700 (PDT)
-Message-ID: <812696d7-fa85-433a-8457-99754a10a8ef@linaro.org>
-Date: Tue, 9 Apr 2024 17:56:49 +0200
+        Tue, 09 Apr 2024 08:59:02 -0700 (PDT)
+Message-ID: <60fd9942-1621-452d-b7ae-40dd11ee1ae0@linaro.org>
+Date: Tue, 9 Apr 2024 17:58:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 04/18] dt-bindings: mfd: mediatek: Add codec property
- for MT6357 PMIC
+Subject: Re: [PATCH v3 16/18] arm64: dts: mediatek: add mt6357 audio codec
+ support
 To: Alexandre Mergnat <amergnat@baylibre.com>,
  Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
  Rob Herring <robh+dt@kernel.org>,
@@ -88,7 +88,7 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
  dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org
 References: <20240226-audio-i350-v3-0-16bb2c974c55@baylibre.com>
- <20240226-audio-i350-v3-4-16bb2c974c55@baylibre.com>
+ <20240226-audio-i350-v3-16-16bb2c974c55@baylibre.com>
 Content-Language: en-US
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -135,12 +135,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240226-audio-i350-v3-4-16bb2c974c55@baylibre.com>
+In-Reply-To: <20240226-audio-i350-v3-16-16bb2c974c55@baylibre.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_085656_646879_436AF0AF 
-X-CRM114-Status: GOOD (  14.52  )
+X-CRM114-CacheID: sfid-20240409_085911_973698_A2ACAADD 
+X-CRM114-Status: GOOD (  17.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,30 +156,47 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 09/04/2024 15:42, Alexandre Mergnat wrote:
-> Add the audio codec sub-device. This sub-device is used to set required
-> and optional voltage properties between the codec and the board.
+> Add audio codec support of MT6357 PMIC.
+> Update the file header.
+
+Why?
+
 > 
 > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
->  Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
+>  arch/arm64/boot/dts/mediatek/mt6357.dtsi | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
-> index 37423c2e0fdf..7c6a4a587b5f 100644
-> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
-> @@ -37,6 +37,11 @@ properties:
->    "#interrupt-cells":
->      const: 2
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6357.dtsi b/arch/arm64/boot/dts/mediatek/mt6357.dtsi
+> index 3330a03c2f74..ade410851524 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt6357.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt6357.dtsi
+> @@ -1,7 +1,7 @@
+>  // SPDX-License-Identifier: (GPL-2.0 OR MIT)
+>  /*
+>   * Copyright (c) 2020 MediaTek Inc.
+> - * Copyright (c) 2023 BayLibre Inc.
+> + * Copyright (c) 2024 BayLibre Inc.
+
+That's not a reasonable change. The file was published on 2023, wasn't
+it? If this is not correct, please explain why/how and make it separate
+patch.
+
+>   */
 >  
-> +  codec:
-> +    type: object
-> +    $ref: /schemas/sound/mt6357.yaml
-> +    unevaluatedProperties: false
+>  #include <dt-bindings/input/input.h>
+> @@ -10,6 +10,9 @@ &pwrap {
+>  	mt6357_pmic: pmic {
+>  		compatible = "mediatek,mt6357";
+>  
+> +		mt6357_codec: codec {
+> +		};
 
-Just put the properties here, without the codec node.
+There is no single point of having empty nodes.
 
-Also, your example is now incomplete.
+NAK.
+
+
 
 Best regards,
 Krzysztof
