@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63A1CCD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 13:23:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12E6DCD11C2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 13:25:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0k9vDy3IhLXKl1/oPUacgobANip3sPaFSxC+sZynpEs=; b=aGMl0+RY6W1aPH03Oo4JvKwv+i
-	Hx5jZg+psWIX83D3rbXpkmkMKVojHXFCE1xX467p0j6I2OwvFvNU3mkH1OMv2j/gtjG3OdmIxklZ1
-	Zot8xuI9x3RsVNwWizqeG3jtIEJuqF/ZBhGRM/PnVKo+9hs5/Ci1x8AGgNl7UsQYcZDgJQbtEkkuR
-	lBK4mCVzfehymAbNe9RsyFQYbPS1TLL9M3F8+eQrrDuYZw1SwLPAOMoZ/B6Ww4T5/6ujZ6pMYJakq
-	buZFt3TDu0kH2iROCVhA+FaidOFswAHAihmqYun2jn1c/pDx2jpxpcoVyRT4aTSwpehMMP7/bZPdf
-	wcNz747g==;
+	bh=0k9vDy3IhLXKl1/oPUacgobANip3sPaFSxC+sZynpEs=; b=xrf82pwZWu7ditaOK26YRjKevJ
+	tu8CO6zc/raCvRKkHDDcY64nHZoRmE4ZJ9cZdSGLzKnTTZnsA75fi7C5SiaaC9NKGA4adMjyBn49p
+	2PNCFNC7xFlxjPJdzMelRLxyxO86+oWJkARU2rUhXdtw6WZi3YY47pWxSSsMrbUO2BjDQ/cQQyE/L
+	7o3CuvrOM4UQKcJTd/mOmdmMHtxeibNb3MSNnOcHmWRevr8DC3aTK1sxkyEX2UE6PGtVuppyi4zf8
+	+kWLFnQyS+oY7GrqwyKzWSxKLsqMuQchgFgWjX8qVpe4mg6dO2IqyDlfk0t/FqPUd7a9dBHP5MrzP
+	PCrpCJeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruXvH-000000078WQ-3cU6;
-	Wed, 10 Apr 2024 13:23:31 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
+	id 1ruXxF-000000079EQ-1ktR;
+	Wed, 10 Apr 2024 13:25:33 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruXvD-000000078UU-1BNH;
-	Wed, 10 Apr 2024 13:23:29 +0000
+	id 1ruXx9-000000079BO-471w;
+	Wed, 10 Apr 2024 13:25:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
 	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=0k9vD
-	y3IhLXKl1/oPUacgobANip3sPaFSxC+sZynpEs=; b=Iq72dBmA27lcU+nCiBTiJ
-	zRkACXIYwe+9VHpKiNizbk3ppnXB8hp20uIQdyhzgscR19FZTocSHrlOtBpEwNBm
-	t5fAP8wxxkw2dEPQydho9TgBntIngUQXmg8W/hfFgbqG915+RzHy3mfuDjJsyZsj
-	P32dDGH1FZj2W9yPJjx2bs=
+	y3IhLXKl1/oPUacgobANip3sPaFSxC+sZynpEs=; b=ZAtfnjHHXPSjAYMgeE5As
+	oEorvp1cnCmONXS9I7yt+O8y+vUhsPUV+i4sBETUDOwf6yd96abr/tmkE7sgwBfA
+	kaokf5MITki6RIoVELqJDQsJHSmzZkKGuPM5qM6DkHGV35t/IvK0orGarfIO5chD
+	PmFKDwkSbkrVa0JPcfCoi0=
 Received: from localhost.localdomain (unknown [101.86.11.106])
-	by gzga-smtp-mta-g1-5 (Coremail) with SMTP id _____wDnLyFjkhZmXX3aAg--.54775S4;
-	Wed, 10 Apr 2024 21:21:55 +0800 (CST)
+	by gzga-smtp-mta-g2-1 (Coremail) with SMTP id _____wDnN9+3khZm9NnPAg--.11748S4;
+	Wed, 10 Apr 2024 21:23:27 +0800 (CST)
 From: Lizhe <sensor1010@163.com>
 To: rafael@kernel.org,
 	viresh.kumar@linaro.org,
@@ -71,20 +71,20 @@ Cc: linux-pm@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Lizhe <sensor1010@163.com>
 Subject: [PATCH] cpufreq: Covert to exit callback returning void
-Date: Wed, 10 Apr 2024 06:21:31 -0700
-Message-Id: <20240410132132.3526-1-sensor1010@163.com>
+Date: Wed, 10 Apr 2024 06:22:47 -0700
+Message-Id: <20240410132247.3587-1-sensor1010@163.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wDnLyFjkhZmXX3aAg--.54775S4
+X-CM-TRANSID: _____wDnN9+3khZm9NnPAg--.11748S4
 X-Coremail-Antispam: 1Uf129KBjvAXoWfXw47Cw45Gr1fZr45GFWfKrg_yoW8uw18Xo
 	WfXFyrG3W8Gryxtw1DAa1xtFZrZanFk3Z5Jws8XFs0gasFyF17XrZrtr45JF1fWay5KrWx
 	Z3Wjgwn3Ar4xGr1Un29KB7ZKAUJUUUU8529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
-	AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjTRC89MUUUUU
+	AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjTRCHqcDUUUU
 X-Originating-IP: [101.86.11.106]
-X-CM-SenderInfo: 5vhq20jurqiii6rwjhhfrp/1tbiSBe8q2XAk1gLbQAAsA
+X-CM-SenderInfo: 5vhq20jurqiii6rwjhhfrp/1tbiKA+8q2XAk1Y-GgAAs1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_062327_700089_93F13C2A 
+X-CRM114-CacheID: sfid-20240410_062528_647440_D49EB8F4 
 X-CRM114-Status: GOOD (  13.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
