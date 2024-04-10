@@ -4,167 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DD8BCD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 08:13:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94B9FCD1296
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 08:28:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Gai5AhtFp/bF0m+ro1SmzheEk6Zs0WcdSgGt8mCw0ls=; b=xB95JocooyhIqhHOYN9lgqCZrb
-	MCcyPAP81Qh5SjVUQFDsb0mgsIbvThsZbErN3Nqq4wJZs3TO4BMLmy1SeoszocGT2Dw4fbbCa4Wbo
-	nuGp1WYwajaHEWkopOuVG0scVxx1j1DA+p2OjRLYpE5WI/RpHhNa3HYHKkJc2ijcOYhXowoEiAlPR
-	RFkhzQv6mbf6WtNpX+yhgPYib8yzvInEwMjyUUXHwhanyKVL40AnLvvwoVHSqYnw9ceT1+nSpgEru
-	9w+jW3F7nJFB8Oy97NAHVs98hRWZ2mY34xyRZ/xz8vLR2nYeSvUOFPrRLr1Jce8SzrCtkwoWFj9ci
-	PGKyNR6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gW38Gh9I29r84lVoZWwktFq4DHYBoJff/etd3Fj/TJA=; b=2g8zhHKheMo4/k0GbB1GX3CT7W
+	hb4vBLYnmutxu3+k7tUz9/NQPAd5CkYtdN9irVsOnOyP0GL0JEG7Nkn4TsyqtgswAQgnfiSnW6jq9
+	H5uMboi1yjMLIEYwNpyjsOVj4GVTR7lJV3W7chwAG7mkGR123eIyGGck2mqJHShv1nE3yfxT7W/LI
+	gkLqYPWQ40KzGLPM1nry720mVU/OqtEGJftVegP3vLz/paqHuguye0FPQlcuT3nc2buFipCG1+V99
+	reSLtod0QQSbrc/llv3U/T9AL5D/A/Wq2G98d/Xk0BIpnvVycvXFEtzo4UCLbbe+tJKcnGZaSt12R
+	zqUWuZ3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruT5F-00000005o4i-3Hoh;
-	Wed, 10 Apr 2024 08:13:29 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ruTJv-00000005rAb-3sCy;
+	Wed, 10 Apr 2024 08:28:39 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruT5B-00000005o36-32wg;
-	Wed, 10 Apr 2024 08:13:27 +0000
-X-UUID: 2f657eacf71211eeac1957ae9f99f617-20240410
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=Gai5AhtFp/bF0m+ro1SmzheEk6Zs0WcdSgGt8mCw0ls=;
-	b=BAGWs4a6YXIfF+oXnocy2EZk/iqEeAgNUG/QkT1aPm4MY/pLKR4/VsfZ1xmLjji7bymDrR8W5rKu7KX52lIA2vGQcqlRC38ppVpCu5zIwgl74cWzYxMxVlcL45BAV0T4279cdlHxNwC83UCCC6itB81oR832ZO1rbYWk8QOJz/o=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:de2098f3-f217-40de-8158-1ea61ed5f8a0,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:f7926891-e2c0-40b0-a8fe-7c7e47299109,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 2f657eacf71211eeac1957ae9f99f617-20240410
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 281837861; Wed, 10 Apr 2024 01:13:17 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 10 Apr 2024 16:13:14 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 10 Apr 2024 16:13:14 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=G6EAfe3yP+MBvAzSXHjsUOeo2BqIPZn+LVf+0pkYU6a84BGhu2OL7BEp/dmwLpSwI3x+oAlTiPuHunivE0jh96GyChKPEfoYDplpYfrhugQjatssJLFVtLAKEWBdjg516A4dcqLYLVfflifA7vU2EhWSLcvNlqIzEsfiKQ8/H5DFaUWQOYzcl38bBmaheTPtZWBYk0cXJ9acl8982vMZ6cOXb7KdtFCaRE1/MvHhrHk4I0eL0AQL+jmdzR3bVx26DD7lpL0PrlGRLgsyEpuS3LD7hv04mdhEyQwSm6aq01CyApklVN9nlBvJgKd26sAEjJQx+Jlf/s9FPLkJ7YOCaw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Gai5AhtFp/bF0m+ro1SmzheEk6Zs0WcdSgGt8mCw0ls=;
- b=BE9AVrRkSTl6XUruOzoS/Ukqt7A4Olm/AZoKDSStY/jwPFJhTCxFw91lR9v+SMpQYiolbNrj+Pa65Lt26To/gy7JotRvWg/Il+axAsBKbz/2koJm73N1O/1bVx8BfE7U5v77ALsZ0aSssAA/7xH5GCAgzh3ojoqwbrOvu2HyJo3XLu6Nm5+Qy3NUvAgxblE/AuMBC6Nfi5itLrRd+/DVNMrA8kjvs41kyeWZ0+GqlC59nJ0MF4dLDjA6ni2qhv6QYle/OWNeU4RCZ6Bv466hVcL7kruUUbZGBiRP6VODty7fevy8RhtOEYWcB/SqOcAa3xvgC7tP9aPEPWOjYl390A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1ruTJq-00000005r4K-1c5d
+	for linux-mediatek@lists.infradead.org;
+	Wed, 10 Apr 2024 08:28:36 +0000
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-55a179f5fa1so7294555a12.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 01:28:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Gai5AhtFp/bF0m+ro1SmzheEk6Zs0WcdSgGt8mCw0ls=;
- b=nw3BfFaHidYSHWgmoM0YOSFV3YrJqj00KBeMTczziJU1sASqabpelhQD+Zmgj4m0KnXC31wDHw71nrMZukBZU3xZ5cwplYVhuoL0uuBl1ttwIGOaNY1IiHqDABtHQ/RBwancAVjW0hM6C5hrTUqGyOiv7Y3o9PuwFr1FuPjwYW4=
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
- by TYZPR03MB7995.apcprd03.prod.outlook.com (2603:1096:400:45b::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.53; Wed, 10 Apr
- 2024 08:13:12 +0000
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::f3b6:91a7:e0fb:cb27]) by TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::f3b6:91a7:e0fb:cb27%7]) with mapi id 15.20.7409.042; Wed, 10 Apr 2024
- 08:13:12 +0000
-From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-To: "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "daniel@ffwll.ch"
-	<daniel@ffwll.ch>, "dri-devel@lists.freedesktop.org"
-	<dri-devel@lists.freedesktop.org>, "airlied@gmail.com" <airlied@gmail.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH 01/11] drm/mediatek: aal: drop driver owner initialization
-Thread-Topic: [PATCH 01/11] drm/mediatek: aal: drop driver owner
- initialization
-Thread-Index: AQHaguMPYzlN7nTIpU2lb32BpYpEIrFSyAwAgA5nywCAAAg+AA==
-Date: Wed, 10 Apr 2024 08:13:12 +0000
-Message-ID: <b3e579fe2950943bac2790480b95f17499457c9f.camel@mediatek.com>
-References: <20240330-b4-module-owner-drm-mediatek-v1-0-fd5c4b8d633e@linaro.org>
-	 <20240330-b4-module-owner-drm-mediatek-v1-1-fd5c4b8d633e@linaro.org>
-	 <48612f68a7e7b6aab0c6d5cbc77d85b1389f4591.camel@mediatek.com>
-	 <c944f949-8907-4d39-9953-82748108ef11@linaro.org>
-In-Reply-To: <c944f949-8907-4d39-9953-82748108ef11@linaro.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|TYZPR03MB7995:EE_
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 4QlK/vOwjNM88U9zMb3m4sGPUUe0/Gy4+FfIRrpnU++LSrtsHq2wrfqhmmpOby1XibwJrvimrUtOOGJtp+jllgBJsU6jwsn0Qeu89qHR6xv1tE/0YKPrm/PMpDmXemK4InVRrVfIJMSZEiC/MmLV3+QvfTkZ2D3huQQUFzF6FsPLRQHi9v3VD5z6IhZAEe9LkCnrcxxBKKOOqoMiliGcxtOyCzC2jKiwHFM4bFD7XPfQaCs07IShkAzeb3jqrRaxTdLr4RGDW9mLaXleXW78NkZIANJ3clD3U7hKP3RlIiudL5BHa4rE/7vJpcfWISwz4ra7sJIoc35BQ42QmECn8VqjpgrE9mylyD9/7RLKa/UZM7LNFc+kFGx8JNXdf3O4GBgGdASRs9xwK0qBduTAkWqGyM1MulizxQthK191QrXE4Obdu2Ib+ITLK/h487HNGafcXTOz0Q432QrfDFRfryDR2H8EmXk6Af3IFouVyO9X7wmT2zRTV7hRUEUBf0yxxZA56ASpV/IVLc9oV49OPF1evoVnPidQJRX0bUQpvV7tjaFZFEzYrnPGxqHXsrKMrKsm/hcLqMlGiCDOZTRhWccg726xwNsbtJpCQurHVde9tF5KzTK7O9uW5WdPyuH6WrSRu3SqKiJQXK4ml2gB2V7Iv7I4l/VJUiHABNuRpoQ=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(1800799015)(366007)(376005)(7416005);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZVMrWnFUMWhsMXBVd3gvcnZDS3BTd29haVhhOFJuWm5iYklCbEFoN1F0eW13?=
- =?utf-8?B?MGJnMW8rditsZE5xNFZJTzNROXpOMGtHQmlMVFcxaFZZTEhsL2w5ZEpaNjVu?=
- =?utf-8?B?TzYvWHEyZXg5YjRLWnZDNmRpdkdTY2lkTU8zaGVYMjN4SXoyN2hJNHoyQXdn?=
- =?utf-8?B?a2h5eGRUK05HM2JEbzNNbEhzVFgrcWJiRXNBOWtBcnozVWkyMkNJYmUvQ2tM?=
- =?utf-8?B?M2J0dHlyczAxa3hSR1kwYnVjZExCWnhSbGRFdVlqY0lzSFI2SVBkcXl1bWJ5?=
- =?utf-8?B?ZHNLOHdlTEpDOHZyOEJnSTB6ZEhoY0ZuMGxIZEVvY2RnK3ZGKzR5ZWxhZmFl?=
- =?utf-8?B?RHJYeTlHSWdxc1lLai9seWtValFNYWdYdW8zTWV4dlM1dDR3NW1KVmVqZGo1?=
- =?utf-8?B?OVlORFJPNEszMXRtWWhsNjJMeFdBMGlKMXVSeWlhQjk5T3ZackYyS0ZrNkcx?=
- =?utf-8?B?QUVJTUlSZlNWa1U2WjBESzJVWjdyVndPWGxpM0lYNXpSeElJZU1qTWdwdzFX?=
- =?utf-8?B?TzV3ak9IeFhlMnlYcXdwZ00rS3lOblVTb0xyRTFNaFZXZWlqeTg2d1BucWpS?=
- =?utf-8?B?TXAyeDV4UkMyc2l6YVhzQ0xXOTd3RExsUFduSCtic041Y1dGS01MakxGa0d1?=
- =?utf-8?B?Z0ZBUmNZcm41N0dZMHpZVzFFK0FUUHMzNXZyUjFMRjlNbUMrdTRFVkpMUkxC?=
- =?utf-8?B?amwzTHlieWVObWZsWHh5QzNJY3JIeXRaZTRnNUFEdnE0T1BzbmhJcjFPaytB?=
- =?utf-8?B?dHhEaE1BQ2xiQ0IxMGt6Vmh4a3RBaGZZSlRhSE1DVFFCc3l4NmlVMEtBcjZN?=
- =?utf-8?B?NVpWVms1V0RtRmpBSjBRZ3NuYW9CSC92VXhZRlZwTmlEMlkwdDBBcUp2ZUgx?=
- =?utf-8?B?ZlJjd2IxVy9lVXNJM0pYdGNlenl4d2hnNWVtU2ZSb2sxQkt2azYwMlYxaDV3?=
- =?utf-8?B?V3FsY3VwOWlML0RINVh5bHZjdHhON0FHSzJOanVHOG84V0dJaE5sd3ZVVjFt?=
- =?utf-8?B?Rm9vaHN2QzNGS0JqYVJ1NFNNQ3U4YzNnVkpzT0dsYllqZkdMRHhkTUhDbGxQ?=
- =?utf-8?B?VG1TcEVOdXBqWTNlRFcra1JvMVJCMDlaMUx2Sml4U1BsT0FQWk5kMG9LeW9H?=
- =?utf-8?B?NWthWWpQMWNLT0ZDSzBiOHJWbWlEY1YwME1SbVRVR25DWWxCNnpNTGw0bU12?=
- =?utf-8?B?aEdsSVZUMVlHWnpVeDZ2dkIrTlBmUmNUb1Qrc1NkS1BuS2o1Z2NWZkFsZkhY?=
- =?utf-8?B?cXdYMFFYUHd4ZXMycEp2cnYrdmhXcFZtVkpoTVhWWE9yc3czdk02dXg3UG1s?=
- =?utf-8?B?bHZKZ3l1RTJZeE5kOHNsVk14QmpLMWVnU0tMS1pXditVUDY3NE1qclA4VkJS?=
- =?utf-8?B?QkU0SXhTb0FJWUVIUmtZczE2d3VCTXRSNnNkeTYxcHNlM1NIdk9EcW1jdktM?=
- =?utf-8?B?STNjK2NUOWtWWXZ3T0oxd2tSNEx2SllxbUtZRndMbG9udWdnTHZ6aDh4R0lD?=
- =?utf-8?B?NVNXSG9hSkc4R3V0c3hIOE5SMGxjVHhzSVdESkZtdUVQUElUeWVDMHEzbWNO?=
- =?utf-8?B?RnZWaURVdXJ2VVhUYkxCbDlwcjlJUHRYOFl5ZE9oanpsWGN3UTNvR21NOHg0?=
- =?utf-8?B?K1ZwdnY4VkE3emc4alFMWmY3NkZwcGhmQkk2Z1hBMTQ1RTNaM0dnejN1R0hi?=
- =?utf-8?B?eEtodmxVQzZlaXl0aUppTFdEbUNXdGtPMHVWUkw5SG5GdUthR21oWHowWkNn?=
- =?utf-8?B?VUZEd1JDWGw1eUdVd203VEtDUllPVmlTTTdzL2pmVUg2U21FQ2hFNjlnMkhQ?=
- =?utf-8?B?ZGJHV2MvczB0VTRIS0R2MWtMY1FZV0xaU21sUE1BUlJ2YUpTTGkrZkt1aDFI?=
- =?utf-8?B?RmZPWnBraW9wQjJQcjcwdEpKc1JnNXlCcFcwR3JiWFQ1b25CNC8rUHVUWW1s?=
- =?utf-8?B?dldjY092ZWJRQk5VTjVET3Q5NFcxNGRteHFpVTl1VkpMZlE5eXg5R1JNQWxG?=
- =?utf-8?B?UXA3d1lFemVndFBYMmxwakhrdjMzUTdlUkx4YWZFdmlwUWRpcGlpaG5sSkxJ?=
- =?utf-8?B?eXhRbitkNGhCK0Vyc1ZhU3dPTzY3bmRIOGhSSWd3NEdtY0lYOHVMbTV6TWI4?=
- =?utf-8?Q?gdq0TGblUFG+X/3WNRQnlWMZ/?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <D9C0E8CC3975C24EB1F15C77510A3E10@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=chromium.org; s=google; t=1712737711; x=1713342511; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=gW38Gh9I29r84lVoZWwktFq4DHYBoJff/etd3Fj/TJA=;
+        b=XgS7A0a7hMtIGyZ0dajCPJ5F03fSQBCZOiWiwl3j7EaLRhwnwOdgwYpZxOAUyiv6+D
+         iLdtGoR+nspKddEqm9AnADZIbeeqUNbhBOnlacDsvDKpvap6z/nvAJW8Z7s9Gc9rknQK
+         e7mJjf/bpzGPAkV2IdgCHiVnFraEKXkQz0Nbw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712737711; x=1713342511;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=gW38Gh9I29r84lVoZWwktFq4DHYBoJff/etd3Fj/TJA=;
+        b=h/1QCD+Ei/yjQ/m9+w9SvoVML8yQyTG/1x14n9Sti3AafXSy51dq+U/gxxkvmGeEp8
+         5DzdiTlFC+nGwB1mF6N5yZ2LQLPINphyavnbSQjkMm+QPsyoBIEEmUz66l/H9Sd931E2
+         Tml4cbqweDAfdkworn3zglkr8HnNE7hb2VdkJOMrrNO/AJhIFTuwhNhwbEeUFEfsrT+F
+         oUQMoYnor7wSnx6D0XGLgM+ZHi+3m+HcAy1KNdtrDMkL9bo5T5TfUqoYGj+dHQ36hTHO
+         k0hmzLjTWHrLvdGK8um9TRmmx1GChMOfy6trTp9n0jGRIg/vs8zJVfw16S0gbjAIjvU5
+         mgtw==
+X-Forwarded-Encrypted: i=1; AJvYcCW0/57hrZkmkZgD8PWINxzXwATPPL9LiHARzdf+wIjWt4v+9gIhXJsgObvTqLiMa1zrYnVVh9+9WWtzDKbM+8/5iacwcokLdvVVRiFY8ZsHZOsb
+X-Gm-Message-State: AOJu0YxnqANhGfrbisLW4lGj7hhxCObEHPsSf2RCTk3r5KQGWIvcI0Uf
+	3q+NPdetmw+fBBzV8cP/dXfpUXC/MyBr69nINdqOyCO5z2yP069es+oJxI63giMRm4L650rpsOu
+	i1g==
+X-Google-Smtp-Source: AGHT+IFC4pa/ItnJWWBNO3/kj3uagQd8C+mhn9rdiiiXu5y2/ZbDfQiEnj7BqwngiR2hvobWAKEV5A==
+X-Received: by 2002:a17:907:1c95:b0:a51:dd36:9a37 with SMTP id nb21-20020a1709071c9500b00a51dd369a37mr1801096ejc.17.1712737710973;
+        Wed, 10 Apr 2024 01:28:30 -0700 (PDT)
+Received: from mail-ej1-f42.google.com (mail-ej1-f42.google.com. [209.85.218.42])
+        by smtp.gmail.com with ESMTPSA id se1-20020a170906ce4100b00a51a9d87570sm6413682ejb.17.2024.04.10.01.28.30
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 10 Apr 2024 01:28:30 -0700 (PDT)
+Received: by mail-ej1-f42.google.com with SMTP id a640c23a62f3a-a51969e780eso793114466b.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 01:28:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCV2/3tIccQQfFKHKU949/Ppcvo4ghXYbNCaBRsR6OQrqXP+9y8qozIrFMb46kZQzaqmf9Nhka6IHTX/HnMMavfIm0uFWMYtsJte2t+SfGIUGzzL
+X-Received: by 2002:a17:907:a41:b0:a51:dd18:bd21 with SMTP id
+ be1-20020a1709070a4100b00a51dd18bd21mr1452940ejc.16.1712737710124; Wed, 10
+ Apr 2024 01:28:30 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0a996197-9c5b-4be0-1714-08dc593610e2
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Apr 2024 08:13:12.5741
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: MegwNkGn5R4Zz1OWVHAmfonrnglwifa5i1j8taMNACEw9qZY2xvkr8R4OcZdqgLQ7hg1cLOWt8VKiQjV5A1OXQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB7995
+References: <20240410-upstream-torvalds-master-v1-1-852e903f0cec@chromium.org> <c3d05b3e-f784-4606-9634-52dc6feee318@collabora.com>
+In-Reply-To: <c3d05b3e-f784-4606-9634-52dc6feee318@collabora.com>
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Date: Wed, 10 Apr 2024 16:27:53 +0800
+X-Gmail-Original-Message-ID: <CAHc4DN+N7oLNiiVL-T+T0dEr2nipph5f2q5zu37NowPQC+=mkw@mail.gmail.com>
+Message-ID: <CAHc4DN+N7oLNiiVL-T+T0dEr2nipph5f2q5zu37NowPQC+=mkw@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8192: Add missing trip point in
+ thermal zone
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	=?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
+	Balsam CHIHI <bchihi@baylibre.com>, Alexandre Mergnat <amergnat@baylibre.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_011325_816803_7AB21EEC 
-X-CRM114-Status: GOOD (  16.95  )
+X-CRM114-CacheID: sfid-20240410_012834_644900_C8008EFA 
+X-CRM114-Status: GOOD (  21.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -179,27 +105,158 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEtyenlzenRvZjoNCg0KT24gV2VkLCAyMDI0LTA0LTEwIGF0IDA5OjQzICswMjAwLCBLcnp5
-c3p0b2YgS296bG93c2tpIHdyb3RlOg0KPiAgCSANCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2Ug
-ZG8gbm90IGNsaWNrIGxpbmtzIG9yIG9wZW4gYXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUg
-dmVyaWZpZWQgdGhlIHNlbmRlciBvciB0aGUgY29udGVudC4NCj4gIE9uIDAxLzA0LzIwMjQgMDU6
-NDQsIENLIEh1ICjog6Hkv4rlhYkpIHdyb3RlOg0KPiA+IEhpLCBLcnp5c3p0b2Y6DQo+ID4gDQo+
-ID4gT24gU2F0LCAyMDI0LTAzLTMwIGF0IDIxOjQzICswMTAwLCBLcnp5c3p0b2YgS296bG93c2tp
-IHdyb3RlOg0KPiA+PiAgIA0KPiA+PiBFeHRlcm5hbCBlbWFpbCA6IFBsZWFzZSBkbyBub3QgY2xp
-Y2sgbGlua3Mgb3Igb3BlbiBhdHRhY2htZW50cw0KPiB1bnRpbA0KPiA+PiB5b3UgaGF2ZSB2ZXJp
-ZmllZCB0aGUgc2VuZGVyIG9yIHRoZSBjb250ZW50Lg0KPiA+PiAgQ29yZSBpbiBwbGF0Zm9ybV9k
-cml2ZXJfcmVnaXN0ZXIoKSBhbHJlYWR5IHNldHMgdGhlIC5vd25lciwgc28NCj4gPj4gZHJpdmVy
-DQo+ID4+IGRvZXMgbm90IG5lZWQgdG8uICBXaGF0ZXZlciBpcyBzZXQgaGVyZSB3aWxsIGJlIGFu
-eXdheSBvdmVyd3JpdHRlbg0KPiBieQ0KPiA+PiBtYWluIGRyaXZlciBjYWxsaW5nIHBsYXRmb3Jt
-X2RyaXZlcl9yZWdpc3RlcigpLg0KPiA+IA0KPiA+IEZvciB0aGUgd2hvbGUgc2VyaWVzLA0KPiA+
-IA0KPiA+IFJldmlld2VkLWJ5OiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPg0KPiANCj4gRm9y
-IHRoZSB0YWcgdG8gd29yayBvbiBlbnRpcmUgc2VyaWVzLCB5b3UgbmVlZCB0byBwcm92aWRlIGl0
-IHRvIHRoZQ0KPiBjb3ZlciBsZXR0ZXIuDQo+IA0KPiBBbnl3YXksIFBoaWxpcHAsDQo+IA0KPiBF
-dmVyeXRoaW5nIGdvb2QgaGVyZSBmcm9tIHlvdXIgc2lkZT8gV2lsbCB5b3UgYmUgYWJsZSB0byB0
-YWtlDQo+IGV2ZXJ5dGhpbmcNCj4gdG8gbWVkaWF0ZWsvZHJtPyBJIHRoaW5rIGRybSB3aW5kb3cg
-aXMgc2xvd2x5IGNsb3NpbmcuDQoNCkkndmUgYXBwbGllZCB0byBtZWRpYXRla19kcm1fbmV4dCBb
-MV0sIHRoYW5rcy4NCg0KWzFdIA0KaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4
-L2tlcm5lbC9naXQvY2h1bmt1YW5nLmh1L2xpbnV4LmdpdC9sb2cvP2g9bWVkaWF0ZWstZHJtLW5l
-eHQNCg0KUmVnYXJkcywNCkNLDQoNCj4gDQo+IEJlc3QgcmVnYXJkcywNCj4gS3J6eXN6dG9mDQo+
-IA0K
+Hi Angelo,
+
+According to the document
+(https://docs.kernel.org/driver-api/thermal/power_allocator.html),
+there should be two passive trip points. It seems that the switch-on
+temperature will be 0 if we only have one trip point, which hurts
+performance. I'll send v2 to explain this more clearly.
+
+Regards,
+Hsin-Te
+
+
+On Wed, Apr 10, 2024 at 3:43=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 10/04/24 08:20, Hsin-Te Yuan ha scritto:
+> > Add the missing passive trip point which is expected by kernel.
+> >
+> > Fixes: c7a728051f4e ("arm64: dts: mediatek: mt8192: Add thermal nodes a=
+nd thermal zones")
+> > Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+>
+> Sorry, I don't understand what you're trying to solve here.
+>
+> All of the thermal zones in mt8192.dtsi already do have a passive trip po=
+int
+> which is also used in cooling-maps.
+>
+> Can you please describe the issue?
+>
+> Thanks,
+> Angelo
+>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 40 +++++++++++++++++++++++=
++++++++++
+> >   1 file changed, 40 insertions(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot=
+/dts/mediatek/mt8192.dtsi
+> > index 05e401670bced..08d8bccc84669 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > @@ -1959,6 +1959,11 @@ cpu0-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_LITTLE_=
+CPU0>;
+> >
+> >                       trips {
+> > +                             cpu0_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu0_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> > @@ -1989,6 +1994,11 @@ cpu1-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_LITTLE_=
+CPU1>;
+> >
+> >                       trips {
+> > +                             cpu1_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu1_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> > @@ -2019,6 +2029,11 @@ cpu2-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_LITTLE_=
+CPU2>;
+> >
+> >                       trips {
+> > +                             cpu2_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu2_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> > @@ -2049,6 +2064,11 @@ cpu3-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_LITTLE_=
+CPU3>;
+> >
+> >                       trips {
+> > +                             cpu3_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu3_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> > @@ -2079,6 +2099,11 @@ cpu4-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_BIG_CPU=
+0>;
+> >
+> >                       trips {
+> > +                             cpu4_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu4_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> > @@ -2109,6 +2134,11 @@ cpu5-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_BIG_CPU=
+1>;
+> >
+> >                       trips {
+> > +                             cpu5_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu5_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> > @@ -2139,6 +2169,11 @@ cpu6-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_BIG_CPU=
+2>;
+> >
+> >                       trips {
+> > +                             cpu6_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu6_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> > @@ -2169,6 +2204,11 @@ cpu7-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_BIG_CPU=
+3>;
+> >
+> >                       trips {
+> > +                             cpu7_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu7_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> >
+> > ---
+> > base-commit: 20cb38a7af88dc40095da7c2c9094da3873fea23
+> > change-id: 20240410-upstream-torvalds-master-40aeff5416c7
+> >
+> > Best regards,
+>
 
