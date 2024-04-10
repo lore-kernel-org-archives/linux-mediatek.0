@@ -4,83 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1088CD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 12:45:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6499CD128A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 12:46:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0v050svZEeKX6xCxDWehqmojLYZEjuvnVFUXjaedZaw=; b=f/J9fLHe86D7CgYStKnxe0OXqR
-	n8ySWEDTxQhBiw6y1vmDo7VPBVPKAX+afcQL5UDqI+kQGO6sZcr3J8F9CSv4l8Pyft7+DDDOVwqlt
-	EBMlkdBzKdUw19+MNCmK4pPZcC2BjWQtA/tcZIyzhEipoIrix9Tt5KacuBb8U3ZukgRdnBTQeGKHa
-	JLjkQeLPQpAAPnO+jy2kN+jq0NBN3OepRr8ZBhE1KTJh2wjSAQU8rr12t2dLrutYPKB/d909u0uEj
-	xINxb6bal0ovf+1X5G03MscXhTMod3a1qveIlCeudah6eOFA2X2aGtquka5bT0mv/g0Ic5NXIdG3f
-	AwuZSH8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AvhmE586Q7RJLDEspXESCrmM8e1J4xn7f2FL+r1Qxs4=; b=aDd6+p/WqVshIACcZFmrGPaxW9
+	fva7dwkcqd4+19PP5W3W66fyC46aJy1ipcJ+nXeNA2MprsaCFTDYgeOMAYkaxvvfxm+g0ycV0LzXG
+	rg7S+ZVmFpUYzXHj9afvYRPTsudKG5u+grWpw/Ki6YQbIKqaX7q8VDY63/SixH5w3Qsz3bGIHgKGb
+	JRmK5P+ebs96vOHC9jlMlXh/uUcR9rAEnU1ng/dxvSqPbQ/x5RsPitPyPZBpUZ4/mtzeOXH1g7Ncp
+	RvCy5q+TqbPLEI5I4bfNgot79Wf+JJ8wRX2wtLylyHnf7Sfb2stv2tVFuAs5LnklnkdcK9cBVrowM
+	ItAMoh/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruXKt-00000006wKu-0hjI;
-	Wed, 10 Apr 2024 12:45:55 +0000
-Received: from mail-ej1-f43.google.com ([209.85.218.43])
+	id 1ruXLX-00000006wgK-1nZr;
+	Wed, 10 Apr 2024 12:46:35 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruXKn-00000006wJd-21vH;
-	Wed, 10 Apr 2024 12:45:51 +0000
-Received: by mail-ej1-f43.google.com with SMTP id a640c23a62f3a-a51beae2f13so478433266b.1;
-        Wed, 10 Apr 2024 05:45:47 -0700 (PDT)
+	id 1ruXLT-00000006wbM-25pt
+	for linux-mediatek@lists.infradead.org;
+	Wed, 10 Apr 2024 12:46:34 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-416920b1a2aso17339785e9.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 05:46:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1712753183; x=1713357983; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=AvhmE586Q7RJLDEspXESCrmM8e1J4xn7f2FL+r1Qxs4=;
+        b=rZJWSfGxroUYs04DeJ2tWgSvtaMriePp3xdaUe2r2NKg9ZXSpHJuwmTFESTioGK+XT
+         pX45ydxL3P/lTyM3TAYiW0qvVsz1qgsOo3LG3BwmQYQgmhWYsz/KxB+avdpk0K3zazkx
+         82520deXwuj5ViRMtVW6sYf9j00Pi+zSG+qvwiz/yQTq0WaZiA4Ojw4+0uwusKQfcjZd
+         nFleqiTC4azodYo1a5NTeemBx29+PdYjV8c4ahy8RqVPHBqRrCn5zA15yDL57kGmLMs7
+         tFjjq/WxGdXSnMyICZe3yb5az9gis+6LSSmnHmAZi7qwJIh4E4jzOHYgh5wn6347Qy5u
+         xHxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712753146; x=1713357946;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0v050svZEeKX6xCxDWehqmojLYZEjuvnVFUXjaedZaw=;
-        b=dGxr5fUZKtIozuaC+z0aesE5nTlYWelXw4kVcNhlna/iK74dnL6GlwgofdDWhONdwm
-         3k5xPdVJmSydv8qAt6Fdhr31O2twrnKFwnZWSiS6bVz9o3KJfcZW/97ufT1S7crFyrpm
-         ZYJaR1VDliu/xCYaBJhVh4Ie/QWNHpVdQrGUOd5WYJbD//cuHuHM8olIBXRSNe1g1+xV
-         ClElYIGWChd7bywWqnrBIWUfE3kZj4ZrEDN4cJisWbE8/4FrPIBah1LHDWBj71uzJd/A
-         +6yj1zg0qwvWWvLsQp1HWCdl55d0vtsemlOsXw/sagToSgSirsDPlbmQ+Dv+DnUPMQt6
-         vTWg==
-X-Forwarded-Encrypted: i=1; AJvYcCUzm3wXyWQ3XQUlcQ7mbX+B4AmcGpwZe9y2TKnSMM41DOrs+S0kw6o8tFJBWEtTxIT8XImEpbApD0/WB54wKzybyG6zTqQ4CugG0wxZDThtkNcR4d2ZEgMh5Lf6AQWU+Pikh84n7dnUrz8ATFtwmOxABBtanrOKClW11HRgfZA1qznpqZv0yVPL/3PyVPvogSaIewm3BMIW3ETtDpZKqQmKF9Z9Q4aezJmC7BszGOxBAw==
-X-Gm-Message-State: AOJu0YyHQW1/schjeyxI/JI+oRqBtk9o9DoHPa6TTDE+QDQSCDoSiuAh
-	XfU36PyOHbN4HdnEvRMIt1tkUSmpGw2AuE5UBz73+bn5VcIcDoDD
-X-Google-Smtp-Source: AGHT+IGHTIvSnYbc16oL+rmZ6uXCsyNfTppKX/R1tU+P7ojp/FGa9JEJ+FKYxGWNNfYEH5ZZNCyv/A==
-X-Received: by 2002:a17:907:7da8:b0:a51:dd50:6a with SMTP id oz40-20020a1709077da800b00a51dd50006amr2008839ejc.66.1712753145630;
-        Wed, 10 Apr 2024 05:45:45 -0700 (PDT)
-Received: from gmail.com (fwdproxy-lla-007.fbsv.net. [2a03:2880:30ff:7::face:b00c])
-        by smtp.gmail.com with ESMTPSA id jg18-20020a170907971200b00a51a60bf400sm6765658ejc.76.2024.04.10.05.45.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 Apr 2024 05:45:45 -0700 (PDT)
-Date: Wed, 10 Apr 2024 05:45:41 -0700
-From: Breno Leitao <leitao@debian.org>
-To: Ido Schimmel <idosch@idosch.org>
-Cc: aleksander.lobakin@intel.com, kuba@kernel.org, davem@davemloft.net,
-	pabeni@redhat.com, edumazet@google.com, elder@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, nbd@nbd.name,
-	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	lorenzo@kernel.org, taras.chornyi@plvision.eu,
-	ath11k@lists.infradead.org, ath10k@lists.infradead.org,
-	linux-wireless@vger.kernel.org, geomatsi@gmail.com,
-	kvalo@kernel.org, quic_jjohnson@quicinc.com, leon@kernel.org,
-	dennis.dalessandro@cornelisnetworks.com,
-	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	bpf@vger.kernel.org, Jiri Pirko <jiri@resnulli.us>,
-	Simon Horman <horms@kernel.org>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	amcohen@nvidia.com
-Subject: Re: [PATCH net-next v4 2/9] net: create a dummy net_device allocator
-Message-ID: <ZhaJ9WkG2OYXkvGo@gmail.com>
-References: <20240409125738.1824983-1-leitao@debian.org>
- <20240409125738.1824983-3-leitao@debian.org>
- <ZhZzjNDRaHtdYjDg@shredder>
+        d=1e100.net; s=20230601; t=1712753183; x=1713357983;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=AvhmE586Q7RJLDEspXESCrmM8e1J4xn7f2FL+r1Qxs4=;
+        b=f9vaiwHK04WdnV7NMTumK1IwnIRn5+pWRe0uncJxNw4zmazPjfMjezT30+nUNFjzYD
+         2+7Rk9IRicRDCBMgThHhdUQ3CH4jKLcGeFjyRKgJcQKEoCYuBpWHSxM3VQeKlViKstpp
+         QE9L9yI4fSr3wktB2g06ZAv9CkIF1Ek+HN/Pv61/cNuKPIWPL7bXxPkTERgunGtphMud
+         Dimwh4kGEVIloNoqJw8RYNWqwv0fxfKUbWATpW71YFzBdrBacmrDP09XUY1fBxKWs6k7
+         oIHNqz6a9V4COnkDlkPo6pS1d6qMyvzjN78ePyBPQ5P+rtycanYe2N3VANFCFUAlSDF2
+         irMA==
+X-Forwarded-Encrypted: i=1; AJvYcCVnHjJ4ZbHcnjhIfkJuf3SLaUbZT9Yk3Yi3eGRh5GRD198NU+JA3E3+fmP2oxokyCU3DIAacf6WpLSfNpVQuCO4B5jP64cERW/DxFXEvzMIW1Hi
+X-Gm-Message-State: AOJu0Yz7DHMMjh2u1fDehmbHY6FjJN47WN9tkoD5FoMQQQ7ipkyARtiS
+	Pp6Ao6uOe4GDQvEaB2DRK6m7WVuFiF7vSTPq7ykQ7woy/dxq+UdHMzlcMlRCT7w=
+X-Google-Smtp-Source: AGHT+IH/p5zp4MA87AZJY28HHV74sXRlJbaCaAhPeW3fvyn77BGC/TGc4xDQpjJDHMWC56s9vnYqaw==
+X-Received: by 2002:a05:600c:198e:b0:416:a8b8:a8a7 with SMTP id t14-20020a05600c198e00b00416a8b8a8a7mr1764086wmq.40.1712753182974;
+        Wed, 10 Apr 2024 05:46:22 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id v13-20020a05600c470d00b00416b06656ecsm2190983wmo.9.2024.04.10.05.46.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 10 Apr 2024 05:46:22 -0700 (PDT)
+Message-ID: <713cbf7d-8418-44a8-9b35-6503fe3df0d6@baylibre.com>
+Date: Wed, 10 Apr 2024 14:46:20 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZhZzjNDRaHtdYjDg@shredder>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 02/18] ASoC: mediatek: common: Constify struct
+ mtk_sof_priv
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ broonie@kernel.org
+Cc: wenst@chromium.org, lgirdwood@gmail.com, robh@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.com,
+ trevor.wu@mediatek.com, maso.huang@mediatek.com,
+ xiazhengqiao@huaqin.corp-partner.google.com, arnd@arndb.de,
+ kuninori.morimoto.gx@renesas.com, shraash@google.com,
+ nicolas.ferre@microchip.com, u.kleine-koenig@pengutronix.de,
+ dianders@chromium.org, frank.li@vivo.com, allen-kh.cheng@mediatek.com,
+ eugen.hristev@collabora.com, claudiu.beznea@tuxon.dev,
+ jarkko.nikula@bitmer.com, jiaxin.yu@mediatek.com, alpernebiyasak@gmail.com,
+ ckeepax@opensource.cirrus.com, zhourui@huaqin.corp-partner.google.com,
+ nfraprado@collabora.com, alsa-devel@alsa-project.org,
+ shane.chien@mediatek.com, linux-sound@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20240409113310.303261-1-angelogioacchino.delregno@collabora.com>
+ <20240409113310.303261-3-angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20240409113310.303261-3-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_054549_615666_CF990673 
-X-CRM114-Status: GOOD (  29.45  )
+X-CRM114-CacheID: sfid-20240410_054631_634426_72F8862D 
+X-CRM114-Status: UNSURE (   7.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,70 +112,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 10, 2024 at 02:10:04PM +0300, Ido Schimmel wrote:
-> On Tue, Apr 09, 2024 at 05:57:16AM -0700, Breno Leitao wrote:
-> > It is impossible to use init_dummy_netdev together with alloc_netdev()
-> > as the 'setup' argument.
-> > 
-> > This is because alloc_netdev() initializes some fields in the net_device
-> > structure, and later init_dummy_netdev() memzero them all. This causes
-> > some problems as reported here:
-> > 
-> > 	https://lore.kernel.org/all/20240322082336.49f110cc@kernel.org/
-> > 
-> > Split the init_dummy_netdev() function in two. Create a new function called
-> > init_dummy_netdev_core() that does not memzero the net_device structure.
-> > Then have init_dummy_netdev() memzero-ing and calling
-> > init_dummy_netdev_core(), keeping the old behaviour.
-> > 
-> > init_dummy_netdev_core() is the new function that could be called as an
-> > argument for alloc_netdev().
-> > 
-> > Also, create a helper to allocate and initialize dummy net devices,
-> > leveraging init_dummy_netdev_core() as the setup argument. This function
-> > basically simplify the allocation of dummy devices, by allocating and
-> > initializing it. Freeing the device continue to be done through
-> > free_netdev()
-> > 
-> > Suggested-by: Jakub Kicinski <kuba@kernel.org>
-> > Signed-off-by: Breno Leitao <leitao@debian.org>
-> 
-> Reviewed-by: Ido Schimmel <idosch@nvidia.com>
-> 
-> We were about to submit another user of init_dummy_netdev() when I
-> noticed this patch. Converted the code to use alloc_netdev_dummy() [1]
-> and it seems to be working fine. Will submit after your patch is
-> accepted.
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-Thanks. It seems that this patch is close to get accepted. Let's see...
+On 09/04/2024 13:32, AngeloGioacchino Del Regno wrote:
+> Apart from a dai_link_list variable, the mtk_sof_priv currently holds
+> data that never gets modified during runtime.
+> 
+> Constify the mtk_sof_priv structure and move the SOF dai_link_list as
+> sof_dai_link_list in struct mtk_soc_card_data, which is a structure
+> that already holds the card's machine specific, runtime modified data.
+> 
+> This allows to safely pass the mtk_sof_priv structure as platform data
+> for the commonized card probe mechanism.
 
-> See a few minor comments below.
-> 
-> [...]
-> 
-> > +/**
-> > + *	init_dummy_netdev	- init a dummy network device for NAPI
-> > + *	@dev: device to init
-> > + *
-> > + *	This takes a network device structure and initialize the minimum
-> 
-> s/initialize/initializes/
-> 
-> > + *	amount of fields so it can be used to schedule NAPI polls without
-> > + *	registering a full blown interface. This is to be used by drivers
-> > + *	that need to tie several hardware interfaces to a single NAPI
-> > + *	poll scheduler due to HW limitations.
-> > + */
-> > +void init_dummy_netdev(struct net_device *dev)
-> > +{
-> > +	/* Clear everything. Note we don't initialize spinlocks
-> > +	 * are they aren't supposed to be taken by any of the
-> 
-> I assume you meant s/are/as/ ?
-
-Thanks for the feedback, I agree with all of them.
-
-Since these lines were not introduced by this patch, and this patch is
-just moving code (and comments) around, I would add a new patch to the
-patch series fixing the grammar errors.
+-- 
+Regards,
+Alexandre
 
