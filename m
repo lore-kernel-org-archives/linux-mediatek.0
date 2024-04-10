@@ -4,65 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF0CCCD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 09:55:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 379CECD1297
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 10:06:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TcKpkhK7yC5OOsiI8Wt9Qnd+V1jtIodBWge1iHuZc1k=; b=saYb/7yYaSDVzh
-	DQNUIZv0tH20FhpeaJwil17BxOIF/YNe4MtNTScL1dpcRQSUOAJM5RiY6mHah9FMSQud/5DmBqwX3
-	3KC26AeL0hTa7o8hKithO83u+DVU3KNKRRZS/pKVwVCyRstAgXURuVshQpRNA+lC95j9msVZ68/B2
-	ll1O7WIlGgHNyFOvQPDXCXcWNhTFRjxH9sT214BKAxB+RwuSXafGC66B3snVhQ78xugmQd7lyW2Wk
-	gkTGFaaTP54BS+Dl1MOkMS1tcifK/3wxoNoe+vxWmUS4Lng3ea0gf4mpKHkvGues5AX0Ox2/kmY2Z
-	cZFAl7p+/jtbFVtofq0g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=T1LpKFL+yI+IpX+c47vgJ/x998fTDNJ7BUtB4SB1yXE=; b=ih7xRz0tNv1LpgNLdVSpRw/1S3
+	a1f2Y508LdWL/J+Y+BezTH/AtHcw7b5vxyjIoQPs93OaPYETPeBLh1cHoggdWaVRzFePg5IoZWJSc
+	K+RPybkB7ccJ2XCob6HdqOroAKUQEs61W2ZWjAFtYuGM4JJWacM7Ku7jCuREkm3fwdXdN9dUDazUF
+	CpByuc69OjetQ1sJfT5RrD5mDG5BNRVvcKI5IShLyfQf3gtihYbdozLMmy6EqEdMkXJbYsvVxr/UA
+	KQzTsz4jo4K25f8FbUgbFIEa4nfkSdnAsC90jOGgLKIatpbdc6jjcmVMK4PC4FxzZWBSH4kASaAoV
+	hNdiuFSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruUgH-00000006FoX-1pP2;
-	Wed, 10 Apr 2024 09:55:49 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1ruUqR-00000006ITn-2tyP;
+	Wed, 10 Apr 2024 10:06:19 +0000
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruUgE-00000006FnV-0nPv;
-	Wed, 10 Apr 2024 09:55:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712742943;
-	bh=vtMV+Q63GqmW7FHaxb//RVu//0rLNFnAcEs9bPdrm4I=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=H+y0ra/c8fi8Dwjg9BpujJCQ3xxygBdVjA500qeuCeFzp+ZJCdVlH8vvyIyeB9HsR
-	 DA5s1nO7qp99kI1dgRqnd1PTbpBFjs85i5qV3Hot/2ZAXB89CtB/5J2ArHtfxZIfc4
-	 o/FWIUIdxtTElcmjbWlPUDCyyKR6tMyoviCKvabZV/v9HK5a7zrZqMjw0p3nHjnN3w
-	 4zb7jFPSByx5cem0sGHo6y2Jk2hE3kOqoj2HdC2Zn2bOr9PjbduZgwf4kp6YPA3R7C
-	 5aFuSh9WocJO85woaHW5vSI8fz2DgrmTJwQM0lPD7FsT9kfnHlBFDXjwU2o2Vs0Wny
-	 qEFI8NSPXteGQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C1E25378000E;
-	Wed, 10 Apr 2024 09:55:42 +0000 (UTC)
-Message-ID: <9c5aa4fb-a83c-470e-acf8-dd31303e50c2@collabora.com>
-Date: Wed, 10 Apr 2024 11:55:42 +0200
+	id 1ruUqN-00000006IOJ-0NUf
+	for linux-mediatek@lists.infradead.org;
+	Wed, 10 Apr 2024 10:06:17 +0000
+Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-5d8b70b39efso5028734a12.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 03:06:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1712743569; x=1713348369; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=T1LpKFL+yI+IpX+c47vgJ/x998fTDNJ7BUtB4SB1yXE=;
+        b=dfGYbbcc+8+Vry86AnGcxRqorQhSGMl2d+um6mJs2qIVCUM8kNUGdxQOvHetCJOQYZ
+         kDFgdA6AVnjb+ZzgAQP8iwE9bMmCFYmIZRv0qsDtWOYjsMaSyujO7udL34LwRVKy0P0V
+         v3qFCA4GbU6AgdUuDJL54yX8QtKghr9AH8K5A=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712743569; x=1713348369;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=T1LpKFL+yI+IpX+c47vgJ/x998fTDNJ7BUtB4SB1yXE=;
+        b=S4lrHJP9gSUl1ACmY8wSOOEYDVj8aT8a913bDHVb8OcWolDCcLw37IjErPjLmPy0xw
+         38hM32jo3PKHrmiU1CqTr5T7mZmzDPIDVfRS77n/uHtReRx/0Xb7NG65+Yve+WTaZiTk
+         cOgqjLkkhJkMqT+wl059rm6ddmV/GFB/eV/vIMlFoiCR9tuWApaYJkvte14wRgfkbWRR
+         INQ03NVtGVj7sP2mMuudqtwlHCEqjvr7Pe73YHHV7pCXXGKv8HlwYQoXWkK7t5fOMSLh
+         mW0+k/I/OPDtvaOLMl37LXY0VTRQBJfhs3/p1V7vVZgVsM7KwUd0FZA5XO+UtK6kB5Md
+         Yjag==
+X-Forwarded-Encrypted: i=1; AJvYcCXxlgUy+jYdBJhegt0WCJ1uNFcytmwrxOPFqPDMyVo4dbX/o1UkOvlD4uW3U6iwPMWu/+o/LGHNs3cvuCK5qALgfGuweHnZjXZEYsHMQJTNMqxs
+X-Gm-Message-State: AOJu0Yyd6qiA0SaYiIP93s4gfOeFTUTswYxKnjliQUwBUZSbzgOhSAD2
+	V+6/BxmN3pykptkwqOJw3DAiyg+6lyPAqIoPCmSRsPEfdkkWfPKAuru56P/R/PVCmSSARSOtrWQ
+	kGQ==
+X-Google-Smtp-Source: AGHT+IEgWW/yvuflbCPPd3wcdtqJfAQHQgU5ksKHqoN0JvvBwSkc10gWcYuN/ly4S2nYghQ9sKh4yg==
+X-Received: by 2002:a17:90a:e514:b0:2a2:672f:ef66 with SMTP id t20-20020a17090ae51400b002a2672fef66mr1861559pjy.7.1712743569253;
+        Wed, 10 Apr 2024 03:06:09 -0700 (PDT)
+Received: from yuanhsinte1.c.googlers.com (88.216.124.34.bc.googleusercontent.com. [34.124.216.88])
+        by smtp.gmail.com with ESMTPSA id a11-20020a17090a740b00b002a4ce78e3e8sm1014434pjg.35.2024.04.10.03.06.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 10 Apr 2024 03:06:08 -0700 (PDT)
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Date: Wed, 10 Apr 2024 10:06:04 +0000
+Subject: [PATCH] thermal/drivers/mediatek/lvts_thermal: Add coeff for
+ mt8192
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: Remove redundant
- code in lvts_ctrl_configure
-To: Pin-yen Lin <treapking@chromium.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- "Rafael J . Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Nicolas Pitre <nico@fluxnic.net>
-References: <20240410000730.628043-1-treapking@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240410000730.628043-1-treapking@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20240410-lvts_thermal-v1-1-ee50b29c1756@chromium.org>
+X-B4-Tracking: v=1; b=H4sIAItkFmYC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIxMDE0MD3ZyykuL4kozUotzEHF3jFGMzUwsT88TktDQloJaCotS0zAqwcdG
+ xtbUAtac9M14AAAA=
+To: "Rafael J. Wysocki" <rafael@kernel.org>, 
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
+ Lukasz Luba <lukasz.luba@arm.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ =?utf-8?q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
+ Balsam CHIHI <bchihi@baylibre.com>
+Cc: Alexandre Mergnat <amergnat@baylibre.com>, linux-pm@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Hsin-Te Yuan <yuanhsinte@chromium.org>
+X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_025546_404767_6A0354C3 
-X-CRM114-Status: GOOD (  15.95  )
+X-CRM114-CacheID: sfid-20240410_030615_182550_4AFE5134 
+X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,59 +98,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Minjie Du <duminjie@vivo.com>, =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>, Alexandre Mergnat <amergnat@baylibre.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Balsam CHIHI <bchihi@baylibre.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/04/24 02:07, Pin-yen Lin ha scritto:
-> The removed variable assignment is never written to the register, so it
-> has no effect on the device behavior.  Mediatek has confirmed that it
-> is not required to initialize this register for current platforms, so
-> remove this segment to avoid confusion.
-> 
-> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> 
+In order for lvts_raw_to_temp to function properly on mt8192,
+temperature coefficients for mt8192 need to be added.
 
-Added Nicolas Pitre to the loop;
+Fixes: 288732242db4 ("thermal/drivers/mediatek/lvts_thermal: Add mt8192 support")
+Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+---
+ drivers/thermal/mediatek/lvts_thermal.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Nicolas, since you're pushing support for those, can you please check if CALSCALE
-is used/useful/necessary on MT8186/88 before I give a R-b to this commit?
+diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+index fd4bd650c77a6..6d226c3e135ca 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.c
++++ b/drivers/thermal/mediatek/lvts_thermal.c
+@@ -80,6 +80,8 @@
+ #define LVTS_SENSOR_MAX				4
+ #define LVTS_GOLDEN_TEMP_MAX		62
+ #define LVTS_GOLDEN_TEMP_DEFAULT	50
++#define LVTS_COEFF_A_MT8192			-250460
++#define LVTS_COEFF_B_MT8192			250460
+ #define LVTS_COEFF_A_MT8195			-250460
+ #define LVTS_COEFF_B_MT8195			250460
+ #define LVTS_COEFF_A_MT7988			-204650
+@@ -1530,11 +1532,15 @@ static const struct lvts_data mt7988_lvts_ap_data = {
+ static const struct lvts_data mt8192_lvts_mcu_data = {
+ 	.lvts_ctrl	= mt8192_lvts_mcu_data_ctrl,
+ 	.num_lvts_ctrl	= ARRAY_SIZE(mt8192_lvts_mcu_data_ctrl),
++	.temp_factor	= LVTS_COEFF_A_MT8192,
++	.temp_offset	= LVTS_COEFF_B_MT8192,
+ };
+ 
+ static const struct lvts_data mt8192_lvts_ap_data = {
+ 	.lvts_ctrl	= mt8192_lvts_ap_data_ctrl,
+ 	.num_lvts_ctrl	= ARRAY_SIZE(mt8192_lvts_ap_data_ctrl),
++	.temp_factor	= LVTS_COEFF_A_MT8192,
++	.temp_offset	= LVTS_COEFF_B_MT8192,
+ };
+ 
+ static const struct lvts_data mt8195_lvts_mcu_data = {
 
-P.S.: Can anyone from MediaTek please confirm if the 0x300 value is right for this
-       register? I'd still like Linux to properly initialize the registers, even if
-       this could technically be a default value.
+---
+base-commit: 20cb38a7af88dc40095da7c2c9094da3873fea23
+change-id: 20240410-lvts_thermal-3d365847acff
 
-
-> ---
-> 
->   drivers/thermal/mediatek/lvts_thermal.c | 6 ------
->   1 file changed, 6 deletions(-)
-> 
-> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-> index fd4bd650c77a..48d2f8ba3f18 100644
-> --- a/drivers/thermal/mediatek/lvts_thermal.c
-> +++ b/drivers/thermal/mediatek/lvts_thermal.c
-> @@ -985,12 +985,6 @@ static int lvts_ctrl_configure(struct device *dev, struct lvts_ctrl *lvts_ctrl)
->   	value = LVTS_TSSEL_CONF;
->   	writel(value, LVTS_TSSEL(lvts_ctrl->base));
->   
-> -	/*
-> -	 * LVTS_CALSCALE : ADC voltage round
-> -	 */
-> -	value = 0x300;
-> -	value = LVTS_CALSCALE_CONF;
-
-As a side note, I believe that the original author wanted to write, instead...
-
-	value = LVTS_CALSCALE_CONF;
-	writel(value, LVTS_CALSCALE(lvts_ctrl->base);
-
-Cheers,
-Angelo
-
-> -
->   	/*
->   	 * LVTS_MSRCTL0 : Sensor filtering strategy
->   	 *
+Best regards,
+-- 
+Hsin-Te Yuan <yuanhsinte@chromium.org>
 
 
