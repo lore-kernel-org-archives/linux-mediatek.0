@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C3ECCD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 14:27:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71427CD11C2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 14:54:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zFeYAr3tgWzelp4Qc502/jt9QrT83vOai+OT7e3SF3I=; b=SOb6iQFdEBIdAeCUycOASQxTc0
-	a144u1Qqw3JFIVJTs2StO1/RaaeFqJxalUxxpWb41gtdx/WrLajhbQWnTo0q+kVuc3nob5j8w3z2x
-	MppWce94CxcREVUoO9TAu9QblN9JrLB+j1n/F33Bvvareztxzwn0vSGBHzPGgc/uceJYxL3Dgrlic
-	iSMqVhQWIdjBv0zIQidyLxqzOQjCuBwbz9AVFkHW6Xdlfq4zEfJNmycR92Yf05DifMElgTRyEFtKH
-	jgGurBsw+RsEQ1fJVRCXUIWReoECfWSEnkL3KGWchhpMF2dsB8arfCZ266D01HAglw3tTVysRGHpt
-	RJPy6xKA==;
+	bh=UE+4Y18rqT6MP9pTdsa016UUd/maawQyVReuqUWJA2U=; b=hmL4SdQ+g9wX5rhH1APHW/Li5O
+	q6Id3paE2SEX3JkMfEJBZnyySZUuQuBXwC9fCpIFTE1lxY0m9xf0k0tfMfaiyRmaheHA+G5YMTBC7
+	bihBSMgIaFgaLyIQbAGYnJPFkJLnp326Gfxs18VCD4gvk1iuXwyrCkTp98PwOIPVSTms0YJA9+uQk
+	M1rf5fZ9rqkY22QcqUcoGSDqESDsl6eGTgc7+d97keNe2+I7yPCMm59cNxcc8fcFMPG1q1ptrD0S/
+	QxAoxXKiTsmcz487IvD7mNG+hPhBbv7xOOO4EtSueceBPYxklj2OX/uqn8y48jMnUqtBl6tzTkukx
+	Jgvqnl5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruYuy-00000007Sk7-2Kow;
-	Wed, 10 Apr 2024 14:27:16 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1ruZL5-00000007cEC-2ODx;
+	Wed, 10 Apr 2024 14:54:15 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruYut-00000007SiF-1Jiz
+	id 1ruZL1-00000007cBH-43q7
 	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Apr 2024 14:27:14 +0000
-Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-343d6b55c42so4853954f8f.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 07:27:09 -0700 (PDT)
+	Wed, 10 Apr 2024 14:54:13 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-416b7f372b3so9985815e9.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 07:54:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1712759228; x=1713364028; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1712760849; x=1713365649; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=zFeYAr3tgWzelp4Qc502/jt9QrT83vOai+OT7e3SF3I=;
-        b=oa6C6ln4msf33Xs1bkMOWMTznrBoqvXSikkYJQ9anFW3fKTehLqsZgZScj9fhXwpcG
-         EgcCVqGUDSDps0fluh8uXjD9t5MSUyt6cBBwBTYNK2tqmBpmLinCxix+RF+11znnw+jS
-         /h8hnbO8p1HVzjSpFnhHS80AvAO7T24zjFiAEP/DqzRGJP+2e6rZH13l6uEZHnsCyAyJ
-         gWXMzBxAKZlIVTS2os8H4aEJRSAxNbPZ9vekmVQvdtub8csmusyncgHVlm7tu9v/TAXU
-         pgN6xHX1d30WeKoWHV6+FBV5Z98hC1ODIUrUjMNO4NzKV4k+mmpxfQLcpFDX/tkG7DpK
-         byrA==
+        bh=UE+4Y18rqT6MP9pTdsa016UUd/maawQyVReuqUWJA2U=;
+        b=23I/Sa93EKSADbMdYVoIK6u3yrg4mj9vEWu6D/mkiIVIrsiOO/rIYbvfnSdrSzrpsS
+         J8pz0tN/0d1OcsCHgCRxwlbi1YjlanqXhciwQ65cF4teW10pjTKralJEyQl3EzB7F2QV
+         y1D3b0z7PuVR7gHvf+TlDSsmqbQcTSeljni/i6BqY2goT47u4RmZnAdQ6TPsZZfdrzrE
+         8NxLbe9Rf1kQ/Uhk44Q6ed6/MZJs/XGt2IGMEXEWIeuCrOYEKfX69JlZefRUeCd0NyJd
+         Dqa5hxHfLlof8pQ9bU+xBInyQpTVu+fgHC+Vfm426QN0gYiDZRc9IXx6oR/YWs6idwsi
+         G1HA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712759228; x=1713364028;
+        d=1e100.net; s=20230601; t=1712760849; x=1713365649;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=zFeYAr3tgWzelp4Qc502/jt9QrT83vOai+OT7e3SF3I=;
-        b=Px8UnRFDsXS3K1Qx8OxBAxDkLafsRJghdtQ0czy7dcf7uAs94fMywaVgYTxxtyiH78
-         8nBzSqkNhGyfXDxgDHho9GzzHU4vO8yTLe/mZB3xV6Eo/8+GkYOg2tJNoZRyZg6xAye3
-         DQivcejTDlXTKplTGZAOW9r6W2D/UuGhvQpkENrSEDHWkwGmvIJVFlj8Xm6OWTpfxYlZ
-         TzcS3Dw+EOuQ020OclDXjkJYQfXADJVE89bS/LjCFzY1u/2i2Iyqa6pW7i/EKjCGUsjr
-         6Gs+NnEcv56aDh0vQ9mjnzTGql6XOLq9lG+8XkmXMZBx7eDLDEeFEiiYX0C/giKolFC3
-         AbIQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW9ByD0awTAg4UZRl5+qE4AfJ3wSGWGmhSJ/Yylxh9x9mJn1oyy4/OazCo1D2L9+25HQ0TsqAmYhDkFA5xMpVT0IQgIfbKmofs6VEnP9TcSUg7k
-X-Gm-Message-State: AOJu0YyCIft2QUrxjw98q/qfRqWhLxtG5uAjYMIuZM9H9/8rmBTSEUu8
-	95BLNp5Ro6PxDEVMksADMRHG2Ere5DMVjKp7oOhRuULlH/ZdPmJYFiE+tmBamCI=
-X-Google-Smtp-Source: AGHT+IGSvVBdvyjiYeq1pMtO732y4Er6q/giXpAXAVvEFvGgI0ZjYjMZMlOGyJUSQFXanGM+QGMBOw==
-X-Received: by 2002:a05:6000:188a:b0:344:4bcc:ed28 with SMTP id a10-20020a056000188a00b003444bcced28mr3345746wri.32.1712759228609;
-        Wed, 10 Apr 2024 07:27:08 -0700 (PDT)
+        bh=UE+4Y18rqT6MP9pTdsa016UUd/maawQyVReuqUWJA2U=;
+        b=lqNFP5oJ3IJQXpiBdtyt3LmPJARUaiXVcUGVFqnpl1Fvyrz3/6d3tEB0lWfh43mhag
+         CgdzRbPxePT5ASsmDFUojcOtzKvLXDTO3zeGmwQpsCze69JqfWgs3grZNKfg1P4ZCkiw
+         /OamXh/xt7FlosEWcOZjVUx6eCpYyzmQ/RZBDQfqQ34aZFAvX32x3ptZEpOhkVi8FRBp
+         /jiX+COD0JcMFLk00AiVUTdqFFsxP0BU5I2Pllal0eg39EZrZWwX7ta2YhdFKhbIYyVl
+         ps7Q6OjLHFvdcXxaTTCD5py/p/G+vWd1KqpCZsOH1p1jHN4xrBHlpQr2suou7i5nJpuO
+         EyEw==
+X-Forwarded-Encrypted: i=1; AJvYcCXXijGgHkmyjZRfkdSJuPhQKGvPtZwf7sFngYScmfGhS4tSafcqT5Ln+F78P5Mvi89AaFFKmAvtER5ooGYu6Qv4wdYByZhFfhabgIlYsrJZFrgY
+X-Gm-Message-State: AOJu0Yx69tZaM8s7NrX5L3Ti1ManzlPcqoWu/vkVyDfroI7aoQ1yc7Xg
+	v78svknAj9AChpMRwcvR1uyGzb9uEpngC2CNrS7r9coHkEJk5Qot7ObPdjltj24=
+X-Google-Smtp-Source: AGHT+IHCUNg5SsYHXd3cnIQYa7aR4oDCUcNCW6UqXLuavJoCReIkeODB8539jlTtqakTtMbi5H4ORw==
+X-Received: by 2002:a05:600c:4f44:b0:416:6abe:2975 with SMTP id m4-20020a05600c4f4400b004166abe2975mr2002047wmq.15.1712760848874;
+        Wed, 10 Apr 2024 07:54:08 -0700 (PDT)
 Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id b17-20020a5d40d1000000b00343cad2a4d3sm13846851wrq.18.2024.04.10.07.27.06
+        by smtp.gmail.com with ESMTPSA id gw7-20020a05600c850700b004146e58cc35sm2526850wmb.46.2024.04.10.07.54.07
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 10 Apr 2024 07:27:08 -0700 (PDT)
-Message-ID: <d334ddc4-3c8e-49d7-8940-30f78bff823f@baylibre.com>
-Date: Wed, 10 Apr 2024 16:27:06 +0200
+        Wed, 10 Apr 2024 07:54:08 -0700 (PDT)
+Message-ID: <6506db51-121b-4579-bf14-0ab6e33fb048@baylibre.com>
+Date: Wed, 10 Apr 2024 16:54:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 07/18] ASoC: mediatek: Add common snd_soc_ops
- .startup() callback
+Subject: Re: [PATCH v4 08/18] ASoC: mediatek: mt8195: Migrate to the common
+ mtk_soundcard_startup
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  broonie@kernel.org
 Cc: wenst@chromium.org, lgirdwood@gmail.com, robh@kernel.org,
@@ -88,15 +88,15 @@ Cc: wenst@chromium.org, lgirdwood@gmail.com, robh@kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  kernel@collabora.com
 References: <20240409113310.303261-1-angelogioacchino.delregno@collabora.com>
- <20240409113310.303261-8-angelogioacchino.delregno@collabora.com>
+ <20240409113310.303261-9-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20240409113310.303261-8-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240409113310.303261-9-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_072711_419460_E057DE67 
-X-CRM114-Status: UNSURE (   6.65  )
+X-CRM114-CacheID: sfid-20240410_075412_149042_616E743A 
+X-CRM114-Status: UNSURE (   5.81  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -112,15 +112,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Way better with common stuff ! :p
+
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-On 09/04/2024 13:32, AngeloGioacchino Del Regno wrote:
-> MediaTek platforms are typically setting PCM rate and channels
-> constraints for playback, capture and HDMI/DisplayPort playback:
-> commonize the startup callback by adding the PCM constraints data
-> to the mtk_platform_card_data structure and by reusing the common
-> mtk_soundcard_startup() function for all of them by getting back
-> the parameters from the aforementioned struct.
+On 09/04/2024 13:33, AngeloGioacchino Del Regno wrote:
+> Add a const mtk_pcm_constraints_data struct array with all of the
+> (again, constant) constraints for all of the supported usecases,
+> remove the duplicated functions and call mtk_soundcard_startup()
+> instead in all of the .startup() callbacks.
 
 -- 
 Regards,
