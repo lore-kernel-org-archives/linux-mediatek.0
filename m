@@ -4,86 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 984F6CD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 11:24:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EA09CD128A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 11:27:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=k2vJZvzXPWAch/3DrDdHKVno+X2M7Z03bzv0+J14OPA=; b=28yOcKKgRulF+GV8Z0U8NXXx2q
-	FRefedsQrBSLtUJiLJs+kdLqXS00BXrxzpS/bhKSGJMulqKPFlJd9D47GdioKoPqWw0GRz0xSK1q9
-	YvwrFVpqZCX3Jz2bvxLRoHIhUvw4RdwZTmLuD11mVVXiKAaqH3jpgA5xcaJEeC1j5IEMNefmeZyC6
-	9bU3ZqcnYktP3ytMv4NOUllBKB3lr49nFD4rErPKDCcZoxW7GEN4Ze90lZdu3YR1KngqUlxMCeW+g
-	ju2+G7huz94QAU+6p553fwzaYgpdQmXMaOn6TmQG1BRRwfJHqAU7mGNAZ3vApwRZF5xD74nz7VClx
-	9w03TzLw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Cfp9jVAn7ZeJksOEoDKhtdv83sClKEBJhxDRgrBHFps=; b=jF14znJUkQ9RliYSesnmuZWCN4
+	xvgOz9rM+9arYP876+QSKZ1OtZDsrETLUEtDWci7ykYb/1UGOCRYjs99PA6gYAUaG2E6JMaGNXPRq
+	QPpdId/DFAicxY35IVo7vWGPujJOCOG1jUv0Am/FokU2CrQG7Ta3sJIJ+N2+lRRcVPtbUO6yi2jU1
+	REVghfIxSyiqWOfOsaU/6EjSfisoXTvNNpWCL3BtCJt9yMwOaZRQD9QB/e7q0vvKErI6ucAriNxrr
+	dauevTZiigHbQXpLTr5I1I77KYjbfyt4u0wgQcoqa+bM5V7Llh2MuWynopaESbF3QUFFyAU0f6ZVu
+	Bo/Z7f5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruW4G-00000006b11-3ZbV;
-	Wed, 10 Apr 2024 11:24:40 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ruW6q-00000006cbL-0TwA;
+	Wed, 10 Apr 2024 11:27:20 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruW4C-00000006aze-3z6u;
-	Wed, 10 Apr 2024 11:24:38 +0000
-X-UUID: e4de26b6f72c11eeac1957ae9f99f617-20240410
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=k2vJZvzXPWAch/3DrDdHKVno+X2M7Z03bzv0+J14OPA=;
-	b=VVpmsGNkpprCLcHsYuxZaAF2IP1m2K2dfGLZvaRabzwWfS6oF3/F2lvf4pmF7ysa5e85gaDX7GQbdTrLk4Xsc1+/JqJJ6UU9Co5gpI6uJqwhH80CQdJ2YvCA+rSBCgk3xy5nKZhEGRNMP/7oFMPROrH1NO86sFHmDupTbONj2O4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:11c73e71-c8a1-43c1-a507-7ba2e3258d8f,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6f543d0,CLOUDID:42e90386-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 50,UGT
-X-CID-BAS: 50,UGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: e4de26b6f72c11eeac1957ae9f99f617-20240410
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1662268863; Wed, 10 Apr 2024 04:24:28 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 10 Apr 2024 19:14:19 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 10 Apr 2024 19:14:18 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: <linux-firmware@kernel.org>
-CC: <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
-	<Longfei.Wang@mediatek.com>, <Yunfei.Dong@mediatek.com>,
-	<Andrew-CT.Chen@mediatek.com>, <tiffany.lin@mediatek.com>,
-	<irui.wang@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: pull request: linux-firmware: mediatek: Update MT8173 VPU firmware to v1.1.9 
-Date: Wed, 10 Apr 2024 19:14:15 +0800
-Message-ID: <20240410111416.2204-1-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1ruW6m-00000006cZ5-0NP0;
+	Wed, 10 Apr 2024 11:27:17 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5624661647;
+	Wed, 10 Apr 2024 11:27:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9A2AC433C7;
+	Wed, 10 Apr 2024 11:27:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712748435;
+	bh=FsOWXLW0PHDHZni/M6GeHDub8yyvYPEYUuELjlh26os=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=oPLuWMgV4Ro+rz/gs08+aKeQeKpkKgHvt8o88/C0ptaAhIw4eeuP+qdoIWkzpxx60
+	 QXZObbEInpnD6RbWaEzPVV6poph9LaVwAhfor2xzYdN1YVpwVaP2YBtMMh19vcmHH9
+	 fr4rIsixpea2bMEUDORoIsITm0z81+/mikhb1v02Sj1Lr8jjxRcMCqO61AdGOLfYUV
+	 c1aKnJ1eG117TwzfkT4+GLkkf3NPNJ3Y1dG3ftY4eIbDv4ZlTUe8s8LtN5gxMieWHA
+	 NI9lyiE2T37SEoPwjmk+sUv8pE06b2EC9Km07eKUO/Wfmts7QHzEBW0qNGUUGiAkHW
+	 KdHtpTM+JJAbg==
+Date: Wed, 10 Apr 2024 12:27:07 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Zhi Mao <zhi.mao@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Hans de Goede <hdegoede@redhat.com>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Mehdi Djait <mehdi.djait@bootlin.com>,
+	Andy Shevchenko <andy.shevchenko@gmail.com>,
+	Bingbu Cao <bingbu.cao@intel.com>, linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, shengnan.wang@mediatek.com,
+	yaya.chang@mediatek.com, yunkec@chromium.org, 10572168@qq.com
+Subject: Re: [PATCH 1/2] media: dt-bindings: i2c: add Giantec GT97xx VCM
+ driver
+Message-ID: <20240410-rice-fringe-4ae992217a2f@spud>
+References: <20240410104002.1197-1-zhi.mao@mediatek.com>
+ <20240410104002.1197-2-zhi.mao@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--2.122600-8.000000
-X-TMASE-MatchedRID: lT3Pays+ayfPOb61tmLEGoSvKOGqLLPK/kqO2xYqX5aqG/oAv7EtlT3O
-	m/10wG4m94kvTNM1tWePFrrIuZSCCl/ag3kgZsCOngIgpj8eDcBpkajQR5gb3savT21DsLD/UEh
-	Wy9W70AFYF3qW3Je6+5hOxoM3JPyDViork/Gnty5YDTpkwiF+IbKEF54avyFSFjGYDTSgk1Ilyt
-	ehiG+vxvLpWv+Ui6RSioz9IaWL7lI2eTwdZT29r4SVUZZHNLr+RgV6Hsqyx11QaONuZ6Jr4g9k3
-	l8EaYIcovpDXVQHzIN+3BndfXUhXQ==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--2.122600-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: F31CA27B66CB61F2B24F8A3F80638668CD75F6C8AB4F1C27A8621BFD9E74AACF2000:8
-X-MTK: N
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ISZ8o4WhYZ7L06Pc"
+Content-Disposition: inline
+In-Reply-To: <20240410104002.1197-2-zhi.mao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_042437_478439_EFEE3F98 
-X-CRM114-Status: UNSURE (   6.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240410_042716_331457_E4B8BF8B 
+X-CRM114-Status: GOOD (  23.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,27 +93,168 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear linux-firmware maintainers,
 
-The following changes since commit 1addd7dca2d953a5484c3e3c08dbd7dc253058dd:
+--ISZ8o4WhYZ7L06Pc
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-  Merge branch 'rtw' into 'main' (2024-04-09 12:30:28 +0000)
+Hey,
 
-are available in the Git repository at:
+On Wed, Apr 10, 2024 at 06:40:01PM +0800, Zhi Mao wrote:
+> Add YAML device tree binding for GT97xx VCM driver,
 
-  https://github.com/irui-wang/linux_fw_vpu_v1.1.9.git v1.1.9
+Please don't mention drivers here, bindings are for hardware.
 
-for you to fetch changes up to c81f094c847d934c0ffe0870fa5cf861c62e3451:
+> and the relevant MAINTAINERS entries.
+>=20
+> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+> ---
+>  .../bindings/media/i2c/giantec,gt97xx.yaml    | 91 +++++++++++++++++++
+>  1 file changed, 91 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/i2c/giantec,g=
+t97xx.yaml
+>=20
+> diff --git a/Documentation/devicetree/bindings/media/i2c/giantec,gt97xx.y=
+aml b/Documentation/devicetree/bindings/media/i2c/giantec,gt97xx.yaml
+> new file mode 100644
+> index 000000000000..8c9f1eb4dac8
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/i2c/giantec,gt97xx.yaml
+> @@ -0,0 +1,91 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +# Copyright (c) 2020 MediaTek Inc.
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/i2c/giantec,gt97xx.yaml#
 
-  linux-firmware: mediatek: Update MT8173 VPU firmware to v1.1.9 (2024-04-10 18:36:10 +0800)
+Filename patching compatible please.
 
-----------------------------------------------------------------
-Irui Wang (1):
-      linux-firmware: mediatek: Update MT8173 VPU firmware to v1.1.9
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Giantec Semiconductor, Crop. GT97xx Voice Coil Motor (VCM)
+> +
+> +maintainers:
+> +  - Zhi Mao <zhi.mao@mediatek.com>
+> +
+> +description: |-
+> +  The Giantec GT97xx is a 10-bit DAC with current sink capability.
+> +  The DAC is controlled via I2C bus that operates at clock rates up to 1=
+MHz.
+> +  This chip integrates Advanced Actuator Control (AAC) technology
+> +  and is intended for driving voice coil lens in camera modules.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - giantec,gt9768 # for GT9768 VCM
+> +      - giantec,gt9769 # for GT9769 VCM
 
- mediatek/mt8173/vpu_d.bin | Bin 2977184 -> 2977184 bytes
- mediatek/mt8173/vpu_p.bin | Bin 131380 -> 131380 bytes
- 2 files changed, 0 insertions(+), 0 deletions(-)
+I don't think these comments are needed, they should be clear from the
+compatibles, no?
 
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  vin-supply: true
+> +
+> +  vdd-supply: true
+> +
+> +  giantec,aac-mode:
+> +    description:
+> +      Indication of AAC mode select.
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    enum:
+> +      - 1    #  AAC2 mode(operation time# 0.48 x Tvib)
+> +      - 2    #  AAC3 mode(operation time# 0.70 x Tvib)
+> +      - 3    #  AAC4 mode(operation time# 0.75 x Tvib)
+> +      - 5    #  AAC8 mode(operation time# 1.13 x Tvib)
 
+I dislike these enum based properties and I would rather this either be
+the values themselves (0.48, 0.70 etc).
+
+> +    default: 2
+> +
+> +  giantec,aac-timing:
+> +    description:
+> +      Number of AAC Timing count that controlled by one 6-bit period of
+> +      vibration register AACT[5:0], the unit of which is 100 us.
+
+Then the property should be in a standard unit of time, not "random" hex
+numbers that correspond to register values.
+
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    default: 0x20
+> +    minimum: 0x00
+> +    maximum: 0x3f
+> +
+> +  giantec,clock-presc:
+> +    description:
+> +      Indication of VCM internal clock dividing rate select, as one mult=
+iple
+> +      factor to calculate VCM ring periodic time Tvib.
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    enum:
+> +      - 0    #  Dividing Rate -  2
+> +      - 1    #  Dividing Rate -  1
+> +      - 2    #  Dividing Rate -  1/2
+> +      - 3    #  Dividing Rate -  1/4
+> +      - 4    #  Dividing Rate -  8
+> +      - 5    #  Dividing Rate -  4
+
+Same here, you should not need these comments explaining the values, use
+an enum with meaningful values please.=20
+
+> +    default: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - vin-supply
+> +  - vdd-supply
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +
+> +    i2c {
+> +        #address-cells =3D <1>;
+> +        #size-cells =3D <0>;
+> +
+> +        vcm@c {
+
+"vcm" is not a generic node-name, can you use one please?
+Look around similar bindings or at the dt spec for generic node-names.
+
+Thanks,
+Conor.
+
+> +            compatible =3D "giantec,gt9768";
+> +            reg =3D <0x0c>;
+> +
+> +            vin-supply =3D <&gt97xx_vin>;
+> +            vdd-supply =3D <&gt97xx_vdd>;
+> +            giantec,aac-timing =3D <0x20>;
+> +        };
+> +    };
+> +
+> +...
+> --=20
+> 2.25.1
+>=20
+
+--ISZ8o4WhYZ7L06Pc
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZhZ3iwAKCRB4tDGHoIJi
+0qQVAP9+OK/cYtTAIsZGXslgYKki3/Se5piJRnHXuSw9pqWl+wD/a7O+OCtP7921
+6LtI+5nuhgIdoOKzNL+cFkLRYvI5nQM=
+=cJO3
+-----END PGP SIGNATURE-----
+
+--ISZ8o4WhYZ7L06Pc--
 
