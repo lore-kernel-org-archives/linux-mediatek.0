@@ -4,132 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C5B8CD1297
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 18:15:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FDAECD11C2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 18:53:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZTWafwAOSteWZK+IF8K+ySu+NLy3Zj+VooWrs6puuRE=; b=EVDxe2PRC7LfjGCBUhEcB7/GU/
-	kXCqR+Q089a1sb4VsIdpO8K4tNl4r4lETIBwNEJUrVNQMA+gm2EBhyX+8IEFQM+6uyFhkbo2gfUmR
-	13GftvKf9Nvuiy9/IEGi10xgaG0NI4gBSb+iRAKhFqmLuvuCRmxNf2eD9OEscZW5upwXedg6DMyAE
-	/o+MYWNcMiEEexcZz58rcEN0mT7y8vjBdI81Z849BLJDCp5NJwqDM7FEqIRUK2Ib1S31HBhpffi4x
-	WIolTtPVDq4D6MCCTk2U3ROeKLn8X4FYfgKukmqMtqC7Ja3Ed3JBZeXXM3NcfjSOhx/gmkdO0uN7D
-	XvufCb7g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=u04ty4XeC+ToVpbCTU/qMTm1yQRrPUKOYomefkfVDGA=; b=BPzNRQWMOVnkGXDcn7SBn4AigY
+	JJNXd/uxSbhvdfyfiUdK1v9yesWJ1gTqNMf+l4rx+uJFVOQUlUIAcGhm671OBTdn3ShnEhccmCguu
+	eTQ4fYW/GAXjOoAHdzF9OWXqBJ60svRyz9KyTAwx6v4Vu2tFhD83q6FXQP2E+OeiD2j7jRu24GyoI
+	thcRajPVdQ96y/1dNQg++/tVSXH8fxv9lXI/i1v67Hk7nt4DyU5omskShvtPLo+84pXSBjVm730lB
+	EIFpvMmsfPVEQQwTg8eDNhs4PTVq4xKp60xFAdvn58vZyiEWATkQV7FJlIkezBXcxgfE5xcr5cGcF
+	VzkabNtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rucUF-00000008Rbh-0jTR;
-	Wed, 10 Apr 2024 18:15:55 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1rud4D-00000008YgT-3tBw;
+	Wed, 10 Apr 2024 18:53:05 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rucU2-00000008RQC-1LDo
-	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Apr 2024 18:15:47 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-416920b1a2aso19638185e9.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 11:15:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1712772940; x=1713377740; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZTWafwAOSteWZK+IF8K+ySu+NLy3Zj+VooWrs6puuRE=;
-        b=tnQGWJjfhSxuAr9QoV0lpWlGbATRmF+QXLHFoJ1iWYvsDvBgLMKBTgFLtZx/uu+t8a
-         oOKABW/rTyPL9GgiDw4FiFnFh2NYOrB3aX4EP1WrJi3NvchNFOWlCvJC2H7n2S4brmdM
-         QhAsbCQYUZV8x0RRiMaKNjvN91PLPa670cSkgj3ZsnwCjyizm0Yh7yGixqIL2vZ2jiEP
-         z7IWqIaz2+UvCwj/0omvjuny7bGeSha3P5UKTc/UiOlJPEu9c9xIMBhkaxLk567sk3Br
-         sz3HiNeQGm4rhzDmp1MprRY0nhB9CAfgTYzd4DF8Y5ADhJCFhNu0r0SQhpN9jjfJqzP0
-         XTCQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712772940; x=1713377740;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ZTWafwAOSteWZK+IF8K+ySu+NLy3Zj+VooWrs6puuRE=;
-        b=CnYVHwP/Zpma/vbkfeQbp7b6Yq/u86x9J3M8y1FIMRnnKrEzpv0KhzKeGM+PNgfxz2
-         bdQbVk6XqRqlgqXiRu5xph2x030GyMz622UJC08ECkSWwfbvorqWG5tQZoU/JJ61VA2+
-         JREatsCSq1N1kR9gq3R6mmKJsYNhoIS/30drW6u6cJJWym7kJ5m8ZLJxP9BEQZ8IQjtq
-         LUu+gRHacJMZUQhOww3/djVPi+lpxFTt8UgkKqqm5wl9mELaZcAFSbIUmUtR7wY//gxZ
-         mhKS2CcnnaAR2sIHyrqnRgvk9onR1Kr5sZwUVQLH+bp03QdnqSQcgaTSIapu2EBv1dRJ
-         /vAQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU4XBvqHL6fTOouJcYqrF+ry1aqOAKQwWRcuxnS1npMMBslwqrALpbJ3sXFYt4rQHIRiA7WN/VJkdxBHWHJtGCzNwDqyzMyEVZGQG3faAm+UqSB
-X-Gm-Message-State: AOJu0YxuJk6yooI5q2Pe194RtlQui3qzv/eLkZqLcJ5N53xvs3T8W4Q8
-	8UfcYMBF/NuP/s4I/Q1h+Hhj+1ldDRb6B8bpgFbaRQgX5CUDIQvOxHOmFeBltVY=
-X-Google-Smtp-Source: AGHT+IF48RGmHk8pl2ow/KjC14k8yrkxBwd5xymh3LOhP56MyaRgm1/Xm1jdP8c96wTN/A1i8OYwaw==
-X-Received: by 2002:a05:600c:3b98:b0:416:2629:bbaf with SMTP id n24-20020a05600c3b9800b004162629bbafmr2751097wms.29.1712772940126;
-        Wed, 10 Apr 2024 11:15:40 -0700 (PDT)
-Received: from krzk-bin.. ([178.197.223.16])
-        by smtp.gmail.com with ESMTPSA id d13-20020a05600c3acd00b004161bffa48csm3026487wms.40.2024.04.10.11.15.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 Apr 2024 11:15:39 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Hector Martin <marcan@marcan.st>,
-	Sven Peter <sven@svenpeter.dev>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Jim Quinlan <jim2101024@gmail.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Will Deacon <will@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Srikanth Thokala <srikanth.thokala@intel.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	id 1rud4A-00000008Yde-0qrE;
+	Wed, 10 Apr 2024 18:53:03 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1rud3c-0001D4-1U;
+	Wed, 10 Apr 2024 18:52:28 +0000
+Date: Wed, 10 Apr 2024 19:52:24 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Paolo Abeni <pabeni@redhat.com>
+Cc: arinc.unal@arinc9.com, DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Marek Vasut <marek.vasut+renesas@gmail.com>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Mark Kettenis <kettenis@openbsd.org>,
-	Tom Joseph <tjoseph@cadence.com>,
-	Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Thippeswamy Havalige <thippeswamy.havalige@amd.com>,
-	linux-pci@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	asahi@lists.linux.dev,
+	=?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>,
+	Russell King <linux@armlinux.org.uk>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
+	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v2 4/4] dt-bindings: PCI: mediatek,mt7621-pcie: switch from deprecated pci-bus.yaml
-Date: Wed, 10 Apr 2024 20:15:21 +0200
-Message-Id: <20240410181521.269431-4-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240410181521.269431-1-krzysztof.kozlowski@linaro.org>
-References: <20240410181521.269431-1-krzysztof.kozlowski@linaro.org>
+	Florian Fainelli <florian.fainelli@broadcom.com>
+Subject: Re: [PATCH net v3] net: dsa: mt7530: fix enabling EEE on MT7531
+ switch on all boards
+Message-ID: <Zhbf6AtfBfxXMIGc@makrotopia.org>
+References: <20240408-for-net-mt7530-fix-eee-for-mt7531-mt7988-v3-1-84fdef1f008b@arinc9.com>
+ <1f2bc5416a0a73756cc1f45f3300619eb201b0a4.camel@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <1f2bc5416a0a73756cc1f45f3300619eb201b0a4.camel@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_111542_588111_448A4283 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20240410_115302_340516_B7CE49F2 
+X-CRM114-Status: GOOD (  33.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,54 +81,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-dtschema package with core schemas deprecated pci-bus.yaml schema in
-favor of individual schemas per host, device and pci-pci.
+On Tue, Apr 09, 2024 at 01:58:56PM +0200, Paolo Abeni wrote:
+> On Mon, 2024-04-08 at 10:08 +0300, Arınç ÜNAL via B4 Relay wrote:
+> > From: Arınç ÜNAL <arinc.unal@arinc9.com>
+> > 
+> > The commit 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
+> > brought EEE support but did not enable EEE on MT7531  MACs. EEE is
+> > enabled on MT7531 switch MACs by pulling the LAN2LED0 pin low on the board
+> > (bootstrapping), unsetting the EEE_DIS bit on the trap register, or setting
+> > the internal EEE switch bit on the CORE_PLL_GROUP4 register. Thanks to
+> > SkyLake Huang (黃啟澤) from MediaTek for providing information on the
+> > internal EEE switch bit.
+> > 
+> > There are existing boards that were not designed to pull the pin low.
+> > Because of that, the EEE status currently depends on the board design.
+> > 
+> > The EEE_DIS bit on the trap pertains to the LAN2LED0 pin which is usually
+> > used to control an LED. Once the bit is unset, the pin will be low. That
+> > will make the active low LED turn on. The pin is controlled by the switch
+> > PHY. It seems that the PHY controls the pin in the way that it inverts the
+> > pin state. That means depending on the wiring of the LED connected to
+> > LAN2LED0 on the board, the LED may be on without an active link.
+> > 
+> > To not cause this unwanted behaviour whilst enabling EEE on all boards, set
+> > the internal EEE switch bit on the CORE_PLL_GROUP4 register.
+> > 
+> > My testing on MT7531 shows a certain amount of traffic loss when EEE is
+> > enabled. That said, I haven't come across a board that enables EEE. So
+> > enable EEE on the switch MACs but disable EEE advertisement on the switch
+> > PHYs. This way, we don't change the behaviour of the majority of the boards
+> > that have this switch. The mediatek-ge PHY driver already disables EEE
+> > advertisement on the switch PHYs but my testing shows that it is somehow
+> > enabled afterwards. Disabling EEE advertisement before the PHY driver
+> > initialises keeps it off.
+> > 
+> > With this change, EEE can now be enabled using ethtool.
+> > 
+> > Fixes: 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
+> > Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
+> > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> > ---
+> > Here's some information for the record. EEE could not be enabled on MT7531
+> > on most boards using ethtool before this. On MT7988 SoC switch, EEE is
+> > disabled by default but can be turned on normally using ethtool. EEE is
+> > enabled by default on MT7530 and there's no need to make changes on the DSA
+> > subdriver for it.
+> > ---
+> > Changes in v3:
+> > - Remove patch 2, it was revealed that it doesn't fix a bug.
+> > - Patch 1
+> >   - Use the internal EEE switch bit provided by SkyLake Huang (黃啟澤). It
+> >     is a better method compared to unsetting the EEE_DIS bit of the trap as
+> >     the latter method causes unwanted behaviour on the LED connected to the
+> >     pin that pertains to the EEE_DIS bit.
+> 
+> Since this leverages something relatively obscure, it would be great if
+> someone in the CC list could independently test it. Let's wait a bit
+> more.
 
-Switch Mediatek MT7621 PCIe host bridge binding to this new schema.
+I've excessively tested this patch on MT7531 today, and reviewed it
+today and yesterday. I've also picked it as downstream patch[1] to
+OpenWrt, so an even wider audience will have the pleasure of working
+EEE on those switch ICs and in-SoC switches.
 
-This requires dtschema package newer than v2024.02 to work fully.
-v2024.02 will partially work: with a warning.
+Tested-by: Daniel Golle <daniel@makrotopia.org>
+Reviewed-by: Daniel Golle <daniel@makrotopia.org>
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
----
-
-Important: v2024.03 (said dtschema newer than v2024.02) was not yet
-released, therefore this patch probably should wait a bit. Previous
-patches do not depend anyhow on future release, so they can be taken as
-is.
-
-Changes in v2:
-1. New patch
-2. Split mediatek,mt7621-pcie to separate patch as it uses
-   pci-pci-bridge schema.
----
- .../devicetree/bindings/pci/mediatek,mt7621-pcie.yaml         | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml b/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml
-index 61d027239910..6fba42156db6 100644
---- a/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml
-+++ b/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml
-@@ -14,7 +14,7 @@ description: |+
-   with 3 Root Ports. Each Root Port supports a Gen1 1-lane Link
- 
- allOf:
--  - $ref: /schemas/pci/pci-bus.yaml#
-+  - $ref: /schemas/pci/pci-host-bridge.yaml#
- 
- properties:
-   compatible:
-@@ -33,7 +33,7 @@ properties:
- patternProperties:
-   '^pcie@[0-2],0$':
-     type: object
--    $ref: /schemas/pci/pci-bus.yaml#
-+    $ref: /schemas/pci/pci-pci-bridge.yaml#
- 
-     properties:
-       reg:
--- 
-2.34.1
-
+[1]: https://git.openwrt.org/?p=openwrt/openwrt.git;a=commit;h=98f9154316fe8371c709bd11ae8f263e22075ec6
 
