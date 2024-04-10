@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE583CD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 14:00:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0223CD128A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 14:02:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g67OSHlwNTDKaFrM3/uwoPsdE8uUwCxkLF5hYguHcs4=; b=VOZcYVe8PgdqMO9D8Hm5erZHLt
-	zWdpvND/xcBhPm7sLCfb708SHOObQmO7w9XrDESPGNc0gkxtYUW+xQuFTTJFfUgYZCqAK9DMQu7hR
-	BSElnnJNYkcZhnhRVg0ak+QI1EH7/nyNGTGgEL2DSB7ZcLk5k77bnW5vGrJyZQFn9aFo5M4pf6Ir2
-	ToPYPqEgFNWJCDbvjAfVoy0POxIgkdJyOfkdReOsrovYr6a6llZBUIrrgkOfFoU5lsq1WIRSSFDXB
-	8ADzmbDfW1e42U+mv+zzNBCVfHfd/3np8lhlu7QIENUobnP5sSOvy+PkLlcNH+wzdZIghEfoF76PZ
-	afZjtiBg==;
+	bh=VMjbesMdn+qtLdaftXdet62uuV9p5A/VNrKt/cHgu0g=; b=DYNUnbPuQlj3FdF9ijS9hntz7N
+	D7A4eOWo2I4u49rYp6vleBQLaRqGr8W5b1ZUeyNJ8yIbYS/sA0NLFL2yTIoNrUIw2tvw7Ctkq6v6S
+	S+G0P8M1WtlnOtlOxL13gAjNEsmW8NK0xYZKCLkxv0OkDiJhV/mBJY5fwZVsMrdrth//Kx0fyEC78
+	CnPxbG1qSym352m9B3V1JwghLcJ6brylEV8Rt5axkgQaYQvk64gH+DgidoFIW8aMhSoAx1RixNZgW
+	7R/s6GspPhSCX7iQgw8BmUfMJJMnysQxmw02NR6KrECiM/X/9PXFAsTI/7CmBAgM8fx5ptJqHdW1q
+	d/MMIWhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruYUf-00000007L95-1EBC;
-	Wed, 10 Apr 2024 14:00:05 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1ruYWt-00000007M6j-0J9S;
+	Wed, 10 Apr 2024 14:02:23 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruYUa-00000007L6A-1Q24
+	id 1ruYWp-00000007M3d-2bRi
 	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Apr 2024 14:00:03 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-345600106d3so2840235f8f.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 06:59:58 -0700 (PDT)
+	Wed, 10 Apr 2024 14:02:21 +0000
+Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-34175878e3cso4839233f8f.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 07:02:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1712757597; x=1713362397; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1712757737; x=1713362537; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=g67OSHlwNTDKaFrM3/uwoPsdE8uUwCxkLF5hYguHcs4=;
-        b=XThBWSBIcBXPgiU0znAph3JTckJ7aHkL1bpNzWboc3aZOypdmiH7DArz1WMHeWWT1n
-         6+KrcufLccFbNT9aiwVko04XyFsEBETeOB/QKgSVQa7pO2ilnofu8QhQFhOeCN88fbtm
-         hT8iqHeTiJEE0ZiwlJC9IGzQTQNS0aJC3f4o+dWCTMP7lr0y8p3+1j376Zn18Kq3L8JP
-         Jyp28J7D1A4x/rvB+Mk02HR439V5ato0dtWQIfVzzeMQOA0A9uqFdrCjeWpb4b/gGJEs
-         8EBmM0c2CQKFFMhi4pQPa92W4IiAOu9fYNKtwg9A/uu5FPDu/hrnuanz89fCR/dfVqfo
-         fAtQ==
+        bh=VMjbesMdn+qtLdaftXdet62uuV9p5A/VNrKt/cHgu0g=;
+        b=rk9MTrkhkYv2XuacFyYZyQKO9yNHKaLZ4Tl9w9SrN1qw44xnhk1rynRhfvg1QI21eI
+         Qi8EABzBBNYBTzTpUbPs7mPpxToBmaiFWV+0nCUglMMJBHAEPCkGbnt2RpKFSwLZzPHK
+         UnFVTvNHTJ14ghlpyp1JUHSDVvk2w8vPt4S18SJFIGgmuy9FZfDCNeL00msPvZwOBpUa
+         As+n8FwAfRJPcA5Qc7Uc0umnR0ntE9hoILr3yQnVrdBX1ZUed0CfQFeLlOVDmGwVD50O
+         9nuP/bBvCUHZQsGg1iNm7F9PdBOlotG3QtvMXHAPlFSJguJX5QxOz9Z5GPEchQ5zdw/l
+         YPyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712757597; x=1713362397;
+        d=1e100.net; s=20230601; t=1712757737; x=1713362537;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=g67OSHlwNTDKaFrM3/uwoPsdE8uUwCxkLF5hYguHcs4=;
-        b=B1fyxGNd3FZj4ftI7XJsxMd10BY1oD+jCQFZbcxIvub2mGCDHZGNXKJi6LbqiOK7Ut
-         jT71jGGe3R/WjMyhYBsXmX+PYkWTBnm++xwiZmeSzYeCjhh6CqVyb2lZca4lteMrhkgF
-         AQMdq0NXsVlEHY5DSCxTt2mBJkScWbbxko6kp0drxAJbVwlR5bGEFbZjlZpqWW9rk0hM
-         PClZAi5wKMXsTKWyLABpc/rK2sTtoE/mQ+4Z1JX0O5dipET+QeN0S+vJcj8XAHGH38MD
-         F8YZ9CrXa0Z74Nv8mXVkYmq194rWm3ia4Mm3Ou+P+o7lKW2HE47IVCuoIivTmsLj3yKJ
-         MGBQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXjvBl0GAeqZZ6lBVu4ufpzl+eTLUmXriVDC0kqGRuiJyoOVRPh4+Rk7G+OLB0eu4OW/LQP2N3FTNZS08xiraI/tfZrLElwMYoEtKCWg5I68/7w
-X-Gm-Message-State: AOJu0Yz3VisDYbv73FQSHfDTTFtM8suBJL7vndnu/I3nV6lMyw1jXtTx
-	3HJAI/dlpHWH+iLec7xviH2hYJ8vlM9sf3oRNmlUiFNdoP3OEkKm6QZAy11QBt8=
-X-Google-Smtp-Source: AGHT+IGRtn6DL2DEemnsBxsmvHHTd4nWEQsASvLDi6kfhHaIx+DPnIFaevFeAdtATqfu2OGeHdeMQw==
-X-Received: by 2002:a5d:620c:0:b0:343:98ee:524 with SMTP id y12-20020a5d620c000000b0034398ee0524mr1624742wru.36.1712757597439;
-        Wed, 10 Apr 2024 06:59:57 -0700 (PDT)
+        bh=VMjbesMdn+qtLdaftXdet62uuV9p5A/VNrKt/cHgu0g=;
+        b=pgom/1jUf5j24mlPbs45d693wNQlu7TcyNPZHDDiZXuTyNa90uTruh5WYMqG5m/f1G
+         MsI3/N/46OEsfgpPDmrOswGZVI6Myo9oQJnNZIrqKQh/vM67E/D7BXFgJm3GDqWAfeES
+         6IcV28dTKEB/QvypOhTscPKCLIX1GHKg5lLZTdEBYo1usWoD/L2qf3hVzyY+KefOprrJ
+         dPJh15Zla1HErSggvZs3Mh5ibmUvRxMoaEJBiD0OdCFJ7DyUepCOQoRBKUBd+H5hwtYb
+         6rKnUhp4KC885u1CbEsb9RSA6oQLxBtwXdj7IScQTKDz0YZ/dVCx8Bk57kkSFqqjZY/M
+         6PgA==
+X-Forwarded-Encrypted: i=1; AJvYcCVI2ZxVLi+lgWxWLmKTEGjUMfUz3pMkido4Y5YG//hZPtB7ozU8z+DCZ59pZoUEdmozZcV5UkDtd4IfoZ0EBGq6NQpDUF3m8qu+GcON5OqFMHRf
+X-Gm-Message-State: AOJu0YytmJcpg5fIpH9SLajQAFuRKAaPJ/ZYqx8bLup2honIYkt9rpW4
+	OhermPBl5YwW6o1Qnk+relWlTetvAjgbUO8QfshPNdnRTgl2RiSTh+JwCx01qVs=
+X-Google-Smtp-Source: AGHT+IHDRsDMr0SXIA1BZFJa3MxdxnnQmiYZftYqYOsfFpe40vWDa1uC6IrsGh3VJIa1HBNRB3jl0Q==
+X-Received: by 2002:a5d:628d:0:b0:343:bccb:dbbb with SMTP id k13-20020a5d628d000000b00343bccbdbbbmr1888712wru.12.1712757736649;
+        Wed, 10 Apr 2024 07:02:16 -0700 (PDT)
 Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id j15-20020a5d452f000000b00343e825d679sm13385379wra.87.2024.04.10.06.59.55
+        by smtp.gmail.com with ESMTPSA id w5-20020a5d5445000000b003439d2a5f99sm13761613wrv.55.2024.04.10.07.02.15
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 10 Apr 2024 06:59:56 -0700 (PDT)
-Message-ID: <cf0184c4-2b3e-4074-9e30-bf65ec7f0aaa@baylibre.com>
-Date: Wed, 10 Apr 2024 15:59:55 +0200
+        Wed, 10 Apr 2024 07:02:16 -0700 (PDT)
+Message-ID: <50bf4fb6-7ad8-40b7-ad95-c1fc5e292149@baylibre.com>
+Date: Wed, 10 Apr 2024 16:02:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 05/18] ASoC: mediatek: mt8192: Migrate to
+Subject: Re: [PATCH v4 06/18] ASoC: mediatek: mt8186: Migrate to
  mtk_soundcard_common_probe
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  broonie@kernel.org
@@ -88,15 +88,15 @@ Cc: wenst@chromium.org, lgirdwood@gmail.com, robh@kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  kernel@collabora.com
 References: <20240409113310.303261-1-angelogioacchino.delregno@collabora.com>
- <20240409113310.303261-6-angelogioacchino.delregno@collabora.com>
+ <20240409113310.303261-7-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20240409113310.303261-6-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240409113310.303261-7-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_070000_503820_4617703C 
-X-CRM114-Status: GOOD (  13.09  )
+X-CRM114-CacheID: sfid-20240410_070219_669243_D6092A26 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,87 +111,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
 On 09/04/2024 13:32, AngeloGioacchino Del Regno wrote:
-> @@ -1211,52 +1196,85 @@ static int mt8192_mt6359_dev_probe(struct platform_device *pdev)
->   		if (dai_link->num_codecs && dai_link->codecs[0].dai_name &&
->   		    strcmp(dai_link->codecs[0].dai_name, RT1015_CODEC_DAI) == 0)
->   			dai_link->ops = &mt8192_rt1015_i2s_ops;
-> -
-> -		if (!dai_link->platforms->name)
-> -			dai_link->platforms->of_node = platform_node;
-> -	}
-> -
-> -	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
-> -	if (!priv) {
-> -		ret = -ENOMEM;
-> -		goto err_probe;
-> -	}
-> -	snd_soc_card_set_drvdata(card, priv);
-> -
-> -	ret = mt8192_afe_gpio_init(&pdev->dev);
-> -	if (ret) {
-> -		dev_err_probe(&pdev->dev, ret, "%s init gpio error\n", __func__);
-
-I don't think __func__ is necessary.
-
-> -		goto err_probe;
->   	}
->   
-> -	ret = devm_snd_soc_register_card(&pdev->dev, card);
-> -	if (ret)
-> -		dev_err_probe(&pdev->dev, ret, "%s snd_soc_register_card fail\n", __func__);
-
-I don't think __func__ is necessary.
-
-> -
-> -err_probe:
->   	of_node_put(headset_codec);
->   err_headset_codec:
->   	of_node_put(speaker_codec);
->   err_speaker_codec:
-> -	of_node_put(platform_node);
-> -err_platform_node:
-> -	of_node_put(hdmi_codec);
-> +	if (hdmi_codec)
-> +		of_node_put(hdmi_codec);
-> +
->   	return ret;
->   }
->   
-> +static int mt8192_mt6359_soc_card_probe(struct mtk_soc_card_data *soc_card_data, bool legacy)
-> +{
-> +	struct mtk_platform_card_data *card_data = soc_card_data->card_data;
-> +	struct snd_soc_card *card = card_data->card;
-> +	int ret;
-> +
-> +	if (legacy) {
-> +		ret = mt8192_mt6359_legacy_probe(soc_card_data);
-> +		if (ret)
-> +			return ret;
-> +	} else {
-> +		struct snd_soc_dai_link *dai_link;
-> +		int i;
-> +
-> +		for_each_card_prelinks(card, i, dai_link)
-> +			if (dai_link->num_codecs && dai_link->codecs[0].dai_name &&
-> +			    strcmp(dai_link->codecs[0].dai_name, RT1015_CODEC_DAI) == 0)
-> +				dai_link->ops = &mt8192_rt1015_i2s_ops;
-> +	}
-> +
-> +	ret = mt8192_afe_gpio_init(card->dev);
-> +	if (ret)
-> +		return dev_err_probe(card->dev, ret, "%s init gpio error\n", __func__);
-
-I don't think __func__ is necessary.
-
-> +
-> +	return 0;
-> +}
-
-Beside that,
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+> Add mtk_soundcard_pdata platform data for the MediaTek common sound card
+> probe mechanism, including a driver/soc-specific probe extension (used
+> for bits that cannot be commonized  hence specific to this driver), and
+> change the probe function to mtk_soundcard_common_probe.
+> 
+> This is also adding the possibility of specifying the links and routing
+> with the audio-routing property and (x)-dai-link nodes in device trees
+> to stop hardcoding machine specific links in the card driver assupported
+> by the common probe function, but support for legacy device trees is
+> retained with a legacy_probe function, which is used only in case the
+> new properties are not found.
 
 -- 
 Regards,
