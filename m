@@ -4,94 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61984CD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 17:52:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84E19CD11C2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 17:55:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8EH9Pxm+MZUB9uIJB2EAX8UISWeLkvrbIq4NwMfK/no=; b=1ylyPT/qpMZDAluxsqy9Tkt4K1
-	mxJhv2Yses3dcahmxBPiKDcKcmv/vkzqln35Y4iFGUfLbSzwtEJXOajbXzCSL31vdEnONvlxYwYwK
-	gKtmwxD22oVwyQxdlpFHGL8u9vaqPbgWBzvC7yPgzqCS61ToKKZ51pkpkdZegNSG39H2PUKSlWKtm
-	p8F/ANZCZUekCimhXnDSSgRENxXcYg+1jojwpk1sed5LPu701CRtJLMdxUNbQJua9GDG/fLuHXPs+
-	A/jd03Fk8K5Mew2ItjZCNYYW5+26GXbCr79Pe8Ovez9TBBfZWKrfoUoBuBSEIqop+nGIBmHz2dbjS
-	/jtjV4Bg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pOn8Y7B0svAU9nH6ugnWGI3EdoXyOnTv5sgTv1vAn8o=; b=h720LxD8Vse94TXu0LA233P5kG
+	E88M6MUJ/deRYIxGf9Ul+Tny98+nOMAn9I46nCYwOZ893otrgJ0xqemCqKHTvsVA12i3e6matwySb
+	pHMreTjT9MvlPQPVSL7TNxdXUNSV3ZvpYZgETsY5vlqIFIbVyw7BOam4/1Pywto2mSRfc84g3a9tg
+	0NYuT0PepzJhnT7dikJ2WsTz5MrfzHhQEeRzmWY3cyP4d/o+afSKvUlc0oo0W6BfJ0sy4zmZ3L914
+	THmTh/Z619OQxW+Jm8UEjS9Di70lHv8CgQZ1IeX7bsre6H3Md96P0Km5DIbqbnrCVrhT1EXw12mTO
+	lIR7fU3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruc7E-00000008MLV-35qr;
-	Wed, 10 Apr 2024 17:52:08 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1rucAq-00000008NIk-3OTM;
+	Wed, 10 Apr 2024 17:55:52 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruc7A-00000008MFK-3qfa
-	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Apr 2024 17:52:07 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-516cbf3fd3dso8128331e87.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 10:51:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1712771512; x=1713376312; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:to:subject:user-agent:mime-version:date:message-id:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=8EH9Pxm+MZUB9uIJB2EAX8UISWeLkvrbIq4NwMfK/no=;
-        b=hf5PZAhn3Ods4TWyzLQ5eC8APxBIesRFiAwI3Ya/8CkOnOqPzuZ1WDx5W62mXqMsl3
-         plSxkYkxk3xRq8tD/BxDDEs8eiN6UcU3rcZCpxHSu6IJttmuidfDmH2Sq6XJww11299i
-         EKgLTuRLswhE8z16EIKt88uUJYioXGwzldmG7/5qINUZNZ474JftJ/qCgXLaWyDljQKa
-         U2KkJHSl6ReeWShxXXQ9X/WbI+F2ej8NowTHhPku2NeMBpFkZRbeiwgFFic9wq6wjRel
-         pJis0Vvv091N61VQVBCba8eZadClBzPji8FC9RYjJmhB4G24LLsLlUd9T2W3PP0PbA6D
-         YWnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712771512; x=1713376312;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=8EH9Pxm+MZUB9uIJB2EAX8UISWeLkvrbIq4NwMfK/no=;
-        b=hEQSMwzwOFxEXJpqP5UG88Cn/NxpNF95pypiaI7q/TV0k7kn5nXKRY1tYmESModN25
-         8IHdgHuSrLfeiGge9Q4tKAGK5V8rwBTVfUQ6B3y7JmmIwb1UVpykD0hrpneatmxBvPP0
-         DuQr06P0V4f/rkVF02AcbbMzvvO2YmKO+D7ly88lPhfXyjp0olNtxphFm+sMkx9OTb3d
-         XEoXlSCFY2FqCBb2/3BthjiAGkf66YNtIe1hbENJvoLhS5+Ud54d9lo0WzJsKSdl0+Of
-         sjEMUCXthgF4Fu1Wf2/GQGerHO7am5hyhsDMdKBPKugEe/MRonLdojCgaBl8pbCXuNZ2
-         E22Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXL0yuHjHiHuDyjgNP2c234i6arsvLFjGowQSY86eEI7Ml+6sk7dU8QRoBL5Uaht7KHppNtMx1Sq3LMnQNC5c/E1R1iHzATCHQTvu0Xwgk5DULW
-X-Gm-Message-State: AOJu0Yxeo6AmB1Ez7xBNA2VpL/HHGhFhJqvXJTEsOewj7GiEm+OjZ9La
-	+XxMuGXQUD4yRAUxP/d0uGlIg43SDQYBGX7UdA4/snF82RkCgdMpGSj6tdwTnts=
-X-Google-Smtp-Source: AGHT+IFEmuU/yIHrAY8NuucyCaQFKu+VnZxGulNdN7KpD4j1m+7zPUv7hS0ZitZBToM3exxMIntetw==
-X-Received: by 2002:a05:6512:2c95:b0:516:c600:64e8 with SMTP id dw21-20020a0565122c9500b00516c60064e8mr2674529lfb.1.1712771512162;
-        Wed, 10 Apr 2024 10:51:52 -0700 (PDT)
-Received: from [172.30.205.26] (UNUSED.212-182-62-129.lubman.net.pl. [212.182.62.129])
-        by smtp.gmail.com with ESMTPSA id x26-20020a19e01a000000b00515a87668a1sm1905343lfg.77.2024.04.10.10.51.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 10 Apr 2024 10:51:51 -0700 (PDT)
-Message-ID: <3ae3891c-32cf-450c-a68d-0f80f9192bea@linaro.org>
-Date: Wed, 10 Apr 2024 19:51:45 +0200
+	id 1rucAi-00000008NDB-1XWc;
+	Wed, 10 Apr 2024 17:55:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 37D6361E0A;
+	Wed, 10 Apr 2024 17:55:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8713FC433C7;
+	Wed, 10 Apr 2024 17:55:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712771742;
+	bh=dn3s9v+ugyPIbkJ82h/zTt6Aiku1UOONkbAxvrR7jyA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=YpUzsLSGnL5sS1FPnbAHM+SupDJSYxEEhgxEXj/LIJrVoazOecimqvkwlMp/t5gpz
+	 o91wT8i8WD1ZZbuBSACUvKLBe6clAAnDzFYVDT6fk7nxnaGOgy/lXWLfQH+fi0lJLB
+	 z8hmwmaKhAiBHMSC0vAR4C7GuRooP4Z33TKH0BUGNCxbnqltNkzFfk7y3VMzTIMXfe
+	 PI/XPibfx+hhhGRQumNTUvoPYuff9ZgSlCnUjG6Kav98xRFY6exPQd4ScbYn4tdJIY
+	 LHHOXgAjpI6EUH5zBHSbyoOlKWZzoKUTt5K4Tjb7Go4tL3CrnVYgvvNd1GF3z7kBQg
+	 MHLNVbkrGV+oA==
+Date: Wed, 10 Apr 2024 12:55:40 -0500
+From: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Jim Quinlan <jim2101024@gmail.com>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Will Deacon <will@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Srikanth Thokala <srikanth.thokala@intel.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>,
+	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Mark Kettenis <kettenis@openbsd.org>,
+	Tom Joseph <tjoseph@cadence.com>,
+	Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Thippeswamy Havalige <thippeswamy.havalige@amd.com>,
+	linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 3/3] dt-bindings: PCI: host-bridges: switch from
+ deprecated pci-bus.yaml
+Message-ID: <20240410175540.GA802090-robh@kernel.org>
+References: <20240407102000.37213-1-krzysztof.kozlowski@linaro.org>
+ <20240407102000.37213-3-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/5] pinctrl: qcom: sm7150: fix module autoloading
-To: Krzysztof Kozlowski <krzk@kernel.org>, Dong Aisheng
- <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
- Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Linus Walleij <linus.walleij@linaro.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Sean Wang <sean.wang@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- zhanghongchen <zhanghongchen@loongson.cn>, Yinbo Zhu <zhuyinbo@loongson.cn>,
- Bjorn Andersson <andersson@kernel.org>, linux-gpio@vger.kernel.org,
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org
-References: <20240410170150.248428-1-krzk@kernel.org>
- <20240410170150.248428-4-krzk@kernel.org>
-Content-Language: en-US
-From: Konrad Dybcio <konrad.dybcio@linaro.org>
-In-Reply-To: <20240410170150.248428-4-krzk@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240407102000.37213-3-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_105204_993078_7BF04DC8 
-X-CRM114-Status: UNSURE (   6.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240410_105544_599168_81EDF319 
+X-CRM114-Status: GOOD (  14.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,18 +117,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 4/10/24 19:01, Krzysztof Kozlowski wrote:
-> Add MODULE_DEVICE_TABLE(), so the module could be properly autoloaded
-> based on the alias from of_device_id table.  Pin controllers are
-> considered core components, so usually they are built-in, however these
-> can be built and used as modules on some generic kernel.
+On Sun, Apr 07, 2024 at 12:20:00PM +0200, Krzysztof Kozlowski wrote:
+> dtschema package with core schemas deprecated pci-bus.yaml schema in
+> favor of pci-host-bridge.yaml.  Update all bindings to use the latter
+> one.
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> The difference between pci-bus.yaml and pci-host-bridge.yaml is only in
+> lack of "reg" property defined by the latter, which should not have any
+> effect here, because all these bindings define the "reg".
+> 
+> The change is therefore quite trivial, except mediatek,mt7621-pcie.yaml
+> binding which have children nodes being also host bridges, apparently.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > ---
+>  Documentation/devicetree/bindings/pci/amlogic,axg-pcie.yaml   | 2 +-
+>  Documentation/devicetree/bindings/pci/apple,pcie.yaml         | 2 +-
+>  Documentation/devicetree/bindings/pci/brcm,iproc-pcie.yaml    | 2 +-
+>  Documentation/devicetree/bindings/pci/brcm,stb-pcie.yaml      | 2 +-
+>  Documentation/devicetree/bindings/pci/cdns-pcie-host.yaml     | 2 +-
+>  Documentation/devicetree/bindings/pci/faraday,ftpci100.yaml   | 2 +-
+>  Documentation/devicetree/bindings/pci/host-generic-pci.yaml   | 2 +-
+>  Documentation/devicetree/bindings/pci/intel,ixp4xx-pci.yaml   | 2 +-
+>  Documentation/devicetree/bindings/pci/intel,keembay-pcie.yaml | 2 +-
+>  Documentation/devicetree/bindings/pci/loongson.yaml           | 2 +-
+>  .../devicetree/bindings/pci/mediatek,mt7621-pcie.yaml         | 4 ++--
+>  Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml | 2 +-
+>  .../devicetree/bindings/pci/microchip,pcie-host.yaml          | 2 +-
+>  Documentation/devicetree/bindings/pci/qcom,pcie-common.yaml   | 2 +-
+>  Documentation/devicetree/bindings/pci/qcom,pcie.yaml          | 2 +-
+>  Documentation/devicetree/bindings/pci/rcar-pci-host.yaml      | 2 +-
+>  .../devicetree/bindings/pci/renesas,pci-rcar-gen2.yaml        | 2 +-
+>  .../devicetree/bindings/pci/rockchip,rk3399-pcie.yaml         | 2 +-
+>  Documentation/devicetree/bindings/pci/snps,dw-pcie.yaml       | 2 +-
+>  Documentation/devicetree/bindings/pci/ti,am65-pci-host.yaml   | 2 +-
+>  Documentation/devicetree/bindings/pci/versatile.yaml          | 2 +-
+>  Documentation/devicetree/bindings/pci/xilinx-versal-cpm.yaml  | 2 +-
+>  Documentation/devicetree/bindings/pci/xlnx,axi-pcie-host.yaml | 2 +-
+>  Documentation/devicetree/bindings/pci/xlnx,nwl-pcie.yaml      | 2 +-
+>  Documentation/devicetree/bindings/pci/xlnx,xdma-host.yaml     | 2 +-
+>  25 files changed, 26 insertions(+), 26 deletions(-)
 
-Reviewed-by: Konrad Dybcio <konrad.dybcio@linaro.org>
+This implicitly bumps the minimum version for dtschema. That's fine, but 
+it should be explicit since we set it explicitly.
 
-Konrad
+Rob
 
