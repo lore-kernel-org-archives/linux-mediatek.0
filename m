@@ -4,104 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F4BCCD128A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 21:26:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27745CD1297
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 23:36:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=GwOIhXwW0llbrkx26mM45jJsw5Fpbm/h/tfb+7j2znU=; b=rNCDW0KZAeWkhm
-	vTQwy3d4rMzTsDiA6rv9KVBhHuPTfFj0FjE/qeR733sRVD/O7hq1NYpcrGmlbyzCGaRPmTJaSUgnQ
-	jsWGiKedPdrDOwHFRh4NTc9jTNEeQKWnEGZP1YipZ/ePx5TySPIkzFqT9Skoa3zZSrZFKA+nL1x0v
-	vYQro69B5RBXYoFcgjiLQV8bCLcSn0OE7uYkicZvfsNfMtrl+Lo/5TTI+NkORhDHLmnLL9YoxJFuA
-	3VY0h5w2+0lPMA7TtimTGfThhXbGeekZ+E9CnZ2EZU0avtKMI1HiS2KNYM3bDT/ybNyhfsdCQQzlJ
-	teCpqBbADUHnkAwDVHxA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RCiwuhJlcdVymL9iabF0uqiMDb2CibrCH2dP3vtwOxM=; b=y8dsLdddOkjoiXZBHu4M+ixqU9
+	HJNNblQg+oeF+uweQRCQRdYdHbJaem9Y+nuXQbaRvZ4/ngzQW8B6WKEabH524Fj4WKFd2DuRUmIkK
+	QElp5JT46ANPSqMxHHhIgm1Kq0X1agdJd7c1O+qCNCnJWYpAsN7H9Ya9tPvwqfghAOGFhS6f5YWk8
+	RqZMUQ08MK8O2fkeRaKUd8e6SCvPGngbdI6ai3vFOAKBr4hIPDpmX/FNkNx9AtxenbbSKFv9sAjqQ
+	D9j4HUYURSGvdhHy8VCPkQMVb4N1u4cNy/5c9fZJL0KulWSWHkzY+khyNjJD738LarHlrKQa/wRFc
+	AOSj58yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rufSv-000000090pM-46wv;
-	Wed, 10 Apr 2024 21:26:45 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ruhUM-00000009U8I-1TOS;
+	Wed, 10 Apr 2024 23:36:22 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rufSr-000000090ne-2pb7;
-	Wed, 10 Apr 2024 21:26:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DEA0161D0F;
-	Wed, 10 Apr 2024 21:26:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2D5B8C433F1;
-	Wed, 10 Apr 2024 21:26:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712784400;
-	bh=ZHY0Qb2p6hZj2F9UUpHFyF1+cCJBE7U8HaVGMIWgfJQ=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=X7uw442UbgIpqeMvt0lGFcXg86xEWI2esbZmYrlcuSZ0IHUAEfYztCnABCY3OWfcN
-	 qha3LHFaAPenRfxa13l39CP+7GGIX0nvuojS+bJEjDEo/05E+SEw4/981rCoRB7mZ8
-	 AiCC0TmbExTNmCkcQyOEEymnER7zgHtneM1Ex3ay5q4H0OOK9cRxPP9m9yKRxq/6Zo
-	 Kd9xqDj2EzKSRE0wcXWJAeACN6Slg9b5ZPc42hYpHHJ/9g/3XlaGWpH6fKTo1jFdGv
-	 wtWzLc4tD0iN1BOu/0zmhzyFLK8qGFJjMIMUEWb18MkFUt8L+lqhYbq+ugp0UKiIGb
-	 RxRImDtJqxM1w==
-Date: Wed, 10 Apr 2024 16:26:38 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Jim Quinlan <jim2101024@gmail.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Will Deacon <will@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Srikanth Thokala <srikanth.thokala@intel.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Marek Vasut <marek.vasut+renesas@gmail.com>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>,
-	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Mark Kettenis <kettenis@openbsd.org>,
-	Tom Joseph <tjoseph@cadence.com>,
-	Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Thippeswamy Havalige <thippeswamy.havalige@amd.com>,
-	linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 2/4] dt-bindings: PCI: mediatek,mt7621: add missing
- child node reg
-Message-ID: <20240410212638.GA2159326@bhelgaas>
+	id 1ruhUH-00000009U7N-3YAj;
+	Wed, 10 Apr 2024 23:36:19 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id 98e67ed59e1d1-2a2bcc0c075so1899334a91.0;
+        Wed, 10 Apr 2024 16:36:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1712792176; x=1713396976; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=RCiwuhJlcdVymL9iabF0uqiMDb2CibrCH2dP3vtwOxM=;
+        b=kUPHHyQ2ylz1BhsGYoyKf7UCxe1LZdi/cS4k7Ueo3dTMwVtSlgpa55b5F0Gru03uGu
+         6hqhDSSSyrH9aoE6Ms+e/w8Lm0whK9O6DL8B9ZjoOwA4JDbhbwjXV0HLHc89TGGr8d5b
+         Gx5puE7Y7bYoUq89h96f3lSy1k5gaO1jLyHzUL+sCFUAMYV51LxA0LCdKw5FWf015vi9
+         9XeXl4nylnEmr1WAkYbiONXmQRvtQ3zhNF26bkpJgtG79/4esUHIaVzj+viw6nbVJkR8
+         0JT3r7OZOdLOiso1SexZvEkLz6v021zi0vin7OCWQk8uoqVz3OdrIWggCVx8Qa1xWXmm
+         qPPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712792176; x=1713396976;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=RCiwuhJlcdVymL9iabF0uqiMDb2CibrCH2dP3vtwOxM=;
+        b=HrnAF2aqaMgOa5DEFZsKmdOzQr5cYHZ0BH7/KfjwJyQumiUxnNCsaFl0iC03PVw81B
+         Msf/JXIn4yTzDpqKOTrphEqZN25wfmNV2IPZBwGhKGRyqI88l/uZPEFSerMChNiBYLsF
+         sLaqVasCccxio628m+fyuuWh4b3MbCrTHjFoVUrZuiIzhQzh6IgqtnatajbShUYcFW9d
+         yTgNzol6YVThvah1Z3w721M7jsGG2NnyDxETxuFkJ1dN3jco4/LPTpeTtj4syzSozM3c
+         Az06L391V1MtvBuATTOoS81us2oKcf+kxjgTYaTuY4v34xC91PSIWHA1mXZnvM+TqfMF
+         aPBQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXDHSo0FnsR5rBzxvwh5ESrQ+/UwC6E8qqRDqBnOUDgOfMEA3vGB3TCIn6OcMBzDMv//q7c0pmL961/RPnTs+q/yRKgJVYJfo7zSbELEQ7oRKI1149OBBUhdro+RO0UyMe6XO2Y07Gj0u2fwxhwA18k8WWsZ1GO1As=
+X-Gm-Message-State: AOJu0YwRoPnwbwbFOWozRFsDlYvX7olZSgYiBPHdmGtRamKwhs5ktpyK
+	07jPEVYRV63Oqgg8ZX1Fj+49Dkl3bydz8e2Vu608gPkwQ1Qtc/SLr039S0GCpbQFxIHQsdeQYT2
+	Wo2EPzKQirmdnuFa+2sjyKf5fQKo=
+X-Google-Smtp-Source: AGHT+IHvxfBW1enUR1DnNYuaYxnKs9tO+hdbg0i47Qw9mY6cM7ho7vYbzxgiD/vaxzb1WdMzDzxpTGcfy4AZCrqiLA0=
+X-Received: by 2002:a17:90a:4688:b0:2a2:6757:1de0 with SMTP id
+ z8-20020a17090a468800b002a267571de0mr4070054pjf.4.1712792176144; Wed, 10 Apr
+ 2024 16:36:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240410181521.269431-2-krzysztof.kozlowski@linaro.org>
+References: <20240410170150.248428-1-krzk@kernel.org> <20240410170150.248428-5-krzk@kernel.org>
+In-Reply-To: <20240410170150.248428-5-krzk@kernel.org>
+From: Fabio Estevam <festevam@gmail.com>
+Date: Wed, 10 Apr 2024 20:36:04 -0300
+Message-ID: <CAOMZO5DFr8uhVRq8X+ZURCCAw4bLM4Ueaerr-gw554sFr+KLKw@mail.gmail.com>
+Subject: Re: [PATCH 5/5] pinctrl: realtek: fix module autoloading
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Dong Aisheng <aisheng.dong@nxp.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Jacky Bai <ping.bai@nxp.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Linus Walleij <linus.walleij@linaro.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	zhanghongchen <zhanghongchen@loongson.cn>, Yinbo Zhu <zhuyinbo@loongson.cn>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	linux-gpio@vger.kernel.org, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_142641_822836_82339894 
-X-CRM114-Status: GOOD (  19.51  )
+X-CRM114-CacheID: sfid-20240410_163617_929847_2E51E045 
+X-CRM114-Status: UNSURE (   6.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,51 +98,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 10, 2024 at 08:15:19PM +0200, Krzysztof Kozlowski wrote:
-> MT7621 PCI host bridge has children which apparently are also PCI host
-> bridges, at least that's what the binding suggest.
+On Wed, Apr 10, 2024 at 2:02=E2=80=AFPM Krzysztof Kozlowski <krzk@kernel.or=
+g> wrote:
+>
+> Add MODULE_DEVICE_TABLE(), so the module could be properly autoloaded
+> based on the alias from of_device_id table.  Pin controllers are
+> considered core components, so usually they are built-in, however these
 
-What does it even mean for a PCI host bridge to have a child that is
-also a PCI host bridge?
-
-Does this mean a driver binds to the "parent" host bridge, enumerates
-the PCI devices below it, and finds a "child" host bridge?
-
-> The children have
-> "reg" property, but do not explicitly define it.  Instead they rely on
-> pci-bus.yaml schema, but that one has "reg" without any constraints.
-> 
-> Define the "reg" for the children, so the binding will be more specific
-> and later will allow dropping reference to deprecated pci-bus.yaml
-> schema.
-> 
-> Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-> Acked-by: Rob Herring <robh@kernel.org>
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> 
-> ---
-> 
-> Changes in v2:
-> 1. Add tags.
-> ---
->  .../devicetree/bindings/pci/mediatek,mt7621-pcie.yaml          | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml b/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml
-> index e63e6458cea8..61d027239910 100644
-> --- a/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml
-> +++ b/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml
-> @@ -36,6 +36,9 @@ patternProperties:
->      $ref: /schemas/pci/pci-bus.yaml#
->  
->      properties:
-> +      reg:
-> +        maxItems: 1
-> +
->        resets:
->          maxItems: 1
->  
-> -- 
-> 2.34.1
-> 
+You forgot to complete the sentence.
 
