@@ -4,75 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1097ACD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 09:00:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F09ACD11C2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 09:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=PFhJxH4CaslXbdhzI7BUJ/XXbZzgyd0FQyEp/joVvY4=; b=Um8ljS+idt1LZF4+1staqRC+Y7
-	6QioxGtmKEylTSBrvs9SJ/4WEQ9teWgKnCM49MkI5Z5R4k7twDuyYwJbabFgVNS5rDI7gbkoTnXbB
-	J4+p6XRt4zsRbZAnNLqP68sudubVsHjzPpl22KqHdrkqOdEs+C2B9T5ioz+/tquUfyHmIn+qJhgnf
-	qOsH/HkEghwWe95McXSrQ5ZRUGbC1mmOyYdK7vyZkpv5HazSEr2+NMJbt17lXQFFr2TxUmQc6GEgw
-	qACKU0IkQkwlkjeyTtm93O2pa0row/ya8lVKQqcaPkWwaDMJsnYSE0uNem6TGXeqY6YNhgN3j6Dvh
-	/NQJwHdA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O6XERnHnMwc1UPkJwA7M4dMe8kK/+Z7/oP46jzawayI=; b=qKDzw5tpGsIq8r7cAFpfWo1RNM
+	+lHZFv3Z3ZBXklTB7ehnLLOndg3HC6BFtwiWVebs7ek1JfBeNWTtreUMByBD/nxSBLR6/wlva99S0
+	Sa2uIUTH/l764kM3qpSbP+8fVljF1GqX0HPWG1FwtcYEGcdwJxafqcNAYIcvuHbIBNsWWZ5eRGLgW
+	OqYzzquHZBDbm1cs7sKVSCw85N4yRailmRlQDIEjAEgpUDamNbMM32/0+XDk9NynWdAulGQYe89HE
+	dcmmyNBlmdmy5023jxW7NsWejZkglhcNBFSdDj1wyB6sQ61SmKN1BySLa3OFjpR0H1MsGYtZkiYf9
+	nmtLvmHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruToM-000000061EK-0Z8E;
-	Wed, 10 Apr 2024 09:00:06 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ruU8c-000000067HF-3LUQ;
+	Wed, 10 Apr 2024 09:21:02 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruToJ-000000061D7-0181
+	id 1ruU8Z-000000067F6-497L
 	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Apr 2024 09:00:04 +0000
-X-UUID: b29aeec8f71811eeac1957ae9f99f617-20240410
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=PFhJxH4CaslXbdhzI7BUJ/XXbZzgyd0FQyEp/joVvY4=;
-	b=PsKIy8AUTl3gSNLi42+KIlLHD+S/jqE0ZtoFhuhQT0ILFklSxd0CEWORlX+L5yxc3GHAqXg+F5nGrbUk+asqXxTWaDDNaZbiaCos9dK9OZxFdX/d0RD3LqWOa/E6MOWbTeGMhVo/v5j3GKb81MVyActRZjwe1MfIxVs7261gkVk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:8d33c05c-7e5d-4792-a0d6-eae1ee7d29b1,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:62d18182-4f93-4875-95e7-8c66ea833d57,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: b29aeec8f71811eeac1957ae9f99f617-20240410
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <quan.zhou@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1255293778; Wed, 10 Apr 2024 01:59:54 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 10 Apr 2024 16:59:51 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 10 Apr 2024 16:59:51 +0800
-From: Quan Zhou <quan.zhou@mediatek.com>
-To: Quan Zhou <quan.zhou@mediatek.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo
- Bianconi <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Shengxi Xu <shengxi.xu@mediatek.com>,
-	Hao Zhang <hao.zhang@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7921e: add LED control support
-Date: Wed, 10 Apr 2024 16:58:51 +0800
-Message-ID: <b376f88ab9fd69a5e4ba4bbd2c9fff3ef53b8968.1712735769.git.quan.zhou@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	Wed, 10 Apr 2024 09:21:01 +0000
+Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2d87450361fso56422031fa.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 02:20:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1712740857; x=1713345657; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=O6XERnHnMwc1UPkJwA7M4dMe8kK/+Z7/oP46jzawayI=;
+        b=njUwQQFD5qdo3bQiCIRGvokVMXmFe3QkL8f+enRH/QfpnUqalpOJYG9G5kN06Em9Eq
+         KAB1ibl/Lk8dexfd/Dh23C8b0QJsn1au8ysLKFXw1x//ndfVlPQ33Eo/xd704pd4S/2u
+         amyZWPiTS6I79vYu0FpEBpmolyqgIBjARviAo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712740857; x=1713345657;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=O6XERnHnMwc1UPkJwA7M4dMe8kK/+Z7/oP46jzawayI=;
+        b=q3Mt152ixB+f8Z7ptGhhwb9M0t4A0EayWZtFb6/bzT6CUDl0QBQgNTnqMruqFH1u3c
+         PDMcRtxsSXIa40uUnMmR9xGbr2mBSuhGY29tn4noagvs0uFQ8cgQySConMPNTwqSj6vQ
+         jcLkxMWguBllLtFSF+WMY22SUreb4GGqYl0sSk64jAP3FH5wuTa8rc8G+wh4NYAh1gvh
+         GlRlXcIIFo6+KLhpYpTs99QcaQRDsnUO046+WG6kBD5detuRdjNK5W+9aY5Y/JO/qn0s
+         K6L6f6ws619g6/d7Ufri6JEbc7allYLItD13oqxDmRpFjcZN4PfrfRooIN62rIawj1UW
+         5dIg==
+X-Forwarded-Encrypted: i=1; AJvYcCUexO1eBW/asm2oyDLH5WMRaNQjnqnBs4Vwi8juo0da5J9XL1GKCqbOu3YeGI/HrVXDCg5R5O+kdNLonu5GBRXM+TQjh8OC4QyRePJJMNJbWru2
+X-Gm-Message-State: AOJu0YxFBMv+mRpCoJfEVjVaFsSezV/DafHjwljilfYq3AMuJamlykhH
+	SQHgmyJk+IPGPryiQrsDIrItjEqCL19cJwOUpfnZeacVVGSgXjNHeogZ1N9AnrUYbfnSdE7WAZ2
+	56Vd3wkutOKzwXmfze+k2nQ2o836G/8BeoMi2
+X-Google-Smtp-Source: AGHT+IFL6KPS7uL0x/EtSSqM+BxaTQB6YKxFAO4dVgt7h/JSlGs8pTFg9ELkmasVKscLtesWpTkQnSz+ws7ho1rA6oM=
+X-Received: by 2002:a2e:9913:0:b0:2d8:2fea:2e4d with SMTP id
+ v19-20020a2e9913000000b002d82fea2e4dmr1821870lji.2.1712740856858; Wed, 10 Apr
+ 2024 02:20:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20240410084405.1389378-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240410084405.1389378-1-angelogioacchino.delregno@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 10 Apr 2024 17:20:45 +0800
+Message-ID: <CAGXv+5FJM2_yr0dwD=FhaDi4FJzYn50=jY6fJsFnder2q7TKrw@mail.gmail.com>
+Subject: Re: [PATCH] power: supply: mt6360_charger: Fix of_match for
+ usb-otg-vbus regulator
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: sre@kernel.org, matthias.bgg@gmail.com, mazziesaccount@gmail.com, 
+	gene_chen@richtek.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_020003_092840_626885D9 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20240410_022100_069276_1EBF779F 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,163 +89,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hao Zhang <hao.zhang@mediatek.com>
+On Wed, Apr 10, 2024 at 4:44=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> The of_match shall correspond to the name of the regulator subnode,
+> or the deprecated `regulator-compatible` property must be used:
+> failing to do so, the regulator won't probe (and the driver will
+> as well not probe).
+>
+> Since the devicetree binding for this driver is actually correct
+> and wants DTs to use the "usb-otg-vbus-regulator" subnode name,
+> fix this driver by aligning the `of_match` string to what the DT
+> binding wants.
+>
+> Fixes: 0402e8ebb8b8 ("power: supply: mt6360_charger: add MT6360 charger s=
+upport")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 
-Introduce wifi LED switch control, add flow to Control a wifi
-gpio pin based on the status of WIFI radio, if the pin is connected
-to an LED, the LED will indicate the status of the WiFi radio.
-
-Signed-off-by: Hao Zhang <hao.zhang@mediatek.com>
-Co-developed-by: Quan Zhou <quan.zhou@mediatek.com>
-Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
----
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  1 +
- .../net/wireless/mediatek/mt76/mt7921/main.c  | 26 ++++++++++++++++++-
- .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 14 ++++++++++
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  5 ++++
- .../net/wireless/mediatek/mt76/mt7921/pci.c   |  8 +++++-
- 5 files changed, 52 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index 836cc4d5b1d2..4c2de556dee1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1189,6 +1189,7 @@ enum {
- 	MCU_EXT_CMD_EFUSE_ACCESS = 0x01,
- 	MCU_EXT_CMD_RF_REG_ACCESS = 0x02,
- 	MCU_EXT_CMD_RF_TEST = 0x04,
-+	MCU_EXT_CMD_ID_RADIO_ON_OFF_CTRL = 0x05,
- 	MCU_EXT_CMD_PM_STATE_CTRL = 0x07,
- 	MCU_EXT_CMD_CHANNEL_SWITCH = 0x08,
- 	MCU_EXT_CMD_SET_TX_POWER_CTRL = 0x11,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index ca36de34171b..ac2174b345cd 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -242,6 +242,15 @@ int __mt7921_start(struct mt792x_phy *phy)
- 
- 	ieee80211_queue_delayed_work(mphy->hw, &mphy->mac_work,
- 				     MT792x_WATCHDOG_TIME);
-+	if (mt76_is_mmio(mphy->dev)) {
-+		err = mt7921_mcu_radio_led_ctrl(phy->dev, EXT_CMD_RADIO_LED_CTRL_ENABLE);
-+		if (err)
-+			return err;
-+
-+		err = mt7921_mcu_radio_led_ctrl(phy->dev, EXT_CMD_RADIO_ON_LED);
-+		if (err)
-+			return err;
-+	}
- 
- 	return 0;
- }
-@@ -259,6 +268,21 @@ static int mt7921_start(struct ieee80211_hw *hw)
- 	return err;
- }
- 
-+static void mt7921_stop(struct ieee80211_hw *hw)
-+{
-+	struct mt792x_dev *dev = mt792x_hw_dev(hw);
-+	int err = 0;
-+
-+	mt792x_mutex_acquire(dev);
-+	if (mt76_is_mmio(&dev->mt76))
-+		err = mt7921_mcu_radio_led_ctrl(dev, EXT_CMD_RADIO_OFF_LED);
-+	mt792x_mutex_release(dev);
-+	if (err)
-+		return;
-+
-+	mt792x_stop(hw);
-+}
-+
- static int
- mt7921_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
- {
-@@ -1372,7 +1396,7 @@ static void mt7921_mgd_complete_tx(struct ieee80211_hw *hw,
- const struct ieee80211_ops mt7921_ops = {
- 	.tx = mt792x_tx,
- 	.start = mt7921_start,
--	.stop = mt792x_stop,
-+	.stop = mt7921_stop,
- 	.add_interface = mt7921_add_interface,
- 	.remove_interface = mt792x_remove_interface,
- 	.config = mt7921_config,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index 8b4ce32a2cd1..2ebf0ffe78d5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -606,6 +606,20 @@ int mt7921_run_firmware(struct mt792x_dev *dev)
- }
- EXPORT_SYMBOL_GPL(mt7921_run_firmware);
- 
-+int mt7921_mcu_radio_led_ctrl(struct mt792x_dev *dev, u8 value)
-+{
-+	struct {
-+		u8 ctrlid;
-+		u8 rsv[3];
-+	} __packed req = {
-+		.ctrlid = value,
-+	};
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(ID_RADIO_ON_OFF_CTRL),
-+				&req, sizeof(req), false);
-+}
-+EXPORT_SYMBOL_GPL(mt7921_mcu_radio_led_ctrl);
-+
- int mt7921_mcu_set_tx(struct mt792x_dev *dev, struct ieee80211_vif *vif)
- {
- 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index 3016636d18c6..07023eb9e5b5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -27,6 +27,10 @@
- #define MCU_UNI_EVENT_ROC  0x27
- #define MCU_UNI_EVENT_CLC  0x80
- 
-+#define EXT_CMD_RADIO_LED_CTRL_ENABLE   0x1
-+#define EXT_CMD_RADIO_ON_LED            0x2
-+#define EXT_CMD_RADIO_OFF_LED           0x3
-+
- enum {
- 	UNI_ROC_ACQUIRE,
- 	UNI_ROC_ABORT,
-@@ -196,6 +200,7 @@ int mt7921_mcu_fw_log_2_host(struct mt792x_dev *dev, u8 ctrl);
- void mt7921_mcu_rx_event(struct mt792x_dev *dev, struct sk_buff *skb);
- int mt7921_mcu_set_rxfilter(struct mt792x_dev *dev, u32 fif,
- 			    u8 bit_op, u32 bit_map);
-+int mt7921_mcu_radio_led_ctrl(struct mt792x_dev *dev, u8 value);
- 
- static inline u32
- mt7921_reg_map_l1(struct mt792x_dev *dev, u32 addr)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index 0b69b225bc16..f768e9389ac6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -427,6 +427,10 @@ static int mt7921_pci_suspend(struct device *device)
- 	wait_event_timeout(dev->wait,
- 			   !dev->regd_in_progress, 5 * HZ);
- 
-+	err = mt7921_mcu_radio_led_ctrl(dev, EXT_CMD_RADIO_OFF_LED);
-+	if (err < 0)
-+		goto restore_suspend;
-+
- 	err = mt76_connac_mcu_set_hif_suspend(mdev, true);
- 	if (err)
- 		goto restore_suspend;
-@@ -525,9 +529,11 @@ static int mt7921_pci_resume(struct device *device)
- 		mt76_connac_mcu_set_deep_sleep(&dev->mt76, false);
- 
- 	err = mt76_connac_mcu_set_hif_suspend(mdev, false);
-+	if (err < 0)
-+		goto failed;
- 
- 	mt7921_regd_update(dev);
--
-+	err = mt7921_mcu_radio_led_ctrl(dev, EXT_CMD_RADIO_ON_LED);
- failed:
- 	pm->suspended = false;
- 
--- 
-2.18.0
-
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
