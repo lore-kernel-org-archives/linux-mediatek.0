@@ -4,99 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D316BCD128A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 12:58:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 688B6CD11C2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 13:03:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SAPCyLKBSHRTWSRRoqdJH1JxTgNtm+xffvG0gyEDWQ8=; b=wSUrxYDFMNP5SD5oqMccFJpibc
-	tvZqV/TmwoVpqjWCjP76tUTrh3qfMs64fHwEz1QAd/ZyoqpqCynE8eNgn74YvWc1Vli+QQYJdyV59
-	BOzOwzD/kzdnjGvi85G7iH36C1vU7dTmaAGPlAmmL9ZGOP/OH60g/PMJjfsejKXWr4Q6/jnBgvpEx
-	MF32RKPAoHTLYx2/CpzpS8YNcMP+G2cbjyZ9hqf2qRCeV2wDISbhRfJCrJDIq7QTmIrP+YlpNHOvC
-	C7M4uRuv/PrgBLCnHbkRb/FvIgj5Zxkx/HpGBgZ2WolVAqZm+w79ZvZllzWnhtHXbQR94yKSWSB2D
-	MPwe6ZcA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=x3Y56dDS984KsDzs2nzTKgy6adBy9joM/agCd66RARo=; b=hJj7y4AVJ3ADkgLL+cCehx+BY0
+	5apVqJUETvtowcBk2Yl464+ZAMBrf3pYYW0Q78In9IoAxtZDiK0jPk7jyZrCOvtJeaIRkp5iDBrS8
+	JnMBSqXuUg8NaTgGvC/B3Ce3QLn0eaBF8L9XKiENprPXrMJzi2zNRRDdLIPWdxnTWmZTUNP6ersnb
+	4WtWGIvQhZ8TnI94ZRvrkLgIzGBC2mCUpEhToJLrv+Raaxcjo9UnVKVFUfYkr2qLZnGG1yVAm+kSr
+	j8ZLbIew2u2oNutIKI9uZqUf4qKhP4pfmsihVRxeVZ6Cl7o+L5ocfNjtYGoUSZYIYSkJJJSM8TIm3
+	5/n4hbvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruXWv-000000070dE-0hKO;
-	Wed, 10 Apr 2024 12:58:21 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1ruXbY-000000071t7-0NAW;
+	Wed, 10 Apr 2024 13:03:08 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruXWn-000000070Yk-3pLB
+	id 1ruXbT-000000071ru-2OSE
 	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Apr 2024 12:58:17 +0000
-Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-34641b7c49aso1010369f8f.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 05:58:12 -0700 (PDT)
+	Wed, 10 Apr 2024 13:03:05 +0000
+Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-1e3ca4fe4cfso28865465ad.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 06:03:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1712753892; x=1713358692; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=SAPCyLKBSHRTWSRRoqdJH1JxTgNtm+xffvG0gyEDWQ8=;
-        b=fKWavx/ORpWOCEC1yjA9WIZmFaRcgCsaK/Y/wwmg3dpq85CgBHXGIjS/VdEhCv3eED
-         tqkFLMm/NJMCTHDkOCkKDbnQdowTTaZOykrPcFnwNbiVnLGzlA9fz/XzdxJzG/g8FG/n
-         FQcohkoCyCTqed2EFMIknMyrNeAZiNYFBbGkBUWCgic+6eIIviCS49MPUjtZtU7G0pTq
-         HuKsex7/IXNB6PG5+L9aWKTdk2AO6gau/sfkyFcejAsu3zbIBxtRjFyynEcK1YNN7msQ
-         Beqd3UILQTWkrTlvvgv97NG04MbjSJuzakBTpQWCe6JiqMtRAhTaptvUYhlAUnylEkxb
-         6drw==
+        d=chromium.org; s=google; t=1712754181; x=1713358981; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=x3Y56dDS984KsDzs2nzTKgy6adBy9joM/agCd66RARo=;
+        b=k8uQIb+TsvHAr8xRR4TUELDrC+2NqtGQaGty7StZ+0w+zBvOIIKP/LRPut1uBthmSy
+         j8khV0r3jB0I9k1V1WSGoo/ViznvbwxY8qCspnEvvjPgiHr6PKwkqxs+DCi7tk48YZaK
+         q9LecDWJRLp3OvWHafpvvLNRgOh13clYSbuvo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712753892; x=1713358692;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=SAPCyLKBSHRTWSRRoqdJH1JxTgNtm+xffvG0gyEDWQ8=;
-        b=KZ5uRmclGi4l0bmHHX/Yx/lCkWFkL8r10AlxOxuJ3hjy/m/5i4nCQu1IhcsxrYH04M
-         6dqo38AvNo/0+WE8lfaaV3ZqLh6RWRV0nSNqHPJNPQ5kNA6qk9t35zSJSmCo4Mak9IFw
-         7d6OGWpmkso6nygEHP6TVnCj+kRZQU/9vWiseNCEsH7rseYInDxh6MaHV3jzZR8qX567
-         9ryp4IwooHEjyr7koSc3vkH+k9lSgszJjkqAEyS/F+wQ99Capi3cTw/R/XYJkqNp5Vcv
-         y9ygzIsyUEvA7CzeXxDsQ0tv7SUqlmaZWuC1PzRtk1oTG1+xiIxLe1bnxmLZFPstCuIi
-         dXaQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUj0rHcKuqJNU7W/fkFMJDD+s7/OU5kdYDK2RhyB9ANhj604dMByMngXHkcrJCWGWiq9+lLJvM4GSEuQUdl3gWPwzc31xWlbvFsCBHopSOLnbSa
-X-Gm-Message-State: AOJu0YwDCQhUvCellvyyNs+O4aYhVbZT7DQhamwG3hMF8Yx1ettpl+fu
-	T+JPrR0mz1h0tGwx63K3zRYUgsy2cjI8Cfkk04w0rcqj/nnoc5fbWi8wMjPx/Xs=
-X-Google-Smtp-Source: AGHT+IHfa120qRAfspKcAyRMy5PXxHlCGJzmW0vlTzwyQGnoeYFwCg8fQKa0TokP1NrBdWntPAlpFg==
-X-Received: by 2002:adf:ee8c:0:b0:346:47d6:5d17 with SMTP id b12-20020adfee8c000000b0034647d65d17mr1758280wro.57.1712753891611;
-        Wed, 10 Apr 2024 05:58:11 -0700 (PDT)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id l4-20020a5d4104000000b00343e392829dsm13404941wrp.97.2024.04.10.05.58.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 10 Apr 2024 05:58:11 -0700 (PDT)
-Message-ID: <4c43eafe-f173-4a35-962f-a5f5f020a587@baylibre.com>
-Date: Wed, 10 Apr 2024 14:58:09 +0200
+        d=1e100.net; s=20230601; t=1712754181; x=1713358981;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=x3Y56dDS984KsDzs2nzTKgy6adBy9joM/agCd66RARo=;
+        b=ARctpq+PgjJAhZb1gZBdyQqKlN25iwx6uFvQEtID+V2n41P2rqfdVJLttl//kGddg2
+         TXybL5UuoP4x98VmzBmI7LAEMJpkB3AagA15qn22gXjkPXvXiDRyIQYGp7e/EDMZ1jij
+         yllWPQW1AjlOIOdeuOlq0OgHAs29D2Kr3J0NXi5QF4Ku/yDXlC0GL4OZPqkt3NJQGpuA
+         qr3e279uefv9Hx/OGvZ8zb9e7tzYcbO7+nojrBg3a1rpaMMaMzDWHEi4J4yrMUakz35U
+         9yrU7z7d9Yknk5er9p6UISHxAijM26GSDv9XixfgLdDFPbV2xcnDz/UV2yj8s4hMn/kv
+         qiUQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWLfjI9RR13/AixOSAB54Y53TgLF2OcXMhKOQ+kFIQ/5QxUoV3C00zENeLdKX9N3AxYHbf5ShAf1emVWLVYEAkrsTiIyK91KL00WNuv8HgCwsyO
+X-Gm-Message-State: AOJu0Yyb6/nP0D3+pFWOpZ82EObVALbVD0oOLlSRncCrtxgMNp1+qCgT
+	yhBzrb7u6Qns0TwBFhBfiJJ+TOEqqLmc9L05jw3wbB8HPLJ3AAmj8nkt239cWQ==
+X-Google-Smtp-Source: AGHT+IHqZzwYa8MxtXFxj041lgd7J88+1a1m5BQKJBRqUvFpLKeI9bdlPRTEzn2uQM5glqcDtWs7AQ==
+X-Received: by 2002:a17:902:fc48:b0:1e4:10d9:5dfb with SMTP id me8-20020a170902fc4800b001e410d95dfbmr3179942plb.38.1712754181302;
+        Wed, 10 Apr 2024 06:03:01 -0700 (PDT)
+Received: from yuanhsinte1.c.googlers.com (88.216.124.34.bc.googleusercontent.com. [34.124.216.88])
+        by smtp.gmail.com with ESMTPSA id kq12-20020a170903284c00b001e29acb2d18sm10726341plb.4.2024.04.10.06.02.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 10 Apr 2024 06:03:00 -0700 (PDT)
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Date: Wed, 10 Apr 2024 13:02:48 +0000
+Subject: [PATCH v2] thermal/drivers/mediatek/lvts_thermal: Add coeff for
+ mt8192
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 03/18] ASoC: mediatek: mt8188: Migrate to
- mtk_soundcard_common_probe
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- broonie@kernel.org
-Cc: wenst@chromium.org, lgirdwood@gmail.com, robh@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.com,
- trevor.wu@mediatek.com, maso.huang@mediatek.com,
- xiazhengqiao@huaqin.corp-partner.google.com, arnd@arndb.de,
- kuninori.morimoto.gx@renesas.com, shraash@google.com,
- nicolas.ferre@microchip.com, u.kleine-koenig@pengutronix.de,
- dianders@chromium.org, frank.li@vivo.com, allen-kh.cheng@mediatek.com,
- eugen.hristev@collabora.com, claudiu.beznea@tuxon.dev,
- jarkko.nikula@bitmer.com, jiaxin.yu@mediatek.com, alpernebiyasak@gmail.com,
- ckeepax@opensource.cirrus.com, zhourui@huaqin.corp-partner.google.com,
- nfraprado@collabora.com, alsa-devel@alsa-project.org,
- shane.chien@mediatek.com, linux-sound@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20240409113310.303261-1-angelogioacchino.delregno@collabora.com>
- <20240409113310.303261-4-angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20240409113310.303261-4-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20240410-lvts_thermal-v2-1-621cb7c07a32@chromium.org>
+X-B4-Tracking: v=1; b=H4sIAPeNFmYC/3XMQQ6CMBCF4auQWVvTFgrqynsYYrBM6SRAzRQbD
+ eHuVvYu/5e8b4WITBjhUqzAmChSmHPoQwHWd/OAgvrcoKWuZKWkGNMS74tHnrpRlH1Zm1PVdNY
+ 5yJcno6P3zt3a3J7iEviz60n91j9QUkIJRCMf+mxVY+qr9Rwmek3HwAO027Z9AUg9I3KrAAAA
+To: "Rafael J. Wysocki" <rafael@kernel.org>, 
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
+ Lukasz Luba <lukasz.luba@arm.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ =?utf-8?q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
+ Balsam CHIHI <bchihi@baylibre.com>
+Cc: Alexandre Mergnat <amergnat@baylibre.com>, linux-pm@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Hsin-Te Yuan <yuanhsinte@chromium.org>
+X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_055814_174424_985FA638 
-X-CRM114-Status: UNSURE (   5.42  )
+X-CRM114-CacheID: sfid-20240410_060303_685465_74878B9E 
+X-CRM114-Status: UNSURE (   9.43  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -112,17 +100,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar changes has been done for mt8365, it works.
+In order for lvts_raw_to_temp to function properly on mt8192,
+temperature coefficients for mt8192 need to be added.
 
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+Fixes: 288732242db4 ("thermal/drivers/mediatek/lvts_thermal: Add mt8192 support")
+Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+---
+Changes in v2:
+- Reusing mt8195 coeff instead of creating duplicate definitions
+- Link to v1: https://lore.kernel.org/r/20240410-lvts_thermal-v1-1-ee50b29c1756@chromium.org
+---
+ drivers/thermal/mediatek/lvts_thermal.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-On 09/04/2024 13:32, AngeloGioacchino Del Regno wrote:
-> Add mtk_soundcard_pdata platform data for the MediaTek common sound card
-> probe mechanism, including a driver/soc-specific probe extension (used
-> for bits that cannot be commonized  hence specific to this driver), and
-> change the probe function to mtk_soundcard_common_probe.
+diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+index fd4bd650c77a6..4e5c213a89225 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.c
++++ b/drivers/thermal/mediatek/lvts_thermal.c
+@@ -1530,11 +1530,15 @@ static const struct lvts_data mt7988_lvts_ap_data = {
+ static const struct lvts_data mt8192_lvts_mcu_data = {
+ 	.lvts_ctrl	= mt8192_lvts_mcu_data_ctrl,
+ 	.num_lvts_ctrl	= ARRAY_SIZE(mt8192_lvts_mcu_data_ctrl),
++	.temp_factor	= LVTS_COEFF_A_MT8195,
++	.temp_offset	= LVTS_COEFF_B_MT8195,
+ };
+ 
+ static const struct lvts_data mt8192_lvts_ap_data = {
+ 	.lvts_ctrl	= mt8192_lvts_ap_data_ctrl,
+ 	.num_lvts_ctrl	= ARRAY_SIZE(mt8192_lvts_ap_data_ctrl),
++	.temp_factor	= LVTS_COEFF_A_MT8195,
++	.temp_offset	= LVTS_COEFF_B_MT8195,
+ };
+ 
+ static const struct lvts_data mt8195_lvts_mcu_data = {
 
+---
+base-commit: 20cb38a7af88dc40095da7c2c9094da3873fea23
+change-id: 20240410-lvts_thermal-3d365847acff
+
+Best regards,
 -- 
-Regards,
-Alexandre
+Hsin-Te Yuan <yuanhsinte@chromium.org>
+
 
