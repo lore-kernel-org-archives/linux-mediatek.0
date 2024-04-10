@@ -4,73 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FE4BCD1297
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 08:30:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0FEFCD11C2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 08:40:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QSg65ax6Gdu9t5wWE/fzcEpRE8uM/nc8aZT4KzdijuU=; b=ETNRdDw1Hk0chPPhEjdwMxJlGH
-	neuW1CUGkT5f8UvZnDFe8+I/GELauEypUh8MfoiLTeRHaZIIaBpY4h/K0pZ4/21CdCirwKdKE5rqO
-	0F7eqx99x8OYH4SoZzAmTdaBUAz+zPunOutSY/KitmHyqqNIeOOOpl8mereuKroWDyFX3EweqYbHV
-	sfd1+y4pZ+OcvySU6CMmSii1eo2ZTPe8qL4XgSM3WFUkHRrkSS4lZBNdi+Y4C6XAypCMOZ3Fc1tT1
-	OigC74zT+w8Tzc+stJR1mjkt+tI/cgalQg2OF1MvKX5HDMOCCdBDEjKZx3Py1LUq5scgGp0RggqPB
-	z531ozVw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NAyow8X3gkrKIXrdZZsBjPykepVjWpYDrdgw89x4pGE=; b=jkasKnWPCMfLm7eRs2DC/RFvxt
+	PZnJC+Hv1r+8XLcLj+YQkETdaqitaIXgnrMJF8b5lnd2/nKNfX7R654QXDRPHLnpRZA53wO4WKhxU
+	2ayAC3QAqJmVv4Eb3QxLpdmWPNPONLtaGuPJrkD2Tio5vF4AjIHHGe5p34rrG9HC6VJkqqMkTzBFR
+	Sq/GCC0K5+sLiXc/HzeQs1TYaBtaRUtrOmUcrbXN7Vp1xhxoBrjKLGaESqh/fc4wc9r2vAsm8VOaR
+	r3FGwptzo3MlrvkRu9kOKObszGHQfhdH/QOQUEXtcSRCGCzd71TpQfxTHUYBBUFq7ukJvwLx76JNG
+	SKUmYQ+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruTLs-00000005sJg-2sQ7;
-	Wed, 10 Apr 2024 08:30:40 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1ruTVq-00000005v9F-2oub;
+	Wed, 10 Apr 2024 08:40:58 +0000
+Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruTLT-00000005ryi-2uHy;
-	Wed, 10 Apr 2024 08:30:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712737812;
-	bh=DDjimJ60wn8VcBGQiRwLupdMEtQ+UOvMdvJ7mEWJSwQ=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OgzLBbgp3jJviltWg9d7VOkXZa+d+H5tGdI/r03Gb7MDUOSO2dp0902/lIH5n6HZI
-	 fEUmFiBcYMR2Haq5A8EozQ/78OMyld51RsuQdrrk3RsrTPWzVEQiOuDzBQ3moAQzSF
-	 sYrIKshCKWd5Z+UOiwZrX9LHld9WMjiITr+EYdIN8ZcEhUQY9PHJeTOAEgBdG8ExcH
-	 StKK/wB39V+alkABl5b+5S9S27DWaH7lgT8GVus2wH0jcDt9mMm5syAmIqeQGeW5aL
-	 aPKsoqg1b6rCpC98rUJc3CeLXk2tSp+00ExVAoVslvqv8carrv7UlmmTLaNgIZApVZ
-	 A3naNNJ2msdVg==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B197B37820FA;
-	Wed, 10 Apr 2024 08:30:11 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-mediatek@lists.infradead.org
-Cc: robh@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	bchihi@baylibre.com,
-	bero@baylibre.com,
-	amergnat@baylibre.com,
-	nfraprado@collabora.com,
-	michael.kao@mediatek.com,
-	mka@chromium.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH 2/3] arm64: dts: mediatek: mt8192: Fix GPU thermal zone name for SVS
-Date: Wed, 10 Apr 2024 10:30:01 +0200
-Message-ID: <20240410083002.1357857-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240410083002.1357857-1-angelogioacchino.delregno@collabora.com>
-References: <20240410083002.1357857-1-angelogioacchino.delregno@collabora.com>
+	id 1ruTVl-00000005v70-230X
+	for linux-mediatek@lists.infradead.org;
+	Wed, 10 Apr 2024 08:40:55 +0000
+Received: by mail-ot1-x333.google.com with SMTP id 46e09a7af769-6e6888358dfso3925189a34.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 01:40:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1712738450; x=1713343250; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=NAyow8X3gkrKIXrdZZsBjPykepVjWpYDrdgw89x4pGE=;
+        b=X4RgvcBn35DUp6h5+dbOht0lI7zGDKHCWPt/VYrCmsHHHnqufuOepmFh9qdKilXMVU
+         skiDUz+OIAVY0c5g/d5SP3ELdj9LJPsKINT0eC8p/v5YnK+lp9A6SpcIMyYkTDRM0t4+
+         QXLNwVM81eoVL0GPD2+JowmbB1/A40Cc5Gp/s=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712738450; x=1713343250;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=NAyow8X3gkrKIXrdZZsBjPykepVjWpYDrdgw89x4pGE=;
+        b=NCeGoNBxolvOjTYE6rIppZRP4tKuM9G91zyTAERuvx4QcdFrRryCiQiTXxyDKyByjM
+         OCOm/28VfiMnoEvYUG4wc6exeOGwp4KZjLK+moz0/v32rSB6RBAyoyx4LfBGA8iGXMvW
+         irnShiwN7frIhy1lJy5ZBjT5ULp/hFSunxwHNAPI+JBq+1+/fHEEWjOq8FK5EKyqGMOh
+         iu6/fq7f0kUumpXHhk5STioJ4SH/0JVSgYihJD8tvBgjZXOsniRTSUjMTP7NLdfj2pt1
+         jitNWAkUruvEYgRFnoZYl/6yD/TxKTlapiQwt9CXb2ip/q8idkycfn9tDuck22WJNJoS
+         nCcg==
+X-Forwarded-Encrypted: i=1; AJvYcCW7DVcAITUrEqfvKuESwYQzmnbdbif29GKKK7Rh1r2wqneN6TLWmheSOfiJoJrj6BI1VLZ7AYpZGt/unLtdWJxDCJ3/puskqZNOyv56TXvXMNQw
+X-Gm-Message-State: AOJu0YyqLWSiTT+WfTETzmQ6UpGx0CV3hCNEAIP46hMTfzqGSy0dIt6w
+	1aiRPVNCdvV/WbIeqttISZyTRetTEJpTNlokWlHX0NijmaXgaZPUWrosO/BKVdM4M7DN41nBZQP
+	8dA==
+X-Google-Smtp-Source: AGHT+IGQIGRSVbir8tD+7BU7dQc6yvCondb+sBONRHguGITH+9jJFPC17Z5wLbgHntSupY3dHcRiGg==
+X-Received: by 2002:a05:6870:700c:b0:22e:d2b2:25fe with SMTP id u12-20020a056870700c00b0022ed2b225femr2049905oae.1.1712738450103;
+        Wed, 10 Apr 2024 01:40:50 -0700 (PDT)
+Received: from yuanhsinte1.c.googlers.com (88.216.124.34.bc.googleusercontent.com. [34.124.216.88])
+        by smtp.gmail.com with ESMTPSA id i6-20020a056a00004600b006e04ca18c2bsm9606330pfk.196.2024.04.10.01.40.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 10 Apr 2024 01:40:49 -0700 (PDT)
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Date: Wed, 10 Apr 2024 08:40:45 +0000
+Subject: [PATCH v2] arm64: dts: mediatek: mt8192: Add missing trip point in
+ thermal zone
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240410-upstream-torvalds-master-v2-1-679777847b63@chromium.org>
+X-B4-Tracking: v=1; b=H4sIAI1QFmYC/42NTQ6DIBBGr2JYdxqg2L9V79G4IDgoSREzg6SN8
+ e6lnqDL9yXvfatgpIAs7s0qCEvgkKYK+tAIN9ppQAh9ZaGlNtIoCcvMmdBGyImKffUM0XJGAiM
+ tet8adXYXUfWZ0If3nn52lcfAVfnsT0X91j+iRYGCa6vxJk9eOnQPN1KKYYnHRIPotm37Aoofg
+ AjDAAAA
+To: Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ =?utf-8?q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
+ Balsam CHIHI <bchihi@baylibre.com>, 
+ Alexandre Mergnat <amergnat@baylibre.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Hsin-Te Yuan <yuanhsinte@chromium.org>
+X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_013016_077606_F8DBD882 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20240410_014053_723813_D3564B84 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,29 +102,127 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This SoC has two GPU related thermal zones: the primary zone must be
-called "gpu-thermal" for SVS to pick it up.
+According to Documentation/driver-api/thermal/power_allocator.rst, there
+should be two passive trip points. Adding the missing trip point to
+ensure that the governor works optimally.
 
 Fixes: c7a728051f4e ("arm64: dts: mediatek: mt8192: Add thermal nodes and thermal zones")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2:
+- Clearify the reason of adding another passive trip point
+- Link to v1: https://lore.kernel.org/r/20240410-upstream-torvalds-master-v1-1-852e903f0cec@chromium.org
+---
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 40 ++++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index f3b0da2399a0..1f0f076272a3 100644
+index 05e401670bced..08d8bccc84669 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -2236,7 +2236,7 @@ vpu1_crit: trip-crit {
- 			};
- 		};
+@@ -1959,6 +1959,11 @@ cpu0-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8192_MCU_LITTLE_CPU0>;
  
--		gpu0-thermal {
-+		gpu-thermal {
- 			polling-delay = <1000>;
- 			polling-delay-passive = <250>;
- 			thermal-sensors = <&lvts_ap MT8192_AP_GPU0>;
+ 			trips {
++				cpu0_thres: trip-point {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
+ 				cpu0_alert: trip-alert {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -1989,6 +1994,11 @@ cpu1-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8192_MCU_LITTLE_CPU1>;
+ 
+ 			trips {
++				cpu1_thres: trip-point {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
+ 				cpu1_alert: trip-alert {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -2019,6 +2029,11 @@ cpu2-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8192_MCU_LITTLE_CPU2>;
+ 
+ 			trips {
++				cpu2_thres: trip-point {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
+ 				cpu2_alert: trip-alert {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -2049,6 +2064,11 @@ cpu3-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8192_MCU_LITTLE_CPU3>;
+ 
+ 			trips {
++				cpu3_thres: trip-point {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
+ 				cpu3_alert: trip-alert {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -2079,6 +2099,11 @@ cpu4-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8192_MCU_BIG_CPU0>;
+ 
+ 			trips {
++				cpu4_thres: trip-point {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
+ 				cpu4_alert: trip-alert {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -2109,6 +2134,11 @@ cpu5-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8192_MCU_BIG_CPU1>;
+ 
+ 			trips {
++				cpu5_thres: trip-point {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
+ 				cpu5_alert: trip-alert {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -2139,6 +2169,11 @@ cpu6-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8192_MCU_BIG_CPU2>;
+ 
+ 			trips {
++				cpu6_thres: trip-point {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
+ 				cpu6_alert: trip-alert {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+@@ -2169,6 +2204,11 @@ cpu7-thermal {
+ 			thermal-sensors = <&lvts_mcu MT8192_MCU_BIG_CPU3>;
+ 
+ 			trips {
++				cpu7_thres: trip-point {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
+ 				cpu7_alert: trip-alert {
+ 					temperature = <85000>;
+ 					hysteresis = <2000>;
+
+---
+base-commit: 20cb38a7af88dc40095da7c2c9094da3873fea23
+change-id: 20240410-upstream-torvalds-master-40aeff5416c7
+
+Best regards,
 -- 
-2.44.0
+Hsin-Te Yuan <yuanhsinte@chromium.org>
 
 
