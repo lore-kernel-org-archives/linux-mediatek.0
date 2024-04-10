@@ -4,71 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1A96CD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 11:55:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5639CD128A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 12:07:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:CC:To:
-	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rueglsdzrwh4JglUJiOOPmuonUA5+MrubJEb+Go7RR8=; b=s5waqcPVqs30I56YzU6JEJGFeF
-	T4ygHPpmiau1WqUXfywdn9ei02xvdEMiOY4s06hF/V6WyjL9Ay4K6m+x6Y3W3N07A0SFdR2wwikd7
-	Il4g19ERJ/swzpCmwOAYAtI0NZINWlSq7fEmLIcyWFDgEfo/FoZFk3AA86TWGlkjX1VRWVkP68H6z
-	OrE4eFb+K1snXmKF+2vHk3YKVujyTgkEG6OCs+5dbpwouD6YBKHXUjNCjlyZ5ZuDMEIrmkU4oLcRZ
-	g0qHw9zl+Pt6uyzqjiBpBquJNl65cSEGdaXgrqltQ5C1DZZjFMazSTkSDDUhIlGI+MNjQsxXrRM6o
-	itonsj4w==;
+	bh=+8P5WqVrHeK2zaTvdI8Gl1QefEqSb/GOhR4ipVI1tvQ=; b=R0g+ReOcvw2WIrYJ8+zBKW2qqF
+	gO4fV2Am7hWLBHQj0ONmdJrBErQTmD70mv3gEdJZNRzh4aoJl+9lexmQgzNPN/AhAmBJrkCT+n9h2
+	6r3i5be+XuKnegIkDJ037frnz/CFy8YkXc19B+oXl9WmTfDZttWieNpVBgZ9N/A32hcqWcTnD+MQt
+	XjN4prTQMXfgzRfxj68g9fH0+matDh24dA6Utcj+ZvP9klaCu+ITH9OdSxQjhyeP1S8yRYpbeRJ/0
+	ztb75fRcJzWqu8cQNqFnJYsrYW56mGp3Ug5/9nepuXJF4jFls6c479I1twwEK2HBeE8mTqz5U3JD2
+	E4yg0qgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruWYN-00000006kpt-2CnY;
-	Wed, 10 Apr 2024 11:55:47 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1ruWji-00000006nwX-0Zgp;
+	Wed, 10 Apr 2024 12:07:30 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruWYI-00000006kno-2K6C;
-	Wed, 10 Apr 2024 11:55:45 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.174])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4VF1RM0QQRz1R5SN;
-	Wed, 10 Apr 2024 19:52:47 +0800 (CST)
-Received: from dggpemm500005.china.huawei.com (unknown [7.185.36.74])
-	by mail.maildlp.com (Postfix) with ESMTPS id 642C114037D;
-	Wed, 10 Apr 2024 19:55:30 +0800 (CST)
-Received: from [10.69.30.204] (10.69.30.204) by dggpemm500005.china.huawei.com
- (7.185.36.74) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Wed, 10 Apr
- 2024 19:55:30 +0800
-Subject: Re: [PATCH net-next v1 00/12] First try to replace page_frag with
- page_frag_cache
-To: Alexander Duyck <alexander.duyck@gmail.com>
-CC: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
-	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Alexei Starovoitov
-	<ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard
- Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<bpf@vger.kernel.org>
-References: <20240407130850.19625-1-linyunsheng@huawei.com>
- <CAKgT0Uex+e_g9nyqk6DiB03U4zs_A1z2LoztHnpYbJ9LPm=NFA@mail.gmail.com>
- <05c21500-033b-dfee-6aa7-1ee967616213@huawei.com>
- <CAKgT0UdjBXguCudxM9-tzKx2qWYg18xp5cG2xaeY893rVbw5qQ@mail.gmail.com>
- <e3e3ad18-8ed0-4bd3-8126-2f60e8d3ae28@huawei.com>
- <CAKgT0UdvvwG7-tJLKcH2CZDAtObUbP2KHGaRo+setcq=Q26ieA@mail.gmail.com>
-From: Yunsheng Lin <linyunsheng@huawei.com>
-Message-ID: <d30f837b-67ba-5ddb-bd2c-ad6b443a4b9e@huawei.com>
-Date: Wed, 10 Apr 2024 19:55:29 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.2.0
+	id 1ruWje-00000006npS-0sXL
+	for linux-mediatek@lists.infradead.org;
+	Wed, 10 Apr 2024 12:07:28 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-a51c8274403so466042866b.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 05:07:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1712750831; x=1713355631; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+8P5WqVrHeK2zaTvdI8Gl1QefEqSb/GOhR4ipVI1tvQ=;
+        b=H+cbN1L4m56+yFHwN3NzF0E6tE/nyUaFXsO6J7Q/JjcGcT9+baPYUFkcF5c+sZgWwF
+         IToNBdyPG7mem2iz/LfWDkGe7gzgksERM5ZJAU7KRIYBI+iHqf8m0QIO5/MSB2KYR3Ka
+         RP0TxRn4F/XuxxedLPqv7q+ByqlgbaCGUG6b4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712750831; x=1713355631;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=+8P5WqVrHeK2zaTvdI8Gl1QefEqSb/GOhR4ipVI1tvQ=;
+        b=CHJzJgpHibnY8upONNOoY4BEcGFxSV1MVmpGKaCMign/1RN5Hdg6uw+i7TlIqmtpGg
+         FVAh/Jdcm2UcDK8LWYXmTUNWvP4hj51ZyRvO70SZmKjHzRHBoo3YD+eEdZqNhPr5BQWH
+         2domF7D85hGHTWUPphwUDY2lquNy418bWcM34rYiiClPVZ/cftdknt0UIqIreUXWCKkG
+         zpTwyMQnxKUITUTx9H/Vw0G6GJzLy62s8ZV7q+szP7zBpjbd0Jntv+oEyq4SdY07C/sf
+         jUmPkKyrR6AtwS19R8QTEfKfFwx0tlBayOPjELSVEZcePvVJ1N16Z0rwftpD1Bns4e9U
+         8DuA==
+X-Forwarded-Encrypted: i=1; AJvYcCVBWL3rjgpbLckRmVA33DP+UuhIC33T+O+EEY6P0yE9iLq8vvhqjWjEyw65IEFBLaX3nCsSzUFkalVwBUaRSiouWroMh+nXqNRYcBdhBpvmh+ZL
+X-Gm-Message-State: AOJu0YxlrK4p2eGB6Z1WgkAGEXfyQRXCo2MctveUae70bxVvdFN+kqLf
+	ys8vdAxXtRY64hx0bOrcTmufxpPU95ak9BT9+5WvIO9doHWUpAnvk4IVSJPOZ49Js6JewqO3teP
+	0ag==
+X-Google-Smtp-Source: AGHT+IEPK9YnFt5IIdWb/ybyVpeUOFwTBIozNMbZjTTh8pPypAFmUfyIQ21dlj1WTZWf4L/fhWtaOg==
+X-Received: by 2002:a17:906:7192:b0:a51:c191:c0a0 with SMTP id h18-20020a170906719200b00a51c191c0a0mr1233867ejk.43.1712750830816;
+        Wed, 10 Apr 2024 05:07:10 -0700 (PDT)
+Received: from mail-ed1-f52.google.com (mail-ed1-f52.google.com. [209.85.208.52])
+        by smtp.gmail.com with ESMTPSA id i19-20020a170906699300b00a4576dd5a8csm6789645ejr.201.2024.04.10.05.07.10
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 10 Apr 2024 05:07:10 -0700 (PDT)
+Received: by mail-ed1-f52.google.com with SMTP id 4fb4d7f45d1cf-56e6f4ee104so2921593a12.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 05:07:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCWg/NSpgvvwmIQDzBEZ9WPNNl86tVDY1K7z17tX7AG2/TIdpnRtOGm8PEIYG2WyJ8FezBPCu3uEduW5Lem9Xz9o4BUrge1iGso0JiyHfiG+DzSK
+X-Received: by 2002:a17:907:7202:b0:a51:9d21:2a1e with SMTP id
+ dr2-20020a170907720200b00a519d212a1emr1872195ejc.73.1712750829549; Wed, 10
+ Apr 2024 05:07:09 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAKgT0UdvvwG7-tJLKcH2CZDAtObUbP2KHGaRo+setcq=Q26ieA@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.69.30.204]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- dggpemm500005.china.huawei.com (7.185.36.74)
+References: <20240410-upstream-torvalds-master-v2-1-679777847b63@chromium.org> <d1dafc46-9b14-4752-822c-86cbabdcfb8b@collabora.com>
+In-Reply-To: <d1dafc46-9b14-4752-822c-86cbabdcfb8b@collabora.com>
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Date: Wed, 10 Apr 2024 20:06:33 +0800
+X-Gmail-Original-Message-ID: <CAHc4DNLrU=QVWODOzHXW16Ko1V=W31zkSHOi7rztiJMOMDcKqg@mail.gmail.com>
+Message-ID: <CAHc4DNLrU=QVWODOzHXW16Ko1V=W31zkSHOi7rztiJMOMDcKqg@mail.gmail.com>
+Subject: Re: [PATCH v2] arm64: dts: mediatek: mt8192: Add missing trip point
+ in thermal zone
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	=?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
+	Balsam CHIHI <bchihi@baylibre.com>, Alexandre Mergnat <amergnat@baylibre.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_045543_193486_A7A80DBE 
-X-CRM114-Status: GOOD (  65.96  )
+X-CRM114-CacheID: sfid-20240410_050726_296793_EAC9D9A3 
+X-CRM114-Status: GOOD (  28.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,203 +105,183 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024/4/9 23:29, Alexander Duyck wrote:
-...
+Hi Angelo,
 
-> 
-> Well the socket code will be largely impacted by any changes to this.
-> Seems like it might make sense to think about coming up with a socket
-> based test for example that might make good use of the allocator
-> located there so we can test the consolidating of the page frag code
-> out of there.
+1. 68=C2=B0C is provided by MediaTek previously in downstream
+2. I think sustainable power will be estimated by
+estimate_sustainable_power in drivers/thermal/gov_power_allocator.c,
+but I'll ask MediaTek if they can provide the precise value.
+3. Sure. I'll do it in v3 after I check 2. with MediaTek
 
-Does it make sense to use netcat + dummy netdev to test the socket code?
-Any better idea in mind?
+Regards,
+Hsin-Te
 
-> 
->>>
->>>>> What is meant to be the benefit to the community for adding this? All
->>>>> I am seeing is a ton of extra code to have to review as this
->>>>> unification is adding an additional 1000+ lines without a good
->>>>> explanation as to why they are needed.
->>>>
->>>> Some benefits I see for now:
->>>> 1. Improve the maintainability of page frag's implementation:
->>>>    (1) future bugfix and performance can be done in one place.
->>>>        For example, we may able to save some space for the
->>>>        'page_frag_cache' API user, and avoid 'get_page()' for
->>>>        the old 'page_frag' API user.
->>>
->>> The problem as I see it is it is consolidating all the consumers down
->>> to the least common denominator in terms of performance. You have
->>> already demonstrated that with patch 2 which enforces that all drivers
->>> have to work from the bottom up instead of being able to work top down
->>> in the page.
->>
->> I am agreed that consolidating 'the least common denominator' is what we
->> do when we design a subsystem/libary and sometimes we may need to have a
->> trade off between maintainability and perfromance.
->>
->> But your argument 'having to load two registers with the values and then
->> compare them which saves us a few cycles' in [1] does not seems to justify
->> that we need to have it's own implementation of page_frag, not to mention
->> the 'work top down' way has its own disadvantages as mentioned in patch 2.
->>
->> Also, in patch 5 & 6, we need to load 'size' to a register anyway so that we
->> can remove 'pagecnt_bias' and 'pfmemalloc' from 'struct page_frag_cache', it
->> would be better you can work through the whole patchset to get a bigger picture.
->>
->> 1. https://lore.kernel.org/all/f4abe71b3439b39d17a6fb2d410180f367cadf5c.camel@gmail.com/
-> 
-> I haven't had a chance to review the entire patch set yet. I am hoping
-> to get to it tomorrow. That said, my main concern is that this becomes
-> a slippery slope. Where one thing leads to another and eventually this
-> becomes some overgrown setup that is no longer performant and has
-> people migrating back to the slab cache.
-
-The problem with slab cache is that it does not have a metadata that
-we can take extra reference to it, right?
-
-> 
->>>
->>> This eventually leads you down the path where every time somebody has
->>> a use case for it that may not be optimal for others it is going to be
->>> a fight to see if the new use case can degrade the performance of the
->>> other use cases.
->>
->> I think it is always better to have a disscusion[or 'fight'] about how to
->> support a new use case:
->> 1. refoctor the existing implementation to support the new use case, and
->>    introduce a new API for it if have to.
->> 2. if the above does not work, and the use case is important enough that
->>    we might create/design a subsystem/libary for it.
->>
->> But from updating page_frag API, I do not see that we need the second
->> option yet.
-> 
-> That is why we are having this discussion right now though. It seems
-> like you have your own use case that you want to use this for. So as a
-> result you are refactoring all the existing implementations and
-> crafting them to support your use case while trying to avoid
-> introducing regressions in the others. I would argue that based on
-> this set you are already trying to take the existing code and create a
-> "new" subsystem/library from it that is based on the original code
-> with only a few tweaks.
-
-Yes, in someway. Maybe the plan is something like taking the best out
-of all the existing implementations and form a "new" subsystem/library.
-
-> 
->>>
->>>>    (2) Provide a proper API so that caller does not need to access
->>>>        internal data field. Exposing the internal data field may
->>>>        enable the caller to do some unexpcted implementation of
->>>>        its own like below, after this patchset the API user is not
->>>>        supposed to do access the data field of 'page_frag_cache'
->>>>        directly[Currently it is still acessable from API caller if
->>>>        the caller is not following the rule, I am not sure how to
->>>>        limit the access without any performance impact yet].
->>>> https://elixir.bootlin.com/linux/v6.9-rc3/source/drivers/net/ethernet/chelsio/inline_crypto/chtls/chtls_io.c#L1141
->>>
->>> This just makes the issue I point out in 1 even worse. The problem is
->>> this code has to be used at the very lowest of levels and is as
->>> tightly optimized as it is since it is called at least once per packet
->>> in the case of networking. Networking that is still getting faster
->>> mind you and demanding even fewer cycles per packet to try and keep
->>> up. I just see this change as taking us in the wrong direction.
->>
->> Yes, I am agreed with your point about 'demanding even fewer cycles per
->> packet', but not so with 'tightly optimized'.
->>
->> 'tightly optimized' may mean everybody inventing their own wheels.
-> 
-> I hate to break this to you but that is the nature of things. If you
-> want to perform with decent performance you can only be so abstracted
-> away from the underlying implementation. The more generic you go the
-> less performance you will get.
-
-But we need to have a balance between performance and maintainability,
-I think what we are arguing about is where the balance might be?
-
-> 
->>>
->>>> 2. page_frag API may provide a central point for netwroking to allocate
->>>>    memory instead of calling page allocator directly in the future, so
->>>>    that we can decouple 'struct page' from networking.
->>>
->>> I hope not. The fact is the page allocator serves a very specific
->>> purpose, and the page frag API was meant to serve a different one and
->>> not be a replacement for it. One thing that has really irked me is the
->>> fact that I have seen it abused as much as it has been where people
->>> seem to think it is just a page allocator when it was really meant to
->>> just provide a way to shard order 0 pages into sizes that are half a
->>> page or less in size. I really meant for it to be a quick-n-dirty slab
->>> allocator for sizes 2K or less where ideally we are working with
->>> powers of 2.
->>>
->>> It concerns me that you are talking about taking this down a path that
->>> will likely lead to further misuse of the code as a backdoor way to
->>> allocate order 0 pages using this instead of just using the page
->>> allocator.
->>
->> Let's not get to a conclusion here and wait to see how thing evolve
->> in the future.
-> 
-> I still have an open mind, but this is a warning on where I will not
-> let this go. This is *NOT* an alternative to the page allocator. If we
-> need order 0 pages we should be allocating order 0 pages. Ideally this
-> is just for cases where we need memory in sizes 2K or less.
-
-If the whole folio plan works, the page allocator may return a single
-pointer without the 'struct page' metadata for networking, I am not sure
-if I am worrying too much here, but we might need to prepare for that.
-
-> 
->>>
->>>>>
->>>>> Also I wouldn't bother mentioning the 0.5+% performance gain as a
->>>>> "bonus". Changes of that amount usually mean it is within the margin
->>>>> of error. At best it likely means you haven't introduced a noticeable
->>>>> regression.
->>>>
->>>> For micro-benchmark ko added in this patchset, performance gain seems quit
->>>> stable from testing in system without any other load.
->>>
->>> Again, that doesn't mean anything. It could just be that the code
->>> shifted somewhere due to all the code moved so a loop got more aligned
->>> than it was before. To give you an idea I have seen performance gains
->>> in the past from turning off Rx checksum for some workloads and that
->>> was simply due to the fact that the CPUs were staying awake longer
->>> instead of going into deep sleep states as such we could handle more
->>> packets per second even though we were using more cycles. Without
->>> significantly more context it is hard to say that the gain is anything
->>> real at all and a 0.5% gain is well within that margin of error.
->>
->> As vhost_net_test added in [2] is heavily invovled with tun and virtio
->> handling, the 0.5% gain does seems within that margin of error, there is
->> why I added a micro-benchmark specificly for page_frag in this patchset.
->>
->> It is tested five times, three times with this patchset and two times without
->> this patchset, the complete log is as below, even there is some noise, all
->> the result with this patchset is better than the result without this patchset:
-> 
-> The problem is the vhost_net_test is you optimizing the page fragment
-> allocator for *YOUR* use case. I get that you want to show overall
-> improvement but that doesn't. You need to provide it with context for
-> the current users of the page fragment allocator in the form of
-> something other than one synthetic benchmark.
-> 
-> I could do the same thing by by tweaking the stack and making it drop
-> all network packets. The NICs would show a huge performance gain. It
-> doesn't mean it is usable by anybody. A benchmark is worthless without
-> the context about how it will impact other users.
-> 
-> Think about testing with real use cases for the areas that are already
-> making use of the page frags rather than your new synthetic benchmark
-> and the vhost case which you are optimizing for. Arguably this is why
-> so many implementations go their own way. It is difficult to optimize
-> for one use case without penalizing another and so the community needs
-> to be wiling to make that trade-off.
-> .
-> 
+On Wed, Apr 10, 2024 at 5:50=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 10/04/24 10:40, Hsin-Te Yuan ha scritto:
+> > According to Documentation/driver-api/thermal/power_allocator.rst, ther=
+e
+> > should be two passive trip points. Adding the missing trip point to
+> > ensure that the governor works optimally.
+> >
+> > Fixes: c7a728051f4e ("arm64: dts: mediatek: mt8192: Add thermal nodes a=
+nd thermal zones")
+> > Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+>
+> That's better - but while I can agree about setting a general temperature
+> for that, I still have a few questions and requests:
+>
+> 1. Why is this 68=C2=B0C? Was that value provided by MediaTek, or was it =
+calculated?
+>   1b. If this was calculated, please, can you explain how?
+>
+> 2. The power allocator documentation also says that the governor works go=
+od
+>     when a "sustainable dissipatable power" parameter is fed to it throug=
+h the
+>     `sustainable-power` devicetree property (with that being strictly boa=
+rd
+>     specific and never SoC-global, as that depends on the form factor and=
+ on
+>     the cooling method of the machine), can you please also add the right
+>     sustainable power indication to the Chromebook devicetrees?
+>     In the MT8192 specific case, that's mt8192-asurada.dtsi.
+>
+> 3. I just noticed that MT8192 is not the only one that would be affected =
+by
+>     the issue that you're describing in this commit; can you please perfo=
+rm a
+>     similar change on the others, if parameters are known?
+>
+> Thanks,
+> Angelo
+>
+> > ---
+> > Changes in v2:
+> > - Clearify the reason of adding another passive trip point
+> > - Link to v1: https://lore.kernel.org/r/20240410-upstream-torvalds-mast=
+er-v1-1-852e903f0cec@chromium.org
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 40 +++++++++++++++++++++++=
++++++++++
+> >   1 file changed, 40 insertions(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot=
+/dts/mediatek/mt8192.dtsi
+> > index 05e401670bced..08d8bccc84669 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > @@ -1959,6 +1959,11 @@ cpu0-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_LITTLE_=
+CPU0>;
+> >
+> >                       trips {
+> > +                             cpu0_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu0_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> > @@ -1989,6 +1994,11 @@ cpu1-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_LITTLE_=
+CPU1>;
+> >
+> >                       trips {
+> > +                             cpu1_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu1_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> > @@ -2019,6 +2029,11 @@ cpu2-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_LITTLE_=
+CPU2>;
+> >
+> >                       trips {
+> > +                             cpu2_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu2_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> > @@ -2049,6 +2064,11 @@ cpu3-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_LITTLE_=
+CPU3>;
+> >
+> >                       trips {
+> > +                             cpu3_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu3_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> > @@ -2079,6 +2099,11 @@ cpu4-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_BIG_CPU=
+0>;
+> >
+> >                       trips {
+> > +                             cpu4_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu4_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> > @@ -2109,6 +2134,11 @@ cpu5-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_BIG_CPU=
+1>;
+> >
+> >                       trips {
+> > +                             cpu5_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu5_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> > @@ -2139,6 +2169,11 @@ cpu6-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_BIG_CPU=
+2>;
+> >
+> >                       trips {
+> > +                             cpu6_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu6_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> > @@ -2169,6 +2204,11 @@ cpu7-thermal {
+> >                       thermal-sensors =3D <&lvts_mcu MT8192_MCU_BIG_CPU=
+3>;
+> >
+> >                       trips {
+> > +                             cpu7_thres: trip-point {
+> > +                                     temperature =3D <68000>;
+> > +                                     hysteresis =3D <2000>;
+> > +                                     type =3D "passive";
+> > +                             };
+> >                               cpu7_alert: trip-alert {
+> >                                       temperature =3D <85000>;
+> >                                       hysteresis =3D <2000>;
+> >
+> > ---
+> > base-commit: 20cb38a7af88dc40095da7c2c9094da3873fea23
+> > change-id: 20240410-upstream-torvalds-master-40aeff5416c7
+> >
+> > Best regards,
+>
+>
 
