@@ -4,100 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD966CD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 12:42:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1088CD11C2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 12:45:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s6I23qc5vtFfA69hwi5DwiHXGwJhre0eHDpmfJgJbQg=; b=ulif3JxKLVeozUDJPeXb0F7BAp
-	Q7hfcJpCn6FLaGdmw3r0CVFRI8+WuB9LWviL87vitavA4UFfv50xLU+941dowYIkseQSUme252hph
-	eKIRgVlQwCj/dZO1PdYL+xy26nodfdTunPaEHvBpPLN9kTzWB9H/+PC+T1gW3En4E4y2UuXvsUbLj
-	0nQXGYTn0tNa87dS0NiHg/HiqU4k7UmiyUElLEt5+WQAVWe3EcxIQz3kBdXRbnErnibFceKAorSXy
-	9QyNyVk7qRqmvRTPvDu+9mN+Wx5KZdmzKo1qAJ2KLP6So9N1mmhgSPXznDKxU3P4MVgIwT9/kYhs6
-	XavjfivQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0v050svZEeKX6xCxDWehqmojLYZEjuvnVFUXjaedZaw=; b=f/J9fLHe86D7CgYStKnxe0OXqR
+	n8ySWEDTxQhBiw6y1vmDo7VPBVPKAX+afcQL5UDqI+kQGO6sZcr3J8F9CSv4l8Pyft7+DDDOVwqlt
+	EBMlkdBzKdUw19+MNCmK4pPZcC2BjWQtA/tcZIyzhEipoIrix9Tt5KacuBb8U3ZukgRdnBTQeGKHa
+	JLjkQeLPQpAAPnO+jy2kN+jq0NBN3OepRr8ZBhE1KTJh2wjSAQU8rr12t2dLrutYPKB/d909u0uEj
+	xINxb6bal0ovf+1X5G03MscXhTMod3a1qveIlCeudah6eOFA2X2aGtquka5bT0mv/g0Ic5NXIdG3f
+	AwuZSH8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruXHv-00000006vVG-1TpS;
-	Wed, 10 Apr 2024 12:42:51 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1ruXKt-00000006wKu-0hjI;
+	Wed, 10 Apr 2024 12:45:55 +0000
+Received: from mail-ej1-f43.google.com ([209.85.218.43])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruXHr-00000006vTn-305q
-	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Apr 2024 12:42:49 +0000
-Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-343eb6cc46bso3435714f8f.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 05:42:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1712752965; x=1713357765; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=s6I23qc5vtFfA69hwi5DwiHXGwJhre0eHDpmfJgJbQg=;
-        b=Scy1O62hAtpP4FoUeYTw0tgraFxxmiCr2eXAZ0pE3qAgFmFTlJBqrqgBwLQF6THeU+
-         TGDECsccbXBugz/FBBJ38zaf9dPo2037TcS2wNfCvwzGQS3iFu+7hriWxtCBgzJBnEw0
-         0EcFG3gRWRsRDIKxS0P0lf+eEaT+qDX8ptoffn7onfWv/0kD4hRAfKifoVxYe+0+51fk
-         Vy68goSzVjytXKkk352qqG9TP0vSh/zrOLcVQwbem27EKaEblkbFXrCJJ/vIqorNw4o/
-         ssbXST6h3ZZE+QOMmP6fm7biocWbTkYJpWjWxzFtRPaASziOn50CQPYqiM6pHjZxLqkO
-         5/Jg==
+	id 1ruXKn-00000006wJd-21vH;
+	Wed, 10 Apr 2024 12:45:51 +0000
+Received: by mail-ej1-f43.google.com with SMTP id a640c23a62f3a-a51beae2f13so478433266b.1;
+        Wed, 10 Apr 2024 05:45:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712752965; x=1713357765;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=s6I23qc5vtFfA69hwi5DwiHXGwJhre0eHDpmfJgJbQg=;
-        b=QR2GnaFZhkI8u/UHEUJrGZlhTEPLcGp+2X8KAVXPVJaeaw+FIcsunyh0iRK3kPxFRd
-         Kvj5KZl3bemObNZvFuoYPHmA/00lKetdyqYq6HflfysaSgLiX6//75m8q15asef+LYnY
-         RdtSiwtXmmFrG7as55NibwVMrUdpJHpEuNik6WablAKVXqE3tw0BrkFeudIPVj+FhTK6
-         9VzlA+Sjtm14VqTQXaa5yMsqSkVniTdqlIzS8Q4lI6/OgqCgcezkBaK49GTc8o0UnVSX
-         camDQCPm68O+hK3Bl4mdbNHbMTlHkHlxK8ycEWgFMGdyoQTJRQs3yZStjrlUpbJQiNXf
-         BMXw==
-X-Forwarded-Encrypted: i=1; AJvYcCUb59xJnMtj9Os9YxC62HjSlv8JiBOYXwcLZTeyKg9wcCAn2XeruX3E/QiHbfYBImIaREVRvASUlUA1E+P3DJGhpIye+tvSpLV4TnLsQFBQ0iYB
-X-Gm-Message-State: AOJu0Yy9h3GPD7nPGy0JBmz4cx9cgaYWFq9J60eNTvEnoV8/mAUie1a3
-	kCH0HH2GbiUnZkdVjcwD1MqwUUvuEAjI8HSLZeJB0znetgZVR9XUFwUOcMGWhrw=
-X-Google-Smtp-Source: AGHT+IGLIzv68MN2vk07ucSWBnQpWhzyZz3+w9au/M9OjAewrobTeMyExcozFPeCXalIxP/pVJHGdA==
-X-Received: by 2002:a5d:64c3:0:b0:33e:19ae:3716 with SMTP id f3-20020a5d64c3000000b0033e19ae3716mr2319146wri.11.1712752965497;
-        Wed, 10 Apr 2024 05:42:45 -0700 (PDT)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id a17-20020a5d5091000000b00341ba91c1f5sm13702046wrt.102.2024.04.10.05.42.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 10 Apr 2024 05:42:45 -0700 (PDT)
-Message-ID: <6ae5ed54-4205-46ae-b903-188a8138eaa4@baylibre.com>
-Date: Wed, 10 Apr 2024 14:42:43 +0200
+        d=1e100.net; s=20230601; t=1712753146; x=1713357946;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0v050svZEeKX6xCxDWehqmojLYZEjuvnVFUXjaedZaw=;
+        b=dGxr5fUZKtIozuaC+z0aesE5nTlYWelXw4kVcNhlna/iK74dnL6GlwgofdDWhONdwm
+         3k5xPdVJmSydv8qAt6Fdhr31O2twrnKFwnZWSiS6bVz9o3KJfcZW/97ufT1S7crFyrpm
+         ZYJaR1VDliu/xCYaBJhVh4Ie/QWNHpVdQrGUOd5WYJbD//cuHuHM8olIBXRSNe1g1+xV
+         ClElYIGWChd7bywWqnrBIWUfE3kZj4ZrEDN4cJisWbE8/4FrPIBah1LHDWBj71uzJd/A
+         +6yj1zg0qwvWWvLsQp1HWCdl55d0vtsemlOsXw/sagToSgSirsDPlbmQ+Dv+DnUPMQt6
+         vTWg==
+X-Forwarded-Encrypted: i=1; AJvYcCUzm3wXyWQ3XQUlcQ7mbX+B4AmcGpwZe9y2TKnSMM41DOrs+S0kw6o8tFJBWEtTxIT8XImEpbApD0/WB54wKzybyG6zTqQ4CugG0wxZDThtkNcR4d2ZEgMh5Lf6AQWU+Pikh84n7dnUrz8ATFtwmOxABBtanrOKClW11HRgfZA1qznpqZv0yVPL/3PyVPvogSaIewm3BMIW3ETtDpZKqQmKF9Z9Q4aezJmC7BszGOxBAw==
+X-Gm-Message-State: AOJu0YyHQW1/schjeyxI/JI+oRqBtk9o9DoHPa6TTDE+QDQSCDoSiuAh
+	XfU36PyOHbN4HdnEvRMIt1tkUSmpGw2AuE5UBz73+bn5VcIcDoDD
+X-Google-Smtp-Source: AGHT+IGHTIvSnYbc16oL+rmZ6uXCsyNfTppKX/R1tU+P7ojp/FGa9JEJ+FKYxGWNNfYEH5ZZNCyv/A==
+X-Received: by 2002:a17:907:7da8:b0:a51:dd50:6a with SMTP id oz40-20020a1709077da800b00a51dd50006amr2008839ejc.66.1712753145630;
+        Wed, 10 Apr 2024 05:45:45 -0700 (PDT)
+Received: from gmail.com (fwdproxy-lla-007.fbsv.net. [2a03:2880:30ff:7::face:b00c])
+        by smtp.gmail.com with ESMTPSA id jg18-20020a170907971200b00a51a60bf400sm6765658ejc.76.2024.04.10.05.45.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 10 Apr 2024 05:45:45 -0700 (PDT)
+Date: Wed, 10 Apr 2024 05:45:41 -0700
+From: Breno Leitao <leitao@debian.org>
+To: Ido Schimmel <idosch@idosch.org>
+Cc: aleksander.lobakin@intel.com, kuba@kernel.org, davem@davemloft.net,
+	pabeni@redhat.com, edumazet@google.com, elder@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, nbd@nbd.name,
+	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	lorenzo@kernel.org, taras.chornyi@plvision.eu,
+	ath11k@lists.infradead.org, ath10k@lists.infradead.org,
+	linux-wireless@vger.kernel.org, geomatsi@gmail.com,
+	kvalo@kernel.org, quic_jjohnson@quicinc.com, leon@kernel.org,
+	dennis.dalessandro@cornelisnetworks.com,
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	bpf@vger.kernel.org, Jiri Pirko <jiri@resnulli.us>,
+	Simon Horman <horms@kernel.org>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	amcohen@nvidia.com
+Subject: Re: [PATCH net-next v4 2/9] net: create a dummy net_device allocator
+Message-ID: <ZhaJ9WkG2OYXkvGo@gmail.com>
+References: <20240409125738.1824983-1-leitao@debian.org>
+ <20240409125738.1824983-3-leitao@debian.org>
+ <ZhZzjNDRaHtdYjDg@shredder>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 01/18] ASoC: mediatek: Add common machine soundcard
- driver probe mechanism
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- broonie@kernel.org
-Cc: wenst@chromium.org, lgirdwood@gmail.com, robh@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.com,
- trevor.wu@mediatek.com, maso.huang@mediatek.com,
- xiazhengqiao@huaqin.corp-partner.google.com, arnd@arndb.de,
- kuninori.morimoto.gx@renesas.com, shraash@google.com,
- nicolas.ferre@microchip.com, u.kleine-koenig@pengutronix.de,
- dianders@chromium.org, frank.li@vivo.com, allen-kh.cheng@mediatek.com,
- eugen.hristev@collabora.com, claudiu.beznea@tuxon.dev,
- jarkko.nikula@bitmer.com, jiaxin.yu@mediatek.com, alpernebiyasak@gmail.com,
- ckeepax@opensource.cirrus.com, zhourui@huaqin.corp-partner.google.com,
- nfraprado@collabora.com, alsa-devel@alsa-project.org,
- shane.chien@mediatek.com, linux-sound@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20240409113310.303261-1-angelogioacchino.delregno@collabora.com>
- <20240409113310.303261-2-angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20240409113310.303261-2-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZhZzjNDRaHtdYjDg@shredder>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_054247_895563_80E7EA2C 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240410_054549_615666_CF990673 
+X-CRM114-Status: GOOD (  29.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,24 +95,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-
-On 09/04/2024 13:32, AngeloGioacchino Del Regno wrote:
-> Add a common machine soundcard driver probe function that supports both
-> DSP and AFE-direct usecases and also provides a hook for legacy machine
-> soundcard driver probe mechanisms.
+On Wed, Apr 10, 2024 at 02:10:04PM +0300, Ido Schimmel wrote:
+> On Tue, Apr 09, 2024 at 05:57:16AM -0700, Breno Leitao wrote:
+> > It is impossible to use init_dummy_netdev together with alloc_netdev()
+> > as the 'setup' argument.
+> > 
+> > This is because alloc_netdev() initializes some fields in the net_device
+> > structure, and later init_dummy_netdev() memzero them all. This causes
+> > some problems as reported here:
+> > 
+> > 	https://lore.kernel.org/all/20240322082336.49f110cc@kernel.org/
+> > 
+> > Split the init_dummy_netdev() function in two. Create a new function called
+> > init_dummy_netdev_core() that does not memzero the net_device structure.
+> > Then have init_dummy_netdev() memzero-ing and calling
+> > init_dummy_netdev_core(), keeping the old behaviour.
+> > 
+> > init_dummy_netdev_core() is the new function that could be called as an
+> > argument for alloc_netdev().
+> > 
+> > Also, create a helper to allocate and initialize dummy net devices,
+> > leveraging init_dummy_netdev_core() as the setup argument. This function
+> > basically simplify the allocation of dummy devices, by allocating and
+> > initializing it. Freeing the device continue to be done through
+> > free_netdev()
+> > 
+> > Suggested-by: Jakub Kicinski <kuba@kernel.org>
+> > Signed-off-by: Breno Leitao <leitao@debian.org>
 > 
-> Note that the hook is there because, even for legacy probe, a lot of the
-> actual code can still be commonized, hence still reducing duplication
-> for the legacy devicetree retrocompatibility cases.
+> Reviewed-by: Ido Schimmel <idosch@nvidia.com>
 > 
-> This common probe function deprecates all of the inconsistent previous
-> probe mechanisms and aims to settle all of the MediaTek card drivers on
-> consistent and common devicetree properties describing wanted DAIs,
-> device specific DAI configuration and DAI links to codecs found on
-> each device/board.
+> We were about to submit another user of init_dummy_netdev() when I
+> noticed this patch. Converted the code to use alloc_netdev_dummy() [1]
+> and it seems to be working fine. Will submit after your patch is
+> accepted.
 
--- 
-Regards,
-Alexandre
+Thanks. It seems that this patch is close to get accepted. Let's see...
+
+> See a few minor comments below.
+> 
+> [...]
+> 
+> > +/**
+> > + *	init_dummy_netdev	- init a dummy network device for NAPI
+> > + *	@dev: device to init
+> > + *
+> > + *	This takes a network device structure and initialize the minimum
+> 
+> s/initialize/initializes/
+> 
+> > + *	amount of fields so it can be used to schedule NAPI polls without
+> > + *	registering a full blown interface. This is to be used by drivers
+> > + *	that need to tie several hardware interfaces to a single NAPI
+> > + *	poll scheduler due to HW limitations.
+> > + */
+> > +void init_dummy_netdev(struct net_device *dev)
+> > +{
+> > +	/* Clear everything. Note we don't initialize spinlocks
+> > +	 * are they aren't supposed to be taken by any of the
+> 
+> I assume you meant s/are/as/ ?
+
+Thanks for the feedback, I agree with all of them.
+
+Since these lines were not introduced by this patch, and this patch is
+just moving code (and comments) around, I would add a new patch to the
+patch series fixing the grammar errors.
 
