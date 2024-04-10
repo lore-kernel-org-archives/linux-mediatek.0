@@ -4,68 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0B8ACD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 19:15:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E3F4CD128A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 19:32:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZuN+F9V8zQKDQ2JVnzohQXPyx+7uGvUKPz6LV1hDlDU=; b=eumtd4TF5QwnHNha1dPm1EjU7i
-	4qY2q7pGmdilEDydMgfkZTqc8exISW85dfcy0Oa0ndYs5NuYtVmnLQIKTrJ8COMMNLB/HzDXLxSB4
-	xIR8kaEz4k1BG2zjA6Em+ZHuMoiumDwzWnZfvnebHl9aJ6LId6n2kMl37dNreqtAsXg8B5opa6Hkc
-	ubkQwZoIazww32/eN+oj04tqmf16tHht18nUIaXtcW8GQTK0v3q1cFmVWWX1kc+UiJRmtD4k6Wzm9
-	g3NKwhiHcUXNo9O3l8DjHNjTphM90rU7veo/bDW7D2q1NYOBuFZ0QZefUQg1BYA+cBv8rFWIyheGb
-	Nu2o47Wg==;
+	bh=Uxo89sMS0NY9ztiDKQAuRbfc1d5PUD6ZLRkkA6a+FNk=; b=2oQf+xDZtp7dtIoBU7lvLccVaz
+	x7LeHO0sDJIIhcayP1Y7DbLYzh+ST2SYzfuNYCvpjBqIFtTRfcdvDQZIuYe30V4/rdT6Wbeg6HKi9
+	NOwjyeBb1RHuX9KJKwdwO3aQgzs/1HbMM3n3zY0CFOKSslG2zFM6dIFlkqsUTzE608/HvXqLlxaaH
+	M6RViLLVhA88ld5nmqnO0dZScH6lFxeMer5QP67+HZspUlxmv/XH9LLEAZZMrzMqHSFwTScNhs/0n
+	uSQUb8QB7JwIflkQ5AxBzuGQyGUtySrTqoFQGJLaWMk1tJvBCw3QrGO4uEOR2m/4eUaZdOGTE5Ww/
+	ouiixK/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rudPx-00000008eNa-22ea;
-	Wed, 10 Apr 2024 19:15:33 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rudgW-00000008hCo-1vWA;
+	Wed, 10 Apr 2024 19:32:40 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rudPu-00000008eMX-0SQ6;
-	Wed, 10 Apr 2024 19:15:31 +0000
+	id 1rudgR-00000008hAC-2w2Y;
+	Wed, 10 Apr 2024 19:32:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 02186CE2B57;
-	Wed, 10 Apr 2024 19:15:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3F79C433C7;
-	Wed, 10 Apr 2024 19:15:26 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 8C943CE2A55;
+	Wed, 10 Apr 2024 19:32:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88179C43390;
+	Wed, 10 Apr 2024 19:32:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712776527;
-	bh=Y8HrYr9N2X54zlXcRSCoc2hhNScMqkdWP9FAh9Krwpo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=O6D/MyhRjX4ilUEZ8v2TxELy3AD7IFMbhHI+0f3QYn6legTjbs42EOHPa6Zy/N1Cv
-	 8YdZnZW13beNY1N/uwPLTXi/TBR2m5pfJzQ48FsByqAFNfWGKYGXjP3lH8eU47iMcN
-	 CSB/bud3Vs5fHAeuVXp7i9I4vmDpFB5W2U1iP6Z8oHNACDu9ZoGsmH7b8xVMCdLRjm
-	 giGQSJMdm9AAKD2Q+Mar3iE5l6Pq7TiMnEkuHcnLw+Xl8E8yOeEpYeAO4VuVf0msiJ
-	 CDs7PTm8dmFC/Pzq/Jg8gMPDsu6+wGfX2fqBHzQvlC4gxjU8Lrg0WmgZQrSfZDqG3+
-	 92LTTQTuF6w+g==
-Date: Wed, 10 Apr 2024 14:15:24 -0500
-From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
-	daniel@ffwll.ch, maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org, tzimmermann@suse.de, matthias.bgg@gmail.com,
-	shawn.sung@mediatek.com, yu-chang.lee@mediatek.com,
-	ck.hu@mediatek.com, jitao.shi@mediatek.com,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, wenst@chromium.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v2 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
- support for board path
-Message-ID: <20240410191524.GA903053-robh@kernel.org>
-References: <20240409120211.321153-1-angelogioacchino.delregno@collabora.com>
- <20240409120211.321153-3-angelogioacchino.delregno@collabora.com>
+	s=k20201202; t=1712777552;
+	bh=WW5sMpVOz0tGbMU1O5onTUR51y42uNFu9wn05WPtkWY=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=tq4rrWfX9sfVjyG1eyRA5JQGhmGUZZ7uZmnP8xeGteU4tmjtBJwX1rIwj8QFaJQjX
+	 hazgBdZOKaDhWWOOpBX6HrGOSdUUKtAERdIR/r8t0ihV2Y0E50ZsNeIdGCuECZsGc4
+	 MVhev7smKrOV3LTOgTQd6psiBKajiUbE3PItXRb805uwXE93PscA8sScGPOQ0bD2h3
+	 yL4o4fFtnh+PyXMspoVkdeCYh+yHEbJJA7uBTYcP8lE1egXnKItFj4r5SyFia/wVYd
+	 et+x2ylnr2iBKZZMb3xWvQ/x8CxEmBdAQqRiw1NTwJlG9b10JfdjTo1V82rU5g43Wu
+	 5YHbgdVHo6jUg==
+Date: Wed, 10 Apr 2024 14:32:31 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240409120211.321153-3-angelogioacchino.delregno@collabora.com>
+From: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: linux-rockchip@lists.infradead.org, 
+ Scott Branden <sbranden@broadcom.com>, 
+ Thippeswamy Havalige <thippeswamy.havalige@amd.com>, 
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>, 
+ Will Deacon <will@kernel.org>, Sven Peter <sven@svenpeter.dev>, 
+ Heiko Stuebner <heiko@sntech.de>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+ Florian Fainelli <florian.fainelli@broadcom.com>, 
+ Linus Walleij <linus.walleij@linaro.org>, devicetree@vger.kernel.org, 
+ Jim Quinlan <jim2101024@gmail.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org, 
+ Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>, asahi@lists.linux.dev, 
+ linux-arm-msm@vger.kernel.org, Hector Martin <marcan@marcan.st>, 
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Mark Kettenis <kettenis@openbsd.org>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Tom Joseph <tjoseph@cadence.com>, linux-renesas-soc@vger.kernel.org, 
+ Jianjun Wang <jianjun.wang@mediatek.com>, 
+ Gustavo Pimentel <gustavo.pimentel@synopsys.com>, 
+ Jingoo Han <jingoohan1@gmail.com>, linux-pci@vger.kernel.org, 
+ Conor Dooley <conor+dt@kernel.org>, linux-rpi-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, 
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, 
+ Michal Simek <michal.simek@amd.com>, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+ Nicolas Saenz Julienne <nsaenz@kernel.org>, Ray Jui <rjui@broadcom.com>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+ Daire McNamara <daire.mcnamara@microchip.com>, 
+ Marek Vasut <marek.vasut+renesas@gmail.com>, 
+ linux-mediatek@lists.infradead.org, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>, 
+ Srikanth Thokala <srikanth.thokala@intel.com>, 
+ Ryder Lee <ryder.lee@mediatek.com>, Bjorn Andersson <andersson@kernel.org>, 
+ Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Magnus Damm <magnus.damm@gmail.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <20240410181521.269431-4-krzysztof.kozlowski@linaro.org>
+References: <20240410181521.269431-1-krzysztof.kozlowski@linaro.org>
+ <20240410181521.269431-4-krzysztof.kozlowski@linaro.org>
+Message-Id: <171277754988.1212749.4199877903133990039.robh@kernel.org>
+Subject: Re: [PATCH v2 4/4] dt-bindings: PCI: mediatek,mt7621-pcie: switch
+ from deprecated pci-bus.yaml
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_121530_533101_4F17E477 
-X-CRM114-Status: GOOD (  18.42  )
+X-CRM114-CacheID: sfid-20240410_123236_127050_BDCFAE3F 
+X-CRM114-Status: GOOD (  17.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,60 +112,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 09, 2024 at 02:02:10PM +0200, AngeloGioacchino Del Regno wrote:
-> Document OF graph on MMSYS/VDOSYS: this supports up to three DDP paths
-> per HW instance (so potentially up to six displays for multi-vdo SoCs).
+
+On Wed, 10 Apr 2024 20:15:21 +0200, Krzysztof Kozlowski wrote:
+> dtschema package with core schemas deprecated pci-bus.yaml schema in
+> favor of individual schemas per host, device and pci-pci.
 > 
-> The MMSYS or VDOSYS is always the first component in the DDP pipeline,
-> so it only supports an output port with multiple endpoints - where each
-> endpoint defines the starting point for one of the (currently three)
-> possible hardware paths.
+> Switch Mediatek MT7621 PCIe host bridge binding to this new schema.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> This requires dtschema package newer than v2024.02 to work fully.
+> v2024.02 will partially work: with a warning.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> 
 > ---
->  .../bindings/arm/mediatek/mediatek,mmsys.yaml | 23 +++++++++++++++++++
->  1 file changed, 23 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> index b3c6888c1457..4e9acd966aa5 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> @@ -93,6 +93,29 @@ properties:
->    '#reset-cells':
->      const: 1
->  
-> +  port:
-> +    $ref: /schemas/graph.yaml#/properties/port
-> +    description:
-> +      Output port node. This port connects the MMSYS/VDOSYS output to
-> +      the first component of one display pipeline, for example one of
-> +      the available OVL or RDMA blocks.
-> +      Some MediaTek SoCs support up to three display outputs per MMSYS.
-
-I'm have a hard time understanding this, but is it 3 outputs 
-simultaneously or connect mmsys to 1 of 3. Generally it's multiple ports 
-for the former and endpoints for the latter.
-
-> +    properties:
-> +      endpoint@0:
-> +        $ref: /schemas/graph.yaml#/properties/endpoint
-> +        description: Output to the primary display pipeline
-> +
-> +      endpoint@1:
-> +        $ref: /schemas/graph.yaml#/properties/endpoint
-> +        description: Output to the secondary display pipeline
-> +
-> +      endpoint@2:
-> +        $ref: /schemas/graph.yaml#/properties/endpoint
-> +        description: Output to the tertiary display pipeline
-> +
-> +    required:
-> +      - endpoint@0
-> +
->  required:
->    - compatible
->    - reg
-> -- 
-> 2.44.0
+> Important: v2024.03 (said dtschema newer than v2024.02) was not yet
+> released, therefore this patch probably should wait a bit. Previous
+> patches do not depend anyhow on future release, so they can be taken as
+> is.
 > 
+> Changes in v2:
+> 1. New patch
+> 2. Split mediatek,mt7621-pcie to separate patch as it uses
+>    pci-pci-bridge schema.
+> ---
+>  .../devicetree/bindings/pci/mediatek,mt7621-pcie.yaml         | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+
+My bot found errors running 'make dt_binding_check' on your patch:
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.example.dtb: pcie@1e140000: pcie@0,0: Unevaluated properties are not allowed ('clocks', 'phy-names', 'phys', 'resets' were unexpected)
+	from schema $id: http://devicetree.org/schemas/pci/mediatek,mt7621-pcie.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.example.dtb: pcie@1e140000: pcie@1,0: Unevaluated properties are not allowed ('clocks', 'phy-names', 'phys', 'resets' were unexpected)
+	from schema $id: http://devicetree.org/schemas/pci/mediatek,mt7621-pcie.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.example.dtb: pcie@1e140000: pcie@2,0: Unevaluated properties are not allowed ('clocks', 'phy-names', 'phys', 'resets' were unexpected)
+	from schema $id: http://devicetree.org/schemas/pci/mediatek,mt7621-pcie.yaml#
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240410181521.269431-4-krzysztof.kozlowski@linaro.org
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
