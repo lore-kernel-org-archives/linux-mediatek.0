@@ -4,77 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F09ACD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 09:21:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1384CCD1296
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 09:29:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O6XERnHnMwc1UPkJwA7M4dMe8kK/+Z7/oP46jzawayI=; b=qKDzw5tpGsIq8r7cAFpfWo1RNM
-	+lHZFv3Z3ZBXklTB7ehnLLOndg3HC6BFtwiWVebs7ek1JfBeNWTtreUMByBD/nxSBLR6/wlva99S0
-	Sa2uIUTH/l764kM3qpSbP+8fVljF1GqX0HPWG1FwtcYEGcdwJxafqcNAYIcvuHbIBNsWWZ5eRGLgW
-	OqYzzquHZBDbm1cs7sKVSCw85N4yRailmRlQDIEjAEgpUDamNbMM32/0+XDk9NynWdAulGQYe89HE
-	dcmmyNBlmdmy5023jxW7NsWejZkglhcNBFSdDj1wyB6sQ61SmKN1BySLa3OFjpR0H1MsGYtZkiYf9
-	nmtLvmHg==;
+	bh=Z4kwkorErv8tb8SzoHtazPQP+BQoahujJfqdWOv/amk=; b=xLkZcignCWZFZS5Z+OJIcvlaIs
+	bFoUvyqBUj2Mum7taJYwE5oOzpZF6BToWjlZ0G1j/s3gFK4gNP8p8RIRP56lv8xFjJ/ni5/FbdGYZ
+	SdAY83UJAm9Hlvap08EWxwlZf0yOpIbqVrudrtFLqMJHR3IC4kc9GXYGR/t0pPt/OZjEiGy6P9nJz
+	hr+onJ6FK20QIz0SU4MjL97MvymvE0N2AbzWcE6WIzIwPy1EX66qVa7zNYxBaHTu5ka99LYqMmktw
+	WwolOuzGJmprEGIIUaIL7oBZQqQlW9CGh3m8pgzvjBxtkJZCMwgIWwefZIpZHzxmmQPOT2M9mKwLt
+	UoQ4+8jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruU8c-000000067HF-3LUQ;
-	Wed, 10 Apr 2024 09:21:02 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1ruUGc-000000069DV-3uKq;
+	Wed, 10 Apr 2024 09:29:18 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruU8Z-000000067F6-497L
+	id 1ruUGZ-000000069CC-2UI4
 	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Apr 2024 09:21:01 +0000
-Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2d87450361fso56422031fa.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 02:20:58 -0700 (PDT)
+	Wed, 10 Apr 2024 09:29:17 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-41691fb4c8fso16852425e9.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 02:29:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1712740857; x=1713345657; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=O6XERnHnMwc1UPkJwA7M4dMe8kK/+Z7/oP46jzawayI=;
-        b=njUwQQFD5qdo3bQiCIRGvokVMXmFe3QkL8f+enRH/QfpnUqalpOJYG9G5kN06Em9Eq
-         KAB1ibl/Lk8dexfd/Dh23C8b0QJsn1au8ysLKFXw1x//ndfVlPQ33Eo/xd704pd4S/2u
-         amyZWPiTS6I79vYu0FpEBpmolyqgIBjARviAo=
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1712741353; x=1713346153; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Z4kwkorErv8tb8SzoHtazPQP+BQoahujJfqdWOv/amk=;
+        b=E2voV4a23YmrqhVzxcSocbq8Qqqjl4iSnfDI9CKHuyCpfsb1hLAO/09Y9ZvilDIhKG
+         dUISNS8XfLfINLzn8WxPCNW6gAotEWUiTyyI8H++7stU4c+m2kqR0UEEs5pVILs9mVSl
+         wtvDFvF+zKO6fyBXNuAuecjguTgkiuiepaHOy3s+kuFNMzmi/mZZuIK0HgsNqUgW7CCz
+         KB5HKE0I0D1/stNbW2c0gXsviwswKeKGrcjCDfSswSLtB0VhWubhOzUdvBTW2wx3umTP
+         aCXkul55fhwpcY0HszQnO7zTf60JYGusgZMTWQMU1O/9p92PMzEP51H5BSPdgEboT3gM
+         89JQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712740857; x=1713345657;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=O6XERnHnMwc1UPkJwA7M4dMe8kK/+Z7/oP46jzawayI=;
-        b=q3Mt152ixB+f8Z7ptGhhwb9M0t4A0EayWZtFb6/bzT6CUDl0QBQgNTnqMruqFH1u3c
-         PDMcRtxsSXIa40uUnMmR9xGbr2mBSuhGY29tn4noagvs0uFQ8cgQySConMPNTwqSj6vQ
-         jcLkxMWguBllLtFSF+WMY22SUreb4GGqYl0sSk64jAP3FH5wuTa8rc8G+wh4NYAh1gvh
-         GlRlXcIIFo6+KLhpYpTs99QcaQRDsnUO046+WG6kBD5detuRdjNK5W+9aY5Y/JO/qn0s
-         K6L6f6ws619g6/d7Ufri6JEbc7allYLItD13oqxDmRpFjcZN4PfrfRooIN62rIawj1UW
-         5dIg==
-X-Forwarded-Encrypted: i=1; AJvYcCUexO1eBW/asm2oyDLH5WMRaNQjnqnBs4Vwi8juo0da5J9XL1GKCqbOu3YeGI/HrVXDCg5R5O+kdNLonu5GBRXM+TQjh8OC4QyRePJJMNJbWru2
-X-Gm-Message-State: AOJu0YxFBMv+mRpCoJfEVjVaFsSezV/DafHjwljilfYq3AMuJamlykhH
-	SQHgmyJk+IPGPryiQrsDIrItjEqCL19cJwOUpfnZeacVVGSgXjNHeogZ1N9AnrUYbfnSdE7WAZ2
-	56Vd3wkutOKzwXmfze+k2nQ2o836G/8BeoMi2
-X-Google-Smtp-Source: AGHT+IFL6KPS7uL0x/EtSSqM+BxaTQB6YKxFAO4dVgt7h/JSlGs8pTFg9ELkmasVKscLtesWpTkQnSz+ws7ho1rA6oM=
-X-Received: by 2002:a2e:9913:0:b0:2d8:2fea:2e4d with SMTP id
- v19-20020a2e9913000000b002d82fea2e4dmr1821870lji.2.1712740856858; Wed, 10 Apr
- 2024 02:20:56 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1712741353; x=1713346153;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Z4kwkorErv8tb8SzoHtazPQP+BQoahujJfqdWOv/amk=;
+        b=YaBqMfNkrw4dT29u6B8/vHu0mD/ZufiKLGpqvyKVZDGcajGnI6L3p6E/sTaTWr7Hn7
+         PXzJ/jsO3Bhy5n1EV/d5Z7PuN3vnruvOoqsQsWYLlw6Ty5jTnZa1aH+77cLSoXpcYXAA
+         trXy4e2V9G4S2B+NapQUhu3iwtQrhoECcKGaRWK0OzlYFsHFE9DdvE4ZZXUftKr1Cdb8
+         MPWKgOhiVfQz91tLVgRtPe1L9pGMEDXcXs1/0FMpyZpFiAYAa4BP/ppFPxNxI/xpDz4z
+         5HcFJ4vCfUD3dOSJ5x6JVd8uKy7rB4+Q6485mseBqr8y36CRtpBZy1CaPq3I/5AuqQry
+         GFlg==
+X-Forwarded-Encrypted: i=1; AJvYcCVA1WgDZ0AaAsi+UhaMT+8R4ktJ0XOa2gVN78v6InWHmEWT63OjFw7j4/le8SK12R8WFA5p6CFmyB5vUES3sSRXYCZsxpdo4TXolUF68YxwljAJ
+X-Gm-Message-State: AOJu0YyF0m6ek1Xb1h4e/eORd6lVbVPLos0HhPzafOQajBD2HDatBHBs
+	wg5nw5+I1rpzgk4NhV1Iwu36S5DL5yz/cF9fMFHifHUDUYOkqbmTQsqgMDA+0ms=
+X-Google-Smtp-Source: AGHT+IFvXyauqU6yE1hhXxe+82hSR7xjimh79oxs60By+238847k+6MrB7Ys5sLNSFw6IjHtaU72FA==
+X-Received: by 2002:a05:600c:5252:b0:416:643c:8946 with SMTP id fc18-20020a05600c525200b00416643c8946mr1274626wmb.17.1712741353432;
+        Wed, 10 Apr 2024 02:29:13 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id u15-20020a05600c19cf00b004168efc77d1sm1698186wmq.39.2024.04.10.02.29.12
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 10 Apr 2024 02:29:13 -0700 (PDT)
+Message-ID: <9ecf2158-10d1-47b3-a02f-54a4cddbf426@baylibre.com>
+Date: Wed, 10 Apr 2024 11:29:11 +0200
 MIME-Version: 1.0
-References: <20240410084405.1389378-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240410084405.1389378-1-angelogioacchino.delregno@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 10 Apr 2024 17:20:45 +0800
-Message-ID: <CAGXv+5FJM2_yr0dwD=FhaDi4FJzYn50=jY6fJsFnder2q7TKrw@mail.gmail.com>
-Subject: Re: [PATCH] power: supply: mt6360_charger: Fix of_match for
- usb-otg-vbus regulator
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: sre@kernel.org, matthias.bgg@gmail.com, mazziesaccount@gmail.com, 
-	gene_chen@richtek.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 01/18] ASoC: dt-bindings: mediatek,mt8365-afe: Add
+ audio afe document
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Rob Herring <robh@kernel.org>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org
+References: <20240226-audio-i350-v3-0-16bb2c974c55@baylibre.com>
+ <20240226-audio-i350-v3-1-16bb2c974c55@baylibre.com>
+ <e0b48da7-b33c-45e4-b3f3-a6d71bb0afe2@linaro.org>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <e0b48da7-b33c-45e4-b3f3-a6d71bb0afe2@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_022100_069276_1EBF779F 
-X-CRM114-Status: GOOD (  11.07  )
+X-CRM114-CacheID: sfid-20240410_022915_813724_5E0E30C6 
+X-CRM114-Status: GOOD (  16.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,23 +111,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 10, 2024 at 4:44=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> The of_match shall correspond to the name of the regulator subnode,
-> or the deprecated `regulator-compatible` property must be used:
-> failing to do so, the regulator won't probe (and the driver will
-> as well not probe).
->
-> Since the devicetree binding for this driver is actually correct
-> and wants DTs to use the "usb-otg-vbus-regulator" subnode name,
-> fix this driver by aligning the `of_match` string to what the DT
-> binding wants.
->
-> Fixes: 0402e8ebb8b8 ("power: supply: mt6360_charger: add MT6360 charger s=
-upport")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+
+On 09/04/2024 17:46, Krzysztof Kozlowski wrote:
+>> +    soc {
+>> +        #address-cells = <2>;
+>> +        #size-cells = <2>;
+>> +
+>> +        afe@11220000 {
+> Did you implement the comment or decided to keep afe?
+> 
+
+Though it was clear according to [1]:
+"
+Audio Front End, this is the same name used for other MTK SoC, to be
+consistent.
+
+Cook a new patch serie to change "afe" by "audio-controller" for all MTK
+SoC would be great.
+"
+
+I want to keep it and fix it later with ALL other MTK SoC.
+You didn't answer after that, I though it was ok for you...
+So if you don't agree with that, just tell me to change it instead of 
+let me think I've the choice.
+
+
+> BTW, whatever "consistency" you have in mind, it does not really matter
+> that much for that example. And for sure do not add incorrect code
+> intentionally just to fix it in next patch.
+
+I don't get your point.
+What do you mean by "do not add incorrect code intentionally" please ???
+
+
+My PoV: I implement my bindings aligned to ALL other MTK SoC, which have 
+been validated by you in the past. I can understand the copied code is 
+wrong, but I've suggested a solution and you didn't NACK it.
+
+I fell like you bully me. Are you ok to stop insinuating bad things 
+please and tell me directly if a fix is mandatory and if you are waiting 
+for a specific one, tell me directly to avoid this kind of unpleasant 
+talk and waste of time, I know maintainers are busy persons.
+
+Beside that, thanks for your reviews.
+
+[1]: 
+https://lore.kernel.org/all/eeb3329b-0558-4237-8343-4e11f65a6a35@baylibre.com/
+
+-- 
+Regards,
+Alexandre
 
