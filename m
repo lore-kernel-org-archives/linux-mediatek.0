@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FDAECD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 18:53:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A0BECD1296
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 19:03:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u04ty4XeC+ToVpbCTU/qMTm1yQRrPUKOYomefkfVDGA=; b=BPzNRQWMOVnkGXDcn7SBn4AigY
-	JJNXd/uxSbhvdfyfiUdK1v9yesWJ1gTqNMf+l4rx+uJFVOQUlUIAcGhm671OBTdn3ShnEhccmCguu
-	eTQ4fYW/GAXjOoAHdzF9OWXqBJ60svRyz9KyTAwx6v4Vu2tFhD83q6FXQP2E+OeiD2j7jRu24GyoI
-	thcRajPVdQ96y/1dNQg++/tVSXH8fxv9lXI/i1v67Hk7nt4DyU5omskShvtPLo+84pXSBjVm730lB
-	EIFpvMmsfPVEQQwTg8eDNhs4PTVq4xKp60xFAdvn58vZyiEWATkQV7FJlIkezBXcxgfE5xcr5cGcF
-	VzkabNtg==;
+	bh=pn/40NrXePit7C3Tnjz/Uhrhx0pu34TLJBfBTzc/Ewk=; b=kkXhZoXln2tTzJ7m3BzX6lZa/c
+	k+WRty4OHMmxVOvfOEwlUGDSK4dil6uw2OLh5KZvjdY4PngbVcrhut1Qjl0ZgaqguOUtf82jxpkVm
+	NVtk6l93IB2arUUVP7jhoOUU7/jShrWmyUbnf0/Twth7TSKidtWH48jo62eCm0rmJOVRwkQz/Z/Pt
+	yOZ6fKl2ZVD5RReISM1ot0oDb1lC7o9lS7SqV9sgvQOJVF+Eq6V0ZNy/uvTAwc2lRmqqAWEpYGOkx
+	wjMLaVmedvqI3Hv1iQmXplP2enRmw9ITQv/hbXsYgvYoetlUMPo02C/SxF3JnYWMhyuoghe4rUoBG
+	qgM3gCug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rud4D-00000008YgT-3tBw;
-	Wed, 10 Apr 2024 18:53:05 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1rudEU-00000008bFA-3pXD;
+	Wed, 10 Apr 2024 19:03:42 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rud4A-00000008Yde-0qrE;
-	Wed, 10 Apr 2024 18:53:03 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1rud3c-0001D4-1U;
-	Wed, 10 Apr 2024 18:52:28 +0000
-Date: Wed, 10 Apr 2024 19:52:24 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Paolo Abeni <pabeni@redhat.com>
-Cc: arinc.unal@arinc9.com, DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>,
-	Russell King <linux@armlinux.org.uk>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
-	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Florian Fainelli <florian.fainelli@broadcom.com>
-Subject: Re: [PATCH net v3] net: dsa: mt7530: fix enabling EEE on MT7531
- switch on all boards
-Message-ID: <Zhbf6AtfBfxXMIGc@makrotopia.org>
-References: <20240408-for-net-mt7530-fix-eee-for-mt7531-mt7988-v3-1-84fdef1f008b@arinc9.com>
- <1f2bc5416a0a73756cc1f45f3300619eb201b0a4.camel@redhat.com>
+	id 1rudEQ-00000008bE5-3woX;
+	Wed, 10 Apr 2024 19:03:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1BC0861EAB;
+	Wed, 10 Apr 2024 19:03:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F84CC433C7;
+	Wed, 10 Apr 2024 19:03:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712775817;
+	bh=S8NmEXKVaI1r9fUCrU6f1WB8Na0Z5mpdO3VRO7eiavM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=CBobSbemzs62QSNAqv6HwSPxAY2iptSYLmY76ryN7CKtLmeUHJD0d1Zo0yPgfldGm
+	 ygQf7JOl5ys2YYW6DAlSIB5j9HkOi4nhKHyP44e/zUGk2KMFBGg2TUDONVEJDgfbz0
+	 6jE5fbOci7aRvBaGUsO4LwCp8ixP9h+lZUlygfwQ3oo7RqXEXsDm35FLMAuxTD93G/
+	 gj8MxGApB/orbGD567KXmLcPoTaWK2OZ03bdVes8WFxu2J5ADmrOjED965se7CJ1nd
+	 DYxOHbCdx3fCyn1E1YQEcnz1VXvagqkwRERnXPFxi4Xbt35hPmbV5tSb+bcNmvuJj2
+	 IR+uK15oettKQ==
+Date: Wed, 10 Apr 2024 14:03:35 -0500
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
+	daniel@ffwll.ch, maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org, tzimmermann@suse.de, matthias.bgg@gmail.com,
+	shawn.sung@mediatek.com, yu-chang.lee@mediatek.com,
+	ck.hu@mediatek.com, jitao.shi@mediatek.com,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, wenst@chromium.org,
+	kernel@collabora.com
+Subject: Re: [PATCH v2 1/3] dt-bindings: display: mediatek: Add OF graph
+ support for board path
+Message-ID: <20240410190335.GA890682-robh@kernel.org>
+References: <20240409120211.321153-1-angelogioacchino.delregno@collabora.com>
+ <20240409120211.321153-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1f2bc5416a0a73756cc1f45f3300619eb201b0a4.camel@redhat.com>
+In-Reply-To: <20240409120211.321153-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_115302_340516_B7CE49F2 
-X-CRM114-Status: GOOD (  33.82  )
+X-CRM114-CacheID: sfid-20240410_120339_206568_FC3F91D6 
+X-CRM114-Status: GOOD (  25.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,71 +80,220 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 09, 2024 at 01:58:56PM +0200, Paolo Abeni wrote:
-> On Mon, 2024-04-08 at 10:08 +0300, Arınç ÜNAL via B4 Relay wrote:
-> > From: Arınç ÜNAL <arinc.unal@arinc9.com>
-> > 
-> > The commit 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
-> > brought EEE support but did not enable EEE on MT7531  MACs. EEE is
-> > enabled on MT7531 switch MACs by pulling the LAN2LED0 pin low on the board
-> > (bootstrapping), unsetting the EEE_DIS bit on the trap register, or setting
-> > the internal EEE switch bit on the CORE_PLL_GROUP4 register. Thanks to
-> > SkyLake Huang (黃啟澤) from MediaTek for providing information on the
-> > internal EEE switch bit.
-> > 
-> > There are existing boards that were not designed to pull the pin low.
-> > Because of that, the EEE status currently depends on the board design.
-> > 
-> > The EEE_DIS bit on the trap pertains to the LAN2LED0 pin which is usually
-> > used to control an LED. Once the bit is unset, the pin will be low. That
-> > will make the active low LED turn on. The pin is controlled by the switch
-> > PHY. It seems that the PHY controls the pin in the way that it inverts the
-> > pin state. That means depending on the wiring of the LED connected to
-> > LAN2LED0 on the board, the LED may be on without an active link.
-> > 
-> > To not cause this unwanted behaviour whilst enabling EEE on all boards, set
-> > the internal EEE switch bit on the CORE_PLL_GROUP4 register.
-> > 
-> > My testing on MT7531 shows a certain amount of traffic loss when EEE is
-> > enabled. That said, I haven't come across a board that enables EEE. So
-> > enable EEE on the switch MACs but disable EEE advertisement on the switch
-> > PHYs. This way, we don't change the behaviour of the majority of the boards
-> > that have this switch. The mediatek-ge PHY driver already disables EEE
-> > advertisement on the switch PHYs but my testing shows that it is somehow
-> > enabled afterwards. Disabling EEE advertisement before the PHY driver
-> > initialises keeps it off.
-> > 
-> > With this change, EEE can now be enabled using ethtool.
-> > 
-> > Fixes: 40b5d2f15c09 ("net: dsa: mt7530: Add support for EEE features")
-> > Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
-> > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> > ---
-> > Here's some information for the record. EEE could not be enabled on MT7531
-> > on most boards using ethtool before this. On MT7988 SoC switch, EEE is
-> > disabled by default but can be turned on normally using ethtool. EEE is
-> > enabled by default on MT7530 and there's no need to make changes on the DSA
-> > subdriver for it.
-> > ---
-> > Changes in v3:
-> > - Remove patch 2, it was revealed that it doesn't fix a bug.
-> > - Patch 1
-> >   - Use the internal EEE switch bit provided by SkyLake Huang (黃啟澤). It
-> >     is a better method compared to unsetting the EEE_DIS bit of the trap as
-> >     the latter method causes unwanted behaviour on the LED connected to the
-> >     pin that pertains to the EEE_DIS bit.
+On Tue, Apr 09, 2024 at 02:02:09PM +0200, AngeloGioacchino Del Regno wrote:
+> The display IPs in MediaTek SoCs support being interconnected with
+> different instances of DDP IPs (for example, merge0 or merge1) and/or
+> with different DDP IPs (for example, rdma can be connected with either
+> color, dpi, dsi, merge, etc), forming a full Display Data Path that
+> ends with an actual display.
 > 
-> Since this leverages something relatively obscure, it would be great if
-> someone in the CC list could independently test it. Let's wait a bit
-> more.
+> The final display pipeline is effectively board specific, as it does
+> depend on the display that is attached to it, and eventually on the
+> sensors supported by the board (for example, Adaptive Ambient Light
+> would need an Ambient Light Sensor, otherwise it's pointless!), other
+> than the output type.
+> 
+> Add support for OF graphs to most of the MediaTek DDP (display) bindings
+> to add flexibility to build custom hardware paths, hence enabling board
+> specific configuration of the display pipeline and allowing to finally
+> migrate away from using hardcoded paths.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../display/mediatek/mediatek,aal.yaml        | 40 +++++++++++++++++++
+>  .../display/mediatek/mediatek,ccorr.yaml      | 21 ++++++++++
+>  .../display/mediatek/mediatek,color.yaml      | 22 ++++++++++
+>  .../display/mediatek/mediatek,dither.yaml     | 22 ++++++++++
+>  .../display/mediatek/mediatek,dpi.yaml        | 25 +++++++++++-
+>  .../display/mediatek/mediatek,dsc.yaml        | 24 +++++++++++
+>  .../display/mediatek/mediatek,dsi.yaml        | 27 ++++++++++++-
+>  .../display/mediatek/mediatek,ethdr.yaml      | 22 ++++++++++
+>  .../display/mediatek/mediatek,gamma.yaml      | 19 +++++++++
+>  .../display/mediatek/mediatek,merge.yaml      | 23 +++++++++++
+>  .../display/mediatek/mediatek,od.yaml         | 22 ++++++++++
+>  .../display/mediatek/mediatek,ovl-2l.yaml     | 22 ++++++++++
+>  .../display/mediatek/mediatek,ovl.yaml        | 22 ++++++++++
+>  .../display/mediatek/mediatek,postmask.yaml   | 21 ++++++++++
+>  .../display/mediatek/mediatek,rdma.yaml       | 22 ++++++++++
+>  .../display/mediatek/mediatek,ufoe.yaml       | 21 ++++++++++
+>  16 files changed, 372 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+> index b4c28e96dd55..623cf7e37fe3 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+> @@ -61,6 +61,27 @@ properties:
+>      $ref: /schemas/types.yaml#/definitions/phandle-array
+>      maxItems: 1
+>  
+> +  ports:
+> +    $ref: /schemas/graph.yaml#/properties/ports
+> +    description:
+> +      Input and output ports can have multiple endpoints, each of those
+> +      connects to either the primary, secondary, etc, display pipeline.
+> +
+> +    properties:
+> +      port@0:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: AAL input port
+> +
+> +      port@1:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description:
+> +          AAL output to the next component's input, for example could be one
+> +          of many gamma, overdrive or other blocks.
+> +
+> +    required:
+> +      - port@0
+> +      - port@1
+> +
+>  required:
+>    - compatible
+>    - reg
+> @@ -88,5 +109,24 @@ examples:
+>             power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+>             clocks = <&mmsys CLK_MM_DISP_AAL>;
+>             mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x5000 0x1000>;
+> +
+> +           ports {
+> +               #address-cells = <1>;
+> +               #size-cells = <0>;
+> +
+> +               port@0 {
+> +                   reg = <0>;
+> +                   aal0_in: endpoint {
+> +                       remote-endpoint = <&ccorr0_out>;
+> +                   };
+> +               };
+> +
+> +               port@1 {
+> +                   reg = <1>;
+> +                   aal0_out: endpoint {
+> +                       remote-endpoint = <&gamma0_in>;
+> +                   };
+> +               };
+> +           };
+>         };
+>      };
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+> index 8c2a737237f2..71ea277a5d8e 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+> @@ -54,6 +54,27 @@ properties:
+>      $ref: /schemas/types.yaml#/definitions/phandle-array
+>      maxItems: 1
+>  
+> +  ports:
+> +    $ref: /schemas/graph.yaml#/properties/ports
+> +    description:
+> +      Input and output ports can have multiple endpoints, each of those
+> +      connects to either the primary, secondary, etc, display pipeline.
+> +
+> +    properties:
+> +      port@0:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: CCORR input port
+> +
+> +      port@1:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description:
+> +          CCORR output to the input of the next desired component in the
+> +          display pipeline, usually only one of the available AAL blocks.
+> +
+> +    required:
+> +      - port@0
+> +      - port@1
+> +
+>  required:
+>    - compatible
+>    - reg
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+> index b886ca0d89ea..61d040a10c08 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+> @@ -64,6 +64,28 @@ properties:
+>      $ref: /schemas/types.yaml#/definitions/phandle-array
+>      maxItems: 1
+>  
+> +  ports:
+> +    $ref: /schemas/graph.yaml#/properties/ports
+> +    description:
+> +      Input and output ports can have multiple endpoints, each of those
+> +      connects to either the primary, secondary, etc, display pipeline.
+> +
+> +    properties:
+> +      port@0:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: COLOR input port
+> +
+> +      port@1:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description:
+> +          COLOR output to the input of the next desired component in the
+> +          display pipeline, for example one of the available CCORR or AAL
+> +          blocks.
+> +
+> +    required:
+> +      - port@0
+> +      - port@1
+> +
+>  required:
+>    - compatible
+>    - reg
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+> index 1588b3f7cec7..3d4ab3f86294 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+> @@ -55,6 +55,28 @@ properties:
+>      $ref: /schemas/types.yaml#/definitions/phandle-array
+>      maxItems: 1
+>  
+> +  ports:
+> +    $ref: /schemas/graph.yaml#/properties/ports
+> +    description:
+> +      Input and output ports can have multiple endpoints, each of those
+> +      connects to either the primary, secondary, etc, display pipeline.
+> +
+> +    properties:
+> +      port@0:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: DITHER input, usually from a POSTMASK or GAMMA block.
+> +
+> +      port@1:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description:
+> +          DITHER output to the input of the next desired component in the
+> +          display pipeline, for example one of the available DSC compressors,
+> +          DP_INTF, DSI, LVDS or others.
+> +
+> +    required:
+> +      - port@0
+> +      - port@1
+> +
+>  required:
+>    - compatible
+>    - reg
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> index 803c00f26206..6607cb1c6e0a 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> @@ -64,13 +64,34 @@ properties:
+>        Output port node. This port should be connected to the input port of an
+>        attached HDMI, LVDS or DisplayPort encoder chip.
+>  
+> +  ports:
+> +    $ref: /schemas/graph.yaml#/properties/ports
+> +
+> +    properties:
+> +      port@0:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: DPI input port
 
-I've excessively tested this patch on MT7531 today, and reviewed it
-today and yesterday. I've also picked it as downstream patch[1] to
-OpenWrt, so an even wider audience will have the pleasure of working
-EEE on those switch ICs and in-SoC switches.
+Strictly speaking, 'port' is equivalent to 'port@0', so it is already 
+defined to be the output path. It is a little odd for the input to be 
+port@1, but that is why we define the numbering.
 
-Tested-by: Daniel Golle <daniel@makrotopia.org>
-Reviewed-by: Daniel Golle <daniel@makrotopia.org>
+Same comment applies to DSI.
 
-[1]: https://git.openwrt.org/?p=openwrt/openwrt.git;a=commit;h=98f9154316fe8371c709bd11ae8f263e22075ec6
+Rob
 
