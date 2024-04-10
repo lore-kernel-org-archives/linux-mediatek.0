@@ -4,84 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FB03C67861
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Apr 2024 20:46:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8EA1CD128A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 00:07:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=i43Qoe3uynySrUsRFuf2GYuYz97ru+fsThJj/fZfzpk=; b=Je5JgkYUkSqv2mlmQr4/9idK3j
-	bxGSyVtjpWMoSdVj5ftllU7ax7uy2BB4mWNcIkx55pzMoLMaxcR3Llhdd8P1TxFjCPC02NHChMj6M
-	cN2Nyt7gVj3ROKSl6EaIU/ZMUV23dl2KgeE7+OmUCgyCNx7Xk7ZYdBl/keSuXihd6/ZSuu5o3yUsX
-	SeJTa20FGD2bMVC6qNxqsv8vJS3lp+ycpO1nSODUjU6gDZlLznXvXHQtMzhdT2NirlNfc02g9FUGe
-	FkJ6pl7KH+6XTy1DCKLfbr/C6sNyU7aA6Rwjq9EPAPpp071MBPsbTXZi5tSZ11Cl907K9r16gG09b
-	JnuByGiQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7ryIE7f8ZtWuzluYZgPcDX89WKZsm70yqAukGanFYfc=; b=rBq0n4eOqzIBzQ
+	iEqQ7+Zeh6VkMteoGRo4K1f3FZCaT1pMgx/gCTb/XRvxqRx2vmQtrL3GRxGXQtxN5wvMcGX9AM+Tc
+	7JZh8ehPTime/Pv0etOm7VgjbL0Nuw9Fa7kpPs6ijwBa47dkWJrk7ugacOkDJQv7xZgm8fqI52y8d
+	7fXuc9PANzvgTwPjw39US5WVtBz6h+gyvVhVtHIA0udRsryE+5qiE7whxHQfpln1b9u4qSw4kJrZT
+	Hi4lLQeSbxoRejtA4N89dIl89qs42KpViFCuFJAeeXuYOnYtGyRwUegRJBdQVYVwhVkuhto7Bw19E
+	OK97MEU3KtpHQU9tmSYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruIMK-00000003mtS-0XXx;
-	Tue, 09 Apr 2024 20:46:24 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1ruLV7-00000004MPO-0HOk;
+	Wed, 10 Apr 2024 00:07:41 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruIMG-00000003mru-4Ahj
+	id 1ruLV4-00000004MO5-34hi
 	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Apr 2024 20:46:22 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-4168a5d7564so13550755e9.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Apr 2024 13:46:19 -0700 (PDT)
+	Wed, 10 Apr 2024 00:07:40 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-1e3ff14f249so20722355ad.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Apr 2024 17:07:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1712695578; x=1713300378; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1712707657; x=1713312457; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=i43Qoe3uynySrUsRFuf2GYuYz97ru+fsThJj/fZfzpk=;
-        b=qauenqAlbnL2eOxaYuAD8e/RTfg+8bltz+NToYsceoSBpmcf55b/ToL8NcGpLH7Ib6
-         XwiKQskrfkZcuK7brLwfvFRJubwZCzhszed85o6osgBJ/QnwVdMGvd7IsstAsDJvMm5V
-         UafBUk1eSlg2vtJlgtH4H/FVsVEDW+zAW2lJEXp3r447QTKBKQ0sRd2F0w+sNL86s/0V
-         OcQyzh3apShgfWul2gtMaAjxMdvQHAcx3/+6IOEknTpPEcJzzBLQpfyWLrINQUpkz39R
-         kQHL8koV9C2hau3ejlOVdZGybyQsr+Ht0kDJZbgEhG5VknyzY+SFei//pDmAetUSjXPU
-         a9Ig==
+        bh=7ryIE7f8ZtWuzluYZgPcDX89WKZsm70yqAukGanFYfc=;
+        b=Zh78fvuJd4OriO+vBn7w48eA6KughIaxUXS+aYDK2Cwj8iZrAm8JY33dIn2w8Ns2t8
+         O1BmZ7E2EBguFoCS1NFfZmy+TbI39wqJphtAEabhZ3tEqTJp5OY99E9TWLRbzd64Wq6J
+         oWER79/p9kstEgACcBqXgLtIJ6vyjkIvM5/AI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712695578; x=1713300378;
+        d=1e100.net; s=20230601; t=1712707657; x=1713312457;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=i43Qoe3uynySrUsRFuf2GYuYz97ru+fsThJj/fZfzpk=;
-        b=GZsUQSCDz7NSHRpkFAd7JoL1SAYBJGhVAhQd2mzUXEX6zFPtvwcLEVKmX6aXWQ0Jps
-         4MQrnj3f7r8r6r5jl3L3Z5vE9q7U8FRwNgXtSs/it2XEHXGfMIUFxDBuGVoBzPIKUarz
-         0/Khd4qAHYyZdo3XbeY2Xl/OlBkOBloYMaHNi18x8ZrRPkHXuHzs9JTaFcAE7hjCnFT6
-         /scSb0wL8q/hLqL4XEVQOBlahSCaVujYSRTUCKSxF13PxWeNbR5qx6LDWYSMP9dV4qI9
-         vJVyIZgNfzOx3laxHFlMAmrceqAykYR+pjKGZy4zS8ukW4itH8POutFSdyDro22wExZR
-         ctxQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW5+p8F6o3mM8wB1Lg9yykpR9SzjSpysLbCTn8BUAh8wRhnMnHBrP7EyoPwilFEBJ7jdpw5cQWO8GVlWdNlCJZqtW0IEn3qgxOqsDZSGnYaD+Te
-X-Gm-Message-State: AOJu0YyqYPUnzW+zUwv/oZl5n/05z9P9AD2hLsIzCGcOHDpiYdZzX0Kr
-	magfdvTh0wzvFTCwGcc+bLkxiOGvy7impN6Brzzp/rXh6d9YKtWCL82bjjpol/Ey4csq/YJwrCC
-	p
-X-Google-Smtp-Source: AGHT+IEVjpkHhTrvTCwgAGLWn5pfP5EWuqX0zQ5BVYZj6xofDz5oktA9j+XSpVN8O/GHhTwaZy3q+Q==
-X-Received: by 2002:a05:600c:1c8d:b0:414:8e7:cd60 with SMTP id k13-20020a05600c1c8d00b0041408e7cd60mr507040wms.8.1712695578080;
-        Tue, 09 Apr 2024 13:46:18 -0700 (PDT)
-Received: from krzk-bin.. ([178.197.223.16])
-        by smtp.gmail.com with ESMTPSA id l23-20020a05600c1d1700b004163ee3922csm43467wms.38.2024.04.09.13.46.16
+        bh=7ryIE7f8ZtWuzluYZgPcDX89WKZsm70yqAukGanFYfc=;
+        b=mZfozSLnnfM9L7DmA0hIHOJsU5gzHVQ/r/pgI2V6nk3WHQ2u+tMupGHFtfxi9srRPo
+         gRLGXEoyQfhMc41qQ9Uh8EiTKCP7iOEPL+MdHSaF+NpHspdMDZ7iyHFTi4r6ZTt04d4l
+         5GxqDpbyymwcHikrLtWn4hu2uV0/PS4MV5xUOJfxfPPa9xsYhe0iSNDVRwMdq1ZyDiWN
+         VGNBiD+MlXCQxrhkQICUksMAG62+c5DG1OFuCt1Mv56cKTxC3p0+/qIRxYz+FCME1CED
+         eJFr6cNU/xN8iFAHDk5KTUIPAyP84QCtGsfAcNih3lbe/Olep8MqNB28wvqrw+KBrCAw
+         wgxQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVOhF/8I1w/ZQ1ERyAcXUs9gLQ2Czcak4KqRvJXV5NEe4ha34SMR0aaI+a6jqAzr0n3rpnuYtT5sXYLC8R99ZeTkdn0tCmIbidD9QVuOo0/lTdv
+X-Gm-Message-State: AOJu0YwIXMmByE3vebh+I9K1qCwSC/qgxztI52z6ZkiLhTRjMaqNqGsF
+	L+N+V3TXuXu873RyYa8P2K2thlkHidcFDbQYegZ7NJepbsr3b5/QSsGfKueTsA==
+X-Google-Smtp-Source: AGHT+IGoDhFHXggG7UV/XM8syPMLRIRAsx+Q3uuIedkhsyiKSu/gHHPrWq5HHr51Yh0dVfPQfUt54g==
+X-Received: by 2002:a17:902:a3c5:b0:1e4:39e0:660c with SMTP id q5-20020a170902a3c500b001e439e0660cmr5048130plb.23.1712707656662;
+        Tue, 09 Apr 2024 17:07:36 -0700 (PDT)
+Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:1f93:f735:b4fc:3be2])
+        by smtp.gmail.com with ESMTPSA id kn12-20020a170903078c00b001e0c91d448fsm9504939plb.112.2024.04.09.17.07.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Apr 2024 13:46:17 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Yong Wu <yong.wu@mediatek.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
+        Tue, 09 Apr 2024 17:07:36 -0700 (PDT)
+From: Pin-yen Lin <treapking@chromium.org>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>,
+	"Rafael J . Wysocki" <rafael@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Lukasz Luba <lukasz.luba@arm.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH] memory: mtk-smi: fix module autoloading
-Date: Tue,  9 Apr 2024 22:46:15 +0200
-Message-Id: <20240409204615.83928-1-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] thermal/drivers/mediatek/lvts_thermal: Remove redundant code in lvts_ctrl_configure
+Date: Wed, 10 Apr 2024 08:07:28 +0800
+Message-ID: <20240410000730.628043-1-treapking@chromium.org>
+X-Mailer: git-send-email 2.44.0.478.gd926399ef9-goog
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_134621_081664_F298A876 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240409_170738_842107_E5F5AD1D 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,38 +87,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Minjie Du <duminjie@vivo.com>, =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>, Alexandre Mergnat <amergnat@baylibre.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Pin-yen Lin <treapking@chromium.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Balsam CHIHI <bchihi@baylibre.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MODULE_DEVICE_TABLE(), so the module could be properly autoloaded
-based on the alias from of_device_id table.
+The removed variable assignment is never written to the register, so it
+has no effect on the device behavior.  Mediatek has confirmed that it
+is not required to initialize this register for current platforms, so
+remove this segment to avoid confusion.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+
 ---
- drivers/memory/mtk-smi.c | 2 ++
- 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index 572c7fbdcfd3..fbe52ecc0eca 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -450,6 +450,7 @@ static const struct of_device_id mtk_smi_larb_of_ids[] = {
- 	{.compatible = "mediatek,mt8195-smi-larb", .data = &mtk_smi_larb_mt8195},
- 	{}
- };
-+MODULE_DEVICE_TABLE(of, mtk_smi_larb_of_ids);
+ drivers/thermal/mediatek/lvts_thermal.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+index fd4bd650c77a..48d2f8ba3f18 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.c
++++ b/drivers/thermal/mediatek/lvts_thermal.c
+@@ -985,12 +985,6 @@ static int lvts_ctrl_configure(struct device *dev, struct lvts_ctrl *lvts_ctrl)
+ 	value = LVTS_TSSEL_CONF;
+ 	writel(value, LVTS_TSSEL(lvts_ctrl->base));
  
- static int mtk_smi_larb_sleep_ctrl_enable(struct mtk_smi_larb *larb)
- {
-@@ -735,6 +736,7 @@ static const struct of_device_id mtk_smi_common_of_ids[] = {
- 	{.compatible = "mediatek,mt8365-smi-common", .data = &mtk_smi_common_mt8365},
- 	{}
- };
-+MODULE_DEVICE_TABLE(of, mtk_smi_common_of_ids);
- 
- static int mtk_smi_common_probe(struct platform_device *pdev)
- {
+-	/*
+-	 * LVTS_CALSCALE : ADC voltage round
+-	 */
+-	value = 0x300;
+-	value = LVTS_CALSCALE_CONF;
+-
+ 	/*
+ 	 * LVTS_MSRCTL0 : Sensor filtering strategy
+ 	 *
 -- 
-2.34.1
+2.44.0.478.gd926399ef9-goog
 
 
