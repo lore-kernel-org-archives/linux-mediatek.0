@@ -4,100 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E3F4CD128A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 19:32:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA72CD11C2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 20:52:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Uxo89sMS0NY9ztiDKQAuRbfc1d5PUD6ZLRkkA6a+FNk=; b=2oQf+xDZtp7dtIoBU7lvLccVaz
-	x7LeHO0sDJIIhcayP1Y7DbLYzh+ST2SYzfuNYCvpjBqIFtTRfcdvDQZIuYe30V4/rdT6Wbeg6HKi9
-	NOwjyeBb1RHuX9KJKwdwO3aQgzs/1HbMM3n3zY0CFOKSslG2zFM6dIFlkqsUTzE608/HvXqLlxaaH
-	M6RViLLVhA88ld5nmqnO0dZScH6lFxeMer5QP67+HZspUlxmv/XH9LLEAZZMrzMqHSFwTScNhs/0n
-	uSQUb8QB7JwIflkQ5AxBzuGQyGUtySrTqoFQGJLaWMk1tJvBCw3QrGO4uEOR2m/4eUaZdOGTE5Ww/
-	ouiixK/Q==;
+	bh=PzzB3nqQRudBIyBVzsCHsBXmV1ryStFH3hCr94dNizs=; b=gf4qc55+06JK6WNANBMubrhUUM
+	lnFK+wj2ickISXqrCHo1tACOXO3B4C6LoBk7uF6P5vyMThf2PEPBLtMCRL1JY6CH6ooruNj9A4VA7
+	dCPerW+jXdbL8S1r1NYsP4o/OfS8kjdBeYeJAcb5r80vae7eECUIQjOx1av2OFfIX/wTRM11SFxn/
+	irZrWTwl6FfMkDTM2VZfH0rbNsY32s02ezxio8cU5EqfifydJl+5m50cLXELo+LybevKL/4SjNRXO
+	mVIq4Hd2Z4UE443R1zhzXlEAgFnBchthXYZzccvOB7gCjlqtQDF32D7J7SU19DcUv2jz83/0YbkhF
+	fncphnvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rudgW-00000008hCo-1vWA;
-	Wed, 10 Apr 2024 19:32:40 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1ruew8-00000008uKw-2nin;
+	Wed, 10 Apr 2024 20:52:52 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rudgR-00000008hAC-2w2Y;
-	Wed, 10 Apr 2024 19:32:37 +0000
+	id 1ruew4-00000008uI9-12J1;
+	Wed, 10 Apr 2024 20:52:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 8C943CE2A55;
-	Wed, 10 Apr 2024 19:32:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88179C43390;
-	Wed, 10 Apr 2024 19:32:32 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8678A61EF7;
+	Wed, 10 Apr 2024 20:52:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E348CC433C7;
+	Wed, 10 Apr 2024 20:52:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712777552;
-	bh=WW5sMpVOz0tGbMU1O5onTUR51y42uNFu9wn05WPtkWY=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=tq4rrWfX9sfVjyG1eyRA5JQGhmGUZZ7uZmnP8xeGteU4tmjtBJwX1rIwj8QFaJQjX
-	 hazgBdZOKaDhWWOOpBX6HrGOSdUUKtAERdIR/r8t0ihV2Y0E50ZsNeIdGCuECZsGc4
-	 MVhev7smKrOV3LTOgTQd6psiBKajiUbE3PItXRb805uwXE93PscA8sScGPOQ0bD2h3
-	 yL4o4fFtnh+PyXMspoVkdeCYh+yHEbJJA7uBTYcP8lE1egXnKItFj4r5SyFia/wVYd
-	 et+x2ylnr2iBKZZMb3xWvQ/x8CxEmBdAQqRiw1NTwJlG9b10JfdjTo1V82rU5g43Wu
-	 5YHbgdVHo6jUg==
-Date: Wed, 10 Apr 2024 14:32:31 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-MIME-Version: 1.0
+	s=k20201202; t=1712782367;
+	bh=N38KD+SiZS1U4XcfM3Ay0nwghgVyE56H0CZwBOKGYX4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=DTkCloQ+PnMVIErVzlkWkCxPmRqK8GauL+JqEFrb48YRzYgVQyV8Aip9J0UvT9En9
+	 LsfpdpHQ/+duzNJhs65P56FnjIgvs31L2TfFRv3p0y5CZI1eCnyu6P+IvQ2sR1hrTe
+	 faZahArzV7TpookNkNNoXWLEyRUB3KfCcd31MFueXfG55TGHVwDBeYFHzRMrfM0zI9
+	 irHJ2heLvubaXvjDDDSfpB0FhmZukUp37jpytNLTTtXCoJ+WORQOLcRc4YjhAcxQuK
+	 yBOJVUklSAsD4G2z2dSuFjBTOUMX9J2cDdJclsrySj7+TVPEH/oFinnojQL9GLhAkG
+	 3aCZNFFH1bAZg==
+Date: Wed, 10 Apr 2024 15:52:44 -0500
 From: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: linux-rockchip@lists.infradead.org, 
- Scott Branden <sbranden@broadcom.com>, 
- Thippeswamy Havalige <thippeswamy.havalige@amd.com>, 
- Sergio Paracuellos <sergio.paracuellos@gmail.com>, 
- Will Deacon <will@kernel.org>, Sven Peter <sven@svenpeter.dev>, 
- Heiko Stuebner <heiko@sntech.de>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
- Florian Fainelli <florian.fainelli@broadcom.com>, 
- Linus Walleij <linus.walleij@linaro.org>, devicetree@vger.kernel.org, 
- Jim Quinlan <jim2101024@gmail.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org, 
- Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>, asahi@lists.linux.dev, 
- linux-arm-msm@vger.kernel.org, Hector Martin <marcan@marcan.st>, 
- Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Mark Kettenis <kettenis@openbsd.org>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Tom Joseph <tjoseph@cadence.com>, linux-renesas-soc@vger.kernel.org, 
- Jianjun Wang <jianjun.wang@mediatek.com>, 
- Gustavo Pimentel <gustavo.pimentel@synopsys.com>, 
- Jingoo Han <jingoohan1@gmail.com>, linux-pci@vger.kernel.org, 
- Conor Dooley <conor+dt@kernel.org>, linux-rpi-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, 
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, 
- Michal Simek <michal.simek@amd.com>, 
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
- Nicolas Saenz Julienne <nsaenz@kernel.org>, Ray Jui <rjui@broadcom.com>, 
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
- Daire McNamara <daire.mcnamara@microchip.com>, 
- Marek Vasut <marek.vasut+renesas@gmail.com>, 
- linux-mediatek@lists.infradead.org, 
- Konrad Dybcio <konrad.dybcio@linaro.org>, 
- Srikanth Thokala <srikanth.thokala@intel.com>, 
- Ryder Lee <ryder.lee@mediatek.com>, Bjorn Andersson <andersson@kernel.org>, 
- Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Magnus Damm <magnus.damm@gmail.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20240410181521.269431-4-krzysztof.kozlowski@linaro.org>
-References: <20240410181521.269431-1-krzysztof.kozlowski@linaro.org>
- <20240410181521.269431-4-krzysztof.kozlowski@linaro.org>
-Message-Id: <171277754988.1212749.4199877903133990039.robh@kernel.org>
-Subject: Re: [PATCH v2 4/4] dt-bindings: PCI: mediatek,mt7621-pcie: switch
- from deprecated pci-bus.yaml
+To: Conor Dooley <conor@kernel.org>
+Cc: Zhi Mao <zhi.mao@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Hans de Goede <hdegoede@redhat.com>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Mehdi Djait <mehdi.djait@bootlin.com>,
+	Andy Shevchenko <andy.shevchenko@gmail.com>,
+	Bingbu Cao <bingbu.cao@intel.com>, linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, shengnan.wang@mediatek.com,
+	yaya.chang@mediatek.com, yunkec@chromium.org, 10572168@qq.com
+Subject: Re: [PATCH 1/2] media: dt-bindings: i2c: add Giantec GT97xx VCM
+ driver
+Message-ID: <20240410205244.GA1290088-robh@kernel.org>
+References: <20240410104002.1197-1-zhi.mao@mediatek.com>
+ <20240410104002.1197-2-zhi.mao@mediatek.com>
+ <20240410-rice-fringe-4ae992217a2f@spud>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240410-rice-fringe-4ae992217a2f@spud>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_123236_127050_BDCFAE3F 
-X-CRM114-Status: GOOD (  17.24  )
+X-CRM114-CacheID: sfid-20240410_135248_396197_99D39CB5 
+X-CRM114-Status: GOOD (  25.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,61 +93,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, 10 Apr 2024 20:15:21 +0200, Krzysztof Kozlowski wrote:
-> dtschema package with core schemas deprecated pci-bus.yaml schema in
-> favor of individual schemas per host, device and pci-pci.
+On Wed, Apr 10, 2024 at 12:27:07PM +0100, Conor Dooley wrote:
+> Hey,
 > 
-> Switch Mediatek MT7621 PCIe host bridge binding to this new schema.
+> On Wed, Apr 10, 2024 at 06:40:01PM +0800, Zhi Mao wrote:
+> > Add YAML device tree binding for GT97xx VCM driver,
 > 
-> This requires dtschema package newer than v2024.02 to work fully.
-> v2024.02 will partially work: with a warning.
+> Please don't mention drivers here, bindings are for hardware.
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> > and the relevant MAINTAINERS entries.
+> > 
+> > Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+> > ---
+> >  .../bindings/media/i2c/giantec,gt97xx.yaml    | 91 +++++++++++++++++++
+> >  1 file changed, 91 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/media/i2c/giantec,gt97xx.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/media/i2c/giantec,gt97xx.yaml b/Documentation/devicetree/bindings/media/i2c/giantec,gt97xx.yaml
+> > new file mode 100644
+> > index 000000000000..8c9f1eb4dac8
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/i2c/giantec,gt97xx.yaml
+> > @@ -0,0 +1,91 @@
+> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > +# Copyright (c) 2020 MediaTek Inc.
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/media/i2c/giantec,gt97xx.yaml#
 > 
-> ---
+> Filename patching compatible please.
 > 
-> Important: v2024.03 (said dtschema newer than v2024.02) was not yet
-> released, therefore this patch probably should wait a bit. Previous
-> patches do not depend anyhow on future release, so they can be taken as
-> is.
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Giantec Semiconductor, Crop. GT97xx Voice Coil Motor (VCM)
+> > +
+> > +maintainers:
+> > +  - Zhi Mao <zhi.mao@mediatek.com>
+> > +
+> > +description: |-
+> > +  The Giantec GT97xx is a 10-bit DAC with current sink capability.
+> > +  The DAC is controlled via I2C bus that operates at clock rates up to 1MHz.
+> > +  This chip integrates Advanced Actuator Control (AAC) technology
+> > +  and is intended for driving voice coil lens in camera modules.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    enum:
+> > +      - giantec,gt9768 # for GT9768 VCM
+> > +      - giantec,gt9769 # for GT9769 VCM
 > 
-> Changes in v2:
-> 1. New patch
-> 2. Split mediatek,mt7621-pcie to separate patch as it uses
->    pci-pci-bridge schema.
-> ---
->  .../devicetree/bindings/pci/mediatek,mt7621-pcie.yaml         | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> I don't think these comments are needed, they should be clear from the
+> compatibles, no?
 > 
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  vin-supply: true
+> > +
+> > +  vdd-supply: true
+> > +
+> > +  giantec,aac-mode:
+> > +    description:
+> > +      Indication of AAC mode select.
+> > +    $ref: /schemas/types.yaml#/definitions/uint32
+> > +    enum:
+> > +      - 1    #  AAC2 mode(operation time# 0.48 x Tvib)
+> > +      - 2    #  AAC3 mode(operation time# 0.70 x Tvib)
+> > +      - 3    #  AAC4 mode(operation time# 0.75 x Tvib)
+> > +      - 5    #  AAC8 mode(operation time# 1.13 x Tvib)
+> 
+> I dislike these enum based properties and I would rather this either be
+> the values themselves (0.48, 0.70 etc).
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Except that those would have to be strings for floats or fractions. For 
+properties which have little chance of being something common and aren't 
+any form of standard unit, I think it is fine to just use the h/w 
+specific values. 
 
-yamllint warnings/errors:
+The first question to ask whether these parameters are common to 
+all/many voice coil motors?
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.example.dtb: pcie@1e140000: pcie@0,0: Unevaluated properties are not allowed ('clocks', 'phy-names', 'phys', 'resets' were unexpected)
-	from schema $id: http://devicetree.org/schemas/pci/mediatek,mt7621-pcie.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.example.dtb: pcie@1e140000: pcie@1,0: Unevaluated properties are not allowed ('clocks', 'phy-names', 'phys', 'resets' were unexpected)
-	from schema $id: http://devicetree.org/schemas/pci/mediatek,mt7621-pcie.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.example.dtb: pcie@1e140000: pcie@2,0: Unevaluated properties are not allowed ('clocks', 'phy-names', 'phys', 'resets' were unexpected)
-	from schema $id: http://devicetree.org/schemas/pci/mediatek,mt7621-pcie.yaml#
 
-doc reference errors (make refcheckdocs):
+> > +    default: 2
+> > +
+> > +  giantec,aac-timing:
+> > +    description:
+> > +      Number of AAC Timing count that controlled by one 6-bit period of
+> > +      vibration register AACT[5:0], the unit of which is 100 us.
+> 
+> Then the property should be in a standard unit of time, not "random" hex
+> numbers that correspond to register values.
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240410181521.269431-4-krzysztof.kozlowski@linaro.org
+Here, I agree.
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+Rob
 
