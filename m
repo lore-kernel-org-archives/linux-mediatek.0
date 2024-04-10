@@ -4,91 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 406A8CD128A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 13:20:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63A1CCD11C2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 13:23:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/BGqPmC8OttnSs/eU7zOpIE4pu3ScGIxqadvcYRpWVY=; b=Q0TC0UcuPJZlYk+Cwxp8hPIyDV
-	wFlNd1aclJ6Ppk+h/R7ceQnPHBC0gfWrnbu9GZ9O7T0rYlkuLqALuo/TJD6UPsmM2mqrx2b6EK749
-	SmgoIBNG/D8prbEnzhHCL0WlhdXnCfzt+nE9orwffvwJA3JTXDZvilpX36Hpmoq1JyHsdqqgMpbLx
-	DE647FsoEw6EPaV1tCvGRDsuAzYBBFL9dlsiFdWy46pRcCBurcB4WUhgw4TrGM2h5wcNtOxC7G/Nh
-	SepmUQ599IAXQCEWt6EPz626ipQzFS/zUSk8R7sPS/2Hfkylw5wLbjeaBeRnzz6gOfHEw4y2KVaGj
-	EhGoKJtg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0k9vDy3IhLXKl1/oPUacgobANip3sPaFSxC+sZynpEs=; b=aGMl0+RY6W1aPH03Oo4JvKwv+i
+	Hx5jZg+psWIX83D3rbXpkmkMKVojHXFCE1xX467p0j6I2OwvFvNU3mkH1OMv2j/gtjG3OdmIxklZ1
+	Zot8xuI9x3RsVNwWizqeG3jtIEJuqF/ZBhGRM/PnVKo+9hs5/Ci1x8AGgNl7UsQYcZDgJQbtEkkuR
+	lBK4mCVzfehymAbNe9RsyFQYbPS1TLL9M3F8+eQrrDuYZw1SwLPAOMoZ/B6Ww4T5/6ujZ6pMYJakq
+	buZFt3TDu0kH2iROCVhA+FaidOFswAHAihmqYun2jn1c/pDx2jpxpcoVyRT4aTSwpehMMP7/bZPdf
+	wcNz747g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruXs2-0000000772u-0PyL;
-	Wed, 10 Apr 2024 13:20:10 +0000
-Received: from mail-lf1-f47.google.com ([209.85.167.47])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruXqM-000000075cg-3jt5;
-	Wed, 10 Apr 2024 13:18:33 +0000
-Received: by mail-lf1-f47.google.com with SMTP id 2adb3069b0e04-516c403cc46so12826290e87.3;
-        Wed, 10 Apr 2024 06:18:25 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712755104; x=1713359904;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/BGqPmC8OttnSs/eU7zOpIE4pu3ScGIxqadvcYRpWVY=;
-        b=YjnHtzrNRN6MV049jag5mndCXgMXGxQtR8BWSJ09Q2LN40sGqD/4HoD80I3fA5j9Rg
-         74+QQLAiigFRahkrtPYZce/OpPGDtrHPRdTawZE721QEho7Q+qtJWab/Rh8nRTRfawJK
-         ibMiPPxhwIx2bhe6c5OpN4AzhLYZugPDz+Z2BaDla0CblkN+aOoAdJWULKBcpsRz2mKM
-         L2fmnMCdrRHohoAZCAXKA7pD/c8ADQmc0iT72fSqxkoPUNEIDO/LYBmTeTBcfjpkbtge
-         P+UTsFeslEMvAd6XZ4OXvfsq4DGllmIvXC5Vev6nPDbvChRYk+Qj8DrZ9CkppOHb7lCr
-         gXEg==
-X-Forwarded-Encrypted: i=1; AJvYcCVFd5+uUNWv7oupcPzprdrGFSR/zRNX+qF96z2NSgCfC8iwBE2w4tByw9cQGo319Kn5J9w4ZW91GFHb3qgVgSGcDax3hV1hefhh29lcxRSBaytX6tATlB1egGlRMSo8D4rQQXy4kaT1MNyk8kNKIWBx6S9D8Px59UogbicaksKeCcRcyxs1UfXRS9KA7jH8KXgzXadz4sQ3XDGJEm7My3HLgS1Yf0L0YTaDt+3WSUxcmA==
-X-Gm-Message-State: AOJu0YxG3oar7/xiHQkZEc1nBGl1nERFkHoN8FvsEt5PJQ3c12pyFRhM
-	Amx+m165jvJvoyvfa7F9UsE++UKP3f/iM3ONTBXqNccdHh9qEYjh
-X-Google-Smtp-Source: AGHT+IHviCjCyxPLZMtL2RkyGuzaeGtDraBYTh6IkEObOiNwMifG9KcbhjesJ0nZLyGLu2godkApfw==
-X-Received: by 2002:a05:6512:b95:b0:512:fe25:550b with SMTP id b21-20020a0565120b9500b00512fe25550bmr2904940lfv.47.1712755103739;
-        Wed, 10 Apr 2024 06:18:23 -0700 (PDT)
-Received: from localhost (fwdproxy-lla-120.fbsv.net. [2a03:2880:30ff:78::face:b00c])
-        by smtp.gmail.com with ESMTPSA id kn6-20020a170906aa4600b00a4e238e46edsm6961222ejb.223.2024.04.10.06.18.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 Apr 2024 06:18:22 -0700 (PDT)
-From: Breno Leitao <leitao@debian.org>
-To: aleksander.lobakin@intel.com,
-	kuba@kernel.org,
-	davem@davemloft.net,
-	pabeni@redhat.com,
-	edumazet@google.com,
-	elder@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	nbd@nbd.name,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	lorenzo@kernel.org,
-	taras.chornyi@plvision.eu,
-	ath11k@lists.infradead.org,
-	ath10k@lists.infradead.org,
-	linux-wireless@vger.kernel.org,
-	geomatsi@gmail.com,
-	kvalo@kernel.org,
-	Jeff Johnson <jjohnson@kernel.org>
-Cc: quic_jjohnson@quicinc.com,
-	leon@kernel.org,
-	dennis.dalessandro@cornelisnetworks.com,
+	id 1ruXvH-000000078WQ-3cU6;
+	Wed, 10 Apr 2024 13:23:31 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1ruXvD-000000078UU-1BNH;
+	Wed, 10 Apr 2024 13:23:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=0k9vD
+	y3IhLXKl1/oPUacgobANip3sPaFSxC+sZynpEs=; b=Iq72dBmA27lcU+nCiBTiJ
+	zRkACXIYwe+9VHpKiNizbk3ppnXB8hp20uIQdyhzgscR19FZTocSHrlOtBpEwNBm
+	t5fAP8wxxkw2dEPQydho9TgBntIngUQXmg8W/hfFgbqG915+RzHy3mfuDjJsyZsj
+	P32dDGH1FZj2W9yPJjx2bs=
+Received: from localhost.localdomain (unknown [101.86.11.106])
+	by gzga-smtp-mta-g1-5 (Coremail) with SMTP id _____wDnLyFjkhZmXX3aAg--.54775S4;
+	Wed, 10 Apr 2024 21:21:55 +0800 (CST)
+From: Lizhe <sensor1010@163.com>
+To: rafael@kernel.org,
+	viresh.kumar@linaro.org,
+	ray.huang@amd.com,
+	marcan@marcan.st,
+	sven@svenpeter.dev,
+	alyssa@rosenzweig.io,
+	mmayer@broadcom.com,
+	bcm-kernel-feedback-list@broadcom.com,
+	srinivas.pandruvada@linux.intel.com,
+	lenb@kernel.org,
+	khilman@kernel.org,
+	mpe@ellerman.id.au,
+	npiggin@gmail.com,
+	christophe.leroy@csgroup.eu,
+	aneesh.kumar@kernel.org,
+	naveen.n.rao@linux.ibm.com,
+	andersson@kernel.org,
+	konrad.dybcio@linaro.org,
+	sudeep.holla@arm.com,
+	cristian.marussi@arm.com,
+	thierry.reding@gmail.com,
+	jonathanh@nvidia.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: linux-pm@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org,
-	bpf@vger.kernel.org,
-	idosch@idosch.org,
-	leitao@debian.org
-Subject: [PATCH net-next v5 09/10] wifi: ath10k: allocate dummy net_device dynamically
-Date: Wed, 10 Apr 2024 06:13:50 -0700
-Message-ID: <20240410131407.3897251-10-leitao@debian.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240410131407.3897251-1-leitao@debian.org>
-References: <20240410131407.3897251-1-leitao@debian.org>
+	asahi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-omap@vger.kernel.org,
+	linuxppc-dev@lists.ozlabs.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-tegra@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Lizhe <sensor1010@163.com>
+Subject: [PATCH] cpufreq: Covert to exit callback returning void
+Date: Wed, 10 Apr 2024 06:21:31 -0700
+Message-Id: <20240410132132.3526-1-sensor1010@163.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wDnLyFjkhZmXX3aAg--.54775S4
+X-Coremail-Antispam: 1Uf129KBjvAXoWfXw47Cw45Gr1fZr45GFWfKrg_yoW8uw18Xo
+	WfXFyrG3W8Gryxtw1DAa1xtFZrZanFk3Z5Jws8XFs0gasFyF17XrZrtr45JF1fWay5KrWx
+	Z3Wjgwn3Ar4xGr1Un29KB7ZKAUJUUUU8529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
+	AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjTRC89MUUUUU
+X-Originating-IP: [101.86.11.106]
+X-CM-SenderInfo: 5vhq20jurqiii6rwjhhfrp/1tbiSBe8q2XAk1gLbQAAsA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_061827_122782_B562B858 
-X-CRM114-Status: GOOD (  13.04  )
+X-CRM114-CacheID: sfid-20240410_062327_700089_93F13C2A 
+X-CRM114-Status: GOOD (  13.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,139 +100,607 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Embedding net_device into structures prohibits the usage of flexible
-arrays in the net_device structure. For more details, see the discussion
-at [1].
+For the exit() callback function returning an int type value.
+this leads many driver authors mistakenly believing that error
+handling can be performed by returning an error code. However.
+the returned value is ignore, and to improve this situation.
+it is proposed to modify the return type of the exit() callback
+function to void
 
-Un-embed the net_device from struct ath10k by converting it
-into a pointer. Then use the leverage alloc_netdev() to allocate the
-net_device object at ath10k_core_create(). The free of the device occurs
-at ath10k_core_destroy().
-
-[1] https://lore.kernel.org/all/20240229225910.79e224cf@kernel.org/
-
-Signed-off-by: Breno Leitao <leitao@debian.org>
+Signed-off-by: Lizhe <sensor1010@163.com>
 ---
- drivers/net/wireless/ath/ath10k/core.c | 9 +++++++--
- drivers/net/wireless/ath/ath10k/core.h | 2 +-
- drivers/net/wireless/ath/ath10k/pci.c  | 2 +-
- drivers/net/wireless/ath/ath10k/sdio.c | 2 +-
- drivers/net/wireless/ath/ath10k/snoc.c | 4 ++--
- drivers/net/wireless/ath/ath10k/usb.c  | 2 +-
- 6 files changed, 13 insertions(+), 8 deletions(-)
+ drivers/cpufreq/acpi-cpufreq.c         | 4 +---
+ drivers/cpufreq/amd-pstate.c           | 7 ++-----
+ drivers/cpufreq/apple-soc-cpufreq.c    | 4 +---
+ drivers/cpufreq/bmips-cpufreq.c        | 4 +---
+ drivers/cpufreq/cppc_cpufreq.c         | 3 +--
+ drivers/cpufreq/cpufreq-dt.c           | 3 +--
+ drivers/cpufreq/e_powersaver.c         | 3 +--
+ drivers/cpufreq/intel_pstate.c         | 4 +---
+ drivers/cpufreq/mediatek-cpufreq-hw.c  | 4 +---
+ drivers/cpufreq/mediatek-cpufreq.c     | 4 +---
+ drivers/cpufreq/omap-cpufreq.c         | 3 +--
+ drivers/cpufreq/pasemi-cpufreq.c       | 6 ++----
+ drivers/cpufreq/powernow-k6.c          | 3 +--
+ drivers/cpufreq/powernow-k7.c          | 3 +--
+ drivers/cpufreq/powernow-k8.c          | 4 +---
+ drivers/cpufreq/powernv-cpufreq.c      | 4 +---
+ drivers/cpufreq/ppc_cbe_cpufreq.c      | 3 +--
+ drivers/cpufreq/qcom-cpufreq-hw.c      | 4 +---
+ drivers/cpufreq/qoriq-cpufreq.c        | 4 +---
+ drivers/cpufreq/scmi-cpufreq.c         | 4 +---
+ drivers/cpufreq/scpi-cpufreq.c         | 4 +---
+ drivers/cpufreq/sh-cpufreq.c           | 4 +---
+ drivers/cpufreq/sparc-us2e-cpufreq.c   | 3 +--
+ drivers/cpufreq/sparc-us3-cpufreq.c    | 3 +--
+ drivers/cpufreq/speedstep-centrino.c   | 4 +---
+ drivers/cpufreq/tegra194-cpufreq.c     | 4 +---
+ drivers/cpufreq/vexpress-spc-cpufreq.c | 3 +--
+ 27 files changed, 29 insertions(+), 74 deletions(-)
 
-diff --git a/drivers/net/wireless/ath/ath10k/core.c b/drivers/net/wireless/ath/ath10k/core.c
-index 9ce6f49ab261..8663822e0b8d 100644
---- a/drivers/net/wireless/ath/ath10k/core.c
-+++ b/drivers/net/wireless/ath/ath10k/core.c
-@@ -3673,11 +3673,13 @@ struct ath10k *ath10k_core_create(size_t priv_size, struct device *dev,
- 	INIT_WORK(&ar->set_coverage_class_work,
- 		  ath10k_core_set_coverage_class_work);
- 
--	init_dummy_netdev(&ar->napi_dev);
-+	ar->napi_dev = alloc_netdev_dummy(0);
-+	if (!ar->napi_dev)
-+		goto err_free_tx_complete;
- 
- 	ret = ath10k_coredump_create(ar);
- 	if (ret)
--		goto err_free_tx_complete;
-+		goto err_free_netdev;
- 
- 	ret = ath10k_debug_create(ar);
- 	if (ret)
-@@ -3687,6 +3689,8 @@ struct ath10k *ath10k_core_create(size_t priv_size, struct device *dev,
- 
- err_free_coredump:
- 	ath10k_coredump_destroy(ar);
-+err_free_netdev:
-+	free_netdev(ar->napi_dev);
- err_free_tx_complete:
- 	destroy_workqueue(ar->workqueue_tx_complete);
- err_free_aux_wq:
-@@ -3708,6 +3712,7 @@ void ath10k_core_destroy(struct ath10k *ar)
- 
- 	destroy_workqueue(ar->workqueue_tx_complete);
- 
-+	free_netdev(ar->napi_dev);
- 	ath10k_debug_destroy(ar);
- 	ath10k_coredump_destroy(ar);
- 	ath10k_htt_tx_destroy(&ar->htt);
-diff --git a/drivers/net/wireless/ath/ath10k/core.h b/drivers/net/wireless/ath/ath10k/core.h
-index c110d15528bd..26003b519574 100644
---- a/drivers/net/wireless/ath/ath10k/core.h
-+++ b/drivers/net/wireless/ath/ath10k/core.h
-@@ -1269,7 +1269,7 @@ struct ath10k {
- 	struct ath10k_per_peer_tx_stats peer_tx_stats;
- 
- 	/* NAPI */
--	struct net_device napi_dev;
-+	struct net_device *napi_dev;
- 	struct napi_struct napi;
- 
- 	struct work_struct set_coverage_class_work;
-diff --git a/drivers/net/wireless/ath/ath10k/pci.c b/drivers/net/wireless/ath/ath10k/pci.c
-index 5c34b156b4ff..558bec96ae40 100644
---- a/drivers/net/wireless/ath/ath10k/pci.c
-+++ b/drivers/net/wireless/ath/ath10k/pci.c
-@@ -3217,7 +3217,7 @@ static void ath10k_pci_free_irq(struct ath10k *ar)
- 
- void ath10k_pci_init_napi(struct ath10k *ar)
- {
--	netif_napi_add(&ar->napi_dev, &ar->napi, ath10k_pci_napi_poll);
-+	netif_napi_add(ar->napi_dev, &ar->napi, ath10k_pci_napi_poll);
+diff --git a/drivers/cpufreq/acpi-cpufreq.c b/drivers/cpufreq/acpi-cpufreq.c
+index 37f1cdf46d29..33f18140e9a4 100644
+--- a/drivers/cpufreq/acpi-cpufreq.c
++++ b/drivers/cpufreq/acpi-cpufreq.c
+@@ -906,7 +906,7 @@ static int acpi_cpufreq_cpu_init(struct cpufreq_policy *policy)
+ 	return result;
  }
  
- static int ath10k_pci_init_irq(struct ath10k *ar)
-diff --git a/drivers/net/wireless/ath/ath10k/sdio.c b/drivers/net/wireless/ath/ath10k/sdio.c
-index 0ab5433f6cf6..e28f2fe1101b 100644
---- a/drivers/net/wireless/ath/ath10k/sdio.c
-+++ b/drivers/net/wireless/ath/ath10k/sdio.c
-@@ -2532,7 +2532,7 @@ static int ath10k_sdio_probe(struct sdio_func *func,
- 		return -ENOMEM;
- 	}
- 
--	netif_napi_add(&ar->napi_dev, &ar->napi, ath10k_sdio_napi_poll);
-+	netif_napi_add(ar->napi_dev, &ar->napi, ath10k_sdio_napi_poll);
- 
- 	ath10k_dbg(ar, ATH10K_DBG_BOOT,
- 		   "sdio new func %d vendor 0x%x device 0x%x block 0x%x/0x%x\n",
-diff --git a/drivers/net/wireless/ath/ath10k/snoc.c b/drivers/net/wireless/ath/ath10k/snoc.c
-index 2c39bad7ebfb..0449b9ffc32d 100644
---- a/drivers/net/wireless/ath/ath10k/snoc.c
-+++ b/drivers/net/wireless/ath/ath10k/snoc.c
-@@ -935,7 +935,7 @@ static int ath10k_snoc_hif_start(struct ath10k *ar)
- 
- 	bitmap_clear(ar_snoc->pending_ce_irqs, 0, CE_COUNT_MAX);
- 
--	dev_set_threaded(&ar->napi_dev, true);
-+	dev_set_threaded(ar->napi_dev, true);
- 	ath10k_core_napi_enable(ar);
- 	ath10k_snoc_irq_enable(ar);
- 	ath10k_snoc_rx_post(ar);
-@@ -1253,7 +1253,7 @@ static int ath10k_snoc_napi_poll(struct napi_struct *ctx, int budget)
- 
- static void ath10k_snoc_init_napi(struct ath10k *ar)
+-static int acpi_cpufreq_cpu_exit(struct cpufreq_policy *policy)
++static void acpi_cpufreq_cpu_exit(struct cpufreq_policy *policy)
  {
--	netif_napi_add(&ar->napi_dev, &ar->napi, ath10k_snoc_napi_poll);
-+	netif_napi_add(ar->napi_dev, &ar->napi, ath10k_snoc_napi_poll);
+ 	struct acpi_cpufreq_data *data = policy->driver_data;
+ 
+@@ -919,8 +919,6 @@ static int acpi_cpufreq_cpu_exit(struct cpufreq_policy *policy)
+ 	free_cpumask_var(data->freqdomain_cpus);
+ 	kfree(policy->freq_table);
+ 	kfree(data);
+-
+-	return 0;
  }
  
- static int ath10k_snoc_request_irq(struct ath10k *ar)
-diff --git a/drivers/net/wireless/ath/ath10k/usb.c b/drivers/net/wireless/ath/ath10k/usb.c
-index 3c482baacec1..3b51b7f52130 100644
---- a/drivers/net/wireless/ath/ath10k/usb.c
-+++ b/drivers/net/wireless/ath/ath10k/usb.c
-@@ -1014,7 +1014,7 @@ static int ath10k_usb_probe(struct usb_interface *interface,
- 		return -ENOMEM;
+ static int acpi_cpufreq_resume(struct cpufreq_policy *policy)
+diff --git a/drivers/cpufreq/amd-pstate.c b/drivers/cpufreq/amd-pstate.c
+index 2015c9fcc3c9..60b3d20d5939 100644
+--- a/drivers/cpufreq/amd-pstate.c
++++ b/drivers/cpufreq/amd-pstate.c
+@@ -919,7 +919,7 @@ static int amd_pstate_cpu_init(struct cpufreq_policy *policy)
+ 	return ret;
+ }
+ 
+-static int amd_pstate_cpu_exit(struct cpufreq_policy *policy)
++static void amd_pstate_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	struct amd_cpudata *cpudata = policy->driver_data;
+ 
+@@ -927,8 +927,6 @@ static int amd_pstate_cpu_exit(struct cpufreq_policy *policy)
+ 	freq_qos_remove_request(&cpudata->req[0]);
+ 	policy->fast_switch_possible = false;
+ 	kfree(cpudata);
+-
+-	return 0;
+ }
+ 
+ static int amd_pstate_cpu_resume(struct cpufreq_policy *policy)
+@@ -1376,10 +1374,9 @@ static int amd_pstate_epp_cpu_init(struct cpufreq_policy *policy)
+ 	return ret;
+ }
+ 
+-static int amd_pstate_epp_cpu_exit(struct cpufreq_policy *policy)
++static void amd_pstate_epp_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	pr_debug("CPU %d exiting\n", policy->cpu);
+-	return 0;
+ }
+ 
+ static void amd_pstate_epp_update_limit(struct cpufreq_policy *policy)
+diff --git a/drivers/cpufreq/apple-soc-cpufreq.c b/drivers/cpufreq/apple-soc-cpufreq.c
+index 021f423705e1..af34c22fa273 100644
+--- a/drivers/cpufreq/apple-soc-cpufreq.c
++++ b/drivers/cpufreq/apple-soc-cpufreq.c
+@@ -305,7 +305,7 @@ static int apple_soc_cpufreq_init(struct cpufreq_policy *policy)
+ 	return ret;
+ }
+ 
+-static int apple_soc_cpufreq_exit(struct cpufreq_policy *policy)
++static void apple_soc_cpufreq_exit(struct cpufreq_policy *policy)
+ {
+ 	struct apple_cpu_priv *priv = policy->driver_data;
+ 
+@@ -313,8 +313,6 @@ static int apple_soc_cpufreq_exit(struct cpufreq_policy *policy)
+ 	dev_pm_opp_remove_all_dynamic(priv->cpu_dev);
+ 	iounmap(priv->reg_base);
+ 	kfree(priv);
+-
+-	return 0;
+ }
+ 
+ static struct cpufreq_driver apple_soc_cpufreq_driver = {
+diff --git a/drivers/cpufreq/bmips-cpufreq.c b/drivers/cpufreq/bmips-cpufreq.c
+index 39221a9a187a..17a4c174553d 100644
+--- a/drivers/cpufreq/bmips-cpufreq.c
++++ b/drivers/cpufreq/bmips-cpufreq.c
+@@ -121,11 +121,9 @@ static int bmips_cpufreq_target_index(struct cpufreq_policy *policy,
+ 	return 0;
+ }
+ 
+-static int bmips_cpufreq_exit(struct cpufreq_policy *policy)
++static void bmips_cpufreq_exit(struct cpufreq_policy *policy)
+ {
+ 	kfree(policy->freq_table);
+-
+-	return 0;
+ }
+ 
+ static int bmips_cpufreq_init(struct cpufreq_policy *policy)
+diff --git a/drivers/cpufreq/cppc_cpufreq.c b/drivers/cpufreq/cppc_cpufreq.c
+index 64420d9cfd1e..dccb9c1f087d 100644
+--- a/drivers/cpufreq/cppc_cpufreq.c
++++ b/drivers/cpufreq/cppc_cpufreq.c
+@@ -688,7 +688,7 @@ static int cppc_cpufreq_cpu_init(struct cpufreq_policy *policy)
+ 	return ret;
+ }
+ 
+-static int cppc_cpufreq_cpu_exit(struct cpufreq_policy *policy)
++static void cppc_cpufreq_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	struct cppc_cpudata *cpu_data = policy->driver_data;
+ 	struct cppc_perf_caps *caps = &cpu_data->perf_caps;
+@@ -705,7 +705,6 @@ static int cppc_cpufreq_cpu_exit(struct cpufreq_policy *policy)
+ 			 caps->lowest_perf, cpu, ret);
+ 
+ 	cppc_cpufreq_put_cpu_data(policy);
+-	return 0;
+ }
+ 
+ static inline u64 get_delta(u64 t1, u64 t0)
+diff --git a/drivers/cpufreq/cpufreq-dt.c b/drivers/cpufreq/cpufreq-dt.c
+index 2d83bbc65dd0..eaf02579ea74 100644
+--- a/drivers/cpufreq/cpufreq-dt.c
++++ b/drivers/cpufreq/cpufreq-dt.c
+@@ -166,10 +166,9 @@ static int cpufreq_offline(struct cpufreq_policy *policy)
+ 	return 0;
+ }
+ 
+-static int cpufreq_exit(struct cpufreq_policy *policy)
++static void cpufreq_exit(struct cpufreq_policy *policy)
+ {
+ 	clk_put(policy->clk);
+-	return 0;
+ }
+ 
+ static struct cpufreq_driver dt_cpufreq_driver = {
+diff --git a/drivers/cpufreq/e_powersaver.c b/drivers/cpufreq/e_powersaver.c
+index ab93bce8ae77..6e958b09e1b5 100644
+--- a/drivers/cpufreq/e_powersaver.c
++++ b/drivers/cpufreq/e_powersaver.c
+@@ -360,14 +360,13 @@ static int eps_cpu_init(struct cpufreq_policy *policy)
+ 	return 0;
+ }
+ 
+-static int eps_cpu_exit(struct cpufreq_policy *policy)
++static void eps_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	unsigned int cpu = policy->cpu;
+ 
+ 	/* Bye */
+ 	kfree(eps_cpu[cpu]);
+ 	eps_cpu[cpu] = NULL;
+-	return 0;
+ }
+ 
+ static struct cpufreq_driver eps_driver = {
+diff --git a/drivers/cpufreq/intel_pstate.c b/drivers/cpufreq/intel_pstate.c
+index dbbf299f4219..aa435d24c20e 100644
+--- a/drivers/cpufreq/intel_pstate.c
++++ b/drivers/cpufreq/intel_pstate.c
+@@ -2731,13 +2731,11 @@ static int intel_pstate_cpu_offline(struct cpufreq_policy *policy)
+ 	return intel_cpufreq_cpu_offline(policy);
+ }
+ 
+-static int intel_pstate_cpu_exit(struct cpufreq_policy *policy)
++static void intel_pstate_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	pr_debug("CPU %d exiting\n", policy->cpu);
+ 
+ 	policy->fast_switch_possible = false;
+-
+-	return 0;
+ }
+ 
+ static int __intel_pstate_cpu_init(struct cpufreq_policy *policy)
+diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
+index 8d097dcddda4..8925e096d5b9 100644
+--- a/drivers/cpufreq/mediatek-cpufreq-hw.c
++++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
+@@ -260,7 +260,7 @@ static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
+ 	return 0;
+ }
+ 
+-static int mtk_cpufreq_hw_cpu_exit(struct cpufreq_policy *policy)
++static void mtk_cpufreq_hw_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	struct mtk_cpufreq_data *data = policy->driver_data;
+ 	struct resource *res = data->res;
+@@ -270,8 +270,6 @@ static int mtk_cpufreq_hw_cpu_exit(struct cpufreq_policy *policy)
+ 	writel_relaxed(0x0, data->reg_bases[REG_FREQ_ENABLE]);
+ 	iounmap(base);
+ 	release_mem_region(res->start, resource_size(res));
+-
+-	return 0;
+ }
+ 
+ static void mtk_cpufreq_register_em(struct cpufreq_policy *policy)
+diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+index a0a61919bc4c..aba34fb7948e 100644
+--- a/drivers/cpufreq/mediatek-cpufreq.c
++++ b/drivers/cpufreq/mediatek-cpufreq.c
+@@ -599,13 +599,11 @@ static int mtk_cpufreq_init(struct cpufreq_policy *policy)
+ 	return 0;
+ }
+ 
+-static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
++static void mtk_cpufreq_exit(struct cpufreq_policy *policy)
+ {
+ 	struct mtk_cpu_dvfs_info *info = policy->driver_data;
+ 
+ 	dev_pm_opp_free_cpufreq_table(info->cpu_dev, &policy->freq_table);
+-
+-	return 0;
+ }
+ 
+ static struct cpufreq_driver mtk_cpufreq_driver = {
+diff --git a/drivers/cpufreq/omap-cpufreq.c b/drivers/cpufreq/omap-cpufreq.c
+index 895690856665..3458d5cc9b7f 100644
+--- a/drivers/cpufreq/omap-cpufreq.c
++++ b/drivers/cpufreq/omap-cpufreq.c
+@@ -135,11 +135,10 @@ static int omap_cpu_init(struct cpufreq_policy *policy)
+ 	return 0;
+ }
+ 
+-static int omap_cpu_exit(struct cpufreq_policy *policy)
++static void omap_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	freq_table_free();
+ 	clk_put(policy->clk);
+-	return 0;
+ }
+ 
+ static struct cpufreq_driver omap_driver = {
+diff --git a/drivers/cpufreq/pasemi-cpufreq.c b/drivers/cpufreq/pasemi-cpufreq.c
+index 039a66bbe1be..ee925b53b6b9 100644
+--- a/drivers/cpufreq/pasemi-cpufreq.c
++++ b/drivers/cpufreq/pasemi-cpufreq.c
+@@ -204,21 +204,19 @@ static int pas_cpufreq_cpu_init(struct cpufreq_policy *policy)
+ 	return err;
+ }
+ 
+-static int pas_cpufreq_cpu_exit(struct cpufreq_policy *policy)
++static void pas_cpufreq_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	/*
+ 	 * We don't support CPU hotplug. Don't unmap after the system
+ 	 * has already made it to a running state.
+ 	 */
+ 	if (system_state >= SYSTEM_RUNNING)
+-		return 0;
++		return;
+ 
+ 	if (sdcasr_mapbase)
+ 		iounmap(sdcasr_mapbase);
+ 	if (sdcpwr_mapbase)
+ 		iounmap(sdcpwr_mapbase);
+-
+-	return 0;
+ }
+ 
+ static int pas_cpufreq_target(struct cpufreq_policy *policy,
+diff --git a/drivers/cpufreq/powernow-k6.c b/drivers/cpufreq/powernow-k6.c
+index 41eefef95d87..156bec6c5420 100644
+--- a/drivers/cpufreq/powernow-k6.c
++++ b/drivers/cpufreq/powernow-k6.c
+@@ -219,7 +219,7 @@ static int powernow_k6_cpu_init(struct cpufreq_policy *policy)
+ }
+ 
+ 
+-static int powernow_k6_cpu_exit(struct cpufreq_policy *policy)
++static void powernow_k6_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	unsigned int i;
+ 
+@@ -237,7 +237,6 @@ static int powernow_k6_cpu_exit(struct cpufreq_policy *policy)
+ 			break;
+ 		}
+ 	}
+-	return 0;
+ }
+ 
+ static unsigned int powernow_k6_get(unsigned int cpu)
+diff --git a/drivers/cpufreq/powernow-k7.c b/drivers/cpufreq/powernow-k7.c
+index 5d515fc34836..4271446c8725 100644
+--- a/drivers/cpufreq/powernow-k7.c
++++ b/drivers/cpufreq/powernow-k7.c
+@@ -644,7 +644,7 @@ static int powernow_cpu_init(struct cpufreq_policy *policy)
+ 	return 0;
+ }
+ 
+-static int powernow_cpu_exit(struct cpufreq_policy *policy)
++static void powernow_cpu_exit(struct cpufreq_policy *policy)
+ {
+ #ifdef CONFIG_X86_POWERNOW_K7_ACPI
+ 	if (acpi_processor_perf) {
+@@ -655,7 +655,6 @@ static int powernow_cpu_exit(struct cpufreq_policy *policy)
+ #endif
+ 
+ 	kfree(powernow_table);
+-	return 0;
+ }
+ 
+ static struct cpufreq_driver powernow_driver = {
+diff --git a/drivers/cpufreq/powernow-k8.c b/drivers/cpufreq/powernow-k8.c
+index b10f7a1b77f1..5e663c3a6736 100644
+--- a/drivers/cpufreq/powernow-k8.c
++++ b/drivers/cpufreq/powernow-k8.c
+@@ -1089,7 +1089,7 @@ static int powernowk8_cpu_init(struct cpufreq_policy *pol)
+ 	return -ENODEV;
+ }
+ 
+-static int powernowk8_cpu_exit(struct cpufreq_policy *pol)
++static void powernowk8_cpu_exit(struct cpufreq_policy *pol)
+ {
+ 	struct powernow_k8_data *data = per_cpu(powernow_data, pol->cpu);
+ 	int cpu;
+@@ -1104,8 +1104,6 @@ static int powernowk8_cpu_exit(struct cpufreq_policy *pol)
+ 	/* pol->cpus will be empty here, use related_cpus instead. */
+ 	for_each_cpu(cpu, pol->related_cpus)
+ 		per_cpu(powernow_data, cpu) = NULL;
+-
+-	return 0;
+ }
+ 
+ static void query_values_on_cpu(void *_err)
+diff --git a/drivers/cpufreq/powernv-cpufreq.c b/drivers/cpufreq/powernv-cpufreq.c
+index fddbd1ea1635..50c62929f7ca 100644
+--- a/drivers/cpufreq/powernv-cpufreq.c
++++ b/drivers/cpufreq/powernv-cpufreq.c
+@@ -874,7 +874,7 @@ static int powernv_cpufreq_cpu_init(struct cpufreq_policy *policy)
+ 	return 0;
+ }
+ 
+-static int powernv_cpufreq_cpu_exit(struct cpufreq_policy *policy)
++static void powernv_cpufreq_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	struct powernv_smp_call_data freq_data;
+ 	struct global_pstate_info *gpstates = policy->driver_data;
+@@ -886,8 +886,6 @@ static int powernv_cpufreq_cpu_exit(struct cpufreq_policy *policy)
+ 		del_timer_sync(&gpstates->timer);
+ 
+ 	kfree(policy->driver_data);
+-
+-	return 0;
+ }
+ 
+ static int powernv_cpufreq_reboot_notifier(struct notifier_block *nb,
+diff --git a/drivers/cpufreq/ppc_cbe_cpufreq.c b/drivers/cpufreq/ppc_cbe_cpufreq.c
+index 88afc49941b7..5ee4c7bfdcc5 100644
+--- a/drivers/cpufreq/ppc_cbe_cpufreq.c
++++ b/drivers/cpufreq/ppc_cbe_cpufreq.c
+@@ -113,10 +113,9 @@ static int cbe_cpufreq_cpu_init(struct cpufreq_policy *policy)
+ 	return 0;
+ }
+ 
+-static int cbe_cpufreq_cpu_exit(struct cpufreq_policy *policy)
++static void cbe_cpufreq_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	cbe_cpufreq_pmi_policy_exit(policy);
+-	return 0;
+ }
+ 
+ static int cbe_cpufreq_target(struct cpufreq_policy *policy,
+diff --git a/drivers/cpufreq/qcom-cpufreq-hw.c b/drivers/cpufreq/qcom-cpufreq-hw.c
+index 70b0f21968a0..bb818111162d 100644
+--- a/drivers/cpufreq/qcom-cpufreq-hw.c
++++ b/drivers/cpufreq/qcom-cpufreq-hw.c
+@@ -573,7 +573,7 @@ static int qcom_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
+ 	return qcom_cpufreq_hw_lmh_init(policy, index);
+ }
+ 
+-static int qcom_cpufreq_hw_cpu_exit(struct cpufreq_policy *policy)
++static void qcom_cpufreq_hw_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	struct device *cpu_dev = get_cpu_device(policy->cpu);
+ 	struct qcom_cpufreq_data *data = policy->driver_data;
+@@ -583,8 +583,6 @@ static int qcom_cpufreq_hw_cpu_exit(struct cpufreq_policy *policy)
+ 	qcom_cpufreq_hw_lmh_exit(data);
+ 	kfree(policy->freq_table);
+ 	kfree(data);
+-
+-	return 0;
+ }
+ 
+ static void qcom_cpufreq_ready(struct cpufreq_policy *policy)
+diff --git a/drivers/cpufreq/qoriq-cpufreq.c b/drivers/cpufreq/qoriq-cpufreq.c
+index 0aecaecbb0e6..3519bf34d397 100644
+--- a/drivers/cpufreq/qoriq-cpufreq.c
++++ b/drivers/cpufreq/qoriq-cpufreq.c
+@@ -225,7 +225,7 @@ static int qoriq_cpufreq_cpu_init(struct cpufreq_policy *policy)
+ 	return -ENODEV;
+ }
+ 
+-static int qoriq_cpufreq_cpu_exit(struct cpufreq_policy *policy)
++static void qoriq_cpufreq_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	struct cpu_data *data = policy->driver_data;
+ 
+@@ -233,8 +233,6 @@ static int qoriq_cpufreq_cpu_exit(struct cpufreq_policy *policy)
+ 	kfree(data->table);
+ 	kfree(data);
+ 	policy->driver_data = NULL;
+-
+-	return 0;
+ }
+ 
+ static int qoriq_cpufreq_target(struct cpufreq_policy *policy,
+diff --git a/drivers/cpufreq/scmi-cpufreq.c b/drivers/cpufreq/scmi-cpufreq.c
+index 3b4f6bfb2f4c..bf5f17f0dfb1 100644
+--- a/drivers/cpufreq/scmi-cpufreq.c
++++ b/drivers/cpufreq/scmi-cpufreq.c
+@@ -308,7 +308,7 @@ static int scmi_cpufreq_init(struct cpufreq_policy *policy)
+ 	return ret;
+ }
+ 
+-static int scmi_cpufreq_exit(struct cpufreq_policy *policy)
++static void scmi_cpufreq_exit(struct cpufreq_policy *policy)
+ {
+ 	struct scmi_data *priv = policy->driver_data;
+ 
+@@ -316,8 +316,6 @@ static int scmi_cpufreq_exit(struct cpufreq_policy *policy)
+ 	dev_pm_opp_remove_all_dynamic(priv->cpu_dev);
+ 	free_cpumask_var(priv->opp_shared_cpus);
+ 	kfree(priv);
+-
+-	return 0;
+ }
+ 
+ static void scmi_cpufreq_register_em(struct cpufreq_policy *policy)
+diff --git a/drivers/cpufreq/scpi-cpufreq.c b/drivers/cpufreq/scpi-cpufreq.c
+index d33be56983ed..8d73e6e8be2a 100644
+--- a/drivers/cpufreq/scpi-cpufreq.c
++++ b/drivers/cpufreq/scpi-cpufreq.c
+@@ -167,7 +167,7 @@ static int scpi_cpufreq_init(struct cpufreq_policy *policy)
+ 	return ret;
+ }
+ 
+-static int scpi_cpufreq_exit(struct cpufreq_policy *policy)
++static void scpi_cpufreq_exit(struct cpufreq_policy *policy)
+ {
+ 	struct scpi_data *priv = policy->driver_data;
+ 
+@@ -175,8 +175,6 @@ static int scpi_cpufreq_exit(struct cpufreq_policy *policy)
+ 	dev_pm_opp_free_cpufreq_table(priv->cpu_dev, &policy->freq_table);
+ 	dev_pm_opp_remove_all_dynamic(priv->cpu_dev);
+ 	kfree(priv);
+-
+-	return 0;
+ }
+ 
+ static struct cpufreq_driver scpi_cpufreq_driver = {
+diff --git a/drivers/cpufreq/sh-cpufreq.c b/drivers/cpufreq/sh-cpufreq.c
+index b8704232c27b..aa74036d0420 100644
+--- a/drivers/cpufreq/sh-cpufreq.c
++++ b/drivers/cpufreq/sh-cpufreq.c
+@@ -135,14 +135,12 @@ static int sh_cpufreq_cpu_init(struct cpufreq_policy *policy)
+ 	return 0;
+ }
+ 
+-static int sh_cpufreq_cpu_exit(struct cpufreq_policy *policy)
++static void sh_cpufreq_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	unsigned int cpu = policy->cpu;
+ 	struct clk *cpuclk = &per_cpu(sh_cpuclk, cpu);
+ 
+ 	clk_put(cpuclk);
+-
+-	return 0;
+ }
+ 
+ static struct cpufreq_driver sh_cpufreq_driver = {
+diff --git a/drivers/cpufreq/sparc-us2e-cpufreq.c b/drivers/cpufreq/sparc-us2e-cpufreq.c
+index 2783d3d55fce..8a0cd5312a59 100644
+--- a/drivers/cpufreq/sparc-us2e-cpufreq.c
++++ b/drivers/cpufreq/sparc-us2e-cpufreq.c
+@@ -296,10 +296,9 @@ static int us2e_freq_cpu_init(struct cpufreq_policy *policy)
+ 	return 0;
+ }
+ 
+-static int us2e_freq_cpu_exit(struct cpufreq_policy *policy)
++static void us2e_freq_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	us2e_freq_target(policy, 0);
+-	return 0;
+ }
+ 
+ static struct cpufreq_driver cpufreq_us2e_driver = {
+diff --git a/drivers/cpufreq/sparc-us3-cpufreq.c b/drivers/cpufreq/sparc-us3-cpufreq.c
+index 6c3657679a88..b50f9d13e6d2 100644
+--- a/drivers/cpufreq/sparc-us3-cpufreq.c
++++ b/drivers/cpufreq/sparc-us3-cpufreq.c
+@@ -140,10 +140,9 @@ static int us3_freq_cpu_init(struct cpufreq_policy *policy)
+ 	return 0;
+ }
+ 
+-static int us3_freq_cpu_exit(struct cpufreq_policy *policy)
++static void us3_freq_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	us3_freq_target(policy, 0);
+-	return 0;
+ }
+ 
+ static struct cpufreq_driver cpufreq_us3_driver = {
+diff --git a/drivers/cpufreq/speedstep-centrino.c b/drivers/cpufreq/speedstep-centrino.c
+index 75b10ecdb60f..28e65bcf7242 100644
+--- a/drivers/cpufreq/speedstep-centrino.c
++++ b/drivers/cpufreq/speedstep-centrino.c
+@@ -400,7 +400,7 @@ static int centrino_cpu_init(struct cpufreq_policy *policy)
+ 	return 0;
+ }
+ 
+-static int centrino_cpu_exit(struct cpufreq_policy *policy)
++static void centrino_cpu_exit(struct cpufreq_policy *policy)
+ {
+ 	unsigned int cpu = policy->cpu;
+ 
+@@ -408,8 +408,6 @@ static int centrino_cpu_exit(struct cpufreq_policy *policy)
+ 		return -ENODEV;
+ 
+ 	per_cpu(centrino_model, cpu) = NULL;
+-
+-	return 0;
+ }
+ 
+ /**
+diff --git a/drivers/cpufreq/tegra194-cpufreq.c b/drivers/cpufreq/tegra194-cpufreq.c
+index 59865ea455a8..07ea7ed61b68 100644
+--- a/drivers/cpufreq/tegra194-cpufreq.c
++++ b/drivers/cpufreq/tegra194-cpufreq.c
+@@ -551,14 +551,12 @@ static int tegra194_cpufreq_offline(struct cpufreq_policy *policy)
+ 	return 0;
+ }
+ 
+-static int tegra194_cpufreq_exit(struct cpufreq_policy *policy)
++static void tegra194_cpufreq_exit(struct cpufreq_policy *policy)
+ {
+ 	struct device *cpu_dev = get_cpu_device(policy->cpu);
+ 
+ 	dev_pm_opp_remove_all_dynamic(cpu_dev);
+ 	dev_pm_opp_of_cpumask_remove_table(policy->related_cpus);
+-
+-	return 0;
+ }
+ 
+ static int tegra194_cpufreq_set_target(struct cpufreq_policy *policy,
+diff --git a/drivers/cpufreq/vexpress-spc-cpufreq.c b/drivers/cpufreq/vexpress-spc-cpufreq.c
+index 9ac4ea50b874..b2a42cdb9582 100644
+--- a/drivers/cpufreq/vexpress-spc-cpufreq.c
++++ b/drivers/cpufreq/vexpress-spc-cpufreq.c
+@@ -447,7 +447,7 @@ static int ve_spc_cpufreq_init(struct cpufreq_policy *policy)
+ 	return 0;
+ }
+ 
+-static int ve_spc_cpufreq_exit(struct cpufreq_policy *policy)
++static void ve_spc_cpufreq_exit(struct cpufreq_policy *policy)
+ {
+ 	struct device *cpu_dev;
+ 
+@@ -459,7 +459,6 @@ static int ve_spc_cpufreq_exit(struct cpufreq_policy *policy)
  	}
  
--	netif_napi_add(&ar->napi_dev, &ar->napi, ath10k_usb_napi_poll);
-+	netif_napi_add(ar->napi_dev, &ar->napi, ath10k_usb_napi_poll);
+ 	put_cluster_clk_and_freq_table(cpu_dev, policy->related_cpus);
+-	return 0;
+ }
  
- 	usb_get_dev(dev);
- 	vendor_id = le16_to_cpu(dev->descriptor.idVendor);
+ static struct cpufreq_driver ve_spc_cpufreq_driver = {
 -- 
-2.43.0
+2.25.1
 
 
