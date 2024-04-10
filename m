@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 129E4CD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 17:58:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BD59CD11C2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 18:00:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5HKqyxzN7SQ+njXkzFYbZ1bIjg+blMGuSC+t3lHXad8=; b=FaM9yEqn7dJZyFKB5b6RzB7OYC
-	B1jv5vhIsaULYaY04eTdMZpj5H8ljIqXNhWYMScZhQkZffVChdniLf+57c56ZjGk8k1oG0gDvpYHt
-	7tQdpAxLLHotind31r5kKfFirkaIRfNn686gNIgoFc6uSm3KIQSr3EZrxiFS/6v6gPj+u8T2KBGA/
-	3XCGTL9/o0mQzHCM86XA8F/7TUBmK4ixoSKk9L4hK45R6e9EKrNyU45VWybJkYyqdoDUuLBRVbczk
-	WJa7FjNf4xXfH9t6H5+V8q878JgHYSceiIrpRTh2ucJpzWsywEtP5joYe3FL31fy0djACXEXw1lmv
-	W2UFl6jg==;
+	bh=ccLsCR2InDzvNTsN3aah4jcUq2TjT937xPnrA+vAYdA=; b=vMbReTN8nCsmJQnlitIAfhNc/I
+	TcWQPMStx8w7N5GQmSG1k0LWIGOxMXNgVbWfOg9bfIw9KbkVfkuenxhleXZrE5tn1NFR0zrdOVC46
+	/+AKhDsqZmpyyLrUpykVwpckAUodrFDgRos47vJ4J0SeZ1+dEobRoZWJU0Rjk2uY7ZU+BbvIlQC8q
+	FM+++ucEISgfmEazjzOuO83UQDMbuBg9S2Wogz+tNvHcKUnB+bYt6IRLkfz/RZ7jg032OwazLwk5V
+	WK9+EfblQUbiv5VxQfVj7ndBhIIYEpUoz7JgIeCb4BpuzdKU2pkcDX88G1Y5szkT+nTspK0T6U0qj
+	KcC/wo1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rucDG-00000008Nxo-2nPY;
-	Wed, 10 Apr 2024 17:58:22 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1rucFF-00000008OM2-3EDx;
+	Wed, 10 Apr 2024 18:00:25 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rucDC-00000008NvM-0VCh
+	id 1rucFC-00000008OK1-1RIK
 	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Apr 2024 17:58:19 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-4167fce0a41so592855e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 10:58:13 -0700 (PDT)
+	Wed, 10 Apr 2024 18:00:23 +0000
+Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-2d6fc3adaacso86823741fa.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 11:00:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1712771893; x=1713376693; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1712772019; x=1713376819; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=5HKqyxzN7SQ+njXkzFYbZ1bIjg+blMGuSC+t3lHXad8=;
-        b=ZhtosaX9CSUaSOOd6LY0ibFJAuTZXYXiD7/Y6/URnJk72v+tySZTx7BAhWm9AN6ClQ
-         onx9KrRPYWk4Trk2V8GfdjPPk8NsmbfxjYRfmWRdHaXzwmjeWvub+2AEcfHLeRq7OowA
-         ULARURFI4cdWotemHVdwZfoWnaN0fG6hHQRTQudEhBQyU0vrbCQtXUtYwK7+kXWegHuB
-         1NQDWaNKVQRP8JrK2cAh0LZxdwa7Jajgwvwy+yDZX7nneGj+9jcNWCFty20tJD5o9BPy
-         FLtETWpF5ttv3GVVDkPXTuB189L0Kjy0fLvNBhI/nYemo7fXmJw9A34q2u9inIGkVolE
-         c0ow==
+        bh=ccLsCR2InDzvNTsN3aah4jcUq2TjT937xPnrA+vAYdA=;
+        b=IG9VzNabfomyRYvBzvp8+x2tebowStfl8CvX5kjHx4papgV2V95aUTI1epaccN/ffn
+         sNEtuzK4+QT4SdRq4ERHaf/s4EGz5uU0s8FiMSMIpyC8weFbuF57/jQ4SsND5pm4ExEs
+         eLpdkLeOvNZqSwVxnyMRWuuBrYk/41AjIaXTIFqdaS5Q/Km8fZmGsGG+2SZjQokpKXI1
+         aDnO/0fB51i+/MC05aUnpGqBCt2/zNMDY2PUZVG74HpySVWfwt4/N69eTpZ/PGk9stXd
+         xIydqZPAFTY9jn6fctX2A1Q4zR4A3SOY4G0OJw6kq4NZHg/H1vfXOye8cFqFjJw7pTSL
+         I+LA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712771893; x=1713376693;
+        d=1e100.net; s=20230601; t=1712772019; x=1713376819;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=5HKqyxzN7SQ+njXkzFYbZ1bIjg+blMGuSC+t3lHXad8=;
-        b=waDKzSLncCH3cE0TG+O05zb7EMIvxw/TtvO2awFWKOlIQpZC/CrgydUKqsmCFd70Uf
-         smuo6vZl+gAGWgYDSLJu+bSr1+LWqVGIVuX/EZO7y7jH0r4uv5tVn5nP//MzVIbDTOT/
-         dcZ00TNqylLqpBZArYjuTv5sDurHJD7/F3r8srbcM3Watz9aH4FyZ5KRKHLs1wZEVNEX
-         6/5ly4+8MQ0ocGH209AdXdG3zsv8BazziuCNblNaiIpvRxzmHE1QsAYIVPktfrJJYZJs
-         9uZav8UqahqA1S2+/mnZb67B7UNjGbFsOvfCEqpnGQKjpVDEfn+w7s/rE0DbK/seNeSi
-         RSJg==
-X-Forwarded-Encrypted: i=1; AJvYcCVLEjDhH1EcIO/j2jYwtbXtCTD7xh1UrJ6WJa0LZt84wQERS+yr+g/h0MctYcsNZcD7uJstHePFyccrZTFm0mbxMED+7pw+ZkJaOcFO4fBsutyr
-X-Gm-Message-State: AOJu0Yxlz7e+EvdsRt/AqP+1VULKBHJYSas+jgJMmKzlIkl2OgWW4Gku
-	SSmZoJSXhVhsloB+Rjla851dPl8HPiHLaGUPDawRNy8dvx81T8qMYbfS+a/ApRk=
-X-Google-Smtp-Source: AGHT+IGyY55a6V41Q7lbhc1tcmsbXyGB8IOOu2t1+OgOafNcxi8pu3THqPmM/LSBbb4JUlVfaWK7LA==
-X-Received: by 2002:a5d:5f89:0:b0:345:6010:6343 with SMTP id dr9-20020a5d5f89000000b0034560106343mr343727wrb.6.1712771892520;
-        Wed, 10 Apr 2024 10:58:12 -0700 (PDT)
+        bh=ccLsCR2InDzvNTsN3aah4jcUq2TjT937xPnrA+vAYdA=;
+        b=dBPviO2Wj50vgJm/GqEM7SthzoFmxcTIzga59DlxahifyP9TNNn97sgg9Tl7KhFdJM
+         r47K/CRd2Xg9Solh9qBD94PGG/3LkBqsoVD3LNYZlFwgJ2/H/toAe3mjHgJ+dt04xgCt
+         fJkVaN4IO/ozZxW/2CesvXTeaMjJdMzvc3qPammZo0k4/cUjws0WwbIJL2PzugsRk/Ja
+         SPoNOmSS793YyLjFzDjWVA+QxWW473aVScU+n5OKNzY/vVi+OhpG+iCvRRqw76vwAh4b
+         doD6/LFAxwxS9IM0Dh74yiW4BtOrSehV5Fu7Ne80IophNnsDd5qOZtv575heuxSzmZVT
+         d1mQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWt+obbRvp/KCVtfRB1ZlafzQ2TxvFTlco1aWam0mOgD/RZfSW/D4k22UAMI6Xu+YprBHQI1RQNzOJ/I4fLqiQP4KXd2Tw2YOSiUvRlm87roWvX
+X-Gm-Message-State: AOJu0YwGB5WWC5Ubil8tdqJcT4rM2yieRuEmegG1sqCIpaqFkXo16ZoO
+	gF4APNMnlffloeNfocRx0M3H2uekRQjXEig5TzolLne7pQHSkHGlUTJONsOruWg=
+X-Google-Smtp-Source: AGHT+IE4FXe9FSZ4eRDMGzWkvFO3kI6yoJGdyAHguGTa3zbbtbJx+F3WexVwDuK+/2EA3ytcG3csyQ==
+X-Received: by 2002:a05:651c:1a11:b0:2d8:e159:23b3 with SMTP id by17-20020a05651c1a1100b002d8e15923b3mr976848ljb.52.1712772019011;
+        Wed, 10 Apr 2024 11:00:19 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.223.16])
-        by smtp.gmail.com with ESMTPSA id l4-20020a5d4104000000b00343e392829dsm13934223wrp.97.2024.04.10.10.58.09
+        by smtp.gmail.com with ESMTPSA id k2-20020a5d5242000000b00343c0c24a65sm14198575wrc.89.2024.04.10.11.00.15
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 10 Apr 2024 10:58:12 -0700 (PDT)
-Message-ID: <f99fcb71-d5f2-4221-af5e-e8d1b4437cd6@linaro.org>
-Date: Wed, 10 Apr 2024 19:58:08 +0200
+        Wed, 10 Apr 2024 11:00:18 -0700 (PDT)
+Message-ID: <57827422-1042-4ef6-a11e-cb53fd930a41@linaro.org>
+Date: Wed, 10 Apr 2024 20:00:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 3/3] dt-bindings: PCI: host-bridges: switch from
@@ -115,7 +115,7 @@ Cc: Bjorn Helgaas <bhelgaas@google.com>,
  linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
 References: <20240407102000.37213-1-krzysztof.kozlowski@linaro.org>
  <20240407102000.37213-3-krzysztof.kozlowski@linaro.org>
- <20240410175540.GA802090-robh@kernel.org>
+ <20240410174806.GA788199-robh@kernel.org>
 Content-Language: en-US
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -162,13 +162,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240410175540.GA802090-robh@kernel.org>
+In-Reply-To: <20240410174806.GA788199-robh@kernel.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_105818_221460_D23D7C93 
-X-CRM114-Status: UNSURE (   9.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240410_110022_451031_CA3E5979 
+X-CRM114-Status: GOOD (  20.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -183,7 +182,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/04/2024 19:55, Rob Herring wrote:
+On 10/04/2024 19:48, Rob Herring wrote:
+> On Sun, Apr 07, 2024 at 12:20:00PM +0200, Krzysztof Kozlowski wrote:
+>> dtschema package with core schemas deprecated pci-bus.yaml schema in
+>> favor of pci-host-bridge.yaml.  Update all bindings to use the latter
+>> one.
+>>
+>> The difference between pci-bus.yaml and pci-host-bridge.yaml is only in
+>> lack of "reg" property defined by the latter, which should not have any
+>> effect here, because all these bindings define the "reg".
+>>
+>> The change is therefore quite trivial, except mediatek,mt7621-pcie.yaml
+>> binding which have children nodes being also host bridges, apparently.
+>>
+>> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>> ---
+>>  Documentation/devicetree/bindings/pci/amlogic,axg-pcie.yaml   | 2 +-
+>>  Documentation/devicetree/bindings/pci/apple,pcie.yaml         | 2 +-
+>>  Documentation/devicetree/bindings/pci/brcm,iproc-pcie.yaml    | 2 +-
+>>  Documentation/devicetree/bindings/pci/brcm,stb-pcie.yaml      | 2 +-
+>>  Documentation/devicetree/bindings/pci/cdns-pcie-host.yaml     | 2 +-
+>>  Documentation/devicetree/bindings/pci/faraday,ftpci100.yaml   | 2 +-
+>>  Documentation/devicetree/bindings/pci/host-generic-pci.yaml   | 2 +-
+>>  Documentation/devicetree/bindings/pci/intel,ixp4xx-pci.yaml   | 2 +-
+>>  Documentation/devicetree/bindings/pci/intel,keembay-pcie.yaml | 2 +-
+>>  Documentation/devicetree/bindings/pci/loongson.yaml           | 2 +-
+>>  .../devicetree/bindings/pci/mediatek,mt7621-pcie.yaml         | 4 ++--
+>>  Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml | 2 +-
+>>  .../devicetree/bindings/pci/microchip,pcie-host.yaml          | 2 +-
+>>  Documentation/devicetree/bindings/pci/qcom,pcie-common.yaml   | 2 +-
+>>  Documentation/devicetree/bindings/pci/qcom,pcie.yaml          | 2 +-
+>>  Documentation/devicetree/bindings/pci/rcar-pci-host.yaml      | 2 +-
+>>  .../devicetree/bindings/pci/renesas,pci-rcar-gen2.yaml        | 2 +-
 >>  .../devicetree/bindings/pci/rockchip,rk3399-pcie.yaml         | 2 +-
 >>  Documentation/devicetree/bindings/pci/snps,dw-pcie.yaml       | 2 +-
 >>  Documentation/devicetree/bindings/pci/ti,am65-pci-host.yaml   | 2 +-
@@ -194,10 +224,33 @@ On 10/04/2024 19:55, Rob Herring wrote:
 >>  Documentation/devicetree/bindings/pci/xlnx,xdma-host.yaml     | 2 +-
 >>  25 files changed, 26 insertions(+), 26 deletions(-)
 > 
-> This implicitly bumps the minimum version for dtschema. That's fine, but 
-> it should be explicit since we set it explicitly.
+> 
+>> diff --git a/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml b/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml
+>> index 61d027239910..5bbb4a3f3dbd 100644
+>> --- a/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml
+>> +++ b/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml
+>> @@ -14,7 +14,7 @@ description: |+
+>>    with 3 Root Ports. Each Root Port supports a Gen1 1-lane Link
+>>  
+>>  allOf:
+>> -  - $ref: /schemas/pci/pci-bus.yaml#
+>> +  - $ref: /schemas/pci/pci-host-bridge.yaml#
+>>  
+>>  properties:
+>>    compatible:
+>> @@ -33,7 +33,7 @@ properties:
+>>  patternProperties:
+>>    '^pcie@[0-2],0$':
+>>      type: object
+>> -    $ref: /schemas/pci/pci-bus.yaml#
+>> +    $ref: /schemas/pci/pci-host-bridge.yaml#
+> 
+> I think this one should be pci-pci-bridge.yaml instead since it says 
+> these are root ports and based on the unit-address here.
 
-Right, I will mention that this requires 2024.02
+I was thinking about this as well, but pci-pci-bridge.yaml defines
+compatible which is not present here at all. Since you suggest pci-pci,
+I'll go with this and make it a separate patch for easier review.
 
 Best regards,
 Krzysztof
