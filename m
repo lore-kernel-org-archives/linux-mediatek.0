@@ -4,88 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 688B6CD11C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 13:03:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 435F1CD11C2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 13:18:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=x3Y56dDS984KsDzs2nzTKgy6adBy9joM/agCd66RARo=; b=hJj7y4AVJ3ADkgLL+cCehx+BY0
-	5apVqJUETvtowcBk2Yl464+ZAMBrf3pYYW0Q78In9IoAxtZDiK0jPk7jyZrCOvtJeaIRkp5iDBrS8
-	JnMBSqXuUg8NaTgGvC/B3Ce3QLn0eaBF8L9XKiENprPXrMJzi2zNRRDdLIPWdxnTWmZTUNP6ersnb
-	4WtWGIvQhZ8TnI94ZRvrkLgIzGBC2mCUpEhToJLrv+Raaxcjo9UnVKVFUfYkr2qLZnGG1yVAm+kSr
-	j8ZLbIew2u2oNutIKI9uZqUf4qKhP4pfmsihVRxeVZ6Cl7o+L5ocfNjtYGoUSZYIYSkJJJSM8TIm3
-	5/n4hbvg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NK/ebucV8gkQdirPclBiNQxag+qh5mnAVP3hrQ1KOiw=; b=CP/c1Bja1/4+1220GQQOi+mPMq
+	FlDX3C3ISG4WagVpsum0zqHx8eMTh45dQ3YGUL2sBiR5l+do9B9zCVvTWdvnEXrSkOww95wg46fAf
+	szXBUYVrlxei2ZnuzfaB7+ole5O24PcSbbvn76Fdt/POH16MzjugEe2aTFkaz38/xaTRBbRmJmx8k
+	wF5uTjm+xLezGuY26Pe0Dr6QWxa/qHdcVxDiMX1pw5B0SoAcCYlsRBHDsYrM75QbzPtt76ObPQm9M
+	z8aJhrqfhMhP6xNTd1/pGP2QrzbT6t0JOTuiqOdox2R0g+alInNvyvpaYneTdr4/3bEOSxmIqQJJC
+	uv8OWofw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruXbY-000000071t7-0NAW;
-	Wed, 10 Apr 2024 13:03:08 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1ruXpy-000000075Ix-0HTQ;
+	Wed, 10 Apr 2024 13:18:02 +0000
+Received: from mail-ed1-f53.google.com ([209.85.208.53])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruXbT-000000071ru-2OSE
-	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Apr 2024 13:03:05 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-1e3ca4fe4cfso28865465ad.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 06:03:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1712754181; x=1713358981; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=x3Y56dDS984KsDzs2nzTKgy6adBy9joM/agCd66RARo=;
-        b=k8uQIb+TsvHAr8xRR4TUELDrC+2NqtGQaGty7StZ+0w+zBvOIIKP/LRPut1uBthmSy
-         j8khV0r3jB0I9k1V1WSGoo/ViznvbwxY8qCspnEvvjPgiHr6PKwkqxs+DCi7tk48YZaK
-         q9LecDWJRLp3OvWHafpvvLNRgOh13clYSbuvo=
+	id 1ruXpu-000000075G8-032D;
+	Wed, 10 Apr 2024 13:17:59 +0000
+Received: by mail-ed1-f53.google.com with SMTP id 4fb4d7f45d1cf-56bdf81706aso8939103a12.2;
+        Wed, 10 Apr 2024 06:17:50 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712754181; x=1713358981;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1712755069; x=1713359869;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=x3Y56dDS984KsDzs2nzTKgy6adBy9joM/agCd66RARo=;
-        b=ARctpq+PgjJAhZb1gZBdyQqKlN25iwx6uFvQEtID+V2n41P2rqfdVJLttl//kGddg2
-         TXybL5UuoP4x98VmzBmI7LAEMJpkB3AagA15qn22gXjkPXvXiDRyIQYGp7e/EDMZ1jij
-         yllWPQW1AjlOIOdeuOlq0OgHAs29D2Kr3J0NXi5QF4Ku/yDXlC0GL4OZPqkt3NJQGpuA
-         qr3e279uefv9Hx/OGvZ8zb9e7tzYcbO7+nojrBg3a1rpaMMaMzDWHEi4J4yrMUakz35U
-         9yrU7z7d9Yknk5er9p6UISHxAijM26GSDv9XixfgLdDFPbV2xcnDz/UV2yj8s4hMn/kv
-         qiUQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWLfjI9RR13/AixOSAB54Y53TgLF2OcXMhKOQ+kFIQ/5QxUoV3C00zENeLdKX9N3AxYHbf5ShAf1emVWLVYEAkrsTiIyK91KL00WNuv8HgCwsyO
-X-Gm-Message-State: AOJu0Yyb6/nP0D3+pFWOpZ82EObVALbVD0oOLlSRncCrtxgMNp1+qCgT
-	yhBzrb7u6Qns0TwBFhBfiJJ+TOEqqLmc9L05jw3wbB8HPLJ3AAmj8nkt239cWQ==
-X-Google-Smtp-Source: AGHT+IHqZzwYa8MxtXFxj041lgd7J88+1a1m5BQKJBRqUvFpLKeI9bdlPRTEzn2uQM5glqcDtWs7AQ==
-X-Received: by 2002:a17:902:fc48:b0:1e4:10d9:5dfb with SMTP id me8-20020a170902fc4800b001e410d95dfbmr3179942plb.38.1712754181302;
-        Wed, 10 Apr 2024 06:03:01 -0700 (PDT)
-Received: from yuanhsinte1.c.googlers.com (88.216.124.34.bc.googleusercontent.com. [34.124.216.88])
-        by smtp.gmail.com with ESMTPSA id kq12-20020a170903284c00b001e29acb2d18sm10726341plb.4.2024.04.10.06.02.57
+        bh=NK/ebucV8gkQdirPclBiNQxag+qh5mnAVP3hrQ1KOiw=;
+        b=ndRxqYTpK05J2IZNJMIt601saG8/1+I6/oia5KbUgdDhdHVNExhtDKfBQgRqGgLRvV
+         RB1kyEP1+d4KxpN7enm/Jm5Jp+0iQ6Pn5Tsex3Hs7MuiG1pzAy7oM01jQpHl1X+FSLi2
+         cY4JJz1hBlDpCY1Y5L8D1BvfrLO9ECN+HXvFqp7uHJkxQ2cvzkGvTAG7VUumvXcoqtWV
+         b0KPCeCLiBWaODcu+GRWRrkSJwFw/4HtBZNjQ9xSY2wFIB3eMcsqW5ygOEn5JcOFrXKY
+         Qk4F0nBp2zT87vcsq6EtmTXPCV4TD54xVQgtWC1bsIcfmtTpSS5dLftlMQhYUSmCkAYD
+         o53A==
+X-Forwarded-Encrypted: i=1; AJvYcCVbzxiJ0334BHuLrJruPHiIjQv61KDufzWBMTuY4U5LxImhOplTUwQaVjTHi6d13swg+2k+LEaa5b+6wJwFZZnJ/69n4bkS0xYQGBxvFL5wUIK5H2T1Blnly37OoECK2MKJ7yVKQzUILW4GrPYk3/c0lUwVtE7VatN0ODeV5EiHyhCINCkdxTRoHD1uH++7Rm63UqtymIDON0M62MZ+/nBguj555jxBqeMD3VbweHMpog==
+X-Gm-Message-State: AOJu0Yx4gWFrQh7zGWKIiOlFL0Jdn4b4XTtp5kh7TV0VPjorvRXa3/L2
+	yHygwkZ72YVJbG28pD9LxVPYww4NRoUSLNY7C/AfviC7NXfyZhNO
+X-Google-Smtp-Source: AGHT+IFSd0Sg381tqtWe29jdXXqCNujDjWni8Ms+Iy/hEjPdANID9QF0uHrZU2yu/2/4I7NBrTO3cw==
+X-Received: by 2002:a17:906:4f17:b0:a52:140c:571b with SMTP id t23-20020a1709064f1700b00a52140c571bmr735783eju.3.1712755069216;
+        Wed, 10 Apr 2024 06:17:49 -0700 (PDT)
+Received: from localhost (fwdproxy-lla-001.fbsv.net. [2a03:2880:30ff:1::face:b00c])
+        by smtp.gmail.com with ESMTPSA id jl7-20020a17090775c700b00a4e70ede2b7sm7016390ejc.174.2024.04.10.06.17.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 Apr 2024 06:03:00 -0700 (PDT)
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Wed, 10 Apr 2024 13:02:48 +0000
-Subject: [PATCH v2] thermal/drivers/mediatek/lvts_thermal: Add coeff for
- mt8192
+        Wed, 10 Apr 2024 06:17:48 -0700 (PDT)
+From: Breno Leitao <leitao@debian.org>
+To: aleksander.lobakin@intel.com,
+	kuba@kernel.org,
+	davem@davemloft.net,
+	pabeni@redhat.com,
+	edumazet@google.com,
+	elder@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	nbd@nbd.name,
+	sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com,
+	lorenzo@kernel.org,
+	taras.chornyi@plvision.eu,
+	ath11k@lists.infradead.org,
+	ath10k@lists.infradead.org,
+	linux-wireless@vger.kernel.org,
+	geomatsi@gmail.com,
+	kvalo@kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: quic_jjohnson@quicinc.com,
+	leon@kernel.org,
+	dennis.dalessandro@cornelisnetworks.com,
+	linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org,
+	bpf@vger.kernel.org,
+	idosch@idosch.org,
+	leitao@debian.org
+Subject: [PATCH net-next v5 00/10] allocate dummy device dynamically
+Date: Wed, 10 Apr 2024 06:13:41 -0700
+Message-ID: <20240410131407.3897251-1-leitao@debian.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240410-lvts_thermal-v2-1-621cb7c07a32@chromium.org>
-X-B4-Tracking: v=1; b=H4sIAPeNFmYC/3XMQQ6CMBCF4auQWVvTFgrqynsYYrBM6SRAzRQbD
- eHuVvYu/5e8b4WITBjhUqzAmChSmHPoQwHWd/OAgvrcoKWuZKWkGNMS74tHnrpRlH1Zm1PVdNY
- 5yJcno6P3zt3a3J7iEviz60n91j9QUkIJRCMf+mxVY+qr9Rwmek3HwAO027Z9AUg9I3KrAAAA
-To: "Rafael J. Wysocki" <rafael@kernel.org>, 
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
- Lukasz Luba <lukasz.luba@arm.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
- =?utf-8?q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
- Balsam CHIHI <bchihi@baylibre.com>
-Cc: Alexandre Mergnat <amergnat@baylibre.com>, linux-pm@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Hsin-Te Yuan <yuanhsinte@chromium.org>
-X-Mailer: b4 0.12.4
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_060303_685465_74878B9E 
-X-CRM114-Status: UNSURE (   9.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240410_061758_076559_B1547FA6 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,46 +102,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order for lvts_raw_to_temp to function properly on mt8192,
-temperature coefficients for mt8192 need to be added.
+struct net_device shouldn't be embedded into any structure, instead,
+the owner should use the private space to embed their state into
+net_device.
 
-Fixes: 288732242db4 ("thermal/drivers/mediatek/lvts_thermal: Add mt8192 support")
-Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
----
-Changes in v2:
-- Reusing mt8195 coeff instead of creating duplicate definitions
-- Link to v1: https://lore.kernel.org/r/20240410-lvts_thermal-v1-1-ee50b29c1756@chromium.org
----
- drivers/thermal/mediatek/lvts_thermal.c | 4 ++++
- 1 file changed, 4 insertions(+)
+But, in some cases the net_device is embedded inside the private
+structure, which blocks the usage of zero-length arrays inside
+net_device.
 
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index fd4bd650c77a6..4e5c213a89225 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -1530,11 +1530,15 @@ static const struct lvts_data mt7988_lvts_ap_data = {
- static const struct lvts_data mt8192_lvts_mcu_data = {
- 	.lvts_ctrl	= mt8192_lvts_mcu_data_ctrl,
- 	.num_lvts_ctrl	= ARRAY_SIZE(mt8192_lvts_mcu_data_ctrl),
-+	.temp_factor	= LVTS_COEFF_A_MT8195,
-+	.temp_offset	= LVTS_COEFF_B_MT8195,
- };
- 
- static const struct lvts_data mt8192_lvts_ap_data = {
- 	.lvts_ctrl	= mt8192_lvts_ap_data_ctrl,
- 	.num_lvts_ctrl	= ARRAY_SIZE(mt8192_lvts_ap_data_ctrl),
-+	.temp_factor	= LVTS_COEFF_A_MT8195,
-+	.temp_offset	= LVTS_COEFF_B_MT8195,
- };
- 
- static const struct lvts_data mt8195_lvts_mcu_data = {
+Create a helper to allocate a dummy device at dynamically runtime, and
+move the Ethernet devices to use it, instead of embedding the dummy
+device inside the private structure.
+
+This fixes all the network cases plus some wireless drivers.
+
+PS: Due to lack of hardware, unfortunately most these patches are
+compiled tested only, except ath11k that was kindly tested by Kalle Valo.
 
 ---
-base-commit: 20cb38a7af88dc40095da7c2c9094da3873fea23
-change-id: 20240410-lvts_thermal-3d365847acff
+Changelog:
 
-Best regards,
+v1:
+	* https://lore.kernel.org/all/20240327200809.512867-1-leitao@debian.org/
+
+v2:
+	* Patch 1: Use a pre-defined name ("dummy#") for the dummy
+	  net_devices.
+	* Patch 2-5: Added users for the new helper.
+v3:
+	* Use free_netdev() instead of kfree() as suggested by Jakub.
+	* Change the free_netdev() place in ipa driver, as suggested by
+	  Alex Elder.
+	* Set err in the error path in the Marvell driver, as suggested
+	  by Simon Horman.
+v4:
+	* Added a new patch to add dummy device at free_netdev(), as suggested
+	  by Jakub.
+	* Added support for some wireless driver.
+	* Added some Acked-by and Reviewed-by.
+v5:
+	* Added a new patch to fix some typos in the previous code,
+	  suggested by Ido.
+	* Rebased to net-net/main
+
+
+Breno Leitao (10):
+  net: core: Fix documentation
+  net: free_netdev: exit earlier if dummy
+  net: create a dummy net_device allocator
+  net: marvell: prestera: allocate dummy net_device dynamically
+  net: mediatek: mtk_eth_sock: allocate dummy net_device dynamically
+  net: ipa: allocate dummy net_device dynamically
+  net: ibm/emac: allocate dummy net_device dynamically
+  wifi: qtnfmac: Use netdev dummy allocator helper
+  wifi: ath10k: allocate dummy net_device dynamically
+  wifi: ath11k: allocate dummy net_device dynamically
+
+ drivers/net/ethernet/ibm/emac/mal.c           | 14 ++++-
+ drivers/net/ethernet/ibm/emac/mal.h           |  2 +-
+ .../ethernet/marvell/prestera/prestera_rxtx.c | 15 ++++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 17 ++++--
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h   |  2 +-
+ drivers/net/ipa/gsi.c                         | 12 ++--
+ drivers/net/ipa/gsi.h                         |  2 +-
+ drivers/net/wireless/ath/ath10k/core.c        |  9 ++-
+ drivers/net/wireless/ath/ath10k/core.h        |  2 +-
+ drivers/net/wireless/ath/ath10k/pci.c         |  2 +-
+ drivers/net/wireless/ath/ath10k/sdio.c        |  2 +-
+ drivers/net/wireless/ath/ath10k/snoc.c        |  4 +-
+ drivers/net/wireless/ath/ath10k/usb.c         |  2 +-
+ drivers/net/wireless/ath/ath11k/ahb.c         |  9 ++-
+ drivers/net/wireless/ath/ath11k/core.h        |  2 +-
+ drivers/net/wireless/ath/ath11k/pcic.c        | 21 +++++--
+ .../wireless/quantenna/qtnfmac/pcie/pcie.c    |  3 +-
+ include/linux/netdevice.h                     |  3 +
+ net/core/dev.c                                | 57 ++++++++++++-------
+ 19 files changed, 127 insertions(+), 53 deletions(-)
+
 -- 
-Hsin-Te Yuan <yuanhsinte@chromium.org>
+2.43.0
 
 
