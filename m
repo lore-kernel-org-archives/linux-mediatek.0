@@ -4,89 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4215FCD1297
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 06:20:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 185C5CD1296
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Apr 2024 07:32:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=e5v4LfNlblo2WKgRAn2D3NW7xqD55htd+EO/6vEx8Ak=; b=iF7NMVXAcydpulCQfvPgUVzBDY
-	62LZ08CQ52RMiKoX+vpst1KN8OrA4SiF1eFMx4Tg8CjqBB8mWCqS9eZbb8dFs0eyXwteEYimTOcxj
-	N5kDZW6TQvGiyd6DD1Y9DNZLadgSvyBq10fUZ8D16zHUmSdVLZufCWg9Jzh2gMgG8NM8b9AAsFff6
-	DbRbJ+MpKJ+07iNEc4/+lprxG0xisqL4sgzPABt+KbkMUCiAjnsxBUFuvmpslgsNUUkAYWEuy+7ja
-	l7UUihw9zs93yTFuz2K858YaQE3AwuIzHOcfYopTXLkNmDj0ioIajHP6jxH8cyTp/hE8nkcIk9eXq
-	ov266Cqg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hirxOWkyWCim2+ODFEmbXTRJuf23a8yt89BscoqEckY=; b=1HqOCqR3K8WvrjMc5HGTakMruf
+	v+QcZNAJYD9aGhyaBDsMNqsQrXKe69QThMQ2npxOsDv+OC1J29Tzy9Rx7M55THw2JYl2Zq5gTAqX5
+	x6kBv9XuTb2VJqOGTEbjzC3odvgScsOrYGNXZlgJzyqrIWjrlY3TTz1HWaWk94VfbV91Mc0q72WZ+
+	/JRpYDnTOZP9EDcxp0tF525BniONVOXAfqnwrRI0ZgHMAD2MfYDWvJtn4gsUlMDQtQZ/TJ8F0Znm/
+	RfyM+PevTFctT5JEUQmavRZc2RbcVI1knre9JxSnHi+EKuPupmuaqUzCQOqQ4kDul7tsO1k0jPkh8
+	46ake8rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruRJv-00000005M7B-18P6;
-	Wed, 10 Apr 2024 06:20:31 +0000
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	id 1ruSR6-00000005ckV-02VR;
+	Wed, 10 Apr 2024 07:32:00 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruRJr-00000005M61-2sxJ
-	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Apr 2024 06:20:29 +0000
-Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-6ecf3f001c5so5264835b3a.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Apr 2024 23:20:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1712730026; x=1713334826; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=e5v4LfNlblo2WKgRAn2D3NW7xqD55htd+EO/6vEx8Ak=;
-        b=oCjSww4RIqjJ+swGipsSyavesOKx0loas9rA1j2Rk6L7+5UeOxJNjgmAqgXP47FxkP
-         13HLN4AuVOMViUaWKFeaG3FS0zrB5T23huhGxZUKLQFXVwTT49q9OfnCCKFFBAD18VtK
-         8M3UACPifJZJi5v11rVV1nhHwIQwbvkWzv2hg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712730026; x=1713334826;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=e5v4LfNlblo2WKgRAn2D3NW7xqD55htd+EO/6vEx8Ak=;
-        b=ZyIq9M6dpyS41YMGcU8QjeTs8hFvsMeJkXTo74el3p68GKmKhh6A2Cg/hz+vh5+V4r
-         hFPCU5s81Z0A2IbPZpyKBx9etpCOKN8NexJdNnxsKIVD+5IJ/dVVk6yEzxzICcYcEkOV
-         pGeL3wvvuwtFvKUhkT6uj39R8XUP4N+llJhWDRU1GXnYVUc9aHSXSliP7gGmCesnKCFa
-         msjWuueL8lU+2s/SzYe8lExeO5/26NZ4HvwrxSynsqDBCJERupepxdng8yBRFv7hAB1j
-         MHozCgtJU9xFOYug2FBzE+ge4wVjIRSE35ptu0XOqCThq5JysrrS8WwpimQ8PguRTleX
-         vJFg==
-X-Forwarded-Encrypted: i=1; AJvYcCXJiyKSwVj3A+Pcbm0ycAfeJPBsYUO0HBNHdUMj3e+XthriipQUYPdIwvguTwPUezJNc3Ev+M+uQz72uDv6cp8ZLn8JxDx40DsRLQ2Bu7vbneFf
-X-Gm-Message-State: AOJu0Ywqvs7/jHwsusHlvQx32qxWnqz0BJjdUaeFEx7y/GHv2vhJYKpe
-	ySVJKij5+ibk5kvM9UGI8e6fm30lY0B/xLRDdZXMe9hLH8ryw+7kcqcKUwEfUQ==
-X-Google-Smtp-Source: AGHT+IHAta98FxLNG/x0sc1YsRsry9ENklaCOvy0ZnfjzpSfwTLrCO0ZpnFeZ9TC6+QWoa+lKUCVCQ==
-X-Received: by 2002:a05:6a00:21c9:b0:6ec:ee7c:141c with SMTP id t9-20020a056a0021c900b006ecee7c141cmr2087534pfj.16.1712730025858;
-        Tue, 09 Apr 2024 23:20:25 -0700 (PDT)
-Received: from yuanhsinte1.c.googlers.com (88.216.124.34.bc.googleusercontent.com. [34.124.216.88])
-        by smtp.gmail.com with ESMTPSA id lb14-20020a056a004f0e00b006ead47a65d1sm9411384pfb.109.2024.04.09.23.20.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Apr 2024 23:20:25 -0700 (PDT)
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Wed, 10 Apr 2024 06:20:20 +0000
-Subject: [PATCH] arm64: dts: mediatek: mt8192: Add missing trip point in
- thermal zone
+	id 1ruSR1-00000005ciO-16Lx;
+	Wed, 10 Apr 2024 07:31:56 +0000
+X-UUID: 6337f08af70c11ee96d5dfc950b7243d-20240410
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=hirxOWkyWCim2+ODFEmbXTRJuf23a8yt89BscoqEckY=;
+	b=HgIK9aLyJ3uqGJxu/9wSgapOMrAZG7XQd5WT6pNm0Yzd1VCWEBAJFoA6cjhB/K3qHg/7fILNyFjcDX6h4Hd1+1miHJT6KAnbyMW5x6ECsIKDXCJPxgAfQzw33TwHrcV0P+G7F24GNFbxEyE+LUjbY8w91jbMu9VkpwfN/R0B/T8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:72c91e45-c544-4999-911e-e86505b0c28d,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6f543d0,CLOUDID:c1b78082-4f93-4875-95e7-8c66ea833d57,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 6337f08af70c11ee96d5dfc950b7243d-20240410
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <boy.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 289369751; Wed, 10 Apr 2024 00:31:47 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 10 Apr 2024 00:31:12 -0700
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 10 Apr 2024 15:31:12 +0800
+From: boy.wu <boy.wu@mediatek.com>
+To: Mark Rutland <mark.rutland@arm.com>, Andrey Ryabinin
+	<ryabinin.a.a@gmail.com>, Linus Walleij <linus.walleij@linaro.org>
+CC: Alexander Potapenko <glider@google.com>, Andrey Konovalov
+	<andreyknvl@gmail.com>, Dmitry Vyukov <dvyukov@google.com>, Vincenzo Frascino
+	<vincenzo.frascino@arm.com>, <kasan-dev@googlegroups.com>, Russell King
+	<linux@armlinux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Boy Wu
+	<boy.wu@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Iverlin
+ Wang <iverlin.wang@mediatek.com>, Light Chen <light.chen@mediatek.com>
+Subject: [PATCH v2] arm: kasan: clear stale stack poison
+Date: Wed, 10 Apr 2024 15:30:44 +0800
+Message-ID: <20240410073044.23294-1-boy.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240410-upstream-torvalds-master-v1-1-852e903f0cec@chromium.org>
-X-B4-Tracking: v=1; b=H4sIAKMvFmYC/x3MTQqEMAxA4atI1gZa6Sh4FXERajoT8I+kiiDe3
- TLLb/HeDcYqbNBXNyifYrKtBb6uIP5o/TLKVAyNa4IL3uGxW1amBfOmJ82T4UKWWTE44pQ+wbe
- xg5Lvykmu/3oYn+cFMVnATGoAAAA=
-To: Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
- =?utf-8?q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
- Balsam CHIHI <bchihi@baylibre.com>, 
- Alexandre Mergnat <amergnat@baylibre.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Hsin-Te Yuan <yuanhsinte@chromium.org>
-X-Mailer: b4 0.12.4
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_232027_738408_406A1BE7 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240410_003155_341299_6DEF184B 
+X-CRM114-Status: GOOD (  14.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,121 +88,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the missing passive trip point which is expected by kernel.
+From: Boy Wu <boy.wu@mediatek.com>
 
-Fixes: c7a728051f4e ("arm64: dts: mediatek: mt8192: Add thermal nodes and thermal zones")
-Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+We found below OOB crash:
+
+[   33.452494] ==================================================================
+[   33.453513] BUG: KASAN: stack-out-of-bounds in refresh_cpu_vm_stats.constprop.0+0xcc/0x2ec
+[   33.454660] Write of size 164 at addr c1d03d30 by task swapper/0/0
+[   33.455515]
+[   33.455767] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G           O       6.1.25-mainline #1
+[   33.456880] Hardware name: Generic DT based system
+[   33.457555]  unwind_backtrace from show_stack+0x18/0x1c
+[   33.458326]  show_stack from dump_stack_lvl+0x40/0x4c
+[   33.459072]  dump_stack_lvl from print_report+0x158/0x4a4
+[   33.459863]  print_report from kasan_report+0x9c/0x148
+[   33.460616]  kasan_report from kasan_check_range+0x94/0x1a0
+[   33.461424]  kasan_check_range from memset+0x20/0x3c
+[   33.462157]  memset from refresh_cpu_vm_stats.constprop.0+0xcc/0x2ec
+[   33.463064]  refresh_cpu_vm_stats.constprop.0 from tick_nohz_idle_stop_tick+0x180/0x53c
+[   33.464181]  tick_nohz_idle_stop_tick from do_idle+0x264/0x354
+[   33.465029]  do_idle from cpu_startup_entry+0x20/0x24
+[   33.465769]  cpu_startup_entry from rest_init+0xf0/0xf4
+[   33.466528]  rest_init from arch_post_acpi_subsys_init+0x0/0x18
+[   33.467397]
+[   33.467644] The buggy address belongs to stack of task swapper/0/0
+[   33.468493]  and is located at offset 112 in frame:
+[   33.469172]  refresh_cpu_vm_stats.constprop.0+0x0/0x2ec
+[   33.469917]
+[   33.470165] This frame has 2 objects:
+[   33.470696]  [32, 76) 'global_zone_diff'
+[   33.470729]  [112, 276) 'global_node_diff'
+[   33.471294]
+[   33.472095] The buggy address belongs to the physical page:
+[   33.472862] page:3cd72da8 refcount:1 mapcount:0 mapping:00000000 index:0x0 pfn:0x41d03
+[   33.473944] flags: 0x1000(reserved|zone=0)
+[   33.474565] raw: 00001000 ed741470 ed741470 00000000 00000000 00000000 ffffffff 00000001
+[   33.475656] raw: 00000000
+[   33.476050] page dumped because: kasan: bad access detected
+[   33.476816]
+[   33.477061] Memory state around the buggy address:
+[   33.477732]  c1d03c00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[   33.478630]  c1d03c80: 00 00 00 00 00 00 00 00 f1 f1 f1 f1 00 00 00 00
+[   33.479526] >c1d03d00: 00 04 f2 f2 f2 f2 00 00 00 00 00 00 f1 f1 f1 f1
+[   33.480415]                                                ^
+[   33.481195]  c1d03d80: 00 00 00 00 00 00 00 00 00 00 04 f3 f3 f3 f3 f3
+[   33.482088]  c1d03e00: f3 f3 f3 f3 00 00 00 00 00 00 00 00 00 00 00 00
+[   33.482978] ==================================================================
+
+We find the root cause of this OOB is that arm does not clear stale stack
+poison in the case of cpuidle.
+
+This patch refer to arch/arm64/kernel/sleep.S to resolve this issue.
+
+From cited commit [1] that explain the problem
+
+Functions which the compiler has instrumented for KASAN place poison on
+the stack shadow upon entry and remove this poison prior to returning.
+
+In the case of cpuidle, CPUs exit the kernel a number of levels deep in
+C code.  Any instrumented functions on this critical path will leave
+portions of the stack shadow poisoned.
+
+If CPUs lose context and return to the kernel via a cold path, we
+restore a prior context saved in __cpu_suspend_enter are forgotten, and
+we never remove the poison they placed in the stack shadow area by
+functions calls between this and the actual exit of the kernel.
+
+Thus, (depending on stackframe layout) subsequent calls to instrumented
+functions may hit this stale poison, resulting in (spurious) KASAN
+splats to the console.
+
+To avoid this, clear any stale poison from the idle thread for a CPU
+prior to bringing a CPU online.
+
+From cited commit [2]
+
+Extend to check for CONFIG_KASAN_STACK
+
+[1] commit 0d97e6d8024c ("arm64: kasan: clear stale stack poison")
+[2] commit d56a9ef84bd0 ("kasan, arm64: unpoison stack only with CONFIG_KASAN_STACK")
+
+Signed-off-by: Boy Wu <boy.wu@mediatek.com>
+Reviewed-by: Mark Rutland <mark.rutland@arm.com>
+Acked-by: Andrey Ryabinin <ryabinin.a.a@gmail.com>
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 40 ++++++++++++++++++++++++++++++++
- 1 file changed, 40 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 05e401670bced..08d8bccc84669 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -1959,6 +1959,11 @@ cpu0-thermal {
- 			thermal-sensors = <&lvts_mcu MT8192_MCU_LITTLE_CPU0>;
- 
- 			trips {
-+				cpu0_thres: trip-point {
-+					temperature = <68000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
- 				cpu0_alert: trip-alert {
- 					temperature = <85000>;
- 					hysteresis = <2000>;
-@@ -1989,6 +1994,11 @@ cpu1-thermal {
- 			thermal-sensors = <&lvts_mcu MT8192_MCU_LITTLE_CPU1>;
- 
- 			trips {
-+				cpu1_thres: trip-point {
-+					temperature = <68000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
- 				cpu1_alert: trip-alert {
- 					temperature = <85000>;
- 					hysteresis = <2000>;
-@@ -2019,6 +2029,11 @@ cpu2-thermal {
- 			thermal-sensors = <&lvts_mcu MT8192_MCU_LITTLE_CPU2>;
- 
- 			trips {
-+				cpu2_thres: trip-point {
-+					temperature = <68000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
- 				cpu2_alert: trip-alert {
- 					temperature = <85000>;
- 					hysteresis = <2000>;
-@@ -2049,6 +2064,11 @@ cpu3-thermal {
- 			thermal-sensors = <&lvts_mcu MT8192_MCU_LITTLE_CPU3>;
- 
- 			trips {
-+				cpu3_thres: trip-point {
-+					temperature = <68000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
- 				cpu3_alert: trip-alert {
- 					temperature = <85000>;
- 					hysteresis = <2000>;
-@@ -2079,6 +2099,11 @@ cpu4-thermal {
- 			thermal-sensors = <&lvts_mcu MT8192_MCU_BIG_CPU0>;
- 
- 			trips {
-+				cpu4_thres: trip-point {
-+					temperature = <68000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
- 				cpu4_alert: trip-alert {
- 					temperature = <85000>;
- 					hysteresis = <2000>;
-@@ -2109,6 +2134,11 @@ cpu5-thermal {
- 			thermal-sensors = <&lvts_mcu MT8192_MCU_BIG_CPU1>;
- 
- 			trips {
-+				cpu5_thres: trip-point {
-+					temperature = <68000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
- 				cpu5_alert: trip-alert {
- 					temperature = <85000>;
- 					hysteresis = <2000>;
-@@ -2139,6 +2169,11 @@ cpu6-thermal {
- 			thermal-sensors = <&lvts_mcu MT8192_MCU_BIG_CPU2>;
- 
- 			trips {
-+				cpu6_thres: trip-point {
-+					temperature = <68000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
- 				cpu6_alert: trip-alert {
- 					temperature = <85000>;
- 					hysteresis = <2000>;
-@@ -2169,6 +2204,11 @@ cpu7-thermal {
- 			thermal-sensors = <&lvts_mcu MT8192_MCU_BIG_CPU3>;
- 
- 			trips {
-+				cpu7_thres: trip-point {
-+					temperature = <68000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
- 				cpu7_alert: trip-alert {
- 					temperature = <85000>;
- 					hysteresis = <2000>;
-
+v2 - Add commit message that reviewer mention
 ---
-base-commit: 20cb38a7af88dc40095da7c2c9094da3873fea23
-change-id: 20240410-upstream-torvalds-master-40aeff5416c7
+ arch/arm/kernel/sleep.S | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-Best regards,
+diff --git a/arch/arm/kernel/sleep.S b/arch/arm/kernel/sleep.S
+index a86a1d4f3461..93afd1005b43 100644
+--- a/arch/arm/kernel/sleep.S
++++ b/arch/arm/kernel/sleep.S
+@@ -127,6 +127,10 @@ cpu_resume_after_mmu:
+ 	instr_sync
+ #endif
+ 	bl	cpu_init		@ restore the und/abt/irq banked regs
++#if defined(CONFIG_KASAN) && defined(CONFIG_KASAN_STACK)
++	mov	r0, sp
++	bl	kasan_unpoison_task_stack_below
++#endif
+ 	mov	r0, #0			@ return zero on success
+ 	ldmfd	sp!, {r4 - r11, pc}
+ ENDPROC(cpu_resume_after_mmu)
 -- 
-Hsin-Te Yuan <yuanhsinte@chromium.org>
+2.18.0
 
 
