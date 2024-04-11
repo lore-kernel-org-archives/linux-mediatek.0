@@ -4,70 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A264CD1292
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 06:37:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A12C8CD128A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 06:41:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XqSWLrlFyWfykVOR0MmB9WltAiGKjOwu6eImWgkNDkE=; b=By6ZqQ/hpiPzYTTbGhAphh3Z6E
-	0nYoeAu1i+H8PhPAuB/SsBlmpusXIriK889CCTlujb/RywiU3Ig2P+ckAGgDsC7TdTfH0KawhFwB0
-	zoNr/9JdKfZ0ZpeHdMBjdmELwamG9l1DFGEAYgwwAzciZ12sxqiSooUgcUYqtZY8QR7xthKV0xnzc
-	FC1GSb1IDHO5Dy+9ESmCEWprnZUsK++9yfFE8i4cN2mSFUNAouY6zYLqh0icn2v3p+Ranv0nR+sKh
-	JVQZK3jHbFp+fo/fe3wGAZoyCrByQY+Wfo7+ecTlYxCBOuzLv/J0x5AdtGiaJ64CZSu8JGLjlnMLC
-	DffRBP5Q==;
+	bh=hnE9LLlFzH1eszTKYyHluG3JEutS2A7EUuxXIDLILz4=; b=FvUeUvUM8DKR7vHh5Vvm9YRKIj
+	Ez6jMSHs16AAeQMAJVN0I5LRflzOXIFqTut675zV4R3s2LWlEaEgslIdS1Ild3yFvsqoFWSfENwf2
+	TYm/te6gcgs6E28oiteXyda5+C6Iz7IM0f/CcpvkuCP89AH0cRX4NvYZvxUZ6A5PVzdhNGiTh5lh3
+	ZhjR9onZLXbNQIJnpEpS6rQv7SXZpRNJ4pbaPUTsKwzNlCIc1AYwEmYmwiGP4NtlkN9KAA+q7mSff
+	G6Wiwn5qZKEVmXEl0G7jz08LZGVWaeqmjccv4yTgp8g+IX3zVYCWMovM1BCgLFskm+68u/OM+dWZl
+	eP0XAITQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruo46-0000000AdIE-44VZ;
-	Thu, 11 Apr 2024 06:37:42 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ruo7W-0000000Adtz-1GMF;
+	Thu, 11 Apr 2024 06:41:14 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruo42-0000000AdF3-1ewJ;
-	Thu, 11 Apr 2024 06:37:39 +0000
+	id 1ruo7S-0000000Ads9-2pdK;
+	Thu, 11 Apr 2024 06:41:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A7B6B61F4D;
-	Thu, 11 Apr 2024 06:37:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72E4FC433C7;
-	Thu, 11 Apr 2024 06:37:32 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 6DEB3CE2F05;
+	Thu, 11 Apr 2024 06:41:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B039DC433F1;
+	Thu, 11 Apr 2024 06:40:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712817457;
-	bh=J4MtSGZ9A4PqQEESdLkR2qbhqClsDX2SFx9QZn6D+7I=;
+	s=k20201202; t=1712817660;
+	bh=JzMDwEaIhgIZZYjjt1yhD5NQMEa+xjaYkPpTsdWlY0A=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=giMzWZzSLoxGEKdsth1yCG/ZAGUd5Y9z5/gB/8OF4eLMgcKr2104+egAAjZ+oVS/8
-	 Te+r1gtIdNAV/+1cq6vyEjOO9UlA35NUSrrkuVgfZXhJOldeuv948toll/XgpFXuSX
-	 VyKf1OBhjYTSqw3U4et+K7DZBX4X9LhXNj9itOGhYnwxOBmNjAXsf3Hffd8W0wirxO
-	 qpGPAQ3wVHjOgYWxepx2BM8nsVzcO/4vm3N0jwwMD9xL54Grattg4+qs63VTKx7tMG
-	 q4t23QVdz3+ZPCLm8+hFm9Qw/Ur/UeVwMsteZUQDd99qo47D+sBGGEq8LcZAzZO248
-	 yUeJkmfcLPtWg==
-Message-ID: <64f6262e-2bef-4603-bd9d-b87926ae88e4@kernel.org>
-Date: Thu, 11 Apr 2024 08:37:29 +0200
+	b=kO9OiQTobCwGnKWrCDXuKlvOHFcoeERuNRmUut6/2LVWY5SHCkSZ9a3JWvdxaE5lH
+	 FzkbAmaXmnNWnfDI8oVYxWpo6uiKZX2VtB7ts2DOePPr4HUBwVQGiq2Unbvt7pR8cw
+	 42fv9uKXwhrNQy5s9hROfmCmNcjSttf4CL+LhL/icEUH9CBZmwqoK8MOXa0K1FMd5e
+	 tfnw1fiGqBdwUyOmFCeTitv+ZSI+1wWqJGt9J6i3/ARhW2c7nmVZPWVYrmxprCf87N
+	 L7PYVqYqXjzECgXSjsZODutGIe/AOabMofAFepY9cq6N62iKl45EoLUQHuG0HCYViH
+	 uNoAvzdWigiQQ==
+Message-ID: <1d96377f-2a9d-49df-ada3-086d1e6b9dab@kernel.org>
+Date: Thu, 11 Apr 2024 08:40:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/1] drm/mediatek/dp: The register is written with the
- parsed DTS SSC value.
-To: =?UTF-8?B?TElBTktVTiBZQU5HICjmnajov57lnaQp?= <Liankun.Yang@mediatek.com>,
- "kishon@kernel.org" <kishon@kernel.org>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- =?UTF-8?B?TWFjIFNoZW4gKOayiOS/iik=?= <Mac.Shen@mediatek.com>,
- =?UTF-8?B?Q2h1bmZlbmcgWXVuICjkupHmmKXls7Ap?= <Chunfeng.Yun@mediatek.com>,
- =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "vkoul@kernel.org" <vkoul@kernel.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>
-Cc: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-References: <20240403040517.3279-1-liankun.yang@mediatek.com>
- <c0986506-ba8b-4c52-88f8-119c23b8778c@kernel.org>
- <86dd866a-8ead-4fd1-993a-672d4947ba84@kernel.org>
- <bc785b80e109fc04c5973ee4efad115e0c3907c4.camel@mediatek.com>
+Subject: Re: [PATCH 5/5] pinctrl: realtek: fix module autoloading
+To: Fabio Estevam <festevam@gmail.com>
+Cc: Dong Aisheng <aisheng.dong@nxp.com>, Shawn Guo <shawnguo@kernel.org>,
+ Jacky Bai <ping.bai@nxp.com>, Pengutronix Kernel Team
+ <kernel@pengutronix.de>, Linus Walleij <linus.walleij@linaro.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Sean Wang <sean.wang@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ zhanghongchen <zhanghongchen@loongson.cn>, Yinbo Zhu <zhuyinbo@loongson.cn>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, linux-gpio@vger.kernel.org,
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org
+References: <20240410170150.248428-1-krzk@kernel.org>
+ <20240410170150.248428-5-krzk@kernel.org>
+ <CAOMZO5DFr8uhVRq8X+ZURCCAw4bLM4Ueaerr-gw554sFr+KLKw@mail.gmail.com>
 Content-Language: en-US
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -113,12 +107,13 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <bc785b80e109fc04c5973ee4efad115e0c3907c4.camel@mediatek.com>
+In-Reply-To: <CAOMZO5DFr8uhVRq8X+ZURCCAw4bLM4Ueaerr-gw554sFr+KLKw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_233738_543949_E3697BD4 
-X-CRM114-Status: GOOD (  15.87  )
+X-CRM114-CacheID: sfid-20240410_234111_082023_E9E0A7FF 
+X-CRM114-Status: UNSURE (   6.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,68 +128,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/04/2024 08:30, LIANKUN YANG (杨连坤) wrote:
-> On Wed, 2024-04-03 at 16:56 +0200, Krzysztof Kozlowski wrote:
->>  	 
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>  On 03/04/2024 08:41, Krzysztof Kozlowski wrote:
->>> On 03/04/2024 06:05, Liankun Yang wrote:
->>>> [Description]
->>>> Severe screen flickering has been observed on the external display
->>>> when the DP projection function is used with the market expansion
->> dock.
->>>>
->>>
->>>> +if (!strcmp(mode_name, RG_XTP_GLB_TXPLL_SSC_DELTA_RBR)) {
->>>> +regmap_update_bits(dp_phy->regs, ssc_reg_offset,
->>>> +   XTP_GLB_TXPLL_SSC_DELTA_RBR_DEFAULT, read_value);
->>>> +} else if (!strcmp(mode_name, RG_XTP_GLB_TXPLL_SSC_DELTA_HBR)) {
->>>> +read_value = read_value << 16 | 0x0000;
->>>> +regmap_update_bits(dp_phy->regs, ssc_reg_offset,
->>>> +   XTP_GLB_TXPLL_SSC_DELTA_HBR_DEFAULT, read_value);
->>>> +}
->>>> +
->>>> +return 0;
->>>> +}
->>>> +
->>>> +static struct device_node *mtk_dp_get_ssc_node(struct phy *phy,
->> struct mtk_dp_phy *dp_phy)
->>>> +{
->>>> +struct device_node *mode_node = NULL;
->>>> +
->>>> +mode_node = of_find_node_by_name(dp_phy->dev->of_node,
->> SSC_SETTING);
->>>
->>> ?!?!
->>> You have the node, why do you try to find it?
->>>
+On 11/04/2024 01:36, Fabio Estevam wrote:
+> On Wed, Apr 10, 2024 at 2:02 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
 >>
->> Wait, that was brainfuck from my side or -ENOCOFFEE. Ignore.
->>
->> I still have a question though, where did you document new ABI:
->> dependency on the node name here?
->>
->> Also, why you are not going through direct children -
->> of_get_child_by_name()?
->>
->> Best regards,
->> Krzysztof
->>
->>
+>> Add MODULE_DEVICE_TABLE(), so the module could be properly autoloaded
+>> based on the alias from of_device_id table.  Pin controllers are
+>> considered core components, so usually they are built-in, however these
 > 
-> Sorry, there is formatting issue in the previous email.
-> 
-> The dp_phy device has already been registered through the
-> mtk_dp_register_phy function in the mtk_dp.c file, 
-> so it cannot be redefined in the dts. Avoid using of_get_child_by_name
-> for this purpose.
-> 
-> To find the node name, utilize of_find_node_by_name since it has
-> already been registered.
+> You forgot to complete the sentence.
 
-This does not answer my question at all. You speak about driver, I speak
-about ABI and bindings.
+Yanked too little,
+Yanked not enough,
+Can cause a spittle,
+From one's mouth.
 
 Best regards,
 Krzysztof
