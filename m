@@ -4,116 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A12C8CD128A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 06:41:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D607CCD128A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 06:46:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hnE9LLlFzH1eszTKYyHluG3JEutS2A7EUuxXIDLILz4=; b=FvUeUvUM8DKR7vHh5Vvm9YRKIj
-	Ez6jMSHs16AAeQMAJVN0I5LRflzOXIFqTut675zV4R3s2LWlEaEgslIdS1Ild3yFvsqoFWSfENwf2
-	TYm/te6gcgs6E28oiteXyda5+C6Iz7IM0f/CcpvkuCP89AH0cRX4NvYZvxUZ6A5PVzdhNGiTh5lh3
-	ZhjR9onZLXbNQIJnpEpS6rQv7SXZpRNJ4pbaPUTsKwzNlCIc1AYwEmYmwiGP4NtlkN9KAA+q7mSff
-	G6Wiwn5qZKEVmXEl0G7jz08LZGVWaeqmjccv4yTgp8g+IX3zVYCWMovM1BCgLFskm+68u/OM+dWZl
-	eP0XAITQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aC4UP0Zguq0QqAZ0ftXd8CefIw34bIQAMaFVPvt4Kkw=; b=RaPXXizdg+2WPk2lD4k950Mvez
+	T7PAiqSX9bpgNGO7VFo/HN8j3ifWOzjzjbGtpG35Qyt5k5QtkAL0IJVpuOZSZXAOYEoU6/wAV8BOh
+	MDRHt1Ye97rSKDqg06u+ej+jW54oSBcDqKQeU6dFIf2DXW8yGrvlHfeCQJkFzo6/l2jzGchW3VWL6
+	nj1wHclRawhCRT8JR90HhpDeTyDpnRtPraeqHOl3vJJzazkBU+CKtYam7KzaKzbaeP5rrFpkHeLh7
+	l4s11b8hEKWGT37TIjYH1AMlzc/aW1r08P/W416PdOX0M8Q5Cvy/lRzZ/GSkksywRNgwAzurc0Aj2
+	DtxLGrZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruo7W-0000000Adtz-1GMF;
-	Thu, 11 Apr 2024 06:41:14 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1ruoCn-0000000AebB-441q;
+	Thu, 11 Apr 2024 06:46:41 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruo7S-0000000Ads9-2pdK;
-	Thu, 11 Apr 2024 06:41:12 +0000
+	id 1ruoCj-0000000Aea4-3FZY;
+	Thu, 11 Apr 2024 06:46:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 6DEB3CE2F05;
-	Thu, 11 Apr 2024 06:41:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B039DC433F1;
-	Thu, 11 Apr 2024 06:40:53 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4F82461FAA;
+	Thu, 11 Apr 2024 06:46:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5E487C433C7;
+	Thu, 11 Apr 2024 06:46:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712817660;
-	bh=JzMDwEaIhgIZZYjjt1yhD5NQMEa+xjaYkPpTsdWlY0A=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=kO9OiQTobCwGnKWrCDXuKlvOHFcoeERuNRmUut6/2LVWY5SHCkSZ9a3JWvdxaE5lH
-	 FzkbAmaXmnNWnfDI8oVYxWpo6uiKZX2VtB7ts2DOePPr4HUBwVQGiq2Unbvt7pR8cw
-	 42fv9uKXwhrNQy5s9hROfmCmNcjSttf4CL+LhL/icEUH9CBZmwqoK8MOXa0K1FMd5e
-	 tfnw1fiGqBdwUyOmFCeTitv+ZSI+1wWqJGt9J6i3/ARhW2c7nmVZPWVYrmxprCf87N
-	 L7PYVqYqXjzECgXSjsZODutGIe/AOabMofAFepY9cq6N62iKl45EoLUQHuG0HCYViH
-	 uNoAvzdWigiQQ==
-Message-ID: <1d96377f-2a9d-49df-ada3-086d1e6b9dab@kernel.org>
-Date: Thu, 11 Apr 2024 08:40:51 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/5] pinctrl: realtek: fix module autoloading
-To: Fabio Estevam <festevam@gmail.com>
-Cc: Dong Aisheng <aisheng.dong@nxp.com>, Shawn Guo <shawnguo@kernel.org>,
- Jacky Bai <ping.bai@nxp.com>, Pengutronix Kernel Team
- <kernel@pengutronix.de>, Linus Walleij <linus.walleij@linaro.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Sean Wang <sean.wang@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- zhanghongchen <zhanghongchen@loongson.cn>, Yinbo Zhu <zhuyinbo@loongson.cn>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, linux-gpio@vger.kernel.org,
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org
-References: <20240410170150.248428-1-krzk@kernel.org>
- <20240410170150.248428-5-krzk@kernel.org>
- <CAOMZO5DFr8uhVRq8X+ZURCCAw4bLM4Ueaerr-gw554sFr+KLKw@mail.gmail.com>
-Content-Language: en-US
+	s=k20201202; t=1712817996;
+	bh=WbLKltYK/s7kUm98XICzKNUnpZwUdIqRk1dgonQu5Yc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=kfihvtP24X739EE/kTEzwc2BdjlE2pfwBwO6OonyFbHsJNJCR1SdBGZlouBbwK7HJ
+	 +yErPp4MIvHGDfdln/y2MYCyZzDP0KsCGKYE+oiQtJxin+o6DL/1z3/6GKNRU6UAZF
+	 Esbb8FdcOechMyx53FoLOXcFwEFAM7uEVidM1vLBuJY01Sbk3EU9Iwzkfbrh5PzfAb
+	 lOpRpWe4EemuLChfxRE1gY2mLalzr3U4aPmKYlRl8x213dEy20XMsIpcsg29SXm7/o
+	 0eWmm3qJ+gyJ+oXhR/zE6dao+mZ8PTf7qRk/7QBbQQCmqmNXkJa1qLshIEYVIb8+4i
+	 4N4M4Q7KZ3/RQ==
 From: Krzysztof Kozlowski <krzk@kernel.org>
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <CAOMZO5DFr8uhVRq8X+ZURCCAw4bLM4Ueaerr-gw554sFr+KLKw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
+To: Dong Aisheng <aisheng.dong@nxp.com>,
+	Fabio Estevam <festevam@gmail.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Jacky Bai <ping.bai@nxp.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	zhanghongchen <zhanghongchen@loongson.cn>,
+	Yinbo Zhu <zhuyinbo@loongson.cn>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	linux-gpio@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: [PATCH v2 1/5] pinctrl: freescale: imx8ulp: fix module autoloading
+Date: Thu, 11 Apr 2024 08:46:10 +0200
+Message-Id: <20240411064614.7409-1-krzk@kernel.org>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_234111_082023_E9E0A7FF 
-X-CRM114-Status: UNSURE (   6.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240410_234637_888239_1323CFED 
+X-CRM114-Status: GOOD (  10.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,21 +86,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/04/2024 01:36, Fabio Estevam wrote:
-> On Wed, Apr 10, 2024 at 2:02 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
->>
->> Add MODULE_DEVICE_TABLE(), so the module could be properly autoloaded
->> based on the alias from of_device_id table.  Pin controllers are
->> considered core components, so usually they are built-in, however these
-> 
-> You forgot to complete the sentence.
+Add MODULE_DEVICE_TABLE(), so the module could be properly autoloaded
+based on the alias from of_device_id table.  Pin controllers are
+considered core components, so usually they are built-in, however these
+can be built and used as modules on some generic kernel.
 
-Yanked too little,
-Yanked not enough,
-Can cause a spittle,
-From one's mouth.
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 
-Best regards,
-Krzysztof
+---
+
+Changes in v2:
+1. None
+---
+ drivers/pinctrl/freescale/pinctrl-imx8ulp.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/pinctrl/freescale/pinctrl-imx8ulp.c b/drivers/pinctrl/freescale/pinctrl-imx8ulp.c
+index 2e86ca9fc7ac..5632c7285147 100644
+--- a/drivers/pinctrl/freescale/pinctrl-imx8ulp.c
++++ b/drivers/pinctrl/freescale/pinctrl-imx8ulp.c
+@@ -252,6 +252,7 @@ static const struct of_device_id imx8ulp_pinctrl_of_match[] = {
+ 	{ .compatible = "fsl,imx8ulp-iomuxc1", },
+ 	{ /* sentinel */ }
+ };
++MODULE_DEVICE_TABLE(of, imx8ulp_pinctrl_of_match);
+ 
+ static int imx8ulp_pinctrl_probe(struct platform_device *pdev)
+ {
+-- 
+2.34.1
 
 
