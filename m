@@ -4,91 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D989C4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 14:02:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47FD3C4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 14:21:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/BGqPmC8OttnSs/eU7zOpIE4pu3ScGIxqadvcYRpWVY=; b=2hKCK/Cm56WPX/VS6HF9qo1RjS
-	A0e+pqEV7GdIHJ7UXgKEP+/iNZwgTty4GOhVTfG1tk2wYkKVvIQIukaBOxz5w+m0chGM2xfNiusUM
-	WMrt7Br3rfl6KHmiX37ekw/ZA0T67hj7jqLqi/Jlqaij1bxLPKnDTe9kOtg00K2SC/RWy+vF4oZZd
-	y1cBGoL8W7/0bp30s5CVYuYaVCMOXmM9W9tCbMBbvk2s3XoFKMg8M0rZLGcMKpIxS6/na4ZkVF6mX
-	xP8SJOt1gmXsht9A6GLdUy527c0uF9nKvDGGTOXAzkI2alLND8Uq0eGLejOHOjDK9V2nN+ZFcCbcH
-	HElAR9HQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C4xc7T6RS8+PM2VpowLyWS51GKnXpxUEAYW0iH6j40c=; b=kWGeaKMEIFIv0ZiteN3pjK8NjY
+	+6CfONPMfIQKwKzLtwIqiepahOdBQ2uKtz/cam3pl7XgwcisC4UMvGW+XeUScKmUiPJU4X8+hcUEV
+	zV1h/mvzw05HC9Dzny8KqXcc4H0YTsEmnLeZ0512a0MIF1PBsX2e4HKoeTyt+fdoFUgOUBd+7TAZa
+	D+DWAVOmPGac8Lzo2RrX3HnIodDbADN23BfxrY5MC2v9LJ9bqfmywMeW2/AbQWZUPP4e3gH1Gnrox
+	yrAaZrXXC+LKKNh3IIuNrZy/c3CRbYn/BoHWkb8CFzC9PkLPYdWhDZEsgR+VQmrsdQgF7Iu89YWLg
+	VPshGNGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruv0A-0000000CKjI-3EyF;
-	Thu, 11 Apr 2024 14:02:06 +0000
-Received: from mail-ed1-f46.google.com ([209.85.208.46])
+	id 1ruvIi-0000000CQaB-32o3;
+	Thu, 11 Apr 2024 14:21:16 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruuyn-0000000CJcV-2vIf;
-	Thu, 11 Apr 2024 14:00:46 +0000
-Received: by mail-ed1-f46.google.com with SMTP id 4fb4d7f45d1cf-56e1baf0380so9136575a12.3;
-        Thu, 11 Apr 2024 07:00:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712844039; x=1713448839;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/BGqPmC8OttnSs/eU7zOpIE4pu3ScGIxqadvcYRpWVY=;
-        b=vsQgfw6CDkYUBx3Rrco0ZvqLMG3Mjoqf169PMuQ8NYT55pmarcAZu0f8lu2EYLq417
-         cd7CB3bNzcYhIYIJVL/pP93zTX6GPXdvF7gKNPXPNF7g5kKcaUPK/boVh2tzZ6ZW+0ta
-         kM3i1ktgRMluf0f3YE4bRoeaGYtLkIZJxwNjLPXdS1ASnLBtLrfb23bTOBDwxD7Gvdnc
-         JXScLjUVQW2J/R9WnRZW+UulUD3XDCEn61Rul3z1HBP7TOUT8nVNK3bKqfkg9FgN+MRb
-         B3FJcXZEKbJoHdcFrN7NUBDZl68ReblFLfUjJdHKxHCyjPrk/U4EDNMu2OUBmKRyPbEW
-         xfNA==
-X-Forwarded-Encrypted: i=1; AJvYcCXhGK8+cgHM29+DVSzJOCQkueH1FUnTz3cZqiX+vk/J+vO+l8XbJXIIhfmcZPHzsuuBaUWXJ3ADEiFCgGJNerZvTxpFgBNOIeVr4H1XVmjOULWTNExgnUnwWA9Pq9qLBF+/AnZz2u5PcAJ6IdHFv/3E9TbxO67TxcEOPnuFgpGo29GRcndeymlpVgyrhHk3Bhgw8Gl8uw5eH9HQLMPOha7w/nkeyvZnlaP7bNRcpc20fA==
-X-Gm-Message-State: AOJu0YwKHDgsZm38E2Syz6i6kp5opdOY86UYK2Fa83+/OGSHv36BptmV
-	/17/wmN6GOHCGH6hMBz4PebBo/T45wC4CGLugTzuYmZk7WeVp+zR
-X-Google-Smtp-Source: AGHT+IG4+o9xRNLQwLkYfsUlHG1UHOmgoIWY43a7bYPctiZu6u/S6IWuuYxegoUfE+v2k6Gk3pf3Hg==
-X-Received: by 2002:a17:906:f856:b0:a52:2d35:eb3 with SMTP id ks22-20020a170906f85600b00a522d350eb3mr267543ejb.19.1712844039402;
-        Thu, 11 Apr 2024 07:00:39 -0700 (PDT)
-Received: from localhost (fwdproxy-lla-118.fbsv.net. [2a03:2880:30ff:76::face:b00c])
-        by smtp.gmail.com with ESMTPSA id k11-20020a170906578b00b00a51be2b75f3sm782911ejq.35.2024.04.11.07.00.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 Apr 2024 07:00:38 -0700 (PDT)
-From: Breno Leitao <leitao@debian.org>
-To: aleksander.lobakin@intel.com,
-	kuba@kernel.org,
-	davem@davemloft.net,
-	pabeni@redhat.com,
-	edumazet@google.com,
-	elder@kernel.org,
+	id 1ruvId-0000000CQYE-2iDd;
+	Thu, 11 Apr 2024 14:21:13 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8F1F760347;
+	Thu, 11 Apr 2024 14:21:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07DE0C2BD10;
+	Thu, 11 Apr 2024 14:21:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712845270;
+	bh=RDt5jlNMS3ucSwKcH7tgpvFGKzTFvccMBgH0b+eayeM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FmnqtmXmyodJdgHKHjF/o9qh0gQ3yPVudJEayUfxMetCRKixf7MadURZeFX5r6J9F
+	 KZO4x26OQWLGTjpaYAKntJwCodgLP+aDt47OO2TKPR3PsJ4isKj268a8KfvYJVeiUA
+	 xIhTuT3AZ/SJc2XgyX2Qg7zwimd9QfG4T/XfpBUGwOjo3qoholwNk1YikECUI0aeJ3
+	 JKccakGSkbBD0N+gV6mcpbFZG4UhhKtCGsuBFNPpBXQ3yDfgtOIize3x3mLBOom0s0
+	 clIRJHM0xExk3YKLWu8DH34d19gGTvnMgL6DQhTuO1wpS9k189rIpVZjfDsQEG42r9
+	 nLPeassxXKhKg==
+Date: Thu, 11 Apr 2024 09:21:07 -0500
+From: Rob Herring <robh@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Jim Quinlan <jim2101024@gmail.com>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	Will Deacon <will@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Srikanth Thokala <srikanth.thokala@intel.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>,
+	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Mark Kettenis <kettenis@openbsd.org>,
+	Tom Joseph <tjoseph@cadence.com>,
+	Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Thippeswamy Havalige <thippeswamy.havalige@amd.com>,
+	linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	nbd@nbd.name,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	lorenzo@kernel.org,
-	taras.chornyi@plvision.eu,
-	ath11k@lists.infradead.org,
-	ath10k@lists.infradead.org,
-	linux-wireless@vger.kernel.org,
-	geomatsi@gmail.com,
-	kvalo@kernel.org,
-	Jeff Johnson <jjohnson@kernel.org>
-Cc: quic_jjohnson@quicinc.com,
-	leon@kernel.org,
-	dennis.dalessandro@cornelisnetworks.com,
-	linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org,
-	bpf@vger.kernel.org,
-	idosch@idosch.org,
-	leitao@debian.org
-Subject: [PATCH net-next v6 09/10] wifi: ath10k: allocate dummy net_device dynamically
-Date: Thu, 11 Apr 2024 06:59:33 -0700
-Message-ID: <20240411135952.1096696-10-leitao@debian.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240411135952.1096696-1-leitao@debian.org>
-References: <20240411135952.1096696-1-leitao@debian.org>
+	linux-rpi-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 2/4] dt-bindings: PCI: mediatek,mt7621: add missing
+ child node reg
+Message-ID: <20240411142107.GA3537062-robh@kernel.org>
+References: <CAMhs-H82Ymc=isxu6AX4_s1QnNpSSNt74--ED1j7JxpzE=eCRg@mail.gmail.com>
+ <20240411123917.GA2180141@bhelgaas>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240411123917.GA2180141@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_070042_237555_9ED1A07D 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20240411_072111_881122_B2A382F3 
+X-CRM114-Status: GOOD (  30.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,139 +119,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Embedding net_device into structures prohibits the usage of flexible
-arrays in the net_device structure. For more details, see the discussion
-at [1].
+On Thu, Apr 11, 2024 at 07:39:17AM -0500, Bjorn Helgaas wrote:
+> On Thu, Apr 11, 2024 at 08:13:18AM +0200, Sergio Paracuellos wrote:
+> > On Thu, Apr 11, 2024 at 8:01 AM Krzysztof Kozlowski
+> > <krzysztof.kozlowski@linaro.org> wrote:
+> > > On 10/04/2024 23:26, Bjorn Helgaas wrote:
+> > > > On Wed, Apr 10, 2024 at 08:15:19PM +0200, Krzysztof Kozlowski wrote:
+> > > >> MT7621 PCI host bridge has children which apparently are also PCI host
+> > > >> bridges, at least that's what the binding suggest.
+> > > >
+> > > > What does it even mean for a PCI host bridge to have a child that is
+> > > > also a PCI host bridge?
 
-Un-embed the net_device from struct ath10k by converting it
-into a pointer. Then use the leverage alloc_netdev() to allocate the
-net_device object at ath10k_core_create(). The free of the device occurs
-at ath10k_core_destroy().
+It should say 'root port' instead as the binding description correctly 
+says.
 
-[1] https://lore.kernel.org/all/20240229225910.79e224cf@kernel.org/
+> > > >
+> > > > Does this mean a driver binds to the "parent" host bridge, enumerates
+> > > > the PCI devices below it, and finds a "child" host bridge?
+> > 
+> > Yes, that is exactly what you can see on enumeration.
+> > 
+> > The following is a typical boot trace where all bridges has a device also below:
+> > 
+> > mt7621-pci 1e140000.pcie: host bridge /pcie@1e140000 ranges:
+> > mt7621-pci 1e140000.pcie:   No bus range found for /pcie@1e140000, using [bus 00-ff]
+> > mt7621-pci 1e140000.pcie:      MEM 0x0060000000..0x006fffffff -> 0x0060000000
+> > mt7621-pci 1e140000.pcie:       IO 0x001e160000..0x001e16ffff -> 0x0000000000
+> > mt7621-pci 1e140000.pcie: PCIE0 enabled
+> > mt7621-pci 1e140000.pcie: PCIE1 enabled
+> > mt7621-pci 1e140000.pcie: PCIE2 enabled
+> > mt7621-pci 1e140000.pcie: PCI host bridge to bus 0000:00
+> 
+> 1e140000.pcie is a host bridge.  It has some CPU-specific bus on the
+> upstream side, standard PCI (domain 0000, buses 00-ff) on the
+> downstream side.
+> 
+> > pci 0000:00:00.0: [0e8d:0801] type 01 class 0x060400
+> > pci 0000:00:01.0: [0e8d:0801] type 01 class 0x060400
+> > pci 0000:00:02.0: [0e8d:0801] type 01 class 0x060400
+> 
+> > pci 0000:01:00.0: [1b21:0611] type 00 class 0x010185
+> 
+> > pci 0000:00:00.0: PCI bridge to [bus 01-ff]
+> > pci 0000:00:00.0:   bridge window [io  0x0000-0x0fff]
+> > pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
+> > pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff pref]
+> 
+> 00:00.0 looks like a PCIe Root Port to bus 01.  This is not a host
+> bridge; it's just a standard PCI-to-PCI bridge with PCI on both the
+> upstream and downstream sides.
+> 
+> > pci 0000:02:00.0: [1b21:0611] type 00 class 0x010185
+> 
+> > pci 0000:00:01.0: PCI bridge to [bus 02-ff]
+> > pci 0000:00:01.0:   bridge window [io  0x0000-0x0fff]
+> > pci 0000:00:01.0:   bridge window [mem 0x00000000-0x000fffff]
+> > pci 0000:00:01.0:   bridge window [mem 0x00000000-0x000fffff pref]
+> 
+> 00:01.0 is another Root Port to bus 02.
+> 
+> > pci 0000:03:00.0: [1b21:0611] type 00 class 0x010185
+> 
+> > pci 0000:00:02.0: PCI bridge to [bus 03-ff]
+> > pci 0000:00:02.0:   bridge window [io  0x0000-0x0fff]
+> > pci 0000:00:02.0:   bridge window [mem 0x00000000-0x000fffff]
+> > pci 0000:00:02.0:   bridge window [mem 0x00000000-0x000fffff pref]
+> > pci_bus 0000:03: busn_res: [bus 03-ff] end is updated to 03
+> 
+> And 00:02.0 is a third Root Port to bus 03.
+> 
+> > pci 0000:00:00.0: PCI bridge to [bus 01]
+> > pci 0000:00:00.0:   bridge window [io  0x0000-0x0fff]
+> > pci 0000:00:00.0:   bridge window [mem 0x60000000-0x600fffff]
+> > pci 0000:00:00.0:   bridge window [mem 0x60100000-0x601fffff pref]
+> > pci 0000:00:01.0: PCI bridge to [bus 02]
+> > pci 0000:00:01.0:   bridge window [io  0x1000-0x1fff]
+> > pci 0000:00:01.0:   bridge window [mem 0x60200000-0x602fffff]
+> > pci 0000:00:01.0:   bridge window [mem 0x60300000-0x603fffff pref]
+> > pci 0000:00:02.0: PCI bridge to [bus 03]
+> > pci 0000:00:02.0:   bridge window [io  0x2000-0x2fff]
+> > pci 0000:00:02.0:   bridge window [mem 0x60400000-0x604fffff]
+> > 
+> > > I think the question should be towards Mediatek folks. I don't know what
+> > > this hardware is exactly, just looks like pci-pci-bridge. The driver
+> > > calls the children host bridges as "ports".
+> > 
+> > You can see the topology here in my first driver submit cover letter
+> > message [0].
+> > 
+> >  [0]: https://lore.kernel.org/all/CAMhs-H-BA+KzEwuDPzcmrDPdgJBFA2XdYTBvT4R4MEOUB=WQ1g@mail.gmail.com/t/
+> 
+> Nothing unusual here, this looks like the standard PCIe topology.
+> 
+> What *might* be unusual is describing the Root Ports in DT.  Since
+> they are standard PCI devices, they shouldn't need DT description
+> unless there's some unusual power/clock/reset control or something
+> that is not discoverable via PCI enumeration.
 
-Signed-off-by: Breno Leitao <leitao@debian.org>
----
- drivers/net/wireless/ath/ath10k/core.c | 9 +++++++--
- drivers/net/wireless/ath/ath10k/core.h | 2 +-
- drivers/net/wireless/ath/ath10k/pci.c  | 2 +-
- drivers/net/wireless/ath/ath10k/sdio.c | 2 +-
- drivers/net/wireless/ath/ath10k/snoc.c | 4 ++--
- drivers/net/wireless/ath/ath10k/usb.c  | 2 +-
- 6 files changed, 13 insertions(+), 8 deletions(-)
+It's only unusual because typically there's only 1 RP per host bridge 
+and properties which really apply to the RP get stuck in the host bridge 
+node because we don't have a RP node. An example is perst-gpios. That's 
+not a property of the RP either, but the RP is the upstream side of a 
+slot and we often don't have a node for the device either.
 
-diff --git a/drivers/net/wireless/ath/ath10k/core.c b/drivers/net/wireless/ath/ath10k/core.c
-index 9ce6f49ab261..8663822e0b8d 100644
---- a/drivers/net/wireless/ath/ath10k/core.c
-+++ b/drivers/net/wireless/ath/ath10k/core.c
-@@ -3673,11 +3673,13 @@ struct ath10k *ath10k_core_create(size_t priv_size, struct device *dev,
- 	INIT_WORK(&ar->set_coverage_class_work,
- 		  ath10k_core_set_coverage_class_work);
- 
--	init_dummy_netdev(&ar->napi_dev);
-+	ar->napi_dev = alloc_netdev_dummy(0);
-+	if (!ar->napi_dev)
-+		goto err_free_tx_complete;
- 
- 	ret = ath10k_coredump_create(ar);
- 	if (ret)
--		goto err_free_tx_complete;
-+		goto err_free_netdev;
- 
- 	ret = ath10k_debug_create(ar);
- 	if (ret)
-@@ -3687,6 +3689,8 @@ struct ath10k *ath10k_core_create(size_t priv_size, struct device *dev,
- 
- err_free_coredump:
- 	ath10k_coredump_destroy(ar);
-+err_free_netdev:
-+	free_netdev(ar->napi_dev);
- err_free_tx_complete:
- 	destroy_workqueue(ar->workqueue_tx_complete);
- err_free_aux_wq:
-@@ -3708,6 +3712,7 @@ void ath10k_core_destroy(struct ath10k *ar)
- 
- 	destroy_workqueue(ar->workqueue_tx_complete);
- 
-+	free_netdev(ar->napi_dev);
- 	ath10k_debug_destroy(ar);
- 	ath10k_coredump_destroy(ar);
- 	ath10k_htt_tx_destroy(&ar->htt);
-diff --git a/drivers/net/wireless/ath/ath10k/core.h b/drivers/net/wireless/ath/ath10k/core.h
-index c110d15528bd..26003b519574 100644
---- a/drivers/net/wireless/ath/ath10k/core.h
-+++ b/drivers/net/wireless/ath/ath10k/core.h
-@@ -1269,7 +1269,7 @@ struct ath10k {
- 	struct ath10k_per_peer_tx_stats peer_tx_stats;
- 
- 	/* NAPI */
--	struct net_device napi_dev;
-+	struct net_device *napi_dev;
- 	struct napi_struct napi;
- 
- 	struct work_struct set_coverage_class_work;
-diff --git a/drivers/net/wireless/ath/ath10k/pci.c b/drivers/net/wireless/ath/ath10k/pci.c
-index 5c34b156b4ff..558bec96ae40 100644
---- a/drivers/net/wireless/ath/ath10k/pci.c
-+++ b/drivers/net/wireless/ath/ath10k/pci.c
-@@ -3217,7 +3217,7 @@ static void ath10k_pci_free_irq(struct ath10k *ar)
- 
- void ath10k_pci_init_napi(struct ath10k *ar)
- {
--	netif_napi_add(&ar->napi_dev, &ar->napi, ath10k_pci_napi_poll);
-+	netif_napi_add(ar->napi_dev, &ar->napi, ath10k_pci_napi_poll);
- }
- 
- static int ath10k_pci_init_irq(struct ath10k *ar)
-diff --git a/drivers/net/wireless/ath/ath10k/sdio.c b/drivers/net/wireless/ath/ath10k/sdio.c
-index 0ab5433f6cf6..e28f2fe1101b 100644
---- a/drivers/net/wireless/ath/ath10k/sdio.c
-+++ b/drivers/net/wireless/ath/ath10k/sdio.c
-@@ -2532,7 +2532,7 @@ static int ath10k_sdio_probe(struct sdio_func *func,
- 		return -ENOMEM;
- 	}
- 
--	netif_napi_add(&ar->napi_dev, &ar->napi, ath10k_sdio_napi_poll);
-+	netif_napi_add(ar->napi_dev, &ar->napi, ath10k_sdio_napi_poll);
- 
- 	ath10k_dbg(ar, ATH10K_DBG_BOOT,
- 		   "sdio new func %d vendor 0x%x device 0x%x block 0x%x/0x%x\n",
-diff --git a/drivers/net/wireless/ath/ath10k/snoc.c b/drivers/net/wireless/ath/ath10k/snoc.c
-index 2c39bad7ebfb..0449b9ffc32d 100644
---- a/drivers/net/wireless/ath/ath10k/snoc.c
-+++ b/drivers/net/wireless/ath/ath10k/snoc.c
-@@ -935,7 +935,7 @@ static int ath10k_snoc_hif_start(struct ath10k *ar)
- 
- 	bitmap_clear(ar_snoc->pending_ce_irqs, 0, CE_COUNT_MAX);
- 
--	dev_set_threaded(&ar->napi_dev, true);
-+	dev_set_threaded(ar->napi_dev, true);
- 	ath10k_core_napi_enable(ar);
- 	ath10k_snoc_irq_enable(ar);
- 	ath10k_snoc_rx_post(ar);
-@@ -1253,7 +1253,7 @@ static int ath10k_snoc_napi_poll(struct napi_struct *ctx, int budget)
- 
- static void ath10k_snoc_init_napi(struct ath10k *ar)
- {
--	netif_napi_add(&ar->napi_dev, &ar->napi, ath10k_snoc_napi_poll);
-+	netif_napi_add(ar->napi_dev, &ar->napi, ath10k_snoc_napi_poll);
- }
- 
- static int ath10k_snoc_request_irq(struct ath10k *ar)
-diff --git a/drivers/net/wireless/ath/ath10k/usb.c b/drivers/net/wireless/ath/ath10k/usb.c
-index 3c482baacec1..3b51b7f52130 100644
---- a/drivers/net/wireless/ath/ath10k/usb.c
-+++ b/drivers/net/wireless/ath/ath10k/usb.c
-@@ -1014,7 +1014,7 @@ static int ath10k_usb_probe(struct usb_interface *interface,
- 		return -ENOMEM;
- 	}
- 
--	netif_napi_add(&ar->napi_dev, &ar->napi, ath10k_usb_napi_poll);
-+	netif_napi_add(ar->napi_dev, &ar->napi, ath10k_usb_napi_poll);
- 
- 	usb_get_dev(dev);
- 	vendor_id = le16_to_cpu(dev->descriptor.idVendor);
--- 
-2.43.0
-
+Rob
 
