@@ -4,73 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 678DECD1292
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 07:39:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5A9ECD1292
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 07:40:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YMY5paG9O6K9fYS6c+ORmBz53sEPDlRwCr/FodP5P9g=; b=c9qRhf5YJS4BlXo5psK2QmiOEY
-	D3Pv8W2/2Vy0+jrlDSDgAAitelFsxe6YemhQmvM0CAvq4c6OTXzdr7sqndwfHwu+p6Mf/SYxTweNQ
-	P6jcZ0HSj4XB36wVVBPIjLCDKzgfAQKcMw6ZJGkVhRpwKV6UHesiyfZwC7pPDIc3r7PNgz1ZWglXN
-	D1aFVuvqKfnZNxthYeZIyR9MiLIU7vY9m/cqrJm1Y1+sozMo0ZM8eATGyrAdcX19QT7fFw5+NgSGZ
-	YDtdwp9MhEityWC6FvHEyumfW+w9wYYvRkKXIB2rIhATPnMqPH59ANCR/m9tzFbaZ/NKyOMnFHj6o
-	/0Lv99Ew==;
+	bh=LWRgSH0+xiShCW4OY1cPSDkVq5l6C7zn8gT/1IIRTWI=; b=FfynoIxuzVpKkX5FrpYlPWSR7M
+	kjqvWrmOw9nRd3oILQXQ7Fhf2fwWMgTdHGm7yDxjs0NUGbklAcDidKFhC9I+K+2lpOjbuQuEMUCdS
+	2bRcYqApFYudyJAuSSf3/vSi4C+a/OoR9hrZoIc7mbs7lwQ8I88UhmXvtFzUbfMUT6tqo+A3VLqLP
+	lXUmAgwQcRX4XgN1yeyAe0QpuiSD2QxZNbQDrYYUUd10BdHpl2xBzEOwCA9YernRQUUBzcj6EdL3R
+	8HOQet6fKAkejTLV5iGGwhH3gAO2hvsQMSlOOZOroTH7JenSBrXjzfAyTlsfOTG4LwgCoi2QuZOKK
+	lRVzmtMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rup1x-0000000AtjN-3Hux;
-	Thu, 11 Apr 2024 07:39:33 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rup30-0000000AuGO-19Jz;
+	Thu, 11 Apr 2024 07:40:38 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rup1t-0000000AtgL-0jhn;
-	Thu, 11 Apr 2024 07:39:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712821167;
-	bh=hsuaPyyXe500cwQ9jJuWJ0HPIXunGpuk5Dto5iwuLao=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=zJTpkWsP+ijw64CxiA+6UhA5cy26ShfKAQCEvdPBmas2QwsdDornHYdz8tvpl/gRg
-	 au2FO2XY3m9/E4q9S+G4VVCldwx8FhIXrgyY7KgXKmsopveF9WJx8x8/jv0YsL/6UO
-	 5Z/EnfcCLkUlFR1rPo5Ho6F7uBVEb22DLhSgFaaRun64GqT6Gq9wR8ChI6gfH364Jm
-	 9N082Zcrci3QA4LM8SUL4fem/WBrGYIRJU2uoOf16jPl5isGYfkon/HHJF7JP6DmU9
-	 SjTPRvzyj8Vtv2k74JlmGsEsJbUdBoctkZVxJabWM40TBHLnuv9BAseVDPZoo1uAJM
-	 7gIjxCzWe55Lw==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 6B4CD3781107;
-	Thu, 11 Apr 2024 07:39:26 +0000 (UTC)
-Message-ID: <6e8e553b-8c5f-404a-a396-17d8b3440d93@collabora.com>
-Date: Thu, 11 Apr 2024 09:39:25 +0200
+	id 1rup2t-0000000AuBo-2tnk;
+	Thu, 11 Apr 2024 07:40:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id DFCE0CE2F4B;
+	Thu, 11 Apr 2024 07:40:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 2096BC43394;
+	Thu, 11 Apr 2024 07:40:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712821229;
+	bh=WN6WaVVKPVzN1O+fWKy4FYDq59aud5xZF7mOkpu11LI=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=gFIkAYs2EkWX00Vj7c5JkqiwbPeTMCFZ6Z6iMTmRFtFyNNvl90bDkuH8Cgxtnmf37
+	 dDlpoJeQG4kpVZQWhmKrDmlhFAJsUzk4CDzuIAmehrfSpSls5xXZHOj+KymRlB4BtM
+	 Gm5/mFJRxCg+AYEtkhA2oKmBXI0Wr7IAshtnH2ykLVI05LePqGzmE6F5WJhFoOV0T9
+	 CnuYEkvbUUfo9MLwLxRDwBbz+m+YTE7F/w6UAbh95RVlVzTffARNDXnneM/yvVOBJ9
+	 V+WGg3IDpPGMS4Ne1w7te9BdiO+kNLyo4tGXf1a24VFXxcGln3ZV+UTbK5u0TRIhJM
+	 mCebcBNdZ8XrA==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 0C764C54BD0;
+	Thu, 11 Apr 2024 07:40:29 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: remoteproc: mediatek: Support MT8188
- dual-core SCP
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: "olivia.wen" <olivia.wen@mediatek.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tinghan Shen <tinghan.shen@mediatek.com>,
- linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- jason-ch.chen@mediatek.com, yaya.chang@mediatek.com, teddy.chen@mediatek.com
-References: <20240411033750.6476-1-olivia.wen@mediatek.com>
- <20240411033750.6476-2-olivia.wen@mediatek.com>
- <5cf005b9-d737-4509-a9fb-f0e59465482c@collabora.com>
-Content-Language: en-US
-In-Reply-To: <5cf005b9-d737-4509-a9fb-f0e59465482c@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net v2] net: dsa: mt7530: trap link-local frames regardless
+ of ST Port State
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <171282122904.27809.12270334252049024856.git-patchwork-notify@kernel.org>
+Date: Thu, 11 Apr 2024 07:40:29 +0000
+References: <20240409-b4-for-net-mt7530-fix-link-local-when-stp-discarding-v2-1-07b1150164ac@arinc9.com>
+In-Reply-To: <20240409-b4-for-net-mt7530-fix-link-local-when-stp-discarding-v2-1-07b1150164ac@arinc9.com>
+To: =?utf-8?b?QXLEsW7DpyDDnE5BTCB2aWEgQjQgUmVsYXkgPGRldm51bGwrYXJpbmMudW5hbC5h?=@ci.codeaurora.org,
+	=?utf-8?b?cmluYzkuY29tQGtlcm5lbC5vcmc+?=@ci.codeaurora.org
+Cc: daniel@makrotopia.org, dqfext@gmail.com, sean.wang@mediatek.com,
+ andrew@lunn.ch, f.fainelli@gmail.com, olteanv@gmail.com, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ bartel.eerdekens@constell8.be, mithat.guner@xeront.com,
+ erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_003929_370997_E559E09E 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20240411_004032_004307_76698135 
+X-CRM114-Status: UNSURE (   7.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,54 +82,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/04/24 09:34, AngeloGioacchino Del Regno ha scritto:
-> Il 11/04/24 05:37, olivia.wen ha scritto:
->> Under different applications, the MT8188 SCP can be used as single-core
->> or dual-core.
->>
->> Signed-off-by: olivia.wen <olivia.wen@mediatek.com>
->> ---
->>   Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml | 3 ++-
->>   1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml 
->> b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
->> index 507f98f..7e7b567 100644
->> --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
->> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
->> @@ -22,7 +22,7 @@ properties:
->>         - mediatek,mt8192-scp
->>         - mediatek,mt8195-scp
->>         - mediatek,mt8195-scp-dual
->> -
-> 
-> Don't remove the blank line, it's there for readability.
-> 
->> +      - mediatek,mt8188-scp-dual
+Hello:
 
-Ah, sorry, one more comment. Please, keep the entries ordered by name.
-8188 goes before 8195.
+This patch was applied to netdev/net.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
+On Tue, 09 Apr 2024 18:01:14 +0300 you wrote:
+> From: Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
-> After addressing that comment,
+> In Clause 5 of IEEE Std 802-2014, two sublayers of the data link layer
+> (DLL) of the Open Systems Interconnection basic reference model (OSI/RM)
+> are described; the medium access control (MAC) and logical link control
+> (LLC) sublayers. The MAC sublayer is the one facing the physical layer.
 > 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
->>     reg:
->>       description:
->>         Should contain the address ranges for memory regions SRAM, CFG, and,
->> @@ -195,6 +195,7 @@ allOf:
->>           compatible:
->>             enum:
->>               - mediatek,mt8195-scp-dual
->> +            - mediatek,mt8188-scp-dual
+> [...]
 
-same here.
+Here is the summary with links:
+  - [net,v2] net: dsa: mt7530: trap link-local frames regardless of ST Port State
+    https://git.kernel.org/netdev/net/c/17c560113231
 
->>       then:
->>         properties:
->>           reg:
-> 
-> 
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
