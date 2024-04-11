@@ -4,72 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4A3BC4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 15:23:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 811E9C4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 15:40:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6PngETkAThC6ND/4r6BZ66+N0dqCyyHogUD7zS5SWgo=; b=zAojwyPKHEdt2OWQfWRRYjUA6F
-	m1eQjSU1b7v44gMXwlQFjDcCjSj/VTNOeHFxr6Ag9m05A0Lv66h7y+55C8mpFmLPgHIEmUe2WXuwt
-	jRq1327HnA5YzGj6MPDMGyjCMkuvFZTfd9aHR4akWMzy+VDhgAzOn9ItB8ImVNhznEGzA5C7bEmN+
-	3+g7uVVP/fDN9wZ5IqoCrS8HwV6DPEzcpiy/HSV6xpXv2OLsCpCIymDoDp6AlQdWXylIFTWTZs3gN
-	geMP73Bc67LjCqKpmb5qiEmVWgGskpyL3LRWwrMgk2eyBQpot/FjF/Ny++Tv6WqrxivUi7nq3ssJe
-	IMFHy+Lg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RFHrFkfwcQrgxQdoj1RVHqtwLottyVNWq/7Jdndbpsc=; b=uegOU3DkUaqVH/xPFEDqa6uU5Z
+	ZzLHw5fhpaWxmcbvKfMeQimIxAbXmUkzXznz7QUEnCKLAqLSVTGOs8phwl4iuWinH0az7cSYNigwY
+	Xj9jzIsw6pGjxFkN1HsIASVfpaIOIBnBqVD+m7yIlIeHX5Eam6ZeaTI9A+YETj5DrAM+AFEPV2Ege
+	/JeKshM7OXUbeFOGni4cn91rEq2tcRNGzwPjpVzLmJPa47jxVmHZaYfufsC6zSusdNgJr5xym+/TJ
+	a2kGO/4ghbDWCN5Yz3tN5FqboBj0VTtZm1M8rAyQatSZNT8onD+iNy/jmCXL3Vmdz4UvsKs+IOP8i
+	rj5sx+AQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruwH9-0000000Cig4-0lgj;
-	Thu, 11 Apr 2024 15:23:43 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1ruwX1-0000000CnOa-03ZW;
+	Thu, 11 Apr 2024 15:40:07 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruwH5-0000000CifD-0hdY;
-	Thu, 11 Apr 2024 15:23:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712849017;
-	bh=Izm5X0JHoxEV2++y1yn48NkTsf5UKs+w87DaG8fikmY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ori8kAhpjW95rzthQLl+EWqvlslOBuNBZGGCvI7aPQKBOndnzaByi/IbYumY+3GLz
-	 d1QVR7lOi09WnHCCCF9r6ECF8dr/7rki3kJAocAoFWvgtIi5jpJNPdu79SkNJesgBn
-	 qFMH4tMot6p2c4RdTeCEfMBjuLH5Pv1FdXiP37O5fu0JuL4FyaBfUMMgm+ziGllV8U
-	 FXuxPlw3Wm3OBgG38+uNLpwc+p8UX62DpRU8QJ/HFBX5okjxbfx0JNjfpTK1Cj0QpE
-	 BmWuh8yiSXLfkVNYncoChY3yKop9z3Dc2qRg1I5fRZzD58VuprZFWiO9r/3NHJ63xV
-	 wGYku57T8cSCw==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 46D783780C13;
-	Thu, 11 Apr 2024 15:23:36 +0000 (UTC)
-Message-ID: <229eeabc-7e70-4b09-997f-356e85e748dc@collabora.com>
-Date: Thu, 11 Apr 2024 17:23:35 +0200
+	id 1ruwWx-0000000CnLm-272s;
+	Thu, 11 Apr 2024 15:40:04 +0000
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 43BBKYEc022854;
+	Thu, 11 Apr 2024 15:39:57 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:in-reply-to; s=qcppdkim1; bh=RFHrFkfwcQrgxQdoj1RVH
+	qtwLottyVNWq/7Jdndbpsc=; b=irYc3LU9Uc+DlT4ymOnGhcMVzq43CGTucGJSd
+	i21KmCSCnITu6Vo++gLvklaPtB3gO8opZuGA3o+n/Wz2qQ6f+Xpj6wjTRGrbjvEO
+	naCfid4zJ7ISb2TIioD9PX0BRnwW4VdD/65usS30OjHQayIFadedgnk5K8OraJ/1
+	Twqg7waPV2+ii/L1RKkC0JMWlYkbFo58qDRw8uS97TPcUdnd3fUUx0tUwtpvdbrL
+	J0FTt975FbFhadZ33BzJ25XMBP3g16rck0S1zNIq+/bTDIvrxodP/SQqwOp6+q/J
+	NEzx3/QDsMkUoOsDWJPzYpsT4c6P4hHHfOmhX+6g6uvOujjgQ==
+Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3xec6vsgks-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 11 Apr 2024 15:39:57 +0000 (GMT)
+Received: from nalasex01c.na.qualcomm.com (nalasex01c.na.qualcomm.com [10.47.97.35])
+	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 43BFdr3E029269
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 11 Apr 2024 15:39:53 GMT
+Received: from hu-bjorande-lv.qualcomm.com (10.49.16.6) by
+ nalasex01c.na.qualcomm.com (10.47.97.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.4; Thu, 11 Apr 2024 08:39:53 -0700
+Date: Thu, 11 Apr 2024 08:39:52 -0700
+From: Bjorn Andersson <quic_bjorande@quicinc.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+CC: Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
+        Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,
+        Pengutronix
+ Kernel Team <kernel@pengutronix.de>,
+        Linus Walleij
+	<linus.walleij@linaro.org>,
+        Sascha Hauer <s.hauer@pengutronix.de>,
+        Sean Wang
+	<sean.wang@kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        zhanghongchen <zhanghongchen@loongson.cn>,
+        Yinbo Zhu <zhuyinbo@loongson.cn>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Konrad Dybcio
+	<konrad.dybcio@linaro.org>,
+        <linux-gpio@vger.kernel.org>, <imx@lists.linux.dev>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+        <linux-mediatek@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>
+Subject: Re: [PATCH 4/5] pinctrl: qcom: sm7150: fix module autoloading
+Message-ID: <ZhgESEq+9jRuta2B@hu-bjorande-lv.qualcomm.com>
+References: <20240410170150.248428-1-krzk@kernel.org>
+ <20240410170150.248428-4-krzk@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 7/8] dt-bindings: ufs: mediatek,ufs: Document
- additional clocks
-To: Conor Dooley <conor@kernel.org>
-Cc: linux-scsi@vger.kernel.org, alim.akhtar@samsung.com, avri.altman@wdc.com,
- bvanassche@acm.org, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- conor+dt@kernel.org, peter.wang@mediatek.com, chu.stanley@gmail.com,
- jejb@linux.ibm.com, martin.petersen@oracle.com, lgirdwood@gmail.com,
- broonie@kernel.org, matthias.bgg@gmail.com, stanley.chu@mediatek.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <20240411114300.169055-1-angelogioacchino.delregno@collabora.com>
- <20240411114300.169055-8-angelogioacchino.delregno@collabora.com>
- <20240411-filth-trekker-8a8c185d589b@spud>
- <f7fcbae7-fd54-4ad5-8dc6-4deb80088b79@collabora.com>
- <20240411-curvy-satirical-8c50cf79d703@spud>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240411-curvy-satirical-8c50cf79d703@spud>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20240410170150.248428-4-krzk@kernel.org>
+X-Originating-IP: [10.49.16.6]
+X-ClientProxiedBy: nalasex01b.na.qualcomm.com (10.47.209.197) To
+ nalasex01c.na.qualcomm.com (10.47.97.35)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: Q4hixGIkEX4CJwtmeiJ4oFt_FKE4yeeM
+X-Proofpoint-GUID: Q4hixGIkEX4CJwtmeiJ4oFt_FKE4yeeM
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-04-11_08,2024-04-09_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 bulkscore=0 impostorscore=0
+ priorityscore=1501 mlxscore=0 clxscore=1011 adultscore=0
+ lowpriorityscore=0 malwarescore=0 suspectscore=0 spamscore=0
+ mlxlogscore=999 phishscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.19.0-2404010003 definitions=main-2404110115
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_082339_383436_9BE5A603 
-X-CRM114-Status: GOOD (  18.00  )
+X-CRM114-CacheID: sfid-20240411_084003_696807_BF1241C3 
+X-CRM114-Status: GOOD (  18.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,85 +112,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/04/24 17:18, Conor Dooley ha scritto:
-> On Thu, Apr 11, 2024 at 05:14:34PM +0200, AngeloGioacchino Del Regno wrote:
->> Il 11/04/24 17:10, Conor Dooley ha scritto:
->>> On Thu, Apr 11, 2024 at 01:42:59PM +0200, AngeloGioacchino Del Regno wrote:
->>>> Add additional clocks, used on all MediaTek SoCs' UFSHCI controllers:
->>>
->>> I appreciate being told they're on all, rather than it being unsaid and
->>> having to ask.
->>>
->>
->> You're welcome :-)
->>
->>>> some of these clocks are optional and used only for scaling purposes
->>>> to save power, or to improve performance in the case of the crypt
->>>> clocks.
->>>>
->>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>> ---
->>>>    .../devicetree/bindings/ufs/mediatek,ufs.yaml      | 14 +++++++++++++-
->>>>    1 file changed, 13 insertions(+), 1 deletion(-)
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
->>>> index e2c276da3f2c..21b038db100c 100644
->>>> --- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
->>>> +++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
->>>> @@ -26,11 +26,23 @@ properties:
->>>>              - const: mediatek,mt8183-ufshci
->>>>      clocks:
->>>> -    maxItems: 1
->>>> +    minItems: 1
->>>
->>> Could you add an itemised list to the clocks property please?
->>>
->>
->> Not really... Honestly, I'm not confident that the description will be 100%
->> correct for all of them... can we do that at a later time, when I will be
->> really that much confident in writing down a proper description for each
->> of them?
->>
->> The only thing that I'm really sure of is exactly what I wrote in this commit,
->> nothing less, nothing more... for now :')
+On Wed, Apr 10, 2024 at 07:01:49PM +0200, Krzysztof Kozlowski wrote:
+> Add MODULE_DEVICE_TABLE(), so the module could be properly autoloaded
+> based on the alias from of_device_id table.  Pin controllers are
+> considered core components, so usually they are built-in, however these
+> can be built and used as modules on some generic kernel.
 > 
-> fwiw, my motivation here was a better explanation for what "ufs" means
-> as a clock. When the block has some "ufs" clock and a "axi" clock it's
-> kinda clear what they do, but with 7 ufs clocks now, it's not really
-> clear what the bare "ufs" one actually does.
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+
+Reviewed-by: Bjorn Andersson <quic_bjorande@quicinc.com>
+
+Regards,
+Bjorn
+
+> ---
+>  drivers/pinctrl/qcom/pinctrl-sm7150.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> If you can't provide an itemised list, please set maxitems.
->   
-
-Not exactly right now, as I said. I will set maxItems instead.
-
-By the way, "ufs" == "core", I didn't want to rename that one to avoid
-breaking changes, of course.
-
-
->>>>      clock-names:
->>>> +    minItems: 1
->>>>        items:
->>>>          - const: ufs
->>>> +      - const: ufs-aes
->>>
->>>
->>>> +      - const: ufs-tick
->>>> +      - const: unipro-sys
->>>> +      - const: unipro-tick
->>>> +      - const: ufs-sap
->>>> +      - const: ufs-tx-symbol
->>>> +      - const: ufs-rx-symbol
->>>> +      - const: ufs-mem
->>>> +      - const: crypt-mux
->>>> +      - const: crypt-lp
->>>> +      - const: crypt-perf
->>>>      phys:
->>>>        maxItems: 1
->>>> -- 
->>>> 2.44.0
->>>>
->>
-
-
+> diff --git a/drivers/pinctrl/qcom/pinctrl-sm7150.c b/drivers/pinctrl/qcom/pinctrl-sm7150.c
+> index c25357ca1963..c542f9bc6bcd 100644
+> --- a/drivers/pinctrl/qcom/pinctrl-sm7150.c
+> +++ b/drivers/pinctrl/qcom/pinctrl-sm7150.c
+> @@ -1246,6 +1246,7 @@ static const struct of_device_id sm7150_tlmm_of_match[] = {
+>  	{ .compatible = "qcom,sm7150-tlmm", },
+>  	{ },
+>  };
+> +MODULE_DEVICE_TABLE(of, sm7150_tlmm_of_match);
+>  
+>  static struct platform_driver sm7150_tlmm_driver = {
+>  	.driver = {
+> -- 
+> 2.34.1
+> 
 
