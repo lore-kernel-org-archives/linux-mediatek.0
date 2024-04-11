@@ -4,85 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00D61CD1292
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 06:06:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADE7DCD128A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 06:07:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9z3qJWORb0OsrTWyxdcnuWNDBtw/eS4irvDABHIBv5s=; b=SqDQLGbi+6+cGe/Xpjkh3+ShVQ
-	4Ad8iune3a3x/uWdDAS72wbCfY8vZyKhv5EJ7dZXs9r/Iz+EBBWX97qZBmgXWtF6YgGxbaMYH+mpX
-	n1OQrugS5Snr/em1ZhoOaKWXitGeSp3gYCWitvJEmd66zOhUkIT7SAcMJ9t8ELcGDtey3TwvXKctm
-	Vyz8Ls6d1st5ynIiCg+dpgsFWS/sK7s3GHyzIpSASr67lS210p/h35TZvx4w9WikefszufHN9mGU2
-	f9zkcCXdwmQneaFHAjYby41SrK4J72AXj4z/dDNy4VyS13PZOYy2Hh5BZrT9mAUr90QjG3htGeiV5
-	EKVFkwuQ==;
+	bh=k2l0eiDNLmbi/Vmy8bMB+KVbtNAkRJOL5womJmyEjkE=; b=L+JxmKG0yNEFE241VIC36r10Um
+	sE9C/cJCR6xWQTi7NP3EOp91Ep4qqD2XyKx94wYBRpFeUGp7kY1s3Z4f4SHCMRT+Q6fbVUsFikkFP
+	Gy/KSw7W+DDPdi9R991drS3iZ819eVBNVqvR4YGSsf2BF/L2tJ8zpTw3B9S/7J0FD9XFQn27utkHf
+	VtumYLRvCcqJmCXaj4Y3r1H42hsh3mjQywQde3Avp5EQ/xHPpbkcGPq2wIxRBPxElFjPqeNEWV6WO
+	2n1nwrOdRJeyBtypg088ywequQF3GWEBB+6esiiqT3n32h7rw5gimVaHzlqysORYjWME7ay7JS3Wf
+	aODRlKUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1runZh-0000000AWu1-2SxC;
-	Thu, 11 Apr 2024 06:06:17 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1runac-0000000AX85-0VOE;
+	Thu, 11 Apr 2024 06:07:14 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1runZc-0000000AWsF-37SC;
-	Thu, 11 Apr 2024 06:06:14 +0000
+	id 1runaY-0000000AX6q-3PSE;
+	Thu, 11 Apr 2024 06:07:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id D27FECE1DF5;
-	Thu, 11 Apr 2024 06:06:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29BF9C433C7;
-	Thu, 11 Apr 2024 06:06:01 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 0778CCE2E76;
+	Thu, 11 Apr 2024 06:07:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 409F3C433C7;
+	Thu, 11 Apr 2024 06:07:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712815570;
-	bh=vCSO/IPczaOAqHvsW6X71iBblmOF6snz5KBE39VGiBc=;
+	s=k20201202; t=1712815628;
+	bh=moQ7vBvBvMlEyceyYgedBVvbftU2N42FEzYpfITRaTM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=I/HLMtCYzFdGiq1NHLwevQ7ENuRu3WXxXJs9RfKw61NxVairBT3bNCXSKVPXS4QmQ
-	 hoVtV8u+02YyrtR0Lw2epyApFdMEU0zKvnKn1y3pCmkzEF5/b8hRFdl8CSh102wDs0
-	 T3wUgtRr33eZUTLc56sHKNkHI+7FFOaSlcZD0ap4jO4oj4DXS8bV2WmhtV/Pw86JY5
-	 YTSDq5X32YzZkB3KsPMiI55ufm3pev3b9rEud09/0JohwwJwdtS9x5qeWQPKcmHDrf
-	 RmANGaYarpAXXZoUA415V4jkU7feikaW1f9jCpoEjWbWICDWgJa/yffgXr7nuwJaS1
-	 XvmfwAmS6vAag==
-Message-ID: <9e41a61d-3607-4698-b942-78fca235afd2@kernel.org>
-Date: Thu, 11 Apr 2024 08:05:59 +0200
+	b=uIV1iJgYc7RGw1GTjL3n6XDtSSm6WASongTB6x3M328vjRZRsddzjzTIxsP2MsMNP
+	 Ow8XRWGTXgaPBpNI+RaamkeaH8Q+tGHaspnsraXVBb6jOtS4QFzQBIo6MApGETDdxY
+	 PNJRu7ErXXxQXSSMsvLpuj3uAaNja+qR8uFLTCZUjJR5QFDw6rI1VZn+I5h35Urre0
+	 M1AIanhIoQk6oKuzwfPvfMe0088qs2SHTo+6ghrUK1MIHrX6690zn2HQgesQ6CMyrl
+	 gd8g2lhcHEZGocXBf3Um3xQ8yW4QvPv/StaLas0a1hryRpvGSutqu9ACgvS/UxYpR3
+	 eIB32VqnaEIMg==
+Message-ID: <7598d482-456b-458e-a0b6-b5767f9c4863@kernel.org>
+Date: Thu, 11 Apr 2024 08:06:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] media: dt-bindings: i2c: add Giantec GT97xx VCM
- driver
-To: =?UTF-8?B?WmhpIE1hbyAo5q+b5pm6KQ==?= <zhi.mao@mediatek.com>,
- "conor@kernel.org" <conor@kernel.org>
-Cc: "heiko@sntech.de" <heiko@sntech.de>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "laurent.pinchart+renesas@ideasonboard.com"
- <laurent.pinchart+renesas@ideasonboard.com>,
- "yunkec@chromium.org" <yunkec@chromium.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- "hdegoede@redhat.com" <hdegoede@redhat.com>,
- "bingbu.cao@intel.com" <bingbu.cao@intel.com>,
- "paul.elder@ideasonboard.com" <paul.elder@ideasonboard.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "andy.shevchenko@gmail.com" <andy.shevchenko@gmail.com>,
- "mchehab@kernel.org" <mchehab@kernel.org>,
- =?UTF-8?B?U2hlbmduYW4gV2FuZyAo546L5Zyj55S3KQ==?=
- <shengnan.wang@mediatek.com>, =?UTF-8?B?WWF5YSBDaGFuZyAo5by16ZuF5riFKQ==?=
- <Yaya.Chang@mediatek.com>, "p.zabel@pengutronix.de"
- <p.zabel@pengutronix.de>, "alain.volmat@foss.st.com"
- <alain.volmat@foss.st.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>,
- "robh@kernel.org" <robh@kernel.org>,
- "hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
- "tomi.valkeinen@ideasonboard.com" <tomi.valkeinen@ideasonboard.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "mehdi.djait@bootlin.com" <mehdi.djait@bootlin.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>, "10572168@qq.com"
- <10572168@qq.com>
-References: <20240410104002.1197-1-zhi.mao@mediatek.com>
- <20240410104002.1197-2-zhi.mao@mediatek.com>
- <20240410-rice-fringe-4ae992217a2f@spud>
- <5317cb9b01cf5668837ad7ccdcb9eb72b95d98d6.camel@mediatek.com>
+Subject: Re: [PATCH 1/2] dt-bindings: remoteproc: mediatek: Support MT8188
+ dual-core SCP
+To: "olivia.wen" <olivia.wen@mediatek.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Tinghan Shen <tinghan.shen@mediatek.com>, linux-remoteproc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ jason-ch.chen@mediatek.com, yaya.chang@mediatek.com, teddy.chen@mediatek.com
+References: <20240411033750.6476-1-olivia.wen@mediatek.com>
+ <20240411033750.6476-2-olivia.wen@mediatek.com>
 Content-Language: en-US
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -128,12 +106,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <5317cb9b01cf5668837ad7ccdcb9eb72b95d98d6.camel@mediatek.com>
+In-Reply-To: <20240411033750.6476-2-olivia.wen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_230613_194392_3B3EFDFC 
-X-CRM114-Status: GOOD (  16.94  )
+X-CRM114-CacheID: sfid-20240410_230711_290312_7106A27F 
+X-CRM114-Status: GOOD (  11.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,88 +126,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/04/2024 04:04, Zhi Mao (毛智) wrote:
-> Hi Conor,
+On 11/04/2024 05:37, olivia.wen wrote:
+> Under different applications, the MT8188 SCP can be used as single-core
+> or dual-core.
 > 
-> Thanks for your review.
+> Signed-off-by: olivia.wen <olivia.wen@mediatek.com>
+
+Are you sure you use full name, not email login as name?
+
+> ---
+>  Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> On Wed, 2024-04-10 at 12:27 +0100, Conor Dooley wrote:
->>>
->>>
->> Hey,
->>
->> On Wed, Apr 10, 2024 at 06:40:01PM +0800, Zhi Mao wrote:
->>> b/Documentation/devicetree/bindings/media/i2c/giantec,gt97xx.yaml
->>> @@ -0,0 +1,91 @@
->>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->>> +# Copyright (c) 2020 MediaTek Inc.
->>> +%YAML 1.2
->>> +---
->>> +$id: http://devicetree.org/schemas/media/i2c/giantec,gt97xx.yaml#
->>
->> Filename patching compatible please.
->>
->>
-> Sorry, I don't catch this point. 
-> Can you explain more details? 
+> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> index 507f98f..7e7b567 100644
+> --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> @@ -22,7 +22,7 @@ properties:
+>        - mediatek,mt8192-scp
+>        - mediatek,mt8195-scp
+>        - mediatek,mt8195-scp-dual
+> -
+> +      - mediatek,mt8188-scp-dual
 
-s/patching/matching/
-Use compatible as filename.
+Missing blank line, misordered.
 
 
->>>
->>>
->>> +
->>> +  giantec,aac-mode:
->>> +    description:
->>> +      Indication of AAC mode select.
->>> +    $ref: /schemas/types.yaml#/definitions/uint32
->>> +    enum:
->>> +      - 1    #  AAC2 mode(operation time# 0.48 x Tvib)
->>> +      - 2    #  AAC3 mode(operation time# 0.70 x Tvib)
->>> +      - 3    #  AAC4 mode(operation time# 0.75 x Tvib)
->>> +      - 5    #  AAC8 mode(operation time# 1.13 x Tvib)
->>
->> I dislike these enum based properties and I would rather this either
->> be
->> the values themselves (0.48, 0.70 etc).
->>
->>> +
->>> +  giantec,aac-timing:
->>> +    description:
->>> +      Number of AAC Timing count that controlled by one 6-bit
->>> period of
->>> +      vibration register AACT[5:0], the unit of which is 100 us.
->>
->> Then the property should be in a standard unit of time, not "random"
->> hex
->> numbers that correspond to register values.
->>
->>>
->>> +  giantec,clock-presc:
->>> +    description:
->>> +      Indication of VCM internal clock dividing rate select, as
->>> one multiple
->>> +      factor to calculate VCM ring periodic time Tvib.
->>> +    $ref: /schemas/types.yaml#/definitions/uint32
->>> +    enum:
->>> +      - 0    #  Dividing Rate -  2
->>> +      - 1    #  Dividing Rate -  1
->>> +      - 2    #  Dividing Rate -  1/2
->>> +      - 3    #  Dividing Rate -  1/4
->>> +      - 4    #  Dividing Rate -  8
->>> +      - 5    #  Dividing Rate -  4
->>
->> Same here, you should not need these comments explaining the values,
->> use
->> an enum with meaningful values please. 
->>
-> About "aac-mode/aac-timing/clock-presc", we test this driver with
-> default settings accroding to SPEC and VCM works well, so I will not
-> export these property in YMAL and let driver use default settings.
-> How do you think about it?
+>    reg:
+>      description:
+>        Should contain the address ranges for memory regions SRAM, CFG, and,
+> @@ -195,6 +195,7 @@ allOf:
+>          compatible:
+>            enum:
+>              - mediatek,mt8195-scp-dual
+> +            - mediatek,mt8188-scp-dual
 
-You must remove them from the driver code in such case.
+Again, keep the order.
+
+
 
 Best regards,
 Krzysztof
