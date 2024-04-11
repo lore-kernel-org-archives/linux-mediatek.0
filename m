@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9C88CD128A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 08:32:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26E37CD1292
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 08:32:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fDOwqencgH/su2VrpjA5kh3xD1T3KXzOnTObD1ZY70I=; b=ZU3zpSIVm1pju7/snFDUozl6Vx
-	bpcb8SPsQcfrpe1rjqhp0eLfmVpOocEyrEIB9y69l5ruw5f68fHzsWEmDNQ07okSQgBjV+r0y+sLZ
-	ermMmykfB6mwdeWU3c5XFdj3IYJGoDeTWtP5UnGoWwrJ5WEFBFa8DtVva6mbuYSqkcZ+wSKBiZIqP
-	Wk6kOaDgSpidpKplTMsdrfDYadMtaD6rQIRetLYE/cFxSb6F5YDGJTdHNOiPDcFwLMFnQElHEBYNy
-	XDB2pLo1+mKShL5DlZ4QUTZtG9cVB1/8hrdOic8/dEZw8zQbqJ5Ay6iu+cufxg4thIxBNfh+XLZV2
-	TmINdEDA==;
+	bh=nHCiQMe4cGGXrPlEZMWyo6Wvyd0omfQRw/rm+p7Chz4=; b=1rsLndnPkvWVsuZ/+nIlNP2BeN
+	1i1hD+DNG/X0o8QNzshxTtsr1fm8bRAhw788wql7Sevvm27mmfBke2ALzgGx8m/l9JTk5eLdDi+qm
+	hTye6+SZPXTr7uHD3LAYw9UGdf/PqyZGFrUDDQuNjKAQbhMLJTf3j+Nva7vkSXTbLvev++zIEWrs1
+	0cM+Fc30jggY67oG3uw4yC6edYLvxgCIbLGQ4Q7S4NQEzUeNJ6ZFrBa2h+cowS7gztg3nN12isDr2
+	GJnO2d0KSZZOYZp3tsYzqH4UIyyEK5gZ+3rjiriGay/73XM3u6w9uRu+vptaGEf/B+JMGaqSWWi+T
+	oh3/GgYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rupqq-0000000B5n1-12QK;
-	Thu, 11 Apr 2024 08:32:08 +0000
+	id 1rupqr-0000000B5oZ-2jec;
+	Thu, 11 Apr 2024 08:32:09 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rupqf-0000000B5h0-1H4d;
+	id 1rupqg-0000000B5hH-0Atj;
 	Thu, 11 Apr 2024 08:31:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712824315;
-	bh=ZnatujJdMMwMTVdvN0wAmZ4cirs7z1jcVCjXcMmD3Gk=;
+	s=mail; t=1712824316;
+	bh=6l72IQpDXHhr8j3mG8r2TihhpBbmFrvrFd/CtXYdp6g=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=S2Now3tEmXtiPdOcoxNIN/c++J1S4uL9zyfqvvNVNk4M9OCcXTEbjik71Eh6WSz38
-	 St97s9Y8uL/n37WRX6CcuLwcxKI0i1xwAP4uBndFP7xRkc0hXAetalWqzwVso84amI
-	 4P7xh4CIkagCMcGcrQGH180SEoBETmUgPDuLlY0wq8mrDK7tAtBsxO9SLkWgpTkf13
-	 TsW01z/5YS6FRJF+8RBkttLGg6omr09khtY5n6VK0qQHQ44PixdOuy+EbVC/xc+QbN
-	 p2CcQRQ/Os0CjUrkPJnLYmVqexgRT895OVct5ZUAYKsad3ZNqhtYiS16fDW7cBTj5B
-	 IcdBZaL9N+bgQ==
+	b=P5MXL+2wSbrrcb45TYS01vVPET6xr4CrQ4soPFEXO1ZTCmFrMbhzovXk70/FYY4kq
+	 4rdX3caGR8xs2wzE0NVF/Z887zvzazPNKZc6/TCFiqLyX00L3uchJ5Xtr0LXfFApBG
+	 tyiSVsBDs8BVTBBHMh5aZNz0z9Bnz9a8xmxLjXULmdrMRDn2ybVN1dOTdOvhGf4/bG
+	 vaqF0iTXBCHJFY/gJ43PkOqH+gOkrPeIim1TE9RGdtAVvFHNEvipBBz0JusxnsOPIP
+	 PF5bvfKzRjKxaUKYmuHadut2sRV0V7TaJoArwuy0giJhAo3CLruTdW+E/nOayT3uGh
+	 IteN46wSwIl5g==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 02FBE378212B;
-	Thu, 11 Apr 2024 08:31:53 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 719A5378212C;
+	Thu, 11 Apr 2024 08:31:55 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-scsi@vger.kernel.org
 Cc: alim.akhtar@samsung.com,
@@ -65,17 +65,17 @@ Cc: alim.akhtar@samsung.com,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v1 1/8] scsi: ufs-mediatek: Remove useless mediatek,ufs-support-va09 property
-Date: Thu, 11 Apr 2024 10:31:42 +0200
-Message-ID: <20240411083149.78537-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 2/8] scsi: ufs: ufs-mediatek: Fix property name for crypt boost voltage
+Date: Thu, 11 Apr 2024 10:31:43 +0200
+Message-ID: <20240411083149.78537-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240411083149.78537-1-angelogioacchino.delregno@collabora.com>
 References: <20240411083149.78537-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_013158_029615_93141DB4 
-X-CRM114-Status: GOOD (  16.74  )
+X-CRM114-CacheID: sfid-20240411_013158_262847_25270F8E 
+X-CRM114-Status: GOOD (  12.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,97 +90,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove checking the mediatek,ufs-support-va09 property to decide
-whether to try to support the VA09 regulator handling and change
-the ufs_mtk_init_va09_pwr_ctrl() function to make it call
-devm_regulator_get_optional(): if the regulator is present, then
-we set the UFS_MTK_CAP_VA09_PWR_CTRL, effectively enabling the
-handling of the VA09 regulator based on that.
+Rename "boost-crypt-vcore-min" to "mediatek,boost-crypt-microvolt":
+this is a vendor specific property and needs the "mediatek," prefix,
+moreover, this is not defining a minimum voltage per-se;
 
-Also, make sure to pass the return value of the call to
-devm_regulator_get_optional() to the probe function, so that
-if it returns a probe deferral, the appropriate action will be
-taken.
+Even if technically a call to regulator_set_voltage() does indeed
+internally set a VMIN for a regulator, the API also supports other
+calls to set VMIN-VMAX constraints, so this "vcore-min"->"microvolt"
+rename is performed in order to avoid confusion, other than adding
+the "microvolt" suffix to it (as this does take microvolts!).
 
-While at it, remove the error print (disguised as info...) when
-the va09 regulator was not found.
-
-Fixes: ac8c2459091c ("scsi: ufs-mediatek: Decouple features from platform bindings")
+Fixes: 590b0d2372fe ("scsi: ufs-mediatek: Support performance mode for inline encryption engine")
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/ufs/host/ufs-mediatek.c | 34 +++++++++++++++++++++++----------
- 1 file changed, 24 insertions(+), 10 deletions(-)
+ drivers/ufs/host/ufs-mediatek.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index b8a8801322e2..5186ad99ad8b 100644
+index 5186ad99ad8b..90cd11d4a026 100644
 --- a/drivers/ufs/host/ufs-mediatek.c
 +++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -591,27 +591,38 @@ static void ufs_mtk_init_boost_crypt(struct ufs_hba *hba)
- 	return;
- }
- 
--static void ufs_mtk_init_va09_pwr_ctrl(struct ufs_hba *hba)
-+static int ufs_mtk_init_va09_pwr_ctrl(struct ufs_hba *hba)
- {
- 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
-+	int ret;
- 
--	host->reg_va09 = regulator_get(hba->dev, "va09");
--	if (IS_ERR(host->reg_va09))
--		dev_info(hba->dev, "failed to get va09");
--	else
--		host->caps |= UFS_MTK_CAP_VA09_PWR_CTRL;
-+	host->reg_va09 = devm_regulator_get_optional(hba->dev, "va09");
-+	if (IS_ERR(host->reg_va09)) {
-+		ret = PTR_ERR(host->reg_va09);
-+
-+		/* Return an error only if this is a deferral */
-+		if (ret == -EPROBE_DEFER)
-+			return ret;
-+
-+		return 0;
-+	}
-+
-+	host->caps |= UFS_MTK_CAP_VA09_PWR_CTRL;
-+	return 0;
- }
- 
--static void ufs_mtk_init_host_caps(struct ufs_hba *hba)
-+static int ufs_mtk_init_host_caps(struct ufs_hba *hba)
- {
- 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
- 	struct device_node *np = hba->dev->of_node;
-+	int ret;
- 
- 	if (of_property_read_bool(np, "mediatek,ufs-boost-crypt"))
- 		ufs_mtk_init_boost_crypt(hba);
- 
--	if (of_property_read_bool(np, "mediatek,ufs-support-va09"))
--		ufs_mtk_init_va09_pwr_ctrl(hba);
-+	ret = ufs_mtk_init_va09_pwr_ctrl(hba);
-+	if (ret)
-+		return ret;
- 
- 	if (of_property_read_bool(np, "mediatek,ufs-disable-ah8"))
- 		host->caps |= UFS_MTK_CAP_DISABLE_AH8;
-@@ -623,6 +634,7 @@ static void ufs_mtk_init_host_caps(struct ufs_hba *hba)
- 		host->caps |= UFS_MTK_CAP_PMC_VIA_FASTAUTO;
- 
- 	dev_info(hba->dev, "caps: 0x%x", host->caps);
-+	return 0;
- }
- 
- static void ufs_mtk_scale_perf(struct ufs_hba *hba, bool scale_up)
-@@ -941,7 +953,9 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+@@ -564,9 +564,9 @@ static void ufs_mtk_init_boost_crypt(struct ufs_hba *hba)
+ 		goto disable_caps;
  	}
  
- 	/* Initialize host capability */
--	ufs_mtk_init_host_caps(hba);
-+	err = ufs_mtk_init_host_caps(hba);
-+	if (err)
-+		goto out;
- 
- 	ufs_mtk_init_mcq_irq(hba);
+-	if (of_property_read_u32(dev->of_node, "boost-crypt-vcore-min",
++	if (of_property_read_u32(dev->of_node, "mediatek,boost-crypt-microvolt",
+ 				 &volt)) {
+-		dev_info(dev, "failed to get boost-crypt-vcore-min");
++		dev_info(dev, "failed to get mediatek,boost-crypt-microvolt");
+ 		goto disable_caps;
+ 	}
  
 -- 
 2.44.0
