@@ -4,63 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A5BEC4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 16:48:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ABC4C4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 17:41:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=okeAvFfUEaK896RIWOik8lHqxHZXxstaNcHrNypDUOY=; b=D1hQRvVEAG/da3DS7REHbiH9ND
-	nnYaZd3DxEDpMzjRhdCH9kO0lVOUmX/Q9gvpPgURHy13WiMS7gOI8ru5lCxz3E+RNUBCqJnLuBU2w
-	tXZuweHh80z9JCBkrBloIRRGKsiiaZG9ANpA7nhczw9HeQKR0NnioaC0vcA75T4pL2P/UBNJiuMUy
-	7knWR3W3e3Z9WCMK2gtTjO15E8aYT6t5UPZt1VlnYZ9QMtATv7tuobhHm/+XUKtHqToW9nIjlOhO2
-	YMpZzfnC1RwhpoPZglJTMZ9TAWQQjthH2E7ifwelqAEAHNFRmMr2PWHNjfd96K4VY4GdwB6Q61Tg2
-	aPZhlJkA==;
+	bh=HqO/PWGOb6n0sotJb3BszFaEcMzLvi0yOjcQVZ0Erv0=; b=YRdRG31nkjGXUAVZ/EIdUynLSy
+	jA4AVDm8J3qEzcCoH8TFfnMYX6gWBKvtzwemRXj19LKCZXR5C+p6e97bkZged7zeWvy8otbszpO84
+	C0HNYdJIXwUYsOCjQz24NlpZmSHJPUW8s09W6+PzNh2f/sFgS4kO8CKaiNYRpxSgmARAa8jAV23W1
+	ClvS/JdBjQVovg9Z6iIFTnGvsHgYetNgm7VsvmuX6aq1zUTUQvQdpBSARtlOPCyrenU8cXPCtIJVx
+	cK5BvcHphtaeJ/lFwspNZayJRFfDecsyGb4dK7VuIpNWK6UF3qMJ5kWFnBnC3pwqUvz2f37FGNBdr
+	gudM0d/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruxbS-0000000DAlJ-3RNm;
-	Thu, 11 Apr 2024 16:48:46 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1ruyQn-0000000DS8X-3Ciz;
+	Thu, 11 Apr 2024 17:41:49 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruxbP-0000000DAj1-14nA;
-	Thu, 11 Apr 2024 16:48:44 +0000
+	id 1ruyQj-0000000DS67-10AA;
+	Thu, 11 Apr 2024 17:41:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id D03FACE013B;
-	Thu, 11 Apr 2024 16:48:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 11011C072AA;
-	Thu, 11 Apr 2024 16:48:37 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 2531FCE1BB4;
+	Thu, 11 Apr 2024 17:41:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61D7BC2BBFC;
+	Thu, 11 Apr 2024 17:41:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712854120;
-	bh=LWlrTCJGqYKdS9PYJSR2H64H7PQGjxik5FHnH+YFRek=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=SRw9gbg3ILr9SlXTXTQ+BUnw1oNfqMDP46YMiFKH2ywD5rU1P0dEI+ifC98brtzT3
-	 sK/T8pTySfw5lZUKqDGe0eomeXbvOgcJM/BmFRtMyceO9GX3DEYpYSdTMuatLQPJxf
-	 nLplnjGvyUcQBu8NuzBliq2HTBtzk1/Fcj/fZKzNGAXhRQHB2JVF12XTExdynCf9t8
-	 iSd6+nVzTg9fkeIUENqsjt2GH2BlY0YH44BpSEAJyqvHQScjw5PfyNprZUfnH0d4xT
-	 8scaN3SbJU5zDwE2FhccU4BjirKFtM2vAR5V2+KZcKZ+bIF59FTLnEtNBJBPHycIyy
-	 /Ptqgg7AuvOGA==
-From: Lee Jones <lee@kernel.org>
-To: pavel@ucw.cz, lee@kernel.org, matthias.bgg@gmail.com, 
- angelogioacchino.delregno@collabora.com, ChiaEn Wu <chiaen_wu@richtek.com>
-Cc: linux-kernel@vger.kernel.org, linux-leds@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- peterwu.pub@gmail.com, cy_huang@richtek.com
-In-Reply-To: <28FE6F1712799128000.chiaen_wu@richtek.com>
-References: <28FE6F1712799128000.chiaen_wu@richtek.com>
-Subject: Re: (subset) [PATCH] leds: mt6360: Fix the second LED can not
- enable torch mode by V4L2
-Message-Id: <171285411780.2498946.3824215880975158305.b4-ty@kernel.org>
-Date: Thu, 11 Apr 2024 17:48:37 +0100
+	s=k20201202; t=1712857302;
+	bh=DoJYSiMJhYT9Zt6gL2BrmpCKBnw00cmz4PnYnC16w5w=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=D57Dm9naJovNyxjN+f4aK9UEhia+7xBZ5MkhbWxsEKsouoD9VR5HyxJ5oTVAWHCjb
+	 dtJXrqqBbam7Ebzp9GS7S90fyxedAGal4WgfiO7sOcXo5myFf7hNnj0B/EH10Jxhsz
+	 8TiWXIpMKl7BCob/OsWv+skUeQDl/S0KYW0Vr/5EuGpJ16JCqcWzxaUvuHKJ9XUbbi
+	 CSENDnGpBt9rbplij+sVAGrhpZAtha0txZMtw6gUe8PkUKXdOJXiNbJsYo2NDTOcQL
+	 Y6PMOlqq3rqEDmXL2M0h33mpmxiQYTqjK5SqIn+kAlSm5TTPnngLQiq4aeZWDOr0eP
+	 I7UAhbLSYWkLg==
+Received: by mail-wr1-f44.google.com with SMTP id ffacd0b85a97d-343d7ff2350so8129f8f.0;
+        Thu, 11 Apr 2024 10:41:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCXW5vmeXt+DXJMfqq8V5cVXdltnWUjMrxKgm3R1yQz1KTCfR+yyO/pvrmiR0H7I0Xs5MZkn7nUaGyyB/FLsJ49JUnmOFCm/0bWSZhTOMjMExUoOFpNdiFVk5cW3eQ139u2cszc8hDQK6iIJFOH52SsxLT/p53YZy94pzb4Jp+ya0/XD+fwB/6puMmvkai8OCcK0be/Ms/MvwWz7okmgGV9OEv0B4kj6gcuToZyhediXLSY2GGBIfn7pjsQUUkDP2BOxyw==
+X-Gm-Message-State: AOJu0YyGF2A4eFE1MHBD5CigUCq2Qi+GvTPN1CdtZuY+j/j3MrRTzuiW
+	KgK+4t0EUV6PDTBEvgX2Ek3BKuWYeT2f365uYdRkx25gKh7KpEtyVzaYrw0is59vmSXFd3dWXVW
+	eHpBoI3CKG6D7a2FAgSevRYvE5A==
+X-Google-Smtp-Source: AGHT+IGTYTnd27cZwUZ7kXUf6/DQ0pj9531II4F7GuikLZRsZ/ZfHrcFFNL5HrA9aNOfAtjGuv7mboSXH/hsVf3pPeQ=
+X-Received: by 2002:a19:f60a:0:b0:517:535b:9f2d with SMTP id
+ x10-20020a19f60a000000b00517535b9f2dmr231054lfe.25.1712857280506; Thu, 11 Apr
+ 2024 10:41:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.12.4
+References: <20240411142107.GA3537062-robh@kernel.org> <20240411161108.GA2184354@bhelgaas>
+In-Reply-To: <20240411161108.GA2184354@bhelgaas>
+From: Rob Herring <robh@kernel.org>
+Date: Thu, 11 Apr 2024 12:41:07 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqKaJR9v=EEwm=rGf-XtXhhSd4_U2FUJoCoN_mcvPBtPBA@mail.gmail.com>
+Message-ID: <CAL_JsqKaJR9v=EEwm=rGf-XtXhhSd4_U2FUJoCoN_mcvPBtPBA@mail.gmail.com>
+Subject: Re: [PATCH v2 2/4] dt-bindings: PCI: mediatek,mt7621: add missing
+ child node reg
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Florian Fainelli <florian.fainelli@broadcom.com>, Jim Quinlan <jim2101024@gmail.com>, 
+	Nicolas Saenz Julienne <nsaenz@kernel.org>, Will Deacon <will@kernel.org>, 
+	Linus Walleij <linus.walleij@linaro.org>, Srikanth Thokala <srikanth.thokala@intel.com>, 
+	Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Daire McNamara <daire.mcnamara@microchip.com>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Marek Vasut <marek.vasut+renesas@gmail.com>, 
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin <shawn.lin@rock-chips.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, 
+	Gustavo Pimentel <gustavo.pimentel@synopsys.com>, 
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+	Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>, Michal Simek <michal.simek@amd.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Mark Kettenis <kettenis@openbsd.org>, 
+	Tom Joseph <tjoseph@cadence.com>, Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>, 
+	Jiaxun Yang <jiaxun.yang@flygoat.com>, Kishon Vijay Abraham I <kishon@kernel.org>, 
+	Thippeswamy Havalige <thippeswamy.havalige@amd.com>, linux-pci@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_094843_582505_E004AA1F 
-X-CRM114-Status: UNSURE (   8.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240411_104145_674074_CF37E7A8 
+X-CRM114-Status: GOOD (  33.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,24 +111,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 09 Apr 2024 18:21:54 +0800, ChiaEn Wu wrote:
-> V4L2 will disable strobe mode of the LED device when enable torch mode,
-> but this logic will conflict with the "priv->fled_torch_used"
-> in "mt6360_strobe_set()". So after enabling torch mode of the first
-> LED, the second LED will not be able to enable torch mode correctly.
-> 
-> Therefore, at the beginning of "mt6360_strobe_set()", check whether the
-> state of the upcoming change and the current LED device state are the
-> same, so as to avoid the above problem.
-> 
-> [...]
+On Thu, Apr 11, 2024 at 11:11=E2=80=AFAM Bjorn Helgaas <helgaas@kernel.org>=
+ wrote:
+>
+> On Thu, Apr 11, 2024 at 09:21:07AM -0500, Rob Herring wrote:
+> > On Thu, Apr 11, 2024 at 07:39:17AM -0500, Bjorn Helgaas wrote:
+> > > On Thu, Apr 11, 2024 at 08:13:18AM +0200, Sergio Paracuellos wrote:
+> > > > On Thu, Apr 11, 2024 at 8:01=E2=80=AFAM Krzysztof Kozlowski
+> > > > <krzysztof.kozlowski@linaro.org> wrote:
+> > > > > On 10/04/2024 23:26, Bjorn Helgaas wrote:
+> > > > > > On Wed, Apr 10, 2024 at 08:15:19PM +0200, Krzysztof Kozlowski w=
+rote:
+> > > > > >> MT7621 PCI host bridge has children which apparently are also =
+PCI host
+> > > > > >> bridges, at least that's what the binding suggest.
+> > > > > >
+> > > > > > What does it even mean for a PCI host bridge to have a child th=
+at is
+> > > > > > also a PCI host bridge?
+> >
+> > It should say 'root port' instead as the binding description correctly
+> > says.
+>
+> OK, that makes a lot more sense, and we should fix the commit log.
+>
+> > > > > I think the question should be towards Mediatek folks. I don't kn=
+ow what
+> > > > > this hardware is exactly, just looks like pci-pci-bridge. The dri=
+ver
+> > > > > calls the children host bridges as "ports".
+> > > >
+> > > > You can see the topology here in my first driver submit cover lette=
+r
+> > > > message [0].
+> > > >
+> > > >  [0]: https://lore.kernel.org/all/CAMhs-H-BA+KzEwuDPzcmrDPdgJBFA2Xd=
+YTBvT4R4MEOUB=3DWQ1g@mail.gmail.com/t/
+> > >
+> > > Nothing unusual here, this looks like the standard PCIe topology.
+> > >
+> > > What *might* be unusual is describing the Root Ports in DT.  Since
+> > > they are standard PCI devices, they shouldn't need DT description
+> > > unless there's some unusual power/clock/reset control or something
+> > > that is not discoverable via PCI enumeration.
+> >
+> > It's only unusual because typically there's only 1 RP per host bridge
+> > and properties which really apply to the RP get stuck in the host bridg=
+e
+> > node because we don't have a RP node. An example is perst-gpios. That's
+> > not a property of the RP either, but the RP is the upstream side of a
+> > slot and we often don't have a node for the device either.
+>
+> Makes sense.
+>
+> I'm still confused about one thing, maybe just because I don't really
+> know how to read these bindings.  The binding now looks like this:
+>
+>   properties:
+>     compatible:
+>       const: mediatek,mt7621-pci
+>
+>     reg:
+>       items:
+>         - description: host-pci bridge registers
+>         - description: pcie port 0 RC control registers       # A
+>         - description: pcie port 1 RC control registers       # A
+>         - description: pcie port 2 RC control registers       # A
+>
+>   patternProperties:
+>     '^pcie@[0-2],0$':
+>       type: object
+>       $ref: /schemas/pci/pci-pci-bridge.yaml#
+>
+>       properties:
+>         reg:                                                  # B
+>           maxItems: 1
+>
+> It looks like the "A" items are separate things from the "B" items?
+>
+> But I think the relevant code is here:
+>
+>   mt7621_pcie_probe
+>     mt7621_pcie_parse_dt
+>       pcie->base =3D devm_platform_ioremap_resource(pdev, 0)             =
+# 1
+>       for_each_available_child_of_node(node, child)
+>         mt7621_pcie_parse_port
+>           port->base =3D devm_platform_ioremap_resource(pdev, slot + 1)  =
+# 2
+>
+> where it looks like both "1" and "2" use the items in the "A" list,
+> i.e., resources 0, 1, 2, 3, all from the same platform device.  Is
+> there code that uses the "B" item that this patch adds?
 
-Applied, thanks!
+The A items are in the host address space. The B item is a PCI
+address. Specifically, for PCI devices, the first entry is config
+space with just the device and function (devfn). The format is defined
+in the OpenFirmware PCI bus supplement.
 
-[1/1] leds: mt6360: Fix the second LED can not enable torch mode by V4L2
-      commit: 0dcd0488a7a5b8762256b393a8bd0c21e5e4e0fb
-
---
-Lee Jones [李琼斯]
-
+Rob
 
