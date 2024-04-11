@@ -4,76 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EA40CD1297
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 06:47:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F612CD1292
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 06:55:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z/KoMRQK5iP88a4eO+gG/7tzJ/NeGARuIj8pLdAKqCg=; b=FJz2bJDXXEDtg7ZxVNYbkbFOnb
-	tC7qH2FR+O5tGdfP3lAWh2SZsLk9D0Xeue+IEmmOx/pupwjn0GCJRGk82pDslCZHPqY58Lg37BEl+
-	WGZazm3uPAi3aRZiwg1HZ/EsFkZCC3hPTjA3PLyes3OMggb2MjIZWwn8Kvw3sQ6FairXgLLkSQm0p
-	F82X8+TdJLrV7YQ2/A1EOFv9sxiWEclsgB8Ic3y935PIeVUqeI6k1qGyM1tSrJzJV2wqrkzH9CD24
-	924gA4EHSKoV9UpPkTMEsJhPT9/URJCB8VnGotqh8iDsomotLvRZKtcf9RpgBqvF1ygCSrjS8DM7U
-	XGxe0R/Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IIQWAof7QZtlNfCVxARlw6Y2gtmi1htbvZNPk02NXdc=; b=sqOz4DYPIy94e5LwN43kp6hAMT
+	U3C4BA07+Q4yQZ6kJbe9E2r6PIJmOQpxVhpyrkKCJ4QauPQqefGHpHyZA4nkS4ZLMsY8AcQsh/K0i
+	QK95ECUrowTB6k2JUokC/18HVIQqINmNjbREYRf92qHm5x4IPaa03thWoLAZJJc22Kgk0FUTeaM/k
+	RpVkwvsntCclSMD3xJkMauhyAkeUxlDKEmZqT4xxdJ1q8Shyf5PNSb1ud2sCKhJxafRDfu7SdjHpj
+	NPedFx2R9gQZgZZnpuKbphfIYOxSxFS4K3mj3uUDFqX2l+AXgXUBCexdLIeDJ6AQmibGEsppZbWwk
+	cLJi6JEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruoDM-0000000Aew5-01JW;
-	Thu, 11 Apr 2024 06:47:16 +0000
+	id 1ruoLD-0000000AgZ3-0e63;
+	Thu, 11 Apr 2024 06:55:23 +0000
 Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruoDA-0000000Aen1-1xXB;
-	Thu, 11 Apr 2024 06:47:08 +0000
+	id 1ruoL9-0000000AgWf-0i1d;
+	Thu, 11 Apr 2024 06:55:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id BC5D0CE2F1E;
-	Thu, 11 Apr 2024 06:47:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3E6CC43390;
-	Thu, 11 Apr 2024 06:46:54 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id E7603CE2A7E;
+	Thu, 11 Apr 2024 06:55:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 27F3AC433C7;
+	Thu, 11 Apr 2024 06:55:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712818020;
-	bh=GlRh8UW057t9Bq8GK2coWR2MWUDzOJl27L0JCrjgaf0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ZFKc09GOz2pyCjFCQEQ7BKvIvyvN4vJYweQ6qxwCoEii02GvFk6M3OceD33dErEmE
-	 WPTg7FvmEh6qU9vHd/IdEeSZCl4kSpOTpwM/HXc49zq50w/tCjpvpO4Q871zufnxHw
-	 iE1+omGnughItTcCtnltH5ji09DkK6WDCVla6Wb2pNwCS+/v8InKy4IIpUsFKJugsb
-	 ijFfsyRq0KP753r3KrhM5pYkHGvfGfHNti7g/TbniHp7ZOLBmdoLPaxbWOl0T5RQAV
-	 P/ZPTWC5ttBuCJIfmXSQN4I9loBcO0ahg7+T/vB9w/EHxXPvyVeNRi5D8NQ/VM0HB6
-	 KetL8uwhApKqw==
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Dong Aisheng <aisheng.dong@nxp.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Jacky Bai <ping.bai@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	zhanghongchen <zhanghongchen@loongson.cn>,
-	Yinbo Zhu <zhuyinbo@loongson.cn>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	linux-gpio@vger.kernel.org,
-	imx@lists.linux.dev,
+	s=k20201202; t=1712818516;
+	bh=g5uFzpLBD5mMvoeBx8hAdujf+J4m8llZ6LvgrHfw/qs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BvNxYyjsAvCfq31BNCEVkvEyXMKqXg17zoo7EoJSAq2MhkmyRtqBo2DG+2Ssxh0TN
+	 0mtKRf7SNGnt4dwLynbgqlfJ2dgqXrwu52VMW6bXvShCdH7WF89v9WoNW3hj0nIzba
+	 jffDoK1d5Fp3YmDVOciJfQQlJ7HDJTgcCy4GQEHNv6vh9TR9kBTl3ngPRT5G69VI85
+	 MXgiWEZTCbnWSyzbZzKDdGh/+g/HuUsPq6nz2DqeYu2PtRF7nf5GCpJGY6aUJJGuUN
+	 QU9Fww/Ln77Q3okVcn7v0WKeIXxi5fKU2aDYHErN5KaEOfszOylPhdAl1U8b3PPGjD
+	 72xWSWZmp3Wig==
+Date: Thu, 11 Apr 2024 07:55:11 +0100
+From: Lee Jones <lee@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: ChiaEn Wu <chiaen_wu@richtek.com>, pavel@ucw.cz, matthias.bgg@gmail.com,
+	linux-kernel@vger.kernel.org, linux-leds@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: [PATCH v2 5/5] pinctrl: realtek: fix module autoloading
-Date: Thu, 11 Apr 2024 08:46:14 +0200
-Message-Id: <20240411064614.7409-5-krzk@kernel.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240411064614.7409-1-krzk@kernel.org>
-References: <20240411064614.7409-1-krzk@kernel.org>
+	linux-mediatek@lists.infradead.org, peterwu.pub@gmail.com,
+	cy_huang@richtek.com
+Subject: Re: [PATCH] leds: mt6360: Fix the second LED can not enable torch
+ mode by V4L2
+Message-ID: <20240411065511.GB6194@google.com>
+References: <d1d1419bb322e2b0f40d34edd3a66979015b668c.1712657386.git.chiaen_wu@richtek.com>
+ <c98ea7c9-6c9b-466d-bc49-ec76874ac6da@collabora.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <c98ea7c9-6c9b-466d-bc49-ec76874ac6da@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_234705_048731_C2BBE03D 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20240410_235519_554301_A801F20B 
+X-CRM114-Status: GOOD (  24.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,48 +76,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MODULE_DEVICE_TABLE(), so the module could be properly autoloaded
-based on the alias from of_device_id table.  Pin controllers are
-considered core components, so usually they are built-in, however these
-can be built and used as modules on some generic kernel.
+On Tue, 09 Apr 2024, AngeloGioacchino Del Regno wrote:
 
-Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+Not sure why, but this mail was sent unthreaded from the original.
 
----
+> Il 09/04/24 12:21, ChiaEn Wu ha scritto:
+> > V4L2 will disable strobe mode of the LED device when enable torch mode,
+> > but this logic will conflict with the "priv->fled_torch_used"
+> > in "mt6360_strobe_set()". So after enabling torch mode of the first
+> > LED, the second LED will not be able to enable torch mode correctly.
+> > 
+> > Therefore, at the beginning of "mt6360_strobe_set()", check whether the
+> > state of the upcoming change and the current LED device state are the
+> > same, so as to avoid the above problem.
+> > 
+> > Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> > ---
+> >   drivers/leds/flash/leds-mt6360.c | 12 +++++++++++-
+> >   1 file changed, 11 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/leds/flash/leds-mt6360.c b/drivers/leds/flash/leds-mt6360.c
+> > index a90de82f4568..1b75b4d36834 100644
+> > --- a/drivers/leds/flash/leds-mt6360.c
+> > +++ b/drivers/leds/flash/leds-mt6360.c
+> > @@ -241,10 +241,20 @@ static int mt6360_strobe_set(struct led_classdev_flash *fl_cdev, bool state)
+> >   	u32 enable_mask = MT6360_STROBEN_MASK | MT6360_FLCSEN_MASK(led->led_no);
+> >   	u32 val = state ? MT6360_FLCSEN_MASK(led->led_no) : 0;
+> >   	u32 prev = priv->fled_strobe_used, curr;
+> > -	int ret;
+> > +	int ret = 0;
+> 
+> I prefer that you leave ret uninitialized here, and...
 
-Changes in v2:
-1. Add missing yank-yank.
-https://lore.kernel.org/all/1d96377f-2a9d-49df-ada3-086d1e6b9dab@kernel.org/
----
- drivers/pinctrl/realtek/pinctrl-rtd1315e.c | 1 +
- drivers/pinctrl/realtek/pinctrl-rtd1319d.c | 1 +
- 2 files changed, 2 insertions(+)
+What's the reason for this?
 
-diff --git a/drivers/pinctrl/realtek/pinctrl-rtd1315e.c b/drivers/pinctrl/realtek/pinctrl-rtd1315e.c
-index 10afc736a52b..86f919122bed 100644
---- a/drivers/pinctrl/realtek/pinctrl-rtd1315e.c
-+++ b/drivers/pinctrl/realtek/pinctrl-rtd1315e.c
-@@ -1414,6 +1414,7 @@ static const struct of_device_id rtd1315e_pinctrl_of_match[] = {
- 	{ .compatible = "realtek,rtd1315e-pinctrl", },
- 	{},
- };
-+MODULE_DEVICE_TABLE(of, rtd1315e_pinctrl_of_match);
- 
- static struct platform_driver rtd1315e_pinctrl_driver = {
- 	.driver = {
-diff --git a/drivers/pinctrl/realtek/pinctrl-rtd1319d.c b/drivers/pinctrl/realtek/pinctrl-rtd1319d.c
-index b1a654ac30dc..474c337d2d05 100644
---- a/drivers/pinctrl/realtek/pinctrl-rtd1319d.c
-+++ b/drivers/pinctrl/realtek/pinctrl-rtd1319d.c
-@@ -1584,6 +1584,7 @@ static const struct of_device_id rtd1319d_pinctrl_of_match[] = {
- 	{ .compatible = "realtek,rtd1319d-pinctrl", },
- 	{},
- };
-+MODULE_DEVICE_TABLE(of, rtd1319d_pinctrl_of_match);
- 
- static struct platform_driver rtd1319d_pinctrl_driver = {
- 	.driver = {
+> >   	mutex_lock(&priv->lock);
+> > +	/*
+> > +	 * If the state of the upcoming change is the same as the current LED
+> > +	 * device state, then skip the subsequent code to avoid conflict
+> > +	 * with the flow of turning on LED torch mode in V4L2.
+> > +	 */
+> > +	if (state == !!(BIT(led->led_no) & prev)) {
+> > +		dev_info(lcdev->dev, "No change in strobe state [0x%x]\n", prev);
+> 
+> ...that you do here, instead
+> 
+> 		ret = 0;
+> 		goto unlock;
+> 
+> With that addressed,
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collaobra.com>
+> 
+> 
+
 -- 
-2.34.1
-
+Lee Jones [李琼斯]
 
