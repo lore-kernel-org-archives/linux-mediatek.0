@@ -4,79 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59323CD128A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 08:32:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7087CD1292
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 08:39:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WJh5ISBv2BavRKyCdJX21r/NRE4P+pzAEuiwHc3SEz4=; b=zCGFdrBuudTpUNYez0USpiXq8I
-	RJrE/k79tXKrdeXkwrjGjhfRNZiRPJk0H+bQTty001ziUy/SUiOC85bpRET/hS5LsOkoa+7mMQv3f
-	LTMmr5NfL+Nl4ZDIJqRRyY/xBcDjcHP4pRKMFN/aVHn84emgF0Y2P2uZHrZZFQetbgLlaWnIKjsjN
-	R3wYN5tdYUg4QnuRQFdkK4C85vDpkuvXZ8S4CL08YvI5WP+BNiWBqACIQ3s4wwMgM7dVMMjC7czRH
-	a7MKZqEMY1vzJ4H7I4kS/At3iZ4UWxNv6F9Rx6CTuMaA+yvrUqutVnu0+EmsuL5IZ/k183ZLapSFn
-	5HzvkNKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RGu/0ma3ezFeXYAMPoATRHDCuVlhyus9tFn/tyNcnZA=; b=UCSUJUMU1cBe1XyOEB90rkClQ5
+	v33u1ZB587g1PjB5lCp2Mev5iTtozY4rLHgrP7RyUSKujnLpbMMlpnMtYxa4TA3pkz9NQOl/OgaKV
+	oJQu9QjUyoUPdzW5piHpQausQBDvOPvDunxcNRnrVugLs9yU+X0cUyDA746l39wFeZQqaS+wT3uCN
+	xSvTnu/tYugmCLOsyx77YC8FDiUBHbHVGqDJKU/8oGflLbn4nElg/4FLcDu7zr6psd6grGy+ijryY
+	dIV6nI3v8Q5+8ZzOIkbXGDKK104hyL00ndRa3wXEpDVxMruGCbyaqq4wLs+II3WpjYmBSTvVJwCPy
+	73SewnLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruprG-0000000B6C7-28SH;
-	Thu, 11 Apr 2024 08:32:34 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rupxU-0000000B8Mc-1vlj;
+	Thu, 11 Apr 2024 08:39:00 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rupqo-0000000B5lq-2T9t;
-	Thu, 11 Apr 2024 08:32:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712824325;
-	bh=pkymiWIPWxat5Rr2zyDqx/dSmImzanbRzBc2AuBwPV8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ZWl6KJ2MaCPG2TpRWPsqMCPlaKKShFlrxo4JYx5AsHPwuitSP3TaKHqheV8CBG2n8
-	 oG5L0ARRG551EVUNEcTvGHCr8ktGLwojLReg0KceFzgfs0KHn6v+LYtTgg/Pkt8kCx
-	 3sEfFzTaqnYC+FI1RcK1/gTceXl5WEPd6lJa+qNbIBYcNNIdHlF9pvWLkYr8364W3T
-	 2Oh6DfncModQDTz7eSGwZ/RY16x44WbS/jUSCSjeuUMDjrOhnl06Y0ld14hbiFvybY
-	 xRqmmvJ5GL5rAhe2zCtpdgfz1ZMIu1UPudk3xQc8R4GrafUThTIn9dsoVBpIvPJNBR
-	 177BHAR/cYmMw==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 132DF3782139;
-	Thu, 11 Apr 2024 08:32:04 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-scsi@vger.kernel.org
-Cc: alim.akhtar@samsung.com,
-	avri.altman@wdc.com,
-	bvanassche@acm.org,
-	robh@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	peter.wang@mediatek.com,
-	chu.stanley@gmail.com,
-	jejb@linux.ibm.com,
-	martin.petersen@oracle.com,
-	lgirdwood@gmail.com,
-	broonie@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	stanley.chu@mediatek.com,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH v1 8/8] dt-bindings: ufs: mediatek,ufs: Document optional dvfsrc/va09 regulators
-Date: Thu, 11 Apr 2024 10:31:49 +0200
-Message-ID: <20240411083149.78537-9-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240411083149.78537-1-angelogioacchino.delregno@collabora.com>
-References: <20240411083149.78537-1-angelogioacchino.delregno@collabora.com>
+	id 1rupxP-0000000B8KB-3pHc;
+	Thu, 11 Apr 2024 08:38:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id E3577CE2F8D;
+	Thu, 11 Apr 2024 08:38:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8BF14C433F1;
+	Thu, 11 Apr 2024 08:38:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712824733;
+	bh=hFPKYBGIMfpUrwovYlZJbiVjlexhjRbaRyeGHPPWlns=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=NAFuS0Ppx0+PkVXSEJz4rvVpoClDsOe3OP/22UTvK7TVNvqysCmc8ya7CP2kXYKvq
+	 MEzj40HuEA/CIdTXGdMDf4FVp2dQlSbFqLoCRy35QUEqVmt8aFV8jgAtdGQoqiZq6b
+	 BcfQG6FtYZhS9tDybY8gp5mq07k1BpKuWR7Te7A3rCLgTY2AW/t69iINWHG4b/X7GT
+	 4vOoFym4qjz6G+QWNyugZh3HemWLtgqsvwx0eVo+r65d63JWxk7GFJXZAY+IE1RxEt
+	 Du5oakGX1TS7W6YWY6MWkYSCOM8v+fPCQQ03DzRgwDh08cEfH0rlwvp3CzAPwRwrjf
+	 MW64XnTh5rKaQ==
+From: Kalle Valo <kvalo@kernel.org>
+To: Breno Leitao <leitao@debian.org>
+Cc: aleksander.lobakin@intel.com,  kuba@kernel.org,  davem@davemloft.net,
+  pabeni@redhat.com,  edumazet@google.com,  elder@kernel.org,
+  linux-arm-kernel@lists.infradead.org,
+  linux-mediatek@lists.infradead.org,  nbd@nbd.name,
+  sean.wang@mediatek.com,  Mark-MC.Lee@mediatek.com,  lorenzo@kernel.org,
+  taras.chornyi@plvision.eu,  ath11k@lists.infradead.org,
+  ath10k@lists.infradead.org,  linux-wireless@vger.kernel.org,
+  geomatsi@gmail.com,  Matthias Brugger <matthias.bgg@gmail.com>,
+  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+  quic_jjohnson@quicinc.com,  leon@kernel.org,
+  dennis.dalessandro@cornelisnetworks.com,  linux-kernel@vger.kernel.org,
+  netdev@vger.kernel.org,  bpf@vger.kernel.org,  idosch@idosch.org
+Subject: Re: [PATCH net-next v5 00/10] allocate dummy device dynamically
+References: <20240410131407.3897251-1-leitao@debian.org>
+Date: Thu, 11 Apr 2024 11:38:45 +0300
+In-Reply-To: <20240410131407.3897251-1-leitao@debian.org> (Breno Leitao's
+	message of "Wed, 10 Apr 2024 06:13:41 -0700")
+Message-ID: <87frvsz42y.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_013207_537026_443C4F11 
-X-CRM114-Status: UNSURE (   7.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240411_013856_341063_5AC0CB40 
+X-CRM114-Status: GOOD (  17.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,29 +81,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the optional dvfsrc-vcore and va09 regulators used for,
-respectively, crypt boost and internal MPHY power management in
-when powering on/off the (external) MediaTek UFS PHY.
+Breno Leitao <leitao@debian.org> writes:
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+> struct net_device shouldn't be embedded into any structure, instead,
+> the owner should use the private space to embed their state into
+> net_device.
+>
+> But, in some cases the net_device is embedded inside the private
+> structure, which blocks the usage of zero-length arrays inside
+> net_device.
+>
+> Create a helper to allocate a dummy device at dynamically runtime, and
+> move the Ethernet devices to use it, instead of embedding the dummy
+> device inside the private structure.
+>
+> This fixes all the network cases plus some wireless drivers.
+>
+> PS: Due to lack of hardware, unfortunately most these patches are
+> compiled tested only, except ath11k that was kindly tested by Kalle Valo.
+>
+> ---
+> Changelog:
+>
+> v1:
+> 	* https://lore.kernel.org/all/20240327200809.512867-1-leitao@debian.org/
+>
+> v2:
+> 	* Patch 1: Use a pre-defined name ("dummy#") for the dummy
+> 	  net_devices.
+> 	* Patch 2-5: Added users for the new helper.
+> v3:
+> 	* Use free_netdev() instead of kfree() as suggested by Jakub.
+> 	* Change the free_netdev() place in ipa driver, as suggested by
+> 	  Alex Elder.
+> 	* Set err in the error path in the Marvell driver, as suggested
+> 	  by Simon Horman.
+> v4:
+> 	* Added a new patch to add dummy device at free_netdev(), as suggested
+> 	  by Jakub.
+> 	* Added support for some wireless driver.
+> 	* Added some Acked-by and Reviewed-by.
+> v5:
+> 	* Added a new patch to fix some typos in the previous code,
+> 	  suggested by Ido.
+> 	* Rebased to net-net/main
 
-diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-index df2e2d388e70..118abfad0250 100644
---- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-+++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-@@ -49,6 +49,8 @@ properties:
-   reg:
-     maxItems: 1
- 
-+  dvfsrc-vcore-supply: true
-+  va09-supply: true
-   vcc-supply: true
- 
- required:
+I'm nitpicking here but I prefer to have the changelog in reverse order,
+that is v5 first and v1 last. I'm most interested about the changes in
+v5, I don't care about v1 at this point. Though I don't know if net
+folks have a different prefence, just wanted to mention this.
+
 -- 
-2.44.0
+https://patchwork.kernel.org/project/linux-wireless/list/
 
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
